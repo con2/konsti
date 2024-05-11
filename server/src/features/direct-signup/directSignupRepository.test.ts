@@ -3,8 +3,8 @@ import mongoose from "mongoose";
 import { faker } from "@faker-js/faker";
 import dayjs from "dayjs";
 import { saveUser } from "server/features/user/userRepository";
-import { testGame } from "shared/tests/testGame";
-import { saveGames } from "server/features/game/gameRepository";
+import { testProgramItem } from "shared/tests/testProgramItem";
+import { saveProgramItems } from "server/features/program-item/programItemRepository";
 import {
   mockPostDirectSignupRequest,
   mockUser,
@@ -32,18 +32,20 @@ afterEach(async () => {
 
 test("should add new signup for user", async () => {
   await saveUser(mockUser);
-  await saveGames([testGame]);
+  await saveProgramItems([testProgramItem]);
 
   const responseResult = await saveDirectSignup(mockPostDirectSignupRequest);
   const response = unsafelyUnwrapResult(responseResult);
 
-  expect(response.game.gameId).toEqual(testGame.gameId);
+  expect(response.programItem.programItemId).toEqual(
+    testProgramItem.programItemId,
+  );
   expect(response.userSignups[0].username).toEqual(mockUser.username);
 });
 
 test("should delete signup from user", async () => {
   await saveUser(mockUser);
-  await saveGames([testGame]);
+  await saveProgramItems([testProgramItem]);
   await saveDirectSignup(mockPostDirectSignupRequest);
 
   const responseResult = await delDirectSignup(mockPostDirectSignupRequest);
@@ -52,14 +54,14 @@ test("should delete signup from user", async () => {
   expect(response.userSignups.length).toEqual(0);
 });
 
-test("should delete signup from user even if game start time has changed after signup", async () => {
+test("should delete signup from user even if program item start time has changed after signup", async () => {
   await saveUser(mockUser);
-  await saveGames([testGame]);
+  await saveProgramItems([testProgramItem]);
   await saveDirectSignup(mockPostDirectSignupRequest);
 
   const responseResult = await delDirectSignup({
     ...mockPostDirectSignupRequest,
-    startTime: dayjs(testGame.startTime).add(1, "hours").toISOString(),
+    startTime: dayjs(testProgramItem.startTime).add(1, "hours").toISOString(),
   });
   const response = unsafelyUnwrapResult(responseResult);
 
@@ -71,7 +73,7 @@ test("should limit max attendees if too many passed to saveDirectSignups", async
   await saveUser(mockUser2);
   await saveUser(mockUser3);
   await saveUser(mockUser4);
-  await saveGames([{ ...testGame, maxAttendance: 2 }]);
+  await saveProgramItems([{ ...testProgramItem, maxAttendance: 2 }]);
 
   const signups = [
     mockPostDirectSignupRequest,
@@ -92,7 +94,7 @@ test("should limit max attendees if too many passed to saveDirectSignups", async
 
 test("should not add multiple duplicate signups for same user", async () => {
   await saveUser(mockUser);
-  await saveGames([testGame]);
+  await saveProgramItems([testProgramItem]);
 
   await Promise.all([
     saveDirectSignup(mockPostDirectSignupRequest),
@@ -109,7 +111,7 @@ test("should not add multiple duplicate signups for same user", async () => {
 
 test("should not delete multiple times if delete called multiple times", async () => {
   await saveUser(mockUser);
-  await saveGames([testGame]);
+  await saveProgramItems([testProgramItem]);
   await saveDirectSignup(mockPostDirectSignupRequest);
 
   await Promise.all([

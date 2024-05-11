@@ -6,7 +6,7 @@ import {
   LoginProvider,
   SignupStrategy,
 } from "shared/config/sharedConfigTypes";
-import { ProgramType } from "shared/types/models/game";
+import { ProgramType } from "shared/types/models/programItem";
 import {
   SignupQuestion,
   SignupQuestionType,
@@ -165,7 +165,7 @@ const sharedConfig: SharedConfig = {
 
   signupQuestions: [
     {
-      gameId: "p6673", // PFS multi-table special: Pathfinder Society #3-98: Expedition into Pallid Peril
+      programItemId: "p6673", // PFS multi-table special: Pathfinder Society #3-98: Expedition into Pallid Peril
       questionFi:
         "Hahmoluokka ja taso. Jos sinulla on useampi hahmo, merkitse ensisijainen hahmo sulkeilla.",
       questionEn:
@@ -175,7 +175,7 @@ const sharedConfig: SharedConfig = {
       selectOptions: [],
     },
     {
-      gameId: "p6852", // Palapeliturnaus (Joukkue) | Jigsaw Puzzle Tournament (Teams)
+      programItemId: "p6852", // Palapeliturnaus (Joukkue) | Jigsaw Puzzle Tournament (Teams)
       questionFi:
         "Syötä joukkueen nimi, kaikkien joukkueesi jäsenten (2-4 kpl) nimet, sekä ainakin yhden jäsenen sähköpostiosoite ja puhelinnumero mahdollista palkintoyhteydenottoa varten.",
       questionEn:
@@ -185,7 +185,7 @@ const sharedConfig: SharedConfig = {
       selectOptions: [],
     },
     {
-      gameId: "p6639", // Pikamaalauskilpailu / Speed Painting Contest 1 (Pe/Fri)
+      programItemId: "p6639", // Pikamaalauskilpailu / Speed Painting Contest 1 (Pe/Fri)
       questionFi: "Haluan, että maalattavan figuni pohjaväri on",
       questionEn: "I want my miniature to be primed",
       private: false,
@@ -197,7 +197,7 @@ const sharedConfig: SharedConfig = {
       ],
     },
     {
-      gameId: "p6978", // Pikamaalauskilpailu / Speed Painting Contest 2 (Pe/Fri)
+      programItemId: "p6978", // Pikamaalauskilpailu / Speed Painting Contest 2 (Pe/Fri)
       questionFi: "Haluan, että maalattavan figuni pohjaväri on",
       questionEn: "I want my miniature to be primed",
       private: false,
@@ -209,7 +209,7 @@ const sharedConfig: SharedConfig = {
       ],
     },
     {
-      gameId: "p6989", // Pikamaalauskilpailu / Speed Painting Contest 3 (La/Sat)
+      programItemId: "p6989", // Pikamaalauskilpailu / Speed Painting Contest 3 (La/Sat)
       questionFi: "Haluan, että maalattavan figuni pohjaväri on",
       questionEn: "I want my miniature to be primed",
       private: false,
@@ -221,7 +221,7 @@ const sharedConfig: SharedConfig = {
       ],
     },
     {
-      gameId: "p6990", // Pikamaalauskilpailu / Speed Painting Contest 4 (La/Sat)
+      programItemId: "p6990", // Pikamaalauskilpailu / Speed Painting Contest 4 (La/Sat)
       questionFi: "Haluan, että maalattavan figuni pohjaväri on",
       questionEn: "I want my miniature to be primed",
       private: false,
@@ -235,7 +235,7 @@ const sharedConfig: SharedConfig = {
   ],
 
   tournamentSignupQuestion: {
-    gameId: "", // Filled later
+    programItemId: "", // Filled later
     questionFi:
       "Syötä nimesi, sähköpostiosoitteesi ja puhelinnumerosi mahdollista palkintoyhteydenottoa varten.",
     questionEn:

@@ -22,24 +22,30 @@ test("Add favorite", async ({ page, request }) => {
   // Navigate to program list tab
   await page.click("data-testid=program-list");
 
-  // Favorite first game
-  await page.waitForSelector("data-testid=game-container");
-  const firstGame = page.locator("data-testid=game-container >> nth=0");
+  // Favorite first program item
+  await page.waitForSelector("data-testid=program-item-container");
+  const firstProgramItem = page.locator(
+    "data-testid=program-item-container >> nth=0",
+  );
 
-  const favoritedGameTitle = await firstGame
-    .locator("data-testid=game-title")
+  const favoritedProgramItemTitle = await firstProgramItem
+    .locator("data-testid=program-item-title")
     .innerText();
 
-  await firstGame.locator("data-testid=add-favorite-button").click();
+  await firstProgramItem.locator("data-testid=add-favorite-button").click();
 
-  // Go to My Program and check favorited game title
+  // Go to My Program and check favorited program item title
   await page.click("data-testid=my-program-list");
 
-  const favoritedGames = page.locator("data-testid=favorited-games-list");
+  const favoritedProgramItems = page.locator(
+    "data-testid=favorited-program-items-list",
+  );
 
-  const myGamesGameTitle = await favoritedGames
-    .locator("data-testid=game-title")
+  const myProgramItemsProgramItemTitle = await favoritedProgramItems
+    .locator("data-testid=program-item-title")
     .innerText();
 
-  expect(myGamesGameTitle.trim()).toEqual(favoritedGameTitle);
+  expect(myProgramItemsProgramItemTitle.trim()).toEqual(
+    favoritedProgramItemTitle,
+  );
 });

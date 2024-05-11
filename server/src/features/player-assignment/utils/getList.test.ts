@@ -1,9 +1,9 @@
 import { expect, test } from "vitest";
-import { testGame } from "shared/tests/testGame";
+import { testProgramItem } from "shared/tests/testProgramItem";
 import { getList } from "server/features/player-assignment/utils/getList";
 import { User, UserGroup } from "shared/types/models/user";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
-import { ProgramType } from "shared/types/models/game";
+import { ProgramType } from "shared/types/models/programItem";
 
 const groupCreatorWithLotterySignups: User = {
   kompassiId: 0,
@@ -14,10 +14,10 @@ const groupCreatorWithLotterySignups: User = {
   serial: "123",
   groupCode: "123-234-345",
   groupCreatorCode: "123-234-345",
-  favoritedGames: [],
+  favoritedProgramItems: [],
   lotterySignups: [
     {
-      gameDetails: testGame,
+      programItem: testProgramItem,
       priority: 1,
       time: "2019-11-23T12:00:00+02:00",
       message: "",
@@ -36,7 +36,7 @@ const groupMemberWithoutLotterySignups1: User = {
   serial: "456",
   groupCode: "123-234-345",
   groupCreatorCode: "0",
-  favoritedGames: [],
+  favoritedProgramItems: [],
   lotterySignups: [],
   createdAt: "2019-11-23T12:00:00+02:00",
   eventLogItems: [],
@@ -51,14 +51,14 @@ const groupMemberWithoutLotterySignups2: User = {
   serial: "789",
   groupCode: "123-234-345",
   groupCreatorCode: "0",
-  favoritedGames: [],
+  favoritedProgramItems: [],
   lotterySignups: [],
   createdAt: "2019-11-23T12:00:00+02:00",
   eventLogItems: [],
 };
 
 const previousSignup: DirectSignupsForProgramItem = {
-  game: testGame,
+  programItem: testProgramItem,
   userSignups: [
     {
       username: groupMemberWithoutLotterySignups2.username,
@@ -70,7 +70,7 @@ const previousSignup: DirectSignupsForProgramItem = {
 };
 
 const otherUserPreviousSignup: DirectSignupsForProgramItem = {
-  game: testGame,
+  programItem: testProgramItem,
   userSignups: [
     {
       username: "test name",
@@ -82,7 +82,7 @@ const otherUserPreviousSignup: DirectSignupsForProgramItem = {
 };
 
 const previousSignupWithWrongType: DirectSignupsForProgramItem = {
-  game: { ...testGame, programType: ProgramType.TOURNAMENT },
+  programItem: { ...testProgramItem, programType: ProgramType.TOURNAMENT },
   userSignups: [
     {
       username: groupCreatorWithLotterySignups.username,

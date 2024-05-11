@@ -13,8 +13,8 @@ import {
   PostSettingsResponse,
   PostSignupQuestionResponse,
 } from "shared/types/api/settings";
-import { Game } from "shared/types/models/game";
-import { removeHiddenGamesFromUsers } from "server/features/settings/utils/removeHiddenGamesFromUsers";
+import { ProgramItem } from "shared/types/models/programItem";
+import { removeHiddenProgramItemsFromUsers } from "server/features/settings/utils/removeHiddenProgramItemsFromUsers";
 import { SignupQuestion } from "shared/types/models/settings";
 import { isErrorResult, unwrapResult } from "shared/utils/result";
 
@@ -35,7 +35,7 @@ export const fetchSettings = async (): Promise<
   return {
     message: "Getting settings success",
     status: "success",
-    hiddenGames: settings.hiddenGames,
+    hiddenProgramItems: settings.hiddenProgramItems,
     appOpen: settings.appOpen,
     signupQuestions: settings.signupQuestions,
     signupStrategy: settings.signupStrategy,
@@ -44,7 +44,7 @@ export const fetchSettings = async (): Promise<
 };
 
 export const storeHidden = async (
-  hiddenData: readonly Game[],
+  hiddenData: readonly ProgramItem[],
 ): Promise<PostHiddenResponse | ApiError> => {
   const settingsResult = await saveHidden(hiddenData);
   if (isErrorResult(settingsResult)) {
@@ -57,10 +57,9 @@ export const storeHidden = async (
 
   const settings = unwrapResult(settingsResult);
 
-  const removeHiddenGamesFromUsersResult = await removeHiddenGamesFromUsers(
-    settings.hiddenGames,
-  );
-  if (isErrorResult(removeHiddenGamesFromUsersResult)) {
+  const removeHiddenProgramItemsFromUsersResult =
+    await removeHiddenProgramItemsFromUsers(settings.hiddenProgramItems);
+  if (isErrorResult(removeHiddenProgramItemsFromUsersResult)) {
     return {
       message: "Update hidden failure",
       status: "error",
@@ -71,7 +70,7 @@ export const storeHidden = async (
   return {
     message: "Update hidden success",
     status: "success",
-    hiddenGames: settings.hiddenGames,
+    hiddenProgramItems: settings.hiddenProgramItems,
   };
 };
 
@@ -97,9 +96,9 @@ export const storeSignupQuestion = async (
 };
 
 export const removeSignupQuestion = async (
-  gameId: string,
+  programItemId: string,
 ): Promise<PostSignupQuestionResponse | ApiError> => {
-  const delSignupQuestionResult = await delSignupQuestion(gameId);
+  const delSignupQuestionResult = await delSignupQuestion(programItemId);
   if (isErrorResult(delSignupQuestionResult)) {
     return {
       message: "delSignupQuestion failure",

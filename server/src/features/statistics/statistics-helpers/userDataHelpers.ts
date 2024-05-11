@@ -4,16 +4,16 @@ import { User } from "shared/types/models/user";
 import { StringNumberObject } from "server/types/commonTypes";
 import { toPercent } from "server/features/statistics/statsUtil";
 
-export const getUsersWithoutGames = (
+export const getUsersWithoutProgramItems = (
   users: readonly User[],
 ): readonly User[] => {
   const counter = 0;
-  const usersWithoutGames = [] as User[];
+  const usersWithoutProgramItems = [] as User[];
   // TODO: Update to use signup collection
   /*
   users.forEach((user) => {
     if (user.directSignups.length === 0 && user.lotterySignups.length !== 0) {
-      usersWithoutGames.push(user);
+      usersWithoutProgramItems.push(user);
       counter += 1;
     }
   });
@@ -25,7 +25,7 @@ export const getUsersWithoutGames = (
     )}%)`,
   );
 
-  return usersWithoutGames;
+  return usersWithoutProgramItems;
 };
 
 export const getUsersWithoutSignups = (
@@ -56,17 +56,17 @@ export const getUsersSignupCount = (users: readonly User[]): void => {
     userSignupCounts.push(lotterySignups);
   });
 
-  const gameWishes: StringNumberObject = {};
+  const programItemWishes: StringNumberObject = {};
   userSignupCounts.forEach((userSignups: StringNumberObject) => {
     for (const signupTime in userSignups) {
-      gameWishes[userSignups[signupTime]] =
-        ++gameWishes[userSignups[signupTime]] || 1;
+      programItemWishes[userSignups[signupTime]] =
+        ++programItemWishes[userSignups[signupTime]] || 1;
     }
   });
 
   logger.info(
-    `Users signed for this many games when they didn't get signed:`,
-    gameWishes,
+    `Users signed for this many program items when they didn't get signed:`,
+    programItemWishes,
   );
 
   const signupCount: StringNumberObject = {};
@@ -76,12 +76,12 @@ export const getUsersSignupCount = (users: readonly User[]): void => {
   });
 
   logger.info(
-    `Users didn't get into any games after this many signup attempts:`,
+    `Users didn't get into any program items after this many signup attempts:`,
     signupCount,
   );
 };
 
-export const getUsersWithAllGames = (_users: readonly User[]): void => {
+export const getUsersWithAllProgramItems = (_users: readonly User[]): void => {
   // TODO: Update to use signup collection
   /*
   let counter = 0;
@@ -95,7 +95,7 @@ export const getUsersWithAllGames = (_users: readonly User[]): void => {
   });
 
   logger.info(
-    `This many users got into a game each time they signed up: ${counter}/${
+    `This many users got into a program item each time they signed up: ${counter}/${
       users.length
     } (${toPercent(counter / users.length)}%)`
   );

@@ -32,10 +32,14 @@ export const verifyUserSignups = async (): Promise<
 
   const signups = unwrapResult(signupsResult);
 
-  signups.map(({ game, userSignups }) => {
+  signups.map(({ programItem, userSignups }) => {
     if (
-      !config.shared().twoPhaseSignupProgramTypes.includes(game.programType) ||
-      config.shared().directSignupAlwaysOpenIds.includes(game.gameId)
+      !config
+        .shared()
+        .twoPhaseSignupProgramTypes.includes(programItem.programType) ||
+      config
+        .shared()
+        .directSignupAlwaysOpenIds.includes(programItem.programItemId)
     ) {
       return;
     }
@@ -65,7 +69,8 @@ export const verifyUserSignups = async (): Promise<
 
       const matchingCreatorLotterySignup = groupCreator.lotterySignups.find(
         (creatorLotterySignup) =>
-          creatorLotterySignup.gameDetails.gameId === game.gameId &&
+          creatorLotterySignup.programItem.programItemId ===
+            programItem.programItemId &&
           dayjs(creatorLotterySignup.time).isSame(userSignup.time),
       );
 
@@ -73,7 +78,7 @@ export const verifyUserSignups = async (): Promise<
         logger.error(
           "%s",
           new Error(
-            `No matching signed game found from group creator: ${userSignup.username} - ${game.title}`,
+            `No matching signed program item found from group creator: ${userSignup.username} - ${programItem.title}`,
           ),
         );
         return makeErrorResult(MongoDbError.UNKNOWN_ERROR);

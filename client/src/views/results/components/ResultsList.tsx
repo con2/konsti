@@ -5,11 +5,11 @@ import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
 import { useAppSelector } from "client/utils/hooks";
-import { getUsersForGameId } from "client/views/results/resultsUtils";
-import { getUpcomingGames } from "client/utils/getUpcomingGames";
-import { Game } from "shared/types/models/game";
-import { selectActiveGames } from "client/views/admin/adminSlice";
-import { MULTIPLE_WHITESPACES_REGEX } from "client/views/all-games/AllGamesView";
+import { getUsersForProgramItemId } from "client/views/results/resultsUtils";
+import { getUpcomingProgramItems } from "client/utils/getUpcomingProgramItems";
+import { ProgramItem } from "shared/types/models/programItem";
+import { selectActiveProgramItems } from "client/views/admin/adminSlice";
+import { MULTIPLE_WHITESPACES_REGEX } from "client/views/all-program-items/AllProgramItemsView";
 import { Tags } from "client/components/Tags";
 import { getAttendeeType } from "client/utils/getAttendeeType";
 import { config } from "shared/config";
@@ -23,8 +23,10 @@ import { isRevolvingDoorWorkshop } from "client/utils/isRevolvingDoorWorkshop";
 export const ResultsList = (): ReactElement => {
   const { t, i18n } = useTranslation();
 
-  const activeGames = useAppSelector(selectActiveGames);
-  const signups = useAppSelector((state) => state.allGames.directSignups);
+  const activeProgramItems = useAppSelector(selectActiveProgramItems);
+  const signups = useAppSelector(
+    (state) => state.allProgramItems.directSignups,
+  );
   const userGroup = useAppSelector((state) => state.login.userGroup);
   isAdminOrHelp(userGroup);
   const showResults =
@@ -37,7 +39,9 @@ export const ResultsList = (): ReactElement => {
   const signupQuestions = useAppSelector(
     (state) => state.admin.signupQuestions,
   );
-  const hiddenGames = useAppSelector((state) => state.admin.hiddenGames);
+  const hiddenProgramItems = useAppSelector(
+    (state) => state.admin.hiddenProgramItems,
+  );
 
   const [selectedStartingTime, setSelectedStartingTime] = useState<string>(
     ResultsStartingTimeOption.ALL,
@@ -50,66 +54,78 @@ export const ResultsList = (): ReactElement => {
   );
 
   // Filter out hidden program items, revolving door workshops and program items without Konsti signup
-  const visibleGames = activeGames
-    .filter((activeGame) =>
-      hiddenGames.every(
-        (hiddenGame) => activeGame.gameId !== hiddenGame.gameId,
+  const visibleProgramItems = activeProgramItems
+    .filter((activeProgramItem) =>
+      hiddenProgramItems.every(
+        (hiddenProgramItem) =>
+          activeProgramItem.programItemId !== hiddenProgramItem.programItemId,
       ),
     )
-    .filter((activeGame) => !isRevolvingDoorWorkshop(activeGame))
+    .filter((activeProgramItem) => !isRevolvingDoorWorkshop(activeProgramItem))
     .filter(
-      (activeGame) =>
-        !config.shared().noKonstiSignupIds.includes(activeGame.gameId),
+      (activeProgramItem) =>
+        !config
+          .shared()
+          .noKonstiSignupIds.includes(activeProgramItem.programItemId),
     );
 
-  const filteredGames =
+  const filteredProgramItems =
     selectedStartingTime === ResultsStartingTimeOption.ALL
-      ? sortBy(visibleGames, "startTime")
-      : sortBy(getUpcomingGames(visibleGames, 1), "startTime");
+      ? sortBy(visibleProgramItems, "startTime")
+      : sortBy(getUpcomingProgramItems(visibleProgramItems, 1), "startTime");
 
-  const [gamesForListing, setGamesForListing] = useState<readonly Game[]>([]);
-  const [filteredGamesForListing, setFilteredGamesForListing] = useState<
-    Record<string, Game[]>
-  >({});
+  const [programItemsForListing, setProgramItemsForListing] = useState<
+    readonly ProgramItem[]
+  >([]);
+  const [filteredProgramItemsForListing, setFilteredProgramItemsForListing] =
+    useState<Record<string, ProgramItem[]>>({});
   const [searchTerm, setSearchTerm] = useState<string>("");
 
   useEffect(() => {
-    if (isEqual(filteredGames, gamesForListing)) {
+    if (isEqual(filteredProgramItems, programItemsForListing)) {
       return;
     }
 
-    setGamesForListing(filteredGames);
-  }, [filteredGames, gamesForListing]);
+    setProgramItemsForListing(filteredProgramItems);
+  }, [filteredProgramItems, programItemsForListing]);
 
   useEffect(() => {
     if (searchTerm.length === 0) {
-      const gamesByStartTime = groupBy<Game>(gamesForListing, "startTime");
-      setFilteredGamesForListing(gamesByStartTime);
+      const programItemsByStartTime = groupBy<ProgramItem>(
+        programItemsForListing,
+        "startTime",
+      );
+      setFilteredProgramItemsForListing(programItemsByStartTime);
       return;
     }
 
-    const gamesFilteredBySearchTerm = gamesForListing.filter((game) => {
-      const users = getUsersForGameId(game.gameId, visibleSignups);
-      return (
-        game.title
-          .replace(MULTIPLE_WHITESPACES_REGEX, " ")
-          .toLocaleLowerCase()
-          .includes(searchTerm.toLocaleLowerCase()) ||
-        users.some((user) =>
-          user.username
+    const programItemsFilteredBySearchTerm = programItemsForListing.filter(
+      (programItem) => {
+        const users = getUsersForProgramItemId(
+          programItem.programItemId,
+          visibleSignups,
+        );
+        return (
+          programItem.title
+            .replace(MULTIPLE_WHITESPACES_REGEX, " ")
             .toLocaleLowerCase()
-            .includes(searchTerm.toLocaleLowerCase()),
-        )
-      );
-    });
+            .includes(searchTerm.toLocaleLowerCase()) ||
+          users.some((user) =>
+            user.username
+              .toLocaleLowerCase()
+              .includes(searchTerm.toLocaleLowerCase()),
+          )
+        );
+      },
+    );
 
-    const gamesByStartTime = groupBy<Game>(
-      gamesFilteredBySearchTerm,
+    const programItemsByStartTime = groupBy<ProgramItem>(
+      programItemsFilteredBySearchTerm,
       "startTime",
     );
 
-    setFilteredGamesForListing(gamesByStartTime);
-  }, [searchTerm, gamesForListing, visibleSignups]);
+    setFilteredProgramItemsForListing(programItemsByStartTime);
+  }, [searchTerm, programItemsForListing, visibleSignups]);
 
   return (
     <div>
@@ -120,36 +136,46 @@ export const ResultsList = (): ReactElement => {
         onSelectedStartingTimeChange={setSelectedStartingTime}
       />
 
-      {filteredGames.length === 0 && <h3>{t("resultsView.noResults")}</h3>}
+      {filteredProgramItems.length === 0 && (
+        <h3>{t("resultsView.noResults")}</h3>
+      )}
 
-      {Object.entries(filteredGamesForListing).map(
-        ([startTime, gamesForTime]) => {
-          const sortedGamesForTime = sortBy(gamesForTime, [
-            (game) => game.title.toLocaleLowerCase(),
+      {Object.entries(filteredProgramItemsForListing).map(
+        ([startTime, programItemsForTime]) => {
+          const sortedProgramItemsForTime = sortBy(programItemsForTime, [
+            (programItem) => programItem.title.toLocaleLowerCase(),
           ]);
 
           return (
             <TimeSlot key={startTime}>
               <h3>{capitalize(getWeekdayAndTime(startTime))}</h3>
 
-              <Games>
-                {sortedGamesForTime.map((game) => {
+              <ProgramItems>
+                {sortedProgramItemsForTime.map((programItem) => {
                   const signupQuestion = publicSignupQuestions.find(
-                    (question) => question.gameId === game.gameId,
+                    (question) =>
+                      question.programItemId === programItem.programItemId,
                   );
                   const signupMessagesVisible = showSignupMessages.find(
-                    (message) => message === game.gameId,
+                    (message) => message === programItem.programItemId,
                   );
                   const playerListVisible = showPlayers.find(
-                    (players) => players === game.gameId,
+                    (players) => players === programItem.programItemId,
                   );
-                  const users = getUsersForGameId(game.gameId, visibleSignups);
+                  const users = getUsersForProgramItemId(
+                    programItem.programItemId,
+                    visibleSignups,
+                  );
 
                   return (
-                    <div key={game.gameId}>
-                      <ResultTitle key={game.gameId}>{game.title} </ResultTitle>
+                    <div key={programItem.programItemId}>
+                      <ResultTitle key={programItem.programItemId}>
+                        {programItem.title}{" "}
+                      </ResultTitle>
                       {config.client().activeProgramTypes.length > 1 && (
-                        <Tags tags={[t(`programType.${game.programType}`)]} />
+                        <Tags
+                          tags={[t(`programType.${programItem.programType}`)]}
+                        />
                       )}
                       <PlayerContainer>
                         <PlayerCount
@@ -157,11 +183,15 @@ export const ResultsList = (): ReactElement => {
                             if (playerListVisible) {
                               setShowPlayers(
                                 showPlayers.filter(
-                                  (gameId) => gameId !== game.gameId,
+                                  (programItemId) =>
+                                    programItemId !== programItem.programItemId,
                                 ),
                               );
                             } else {
-                              setShowPlayers([...showPlayers, game.gameId]);
+                              setShowPlayers([
+                                ...showPlayers,
+                                programItem.programItemId,
+                              ]);
                             }
                           }}
                         >
@@ -169,11 +199,11 @@ export const ResultsList = (): ReactElement => {
                             {capitalize(
                               t(
                                 `attendeeTypePlural.${getAttendeeType(
-                                  game.programType,
+                                  programItem.programType,
                                 )}`,
                               ),
                             )}
-                            : {users.length}/{game.maxAttendance}
+                            : {users.length}/{programItem.maxAttendance}
                             {!!signupQuestion &&
                               (signupMessagesVisible ? (
                                 <CommentIcon
@@ -183,7 +213,8 @@ export const ResultsList = (): ReactElement => {
                                     event.stopPropagation();
                                     setShowSignupMessages(
                                       showSignupMessages.filter(
-                                        (message) => message !== game.gameId,
+                                        (message) =>
+                                          message !== programItem.programItemId,
                                       ),
                                     );
                                   }}
@@ -196,7 +227,7 @@ export const ResultsList = (): ReactElement => {
                                     event.stopPropagation();
                                     setShowSignupMessages([
                                       ...showSignupMessages,
-                                      game.gameId,
+                                      programItem.programItemId,
                                     ]);
                                   }}
                                 />
@@ -209,14 +240,14 @@ export const ResultsList = (): ReactElement => {
                                 ? t("iconAltText.closeAttendeeList", {
                                     ATTENDEE_TYPE: t(
                                       `attendeeType.${getAttendeeType(
-                                        game.programType,
+                                        programItem.programType,
                                       )}`,
                                     ),
                                   })
                                 : t("iconAltText.openAttendeeList", {
                                     ATTENDEE_TYPE: t(
                                       `attendeeType.${getAttendeeType(
-                                        game.programType,
+                                        programItem.programType,
                                       )}`,
                                     ),
                                   })
@@ -237,7 +268,7 @@ export const ResultsList = (): ReactElement => {
                                 {t("resultsView.noSignups", {
                                   ATTENDEE_TYPE: t(
                                     `attendeeTypePlural.${getAttendeeType(
-                                      game.programType,
+                                      programItem.programType,
                                     )}`,
                                   ),
                                 })}
@@ -258,7 +289,7 @@ export const ResultsList = (): ReactElement => {
                     </div>
                   );
                 })}
-              </Games>
+              </ProgramItems>
             </TimeSlot>
           );
         },
@@ -286,7 +317,7 @@ const TimeSlot = styled.div`
   padding: 0 10px 20px 10px;
 `;
 
-const Games = styled.div`
+const ProgramItems = styled.div`
   display: grid;
   grid-gap: 30px;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));

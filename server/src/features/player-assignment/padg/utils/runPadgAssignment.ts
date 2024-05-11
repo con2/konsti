@@ -4,7 +4,7 @@ import { getList } from "server/features/player-assignment/utils/getList";
 import { getEvents } from "server/features/player-assignment/utils/getEvents";
 import { formatResults } from "server/features/player-assignment/utils/formatResults";
 import { AssignmentStrategyResult, Input } from "server/types/resultTypes";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 import { User } from "shared/types/models/user";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import {
@@ -18,7 +18,7 @@ import { AssignmentError } from "shared/types/api/errors";
 import { logger } from "server/utils/logger";
 
 export const runPadgAssignment = (
-  lotterySignupGames: readonly Game[],
+  lotterySignupProgramItems: readonly ProgramItem[],
   playerGroups: readonly User[][],
   startTime: string,
   directSignups: readonly DirectSignupsForProgramItem[],
@@ -28,7 +28,7 @@ export const runPadgAssignment = (
     return groupsResult;
   }
   const groups = unwrapResult(groupsResult);
-  const events = getEvents(lotterySignupGames, directSignups);
+  const events = getEvents(lotterySignupProgramItems, directSignups);
   const listResult = getList(playerGroups, startTime, directSignups);
   if (isErrorResult(listResult)) {
     return listResult;

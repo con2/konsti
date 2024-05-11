@@ -3,36 +3,38 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { sortBy } from "lodash-es";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 import { SignupQuestion } from "shared/types/models/settings";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
+import { AppRoute } from "client/app/AppRoutes";
 
 interface Props {
   signupQuestions: readonly SignupQuestion[];
-  games: readonly Game[];
+  programItems: readonly ProgramItem[];
 }
 
 export const SignupQuestionList = ({
   signupQuestions,
-  games,
+  programItems,
 }: Props): ReactElement => {
   const { t } = useTranslation();
 
-  const signupQuestionsWithGames = signupQuestions.flatMap(
+  const signupQuestionsWithProgramItems = signupQuestions.flatMap(
     (privateSignupQuestion) => {
-      const matchingGame = games.find(
-        (game) => game.gameId === privateSignupQuestion.gameId,
+      const matchingProgramItem = programItems.find(
+        (programItem) =>
+          programItem.programItemId === privateSignupQuestion.programItemId,
       );
-      if (!matchingGame) {
+      if (!matchingProgramItem) {
         return [];
       }
-      return { ...privateSignupQuestion, game: matchingGame };
+      return { ...privateSignupQuestion, programItem: matchingProgramItem };
     },
   );
 
-  const sortedSignupQuestions = sortBy(signupQuestionsWithGames, [
-    "game.startTime",
-    (signupQuestion) => signupQuestion.game.title.toLocaleLowerCase(),
+  const sortedSignupQuestions = sortBy(signupQuestionsWithProgramItems, [
+    "programItem.startTime",
+    (signupQuestion) => signupQuestion.programItem.title.toLocaleLowerCase(),
   ]);
 
   return (
@@ -43,17 +45,22 @@ export const SignupQuestionList = ({
         {signupQuestions.length === 0 && <span>{t("noSignupQuestions")}</span>}
 
         {sortedSignupQuestions.flatMap((signupQuestion) => {
-          const foundGame = games.find(
-            (game) => game.gameId === signupQuestion.gameId,
+          const foundProgramItem = programItems.find(
+            (programItem) =>
+              programItem.programItemId === signupQuestion.programItemId,
           );
-          if (!foundGame) {
+          if (!foundProgramItem) {
             return [];
           }
 
           return (
-            <li key={`${signupQuestion.gameId}-${signupQuestion.questionFi}`}>
-              <Link to={`/games/${signupQuestion.gameId}`}>
-                {foundGame.title}
+            <li
+              key={`${signupQuestion.programItemId}-${signupQuestion.questionFi}`}
+            >
+              <Link
+                to={`${AppRoute.PROGRAM_ITEM}/${signupQuestion.programItemId}`}
+              >
+                {foundProgramItem.title}
               </Link>
               <span>
                 : {signupQuestion.questionFi} / {signupQuestion.questionEn}
@@ -68,8 +75,8 @@ export const SignupQuestionList = ({
                 </span>
               )}{" "}
               {signupQuestion.private && <BoldText>({t("private")})</BoldText>}{" "}
-              - {t(`programType.${foundGame.programType}`)} -{" "}
-              <span>{getWeekdayAndTime(foundGame.startTime)}</span>
+              - {t(`programType.${foundProgramItem.programType}`)} -{" "}
+              <span>{getWeekdayAndTime(foundProgramItem.startTime)}</span>
             </li>
           );
         })}

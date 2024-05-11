@@ -271,7 +271,7 @@ export const fetchUserByUsername = async (
           return [];
         }
         return {
-          gameDetails: signup.game,
+          programItem: signup.programItem,
           priority: signupForUser.priority,
           time: signupForUser.time,
           message: signupForUser.message,
@@ -282,9 +282,9 @@ export const fetchUserByUsername = async (
   return {
     message: "Getting user data success",
     status: "success",
-    games: {
+    programItems: {
       directSignups,
-      favoritedGames: user.favoritedGames,
+      favoritedProgramItems: user.favoritedProgramItems,
       lotterySignups: user.lotterySignups,
     },
     username: user.username,

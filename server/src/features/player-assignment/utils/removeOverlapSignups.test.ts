@@ -4,9 +4,15 @@ import { faker } from "@faker-js/faker";
 import { removeOverlapSignups } from "server/features/player-assignment/utils/removeOverlapSignups";
 import { mockUser, mockLotterySignups } from "server/test/mock-data/mockUser";
 import { mockResults } from "server/test/mock-data/mockResults";
-import { testGame, testGame2 } from "shared/tests/testGame";
+import {
+  testProgramItem,
+  testProgramItem2,
+} from "shared/tests/testProgramItem";
 import { findUser, saveUser } from "server/features/user/userRepository";
-import { findGames, saveGames } from "server/features/game/gameRepository";
+import {
+  findProgramItems,
+  saveProgramItems,
+} from "server/features/program-item/programItemRepository";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 
@@ -20,11 +26,11 @@ afterEach(async () => {
   await mongoose.disconnect();
 });
 
-test("should remove overlapping signups from user", async () => {
-  await saveGames([testGame, testGame2]);
-  const insertedGamesResult = await findGames();
-  const insertedGames = unsafelyUnwrapResult(insertedGamesResult);
-  expect(insertedGames.length).toEqual(2);
+test("should remove overlapping lottery signups from user", async () => {
+  await saveProgramItems([testProgramItem, testProgramItem2]);
+  const insertedProgramItemsResult = await findProgramItems();
+  const insertedProgramItems = unsafelyUnwrapResult(insertedProgramItemsResult);
+  expect(insertedProgramItems.length).toEqual(2);
 
   await saveUser(mockUser);
   await saveLotterySignups({

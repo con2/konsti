@@ -6,7 +6,7 @@ import { ApiError } from "shared/types/api/errors";
 import { config } from "shared/config";
 import { isSuccessResult, unwrapResult } from "shared/utils/result";
 
-// Assign players to games
+// Assign players to program items
 export const storeAssignment = async (
   startTime: string,
 ): Promise<PostPlayerAssignmentResponse | ApiError> => {

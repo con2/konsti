@@ -58,7 +58,7 @@ export const saveUserSignupResults = async (
     if (existingSignup) {
       const delSignupResult = await delDirectSignup({
         username: existingSignup.username,
-        directSignupGameId: existingSignup.gameId,
+        directSignupProgramItemId: existingSignup.programItemId,
         startTime: existingSignup.time,
       });
       if (isErrorResult(delSignupResult)) {
@@ -80,7 +80,7 @@ export const saveUserSignupResults = async (
   const newSignups = results.map((result) => {
     return {
       username: result.username,
-      directSignupGameId: result.directSignup.gameDetails.gameId,
+      directSignupProgramItemId: result.directSignup.programItem.programItemId,
       startTime,
       message: result.directSignup.message,
       priority: result.directSignup.priority,
@@ -111,8 +111,8 @@ export const saveUserSignupResults = async (
           return droppedSignups.find(
             (signup) =>
               !(
-                signup.directSignupGameId ===
-                  result.directSignup.gameDetails.gameId &&
+                signup.directSignupProgramItemId ===
+                  result.directSignup.programItem.programItemId &&
                 signup.username === result.username
               ),
           );
@@ -123,7 +123,7 @@ export const saveUserSignupResults = async (
   const addEventLogItemsResult = await addEventLogItems({
     updates: finalResults.map((result) => ({
       username: result.username,
-      programItemId: result.directSignup.gameDetails.gameId,
+      programItemId: result.directSignup.programItem.programItemId,
       programItemStartTime: startTime,
       createdAt: dayjs().toISOString(),
     })),

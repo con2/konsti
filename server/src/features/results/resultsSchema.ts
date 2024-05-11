@@ -7,7 +7,10 @@ const ResultsSchema = new mongoose.Schema(
       {
         username: String,
         directSignup: {
-          gameDetails: { type: mongoose.Schema.Types.ObjectId, ref: "Game" },
+          programItem: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "program-item",
+          },
           priority: Number,
           time: Date,
         },
@@ -20,4 +23,4 @@ const ResultsSchema = new mongoose.Schema(
   { timestamps: true },
 );
 
-export const ResultsModel = mongoose.model<ResultDoc>("Results", ResultsSchema);
+export const ResultsModel = mongoose.model<ResultDoc>("results", ResultsSchema);

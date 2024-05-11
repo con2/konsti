@@ -43,7 +43,7 @@ export const getDateAndTime = (time: string): string => {
   return dayjs(time).tz(TIMEZONE).format(timeFormat);
 };
 
-export const formatGameDuration = (mins: number): string => {
+export const formatProgramItemDuration = (mins: number): string => {
   const hours = Math.floor(mins / 60);
   const minutes = mins % 60;
 

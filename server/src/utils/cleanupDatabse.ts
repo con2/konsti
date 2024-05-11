@@ -1,4 +1,4 @@
-import { removeGames } from "server/features/game/gameRepository";
+import { removeProgramItems } from "server/features/program-item/programItemRepository";
 import { removeResults } from "server/features/results/resultsRepository";
 import { removeSerials } from "server/features/serial/serialRepository";
 import { removeSettings } from "server/features/settings/settingsRepository";
@@ -9,7 +9,7 @@ import { removeTestSettings } from "server/test/test-settings/testSettingsReposi
 export const cleanupDatabase = async (): Promise<void> => {
   await removeUsers();
   await removeDirectSignups();
-  await removeGames();
+  await removeProgramItems();
   await removeResults();
   await removeSerials();
   await removeSettings();

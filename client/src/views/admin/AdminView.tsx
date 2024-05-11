@@ -2,15 +2,15 @@ import { ReactElement, ChangeEvent, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled, { css } from "styled-components";
 import { capitalize } from "lodash-es";
-import { HiddenGamesList } from "client/views/admin/components/HiddenGamesList";
+import { HiddenProgramItemsList } from "client/views/admin/components/HiddenProgramItemsList";
 import {
   submitGetSentryTest,
   submitPlayersAssign,
   submitToggleAppOpen,
 } from "client/views/admin/adminThunks";
-import { submitUpdateGames } from "client/views/all-games/allGamesThunks";
+import { submitUpdateProgramItems } from "client/views/all-program-items/allProgramItemsThunks";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { Button, ButtonStyle } from "client/components/Button";
 import { SignupQuestionList } from "client/views/admin/components/SignupQuestionList";
@@ -20,9 +20,13 @@ import { ButtonGroup } from "client/components/ButtonGroup";
 import { LoginProviderSelector } from "client/views/admin/components/LoginProviderSelector";
 
 export const AdminView = (): ReactElement => {
-  const games = useAppSelector((state) => state.allGames.games);
+  const programItems = useAppSelector(
+    (state) => state.allProgramItems.programItems,
+  );
   const appOpen = useAppSelector((state) => state.admin.appOpen);
-  const hiddenGames = useAppSelector((state) => state.admin.hiddenGames);
+  const hiddenProgramItems = useAppSelector(
+    (state) => state.admin.hiddenProgramItems,
+  );
   const signupQuestions = useAppSelector(
     (state) => state.admin.signupQuestions,
   );
@@ -33,31 +37,35 @@ export const AdminView = (): ReactElement => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
 
-  const getVisibleGames = (): readonly Game[] => {
+  const getVisibleProgramItems = (): readonly ProgramItem[] => {
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-    if (!hiddenGames) {
-      return games;
+    if (!hiddenProgramItems) {
+      return programItems;
     }
-    const visibleGames: Game[] = [];
-    for (let i = 0; i < games.length; i += 1) {
+    const visibleProgramItems: ProgramItem[] = [];
+    for (let i = 0; i < programItems.length; i += 1) {
       let match = false;
 
-      for (let j = 0; j < hiddenGames.length; j += 1) {
-        if (games[i].gameId === hiddenGames[j].gameId) {
+      for (let j = 0; j < hiddenProgramItems.length; j += 1) {
+        if (
+          programItems[i].programItemId === hiddenProgramItems[j].programItemId
+        ) {
           match = true;
           break;
         }
       }
       if (!match) {
-        visibleGames.push(games[i]);
+        visibleProgramItems.push(programItems[i]);
       }
     }
-    return visibleGames;
+    return visibleProgramItems;
   };
 
   const getDropdownOptions = (): Option[] => {
-    const visibleGames = getVisibleGames();
-    const startTimes = visibleGames.map((game) => game.startTime);
+    const visibleProgramItems = getVisibleProgramItems();
+    const startTimes = visibleProgramItems.map(
+      (programItem) => programItem.startTime,
+    );
     const times = [...Array.from(new Set(startTimes))].sort();
 
     return times.map((time) => {
@@ -88,9 +96,9 @@ export const AdminView = (): ReactElement => {
   const submitUpdate = async (): Promise<void> => {
     setSubmitting(true);
     try {
-      await dispatch(submitUpdateGames());
+      await dispatch(submitUpdateProgramItems());
     } catch (error) {
-      console.log(`submitGamesUpdate error:`, error); // eslint-disable-line no-console
+      console.log(`submitProgramItemsUpdate error:`, error); // eslint-disable-line no-console
     }
     setSubmitting(false);
   };
@@ -147,7 +155,9 @@ export const AdminView = (): ReactElement => {
       </ButtonGroup>
 
       {/* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */}
-      {(!games || games.length === 0) && <p>{t("noGamesInDatabase")}</p>}
+      {(!programItems || programItems.length === 0) && (
+        <p>{t("noProgramItemsInDatabase")}</p>
+      )}
 
       <ButtonGroup>
         <Button
@@ -184,9 +194,12 @@ export const AdminView = (): ReactElement => {
 
       <LoginProviderSelector />
 
-      <HiddenGamesList hiddenGames={hiddenGames} />
+      <HiddenProgramItemsList hiddenProgramItems={hiddenProgramItems} />
 
-      <SignupQuestionList signupQuestions={signupQuestions} games={games} />
+      <SignupQuestionList
+        signupQuestions={signupQuestions}
+        programItems={programItems}
+      />
 
       <h3>{t("admin.sentryTesting")}</h3>
       <ButtonGroup>

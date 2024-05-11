@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import { findGameById } from "server/features/game/gameRepository";
+import { findProgramItemById } from "server/features/program-item/programItemRepository";
 import { getTimeNow } from "server/features/player-assignment/utils/getTimeNow";
 import { isValidSignupTime } from "server/features/user/userUtils";
 import {
@@ -9,7 +9,7 @@ import {
   PostDirectSignupError,
   PostDirectSignupRequest,
   PostDirectSignupResponse,
-} from "shared/types/api/myGames";
+} from "shared/types/api/myProgramItems";
 import { getDirectSignupStartTime } from "shared/utils/signupTimes";
 import { logger } from "server/utils/logger";
 import {
@@ -23,8 +23,8 @@ import { config } from "shared/config";
 export const storeDirectSignup = async (
   signupRequest: PostDirectSignupRequest,
 ): Promise<PostDirectSignupResponse | PostDirectSignupError> => {
-  const { startTime, directSignupGameId, username } = signupRequest;
-  if (config.shared().noKonstiSignupIds.includes(directSignupGameId)) {
+  const { startTime, directSignupProgramItemId, username } = signupRequest;
+  if (config.shared().noKonstiSignupIds.includes(directSignupProgramItemId)) {
     return {
       message: `No Konsti signup for this program item`,
       status: "error",
@@ -43,32 +43,34 @@ export const storeDirectSignup = async (
 
   const timeNow = unwrapResult(timeNowResult);
 
-  const gameResult = await findGameById(directSignupGameId);
-  if (isErrorResult(gameResult)) {
+  const programItemResult = await findProgramItemById(
+    directSignupProgramItemId,
+  );
+  if (isErrorResult(programItemResult)) {
     return {
-      message: `Signed game not found`,
+      message: `Signed program item not found`,
       status: "error",
       errorId: "unknown",
     };
   }
 
-  const game = unwrapResult(gameResult);
+  const programItem = unwrapResult(programItemResult);
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-  if (!game) {
+  if (!programItem) {
     return {
-      message: `Signed game not found`,
+      message: `Signed program item not found`,
       status: "error",
       errorId: "unknown",
     };
   }
 
-  const directSignupStartTime = getDirectSignupStartTime(game);
+  const directSignupStartTime = getDirectSignupStartTime(programItem);
 
   if (timeNow.isBefore(directSignupStartTime)) {
     logger.error(
       "%s",
       new Error(
-        `Signup for game ${directSignupGameId} not open yet, opens ${directSignupStartTime.toISOString()}`,
+        `Signup for program item ${directSignupProgramItemId} not open yet, opens ${directSignupStartTime.toISOString()}`,
       ),
     );
     return {
@@ -131,7 +133,7 @@ export const storeDirectSignup = async (
       message: "Store signup success",
       status: "success",
       directSignup: {
-        gameDetails: signup.game,
+        programItem: signup.programItem,
         priority: newSignup.priority,
         time: newSignup.time,
         message: newSignup.message,

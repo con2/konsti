@@ -1,23 +1,23 @@
 import { logger } from "server/utils/logger";
 import { User } from "shared/types/models/user";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 
 export const getSelectedPlayers = (
   players: readonly User[],
-  startingGames: readonly Game[],
+  startingProgramItems: readonly ProgramItem[],
 ): User[] => {
   logger.debug("Get selected players");
 
-  // Get users who have wishes for starting games
+  // Get users who have wishes for starting program items
   const selectedPlayers = [] as User[];
 
   players.forEach((player) => {
     let match = false;
     for (let i = 0; i < player.lotterySignups.length; i += 1) {
-      for (let j = 0; j < startingGames.length; j += 1) {
+      for (let j = 0; j < startingProgramItems.length; j += 1) {
         if (
-          player.lotterySignups[i].gameDetails.gameId ===
-          startingGames[j].gameId
+          player.lotterySignups[i].programItem.programItemId ===
+          startingProgramItems[j].programItemId
         ) {
           match = true;
           break;

@@ -1,9 +1,9 @@
 import { logger } from "server/utils/logger";
-import { createGames } from "server/test/test-data-generation/generators/createGames";
+import { createProgramItems } from "server/test/test-data-generation/generators/createProgramItems";
 import { createLotterySignups } from "server/test/test-data-generation/generators/createLotterySignups";
 import { removeUsers } from "server/features/user/userRepository";
 import { removeResults } from "server/features/results/resultsRepository";
-import { removeGames } from "server/features/game/gameRepository";
+import { removeProgramItems } from "server/features/program-item/programItemRepository";
 import { db } from "server/db/mongodb";
 import { generateTestUsers } from "server/test/test-data-generation/generators/generateTestData";
 import { createDirectSignups } from "server/test/test-data-generation/generators/createSignups";
@@ -22,7 +22,7 @@ import { initializeDayjs } from "shared/utils/initializeDayjs";
 interface Options {
   clean?: boolean;
   users?: boolean;
-  games?: boolean;
+  programItems?: boolean;
   lotterySignups?: boolean;
   directSignups?: boolean;
   log?: boolean;
@@ -54,8 +54,8 @@ export const runGenerators = async (
 
   const testUsersCount = 5; // Number of test users
 
-  // Total games: newGamesCount
-  const newGamesCount = 10; // How many games are available for each signup time for each program type
+  // Total program items: newProgramItemsCount
+  const newProgramItemsCount = 10; // How many program items are available for each signup time for each program type
 
   if (options.clean) {
     logger.info("Clean all data");
@@ -80,13 +80,13 @@ export const runGenerators = async (
   await createAdminUser();
   await createHelpUser();
 
-  if (options.games) {
-    logger.info("Generate games");
+  if (options.programItems) {
+    logger.info("Generate program items");
 
-    !options.clean && (await removeGames());
+    !options.clean && (await removeProgramItems());
     !options.clean && (await removeResults());
 
-    await createGames(newGamesCount);
+    await createProgramItems(newProgramItemsCount);
     await createSettings();
   }
 

@@ -38,7 +38,7 @@ export const saveUser = async (
       typeof newUserData.groupCreatorCode === "string"
         ? newUserData.groupCreatorCode
         : "0",
-    favoritedGames: [],
+    favoritedProgramItems: [],
     lotterySignups: [],
     eventLogItems: [],
   };
@@ -71,7 +71,7 @@ export const updateUsersByUsername = async (
           userGroup: user.userGroup,
           serial: user.serial,
           groupCode: user.groupCode,
-          favoritedGames: user.favoritedGames,
+          favoritedProgramItems: user.favoritedProgramItems,
           lotterySignups: user.lotterySignups,
         },
       },
@@ -104,8 +104,8 @@ export const updateUserPassword = async (
       { new: true, fields: "-_id -__v -createdAt -updatedAt" },
     )
       .lean<User>()
-      .populate("favoritedGames")
-      .populate("lotterySignups.gameDetails");
+      .populate("favoritedProgramItems")
+      .populate("lotterySignups.programItem");
     logger.debug(`MongoDB: Password for user ${username} updated`);
     if (!response) {
       return makeErrorResult(MongoDbError.USER_NOT_FOUND);
@@ -129,8 +129,8 @@ export const findUser = async (
       "-lotterySignups._id",
     )
       .lean<User>()
-      .populate("favoritedGames")
-      .populate("lotterySignups.gameDetails");
+      .populate("favoritedProgramItems")
+      .populate("lotterySignups.programItem");
     if (!response) {
       logger.info(`MongoDB: User ${username} not found`);
       return makeSuccessResult(null);
@@ -160,8 +160,8 @@ export const findUserBySerial = async (
   try {
     const response = await UserModel.findOne({ serial }, "-lotterySignups._id")
       .lean<User>()
-      .populate("favoritedGames")
-      .populate("lotterySignups.gameDetails");
+      .populate("favoritedProgramItems")
+      .populate("lotterySignups.programItem");
 
     if (!response) {
       logger.info(`MongoDB: User with serial ${serial} not found`);
@@ -187,8 +187,8 @@ export const findUserByKompassiId = async (
       "-lotterySignups._id",
     )
       .lean<User>()
-      .populate("favoritedGames")
-      .populate("lotterySignups.gameDetails");
+      .populate("favoritedProgramItems")
+      .populate("lotterySignups.programItem");
 
     if (!response) {
       logger.info(`MongoDB: User with Kompassi id ${kompassiId} not found`);
@@ -233,8 +233,8 @@ export const findUsers = async (
   try {
     const users = await UserModel.find(filter)
       .lean<User[]>()
-      .populate("favoritedGames")
-      .populate("lotterySignups.gameDetails");
+      .populate("favoritedProgramItems")
+      .populate("lotterySignups.programItem");
     return makeSuccessResult(users);
   } catch (error) {
     logger.error("MongoDB: Error fetching users: %s", error);
@@ -256,8 +256,8 @@ export const updateUserKompassiLoginStatus = async (
       { new: true, fields: "-_id -__v -createdAt -updatedAt" },
     )
       .lean<User>()
-      .populate("favoritedGames")
-      .populate("lotterySignups.gameDetails");
+      .populate("favoritedProgramItems")
+      .populate("lotterySignups.programItem");
 
     if (!response) {
       logger.error(

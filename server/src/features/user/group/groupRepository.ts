@@ -14,8 +14,8 @@ export const findGroupMembers = async (
   try {
     const response = await UserModel.find({ groupCode })
       .lean<User[]>()
-      .populate("favoritedGames")
-      .populate("lotterySignups.gameDetails");
+      .populate("favoritedProgramItems")
+      .populate("lotterySignups.programItem");
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (!response || response.length === 0) {
       logger.info(`MongoDB: group ${groupCode} not found`);

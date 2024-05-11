@@ -4,7 +4,7 @@ import { logger } from "server/utils/logger";
 import { config } from "shared/config";
 import { runAssignment } from "server/features/player-assignment/runAssignment";
 import { Result, isErrorResult, makeSuccessResult } from "shared/utils/result";
-import { updateGames } from "server/features/game/gamesService";
+import { updateProgramItems } from "server/features/program-item/programItemService";
 import {
   isLatestStartedServerInstance,
   saveSettings,
@@ -33,8 +33,8 @@ export const setLatestServerStartTime = async (): Promise<
 
 export const startCronJobs = async (): Promise<void> => {
   const {
-    autoUpdateGamesEnabled,
-    gameUpdateInterval,
+    autoUpdateProgramEnabled,
+    programUpdateInterval,
     autoAssignPlayersEnabled,
     autoAssignInterval,
   } = config.server();
@@ -48,19 +48,19 @@ export const startCronJobs = async (): Promise<void> => {
     );
   }
 
-  if (autoUpdateGamesEnabled) {
+  if (autoUpdateProgramEnabled) {
     logger.info("Start cronjob: program auto update");
 
-    const autoUpdateGamesJob = Cron(
-      gameUpdateInterval,
+    const autoUpdateProgramItemsJob = Cron(
+      programUpdateInterval,
       {
-        name: "autoUpdateGames",
+        name: "autoUpdateProgramItems",
         protect: protectCallback,
         catch: errorHandler,
       },
-      autoUpdateGames,
+      autoUpdateProgramItems,
     );
-    cronJobs.push(autoUpdateGamesJob);
+    cronJobs.push(autoUpdateProgramItemsJob);
   }
 
   if (autoAssignPlayersEnabled) {
@@ -87,8 +87,8 @@ export const stopCronJobs = (): void => {
   logger.info("CronJobs stopped");
 };
 
-export const autoUpdateGames = async (): Promise<void> => {
-  logger.info("----> Auto update games");
+export const autoUpdateProgramItems = async (): Promise<void> => {
+  logger.info("----> Auto update program items");
 
   logger.info(
     `Check if latest running server instance with start time ${latestServerStartTime}`,
@@ -107,7 +107,7 @@ export const autoUpdateGames = async (): Promise<void> => {
     logger.error(
       "%s",
       new Error(
-        `***** Games auto update failed trying to check latest server start time: ${latestServerResult.error}`,
+        `***** Program items auto update failed trying to check latest server start time: ${latestServerResult.error}`,
       ),
     );
     return;
@@ -128,7 +128,7 @@ export const autoUpdateGames = async (): Promise<void> => {
     logger.error(
       "%s",
       new Error(
-        `***** Games auto update failed trying to set last run time: ${programUpdateLastRunResult.error}`,
+        `***** Program items auto update failed trying to set last run time: ${programUpdateLastRunResult.error}`,
       ),
     );
     return;
@@ -136,16 +136,18 @@ export const autoUpdateGames = async (): Promise<void> => {
 
   logger.info("Auto update not running, continue");
 
-  const updateGamesResult = await updateGames();
-  if (updateGamesResult.status === "error") {
+  const updateProgramItemsResult = await updateProgramItems();
+  if (updateProgramItemsResult.status === "error") {
     logger.error(
       "%s",
-      new Error(`***** Games auto update failed: ${updateGamesResult.message}`),
+      new Error(
+        `***** Program items auto update failed: ${updateProgramItemsResult.message}`,
+      ),
     );
     return;
   }
 
-  logger.info("***** Games auto update completed");
+  logger.info("***** Program items auto update completed");
 };
 
 export const autoAssignPlayers = async (): Promise<void> => {

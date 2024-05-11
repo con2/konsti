@@ -1,9 +1,9 @@
 import { logger } from "server/utils/logger";
 import { runAssignmentStrategy } from "server/features/player-assignment/utils/runAssignmentStrategy";
-import { removeInvalidGamesFromUsers } from "server/features/player-assignment/utils/removeInvalidGamesFromUsers";
+import { removeInvalidProgramItemsFromUsers } from "server/features/player-assignment/utils/removeInvalidProgramItemsFromUsers";
 import { PlayerAssignmentResult } from "server/types/resultTypes";
 import { findUsers } from "server/features/user/userRepository";
-import { findGames } from "server/features/game/gameRepository";
+import { findProgramItems } from "server/features/program-item/programItemRepository";
 import { AssignmentStrategy } from "shared/config/sharedConfigTypes";
 import { config } from "shared/config";
 import { removeOverlapSignups } from "server/features/player-assignment/utils/removeOverlapSignups";
@@ -53,9 +53,10 @@ export const runAssignment = async ({
     logger.info("Waiting done, start assignment");
   }
 
-  const removeInvalidGamesResult = await removeInvalidGamesFromUsers();
-  if (isErrorResult(removeInvalidGamesResult)) {
-    return removeInvalidGamesResult;
+  const removeInvalidProgramItemsResult =
+    await removeInvalidProgramItemsFromUsers();
+  if (isErrorResult(removeInvalidProgramItemsResult)) {
+    return removeInvalidProgramItemsResult;
   }
 
   const usersResult = await findUsers();
@@ -67,30 +68,32 @@ export const runAssignment = async ({
   const { directSignupAlwaysOpenIds, twoPhaseSignupProgramTypes } =
     config.shared();
 
-  // Only include "twoPhaseSignupProgramTypes" and don't include "directSignupAlwaysOpen" games
+  // Only include "twoPhaseSignupProgramTypes" and don't include "directSignupAlwaysOpen" program items
   const filteredUsers = users.map((user) => {
     const matchingLotterySignups = user.lotterySignups.filter(
       (lotterySignup) =>
         twoPhaseSignupProgramTypes.includes(
-          lotterySignup.gameDetails.programType,
+          lotterySignup.programItem.programType,
         ) &&
-        !directSignupAlwaysOpenIds.includes(lotterySignup.gameDetails.gameId),
+        !directSignupAlwaysOpenIds.includes(
+          lotterySignup.programItem.programItemId,
+        ),
     );
 
     return { ...user, lotterySignups: matchingLotterySignups };
   });
 
-  const gamesResult = await findGames();
-  if (isErrorResult(gamesResult)) {
-    return gamesResult;
+  const programItemsResult = await findProgramItems();
+  if (isErrorResult(programItemsResult)) {
+    return programItemsResult;
   }
-  const games = unwrapResult(gamesResult);
+  const programItems = unwrapResult(programItemsResult);
 
-  // Only include "twoPhaseSignupProgramTypes" and don't include "directSignupAlwaysOpen" games
-  const filteredGames = games.filter(
-    (game) =>
-      twoPhaseSignupProgramTypes.includes(game.programType) &&
-      !directSignupAlwaysOpenIds.includes(game.gameId),
+  // Only include "twoPhaseSignupProgramTypes" and don't include "directSignupAlwaysOpen" program items
+  const filteredProgramItems = programItems.filter(
+    (programItem) =>
+      twoPhaseSignupProgramTypes.includes(programItem.programType) &&
+      !directSignupAlwaysOpenIds.includes(programItem.programItemId),
   );
 
   const directSignupsResult = await findDirectSignups();
@@ -102,7 +105,7 @@ export const runAssignment = async ({
   const assignResultsResult = runAssignmentStrategy(
     assignmentStrategy,
     filteredUsers,
-    filteredGames,
+    filteredProgramItems,
     assignmentTime,
     directSignups,
   );

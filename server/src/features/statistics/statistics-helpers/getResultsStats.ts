@@ -7,7 +7,7 @@ import {
 import { logger } from "server/utils/logger";
 import { config } from "shared/config";
 import { ResultsCollectionEntry } from "server/types/resultTypes";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 
 export const getResultsStats = (year: number, event: string): void => {
   const results: ResultsCollectionEntry[] = JSON.parse(
@@ -19,16 +19,17 @@ export const getResultsStats = (year: number, event: string): void => {
 
   logger.info(`Loaded ${results.length} results`);
 
-  const games: Game[] = JSON.parse(
+  const programItems: ProgramItem[] = JSON.parse(
     fs.readFileSync(
-      `${config.server().statsDataDir}/${event}/${year}/games.json`,
+      `${config.server().statsDataDir}/${event}/${year}/program-items.json`,
       "utf8",
     ),
   );
 
-  logger.info(`Loaded ${games.length} games`);
+  logger.info(`Loaded ${programItems.length} program items`);
 
   const signupsByTime = getSignupsByTime(results);
-  const maximumNumberOfPlayersByTime = getMaximumNumberOfPlayersByTime(games);
+  const maximumNumberOfPlayersByTime =
+    getMaximumNumberOfPlayersByTime(programItems);
   getDemandByTime(signupsByTime, maximumNumberOfPlayersByTime);
 };

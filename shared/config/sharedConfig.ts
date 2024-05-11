@@ -5,7 +5,7 @@ import {
   ConventionName,
   SignupStrategy,
 } from "shared/config/sharedConfigTypes";
-import { ProgramType } from "shared/types/models/game";
+import { ProgramType } from "shared/types/models/programItem";
 import {
   SignupQuestion,
   SignupQuestionType,
@@ -32,7 +32,7 @@ export interface SharedConfig {
   addToKonsti: string[];
   noKonstiSignupIds: string[];
   signupQuestions: SignupQuestion[];
-  tournamentSignupQuestion: Omit<SignupQuestion, "gameId"> | null;
+  tournamentSignupQuestion: Omit<SignupQuestion, "programItemId"> | null;
   tournamentSignupQuestionExcludeIds: string[];
   addRevolvingDoorIds: string[];
   isEnglishProgramItems: string[];

@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { ApiError, ApiResult } from "shared/types/api/errors";
 import { SignupMessage } from "shared/types/models/signupMessage";
-import { UserGames } from "shared/types/models/user";
+import { UserProgramItems } from "shared/types/models/user";
 import {
   PASSWORD_LENGTH_MAX,
   PASSWORD_LENGTH_MIN,
@@ -14,7 +14,7 @@ import { EventLogItem } from "shared/types/models/eventLog";
 // GET user
 
 export interface GetUserResponse extends ApiResult {
-  games: UserGames;
+  programItems: UserProgramItems;
   serial: string;
   groupCode: string;
   groupCreatorCode: string;

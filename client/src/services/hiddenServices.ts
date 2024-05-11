@@ -1,6 +1,6 @@
 import { api } from "client/utils/api";
 import { ApiError } from "shared/types/api/errors";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
   PostHiddenRequest,
@@ -8,7 +8,7 @@ import {
 } from "shared/types/api/settings";
 
 export const postHidden = async (
-  hiddenData: readonly Game[],
+  hiddenData: readonly ProgramItem[],
 ): Promise<PostHiddenResponse | ApiError> => {
   const response = await api.post<PostHiddenResponse, PostHiddenRequest>(
     ApiEndpoint.HIDDEN,

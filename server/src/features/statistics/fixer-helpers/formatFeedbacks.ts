@@ -3,7 +3,7 @@ import { groupBy } from "lodash-es";
 import dayjs from "dayjs";
 import { z } from "zod";
 import { logger } from "server/utils/logger";
-import { GameSchema } from "shared/types/models/game";
+import { ProgramItemSchema } from "shared/types/models/programItem";
 import { Message, writeFeedback } from "server/features/statistics/statsUtil";
 import { PostFeedbackRequestSchema } from "shared/types/api/feedback";
 import { config } from "shared/config";
@@ -24,13 +24,15 @@ export const formatFeedbacks = (year: number, event: string): void => {
 
   logger.info(`Loaded ${feedbacks.length} feedbacks`);
 
-  const gamesJson = fs.readFileSync(
-    `${config.server().statsDataDir}/${event}/${year}/games.json`,
+  const programItemsJson = fs.readFileSync(
+    `${config.server().statsDataDir}/${event}/${year}/program-items.json`,
     "utf8",
   );
-  const games = z.array(GameSchema).parse(JSON.parse(gamesJson));
+  const programItems = z
+    .array(ProgramItemSchema)
+    .parse(JSON.parse(programItemsJson));
 
-  logger.info(`Loaded ${games.length} games`);
+  logger.info(`Loaded ${programItems.length} program items`);
 
   const filteredFeedbacks = feedbacks.filter(
     (feedback) => feedback.feedback !== "",
@@ -43,14 +45,18 @@ export const formatFeedbacks = (year: number, event: string): void => {
   );
 
   const formattedFeedbacks = filteredFeedbacks.map((feedback) => {
-    const foundGame = games.find((game) => game.gameId === feedback.gameId);
+    const foundProgramItem = programItems.find(
+      (programItem) => programItem.programItemId === feedback.programItemId,
+    );
     return {
       feedback: feedback.feedback,
-      game: foundGame?.title,
-      organizer: foundGame?.people,
+      programItem: foundProgramItem?.title,
+      organizer: foundProgramItem?.people,
       // eslint-disable-next-line no-restricted-syntax -- We want to call format here
-      startTime: dayjs(foundGame?.startTime).tz(TIMEZONE).format("dddd HH:mm"),
-      programType: foundGame?.programType,
+      startTime: dayjs(foundProgramItem?.startTime)
+        .tz(TIMEZONE)
+        .format("dddd HH:mm"),
+      programType: foundProgramItem?.programType,
     };
   });
 

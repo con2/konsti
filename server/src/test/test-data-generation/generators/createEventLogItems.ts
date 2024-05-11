@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import { sampleSize } from "lodash-es";
-import { findGames } from "server/features/game/gameRepository";
+import { findProgramItems } from "server/features/program-item/programItemRepository";
 import { addEventLogItems } from "server/features/user/event-log/eventLogRepository";
 import { findUsers } from "server/features/user/userRepository";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
@@ -8,10 +8,12 @@ import { EventLogAction } from "shared/types/models/eventLog";
 import { config } from "shared/config";
 
 export const createEventLogItems = async (): Promise<void> => {
-  const gamesResult = await findGames();
-  const games = unsafelyUnwrapResult(gamesResult);
-  const twoPhaseSignups = games.filter((game) =>
-    config.shared().twoPhaseSignupProgramTypes.includes(game.programType),
+  const programItemsResult = await findProgramItems();
+  const programItems = unsafelyUnwrapResult(programItemsResult);
+  const twoPhaseSignups = programItems.filter((programItem) =>
+    config
+      .shared()
+      .twoPhaseSignupProgramTypes.includes(programItem.programType),
   );
 
   const allUsersResult = await findUsers();
@@ -22,12 +24,12 @@ export const createEventLogItems = async (): Promise<void> => {
   );
 
   const eventLogUpdates = users.flatMap((user) => {
-    const randomGames = sampleSize(twoPhaseSignups, 5);
+    const randomProgramItems = sampleSize(twoPhaseSignups, 5);
 
-    return randomGames.map((randomGame, index) => ({
+    return randomProgramItems.map((randomProgramItem, index) => ({
       username: user.username,
-      programItemId: randomGame.gameId,
-      programItemStartTime: randomGame.startTime,
+      programItemId: randomProgramItem.programItemId,
+      programItemStartTime: randomProgramItem.startTime,
       createdAt: createdAtTimes[index].toISOString(),
     }));
   });

@@ -32,7 +32,7 @@ export const postFeedback = async (
     return res.sendStatus(422);
   }
 
-  const { gameId, feedback } = result.data;
-  const response = await storeFeedback({ gameId, feedback, username });
+  const { programItemId, feedback } = result.data;
+  const response = await storeFeedback({ programItemId, feedback, username });
   return res.json(response);
 };

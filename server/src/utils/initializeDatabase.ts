@@ -1,5 +1,5 @@
 import { logger } from "server/utils/logger";
-import { saveGames } from "server/features/game/gameRepository";
+import { saveProgramItems } from "server/features/program-item/programItemRepository";
 import { db } from "server/db/mongodb";
 import {
   createAdminUser,
@@ -8,9 +8,9 @@ import {
 } from "server/test/test-data-generation/generators/createUsers";
 import { isErrorResult, unwrapResult } from "shared/utils/result";
 import { cleanupDatabase } from "server/utils/cleanupDatabse";
-import { addSignupQuestions } from "server/features/game/utils/addSignupQuestions";
+import { addSignupQuestions } from "server/features/program-item/utils/addSignupQuestions";
 import { findSettings } from "server/features/settings/settingsRepository";
-import { getGamesForConvention } from "server/features/game/gamesService";
+import { getProgramItemsForConvention } from "server/features/program-item/programItemService";
 
 const ADMIN_PASSWORD = "";
 const HELP_PASSWORD = "";
@@ -39,15 +39,15 @@ const initializeDatabase = async (): Promise<void> => {
     await createTestUsers({ userCount: 5 });
   }
 
-  logger.info("Download games from Kompassi");
+  logger.info("Download program items from Kompassi");
 
-  const gamesResult = await getGamesForConvention();
-  if (isErrorResult(gamesResult)) {
+  const programItemsResult = await getProgramItemsForConvention();
+  if (isErrorResult(programItemsResult)) {
     // eslint-disable-next-line no-restricted-syntax -- Data generation script
-    throw new Error("Unable to load Kompassi games");
+    throw new Error("Unable to load Kompassi program items");
   }
-  const kompassiGames = unwrapResult(gamesResult);
-  await saveGames(kompassiGames);
+  const kompassiProgramItems = unwrapResult(programItemsResult);
+  await saveProgramItems(kompassiProgramItems);
 
   // This will create default settings
   await findSettings();

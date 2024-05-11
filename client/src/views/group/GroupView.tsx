@@ -12,8 +12,9 @@ import { NotInGroupActions } from "client/views/group/components/NotInGroupActio
 import { GroupCreatorActions } from "client/views/group/components/GroupCreatorActions";
 import { GroupMemberActions } from "client/views/group/components/GroupMemberActions";
 import { getTimeNow } from "client/utils/getTimeNow";
-import { selectDirectSignups } from "client/views/my-games/myGamesSlice";
+import { selectDirectSignups } from "client/views/my-program-items/myProgramItemsSlice";
 import { config } from "shared/config";
+import { AppRoute } from "client/app/AppRoutes";
 
 export const GroupView = (): ReactElement => {
   const { directSignupAlwaysOpenIds, twoPhaseSignupProgramTypes } =
@@ -39,16 +40,18 @@ export const GroupView = (): ReactElement => {
   const filteredActiveDirectSignups = directSignups
     .filter(
       (directSignup) =>
-        !directSignupAlwaysOpenIds.includes(directSignup.gameDetails.gameId),
+        !directSignupAlwaysOpenIds.includes(
+          directSignup.programItem.programItemId,
+        ),
     )
     .filter((directSignup) =>
-      twoPhaseSignupProgramTypes.includes(directSignup.gameDetails.programType),
+      twoPhaseSignupProgramTypes.includes(directSignup.programItem.programType),
     );
 
   const isInGroup = getIsInGroup(groupCode);
   const timeNow = getTimeNow();
-  const directSignupsAfterNow = filteredActiveDirectSignups.filter((game) =>
-    timeNow.isBefore(dayjs(game.time)),
+  const directSignupsAfterNow = filteredActiveDirectSignups.filter(
+    (programItem) => timeNow.isBefore(dayjs(programItem.time)),
   );
   const hasDirectSignups = directSignupsAfterNow.length > 0;
 
@@ -63,14 +66,16 @@ export const GroupView = (): ReactElement => {
             <DirectSignupsContainer>
               <p>
                 <BoldText>
-                  {t("group.hasDirectlySignedFollowingGames")}
+                  {t("group.hasDirectlySignedFollowingProgramItems")}
                 </BoldText>
               </p>
               <ListItem>
-                {filteredActiveDirectSignups.map((game) => (
-                  <li key={game.gameDetails.gameId}>
-                    <Link to={`/games/${game.gameDetails.gameId}`}>
-                      {game.gameDetails.title}
+                {filteredActiveDirectSignups.map((programItem) => (
+                  <li key={programItem.programItem.programItemId}>
+                    <Link
+                      to={`${AppRoute.PROGRAM_ITEM}/${programItem.programItem.programItemId}`}
+                    >
+                      {programItem.programItem.title}
                     </Link>
                   </li>
                 ))}

@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 import { Signup, User } from "shared/types/models/user";
 import { AssignmentResult } from "shared/types/models/result";
 
@@ -15,7 +15,7 @@ export interface UserLotterySignups {
 
 export enum AssignmentResultStatus {
   SUCCESS = "success",
-  NO_STARTING_GAMES = "noStartingGames",
+  NO_STARTING_PROGRAM_ITEMS = "noStartingProgramItems",
   NO_SIGNUP_WISHES = "noSignupWishes",
   ERROR = "error",
 }
@@ -40,7 +40,7 @@ export interface AssignmentStrategyResult {
 }
 
 export interface RunRandomAndPadgInput {
-  lotterySignupGames: readonly Game[];
+  lotterySignupProgramItems: readonly ProgramItem[];
   playerGroups: readonly User[][];
   allPlayers: readonly User[];
   numberOfIndividuals: Number;

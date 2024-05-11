@@ -2,7 +2,7 @@ import { faker } from "@faker-js/faker";
 import { groupBy } from "lodash-es";
 import { logger } from "server/utils/logger";
 import { findUsers } from "server/features/user/userRepository";
-import { findGames } from "server/features/game/gameRepository";
+import { findProgramItems } from "server/features/program-item/programItemRepository";
 import { findSettings } from "server/features/settings/settingsRepository";
 import { shuffleArray } from "server/utils/shuffleArray";
 import { getRandomInt } from "server/features/player-assignment/utils/getRandomInt";
@@ -13,8 +13,8 @@ import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 export const createDirectSignups = async (): Promise<void> => {
   logger.info(`Generate direct signup data`);
 
-  const gamesResult = await findGames();
-  const games = unsafelyUnwrapResult(gamesResult);
+  const programItemsResult = await findProgramItems();
+  const programItems = unsafelyUnwrapResult(programItemsResult);
 
   const allUsersResult = await findUsers();
   const allUsers = unsafelyUnwrapResult(allUsersResult);
@@ -26,27 +26,31 @@ export const createDirectSignups = async (): Promise<void> => {
     (user) => user.username !== "admin" && user.username !== "helper",
   );
 
-  logger.info(`Signups: ${games.length} games`);
+  logger.info(`Signups: ${programItems.length} program items`);
   logger.info(`Signups: ${users.length} users`);
 
-  const shuffledGames = shuffleArray(games);
+  const shuffledProgramItems = shuffleArray(programItems);
 
-  const gamesByProgramType = groupBy(shuffledGames, "programType");
+  const programItemsByProgramType = groupBy(
+    shuffledProgramItems,
+    "programType",
+  );
 
-  const promises = Object.entries(gamesByProgramType).flatMap(
-    ([_programType, gamesForProgamType]) => {
+  const promises = Object.entries(programItemsByProgramType).flatMap(
+    ([_programType, programItemsForProgamType]) => {
       let currentIndex = 0;
 
-      return gamesForProgamType.flatMap((randomGame) => {
+      return programItemsForProgamType.flatMap((randomProgramItem) => {
         if (currentIndex > users.length) {
           return [];
         }
 
         const foundSignupQuestion = settings.signupQuestions.find(
-          (signupQuestion) => signupQuestion.gameId === randomGame.gameId,
+          (signupQuestion) =>
+            signupQuestion.programItemId === randomProgramItem.programItemId,
         );
 
-        const usersCount = getRandomInt(1, randomGame.maxAttendance);
+        const usersCount = getRandomInt(1, randomProgramItem.maxAttendance);
         const usersChunk = users.slice(currentIndex, currentIndex + usersCount);
 
         currentIndex += usersCount;
@@ -54,8 +58,8 @@ export const createDirectSignups = async (): Promise<void> => {
         return usersChunk.map(async (user) => {
           await saveDirectSignup({
             username: user.username,
-            directSignupGameId: randomGame.gameId,
-            startTime: randomGame.startTime,
+            directSignupProgramItemId: randomProgramItem.programItemId,
+            startTime: randomProgramItem.startTime,
             message: foundSignupQuestion?.questionFi
               ? faker.lorem.words(4)
               : "",

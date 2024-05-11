@@ -5,7 +5,7 @@ import {
   postSignupQuestion,
   postSettings,
 } from "client/services/settingsServices";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 import { AppThunk } from "client/types/reduxTypes";
 import {
   submitUpdateHiddenAsync,
@@ -23,16 +23,20 @@ import { getSignupMessages } from "client/services/userServices";
 import { getSentryTest } from "client/views/admin/adminService";
 import { postPlayerAssignment } from "client/services/assignmentServices";
 
-export const submitUpdateHidden = (hiddenGames: readonly Game[]): AppThunk => {
+export const submitUpdateHidden = (
+  hiddenProgramItems: readonly ProgramItem[],
+): AppThunk => {
   return async (dispatch): Promise<void> => {
-    const updateHiddenResponse = await postHidden(hiddenGames);
+    const updateHiddenResponse = await postHidden(hiddenProgramItems);
 
     if (updateHiddenResponse.status === "error") {
       // TODO
     }
 
     if (updateHiddenResponse.status === "success") {
-      dispatch(submitUpdateHiddenAsync(updateHiddenResponse.hiddenGames));
+      dispatch(
+        submitUpdateHiddenAsync(updateHiddenResponse.hiddenProgramItems),
+      );
     }
   };
 };
@@ -48,7 +52,7 @@ export const submitGetSettings = (): AppThunk => {
     if (settingsResponse.status === "success") {
       dispatch(
         submitGetSettingsAsync({
-          hiddenGames: settingsResponse.hiddenGames,
+          hiddenProgramItems: settingsResponse.hiddenProgramItems,
           appOpen: settingsResponse.appOpen,
           signupQuestions: settingsResponse.signupQuestions,
           signupStrategy: settingsResponse.signupStrategy,
@@ -78,7 +82,7 @@ export const submitAddSignupQuestion = (
 ): AppThunk => {
   return async (dispatch): Promise<void> => {
     const response = await postSignupQuestion({
-      gameId: signupQuestion.gameId,
+      programItemId: signupQuestion.programItemId,
       questionFi: signupQuestion.questionFi,
       questionEn: signupQuestion.questionEn,
       private: signupQuestion.private,
@@ -96,9 +100,9 @@ export const submitAddSignupQuestion = (
   };
 };
 
-export const submitDeleteSignupQuestion = (gameId: string): AppThunk => {
+export const submitDeleteSignupQuestion = (programItemId: string): AppThunk => {
   return async (dispatch): Promise<void> => {
-    const response = await deleteSignupQuestion(gameId);
+    const response = await deleteSignupQuestion(programItemId);
 
     if (response.status === "error") {
       // TODO

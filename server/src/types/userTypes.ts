@@ -15,6 +15,6 @@ export interface NewUser {
 
 export interface SignupWish {
   username: string;
-  gameId: string;
+  programItemId: string;
   priority: number;
 }

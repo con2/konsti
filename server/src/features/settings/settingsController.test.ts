@@ -11,8 +11,11 @@ import {
   SignupQuestion,
   SignupQuestionType,
 } from "shared/types/models/settings";
-import { testGame, testGame2 } from "shared/tests/testGame";
-import { saveGames } from "server/features/game/gameRepository";
+import {
+  testProgramItem,
+  testProgramItem2,
+} from "shared/tests/testProgramItem";
+import { saveProgramItems } from "server/features/program-item/programItemRepository";
 import { findUser, saveUser } from "server/features/user/userRepository";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import {
@@ -20,7 +23,7 @@ import {
   findUserDirectSignups,
   saveDirectSignup,
 } from "server/features/direct-signup/directSignupRepository";
-import { saveFavorite } from "server/features/user/favorite-game/favoriteGameRepository";
+import { saveFavorite } from "server/features/user/favorite-program-item/favoriteProgramItemRepository";
 import {
   mockPostDirectSignupRequest,
   mockPostDirectSignupRequest2,
@@ -81,7 +84,7 @@ describe(`POST ${ApiEndpoint.SETTINGS}`, () => {
 
   test("should return updated settings with full or partial update", async () => {
     const testSignupQuestion: SignupQuestion = {
-      gameId: "123456",
+      programItemId: "123456",
       questionFi: "Test message",
       questionEn: "public message",
       private: false,
@@ -91,7 +94,7 @@ describe(`POST ${ApiEndpoint.SETTINGS}`, () => {
 
     // Full update
     const testSettings: Settings = {
-      hiddenGames: [],
+      hiddenProgramItems: [],
       appOpen: true,
       signupQuestions: [testSignupQuestion],
       signupStrategy: SignupStrategy.ALGORITHM,
@@ -138,8 +141,8 @@ describe(`POST ${ApiEndpoint.HIDDEN}`, () => {
     expect(response.status).toEqual(401);
   });
 
-  test("should remove hidden game from users", async () => {
-    await saveGames([testGame, testGame2]);
+  test("should remove hidden program item from users", async () => {
+    await saveProgramItems([testProgramItem, testProgramItem2]);
     await saveUser(mockUser);
     await saveLotterySignups({
       username: mockUser.username,
@@ -149,12 +152,15 @@ describe(`POST ${ApiEndpoint.HIDDEN}`, () => {
     await saveDirectSignup(mockPostDirectSignupRequest2);
     await saveFavorite({
       username: mockUser.username,
-      favoritedGameIds: [testGame.gameId, testGame2.gameId],
+      favoritedProgramItemIds: [
+        testProgramItem.programItemId,
+        testProgramItem2.programItemId,
+      ],
     });
 
     const response = await request(server)
       .post(ApiEndpoint.HIDDEN)
-      .send({ hiddenData: [testGame] })
+      .send({ hiddenData: [testProgramItem] })
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
 
     expect(response.status).toEqual(200);
@@ -162,10 +168,10 @@ describe(`POST ${ApiEndpoint.HIDDEN}`, () => {
     const updatedUserResult = await findUser(mockUser.username);
     const updatedUser = unsafelyUnwrapResult(updatedUserResult);
     expect(updatedUser?.lotterySignups.length).toEqual(1);
-    expect(updatedUser?.lotterySignups[0].gameDetails.title).toEqual(
-      testGame2.title,
+    expect(updatedUser?.lotterySignups[0].programItem.title).toEqual(
+      testProgramItem2.title,
     );
-    expect(updatedUser?.favoritedGames.length).toEqual(1);
+    expect(updatedUser?.favoritedProgramItems.length).toEqual(1);
 
     const signupsResult = await findUserDirectSignups(mockUser.username);
     const signups = unsafelyUnwrapResult(signupsResult);
@@ -174,7 +180,7 @@ describe(`POST ${ApiEndpoint.HIDDEN}`, () => {
   });
 
   test("should clean but not remove signup document when program item is hidden", async () => {
-    await saveGames([testGame]);
+    await saveProgramItems([testProgramItem]);
     await saveUser(mockUser);
     await saveDirectSignup(mockPostDirectSignupRequest);
 
@@ -186,7 +192,7 @@ describe(`POST ${ApiEndpoint.HIDDEN}`, () => {
 
     await request(server)
       .post(ApiEndpoint.HIDDEN)
-      .send({ hiddenData: [testGame] })
+      .send({ hiddenData: [testProgramItem] })
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
 
     const findSignupsResult2 = await findDirectSignups();
@@ -229,7 +235,7 @@ describe(`POST ${ApiEndpoint.SIGNUP_QUESTION}`, () => {
 
     const requestData: PostSignupQuestionRequest = {
       signupQuestion: {
-        gameId: "123",
+        programItemId: "123",
         questionFi: "Character level",
         questionEn: "public message",
         private: false,
@@ -257,7 +263,7 @@ describe(`POST ${ApiEndpoint.SIGNUP_QUESTION}`, () => {
 
     const requestData: PostSignupQuestionRequest = {
       signupQuestion: {
-        gameId: "123",
+        programItemId: "123",
         questionFi: "Character level",
         questionEn: "public message",
         private: false,
@@ -315,7 +321,7 @@ describe(`POST ${ApiEndpoint.SIGNUP_QUESTION}`, () => {
       await createSettings();
 
       const signupQuestion: SignupQuestion = {
-        gameId: "123",
+        programItemId: "123",
         questionFi: "Character level",
         questionEn: "public message",
         private: false,
@@ -335,7 +341,7 @@ describe(`POST ${ApiEndpoint.SIGNUP_QUESTION}`, () => {
 
       await request(server)
         .delete(ApiEndpoint.SIGNUP_QUESTION)
-        .send({ gameId: "123" })
+        .send({ programItemId: "123" })
         .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
 
       const updatedSettingsResult = await findSettings();

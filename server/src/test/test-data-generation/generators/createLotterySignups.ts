@@ -2,18 +2,18 @@ import { faker } from "@faker-js/faker";
 import dayjs from "dayjs";
 import { groupBy } from "lodash-es";
 import { logger } from "server/utils/logger";
-import { updateGamePopularity } from "server/features/game-popularity/updateGamePopularity";
-import { Game } from "shared/types/models/game";
+import { updateProgramItemPopularity } from "server/features/program-item-popularity/updateProgramItemPopularity";
+import { ProgramItem } from "shared/types/models/programItem";
 import { findUsers } from "server/features/user/userRepository";
-import { findGames } from "server/features/game/gameRepository";
+import { findProgramItems } from "server/features/program-item/programItemRepository";
 import { Signup, User } from "shared/types/models/user";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 import { config } from "shared/config";
 
 export const createLotterySignups = async (): Promise<void> => {
-  const gamesResult = await findGames();
-  const games = unsafelyUnwrapResult(gamesResult);
+  const programItemsResult = await findProgramItems();
+  const programItems = unsafelyUnwrapResult(programItemsResult);
   const allUsersResult = await findUsers();
   const allUsers = unsafelyUnwrapResult(allUsersResult);
 
@@ -21,7 +21,7 @@ export const createLotterySignups = async (): Promise<void> => {
     (user) => user.username !== "admin" && user.username !== "helper",
   );
 
-  logger.info(`Signup: ${games.length} games`);
+  logger.info(`Signup: ${programItems.length} program items`);
   logger.info(`Signup: ${users.length} users`);
 
   const groupedUsers = groupBy(users, "groupCode");
@@ -30,65 +30,72 @@ export const createLotterySignups = async (): Promise<void> => {
     // Individual users
     if (groupCode === "0") {
       logger.info("SIGNUP INDIVIDUAL USERS");
-      await lotterySignupMultiple(games, groupMembers);
+      await lotterySignupMultiple(programItems, groupMembers);
     }
     // Users in groups
     else {
       logger.info(`SIGNUP GROUP ${groupCode}`);
-      await lotterySignupGroup(games, groupMembers);
+      await lotterySignupGroup(programItems, groupMembers);
     }
   }
 
-  await updateGamePopularity();
+  await updateProgramItemPopularity();
 };
 
-const getRandomLotterySignup = (games: readonly Game[]): Signup[] => {
+const getRandomLotterySignup = (
+  programItems: readonly ProgramItem[],
+): Signup[] => {
   const lotterySignups = [] as Signup[];
   let randomIndex;
 
   const { twoPhaseSignupProgramTypes, noKonstiSignupIds } = config.shared();
 
-  const activeGames = games
-    .filter((game) => twoPhaseSignupProgramTypes.includes(game.programType))
-    .filter((game) => !noKonstiSignupIds.includes(game.gameId));
+  const activeProgramItems = programItems
+    .filter((programItem) =>
+      twoPhaseSignupProgramTypes.includes(programItem.programType),
+    )
+    .filter(
+      (programItem) => !noKonstiSignupIds.includes(programItem.programItemId),
+    );
 
-  const startTimes = activeGames.map((activeGame) =>
-    dayjs(activeGame.startTime).toISOString(),
+  const startTimes = activeProgramItems.map((activeProgramItem) =>
+    dayjs(activeProgramItem.startTime).toISOString(),
   );
   const uniqueTimes = Array.from(new Set(startTimes));
   const firstFourTimes = uniqueTimes.slice(0, 4);
 
-  // Select random games for each start time
+  // Select random program items for each start time
   firstFourTimes.forEach((startTime) => {
     logger.debug(`Generate signups for time ${startTime}`);
-    const gamesForTime = activeGames.filter(
-      (activeGame) =>
-        dayjs(activeGame.startTime).toISOString() ===
+    const programItemsForTime = activeProgramItems.filter(
+      (activeProgramItem) =>
+        dayjs(activeProgramItem.startTime).toISOString() ===
         dayjs(startTime).toISOString(),
     );
 
-    const numberOfSignups = Math.min(gamesForTime.length, 3);
+    const numberOfSignups = Math.min(programItemsForTime.length, 3);
 
     for (let i = 0; i < numberOfSignups; i += 1) {
       randomIndex = faker.number.int({
         min: 0,
-        max: gamesForTime.length - 1,
+        max: programItemsForTime.length - 1,
       });
 
-      const randomGame = gamesForTime[randomIndex];
+      const randomProgramItem = programItemsForTime[randomIndex];
 
       const duplicate = !!lotterySignups.find(
         (lotterySignup) =>
-          lotterySignup.gameDetails.gameId === randomGame.gameId,
+          lotterySignup.programItem.programItemId ===
+          randomProgramItem.programItemId,
       );
 
       if (duplicate) {
         i -= 1;
       } else {
         lotterySignups.push({
-          gameDetails: randomGame,
+          programItem: randomProgramItem,
           priority: i + 1,
-          time: randomGame.startTime,
+          time: randomProgramItem.startTime,
           message: "",
         });
       }
@@ -99,10 +106,10 @@ const getRandomLotterySignup = (games: readonly Game[]): Signup[] => {
 };
 
 const doLotterySignup = async (
-  games: readonly Game[],
+  programItems: readonly ProgramItem[],
   user: User,
 ): Promise<User> => {
-  const lotterySignups = getRandomLotterySignup(games);
+  const lotterySignups = getRandomLotterySignup(programItems);
 
   const userResult = await saveLotterySignups({
     username: user.username,
@@ -112,14 +119,14 @@ const doLotterySignup = async (
 };
 
 const lotterySignupMultiple = async (
-  games: readonly Game[],
+  programItems: readonly ProgramItem[],
   users: readonly User[],
 ): Promise<void> => {
   const promises: Array<Promise<User>> = [];
 
   for (const user of users) {
     if (user.username !== "admin" && user.username !== "helper") {
-      promises.push(doLotterySignup(games, user));
+      promises.push(doLotterySignup(programItems, user));
     }
   }
 
@@ -127,7 +134,7 @@ const lotterySignupMultiple = async (
 };
 
 const lotterySignupGroup = async (
-  games: readonly Game[],
+  programItems: readonly ProgramItem[],
   users: readonly User[],
 ): Promise<void> => {
   // Generate random signup data for the group creator
@@ -141,7 +148,7 @@ const lotterySignupGroup = async (
 
   const signupData = {
     username: groupCreator.username,
-    lotterySignups: getRandomLotterySignup(games),
+    lotterySignups: getRandomLotterySignup(programItems),
   };
 
   await saveLotterySignups(signupData);

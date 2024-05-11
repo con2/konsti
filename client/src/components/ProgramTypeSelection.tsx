@@ -1,7 +1,7 @@
 import { ChangeEvent, ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
-import { ProgramType } from "shared/types/models/game";
+import { ProgramType } from "shared/types/models/programItem";
 import { setActiveProgramType } from "client/views/admin/adminSlice";
 import { Dropdown } from "client/components/Dropdown";
 import { saveSession } from "client/utils/localStorage";

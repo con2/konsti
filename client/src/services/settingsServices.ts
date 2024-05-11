@@ -42,13 +42,13 @@ export const postSignupQuestion = async (
 };
 
 export const deleteSignupQuestion = async (
-  gameId: string,
+  programItemId: string,
 ): Promise<DeleteSignupQuestionResponse | ApiError> => {
   const response = await api.delete<
     DeleteSignupQuestionResponse,
     DeleteSignupQuestionRequest
   >(ApiEndpoint.SIGNUP_QUESTION, {
-    data: { gameId },
+    data: { programItemId },
   });
   return response.data;
 };

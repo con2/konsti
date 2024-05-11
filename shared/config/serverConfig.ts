@@ -21,10 +21,10 @@ export interface ServerConfig {
   PADG_ASSIGNMENT_ROUNDS: number;
   RANDOM_ASSIGNMENT_ROUNDS: number;
   bundleCompression: boolean;
-  autoUpdateGamesEnabled: boolean;
-  gameUpdateInterval: string;
+  autoUpdateProgramEnabled: boolean;
+  programUpdateInterval: string;
   enableRemoveOverlapSignups: boolean;
-  updateGamePopularityEnabled: boolean;
+  updateProgramItemPopularityEnabled: boolean;
   useLocalProgramFile: boolean;
   autoAssignPlayersEnabled: boolean;
   firtSignupBonus: number;
@@ -98,11 +98,11 @@ const prodConfig = {
   useTestTime: false,
 
   // Program update cron
-  autoUpdateGamesEnabled: false,
-  gameUpdateInterval: `5,10,20,25,35,40,50,55 * * * *`,
+  autoUpdateProgramEnabled: false,
+  programUpdateInterval: `5,10,20,25,35,40,50,55 * * * *`,
 
   // Program update
-  updateGamePopularityEnabled: false,
+  updateProgramItemPopularityEnabled: false,
 
   // Player assign cron
   autoAssignPlayersEnabled: false,
@@ -127,11 +127,11 @@ const stagingConfig = {
   useTestTime: true,
 
   // Program update cron
-  autoUpdateGamesEnabled: false,
-  gameUpdateInterval: `5,10,20,25,35,40,50,55 * * * *`,
+  autoUpdateProgramEnabled: false,
+  programUpdateInterval: `5,10,20,25,35,40,50,55 * * * *`,
 
   // Program update
-  updateGamePopularityEnabled: true,
+  updateProgramItemPopularityEnabled: true,
 
   // Player assign cron
   autoAssignPlayersEnabled: true,
@@ -162,11 +162,11 @@ const devConfig = {
   useTestTime: true,
 
   // Program update cron
-  autoUpdateGamesEnabled: true,
-  gameUpdateInterval: `5,10,20,25,35,40,50,55 * * * *`,
+  autoUpdateProgramEnabled: true,
+  programUpdateInterval: `5,10,20,25,35,40,50,55 * * * *`,
 
   // Program update
-  updateGamePopularityEnabled: true,
+  updateProgramItemPopularityEnabled: true,
 
   // Player assign cron
   autoAssignPlayersEnabled: true,

@@ -1,8 +1,10 @@
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 
-export const getStartTimes = (games: readonly Game[]): readonly string[] => {
-  const startTimes = games.map((game) => {
-    return game.startTime;
+export const getStartTimes = (
+  programItems: readonly ProgramItem[],
+): readonly string[] => {
+  const startTimes = programItems.map((programItem) => {
+    return programItem.startTime;
   });
 
   const uniqueTimes = [...Array.from(new Set(startTimes))];

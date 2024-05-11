@@ -1,6 +1,6 @@
 [
   {
-    "game": { "gameId": "p7608" },
+    "game": { "programItemId": "p7608" },
     "userSignups": [
       {
         "username": "760388",
@@ -56,7 +56,7 @@
     "updatedAt": "2024-04-11T14:35:42.528Z"
   },
   {
-    "game": { "gameId": "p7682" },
+    "game": { "programItemId": "p7682" },
     "userSignups": [
       {
         "username": "890712",
@@ -148,7 +148,7 @@
     "updatedAt": "2024-04-05T07:17:21.553Z"
   },
   {
-    "game": { "gameId": "p7583" },
+    "game": { "programItemId": "p7583" },
     "userSignups": [
       {
         "username": "320822",
@@ -396,7 +396,7 @@
     "updatedAt": "2024-04-12T12:40:55.678Z"
   },
   {
-    "game": { "gameId": "p7638" },
+    "game": { "programItemId": "p7638" },
     "userSignups": [
       {
         "username": "194747",
@@ -518,7 +518,7 @@
     "updatedAt": "2024-04-12T14:54:09.102Z"
   },
   {
-    "game": { "gameId": "p7500" },
+    "game": { "programItemId": "p7500" },
     "userSignups": [
       {
         "username": "194747",
@@ -664,14 +664,14 @@
     "updatedAt": "2024-04-13T07:08:04.315Z"
   },
   {
-    "game": { "gameId": "p7636" },
+    "game": { "programItemId": "p7636" },
     "userSignups": [],
     "count": 0,
     "createdAt": "2024-03-24T18:57:39.064Z",
     "updatedAt": "2024-03-24T18:57:39.064Z"
   },
   {
-    "game": { "gameId": "p7552" },
+    "game": { "programItemId": "p7552" },
     "userSignups": [
       {
         "username": "582570",
@@ -763,7 +763,7 @@
     "updatedAt": "2024-04-13T06:06:46.171Z"
   },
   {
-    "game": { "gameId": "p7662" },
+    "game": { "programItemId": "p7662" },
     "userSignups": [
       {
         "username": "354249",
@@ -825,7 +825,7 @@
     "updatedAt": "2024-04-11T15:17:58.426Z"
   },
   {
-    "game": { "gameId": "p7566" },
+    "game": { "programItemId": "p7566" },
     "userSignups": [
       {
         "username": "46575",
@@ -989,7 +989,7 @@
     "updatedAt": "2024-04-12T10:48:29.634Z"
   },
   {
-    "game": { "gameId": "p7577" },
+    "game": { "programItemId": "p7577" },
     "userSignups": [
       {
         "username": "336350",
@@ -1087,7 +1087,7 @@
     "updatedAt": "2024-04-12T06:41:28.841Z"
   },
   {
-    "game": { "gameId": "p7606" },
+    "game": { "programItemId": "p7606" },
     "userSignups": [
       {
         "username": "750988",
@@ -1251,7 +1251,7 @@
     "updatedAt": "2024-04-12T06:17:11.92Z"
   },
   {
-    "game": { "gameId": "p7501" },
+    "game": { "programItemId": "p7501" },
     "userSignups": [
       {
         "username": "102952",
@@ -1331,7 +1331,7 @@
     "updatedAt": "2024-04-13T08:46:10.669Z"
   },
   {
-    "game": { "gameId": "p7508" },
+    "game": { "programItemId": "p7508" },
     "userSignups": [
       {
         "username": "808941",
@@ -1369,7 +1369,7 @@
     "updatedAt": "2024-04-13T08:39:44.291Z"
   },
   {
-    "game": { "gameId": "p7626" },
+    "game": { "programItemId": "p7626" },
     "userSignups": [
       {
         "username": "582570",
@@ -1419,7 +1419,7 @@
     "updatedAt": "2024-04-12T06:22:37.809Z"
   },
   {
-    "game": { "gameId": "p7657" },
+    "game": { "programItemId": "p7657" },
     "userSignups": [
       {
         "username": "601490",
@@ -1487,7 +1487,7 @@
     "updatedAt": "2024-04-12T06:41:03.363Z"
   },
   {
-    "game": { "gameId": "p7607" },
+    "game": { "programItemId": "p7607" },
     "userSignups": [
       {
         "username": "368974",
@@ -1585,7 +1585,7 @@
     "updatedAt": "2024-04-12T08:27:03.688Z"
   },
   {
-    "game": { "gameId": "p7582" },
+    "game": { "programItemId": "p7582" },
     "userSignups": [
       {
         "username": "320822",
@@ -1833,7 +1833,7 @@
     "updatedAt": "2024-04-12T12:45:02.039Z"
   },
   {
-    "game": { "gameId": "p7513" },
+    "game": { "programItemId": "p7513" },
     "userSignups": [
       {
         "username": "692997",
@@ -1871,7 +1871,7 @@
     "updatedAt": "2024-04-04T17:00:38.134Z"
   },
   {
-    "game": { "gameId": "p7646" },
+    "game": { "programItemId": "p7646" },
     "userSignups": [
       {
         "username": "59258",
@@ -1969,7 +1969,7 @@
     "updatedAt": "2024-04-12T15:38:53.815Z"
   },
   {
-    "game": { "gameId": "p7640" },
+    "game": { "programItemId": "p7640" },
     "userSignups": [
       {
         "username": "46491",
@@ -2103,7 +2103,7 @@
     "updatedAt": "2024-04-13T09:39:37.77Z"
   },
   {
-    "game": { "gameId": "p7580" },
+    "game": { "programItemId": "p7580" },
     "userSignups": [
       {
         "username": "320822",
@@ -2285,7 +2285,7 @@
     "updatedAt": "2024-04-12T06:51:35.126Z"
   },
   {
-    "game": { "gameId": "p7632" },
+    "game": { "programItemId": "p7632" },
     "userSignups": [
       {
         "username": "226296",
@@ -2359,7 +2359,7 @@
     "updatedAt": "2024-04-12T09:34:06.963Z"
   },
   {
-    "game": { "gameId": "p7659" },
+    "game": { "programItemId": "p7659" },
     "userSignups": [
       {
         "username": "293700",
@@ -2487,7 +2487,7 @@
     "updatedAt": "2024-04-12T08:40:22.716Z"
   },
   {
-    "game": { "gameId": "p7499" },
+    "game": { "programItemId": "p7499" },
     "userSignups": [
       {
         "username": "320822",
@@ -2561,7 +2561,7 @@
     "updatedAt": "2024-04-12T08:29:01.393Z"
   },
   {
-    "game": { "gameId": "p7489" },
+    "game": { "programItemId": "p7489" },
     "userSignups": [
       {
         "username": "335573",
@@ -2593,7 +2593,7 @@
     "updatedAt": "2024-04-12T09:50:33.68Z"
   },
   {
-    "game": { "gameId": "p7496" },
+    "game": { "programItemId": "p7496" },
     "userSignups": [
       {
         "username": "692997",
@@ -2745,7 +2745,7 @@
     "updatedAt": "2024-04-12T06:25:15.145Z"
   },
   {
-    "game": { "gameId": "p7613" },
+    "game": { "programItemId": "p7613" },
     "userSignups": [
       {
         "username": "552856",
@@ -2867,7 +2867,7 @@
     "updatedAt": "2024-04-13T07:55:06.121Z"
   },
   {
-    "game": { "gameId": "p7601" },
+    "game": { "programItemId": "p7601" },
     "userSignups": [
       {
         "username": "293700",
@@ -3055,7 +3055,7 @@
     "updatedAt": "2024-04-13T09:14:45.081Z"
   },
   {
-    "game": { "gameId": "p7507" },
+    "game": { "programItemId": "p7507" },
     "userSignups": [
       {
         "username": "461092",
@@ -3135,7 +3135,7 @@
     "updatedAt": "2024-04-13T06:24:46.413Z"
   },
   {
-    "game": { "gameId": "p7674" },
+    "game": { "programItemId": "p7674" },
     "userSignups": [
       {
         "username": "125833",
@@ -3269,7 +3269,7 @@
     "updatedAt": "2024-04-13T10:24:18.035Z"
   },
   {
-    "game": { "gameId": "p7643" },
+    "game": { "programItemId": "p7643" },
     "userSignups": [
       {
         "username": "40729",
@@ -3367,7 +3367,7 @@
     "updatedAt": "2024-04-13T09:00:05.966Z"
   },
   {
-    "game": { "gameId": "p7587" },
+    "game": { "programItemId": "p7587" },
     "userSignups": [
       {
         "username": "135096",
@@ -3429,7 +3429,7 @@
     "updatedAt": "2024-04-13T12:59:11.583Z"
   },
   {
-    "game": { "gameId": "p7664" },
+    "game": { "programItemId": "p7664" },
     "userSignups": [
       {
         "username": "101144",
@@ -3443,7 +3443,7 @@
     "updatedAt": "2024-04-07T08:56:23.604Z"
   },
   {
-    "game": { "gameId": "p7503" },
+    "game": { "programItemId": "p7503" },
     "userSignups": [
       {
         "username": "719649",
@@ -3499,7 +3499,7 @@
     "updatedAt": "2024-04-13T10:43:01.985Z"
   },
   {
-    "game": { "gameId": "p7680" },
+    "game": { "programItemId": "p7680" },
     "userSignups": [
       {
         "username": "368974",
@@ -3603,7 +3603,7 @@
     "updatedAt": "2024-04-12T10:54:31.139Z"
   },
   {
-    "game": { "gameId": "p7921" },
+    "game": { "programItemId": "p7921" },
     "userSignups": [
       {
         "username": "708345",
@@ -3701,7 +3701,7 @@
     "updatedAt": "2024-04-13T06:04:48.647Z"
   },
   {
-    "game": { "gameId": "p8151" },
+    "game": { "programItemId": "p8151" },
     "userSignups": [
       {
         "username": "209102",

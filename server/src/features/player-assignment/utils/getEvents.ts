@@ -1,35 +1,39 @@
 import dayjs from "dayjs";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 import { Event } from "server/types/padgRandomAssignTypes";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 
 // TODO: Merge this with getRandomAssignEvents
 export const getEvents = (
-  lotterySignupGames: readonly Game[],
+  lotterySignupProgramItems: readonly ProgramItem[],
   directSignups: readonly DirectSignupsForProgramItem[],
 ): Event[] => {
-  return lotterySignupGames.map((selectedGame) => {
+  return lotterySignupProgramItems.map((lotterySignupProgramItem) => {
     // Program item can have existing signups if program item's start time has changed
     // Consider existing signups when determining program item attendee limits
-    const gameSignup = directSignups.find(
-      (signup) => signup.game.gameId === selectedGame.gameId,
+    const programItemsSignup = directSignups.find(
+      (signup) =>
+        signup.programItem.programItemId ===
+        lotterySignupProgramItem.programItemId,
     );
 
-    const changedSignups = gameSignup?.userSignups.filter((userSignup) => {
-      const startTimeChanged = !dayjs(userSignup.time).isSame(
-        dayjs(selectedGame.startTime),
-      );
-      if (startTimeChanged) {
-        return true;
-      }
-    });
+    const changedSignups = programItemsSignup?.userSignups.filter(
+      (userSignup) => {
+        const startTimeChanged = !dayjs(userSignup.time).isSame(
+          dayjs(lotterySignupProgramItem.startTime),
+        );
+        if (startTimeChanged) {
+          return true;
+        }
+      },
+    );
 
     const currentSignups = changedSignups?.length ?? 0;
 
     return {
-      id: selectedGame.gameId,
-      min: selectedGame.minAttendance - currentSignups,
-      max: selectedGame.maxAttendance - currentSignups,
+      id: lotterySignupProgramItem.programItemId,
+      min: lotterySignupProgramItem.minAttendance - currentSignups,
+      max: lotterySignupProgramItem.maxAttendance - currentSignups,
       groups: [],
     };
   });

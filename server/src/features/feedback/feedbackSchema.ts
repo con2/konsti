@@ -3,7 +3,7 @@ import { FeedbackDoc } from "server/types/feedbackTypes";
 
 const feedbackSchema = new mongoose.Schema(
   {
-    gameId: String,
+    programItemId: String,
     feedback: String,
     username: String,
   },
@@ -11,6 +11,6 @@ const feedbackSchema = new mongoose.Schema(
 );
 
 export const FeedbackModel = mongoose.model<FeedbackDoc>(
-  "Feedback",
+  "feedback",
   feedbackSchema,
 );

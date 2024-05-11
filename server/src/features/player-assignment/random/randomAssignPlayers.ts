@@ -1,9 +1,9 @@
 import { uniq } from "lodash-es";
 import { logger } from "server/utils/logger";
-import { getStartingGames } from "server/features/player-assignment/utils/getStartingGames";
+import { getStartingProgramItems } from "server/features/player-assignment/utils/getStartingProgramItems";
 import { runRandomAssignment } from "server/features/player-assignment/random/utils/runRandomAssignment";
 import { User } from "shared/types/models/user";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 import {
   AssignmentResultStatus,
   PlayerAssignmentResult,
@@ -21,31 +21,31 @@ import { AssignmentStrategy } from "shared/config/sharedConfigTypes";
 
 export const randomAssignPlayers = (
   players: readonly User[],
-  games: readonly Game[],
+  programItems: readonly ProgramItem[],
   startTime: string,
   directSignups: readonly DirectSignupsForProgramItem[],
 ): Result<PlayerAssignmentResult, AssignmentError> => {
   logger.debug(`***** Run Random Assignment for ${startTime}`);
-  const startingGames = getStartingGames(games, startTime);
+  const startingProgramItems = getStartingProgramItems(programItems, startTime);
 
-  if (startingGames.length === 0) {
-    logger.debug("No starting games, stop!");
+  if (startingProgramItems.length === 0) {
+    logger.debug("No starting program items, stop!");
     return makeSuccessResult({
       results: [],
-      message: "Random Assign Result - No starting games",
+      message: "Random Assign Result - No starting program items",
       algorithm: AssignmentStrategy.RANDOM,
-      status: AssignmentResultStatus.NO_STARTING_GAMES,
+      status: AssignmentResultStatus.NO_STARTING_PROGRAM_ITEMS,
     });
   }
   const {
-    lotterySignupGames,
+    lotterySignupProgramItems,
     playerGroups,
     allPlayers,
     numberOfIndividuals,
     numberOfGroups,
-  } = getRunRandomAndPadgInput(players, games, startTime);
+  } = getRunRandomAndPadgInput(players, programItems, startTime);
 
-  if (lotterySignupGames.length === 0) {
+  if (lotterySignupProgramItems.length === 0) {
     logger.debug("No signup wishes, stop!");
     return makeSuccessResult({
       results: [],
@@ -54,13 +54,15 @@ export const randomAssignPlayers = (
       status: AssignmentResultStatus.NO_SIGNUP_WISHES,
     });
   }
-  logger.debug(`Games with lottery signups: ${lotterySignupGames.length}`);
+  logger.debug(
+    `Program items with lottery signups: ${lotterySignupProgramItems.length}`,
+  );
   logger.debug(
     `Selected players: ${allPlayers.length} (${numberOfIndividuals} individual, ${numberOfGroups} groups)`,
   );
 
   const assignmentResultResult = runRandomAssignment(
-    lotterySignupGames,
+    lotterySignupProgramItems,
     playerGroups,
     startTime,
     directSignups,
@@ -71,9 +73,9 @@ export const randomAssignPlayers = (
 
   const assignmentResult = unwrapResult(assignmentResultResult);
 
-  const selectedUniqueGames = uniq(
+  const selectedUniqueProgramItems = uniq(
     assignmentResult.results.map(
-      (result) => result.directSignup.gameDetails.gameId,
+      (result) => result.directSignup.programItem.programItemId,
     ),
   );
 
@@ -81,9 +83,9 @@ export const randomAssignPlayers = (
     assignmentResult.results.length
   }/${allPlayers.length} (${Math.round(
     (assignmentResult.results.length / allPlayers.length) * 100,
-  )}%), Games: ${selectedUniqueGames.length}/${
-    lotterySignupGames.length
-  } (${Math.round((selectedUniqueGames.length / lotterySignupGames.length) * 100)}%)`;
+  )}%), Program items: ${selectedUniqueProgramItems.length}/${
+    lotterySignupProgramItems.length
+  } (${Math.round((selectedUniqueProgramItems.length / lotterySignupProgramItems.length) * 100)}%)`;
 
   logger.debug(message);
 

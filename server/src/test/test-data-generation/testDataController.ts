@@ -13,7 +13,7 @@ export const postPopulateDb = async (
     {
       clean: true,
       users: true,
-      games: true,
+      programItems: true,
       lotterySignups: true,
       directSignups: true,
     },

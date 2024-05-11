@@ -3,7 +3,7 @@ import dayjs from "dayjs";
 import {
   PostLotterySignupsError,
   PostLotterSignupsResponse,
-} from "shared/types/api/myGames";
+} from "shared/types/api/myProgramItems";
 import { Signup } from "shared/types/models/user";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { getTimeNow } from "server/features/player-assignment/utils/getTimeNow";
@@ -39,10 +39,15 @@ export const storeLotterySignups = async (
   }
 
   // Check for duplicate priorities, ie. some kind of error
-  const gamesByTimeslot = groupBy(lotterySignups, (game) => game.time);
+  const programItemsByTimeslot = groupBy(
+    lotterySignups,
+    (programItem) => programItem.time,
+  );
 
-  for (const [, games] of Object.entries(gamesByTimeslot)) {
-    const priorities = games.map((selectedGame) => selectedGame.priority);
+  for (const [, programItems] of Object.entries(programItemsByTimeslot)) {
+    const priorities = programItems.map(
+      (selectedProgramItem) => selectedProgramItem.priority,
+    );
     const uniqPriorities = uniq(priorities);
 
     if (priorities.length !== uniqPriorities.length) {

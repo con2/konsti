@@ -4,13 +4,17 @@ import { config } from "shared/config";
 
 const SettingsSchema = new mongoose.Schema(
   {
-    hiddenGames: [
-      { type: mongoose.Schema.Types.ObjectId, ref: "Game", default: [] },
+    hiddenProgramItems: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "program-item",
+        default: [],
+      },
     ],
     appOpen: { type: Boolean, default: true },
     signupQuestions: [
       {
-        gameId: { type: String },
+        programItemId: { type: String },
         questionFi: { type: String },
         questionEn: { type: String },
         private: { type: Boolean },
@@ -39,6 +43,6 @@ const SettingsSchema = new mongoose.Schema(
 );
 
 export const SettingsModel = mongoose.model<SettingsDoc>(
-  "Settings",
+  "settings",
   SettingsSchema,
 );

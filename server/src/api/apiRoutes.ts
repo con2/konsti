@@ -7,10 +7,10 @@ import {
 } from "server/features/kompassi-login/kompassiLoginController";
 import { postFeedback } from "server/features/feedback/feedbackController";
 import {
-  getGames,
-  postAutoUpdateGames,
-  postUpdateGames,
-} from "server/features/game/gameController";
+  getProgramItems,
+  postAutoUpdateProgramItems,
+  postUpdateProgramItems,
+} from "server/features/program-item/programItemController";
 import { getHealthStatus } from "server/features/health/healthController";
 import {
   getResults,
@@ -30,7 +30,7 @@ import {
   postDirectSignup,
 } from "server/features/direct-signup/directSignupController";
 import { postEventLogItem } from "server/features/user/event-log/eventLogController";
-import { postFavorite } from "server/features/user/favorite-game/favoriteGameController";
+import { postFavorite } from "server/features/user/favorite-program-item/favoriteProgramItemController";
 import {
   getGroup,
   postCloseGroup,
@@ -67,7 +67,7 @@ export const apiRoutes = express.Router();
 
 /* POST routes */
 
-apiRoutes.post(ApiEndpoint.GAMES, postUpdateGames);
+apiRoutes.post(ApiEndpoint.PROGRAM_ITEMS, postUpdateProgramItems);
 apiRoutes.post(ApiEndpoint.USERS, postUser);
 apiRoutes.post(ApiEndpoint.LOGIN, postLogin);
 apiRoutes.post(ApiEndpoint.ASSIGNMENT, postAssignment);
@@ -85,13 +85,13 @@ apiRoutes.post(ApiEndpoint.USERS_PASSWORD, postUserPassword);
 apiRoutes.post(ApiEndpoint.SETTINGS, postSettings);
 apiRoutes.post(ApiEndpoint.DIRECT_SIGNUP, postDirectSignup);
 apiRoutes.post(ApiEndpoint.EVENT_LOG, postEventLogItem);
-apiRoutes.post(ApiEndpoint.PROGRAM_UPDATE_CRON, postAutoUpdateGames);
+apiRoutes.post(ApiEndpoint.PROGRAM_UPDATE_CRON, postAutoUpdateProgramItems);
 apiRoutes.post(ApiEndpoint.ASSIGNMENT_CRON, postAutoAssignment);
 apiRoutes.post(ApiEndpoint.VERIFY_KOMPASSI_LOGIN, postVerifyKompassiLogin);
 
 /* GET routes */
 
-apiRoutes.get(ApiEndpoint.GAMES, getGames);
+apiRoutes.get(ApiEndpoint.PROGRAM_ITEMS, getProgramItems);
 apiRoutes.get(ApiEndpoint.USERS, getUser);
 apiRoutes.get(
   ApiEndpoint.USERS_BY_SERIAL_OR_USERNAME,

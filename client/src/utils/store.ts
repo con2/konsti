@@ -6,17 +6,17 @@ import { RootState } from "client/types/reduxTypes";
 import { SUBMIT_LOGOUT } from "client/types/logoutActionsTypes";
 
 // Reducers
-import { allGamesReducer } from "client/views/all-games/allGamesSlice";
+import { allProgramItemsReducer } from "client/views/all-program-items/allProgramItemsSlice";
 import { loginReducer } from "client/views/login/loginSlice";
-import { myGamesReducer } from "client/views/my-games/myGamesSlice";
+import { myProgramItemsReducer } from "client/views/my-program-items/myProgramItemsSlice";
 import { adminReducer } from "client/views/admin/adminSlice";
 import { testSettingsReducer } from "client/test/test-settings/testSettingsSlice";
 import { groupReducer } from "client/views/group/groupSlice";
 
 export const combinedReducer = combineReducers({
-  allGames: allGamesReducer,
+  allProgramItems: allProgramItemsReducer,
   login: loginReducer,
-  myGames: myGamesReducer,
+  myProgramItems: myProgramItemsReducer,
   admin: adminReducer,
   testSettings: testSettingsReducer,
   group: groupReducer,
@@ -34,8 +34,8 @@ const rootReducer = (
       newState.admin = state.admin;
     }
 
-    if (state?.allGames) {
-      newState.allGames = state.allGames;
+    if (state?.allProgramItems) {
+      newState.allProgramItems = state.allProgramItems;
     }
 
     if (
@@ -52,8 +52,8 @@ const rootReducer = (
 };
 
 const ignoredActions = [
-  "allGames/submitGetGamesAsync", // Games is huge
-  "admin/submitGetSettingsAsync", // HiddenGames is huge
+  "allProgramItems/submitGetProgramItemsAsync", // Program items is huge
+  "admin/submitGetSettingsAsync", // HiddenProgramItems is huge
   "admin/submitGetSignupMessagesAsync", // Private
 ];
 
@@ -73,33 +73,36 @@ const sentryReduxEnhancer = createReduxEnhancer({
     /* eslint-disable @typescript-eslint/no-unnecessary-condition -- No idea what state the app state is in */
     const transformedState = {
       ...state,
-      allGames: {
-        ...state?.allGames,
-        games: `Games count: ${state?.allGames?.games?.length}`,
-        directSignups: `Direct signups count: ${state?.allGames?.directSignups?.length}`,
+      allProgramItems: {
+        ...state?.allProgramItems,
+        programItems: `Program items count: ${state?.allProgramItems?.programItems?.length}`,
+        directSignups: `Direct signups count: ${state?.allProgramItems?.directSignups?.length}`,
       },
       admin: {
         ...state?.admin,
-        hiddenGames: `Hidden games count: ${state?.admin?.hiddenGames?.length}`,
+        hiddenProgramItems: `Hidden program items count: ${state?.admin?.hiddenProgramItems?.length}`,
         signupQuestions: `Signup questions count: ${state?.admin?.signupQuestions?.length}`,
         signupMessages: `Signup messages count: ${state?.admin?.signupMessages?.length}`,
       },
-      myGames: {
-        ...state?.myGames,
-        directSignups: state?.myGames?.directSignups?.map((directSignup) => ({
-          ...directSignup,
-          gameDetails: directSignup?.gameDetails?.gameId,
-          message: "<Message hidden>",
-        })),
-        lotterySignups: state?.myGames?.lotterySignups?.map(
-          (lotterySignup) => ({
-            ...lotterySignup,
-            gameDetails: lotterySignup?.gameDetails?.gameId,
+      myProgramItems: {
+        ...state?.myProgramItems,
+        directSignups: state?.myProgramItems?.directSignups?.map(
+          (directSignup) => ({
+            ...directSignup,
+            programItem: directSignup?.programItem?.programItemId,
+            message: "<Message hidden>",
           }),
         ),
-        favoritedGames: state?.myGames?.favoritedGames?.map(
-          (favoritedGame) => favoritedGame?.gameId,
+        lotterySignups: state?.myProgramItems?.lotterySignups?.map(
+          (lotterySignup) => ({
+            ...lotterySignup,
+            programItem: lotterySignup?.programItem?.programItemId,
+          }),
         ),
+        favoritedProgramItems:
+          state?.myProgramItems?.favoritedProgramItems?.map(
+            (favoritedProgramItem) => favoritedProgramItem?.programItemId,
+          ),
       },
     };
     /* eslint-enable @typescript-eslint/no-unnecessary-condition */

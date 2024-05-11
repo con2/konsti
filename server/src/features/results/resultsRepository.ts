@@ -1,7 +1,7 @@
 import { logger } from "server/utils/logger";
 import { ResultsModel } from "server/features/results/resultsSchema";
 import { ResultsCollectionEntry } from "server/types/resultTypes";
-import { findGames } from "server/features/game/gameRepository";
+import { findProgramItems } from "server/features/program-item/programItemRepository";
 import { AssignmentResult } from "shared/types/models/result";
 import {
   Result,
@@ -33,7 +33,7 @@ export const findResult = async (
     )
       .lean<ResultsCollectionEntry>()
       .sort({ createdAt: -1 })
-      .populate("results.directSignup.gameDetails");
+      .populate("results.directSignup.programItem");
     logger.debug(`MongoDB: Results data found for time ${startTime}`);
     return makeSuccessResult(response);
   } catch (error) {
@@ -51,23 +51,25 @@ export const saveResult = async (
   algorithm: string,
   message: string,
 ): Promise<Result<void, MongoDbError>> => {
-  const gamesResult = await findGames();
+  const programItemsResult = await findProgramItems();
 
-  if (isErrorResult(gamesResult)) {
-    return gamesResult;
+  if (isErrorResult(programItemsResult)) {
+    return programItemsResult;
   }
 
-  const games = unwrapResult(gamesResult);
+  const programItems = unwrapResult(programItemsResult);
   const results = signupResultData.reduce<AssignmentResult[]>((acc, result) => {
-    const gameDocInDb = games.find(
-      (game) => game.gameId === result.directSignup.gameDetails.gameId,
+    const programItemDocInDb = programItems.find(
+      (programItem) =>
+        programItem.programItemId ===
+        result.directSignup.programItem.programItemId,
     );
 
-    if (gameDocInDb) {
+    if (programItemDocInDb) {
       acc.push({
         username: result.username,
         directSignup: {
-          gameDetails: gameDocInDb._id,
+          programItem: programItemDocInDb._id,
           priority: result.directSignup.priority,
           time: result.directSignup.time,
           message: "",

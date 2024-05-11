@@ -1,7 +1,7 @@
 import { merge } from "lodash-es";
 import { z } from "zod";
 import { LocalStorageState } from "client/types/reduxTypes";
-import { ProgramType } from "shared/types/models/game";
+import { ProgramType } from "shared/types/models/programItem";
 import { StringToJsonSchema } from "client/utils/zodUtils";
 import { config } from "shared/config";
 import { ActiveProgramType } from "shared/config/clientConfigTypes";

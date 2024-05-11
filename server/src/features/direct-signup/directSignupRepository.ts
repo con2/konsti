@@ -1,7 +1,10 @@
 import dayjs from "dayjs";
 import { groupBy, shuffle } from "lodash-es";
 import { ObjectId } from "mongoose";
-import { findGameById, findGames } from "server/features/game/gameRepository";
+import {
+  findProgramItemById,
+  findProgramItems,
+} from "server/features/program-item/programItemRepository";
 import {
   DirectSignupsForProgramItem,
   UserDirectSignup,
@@ -13,8 +16,8 @@ import { MongoDbError } from "shared/types/api/errors";
 import {
   DeleteDirectSignupRequest,
   PostDirectSignupRequest,
-} from "shared/types/api/myGames";
-import { ProgramType } from "shared/types/models/game";
+} from "shared/types/api/myProgramItems";
+import { ProgramType } from "shared/types/models/programItem";
 import {
   Result,
   isErrorResult,
@@ -45,7 +48,7 @@ export const findDirectSignups = async (): Promise<
       "-createdAt -updatedAt -_id -__v -userSignups._id",
     )
       .lean<DirectSignupsForProgramItem[]>()
-      .populate("game", "-createdAt -updatedAt -_id -__v");
+      .populate("programItem", "-createdAt -updatedAt -_id -__v");
 
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (!results) {
@@ -57,7 +60,7 @@ export const findDirectSignups = async (): Promise<
 
     const resultsWithFormattedTime = results
       // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-      .filter((result) => result.game) // Filter results with failed populate
+      .filter((result) => result.programItem) // Filter results with failed populate
       .map((result) => {
         return {
           ...result,
@@ -77,31 +80,33 @@ export const findDirectSignups = async (): Promise<
 };
 
 interface FindDirectSignupsByProgramTypesResponse extends UserDirectSignup {
-  gameId: string;
+  programItemId: string;
 }
 
 export const findDirectSignupsByProgramTypes = async (
   programTypes: ProgramType[],
   startTime: string,
 ): Promise<Result<FindDirectSignupsByProgramTypesResponse[], MongoDbError>> => {
-  const gamesResult = await findGames();
-  if (isErrorResult(gamesResult)) {
-    return gamesResult;
+  const programItemsResult = await findProgramItems();
+  if (isErrorResult(programItemsResult)) {
+    return programItemsResult;
   }
-  const games = unwrapResult(gamesResult);
+  const programItems = unwrapResult(programItemsResult);
 
-  const gamesByProgramTypesForStartTimeObjectIds = games
-    .filter((game) => dayjs(game.startTime).isSame(dayjs(startTime)))
-    .filter((game) => programTypes.includes(game.programType))
-    .map((game) => game._id);
+  const programItemsByProgramTypesForStartTimeObjectIds = programItems
+    .filter((programItem) =>
+      dayjs(programItem.startTime).isSame(dayjs(startTime)),
+    )
+    .filter((programItem) => programTypes.includes(programItem.programType))
+    .map((programItem) => programItem._id);
 
   try {
     const signups = await SignupModel.find(
-      { game: { $in: gamesByProgramTypesForStartTimeObjectIds } },
+      { programItem: { $in: programItemsByProgramTypesForStartTimeObjectIds } },
       "-createdAt -updatedAt -_id -__v",
     )
       .lean<DirectSignupsForProgramItem[]>()
-      .populate("game", "-createdAt -updatedAt -_id -__v");
+      .populate("programItem", "-createdAt -updatedAt -_id -__v");
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (!signups) {
       logger.info(`MongoDB: Signups for time ${startTime} not found`);
@@ -114,7 +119,7 @@ export const findDirectSignupsByProgramTypes = async (
       signups.flatMap((signup) => {
         return signup.userSignups.map((userSignup) => ({
           ...userSignup,
-          gameId: signup.game.gameId,
+          programItemId: signup.programItem.programItemId,
         }));
       });
 
@@ -137,7 +142,7 @@ export const findUserDirectSignups = async (
       "-createdAt -updatedAt -_id -__v",
     )
       .lean<DirectSignupsForProgramItem[]>()
-      .populate("game", "-createdAt -updatedAt -_id -__v");
+      .populate("programItem", "-createdAt -updatedAt -_id -__v");
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (!response) {
       logger.info(`MongoDB: Signups for user ${username} not found`);
@@ -158,20 +163,22 @@ export const findUserDirectSignups = async (
 export const saveDirectSignup = async (
   signupsRequest: PostDirectSignupRequest,
 ): Promise<Result<DirectSignupsForProgramItem, MongoDbError>> => {
-  const { username, directSignupGameId, startTime, message, priority } =
+  const { username, directSignupProgramItemId, startTime, message, priority } =
     signupsRequest;
 
-  const gameResult = await findGameById(directSignupGameId);
-  if (isErrorResult(gameResult)) {
-    return gameResult;
+  const programItemResult = await findProgramItemById(
+    directSignupProgramItemId,
+  );
+  if (isErrorResult(programItemResult)) {
+    return programItemResult;
   }
-  const game = unwrapResult(gameResult);
+  const programItem = unwrapResult(programItemResult);
 
   try {
     const signup = await SignupModel.findOneAndUpdate(
       {
-        game: game._id,
-        count: { $lt: game.maxAttendance },
+        programItem: programItem._id,
+        count: { $lt: programItem.maxAttendance },
         "userSignups.username": { $ne: username },
       },
       {
@@ -191,10 +198,10 @@ export const saveDirectSignup = async (
       },
     )
       .lean<DirectSignupsForProgramItem>()
-      .populate("game");
+      .populate("programItem");
     if (!signup) {
       logger.warn(
-        `Saving signup for user ${username} failed: game ${game.gameId} not found or game full`,
+        `Saving signup for user ${username} failed: program item ${programItem.programItemId} not found or program item full`,
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
@@ -217,45 +224,50 @@ interface SaveSignupsResponse {
 export const saveDirectSignups = async (
   signupsRequests: PostDirectSignupRequest[],
 ): Promise<Result<SaveSignupsResponse, MongoDbError>> => {
-  const gamesResult = await findGames();
-  if (isErrorResult(gamesResult)) {
-    return gamesResult;
+  const programItemsResult = await findProgramItems();
+  if (isErrorResult(programItemsResult)) {
+    return programItemsResult;
   }
-  const games = unwrapResult(gamesResult);
+  const programItems = unwrapResult(programItemsResult);
 
   const signupsByProgramItems = groupBy(
     signupsRequests,
-    (signupsRequest) => signupsRequest.directSignupGameId,
+    (signupsRequest) => signupsRequest.directSignupProgramItemId,
   );
 
   const droppedSignups: PostDirectSignupRequest[] = [];
 
   const bulkOps = Object.entries(signupsByProgramItems).flatMap(
-    ([gameId, directSignups]) => {
-      const game = games.find((g) => g.gameId === gameId);
-      if (!game) {
+    ([programItemId, directSignups]) => {
+      const programItem = programItems.find(
+        (p) => p.programItemId === programItemId,
+      );
+      if (!programItem) {
         return [];
       }
 
       let finalSignups: PostDirectSignupRequest[] = directSignups;
-      if (directSignups.length > game.maxAttendance) {
+      if (directSignups.length > programItem.maxAttendance) {
         logger.error(
           "%s",
           new Error(
-            `Too many signups passed to saveSignups for program item ${game.gameId} - maxAttendance: ${game.maxAttendance}, direct signups: ${directSignups.length}`,
+            `Too many signups passed to saveSignups for program item ${programItem.programItemId} - maxAttendance: ${programItem.maxAttendance}, direct signups: ${directSignups.length}`,
           ),
         );
         const shuffledSignups = shuffle(directSignups);
-        finalSignups = shuffledSignups.slice(0, game.maxAttendance);
+        finalSignups = shuffledSignups.slice(0, programItem.maxAttendance);
         droppedSignups.push(
-          ...shuffledSignups.slice(game.maxAttendance, shuffledSignups.length),
+          ...shuffledSignups.slice(
+            programItem.maxAttendance,
+            shuffledSignups.length,
+          ),
         );
       }
 
       return {
         updateOne: {
           filter: {
-            game: game._id,
+            programItem: programItem._id,
           },
           update: {
             $addToSet: {
@@ -289,17 +301,19 @@ export const saveDirectSignups = async (
 export const delDirectSignup = async (
   signupRequest: DeleteDirectSignupRequest,
 ): Promise<Result<DirectSignupsForProgramItem, MongoDbError>> => {
-  const { username, directSignupGameId } = signupRequest;
+  const { username, directSignupProgramItemId } = signupRequest;
 
-  const gameResult = await findGameById(directSignupGameId);
-  if (isErrorResult(gameResult)) {
-    return gameResult;
+  const programItemResult = await findProgramItemById(
+    directSignupProgramItemId,
+  );
+  if (isErrorResult(programItemResult)) {
+    return programItemResult;
   }
-  const game = unwrapResult(gameResult);
+  const programItem = unwrapResult(programItemResult);
 
   try {
     const signup = await SignupModel.findOneAndUpdate(
-      { game: game._id, "userSignups.username": username },
+      { programItem: programItem._id, "userSignups.username": username },
       {
         $pull: {
           userSignups: {
@@ -311,13 +325,13 @@ export const delDirectSignup = async (
       { new: true, fields: "-userSignups._id -_id -__v -createdAt -updatedAt" },
     )
       .lean<DirectSignupsForProgramItem>()
-      .populate("game", "-createdAt -updatedAt -_id -__v");
+      .populate("programItem", "-createdAt -updatedAt -_id -__v");
 
     if (!signup) {
       logger.error(
         "%s",
         new Error(
-          `Signups to program item ${game.gameId} for user ${username} not found`,
+          `Signups to program item ${programItem.programItemId} for user ${username} not found`,
         ),
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
@@ -331,7 +345,7 @@ export const delDirectSignup = async (
       logger.error(
         "%s",
         new Error(
-          `Error removing signup to program item ${game.gameId} from user ${username}`,
+          `Error removing signup to program item ${programItem.programItemId} from user ${username}`,
         ),
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
@@ -339,77 +353,84 @@ export const delDirectSignup = async (
 
     logger.info(
       `MongoDB: Signup removed - program item: ${
-        game.gameId
-      }, user: ${username}, starting: ${dayjs(game.startTime).toISOString()}`,
+        programItem.programItemId
+      }, user: ${username}, starting: ${dayjs(programItem.startTime).toISOString()}`,
     );
     return makeSuccessResult(signup);
   } catch (error) {
     logger.error(
-      `MongoDB: Error deleting signup to program item ${game.gameId} from user ${username}: %s`,
+      `MongoDB: Error deleting signup to program item ${programItem.programItemId} from user ${username}: %s`,
       error,
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
 
-export const delDirectSignupDocumentsByGameIds = async (
-  gameIds: string[],
+export const delDirectSignupDocumentsByProgramItemIds = async (
+  programItemIds: string[],
 ): Promise<Result<void, MongoDbError>> => {
-  const gamesResult = await findGames();
-  if (isErrorResult(gamesResult)) {
-    return gamesResult;
+  const programItemsResult = await findProgramItems();
+  if (isErrorResult(programItemsResult)) {
+    return programItemsResult;
   }
-  const games = unwrapResult(gamesResult);
+  const programItems = unwrapResult(programItemsResult);
 
-  const gamesInDb = gameIds.map((gameId) =>
-    games.find((game) => game.gameId === gameId),
+  const programItemsInDb = programItemIds.map((programItemId) =>
+    programItems.find(
+      (programItem) => programItem.programItemId === programItemId,
+    ),
   );
 
-  const gameObjectIds = gamesInDb.flatMap((gameInDb) =>
-    gameInDb?._id ? gameInDb._id : [],
+  const programItemObjectIds = programItemsInDb.flatMap((programItemInDb) =>
+    programItemInDb?._id ? programItemInDb._id : [],
   );
 
   try {
     await SignupModel.deleteMany({
-      game: { $in: gameObjectIds },
+      programItem: { $in: programItemObjectIds },
     });
     return makeSuccessResult(undefined);
   } catch (error) {
     logger.error(
-      "MongoDB: Error removing signup documents for game IDs: %s",
+      "MongoDB: Error removing signup documents for program item IDs: %s",
       error,
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
 
-export const resetDirectSignupsByGameIds = async (
-  gameIds: string[],
+export const resetDirectSignupsByProgramItemIds = async (
+  programItemIds: string[],
 ): Promise<Result<void, MongoDbError>> => {
-  const gamesResult = await findGames();
-  if (isErrorResult(gamesResult)) {
-    return gamesResult;
+  const programItemsResult = await findProgramItems();
+  if (isErrorResult(programItemsResult)) {
+    return programItemsResult;
   }
-  const games = unwrapResult(gamesResult);
+  const programItems = unwrapResult(programItemsResult);
 
-  const gamesInDb = gameIds.map((gameId) =>
-    games.find((game) => game.gameId === gameId),
+  const programItemsInDb = programItemIds.map((programItemId) =>
+    programItems.find(
+      (programItem) => programItem.programItemId === programItemId,
+    ),
   );
 
-  const gameObjectIds = gamesInDb.flatMap((gameInDb) =>
-    gameInDb?._id ? gameInDb._id : [],
+  const programItemObjectIds = programItemsInDb.flatMap((programItemInDb) =>
+    programItemInDb?._id ? programItemInDb._id : [],
   );
 
   try {
     await SignupModel.updateMany(
       {
-        game: { $in: gameObjectIds },
+        programItem: { $in: programItemObjectIds },
       },
       { userSignups: [], count: 0 },
     );
     return makeSuccessResult(undefined);
   } catch (error) {
-    logger.error("MongoDB: Error removing signups for game IDs: %s", error);
+    logger.error(
+      "MongoDB: Error removing signups for program item IDs: %s",
+      error,
+    );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
@@ -417,25 +438,29 @@ export const resetDirectSignupsByGameIds = async (
 export const delAssignmentDirectSignupsByStartTime = async (
   startTime: string,
 ): Promise<Result<void, MongoDbError>> => {
-  const gamesResult = await findGames();
-  if (isErrorResult(gamesResult)) {
-    return gamesResult;
+  const programItemsResult = await findProgramItems();
+  if (isErrorResult(programItemsResult)) {
+    return programItemsResult;
   }
-  const games = unwrapResult(gamesResult);
+  const programItems = unwrapResult(programItemsResult);
 
   // Only remove "twoPhaseSignupProgramTypes" signups and don't remove "directSignupAlwaysOpen" signups
-  const doNotRemoveGameObjectIds = games
+  const doNotRemoveProgramItemObjectIds = programItems
     .filter(
-      (game) =>
-        config.shared().directSignupAlwaysOpenIds.includes(game.gameId) ||
-        !config.shared().twoPhaseSignupProgramTypes.includes(game.programType),
+      (programItem) =>
+        config
+          .shared()
+          .directSignupAlwaysOpenIds.includes(programItem.programItemId) ||
+        !config
+          .shared()
+          .twoPhaseSignupProgramTypes.includes(programItem.programType),
     )
-    .map((game) => game._id);
+    .map((programItem) => programItem._id);
 
   try {
     await SignupModel.updateMany(
       {
-        game: { $nin: doNotRemoveGameObjectIds },
+        programItem: { $nin: doNotRemoveProgramItemObjectIds },
       },
       [
         {
@@ -469,7 +494,7 @@ export const createEmptyDirectSignupDocumentForProgramItems = async (
 ): Promise<Result<void, MongoDbError>> => {
   const signupDocs = programItemObjectIds.map((programItemObjectId) => {
     return new SignupModel({
-      game: programItemObjectId,
+      programItem: programItemObjectId,
       userSignups: [],
       count: 0,
     });

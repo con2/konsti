@@ -1,7 +1,7 @@
 import dayjs, { Dayjs } from "dayjs";
 import { reverse } from "lodash-es";
 import { config } from "shared/config";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 import { TIMEZONE } from "shared/utils/initializeDayjs";
 
 export const getAlgorithmSignupStartTime = (startTime: string): Dayjs => {
@@ -30,7 +30,7 @@ export const getAlgorithmSignupEndTime = (startTime: string): Dayjs => {
   return dayjs(startTime).subtract(DIRECT_SIGNUP_START, "minutes");
 };
 
-export const getDirectSignupStartTime = (game: Game): Dayjs => {
+export const getDirectSignupStartTime = (programItem: ProgramItem): Dayjs => {
   const {
     conventionStartTime,
     DIRECT_SIGNUP_START,
@@ -40,7 +40,9 @@ export const getDirectSignupStartTime = (game: Game): Dayjs => {
     twoPhaseSignupProgramTypes,
   } = config.shared();
 
-  const signupAlwaysOpen = directSignupAlwaysOpenIds.includes(game.gameId);
+  const signupAlwaysOpen = directSignupAlwaysOpenIds.includes(
+    programItem.programItemId,
+  );
 
   if (signupAlwaysOpen) {
     const someOldTime = "2000-01-01T00:00:00.000Z";
@@ -48,8 +50,8 @@ export const getDirectSignupStartTime = (game: Game): Dayjs => {
   }
 
   // "twoPhaseSignupProgramTypes" signup times are configured with DIRECT_SIGNUP_START
-  if (twoPhaseSignupProgramTypes.includes(game.programType)) {
-    const directSignupStart = dayjs(game.startTime).subtract(
+  if (twoPhaseSignupProgramTypes.includes(programItem.programType)) {
+    const directSignupStart = dayjs(programItem.startTime).subtract(
       DIRECT_SIGNUP_START,
       "minutes",
     );
@@ -79,14 +81,16 @@ export const getDirectSignupStartTime = (game: Game): Dayjs => {
 
   // Other program types use "directSignupStartTimes" config
   const programTypeDirectSignupStartTimes = directSignupStartTimes
-    ? directSignupStartTimes[game.programType]
+    ? directSignupStartTimes[programItem.programType]
     : undefined;
 
   const directSignupStartTime =
     programTypeDirectSignupStartTimes &&
     reverse(programTypeDirectSignupStartTimes).find(
       (programTypeDirectSignupStartTime) =>
-        dayjs(game.startTime).isSameOrAfter(programTypeDirectSignupStartTime),
+        dayjs(programItem.startTime).isSameOrAfter(
+          programTypeDirectSignupStartTime,
+        ),
     );
 
   return directSignupStartTime ?? dayjs(conventionStartTime);

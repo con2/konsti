@@ -1,4 +1,4 @@
-import { findGames } from "server/features/game/gameRepository";
+import { findProgramItems } from "server/features/program-item/programItemRepository";
 import { UserModel } from "server/features/user/userSchema";
 import { UserLotterySignups } from "server/types/resultTypes";
 import { logger } from "server/utils/logger";
@@ -17,23 +17,24 @@ export const saveLotterySignups = async (
 ): Promise<Result<User, MongoDbError>> => {
   const { lotterySignups, username } = signupData;
 
-  const gamesResult = await findGames();
+  const programItemsResult = await findProgramItems();
 
-  if (isErrorResult(gamesResult)) {
-    return gamesResult;
+  if (isErrorResult(programItemsResult)) {
+    return programItemsResult;
   }
 
-  const games = unwrapResult(gamesResult);
+  const programItems = unwrapResult(programItemsResult);
 
   const formattedData = lotterySignups.reduce<Signup[]>(
     (acc, lotterySignup) => {
-      const gameDocInDb = games.find(
-        (game) => game.gameId === lotterySignup.gameDetails.gameId,
+      const programItemDocInDb = programItems.find(
+        (programItem) =>
+          programItem.programItemId === lotterySignup.programItem.programItemId,
       );
 
-      if (gameDocInDb) {
+      if (programItemDocInDb) {
         acc.push({
-          gameDetails: gameDocInDb._id,
+          programItem: programItemDocInDb._id,
           priority: lotterySignup.priority,
           time: lotterySignup.time,
           message: lotterySignup.message,
@@ -51,7 +52,7 @@ export const saveLotterySignups = async (
         lotterySignups: formattedData,
       },
       { new: true, fields: "-lotterySignups._id" },
-    ).populate("lotterySignups.gameDetails");
+    ).populate("lotterySignups.programItem");
     if (!signupResponse) {
       logger.error("%s", new Error("Error saving lottery signups"));
       return makeErrorResult(MongoDbError.SIGNUP_NOT_FOUND);

@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker";
 import { logger } from "server/utils/logger";
-import { findGames } from "server/features/game/gameRepository";
+import { findProgramItems } from "server/features/program-item/programItemRepository";
 import {
   findSettings,
   saveSignupQuestion,
@@ -24,19 +24,19 @@ export const createSettings = async (): Promise<void> => {
 
   await findSettings();
 
-  const gamesResult = await findGames();
-  const games = unsafelyUnwrapResult(gamesResult);
-  const shuffledGames = shuffleArray(games);
+  const programItemsResult = await findProgramItems();
+  const programItems = unsafelyUnwrapResult(programItemsResult);
+  const shuffledProgramItems = shuffleArray(programItems);
 
   const promises = testQuestions().map(async (testQuestion, index) => {
-    const randomGame = shuffledGames[index];
+    const randomProgramItem = shuffledProgramItems[index];
 
     logger.info(
-      `Add test question ${testQuestion} to game ${randomGame.title}`,
+      `Add test question ${testQuestion} to program item ${randomProgramItem.title}`,
     );
 
     await saveSignupQuestion({
-      gameId: randomGame.gameId,
+      programItemId: randomProgramItem.programItemId,
       questionFi: testQuestion,
       questionEn: testQuestion,
       private: Math.random() < 0.5,

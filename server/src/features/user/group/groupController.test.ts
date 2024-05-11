@@ -18,8 +18,11 @@ import {
   mockUser2,
 } from "server/test/mock-data/mockUser";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
-import { saveGames } from "server/features/game/gameRepository";
-import { testGame, testGame2 } from "shared/tests/testGame";
+import { saveProgramItems } from "server/features/program-item/programItemRepository";
+import {
+  testProgramItem,
+  testProgramItem2,
+} from "shared/tests/testProgramItem";
 import { closeServer, startServer } from "server/utils/server";
 import { saveDirectSignup } from "server/features/direct-signup/directSignupRepository";
 import { saveTestSettings } from "server/test/test-settings/testSettingsRepository";
@@ -56,7 +59,7 @@ describe(`GET ${ApiEndpoint.GROUP}`, () => {
   });
 
   test("should return group members", async () => {
-    await saveGames([testGame]);
+    await saveProgramItems([testProgramItem]);
     await saveUser({ ...mockUser, groupCode: mockUser.serial });
     await saveUser({ ...mockUser2, groupCode: mockUser.serial });
     await saveDirectSignup({
@@ -131,7 +134,7 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
   test("should join group", async () => {
     const groupCode = "123-234-345";
 
-    await saveGames([testGame, testGame2]);
+    await saveProgramItems([testProgramItem, testProgramItem2]);
     await saveUser({ ...mockUser, groupCode, groupCreatorCode: groupCode });
     await saveUser(mockUser2);
     const userWithSignupsResult = await saveLotterySignups({
@@ -162,10 +165,12 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
 
   test("should return error if existing upcoming signups", async () => {
     await saveTestSettings({
-      testTime: dayjs(testGame.startTime).subtract(2, "hours").toISOString(),
+      testTime: dayjs(testProgramItem.startTime)
+        .subtract(2, "hours")
+        .toISOString(),
     });
 
-    await saveGames([testGame]);
+    await saveProgramItems([testProgramItem]);
     await saveUser({ ...mockUser, groupCode: mockUser.serial });
     await saveUser(mockUser2);
     await saveDirectSignup({

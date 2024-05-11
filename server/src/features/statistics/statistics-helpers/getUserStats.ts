@@ -1,9 +1,9 @@
 import fs from "fs";
 import {
-  getUsersWithoutGames,
+  getUsersWithoutProgramItems,
   getUsersWithoutSignups,
   getUsersSignupCount,
-  getUsersWithAllGames,
+  getUsersWithAllProgramItems,
 } from "./userDataHelpers";
 import { logger } from "server/utils/logger";
 import { config } from "shared/config";
@@ -20,7 +20,7 @@ export const getUserStats = (year: number, event: string): void => {
   logger.info(`Loaded ${users.length} users`);
 
   getUsersWithoutSignups(users);
-  const usersWithoutGames = getUsersWithoutGames(users);
-  getUsersSignupCount(usersWithoutGames);
-  getUsersWithAllGames(users);
+  const usersWithoutProgramItems = getUsersWithoutProgramItems(users);
+  getUsersSignupCount(usersWithoutProgramItems);
+  getUsersWithAllProgramItems(users);
 };

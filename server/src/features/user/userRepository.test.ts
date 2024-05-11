@@ -8,8 +8,8 @@ import {
 } from "server/features/user/userRepository";
 import { mockUser, mockUser2 } from "server/test/mock-data/mockUser";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
-import { testGame } from "shared/tests/testGame";
-import { saveGames } from "server/features/game/gameRepository";
+import { testProgramItem } from "shared/tests/testProgramItem";
+import { saveProgramItems } from "server/features/program-item/programItemRepository";
 
 beforeEach(async () => {
   await mongoose.connect(globalThis.__MONGO_URI__, {
@@ -22,7 +22,7 @@ afterEach(async () => {
 });
 
 test("should insert new user into collection", async () => {
-  await saveGames([testGame]);
+  await saveProgramItems([testProgramItem]);
   await saveUser(mockUser);
 
   const findUserResult = await findUser(mockUser.username);
@@ -37,7 +37,7 @@ test("should insert new user into collection", async () => {
 });
 
 test("should find all users", async () => {
-  await saveGames([testGame]);
+  await saveProgramItems([testProgramItem]);
   await saveUser(mockUser);
   await saveUser(mockUser2);
 
@@ -47,7 +47,7 @@ test("should find all users", async () => {
 });
 
 test("should find users by username", async () => {
-  await saveGames([testGame]);
+  await saveProgramItems([testProgramItem]);
   await saveUser(mockUser);
   await saveUser(mockUser2);
 

@@ -79,7 +79,7 @@ export const deleteSignupQuestion = async (
     return res.sendStatus(401);
   }
 
-  const response = await removeSignupQuestion(req.body.gameId);
+  const response = await removeSignupQuestion(req.body.programItemId);
   return res.json(response);
 };
 

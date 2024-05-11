@@ -2,14 +2,17 @@ import { expect, test, afterEach, beforeEach } from "vitest";
 import mongoose from "mongoose";
 import { faker } from "@faker-js/faker";
 import { SettingsModel } from "server/features/settings/settingsSchema";
-import { testGame, testGame2 } from "shared/tests/testGame";
+import {
+  testProgramItem,
+  testProgramItem2,
+} from "shared/tests/testProgramItem";
 import {
   findSettings,
   saveHidden,
   saveSettings,
   saveSignupQuestion,
 } from "server/features/settings/settingsRepository";
-import { saveGames } from "server/features/game/gameRepository";
+import { saveProgramItems } from "server/features/program-item/programItemRepository";
 import {
   SignupQuestion,
   SignupQuestionType,
@@ -29,30 +32,32 @@ afterEach(async () => {
 test("should set defaults if settings not found", async () => {
   await findSettings();
   const defaultSettings = {
-    hiddenGames: [],
+    hiddenProgramItems: [],
     signupTime: null,
     appOpen: true,
   };
   const insertedSettings = await SettingsModel.findOne({});
-  expect(insertedSettings?.hiddenGames.length).toEqual(
-    defaultSettings.hiddenGames.length,
+  expect(insertedSettings?.hiddenProgramItems.length).toEqual(
+    defaultSettings.hiddenProgramItems.length,
   );
   expect(insertedSettings?.appOpen).toEqual(defaultSettings.appOpen);
 });
 
-test("should update hidden games", async () => {
-  const hiddenGames = [testGame, testGame2];
-  await saveGames(hiddenGames);
-  await saveHidden(hiddenGames);
+test("should update hidden program items", async () => {
+  const hiddenProgramItems = [testProgramItem, testProgramItem2];
+  await saveProgramItems(hiddenProgramItems);
+  await saveHidden(hiddenProgramItems);
   const insertedSettings = await SettingsModel.findOne({});
-  expect(insertedSettings?.hiddenGames.length).toEqual(hiddenGames.length);
+  expect(insertedSettings?.hiddenProgramItems.length).toEqual(
+    hiddenProgramItems.length,
+  );
 });
 
-test("should not return hidden games that are not in DB", async () => {
-  const hiddenGames = [testGame, testGame2];
-  await saveHidden(hiddenGames);
+test("should not return hidden program items that are not in DB", async () => {
+  const hiddenProgramItems = [testProgramItem, testProgramItem2];
+  await saveHidden(hiddenProgramItems);
   const insertedSettings = await SettingsModel.findOne({});
-  expect(insertedSettings?.hiddenGames.length).toEqual(0);
+  expect(insertedSettings?.hiddenProgramItems.length).toEqual(0);
 });
 
 test("should update appOpen status", async () => {
@@ -62,12 +67,12 @@ test("should update appOpen status", async () => {
   expect(insertedSettings?.appOpen).toEqual(appOpen);
 });
 
-test("should not save multiple signup questions for same gameId", async () => {
+test("should not save multiple signup questions for same programItemId", async () => {
   // This will create default settings
   await findSettings();
 
   const signupQuestion: SignupQuestion = {
-    gameId: "p6673",
+    programItemId: "p6673",
     questionFi: "Hahmoluokka",
     questionEn: "Character class",
     private: false,

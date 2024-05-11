@@ -5,7 +5,7 @@
     "signupStrategy": "algorithm+direct",
     "signupQuestions": [
       {
-        "gameId": "p6639",
+        "programItemId": "p6639",
         "questionFi": "Haluan, että maalattavan figuni pohjaväri on",
         "questionEn": "I want my miniature to be primed",
         "private": false,
@@ -17,7 +17,7 @@
         ]
       },
       {
-        "gameId": "p6990",
+        "programItemId": "p6990",
         "questionFi": "Haluan, että maalattavan figuni pohjaväri on",
         "questionEn": "I want my miniature to be primed",
         "private": false,
@@ -29,7 +29,7 @@
         ]
       },
       {
-        "gameId": "p6852",
+        "programItemId": "p6852",
         "questionFi": "Syötä joukkueen nimi, kaikkien joukkueesi jäsenten (2-4 kpl) nimet, sekä ainakin yhden jäsenen sähköpostiosoite ja puhelinnumero mahdollista palkintoyhteydenottoa varten.",
         "questionEn": "Please write the name of your team, the names of all team members (2-4 people) and an email address and phone number of at least one team member in case we need to contact you about a possible award.",
         "private": true,
@@ -37,7 +37,7 @@
         "selectOptions": []
       },
       {
-        "gameId": "p6989",
+        "programItemId": "p6989",
         "questionFi": "Haluan, että maalattavan figuni pohjaväri on",
         "questionEn": "I want my miniature to be primed",
         "private": false,
@@ -49,7 +49,7 @@
         ]
       },
       {
-        "gameId": "p6978",
+        "programItemId": "p6978",
         "questionFi": "Haluan, että maalattavan figuni pohjaväri on",
         "questionEn": "I want my miniature to be primed",
         "private": false,
@@ -61,7 +61,7 @@
         ]
       },
       {
-        "gameId": "p6673",
+        "programItemId": "p6673",
         "questionFi": "Hahmoluokka ja taso. Jos sinulla on useampi hahmo, merkitse ensisijainen hahmo sulkeilla.",
         "questionEn": "Character class and level. If you have multiple characters, mark primary character with brackets.",
         "private": false,
@@ -69,7 +69,7 @@
         "selectOptions": []
       },
       {
-        "gameId": "p6973",
+        "programItemId": "p6973",
         "questionFi": "Syötä nimesi, sähköpostiosoitteesi ja puhelinnumerosi mahdollista palkintoyhteydenottoa varten.",
         "questionEn": "Please write your name, email address and phone number in case we need to contact you about a possible award.",
         "private": true,
@@ -77,7 +77,7 @@
         "selectOptions": []
       },
       {
-        "gameId": "p7212",
+        "programItemId": "p7212",
         "questionFi": "Syötä nimesi, sähköpostiosoitteesi ja puhelinnumerosi mahdollista palkintoyhteydenottoa varten.",
         "questionEn": "Please write your name, email address and phone number in case we need to contact you about a possible award.",
         "private": true,
@@ -85,7 +85,7 @@
         "selectOptions": []
       },
       {
-        "gameId": "p6895",
+        "programItemId": "p6895",
         "questionFi": "Syötä nimesi, sähköpostiosoitteesi ja puhelinnumerosi mahdollista palkintoyhteydenottoa varten.",
         "questionEn": "Please write your name, email address and phone number in case we need to contact you about a possible award.",
         "private": true,
@@ -93,7 +93,7 @@
         "selectOptions": []
       },
       {
-        "gameId": "p6636",
+        "programItemId": "p6636",
         "questionFi": "Syötä nimesi, sähköpostiosoitteesi ja puhelinnumerosi mahdollista palkintoyhteydenottoa varten.",
         "questionEn": "Please write your name, email address and phone number in case we need to contact you about a possible award.",
         "private": true,
@@ -101,7 +101,7 @@
         "selectOptions": []
       },
       {
-        "gameId": "p6133",
+        "programItemId": "p6133",
         "questionFi": "Syötä nimesi, sähköpostiosoitteesi ja puhelinnumerosi mahdollista palkintoyhteydenottoa varten.",
         "questionEn": "Please write your name, email address and phone number in case we need to contact you about a possible award.",
         "private": true,

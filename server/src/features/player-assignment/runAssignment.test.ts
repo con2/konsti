@@ -7,13 +7,16 @@ import { generateTestData } from "server/test/test-data-generation/generators/ge
 import { AssignmentStrategy } from "shared/config/sharedConfigTypes";
 import { config } from "shared/config";
 import { saveUser } from "server/features/user/userRepository";
-import { saveGames } from "server/features/game/gameRepository";
+import { saveProgramItems } from "server/features/program-item/programItemRepository";
 import {
   findDirectSignups,
   findUserDirectSignups,
   saveDirectSignup,
 } from "server/features/direct-signup/directSignupRepository";
-import { testGame, testGame2 } from "shared/tests/testGame";
+import {
+  testProgramItem,
+  testProgramItem2,
+} from "shared/tests/testProgramItem";
 import {
   mockPostDirectSignupRequest,
   mockPostDirectSignupRequest2,
@@ -21,12 +24,12 @@ import {
   mockUser,
   mockUser2,
 } from "server/test/mock-data/mockUser";
-import { ProgramType } from "shared/types/models/game";
+import { ProgramType } from "shared/types/models/programItem";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 import { assertUserUpdatedCorrectly } from "server/features/player-assignment/runAssignmentTestUtils";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
-import { GameModel } from "server/features/game/gameSchema";
+import { ProgramItemModel } from "server/features/program-item/programItemSchema";
 
 // This needs to be adjusted if test data is changed
 const expectedResultsCount = 18;
@@ -47,12 +50,12 @@ describe("Assignment with valid data", () => {
     const newUsersCount = 30;
     const groupSize = 3;
     const numberOfGroups = 10;
-    const newGamesCount = 10;
+    const newProgramItemsCount = 10;
     const testUsersCount = 0;
 
     await generateTestData(
       newUsersCount,
-      newGamesCount,
+      newProgramItemsCount,
       groupSize,
       numberOfGroups,
       testUsersCount,
@@ -128,11 +131,11 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
 
     // Populate database
-    await saveGames([
-      testGame,
+    await saveProgramItems([
+      testProgramItem,
       {
-        ...testGame2,
-        startTime: testGame.startTime,
+        ...testProgramItem2,
+        startTime: testProgramItem.startTime,
         programType: ProgramType.TOURNAMENT,
       },
     ]);
@@ -144,10 +147,13 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       lotterySignups: [
         { ...mockLotterySignups[0], priority: 2 },
         {
-          // non-"twoPhaseSignupProgramTypes" signed game should be ignored
-          gameDetails: { ...testGame2, programType: ProgramType.TOURNAMENT },
+          // non-"twoPhaseSignupProgramTypes" signed program item should be ignored
+          programItem: {
+            ...testProgramItem2,
+            programType: ProgramType.TOURNAMENT,
+          },
           priority: 1,
-          time: testGame.startTime,
+          time: testProgramItem.startTime,
           message: "",
         },
       ],
@@ -157,10 +163,13 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       lotterySignups: [
         { ...mockLotterySignups[0], priority: 2 },
         {
-          // non-"twoPhaseSignupProgramTypes" signed game should be ignored
-          gameDetails: { ...testGame2, programType: ProgramType.TOURNAMENT },
+          // non-"twoPhaseSignupProgramTypes" signed program item should be ignored
+          programItem: {
+            ...testProgramItem2,
+            programType: ProgramType.TOURNAMENT,
+          },
           priority: 1,
-          time: testGame.startTime,
+          time: testProgramItem.startTime,
           message: "",
         },
       ],
@@ -169,7 +178,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     // This should not be removed
     await saveDirectSignup({
       ...mockPostDirectSignupRequest2,
-      startTime: testGame.startTime,
+      startTime: testProgramItem.startTime,
     });
 
     const signupsBeforeUpdateResult = await findUserDirectSignups(
@@ -180,7 +189,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
 
     const assignResultsResult = await runAssignment({
       assignmentStrategy,
-      startTime: testGame.startTime,
+      startTime: testProgramItem.startTime,
     });
     const assignResults = unsafelyUnwrapResult(assignResultsResult);
 
@@ -193,10 +202,10 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     const signupsAfterUpdate = unsafelyUnwrapResult(signupsAfterUpdateResult);
 
     const tournamentSignup = signupsAfterUpdate.find(
-      (signup) => signup.game.programType === ProgramType.TOURNAMENT,
+      (signup) => signup.programItem.programType === ProgramType.TOURNAMENT,
     );
     const rpgSignup = signupsAfterUpdate.find(
-      (signup) => signup.game.programType === ProgramType.TABLETOP_RPG,
+      (signup) => signup.programItem.programType === ProgramType.TABLETOP_RPG,
     );
 
     expect(tournamentSignup?.userSignups.length).toEqual(1);
@@ -209,12 +218,12 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
 
     // Populate database
-    await saveGames([
-      { ...testGame, minAttendance: 1 },
+    await saveProgramItems([
+      { ...testProgramItem, minAttendance: 1 },
       {
-        ...testGame2,
-        startTime: testGame.startTime,
-        gameId: directSignupAlwaysOpenId,
+        ...testProgramItem2,
+        startTime: testProgramItem.startTime,
+        programItemId: directSignupAlwaysOpenId,
         minAttendance: 1,
       },
     ]);
@@ -226,13 +235,13 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       lotterySignups: [
         { ...mockLotterySignups[0], priority: 2 },
         {
-          // directSignupAlwaysOpen signed game should be ignored
-          gameDetails: {
-            ...testGame2,
-            gameId: directSignupAlwaysOpenId,
+          // directSignupAlwaysOpen signed program item should be ignored
+          programItem: {
+            ...testProgramItem2,
+            programItemId: directSignupAlwaysOpenId,
           },
           priority: 1,
-          time: testGame.startTime,
+          time: testProgramItem.startTime,
           message: "",
         },
       ],
@@ -242,39 +251,42 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     await saveDirectSignup({
       ...mockPostDirectSignupRequest2,
       username: mockUser2.username,
-      startTime: testGame.startTime,
-      directSignupGameId: directSignupAlwaysOpenId,
+      startTime: testProgramItem.startTime,
+      directSignupProgramItemId: directSignupAlwaysOpenId,
     });
 
     const signupsBeforeUpdateResult = await findDirectSignups();
     const signupsBeforeUpdate = unsafelyUnwrapResult(signupsBeforeUpdateResult);
 
-    const gamesWithSignups = signupsBeforeUpdate.filter(
+    const programItemsWithSignups = signupsBeforeUpdate.filter(
       (signup) => signup.userSignups.length > 0,
     );
-    expect(gamesWithSignups.length).toEqual(1);
+    expect(programItemsWithSignups.length).toEqual(1);
 
     const assignResultsResult = await runAssignment({
       assignmentStrategy,
-      startTime: testGame.startTime,
+      startTime: testProgramItem.startTime,
     });
     const assignResults = unsafelyUnwrapResult(assignResultsResult);
 
     expect(assignResults.status).toEqual("success");
     expect(assignResults.results.length).toEqual(1);
     assignResults.results.map((result) => {
-      expect(result.directSignup.gameDetails.gameId).toEqual(testGame.gameId);
+      expect(result.directSignup.programItem.programItemId).toEqual(
+        testProgramItem.programItemId,
+      );
     });
 
     const signupsAfterUpdateResult = await findDirectSignups();
     const signupsAfterUpdate = unsafelyUnwrapResult(signupsAfterUpdateResult);
 
     const assignmentSignup = signupsAfterUpdate.find(
-      (signup) => signup.game.gameId === testGame.gameId,
+      (signup) =>
+        signup.programItem.programItemId === testProgramItem.programItemId,
     );
 
     const directSignupAlwaysOpenSignup = signupsAfterUpdate.find(
-      (signup) => signup.game.gameId === directSignupAlwaysOpenId,
+      (signup) => signup.programItem.programItemId === directSignupAlwaysOpenId,
     );
 
     expect(assignmentSignup?.userSignups.length).toEqual(1);
@@ -290,12 +302,12 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
 
     // Populate database
-    await saveGames([
-      testGame,
+    await saveProgramItems([
+      testProgramItem,
       {
-        ...testGame2,
-        startTime: testGame.startTime,
-        gameId: directSignupAlwaysOpenId,
+        ...testProgramItem2,
+        startTime: testProgramItem.startTime,
+        programItemId: directSignupAlwaysOpenId,
       },
     ]);
     await saveUser(mockUser);
@@ -306,10 +318,13 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       lotterySignups: [
         { ...mockLotterySignups[0], priority: 2 },
         {
-          // directSignupAlwaysOpen signed game should be ignored
-          gameDetails: { ...testGame2, gameId: directSignupAlwaysOpenId },
+          // directSignupAlwaysOpen signed program item should be ignored
+          programItem: {
+            ...testProgramItem2,
+            programItemId: directSignupAlwaysOpenId,
+          },
           priority: 1,
-          time: testGame.startTime,
+          time: testProgramItem.startTime,
           message: "",
         },
       ],
@@ -319,10 +334,13 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       lotterySignups: [
         { ...mockLotterySignups[0], priority: 2 },
         {
-          // directSignupAlwaysOpen signed game should be ignored
-          gameDetails: { ...testGame2, gameId: directSignupAlwaysOpenId },
+          // directSignupAlwaysOpen signed program item should be ignored
+          programItem: {
+            ...testProgramItem2,
+            programItemId: directSignupAlwaysOpenId,
+          },
           priority: 1,
-          time: testGame.startTime,
+          time: testProgramItem.startTime,
           message: "",
         },
       ],
@@ -333,8 +351,8 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     // This should be replaced by assignment
     await saveDirectSignup({
       ...mockPostDirectSignupRequest2,
-      startTime: testGame.startTime,
-      directSignupGameId: directSignupAlwaysOpenId,
+      startTime: testProgramItem.startTime,
+      directSignupProgramItemId: directSignupAlwaysOpenId,
     });
 
     const signupsBeforeUpdateResult = await findDirectSignups();
@@ -344,24 +362,27 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
 
     const assignResultsResult = await runAssignment({
       assignmentStrategy,
-      startTime: testGame.startTime,
+      startTime: testProgramItem.startTime,
     });
     const assignResults = unsafelyUnwrapResult(assignResultsResult);
 
     expect(assignResults.status).toEqual("success");
     expect(assignResults.results.length).toEqual(2);
     assignResults.results.map((result) => {
-      expect(result.directSignup.gameDetails.gameId).toEqual(testGame.gameId);
+      expect(result.directSignup.programItem.programItemId).toEqual(
+        testProgramItem.programItemId,
+      );
     });
 
     const signupsAfterUpdateResult = await findDirectSignups();
     const signupsAfterUpdate = unsafelyUnwrapResult(signupsAfterUpdateResult);
 
     const assignmentSignup = signupsAfterUpdate.find(
-      (signup) => signup.game.gameId === testGame.gameId,
+      (signup) =>
+        signup.programItem.programItemId === testProgramItem.programItemId,
     );
     const directSignupAlwaysOpenSignup = signupsAfterUpdate.find(
-      (signup) => signup.game.gameId === directSignupAlwaysOpenId,
+      (signup) => signup.programItem.programItemId === directSignupAlwaysOpenId,
     );
 
     expect(assignmentSignup?.userSignups.length).toEqual(2);
@@ -369,18 +390,18 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
   });
 
   test("should not remove previous signup from moved program item if user doesn't have updated result", async () => {
-    // User1, game1: 14:00 direct signup -> game moved 15:00
-    // User2, game2: 15:00 lottery signup -> doesn't affect user1 signup
+    // User1, programItem1: 14:00 direct signup -> program item moved 15:00
+    // User2, programItem2: 15:00 lottery signup -> doesn't affect user1 signup
     const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
 
-    const assignmentTime = dayjs(testGame.startTime)
+    const assignmentTime = dayjs(testProgramItem.startTime)
       .add(1, "hours")
       .toISOString();
 
-    await saveGames([
-      { ...testGame },
+    await saveProgramItems([
+      { ...testProgramItem },
       {
-        ...testGame2,
+        ...testProgramItem2,
         minAttendance: 1,
         startTime: assignmentTime,
       },
@@ -391,8 +412,8 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     // User 1 has previous signup from moved program item - this should not be removed
     await saveDirectSignup(mockPostDirectSignupRequest);
 
-    await GameModel.updateOne(
-      { gameId: testGame.gameId },
+    await ProgramItemModel.updateOne(
+      { programItemId: testProgramItem.programItemId },
       {
         startTime: assignmentTime,
       },
@@ -405,10 +426,10 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     });
 
     const signupsBeforeUpdate = unsafelyUnwrapResult(await findDirectSignups());
-    const gamesWithSignups = signupsBeforeUpdate.filter(
+    const programItemsWithSignups = signupsBeforeUpdate.filter(
       (signup) => signup.userSignups.length > 0,
     );
-    expect(gamesWithSignups).toHaveLength(1);
+    expect(programItemsWithSignups).toHaveLength(1);
 
     const assignResults = unsafelyUnwrapResult(
       await runAssignment({
@@ -419,13 +440,16 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     expect(assignResults.status).toEqual("success");
     expect(assignResults.results).toHaveLength(1);
     assignResults.results.map((result) => {
-      expect(result.directSignup.gameDetails.gameId).toEqual(testGame2.gameId);
+      expect(result.directSignup.programItem.programItemId).toEqual(
+        testProgramItem2.programItemId,
+      );
     });
 
     const signupsAfterUpdate = unsafelyUnwrapResult(await findDirectSignups());
 
     const previousSignupFromMovedProgramItem = signupsAfterUpdate.find(
-      (signup) => signup.game.gameId === testGame.gameId,
+      (signup) =>
+        signup.programItem.programItemId === testProgramItem.programItemId,
     );
     expect(previousSignupFromMovedProgramItem?.userSignups).toHaveLength(1);
     expect(previousSignupFromMovedProgramItem?.userSignups[0].username).toEqual(
@@ -433,7 +457,8 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     );
 
     const assignmentSignup = signupsAfterUpdate.find(
-      (signup) => signup.game.gameId === testGame2.gameId,
+      (signup) =>
+        signup.programItem.programItemId === testProgramItem2.programItemId,
     );
     expect(assignmentSignup?.userSignups).toHaveLength(1);
     expect(assignmentSignup?.userSignups[0].username).toEqual(
@@ -442,18 +467,18 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
   });
 
   test("should update previous signup from moved program item with assignment signup if user has updated result", async () => {
-    // Game1: 14:00 direct signup -> game moved 15:00
-    // Game2: 15:00 lottery signup -> replaces Game1
+    // ProgramItem1: 14:00 direct signup -> program item moved 15:00
+    // ProgramItem2: 15:00 lottery signup -> replaces ProgramItem1
     const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
 
-    const assignmentTime = dayjs(testGame.startTime)
+    const assignmentTime = dayjs(testProgramItem.startTime)
       .add(1, "hours")
       .toISOString();
 
-    await saveGames([
-      { ...testGame },
+    await saveProgramItems([
+      { ...testProgramItem },
       {
-        ...testGame2,
+        ...testProgramItem2,
         minAttendance: 1,
         startTime: assignmentTime,
       },
@@ -472,18 +497,18 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     // User has previous signup from moved program item - this should be replaced by assignment result
     await saveDirectSignup(mockPostDirectSignupRequest);
 
-    await GameModel.updateOne(
-      { gameId: testGame.gameId },
+    await ProgramItemModel.updateOne(
+      { programItemId: testProgramItem.programItemId },
       {
         startTime: assignmentTime,
       },
     );
 
     const signupsBeforeUpdate = unsafelyUnwrapResult(await findDirectSignups());
-    const gamesWithSignups = signupsBeforeUpdate.filter(
+    const programItemsWithSignups = signupsBeforeUpdate.filter(
       (signup) => signup.userSignups.length > 0,
     );
-    expect(gamesWithSignups).toHaveLength(1);
+    expect(programItemsWithSignups).toHaveLength(1);
 
     const assignResults = unsafelyUnwrapResult(
       await runAssignment({
@@ -494,18 +519,22 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     expect(assignResults.status).toEqual("success");
     expect(assignResults.results).toHaveLength(1);
     assignResults.results.map((result) => {
-      expect(result.directSignup.gameDetails.gameId).toEqual(testGame2.gameId);
+      expect(result.directSignup.programItem.programItemId).toEqual(
+        testProgramItem2.programItemId,
+      );
     });
 
     const signupsAfterUpdate = unsafelyUnwrapResult(await findDirectSignups());
 
     const previousSignupFromMovedProgramItem = signupsAfterUpdate.find(
-      (signup) => signup.game.gameId === testGame.gameId,
+      (signup) =>
+        signup.programItem.programItemId === testProgramItem.programItemId,
     );
     expect(previousSignupFromMovedProgramItem?.userSignups).toHaveLength(0);
 
     const assignmentSignup = signupsAfterUpdate.find(
-      (signup) => signup.game.gameId === testGame2.gameId,
+      (signup) =>
+        signup.programItem.programItemId === testProgramItem2.programItemId,
     );
     expect(assignmentSignup?.userSignups).toHaveLength(1);
     expect(assignmentSignup?.userSignups[0].username).toEqual(
@@ -519,20 +548,20 @@ describe("Assignment with first time bonus", () => {
     const directSignupAlwaysOpenId =
       config.shared().directSignupAlwaysOpenIds[0];
     const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
-    const tournamentGameId = "AIAHHUA";
+    const tournamentProgramItemId = "AIAHHUA";
 
     // Populate database
-    await saveGames([
-      { ...testGame, minAttendance: 1, maxAttendance: 1 },
-      testGame2,
+    await saveProgramItems([
+      { ...testProgramItem, minAttendance: 1, maxAttendance: 1 },
+      testProgramItem2,
       {
-        ...testGame2,
+        ...testProgramItem2,
         programType: ProgramType.TOURNAMENT,
-        gameId: tournamentGameId,
+        programItemId: tournamentProgramItemId,
       },
       {
-        ...testGame2,
-        gameId: directSignupAlwaysOpenId,
+        ...testProgramItem2,
+        programItemId: directSignupAlwaysOpenId,
       },
     ]);
     await saveUser(mockUser);
@@ -551,14 +580,18 @@ describe("Assignment with first time bonus", () => {
     await saveDirectSignup({
       ...mockPostDirectSignupRequest2,
       username: mockUser.username,
-      startTime: dayjs(testGame.startTime).subtract(1, "hours").toISOString(),
+      startTime: dayjs(testProgramItem.startTime)
+        .subtract(1, "hours")
+        .toISOString(),
     });
 
     // Tournament signup should not affect the bonus
     await saveDirectSignup({
       username: mockUser2.username,
-      directSignupGameId: tournamentGameId,
-      startTime: dayjs(testGame.startTime).subtract(1, "hours").toISOString(),
+      directSignupProgramItemId: tournamentProgramItemId,
+      startTime: dayjs(testProgramItem.startTime)
+        .subtract(1, "hours")
+        .toISOString(),
       message: "",
       priority: DIRECT_SIGNUP_PRIORITY,
     });
@@ -566,22 +599,24 @@ describe("Assignment with first time bonus", () => {
     // directSignupAlwaysOpen signup should not affect the bonus
     await saveDirectSignup({
       username: mockUser2.username,
-      directSignupGameId: directSignupAlwaysOpenId,
-      startTime: dayjs(testGame.startTime).subtract(2, "hours").toISOString(),
+      directSignupProgramItemId: directSignupAlwaysOpenId,
+      startTime: dayjs(testProgramItem.startTime)
+        .subtract(2, "hours")
+        .toISOString(),
       message: "",
       priority: DIRECT_SIGNUP_PRIORITY,
     });
 
     const signupsBeforeUpdateResult = await findDirectSignups();
     const signupsBeforeUpdate = unsafelyUnwrapResult(signupsBeforeUpdateResult);
-    const gamesWithSignups = signupsBeforeUpdate.filter(
+    const programItemsWithSignups = signupsBeforeUpdate.filter(
       (signup) => signup.userSignups.length > 0,
     );
-    expect(gamesWithSignups.length).toEqual(3);
+    expect(programItemsWithSignups.length).toEqual(3);
 
     const assignResultsResult = await runAssignment({
       assignmentStrategy,
-      startTime: testGame.startTime,
+      startTime: testProgramItem.startTime,
     });
     const assignResults = unsafelyUnwrapResult(assignResultsResult);
     expect(assignResults.status).toEqual("success");
@@ -591,42 +626,44 @@ describe("Assignment with first time bonus", () => {
     const signupsAfterUpdate = unsafelyUnwrapResult(signupsAfterUpdateResult);
 
     const assignmentSignup = signupsAfterUpdate.find(
-      (signup) => signup.game.gameId === testGame.gameId,
+      (signup) =>
+        signup.programItem.programItemId === testProgramItem.programItemId,
     );
 
     const previousRpgSignup = signupsAfterUpdate.find(
-      (signup) => signup.game.gameId === testGame2.gameId,
+      (signup) =>
+        signup.programItem.programItemId === testProgramItem2.programItemId,
     );
 
     const previousTournamentSignup = signupsAfterUpdate.find(
-      (signup) => signup.game.gameId === tournamentGameId,
+      (signup) => signup.programItem.programItemId === tournamentProgramItemId,
     );
 
     const previousDirectSignupAlwaysOpenSignup = signupsAfterUpdate.find(
-      (signup) => signup.game.gameId === directSignupAlwaysOpenId,
+      (signup) => signup.programItem.programItemId === directSignupAlwaysOpenId,
     );
 
     expect(assignmentSignup?.userSignups[0]).toMatchObject({
       username: mockUser2.username,
-      time: mockLotterySignups[0].gameDetails.startTime,
+      time: mockLotterySignups[0].programItem.startTime,
       message: "",
       priority: 3,
     });
     expect(previousRpgSignup?.userSignups[0]).toMatchObject({
       username: mockUser.username,
-      time: dayjs(testGame.startTime).subtract(1, "hours").toISOString(),
+      time: dayjs(testProgramItem.startTime).subtract(1, "hours").toISOString(),
       message: "",
       priority: DIRECT_SIGNUP_PRIORITY,
     });
     expect(previousTournamentSignup?.userSignups[0]).toMatchObject({
       username: mockUser2.username,
-      time: dayjs(testGame.startTime).subtract(1, "hours").toISOString(),
+      time: dayjs(testProgramItem.startTime).subtract(1, "hours").toISOString(),
       message: "",
       priority: DIRECT_SIGNUP_PRIORITY,
     });
     expect(previousDirectSignupAlwaysOpenSignup?.userSignups[0]).toMatchObject({
       username: mockUser2.username,
-      time: dayjs(testGame.startTime).subtract(2, "hours").toISOString(),
+      time: dayjs(testProgramItem.startTime).subtract(2, "hours").toISOString(),
       message: "",
       priority: DIRECT_SIGNUP_PRIORITY,
     });

@@ -7,28 +7,38 @@ import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { HEADER_HEIGHT } from "client/components/Header";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
 import { submitUpdateEventLogIsSeen } from "client/views/login/loginThunks";
+import { AppRoute } from "client/app/AppRoutes";
 
 export const NotificationBar = (): ReactElement | null => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
   const username = useAppSelector((state) => state.login.username);
-  const games = useAppSelector((state) => state.allGames.games);
+  const programItems = useAppSelector(
+    (state) => state.allProgramItems.programItems,
+  );
   const eventLogItems = useAppSelector((state) => state.login.eventLogItems);
   const unseenEvents = eventLogItems.filter((item) => !item.isSeen);
 
   const errorList = unseenEvents.map(
     ({ eventLogItemId, programItemId, action, createdAt }) => {
-      const foundGame = games.find((game) => game.gameId === programItemId);
-      if (!foundGame) {
+      const foundProgramItem = programItems.find(
+        (programItem) => programItem.programItemId === programItemId,
+      );
+      if (!foundProgramItem) {
         return;
       }
       return (
         <StyledNotification key={`${action}-${createdAt}`}>
           <div>
             <span>{t(`eventLogActions.${action}`)}</span>
-            <Link to={`/games/${programItemId}`}>{foundGame.title}</Link>
-            <StartTime>({getWeekdayAndTime(foundGame.startTime)})</StartTime>.
+            <Link to={`${AppRoute.PROGRAM_ITEM}/${programItemId}`}>
+              {foundProgramItem.title}
+            </Link>
+            <StartTime>
+              ({getWeekdayAndTime(foundProgramItem.startTime)})
+            </StartTime>
+            .
             <ShowAllLinkContainer>
               <Link to={`/notifications`}>{t("notificationBar.showAll")}</Link>
             </ShowAllLinkContainer>

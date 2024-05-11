@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 
 export interface UserDirectSignup {
   username: string;
@@ -9,7 +9,7 @@ export interface UserDirectSignup {
 }
 
 export interface DirectSignupsForProgramItem {
-  game: Game;
+  programItem: ProgramItem;
   userSignups: readonly UserDirectSignup[];
   count?: number;
 }

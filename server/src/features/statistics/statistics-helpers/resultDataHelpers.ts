@@ -1,5 +1,5 @@
 import { logger } from "server/utils/logger";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 import { ResultsCollectionEntry } from "server/types/resultTypes";
 import { StringNumberObject } from "server/types/commonTypes";
 import { toPercent } from "server/features/statistics/statsUtil";
@@ -13,7 +13,7 @@ export const getSignupsByTime = (
   }, {});
 
   logger.debug(
-    `Number of people entering to games by start times: \n`,
+    `Number of people entering to program items by start times: \n`,
     signupsByTime,
   );
 
@@ -21,17 +21,18 @@ export const getSignupsByTime = (
 };
 
 export const getMaximumNumberOfPlayersByTime = (
-  games: readonly Game[],
+  programItems: readonly ProgramItem[],
 ): StringNumberObject => {
   const maxNumberOfPlayersByTime: StringNumberObject = {};
 
-  games.forEach((game) => {
-    if (!maxNumberOfPlayersByTime[game.startTime]) {
-      maxNumberOfPlayersByTime[game.startTime] = 0;
+  programItems.forEach((programItem) => {
+    if (!maxNumberOfPlayersByTime[programItem.startTime]) {
+      maxNumberOfPlayersByTime[programItem.startTime] = 0;
     }
 
-    maxNumberOfPlayersByTime[game.startTime] =
-      maxNumberOfPlayersByTime[game.startTime] + game.maxAttendance;
+    maxNumberOfPlayersByTime[programItem.startTime] =
+      maxNumberOfPlayersByTime[programItem.startTime] +
+      programItem.maxAttendance;
   });
 
   logger.debug(

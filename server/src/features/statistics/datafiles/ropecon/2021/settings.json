@@ -1,15 +1,15 @@
 [
   {
     "hiddenGames": [
-      { "gameId": "p4692" },
-      { "gameId": "p4671" },
-      { "gameId": "p4717" }
+      { "programItemId": "p4692" },
+      { "programItemId": "p4671" },
+      { "programItemId": "p4717" }
     ],
     "signupTime": null,
     "appOpen": false,
     "signupQuestions": [
       {
-        "gameId": "p4699",
+        "programItemId": "p4699",
         "message": "Hahmoluokka ja taso / Character class and level"
       }
     ],

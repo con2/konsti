@@ -10,8 +10,11 @@ import {
 } from "server/features/user/event-log/eventLogRepository";
 import { EventLogAction } from "shared/types/models/eventLog";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
-import { saveGames } from "server/features/game/gameRepository";
-import { testGame, testGame2 } from "shared/tests/testGame";
+import { saveProgramItems } from "server/features/program-item/programItemRepository";
+import {
+  testProgramItem,
+  testProgramItem2,
+} from "shared/tests/testProgramItem";
 
 beforeEach(async () => {
   await mongoose.connect(globalThis.__MONGO_URI__, {
@@ -24,7 +27,7 @@ afterEach(async () => {
 });
 
 test("should insert new event log item to user", async () => {
-  await saveGames([testGame]);
+  await saveProgramItems([testProgramItem]);
   await saveUser(mockUser);
   await saveUser(mockUser2);
   await saveUser(mockUser3);
@@ -33,14 +36,14 @@ test("should insert new event log item to user", async () => {
     updates: [
       {
         username: mockUser.username,
-        programItemId: testGame.gameId,
-        programItemStartTime: testGame.startTime,
+        programItemId: testProgramItem.programItemId,
+        programItemStartTime: testProgramItem.startTime,
         createdAt: "2019-07-26T17:00:00.000Z",
       },
       {
         username: mockUser2.username,
-        programItemId: testGame.gameId,
-        programItemStartTime: testGame.startTime,
+        programItemId: testProgramItem.programItemId,
+        programItemStartTime: testProgramItem.startTime,
         createdAt: "2020-07-26T17:00:00.000Z",
       },
     ],
@@ -55,8 +58,8 @@ test("should insert new event log item to user", async () => {
     eventLogItems: [
       {
         action: EventLogAction.NEW_ASSIGNMENT,
-        programItemId: testGame.gameId,
-        programItemStartTime: testGame.startTime,
+        programItemId: testProgramItem.programItemId,
+        programItemStartTime: testProgramItem.startTime,
         createdAt: "2019-07-26T17:00:00.000Z",
       },
     ],
@@ -70,8 +73,8 @@ test("should insert new event log item to user", async () => {
     eventLogItems: [
       {
         action: EventLogAction.NEW_ASSIGNMENT,
-        programItemId: testGame.gameId,
-        programItemStartTime: testGame.startTime,
+        programItemId: testProgramItem.programItemId,
+        programItemStartTime: testProgramItem.startTime,
         createdAt: "2020-07-26T17:00:00.000Z",
       },
     ],
@@ -88,21 +91,21 @@ test("should insert new event log item to user", async () => {
 });
 
 test("should delete event log items for start time", async () => {
-  await saveGames([testGame, testGame2]);
+  await saveProgramItems([testProgramItem, testProgramItem2]);
   await saveUser(mockUser);
 
   await addEventLogItems({
     updates: [
       {
         username: mockUser.username,
-        programItemId: testGame.gameId,
-        programItemStartTime: testGame.startTime,
+        programItemId: testProgramItem.programItemId,
+        programItemStartTime: testProgramItem.startTime,
         createdAt: "2019-07-26T17:00:00.000Z",
       },
       {
         username: mockUser.username,
-        programItemId: testGame2.gameId,
-        programItemStartTime: testGame2.startTime,
+        programItemId: testProgramItem2.programItemId,
+        programItemStartTime: testProgramItem2.startTime,
         createdAt: "2020-07-26T17:00:00.000Z",
       },
     ],
@@ -110,7 +113,7 @@ test("should delete event log items for start time", async () => {
   });
 
   await deleteEventLogItemsByStartTime(
-    testGame.startTime,
+    testProgramItem.startTime,
     EventLogAction.NEW_ASSIGNMENT,
   );
 
@@ -122,8 +125,8 @@ test("should delete event log items for start time", async () => {
     eventLogItems: [
       {
         action: EventLogAction.NEW_ASSIGNMENT,
-        programItemId: testGame2.gameId,
-        programItemStartTime: testGame2.startTime,
+        programItemId: testProgramItem2.programItemId,
+        programItemStartTime: testProgramItem2.startTime,
         createdAt: "2020-07-26T17:00:00.000Z",
       },
     ],

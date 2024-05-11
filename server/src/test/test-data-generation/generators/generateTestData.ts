@@ -3,12 +3,12 @@ import {
   createTestUsers,
   createUsersInGroup,
 } from "server/test/test-data-generation/generators/createUsers";
-import { createGames } from "server/test/test-data-generation/generators/createGames";
+import { createProgramItems } from "server/test/test-data-generation/generators/createProgramItems";
 import { createLotterySignups } from "server/test/test-data-generation/generators/createLotterySignups";
 
 export const generateTestData = async (
   newUsersCount: number,
-  newGamesCount: number,
+  newProgramItemsCount: number,
   groupSize: number,
   numberOfGroups: number,
   testUsersCount: number,
@@ -20,7 +20,7 @@ export const generateTestData = async (
     testUsersCount,
   );
 
-  await createGames(newGamesCount);
+  await createProgramItems(newProgramItemsCount);
 
   await createLotterySignups();
 };

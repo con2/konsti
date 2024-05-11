@@ -42,7 +42,6 @@
   "show": "Näytä",
   "hide": "Piilota",
   "sortBy": "Järjestys",
-  "gameTitle": "Pelin nimi",
   "find": "Etsi",
   "findTitleOrUsername": "{{PROGRAM_TYPE}} nimi tai käyttäjänimi",
   "searchWithTitle": "{{PROGRAM_TYPE}} nimi",
@@ -70,7 +69,7 @@
     "profile": "Profiili",
     "help": "Ohjeet"
   },
-  "gameInfo": {
+  "programItemInfo": {
     "gameStyle": "Pelityyli",
     "runTime": "Aika",
     "description": "Kuvaus",
@@ -122,12 +121,12 @@
     "finnishOrEnglish": "Suomeksi tai englanniksi",
     "languageFree": "Kielivapaa"
   },
-  "gameTags": {
+  "tags": {
     "inEnglish": "Englanniksi",
     "childrenFriendly": "Lapsiystävällinen",
     "ageRestricted": "Vain täysi-ikäisille",
     "beginnerFriendly": "Aloittelijaystävällinen",
-    "guestOfHonor": "Kunniavieraspeli",
+    "guestOfHonor": "Kunniavierasohjelmanumero",
     "family": "Sopii perheille",
     "themeElements": "Teema: Elementit",
     "suitableUnder7": "Sopii alle 7-vuotiaille",
@@ -171,7 +170,7 @@
   "showPrivacyPolicy": "Näytä rekisteriseloste",
   "hidePrivacyPolicy": "Piilota rekisteriseloste",
   "registrationSerialHelp": "Nouda rekisteröintikoodi Larp- ja Roolipelitiskiltä, Pelitiskiltä tai Infosta.",
-  "noLotterySignups": "Ei valittuja pelejä. Voit ilmoittautua peleihin Kaikki ohjelma -näkymässä.",
+  "noLotterySignups": "Ei valittuja ohjelmanumeroita. Voit ilmoittautua Kaikki ohjelma -näkymässä.",
   "noFavoritedProgramItems": "Ei suosikkeja. Voit tallettaa suosikkiohjelmaa Kaikki ohjelma -näkymässä.",
   "noDirectSignups": "Ei ilmoittautumisia. Voit ilmoittautua ohjelmaan Kaikki ohjelma -näkymässä.",
   "noHiddenProgramItems": "Ei piilotettuja ohjelmanumeroita",
@@ -187,19 +186,18 @@
     "signupEnded": "Ilmoittautuminen päättynyt",
     "samePriority": "Prioriteetti on jo valittu",
     "signupNotOpenYet": "Ilmoittautuminen ei ole vielä auki",
-    "programFull": "Ohjelma on täynnä.",
+    "programItemFull": "Ohjelma on täynnä.",
     "noKonstiSignup": "Tähän ohjelmaan ei ilmoittauduta Konstissa. Katso ilmoittautumisohjeet ohjelman lisätiedoista."
   },
   "signupUnsavedChanges": "Tallentamattomia muutoksia",
   "closingMessage": "Konsti on suljettu ja avautuu lähempänä seuraavaa tapahtumaa",
   "details": "lisätietoja",
-  "gameLimitWarning": "Voit valita enintään kolme peliä.",
-  "noLotterySignupResult": "Valitettavasti et mahtunut mihinkään peliin arvonnassa.",
+  "noLotterySignupResult": "Valitettavasti et mahtunut mihinkään ohjelmanumeroon arvonnassa.",
   "invalidProgramItemId": "Ohjelmanumeroa ei löydy, viallinen tunniste",
   "feedbackTitle": "Palaute",
   "feedbackInstruction": "Piditkö {{PROGRAM_TYPE}}? Lähetä palautetta järjestäjälle! Palautteet toimitetaan tapahtuman jälkeen.",
   "noProgramItemsAvailable": "Ei näytettäviä {{PROGRAM_TYPE}}, tarkistathan hakuehdot.",
-  "noGamesInDatabase": "Ei pelejä tietokannassa",
+  "noProgramItemsInDatabase": "Ei ohjelmanumeroita tietokannassa",
   "upcoming": "Tulevat",
   "all": "Kaikki",
   "allProgramItems": "Kaikki {{PROGRAM_TYPE}}",
@@ -220,7 +218,7 @@
       "creatorHasDirectSignups": "Sinulla on jo ilmoittautumisia peleihin. Poista ilmoittautumiset ennen kuin voit luoda ryhmän.",
       "alreadyInGroup": "Kuulut jo toiseen ryhmään."
     },
-    "hasDirectlySignedFollowingGames": "Olet jo ilmoittautunut seuraaviin peleihin:",
+    "hasDirectlySignedFollowingProgramItems": "Olet jo ilmoittautunut seuraaviin ohjelmanumeroihin:",
     "cancelSignupBeforeJoiningOrCreatingGroup": "Sinun täytyy perua nämä ilmoittautumiset ennen kuin voit luoda ryhmän tai liittyä ryhmään.",
     "signupDisabledNotCreator": "Olet ryhmän jäsen. Ryhmän perustaja ilmoittautuu arvontaan ryhmän jäsenten puolesta.",
     "signupForWholeGroup": "Olet ryhmän perustaja. Voit ilmoittautua arvontaan koko ryhmän puolesta.",
@@ -236,8 +234,8 @@
     "youAreInGroup": "Olet ryhmässä",
     "groupMembers": "Ryhmän jäsenet",
     "groupCreator": "ryhmän perustaja",
-    "groupMemberInfo": "Ryhmän perustaja ilmoittautuu arvontaan ryhmän muiden jäsenten puolesta. Näet valitut pelit \"Oma ohjelmani\" sivulta",
-    "groupCreatorInfo": "Voit ilmoittautua arvontaan koko ryhmän puolesta. Varmistathan, että ryhmä ei ole liian iso valitsemiisi peleihin liittymistä varten. Ryhmän perustaja ei voi poistua ryhmästä, mutta voi sulkea ryhmän. Tällöin kaikki ryhmän jäsenet poistetaan ryhmästä.",
+    "groupMemberInfo": "Ryhmän perustaja ilmoittautuu arvontaan ryhmän muiden jäsenten puolesta. Näet valitut ohjelmanumerot \"Oma ohjelmani\" sivulta",
+    "groupCreatorInfo": "Voit ilmoittautua arvontaan koko ryhmän puolesta. Varmistathan, että ryhmä ei ole liian iso valitsemiisi ohjelmanumeroihin liittymistä varten. Ryhmän perustaja ei voi poistua ryhmästä, mutta voi sulkea ryhmän. Tällöin kaikki ryhmän jäsenet poistetaan ryhmästä.",
     "groupCodeInfo": "Muut voivat liittyä tähän ryhmään koodilla ",
     "joiningGroupWillCancelLotterySignups": "Ryhmään liittyminen peruu kaikki aikaisemmat arvonta-ilmoittautumisesi.",
     "groupLotterySignupGuide": "Ryhmä voi ilmoittautua samoihin peleihin arvontaa varten.",
@@ -264,24 +262,24 @@
   "eventLog": {
     "title": "Ilmoitukset",
     "noNotifications": "Ei ilmoituksia",
-    "gameDetails": "Aloitusaika {{START_TIME}} huoneessa {{LOCATION}}"
+    "programItemDetails": "Aloitusaika {{START_TIME}} huoneessa {{LOCATION}}"
   },
   "eventLogActions": {
-    "newAssignment": "Olet päässyt arvonnassa peliin "
+    "newAssignment": "Olet päässyt arvonnassa ohjelmanumeroon "
   },
   "notificationBar": {
     "showAll": "Näytä kaikki ilmoitukset"
   },
   "signup": {
-    "alreadyLotterySigned": "Peli on arvontavaihtoehdoissa sijalla {{CURRENT_PRIORITY}}",
+    "alreadyLotterySigned": "Ohjelmanumero on arvontavaihtoehdoissa sijalla {{CURRENT_PRIORITY}}",
     "directSignup": "Ilmoittaudu",
     "lotterySignup": "Ilmoittaudu arvontaan",
-    "cannotSignupMoreGames": "Voit valita enintään kolme arvontapeliä per alkamisaika",
-    "gamePriority": "Peli on toiveissani sijalla",
+    "cannotLotterySignupMoreProgramItems": "Voit valita enintään kolme arvontailmoittautumista per alkamisaika",
+    "programItemPriority": "Ohjelmanumero on toiveissani sijalla",
     "confirm": "Vahvista",
     "cancel": "Peruuta",
-    "alreadySignedToGame": "Olet ilmoittautunut {{PROGRAM_TYPE}}",
-    "cannotSignupMoreThanOneGame": "Et voi ilmoittautua toiseen samaan aikaan alkavaan ohjelmanumeroon.",
+    "alreadySignedToProgramItem": "Olet ilmoittautunut {{PROGRAM_TYPE}}",
+    "cannotSignupMoreThanOneProgramItem": "Et voi ilmoittautua toiseen samaan aikaan alkavaan ohjelmanumeroon.",
     "signupCount": "{{PLAYERS}}/{{MAX_ATTENDANCE}} ilmoittautunutta",
     "attendeesNeeded": "Tarvitaan vielä {{COUNT}} {{ATTENDEE_TYPE}}.",
     "programItemFull": "Tämä {{PROGRAM_TYPE}} on täynnä.",
@@ -294,8 +292,8 @@
     "loginToSignup": "Kirjaudu sisään ilmoittautumista varten",
     "lotterySignupOpens": "Arvontaan ilmoittautuminen alkaa",
     "signupAlwaysOpen": "Ilmoittautuminen aina auki",
-    "inGroupWarning": "Jos ilmoittaudut peliin, sinut poistetaan ryhmästäsi.",
-    "groupCreatorWarning": "Jos ilmoittaudut peliin, perustamasi ryhmä poistetaan.",
+    "inGroupWarning": "Jos ilmoittaudut ohjelmanumeroon, sinut poistetaan ryhmästäsi.",
+    "groupCreatorWarning": "Jos ilmoittaudut ohjelmanumeroon, perustamasi ryhmä poistetaan.",
     "currentSignup": "Olet ilmoittautunut tähän {{PROGRAM_TYPE}}.",
     "entryFee": "Materiaalimaksu {{ENTRY_FEE}}",
     "entryFeeInfo": "Ymmärrän, että työpajaan kuuluu materiaalimaksu {{ENTRY_FEE}}.",
@@ -409,8 +407,7 @@
     "allSignupResults": "Ilmoittautumistulokset",
     "confirm": "Vahvista",
     "noSignups": "Ei ilmoittautuneita {{ATTENDEE_TYPE}}",
-    "noResults": "Ei ilmoittautumistuloksia",
-    "signupResultsFor": "Ilmoittautumisen tulokset peleille jotka alkavat"
+    "noResults": "Ei ilmoittautumistuloksia"
   },
   "firstLogin": {
     "serial": "Ota koodi talteen salasanan palauttamista varten:",
@@ -466,7 +463,7 @@
     "profileTab": "Profiili",
     "groupTab": "Ryhmä"
   },
-  "gamePopularity": {
+  "programItemPopularity": {
     "low": "Tarvitaan lisää pelaajia",
     "medium": "Tarpeeksi pelaajia toteutuakseen",
     "high": "Enemmän kiinnostuneita kuin paikkoja"

@@ -1,5 +1,8 @@
-import { Game, ProgramType } from "shared/types/models/game";
+import { ProgramItem, ProgramType } from "shared/types/models/programItem";
 
-export const isRevolvingDoorWorkshop = (game: Game): boolean => {
-  return game.programType === ProgramType.WORKSHOP && game.revolvingDoor;
+export const isRevolvingDoorWorkshop = (programItem: ProgramItem): boolean => {
+  return (
+    programItem.programType === ProgramType.WORKSHOP &&
+    programItem.revolvingDoor
+  );
 };

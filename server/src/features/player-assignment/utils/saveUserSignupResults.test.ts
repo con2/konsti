@@ -2,8 +2,8 @@ import { expect, test, afterEach, beforeEach } from "vitest";
 import mongoose from "mongoose";
 import { faker } from "@faker-js/faker";
 import { findUsers, saveUser } from "server/features/user/userRepository";
-import { testGame } from "shared/tests/testGame";
-import { saveGames } from "server/features/game/gameRepository";
+import { testProgramItem } from "shared/tests/testProgramItem";
+import { saveProgramItems } from "server/features/program-item/programItemRepository";
 import {
   mockUser,
   mockUser2,
@@ -30,48 +30,48 @@ test("should not add event log items after assigment if signup is dropped due to
   await saveUser(mockUser2);
   await saveUser(mockUser3);
   await saveUser(mockUser4);
-  await saveGames([{ ...testGame, maxAttendance: 3 }]);
+  await saveProgramItems([{ ...testProgramItem, maxAttendance: 3 }]);
 
   const results: AssignmentResult[] = [
     {
       username: mockUser.username,
       directSignup: {
-        gameDetails: testGame,
+        programItem: testProgramItem,
         priority: 1,
-        time: testGame.startTime,
+        time: testProgramItem.startTime,
         message: "",
       },
     },
     {
       username: mockUser2.username,
       directSignup: {
-        gameDetails: testGame,
+        programItem: testProgramItem,
         priority: 1,
-        time: testGame.startTime,
+        time: testProgramItem.startTime,
         message: "",
       },
     },
     {
       username: mockUser3.username,
       directSignup: {
-        gameDetails: testGame,
+        programItem: testProgramItem,
         priority: 1,
-        time: testGame.startTime,
+        time: testProgramItem.startTime,
         message: "",
       },
     },
     {
       username: mockUser4.username,
       directSignup: {
-        gameDetails: testGame,
+        programItem: testProgramItem,
         priority: 1,
-        time: testGame.startTime,
+        time: testProgramItem.startTime,
         message: "",
       },
     },
   ];
 
-  await saveUserSignupResults(testGame.startTime, results);
+  await saveUserSignupResults(testProgramItem.startTime, results);
 
   const signupsAfterSave = unsafelyUnwrapResult(await findDirectSignups());
   expect(signupsAfterSave).toHaveLength(1);

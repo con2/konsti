@@ -5,7 +5,7 @@ import { getGroups } from "server/features/player-assignment/utils/getGroups";
 import { getList } from "server/features/player-assignment/utils/getList";
 import { getRandomAssignEvents } from "server/features/player-assignment/random/utils/getRandomAssignEvents";
 import { formatResults } from "server/features/player-assignment/utils/formatResults";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 import { AssignmentStrategyResult } from "server/types/resultTypes";
 import {
   ListItem,
@@ -25,7 +25,7 @@ import { AssignmentError } from "shared/types/api/errors";
 import { logger } from "server/utils/logger";
 
 export const runRandomAssignment = (
-  lotterySignupGames: readonly Game[],
+  lotterySignupProgramItems: readonly ProgramItem[],
   playerGroups: readonly User[][],
   startTime: string,
   directSignups: readonly DirectSignupsForProgramItem[],
@@ -35,7 +35,10 @@ export const runRandomAssignment = (
     return groupsResult;
   }
   const groups = unwrapResult(groupsResult);
-  const events = getRandomAssignEvents(lotterySignupGames, directSignups);
+  const events = getRandomAssignEvents(
+    lotterySignupProgramItems,
+    directSignups,
+  );
   const listResult = getList(playerGroups, startTime, directSignups);
   if (isErrorResult(listResult)) {
     return listResult;

@@ -1,6 +1,6 @@
 import { Command } from "commander";
 import { getUserStats } from "./statistics-helpers/getUserStats";
-import { getGameStats } from "./statistics-helpers/getGameStats";
+import { getProgramItemStats } from "./statistics-helpers/getProgramItemStats";
 import { getResultsStats } from "./statistics-helpers/getResultsStats";
 
 const fixData = (): void => {
@@ -14,10 +14,10 @@ const fixData = (): void => {
     });
 
   commander
-    .command("games <year> <event>")
-    .description("Get game statistics")
+    .command("program-items <year> <event>")
+    .description("Get program item statistics")
     .action((year: number, event: string) => {
-      getGameStats(year, event);
+      getProgramItemStats(year, event);
     });
 
   commander

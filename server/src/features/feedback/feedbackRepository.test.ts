@@ -16,13 +16,13 @@ afterEach(async () => {
 
 test("should insert new feedback into collection", async () => {
   const mockFeedback = {
-    gameId: "1234A",
+    programItemId: "1234A",
     feedback: "Test feedback",
     username: "Test user",
   };
   await saveFeedback(mockFeedback);
 
   const insertedFeedback = await FeedbackModel.findOne(mockFeedback);
-  expect(insertedFeedback?.gameId).toEqual(mockFeedback.gameId);
+  expect(insertedFeedback?.programItemId).toEqual(mockFeedback.programItemId);
   expect(insertedFeedback?.feedback).toEqual(mockFeedback.feedback);
 });

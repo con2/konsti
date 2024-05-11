@@ -4,18 +4,23 @@ import { useTranslation } from "react-i18next";
 import { groupBy, sortBy, capitalize } from "lodash-es";
 import styled from "styled-components";
 import { useAppSelector } from "client/utils/hooks";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
 import { ControlledInput } from "client/components/ControlledInput";
-import { MULTIPLE_WHITESPACES_REGEX } from "client/views/all-games/AllGamesView";
+import { MULTIPLE_WHITESPACES_REGEX } from "client/views/all-program-items/AllProgramItemsView";
+import { AppRoute } from "client/app/AppRoutes";
 
 export const PrivateSignupMessages = (): ReactElement => {
   const { t } = useTranslation();
 
   const [searchTerm, setSearchTerm] = useState<string>("");
-  const [filteredGames, setFilteredGames] = useState<readonly Game[]>([]);
+  const [filteredProgramItems, setFilteredProgramItems] = useState<
+    readonly ProgramItem[]
+  >([]);
 
-  const games = useAppSelector((state) => state.allGames.games);
+  const programItems = useAppSelector(
+    (state) => state.allProgramItems.programItems,
+  );
   const signupQuestions = useAppSelector(
     (state) => state.admin.signupQuestions,
   );
@@ -28,53 +33,56 @@ export const PrivateSignupMessages = (): ReactElement => {
     (signupQuestion) => signupQuestion.private,
   );
 
-  const signupQuestionsWithGames = privateSignupQuestions.flatMap(
+  const signupQuestionsWithProgramItems = privateSignupQuestions.flatMap(
     (privateSignupQuestion) => {
-      const matchingGame = filteredGames.find(
-        (game) => game.gameId === privateSignupQuestion.gameId,
+      const matchingProgramItem = filteredProgramItems.find(
+        (programItem) =>
+          programItem.programItemId === privateSignupQuestion.programItemId,
       );
-      if (!matchingGame) {
+      if (!matchingProgramItem) {
         return [];
       }
-      return { ...privateSignupQuestion, game: matchingGame };
+      return { ...privateSignupQuestion, programItem: matchingProgramItem };
     },
   );
 
   const groupedSignupQuestions = groupBy(
-    sortBy(signupQuestionsWithGames, "game.startTime"),
-    "game.startTime",
+    sortBy(signupQuestionsWithProgramItems, "programItem.startTime"),
+    "programItem.startTime",
   );
 
   const privateSignupMessages = signupMessages.filter(
     (signupMessage) => signupMessage.private,
   );
 
-  const groupedSignupMessages = groupBy(privateSignupMessages, "gameId");
+  const groupedSignupMessages = groupBy(privateSignupMessages, "programItemId");
 
   useEffect(() => {
     if (searchTerm.length === 0) {
-      setFilteredGames(games);
+      setFilteredProgramItems(programItems);
       return;
     }
 
-    const gamesFilteredBySearchTerm = games.filter((game) => {
-      return (
-        game.title
-          .replace(MULTIPLE_WHITESPACES_REGEX, " ")
-          .toLocaleLowerCase()
-          .includes(searchTerm.toLocaleLowerCase()) ||
-        privateSignupMessages.find(
-          (signupMessage) =>
-            signupMessage.username
-              .toLocaleLowerCase()
-              .includes(searchTerm.toLocaleLowerCase()) &&
-            signupMessage.gameId === game.gameId,
-        )
-      );
-    });
+    const programItemsFilteredBySearchTerm = programItems.filter(
+      (programItem) => {
+        return (
+          programItem.title
+            .replace(MULTIPLE_WHITESPACES_REGEX, " ")
+            .toLocaleLowerCase()
+            .includes(searchTerm.toLocaleLowerCase()) ||
+          privateSignupMessages.find(
+            (signupMessage) =>
+              signupMessage.username
+                .toLocaleLowerCase()
+                .includes(searchTerm.toLocaleLowerCase()) &&
+              signupMessage.programItemId === programItem.programItemId,
+          )
+        );
+      },
+    );
 
-    setFilteredGames(gamesFilteredBySearchTerm);
-  }, [searchTerm, games]); // eslint-disable-line react-hooks/exhaustive-deps
+    setFilteredProgramItems(programItemsFilteredBySearchTerm);
+  }, [searchTerm, programItems]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div>
@@ -91,32 +99,39 @@ export const PrivateSignupMessages = (): ReactElement => {
       />
 
       {Object.entries(groupedSignupQuestions).map(
-        ([startTime, signupQuestionsWithGame]) => {
-          const sortedSignupQuestions = sortBy(signupQuestionsWithGame, [
-            (signupQuestion) => signupQuestion.game.title.toLocaleLowerCase(),
+        ([startTime, signupQuestionsWithProgramItem]) => {
+          const sortedSignupQuestions = sortBy(signupQuestionsWithProgramItem, [
+            (signupQuestion) =>
+              signupQuestion.programItem.title.toLocaleLowerCase(),
           ]);
 
           return (
             <div key={startTime}>
               <h3>{capitalize(getWeekdayAndTime(startTime))}</h3>
-              {sortedSignupQuestions.map((signupQuestionWithGame) => {
+              {sortedSignupQuestions.map((signupQuestionWitProgramItem) => {
                 const matchingSignupMessages =
-                  groupedSignupMessages[signupQuestionWithGame.gameId];
+                  groupedSignupMessages[
+                    signupQuestionWitProgramItem.programItemId
+                  ];
 
                 return (
-                  <SingleGameAnswers key={signupQuestionWithGame.gameId}>
-                    <Link to={`/games/${signupQuestionWithGame.game.gameId}`}>
-                      {signupQuestionWithGame.game.title}
+                  <SingleProgramItemAnswers
+                    key={signupQuestionWitProgramItem.programItemId}
+                  >
+                    <Link
+                      to={`${AppRoute.PROGRAM_ITEM}/${signupQuestionWitProgramItem.programItem.programItemId}`}
+                    >
+                      {signupQuestionWitProgramItem.programItem.title}
                     </Link>{" "}
                     (
                     {t(
-                      `programType.${signupQuestionWithGame.game.programType}`,
+                      `programType.${signupQuestionWitProgramItem.programItem.programType}`,
                     )}
                     )
                     <Answers>
                       <BoldText>{t("helperView.question")}: </BoldText>{" "}
-                      {signupQuestionWithGame.questionFi} /{" "}
-                      {signupQuestionWithGame.questionEn}
+                      {signupQuestionWitProgramItem.questionFi} /{" "}
+                      {signupQuestionWitProgramItem.questionEn}
                       {/* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */}
                       {matchingSignupMessages ? (
                         <SignupAnswersContainer>
@@ -133,7 +148,7 @@ export const PrivateSignupMessages = (): ReactElement => {
                         </SignupAnswersContainer>
                       )}
                     </Answers>
-                  </SingleGameAnswers>
+                  </SingleProgramItemAnswers>
                 );
               })}
             </div>
@@ -144,7 +159,7 @@ export const PrivateSignupMessages = (): ReactElement => {
   );
 };
 
-const SingleGameAnswers = styled.div`
+const SingleProgramItemAnswers = styled.div`
   margin-bottom: 16px;
 `;
 

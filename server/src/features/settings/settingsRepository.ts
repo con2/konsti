@@ -6,8 +6,8 @@ import {
   SettingsSchema,
   SignupQuestion,
 } from "shared/types/models/settings";
-import { Game } from "shared/types/models/game";
-import { findGames } from "server/features/game/gameRepository";
+import { ProgramItem } from "shared/types/models/programItem";
+import { findProgramItems } from "server/features/program-item/programItemRepository";
 import { PostSettingsRequest } from "shared/types/api/settings";
 import { SettingsDoc } from "server/types/settingsTypes";
 import {
@@ -54,7 +54,7 @@ export const findSettings = async (): Promise<
       "-signupQuestions._id -_id -__v -createdAt -updatedAt",
     )
       .lean<Settings>()
-      .populate("hiddenGames");
+      .populate("hiddenProgramItems");
 
     if (!settings) {
       const createSettingsResult = await createSettings();
@@ -93,38 +93,44 @@ export const findSettings = async (): Promise<
 };
 
 export const saveHidden = async (
-  hiddenGames: readonly Game[],
+  hiddenProgramItems: readonly ProgramItem[],
 ): Promise<Result<Settings, MongoDbError>> => {
-  const gamesResult = await findGames();
-  if (isErrorResult(gamesResult)) {
-    return gamesResult;
+  const programItemsResult = await findProgramItems();
+  if (isErrorResult(programItemsResult)) {
+    return programItemsResult;
   }
 
-  const games = unwrapResult(gamesResult);
-  const formattedData = hiddenGames.reduce<Game[]>((acc, hiddenGame) => {
-    const gameDocInDb = games.find((game) => game.gameId === hiddenGame.gameId);
-    if (gameDocInDb) {
-      acc.push(gameDocInDb._id as Game);
-    }
-    return acc;
-  }, []);
+  const programItems = unwrapResult(programItemsResult);
+  const formattedData = hiddenProgramItems.reduce<ProgramItem[]>(
+    (acc, hiddenProgramItem) => {
+      const programItemDocInDb = programItems.find(
+        (programItem) =>
+          programItem.programItemId === hiddenProgramItem.programItemId,
+      );
+      if (programItemDocInDb) {
+        acc.push(programItemDocInDb._id as ProgramItem);
+      }
+      return acc;
+    },
+    [],
+  );
 
   try {
     const settings = await SettingsModel.findOneAndUpdate(
       {},
       {
-        hiddenGames: formattedData,
+        hiddenProgramItems: formattedData,
       },
       {
         new: true,
         upsert: true,
         fields: "-_id -__v -createdAt -updatedAt",
       },
-    ).populate("hiddenGames");
+    ).populate("hiddenProgramItems");
     logger.info(`MongoDB: Hidden data updated`);
     return makeSuccessResult(settings);
   } catch (error) {
-    logger.error("MongoDB: Error updating hidden games: %s", error);
+    logger.error("MongoDB: Error updating hidden program items: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
@@ -134,7 +140,11 @@ export const saveSignupQuestion = async (
 ): Promise<Result<Settings, MongoDbError>> => {
   try {
     const settings = await SettingsModel.findOneAndUpdate(
-      { "signupQuestions.gameId": { $ne: signupQuestionData.gameId } },
+      {
+        "signupQuestions.programItemId": {
+          $ne: signupQuestionData.programItemId,
+        },
+      },
       {
         $addToSet: { signupQuestions: signupQuestionData },
       },
@@ -149,19 +159,22 @@ export const saveSignupQuestion = async (
     logger.info(`MongoDB: Signup question updated`);
     return makeSuccessResult(settings);
   } catch (error) {
-    logger.error("MongoDB: Error updating signup info games: %s", error);
+    logger.error(
+      "MongoDB: Error updating program item signup question: %s",
+      error,
+    );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
 
 export const delSignupQuestion = async (
-  gameId: string,
+  programItemId: string,
 ): Promise<Result<Settings, MongoDbError>> => {
   try {
     const settings = await SettingsModel.findOneAndUpdate(
       {},
       {
-        $pull: { signupQuestions: { gameId } },
+        $pull: { signupQuestions: { programItemId } },
       },
       {
         new: true,
@@ -175,7 +188,10 @@ export const delSignupQuestion = async (
     logger.info(`MongoDB: Signup info deleted`);
     return makeSuccessResult(settings);
   } catch (error) {
-    logger.error("MongoDB: Error deleting signup info games: %s", error);
+    logger.error(
+      "MongoDB: Error deleting program item signup question: %s",
+      error,
+    );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };

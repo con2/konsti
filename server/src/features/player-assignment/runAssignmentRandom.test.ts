@@ -9,8 +9,8 @@ import { AssignmentStrategy } from "shared/config/sharedConfigTypes";
 import { config } from "shared/config";
 import { AssignmentResultStatus } from "server/types/resultTypes";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
-import { saveGames } from "server/features/game/gameRepository";
-import { testGame } from "shared/tests/testGame";
+import { saveProgramItems } from "server/features/program-item/programItemRepository";
+import { testProgramItem } from "shared/tests/testProgramItem";
 import { saveUser } from "server/features/user/userRepository";
 import {
   mockPostDirectSignupRequest,
@@ -44,12 +44,12 @@ test("Assignment with valid data should return success with random strategy", as
   const newUsersCount = 20;
   const groupSize = 3;
   const numberOfGroups = 5;
-  const newGamesCount = 10;
+  const newProgramItemsCount = 10;
   const testUsersCount = 0;
 
   await generateTestData(
     newUsersCount,
-    newGamesCount,
+    newProgramItemsCount,
     groupSize,
     numberOfGroups,
     testUsersCount,
@@ -115,7 +115,9 @@ test("Assignment with valid data should return success with random strategy", as
 test("Should adjust attendee limits if there are previous signups from moved program items", async () => {
   const assignmentStrategy = AssignmentStrategy.RANDOM;
 
-  await saveGames([{ ...testGame, minAttendance: 2, maxAttendance: 2 }]);
+  await saveProgramItems([
+    { ...testProgramItem, minAttendance: 2, maxAttendance: 2 },
+  ]);
   await saveUser(mockUser);
   await saveUser(mockUser2);
   await saveUser(mockUser3);
@@ -126,7 +128,9 @@ test("Should adjust attendee limits if there are previous signups from moved pro
   // This should remain because of different startTime
   await saveDirectSignup({
     ...mockPostDirectSignupRequest,
-    startTime: dayjs(testGame.startTime).subtract(1, "hours").toISOString(),
+    startTime: dayjs(testProgramItem.startTime)
+      .subtract(1, "hours")
+      .toISOString(),
   });
 
   // This should be removed becase of same startTime
@@ -135,7 +139,7 @@ test("Should adjust attendee limits if there are previous signups from moved pro
     username: mockUser2.username,
   });
 
-  // ** Save selected games
+  // ** Save selected program items
 
   // This will get assigned
   await saveLotterySignups({
@@ -152,7 +156,7 @@ test("Should adjust attendee limits if there are previous signups from moved pro
   const assignResults = unsafelyUnwrapResult(
     await runAssignment({
       assignmentStrategy,
-      startTime: testGame.startTime,
+      startTime: testProgramItem.startTime,
     }),
   );
   expect(assignResults.status).toEqual("success");
@@ -161,35 +165,36 @@ test("Should adjust attendee limits if there are previous signups from moved pro
   const signupsAfterUpdate = unsafelyUnwrapResult(await findDirectSignups());
 
   const assignmentSignup = signupsAfterUpdate.find(
-    (signup) => signup.game.gameId === testGame.gameId,
+    (signup) =>
+      signup.programItem.programItemId === testProgramItem.programItemId,
   );
 
   expect(assignmentSignup?.userSignups).toMatchObject([
     {
       username: mockUser.username,
-      time: dayjs(testGame.startTime).subtract(1, "hours").toISOString(),
+      time: dayjs(testProgramItem.startTime).subtract(1, "hours").toISOString(),
       message: "",
       priority: 0,
     },
     {
       username: mockUser3.username,
-      time: mockLotterySignups[0].gameDetails.startTime,
+      time: mockLotterySignups[0].programItem.startTime,
       message: "",
       priority: 1,
     },
   ]);
 });
 
-test("Assignment with no games should return error with random strategy", async () => {
+test("Assignment with no program items should return error with random strategy", async () => {
   const newUsersCount = 1;
   const groupSize = 0;
   const numberOfGroups = 0;
-  const newGamesCount = 0;
+  const newProgramItemsCount = 0;
   const testUsersCount = 0;
 
   await generateTestData(
     newUsersCount,
-    newGamesCount,
+    newProgramItemsCount,
     groupSize,
     numberOfGroups,
     testUsersCount,
@@ -206,7 +211,7 @@ test("Assignment with no games should return error with random strategy", async 
   const assignResults = unsafelyUnwrapResult(assignResultsResult);
 
   expect(assignResults.status).toEqual(
-    AssignmentResultStatus.NO_STARTING_GAMES,
+    AssignmentResultStatus.NO_STARTING_PROGRAM_ITEMS,
   );
 });
 
@@ -214,12 +219,12 @@ test("Assignment with no players should return error with random strategy", asyn
   const newUsersCount = 0;
   const groupSize = 0;
   const numberOfGroups = 0;
-  const newGamesCount = 1;
+  const newProgramItemsCount = 1;
   const testUsersCount = 0;
 
   await generateTestData(
     newUsersCount,
-    newGamesCount,
+    newProgramItemsCount,
     groupSize,
     numberOfGroups,
     testUsersCount,

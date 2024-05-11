@@ -4,7 +4,7 @@ import { BackendErrorType } from "client/components/ErrorBar";
 import { AdminState, RootState } from "client/types/reduxTypes";
 import { SettingsPayload } from "shared/types/api/settings";
 import { LoginProvider, SignupStrategy } from "shared/config/sharedConfigTypes";
-import { Game, ProgramType } from "shared/types/models/game";
+import { ProgramItem, ProgramType } from "shared/types/models/programItem";
 import { SignupQuestion } from "shared/types/models/settings";
 import { SignupMessage } from "shared/types/models/signupMessage";
 import { loadSession } from "client/utils/localStorage";
@@ -24,7 +24,7 @@ const getInitialActiveProgramType = (): ActiveProgramType => {
 
 const initialState = (): AdminState => {
   return {
-    hiddenGames: [],
+    hiddenProgramItems: [],
     activeAssignmentTime: "",
     appOpen: true,
     assignmentResponseMessage: "",
@@ -41,14 +41,17 @@ const adminSlice = createSlice({
   name: "admin",
   initialState,
   reducers: {
-    submitUpdateHiddenAsync(state, action: PayloadAction<readonly Game[]>) {
-      return { ...state, hiddenGames: action.payload };
+    submitUpdateHiddenAsync(
+      state,
+      action: PayloadAction<readonly ProgramItem[]>,
+    ) {
+      return { ...state, hiddenProgramItems: action.payload };
     },
 
     submitGetSettingsAsync(state, action: PayloadAction<SettingsPayload>) {
       return {
         ...state,
-        hiddenGames: action.payload.hiddenGames,
+        hiddenProgramItems: action.payload.hiddenProgramItems,
         appOpen: action.payload.appOpen,
         signupQuestions: action.payload.signupQuestions,
         signupStrategy: action.payload.signupStrategy,
@@ -124,16 +127,19 @@ export const adminReducer = adminSlice.reducer;
 
 // SELECTORS
 
-const selectGames = (state: RootState): readonly Game[] => state.allGames.games;
+const selectProgramItems = (state: RootState): readonly ProgramItem[] =>
+  state.allProgramItems.programItems;
 const selectActiveProgramType = (state: RootState): ActiveProgramType =>
   state.admin.activeProgramType;
 
-export const selectActiveGames = createSelector(
-  [selectGames, selectActiveProgramType],
-  (games, activeProgramType) => {
+export const selectActiveProgramItems = createSelector(
+  [selectProgramItems, selectActiveProgramType],
+  (programItems, activeProgramType) => {
     if (activeProgramType === "all") {
-      return games;
+      return programItems;
     }
-    return games.filter((game) => game.programType === activeProgramType);
+    return programItems.filter(
+      (programItem) => programItem.programType === activeProgramType,
+    );
   },
 );

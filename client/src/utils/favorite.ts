@@ -1,11 +1,11 @@
-import { Game } from "shared/types/models/game";
-import { submitUpdateFavorites } from "client/views/my-games/myGamesThunks";
+import { ProgramItem } from "shared/types/models/programItem";
+import { submitUpdateFavorites } from "client/views/my-program-items/myProgramItemsThunks";
 import { AppDispatch } from "client/types/reduxTypes";
 
 export interface UpdateFavoriteOpts {
-  game: Game;
+  programItem: ProgramItem;
   action: string;
-  favoritedGames: readonly Game[];
+  favoritedProgramItems: readonly ProgramItem[];
   username: string;
   dispatch: AppDispatch;
 }
@@ -13,31 +13,32 @@ export interface UpdateFavoriteOpts {
 export const updateFavorite = async (
   updateFavoriteOpts: UpdateFavoriteOpts,
 ): Promise<void> => {
-  const { game, action, favoritedGames, username, dispatch } =
+  const { programItem, action, favoritedProgramItems, username, dispatch } =
     updateFavoriteOpts;
 
-  if (!game.gameId) {
+  if (!programItem.programItemId) {
     return;
   }
 
-  const gameIndex = favoritedGames.findIndex(
-    (favoritedGame) => favoritedGame.gameId === game.gameId,
+  const programItemIndex = favoritedProgramItems.findIndex(
+    (favoritedProgramItem) =>
+      favoritedProgramItem.programItemId === programItem.programItemId,
   );
-  const favoritedGameIds = favoritedGames.map(
-    (favoritedGame) => favoritedGame.gameId,
+  const favoritedProgramItemIds = favoritedProgramItems.map(
+    (favoritedProgramItem) => favoritedProgramItem.programItemId,
   );
 
-  if (action === "add" && gameIndex === -1) {
-    favoritedGameIds.push(game.gameId);
-  } else if (action === "del" && gameIndex > -1) {
-    favoritedGameIds.splice(gameIndex, 1);
+  if (action === "add" && programItemIndex === -1) {
+    favoritedProgramItemIds.push(programItem.programItemId);
+  } else if (action === "del" && programItemIndex > -1) {
+    favoritedProgramItemIds.splice(programItemIndex, 1);
   }
 
   try {
     await dispatch(
       submitUpdateFavorites({
         username,
-        favoritedGameIds,
+        favoritedProgramItemIds,
       }),
     );
   } catch (error) {

@@ -7,13 +7,13 @@ import {
 } from "shared/types/api/feedback";
 
 export const postFeedback = async (
-  gameId: string,
+  programItemId: string,
   feedback: string,
 ): Promise<PostFeedbackResponse | ApiError> => {
   const response = await api.post<PostFeedbackResponse, PostFeedbackRequest>(
     ApiEndpoint.FEEDBACK,
     {
-      gameId,
+      programItemId,
       feedback,
     },
   );

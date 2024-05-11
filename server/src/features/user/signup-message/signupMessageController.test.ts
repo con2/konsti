@@ -6,14 +6,17 @@ import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { getJWT } from "server/utils/jwt";
 import { UserGroup } from "shared/types/models/user";
 import { closeServer, startServer } from "server/utils/server";
-import { saveGames } from "server/features/game/gameRepository";
+import { saveProgramItems } from "server/features/program-item/programItemRepository";
 import { saveUser } from "server/features/user/userRepository";
 import {
   mockPostDirectSignupRequest,
   mockPostDirectSignupRequest2,
   mockUser,
 } from "server/test/mock-data/mockUser";
-import { testGame, testGame2 } from "shared/tests/testGame";
+import {
+  testProgramItem,
+  testProgramItem2,
+} from "shared/tests/testProgramItem";
 import {
   SignupQuestion,
   SignupQuestionType,
@@ -55,7 +58,7 @@ describe(`GET ${ApiEndpoint.SIGNUP_MESSAGE}`, () => {
     await createSettings();
 
     const testSignupQuestion: SignupQuestion = {
-      gameId: testGame.gameId,
+      programItemId: testProgramItem.programItemId,
       questionFi: "Public signup question",
       questionEn: "public message",
       private: false,
@@ -64,7 +67,7 @@ describe(`GET ${ApiEndpoint.SIGNUP_MESSAGE}`, () => {
     };
 
     const testSignupQuestion2: SignupQuestion = {
-      gameId: testGame2.gameId,
+      programItemId: testProgramItem2.programItemId,
       questionFi: "Private signup question",
       questionEn: "public message",
       private: true,
@@ -79,7 +82,7 @@ describe(`GET ${ApiEndpoint.SIGNUP_MESSAGE}`, () => {
     await saveSignupQuestion(testSignupQuestion);
     await saveSignupQuestion(testSignupQuestion2);
 
-    await saveGames([testGame, testGame2]);
+    await saveProgramItems([testProgramItem, testProgramItem2]);
     await saveUser(mockUser);
 
     await saveDirectSignup({
