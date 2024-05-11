@@ -85,7 +85,7 @@ export const ProgramItemEntry = ({
     >
       <ProgramItemHead
         programItem={programItem}
-        attendeesCount={attendeeCount}
+        attendeeCount={attendeeCount}
         signupStrategy={signupStrategy}
         username={username}
         loggedIn={loggedIn}
