@@ -46,12 +46,12 @@ export const padgAssignPlayers = (
     numberOfGroups,
   } = getRunRandomAndPadgInput(players, programItems, startTime);
   if (lotterySignupProgramItems.length === 0) {
-    logger.debug("No signup wishes, stop!");
+    logger.debug("No lottery signups, stop!");
     return makeSuccessResult({
       results: [],
-      message: "Padg Assign Result - No signup wishes",
+      message: "Padg Assign Result - No lottery signups",
       algorithm: AssignmentStrategy.PADG,
-      status: AssignmentResultStatus.NO_SIGNUP_WISHES,
+      status: AssignmentResultStatus.NO_LOTTERY_SIGNUPS,
     });
   }
 

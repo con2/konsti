@@ -8,7 +8,7 @@ export const getSelectedPlayers = (
 ): User[] => {
   logger.debug("Get selected players");
 
-  // Get users who have wishes for starting program items
+  // Get users who have lottery signups for starting program items
   const selectedPlayers = [] as User[];
 
   players.forEach((player) => {

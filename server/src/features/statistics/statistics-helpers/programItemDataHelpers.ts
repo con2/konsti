@@ -4,13 +4,13 @@ import { logger } from "server/utils/logger";
 import { ProgramItem } from "shared/types/models/programItem";
 import { Signup, User } from "shared/types/models/user";
 import { getMaximumNumberOfPlayersByTime } from "./resultDataHelpers";
-import { StringNumberObject, PriorityObject } from "server/types/commonTypes";
+import { PriorityObject } from "server/types/commonTypes";
 import { toPercent } from "server/features/statistics/statsUtil";
 import { TIMEZONE } from "shared/utils/initializeDayjs";
 
 export const getProgramItemsByStartTime = (
   programItems: readonly ProgramItem[],
-): StringNumberObject => {
+): Record<string, number> => {
   const programItemsByTime = countBy(programItems, "startTime");
 
   logger.info(
@@ -22,7 +22,7 @@ export const getProgramItemsByStartTime = (
 
 const getUsersByProgramItems = (
   _users: readonly User[],
-): StringNumberObject => {
+): Record<string, number> => {
   // TODO: Update to use signup collection
   // const directSignups = users.flatMap((user) => user.directSignups);
   const directSignups: Signup[] = [];
@@ -56,8 +56,10 @@ export const getNumberOfFullProgramItems = (
   );
 };
 
-const getSignupsByStartTime = (users: readonly User[]): StringNumberObject => {
-  const userSignupCountsByTime: StringNumberObject = {};
+const getSignupsByStartTime = (
+  users: readonly User[],
+): Record<string, number> => {
+  const userSignupCountsByTime: Record<string, number> = {};
 
   logger.warn(
     "Warning: Inaccurate because forming groups deletes lotterySignups",
@@ -72,7 +74,7 @@ const getSignupsByStartTime = (users: readonly User[]): StringNumberObject => {
       ).length;
     }
 
-    const lotterySignups = user.lotterySignups.reduce<StringNumberObject>(
+    const lotterySignups = user.lotterySignups.reduce<Record<string, number>>(
       (acc, lotterySignup) => {
         acc[lotterySignup.time] = acc[lotterySignup.time] + 1 || 1;
         return acc;

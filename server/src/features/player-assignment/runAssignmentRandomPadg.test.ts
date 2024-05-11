@@ -154,7 +154,9 @@ test("Assignment with no players should return error with random+padg strategy",
   });
   const assignResults = unsafelyUnwrapResult(assignResultsResult);
 
-  expect(assignResults.status).toEqual(AssignmentResultStatus.NO_SIGNUP_WISHES);
+  expect(assignResults.status).toEqual(
+    AssignmentResultStatus.NO_LOTTERY_SIGNUPS,
+  );
 });
 
 test("If random assignment fails, should return PADG result", async () => {
