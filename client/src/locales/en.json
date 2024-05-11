@@ -265,7 +265,7 @@
     "programItemDetails": "Starting time {{START_TIME}} at {{LOCATION}}"
   },
   "eventLogActions": {
-    "newAssignment": "You were assigned to a program item "
+    "newAssignment": "You were assigned to the program item "
   },
   "notificationBar": {
     "showAll": "Show all notifications"
