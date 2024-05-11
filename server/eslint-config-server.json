@@ -175,12 +175,7 @@
     "import/no-namespace": [
       "error",
       {
-        "ignore": [
-          "groupAssignPlayers",
-          "padgAssignPlayers",
-          "randomAssignPlayers",
-          "signupTimes"
-        ]
+        "ignore": ["padgAssignment", "randomAssignment", "signupTimes"]
       }
     ],
     "import/namespace": ["off"],

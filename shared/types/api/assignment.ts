@@ -1,19 +1,17 @@
 import { z } from "zod";
-import { AssignmentResult } from "shared/types/models/result";
+import { UserAssignmentResult } from "shared/types/models/result";
 import { ApiResult } from "shared/types/api/errors";
 
-// POST player assignment
+// POST assignment
 
-export const PostPlayerAssignmentRequestSchema = z.object({
+export const PostAssignmentRequestSchema = z.object({
   startTime: z.string().min(1),
 });
 
-export type PostPlayerAssignmentRequest = z.infer<
-  typeof PostPlayerAssignmentRequestSchema
->;
+export type PostAssignmentRequest = z.infer<typeof PostAssignmentRequestSchema>;
 
-export interface PostPlayerAssignmentResponse extends ApiResult {
+export interface PostAssignmentResponse extends ApiResult {
   resultMessage: string;
-  results: readonly AssignmentResult[];
+  results: readonly UserAssignmentResult[];
   startTime: string;
 }

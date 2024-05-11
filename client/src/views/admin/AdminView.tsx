@@ -5,7 +5,7 @@ import { capitalize } from "lodash-es";
 import { HiddenProgramItemsList } from "client/views/admin/components/HiddenProgramItemsList";
 import {
   submitGetSentryTest,
-  submitPlayersAssign,
+  submitAssignment,
   submitToggleAppOpen,
 } from "client/views/admin/adminThunks";
 import { submitUpdateProgramItems } from "client/views/all-program-items/allProgramItemsThunks";
@@ -107,7 +107,7 @@ export const AdminView = (): ReactElement => {
     setSubmitting(true);
 
     const errorMessage = await dispatch(
-      submitPlayersAssign(selectedAssignmentTime),
+      submitAssignment(selectedAssignmentTime),
     );
 
     if (errorMessage) {

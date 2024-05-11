@@ -1,6 +1,6 @@
 import { randomBytes } from "crypto";
 import dayjs from "dayjs";
-import { getTimeNow } from "server/features/player-assignment/utils/getTimeNow";
+import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
 import { findUserDirectSignups } from "server/features/direct-signup/directSignupRepository";
 import {
   checkGroupExists,

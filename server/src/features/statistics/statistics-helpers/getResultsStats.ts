@@ -1,7 +1,7 @@
 import fs from "fs";
 import {
   getSignupsByTime,
-  getMaximumNumberOfPlayersByTime,
+  getMaximumNumberOfAttendeesByTime,
   getDemandByTime,
 } from "./resultDataHelpers";
 import { logger } from "server/utils/logger";
@@ -29,7 +29,7 @@ export const getResultsStats = (year: number, event: string): void => {
   logger.info(`Loaded ${programItems.length} program items`);
 
   const signupsByTime = getSignupsByTime(results);
-  const maximumNumberOfPlayersByTime =
-    getMaximumNumberOfPlayersByTime(programItems);
-  getDemandByTime(signupsByTime, maximumNumberOfPlayersByTime);
+  const maximumNumberOfAttendeesByTime =
+    getMaximumNumberOfAttendeesByTime(programItems);
+  getDemandByTime(signupsByTime, maximumNumberOfAttendeesByTime);
 };

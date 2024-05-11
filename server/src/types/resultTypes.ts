@@ -1,9 +1,9 @@
 import mongoose from "mongoose";
 import { ProgramItem } from "shared/types/models/programItem";
 import { Signup, User } from "shared/types/models/user";
-import { AssignmentResult } from "shared/types/models/result";
+import { UserAssignmentResult } from "shared/types/models/result";
 
-export interface ResultDoc extends AssignmentResult, mongoose.Document {
+export interface ResultDoc extends UserAssignmentResult, mongoose.Document {
   algorithm: string;
   message: string;
 }
@@ -20,8 +20,8 @@ export enum AssignmentResultStatus {
   ERROR = "error",
 }
 
-export interface PlayerAssignmentResult {
-  results: readonly AssignmentResult[];
+export interface AssignmentResult {
+  results: readonly UserAssignmentResult[];
   message: string;
   algorithm: string;
   status: AssignmentResultStatus;
@@ -29,20 +29,20 @@ export interface PlayerAssignmentResult {
 
 export interface ResultsCollectionEntry {
   startTime: string;
-  results: readonly AssignmentResult[];
+  results: readonly UserAssignmentResult[];
   message: string;
   algorithm: string;
 }
 
 export interface AssignmentStrategyResult {
-  results: readonly AssignmentResult[];
+  results: readonly UserAssignmentResult[];
   message: string;
 }
 
 export interface RunRandomAndPadgInput {
   lotterySignupProgramItems: readonly ProgramItem[];
-  playerGroups: readonly User[][];
-  allPlayers: readonly User[];
+  attendeeGroups: readonly User[][];
+  allAttendees: readonly User[];
   numberOfIndividuals: Number;
   numberOfGroups: Number;
 }

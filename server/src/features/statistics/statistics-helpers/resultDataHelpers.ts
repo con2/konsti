@@ -22,40 +22,40 @@ export const getSignupsByTime = (
   return signupsByTime;
 };
 
-export const getMaximumNumberOfPlayersByTime = (
+export const getMaximumNumberOfAttendeesByTime = (
   programItems: readonly ProgramItem[],
 ): Record<string, number> => {
-  const maxNumberOfPlayersByTime: Record<string, number> = {};
+  const maxNumberOfAttendeesByTime: Record<string, number> = {};
 
   programItems.forEach((programItem) => {
-    if (!maxNumberOfPlayersByTime[programItem.startTime]) {
-      maxNumberOfPlayersByTime[programItem.startTime] = 0;
+    if (!maxNumberOfAttendeesByTime[programItem.startTime]) {
+      maxNumberOfAttendeesByTime[programItem.startTime] = 0;
     }
 
-    maxNumberOfPlayersByTime[programItem.startTime] =
-      maxNumberOfPlayersByTime[programItem.startTime] +
+    maxNumberOfAttendeesByTime[programItem.startTime] =
+      maxNumberOfAttendeesByTime[programItem.startTime] +
       programItem.maxAttendance;
   });
 
   logger.debug(
     `Maximum number of seats by start times: \n`,
-    maxNumberOfPlayersByTime,
+    maxNumberOfAttendeesByTime,
   );
 
-  return maxNumberOfPlayersByTime;
+  return maxNumberOfAttendeesByTime;
 };
 
 export const getDemandByTime = (
   signupsByTime: Record<string, number>,
-  maximumNumberOfPlayersByTime: Record<string, number>,
+  maximumNumberOfAttendeesByTime: Record<string, number>,
 ): void => {
   logger.info("Sanity check: values over 100% are anomalies");
-  for (const startTime in maximumNumberOfPlayersByTime) {
+  for (const startTime in maximumNumberOfAttendeesByTime) {
     logger.info(
       `Signed people for ${startTime}: ${signupsByTime[startTime]}/${
-        maximumNumberOfPlayersByTime[startTime]
+        maximumNumberOfAttendeesByTime[startTime]
       } (${toPercent(
-        signupsByTime[startTime] / maximumNumberOfPlayersByTime[startTime],
+        signupsByTime[startTime] / maximumNumberOfAttendeesByTime[startTime],
       )}%)`,
     );
   }

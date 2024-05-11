@@ -80,13 +80,12 @@ module.exports = {
       "error",
       {
         ignore: [
-          "groupAssignPlayers",
-          "padgAssignPlayers",
-          "randomAssignPlayers",
-          "signupTimes",
+          "padgAssignment", // Needs wildcard import for vi.spyon
+          "randomAssignment", // Needs wildcard import for vi.spyon
+          "signupTimes", // Needs wildcard import for vi.spyon
         ],
       },
-    ], // Don't want to use namespace imports, ignore files that need vi.spyon
+    ], // Don't want to use namespace imports
     "import/namespace": "off", // Don't want to use namespace imports
 
     // eslint-plugin-vitest

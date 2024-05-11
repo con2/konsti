@@ -6,7 +6,7 @@ import {
 } from "shared/types/api/myProgramItems";
 import { Signup } from "shared/types/models/user";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
-import { getTimeNow } from "server/features/player-assignment/utils/getTimeNow";
+import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
 import { isValidSignupTime } from "server/features/user/userUtils";
 import { isErrorResult, unwrapResult } from "shared/utils/result";
 

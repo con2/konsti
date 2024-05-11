@@ -12,7 +12,7 @@ import { faker } from "@faker-js/faker";
 import dayjs from "dayjs";
 import { startServer, closeServer } from "server/utils/server";
 import {
-  autoAssignPlayers,
+  autoAssignAttendees,
   autoUpdateProgramItems,
   setLatestServerStartTime,
 } from "server/utils/cron";
@@ -164,13 +164,13 @@ describe("Assignment cronjob", () => {
       .toISOString();
     await saveSettings({ assignmentLastRun: oldTime });
 
-    await autoAssignPlayers();
+    await autoAssignAttendees();
 
     expect(infoLoggerSpy).toHaveBeenCalledWith(
       "Auto assignment not running, continue",
     );
     expect(infoLoggerSpy).toHaveBeenCalledWith(
-      "***** Automatic player assignment completed",
+      "***** Automatic attendee assignment completed",
     );
 
     const settingsResult = await findSettings();
@@ -188,14 +188,14 @@ describe("Assignment cronjob", () => {
       .toISOString();
     await saveSettings({ assignmentLastRun: oldTime });
 
-    await autoAssignPlayers();
+    await autoAssignAttendees();
 
     expect(errorLoggerSpy).toHaveBeenCalledWith(
       "%s",
       new Error("Auto assignment already running, stop"),
     );
     expect(infoLoggerSpy).not.toHaveBeenCalledWith(
-      "***** Automatic player assignment completed",
+      "***** Automatic attendee assignment completed",
     );
 
     const settingsResult = await findSettings();
@@ -213,7 +213,7 @@ describe("Assignment cronjob", () => {
       .toISOString();
     await saveSettings({ assignmentLastRun: oldTime });
 
-    await Promise.all([autoAssignPlayers(), autoAssignPlayers()]);
+    await Promise.all([autoAssignAttendees(), autoAssignAttendees()]);
 
     expect(infoLoggerSpy).toHaveBeenCalledWith(
       "Auto assignment not running, continue",
@@ -223,7 +223,7 @@ describe("Assignment cronjob", () => {
       new Error("Auto assignment already running, stop"),
     );
     expect(infoLoggerSpy).toHaveBeenCalledWith(
-      "***** Automatic player assignment completed",
+      "***** Automatic attendee assignment completed",
     );
 
     const settingsResult = await findSettings();
@@ -238,7 +238,7 @@ describe("Assignment cronjob", () => {
     const oldTime = dayjs(timeNow).subtract(1, "seconds").toISOString();
     await saveSettings({ latestServerStartTime: oldTime });
 
-    await autoAssignPlayers();
+    await autoAssignAttendees();
 
     expect(errorLoggerSpy).toHaveBeenCalledWith(
       "%s",

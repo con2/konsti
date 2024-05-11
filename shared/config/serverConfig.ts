@@ -26,7 +26,7 @@ export interface ServerConfig {
   enableRemoveOverlapSignups: boolean;
   updateProgramItemPopularityEnabled: boolean;
   useLocalProgramFile: boolean;
-  autoAssignPlayersEnabled: boolean;
+  autoAssignAttendeesEnabled: boolean;
   firtSignupBonus: number;
   statsDataDir: string;
   autoAssignDelay: number;
@@ -104,8 +104,8 @@ const prodConfig = {
   // Program update
   updateProgramItemPopularityEnabled: false,
 
-  // Player assign cron
-  autoAssignPlayersEnabled: false,
+  // Attendee assign cron
+  autoAssignAttendeesEnabled: false,
   autoAssignInterval: `0,15,30,45 * * * *`,
   autoAssignDelay: 1000 * 5,
 };
@@ -133,8 +133,8 @@ const stagingConfig = {
   // Program update
   updateProgramItemPopularityEnabled: true,
 
-  // Player assign cron
-  autoAssignPlayersEnabled: true,
+  // Attendee assign cron
+  autoAssignAttendeesEnabled: true,
   autoAssignInterval: `0,15,30,45 * * * *`,
   autoAssignDelay: 1000 * 5,
 };
@@ -168,8 +168,8 @@ const devConfig = {
   // Program update
   updateProgramItemPopularityEnabled: true,
 
-  // Player assign cron
-  autoAssignPlayersEnabled: true,
+  // Attendee assign cron
+  autoAssignAttendeesEnabled: true,
   autoAssignInterval: `0,15,30,45 * * * *`,
   autoAssignDelay: 1000 * 1,
 };

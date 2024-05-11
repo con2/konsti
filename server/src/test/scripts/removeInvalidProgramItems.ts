@@ -1,5 +1,5 @@
 import { logger } from "server/utils/logger";
-import { removeInvalidProgramItemsFromUsers } from "server/features/player-assignment/utils/removeInvalidProgramItemsFromUsers";
+import { removeInvalidProgramItemsFromUsers } from "server/features/assignment/utils/removeInvalidProgramItemsFromUsers";
 import { db } from "server/db/mongodb";
 
 const removeInvalidProgramItems = async (): Promise<void> => {

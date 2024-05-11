@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { AssignmentResult } from "shared/types/models/result";
+import { UserAssignmentResult } from "shared/types/models/result";
 import { ApiResult } from "shared/types/api/errors";
 
 // GET results
@@ -11,6 +11,6 @@ export const GetResultsRequestSchema = z.object({
 export type GetResultsRequest = z.infer<typeof GetResultsRequestSchema>;
 
 export interface GetResultsResponse extends ApiResult {
-  results: readonly AssignmentResult[];
+  results: readonly UserAssignmentResult[];
   startTime: string;
 }

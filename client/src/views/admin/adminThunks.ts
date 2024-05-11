@@ -21,7 +21,7 @@ import { SignupQuestion } from "shared/types/models/settings";
 import { LoginProvider, SignupStrategy } from "shared/config/sharedConfigTypes";
 import { getSignupMessages } from "client/services/userServices";
 import { getSentryTest } from "client/views/admin/adminService";
-import { postPlayerAssignment } from "client/services/assignmentServices";
+import { postAssignment } from "client/services/assignmentServices";
 
 export const submitUpdateHidden = (
   hiddenProgramItems: readonly ProgramItem[],
@@ -150,11 +150,11 @@ export const submitGetSentryTest = (): AppThunk => {
   };
 };
 
-export const submitPlayersAssign = (
+export const submitAssignment = (
   signupTime: string,
 ): AppThunk<Promise<string | undefined>> => {
   return async (dispatch): Promise<string | undefined> => {
-    const assignResponse = await postPlayerAssignment(signupTime);
+    const assignResponse = await postAssignment(signupTime);
 
     if (assignResponse.status === "error") {
       return assignResponse.message;

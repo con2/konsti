@@ -4,6 +4,8 @@ import { useTranslation } from "react-i18next";
 import { ReactElement, useState, useEffect } from "react";
 import styled from "styled-components";
 import { theme } from "client/theme";
+import { getAttendeeType } from "client/utils/getAttendeeType";
+import { ProgramType } from "shared/types/models/programItem";
 
 enum PopularityLevel {
   LOW = "programItemPopularity.low",
@@ -16,6 +18,7 @@ interface Props {
   maxAttendance: number;
   popularity: number;
   includeMsg: boolean;
+  programType: ProgramType;
 }
 
 export const PopularityInfo = ({
@@ -23,6 +26,7 @@ export const PopularityInfo = ({
   maxAttendance,
   popularity,
   includeMsg,
+  programType,
 }: Props): ReactElement => {
   const { t } = useTranslation();
 
@@ -45,7 +49,15 @@ export const PopularityInfo = ({
   return (
     <ProgramItemPopularityContainer>
       <ProgramItemPopularityIcon icon={icon} color={color} aria-hidden="true" />{" "}
-      {includeMsg && <span>{t(msg)}</span>}
+      {includeMsg && (
+        <span>
+          {t(msg, {
+            ATTENDEE_TYPE: t(
+              `attendeeTypePlural.${getAttendeeType(programType)}`,
+            ),
+          })}
+        </span>
+      )}
     </ProgramItemPopularityContainer>
   );
 };

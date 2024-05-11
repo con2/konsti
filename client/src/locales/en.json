@@ -7,7 +7,7 @@
     "login": "Login",
     "register": "Create account",
     "updateDb": "Update program database",
-    "assignAttendees": "Assign players",
+    "assignAttendees": "Assign attendees",
     "signup": "Save",
     "cancelSignup": "Cancel sign-up",
     "back": "Back",
@@ -226,7 +226,7 @@
     "inGroupSignups": "You are in a group. Sign-ups in this list have been made by your group creator.",
     "closeGroupConfirmation": "Are you sure you want to close the group and remove all its members?",
     "generalLeaveGroupError": "Error leaving group",
-    "groupTooBigWarning": "The group is bigger than the maximum number of players",
+    "groupTooBigWarning": "The group is bigger than the maximum number of attendees",
     "enterGroupMemberCode": "User's code",
     "enterGroupCreatorCode": "Group creator's code",
     "createGroupConfirmationMessage": "Do you want to create a group?",
@@ -280,7 +280,7 @@
     "cancel": "Cancel",
     "alreadySignedToProgramItem": "You already signed up to the {{PROGRAM_TYPE}}",
     "cannotSignupMoreThanOneProgramItem": "You cannot sign up to another program item starting at the same time.",
-    "signupCount": "{{PLAYERS}}/{{MAX_ATTENDANCE}} sign-ups",
+    "signupCount": "{{ATTENDEE_COUNT}}/{{MAX_ATTENDANCE}} sign-ups",
     "attendeesNeeded": "{{COUNT}} more {{ATTENDEE_TYPE}} needed",
     "programItemFull": "This {{PROGRAM_TYPE}} is full.",
     "confirmCancellation": "Cancel your sign-up",
@@ -464,9 +464,9 @@
     "groupTab": "Group"
   },
   "programItemPopularity": {
-    "low": "More players needed",
-    "medium": "Enough players to run",
-    "high": "More interested players than seats"
+    "low": "More {{ATTENDEE_TYPE}} needed",
+    "medium": "Enough {{ATTENDEE_TYPE}} to run",
+    "high": "More interested {{ATTENDEE_TYPE}} than seats"
   },
   "selectedProgramType": "Program type",
   "yes": "Yes",

@@ -19,7 +19,7 @@ import { AppRoute } from "client/app/AppRoutes";
 
 interface Props {
   programItem: ProgramItem;
-  players: number;
+  attendeesCount: number;
   signupStrategy: SignupStrategy;
   username: string;
   loggedIn: boolean;
@@ -29,7 +29,7 @@ interface Props {
 
 export const ProgramItemHead = ({
   programItem,
-  players,
+  attendeesCount,
   signupStrategy,
   username,
   loggedIn,
@@ -126,7 +126,7 @@ export const ProgramItemHead = ({
         {isDirectSignupMode && normalSignup && validMaxAttendanceValue && (
           <Row>
             {t("signup.signupCount", {
-              PLAYERS: players,
+              ATTENDEE_COUNT: attendeesCount,
               MAX_ATTENDANCE: programItem.maxAttendance,
             })}
           </Row>
@@ -142,12 +142,12 @@ export const ProgramItemHead = ({
           </ErrorText>
         )}
 
-        {players < programItem.minAttendance && (
+        {attendeesCount < programItem.minAttendance && (
           <Row>
             {t("signup.attendeesNeeded", {
-              COUNT: programItem.minAttendance - players,
+              COUNT: programItem.minAttendance - attendeesCount,
               ATTENDEE_TYPE:
-                programItem.minAttendance - players === 1
+                programItem.minAttendance - attendeesCount === 1
                   ? t(
                       `attendeeType.${getAttendeeType(programItem.programType)}`,
                     )
@@ -165,6 +165,7 @@ export const ProgramItemHead = ({
             maxAttendance={programItem.maxAttendance}
             popularity={programItem.popularity}
             includeMsg={true}
+            programType={programItem.programType}
           />
         )}
       </div>

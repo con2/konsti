@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import { countBy, groupBy } from "lodash-es";
-import { padgAssignPlayers } from "server/features/player-assignment/padg/padgAssignPlayers";
+import { padgAssignment } from "server/features/assignment/padg/padgAssignment";
 import { User } from "shared/types/models/user";
 import { ProgramItem } from "shared/types/models/programItem";
 import { saveProgramItemPopularity } from "server/features/program-item/programItemRepository";
@@ -14,7 +14,7 @@ import {
   unwrapResult,
 } from "shared/utils/result";
 import { AssignmentError, MongoDbError } from "shared/types/api/errors";
-import { getTimeNow } from "server/features/player-assignment/utils/getTimeNow";
+import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
 
 export const updateWithAssign = async (
   users: readonly User[],
@@ -36,7 +36,7 @@ export const updateWithAssign = async (
   );
 
   const assignmentResultsResult = startTimes.map((startTime) => {
-    return padgAssignPlayers(users, programItems, startTime, directSignups);
+    return padgAssignment(users, programItems, startTime, directSignups);
   });
 
   const someAssignmentFailed = assignmentResultsResult.some(

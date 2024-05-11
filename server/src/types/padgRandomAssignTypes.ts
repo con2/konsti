@@ -9,8 +9,8 @@ export interface Group {
 
 export interface Event {
   id: id; // program item id
-  min: number; // program item min players
-  max: number; // program item max players
+  min: number; // program item min attendees
+  max: number; // program item max attendees
   groups: readonly Group[]; // groups signed for the program item
 }
 

@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import { findProgramItemById } from "server/features/program-item/programItemRepository";
-import { getTimeNow } from "server/features/player-assignment/utils/getTimeNow";
+import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
 import { isValidSignupTime } from "server/features/user/userUtils";
 import {
   DeleteDirectSignupError,

@@ -105,8 +105,9 @@ export const fetchProgramItems = async (): Promise<
 
   const programItems = unwrapResult(programItemsResult);
 
-  const programItemsWithPlayersResult = await enrichProgramItems(programItems);
-  if (isErrorResult(programItemsWithPlayersResult)) {
+  const programItemsWithAttendeesResult =
+    await enrichProgramItems(programItems);
+  if (isErrorResult(programItemsWithAttendeesResult)) {
     return {
       message: `Downloading program items failed`,
       status: "error",
@@ -114,11 +115,13 @@ export const fetchProgramItems = async (): Promise<
     };
   }
 
-  const programItemsWithPlayers = unwrapResult(programItemsWithPlayersResult);
+  const programItemsWithAttendees = unwrapResult(
+    programItemsWithAttendeesResult,
+  );
 
   return {
     message: "Program items downloaded",
     status: "success",
-    programItems: programItemsWithPlayers,
+    programItems: programItemsWithAttendees,
   };
 };

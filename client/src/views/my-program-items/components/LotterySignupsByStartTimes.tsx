@@ -44,6 +44,7 @@ export const LotterySignupsByStartTimes = ({
                           maxAttendance={signup.programItem.maxAttendance}
                           popularity={signup.programItem.popularity}
                           includeMsg={false}
+                          programType={signup.programItem.programType}
                         />
                       </PopularityContainer>
                     </ProgramItemContainer>

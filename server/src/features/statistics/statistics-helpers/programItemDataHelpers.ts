@@ -3,7 +3,7 @@ import { countBy } from "lodash-es";
 import { logger } from "server/utils/logger";
 import { ProgramItem } from "shared/types/models/programItem";
 import { Signup, User } from "shared/types/models/user";
-import { getMaximumNumberOfPlayersByTime } from "./resultDataHelpers";
+import { getMaximumNumberOfAttendeesByTime } from "./resultDataHelpers";
 import { PriorityObject } from "server/types/commonTypes";
 import { toPercent } from "server/features/statistics/statsUtil";
 import { TIMEZONE } from "shared/utils/initializeDayjs";
@@ -50,7 +50,7 @@ export const getNumberOfFullProgramItems = (
   });
 
   logger.info(
-    `Program items with maximum number of players: ${counter}/${
+    `Program items with maximum number of attendees: ${counter}/${
       programItems.length
     } (${toPercent(counter / programItems.length)}%)`,
   );
@@ -98,16 +98,16 @@ export const getDemandByTime = (
 ): void => {
   logger.info(">>> Demand by time");
   const signupsByTime = getSignupsByStartTime(users);
-  const maximumNumberOfPlayersByTime =
-    getMaximumNumberOfPlayersByTime(programItems);
+  const maximumNumberOfAttendeesByTime =
+    getMaximumNumberOfAttendeesByTime(programItems);
 
-  for (const startTime in maximumNumberOfPlayersByTime) {
+  for (const startTime in maximumNumberOfAttendeesByTime) {
     logger.info(
       // eslint-disable-next-line no-restricted-syntax -- We want to call format here
       `Demand for ${dayjs(startTime).tz(TIMEZONE).format("DD.M.YYYY HH:mm")}: ${
         signupsByTime[startTime]
-      }/${maximumNumberOfPlayersByTime[startTime]} (${toPercent(
-        signupsByTime[startTime] / maximumNumberOfPlayersByTime[startTime],
+      }/${maximumNumberOfAttendeesByTime[startTime]} (${toPercent(
+        signupsByTime[startTime] / maximumNumberOfAttendeesByTime[startTime],
       )}%)`,
     );
   }

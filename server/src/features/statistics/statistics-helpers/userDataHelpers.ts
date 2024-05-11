@@ -19,7 +19,7 @@ export const getUsersWithoutProgramItems = (
   */
 
   logger.info(
-    `Players without any direct signup: ${counter}/${users.length} (${toPercent(
+    `Attendees without any direct signup: ${counter}/${users.length} (${toPercent(
       counter / users.length,
     )}%)`,
   );
@@ -40,7 +40,7 @@ export const getUsersWithoutSignups = (
   });
 
   logger.info(
-    `Players without any lottery signups: ${counter}/${users.length} (${toPercent(
+    `Attendees without any lottery signups: ${counter}/${users.length} (${toPercent(
       counter / users.length,
     )}%)`,
   );
