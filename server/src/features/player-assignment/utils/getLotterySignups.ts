@@ -1,16 +1,18 @@
 import { logger } from "server/utils/logger";
-import { SignupWish } from "server/types/userTypes";
+import { LotterySignup } from "server/types/userTypes";
 import { User } from "shared/types/models/user";
 
-export const getSignupWishes = (players: readonly User[]): SignupWish[] => {
-  logger.debug("Get signup wishes");
-  const signupWishes: SignupWish[] = [];
+export const getLotterySignups = (
+  players: readonly User[],
+): LotterySignup[] => {
+  logger.debug("Get lottery signups");
+  const lotterySignups: LotterySignup[] = [];
 
-  // Get signup wishes for all players
+  // Get lottery signups for all players
   players.forEach((player) => {
     if (player.lotterySignups.length !== 0) {
       player.lotterySignups.forEach((lotterySignup) => {
-        signupWishes.push({
+        lotterySignups.push({
           username: player.username,
           programItemId: lotterySignup.programItem.programItemId,
           priority: lotterySignup.priority,
@@ -19,7 +21,7 @@ export const getSignupWishes = (players: readonly User[]): SignupWish[] => {
     }
   });
 
-  logger.debug(`Found ${signupWishes.length} signup wishes`);
+  logger.debug(`Found ${lotterySignups.length} lottery signups`);
 
-  return signupWishes;
+  return lotterySignups;
 };

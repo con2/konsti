@@ -13,7 +13,7 @@ export interface NewUser {
   groupCreatorCode?: string;
 }
 
-export interface SignupWish {
+export interface LotterySignup {
   username: string;
   programItemId: string;
   priority: number;

@@ -240,5 +240,7 @@ test("Assignment with no players should return error with padg strategy", async 
   });
   const assignResults = unsafelyUnwrapResult(assignResultsResult);
 
-  expect(assignResults.status).toEqual(AssignmentResultStatus.NO_SIGNUP_WISHES);
+  expect(assignResults.status).toEqual(
+    AssignmentResultStatus.NO_LOTTERY_SIGNUPS,
+  );
 });

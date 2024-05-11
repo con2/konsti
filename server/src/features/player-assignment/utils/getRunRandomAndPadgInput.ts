@@ -1,5 +1,5 @@
 import { getStartingProgramItems } from "server/features/player-assignment/utils/getStartingProgramItems";
-import { getSignupWishes } from "server/features/player-assignment/utils/getSignupWishes";
+import { getLotterySignups } from "server/features/player-assignment/utils/getLotterySignups";
 import { getLotterySignupProgramItems } from "server/features/player-assignment/utils/getLotterySignupProgramItems";
 import { getSelectedPlayers } from "server/features/player-assignment/utils/getSelectedPlayers";
 import { getPlayerGroups } from "server/features/player-assignment/utils/getPlayerGroups";
@@ -25,9 +25,9 @@ export const getRunRandomAndPadgInput = (
     };
   }
 
-  const signupWishes = getSignupWishes(players);
+  const lotterySignups = getLotterySignups(players);
 
-  if (signupWishes.length === 0) {
+  if (lotterySignups.length === 0) {
     return {
       lotterySignupProgramItems: [],
       playerGroups: [],
@@ -39,7 +39,7 @@ export const getRunRandomAndPadgInput = (
 
   const lotterySignupProgramItems = getLotterySignupProgramItems(
     startingProgramItems,
-    signupWishes,
+    lotterySignups,
   );
 
   // Get group creators, selected players are group creators since group members don't have signups yet

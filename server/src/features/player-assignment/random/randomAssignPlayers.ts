@@ -46,12 +46,12 @@ export const randomAssignPlayers = (
   } = getRunRandomAndPadgInput(players, programItems, startTime);
 
   if (lotterySignupProgramItems.length === 0) {
-    logger.debug("No signup wishes, stop!");
+    logger.debug("No lottery signups, stop!");
     return makeSuccessResult({
       results: [],
-      message: "Random Assign Result - No signup wishes",
+      message: "Random Assign Result - No lottery signups",
       algorithm: AssignmentStrategy.RANDOM,
-      status: AssignmentResultStatus.NO_SIGNUP_WISHES,
+      status: AssignmentResultStatus.NO_LOTTERY_SIGNUPS,
     });
   }
   logger.debug(

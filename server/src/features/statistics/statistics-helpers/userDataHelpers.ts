@@ -1,7 +1,6 @@
 import { countBy } from "lodash-es";
 import { logger } from "server/utils/logger";
 import { User } from "shared/types/models/user";
-import { StringNumberObject } from "server/types/commonTypes";
 import { toPercent } from "server/features/statistics/statsUtil";
 
 export const getUsersWithoutProgramItems = (
@@ -50,27 +49,27 @@ export const getUsersWithoutSignups = (
 };
 
 export const getUsersSignupCount = (users: readonly User[]): void => {
-  const userSignupCounts: StringNumberObject[] = [];
+  const userSignupCounts: Array<Record<string, number>> = [];
   users.forEach((user) => {
     const lotterySignups = countBy(user.lotterySignups, "time");
     userSignupCounts.push(lotterySignups);
   });
 
-  const programItemWishes: StringNumberObject = {};
-  userSignupCounts.forEach((userSignups: StringNumberObject) => {
+  const programItemLotterySignups: Record<string, number> = {};
+  userSignupCounts.forEach((userSignups: Record<string, number>) => {
     for (const signupTime in userSignups) {
-      programItemWishes[userSignups[signupTime]] =
-        ++programItemWishes[userSignups[signupTime]] || 1;
+      programItemLotterySignups[userSignups[signupTime]] =
+        ++programItemLotterySignups[userSignups[signupTime]] || 1;
     }
   });
 
   logger.info(
     `Users signed for this many program items when they didn't get signed:`,
-    programItemWishes,
+    programItemLotterySignups,
   );
 
-  const signupCount: StringNumberObject = {};
-  userSignupCounts.forEach((userSignups: StringNumberObject) => {
+  const signupCount: Record<string, number> = {};
+  userSignupCounts.forEach((userSignups: Record<string, number>) => {
     signupCount[Object.keys(userSignups).length] =
       ++signupCount[Object.keys(userSignups).length] || 1;
   });
