@@ -80,8 +80,7 @@ export const saveUserSignupResults = async (
   const newSignups = results.map((result) => {
     return {
       username: result.username,
-      directSignupProgramItemId:
-        result.directSignup.programItemDetails.programItemId,
+      directSignupProgramItemId: result.directSignup.programItem.programItemId,
       startTime,
       message: result.directSignup.message,
       priority: result.directSignup.priority,
@@ -113,7 +112,7 @@ export const saveUserSignupResults = async (
             (signup) =>
               !(
                 signup.directSignupProgramItemId ===
-                  result.directSignup.programItemDetails.programItemId &&
+                  result.directSignup.programItem.programItemId &&
                 signup.username === result.username
               ),
           );
@@ -124,7 +123,7 @@ export const saveUserSignupResults = async (
   const addEventLogItemsResult = await addEventLogItems({
     updates: finalResults.map((result) => ({
       username: result.username,
-      programItemId: result.directSignup.programItemDetails.programItemId,
+      programItemId: result.directSignup.programItem.programItemId,
       programItemStartTime: startTime,
       createdAt: dayjs().toISOString(),
     })),

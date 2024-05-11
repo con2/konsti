@@ -17,7 +17,7 @@ export interface User {
 }
 
 export interface Signup {
-  programItemDetails: ProgramItem;
+  programItem: ProgramItem;
   priority: number;
   time: string;
   message: string;

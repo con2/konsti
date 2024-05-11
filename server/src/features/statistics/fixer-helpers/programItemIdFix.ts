@@ -82,7 +82,7 @@ export const programItemIdFix = async (
       const matchingProgramItem = programItems.find(
         (programItem) =>
           // @ts-expect-error: $oid not in interface
-          programItem._id.$oid === lotterySignup.programItemDetails.$oid,
+          programItem._id.$oid === lotterySignup.programItem.$oid,
       );
       if (!matchingProgramItem) {
         logger.error(
@@ -90,12 +90,12 @@ export const programItemIdFix = async (
         );
         return {
           ...lotterySignup,
-          programItemDetails: { programItemId: "<canceled>" },
+          programItem: { programItemId: "<canceled>" },
         };
       }
       return {
         ...lotterySignup,
-        programItemDetails: {
+        programItem: {
           programItemId: matchingProgramItem.programItemId,
         },
       };
@@ -110,22 +110,19 @@ export const programItemIdFix = async (
   results.map((result) => {
     result.results.map((userResult) => {
       const matchingProgramItem = programItems.find((programItem) => {
-        return isEqual(
-          programItem._id,
-          userResult.directSignup.programItemDetails,
-        );
+        return isEqual(programItem._id, userResult.directSignup.programItem);
       });
 
       if (!matchingProgramItem) {
         logger.error(
           `Results: program item for id ${JSON.stringify(
-            userResult.directSignup.programItemDetails,
+            userResult.directSignup.programItem,
           )} not found`,
         );
         userResult.directSignup = {
           ...userResult.directSignup,
           // @ts-expect-error: We don't want whole program item details
-          programItemDetails: { programItemId: "<canceled>" },
+          programItem: { programItemId: "<canceled>" },
         };
         return;
       }
@@ -133,7 +130,7 @@ export const programItemIdFix = async (
       userResult.directSignup = {
         ...userResult.directSignup,
         // @ts-expect-error: We don't want whole program item details
-        programItemDetails: {
+        programItem: {
           programItemId: matchingProgramItem.programItemId,
         },
       };

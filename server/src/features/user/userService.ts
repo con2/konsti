@@ -271,7 +271,7 @@ export const fetchUserByUsername = async (
           return [];
         }
         return {
-          programItemDetails: signup.programItem,
+          programItem: signup.programItem,
           priority: signupForUser.priority,
           time: signupForUser.time,
           message: signupForUser.message,

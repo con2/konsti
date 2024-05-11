@@ -16,7 +16,7 @@ const UserSchema = new mongoose.Schema(
     ],
     lotterySignups: [
       {
-        programItemDetails: {
+        programItem: {
           type: mongoose.Schema.Types.ObjectId,
           ref: "program-item",
         },

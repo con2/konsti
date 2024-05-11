@@ -105,7 +105,7 @@ export const updateUserPassword = async (
     )
       .lean<User>()
       .populate("favoritedProgramItems")
-      .populate("lotterySignups.programItemDetails");
+      .populate("lotterySignups.programItem");
     logger.debug(`MongoDB: Password for user ${username} updated`);
     if (!response) {
       return makeErrorResult(MongoDbError.USER_NOT_FOUND);
@@ -130,7 +130,7 @@ export const findUser = async (
     )
       .lean<User>()
       .populate("favoritedProgramItems")
-      .populate("lotterySignups.programItemDetails");
+      .populate("lotterySignups.programItem");
     if (!response) {
       logger.info(`MongoDB: User ${username} not found`);
       return makeSuccessResult(null);
@@ -161,7 +161,7 @@ export const findUserBySerial = async (
     const response = await UserModel.findOne({ serial }, "-lotterySignups._id")
       .lean<User>()
       .populate("favoritedProgramItems")
-      .populate("lotterySignups.programItemDetails");
+      .populate("lotterySignups.programItem");
 
     if (!response) {
       logger.info(`MongoDB: User with serial ${serial} not found`);
@@ -188,7 +188,7 @@ export const findUserByKompassiId = async (
     )
       .lean<User>()
       .populate("favoritedProgramItems")
-      .populate("lotterySignups.programItemDetails");
+      .populate("lotterySignups.programItem");
 
     if (!response) {
       logger.info(`MongoDB: User with Kompassi id ${kompassiId} not found`);
@@ -234,7 +234,7 @@ export const findUsers = async (
     const users = await UserModel.find(filter)
       .lean<User[]>()
       .populate("favoritedProgramItems")
-      .populate("lotterySignups.programItemDetails");
+      .populate("lotterySignups.programItem");
     return makeSuccessResult(users);
   } catch (error) {
     logger.error("MongoDB: Error fetching users: %s", error);
@@ -257,7 +257,7 @@ export const updateUserKompassiLoginStatus = async (
     )
       .lean<User>()
       .populate("favoritedProgramItems")
-      .populate("lotterySignups.programItemDetails");
+      .populate("lotterySignups.programItem");
 
     if (!response) {
       logger.error(

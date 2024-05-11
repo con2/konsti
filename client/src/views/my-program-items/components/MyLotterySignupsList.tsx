@@ -24,12 +24,12 @@ export const MyLotterySignupsList = ({
   const groupMembers = useAppSelector((state) => state.group.groupMembers);
 
   const sortedLotterySignups = sortBy(lotterySignups, [
-    (lotterySignup) => lotterySignup.programItemDetails.startTime,
+    (lotterySignup) => lotterySignup.programItem.startTime,
     (lotterySignup) => lotterySignup.priority,
   ]);
 
   const startTimes = getStartTimes(
-    lotterySignups.map((lotterySignup) => lotterySignup.programItemDetails),
+    lotterySignups.map((lotterySignup) => lotterySignup.programItem),
   );
 
   return (

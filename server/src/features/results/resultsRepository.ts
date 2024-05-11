@@ -33,7 +33,7 @@ export const findResult = async (
     )
       .lean<ResultsCollectionEntry>()
       .sort({ createdAt: -1 })
-      .populate("results.directSignup.programItemDetails");
+      .populate("results.directSignup.programItem");
     logger.debug(`MongoDB: Results data found for time ${startTime}`);
     return makeSuccessResult(response);
   } catch (error) {
@@ -62,14 +62,14 @@ export const saveResult = async (
     const programItemDocInDb = programItems.find(
       (programItem) =>
         programItem.programItemId ===
-        result.directSignup.programItemDetails.programItemId,
+        result.directSignup.programItem.programItemId,
     );
 
     if (programItemDocInDb) {
       acc.push({
         username: result.username,
         directSignup: {
-          programItemDetails: programItemDocInDb._id,
+          programItem: programItemDocInDb._id,
           priority: result.directSignup.priority,
           time: result.directSignup.time,
           message: "",

@@ -43,7 +43,7 @@ export const getList = (
               ? firstMember.groupCode
               : firstMember.serial,
           size: playerGroup.length,
-          event: lotterySignup.programItemDetails.programItemId,
+          event: lotterySignup.programItem.programItemId,
           gain: getGain(lotterySignup, playerGroup, directSignups),
         };
       });

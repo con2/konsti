@@ -4,7 +4,7 @@
       {
         "username": "192858",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7338" },
+          "programItem": { "programItemId": "p7338" },
           "priority": 1,
           "time": "2023-11-04T11:00:00Z"
         }
@@ -12,7 +12,7 @@
       {
         "username": "956919",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7338" },
+          "programItem": { "programItemId": "p7338" },
           "priority": 1,
           "time": "2023-11-04T11:00:00Z"
         }
@@ -20,7 +20,7 @@
       {
         "username": "799122",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7338" },
+          "programItem": { "programItemId": "p7338" },
           "priority": 1,
           "time": "2023-11-04T11:00:00Z"
         }
@@ -37,7 +37,7 @@
       {
         "username": "575241",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7280" },
+          "programItem": { "programItemId": "p7280" },
           "priority": 2,
           "time": "2023-11-04T13:00:00Z"
         }
@@ -45,7 +45,7 @@
       {
         "username": "732614",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7345" },
+          "programItem": { "programItemId": "p7345" },
           "priority": 1,
           "time": "2023-11-04T13:00:00Z"
         }
@@ -53,7 +53,7 @@
       {
         "username": "486628",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7345" },
+          "programItem": { "programItemId": "p7345" },
           "priority": 1,
           "time": "2023-11-04T13:00:00Z"
         }
@@ -61,7 +61,7 @@
       {
         "username": "875354",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7345" },
+          "programItem": { "programItemId": "p7345" },
           "priority": 1,
           "time": "2023-11-04T13:00:00Z"
         }
@@ -69,7 +69,7 @@
       {
         "username": "689497",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7345" },
+          "programItem": { "programItemId": "p7345" },
           "priority": 1,
           "time": "2023-11-04T13:00:00Z"
         }
@@ -77,7 +77,7 @@
       {
         "username": "269163",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7280" },
+          "programItem": { "programItemId": "p7280" },
           "priority": 1,
           "time": "2023-11-04T13:00:00Z"
         }
@@ -85,7 +85,7 @@
       {
         "username": "802116",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7345" },
+          "programItem": { "programItemId": "p7345" },
           "priority": 1,
           "time": "2023-11-04T13:00:00Z"
         }
@@ -93,7 +93,7 @@
       {
         "username": "155200",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7280" },
+          "programItem": { "programItemId": "p7280" },
           "priority": 2,
           "time": "2023-11-04T13:00:00Z"
         }
@@ -101,7 +101,7 @@
       {
         "username": "614924",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7280" },
+          "programItem": { "programItemId": "p7280" },
           "priority": 1,
           "time": "2023-11-04T13:00:00Z"
         }
@@ -109,7 +109,7 @@
       {
         "username": "79888",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7280" },
+          "programItem": { "programItemId": "p7280" },
           "priority": 1,
           "time": "2023-11-04T13:00:00Z"
         }
@@ -126,7 +126,7 @@
       {
         "username": "535516",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7274" },
+          "programItem": { "programItemId": "p7274" },
           "priority": 1,
           "time": "2023-11-04T14:00:00Z"
         }
@@ -134,7 +134,7 @@
       {
         "username": "77079",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7274" },
+          "programItem": { "programItemId": "p7274" },
           "priority": 1,
           "time": "2023-11-04T14:00:00Z"
         }
@@ -142,7 +142,7 @@
       {
         "username": "550858",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7274" },
+          "programItem": { "programItemId": "p7274" },
           "priority": 1,
           "time": "2023-11-04T14:00:00Z"
         }
@@ -150,7 +150,7 @@
       {
         "username": "746678",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7274" },
+          "programItem": { "programItemId": "p7274" },
           "priority": 1,
           "time": "2023-11-04T14:00:00Z"
         }
@@ -158,7 +158,7 @@
       {
         "username": "298569",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7274" },
+          "programItem": { "programItemId": "p7274" },
           "priority": 1,
           "time": "2023-11-04T14:00:00Z"
         }
@@ -175,7 +175,7 @@
       {
         "username": "983766",
         "directSignup": {
-          "programItemDetails": { "programItemId": "<canceled>" },
+          "programItem": { "programItemId": "<canceled>" },
           "priority": 1,
           "time": "2023-11-04T15:00:00Z"
         }
@@ -183,7 +183,7 @@
       {
         "username": "65784",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7360" },
+          "programItem": { "programItemId": "p7360" },
           "priority": 1,
           "time": "2023-11-04T15:00:00Z"
         }
@@ -191,7 +191,7 @@
       {
         "username": "946238",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7368" },
+          "programItem": { "programItemId": "p7368" },
           "priority": 1,
           "time": "2023-11-04T15:00:00Z"
         }
@@ -199,7 +199,7 @@
       {
         "username": "997499",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7368" },
+          "programItem": { "programItemId": "p7368" },
           "priority": 1,
           "time": "2023-11-04T15:00:00Z"
         }
@@ -207,7 +207,7 @@
       {
         "username": "198170",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7368" },
+          "programItem": { "programItemId": "p7368" },
           "priority": 1,
           "time": "2023-11-04T15:00:00Z"
         }
@@ -215,7 +215,7 @@
       {
         "username": "715884",
         "directSignup": {
-          "programItemDetails": { "programItemId": "<canceled>" },
+          "programItem": { "programItemId": "<canceled>" },
           "priority": 1,
           "time": "2023-11-04T15:00:00Z"
         }
@@ -223,7 +223,7 @@
       {
         "username": "574120",
         "directSignup": {
-          "programItemDetails": { "programItemId": "<canceled>" },
+          "programItem": { "programItemId": "<canceled>" },
           "priority": 1,
           "time": "2023-11-04T15:00:00Z"
         }
@@ -231,7 +231,7 @@
       {
         "username": "268201",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7360" },
+          "programItem": { "programItemId": "p7360" },
           "priority": 1,
           "time": "2023-11-04T15:00:00Z"
         }
@@ -239,7 +239,7 @@
       {
         "username": "162093",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7364" },
+          "programItem": { "programItemId": "p7364" },
           "priority": 1,
           "time": "2023-11-04T15:00:00Z"
         }
@@ -247,7 +247,7 @@
       {
         "username": "862271",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7364" },
+          "programItem": { "programItemId": "p7364" },
           "priority": 2,
           "time": "2023-11-04T15:00:00Z"
         }
@@ -255,7 +255,7 @@
       {
         "username": "384992",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7364" },
+          "programItem": { "programItemId": "p7364" },
           "priority": 2,
           "time": "2023-11-04T15:00:00Z"
         }
@@ -263,7 +263,7 @@
       {
         "username": "287707",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7360" },
+          "programItem": { "programItemId": "p7360" },
           "priority": 1,
           "time": "2023-11-04T15:00:00Z"
         }
@@ -271,7 +271,7 @@
       {
         "username": "681786",
         "directSignup": {
-          "programItemDetails": { "programItemId": "<canceled>" },
+          "programItem": { "programItemId": "<canceled>" },
           "priority": 2,
           "time": "2023-11-04T15:00:00Z"
         }
@@ -279,7 +279,7 @@
       {
         "username": "422934",
         "directSignup": {
-          "programItemDetails": { "programItemId": "<canceled>" },
+          "programItem": { "programItemId": "<canceled>" },
           "priority": 1,
           "time": "2023-11-04T15:00:00Z"
         }
@@ -287,7 +287,7 @@
       {
         "username": "606398",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7364" },
+          "programItem": { "programItemId": "p7364" },
           "priority": 1,
           "time": "2023-11-04T15:00:00Z"
         }
@@ -295,7 +295,7 @@
       {
         "username": "787207",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7360" },
+          "programItem": { "programItemId": "p7360" },
           "priority": 1,
           "time": "2023-11-04T15:00:00Z"
         }
@@ -303,7 +303,7 @@
       {
         "username": "976069",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7360" },
+          "programItem": { "programItemId": "p7360" },
           "priority": 1,
           "time": "2023-11-04T15:00:00Z"
         }
@@ -311,7 +311,7 @@
       {
         "username": "133879",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7368" },
+          "programItem": { "programItemId": "p7368" },
           "priority": 1,
           "time": "2023-11-04T15:00:00Z"
         }
@@ -319,7 +319,7 @@
       {
         "username": "263055",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7368" },
+          "programItem": { "programItemId": "p7368" },
           "priority": 1,
           "time": "2023-11-04T15:00:00Z"
         }
@@ -327,7 +327,7 @@
       {
         "username": "471057",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7368" },
+          "programItem": { "programItemId": "p7368" },
           "priority": 1,
           "time": "2023-11-04T15:00:00Z"
         }
@@ -344,7 +344,7 @@
       {
         "username": "238669",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7341" },
+          "programItem": { "programItemId": "p7341" },
           "priority": 2,
           "time": "2023-11-04T16:00:00Z"
         }
@@ -352,7 +352,7 @@
       {
         "username": "535516",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7341" },
+          "programItem": { "programItemId": "p7341" },
           "priority": 1,
           "time": "2023-11-04T16:00:00Z"
         }
@@ -360,7 +360,7 @@
       {
         "username": "983766",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7298" },
+          "programItem": { "programItemId": "p7298" },
           "priority": 1,
           "time": "2023-11-04T16:00:00Z"
         }
@@ -368,7 +368,7 @@
       {
         "username": "711325",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7298" },
+          "programItem": { "programItemId": "p7298" },
           "priority": 2,
           "time": "2023-11-04T16:00:00Z"
         }
@@ -376,7 +376,7 @@
       {
         "username": "611296",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7298" },
+          "programItem": { "programItemId": "p7298" },
           "priority": 1,
           "time": "2023-11-04T16:00:00Z"
         }
@@ -384,7 +384,7 @@
       {
         "username": "588901",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7341" },
+          "programItem": { "programItemId": "p7341" },
           "priority": 1,
           "time": "2023-11-04T16:00:00Z"
         }
@@ -392,7 +392,7 @@
       {
         "username": "503509",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7335" },
+          "programItem": { "programItemId": "p7335" },
           "priority": 1,
           "time": "2023-11-04T16:00:00Z"
         }
@@ -400,7 +400,7 @@
       {
         "username": "324064",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7298" },
+          "programItem": { "programItemId": "p7298" },
           "priority": 1,
           "time": "2023-11-04T16:00:00Z"
         }
@@ -408,7 +408,7 @@
       {
         "username": "732614",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7341" },
+          "programItem": { "programItemId": "p7341" },
           "priority": 1,
           "time": "2023-11-04T16:00:00Z"
         }
@@ -416,7 +416,7 @@
       {
         "username": "486628",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7341" },
+          "programItem": { "programItemId": "p7341" },
           "priority": 1,
           "time": "2023-11-04T16:00:00Z"
         }
@@ -424,7 +424,7 @@
       {
         "username": "875354",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7335" },
+          "programItem": { "programItemId": "p7335" },
           "priority": 2,
           "time": "2023-11-04T16:00:00Z"
         }
@@ -432,7 +432,7 @@
       {
         "username": "689497",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7341" },
+          "programItem": { "programItemId": "p7341" },
           "priority": 1,
           "time": "2023-11-04T16:00:00Z"
         }
@@ -440,7 +440,7 @@
       {
         "username": "253287",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7335" },
+          "programItem": { "programItemId": "p7335" },
           "priority": 2,
           "time": "2023-11-04T16:00:00Z"
         }
@@ -448,7 +448,7 @@
       {
         "username": "96808",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7335" },
+          "programItem": { "programItemId": "p7335" },
           "priority": 2,
           "time": "2023-11-04T16:00:00Z"
         }
@@ -456,7 +456,7 @@
       {
         "username": "223931",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7335" },
+          "programItem": { "programItemId": "p7335" },
           "priority": 2,
           "time": "2023-11-04T16:00:00Z"
         }
@@ -464,7 +464,7 @@
       {
         "username": "686327",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7335" },
+          "programItem": { "programItemId": "p7335" },
           "priority": 2,
           "time": "2023-11-04T16:00:00Z"
         }
@@ -481,7 +481,7 @@
       {
         "username": "711325",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7279" },
+          "programItem": { "programItemId": "p7279" },
           "priority": 1,
           "time": "2023-11-04T17:00:00Z"
         }
@@ -489,7 +489,7 @@
       {
         "username": "253868",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7279" },
+          "programItem": { "programItemId": "p7279" },
           "priority": 1,
           "time": "2023-11-04T17:00:00Z"
         }
@@ -497,7 +497,7 @@
       {
         "username": "612919",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7269" },
+          "programItem": { "programItemId": "p7269" },
           "priority": 1,
           "time": "2023-11-04T17:00:00Z"
         }
@@ -505,7 +505,7 @@
       {
         "username": "715884",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7269" },
+          "programItem": { "programItemId": "p7269" },
           "priority": 1,
           "time": "2023-11-04T17:00:00Z"
         }
@@ -513,7 +513,7 @@
       {
         "username": "574120",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7269" },
+          "programItem": { "programItemId": "p7269" },
           "priority": 1,
           "time": "2023-11-04T17:00:00Z"
         }
@@ -521,7 +521,7 @@
       {
         "username": "315055",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7279" },
+          "programItem": { "programItemId": "p7279" },
           "priority": 1,
           "time": "2023-11-04T17:00:00Z"
         }
@@ -529,7 +529,7 @@
       {
         "username": "124406",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7279" },
+          "programItem": { "programItemId": "p7279" },
           "priority": 1,
           "time": "2023-11-04T17:00:00Z"
         }
@@ -537,7 +537,7 @@
       {
         "username": "614924",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7273" },
+          "programItem": { "programItemId": "p7273" },
           "priority": 2,
           "time": "2023-11-04T17:00:00Z"
         }
@@ -545,7 +545,7 @@
       {
         "username": "79888",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7273" },
+          "programItem": { "programItemId": "p7273" },
           "priority": 2,
           "time": "2023-11-04T17:00:00Z"
         }
@@ -553,7 +553,7 @@
       {
         "username": "267331",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7273" },
+          "programItem": { "programItemId": "p7273" },
           "priority": 2,
           "time": "2023-11-04T17:00:00Z"
         }
@@ -561,7 +561,7 @@
       {
         "username": "847579",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7273" },
+          "programItem": { "programItemId": "p7273" },
           "priority": 2,
           "time": "2023-11-04T17:00:00Z"
         }
@@ -569,7 +569,7 @@
       {
         "username": "754356",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7273" },
+          "programItem": { "programItemId": "p7273" },
           "priority": 2,
           "time": "2023-11-04T17:00:00Z"
         }
@@ -586,7 +586,7 @@
       {
         "username": "577037",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7373" },
+          "programItem": { "programItemId": "p7373" },
           "priority": 1,
           "time": "2023-11-04T18:00:00Z"
         }
@@ -594,7 +594,7 @@
       {
         "username": "715884",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7373" },
+          "programItem": { "programItemId": "p7373" },
           "priority": 1,
           "time": "2023-11-04T18:00:00Z"
         }
@@ -602,7 +602,7 @@
       {
         "username": "859875",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7346" },
+          "programItem": { "programItemId": "p7346" },
           "priority": 1,
           "time": "2023-11-04T18:00:00Z"
         }
@@ -610,7 +610,7 @@
       {
         "username": "450792",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7346" },
+          "programItem": { "programItemId": "p7346" },
           "priority": 1,
           "time": "2023-11-04T18:00:00Z"
         }
@@ -618,7 +618,7 @@
       {
         "username": "269163",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7346" },
+          "programItem": { "programItemId": "p7346" },
           "priority": 1,
           "time": "2023-11-04T18:00:00Z"
         }
@@ -626,7 +626,7 @@
       {
         "username": "38533",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7373" },
+          "programItem": { "programItemId": "p7373" },
           "priority": 1,
           "time": "2023-11-04T18:00:00Z"
         }
@@ -634,7 +634,7 @@
       {
         "username": "422934",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7373" },
+          "programItem": { "programItemId": "p7373" },
           "priority": 1,
           "time": "2023-11-04T18:00:00Z"
         }
@@ -642,7 +642,7 @@
       {
         "username": "976735",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7346" },
+          "programItem": { "programItemId": "p7346" },
           "priority": 1,
           "time": "2023-11-04T18:00:00Z"
         }
@@ -650,7 +650,7 @@
       {
         "username": "155888",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7346" },
+          "programItem": { "programItemId": "p7346" },
           "priority": 1,
           "time": "2023-11-04T18:00:00Z"
         }
@@ -658,7 +658,7 @@
       {
         "username": "324210",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7346" },
+          "programItem": { "programItemId": "p7346" },
           "priority": 1,
           "time": "2023-11-04T18:00:00Z"
         }
@@ -675,7 +675,7 @@
       {
         "username": "238669",
         "directSignup": {
-          "programItemDetails": { "programItemId": "<canceled>" },
+          "programItem": { "programItemId": "<canceled>" },
           "priority": 1,
           "time": "2023-11-05T09:00:00Z"
         }
@@ -683,7 +683,7 @@
       {
         "username": "198170",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7270" },
+          "programItem": { "programItemId": "p7270" },
           "priority": 1,
           "time": "2023-11-05T09:00:00Z"
         }
@@ -691,7 +691,7 @@
       {
         "username": "503509",
         "directSignup": {
-          "programItemDetails": { "programItemId": "<canceled>" },
+          "programItem": { "programItemId": "<canceled>" },
           "priority": 1,
           "time": "2023-11-05T09:00:00Z"
         }
@@ -699,7 +699,7 @@
       {
         "username": "20285",
         "directSignup": {
-          "programItemDetails": { "programItemId": "<canceled>" },
+          "programItem": { "programItemId": "<canceled>" },
           "priority": 1,
           "time": "2023-11-05T09:00:00Z"
         }
@@ -707,7 +707,7 @@
       {
         "username": "894037",
         "directSignup": {
-          "programItemDetails": { "programItemId": "<canceled>" },
+          "programItem": { "programItemId": "<canceled>" },
           "priority": 1,
           "time": "2023-11-05T09:00:00Z"
         }
@@ -715,7 +715,7 @@
       {
         "username": "133879",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7270" },
+          "programItem": { "programItemId": "p7270" },
           "priority": 1,
           "time": "2023-11-05T09:00:00Z"
         }
@@ -723,7 +723,7 @@
       {
         "username": "263055",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7270" },
+          "programItem": { "programItemId": "p7270" },
           "priority": 1,
           "time": "2023-11-05T09:00:00Z"
         }
@@ -731,7 +731,7 @@
       {
         "username": "471057",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7270" },
+          "programItem": { "programItemId": "p7270" },
           "priority": 1,
           "time": "2023-11-05T09:00:00Z"
         }
@@ -739,7 +739,7 @@
       {
         "username": "454671",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7270" },
+          "programItem": { "programItemId": "p7270" },
           "priority": 1,
           "time": "2023-11-05T09:00:00Z"
         }
@@ -756,7 +756,7 @@
       {
         "username": "508675",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7358" },
+          "programItem": { "programItemId": "p7358" },
           "priority": 1,
           "time": "2023-11-05T10:00:00Z"
         }
@@ -764,7 +764,7 @@
       {
         "username": "720914",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7367" },
+          "programItem": { "programItemId": "p7367" },
           "priority": 1,
           "time": "2023-11-05T10:00:00Z"
         }
@@ -772,7 +772,7 @@
       {
         "username": "228264",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7299" },
+          "programItem": { "programItemId": "p7299" },
           "priority": 1,
           "time": "2023-11-05T10:00:00Z"
         }
@@ -780,7 +780,7 @@
       {
         "username": "535516",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7365" },
+          "programItem": { "programItemId": "p7365" },
           "priority": 1,
           "time": "2023-11-05T10:00:00Z"
         }
@@ -788,7 +788,7 @@
       {
         "username": "273506",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7367" },
+          "programItem": { "programItemId": "p7367" },
           "priority": 1,
           "time": "2023-11-05T10:00:00Z"
         }
@@ -796,7 +796,7 @@
       {
         "username": "715884",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7367" },
+          "programItem": { "programItemId": "p7367" },
           "priority": 2,
           "time": "2023-11-05T10:00:00Z"
         }
@@ -804,7 +804,7 @@
       {
         "username": "210186",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7365" },
+          "programItem": { "programItemId": "p7365" },
           "priority": 1,
           "time": "2023-11-05T10:00:00Z"
         }
@@ -812,7 +812,7 @@
       {
         "username": "862271",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7285" },
+          "programItem": { "programItemId": "p7285" },
           "priority": 1,
           "time": "2023-11-05T10:00:00Z"
         }
@@ -820,7 +820,7 @@
       {
         "username": "938497",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7285" },
+          "programItem": { "programItemId": "p7285" },
           "priority": 1,
           "time": "2023-11-05T10:00:00Z"
         }
@@ -828,7 +828,7 @@
       {
         "username": "384992",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7367" },
+          "programItem": { "programItemId": "p7367" },
           "priority": 1,
           "time": "2023-11-05T10:00:00Z"
         }
@@ -836,7 +836,7 @@
       {
         "username": "298569",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7358" },
+          "programItem": { "programItemId": "p7358" },
           "priority": 1,
           "time": "2023-11-05T10:00:00Z"
         }
@@ -844,7 +844,7 @@
       {
         "username": "760768",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7285" },
+          "programItem": { "programItemId": "p7285" },
           "priority": 1,
           "time": "2023-11-05T10:00:00Z"
         }
@@ -852,7 +852,7 @@
       {
         "username": "155200",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7285" },
+          "programItem": { "programItemId": "p7285" },
           "priority": 1,
           "time": "2023-11-05T10:00:00Z"
         }
@@ -860,7 +860,7 @@
       {
         "username": "287707",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7285" },
+          "programItem": { "programItemId": "p7285" },
           "priority": 1,
           "time": "2023-11-05T10:00:00Z"
         }
@@ -868,7 +868,7 @@
       {
         "username": "821561",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7358" },
+          "programItem": { "programItemId": "p7358" },
           "priority": 1,
           "time": "2023-11-05T10:00:00Z"
         }
@@ -876,7 +876,7 @@
       {
         "username": "315055",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7365" },
+          "programItem": { "programItemId": "p7365" },
           "priority": 1,
           "time": "2023-11-05T10:00:00Z"
         }
@@ -884,7 +884,7 @@
       {
         "username": "204351",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7365" },
+          "programItem": { "programItemId": "p7365" },
           "priority": 1,
           "time": "2023-11-05T10:00:00Z"
         }
@@ -892,7 +892,7 @@
       {
         "username": "294621",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7362" },
+          "programItem": { "programItemId": "p7362" },
           "priority": 1,
           "time": "2023-11-05T10:00:00Z"
         }
@@ -900,7 +900,7 @@
       {
         "username": "999140",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7362" },
+          "programItem": { "programItemId": "p7362" },
           "priority": 1,
           "time": "2023-11-05T10:00:00Z"
         }
@@ -908,7 +908,7 @@
       {
         "username": "268101",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7285" },
+          "programItem": { "programItemId": "p7285" },
           "priority": 1,
           "time": "2023-11-05T10:00:00Z"
         }
@@ -916,7 +916,7 @@
       {
         "username": "38604",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7365" },
+          "programItem": { "programItemId": "p7365" },
           "priority": 1,
           "time": "2023-11-05T10:00:00Z"
         }
@@ -924,7 +924,7 @@
       {
         "username": "348259",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7362" },
+          "programItem": { "programItemId": "p7362" },
           "priority": 1,
           "time": "2023-11-05T10:00:00Z"
         }
@@ -932,7 +932,7 @@
       {
         "username": "786772",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7299" },
+          "programItem": { "programItemId": "p7299" },
           "priority": 2,
           "time": "2023-11-05T10:00:00Z"
         }
@@ -940,7 +940,7 @@
       {
         "username": "952181",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7299" },
+          "programItem": { "programItemId": "p7299" },
           "priority": 2,
           "time": "2023-11-05T10:00:00Z"
         }
@@ -948,7 +948,7 @@
       {
         "username": "614924",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7358" },
+          "programItem": { "programItemId": "p7358" },
           "priority": 1,
           "time": "2023-11-05T10:00:00Z"
         }
@@ -956,7 +956,7 @@
       {
         "username": "79888",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7358" },
+          "programItem": { "programItemId": "p7358" },
           "priority": 1,
           "time": "2023-11-05T10:00:00Z"
         }
@@ -964,7 +964,7 @@
       {
         "username": "898935",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7362" },
+          "programItem": { "programItemId": "p7362" },
           "priority": 2,
           "time": "2023-11-05T10:00:00Z"
         }
@@ -972,7 +972,7 @@
       {
         "username": "510442",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7362" },
+          "programItem": { "programItemId": "p7362" },
           "priority": 2,
           "time": "2023-11-05T10:00:00Z"
         }
@@ -989,7 +989,7 @@
       {
         "username": "192858",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7369" },
+          "programItem": { "programItemId": "p7369" },
           "priority": 1,
           "time": "2023-11-05T11:00:00Z"
         }
@@ -997,7 +997,7 @@
       {
         "username": "574662",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7369" },
+          "programItem": { "programItemId": "p7369" },
           "priority": 1,
           "time": "2023-11-05T11:00:00Z"
         }
@@ -1005,7 +1005,7 @@
       {
         "username": "681786",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7369" },
+          "programItem": { "programItemId": "p7369" },
           "priority": 2,
           "time": "2023-11-05T11:00:00Z"
         }
@@ -1013,7 +1013,7 @@
       {
         "username": "370318",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7369" },
+          "programItem": { "programItemId": "p7369" },
           "priority": 1,
           "time": "2023-11-05T11:00:00Z"
         }
@@ -1030,7 +1030,7 @@
       {
         "username": "575241",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7424" },
+          "programItem": { "programItemId": "p7424" },
           "priority": 1,
           "time": "2023-11-05T12:00:00Z"
         }
@@ -1038,7 +1038,7 @@
       {
         "username": "550858",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7424" },
+          "programItem": { "programItemId": "p7424" },
           "priority": 1,
           "time": "2023-11-05T12:00:00Z"
         }
@@ -1046,7 +1046,7 @@
       {
         "username": "681786",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7424" },
+          "programItem": { "programItemId": "p7424" },
           "priority": 1,
           "time": "2023-11-05T12:00:00Z"
         }
@@ -1054,7 +1054,7 @@
       {
         "username": "805342",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7344" },
+          "programItem": { "programItemId": "p7344" },
           "priority": 1,
           "time": "2023-11-05T12:00:00Z"
         }
@@ -1062,7 +1062,7 @@
       {
         "username": "894037",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7344" },
+          "programItem": { "programItemId": "p7344" },
           "priority": 1,
           "time": "2023-11-05T12:00:00Z"
         }
@@ -1070,7 +1070,7 @@
       {
         "username": "743940",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7424" },
+          "programItem": { "programItemId": "p7424" },
           "priority": 1,
           "time": "2023-11-05T12:00:00Z"
         }
@@ -1078,7 +1078,7 @@
       {
         "username": "714772",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7344" },
+          "programItem": { "programItemId": "p7344" },
           "priority": 1,
           "time": "2023-11-05T12:00:00Z"
         }
@@ -1086,7 +1086,7 @@
       {
         "username": "613493",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7424" },
+          "programItem": { "programItemId": "p7424" },
           "priority": 1,
           "time": "2023-11-05T12:00:00Z"
         }
@@ -1094,7 +1094,7 @@
       {
         "username": "967328",
         "directSignup": {
-          "programItemDetails": { "programItemId": "p7424" },
+          "programItem": { "programItemId": "p7424" },
           "priority": 1,
           "time": "2023-11-05T12:00:00Z"
         }

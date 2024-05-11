@@ -10,7 +10,7 @@ import {
   isAlreadyLotterySigned,
 } from "client/views/all-program-items/components/allProgramItemsUtils";
 import { config } from "shared/config";
-import { ProgramItemDetailsView } from "client/views/all-program-items/components/ProgramItemDetailsView";
+import { ProgramItemView } from "client/views/all-program-items/components/ProgramItemView";
 import { SignupInfo } from "client/views/all-program-items/components/SignupInfo";
 import { ProgramItemHead } from "client/views/all-program-items/components/ProgramItemHead";
 
@@ -92,7 +92,7 @@ export const ProgramItemEntry = ({
         userGroup={userGroup}
         favoritedProgramItems={favoritedProgramItems}
       />
-      <ProgramItemDetailsView
+      <ProgramItemView
         programItem={programItem}
         isAlwaysExpanded={isAlwaysExpanded}
       />

@@ -54,7 +54,7 @@ export const updateWithAssign = async (
   });
 
   const directSignupsResult = results.flatMap(
-    (result) => result.directSignup.programItemDetails,
+    (result) => result.directSignup.programItem,
   );
 
   const groupedSignups = countBy(directSignupsResult, "programItemId");

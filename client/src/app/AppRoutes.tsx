@@ -3,7 +3,7 @@ import { Route, Routes, Navigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { IconName } from "@fortawesome/free-solid-svg-icons";
 import { AllProgramItemsView } from "client/views/all-program-items/AllProgramItemsView";
-import { ProgramItemDetailsPage } from "client/views/all-program-items/components/ProgramItemDetailsPage";
+import { ProgramItemPage } from "client/views/all-program-items/components/ProgramItemPage";
 import { LoginView } from "client/views/login/LoginView";
 import { MyProgramItemsView } from "client/views/my-program-items/MyProgramItemsView";
 import { RegistrationView } from "client/views/registration/RegistrationView";
@@ -139,7 +139,7 @@ export const AppRoutes = (): ReactElement => {
             />
             <Route
               path={`${AppRoute.PROGRAM_ITEM}/:programItemId`}
-              element={<ProgramItemDetailsPage />}
+              element={<ProgramItemPage />}
             />
             <Route path={AppRoute.RESULTS} element={<ResultsView />} />
             <Route path={AppRoute.PROFILE} element={<ProfileView />} />
@@ -185,7 +185,7 @@ export const AppRoutes = (): ReactElement => {
         )}
         <Route
           path={`${AppRoute.PROGRAM_ITEM}/:programItemId`}
-          element={<ProgramItemDetailsPage />}
+          element={<ProgramItemPage />}
         />
         <Route path={AppRoute.NOTIFICATIONS} element={<EventLog />} />
         <Route path={AppRoute.RESULTS} element={<ResultsView />} />
@@ -242,7 +242,7 @@ export const AppRoutes = (): ReactElement => {
       <Route path={AppRoute.PROGRAM_LIST} element={<AllProgramItemsView />} />
       <Route
         path={`${AppRoute.PROGRAM_ITEM}/:programItemId`}
-        element={<ProgramItemDetailsPage />}
+        element={<ProgramItemPage />}
       />
       <Route
         path={`${AppRoute.ABOUT}/*`}

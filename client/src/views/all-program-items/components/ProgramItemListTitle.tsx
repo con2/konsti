@@ -42,10 +42,10 @@ export const ProgramItemListTitle = ({
   );
 
   const lotterySignupsCount = lotterySignups.filter(
-    (programItem) => programItem.programItemDetails.startTime === startTime,
+    (programItem) => programItem.programItem.startTime === startTime,
   ).length;
   const directSignup = directSignups.find(
-    (programItem) => programItem.programItemDetails.startTime === startTime,
+    (programItem) => programItem.programItem.startTime === startTime,
   );
 
   return (
@@ -68,7 +68,7 @@ export const ProgramItemListTitle = ({
 
         {timeslotSignupStrategy === SignupStrategy.DIRECT && (
           <DirectSignupCount>
-            {directSignup ? directSignup.programItemDetails.title : ""}
+            {directSignup ? directSignup.programItem.title : ""}
           </DirectSignupCount>
         )}
       </StyledProgramItemListTitle>

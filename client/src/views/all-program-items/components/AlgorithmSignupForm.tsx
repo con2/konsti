@@ -61,8 +61,7 @@ export const AlgorithmSignupForm = ({
     setLoading(true);
     const newSignupData = lotterySignups.filter(
       (g: Signup) =>
-        g.programItemDetails.programItemId !==
-        programItemToRemove.programItemId,
+        g.programItem.programItemId !== programItemToRemove.programItemId,
     );
 
     const error = await dispatch(
@@ -82,11 +81,11 @@ export const AlgorithmSignupForm = ({
   };
 
   const currentPriority = lotterySignups.find(
-    (g) => g.programItemDetails.programItemId === programItem.programItemId,
+    (g) => g.programItem.programItemId === programItem.programItemId,
   )?.priority;
 
   const lotterySignupsForTimeslot = lotterySignups.filter(
-    (g) => g.programItemDetails.startTime === startTime,
+    (g) => g.programItem.startTime === startTime,
   );
 
   const alreadySignedToProgramItem = isAlreadyLotterySigned(

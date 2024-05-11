@@ -10,7 +10,7 @@ export const isAlreadyLotterySigned = (
 ): boolean => {
   return lotterySignups.some(
     (g: Signup) =>
-      g.programItemDetails.programItemId === programItemToCheck.programItemId,
+      g.programItem.programItemId === programItemToCheck.programItemId,
   );
 };
 
@@ -20,7 +20,7 @@ export const isAlreadyDirectySigned = (
 ): boolean => {
   return directSignups.some(
     (g: Signup) =>
-      g.programItemDetails.programItemId === programItemToCheck.programItemId,
+      g.programItem.programItemId === programItemToCheck.programItemId,
   );
 };
 

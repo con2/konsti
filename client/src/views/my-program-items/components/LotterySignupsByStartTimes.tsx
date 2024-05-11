@@ -27,30 +27,26 @@ export const LotterySignupsByStartTimes = ({
               {lotterySignups.map((signup) => {
                 if (signup.time === startTime) {
                   return (
-                    <ProgramItemDetailsContainer
-                      key={signup.programItemDetails.programItemId}
+                    <ProgramItemContainer
+                      key={signup.programItem.programItemId}
                     >
                       <RowLeftSide>
                         <SignupPriority>{`${signup.priority})`}</SignupPriority>
                         <StyledLink
-                          to={`${AppRoute.PROGRAM_ITEM}/${signup.programItemDetails.programItemId}`}
+                          to={`${AppRoute.PROGRAM_ITEM}/${signup.programItem.programItemId}`}
                         >
-                          {signup.programItemDetails.title}
+                          {signup.programItem.title}
                         </StyledLink>
                       </RowLeftSide>
                       <PopularityContainer>
                         <PopularityInfo
-                          minAttendance={
-                            signup.programItemDetails.minAttendance
-                          }
-                          maxAttendance={
-                            signup.programItemDetails.maxAttendance
-                          }
-                          popularity={signup.programItemDetails.popularity}
+                          minAttendance={signup.programItem.minAttendance}
+                          maxAttendance={signup.programItem.maxAttendance}
+                          popularity={signup.programItem.popularity}
                           includeMsg={false}
                         />
                       </PopularityContainer>
-                    </ProgramItemDetailsContainer>
+                    </ProgramItemContainer>
                   );
                 }
               })}
@@ -62,7 +58,7 @@ export const LotterySignupsByStartTimes = ({
   );
 };
 
-const ProgramItemDetailsContainer = styled.li`
+const ProgramItemContainer = styled.li`
   display: flex;
   flex-direction: row;
   margin-bottom: 8px;

@@ -39,7 +39,7 @@ export const removeHiddenProgramItemsFromUsers = async (
       const hiddenFound = hiddenProgramItems.find((hiddenProgramItem) => {
         return (
           hiddenProgramItem.programItemId ===
-          lotterySignup.programItemDetails.programItemId
+          lotterySignup.programItem.programItemId
         );
       });
       if (!hiddenFound) {

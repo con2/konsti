@@ -76,7 +76,7 @@ export const padgAssignPlayers = (
 
   const selectedUniqueProgramItems = uniq(
     assignmentResult.results.map(
-      (result) => result.directSignup.programItemDetails.programItemId,
+      (result) => result.directSignup.programItem.programItemId,
     ),
   );
 

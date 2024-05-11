@@ -16,7 +16,7 @@ export const getSelectedPlayers = (
     for (let i = 0; i < player.lotterySignups.length; i += 1) {
       for (let j = 0; j < startingProgramItems.length; j += 1) {
         if (
-          player.lotterySignups[i].programItemDetails.programItemId ===
+          player.lotterySignups[i].programItem.programItemId ===
           startingProgramItems[j].programItemId
         ) {
           match = true;

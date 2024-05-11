@@ -148,7 +148,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
         { ...mockLotterySignups[0], priority: 2 },
         {
           // non-"twoPhaseSignupProgramTypes" signed program item should be ignored
-          programItemDetails: {
+          programItem: {
             ...testProgramItem2,
             programType: ProgramType.TOURNAMENT,
           },
@@ -164,7 +164,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
         { ...mockLotterySignups[0], priority: 2 },
         {
           // non-"twoPhaseSignupProgramTypes" signed program item should be ignored
-          programItemDetails: {
+          programItem: {
             ...testProgramItem2,
             programType: ProgramType.TOURNAMENT,
           },
@@ -236,7 +236,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
         { ...mockLotterySignups[0], priority: 2 },
         {
           // directSignupAlwaysOpen signed program item should be ignored
-          programItemDetails: {
+          programItem: {
             ...testProgramItem2,
             programItemId: directSignupAlwaysOpenId,
           },
@@ -272,7 +272,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     expect(assignResults.status).toEqual("success");
     expect(assignResults.results.length).toEqual(1);
     assignResults.results.map((result) => {
-      expect(result.directSignup.programItemDetails.programItemId).toEqual(
+      expect(result.directSignup.programItem.programItemId).toEqual(
         testProgramItem.programItemId,
       );
     });
@@ -319,7 +319,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
         { ...mockLotterySignups[0], priority: 2 },
         {
           // directSignupAlwaysOpen signed program item should be ignored
-          programItemDetails: {
+          programItem: {
             ...testProgramItem2,
             programItemId: directSignupAlwaysOpenId,
           },
@@ -335,7 +335,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
         { ...mockLotterySignups[0], priority: 2 },
         {
           // directSignupAlwaysOpen signed program item should be ignored
-          programItemDetails: {
+          programItem: {
             ...testProgramItem2,
             programItemId: directSignupAlwaysOpenId,
           },
@@ -369,7 +369,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     expect(assignResults.status).toEqual("success");
     expect(assignResults.results.length).toEqual(2);
     assignResults.results.map((result) => {
-      expect(result.directSignup.programItemDetails.programItemId).toEqual(
+      expect(result.directSignup.programItem.programItemId).toEqual(
         testProgramItem.programItemId,
       );
     });
@@ -440,7 +440,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     expect(assignResults.status).toEqual("success");
     expect(assignResults.results).toHaveLength(1);
     assignResults.results.map((result) => {
-      expect(result.directSignup.programItemDetails.programItemId).toEqual(
+      expect(result.directSignup.programItem.programItemId).toEqual(
         testProgramItem2.programItemId,
       );
     });
@@ -519,7 +519,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     expect(assignResults.status).toEqual("success");
     expect(assignResults.results).toHaveLength(1);
     assignResults.results.map((result) => {
-      expect(result.directSignup.programItemDetails.programItemId).toEqual(
+      expect(result.directSignup.programItem.programItemId).toEqual(
         testProgramItem2.programItemId,
       );
     });
@@ -645,7 +645,7 @@ describe("Assignment with first time bonus", () => {
 
     expect(assignmentSignup?.userSignups[0]).toMatchObject({
       username: mockUser2.username,
-      time: mockLotterySignups[0].programItemDetails.startTime,
+      time: mockLotterySignups[0].programItem.startTime,
       message: "",
       priority: 3,
     });

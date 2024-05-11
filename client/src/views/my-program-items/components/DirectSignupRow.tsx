@@ -40,8 +40,7 @@ export const DirectSignupRow = ({
     useState<DeleteDirectSignupErrorMessage | null>(null);
 
   const signupQuestion = signupQuestions.find(
-    (question) =>
-      question.programItemId === signup.programItemDetails.programItemId,
+    (question) => question.programItemId === signup.programItem.programItemId,
   );
 
   const removeSignup = async (): Promise<void> => {
@@ -49,8 +48,8 @@ export const DirectSignupRow = ({
     const errorMessage = await dispatch(
       submitDeleteDirectSignup({
         username,
-        startTime: signup.programItemDetails.startTime,
-        directSignupProgramItemId: signup.programItemDetails.programItemId,
+        startTime: signup.programItem.startTime,
+        directSignupProgramItemId: signup.programItem.programItemId,
       }),
     );
 
@@ -63,18 +62,18 @@ export const DirectSignupRow = ({
     setLoading(false);
   };
 
-  if (signup.programItemDetails.startTime !== startTime) {
+  if (signup.programItem.startTime !== startTime) {
     return null;
   }
 
   return (
-    <ProgramItemDetailsList key={signup.programItemDetails.programItemId}>
+    <ProgramItemDetailsList>
       <ProgramItemTitleAndButtons>
         <div>
           <StyledLink
-            to={`${AppRoute.PROGRAM_ITEM}/${signup.programItemDetails.programItemId}`}
+            to={`${AppRoute.PROGRAM_ITEM}/${signup.programItem.programItemId}`}
           >
-            {signup.programItemDetails.title}
+            {signup.programItem.title}
           </StyledLink>
           {config.shared().signupOpen && !cancelSignupFormOpen && (
             <IconButton
@@ -98,12 +97,12 @@ export const DirectSignupRow = ({
         )}
       </ProgramItemTitleAndButtons>
 
-      {signup.time !== signup.programItemDetails.startTime && (
+      {signup.time !== signup.programItem.startTime && (
         <div>
           {t("myProgramView.startingTimeChanged")}{" "}
           {getShortWeekdayAndTime(signup.time)}{" "}
           <FontAwesomeIcon icon="arrow-right" />{" "}
-          {getShortWeekdayAndTime(signup.programItemDetails.startTime)}
+          {getShortWeekdayAndTime(signup.programItem.startTime)}
         </div>
       )}
 

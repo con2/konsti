@@ -69,7 +69,7 @@ const removeMovedLotterySignups = async (
       const movedFound = movedProgramItems.find((movedProgramItem) => {
         return (
           movedProgramItem.programItemId ===
-          lotterySignup.programItemDetails.programItemId
+          lotterySignup.programItem.programItemId
         );
       });
       if (!movedFound) {

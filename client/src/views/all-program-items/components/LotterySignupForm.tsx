@@ -34,8 +34,7 @@ export const LotterySignupForm = ({
 
   const selectedPriorities = lotterySignups
     .filter(
-      (lotterySignup) =>
-        lotterySignup.programItemDetails.startTime === startTime,
+      (lotterySignup) => lotterySignup.programItem.startTime === startTime,
     )
     .map((lotterySignup) => lotterySignup.priority);
 
@@ -68,7 +67,7 @@ export const LotterySignupForm = ({
 
     const newProgramItem: Signup[] = [
       {
-        programItemDetails: programItem,
+        programItem: programItem,
         priority,
         time: programItem.startTime,
         message: "",

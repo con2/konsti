@@ -85,7 +85,7 @@ const getRandomLotterySignup = (
 
       const duplicate = !!lotterySignups.find(
         (lotterySignup) =>
-          lotterySignup.programItemDetails.programItemId ===
+          lotterySignup.programItem.programItemId ===
           randomProgramItem.programItemId,
       );
 
@@ -93,7 +93,7 @@ const getRandomLotterySignup = (
         i -= 1;
       } else {
         lotterySignups.push({
-          programItemDetails: randomProgramItem,
+          programItem: randomProgramItem,
           priority: i + 1,
           time: randomProgramItem.startTime,
           message: "",

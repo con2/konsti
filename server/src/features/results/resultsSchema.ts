@@ -7,7 +7,7 @@ const ResultsSchema = new mongoose.Schema(
       {
         username: String,
         directSignup: {
-          programItemDetails: {
+          programItem: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "program-item",
           },

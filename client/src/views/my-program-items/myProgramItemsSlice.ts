@@ -47,7 +47,7 @@ const myProgramItemsSlice = createSlice({
     submitDeleteDirectSignupAsync(state, action: PayloadAction<string>) {
       const directSignups = state.directSignups.filter(
         (programItem) =>
-          programItem.programItemDetails.programItemId !== action.payload,
+          programItem.programItem.programItemId !== action.payload,
       );
       return { ...state, directSignups };
     },

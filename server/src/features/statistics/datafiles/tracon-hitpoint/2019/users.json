@@ -7,34 +7,34 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3983" },
+        "programItem": { "programItemId": "p3983" },
         "priority": 1,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4002" },
+        "programItem": { "programItemId": "p4002" },
         "priority": 1,
         "time": "2019-11-23T13:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3950" },
+        "programItem": { "programItemId": "p3950" },
         "priority": 3,
         "time": "2019-11-24T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3984" },
+        "programItem": { "programItemId": "p3984" },
         "priority": 2,
         "time": "2019-11-24T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4000" },
+        "programItem": { "programItemId": "p4000" },
         "priority": 1,
         "time": "2019-11-24T10:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p3950" },
+        "programItem": { "programItemId": "p3950" },
         "priority": 3,
         "time": "2019-11-24T10:00:00.000Z"
       }
@@ -49,19 +49,19 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3994" },
+        "programItem": { "programItemId": "p3994" },
         "priority": 1,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4011" },
+        "programItem": { "programItemId": "p4011" },
         "priority": 1,
         "time": "2019-11-23T15:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p4011" },
+        "programItem": { "programItemId": "p4011" },
         "priority": 1,
         "time": "2019-11-23T15:00:00.000Z"
       }
@@ -76,19 +76,19 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p4099" },
+        "programItem": { "programItemId": "p4099" },
         "priority": 2,
         "time": "2019-11-23T13:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4002" },
+        "programItem": { "programItemId": "p4002" },
         "priority": 1,
         "time": "2019-11-23T13:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p4002" },
+        "programItem": { "programItemId": "p4002" },
         "priority": 1,
         "time": "2019-11-23T13:00:00.000Z"
       }
@@ -113,19 +113,19 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3994" },
+        "programItem": { "programItemId": "p3994" },
         "priority": 1,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4011" },
+        "programItem": { "programItemId": "p4011" },
         "priority": 1,
         "time": "2019-11-23T15:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p4011" },
+        "programItem": { "programItemId": "p4011" },
         "priority": 1,
         "time": "2019-11-23T15:00:00.000Z"
       }
@@ -150,24 +150,24 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3985" },
+        "programItem": { "programItemId": "p3985" },
         "priority": 1,
         "time": "2019-11-23T11:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3976" },
+        "programItem": { "programItemId": "p3976" },
         "priority": 1,
         "time": "2019-11-24T09:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3980" },
+        "programItem": { "programItemId": "p3980" },
         "priority": 1,
         "time": "2019-11-24T10:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p3980" },
+        "programItem": { "programItemId": "p3980" },
         "priority": 1,
         "time": "2019-11-24T10:00:00.000Z"
       }
@@ -182,17 +182,17 @@
     "groupCode": "9050391540",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3963" },
+        "programItem": { "programItemId": "p3963" },
         "priority": 1,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3994" },
+        "programItem": { "programItemId": "p3994" },
         "priority": 3,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3974" },
+        "programItem": { "programItemId": "p3974" },
         "priority": 2,
         "time": "2019-11-23T10:00:00.000Z"
       }
@@ -208,39 +208,39 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p4041" },
+        "programItem": { "programItemId": "p4041" },
         "priority": 2,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3963" },
+        "programItem": { "programItemId": "p3963" },
         "priority": 3,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3974" },
+        "programItem": { "programItemId": "p3974" },
         "priority": 1,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3975" },
+        "programItem": { "programItemId": "p3975" },
         "priority": 1,
         "time": "2019-11-23T13:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4015" },
+        "programItem": { "programItemId": "p4015" },
         "priority": 1,
         "time": "2019-11-23T15:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3976" },
+        "programItem": { "programItemId": "p3976" },
         "priority": 1,
         "time": "2019-11-24T09:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p4015" },
+        "programItem": { "programItemId": "p4015" },
         "priority": 1,
         "time": "2019-11-23T15:00:00.000Z"
       }
@@ -255,39 +255,39 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3994" },
+        "programItem": { "programItemId": "p3994" },
         "priority": 1,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3974" },
+        "programItem": { "programItemId": "p3974" },
         "priority": 2,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4017" },
+        "programItem": { "programItemId": "p4017" },
         "priority": 1,
         "time": "2019-11-23T11:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3985" },
+        "programItem": { "programItemId": "p3985" },
         "priority": 2,
         "time": "2019-11-23T11:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4001" },
+        "programItem": { "programItemId": "p4001" },
         "priority": 3,
         "time": "2019-11-23T11:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3976" },
+        "programItem": { "programItemId": "p3976" },
         "priority": 1,
         "time": "2019-11-24T09:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p3976" },
+        "programItem": { "programItemId": "p3976" },
         "priority": 1,
         "time": "2019-11-24T09:00:00.000Z"
       }
@@ -302,19 +302,19 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3985" },
+        "programItem": { "programItemId": "p3985" },
         "priority": 1,
         "time": "2019-11-23T11:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4001" },
+        "programItem": { "programItemId": "p4001" },
         "priority": 2,
         "time": "2019-11-23T11:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p3985" },
+        "programItem": { "programItemId": "p3985" },
         "priority": 1,
         "time": "2019-11-23T11:00:00.000Z"
       }
@@ -329,24 +329,24 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3963" },
+        "programItem": { "programItemId": "p3963" },
         "priority": 3,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3983" },
+        "programItem": { "programItemId": "p3983" },
         "priority": 2,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3994" },
+        "programItem": { "programItemId": "p3994" },
         "priority": 1,
         "time": "2019-11-23T10:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p3983" },
+        "programItem": { "programItemId": "p3983" },
         "priority": 2,
         "time": "2019-11-23T10:00:00.000Z"
       }
@@ -361,34 +361,34 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3994" },
+        "programItem": { "programItemId": "p3994" },
         "priority": 2,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4071" },
+        "programItem": { "programItemId": "p4071" },
         "priority": 1,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3974" },
+        "programItem": { "programItemId": "p3974" },
         "priority": 3,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4070" },
+        "programItem": { "programItemId": "p4070" },
         "priority": 1,
         "time": "2019-11-23T16:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4007" },
+        "programItem": { "programItemId": "p4007" },
         "priority": 2,
         "time": "2019-11-23T16:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p4070" },
+        "programItem": { "programItemId": "p4070" },
         "priority": 1,
         "time": "2019-11-23T16:00:00.000Z"
       }
@@ -404,7 +404,7 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p4038" },
+        "programItem": { "programItemId": "p4038" },
         "priority": 1,
         "time": "2019-11-23T10:00:00.000Z"
       }
@@ -419,19 +419,19 @@
     "groupCode": "7131608155",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p4038" },
+        "programItem": { "programItemId": "p4038" },
         "priority": 1,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3956" },
+        "programItem": { "programItemId": "p3956" },
         "priority": 1,
         "time": "2019-11-24T10:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p4038" },
+        "programItem": { "programItemId": "p4038" },
         "priority": 1,
         "time": "2019-11-23T10:00:00.000Z"
       }
@@ -446,54 +446,54 @@
     "groupCode": "7493269596",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p4041" },
+        "programItem": { "programItemId": "p4041" },
         "priority": 1,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3974" },
+        "programItem": { "programItemId": "p3974" },
         "priority": 2,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4099" },
+        "programItem": { "programItemId": "p4099" },
         "priority": 3,
         "time": "2019-11-23T13:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3975" },
+        "programItem": { "programItemId": "p3975" },
         "priority": 1,
         "time": "2019-11-23T13:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3969" },
+        "programItem": { "programItemId": "p3969" },
         "priority": 1,
         "time": "2019-11-23T15:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4002" },
+        "programItem": { "programItemId": "p4002" },
         "priority": 2,
         "time": "2019-11-23T13:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3956" },
+        "programItem": { "programItemId": "p3956" },
         "priority": 1,
         "time": "2019-11-24T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3984" },
+        "programItem": { "programItemId": "p3984" },
         "priority": 3,
         "time": "2019-11-24T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3980" },
+        "programItem": { "programItemId": "p3980" },
         "priority": 2,
         "time": "2019-11-24T10:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p3984" },
+        "programItem": { "programItemId": "p3984" },
         "priority": 3,
         "time": "2019-11-24T10:00:00.000Z"
       }
@@ -508,24 +508,24 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3954" },
+        "programItem": { "programItemId": "p3954" },
         "priority": 1,
         "time": "2019-11-24T09:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4006" },
+        "programItem": { "programItemId": "p4006" },
         "priority": 2,
         "time": "2019-11-24T09:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3976" },
+        "programItem": { "programItemId": "p3976" },
         "priority": 3,
         "time": "2019-11-24T09:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p3954" },
+        "programItem": { "programItemId": "p3954" },
         "priority": 1,
         "time": "2019-11-24T09:00:00.000Z"
       }
@@ -541,7 +541,7 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p3984" },
+        "programItem": { "programItemId": "p3984" },
         "priority": 3,
         "time": "2019-11-24T10:00:00.000Z"
       }
@@ -556,14 +556,14 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p4099" },
+        "programItem": { "programItemId": "p4099" },
         "priority": 1,
         "time": "2019-11-23T13:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p4099" },
+        "programItem": { "programItemId": "p4099" },
         "priority": 1,
         "time": "2019-11-23T13:00:00.000Z"
       }
@@ -578,29 +578,29 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3994" },
+        "programItem": { "programItemId": "p3994" },
         "priority": 1,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4001" },
+        "programItem": { "programItemId": "p4001" },
         "priority": 1,
         "time": "2019-11-23T11:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4011" },
+        "programItem": { "programItemId": "p4011" },
         "priority": 1,
         "time": "2019-11-23T15:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3976" },
+        "programItem": { "programItemId": "p3976" },
         "priority": 1,
         "time": "2019-11-24T09:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p4011" },
+        "programItem": { "programItemId": "p4011" },
         "priority": 1,
         "time": "2019-11-23T15:00:00.000Z"
       }
@@ -615,19 +615,19 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p4017" },
+        "programItem": { "programItemId": "p4017" },
         "priority": 1,
         "time": "2019-11-23T11:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4007" },
+        "programItem": { "programItemId": "p4007" },
         "priority": 1,
         "time": "2019-11-23T16:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p4017" },
+        "programItem": { "programItemId": "p4017" },
         "priority": 1,
         "time": "2019-11-23T11:00:00.000Z"
       }
@@ -642,7 +642,7 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3994" },
+        "programItem": { "programItemId": "p3994" },
         "priority": 1,
         "time": "2019-11-23T10:00:00.000Z"
       }
@@ -658,19 +658,19 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p4017" },
+        "programItem": { "programItemId": "p4017" },
         "priority": 1,
         "time": "2019-11-23T11:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4007" },
+        "programItem": { "programItemId": "p4007" },
         "priority": 1,
         "time": "2019-11-23T16:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p4007" },
+        "programItem": { "programItemId": "p4007" },
         "priority": 1,
         "time": "2019-11-23T16:00:00.000Z"
       }
@@ -695,39 +695,39 @@
     "groupCode": "9325036227",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3963" },
+        "programItem": { "programItemId": "p3963" },
         "priority": 1,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3983" },
+        "programItem": { "programItemId": "p3983" },
         "priority": 2,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4012" },
+        "programItem": { "programItemId": "p4012" },
         "priority": 1,
         "time": "2019-11-23T15:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3956" },
+        "programItem": { "programItemId": "p3956" },
         "priority": 1,
         "time": "2019-11-24T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3984" },
+        "programItem": { "programItemId": "p3984" },
         "priority": 2,
         "time": "2019-11-24T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3980" },
+        "programItem": { "programItemId": "p3980" },
         "priority": 3,
         "time": "2019-11-24T10:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p3980" },
+        "programItem": { "programItemId": "p3980" },
         "priority": 3,
         "time": "2019-11-24T10:00:00.000Z"
       }
@@ -743,7 +743,7 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p3980" },
+        "programItem": { "programItemId": "p3980" },
         "priority": 3,
         "time": "2019-11-24T10:00:00.000Z"
       }
@@ -758,24 +758,24 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3994" },
+        "programItem": { "programItemId": "p3994" },
         "priority": 1,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3947" },
+        "programItem": { "programItemId": "p3947" },
         "priority": 1,
         "time": "2019-11-23T11:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4005" },
+        "programItem": { "programItemId": "p4005" },
         "priority": 1,
         "time": "2019-11-23T17:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p4005" },
+        "programItem": { "programItemId": "p4005" },
         "priority": 1,
         "time": "2019-11-23T17:00:00.000Z"
       }
@@ -790,14 +790,14 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3954" },
+        "programItem": { "programItemId": "p3954" },
         "priority": 1,
         "time": "2019-11-24T09:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p3954" },
+        "programItem": { "programItemId": "p3954" },
         "priority": 1,
         "time": "2019-11-24T09:00:00.000Z"
       }
@@ -812,19 +812,19 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3994" },
+        "programItem": { "programItemId": "p3994" },
         "priority": 1,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4017" },
+        "programItem": { "programItemId": "p4017" },
         "priority": 1,
         "time": "2019-11-23T11:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p4017" },
+        "programItem": { "programItemId": "p4017" },
         "priority": 1,
         "time": "2019-11-23T11:00:00.000Z"
       }
@@ -839,14 +839,14 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3994" },
+        "programItem": { "programItemId": "p3994" },
         "priority": 1,
         "time": "2019-11-23T10:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p3994" },
+        "programItem": { "programItemId": "p3994" },
         "priority": 1,
         "time": "2019-11-23T10:00:00.000Z"
       }
@@ -861,24 +861,24 @@
     "groupCode": "0785198748",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3974" },
+        "programItem": { "programItemId": "p3974" },
         "priority": 1,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4015" },
+        "programItem": { "programItemId": "p4015" },
         "priority": 1,
         "time": "2019-11-23T15:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3956" },
+        "programItem": { "programItemId": "p3956" },
         "priority": 1,
         "time": "2019-11-24T10:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p3956" },
+        "programItem": { "programItemId": "p3956" },
         "priority": 1,
         "time": "2019-11-24T10:00:00.000Z"
       }
@@ -893,39 +893,39 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p4041" },
+        "programItem": { "programItemId": "p4041" },
         "priority": 2,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4071" },
+        "programItem": { "programItemId": "p4071" },
         "priority": 1,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3974" },
+        "programItem": { "programItemId": "p3974" },
         "priority": 3,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4051" },
+        "programItem": { "programItemId": "p4051" },
         "priority": 2,
         "time": "2019-11-23T15:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3969" },
+        "programItem": { "programItemId": "p3969" },
         "priority": 1,
         "time": "2019-11-23T15:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4012" },
+        "programItem": { "programItemId": "p4012" },
         "priority": 3,
         "time": "2019-11-23T15:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p3969" },
+        "programItem": { "programItemId": "p3969" },
         "priority": 1,
         "time": "2019-11-23T15:00:00.000Z"
       }
@@ -940,19 +940,19 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3947" },
+        "programItem": { "programItemId": "p3947" },
         "priority": 1,
         "time": "2019-11-23T11:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3985" },
+        "programItem": { "programItemId": "p3985" },
         "priority": 2,
         "time": "2019-11-23T11:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p3947" },
+        "programItem": { "programItemId": "p3947" },
         "priority": 1,
         "time": "2019-11-23T11:00:00.000Z"
       }
@@ -967,19 +967,19 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3994" },
+        "programItem": { "programItemId": "p3994" },
         "priority": 1,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4011" },
+        "programItem": { "programItemId": "p4011" },
         "priority": 1,
         "time": "2019-11-23T15:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p4011" },
+        "programItem": { "programItemId": "p4011" },
         "priority": 1,
         "time": "2019-11-23T15:00:00.000Z"
       }
@@ -994,84 +994,84 @@
     "groupCode": "5376017348",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3983" },
+        "programItem": { "programItemId": "p3983" },
         "priority": 1,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3947" },
+        "programItem": { "programItemId": "p3947" },
         "priority": 2,
         "time": "2019-11-23T11:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4001" },
+        "programItem": { "programItemId": "p4001" },
         "priority": 1,
         "time": "2019-11-23T11:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4099" },
+        "programItem": { "programItemId": "p4099" },
         "priority": 2,
         "time": "2019-11-23T13:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4011" },
+        "programItem": { "programItemId": "p4011" },
         "priority": 1,
         "time": "2019-11-23T15:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4007" },
+        "programItem": { "programItemId": "p4007" },
         "priority": 1,
         "time": "2019-11-23T16:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3999" },
+        "programItem": { "programItemId": "p3999" },
         "priority": 2,
         "time": "2019-11-23T16:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3957" },
+        "programItem": { "programItemId": "p3957" },
         "priority": 2,
         "time": "2019-11-23T17:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4009" },
+        "programItem": { "programItemId": "p4009" },
         "priority": 1,
         "time": "2019-11-23T17:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4002" },
+        "programItem": { "programItemId": "p4002" },
         "priority": 1,
         "time": "2019-11-23T13:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3956" },
+        "programItem": { "programItemId": "p3956" },
         "priority": 1,
         "time": "2019-11-24T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4000" },
+        "programItem": { "programItemId": "p4000" },
         "priority": 2,
         "time": "2019-11-24T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4005" },
+        "programItem": { "programItemId": "p4005" },
         "priority": 3,
         "time": "2019-11-23T17:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3976" },
+        "programItem": { "programItemId": "p3976" },
         "priority": 1,
         "time": "2019-11-24T09:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3980" },
+        "programItem": { "programItemId": "p3980" },
         "priority": 3,
         "time": "2019-11-24T10:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p4005" },
+        "programItem": { "programItemId": "p4005" },
         "priority": 3,
         "time": "2019-11-23T17:00:00.000Z"
       }
@@ -1086,24 +1086,24 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3984" },
+        "programItem": { "programItemId": "p3984" },
         "priority": 1,
         "time": "2019-11-24T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4000" },
+        "programItem": { "programItemId": "p4000" },
         "priority": 3,
         "time": "2019-11-24T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3980" },
+        "programItem": { "programItemId": "p3980" },
         "priority": 2,
         "time": "2019-11-24T10:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p3984" },
+        "programItem": { "programItemId": "p3984" },
         "priority": 1,
         "time": "2019-11-24T10:00:00.000Z"
       }
@@ -1119,7 +1119,7 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p4005" },
+        "programItem": { "programItemId": "p4005" },
         "priority": 3,
         "time": "2019-11-23T17:00:00.000Z"
       }
@@ -1144,34 +1144,34 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3947" },
+        "programItem": { "programItemId": "p3947" },
         "priority": 1,
         "time": "2019-11-23T11:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4017" },
+        "programItem": { "programItemId": "p4017" },
         "priority": 2,
         "time": "2019-11-23T11:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4015" },
+        "programItem": { "programItemId": "p4015" },
         "priority": 1,
         "time": "2019-11-23T15:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4012" },
+        "programItem": { "programItemId": "p4012" },
         "priority": 2,
         "time": "2019-11-23T15:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3976" },
+        "programItem": { "programItemId": "p3976" },
         "priority": 1,
         "time": "2019-11-24T09:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p4015" },
+        "programItem": { "programItemId": "p4015" },
         "priority": 1,
         "time": "2019-11-23T15:00:00.000Z"
       }
@@ -1186,19 +1186,19 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3947" },
+        "programItem": { "programItemId": "p3947" },
         "priority": 1,
         "time": "2019-11-23T11:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4007" },
+        "programItem": { "programItemId": "p4007" },
         "priority": 1,
         "time": "2019-11-23T16:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p4007" },
+        "programItem": { "programItemId": "p4007" },
         "priority": 1,
         "time": "2019-11-23T16:00:00.000Z"
       }
@@ -1223,29 +1223,29 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3994" },
+        "programItem": { "programItemId": "p3994" },
         "priority": 1,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4017" },
+        "programItem": { "programItemId": "p4017" },
         "priority": 2,
         "time": "2019-11-23T11:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3985" },
+        "programItem": { "programItemId": "p3985" },
         "priority": 1,
         "time": "2019-11-23T11:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4001" },
+        "programItem": { "programItemId": "p4001" },
         "priority": 3,
         "time": "2019-11-23T11:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p4017" },
+        "programItem": { "programItemId": "p4017" },
         "priority": 2,
         "time": "2019-11-23T11:00:00.000Z"
       }
@@ -1260,24 +1260,24 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p4099" },
+        "programItem": { "programItemId": "p4099" },
         "priority": 1,
         "time": "2019-11-23T13:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4051" },
+        "programItem": { "programItemId": "p4051" },
         "priority": 1,
         "time": "2019-11-23T15:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4000" },
+        "programItem": { "programItemId": "p4000" },
         "priority": 1,
         "time": "2019-11-24T10:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p4000" },
+        "programItem": { "programItemId": "p4000" },
         "priority": 1,
         "time": "2019-11-24T10:00:00.000Z"
       }
@@ -1292,49 +1292,49 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3963" },
+        "programItem": { "programItemId": "p3963" },
         "priority": 2,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4071" },
+        "programItem": { "programItemId": "p4071" },
         "priority": 3,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3974" },
+        "programItem": { "programItemId": "p3974" },
         "priority": 1,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4015" },
+        "programItem": { "programItemId": "p4015" },
         "priority": 1,
         "time": "2019-11-23T15:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4011" },
+        "programItem": { "programItemId": "p4011" },
         "priority": 2,
         "time": "2019-11-23T15:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3954" },
+        "programItem": { "programItemId": "p3954" },
         "priority": 2,
         "time": "2019-11-24T09:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4012" },
+        "programItem": { "programItemId": "p4012" },
         "priority": 3,
         "time": "2019-11-23T15:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3976" },
+        "programItem": { "programItemId": "p3976" },
         "priority": 1,
         "time": "2019-11-24T09:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p3976" },
+        "programItem": { "programItemId": "p3976" },
         "priority": 1,
         "time": "2019-11-24T09:00:00.000Z"
       }
@@ -1349,19 +1349,19 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p4041" },
+        "programItem": { "programItemId": "p4041" },
         "priority": 1,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4038" },
+        "programItem": { "programItemId": "p4038" },
         "priority": 2,
         "time": "2019-11-23T10:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p4038" },
+        "programItem": { "programItemId": "p4038" },
         "priority": 2,
         "time": "2019-11-23T10:00:00.000Z"
       }
@@ -1376,39 +1376,39 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3983" },
+        "programItem": { "programItemId": "p3983" },
         "priority": 1,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3994" },
+        "programItem": { "programItemId": "p3994" },
         "priority": 2,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4013" },
+        "programItem": { "programItemId": "p4013" },
         "priority": 1,
         "time": "2019-11-23T16:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3954" },
+        "programItem": { "programItemId": "p3954" },
         "priority": 3,
         "time": "2019-11-24T09:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4006" },
+        "programItem": { "programItemId": "p4006" },
         "priority": 2,
         "time": "2019-11-24T09:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3976" },
+        "programItem": { "programItemId": "p3976" },
         "priority": 1,
         "time": "2019-11-24T09:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p4006" },
+        "programItem": { "programItemId": "p4006" },
         "priority": 2,
         "time": "2019-11-24T09:00:00.000Z"
       }
@@ -1433,14 +1433,14 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3994" },
+        "programItem": { "programItemId": "p3994" },
         "priority": 1,
         "time": "2019-11-23T10:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p3994" },
+        "programItem": { "programItemId": "p3994" },
         "priority": 1,
         "time": "2019-11-23T10:00:00.000Z"
       }
@@ -1455,19 +1455,19 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3994" },
+        "programItem": { "programItemId": "p3994" },
         "priority": 1,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4011" },
+        "programItem": { "programItemId": "p4011" },
         "priority": 1,
         "time": "2019-11-23T15:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p4011" },
+        "programItem": { "programItemId": "p4011" },
         "priority": 1,
         "time": "2019-11-23T15:00:00.000Z"
       }
@@ -1482,34 +1482,34 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3983" },
+        "programItem": { "programItemId": "p3983" },
         "priority": 2,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4071" },
+        "programItem": { "programItemId": "p4071" },
         "priority": 1,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3950" },
+        "programItem": { "programItemId": "p3950" },
         "priority": 3,
         "time": "2019-11-24T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3984" },
+        "programItem": { "programItemId": "p3984" },
         "priority": 1,
         "time": "2019-11-24T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3980" },
+        "programItem": { "programItemId": "p3980" },
         "priority": 2,
         "time": "2019-11-24T10:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p3950" },
+        "programItem": { "programItemId": "p3950" },
         "priority": 3,
         "time": "2019-11-24T10:00:00.000Z"
       }
@@ -1524,7 +1524,7 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3994" },
+        "programItem": { "programItemId": "p3994" },
         "priority": 1,
         "time": "2019-11-23T10:00:00.000Z"
       }
@@ -1540,24 +1540,24 @@
     "groupCode": "1031070509",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3954" },
+        "programItem": { "programItemId": "p3954" },
         "priority": 1,
         "time": "2019-11-24T09:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4006" },
+        "programItem": { "programItemId": "p4006" },
         "priority": 2,
         "time": "2019-11-24T09:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3950" },
+        "programItem": { "programItemId": "p3950" },
         "priority": 1,
         "time": "2019-11-24T10:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p3950" },
+        "programItem": { "programItemId": "p3950" },
         "priority": 1,
         "time": "2019-11-24T10:00:00.000Z"
       }
@@ -1572,19 +1572,19 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3994" },
+        "programItem": { "programItemId": "p3994" },
         "priority": 1,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4007" },
+        "programItem": { "programItemId": "p4007" },
         "priority": 1,
         "time": "2019-11-23T16:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p4007" },
+        "programItem": { "programItemId": "p4007" },
         "priority": 1,
         "time": "2019-11-23T16:00:00.000Z"
       }
@@ -1619,14 +1619,14 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p4041" },
+        "programItem": { "programItemId": "p4041" },
         "priority": 1,
         "time": "2019-11-23T10:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p4041" },
+        "programItem": { "programItemId": "p4041" },
         "priority": 1,
         "time": "2019-11-23T10:00:00.000Z"
       }
@@ -1641,29 +1641,29 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3963" },
+        "programItem": { "programItemId": "p3963" },
         "priority": 3,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4071" },
+        "programItem": { "programItemId": "p4071" },
         "priority": 2,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3974" },
+        "programItem": { "programItemId": "p3974" },
         "priority": 1,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3999" },
+        "programItem": { "programItemId": "p3999" },
         "priority": 1,
         "time": "2019-11-23T16:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p3999" },
+        "programItem": { "programItemId": "p3999" },
         "priority": 1,
         "time": "2019-11-23T16:00:00.000Z"
       }
@@ -1678,24 +1678,24 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3947" },
+        "programItem": { "programItemId": "p3947" },
         "priority": 2,
         "time": "2019-11-23T11:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4017" },
+        "programItem": { "programItemId": "p4017" },
         "priority": 1,
         "time": "2019-11-23T11:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4007" },
+        "programItem": { "programItemId": "p4007" },
         "priority": 1,
         "time": "2019-11-23T16:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p4007" },
+        "programItem": { "programItemId": "p4007" },
         "priority": 1,
         "time": "2019-11-23T16:00:00.000Z"
       }
@@ -1710,19 +1710,19 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p4041" },
+        "programItem": { "programItemId": "p4041" },
         "priority": 1,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4049" },
+        "programItem": { "programItemId": "p4049" },
         "priority": 1,
         "time": "2019-11-24T10:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p4049" },
+        "programItem": { "programItemId": "p4049" },
         "priority": 1,
         "time": "2019-11-24T10:00:00.000Z"
       }
@@ -1737,29 +1737,29 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3963" },
+        "programItem": { "programItemId": "p3963" },
         "priority": 1,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3983" },
+        "programItem": { "programItemId": "p3983" },
         "priority": 3,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4071" },
+        "programItem": { "programItemId": "p4071" },
         "priority": 2,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4049" },
+        "programItem": { "programItemId": "p4049" },
         "priority": 1,
         "time": "2019-11-24T10:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p4049" },
+        "programItem": { "programItemId": "p4049" },
         "priority": 1,
         "time": "2019-11-24T10:00:00.000Z"
       }
@@ -1774,24 +1774,24 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3983" },
+        "programItem": { "programItemId": "p3983" },
         "priority": 1,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3974" },
+        "programItem": { "programItemId": "p3974" },
         "priority": 2,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3954" },
+        "programItem": { "programItemId": "p3954" },
         "priority": 1,
         "time": "2019-11-24T09:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p3954" },
+        "programItem": { "programItemId": "p3954" },
         "priority": 1,
         "time": "2019-11-24T09:00:00.000Z"
       }
@@ -1806,24 +1806,24 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3994" },
+        "programItem": { "programItemId": "p3994" },
         "priority": 1,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3947" },
+        "programItem": { "programItemId": "p3947" },
         "priority": 1,
         "time": "2019-11-23T11:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3954" },
+        "programItem": { "programItemId": "p3954" },
         "priority": 1,
         "time": "2019-11-24T09:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p3954" },
+        "programItem": { "programItemId": "p3954" },
         "priority": 1,
         "time": "2019-11-24T09:00:00.000Z"
       }
@@ -1838,19 +1838,19 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p4051" },
+        "programItem": { "programItemId": "p4051" },
         "priority": 1,
         "time": "2019-11-23T15:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3956" },
+        "programItem": { "programItemId": "p3956" },
         "priority": 1,
         "time": "2019-11-24T10:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p4051" },
+        "programItem": { "programItemId": "p4051" },
         "priority": 1,
         "time": "2019-11-23T15:00:00.000Z"
       }
@@ -1865,29 +1865,29 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3983" },
+        "programItem": { "programItemId": "p3983" },
         "priority": 3,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4071" },
+        "programItem": { "programItemId": "p4071" },
         "priority": 1,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3974" },
+        "programItem": { "programItemId": "p3974" },
         "priority": 2,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3954" },
+        "programItem": { "programItemId": "p3954" },
         "priority": 1,
         "time": "2019-11-24T09:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p3954" },
+        "programItem": { "programItemId": "p3954" },
         "priority": 1,
         "time": "2019-11-24T09:00:00.000Z"
       }
@@ -1912,19 +1912,19 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p4071" },
+        "programItem": { "programItemId": "p4071" },
         "priority": 1,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3976" },
+        "programItem": { "programItemId": "p3976" },
         "priority": 1,
         "time": "2019-11-24T09:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p3976" },
+        "programItem": { "programItemId": "p3976" },
         "priority": 1,
         "time": "2019-11-24T09:00:00.000Z"
       }
@@ -1940,7 +1940,7 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p3947" },
+        "programItem": { "programItemId": "p3947" },
         "priority": 1,
         "time": "2019-11-23T11:00:00.000Z"
       }
@@ -1955,29 +1955,29 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3963" },
+        "programItem": { "programItemId": "p3963" },
         "priority": 1,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3974" },
+        "programItem": { "programItemId": "p3974" },
         "priority": 2,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4044" },
+        "programItem": { "programItemId": "p4044" },
         "priority": 1,
         "time": "2019-11-24T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4000" },
+        "programItem": { "programItemId": "p4000" },
         "priority": 2,
         "time": "2019-11-24T10:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p4000" },
+        "programItem": { "programItemId": "p4000" },
         "priority": 2,
         "time": "2019-11-24T10:00:00.000Z"
       }
@@ -1993,7 +1993,7 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p3983" },
+        "programItem": { "programItemId": "p3983" },
         "priority": 1,
         "time": "2019-11-23T10:00:00.000Z"
       }
@@ -2008,12 +2008,12 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3994" },
+        "programItem": { "programItemId": "p3994" },
         "priority": 1,
         "time": "2019-11-23T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4017" },
+        "programItem": { "programItemId": "p4017" },
         "priority": 1,
         "time": "2019-11-23T11:00:00.000Z"
       }
@@ -2040,7 +2040,7 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p4001" },
+        "programItem": { "programItemId": "p4001" },
         "priority": 1,
         "time": "2019-11-23T11:00:00.000Z"
       }
@@ -2055,39 +2055,39 @@
     "groupCode": "7707487588",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p4011" },
+        "programItem": { "programItemId": "p4011" },
         "priority": 1,
         "time": "2019-11-23T15:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4007" },
+        "programItem": { "programItemId": "p4007" },
         "priority": 1,
         "time": "2019-11-23T16:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3950" },
+        "programItem": { "programItemId": "p3950" },
         "priority": 3,
         "time": "2019-11-24T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3984" },
+        "programItem": { "programItemId": "p3984" },
         "priority": 2,
         "time": "2019-11-24T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3976" },
+        "programItem": { "programItemId": "p3976" },
         "priority": 1,
         "time": "2019-11-24T09:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3980" },
+        "programItem": { "programItemId": "p3980" },
         "priority": 1,
         "time": "2019-11-24T10:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p3950" },
+        "programItem": { "programItemId": "p3950" },
         "priority": 3,
         "time": "2019-11-24T10:00:00.000Z"
       }
@@ -2102,29 +2102,29 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3985" },
+        "programItem": { "programItemId": "p3985" },
         "priority": 1,
         "time": "2019-11-23T11:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3950" },
+        "programItem": { "programItemId": "p3950" },
         "priority": 2,
         "time": "2019-11-24T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4012" },
+        "programItem": { "programItemId": "p4012" },
         "priority": 1,
         "time": "2019-11-23T15:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4000" },
+        "programItem": { "programItemId": "p4000" },
         "priority": 1,
         "time": "2019-11-24T10:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p3950" },
+        "programItem": { "programItemId": "p3950" },
         "priority": 2,
         "time": "2019-11-24T10:00:00.000Z"
       }
@@ -2139,19 +2139,19 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3985" },
+        "programItem": { "programItemId": "p3985" },
         "priority": 1,
         "time": "2019-11-23T11:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4012" },
+        "programItem": { "programItemId": "p4012" },
         "priority": 1,
         "time": "2019-11-23T15:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p4012" },
+        "programItem": { "programItemId": "p4012" },
         "priority": 1,
         "time": "2019-11-23T15:00:00.000Z"
       }
@@ -2166,14 +2166,14 @@
     "groupCode": "5478494544",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p4001" },
+        "programItem": { "programItemId": "p4001" },
         "priority": 1,
         "time": "2019-11-23T11:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p4001" },
+        "programItem": { "programItemId": "p4001" },
         "priority": 1,
         "time": "2019-11-23T11:00:00.000Z"
       }
@@ -2189,7 +2189,7 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p3974" },
+        "programItem": { "programItemId": "p3974" },
         "priority": 1,
         "time": "2019-11-23T10:00:00.000Z"
       }
@@ -2204,14 +2204,14 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3984" },
+        "programItem": { "programItemId": "p3984" },
         "priority": 1,
         "time": "2019-11-24T10:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p3984" },
+        "programItem": { "programItemId": "p3984" },
         "priority": 1,
         "time": "2019-11-24T10:00:00.000Z"
       }
@@ -2227,7 +2227,7 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p3947" },
+        "programItem": { "programItemId": "p3947" },
         "priority": 1,
         "time": "2019-11-23T11:00:00.000Z"
       }
@@ -2242,14 +2242,14 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3954" },
+        "programItem": { "programItemId": "p3954" },
         "priority": 1,
         "time": "2019-11-24T09:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p3954" },
+        "programItem": { "programItemId": "p3954" },
         "priority": 1,
         "time": "2019-11-24T09:00:00.000Z"
       }
@@ -2265,7 +2265,7 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p4015" },
+        "programItem": { "programItemId": "p4015" },
         "priority": 1,
         "time": "2019-11-23T15:00:00.000Z"
       }
@@ -2281,7 +2281,7 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p3950" },
+        "programItem": { "programItemId": "p3950" },
         "priority": 3,
         "time": "2019-11-24T10:00:00.000Z"
       }
@@ -2296,19 +2296,19 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3985" },
+        "programItem": { "programItemId": "p3985" },
         "priority": 1,
         "time": "2019-11-23T11:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3976" },
+        "programItem": { "programItemId": "p3976" },
         "priority": 1,
         "time": "2019-11-24T09:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p3985" },
+        "programItem": { "programItemId": "p3985" },
         "priority": 1,
         "time": "2019-11-23T11:00:00.000Z"
       }
@@ -2334,7 +2334,7 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p4005" },
+        "programItem": { "programItemId": "p4005" },
         "priority": 3,
         "time": "2019-11-23T17:00:00.000Z"
       }
@@ -2379,22 +2379,22 @@
     "groupCode": "0099566986",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3947" },
+        "programItem": { "programItemId": "p3947" },
         "priority": 1,
         "time": "2019-11-23T11:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4017" },
+        "programItem": { "programItemId": "p4017" },
         "priority": 3,
         "time": "2019-11-23T11:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3985" },
+        "programItem": { "programItemId": "p3985" },
         "priority": 2,
         "time": "2019-11-23T11:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3975" },
+        "programItem": { "programItemId": "p3975" },
         "priority": 1,
         "time": "2019-11-23T13:00:00.000Z"
       }
@@ -2450,19 +2450,19 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p4099" },
+        "programItem": { "programItemId": "p4099" },
         "priority": 1,
         "time": "2019-11-23T13:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4002" },
+        "programItem": { "programItemId": "p4002" },
         "priority": 2,
         "time": "2019-11-23T13:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p4099" },
+        "programItem": { "programItemId": "p4099" },
         "priority": 1,
         "time": "2019-11-23T13:00:00.000Z"
       }
@@ -2477,14 +2477,14 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3975" },
+        "programItem": { "programItemId": "p3975" },
         "priority": 1,
         "time": "2019-11-23T13:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p3975" },
+        "programItem": { "programItemId": "p3975" },
         "priority": 1,
         "time": "2019-11-23T13:00:00.000Z"
       }
@@ -2499,34 +2499,34 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p4001" },
+        "programItem": { "programItemId": "p4001" },
         "priority": 1,
         "time": "2019-11-23T11:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4099" },
+        "programItem": { "programItemId": "p4099" },
         "priority": 2,
         "time": "2019-11-23T13:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3975" },
+        "programItem": { "programItemId": "p3975" },
         "priority": 1,
         "time": "2019-11-23T13:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4070" },
+        "programItem": { "programItemId": "p4070" },
         "priority": 1,
         "time": "2019-11-23T16:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4007" },
+        "programItem": { "programItemId": "p4007" },
         "priority": 2,
         "time": "2019-11-23T16:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p4070" },
+        "programItem": { "programItemId": "p4070" },
         "priority": 1,
         "time": "2019-11-23T16:00:00.000Z"
       }
@@ -2541,14 +2541,14 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3975" },
+        "programItem": { "programItemId": "p3975" },
         "priority": 1,
         "time": "2019-11-23T13:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p3975" },
+        "programItem": { "programItemId": "p3975" },
         "priority": 1,
         "time": "2019-11-23T13:00:00.000Z"
       }
@@ -2573,54 +2573,54 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p4099" },
+        "programItem": { "programItemId": "p4099" },
         "priority": 3,
         "time": "2019-11-23T13:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3975" },
+        "programItem": { "programItemId": "p3975" },
         "priority": 2,
         "time": "2019-11-23T13:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4051" },
+        "programItem": { "programItemId": "p4051" },
         "priority": 1,
         "time": "2019-11-23T15:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3969" },
+        "programItem": { "programItemId": "p3969" },
         "priority": 3,
         "time": "2019-11-23T15:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4002" },
+        "programItem": { "programItemId": "p4002" },
         "priority": 1,
         "time": "2019-11-23T13:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3950" },
+        "programItem": { "programItemId": "p3950" },
         "priority": 1,
         "time": "2019-11-24T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4049" },
+        "programItem": { "programItemId": "p4049" },
         "priority": 2,
         "time": "2019-11-24T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4044" },
+        "programItem": { "programItemId": "p4044" },
         "priority": 3,
         "time": "2019-11-24T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4012" },
+        "programItem": { "programItemId": "p4012" },
         "priority": 2,
         "time": "2019-11-23T15:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p3950" },
+        "programItem": { "programItemId": "p3950" },
         "priority": 1,
         "time": "2019-11-24T10:00:00.000Z"
       }
@@ -2635,14 +2635,14 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p4000" },
+        "programItem": { "programItemId": "p4000" },
         "priority": 1,
         "time": "2019-11-24T10:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p4000" },
+        "programItem": { "programItemId": "p4000" },
         "priority": 1,
         "time": "2019-11-24T10:00:00.000Z"
       }
@@ -2657,14 +2657,14 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p4006" },
+        "programItem": { "programItemId": "p4006" },
         "priority": 1,
         "time": "2019-11-24T09:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p4006" },
+        "programItem": { "programItemId": "p4006" },
         "priority": 1,
         "time": "2019-11-24T09:00:00.000Z"
       }
@@ -2679,24 +2679,24 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3947" },
+        "programItem": { "programItemId": "p3947" },
         "priority": 2,
         "time": "2019-11-23T11:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3985" },
+        "programItem": { "programItemId": "p3985" },
         "priority": 1,
         "time": "2019-11-23T11:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4001" },
+        "programItem": { "programItemId": "p4001" },
         "priority": 3,
         "time": "2019-11-23T11:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p3985" },
+        "programItem": { "programItemId": "p3985" },
         "priority": 1,
         "time": "2019-11-23T11:00:00.000Z"
       }
@@ -2711,14 +2711,14 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3975" },
+        "programItem": { "programItemId": "p3975" },
         "priority": 1,
         "time": "2019-11-23T13:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p3975" },
+        "programItem": { "programItemId": "p3975" },
         "priority": 1,
         "time": "2019-11-23T13:00:00.000Z"
       }
@@ -2753,19 +2753,19 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p4051" },
+        "programItem": { "programItemId": "p4051" },
         "priority": 2,
         "time": "2019-11-23T15:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3969" },
+        "programItem": { "programItemId": "p3969" },
         "priority": 1,
         "time": "2019-11-23T15:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p4051" },
+        "programItem": { "programItemId": "p4051" },
         "priority": 2,
         "time": "2019-11-23T15:00:00.000Z"
       }
@@ -2790,59 +2790,59 @@
     "groupCode": "4356076549",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3985" },
+        "programItem": { "programItemId": "p3985" },
         "priority": 1,
         "time": "2019-11-23T11:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4001" },
+        "programItem": { "programItemId": "p4001" },
         "priority": 2,
         "time": "2019-11-23T11:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3975" },
+        "programItem": { "programItemId": "p3975" },
         "priority": 1,
         "time": "2019-11-23T13:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4051" },
+        "programItem": { "programItemId": "p4051" },
         "priority": 2,
         "time": "2019-11-23T15:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4015" },
+        "programItem": { "programItemId": "p4015" },
         "priority": 3,
         "time": "2019-11-23T15:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4070" },
+        "programItem": { "programItemId": "p4070" },
         "priority": 3,
         "time": "2019-11-23T16:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3999" },
+        "programItem": { "programItemId": "p3999" },
         "priority": 2,
         "time": "2019-11-23T16:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4013" },
+        "programItem": { "programItemId": "p4013" },
         "priority": 1,
         "time": "2019-11-23T16:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4002" },
+        "programItem": { "programItemId": "p4002" },
         "priority": 2,
         "time": "2019-11-23T13:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4012" },
+        "programItem": { "programItemId": "p4012" },
         "priority": 1,
         "time": "2019-11-23T15:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p4013" },
+        "programItem": { "programItemId": "p4013" },
         "priority": 1,
         "time": "2019-11-23T16:00:00.000Z"
       }
@@ -2858,7 +2858,7 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p4013" },
+        "programItem": { "programItemId": "p4013" },
         "priority": 1,
         "time": "2019-11-23T16:00:00.000Z"
       }
@@ -2873,29 +2873,29 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p4002" },
+        "programItem": { "programItemId": "p4002" },
         "priority": 1,
         "time": "2019-11-23T13:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4012" },
+        "programItem": { "programItemId": "p4012" },
         "priority": 1,
         "time": "2019-11-23T15:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3956" },
+        "programItem": { "programItemId": "p3956" },
         "priority": 1,
         "time": "2019-11-24T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3976" },
+        "programItem": { "programItemId": "p3976" },
         "priority": 1,
         "time": "2019-11-24T09:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p3956" },
+        "programItem": { "programItemId": "p3956" },
         "priority": 1,
         "time": "2019-11-24T10:00:00.000Z"
       }
@@ -2910,54 +2910,54 @@
     "groupCode": "2447190097",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p4011" },
+        "programItem": { "programItemId": "p4011" },
         "priority": 2,
         "time": "2019-11-23T15:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4070" },
+        "programItem": { "programItemId": "p4070" },
         "priority": 1,
         "time": "2019-11-23T16:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4007" },
+        "programItem": { "programItemId": "p4007" },
         "priority": 3,
         "time": "2019-11-23T16:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4013" },
+        "programItem": { "programItemId": "p4013" },
         "priority": 2,
         "time": "2019-11-23T16:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4002" },
+        "programItem": { "programItemId": "p4002" },
         "priority": 1,
         "time": "2019-11-23T13:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4012" },
+        "programItem": { "programItemId": "p4012" },
         "priority": 1,
         "time": "2019-11-23T15:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3956" },
+        "programItem": { "programItemId": "p3956" },
         "priority": 2,
         "time": "2019-11-24T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3984" },
+        "programItem": { "programItemId": "p3984" },
         "priority": 1,
         "time": "2019-11-24T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3980" },
+        "programItem": { "programItemId": "p3980" },
         "priority": 3,
         "time": "2019-11-24T10:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p3984" },
+        "programItem": { "programItemId": "p3984" },
         "priority": 1,
         "time": "2019-11-24T10:00:00.000Z"
       }
@@ -2972,34 +2972,34 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p4099" },
+        "programItem": { "programItemId": "p4099" },
         "priority": 2,
         "time": "2019-11-23T13:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3999" },
+        "programItem": { "programItemId": "p3999" },
         "priority": 1,
         "time": "2019-11-23T16:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4002" },
+        "programItem": { "programItemId": "p4002" },
         "priority": 1,
         "time": "2019-11-23T13:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4049" },
+        "programItem": { "programItemId": "p4049" },
         "priority": 2,
         "time": "2019-11-24T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3980" },
+        "programItem": { "programItemId": "p3980" },
         "priority": 1,
         "time": "2019-11-24T10:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p4049" },
+        "programItem": { "programItemId": "p4049" },
         "priority": 2,
         "time": "2019-11-24T10:00:00.000Z"
       }
@@ -3014,24 +3014,24 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p4099" },
+        "programItem": { "programItemId": "p4099" },
         "priority": 1,
         "time": "2019-11-23T13:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3999" },
+        "programItem": { "programItemId": "p3999" },
         "priority": 1,
         "time": "2019-11-23T16:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4049" },
+        "programItem": { "programItemId": "p4049" },
         "priority": 1,
         "time": "2019-11-24T10:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p4049" },
+        "programItem": { "programItemId": "p4049" },
         "priority": 1,
         "time": "2019-11-24T10:00:00.000Z"
       }
@@ -3056,19 +3056,19 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3975" },
+        "programItem": { "programItemId": "p3975" },
         "priority": 2,
         "time": "2019-11-23T13:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4002" },
+        "programItem": { "programItemId": "p4002" },
         "priority": 1,
         "time": "2019-11-23T13:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p3975" },
+        "programItem": { "programItemId": "p3975" },
         "priority": 2,
         "time": "2019-11-23T13:00:00.000Z"
       }
@@ -3083,19 +3083,19 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p4070" },
+        "programItem": { "programItemId": "p4070" },
         "priority": 2,
         "time": "2019-11-23T16:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3999" },
+        "programItem": { "programItemId": "p3999" },
         "priority": 1,
         "time": "2019-11-23T16:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p4070" },
+        "programItem": { "programItemId": "p4070" },
         "priority": 2,
         "time": "2019-11-23T16:00:00.000Z"
       }
@@ -3110,49 +3110,49 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p4099" },
+        "programItem": { "programItemId": "p4099" },
         "priority": 2,
         "time": "2019-11-23T13:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4051" },
+        "programItem": { "programItemId": "p4051" },
         "priority": 2,
         "time": "2019-11-23T15:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3969" },
+        "programItem": { "programItemId": "p3969" },
         "priority": 1,
         "time": "2019-11-23T15:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4002" },
+        "programItem": { "programItemId": "p4002" },
         "priority": 1,
         "time": "2019-11-23T13:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4044" },
+        "programItem": { "programItemId": "p4044" },
         "priority": 3,
         "time": "2019-11-24T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4012" },
+        "programItem": { "programItemId": "p4012" },
         "priority": 3,
         "time": "2019-11-23T15:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3956" },
+        "programItem": { "programItemId": "p3956" },
         "priority": 2,
         "time": "2019-11-24T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3980" },
+        "programItem": { "programItemId": "p3980" },
         "priority": 1,
         "time": "2019-11-24T10:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p3980" },
+        "programItem": { "programItemId": "p3980" },
         "priority": 1,
         "time": "2019-11-24T10:00:00.000Z"
       }
@@ -3167,24 +3167,24 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p4070" },
+        "programItem": { "programItemId": "p4070" },
         "priority": 2,
         "time": "2019-11-23T16:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4007" },
+        "programItem": { "programItemId": "p4007" },
         "priority": 1,
         "time": "2019-11-23T16:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3999" },
+        "programItem": { "programItemId": "p3999" },
         "priority": 3,
         "time": "2019-11-23T16:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p4007" },
+        "programItem": { "programItemId": "p4007" },
         "priority": 1,
         "time": "2019-11-23T16:00:00.000Z"
       }
@@ -3199,24 +3199,24 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3984" },
+        "programItem": { "programItemId": "p3984" },
         "priority": 2,
         "time": "2019-11-24T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4000" },
+        "programItem": { "programItemId": "p4000" },
         "priority": 3,
         "time": "2019-11-24T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3980" },
+        "programItem": { "programItemId": "p3980" },
         "priority": 1,
         "time": "2019-11-24T10:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p3980" },
+        "programItem": { "programItemId": "p3980" },
         "priority": 1,
         "time": "2019-11-24T10:00:00.000Z"
       }
@@ -3231,14 +3231,14 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p4013" },
+        "programItem": { "programItemId": "p4013" },
         "priority": 1,
         "time": "2019-11-23T16:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p4013" },
+        "programItem": { "programItemId": "p4013" },
         "priority": 1,
         "time": "2019-11-23T16:00:00.000Z"
       }
@@ -3264,7 +3264,7 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p3984" },
+        "programItem": { "programItemId": "p3984" },
         "priority": 1,
         "time": "2019-11-24T10:00:00.000Z"
       }
@@ -3289,14 +3289,14 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3969" },
+        "programItem": { "programItemId": "p3969" },
         "priority": 1,
         "time": "2019-11-23T15:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p3969" },
+        "programItem": { "programItemId": "p3969" },
         "priority": 1,
         "time": "2019-11-23T15:00:00.000Z"
       }
@@ -3311,19 +3311,19 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p4099" },
+        "programItem": { "programItemId": "p4099" },
         "priority": 2,
         "time": "2019-11-23T13:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4002" },
+        "programItem": { "programItemId": "p4002" },
         "priority": 1,
         "time": "2019-11-23T13:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p4002" },
+        "programItem": { "programItemId": "p4002" },
         "priority": 1,
         "time": "2019-11-23T13:00:00.000Z"
       }
@@ -3338,19 +3338,19 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p4011" },
+        "programItem": { "programItemId": "p4011" },
         "priority": 1,
         "time": "2019-11-23T15:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4006" },
+        "programItem": { "programItemId": "p4006" },
         "priority": 1,
         "time": "2019-11-24T09:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p4006" },
+        "programItem": { "programItemId": "p4006" },
         "priority": 1,
         "time": "2019-11-24T09:00:00.000Z"
       }
@@ -3376,7 +3376,7 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p3999" },
+        "programItem": { "programItemId": "p3999" },
         "priority": 1,
         "time": "2019-11-23T16:00:00.000Z"
       }
@@ -3391,24 +3391,24 @@
     "groupCode": "0787862358",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p4007" },
+        "programItem": { "programItemId": "p4007" },
         "priority": 3,
         "time": "2019-11-23T16:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3999" },
+        "programItem": { "programItemId": "p3999" },
         "priority": 1,
         "time": "2019-11-23T16:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4013" },
+        "programItem": { "programItemId": "p4013" },
         "priority": 2,
         "time": "2019-11-23T16:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p3999" },
+        "programItem": { "programItemId": "p3999" },
         "priority": 1,
         "time": "2019-11-23T16:00:00.000Z"
       }
@@ -3423,19 +3423,19 @@
     "groupCode": "9418906617",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p4011" },
+        "programItem": { "programItemId": "p4011" },
         "priority": 1,
         "time": "2019-11-23T15:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4012" },
+        "programItem": { "programItemId": "p4012" },
         "priority": 2,
         "time": "2019-11-23T15:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p4012" },
+        "programItem": { "programItemId": "p4012" },
         "priority": 2,
         "time": "2019-11-23T15:00:00.000Z"
       }
@@ -3461,7 +3461,7 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p4012" },
+        "programItem": { "programItemId": "p4012" },
         "priority": 2,
         "time": "2019-11-23T15:00:00.000Z"
       }
@@ -3476,14 +3476,14 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3976" },
+        "programItem": { "programItemId": "p3976" },
         "priority": 1,
         "time": "2019-11-24T09:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p3976" },
+        "programItem": { "programItemId": "p3976" },
         "priority": 1,
         "time": "2019-11-24T09:00:00.000Z"
       }
@@ -3498,7 +3498,7 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p4007" },
+        "programItem": { "programItemId": "p4007" },
         "priority": 1,
         "time": "2019-11-23T16:00:00.000Z"
       }
@@ -3514,7 +3514,7 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3957" },
+        "programItem": { "programItemId": "p3957" },
         "priority": 1,
         "time": "2019-11-23T17:00:00.000Z"
       }
@@ -3550,12 +3550,12 @@
     "groupCode": "6303242181",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p4011" },
+        "programItem": { "programItemId": "p4011" },
         "priority": 1,
         "time": "2019-11-23T15:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4007" },
+        "programItem": { "programItemId": "p4007" },
         "priority": 1,
         "time": "2019-11-23T16:00:00.000Z"
       }
@@ -3581,7 +3581,7 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3969" },
+        "programItem": { "programItemId": "p3969" },
         "priority": 1,
         "time": "2019-11-23T15:00:00.000Z"
       }
@@ -3597,34 +3597,34 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p4070" },
+        "programItem": { "programItemId": "p4070" },
         "priority": 2,
         "time": "2019-11-23T16:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4013" },
+        "programItem": { "programItemId": "p4013" },
         "priority": 1,
         "time": "2019-11-23T16:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3954" },
+        "programItem": { "programItemId": "p3954" },
         "priority": 2,
         "time": "2019-11-24T09:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4006" },
+        "programItem": { "programItemId": "p4006" },
         "priority": 3,
         "time": "2019-11-24T09:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3976" },
+        "programItem": { "programItemId": "p3976" },
         "priority": 1,
         "time": "2019-11-24T09:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p3976" },
+        "programItem": { "programItemId": "p3976" },
         "priority": 1,
         "time": "2019-11-24T09:00:00.000Z"
       }
@@ -3639,24 +3639,24 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p4011" },
+        "programItem": { "programItemId": "p4011" },
         "priority": 1,
         "time": "2019-11-23T15:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4007" },
+        "programItem": { "programItemId": "p4007" },
         "priority": 1,
         "time": "2019-11-23T16:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p4012" },
+        "programItem": { "programItemId": "p4012" },
         "priority": 2,
         "time": "2019-11-23T15:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p4011" },
+        "programItem": { "programItemId": "p4011" },
         "priority": 1,
         "time": "2019-11-23T15:00:00.000Z"
       }
@@ -3671,14 +3671,14 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p4007" },
+        "programItem": { "programItemId": "p4007" },
         "priority": 1,
         "time": "2019-11-23T16:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p4007" },
+        "programItem": { "programItemId": "p4007" },
         "priority": 1,
         "time": "2019-11-23T16:00:00.000Z"
       }
@@ -3714,7 +3714,7 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p3950" },
+        "programItem": { "programItemId": "p3950" },
         "priority": 1,
         "time": "2019-11-24T10:00:00.000Z"
       }
@@ -3729,7 +3729,7 @@
     "groupCode": "2494082726",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3956" },
+        "programItem": { "programItemId": "p3956" },
         "priority": 1,
         "time": "2019-11-24T10:00:00.000Z"
       }
@@ -3756,7 +3756,7 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p3956" },
+        "programItem": { "programItemId": "p3956" },
         "priority": 1,
         "time": "2019-11-24T10:00:00.000Z"
       }
@@ -3771,19 +3771,19 @@
     "groupCode": "5409558573",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p4000" },
+        "programItem": { "programItemId": "p4000" },
         "priority": 1,
         "time": "2019-11-24T10:00:00.000Z"
       },
       {
-        "programItemDetails": { "programItemId": "p3980" },
+        "programItem": { "programItemId": "p3980" },
         "priority": 2,
         "time": "2019-11-24T10:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p4000" },
+        "programItem": { "programItemId": "p4000" },
         "priority": 1,
         "time": "2019-11-24T10:00:00.000Z"
       }
@@ -3799,7 +3799,7 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p4000" },
+        "programItem": { "programItemId": "p4000" },
         "priority": 1,
         "time": "2019-11-24T10:00:00.000Z"
       }
@@ -3814,14 +3814,14 @@
     "groupCode": "0",
     "lotterySignups": [
       {
-        "programItemDetails": { "programItemId": "p3980" },
+        "programItem": { "programItemId": "p3980" },
         "priority": 1,
         "time": "2019-11-24T10:00:00.000Z"
       }
     ],
     "directSignups": [
       {
-        "programItemDetails": { "programItemId": "p3980" },
+        "programItem": { "programItemId": "p3980" },
         "priority": 1,
         "time": "2019-11-24T10:00:00.000Z"
       }

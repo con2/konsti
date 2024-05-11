@@ -41,13 +41,11 @@ export const GroupView = (): ReactElement => {
     .filter(
       (directSignup) =>
         !directSignupAlwaysOpenIds.includes(
-          directSignup.programItemDetails.programItemId,
+          directSignup.programItem.programItemId,
         ),
     )
     .filter((directSignup) =>
-      twoPhaseSignupProgramTypes.includes(
-        directSignup.programItemDetails.programType,
-      ),
+      twoPhaseSignupProgramTypes.includes(directSignup.programItem.programType),
     );
 
   const isInGroup = getIsInGroup(groupCode);
@@ -73,11 +71,11 @@ export const GroupView = (): ReactElement => {
               </p>
               <ListItem>
                 {filteredActiveDirectSignups.map((programItem) => (
-                  <li key={programItem.programItemDetails.programItemId}>
+                  <li key={programItem.programItem.programItemId}>
                     <Link
-                      to={`${AppRoute.PROGRAM_ITEM}/${programItem.programItemDetails.programItemId}`}
+                      to={`${AppRoute.PROGRAM_ITEM}/${programItem.programItem.programItemId}`}
                     >
-                      {programItem.programItemDetails.title}
+                      {programItem.programItem.title}
                     </Link>
                   </li>
                 ))}

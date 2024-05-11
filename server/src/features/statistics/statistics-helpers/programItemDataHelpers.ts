@@ -28,7 +28,7 @@ const getUsersByProgramItems = (
   const directSignups: Signup[] = [];
   const usersByProgramItems = countBy(
     directSignups,
-    "programItemDetails.programItemId",
+    "programItem.programItemId",
   );
   return usersByProgramItems;
 };
@@ -128,8 +128,7 @@ export const getDemandByProgramItem = (
     user.lotterySignups.forEach((lotterySignup) => {
       const foundProgramItem = programItems.find(
         (programItem) =>
-          programItem.programItemId ===
-          lotterySignup.programItemDetails.programItemId,
+          programItem.programItemId === lotterySignup.programItem.programItemId,
       );
 
       if (!foundProgramItem) {
