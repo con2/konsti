@@ -8,10 +8,10 @@ const parseCliOptions = async (): Promise<void> => {
 
   commander
     .option("-u, --users", "Generate users")
-    .option("-l, --lottery", "Generate lottery signups")
-    .option("-d, --direct", "Generate direct signups")
-    .option("-p, --program", "Generate program items")
-    .option("-o, --log", "Generate event log items")
+    .option("-l, --lotterySignups", "Generate lottery signups")
+    .option("-d, --directSignups", "Generate direct signups")
+    .option("-p, --programItems", "Generate program items")
+    .option("-o, --eventLog", "Generate event log items")
     .option("-c, --clean", "Clean all data");
 
   const options = commander.opts();
