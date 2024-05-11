@@ -47,7 +47,7 @@ export const ResultsList = (): ReactElement => {
     ResultsStartingTimeOption.ALL,
   );
   const [showSignupMessages, setShowSignupMessages] = useState<string[]>([]);
-  const [showPlayers, setShowPlayers] = useState<string[]>([]);
+  const [showAttendees, setShowAttendees] = useState<string[]>([]);
 
   const publicSignupQuestions = signupQuestions.filter(
     (signupQuestion) => !signupQuestion.private,
@@ -159,8 +159,8 @@ export const ResultsList = (): ReactElement => {
                   const signupMessagesVisible = showSignupMessages.find(
                     (message) => message === programItem.programItemId,
                   );
-                  const playerListVisible = showPlayers.find(
-                    (players) => players === programItem.programItemId,
+                  const attendeeListVisible = showAttendees.find(
+                    (attendees) => attendees === programItem.programItemId,
                   );
                   const users = getUsersForProgramItemId(
                     programItem.programItemId,
@@ -177,19 +177,19 @@ export const ResultsList = (): ReactElement => {
                           tags={[t(`programType.${programItem.programType}`)]}
                         />
                       )}
-                      <PlayerContainer>
-                        <PlayerCount
+                      <AttendeeContainer>
+                        <AttendeeCount
                           onClick={() => {
-                            if (playerListVisible) {
-                              setShowPlayers(
-                                showPlayers.filter(
+                            if (attendeeListVisible) {
+                              setShowAttendees(
+                                showAttendees.filter(
                                   (programItemId) =>
                                     programItemId !== programItem.programItemId,
                                 ),
                               );
                             } else {
-                              setShowPlayers([
-                                ...showPlayers,
+                              setShowAttendees([
+                                ...showAttendees,
                                 programItem.programItemId,
                               ]);
                             }
@@ -234,9 +234,11 @@ export const ResultsList = (): ReactElement => {
                               ))}
                           </span>
                           <FontAwesomeIcon
-                            icon={playerListVisible ? "angle-up" : "angle-down"}
+                            icon={
+                              attendeeListVisible ? "angle-up" : "angle-down"
+                            }
                             aria-label={
-                              playerListVisible
+                              attendeeListVisible
                                 ? t("iconAltText.closeAttendeeList", {
                                     ATTENDEE_TYPE: t(
                                       `attendeeType.${getAttendeeType(
@@ -253,9 +255,9 @@ export const ResultsList = (): ReactElement => {
                                   })
                             }
                           />
-                        </PlayerCount>
-                        {playerListVisible && (
-                          <PlayerList>
+                        </AttendeeCount>
+                        {attendeeListVisible && (
+                          <AttendeeList>
                             {signupMessagesVisible && (
                               <SignupQuestion>
                                 {i18n.language === "fi"
@@ -283,9 +285,9 @@ export const ResultsList = (): ReactElement => {
                                 </p>
                               ))
                             )}
-                          </PlayerList>
+                          </AttendeeList>
                         )}
-                      </PlayerContainer>
+                      </AttendeeContainer>
                     </div>
                   );
                 })}
@@ -328,17 +330,17 @@ const ProgramItems = styled.div`
   }
 `;
 
-const PlayerList = styled.div`
+const AttendeeList = styled.div`
   padding: 0 0 0 30px;
 `;
 
-const PlayerContainer = styled.div`
+const AttendeeContainer = styled.div`
   border: 1px solid ${(props) => props.theme.resultsFoldBorder};
   border-radius: 4px;
   background-color: ${(props) => props.theme.resultsFoldBackground};
 `;
 
-const PlayerCount = styled.div`
+const AttendeeCount = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 4px;

@@ -221,7 +221,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     expect(modifiedSignups[0].userSignups[0].message).toEqual("Test message");
   });
 
-  test("should not sign too many players to program item", async () => {
+  test("should not sign too many attendees to program item", async () => {
     vi.setSystemTime(testProgramItem.startTime);
     vi.spyOn(signupTimes, "getDirectSignupStartTime").mockReturnValue(
       dayjs(testProgramItem.startTime),

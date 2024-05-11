@@ -51,7 +51,7 @@ export const ProgramItemPage = (): ReactElement => {
   const foundProgramItem = programItems.find(
     (programItem) => programItem.programItemId === programItemId,
   );
-  const playerCount =
+  const attendeeCount =
     signups.find(
       (programItemSignup) =>
         programItemSignup.programItemId === foundProgramItem?.programItemId,
@@ -70,7 +70,7 @@ export const ProgramItemPage = (): ReactElement => {
           isAlwaysExpanded={true}
           programItem={foundProgramItem}
           startTime={foundProgramItem.startTime}
-          players={playerCount}
+          attendeeCount={attendeeCount}
           signupStrategy={
             foundProgramItem.signupStrategy ?? SignupStrategy.DIRECT
           }

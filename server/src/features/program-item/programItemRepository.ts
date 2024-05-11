@@ -1,7 +1,7 @@
 import { ObjectId } from "mongoose";
 import { logger } from "server/utils/logger";
 import { ProgramItemModel } from "server/features/program-item/programItemSchema";
-import { updateMovedProgramItems } from "server/features/player-assignment/utils/updateMovedProgramItems";
+import { updateMovedProgramItems } from "server/features/assignment/utils/updateMovedProgramItems";
 import { ProgramItemDoc } from "server/types/programItemTypes";
 import { ProgramItem } from "shared/types/models/programItem";
 import {
@@ -11,7 +11,7 @@ import {
   isErrorResult,
 } from "shared/utils/result";
 import { removeDeletedProgramItems } from "server/features/program-item/programItemUtils";
-import { removeInvalidProgramItemsFromUsers } from "server/features/player-assignment/utils/removeInvalidProgramItemsFromUsers";
+import { removeInvalidProgramItemsFromUsers } from "server/features/assignment/utils/removeInvalidProgramItemsFromUsers";
 import { MongoDbError } from "shared/types/api/errors";
 import { createEmptyDirectSignupDocumentForProgramItems } from "server/features/direct-signup/directSignupRepository";
 

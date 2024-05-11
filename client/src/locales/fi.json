@@ -7,7 +7,7 @@
     "login": "Kirjaudu",
     "register": "Luo tili",
     "updateDb": "Päivitä ohjelmatietokanta",
-    "assignAttendees": "Sijoita pelaajat",
+    "assignAttendees": "Sijoita ilmoittautuneet",
     "signup": "Tallenna",
     "cancelSignup": "Peru ilmoittautuminen",
     "back": "Takaisin",
@@ -226,7 +226,7 @@
     "inGroupSignups": "Olet ryhmän jäsen. Tämän listan arvonta-ilmoittautumiset ovat ryhmän perustajan tekemiä.",
     "closeGroupConfirmation": "Oletko varma, että haluat sulkea ryhmän ja poistaa kaikki sen jäsenet?",
     "generalLeaveGroupError": "Virhe ryhmästä poistuessa",
-    "groupTooBigWarning": "Ryhmä on suurempi kuin suurin sallittu pelaajamäärä",
+    "groupTooBigWarning": "Ryhmä on suurempi kuin suurin sallittu osallistujamäärä",
     "enterGroupMemberCode": "Käyttäjän koodi",
     "enterGroupCreatorCode": "Ryhmän perustajan koodi",
     "createGroupConfirmationMessage": "Halutko luoda ryhmän?",
@@ -280,7 +280,7 @@
     "cancel": "Peruuta",
     "alreadySignedToProgramItem": "Olet ilmoittautunut {{PROGRAM_TYPE}}",
     "cannotSignupMoreThanOneProgramItem": "Et voi ilmoittautua toiseen samaan aikaan alkavaan ohjelmanumeroon.",
-    "signupCount": "{{PLAYERS}}/{{MAX_ATTENDANCE}} ilmoittautunutta",
+    "signupCount": "{{ATTENDEE_COUNT}}/{{MAX_ATTENDANCE}} ilmoittautunutta",
     "attendeesNeeded": "Tarvitaan vielä {{COUNT}} {{ATTENDEE_TYPE}}.",
     "programItemFull": "Tämä {{PROGRAM_TYPE}} on täynnä.",
     "confirmCancellation": "Peruuta ilmoittautuminen",
@@ -464,8 +464,8 @@
     "groupTab": "Ryhmä"
   },
   "programItemPopularity": {
-    "low": "Tarvitaan lisää pelaajia",
-    "medium": "Tarpeeksi pelaajia toteutuakseen",
+    "low": "Tarvitaan lisää {{ATTENDEE_TYPE}}",
+    "medium": "Tarpeeksi {{ATTENDEE_TYPE}} toteutuakseen",
     "high": "Enemmän kiinnostuneita kuin paikkoja"
   },
   "selectedProgramType": "Ohjelmatyyppi",

@@ -18,12 +18,12 @@ const allProgramItemsSlice = createSlice({
       return {
         ...state,
         programItems: action.payload.map(
-          (programItemWithPlayers) => programItemWithPlayers.programItem,
+          (programItemWithAttendees) => programItemWithAttendees.programItem,
         ),
-        directSignups: action.payload.map((programItemWithPlayers) => {
+        directSignups: action.payload.map((programItemWithAttendees) => {
           return {
-            users: programItemWithPlayers.users,
-            programItemId: programItemWithPlayers.programItem.programItemId,
+            users: programItemWithAttendees.users,
+            programItemId: programItemWithAttendees.programItem.programItemId,
           };
         }),
       };

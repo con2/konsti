@@ -15,7 +15,7 @@ import { SignupStrategy } from "shared/config/sharedConfigTypes";
 import { config } from "shared/config";
 import { findSettings } from "server/features/settings/settingsRepository";
 import { Settings, SignupQuestion } from "shared/types/models/settings";
-import { getTimeNow } from "server/features/player-assignment/utils/getTimeNow";
+import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
 import {
   delDirectSignupDocumentsByProgramItemIds,
   findDirectSignups,

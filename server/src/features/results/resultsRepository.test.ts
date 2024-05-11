@@ -2,7 +2,7 @@ import { expect, test, afterEach, beforeEach } from "vitest";
 import mongoose from "mongoose";
 import { faker } from "@faker-js/faker";
 import { ResultsModel } from "server/features/results/resultsSchema";
-import { AssignmentResult } from "shared/types/models/result";
+import { UserAssignmentResult } from "shared/types/models/result";
 import { saveResult } from "server/features/results/resultsRepository";
 
 beforeEach(async () => {
@@ -16,7 +16,7 @@ afterEach(async () => {
 });
 
 test("should insert new result into collection", async () => {
-  const signupResultData: AssignmentResult[] = [];
+  const signupResultData: UserAssignmentResult[] = [];
   const startTime = "2019-07-26T14:00:00.000Z";
   const algorithm = "group";
   const message = "Test assign result message";

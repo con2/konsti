@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { storeAssignment } from "server/features/player-assignment/assignmentController";
+import { storeAssignment } from "server/features/assignment/assignmentController";
 import { fetchResults } from "server/features/results/resultsService";
 import { UserGroup } from "shared/types/models/user";
 import {
@@ -9,14 +9,14 @@ import {
 import { logger } from "server/utils/logger";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
-  PostPlayerAssignmentRequest,
-  PostPlayerAssignmentRequestSchema,
+  PostAssignmentRequest,
+  PostAssignmentRequestSchema,
 } from "shared/types/api/assignment";
 import {
   GetResultsRequest,
   GetResultsRequestSchema,
 } from "shared/types/api/results";
-import { autoAssignPlayers } from "server/utils/cron";
+import { autoAssignAttendees } from "server/utils/cron";
 
 export const getResults = async (
   req: Request<{}, {}, GetResultsRequest>,
@@ -44,7 +44,7 @@ export const getResults = async (
 };
 
 export const postAssignment = async (
-  req: Request<{}, {}, PostPlayerAssignmentRequest>,
+  req: Request<{}, {}, PostAssignmentRequest>,
   res: Response,
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.ASSIGNMENT}`);
@@ -57,7 +57,7 @@ export const postAssignment = async (
     return res.sendStatus(401);
   }
 
-  const result = PostPlayerAssignmentRequestSchema.safeParse(req.body);
+  const result = PostAssignmentRequestSchema.safeParse(req.body);
   if (!result.success) {
     logger.error(
       "Parsing postAssignment() request body failed: %s",
@@ -71,7 +71,7 @@ export const postAssignment = async (
 };
 
 export const postAutoAssignment = (
-  req: Request<{}, {}, PostPlayerAssignmentRequest>,
+  req: Request<{}, {}, PostAssignmentRequest>,
   res: Response,
 ): Response => {
   logger.info(`API call: POST ${ApiEndpoint.ASSIGNMENT_CRON}`);
@@ -81,8 +81,8 @@ export const postAutoAssignment = (
     return res.sendStatus(401);
   }
 
-  autoAssignPlayers().catch((error: unknown) => {
-    logger.error("autoAssignPlayers failed: %s", error);
+  autoAssignAttendees().catch((error: unknown) => {
+    logger.error("runAutoAssignment failed: %s", error);
   });
 
   return res.sendStatus(200);

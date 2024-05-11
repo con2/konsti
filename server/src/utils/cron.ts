@@ -2,7 +2,7 @@ import { Cron } from "croner";
 import dayjs from "dayjs";
 import { logger } from "server/utils/logger";
 import { config } from "shared/config";
-import { runAssignment } from "server/features/player-assignment/runAssignment";
+import { runAssignment } from "server/features/assignment/runAssignment";
 import { Result, isErrorResult, makeSuccessResult } from "shared/utils/result";
 import { updateProgramItems } from "server/features/program-item/programItemService";
 import {
@@ -35,7 +35,7 @@ export const startCronJobs = async (): Promise<void> => {
   const {
     autoUpdateProgramEnabled,
     programUpdateInterval,
-    autoAssignPlayersEnabled,
+    autoAssignAttendeesEnabled,
     autoAssignInterval,
   } = config.server();
 
@@ -63,19 +63,19 @@ export const startCronJobs = async (): Promise<void> => {
     cronJobs.push(autoUpdateProgramItemsJob);
   }
 
-  if (autoAssignPlayersEnabled) {
-    logger.info("Start cronjob: automatic player assignment");
+  if (autoAssignAttendeesEnabled) {
+    logger.info("Start cronjob: automatic attendee assignment");
 
-    const autoAssignPlayersJob = Cron(
+    const autoAssignAttendeesJob = Cron(
       autoAssignInterval,
       {
-        name: "autoAssignPlayers",
+        name: "autoAssignAttendees",
         protect: protectCallback,
         catch: errorHandler,
       },
-      autoAssignPlayers,
+      autoAssignAttendees,
     );
-    cronJobs.push(autoAssignPlayersJob);
+    cronJobs.push(autoAssignAttendeesJob);
   }
 };
 
@@ -150,10 +150,10 @@ export const autoUpdateProgramItems = async (): Promise<void> => {
   logger.info("***** Program items auto update completed");
 };
 
-export const autoAssignPlayers = async (): Promise<void> => {
+export const autoAssignAttendees = async (): Promise<void> => {
   const { autoAssignDelay } = config.server();
 
-  logger.info("----> Auto assign players");
+  logger.info("----> Auto assign attendees");
 
   logger.info(
     `Check if latest running server instance with start time ${latestServerStartTime}`,
@@ -208,7 +208,7 @@ export const autoAssignPlayers = async (): Promise<void> => {
     return;
   }
 
-  logger.info("***** Automatic player assignment completed");
+  logger.info("***** Automatic attendee assignment completed");
 };
 
 const protectCallback = (job: Cron): void => {

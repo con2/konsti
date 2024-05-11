@@ -31,7 +31,7 @@ const startTimes = [
   dayjs(config.shared().conventionStartTime).add(2, "days").toISOString(),
 ];
 
-const getMinPlayers = (programType: KompassiProgramTypeRopecon): number => {
+const getMinAttendees = (programType: KompassiProgramTypeRopecon): number => {
   if (tournamentProgramTypesRopecon.includes(programType)) {
     return faker.number.int({ min: 6, max: 10 });
   }
@@ -43,7 +43,7 @@ const getMinPlayers = (programType: KompassiProgramTypeRopecon): number => {
   return faker.number.int({ min: 2, max: 3 });
 };
 
-const getMaxPlayers = (programType: KompassiProgramTypeRopecon): number => {
+const getMaxAttendees = (programType: KompassiProgramTypeRopecon): number => {
   if (tournamentProgramTypesRopecon.includes(programType)) {
     return faker.number.int({ min: 12, max: 20 });
   }
@@ -105,8 +105,8 @@ export const createProgramItems = async (
             programType === KompassiProgramTypeRopecon.TABLETOP_RPG
               ? "Test gamesystem"
               : "",
-          min_players: getMinPlayers(programType),
-          max_players: getMaxPlayers(programType),
+          min_players: getMinAttendees(programType),
+          max_players: getMaxAttendees(programType),
           identifier: faker.number.int(PROGRAM_ITEM_ID_MAX).toString(),
           tags: sampleSize(Object.values(KompassiTagRopecon), 3),
           genres: sampleSize(Object.values(KompassiGenreRopecon), 2),

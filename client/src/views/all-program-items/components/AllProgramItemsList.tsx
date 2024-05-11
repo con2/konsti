@@ -86,7 +86,7 @@ export const AllProgramItemsList = ({ programItems }: Props): ReactElement => {
                 isAlwaysExpanded={false}
                 programItem={programItem}
                 startTime={startTime}
-                players={programItemSignups?.users.length ?? 0}
+                attendeeCount={programItemSignups?.users.length ?? 0}
                 signupStrategy={timeslotSignupStrategy}
                 lotterySignups={ownOrGroupCreatorLotterySignups}
                 directSignups={directSignups}

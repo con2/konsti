@@ -13,7 +13,7 @@ interface Props {
   startTime: string;
   lotterySignups: readonly Signup[];
   programItem: ProgramItem;
-  players: number;
+  attendees: number;
   loading: boolean;
   setLoading: (loading: boolean) => void;
 }
@@ -23,7 +23,7 @@ export const SignupInfo = ({
   startTime,
   lotterySignups,
   programItem,
-  players,
+  attendees,
   loading,
   setLoading,
 }: Props): ReactElement => {
@@ -57,7 +57,7 @@ export const SignupInfo = ({
       {isDirectSignupMode && normalSignup && (
         <DirectSignupForm
           programItem={programItem}
-          programItemIsFull={players >= programItem.maxAttendance}
+          programItemIsFull={attendees >= programItem.maxAttendance}
           startTime={startTime}
           loading={loading}
           setLoading={setLoading}

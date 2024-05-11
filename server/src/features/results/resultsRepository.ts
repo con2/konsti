@@ -2,7 +2,7 @@ import { logger } from "server/utils/logger";
 import { ResultsModel } from "server/features/results/resultsSchema";
 import { ResultsCollectionEntry } from "server/types/resultTypes";
 import { findProgramItems } from "server/features/program-item/programItemRepository";
-import { AssignmentResult } from "shared/types/models/result";
+import { UserAssignmentResult } from "shared/types/models/result";
 import {
   Result,
   isErrorResult,
@@ -46,7 +46,7 @@ export const findResult = async (
 };
 
 export const saveResult = async (
-  signupResultData: readonly AssignmentResult[],
+  signupResultData: readonly UserAssignmentResult[],
   startTime: string,
   algorithm: string,
   message: string,
@@ -58,26 +58,29 @@ export const saveResult = async (
   }
 
   const programItems = unwrapResult(programItemsResult);
-  const results = signupResultData.reduce<AssignmentResult[]>((acc, result) => {
-    const programItemDocInDb = programItems.find(
-      (programItem) =>
-        programItem.programItemId ===
-        result.directSignup.programItem.programItemId,
-    );
+  const results = signupResultData.reduce<UserAssignmentResult[]>(
+    (acc, result) => {
+      const programItemDocInDb = programItems.find(
+        (programItem) =>
+          programItem.programItemId ===
+          result.directSignup.programItem.programItemId,
+      );
 
-    if (programItemDocInDb) {
-      acc.push({
-        username: result.username,
-        directSignup: {
-          programItem: programItemDocInDb._id,
-          priority: result.directSignup.priority,
-          time: result.directSignup.time,
-          message: "",
-        },
-      });
-    }
-    return acc;
-  }, []);
+      if (programItemDocInDb) {
+        acc.push({
+          username: result.username,
+          directSignup: {
+            programItem: programItemDocInDb._id,
+            priority: result.directSignup.priority,
+            time: result.directSignup.time,
+            message: "",
+          },
+        });
+      }
+      return acc;
+    },
+    [],
+  );
 
   try {
     await ResultsModel.replaceOne(

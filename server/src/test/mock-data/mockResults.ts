@@ -1,7 +1,7 @@
 import { testProgramItem } from "shared/tests/testProgramItem";
-import { AssignmentResult } from "shared/types/models/result";
+import { UserAssignmentResult } from "shared/types/models/result";
 
-export const mockResults: AssignmentResult[] = [
+export const mockResults: UserAssignmentResult[] = [
   {
     username: "Test User",
     directSignup: {
