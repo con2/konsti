@@ -15,7 +15,7 @@ export const calculateHappiness = (
   }
 
   assignment.forEach((m) => {
-    const grpInd = groups.findIndex((g) => g.id === m.id);
+    const grpInd = groups.findIndex((p) => p.id === m.id);
     let ind = groups[grpInd].pref.findIndex((ele) => {
       return ele === m.assignment;
     });

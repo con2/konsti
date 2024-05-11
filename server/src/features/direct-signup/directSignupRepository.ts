@@ -240,7 +240,7 @@ export const saveDirectSignups = async (
   const bulkOps = Object.entries(signupsByProgramItems).flatMap(
     ([programItemId, directSignups]) => {
       const programItem = programItems.find(
-        (g) => g.programItemId === programItemId,
+        (p) => p.programItemId === programItemId,
       );
       if (!programItem) {
         return [];

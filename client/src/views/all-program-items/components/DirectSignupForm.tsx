@@ -54,7 +54,7 @@ export const DirectSignupForm = ({
     useState<DeleteDirectSignupErrorMessage | null>(null);
 
   const directSignupForTimeslot = directSignups.find(
-    (g) => g.programItem.startTime === startTime,
+    (p) => p.programItem.startTime === startTime,
   );
 
   const alreadySignedToProgramItem = isAlreadyDirectySigned(

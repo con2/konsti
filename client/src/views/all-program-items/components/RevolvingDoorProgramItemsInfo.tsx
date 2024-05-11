@@ -19,7 +19,7 @@ export const RevolvingDoorProgramItemsInfo = (): ReactElement => {
     (state) => state.admin.activeProgramType,
   );
 
-  const hiddenProgramItemsIds = hiddenProgramItems.map((g) => g.programItemId);
+  const hiddenProgramItemsIds = hiddenProgramItems.map((p) => p.programItemId);
 
   const timeNow = getTimeNow();
   const runningRevolvingDoorProgramItems = activeProgramItems.filter(

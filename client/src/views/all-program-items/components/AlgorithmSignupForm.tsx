@@ -81,11 +81,11 @@ export const AlgorithmSignupForm = ({
   };
 
   const currentPriority = lotterySignups.find(
-    (g) => g.programItem.programItemId === programItem.programItemId,
+    (p) => p.programItem.programItemId === programItem.programItemId,
   )?.priority;
 
   const lotterySignupsForTimeslot = lotterySignups.filter(
-    (g) => g.programItem.startTime === startTime,
+    (p) => p.programItem.startTime === startTime,
   );
 
   const alreadySignedToProgramItem = isAlreadyLotterySigned(
