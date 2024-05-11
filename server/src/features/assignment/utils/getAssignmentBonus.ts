@@ -3,7 +3,7 @@ import { DirectSignupsForProgramItem } from "server/features/direct-signup/direc
 import { User } from "shared/types/models/user";
 
 export const getAssignmentBonus = (
-  attendeesGroup: User[],
+  attendeeGroup: User[],
   directSignups: readonly DirectSignupsForProgramItem[],
 ): number => {
   const { twoPhaseSignupProgramTypes, directSignupAlwaysOpenIds } =
@@ -19,7 +19,7 @@ export const getAssignmentBonus = (
       ),
   );
 
-  const groupMembersWithSignups = attendeesGroup.flatMap((groupMember) => {
+  const groupMembersWithSignups = attendeeGroup.flatMap((groupMember) => {
     return signupsAffectingBonus.flatMap((signup) => {
       return signup.userSignups.filter(
         (userSignup) => userSignup.username === groupMember.username,
@@ -27,7 +27,7 @@ export const getAssignmentBonus = (
     });
   });
 
-  const averageSignups = groupMembersWithSignups.length / attendeesGroup.length;
+  const averageSignups = groupMembersWithSignups.length / attendeeGroup.length;
 
   const bonus = averageSignups < 0.5 ? config.server().firtSignupBonus : 0;
   return bonus;
