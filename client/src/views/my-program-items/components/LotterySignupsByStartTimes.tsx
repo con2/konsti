@@ -5,6 +5,7 @@ import { capitalize } from "lodash-es";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
 import { Signup } from "shared/types/models/user";
 import { PopularityInfo } from "client/components/PopularityInfo";
+import { AppRoute } from "client/app/AppRoutes";
 
 interface Props {
   lotterySignups: Signup[];
@@ -32,7 +33,7 @@ export const LotterySignupsByStartTimes = ({
                       <RowLeftSide>
                         <SignupPriority>{`${signup.priority})`}</SignupPriority>
                         <StyledLink
-                          to={`/program/${signup.programItemDetails.programItemId}`}
+                          to={`${AppRoute.PROGRAM_ITEM}/${signup.programItemDetails.programItemId}`}
                         >
                           {signup.programItemDetails.title}
                         </StyledLink>

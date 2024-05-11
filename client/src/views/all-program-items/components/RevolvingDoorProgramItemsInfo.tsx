@@ -6,6 +6,7 @@ import styled from "styled-components";
 import { getTimeNow } from "client/utils/getTimeNow";
 import { useAppSelector } from "client/utils/hooks";
 import { selectActiveProgramItems } from "client/views/admin/adminSlice";
+import { AppRoute } from "client/app/AppRoutes";
 
 export const RevolvingDoorProgramItemsInfo = (): ReactElement => {
   const { t } = useTranslation();
@@ -57,7 +58,9 @@ export const RevolvingDoorProgramItemsInfo = (): ReactElement => {
           </h3>
           {runningRevolvingDoorProgramItems.map((programItem) => (
             <div key={programItem.programItemId}>
-              <Link to={`/program/${programItem.programItemId}`}>
+              <Link
+                to={`${AppRoute.PROGRAM_ITEM}/${programItem.programItemId}`}
+              >
                 {programItem.title}
               </Link>{" "}
               <ProgramItemListShortDescription>

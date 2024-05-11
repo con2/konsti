@@ -9,6 +9,7 @@ import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { updateFavorite } from "client/utils/favorite";
 import { IconButton } from "client/components/IconButton";
 import { selectFavoritedProgramItems } from "client/views/my-program-items/myProgramItemsSlice";
+import { AppRoute } from "client/app/AppRoutes";
 
 interface Props {
   programItems: readonly ProgramItem[];
@@ -47,7 +48,7 @@ export const FavoritesByStartTimes = ({
                   return (
                     <ProgramItemDetailsRow key={programItem.programItemId}>
                       <StyledLink
-                        to={`/program/${programItem.programItemId}`}
+                        to={`${AppRoute.PROGRAM_ITEM}/${programItem.programItemId}`}
                         data-testid={"program-item-title"}
                       >
                         {programItem.title}

@@ -15,6 +15,7 @@ import { updateFavorite, UpdateFavoriteOpts } from "client/utils/favorite";
 import { useAppDispatch } from "client/utils/hooks";
 import { config } from "shared/config";
 import { isRevolvingDoorWorkshop } from "client/utils/isRevolvingDoorWorkshop";
+import { AppRoute } from "client/app/AppRoutes";
 
 interface Props {
   programItem: ProgramItem;
@@ -83,7 +84,9 @@ export const ProgramItemHead = ({
     <Container>
       <div>
         <H3 data-testid="program-item-title">
-          <HeaderLink to={`/program/${programItem.programItemId}`}>
+          <HeaderLink
+            to={`${AppRoute.PROGRAM_ITEM}/${programItem.programItemId}`}
+          >
             {programItem.title}
           </HeaderLink>
         </H3>

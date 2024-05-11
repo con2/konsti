@@ -8,6 +8,7 @@ import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { submitUpdateEventLogIsSeen } from "client/views/login/loginThunks";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
 import { RaisedCard } from "client/components/RaisedCard";
+import { AppRoute } from "client/app/AppRoutes";
 
 export const EventLog = (): ReactElement => {
   const { t } = useTranslation();
@@ -78,7 +79,9 @@ export const EventLog = (): ReactElement => {
           >
             <span>
               {t(`eventLogActions.${eventLogItem.action}`)}
-              <StyledLink to={`/program/${eventLogItem.programItemId}`}>
+              <StyledLink
+                to={`${AppRoute.PROGRAM_ITEM}/${eventLogItem.programItemId}`}
+              >
                 {founProgramItem.title}
               </StyledLink>
               .

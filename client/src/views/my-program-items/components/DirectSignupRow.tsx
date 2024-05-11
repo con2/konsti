@@ -15,6 +15,7 @@ import { loadProgramItems } from "client/utils/loadData";
 import { config } from "shared/config";
 import { IconButton } from "client/components/IconButton";
 import { getShortWeekdayAndTime } from "client/utils/timeFormatter";
+import { AppRoute } from "client/app/AppRoutes";
 
 interface Props {
   signup: Signup;
@@ -71,7 +72,7 @@ export const DirectSignupRow = ({
       <ProgramItemTitleAndButtons>
         <div>
           <StyledLink
-            to={`/program/${signup.programItemDetails.programItemId}`}
+            to={`${AppRoute.PROGRAM_ITEM}/${signup.programItemDetails.programItemId}`}
           >
             {signup.programItemDetails.title}
           </StyledLink>

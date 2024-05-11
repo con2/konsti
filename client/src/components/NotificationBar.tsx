@@ -7,6 +7,7 @@ import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { HEADER_HEIGHT } from "client/components/Header";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
 import { submitUpdateEventLogIsSeen } from "client/views/login/loginThunks";
+import { AppRoute } from "client/app/AppRoutes";
 
 export const NotificationBar = (): ReactElement | null => {
   const { t } = useTranslation();
@@ -31,7 +32,7 @@ export const NotificationBar = (): ReactElement | null => {
         <StyledNotification key={`${action}-${createdAt}`}>
           <div>
             <span>{t(`eventLogActions.${action}`)}</span>
-            <Link to={`/program/${programItemId}`}>
+            <Link to={`${AppRoute.PROGRAM_ITEM}/${programItemId}`}>
               {foundProgramItem.title}
             </Link>
             <StartTime>

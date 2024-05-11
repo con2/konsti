@@ -14,6 +14,7 @@ import { GroupMemberActions } from "client/views/group/components/GroupMemberAct
 import { getTimeNow } from "client/utils/getTimeNow";
 import { selectDirectSignups } from "client/views/my-program-items/myProgramItemsSlice";
 import { config } from "shared/config";
+import { AppRoute } from "client/app/AppRoutes";
 
 export const GroupView = (): ReactElement => {
   const { directSignupAlwaysOpenIds, twoPhaseSignupProgramTypes } =
@@ -74,7 +75,7 @@ export const GroupView = (): ReactElement => {
                 {filteredActiveDirectSignups.map((programItem) => (
                   <li key={programItem.programItemDetails.programItemId}>
                     <Link
-                      to={`/program/${programItem.programItemDetails.programItemId}`}
+                      to={`${AppRoute.PROGRAM_ITEM}/${programItem.programItemDetails.programItemId}`}
                     >
                       {programItem.programItemDetails.title}
                     </Link>

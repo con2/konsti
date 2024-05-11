@@ -6,6 +6,7 @@ import { sortBy } from "lodash-es";
 import { ProgramItem } from "shared/types/models/programItem";
 import { SignupQuestion } from "shared/types/models/settings";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
+import { AppRoute } from "client/app/AppRoutes";
 
 interface Props {
   signupQuestions: readonly SignupQuestion[];
@@ -56,7 +57,9 @@ export const SignupQuestionList = ({
             <li
               key={`${signupQuestion.programItemId}-${signupQuestion.questionFi}`}
             >
-              <Link to={`/program/${signupQuestion.programItemId}`}>
+              <Link
+                to={`${AppRoute.PROGRAM_ITEM}/${signupQuestion.programItemId}`}
+              >
                 {foundProgramItem.title}
               </Link>
               <span>

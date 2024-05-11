@@ -8,6 +8,7 @@ import { ProgramItem } from "shared/types/models/programItem";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
 import { ControlledInput } from "client/components/ControlledInput";
 import { MULTIPLE_WHITESPACES_REGEX } from "client/views/all-program-items/AllProgramItemsView";
+import { AppRoute } from "client/app/AppRoutes";
 
 export const PrivateSignupMessages = (): ReactElement => {
   const { t } = useTranslation();
@@ -118,7 +119,7 @@ export const PrivateSignupMessages = (): ReactElement => {
                     key={signupQuestionWitProgramItem.programItemId}
                   >
                     <Link
-                      to={`/program/${signupQuestionWitProgramItem.programItem.programItemId}`}
+                      to={`${AppRoute.PROGRAM_ITEM}/${signupQuestionWitProgramItem.programItem.programItemId}`}
                     >
                       {signupQuestionWitProgramItem.programItem.title}
                     </Link>{" "}

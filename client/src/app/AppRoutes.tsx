@@ -27,6 +27,34 @@ import { KompassiLoginUsernameForm } from "client/views/login/components/Kompass
 import { KompassiLogoutCallback } from "client/components/KompassiLogoutCallback";
 import { AuthEndpoint } from "shared/constants/apiEndpoints";
 
+export enum AppRoute {
+  PROGRAM = "/program",
+  PROGRAM_LIST = "/program/list",
+  PROGRAM_ITEM = "/program/item",
+  MY_PROGRAM = "/program/myprogram",
+  HELP = "/help",
+  ADMIN = "/admin",
+  ADMIN_LOGIN = "/admin/login",
+  RESULTS = "/results",
+  PROFILE = "/profile",
+  REGISTRATION = "/registration",
+  LOGIN = "/login",
+  LOGOUT = "/logout",
+  ABOUT = "/about",
+  NOTIFICATIONS = "/notifications",
+  KOMPASSI_LOGOUT_CALLBACK = "/kompassi-logout-callback",
+}
+
+enum AppRouteTab {
+  MY_PROGRAM = "myprogram",
+  PROGRAM_LIST = "list",
+  HELP = "help",
+  FAQ = "faq",
+  ABOUT = "about",
+  PROFILE = "profile",
+  GROUP = "group",
+}
+
 export const AppRoutes = (): ReactElement => {
   const { t } = useTranslation();
 
@@ -42,14 +70,14 @@ export const AppRoutes = (): ReactElement => {
   const programTabs = [
     {
       headerText: t("pages.myProgram"),
-      path: "myprogram",
+      path: AppRouteTab.MY_PROGRAM,
       element: <MyProgramItemsView />,
       icon: "dice" as IconName,
       "data-testid": "my-program-list",
     },
     {
       headerText: t("pages.programList"),
-      path: "list",
+      path: AppRouteTab.PROGRAM_LIST,
       element: <AllProgramItemsView />,
       icon: "calendar-days" as IconName,
       "data-testid": "program-list",
@@ -59,19 +87,19 @@ export const AppRoutes = (): ReactElement => {
   const aboutTabs = [
     {
       headerText: t("aboutView.instructions"),
-      path: "help",
+      path: AppRouteTab.HELP,
       element: <InstructionsView />,
       icon: "person-chalkboard" as IconName,
     },
     {
       headerText: t("aboutView.faq"),
-      path: "faq",
+      path: AppRouteTab.FAQ,
       element: <FaqView />,
       icon: "question" as IconName,
     },
     {
       headerText: t("aboutView.about"),
-      path: "about",
+      path: AppRouteTab.ABOUT,
       element: <AboutView />,
       icon: "info" as IconName,
     },
@@ -80,13 +108,13 @@ export const AppRoutes = (): ReactElement => {
   const profileTabs = [
     {
       headerText: t("profileView.profileTab"),
-      path: "profile",
+      path: AppRouteTab.PROFILE,
       element: <ProfileView />,
       icon: "user" as IconName,
     },
     {
       headerText: t("profileView.groupTab"),
-      path: "group",
+      path: AppRouteTab.GROUP,
       element: <GroupView />,
       icon: "users" as IconName,
     },
@@ -95,27 +123,37 @@ export const AppRoutes = (): ReactElement => {
   if (!appOpen) {
     return (
       <Routes>
-        {isAdmin(userGroup) && <Route path="/admin" element={<AdminView />} />}
+        {isAdmin(userGroup) && (
+          <Route path={AppRoute.ADMIN} element={<AdminView />} />
+        )}
         {isAdminOrHelp(userGroup) && (
           <>
-            <Route path="/help" element={<HelperView />} />
+            <Route path={AppRoute.HELP} element={<HelperView />} />
             <Route
-              path="/program/:programItemId"
+              path={AppRoute.PROGRAM}
+              element={<Navigate replace to={AppRoute.PROGRAM_LIST} />}
+            />
+            <Route
+              path={AppRoute.PROGRAM_LIST}
+              element={<AllProgramItemsView />}
+            />
+            <Route
+              path={`${AppRoute.PROGRAM_ITEM}/:programItemId`}
               element={<ProgramItemDetailsPage />}
             />
-            <Route
-              path="/program"
-              element={<Navigate replace to="/program/list" />}
-            />
-            <Route path="/program/list" element={<AllProgramItemsView />} />
-            <Route path="/results" element={<ResultsView />} />
-            <Route path="/profile" element={<ProfileView />} />
+            <Route path={AppRoute.RESULTS} element={<ResultsView />} />
+            <Route path={AppRoute.PROFILE} element={<ProfileView />} />
           </>
         )}
-        {!loggedIn && <Route path="/login" element={<LoginView />} />}
-        {!loggedIn && <Route path="/admin/login" element={<LoginView />} />}
-        <Route path="/logout" element={<LogoutView />} />
-        <Route path="/about/*" element={<Tabs tabContents={aboutTabs} />} />
+        {!loggedIn && <Route path={AppRoute.LOGIN} element={<LoginView />} />}
+        {!loggedIn && (
+          <Route path={AppRoute.ADMIN_LOGIN} element={<LoginView />} />
+        )}
+        <Route path={AppRoute.LOGOUT} element={<LogoutView />} />
+        <Route
+          path={`${AppRoute.ABOUT}/*`}
+          element={<Tabs tabContents={aboutTabs} />}
+        />
         <Route path="/" element={<div />} />
         <Route path="/*" element={<Navigate to="/" />} />
       </Routes>
@@ -126,7 +164,7 @@ export const AppRoutes = (): ReactElement => {
     if (kompassiId !== 0 && !kompassiUsernameAccepted) {
       return (
         <Routes>
-          <Route path="/logout" element={<LogoutView />} />
+          <Route path={AppRoute.LOGOUT} element={<LogoutView />} />
           <Route path="/*" element={<KompassiLoginUsernameForm />} />
         </Routes>
       );
@@ -134,48 +172,56 @@ export const AppRoutes = (): ReactElement => {
 
     return (
       <Routes>
-        <Route
-          path="/program/:programItemId"
-          element={<ProgramItemDetailsPage />}
-        />
         {isAdminOrHelp(userGroup) ? (
-          <Route path="/program/list" element={<AllProgramItemsView />} />
+          <Route
+            path={AppRoute.PROGRAM_LIST}
+            element={<AllProgramItemsView />}
+          />
         ) : (
           <Route
-            path="/program/*"
+            path={`${AppRoute.PROGRAM}/*`}
             element={<Tabs tabContents={programTabs} />}
           />
         )}
-        <Route path="/notifications" element={<EventLog />} />
-        <Route path="/results" element={<ResultsView />} />
+        <Route
+          path={`${AppRoute.PROGRAM_ITEM}/:programItemId`}
+          element={<ProgramItemDetailsPage />}
+        />
+        <Route path={AppRoute.NOTIFICATIONS} element={<EventLog />} />
+        <Route path={AppRoute.RESULTS} element={<ResultsView />} />
         {!isAdminOrHelp(userGroup) && config.shared().enableGroups ? (
           <Route
-            path="/profile/*"
+            path={`${AppRoute.PROFILE}/*`}
             element={<Tabs tabContents={profileTabs} />}
           />
         ) : (
-          <Route path="/profile" element={<ProfileView />} />
+          <Route path={AppRoute.PROFILE} element={<ProfileView />} />
         )}
         {isAdminOrHelp(userGroup) && (
-          <Route path="/profile" element={<ProfileView />} />
+          <Route path={AppRoute.PROFILE} element={<ProfileView />} />
         )}
-        {isAdmin(userGroup) && <Route path="/admin" element={<AdminView />} />}
-        <Route path="/logout" element={<LogoutView />} />
+        {isAdmin(userGroup) && (
+          <Route path={AppRoute.ADMIN} element={<AdminView />} />
+        )}
+        <Route path={AppRoute.LOGOUT} element={<LogoutView />} />
         <Route
-          path={"/kompassi-logout-callback"}
+          path={AppRoute.KOMPASSI_LOGOUT_CALLBACK}
           element={<KompassiLogoutCallback />}
         />
         {/* Login path is required for after login redirect to work */}
-        <Route path="/login" element={<LoginView />} />
-        <Route path="/admin/login" element={<LoginView />} />
+        <Route path={AppRoute.LOGIN} element={<LoginView />} />
+        <Route path={AppRoute.ADMIN_LOGIN} element={<LoginView />} />
         {isAdminOrHelp(userGroup) && (
-          <Route path="/help" element={<HelperView />} />
+          <Route path={AppRoute.HELP} element={<HelperView />} />
         )}
-        <Route path="/about/*" element={<Tabs tabContents={aboutTabs} />} />
+        <Route
+          path={`${AppRoute.ABOUT}/*`}
+          element={<Tabs tabContents={aboutTabs} />}
+        />
         {isAdminOrHelp(userGroup) ? (
-          <Route path="/" element={<Navigate to="/program/list" />} />
+          <Route path="/" element={<Navigate to={AppRoute.PROGRAM_LIST} />} />
         ) : (
-          <Route path="/" element={<Navigate to="/program/myprogram" />} />
+          <Route path="/" element={<Navigate to={AppRoute.MY_PROGRAM} />} />
         )}
         <Route path="/*" element={<Navigate to="/" />} />
       </Routes>
@@ -184,27 +230,30 @@ export const AppRoutes = (): ReactElement => {
 
   return (
     <Routes>
-      <Route path="/login" element={<LoginView />} />
-      <Route path="/admin/login" element={<LoginView />} />
+      <Route path={AppRoute.LOGIN} element={<LoginView />} />
+      <Route path={AppRoute.ADMIN_LOGIN} element={<LoginView />} />
       {loginProvider === LoginProvider.LOCAL && (
-        <Route path="/registration" element={<RegistrationView />} />
+        <Route path={AppRoute.REGISTRATION} element={<RegistrationView />} />
       )}
       <Route
-        path="/program/:programItemId"
+        path={AppRoute.PROGRAM}
+        element={<Navigate replace to={AppRoute.PROGRAM_LIST} />}
+      />
+      <Route path={AppRoute.PROGRAM_LIST} element={<AllProgramItemsView />} />
+      <Route
+        path={`${AppRoute.PROGRAM_ITEM}/:programItemId`}
         element={<ProgramItemDetailsPage />}
       />
       <Route
-        path="/program"
-        element={<Navigate replace to="/program/list" />}
+        path={`${AppRoute.ABOUT}/*`}
+        element={<Tabs tabContents={aboutTabs} />}
       />
-      <Route path="/program/list" element={<AllProgramItemsView />} />
-      <Route path="/about/*" element={<Tabs tabContents={aboutTabs} />} />
-      <Route path="/" element={<Navigate to="/program" />} />
+      <Route path="/" element={<Navigate to={AppRoute.PROGRAM} />} />
       <Route
         path={AuthEndpoint.KOMPASSI_LOGIN_CALLBACK}
         element={<KompassiLoginCallback />}
       />
-      <Route path="/*" element={<Navigate to="/login" />} />
+      <Route path="/*" element={<Navigate to={AppRoute.LOGIN} />} />
     </Routes>
   );
 };
