@@ -11,7 +11,14 @@ import { addError } from "client/views/admin/adminSlice";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { ApiError } from "shared/types/api/errors";
 import { store } from "client/utils/store";
-import { BackendErrorType } from "client/components/ErrorBar";
+
+export enum BackendErrorType {
+  NETWORK_ERROR = "backendError.networkError",
+  API_ERROR = "backendError.apiError",
+  UNAUTHORIZED = "backendError.unauthorized",
+  INVALID_REQUEST = "backendError.invalidRequest",
+  UNKNOWN = "backendError.unknown",
+}
 
 enum HttpMethod {
   GET = "GET",

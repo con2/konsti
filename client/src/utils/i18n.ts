@@ -1,8 +1,8 @@
 import i18next from "i18next";
 import languageDetector from "i18next-browser-languagedetector";
 import { initReactI18next } from "react-i18next";
-import translationEN from "client/locales/en.json";
-import translationFI from "client/locales/fi.json";
+import { translationEN } from "client/locales/en";
+import { translationFI } from "client/locales/fi";
 
 export const defaultNS = "ns1";
 
@@ -31,12 +31,21 @@ i18next
     returnNull: false,
   });
 
+// https://dev.to/pffigueiredo/typescript-utility-keyof-nested-object-2pa3
+type NestedKeyOf<ObjectType extends object> = {
+  [Key in keyof ObjectType & (string | number)]: ObjectType[Key] extends object
+    ? `${Key}` | `${Key}.${NestedKeyOf<ObjectType[Key]>}`
+    : `${Key}`;
+}[keyof ObjectType & (string | number)];
+
 type Equals<X, Y> = [X, Y] extends [Y, X] ? true : false;
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 // If following gives type error, EN and FI language files don't match
-const expectLocalesToMatch: Equals<typeof translationEN, typeof translationFI> =
-  true;
+const expectLocalesToMatch: Equals<
+  NestedKeyOf<typeof translationEN>,
+  NestedKeyOf<typeof translationFI>
+> = true;
 
 /* eslint-enable @typescript-eslint/no-unused-vars */
