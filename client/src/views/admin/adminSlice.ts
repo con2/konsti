@@ -1,6 +1,5 @@
 import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { uniq } from "lodash-es";
-import { BackendErrorType } from "client/components/ErrorBar";
 import { AdminState, RootState } from "client/types/reduxTypes";
 import { SettingsPayload } from "shared/types/api/settings";
 import { LoginProvider, SignupStrategy } from "shared/config/sharedConfigTypes";
@@ -82,14 +81,14 @@ const adminSlice = createSlice({
       return { ...state, signupQuestions: action.payload };
     },
 
-    addError(state, action: PayloadAction<BackendErrorType>) {
+    addError(state, action: PayloadAction<string>) {
       return {
         ...state,
         errors: uniq([...state.errors, action.payload]),
       };
     },
 
-    removeError(state, action: PayloadAction<BackendErrorType>) {
+    removeError(state, action: PayloadAction<string>) {
       return {
         ...state,
         errors: state.errors.filter((error) => error !== action.payload),

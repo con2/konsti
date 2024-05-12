@@ -1,5 +1,5 @@
 import { t } from "i18next";
-import { BackendErrorType } from "client/components/ErrorBar";
+import { BackendErrorType } from "client/utils/api";
 import { AppDispatch } from "client/types/reduxTypes";
 import { store } from "client/utils/store";
 import { removeError } from "client/views/admin/adminSlice";
