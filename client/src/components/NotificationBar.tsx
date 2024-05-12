@@ -31,7 +31,13 @@ export const NotificationBar = (): ReactElement | null => {
       return (
         <StyledNotification key={`${action}-${createdAt}`}>
           <div>
-            <span>{t(`eventLogActions.${action}`)}</span>
+            <span>
+              {t(`eventLogActions.${action}`, {
+                PROGRAM_TYPE: t(
+                  `programTypeIllative.${foundProgramItem.programType}`,
+                ),
+              })}{" "}
+            </span>
             <Link to={`${AppRoute.PROGRAM_ITEM}/${programItemId}`}>
               {foundProgramItem.title}
             </Link>

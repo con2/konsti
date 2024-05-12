@@ -265,17 +265,17 @@
     "programItemDetails": "Aloitusaika {{START_TIME}} huoneessa {{LOCATION}}"
   },
   "eventLogActions": {
-    "newAssignment": "Olet päässyt arvonnassa ohjelmanumeroon "
+    "newAssignment": "Olet päässyt arvonnassa {{PROGRAM_TYPE}}"
   },
   "notificationBar": {
     "showAll": "Näytä kaikki ilmoitukset"
   },
   "signup": {
-    "alreadyLotterySigned": "Ohjelmanumero on arvontavaihtoehdoissa sijalla {{CURRENT_PRIORITY}}",
+    "alreadyLotterySigned": "Tämä {{PROGRAM_TYPE}} on arvontavaihtoehdoissa sijalla {{CURRENT_PRIORITY}}",
     "directSignup": "Ilmoittaudu",
     "lotterySignup": "Ilmoittaudu arvontaan",
     "cannotLotterySignupMoreProgramItems": "Voit valita enintään kolme arvontailmoittautumista per alkamisaika",
-    "programItemPriority": "Ohjelmanumero on toiveissani sijalla",
+    "programItemPriority": "{{PROGRAM_TYPE}} on toiveissani sijalla",
     "confirm": "Vahvista",
     "cancel": "Peruuta",
     "alreadySignedToProgramItem": "Olet ilmoittautunut {{PROGRAM_TYPE}}",
@@ -292,8 +292,8 @@
     "loginToSignup": "Kirjaudu sisään ilmoittautumista varten",
     "lotterySignupOpens": "Arvontaan ilmoittautuminen alkaa",
     "signupAlwaysOpen": "Ilmoittautuminen aina auki",
-    "inGroupWarning": "Jos ilmoittaudut ohjelmanumeroon, sinut poistetaan ryhmästäsi.",
-    "groupCreatorWarning": "Jos ilmoittaudut ohjelmanumeroon, perustamasi ryhmä poistetaan.",
+    "inGroupWarning": "Jos ilmoittaudut {{PROGRAM_TYPE}}, sinut poistetaan ryhmästäsi.",
+    "groupCreatorWarning": "Jos ilmoittaudut {{PROGRAM_TYPE}}, perustamasi ryhmä poistetaan.",
     "currentSignup": "Olet ilmoittautunut tähän {{PROGRAM_TYPE}}.",
     "entryFee": "Materiaalimaksu {{ENTRY_FEE}}",
     "entryFeeInfo": "Ymmärrän, että työpajaan kuuluu materiaalimaksu {{ENTRY_FEE}}.",
@@ -335,7 +335,7 @@
   },
   "programTypeSingular": {
     "all": "ohjelmanumero",
-    "tabletopRPG": "peli",
+    "tabletopRPG": "roolipeli",
     "larp": "LARP",
     "tournament": "turnaus",
     "workshop": "työpaja",
@@ -345,7 +345,7 @@
   },
   "programTypePlural": {
     "all": "ohjelmanumerot",
-    "tabletopRPG": "pelit",
+    "tabletopRPG": "roolipelit",
     "larp": "larpit",
     "tournament": "turnaukset",
     "workshop": "työpajat",
@@ -355,7 +355,7 @@
   },
   "programTypeGenetive": {
     "all": "Ohjelmanumeron",
-    "tabletopRPG": "Pelin",
+    "tabletopRPG": "Roolipelin",
     "larp": "Larpin",
     "tournament": "Turnauksen",
     "workshop": "Työpajan",
@@ -365,7 +365,7 @@
   },
   "programTypeElative": {
     "all": "ohjelmanumerosta",
-    "tabletopRPG": "pelistä",
+    "tabletopRPG": "roolipelistä",
     "larp": "larpista",
     "tournament": "turnauksesta",
     "workshop": "työpajasta",
@@ -375,7 +375,7 @@
   },
   "programTypePartitivePlural": {
     "all": "ohjelmanumeroita",
-    "tabletopRPG": "pelejä",
+    "tabletopRPG": "roolipelejä",
     "larp": "larppeja",
     "tournament": "turnauksia",
     "workshop": "työpajoja",
@@ -385,7 +385,7 @@
   },
   "programTypeInessive": {
     "all": "ohjelmanumerossa",
-    "tabletopRPG": "pelissä",
+    "tabletopRPG": "roolipelissä",
     "larp": "larpissa",
     "tournament": "turnauksessa",
     "workshop": "työpajassa",
@@ -395,7 +395,7 @@
   },
   "programTypeIllative": {
     "all": "ohjelmanumeroon",
-    "tabletopRPG": "peliin",
+    "tabletopRPG": "roolipeliin",
     "larp": "larppiin",
     "tournament": "turnaukseen",
     "workshop": "työpajaan",

@@ -138,9 +138,23 @@ export const DirectSignupProgramItemForm = ({
         !directSignupAlwaysOpenIds.includes(programItem.programItemId) &&
         isInGroup && (
           <p>
-            {!isGroupCreator && <Warning>{t("signup.inGroupWarning")}</Warning>}
+            {!isGroupCreator && (
+              <Warning>
+                {t("signup.inGroupWarning", {
+                  PROGRAM_TYPE: t(
+                    `programTypeIllative.${programItem.programType}`,
+                  ),
+                })}
+              </Warning>
+            )}
             {isGroupCreator && (
-              <Warning>{t("signup.groupCreatorWarning")}</Warning>
+              <Warning>
+                {t("signup.groupCreatorWarning", {
+                  PROGRAM_TYPE: t(
+                    `programTypeIllative.${programItem.programType}`,
+                  ),
+                })}
+              </Warning>
             )}
           </p>
         )}

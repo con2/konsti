@@ -1,6 +1,7 @@
 import { ReactElement, FormEvent, useState, ChangeEvent } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
+import { upperFirst } from "lodash-es";
 import { ProgramItem } from "shared/types/models/programItem";
 import {
   PostLotterySignupsErrorMessage,
@@ -100,7 +101,11 @@ export const LotterySignupForm = ({
 
   return (
     <form>
-      {t("signup.programItemPriority")}{" "}
+      {t("signup.programItemPriority", {
+        PROGRAM_TYPE: upperFirst(
+          t(`programTypeSingular.${programItem.programType}`),
+        ),
+      })}{" "}
       <StyledDropdown
         onChange={onChange}
         options={options}

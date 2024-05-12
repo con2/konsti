@@ -165,6 +165,7 @@ export const AlgorithmSignupForm = ({
         <>
           <LotterySignupContainer>
             {t("signup.alreadyLotterySigned", {
+              PROGRAM_TYPE: t(`programTypeSingular.${programItem.programType}`),
               CURRENT_PRIORITY: currentPriority,
             })}
           </LotterySignupContainer>

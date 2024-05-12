@@ -25,7 +25,7 @@ interface Options {
   programItems?: boolean;
   lotterySignups?: boolean;
   directSignups?: boolean;
-  log?: boolean;
+  eventLog?: boolean;
 }
 
 interface Settings {
@@ -108,7 +108,7 @@ export const runGenerators = async (
     await createDirectSignups();
   }
 
-  if (options.log) {
+  if (options.eventLog) {
     logger.info("Generate event log items");
 
     await createEventLogItems();

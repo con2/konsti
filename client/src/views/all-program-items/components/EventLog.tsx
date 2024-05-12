@@ -65,11 +65,11 @@ export const EventLog = (): ReactElement => {
         (item) => item.createdAt,
         "desc",
       ).map((eventLogItem) => {
-        const founProgramItem = programItems.find(
+        const foundProgramItem = programItems.find(
           (programItem) =>
             programItem.programItemId === eventLogItem.programItemId,
         );
-        if (!founProgramItem) {
+        if (!foundProgramItem) {
           return;
         }
         return (
@@ -78,19 +78,23 @@ export const EventLog = (): ReactElement => {
             key={eventLogItem.eventLogItemId}
           >
             <span>
-              {t(`eventLogActions.${eventLogItem.action}`)}
+              {t(`eventLogActions.${eventLogItem.action}`, {
+                PROGRAM_TYPE: t(
+                  `programTypeIllative.${foundProgramItem.programType}`,
+                ),
+              })}{" "}
               <StyledLink
                 to={`${AppRoute.PROGRAM_ITEM}/${eventLogItem.programItemId}`}
               >
-                {founProgramItem.title}
+                {foundProgramItem.title}
               </StyledLink>
               .
             </span>
 
             <StartTime>
               {t("eventLog.programItemDetails", {
-                START_TIME: getWeekdayAndTime(founProgramItem.startTime),
-                LOCATION: founProgramItem.location,
+                START_TIME: getWeekdayAndTime(foundProgramItem.startTime),
+                LOCATION: foundProgramItem.location,
               })}
             </StartTime>
 
