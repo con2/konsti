@@ -265,17 +265,17 @@
     "programItemDetails": "Starting time {{START_TIME}} at {{LOCATION}}"
   },
   "eventLogActions": {
-    "newAssignment": "You were assigned to the program item "
+    "newAssignment": "You were assigned to the {{PROGRAM_TYPE}}"
   },
   "notificationBar": {
     "showAll": "Show all notifications"
   },
   "signup": {
-    "alreadyLotterySigned": "This program item is priority {{CURRENT_PRIORITY}} on your lottery signups",
+    "alreadyLotterySigned": "This {{PROGRAM_TYPE}} is priority {{CURRENT_PRIORITY}} on your lottery signups",
     "directSignup": "Sign up",
     "lotterySignup": "Lottery sign-up",
     "cannotLotterySignupMoreProgramItems": "You can select up to three lottery signups for the time slot.",
-    "programItemPriority": "Program item priority for me is",
+    "programItemPriority": "{{PROGRAM_TYPE}} priority for me is",
     "confirm": "Confirm",
     "cancel": "Cancel",
     "alreadySignedToProgramItem": "You already signed up to the {{PROGRAM_TYPE}}",
@@ -292,8 +292,8 @@
     "loginToSignup": "Log in to sign up",
     "lotterySignupOpens": "Lottery sign-up opens",
     "signupAlwaysOpen": "Sign-up always open",
-    "inGroupWarning": "If you sign up to a program item, you will be removed from your current group.",
-    "groupCreatorWarning": "If you sign up to a program item, the group you created will be deleted.",
+    "inGroupWarning": "If you sign up to a {{PROGRAM_TYPE}}, you will be removed from your current group.",
+    "groupCreatorWarning": "If you sign up to a {{PROGRAM_TYPE}}, the group you created will be deleted.",
     "currentSignup": "You have signed up to this {{PROGRAM_TYPE}}.",
     "entryFee": "Material fee {{ENTRY_FEE}}",
     "entryFeeInfo": "I understand that the workshop requires a material fee of {{ENTRY_FEE}}.",
@@ -335,7 +335,7 @@
   },
   "programTypeSingular": {
     "all": "program item",
-    "tabletopRPG": "game",
+    "tabletopRPG": "roleplaying game",
     "larp": "LARP",
     "tournament": "tournament",
     "workshop": "workshop",
@@ -345,7 +345,7 @@
   },
   "programTypePlural": {
     "all": "program items",
-    "tabletopRPG": "games",
+    "tabletopRPG": "roleplaying games",
     "larp": "larps",
     "tournament": "tournaments",
     "workshop": "workshops",
@@ -355,7 +355,7 @@
   },
   "programTypeGenetive": {
     "all": "Program item",
-    "tabletopRPG": "Game",
+    "tabletopRPG": "Roleplaying game",
     "larp": "Larp",
     "tournament": "Tournament",
     "workshop": "Workshop",
@@ -365,7 +365,7 @@
   },
   "programTypeElative": {
     "all": "program item",
-    "tabletopRPG": "game",
+    "tabletopRPG": "roleplaying game",
     "larp": "larp",
     "tournament": "tournament",
     "workshop": "workshops",
@@ -375,7 +375,7 @@
   },
   "programTypePartitivePlural": {
     "all": "program items",
-    "tabletopRPG": "games",
+    "tabletopRPG": "roleplaying games",
     "larp": "larps",
     "tournament": "tournaments",
     "workshop": "workshops",
@@ -385,7 +385,7 @@
   },
   "programTypeInessive": {
     "all": "program item",
-    "tabletopRPG": "game",
+    "tabletopRPG": "roleplaying game",
     "larp": "larp",
     "tournament": "tournament",
     "workshop": "workshop",
@@ -395,7 +395,7 @@
   },
   "programTypeIllative": {
     "all": "program item",
-    "tabletopRPG": "game",
+    "tabletopRPG": "roleplaying game",
     "larp": "larp",
     "tournament": "tournament",
     "workshop": "workshop",
