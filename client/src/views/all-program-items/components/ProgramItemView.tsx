@@ -1,7 +1,6 @@
 import { ReactElement, useMemo, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ProgramItem } from "shared/types/models/programItem";
 import { getShortDescriptionFromDescription } from "client/utils/getShortDescriptionFromDescription";
 import { ProgramItemInfo } from "client/views/all-program-items/components/ProgramItemInfo";
@@ -10,6 +9,7 @@ import { FeedbackForm } from "client/views/all-program-items/components/Feedback
 import { UserGroup } from "shared/types/models/user";
 import { AdminActionCard } from "client/views/all-program-items/components/AdminActionCard";
 import { useAppSelector } from "client/utils/hooks";
+import { ExpandButton } from "client/components/ExpandButton";
 
 interface Props {
   programItem: ProgramItem;
@@ -35,38 +35,21 @@ export const ProgramItemView = ({
 
   const [isExpanded, setIsExpanded] = useState<boolean>(isAlwaysExpanded);
 
-  const onButtonClick = (): void => {
-    setIsExpanded(!isExpanded);
-  };
-
   const id = `more-info-${programItem.programItemId}`;
-  const buttonAriaLabel = `${t(
-    isExpanded
-      ? "programItemInfo.showLessAriaLabel"
-      : "programItemInfo.showMoreAriaLabel",
-  )} ${programItem.title}`;
 
   return (
     <div>
       <ShortDescription>{`${shortDescription} `}</ShortDescription>
       {!isAlwaysExpanded && (
-        <ButtonContainer>
-          <ArrowIcon
-            aria-hidden="true"
-            icon={isExpanded ? "angle-up" : "angle-down"}
-          />
-          <ExpandButton
-            aria-controls={id}
-            aria-expanded={isExpanded}
-            aria-label={buttonAriaLabel}
-            onClick={onButtonClick}
-            role="button"
-          >
-            {isExpanded
-              ? t("programItemInfo.showLess")
-              : t("programItemInfo.showMore")}
-          </ExpandButton>
-        </ButtonContainer>
+        <ExpandButton
+          isExpanded={isExpanded}
+          showMoreText={t("programItemInfo.showMore")}
+          showLessText={t("programItemInfo.showLess")}
+          showMoreAriaLabel={`${t("programItemInfo.showMoreAriaLabel")} ${programItem.title}`}
+          showLessAriaLabel={`${t("programItemInfo.showLessAriaLabel")} ${programItem.title}`}
+          ariaControls={id}
+          onClick={() => setIsExpanded(!isExpanded)}
+        />
       )}
       {isExpanded && (
         <ExpandedDescriptionContainer id={id}>
@@ -82,21 +65,6 @@ export const ProgramItemView = ({
     </div>
   );
 };
-
-const ArrowIcon = styled(FontAwesomeIcon)`
-  margin: 0 8px 4px 0;
-  font-size: 16px;
-`;
-
-const ButtonContainer = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const ExpandButton = styled.p`
-  cursor: pointer;
-  text-decoration: underline;
-`;
 
 const ExpandedDescriptionContainer = styled.div`
   padding-top: 16px;

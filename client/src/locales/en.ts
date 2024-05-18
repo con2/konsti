@@ -335,12 +335,19 @@ export const translationEN = {
     noKonstiSignup:
       "This {{PROGRAM_TYPE}} does not use Konsti for signing up. See the program details for instructions.",
     maxAttendanceMissing: "Missing info: maximum number of {{ATTENDEE_TYPE}}",
+    showAttendees: "Show {{ATTENDEE_TYPE}}",
+    hideAttendees: "Hide {{ATTENDEE_TYPE}}",
+    noAttendees: "No {{ATTENDEE_TYPE}}",
   },
   attendeeType: {
     player: "player",
     participant: "participant",
   },
   attendeeTypePlural: {
+    player: "players",
+    participant: "participants",
+  },
+  attendeeTypePluralNominative: {
     player: "players",
     participant: "participants",
   },

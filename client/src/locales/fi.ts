@@ -337,6 +337,9 @@ export const translationFI = {
     noKonstiSignup:
       "Tähän {{PROGRAM_TYPE}} ei ilmoittauduta Konstissa. Katso ilmoittautumisohjeet ohjelman lisätiedoista.",
     maxAttendanceMissing: "Puuttuva tieto: maksimimäärä {{ATTENDEE_TYPE}}",
+    showAttendees: "Näytä {{ATTENDEE_TYPE}}",
+    hideAttendees: "Piilota {{ATTENDEE_TYPE}}",
+    noAttendees: "Ei {{ATTENDEE_TYPE}}",
   },
   attendeeType: {
     player: "pelaaja",
@@ -345,6 +348,10 @@ export const translationFI = {
   attendeeTypePlural: {
     player: "pelaajia",
     participant: "osallistujia",
+  },
+  attendeeTypePluralNominative: {
+    player: "pelaajat",
+    participant: "osallistujat",
   },
   attendeeTypePartitive: {
     player: "pelaajaa",

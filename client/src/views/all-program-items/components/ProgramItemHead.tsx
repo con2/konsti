@@ -1,6 +1,5 @@
 import { ReactElement } from "react";
 import styled from "styled-components";
-import { capitalize } from "lodash-es";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { ProgramItem } from "shared/types/models/programItem";
@@ -15,6 +14,7 @@ import { updateFavorite, UpdateFavoriteOpts } from "client/utils/favorite";
 import { useAppDispatch } from "client/utils/hooks";
 import { config } from "shared/config";
 import { isRevolvingDoorWorkshop } from "client/utils/isRevolvingDoorWorkshop";
+import { SignupsInfo } from "client/views/all-program-items/components/SignupsInfo";
 import { AppRoute } from "client/app/AppRoutes";
 
 interface Props {
@@ -47,11 +47,11 @@ export const ProgramItemHead = ({
   const konstiSignup = !config
     .shared()
     .noKonstiSignupIds.includes(programItem.programItemId);
-  const normalSignup = requiresSignup && konstiSignup;
+  const isNormalSignup = requiresSignup && konstiSignup;
   const validMaxAttendanceValue =
     requiresSignup && programItem.maxAttendance > 0;
 
-  const isDirectSignupMode =
+  const isEnterGameMode =
     config.shared().manualSignupMode === SignupStrategy.DIRECT ||
     signupStrategy === SignupStrategy.DIRECT ||
     signupAlwaysOpen;
@@ -97,49 +97,33 @@ export const ProgramItemHead = ({
               EXPECTED_DURATION: formatProgramItemDuration(programItem.mins),
             })}
           </span>
-          <span>
-            {requiresSignup &&
-              programItem.minAttendance > 0 &&
-              programItem.maxAttendance > 0 && (
-                <>
-                  {programItem.minAttendance === programItem.maxAttendance &&
-                    capitalize(
-                      `${t(
-                        `attendeeTypePlural.${getAttendeeType(programItem.programType)}`,
-                      )} ${programItem.maxAttendance}`,
-                    )}
-
-                  {programItem.minAttendance !== programItem.maxAttendance &&
-                    capitalize(
-                      `${t(
-                        `attendeeTypePlural.${getAttendeeType(programItem.programType)}`,
-                      )} ${programItem.minAttendance}–${programItem.maxAttendance}`,
-                    )}
-                </>
-              )}
-          </span>
+          {requiresSignup &&
+            programItem.minAttendance > 0 &&
+            programItem.maxAttendance > 0 && (
+              <span>
+                {programItem.minAttendance !== programItem.maxAttendance
+                  ? `${programItem.minAttendance}–${programItem.maxAttendance}`
+                  : `${programItem.maxAttendance}`}
+                {"\u00A0"}
+                {t(
+                  `attendeeTypePartitive.${getAttendeeType(programItem.programType)}`,
+                )}
+              </span>
+            )}
           {!!programItem.entryFee &&
             t(`signup.entryFee`, {
               ENTRY_FEE: programItem.entryFee,
             })}
         </Row>
-        {isDirectSignupMode && normalSignup && validMaxAttendanceValue && (
+        {isEnterGameMode && isNormalSignup && validMaxAttendanceValue && (
           <Row>
-            {t("signup.signupCount", {
-              ATTENDEE_COUNT: attendeeCount,
-              MAX_ATTENDANCE: programItem.maxAttendance,
-            })}
+            <SignupsInfo
+              isEnterGameMode={isEnterGameMode}
+              isNormalSignup={isNormalSignup}
+              programItem={programItem}
+              attendeeCount={attendeeCount}
+            />
           </Row>
-        )}
-
-        {!validMaxAttendanceValue && (
-          <ErrorText>
-            {t("signup.maxAttendanceMissing", {
-              ATTENDEE_TYPE: t(
-                `attendeeTypePlural.${getAttendeeType(programItem.programType)}`,
-              ),
-            })}
-          </ErrorText>
         )}
 
         {attendeeCount < programItem.minAttendance && (
@@ -159,7 +143,7 @@ export const ProgramItemHead = ({
             })}
           </Row>
         )}
-        {!isDirectSignupMode && normalSignup && (
+        {!isEnterGameMode && isNormalSignup && (
           <PopularityInfo
             minAttendance={programItem.minAttendance}
             maxAttendance={programItem.maxAttendance}
@@ -215,8 +199,4 @@ const HeaderLink = styled(Link)`
 const FavoriteButtonContainer = styled.div`
   margin-top: -4px;
   align-items: flex-start;
-`;
-
-const ErrorText = styled(Row)`
-  color: ${(props) => props.theme.textError};
 `;
