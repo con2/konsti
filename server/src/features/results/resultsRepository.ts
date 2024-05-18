@@ -1,6 +1,6 @@
 import { logger } from "server/utils/logger";
 import { ResultsModel } from "server/features/results/resultsSchema";
-import { ResultsCollectionEntry } from "server/types/resultTypes";
+import { NewSignup, ResultsCollectionEntry } from "server/types/resultTypes";
 import { findProgramItems } from "server/features/program-item/programItemRepository";
 import { UserAssignmentResult } from "shared/types/models/result";
 import {
@@ -45,6 +45,10 @@ export const findResult = async (
   }
 };
 
+type NewAssignmentResult = Omit<UserAssignmentResult, "directSignup"> & {
+  directSignup: NewSignup;
+};
+
 export const saveResult = async (
   signupResultData: readonly UserAssignmentResult[],
   startTime: string,
@@ -58,7 +62,7 @@ export const saveResult = async (
   }
 
   const programItems = unwrapResult(programItemsResult);
-  const results = signupResultData.reduce<UserAssignmentResult[]>(
+  const results = signupResultData.reduce<NewAssignmentResult[]>(
     (acc, result) => {
       const programItemDocInDb = programItems.find(
         (programItem) =>
@@ -66,7 +70,7 @@ export const saveResult = async (
           result.directSignup.programItem.programItemId,
       );
 
-      if (programItemDocInDb) {
+      if (programItemDocInDb?._id) {
         acc.push({
           username: result.username,
           directSignup: {

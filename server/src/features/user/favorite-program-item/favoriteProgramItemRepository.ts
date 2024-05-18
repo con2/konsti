@@ -1,3 +1,4 @@
+import { ObjectId } from "mongoose";
 import { findProgramItems } from "server/features/program-item/programItemRepository";
 import { UserModel } from "server/features/user/userSchema";
 import { logger } from "server/utils/logger";
@@ -25,14 +26,14 @@ export const saveFavorite = async (
 
   const programItems = unwrapResult(programItemsResult);
 
-  const favoritedProgramItems = favoritedProgramItemIds.reduce<string[]>(
+  const favoritedProgramItems = favoritedProgramItemIds.reduce<ObjectId[]>(
     (acc, favoritedProgramItemId) => {
       const programItemDocInDb = programItems.find(
         (programItem) => programItem.programItemId === favoritedProgramItemId,
       );
 
-      if (programItemDocInDb) {
-        acc.push(programItemDocInDb._id as string);
+      if (programItemDocInDb?._id) {
+        acc.push(programItemDocInDb._id);
       }
       return acc;
     },
