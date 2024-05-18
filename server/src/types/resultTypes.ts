@@ -1,12 +1,19 @@
-import mongoose from "mongoose";
+import mongoose, { ObjectId } from "mongoose";
 import { ProgramItem } from "shared/types/models/programItem";
 import { Signup, User } from "shared/types/models/user";
 import { UserAssignmentResult } from "shared/types/models/result";
 
-export interface ResultDoc extends UserAssignmentResult, mongoose.Document {
+export interface ResultDoc
+  extends UserAssignmentResult,
+    mongoose.Document<ObjectId> {
   algorithm: string;
   message: string;
 }
+
+// For saving new signups to DB where program item is replaced with ObjectId _id
+export type NewSignup = Omit<Signup, "programItem"> & {
+  programItem: ObjectId;
+};
 
 export interface UserLotterySignups {
   username: string;

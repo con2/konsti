@@ -1,3 +1,4 @@
+import { ObjectId } from "mongoose";
 import dayjs from "dayjs";
 import { logger } from "server/utils/logger";
 import { SettingsModel } from "server/features/settings/settingsSchema";
@@ -101,14 +102,14 @@ export const saveHidden = async (
   }
 
   const programItems = unwrapResult(programItemsResult);
-  const formattedData = hiddenProgramItems.reduce<ProgramItem[]>(
+  const formattedData = hiddenProgramItems.reduce<ObjectId[]>(
     (acc, hiddenProgramItem) => {
       const programItemDocInDb = programItems.find(
         (programItem) =>
           programItem.programItemId === hiddenProgramItem.programItemId,
       );
-      if (programItemDocInDb) {
-        acc.push(programItemDocInDb._id as ProgramItem);
+      if (programItemDocInDb?._id) {
+        acc.push(programItemDocInDb._id);
       }
       return acc;
     },

@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { ObjectId } from "mongoose";
 import { ProgramItem } from "shared/types/models/programItem";
 
 export interface UserDirectSignup {
@@ -16,4 +16,4 @@ export interface DirectSignupsForProgramItem {
 
 export interface DirectSignupDoc
   extends DirectSignupsForProgramItem,
-    mongoose.Document {}
+    mongoose.Document<ObjectId> {}
