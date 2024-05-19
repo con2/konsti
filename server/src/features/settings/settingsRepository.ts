@@ -68,8 +68,15 @@ export const findSettings = async (): Promise<
 
     logger.debug(`MongoDB: Settings data found`);
 
-    const settingsWithFormattedDates = {
+    const settingsWithFormattedDates: Settings = {
       ...settings,
+      hiddenProgramItems: settings.hiddenProgramItems.map(
+        (hiddenProgramItem) => ({
+          ...hiddenProgramItem,
+          startTime: dayjs(hiddenProgramItem.startTime).toISOString(),
+          endTime: dayjs(hiddenProgramItem.endTime).toISOString(),
+        }),
+      ),
       programUpdateLastRun: dayjs(settings.programUpdateLastRun).toISOString(),
       assignmentLastRun: dayjs(settings.assignmentLastRun).toISOString(),
       latestServerStartTime: dayjs(
