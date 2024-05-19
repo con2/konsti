@@ -69,7 +69,7 @@ const commonConfig = {
   defaultLoginProvider: LoginProvider.LOCAL,
 
   // Convention settings
-  dataUri: DataUri.SOLMUKOHTA,
+  dataUri: DataUri.ROPECON,
   firtSignupBonus: 20,
   useLocalProgramFile: false,
   localKompassiFile: "program-ropecon-2023.json",
