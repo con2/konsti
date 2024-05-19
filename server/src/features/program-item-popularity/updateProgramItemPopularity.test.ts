@@ -23,7 +23,6 @@ beforeEach(async () => {
   server = await startServer({
     dbConnString: globalThis.__MONGO_URI__,
     dbName: faker.string.alphanumeric(10),
-    enableSentry: false,
   });
 });
 

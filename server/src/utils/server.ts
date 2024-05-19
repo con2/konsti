@@ -2,7 +2,7 @@ import http, { Server } from "http";
 import path from "path";
 import { once } from "events";
 import express, { Request, Response, NextFunction } from "express";
-import { Handlers } from "@sentry/node";
+import { setupExpressErrorHandler } from "@sentry/node";
 import helmet from "helmet";
 import morgan from "morgan";
 import expressStaticGzip from "express-static-gzip";
@@ -14,19 +14,16 @@ import { apiRoutes } from "server/api/apiRoutes";
 import { db } from "server/db/mongodb";
 import { stopCronJobs } from "server/utils/cron";
 import { wwwRedirect } from "server/middleware/wwwRedirect";
-import { initSentry } from "server/utils/sentry";
 
 interface StartServerParams {
   dbConnString: string;
   port?: number;
   dbName?: string;
-  enableSentry?: boolean;
 }
 export const startServer = async ({
   dbConnString,
   port,
   dbName,
-  enableSentry = true,
 }: StartServerParams): Promise<Server> => {
   try {
     await db.connectToDb(dbConnString, dbName);
@@ -36,14 +33,11 @@ export const startServer = async ({
 
   const app = express();
 
-  // Must be the first middleware on the app
-  initSentry(app, enableSentry);
-
-  const cspConnectSrc = ["'self'", ...config.server().allowedCorsOrigins];
-
-  if (enableSentry) {
-    cspConnectSrc.push("*.sentry.io");
-  }
+  const cspConnectSrc = [
+    "'self'",
+    "*.sentry.io",
+    ...config.server().allowedCorsOrigins,
+  ];
 
   app.use(
     helmet({
@@ -117,8 +111,8 @@ export const startServer = async ({
     }
   });
 
-  // The error handler must be before any other error middleware and after all controllers
-  app.use(Handlers.errorHandler());
+  // Sentry setup: add this after all routes and other middlewares are defined
+  setupExpressErrorHandler(app);
 
   const server = http.createServer(app);
 
