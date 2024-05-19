@@ -61,10 +61,9 @@ init({
   integrations: [
     // Use reactRouterV6BrowserTracingIntegration to enable performance monitoring
     // https://docs.sentry.io/platforms/javascript/guides/react/features/react-router/
-    browserTracingIntegration({
-      tracingOrigins: ["localhost", "dev.ropekonsti.fi", "ropekonsti.fi"],
-    }),
+    browserTracingIntegration(),
   ],
+  tracePropagationTargets: ["localhost", "dev.ropekonsti.fi", "ropekonsti.fi"],
   tracesSampleRate: config.shared().tracesSampleRate,
   normalizeDepth: 10,
   environment: process.env.SETTINGS,

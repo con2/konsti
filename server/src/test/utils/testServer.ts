@@ -11,7 +11,7 @@ export const startTestServer = async (
   const module = await import("server/utils/server");
   const server = await module.startServer({
     dbConnString,
-    enableSentry: false,
+
     dbName: faker.string.alphanumeric(10),
   });
 
