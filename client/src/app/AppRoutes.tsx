@@ -73,7 +73,7 @@ export const AppRoutes = (): ReactElement => {
       path: AppRouteTab.MY_PROGRAM,
       element: <MyProgramItemsView />,
       icon: "dice" as IconName,
-      "data-testid": "my-program-list-tab",
+      "data-testid": "my-program-tab",
     },
     {
       headerText: t("pages.programList"),
