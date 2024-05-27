@@ -1310,7 +1310,14 @@
     "createdAt": "2019-07-26T12:08:49.646Z"
   },
   {
-    "favoritedProgramItems": ["p3618", "p3845", "p3486", "p3776", "p3049", "p3617"],
+    "favoritedProgramItems": [
+      "p3618",
+      "p3845",
+      "p3486",
+      "p3776",
+      "p3049",
+      "p3617"
+    ],
     "username": "886857",
     "userGroup": "user",
     "serial": "3720550361",
@@ -8640,7 +8647,14 @@
     "createdAt": "2019-07-26T13:31:59.507Z"
   },
   {
-    "favoritedProgramItems": ["p3777", "p3031", "p3397", "p3774", "p3617", "p3860"],
+    "favoritedProgramItems": [
+      "p3777",
+      "p3031",
+      "p3397",
+      "p3774",
+      "p3617",
+      "p3860"
+    ],
     "username": "960817",
     "userGroup": "user",
     "serial": "3782220119",
@@ -9209,7 +9223,14 @@
     "createdAt": "2019-07-26T13:40:46.484Z"
   },
   {
-    "favoritedProgramItems": ["p3658", "p3781", "p3689", "p3031", "p3628", "p3691"],
+    "favoritedProgramItems": [
+      "p3658",
+      "p3781",
+      "p3689",
+      "p3031",
+      "p3628",
+      "p3691"
+    ],
     "username": "5974",
     "userGroup": "user",
     "serial": "3473961088",
@@ -11970,7 +11991,14 @@
     "createdAt": "2019-07-26T14:19:53.269Z"
   },
   {
-    "favoritedProgramItems": ["p3786", "p3769", "p3837", "p3772", "p3725", "p3049"],
+    "favoritedProgramItems": [
+      "p3786",
+      "p3769",
+      "p3837",
+      "p3772",
+      "p3725",
+      "p3049"
+    ],
     "username": "351661",
     "userGroup": "user",
     "serial": "8755090027",
@@ -17279,7 +17307,14 @@
     "createdAt": "2019-07-26T16:27:22.806Z"
   },
   {
-    "favoritedProgramItems": ["p3757", "p3033", "p3769", "p3910", "p3748", "p3860"],
+    "favoritedProgramItems": [
+      "p3757",
+      "p3033",
+      "p3769",
+      "p3910",
+      "p3748",
+      "p3860"
+    ],
     "username": "99427",
     "userGroup": "user",
     "serial": "5360464860",
@@ -19563,7 +19598,14 @@
     "createdAt": "2019-07-27T06:09:29.202Z"
   },
   {
-    "favoritedProgramItems": ["p3448", "p3615", "p3410", "p3582", "p3447", "p3741"],
+    "favoritedProgramItems": [
+      "p3448",
+      "p3615",
+      "p3410",
+      "p3582",
+      "p3447",
+      "p3741"
+    ],
     "username": "702808",
     "userGroup": "user",
     "serial": "8038162288",

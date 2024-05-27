@@ -594,7 +594,14 @@
     "updatedAt": { "$date": "2021-07-26T15:11:48.667Z" }
   },
   {
-    "favoritedProgramItems": ["p4684", "p4682", "p4603", "p4681", "p4683", "p4649"],
+    "favoritedProgramItems": [
+      "p4684",
+      "p4682",
+      "p4603",
+      "p4681",
+      "p4683",
+      "p4649"
+    ],
     "username": "590995",
     "userGroup": "user",
     "serial": "5524683785",
