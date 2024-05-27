@@ -1,6 +1,6 @@
 [
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "324507",
     "userGroup": "user",
     "serial": "7998537893",
@@ -30,7 +30,7 @@
     "updatedAt": { "$date": "2021-07-25T21:47:37.254Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "268498",
     "userGroup": "user",
     "serial": "8440980848",
@@ -48,7 +48,7 @@
     "updatedAt": { "$date": "2021-07-25T21:55:21.642Z" }
   },
   {
-    "favoritedGames": ["p4661", "p4709"],
+    "favoritedProgramItems": ["p4661", "p4709"],
     "username": "269097",
     "userGroup": "user",
     "serial": "2968378972",
@@ -78,7 +78,7 @@
     "updatedAt": { "$date": "2021-07-25T22:28:01.62Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "734580",
     "userGroup": "user",
     "serial": "3375696923",
@@ -108,7 +108,7 @@
     "updatedAt": { "$date": "2021-07-25T22:29:08.822Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "366390",
     "userGroup": "user",
     "serial": "2140266954",
@@ -138,7 +138,7 @@
     "updatedAt": { "$date": "2021-07-25T23:03:56.534Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "427591",
     "userGroup": "user",
     "serial": "3542764034",
@@ -168,7 +168,7 @@
     "updatedAt": { "$date": "2021-07-26T05:57:26.761Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "982746",
     "userGroup": "user",
     "serial": "7997950253",
@@ -198,7 +198,7 @@
     "updatedAt": { "$date": "2021-07-26T06:22:33.647Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "967769",
     "userGroup": "user",
     "serial": "2780308769",
@@ -216,7 +216,7 @@
     "updatedAt": { "$date": "2021-07-29T10:21:15.237Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "9685",
     "userGroup": "user",
     "serial": "5743610916",
@@ -252,7 +252,7 @@
     "updatedAt": { "$date": "2021-07-31T20:07:11.046Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "272676",
     "userGroup": "user",
     "serial": "4831108933",
@@ -282,7 +282,7 @@
     "updatedAt": { "$date": "2021-07-26T07:07:30.235Z" }
   },
   {
-    "favoritedGames": ["p4642"],
+    "favoritedProgramItems": ["p4642"],
     "username": "902143",
     "userGroup": "user",
     "serial": "2337736355",
@@ -293,7 +293,7 @@
     "updatedAt": { "$date": "2021-07-26T15:30:46.57Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "686325",
     "userGroup": "user",
     "serial": "4515837294",
@@ -323,7 +323,7 @@
     "updatedAt": { "$date": "2021-07-29T16:43:38.394Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "256952",
     "userGroup": "user",
     "serial": "4701690044",
@@ -353,7 +353,7 @@
     "updatedAt": { "$date": "2021-07-26T08:37:30.07Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "213800",
     "userGroup": "user",
     "serial": "9188742895",
@@ -364,7 +364,7 @@
     "updatedAt": { "$date": "2021-07-29T06:05:55.195Z" }
   },
   {
-    "favoritedGames": [
+    "favoritedProgramItems": [
       "p4640",
       "p4653",
       "p4621",
@@ -421,7 +421,7 @@
     "updatedAt": { "$date": "2021-08-01T08:04:24.935Z" }
   },
   {
-    "favoritedGames": ["p4601"],
+    "favoritedProgramItems": ["p4601"],
     "username": "144226",
     "userGroup": "user",
     "serial": "3130034287",
@@ -439,7 +439,7 @@
     "updatedAt": { "$date": "2021-07-26T11:43:26.107Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "925433",
     "userGroup": "user",
     "serial": "1528287871",
@@ -469,7 +469,7 @@
     "updatedAt": { "$date": "2021-07-26T13:11:42.231Z" }
   },
   {
-    "favoritedGames": [
+    "favoritedProgramItems": [
       "p4694",
       "p4661",
       "p4693",
@@ -513,7 +513,7 @@
     "updatedAt": { "$date": "2021-07-28T20:13:26.928Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "913536",
     "userGroup": "user",
     "serial": "9387609960",
@@ -543,7 +543,7 @@
     "updatedAt": { "$date": "2021-07-26T13:49:08.57Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "123333",
     "userGroup": "user",
     "serial": "6136641906",
@@ -554,7 +554,7 @@
     "updatedAt": { "$date": "2021-07-30T09:47:43.584Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "693920",
     "userGroup": "user",
     "serial": "8743105804",
@@ -565,7 +565,7 @@
     "updatedAt": { "$date": "2021-07-26T16:22:45.343Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "300718",
     "userGroup": "user",
     "serial": "6504131548",
@@ -576,7 +576,7 @@
     "updatedAt": { "$date": "2021-07-31T15:07:42.434Z" }
   },
   {
-    "favoritedGames": ["p4601"],
+    "favoritedProgramItems": ["p4601"],
     "username": "126846",
     "userGroup": "user",
     "serial": "2243897523",
@@ -594,7 +594,7 @@
     "updatedAt": { "$date": "2021-07-26T15:11:48.667Z" }
   },
   {
-    "favoritedGames": ["p4684", "p4682", "p4603", "p4681", "p4683", "p4649"],
+    "favoritedProgramItems": ["p4684", "p4682", "p4603", "p4681", "p4683", "p4649"],
     "username": "590995",
     "userGroup": "user",
     "serial": "5524683785",
@@ -612,7 +612,7 @@
     "updatedAt": { "$date": "2021-07-26T15:36:59.807Z" }
   },
   {
-    "favoritedGames": ["p4699"],
+    "favoritedProgramItems": ["p4699"],
     "username": "207237",
     "userGroup": "user",
     "serial": "2994638431",
@@ -630,7 +630,7 @@
     "updatedAt": { "$date": "2021-07-26T15:25:56.987Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "427967",
     "userGroup": "user",
     "serial": "0082058215",
@@ -641,7 +641,7 @@
     "updatedAt": { "$date": "2021-07-26T17:21:35.604Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "260224",
     "userGroup": "user",
     "serial": "5690480982",
@@ -659,7 +659,7 @@
     "updatedAt": { "$date": "2021-07-26T15:30:09.181Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "782727",
     "userGroup": "user",
     "serial": "9729215922",
@@ -677,7 +677,7 @@
     "updatedAt": { "$date": "2021-07-26T16:21:29.282Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "918030",
     "userGroup": "user",
     "serial": "9281770876",
@@ -701,7 +701,7 @@
     "updatedAt": { "$date": "2021-07-29T21:30:03.974Z" }
   },
   {
-    "favoritedGames": ["p4697", "p4705", "p4695"],
+    "favoritedProgramItems": ["p4697", "p4705", "p4695"],
     "username": "62182",
     "userGroup": "user",
     "serial": "1472320983",
@@ -719,7 +719,7 @@
     "updatedAt": { "$date": "2021-07-26T19:06:04.403Z" }
   },
   {
-    "favoritedGames": ["p4601"],
+    "favoritedProgramItems": ["p4601"],
     "username": "462921",
     "userGroup": "user",
     "serial": "1956225898",
@@ -737,7 +737,7 @@
     "updatedAt": { "$date": "2021-07-26T16:26:21.022Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "698857",
     "userGroup": "user",
     "serial": "7472575542",
@@ -761,7 +761,7 @@
     "updatedAt": { "$date": "2021-07-26T17:04:03.389Z" }
   },
   {
-    "favoritedGames": ["p4740", "p4702", "p4701", "p4699"],
+    "favoritedProgramItems": ["p4740", "p4702", "p4701", "p4699"],
     "username": "397516",
     "userGroup": "user",
     "serial": "0254133739",
@@ -797,7 +797,7 @@
     "updatedAt": { "$date": "2021-07-30T14:04:01.355Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "512194",
     "userGroup": "user",
     "serial": "1055896136",
@@ -827,7 +827,7 @@
     "updatedAt": { "$date": "2021-07-29T09:57:19.593Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "28277",
     "userGroup": "user",
     "serial": "6932021147",
@@ -838,7 +838,7 @@
     "updatedAt": { "$date": "2021-07-27T07:51:57.678Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "731740",
     "userGroup": "user",
     "serial": "4061702314",
@@ -868,7 +868,7 @@
     "updatedAt": { "$date": "2021-07-29T03:58:03.426Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "678067",
     "userGroup": "user",
     "serial": "7016260841",
@@ -898,7 +898,7 @@
     "updatedAt": { "$date": "2021-07-26T17:34:02.549Z" }
   },
   {
-    "favoritedGames": ["p4684", "p4685", "p4694", "p4621", "p4683"],
+    "favoritedProgramItems": ["p4684", "p4685", "p4694", "p4621", "p4683"],
     "username": "244811",
     "userGroup": "user",
     "serial": "2299850020",
@@ -909,7 +909,7 @@
     "updatedAt": { "$date": "2021-07-26T22:21:46.467Z" }
   },
   {
-    "favoritedGames": ["p4641"],
+    "favoritedProgramItems": ["p4641"],
     "username": "381569",
     "userGroup": "user",
     "serial": "1510345778",
@@ -920,7 +920,7 @@
     "updatedAt": { "$date": "2021-07-26T19:38:57.519Z" }
   },
   {
-    "favoritedGames": ["p4653", "p4684", "p4682", "p4675"],
+    "favoritedProgramItems": ["p4653", "p4684", "p4682", "p4675"],
     "username": "65249",
     "userGroup": "user",
     "serial": "7929139504",
@@ -944,7 +944,7 @@
     "updatedAt": { "$date": "2021-07-27T08:31:21.614Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "46053",
     "userGroup": "user",
     "serial": "4411498233",
@@ -955,7 +955,7 @@
     "updatedAt": { "$date": "2021-07-26T19:06:49.712Z" }
   },
   {
-    "favoritedGames": ["p4703", "p4697", "p4705", "p4704"],
+    "favoritedProgramItems": ["p4703", "p4697", "p4705", "p4704"],
     "username": "13452",
     "userGroup": "user",
     "serial": "8946915694",
@@ -985,7 +985,7 @@
     "updatedAt": { "$date": "2021-07-31T09:18:56.413Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "625517",
     "userGroup": "user",
     "serial": "4496212590",
@@ -1003,7 +1003,7 @@
     "updatedAt": { "$date": "2021-07-29T14:25:37.404Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "933884",
     "userGroup": "user",
     "serial": "6245526873",
@@ -1014,7 +1014,7 @@
     "updatedAt": { "$date": "2021-07-26T20:06:04.042Z" }
   },
   {
-    "favoritedGames": ["p4699"],
+    "favoritedProgramItems": ["p4699"],
     "username": "159778",
     "userGroup": "user",
     "serial": "5812648193",
@@ -1032,7 +1032,7 @@
     "updatedAt": { "$date": "2021-07-29T15:07:54.382Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "233043",
     "userGroup": "user",
     "serial": "1339737379",
@@ -1043,7 +1043,7 @@
     "updatedAt": { "$date": "2021-07-26T20:27:07.301Z" }
   },
   {
-    "favoritedGames": [
+    "favoritedProgramItems": [
       "p4674",
       "p4652",
       "p4667",
@@ -1090,7 +1090,7 @@
     "updatedAt": { "$date": "2021-07-30T11:29:11.4Z" }
   },
   {
-    "favoritedGames": ["p4642", "p4601", "p4632"],
+    "favoritedProgramItems": ["p4642", "p4601", "p4632"],
     "username": "713392",
     "userGroup": "user",
     "serial": "4187532934",
@@ -1120,7 +1120,7 @@
     "updatedAt": { "$date": "2021-07-30T11:54:37.187Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "515641",
     "userGroup": "user",
     "serial": "5106074247",
@@ -1138,7 +1138,7 @@
     "updatedAt": { "$date": "2021-07-26T21:57:05.933Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "799114",
     "userGroup": "user",
     "serial": "8473943028",
@@ -1149,7 +1149,7 @@
     "updatedAt": { "$date": "2021-07-29T14:42:48.253Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "214767",
     "userGroup": "user",
     "serial": "2528990951",
@@ -1173,7 +1173,7 @@
     "updatedAt": { "$date": "2021-07-28T11:34:10.608Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "436370",
     "userGroup": "user",
     "serial": "9229328357",
@@ -1215,7 +1215,7 @@
     "updatedAt": { "$date": "2021-07-29T09:47:56.724Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "152321",
     "userGroup": "user",
     "serial": "7662102024",
@@ -1226,7 +1226,7 @@
     "updatedAt": { "$date": "2021-07-27T06:32:14.309Z" }
   },
   {
-    "favoritedGames": ["p4703", "p4706", "p4699", "p4700"],
+    "favoritedProgramItems": ["p4703", "p4706", "p4699", "p4700"],
     "username": "110962",
     "userGroup": "user",
     "serial": "0697825172",
@@ -1256,7 +1256,7 @@
     "updatedAt": { "$date": "2021-07-31T16:45:04.34Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "503601",
     "userGroup": "user",
     "serial": "1354289447",
@@ -1274,7 +1274,7 @@
     "updatedAt": { "$date": "2021-07-27T07:39:22.444Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "207890",
     "userGroup": "user",
     "serial": "0837281229",
@@ -1285,7 +1285,7 @@
     "updatedAt": { "$date": "2021-07-27T07:43:26.672Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "11183",
     "userGroup": "user",
     "serial": "4037693829",
@@ -1321,7 +1321,7 @@
     "updatedAt": { "$date": "2021-07-29T15:06:51.426Z" }
   },
   {
-    "favoritedGames": ["p4729", "p4691"],
+    "favoritedProgramItems": ["p4729", "p4691"],
     "username": "94793",
     "userGroup": "user",
     "serial": "4161048576",
@@ -1339,7 +1339,7 @@
     "updatedAt": { "$date": "2021-07-28T09:36:47.246Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "345535",
     "userGroup": "user",
     "serial": "7901573209",
@@ -1350,7 +1350,7 @@
     "updatedAt": { "$date": "2021-07-31T21:11:50.874Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "141765",
     "userGroup": "user",
     "serial": "3520357934",
@@ -1361,7 +1361,7 @@
     "updatedAt": { "$date": "2021-07-27T10:01:23.956Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "69106",
     "userGroup": "user",
     "serial": "1314833771",
@@ -1379,7 +1379,7 @@
     "updatedAt": { "$date": "2021-07-31T07:55:52.346Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "441234",
     "userGroup": "user",
     "serial": "5390936796",
@@ -1397,7 +1397,7 @@
     "updatedAt": { "$date": "2021-07-28T14:32:55.37Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "241312",
     "userGroup": "user",
     "serial": "3366549628",
@@ -1415,7 +1415,7 @@
     "updatedAt": { "$date": "2021-07-27T10:35:22.08Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "756483",
     "userGroup": "user",
     "serial": "0911343796",
@@ -1451,7 +1451,7 @@
     "updatedAt": { "$date": "2021-07-31T13:27:31.199Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "596297",
     "userGroup": "user",
     "serial": "5533143862",
@@ -1481,7 +1481,7 @@
     "updatedAt": { "$date": "2021-07-27T16:39:59.991Z" }
   },
   {
-    "favoritedGames": [
+    "favoritedProgramItems": [
       "p4640",
       "p4652",
       "p4729",
@@ -1517,7 +1517,7 @@
     "updatedAt": { "$date": "2021-07-29T14:59:48.777Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "528080",
     "userGroup": "user",
     "serial": "2551641950",
@@ -1528,7 +1528,7 @@
     "updatedAt": { "$date": "2021-07-27T20:20:25.991Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "262038",
     "userGroup": "user",
     "serial": "1174658094",
@@ -1539,7 +1539,7 @@
     "updatedAt": { "$date": "2021-07-27T21:02:01.924Z" }
   },
   {
-    "favoritedGames": ["p4684", "p4685", "p4682", "p4681", "p4683"],
+    "favoritedProgramItems": ["p4684", "p4685", "p4682", "p4681", "p4683"],
     "username": "96057",
     "userGroup": "user",
     "serial": "4841180401",
@@ -1550,7 +1550,7 @@
     "updatedAt": { "$date": "2021-07-27T22:16:55.465Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "267525",
     "userGroup": "user",
     "serial": "0047746664",
@@ -1568,7 +1568,7 @@
     "updatedAt": { "$date": "2021-07-28T00:02:12.626Z" }
   },
   {
-    "favoritedGames": ["p4603", "p4694", "p4656", "p4654"],
+    "favoritedProgramItems": ["p4603", "p4694", "p4656", "p4654"],
     "username": "495695",
     "userGroup": "user",
     "serial": "2076444286",
@@ -1592,7 +1592,7 @@
     "updatedAt": { "$date": "2021-08-01T08:45:44.256Z" }
   },
   {
-    "favoritedGames": ["p4603"],
+    "favoritedProgramItems": ["p4603"],
     "username": "238798",
     "userGroup": "user",
     "serial": "2012565707",
@@ -1610,7 +1610,7 @@
     "updatedAt": { "$date": "2021-07-28T04:53:50.166Z" }
   },
   {
-    "favoritedGames": ["p4603", "p4656", "p4681", "p4693", "p4675"],
+    "favoritedProgramItems": ["p4603", "p4656", "p4681", "p4693", "p4675"],
     "username": "255965",
     "userGroup": "user",
     "serial": "2423162144",
@@ -1628,7 +1628,7 @@
     "updatedAt": { "$date": "2021-07-31T13:17:00.082Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "361193",
     "userGroup": "user",
     "serial": "4309269084",
@@ -1639,7 +1639,7 @@
     "updatedAt": { "$date": "2021-07-28T09:56:25.136Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "282954",
     "userGroup": "user",
     "serial": "0435921788",
@@ -1650,7 +1650,7 @@
     "updatedAt": { "$date": "2021-07-31T14:15:19.402Z" }
   },
   {
-    "favoritedGames": ["p4699"],
+    "favoritedProgramItems": ["p4699"],
     "username": "934836",
     "userGroup": "user",
     "serial": "2839655772",
@@ -1661,7 +1661,7 @@
     "updatedAt": { "$date": "2021-07-29T11:57:12.356Z" }
   },
   {
-    "favoritedGames": ["p4703", "p4699"],
+    "favoritedProgramItems": ["p4703", "p4699"],
     "username": "359808",
     "userGroup": "user",
     "serial": "3472643778",
@@ -1697,7 +1697,7 @@
     "updatedAt": { "$date": "2021-07-31T13:36:26.344Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "753992",
     "userGroup": "user",
     "serial": "4273041006",
@@ -1739,7 +1739,7 @@
     "updatedAt": { "$date": "2021-07-28T12:53:13.535Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "309608",
     "userGroup": "user",
     "serial": "9756876687",
@@ -1757,7 +1757,7 @@
     "updatedAt": { "$date": "2021-07-28T13:12:04.071Z" }
   },
   {
-    "favoritedGames": ["p4701", "p4706", "p4699"],
+    "favoritedProgramItems": ["p4701", "p4706", "p4699"],
     "username": "319502",
     "userGroup": "user",
     "serial": "2015105303",
@@ -1787,7 +1787,7 @@
     "updatedAt": { "$date": "2021-07-31T22:34:16.935Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "181397",
     "userGroup": "user",
     "serial": "4912532647",
@@ -1805,7 +1805,7 @@
     "updatedAt": { "$date": "2021-07-28T18:19:34.814Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "329438",
     "userGroup": "user",
     "serial": "6573719892",
@@ -1829,7 +1829,7 @@
     "updatedAt": { "$date": "2021-07-28T18:42:56.408Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "328826",
     "userGroup": "user",
     "serial": "5220362932",
@@ -1840,7 +1840,7 @@
     "updatedAt": { "$date": "2021-07-28T19:12:03.02Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "914040",
     "userGroup": "user",
     "serial": "2553083417",
@@ -1864,7 +1864,7 @@
     "updatedAt": { "$date": "2021-07-28T20:45:48.674Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "813563",
     "userGroup": "user",
     "serial": "8319781673",
@@ -1875,7 +1875,7 @@
     "updatedAt": { "$date": "2021-07-28T20:26:46.251Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "228038",
     "userGroup": "user",
     "serial": "1701016659",
@@ -1886,7 +1886,7 @@
     "updatedAt": { "$date": "2021-07-29T19:34:00.982Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "384480",
     "userGroup": "user",
     "serial": "5767300840",
@@ -1910,7 +1910,7 @@
     "updatedAt": { "$date": "2021-07-31T06:16:19.986Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "687136",
     "userGroup": "user",
     "serial": "5369685994",
@@ -1921,7 +1921,7 @@
     "updatedAt": { "$date": "2021-07-29T05:55:22.246Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "249443",
     "userGroup": "user",
     "serial": "8123606298",
@@ -1945,7 +1945,7 @@
     "updatedAt": { "$date": "2021-07-29T07:14:40.746Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "727232",
     "userGroup": "user",
     "serial": "7349373923",
@@ -1956,7 +1956,7 @@
     "updatedAt": { "$date": "2021-07-29T07:30:55.553Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "847071",
     "userGroup": "user",
     "serial": "9596366345",
@@ -1974,7 +1974,7 @@
     "updatedAt": { "$date": "2021-07-30T15:03:56.614Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "916885",
     "userGroup": "user",
     "serial": "0077029254",
@@ -1992,7 +1992,7 @@
     "updatedAt": { "$date": "2021-07-29T08:43:53.266Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "414416",
     "userGroup": "user",
     "serial": "4852045097",
@@ -2016,7 +2016,7 @@
     "updatedAt": { "$date": "2021-07-29T10:32:09.258Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "531004",
     "userGroup": "user",
     "serial": "4409914985",
@@ -2034,7 +2034,7 @@
     "updatedAt": { "$date": "2021-07-29T10:31:17.867Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "149811",
     "userGroup": "user",
     "serial": "1844408847",
@@ -2052,7 +2052,7 @@
     "updatedAt": { "$date": "2021-07-29T10:36:09.439Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "606064",
     "userGroup": "user",
     "serial": "9758318639",
@@ -2070,7 +2070,7 @@
     "updatedAt": { "$date": "2021-07-29T10:44:53.025Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "590124",
     "userGroup": "user",
     "serial": "7092992846",
@@ -2081,7 +2081,7 @@
     "updatedAt": { "$date": "2021-07-29T11:14:04.28Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "49522",
     "userGroup": "user",
     "serial": "6339076165",
@@ -2117,7 +2117,7 @@
     "updatedAt": { "$date": "2021-07-31T15:10:27.052Z" }
   },
   {
-    "favoritedGames": ["p4694"],
+    "favoritedProgramItems": ["p4694"],
     "username": "364623",
     "userGroup": "user",
     "serial": "9240567041",
@@ -2135,7 +2135,7 @@
     "updatedAt": { "$date": "2021-07-29T12:18:27.326Z" }
   },
   {
-    "favoritedGames": ["p4703", "p4699"],
+    "favoritedProgramItems": ["p4703", "p4699"],
     "username": "537034",
     "userGroup": "user",
     "serial": "7382347750",
@@ -2153,7 +2153,7 @@
     "updatedAt": { "$date": "2021-07-31T11:45:01.888Z" }
   },
   {
-    "favoritedGames": ["p4698", "p4704"],
+    "favoritedProgramItems": ["p4698", "p4704"],
     "username": "925214",
     "userGroup": "user",
     "serial": "3939052258",
@@ -2171,7 +2171,7 @@
     "updatedAt": { "$date": "2021-07-31T07:51:42.939Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "571721",
     "userGroup": "user",
     "serial": "4327196749",
@@ -2189,7 +2189,7 @@
     "updatedAt": { "$date": "2021-07-29T15:58:39.909Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "577113",
     "userGroup": "user",
     "serial": "6353344788",
@@ -2207,7 +2207,7 @@
     "updatedAt": { "$date": "2021-07-31T16:31:39.18Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "392916",
     "userGroup": "user",
     "serial": "5251826565",
@@ -2218,7 +2218,7 @@
     "updatedAt": { "$date": "2021-07-29T15:13:13.287Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "444321",
     "userGroup": "user",
     "serial": "1635536368",
@@ -2254,7 +2254,7 @@
     "updatedAt": { "$date": "2021-07-30T14:43:18.244Z" }
   },
   {
-    "favoritedGames": ["p4680"],
+    "favoritedProgramItems": ["p4680"],
     "username": "512572",
     "userGroup": "user",
     "serial": "7505161005",
@@ -2272,7 +2272,7 @@
     "updatedAt": { "$date": "2021-07-30T12:01:34.733Z" }
   },
   {
-    "favoritedGames": ["p4639"],
+    "favoritedProgramItems": ["p4639"],
     "username": "399758",
     "userGroup": "user",
     "serial": "2910965272",
@@ -2290,7 +2290,7 @@
     "updatedAt": { "$date": "2021-07-31T11:59:16.667Z" }
   },
   {
-    "favoritedGames": ["p4694", "p4693"],
+    "favoritedProgramItems": ["p4694", "p4693"],
     "username": "461672",
     "userGroup": "user",
     "serial": "0795409044",
@@ -2301,7 +2301,7 @@
     "updatedAt": { "$date": "2021-07-30T15:49:37.274Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "602130",
     "userGroup": "user",
     "serial": "2885899381",
@@ -2312,7 +2312,7 @@
     "updatedAt": { "$date": "2021-07-29T20:46:49.946Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "698428",
     "userGroup": "user",
     "serial": "2691745208",
@@ -2366,7 +2366,7 @@
     "updatedAt": { "$date": "2021-07-31T09:11:31.775Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "703497",
     "userGroup": "user",
     "serial": "1200795175",
@@ -2377,7 +2377,7 @@
     "updatedAt": { "$date": "2021-07-30T05:04:20.694Z" }
   },
   {
-    "favoritedGames": ["p4652", "p4693", "p4701"],
+    "favoritedProgramItems": ["p4652", "p4693", "p4701"],
     "username": "744894",
     "userGroup": "user",
     "serial": "9670730986",
@@ -2395,7 +2395,7 @@
     "updatedAt": { "$date": "2021-07-31T15:14:17.834Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "661825",
     "userGroup": "user",
     "serial": "8023642518",
@@ -2406,7 +2406,7 @@
     "updatedAt": { "$date": "2021-07-30T10:03:20.484Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "500952",
     "userGroup": "user",
     "serial": "3159396856",
@@ -2424,7 +2424,7 @@
     "updatedAt": { "$date": "2021-07-30T10:16:44.319Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "574942",
     "userGroup": "user",
     "serial": "8621003774",
@@ -2460,7 +2460,7 @@
     "updatedAt": { "$date": "2021-07-30T15:48:32.384Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "433219",
     "userGroup": "user",
     "serial": "3269817833",
@@ -2484,7 +2484,7 @@
     "updatedAt": { "$date": "2021-07-30T11:07:46.295Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "232378",
     "userGroup": "user",
     "serial": "0334525045",
@@ -2495,7 +2495,7 @@
     "updatedAt": { "$date": "2021-07-30T10:32:00.644Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "79289",
     "userGroup": "user",
     "serial": "7730830929",
@@ -2519,7 +2519,7 @@
     "updatedAt": { "$date": "2021-07-30T11:06:14.349Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "698383",
     "userGroup": "user",
     "serial": "2004023814",
@@ -2549,7 +2549,7 @@
     "updatedAt": { "$date": "2021-07-30T11:16:45.831Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "883380",
     "userGroup": "user",
     "serial": "8049267506",
@@ -2560,7 +2560,7 @@
     "updatedAt": { "$date": "2021-07-30T11:28:14.83Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "307",
     "userGroup": "user",
     "serial": "3277551614",
@@ -2571,7 +2571,7 @@
     "updatedAt": { "$date": "2021-07-30T11:46:13.87Z" }
   },
   {
-    "favoritedGames": ["p4653", "p4680", "p4641"],
+    "favoritedProgramItems": ["p4653", "p4680", "p4641"],
     "username": "956133",
     "userGroup": "user",
     "serial": "6238998956",
@@ -2582,7 +2582,7 @@
     "updatedAt": { "$date": "2021-07-30T11:58:22.852Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "759760",
     "userGroup": "user",
     "serial": "4858205935",
@@ -2600,7 +2600,7 @@
     "updatedAt": { "$date": "2021-07-30T12:55:09.722Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "195008",
     "userGroup": "user",
     "serial": "7458259558",
@@ -2618,7 +2618,7 @@
     "updatedAt": { "$date": "2021-07-30T16:50:10.268Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "294898",
     "userGroup": "user",
     "serial": "5607872404",
@@ -2629,7 +2629,7 @@
     "updatedAt": { "$date": "2021-07-30T13:02:38.347Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "277289",
     "userGroup": "user",
     "serial": "5496155192",
@@ -2659,7 +2659,7 @@
     "updatedAt": { "$date": "2021-08-01T12:03:01.096Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "537911",
     "userGroup": "user",
     "serial": "9526288999",
@@ -2670,7 +2670,7 @@
     "updatedAt": { "$date": "2021-07-30T13:27:44.139Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "838593",
     "userGroup": "user",
     "serial": "3879938474",
@@ -2681,7 +2681,7 @@
     "updatedAt": { "$date": "2021-07-30T13:28:18.495Z" }
   },
   {
-    "favoritedGames": ["p4729", "p4694", "p4632", "p4621"],
+    "favoritedProgramItems": ["p4729", "p4694", "p4632", "p4621"],
     "username": "104437",
     "userGroup": "user",
     "serial": "0152905816",
@@ -2692,7 +2692,7 @@
     "updatedAt": { "$date": "2021-07-30T14:05:47.676Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "157635",
     "userGroup": "user",
     "serial": "2074675345",
@@ -2703,7 +2703,7 @@
     "updatedAt": { "$date": "2021-07-30T14:25:26.326Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "424252",
     "userGroup": "user",
     "serial": "5920353645",
@@ -2721,7 +2721,7 @@
     "updatedAt": { "$date": "2021-07-30T14:25:58.995Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "790616",
     "userGroup": "user",
     "serial": "1644635953",
@@ -2739,7 +2739,7 @@
     "updatedAt": { "$date": "2021-07-30T14:35:31.888Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "66044",
     "userGroup": "user",
     "serial": "4209928052",
@@ -2750,7 +2750,7 @@
     "updatedAt": { "$date": "2021-07-30T14:38:08.581Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "456970",
     "userGroup": "user",
     "serial": "2014236067",
@@ -2761,7 +2761,7 @@
     "updatedAt": { "$date": "2021-07-30T14:44:37.322Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "564003",
     "userGroup": "user",
     "serial": "9416106822",
@@ -2772,7 +2772,7 @@
     "updatedAt": { "$date": "2021-07-31T08:55:45.502Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "520582",
     "userGroup": "user",
     "serial": "4250368810",
@@ -2783,7 +2783,7 @@
     "updatedAt": { "$date": "2021-07-30T15:06:23.507Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "904372",
     "userGroup": "user",
     "serial": "2341760367",
@@ -2794,7 +2794,7 @@
     "updatedAt": { "$date": "2021-07-30T15:34:22.164Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "599853",
     "userGroup": "user",
     "serial": "2207555356",
@@ -2824,7 +2824,7 @@
     "updatedAt": { "$date": "2021-08-01T11:29:26.264Z" }
   },
   {
-    "favoritedGames": ["p4703"],
+    "favoritedProgramItems": ["p4703"],
     "username": "574585",
     "userGroup": "user",
     "serial": "1793265784",
@@ -2842,7 +2842,7 @@
     "updatedAt": { "$date": "2021-07-30T16:51:00.566Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "834968",
     "userGroup": "user",
     "serial": "8351663441",
@@ -2853,7 +2853,7 @@
     "updatedAt": { "$date": "2021-07-30T16:16:52.621Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "353088",
     "userGroup": "user",
     "serial": "3992041263",
@@ -2871,7 +2871,7 @@
     "updatedAt": { "$date": "2021-07-30T17:02:23.37Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "416347",
     "userGroup": "user",
     "serial": "8030451283",
@@ -2882,7 +2882,7 @@
     "updatedAt": { "$date": "2021-07-31T14:58:24.037Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "813982",
     "userGroup": "user",
     "serial": "5946517629",
@@ -2900,7 +2900,7 @@
     "updatedAt": { "$date": "2021-07-31T07:59:27.746Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "507241",
     "userGroup": "user",
     "serial": "7530707871",
@@ -2911,7 +2911,7 @@
     "updatedAt": { "$date": "2021-07-31T08:11:34.08Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "368365",
     "userGroup": "user",
     "serial": "9227166031",
@@ -2922,7 +2922,7 @@
     "updatedAt": { "$date": "2021-07-31T17:02:34.015Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "175305",
     "userGroup": "user",
     "serial": "1495242396",
@@ -2940,7 +2940,7 @@
     "updatedAt": { "$date": "2021-07-31T17:19:14.038Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "827990",
     "userGroup": "user",
     "serial": "2276622806",
@@ -2958,7 +2958,7 @@
     "updatedAt": { "$date": "2021-07-31T18:40:23.597Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "808318",
     "userGroup": "user",
     "serial": "5108964270",
@@ -2969,7 +2969,7 @@
     "updatedAt": { "$date": "2021-08-01T07:39:14.473Z" }
   },
   {
-    "favoritedGames": [],
+    "favoritedProgramItems": [],
     "username": "207179",
     "userGroup": "user",
     "serial": "5578314758",
