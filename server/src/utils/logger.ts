@@ -1,5 +1,4 @@
 import { createLogger, format, Logger, transports } from "winston";
-import { onUnhandledRejectionIntegration } from "@sentry/node";
 import Sentry from "./sentry-winston-transport";
 import { config } from "shared/config";
 import { getDsn } from "server/utils/instrument";
@@ -31,14 +30,12 @@ export const logger = createLogger({
   transports: [
     new transports.Console({
       level: config.server().debug ? "debug" : "info",
-      handleExceptions: true,
-      handleRejections: true,
       format: consoleOutputFormat,
     }),
+
     new Sentry({
       sentry: {
         dsn: getDsn(),
-        integrations: [onUnhandledRejectionIntegration({ mode: "none" })],
       },
       level: "error",
       format: format.combine(
@@ -54,9 +51,8 @@ export const logger = createLogger({
       ),
     }),
   ],
-  exitOnError: false,
 });
 
-export const stream = {
+export const accessLogStream = {
   write: (message: string): Logger => logger.info(message.slice(0, -1)), // Slice to remove line break
 };

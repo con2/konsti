@@ -7,7 +7,7 @@ import helmet from "helmet";
 import morgan from "morgan";
 import expressStaticGzip from "express-static-gzip";
 import { config } from "shared/config";
-import { logger, stream } from "server/utils/logger";
+import { logger, accessLogStream } from "server/utils/logger";
 import { allowCORS } from "server/middleware/cors";
 import "server/db/mongoosePlugins"; // Must be imported before apiRoutes which loads models
 import { apiRoutes } from "server/api/apiRoutes";
@@ -57,7 +57,7 @@ export const startServer = async ({
   if (config.server().enableAccessLog) {
     // Set logger
     logger.info("Express: Overriding 'Express' logger");
-    app.use(morgan("dev", { stream }));
+    app.use(morgan("dev", { stream: accessLogStream }));
   }
 
   if (process.env.NODE_ENV === "development") {
@@ -113,6 +113,12 @@ export const startServer = async ({
         res.sendFile(path.join(staticPath, "index.html"));
       }
     }
+  });
+
+  // Error handler
+  app.use((err: Error, _req: Request, res: Response, _next: NextFunction) => {
+    logger.error("%s", err);
+    return res.sendStatus(500);
   });
 
   // Sentry setup: add this after all routes and other middlewares are defined
