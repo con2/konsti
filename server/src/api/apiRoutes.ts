@@ -17,10 +17,7 @@ import {
   postAssignment,
   postAutoAssignment,
 } from "server/features/results/resultsController";
-import {
-  getSentryTest,
-  postSentryTunnel,
-} from "server/features/sentry-tunnel/sentryTunnelController";
+import { getSentryTest } from "server/features/sentry-tunnel/sentryTunnelController";
 import {
   deleteSignupQuestion,
   getSettings,
@@ -91,11 +88,6 @@ apiRoutes.post(ApiEndpoint.EVENT_LOG, postEventLogItem);
 apiRoutes.post(ApiEndpoint.PROGRAM_UPDATE_CRON, postAutoUpdateProgramItems);
 apiRoutes.post(ApiEndpoint.ASSIGNMENT_CRON, postAutoAssignment);
 apiRoutes.post(ApiEndpoint.VERIFY_KOMPASSI_LOGIN, postVerifyKompassiLogin);
-apiRoutes.post(
-  ApiEndpoint.SENTRY_TUNNEL,
-  express.raw({ limit: "100mb", type: () => true }),
-  postSentryTunnel,
-);
 
 /* GET routes */
 

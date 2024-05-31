@@ -14,6 +14,7 @@ import { apiRoutes } from "server/api/apiRoutes";
 import { db } from "server/db/mongodb";
 import { stopCronJobs } from "server/utils/cron";
 import { wwwRedirect } from "server/middleware/wwwRedirect";
+import { sentryRoutes } from "server/api/sentryRoutes";
 
 interface StartServerParams {
   dbConnString: string;
@@ -63,6 +64,9 @@ export const startServer = async ({
     // Kompassi mock service requires content type application/x-www-form-urlencoded
     app.use(express.urlencoded({ extended: true }));
   }
+
+  // Accepts raw body
+  app.use(sentryRoutes);
 
   // Parse body and populate req.body - only accepts JSON
   app.use(express.json({ limit: "1000kb", type: "*/*" })); // limit: 1MB
