@@ -1,8 +1,8 @@
 import { createLogger, format, Logger, transports } from "winston";
-// import Sentry from "winston-transport-sentry-node";
-// import { onUnhandledRejectionIntegration } from "@sentry/node";
+import { onUnhandledRejectionIntegration } from "@sentry/node";
+import Sentry from "./sentry-winston-transport";
 import { config } from "shared/config";
-// import { getDsn } from "server/utils/instrument";
+import { getDsn } from "server/utils/instrument";
 
 const consoleOutputFormat = config.server().consoleLogFormatJson
   ? format.combine(
@@ -35,7 +35,6 @@ export const logger = createLogger({
       handleRejections: true,
       format: consoleOutputFormat,
     }),
-    /*
     new Sentry({
       sentry: {
         dsn: getDsn(),
@@ -54,7 +53,6 @@ export const logger = createLogger({
         }),
       ),
     }),
-    */
   ],
   exitOnError: false,
 });

@@ -1,7 +1,7 @@
 import { init, onUnhandledRejectionIntegration } from "@sentry/node";
 import { config } from "shared/config";
 
-const getDsn = (): string | undefined => {
+export const getDsn = (): string | undefined => {
   switch (process.env.SETTINGS) {
     case "production":
       return "https://0278d6bfb3f04c70acf826ecbd86ae58@o1321706.ingest.sentry.io/6579204";
