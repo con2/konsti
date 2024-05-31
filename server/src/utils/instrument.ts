@@ -1,4 +1,4 @@
-import { init, onUnhandledRejectionIntegration } from "@sentry/node";
+import { init } from "@sentry/node";
 import { config } from "shared/config";
 
 export const getDsn = (): string | undefined => {
@@ -18,7 +18,6 @@ export const getDsn = (): string | undefined => {
 
 init({
   dsn: getDsn(),
-  integrations: [onUnhandledRejectionIntegration({ mode: "none" })],
   tracesSampleRate: config.shared().tracesSampleRate,
   environment: process.env.SETTINGS,
 });

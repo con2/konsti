@@ -44,7 +44,7 @@ export const getSentryTest = (
     return res.sendStatus(401);
   }
 
-  logger.error("%s", new Error("Sentry test error: Winston logger"));
+  logger.error("%s", new Error("Sentry test error: logger.error()"));
 
   // eslint-disable-next-line no-restricted-syntax -- Test error
   throw new Error("Sentry test error: uncaught exception");
