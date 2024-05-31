@@ -1,8 +1,32 @@
-import * as Sentry from "@sentry/node";
-import TransportStream = require("winston-transport");
-import { LEVEL } from "triple-beam";
+/*
+eslint-disable
+@typescript-eslint/no-explicit-any,
+@typescript-eslint/no-unsafe-argument,
+@typescript-eslint/prefer-optional-chain,
+@typescript-eslint/prefer-nullish-coalescing,
+@typescript-eslint/no-confusing-void-expression,
+@typescript-eslint/explicit-module-boundary-types,
+@typescript-eslint/no-floating-promises,
+@typescript-eslint/no-unnecessary-condition,
+@typescript-eslint/consistent-indexed-object-style,
+promise/catch-or-return,
+promise/always-return,
+curly
+*/
 
 // https://github.com/aandrewww/winston-transport-sentry-node/tree/master
+
+import {
+  NodeOptions,
+  SeverityLevel,
+  captureException,
+  captureMessage,
+  flush,
+  getCurrentScope,
+  init,
+} from "@sentry/node";
+import TransportStream = require("winston-transport");
+import { LEVEL } from "triple-beam";
 
 enum SentrySeverity {
   Debug = "debug",
@@ -22,16 +46,14 @@ const DEFAULT_LEVELS_MAP: SeverityOptions = {
   error: SentrySeverity.Error,
 };
 
-export interface SentryTransportOptions
+interface SentryTransportOptions
   extends TransportStream.TransportStreamOptions {
-  sentry?: Sentry.NodeOptions;
+  sentry?: NodeOptions;
   levelsMap?: SeverityOptions;
   skipSentryInit?: boolean;
 }
 
-interface SeverityOptions {
-  [key: string]: Sentry.SeverityLevel;
-}
+type SeverityOptions = Record<string, SeverityLevel>;
 
 class ExtendedError extends Error {
   constructor(info: any) {
@@ -56,7 +78,7 @@ export default class SentryTransport extends TransportStream {
     this.silent = (opts && opts.silent) || false;
 
     if (!opts || !opts.skipSentryInit) {
-      Sentry.init(SentryTransport.withDefaults((opts && opts.sentry) || {}));
+      init(SentryTransport.withDefaults((opts && opts.sentry) || {}));
     }
   }
 
@@ -72,36 +94,28 @@ export default class SentryTransport extends TransportStream {
 
     const sentryLevel = this.levelsMap[winstonLevel];
 
-    Sentry.getCurrentScope()
-      .clear()
-      .setTags(tags)
-      .setExtras(meta)
-      .setUser(user);
+    getCurrentScope().clear().setTags(tags).setExtras(meta).setUser(user);
 
     // Capturing Errors / Exceptions
     if (SentryTransport.shouldLogException(sentryLevel)) {
       const error =
         Object.values(info).find((value) => value instanceof Error) ??
         new ExtendedError(info);
-      Sentry.captureException(error, { tags });
+      captureException(error, { tags });
 
       return callback();
     }
 
     // Capturing Messages
-    Sentry.captureMessage(message, sentryLevel);
+    captureMessage(message, sentryLevel);
     return callback();
   }
 
   end(...args: any[]) {
-    Sentry.flush().then(() => {
+    flush().then(() => {
       super.end(...args);
     });
     return this;
-  }
-
-  public get sentry() {
-    return Sentry;
   }
 
   private setLevelsMap = (options?: SeverityOptions): SeverityOptions => {
@@ -123,7 +137,7 @@ export default class SentryTransport extends TransportStream {
     };
   };
 
-  private static withDefaults(options: Sentry.NodeOptions) {
+  private static withDefaults(options: NodeOptions) {
     return {
       ...options,
       dsn: (options && options.dsn) || process.env.SENTRY_DSN || "",
@@ -140,7 +154,23 @@ export default class SentryTransport extends TransportStream {
     };
   }
 
-  private static shouldLogException(level: Sentry.SeverityLevel) {
+  private static shouldLogException(level: SeverityLevel) {
     return level === SentrySeverity.Fatal || level === SentrySeverity.Error;
   }
 }
+
+/*
+eslint-enable
+@typescript-eslint/no-explicit-any,
+@typescript-eslint/no-unsafe-argument,
+@typescript-eslint/prefer-optional-chain,
+@typescript-eslint/prefer-nullish-coalescing,
+@typescript-eslint/no-confusing-void-expression,
+@typescript-eslint/explicit-module-boundary-types,
+@typescript-eslint/no-floating-promises,
+@typescript-eslint/no-unnecessary-condition,
+@typescript-eslint/consistent-indexed-object-style,
+promise/catch-or-return,
+promise/always-return,
+curly
+*/
