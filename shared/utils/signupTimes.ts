@@ -1,5 +1,4 @@
 import dayjs, { Dayjs } from "dayjs";
-import { reverse } from "lodash-es";
 import { config } from "shared/config";
 import { ProgramItem } from "shared/types/models/programItem";
 import { TIMEZONE } from "shared/utils/initializeDayjs";
@@ -84,14 +83,17 @@ export const getDirectSignupStartTime = (programItem: ProgramItem): Dayjs => {
     ? directSignupStartTimes[programItem.programType]
     : undefined;
 
-  const directSignupStartTime =
-    programTypeDirectSignupStartTimes &&
-    reverse(programTypeDirectSignupStartTimes).find(
-      (programTypeDirectSignupStartTime) =>
-        dayjs(programItem.startTime).isSameOrAfter(
-          programTypeDirectSignupStartTime,
-        ),
-    );
+  if (!programTypeDirectSignupStartTimes) {
+    return dayjs(conventionStartTime);
+  }
+
+  const reverseSignupStartTimes = programTypeDirectSignupStartTimes
+    .slice()
+    .reverse();
+
+  const directSignupStartTime = reverseSignupStartTimes.find(
+    (signupStartTime) => dayjs(programItem.startTime).isAfter(signupStartTime),
+  );
 
   return directSignupStartTime ?? dayjs(conventionStartTime);
 };
