@@ -18,22 +18,14 @@ import {
 import { createEventLogItems } from "server/test/test-data-generation/generators/createEventLogItems";
 import { cleanupDatabase } from "server/utils/cleanupDatabse";
 import { initializeDayjs } from "shared/utils/initializeDayjs";
-
-interface Options {
-  clean?: boolean;
-  users?: boolean;
-  programItems?: boolean;
-  lotterySignups?: boolean;
-  directSignups?: boolean;
-  eventLog?: boolean;
-}
+import { PopulateDbOptions } from "shared/test-types/api/populateDb";
 
 interface Settings {
   closeDb: boolean;
 }
 
 export const runGenerators = async (
-  options: Options,
+  options: PopulateDbOptions,
   settings: Settings,
 ): Promise<void> => {
   if (process.env.NODE_ENV === "production") {
