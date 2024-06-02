@@ -197,14 +197,14 @@ describe(`Direct signup`, () => {
     );
   });
 
-  test("Larp starting at Fri 18:00 should have signup starting at Fri 18:00", () => {
+  test("Larp starting at Fri 18:00 should have signup starting at Fri 15:00", () => {
     const startTime = "2023-07-28T15:00:00.000Z";
     const signupStartTime = getDirectSignupStartTime({
       ...testLarp,
       startTime,
     });
     expect(dayjs(signupStartTime).toISOString()).toEqual(
-      "2023-07-28T15:00:00.000Z",
+      "2023-07-28T12:00:00.000Z",
     );
   });
 
