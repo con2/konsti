@@ -92,6 +92,10 @@ module.exports = {
     "vitest/no-disabled-tests": "error",
     "vitest/no-focused-tests": "error",
     "vitest/prefer-to-be": "off", // Don't want this
+    "vitest/expect-expect": [
+      "error",
+      { assertFunctionNames: ["expect", "assertSignupTime"] },
+    ],
 
     // eslint-plugin-eslint-comments
     "eslint-comments/no-unused-disable": "error",
