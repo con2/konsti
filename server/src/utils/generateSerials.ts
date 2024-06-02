@@ -15,7 +15,7 @@ const generateSerials = async (): Promise<void> => {
     try {
       await db.connectToDb();
     } catch (error) {
-      logger.error(error);
+      logger.error("%s", error);
     }
 
     try {
@@ -28,10 +28,10 @@ const generateSerials = async (): Promise<void> => {
   try {
     await db.gracefulExit();
   } catch (error) {
-    logger.error(error);
+    logger.error("%s", error);
   }
 };
 
 generateSerials().catch((error: unknown) => {
-  logger.error(error);
+  logger.error("%s", error);
 });

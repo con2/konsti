@@ -28,5 +28,5 @@ const parseCliOptions = async (): Promise<void> => {
 };
 
 parseCliOptions().catch((error: unknown) => {
-  logger.error(error);
+  logger.error("%s", error);
 });

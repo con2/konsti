@@ -44,5 +44,5 @@ const init = async (): Promise<void> => {
 };
 
 init().catch((error: unknown) => {
-  logger.error(error);
+  logger.error("%s", error);
 });

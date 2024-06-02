@@ -10,7 +10,7 @@ export const wildFix = async (
   try {
     data = readJson(year, event, type);
   } catch (error) {
-    logger.error(error);
+    logger.error("%s", error);
     return;
   }
 
