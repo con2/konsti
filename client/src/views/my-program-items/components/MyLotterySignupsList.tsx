@@ -33,7 +33,7 @@ export const MyLotterySignupsList = ({
   );
 
   return (
-    <RaisedCard>
+    <RaisedCard data-testid="lottery-signup-program-items-list">
       <Header>{t("lotterySignups")}</Header>
 
       {!isGroupCreator && isGroupMember && (

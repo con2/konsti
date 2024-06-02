@@ -34,6 +34,7 @@ export const LotterySignupsByStartTimes = ({
                         <SignupPriority>{`${signup.priority})`}</SignupPriority>
                         <StyledLink
                           to={`${AppRoute.PROGRAM_ITEM}/${signup.programItem.programItemId}`}
+                          data-testid="program-item-title"
                         >
                           {signup.programItem.title}
                         </StyledLink>
