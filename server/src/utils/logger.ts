@@ -27,6 +27,9 @@ const consoleOutputFormat = config.server().consoleLogFormatJson
     );
 
 export const logger = createLogger({
+  handleExceptions: true,
+  handleRejections: true,
+
   transports: [
     new transports.Console({
       level: config.server().debug ? "debug" : "info",
