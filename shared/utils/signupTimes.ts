@@ -92,8 +92,7 @@ export const getDirectSignupStartTime = (programItem: ProgramItem): Dayjs => {
     .reverse();
 
   const directSignupStartTime = reverseSignupStartTimes.find(
-    (signupStartTime) =>
-      dayjs(programItem.startTime).isSameOrAfter(signupStartTime),
+    (signupStartTime) => dayjs(programItem.startTime).isAfter(signupStartTime),
   );
 
   return directSignupStartTime ?? dayjs(conventionStartTime);
