@@ -29,7 +29,7 @@ export const startServer = async ({
   try {
     await db.connectToDb(dbConnString, dbName);
   } catch (error) {
-    logger.error(error);
+    logger.error("%s", error);
   }
 
   const app = express();
@@ -162,7 +162,7 @@ export const closeServer = async (
   try {
     await db.gracefulExit();
   } catch (error) {
-    logger.error(error);
+    logger.error("%s", error);
   }
 
   logger.info("Shutdown completed, bye");

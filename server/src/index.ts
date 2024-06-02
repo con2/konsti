@@ -34,12 +34,12 @@ const startApp = async (): Promise<void> => {
 
   process.once("SIGINT", (signal: string) => {
     closeServer(server, signal).catch((error: unknown) => {
-      logger.error(error);
+      logger.error("%s", error);
     });
   });
   process.once("SIGTERM", (signal: string) => {
     closeServer(server, signal).catch((error: unknown) => {
-      logger.error(error);
+      logger.error("%s", error);
     });
   });
 };
@@ -53,7 +53,7 @@ const init = (): void => {
   }
 
   startApp().catch((error: unknown) => {
-    logger.error(error);
+    logger.error("%s", error);
   });
 };
 

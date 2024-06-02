@@ -6,22 +6,22 @@ const testVerifyResults = async (): Promise<void> => {
   try {
     await db.connectToDb();
   } catch (error) {
-    logger.error(error);
+    logger.error("%s", error);
   }
 
   try {
     await verifyUserSignups();
   } catch (error) {
-    logger.error(error);
+    logger.error("%s", error);
   }
 
   try {
     await db.gracefulExit();
   } catch (error) {
-    logger.error(error);
+    logger.error("%s", error);
   }
 };
 
 testVerifyResults().catch((error: unknown) => {
-  logger.error(error);
+  logger.error("%s", error);
 });

@@ -18,5 +18,5 @@ const loadKompassiDataToDb = async (): Promise<void> => {
 };
 
 loadKompassiDataToDb().catch((error: unknown) => {
-  logger.error(error);
+  logger.error("%s", error);
 });

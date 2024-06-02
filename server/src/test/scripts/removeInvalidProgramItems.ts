@@ -6,7 +6,7 @@ const removeInvalidProgramItems = async (): Promise<void> => {
   try {
     await db.connectToDb();
   } catch (error) {
-    logger.error(error);
+    logger.error("%s", error);
     // eslint-disable-next-line no-restricted-syntax -- Test script
     throw error;
   }
@@ -22,12 +22,12 @@ const removeInvalidProgramItems = async (): Promise<void> => {
   try {
     await db.gracefulExit();
   } catch (error) {
-    logger.error(error);
+    logger.error("%s", error);
     // eslint-disable-next-line no-restricted-syntax -- Test script
     throw error;
   }
 };
 
 removeInvalidProgramItems().catch((error: unknown) => {
-  logger.error(error);
+  logger.error("%s", error);
 });
