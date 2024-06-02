@@ -33,7 +33,7 @@ enum ClientError {
   GROUP_TOO_BIG = "group.groupTooBigWarning",
 }
 
-export const AlgorithmSignupForm = ({
+export const LotterySignupProgramItem = ({
   programItem,
   startTime,
   lotterySignups,
