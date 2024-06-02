@@ -182,6 +182,12 @@
     "vitest/no-disabled-tests": ["error"],
     "vitest/no-focused-tests": ["error"],
     "vitest/prefer-to-be": ["off"],
+    "vitest/expect-expect": [
+      "error",
+      {
+        "assertFunctionNames": ["expect", "assertSignupTime"]
+      }
+    ],
     "eslint-comments/no-unused-disable": ["error"],
     "@typescript-eslint/ban-ts-comment": [
       "error",
@@ -388,7 +394,6 @@
     "promise/no-new-statics": ["error"],
     "promise/no-return-in-finally": ["warn"],
     "promise/valid-params": ["warn"],
-    "vitest/expect-expect": ["error"],
     "vitest/no-identical-title": ["error"],
     "vitest/no-commented-out-tests": ["error"],
     "vitest/valid-title": ["error"],
