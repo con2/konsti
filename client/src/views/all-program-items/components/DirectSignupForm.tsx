@@ -1,259 +1,283 @@
-import { ReactElement, useState } from "react";
+import { ReactElement, FormEvent, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
 import { ProgramItem } from "shared/types/models/programItem";
-import { DirectSignupProgramItemForm } from "./DirectSignupProgramItemForm";
-import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import {
-  getSignupOpensDate,
-  isAlreadyDirectySigned,
-} from "./allProgramItemsUtils";
-import { Button, ButtonStyle } from "client/components/Button";
-import { CancelSignupForm } from "./CancelSignupForm";
-import {
-  DeleteDirectSignupErrorMessage,
-  submitDeleteDirectSignup,
+  PostDirectSignupErrorMessage,
+  submitPostDirectSignup,
 } from "client/views/my-program-items/myProgramItemsThunks";
+import { useAppDispatch, useAppSelector } from "client/utils/hooks";
+import { Button, ButtonStyle } from "client/components/Button";
+import {
+  SignupQuestion,
+  SignupQuestionType,
+} from "shared/types/models/settings";
 import { loadProgramItems } from "client/utils/loadData";
 import { ErrorMessage } from "client/components/ErrorMessage";
-import { selectDirectSignups } from "client/views/my-program-items/myProgramItemsSlice";
-import { getTimeNow } from "client/utils/getTimeNow";
-import { getDirectSignupStartTime } from "shared/utils/signupTimes";
+import { getIsInGroup } from "client/views/group/groupUtils";
+import {
+  PostCloseGroupErrorMessage,
+  PostLeaveGroupErrorMessage,
+  submitCloseGroup,
+  submitLeaveGroup,
+} from "client/views/group/groupThunks";
 import { config } from "shared/config";
+import { TextArea } from "client/components/TextArea";
+import { ButtonGroup } from "client/components/ButtonGroup";
+import { Dropdown } from "client/components/Dropdown";
+import { Checkbox } from "client/components/Checkbox";
+import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 
 interface Props {
   programItem: ProgramItem;
-  startTime: string;
-  programItemIsFull: boolean;
+  signupQuestion: SignupQuestion | undefined;
+  onDirectSignupProgramItem: () => void;
+  onCancelSignup: () => void;
   loading: boolean;
   setLoading: (loading: boolean) => void;
 }
 
 export const DirectSignupForm = ({
   programItem,
-  startTime,
-  programItemIsFull,
+  onDirectSignupProgramItem,
+  onCancelSignup,
+  signupQuestion,
   loading,
   setLoading,
-}: Props): ReactElement | null => {
+}: Props): ReactElement => {
+  const { directSignupAlwaysOpenIds } = config.shared();
+
+  const { t, i18n } = useTranslation();
   const dispatch = useAppDispatch();
-  const { t } = useTranslation();
-  const { signupOpen } = config.shared();
 
-  const loggedIn = useAppSelector((state) => state.login.loggedIn);
   const username = useAppSelector((state) => state.login.username);
-  const directSignups = useAppSelector(selectDirectSignups);
-  const signupQuestions = useAppSelector(
-    (state) => state.admin.signupQuestions,
+  const groupCode = useAppSelector((state) => state.group.groupCode);
+  const isGroupCreator = useAppSelector((state) => state.group.isGroupCreator);
+
+  const [userSignupMessage, setUserSignupMessage] = useState<string>("");
+  const [selectedValue, setSelectedValue] = useState<string>(
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+    (i18n.language === "fi"
+      ? signupQuestion?.selectOptions[0]?.optionFi ?? ""
+      : signupQuestion?.selectOptions[0]?.optionEn ?? "") ?? "",
   );
+  const [agreeEntryFee, setAgreeEntryFee] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<
+    | PostDirectSignupErrorMessage
+    | PostLeaveGroupErrorMessage
+    | PostCloseGroupErrorMessage
+    | null
+  >(null);
 
-  const [signupFormOpen, setSignupFormOpen] = useState(false);
-  const [cancelSignupFormOpen, setCancelSignupFormOpen] = useState(false);
-  const [serverError, setServerError] =
-    useState<DeleteDirectSignupErrorMessage | null>(null);
+  const isInGroup = getIsInGroup(groupCode);
 
-  const directSignupForTimeslot = directSignups.find(
-    (p) => p.programItem.startTime === startTime,
-  );
+  const handleCancel = (): void => {
+    onCancelSignup();
+  };
 
-  const alreadySignedToProgramItem = isAlreadyDirectySigned(
-    programItem,
-    directSignups,
-  );
-
-  const removeSignup = async (): Promise<void> => {
+  const handleSignup = async (event: FormEvent): Promise<void> => {
+    event.preventDefault();
     setLoading(true);
-    const errorMessage = await dispatch(
-      submitDeleteDirectSignup({
-        username,
-        startTime: programItem.startTime,
-        directSignupProgramItemId: programItem.programItemId,
-      }),
-    );
 
-    if (errorMessage) {
-      setServerError(errorMessage);
-    } else {
-      await loadProgramItems();
-      setCancelSignupFormOpen(false);
+    const enterData = {
+      username,
+      directSignupProgramItemId: programItem.programItemId,
+      startTime: programItem.startTime,
+      message: userSignupMessage || selectedValue,
+      priority: DIRECT_SIGNUP_PRIORITY,
+    };
+
+    // TODO: This logic should be on backend
+    if (
+      config
+        .shared()
+        .twoPhaseSignupProgramTypes.includes(programItem.programType) &&
+      !directSignupAlwaysOpenIds.includes(programItem.programItemId)
+    ) {
+      if (isInGroup && !isGroupCreator) {
+        const leaveGroupError = await dispatch(submitLeaveGroup());
+
+        if (leaveGroupError) {
+          setErrorMessage(leaveGroupError);
+          return;
+        }
+      } else if (isInGroup && isGroupCreator) {
+        const closeGroupRequest = {
+          username,
+          groupCode,
+        };
+
+        const closeGroupError = await dispatch(
+          submitCloseGroup(closeGroupRequest),
+        );
+
+        if (closeGroupError) {
+          setErrorMessage(closeGroupError);
+          return;
+        }
+      }
     }
+
+    const error = await dispatch(submitPostDirectSignup(enterData));
+    if (error) {
+      setErrorMessage(error);
+      setLoading(false);
+      return;
+    }
+
+    await loadProgramItems();
+    onDirectSignupProgramItem();
     setLoading(false);
   };
 
-  const directSignupStartTime = getDirectSignupStartTime(programItem);
-  const timeNow = getTimeNow();
-
-  if (!loggedIn) {
-    return (
-      <NotLoggedSignupInfo>
-        <div>
-          {timeNow.isBefore(directSignupStartTime) && (
-            <>
-              <span>{t("signup.signupOpens")}</span>{" "}
-              <BoldText>
-                {getSignupOpensDate(directSignupStartTime, timeNow)}
-              </BoldText>
-            </>
-          )}
-          {timeNow.isSameOrAfter(directSignupStartTime) && (
-            <span>{t("signup.directSignupOpenNow")}</span>
-          )}
-        </div>
-        <CreateAccountLink>
-          <Link to={`/login`}>{t("signup.loginToSignup")}</Link>
-        </CreateAccountLink>
-      </NotLoggedSignupInfo>
-    );
-  }
-
   return (
-    <>
-      {signupOpen && programItemIsFull && (
-        <BoldText>
-          {t("signup.programItemFull", {
-            PROGRAM_TYPE: t(`programTypeSingular.${programItem.programType}`),
-          })}
-        </BoldText>
-      )}
+    <SignupForm>
+      {config
+        .shared()
+        .twoPhaseSignupProgramTypes.includes(programItem.programType) &&
+        !directSignupAlwaysOpenIds.includes(programItem.programItemId) &&
+        isInGroup && (
+          <p>
+            {!isGroupCreator && (
+              <Warning>
+                {t("signup.inGroupWarning", {
+                  PROGRAM_TYPE: t(
+                    `programTypeIllative.${programItem.programType}`,
+                  ),
+                })}
+              </Warning>
+            )}
+            {isGroupCreator && (
+              <Warning>
+                {t("signup.groupCreatorWarning", {
+                  PROGRAM_TYPE: t(
+                    `programTypeIllative.${programItem.programType}`,
+                  ),
+                })}
+              </Warning>
+            )}
+          </p>
+        )}
 
-      {signupOpen && !alreadySignedToProgramItem && !programItemIsFull && (
-        <>
-          {directSignupForTimeslot && (
-            <DirectSignupContainer>
-              {t("signup.alreadySignedToProgramItem", {
-                PROGRAM_TYPE: t(
-                  `programTypeIllative.${directSignupForTimeslot.programItem.programType}`,
-                ),
-              })}{" "}
-              <DirectSignupProgramItemTitle>
-                {directSignupForTimeslot.programItem.title}
-              </DirectSignupProgramItemTitle>
-              . {t("signup.cannotSignupMoreThanOneProgramItem")}
-            </DirectSignupContainer>
+      {signupQuestion && (
+        <SignupQuestionContainer>
+          {signupQuestion.type === SignupQuestionType.TEXT && (
+            <>
+              <span>
+                {i18n.language === "fi"
+                  ? signupQuestion.questionFi
+                  : signupQuestion.questionEn}{" "}
+                {signupQuestion.private &&
+                  `(${t("privateOnlyVisibleToOrganizers")})`}
+              </span>
+              <TextArea
+                onChange={(event) => {
+                  if (event.target.value.length > 140) {
+                    return;
+                  }
+                  setUserSignupMessage(event.target.value);
+                }}
+                value={userSignupMessage}
+              />
+              <span>{userSignupMessage.length} / 140</span>
+            </>
           )}
 
-          {!directSignupForTimeslot && (
+          {signupQuestion.type === SignupQuestionType.SELECT && (
             <>
-              {timeNow.isBefore(directSignupStartTime) && (
-                <p>
-                  {t("signup.signupOpens")}{" "}
-                  <BoldText>
-                    {getSignupOpensDate(directSignupStartTime, timeNow)}
-                  </BoldText>
-                </p>
-              )}
-
-              {!signupFormOpen &&
-                timeNow.isSameOrAfter(directSignupStartTime) && (
-                  <ButtonContainer>
-                    <StyledButton
-                      onClick={() => setSignupFormOpen(!signupFormOpen)}
-                      buttonStyle={ButtonStyle.PRIMARY}
-                      disabled={loading}
-                    >
-                      {t("signup.directSignup")}
-                    </StyledButton>
-                  </ButtonContainer>
+              <span>
+                {i18n.language === "fi"
+                  ? signupQuestion.questionFi
+                  : signupQuestion.questionEn}{" "}
+                {signupQuestion.private &&
+                  `(${t("privateOnlyVisibleToOrganizers")})`}
+              </span>
+              <StyledDropdown
+                onChange={(event) => setSelectedValue(event.target.value)}
+                options={signupQuestion.selectOptions.map((option) =>
+                  i18n.language === "fi"
+                    ? {
+                        value: option.optionFi,
+                        title: option.optionFi,
+                      }
+                    : {
+                        value: option.optionEn,
+                        title: option.optionEn,
+                      },
                 )}
-
-              {signupFormOpen && (
-                <DirectSignupProgramItemForm
-                  programItem={programItem}
-                  signupQuestion={signupQuestions.find(
-                    ({ programItemId }) =>
-                      programItemId === programItem.programItemId,
-                  )}
-                  onDirectSignupProgramItem={() => setSignupFormOpen(false)}
-                  onCancelSignup={() => setSignupFormOpen(false)}
-                  loading={loading}
-                  setLoading={setLoading}
-                />
-              )}
+                selectedValue={selectedValue}
+              />
             </>
           )}
-        </>
+        </SignupQuestionContainer>
       )}
 
-      {alreadySignedToProgramItem && (
-        <>
-          <DirectSignupContainer>
-            {t("signup.currentSignup", {
-              PROGRAM_TYPE: t(`programTypeIllative.${programItem.programType}`),
-            })}
-          </DirectSignupContainer>
-
-          {signupOpen && (
-            <>
-              {!cancelSignupFormOpen && (
-                <ButtonContainer>
-                  <StyledButton
-                    onClick={() => setCancelSignupFormOpen(true)}
-                    buttonStyle={ButtonStyle.SECONDARY}
-                  >
-                    {t("button.cancelSignup")}
-                  </StyledButton>
-                </ButtonContainer>
-              )}
-
-              {cancelSignupFormOpen && (
-                <CancelSignupForm
-                  onCancelForm={() => {
-                    setCancelSignupFormOpen(false);
-                  }}
-                  onConfirmForm={async () => await removeSignup()}
-                  loading={loading}
-                />
-              )}
-            </>
-          )}
-        </>
-      )}
-
-      {serverError && (
-        <ErrorMessage
-          message={t(serverError)}
-          closeError={() => setServerError(null)}
+      {!!programItem.entryFee && (
+        <Checkbox
+          checked={agreeEntryFee}
+          onChange={() => {
+            setAgreeEntryFee(!agreeEntryFee);
+          }}
+          label={t("signup.entryFeeInfo", {
+            ENTRY_FEE: programItem.entryFee,
+          })}
+          id={"entry-fee-agree-checkbox"}
         />
       )}
-    </>
+
+      <StyledButtonGroup>
+        <StyledButton
+          onClick={handleSignup}
+          buttonStyle={ButtonStyle.PRIMARY}
+          disabled={(!!programItem.entryFee && !agreeEntryFee) || loading}
+        >
+          {t("signup.confirm")}
+        </StyledButton>
+        <StyledButton
+          onClick={handleCancel}
+          buttonStyle={ButtonStyle.SECONDARY}
+          disabled={loading}
+        >
+          {t("signup.cancel")}
+        </StyledButton>
+      </StyledButtonGroup>
+
+      {errorMessage && (
+        <ErrorMessage
+          message={t(errorMessage)}
+          closeError={() => setErrorMessage(null)}
+        />
+      )}
+    </SignupForm>
   );
 };
 
-const DirectSignupContainer = styled.div`
-  border: 1px solid ${(props) => props.theme.infoBorder};
-  padding: 8px 6px;
-  border-radius: 5px;
-  border-left: 5px solid ${(props) => props.theme.infoBorder};
-  background-color: ${(props) => props.theme.infoBackground};
+const Warning = styled.span`
+  display: inline-block;
+  background-color: ${(props) => props.theme.warningBackground};
+  border: 1px solid ${(props) => props.theme.warningBorder};
+  border-radius: 4px;
+  padding: 6px;
 `;
 
-const DirectSignupProgramItemTitle = styled.span`
-  font-weight: 600;
-`;
-
-const BoldText = styled.span`
-  font-weight: 600;
-`;
-
-const ButtonContainer = styled.div`
-  margin: 8px 0;
+const SignupForm = styled.form`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+`;
+
+const SignupQuestionContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const StyledDropdown = styled(Dropdown)`
+  max-width: 300px;
 `;
 
 const StyledButton = styled(Button)`
-  min-width: 400px;
-  @media (max-width: ${(props) => props.theme.breakpointDesktop}) {
-    width: 100%;
-    min-width: 0;
-  }
+  min-width: 200px;
 `;
 
-const NotLoggedSignupInfo = styled.div`
-  margin: 16px 0;
-`;
-
-const CreateAccountLink = styled.div`
-  margin: 8px 0 0 0;
+const StyledButtonGroup = styled(ButtonGroup)`
+  justify-content: center;
 `;

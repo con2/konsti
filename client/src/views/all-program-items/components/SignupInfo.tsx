@@ -1,8 +1,8 @@
 import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import { ProgramItem } from "shared/types/models/programItem";
-import { DirectSignupForm } from "client/views/all-program-items/components/DirectSignupForm";
-import { AlgorithmSignupForm } from "client/views/all-program-items/components/AlgorithmSignupForm";
+import { DirectSignupProgramItem } from "client/views/all-program-items/components/DirectSignupProgramItem";
+import { LotterySignupProgramItem } from "client/views/all-program-items/components/LotterySignupProgramItem";
 import { config } from "shared/config";
 import { SignupStrategy } from "shared/config/sharedConfigTypes";
 import { isRevolvingDoorWorkshop } from "client/utils/isRevolvingDoorWorkshop";
@@ -47,7 +47,7 @@ export const SignupInfo = ({
   return (
     <div>
       {!isDirectSignupMode && normalSignup && (
-        <AlgorithmSignupForm
+        <LotterySignupProgramItem
           programItem={programItem}
           startTime={startTime}
           lotterySignups={lotterySignups}
@@ -55,7 +55,7 @@ export const SignupInfo = ({
       )}
 
       {isDirectSignupMode && normalSignup && (
-        <DirectSignupForm
+        <DirectSignupProgramItem
           programItem={programItem}
           programItemIsFull={attendees >= programItem.maxAttendance}
           startTime={startTime}
