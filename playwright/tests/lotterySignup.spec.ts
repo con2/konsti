@@ -1,10 +1,20 @@
 import { test, expect } from "@playwright/test";
-import { logTestStart, populateDb, postTestSettings } from "./utils";
+import {
+  logTestStart,
+  populateDb,
+  postSettings,
+  postTestSettings,
+} from "playwright/utils";
+import { SignupStrategy } from "shared/config/sharedConfigTypes";
+import { sharedConfig } from "shared/config/sharedConfig";
 
-test("Add direct signup", async ({ page, request }) => {
-  logTestStart("Add direct signup");
+test("Add lottery signup", async ({ page, request }) => {
+  logTestStart("Add lottery signup");
   await populateDb(request);
-  await postTestSettings(request, { testTime: "2024-07-19T12:00:00.000Z" });
+  await postSettings(request, { signupStrategy: SignupStrategy.ALGORITHM });
+  await postTestSettings(request, {
+    testTime: sharedConfig.conventionStartTime,
+  });
 
   const username = "test1";
   const password = "test";
@@ -28,29 +38,31 @@ test("Add direct signup", async ({ page, request }) => {
     })
     .selectOption("Tabletop RPG");
 
-  // Direct signup to first program item
+  // Lottery signup to first program item
   await page.waitForSelector("data-testid=program-item-container");
   const firstProgramItem = page.locator(
     "data-testid=program-item-container >> nth=0",
   );
 
-  const directSignupProgramItemTitle = await firstProgramItem
+  const lotterySignupProgramItemTitle = await firstProgramItem
     .locator("data-testid=program-item-title")
     .innerText();
 
-  await firstProgramItem.getByRole("button", { name: /sign up/i }).click();
+  await firstProgramItem
+    .getByRole("button", { name: /lottery sign-up/i })
+    .click();
   await firstProgramItem.getByRole("button", { name: /confirm/i }).click();
 
-  // Go to My Program and check direct signup program item title
+  // Go to My Program and check lottery signup program item title
   await page.click("data-testid=my-program-tab");
 
-  const directSignupProgramItems = page.locator(
-    "data-testid=direct-signup-program-items-list",
+  const lotterySignupProgramItems = page.locator(
+    "data-testid=lottery-signup-program-items-list",
   );
 
-  const programItemTitle = await directSignupProgramItems
+  const programItemTitle = await lotterySignupProgramItems
     .locator("data-testid=program-item-title")
     .innerText();
 
-  expect(programItemTitle.trim()).toEqual(directSignupProgramItemTitle);
+  expect(programItemTitle.trim()).toEqual(lotterySignupProgramItemTitle);
 });

@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { logTestStart, populateDb } from "./utils";
+import { logTestStart, populateDb } from "playwright/utils";
 
 test("Login", async ({ page, request }) => {
   logTestStart("Admin login");

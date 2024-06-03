@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { logTestStart, populateDb } from "./utils";
+import { logTestStart, populateDb } from "playwright/utils";
 
 test("Hide program item", async ({ page, request }) => {
   logTestStart("Hide program item");

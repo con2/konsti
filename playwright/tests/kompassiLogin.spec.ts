@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { logTestStart, populateDb, postSettings } from "./utils";
+import { logTestStart, populateDb, postSettings } from "playwright/utils";
 import { LoginProvider } from "shared/config/sharedConfigTypes";
 
 test("Kompassi login", async ({ page, request }) => {

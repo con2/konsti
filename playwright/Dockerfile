@@ -6,8 +6,10 @@ RUN apt-get install --no-install-recommends -y wget=1.21.2-2ubuntu1 \
 
 WORKDIR /usr/src/app
 
-RUN npm install @playwright/test@1.44.1
-
+COPY package.json ./
 COPY tsconfig.json ./
 COPY playwright ./playwright/
 COPY shared ./shared/
+
+RUN npm install --omit=dev \
+  && npm install @playwright/test@1.44.1
