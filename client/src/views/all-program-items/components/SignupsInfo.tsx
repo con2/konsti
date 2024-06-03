@@ -44,21 +44,19 @@ export const SignupsInfo = ({
     <>
       {isEnterGameMode && isNormalSignup && isValidMaxAttendanceValue && (
         <SignupsInfoContainer>
-          <div>
-            {t("signup.signupCount", {
-              ATTENDEE_COUNT: attendees.length,
-              MAX_ATTENDANCE: programItem.maxAttendance,
-            })}
-            <ExpandButton
-              isExpanded={isExpanded}
-              showMoreText={showMoreText}
-              showLessText={showLessText}
-              showMoreAriaLabel={showMoreText}
-              showLessAriaLabel={showLessText}
-              ariaControls={ariaId}
-              onClick={() => setIsExpanded(!isExpanded)}
-            />
-          </div>
+          {t("signup.signupCount", {
+            ATTENDEE_COUNT: attendees.length,
+            MAX_ATTENDANCE: programItem.maxAttendance,
+          })}
+          <ExpandButton
+            isExpanded={isExpanded}
+            showMoreText={showMoreText}
+            showLessText={showLessText}
+            showMoreAriaLabel={showMoreText}
+            showLessAriaLabel={showLessText}
+            ariaControls={ariaId}
+            onClick={() => setIsExpanded(!isExpanded)}
+          />
 
           {isExpanded &&
             (attendees.length === 0 ? (
