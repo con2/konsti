@@ -72,7 +72,7 @@ export const SignupsInfo = ({
             ) : (
               <AttendeeList>
                 {attendees.sort().map((attendee) => (
-                  <Attendee key={attendee}>{attendee}</Attendee>
+                  <li key={attendee}>{attendee}</li>
                 ))}
               </AttendeeList>
             ))}
@@ -109,8 +109,16 @@ const ErrorText = styled.span`
 
 const AttendeeList = styled.ul`
   margin-left: 16px;
-`;
 
-const Attendee = styled.li`
-  list-style: none;
+  li {
+    list-style: none;
+  }
+
+  li:nth-child(10n) {
+    padding-bottom: 12px;
+  }
+
+  li:last-child {
+    padding-bottom: 0;
+  }
 `;
