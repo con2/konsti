@@ -19,7 +19,7 @@ import { AppRoute } from "client/app/AppRoutes";
 
 interface Props {
   programItem: ProgramItem;
-  attendeeCount: number;
+  attendees: string[];
   signupStrategy: SignupStrategy;
   username: string;
   loggedIn: boolean;
@@ -29,7 +29,7 @@ interface Props {
 
 export const ProgramItemHead = ({
   programItem,
-  attendeeCount,
+  attendees,
   signupStrategy,
   username,
   loggedIn,
@@ -121,17 +121,17 @@ export const ProgramItemHead = ({
               isEnterGameMode={isEnterGameMode}
               isNormalSignup={isNormalSignup}
               programItem={programItem}
-              attendeeCount={attendeeCount}
+              attendees={attendees}
             />
           </Row>
         )}
 
-        {attendeeCount < programItem.minAttendance && (
+        {attendees.length < programItem.minAttendance && (
           <Row>
             {t("signup.attendeesNeeded", {
-              COUNT: programItem.minAttendance - attendeeCount,
+              COUNT: programItem.minAttendance - attendees.length,
               ATTENDEE_TYPE:
-                programItem.minAttendance - attendeeCount === 1
+                programItem.minAttendance - attendees.length === 1
                   ? t(
                       `attendeeType.${getAttendeeType(programItem.programType)}`,
                     )

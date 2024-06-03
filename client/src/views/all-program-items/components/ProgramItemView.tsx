@@ -67,10 +67,11 @@ export const ProgramItemView = ({
 };
 
 const ExpandedDescriptionContainer = styled.div`
-  padding-top: 16px;
+  padding-top: 8px;
 `;
 
-const ShortDescription = styled.span`
+const ShortDescription = styled.p`
   overflow-wrap: break-word;
   word-break: break-word;
+  margin: 8px 0 8px 0;
 `;

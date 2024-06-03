@@ -17,7 +17,7 @@ import { ProgramItemHead } from "client/views/all-program-items/components/Progr
 interface Props {
   programItem: ProgramItem;
   startTime: string;
-  attendeeCount: number;
+  attendees: string[];
   signupStrategy: SignupStrategy;
   lotterySignups: readonly Signup[];
   directSignups: readonly Signup[];
@@ -33,7 +33,7 @@ interface Props {
 export const ProgramItemEntry = ({
   programItem,
   startTime,
-  attendeeCount,
+  attendees,
   signupStrategy,
   lotterySignups,
   directSignups,
@@ -85,7 +85,7 @@ export const ProgramItemEntry = ({
     >
       <ProgramItemHead
         programItem={programItem}
-        attendeeCount={attendeeCount}
+        attendees={attendees}
         signupStrategy={signupStrategy}
         username={username}
         loggedIn={loggedIn}
@@ -101,7 +101,7 @@ export const ProgramItemEntry = ({
         startTime={startTime}
         lotterySignups={lotterySignups}
         programItem={programItem}
-        attendees={attendeeCount}
+        attendees={attendees.length}
         loading={loading}
         setLoading={setLoading}
       />

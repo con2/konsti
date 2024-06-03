@@ -10,14 +10,14 @@ interface Props {
   isEnterGameMode: boolean;
   isNormalSignup: boolean;
   programItem: ProgramItem;
-  attendeeCount: number;
+  attendees: string[];
 }
 
 export const SignupsInfo = ({
   isEnterGameMode,
   isNormalSignup,
   programItem,
-  attendeeCount,
+  attendees,
 }: Props): ReactElement => {
   const { t } = useTranslation();
 
@@ -46,7 +46,7 @@ export const SignupsInfo = ({
         <SignupsInfoContainer>
           <div>
             {t("signup.signupCount", {
-              ATTENDEE_COUNT: attendeeCount,
+              ATTENDEE_COUNT: attendees.length,
               MAX_ATTENDANCE: programItem.maxAttendance,
             })}
             <ExpandButton
@@ -61,7 +61,7 @@ export const SignupsInfo = ({
           </div>
 
           {isExpanded &&
-            (attendeeCount === 0 ? (
+            (attendees.length === 0 ? (
               <NoAttendeesText>
                 {t("signup.noAttendees", {
                   ATTENDEE_TYPE: t(
@@ -70,7 +70,11 @@ export const SignupsInfo = ({
                 })}
               </NoAttendeesText>
             ) : (
-              <ul>{"TODO list attendees"}</ul>
+              <AttendeeList>
+                {attendees.sort().map((attendee) => (
+                  <Attendee key={attendee}>{attendee}</Attendee>
+                ))}
+              </AttendeeList>
             ))}
         </SignupsInfoContainer>
       )}
@@ -101,4 +105,12 @@ const NoAttendeesText = styled.p`
 
 const ErrorText = styled.span`
   color: ${(props) => props.theme.textError};
+`;
+
+const AttendeeList = styled.ul`
+  margin-left: 16px;
+`;
+
+const Attendee = styled.li`
+  list-style: none;
 `;
