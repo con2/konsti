@@ -17,7 +17,8 @@
     "paths": {
       "client/*": ["client/src/*"],
       "server/*": ["server/src/*"],
-      "shared/*": ["shared/*"]
+      "shared/*": ["shared/*"],
+      "playwright/*": ["playwright/*"]
     }
   },
   "include": [
