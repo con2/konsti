@@ -338,6 +338,8 @@ export const translationEN = {
     showAttendees: "Show {{ATTENDEE_TYPE}}",
     hideAttendees: "Hide {{ATTENDEE_TYPE}}",
     noAttendees: "No {{ATTENDEE_TYPE}}",
+    loginLink: "Log in",
+    loginLinkEnding: " to see {{ATTENDEE_TYPE}}",
   },
   attendeeType: {
     player: "player",

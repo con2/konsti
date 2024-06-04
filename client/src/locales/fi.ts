@@ -340,6 +340,8 @@ export const translationFI = {
     showAttendees: "Näytä {{ATTENDEE_TYPE}}",
     hideAttendees: "Piilota {{ATTENDEE_TYPE}}",
     noAttendees: "Ei {{ATTENDEE_TYPE}}",
+    loginLink: "Kirjaudu sisään",
+    loginLinkEnding: " nähdäksesi {{ATTENDEE_TYPE}}",
   },
   attendeeType: {
     player: "pelaaja",

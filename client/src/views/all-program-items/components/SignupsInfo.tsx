@@ -1,6 +1,8 @@
 import { ReactElement, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
+import { Trans } from "react-i18next";
+import { Link } from "react-router-dom";
 import { getAttendeeType } from "client/utils/getAttendeeType";
 import { ProgramItem, ProgramType } from "shared/types/models/programItem";
 import { isRevolvingDoorWorkshop } from "client/utils/isRevolvingDoorWorkshop";
@@ -9,6 +11,7 @@ import { ExpandButton } from "client/components/ExpandButton";
 interface Props {
   isEnterGameMode: boolean;
   isNormalSignup: boolean;
+  isLoggedIn: boolean;
   programItem: ProgramItem;
   attendees: string[];
 }
@@ -16,6 +19,7 @@ interface Props {
 export const SignupsInfo = ({
   isEnterGameMode,
   isNormalSignup,
+  isLoggedIn,
   programItem,
   attendees,
 }: Props): ReactElement => {
@@ -58,22 +62,34 @@ export const SignupsInfo = ({
             onClick={() => setIsExpanded(!isExpanded)}
           />
 
-          {isExpanded &&
-            (attendees.length === 0 ? (
-              <NoAttendeesText>
-                {t("signup.noAttendees", {
-                  ATTENDEE_TYPE: t(
-                    `attendeeTypePlural.${getAttendeeType(programItem.programType)}`,
-                  ),
-                })}
-              </NoAttendeesText>
-            ) : (
-              <AttendeeList>
-                {attendees.sort().map((attendee) => (
-                  <li key={attendee}>{attendee}</li>
-                ))}
-              </AttendeeList>
-            ))}
+          {isExpanded && attendees.length === 0 && (
+            <NoAttendeesText>
+              {t("signup.noAttendees", {
+                ATTENDEE_TYPE: t(
+                  `attendeeTypePlural.${getAttendeeType(programItem.programType)}`,
+                ),
+              })}
+            </NoAttendeesText>
+          )}
+
+          {isExpanded && attendees.length > 0 && isLoggedIn && (
+            <AttendeeList>
+              {attendees.sort().map((attendee) => (
+                <li key={attendee}>{attendee}</li>
+              ))}
+            </AttendeeList>
+          )}
+
+          {isExpanded && attendeesText.length > 0 && !isLoggedIn && (
+            <AttendeeText>
+              <Link to={"/login"}>{t("signup.loginLink")}</Link>
+              {t("signup.loginLinkEnding", {
+                ATTENDEE_TYPE: t(
+                  `attendeeTypePluralNominative.${getAttendeeType(programItem.programType)}`,
+                ),
+              })}
+            </AttendeeText>
+          )}
         </SignupsInfoContainer>
       )}
 
@@ -96,9 +112,12 @@ const SignupsInfoContainer = styled.div`
   flex-direction: column;
 `;
 
-const NoAttendeesText = styled.p`
-  color: ${(props) => props.theme.textSecondary};
+const AttendeeText = styled.p`
   margin: 12px 0 0 12px;
+`;
+
+const NoAttendeesText = styled(AttendeeText)`
+  color: ${(props) => props.theme.textSecondary};
 `;
 
 const ErrorText = styled.span`
@@ -106,7 +125,7 @@ const ErrorText = styled.span`
 `;
 
 const AttendeeList = styled.ul`
-  margin-left: 16px;
+  margin-left: 12px;
 
   li {
     list-style: none;

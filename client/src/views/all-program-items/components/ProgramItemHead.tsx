@@ -122,6 +122,7 @@ export const ProgramItemHead = ({
               isNormalSignup={isNormalSignup}
               programItem={programItem}
               attendees={attendees}
+              isLoggedIn={loggedIn}
             />
           </Row>
         )}
