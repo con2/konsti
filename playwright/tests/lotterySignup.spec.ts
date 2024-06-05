@@ -18,6 +18,8 @@ test("Add lottery signup", async ({ page, request }) => {
   });
   await login(page, request, { username: "test1", password: "test" });
 
+  await page.goto("/");
+
   // Navigate to program list tab and select RPG program type
   await page.click("data-testid=program-list-tab");
   await page
