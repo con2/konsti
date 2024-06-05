@@ -116,7 +116,15 @@ export const startServer = async ({
   });
 
   // Error handler
-  app.use((err: Error, _req: Request, res: Response, _next: NextFunction) => {
+  app.use((err: Error, _req: Request, res: Response, next: NextFunction) => {
+    // Delegate to the default Express error handler, when the headers have already been sent to the client
+    // For example, if error is encountered while streaming the response to the client
+    // Express default error handler closes the connection and fails the request
+    // https://expressjs.com/en/guide/error-handling.html
+    if (res.headersSent) {
+      next(err);
+      return;
+    }
     logger.error("%s", err);
     return res.sendStatus(500);
   });
