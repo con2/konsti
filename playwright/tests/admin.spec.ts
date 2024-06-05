@@ -1,23 +1,12 @@
 import { test, expect } from "@playwright/test";
-import { logTestStart, populateDb } from "playwright/utils";
+import { logTestStart, populateDb, login } from "playwright/utils";
 
 test("Hide program item", async ({ page, request }) => {
   logTestStart("Hide program item");
   await populateDb(request);
-
-  const username = "admin";
-  const password = "test";
+  await login(page, request, { username: "admin", password: "test" });
 
   await page.goto("/");
-
-  // Go to login page and enter login credentials
-  await page.click("data-testid=navigation-icon");
-  await page.click("data-testid=login-page-link");
-
-  await page.fill("data-testid=login-form-input-username", username);
-  await page.fill("data-testid=login-form-input-password", password);
-
-  await page.click("data-testid=login-button");
 
   // Hide first program item
   await page.waitForSelector("data-testid=program-item-container");

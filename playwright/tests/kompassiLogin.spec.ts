@@ -4,7 +4,6 @@ import { LoginProvider } from "shared/config/sharedConfigTypes";
 
 test("Kompassi login", async ({ page, request }) => {
   logTestStart("Kompassi login");
-
   await populateDb(request);
   await postSettings(request, { loginProvider: LoginProvider.KOMPASSI });
 

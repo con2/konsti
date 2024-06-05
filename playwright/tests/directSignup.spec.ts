@@ -1,5 +1,10 @@
 import { test, expect } from "@playwright/test";
-import { logTestStart, populateDb, postTestSettings } from "playwright/utils";
+import {
+  logTestStart,
+  populateDb,
+  postTestSettings,
+  login,
+} from "playwright/utils";
 import { sharedConfig } from "shared/config/sharedConfig";
 
 test("Add direct signup", async ({ page, request }) => {
@@ -8,20 +13,9 @@ test("Add direct signup", async ({ page, request }) => {
   await postTestSettings(request, {
     testTime: sharedConfig.conventionStartTime,
   });
-
-  const username = "test1";
-  const password = "test";
+  await login(page, request, { username: "test1", password: "test" });
 
   await page.goto("/");
-
-  // Go to login page and enter login credentials
-  await page.click("data-testid=navigation-icon");
-  await page.click("data-testid=login-page-link");
-
-  await page.fill("data-testid=login-form-input-username", username);
-  await page.fill("data-testid=login-form-input-password", password);
-
-  await page.click("data-testid=login-button");
 
   // Navigate to program list tab and select RPG program type
   await page.click("data-testid=program-list-tab");
