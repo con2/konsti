@@ -1,4 +1,4 @@
-import { expect, APIRequestContext } from "@playwright/test";
+import { expect, APIRequestContext, Page } from "@playwright/test";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { PopulateDbOptions } from "shared/test-types/api/populateDb";
 import { TestSettings } from "shared/test-types/models/testSettings";
@@ -42,6 +42,35 @@ const postLogin = async (
   expect(response.status()).toBe(200);
   const json = await response.json();
   return json;
+};
+
+interface LoginRequest {
+  username: string;
+  password: string;
+}
+
+export const login = async (
+  page: Page,
+  request: APIRequestContext,
+  loginRequest: LoginRequest,
+): Promise<void> => {
+  const loginResponse = await postLogin(request, {
+    username: loginRequest.username,
+    password: loginRequest.password,
+  });
+
+  await page.goto("/");
+
+  await page.evaluate((jwt) => {
+    localStorage.setItem(
+      "state",
+      JSON.stringify({
+        login: {
+          jwt,
+        },
+      }),
+    );
+  }, loginResponse.jwt);
 };
 
 export const postSettings = async (
