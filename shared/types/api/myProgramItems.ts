@@ -1,20 +1,12 @@
 import { z } from "zod";
 import { SIGNUP_MESSAGE_LENGTH } from "shared/constants/validation";
 import { ApiError, ApiResult } from "shared/types/api/errors";
-import { Signup } from "shared/types/models/user";
-import { ProgramItemSchema } from "shared/types/models/programItem";
+import { Signup, SignupSchema } from "shared/types/models/user";
 
 // POST lottery signup
 
 export const PostLotterySignupsRequestSchema = z.object({
-  lotterySignups: z.array(
-    z.object({
-      programItem: ProgramItemSchema,
-      priority: z.number(),
-      time: z.string(),
-      message: z.string(),
-    }),
-  ),
+  lotterySignups: z.array(SignupSchema),
   startTime: z.string(),
 });
 
