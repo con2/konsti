@@ -1,5 +1,9 @@
+import { z } from "zod";
 import { EventLogItem } from "shared/types/models/eventLog";
-import { ProgramItem } from "shared/types/models/programItem";
+import {
+  ProgramItem,
+  ProgramItemSchema,
+} from "shared/types/models/programItem";
 
 export interface User {
   kompassiId: number;
@@ -16,12 +20,14 @@ export interface User {
   eventLogItems: EventLogItem[];
 }
 
-export interface Signup {
-  programItem: ProgramItem;
-  priority: number;
-  time: string;
-  message: string;
-}
+export const SignupSchema = z.object({
+  programItem: ProgramItemSchema,
+  priority: z.number(),
+  time: z.string(),
+  message: z.string(),
+});
+
+export type Signup = z.infer<typeof SignupSchema>;
 
 export enum UserGroup {
   USER = "user",
