@@ -21,7 +21,7 @@ import {
   findSettings,
   saveSettings,
 } from "server/features/settings/settingsRepository";
-import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
+import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { logger } from "server/utils/logger";
 import { saveTestSettings } from "server/test/test-settings/testSettingsRepository";
 import { config } from "shared/config";
@@ -77,9 +77,7 @@ describe("Progam update cronjob", () => {
       "***** Program items auto update completed",
     );
 
-    const settingsResult = await findSettings();
-    const settings = unsafelyUnwrapResult(settingsResult);
-
+    const settings = unsafelyUnwrap(await findSettings());
     expect(settings.programUpdateLastRun).toEqual(timeNow);
   });
 
@@ -102,9 +100,7 @@ describe("Progam update cronjob", () => {
       "***** Program items auto update completed",
     );
 
-    const settingsResult = await findSettings();
-    const settings = unsafelyUnwrapResult(settingsResult);
-
+    const settings = unsafelyUnwrap(await findSettings());
     expect(settings.programUpdateLastRun).toEqual(oldTime);
   });
 
@@ -130,9 +126,7 @@ describe("Progam update cronjob", () => {
       "***** Program items auto update completed",
     );
 
-    const settingsResult = await findSettings();
-    const settings = unsafelyUnwrapResult(settingsResult);
-
+    const settings = unsafelyUnwrap(await findSettings());
     expect(settings.programUpdateLastRun).toEqual(timeNow);
   });
 
@@ -149,7 +143,7 @@ describe("Progam update cronjob", () => {
       new Error("Cronjobs: Newer server instance running, stop"),
     );
 
-    const settings = unsafelyUnwrapResult(await findSettings());
+    const settings = unsafelyUnwrap(await findSettings());
     expect(settings.latestServerStartTime).toEqual(oldTime);
   });
 });
@@ -172,9 +166,7 @@ describe("Assignment cronjob", () => {
       "***** Automatic attendee assignment completed",
     );
 
-    const settingsResult = await findSettings();
-    const settings = unsafelyUnwrapResult(settingsResult);
-
+    const settings = unsafelyUnwrap(await findSettings());
     expect(settings.assignmentLastRun).toEqual(timeNow);
   });
 
@@ -197,9 +189,7 @@ describe("Assignment cronjob", () => {
       "***** Automatic attendee assignment completed",
     );
 
-    const settingsResult = await findSettings();
-    const settings = unsafelyUnwrapResult(settingsResult);
-
+    const settings = unsafelyUnwrap(await findSettings());
     expect(settings.assignmentLastRun).toEqual(oldTime);
   });
 
@@ -225,9 +215,7 @@ describe("Assignment cronjob", () => {
       "***** Automatic attendee assignment completed",
     );
 
-    const settingsResult = await findSettings();
-    const settings = unsafelyUnwrapResult(settingsResult);
-
+    const settings = unsafelyUnwrap(await findSettings());
     expect(settings.assignmentLastRun).toEqual(timeNow);
   });
 
@@ -244,7 +232,7 @@ describe("Assignment cronjob", () => {
       new Error("Cronjobs: Newer server instance running, stop"),
     );
 
-    const settings = unsafelyUnwrapResult(await findSettings());
+    const settings = unsafelyUnwrap(await findSettings());
     expect(settings.latestServerStartTime).toEqual(oldTime);
   });
 });

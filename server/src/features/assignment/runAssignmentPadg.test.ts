@@ -8,7 +8,7 @@ import { generateTestData } from "server/test/test-data-generation/generators/ge
 import { AssignmentStrategy } from "shared/config/sharedConfigTypes";
 import { config } from "shared/config";
 import { AssignmentResultStatus } from "server/types/resultTypes";
-import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
+import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { saveProgramItems } from "server/features/program-item/programItemRepository";
 import { saveUser } from "server/features/user/userRepository";
@@ -61,11 +61,12 @@ test("Assignment with valid data should return success with padg strategy", asyn
 
   // FIRST RUN
 
-  const assignResultsResult = await runAssignment({
-    assignmentStrategy,
-    startTime,
-  });
-  const assignResults = unsafelyUnwrapResult(assignResultsResult);
+  const assignResults = unsafelyUnwrap(
+    await runAssignment({
+      assignmentStrategy,
+      startTime,
+    }),
+  );
 
   expect(assignResults.status).toEqual("success");
   expect(assignResults.results.length).toBeGreaterThanOrEqual(
@@ -87,11 +88,12 @@ test("Assignment with valid data should return success with padg strategy", asyn
 
   // SECOND RUN
 
-  const assignResultsEither2 = await runAssignment({
-    assignmentStrategy,
-    startTime,
-  });
-  const assignResults2 = unsafelyUnwrapResult(assignResultsEither2);
+  const assignResults2 = unsafelyUnwrap(
+    await runAssignment({
+      assignmentStrategy,
+      startTime,
+    }),
+  );
 
   expect(assignResults2.status).toEqual("success");
   expect(assignResults2.results.length).toBeGreaterThanOrEqual(
@@ -153,7 +155,7 @@ test("Should adjust attendee limits if there are previous signups from moved pro
     lotterySignups: [{ ...mockLotterySignups[0], priority: 3 }],
   });
 
-  const assignResults = unsafelyUnwrapResult(
+  const assignResults = unsafelyUnwrap(
     await runAssignment({
       assignmentStrategy,
       startTime: testProgramItem.startTime,
@@ -162,7 +164,7 @@ test("Should adjust attendee limits if there are previous signups from moved pro
   expect(assignResults.status).toEqual("success");
   expect(assignResults.results.length).toEqual(1);
 
-  const signupsAfterUpdate = unsafelyUnwrapResult(await findDirectSignups());
+  const signupsAfterUpdate = unsafelyUnwrap(await findDirectSignups());
 
   const assignmentSignup = signupsAfterUpdate.find(
     (signup) =>
@@ -204,11 +206,12 @@ test("Assignment with no program items should return error with padg strategy", 
   const assignmentStrategy = AssignmentStrategy.PADG;
   const startTime = dayjs(conventionStartTime).add(2, "hours").toISOString();
 
-  const assignResultsResult = await runAssignment({
-    assignmentStrategy,
-    startTime,
-  });
-  const assignResults = unsafelyUnwrapResult(assignResultsResult);
+  const assignResults = unsafelyUnwrap(
+    await runAssignment({
+      assignmentStrategy,
+      startTime,
+    }),
+  );
 
   expect(assignResults.status).toEqual(
     AssignmentResultStatus.NO_STARTING_PROGRAM_ITEMS,
@@ -234,11 +237,12 @@ test("Assignment with no attendees should return error with padg strategy", asyn
   const assignmentStrategy = AssignmentStrategy.PADG;
   const startTime = dayjs(conventionStartTime).add(2, "hours").toISOString();
 
-  const assignResultsResult = await runAssignment({
-    assignmentStrategy,
-    startTime,
-  });
-  const assignResults = unsafelyUnwrapResult(assignResultsResult);
+  const assignResults = unsafelyUnwrap(
+    await runAssignment({
+      assignmentStrategy,
+      startTime,
+    }),
+  );
 
   expect(assignResults.status).toEqual(
     AssignmentResultStatus.NO_LOTTERY_SIGNUPS,

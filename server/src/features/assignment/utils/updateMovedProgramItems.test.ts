@@ -16,7 +16,7 @@ import {
   findProgramItems,
   saveProgramItems,
 } from "server/features/program-item/programItemRepository";
-import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
+import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 
 beforeEach(async () => {
   await mongoose.connect(globalThis.__MONGO_URI__, {
@@ -30,8 +30,7 @@ afterEach(async () => {
 
 test("should remove lottery signups for moved program items from users", async () => {
   await saveProgramItems([testProgramItem, testProgramItem2]);
-  const findProgramItemsResult = await findProgramItems();
-  const insertedProgramItems = unsafelyUnwrapResult(findProgramItemsResult);
+  const insertedProgramItems = unsafelyUnwrap(await findProgramItems());
   expect(insertedProgramItems.length).toEqual(2);
 
   await saveUser(mockUser);
@@ -53,8 +52,7 @@ test("should remove lottery signups for moved program items from users", async (
 
   await updateMovedProgramItems(insertedProgramItems);
 
-  const findUserResult = await findUser(mockUser.username);
-  const updatedUser = unsafelyUnwrapResult(findUserResult);
+  const updatedUser = unsafelyUnwrap(await findUser(mockUser.username));
 
   expect(updatedUser?.lotterySignups.length).toEqual(1);
   expect(updatedUser?.lotterySignups[0].programItem.programItemId).toEqual(

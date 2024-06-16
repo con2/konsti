@@ -8,14 +8,12 @@ import { findUsers } from "server/features/user/userRepository";
 import { findProgramItems } from "server/features/program-item/programItemRepository";
 import { Signup, User } from "shared/types/models/user";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
-import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
+import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { config } from "shared/config";
 
 export const createLotterySignups = async (): Promise<void> => {
-  const programItemsResult = await findProgramItems();
-  const programItems = unsafelyUnwrapResult(programItemsResult);
-  const allUsersResult = await findUsers();
-  const allUsers = unsafelyUnwrapResult(allUsersResult);
+  const programItems = unsafelyUnwrap(await findProgramItems());
+  const allUsers = unsafelyUnwrap(await findUsers());
 
   const users = allUsers.filter(
     (user) => user.username !== "admin" && user.username !== "helper",
@@ -111,11 +109,14 @@ const doLotterySignup = async (
 ): Promise<User> => {
   const lotterySignups = getRandomLotterySignup(programItems);
 
-  const userResult = await saveLotterySignups({
-    username: user.username,
-    lotterySignups,
-  });
-  return unsafelyUnwrapResult(userResult);
+  const updatedUser = unsafelyUnwrap(
+    await saveLotterySignups({
+      username: user.username,
+      lotterySignups,
+    }),
+  );
+
+  return updatedUser;
 };
 
 const lotterySignupMultiple = async (

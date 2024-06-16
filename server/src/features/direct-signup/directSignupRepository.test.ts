@@ -18,7 +18,7 @@ import {
   saveDirectSignup,
   saveDirectSignups,
 } from "server/features/direct-signup/directSignupRepository";
-import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
+import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 
 beforeEach(async () => {
   await mongoose.connect(globalThis.__MONGO_URI__, {
@@ -34,8 +34,9 @@ test("should add new signup for user", async () => {
   await saveUser(mockUser);
   await saveProgramItems([testProgramItem]);
 
-  const responseResult = await saveDirectSignup(mockPostDirectSignupRequest);
-  const response = unsafelyUnwrapResult(responseResult);
+  const response = unsafelyUnwrap(
+    await saveDirectSignup(mockPostDirectSignupRequest),
+  );
 
   expect(response.programItem.programItemId).toEqual(
     testProgramItem.programItemId,
@@ -48,8 +49,9 @@ test("should delete signup from user", async () => {
   await saveProgramItems([testProgramItem]);
   await saveDirectSignup(mockPostDirectSignupRequest);
 
-  const responseResult = await delDirectSignup(mockPostDirectSignupRequest);
-  const response = unsafelyUnwrapResult(responseResult);
+  const response = unsafelyUnwrap(
+    await delDirectSignup(mockPostDirectSignupRequest),
+  );
 
   expect(response.userSignups.length).toEqual(0);
 });
@@ -59,11 +61,12 @@ test("should delete signup from user even if program item start time has changed
   await saveProgramItems([testProgramItem]);
   await saveDirectSignup(mockPostDirectSignupRequest);
 
-  const responseResult = await delDirectSignup({
-    ...mockPostDirectSignupRequest,
-    startTime: dayjs(testProgramItem.startTime).add(1, "hours").toISOString(),
-  });
-  const response = unsafelyUnwrapResult(responseResult);
+  const response = unsafelyUnwrap(
+    await delDirectSignup({
+      ...mockPostDirectSignupRequest,
+      startTime: dayjs(testProgramItem.startTime).add(1, "hours").toISOString(),
+    }),
+  );
 
   expect(response.userSignups.length).toEqual(0);
 });
@@ -82,11 +85,11 @@ test("should limit max attendees if too many passed to saveDirectSignups", async
     { ...mockPostDirectSignupRequest, username: mockUser4.username },
   ];
 
-  const response = unsafelyUnwrapResult(await saveDirectSignups(signups));
+  const response = unsafelyUnwrap(await saveDirectSignups(signups));
   expect(response.modifiedCount).toEqual(1);
   expect(response.droppedSignups).toHaveLength(2);
 
-  const signupsAfterSave = unsafelyUnwrapResult(await findDirectSignups());
+  const signupsAfterSave = unsafelyUnwrap(await findDirectSignups());
   expect(signupsAfterSave).toHaveLength(1);
   expect(signupsAfterSave[0].count).toEqual(2);
   expect(signupsAfterSave[0].userSignups).toHaveLength(2);
@@ -103,7 +106,7 @@ test("should not add multiple duplicate signups for same user", async () => {
     saveDirectSignup(mockPostDirectSignupRequest),
   ]);
 
-  const signupsAfterSave = unsafelyUnwrapResult(await findDirectSignups());
+  const signupsAfterSave = unsafelyUnwrap(await findDirectSignups());
   expect(signupsAfterSave).toHaveLength(1);
   expect(signupsAfterSave[0].count).toEqual(1);
   expect(signupsAfterSave[0].userSignups).toHaveLength(1);
@@ -121,7 +124,7 @@ test("should not delete multiple times if delete called multiple times", async (
     delDirectSignup(mockPostDirectSignupRequest),
   ]);
 
-  const signupsAfterSave = unsafelyUnwrapResult(await findDirectSignups());
+  const signupsAfterSave = unsafelyUnwrap(await findDirectSignups());
   expect(signupsAfterSave).toHaveLength(1);
   expect(signupsAfterSave[0].count).toEqual(0);
   expect(signupsAfterSave[0].userSignups).toHaveLength(0);

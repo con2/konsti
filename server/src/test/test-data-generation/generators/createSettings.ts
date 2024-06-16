@@ -6,7 +6,7 @@ import {
   saveSignupQuestion,
 } from "server/features/settings/settingsRepository";
 import { shuffleArray } from "server/utils/shuffleArray";
-import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
+import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { SignupQuestionType } from "shared/types/models/settings";
 
 const NUMBER_OF_TEST_QUESTIONS = 20;
@@ -24,8 +24,7 @@ export const createSettings = async (): Promise<void> => {
 
   await findSettings();
 
-  const programItemsResult = await findProgramItems();
-  const programItems = unsafelyUnwrapResult(programItemsResult);
+  const programItems = unsafelyUnwrap(await findProgramItems());
   const shuffledProgramItems = shuffleArray(programItems);
 
   const promises = testQuestions().map(async (testQuestion, index) => {

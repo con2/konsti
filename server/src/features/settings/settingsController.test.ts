@@ -31,7 +31,7 @@ import {
   mockUser,
 } from "server/test/mock-data/mockUser";
 import { closeServer, startServer } from "server/utils/server";
-import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
+import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { PostSignupQuestionRequest } from "shared/types/api/settings";
 import {
   createSettings,
@@ -164,16 +164,16 @@ describe(`POST ${ApiEndpoint.HIDDEN}`, () => {
 
     expect(response.status).toEqual(200);
 
-    const updatedUserResult = await findUser(mockUser.username);
-    const updatedUser = unsafelyUnwrapResult(updatedUserResult);
+    const updatedUser = unsafelyUnwrap(await findUser(mockUser.username));
     expect(updatedUser?.lotterySignups.length).toEqual(1);
     expect(updatedUser?.lotterySignups[0].programItem.title).toEqual(
       testProgramItem2.title,
     );
     expect(updatedUser?.favoriteProgramItemIds.length).toEqual(1);
 
-    const signupsResult = await findUserDirectSignups(mockUser.username);
-    const signups = unsafelyUnwrapResult(signupsResult);
+    const signups = unsafelyUnwrap(
+      await findUserDirectSignups(mockUser.username),
+    );
     expect(signups.length).toEqual(1);
     expect(signups[0].userSignups[0].username).toEqual(mockUser.username);
   });
@@ -183,8 +183,7 @@ describe(`POST ${ApiEndpoint.HIDDEN}`, () => {
     await saveUser(mockUser);
     await saveDirectSignup(mockPostDirectSignupRequest);
 
-    const findSignupsResult = await findDirectSignups();
-    const signups = unsafelyUnwrapResult(findSignupsResult);
+    const signups = unsafelyUnwrap(await findDirectSignups());
     expect(signups).toHaveLength(1);
     expect(signups[0].userSignups).toHaveLength(1);
     expect(signups[0].count).toEqual(1);
@@ -194,8 +193,7 @@ describe(`POST ${ApiEndpoint.HIDDEN}`, () => {
       .send({ hiddenData: [testProgramItem] })
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
 
-    const findSignupsResult2 = await findDirectSignups();
-    const signups2 = unsafelyUnwrapResult(findSignupsResult2);
+    const signups2 = unsafelyUnwrap(await findDirectSignups());
     expect(signups2).toHaveLength(1);
     expect(signups2[0].userSignups).toEqual([]);
     expect(signups2[0].count).toEqual(0);
@@ -248,8 +246,7 @@ describe(`POST ${ApiEndpoint.SIGNUP_QUESTION}`, () => {
       .send(requestData)
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
 
-    const settingsResult = await findSettings();
-    const settings = unsafelyUnwrapResult(settingsResult);
+    const settings = unsafelyUnwrap(await findSettings());
 
     expect(settings.signupQuestions).toHaveLength(1);
     expect(settings.signupQuestions[0]).toMatchObject(
@@ -280,8 +277,7 @@ describe(`POST ${ApiEndpoint.SIGNUP_QUESTION}`, () => {
       .send(requestData)
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
 
-    const settingsResult = await findSettings();
-    const settings = unsafelyUnwrapResult(settingsResult);
+    const settings = unsafelyUnwrap(await findSettings());
 
     expect(settings.signupQuestions).toHaveLength(1);
     expect(settings.signupQuestions[0]).toMatchObject(
@@ -334,8 +330,7 @@ describe(`POST ${ApiEndpoint.SIGNUP_QUESTION}`, () => {
 
       await saveSignupQuestion(signupQuestion);
 
-      const settingsResult = await findSettings();
-      const settings = unsafelyUnwrapResult(settingsResult);
+      const settings = unsafelyUnwrap(await findSettings());
       expect(settings.signupQuestions).toHaveLength(1);
 
       await request(server)
@@ -343,8 +338,7 @@ describe(`POST ${ApiEndpoint.SIGNUP_QUESTION}`, () => {
         .send({ programItemId: "123" })
         .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
 
-      const updatedSettingsResult = await findSettings();
-      const updatedSettings = unsafelyUnwrapResult(updatedSettingsResult);
+      const updatedSettings = unsafelyUnwrap(await findSettings());
       expect(updatedSettings.signupQuestions).toHaveLength(0);
     });
   });

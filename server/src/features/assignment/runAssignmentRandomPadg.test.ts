@@ -8,7 +8,7 @@ import { generateTestData } from "server/test/test-data-generation/generators/ge
 import { AssignmentStrategy } from "shared/config/sharedConfigTypes";
 import { config } from "shared/config";
 import { AssignmentResultStatus } from "server/types/resultTypes";
-import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
+import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import * as randomAssign from "server/features/assignment/random/randomAssignment";
 import * as padgAssign from "server/features/assignment/padg/padgAssignment";
 import { AssignmentError } from "shared/types/api/errors";
@@ -50,11 +50,12 @@ test("Assignment with valid data should return success with random+padg strategy
 
   // FIRST RUN
 
-  const assignResultsResult = await runAssignment({
-    assignmentStrategy,
-    startTime,
-  });
-  const assignResults = unsafelyUnwrapResult(assignResultsResult);
+  const assignResults = unsafelyUnwrap(
+    await runAssignment({
+      assignmentStrategy,
+      startTime,
+    }),
+  );
 
   expect(assignResults.status).toEqual("success");
   expect(assignResults.results.length).toBeGreaterThanOrEqual(
@@ -76,11 +77,12 @@ test("Assignment with valid data should return success with random+padg strategy
 
   // SECOND RUN
 
-  const assignResultsEither2 = await runAssignment({
-    assignmentStrategy,
-    startTime,
-  });
-  const assignResults2 = unsafelyUnwrapResult(assignResultsEither2);
+  const assignResults2 = unsafelyUnwrap(
+    await runAssignment({
+      assignmentStrategy,
+      startTime,
+    }),
+  );
 
   expect(assignResults2.status).toEqual("success");
   expect(assignResults2.results.length).toBeGreaterThanOrEqual(
@@ -119,11 +121,12 @@ test("Assignment with no program items should return error with random+padg stra
   const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
   const startTime = dayjs(conventionStartTime).add(2, "hours").toISOString();
 
-  const assignResultsResult = await runAssignment({
-    assignmentStrategy,
-    startTime,
-  });
-  const assignResults = unsafelyUnwrapResult(assignResultsResult);
+  const assignResults = unsafelyUnwrap(
+    await runAssignment({
+      assignmentStrategy,
+      startTime,
+    }),
+  );
 
   expect(assignResults.status).toEqual(
     AssignmentResultStatus.NO_STARTING_PROGRAM_ITEMS,
@@ -148,11 +151,12 @@ test("Assignment with no attendees should return error with random+padg strategy
   const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
   const startTime = dayjs(conventionStartTime).add(2, "hours").toISOString();
 
-  const assignResultsResult = await runAssignment({
-    assignmentStrategy,
-    startTime,
-  });
-  const assignResults = unsafelyUnwrapResult(assignResultsResult);
+  const assignResults = unsafelyUnwrap(
+    await runAssignment({
+      assignmentStrategy,
+      startTime,
+    }),
+  );
 
   expect(assignResults.status).toEqual(
     AssignmentResultStatus.NO_LOTTERY_SIGNUPS,
@@ -167,12 +171,13 @@ test("If random assignment fails, should return PADG result", async () => {
   const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
   const startTime = dayjs(conventionStartTime).toISOString();
 
-  const assignResultsResult = await runAssignment({
-    assignmentStrategy,
-    startTime,
-  });
+  const assignResults = unsafelyUnwrap(
+    await runAssignment({
+      assignmentStrategy,
+      startTime,
+    }),
+  );
 
-  const assignResults = unsafelyUnwrapResult(assignResultsResult);
   expect(assignResults.algorithm).toEqual(AssignmentStrategy.PADG);
   expect(assignResults.status).toEqual(
     AssignmentResultStatus.NO_STARTING_PROGRAM_ITEMS,
@@ -187,12 +192,13 @@ test("If PADG assignment fails, should return random result", async () => {
   const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
   const startTime = dayjs(conventionStartTime).toISOString();
 
-  const assignResultsResult = await runAssignment({
-    assignmentStrategy,
-    startTime,
-  });
+  const assignResults = unsafelyUnwrap(
+    await runAssignment({
+      assignmentStrategy,
+      startTime,
+    }),
+  );
 
-  const assignResults = unsafelyUnwrapResult(assignResultsResult);
   expect(assignResults.algorithm).toEqual(AssignmentStrategy.RANDOM);
   expect(assignResults.status).toEqual(
     AssignmentResultStatus.NO_STARTING_PROGRAM_ITEMS,

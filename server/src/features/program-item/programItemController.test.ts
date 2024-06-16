@@ -33,7 +33,7 @@ import {
   findUserDirectSignups,
   saveDirectSignup,
 } from "server/features/direct-signup/directSignupRepository";
-import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
+import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import {
   KompassiGameStyleRopecon,
   KompassiGenreRopecon,
@@ -134,8 +134,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     expect(response.status).toEqual(200);
     expect(spy).toHaveBeenCalledTimes(1);
 
-    const programItemsResult = await findProgramItems();
-    const programItems = unsafelyUnwrapResult(programItemsResult);
+    const programItems = unsafelyUnwrap(await findProgramItems());
 
     expect(programItems.length).toEqual(1);
     expect(programItems[0].title).toEqual(testProgramItem.title);
@@ -167,14 +166,12 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
     expect(response.status).toEqual(200);
 
-    const programItemsResult = await findProgramItems();
-    const programItems = unsafelyUnwrapResult(programItemsResult);
+    const programItems = unsafelyUnwrap(await findProgramItems());
 
     expect(programItems.length).toEqual(1);
     expect(programItems[0].title).toEqual(testProgramItem.title);
 
-    const updatedUserResult = await findUser(mockUser.username);
-    const updatedUser = unsafelyUnwrapResult(updatedUserResult);
+    const updatedUser = unsafelyUnwrap(await findUser(mockUser.username));
     expect(updatedUser?.lotterySignups.length).toEqual(1);
     expect(updatedUser?.lotterySignups[0].programItem.title).toEqual(
       testProgramItem.title,
@@ -184,8 +181,9 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
       testProgramItem.programItemId,
     );
 
-    const updatedSignupsResult = await findUserDirectSignups(mockUser.username);
-    const updatedSignups = unsafelyUnwrapResult(updatedSignupsResult);
+    const updatedSignups = unsafelyUnwrap(
+      await findUserDirectSignups(mockUser.username),
+    );
     expect(updatedSignups.length).toEqual(1);
     expect(updatedSignups[0].programItem.title).toEqual(testProgramItem.title);
   });
@@ -202,8 +200,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
     expect(response.status).toEqual(200);
 
-    const programItemsResult = await findProgramItems();
-    const programItems = unsafelyUnwrapResult(programItemsResult);
+    const programItems = unsafelyUnwrap(await findProgramItems());
 
     expect(programItems.length).toEqual(2);
     const sortedProgramItems = sortBy(programItems, "title");
@@ -223,8 +220,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
     expect(response.status).toEqual(200);
 
-    const programItemsResult = await findProgramItems();
-    const programItems = unsafelyUnwrapResult(programItemsResult);
+    const programItems = unsafelyUnwrap(await findProgramItems());
 
     expect(programItems.length).toEqual(2);
     const sortedProgramItems = sortBy(programItems, "title");
@@ -255,8 +251,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
     expect(response.status).toEqual(200);
 
-    const programItemsResult = await findProgramItems();
-    const programItems = unsafelyUnwrapResult(programItemsResult);
+    const programItems = unsafelyUnwrap(await findProgramItems());
 
     expect(programItems.length).toEqual(1);
     expect(dayjs(programItems[0].startTime).toISOString()).toEqual(
@@ -301,16 +296,16 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
     expect(response.status).toEqual(200);
 
-    const updatedUserResult = await findUser(mockUser.username);
-    const updatedUser = unsafelyUnwrapResult(updatedUserResult);
+    const updatedUser = unsafelyUnwrap(await findUser(mockUser.username));
     expect(updatedUser?.lotterySignups.length).toEqual(1);
     expect(updatedUser?.lotterySignups[0].programItem.title).toEqual(
       testProgramItem2.title,
     );
     expect(updatedUser?.favoriteProgramItemIds.length).toEqual(2);
 
-    const signupsResult = await findUserDirectSignups(mockUser.username);
-    const signups = unsafelyUnwrapResult(signupsResult);
+    const signups = unsafelyUnwrap(
+      await findUserDirectSignups(mockUser.username),
+    );
     expect(signups.length).toEqual(2);
     expect(signups[0].userSignups[0].username).toEqual(mockUser.username);
     expect(signups[1].userSignups[0].username).toEqual(mockUser.username);
@@ -364,8 +359,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
     expect(response.status).toEqual(200);
 
-    const programItemsResult = await findProgramItems();
-    const programItems = unsafelyUnwrapResult(programItemsResult);
+    const programItems = unsafelyUnwrap(await findProgramItems());
 
     expect(programItems.length).toEqual(1);
     expect(programItems[0].tags).toEqual([Tag.BEGINNER_FRIENDLY]);
@@ -409,8 +403,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
       ),
     );
 
-    const programItemsResult = await findProgramItems();
-    const programItems = unsafelyUnwrapResult(programItemsResult);
+    const programItems = unsafelyUnwrap(await findProgramItems());
 
     expect(programItems.length).toEqual(0);
   });

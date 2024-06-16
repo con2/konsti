@@ -7,7 +7,7 @@ import {
   saveUser,
 } from "server/features/user/userRepository";
 import { mockUser, mockUser2 } from "server/test/mock-data/mockUser";
-import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
+import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { saveProgramItems } from "server/features/program-item/programItemRepository";
 
@@ -25,8 +25,7 @@ test("should insert new user into collection", async () => {
   await saveProgramItems([testProgramItem]);
   await saveUser(mockUser);
 
-  const findUserResult = await findUser(mockUser.username);
-  const user = unsafelyUnwrapResult(findUserResult);
+  const user = unsafelyUnwrap(await findUser(mockUser.username));
   expect(user).toMatchObject({
     username: mockUser.username,
     password: mockUser.passwordHash,
@@ -41,8 +40,7 @@ test("should find all users", async () => {
   await saveUser(mockUser);
   await saveUser(mockUser2);
 
-  const findUsersResult = await findUsers();
-  const users = unsafelyUnwrapResult(findUsersResult);
+  const users = unsafelyUnwrap(await findUsers());
   expect(users).toHaveLength(2);
 });
 
@@ -51,8 +49,7 @@ test("should find users by username", async () => {
   await saveUser(mockUser);
   await saveUser(mockUser2);
 
-  const findUsersResult = await findUsers([mockUser.username]);
-  const users = unsafelyUnwrapResult(findUsersResult);
+  const users = unsafelyUnwrap(await findUsers([mockUser.username]));
   expect(users).toHaveLength(1);
   expect(users[0].username).toEqual(mockUser.username);
 });

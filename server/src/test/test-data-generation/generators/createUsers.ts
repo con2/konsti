@@ -4,8 +4,7 @@ import { hashPassword } from "server/utils/bcrypt";
 import { UserGroup } from "shared/types/models/user";
 import { saveUser } from "server/features/user/userRepository";
 import { NewUser } from "server/types/userTypes";
-import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
-import { makeSuccessResult } from "shared/utils/result";
+import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { generateGroupCode } from "server/features/user/group/groupService";
 
 const SERIAL_MAX = 10000000;
@@ -13,8 +12,7 @@ const SERIAL_MAX = 10000000;
 export const createAdminUser = async (password?: string): Promise<void> => {
   logger.info(`Generate data for admin user "admin:test"`);
 
-  const passwordHashResult = await hashPassword(password ?? "test");
-  const passwordHash = unsafelyUnwrapResult(passwordHashResult);
+  const passwordHash = unsafelyUnwrap(await hashPassword(password ?? "test"));
 
   const registrationData: NewUser = {
     kompassiId: 0,
@@ -30,8 +28,7 @@ export const createAdminUser = async (password?: string): Promise<void> => {
 export const createHelpUser = async (password?: string): Promise<void> => {
   logger.info(`Generate data for help user "helper:test"`);
 
-  const passwordHashResult = await hashPassword(password ?? "test");
-  const passwordHash = unsafelyUnwrapResult(passwordHashResult);
+  const passwordHash = unsafelyUnwrap(await hashPassword(password ?? "test"));
 
   const registrationData: NewUser = {
     kompassiId: 0,
@@ -53,8 +50,7 @@ const createTestUser = async ({
 }: CreateTestUserParams): Promise<void> => {
   logger.info(`Generate data for user "test${userNumber}:test"`);
 
-  const passwordHashResult = await hashPassword("test");
-  const passwordHash = unsafelyUnwrapResult(passwordHashResult);
+  const passwordHash = unsafelyUnwrap(await hashPassword("test"));
 
   const registrationData: NewUser = {
     kompassiId: 0,
@@ -93,10 +89,9 @@ const createUser = async ({
   testUsers = false,
   userNumber = 0,
 }: CreateUserParams): Promise<void> => {
-  const passwordHashResult = testUsers
-    ? await hashPassword("test")
-    : makeSuccessResult("testPass"); // Skip hashing to save time
-  const passwordHash = unsafelyUnwrapResult(passwordHashResult);
+  const passwordHash = testUsers
+    ? unsafelyUnwrap(await hashPassword("test"))
+    : "testPass"; // Skip hashing to save time
 
   const registrationData: NewUser = {
     kompassiId: 0,

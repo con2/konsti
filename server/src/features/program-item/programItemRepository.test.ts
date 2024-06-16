@@ -5,7 +5,7 @@ import { ProgramItemModel } from "server/features/program-item/programItemSchema
 import { saveProgramItems } from "server/features/program-item/programItemRepository";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { removeDeletedProgramItems } from "server/features/program-item/programItemUtils";
-import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
+import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { findDirectSignups } from "server/features/direct-signup/directSignupRepository";
 
 beforeEach(async () => {
@@ -32,17 +32,14 @@ test("should insert new program item into collection", async () => {
 test("should remove signup document when program item is removed", async () => {
   await saveProgramItems([testProgramItem]);
 
-  const findSignupsResult = await findDirectSignups();
-  const signups = unsafelyUnwrapResult(findSignupsResult);
+  const signups = unsafelyUnwrap(await findDirectSignups());
   expect(signups).toHaveLength(1);
 
-  const removeDeletedProgramItemsResult = await removeDeletedProgramItems([]);
-  const deletedProgramItemsCount = unsafelyUnwrapResult(
-    removeDeletedProgramItemsResult,
+  const deletedProgramItemsCount = unsafelyUnwrap(
+    await removeDeletedProgramItems([]),
   );
   expect(deletedProgramItemsCount).toEqual(1);
 
-  const findSignupsResult2 = await findDirectSignups();
-  const signups2 = unsafelyUnwrapResult(findSignupsResult2);
+  const signups2 = unsafelyUnwrap(await findDirectSignups());
   expect(signups2).toHaveLength(0);
 });

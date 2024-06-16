@@ -6,7 +6,7 @@ import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { mockUser } from "server/test/mock-data/mockUser";
 import { saveUser } from "server/features/user/userRepository";
 import { closeServer, startServer } from "server/utils/server";
-import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
+import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 
 let server: Server;
 
@@ -36,8 +36,7 @@ describe(`POST ${ApiEndpoint.SESSION_RESTORE}`, () => {
   });
 
   test("should return 200 and success with valid jwt parameter", async () => {
-    const userResult = await saveUser(mockUser);
-    const user = unsafelyUnwrapResult(userResult);
+    const user = unsafelyUnwrap(await saveUser(mockUser));
     expect(user.password).toEqual(mockUser.passwordHash);
 
     const loginResponse = await request(server)

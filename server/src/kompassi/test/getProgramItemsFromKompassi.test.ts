@@ -1,5 +1,5 @@
 import { expect, test, vi } from "vitest";
-import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
+import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { config } from "shared/config";
 import { ConventionName } from "shared/config/sharedConfigTypes";
 import { testHelperWrapper } from "server/kompassi/getProgramItemsFromKompassi";
@@ -53,9 +53,7 @@ Object.values(ConventionName).map((conventionName) => {
       value: mockKompassiProgramItems,
     });
 
-    const programItems = unsafelyUnwrapResult(
-      await getProgramItemsForConvention(),
-    );
+    const programItems = unsafelyUnwrap(await getProgramItemsForConvention());
     expect(programItems.length).toEqual(2);
   });
 });
