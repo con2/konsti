@@ -13,9 +13,9 @@ import {
 } from "shared/utils/result";
 
 export const saveFavorite = async (
-  favoriteData: NewFavorite,
+  newFavorite: NewFavorite,
 ): Promise<Result<readonly FavoriteProgramItemId[] | null, MongoDbError>> => {
-  const { username, favoriteProgramItemIds } = favoriteData;
+  const { username, favoriteProgramItemIds } = newFavorite;
 
   try {
     const response = await UserModel.findOneAndUpdate(
@@ -26,7 +26,7 @@ export const saveFavorite = async (
       { new: true, fields: "favoriteProgramItemIds" },
     ).lean<User>();
     logger.info(
-      `MongoDB: Favorite data stored for user ${favoriteData.username}`,
+      `MongoDB: Favorite data stored for user ${newFavorite.username}`,
     );
     if (!response) {
       logger.error("%s", new Error(`MongoDB: User ${username} not found`));
@@ -35,7 +35,7 @@ export const saveFavorite = async (
     return makeSuccessResult(response.favoriteProgramItemIds);
   } catch (error) {
     logger.error(
-      `MongoDB: Error storing favorite data for user ${favoriteData.username}: %s`,
+      `MongoDB: Error storing favorite data for user ${newFavorite.username}: %s`,
       error,
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);

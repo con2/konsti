@@ -7,11 +7,11 @@ import {
 } from "shared/types/api/favorite";
 
 export const postFavorite = async (
-  favoriteData: PostFavoriteRequest,
+  postFavoriteRequest: PostFavoriteRequest,
 ): Promise<PostFavoriteResponse | ApiError> => {
   const response = await api.post<PostFavoriteResponse, PostFavoriteRequest>(
     ApiEndpoint.FAVORITE,
-    favoriteData,
+    postFavoriteRequest,
   );
 
   return response.data;

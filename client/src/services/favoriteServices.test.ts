@@ -8,14 +8,14 @@ test("POST favorite program items to server", async () => {
     .spyOn(api, "post")
     .mockResolvedValue({ data: "test response" });
 
-  const favoriteData = {
+  const postFavoriteRequest = {
     username: "test username",
     favoriteProgramItemIds: [],
   };
 
-  const response = await postFavorite(favoriteData);
+  const response = await postFavorite(postFavoriteRequest);
 
   expect(response).toEqual("test response");
   expect(spy).toHaveBeenCalledTimes(1);
-  expect(spy).toHaveBeenCalledWith(ApiEndpoint.FAVORITE, favoriteData);
+  expect(spy).toHaveBeenCalledWith(ApiEndpoint.FAVORITE, postFavoriteRequest);
 });

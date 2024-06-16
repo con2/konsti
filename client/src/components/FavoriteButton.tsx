@@ -56,6 +56,6 @@ const StyledButton = styled.button`
 `;
 
 const FavoriteIcon = styled(FontAwesomeIcon)`
-  color: ${(props) => props.theme.iconFavorited};
+  color: ${(props) => props.theme.iconFavorite};
   font-size: ${(props) => props.theme.iconSizeLarge};
 `;
