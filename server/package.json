@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "@faker-js/faker": "8.4.1",
-    "@sentry/node": "8.7.0",
+    "@sentry/node": "8.9.2",
     "@vercel/ncc": "0.38.1",
     "bcryptjs": "2.4.3",
     "commander": "12.1.0",
@@ -50,7 +50,7 @@
     "jsonwebtoken": "9.0.2",
     "mongoose": "8.4.1",
     "morgan": "1.10.0",
-    "tsx": "4.11.0",
+    "tsx": "4.15.5",
     "winston": "3.13.0",
     "winston-transport-sentry-node": "2.7.1"
   },
@@ -58,7 +58,7 @@
     "@types/bcryptjs": "2.4.6",
     "@types/jsonwebtoken": "9.0.6",
     "@types/morgan": "1.9.9",
-    "@types/node": "20.13.0",
+    "@types/node": "20.14.2",
     "@types/supertest": "6.0.2",
     "mongodb-memory-server": "9.3.0",
     "supertest": "7.0.0"
