@@ -1,7 +1,6 @@
 import { ReactElement, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
-import { Trans } from "react-i18next";
 import { Link } from "react-router-dom";
 import { getAttendeeType } from "client/utils/getAttendeeType";
 import { ProgramItem, ProgramType } from "shared/types/models/programItem";
@@ -110,6 +109,7 @@ export const SignupsInfo = ({
 const SignupsInfoContainer = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 8px;
 `;
 
 const AttendeeText = styled.p`
@@ -125,12 +125,13 @@ const ErrorText = styled.span`
 `;
 
 const AttendeeList = styled.ul`
-  margin-left: 12px;
+  margin: 0 0 0 12px;
 
   li {
     list-style: none;
   }
 
+  /* Add some space between rows to group attendees if there are many of them to show. */
   li:nth-child(10n) {
     padding-bottom: 12px;
   }
