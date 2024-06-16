@@ -10,7 +10,7 @@ import { getLotterySignups } from "client/utils/getUpcomingProgramItems";
 import { getTimeslotSignupStrategy } from "client/views/all-program-items/allProgramItemsUtils";
 import {
   selectDirectSignups,
-  selectFavoritedProgramItems,
+  selectFavoriteProgramItems,
   selectLotterySignups,
 } from "client/views/my-program-items/myProgramItemsSlice";
 import { RaisedCard } from "client/components/RaisedCard";
@@ -37,7 +37,7 @@ export const AllProgramItemsList = ({ programItems }: Props): ReactElement => {
   const username = useAppSelector((state) => state.login.username);
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
   const userGroup = useAppSelector((state) => state.login.userGroup);
-  const favoritedProgramItems = useAppSelector(selectFavoritedProgramItems);
+  const favoriteProgramItems = useAppSelector(selectFavoriteProgramItems);
   const isInGroup = getIsInGroup(groupCode);
 
   const [loading, setLoading] = useState(false);
@@ -95,7 +95,7 @@ export const AllProgramItemsList = ({ programItems }: Props): ReactElement => {
                 username={username}
                 loggedIn={loggedIn}
                 userGroup={userGroup}
-                favoritedProgramItems={favoritedProgramItems}
+                favoriteProgramItems={favoriteProgramItems}
               />
             );
           })}

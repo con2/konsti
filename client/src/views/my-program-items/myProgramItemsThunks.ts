@@ -33,15 +33,15 @@ export const submitGetUser = (username: string): AppThunk => {
 
     if (getUserResponse.status === "success") {
       const directSignups = getUserResponse.programItems.directSignups;
-      const favoritedProgramItems =
-        getUserResponse.programItems.favoritedProgramItems;
+      const favoriteProgramItemIds =
+        getUserResponse.programItems.favoriteProgramItemIds;
       const lotterySignups = getUserResponse.programItems.lotterySignups;
       const eventLogItems = getUserResponse.eventLogItems;
 
       dispatch(
         submitGetUserAsync({
           directSignups,
-          favoritedProgramItems,
+          favoriteProgramItemIds,
           lotterySignups,
         }),
       );
@@ -69,7 +69,7 @@ export const submitUpdateFavorites = (favoriteData: NewFavorite): AppThunk => {
     if (updateFavoriteResponse.status === "success") {
       dispatch(
         submitUpdateFavoritesAsync(
-          updateFavoriteResponse.favoritedProgramItems,
+          updateFavoriteResponse.favoriteProgramItemIds,
         ),
       );
     }

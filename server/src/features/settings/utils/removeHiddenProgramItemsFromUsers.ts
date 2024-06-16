@@ -34,7 +34,7 @@ export const removeHiddenProgramItemsFromUsers = async (
 
   const users = unwrapResult(usersResult);
 
-  const usersToUpdate: User[] = users.flatMap((user) => {
+  const usersToUpdate: User[] = users.flatMap<User>((user) => {
     const lotterySignups = user.lotterySignups.filter((lotterySignup) => {
       const hiddenFound = hiddenProgramItems.find((hiddenProgramItem) => {
         return (
@@ -47,28 +47,25 @@ export const removeHiddenProgramItemsFromUsers = async (
       }
     });
 
-    const favoritedProgramItems = user.favoritedProgramItems.filter(
-      (favoritedProgramItem) => {
+    const favoriteProgramItemIds = user.favoriteProgramItemIds.filter(
+      (favoriteProgramItemId) => {
         const hiddenFound = hiddenProgramItems.find((hiddenProgramItem) => {
-          return (
-            hiddenProgramItem.programItemId ===
-            favoritedProgramItem.programItemId
-          );
+          return hiddenProgramItem.programItemId === favoriteProgramItemId;
         });
         if (!hiddenFound) {
-          return favoritedProgramItem;
+          return favoriteProgramItemId;
         }
       },
     );
 
     if (
       user.lotterySignups.length !== lotterySignups.length ||
-      user.favoritedProgramItems.length !== favoritedProgramItems.length
+      user.favoriteProgramItemIds.length !== favoriteProgramItemIds.length
     ) {
       return {
         ...user,
         lotterySignups,
-        favoritedProgramItems,
+        favoriteProgramItemIds,
       };
     }
     return [];

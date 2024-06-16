@@ -128,6 +128,7 @@ export const adminReducer = adminSlice.reducer;
 
 const selectProgramItems = (state: RootState): readonly ProgramItem[] =>
   state.allProgramItems.programItems;
+
 const selectActiveProgramType = (state: RootState): ActiveProgramType =>
   state.admin.activeProgramType;
 

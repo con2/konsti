@@ -94,13 +94,13 @@ export const getUpcomingDirectSignups = (
 };
 
 export const getUpcomingFavorites = (
-  favoritedProgramItems: readonly ProgramItem[],
+  favoriteProgramItems: readonly ProgramItem[],
 ): readonly ProgramItem[] => {
   const timeNow = getTimeNow();
 
-  const upcomingProgramItems = favoritedProgramItems.filter(
-    (favoritedProgramItem) =>
-      dayjs(favoritedProgramItem.startTime).add(1, "hours").isAfter(timeNow),
+  const upcomingProgramItems = favoriteProgramItems.filter(
+    (favoriteProgramItem) =>
+      dayjs(favoriteProgramItem.startTime).add(1, "hours").isAfter(timeNow),
   );
 
   return upcomingProgramItems;

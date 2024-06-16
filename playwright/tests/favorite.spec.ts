@@ -17,22 +17,22 @@ test("Add favorite", async ({ page, request }) => {
     "data-testid=program-item-container >> nth=0",
   );
 
-  const favoritedProgramItemTitle = await firstProgramItem
+  const favoriteProgramItemTitle = await firstProgramItem
     .locator("data-testid=program-item-title")
     .innerText();
 
   await firstProgramItem.locator("data-testid=add-favorite-button").click();
 
-  // Go to My Program and check favorited program item title
+  // Go to My Program and check favorite program item title
   await page.click("data-testid=my-program-tab");
 
-  const favoritedProgramItems = page.locator(
-    "data-testid=favorited-program-items-list",
+  const favoriteProgramItems = page.locator(
+    "data-testid=favorite-program-items-list",
   );
 
-  const programItemTitle = await favoritedProgramItems
+  const programItemTitle = await favoriteProgramItems
     .locator("data-testid=program-item-title")
     .innerText();
 
-  expect(programItemTitle.trim()).toEqual(favoritedProgramItemTitle);
+  expect(programItemTitle.trim()).toEqual(favoriteProgramItemTitle);
 });

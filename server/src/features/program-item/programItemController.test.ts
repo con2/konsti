@@ -141,7 +141,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     expect(programItems[0].title).toEqual(testProgramItem.title);
   });
 
-  test("should remove program items, lottery signups, direct signups, and favorited program items that are not in the server response", async () => {
+  test("should remove program items, lottery signups, direct signups, and favorite program items that are not in the server response", async () => {
     vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
       value: [mockKompassiProgramItemRopecon],
     });
@@ -156,7 +156,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     await saveDirectSignup(mockPostDirectSignupRequest2);
     await saveFavorite({
       username: mockUser.username,
-      favoritedProgramItemIds: [
+      favoriteProgramItemIds: [
         testProgramItem.programItemId,
         testProgramItem2.programItemId,
       ],
@@ -179,8 +179,8 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     expect(updatedUser?.lotterySignups[0].programItem.title).toEqual(
       testProgramItem.title,
     );
-    expect(updatedUser?.favoritedProgramItems.length).toEqual(1);
-    expect(updatedUser?.favoritedProgramItems[0].programItemId).toEqual(
+    expect(updatedUser?.favoriteProgramItemIds.length).toEqual(1);
+    expect(updatedUser?.favoriteProgramItemIds[0]).toEqual(
       testProgramItem.programItemId,
     );
 
@@ -265,7 +265,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     expect(programItems[0].description).toEqual(newDescription);
   });
 
-  test("should remove lottery signups but not direct signups or favorited program items if program item start time changes", async () => {
+  test("should remove lottery signups but not direct signups or favorite program items if program item start time changes", async () => {
     const newStartTime = dayjs(testProgramItem.startTime)
       .add(1, "hours")
       .toISOString();
@@ -290,7 +290,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     await saveDirectSignup(mockPostDirectSignupRequest2);
     await saveFavorite({
       username: mockUser.username,
-      favoritedProgramItemIds: [
+      favoriteProgramItemIds: [
         testProgramItem.programItemId,
         testProgramItem2.programItemId,
       ],
@@ -307,7 +307,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     expect(updatedUser?.lotterySignups[0].programItem.title).toEqual(
       testProgramItem2.title,
     );
-    expect(updatedUser?.favoritedProgramItems.length).toEqual(2);
+    expect(updatedUser?.favoriteProgramItemIds.length).toEqual(2);
 
     const signupsResult = await findUserDirectSignups(mockUser.username);
     const signups = unsafelyUnwrapResult(signupsResult);

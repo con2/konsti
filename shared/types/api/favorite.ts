@@ -1,15 +1,15 @@
 import { z } from "zod";
-import { ProgramItem } from "shared/types/models/programItem";
 import { ApiResult } from "shared/types/api/errors";
+import { FavoriteProgramItemId } from "shared/types/models/user";
 
 // POST favorite
 
 export const PostFavoriteRequestSchema = z.object({
-  favoritedProgramItemIds: z.array(z.string()),
+  favoriteProgramItemIds: z.array(z.string()),
 });
 
 export type PostFavoriteRequest = z.infer<typeof PostFavoriteRequestSchema>;
 
 export interface PostFavoriteResponse extends ApiResult {
-  favoritedProgramItems: readonly ProgramItem[];
+  favoriteProgramItemIds: readonly FavoriteProgramItemId[];
 }

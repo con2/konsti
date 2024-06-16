@@ -99,10 +99,6 @@ const sentryReduxEnhancer = createReduxEnhancer({
             programItem: lotterySignup?.programItem?.programItemId,
           }),
         ),
-        favoritedProgramItems:
-          state?.myProgramItems?.favoritedProgramItems?.map(
-            (favoritedProgramItem) => favoritedProgramItem?.programItemId,
-          ),
       },
     };
     /* eslint-enable @typescript-eslint/no-unnecessary-condition */

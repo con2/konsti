@@ -19,7 +19,7 @@ import { useAppSelector } from "client/utils/hooks";
 import { SignupStrategy } from "shared/config/sharedConfigTypes";
 import {
   selectDirectSignups,
-  selectFavoritedProgramItems,
+  selectFavoriteProgramItems,
   selectLotterySignups,
 } from "client/views/my-program-items/myProgramItemsSlice";
 import { RadioButton } from "client/components/RadioButton";
@@ -35,7 +35,7 @@ export const MyProgramItemsView = (): ReactElement => {
   const { t } = useTranslation();
 
   const lotterySignups = useAppSelector(selectLotterySignups);
-  const favoritedProgramItems = useAppSelector(selectFavoritedProgramItems);
+  const favoriteProgramItems = useAppSelector(selectFavoriteProgramItems);
   const directSignups = useAppSelector(selectDirectSignups);
   const isGroupCreator = useAppSelector((state) => state.group.isGroupCreator);
   const groupMembers = useAppSelector((state) => state.group.groupMembers);
@@ -95,10 +95,10 @@ export const MyProgramItemsView = (): ReactElement => {
       </RaisedCard>
 
       <MyFavoritesList
-        favoritedProgramItems={
+        favoriteProgramItems={
           showAllProgramItems
-            ? favoritedProgramItems
-            : getUpcomingFavorites(favoritedProgramItems)
+            ? favoriteProgramItems
+            : getUpcomingFavorites(favoriteProgramItems)
         }
       />
       <MyDirectSignupsList

@@ -1,24 +1,6 @@
 import { z } from "zod";
 import { EventLogItem } from "shared/types/models/eventLog";
-import {
-  ProgramItem,
-  ProgramItemSchema,
-} from "shared/types/models/programItem";
-
-export interface User {
-  kompassiId: number;
-  kompassiUsernameAccepted: boolean;
-  username: string;
-  password: string;
-  userGroup: UserGroup;
-  serial: string;
-  groupCode: string;
-  groupCreatorCode: string;
-  favoritedProgramItems: readonly ProgramItem[];
-  lotterySignups: readonly Signup[];
-  createdAt: string;
-  eventLogItems: EventLogItem[];
-}
+import { ProgramItemSchema } from "shared/types/models/programItem";
 
 export const SignupSchema = z.object({
   programItem: ProgramItemSchema,
@@ -35,13 +17,30 @@ export enum UserGroup {
   HELP = "help",
 }
 
+export type FavoriteProgramItemId = string;
+
+export interface User {
+  kompassiId: number;
+  kompassiUsernameAccepted: boolean;
+  username: string;
+  password: string;
+  userGroup: UserGroup;
+  serial: string;
+  groupCode: string;
+  groupCreatorCode: string;
+  favoriteProgramItemIds: readonly FavoriteProgramItemId[];
+  lotterySignups: readonly Signup[];
+  createdAt: string;
+  eventLogItems: EventLogItem[];
+}
+
 export interface UserProgramItems {
   directSignups: readonly Signup[];
-  favoritedProgramItems: readonly ProgramItem[];
+  favoriteProgramItemIds: readonly string[];
   lotterySignups: readonly Signup[];
 }
 
 export interface NewFavorite {
   username: string;
-  favoritedProgramItemIds: string[];
+  favoriteProgramItemIds: string[];
 }

@@ -3,14 +3,14 @@ import { postFavorite } from "client/services/favoriteServices";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { api } from "client/utils/api";
 
-test("POST favorited program items to server", async () => {
+test("POST favorite program items to server", async () => {
   const spy = vi
     .spyOn(api, "post")
     .mockResolvedValue({ data: "test response" });
 
   const favoriteData = {
     username: "test username",
-    favoritedProgramItemIds: [],
+    favoriteProgramItemIds: [],
   };
 
   const response = await postFavorite(favoriteData);

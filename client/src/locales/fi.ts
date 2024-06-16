@@ -156,7 +156,7 @@ export const translationFI = {
     registration: "Luo käyttäjätili",
   },
   user: "Käyttäjä",
-  favoritedProgramItems: "Suosikit",
+  favoriteProgramItems: "Suosikit",
   lotterySignups: "Arvontaan ilmoittautumiset",
   directSignups: "Ilmoittautumiset",
   hiddenProgramItems: "Piilotetut ohjelmanumerot",
@@ -175,7 +175,7 @@ export const translationFI = {
     "Nouda rekisteröintikoodi Larp- ja Roolipelitiskiltä, Pelitiskiltä tai Infosta.",
   noLotterySignups:
     "Ei valittuja ohjelmanumeroita. Voit ilmoittautua Kaikki ohjelma -näkymässä.",
-  noFavoritedProgramItems:
+  noFavoriteProgramItems:
     "Ei suosikkeja. Voit tallettaa suosikkiohjelmaa Kaikki ohjelma -näkymässä.",
   noDirectSignups:
     "Ei ilmoittautumisia. Voit ilmoittautua ohjelmaan Kaikki ohjelma -näkymässä.",

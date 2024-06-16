@@ -1,6 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { AllProgramItemsState } from "client/types/reduxTypes";
-import { ProgramItemWithUserSignups } from "shared/types/models/programItem";
+import { AllProgramItemsState, RootState } from "client/types/reduxTypes";
+import {
+  ProgramItem,
+  ProgramItemWithUserSignups,
+} from "shared/types/models/programItem";
 
 const initialState: AllProgramItemsState = {
   programItems: [],
@@ -34,3 +37,8 @@ const allProgramItemsSlice = createSlice({
 export const { submitGetProgramItemsAsync } = allProgramItemsSlice.actions;
 
 export const allProgramItemsReducer = allProgramItemsSlice.reducer;
+
+// SELECTORS
+
+export const selectProgramItems = (state: RootState): readonly ProgramItem[] =>
+  state.allProgramItems.programItems;

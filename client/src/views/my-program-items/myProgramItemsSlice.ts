@@ -1,11 +1,15 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { MyProgramItemsState, RootState } from "client/types/reduxTypes";
-import { ProgramItem } from "shared/types/models/programItem";
-import { Signup, UserProgramItems } from "shared/types/models/user";
+import { selectProgramItems } from "client/views/all-program-items/allProgramItemsSlice";
+import {
+  FavoriteProgramItemId,
+  Signup,
+  UserProgramItems,
+} from "shared/types/models/user";
 
 const initialState: MyProgramItemsState = {
   directSignups: [],
-  favoritedProgramItems: [],
+  favoriteProgramItemIds: [],
   lotterySignups: [],
 };
 
@@ -17,18 +21,18 @@ const myProgramItemsSlice = createSlice({
       return {
         ...state,
         directSignups: action.payload.directSignups,
-        favoritedProgramItems: action.payload.favoritedProgramItems,
+        favoriteProgramItems: action.payload.favoriteProgramItemIds,
         lotterySignups: action.payload.lotterySignups,
       };
     },
 
     submitUpdateFavoritesAsync(
       state,
-      action: PayloadAction<readonly ProgramItem[]>,
+      action: PayloadAction<readonly FavoriteProgramItemId[]>,
     ) {
       return {
         ...state,
-        favoritedProgramItems: action.payload,
+        favoriteProgramItemIds: action.payload,
       };
     },
 
@@ -68,8 +72,20 @@ export const myProgramItemsReducer = myProgramItemsSlice.reducer;
 
 export const selectDirectSignups = (state: RootState): readonly Signup[] =>
   state.myProgramItems.directSignups;
+
 export const selectLotterySignups = (state: RootState): readonly Signup[] =>
   state.myProgramItems.lotterySignups;
-export const selectFavoritedProgramItems = (
+
+const selectFavoriteProgramItemIds = (
   state: RootState,
-): readonly ProgramItem[] => state.myProgramItems.favoritedProgramItems;
+): readonly FavoriteProgramItemId[] =>
+  state.myProgramItems.favoriteProgramItemIds;
+
+export const selectFavoriteProgramItems = createSelector(
+  [selectProgramItems, selectFavoriteProgramItemIds],
+  (programItems, favoriteProgramItemIds) => {
+    return programItems.filter((programItem) =>
+      favoriteProgramItemIds.includes(programItem.programItemId),
+    );
+  },
+);

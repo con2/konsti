@@ -60,16 +60,16 @@ export const programItemIdFix = async (
   logger.info(`Loaded ${settings.length} program items`);
 
   users.map((user) => {
-    const tempFavoritedProgramItems = user.favoritedProgramItems.map(
-      (favoritedProgramItem) => {
+    const tempFavoriteProgramItemIds = user.favoriteProgramItemIds.map(
+      (favoriteProgramItemId) => {
         const matchingProgramItem = programItems.find(
           // @ts-expect-error: $oid not in interface
-          (programItem) => programItem._id.$oid === favoritedProgramItem.$oid,
+          (programItem) => programItem._id.$oid === favoriteProgramItemId.$oid,
         );
         if (!matchingProgramItem) {
           logger.error(
-            `Favorited: program item for id ${JSON.stringify(
-              favoritedProgramItem,
+            `Favorite: program item for id ${JSON.stringify(
+              favoriteProgramItemId,
             )} not found`,
           );
           return { programItemId: "<canceled>" };
@@ -102,7 +102,7 @@ export const programItemIdFix = async (
     });
 
     // @ts-expect-error: We don't want whole program item details
-    user.favoritedProgramItems = tempFavoritedProgramItems;
+    user.favoriteProgramItemIds = tempFavoriteProgramItemIds;
     // @ts-expect-error: We don't want whole program item details
     user.lotterySignups = tempLotterySignups;
   });

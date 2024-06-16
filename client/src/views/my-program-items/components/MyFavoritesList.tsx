@@ -8,32 +8,32 @@ import { ProgramItem } from "shared/types/models/programItem";
 import { RaisedCard } from "client/components/RaisedCard";
 
 interface Props {
-  favoritedProgramItems: readonly ProgramItem[];
+  favoriteProgramItems: readonly ProgramItem[];
 }
 
 export const MyFavoritesList = ({
-  favoritedProgramItems,
+  favoriteProgramItems,
 }: Props): ReactElement => {
   const { t } = useTranslation();
 
   const sortedProgramItems: readonly ProgramItem[] = sortBy(
-    favoritedProgramItems,
+    favoriteProgramItems,
     [
-      (favoritedProgramItem) => favoritedProgramItem.startTime,
-      (favoritedProgramItem) => favoritedProgramItem.title.toLowerCase(),
+      (favoriteProgramItem) => favoriteProgramItem.startTime,
+      (favoriteProgramItem) => favoriteProgramItem.title.toLowerCase(),
     ],
   );
 
-  const startTimes = getStartTimes(favoritedProgramItems);
+  const startTimes = getStartTimes(favoriteProgramItems);
 
   return (
-    <RaisedCard data-testid="favorited-program-items-list">
-      <Header>{t("favoritedProgramItems")}</Header>
+    <RaisedCard data-testid="favorite-program-items-list">
+      <Header>{t("favoriteProgramItems")}</Header>
       <div>
-        {favoritedProgramItems.length === 0 && (
-          <SecondaryText>{t("noFavoritedProgramItems")}</SecondaryText>
+        {favoriteProgramItems.length === 0 && (
+          <SecondaryText>{t("noFavoriteProgramItems")}</SecondaryText>
         )}
-        {favoritedProgramItems.length !== 0 && (
+        {favoriteProgramItems.length !== 0 && (
           <FavoritesByStartTimes
             programItems={sortedProgramItems}
             startTimes={startTimes}
