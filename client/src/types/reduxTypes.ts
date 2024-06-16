@@ -23,7 +23,7 @@ export interface AdminState {
   loginProvider: LoginProvider | undefined;
 }
 
-export interface ProgramItemDirectSignups {
+interface ProgramItemDirectSignups {
   users: UserSignup[];
   programItemId: string;
 }

@@ -62,7 +62,6 @@ export const translationFI = {
     programList: "Kaikki ohjelma",
     program: "Ohjelma",
     admin: "Ylläpito",
-    results: "Ilmoittautumistulokset",
     group: "Ryhmä",
     notifications: "Ilmoitukset",
     profileAndGroup: "Profiili & ryhmä",
@@ -448,12 +447,6 @@ export const translationFI = {
     experiencePoint: "peliin",
     other: "ohjelmanumeroon",
     roundtableDiscussion: "keskustelupiiriin",
-  },
-  resultsView: {
-    allSignupResults: "Ilmoittautumistulokset",
-    confirm: "Vahvista",
-    noSignups: "Ei ilmoittautuneita {{ATTENDEE_TYPE}}",
-    noResults: "Ei ilmoittautumistuloksia",
   },
   firstLogin: {
     serial: "Ota koodi talteen salasanan palauttamista varten:",

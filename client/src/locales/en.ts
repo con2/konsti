@@ -62,7 +62,6 @@ export const translationEN = {
     programList: "All Program",
     program: "Program",
     admin: "Admin",
-    results: "Sign-up Results",
     group: "Group",
     notifications: "Notifications",
     profileAndGroup: "Profile & Group",
@@ -446,12 +445,6 @@ export const translationEN = {
     experiencePoint: "program",
     other: "program item",
     roundtableDiscussion: "roundtable discussion",
-  },
-  resultsView: {
-    allSignupResults: "Sign-up Results",
-    confirm: "Confirm",
-    noSignups: "No signed up {{ATTENDEE_TYPE}}",
-    noResults: "No sign-up results",
   },
   firstLogin: {
     serial: "Save this code for recovering your password:",
