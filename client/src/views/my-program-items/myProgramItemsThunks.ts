@@ -58,9 +58,9 @@ export const submitGetUser = (username: string): AppThunk => {
   };
 };
 
-export const submitUpdateFavorites = (favoriteData: NewFavorite): AppThunk => {
+export const submitUpdateFavorites = (newFavorite: NewFavorite): AppThunk => {
   return async (dispatch): Promise<void> => {
-    const updateFavoriteResponse = await postFavorite(favoriteData);
+    const updateFavoriteResponse = await postFavorite(newFavorite);
 
     if (updateFavoriteResponse.status === "error") {
       // TODO

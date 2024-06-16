@@ -5,9 +5,9 @@ import { NewFavorite } from "shared/types/models/user";
 import { isErrorResult, unwrapResult } from "shared/utils/result";
 
 export const storeFavorite = async (
-  favoriteData: NewFavorite,
+  newFavorite: NewFavorite,
 ): Promise<PostFavoriteResponse | ApiError> => {
-  const saveFavoriteResult = await saveFavorite(favoriteData);
+  const saveFavoriteResult = await saveFavorite(newFavorite);
 
   if (isErrorResult(saveFavoriteResult)) {
     return {
