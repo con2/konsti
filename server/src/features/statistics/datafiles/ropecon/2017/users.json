@@ -19,7 +19,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8301"
       }
@@ -109,7 +109,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "715378",
@@ -154,7 +154,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "985332",
@@ -168,7 +168,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8359"
       },
@@ -199,7 +199,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "480622",
@@ -208,7 +208,7 @@
     "created": "2017-07-28T11:23:59.576Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "535230",
@@ -226,7 +226,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8463"
       }
@@ -244,7 +244,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8319"
       },
@@ -321,7 +321,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "421620",
@@ -330,7 +330,7 @@
     "created": "2017-07-28T11:36:28.798Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8403"
       },
@@ -381,7 +381,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8359"
       },
@@ -432,7 +432,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "392280",
@@ -441,7 +441,7 @@
     "created": "2017-07-28T11:41:23.296Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8343"
       }
@@ -454,7 +454,7 @@
     "created": "2017-07-28T11:41:46.693Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "276186",
@@ -463,7 +463,7 @@
     "created": "2017-07-28T11:57:52.037Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8401"
       },
@@ -496,7 +496,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "434853",
@@ -522,7 +522,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8450"
       },
@@ -541,7 +541,7 @@
     "created": "2017-07-28T12:12:41.500Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "491948",
@@ -578,7 +578,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "171619",
@@ -596,7 +596,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "896984",
@@ -618,7 +618,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8432"
       }
@@ -663,7 +663,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "84842",
@@ -734,7 +734,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "661183",
@@ -787,7 +787,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "338703",
@@ -851,7 +851,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "58904",
@@ -895,7 +895,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "999229",
@@ -904,7 +904,7 @@
     "created": "2017-07-28T12:18:12.480Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "789183",
@@ -922,7 +922,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "114240",
@@ -956,7 +956,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "224520",
@@ -1003,7 +1003,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "912962",
@@ -1017,7 +1017,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8452"
       }
@@ -1061,7 +1061,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "202803",
@@ -1147,7 +1147,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "378632",
@@ -1165,7 +1165,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8409"
       }
@@ -1183,7 +1183,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8437"
       }
@@ -1209,7 +1209,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "141399",
@@ -1273,7 +1273,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "413100",
@@ -1282,7 +1282,7 @@
     "created": "2017-07-28T12:24:51.659Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "1487",
@@ -1308,7 +1308,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "564848",
@@ -1390,7 +1390,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8378"
       },
@@ -1447,7 +1447,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "14502",
@@ -1456,7 +1456,7 @@
     "created": "2017-07-28T12:28:29.622Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "420650",
@@ -1496,7 +1496,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "390599",
@@ -1525,7 +1525,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "332240",
@@ -1534,7 +1534,7 @@
     "created": "2017-07-28T12:30:12.283Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "222883",
@@ -1571,7 +1571,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8313"
       }
@@ -1615,7 +1615,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "76522",
@@ -1624,7 +1624,7 @@
     "created": "2017-07-28T12:31:11.896Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "142553",
@@ -1676,7 +1676,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8300"
       }
@@ -1698,7 +1698,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8413"
       }
@@ -1728,7 +1728,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "697728",
@@ -1753,7 +1753,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "571464",
@@ -1779,7 +1779,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "762393",
@@ -1816,7 +1816,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "164371",
@@ -1825,7 +1825,7 @@
     "created": "2017-07-28T12:32:36.449Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "713121",
@@ -1834,7 +1834,7 @@
     "created": "2017-07-28T12:33:13.827Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "677903",
@@ -1859,7 +1859,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "807858",
@@ -1914,7 +1914,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "188019",
@@ -1964,7 +1964,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "221570",
@@ -1990,7 +1990,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8303"
       }
@@ -2049,7 +2049,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "461959",
@@ -2122,7 +2122,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8359"
       },
@@ -2174,7 +2174,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "269076",
@@ -2183,7 +2183,7 @@
     "created": "2017-07-28T12:40:30.282Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "200394",
@@ -2231,7 +2231,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "568609",
@@ -2264,7 +2264,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "81398",
@@ -2297,7 +2297,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8317"
       },
@@ -2337,7 +2337,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "190718",
@@ -2389,7 +2389,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "601249",
@@ -2411,7 +2411,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "403133",
@@ -2479,7 +2479,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "661811",
@@ -2497,7 +2497,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "858317",
@@ -2523,7 +2523,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8336"
       },
@@ -2563,7 +2563,7 @@
     "created": "2017-07-28T12:46:26.261Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "973454",
@@ -2588,7 +2588,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8442"
       },
@@ -2629,7 +2629,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "293909",
@@ -2677,7 +2677,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "91702",
@@ -2699,7 +2699,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "500200",
@@ -2743,7 +2743,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8426"
       },
@@ -2768,7 +2768,7 @@
     "created": "2017-07-28T12:49:45.972Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "737099",
@@ -2786,7 +2786,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8358"
       }
@@ -2808,7 +2808,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8400"
       },
@@ -2840,7 +2840,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8420"
       }
@@ -2862,7 +2862,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "363615",
@@ -2887,7 +2887,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "980464",
@@ -2920,7 +2920,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "732508",
@@ -2977,7 +2977,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8411"
       },
@@ -3061,7 +3061,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "709546",
@@ -3106,7 +3106,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8330"
       }
@@ -3158,7 +3158,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8384"
       },
@@ -3203,7 +3203,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8398"
       }
@@ -3241,7 +3241,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8452"
       }
@@ -3271,7 +3271,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "707921",
@@ -3320,7 +3320,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "729458",
@@ -3329,7 +3329,7 @@
     "created": "2017-07-28T12:58:01.411Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8361"
       },
@@ -3391,7 +3391,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8423"
       },
@@ -3449,7 +3449,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "193892",
@@ -3458,7 +3458,7 @@
     "created": "2017-07-28T12:58:31.737Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "238132",
@@ -3487,7 +3487,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8452"
       }
@@ -3520,7 +3520,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "331018",
@@ -3550,7 +3550,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8365"
       },
@@ -3604,7 +3604,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "14739",
@@ -3634,7 +3634,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8365"
       },
@@ -3733,7 +3733,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "79986",
@@ -3759,7 +3759,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8363"
       },
@@ -3778,7 +3778,7 @@
     "created": "2017-07-28T13:04:43.502Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8363"
       },
@@ -3794,7 +3794,7 @@
     "created": "2017-07-28T13:05:19.239Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "953936",
@@ -3819,7 +3819,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "525678",
@@ -3837,7 +3837,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8423"
       }
@@ -3855,7 +3855,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "135866",
@@ -3884,7 +3884,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8295"
       },
@@ -3912,7 +3912,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "216673",
@@ -3941,7 +3941,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "606037",
@@ -3980,7 +3980,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8427"
       },
@@ -4032,7 +4032,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "645282",
@@ -4072,7 +4072,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8382"
       },
@@ -4121,7 +4121,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "502897",
@@ -4143,7 +4143,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "977811",
@@ -4161,7 +4161,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "801388",
@@ -4194,7 +4194,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8459"
       },
@@ -4213,7 +4213,7 @@
     "created": "2017-07-28T13:11:22.828Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "52981",
@@ -4222,7 +4222,7 @@
     "created": "2017-07-28T13:11:31.009Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "73907",
@@ -4231,7 +4231,7 @@
     "created": "2017-07-28T13:12:00.921Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "232165",
@@ -4249,7 +4249,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8341"
       }
@@ -4262,7 +4262,7 @@
     "created": "2017-07-28T13:13:09.982Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8362"
       },
@@ -4347,7 +4347,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "766167",
@@ -4377,7 +4377,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "400494",
@@ -4403,7 +4403,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "325005",
@@ -4429,7 +4429,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "348786",
@@ -4466,7 +4466,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "646355",
@@ -4496,7 +4496,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "683409",
@@ -4563,7 +4563,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8362"
       },
@@ -4579,7 +4579,7 @@
     "created": "2017-07-28T13:20:42.334Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "365743",
@@ -4588,7 +4588,7 @@
     "created": "2017-07-28T13:21:07.886Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8356"
       },
@@ -4651,7 +4651,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8426"
       }
@@ -4692,7 +4692,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8317"
       }
@@ -4755,7 +4755,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8426"
       }
@@ -4823,7 +4823,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "124784",
@@ -4849,7 +4849,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "101447",
@@ -4858,7 +4858,7 @@
     "created": "2017-07-28T13:23:06.512Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "640106",
@@ -4884,7 +4884,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "349033",
@@ -4902,7 +4902,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "252610",
@@ -4932,7 +4932,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "495397",
@@ -4950,7 +4950,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "483926",
@@ -4959,7 +4959,7 @@
     "created": "2017-07-28T13:27:25.344Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "474964",
@@ -4989,7 +4989,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "163380",
@@ -5007,7 +5007,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8415"
       }
@@ -5029,7 +5029,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8474"
       }
@@ -5042,7 +5042,7 @@
     "created": "2017-07-28T13:28:54.699Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "552632",
@@ -5067,7 +5067,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "523076",
@@ -5076,7 +5076,7 @@
     "created": "2017-07-28T13:29:08.022Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8317"
       },
@@ -5101,7 +5101,7 @@
     "created": "2017-07-28T13:29:10.386Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8366"
       },
@@ -5137,7 +5137,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "532337",
@@ -5170,7 +5170,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "675454",
@@ -5188,7 +5188,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "535554",
@@ -5206,7 +5206,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "904107",
@@ -5288,7 +5288,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "817142",
@@ -5297,7 +5297,7 @@
     "created": "2017-07-28T13:32:09.724Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "709981",
@@ -5319,7 +5319,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8428"
       },
@@ -5348,7 +5348,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8388"
       },
@@ -5415,7 +5415,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "521649",
@@ -5452,7 +5452,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "307768",
@@ -5482,7 +5482,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "960632",
@@ -5491,7 +5491,7 @@
     "created": "2017-07-28T13:42:46.117Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "466444",
@@ -5505,7 +5505,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8411"
       }
@@ -5523,7 +5523,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8411"
       }
@@ -5545,7 +5545,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8320"
       }
@@ -5567,7 +5567,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8295"
       },
@@ -5661,7 +5661,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "635618",
@@ -5683,7 +5683,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "856073",
@@ -5701,7 +5701,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "82267",
@@ -5710,7 +5710,7 @@
     "created": "2017-07-28T13:53:31.347Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "404001",
@@ -5750,7 +5750,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "439751",
@@ -5759,7 +5759,7 @@
     "created": "2017-07-28T13:54:46.653Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8445"
       }
@@ -5808,7 +5808,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8365"
       }
@@ -5830,7 +5830,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "858561",
@@ -5864,7 +5864,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8365"
       }
@@ -5900,7 +5900,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "782344",
@@ -5925,7 +5925,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8346"
       }
@@ -5955,7 +5955,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "363252",
@@ -5977,7 +5977,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "146550",
@@ -5986,7 +5986,7 @@
     "created": "2017-07-28T13:58:48.393Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "82135",
@@ -6004,7 +6004,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "775670",
@@ -6029,7 +6029,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "672192",
@@ -6061,7 +6061,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "398218",
@@ -6070,7 +6070,7 @@
     "created": "2017-07-28T14:00:14.378Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "799528",
@@ -6096,7 +6096,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "201874",
@@ -6122,7 +6122,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "946175",
@@ -6131,7 +6131,7 @@
     "created": "2017-07-28T14:02:18.357Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "96583",
@@ -6172,7 +6172,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "429102",
@@ -6206,7 +6206,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "330003",
@@ -6224,7 +6224,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8418"
       },
@@ -6261,7 +6261,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8403"
       },
@@ -6289,7 +6289,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8403"
       },
@@ -6325,7 +6325,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8400"
       }
@@ -6351,7 +6351,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8318"
       },
@@ -6375,7 +6375,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8320"
       },
@@ -6406,7 +6406,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8454"
       },
@@ -6457,7 +6457,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "730193",
@@ -6466,7 +6466,7 @@
     "created": "2017-07-28T14:10:09.485Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8336"
       },
@@ -6501,7 +6501,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "82176",
@@ -6510,7 +6510,7 @@
     "created": "2017-07-28T14:16:29.720Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "278573",
@@ -6528,7 +6528,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "67599",
@@ -6550,7 +6550,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8424"
       },
@@ -6634,7 +6634,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "41946",
@@ -6660,7 +6660,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "679897",
@@ -6669,7 +6669,7 @@
     "created": "2017-07-28T14:24:28.893Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "588277",
@@ -6687,7 +6687,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8426"
       },
@@ -6703,7 +6703,7 @@
     "created": "2017-07-28T14:25:20.002Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "770603",
@@ -6731,7 +6731,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8364"
       }
@@ -6791,7 +6791,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "83710",
@@ -6816,7 +6816,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8371"
       },
@@ -6838,7 +6838,7 @@
     "created": "2017-07-28T14:28:15.148Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "662347",
@@ -6847,7 +6847,7 @@
     "created": "2017-07-28T14:28:48.844Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "689838",
@@ -6880,7 +6880,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "587418",
@@ -6898,7 +6898,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "475375",
@@ -6927,7 +6927,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "692629",
@@ -6961,7 +6961,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "307681",
@@ -6983,7 +6983,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "823150",
@@ -6992,7 +6992,7 @@
     "created": "2017-07-28T14:36:31.884Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "352328",
@@ -7018,7 +7018,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "586801",
@@ -7059,7 +7059,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "782158",
@@ -7084,7 +7084,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "422454",
@@ -7151,7 +7151,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8428"
       }
@@ -7164,7 +7164,7 @@
     "created": "2017-07-28T14:42:25.768Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "731677",
@@ -7173,7 +7173,7 @@
     "created": "2017-07-28T14:42:41.049Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "425259",
@@ -7214,7 +7214,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "651210",
@@ -7223,7 +7223,7 @@
     "created": "2017-07-28T14:43:05.319Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "37933",
@@ -7241,7 +7241,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8426"
       },
@@ -7270,7 +7270,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "746",
@@ -7310,7 +7310,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "601755",
@@ -7350,7 +7350,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "754171",
@@ -7388,7 +7388,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "736093",
@@ -7418,7 +7418,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "869560",
@@ -7440,7 +7440,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "735966",
@@ -7449,7 +7449,7 @@
     "created": "2017-07-28T14:46:07.978Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "278584",
@@ -7458,7 +7458,7 @@
     "created": "2017-07-28T14:47:20.283Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "274665",
@@ -7467,7 +7467,7 @@
     "created": "2017-07-28T14:48:06.487Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "788883",
@@ -7489,7 +7489,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "100749",
@@ -7518,7 +7518,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "408818",
@@ -7527,7 +7527,7 @@
     "created": "2017-07-28T14:52:48.768Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "935360",
@@ -7557,7 +7557,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "773239",
@@ -7593,7 +7593,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "631850",
@@ -7629,7 +7629,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "161349",
@@ -7655,7 +7655,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "626187",
@@ -7681,7 +7681,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8366"
       },
@@ -7797,7 +7797,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "446139",
@@ -7815,7 +7815,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "428528",
@@ -7840,7 +7840,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "527387",
@@ -7849,7 +7849,7 @@
     "created": "2017-07-28T15:11:42.756Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "232092",
@@ -7875,7 +7875,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "624921",
@@ -7893,7 +7893,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "870662",
@@ -7911,7 +7911,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "422641",
@@ -7936,7 +7936,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "539800",
@@ -7965,7 +7965,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "91230",
@@ -7983,7 +7983,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "905388",
@@ -8008,7 +8008,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "282",
@@ -8017,7 +8017,7 @@
     "created": "2017-07-28T15:26:19.210Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "115259",
@@ -8042,7 +8042,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "828370",
@@ -8071,7 +8071,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "77660",
@@ -8080,7 +8080,7 @@
     "created": "2017-07-28T15:33:52.933Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8358"
       }
@@ -8109,7 +8109,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "811708",
@@ -8127,7 +8127,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "358638",
@@ -8145,7 +8145,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8295"
       }
@@ -8158,7 +8158,7 @@
     "created": "2017-07-28T15:42:15.061Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8430"
       }
@@ -8188,7 +8188,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "549650",
@@ -8197,7 +8197,7 @@
     "created": "2017-07-28T15:44:35.947Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "413384",
@@ -8211,7 +8211,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "294185",
@@ -8237,7 +8237,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "31419",
@@ -8274,7 +8274,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8442"
       },
@@ -8314,7 +8314,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8351"
       },
@@ -8380,7 +8380,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "457599",
@@ -8389,7 +8389,7 @@
     "created": "2017-07-28T15:51:59.164Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "351070",
@@ -8398,7 +8398,7 @@
     "created": "2017-07-28T15:52:22.453Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "402288",
@@ -8407,7 +8407,7 @@
     "created": "2017-07-28T15:52:25.087Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "507234",
@@ -8425,7 +8425,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "248767",
@@ -8468,7 +8468,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "135184",
@@ -8486,7 +8486,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "278521",
@@ -8545,7 +8545,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "739390",
@@ -8563,7 +8563,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "538741",
@@ -8581,7 +8581,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "349378",
@@ -8599,7 +8599,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8340"
       },
@@ -8639,7 +8639,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "8285",
@@ -8657,7 +8657,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "134679",
@@ -8675,7 +8675,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "879103",
@@ -8701,7 +8701,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "701010",
@@ -8719,7 +8719,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8331"
       }
@@ -8756,7 +8756,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8371"
       },
@@ -8792,7 +8792,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8372"
       },
@@ -8851,7 +8851,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8403"
       },
@@ -8929,7 +8929,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "817251",
@@ -8955,7 +8955,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8396"
       },
@@ -8971,7 +8971,7 @@
     "created": "2017-07-28T16:13:28.846Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "390588",
@@ -8997,7 +8997,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "404855",
@@ -9034,7 +9034,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "671039",
@@ -9090,7 +9090,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "27105",
@@ -9108,7 +9108,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "572774",
@@ -9149,7 +9149,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8400"
       },
@@ -9202,7 +9202,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "200171",
@@ -9211,7 +9211,7 @@
     "created": "2017-07-28T16:47:08.111Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "576870",
@@ -9220,7 +9220,7 @@
     "created": "2017-07-28T16:49:32.468Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "811026",
@@ -9261,7 +9261,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "301263",
@@ -9294,7 +9294,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8410"
       },
@@ -9313,7 +9313,7 @@
     "created": "2017-07-28T16:55:26.778Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8411"
       },
@@ -9329,7 +9329,7 @@
     "created": "2017-07-28T16:56:22.640Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8411"
       }
@@ -9359,7 +9359,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8311"
       },
@@ -9383,7 +9383,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8411"
       }
@@ -9420,7 +9420,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "236987",
@@ -9429,7 +9429,7 @@
     "created": "2017-07-28T17:06:35.157Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "89527",
@@ -9438,7 +9438,7 @@
     "created": "2017-07-28T17:10:54.575Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "772756",
@@ -9471,7 +9471,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "607670",
@@ -9511,7 +9511,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "160931",
@@ -9540,7 +9540,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8357"
       },
@@ -9578,7 +9578,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "742502",
@@ -9587,7 +9587,7 @@
     "created": "2017-07-28T19:00:58.746Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "291877",
@@ -9601,7 +9601,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8411"
       },
@@ -9638,7 +9638,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "137793",
@@ -9675,7 +9675,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "136292",
@@ -9701,7 +9701,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "322266",
@@ -9719,7 +9719,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8401"
       }
@@ -9749,7 +9749,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "527034",
@@ -9771,7 +9771,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "183384",
@@ -9796,7 +9796,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8417"
       },
@@ -9827,7 +9827,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "185580",
@@ -9841,7 +9841,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "89017",
@@ -9897,7 +9897,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8434"
       }
@@ -9923,7 +9923,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "688895",
@@ -9945,7 +9945,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "677739",
@@ -9978,7 +9978,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "720445",
@@ -10000,7 +10000,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "197410",
@@ -10014,7 +10014,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "836372",
@@ -10040,7 +10040,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8369"
       }
@@ -10062,7 +10062,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "286139",
@@ -10099,7 +10099,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8340"
       },
@@ -10124,7 +10124,7 @@
     "created": "2017-07-29T06:39:06.129Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "39095",
@@ -10168,7 +10168,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8371"
       }
@@ -10198,7 +10198,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "717921",
@@ -10212,7 +10212,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "418386",
@@ -10253,7 +10253,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "454058",
@@ -10262,7 +10262,7 @@
     "created": "2017-07-29T06:43:31.272Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "703878",
@@ -10303,7 +10303,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "345294",
@@ -10312,7 +10312,7 @@
     "created": "2017-07-29T06:46:33.620Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "354262",
@@ -10321,7 +10321,7 @@
     "created": "2017-07-29T06:52:47.329Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "548524",
@@ -10330,7 +10330,7 @@
     "created": "2017-07-29T06:55:48.438Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "812077",
@@ -10359,7 +10359,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "671084",
@@ -10377,7 +10377,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "970868",
@@ -10395,7 +10395,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "324244",
@@ -10404,7 +10404,7 @@
     "created": "2017-07-29T06:59:21.156Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "707613",
@@ -10422,7 +10422,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "562991",
@@ -10436,7 +10436,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "509222",
@@ -10469,7 +10469,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "889172",
@@ -10483,7 +10483,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8411"
       }
@@ -10528,7 +10528,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "647478",
@@ -10557,7 +10557,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "176031",
@@ -10582,7 +10582,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8411"
       },
@@ -10610,7 +10610,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "873484",
@@ -10619,7 +10619,7 @@
     "created": "2017-07-29T07:22:30.697Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "451292",
@@ -10645,7 +10645,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "434548",
@@ -10667,7 +10667,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "258215",
@@ -10696,7 +10696,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "496490",
@@ -10721,7 +10721,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "28081",
@@ -10747,7 +10747,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "126673",
@@ -10765,7 +10765,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "413090",
@@ -10774,7 +10774,7 @@
     "created": "2017-07-29T07:44:25.483Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "790070",
@@ -10783,7 +10783,7 @@
     "created": "2017-07-29T07:46:22.069Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "961115",
@@ -10828,7 +10828,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "798979",
@@ -10854,7 +10854,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "121827",
@@ -10880,7 +10880,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "710936",
@@ -10906,7 +10906,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "826224",
@@ -10951,7 +10951,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "274623",
@@ -10960,7 +10960,7 @@
     "created": "2017-07-29T08:01:33.030Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "854852",
@@ -10986,7 +10986,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "844706",
@@ -11012,7 +11012,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "712625",
@@ -11037,7 +11037,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "428813",
@@ -11055,7 +11055,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "979076",
@@ -11077,7 +11077,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "975406",
@@ -11095,7 +11095,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "830810",
@@ -11144,7 +11144,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "466237",
@@ -11166,7 +11166,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "957268",
@@ -11192,7 +11192,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "534299",
@@ -11201,7 +11201,7 @@
     "created": "2017-07-29T08:25:20.546Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "964034",
@@ -11223,7 +11223,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "741970",
@@ -11232,7 +11232,7 @@
     "created": "2017-07-29T08:35:51.419Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "665397",
@@ -11269,7 +11269,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8359"
       },
@@ -11304,7 +11304,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "790024",
@@ -11322,7 +11322,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8411"
       }
@@ -11352,7 +11352,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "778775",
@@ -11366,7 +11366,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "822947",
@@ -11375,7 +11375,7 @@
     "created": "2017-07-29T08:42:44.857Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "271214",
@@ -11401,7 +11401,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8340"
       },
@@ -11417,7 +11417,7 @@
     "created": "2017-07-29T08:43:33.400Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "151586",
@@ -11431,7 +11431,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "358953",
@@ -11449,7 +11449,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "492169",
@@ -11463,7 +11463,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "196835",
@@ -11477,7 +11477,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "60308",
@@ -11495,7 +11495,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "664706",
@@ -11509,7 +11509,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "342597",
@@ -11527,7 +11527,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "251285",
@@ -11549,7 +11549,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8425"
       }
@@ -11575,7 +11575,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "772864",
@@ -11593,7 +11593,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8347"
       }
@@ -11619,7 +11619,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "335885",
@@ -11641,7 +11641,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "365645",
@@ -11659,7 +11659,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8425"
       }
@@ -11681,7 +11681,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "865601",
@@ -11699,7 +11699,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "189711",
@@ -11728,7 +11728,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "14100",
@@ -11761,7 +11761,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "566896",
@@ -11775,7 +11775,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "334099",
@@ -11815,7 +11815,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "807258",
@@ -11848,7 +11848,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8340"
       }
@@ -11861,7 +11861,7 @@
     "created": "2017-07-29T09:26:33.389Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "579962",
@@ -11912,7 +11912,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "691146",
@@ -11937,7 +11937,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "626398",
@@ -11959,7 +11959,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8405"
       }
@@ -12004,7 +12004,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8379"
       },
@@ -12094,7 +12094,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "64073",
@@ -12103,7 +12103,7 @@
     "created": "2017-07-29T09:50:27.578Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8373"
       },
@@ -12132,7 +12132,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "736685",
@@ -12146,7 +12146,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "70853",
@@ -12164,7 +12164,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "689583",
@@ -12182,7 +12182,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "818981",
@@ -12200,7 +12200,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8338"
       }
@@ -12222,7 +12222,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "610999",
@@ -12236,7 +12236,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "617336",
@@ -12258,7 +12258,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "454232",
@@ -12267,7 +12267,7 @@
     "created": "2017-07-29T10:17:07.556Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "680467",
@@ -12276,7 +12276,7 @@
     "created": "2017-07-29T10:17:36.494Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "68460",
@@ -12294,7 +12294,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "282697",
@@ -12316,7 +12316,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8439"
       },
@@ -12344,7 +12344,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "190544",
@@ -12353,7 +12353,7 @@
     "created": "2017-07-29T10:27:44.069Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "994532",
@@ -12379,7 +12379,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "899998",
@@ -12405,7 +12405,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "837348",
@@ -12414,7 +12414,7 @@
     "created": "2017-07-29T10:34:02.568Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "23602",
@@ -12440,7 +12440,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "383241",
@@ -12458,7 +12458,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "765074",
@@ -12472,7 +12472,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8376"
       }
@@ -12490,7 +12490,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "279994",
@@ -12508,7 +12508,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "985491",
@@ -12526,7 +12526,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "79206",
@@ -12548,7 +12548,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "738304",
@@ -12566,7 +12566,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "436303",
@@ -12584,7 +12584,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "170412",
@@ -12602,7 +12602,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "370980",
@@ -12628,7 +12628,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "912146",
@@ -12668,7 +12668,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "944109",
@@ -12686,7 +12686,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "551573",
@@ -12711,7 +12711,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "857601",
@@ -12720,7 +12720,7 @@
     "created": "2017-07-29T11:01:55.107Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "237562",
@@ -12734,7 +12734,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "48677",
@@ -12760,7 +12760,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "292007",
@@ -12778,7 +12778,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8357"
       }
@@ -12791,7 +12791,7 @@
     "created": "2017-07-29T11:20:01.242Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "444594",
@@ -12809,7 +12809,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "87811",
@@ -12818,7 +12818,7 @@
     "created": "2017-07-29T11:29:14.626Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "184396",
@@ -12836,7 +12836,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "577974",
@@ -12854,7 +12854,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "781204",
@@ -12872,7 +12872,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "948112",
@@ -12881,7 +12881,7 @@
     "created": "2017-07-29T11:44:12.910Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "717371",
@@ -12899,7 +12899,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "923837",
@@ -12913,7 +12913,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8375"
       }
@@ -12943,7 +12943,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8338"
       },
@@ -12959,7 +12959,7 @@
     "created": "2017-07-29T11:51:15.611Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "385338",
@@ -12977,7 +12977,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8463"
       },
@@ -12993,7 +12993,7 @@
     "created": "2017-07-29T11:55:02.618Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "163505",
@@ -13002,7 +13002,7 @@
     "created": "2017-07-29T11:55:37.625Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "155419",
@@ -13020,7 +13020,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "307817",
@@ -13038,7 +13038,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "226320",
@@ -13071,7 +13071,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "809516",
@@ -13089,7 +13089,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8476"
       }
@@ -13107,7 +13107,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "303972",
@@ -13129,7 +13129,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8463"
       }
@@ -13155,7 +13155,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "928467",
@@ -13169,7 +13169,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "8419",
@@ -13178,7 +13178,7 @@
     "created": "2017-07-29T12:32:06.428Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "352719",
@@ -13204,7 +13204,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "487309",
@@ -13222,7 +13222,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "471622",
@@ -13240,7 +13240,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8370"
       }
@@ -13262,7 +13262,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "839656",
@@ -13280,7 +13280,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "116437",
@@ -13289,7 +13289,7 @@
     "created": "2017-07-29T12:52:04.301Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "455250",
@@ -13311,7 +13311,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "102872",
@@ -13352,7 +13352,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "170996",
@@ -13361,7 +13361,7 @@
     "created": "2017-07-29T13:00:50.699Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "182053",
@@ -13379,7 +13379,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "325301",
@@ -13388,7 +13388,7 @@
     "created": "2017-07-29T13:06:28.430Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "894275",
@@ -13406,7 +13406,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "726395",
@@ -13420,7 +13420,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "444602",
@@ -13449,7 +13449,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8460"
       }
@@ -13479,7 +13479,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "19843",
@@ -13501,7 +13501,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8327"
       }
@@ -13527,7 +13527,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "693040",
@@ -13536,7 +13536,7 @@
     "created": "2017-07-29T13:48:40.886Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "581573",
@@ -13545,7 +13545,7 @@
     "created": "2017-07-29T13:56:51.206Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "901937",
@@ -13571,7 +13571,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "597217",
@@ -13580,7 +13580,7 @@
     "created": "2017-07-29T14:00:52.632Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "884453",
@@ -13606,7 +13606,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "469780",
@@ -13620,7 +13620,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "620291",
@@ -13653,7 +13653,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "322887",
@@ -13662,7 +13662,7 @@
     "created": "2017-07-29T14:13:39.989Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "436624",
@@ -13700,7 +13700,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "775675",
@@ -13738,7 +13738,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "514008",
@@ -13760,7 +13760,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "667321",
@@ -13778,7 +13778,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "431158",
@@ -13796,7 +13796,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "413902",
@@ -13814,7 +13814,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "217040",
@@ -13836,7 +13836,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "401324",
@@ -13845,7 +13845,7 @@
     "created": "2017-07-29T14:46:44.421Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "669549",
@@ -13863,7 +13863,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "864261",
@@ -13889,7 +13889,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "415745",
@@ -13915,7 +13915,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "532922",
@@ -13940,7 +13940,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "478877",
@@ -13981,7 +13981,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8308"
       },
@@ -13997,7 +13997,7 @@
     "created": "2017-07-29T15:07:21.556Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "117866",
@@ -14023,7 +14023,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "378047",
@@ -14045,7 +14045,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "477602",
@@ -14067,7 +14067,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "494824",
@@ -14085,7 +14085,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "373194",
@@ -14103,7 +14103,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "689790",
@@ -14136,7 +14136,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "192947",
@@ -14145,7 +14145,7 @@
     "created": "2017-07-29T15:50:35.462Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "915758",
@@ -14167,7 +14167,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "917283",
@@ -14189,7 +14189,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "462902",
@@ -14215,7 +14215,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "260352",
@@ -14241,7 +14241,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       {
         "id": "8437"
       },
@@ -14266,7 +14266,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "647984",
@@ -14284,7 +14284,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "481419",
@@ -14302,7 +14302,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "951399",
@@ -14328,7 +14328,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "740687",
@@ -14354,7 +14354,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "709669",
@@ -14372,7 +14372,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "10610",
@@ -14390,7 +14390,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "771176",
@@ -14416,7 +14416,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "888388",
@@ -14442,7 +14442,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "66745",
@@ -14464,7 +14464,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "485888",
@@ -14482,7 +14482,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "859285",
@@ -14504,7 +14504,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "553209",
@@ -14513,7 +14513,7 @@
     "created": "2017-07-30T07:03:08.495Z",
     "directSignups": [],
     "lotterySignups": [],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "916096",
@@ -14531,7 +14531,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "86088",
@@ -14553,7 +14553,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "954836",
@@ -14571,7 +14571,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "429618",
@@ -14589,7 +14589,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "904136",
@@ -14607,7 +14607,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "417680",
@@ -14629,7 +14629,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "114615",
@@ -14655,7 +14655,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "846695",
@@ -14673,7 +14673,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "653852",
@@ -14695,7 +14695,7 @@
         "priority": "2"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "625451",
@@ -14721,7 +14721,7 @@
         "priority": "3"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "115789",
@@ -14739,7 +14739,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "791020",
@@ -14757,7 +14757,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "64414",
@@ -14775,7 +14775,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "97638",
@@ -14793,7 +14793,7 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   },
   {
     "username": "616791",
@@ -14811,6 +14811,6 @@
         "priority": "1"
       }
     ],
-    "favoritedProgramItems": []
+    "favoriteProgramItemIds": []
   }
 ]

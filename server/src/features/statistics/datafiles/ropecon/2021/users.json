@@ -1,6 +1,6 @@
 [
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "324507",
     "userGroup": "user",
     "serial": "7998537893",
@@ -30,7 +30,7 @@
     "updatedAt": { "$date": "2021-07-25T21:47:37.254Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "268498",
     "userGroup": "user",
     "serial": "8440980848",
@@ -48,7 +48,7 @@
     "updatedAt": { "$date": "2021-07-25T21:55:21.642Z" }
   },
   {
-    "favoritedProgramItems": ["p4661", "p4709"],
+    "favoriteProgramItemIds": ["p4661", "p4709"],
     "username": "269097",
     "userGroup": "user",
     "serial": "2968378972",
@@ -78,7 +78,7 @@
     "updatedAt": { "$date": "2021-07-25T22:28:01.62Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "734580",
     "userGroup": "user",
     "serial": "3375696923",
@@ -108,7 +108,7 @@
     "updatedAt": { "$date": "2021-07-25T22:29:08.822Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "366390",
     "userGroup": "user",
     "serial": "2140266954",
@@ -138,7 +138,7 @@
     "updatedAt": { "$date": "2021-07-25T23:03:56.534Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "427591",
     "userGroup": "user",
     "serial": "3542764034",
@@ -168,7 +168,7 @@
     "updatedAt": { "$date": "2021-07-26T05:57:26.761Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "982746",
     "userGroup": "user",
     "serial": "7997950253",
@@ -198,7 +198,7 @@
     "updatedAt": { "$date": "2021-07-26T06:22:33.647Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "967769",
     "userGroup": "user",
     "serial": "2780308769",
@@ -216,7 +216,7 @@
     "updatedAt": { "$date": "2021-07-29T10:21:15.237Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "9685",
     "userGroup": "user",
     "serial": "5743610916",
@@ -252,7 +252,7 @@
     "updatedAt": { "$date": "2021-07-31T20:07:11.046Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "272676",
     "userGroup": "user",
     "serial": "4831108933",
@@ -282,7 +282,7 @@
     "updatedAt": { "$date": "2021-07-26T07:07:30.235Z" }
   },
   {
-    "favoritedProgramItems": ["p4642"],
+    "favoriteProgramItemIds": ["p4642"],
     "username": "902143",
     "userGroup": "user",
     "serial": "2337736355",
@@ -293,7 +293,7 @@
     "updatedAt": { "$date": "2021-07-26T15:30:46.57Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "686325",
     "userGroup": "user",
     "serial": "4515837294",
@@ -323,7 +323,7 @@
     "updatedAt": { "$date": "2021-07-29T16:43:38.394Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "256952",
     "userGroup": "user",
     "serial": "4701690044",
@@ -353,7 +353,7 @@
     "updatedAt": { "$date": "2021-07-26T08:37:30.07Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "213800",
     "userGroup": "user",
     "serial": "9188742895",
@@ -364,7 +364,7 @@
     "updatedAt": { "$date": "2021-07-29T06:05:55.195Z" }
   },
   {
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       "p4640",
       "p4653",
       "p4621",
@@ -421,7 +421,7 @@
     "updatedAt": { "$date": "2021-08-01T08:04:24.935Z" }
   },
   {
-    "favoritedProgramItems": ["p4601"],
+    "favoriteProgramItemIds": ["p4601"],
     "username": "144226",
     "userGroup": "user",
     "serial": "3130034287",
@@ -439,7 +439,7 @@
     "updatedAt": { "$date": "2021-07-26T11:43:26.107Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "925433",
     "userGroup": "user",
     "serial": "1528287871",
@@ -469,7 +469,7 @@
     "updatedAt": { "$date": "2021-07-26T13:11:42.231Z" }
   },
   {
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       "p4694",
       "p4661",
       "p4693",
@@ -513,7 +513,7 @@
     "updatedAt": { "$date": "2021-07-28T20:13:26.928Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "913536",
     "userGroup": "user",
     "serial": "9387609960",
@@ -543,7 +543,7 @@
     "updatedAt": { "$date": "2021-07-26T13:49:08.57Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "123333",
     "userGroup": "user",
     "serial": "6136641906",
@@ -554,7 +554,7 @@
     "updatedAt": { "$date": "2021-07-30T09:47:43.584Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "693920",
     "userGroup": "user",
     "serial": "8743105804",
@@ -565,7 +565,7 @@
     "updatedAt": { "$date": "2021-07-26T16:22:45.343Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "300718",
     "userGroup": "user",
     "serial": "6504131548",
@@ -576,7 +576,7 @@
     "updatedAt": { "$date": "2021-07-31T15:07:42.434Z" }
   },
   {
-    "favoritedProgramItems": ["p4601"],
+    "favoriteProgramItemIds": ["p4601"],
     "username": "126846",
     "userGroup": "user",
     "serial": "2243897523",
@@ -594,7 +594,7 @@
     "updatedAt": { "$date": "2021-07-26T15:11:48.667Z" }
   },
   {
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       "p4684",
       "p4682",
       "p4603",
@@ -619,7 +619,7 @@
     "updatedAt": { "$date": "2021-07-26T15:36:59.807Z" }
   },
   {
-    "favoritedProgramItems": ["p4699"],
+    "favoriteProgramItemIds": ["p4699"],
     "username": "207237",
     "userGroup": "user",
     "serial": "2994638431",
@@ -637,7 +637,7 @@
     "updatedAt": { "$date": "2021-07-26T15:25:56.987Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "427967",
     "userGroup": "user",
     "serial": "0082058215",
@@ -648,7 +648,7 @@
     "updatedAt": { "$date": "2021-07-26T17:21:35.604Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "260224",
     "userGroup": "user",
     "serial": "5690480982",
@@ -666,7 +666,7 @@
     "updatedAt": { "$date": "2021-07-26T15:30:09.181Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "782727",
     "userGroup": "user",
     "serial": "9729215922",
@@ -684,7 +684,7 @@
     "updatedAt": { "$date": "2021-07-26T16:21:29.282Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "918030",
     "userGroup": "user",
     "serial": "9281770876",
@@ -708,7 +708,7 @@
     "updatedAt": { "$date": "2021-07-29T21:30:03.974Z" }
   },
   {
-    "favoritedProgramItems": ["p4697", "p4705", "p4695"],
+    "favoriteProgramItemIds": ["p4697", "p4705", "p4695"],
     "username": "62182",
     "userGroup": "user",
     "serial": "1472320983",
@@ -726,7 +726,7 @@
     "updatedAt": { "$date": "2021-07-26T19:06:04.403Z" }
   },
   {
-    "favoritedProgramItems": ["p4601"],
+    "favoriteProgramItemIds": ["p4601"],
     "username": "462921",
     "userGroup": "user",
     "serial": "1956225898",
@@ -744,7 +744,7 @@
     "updatedAt": { "$date": "2021-07-26T16:26:21.022Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "698857",
     "userGroup": "user",
     "serial": "7472575542",
@@ -768,7 +768,7 @@
     "updatedAt": { "$date": "2021-07-26T17:04:03.389Z" }
   },
   {
-    "favoritedProgramItems": ["p4740", "p4702", "p4701", "p4699"],
+    "favoriteProgramItemIds": ["p4740", "p4702", "p4701", "p4699"],
     "username": "397516",
     "userGroup": "user",
     "serial": "0254133739",
@@ -804,7 +804,7 @@
     "updatedAt": { "$date": "2021-07-30T14:04:01.355Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "512194",
     "userGroup": "user",
     "serial": "1055896136",
@@ -834,7 +834,7 @@
     "updatedAt": { "$date": "2021-07-29T09:57:19.593Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "28277",
     "userGroup": "user",
     "serial": "6932021147",
@@ -845,7 +845,7 @@
     "updatedAt": { "$date": "2021-07-27T07:51:57.678Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "731740",
     "userGroup": "user",
     "serial": "4061702314",
@@ -875,7 +875,7 @@
     "updatedAt": { "$date": "2021-07-29T03:58:03.426Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "678067",
     "userGroup": "user",
     "serial": "7016260841",
@@ -905,7 +905,7 @@
     "updatedAt": { "$date": "2021-07-26T17:34:02.549Z" }
   },
   {
-    "favoritedProgramItems": ["p4684", "p4685", "p4694", "p4621", "p4683"],
+    "favoriteProgramItemIds": ["p4684", "p4685", "p4694", "p4621", "p4683"],
     "username": "244811",
     "userGroup": "user",
     "serial": "2299850020",
@@ -916,7 +916,7 @@
     "updatedAt": { "$date": "2021-07-26T22:21:46.467Z" }
   },
   {
-    "favoritedProgramItems": ["p4641"],
+    "favoriteProgramItemIds": ["p4641"],
     "username": "381569",
     "userGroup": "user",
     "serial": "1510345778",
@@ -927,7 +927,7 @@
     "updatedAt": { "$date": "2021-07-26T19:38:57.519Z" }
   },
   {
-    "favoritedProgramItems": ["p4653", "p4684", "p4682", "p4675"],
+    "favoriteProgramItemIds": ["p4653", "p4684", "p4682", "p4675"],
     "username": "65249",
     "userGroup": "user",
     "serial": "7929139504",
@@ -951,7 +951,7 @@
     "updatedAt": { "$date": "2021-07-27T08:31:21.614Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "46053",
     "userGroup": "user",
     "serial": "4411498233",
@@ -962,7 +962,7 @@
     "updatedAt": { "$date": "2021-07-26T19:06:49.712Z" }
   },
   {
-    "favoritedProgramItems": ["p4703", "p4697", "p4705", "p4704"],
+    "favoriteProgramItemIds": ["p4703", "p4697", "p4705", "p4704"],
     "username": "13452",
     "userGroup": "user",
     "serial": "8946915694",
@@ -992,7 +992,7 @@
     "updatedAt": { "$date": "2021-07-31T09:18:56.413Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "625517",
     "userGroup": "user",
     "serial": "4496212590",
@@ -1010,7 +1010,7 @@
     "updatedAt": { "$date": "2021-07-29T14:25:37.404Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "933884",
     "userGroup": "user",
     "serial": "6245526873",
@@ -1021,7 +1021,7 @@
     "updatedAt": { "$date": "2021-07-26T20:06:04.042Z" }
   },
   {
-    "favoritedProgramItems": ["p4699"],
+    "favoriteProgramItemIds": ["p4699"],
     "username": "159778",
     "userGroup": "user",
     "serial": "5812648193",
@@ -1039,7 +1039,7 @@
     "updatedAt": { "$date": "2021-07-29T15:07:54.382Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "233043",
     "userGroup": "user",
     "serial": "1339737379",
@@ -1050,7 +1050,7 @@
     "updatedAt": { "$date": "2021-07-26T20:27:07.301Z" }
   },
   {
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       "p4674",
       "p4652",
       "p4667",
@@ -1097,7 +1097,7 @@
     "updatedAt": { "$date": "2021-07-30T11:29:11.4Z" }
   },
   {
-    "favoritedProgramItems": ["p4642", "p4601", "p4632"],
+    "favoriteProgramItemIds": ["p4642", "p4601", "p4632"],
     "username": "713392",
     "userGroup": "user",
     "serial": "4187532934",
@@ -1127,7 +1127,7 @@
     "updatedAt": { "$date": "2021-07-30T11:54:37.187Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "515641",
     "userGroup": "user",
     "serial": "5106074247",
@@ -1145,7 +1145,7 @@
     "updatedAt": { "$date": "2021-07-26T21:57:05.933Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "799114",
     "userGroup": "user",
     "serial": "8473943028",
@@ -1156,7 +1156,7 @@
     "updatedAt": { "$date": "2021-07-29T14:42:48.253Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "214767",
     "userGroup": "user",
     "serial": "2528990951",
@@ -1180,7 +1180,7 @@
     "updatedAt": { "$date": "2021-07-28T11:34:10.608Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "436370",
     "userGroup": "user",
     "serial": "9229328357",
@@ -1222,7 +1222,7 @@
     "updatedAt": { "$date": "2021-07-29T09:47:56.724Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "152321",
     "userGroup": "user",
     "serial": "7662102024",
@@ -1233,7 +1233,7 @@
     "updatedAt": { "$date": "2021-07-27T06:32:14.309Z" }
   },
   {
-    "favoritedProgramItems": ["p4703", "p4706", "p4699", "p4700"],
+    "favoriteProgramItemIds": ["p4703", "p4706", "p4699", "p4700"],
     "username": "110962",
     "userGroup": "user",
     "serial": "0697825172",
@@ -1263,7 +1263,7 @@
     "updatedAt": { "$date": "2021-07-31T16:45:04.34Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "503601",
     "userGroup": "user",
     "serial": "1354289447",
@@ -1281,7 +1281,7 @@
     "updatedAt": { "$date": "2021-07-27T07:39:22.444Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "207890",
     "userGroup": "user",
     "serial": "0837281229",
@@ -1292,7 +1292,7 @@
     "updatedAt": { "$date": "2021-07-27T07:43:26.672Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "11183",
     "userGroup": "user",
     "serial": "4037693829",
@@ -1328,7 +1328,7 @@
     "updatedAt": { "$date": "2021-07-29T15:06:51.426Z" }
   },
   {
-    "favoritedProgramItems": ["p4729", "p4691"],
+    "favoriteProgramItemIds": ["p4729", "p4691"],
     "username": "94793",
     "userGroup": "user",
     "serial": "4161048576",
@@ -1346,7 +1346,7 @@
     "updatedAt": { "$date": "2021-07-28T09:36:47.246Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "345535",
     "userGroup": "user",
     "serial": "7901573209",
@@ -1357,7 +1357,7 @@
     "updatedAt": { "$date": "2021-07-31T21:11:50.874Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "141765",
     "userGroup": "user",
     "serial": "3520357934",
@@ -1368,7 +1368,7 @@
     "updatedAt": { "$date": "2021-07-27T10:01:23.956Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "69106",
     "userGroup": "user",
     "serial": "1314833771",
@@ -1386,7 +1386,7 @@
     "updatedAt": { "$date": "2021-07-31T07:55:52.346Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "441234",
     "userGroup": "user",
     "serial": "5390936796",
@@ -1404,7 +1404,7 @@
     "updatedAt": { "$date": "2021-07-28T14:32:55.37Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "241312",
     "userGroup": "user",
     "serial": "3366549628",
@@ -1422,7 +1422,7 @@
     "updatedAt": { "$date": "2021-07-27T10:35:22.08Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "756483",
     "userGroup": "user",
     "serial": "0911343796",
@@ -1458,7 +1458,7 @@
     "updatedAt": { "$date": "2021-07-31T13:27:31.199Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "596297",
     "userGroup": "user",
     "serial": "5533143862",
@@ -1488,7 +1488,7 @@
     "updatedAt": { "$date": "2021-07-27T16:39:59.991Z" }
   },
   {
-    "favoritedProgramItems": [
+    "favoriteProgramItemIds": [
       "p4640",
       "p4652",
       "p4729",
@@ -1524,7 +1524,7 @@
     "updatedAt": { "$date": "2021-07-29T14:59:48.777Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "528080",
     "userGroup": "user",
     "serial": "2551641950",
@@ -1535,7 +1535,7 @@
     "updatedAt": { "$date": "2021-07-27T20:20:25.991Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "262038",
     "userGroup": "user",
     "serial": "1174658094",
@@ -1546,7 +1546,7 @@
     "updatedAt": { "$date": "2021-07-27T21:02:01.924Z" }
   },
   {
-    "favoritedProgramItems": ["p4684", "p4685", "p4682", "p4681", "p4683"],
+    "favoriteProgramItemIds": ["p4684", "p4685", "p4682", "p4681", "p4683"],
     "username": "96057",
     "userGroup": "user",
     "serial": "4841180401",
@@ -1557,7 +1557,7 @@
     "updatedAt": { "$date": "2021-07-27T22:16:55.465Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "267525",
     "userGroup": "user",
     "serial": "0047746664",
@@ -1575,7 +1575,7 @@
     "updatedAt": { "$date": "2021-07-28T00:02:12.626Z" }
   },
   {
-    "favoritedProgramItems": ["p4603", "p4694", "p4656", "p4654"],
+    "favoriteProgramItemIds": ["p4603", "p4694", "p4656", "p4654"],
     "username": "495695",
     "userGroup": "user",
     "serial": "2076444286",
@@ -1599,7 +1599,7 @@
     "updatedAt": { "$date": "2021-08-01T08:45:44.256Z" }
   },
   {
-    "favoritedProgramItems": ["p4603"],
+    "favoriteProgramItemIds": ["p4603"],
     "username": "238798",
     "userGroup": "user",
     "serial": "2012565707",
@@ -1617,7 +1617,7 @@
     "updatedAt": { "$date": "2021-07-28T04:53:50.166Z" }
   },
   {
-    "favoritedProgramItems": ["p4603", "p4656", "p4681", "p4693", "p4675"],
+    "favoriteProgramItemIds": ["p4603", "p4656", "p4681", "p4693", "p4675"],
     "username": "255965",
     "userGroup": "user",
     "serial": "2423162144",
@@ -1635,7 +1635,7 @@
     "updatedAt": { "$date": "2021-07-31T13:17:00.082Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "361193",
     "userGroup": "user",
     "serial": "4309269084",
@@ -1646,7 +1646,7 @@
     "updatedAt": { "$date": "2021-07-28T09:56:25.136Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "282954",
     "userGroup": "user",
     "serial": "0435921788",
@@ -1657,7 +1657,7 @@
     "updatedAt": { "$date": "2021-07-31T14:15:19.402Z" }
   },
   {
-    "favoritedProgramItems": ["p4699"],
+    "favoriteProgramItemIds": ["p4699"],
     "username": "934836",
     "userGroup": "user",
     "serial": "2839655772",
@@ -1668,7 +1668,7 @@
     "updatedAt": { "$date": "2021-07-29T11:57:12.356Z" }
   },
   {
-    "favoritedProgramItems": ["p4703", "p4699"],
+    "favoriteProgramItemIds": ["p4703", "p4699"],
     "username": "359808",
     "userGroup": "user",
     "serial": "3472643778",
@@ -1704,7 +1704,7 @@
     "updatedAt": { "$date": "2021-07-31T13:36:26.344Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "753992",
     "userGroup": "user",
     "serial": "4273041006",
@@ -1746,7 +1746,7 @@
     "updatedAt": { "$date": "2021-07-28T12:53:13.535Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "309608",
     "userGroup": "user",
     "serial": "9756876687",
@@ -1764,7 +1764,7 @@
     "updatedAt": { "$date": "2021-07-28T13:12:04.071Z" }
   },
   {
-    "favoritedProgramItems": ["p4701", "p4706", "p4699"],
+    "favoriteProgramItemIds": ["p4701", "p4706", "p4699"],
     "username": "319502",
     "userGroup": "user",
     "serial": "2015105303",
@@ -1794,7 +1794,7 @@
     "updatedAt": { "$date": "2021-07-31T22:34:16.935Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "181397",
     "userGroup": "user",
     "serial": "4912532647",
@@ -1812,7 +1812,7 @@
     "updatedAt": { "$date": "2021-07-28T18:19:34.814Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "329438",
     "userGroup": "user",
     "serial": "6573719892",
@@ -1836,7 +1836,7 @@
     "updatedAt": { "$date": "2021-07-28T18:42:56.408Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "328826",
     "userGroup": "user",
     "serial": "5220362932",
@@ -1847,7 +1847,7 @@
     "updatedAt": { "$date": "2021-07-28T19:12:03.02Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "914040",
     "userGroup": "user",
     "serial": "2553083417",
@@ -1871,7 +1871,7 @@
     "updatedAt": { "$date": "2021-07-28T20:45:48.674Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "813563",
     "userGroup": "user",
     "serial": "8319781673",
@@ -1882,7 +1882,7 @@
     "updatedAt": { "$date": "2021-07-28T20:26:46.251Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "228038",
     "userGroup": "user",
     "serial": "1701016659",
@@ -1893,7 +1893,7 @@
     "updatedAt": { "$date": "2021-07-29T19:34:00.982Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "384480",
     "userGroup": "user",
     "serial": "5767300840",
@@ -1917,7 +1917,7 @@
     "updatedAt": { "$date": "2021-07-31T06:16:19.986Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "687136",
     "userGroup": "user",
     "serial": "5369685994",
@@ -1928,7 +1928,7 @@
     "updatedAt": { "$date": "2021-07-29T05:55:22.246Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "249443",
     "userGroup": "user",
     "serial": "8123606298",
@@ -1952,7 +1952,7 @@
     "updatedAt": { "$date": "2021-07-29T07:14:40.746Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "727232",
     "userGroup": "user",
     "serial": "7349373923",
@@ -1963,7 +1963,7 @@
     "updatedAt": { "$date": "2021-07-29T07:30:55.553Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "847071",
     "userGroup": "user",
     "serial": "9596366345",
@@ -1981,7 +1981,7 @@
     "updatedAt": { "$date": "2021-07-30T15:03:56.614Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "916885",
     "userGroup": "user",
     "serial": "0077029254",
@@ -1999,7 +1999,7 @@
     "updatedAt": { "$date": "2021-07-29T08:43:53.266Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "414416",
     "userGroup": "user",
     "serial": "4852045097",
@@ -2023,7 +2023,7 @@
     "updatedAt": { "$date": "2021-07-29T10:32:09.258Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "531004",
     "userGroup": "user",
     "serial": "4409914985",
@@ -2041,7 +2041,7 @@
     "updatedAt": { "$date": "2021-07-29T10:31:17.867Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "149811",
     "userGroup": "user",
     "serial": "1844408847",
@@ -2059,7 +2059,7 @@
     "updatedAt": { "$date": "2021-07-29T10:36:09.439Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "606064",
     "userGroup": "user",
     "serial": "9758318639",
@@ -2077,7 +2077,7 @@
     "updatedAt": { "$date": "2021-07-29T10:44:53.025Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "590124",
     "userGroup": "user",
     "serial": "7092992846",
@@ -2088,7 +2088,7 @@
     "updatedAt": { "$date": "2021-07-29T11:14:04.28Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "49522",
     "userGroup": "user",
     "serial": "6339076165",
@@ -2124,7 +2124,7 @@
     "updatedAt": { "$date": "2021-07-31T15:10:27.052Z" }
   },
   {
-    "favoritedProgramItems": ["p4694"],
+    "favoriteProgramItemIds": ["p4694"],
     "username": "364623",
     "userGroup": "user",
     "serial": "9240567041",
@@ -2142,7 +2142,7 @@
     "updatedAt": { "$date": "2021-07-29T12:18:27.326Z" }
   },
   {
-    "favoritedProgramItems": ["p4703", "p4699"],
+    "favoriteProgramItemIds": ["p4703", "p4699"],
     "username": "537034",
     "userGroup": "user",
     "serial": "7382347750",
@@ -2160,7 +2160,7 @@
     "updatedAt": { "$date": "2021-07-31T11:45:01.888Z" }
   },
   {
-    "favoritedProgramItems": ["p4698", "p4704"],
+    "favoriteProgramItemIds": ["p4698", "p4704"],
     "username": "925214",
     "userGroup": "user",
     "serial": "3939052258",
@@ -2178,7 +2178,7 @@
     "updatedAt": { "$date": "2021-07-31T07:51:42.939Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "571721",
     "userGroup": "user",
     "serial": "4327196749",
@@ -2196,7 +2196,7 @@
     "updatedAt": { "$date": "2021-07-29T15:58:39.909Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "577113",
     "userGroup": "user",
     "serial": "6353344788",
@@ -2214,7 +2214,7 @@
     "updatedAt": { "$date": "2021-07-31T16:31:39.18Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "392916",
     "userGroup": "user",
     "serial": "5251826565",
@@ -2225,7 +2225,7 @@
     "updatedAt": { "$date": "2021-07-29T15:13:13.287Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "444321",
     "userGroup": "user",
     "serial": "1635536368",
@@ -2261,7 +2261,7 @@
     "updatedAt": { "$date": "2021-07-30T14:43:18.244Z" }
   },
   {
-    "favoritedProgramItems": ["p4680"],
+    "favoriteProgramItemIds": ["p4680"],
     "username": "512572",
     "userGroup": "user",
     "serial": "7505161005",
@@ -2279,7 +2279,7 @@
     "updatedAt": { "$date": "2021-07-30T12:01:34.733Z" }
   },
   {
-    "favoritedProgramItems": ["p4639"],
+    "favoriteProgramItemIds": ["p4639"],
     "username": "399758",
     "userGroup": "user",
     "serial": "2910965272",
@@ -2297,7 +2297,7 @@
     "updatedAt": { "$date": "2021-07-31T11:59:16.667Z" }
   },
   {
-    "favoritedProgramItems": ["p4694", "p4693"],
+    "favoriteProgramItemIds": ["p4694", "p4693"],
     "username": "461672",
     "userGroup": "user",
     "serial": "0795409044",
@@ -2308,7 +2308,7 @@
     "updatedAt": { "$date": "2021-07-30T15:49:37.274Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "602130",
     "userGroup": "user",
     "serial": "2885899381",
@@ -2319,7 +2319,7 @@
     "updatedAt": { "$date": "2021-07-29T20:46:49.946Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "698428",
     "userGroup": "user",
     "serial": "2691745208",
@@ -2373,7 +2373,7 @@
     "updatedAt": { "$date": "2021-07-31T09:11:31.775Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "703497",
     "userGroup": "user",
     "serial": "1200795175",
@@ -2384,7 +2384,7 @@
     "updatedAt": { "$date": "2021-07-30T05:04:20.694Z" }
   },
   {
-    "favoritedProgramItems": ["p4652", "p4693", "p4701"],
+    "favoriteProgramItemIds": ["p4652", "p4693", "p4701"],
     "username": "744894",
     "userGroup": "user",
     "serial": "9670730986",
@@ -2402,7 +2402,7 @@
     "updatedAt": { "$date": "2021-07-31T15:14:17.834Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "661825",
     "userGroup": "user",
     "serial": "8023642518",
@@ -2413,7 +2413,7 @@
     "updatedAt": { "$date": "2021-07-30T10:03:20.484Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "500952",
     "userGroup": "user",
     "serial": "3159396856",
@@ -2431,7 +2431,7 @@
     "updatedAt": { "$date": "2021-07-30T10:16:44.319Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "574942",
     "userGroup": "user",
     "serial": "8621003774",
@@ -2467,7 +2467,7 @@
     "updatedAt": { "$date": "2021-07-30T15:48:32.384Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "433219",
     "userGroup": "user",
     "serial": "3269817833",
@@ -2491,7 +2491,7 @@
     "updatedAt": { "$date": "2021-07-30T11:07:46.295Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "232378",
     "userGroup": "user",
     "serial": "0334525045",
@@ -2502,7 +2502,7 @@
     "updatedAt": { "$date": "2021-07-30T10:32:00.644Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "79289",
     "userGroup": "user",
     "serial": "7730830929",
@@ -2526,7 +2526,7 @@
     "updatedAt": { "$date": "2021-07-30T11:06:14.349Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "698383",
     "userGroup": "user",
     "serial": "2004023814",
@@ -2556,7 +2556,7 @@
     "updatedAt": { "$date": "2021-07-30T11:16:45.831Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "883380",
     "userGroup": "user",
     "serial": "8049267506",
@@ -2567,7 +2567,7 @@
     "updatedAt": { "$date": "2021-07-30T11:28:14.83Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "307",
     "userGroup": "user",
     "serial": "3277551614",
@@ -2578,7 +2578,7 @@
     "updatedAt": { "$date": "2021-07-30T11:46:13.87Z" }
   },
   {
-    "favoritedProgramItems": ["p4653", "p4680", "p4641"],
+    "favoriteProgramItemIds": ["p4653", "p4680", "p4641"],
     "username": "956133",
     "userGroup": "user",
     "serial": "6238998956",
@@ -2589,7 +2589,7 @@
     "updatedAt": { "$date": "2021-07-30T11:58:22.852Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "759760",
     "userGroup": "user",
     "serial": "4858205935",
@@ -2607,7 +2607,7 @@
     "updatedAt": { "$date": "2021-07-30T12:55:09.722Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "195008",
     "userGroup": "user",
     "serial": "7458259558",
@@ -2625,7 +2625,7 @@
     "updatedAt": { "$date": "2021-07-30T16:50:10.268Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "294898",
     "userGroup": "user",
     "serial": "5607872404",
@@ -2636,7 +2636,7 @@
     "updatedAt": { "$date": "2021-07-30T13:02:38.347Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "277289",
     "userGroup": "user",
     "serial": "5496155192",
@@ -2666,7 +2666,7 @@
     "updatedAt": { "$date": "2021-08-01T12:03:01.096Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "537911",
     "userGroup": "user",
     "serial": "9526288999",
@@ -2677,7 +2677,7 @@
     "updatedAt": { "$date": "2021-07-30T13:27:44.139Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "838593",
     "userGroup": "user",
     "serial": "3879938474",
@@ -2688,7 +2688,7 @@
     "updatedAt": { "$date": "2021-07-30T13:28:18.495Z" }
   },
   {
-    "favoritedProgramItems": ["p4729", "p4694", "p4632", "p4621"],
+    "favoriteProgramItemIds": ["p4729", "p4694", "p4632", "p4621"],
     "username": "104437",
     "userGroup": "user",
     "serial": "0152905816",
@@ -2699,7 +2699,7 @@
     "updatedAt": { "$date": "2021-07-30T14:05:47.676Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "157635",
     "userGroup": "user",
     "serial": "2074675345",
@@ -2710,7 +2710,7 @@
     "updatedAt": { "$date": "2021-07-30T14:25:26.326Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "424252",
     "userGroup": "user",
     "serial": "5920353645",
@@ -2728,7 +2728,7 @@
     "updatedAt": { "$date": "2021-07-30T14:25:58.995Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "790616",
     "userGroup": "user",
     "serial": "1644635953",
@@ -2746,7 +2746,7 @@
     "updatedAt": { "$date": "2021-07-30T14:35:31.888Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "66044",
     "userGroup": "user",
     "serial": "4209928052",
@@ -2757,7 +2757,7 @@
     "updatedAt": { "$date": "2021-07-30T14:38:08.581Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "456970",
     "userGroup": "user",
     "serial": "2014236067",
@@ -2768,7 +2768,7 @@
     "updatedAt": { "$date": "2021-07-30T14:44:37.322Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "564003",
     "userGroup": "user",
     "serial": "9416106822",
@@ -2779,7 +2779,7 @@
     "updatedAt": { "$date": "2021-07-31T08:55:45.502Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "520582",
     "userGroup": "user",
     "serial": "4250368810",
@@ -2790,7 +2790,7 @@
     "updatedAt": { "$date": "2021-07-30T15:06:23.507Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "904372",
     "userGroup": "user",
     "serial": "2341760367",
@@ -2801,7 +2801,7 @@
     "updatedAt": { "$date": "2021-07-30T15:34:22.164Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "599853",
     "userGroup": "user",
     "serial": "2207555356",
@@ -2831,7 +2831,7 @@
     "updatedAt": { "$date": "2021-08-01T11:29:26.264Z" }
   },
   {
-    "favoritedProgramItems": ["p4703"],
+    "favoriteProgramItemIds": ["p4703"],
     "username": "574585",
     "userGroup": "user",
     "serial": "1793265784",
@@ -2849,7 +2849,7 @@
     "updatedAt": { "$date": "2021-07-30T16:51:00.566Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "834968",
     "userGroup": "user",
     "serial": "8351663441",
@@ -2860,7 +2860,7 @@
     "updatedAt": { "$date": "2021-07-30T16:16:52.621Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "353088",
     "userGroup": "user",
     "serial": "3992041263",
@@ -2878,7 +2878,7 @@
     "updatedAt": { "$date": "2021-07-30T17:02:23.37Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "416347",
     "userGroup": "user",
     "serial": "8030451283",
@@ -2889,7 +2889,7 @@
     "updatedAt": { "$date": "2021-07-31T14:58:24.037Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "813982",
     "userGroup": "user",
     "serial": "5946517629",
@@ -2907,7 +2907,7 @@
     "updatedAt": { "$date": "2021-07-31T07:59:27.746Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "507241",
     "userGroup": "user",
     "serial": "7530707871",
@@ -2918,7 +2918,7 @@
     "updatedAt": { "$date": "2021-07-31T08:11:34.08Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "368365",
     "userGroup": "user",
     "serial": "9227166031",
@@ -2929,7 +2929,7 @@
     "updatedAt": { "$date": "2021-07-31T17:02:34.015Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "175305",
     "userGroup": "user",
     "serial": "1495242396",
@@ -2947,7 +2947,7 @@
     "updatedAt": { "$date": "2021-07-31T17:19:14.038Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "827990",
     "userGroup": "user",
     "serial": "2276622806",
@@ -2965,7 +2965,7 @@
     "updatedAt": { "$date": "2021-07-31T18:40:23.597Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "808318",
     "userGroup": "user",
     "serial": "5108964270",
@@ -2976,7 +2976,7 @@
     "updatedAt": { "$date": "2021-08-01T07:39:14.473Z" }
   },
   {
-    "favoritedProgramItems": [],
+    "favoriteProgramItemIds": [],
     "username": "207179",
     "userGroup": "user",
     "serial": "5578314758",
