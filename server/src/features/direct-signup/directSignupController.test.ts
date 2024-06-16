@@ -25,7 +25,7 @@ import {
   saveDirectSignup,
 } from "server/features/direct-signup/directSignupRepository";
 import { NewUser } from "server/types/userTypes";
-import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
+import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import {
   DeleteDirectSignupRequest,
   PostDirectSignupRequest,
@@ -181,10 +181,9 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     await saveUser(mockUser);
 
     // Check starting conditions
-    const nonModifiedSignupsResult = await findUserDirectSignups(
-      mockUser.username,
+    const nonModifiedSignups = unsafelyUnwrap(
+      await findUserDirectSignups(mockUser.username),
     );
-    const nonModifiedSignups = unsafelyUnwrapResult(nonModifiedSignupsResult);
     expect(nonModifiedSignups.length).toEqual(0);
 
     // Update direct signups
@@ -209,10 +208,9 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     expect(response.body.status).toEqual("success");
 
     // Check database
-    const modifiedSignupsResult = await findUserDirectSignups(
-      mockUser.username,
+    const modifiedSignups = unsafelyUnwrap(
+      await findUserDirectSignups(mockUser.username),
     );
-    const modifiedSignups = unsafelyUnwrapResult(modifiedSignupsResult);
 
     expect(modifiedSignups[0].programItem.programItemId).toEqual(
       testProgramItem.programItemId,
@@ -262,8 +260,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
 
     // Check results
 
-    const signupsResult = await findDirectSignups();
-    const signups = unsafelyUnwrapResult(signupsResult);
+    const signups = unsafelyUnwrap(await findDirectSignups());
     const matchingSignup = signups.find(
       (signup) =>
         signup.programItem.programItemId === testProgramItem.programItemId,
@@ -309,8 +306,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     await Promise.all([makeRequest(mockUser2), makeRequest(mockUser3)]);
 
     // Check results
-    const signupsResult = await findDirectSignups();
-    const signups = unsafelyUnwrapResult(signupsResult);
+    const signups = unsafelyUnwrap(await findDirectSignups());
     expect(signups).toHaveLength(1);
 
     const matchingSignup = signups.find(
@@ -398,10 +394,9 @@ describe(`DELETE ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     await saveDirectSignup(mockPostDirectSignupRequest);
 
     // Check starting conditions
-    const nonModifiedSignupResult = await findUserDirectSignups(
-      mockUser.username,
+    const nonModifiedSignup = unsafelyUnwrap(
+      await findUserDirectSignups(mockUser.username),
     );
-    const nonModifiedSignup = unsafelyUnwrapResult(nonModifiedSignupResult);
 
     expect(nonModifiedSignup[0].programItem.programItemId).toEqual(
       testProgramItem.programItemId,
@@ -428,8 +423,9 @@ describe(`DELETE ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     expect(response.body.status).toEqual("success");
 
     // Check database
-    const modifiedSignupResult = await findUserDirectSignups(mockUser.username);
-    const modifiedSignup = unsafelyUnwrapResult(modifiedSignupResult);
+    const modifiedSignup = unsafelyUnwrap(
+      await findUserDirectSignups(mockUser.username),
+    );
     expect(modifiedSignup.length).toEqual(0);
   });
 });

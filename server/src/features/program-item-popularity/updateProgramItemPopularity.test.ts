@@ -15,7 +15,7 @@ import {
   saveProgramItems,
 } from "server/features/program-item/programItemRepository";
 import { updateProgramItemPopularity } from "server/features/program-item-popularity/updateProgramItemPopularity";
-import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
+import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 
 let server: Server;
 
@@ -59,8 +59,7 @@ test(`Should update program item popularity`, async () => {
     username: mockUser2.username,
   });
 
-  const programItemsResult = await findProgramItems();
-  const programItems = unsafelyUnwrapResult(programItemsResult);
+  const programItems = unsafelyUnwrap(await findProgramItems());
   expect(programItems.length).toEqual(2);
   const firstProgramItem = programItems.find(
     (programItem) =>
@@ -75,8 +74,7 @@ test(`Should update program item popularity`, async () => {
 
   await updateProgramItemPopularity();
 
-  const updatedProgtamItemsResult = await findProgramItems();
-  const updatedProgramItems = unsafelyUnwrapResult(updatedProgtamItemsResult);
+  const updatedProgramItems = unsafelyUnwrap(await findProgramItems());
   expect(updatedProgramItems.length).toEqual(2);
   const updatedFirstProgramItem = updatedProgramItems.find(
     (programItem) =>
@@ -133,7 +131,7 @@ test(`Should only update program item popularity of upcoming program items`, asy
     username: mockUser2.username,
   });
 
-  const programItems = unsafelyUnwrapResult(await findProgramItems());
+  const programItems = unsafelyUnwrap(await findProgramItems());
   expect(programItems.length).toEqual(2);
 
   const firstProgramItem = programItems.find(
@@ -149,7 +147,7 @@ test(`Should only update program item popularity of upcoming program items`, asy
 
   await updateProgramItemPopularity();
 
-  const updatedProgramItems = unsafelyUnwrapResult(await findProgramItems());
+  const updatedProgramItems = unsafelyUnwrap(await findProgramItems());
   expect(updatedProgramItems.length).toEqual(2);
 
   const updatedFirstProgramItem = updatedProgramItems.find(

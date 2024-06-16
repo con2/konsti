@@ -1,13 +1,12 @@
 import { expect } from "vitest";
 import { findUsers } from "server/features/user/userRepository";
-import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
+import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { verifyUserSignups } from "server/features/assignment/utils/verifyUserSignups";
 
 export const assertUserUpdatedCorrectly = async (
   usernames: string[],
 ): Promise<void> => {
-  const usersResult = await findUsers(usernames);
-  const users = unsafelyUnwrapResult(usersResult);
+  const users = unsafelyUnwrap(await findUsers(usernames));
 
   users.map((user) => {
     expect(user.eventLogItems).toHaveLength(1);

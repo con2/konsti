@@ -7,20 +7,15 @@ import { findSettings } from "server/features/settings/settingsRepository";
 import { shuffleArray } from "server/utils/shuffleArray";
 import { getRandomInt } from "server/features/assignment/utils/getRandomInt";
 import { saveDirectSignup } from "server/features/direct-signup/directSignupRepository";
-import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
+import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 
 export const createDirectSignups = async (): Promise<void> => {
   logger.info(`Generate direct signup data`);
 
-  const programItemsResult = await findProgramItems();
-  const programItems = unsafelyUnwrapResult(programItemsResult);
-
-  const allUsersResult = await findUsers();
-  const allUsers = unsafelyUnwrapResult(allUsersResult);
-
-  const findSettingsResult = await findSettings();
-  const settings = unsafelyUnwrapResult(findSettingsResult);
+  const programItems = unsafelyUnwrap(await findProgramItems());
+  const allUsers = unsafelyUnwrap(await findUsers());
+  const settings = unsafelyUnwrap(await findSettings());
 
   const users = allUsers.filter(
     (user) => user.username !== "admin" && user.username !== "helper",

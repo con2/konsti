@@ -9,7 +9,7 @@ import {
   deleteEventLogItemsByStartTime,
 } from "server/features/user/event-log/eventLogRepository";
 import { EventLogAction } from "shared/types/models/eventLog";
-import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
+import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { saveProgramItems } from "server/features/program-item/programItemRepository";
 import {
   testProgramItem,
@@ -50,8 +50,7 @@ test("should insert new event log item to user", async () => {
     action: EventLogAction.NEW_ASSIGNMENT,
   });
 
-  const updatedUserResult = await findUser(mockUser.username);
-  const updatedUser = unsafelyUnwrapResult(updatedUserResult);
+  const updatedUser = unsafelyUnwrap(await findUser(mockUser.username));
 
   expect(updatedUser).toMatchObject({
     username: mockUser.username,
@@ -65,8 +64,7 @@ test("should insert new event log item to user", async () => {
     ],
   });
 
-  const updatedUserResult2 = await findUser(mockUser2.username);
-  const updatedUser2 = unsafelyUnwrapResult(updatedUserResult2);
+  const updatedUser2 = unsafelyUnwrap(await findUser(mockUser2.username));
 
   expect(updatedUser2).toMatchObject({
     username: mockUser2.username,
@@ -117,8 +115,7 @@ test("should delete event log items for start time", async () => {
     EventLogAction.NEW_ASSIGNMENT,
   );
 
-  const updatedUserResult = await findUser(mockUser.username);
-  const updatedUser = unsafelyUnwrapResult(updatedUserResult);
+  const updatedUser = unsafelyUnwrap(await findUser(mockUser.username));
 
   expect(updatedUser).toMatchObject({
     username: mockUser.username,

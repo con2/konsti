@@ -17,7 +17,7 @@ import {
   SignupQuestion,
   SignupQuestionType,
 } from "shared/types/models/settings";
-import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
+import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 
 beforeEach(async () => {
   await mongoose.connect(globalThis.__MONGO_URI__, {
@@ -83,6 +83,6 @@ test("should not save multiple signup questions for same programItemId", async (
   await saveSignupQuestion(signupQuestion);
   await saveSignupQuestion(signupQuestion);
 
-  const settings = unsafelyUnwrapResult(await findSettings());
+  const settings = unsafelyUnwrap(await findSettings());
   expect(settings.signupQuestions).toHaveLength(1);
 });

@@ -3,21 +3,19 @@ import { sampleSize } from "lodash-es";
 import { findProgramItems } from "server/features/program-item/programItemRepository";
 import { addEventLogItems } from "server/features/user/event-log/eventLogRepository";
 import { findUsers } from "server/features/user/userRepository";
-import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
+import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { EventLogAction } from "shared/types/models/eventLog";
 import { config } from "shared/config";
 
 export const createEventLogItems = async (): Promise<void> => {
-  const programItemsResult = await findProgramItems();
-  const programItems = unsafelyUnwrapResult(programItemsResult);
+  const programItems = unsafelyUnwrap(await findProgramItems());
   const twoPhaseSignups = programItems.filter((programItem) =>
     config
       .shared()
       .twoPhaseSignupProgramTypes.includes(programItem.programType),
   );
 
-  const allUsersResult = await findUsers();
-  const allUsers = unsafelyUnwrapResult(allUsersResult);
+  const allUsers = unsafelyUnwrap(await findUsers());
 
   const users = allUsers.filter(
     (user) => user.username !== "admin" && user.username !== "helper",

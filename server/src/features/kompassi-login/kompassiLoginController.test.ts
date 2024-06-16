@@ -9,7 +9,7 @@ import { getJWT } from "server/utils/jwt";
 import { PostVerifyKompassiLoginRequest } from "shared/types/api/login";
 import { findUser, saveUser } from "server/features/user/userRepository";
 import { mockUser, mockUser2 } from "server/test/mock-data/mockUser";
-import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
+import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 
 let server: Server;
 
@@ -68,8 +68,7 @@ describe(`POST ${ApiEndpoint.VERIFY_KOMPASSI_LOGIN}`, () => {
     expect(response.status).toEqual(200);
     expect(response.body.status).toEqual("success");
 
-    const userResult = await findUser("new_username");
-    const user = unsafelyUnwrapResult(userResult);
+    const user = unsafelyUnwrap(await findUser("new_username"));
     expect(user?.kompassiId).toEqual(10);
     expect(user?.kompassiUsernameAccepted).toEqual(true);
   });
@@ -113,8 +112,7 @@ describe(`POST ${ApiEndpoint.VERIFY_KOMPASSI_LOGIN}`, () => {
     expect(response.status).toEqual(200);
     expect(response.body.status).toEqual("success");
 
-    const userResult = await findUser(mockUser.username);
-    const user = unsafelyUnwrapResult(userResult);
+    const user = unsafelyUnwrap(await findUser(mockUser.username));
     expect(user?.kompassiId).toEqual(10);
     expect(user?.kompassiUsernameAccepted).toEqual(true);
   });

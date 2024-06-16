@@ -26,7 +26,7 @@ import {
 } from "server/test/mock-data/mockUser";
 import { ProgramType } from "shared/types/models/programItem";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
-import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
+import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { assertUserUpdatedCorrectly } from "server/features/assignment/runAssignmentTestUtils";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 import { ProgramItemModel } from "server/features/program-item/programItemSchema";
@@ -69,11 +69,12 @@ describe("Assignment with valid data", () => {
 
     // FIRST RUN
 
-    const assignResultsResult = await runAssignment({
-      assignmentStrategy,
-      startTime,
-    });
-    const assignResults = unsafelyUnwrapResult(assignResultsResult);
+    const assignResults = unsafelyUnwrap(
+      await runAssignment({
+        assignmentStrategy,
+        startTime,
+      }),
+    );
 
     expect(assignResults.status).toEqual("success");
     expect(assignResults.results.length).toBeGreaterThanOrEqual(
@@ -97,11 +98,12 @@ describe("Assignment with valid data", () => {
 
     const startTime2 = dayjs(conventionStartTime).add(3, "hours").toISOString();
 
-    const assignResultsEither2 = await runAssignment({
-      assignmentStrategy,
-      startTime: startTime2,
-    });
-    const assignResults2 = unsafelyUnwrapResult(assignResultsEither2);
+    const assignResults2 = unsafelyUnwrap(
+      await runAssignment({
+        assignmentStrategy,
+        startTime: startTime2,
+      }),
+    );
 
     expect(assignResults2.status).toEqual("success");
     // Second assignment has less available attendees -> less results
@@ -181,25 +183,24 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       startTime: testProgramItem.startTime,
     });
 
-    const signupsBeforeUpdateResult = await findUserDirectSignups(
-      mockUser.username,
+    const signupsBeforeUpdate = unsafelyUnwrap(
+      await findUserDirectSignups(mockUser.username),
     );
-    const signupsBeforeUpdate = unsafelyUnwrapResult(signupsBeforeUpdateResult);
     expect(signupsBeforeUpdate.length).toEqual(1);
 
-    const assignResultsResult = await runAssignment({
-      assignmentStrategy,
-      startTime: testProgramItem.startTime,
-    });
-    const assignResults = unsafelyUnwrapResult(assignResultsResult);
+    const assignResults = unsafelyUnwrap(
+      await runAssignment({
+        assignmentStrategy,
+        startTime: testProgramItem.startTime,
+      }),
+    );
 
     expect(assignResults.status).toEqual("success");
     expect(assignResults.results.length).toEqual(2);
 
-    const signupsAfterUpdateResult = await findUserDirectSignups(
-      mockUser.username,
+    const signupsAfterUpdate = unsafelyUnwrap(
+      await findUserDirectSignups(mockUser.username),
     );
-    const signupsAfterUpdate = unsafelyUnwrapResult(signupsAfterUpdateResult);
 
     const tournamentSignup = signupsAfterUpdate.find(
       (signup) => signup.programItem.programType === ProgramType.TOURNAMENT,
@@ -255,19 +256,19 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       directSignupProgramItemId: directSignupAlwaysOpenId,
     });
 
-    const signupsBeforeUpdateResult = await findDirectSignups();
-    const signupsBeforeUpdate = unsafelyUnwrapResult(signupsBeforeUpdateResult);
+    const signupsBeforeUpdate = unsafelyUnwrap(await findDirectSignups());
 
     const programItemsWithSignups = signupsBeforeUpdate.filter(
       (signup) => signup.userSignups.length > 0,
     );
     expect(programItemsWithSignups.length).toEqual(1);
 
-    const assignResultsResult = await runAssignment({
-      assignmentStrategy,
-      startTime: testProgramItem.startTime,
-    });
-    const assignResults = unsafelyUnwrapResult(assignResultsResult);
+    const assignResults = unsafelyUnwrap(
+      await runAssignment({
+        assignmentStrategy,
+        startTime: testProgramItem.startTime,
+      }),
+    );
 
     expect(assignResults.status).toEqual("success");
     expect(assignResults.results.length).toEqual(1);
@@ -277,8 +278,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       );
     });
 
-    const signupsAfterUpdateResult = await findDirectSignups();
-    const signupsAfterUpdate = unsafelyUnwrapResult(signupsAfterUpdateResult);
+    const signupsAfterUpdate = unsafelyUnwrap(await findDirectSignups());
 
     const assignmentSignup = signupsAfterUpdate.find(
       (signup) =>
@@ -355,16 +355,16 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       directSignupProgramItemId: directSignupAlwaysOpenId,
     });
 
-    const signupsBeforeUpdateResult = await findDirectSignups();
-    const signupsBeforeUpdate = unsafelyUnwrapResult(signupsBeforeUpdateResult);
+    const signupsBeforeUpdate = unsafelyUnwrap(await findDirectSignups());
 
     expect(signupsBeforeUpdate.length).toEqual(2);
 
-    const assignResultsResult = await runAssignment({
-      assignmentStrategy,
-      startTime: testProgramItem.startTime,
-    });
-    const assignResults = unsafelyUnwrapResult(assignResultsResult);
+    const assignResults = unsafelyUnwrap(
+      await runAssignment({
+        assignmentStrategy,
+        startTime: testProgramItem.startTime,
+      }),
+    );
 
     expect(assignResults.status).toEqual("success");
     expect(assignResults.results.length).toEqual(2);
@@ -374,8 +374,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       );
     });
 
-    const signupsAfterUpdateResult = await findDirectSignups();
-    const signupsAfterUpdate = unsafelyUnwrapResult(signupsAfterUpdateResult);
+    const signupsAfterUpdate = unsafelyUnwrap(await findDirectSignups());
 
     const assignmentSignup = signupsAfterUpdate.find(
       (signup) =>
@@ -425,13 +424,13 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       lotterySignups: [{ ...mockLotterySignups[1] }],
     });
 
-    const signupsBeforeUpdate = unsafelyUnwrapResult(await findDirectSignups());
+    const signupsBeforeUpdate = unsafelyUnwrap(await findDirectSignups());
     const programItemsWithSignups = signupsBeforeUpdate.filter(
       (signup) => signup.userSignups.length > 0,
     );
     expect(programItemsWithSignups).toHaveLength(1);
 
-    const assignResults = unsafelyUnwrapResult(
+    const assignResults = unsafelyUnwrap(
       await runAssignment({
         assignmentStrategy,
         startTime: assignmentTime,
@@ -445,7 +444,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       );
     });
 
-    const signupsAfterUpdate = unsafelyUnwrapResult(await findDirectSignups());
+    const signupsAfterUpdate = unsafelyUnwrap(await findDirectSignups());
 
     const previousSignupFromMovedProgramItem = signupsAfterUpdate.find(
       (signup) =>
@@ -504,13 +503,13 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       },
     );
 
-    const signupsBeforeUpdate = unsafelyUnwrapResult(await findDirectSignups());
+    const signupsBeforeUpdate = unsafelyUnwrap(await findDirectSignups());
     const programItemsWithSignups = signupsBeforeUpdate.filter(
       (signup) => signup.userSignups.length > 0,
     );
     expect(programItemsWithSignups).toHaveLength(1);
 
-    const assignResults = unsafelyUnwrapResult(
+    const assignResults = unsafelyUnwrap(
       await runAssignment({
         assignmentStrategy,
         startTime: assignmentTime,
@@ -524,7 +523,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       );
     });
 
-    const signupsAfterUpdate = unsafelyUnwrapResult(await findDirectSignups());
+    const signupsAfterUpdate = unsafelyUnwrap(await findDirectSignups());
 
     const previousSignupFromMovedProgramItem = signupsAfterUpdate.find(
       (signup) =>
@@ -607,23 +606,22 @@ describe("Assignment with first time bonus", () => {
       priority: DIRECT_SIGNUP_PRIORITY,
     });
 
-    const signupsBeforeUpdateResult = await findDirectSignups();
-    const signupsBeforeUpdate = unsafelyUnwrapResult(signupsBeforeUpdateResult);
+    const signupsBeforeUpdate = unsafelyUnwrap(await findDirectSignups());
     const programItemsWithSignups = signupsBeforeUpdate.filter(
       (signup) => signup.userSignups.length > 0,
     );
     expect(programItemsWithSignups.length).toEqual(3);
 
-    const assignResultsResult = await runAssignment({
-      assignmentStrategy,
-      startTime: testProgramItem.startTime,
-    });
-    const assignResults = unsafelyUnwrapResult(assignResultsResult);
+    const assignResults = unsafelyUnwrap(
+      await runAssignment({
+        assignmentStrategy,
+        startTime: testProgramItem.startTime,
+      }),
+    );
     expect(assignResults.status).toEqual("success");
     expect(assignResults.results.length).toEqual(1);
 
-    const signupsAfterUpdateResult = await findDirectSignups();
-    const signupsAfterUpdate = unsafelyUnwrapResult(signupsAfterUpdateResult);
+    const signupsAfterUpdate = unsafelyUnwrap(await findDirectSignups());
 
     const assignmentSignup = signupsAfterUpdate.find(
       (signup) =>
