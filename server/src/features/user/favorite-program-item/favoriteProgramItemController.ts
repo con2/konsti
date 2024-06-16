@@ -34,7 +34,7 @@ export const postFavorite = async (
 
   const response = await storeFavorite({
     username,
-    favoritedProgramItemIds: result.data.favoritedProgramItemIds,
+    favoriteProgramItemIds: result.data.favoriteProgramItemIds,
   });
   return res.json(response);
 };

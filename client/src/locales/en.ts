@@ -156,7 +156,7 @@ export const translationEN = {
     registration: "Create user account",
   },
   user: "User",
-  favoritedProgramItems: "Favorites",
+  favoriteProgramItems: "Favorites",
   lotterySignups: "Lottery sign-ups",
   directSignups: "Sign-ups",
   hiddenProgramItems: "Hidden program items",
@@ -175,7 +175,7 @@ export const translationEN = {
     "You can get a registration code from the Larp & RPG Desk, the Gaming Desk or the Info.",
   noLotterySignups:
     "No selected program items. You can sign up in the All Program view.",
-  noFavoritedProgramItems:
+  noFavoriteProgramItems:
     "No favorites. You can add program items here in the All Program view.",
   noDirectSignups:
     "No sign-ups. You can sign up to program in the All Program view.",

@@ -8,7 +8,7 @@ import { ProgramItem } from "shared/types/models/programItem";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { updateFavorite } from "client/utils/favorite";
 import { IconButton } from "client/components/IconButton";
-import { selectFavoritedProgramItems } from "client/views/my-program-items/myProgramItemsSlice";
+import { selectFavoriteProgramItems } from "client/views/my-program-items/myProgramItemsSlice";
 import { AppRoute } from "client/app/AppRoutes";
 
 interface Props {
@@ -23,13 +23,13 @@ export const FavoritesByStartTimes = ({
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const username = useAppSelector((state) => state.login.username);
-  const favoritedProgramItems = useAppSelector(selectFavoritedProgramItems);
+  const favoriteProgramItems = useAppSelector(selectFavoriteProgramItems);
 
   const removeFavorite = async (programItem: ProgramItem): Promise<void> => {
     await updateFavorite({
       programItem,
       action: "del",
-      favoritedProgramItems,
+      favoriteProgramItems,
       username,
       dispatch,
     });

@@ -6,7 +6,7 @@ import { useAppSelector } from "client/utils/hooks";
 import { ProgramItemEntry } from "client/views/all-program-items/components/ProgramItemEntry";
 import {
   selectDirectSignups,
-  selectFavoritedProgramItems,
+  selectFavoriteProgramItems,
   selectLotterySignups,
 } from "client/views/my-program-items/myProgramItemsSlice";
 import { SignupStrategy } from "shared/config/sharedConfigTypes";
@@ -29,7 +29,7 @@ export const ProgramItemPage = (): ReactElement => {
   const username = useAppSelector((state) => state.login.username);
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
   const userGroup = useAppSelector((state) => state.login.userGroup);
-  const favoritedProgramItems = useAppSelector(selectFavoritedProgramItems);
+  const favoriteProgramItems = useAppSelector(selectFavoriteProgramItems);
 
   // Figure out if user has signed up to this program item
   const lotterySignups = useAppSelector(selectLotterySignups);
@@ -81,7 +81,7 @@ export const ProgramItemPage = (): ReactElement => {
           username={username}
           loggedIn={loggedIn}
           userGroup={userGroup}
-          favoritedProgramItems={favoritedProgramItems}
+          favoriteProgramItems={favoriteProgramItems}
         />
       )}
       {!loading && !foundProgramItem && (

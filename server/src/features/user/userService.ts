@@ -284,7 +284,7 @@ export const fetchUserByUsername = async (
     status: "success",
     programItems: {
       directSignups,
-      favoritedProgramItems: user.favoritedProgramItems,
+      favoriteProgramItemIds: user.favoriteProgramItemIds,
       lotterySignups: user.lotterySignups,
     },
     username: user.username,

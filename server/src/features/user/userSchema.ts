@@ -11,9 +11,7 @@ const UserSchema = new mongoose.Schema(
     serial: String,
     groupCreatorCode: String,
     groupCode: String,
-    favoritedProgramItems: [
-      { type: mongoose.Schema.Types.ObjectId, ref: "program-item" },
-    ],
+    favoriteProgramItemIds: [String],
     lotterySignups: [
       {
         programItem: {

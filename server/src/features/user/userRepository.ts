@@ -38,7 +38,7 @@ export const saveUser = async (
       typeof newUserData.groupCreatorCode === "string"
         ? newUserData.groupCreatorCode
         : "0",
-    favoritedProgramItems: [],
+    favoriteProgramItemIds: [],
     lotterySignups: [],
     eventLogItems: [],
   };
@@ -71,7 +71,7 @@ export const updateUsersByUsername = async (
           userGroup: user.userGroup,
           serial: user.serial,
           groupCode: user.groupCode,
-          favoritedProgramItems: user.favoritedProgramItems,
+          favoriteProgramItemIds: user.favoriteProgramItemIds,
           lotterySignups: user.lotterySignups,
         },
       },
@@ -104,7 +104,6 @@ export const updateUserPassword = async (
       { new: true, fields: "-_id -__v -createdAt -updatedAt" },
     )
       .lean<User>()
-      .populate("favoritedProgramItems")
       .populate("lotterySignups.programItem");
     logger.debug(`MongoDB: Password for user ${username} updated`);
     if (!response) {
@@ -129,7 +128,6 @@ export const findUser = async (
       "-lotterySignups._id",
     )
       .lean<User>()
-      .populate("favoritedProgramItems")
       .populate("lotterySignups.programItem");
     if (!response) {
       logger.info(`MongoDB: User ${username} not found`);
@@ -160,7 +158,6 @@ export const findUserBySerial = async (
   try {
     const response = await UserModel.findOne({ serial }, "-lotterySignups._id")
       .lean<User>()
-      .populate("favoritedProgramItems")
       .populate("lotterySignups.programItem");
 
     if (!response) {
@@ -187,7 +184,6 @@ export const findUserByKompassiId = async (
       "-lotterySignups._id",
     )
       .lean<User>()
-      .populate("favoritedProgramItems")
       .populate("lotterySignups.programItem");
 
     if (!response) {
@@ -233,7 +229,6 @@ export const findUsers = async (
   try {
     const users = await UserModel.find(filter)
       .lean<User[]>()
-      .populate("favoritedProgramItems")
       .populate("lotterySignups.programItem");
     return makeSuccessResult(users);
   } catch (error) {
@@ -256,7 +251,6 @@ export const updateUserKompassiLoginStatus = async (
       { new: true, fields: "-_id -__v -createdAt -updatedAt" },
     )
       .lean<User>()
-      .populate("favoritedProgramItems")
       .populate("lotterySignups.programItem");
 
     if (!response) {

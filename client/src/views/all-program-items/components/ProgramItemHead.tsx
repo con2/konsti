@@ -24,7 +24,7 @@ interface Props {
   username: string;
   loggedIn: boolean;
   userGroup: UserGroup;
-  favoritedProgramItems: readonly ProgramItem[];
+  favoriteProgramItems: readonly ProgramItem[];
 }
 
 export const ProgramItemHead = ({
@@ -34,7 +34,7 @@ export const ProgramItemHead = ({
   username,
   loggedIn,
   userGroup,
-  favoritedProgramItems,
+  favoriteProgramItems,
 }: Props): ReactElement => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
@@ -56,10 +56,10 @@ export const ProgramItemHead = ({
     signupStrategy === SignupStrategy.DIRECT ||
     signupAlwaysOpen;
 
-  const isFavorited =
-    favoritedProgramItems.find(
-      (favoritedProgramItem) =>
-        favoritedProgramItem.programItemId === programItem.programItemId,
+  const isFavorite =
+    favoriteProgramItems.find(
+      (favoriteProgramItem) =>
+        favoriteProgramItem.programItemId === programItem.programItemId,
     ) !== undefined;
 
   const tags = [];
@@ -173,12 +173,12 @@ export const ProgramItemHead = ({
       {loggedIn && userGroup === "user" && programItem && (
         <FavoriteButtonContainer>
           <FavoriteButton
-            isFavorite={isFavorited}
+            isFavorite={isFavorite}
             onClick={async () =>
               await updateFavoriteHandler({
                 programItem,
-                action: isFavorited ? "del" : "add",
-                favoritedProgramItems,
+                action: isFavorite ? "del" : "add",
+                favoriteProgramItems,
                 username,
                 dispatch,
               })

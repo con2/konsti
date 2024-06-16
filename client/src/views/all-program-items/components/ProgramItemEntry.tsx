@@ -27,7 +27,7 @@ interface Props {
   username: string;
   loggedIn: boolean;
   userGroup: UserGroup;
-  favoritedProgramItems: readonly ProgramItem[];
+  favoriteProgramItems: readonly ProgramItem[];
 }
 
 export const ProgramItemEntry = ({
@@ -43,7 +43,7 @@ export const ProgramItemEntry = ({
   username,
   loggedIn,
   userGroup,
-  favoritedProgramItems,
+  favoriteProgramItems,
 }: Props): ReactElement => {
   const { t } = useTranslation();
 
@@ -90,7 +90,7 @@ export const ProgramItemEntry = ({
         username={username}
         loggedIn={loggedIn}
         userGroup={userGroup}
-        favoritedProgramItems={favoritedProgramItems}
+        favoriteProgramItems={favoriteProgramItems}
       />
       <ProgramItemView
         programItem={programItem}

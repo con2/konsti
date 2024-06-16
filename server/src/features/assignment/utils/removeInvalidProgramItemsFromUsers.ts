@@ -1,3 +1,4 @@
+import { findProgramItems } from "server/features/program-item/programItemRepository";
 import {
   findUsers,
   updateUsersByUsername,
@@ -17,6 +18,15 @@ export const removeInvalidProgramItemsFromUsers = async (): Promise<
 > => {
   logger.info("Remove invalid program items from users");
 
+  const programItemsResult = await findProgramItems();
+  if (isErrorResult(programItemsResult)) {
+    return programItemsResult;
+  }
+  const programItems = unwrapResult(programItemsResult);
+  const programItemIds = programItems.map(
+    (programItem) => programItem.programItemId,
+  );
+
   const usersResult = await findUsers();
   if (isErrorResult(usersResult)) {
     return usersResult;
@@ -24,7 +34,7 @@ export const removeInvalidProgramItemsFromUsers = async (): Promise<
 
   const users = unwrapResult(usersResult);
 
-  const usersToUpdate: User[] = users.flatMap((user) => {
+  const usersToUpdate: User[] = users.flatMap<User>((user) => {
     const validLotterySignups = user.lotterySignups.filter((lotterySignup) => {
       // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
       if (lotterySignup.programItem !== null) {
@@ -41,32 +51,34 @@ export const removeInvalidProgramItemsFromUsers = async (): Promise<
       );
     }
 
-    const validFavoritedProgramItems = user.favoritedProgramItems.filter(
-      (favoritedProgramItem) => {
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-        if (favoritedProgramItem !== null) {
-          return favoritedProgramItem;
+    const validFavoriteProgramItemIds = user.favoriteProgramItemIds.filter(
+      (favoriteProgramItemId) => {
+        const programItemFound = programItemIds.find(
+          (programItemId) => programItemId === favoriteProgramItemId,
+        );
+        if (programItemFound) {
+          return favoriteProgramItemId;
         }
       },
     );
 
-    const changedFavoritedProgramItemsCount =
-      user.favoritedProgramItems.length - validFavoritedProgramItems.length;
+    const changedFavoriteProgramItemIdsCount =
+      user.favoriteProgramItemIds.length - validFavoriteProgramItemIds.length;
 
-    if (changedFavoritedProgramItemsCount > 0) {
+    if (changedFavoriteProgramItemIdsCount > 0) {
       logger.info(
-        `Remove ${changedFavoritedProgramItemsCount} invalid favoritedProgramItems from user ${user.username}`,
+        `Remove ${changedFavoriteProgramItemIdsCount} invalid favorite program items from user ${user.username}`,
       );
     }
 
     if (
       changedLotterySignupsCount > 0 ||
-      changedFavoritedProgramItemsCount > 0
+      changedFavoriteProgramItemIdsCount > 0
     ) {
       return {
         ...user,
         lotterySignups: validLotterySignups,
-        favoritedProgramItems: validFavoritedProgramItems,
+        favoriteProgramItemIds: validFavoriteProgramItemIds,
       };
     }
 

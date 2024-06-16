@@ -45,7 +45,7 @@ export const saveProgramItems = async (
     return removeDeletedProgramItemsResult;
   }
 
-  // If program items were deleted, this will remove lottery signups and favorited program items
+  // If program items were deleted, this will remove lottery signups and favorite program items
   const removeInvalidProgramItemsResult =
     await removeInvalidProgramItemsFromUsers();
   if (isErrorResult(removeInvalidProgramItemsResult)) {

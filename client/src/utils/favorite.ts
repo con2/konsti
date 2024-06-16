@@ -5,7 +5,7 @@ import { AppDispatch } from "client/types/reduxTypes";
 export interface UpdateFavoriteOpts {
   programItem: ProgramItem;
   action: string;
-  favoritedProgramItems: readonly ProgramItem[];
+  favoriteProgramItems: readonly ProgramItem[];
   username: string;
   dispatch: AppDispatch;
 }
@@ -13,32 +13,32 @@ export interface UpdateFavoriteOpts {
 export const updateFavorite = async (
   updateFavoriteOpts: UpdateFavoriteOpts,
 ): Promise<void> => {
-  const { programItem, action, favoritedProgramItems, username, dispatch } =
+  const { programItem, action, favoriteProgramItems, username, dispatch } =
     updateFavoriteOpts;
 
   if (!programItem.programItemId) {
     return;
   }
 
-  const programItemIndex = favoritedProgramItems.findIndex(
-    (favoritedProgramItem) =>
-      favoritedProgramItem.programItemId === programItem.programItemId,
+  const programItemIndex = favoriteProgramItems.findIndex(
+    (favoriteProgramItem) =>
+      favoriteProgramItem.programItemId === programItem.programItemId,
   );
-  const favoritedProgramItemIds = favoritedProgramItems.map(
-    (favoritedProgramItem) => favoritedProgramItem.programItemId,
+  const favoriteProgramItemIds = favoriteProgramItems.map(
+    (favoriteProgramItem) => favoriteProgramItem.programItemId,
   );
 
   if (action === "add" && programItemIndex === -1) {
-    favoritedProgramItemIds.push(programItem.programItemId);
+    favoriteProgramItemIds.push(programItem.programItemId);
   } else if (action === "del" && programItemIndex > -1) {
-    favoritedProgramItemIds.splice(programItemIndex, 1);
+    favoriteProgramItemIds.splice(programItemIndex, 1);
   }
 
   try {
     await dispatch(
       submitUpdateFavorites({
         username,
-        favoritedProgramItemIds,
+        favoriteProgramItemIds,
       }),
     );
   } catch (error) {

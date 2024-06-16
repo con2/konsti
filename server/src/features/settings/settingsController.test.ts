@@ -151,7 +151,7 @@ describe(`POST ${ApiEndpoint.HIDDEN}`, () => {
     await saveDirectSignup(mockPostDirectSignupRequest2);
     await saveFavorite({
       username: mockUser.username,
-      favoritedProgramItemIds: [
+      favoriteProgramItemIds: [
         testProgramItem.programItemId,
         testProgramItem2.programItemId,
       ],
@@ -170,7 +170,7 @@ describe(`POST ${ApiEndpoint.HIDDEN}`, () => {
     expect(updatedUser?.lotterySignups[0].programItem.title).toEqual(
       testProgramItem2.title,
     );
-    expect(updatedUser?.favoritedProgramItems.length).toEqual(1);
+    expect(updatedUser?.favoriteProgramItemIds.length).toEqual(1);
 
     const signupsResult = await findUserDirectSignups(mockUser.username);
     const signups = unsafelyUnwrapResult(signupsResult);

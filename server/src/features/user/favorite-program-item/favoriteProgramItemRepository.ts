@@ -1,55 +1,30 @@
-import { ObjectId } from "mongoose";
-import { findProgramItems } from "server/features/program-item/programItemRepository";
 import { UserModel } from "server/features/user/userSchema";
 import { logger } from "server/utils/logger";
 import { MongoDbError } from "shared/types/api/errors";
-import { ProgramItem } from "shared/types/models/programItem";
-import { NewFavorite, User } from "shared/types/models/user";
+import {
+  FavoriteProgramItemId,
+  NewFavorite,
+  User,
+} from "shared/types/models/user";
 import {
   Result,
-  isErrorResult,
-  unwrapResult,
   makeSuccessResult,
   makeErrorResult,
 } from "shared/utils/result";
 
 export const saveFavorite = async (
   favoriteData: NewFavorite,
-): Promise<Result<readonly ProgramItem[] | null, MongoDbError>> => {
-  const { username, favoritedProgramItemIds } = favoriteData;
-
-  const programItemsResult = await findProgramItems();
-
-  if (isErrorResult(programItemsResult)) {
-    return programItemsResult;
-  }
-
-  const programItems = unwrapResult(programItemsResult);
-
-  const favoritedProgramItems = favoritedProgramItemIds.reduce<ObjectId[]>(
-    (acc, favoritedProgramItemId) => {
-      const programItemDocInDb = programItems.find(
-        (programItem) => programItem.programItemId === favoritedProgramItemId,
-      );
-
-      if (programItemDocInDb?._id) {
-        acc.push(programItemDocInDb._id);
-      }
-      return acc;
-    },
-    [],
-  );
+): Promise<Result<readonly FavoriteProgramItemId[] | null, MongoDbError>> => {
+  const { username, favoriteProgramItemIds } = favoriteData;
 
   try {
     const response = await UserModel.findOneAndUpdate(
       { username },
       {
-        favoritedProgramItems,
+        favoriteProgramItemIds,
       },
-      { new: true, fields: "favoritedProgramItems" },
-    )
-      .lean<User>()
-      .populate("favoritedProgramItems", "-_id -__v -updatedAt -createdAt");
+      { new: true, fields: "favoriteProgramItemIds" },
+    ).lean<User>();
     logger.info(
       `MongoDB: Favorite data stored for user ${favoriteData.username}`,
     );
@@ -57,7 +32,7 @@ export const saveFavorite = async (
       logger.error("%s", new Error(`MongoDB: User ${username} not found`));
       return makeErrorResult(MongoDbError.USER_NOT_FOUND);
     }
-    return makeSuccessResult(response.favoritedProgramItems);
+    return makeSuccessResult(response.favoriteProgramItemIds);
   } catch (error) {
     logger.error(
       `MongoDB: Error storing favorite data for user ${favoriteData.username}: %s`,
