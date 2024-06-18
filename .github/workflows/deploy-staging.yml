@@ -30,7 +30,7 @@ jobs:
           curl -Lo bin/kubectl https://dl.k8s.io/release/v1.22.0/bin/linux/amd64/kubectl
           chmod +x bin/skaffold bin/kubectl
       - name: Add skaffold and kubectl to PATH
-        run: echo "$PWD/bin" >> $GITHUB_PATH
+        run: echo "$PWD/bin" >> "$GITHUB_PATH"
       - uses: docker/login-action@v3
         with:
           registry: ghcr.io

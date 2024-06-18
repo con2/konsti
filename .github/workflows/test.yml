@@ -22,7 +22,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set Problem Matchers
+      - name: Set actionlint Problem Matchers
         run: |
           echo "::add-matcher::.github/actionlint-matcher.json"
         shell: bash
