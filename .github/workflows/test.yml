@@ -22,17 +22,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-#      - name: Run actionlint
-#        uses: docker://rhysd/actionlint:1.7.1
-#        with:
-#          args: -color
-
-      - name: Check workflow files
+      - name: Set Problem Matchers
         run: |
           echo "::add-matcher::.github/actionlint-matcher.json"
-          bash <(curl https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash)
-          ./actionlint -color
         shell: bash
+
+      - name: Run actionlint
+        uses: docker://rhysd/actionlint:1.7.1
+        with:
+          args: -color
 
       - name: Use Node.js 20.12.2
         uses: actions/setup-node@v4
