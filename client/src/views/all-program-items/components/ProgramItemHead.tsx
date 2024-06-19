@@ -69,7 +69,9 @@ export const ProgramItemHead = ({
   if (programItem.gameSystem) {
     tags.push(programItem.gameSystem);
   }
-  tags.push(t(`programItemLanguage.${programItem.language}`));
+  programItem.languages.map((language) => {
+    tags.push(t(`programItemLanguage.${language}`));
+  });
 
   const updateFavoriteHandler = async (
     updateOpts: UpdateFavoriteOpts,

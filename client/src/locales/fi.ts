@@ -119,6 +119,7 @@ export const translationFI = {
   programItemLanguage: {
     english: "Englanniksi",
     finnish: "Suomeksi",
+    swedish: "Ruotsiksi",
     finnishOrEnglish: "Suomeksi tai englanniksi",
     languageFree: "Kielivapaa",
   },
@@ -143,13 +144,15 @@ export const translationFI = {
     tournament: "Turnaus",
     suitableForAllAges: "Sopii kaiken ikäisille",
     aimedAtChildrenUnder13: "Suunnattu alle 13-vuotiaille",
-    "aimedAtChildrenBetween13-17": "Suunnattu 13–17-vuotiaille",
+    aimedAtChildrenBetween13to17: "Suunnattu 13–17-vuotiaille",
     aimedAtAdultAttendees: "Suunnattu täysi-ikäisille",
     for18PlusOnly: "Vain täysi-ikäisille",
     ropeconTheme: "Teema: Menneisyys ja tulevaisuus",
     celebratoryYear: "Juhlavuosi",
     intendedForExperiencedParticipants:
       "Suositellaan aikaisempaa kokemusta pelijärjestelmästä",
+    allAges: "Kaikenikäisille",
+    themeMonsters: "Teema: Hirviöt",
   },
   pageTitle: {
     login: "Kirjaudu sisään",
@@ -460,30 +463,20 @@ export const translationFI = {
     flashingLights: "Välkkyvät tai voimakkaat valot",
     strongSmells: "Voimakkaat tuoksut",
     irritateSkin: "Ihoa ärsyttävät aineet tai materiaalit",
-    physicalContact:
-      "Fyysinen kontakti ja/tai suppea henkilökohtaisen tilan mahdollisuus",
+    physicalContact: "Paljon liikkumista ilman mahdollisuutta istumiseen",
     lowLighting: "Pimeä/heikko valaistus",
-    movingAround:
-      "Osallistuminen vaatii paljon liikkumista ilman mahdollisuutta istumiseen",
-    video:
-      "Ohjelmanumerossa katsotaan video, jossa ei ole tekstitystä kuulorajoitteisille",
-    recording:
-      "Osallistuminen edellyttää sellaisen äänitteen kuuntelemista, josta ei ole tekstiversiota kuulorajoitteisille",
-    colourblind:
-      "Ohjelmanumerossa käytettävät materiaalit voivat tuottaa haasteita värisokeille",
-    remainingOnePlace:
-      "Vaatii pitkää paikallaan oloa ilman mahdollisuutta taukoihin ja liikkumiseen",
-    cannotUseMic: "En voi käyttää mikrofonia",
-    programmeDurationOver2Hours: "Ohjelma kestää yli kaksi tuntia ilman taukoa",
-    limitedOpportunitiesToMoveAround:
-      "Ohjelman aikana on rajatut mahdollisuudet liikkumiseen",
-    longText: "Osallistuminen vaatii pitkien tekstien itsenäistä lukemista",
-    textNotAvailableAsRecordings:
-      "Ohjelma sisältää osallistumisen kannalta olennaista tekstiä, josta ei ole saatavilla nauhoitetta tai jota ei lueta ääneen",
-    participationRequiresDexterity:
-      "Ohjelmaan osallistuminen vaatii sorminäppäryyttä",
-    participationRequiresReactQuickly:
-      "Ohjelmaan osallistuminen vaatii nopeaa reaktiokykyä",
+    movingAround: "Paljon liikkumista ilman mahdollisuutta istumiseen",
+    video: "Video, jossa ei ole tekstitystä kuulorajoitteisille",
+    recording: "Äänite, josta ei ole tekstiversiota kuulorajoitteisille",
+    colourblind: "Materiaalit voivat tuottaa haasteita värisokeille",
+    cannotUseMic: "Ei mahdollisuutta käyttää mikrofonia",
+    durationOver2h: "Kesto yli 2 tuntia ilman taukoja",
+    limitedMovingOpportunities: "Rajatut mahdollisuudet liikkumiseen",
+    longTexts: "Pitkien tekstien itsenäistä lukemista",
+    textWithNoRecordings:
+      "Tekstiä, josta ei ole saatavilla nauhoitetta tai jota ei lueta ääneen",
+    requiresDexterity: "Vaatii sorminäppäryyttä",
+    requiresQuickReactions: "Vaatii nopeaa reaktiokykyä",
   },
   strategies: {
     direct: "Suora",

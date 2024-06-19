@@ -72,7 +72,7 @@ const commonConfig = {
   dataUri: DataUri.ROPECON,
   firtSignupBonus: 20,
   useLocalProgramFile: false,
-  localKompassiFile: "program-ropecon-2023.json",
+  localKompassiFile: "program-ropecon-2024.json",
 
   // Statistics
   statsDataDir: "src/features/statistics/datafiles",

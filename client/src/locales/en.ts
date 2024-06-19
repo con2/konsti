@@ -119,6 +119,7 @@ export const translationEN = {
   programItemLanguage: {
     english: "In English",
     finnish: "In Finnish",
+    swedish: "In Swedish",
     finnishOrEnglish: "In Finnish or in English",
     languageFree: "Language free",
   },
@@ -143,13 +144,15 @@ export const translationEN = {
     tournament: "Tournament",
     suitableForAllAges: "Suitable for all ages",
     aimedAtChildrenUnder13: "Aimed at children under 13",
-    "aimedAtChildrenBetween13-17": "Aimed at children between 13-17",
+    aimedAtChildrenBetween13to17: "Aimed at children between 13-17",
     aimedAtAdultAttendees: "Aimed at adult attendees",
     for18PlusOnly: "For 18+ only",
     ropeconTheme: "Theme: Past and Future",
     celebratoryYear: "Celebratory year",
     intendedForExperiencedParticipants:
       "Experience with game system recommended",
+    allAges: "All ages",
+    themeMonsters: "Theme: Monsters",
   },
   pageTitle: {
     login: "Please login",
@@ -458,30 +461,21 @@ export const translationEN = {
     flashingLights: "Flashing or bright lights",
     strongSmells: "Strong smells",
     irritateSkin: "Materials or substances that irritate the skin",
-    physicalContact: "Physical contact and/or low chances of personal space",
+    physicalContact: "Physical contact and/or low chances or personal space",
     lowLighting: "Darkness/low lighting",
-    movingAround:
-      "Participation involves a lot of moving around without a chance for sitting down",
-    video:
-      "The programme involves watching a video without subtitles for the hearing impaired",
-    recording:
-      "Participation requires listening to a recording that does not have a text version for the hearing impaired",
-    colourblind:
-      "Material used in the programme can cause problems for the colourblind",
-    remainingOnePlace:
-      "Requires staying still for a long time without possibility of breaks or movement",
+    movingAround: "Limited opportunies to move around",
+    video: "Video without subtitles for the hearing impaired",
+    recording: "Recording without a text version for the hearing impaired",
+    colourblind: "Materials used can cause problems for the colourblind",
     cannotUseMic: "I can't use a microphone",
-    programmeDurationOver2Hours:
-      "The duration of the programme is over two hours without breaks",
-    limitedOpportunitiesToMoveAround:
+    durationOver2h: "Duration over two hours withtout breaks",
+    limitedMovingOpportunities:
       "There are limited opportunities to move around during the programme",
-    longText: "Participation involves reading long texts independently",
-    textNotAvailableAsRecordings:
-      "The programme includes texts that are essential to participation, and the texts are not available as recordings or read out loud",
-    participationRequiresDexterity:
-      "Participation requires some dexterity, e.g. that of hands and fingers",
-    participationRequiresReactQuickly:
-      "Participation requires the ability to react quickly",
+    longTexts: "Reading long texts independently",
+    textWithNoRecordings:
+      "Text essential to participation without a recoding or text read out loud",
+    requiresDexterity: "Requires finger dexterity",
+    requiresQuickReactions: "Requires ability to react quickly",
   },
   strategies: {
     direct: "Direct",

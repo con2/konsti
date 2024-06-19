@@ -17,7 +17,7 @@ export const getProgramItemsFromFullProgramHitpoint = (
   const matchingProgramItems: kompassiProgramItemHitpoint[] =
     programItems.flatMap((programItem) => {
       // These program items are hand picked to be exported from Kompassi
-      if (sharedConfig.addToKonsti.includes(programItem.identifier)) {
+      if (sharedConfig.addToKonsti.includes(programItem.slug)) {
         return programItem;
       }
 
