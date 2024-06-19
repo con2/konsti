@@ -1,10 +1,8 @@
-import { uniq } from "lodash-es";
 import dayjs from "dayjs";
 import {
   AccessibilityValue,
   ProgramItem,
   GameStyle,
-  Genre,
   Language,
   ProgramType,
   Tag,
@@ -12,11 +10,11 @@ import {
 import {
   KompassiProgramItemRopecon,
   KompassiGameStyleRopecon,
-  KompassiGenreRopecon,
   KompassiLanguageRopecon,
-  KompassiProgramTypeRopecon,
-  KompassiTagRopecon,
-  workshopProgramTypesRopecon,
+  KompassiKonstiProgramTypeRopecon,
+  KompassiAudienceRopecon,
+  KompassiAccessibilityRopecon,
+  KompassiTopicRopecon,
 } from "server/kompassi/ropecon/kompassiProgramItemRopecon";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import { config } from "shared/config";
@@ -26,38 +24,41 @@ export const kompassiProgramItemMapperRopecon = (
 ): readonly ProgramItem[] => {
   return programItems.map((programItem) => {
     return {
-      programItemId: programItem.identifier,
+      programItemId: programItem.slug,
       title: programItem.title,
       description: programItem.description,
-      location: programItem.room_name,
-      startTime: dayjs(programItem.start_time).toISOString(),
+      location: programItem.scheduleItems[0].location,
+      startTime: dayjs(programItem.scheduleItems[0].startTime).toISOString(),
       mins:
-        programItem.length ||
-        dayjs(programItem.end_time).diff(
-          dayjs(programItem.start_time),
+        programItem.scheduleItems[0].lengthMinutes ||
+        dayjs(programItem.scheduleItems[0].endTime).diff(
+          dayjs(programItem.scheduleItems[0].startTime),
           "minute",
         ),
       tags: mapTags(programItem),
-      genres: mapGenres(programItem),
+      genres: [],
       styles: mapGameStyles(programItem),
-      language: mapLanguage(programItem.ropecon2023_language),
-      endTime: dayjs(programItem.end_time).toISOString(),
-      people: programItem.formatted_hosts,
-      minAttendance: programItem.min_players,
+      languages: mapLanguages(programItem.cachedDimensions.language),
+      endTime: dayjs(programItem.scheduleItems[0].endTime).toISOString(),
+      people: programItem.cachedHosts,
+      minAttendance: programItem.cachedAnnotations["konsti:minAttendance"],
       maxAttendance:
-        programItem.max_players || programItem.ropecon2018_characters,
-      gameSystem: programItem.rpg_system,
-      shortDescription: programItem.short_blurb,
+        programItem.cachedAnnotations["konsti:maxAttendance"] ||
+        programItem.cachedAnnotations["ropecon:numCharacters"],
+      gameSystem: programItem.cachedAnnotations["konsti:rpgSystem"],
+      shortDescription: programItem.cachedAnnotations["ropecon:gameSlogan"],
       revolvingDoor: mapRevolvingDoor(programItem),
       programType: mapProgramType(programItem),
-      contentWarnings: programItem.ropecon2022_content_warnings,
-      otherAuthor: programItem.other_author,
-      accessibilityValues: mapAccessibilityValues(programItem),
+      contentWarnings: programItem.cachedAnnotations["ropecon:contentWarnings"],
+      otherAuthor: programItem.cachedAnnotations["ropecon:otherAuthor"],
+      accessibilityValues: mapAccessibilityValues(
+        programItem.cachedDimensions.accessibility,
+      ),
       popularity: 0,
       otherAccessibilityInformation:
-        programItem.ropecon2023_other_accessibility_information,
-      entryFee: programItem.ropecon2023_workshop_fee,
-      signupType: programItem.ropecon2023_signuplist,
+        programItem.cachedAnnotations["ropecon:accessibilityOther"],
+      entryFee: programItem.cachedAnnotations["konsti:workshopFee"],
+      signupType: programItem.links.length === 1 ? "konsti" : "none",
     };
   });
 };
@@ -65,35 +66,25 @@ export const kompassiProgramItemMapperRopecon = (
 const mapProgramType = (
   kompassiProgramItem: KompassiProgramItemRopecon,
 ): ProgramType => {
-  const programType = kompassiProgramItem.category_title;
+  const programType = kompassiProgramItem.cachedDimensions.konsti[0];
 
   switch (programType) {
-    case KompassiProgramTypeRopecon.TABLETOP_RPG:
+    case KompassiKonstiProgramTypeRopecon.TABLETOP_RPG:
       return ProgramType.TABLETOP_RPG;
 
-    case KompassiProgramTypeRopecon.LARP:
+    case KompassiKonstiProgramTypeRopecon.LARP:
       return ProgramType.LARP;
 
-    case KompassiProgramTypeRopecon.TOURNAMENT_BOARD_GAME:
-    case KompassiProgramTypeRopecon.TOURNAMENT_CARD_GAME:
-    case KompassiProgramTypeRopecon.TOURNAMENT_MINIATURE_WARGAME:
-    case KompassiProgramTypeRopecon.TOURNAMENT_OTHER:
+    case KompassiKonstiProgramTypeRopecon.TOURNAMENT:
       return ProgramType.TOURNAMENT;
 
-    case KompassiProgramTypeRopecon.WORKSHOP_MINIATURE:
-    case KompassiProgramTypeRopecon.WORKSHOP_CRAFTS:
-    case KompassiProgramTypeRopecon.WORKSHOP_MUSIC:
-    case KompassiProgramTypeRopecon.WORKSHOP_OTHER:
+    case KompassiKonstiProgramTypeRopecon.WORKSHOP:
       return ProgramType.WORKSHOP;
 
-    case KompassiProgramTypeRopecon.EXPERIENCE_POINT_DEMO:
-    case KompassiProgramTypeRopecon.EXPERIENCE_POINT_OTHER:
-    case KompassiProgramTypeRopecon.EXPERIENCE_POINT_OPEN:
+    case KompassiKonstiProgramTypeRopecon.EXPERIENCE_POINT:
       return ProgramType.EXPERIENCE_POINT;
 
-    case KompassiProgramTypeRopecon.OTHER_GAME_PROGRAM:
-    case KompassiProgramTypeRopecon.OTHER_PROGRAM:
-    case KompassiProgramTypeRopecon.MINIATURE_DEMO:
+    case KompassiKonstiProgramTypeRopecon.OTHER:
       return ProgramType.OTHER;
 
     default:
@@ -102,155 +93,41 @@ const mapProgramType = (
 };
 
 const mapTags = (kompassiProgramItem: KompassiProgramItemRopecon): Tag[] => {
-  const tags: Tag[] = kompassiProgramItem.tags.flatMap((tag) => {
-    switch (tag) {
-      case KompassiTagRopecon.IN_ENGLISH:
-        return Tag.IN_ENGLISH;
-
-      case KompassiTagRopecon.SOPII_LAPSILLE:
-        return Tag.CHILDREN_FRIENDLY;
-
-      case KompassiTagRopecon.VAIN_TAYSI_IKAISILLE:
+  const audiences = kompassiProgramItem.cachedDimensions.audience;
+  const tags: Tag[] = audiences.map((audience) => {
+    switch (audience) {
+      case KompassiAudienceRopecon.K_18:
         return Tag.AGE_RESTRICTED;
 
-      case KompassiTagRopecon.ALOITTELIJAYSTÄVÄLLINEN:
+      case KompassiAudienceRopecon.BEGINNERS:
         return Tag.BEGINNER_FRIENDLY;
 
-      case KompassiTagRopecon.KUNNIAVIERAS:
-        return Tag.GUEST_OF_HONOR;
+      case KompassiAudienceRopecon.AIMED_UNDER_13:
+        return Tag.AIMED_AT_CHILDREN_UNDER_13;
 
-      case KompassiTagRopecon.PERHEOHJELMA:
-        return Tag.FAMILY;
+      case KompassiAudienceRopecon.AIMED_BETWEEN_13_17:
+        return Tag.AIMED_AT_CHILDREN_BETWEEN_13_17;
 
-      case KompassiTagRopecon.TEEMA_ELEMENTIT:
-        return Tag.THEME_ELEMENTS;
-
-      case KompassiTagRopecon.SOPII_ALLE_7V:
-        return Tag.SUITABLE_UNDER_7;
-
-      case KompassiTagRopecon.SOPII_7_12V:
-        return Tag.SUITABLE_7_TO_12;
-
-      case KompassiTagRopecon.SOPII_YLI_12V:
-        return Tag.SUITABLE_OVER_12;
-
-      case KompassiTagRopecon.EI_SOVELLU_ALLE_15V:
-        return Tag.NOT_SUITABLE_UNDER_15;
-
-      case KompassiTagRopecon.LASTENOHJELMA:
-        return Tag.CHILDRENS_PROGRAM;
-
-      case KompassiTagRopecon.SUUNNATTU_ALLE_10V:
-        return Tag.SUITABLE_UNDER_10;
-
-      case KompassiTagRopecon.SUUNNATTU_ALAIKAISILLE:
-        return Tag.FOR_MINORS;
-
-      case KompassiTagRopecon.SUUNNATTU_TAYSIIKAISILLE:
+      case KompassiAudienceRopecon.AIMED_ADULTS:
         return Tag.FOR_ADULTS;
 
-      case KompassiTagRopecon.TEEMA_YSTAVYYS:
-        return Tag.THEME_FRIENDSHIP;
-
-      case KompassiTagRopecon.DEMO:
-        return Tag.DEMO;
-
-      case KompassiTagRopecon.KILPAILUTURNAUS:
-        return Tag.TOURNAMENT;
-
-      // We don't want to show these in UI
-      case KompassiTagRopecon.AIHE_FIGUPELIT:
-      case KompassiTagRopecon.AIHE_KORTTIPELIT:
-      case KompassiTagRopecon.AIHE_LARPIT:
-      case KompassiTagRopecon.AIHE_LAUTAPELIT:
-      case KompassiTagRopecon.AIHE_POYTAROOLIPELIT:
-      case KompassiTagRopecon.HISTORIA:
-      case KompassiTagRopecon.PELI:
-      case KompassiTagRopecon.YOUTUBE:
-        return [];
+      case KompassiAudienceRopecon.ALL_AGES:
+        return Tag.FOR_ADULTS;
 
       default:
-        return exhaustiveSwitchGuard(tag);
+        return exhaustiveSwitchGuard(audience);
     }
   });
 
-  if (kompassiProgramItem.ropecon2023_suitable_for_all_ages) {
-    tags.push(Tag.SUITABLE_FOR_ALL_AGES);
+  const topics = kompassiProgramItem.cachedDimensions.topic;
+  if (topics.includes(KompassiTopicRopecon.GOH)) {
+    tags.push(Tag.GUEST_OF_HONOR);
+  }
+  if (topics.includes(KompassiTopicRopecon.THEME)) {
+    tags.push(Tag.THEME_MONSTERS);
   }
 
-  if (kompassiProgramItem.ropecon2023_aimed_at_children_under_13) {
-    tags.push(Tag.AIMED_AT_CHILDREN_UNDER_13);
-  }
-
-  if (kompassiProgramItem.ropecon2023_aimed_at_children_between_13_17) {
-    tags.push(Tag.AIMED_AT_CHILDREN_BETWEEN_13_17);
-  }
-
-  if (kompassiProgramItem.ropecon2023_aimed_at_adult_attendees) {
-    tags.push(Tag.AIMED_AT_ADULT_ATTENDEES);
-  }
-
-  if (kompassiProgramItem.ropecon2023_for_18_plus_only) {
-    tags.push(Tag.FOR_18_PLUS_ONLY);
-  }
-
-  if (kompassiProgramItem.ropecon2023_beginner_friendly) {
-    tags.push(Tag.BEGINNER_FRIENDLY);
-  }
-
-  if (kompassiProgramItem.ropecon_theme) {
-    tags.push(Tag.ROPECON_THEME);
-  }
-
-  if (kompassiProgramItem.ropecon2023_celebratory_year) {
-    tags.push(Tag.CELEBRATORY_YEAR);
-  }
-
-  return uniq(tags);
-};
-
-const mapGenres = (
-  kompassiProgramItem: KompassiProgramItemRopecon,
-): Genre[] => {
-  return kompassiProgramItem.genres.map((genre) => {
-    switch (genre) {
-      case KompassiGenreRopecon.FANTASY:
-        return Genre.FANTASY;
-
-      case KompassiGenreRopecon.SCIFI:
-        return Genre.SCIFI;
-
-      case KompassiGenreRopecon.HISTORICAL:
-        return Genre.HISTORICAL;
-
-      case KompassiGenreRopecon.MODERN:
-        return Genre.MODERN;
-
-      case KompassiGenreRopecon.WAR:
-        return Genre.WAR;
-
-      case KompassiGenreRopecon.HORROR:
-        return Genre.HORROR;
-
-      case KompassiGenreRopecon.EXPLORATION:
-        return Genre.EXPLORATION;
-
-      case KompassiGenreRopecon.MYSTERY:
-        return Genre.MYSTERY;
-
-      case KompassiGenreRopecon.DRAMA:
-        return Genre.DRAMA;
-
-      case KompassiGenreRopecon.HUMOR:
-        return Genre.HUMOR;
-
-      case KompassiGenreRopecon.ADVENTURE:
-        return Genre.ADVENTURE;
-
-      default:
-        return exhaustiveSwitchGuard(genre);
-    }
-  });
+  return tags;
 };
 
 const mapGameStyles = (
@@ -285,121 +162,70 @@ const mapGameStyles = (
   });
 };
 
-const mapLanguage = (kompassiLanguage: KompassiLanguageRopecon): Language => {
-  switch (kompassiLanguage) {
-    case KompassiLanguageRopecon.FINNISH:
-      return Language.FINNISH;
+const mapLanguages = (
+  kompassiLanguages: KompassiLanguageRopecon[],
+): Language[] => {
+  const languages: Language[] = [];
 
-    case KompassiLanguageRopecon.ENGLISH:
-      return Language.ENGLISH;
-
-    case KompassiLanguageRopecon.FINNISH_OR_ENGLISH:
-      return Language.FINNISH_OR_ENGLISH;
-
-    case KompassiLanguageRopecon.LANGUAGE_FREE:
-      return Language.LANGUAGE_FREE;
-
-    default:
-      return exhaustiveSwitchGuard(kompassiLanguage);
+  if (kompassiLanguages.includes(KompassiLanguageRopecon.FINNISH)) {
+    languages.push(Language.FINNISH);
   }
+  if (kompassiLanguages.includes(KompassiLanguageRopecon.ENGLISH)) {
+    languages.push(Language.ENGLISH);
+  }
+  if (kompassiLanguages.includes(KompassiLanguageRopecon.SWEDISH)) {
+    languages.push(Language.SWEDISH);
+  }
+  if (kompassiLanguages.includes(KompassiLanguageRopecon.LANGUAGE_FREE)) {
+    languages.push(Language.LANGUAGE_FREE);
+  }
+
+  return languages;
 };
 
 const mapAccessibilityValues = (
-  kompassiProgramItem: KompassiProgramItemRopecon,
+  kompassiAccessibilityValues: KompassiAccessibilityRopecon[],
 ): AccessibilityValue[] => {
-  const accessibilityValues = [];
-
-  if (kompassiProgramItem.ropecon2021_accessibility_loud_sounds) {
-    accessibilityValues.push(AccessibilityValue.LOUD_SOUNDS);
-  }
-
-  if (kompassiProgramItem.ropecon2021_accessibility_flashing_lights) {
-    accessibilityValues.push(AccessibilityValue.FLASHING_LIGHTS);
-  }
-
-  if (kompassiProgramItem.ropecon2021_accessibility_strong_smells) {
-    accessibilityValues.push(AccessibilityValue.STRONG_SMELLS);
-  }
-
-  if (kompassiProgramItem.ropecon2021_accessibility_irritate_skin) {
-    accessibilityValues.push(AccessibilityValue.IRRITATE_SKIN);
-  }
-
-  if (kompassiProgramItem.ropecon2021_accessibility_physical_contact) {
-    accessibilityValues.push(AccessibilityValue.PHYSICAL_CONTACT);
-  }
-
-  if (kompassiProgramItem.ropecon2021_accessibility_low_lightning) {
-    accessibilityValues.push(AccessibilityValue.LOW_LIGHTING);
-  }
-
-  if (kompassiProgramItem.ropecon2021_accessibility_moving_around) {
-    accessibilityValues.push(AccessibilityValue.MOVING_AROUND);
-  }
-
-  if (kompassiProgramItem.ropecon2021_accessibility_video) {
-    accessibilityValues.push(AccessibilityValue.VIDEO);
-  }
-
-  if (kompassiProgramItem.ropecon2021_accessibility_recording) {
-    accessibilityValues.push(AccessibilityValue.RECORDING);
-  }
-
-  if (kompassiProgramItem.ropecon2021_accessibility_colourblind) {
-    accessibilityValues.push(AccessibilityValue.COLOURBLIND);
-  }
-
-  if (kompassiProgramItem.ropecon2022_accessibility_remaining_one_place) {
-    accessibilityValues.push(AccessibilityValue.REMAINING_ONE_PLACE);
-  }
-
-  if (kompassiProgramItem.ropecon2023_accessibility_cant_use_mic) {
-    accessibilityValues.push(AccessibilityValue.CANNOT_USE_MIC);
-  }
-
-  if (
-    kompassiProgramItem.ropecon2023_accessibility_programme_duration_over_2_hours
-  ) {
-    accessibilityValues.push(
-      AccessibilityValue.PROGRAMME_DURATION_OVER_2_HOURS,
-    );
-  }
-
-  if (
-    kompassiProgramItem.ropecon2023_accessibility_limited_opportunities_to_move_around
-  ) {
-    accessibilityValues.push(
-      AccessibilityValue.LIMITED_OPPORTUNITIES_TO_MOVE_AROUND,
-    );
-  }
-
-  if (kompassiProgramItem.ropecon2023_accessibility_long_texts) {
-    accessibilityValues.push(AccessibilityValue.LONG_TEXT);
-  }
-
-  if (
-    kompassiProgramItem.ropecon2023_accessibility_texts_not_available_as_recordings
-  ) {
-    accessibilityValues.push(
-      AccessibilityValue.TEXT_NOT_AVAILABLE_AS_RECORDINGS,
-    );
-  }
-
-  if (
-    kompassiProgramItem.ropecon2023_accessibility_participation_requires_dexterity
-  ) {
-    accessibilityValues.push(
-      AccessibilityValue.PARTICIPATION_REQUIRES_DEXTERITY,
-    );
-  }
-
-  if (
-    kompassiProgramItem.ropecon2023_accessibility_participation_requires_react_quickly
-  ) {
-    accessibilityValues.push(
-      AccessibilityValue.PARTICIPATION_REQUIRES_REACT_QUICKLY,
-    );
-  }
+  const accessibilityValues = kompassiAccessibilityValues.map(
+    (kompassiAccessibilityValue) => {
+      switch (kompassiAccessibilityValue) {
+        case KompassiAccessibilityRopecon.LOUD_SOUNDS:
+          return AccessibilityValue.LOUD_SOUNDS;
+        case KompassiAccessibilityRopecon.PHYSICAL_CONTACT:
+          return AccessibilityValue.PHYSICAL_CONTACT;
+        case KompassiAccessibilityRopecon.MOVING_AROUND:
+          return AccessibilityValue.MOVING_AROUND;
+        case KompassiAccessibilityRopecon.DURATION_OVER_2H:
+          return AccessibilityValue.DURATION_OVER_2H;
+        case KompassiAccessibilityRopecon.REQUIRES_DEXTERITY:
+          return AccessibilityValue.REQUIRES_DEXTERITY;
+        case KompassiAccessibilityRopecon.RECORDING:
+          return AccessibilityValue.RECORDING;
+        case KompassiAccessibilityRopecon.REQUIRES_QUICK_REACTIONS:
+          return AccessibilityValue.REQUIRES_QUICK_REACTIONS;
+        case KompassiAccessibilityRopecon.COLORBLIND:
+          return AccessibilityValue.COLORBLIND;
+        case KompassiAccessibilityRopecon.TEXTS_WITH_NO_RECORDINGS:
+          return AccessibilityValue.TEXTS_WITH_NO_RECORDINGS;
+        case KompassiAccessibilityRopecon.LIMITED_MOVING_OPPORTUNITIES:
+          return AccessibilityValue.LIMITED_MOVING_OPPORTUNITIES;
+        case KompassiAccessibilityRopecon.FLASHING_LIGHTS:
+          return AccessibilityValue.FLASHING_LIGHTS;
+        case KompassiAccessibilityRopecon.LOW_LIGHTING:
+          return AccessibilityValue.LOW_LIGHTING;
+        case KompassiAccessibilityRopecon.LONG_TEXTS:
+          return AccessibilityValue.LONG_TEXTS;
+        case KompassiAccessibilityRopecon.IRRITATE_SKIN:
+          return AccessibilityValue.IRRITATE_SKIN;
+        case KompassiAccessibilityRopecon.VIDEO:
+          return AccessibilityValue.VIDEO;
+        case KompassiAccessibilityRopecon.STRONG_SMELLS:
+          return AccessibilityValue.STRONG_SMELLS;
+        default:
+          return exhaustiveSwitchGuard(kompassiAccessibilityValue);
+      }
+    },
+  );
 
   return accessibilityValues;
 };
@@ -412,15 +238,14 @@ const mapRevolvingDoor = (
   }
 
   if (
-    workshopProgramTypesRopecon.includes(kompassiProgramItem.category_title) &&
-    kompassiProgramItem.max_players === 0
+    kompassiProgramItem.cachedDimensions.konsti[0] ===
+      KompassiKonstiProgramTypeRopecon.WORKSHOP &&
+    kompassiProgramItem.cachedAnnotations["konsti:maxAttendance"] === 0
   ) {
     return true;
   }
 
-  if (
-    config.shared().addRevolvingDoorIds.includes(kompassiProgramItem.identifier)
-  ) {
+  if (config.shared().addRevolvingDoorIds.includes(kompassiProgramItem.slug)) {
     return true;
   }
 

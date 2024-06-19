@@ -36,10 +36,9 @@ import {
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import {
   KompassiGameStyleRopecon,
-  KompassiGenreRopecon,
-  KompassiTagRopecon,
+  KompassiAudienceRopecon,
 } from "server/kompassi/ropecon/kompassiProgramItemRopecon";
-import { GameStyle, Genre, Tag } from "shared/types/models/programItem";
+import { GameStyle, Tag } from "shared/types/models/programItem";
 import { logger } from "server/utils/logger";
 import { SignupQuestionType } from "shared/types/models/settings";
 import { config } from "shared/config";
@@ -238,7 +237,12 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
       value: [
         {
           ...mockKompassiProgramItemRopecon,
-          start_time: newStartTime,
+          scheduleItems: [
+            {
+              ...mockKompassiProgramItemRopecon.scheduleItems[0],
+              startTime: newStartTime,
+            },
+          ],
           description: newDescription,
         },
       ],
@@ -269,7 +273,12 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
       value: [
         {
           ...mockKompassiProgramItemRopecon,
-          start_time: newStartTime,
+          scheduleItems: [
+            {
+              ...mockKompassiProgramItemRopecon.scheduleItems[0],
+              startTime: newStartTime,
+            },
+          ],
         },
         mockKompassiProgramItemRopecon2,
       ],
@@ -316,28 +325,21 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
       value: [
         {
           ...mockKompassiProgramItemRopecon,
-          tags: [
-            KompassiTagRopecon.ALOITTELIJAYSTÄVÄLLINEN,
-            // @ts-expect-error: Test
-            "invalid-tag",
-            // @ts-expect-error: Test
-            undefined,
-            // @ts-expect-error: Test
-            [1],
-            // @ts-expect-error: Test
-            {},
-          ],
-          genres: [
-            KompassiGenreRopecon.ADVENTURE,
-            // @ts-expect-error: Test
-            "invalid-genre",
-            // @ts-expect-error: Test
-            undefined,
-            // @ts-expect-error: Test
-            [1],
-            // @ts-expect-error: Test
-            {},
-          ],
+          cachedDimensions: {
+            ...mockKompassiProgramItemRopecon.cachedDimensions,
+            topic: [],
+            audience: [
+              KompassiAudienceRopecon.BEGINNERS,
+              // @ts-expect-error: Test
+              "invalid-tag",
+              // @ts-expect-error: Test
+              undefined,
+              // @ts-expect-error: Test
+              [1],
+              // @ts-expect-error: Test
+              {},
+            ],
+          },
           styles: [
             KompassiGameStyleRopecon.CHARACTER_DRIVEN,
             // @ts-expect-error: Test
@@ -363,7 +365,6 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
 
     expect(programItems.length).toEqual(1);
     expect(programItems[0].tags).toEqual([Tag.BEGINNER_FRIENDLY]);
-    expect(programItems[0].genres).toEqual([Genre.ADVENTURE]);
     expect(programItems[0].styles).toEqual([GameStyle.CHARACTER_DRIVEN]);
     // @ts-expect-error: Test
     expect(programItems[0].foobar).toEqual(undefined);
@@ -374,10 +375,15 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
       value: [
         {
           ...mockKompassiProgramItemRopecon,
-          // @ts-expect-error: Test value
-          start_time: null,
-          // @ts-expect-error: Test value
-          end_time: null,
+          scheduleItems: [
+            {
+              ...mockKompassiProgramItemRopecon.scheduleItems[0],
+              // @ts-expect-error: Test value
+              startTime: null,
+              // @ts-expect-error: Test value
+              endTime: null,
+            },
+          ],
         },
       ],
     });
@@ -393,13 +399,13 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     expect(errorLoggerSpy).toHaveBeenCalledWith(
       "%s",
       new Error(
-        "Invalid program item p2106 at path end_time: Expected string, received null",
+        "Invalid program item p2106 at path scheduleItems,0,endTime: Expected string, received null",
       ),
     );
     expect(errorLoggerSpy).toHaveBeenCalledWith(
       "%s",
       new Error(
-        "Invalid program item p2106 at path start_time: Expected string, received null",
+        "Invalid program item p2106 at path scheduleItems,0,startTime: Expected string, received null",
       ),
     );
 

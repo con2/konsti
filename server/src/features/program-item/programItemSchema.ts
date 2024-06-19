@@ -12,7 +12,7 @@ const programItemSchema = new mongoose.Schema(
     tags: Array,
     genres: Array,
     styles: Array,
-    language: String,
+    languages: [String],
     endTime: Date,
     people: String,
     minAttendance: Number,

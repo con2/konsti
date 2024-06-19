@@ -15,7 +15,7 @@ export const kompassiProgramItemMapperSolmukohta = (
 ): readonly ProgramItem[] => {
   return programItems.map((programItem) => {
     return {
-      programItemId: programItem.identifier,
+      programItemId: programItem.slug,
       title: programItem.title,
       description: programItem.description,
       location: programItem.room_name,
@@ -29,7 +29,7 @@ export const kompassiProgramItemMapperSolmukohta = (
       tags: [],
       genres: [],
       styles: [],
-      language: Language.ENGLISH,
+      languages: [Language.ENGLISH],
       endTime: dayjs(programItem.end_time).toISOString(),
       people: programItem.formatted_hosts,
       minAttendance: programItem.min_players,

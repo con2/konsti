@@ -71,7 +71,7 @@ export const parseProgramItem = (
       logger.error(
         "%s",
         new Error(
-          `Invalid program item ${programItem.identifier} at path ${issue.path}: ${issue.message}`,
+          `Invalid program item ${programItem.slug} at path ${issue.path}: ${issue.message}`,
         ),
       );
     });
@@ -79,7 +79,7 @@ export const parseProgramItem = (
   }
 
   logger.error(
-    `Unknown error while parsing program item ${programItem.identifier}: %s`,
+    `Unknown error while parsing program item ${programItem.slug}: %s`,
     result.error,
   );
 };
@@ -121,9 +121,43 @@ const getProgramFromServer = async (): Promise<
 > => {
   logger.info("GET event program from remote server");
 
+  const url = "https://kompassi.eu/graphql";
+  const body = {
+    query: `
+      query ProgramListQuery($event: String!) {
+          event(slug: $event) {
+              program {
+                  programs(hidePast: false) {
+                      slug
+                      title
+                      description
+                      cachedHosts
+                      cachedDimensions
+                      cachedAnnotations
+                      scheduleItems {
+                          startTime
+                          endTime
+                          lengthMinutes
+                          location
+                      }
+                      links(types: SIGNUP, includeExpired: true) {
+                          href
+                      }
+                  }
+              }
+          }
+      }
+    `,
+    variables: {
+      event: "ropecon2024",
+    },
+  };
+  const headers = { "Content-Type": "application/json" };
+
   try {
-    const response = await axios.get(config.server().dataUri);
-    return makeSuccessResult(response.data);
+    const response = await axios.post(url, body, { headers });
+    const programItems = response.data.data.event.program.programs;
+    return makeSuccessResult(programItems);
   } catch (error) {
     logger.error("Program items request error: %s", error);
     return makeErrorResult(KompassiError.UNKNOWN_ERROR);

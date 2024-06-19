@@ -8,10 +8,7 @@ import { kompassiProgramItem } from "server/kompassi/kompassiProgramItem";
 import {
   KompassiProgramItemRopecon,
   KompassiProgramItemSchemaRopecon,
-  KompassiProgramTypeRopecon,
-  KompassiSignupTypeRopecon,
-  experiencePointAndOtherProgramTypesRopecon,
-  tournamentProgramTypesRopecon,
+  KompassiKonstiProgramTypeRopecon,
 } from "server/kompassi/ropecon/kompassiProgramItemRopecon";
 
 export const getProgramItemsFromFullProgramRopecon = (
@@ -19,34 +16,18 @@ export const getProgramItemsFromFullProgramRopecon = (
 ): kompassiProgramItem[] => {
   const matchingProgramItems = programItems.flatMap((programItem) => {
     // These program items are hand picked to be exported from Kompassi
-    if (config.shared().addToKonsti.includes(programItem.identifier)) {
+    if (config.shared().addToKonsti.includes(programItem.slug)) {
       return programItem;
     }
 
-    // Take program items with valid program type
-    if (
-      !Object.values(KompassiProgramTypeRopecon).includes(
-        programItem.category_title,
-      )
-    ) {
-      return [];
-    }
+    // Take program items with valid program type and Konsti signup link
+    const programType = programItem.cachedDimensions.konsti[0];
 
-    // Take 'Experience Point' and 'Other' program items where "ropecon2023_signuplist": "konsti"
-    if (
-      experiencePointAndOtherProgramTypesRopecon.includes(
-        programItem.category_title,
-      ) &&
-      programItem.ropecon2023_signuplist !== KompassiSignupTypeRopecon.KONSTI
-    ) {
-      return [];
-    }
+    const shouldPickProgramItem =
+      Object.values(KompassiKonstiProgramTypeRopecon).includes(programType) &&
+      programItem.links.length === 1;
 
-    // Take 'Tournament' program items where "ropecon2023_signuplist": "konsti"
-    if (
-      tournamentProgramTypesRopecon.includes(programItem.category_title) &&
-      programItem.ropecon2023_signuplist !== KompassiSignupTypeRopecon.KONSTI
-    ) {
+    if (!shouldPickProgramItem) {
       return [];
     }
 

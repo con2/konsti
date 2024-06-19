@@ -11,7 +11,7 @@ export enum KompassiPhysicalPlayHitpoint {
 }
 
 export const KompassiProgramItemSchemaHitpoint = z.object({
-  identifier: z.string(),
+  slug: z.string(),
   title: z.string().catch(""),
   description: z.string().catch(""),
   category_title: z.nativeEnum(KompassiProgramTypeHitpoint),

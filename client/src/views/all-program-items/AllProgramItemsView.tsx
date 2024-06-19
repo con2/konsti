@@ -165,12 +165,11 @@ const getTagFilteredProgramItems = (
     if (programItem.tags.includes(selectedTag as Tag)) {
       return programItem;
     }
-    if (programItem.language.includes(selectedTag as Language)) {
+    if (programItem.languages.includes(selectedTag as Language)) {
       return programItem;
     }
     if (
-      (programItem.language === Language.FINNISH_OR_ENGLISH ||
-        programItem.language === Language.LANGUAGE_FREE) &&
+      programItem.languages.includes(Language.LANGUAGE_FREE) &&
       (selectedTag === Language.FINNISH || selectedTag === Language.ENGLISH)
     ) {
       return programItem;

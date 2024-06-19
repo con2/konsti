@@ -18,7 +18,7 @@ export const kompassiProgramItemMapperHitpoint = (
 ): readonly ProgramItem[] => {
   return programItems.map((programItem) => {
     return {
-      programItemId: programItem.identifier,
+      programItemId: programItem.slug,
       title: programItem.title,
       description: programItem.description,
       location: programItem.room_name,
@@ -27,7 +27,7 @@ export const kompassiProgramItemMapperHitpoint = (
       tags: mapTags(programItem),
       genres: [],
       styles: [],
-      language: mapLanguage(programItem),
+      languages: mapLanguages(programItem),
       endTime: dayjs(programItem.start_time)
         .add(programItem.length, "minutes")
         .toISOString(),
@@ -88,16 +88,18 @@ const mapTags = (kompassiProgramItem: kompassiProgramItemHitpoint): Tag[] => {
   return uniq(tags);
 };
 
-const mapLanguage = (kompassiProgramItem: kompassiProgramItemHitpoint) => {
+const mapLanguages = (
+  kompassiProgramItem: kompassiProgramItemHitpoint,
+): Language[] => {
   const { isEnglishProgramItems } = config.shared();
 
-  if (isEnglishProgramItems.includes(kompassiProgramItem.identifier)) {
-    return Language.ENGLISH;
+  if (isEnglishProgramItems.includes(kompassiProgramItem.slug)) {
+    return [Language.ENGLISH];
   }
 
   if (kompassiProgramItem.is_english_ok) {
-    return Language.FINNISH_OR_ENGLISH;
+    return [Language.ENGLISH];
   }
 
-  return Language.FINNISH;
+  return [Language.FINNISH];
 };

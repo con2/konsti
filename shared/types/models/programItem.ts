@@ -38,6 +38,7 @@ export enum GameStyle {
 export enum Language {
   FINNISH = "finnish",
   ENGLISH = "english",
+  SWEDISH = "swedish",
   FINNISH_OR_ENGLISH = "finnishOrEnglish",
   LANGUAGE_FREE = "languageFree",
 }
@@ -63,12 +64,14 @@ export enum Tag {
   TOURNAMENT = "tournament",
   SUITABLE_FOR_ALL_AGES = "suitableForAllAges",
   AIMED_AT_CHILDREN_UNDER_13 = "aimedAtChildrenUnder13",
-  AIMED_AT_CHILDREN_BETWEEN_13_17 = "aimedAtChildrenBetween13-17",
+  AIMED_AT_CHILDREN_BETWEEN_13_17 = "aimedAtChildrenBetween13to17",
   AIMED_AT_ADULT_ATTENDEES = "aimedAtAdultAttendees",
   FOR_18_PLUS_ONLY = "for18PlusOnly",
   ROPECON_THEME = "ropeconTheme",
   CELEBRATORY_YEAR = "celebratoryYear",
   INTENDED_FOR_EXPERIENCED_PARTICIPANTS = "intendedForExperiencedParticipants",
+  ALL_AGES = "allAges",
+  THEME_MONSTERS = "themeMonsters",
 }
 
 export enum AccessibilityValue {
@@ -81,15 +84,14 @@ export enum AccessibilityValue {
   MOVING_AROUND = "movingAround",
   VIDEO = "video",
   RECORDING = "recording",
-  COLOURBLIND = "colourblind",
-  REMAINING_ONE_PLACE = "remainingOnePlace",
+  COLORBLIND = "colourblind",
   CANNOT_USE_MIC = "cannotUseMic",
-  PROGRAMME_DURATION_OVER_2_HOURS = "programmeDurationOver2Hours",
-  LIMITED_OPPORTUNITIES_TO_MOVE_AROUND = "limitedOpportunitiesToMoveAround",
-  LONG_TEXT = "longText",
-  TEXT_NOT_AVAILABLE_AS_RECORDINGS = "textNotAvailableAsRecordings",
-  PARTICIPATION_REQUIRES_DEXTERITY = "participationRequiresDexterity",
-  PARTICIPATION_REQUIRES_REACT_QUICKLY = "participationRequiresReactQuickly",
+  DURATION_OVER_2H = "durationOver2h",
+  LIMITED_MOVING_OPPORTUNITIES = "limitedMovingOpportunities",
+  LONG_TEXTS = "longTexts",
+  TEXTS_WITH_NO_RECORDINGS = "textWithNoRecordings",
+  REQUIRES_DEXTERITY = "requiresDexterity",
+  REQUIRES_QUICK_REACTIONS = "requiresQuickReactions",
 }
 
 export const ProgramItemSchema = z.object({
@@ -102,7 +104,7 @@ export const ProgramItemSchema = z.object({
   tags: z.array(z.nativeEnum(Tag)),
   genres: z.array(z.nativeEnum(Genre)),
   styles: z.array(z.nativeEnum(GameStyle)),
-  language: z.nativeEnum(Language),
+  languages: z.array(z.nativeEnum(Language)),
   endTime: z.string(),
   people: z.string(),
   minAttendance: z.number(),

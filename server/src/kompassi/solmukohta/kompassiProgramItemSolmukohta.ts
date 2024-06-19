@@ -14,7 +14,7 @@ export enum KompassiTagSolmukohta {
 }
 
 export const KompassiProgramItemSchemaSolmukohta = z.object({
-  identifier: z.string(),
+  slug: z.string(),
   title: z.string().catch(""),
   description: z.string().catch(""),
   category_title: z.nativeEnum(KompassiProgramTypeSolmukohta),

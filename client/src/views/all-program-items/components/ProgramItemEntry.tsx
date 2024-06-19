@@ -76,7 +76,10 @@ export const ProgramItemEntry = ({
   if (programItem.gameSystem) {
     tags.push(programItem.gameSystem);
   }
-  tags.push(t(`programItemLanguage.${programItem.language}`));
+
+  programItem.languages.map((language) => {
+    tags.push(t(`programItemLanguage.${language}`));
+  });
 
   return (
     <StyledCard

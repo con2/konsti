@@ -17,7 +17,7 @@ export const getProgramItemsFromFullProgramSolmukohta = (
 ): kompassiProgramItem[] => {
   const matchingProgramItems = programItems.flatMap((programItem) => {
     // These program items are hand picked to be exported from Kompassi
-    if (config.shared().addToKonsti.includes(programItem.identifier)) {
+    if (config.shared().addToKonsti.includes(programItem.slug)) {
       return programItem;
     }
 

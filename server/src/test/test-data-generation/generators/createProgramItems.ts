@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker";
 import dayjs from "dayjs";
-import { sample, sampleSize } from "lodash-es";
+import { sampleSize } from "lodash-es";
 import { logger } from "server/utils/logger";
 import { kompassiProgramItemMapperRopecon } from "server/kompassi/ropecon/kompassiProgramItemMapperRopecon";
 import { saveProgramItems } from "server/features/program-item/programItemRepository";
@@ -8,13 +8,11 @@ import { config } from "shared/config";
 import {
   KompassiProgramItemRopecon,
   KompassiGameStyleRopecon,
-  KompassiGenreRopecon,
   KompassiLanguageRopecon,
-  KompassiProgramTypeRopecon,
-  KompassiSignupTypeRopecon,
-  KompassiTagRopecon,
-  tournamentProgramTypesRopecon,
-  workshopProgramTypesRopecon,
+  KompassiKonstiProgramTypeRopecon,
+  KompassiAudienceRopecon,
+  KompassiAccessibilityRopecon,
+  KompassiTopicRopecon,
 } from "server/kompassi/ropecon/kompassiProgramItemRopecon";
 import { Result } from "shared/utils/result";
 import { MongoDbError } from "shared/types/api/errors";
@@ -31,44 +29,46 @@ const startTimes = [
   dayjs(config.shared().conventionStartTime).add(2, "days").toISOString(),
 ];
 
-const getMinAttendees = (programType: KompassiProgramTypeRopecon): number => {
-  if (tournamentProgramTypesRopecon.includes(programType)) {
+const getMinAttendees = (
+  programType: KompassiKonstiProgramTypeRopecon,
+): number => {
+  if (programType === KompassiKonstiProgramTypeRopecon.TOURNAMENT) {
     return faker.number.int({ min: 6, max: 10 });
   }
 
-  if (workshopProgramTypesRopecon.includes(programType)) {
+  if (programType === KompassiKonstiProgramTypeRopecon.WORKSHOP) {
     return 0;
   }
 
   return faker.number.int({ min: 2, max: 3 });
 };
 
-const getMaxAttendees = (programType: KompassiProgramTypeRopecon): number => {
-  if (tournamentProgramTypesRopecon.includes(programType)) {
+const getMaxAttendees = (
+  programType: KompassiKonstiProgramTypeRopecon,
+): number => {
+  if (programType === KompassiKonstiProgramTypeRopecon.TOURNAMENT) {
     return faker.number.int({ min: 12, max: 20 });
   }
 
-  if (workshopProgramTypesRopecon.includes(programType)) {
+  if (programType === KompassiKonstiProgramTypeRopecon.WORKSHOP) {
     return faker.number.int({ min: 12, max: 20 });
   }
 
   return faker.number.int({ min: 3, max: 4 });
 };
 
-const getProgramType = (
-  programType: KompassiProgramTypeRopecon,
-): KompassiProgramTypeRopecon => {
-  if (programType === KompassiProgramTypeRopecon.TOURNAMENT_BOARD_GAME) {
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- We know tournamentProgramTypes is valid array
-    return sample(tournamentProgramTypesRopecon)!;
+const getTopics = (): KompassiTopicRopecon[] => {
+  const topics: KompassiTopicRopecon[] = [];
+
+  if (Math.random() < 0.1) {
+    topics.push(KompassiTopicRopecon.GOH);
   }
 
-  if (programType === KompassiProgramTypeRopecon.WORKSHOP_MINIATURE) {
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- We know tournamentProgramTypes is valid array
-    return sample(workshopProgramTypesRopecon)!;
+  if (Math.random() < 0.1) {
+    topics.push(KompassiTopicRopecon.THEME);
   }
 
-  return programType;
+  return topics;
 };
 
 export const createProgramItems = async (
@@ -77,10 +77,10 @@ export const createProgramItems = async (
   const kompassiProgramItems: KompassiProgramItemRopecon[] = [];
 
   const programTypes = [
-    KompassiProgramTypeRopecon.TABLETOP_RPG,
-    KompassiProgramTypeRopecon.LARP,
-    KompassiProgramTypeRopecon.TOURNAMENT_BOARD_GAME,
-    KompassiProgramTypeRopecon.WORKSHOP_MINIATURE,
+    KompassiKonstiProgramTypeRopecon.TABLETOP_RPG,
+    KompassiKonstiProgramTypeRopecon.LARP,
+    KompassiKonstiProgramTypeRopecon.TOURNAMENT,
+    KompassiKonstiProgramTypeRopecon.WORKSHOP,
   ];
 
   programTypes.map((programType) => {
@@ -93,69 +93,53 @@ export const createProgramItems = async (
         const length = 180;
 
         const kompassiProgramItemData: KompassiProgramItemRopecon = {
+          slug: faker.number.int(PROGRAM_ITEM_ID_MAX).toString(),
           title: faker.word.words(3),
           description: faker.lorem.sentences(5),
-          category_title: getProgramType(programType),
-          formatted_hosts: faker.internet.userName(),
-          room_name: "Ropetaverna",
-          length,
-          start_time: dayjs(startTime).toISOString(),
-          end_time: dayjs(startTime).add(length, "minutes").toISOString(),
-          rpg_system:
-            programType === KompassiProgramTypeRopecon.TABLETOP_RPG
-              ? "Test gamesystem"
-              : "",
-          min_players: getMinAttendees(programType),
-          max_players: getMaxAttendees(programType),
-          identifier: faker.number.int(PROGRAM_ITEM_ID_MAX).toString(),
-          tags: sampleSize(Object.values(KompassiTagRopecon), 3),
-          genres: sampleSize(Object.values(KompassiGenreRopecon), 2),
+          cachedHosts: faker.internet.userName(),
+          cachedDimensions: {
+            date: [""],
+            room: [""],
+            type: [""],
+            topic: getTopics(),
+            konsti: [programType],
+            audience: sampleSize(Object.values(KompassiAudienceRopecon), 3),
+            language: sampleSize(Object.values(KompassiLanguageRopecon), 1),
+            accessibility: sampleSize(
+              Object.values(KompassiAccessibilityRopecon),
+              3,
+            ),
+          },
+          scheduleItems: [
+            {
+              startTime: dayjs(startTime).toISOString(),
+              endTime: dayjs(startTime).add(length, "minutes").toISOString(),
+              lengthMinutes: length,
+              location: "Ropetaverna",
+            },
+          ],
+          links: [
+            { href: "https://ropekonsti.fi/program/item/test-item-slug" },
+          ],
+          cachedAnnotations: {
+            "konsti:rpgSystem":
+              programType === KompassiKonstiProgramTypeRopecon.TABLETOP_RPG
+                ? "Test gamesystem"
+                : "",
+            "ropecon:otherAuthor": "Other author",
+            "konsti:minAttendance": getMinAttendees(programType),
+            "konsti:maxAttendance": getMaxAttendees(programType),
+            "ropecon:numCharacters": 6,
+            "konsti:workshopFee":
+              programType === KompassiKonstiProgramTypeRopecon.WORKSHOP
+                ? "5€"
+                : "",
+            "ropecon:contentWarnings": "Content warning",
+            "ropecon:accessibilityOther": "Other accessibility information",
+            "ropecon:gameSlogan": faker.lorem.sentence(),
+          },
           styles: sampleSize(Object.values(KompassiGameStyleRopecon), 2),
-          short_blurb: faker.lorem.sentence(),
           revolving_door: Math.random() < 0.5,
-          other_author: "Other author",
-          ropecon2018_characters: 6,
-          ropecon2021_accessibility_loud_sounds: Math.random() < 0.5,
-          ropecon2021_accessibility_flashing_lights: Math.random() < 0.5,
-          ropecon2021_accessibility_strong_smells: Math.random() < 0.5,
-          ropecon2021_accessibility_irritate_skin: Math.random() < 0.5,
-          ropecon2021_accessibility_physical_contact: Math.random() < 0.5,
-          ropecon2021_accessibility_low_lightning: Math.random() < 0.5,
-          ropecon2021_accessibility_moving_around: Math.random() < 0.5,
-          ropecon2021_accessibility_video: Math.random() < 0.5,
-          ropecon2021_accessibility_recording: Math.random() < 0.5,
-          ropecon2021_accessibility_colourblind: Math.random() < 0.5,
-          ropecon2022_accessibility_remaining_one_place: Math.random() < 0.5,
-          ropecon2022_content_warnings: "Content warning",
-          ropecon2023_accessibility_cant_use_mic: Math.random() < 0.5,
-          ropecon2023_accessibility_programme_duration_over_2_hours:
-            Math.random() < 0.5,
-          ropecon2023_accessibility_limited_opportunities_to_move_around:
-            Math.random() < 0.5,
-          ropecon2023_accessibility_long_texts: Math.random() < 0.5,
-          ropecon2023_accessibility_texts_not_available_as_recordings:
-            Math.random() < 0.5,
-          ropecon2023_accessibility_participation_requires_dexterity:
-            Math.random() < 0.5,
-          ropecon2023_accessibility_participation_requires_react_quickly:
-            Math.random() < 0.5,
-          ropecon2023_other_accessibility_information:
-            "Other accessibility information",
-          ropecon2023_signuplist: KompassiSignupTypeRopecon.KONSTI,
-          ropecon2023_workshop_fee: workshopProgramTypesRopecon.includes(
-            programType,
-          )
-            ? "5€"
-            : "",
-          ropecon2023_language: KompassiLanguageRopecon.FINNISH,
-          ropecon2023_suitable_for_all_ages: Math.random() < 0.5,
-          ropecon2023_aimed_at_children_under_13: Math.random() < 0.5,
-          ropecon2023_aimed_at_children_between_13_17: Math.random() < 0.5,
-          ropecon2023_aimed_at_adult_attendees: Math.random() < 0.5,
-          ropecon2023_for_18_plus_only: Math.random() < 0.5,
-          ropecon2023_beginner_friendly: Math.random() < 0.5,
-          ropecon_theme: Math.random() < 0.5,
-          ropecon2023_celebratory_year: Math.random() < 0.5,
         };
 
         logger.info(`Stored program item ${kompassiProgramItemData.title}`);
