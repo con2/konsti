@@ -62,7 +62,6 @@ export const translationFI = {
     programList: "Kaikki ohjelma",
     program: "Ohjelma",
     admin: "Ylläpito",
-    results: "Ilmoittautumistulokset",
     group: "Ryhmä",
     notifications: "Ilmoitukset",
     profileAndGroup: "Profiili & ryhmä",
@@ -340,6 +339,11 @@ export const translationFI = {
     noKonstiSignup:
       "Tähän {{PROGRAM_TYPE}} ei ilmoittauduta Konstissa. Katso ilmoittautumisohjeet ohjelman lisätiedoista.",
     maxAttendanceMissing: "Puuttuva tieto: maksimimäärä {{ATTENDEE_TYPE}}",
+    showAttendees: "Näytä {{ATTENDEE_TYPE}}",
+    hideAttendees: "Piilota {{ATTENDEE_TYPE}}",
+    noAttendees: "Ei {{ATTENDEE_TYPE}}",
+    loginLink: "Kirjaudu sisään",
+    loginLinkEnding: " nähdäksesi {{ATTENDEE_TYPE}}",
   },
   attendeeType: {
     player: "pelaaja",
@@ -348,6 +352,10 @@ export const translationFI = {
   attendeeTypePlural: {
     player: "pelaajia",
     participant: "osallistujia",
+  },
+  attendeeTypePluralNominative: {
+    player: "pelaajat",
+    participant: "osallistujat",
   },
   attendeeTypePartitive: {
     player: "pelaajaa",
@@ -442,12 +450,6 @@ export const translationFI = {
     experiencePoint: "peliin",
     other: "ohjelmanumeroon",
     roundtableDiscussion: "keskustelupiiriin",
-  },
-  resultsView: {
-    allSignupResults: "Ilmoittautumistulokset",
-    confirm: "Vahvista",
-    noSignups: "Ei ilmoittautuneita {{ATTENDEE_TYPE}}",
-    noResults: "Ei ilmoittautumistuloksia",
   },
   firstLogin: {
     serial: "Ota koodi talteen salasanan palauttamista varten:",

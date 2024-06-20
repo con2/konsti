@@ -41,10 +41,6 @@ export const LoggedInUserNavigation = (props: {
         </RouterLink>
       )}
 
-      <RouterLink onClick={props.onSelect} to="/results">
-        {t("pages.results")}
-      </RouterLink>
-
       {isUser(userGroup) && config.shared().enableGroups && (
         <RouterLink
           onClick={props.onSelect}

@@ -62,7 +62,6 @@ export const translationEN = {
     programList: "All Program",
     program: "Program",
     admin: "Admin",
-    results: "Sign-up Results",
     group: "Group",
     notifications: "Notifications",
     profileAndGroup: "Profile & Group",
@@ -338,12 +337,21 @@ export const translationEN = {
     noKonstiSignup:
       "This {{PROGRAM_TYPE}} does not use Konsti for signing up. See the program details for instructions.",
     maxAttendanceMissing: "Missing info: maximum number of {{ATTENDEE_TYPE}}",
+    showAttendees: "Show {{ATTENDEE_TYPE}}",
+    hideAttendees: "Hide {{ATTENDEE_TYPE}}",
+    noAttendees: "No {{ATTENDEE_TYPE}}",
+    loginLink: "Log in",
+    loginLinkEnding: " to see {{ATTENDEE_TYPE}}",
   },
   attendeeType: {
     player: "player",
     participant: "participant",
   },
   attendeeTypePlural: {
+    player: "players",
+    participant: "participants",
+  },
+  attendeeTypePluralNominative: {
     player: "players",
     participant: "participants",
   },
@@ -440,12 +448,6 @@ export const translationEN = {
     experiencePoint: "program",
     other: "program item",
     roundtableDiscussion: "roundtable discussion",
-  },
-  resultsView: {
-    allSignupResults: "Sign-up Results",
-    confirm: "Confirm",
-    noSignups: "No signed up {{ATTENDEE_TYPE}}",
-    noResults: "No sign-up results",
   },
   firstLogin: {
     serial: "Save this code for recovering your password:",

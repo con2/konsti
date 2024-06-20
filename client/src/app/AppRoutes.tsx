@@ -8,7 +8,6 @@ import { LoginView } from "client/views/login/LoginView";
 import { MyProgramItemsView } from "client/views/my-program-items/MyProgramItemsView";
 import { RegistrationView } from "client/views/registration/RegistrationView";
 import { AdminView } from "client/views/admin/AdminView";
-import { ResultsView } from "client/views/results/ResultsView";
 import { LogoutView } from "client/views/logout/LogoutView";
 import { GroupView } from "client/views/group/GroupView";
 import { HelperView } from "client/views/helper/HelperView";
@@ -35,7 +34,6 @@ export enum AppRoute {
   HELP = "/help",
   ADMIN = "/admin",
   ADMIN_LOGIN = "/admin/login",
-  RESULTS = "/results",
   PROFILE = "/profile",
   REGISTRATION = "/registration",
   LOGIN = "/login",
@@ -141,7 +139,6 @@ export const AppRoutes = (): ReactElement => {
               path={`${AppRoute.PROGRAM_ITEM}/:programItemId`}
               element={<ProgramItemPage />}
             />
-            <Route path={AppRoute.RESULTS} element={<ResultsView />} />
             <Route path={AppRoute.PROFILE} element={<ProfileView />} />
           </>
         )}
@@ -188,7 +185,6 @@ export const AppRoutes = (): ReactElement => {
           element={<ProgramItemPage />}
         />
         <Route path={AppRoute.NOTIFICATIONS} element={<EventLog />} />
-        <Route path={AppRoute.RESULTS} element={<ResultsView />} />
         {!isAdminOrHelp(userGroup) && config.shared().enableGroups ? (
           <Route
             path={`${AppRoute.PROFILE}/*`}
