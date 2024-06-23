@@ -54,7 +54,6 @@ export const KompassiProgramItemSchemaSolmukohta = z.object({
   ropecon2021_accessibility_colourblind: z.boolean().catch(false),
   ropecon2022_accessibility_remaining_one_place: z.boolean().catch(false),
   ropecon2022_content_warnings: z.string().catch(""),
-  ropecon2023_accessibility_cant_use_mic: z.boolean().catch(false),
   ropecon2023_accessibility_programme_duration_over_2_hours: z
     .boolean()
     .catch(false),

@@ -467,7 +467,6 @@ export const translationEN = {
     video: "Video without subtitles for the hearing impaired",
     recording: "Recording without a text version for the hearing impaired",
     colourblind: "Materials used can cause problems for the colourblind",
-    cannotUseMic: "I can't use a microphone",
     durationOver2h: "Duration over two hours withtout breaks",
     limitedMovingOpportunities:
       "There are limited opportunities to move around during the programme",

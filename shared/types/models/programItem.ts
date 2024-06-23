@@ -85,7 +85,6 @@ export enum AccessibilityValue {
   VIDEO = "video",
   RECORDING = "recording",
   COLORBLIND = "colourblind",
-  CANNOT_USE_MIC = "cannotUseMic",
   DURATION_OVER_2H = "durationOver2h",
   LIMITED_MOVING_OPPORTUNITIES = "limitedMovingOpportunities",
   LONG_TEXTS = "longTexts",
