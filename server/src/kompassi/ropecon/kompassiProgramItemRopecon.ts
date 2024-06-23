@@ -48,8 +48,6 @@ export enum KompassiLanguageRopecon {
   FINNISH = "fi",
   ENGLISH = "en",
   SWEDISH = "sv",
-  // TODO: Should this exist?
-  // FINNISH_OR_ENGLISH = "finnish_or_english",
   LANGUAGE_FREE = "free",
 }
 
@@ -184,8 +182,6 @@ export const KompassiProgramItemSchemaRopecon = z.object({
 
   // TODO: Missing from API
   revolving_door: z.boolean().catch(false),
-  // TODO: Missing from API
-  // ropecon2023_accessibility_cant_use_mic: z.boolean().catch(false),
 });
 
 export type KompassiProgramItemRopecon = z.infer<

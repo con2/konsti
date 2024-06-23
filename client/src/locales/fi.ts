@@ -471,7 +471,6 @@ export const translationFI = {
     video: "Video, jossa ei ole tekstitystä kuulorajoitteisille",
     recording: "Äänite, josta ei ole tekstiversiota kuulorajoitteisille",
     colourblind: "Materiaalit voivat tuottaa haasteita värisokeille",
-    cannotUseMic: "En voi käyttää mikrofonia",
     durationOver2h: "Kesto yli 2 tuntia ilman taukoja",
     limitedMovingOpportunities: "Rajatut mahdollisuudet liikkumiseen",
     longTexts: "Pitkien tekstien itsenäistä lukemista",
