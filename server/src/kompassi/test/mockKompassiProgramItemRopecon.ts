@@ -41,7 +41,6 @@ export const mockKompassiProgramItemRopecon: KompassiProgramItemRopecon = {
       location: testProgramItem.location,
     },
   ],
-  links: [{ href: "https://ropekonsti.fi/program/item/test-item-slug" }],
   cachedAnnotations: {
     "konsti:rpgSystem": testProgramItem.gameSystem,
     "ropecon:otherAuthor": testProgramItem.otherAuthor,
@@ -89,7 +88,6 @@ export const mockKompassiProgramItemRopecon2: KompassiProgramItemRopecon = {
       location: testProgramItem2.location,
     },
   ],
-  links: [{ href: "https://ropekonsti.fi/program/item/test-item-slug" }],
   cachedAnnotations: {
     "konsti:rpgSystem": testProgramItem2.gameSystem,
     "ropecon:otherAuthor": testProgramItem2.otherAuthor,

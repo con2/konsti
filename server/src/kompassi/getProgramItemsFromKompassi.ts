@@ -140,9 +140,6 @@ const getProgramFromServer = async (): Promise<
                           lengthMinutes
                           location
                       }
-                      links(types: SIGNUP, includeExpired: true) {
-                          href
-                      }
                   }
               }
           }

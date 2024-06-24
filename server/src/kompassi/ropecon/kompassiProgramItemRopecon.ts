@@ -92,7 +92,7 @@ export const KompassiProgramItemSchemaRopecon = z.object({
       );
       return valid;
     }),
-    konsti: z.array(z.nativeEnum(KompassiKonstiProgramTypeRopecon)),
+    konsti: z.array(z.nativeEnum(KompassiKonstiProgramTypeRopecon)).catch([]),
     audience: z.array(z.nativeEnum(KompassiAudienceRopecon)).catch((ctx) => {
       if (!Array.isArray(ctx.input)) {
         return [];
@@ -135,19 +135,16 @@ export const KompassiProgramItemSchemaRopecon = z.object({
         return valid;
       }),
   }),
-  scheduleItems: z.array(
-    z.object({
-      startTime: z.string().datetime({ offset: true }),
-      endTime: z.string().datetime({ offset: true }),
-      lengthMinutes: z.number().catch(0),
-      location: z.string().catch(""),
-    }),
-  ),
-  links: z.array(
-    z.object({
-      href: z.string(),
-    }),
-  ),
+  scheduleItems: z
+    .array(
+      z.object({
+        startTime: z.string().datetime({ offset: true }),
+        endTime: z.string().datetime({ offset: true }),
+        lengthMinutes: z.number().catch(0),
+        location: z.string().catch(""),
+      }),
+    )
+    .min(1),
   cachedAnnotations: z.object({
     "konsti:rpgSystem": z.string().catch(""),
     "ropecon:otherAuthor": z.string().catch(""),

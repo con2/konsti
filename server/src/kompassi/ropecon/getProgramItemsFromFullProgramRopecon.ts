@@ -1,3 +1,4 @@
+import { first } from "lodash-es";
 import {
   checkUnknownKeys,
   parseProgramItem,
@@ -20,12 +21,12 @@ export const getProgramItemsFromFullProgramRopecon = (
       return programItem;
     }
 
-    // Take program items with valid program type and Konsti signup link
-    const programType = programItem.cachedDimensions.konsti[0];
+    // Take program items with Konsti dimension and valid program type
+    const programType = first(programItem.cachedDimensions.konsti);
 
     const shouldPickProgramItem =
-      Object.values(KompassiKonstiProgramTypeRopecon).includes(programType) &&
-      programItem.links.length === 1;
+      programType &&
+      Object.values(KompassiKonstiProgramTypeRopecon).includes(programType);
 
     if (!shouldPickProgramItem) {
       return [];

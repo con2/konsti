@@ -5,6 +5,7 @@ import {
   Language,
   ProgramType,
   Tag,
+  SignupType,
 } from "shared/types/models/programItem";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import {
@@ -44,7 +45,7 @@ export const kompassiProgramItemMapperHitpoint = (
       popularity: 0,
       otherAccessibilityInformation: "",
       entryFee: "",
-      signupType: "",
+      signupType: SignupType.KONSTI,
     };
   });
 };
