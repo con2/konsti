@@ -165,7 +165,6 @@ export const KompassiProgramItemSchemaRopecon = z.object({
     "ropecon:gameSlogan": z.string().catch(""),
   }),
 
-  // TODO: Missing from API
   styles: z.array(z.nativeEnum(KompassiGameStyleRopecon)).catch((ctx) => {
     if (!Array.isArray(ctx.input)) {
       return [];
@@ -177,7 +176,6 @@ export const KompassiProgramItemSchemaRopecon = z.object({
     return valid;
   }),
 
-  // TODO: Missing from API
   revolving_door: z.boolean().catch(false),
 });
 
