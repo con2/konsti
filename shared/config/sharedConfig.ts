@@ -36,6 +36,7 @@ export interface SharedConfig {
   tournamentSignupQuestionExcludeIds: string[];
   addRevolvingDoorIds: string[];
   isEnglishProgramItems: string[];
+  maxValueLength: number;
 }
 
 // Convention days
@@ -141,4 +142,5 @@ export const sharedConfig: SharedConfig = {
   // Sentry
   tracesSampleRate: 0.0,
   enableSentryInDev: false,
+  maxValueLength: 10000,
 };

@@ -20,4 +20,5 @@ init({
   dsn: getDsn(),
   tracesSampleRate: config.shared().tracesSampleRate,
   environment: process.env.SETTINGS,
+  maxValueLength: config.shared().maxValueLength,
 });
