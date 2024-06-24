@@ -73,6 +73,7 @@ init({
     // https://github.com/getsentry/sentry-javascript/issues/3440
     "Non-Error promise rejection captured with value: Object Not Found Matching Id:",
   ],
+  maxValueLength: config.shared().maxValueLength,
 });
 
 // Suspend fallback element
