@@ -2,7 +2,7 @@ import { ReactElement } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { ProgramItem } from "shared/types/models/programItem";
+import { ProgramItem, UserSignup } from "shared/types/models/programItem";
 import { SignupStrategy } from "shared/config/sharedConfigTypes";
 import { UserGroup } from "shared/types/models/user";
 import { FavoriteButton } from "client/components/FavoriteButton";
@@ -19,7 +19,7 @@ import { AppRoute } from "client/app/AppRoutes";
 
 interface Props {
   programItem: ProgramItem;
-  attendees: string[];
+  signups: UserSignup[];
   signupStrategy: SignupStrategy;
   username: string;
   loggedIn: boolean;
@@ -29,7 +29,7 @@ interface Props {
 
 export const ProgramItemHead = ({
   programItem,
-  attendees,
+  signups,
   signupStrategy,
   username,
   loggedIn,
@@ -123,18 +123,18 @@ export const ProgramItemHead = ({
               isEnterGameMode={isEnterGameMode}
               isNormalSignup={isNormalSignup}
               programItem={programItem}
-              attendees={attendees}
+              signups={signups}
               isLoggedIn={loggedIn}
             />
           </Row>
         )}
 
-        {attendees.length < programItem.minAttendance && (
+        {signups.length < programItem.minAttendance && (
           <Row>
             {t("signup.attendeesNeeded", {
-              COUNT: programItem.minAttendance - attendees.length,
+              COUNT: programItem.minAttendance - signups.length,
               ATTENDEE_TYPE:
-                programItem.minAttendance - attendees.length === 1
+                programItem.minAttendance - signups.length === 1
                   ? t(
                       `attendeeType.${getAttendeeType(programItem.programType)}`,
                     )

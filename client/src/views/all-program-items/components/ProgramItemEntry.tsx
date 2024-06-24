@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
-import { ProgramItem } from "shared/types/models/programItem";
+import { ProgramItem, UserSignup } from "shared/types/models/programItem";
 import { SignupStrategy } from "shared/config/sharedConfigTypes";
 import { Signup, UserGroup } from "shared/types/models/user";
 import { RaisedCard } from "client/components/RaisedCard";
@@ -17,7 +17,7 @@ import { ProgramItemHead } from "client/views/all-program-items/components/Progr
 interface Props {
   programItem: ProgramItem;
   startTime: string;
-  attendees: string[];
+  signups: UserSignup[];
   signupStrategy: SignupStrategy;
   lotterySignups: readonly Signup[];
   directSignups: readonly Signup[];
@@ -33,7 +33,7 @@ interface Props {
 export const ProgramItemEntry = ({
   programItem,
   startTime,
-  attendees,
+  signups,
   signupStrategy,
   lotterySignups,
   directSignups,
@@ -88,7 +88,7 @@ export const ProgramItemEntry = ({
     >
       <ProgramItemHead
         programItem={programItem}
-        attendees={attendees}
+        signups={signups}
         signupStrategy={signupStrategy}
         username={username}
         loggedIn={loggedIn}
@@ -104,7 +104,7 @@ export const ProgramItemEntry = ({
         startTime={startTime}
         lotterySignups={lotterySignups}
         programItem={programItem}
-        attendees={attendees.length}
+        attendees={signups.length}
         loading={loading}
         setLoading={setLoading}
       />

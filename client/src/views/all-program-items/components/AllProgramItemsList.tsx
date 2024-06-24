@@ -86,9 +86,7 @@ export const AllProgramItemsList = ({ programItems }: Props): ReactElement => {
                 isAlwaysExpanded={false}
                 programItem={programItem}
                 startTime={startTime}
-                attendees={
-                  programItemSignups?.users.map((s) => s.username) ?? []
-                }
+                signups={programItemSignups?.users ?? []}
                 signupStrategy={timeslotSignupStrategy}
                 lotterySignups={ownOrGroupCreatorLotterySignups}
                 directSignups={directSignups}

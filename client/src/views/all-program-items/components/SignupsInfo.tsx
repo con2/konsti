@@ -2,8 +2,13 @@ import { ReactElement, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import { sortBy } from "lodash-es";
 import { getAttendeeType } from "client/utils/getAttendeeType";
-import { ProgramItem, ProgramType } from "shared/types/models/programItem";
+import {
+  ProgramItem,
+  ProgramType,
+  UserSignup,
+} from "shared/types/models/programItem";
 import { isRevolvingDoorWorkshop } from "client/utils/isRevolvingDoorWorkshop";
 import { ExpandButton } from "client/components/ExpandButton";
 
@@ -12,7 +17,7 @@ interface Props {
   isNormalSignup: boolean;
   isLoggedIn: boolean;
   programItem: ProgramItem;
-  attendees: string[];
+  signups: UserSignup[];
 }
 
 export const SignupsInfo = ({
@@ -20,7 +25,7 @@ export const SignupsInfo = ({
   isNormalSignup,
   isLoggedIn,
   programItem,
-  attendees,
+  signups,
 }: Props): ReactElement => {
   const { t } = useTranslation();
 
@@ -48,7 +53,7 @@ export const SignupsInfo = ({
       {isEnterGameMode && isNormalSignup && isValidMaxAttendanceValue && (
         <SignupsInfoContainer>
           {t("signup.signupCount", {
-            ATTENDEE_COUNT: attendees.length,
+            ATTENDEE_COUNT: signups.length,
             MAX_ATTENDANCE: programItem.maxAttendance,
           })}
           <ExpandButton
@@ -61,7 +66,7 @@ export const SignupsInfo = ({
             onClick={() => setIsExpanded(!isExpanded)}
           />
 
-          {isExpanded && attendees.length === 0 && (
+          {isExpanded && signups.length === 0 && (
             <NoAttendeesText>
               {t("signup.noAttendees", {
                 ATTENDEE_TYPE: t(
@@ -71,15 +76,15 @@ export const SignupsInfo = ({
             </NoAttendeesText>
           )}
 
-          {isExpanded && attendees.length > 0 && isLoggedIn && (
+          {isExpanded && signups.length > 0 && isLoggedIn && (
             <AttendeeList>
-              {attendees.sort().map((attendee) => (
-                <li key={attendee}>{attendee}</li>
+              {sortBy(signups, ["username"]).map((signup) => (
+                <li key={signup.username}>{signup.username}</li>
               ))}
             </AttendeeList>
           )}
 
-          {isExpanded && attendees.length > 0 && !isLoggedIn && (
+          {isExpanded && signups.length > 0 && !isLoggedIn && (
             <AttendeeText>
               <Link to={"/login"}>{t("signup.loginLink")}</Link>
               {t("signup.loginLinkEnding", {

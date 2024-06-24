@@ -51,13 +51,11 @@ export const ProgramItemPage = (): ReactElement => {
   const foundProgramItem = programItems.find(
     (programItem) => programItem.programItemId === programItemId,
   );
-  const attendees =
-    signups
-      .find(
-        (programItemSignup) =>
-          programItemSignup.programItemId === foundProgramItem?.programItemId,
-      )
-      ?.users.map((user) => user.username) ?? [];
+  const programSignups =
+    signups.find(
+      (programItemSignup) =>
+        programItemSignup.programItemId === foundProgramItem?.programItemId,
+    )?.users ?? [];
 
   useEffect(() => {
     setLoading(false);
@@ -72,7 +70,7 @@ export const ProgramItemPage = (): ReactElement => {
           isAlwaysExpanded={true}
           programItem={foundProgramItem}
           startTime={foundProgramItem.startTime}
-          attendees={attendees}
+          signups={programSignups}
           signupStrategy={
             foundProgramItem.signupStrategy ?? SignupStrategy.DIRECT
           }
