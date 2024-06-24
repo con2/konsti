@@ -79,7 +79,7 @@ export const SignupsInfo = ({
             </AttendeeList>
           )}
 
-          {isExpanded && attendeesText.length > 0 && !isLoggedIn && (
+          {isExpanded && attendees.length > 0 && !isLoggedIn && (
             <AttendeeText>
               <Link to={"/login"}>{t("signup.loginLink")}</Link>
               {t("signup.loginLinkEnding", {
@@ -113,7 +113,7 @@ const SignupsInfoContainer = styled.div`
 `;
 
 const AttendeeText = styled.p`
-  margin: 12px 0 0 12px;
+  margin: 4px 0 0 12px;
 `;
 
 const NoAttendeesText = styled(AttendeeText)`
