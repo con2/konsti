@@ -1,7 +1,7 @@
 import { LoginProvider, SignupStrategy } from "shared/config/sharedConfigTypes";
 
 enum DataUri {
-  ROPECON = "https://kompassi.eu/api/v1/events/ropecon2023/programme/ropecon",
+  ROPECON = "https://kompassi.eu/api/v1/events/ropecon2024/programme/ropecon",
   HITPOINT = "https://kompassi.eu/api/v1/events/hitpoint2023/programme/hitpoint",
   SOLMUKOHTA = "https://kompassi.eu/api/v1/events/solmukohta2024/programme/ropecon",
 }
