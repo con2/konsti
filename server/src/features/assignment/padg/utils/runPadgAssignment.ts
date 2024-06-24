@@ -43,7 +43,7 @@ export const runPadgAssignment = (
     logger.error(
       "%s",
       new Error(
-        `Padg assignment failed with input: groups: ${JSON.stringify(
+        `Padg assignment for start time ${startTime} failed with input: groups: ${JSON.stringify(
           groups,
         )}, events: ${JSON.stringify(events)}, list: ${JSON.stringify(
           list,

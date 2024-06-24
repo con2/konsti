@@ -5,7 +5,7 @@ import {
   ListItem,
   Group,
   Event,
-  PadgRandomAssignResults,
+  PadgRandomAssignResult,
   PadgError,
 } from "server/types/padgRandomAssignTypes";
 import { logger } from "server/utils/logger";
@@ -18,11 +18,11 @@ export const assignPadg = (
   events: Event[],
   list: ListItem[],
   updateL: (input: Input) => string,
-): PadgRandomAssignResults => {
+): PadgRandomAssignResult[] => {
   const { PADG_ASSIGNMENT_ROUNDS } = config.server();
 
   let finalHappiness = 0;
-  let finalAssignResults: PadgRandomAssignResults = [];
+  let finalAssignResults: PadgRandomAssignResult[] = [];
 
   for (let i = 0; i < PADG_ASSIGNMENT_ROUNDS; i++) {
     const eventsCopy = cloneDeep(events);
@@ -34,8 +34,18 @@ export const assignPadg = (
       updateL,
     };
 
-    const assignResults: PadgRandomAssignResults | PadgError =
-      eventassigner.eventAssignment(input);
+    let assignResults: PadgRandomAssignResult[] | PadgError | undefined;
+
+    try {
+      assignResults = eventassigner.eventAssignment(input);
+    } catch (error) {
+      logger.error(
+        "%s",
+        new Error(
+          `Padg assignment round failed: ${error}. Input: ${JSON.stringify(input)}`,
+        ),
+      );
+    }
 
     // Skip error results
     if (!Array.isArray(assignResults)) {

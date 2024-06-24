@@ -44,14 +44,12 @@ export interface PadgInput {
   updateL: (input: Input) => string;
 }
 
-interface PadgRandomAssignResult {
+export interface PadgRandomAssignResult {
   id: id; // group id
   assignment: id; // assigned program item id
 }
 
 type id = string | number;
-
-export type PadgRandomAssignResults = readonly PadgRandomAssignResult[];
 
 export interface PadgError {
   result: 0;

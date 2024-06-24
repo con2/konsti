@@ -1,11 +1,11 @@
 declare module "eventassigner-js" {
   import {
     PadgInput,
-    PadgRandomAssignResults,
+    PadgRandomAssignResult,
     PadgError,
   } from "server/types/padgRandomAssignTypes";
   const defaultImport: {
-    eventAssignment: (input: PadgInput) => PadgRandomAssignResults | PadgError;
+    eventAssignment: (input: PadgInput) => PadgRandomAssignResult[] | PadgError;
   };
   export = defaultImport;
 }
