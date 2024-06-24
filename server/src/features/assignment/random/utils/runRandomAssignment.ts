@@ -62,7 +62,7 @@ export const runRandomAssignment = (
     logger.error(
       "%s",
       new Error(
-        `Random assignment failed: ${error}. Input: ${JSON.stringify(input)}`,
+        `Random assignment failed: ${error}. Start time: ${startTime}, Input: ${JSON.stringify(input)}`,
       ),
     );
     return makeErrorResult(AssignmentError.UNKNOWN_ERROR);

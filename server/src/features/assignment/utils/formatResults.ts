@@ -1,5 +1,5 @@
 import { first } from "lodash-es";
-import { PadgRandomAssignResults } from "server/types/padgRandomAssignTypes";
+import { PadgRandomAssignResult } from "server/types/padgRandomAssignTypes";
 import { logger } from "server/utils/logger";
 import { AssignmentError } from "shared/types/api/errors";
 import { UserAssignmentResult } from "shared/types/models/result";
@@ -11,7 +11,7 @@ import {
 } from "shared/utils/result";
 
 export const formatResults = (
-  assignResults: PadgRandomAssignResults,
+  assignResults: PadgRandomAssignResult[],
   attendeeGroups: readonly User[][],
 ): Result<readonly UserAssignmentResult[], AssignmentError> => {
   const selectedAttendees = attendeeGroups
