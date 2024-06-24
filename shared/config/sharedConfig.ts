@@ -142,5 +142,5 @@ export const sharedConfig: SharedConfig = {
   // Sentry
   tracesSampleRate: 0.0,
   enableSentryInDev: false,
-  maxValueLength: 10000,
+  maxValueLength: 100000,
 };
