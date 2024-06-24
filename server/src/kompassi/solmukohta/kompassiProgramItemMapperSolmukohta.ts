@@ -3,6 +3,7 @@ import {
   ProgramItem,
   Language,
   ProgramType,
+  SignupType,
 } from "shared/types/models/programItem";
 import {
   KompassiProgramItemSolmukohta,
@@ -45,7 +46,7 @@ export const kompassiProgramItemMapperSolmukohta = (
       otherAccessibilityInformation:
         programItem.ropecon2023_other_accessibility_information,
       entryFee: programItem.ropecon2023_workshop_fee,
-      signupType: "konsti",
+      signupType: SignupType.KONSTI,
     };
   });
 };

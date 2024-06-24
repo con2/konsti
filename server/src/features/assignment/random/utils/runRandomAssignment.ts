@@ -1,4 +1,5 @@
 import { eventAssignment } from "eventassigner-random";
+import { AssignmentElement } from "eventassigner-random/lib/typings/assignment";
 import { CheckResult } from "eventassigner-random/lib/typings/checkResult";
 import { config } from "shared/config";
 import { getGroups } from "server/features/assignment/utils/getGroups";
@@ -10,7 +11,6 @@ import { AssignmentStrategyResult } from "server/types/resultTypes";
 import {
   ListItem,
   RandomAssignUpdateLInput,
-  PadgRandomAssignResults,
 } from "server/types/padgRandomAssignTypes";
 import { User } from "shared/types/models/user";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
@@ -55,8 +55,20 @@ export const runRandomAssignment = (
     assignmentRounds: RANDOM_ASSIGNMENT_ROUNDS,
   };
 
-  const assignResults = eventAssignment(input);
+  let assignResults: AssignmentElement[] | CheckResult | undefined;
+  try {
+    assignResults = eventAssignment(input);
+  } catch (error) {
+    logger.error(
+      "%s",
+      new Error(
+        `Random assignment failed: ${error}. Input: ${JSON.stringify(input)}`,
+      ),
+    );
+    return makeErrorResult(AssignmentError.UNKNOWN_ERROR);
+  }
 
+  // CheckResult = invalid result
   if (isCheckResult(assignResults)) {
     logger.error(
       "%s",
@@ -81,7 +93,7 @@ export const runRandomAssignment = (
 };
 
 const isCheckResult = (
-  assignResults: PadgRandomAssignResults | CheckResult,
+  assignResults: AssignmentElement[] | CheckResult,
 ): assignResults is CheckResult => {
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   return (assignResults as CheckResult).value !== undefined;

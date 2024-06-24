@@ -6,6 +6,7 @@ import {
   Language,
   ProgramType,
   Tag,
+  SignupType,
 } from "shared/types/models/programItem";
 import {
   KompassiProgramItemRopecon,
@@ -58,7 +59,7 @@ export const kompassiProgramItemMapperRopecon = (
       otherAccessibilityInformation:
         programItem.cachedAnnotations["ropecon:accessibilityOther"],
       entryFee: programItem.cachedAnnotations["konsti:workshopFee"],
-      signupType: programItem.links.length === 1 ? "konsti" : "none",
+      signupType: SignupType.KONSTI,
     };
   });
 };

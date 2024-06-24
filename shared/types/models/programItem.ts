@@ -93,6 +93,11 @@ export enum AccessibilityValue {
   REQUIRES_QUICK_REACTIONS = "requiresQuickReactions",
 }
 
+export enum SignupType {
+  KONSTI = "konsti",
+  NONE = "none",
+}
+
 export const ProgramItemSchema = z.object({
   programItemId: z.string(),
   title: z.string(),
@@ -119,7 +124,7 @@ export const ProgramItemSchema = z.object({
   signupStrategy: z.optional(z.nativeEnum(SignupStrategy)),
   otherAccessibilityInformation: z.string(),
   entryFee: z.string(),
-  signupType: z.string(),
+  signupType: z.nativeEnum(SignupType),
 });
 
 export type ProgramItem = z.infer<typeof ProgramItemSchema>;

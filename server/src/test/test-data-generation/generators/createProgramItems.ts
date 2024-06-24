@@ -118,9 +118,6 @@ export const createProgramItems = async (
               location: "Ropetaverna",
             },
           ],
-          links: [
-            { href: "https://ropekonsti.fi/program/item/test-item-slug" },
-          ],
           cachedAnnotations: {
             "konsti:rpgSystem":
               programType === KompassiKonstiProgramTypeRopecon.TABLETOP_RPG

@@ -6,6 +6,7 @@ import {
   Language,
   ProgramType,
   Tag,
+  SignupType,
 } from "shared/types/models/programItem";
 
 export const testProgramItem: ProgramItem = {
@@ -46,7 +47,7 @@ export const testProgramItem: ProgramItem = {
   ],
   otherAccessibilityInformation: "",
   entryFee: "",
-  signupType: "Konsti",
+  signupType: SignupType.KONSTI,
 };
 
 export const testProgramItem2: ProgramItem = {
@@ -87,5 +88,5 @@ export const testProgramItem2: ProgramItem = {
   ],
   otherAccessibilityInformation: "",
   entryFee: "",
-  signupType: "Konsti",
+  signupType: SignupType.KONSTI,
 };
