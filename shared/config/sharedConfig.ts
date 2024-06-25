@@ -112,13 +112,14 @@ export const sharedConfig: SharedConfig = {
 
   // These program items have hand picked revolving door status
   addRevolvingDoorIds: [
+    // RPG
     "charlie-ei-surffaa-pe", // Charlie ei surffaa (Pe)
     "berserkin-pesa-taalla-hirvioita-on-berserkers-nest-here-there-be-monsters-pe", // Berserkin Pesä: Täällä hirviöitä on / Berserker's Nest: Here there be monsters (Pe)
     "seikkailu-d", // seikkailu d
     "rogues-and-raiders-in-a-cursed-world-konnia-ja-kaappareita-kirotussa-maailmassa", // Rogues and Raiders in a Cursed World / Konnia ja kaappareita kirotussa maailmassa
     "indiehuone-indie-room-indierummet", // Indiehuone / Indie Room / Indierummet
-    "indiehuone-indie-room-indierummet-2", // Indiehuone / Indie Room / Indierummet // TODO: "revolving_door": false
-    "indiehuone-indie-room-indierummet-3", // Indiehuone / Indie Room / Indierummet // TODO: "revolving_door": false
+    "indiehuone-indie-room-indierummet-2", // Indiehuone / Indie Room / Indierummet
+    "indiehuone-indie-room-indierummet-3", // Indiehuone / Indie Room / Indierummet
     "olosuhteet-zombimaailmanloppu-pahispelautus-circumstances-zombie-apocalypse-villain-gameplay", // Olosuhteet - Zombimaailmanloppu (pahispelautus) / Circumstances – Zombie Apocalypse (villain gameplay)
     "pelimestari-fi-presents-celebrity-cruise", // Pelimestari.fi presents: Celebrity cruise
     "jatkot", // Jatkot
@@ -131,7 +132,7 @@ export const sharedConfig: SharedConfig = {
     "varjojen-kartano-mansion-of-shadows-2", // Varjojen kartano/ Mansion of shadows 2
     "rogues-and-raiders-in-a-cursed-world-2nd-game-konnia-ja-kaappareita-kirotussa-maailmassa-2-pelautus", // Rogues and Raiders in a Cursed World (2nd game) / Konnia ja kaappareita kirotussa maailmassa (2. pelautus)
     "kadonneiden-tornien-kolmio", // Kadonneiden tornien kolmio
-    "overlord-2024-naytospeli", // Overlord 2024 näytöspeli // TODO: "revolving_door": false
+    "overlord-2024-naytospeli", // Overlord 2024 näytöspeli
     "overlord-2024-naytospeli-2", // Overlord 2024 näytöspeli
     "overlord-2024-naytospeli-3", // Overlord 2024 näytöspeli
     "olosuhteet-zombimaailmanloppu-co-op-circumstances-zombie-apocalypse-co-op", // Olosuhteet - Zombimaailmanloppu (co-op) / Circumstances – Zombie Apocalypse (co-op)
