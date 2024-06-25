@@ -65,7 +65,6 @@ export const PopularityInfo = ({
 const ProgramItemPopularityContainer = styled.div`
   display: flex;
   flex-direction: row;
-  margin-bottom: 5px;
 `;
 
 const ProgramItemPopularityIcon = styled(FontAwesomeIcon)<{

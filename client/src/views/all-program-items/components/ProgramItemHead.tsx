@@ -151,13 +151,15 @@ export const ProgramItemHead = ({
           </Row>
         )}
         {!isEnterGameMode && isNormalSignup && (
-          <PopularityInfo
-            minAttendance={programItem.minAttendance}
-            maxAttendance={programItem.maxAttendance}
-            popularity={programItem.popularity}
-            includeMsg={true}
-            programType={programItem.programType}
-          />
+          <Row>
+            <PopularityInfo
+              minAttendance={programItem.minAttendance}
+              maxAttendance={programItem.maxAttendance}
+              popularity={programItem.popularity}
+              includeMsg={true}
+              programType={programItem.programType}
+            />
+          </Row>
         )}
       </div>
       {/* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */}
