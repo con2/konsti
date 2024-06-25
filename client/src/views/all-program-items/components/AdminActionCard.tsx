@@ -18,6 +18,7 @@ import {
   SignupQuestionType,
 } from "shared/types/models/settings";
 import { Checkbox } from "client/components/Checkbox";
+import { UncontrolledInput } from "client/components/UncontrolledInput";
 
 interface Props {
   programItem: ProgramItem;
@@ -217,9 +218,9 @@ export const AdminActionCard = ({ programItem }: Props): ReactElement => {
 
           {questionType === SignupQuestionType.SELECT && (
             <>
-              <div>
+              <InputsContainer>
                 <span>{t("signupQuestion.inFinnish")}</span>
-                <input
+                <UncontrolledInput
                   onChange={(event) => {
                     const newState = selectOptions;
                     newState[0] = {
@@ -229,7 +230,7 @@ export const AdminActionCard = ({ programItem }: Props): ReactElement => {
                     setSelectOptions(newState);
                   }}
                 />
-                <input
+                <UncontrolledInput
                   onChange={(event) => {
                     const newState = selectOptions;
                     newState[1] = {
@@ -239,7 +240,7 @@ export const AdminActionCard = ({ programItem }: Props): ReactElement => {
                     setSelectOptions(newState);
                   }}
                 />{" "}
-                <input
+                <UncontrolledInput
                   onChange={(event) => {
                     const newState = selectOptions;
                     newState[2] = {
@@ -249,7 +250,7 @@ export const AdminActionCard = ({ programItem }: Props): ReactElement => {
                     setSelectOptions(newState);
                   }}
                 />
-                <input
+                <UncontrolledInput
                   onChange={(event) => {
                     const newState = selectOptions;
                     newState[3] = {
@@ -259,10 +260,10 @@ export const AdminActionCard = ({ programItem }: Props): ReactElement => {
                     setSelectOptions(newState);
                   }}
                 />
-              </div>
-              <div>
+              </InputsContainer>
+              <InputsContainer>
                 <span>{t("signupQuestion.inEnglish")}</span>
-                <input
+                <UncontrolledInput
                   onChange={(event) => {
                     const newState = selectOptions;
                     newState[0] = {
@@ -272,7 +273,7 @@ export const AdminActionCard = ({ programItem }: Props): ReactElement => {
                     setSelectOptions(newState);
                   }}
                 />
-                <input
+                <UncontrolledInput
                   onChange={(event) => {
                     const newState = selectOptions;
                     newState[1] = {
@@ -282,7 +283,7 @@ export const AdminActionCard = ({ programItem }: Props): ReactElement => {
                     setSelectOptions(newState);
                   }}
                 />{" "}
-                <input
+                <UncontrolledInput
                   onChange={(event) => {
                     const newState = selectOptions;
                     newState[2] = {
@@ -292,7 +293,7 @@ export const AdminActionCard = ({ programItem }: Props): ReactElement => {
                     setSelectOptions(newState);
                   }}
                 />
-                <input
+                <UncontrolledInput
                   onChange={(event) => {
                     const newState = selectOptions;
                     newState[3] = {
@@ -302,7 +303,7 @@ export const AdminActionCard = ({ programItem }: Props): ReactElement => {
                     setSelectOptions(newState);
                   }}
                 />
-              </div>
+              </InputsContainer>
             </>
           )}
 
@@ -348,4 +349,13 @@ const WithRowGap = styled.div`
   row-gap: 8px;
   display: grid;
   padding-top: 8px;
+`;
+
+const InputsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  @media (min-width: ${(props) => props.theme.breakpointPhone}) {
+    max-width: 40%;
+  }
 `;
