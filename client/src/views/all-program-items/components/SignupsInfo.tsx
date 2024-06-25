@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { sortBy } from "lodash-es";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getAttendeeType } from "client/utils/getAttendeeType";
 import {
   ProgramItem,
@@ -11,6 +12,7 @@ import {
 } from "shared/types/models/programItem";
 import { isRevolvingDoorWorkshop } from "client/utils/isRevolvingDoorWorkshop";
 import { ExpandButton } from "client/components/ExpandButton";
+import { SignupQuestion } from "shared/types/models/settings";
 
 interface Props {
   isEnterGameMode: boolean;
@@ -18,6 +20,7 @@ interface Props {
   isLoggedIn: boolean;
   programItem: ProgramItem;
   signups: UserSignup[];
+  publicSignupQuestion?: SignupQuestion;
 }
 
 export const SignupsInfo = ({
@@ -26,8 +29,9 @@ export const SignupsInfo = ({
   isLoggedIn,
   programItem,
   signups,
+  publicSignupQuestion,
 }: Props): ReactElement => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
@@ -77,11 +81,32 @@ export const SignupsInfo = ({
           )}
 
           {isExpanded && signups.length > 0 && isLoggedIn && (
-            <AttendeeList>
-              {sortBy(signups, ["username"]).map((signup) => (
-                <li key={signup.username}>{signup.username}</li>
-              ))}
-            </AttendeeList>
+            <>
+              {publicSignupQuestion && (
+                <QuestionContainer>
+                  <FontAwesomeIcon
+                    aria-label={t("signup.signupQuestionAriaLabel")}
+                    icon={["far", "comment"]}
+                  />
+                  <span>
+                    {": "}
+                    {i18n.language === "fi"
+                      ? publicSignupQuestion.questionFi
+                      : publicSignupQuestion.questionEn}
+                  </span>
+                </QuestionContainer>
+              )}
+              <AttendeeList>
+                {sortBy(signups, ["username"]).map((signup) => (
+                  <li key={signup.username}>
+                    {signup.username}
+                    {publicSignupQuestion && (
+                      <AnswerText>: {signup.signupMessage}</AnswerText>
+                    )}
+                  </li>
+                ))}
+              </AttendeeList>
+            </>
           )}
 
           {isExpanded && signups.length > 0 && !isLoggedIn && (
@@ -117,8 +142,16 @@ const SignupsInfoContainer = styled.div`
   gap: 8px;
 `;
 
+const QuestionContainer = styled.div`
+  color: ${(props) => props.theme.textSecondary};
+`;
+
 const AttendeeText = styled.p`
   margin: 4px 0 0 12px;
+`;
+
+const AnswerText = styled.span`
+  color: ${(props) => props.theme.textSecondary};
 `;
 
 const NoAttendeesText = styled(AttendeeText)`

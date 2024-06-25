@@ -13,6 +13,7 @@ import { config } from "shared/config";
 import { ProgramItemView } from "client/views/all-program-items/components/ProgramItemView";
 import { SignupInfo } from "client/views/all-program-items/components/SignupInfo";
 import { ProgramItemHead } from "client/views/all-program-items/components/ProgramItemHead";
+import { SignupQuestion } from "shared/types/models/settings";
 
 interface Props {
   programItem: ProgramItem;
@@ -28,6 +29,7 @@ interface Props {
   loggedIn: boolean;
   userGroup: UserGroup;
   favoriteProgramItems: readonly ProgramItem[];
+  publicSignupQuestion?: SignupQuestion;
 }
 
 export const ProgramItemEntry = ({
@@ -44,6 +46,7 @@ export const ProgramItemEntry = ({
   loggedIn,
   userGroup,
   favoriteProgramItems,
+  publicSignupQuestion,
 }: Props): ReactElement => {
   const { t } = useTranslation();
 
@@ -94,6 +97,7 @@ export const ProgramItemEntry = ({
         loggedIn={loggedIn}
         userGroup={userGroup}
         favoriteProgramItems={favoriteProgramItems}
+        publicSignupQuestion={publicSignupQuestion}
       />
       <ProgramItemView
         programItem={programItem}

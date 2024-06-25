@@ -57,6 +57,14 @@ export const ProgramItemPage = (): ReactElement => {
         programItemSignup.programItemId === foundProgramItem?.programItemId,
     )?.users ?? [];
 
+  const signupQuestions = useAppSelector(
+    (state) => state.admin.signupQuestions,
+  );
+
+  const publicSignupQuestion = signupQuestions.find(
+    (s) => s.programItemId === programItemId && !s.private,
+  );
+
   useEffect(() => {
     setLoading(false);
   }, [foundProgramItem]);
@@ -82,6 +90,7 @@ export const ProgramItemPage = (): ReactElement => {
           loggedIn={loggedIn}
           userGroup={userGroup}
           favoriteProgramItems={favoriteProgramItems}
+          publicSignupQuestion={publicSignupQuestion}
         />
       )}
       {!loading && !foundProgramItem && (

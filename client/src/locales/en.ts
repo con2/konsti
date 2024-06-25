@@ -342,6 +342,7 @@ export const translationEN = {
     noAttendees: "No {{ATTENDEE_TYPE}}",
     loginLink: "Log in",
     loginLinkEnding: " to see {{ATTENDEE_TYPE}}.",
+    signupQuestionAriaLabel: "Signup question",
   },
   attendeeType: {
     player: "player",

@@ -42,6 +42,15 @@ export const AllProgramItemsList = ({ programItems }: Props): ReactElement => {
 
   const [loading, setLoading] = useState(false);
 
+  const signupQuestions = useAppSelector(
+    (state) => state.admin.signupQuestions,
+  );
+
+  const getPublicSignupQuestion = (programItemId: string) =>
+    signupQuestions.find(
+      (s) => s.programItemId === programItemId && !s.private,
+    );
+
   const ownOrGroupCreatorLotterySignups = getLotterySignups({
     lotterySignups,
     isGroupCreator,
@@ -96,6 +105,9 @@ export const AllProgramItemsList = ({ programItems }: Props): ReactElement => {
                 loggedIn={loggedIn}
                 userGroup={userGroup}
                 favoriteProgramItems={favoriteProgramItems}
+                publicSignupQuestion={getPublicSignupQuestion(
+                  programItem.programItemId,
+                )}
               />
             );
           })}

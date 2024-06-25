@@ -16,6 +16,7 @@ import { config } from "shared/config";
 import { isRevolvingDoorWorkshop } from "client/utils/isRevolvingDoorWorkshop";
 import { SignupsInfo } from "client/views/all-program-items/components/SignupsInfo";
 import { AppRoute } from "client/app/AppRoutes";
+import { SignupQuestion } from "shared/types/models/settings";
 
 interface Props {
   programItem: ProgramItem;
@@ -25,6 +26,7 @@ interface Props {
   loggedIn: boolean;
   userGroup: UserGroup;
   favoriteProgramItems: readonly ProgramItem[];
+  publicSignupQuestion?: SignupQuestion;
 }
 
 export const ProgramItemHead = ({
@@ -35,6 +37,7 @@ export const ProgramItemHead = ({
   loggedIn,
   userGroup,
   favoriteProgramItems,
+  publicSignupQuestion,
 }: Props): ReactElement => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
@@ -125,6 +128,7 @@ export const ProgramItemHead = ({
               programItem={programItem}
               signups={signups}
               isLoggedIn={loggedIn}
+              publicSignupQuestion={publicSignupQuestion}
             />
           </Row>
         )}
