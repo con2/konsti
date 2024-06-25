@@ -341,7 +341,8 @@ export const translationEN = {
     hideAttendees: "Hide {{ATTENDEE_TYPE}}",
     noAttendees: "No {{ATTENDEE_TYPE}}",
     loginLink: "Log in",
-    loginLinkEnding: " to see {{ATTENDEE_TYPE}}",
+    loginLinkEnding: " to see {{ATTENDEE_TYPE}}.",
+    signupQuestionAriaLabel: "Signup question",
   },
   attendeeType: {
     player: "player",

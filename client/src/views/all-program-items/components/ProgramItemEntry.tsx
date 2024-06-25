@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
-import { ProgramItem } from "shared/types/models/programItem";
+import { ProgramItem, UserSignup } from "shared/types/models/programItem";
 import { SignupStrategy } from "shared/config/sharedConfigTypes";
 import { Signup, UserGroup } from "shared/types/models/user";
 import { RaisedCard } from "client/components/RaisedCard";
@@ -13,11 +13,12 @@ import { config } from "shared/config";
 import { ProgramItemView } from "client/views/all-program-items/components/ProgramItemView";
 import { SignupInfo } from "client/views/all-program-items/components/SignupInfo";
 import { ProgramItemHead } from "client/views/all-program-items/components/ProgramItemHead";
+import { SignupQuestion } from "shared/types/models/settings";
 
 interface Props {
   programItem: ProgramItem;
   startTime: string;
-  attendees: string[];
+  signups: UserSignup[];
   signupStrategy: SignupStrategy;
   lotterySignups: readonly Signup[];
   directSignups: readonly Signup[];
@@ -28,12 +29,13 @@ interface Props {
   loggedIn: boolean;
   userGroup: UserGroup;
   favoriteProgramItems: readonly ProgramItem[];
+  publicSignupQuestion?: SignupQuestion;
 }
 
 export const ProgramItemEntry = ({
   programItem,
   startTime,
-  attendees,
+  signups,
   signupStrategy,
   lotterySignups,
   directSignups,
@@ -44,6 +46,7 @@ export const ProgramItemEntry = ({
   loggedIn,
   userGroup,
   favoriteProgramItems,
+  publicSignupQuestion,
 }: Props): ReactElement => {
   const { t } = useTranslation();
 
@@ -88,12 +91,13 @@ export const ProgramItemEntry = ({
     >
       <ProgramItemHead
         programItem={programItem}
-        attendees={attendees}
+        signups={signups}
         signupStrategy={signupStrategy}
         username={username}
         loggedIn={loggedIn}
         userGroup={userGroup}
         favoriteProgramItems={favoriteProgramItems}
+        publicSignupQuestion={publicSignupQuestion}
       />
       <ProgramItemView
         programItem={programItem}
@@ -104,7 +108,7 @@ export const ProgramItemEntry = ({
         startTime={startTime}
         lotterySignups={lotterySignups}
         programItem={programItem}
-        attendees={attendees.length}
+        attendees={signups.length}
         loading={loading}
         setLoading={setLoading}
       />

@@ -343,7 +343,8 @@ export const translationFI = {
     hideAttendees: "Piilota {{ATTENDEE_TYPE}}",
     noAttendees: "Ei {{ATTENDEE_TYPE}}",
     loginLink: "Kirjaudu sisään",
-    loginLinkEnding: " nähdäksesi {{ATTENDEE_TYPE}}",
+    loginLinkEnding: " nähdäksesi {{ATTENDEE_TYPE}}.",
+    signupQuestionAriaLabel: "Lisätietokysymys",
   },
   attendeeType: {
     player: "pelaaja",
