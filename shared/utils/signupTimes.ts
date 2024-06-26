@@ -44,8 +44,7 @@ export const getDirectSignupStartTime = (programItem: ProgramItem): Dayjs => {
   );
 
   if (signupAlwaysOpen) {
-    const someOldTime = "2000-01-01T00:00:00.000Z";
-    return dayjs(someOldTime);
+    return dayjs(conventionStartTime);
   }
 
   // "twoPhaseSignupProgramTypes" signup times are configured with DIRECT_SIGNUP_START
