@@ -43,9 +43,7 @@ export const kompassiProgramItemMapperRopecon = (
       endTime: dayjs(programItem.scheduleItems[0].endTime).toISOString(),
       people: programItem.cachedHosts,
       minAttendance: programItem.cachedAnnotations["konsti:minAttendance"],
-      maxAttendance:
-        programItem.cachedAnnotations["konsti:maxAttendance"] ||
-        programItem.cachedAnnotations["ropecon:numCharacters"],
+      maxAttendance: mapMaxAttendance(programItem),
       gameSystem: programItem.cachedAnnotations["konsti:rpgSystem"],
       shortDescription: programItem.cachedAnnotations["ropecon:gameSlogan"],
       revolvingDoor: mapRevolvingDoor(programItem),
@@ -251,4 +249,17 @@ const mapRevolvingDoor = (
   }
 
   return false;
+};
+
+const mapMaxAttendance = (
+  kompassiProgramItem: KompassiProgramItemRopecon,
+): number => {
+  if (
+    kompassiProgramItem.cachedDimensions.konsti[0] ===
+    KompassiKonstiProgramTypeRopecon.LARP
+  ) {
+    return kompassiProgramItem.cachedAnnotations["ropecon:numCharacters"];
+  }
+
+  return kompassiProgramItem.cachedAnnotations["konsti:maxAttendance"];
 };
