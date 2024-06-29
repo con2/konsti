@@ -106,6 +106,7 @@ export const ProgramItemEntry = ({
         userGroup={userGroup}
         favoriteProgramItems={favoriteProgramItems}
         publicSignupQuestion={publicSignupQuestion}
+        allValuesValid={allValuesValid}
       />
 
       {!allValuesValid && (

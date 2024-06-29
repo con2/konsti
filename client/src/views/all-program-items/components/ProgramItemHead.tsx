@@ -27,6 +27,7 @@ interface Props {
   userGroup: UserGroup;
   favoriteProgramItems: readonly ProgramItem[];
   publicSignupQuestion?: SignupQuestion;
+  allValuesValid: boolean;
 }
 
 export const ProgramItemHead = ({
@@ -38,6 +39,7 @@ export const ProgramItemHead = ({
   userGroup,
   favoriteProgramItems,
   publicSignupQuestion,
+  allValuesValid,
 }: Props): ReactElement => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
@@ -118,7 +120,7 @@ export const ProgramItemHead = ({
               ENTRY_FEE: programItem.entryFee,
             })}
         </Row>
-        {isEnterGameMode && isNormalSignup && (
+        {isEnterGameMode && isNormalSignup && allValuesValid && (
           <Row>
             <SignupsInfo
               isEnterGameMode={isEnterGameMode}
