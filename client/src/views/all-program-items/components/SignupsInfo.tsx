@@ -5,12 +5,7 @@ import { Link } from "react-router-dom";
 import { sortBy } from "lodash-es";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getAttendeeType } from "client/utils/getAttendeeType";
-import {
-  ProgramItem,
-  ProgramType,
-  UserSignup,
-} from "shared/types/models/programItem";
-import { isRevolvingDoorWorkshop } from "client/utils/isRevolvingDoorWorkshop";
+import { ProgramItem, UserSignup } from "shared/types/models/programItem";
 import { ExpandButton } from "client/components/ExpandButton";
 import { SignupQuestion } from "shared/types/models/settings";
 
@@ -35,9 +30,6 @@ export const SignupsInfo = ({
 
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
-  const isValidMaxAttendanceValue =
-    !isRevolvingDoorWorkshop(programItem) && programItem.maxAttendance > 0;
-
   const attendeesText = t(
     `attendeeTypePluralNominative.${getAttendeeType(programItem.programType)}`,
   );
@@ -53,8 +45,8 @@ export const SignupsInfo = ({
   const ariaId = `participants-for-${programItem.programItemId}`;
 
   return (
-    <>
-      {isEnterGameMode && isNormalSignup && isValidMaxAttendanceValue && (
+    <div>
+      {isEnterGameMode && isNormalSignup && (
         <SignupsInfoContainer>
           {t("signup.signupCount", {
             ATTENDEE_COUNT: signups.length,
@@ -121,18 +113,7 @@ export const SignupsInfo = ({
           )}
         </SignupsInfoContainer>
       )}
-
-      {!isValidMaxAttendanceValue &&
-        programItem.programType !== ProgramType.WORKSHOP && (
-          <ErrorText>
-            {t("signup.maxAttendanceMissing", {
-              ATTENDEE_TYPE: t(
-                `attendeeTypePlural.${getAttendeeType(programItem.programType)}`,
-              ),
-            })}
-          </ErrorText>
-        )}
-    </>
+    </div>
   );
 };
 
@@ -156,10 +137,6 @@ const AnswerText = styled.span`
 
 const NoAttendeesText = styled(AttendeeText)`
   color: ${(props) => props.theme.textSecondary};
-`;
-
-const ErrorText = styled.span`
-  color: ${(props) => props.theme.textError};
 `;
 
 const AttendeeList = styled.ul`

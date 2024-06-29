@@ -336,6 +336,7 @@ export const translationEN = {
     doesNotRequireSignup: "This {{PROGRAM_TYPE}} does not require signing up.",
     noKonstiSignup:
       "This {{PROGRAM_TYPE}} does not use Konsti for signing up. See the program details for instructions.",
+    minAttendanceMissing: "Missing info: minimum number of {{ATTENDEE_TYPE}}",
     maxAttendanceMissing: "Missing info: maximum number of {{ATTENDEE_TYPE}}",
     showAttendees: "Show {{ATTENDEE_TYPE}}",
     hideAttendees: "Hide {{ATTENDEE_TYPE}}",

@@ -27,6 +27,7 @@ interface Props {
   userGroup: UserGroup;
   favoriteProgramItems: readonly ProgramItem[];
   publicSignupQuestion?: SignupQuestion;
+  allValuesValid: boolean;
 }
 
 export const ProgramItemHead = ({
@@ -38,6 +39,7 @@ export const ProgramItemHead = ({
   userGroup,
   favoriteProgramItems,
   publicSignupQuestion,
+  allValuesValid,
 }: Props): ReactElement => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
@@ -51,8 +53,6 @@ export const ProgramItemHead = ({
     .shared()
     .noKonstiSignupIds.includes(programItem.programItemId);
   const isNormalSignup = requiresSignup && konstiSignup;
-  const validMaxAttendanceValue =
-    requiresSignup && programItem.maxAttendance > 0;
 
   const isEnterGameMode =
     config.shared().manualSignupMode === SignupStrategy.DIRECT ||
@@ -120,7 +120,7 @@ export const ProgramItemHead = ({
               ENTRY_FEE: programItem.entryFee,
             })}
         </Row>
-        {isEnterGameMode && isNormalSignup && validMaxAttendanceValue && (
+        {isEnterGameMode && isNormalSignup && allValuesValid && (
           <Row>
             <SignupsInfo
               isEnterGameMode={isEnterGameMode}

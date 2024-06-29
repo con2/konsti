@@ -338,6 +338,7 @@ export const translationFI = {
     doesNotRequireSignup: "Tähän {{PROGRAM_TYPE}} ei tarvitse ilmoittautua",
     noKonstiSignup:
       "Tähän {{PROGRAM_TYPE}} ei ilmoittauduta Konstissa. Katso ilmoittautumisohjeet ohjelman lisätiedoista.",
+    minAttendanceMissing: "Puuttuva tieto: vähimmäismäärä {{ATTENDEE_TYPE}}",
     maxAttendanceMissing: "Puuttuva tieto: maksimimäärä {{ATTENDEE_TYPE}}",
     showAttendees: "Näytä {{ATTENDEE_TYPE}}",
     hideAttendees: "Piilota {{ATTENDEE_TYPE}}",
