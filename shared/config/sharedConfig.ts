@@ -108,7 +108,43 @@ export const sharedConfig: SharedConfig = {
   ],
 
   // These program items are hand picked to be exported from Kompassi
-  addToKonsti: [],
+  addToKonsti: [
+    // Other
+    "harmaasusien-taisteluharjoitukset", // Harmaasusien taisteluharjoitukset
+    "atarashii-naginata-lajinaytos-ja-kokeiluharjoitukset", // Atarashii Naginata: lajinäytös ja kokeiluharjoitukset
+    "kps-turnaus-rps-tournament", // KPS-turnaus
+
+    // ** ropecon2023_signuplist - no need to hand pick after Kompassi importer updated**
+
+    // Turnaukset: muu / Tournament: Other
+    "pikamaalauskilpailu-speed-painting-contest-1-pefri", // Pikamaalauskilpailu / Speed Painting Contest 1 (Pe/Fri)
+    // "", // Pikamaalauskilpailu / Speed Painting Contest 2 (Pe/Fri)
+    "pikamaalauskilpailu-speed-painting-contest-3-lasat", // Pikamaalauskilpailu / Speed Painting Contest 3 (La/Sat)
+    "pikamaalauskilpailu-speed-painting-contest-4-lasat", // Pikamaalauskilpailu / Speed Painting Contest 4 (La/Sat)
+    "palapeliturnaus-joukkue-jigsaw-puzzle-tournament-teams", // Palapeliturnaus (Joukkue) | Jigsaw Puzzle Tournament (Teams)
+
+    // Figupelit: demotus / Miniature wargames: Demo game
+    "siniviivan-sankarit", // Siniviivan Sankarit
+
+    // Turnaukset: lautapelit / Tournament: Board games
+    "orcs-must-die-order-vs-unchained-ropecon-lopputaisteluropecon-final-fight", // Orcs Must Die! Order vs Unchained -Ropecon lopputaistelu/Ropecon Final Fight
+    "ropeconin-backgammonmestari", // Ropeconin backgammonmestari
+
+    // Turnaukset: korttipelit / Tournament: Card games
+    "mtg-bulk-commander", // MtG Bulk Commander
+    "clash-of-decks-turnaus", // Clash of Decks turnaus
+
+    // Kokemuspiste: demotus / Experience Point: Demo game
+    "redshirt-classics-miami-dade-shootout-redshirt-klassikot-miami-daden-ammuskelu", // Redshirt classics: Miami Dade Shootout / Redshirt klassikot: Miami-Daden ammuskelu
+
+    // Kokemuspiste: avoin pelautus / Experience Point: Open game
+    "ihmissusipeli-werewolfes-of-millers-hollow-pelautus-13-k18", // Ihmissusipeli (Werewolfes of Millers Hollow), K18 pelautus
+    "lautapelataanboardgames-t-i-m-e-stories-2-the-marcy-case-lasat", // Lautapelataan/Boardgames: T.I.M.E Stories (2: The Marcy Case)
+    "hirvionmetsastajien-kiltojen-mestarit-masters-of-the-monster-hunter-guilds", // Hirviönmetsästäjien kiltojen mestarit – Masters of the Monster Hunter Guilds
+
+    // Kokemuspiste: muu / Experience Point: Other
+    "king-of-tokyo-turnaus-king-of-tokyo-tournament", // King of Tokyo-turnaus / King of Tokyo tournament
+  ],
 
   // These program items have hand picked revolving door status
   addRevolvingDoorIds: [
