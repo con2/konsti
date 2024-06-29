@@ -14,6 +14,8 @@ import { ProgramItemView } from "client/views/all-program-items/components/Progr
 import { SignupInfo } from "client/views/all-program-items/components/SignupInfo";
 import { ProgramItemHead } from "client/views/all-program-items/components/ProgramItemHead";
 import { SignupQuestion } from "shared/types/models/settings";
+import { isRevolvingDoorWorkshop } from "client/utils/isRevolvingDoorWorkshop";
+import { ProgramItemErrors } from "client/views/all-program-items/components/ProgramItemErrors";
 
 interface Props {
   programItem: ProgramItem;
@@ -84,6 +86,12 @@ export const ProgramItemEntry = ({
     tags.push(t(`programItemLanguage.${language}`));
   });
 
+  const isValidMinAttendanceValue =
+    isRevolvingDoorWorkshop(programItem) || programItem.minAttendance > 0;
+  const isValidMaxAttendanceValue =
+    isRevolvingDoorWorkshop(programItem) || programItem.maxAttendance > 0;
+  const allValuesValid = isValidMinAttendanceValue && isValidMaxAttendanceValue;
+
   return (
     <StyledCard
       isHighlighted={isProgramItemSigned}
@@ -99,19 +107,31 @@ export const ProgramItemEntry = ({
         favoriteProgramItems={favoriteProgramItems}
         publicSignupQuestion={publicSignupQuestion}
       />
+
+      {!allValuesValid && (
+        <ProgramItemErrors
+          isValidMinAttendanceValue={isValidMinAttendanceValue}
+          isValidMaxAttendanceValue={isValidMaxAttendanceValue}
+          programType={programItem.programType}
+        />
+      )}
+
       <ProgramItemView
         programItem={programItem}
         isAlwaysExpanded={isAlwaysExpanded}
       />
-      <SignupInfo
-        signupStrategy={signupStrategy}
-        startTime={startTime}
-        lotterySignups={lotterySignups}
-        programItem={programItem}
-        attendees={signups.length}
-        loading={loading}
-        setLoading={setLoading}
-      />
+
+      {allValuesValid && (
+        <SignupInfo
+          signupStrategy={signupStrategy}
+          startTime={startTime}
+          lotterySignups={lotterySignups}
+          programItem={programItem}
+          attendees={signups.length}
+          loading={loading}
+          setLoading={setLoading}
+        />
+      )}
     </StyledCard>
   );
 };

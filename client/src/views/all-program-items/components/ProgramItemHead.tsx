@@ -51,8 +51,6 @@ export const ProgramItemHead = ({
     .shared()
     .noKonstiSignupIds.includes(programItem.programItemId);
   const isNormalSignup = requiresSignup && konstiSignup;
-  const validMaxAttendanceValue =
-    requiresSignup && programItem.maxAttendance > 0;
 
   const isEnterGameMode =
     config.shared().manualSignupMode === SignupStrategy.DIRECT ||
@@ -120,7 +118,7 @@ export const ProgramItemHead = ({
               ENTRY_FEE: programItem.entryFee,
             })}
         </Row>
-        {isEnterGameMode && isNormalSignup && validMaxAttendanceValue && (
+        {isEnterGameMode && isNormalSignup && (
           <Row>
             <SignupsInfo
               isEnterGameMode={isEnterGameMode}
