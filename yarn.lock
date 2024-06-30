@@ -6895,12 +6895,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eventassigner-random@npm:0.3.1":
-  version: 0.3.1
-  resolution: "eventassigner-random@npm:0.3.1"
+"eventassigner-random@npm:0.3.2":
+  version: 0.3.2
+  resolution: "eventassigner-random@npm:0.3.2"
   dependencies:
     rimraf: "npm:^3.0.2"
-  checksum: 10c0/71ab0d7d29c05d47c205d698903bade2605020d1fdf3bbe68b55d0974c9871f0a8f80ce773ae028287aec184d0cce7a0ebf4c01c450f20a1183f307cffac095a
+  checksum: 10c0/0a136028414851da24fb82e84e26f2cf975ee25f6a7c8ab406498ce001cf98439c70ae2b300ca8ad33a29a961e43c52832f1b6f1bd6edf78b5d391f25e62430e
   languageName: node
   linkType: hard
 
@@ -9228,7 +9228,7 @@ __metadata:
     croner: "npm:8.0.2"
     dotenv: "npm:16.4.5"
     eventassigner-js: "npm:0.1.6"
-    eventassigner-random: "npm:0.3.1"
+    eventassigner-random: "npm:0.3.2"
     express: "npm:4.19.2"
     express-static-gzip: "npm:2.1.7"
     fastest-levenshtein: "npm:1.0.16"
