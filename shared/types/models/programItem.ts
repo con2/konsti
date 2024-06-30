@@ -39,7 +39,6 @@ export enum Language {
   FINNISH = "finnish",
   ENGLISH = "english",
   SWEDISH = "swedish",
-  FINNISH_OR_ENGLISH = "finnishOrEnglish",
   LANGUAGE_FREE = "languageFree",
 }
 

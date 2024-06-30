@@ -125,7 +125,7 @@ export const translationEN = {
   tags: {
     childrenFriendly: "Children friendly",
     beginnerFriendly: "Beginner friendly",
-    guestOfHonor: "Guest of Honor program item",
+    guestOfHonor: "Guest of Honor",
     aimedAtChildrenUnder13: "Aimed at children under 13",
     aimedAtChildrenBetween13to17: "Aimed at children between 13-17",
     aimedAtAdultAttendees: "Aimed at adult attendees",

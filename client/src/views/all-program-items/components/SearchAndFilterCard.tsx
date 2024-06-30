@@ -1,9 +1,15 @@
 import { ChangeEvent, Dispatch, ReactElement, SetStateAction } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
+import { uniq } from "lodash-es";
 import { ProgramTypeSelection } from "client/components/ProgramTypeSelection";
 import { useAppSelector } from "client/utils/hooks";
-import { ProgramType, Tag, Language } from "shared/types/models/programItem";
+import {
+  ProgramType,
+  Tag,
+  Language,
+  ProgramItem,
+} from "shared/types/models/programItem";
 import { Dropdown } from "client/components/Dropdown";
 import { SessionStorageValue } from "client/utils/sessionStorage";
 import { ControlledInput } from "client/components/ControlledInput";
@@ -18,6 +24,45 @@ export enum StartingTimeOption {
   ALL = "all",
   REVOLVING_DOOR = "revolvingDoor",
 }
+
+const ignoredTags = [Tag.GUEST_OF_HONOR, Tag.THEME_MONSTERS];
+
+const getTagFilters = (programItems: readonly ProgramItem[]): Tag[] => {
+  const tags = uniq([
+    Tag.BEGINNER_FRIENDLY,
+    Tag.ALL_AGES,
+    Tag.AIMED_UNDER_13,
+    Tag.AIMED_BETWEEN_13_17,
+    Tag.AIMED_ADULTS,
+    Tag.FOR_18_PLUS_ONLY,
+    ...Object.values(Tag),
+  ]);
+  return tags
+    .filter((tag) => {
+      return programItems.some((programItem) => programItem.tags.includes(tag));
+    })
+    .filter((tag) => !ignoredTags.includes(tag));
+};
+
+const ignoredLanguages = [Language.LANGUAGE_FREE];
+
+const getLanguageFilters = (
+  programItems: readonly ProgramItem[],
+): Language[] => {
+  const languages = uniq([
+    Language.FINNISH,
+    Language.ENGLISH,
+    Language.SWEDISH,
+    ...Object.values(Language),
+  ]);
+  return languages
+    .filter((language) => {
+      return programItems.some((programItem) =>
+        programItem.languages.includes(language),
+      );
+    })
+    .filter((language) => !ignoredLanguages.includes(language));
+};
 
 interface Props {
   selectedTag: Tag | Language | "";
@@ -36,25 +81,16 @@ export const SearchAndFilterCard = ({
   searchTerm,
   setSearchTerm,
 }: Props): ReactElement => {
-  const tagFilters = [
-    Tag.BEGINNER_FRIENDLY,
-    Tag.ALL_AGES,
-    Tag.AIMED_UNDER_13,
-    Tag.AIMED_BETWEEN_13_17,
-    Tag.AIMED_ADULTS,
-    Tag.FOR_18_PLUS_ONLY,
-  ];
-
-  const languageFilters: Language[] = [
-    Language.FINNISH,
-    Language.ENGLISH,
-    Language.SWEDISH,
-  ];
-
   const { t } = useTranslation();
   const activeProgramType = useAppSelector(
     (state) => state.admin.activeProgramType,
   );
+  const programItems = useAppSelector(
+    (state) => state.allProgramItems.programItems,
+  );
+
+  const tagFilters = getTagFilters(programItems);
+  const languageFilters = getLanguageFilters(programItems);
 
   const tagOptions = [
     {
