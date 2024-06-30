@@ -96,22 +96,22 @@ const mapTags = (kompassiProgramItem: KompassiProgramItemRopecon): Tag[] => {
   const tags: Tag[] = audiences.map((audience) => {
     switch (audience) {
       case KompassiAudienceRopecon.K_18:
-        return Tag.AGE_RESTRICTED;
+        return Tag.FOR_18_PLUS_ONLY;
 
       case KompassiAudienceRopecon.BEGINNERS:
         return Tag.BEGINNER_FRIENDLY;
 
       case KompassiAudienceRopecon.AIMED_UNDER_13:
-        return Tag.AIMED_AT_CHILDREN_UNDER_13;
+        return Tag.AIMED_UNDER_13;
 
       case KompassiAudienceRopecon.AIMED_BETWEEN_13_17:
-        return Tag.AIMED_AT_CHILDREN_BETWEEN_13_17;
+        return Tag.AIMED_BETWEEN_13_17;
 
       case KompassiAudienceRopecon.AIMED_ADULTS:
-        return Tag.FOR_ADULTS;
+        return Tag.AIMED_ADULTS;
 
       case KompassiAudienceRopecon.ALL_AGES:
-        return Tag.FOR_ADULTS;
+        return Tag.ALL_AGES;
 
       default:
         return exhaustiveSwitchGuard(audience);
