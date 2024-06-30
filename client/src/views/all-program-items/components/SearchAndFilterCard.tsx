@@ -12,6 +12,10 @@ import { RevolvingDoorProgramItemsInfo } from "client/views/all-program-items/co
 import { config } from "shared/config";
 import { RaisedCard } from "client/components/RaisedCard";
 import { RadioButtonGroup } from "client/components/RadioButtonGroup";
+import {
+  getTagFilters,
+  getLanguageFilters,
+} from "client/views/all-program-items/components/searchAndFilterUtils";
 
 export enum StartingTimeOption {
   UPCOMING = "upcoming",
@@ -36,25 +40,16 @@ export const SearchAndFilterCard = ({
   searchTerm,
   setSearchTerm,
 }: Props): ReactElement => {
-  const tagFilters = [
-    Tag.BEGINNER_FRIENDLY,
-    Tag.ALL_AGES,
-    Tag.AIMED_UNDER_13,
-    Tag.AIMED_BETWEEN_13_17,
-    Tag.AIMED_ADULTS,
-    Tag.FOR_18_PLUS_ONLY,
-  ];
-
-  const languageFilters: Language[] = [
-    Language.FINNISH,
-    Language.ENGLISH,
-    Language.SWEDISH,
-  ];
-
   const { t } = useTranslation();
   const activeProgramType = useAppSelector(
     (state) => state.admin.activeProgramType,
   );
+  const programItems = useAppSelector(
+    (state) => state.allProgramItems.programItems,
+  );
+
+  const tagFilters = getTagFilters(programItems);
+  const languageFilters = getLanguageFilters(programItems);
 
   const tagOptions = [
     {

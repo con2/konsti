@@ -125,7 +125,7 @@ export const translationFI = {
   tags: {
     childrenFriendly: "Lapsiystävällinen",
     beginnerFriendly: "Aloittelijaystävällinen",
-    guestOfHonor: "Kunniavierasohjelmanumero",
+    guestOfHonor: "Kunniavieras",
     aimedAtChildrenUnder13: "Suunnattu alle 13-vuotiaille",
     aimedAtChildrenBetween13to17: "Suunnattu 13–17-vuotiaille",
     aimedAtAdultAttendees: "Suunnattu täysi-ikäisille",

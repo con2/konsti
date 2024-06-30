@@ -170,7 +170,7 @@ const getTagFilteredProgramItems = (
     }
     if (
       programItem.languages.includes(Language.LANGUAGE_FREE) &&
-      (selectedTag === Language.FINNISH || selectedTag === Language.ENGLISH)
+      Object.values(Language).includes(selectedTag as Language)
     ) {
       return programItem;
     }
