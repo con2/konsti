@@ -16,7 +16,7 @@ export const testProgramItem: ProgramItem = {
   location: "Test location",
   startTime: "2019-07-26T14:00:00.000Z",
   mins: 240,
-  tags: [Tag.BEGINNER_FRIENDLY, Tag.IN_ENGLISH, Tag.CHILDREN_FRIENDLY],
+  tags: [Tag.BEGINNER_FRIENDLY, Tag.CHILDREN_FRIENDLY],
   genres: [
     Genre.FANTASY,
     Genre.WAR,
@@ -57,7 +57,7 @@ export const testProgramItem2: ProgramItem = {
   location: "Test location",
   startTime: "2019-07-26T15:00:00.000Z",
   mins: 240,
-  tags: [Tag.BEGINNER_FRIENDLY, Tag.IN_ENGLISH, Tag.CHILDREN_FRIENDLY],
+  tags: [Tag.BEGINNER_FRIENDLY, Tag.CHILDREN_FRIENDLY],
   genres: [
     Genre.FANTASY,
     Genre.WAR,
