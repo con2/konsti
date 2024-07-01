@@ -1,9 +1,10 @@
-import dayjs, { Dayjs } from "dayjs";
+import dayjs from "dayjs";
 import {
   ArrMin1,
   AssignmentStrategy,
   ConventionName,
   SignupStrategy,
+  SignupWindow,
 } from "shared/config/sharedConfigTypes";
 import { ProgramType } from "shared/types/models/programItem";
 import {
@@ -20,7 +21,9 @@ export interface SharedConfig {
   DIRECT_SIGNUP_START: number;
   PRE_SIGNUP_START: number;
   PHASE_GAP: number;
-  directSignupStartTimes: Partial<Record<ProgramType, ArrMin1<Dayjs>>> | null;
+  directSignupWindows: Partial<
+    Record<ProgramType, ArrMin1<SignupWindow>>
+  > | null;
   directSignupAlwaysOpenIds: string[];
   tracesSampleRate: number;
   enableSentryInDev: boolean;
@@ -57,48 +60,89 @@ export const sharedConfig: SharedConfig = {
 
   conventionStartTime: `${friday}T12:00:00Z`, // Fri 15:00 GMT+3
 
-  directSignupStartTimes: {
+  directSignupWindows: {
     larp: [
-      // Friday
-      dayjs(`${friday}T12:00:00Z`), // Fri 15:00 GMT+3
+      {
+        signupWindowStart: dayjs(`${friday}T12:00:00Z`), // Fri 15:00 GMT+3
+        signupWindowClose: dayjs(`${friday}T21:00:00Z`), // Fri 24:00 GMT+3
+      },
       // Saturday morning / day
-      dayjs(`${friday}T15:00:00Z`), // Fri 18:00 GMT+3
+      {
+        signupWindowStart: dayjs(`${friday}T15:00:00Z`), // Fri 18:00 GMT+3
+        signupWindowClose: dayjs(`${saturday}T14:00:00Z`), // Sat 17:00 GMT+3
+      },
       // Saturday evening
-      dayjs(`${saturday}T08:00:00Z`), // Sat 11:00 GMT+3
+      {
+        signupWindowStart: dayjs(`${saturday}T08:00:00Z`), // Sat 11:00 GMT+3
+        signupWindowClose: dayjs(`${saturday}T21:00:00Z`), // Sat 24:00 GMT+3
+      },
       // Sunday
-      dayjs(`${saturday}T12:00:00Z`), // Sat 15:00 GMT+3
+      {
+        signupWindowStart: dayjs(`${saturday}T12:00:00Z`), // Sat 15:00 GMT+3
+        signupWindowClose: dayjs(`${sunday}T21:00:00Z`), // Sun 24:00 GMT+3
+      },
     ],
 
     tournament: [
       // Friday
-      dayjs(`${friday}T12:00:00Z`), // Fri 15:00 GMT+3
+      {
+        signupWindowStart: dayjs(`${friday}T12:00:00Z`), // Fri 15:00 GMT+3
+        signupWindowClose: dayjs(`${friday}T21:00:00Z`), // Fri 24:00 GMT+3
+      },
       // Saturday
-      dayjs(`${friday}T15:00:00Z`), // Fri 18:00 GMT+3
+      {
+        signupWindowStart: dayjs(`${friday}T15:00:00Z`), // Fri 18:00 GMT+3
+        signupWindowClose: dayjs(`${saturday}T21:00:00Z`), // Sat 24:00 GMT+3
+      },
       // Sunday
-      dayjs(`${saturday}T15:00:00Z`), // Sat 18:00 GMT+3
+      {
+        signupWindowStart: dayjs(`${saturday}T15:00:00Z`), // Sat 18:00 GMT+3
+        signupWindowClose: dayjs(`${sunday}T21:00:00Z`), // Sun 24:00 GMT+3
+      },
     ],
 
     workshop: [
       // Friday
-      dayjs(`${friday}T12:00:00Z`), // Fri 15:00 GMT+3
+      {
+        signupWindowStart: dayjs(`${friday}T12:00:00Z`), // Fri 15:00 GMT+3
+        signupWindowClose: dayjs(`${friday}T21:00:00Z`), // Fri 24:00 GMT+3
+      },
       // Saturday morning / day
-      dayjs(`${friday}T15:00:00Z`), // Fri 18:00 GMT+3
+      {
+        signupWindowStart: dayjs(`${friday}T15:00:00Z`), // Fri 18:00 GMT+3
+        signupWindowClose: dayjs(`${saturday}T11:00:00Z`), // Sat 14:00 GMT+3
+      },
       // Saturday day / evening
-      dayjs(`${saturday}T06:00:00Z`), // Sat 09:00 GMT+3
+      {
+        signupWindowStart: dayjs(`${saturday}T06:00:00Z`), // Sat 09:00 GMT+3
+        signupWindowClose: dayjs(`${saturday}T21:00:00Z`), // Sat 24:00 GMT+3
+      },
       // Saturday evening / sunday morning
-      dayjs(`${saturday}T15:00:00Z`), // Sat 18:00 GMT+3
+      {
+        signupWindowStart: dayjs(`${saturday}T15:00:00Z`), // Sat 18:00 GMT+3
+        signupWindowClose: dayjs(`${sunday}T11:00:00Z`), // Sun 14:00 GMT+3
+      },
       // Sunday
-      dayjs(`${sunday}T06:00:00Z`), // Sun 09:00 GMT+3
+      {
+        signupWindowStart: dayjs(`${sunday}T06:00:00Z`), // Sun 09:00 GMT+3
+        signupWindowClose: dayjs(`${sunday}T21:00:00Z`), // Sun 24:00 GMT+3
+      },
     ],
 
     experiencePoint: [
       // Whole convention Fri - Sun
-      dayjs(`${friday}T12:00:00Z`), // Fri 15:00 GMT+3
+      {
+        signupWindowStart: dayjs(`${friday}T12:00:00Z`), // Fri 15:00 GMT+3
+        signupWindowClose: dayjs(`${sunday}T21:00:00Z`), // Sun 24:00 GMT+3
+      },
     ],
 
     other: [
       // Whole convention Fri - Sun
-      dayjs(`${friday}T12:00:00Z`), // Fri 15:00 GMT+3
+      {
+        signupWindowStart: dayjs(`${friday}T12:00:00Z`), // Fri 15:00 GMT+3
+        signupWindowClose: dayjs(`${sunday}T21:00:00Z`), // Sun 24:00 GMT+3
+      },
     ],
   },
 
