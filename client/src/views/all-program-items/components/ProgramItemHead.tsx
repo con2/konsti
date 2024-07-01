@@ -133,7 +133,7 @@ export const ProgramItemHead = ({
           </Row>
         )}
 
-        {signups.length < programItem.minAttendance && (
+        {signups.length < programItem.minAttendance && isNormalSignup && (
           <Row>
             {t("signup.attendeesNeeded", {
               COUNT: programItem.minAttendance - signups.length,
