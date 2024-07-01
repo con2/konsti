@@ -34,7 +34,7 @@ export const getDirectSignupStartTime = (programItem: ProgramItem): Dayjs => {
     conventionStartTime,
     DIRECT_SIGNUP_START,
     PHASE_GAP,
-    directSignupStartTimes,
+    directSignupWindows,
     directSignupAlwaysOpenIds,
     twoPhaseSignupProgramTypes,
   } = config.shared();
@@ -77,22 +77,24 @@ export const getDirectSignupStartTime = (programItem: ProgramItem): Dayjs => {
     return directSignupStartWithPhaseGap;
   }
 
-  // Other program types use "directSignupStartTimes" config
-  const programTypeDirectSignupStartTimes = directSignupStartTimes
-    ? directSignupStartTimes[programItem.programType]
+  // Other program types use "directSignupWindows" config
+  const signupWindowsForProgramType = directSignupWindows
+    ? directSignupWindows[programItem.programType]
     : undefined;
 
-  if (!programTypeDirectSignupStartTimes) {
+  if (!signupWindowsForProgramType) {
     return dayjs(conventionStartTime);
   }
 
-  const reverseSignupStartTimes = programTypeDirectSignupStartTimes
-    .slice()
-    .reverse();
-
-  const directSignupStartTime = reverseSignupStartTimes.find(
-    (signupStartTime) => dayjs(programItem.startTime).isAfter(signupStartTime),
+  const matchingSignupWindow = signupWindowsForProgramType.find(
+    (signupWindow) =>
+      dayjs(programItem.startTime).isBetween(
+        signupWindow.signupWindowStart,
+        signupWindow.signupWindowClose,
+        "minutes",
+        "[)", // Include windowStart, exclude windowClose
+      ),
   );
 
-  return directSignupStartTime ?? dayjs(conventionStartTime);
+  return matchingSignupWindow?.signupWindowStart ?? dayjs(conventionStartTime);
 };

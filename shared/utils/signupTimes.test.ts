@@ -11,16 +11,37 @@ import {
 import { config } from "shared/config";
 import { ProgramType } from "shared/types/models/programItem";
 
+// const friday = "2023-07-28";
+// const saturday = "2023-07-29";
+// const sunday = "2023-07-30";
+
 beforeEach(() => {
   vi.spyOn(config, "shared").mockReturnValue({
     ...config.shared(),
     conventionStartTime: "2023-07-28T12:00:00Z",
     twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
-    directSignupStartTimes: {
+    directSignupWindows: {
       larp: [
-        dayjs(`2023-07-28T12:00:00Z`), // Fri 15:00 GMT+3
-        dayjs(`2023-07-28T15:00:00Z`), // Fri 18:00 GMT+3
-        dayjs(`2023-07-29T08:00:00Z`), // Sat 11:00 GMT+3
+        // Friday
+        {
+          signupWindowStart: dayjs("2023-07-28T12:00:00Z"), // Fri 15:00 GMT+3
+          signupWindowClose: dayjs("2023-07-28T21:00:00Z"), // Fri 24:00 GMT+3
+        },
+        // Saturday morning / day
+        {
+          signupWindowStart: dayjs("2023-07-28T15:00:00Z"), // Fri 18:00 GMT+3
+          signupWindowClose: dayjs("2023-07-29T15:00:00Z"), // Sat 18:00 GMT+3
+        },
+        // Saturday evening
+        {
+          signupWindowStart: dayjs("2023-07-29T08:00:00Z"), // Sat 11:00 GMT+3
+          signupWindowClose: dayjs("2023-07-29T21:00:00Z"), // Sat 24:00 GMT+3
+        },
+        // Sunday
+        {
+          signupWindowStart: dayjs("2023-07-29T12:00:00Z"), // Sat 15:00 GMT+3
+          signupWindowClose: dayjs("2023-07-30T21:00:00Z"), // Sun 24:00 GMT+3
+        },
       ],
     },
   });
@@ -206,21 +227,27 @@ describe(`Direct signup`, () => {
     assertSignupTime(startTime, signupTime);
   });
 
-  test("Larp starting at Fri 19:00 should have signup starting at Fri 18:00", () => {
+  test("Larp starting at Fri 19:00 should have signup starting at Fri 15:00", () => {
     const startTime = "2023-07-28T16:00:00.000Z";
-    const signupTime = "2023-07-28T15:00:00.000Z";
+    const signupTime = "2023-07-28T12:00:00.000Z";
     assertSignupTime(startTime, signupTime);
   });
 
-  test("Larp starting at Fri 20:00 should have signup starting at Fri 18:00", () => {
+  test("Larp starting at Fri 20:00 should have signup starting at Fri 15:00", () => {
     const startTime = "2023-07-28T17:00:00.000Z";
-    const signupTime = "2023-07-28T15:00:00.000Z";
+    const signupTime = "2023-07-28T12:00:00.000Z";
     assertSignupTime(startTime, signupTime);
   });
 
   test("Larp starting at Sat 20:00 should have signup starting at Sat 11:00", () => {
     const startTime = "2023-07-29T17:00:00.000Z";
     const signupTime = "2023-07-29T08:00:00.000Z";
+    assertSignupTime(startTime, signupTime);
+  });
+
+  test("Larp starting at Sun 12:00 should have signup starting at Sat 15:00", () => {
+    const startTime = "2023-07-30T15:00:00.000Z";
+    const signupTime = "2023-07-29T12:00:00.000Z";
     assertSignupTime(startTime, signupTime);
   });
 });

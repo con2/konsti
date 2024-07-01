@@ -1,9 +1,10 @@
-import dayjs, { Dayjs } from "dayjs";
+import dayjs from "dayjs";
 import {
   ArrMin1,
   AssignmentStrategy,
   ConventionName,
   SignupStrategy,
+  SignupWindow,
 } from "shared/config/sharedConfigTypes";
 import { ProgramType } from "shared/types/models/programItem";
 import { SignupQuestion } from "shared/types/models/settings";
@@ -17,7 +18,9 @@ interface SharedConfig {
   DIRECT_SIGNUP_START: number;
   PRE_SIGNUP_START: number;
   PHASE_GAP: number;
-  directSignupStartTimes: Partial<Record<ProgramType, ArrMin1<Dayjs>>> | null;
+  directSignupWindows: Partial<
+    Record<ProgramType, ArrMin1<SignupWindow>>
+  > | null;
   directSignupAlwaysOpenIds: string[];
   tracesSampleRate: number;
   enableSentryInDev: boolean;
@@ -49,15 +52,24 @@ const sharedConfig: SharedConfig = {
 
   conventionStartTime: `2024-04-11T07:00:00Z`, // Thu 10:00 GMT+3
 
-  directSignupStartTimes: {
+  directSignupWindows: {
     larp: [
-      dayjs(`2024-04-04T17:00:00Z`), // One week before, Thu 20:00 GMT+3
+      {
+        signupWindowStart: dayjs(`2024-04-04T17:00:00Z`), // One week before, Thu 20:00 GMT+3
+        signupWindowClose: dayjs("2024-04-14T21:00:00Z"), // Convention end, Sun 24:00 GMT+3
+      },
     ],
     workshop: [
-      dayjs(`2024-04-04T17:00:00Z`), // One week before, Thu 20:00 GMT+3
+      {
+        signupWindowStart: dayjs(`2024-04-04T17:00:00Z`), // One week before, Thu 20:00 GMT+3
+        signupWindowClose: dayjs("2024-04-14T21:00:00Z"), // Convention end, Sun 24:00 GMT+3
+      },
     ],
     roundtableDiscussion: [
-      dayjs(`2024-04-04T17:00:00Z`), // One week before, Thu 20:00 GMT+3
+      {
+        signupWindowStart: dayjs(`2024-04-04T17:00:00Z`), // One week before, Thu 20:00 GMT+3
+        signupWindowClose: dayjs("2024-04-14T21:00:00Z"), // Convention end, Sun 24:00 GMT+3
+      },
     ],
   },
 
