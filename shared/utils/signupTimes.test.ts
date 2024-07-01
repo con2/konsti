@@ -11,10 +11,6 @@ import {
 import { config } from "shared/config";
 import { ProgramType } from "shared/types/models/programItem";
 
-// const friday = "2023-07-28";
-// const saturday = "2023-07-29";
-// const sunday = "2023-07-30";
-
 beforeEach(() => {
   vi.spyOn(config, "shared").mockReturnValue({
     ...config.shared(),
