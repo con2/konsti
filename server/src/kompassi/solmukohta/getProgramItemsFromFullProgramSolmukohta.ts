@@ -4,18 +4,30 @@ import {
 } from "server/kompassi/getProgramItemsFromKompassi";
 import { logger } from "server/utils/logger";
 import { config } from "shared/config";
-import { kompassiProgramItem } from "server/kompassi/kompassiProgramItem";
+import { KompassiProgramItem } from "server/kompassi/kompassiProgramItem";
 import {
-  KompassiProgramItemSolmukohta,
   KompassiProgramItemSchemaSolmukohta,
+  KompassiProgramItemSolmukohta,
   KompassiProgramTypeSolmukohta,
   KompassiTagSolmukohta,
 } from "server/kompassi/solmukohta/kompassiProgramItemSolmukohta";
 
 export const getProgramItemsFromFullProgramSolmukohta = (
-  programItems: KompassiProgramItemSolmukohta[],
-): kompassiProgramItem[] => {
-  const matchingProgramItems = programItems.flatMap((programItem) => {
+  programItems: unknown[],
+): KompassiProgramItem[] => {
+  checkUnknownKeys(programItems, KompassiProgramItemSchemaSolmukohta);
+
+  const kompassiProgramItems = programItems.flatMap((programItem) => {
+    const result = parseProgramItem(
+      programItem,
+      KompassiProgramItemSchemaSolmukohta,
+    );
+    return result ?? [];
+  }) as KompassiProgramItemSolmukohta[];
+
+  logger.info(`Found ${kompassiProgramItems.length} valid program items`);
+
+  const matchingProgramItems = kompassiProgramItems.flatMap((programItem) => {
     // These program items are hand picked to be exported from Kompassi
     if (config.shared().addToKonsti.includes(programItem.slug)) {
       return programItem;
@@ -38,19 +50,7 @@ export const getProgramItemsFromFullProgramSolmukohta = (
     return programItem;
   });
 
-  logger.info(`Found ${matchingProgramItems.length} matching program items`);
-
-  checkUnknownKeys(matchingProgramItems, KompassiProgramItemSchemaSolmukohta);
-
-  const kompassiProgramItems = matchingProgramItems.flatMap((programItem) => {
-    const result = parseProgramItem(
-      programItem,
-      KompassiProgramItemSchemaSolmukohta,
-    );
-    return result ?? [];
-  });
-
-  if (kompassiProgramItems.length === 0) {
+  if (matchingProgramItems.length === 0) {
     logger.error(
       "%s",
       new Error("No program items with known categories found"),
@@ -58,7 +58,7 @@ export const getProgramItemsFromFullProgramSolmukohta = (
     return [];
   }
 
-  logger.info(`Found ${kompassiProgramItems.length} valid program items`);
+  logger.info(`Found ${matchingProgramItems.length} matching program items`);
 
-  return kompassiProgramItems;
+  return matchingProgramItems;
 };

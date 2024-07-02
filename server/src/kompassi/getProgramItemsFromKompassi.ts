@@ -1,11 +1,11 @@
 import fs from "fs";
 import path from "path";
 import axios from "axios";
-import { ZodError } from "zod";
+import { z, ZodError } from "zod";
 import { uniq } from "lodash-es";
 import { KompassiError } from "shared/types/api/errors";
 import {
-  kompassiProgramItem,
+  KompassiProgramItem,
   KompassiProgramItemSchema,
 } from "server/kompassi/kompassiProgramItem";
 import {
@@ -22,7 +22,7 @@ import { getProgramItemsFromFullProgram } from "server/kompassi/getProgramItemsF
 
 export const getProgramItemsFromKompassi = async (
   conventionName: ConventionName,
-): Promise<Result<kompassiProgramItem[], KompassiError>> => {
+): Promise<Result<KompassiProgramItem[], KompassiError>> => {
   const eventProgramItemsResult =
     await testHelperWrapper.getEventProgramItems();
   if (isErrorResult(eventProgramItemsResult)) {
@@ -56,10 +56,18 @@ export const getProgramItemsFromKompassi = async (
     : makeSuccessResult(programItems);
 };
 
+const getProgramItemId = (programItem: unknown) => {
+  return !!programItem &&
+    typeof programItem === "object" &&
+    "slug" in programItem
+    ? programItem.slug
+    : "<unknown>";
+};
+
 export const parseProgramItem = (
-  programItem: kompassiProgramItem,
+  programItem: unknown,
   schema: KompassiProgramItemSchema,
-): kompassiProgramItem | undefined => {
+): KompassiProgramItem | undefined => {
   const result = schema.safeParse(programItem);
 
   if (result.success) {
@@ -71,7 +79,7 @@ export const parseProgramItem = (
       logger.error(
         "%s",
         new Error(
-          `Invalid program item ${programItem.slug} at path ${issue.path}: ${issue.message}`,
+          `Invalid program item ${getProgramItemId(programItem)} at path ${issue.path}: ${issue.message}`,
         ),
       );
     });
@@ -79,13 +87,13 @@ export const parseProgramItem = (
   }
 
   logger.error(
-    `Unknown error while parsing program item ${programItem.slug}: %s`,
+    `Unknown error while parsing program item ${getProgramItemId(programItem)}: %s`,
     result.error,
   );
 };
 
 const getEventProgramItems = async (): Promise<
-  Result<kompassiProgramItem[], KompassiError>
+  Result<unknown, KompassiError>
 > => {
   const { useLocalProgramFile } = config.server();
 
@@ -100,10 +108,7 @@ export const testHelperWrapper = {
   getEventProgramItems,
 };
 
-const getProgramFromLocalFile = (): Result<
-  kompassiProgramItem[],
-  KompassiError
-> => {
+const getProgramFromLocalFile = (): Result<unknown, KompassiError> => {
   logger.info("GET event program from local filesystem");
 
   const { localKompassiFile } = config.server();
@@ -116,8 +121,14 @@ const getProgramFromLocalFile = (): Result<
   return makeSuccessResult(JSON.parse(rawData));
 };
 
+const KompassiResponseFormSchema = z.object({
+  data: z.object({
+    event: z.object({ program: z.object({ programs: z.array(z.unknown()) }) }),
+  }),
+});
+
 const getProgramFromServer = async (): Promise<
-  Result<kompassiProgramItem[], KompassiError>
+  Result<unknown, KompassiError>
 > => {
   logger.info("GET event program from remote server");
 
@@ -152,20 +163,33 @@ const getProgramFromServer = async (): Promise<
   const headers = { "Content-Type": "application/json" };
 
   try {
-    const response = await axios.post(url, body, { headers });
-    const programItems = response.data.data.event.program.programs;
+    const response = await axios.post<unknown>(url, body, { headers });
+    const result = KompassiResponseFormSchema.safeParse(response.data);
+    if (!result.success) {
+      logger.error(
+        "Error downloading program items from Kompassi: %s",
+        new Error("Invalid return value format"),
+      );
+      return makeErrorResult(KompassiError.UNKNOWN_ERROR);
+    }
+    const programItems = result.data.data.event.program.programs;
     return makeSuccessResult(programItems);
   } catch (error) {
-    logger.error("Program items request error: %s", error);
+    logger.error("Error downloading program items from Kompassi: %s", error);
     return makeErrorResult(KompassiError.UNKNOWN_ERROR);
   }
 };
 
+// TODO: Only checks top level object keys, not nested object keys
 export const checkUnknownKeys = (
-  programItems: kompassiProgramItem[],
+  programItems: unknown[],
   schema: KompassiProgramItemSchema,
 ): void => {
   const unknownKeys: string[] = programItems.flatMap((programItem) => {
+    if (!programItem || typeof programItem !== "object") {
+      return [];
+    }
+
     return Object.keys(programItem).filter(
       (key) => !Object.prototype.hasOwnProperty.call(schema.shape, key),
     );

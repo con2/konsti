@@ -2,29 +2,20 @@ import { getProgramItemsFromFullProgramHitpoint } from "server/kompassi/hitpoint
 import { getProgramItemsFromFullProgramRopecon } from "server/kompassi/ropecon/getProgramItemsFromFullProgramRopecon";
 import { getProgramItemsFromFullProgramSolmukohta } from "server/kompassi/solmukohta/getProgramItemsFromFullProgramSolmukohta";
 import { ConventionName } from "shared/config/sharedConfigTypes";
-import { kompassiProgramItemHitpoint } from "server/kompassi/hitpoint/kompassiProgramItemHitpoint";
-import { KompassiProgramItemRopecon } from "server/kompassi/ropecon/kompassiProgramItemRopecon";
-import { KompassiProgramItemSolmukohta } from "server/kompassi/solmukohta/kompassiProgramItemSolmukohta";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
-import { kompassiProgramItem } from "server/kompassi/kompassiProgramItem";
+import { KompassiProgramItem } from "server/kompassi/kompassiProgramItem";
 
 export const getProgramItemsFromFullProgram = (
   conventionName: ConventionName,
-  eventProgramItems: kompassiProgramItem[],
-): kompassiProgramItem[] => {
+  eventProgramItems: unknown[],
+): KompassiProgramItem[] => {
   switch (conventionName) {
     case ConventionName.ROPECON:
-      return getProgramItemsFromFullProgramRopecon(
-        eventProgramItems as KompassiProgramItemRopecon[],
-      );
+      return getProgramItemsFromFullProgramRopecon(eventProgramItems);
     case ConventionName.HITPOINT:
-      return getProgramItemsFromFullProgramHitpoint(
-        eventProgramItems as kompassiProgramItemHitpoint[],
-      );
+      return getProgramItemsFromFullProgramHitpoint(eventProgramItems);
     case ConventionName.SOLMUKOHTA:
-      return getProgramItemsFromFullProgramSolmukohta(
-        eventProgramItems as KompassiProgramItemSolmukohta[],
-      );
+      return getProgramItemsFromFullProgramSolmukohta(eventProgramItems);
     default:
       return exhaustiveSwitchGuard(conventionName);
   }

@@ -17,11 +17,11 @@ import {
   mockKompassiProgramItemSolmukohta,
   mockKompassiProgramItemSolmukohta2,
 } from "server/kompassi/test/mockKompassiProgramItemSolmukohta";
-import { kompassiProgramItem } from "server/kompassi/kompassiProgramItem";
+import { KompassiProgramItem } from "server/kompassi/kompassiProgramItem";
 
 const getMockKompassiProgramItems = (
   conventionName: ConventionName,
-): kompassiProgramItem[] => {
+): KompassiProgramItem[] => {
   switch (conventionName) {
     case ConventionName.ROPECON:
       return [mockKompassiProgramItemRopecon, mockKompassiProgramItemRopecon2];

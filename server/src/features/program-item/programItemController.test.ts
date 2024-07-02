@@ -188,9 +188,9 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
   });
 
   test("should not modify anything if server response is invalid", async () => {
-    vi.spyOn(testHelperWrapper, "getEventProgramItems")
-      // @ts-expect-error: Invalid value for testing
-      .mockResolvedValue({ value: "broken response" });
+    vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
+      value: "broken response",
+    });
 
     await saveProgramItems([testProgramItem, testProgramItem2]);
 
@@ -330,25 +330,17 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
             topic: [],
             audience: [
               KompassiAudienceRopecon.BEGINNERS,
-              // @ts-expect-error: Test
               "invalid-tag",
-              // @ts-expect-error: Test
               undefined,
-              // @ts-expect-error: Test
               [1],
-              // @ts-expect-error: Test
               {},
             ],
           },
           styles: [
             KompassiGameStyleRopecon.CHARACTER_DRIVEN,
-            // @ts-expect-error: Test
             "invalid-style",
-            // @ts-expect-error: Test
             undefined,
-            // @ts-expect-error: Test
             [1],
-            // @ts-expect-error: Test
             {},
           ],
           foobar: "this is unknown field",
@@ -378,9 +370,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
           scheduleItems: [
             {
               ...mockKompassiProgramItemRopecon.scheduleItems[0],
-              // @ts-expect-error: Test value
               startTime: null,
-              // @ts-expect-error: Test value
               endTime: null,
             },
           ],
