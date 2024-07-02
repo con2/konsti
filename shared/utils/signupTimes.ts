@@ -6,7 +6,7 @@ import { TIMEZONE } from "shared/utils/initializeDayjs";
 export const getAlgorithmSignupStartTime = (startTime: string): Dayjs => {
   const { conventionStartTime, PRE_SIGNUP_START } = config.shared();
 
-  // Set timezone here because hour comparison and setting hour value
+  // Set timezone because hour comparison and setting hour value
   const timezoneStartTime = dayjs(startTime)
     .tz(TIMEZONE)
     .subtract(PRE_SIGNUP_START, "minutes");
@@ -35,10 +35,12 @@ export const getDirectSignupStartTime = (programItem: ProgramItem): Dayjs => {
     DIRECT_SIGNUP_START,
     PHASE_GAP,
     directSignupWindows,
+    rollingSignupStartProgramTypes,
     directSignupAlwaysOpenIds,
     twoPhaseSignupProgramTypes,
   } = config.shared();
 
+  // ** SIGNUP ALWAYS OPEN **
   const signupAlwaysOpen = directSignupAlwaysOpenIds.includes(
     programItem.programItemId,
   );
@@ -46,6 +48,8 @@ export const getDirectSignupStartTime = (programItem: ProgramItem): Dayjs => {
   if (signupAlwaysOpen) {
     return dayjs(conventionStartTime);
   }
+
+  // ** TWO PHASE SIGNUPS **
 
   // "twoPhaseSignupProgramTypes" signup times are configured with DIRECT_SIGNUP_START
   if (twoPhaseSignupProgramTypes.includes(programItem.programType)) {
@@ -76,6 +80,31 @@ export const getDirectSignupStartTime = (programItem: ProgramItem): Dayjs => {
 
     return directSignupStartWithPhaseGap;
   }
+
+  // ** ROLLING DIRECT SIGNUP **
+
+  if (rollingSignupStartProgramTypes.includes(programItem.programType)) {
+    // Signup starts 4 hours before program item start time
+    const rollingStartTime = dayjs(programItem.startTime).subtract(4, "hours");
+
+    // Earliest start time is convention start time
+    if (rollingStartTime.isBefore(dayjs(conventionStartTime))) {
+      return dayjs(conventionStartTime);
+    }
+
+    // If program item starts before 12:00, signup starts 18:00 previous day
+
+    // Set timezone because hour comparison and setting hour value
+    const timezoneStartTime = dayjs(programItem.startTime).tz(TIMEZONE);
+    const startTimeIsTooEarly = timezoneStartTime.hour() < 12;
+    if (startTimeIsTooEarly) {
+      return timezoneStartTime.subtract(1, "day").hour(18);
+    }
+
+    return rollingStartTime;
+  }
+
+  // ** DIRECT SIGNUP WINDOWS **
 
   // Other program types use "directSignupWindows" config
   const signupWindowsForProgramType = directSignupWindows

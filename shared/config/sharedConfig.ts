@@ -24,6 +24,7 @@ export interface SharedConfig {
   directSignupWindows: Partial<
     Record<ProgramType, ArrMin1<SignupWindow>>
   > | null;
+  rollingSignupStartProgramTypes: ProgramType[];
   directSignupAlwaysOpenIds: string[];
   tracesSampleRate: number;
   enableSentryInDev: boolean;
@@ -101,34 +102,6 @@ export const sharedConfig: SharedConfig = {
       },
     ],
 
-    workshop: [
-      // Friday
-      {
-        signupWindowStart: dayjs(`${friday}T12:00:00Z`), // Fri 15:00 GMT+3
-        signupWindowClose: dayjs(`${friday}T21:00:00Z`), // Fri 24:00 GMT+3
-      },
-      // Saturday morning / day
-      {
-        signupWindowStart: dayjs(`${friday}T15:00:00Z`), // Fri 18:00 GMT+3
-        signupWindowClose: dayjs(`${saturday}T11:00:00Z`), // Sat 14:00 GMT+3
-      },
-      // Saturday day / evening
-      {
-        signupWindowStart: dayjs(`${saturday}T06:00:00Z`), // Sat 09:00 GMT+3
-        signupWindowClose: dayjs(`${saturday}T21:00:00Z`), // Sat 24:00 GMT+3
-      },
-      // Saturday evening / sunday morning
-      {
-        signupWindowStart: dayjs(`${saturday}T15:00:00Z`), // Sat 18:00 GMT+3
-        signupWindowClose: dayjs(`${sunday}T11:00:00Z`), // Sun 14:00 GMT+3
-      },
-      // Sunday
-      {
-        signupWindowStart: dayjs(`${sunday}T06:00:00Z`), // Sun 09:00 GMT+3
-        signupWindowClose: dayjs(`${sunday}T21:00:00Z`), // Sun 24:00 GMT+3
-      },
-    ],
-
     experiencePoint: [
       // Whole convention Fri - Sun
       {
@@ -145,6 +118,8 @@ export const sharedConfig: SharedConfig = {
       },
     ],
   },
+
+  rollingSignupStartProgramTypes: [ProgramType.WORKSHOP],
 
   // These program items have their signup always open even if signup mode is set to algorithm
   directSignupAlwaysOpenIds: [
