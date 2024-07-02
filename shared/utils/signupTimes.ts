@@ -81,7 +81,7 @@ export const getDirectSignupStartTime = (programItem: ProgramItem): Dayjs => {
     return directSignupStartWithPhaseGap;
   }
 
-  // ** DYNAMIC DIRECT SIGNUP **
+  // ** ROLLING DIRECT SIGNUP **
 
   if (rollingSignupStartProgramTypes.includes(programItem.programType)) {
     // Signup starts 4 hours before program item start time
