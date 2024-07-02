@@ -1,5 +1,5 @@
 import {
-  kompassiProgramItemHitpoint,
+  KompassiProgramItemHitpoint,
   KompassiProgramItemSchemaHitpoint,
 } from "server/kompassi/hitpoint/kompassiProgramItemHitpoint";
 import {
@@ -11,9 +11,9 @@ import {
   KompassiProgramItemSolmukohta,
 } from "server/kompassi/solmukohta/kompassiProgramItemSolmukohta";
 
-export type kompassiProgramItem =
+export type KompassiProgramItem =
   | KompassiProgramItemRopecon
-  | kompassiProgramItemHitpoint
+  | KompassiProgramItemHitpoint
   | KompassiProgramItemSolmukohta;
 
 export type KompassiProgramItemSchema =

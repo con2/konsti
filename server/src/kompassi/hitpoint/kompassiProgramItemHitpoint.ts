@@ -34,6 +34,6 @@ export const KompassiProgramItemSchemaHitpoint = z.object({
   video_link: z.string().catch(""),
 });
 
-export type kompassiProgramItemHitpoint = z.infer<
+export type KompassiProgramItemHitpoint = z.infer<
   typeof KompassiProgramItemSchemaHitpoint
 >;

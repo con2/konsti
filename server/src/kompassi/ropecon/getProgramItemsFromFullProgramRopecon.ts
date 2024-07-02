@@ -5,11 +5,11 @@ import {
 } from "server/kompassi/getProgramItemsFromKompassi";
 import { logger } from "server/utils/logger";
 import { config } from "shared/config";
-import { kompassiProgramItem } from "server/kompassi/kompassiProgramItem";
+import { KompassiProgramItem } from "server/kompassi/kompassiProgramItem";
 import {
-  KompassiProgramItemRopecon,
   KompassiProgramItemSchemaRopecon,
   KompassiKonstiProgramTypeRopecon,
+  KompassiProgramItemRopecon,
 } from "server/kompassi/ropecon/kompassiProgramItemRopecon";
 
 const handPickedProgramTypes = [
@@ -19,9 +19,21 @@ const handPickedProgramTypes = [
 ];
 
 export const getProgramItemsFromFullProgramRopecon = (
-  programItems: KompassiProgramItemRopecon[],
-): kompassiProgramItem[] => {
-  const matchingProgramItems = programItems.flatMap((programItem) => {
+  programItems: unknown[],
+): KompassiProgramItem[] => {
+  checkUnknownKeys(programItems, KompassiProgramItemSchemaRopecon);
+
+  const kompassiProgramItems = programItems.flatMap((programItem) => {
+    const result = parseProgramItem(
+      programItem,
+      KompassiProgramItemSchemaRopecon,
+    );
+    return result ?? [];
+  }) as KompassiProgramItemRopecon[];
+
+  logger.info(`Found ${kompassiProgramItems.length} valid program items`);
+
+  const matchingProgramItems = kompassiProgramItems.flatMap((programItem) => {
     // Take program items with Konsti dimension and valid program type
     const programType = first(programItem.cachedDimensions.konsti);
 
@@ -43,19 +55,7 @@ export const getProgramItemsFromFullProgramRopecon = (
     return programItem;
   });
 
-  logger.info(`Found ${matchingProgramItems.length} matching program items`);
-
-  checkUnknownKeys(matchingProgramItems, KompassiProgramItemSchemaRopecon);
-
-  const kompassiProgramItems = matchingProgramItems.flatMap((programItem) => {
-    const result = parseProgramItem(
-      programItem,
-      KompassiProgramItemSchemaRopecon,
-    );
-    return result ?? [];
-  });
-
-  if (kompassiProgramItems.length === 0) {
+  if (matchingProgramItems.length === 0) {
     logger.error(
       "%s",
       new Error("No program items with known categories found"),
@@ -63,7 +63,7 @@ export const getProgramItemsFromFullProgramRopecon = (
     return [];
   }
 
-  logger.info(`Found ${kompassiProgramItems.length} valid program items`);
+  logger.info(`Found ${matchingProgramItems.length} matching program items`);
 
-  return kompassiProgramItems;
+  return matchingProgramItems;
 };

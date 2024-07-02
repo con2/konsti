@@ -9,13 +9,13 @@ import {
 } from "shared/types/models/programItem";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import {
-  kompassiProgramItemHitpoint,
+  KompassiProgramItemHitpoint,
   KompassiProgramTypeHitpoint,
 } from "server/kompassi/hitpoint/kompassiProgramItemHitpoint";
 import { config } from "shared/config";
 
 export const kompassiProgramItemMapperHitpoint = (
-  programItems: readonly kompassiProgramItemHitpoint[],
+  programItems: readonly KompassiProgramItemHitpoint[],
 ): readonly ProgramItem[] => {
   return programItems.map((programItem) => {
     return {
@@ -51,7 +51,7 @@ export const kompassiProgramItemMapperHitpoint = (
 };
 
 const mapProgramType = (
-  kompassiProgramItem: kompassiProgramItemHitpoint,
+  kompassiProgramItem: KompassiProgramItemHitpoint,
 ): ProgramType => {
   const programType = kompassiProgramItem.category_title;
 
@@ -67,7 +67,7 @@ const mapProgramType = (
   }
 };
 
-const mapTags = (kompassiProgramItem: kompassiProgramItemHitpoint): Tag[] => {
+const mapTags = (kompassiProgramItem: KompassiProgramItemHitpoint): Tag[] => {
   const tags = [];
 
   if (kompassiProgramItem.is_age_restricted) {
@@ -90,7 +90,7 @@ const mapTags = (kompassiProgramItem: kompassiProgramItemHitpoint): Tag[] => {
 };
 
 const mapLanguages = (
-  kompassiProgramItem: kompassiProgramItemHitpoint,
+  kompassiProgramItem: KompassiProgramItemHitpoint,
 ): Language[] => {
   const { isEnglishProgramItems } = config.shared();
 

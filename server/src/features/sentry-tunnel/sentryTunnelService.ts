@@ -36,7 +36,7 @@ export const resendSentryRequest = async (
     }
 
     const sentryUrl = `https://${sentryHost}/api/${projectId}/envelope/`;
-    await axios.post(sentryUrl, envelope, {
+    await axios.post<unknown>(sentryUrl, envelope, {
       headers: { "Content-Type": "application/x-sentry-envelope" },
     });
 

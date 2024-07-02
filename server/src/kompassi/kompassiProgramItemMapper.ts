@@ -3,15 +3,15 @@ import { kompassiProgramItemMapperRopecon } from "server/kompassi/ropecon/kompas
 import { kompassiProgramItemMapperSolmukohta } from "server/kompassi/solmukohta/kompassiProgramItemMapperSolmukohta";
 import { ConventionName } from "shared/config/sharedConfigTypes";
 import { ProgramItem } from "shared/types/models/programItem";
-import { kompassiProgramItem } from "server/kompassi/kompassiProgramItem";
-import { kompassiProgramItemHitpoint } from "server/kompassi/hitpoint/kompassiProgramItemHitpoint";
+import { KompassiProgramItem } from "server/kompassi/kompassiProgramItem";
+import { KompassiProgramItemHitpoint } from "server/kompassi/hitpoint/kompassiProgramItemHitpoint";
 import { KompassiProgramItemRopecon } from "server/kompassi/ropecon/kompassiProgramItemRopecon";
 import { KompassiProgramItemSolmukohta } from "server/kompassi/solmukohta/kompassiProgramItemSolmukohta";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 
 export const kompassiProgramItemMapper = (
   conventionName: ConventionName,
-  eventProgramItems: kompassiProgramItem[],
+  eventProgramItems: KompassiProgramItem[],
 ): readonly ProgramItem[] => {
   switch (conventionName) {
     case ConventionName.ROPECON:
@@ -20,7 +20,7 @@ export const kompassiProgramItemMapper = (
       );
     case ConventionName.HITPOINT:
       return kompassiProgramItemMapperHitpoint(
-        eventProgramItems as kompassiProgramItemHitpoint[],
+        eventProgramItems as KompassiProgramItemHitpoint[],
       );
     case ConventionName.SOLMUKOHTA:
       return kompassiProgramItemMapperSolmukohta(

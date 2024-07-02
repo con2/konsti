@@ -1,51 +1,50 @@
 import { logger } from "server/utils/logger";
 import {
-  kompassiProgramItemHitpoint,
+  KompassiProgramItemHitpoint,
   KompassiProgramItemSchemaHitpoint,
   KompassiProgramTypeHitpoint,
 } from "server/kompassi/hitpoint/kompassiProgramItemHitpoint";
 import { sharedConfig } from "shared/config/sharedConfig";
-import { kompassiProgramItem } from "server/kompassi/kompassiProgramItem";
+import { KompassiProgramItem } from "server/kompassi/kompassiProgramItem";
 import {
   checkUnknownKeys,
   parseProgramItem,
 } from "server/kompassi/getProgramItemsFromKompassi";
 
 export const getProgramItemsFromFullProgramHitpoint = (
-  programItems: kompassiProgramItemHitpoint[],
-): kompassiProgramItem[] => {
-  const matchingProgramItems: kompassiProgramItemHitpoint[] =
-    programItems.flatMap((programItem) => {
-      // These program items are hand picked to be exported from Kompassi
-      if (sharedConfig.addToKonsti.includes(programItem.slug)) {
-        return programItem;
-      }
+  programItems: unknown[],
+): KompassiProgramItem[] => {
+  checkUnknownKeys(programItems, KompassiProgramItemSchemaHitpoint);
 
-      // Take program items with valid program type
-      if (
-        !Object.values(KompassiProgramTypeHitpoint).includes(
-          programItem.category_title,
-        )
-      ) {
-        return [];
-      }
-
-      return programItem;
-    });
-
-  logger.info(`Found ${matchingProgramItems.length} matching program items`);
-
-  checkUnknownKeys(matchingProgramItems, KompassiProgramItemSchemaHitpoint);
-
-  const kompassiProgramItems = matchingProgramItems.flatMap((programItem) => {
+  const kompassiProgramItems = programItems.flatMap((programItem) => {
     const result = parseProgramItem(
       programItem,
       KompassiProgramItemSchemaHitpoint,
     );
     return result ?? [];
+  }) as KompassiProgramItemHitpoint[];
+
+  logger.info(`Found ${kompassiProgramItems.length} valid program items`);
+
+  const matchingProgramItems = kompassiProgramItems.flatMap((programItem) => {
+    // These program items are hand picked to be exported from Kompassi
+    if (sharedConfig.addToKonsti.includes(programItem.slug)) {
+      return programItem;
+    }
+
+    // Take program items with valid program type
+    if (
+      !Object.values(KompassiProgramTypeHitpoint).includes(
+        programItem.category_title,
+      )
+    ) {
+      return [];
+    }
+
+    return programItem;
   });
 
-  if (kompassiProgramItems.length === 0) {
+  if (matchingProgramItems.length === 0) {
     logger.error(
       "%s",
       new Error("No program items with known categories found"),
@@ -53,7 +52,7 @@ export const getProgramItemsFromFullProgramHitpoint = (
     return [];
   }
 
-  logger.info(`Found ${kompassiProgramItems.length} valid program items`);
+  logger.info(`Found ${matchingProgramItems.length} matching program items`);
 
-  return kompassiProgramItems;
+  return matchingProgramItems;
 };

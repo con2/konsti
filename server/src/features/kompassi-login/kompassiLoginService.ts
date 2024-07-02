@@ -61,7 +61,7 @@ const getKompassiTokens = async (
   };
 
   try {
-    const response = await axios.post(url, body, { headers });
+    const response = await axios.post<unknown>(url, body, { headers });
     const result = KompassiTokensSchema.safeParse(response.data);
     if (!result.success) {
       logger.error(
@@ -72,7 +72,7 @@ const getKompassiTokens = async (
       );
       return makeErrorResult(KompassiLoginError.UNKNOWN_ERROR);
     }
-    return makeSuccessResult(response.data);
+    return makeSuccessResult(result.data);
   } catch (error) {
     logger.error(
       "Kompassi login: Error fetching token from Kompassi: %s",
@@ -89,7 +89,7 @@ const getKompassiProfile = async (
   const headers = { authorization: `Bearer ${accessToken}` };
 
   try {
-    const response = await axios.get(url, { headers });
+    const response = await axios.get<unknown>(url, { headers });
     const result = KompassiProfileSchema.safeParse(response.data);
     if (!result.success) {
       logger.error(
@@ -100,7 +100,7 @@ const getKompassiProfile = async (
       );
       return makeErrorResult(KompassiLoginError.UNKNOWN_ERROR);
     }
-    return makeSuccessResult(response.data);
+    return makeSuccessResult(result.data);
   } catch (error) {
     logger.error(
       "Kompassi login: Error fetching profile from Kompassi: %s",

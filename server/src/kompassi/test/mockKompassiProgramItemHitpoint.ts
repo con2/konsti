@@ -3,12 +3,12 @@ import {
   testProgramItem2,
 } from "shared/tests/testProgramItem";
 import {
-  kompassiProgramItemHitpoint,
+  KompassiProgramItemHitpoint,
   KompassiPhysicalPlayHitpoint,
   KompassiProgramTypeHitpoint,
 } from "server/kompassi/hitpoint/kompassiProgramItemHitpoint";
 
-export const mockKompassiProgramItemHitpoint: kompassiProgramItemHitpoint = {
+export const mockKompassiProgramItemHitpoint: KompassiProgramItemHitpoint = {
   title: testProgramItem.title,
   description: testProgramItem.description,
   category_title: KompassiProgramTypeHitpoint.TABLETOP_RPG,
@@ -32,7 +32,7 @@ export const mockKompassiProgramItemHitpoint: kompassiProgramItemHitpoint = {
   video_link: "",
 };
 
-export const mockKompassiProgramItemHitpoint2: kompassiProgramItemHitpoint = {
+export const mockKompassiProgramItemHitpoint2: KompassiProgramItemHitpoint = {
   title: testProgramItem2.title,
   description: testProgramItem2.description,
   category_title: KompassiProgramTypeHitpoint.TABLETOP_RPG,
