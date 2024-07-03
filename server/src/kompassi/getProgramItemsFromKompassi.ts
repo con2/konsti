@@ -127,7 +127,7 @@ const KompassiResponseFormSchema = z.object({
   }),
 });
 
-const getProgramFromServer = async (): Promise<
+export const getProgramFromServer = async (): Promise<
   Result<unknown, KompassiError>
 > => {
   logger.info("GET event program from remote server");

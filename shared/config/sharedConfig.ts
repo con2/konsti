@@ -101,25 +101,9 @@ export const sharedConfig: SharedConfig = {
         signupWindowClose: dayjs(`${sunday}T21:00:00Z`), // Sun 24:00 GMT+3
       },
     ],
-
-    experiencePoint: [
-      // Whole convention Fri - Sun
-      {
-        signupWindowStart: dayjs(`${friday}T12:00:00Z`), // Fri 15:00 GMT+3
-        signupWindowClose: dayjs(`${sunday}T21:00:00Z`), // Sun 24:00 GMT+3
-      },
-    ],
-
-    other: [
-      // Whole convention Fri - Sun
-      {
-        signupWindowStart: dayjs(`${friday}T12:00:00Z`), // Fri 15:00 GMT+3
-        signupWindowClose: dayjs(`${sunday}T21:00:00Z`), // Sun 24:00 GMT+3
-      },
-    ],
   },
 
-  rollingSignupStartProgramTypes: [ProgramType.WORKSHOP],
+  rollingSignupStartProgramTypes: [ProgramType.WORKSHOP, ProgramType.OTHER],
 
   // These program items have their signup always open even if signup mode is set to algorithm
   directSignupAlwaysOpenIds: [
@@ -132,12 +116,13 @@ export const sharedConfig: SharedConfig = {
     "harmaasusien-taisteluharjoitukset", // Harmaasusien taisteluharjoitukset
     "atarashii-naginata-lajinaytos-ja-kokeiluharjoitukset", // Atarashii Naginata: lajinäytös ja kokeiluharjoitukset
     "kps-turnaus-rps-tournament", // KPS-turnaus
+    "keppielainten-ja-keppihirvioiden-kilpailut", // Keppieläinten ja keppihirviöiden kilpailut!
 
     // ** ropecon2023_signuplist - no need to hand pick after Kompassi importer updated**
 
     // Turnaukset: muu / Tournament: Other
     "pikamaalauskilpailu-speed-painting-contest-1-pefri", // Pikamaalauskilpailu / Speed Painting Contest 1 (Pe/Fri)
-    // "", // Pikamaalauskilpailu / Speed Painting Contest 2 (Pe/Fri)
+    "pikamaalauskilpailu-speed-painting-contest-2-pefri", // Pikamaalauskilpailu / Speed Painting Contest 2 (Pe/Fri)
     "pikamaalauskilpailu-speed-painting-contest-3-lasat", // Pikamaalauskilpailu / Speed Painting Contest 3 (La/Sat)
     "pikamaalauskilpailu-speed-painting-contest-4-lasat", // Pikamaalauskilpailu / Speed Painting Contest 4 (La/Sat)
     "palapeliturnaus-joukkue-jigsaw-puzzle-tournament-teams", // Palapeliturnaus (Joukkue) | Jigsaw Puzzle Tournament (Teams)
@@ -152,17 +137,6 @@ export const sharedConfig: SharedConfig = {
     // Turnaukset: korttipelit / Tournament: Card games
     "mtg-bulk-commander", // MtG Bulk Commander
     "clash-of-decks-turnaus", // Clash of Decks turnaus
-
-    // Kokemuspiste: demotus / Experience Point: Demo game
-    "redshirt-classics-miami-dade-shootout-redshirt-klassikot-miami-daden-ammuskelu", // Redshirt classics: Miami Dade Shootout / Redshirt klassikot: Miami-Daden ammuskelu
-
-    // Kokemuspiste: avoin pelautus / Experience Point: Open game
-    "ihmissusipeli-werewolfes-of-millers-hollow-pelautus-13-k18", // Ihmissusipeli (Werewolfes of Millers Hollow), K18 pelautus
-    "lautapelataanboardgames-t-i-m-e-stories-2-the-marcy-case-lasat", // Lautapelataan/Boardgames: T.I.M.E Stories (2: The Marcy Case)
-    "hirvionmetsastajien-kiltojen-mestarit-masters-of-the-monster-hunter-guilds", // Hirviönmetsästäjien kiltojen mestarit – Masters of the Monster Hunter Guilds
-
-    // Kokemuspiste: muu / Experience Point: Other
-    "king-of-tokyo-turnaus-king-of-tokyo-tournament", // King of Tokyo-turnaus / King of Tokyo tournament
   ],
 
   // These program items have hand picked revolving door status
@@ -225,6 +199,64 @@ export const sharedConfig: SharedConfig = {
       type: SignupQuestionType.TEXT,
       selectOptions: [],
     },
+    {
+      programItemId: "palapeliturnaus-joukkue-jigsaw-puzzle-tournament-teams", // Palapeliturnaus (Joukkue) | Jigsaw Puzzle Tournament (Teams)
+      questionFi:
+        "Syötä joukkueen nimi, kaikkien joukkueesi jäsenten (2-4 kpl) nimet, sekä ainakin yhden jäsenen sähköpostiosoite ja puhelinnumero mahdollista palkintoyhteydenottoa varten.",
+      questionEn:
+        "Please write the name of your team, the names of all team members (2-4 people) and an email address and phone number of at least one team member in case we need to contact you about a possible award.",
+      private: true,
+      type: SignupQuestionType.TEXT,
+      selectOptions: [],
+    },
+    {
+      programItemId: "pikamaalauskilpailu-speed-painting-contest-1-pefri", // Pikamaalauskilpailu / Speed Painting Contest 1 (Pe/Fri)
+      questionFi: "Haluan, että maalattavan figuni pohjaväri on",
+      questionEn: "I want my miniature to be primed",
+      private: false,
+      type: SignupQuestionType.SELECT,
+      selectOptions: [
+        { optionFi: "Musta", optionEn: "Black" },
+        { optionFi: "Valkoinen", optionEn: "White" },
+        { optionFi: "Zenitaali", optionEn: "Zenithal" },
+      ],
+    },
+    {
+      programItemId: "pikamaalauskilpailu-speed-painting-contest-2-pefri", // Pikamaalauskilpailu / Speed Painting Contest 2 (Pe/Fri)
+      questionFi: "Haluan, että maalattavan figuni pohjaväri on",
+      questionEn: "I want my miniature to be primed",
+      private: false,
+      type: SignupQuestionType.SELECT,
+      selectOptions: [
+        { optionFi: "Musta", optionEn: "Black" },
+        { optionFi: "Valkoinen", optionEn: "White" },
+        { optionFi: "Zenitaali", optionEn: "Zenithal" },
+      ],
+    },
+    {
+      programItemId: "pikamaalauskilpailu-speed-painting-contest-3-lasat", // Pikamaalauskilpailu / Speed Painting Contest 3 (La/Sat)
+      questionFi: "Haluan, että maalattavan figuni pohjaväri on",
+      questionEn: "I want my miniature to be primed",
+      private: false,
+      type: SignupQuestionType.SELECT,
+      selectOptions: [
+        { optionFi: "Musta", optionEn: "Black" },
+        { optionFi: "Valkoinen", optionEn: "White" },
+        { optionFi: "Zenitaali", optionEn: "Zenithal" },
+      ],
+    },
+    {
+      programItemId: "pikamaalauskilpailu-speed-painting-contest-4-lasat", // Pikamaalauskilpailu / Speed Painting Contest 4 (La/Sat)
+      questionFi: "Haluan, että maalattavan figuni pohjaväri on",
+      questionEn: "I want my miniature to be primed",
+      private: false,
+      type: SignupQuestionType.SELECT,
+      selectOptions: [
+        { optionFi: "Musta", optionEn: "Black" },
+        { optionFi: "Valkoinen", optionEn: "White" },
+        { optionFi: "Zenitaali", optionEn: "Zenithal" },
+      ],
+    },
   ],
 
   tournamentSignupQuestion: {
@@ -237,7 +269,13 @@ export const sharedConfig: SharedConfig = {
     selectOptions: [],
   },
 
-  tournamentSignupQuestionExcludeIds: [],
+  tournamentSignupQuestionExcludeIds: [
+    "palapeliturnaus-joukkue-jigsaw-puzzle-tournament-teams",
+    "pikamaalauskilpailu-speed-painting-contest-1-pefri",
+    "pikamaalauskilpailu-speed-painting-contest-2-pefri",
+    "pikamaalauskilpailu-speed-painting-contest-3-lasat",
+    "pikamaalauskilpailu-speed-painting-contest-4-lasat",
+  ],
 
   isEnglishProgramItems: [],
 
