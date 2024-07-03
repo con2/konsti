@@ -413,9 +413,7 @@
         "requires-dexterity"
       ]
     },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 15
-    },
+    "cachedAnnotations": { "konsti:maxAttendance": 15 },
     "scheduleItems": [
       {
         "startTime": "2024-07-19T13:00:00+00:00",
@@ -681,9 +679,7 @@
       "language": ["fi"],
       "accessibility": ["physical-contact"]
     },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 20
-    },
+    "cachedAnnotations": { "konsti:maxAttendance": 20 },
     "scheduleItems": [
       {
         "startTime": "2024-07-19T13:00:00+00:00",
@@ -797,7 +793,7 @@
   {
     "slug": "village-lisareilla",
     "title": "Village (lisäreillä)",
-    "description": "Tule mukaan nauttimaan kylän leppoisasta elämästä ja sen tuomista mahdollisuuksista. Kylästä löytyy niin käsityöläisiä, uskonmiehiä, markkinat, panimo, häitä unohtamatta. Ehkä joku perheestäsi lähtee kiertämään maita ja mantuja laivalla ja tuo mukanaan kirtsullisen kultaa. Tai sitten voit vain hengata majatalossa ja tavata mielenkiintoisia matkalaisia.\r\n\r\nLämminhenkisen teeman takaa löytyy tiukka optimointipeli, joten kokeneetkaan pelaajat eivät jää kylmäksi.\r\n\r\nIlmoittauduthan peliin kokemuspisteellä.\r\n\r\n***\r\n\r\nCome and enjoy a relaxed atmosphere and life in a village. In the village you'll find craftsmen, religious folk, a brewery, market and of course weddings. Perhaps someone from your family will travel faraway lands and bring a chest of gold when return. Or you can just stay in a local inn and listen stories told by vast array of visitors.\r\n\r\nBehind the warm themed game you'll find a serious optimization challenge, so there's something for everyone—even the hardest gaming veterans.\r\n\r\nPlease, register for the game at kokemuspiste.",
+    "description": "Tule mukaan nauttimaan kylän leppoisasta elämästä ja sen tuomista mahdollisuuksista. Kylästä löytyy niin käsityöläisiä, uskonmiehiä, markkinat, panimo, häitä unohtamatta. Ehkä joku perheestäsi lähtee kiertämään maita ja mantuja laivalla ja tuo mukanaan kirtsullisen kultaa. Tai sitten voit vain hengata majatalossa ja tavata mielenkiintoisia matkalaisia.\r\n\r\nLämminhenkisen teeman takaa löytyy tiukka optimointipeli, joten kokeneetkaan pelaajat eivät jää kylmäksi.\r\n\r\nILMOITTAUTUMINEN\r\nTähän ohjelmaan on ennakkoilmoittautuminen Kokemuspisteen infon luona (Halli 3, pohjoinen sisäänkäynti 3.3). Ilmoittautuminen alkaa perjantaina klo 15. Paikat täytetään ilmoittautumisjärjestyksessä. Peliin mahtuu 3 pelaajaa.\r\n\r\n***\r\n\r\nCome and enjoy a relaxed atmosphere and life in a village. In the village you'll find craftsmen, religious folk, a brewery, market and of course weddings. Perhaps someone from your family will travel faraway lands and bring a chest of gold when return. Or you can just stay in a local inn and listen stories told by vast array of visitors.\r\n\r\nBehind the warm themed game you'll find a serious optimization challenge, so there's something for everyone—even the hardest gaming veterans.\r\n\r\nREGISTRATION\r\nPre-registration for this program is available at the Kokemuspiste info (Hall 3, north entrance 3.3). Registration starts on Friday at 3 pm. Places will be filled in order of registration. The game can accommodate 3 players.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-19"],
@@ -1144,9 +1140,7 @@
       "language": ["fi"],
       "accessibility": ["requires-dexterity"]
     },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 12
-    },
+    "cachedAnnotations": { "konsti:maxAttendance": 12 },
     "scheduleItems": [
       {
         "startTime": "2024-07-19T13:00:00+00:00",
@@ -1253,9 +1247,7 @@
       "language": ["fi"],
       "accessibility": []
     },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 18
-    },
+    "cachedAnnotations": { "konsti:maxAttendance": 18 },
     "scheduleItems": [
       {
         "startTime": "2024-07-19T13:00:00+00:00",
@@ -2042,9 +2034,7 @@
       "language": ["fi"],
       "accessibility": ["texts-with-no-recordings"]
     },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 20
-    },
+    "cachedAnnotations": { "konsti:maxAttendance": 20 },
     "scheduleItems": [
       {
         "startTime": "2024-07-19T14:00:00+00:00",
@@ -2159,9 +2149,7 @@
       "language": ["fi"],
       "accessibility": ["irritate-skin", "requires-dexterity"]
     },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 10
-    },
+    "cachedAnnotations": { "konsti:maxAttendance": 10 },
     "scheduleItems": [
       {
         "startTime": "2024-07-19T14:00:00+00:00",
@@ -2285,31 +2273,6 @@
         "endTime": "2024-07-19T18:30:00+00:00",
         "lengthMinutes": 270,
         "location": "Säde"
-      }
-    ]
-  },
-  {
-    "slug": "kokemuspisteen-peliapurit-opastavat-lauta-ja-korttipeleissa-pe",
-    "title": "Kokemuspisteen peliapurit opastavat lauta- ja korttipeleissä",
-    "description": "Ropeconissa on kokemuspisteellä uutena ”istu ja pelaa”-alue, jossa on lauta- ja korttipelejä valmiiksi järjesteltyinä pelipöydille. Tarvittaessa kokemuspisteen vapaaehtoiset opastavat alkuun peleissä ja auttavat ongelmatilanteissa. \r\n\r\nPelit ovat esillä kokemuspisteen aukioloaikoina, mutta opastusta on tarjolla peliapurien ehtiessä.",
-    "cachedHosts": "<redacted>",
-    "cachedDimensions": {
-      "date": ["2024-07-19"],
-      "room": ["halli-3-kokemuspiste"],
-      "type": ["experience", "gaming", "open-gaming"],
-      "topic": ["boardgames", "cardgames"],
-      "konsti": ["experiencePoint"],
-      "audience": ["all-ages", "beginners"],
-      "language": ["fi"],
-      "accessibility": []
-    },
-    "cachedAnnotations": {},
-    "scheduleItems": [
-      {
-        "startTime": "2024-07-19T14:00:00+00:00",
-        "endTime": "2024-07-19T17:00:00+00:00",
-        "lengthMinutes": 180,
-        "location": "Halli 3 Kokemuspiste"
       }
     ]
   },
@@ -2471,9 +2434,7 @@
       "language": ["fi"],
       "accessibility": []
     },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 18
-    },
+    "cachedAnnotations": { "konsti:maxAttendance": 18 },
     "scheduleItems": [
       {
         "startTime": "2024-07-19T15:00:00+00:00",
@@ -2502,9 +2463,7 @@
         "requires-dexterity"
       ]
     },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 15
-    },
+    "cachedAnnotations": { "konsti:maxAttendance": 15 },
     "scheduleItems": [
       {
         "startTime": "2024-07-19T15:00:00+00:00",
@@ -2529,9 +2488,7 @@
       "language": ["fi", "en"],
       "accessibility": ["irritate-skin", "requires-dexterity"]
     },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 10
-    },
+    "cachedAnnotations": { "konsti:maxAttendance": 10 },
     "scheduleItems": [
       {
         "startTime": "2024-07-19T15:00:00+00:00",
@@ -3152,9 +3109,7 @@
       "language": ["fi"],
       "accessibility": ["loud-sounds", "moving-around", "requires-dexterity"]
     },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 12
-    },
+    "cachedAnnotations": { "konsti:maxAttendance": 12 },
     "scheduleItems": [
       {
         "startTime": "2024-07-19T15:00:00+00:00",
@@ -3330,6 +3285,31 @@
     ]
   },
   {
+    "slug": "kokemuspisteen-peliapurit-opastavat-lauta-ja-korttipeleissa-pe",
+    "title": "Kokemuspisteen peliapurit opastavat lauta- ja korttipeleissä",
+    "description": "Ropeconissa on kokemuspisteellä uutena ”istu ja pelaa”-alue, jossa on lauta- ja korttipelejä valmiiksi järjesteltyinä pelipöydille. Tarvittaessa kokemuspisteen vapaaehtoiset opastavat alkuun peleissä ja auttavat ongelmatilanteissa. \r\n\r\nPelit ovat esillä kokemuspisteen aukioloaikoina, mutta opastusta on tarjolla peliapurien ehtiessä.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-07-19"],
+      "room": ["halli-3-kokemuspiste"],
+      "type": ["experience", "gaming", "open-gaming"],
+      "topic": ["boardgames", "cardgames"],
+      "konsti": ["experiencePoint"],
+      "audience": ["all-ages", "beginners"],
+      "language": ["fi"],
+      "accessibility": []
+    },
+    "cachedAnnotations": {},
+    "scheduleItems": [
+      {
+        "startTime": "2024-07-19T15:00:00+00:00",
+        "endTime": "2024-07-19T18:00:00+00:00",
+        "lengthMinutes": 180,
+        "location": "Halli 3 Kokemuspiste"
+      }
+    ]
+  },
+  {
     "slug": "pukushown-ilmoittautuminen",
     "title": "Pukushow'n ilmoittautuminen",
     "description": "Pukushow on perinteinen Ropeconissa järjestettävä pukuohjelma, jossa kävijät pääsevät esittelemään pukuaan yleisölle. Pukushow’hun ilmoittaudutaan tapahtumassa kuvauspisteen läheisyydessä olevalle tiskille. Ilmoittautumisen lisäksi pukushow’hun osallistuvat käyvät kuvauspisteellä valokuvassa ja halutessaan osallistuvat lauantain lavaohjelmaan.",
@@ -3351,9 +3331,7 @@
         "colorblind"
       ]
     },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 50
-    },
+    "cachedAnnotations": { "konsti:maxAttendance": 50 },
     "scheduleItems": [
       {
         "startTime": "2024-07-19T15:00:00+00:00",
@@ -3563,7 +3541,7 @@
   {
     "slug": "ihmissusipeli-werewolfes-of-millers-hollow-pelautus-13-k18",
     "title": "Ihmissusipeli (Werewolfes of Millers Hollow),  K18 pelautus",
-    "description": "Kylä nukahtaa ja täysikuu nousee. Metsästä kuuluu ulvontaa. Tänä yönä joku kyläläisistä jälleen syödään... Vai syödäänkö sittenkään? Tule pelaamaan ja selvittämään voittavatko tällä kertaa kyläläiset vai ihmissudet! \r\n\r\nIhmissusipeli käyttää kuvakortteja sekä Mafioso-seurapelin mekaniikkaa (silmien sulkeminen, päättely, sosiaalinen pelaaminen) ja pelissä on ulkopuolinen pelinjohtaja. Samalla peliporukalla pelataan kaksi erää. Mukaan mahtuu max. 13 pelaajaa.\r\nK18 pelautus",
+    "description": "Kylä nukahtaa ja täysikuu nousee. Metsästä kuuluu ulvontaa. Tänä yönä joku kyläläisistä jälleen syödään... Vai syödäänkö sittenkään? Tule pelaamaan ja selvittämään voittavatko tällä kertaa kyläläiset vai ihmissudet! \r\n\r\nIhmissusipeli käyttää kuvakortteja sekä Mafioso-seurapelin mekaniikkaa (silmien sulkeminen, päättely, sosiaalinen pelaaminen) ja pelissä on ulkopuolinen pelinjohtaja. Samalla peliporukalla pelataan kaksi erää. Mukaan mahtuu max. 13 pelaajaa.\r\nK18 pelautus\r\n\r\n\r\nILMOITTAUTUMINEN\r\nTähän ohjelmaan on ennakkoilmoittautuminen Kokemuspisteen infon luona (Halli 3, pohjoinen sisäänkäynti 3.3). Ilmoittautuminen alkaa perjantaina klo 16. Paikat täytetään ilmoittautumisjärjestyksessä. Peliin mahtuu 13 pelaajaa.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-19"],
@@ -4056,6 +4034,34 @@
     ]
   },
   {
+    "slug": "pikamaalauskilpailu-speed-painting-contest-2-pefri",
+    "title": "Pikamaalauskilpailu / Speed Painting Contest 2 (Pe/Fri)",
+    "description": "Pikamaalauskisassa tavoitteena on maalata annettu miniatyyri mahdollisimman hyvin annetussa ajassa. Aikaa maalaamiseen on varattu yksi tunti, ja parhaiten maalattu figu voittaa.\r\n\r\nEt tarvitse kisaan omaa figua, vaan saat sen toivomallasi pohjamaalilla juuri ennen suorituksen alkua. Luonnollisesti kisatyön saa ottaa mukaansa tuomaroinnin jälkeen.\r\n\r\nOmia maalausvälineitä (paletit, siveltimet, maalit) saa käyttää, mutta halutessaan voi myös hyödyntää figumaalauspisteen tarjontaa.\r\n\r\n====\r\n\r\nThe goal in the Speed Painting Contest is to paint a given miniature as well as possible in a given time. The contestants have one hour to paint, and the best painted miniature wins.\r\n\r\nBringing your own miniature into the contest is not needed, as you will be provided one right before the beginning. Naturally, participants can take their contest work with them after the judges have finished the evaluation.\r\n\r\nYou can participate in the contest either using your own painting supplies (palettes, brushes, paints), or you can take advantage of the selection at Ropecon's Miniature Painting Station.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-07-19"],
+      "room": ["halli-5b-figumaalauspiste"],
+      "type": ["gaming", "tournament"],
+      "topic": [],
+      "konsti": ["tournament"],
+      "audience": ["aimed-between-13-17", "aimed-adults"],
+      "language": ["fi", "en"],
+      "accessibility": ["requires-dexterity", "colorblind"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Pikamaalauskilpailu",
+      "konsti:maxAttendance": 10
+    },
+    "scheduleItems": [
+      {
+        "startTime": "2024-07-19T16:00:00+00:00",
+        "endTime": "2024-07-19T17:30:00+00:00",
+        "lengthMinutes": 90,
+        "location": "Halli 5B Figumaalauspiste"
+      }
+    ]
+  },
+  {
     "slug": "metsien-viimeinen-huuto-the-last-cry-of-the-forest-1-pelautus1-run",
     "title": "Metsien viimeinen huuto / The last cry of the forest, 1. pelautus/1. run",
     "description": "“Taas pitää muuttaa syvemmälle metsään…Sentään meidän mailta löytyvää ihmisten teknologiaromua voi yhdistää meidän taikaan, mutta onko sitä pakko tuottaa niin valtavasti ja sen lisäksi heittää luontoon!? Eikö riitä, että meitä jatkuvasti ajetaan ahtaammalle…Sota on jatkunut jo liian pitkään, ja ihmisten istuttamat uudet, taiattomat metsät ovat laiha lohtu kaiken menettämämme edessä.”\r\n\r\nPeli sijoittuu meidän maailmamme rinnakkaistodellisuuteen, jossa keijujen ja ihmisten välinen sodankäynti on jatkunut jo teollisesta vallankumouksesta asti. Nyt sodassa ollaan saavutettu kiehumispiste, eikä ihmisten kanssa yhteiselo ole enää vaihtoehto.\r\nKesän ja Talven hovit kohtaavat toimistorakennuksessa tekemään tärkeitä päätöksiä sodan kulusta - hyökätäkkö vaiko perääntyä?\r\n\r\nPelissä keskipisteessä ovat neuvottelu ja tiukan tilanteen kärjistämä ihmiskeijusuhdedraama. Tarkoitus ei kuitenkaan ole keskittyä sotataktiikoihin/löytämään “oikeaa” ratkaisua siihen miten sota voitetaan, vaan tilanteen draamaan ja siihen, että päädytään yhdessä johonkin ratkaisuun.\r\n\r\nILMOITTAUTUMINEN LARPPI TISKILLÄ\r\n\r\nTeemoja: sota, ilmastokatastrofi, ihmissuhdedraama, neuvottelu/konflikti, yhteisöllisyys, ystävyys, underdog meininki",
@@ -4099,9 +4105,7 @@
       "language": ["fi"],
       "accessibility": ["strong-smells"]
     },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 16
-    },
+    "cachedAnnotations": { "konsti:maxAttendance": 16 },
     "scheduleItems": [
       {
         "startTime": "2024-07-19T17:00:00+00:00",
@@ -4245,9 +4249,7 @@
       "language": ["fi"],
       "accessibility": []
     },
-    "cachedAnnotations": {
-      "ropecon:contentWarnings": "ilmastokatastrofi"
-    },
+    "cachedAnnotations": { "ropecon:contentWarnings": "ilmastokatastrofi" },
     "scheduleItems": [
       {
         "startTime": "2024-07-19T17:00:00+00:00",
@@ -4619,7 +4621,7 @@
   {
     "slug": "mass-effect-anhurin-kampanja-pe",
     "title": "Mass Effect: Anhurin kampanja",
-    "description": "Perustuu Mass Effect-pelisarjaan.\r\n\r\nOn vuosi 2178: Anhurin planeetta yhteissiirtokutna Terminuksessa. Planeetalla on käynnissä sisällissota orjuuden vastustajien ja bataarien Na'hesit puolueen välillä. Sisällissotaa pidetään räikeimpinä rikkomuksina sapientien olentojen oikeuksia vastaan galaksissa. Orjuuden vastustajat ovat alakynnessä ja pyrkivät hankkimaan salakuljettajia ja palkkasotureita kuten Eclipse ja Blue Suns taisteluun. Sisällissodan lisäksi galaktisia välejä kiristää Allianssin tekemä rankaisuretki Torfanin piraattikuuhun. Tuntematon Spectre-operaattori saa Citadelin neuvostolta tehtävän lopettaa sisällissota hinnalla millä hyvänsä ja estää Allianssin sekä Bataarien imperiumin ajautumisen konfliktiin.\r\n\r\n-Peluutus: Anhurin kampanja on viikonloppukampanja, jonka pelit ovat lyhytä 2-3 tunnin pelejä eri operaation vaiheista.\r\n-Kampanja: Kampanjassa on mahdollista pelata samaa hahmoa useassa skenariossa viikonlopun aikana.\r\n-Sisältö: Peli sisältää tummasävyistä kuvausta sodasta fantasiakontekstissa sekä taisteluista jotka simuloidaan figuureilla.\r\n-Järjestelmä: 4d6 WRS (Rajakatse Roolipeli yms…)\r\n-Kokemus: Jonkinlainen kokemus roolipelaamisesta on suotavaa. Kokemusta pelijärjestelmästä ei tarvita.",
+    "description": "Perustuu Mass Effect-pelisarjaan.\r\n\r\nOn vuosi 2178: Anhurin planeetta yhteissiirtokutna Terminuksessa. Planeetalla on käynnissä sisällissota orjuuden vastustajien ja bataarien Na'hesit puolueen välillä. Sisällissotaa pidetään räikeimpinä rikkomuksina sapientien olentojen oikeuksia vastaan galaksissa. Orjuuden vastustajat ovat alakynnessä ja pyrkivät hankkimaan salakuljettajia ja palkkasotureita kuten Eclipse ja Blue Suns taisteluun. Sisällissodan lisäksi galaktisia välejä kiristää Allianssin tekemä rankaisuretki Torfanin piraattikuuhun. Tuntematon Spectre-operaattori saa Citadelin neuvostolta tehtävän lopettaa sisällissota hinnalla millä hyvänsä ja estää Allianssin sekä Bataarien imperiumin ajautumisen konfliktiin.\r\n\r\n-Peluutus: Anhurin kampanja on viikonloppukampanja, jonka pelit ovat lyhytä 2-3 tunnin pelejä eri operaation vaiheista.\r\n-Kampanja: Kampanjassa on mahdollista pelata samaa hahmoa useassa skenariossa viikonlopun aikana.\r\n-Sisältö: Peli sisältää tummasävyistä kuvausta sodasta fantasiakontekstissa sekä taisteluista jotka simuloidaan figuureilla.\r\n-Järjestelmä: 4d6 WRS (Rajakatse Roolipeli yms…)\r\n-Kokemus: Jonkinlainen kokemus roolipelaamisesta on suotavaa. Kokemusta pelijärjestelmästä ei tarvita.\r\n\r\nILMOITTAUTUMINEN\r\nTähän ohjelmaan on ennakkoilmoittautuminen Kokemuspisteen infon luona (Halli 3, pohjoinen sisäänkäynti 3.3). Ilmoittautuminen alkaa perjantaina klo 16. Paikat täytetään ilmoittautumisjärjestyksessä. Peliin mahtuu 4 pelaajaa.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-19"],
@@ -6240,6 +6242,37 @@
     ]
   },
   {
+    "slug": "iikan-peli-2",
+    "title": "Kings of War -turnaus",
+    "description": "Tarjolla jo pienen, mutta innokkaan Kings of War -porukan turnaus. Turnauksessa pelataan 1750 pisteen listoilla.\r\n\r\nTurnauksessa pääroolissa ovat hyvä henki ja hienot armeijat, joilla pelataan ehkä tasapainoisimman massataistelupelin säännöillä. Käytössä turnauksessa on kolmannen laitoksen säännöt, uusinpine päivityksineen, ja ilmoittautuminen tapahtuu sotavasara.net -sivuston kautta.\r\n\r\n---\r\n\r\nA Kings of War tournament by a small but dedicated group of players. Tournament is played using 1750pts lists.\r\n\r\nThe main attractions of this tournament are the good vibes and magnificent armies, which are played using the rules of possibly the most balanced game within the mass battle game genre. The tournament uses both the 3rd edition rules and the newest changes. Sign-up in advance via the sotavasara.net forums.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-07-20"],
+      "room": ["halli-3-figuturnausalue"],
+      "type": ["gaming", "tournament"],
+      "topic": ["miniatures"],
+      "konsti": ["tournament"],
+      "audience": ["aimed-between-13-17", "aimed-adults"],
+      "language": ["fi", "en"],
+      "accessibility": []
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Kings of War",
+      "konsti:maxAttendance": 20,
+      "konsti:minAttendance": 6,
+      "ropecon:contentWarnings": "fantasiateemaista satuväkivaltaa",
+      "ropecon:accessibilityOther": "Pöytien ylle kumartelu voi käydä selän päälle."
+    },
+    "scheduleItems": [
+      {
+        "startTime": "2024-07-20T05:00:00+00:00",
+        "endTime": "2024-07-20T15:40:00+00:00",
+        "lengthMinutes": 640,
+        "location": "Halli 3 Figuturnausalue"
+      }
+    ]
+  },
+  {
     "slug": "marvel-crisis-protocol-tournament",
     "title": "Marvel Crisis Protocol Tournament",
     "description": "Tervetuloa Ropeconin Marvel Crisis Protocol -turnaukseen!\r\n\r\nKilpailemme taktisessa miniatyyripelissä, jossa jokainen pelaaja ohjaa omaa supersankarijoukkoaan.\r\n\r\nTurnaus tarjoaa ainutlaatuisen mahdollisuuden nähdä rakastetut hahmot kuten Iron Man, Spider-Man ja Captain America kohtaamassa toisensa pelipöydällä.\r\n\r\n---\r\n\r\nWelcome to the Marvel Crisis Protocol tournament at Ropecon 2024!\r\n\r\nWe are competing in a tactical miniature game where each player controls their own superhero squad.\r\n\r\nThis tournament offers unique opportunity to see beloved characters such as Iron Man, Spider-Man and Captain America face off on the battlefield.\r\n\r\n---\r\n\r\nIlmoittautuminen / Sign up: https://longshanks.org/event/14460/",
@@ -6428,7 +6461,7 @@
   {
     "slug": "lautapelataanboardgames-t-i-m-e-stories-2-the-marcy-case-lasat",
     "title": "Lautapelataan/Boardgames: T.I.M.E Stories (2: The Marcy Case)",
-    "description": "T.I.M.E Stories -pelissä suojelette maailmaa paradokseilta aikamatkustajien tiiminä.\r\n\r\nT.I.M.E -virasto suojelee ihmiskuntaa estämällä ajallisia virheitä ja paradokseja uhkaamasta universumimme kudosta. Aika-agentteina sinut ja tiimisi lähetetään eri maailmoista tai todellisuuksista tulevien olentojen ruumiisiin suorittamaan erilaisia tehtäviä. Epäonnistuminen on mahdotonta, koska ajassa voidaan palata taaksepäin useita kertoja.\r\n\r\nT.I.M.E Stories on kerronnallinen \"decksploration\" -lauta/korttipeli. Jokainen pelaaja voi valita vapaasti kuinka syvällisesti haluaa hahmoonsa eläytyä.\r\n\r\nPelaajista riippuen peli kestää noin 3-5 tuntia.\r\n\r\n---\r\n\r\nIn T.I.M.E Stories you protect the world from paradoxes with your team of time-traveling agents.\r\n\r\nThe T.I.M.E Agency protects humanity by preventing temporal faults and paradoxes from threatening the fabric of our universe. As temporal agents, you and your team will be sent into the bodies of beings from different worlds or realities to successfully complete the missions given to you. Failure is impossible, as you will be able to go back in time as many times as required.\r\n\r\nT.I.M.E Stories is a narrative game, a game of \"decksploration\". Each player is free to give their character as deep a \"role\" as they want, in order to live through a story, as much in the game as around the table.\r\n\r\nDepending on the player experience the game is finished in 3-5 hours.",
+    "description": "T.I.M.E Stories -pelissä suojelette maailmaa paradokseilta aikamatkustajien tiiminä.\r\n\r\nT.I.M.E -virasto suojelee ihmiskuntaa estämällä ajallisia virheitä ja paradokseja uhkaamasta universumimme kudosta. Aika-agentteina sinut ja tiimisi lähetetään eri maailmoista tai todellisuuksista tulevien olentojen ruumiisiin suorittamaan erilaisia tehtäviä. Epäonnistuminen on mahdotonta, koska ajassa voidaan palata taaksepäin useita kertoja.\r\n\r\nT.I.M.E Stories on kerronnallinen \"decksploration\" -lauta/korttipeli. Jokainen pelaaja voi valita vapaasti kuinka syvällisesti haluaa hahmoonsa eläytyä.\r\n\r\nPelaajista riippuen peli kestää noin 3-5 tuntia.\r\n\r\nILMOITTAUTUMINEN\r\nTähän ohjelmaan on ennakkoilmoittautuminen Kokemuspisteen infon luona (Halli 3, pohjoinen sisäänkäynti 3.3). Ilmoittautuminen alkaa perjantaina klo 16. Paikat täytetään ilmoittautumisjärjestyksessä. Peliin mahtuu 4 pelaajaa.\r\n\r\n---\r\n\r\nIn T.I.M.E Stories you protect the world from paradoxes with your team of time-traveling agents.\r\n\r\nThe T.I.M.E Agency protects humanity by preventing temporal faults and paradoxes from threatening the fabric of our universe. As temporal agents, you and your team will be sent into the bodies of beings from different worlds or realities to successfully complete the missions given to you. Failure is impossible, as you will be able to go back in time as many times as required.\r\n\r\nT.I.M.E Stories is a narrative game, a game of \"decksploration\". Each player is free to give their character as deep a \"role\" as they want, in order to live through a story, as much in the game as around the table.\r\n\r\nDepending on the player experience the game is finished in 3-5 hours.\r\n\r\nREGISTRATION\r\nPre-registration for this program is available at the Kokemuspiste info (Hall 3, north entrance 3.3). Registration starts on Friday at 4 pm. Places will be filled in order of registration. The game can accommodate 3 players.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-20"],
@@ -6516,7 +6549,7 @@
   {
     "slug": "warhammer-chaos-in-the-old-world-la-sat",
     "title": "Warhammer: Chaos In The Old World",
-    "description": "Vanhan maailman on aika palaa. Kaaoksen jumalat taistelevat maailman herruudesta. Kuka turmelee kuolevaisten maailman parhaiten omaksi kuvakseen? Mutta varokaa, on myös pieni mahdollisuus, että pahuus karkoitetaan ja kaikki häviävät!\r\n\r\nIlmoittauduthan peliin kokemuspisteellä.\r\n\r\n***\r\nIt's time for the old world to burn. Chaos gods fight against each other from the dominance of the world. Who will corrupt the realm of mortals to his own image? But beware, there is still a spark of light in the world, which could bring doom to all evil gods.\r\n\r\nPlease, register for the game at kokemuspiste.",
+    "description": "Vanhan maailman on aika palaa. Kaaoksen jumalat taistelevat maailman herruudesta. Kuka turmelee kuolevaisten maailman parhaiten omaksi kuvakseen? Mutta varokaa, on myös pieni mahdollisuus, että pahuus karkoitetaan ja kaikki häviävät!\r\n\r\nILMOITTAUTUMINEN\r\nTähän ohjelmaan on ennakkoilmoittautuminen Kokemuspisteen infon luona (Halli 3, pohjoinen sisäänkäynti 3.3). Ilmoittautuminen alkaa perjantaina klo 16. Paikat täytetään ilmoittautumisjärjestyksessä. Peliin mahtuu 4 pelaajaa.\r\n\r\n***\r\nIt's time for the old world to burn. Chaos gods fight against each other from the dominance of the world. Who will corrupt the realm of mortals to his own image? But beware, there is still a spark of light in the world, which could bring doom to all evil gods.\r\n\r\nREGISTRATION\r\nPre-registration for this program is available at the Kokemuspiste info (Hall 3, north entrance 3.3). Registration starts on Friday at 4 pm. Places will be filled in order of registration. The game can accommodate 4 players.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-20"],
@@ -6642,9 +6675,7 @@
       "language": ["fi"],
       "accessibility": ["irritate-skin", "requires-dexterity"]
     },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 10
-    },
+    "cachedAnnotations": { "konsti:maxAttendance": 10 },
     "scheduleItems": [
       {
         "startTime": "2024-07-20T07:00:00+00:00",
@@ -6917,9 +6948,7 @@
       "language": ["fi"],
       "accessibility": ["physical-contact", "requires-dexterity"]
     },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 10
-    },
+    "cachedAnnotations": { "konsti:maxAttendance": 10 },
     "scheduleItems": [
       {
         "startTime": "2024-07-20T07:00:00+00:00",
@@ -7391,9 +7420,7 @@
         "requires-dexterity"
       ]
     },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 12
-    },
+    "cachedAnnotations": { "konsti:maxAttendance": 12 },
     "scheduleItems": [
       {
         "startTime": "2024-07-20T07:00:00+00:00",
@@ -8017,9 +8044,7 @@
       "language": ["fi", "en"],
       "accessibility": []
     },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 15
-    },
+    "cachedAnnotations": { "konsti:maxAttendance": 15 },
     "scheduleItems": [
       {
         "startTime": "2024-07-20T07:00:00+00:00",
@@ -8032,7 +8057,7 @@
   {
     "slug": "varttinakehrayspaja",
     "title": "Värttinäkehräyspaja",
-    "description": "Värttinäpaja tulee jälleen! Tänäkin vuonna luvassa tiukkoja käänteitä ja hikikarpaloita villan ja kepin parissa!\r\n\r\nVärttinällä kehräys on parhaimmillaan meditatiivinen harrastus mutta myös harjoitusta vaativa postkapitalismiin valmentava taito, jota voi kokemuksen myötä harrastaa lähes missä tahansa kulkee. Pajassa kannustetaan aloittamaan nollasta ja sen yläpuolelta ja epäonnistumaan rohkeasti. Testataan kiinnostuksen mukaan erilaisia värjäämättömiä villoja ja ehkä Jopa Muita Kuituja. Pajassa on saatavilla kokeiluun harjoitusvärttinän lisäksi myös muutamia eri kokoisia ja -mallisia värttinöitä. Mahdollisuus viedä oma värttinä kotiin työpajan päätteeksi (tällä kertaa oikeasti) hintaan 12 €. \r\n\r\nTestaa sorminäppäryytesi rajoja! Näe kohuttu \"kirpparin kuhmuinen Vanha Keppi\"! Todista työvälineen putoamista lattialle uudestaan ja uudestaan! \r\n”Oletko koskaan halunnut olla kehrääjä, ja jos olet, nyt se on mahdollista, sillä uusi kehrääjä on saapunut ja se olet sinä.” -Vanha sananlasku.\r\n\r\nIlmoittautuminen Konstissa perjantaina 19.7. kello 18 alkaen. Työpajamaksu 2 €.",
+    "description": "Värttinäpaja tulee jälleen! Tänäkin vuonna luvassa tiukkoja käänteitä ja hikikarpaloita villan ja kepin parissa!\r\n\r\nVärttinällä kehräys on parhaimmillaan meditatiivinen harrastus mutta myös harjoitusta vaativa postkapitalismiin valmentava taito, jota voi kokemuksen myötä harrastaa lähes missä tahansa kulkee. Pajassa kannustetaan aloittamaan nollasta ja sen yläpuolelta ja epäonnistumaan rohkeasti. Testataan kiinnostuksen mukaan erilaisia värjäämättömiä villoja ja ehkä Jopa Muita Kuituja. Pajassa on saatavilla kokeiluun harjoitusvärttinän lisäksi myös muutamia eri kokoisia ja -mallisia värttinöitä. Mahdollisuus viedä oma värttinä kotiin työpajan päätteeksi (tällä kertaa oikeasti) hintaan 12 €. \r\n\r\nTestaa sorminäppäryytesi rajoja! Näe kohuttu \"kirpparin kuhmuinen Vanha Keppi\"! Todista työvälineen putoamista lattialle uudestaan ja uudestaan!  \r\n”Oletko koskaan halunnut olla kehrääjä, ja jos olet, nyt se on mahdollista, sillä uusi kehrääjä on saapunut ja se olet sinä.” -Vanha sananlasku.\r\n\r\nIlmoittautuminen Konstissa perjantaina 19.7. kello 18 alkaen. Työpajamaksu 2 €.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-20"],
@@ -8258,7 +8283,7 @@
   {
     "slug": "king-of-tokyo-turnaus-king-of-tokyo-tournament",
     "title": "King of Tokyo-turnaus / King of Tokyo tournament",
-    "description": "Hirviöt valtaavat Messukeskuksen IELLO:n ja Ropeconin King of Tokyo-turnauksessa. Tule mittelöimään itsesi conin hallitsijaksi ja putsaamaan palkintopöytä.\r\n\r\n<b>Ilmoittautuminen</b>\r\nIlmoittautuminen turnaukseen tapahtuu Konstissa. Tarvittaessa Pelitiskin (Halli 3) vapaaehtoiset avustavat ilmoittautumisessa. Turnaukseen mahtuu 36 pelaajaa. Mahdolliset vapaat paikat täytetään 5 min. ennen turnauksen alkua.\r\n\r\n<b>Paikka ja ohjeellien aikataulu</b>\r\nTurnaus järjestetään Kokemuspisteellä (Halli 3). Osallistujien istumapaikat arvotaan. Turnauksen järjestäjä pidättää oikeuden päättää alaikäisten ja erityistä tukea tarvitsevien pelaajien istumapaikoista.\r\n\r\nklo 9.30 - 9.55\t\r\nIlmoittautumisen vahvistaminen ja mah. tyhjien paikkojen täyttö\r\nklo 10.00 - 11.00 \r\nEnsimmäinen kierros (max. 60 min.); 9 pöytää ja 4 pelaajaa / pöytä\r\nPöytien voittajat (9) jatkavat toiselle kierrokselle.\r\nklo 11.15 - 12.15\r\nToinen kierros (max. 60 min.); 3 pöytää ja 3 pelaajaa / pöytä\r\nPöytien voittajat (3) jatkavat finaaliin.\r\nklo 13.00 - 14.00\r\nFinaali\r\n\r\n<b>Palkinnot</b>\r\nKaikki turnaukseen osallistuvat saavat lahjaksi Kawai Ju -hirviön ja pari promokorttia.\r\nVälieriin selviytyneet saavat lisäksi Crabomination -hirviöt.\r\nFinaaliin selviytyneet saavat edellä mainittujen palkintojen lisäksi erikoisnopat, kangaskassit ja Yak national -hirviöt.\r\nToiseksi tullut saa edellä mainittujen palkintojen lisäksi Murica national -hirviön.\r\nTurnauksen voittaja saa kaikki edellä mainitut palkinnot ja lisäksi King of Tokyo: Origins -uutuuspelin.\r\n\r\n<b>Pelin versio ja kieli</b>\r\nTurnaus pelataan IELLO:n toimittamilla turnausvälineillä. Komponenttien kieli on englanti, mutta englannin kielen taito ei ole välttämätön. Järjestäjät ja muut pelaajat kääntävät tarvittaessa kortit suomeksi. Turnaukseen on voi osallistua myös englannin kielellä.\r\n\r\n<b>Pelin opettelu</b>\r\nPeliä on mahdollisuus pelata Kokemuspisteen \"istu ja pelaa\" pöydissä perjantaina ja lauantaina ennen turnausta. Kokemuspisteen peliapurit avustavat sääntöjen opettelussa.\r\n\r\n*** IN ENGLISH ***\r\n\r\nMonsters take over the convention center as players compete on IELLO's and Ropecon's  King of Tokyo tournament. Come make yourself the king of the con and clean the prize table.\r\n\r\n<b>Registration</b>\r\nRegistration for the tournament takes place in Konsti web application. If necessary, the volunteers of Pelitiski (Hall 3) will assist with registration. The tournament can accommodate 36 players. Any empty seats are filled 5min. before the tournament starts.\r\n\r\n<b>Place and schedule</b>\r\nThe tournament is held at the Experience Point (Hall 3). Tournament seats are randomly assigned, but the tournament organizer reserves the right to decide on the seating for minors and players with special needs.\r\n\r\n9.30 - 9.55\r\nConfirmation of registration (empty seats are given after this)\r\n10.00 - 11.00\r\nFirst round (max. 60 minutes); 9 tables of 4 players\r\nThe winners of the tables (9) continue to the second round.\r\nklo 11.15 - 12.15\r\nSecond round (max. 60 min.); 3 tables of 3 players\r\nThe winners of the tables (3) continue to the final.\r\n13.00 - 14.00\r\nFinal\r\n\r\n<b>Prizes</b>\r\nParticipation prizes: promos cards and Kawaii Ju Monster\r\nTop 9: Cut Prize: Crabomination Monster\r\nTop 3: Cut Prize: Collector Dice, KOT bag, Yak National Monster\r\nTop 2: National Monster\r\nWinner Prize: King of Tokyo: Origin board game\r\nAll prizes are cumulative!\r\n\r\n<b>Game version and language</b>\r\nThe tournament is played with tournament equipment supplied by IELLO. Game components are is English, but knowledge of the English language is not necessary. The organizers and other players translate the cards into Finnish if necessary. Players can participate in English or Finnish.\r\n\r\n<b>Learning the game</b>\r\nConvention visitors can learn the game rules and practice at the \"sit and play\" tables of Experience Point (see schedule).  Game assistants at the experience point assist in learning the rules.",
+    "description": "Hirviöt valtaavat Messukeskuksen IELLO:n ja Ropeconin King of Tokyo-turnauksessa. Tule mittelöimään itsesi conin hallitsijaksi ja putsaamaan palkintopöytä.\r\n\r\n<b>Ilmoittautuminen</b>\r\nIlmoittautuminen turnaukseen tapahtuu Kokemuspisteen infon luona. Ilmoittautuminen alkaa pe klo 16 ja paikat jaetaan porrastetusti perjantain aikana. Turnaukseen mahtuu 36 pelaajaa. Mahdolliset peruutuspaikat täytetään lauantaina 5 min. ennen turnauksen alkua.\r\n\r\n<b>Paikka ja ohjeellien aikataulu</b>\r\nTurnaus järjestetään Kokemuspisteellä (Halli 3). Osallistujien istumapaikat arvotaan. Turnauksen järjestäjä pidättää oikeuden päättää alaikäisten ja erityistä tukea tarvitsevien pelaajien istumapaikoista.\r\n\r\nklo 10.00 - 10.10\t\t\r\nIlmoittautumisen vahvistaminen ja mah. tyhjien paikkojen täyttö\r\nklo 10.15 - 11.15 \r\nEnsimmäinen kierros (max. 60 min.); 9 pöytää ja 4 pelaajaa / pöytä\r\nPöytien voittajat (9) jatkavat toiselle kierrokselle.\r\nklo 11.30- 12.30\r\nToinen kierros (max. 60 min.); 3 pöytää ja 3 pelaajaa / pöytä\r\nPöytien voittajat (3) jatkavat finaaliin.\r\nRuokatauko (n. 60 min.)\r\nklo 13.30 - 14.30\r\nFinaali\r\n\r\n<b>Palkinnot</b>\r\nKaikki turnaukseen osallistuvat saavat lahjaksi Kawai Ju -hirviön ja pari promokorttia.\r\nVälieriin selviytyneet saavat lisäksi Crabomination -hirviöt.\r\nFinaaliin selviytyneet saavat edellä mainittujen palkintojen lisäksi erikoisnopat, kangaskassin ja Yak national -hirviön.\r\nToiseksi tullut saa edellä mainittujen palkintojen lisäksi Murica national -hirviön.\r\nTurnauksen voittaja saa kaikki edellä mainitut palkinnot sekä lisäksi King of Tokyo: Origins -uutuuspelin.\r\n\r\n<b>Pelin versio ja kieli</b>\r\nTurnaus pelataan IELLO:n toimittamilla turnausvälineillä. Komponenttien kieli on englanti, mutta englannin kielen taito ei ole välttämätön. Järjestäjät ja muut pelaajat kääntävät tarvittaessa kortit suomeksi. Turnaukseen on voi osallistua myös englannin kielellä.\r\n\r\n<b>Pelin opettelu</b>\r\nPeliä on mahdollisuus pelata Kokemuspisteen \"istu ja pelaa\" pöydissä perjantaina ja lauantaina ennen turnausta. Kokemuspisteen peliapurit avustavat sääntöjen opettelussa.\r\n\r\n*** IN ENGLISH ***\r\n\r\nMonsters take over the convention center as players compete on IELLO's and Ropecon's  King of Tokyo tournament. Come make yourself the king of the con and clean the prize table.\r\n\r\n<b>Registration</b>\r\nRegistration for the tournament takes place at Kokemuspiste info (Hall 3, north entrance 3.3). Registration opens Friday at 16.00. Seats are given in batches thru the day. The tournament can accommodate 36 players.  Any empty seats Saturday morning are filled 5min. before the tournament starts.\r\n\r\n<b>Place and schedule</b>\r\nThe tournament is held at the Experience Point (Hall 3). Tournament seats are randomly assigned, but the tournament organizer reserves the right to decide on the seating for minors and players with special needs.\r\n\r\n10.00 - 10.10\t\r\nConfirmation of registration (empty seats are given after this)\r\n10.15 - 11.15 \r\nFirst round (max. 60 minutes); 9 tables of 4 players\r\nThe winners of the tables (9) continue to the second round.\r\n11.30- 12.30\r\nSecond round (max. 60 min.); 3 tables of 3 players\r\nThe winners of the tables (3) continue to the final.\r\nBreak 60 min.\r\n13.30 - 14.30\r\nFinal\r\n\r\n<b>Prizes</b>\r\nParticipation prizes: promos cards and Kawaii Ju Monster\r\nTop 9: Cut Prize: Crabomination Monster\r\nTop 3: Cut Prize: Collector Dice, KOT bag, Yak National Monster\r\nTop 2: National Monster\r\nWinner Prize: King of Tokyo: Origin board game\r\nAll prizes are cumulative!\r\n\r\n<b>Game version and language</b>\r\nThe tournament is played with tournament equipment supplied by IELLO. Game components are is English, but knowledge of the English language is not necessary. The organizers and other players translate the cards into Finnish if necessary. Players can participate in English or Finnish.\r\n\r\n<b>Learning the game</b>\r\nConvention visitors can learn the game rules and practice at the \"sit and play\" tables of Experience Point (see schedule).  Game assistants at the experience point assist in learning the rules.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-20"],
@@ -8280,6 +8305,35 @@
         "endTime": "2024-07-20T11:00:00+00:00",
         "lengthMinutes": 240,
         "location": "Halli 3 Kokemuspiste"
+      }
+    ]
+  },
+  {
+    "slug": "shared-path-2-pelautus2-run",
+    "title": "Shared Path, 2. pelautus/2. run",
+    "description": "ENG:\r\n\r\nShared Path is a location-based traversing larp for 3-5 players in up to four playgroups (20 total players). Players are assigned a fictional contemporary setting, characters based on it, and a map with a real world route which they will travel during the game.\r\n\r\nIn each scenario the characters have not known each other prior to this day. However, they have a common destination and interest to travel there together, and maybe even make some new friends (or enemies) on the go. Through different stories and characters each setting provides players experiences of fellowship, journeying, and site-specific narratives.\r\n\r\nThe larp consists of ~45 min introductory session, ~60 min of gameplay, and returning to the venue by means of choice.\r\n\r\nThe larp's default language is English, but groups can choose to play in Finnish (or any language) if everybody in the group agrees. Participation requires the players to be able to walk (or similarly advance) for 3-5 kilometers.\r\n\r\nThis Larp originates from the Larp Design course at Tampere University in 2024.\r\n\r\nATTENTION: The larp begins in room 209\r\n\r\n--------\r\nFIN:\r\n\r\nShared Path on paikkalähtöinen matkalarppi 3-5 pelaajalle enintään neljässä pienryhmässä (yhteensä 20 pelaajaa). Pelaajille annetaan fiktiivinen nykyaikainen ympäristö, siihen perustuvat hahmot sekä kartta, johon on merkattu todellinen reitti, jonka pelaajat kulkevat pelin aikana.\r\n\r\nJokaisessa skenaariossa hahmot eivät ole tunteneet toisiaan ennen tätä päivää. Heillä on kuitenkin jaettu määränpää ja intressi matkustaa sinne yhdessä, ehkä jopa saada uusia ystäviä (tai vihollisia) matkan varrelta. Eri tarinoiden ja hahmojen kautta jokainen skenaario tarjoaa pelaajille kokemuksia toveruudesta, matkanteosta ja paikkalähtöisistä narratiiveista.\r\n\r\nLarppi koostuu ~45 min introsessiosta, ~60 min pelistä ja omaehtoisesta palaamisesta tapahtumapaikalle.\r\n\r\nLarpin oletuskieli on englanti, mutta ryhmät voivat halutessaan pelata suomeksi (tai millä tahansa kielellä), jos kaikki ryhmässä olevat niin tahtovat. Osallistuminen edellyttää, että pelaajat pystyvät kävelemään (tai etenemään vastaavasti) 3-5 kilometriä.\r\n\r\nTämä larppi on lähtöisin Tampereen yliopiston Larp Design -kurssilta alkuvuodesta 2024.\r\n\r\nHUOM: Larp alkaa kokoontumisella salissa 209",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-07-20"],
+      "room": ["koko-messukeskus"],
+      "type": ["gaming"],
+      "topic": ["larp"],
+      "konsti": ["larp"],
+      "audience": ["aimed-between-13-17", "aimed-adults", "beginners"],
+      "language": ["fi", "en"],
+      "accessibility": ["moving-around"]
+    },
+    "cachedAnnotations": {
+      "konsti:minAttendance": 3,
+      "ropecon:numCharacters": 24,
+      "ropecon:accessibilityOther": "The main gameplay happens outside of Messukeskus, and will require physically traversing for the minimum of 3 kilometres.\r\n\r\nPeli tapahtuu pääasiassa Messukeskuksen ulkopuolella ja vaatii kykyä liikkua vähintään kolme kilometriä."
+    },
+    "scheduleItems": [
+      {
+        "startTime": "2024-07-20T07:00:00+00:00",
+        "endTime": "2024-07-20T09:30:00+00:00",
+        "lengthMinutes": 150,
+        "location": "Koko Messukeskus"
       }
     ]
   },
@@ -8476,9 +8530,7 @@
         "moving-around"
       ]
     },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 24
-    },
+    "cachedAnnotations": { "konsti:maxAttendance": 24 },
     "scheduleItems": [
       {
         "startTime": "2024-07-20T08:00:00+00:00",
@@ -8573,7 +8625,7 @@
   {
     "slug": "ihmissusipeli-werewolfes-of-millers-hollow-pelautus-23",
     "title": "Ihmissusipeli (Werewolfes of Millers Hollow)",
-    "description": "Kylä nukahtaa ja täysikuu nousee. Metsästä kuuluu ulvontaa. Tänä yönä joku kyläläisistä jälleen syödään... Vai syödäänkö sittenkään? Tule pelaamaan ja selvittämään voittavatko tällä kertaa kyläläiset vai ihmissudet! \r\n\r\nIhmissusipeli käyttää kuvakortteja sekä Mafioso-seurapelin mekaniikkaa (silmien sulkeminen, päättely, sosiaalinen pelaaminen) ja pelissä on ulkopuolinen pelinjohtaja. Samalla peliporukalla pelataan kaksi erää. Mukaan mahtuu max. 14 pelaajaa. Pelissä istutaan lattialla.",
+    "description": "Kylä nukahtaa ja täysikuu nousee. Metsästä kuuluu ulvontaa. Tänä yönä joku kyläläisistä jälleen syödään... Vai syödäänkö sittenkään? Tule pelaamaan ja selvittämään voittavatko tällä kertaa kyläläiset vai ihmissudet! \r\n\r\nIhmissusipeli käyttää kuvakortteja sekä Mafioso-seurapelin mekaniikkaa (silmien sulkeminen, päättely, sosiaalinen pelaaminen) ja pelissä on ulkopuolinen pelinjohtaja. Samalla peliporukalla pelataan kaksi erää. Mukaan mahtuu max. 14 pelaajaa. Pelissä istutaan lattialla.\r\n\r\nILMOITTAUTUMINEN\r\nTähän ohjelmaan on ennakkoilmoittautuminen Kokemuspisteen infon luona (Halli 3, pohjoinen sisäänkäynti 3.3). Ilmoittautuminen alkaa perjantaina klo 16. Paikat täytetään ilmoittautumisjärjestyksessä. Peliin mahtuu 14 pelaajaa.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-20"],
@@ -8856,9 +8908,7 @@
       "language": ["fi"],
       "accessibility": []
     },
-    "cachedAnnotations": {
-      "ropecon:contentWarnings": "uupuminen, burn-out"
-    },
+    "cachedAnnotations": { "ropecon:contentWarnings": "uupuminen, burn-out" },
     "scheduleItems": [
       {
         "startTime": "2024-07-20T08:00:00+00:00",
@@ -9120,9 +9170,7 @@
       "language": ["fi"],
       "accessibility": []
     },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 15
-    },
+    "cachedAnnotations": { "konsti:maxAttendance": 15 },
     "scheduleItems": [
       {
         "startTime": "2024-07-20T08:00:00+00:00",
@@ -9172,44 +9220,13 @@
       "language": ["fi", "en"],
       "accessibility": ["loud-sounds", "flashing-lights", "low-lighting"]
     },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 50
-    },
+    "cachedAnnotations": { "konsti:maxAttendance": 50 },
     "scheduleItems": [
       {
         "startTime": "2024-07-20T08:00:00+00:00",
         "endTime": "2024-07-20T11:00:00+00:00",
         "lengthMinutes": 180,
         "location": "Eteläisen sisäänkäynnin aula"
-      }
-    ]
-  },
-  {
-    "slug": "malifaux-cons-at-the-end-of-a-rope-turnaustournament",
-    "title": "Malifaux: Cons at the End of a Rope (turnaus/tournament)",
-    "description": "Malifaux, vaihtoehtoisen maan kierretty peili 1900-luvulla; goottilaisen kauhun, viktoriaanisten rakennusten, steampunk-rakenteiden ja villin lännen pyssymiesten maailma. Malifaux  on tarinavetoinen kahakkapeli, jossa kaksi pelaajaa taistelee yhdessä loputtomista kahakoista saadakseen hallintaansa kaupunkeja, siirtokuntia ja valtapaikkoja tässä vaarallisessa uudessa maailmassa.\r\n\r\nKolmen 1 vs 1 -pelin Malifaux-turnaus 50ss Gaining Grounds 4 -säännöillä. Ennakkoilmoittautuminen sähköpostilla distractedhobbyists@gmail.com.\r\n\r\n====\r\n\r\nMalifaux, a twisted mirror of an alternate Earth in the 1900s; a world of gothic horror, Victorian structures, steampunk constructs, and wild west gunslingers. Malifaux is a story-driven skirmish game where two players fight one of the endless skirmishes for control over the towns, settlements, and places of power in this dangerous new world.\r\n\r\nA 3-game  Malifaux tournament. We will be playing singles with 50ss Gaining Grounds 4 ruleset.\r\nPreregistration to distractedhobbyists@gmail.com",
-    "cachedHosts": "<redacted>",
-    "cachedDimensions": {
-      "date": ["2024-07-20"],
-      "room": ["halli-3-figuturnausalue"],
-      "type": ["gaming", "tournament"],
-      "topic": ["miniatures"],
-      "konsti": ["tournament"],
-      "audience": ["aimed-adults"],
-      "language": ["fi", "en"],
-      "accessibility": ["duration-over-2h", "texts-with-no-recordings"]
-    },
-    "cachedAnnotations": {
-      "konsti:rpgSystem": "Malifaux",
-      "konsti:maxAttendance": 12,
-      "konsti:minAttendance": 6
-    },
-    "scheduleItems": [
-      {
-        "startTime": "2024-07-20T08:00:00+00:00",
-        "endTime": "2024-07-20T16:20:00+00:00",
-        "lengthMinutes": 500,
-        "location": "Halli 3 Figuturnausalue"
       }
     ]
   },
@@ -9239,6 +9256,35 @@
         "endTime": "2024-07-20T18:00:00+00:00",
         "lengthMinutes": 600,
         "location": "Halli 3 Turnaussali"
+      }
+    ]
+  },
+  {
+    "slug": "iikan-peli",
+    "title": "Kings of War -demotus ja pelipöydät / Kings of War demos and game tables",
+    "description": "Olisiko siistiä, jos olisi fantasiateemainen peli, jota voit pelata juuri niillä figuilla, joista sinä tykkäät? Entäpä jos peli olisi sillä tavalla reilu, että taisteluita ei hävitä faktiota valitessa?\r\n\r\nNämä ajatukset olivat aikanaan Kings of Warin ytimessä ja ovat totta vielä 3. laitoksen puolivälissäkin. Kings of War on Mantic Gamesin massataistelupeli, jossa ovat läsnä yleisimmät fantasiamaailmojen elementit taikuudesta demoneihin. Fabaan tai 9th Ageen tutustuneelle pelissä on paljon tuttua, mutta myös omanlaisensa fiilis. Painopiste on liikkumisessa ja suotuisten tilanteiden rakentamisessa. Peli on ajallisesti kevyt: esimerkiksi turnauspelit saadaan purkkiin rapiassa kahdessa tunnissa ja aikaa jää vielä höpöttelyllekin.\r\n\r\nPelissä taistellaan erikokoisilla yksiköillä, joista koostetut armeijat valitaan pistemäärien perusteella. 500 pisteen pelissä kentällä on muutama yksikkö ja sankari, mutta yleisimmässä pelikoossa, 2000 pistettä, on 4’x6’ pelipöydällä toistakymmentä yksikköä. Pienimmät yksiköt ovat yksittäisiä sankareita, kun taas isoimmat ovat kuudenkymmenen zombien laumoja. Väliin mahtuu kaikkea kuuden Ogren Hordesta kahdenkymmenen vampyyrin Regimenttiin.\r\n\r\nTule tutustumaan peliin, pelailemaan tarjolla olevilla esimerkkiarmeijoilla tai mikäli peli on jo tuttu, haasta joku muu lämmittelypeliin sunnuntain turnausta varten! Tarjolla koko lauantain klo 11 alkaen iltaan asti. Välillä pitäjät saattavat tarvita taukoa, joten älä säikähdä, jos pisteellä on hetken hiljaista!\r\n\r\n---\r\n\r\nWouldn't it be cool if there was a fantasy-themed game that you could play with just the miniatures you like? What if that game was also fair in the way that battles are not lost when choosing a faction?\r\n\r\nThese were the thoughts at the core of Kings of War back in the day, and still hold true in the middle of the 3rd edition. Kings of War is a mass battle game by Mantic Games that features the most common elements of fantasy worlds, from magic to demons. For people familiar with Fantasy Battle or 9th Age, this game can feel familiar, but it also has a flavour of its own. The emphasis is placed on movement and creating favourable situations. Time-wise, the game is light: tournament games, for example, can be completed in roughly two hours with time enough for banter.\r\n\r\nThe game is played with units of different sizes and the armies are formed from the units based on amounts of points. In a 500 point game there are only a couple units and a hero on the battlefield, while in the most common size, the 2000 point game, the 4'x6' game table can have around 20 units on the battlefield. The smallest units are individual heroes, while the largest can consist of hordes of up to sixty zombies - and in between, anything from a six member Ogre Horde to a Regiment of twenty vampires.\r\n\r\nIf you're new to the game, come and learn about it and play with the available example armies - or if the game is already familiar to you, challenge someone else to a warm-up match in preparation for the Kings of War tournament on Sunday! Demos and open games are available throughout Saturday from 11am until the evening. The demoers might need a break from time to time, so don't be spooked by a momentarily empty table!",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-07-20"],
+      "room": ["halli-3-figualue"],
+      "type": ["gaming", "demo"],
+      "topic": ["miniatures"],
+      "konsti": ["other"],
+      "audience": ["aimed-between-13-17", "aimed-adults", "beginners"],
+      "language": ["fi", "en"],
+      "accessibility": []
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Kings of War",
+      "ropecon:contentWarnings": "fantasiateemaista satuväkivaltaa",
+      "ropecon:accessibilityOther": "Pelipöytä on varsin iso, sen äärellä kyyköttäminen voi tuntua selässä. Mahdollisuus istua tosin on."
+    },
+    "scheduleItems": [
+      {
+        "startTime": "2024-07-20T08:00:00+00:00",
+        "endTime": "2024-07-20T18:40:00+00:00",
+        "lengthMinutes": 640,
+        "location": "Halli 3 Figualue"
       }
     ]
   },
@@ -9343,9 +9389,7 @@
       "language": ["fi", "en"],
       "accessibility": []
     },
-    "cachedAnnotations": {
-      "konsti:rpgSystem": "Go, shogi, xiangqi"
-    },
+    "cachedAnnotations": { "konsti:rpgSystem": "Go, shogi, xiangqi" },
     "scheduleItems": [
       {
         "startTime": "2024-07-20T09:00:00+00:00",
@@ -10097,6 +10141,34 @@
     ]
   },
   {
+    "slug": "nopat-taktiikka-demo-epic-adeptus-titanicus-3",
+    "title": "Nopat & Taktiikka demo - Epic & Adeptus Titanicus",
+    "description": "Synkeässä tulevaisuudessa on vain sotaa jumalkoneiden vaeltaessa tuhottujen kaupunkien raunioissa, joissa kirottujen armeijat karjuvat toistensa kurkuissa ajasta ikuisuuteen. Tule taistelemaan galaksin kohtalosta Games Workshopin Epic-skaalan erikoispelien pariin Warhammer 40 000 -maailmassa! Kun nappulat pienenevät ja joukot suurenevat, pääset lyömään pataljoonatason komentajan natsat takkiisi ja hyppäämään titaanien puikkoihin tulitaistelun sydämessä.\r\n\r\nPisteellä testattavia pelejä:\r\n- Adeptus Titanicus\r\n- Epic: Armageddon\r\n- Legions Imperialis\r\n\r\nDemotus sopii vasta-alkajillekin, mutta sisältää kohtalaisen paljon sääntöjä eikä täten luultavasti sovellu perheen pienimmille. Peluutukseen kannattaa varata ainakin tunti. Peluutus onnistuu suomeksi tai englanniksi.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-07-20"],
+      "room": ["halli-3-figualue"],
+      "type": ["gaming", "demo"],
+      "topic": ["miniatures"],
+      "konsti": ["other"],
+      "audience": ["all-ages", "beginners"],
+      "language": ["fi", "en"],
+      "accessibility": []
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Adeptus Titanicus, Epic: Armageddon, Legions Imperialis",
+      "konsti:maxAttendance": 2
+    },
+    "scheduleItems": [
+      {
+        "startTime": "2024-07-20T09:00:00+00:00",
+        "endTime": "2024-07-20T17:00:00+00:00",
+        "lengthMinutes": 480,
+        "location": "Halli 3 Figualue"
+      }
+    ]
+  },
+  {
     "slug": "nopat-taktiikka-kill-team-kulma-demotus-kill-team-corner-demo-table-2",
     "title": "Nopat & Taktiikka : Kill Team -kulma Demotus / Kill Team Corner Demo table",
     "description": "Kill Team on Games Workshopin Warhammer 40k maailmaan sijoittuva kahden hengen figuuripeli. Se on kevyehkö, tunnista kahteen kestävä, noin kymmenen figuuria per pelaaja kattava tulitaistelu kentän hallinasta.\r\n\r\nOsallistua voi yksin demottajaa vastaan tai kaverin kanssa vastatusten.\r\n\r\n---\r\n\r\nKill team is a two-player skirmish figure game taking place in the Games Workshop's Warhammer 40k universe. It is not too heavy, one game taking between one and two hours to finish. Each player controls about ten models in a firefight for the control of the battlefield.\r\n\r\nJoining is possible alone against the presenter, or with a friend against each other.",
@@ -10399,9 +10471,7 @@
       "language": ["fi"],
       "accessibility": []
     },
-    "cachedAnnotations": {
-      "ropecon:contentWarnings": "kolonialismi ja sorto"
-    },
+    "cachedAnnotations": { "ropecon:contentWarnings": "kolonialismi ja sorto" },
     "scheduleItems": [
       {
         "startTime": "2024-07-20T10:00:00+00:00",
@@ -10485,9 +10555,7 @@
       "language": ["fi"],
       "accessibility": []
     },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 50
-    },
+    "cachedAnnotations": { "konsti:maxAttendance": 50 },
     "scheduleItems": [
       {
         "startTime": "2024-07-20T10:00:00+00:00",
@@ -10727,7 +10795,7 @@
       "language": ["fi"],
       "accessibility": []
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": { "konsti:maxAttendance": 99 },
     "scheduleItems": [
       {
         "startTime": "2024-07-20T10:00:00+00:00",
@@ -10829,8 +10897,8 @@
     ]
   },
   {
-    "slug": "shared-path-2-pelautus2-run",
-    "title": "Shared Path, 2. pelautus/2. run",
+    "slug": "shared-path-3-pelautus3-run",
+    "title": "Shared Path, 3. pelautus/3. run",
     "description": "ENG:\r\n\r\nShared Path is a location-based traversing larp for 3-5 players in up to four playgroups (20 total players). Players are assigned a fictional contemporary setting, characters based on it, and a map with a real world route which they will travel during the game.\r\n\r\nIn each scenario the characters have not known each other prior to this day. However, they have a common destination and interest to travel there together, and maybe even make some new friends (or enemies) on the go. Through different stories and characters each setting provides players experiences of fellowship, journeying, and site-specific narratives.\r\n\r\nThe larp consists of ~45 min introductory session, ~60 min of gameplay, and returning to the venue by means of choice.\r\n\r\nThe larp's default language is English, but groups can choose to play in Finnish (or any language) if everybody in the group agrees. Participation requires the players to be able to walk (or similarly advance) for 3-5 kilometers.\r\n\r\nThis Larp originates from the Larp Design course at Tampere University in 2024.\r\n\r\n--------\r\nFIN:\r\n\r\nShared Path on paikkalähtöinen matkalarppi 3-5 pelaajalle enintään neljässä pienryhmässä (yhteensä 20 pelaajaa). Pelaajille annetaan fiktiivinen nykyaikainen ympäristö, siihen perustuvat hahmot sekä kartta, johon on merkattu todellinen reitti, jonka pelaajat kulkevat pelin aikana.\r\n\r\nJokaisessa skenaariossa hahmot eivät ole tunteneet toisiaan ennen tätä päivää. Heillä on kuitenkin jaettu määränpää ja intressi matkustaa sinne yhdessä, ehkä jopa saada uusia ystäviä (tai vihollisia) matkan varrelta. Eri tarinoiden ja hahmojen kautta jokainen skenaario tarjoaa pelaajille kokemuksia toveruudesta, matkanteosta ja paikkalähtöisistä narratiiveista.\r\n\r\nLarppi koostuu ~45 min introsessiosta, ~60 min pelistä ja omaehtoisesta palaamisesta tapahtumapaikalle.\r\n\r\nLarpin oletuskieli on englanti, mutta ryhmät voivat halutessaan pelata suomeksi (tai millä tahansa kielellä), jos kaikki ryhmässä olevat niin tahtovat. Osallistuminen edellyttää, että pelaajat pystyvät kävelemään (tai etenemään vastaavasti) 3-5 kilometriä.\r\n\r\nTämä larppi on lähtöisin Tampereen yliopiston Larp Design -kurssilta alkuvuodesta 2024.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
@@ -10846,7 +10914,7 @@
     "cachedAnnotations": {
       "konsti:minAttendance": 3,
       "ropecon:numCharacters": 24,
-      "ropecon:accessibilityOther": "The main gameplay happens outside of Messukeskus, and will require physically traversing for the minimum of 3 kilometres.\r\n\r\nPeli tapahtuu pääasiassa Messukeskuksen ulkopuolella ja vaatii kykyä liikkua vähintään kolme kilometriä."
+      "ropecon:accessibilityOther": "The main gameplay happens outside of Messukeskus, and will require physically traversing for the minimum of 3 kilometres."
     },
     "scheduleItems": [
       {
@@ -10896,7 +10964,7 @@
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-20"],
-      "room": ["sali-203a"],
+      "room": ["sali-209"],
       "type": ["talk", "presentation"],
       "topic": ["larp", "theme"],
       "konsti": [],
@@ -10912,7 +10980,7 @@
         "startTime": "2024-07-20T11:00:00+00:00",
         "endTime": "2024-07-20T12:45:00+00:00",
         "lengthMinutes": 105,
-        "location": "Sali 203A"
+        "location": "Sali 209"
       }
     ]
   },
@@ -11116,9 +11184,7 @@
       "language": ["fi"],
       "accessibility": []
     },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 10
-    },
+    "cachedAnnotations": { "konsti:maxAttendance": 10 },
     "scheduleItems": [
       {
         "startTime": "2024-07-20T11:00:00+00:00",
@@ -11143,9 +11209,7 @@
       "language": ["en", "sv"],
       "accessibility": ["requires-dexterity"]
     },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 18
-    },
+    "cachedAnnotations": { "konsti:maxAttendance": 18 },
     "scheduleItems": [
       {
         "startTime": "2024-07-20T11:00:00+00:00",
@@ -11198,11 +11262,7 @@
       "konsti": ["larp"],
       "audience": ["aimed-adults", "beginners"],
       "language": ["fi", "en"],
-      "accessibility": [
-        "duration-over-2h",
-        "recording",
-        "texts-with-no-recordings"
-      ]
+      "accessibility": ["duration-over-2h", "texts-with-no-recordings"]
     },
     "cachedAnnotations": {
       "ropecon:otherAuthor": "Christina Christensen & Eirik Fatland",
@@ -11327,9 +11387,7 @@
       "language": ["fi"],
       "accessibility": ["texts-with-no-recordings"]
     },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 20
-    },
+    "cachedAnnotations": { "konsti:maxAttendance": 20 },
     "scheduleItems": [
       {
         "startTime": "2024-07-20T11:00:00+00:00",
@@ -11398,7 +11456,7 @@
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-20"],
-      "room": ["sali-209"],
+      "room": ["sali-203a"],
       "type": ["talk", "presentation"],
       "topic": ["theme"],
       "konsti": [],
@@ -11414,7 +11472,7 @@
         "startTime": "2024-07-20T11:00:00+00:00",
         "endTime": "2024-07-20T12:45:00+00:00",
         "lengthMinutes": 105,
-        "location": "Sali 209"
+        "location": "Sali 203A"
       }
     ]
   },
@@ -11653,8 +11711,8 @@
     "scheduleItems": [
       {
         "startTime": "2024-07-20T11:00:00+00:00",
-        "endTime": "2024-07-20T11:45:00+00:00",
-        "lengthMinutes": 45,
+        "endTime": "2024-07-20T16:00:00+00:00",
+        "lengthMinutes": 300,
         "location": "Halli 3 Figualue"
       }
     ]
@@ -11727,7 +11785,7 @@
   {
     "slug": "mass-effect-anhurin-kampanja-la-iltapaiva",
     "title": "Mass Effect: Anhurin kampanja",
-    "description": "Perustuu Mass Effect-pelisarjaan.\r\n\r\nOn vuosi 2178: Anhurin planeetta yhteissiirtokutna Terminuksessa. Planeetalla on käynnissä sisällissota orjuuden vastustajien ja bataarien Na'hesit puolueen välillä. Sisällissotaa pidetään räikeimpinä rikkomuksina sapientien olentojen oikeuksia vastaan galaksissa. Orjuuden vastustajat ovat alakynnessä ja pyrkivät hankkimaan salakuljettajia ja palkkasotureita kuten Eclipse ja Blue Suns taisteluun. Sisällissodan lisäksi galaktisia välejä kiristää Allianssin tekemä rankaisuretki Torfanin piraattikuuhun. Tuntematon Spectre-operaattori saa Citadelin neuvostolta tehtävän lopettaa sisällissota hinnalla millä hyvänsä ja estää Allianssin sekä Bataarien imperiumin ajautumisen konfliktiin.\r\n\r\n-Peluutus: Anhurin kampanja on viikonloppukampanja, jonka pelit ovat lyhytä 2-3 tunnin pelejä eri operaation vaiheista.\r\n-Kampanja: Kampanjassa on mahdollista pelata samaa hahmoa useassa skenariossa viikonlopun aikana.\r\n-Sisältö: Peli sisältää tummasävyistä kuvausta sodasta fantasiakontekstissa sekä taisteluista jotka simuloidaan figuureilla.\r\n-Järjestelmä: 4d6 WRS (Rajakatse Roolipeli yms…)\r\n-Kokemus: Jonkinlainen kokemus roolipelaamisesta on suotavaa. Kokemusta pelijärjestelmästä ei tarvita.",
+    "description": "Perustuu Mass Effect-pelisarjaan.\r\n\r\nOn vuosi 2178: Anhurin planeetta yhteissiirtokutna Terminuksessa. Planeetalla on käynnissä sisällissota orjuuden vastustajien ja bataarien Na'hesit puolueen välillä. Sisällissotaa pidetään räikeimpinä rikkomuksina sapientien olentojen oikeuksia vastaan galaksissa. Orjuuden vastustajat ovat alakynnessä ja pyrkivät hankkimaan salakuljettajia ja palkkasotureita kuten Eclipse ja Blue Suns taisteluun. Sisällissodan lisäksi galaktisia välejä kiristää Allianssin tekemä rankaisuretki Torfanin piraattikuuhun. Tuntematon Spectre-operaattori saa Citadelin neuvostolta tehtävän lopettaa sisällissota hinnalla millä hyvänsä ja estää Allianssin sekä Bataarien imperiumin ajautumisen konfliktiin.\r\n\r\n-Peluutus: Anhurin kampanja on viikonloppukampanja, jonka pelit ovat lyhytä 2-3 tunnin pelejä eri operaation vaiheista.\r\n-Kampanja: Kampanjassa on mahdollista pelata samaa hahmoa useassa skenariossa viikonlopun aikana.\r\n-Sisältö: Peli sisältää tummasävyistä kuvausta sodasta fantasiakontekstissa sekä taisteluista jotka simuloidaan figuureilla.\r\n-Järjestelmä: 4d6 WRS (Rajakatse Roolipeli yms…)\r\n-Kokemus: Jonkinlainen kokemus roolipelaamisesta on suotavaa. Kokemusta pelijärjestelmästä ei tarvita.\r\n\r\nILMOITTAUTUMINEN\r\nTähän ohjelmaan on ennakkoilmoittautuminen Kokemuspisteen infon luona (Halli 3, pohjoinen sisäänkäynti 3.3). Ilmoittautuminen alkaa perjantaina klo 16. Paikat täytetään ilmoittautumisjärjestyksessä. Peliin mahtuu 4 pelaajaa.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-20"],
@@ -11769,9 +11827,7 @@
       "language": ["fi"],
       "accessibility": []
     },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 10
-    },
+    "cachedAnnotations": { "konsti:maxAttendance": 10 },
     "scheduleItems": [
       {
         "startTime": "2024-07-20T11:00:00+00:00",
@@ -12132,9 +12188,7 @@
       "language": ["fi"],
       "accessibility": ["loud-sounds", "physical-contact", "moving-around"]
     },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 24
-    },
+    "cachedAnnotations": { "konsti:maxAttendance": 24 },
     "scheduleItems": [
       {
         "startTime": "2024-07-20T12:00:00+00:00",
@@ -12464,9 +12518,7 @@
       "language": ["fi"],
       "accessibility": []
     },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 50
-    },
+    "cachedAnnotations": { "konsti:maxAttendance": 50 },
     "scheduleItems": [
       {
         "startTime": "2024-07-20T12:00:00+00:00",
@@ -13304,9 +13356,7 @@
       "language": ["fi"],
       "accessibility": ["irritate-skin", "requires-dexterity"]
     },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 10
-    },
+    "cachedAnnotations": { "konsti:maxAttendance": 10 },
     "scheduleItems": [
       {
         "startTime": "2024-07-20T13:00:00+00:00",
@@ -14001,9 +14051,7 @@
       "language": ["fi"],
       "accessibility": ["physical-contact"]
     },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 12
-    },
+    "cachedAnnotations": { "konsti:maxAttendance": 12 },
     "scheduleItems": [
       {
         "startTime": "2024-07-20T14:00:00+00:00",
@@ -14016,7 +14064,7 @@
   {
     "slug": "varttinakehrayspaja-2",
     "title": "Värttinäkehräyspaja",
-    "description": "Värttinäpaja tulee jälleen! Tänäkin vuonna luvassa tiukkoja käänteitä ja hikikarpaloita villan ja kepin parissa!\r\n\r\nVärttinällä kehräys on parhaimmillaan meditatiivinen harrastus mutta myös harjoitusta vaativa postkapitalismiin valmentava taito, jota voi kokemuksen myötä harrastaa lähes missä tahansa kulkee. Pajassa kannustetaan aloittamaan nollasta ja sen yläpuolelta ja epäonnistumaan rohkeasti. Testataan kiinnostuksen mukaan erilaisia värjäämättömiä villoja ja ehkä Jopa Muita Kuituja. Pajassa on saatavilla kokeiluun harjoitusvärttinän lisäksi myös muutamia eri kokoisia ja -mallisia värttinöitä. Mahdollisuus viedä oma värttinä kotiin työpajan päätteeksi (tällä kertaa oikeasti) hintaan 12 €. \r\n\r\nTestaa sorminäppäryytesi rajoja! Näe kohuttu \"kirpparin kuhmuinen Vanha Keppi\"! Todista työvälineen putoamista lattialle uudestaan ja uudestaan! \r\n”Oletko koskaan halunnut olla kehrääjä, ja jos olet, nyt se on mahdollista, sillä uusi kehrääjä on saapunut ja se olet sinä.” -Vanha sananlasku.\r\n\r\nIlmoittautuminen Konstissa lauantaina 20.7. kello 15 alkaen. Työpajamaksu 2 €.",
+    "description": "Värttinäpaja tulee jälleen! Tänäkin vuonna luvassa tiukkoja käänteitä ja hikikarpaloita villan ja kepin parissa!\r\n\r\nVärttinällä kehräys on parhaimmillaan meditatiivinen harrastus mutta myös harjoitusta vaativa postkapitalismiin valmentava taito, jota voi kokemuksen myötä harrastaa lähes missä tahansa kulkee. Pajassa kannustetaan aloittamaan nollasta ja sen yläpuolelta ja epäonnistumaan rohkeasti. Testataan kiinnostuksen mukaan erilaisia värjäämättömiä villoja ja ehkä Jopa Muita Kuituja. Pajassa on saatavilla kokeiluun harjoitusvärttinän lisäksi myös muutamia eri kokoisia ja -mallisia värttinöitä. Mahdollisuus viedä oma värttinä kotiin työpajan päätteeksi (tällä kertaa oikeasti) hintaan 12 €. \r\n\r\nTestaa sorminäppäryytesi rajoja! Näe kohuttu \"kirpparin kuhmuinen Vanha Keppi\"! Todista työvälineen putoamista lattialle uudestaan ja uudestaan!  \r\n”Oletko koskaan halunnut olla kehrääjä, ja jos olet, nyt se on mahdollista, sillä uusi kehrääjä on saapunut ja se olet sinä.” -Vanha sananlasku.\r\n\r\nIlmoittautuminen Konstissa lauantaina 20.7. kello 15 alkaen. Työpajamaksu 2 €.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-20"],
@@ -14509,13 +14557,13 @@
   {
     "slug": "immersio-roolipelinvedossa-pelinjohtajan-vinkit",
     "title": "Immersio roolipelinvedossa: pelinjohtajan vinkit!",
-    "description": "Haluatko luoda roolipeliisi tunnelman, joka pitää otteessaan? Haluatko pelaajien jakamattoman huomion ja syventymisen pelisi maailmaan?\r\n\r\nLuvassa kaikille soveltuvia käytännön konsteja sekä pitkän oppimäärän ohjeita immersion luomiseen. Opi valjastamaan äänimaailma, valaisu ja pelin pikkutavara avuksesi. Luennossa sivutaan myös sitä, miten erilaiset pelinvetämisen ja pelaamisen tyylit vaikuttavat immersiivisyyteen. Vinkit soveltuvat niin pelinvetäjälle, kuin pelaajallekin roolipelikokemuksen määrästä riippumatta.",
+    "description": "Haluatko luoda roolipeliisi tunnelman, joka pitää otteessaan? Haluatko pelaajien jakamattoman huomion ja syventymisen pelisi maailmaan?\r\n\r\nLuvassa kaikille soveltuvia käytännön konsteja sekä pitkän oppimäärän ohjeita immersion luomiseen pöytäroolipelissä. Opi valjastamaan äänimaailma, valaisu ja pelin pikkutavara avuksesi. Luennossa sivutaan myös sitä, miten erilaiset pelinvetämisen ja pelaamisen tyylit vaikuttavat immersiivisyyteen. Vinkit soveltuvat niin pelinvetäjälle, kuin pelaajallekin roolipelikokemuksen määrästä riippumatta.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-20"],
       "room": ["sali-207"],
       "type": ["talk", "presentation"],
-      "topic": ["larp", "penandpaper"],
+      "topic": ["penandpaper"],
       "konsti": [],
       "audience": ["beginners"],
       "language": ["fi"],
@@ -14990,9 +15038,7 @@
       "language": ["fi"],
       "accessibility": []
     },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 16
-    },
+    "cachedAnnotations": { "konsti:maxAttendance": 16 },
     "scheduleItems": [
       {
         "startTime": "2024-07-20T15:00:00+00:00",
@@ -15042,9 +15088,7 @@
       "language": ["fi", "en"],
       "accessibility": ["irritate-skin", "requires-dexterity"]
     },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 10
-    },
+    "cachedAnnotations": { "konsti:maxAttendance": 10 },
     "scheduleItems": [
       {
         "startTime": "2024-07-20T15:00:00+00:00",
@@ -15498,9 +15542,7 @@
       "language": ["free"],
       "accessibility": []
     },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 18
-    },
+    "cachedAnnotations": { "konsti:maxAttendance": 18 },
     "scheduleItems": [
       {
         "startTime": "2024-07-20T16:00:00+00:00",
@@ -15891,9 +15933,7 @@
       "language": ["en"],
       "accessibility": []
     },
-    "cachedAnnotations": {
-      "ropecon:contentWarnings": "Violence"
-    },
+    "cachedAnnotations": { "ropecon:contentWarnings": "Violence" },
     "scheduleItems": [
       {
         "startTime": "2024-07-20T17:00:00+00:00",
@@ -15948,9 +15988,7 @@
       "language": ["fi"],
       "accessibility": []
     },
-    "cachedAnnotations": {
-      "ropecon:contentWarnings": "Ahdistus"
-    },
+    "cachedAnnotations": { "ropecon:contentWarnings": "Ahdistus" },
     "scheduleItems": [
       {
         "startTime": "2024-07-20T17:00:00+00:00",
@@ -16253,7 +16291,7 @@
   {
     "slug": "mass-effect-anhurin-kampanja-la-ilta",
     "title": "Mass Effect: Anhurin kampanja",
-    "description": "Perustuu Mass Effect-pelisarjaan.\r\n\r\nOn vuosi 2178: Anhurin planeetta yhteissiirtokutna Terminuksessa. Planeetalla on käynnissä sisällissota orjuuden vastustajien ja bataarien Na'hesit puolueen välillä. Sisällissotaa pidetään räikeimpinä rikkomuksina sapientien olentojen oikeuksia vastaan galaksissa. Orjuuden vastustajat ovat alakynnessä ja pyrkivät hankkimaan salakuljettajia ja palkkasotureita kuten Eclipse ja Blue Suns taisteluun. Sisällissodan lisäksi galaktisia välejä kiristää Allianssin tekemä rankaisuretki Torfanin piraattikuuhun. Tuntematon Spectre-operaattori saa Citadelin neuvostolta tehtävän lopettaa sisällissota hinnalla millä hyvänsä ja estää Allianssin sekä Bataarien imperiumin ajautumisen konfliktiin.\r\n\r\n-Peluutus: Anhurin kampanja on viikonloppukampanja, jonka pelit ovat lyhytä 2-3 tunnin pelejä eri operaation vaiheista.\r\n-Kampanja: Kampanjassa on mahdollista pelata samaa hahmoa useassa skenariossa viikonlopun aikana.\r\n-Sisältö: Peli sisältää tummasävyistä kuvausta sodasta fantasiakontekstissa sekä taisteluista jotka simuloidaan figuureilla.\r\n-Järjestelmä: 4d6 WRS (Rajakatse Roolipeli yms…)\r\n-Kokemus: Jonkinlainen kokemus roolipelaamisesta on suotavaa. Kokemusta pelijärjestelmästä ei tarvita.",
+    "description": "Perustuu Mass Effect-pelisarjaan.\r\n\r\nOn vuosi 2178: Anhurin planeetta yhteissiirtokutna Terminuksessa. Planeetalla on käynnissä sisällissota orjuuden vastustajien ja bataarien Na'hesit puolueen välillä. Sisällissotaa pidetään räikeimpinä rikkomuksina sapientien olentojen oikeuksia vastaan galaksissa. Orjuuden vastustajat ovat alakynnessä ja pyrkivät hankkimaan salakuljettajia ja palkkasotureita kuten Eclipse ja Blue Suns taisteluun. Sisällissodan lisäksi galaktisia välejä kiristää Allianssin tekemä rankaisuretki Torfanin piraattikuuhun. Tuntematon Spectre-operaattori saa Citadelin neuvostolta tehtävän lopettaa sisällissota hinnalla millä hyvänsä ja estää Allianssin sekä Bataarien imperiumin ajautumisen konfliktiin.\r\n\r\n-Peluutus: Anhurin kampanja on viikonloppukampanja, jonka pelit ovat lyhytä 2-3 tunnin pelejä eri operaation vaiheista.\r\n-Kampanja: Kampanjassa on mahdollista pelata samaa hahmoa useassa skenariossa viikonlopun aikana.\r\n-Sisältö: Peli sisältää tummasävyistä kuvausta sodasta fantasiakontekstissa sekä taisteluista jotka simuloidaan figuureilla.\r\n-Järjestelmä: 4d6 WRS (Rajakatse Roolipeli yms…)\r\n-Kokemus: Jonkinlainen kokemus roolipelaamisesta on suotavaa. Kokemusta pelijärjestelmästä ei tarvita.\r\n\r\nILMOITTAUTUMINEN\r\nTähän ohjelmaan on ennakkoilmoittautuminen Kokemuspisteen infon luona (Halli 3, pohjoinen sisäänkäynti 3.3). Ilmoittautuminen alkaa perjantaina klo 16. Paikat täytetään ilmoittautumisjärjestyksessä. Peliin mahtuu 4 pelaajaa.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-20"],
@@ -16496,9 +16534,7 @@
       "language": ["fi", "en"],
       "accessibility": []
     },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 15
-    },
+    "cachedAnnotations": { "konsti:maxAttendance": 15 },
     "scheduleItems": [
       {
         "startTime": "2024-07-20T18:00:00+00:00",
@@ -17390,8 +17426,8 @@
   },
   {
     "slug": "the-mill-a-theory-of-monsters",
-    "title": "The Mill: a Theory of Monsters",
-    "description": "”Why are there monsters? Where did they come from? Why does their number grow? What are the motives of these monsters?\"\r\n\r\nInspired by the world of Twilight Ferry I started answering the question “Why are there monsters in this world?” Thus, while thinking about it, a theory came to me. The Mill - a process where the dead either go forward or attach themselves to their previous life - was created. The Mill rests deep in the depths of the dark river. \r\n\r\nTwilight Ferry is an original story and a digital puzzle-adventure game inspired by Finnish mythology and folklore. The story takes place around a dark river which separates the realms of the living and the dead, with the protagonist ferrying souls and individuals across. Someone has meddled with the cycle of death and rebirth, and the player needs to help our protagonist solve the mystery before it's too late. \r\n\r\nTwilight Ferry is a hobby project in production which I have contibuted to. \r\n\r\nThe Mill is based on my own thoughts and views of how the world of Twilight Ferry works. \r\n\r\nTopics: death, point of change, letting go, facing fears, facing death etc. Challenging situations are presented with metaphors. Some monster drawings that are made by me are shown during the presentation.",
+    "title": "Mylly - teoria hirviöistä",
+    "description": "Miksi hirviöitä on? Mistä ne ovat tulleet? Miksi niitä tulee lisää? Mitkä ovat hirviöiden motiivit?\r\n\r\nKaverin peli-idean maailmasta inspiroituneena, aloin vastaamaan kysymykseen ”Miksi hirviöitä on?” Teoriaa pohdiskellessa syntyi konsepti Myllystä - prosessista, jossa kuolleet joko menevät eteenpäin, tai takertuvat menneeseen elämäänsä.\r\nTwilight Ferryn maailman innoittamana aloin vastaamaan kysymykseen \"Miksi tässä maailmassa on hirviöitä?\". Sitä miettiessäni minulle tuli teoria - konsepti. Mylly - prosessi, jossa kuolleet joko menevät eteenpäin tai takertuvat edelliseen elämäänsä - luotiin. Mylly lepää syvällä synkän joen syvyyksissä. Twilight Ferry on alkuperäinen tarina ja digitaalinen pulma-seikkailupeli, joka on saanut inspiraationsa suomalaisesta mytologiasta ja kansanperinteestä. Sen tarina sijoittuu tumman joen ympärille, joka erottaa elävien ja kuolleiden valtakunnat, ja päähenkilö kuljettaa lautalla sieluja ja yksilöitä sen yli. Joku on sekaantunut kuoleman ja uudestisyntymisen kierteeseen, ja pelaajan on autettava päähenkilöämme ratkaisemaan mysteeri ennen kuin on liian myöhäistä.\r\n\r\nTwilight Ferry on tuotannossa oleva harrastusprojekti, jonka tekemiseen olen osallistunut.\r\n\r\nMylly perustuu omiin pohdintoihin ja näkemyksiin siitä kuinka Twilight Ferryn maailma toimii.\r\n\r\nAiheet: kuolema, käännekohta, irtipäästäminen, pelkojen kohtaaminen, kuoleman kohtaaminen jne. Haastavat tilanteet esitetään metaforien avulla. Esityksen aikana esitetään joitain tekemiäni hirviöpiirroksia. PG-13",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-20"],
@@ -17400,7 +17436,7 @@
       "topic": ["theme"],
       "konsti": [],
       "audience": ["aimed-between-13-17", "aimed-adults", "beginners"],
-      "language": ["en"],
+      "language": ["fi"],
       "accessibility": []
     },
     "cachedAnnotations": {
@@ -17667,6 +17703,35 @@
     ]
   },
   {
+    "slug": "malifaux-cons-at-the-end-of-a-rope-turnaustournament",
+    "title": "Malifaux: Cons at the End of a Rope (turnaus/tournament)",
+    "description": "Malifaux, vaihtoehtoisen maan kierretty peili 1900-luvulla; goottilaisen kauhun, viktoriaanisten rakennusten, steampunk-rakenteiden ja villin lännen pyssymiesten maailma. Malifaux  on tarinavetoinen kahakkapeli, jossa kaksi pelaajaa taistelee yhdessä loputtomista kahakoista saadakseen hallintaansa kaupunkeja, siirtokuntia ja valtapaikkoja tässä vaarallisessa uudessa maailmassa.\r\n\r\nKolmen 1 vs 1 -pelin Malifaux-turnaus 50ss Gaining Grounds 4 -säännöillä. Ennakkoilmoittautuminen sähköpostilla distractedhobbyists@gmail.com.\r\n\r\n====\r\n\r\nMalifaux, a twisted mirror of an alternate Earth in the 1900s; a world of gothic horror, Victorian structures, steampunk constructs, and wild west gunslingers. Malifaux is a story-driven skirmish game where two players fight one of the endless skirmishes for control over the towns, settlements, and places of power in this dangerous new world.\r\n\r\nA 3-game  Malifaux tournament. We will be playing singles with 50ss Gaining Grounds 4 ruleset.\r\nPreregistration to distractedhobbyists@gmail.com",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-07-21"],
+      "room": ["halli-3-figuturnausalue"],
+      "type": ["gaming", "tournament"],
+      "topic": ["miniatures"],
+      "konsti": ["tournament"],
+      "audience": ["aimed-adults"],
+      "language": ["fi", "en"],
+      "accessibility": ["duration-over-2h", "texts-with-no-recordings"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Malifaux",
+      "konsti:maxAttendance": 12,
+      "konsti:minAttendance": 6
+    },
+    "scheduleItems": [
+      {
+        "startTime": "2024-07-21T05:00:00+00:00",
+        "endTime": "2024-07-21T13:20:00+00:00",
+        "lengthMinutes": 500,
+        "location": "Halli 3 Figuturnausalue"
+      }
+    ]
+  },
+  {
     "slug": "vertex-crimson",
     "title": "Vertex Crimson",
     "description": "The player characters play in the popular underground band Vertex Crimson. As the game starts, all band members have a memory loss. They don't know where they are. Their manager just got shot. They are hunted by the police, and they need to get to their big concert.\r\n\r\nThis is the night when they confront the dark side of Night City's show business.\r\n\r\nThe game is set to the cyberpunk world, but we will run it almost completely without rules. There is so much investigation and filmatic scenes to cover that there is little space for dice-rolling. \r\n\r\nWe play in English, but feel free to supply with Finnish.\r\n\r\nIf the band makes it to the concert, then I expect full immersion from the players (I am a larper).\r\n\r\nThemes are music, oppression, revolution, and the cyberpunk's genre's central question; \"what makes us human\"?\r\n\r\nBased on a module by Niels Wisth.",
@@ -17885,7 +17950,7 @@
   {
     "slug": "warhammer-chaos-in-the-old-world-su-sun",
     "title": "Warhammer: Chaos In The Old World",
-    "description": "Vanhan maailman on aika palaa. Kaaoksen jumalat taistelevat maailman herruudesta. Kuka turmelee kuolevaisten maailman parhaiten omaksi kuvakseen? Mutta varokaa, on myös pieni mahdollisuus, että pahuus karkoitetaan ja kaikki häviävät!\r\n\r\nIlmoittauduthan peliin kokemuspisteellä.\r\n\r\n***\r\nIt's time for the old world to burn. Chaos gods fight against each other from the dominance of the world. Who will corrupt the realm of mortals to his own image? But beware, there is still a spark of light in the world, which could bring doom to all evil gods.\r\n\r\nPlease, register for the game at kokemuspiste.",
+    "description": "Vanhan maailman on aika palaa. Kaaoksen jumalat taistelevat maailman herruudesta. Kuka turmelee kuolevaisten maailman parhaiten omaksi kuvakseen? Mutta varokaa, on myös pieni mahdollisuus, että pahuus karkoitetaan ja kaikki häviävät!\r\n\r\nILMOITTAUTUMINEN\r\nTähän ohjelmaan on ennakkoilmoittautuminen Kokemuspisteen infon luona (Halli 3, pohjoinen sisäänkäynti 3.3). Ilmoittautuminen alkaa perjantaina klo 16. Paikat täytetään ilmoittautumisjärjestyksessä. Peliin mahtuu 4 pelaajaa.\r\n\r\n***\r\nIt's time for the old world to burn. Chaos gods fight against each other from the dominance of the world. Who will corrupt the realm of mortals to his own image? But beware, there is still a spark of light in the world, which could bring doom to all evil gods.\r\n\r\nREGISTRATION\r\nPre-registration for this program is available at the Kokemuspiste info (Hall 3, north entrance 3.3). Registration starts on Friday at 4 pm. Places will be filled in order of registration. The game can accommodate 4 players.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-21"],
@@ -17985,9 +18050,7 @@
         "duration-over-2h"
       ]
     },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 36
-    },
+    "cachedAnnotations": { "konsti:maxAttendance": 36 },
     "scheduleItems": [
       {
         "startTime": "2024-07-21T07:00:00+00:00",
@@ -18012,9 +18075,7 @@
       "language": ["fi"],
       "accessibility": ["irritate-skin", "requires-dexterity"]
     },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 10
-    },
+    "cachedAnnotations": { "konsti:maxAttendance": 10 },
     "scheduleItems": [
       {
         "startTime": "2024-07-21T07:00:00+00:00",
@@ -18186,9 +18247,7 @@
         "requires-dexterity"
       ]
     },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 30
-    },
+    "cachedAnnotations": { "konsti:maxAttendance": 30 },
     "scheduleItems": [
       {
         "startTime": "2024-07-21T07:00:00+00:00",
@@ -18366,9 +18425,7 @@
       "language": ["fi", "en"],
       "accessibility": ["limited-moving-opportunities", "requires-dexterity"]
     },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 8
-    },
+    "cachedAnnotations": { "konsti:maxAttendance": 8 },
     "scheduleItems": [
       {
         "startTime": "2024-07-21T07:00:00+00:00",
@@ -18499,51 +18556,13 @@
       "language": ["fi"],
       "accessibility": []
     },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 12
-    },
+    "cachedAnnotations": { "konsti:maxAttendance": 12 },
     "scheduleItems": [
       {
         "startTime": "2024-07-21T07:00:00+00:00",
         "endTime": "2024-07-21T08:45:00+00:00",
         "lengthMinutes": 105,
         "location": "Sali 214"
-      }
-    ]
-  },
-  {
-    "slug": "shadows-of-the-forgotten",
-    "title": "Shadows of the Forgotten",
-    "description": "“Shadows of the Forgotten” is a LARP inspired by the cult Ukrainian movie and our love for the vibrant Hutsul culture. Experience life, passion, feuds, myths, witchcraft, and death in a small village nested in the heart of the Carpathian mountains. Take part in rituals and family drama in a place forgotten by time, where the line between the mundane and the sacred blurs. The game genre is magical realism, where everyday village life coexists with forest spirits, witches, and the Shadows of the dead.\r\n\r\n18 Players will receive a pre-written character of a villager, with their story inspired by classical Ukrainian literature. Most characters can be played by players of any gender. No preparation is required. Wear white or black clothing.",
-    "cachedHosts": "<redacted>",
-    "cachedDimensions": {
-      "date": ["2024-07-21"],
-      "room": ["sali-217"],
-      "type": ["gaming"],
-      "topic": ["larp", "theme"],
-      "konsti": ["larp"],
-      "audience": ["aimed-adults", "beginners"],
-      "language": ["en"],
-      "accessibility": [
-        "loud-sounds",
-        "flashing-lights",
-        "physical-contact",
-        "low-lighting",
-        "duration-over-2h"
-      ]
-    },
-    "cachedAnnotations": {
-      "ropecon:otherAuthor": "Max Tiseyko, Anastasiia \"Bella\" Zotova, Anna \"FRA\" Nazarenko, Hanna Homeniuk, Sas Katherine, Sofia Antymys",
-      "konsti:minAttendance": 10,
-      "ropecon:numCharacters": 18,
-      "ropecon:contentWarnings": "heartbreaks, death, fighting"
-    },
-    "scheduleItems": [
-      {
-        "startTime": "2024-07-21T07:00:00+00:00",
-        "endTime": "2024-07-21T12:00:00+00:00",
-        "lengthMinutes": 300,
-        "location": "Sali 217"
       }
     ]
   },
@@ -18587,9 +18606,7 @@
       "language": ["fi"],
       "accessibility": []
     },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 18
-    },
+    "cachedAnnotations": { "konsti:maxAttendance": 18 },
     "scheduleItems": [
       {
         "startTime": "2024-07-21T07:00:00+00:00",
@@ -19123,31 +19140,6 @@
     ]
   },
   {
-    "slug": "kokemuspisteen-peliapurit-opastavat-lauta-ja-korttipeleissa-su",
-    "title": "Kokemuspisteen peliapurit opastavat lauta- ja korttipeleissä",
-    "description": "Ropeconissa on kokemuspisteellä uutena ”istu ja pelaa”-alue, jossa on lauta- ja korttipelejä valmiiksi järjesteltyinä pelipöydille. Tarvittaessa kokemuspisteen vapaaehtoiset opastavat alkuun peleissä ja auttavat ongelmatilanteissa. \r\n\r\nPelit ovat esillä kokemuspisteen aukioloaikoina, mutta opastusta on tarjolla peliapurien ehtiessä.",
-    "cachedHosts": "<redacted>",
-    "cachedDimensions": {
-      "date": ["2024-07-21"],
-      "room": ["halli-3-kokemuspiste"],
-      "type": ["experience", "gaming", "open-gaming"],
-      "topic": ["boardgames", "cardgames"],
-      "konsti": ["experiencePoint"],
-      "audience": ["all-ages", "beginners"],
-      "language": ["fi"],
-      "accessibility": []
-    },
-    "cachedAnnotations": {},
-    "scheduleItems": [
-      {
-        "startTime": "2024-07-21T07:00:00+00:00",
-        "endTime": "2024-07-21T11:00:00+00:00",
-        "lengthMinutes": 240,
-        "location": "Halli 3 Kokemuspiste"
-      }
-    ]
-  },
-  {
     "slug": "arsenic-lies-2-run",
     "title": "Arsenic & Lies, 2. run",
     "description": "It is 31 December 1919 and the party at Weatherby Manor is in full swing. The guests exchange furtive whispers of intrigue, blackmail and forbidden love. At midnight, a glass of poisoned champagne shatters, dropped from a dying hand. The family has to find – or frame – the killer before the police start looking too closely into their secrets.\r\n\r\nArsenic & Lies is an infinitely replayable and beginner friendly larp inspired by Downton Abbey and Agatha Christie novels. Rather than being a classical whodunnit, it focuses on the emotions, relationships and secrets of the characters involved: solving the murder might be less important to the characters than pursuing their clandestine affairs, arranging marriages of convenience or blackmailing their enemies.\r\n\r\nThe larp will be played in two Acts, with a short interlude and a break in the middle. No props required. Characters and their relationships will be created collaboratively at the beginning. The workshop at the start of the game also includes a calibration, during which we will discuss if there are any themes the players want to avoid during the game.\r\n\r\nGame materials (cards with text) are in English, but the players can also decide to play in Finnish.",
@@ -19618,7 +19610,7 @@
   {
     "slug": "ihmissusipeli-werewolfes-of-millers-hollow-pelautus-33",
     "title": "Ihmissusipeli (Werewolfes of Millers Hollow)",
-    "description": "Kylä nukahtaa ja täysikuu nousee. Metsästä kuuluu ulvontaa. Tänä yönä joku kyläläisistä jälleen syödään... Vai syödäänkö sittenkään? Tule pelaamaan ja selvittämään voittavatko tällä kertaa kyläläiset vai ihmissudet! \r\n\r\nIhmissusipeli käyttää kuvakortteja sekä Mafioso-seurapelin mekaniikkaa (silmien sulkeminen, päättely, sosiaalinen pelaaminen) ja pelissä on ulkopuolinen pelinjohtaja. Samalla peliporukalla pelataan kaksi erää. Mukaan mahtuu max. 14 pelaajaa. Pelissä istutaan lattialla.",
+    "description": "Kylä nukahtaa ja täysikuu nousee. Metsästä kuuluu ulvontaa. Tänä yönä joku kyläläisistä jälleen syödään... Vai syödäänkö sittenkään? Tule pelaamaan ja selvittämään voittavatko tällä kertaa kyläläiset vai ihmissudet! \r\n\r\nIhmissusipeli käyttää kuvakortteja sekä Mafioso-seurapelin mekaniikkaa (silmien sulkeminen, päättely, sosiaalinen pelaaminen) ja pelissä on ulkopuolinen pelinjohtaja. Samalla peliporukalla pelataan kaksi erää. Mukaan mahtuu max. 14 pelaajaa. Pelissä istutaan lattialla.\r\n\r\nILMOITTAUTUMINEN\r\nTähän ohjelmaan on ennakkoilmoittautuminen Kokemuspisteen infon luona (Halli 3, pohjoinen sisäänkäynti 3.3). Ilmoittautuminen alkaa perjantaina klo 16. Paikat täytetään ilmoittautumisjärjestyksessä. Peliin mahtuu 14 pelaajaa.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-21"],
@@ -20188,7 +20180,7 @@
   {
     "slug": "mass-effect-anhurin-kampanja-su",
     "title": "Mass Effect: Anhurin kampanja",
-    "description": "Perustuu Mass Effect-pelisarjaan.\r\n\r\nOn vuosi 2178: Anhurin planeetta yhteissiirtokutna Terminuksessa. Planeetalla on käynnissä sisällissota orjuuden vastustajien ja bataarien Na'hesit puolueen välillä. Sisällissotaa pidetään räikeimpinä rikkomuksina sapientien olentojen oikeuksia vastaan galaksissa. Orjuuden vastustajat ovat alakynnessä ja pyrkivät hankkimaan salakuljettajia ja palkkasotureita kuten Eclipse ja Blue Suns taisteluun. Sisällissodan lisäksi galaktisia välejä kiristää Allianssin tekemä rankaisuretki Torfanin piraattikuuhun. Tuntematon Spectre-operaattori saa Citadelin neuvostolta tehtävän lopettaa sisällissota hinnalla millä hyvänsä ja estää Allianssin sekä Bataarien imperiumin ajautumisen konfliktiin.\r\n\r\n-Peluutus: Anhurin kampanja on viikonloppukampanja, jonka pelit ovat lyhytä 2-3 tunnin pelejä eri operaation vaiheista.\r\n-Kampanja: Kampanjassa on mahdollista pelata samaa hahmoa useassa skenariossa viikonlopun aikana.\r\n-Sisältö: Peli sisältää tummasävyistä kuvausta sodasta fantasiakontekstissa sekä taisteluista jotka simuloidaan figuureilla.\r\n-Järjestelmä: 4d6 WRS (Rajakatse Roolipeli yms…)\r\n-Kokemus: Jonkinlainen kokemus roolipelaamisesta on suotavaa. Kokemusta pelijärjestelmästä ei tarvita.",
+    "description": "Perustuu Mass Effect-pelisarjaan.\r\n\r\nOn vuosi 2178: Anhurin planeetta yhteissiirtokutna Terminuksessa. Planeetalla on käynnissä sisällissota orjuuden vastustajien ja bataarien Na'hesit puolueen välillä. Sisällissotaa pidetään räikeimpinä rikkomuksina sapientien olentojen oikeuksia vastaan galaksissa. Orjuuden vastustajat ovat alakynnessä ja pyrkivät hankkimaan salakuljettajia ja palkkasotureita kuten Eclipse ja Blue Suns taisteluun. Sisällissodan lisäksi galaktisia välejä kiristää Allianssin tekemä rankaisuretki Torfanin piraattikuuhun. Tuntematon Spectre-operaattori saa Citadelin neuvostolta tehtävän lopettaa sisällissota hinnalla millä hyvänsä ja estää Allianssin sekä Bataarien imperiumin ajautumisen konfliktiin.\r\n\r\n-Peluutus: Anhurin kampanja on viikonloppukampanja, jonka pelit ovat lyhytä 2-3 tunnin pelejä eri operaation vaiheista.\r\n-Kampanja: Kampanjassa on mahdollista pelata samaa hahmoa useassa skenariossa viikonlopun aikana.\r\n-Sisältö: Peli sisältää tummasävyistä kuvausta sodasta fantasiakontekstissa sekä taisteluista jotka simuloidaan figuureilla.\r\n-Järjestelmä: 4d6 WRS (Rajakatse Roolipeli yms…)\r\n-Kokemus: Jonkinlainen kokemus roolipelaamisesta on suotavaa. Kokemusta pelijärjestelmästä ei tarvita.\r\n\r\nILMOITTAUTUMINEN\r\nTähän ohjelmaan on ennakkoilmoittautuminen Kokemuspisteen infon luona (Halli 3, pohjoinen sisäänkäynti 3.3). Ilmoittautuminen alkaa perjantaina klo 16. Paikat täytetään ilmoittautumisjärjestyksessä. Peliin mahtuu 4 pelaajaa.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-21"],
@@ -20241,6 +20233,31 @@
         "endTime": "2024-07-21T12:00:00+00:00",
         "lengthMinutes": 240,
         "location": "Sali 204"
+      }
+    ]
+  },
+  {
+    "slug": "kokemuspisteen-peliapurit-opastavat-lauta-ja-korttipeleissa-su",
+    "title": "Kokemuspisteen peliapurit opastavat lauta- ja korttipeleissä",
+    "description": "Ropeconissa on kokemuspisteellä uutena ”istu ja pelaa”-alue, jossa on lauta- ja korttipelejä valmiiksi järjesteltyinä pelipöydille. Tarvittaessa kokemuspisteen vapaaehtoiset opastavat alkuun peleissä ja auttavat ongelmatilanteissa. \r\n\r\nPelit ovat esillä kokemuspisteen aukioloaikoina, mutta opastusta on tarjolla peliapurien ehtiessä.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-07-21"],
+      "room": ["halli-3-kokemuspiste"],
+      "type": ["experience", "gaming", "open-gaming"],
+      "topic": ["boardgames", "cardgames"],
+      "konsti": ["experiencePoint"],
+      "audience": ["all-ages", "beginners"],
+      "language": ["fi"],
+      "accessibility": []
+    },
+    "cachedAnnotations": {},
+    "scheduleItems": [
+      {
+        "startTime": "2024-07-21T08:00:00+00:00",
+        "endTime": "2024-07-21T11:00:00+00:00",
+        "lengthMinutes": 180,
+        "location": "Halli 3 Kokemuspiste"
       }
     ]
   },
@@ -20675,9 +20692,7 @@
       "language": ["fi"],
       "accessibility": []
     },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 10
-    },
+    "cachedAnnotations": { "konsti:maxAttendance": 10 },
     "scheduleItems": [
       {
         "startTime": "2024-07-21T09:00:00+00:00",
@@ -20750,7 +20765,7 @@
   {
     "slug": "hirvionmetsastajien-kiltojen-mestarit-masters-of-the-monster-hunter-guilds",
     "title": "Hirviönmetsästäjien kiltojen mestarit – Masters of the Monster Hunter Guilds",
-    "description": "Hirvittävät hirviöt uhkaavat kaupunkia. Mutta hirviönmetsästäjien kiltojen urheat jäsenet viisaiden mestariensa johdossa ovat valmiina käymään hirviöjahtiin – kultaa vastaan.\r\n\r\nTule kamppailemaan menestyksekkäimmän kiltamestarin paikasta. Juonittelua, neuvottelua, hirviöitä ja kultaa. 16 pelaajan intensiivinen peli, jossa tavoitellaan rikkaimman kiltamestarin asemaa. Sopii kaikille, jotka pitävät lautapelien resurssienhallinnasta, diplomatiapelien juonittelusta tai sosiaalisista peleistä.\r\n\r\nVile monsters threaten the city. Luckily the brave monster hunters of the guilds, led by their wise masters are ready to battle the monsters – for gold.\r\n\r\nCome and join the struggle to be the most succesful guild master. Intrigue, negotiations, monsters and gold. An intensive game of 16 players, where the aim is to be the richest guild master. Suitable for all who like board game resource management, the intrigues of diplomacy games or social games.",
+    "description": "Hirvittävät hirviöt uhkaavat kaupunkia. Mutta hirviönmetsästäjien kiltojen urheat jäsenet viisaiden mestariensa johdossa ovat valmiina käymään hirviöjahtiin – kultaa vastaan.\r\n\r\nTule kamppailemaan menestyksekkäimmän kiltamestarin paikasta. Juonittelua, neuvottelua, hirviöitä ja kultaa. 16 pelaajan intensiivinen peli, jossa tavoitellaan rikkaimman kiltamestarin asemaa. Sopii kaikille, jotka pitävät lautapelien resurssienhallinnasta, diplomatiapelien juonittelusta tai sosiaalisista peleistä.\r\n\r\nTähän ohjelmaan on ennakkoilmoittautuminen Kokemuspisteen infon luona (Halli 3, pohjoinen sisäänkäynti 3.3). Ilmoittautuminen alkaa perjantaina klo 16. Paikat täytetään ilmoittautumisjärjestyksessä. Peliin mahtuu 16 pelaajaa.\r\n\r\n\r\nVile monsters threaten the city. Luckily the brave monster hunters of the guilds, led by their wise masters are ready to battle the monsters – for gold.\r\n\r\nCome and join the struggle to be the most succesful guild master. Intrigue, negotiations, monsters and gold. An intensive game of 16 players, where the aim is to be the richest guild master. Suitable for all who like board game resource management, the intrigues of diplomacy games or social games.\r\n\r\nPre-registration for this program is available at the Kokemuspiste info (Hall 3, north entrance 3.3). Registration starts on Friday at 4 pm. Places will be filled in order of registration. The game can accommodate 16 players.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-21"],
@@ -20904,9 +20919,7 @@
       "language": ["fi"],
       "accessibility": ["texts-with-no-recordings"]
     },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 19
-    },
+    "cachedAnnotations": { "konsti:maxAttendance": 19 },
     "scheduleItems": [
       {
         "startTime": "2024-07-21T09:00:00+00:00",
@@ -21070,9 +21083,7 @@
       "language": ["fi"],
       "accessibility": []
     },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 10
-    },
+    "cachedAnnotations": { "konsti:maxAttendance": 10 },
     "scheduleItems": [
       {
         "startTime": "2024-07-21T09:00:00+00:00",
@@ -21153,9 +21164,7 @@
       "language": ["fi"],
       "accessibility": []
     },
-    "cachedAnnotations": {
-      "konsti:workshopFee": "2€"
-    },
+    "cachedAnnotations": { "konsti:workshopFee": "2€" },
     "scheduleItems": [
       {
         "startTime": "2024-07-21T09:00:00+00:00",
@@ -21180,43 +21189,13 @@
       "language": ["fi", "en"],
       "accessibility": ["irritate-skin", "requires-dexterity"]
     },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 10
-    },
+    "cachedAnnotations": { "konsti:maxAttendance": 10 },
     "scheduleItems": [
       {
         "startTime": "2024-07-21T09:00:00+00:00",
         "endTime": "2024-07-21T10:45:00+00:00",
         "lengthMinutes": 105,
         "location": "Halli 1B Työpajatila 2"
-      }
-    ]
-  },
-  {
-    "slug": "nopat-taktiikka-demo-epic-adeptus-titanicus-3",
-    "title": "Nopat & Taktiikka demo - Epic & Adeptus Titanicus",
-    "description": "Synkeässä tulevaisuudessa on vain sotaa jumalkoneiden vaeltaessa tuhottujen kaupunkien raunioissa, joissa kirottujen armeijat karjuvat toistensa kurkuissa ajasta ikuisuuteen. Tule taistelemaan galaksin kohtalosta Games Workshopin Epic-skaalan erikoispelien pariin Warhammer 40 000 -maailmassa! Kun nappulat pienenevät ja joukot suurenevat, pääset lyömään pataljoonatason komentajan natsat takkiisi ja hyppäämään titaanien puikkoihin tulitaistelun sydämessä.\r\n\r\nPisteellä testattavia pelejä:\r\n- Adeptus Titanicus\r\n- Epic: Armageddon\r\n- Legions Imperialis\r\n\r\nDemotus sopii vasta-alkajillekin, mutta sisältää kohtalaisen paljon sääntöjä eikä täten luultavasti sovellu perheen pienimmille. Peluutukseen kannattaa varata ainakin tunti. Peluutus onnistuu suomeksi tai englanniksi.",
-    "cachedHosts": "<redacted>",
-    "cachedDimensions": {
-      "date": ["2024-07-21"],
-      "room": ["halli-3-figualue"],
-      "type": ["gaming", "demo"],
-      "topic": ["miniatures"],
-      "konsti": ["other"],
-      "audience": ["all-ages", "beginners"],
-      "language": ["fi", "en"],
-      "accessibility": []
-    },
-    "cachedAnnotations": {
-      "konsti:rpgSystem": "Adeptus Titanicus, Epic: Armageddon, Legions Imperialis",
-      "konsti:maxAttendance": 2
-    },
-    "scheduleItems": [
-      {
-        "startTime": "2024-07-21T09:00:00+00:00",
-        "endTime": "2024-07-21T17:00:00+00:00",
-        "lengthMinutes": 480,
-        "location": "Halli 3 Figualue"
       }
     ]
   },
@@ -21263,9 +21242,7 @@
       "language": ["fi", "en"],
       "accessibility": ["loud-sounds", "moving-around"]
     },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 10
-    },
+    "cachedAnnotations": { "konsti:maxAttendance": 10 },
     "scheduleItems": [
       {
         "startTime": "2024-07-21T09:00:00+00:00",
@@ -21821,9 +21798,7 @@
       "language": ["fi"],
       "accessibility": []
     },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 18
-    },
+    "cachedAnnotations": { "konsti:maxAttendance": 18 },
     "scheduleItems": [
       {
         "startTime": "2024-07-21T10:00:00+00:00",
@@ -22014,9 +21989,7 @@
       "language": ["fi", "en"],
       "accessibility": ["loud-sounds"]
     },
-    "cachedAnnotations": {
-      "ropecon:contentWarnings": "Väkivalta / Violence"
-    },
+    "cachedAnnotations": { "ropecon:contentWarnings": "Väkivalta / Violence" },
     "scheduleItems": [
       {
         "startTime": "2024-07-21T11:00:00+00:00",
@@ -22041,9 +22014,7 @@
       "language": ["fi"],
       "accessibility": ["video", "texts-with-no-recordings"]
     },
-    "cachedAnnotations": {
-      "ropecon:contentWarnings": "Väkivalta"
-    },
+    "cachedAnnotations": { "ropecon:contentWarnings": "Väkivalta" },
     "scheduleItems": [
       {
         "startTime": "2024-07-21T11:00:00+00:00",
@@ -22210,9 +22181,7 @@
       "language": ["fi", "en"],
       "accessibility": ["requires-dexterity", "colorblind"]
     },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 12
-    },
+    "cachedAnnotations": { "konsti:maxAttendance": 12 },
     "scheduleItems": [
       {
         "startTime": "2024-07-21T11:00:00+00:00",
@@ -22516,9 +22485,7 @@
       "language": ["fi"],
       "accessibility": ["loud-sounds", "recording"]
     },
-    "cachedAnnotations": {
-      "ropecon:contentWarnings": "kauhu, uskonto"
-    },
+    "cachedAnnotations": { "ropecon:contentWarnings": "kauhu, uskonto" },
     "scheduleItems": [
       {
         "startTime": "2024-07-21T12:00:00+00:00",
@@ -22670,9 +22637,7 @@
       "language": ["fi"],
       "accessibility": []
     },
-    "cachedAnnotations": {
-      "ropecon:contentWarnings": "kuvia hirviöistä"
-    },
+    "cachedAnnotations": { "ropecon:contentWarnings": "kuvia hirviöistä" },
     "scheduleItems": [
       {
         "startTime": "2024-07-21T12:00:00+00:00",
@@ -22805,9 +22770,7 @@
       "language": ["free"],
       "accessibility": []
     },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 20
-    },
+    "cachedAnnotations": { "konsti:maxAttendance": 20 },
     "scheduleItems": [
       {
         "startTime": "2024-07-21T12:00:00+00:00",
@@ -22913,9 +22876,7 @@
       "language": ["fi", "en"],
       "accessibility": ["physical-contact", "moving-around"]
     },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 20
-    },
+    "cachedAnnotations": { "konsti:maxAttendance": 20 },
     "scheduleItems": [
       {
         "startTime": "2024-07-21T12:30:00+00:00",
