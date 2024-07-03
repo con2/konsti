@@ -481,6 +481,8 @@ export const translationEN = {
     instructions: "Help",
     about: "About",
     faq: "FAQ",
+    showMore: "Show more",
+    showLess: "Show less",
   },
   profileView: {
     profileTab: "Profile",

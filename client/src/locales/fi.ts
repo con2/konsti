@@ -483,6 +483,8 @@ export const translationFI = {
     instructions: "Ohjeet",
     about: "Tietoja",
     faq: "UKK",
+    showMore: "Näytä lisää",
+    showLess: "Näytä vähemmän",
   },
   profileView: {
     profileTab: "Profiili",
