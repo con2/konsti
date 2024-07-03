@@ -7,12 +7,21 @@ import { Solmukohta } from "./components/Solmukohta";
 import { LoginKompassi } from "./components/LoginKompassi";
 import { LoginLocal } from "./components/LoginLocal";
 import { SignupLottery } from "./components/SignupLottery";
+import { Expand } from "./components/Expand";
+
+<Fi>
+## Mihin Konstia käytetään?
+</Fi>
+
+<En>
+## For what is Konsti used?
+</En>
 
 <Fi>
 <Ropecon>
 Konstin kautta voi ilmoittautua pöytäroolipeleihin, larppeihin, turnauksiin, työpajoihin ja joihinkin muihin ohjelmanumeroihin.
 
-Konstin käytössä auttavat Pelitiski (Halli 5) ja Larp- ja Roolipelitiski (eteläisen sisäänkäynnin aula).
+Konstin käytössä auttavat Pelitiski (Halli 3) ja Larp- ja Roolipelitiski (eteläisen sisäänkäynnin aula).
 Tiskeillä on myös tietokoneita, joilla Konstia voi käyttää.
 
 </Ropecon>
@@ -29,7 +38,7 @@ Konstin käytössä auttaa roolipelitiski. Tiskillä on myös tietokoneita, joil
 <Ropecon>
 Konsti is used to sign up for role-playing games, larps, tournaments, workshops and some other program items.
 
-The Gaming Desk (Hall 5) and the Larp & RPG Desk (southern entrance lobby) will help you with using Konsti. The desks also have shared computers for using Konsti.
+The Gaming Desk (Hall 3) and the Larp & RPG Desk (southern entrance lobby) will help you with using Konsti. The desks also have shared computers for using Konsti.
 
 </Ropecon>
 
@@ -66,6 +75,8 @@ Konsti is a web application that can be accessed through any web browser on your
 You can browse the <Link to={'/program/list'}>program list</Link> without logging in, but to register for programs, a user account is required.
 </En>
 
+<Expand>
+
 <Fi>
 ### Tilin luominen ja sisäänkirjautuminen
 </Fi>
@@ -78,7 +89,7 @@ You can browse the <Link to={'/program/list'}>program list</Link> without loggin
 Aikaisempien tapahtumien Konsti-käyttäjätilit eivät ole enää käytössä, vaan sinun on luotava uusi tili tapahtumalle {props.conventionName} {props.conventionYear}.
 
 <LoginLocal>
-Uuden käyttäjätilin luomiseen tarvitset rekisteröintikoodin, joita on saatavilla Pelitiskiltä (Halli 5), Larp- ja Roolipelitiskiltä tai Infosta (molemmat pääaulassa, eteläisen sisäänkäynnin luona).
+Uuden käyttäjätilin luomiseen tarvitset rekisteröintikoodin, joita on saatavilla Pelitiskiltä (Halli 3), Larp- ja Roolipelitiskiltä tai Infosta (molemmat pääaulassa, eteläisen sisäänkäynnin luona).
 </LoginLocal>
 
 <LoginKompassi>
@@ -94,7 +105,7 @@ Konsti accounts from previous events have been removed, so you will need to crea
 
 <LoginLocal>
 For creating an account, you will need a registration code, which you can get from the
-Gaming Desk (Hall 5), the Larp & RPG Desk or the Info Desk (both in the southern entrance lobby).
+Gaming Desk (Hall 3), the Larp & RPG Desk or the Info Desk (both in the southern entrance lobby).
 </LoginLocal>
 
 <LoginKompassi>
@@ -120,7 +131,9 @@ to change your password. The code is visible in Konsti after you first log in. L
 can see it on the <Link to={'/profile/profile'}>profile page</Link>.
 </Ropecon>
 </En>
+</Expand>
 
+<Expand>
 <Fi>
 ### Ohjelman selaaminen
 </Fi>
@@ -162,7 +175,9 @@ For program items that use lottery sign-up, the number will not change until the
 period is over and the algorithm has allocated users to program items.
 </SignupLottery>
 </En>
+</Expand>
 
+<Expand>
 <Fi>
 ### Suosikkiohjelmanumerot
 </Fi>
@@ -180,6 +195,7 @@ ohjelmanumerot löydät <Link to={'/program/myprogram'}>Oma ohjelmani</Link> -n�
 <En>
 Favoriting program items is an excellent way to keep track of program items you find interesting. You can add a program item to your favorites by clicking on the heart icon in the upper right corner of the program item's info card. You can find your favorites in the <Link to={'/program/myprogram'}>My Program view</Link>.
 </En>
+</Expand>
 
 <Fi>
 ## Ilmoittautuminen
@@ -224,6 +240,27 @@ Jos pääset arvonnassa peliin, Konsti näyttää sinulle tästä ilmoituksen. N
 Konsti will show you a notification if you get a spot in a game in the lottery. You can also view these notifications on the <Link to={'/notifications'}>Notifications</Link> page. You can see all your sign-up results on the <Link to={'/program/myprogram'}>My Program page</Link> and all sign-ups to all program items on the <Link to={'/results'}>Sign-up Results</Link> page.
 </En>
 </SignupLottery>
+
+<Ropecon>
+<Expand>
+<Fi>
+### Pyöröoviohjelmanumerot
+</Fi>
+
+<En>
+### Revolving door program items
+</En>
+
+<Fi>
+Pyöröoviohjelmanumeroissa osallistujat voivat lähteä ohjelmanumerosta ja tulla siihen mukaan kesken. Pyöröoviohjelmanumeron alkuun voi
+ilmoittautua normaalisti, mutta kun ohjelmanumero alkaa, se näkyy koko kestoaikansa Konstin ilmottautumissivulla.
+</Fi>
+
+<En>
+Revolving door program items are program items where participants can freely join and leave. The first participants can sign up for these program items as usual, but after the revolving door program item begin, they are displayed in the program list for their whole duration.
+</En>
+</Expand>
+</Ropecon>
 
 <Solmukohta not>
 <Fi>
@@ -286,26 +323,8 @@ The first games of the convention only have the direct sign-up phase since there
 </Hitpoint>
 </En>
 
-<Ropecon>
-<Fi>
-### Pyöröovipelit
-</Fi>
-
-<En>
-### Revolving door program items
-</En>
-
-<Fi>
-Pyöröoviohjelmanumeroissa osallistujat voivat lähteä ohjelmanumerosta ja tulla siihen mukaan kesken. Pyöröoviohjelmanumeron alkuun voi
-ilmoittautua normaalisti, mutta kun ohjelmanumero alkaa, se näkyy koko kestoaikansa Konstin ilmottautumissivulla.
-</Fi>
-
-<En>
-Revolving door program items are program items where participants can freely join and leave. The first participants can sign up for these program items as usual, but after the revolving door program item begin, they are displayed in the program list for their whole duration.
-</En>
-</Ropecon>
-
 <SignupLottery>
+<Expand>
 <Fi>
 ### Ryhmät
 </Fi>
@@ -317,7 +336,7 @@ Revolving door program items are program items where participants can freely joi
 <Fi>
 Roolipeleihin voi ilmoittautua myös ryhmänä. Silloin arvonta-algoritmi sijoittaa kaikki ryhmän jäsenet samaan peliin
 (sikäli kun arpaonni suosii silloin kun ilmoittautuneita on enemmän kuin paikkoja). Voit luoda ryhmän <Link to={'/profile/group'}>Ryhmä-näkymässä</Link>.
-Samassa näkymässä voit myös liittyä olemassa olevaan ryhmään. Tätä varten tarvitset ryhmän perustajalta rekisteröitymiskoodin.
+Samassa näkymässä voit myös liittyä olemassa olevaan ryhmään. Tätä varten tarvitset ryhmän perustajalta liittymiskoodin, jonka näkee ryhmän luomisen jälkeen.
 </Fi>
 
 <En>
@@ -326,8 +345,8 @@ sign-ups than places, it is of course possible that the group will not get a spo
 game at all.
 
 You can create a group on the <Link to={'/profile/group'}>group page</Link>. There, you can also join an
-existing group, for which you will need a registration code from the person who created
-the group. Only the group creator can sign up the group to games.
+existing group, for which you will need a group code from the person who created
+the group. The code is available after the group is creted. Only the group creator can sign up the group to games.
 
 </En>
 
@@ -348,6 +367,7 @@ Ryhmä-näkymässä listataan ne pelit, jotka estävät ryhmän perustamisen tai
 If you already have direct sign-ups to games, you can't create a new group or join an
 existing one. These sign-ups will be shown on the group page.
 </En>
+</Expand>
 </SignupLottery>
 
 <Ropecon>
@@ -360,12 +380,11 @@ existing one. These sign-ups will be shown on the group page.
 </En>
 
 <Fi>
-Roolipeleistä poiketen larppien ilmoittautuminen on yksivaiheinen eikä sisällä arvontaa,
-vaan larpit täytetään ilmoittautumisjärjestyksessä (suorailmoittautuminen).
+Larppeihin ilmoittaudutaan suoraan eli paikat täytetään ilmoittautumisjärjestyksessä.
 </Fi>
 
 <En>
-Unlike tabletop rgps, larp sign-ups do not use a lottery and only contain one phase.
+Larps use direct signup and seats are reserved in signup order.
 </En>
 
 <Fi>
@@ -379,6 +398,7 @@ larps at the Larp & RPG Desk, because the players may have to, for example, sele
 a character during sign-up.
 </En>
 
+<Expand>
 <Fi>
 ### Larppien ilmoittautumisten avautuminen
 </Fi>
@@ -400,6 +420,7 @@ a character during sign-up.
 - Larps starting later on Saturday: Saturday 11AM
 - Larps on Sunday: Saturday 3PM
 </En>
+</Expand>
 
 <Fi>
 ## Turnauksiin ilmoittautuminen
@@ -410,23 +431,24 @@ a character during sign-up.
 </En>
 
 <Fi>
-Konstissa turnausilmoittautuminen on myös yksivaiheinen eli paikat täytetään ilmoittautumisjärjestyksessä. Kaikkien
+Turnauksiin ilmoittaudutaan suoraan eli paikat täytetään ilmoittautumisjärjestyksessä. Kaikkien
 turnausten ilmoittautuminen ei välttämättä tapahdu Konstin kautta. Jos etsimääsi turnausta ei löydy Konstista etkä
 tiedä, miten ilmoittautua siihen, voit kysyä neuvoa Pelitiskiltä.
 </Fi>
 
 <En>
-Tournament sign-ups also do not use a lottery and only contain one phase. Some tournaments
+Tournaments use direct signup and seats are reserved in signup order. Some tournaments
 may not use Konsti for signing up. If you can't find a tournament in Konsti and don't know
 how to sign up, you can ask for help at the game desk.
 </En>
 
+<Expand>
 <Fi>
-### Turnausilmoittautumisten avautuminen
+### Turnausilmoittautumisten aikataulu
 </Fi>
 
 <En>
-### Sign-up period start times for tournaments
+### Tournament sign-up schedule
 </En>
 
 <Fi>
@@ -440,7 +462,9 @@ how to sign up, you can ask for help at the game desk.
 - Saturday's tournaments: Friday 6PM
 - Sunday's tournaments: Saturday 6PM
 </En>
+</Expand>
 
+<Expand>
 <Fi>
 ### Yhteystietojen kysyminen
 </Fi>
@@ -461,63 +485,78 @@ When signing up for a tournament via the Konsti app, the user is prompted to fil
 not shown to other Konsti users, only to Ropecon desk staff, who will pass on necessary
 contact information to tournament organizers.
 </En>
+</Expand>
 
 <Fi>
-## Työpajoihin ja muuhun ohjelmaan ilmoittautuminen
+## Työpajoihin ilmoittautuminen
 </Fi>
 
 <En>
-## Workshops and other program
+## Workshop sign-ups
 </En>
 
 <Fi>
-Uusina ohjelmatyyppeinä Konstista löytyy vuonna 2023 myös työpajoja ja yksittäisiä muita ohjelmanumeroita. Näihinkin on
-käytössä suorailmoittautuminen eli paikat täytetään ilmoittautumisjärjestyksessä.
+Työpajoihin ilmoittaudutaan suoraan eli paikat täytetään ilmoittautumisjärjestyksessä.
 </Fi>
 
 <En>
-In 2023, many workshops and some other program items are signed up to in Konsti. These
-also use direct sign-up, which means that places are filled in the order of sign-ups.
+Workshops use direct signup and seats are reserved in signup order.
+</En>
+
+<Expand>
+<Fi>
+### Työpajailmoittautumisten aikataulu
+</Fi>
+
+<En>
+### Workshop sign-up schedule
 </En>
 
 <Fi>
-### Työpajailmoittautumisten avautuminen
+- Työpajoihin ilmoittautuminen aukeaa neljä tuntia ennen työpajan alkua.
+- Paitsi jos työpaja alkaa ennen klo 12, niin ilmoittautuminen aukeaa edellisenä päivänä klo 18.
 </Fi>
 
 <En>
-### Sign-up period start times for workshops
+- Signup for the workshops opens four hours before the workshop begins.
+- Except if the workshop begins before 12 PM, then registration opens the previous day at 6 PM.
+</En>
+</Expand>
+
+<Fi>
+## Muuhun ohjelmaan ilmoittautuminen
+</Fi>
+
+<En>
+## Other program sign-ups
 </En>
 
 <Fi>
-- Perjantaina klo 15, jos työpaja on perjantaina
-- Perjantaina klo 18, jos työpaja on lauantaina alkaen viimeistään klo 14
-- Lauantaina klo 9, jos työpaja on lauantaina alkaen klo 14 jälkeen
-- Lauantaina klo 18, jos työpaja on sunnuntaina alkaen viimeistään klo 14
-- Sunnuntaina klo 9, jos työpaja on sunnuntaina alkaen klo 14 jälkeen
+Muuhun ohjelmaan ilmoittaudutaan suoraan eli paikat täytetään ilmoittautumisjärjestyksessä.
 </Fi>
 
 <En>
-- Workshops starting on Friday: Friday 3PM
-- Workshops starting on Saturday on or before 2PM: Friday 6PM
-- Workshops starting on Saturday after 2PM: Saturday 9AM
-- Workshops starting on Sunday on or before 2PM: Saturday: 6PM
-- Workshops starting on Sunday after 2PM: Sunday 9AM
+Other program items use direct signup and seats are reserved in signup order.
+</En>
+
+<Expand>
+<Fi>
+### Muun ohjelman ilmoittautumisten aikataulu
+</Fi>
+
+<En>
+### Other program sign-up schedule
 </En>
 
 <Fi>
-### Muun ohjelman ilmoittautumisten avautuminen
+- Muihin ohjelmanumeroihin ilmoittautuminen aukeaa neljä tuntia ennen työpajan alkua.
+- Paitsi jos ohjelmanumero alkaa ennen klo 12, niin ilmoittautuminen aukeaa edellisenä päivänä klo 18.
 </Fi>
 
 <En>
-### Sign-up period start time for other program
+- Signup for other program items opens four hours before the workshop begins.
+- Except if the program item begins before 12 PM, then registration opens the previous day at 6 PM.
 </En>
-
-<Fi>
-Kaikkien muiden Konstia käyttävien ohjelmanumeroiden ilmoittautuminen alkaa perjantaina klo 15.
-</Fi>
-
-<En>
-Sign-up for all other program items that use Konsti starts on Friday at 3PM.
-</En>
+</Expand>
 
 </Ropecon>
