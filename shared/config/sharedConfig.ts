@@ -115,7 +115,7 @@ export const sharedConfig: SharedConfig = {
     // Other
     "harmaasusien-taisteluharjoitukset", // Harmaasusien taisteluharjoitukset
     "atarashii-naginata-lajinaytos-ja-kokeiluharjoitukset", // Atarashii Naginata: lajinäytös ja kokeiluharjoitukset
-    "kps-turnaus-rps-tournament", // KPS-turnaus
+    "kps-turnaus-rps-tournament", // KPS-turnaus / RPS Tournament
     "keppielainten-ja-keppihirvioiden-kilpailut", // Keppieläinten ja keppihirviöiden kilpailut!
 
     // ** ropecon2023_signuplist - no need to hand pick after Kompassi importer updated**
@@ -175,6 +175,9 @@ export const sharedConfig: SharedConfig = {
     "charlie-ei-surffaa-pe", // Charlie ei surffaa (Pe)
     "charlie-ei-surffaa-la", // Charlie ei surffaa (La)
     "charlie-ei-surffaa-su", // Charlie ei surffaa (Su)
+    "indiehuone-indie-room-indierummet", // Indiehuone / Indie Room / Indierummet
+    "indiehuone-indie-room-indierummet-2", // Indiehuone / Indie Room / Indierummet
+    "indiehuone-indie-room-indierummet-3", // Indiehuone / Indie Room / Indierummet
 
     // LARPS
     "henkien-yo", // Henkien yö
