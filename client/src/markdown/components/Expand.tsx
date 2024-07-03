@@ -18,7 +18,7 @@ export const Expand = ({ children }: Props): ReactElement | null => {
     return null;
   }
 
-  const headerElements = ["h2", "h3"];
+  const headerElements = ["h2"];
 
   const [headers, elements] = partition(children, (child) =>
     headerElements.includes(child.props.children.type as string),

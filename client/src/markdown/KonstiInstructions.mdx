@@ -9,6 +9,7 @@ import { LoginLocal } from "./components/LoginLocal";
 import { SignupLottery } from "./components/SignupLottery";
 import { Expand } from "./components/Expand";
 
+<Expand>
 <Fi>
 ## Mihin Konstia käytetään?
 </Fi>
@@ -49,7 +50,9 @@ The RPG Desk will help you with using Konsti. The desks also have shared compute
 
 </Hitpoint>
 </En>
+</Expand>
 
+<Expand>
 <Fi>
 ## Miten Konstia käytetään?
 </Fi>
@@ -74,8 +77,6 @@ Konsti is a web application that can be accessed through any web browser on your
 <En>
 You can browse the <Link to={'/program/list'}>program list</Link> without logging in, but to register for programs, a user account is required.
 </En>
-
-<Expand>
 
 <Fi>
 ### Tilin luominen ja sisäänkirjautuminen
@@ -131,9 +132,7 @@ to change your password. The code is visible in Konsti after you first log in. L
 can see it on the <Link to={'/profile/profile'}>profile page</Link>.
 </Ropecon>
 </En>
-</Expand>
 
-<Expand>
 <Fi>
 ### Ohjelman selaaminen
 </Fi>
@@ -175,9 +174,7 @@ For program items that use lottery sign-up, the number will not change until the
 period is over and the algorithm has allocated users to program items.
 </SignupLottery>
 </En>
-</Expand>
 
-<Expand>
 <Fi>
 ### Suosikkiohjelmanumerot
 </Fi>
@@ -197,6 +194,7 @@ Favoriting program items is an excellent way to keep track of program items you 
 </En>
 </Expand>
 
+<Expand>
 <Fi>
 ## Ilmoittautuminen
 </Fi>
@@ -242,7 +240,6 @@ Konsti will show you a notification if you get a spot in a game in the lottery. 
 </SignupLottery>
 
 <Ropecon>
-<Expand>
 <Fi>
 ### Pyöröoviohjelmanumerot
 </Fi>
@@ -259,10 +256,10 @@ ilmoittautua normaalisti, mutta kun ohjelmanumero alkaa, se näkyy koko kestoaik
 <En>
 Revolving door program items are program items where participants can freely join and leave. The first participants can sign up for these program items as usual, but after the revolving door program item begin, they are displayed in the program list for their whole duration.
 </En>
-</Expand>
 </Ropecon>
+</Expand>
 
-<Solmukohta not>
+<Expand>
 <Fi>
 ## Roolipeleihin ilmoittautuminen
 </Fi>
@@ -303,7 +300,6 @@ itseään kiinnostavasta pelistä niin kauan, kun siinä on vielä tilaa. Suorai
 <En>
 After the initial placements and the 15-minute intermission period, the direct sign-up phase begins. During the last 1h 45 min before the game is set to begin, you can sign up for a game as long as there is still room for new attendees. You do not need to participate in the lottery sign-up phase to be able to sign up during the direct sign-up period.
 </En>
-</Solmukohta>
 
 <Fi>
 <Ropecon>
@@ -324,7 +320,6 @@ The first games of the convention only have the direct sign-up phase since there
 </En>
 
 <SignupLottery>
-<Expand>
 <Fi>
 ### Ryhmät
 </Fi>
@@ -367,10 +362,11 @@ Ryhmä-näkymässä listataan ne pelit, jotka estävät ryhmän perustamisen tai
 If you already have direct sign-ups to games, you can't create a new group or join an
 existing one. These sign-ups will be shown on the group page.
 </En>
-</Expand>
 </SignupLottery>
+</Expand>
 
 <Ropecon>
+<Expand>
 <Fi>
 ## Larppeihin ilmoittautuminen
 </Fi>
@@ -398,7 +394,6 @@ larps at the Larp & RPG Desk, because the players may have to, for example, sele
 a character during sign-up.
 </En>
 
-<Expand>
 <Fi>
 ### Larppien ilmoittautumisten avautuminen
 </Fi>
@@ -422,6 +417,7 @@ a character during sign-up.
 </En>
 </Expand>
 
+<Expand>
 <Fi>
 ## Turnauksiin ilmoittautuminen
 </Fi>
@@ -442,7 +438,6 @@ may not use Konsti for signing up. If you can't find a tournament in Konsti and 
 how to sign up, you can ask for help at the game desk.
 </En>
 
-<Expand>
 <Fi>
 ### Turnausilmoittautumisten aikataulu
 </Fi>
@@ -462,9 +457,7 @@ how to sign up, you can ask for help at the game desk.
 - Saturday's tournaments: Friday 6PM
 - Sunday's tournaments: Saturday 6PM
 </En>
-</Expand>
 
-<Expand>
 <Fi>
 ### Yhteystietojen kysyminen
 </Fi>
@@ -487,6 +480,7 @@ contact information to tournament organizers.
 </En>
 </Expand>
 
+<Expand>
 <Fi>
 ## Työpajoihin ilmoittautuminen
 </Fi>
@@ -503,7 +497,6 @@ Työpajoihin ilmoittaudutaan suoraan eli paikat täytetään ilmoittautumisjärj
 Workshops use direct signup and seats are reserved in signup order.
 </En>
 
-<Expand>
 <Fi>
 ### Työpajailmoittautumisten aikataulu
 </Fi>
@@ -523,6 +516,7 @@ Workshops use direct signup and seats are reserved in signup order.
 </En>
 </Expand>
 
+<Expand>
 <Fi>
 ## Muuhun ohjelmaan ilmoittautuminen
 </Fi>
@@ -539,7 +533,6 @@ Muuhun ohjelmaan ilmoittaudutaan suoraan eli paikat täytetään ilmoittautumisj
 Other program items use direct signup and seats are reserved in signup order.
 </En>
 
-<Expand>
 <Fi>
 ### Muun ohjelman ilmoittautumisten aikataulu
 </Fi>
@@ -558,5 +551,4 @@ Other program items use direct signup and seats are reserved in signup order.
 - Except if the program item begins before 12 PM, then registration opens the previous day at 6 PM.
 </En>
 </Expand>
-
 </Ropecon>
