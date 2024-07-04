@@ -1,4 +1,4 @@
-import { ReactElement, ReactNode } from "react";
+import { ReactNode } from "react";
 import { SignupStrategy } from "shared/config/sharedConfigTypes";
 import { useAppSelector } from "client/utils/hooks";
 
@@ -7,10 +7,8 @@ interface Props {
 }
 
 // eslint-disable-next-line import/no-unused-modules
-export const SignupDirect = ({ children }: Props): ReactElement => {
+export const SignupDirect = ({ children }: Props): ReactNode => {
   const signupStrategy = useAppSelector((state) => state.admin.signupStrategy);
 
-  return (
-    <span>{signupStrategy === SignupStrategy.DIRECT ? children : null}</span>
-  );
+  return signupStrategy === SignupStrategy.DIRECT ? children : null;
 };

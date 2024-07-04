@@ -1,4 +1,4 @@
-import { ReactElement, ReactNode } from "react";
+import { ReactNode } from "react";
 import { LoginProvider } from "shared/config/sharedConfigTypes";
 import { useAppSelector } from "client/utils/hooks";
 
@@ -7,10 +7,8 @@ interface Props {
 }
 
 // eslint-disable-next-line import/no-unused-modules
-export const LoginKompassi = ({ children }: Props): ReactElement => {
+export const LoginKompassi = ({ children }: Props): ReactNode => {
   const loginProvider = useAppSelector((state) => state.admin.loginProvider);
 
-  return (
-    <span>{loginProvider === LoginProvider.KOMPASSI ? children : null}</span>
-  );
+  return loginProvider === LoginProvider.KOMPASSI ? children : null;
 };

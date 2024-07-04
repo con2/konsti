@@ -18,7 +18,7 @@ export const Expand = ({ children }: Props): ReactElement | null => {
     return null;
   }
 
-  const headerElements = ["h2"];
+  const headerElements = ["h3"];
 
   const [headers, elements] = partition(children, (child) =>
     headerElements.includes(child.props.children.type as string),
@@ -28,7 +28,7 @@ export const Expand = ({ children }: Props): ReactElement | null => {
   const headerText = header.props.children.props.children;
 
   return (
-    <div>
+    <Container>
       <ExpandButton
         isExpanded={isExpanded}
         showMoreText={header}
@@ -40,10 +40,22 @@ export const Expand = ({ children }: Props): ReactElement | null => {
       />
 
       {isExpanded && <StyledRaisedCard>{elements}</StyledRaisedCard>}
-    </div>
+    </Container>
   );
 };
 
+const Container = styled.div`
+  h3 {
+    margin: 12px 0 12px 0;
+  }
+`;
+
 const StyledRaisedCard = styled(RaisedCard)`
   margin: 0;
+  p:first-of-type {
+    margin-top: 0;
+  }
+  p:last-of-type {
+    margin-bottom: 0;
+  }
 `;

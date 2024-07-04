@@ -1,4 +1,4 @@
-import { ReactElement, ReactNode } from "react";
+import { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 
 interface Props {
@@ -6,8 +6,8 @@ interface Props {
 }
 
 // eslint-disable-next-line import/no-unused-modules
-export const Fi = ({ children }: Props): ReactElement => {
+export const Fi = ({ children }: Props): ReactNode => {
   const { i18n } = useTranslation();
 
-  return <span>{i18n.language === "fi" ? children : null}</span>;
+  return i18n.language === "fi" ? children : null;
 };
