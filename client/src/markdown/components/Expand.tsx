@@ -47,7 +47,6 @@ export const Expand = ({ children }: Props): ReactElement | null => {
 const Container = styled.div`
   h3 {
     margin: 12px 0 12px 0;
-    text-decoration: none;
   }
 
   span {
