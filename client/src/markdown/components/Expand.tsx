@@ -48,13 +48,19 @@ const Container = styled.div`
   h3 {
     margin: 12px 0 12px 0;
   }
+
+  span {
+    text-decoration: none;
+  }
 `;
 
 const StyledRaisedCard = styled(RaisedCard)`
   margin: 0;
+
   p:first-of-type {
     margin-top: 0;
   }
+
   p:last-of-type {
     margin-bottom: 0;
   }
