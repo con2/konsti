@@ -28,7 +28,6 @@ export const getAssignmentBonus = (
   });
 
   const averageSignups = groupMembersWithSignups.length / attendeeGroup.length;
-
-  const bonus = averageSignups < 0.5 ? config.server().firtSignupBonus : 0;
+  const bonus = averageSignups < 0.5 ? config.server().firstSignupBonus : 0;
   return bonus;
 };

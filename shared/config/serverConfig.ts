@@ -26,7 +26,7 @@ export interface ServerConfig {
   updateProgramItemPopularityEnabled: boolean;
   useLocalProgramFile: boolean;
   autoAssignAttendeesEnabled: boolean;
-  firtSignupBonus: number;
+  firstSignupBonus: number;
   statsDataDir: string;
   autoAssignDelay: number;
   autoAssignInterval: string;
@@ -69,7 +69,7 @@ const commonConfig = {
 
   // Convention settings
   dataUri: DataUri.ROPECON,
-  firtSignupBonus: 20,
+  firstSignupBonus: 20,
   useLocalProgramFile: false,
   localKompassiFile: "program-ropecon-2024.json",
 
