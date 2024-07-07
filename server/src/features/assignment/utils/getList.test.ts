@@ -5,6 +5,9 @@ import { User, UserGroup } from "shared/types/models/user";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import { ProgramType } from "shared/types/models/programItem";
 
+const startTime = "2019-11-23T12:00:00+02:00";
+const groupCreatorGroupCode = "123-234-345";
+
 const groupCreatorWithLotterySignups: User = {
   kompassiId: 0,
   kompassiUsernameAccepted: false,
@@ -12,18 +15,18 @@ const groupCreatorWithLotterySignups: User = {
   password: "password",
   userGroup: UserGroup.USER,
   serial: "123",
-  groupCode: "123-234-345",
-  groupCreatorCode: "123-234-345",
+  groupCode: groupCreatorGroupCode,
+  groupCreatorCode: groupCreatorGroupCode,
   favoriteProgramItemIds: [],
   lotterySignups: [
     {
       programItem: testProgramItem,
       priority: 1,
-      time: "2019-11-23T12:00:00+02:00",
+      time: startTime,
       message: "",
     },
   ],
-  createdAt: "2019-11-23T12:00:00+02:00",
+  createdAt: startTime,
   eventLogItems: [],
 };
 
@@ -34,11 +37,11 @@ const groupMemberWithoutLotterySignups1: User = {
   password: "password",
   userGroup: UserGroup.USER,
   serial: "456",
-  groupCode: "123-234-345",
+  groupCode: groupCreatorGroupCode,
   groupCreatorCode: "0",
   favoriteProgramItemIds: [],
   lotterySignups: [],
-  createdAt: "2019-11-23T12:00:00+02:00",
+  createdAt: startTime,
   eventLogItems: [],
 };
 
@@ -49,11 +52,11 @@ const groupMemberWithoutLotterySignups2: User = {
   password: "password",
   userGroup: UserGroup.USER,
   serial: "789",
-  groupCode: "123-234-345",
+  groupCode: groupCreatorGroupCode,
   groupCreatorCode: "0",
   favoriteProgramItemIds: [],
   lotterySignups: [],
-  createdAt: "2019-11-23T12:00:00+02:00",
+  createdAt: startTime,
   eventLogItems: [],
 };
 
@@ -93,8 +96,6 @@ const previousSignupWithWrongType: DirectSignupsForProgramItem = {
   ],
 };
 
-const startTime = "2019-11-23T12:00:00+02:00";
-
 test("should return empty array if user has no lottery signups", () => {
   const userArray: User[] = [groupMemberWithoutLotterySignups2];
   const attendeeGroups: readonly User[][] = [userArray, userArray, userArray];
@@ -110,9 +111,24 @@ test("should generate assignment list with bonuses for single user without any d
 
   expect(list).toEqual({
     value: [
-      { event: "p2106", gain: 21, id: "123-234-345", size: 1 },
-      { event: "p2106", gain: 21, id: "123-234-345", size: 1 },
-      { event: "p2106", gain: 21, id: "123-234-345", size: 1 },
+      {
+        event: testProgramItem.programItemId,
+        gain: 21,
+        id: groupCreatorGroupCode,
+        size: 1,
+      },
+      {
+        event: testProgramItem.programItemId,
+        gain: 21,
+        id: groupCreatorGroupCode,
+        size: 1,
+      },
+      {
+        event: testProgramItem.programItemId,
+        gain: 21,
+        id: groupCreatorGroupCode,
+        size: 1,
+      },
     ],
   });
 });
@@ -124,9 +140,24 @@ test("should generate assignment list with bonuses for single user without previ
 
   expect(list).toEqual({
     value: [
-      { event: "p2106", gain: 21, id: "123-234-345", size: 1 },
-      { event: "p2106", gain: 21, id: "123-234-345", size: 1 },
-      { event: "p2106", gain: 21, id: "123-234-345", size: 1 },
+      {
+        event: testProgramItem.programItemId,
+        gain: 21,
+        id: groupCreatorGroupCode,
+        size: 1,
+      },
+      {
+        event: testProgramItem.programItemId,
+        gain: 21,
+        id: groupCreatorGroupCode,
+        size: 1,
+      },
+      {
+        event: testProgramItem.programItemId,
+        gain: 21,
+        id: groupCreatorGroupCode,
+        size: 1,
+      },
     ],
   });
 });
@@ -141,9 +172,24 @@ test("should generate assignment list with bonuses for group without previous di
 
   expect(list).toEqual({
     value: [
-      { event: "p2106", gain: 21, id: "123-234-345", size: 2 },
-      { event: "p2106", gain: 21, id: "123-234-345", size: 2 },
-      { event: "p2106", gain: 21, id: "123-234-345", size: 2 },
+      {
+        event: testProgramItem.programItemId,
+        gain: 21,
+        id: groupCreatorGroupCode,
+        size: 2,
+      },
+      {
+        event: testProgramItem.programItemId,
+        gain: 21,
+        id: groupCreatorGroupCode,
+        size: 2,
+      },
+      {
+        event: testProgramItem.programItemId,
+        gain: 21,
+        id: groupCreatorGroupCode,
+        size: 2,
+      },
     ],
   });
 });
@@ -158,9 +204,24 @@ test("should generate assignment list without bonuses for group with previous di
 
   expect(list).toEqual({
     value: [
-      { event: "p2106", gain: 1, id: "123-234-345", size: 2 },
-      { event: "p2106", gain: 1, id: "123-234-345", size: 2 },
-      { event: "p2106", gain: 1, id: "123-234-345", size: 2 },
+      {
+        event: testProgramItem.programItemId,
+        gain: 1,
+        id: groupCreatorGroupCode,
+        size: 2,
+      },
+      {
+        event: testProgramItem.programItemId,
+        gain: 1,
+        id: groupCreatorGroupCode,
+        size: 2,
+      },
+      {
+        event: testProgramItem.programItemId,
+        gain: 1,
+        id: groupCreatorGroupCode,
+        size: 2,
+      },
     ],
   });
 });
@@ -174,9 +235,24 @@ test("should generate assignment list with bonuses if user has direct signups fo
 
   expect(list).toEqual({
     value: [
-      { event: "p2106", gain: 21, id: "123-234-345", size: 1 },
-      { event: "p2106", gain: 21, id: "123-234-345", size: 1 },
-      { event: "p2106", gain: 21, id: "123-234-345", size: 1 },
+      {
+        event: testProgramItem.programItemId,
+        gain: 21,
+        id: groupCreatorGroupCode,
+        size: 1,
+      },
+      {
+        event: testProgramItem.programItemId,
+        gain: 21,
+        id: groupCreatorGroupCode,
+        size: 1,
+      },
+      {
+        event: testProgramItem.programItemId,
+        gain: 21,
+        id: groupCreatorGroupCode,
+        size: 1,
+      },
     ],
   });
 });

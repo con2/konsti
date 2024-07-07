@@ -10,7 +10,7 @@ import {
 } from "shared/types/models/programItem";
 
 export const testProgramItem: ProgramItem = {
-  programItemId: "p2106",
+  programItemId: "test-program-item",
   title: "Test program item",
   description: "Test program item description",
   location: "Test location",
@@ -51,7 +51,7 @@ export const testProgramItem: ProgramItem = {
 };
 
 export const testProgramItem2: ProgramItem = {
-  programItemId: "p3001",
+  programItemId: "test-program-item-2",
   title: "Test program item 2",
   description: "Test program item description",
   location: "Test location",
