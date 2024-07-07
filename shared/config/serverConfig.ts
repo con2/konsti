@@ -27,6 +27,7 @@ export interface ServerConfig {
   useLocalProgramFile: boolean;
   autoAssignAttendeesEnabled: boolean;
   firstSignupBonus: number;
+  cumulativeFirstSignupBonus: number;
   statsDataDir: string;
   autoAssignDelay: number;
   autoAssignInterval: string;
@@ -70,6 +71,7 @@ const commonConfig = {
   // Convention settings
   dataUri: DataUri.ROPECON,
   firstSignupBonus: 20,
+  cumulativeFirstSignupBonus: 5,
   useLocalProgramFile: false,
   localKompassiFile: "program-ropecon-2024.json",
 

@@ -15,6 +15,7 @@ import {
 } from "shared/utils/result";
 import { AssignmentError } from "shared/types/api/errors";
 
+// TODO: This should not return Result since it's just synchronous logic
 export const getList = (
   attendeeGroups: readonly User[][],
   startTime: string,
@@ -44,7 +45,7 @@ export const getList = (
               : firstMember.serial,
           size: attendeeGroup.length,
           event: lotterySignup.programItem.programItemId,
-          gain: getGain(lotterySignup, attendeeGroup, directSignups),
+          gain: getGain(lotterySignup, attendeeGroup, directSignups, startTime),
         };
       });
 
@@ -70,8 +71,9 @@ const getGain = (
   lotterySignup: Signup,
   attendeeGroup: User[],
   directSignups: readonly DirectSignupsForProgramItem[],
+  startTime: string,
 ): number => {
-  const bonus = getAssignmentBonus(attendeeGroup, directSignups);
+  const bonus = getAssignmentBonus(attendeeGroup, directSignups, startTime);
 
   switch (lotterySignup.priority) {
     case 1:
