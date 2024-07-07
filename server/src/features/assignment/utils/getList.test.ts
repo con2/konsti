@@ -112,6 +112,35 @@ test("should return empty array if user has no lottery signups", () => {
   expect(list).toEqual({ value: [] });
 });
 
+test("should return as many results as user groups", () => {
+  const users = getUsers({ count: 1 });
+  const attendeeGroups = [users, users, users];
+  const list = getList(attendeeGroups, startTime, []);
+
+  expect(list).toEqual({
+    value: [
+      {
+        event: testProgramItem.programItemId,
+        gain: 21,
+        id: groupCreatorGroupCode,
+        size: 1,
+      },
+      {
+        event: testProgramItem.programItemId,
+        gain: 21,
+        id: groupCreatorGroupCode,
+        size: 1,
+      },
+      {
+        event: testProgramItem.programItemId,
+        gain: 21,
+        id: groupCreatorGroupCode,
+        size: 1,
+      },
+    ],
+  });
+});
+
 describe("should give first time bonus", () => {
   test("for single user when there are no direct signups", () => {
     const users = getUsers({ count: 1 });
