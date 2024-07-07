@@ -13,7 +13,7 @@ interface Props {
 export const ProgramItemInfo = ({ programItem }: Props): ReactElement => {
   const { t } = useTranslation();
 
-  const formatTime = () => {
+  const formatTime = (): string => {
     const hours = Math.floor(programItem.mins / 60);
     const minutes = Math.round((programItem.mins / 60 - hours) * 60);
 

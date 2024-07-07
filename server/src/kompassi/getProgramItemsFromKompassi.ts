@@ -56,7 +56,7 @@ export const getProgramItemsFromKompassi = async (
     : makeSuccessResult(programItems);
 };
 
-const getProgramItemId = (programItem: unknown) => {
+const getProgramItemId = (programItem: unknown): unknown => {
   return !!programItem &&
     typeof programItem === "object" &&
     "slug" in programItem

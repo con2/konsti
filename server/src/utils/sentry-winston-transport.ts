@@ -9,6 +9,7 @@ eslint-disable
 @typescript-eslint/no-floating-promises,
 @typescript-eslint/no-unnecessary-condition,
 @typescript-eslint/consistent-indexed-object-style,
+@typescript-eslint/explicit-function-return-type,
 promise/catch-or-return,
 promise/always-return,
 curly
@@ -170,6 +171,7 @@ eslint-enable
 @typescript-eslint/no-floating-promises,
 @typescript-eslint/no-unnecessary-condition,
 @typescript-eslint/consistent-indexed-object-style,
+@typescript-eslint/explicit-function-return-type,
 promise/catch-or-return,
 promise/always-return,
 curly
