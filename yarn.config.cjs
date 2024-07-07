@@ -4,6 +4,7 @@ const { defineConfig } = require("@yarnpkg/types"); // eslint-disable-line @type
 // https://yarnpkg.com/features/constraints
 
 // Enforce that the engines.node field is properly set in all workspaces
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const enforceConsistentEnginesNodeValue = ({ Yarn }) => {
   for (const workspace of Yarn.workspaces()) {
     workspace.set("engines.node", ">=20.12.2");
@@ -11,6 +12,7 @@ const enforceConsistentEnginesNodeValue = ({ Yarn }) => {
 };
 
 // Enforce that a workspaces depend on the same version of a dependency
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const enforceConsistentDependencies = ({ Yarn }) => {
   for (const dependency of Yarn.dependencies()) {
     if (dependency.type === `peerDependencies`) {

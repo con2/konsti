@@ -15,6 +15,7 @@ import {
 } from "client/views/my-program-items/myProgramItemsSlice";
 import { RaisedCard } from "client/components/RaisedCard";
 import { getIsInGroup } from "client/views/group/groupUtils";
+import { SignupQuestion } from "shared/types/models/settings";
 
 interface Props {
   programItems: readonly ProgramItem[];
@@ -46,7 +47,9 @@ export const AllProgramItemsList = ({ programItems }: Props): ReactElement => {
     (state) => state.admin.signupQuestions,
   );
 
-  const getPublicSignupQuestion = (programItemId: string) =>
+  const getPublicSignupQuestion = (
+    programItemId: string,
+  ): SignupQuestion | undefined =>
     signupQuestions.find(
       (s) => s.programItemId === programItemId && !s.private,
     );

@@ -190,7 +190,7 @@ describe(`Direct signup with signup windows`, () => {
   const testLarp = { ...testProgramItem, programType: ProgramType.LARP };
   const testLarp2 = { ...testProgramItem2, programType: ProgramType.LARP };
 
-  const assertSignupTime = (startTime: string, signupTime: string) => {
+  const assertSignupTime = (startTime: string, signupTime: string): void => {
     const signupStartTime = getDirectSignupStartTime({
       ...testLarp,
       startTime,
@@ -263,7 +263,7 @@ describe(`Direct signup with rolling signup`, () => {
     programType: ProgramType.WORKSHOP,
   };
 
-  const assertSignupTime = (startTime: string, signupTime: string) => {
+  const assertSignupTime = (startTime: string, signupTime: string): void => {
     const signupStartTime = getDirectSignupStartTime({
       ...testWorkshop,
       startTime,
