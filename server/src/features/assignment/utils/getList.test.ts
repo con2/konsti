@@ -1,4 +1,5 @@
 import { expect, test } from "vitest";
+import dayjs from "dayjs";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { getList } from "server/features/assignment/utils/getList";
 import { User, UserGroup } from "shared/types/models/user";
@@ -60,40 +61,27 @@ const groupMemberWithoutLotterySignups2: User = {
   eventLogItems: [],
 };
 
-const previousSignup: DirectSignupsForProgramItem = {
-  programItem: testProgramItem,
-  userSignups: [
-    {
-      username: groupMemberWithoutLotterySignups2.username,
-      priority: 1,
-      time: "2019-11-23T12:00:00+02:00",
-      message: "",
+const getPreviousDirectSignup = ({
+  username,
+  programType,
+}: {
+  username: string;
+  programType?: ProgramType;
+}): DirectSignupsForProgramItem => {
+  return {
+    programItem: {
+      ...testProgramItem,
+      programType: programType ?? testProgramItem.programType,
     },
-  ],
-};
-
-const otherUserPreviousSignup: DirectSignupsForProgramItem = {
-  programItem: testProgramItem,
-  userSignups: [
-    {
-      username: "test name",
-      priority: 1,
-      time: "2019-11-23T12:00:00+02:00",
-      message: "",
-    },
-  ],
-};
-
-const previousSignupWithWrongType: DirectSignupsForProgramItem = {
-  programItem: { ...testProgramItem, programType: ProgramType.TOURNAMENT },
-  userSignups: [
-    {
-      username: groupCreatorWithLotterySignups.username,
-      priority: 1,
-      time: "2019-11-23T12:00:00+02:00",
-      message: "",
-    },
-  ],
+    userSignups: [
+      {
+        username,
+        priority: 1,
+        time: dayjs(startTime).subtract(1, "hours").toISOString(),
+        message: "",
+      },
+    ],
+  };
 };
 
 test("should return empty array if user has no lottery signups", () => {
@@ -136,7 +124,9 @@ test("should generate assignment list with bonuses for single user without any d
 test("should generate assignment list with bonuses for single user without previous direct signups", () => {
   const userArray: User[] = [groupCreatorWithLotterySignups];
   const attendeeGroups: readonly User[][] = [userArray, userArray, userArray];
-  const list = getList(attendeeGroups, startTime, [otherUserPreviousSignup]);
+  const list = getList(attendeeGroups, startTime, [
+    getPreviousDirectSignup({ username: "foobar user" }),
+  ]);
 
   expect(list).toEqual({
     value: [
@@ -168,7 +158,9 @@ test("should generate assignment list with bonuses for group without previous di
     groupMemberWithoutLotterySignups1,
   ];
   const attendeeGroups: readonly User[][] = [userArray, userArray, userArray];
-  const list = getList(attendeeGroups, startTime, [otherUserPreviousSignup]);
+  const list = getList(attendeeGroups, startTime, [
+    getPreviousDirectSignup({ username: "foobar user" }),
+  ]);
 
   expect(list).toEqual({
     value: [
@@ -200,7 +192,11 @@ test("should generate assignment list without bonuses for group with previous di
     groupMemberWithoutLotterySignups2,
   ];
   const attendeeGroups: readonly User[][] = [userArray, userArray, userArray];
-  const list = getList(attendeeGroups, startTime, [previousSignup]);
+  const list = getList(attendeeGroups, startTime, [
+    getPreviousDirectSignup({
+      username: groupMemberWithoutLotterySignups2.username,
+    }),
+  ]);
 
   expect(list).toEqual({
     value: [
@@ -230,7 +226,10 @@ test("should generate assignment list with bonuses if user has direct signups fo
   const userArray: User[] = [groupCreatorWithLotterySignups];
   const attendeeGroups: readonly User[][] = [userArray, userArray, userArray];
   const list = getList(attendeeGroups, startTime, [
-    previousSignupWithWrongType,
+    getPreviousDirectSignup({
+      programType: ProgramType.TOURNAMENT,
+      username: groupCreatorWithLotterySignups.username,
+    }),
   ]);
 
   expect(list).toEqual({
