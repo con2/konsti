@@ -389,13 +389,13 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     expect(errorLoggerSpy).toHaveBeenCalledWith(
       "%s",
       new Error(
-        "Invalid program item p2106 at path scheduleItems,0,endTime: Expected string, received null",
+        "Invalid program item test-program-item at path scheduleItems,0,endTime: Expected string, received null",
       ),
     );
     expect(errorLoggerSpy).toHaveBeenCalledWith(
       "%s",
       new Error(
-        "Invalid program item p2106 at path scheduleItems,0,startTime: Expected string, received null",
+        "Invalid program item test-program-item at path scheduleItems,0,startTime: Expected string, received null",
       ),
     );
 
