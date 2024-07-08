@@ -321,9 +321,6 @@ export const translationFI = {
     entryFee: "Materiaalimaksu {{ENTRY_FEE}}",
     entryFeeInfo:
       "Ymmärrän, että työpajaan kuuluu materiaalimaksu {{ENTRY_FEE}}.",
-    doesNotRequireSignup: "Tähän {{PROGRAM_TYPE}} ei tarvitse ilmoittautua",
-    noKonstiSignup:
-      "Tähän {{PROGRAM_TYPE}} ei ilmoittauduta Konstissa. Katso ilmoittautumisohjeet ohjelman lisätiedoista.",
     minAttendanceMissing: "Puuttuva tieto: vähimmäismäärä {{ATTENDEE_TYPE}}",
     maxAttendanceMissing: "Puuttuva tieto: maksimimäärä {{ATTENDEE_TYPE}}",
     showAttendees: "Näytä {{ATTENDEE_TYPE}}",
@@ -332,6 +329,24 @@ export const translationFI = {
     loginLink: "Kirjaudu sisään",
     loginLinkEnding: " nähdäksesi {{ATTENDEE_TYPE}}.",
     signupQuestionAriaLabel: "Lisätietokysymys",
+    help: {
+      doesNotRequireSignup: "Tähän {{PROGRAM_TYPE}} ei tarvitse ilmoittautua.",
+      noKonstiSignup:
+        "Tähän {{PROGRAM_TYPE}} ei ilmoittauduta Konstissa. Katso ilmoittautumisohjeet ohjelman lisätiedoista.",
+      signupAlwaysOpen:
+        "Tähän {{PROGRAM_TYPE}} voi ilmoittautua koko tapahtuman ajan.",
+      directSignupStartsLater:
+        "Osallistujat valitaan ilmoittautumisjärjestyksessä. Ilmoittautuminen alkaa: ",
+      directSignupOpenNow:
+        "Osallistujat valitaan ilmoittautumisjärjestyksessä. Ilmoittautuminen sulkeutuu: ",
+      algorithmSignupStartsLater:
+        "Osallistujat valitaan arvonnalla. Arvontaan ilmoittautuminen: ",
+      algorithmSignupOpen:
+        "Osallistujat valitaan arvonnalla. Arvontaan ilmoittautuminen päättyy: ",
+      algorithmSignupEnded: "Osallistujat valittiin arvonnalla.",
+      directSignupStarts:
+        "Suora ilmoittautuminen jäljelle jääneisiin ja peruutuspaikkoihin: ",
+    },
   },
   attendeeType: {
     player: "pelaaja",

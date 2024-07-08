@@ -11,7 +11,7 @@ import {
 import { Signup } from "shared/types/models/user";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import {
-  getSignupOpensDate,
+  getFormattedTime,
   isAlreadyLotterySigned,
 } from "./allProgramItemsUtils";
 import { Button, ButtonStyle } from "client/components/Button";
@@ -108,7 +108,7 @@ export const LotterySignupProgramItem = ({
             <>
               <span>{t("signup.lotterySignupOpens")}</span>{" "}
               <BoldText>
-                {getSignupOpensDate(algorithmSignupStartTime, timeNow)}
+                {getFormattedTime(algorithmSignupStartTime, timeNow)}
               </BoldText>
             </>
           )}
@@ -135,7 +135,7 @@ export const LotterySignupProgramItem = ({
               <p>
                 {t("signup.lotterySignupOpens")}{" "}
                 <BoldText>
-                  {getSignupOpensDate(algorithmSignupStartTime, timeNow)}
+                  {getFormattedTime(algorithmSignupStartTime, timeNow)}
                 </BoldText>
               </p>
             )}

@@ -1,7 +1,11 @@
 import { Dayjs } from "dayjs";
 import { ProgramItem } from "shared/types/models/programItem";
 import { Signup } from "shared/types/models/user";
-import { getDateAndTime, getWeekdayAndTime } from "client/utils/timeFormatter";
+import {
+  getDateAndTime,
+  getTime,
+  getWeekdayAndTime,
+} from "client/utils/timeFormatter";
 import { config } from "shared/config";
 
 export const isAlreadyLotterySigned = (
@@ -24,14 +28,27 @@ export const isAlreadyDirectySigned = (
   );
 };
 
-export const getSignupOpensDate = (
-  signupStartTime: Dayjs,
-  timeNow: Dayjs,
-): string => {
+export const getFormattedTime = (time: Dayjs, timeNow: Dayjs): string => {
   // Show weekday and time on convention week
   if (timeNow.isSame(config.shared().conventionStartTime, "week")) {
-    return getWeekdayAndTime(signupStartTime.toISOString());
+    return getWeekdayAndTime(time.toISOString());
   }
   // Show full time before convention week
-  return getDateAndTime(signupStartTime.toISOString());
+  return getDateAndTime(time.toISOString());
+};
+
+/** Format a time interval in a human-friendly way for showing in the UI. */
+export const getFormattedInterval = (
+  startTime: Dayjs,
+  endTime: Dayjs,
+  timeNow: Dayjs,
+): string => {
+  const startFormatted = getFormattedTime(startTime, timeNow);
+
+  const endFormatted = startTime.isSame(endTime, "day")
+    ? getTime(endTime.toISOString())
+    : getFormattedTime(endTime, timeNow);
+
+  // Note that the dash should be an en dash
+  return `${startFormatted} – ${endFormatted}`;
 };

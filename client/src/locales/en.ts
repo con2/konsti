@@ -318,9 +318,6 @@ export const translationEN = {
     entryFee: "Material fee {{ENTRY_FEE}}",
     entryFeeInfo:
       "I understand that the workshop requires a material fee of {{ENTRY_FEE}}.",
-    doesNotRequireSignup: "This {{PROGRAM_TYPE}} does not require signing up.",
-    noKonstiSignup:
-      "This {{PROGRAM_TYPE}} does not use Konsti for signing up. See the program details for instructions.",
     minAttendanceMissing: "Missing info: minimum number of {{ATTENDEE_TYPE}}",
     maxAttendanceMissing: "Missing info: maximum number of {{ATTENDEE_TYPE}}",
     showAttendees: "Show {{ATTENDEE_TYPE}}",
@@ -329,6 +326,23 @@ export const translationEN = {
     loginLink: "Log in",
     loginLinkEnding: " to see {{ATTENDEE_TYPE}}.",
     signupQuestionAriaLabel: "Signup question",
+    help: {
+      doesNotRequireSignup:
+        "This {{PROGRAM_TYPE}} does not require signing up.",
+      noKonstiSignup:
+        "This {{PROGRAM_TYPE}} does not use Konsti for signing up. See the program details for instructions.",
+      signupAlwaysOpen: "You can sign up to this {{PROGRAM_TYPE}} at any time.",
+      directSignupStartsLater:
+        "Participants are selected in the order of sign-ups. Sign-up opens ",
+      directSignupOpenNow:
+        "Participants are selected in the order of sign-ups. Sign-up closes ",
+      algorithmSignupStartsLater:
+        "Participants are selected in a lottery. Lotter sign-up open ",
+      algorithmSignupOpen:
+        "Participants are selected in a lottery. Lottery sign-up closes ",
+      algorithmSignupEnded: "Participants were selected in a lottery.",
+      directSignupStarts: "Direct sign-up to remaining and cancelled spots: ",
+    },
   },
   attendeeType: {
     player: "player",

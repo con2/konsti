@@ -6,7 +6,7 @@ import { ProgramItem } from "shared/types/models/programItem";
 import { DirectSignupForm } from "./DirectSignupForm";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import {
-  getSignupOpensDate,
+  getFormattedTime,
   isAlreadyDirectySigned,
 } from "./allProgramItemsUtils";
 import { Button, ButtonStyle } from "client/components/Button";
@@ -92,7 +92,7 @@ export const DirectSignupProgramItem = ({
             <>
               <span>{t("signup.signupOpens")}</span>{" "}
               <BoldText>
-                {getSignupOpensDate(directSignupStartTime, timeNow)}
+                {getFormattedTime(directSignupStartTime, timeNow)}
               </BoldText>
             </>
           )}
@@ -139,7 +139,7 @@ export const DirectSignupProgramItem = ({
                 <p>
                   {t("signup.signupOpens")}{" "}
                   <BoldText>
-                    {getSignupOpensDate(directSignupStartTime, timeNow)}
+                    {getFormattedTime(directSignupStartTime, timeNow)}
                   </BoldText>
                 </p>
               )}
