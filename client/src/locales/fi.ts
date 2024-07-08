@@ -280,6 +280,8 @@ export const translationFI = {
   },
   eventLogActions: {
     newAssignment: "Olet päässyt arvonnassa {{PROGRAM_TYPE}}",
+    newAssignmentProgramItemMissing:
+      "Olet päässyt arvonnassa ohjelmanumeroon {{PROGRAM_ITEM_ID}} mutta se on peruuntunut.",
     noAssignment:
       "Paikat klo {{START_TIME}} alkaviin ohjelmanumeroihin arvottiin. Ikävä kyllä et mahtunut mukaan mihinkään valitsemaasi ohjelmaan.",
   },

@@ -277,6 +277,8 @@ export const translationEN = {
   },
   eventLogActions: {
     newAssignment: "You were assigned to the {{PROGRAM_TYPE}}",
+    newAssignmentProgramItemMissing:
+      "You were assigned to program item {{PROGRAM_ITEM_ID}} but it was canceled.",
     noAssignment:
       "Spots for program items at {{START_TIME}} were randomized. Unfortunately, we couldn’t fit you into any of your chosen program items.",
   },
