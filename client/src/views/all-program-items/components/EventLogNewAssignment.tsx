@@ -22,33 +22,42 @@ export const EventLogNewAssignment = ({
   const foundProgramItem = programItems.find(
     (programItem) => programItem.programItemId === eventLogItem.programItemId,
   );
-  if (!foundProgramItem) {
-    return null;
-  }
 
   return (
     <div>
-      <span>
-        {t(`eventLogActions.newAssignment`, {
-          PROGRAM_TYPE: t(
-            `programTypeIllative.${foundProgramItem.programType}`,
-          ),
-        })}{" "}
-        <StyledLink
-          to={`${AppRoute.PROGRAM_ITEM}/${eventLogItem.programItemId}`}
-        >
-          {foundProgramItem.title}
-        </StyledLink>
-        .
-      </span>
-
-      {showDetails && (
-        <StartTime>
-          {t("eventLog.programItemDetails", {
-            START_TIME: getWeekdayAndTime(foundProgramItem.startTime),
-            LOCATION: foundProgramItem.location,
+      {!foundProgramItem && (
+        <span>
+          {t(`eventLogActions.newAssignmentProgramItemMissing`, {
+            PROGRAM_ITEM_ID: eventLogItem.programItemId,
           })}
-        </StartTime>
+        </span>
+      )}
+
+      {foundProgramItem && (
+        <>
+          <span>
+            {t(`eventLogActions.newAssignment`, {
+              PROGRAM_TYPE: t(
+                `programTypeIllative.${foundProgramItem.programType}`,
+              ),
+            })}{" "}
+            <StyledLink
+              to={`${AppRoute.PROGRAM_ITEM}/${eventLogItem.programItemId}`}
+            >
+              {foundProgramItem.title}
+            </StyledLink>
+            .
+          </span>
+
+          {showDetails && (
+            <StartTime>
+              {t("eventLog.programItemDetails", {
+                START_TIME: getWeekdayAndTime(foundProgramItem.startTime),
+                LOCATION: foundProgramItem.location,
+              })}
+            </StartTime>
+          )}
+        </>
       )}
     </div>
   );
