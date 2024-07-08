@@ -1,4 +1,4 @@
-import { updateEventLogItem } from "server/features/user/event-log/eventLogRepository";
+import { updateEventLogItemIsSeen } from "server/features/user/event-log/eventLogRepository";
 import {
   PostEventLogIsSeenError,
   PostEventLogIsSeenRequest,
@@ -6,13 +6,13 @@ import {
 } from "shared/types/api/eventLog";
 import { isErrorResult, unwrapResult } from "shared/utils/result";
 
-export const storeEventLogItem = async (
+export const storeEventLogItemIsSeen = async (
   request: PostEventLogIsSeenRequest,
 ): Promise<PostEventLogIsSeenResponse | PostEventLogIsSeenError> => {
-  const updateEventLogItemResult = await updateEventLogItem(request);
+  const updateEventLogItemResult = await updateEventLogItemIsSeen(request);
   if (isErrorResult(updateEventLogItemResult)) {
     return {
-      message: `Unable to update event log item`,
+      message: `Unable to update event log item isSeen`,
       status: "error",
       errorId: "unknown",
     };
@@ -22,7 +22,7 @@ export const storeEventLogItem = async (
 
   if (!eventLogItems) {
     return {
-      message: `Unable to update event log item`,
+      message: `Unable to update event log item isSeen`,
       status: "error",
       errorId: "unknown",
     };

@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { storeEventLogItem } from "server/features/user/event-log/eventLogService";
+import { storeEventLogItemIsSeen } from "server/features/user/event-log/eventLogService";
 import { getAuthorizedUsername } from "server/utils/authHeader";
 import { logger } from "server/utils/logger";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
@@ -9,11 +9,11 @@ import {
 } from "shared/types/api/eventLog";
 import { UserGroup } from "shared/types/models/user";
 
-export const postEventLogItem = async (
+export const postEventLogItemIsSeen = async (
   req: Request<{}, {}, PostEventLogIsSeenRequest>,
   res: Response,
 ): Promise<Response> => {
-  logger.info(`API call: POST ${ApiEndpoint.EVENT_LOG}`);
+  logger.info(`API call: POST ${ApiEndpoint.EVENT_LOG_IS_SEEN}`);
 
   const username = getAuthorizedUsername(
     req.headers.authorization,
@@ -27,11 +27,13 @@ export const postEventLogItem = async (
   if (!result.success) {
     logger.error(
       "%s",
-      new Error(`Error validating postEventLogItem body: ${result.error}`),
+      new Error(
+        `Error validating postEventLogItemIsSeen body: ${result.error}`,
+      ),
     );
     return res.sendStatus(422);
   }
 
-  const response = await storeEventLogItem(result.data);
+  const response = await storeEventLogItemIsSeen(result.data);
   return res.json(response);
 };

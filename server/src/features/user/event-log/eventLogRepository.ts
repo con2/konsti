@@ -55,7 +55,7 @@ export const addEventLogItems = async (
   }
 };
 
-export const updateEventLogItem = async (
+export const updateEventLogItemIsSeen = async (
   request: PostEventLogIsSeenRequest,
 ): Promise<Result<EventLogItem[] | null, MongoDbError>> => {
   const { username, eventLogItemId, isSeen } = request;
