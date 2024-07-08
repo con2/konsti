@@ -123,8 +123,8 @@ export const saveUserSignupResults = async (
         })
       : results;
 
-  // Add new signups to user eventLogs
-  const addSuccessEventLogItemsResult = await addEventLogItems({
+  // Add NEW_ASSIGNMENT to user event logs
+  const newAssignmentEventLogItemsResult = await addEventLogItems({
     updates: finalResults.map((result) => ({
       username: result.username,
       programItemId: result.directSignup.programItem.programItemId,
@@ -133,8 +133,8 @@ export const saveUserSignupResults = async (
     })),
     action: EventLogAction.NEW_ASSIGNMENT,
   });
-  if (isErrorResult(addSuccessEventLogItemsResult)) {
-    return addSuccessEventLogItemsResult;
+  if (isErrorResult(newAssignmentEventLogItemsResult)) {
+    return newAssignmentEventLogItemsResult;
   }
 
   // Get users who didn't get a seat in lottery
@@ -151,7 +151,7 @@ export const saveUserSignupResults = async (
     ),
   );
 
-  const failedLotterySignupUsernames = lotterySignupUsernames.flatMap(
+  const noAssignmentLotterySignupUsernames = lotterySignupUsernames.flatMap(
     (lotterySignupUsername) => {
       const userWithLotterySignup = results.find(
         (result) => result.username === lotterySignupUsername,
@@ -163,12 +163,12 @@ export const saveUserSignupResults = async (
     },
   );
 
-  // Add failed signups to user eventLogs
-  if (failedLotterySignupUsernames.length > 0) {
-    const addFailureEventLogItemsResult = await addEventLogItems({
-      updates: failedLotterySignupUsernames.map(
-        (failedLotterySignupUsername) => ({
-          username: failedLotterySignupUsername,
+  // Add NO_ASSIGNMENT to user event logs
+  if (noAssignmentLotterySignupUsernames.length > 0) {
+    const noAssignmentEventLogItemsResult = await addEventLogItems({
+      updates: noAssignmentLotterySignupUsernames.map(
+        (noAssignmentLotterySignupUsername) => ({
+          username: noAssignmentLotterySignupUsername,
           programItemId: "",
           programItemStartTime: startTime,
           createdAt: dayjs().toISOString(),
@@ -176,8 +176,8 @@ export const saveUserSignupResults = async (
       ),
       action: EventLogAction.NO_ASSIGNMENT,
     });
-    if (isErrorResult(addFailureEventLogItemsResult)) {
-      return addFailureEventLogItemsResult;
+    if (isErrorResult(noAssignmentEventLogItemsResult)) {
+      return noAssignmentEventLogItemsResult;
     }
   }
 
