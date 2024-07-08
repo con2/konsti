@@ -53,13 +53,13 @@ export const runAssignmentStrategy = (
 };
 
 const runPadgStrategy = (
-  uses: readonly User[],
+  users: readonly User[],
   programItems: readonly ProgramItem[],
   startTime: string,
   directSignups: readonly DirectSignupsForProgramItem[],
 ): Result<AssignmentResult, AssignmentError> => {
   const padgResultResult = padgAssignment(
-    uses,
+    users,
     programItems,
     startTime,
     directSignups,
