@@ -31,7 +31,7 @@ afterEach(async () => {
   await mongoose.disconnect();
 });
 
-test("should add success and failure event log items", async () => {
+test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items", async () => {
   await saveUser(mockUser);
   await saveUser(mockUser2);
 
