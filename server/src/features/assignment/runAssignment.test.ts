@@ -124,7 +124,7 @@ describe("Assignment with valid data", () => {
     const updatedUsers2 = assignResults2.results.map(
       (result) => result.username,
     );
-    await assertUserUpdatedCorrectly(updatedUsers2, 2);
+    await assertUserUpdatedCorrectly(updatedUsers2);
   });
 });
 
