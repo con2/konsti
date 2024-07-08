@@ -17,4 +17,5 @@ export interface LotterySignup {
   username: string;
   programItemId: string;
   priority: number;
+  startTime: string;
 }

@@ -5,9 +5,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { HEADER_HEIGHT } from "client/components/Header";
-import { getWeekdayAndTime } from "client/utils/timeFormatter";
 import { submitUpdateEventLogIsSeen } from "client/views/login/loginThunks";
-import { AppRoute } from "client/app/AppRoutes";
+import { EventLogAction } from "shared/types/models/eventLog";
+import { EventLogNewAssignment } from "client/views/all-program-items/components/EventLogNewAssignment";
+import { EventLogNoAssignment } from "client/views/all-program-items/components/EventLogNoAssignment";
 
 export const NotificationBar = (): ReactElement | null => {
   const { t } = useTranslation();
@@ -20,55 +21,46 @@ export const NotificationBar = (): ReactElement | null => {
   const eventLogItems = useAppSelector((state) => state.login.eventLogItems);
   const unseenEvents = eventLogItems.filter((item) => !item.isSeen);
 
-  const errorList = unseenEvents.map(
-    ({ eventLogItemId, programItemId, action, createdAt }) => {
-      const foundProgramItem = programItems.find(
-        (programItem) => programItem.programItemId === programItemId,
-      );
-      if (!foundProgramItem) {
-        return;
-      }
-      return (
-        <StyledNotification key={`${action}-${createdAt}`}>
-          <div>
-            <span>
-              {t(`eventLogActions.${action}`, {
-                PROGRAM_TYPE: t(
-                  `programTypeIllative.${foundProgramItem.programType}`,
-                ),
-              })}{" "}
-            </span>
-            <Link to={`${AppRoute.PROGRAM_ITEM}/${programItemId}`}>
-              {foundProgramItem.title}
-            </Link>
-            <StartTime>
-              ({getWeekdayAndTime(foundProgramItem.startTime)})
-            </StartTime>
-            .
-            <ShowAllLinkContainer>
-              <Link to={`/notifications`}>{t("notificationBar.showAll")}</Link>
-            </ShowAllLinkContainer>
-          </div>
-
-          <span>
-            <StyledFontAwesomeIcon
-              icon="xmark"
-              aria-label={t("iconAltText.closeNotification")}
-              onClick={() => {
-                dispatch(
-                  submitUpdateEventLogIsSeen({
-                    username,
-                    eventLogItemId,
-                    isSeen: true,
-                  }),
-                );
-              }}
+  const errorList = unseenEvents.map((unseenEvent) => {
+    return (
+      <StyledNotification
+        key={`${unseenEvent.action}-${unseenEvent.createdAt}`}
+      >
+        <div>
+          {unseenEvent.action === EventLogAction.NEW_ASSIGNMENT && (
+            <EventLogNewAssignment
+              eventLogItem={unseenEvent}
+              programItems={programItems}
+              showDetails={false}
             />
-          </span>
-        </StyledNotification>
-      );
-    },
-  );
+          )}
+
+          {unseenEvent.action === EventLogAction.NO_ASSIGNMENT && (
+            <EventLogNoAssignment eventLogItem={unseenEvent} />
+          )}
+          <ShowAllLinkContainer>
+            <Link to={`/notifications`}>{t("notificationBar.showAll")}</Link>
+          </ShowAllLinkContainer>
+        </div>
+
+        <span>
+          <StyledFontAwesomeIcon
+            icon="xmark"
+            aria-label={t("iconAltText.closeNotification")}
+            onClick={() => {
+              dispatch(
+                submitUpdateEventLogIsSeen({
+                  username,
+                  eventLogItemId: unseenEvent.eventLogItemId,
+                  isSeen: true,
+                }),
+              );
+            }}
+          />
+        </span>
+      </StyledNotification>
+    );
+  });
 
   return <NotificationContainer>{errorList}</NotificationContainer>;
 };
@@ -90,10 +82,6 @@ const NotificationContainer = styled.div`
   position: sticky;
   top: ${HEADER_HEIGHT}px;
   z-index: 10;
-`;
-
-const StartTime = styled.span`
-  margin-left: 6px;
 `;
 
 const ShowAllLinkContainer = styled.div`

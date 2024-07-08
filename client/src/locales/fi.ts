@@ -280,6 +280,7 @@ export const translationFI = {
   },
   eventLogActions: {
     newAssignment: "Olet päässyt arvonnassa {{PROGRAM_TYPE}}",
+    noAssignment: "Et saanut paikkaa klo {{START_TIME}} arvonnassa",
   },
   notificationBar: {
     showAll: "Näytä kaikki ilmoitukset",

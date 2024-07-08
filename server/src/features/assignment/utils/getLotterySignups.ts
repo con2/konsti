@@ -6,7 +6,7 @@ export const getLotterySignups = (users: readonly User[]): LotterySignup[] => {
   logger.debug("Get lottery signups");
   const lotterySignups: LotterySignup[] = [];
 
-  // Get lottery signups for all attendees
+  // Get lottery signups for all users
   users.forEach((user) => {
     if (user.lotterySignups.length !== 0) {
       user.lotterySignups.forEach((lotterySignup) => {
@@ -14,6 +14,7 @@ export const getLotterySignups = (users: readonly User[]): LotterySignup[] => {
           username: user.username,
           programItemId: lotterySignup.programItem.programItemId,
           priority: lotterySignup.priority,
+          startTime: lotterySignup.time,
         });
       });
     }

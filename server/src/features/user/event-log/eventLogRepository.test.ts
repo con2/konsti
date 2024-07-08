@@ -26,7 +26,7 @@ afterEach(async () => {
   await mongoose.disconnect();
 });
 
-test("should insert new event log item to user", async () => {
+test("should insert new event log items to user", async () => {
   await saveProgramItems([testProgramItem]);
   await saveUser(mockUser);
   await saveUser(mockUser2);
@@ -50,6 +50,24 @@ test("should insert new event log item to user", async () => {
     action: EventLogAction.NEW_ASSIGNMENT,
   });
 
+  await addEventLogItems({
+    updates: [
+      {
+        username: mockUser.username,
+        programItemId: "",
+        programItemStartTime: testProgramItem.startTime,
+        createdAt: "2019-07-26T17:00:00.000Z",
+      },
+      {
+        username: mockUser2.username,
+        programItemId: "",
+        programItemStartTime: testProgramItem.startTime,
+        createdAt: "2020-07-26T17:00:00.000Z",
+      },
+    ],
+    action: EventLogAction.NO_ASSIGNMENT,
+  });
+
   const updatedUser = unsafelyUnwrap(await findUser(mockUser.username));
 
   expect(updatedUser).toMatchObject({
@@ -58,6 +76,12 @@ test("should insert new event log item to user", async () => {
       {
         action: EventLogAction.NEW_ASSIGNMENT,
         programItemId: testProgramItem.programItemId,
+        programItemStartTime: testProgramItem.startTime,
+        createdAt: "2019-07-26T17:00:00.000Z",
+      },
+      {
+        action: EventLogAction.NO_ASSIGNMENT,
+        programItemId: "",
         programItemStartTime: testProgramItem.startTime,
         createdAt: "2019-07-26T17:00:00.000Z",
       },
@@ -72,6 +96,12 @@ test("should insert new event log item to user", async () => {
       {
         action: EventLogAction.NEW_ASSIGNMENT,
         programItemId: testProgramItem.programItemId,
+        programItemStartTime: testProgramItem.startTime,
+        createdAt: "2020-07-26T17:00:00.000Z",
+      },
+      {
+        action: EventLogAction.NO_ASSIGNMENT,
+        programItemId: "",
         programItemStartTime: testProgramItem.startTime,
         createdAt: "2020-07-26T17:00:00.000Z",
       },
@@ -110,10 +140,28 @@ test("should delete event log items for start time", async () => {
     action: EventLogAction.NEW_ASSIGNMENT,
   });
 
-  await deleteEventLogItemsByStartTime(
-    testProgramItem.startTime,
+  await addEventLogItems({
+    updates: [
+      {
+        username: mockUser.username,
+        programItemId: "",
+        programItemStartTime: testProgramItem.startTime,
+        createdAt: "2019-07-26T17:00:00.000Z",
+      },
+      {
+        username: mockUser.username,
+        programItemId: "",
+        programItemStartTime: testProgramItem2.startTime,
+        createdAt: "2020-07-26T17:00:00.000Z",
+      },
+    ],
+    action: EventLogAction.NO_ASSIGNMENT,
+  });
+
+  await deleteEventLogItemsByStartTime(testProgramItem.startTime, [
     EventLogAction.NEW_ASSIGNMENT,
-  );
+    EventLogAction.NO_ASSIGNMENT,
+  ]);
 
   const updatedUser = unsafelyUnwrap(await findUser(mockUser.username));
 
@@ -123,6 +171,12 @@ test("should delete event log items for start time", async () => {
       {
         action: EventLogAction.NEW_ASSIGNMENT,
         programItemId: testProgramItem2.programItemId,
+        programItemStartTime: testProgramItem2.startTime,
+        createdAt: "2020-07-26T17:00:00.000Z",
+      },
+      {
+        action: EventLogAction.NO_ASSIGNMENT,
+        programItemId: "",
         programItemStartTime: testProgramItem2.startTime,
         createdAt: "2020-07-26T17:00:00.000Z",
       },

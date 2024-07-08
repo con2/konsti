@@ -129,6 +129,7 @@ export const runAssignment = async ({
     startTime: assignmentTime,
     algorithm: assignResults.algorithm,
     message: assignResults.message,
+    users: validLotterySignupsUsers,
   });
   if (isErrorResult(saveResultsResult)) {
     return saveResultsResult;

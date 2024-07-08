@@ -277,6 +277,7 @@ export const translationEN = {
   },
   eventLogActions: {
     newAssignment: "You were assigned to the {{PROGRAM_TYPE}}",
+    noAssignment: "You didn't get a seat in {{START_TIME}} lottery",
   },
   notificationBar: {
     showAll: "Show all notifications",

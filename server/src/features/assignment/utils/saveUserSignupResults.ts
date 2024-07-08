@@ -1,4 +1,5 @@
 import dayjs from "dayjs";
+import { uniq } from "lodash-es";
 import { UserAssignmentResult } from "shared/types/models/result";
 import {
   delDirectSignup,
@@ -20,10 +21,13 @@ import {
 } from "server/features/user/event-log/eventLogRepository";
 import { EventLogAction } from "shared/types/models/eventLog";
 import { config } from "shared/config";
+import { getLotterySignups } from "server/features/assignment/utils/getLotterySignups";
+import { User } from "shared/types/models/user";
 
 export const saveUserSignupResults = async (
   startTime: string,
   results: readonly UserAssignmentResult[],
+  users: User[],
 ): Promise<Result<void, MongoDbError>> => {
   // Remove previous assignment result for the same start time
   // This does not remove "directSignupAlwaysOpen" signups or previous signups from moved program items
@@ -96,10 +100,10 @@ export const saveUserSignupResults = async (
 
   // Remove eventLog items from same start time
   const deleteEventLogItemsByStartTimeResult =
-    await deleteEventLogItemsByStartTime(
-      startTime,
+    await deleteEventLogItemsByStartTime(startTime, [
       EventLogAction.NEW_ASSIGNMENT,
-    );
+      EventLogAction.NO_ASSIGNMENT,
+    ]);
   if (isErrorResult(deleteEventLogItemsByStartTimeResult)) {
     return deleteEventLogItemsByStartTimeResult;
   }
@@ -119,8 +123,8 @@ export const saveUserSignupResults = async (
         })
       : results;
 
-  // Add new signups to users eventLogs
-  const addEventLogItemsResult = await addEventLogItems({
+  // Add new signups to user eventLogs
+  const addSuccessEventLogItemsResult = await addEventLogItems({
     updates: finalResults.map((result) => ({
       username: result.username,
       programItemId: result.directSignup.programItem.programItemId,
@@ -129,8 +133,52 @@ export const saveUserSignupResults = async (
     })),
     action: EventLogAction.NEW_ASSIGNMENT,
   });
-  if (isErrorResult(addEventLogItemsResult)) {
-    return addEventLogItemsResult;
+  if (isErrorResult(addSuccessEventLogItemsResult)) {
+    return addSuccessEventLogItemsResult;
+  }
+
+  // Get users who didn't get a seat in lottery
+
+  const lotterySignups = getLotterySignups(users);
+
+  const lotterySignupsForStartingTime = lotterySignups.filter((lotterySignup) =>
+    dayjs(lotterySignup.startTime).isSame(dayjs(startTime)),
+  );
+
+  const lotterySignupUsernames = uniq(
+    lotterySignupsForStartingTime.map(
+      (lotterySignup) => lotterySignup.username,
+    ),
+  );
+
+  const failedLotterySignupUsernames = lotterySignupUsernames.flatMap(
+    (lotterySignupUsername) => {
+      const userWithLotterySignup = results.find(
+        (result) => result.username === lotterySignupUsername,
+      );
+      if (!userWithLotterySignup) {
+        return lotterySignupUsername;
+      }
+      return [];
+    },
+  );
+
+  // Add failed signups to user eventLogs
+  if (failedLotterySignupUsernames.length > 0) {
+    const addFailureEventLogItemsResult = await addEventLogItems({
+      updates: failedLotterySignupUsernames.map(
+        (failedLotterySignupUsername) => ({
+          username: failedLotterySignupUsername,
+          programItemId: "",
+          programItemStartTime: startTime,
+          createdAt: dayjs().toISOString(),
+        }),
+      ),
+      action: EventLogAction.NO_ASSIGNMENT,
+    });
+    if (isErrorResult(addFailureEventLogItemsResult)) {
+      return addFailureEventLogItemsResult;
+    }
   }
 
   return makeSuccessResult(undefined);
