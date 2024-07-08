@@ -5,7 +5,6 @@ import { ProgramType } from "shared/types/models/programItem";
 
 initializeDayjs();
 
-/*
 if (!config.server().enableLoggingInTests) {
   // Don't show logging in tests
   vi.doMock("server/utils/logger", () => {
@@ -19,7 +18,6 @@ if (!config.server().enableLoggingInTests) {
     };
   });
 }
-  */
 
 // Defined in globalSetup.ts
 globalThis.__MONGO_URI__ = "mongodb://127.0.0.1:57233/";

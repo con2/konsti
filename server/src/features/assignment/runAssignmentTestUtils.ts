@@ -5,11 +5,12 @@ import { verifyUserSignups } from "server/features/assignment/utils/verifyUserSi
 
 export const assertUserUpdatedCorrectly = async (
   usernames: string[],
+  eventLogItemsCount = 1,
 ): Promise<void> => {
   const users = unsafelyUnwrap(await findUsers(usernames));
 
   users.map((user) => {
-    expect(user.eventLogItems).toHaveLength(1);
+    expect(user.eventLogItems).toHaveLength(eventLogItemsCount);
   });
 
   await verifyUserSignups();
