@@ -1314,6 +1314,34 @@
     ]
   },
   {
+    "slug": "siniviivan-sankarit-2",
+    "title": "Siniviivan sankarit",
+    "description": "Siniviivan Sankarit on jääkiekko-aiheinen lautapeli.\r\nTarjolla Demoilua loppusuoralla olevalla itse tehdyllä lautapelillä.\r\nYksi Demo kestää maksimissaan n. 1h. \r\nEi ennakko ilmoittautumisia. \r\nKokeilemaan voi tulla sitä mukaan kun peli on vapaa.\r\n\r\n\"Heroes of the blueline\" hockey boardgame demo.\r\nCome and try it. Game time about 1h",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-07-19"],
+      "room": ["halli-3-turnaussali"],
+      "type": ["gaming", "demo"],
+      "topic": ["miniatures"],
+      "konsti": ["other"],
+      "audience": ["all-ages", "beginners"],
+      "language": ["fi"],
+      "accessibility": ["colorblind"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Itse tehty / Self made",
+      "konsti:maxAttendance": 1
+    },
+    "scheduleItems": [
+      {
+        "startTime": "2024-07-19T13:00:00+00:00",
+        "endTime": "2024-07-19T16:00:00+00:00",
+        "lengthMinutes": 180,
+        "location": "Halli 3 Turnaussali"
+      }
+    ]
+  },
+  {
     "slug": "yo-oopperassa-night-at-the-opera",
     "title": "Yö Oopperassa / Night at the Opera",
     "description": "Suomeksi:\r\nTerve, choombat! On vuosi 2045. Night Cityn yliopistoalueella kohisee. Useita opiskelijanuoria on kadonnut viime päivien aikana. Tämä ei tietenkään sinänsä poikkea kaupungin tavallisesta arjesta, mutta tapausten tiheys herättää huomiota, ja nyt kadonneiden joukossa on joku jonka porukoilla on riittävästi tuohta saada taskuunsa sekä poliisin että teidän kaltaisenne ryhmän edgerunnereita tutkimaan tapausta. Pääepäiltyinä on vampyyrejä larppaava katujengi, mutta jää teidän koplan hommaksi saattaa tutkimus loppuun siellä minne lain koura ei yletä.\r\n\r\nOdotukset pelaajille: Valmius heittäytyä tarinaan ja sen tunnelmaan, EI aikaisempaa kokemusta \"Night at the Opera\" valmisseikkailusta.\r\n\r\nIn English:\r\n'sup, choombas! It's the year 2045. The Night City university district is brewing. Several young students have gone missing in the last few days. Such isn't of course typically so unusual in the city, but the close proximity of the cases has garnered some attention and now the victims include someone who's folks have enough dough to get both the cops and a crew of edgerunners such as yourselves looking into the case. The main suspects is a street gang that likes to larp as vampires, but it's up to your crew to bring the investigation to a close there where the hand of law doesn't reach.\r\n\r\nExpecting players to: Be ready to dive into the story and atmosphere. To have NO experience of the pre-written adventure \"Night at the Opera\".",
@@ -1641,41 +1669,6 @@
         "endTime": "2024-07-19T19:00:00+00:00",
         "lengthMinutes": 300,
         "location": "Säde"
-      }
-    ]
-  },
-  {
-    "slug": "miami-vice-siskot-ja-veljet",
-    "title": "Miami Vice  -  Siskot ja veljet",
-    "description": "80-luvun TV-sarja Miami Vice palaa ruutuun! Tässä oneshotissa pelataan tyylikkäitä ja ikonisia poliisietsiviä Crockett, Gina, Trudy ja Tubbs. Miamin aurinko, pastellisävyt ja art deco -arkkitehtuuri ovat jälleen rekvisiittana, kun kvartetti huristelee urheiluautoilla ja taistelee Calderonen huumekartellia vastaan. Jakson nimi on Siskot ja veljet, ja panoksena on ei enempää eikä vähempää kuin etsivien koko Organized Crime Bureau -osaston tulevaisuus. Kiperä keisi on selvitettävä!  \r\n\r\nValmishahmot. Erittäin kevyt sääntösysteemi. Itse tarina sopii aloittelijoille, mutta fiilistelypelinä tämä soveltuu myös kokeneemmille roolipelaajille.",
-    "cachedHosts": "<redacted>",
-    "cachedDimensions": {
-      "date": ["2024-07-19"],
-      "room": ["sali-310"],
-      "type": ["gaming"],
-      "topic": ["penandpaper"],
-      "konsti": ["tabletopRPG"],
-      "audience": ["aimed-adults", "beginners"],
-      "language": ["fi"],
-      "accessibility": [
-        "long-texts",
-        "texts-with-no-recordings",
-        "requires-dexterity"
-      ]
-    },
-    "cachedAnnotations": {
-      "konsti:rpgSystem": "SWADE (Savage Worlds Adventure Edition)",
-      "ropecon:gameSlogan": "Etsivätyötä ja toimintaa Floridan auringon alla",
-      "konsti:maxAttendance": 4,
-      "konsti:minAttendance": 4,
-      "ropecon:contentWarnings": "Huumeiden käyttö, kuolema, murhatutkimus, fyysinen väkivalta"
-    },
-    "scheduleItems": [
-      {
-        "startTime": "2024-07-19T14:00:00+00:00",
-        "endTime": "2024-07-19T18:00:00+00:00",
-        "lengthMinutes": 240,
-        "location": "Sali 310"
       }
     ]
   },
@@ -2227,7 +2220,7 @@
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-19"],
-      "room": ["halli-5b-nayttelyalue"],
+      "room": ["halli-5b-figumaalauspiste"],
       "type": ["workshop"],
       "topic": ["miniatures"],
       "konsti": ["workshop"],
@@ -2241,7 +2234,7 @@
         "startTime": "2024-07-19T14:00:00+00:00",
         "endTime": "2024-07-19T15:30:00+00:00",
         "lengthMinutes": 90,
-        "location": "Halli 5B Näyttelyalue"
+        "location": "Halli 5B Figumaalauspiste"
       }
     ]
   },
@@ -2302,6 +2295,31 @@
     ]
   },
   {
+    "slug": "peliseuranhakua-kokemuspisteella-find-gamers-pe-fri",
+    "title": "Peliseuranhakua Kokemuspisteellä - Find gamers",
+    "description": "Tahdot pelata, mutta puuttuu pelikaveri? Ei hätää! Tule Kokemuspisteen kokoontumiseen etsimään lauta-, kortti- ja  roolipeliseuraa. Kokemuspisteen vapaaehtoiset auttavat tarvittaessa myös sopivan pelin valinnassa. \r\n--\r\nAlone and want to play? No problem. At Kokemuspiste you can find new gaming buddies. Kokemuspiste volunteers also help you find games to play.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-07-19"],
+      "room": ["halli-3-kokemuspiste"],
+      "type": ["experience"],
+      "topic": ["boardgames", "cardgames", "penandpaper"],
+      "konsti": ["experiencePoint"],
+      "audience": ["all-ages", "beginners"],
+      "language": ["fi", "en"],
+      "accessibility": []
+    },
+    "cachedAnnotations": {},
+    "scheduleItems": [
+      {
+        "startTime": "2024-07-19T14:00:00+00:00",
+        "endTime": "2024-07-19T14:15:00+00:00",
+        "lengthMinutes": 15,
+        "location": "Halli 3 Kokemuspiste"
+      }
+    ]
+  },
+  {
     "slug": "taneli-pitkasen-peli",
     "title": "Pirtua itärajalla",
     "description": "Jossain ydintuhon raatelemassa itä-Euroopan pikkukylässä saapuu Bógtylekin pikkukylään työtäpelkäämättömiä aloittelevia maankiertäjiä kauppakaravaanin mukana tienaamaan elantoaan.\r\n\r\nSääntösysteemi oma, vahvasti vaikutteita SPECIALista ja D&D 5.0 editionista. Säännöstö kevyehkö, mutta em. sääntöjen tuntemuksesta voi olla hyötyä. Asenne kuitenkin on tärkeintä joka on \"vakavasti kieli poskella\".\r\n\r\nSkenario pelautettu viime vuoden Ropeconissa, jonka perusteella kokemattomampikin pärjää. 4 valmishahmoa. \r\n\r\nSäännöt tutustuttavissa rope-tiskillä.",
@@ -2353,6 +2371,62 @@
         "endTime": "2024-07-19T16:00:00+00:00",
         "lengthMinutes": 120,
         "location": "Halli 3 Perhealue"
+      }
+    ]
+  },
+  {
+    "slug": "magic-the-gathering-casual-commander",
+    "title": "Magic: the Gathering - Casual Commander",
+    "description": "Poromagian järjestämää vapaamuotoista Commander-pelaamista. Pelaamaan voi saapua vapaasti klo\r\n17 alkaen.\r\n---\r\nFree Commander gaming organized by Poromagia. You can participate freely starting at 5pm.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-07-19"],
+      "room": ["halli-3-turnaussali"],
+      "type": ["gaming", "tournament"],
+      "topic": ["cardgames"],
+      "konsti": ["tournament"],
+      "audience": ["all-ages"],
+      "language": ["fi", "en"],
+      "accessibility": []
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Pelisysteemi Magic: the Gathering",
+      "konsti:maxAttendance": 99
+    },
+    "scheduleItems": [
+      {
+        "startTime": "2024-07-19T14:00:00+00:00",
+        "endTime": "2024-07-19T17:00:00+00:00",
+        "lengthMinutes": 180,
+        "location": "Halli 3 Turnaussali"
+      }
+    ]
+  },
+  {
+    "slug": "magic-the-gathering-modern-horizons-3-on-demand-booster-draft",
+    "title": "Magic: the Gathering - Modern Horizons 3 On-demand Booster Draft",
+    "description": "Poromagian järjestämiä Modern Horizons 3 Booster Drafteja kysynnän mukaan. Drafti alkaa aina listan\r\ntäyttyessä kahdeksasta pelaajasta. Ilmoittautumaan voi saapua Klo 17 alkaen.\r\nIlmoittautuminen suoraan turnauksen vetäjälle turnaussalissa.\r\n---\r\nOn-demand Modern Horizons 3 Drafts organized by Poromagia. The tournament starts once 8 players\r\nhave signed up. Sign up starts at 5pm.\r\nSign-ups directly to the tournament organizer at the tournament area.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-07-19"],
+      "room": ["halli-3-turnaussali"],
+      "type": ["gaming", "tournament"],
+      "topic": ["cardgames"],
+      "konsti": ["tournament"],
+      "audience": [],
+      "language": ["fi"],
+      "accessibility": []
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Magic: the Gathering",
+      "konsti:minAttendance": 8
+    },
+    "scheduleItems": [
+      {
+        "startTime": "2024-07-19T14:00:00+00:00",
+        "endTime": "2024-07-19T20:00:00+00:00",
+        "lengthMinutes": 360,
+        "location": "Halli 3 Turnaussali"
       }
     ]
   },
@@ -3235,31 +3309,6 @@
     ]
   },
   {
-    "slug": "hirviokorva-ja-sarvityopaja",
-    "title": "Hirviökorva- ja sarvityöpaja",
-    "description": "Tule askartelemaan hirviökorvat (tai sarvet) tähän kouluikäisille suunnattuun työpajaan! \r\n\r\nIdeana työpajassa on, että jokainen osallistuja askartelee omat otuksen korvat tai sarvet (pahvista, langasta, kuumaliimasta ja kankaasta). Korvat tai sarvet kiinnitetään muovipantaan. \r\n\r\nVetäjinä toimii neljä kouluikäistä tyttöä. Paja sopii myös perheen pienimmille, mutta jos kuumaliima tuntuu vaaralliselta tai hankalalta, ota oma aikuinen mukaan!\r\nTervetuloa mukaan!\r\n\r\nTyöpajaan ei ole ennakkoilmoittautumista.",
-    "cachedHosts": "<redacted>",
-    "cachedDimensions": {
-      "date": ["2024-07-19"],
-      "room": ["halli-1b-tyopajatila-1"],
-      "type": ["workshop"],
-      "topic": ["crafts", "theme"],
-      "konsti": ["workshop"],
-      "audience": ["aimed-under-13", "beginners"],
-      "language": ["fi"],
-      "accessibility": ["physical-contact", "requires-dexterity"]
-    },
-    "cachedAnnotations": {},
-    "scheduleItems": [
-      {
-        "startTime": "2024-07-19T15:00:00+00:00",
-        "endTime": "2024-07-19T16:45:00+00:00",
-        "lengthMinutes": 105,
-        "location": "Halli 1B Työpajatila 1"
-      }
-    ]
-  },
-  {
     "slug": "its-true-because-its-fake-emotions-in-role-playing",
     "title": "It's True Because It's Fake: Emotions in Role Playing",
     "description": "We often speak of role-playing as a profound experience, during which we feel emotions first-hand and carry them with us for a long time. But where do these emotions come from? How do organizers generate them, and how do players use them? Is it a question of design, setting or gaming community? In this dynamic, not-too-serious conference, we'll attempt to address these questions and provide some food for thought. By Ropecon 2024 Guest of Honour Alessandro Giovannnucci.",
@@ -3342,27 +3391,30 @@
     ]
   },
   {
-    "slug": "peliseuranhakua-kokemuspisteella-find-gamers-pe-fri",
-    "title": "Peliseuranhakua Kokemuspisteellä - Find gamers",
-    "description": "Tahdot pelata, mutta puuttuu pelikaveri? Ei hätää! Tule Kokemuspisteen kokoontumiseen etsimään lauta-, kortti- ja  roolipeliseuraa. Kokemuspisteen vapaaehtoiset auttavat tarvittaessa myös sopivan pelin valinnassa. \r\n--\r\nAlone and want to play? No problem. At Kokemuspiste you can find new gaming buddies. Kokemuspiste volunteers also help you find games to play.",
+    "slug": "heroclix-turnaus-modern-age",
+    "title": "Heroclix-turnaus (Modern age)",
+    "description": "Turnausformaattina on 300 pistettä Modern age, 3 kierrosta Swissiä\r\n\r\nTournament format is 300 points Modern age, 3 rounds of Swiss",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-19"],
-      "room": ["halli-3-kokemuspiste"],
-      "type": ["experience"],
-      "topic": ["boardgames", "cardgames", "penandpaper"],
-      "konsti": ["experiencePoint"],
-      "audience": ["all-ages", "beginners"],
+      "room": ["halli-3-figuturnausalue"],
+      "type": ["gaming", "tournament"],
+      "topic": ["miniatures"],
+      "konsti": ["tournament"],
+      "audience": [],
       "language": ["fi", "en"],
       "accessibility": []
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Heroclix",
+      "konsti:minAttendance": 4
+    },
     "scheduleItems": [
       {
         "startTime": "2024-07-19T15:00:00+00:00",
-        "endTime": "2024-07-19T15:15:00+00:00",
-        "lengthMinutes": 15,
-        "location": "Halli 3 Kokemuspiste"
+        "endTime": "2024-07-19T18:30:00+00:00",
+        "lengthMinutes": 210,
+        "location": "Halli 3 Figuturnausalue"
       }
     ]
   },
@@ -4062,6 +4114,39 @@
     ]
   },
   {
+    "slug": "parasite-a-game-of-paranoia-treachery-and-irrational-logic",
+    "title": "Parasite - A game of paranoia, treachery and irrational logic",
+    "description": "<i>At a remote scientific outpost in the Arctic, a team of nine studies their harsh environment.\r\nSuddenly, they find themselves trapped with a hostile alien parasite that can mimic humans almost perfectly.\r\nIf the parasite escapes, it will infect the rest of the world and all you care about will perish.</i>\r\n---------\r\nCo-op survival board game that tries to define what is humanity and what do you do when you cannot trust others around you. Do you become a murder hobo or try to win others trust by being kind? Will you prevent the end of the world or relish in its ruins?\r\n\r\nThe game contains traitor mechanics, paranoia, ability to exercise free will, and is one kind of a team building exercise.\r\n\r\n<b>Inspired by John Carpenter's movie The Thing and the 80's decade.</b>",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-07-19"],
+      "room": ["halli-3-kokemuspiste"],
+      "type": ["experience", "gaming", "demo"],
+      "topic": ["boardgames", "theme"],
+      "konsti": ["experiencePoint"],
+      "audience": ["aimed-adults"],
+      "language": ["fi", "en"],
+      "accessibility": [
+        "limited-moving-opportunities",
+        "texts-with-no-recordings"
+      ]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Parasite - Traitor mechanics, freewill, survival horror comedy",
+      "konsti:maxAttendance": 8,
+      "konsti:minAttendance": 4,
+      "ropecon:contentWarnings": "Violence, isolation, pandemia, disease, freewill"
+    },
+    "scheduleItems": [
+      {
+        "startTime": "2024-07-19T16:30:00+00:00",
+        "endTime": "2024-07-19T19:30:00+00:00",
+        "lengthMinutes": 180,
+        "location": "Halli 3 Kokemuspiste"
+      }
+    ]
+  },
+  {
     "slug": "metsien-viimeinen-huuto-the-last-cry-of-the-forest-1-pelautus1-run",
     "title": "Metsien viimeinen huuto / The last cry of the forest, 1. pelautus/1. run",
     "description": "“Taas pitää muuttaa syvemmälle metsään…Sentään meidän mailta löytyvää ihmisten teknologiaromua voi yhdistää meidän taikaan, mutta onko sitä pakko tuottaa niin valtavasti ja sen lisäksi heittää luontoon!? Eikö riitä, että meitä jatkuvasti ajetaan ahtaammalle…Sota on jatkunut jo liian pitkään, ja ihmisten istuttamat uudet, taiattomat metsät ovat laiha lohtu kaiken menettämämme edessä.”\r\n\r\nPeli sijoittuu meidän maailmamme rinnakkaistodellisuuteen, jossa keijujen ja ihmisten välinen sodankäynti on jatkunut jo teollisesta vallankumouksesta asti. Nyt sodassa ollaan saavutettu kiehumispiste, eikä ihmisten kanssa yhteiselo ole enää vaihtoehto.\r\nKesän ja Talven hovit kohtaavat toimistorakennuksessa tekemään tärkeitä päätöksiä sodan kulusta - hyökätäkkö vaiko perääntyä?\r\n\r\nPelissä keskipisteessä ovat neuvottelu ja tiukan tilanteen kärjistämä ihmiskeijusuhdedraama. Tarkoitus ei kuitenkaan ole keskittyä sotataktiikoihin/löytämään “oikeaa” ratkaisua siihen miten sota voitetaan, vaan tilanteen draamaan ja siihen, että päädytään yhdessä johonkin ratkaisuun.\r\n\r\nILMOITTAUTUMINEN LARPPI TISKILLÄ\r\n\r\nTeemoja: sota, ilmastokatastrofi, ihmissuhdedraama, neuvottelu/konflikti, yhteisöllisyys, ystävyys, underdog meininki",
@@ -4112,39 +4197,6 @@
         "endTime": "2024-07-19T19:45:00+00:00",
         "lengthMinutes": 165,
         "location": "Halli 1B Työpajatila 1"
-      }
-    ]
-  },
-  {
-    "slug": "parasite-a-game-of-paranoia-treachery-and-irrational-logic",
-    "title": "Parasite - A game of paranoia, treachery and irrational logic",
-    "description": "<i>At a remote scientific outpost in the Arctic, a team of nine studies their harsh environment.\r\nSuddenly, they find themselves trapped with a hostile alien parasite that can mimic humans almost perfectly.\r\nIf the parasite escapes, it will infect the rest of the world and all you care about will perish.</i>\r\n---------\r\nCo-op survival board game that tries to define what is humanity and what do you do when you cannot trust others around you. Do you become a murder hobo or try to win others trust by being kind? Will you prevent the end of the world or relish in its ruins?\r\n\r\nThe game contains traitor mechanics, paranoia, ability to exercise free will, and is one kind of a team building exercise.\r\n\r\n<b>Inspired by John Carpenter's movie The Thing and the 80's decade.</b>",
-    "cachedHosts": "<redacted>",
-    "cachedDimensions": {
-      "date": ["2024-07-19"],
-      "room": ["halli-3-kokemuspiste"],
-      "type": ["experience", "gaming", "demo"],
-      "topic": ["boardgames", "theme"],
-      "konsti": ["experiencePoint"],
-      "audience": ["aimed-adults"],
-      "language": ["fi", "en"],
-      "accessibility": [
-        "limited-moving-opportunities",
-        "texts-with-no-recordings"
-      ]
-    },
-    "cachedAnnotations": {
-      "konsti:rpgSystem": "Parasite - Traitor mechanics, freewill, survival horror comedy",
-      "konsti:maxAttendance": 8,
-      "konsti:minAttendance": 4,
-      "ropecon:contentWarnings": "Violence, isolation, pandemia, disease, freewill"
-    },
-    "scheduleItems": [
-      {
-        "startTime": "2024-07-19T17:00:00+00:00",
-        "endTime": "2024-07-19T19:00:00+00:00",
-        "lengthMinutes": 120,
-        "location": "Halli 3 Kokemuspiste"
       }
     ]
   },
@@ -4237,7 +4289,7 @@
   {
     "slug": "maailmaa-pelastamassa-ekologialarppien-ja-ekoaktivismin-valiset-yhteydet",
     "title": "Maailmaa pelastamassa: ekologialarppien ja ekoaktivismin väliset yhteydet",
-    "description": "Larppien keinoilla voidaan käsitellä myös vakavia tosielämän aiheita, kuten sortoa ja katastrofeja. Ekologiateemaiset pelit voivat ottaa kantaa meneillään olevaan ilmastonmuutokseen. Luennolla valotetaan esimerkkejä ekologiapeleistä ja ekoaktivismista ja niiden kokemuksellisesta yhteenkietoutumisesta. Sen lisäksi pohditaan tapoja, joilla peliin osallistuminen voi toimia muutosvoimana pelaajien elämässä. Voiko ekokatastrofiin eläytyminen antaa sysäyksen ryhtyä hommiin planeetan elinkelpoisuuden pelastamiseksi?",
+    "description": "Larppien keinoilla voidaan käsitellä myös vakavia tosielämän aiheita, kuten sortoa ja katastrofeja. Ekologiateemaiset pelit voivat ottaa kantaa meneillään olevaan ilmastonmuutokseen. Luennolla valotetaan esimerkkejä ekologiapeleistä ja ekoaktivismista ja niiden kokemuksellisesta yhteenkietoutumisesta. Sen lisäksi pohditaan tapoja, joilla peliin osallistuminen voi toimia muutosvoimana pelaajien elämässä. Voiko ekokatastrofiin eläytyminen antaa sysäyksen ryhtyä hommiin planeetan elinkelpoisuuden pelastamiseksi?\r\n\r\nOhjelmassa on viittomakielinen tulkkaus.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-19"],
@@ -5259,7 +5311,7 @@
       "language": ["fi", "en"],
       "accessibility": []
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": { "konsti:maxAttendance": 24 },
     "scheduleItems": [
       {
         "startTime": "2024-07-19T18:00:00+00:00",
@@ -6242,37 +6294,6 @@
     ]
   },
   {
-    "slug": "iikan-peli-2",
-    "title": "Kings of War -turnaus",
-    "description": "Tarjolla jo pienen, mutta innokkaan Kings of War -porukan turnaus. Turnauksessa pelataan 1750 pisteen listoilla.\r\n\r\nTurnauksessa pääroolissa ovat hyvä henki ja hienot armeijat, joilla pelataan ehkä tasapainoisimman massataistelupelin säännöillä. Käytössä turnauksessa on kolmannen laitoksen säännöt, uusinpine päivityksineen, ja ilmoittautuminen tapahtuu sotavasara.net -sivuston kautta.\r\n\r\n---\r\n\r\nA Kings of War tournament by a small but dedicated group of players. Tournament is played using 1750pts lists.\r\n\r\nThe main attractions of this tournament are the good vibes and magnificent armies, which are played using the rules of possibly the most balanced game within the mass battle game genre. The tournament uses both the 3rd edition rules and the newest changes. Sign-up in advance via the sotavasara.net forums.",
-    "cachedHosts": "<redacted>",
-    "cachedDimensions": {
-      "date": ["2024-07-20"],
-      "room": ["halli-3-figuturnausalue"],
-      "type": ["gaming", "tournament"],
-      "topic": ["miniatures"],
-      "konsti": ["tournament"],
-      "audience": ["aimed-between-13-17", "aimed-adults"],
-      "language": ["fi", "en"],
-      "accessibility": []
-    },
-    "cachedAnnotations": {
-      "konsti:rpgSystem": "Kings of War",
-      "konsti:maxAttendance": 20,
-      "konsti:minAttendance": 6,
-      "ropecon:contentWarnings": "fantasiateemaista satuväkivaltaa",
-      "ropecon:accessibilityOther": "Pöytien ylle kumartelu voi käydä selän päälle."
-    },
-    "scheduleItems": [
-      {
-        "startTime": "2024-07-20T05:00:00+00:00",
-        "endTime": "2024-07-20T15:40:00+00:00",
-        "lengthMinutes": 640,
-        "location": "Halli 3 Figuturnausalue"
-      }
-    ]
-  },
-  {
     "slug": "marvel-crisis-protocol-tournament",
     "title": "Marvel Crisis Protocol Tournament",
     "description": "Tervetuloa Ropeconin Marvel Crisis Protocol -turnaukseen!\r\n\r\nKilpailemme taktisessa miniatyyripelissä, jossa jokainen pelaaja ohjaa omaa supersankarijoukkoaan.\r\n\r\nTurnaus tarjoaa ainutlaatuisen mahdollisuuden nähdä rakastetut hahmot kuten Iron Man, Spider-Man ja Captain America kohtaamassa toisensa pelipöydällä.\r\n\r\n---\r\n\r\nWelcome to the Marvel Crisis Protocol tournament at Ropecon 2024!\r\n\r\nWe are competing in a tactical miniature game where each player controls their own superhero squad.\r\n\r\nThis tournament offers unique opportunity to see beloved characters such as Iron Man, Spider-Man and Captain America face off on the battlefield.\r\n\r\n---\r\n\r\nIlmoittautuminen / Sign up: https://longshanks.org/event/14460/",
@@ -7211,7 +7232,7 @@
       "date": ["2024-07-20"],
       "room": ["halli-3-kokemuspiste"],
       "type": ["experience", "gaming", "open-gaming"],
-      "topic": ["cardgames", "theme"],
+      "topic": ["penandpaper", "theme"],
       "konsti": ["experiencePoint"],
       "audience": ["all-ages", "beginners"],
       "language": ["fi", "en"],
@@ -7853,7 +7874,7 @@
   },
   {
     "slug": "redshirt-ammuskelu-redshit-turkey-shoot",
-    "title": "Redshirt: Ammuskelu / Redshit: Turkey Shoot",
+    "title": "Redshirt: Ammuskelu / Redshirt: Turkey Shoot",
     "description": "Rasittaako jatkuva eläytyminen ja sielun syövereiden kaivelu täikammalla? Vedä liikkuvat taakse ja tule lahtaamaan örkkejä. Tässä pyöröolvipelissä kierretään karttaa lipunryöstöhenkisesti jahdaten ja lahdaten örkkejä, joita riittää, ja kerätään kunkin lipun luota parempia varusteita ja hahmobonuksia. Varoitus, örkit ampuvat takaisin, ja kovaa.\r\n\r\nTiedossa runsaasti väkivaltaa kevyellä otteella, sopii sopivan vinoutuneille nuorillekin, kuten omalle jälkikasvulleni, mutta säännöt vaativat rehellisyyden nimissä jonkin verran omaksumista.\r\n\r\nTired of emotional roles and bleeding your soul? Then hop in and let off some steam while shooting orcs. In this revolving door combat game you run around the field of g(l)ory, shoot the bloody orcs and try to reach the flagpost in time to gain better equipment and character bonuses. Caution, orcs shoot back hard.\r\n\r\nGame includes violence, wink wink.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
@@ -8057,7 +8078,7 @@
   {
     "slug": "varttinakehrayspaja",
     "title": "Värttinäkehräyspaja",
-    "description": "Värttinäpaja tulee jälleen! Tänäkin vuonna luvassa tiukkoja käänteitä ja hikikarpaloita villan ja kepin parissa!\r\n\r\nVärttinällä kehräys on parhaimmillaan meditatiivinen harrastus mutta myös harjoitusta vaativa postkapitalismiin valmentava taito, jota voi kokemuksen myötä harrastaa lähes missä tahansa kulkee. Pajassa kannustetaan aloittamaan nollasta ja sen yläpuolelta ja epäonnistumaan rohkeasti. Testataan kiinnostuksen mukaan erilaisia värjäämättömiä villoja ja ehkä Jopa Muita Kuituja. Pajassa on saatavilla kokeiluun harjoitusvärttinän lisäksi myös muutamia eri kokoisia ja -mallisia värttinöitä. Mahdollisuus viedä oma värttinä kotiin työpajan päätteeksi (tällä kertaa oikeasti) hintaan 12 €. \r\n\r\nTestaa sorminäppäryytesi rajoja! Näe kohuttu \"kirpparin kuhmuinen Vanha Keppi\"! Todista työvälineen putoamista lattialle uudestaan ja uudestaan!  \r\n”Oletko koskaan halunnut olla kehrääjä, ja jos olet, nyt se on mahdollista, sillä uusi kehrääjä on saapunut ja se olet sinä.” -Vanha sananlasku.\r\n\r\nIlmoittautuminen Konstissa perjantaina 19.7. kello 18 alkaen. Työpajamaksu 2 €.",
+    "description": "Värttinäpaja tulee jälleen! Tänäkin vuonna luvassa tiukkoja käänteitä ja hikikarpaloita villan ja kepin parissa!\r\n\r\nVärttinällä kehräys on parhaimmillaan meditatiivinen harrastus mutta myös harjoitusta vaativa postkapitalismiin valmentava taito, jota voi kokemuksen myötä harrastaa lähes missä tahansa kulkee. Pajassa kannustetaan aloittamaan nollasta ja sen yläpuolelta ja epäonnistumaan rohkeasti. Testataan kiinnostuksen mukaan erilaisia värjäämättömiä villoja ja ehkä Jopa Muita Kuituja. Pajassa on saatavilla kokeiluun harjoitusvärttinän lisäksi myös muutamia eri kokoisia ja -mallisia värttinöitä. Mahdollisuus viedä oma värttinä kotiin työpajan päätteeksi (tällä kertaa oikeasti) hintaan 12 €. \r\n\r\nTestaa sorminäppäryytesi rajoja! Näe kohuttu \"kirpparin kuhmuinen Vanha Keppi\"! Todista työvälineen putoamista lattialle uudestaan ja uudestaan! \r\n”Oletko koskaan halunnut olla kehrääjä, ja jos olet, nyt se on mahdollista, sillä uusi kehrääjä on saapunut ja se olet sinä.” -Vanha sananlasku.\r\n\r\nIlmoittautuminen Konstissa perjantaina 19.7. kello 18 alkaen. Työpajamaksu 2 €.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-20"],
@@ -8283,7 +8304,7 @@
   {
     "slug": "king-of-tokyo-turnaus-king-of-tokyo-tournament",
     "title": "King of Tokyo-turnaus / King of Tokyo tournament",
-    "description": "Hirviöt valtaavat Messukeskuksen IELLO:n ja Ropeconin King of Tokyo-turnauksessa. Tule mittelöimään itsesi conin hallitsijaksi ja putsaamaan palkintopöytä.\r\n\r\n<b>Ilmoittautuminen</b>\r\nIlmoittautuminen turnaukseen tapahtuu Kokemuspisteen infon luona. Ilmoittautuminen alkaa pe klo 16 ja paikat jaetaan porrastetusti perjantain aikana. Turnaukseen mahtuu 36 pelaajaa. Mahdolliset peruutuspaikat täytetään lauantaina 5 min. ennen turnauksen alkua.\r\n\r\n<b>Paikka ja ohjeellien aikataulu</b>\r\nTurnaus järjestetään Kokemuspisteellä (Halli 3). Osallistujien istumapaikat arvotaan. Turnauksen järjestäjä pidättää oikeuden päättää alaikäisten ja erityistä tukea tarvitsevien pelaajien istumapaikoista.\r\n\r\nklo 10.00 - 10.10\t\t\r\nIlmoittautumisen vahvistaminen ja mah. tyhjien paikkojen täyttö\r\nklo 10.15 - 11.15 \r\nEnsimmäinen kierros (max. 60 min.); 9 pöytää ja 4 pelaajaa / pöytä\r\nPöytien voittajat (9) jatkavat toiselle kierrokselle.\r\nklo 11.30- 12.30\r\nToinen kierros (max. 60 min.); 3 pöytää ja 3 pelaajaa / pöytä\r\nPöytien voittajat (3) jatkavat finaaliin.\r\nRuokatauko (n. 60 min.)\r\nklo 13.30 - 14.30\r\nFinaali\r\n\r\n<b>Palkinnot</b>\r\nKaikki turnaukseen osallistuvat saavat lahjaksi Kawai Ju -hirviön ja pari promokorttia.\r\nVälieriin selviytyneet saavat lisäksi Crabomination -hirviöt.\r\nFinaaliin selviytyneet saavat edellä mainittujen palkintojen lisäksi erikoisnopat, kangaskassin ja Yak national -hirviön.\r\nToiseksi tullut saa edellä mainittujen palkintojen lisäksi Murica national -hirviön.\r\nTurnauksen voittaja saa kaikki edellä mainitut palkinnot sekä lisäksi King of Tokyo: Origins -uutuuspelin.\r\n\r\n<b>Pelin versio ja kieli</b>\r\nTurnaus pelataan IELLO:n toimittamilla turnausvälineillä. Komponenttien kieli on englanti, mutta englannin kielen taito ei ole välttämätön. Järjestäjät ja muut pelaajat kääntävät tarvittaessa kortit suomeksi. Turnaukseen on voi osallistua myös englannin kielellä.\r\n\r\n<b>Pelin opettelu</b>\r\nPeliä on mahdollisuus pelata Kokemuspisteen \"istu ja pelaa\" pöydissä perjantaina ja lauantaina ennen turnausta. Kokemuspisteen peliapurit avustavat sääntöjen opettelussa.\r\n\r\n*** IN ENGLISH ***\r\n\r\nMonsters take over the convention center as players compete on IELLO's and Ropecon's  King of Tokyo tournament. Come make yourself the king of the con and clean the prize table.\r\n\r\n<b>Registration</b>\r\nRegistration for the tournament takes place at Kokemuspiste info (Hall 3, north entrance 3.3). Registration opens Friday at 16.00. Seats are given in batches thru the day. The tournament can accommodate 36 players.  Any empty seats Saturday morning are filled 5min. before the tournament starts.\r\n\r\n<b>Place and schedule</b>\r\nThe tournament is held at the Experience Point (Hall 3). Tournament seats are randomly assigned, but the tournament organizer reserves the right to decide on the seating for minors and players with special needs.\r\n\r\n10.00 - 10.10\t\r\nConfirmation of registration (empty seats are given after this)\r\n10.15 - 11.15 \r\nFirst round (max. 60 minutes); 9 tables of 4 players\r\nThe winners of the tables (9) continue to the second round.\r\n11.30- 12.30\r\nSecond round (max. 60 min.); 3 tables of 3 players\r\nThe winners of the tables (3) continue to the final.\r\nBreak 60 min.\r\n13.30 - 14.30\r\nFinal\r\n\r\n<b>Prizes</b>\r\nParticipation prizes: promos cards and Kawaii Ju Monster\r\nTop 9: Cut Prize: Crabomination Monster\r\nTop 3: Cut Prize: Collector Dice, KOT bag, Yak National Monster\r\nTop 2: National Monster\r\nWinner Prize: King of Tokyo: Origin board game\r\nAll prizes are cumulative!\r\n\r\n<b>Game version and language</b>\r\nThe tournament is played with tournament equipment supplied by IELLO. Game components are is English, but knowledge of the English language is not necessary. The organizers and other players translate the cards into Finnish if necessary. Players can participate in English or Finnish.\r\n\r\n<b>Learning the game</b>\r\nConvention visitors can learn the game rules and practice at the \"sit and play\" tables of Experience Point (see schedule).  Game assistants at the experience point assist in learning the rules.",
+    "description": "Hirviöt valtaavat Messukeskuksen IELLO:n ja Ropeconin King of Tokyo-turnauksessa. Tule mittelöimään itsesi conin hallitsijaksi ja putsaamaan palkintopöytä.\r\n\r\n<b>Ilmoittautuminen</b>\r\nIlmoittautuminen turnaukseen tapahtuu Kokemuspisteen infon luona. Ilmoittautuminen alkaa pe klo 16 ja paikat jaetaan porrastetusti perjantain aikana. Turnaukseen mahtuu 36 pelaajaa. Mahdolliset peruutuspaikat täytetään lauantaina 5 min. ennen turnauksen alkua.\r\n\r\n<b>Paikka ja ohjeellien aikataulu</b>\r\nTurnaus järjestetään Kokemuspisteellä (Halli 3). Osallistujien istumapaikat arvotaan. Turnauksen järjestäjä pidättää oikeuden päättää alaikäisten ja erityistä tukea tarvitsevien pelaajien istumapaikoista.\r\n\r\nklo 10.00 - 10.10 Ilmoittautumisen vahvistaminen ja mah. tyhjien paikkojen täyttö\r\nklo 10.15 - 11.15 Ensimmäinen kierros (max. 60 min.); 9 pöytää ja 4 pelaajaa / pöytä\r\nPöytien voittajat (9) jatkavat toiselle kierrokselle.\r\nklo 11.30- 12.30 Toinen kierros (max. 60 min.); 3 pöytää ja 3 pelaajaa / pöytä\r\nPöytien voittajat (3) jatkavat finaaliin.\r\nRuokatauko (n. 60 min.)\r\nklo 13.30 - 14.30 Finaali\r\n\r\n<b>Palkinnot</b>\r\nKaikki turnaukseen osallistuvat saavat lahjaksi Kawai Ju -hirviön ja pari promokorttia.\r\nVälieriin selviytyneet saavat lisäksi Crabomination -hirviöt.\r\nFinaaliin selviytyneet saavat edellä mainittujen palkintojen lisäksi erikoisnopat, kangaskassin ja Yak national -hirviön.\r\nToiseksi tullut saa edellä mainittujen palkintojen lisäksi Murica national -hirviön.\r\nTurnauksen voittaja saa kaikki edellä mainitut palkinnot sekä lisäksi King of Tokyo: Origins -uutuuspelin.\r\n\r\n<b>Pelin versio ja kieli</b>\r\nTurnaus pelataan IELLO:n toimittamilla peruspeleillä. Komponenttien kieli on englanti, mutta englannin kielen taito ei ole välttämätön. Järjestäjät ja muut pelaajat kääntävät tarvittaessa kortit suomeksi. Turnaukseen on voi osallistua myös englannin kielellä.\r\n\r\n<b>Pelin opettelu</b>\r\nPeliä on mahdollisuus pelata Kokemuspisteen \"istu ja pelaa\" pöydissä perjantaina ja lauantaina ennen turnausta. Kokemuspisteen peliapurit avustavat sääntöjen opettelussa.\r\n\r\n*** IN ENGLISH ***\r\n\r\nMonsters take over the convention center as players compete on IELLO's and Ropecon's  King of Tokyo tournament. Come make yourself the king of the con and clean the prize table.\r\n\r\n<b>Registration</b>\r\nRegistration for the tournament takes place at Kokemuspiste info (Hall 3, north entrance 3.3). Registration opens Friday at 16.00. Seats are given in batches thru the day. The tournament can accommodate 36 players.  Any empty seats Saturday morning are filled 5min. before the tournament starts.\r\n\r\n<b>Place and schedule</b>\r\nThe tournament is held at the Experience Point (Hall 3). Tournament seats are randomly assigned, but the tournament organizer reserves the right to decide on the seating for minors and players with special needs.\r\n\r\n10.00 - 10.10 Confirmation of registration (empty seats are given after this)\r\n10.15 - 11.15 First round (max. 60 minutes); 9 tables of 4 players\r\nThe winners of the tables (9) continue to the second round.\r\n11.30- 12.30 Second round (max. 60 min.); 3 tables of 3 players\r\nThe winners of the tables (3) continue to the final.\r\nBreak 60 min.\r\n13.30 - 14.30 Final\r\n\r\n<b>Prizes</b>\r\nParticipation prizes: promos cards and Kawaii Ju Monster\r\nTop 9: Cut Prize: Crabomination Monster\r\nTop 3: Cut Prize: Collector Dice, KOT bag, Yak National Monster\r\nTop 2: National Monster\r\nWinner Prize: King of Tokyo: Origin board game\r\nAll prizes are cumulative!\r\n\r\n<b>Game version and language</b>\r\nThe tournament is played with King of Tokyo base games supplied by IELLO. Game components are is English, but knowledge of the English language is not necessary. The organizers and other players translate the cards into Finnish if necessary. Players can participate in English or Finnish.\r\n\r\n<b>Learning the game</b>\r\nConvention visitors can learn the game rules and practice at the \"sit and play\" tables of Experience Point (see schedule).  Game assistants at the experience point assist in learning the rules.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-20"],
@@ -8334,6 +8355,34 @@
         "endTime": "2024-07-20T09:30:00+00:00",
         "lengthMinutes": 150,
         "location": "Koko Messukeskus"
+      }
+    ]
+  },
+  {
+    "slug": "heroclixin-suomen-mestaruus-heroclix-finnish-championships",
+    "title": "Heroclixin Suomen Mestaruus // Heroclix Finnish Championships",
+    "description": "Turnausformaattina on 300 pistettä Modern age, 3 kierrosta Swissiä\r\n\r\nTournament format is 300 points Modern age, 3 rounds of Swiss",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-07-20"],
+      "room": ["halli-3-figuturnausalue"],
+      "type": ["gaming", "tournament"],
+      "topic": ["miniatures"],
+      "konsti": ["tournament"],
+      "audience": [],
+      "language": ["fi", "en"],
+      "accessibility": []
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Heroclix",
+      "konsti:minAttendance": 4
+    },
+    "scheduleItems": [
+      {
+        "startTime": "2024-07-20T07:00:00+00:00",
+        "endTime": "2024-07-20T10:30:00+00:00",
+        "lengthMinutes": 210,
+        "location": "Halli 3 Figuturnausalue"
       }
     ]
   },
@@ -8397,7 +8446,7 @@
   {
     "slug": "pienet-hirviot-bakteerien-antibioottiresistenssi-ja-siihen-liittyvat-uhat",
     "title": "Pienet hirviöt - bakteerien antibioottiresistenssi ja siihen liittyvät uhat",
-    "description": "Bakteereja on joka puolella ympärillämme ja sisällämme. Infektiot ovat kautta aikojen olleet vaarallisia. Penisilliini toi mukanaan täysin uudenlaista lääketiedettä ja ennen tappavat infektiot pystyttiin hoitamaan helposti. Kuitenkin jo penisilliinin keksijä nosti esille havainnon bakteerien lisääntyvästä vastustuskyvystä bakteereja vastaan. \r\n\r\nMikä aiheuttaa antibioottiresistenssiä? Miksi se on vaarallista? Miten maailmassa käytetään antibiootteja? Miten pystymme jatkossakin tuottamaan laadukasta lääketiedettä jos entistä useammat bakteerit eivät kuole antibiooteilla?\r\n\r\nOhjelmassa puhutaan infektioista sekä kuolemasta, myös esimerkiksi leikkauksia vähintään sivutaan.",
+    "description": "Bakteereja on joka puolella ympärillämme ja sisällämme. Infektiot ovat kautta aikojen olleet vaarallisia. Penisilliini toi mukanaan täysin uudenlaista lääketiedettä ja ennen tappavat infektiot pystyttiin hoitamaan helposti. Kuitenkin jo penisilliinin keksijä nosti esille havainnon bakteerien lisääntyvästä vastustuskyvystä bakteereja vastaan. \r\n\r\nMikä aiheuttaa antibioottiresistenssiä? Miksi se on vaarallista? Miten maailmassa käytetään antibiootteja? Miten pystymme jatkossakin tuottamaan laadukasta lääketiedettä jos entistä useammat bakteerit eivät kuole antibiooteilla?\r\n\r\nOhjelmassa puhutaan infektioista sekä kuolemasta, myös esimerkiksi leikkauksia vähintään sivutaan.\r\n\r\nOhjelmassa on viittomakielinen tulkkaus.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-20"],
@@ -8844,7 +8893,7 @@
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-20"],
-      "room": ["halli-5b-nayttelyalue"],
+      "room": ["halli-5b-figumaalauspiste"],
       "type": ["workshop"],
       "topic": ["miniatures"],
       "konsti": ["workshop"],
@@ -8858,7 +8907,7 @@
         "startTime": "2024-07-20T08:00:00+00:00",
         "endTime": "2024-07-20T09:30:00+00:00",
         "lengthMinutes": 90,
-        "location": "Halli 5B Näyttelyalue"
+        "location": "Halli 5B Figumaalauspiste"
       }
     ]
   },
@@ -9289,6 +9338,81 @@
     ]
   },
   {
+    "slug": "magic-the-gathering-casual-commander-2",
+    "title": "Magic: the Gathering - Casual Commander",
+    "description": "Poromagian järjestämää vapaamuotoista Commander-pelaamista. Pelaamaan voi saapua vapaasti klo\r\n11 alkaen.\r\n---\r\nOpen Commander gaming organized by Poromagia. You can participate freely starting at 11am.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-07-20"],
+      "room": ["halli-3-turnaussali"],
+      "type": ["gaming", "tournament"],
+      "topic": ["cardgames"],
+      "konsti": ["tournament"],
+      "audience": [],
+      "language": ["fi"],
+      "accessibility": []
+    },
+    "cachedAnnotations": { "konsti:minAttendance": 2 },
+    "scheduleItems": [
+      {
+        "startTime": "2024-07-20T08:00:00+00:00",
+        "endTime": "2024-07-20T17:00:00+00:00",
+        "lengthMinutes": 540,
+        "location": "Halli 3 Turnaussali"
+      }
+    ]
+  },
+  {
+    "slug": "magic-the-gathering-modern-horizons-3-on-demand-booster-draft-2",
+    "title": "Magic: the Gathering - Modern Horizons 3 On-demand Booster Draft",
+    "description": "Poromagian järjestämiä Modern Horizons 3 Booster Drafteja kysynnän mukaan. Drafti alkaa aina listan\r\ntäyttyessä kahdeksasta pelaajasta. Ilmoittautumaan voi saapua Klo 11 alkaen.\r\nIlmoittautuminen suoraan turnauksen vetäjälle turnaussalissa.\r\n---\r\nOn-demand Modern Horizons 3 Drafts organized by Poromagia. The tournament starts once 8 players\r\nhave signed up. Sign up starts at 11am.\r\nSign-ups directly to the tournament organizer at the tournament area.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-07-20"],
+      "room": ["halli-3-turnaussali"],
+      "type": ["gaming", "tournament"],
+      "topic": ["cardgames"],
+      "konsti": ["tournament"],
+      "audience": [],
+      "language": ["fi"],
+      "accessibility": []
+    },
+    "cachedAnnotations": { "konsti:minAttendance": 8 },
+    "scheduleItems": [
+      {
+        "startTime": "2024-07-20T08:00:00+00:00",
+        "endTime": "2024-07-20T17:00:00+00:00",
+        "lengthMinutes": 540,
+        "location": "Halli 3 Turnaussali"
+      }
+    ]
+  },
+  {
+    "slug": "magic-the-gathering-outlaws-of-thunder-junction-on-demand-booster-draft",
+    "title": "Magic: the Gathering - Outlaws of Thunder Junction On-demand Booster Draft",
+    "description": "Poromagian järjestämiä Outlaws of Thunder Junction Booster Drafteja kysynnän mukaan. Drafti alkaa\r\naina listan täyttyessä kahdeksasta pelaajasta. Ilmoittautumaan voi saapua Klo 11 alkaen.\r\nIlmoittautuminen suoraan turnauksen vetäjälle turnaussalissa.\r\n---\r\nOn-demand Outlaws of Thunder Junction Drafts organized by Poromagia. The tournament starts once 8\r\nplayers have signed up. Sign up starts at 11am.\r\nSign-ups directly to the tournament organizer at the tournament area.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-07-20"],
+      "room": ["halli-3-turnaussali"],
+      "type": ["gaming", "tournament"],
+      "topic": ["cardgames"],
+      "konsti": ["tournament"],
+      "audience": [],
+      "language": ["fi"],
+      "accessibility": []
+    },
+    "cachedAnnotations": {},
+    "scheduleItems": [
+      {
+        "startTime": "2024-07-20T08:00:00+00:00",
+        "endTime": "2024-07-20T17:00:00+00:00",
+        "lengthMinutes": 540,
+        "location": "Halli 3 Turnaussali"
+      }
+    ]
+  },
+  {
     "slug": "dungeonjammer-laiva-nimelta-kuolema-2-peluutus",
     "title": "DungeonJammer: Laiva nimeltä Kuolema (2. peluutus)",
     "description": "“Hei! Kuulkaa! Satamaan saapui juuri rahtialus jonka tuttu pursimies kertoi että olivat nähneet ulkokuoren lähellä tuuliajolla olleen kauppalaivan. Se vain odottaa siellä noutajaansa ja tyhjentäjäänsä.\"\r\n\r\nAavemainen laiva ja helppo raha, niistä on avaruuslaivaseikkailu tehty!\r\n\r\nValmishahmoilla pelattava Spelljammermainen avaruusseikkailu kevyillä Powered by the Apocalypse säännöillä. \r\nPerustuu enemmän tai vähemmän Skull & Crossbows AD&D Spellajammer lisäosasta löytyvään seikkailuun.",
@@ -9358,7 +9482,7 @@
       "type": ["talk", "panel"],
       "topic": [],
       "konsti": [],
-      "audience": ["all-ages"],
+      "audience": ["all-ages", "aimed-under-13", "aimed-between-13-17"],
       "language": ["fi"],
       "accessibility": []
     },
@@ -10197,6 +10321,31 @@
     ]
   },
   {
+    "slug": "magic-the-gathering-modern-horizons-3-sealed",
+    "title": "Magic: the Gathering - Modern Horizons 3 Sealed",
+    "description": "Pormagian järjestämä Modern Horizons 3 Sealed-turnaus.\r\nTurnauksessa pelaajat rakentavat oman 40 kortin pakkansa käyttäen 6kpl MH3 Draft Boostereita.\r\nTurnauksessa pelataan osallistujamäärän mukaan swissiä, vähintään 3 ja enintään 5 pelikierrosta.\r\nIlmoittautumin suoraan turnaksen vetäjälle turnaussalissa.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-07-20"],
+      "room": ["halli-3-turnaussali"],
+      "type": ["gaming", "tournament"],
+      "topic": ["cardgames"],
+      "konsti": ["tournament"],
+      "audience": [],
+      "language": ["fi"],
+      "accessibility": []
+    },
+    "cachedAnnotations": { "konsti:minAttendance": 8 },
+    "scheduleItems": [
+      {
+        "startTime": "2024-07-20T09:00:00+00:00",
+        "endTime": "2024-07-20T14:00:00+00:00",
+        "lengthMinutes": 300,
+        "location": "Halli 3 Turnaussali"
+      }
+    ]
+  },
+  {
     "slug": "sangyn-allaunder-your-bed-escape-1-pelautus1-run",
     "title": "Sängyn Alla/Under Your Bed escape, 1. pelautus/1. run",
     "description": "Hirviön työ vaikuttaa ehkä helpolta, mutta 6v Valmu on saanut jo useamman kokeneen säikyttelijän jumiin, hukkaan tai loman tarpeeseen. Oletko sinä se hirviö, joka pääsee valloilleen vihdoin Valmun huoneessa, vai jääkö säikäyttäminen seuraavalle kokelaalle? Peli on pakohuone-larp, jossa pelaajat etsivät yhteistyössä ratkaisua ja reittiä ulos huoneesta valmiita hirviöhahmoja pelaten. / Working as a monster might seem easy, but 6-year-old Valmu has gotten many experienced spookers stuck, lost or into a dire need for a vacation. Will you be the monster that finally gets loose in Valmu's room, or will the scare job remain open for the next taker? This game is an escape room - larp, where players work together to solve and escape the room, while playing pre-written monster characters.",
@@ -10398,7 +10547,7 @@
   {
     "slug": "tee-oma-hirvionaamio",
     "title": "Tee oma hirviönaamio",
-    "description": "Työpaja niille, jotka haluavat askarrella itselleen oman hirviönaamion. Valitse naamiopohja (2,95-6,95€) ja koristele se maalaamalla ja liimaamalla ylimääräisiä silmiä, karvaa tai vaikka suomuja. Voit myös askarrella sarvia tai muita ulokkeita naamioosi. \r\n\r\nSopii kaiken ikäisille. Materiaalimaksu 5€ + naamiopohja.\r\n\r\nTyöpajaan on ennakkoilmoittautuminen Konstissa lauantaina 20.7. kello 9 alkaen.",
+    "description": "Työpaja niille, jotka haluavat askarrella itselleen oman hirviönaamion. Koristele naamiopohja maalaamalla ja liimaamalla ylimääräisiä silmiä, karvaa tai vaikka suomuja. Voit myös askarrella sarvia tai muita ulokkeita naamioosi. \r\n\r\nSopii kaiken ikäisille aikuisen kokoisille, maskipohjat on aikuiskokoisia. Materiaalimaksu 5€.\r\n\r\nTyöpajaan on ennakkoilmoittautuminen Konstissa lauantaina 20.7. kello 9 alkaen.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-20"],
@@ -10406,12 +10555,12 @@
       "type": ["workshop"],
       "topic": ["crafts", "theme"],
       "konsti": ["workshop"],
-      "audience": ["all-ages"],
+      "audience": ["aimed-between-13-17", "aimed-adults"],
       "language": ["free"],
       "accessibility": ["irritate-skin", "requires-dexterity"]
     },
     "cachedAnnotations": {
-      "konsti:workshopFee": "5€ plus valitun naamiopohjan hinta",
+      "konsti:workshopFee": "5€",
       "konsti:maxAttendance": 12
     },
     "scheduleItems": [
@@ -10426,7 +10575,7 @@
   {
     "slug": "digimon-card-game-tournament",
     "title": "Digimon Card Game -tournament",
-    "description": "Digimon Card Game on vuonna 2020 julkaistu strateginen keräilykorttipeli, jossa rakennetaan omia pakkoja Digimon-hahmojen ympärille ja taistellaan vastustajan digitaalihirviöitä vastaan. \r\n\r\nRopeconissa järjestetään jälleen kerran Digimon Card Game -turnaus! Turnauksen järjestää Digimon Suomi ry. Ota pakkasi mukaan ja tule pelaamaan muiden samanhenkisten ihmisten kanssa. Turnauksen ohessa on myös mitä mainioin tilaisuus vaihdella kortteja muiden harrastajien kanssa.\r\n\r\nTurnaukseen ilmoittaudutaan myöhemmin julkaistavalla lomakkeella. Pelaajien olisi hyvä saapua paikalle n. 15 minuuttia ennen turnauksen alkua.\r\n\r\nOttelut pelataan paras kolmesta formaatilla, yksi kierros kestää yhteensä maksimissaan 45 minuuttia + 5 minuuttia kolmen ylimääräisen jatkovuoron pelaamiseen, mikäli peli ei ole päättynyt 45 minuutin kohdalla.\r\n\r\nTurnausaikataulu on tiukka, joten mukaan kannattaa varata pientä evästä.\r\n\r\nTurnauksessa on laillisia kaikki englanniksi julkaistut kortit. Poislukien turnauspäivänä voimassa olevat bännätyt ja rajoitetut kortit. Tuoreimmat rajoitukset löydät tältä sivustolta: https://world.digimoncard.com/rule/restriction_card/\r\n\r\nTurnauksen kulku ja tärkeimmät säännöt kerrataan myös paikan päällä ennen pelien alkua. Tuomari on paikalla ohjeistamassa.\r\n\r\n---\r\n\r\nRopecon will once again host a Digimon Card Game Tournament! Bring along your deck and play with other likeminded people. The tournament is also an excellent opportunity for trading cards with other hobbyists. All cards released prior to the tournament are allowed, with the exception of the those mentioned in the official lists of restricted and banned cards (https://world.digimoncard.com/rule/restriction_card/). The tournament will consist of max. 6 best-of-three rounds, until only one winner remains.",
+    "description": "Digimon Card Game on vuonna 2020 julkaistu strateginen keräilykorttipeli, jossa rakennetaan omia pakkoja Digimon-hahmojen ympärille ja taistellaan vastustajan digitaalihirviöitä vastaan. \r\n\r\nIlmoittaudu turnaukseen: https://forms.gle/3REdgM7BrCpJJaKF6\r\n\r\nTurnaukseen ei ole erillistä osallsitumismaksua, mutta osallistujat tarvitsevat lipun itse Ropecon tapahtumaan.\r\nLippukauppa löytyy täältä: https://ropecon.fi/liput/\r\n\r\nTurnaus alkaa klo 13.\r\n\r\nTurnauksessa pelataan maksimissaan kuusi swiss-kierrosta.\r\n\r\nOttelut pelataan paras kolmesta -formaatilla.\r\n\r\nTurnausaikataulu on tiukka, joten mukaan kannattaa varata pientä evästä.\r\n\r\nTurnauksessa on laillisia kaikki englanniksi julkaistut kortit. Poislukien turnauspäivänä voimassa olevat kielletyt ja rajoitetut kortit.\r\n\r\nTarkempi infopaketti turnauksesta löytyy ilmoittautumislinkin takaa.\r\n\r\n---\r\n\r\nRegister for the tournament: https://forms.gle/3REdgM7BrCpJJaKF6\r\n\r\nThere is no separate participation fee for the tournament, but participants need a ticket to the Ropecon event itself.\r\nThe ticket shop can be found here: https://ropecon.fi/liput/\r\n\r\nThe tournament starts at 1 p.m.\r\n\r\nA maximum of six swiss rounds are played in the tournament.\r\n\r\nMatches are played in a best-of-three format.\r\n\r\nThe tournament schedule is tight, so it's a good idea to bring some snacks.\r\n\r\nAll cards published in English are legal in the tournament. Excluding banned and restricted cards valid on the day of the tournament.\r\n\r\nA more detailed information package about the tournament can be found behind the registration link.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-20"],
@@ -10985,37 +11134,6 @@
     ]
   },
   {
-    "slug": "cairn-la",
-    "title": "Cairn (La)",
-    "description": "Tervetuloa pelaamaan fantasiaroolipeli Cairnia. Tavoitteena tässä pöytäroolipelissä on tutkia Cairnholmin alla olevia katakombeja, kohdata vaaroja ja hirviöitä, löytää upeita aarteita ja kehittää hahmoja.\r\n\r\nSäännöt ovat aloittelijaystävälliset ja tarjoavat toisaalta kokeneilla pelaajille paljon mahdollisuuksia soveltamiseen. Valokeilassa eivät ole säännöt vaan hahmot ja heidän seikkailunsa. \r\n\r\nTeemana on fantasia ja voit valita hahmoksi jonkin perinteisistä tai ei niin perinteisistä humanoidilajeista. Voit olla esimerkiksi kääpiösoturi, haltiaparantaja, ihmisnoita tai vaikka puolituisbrigandeeri jos siltä tuntuu. Tärkeintä on peliryhmän yhteistyö ja yhteinen tarinankerronta pelinjohtajan kanssa. Pelissä on luvassa soihdun käryä, loputtomia tunneleita, jännitystä ja taistelua.\r\n\r\nTuon mukanani tarvittavat nopat, lomakkeet ja muun tilpehöörin.",
-    "cachedHosts": "<redacted>",
-    "cachedDimensions": {
-      "date": ["2024-07-20"],
-      "room": ["sade"],
-      "type": ["gaming"],
-      "topic": ["penandpaper", "theme"],
-      "konsti": ["tabletopRPG"],
-      "audience": ["k-18", "beginners"],
-      "language": ["fi"],
-      "accessibility": ["duration-over-2h", "limited-moving-opportunities"]
-    },
-    "cachedAnnotations": {
-      "konsti:rpgSystem": "Cairn",
-      "ropecon:gameSlogan": "Perinteistä luolastoseikkailua tasoilla 1-3",
-      "konsti:maxAttendance": 4,
-      "konsti:minAttendance": 2,
-      "ropecon:contentWarnings": "taistelu, kuolema, magia, okkultismi, ahtaat tunnelit, stressaavat tilanteet, hirviöt."
-    },
-    "scheduleItems": [
-      {
-        "startTime": "2024-07-20T11:00:00+00:00",
-        "endTime": "2024-07-20T15:00:00+00:00",
-        "lengthMinutes": 240,
-        "location": "Säde"
-      }
-    ]
-  },
-  {
     "slug": "iii-m-levyjulkkarikeikka",
     "title": "III.m levyjulkkarikeikka",
     "description": "III.m on roolipelaamisesta musiikkiinsa ammentava laulaja-lauluntekijä, jonka kappaleet käsittelevät mm. eri liveroolipelien tapahtumia ja niistä kohonneita tunteita suomeksi ja englanniksi. Nyt kappaleista on julkaistu levy. Tule kuuntelemaan, nauramaan ja itkemään mukana, kun käymme musiikin voimin läpi tilanteita pelinjärjestämisestä yksisarvisbileisiin puoliksi täysin kieli poskessa ja puoliksi täysin vakavissaan.",
@@ -11131,41 +11249,6 @@
         "endTime": "2024-07-20T16:00:00+00:00",
         "lengthMinutes": 300,
         "location": "Halli 3 Figualue"
-      }
-    ]
-  },
-  {
-    "slug": "miami-vice-biltmore",
-    "title": "Miami Vice  -  Biltmore",
-    "description": "80-luvun TV-sarja Miami Vice palaa ruutuun! Tässä oneshotissa pelataan tyylikkäitä ja ikonisia poliisietsiviä Crockett, Gina, Trudy ja Tubbs. Miamin aurinko, pastellisävyt ja art deco -arkkitehtuuri ovat jälleen rekvisiittana, kun etsivät taistelevat Calderonen huumekartellia vastaan. Tällä kertaa kyseessä on peitetehtävä legendaarisessa Biltmore -hotellissa, ja panoksena on niin viattomia kuin paatuneitakin ihmishenkiä.\r\n\r\nValmishahmot. Erittäin kevyt sääntösysteemi. Itse tarina sopii aloittelijoille, mutta fiilistelypelinä tämä soveltuu myös kokeneemmille roolipelaajille.",
-    "cachedHosts": "<redacted>",
-    "cachedDimensions": {
-      "date": ["2024-07-20"],
-      "room": ["sali-310"],
-      "type": ["gaming"],
-      "topic": ["penandpaper"],
-      "konsti": ["tabletopRPG"],
-      "audience": ["aimed-adults"],
-      "language": ["fi"],
-      "accessibility": [
-        "limited-moving-opportunities",
-        "long-texts",
-        "texts-with-no-recordings"
-      ]
-    },
-    "cachedAnnotations": {
-      "konsti:rpgSystem": "SWADE (Savage Worlds Adventure Edition)",
-      "ropecon:gameSlogan": "Tekeekö äärimmäinen luksus ihmisestä paremman vai pahemman?9",
-      "konsti:maxAttendance": 4,
-      "konsti:minAttendance": 4,
-      "ropecon:contentWarnings": "Huumeiden käyttö, kuolema, murhatutkimus, fyysinen väkivalta"
-    },
-    "scheduleItems": [
-      {
-        "startTime": "2024-07-20T11:00:00+00:00",
-        "endTime": "2024-07-20T15:00:00+00:00",
-        "lengthMinutes": 240,
-        "location": "Sali 310"
       }
     ]
   },
@@ -12539,12 +12622,7 @@
       "type": ["talk", "presentation"],
       "topic": ["penandpaper"],
       "konsti": [],
-      "audience": [
-        "all-ages",
-        "aimed-between-13-17",
-        "aimed-adults",
-        "beginners"
-      ],
+      "audience": [],
       "language": ["fi"],
       "accessibility": []
     },
@@ -12715,7 +12793,7 @@
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-20"],
-      "room": ["halli-5b-nayttelyalue"],
+      "room": ["halli-5b-figumaalauspiste"],
       "type": ["workshop"],
       "topic": ["miniatures"],
       "konsti": ["workshop"],
@@ -12729,7 +12807,7 @@
         "startTime": "2024-07-20T12:30:00+00:00",
         "endTime": "2024-07-20T14:00:00+00:00",
         "lengthMinutes": 90,
-        "location": "Halli 5B Näyttelyalue"
+        "location": "Halli 5B Figumaalauspiste"
       }
     ]
   },
@@ -13092,7 +13170,7 @@
       "date": ["2024-07-20"],
       "room": ["sali-206"],
       "type": ["talk", "panel"],
-      "topic": [],
+      "topic": ["dance"],
       "konsti": [],
       "audience": ["all-ages", "beginners"],
       "language": ["fi"],
@@ -14064,7 +14142,7 @@
   {
     "slug": "varttinakehrayspaja-2",
     "title": "Värttinäkehräyspaja",
-    "description": "Värttinäpaja tulee jälleen! Tänäkin vuonna luvassa tiukkoja käänteitä ja hikikarpaloita villan ja kepin parissa!\r\n\r\nVärttinällä kehräys on parhaimmillaan meditatiivinen harrastus mutta myös harjoitusta vaativa postkapitalismiin valmentava taito, jota voi kokemuksen myötä harrastaa lähes missä tahansa kulkee. Pajassa kannustetaan aloittamaan nollasta ja sen yläpuolelta ja epäonnistumaan rohkeasti. Testataan kiinnostuksen mukaan erilaisia värjäämättömiä villoja ja ehkä Jopa Muita Kuituja. Pajassa on saatavilla kokeiluun harjoitusvärttinän lisäksi myös muutamia eri kokoisia ja -mallisia värttinöitä. Mahdollisuus viedä oma värttinä kotiin työpajan päätteeksi (tällä kertaa oikeasti) hintaan 12 €. \r\n\r\nTestaa sorminäppäryytesi rajoja! Näe kohuttu \"kirpparin kuhmuinen Vanha Keppi\"! Todista työvälineen putoamista lattialle uudestaan ja uudestaan!  \r\n”Oletko koskaan halunnut olla kehrääjä, ja jos olet, nyt se on mahdollista, sillä uusi kehrääjä on saapunut ja se olet sinä.” -Vanha sananlasku.\r\n\r\nIlmoittautuminen Konstissa lauantaina 20.7. kello 15 alkaen. Työpajamaksu 2 €.",
+    "description": "Värttinäpaja tulee jälleen! Tänäkin vuonna luvassa tiukkoja käänteitä ja hikikarpaloita villan ja kepin parissa!\r\n\r\nVärttinällä kehräys on parhaimmillaan meditatiivinen harrastus mutta myös harjoitusta vaativa postkapitalismiin valmentava taito, jota voi kokemuksen myötä harrastaa lähes missä tahansa kulkee. Pajassa kannustetaan aloittamaan nollasta ja sen yläpuolelta ja epäonnistumaan rohkeasti. Testataan kiinnostuksen mukaan erilaisia värjäämättömiä villoja ja ehkä Jopa Muita Kuituja. Pajassa on saatavilla kokeiluun harjoitusvärttinän lisäksi myös muutamia eri kokoisia ja -mallisia värttinöitä. Mahdollisuus viedä oma värttinä kotiin työpajan päätteeksi (tällä kertaa oikeasti) hintaan 12 €. \r\n\r\nTestaa sorminäppäryytesi rajoja! Näe kohuttu \"kirpparin kuhmuinen Vanha Keppi\"! Todista työvälineen putoamista lattialle uudestaan ja uudestaan! \r\n”Oletko koskaan halunnut olla kehrääjä, ja jos olet, nyt se on mahdollista, sillä uusi kehrääjä on saapunut ja se olet sinä.” -Vanha sananlasku.\r\n\r\nIlmoittautuminen Konstissa lauantaina 20.7. kello 15 alkaen. Työpajamaksu 2 €.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-20"],
@@ -16414,6 +16492,39 @@
     ]
   },
   {
+    "slug": "parasite-a-game-of-paranoia-treachery-and-irrational-logic-2",
+    "title": "Parasite - A game of paranoia, treachery and irrational logic",
+    "description": "<i>At a remote scientific outpost in the Arctic, a team of nine studies their harsh environment.\r\nSuddenly, they find themselves trapped with a hostile alien parasite that can mimic humans almost perfectly.\r\nIf the parasite escapes, it will infect the rest of the world and all you care about will perish.</i>\r\n---------\r\nCo-op survival board game that tries to define what is humanity and what do you do when you cannot trust others around you. Do you become a murder hobo or try to win others trust by being kind? Will you prevent the end of the world or relish in its ruins?\r\n\r\nThe game contains traitor mechanics, paranoia, ability to exercise free will, and is one kind of a team building exercise.\r\n\r\n<b>Inspired by John Carpenter's movie The Thing and the 80's decade.</b>",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-07-20"],
+      "room": ["halli-3-kokemuspiste"],
+      "type": ["experience", "gaming", "demo"],
+      "topic": ["boardgames", "theme"],
+      "konsti": ["experiencePoint"],
+      "audience": ["aimed-adults"],
+      "language": ["fi", "en"],
+      "accessibility": [
+        "limited-moving-opportunities",
+        "texts-with-no-recordings"
+      ]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Parasite - Traitor mechanics, freewill, survival horror comedy",
+      "konsti:maxAttendance": 8,
+      "konsti:minAttendance": 4,
+      "ropecon:contentWarnings": "Violence, isolation, pandemia, disease, freewill"
+    },
+    "scheduleItems": [
+      {
+        "startTime": "2024-07-20T17:30:00+00:00",
+        "endTime": "2024-07-20T19:00:00+00:00",
+        "lengthMinutes": 90,
+        "location": "Halli 3 Kokemuspiste"
+      }
+    ]
+  },
+  {
     "slug": "suuri-hiisipaneeli",
     "title": "Suuri hiisipaneeli",
     "description": "Goblinit, gobbot, hiidet, peikkolaiset, näillä rakkailla riiviöillä on monta nimeä!\r\n\r\nAikojen saatossa hiidet ovat edenneet Tolkienin kasvottomista hirviöistä ensimmäisen tason miekanruoan kautta omaksi ilmiökseen ja etenkin pandemian aikana hiidettämisestä tuli suorastaan muotia. Mutta mihin kaikkeen näistä pienistä pirulaisista onkaan, ja mihin hiidet päätyvät seuraavaksi? \r\n\r\nTule kuuntelemaan Suomen etulinjan hiisiasiantuntijoiden sihisevimmät analyysit ajankohtaisista hiisiaiheista!",
@@ -17918,6 +18029,37 @@
     ]
   },
   {
+    "slug": "iikan-peli-2",
+    "title": "Kings of War -turnaus",
+    "description": "Tarjolla jo pienen, mutta innokkaan Kings of War -porukan turnaus. Turnauksessa pelataan 1750 pisteen listoilla.\r\n\r\nTurnauksessa pääroolissa ovat hyvä henki ja hienot armeijat, joilla pelataan ehkä tasapainoisimman massataistelupelin säännöillä. Käytössä turnauksessa on kolmannen laitoksen säännöt, uusinpine päivityksineen, ja ilmoittautuminen tapahtuu sotavasara.net -sivuston kautta.\r\n\r\n---\r\n\r\nA Kings of War tournament by a small but dedicated group of players. Tournament is played using 1750pts lists.\r\n\r\nThe main attractions of this tournament are the good vibes and magnificent armies, which are played using the rules of possibly the most balanced game within the mass battle game genre. The tournament uses both the 3rd edition rules and the newest changes. Sign-up in advance via the sotavasara.net forums.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-07-21"],
+      "room": ["halli-3-figuturnausalue"],
+      "type": ["gaming", "tournament"],
+      "topic": ["miniatures"],
+      "konsti": ["tournament"],
+      "audience": ["aimed-between-13-17", "aimed-adults"],
+      "language": ["fi", "en"],
+      "accessibility": []
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Kings of War",
+      "konsti:maxAttendance": 20,
+      "konsti:minAttendance": 6,
+      "ropecon:contentWarnings": "fantasiateemaista satuväkivaltaa",
+      "ropecon:accessibilityOther": "Pöytien ylle kumartelu voi käydä selän päälle."
+    },
+    "scheduleItems": [
+      {
+        "startTime": "2024-07-21T06:00:00+00:00",
+        "endTime": "2024-07-21T14:00:00+00:00",
+        "lengthMinutes": 480,
+        "location": "Halli 3 Figuturnausalue"
+      }
+    ]
+  },
+  {
     "slug": "sunnuntain-vtes-turnaus-sunday-vtes-tournament",
     "title": "Sunnuntain VTES-turnaus / Sunday VTES tournament",
     "description": "Sunnuntain Vampire: The Eternal Struggle -turnaus. Pelataan 2 kierrosta + finaali standard constructedia. Ensimmäisen kierroksen jälkeen on 45 minuutin ruokatauko. Turnauksen organisaattoreina ja tuomareina toimivat Pasi Karjalainen ja Teemu Pulkkinen.\r\n\r\nSunday's Vampire: The Eternal Struggle  standard constructed tournament. The tournament consists of 2 rounds + final.  After the first round there is a 45 minute lunch break. Tournament organisators and judges are Pasi Karjalainen and Teemu Pulkkinen.\r\n\r\nEnnakkoilmoittauminen/Pre-registration: https://docs.google.com/spreadsheets/d/1BB0wAWEDRSnvMBhQkIG7O70Nibqn3_eUiIDNFS1s5Wc/edit?usp=sharing",
@@ -18912,8 +19054,8 @@
   },
   {
     "slug": "tee-oma-hirvionaamio-2",
-    "title": "Tee oma hirviönaamio",
-    "description": "Työpaja niille, jotka haluavat askarrella itselleen oman hirviönaamion. Valitse naamiopohja (2,95-6,95€) ja koristele se maalaamalla ja liimaamalla ylimääräisiä silmiä, karvaa tai vaikka suomuja. Voit myös askarrella sarvia tai muita ulokkeita naamioosi. \r\n\r\nSopii kaiken ikäisille. Materiaalimaksu 5€ + naamiopohja.\r\n\r\nTyöpajaan on ennakkoilmoittautuminen Konstissa lauantaina 20.7. kello 18 alkaen.",
+    "title": "Tee oma (juniori)hirviönaamio",
+    "description": "Työpaja niille, jotka haluavat askarrella itselleen oman hirviönaamion. Koristele naamiopohja maalaamalla ja liimaamalla ylimääräisiä silmiä, karvaa tai vaikka suomuja. Voit myös askarrella sarvia tai muita ulokkeita naamioosi. \r\n\r\nSunnuntain paja on suunnattu lapsille (maskipohjat ovat lapsikokoisia). Materiaalimaksu 5€.\r\n\r\nTyöpajaan on ennakkoilmoittautuminen Konstissa lauantaina 20.7. kello 18 alkaen.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-21"],
@@ -18921,19 +19063,13 @@
       "type": ["workshop"],
       "topic": ["crafts", "theme"],
       "konsti": ["workshop"],
-      "audience": [
-        "all-ages",
-        "aimed-under-13",
-        "aimed-between-13-17",
-        "aimed-adults",
-        "beginners"
-      ],
+      "audience": ["aimed-under-13", "aimed-between-13-17", "beginners"],
       "language": ["free"],
       "accessibility": []
     },
     "cachedAnnotations": {
-      "konsti:workshopFee": "5€+",
-      "konsti:maxAttendance": 17
+      "konsti:workshopFee": "5€",
+      "konsti:maxAttendance": 12
     },
     "scheduleItems": [
       {
@@ -19194,34 +19330,6 @@
         "endTime": "2024-07-21T08:30:00+00:00",
         "lengthMinutes": 90,
         "location": "Sali 215"
-      }
-    ]
-  },
-  {
-    "slug": "heroclixin-suomen-mestaruus-heroclix-finnish-championships",
-    "title": "Heroclixin Suomen Mestaruus // Heroclix Finnish Championships",
-    "description": "Turnausformaattina on 300 pistettä Modern age, 3 kierrosta Swissiä\r\n\r\nTournament format is 300 points Modern age, 3 rounds of Swiss",
-    "cachedHosts": "<redacted>",
-    "cachedDimensions": {
-      "date": ["2024-07-21"],
-      "room": ["halli-3-figuturnausalue"],
-      "type": ["gaming", "tournament"],
-      "topic": ["miniatures"],
-      "konsti": ["tournament"],
-      "audience": [],
-      "language": ["fi", "en"],
-      "accessibility": []
-    },
-    "cachedAnnotations": {
-      "konsti:rpgSystem": "Heroclix",
-      "konsti:minAttendance": 4
-    },
-    "scheduleItems": [
-      {
-        "startTime": "2024-07-21T07:00:00+00:00",
-        "endTime": "2024-07-21T10:30:00+00:00",
-        "lengthMinutes": 210,
-        "location": "Halli 3 Figuturnausalue"
       }
     ]
   },
@@ -19803,7 +19911,7 @@
   {
     "slug": "ala-pelleile-magian-kanssa-seikkailijoiden-tyoturvallisuus-ja-hyvinvointi",
     "title": "Älä pelleile magian kanssa - seikkailijoiden työturvallisuus ja -hyvinvointi",
-    "description": "Kuinka usein jää tarkistamatta, onko esine kirottu, ennen kuin työnnät sen nenääsi? Onko taikajuomat nimikoitu? Ja muistaako jokainen pukea tulenkestävät työvaatteet lohikäärmejahtiin? Entä miten on levon, palautumisen ja ravitsemuksen laita? Työturvallisuusvelho Kanervan ja HR-druidi Dafnen tietoiskussa käydään läpi, miten et ole pöljä seikkailija. Osallistujat suorittavat myös seikkailijan työturvallisuuskortin.",
+    "description": "Kuinka usein jää tarkistamatta, onko esine kirottu, ennen kuin työnnät sen nenääsi? Onko taikajuomat nimikoitu? Ja muistaako jokainen pukea tulenkestävät työvaatteet lohikäärmejahtiin? Entä miten on levon, palautumisen ja ravitsemuksen laita? Työturvallisuusvelho Kanervan ja HR-druidi Dafnen tietoiskussa käydään läpi, miten et ole pöljä seikkailija. Osallistujat suorittavat myös seikkailijan työturvallisuuskortin.\r\n\r\nOhjelmassa on viittomakielinen tulkkaus.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-21"],
@@ -20124,7 +20232,7 @@
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-21"],
-      "room": ["halli-5b-nayttelyalue"],
+      "room": ["halli-5b-figumaalauspiste"],
       "type": ["workshop"],
       "topic": ["miniatures"],
       "konsti": ["workshop"],
@@ -20138,7 +20246,7 @@
         "startTime": "2024-07-21T08:00:00+00:00",
         "endTime": "2024-07-21T09:30:00+00:00",
         "lengthMinutes": 90,
-        "location": "Halli 5B Näyttelyalue"
+        "location": "Halli 5B Figumaalauspiste"
       }
     ]
   },
@@ -20287,6 +20395,87 @@
         "endTime": "2024-07-21T13:00:00+00:00",
         "lengthMinutes": 300,
         "location": "Halli 3 Figualue"
+      }
+    ]
+  },
+  {
+    "slug": "magic-the-gathering-casual-commander-3",
+    "title": "Magic: the Gathering - Casual Commander",
+    "description": "Poromagian järjestämää vapaamuotoista Commander-pelaamista. Pelaamaan voi saapua vapaasti klo\r\n11 alkaen.\r\n---\r\nFree Commander gaming organized by Poromagia. You can participate freely starting at 11am.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-07-21"],
+      "room": ["halli-3-turnaussali"],
+      "type": ["gaming", "tournament"],
+      "topic": ["cardgames"],
+      "konsti": ["tournament"],
+      "audience": [],
+      "language": ["fi"],
+      "accessibility": []
+    },
+    "cachedAnnotations": {
+      "konsti:maxAttendance": 2,
+      "konsti:minAttendance": 2
+    },
+    "scheduleItems": [
+      {
+        "startTime": "2024-07-21T08:00:00+00:00",
+        "endTime": "2024-07-21T13:00:00+00:00",
+        "lengthMinutes": 300,
+        "location": "Halli 3 Turnaussali"
+      }
+    ]
+  },
+  {
+    "slug": "magic-the-gathering-modern-horizons-3-on-demand-booster-draft-3",
+    "title": "Magic: the Gathering - Modern Horizons 3 On-demand Booster Draft",
+    "description": "Poromagian järjestämiä Modern Horizons 3 Booster Drafteja kysynnän mukaan. Drafti alkaa aina listan\r\ntäyttyessä kahdeksasta pelaajasta. Ilmoittautumaan voi saapua Klo 11 alkaen.\r\nIlmoittautuminen suoraan turnauksen vetäjälle turnaussalissa.\r\n---\r\nOn-demand Modern Horizons 3 Drafts organized by Poromagia. The tournament starts once 8 players\r\nhave signed up. Sign up starts at 11am.\r\nSign-ups directly to the tournament organizer at the tournament area.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-07-21"],
+      "room": ["halli-3-turnaussali"],
+      "type": ["gaming", "tournament"],
+      "topic": ["cardgames"],
+      "konsti": ["tournament"],
+      "audience": [],
+      "language": ["fi"],
+      "accessibility": []
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Magic: the Gathering",
+      "konsti:minAttendance": 8
+    },
+    "scheduleItems": [
+      {
+        "startTime": "2024-07-21T08:00:00+00:00",
+        "endTime": "2024-07-21T13:00:00+00:00",
+        "lengthMinutes": 300,
+        "location": "Halli 3 Turnaussali"
+      }
+    ]
+  },
+  {
+    "slug": "magic-the-gathering-modern-horizons-3-sealed-2",
+    "title": "Magic: the Gathering - Modern Horizons 3 Sealed",
+    "description": "Pormagian järjestämä Modern Horizons 3 Sealed-turnaus.\r\nTurnauksessa pelaajat rakentavat oman 40 kortin pakkansa käyttäen 6kpl MH3 Draft Boostereita.\r\nTurnauksessa pelataan osallistujamäärän mukaan swissiä, vähintään 3 ja enintään 5 pelikierrosta.\r\nIlmoittautumin suoraan turnaksen vetäjälle turnaussalissa.\r\n---\r\nModern Horizons 3 Sealed tournamentnorganized by Poromagia. Each player builds a 40 card deck out\r\nof 6x MH3 Draft Boosters. 3-5 rounds of swiss based on the amount of attending players.\r\nSign-ups directly to the tournament organizer at the tournament area.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-07-21"],
+      "room": ["halli-3-turnaussali"],
+      "type": ["gaming", "tournament"],
+      "topic": ["cardgames"],
+      "konsti": ["tournament"],
+      "audience": [],
+      "language": ["fi"],
+      "accessibility": []
+    },
+    "cachedAnnotations": {},
+    "scheduleItems": [
+      {
+        "startTime": "2024-07-21T08:00:00+00:00",
+        "endTime": "2024-07-21T13:00:00+00:00",
+        "lengthMinutes": 300,
+        "location": "Halli 3 Turnaussali"
       }
     ]
   },
@@ -21309,7 +21498,7 @@
   {
     "slug": "merirosvolaivan-aarre-pakopeli-nelja-pelautusta",
     "title": "Merirosvolaivan aarre -pakopeli, neljä pelautusta",
-    "description": "Olette uusia tulokkaita merirosvolaivalla. Huomaatte tilaisuuden tunkeutua vihollislaivaan, ja korjata vuosia sitten tapahtunut vääryys. Saako merirosvojoukkonne pelastettua kapteeniltanne varastetun aarteen?\r\n\r\nPakopelin suositusikäraja on 12+, ja se sopii myös aikuisille. Yhteen peliin mahtuu 5 henkilöä, kesto noin 45 minuuttia. Pakopeli sisältää erilaisia pulmia ja loogista päättelyä.\r\n\r\nPelistä on neljä pelautusta:\r\nKello 13\r\nKello 14\r\nKello 15\r\nKello 16\r\n\r\nPeliin ilmoittaudutaan 2 - 5 hengen ryhmänä. Ilmoittautuminen kaikkiin pelautuksiin tapahtuu RopeLarp-tiskillä sunnuntaina 21.7. kello 10 alkaen. Saavuthan pelautukseesi ajoissa - muutoin vuoro menee varasijalla olevalle!",
+    "description": "Olette uusia tulokkaita merirosvolaivalla. Huomaatte tilaisuuden tunkeutua vihollislaivaan, ja korjata vuosia sitten tapahtunut vääryys. Saako merirosvojoukkonne pelastettua kapteeniltanne varastetun aarteen?\r\n\r\nPakopelin suositusikäraja on 12+, ja se sopii myös aikuisille. Yhteen peliin mahtuu 5 henkilöä, kesto noin 45 minuuttia. Pakopeli sisältää erilaisia pulmia ja loogista päättelyä.\r\n\r\nPelistä on neljä pelautusta:\r\nKello 13\r\nKello 14\r\nKello 15\r\nKello 16\r\n\r\nYhteen pelautukseen mahtuu 2 - 5 pelaajaa. Ilmoittautuminen kaikkiin pelautuksiin tapahtuu RopeLarp-tiskillä sunnuntaina 21.7. kello 10 alkaen. Yksi henkilö voi ilmoittautua vain yhteen pelautukseen, ja yksi henkilö voi ilmoittaa maksimissaan kaksi pelaajaa (itsensä ja yhden muun). Saavuthan pelautukseesi ajoissa - muutoin vuoro menee varasijalla olevalle!",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-21"],
@@ -21830,6 +22019,31 @@
         "endTime": "2024-07-21T11:00:00+00:00",
         "lengthMinutes": 60,
         "location": "Halli 1 Spektaakkelisali"
+      }
+    ]
+  },
+  {
+    "slug": "siniviivan-sankarit-3",
+    "title": "Siniviivan sankarit",
+    "description": "täytä",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-07-21"],
+      "room": ["halli-3-figualue"],
+      "type": ["gaming", "demo"],
+      "topic": ["miniatures"],
+      "konsti": ["other"],
+      "audience": [],
+      "language": ["fi"],
+      "accessibility": []
+    },
+    "cachedAnnotations": { "konsti:maxAttendance": 5 },
+    "scheduleItems": [
+      {
+        "startTime": "2024-07-21T10:00:00+00:00",
+        "endTime": "2024-07-21T13:00:00+00:00",
+        "lengthMinutes": 180,
+        "location": "Halli 3 Figualue"
       }
     ]
   },
