@@ -20,7 +20,7 @@ import { AssignmentError } from "shared/types/api/errors";
 import { AssignmentStrategy } from "shared/config/sharedConfigTypes";
 
 export const padgAssignment = (
-  attendees: readonly User[],
+  users: readonly User[],
   programItems: readonly ProgramItem[],
   startTime: string,
   directSignups: readonly DirectSignupsForProgramItem[],
@@ -44,7 +44,7 @@ export const padgAssignment = (
     allAttendees,
     numberOfIndividuals,
     numberOfGroups,
-  } = getRunRandomAndPadgInput(attendees, programItems, startTime);
+  } = getRunRandomAndPadgInput(users, programItems, startTime);
   if (lotterySignupProgramItems.length === 0) {
     logger.debug("No lottery signups, stop!");
     return makeSuccessResult({

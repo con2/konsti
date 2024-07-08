@@ -21,50 +21,45 @@ import { AssignmentError } from "shared/types/api/errors";
 
 export const runAssignmentStrategy = (
   assignmentStrategy: AssignmentStrategy,
-  attendees: readonly User[],
+  users: readonly User[],
   programItems: readonly ProgramItem[],
   startTime: string,
   directSignups: readonly DirectSignupsForProgramItem[],
 ): Result<AssignmentResult, AssignmentError> => {
   logger.info(
-    `Received data for ${attendees.length} attendees and ${programItems.length} program items`,
+    `Received data for ${users.length} users and ${programItems.length} program items`,
   );
 
   logger.info(
-    `Assigning attendees for program items starting at ${startTime.toString()}`,
+    `Assigning users for program items starting at ${startTime.toString()}`,
   );
 
   logger.info(`Assign strategy: ${assignmentStrategy}`);
 
   if (assignmentStrategy === AssignmentStrategy.PADG) {
-    return runPadgStrategy(attendees, programItems, startTime, directSignups);
+    return runPadgStrategy(users, programItems, startTime, directSignups);
   }
 
   if (assignmentStrategy === AssignmentStrategy.RANDOM) {
-    return runRandomStrategy(attendees, programItems, startTime, directSignups);
+    return runRandomStrategy(users, programItems, startTime, directSignups);
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (assignmentStrategy === AssignmentStrategy.RANDOM_PADG) {
-    return runRandomPadgStrategy(
-      attendees,
-      programItems,
-      startTime,
-      directSignups,
-    );
+    return runRandomPadgStrategy(users, programItems, startTime, directSignups);
   }
 
   return exhaustiveSwitchGuard(assignmentStrategy);
 };
 
 const runPadgStrategy = (
-  attendees: readonly User[],
+  uses: readonly User[],
   programItems: readonly ProgramItem[],
   startTime: string,
   directSignups: readonly DirectSignupsForProgramItem[],
 ): Result<AssignmentResult, AssignmentError> => {
   const padgResultResult = padgAssignment(
-    attendees,
+    uses,
     programItems,
     startTime,
     directSignups,
@@ -77,13 +72,13 @@ const runPadgStrategy = (
 };
 
 const runRandomStrategy = (
-  attendees: readonly User[],
+  users: readonly User[],
   programItems: readonly ProgramItem[],
   startTime: string,
   directSignups: readonly DirectSignupsForProgramItem[],
 ): Result<AssignmentResult, AssignmentError> => {
   const randomResultResult = randomAssignment(
-    attendees,
+    users,
     programItems,
     startTime,
     directSignups,
@@ -96,13 +91,13 @@ const runRandomStrategy = (
 };
 
 const runRandomPadgStrategy = (
-  attendees: readonly User[],
+  users: readonly User[],
   programItems: readonly ProgramItem[],
   startTime: string,
   directSignups: readonly DirectSignupsForProgramItem[],
 ): Result<AssignmentResult, AssignmentError> => {
   const randomResultResult = randomAssignment(
-    attendees,
+    users,
     programItems,
     startTime,
     directSignups,
@@ -123,7 +118,7 @@ const runRandomPadgStrategy = (
     : unwrapResult(randomResultResult);
 
   const padgResultResult = padgAssignment(
-    attendees,
+    users,
     programItems,
     startTime,
     directSignups,
