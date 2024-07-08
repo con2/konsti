@@ -4,12 +4,14 @@ import { UserAssignmentResult } from "shared/types/models/result";
 import { saveResult } from "server/features/results/resultsRepository";
 import { Result, isErrorResult, makeSuccessResult } from "shared/utils/result";
 import { MongoDbError } from "shared/types/api/errors";
+import { User } from "shared/types/models/user";
 
 interface SaveResultsParams {
   results: readonly UserAssignmentResult[];
   startTime: string;
   algorithm: string;
   message: string;
+  users: User[];
 }
 
 export const saveResults = async ({
@@ -17,6 +19,7 @@ export const saveResults = async ({
   startTime,
   algorithm,
   message,
+  users,
 }: SaveResultsParams): Promise<Result<void, MongoDbError>> => {
   logger.info(
     `Save all signup results to separate collection for start time ${startTime}`,
@@ -35,6 +38,7 @@ export const saveResults = async ({
   const saveUserSignupResultsResult = await saveUserSignupResults(
     startTime,
     results,
+    users,
   );
   if (isErrorResult(saveUserSignupResultsResult)) {
     return saveUserSignupResultsResult;

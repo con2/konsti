@@ -29,7 +29,7 @@ import {
   deleteDirectSignup,
   postDirectSignup,
 } from "server/features/direct-signup/directSignupController";
-import { postEventLogItem } from "server/features/user/event-log/eventLogController";
+import { postEventLogItemIsSeen } from "server/features/user/event-log/eventLogController";
 import { postFavorite } from "server/features/user/favorite-program-item/favoriteProgramItemController";
 import {
   getGroup,
@@ -84,7 +84,7 @@ apiRoutes.post(ApiEndpoint.SESSION_RESTORE, postSessionRestore);
 apiRoutes.post(ApiEndpoint.USERS_PASSWORD, postUserPassword);
 apiRoutes.post(ApiEndpoint.SETTINGS, postSettings);
 apiRoutes.post(ApiEndpoint.DIRECT_SIGNUP, postDirectSignup);
-apiRoutes.post(ApiEndpoint.EVENT_LOG, postEventLogItem);
+apiRoutes.post(ApiEndpoint.EVENT_LOG_IS_SEEN, postEventLogItemIsSeen);
 apiRoutes.post(ApiEndpoint.PROGRAM_UPDATE_CRON, postAutoUpdateProgramItems);
 apiRoutes.post(ApiEndpoint.ASSIGNMENT_CRON, postAutoAssignment);
 apiRoutes.post(ApiEndpoint.VERIFY_KOMPASSI_LOGIN, postVerifyKompassiLogin);

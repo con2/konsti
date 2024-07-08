@@ -23,7 +23,7 @@ export enum ApiEndpoint {
   DIRECT_SIGNUP = "/api/direct-signup",
   SENTRY_TUNNEL = "/api/sentry",
   SENTRY_TEST = "/api/sentry-test",
-  EVENT_LOG = "/api/event-log",
+  EVENT_LOG_IS_SEEN = "/api/event-log-is-seen",
   PROGRAM_UPDATE_CRON = "/api/program-update-cron",
   ASSIGNMENT_CRON = "/api/assignment-cron",
   HEALTH = "/api/health",

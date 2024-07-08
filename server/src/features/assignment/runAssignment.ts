@@ -68,8 +68,9 @@ export const runAssignment = async ({
   const { directSignupAlwaysOpenIds, twoPhaseSignupProgramTypes } =
     config.shared();
 
+  // Remove invalid lottery signups from users
   // Only include "twoPhaseSignupProgramTypes" and don't include "directSignupAlwaysOpen" program items
-  const filteredUsers = users.map((user) => {
+  const validLotterySignupsUsers = users.map((user) => {
     const matchingLotterySignups = user.lotterySignups.filter(
       (lotterySignup) =>
         twoPhaseSignupProgramTypes.includes(
@@ -90,7 +91,7 @@ export const runAssignment = async ({
   const programItems = unwrapResult(programItemsResult);
 
   // Only include "twoPhaseSignupProgramTypes" and don't include "directSignupAlwaysOpen" program items
-  const filteredProgramItems = programItems.filter(
+  const validLotterySignupProgramItems = programItems.filter(
     (programItem) =>
       twoPhaseSignupProgramTypes.includes(programItem.programType) &&
       !directSignupAlwaysOpenIds.includes(programItem.programItemId),
@@ -104,8 +105,8 @@ export const runAssignment = async ({
 
   const assignResultsResult = runAssignmentStrategy(
     assignmentStrategy,
-    filteredUsers,
-    filteredProgramItems,
+    validLotterySignupsUsers,
+    validLotterySignupProgramItems,
     assignmentTime,
     directSignups,
   );
@@ -128,6 +129,7 @@ export const runAssignment = async ({
     startTime: assignmentTime,
     algorithm: assignResults.algorithm,
     message: assignResults.message,
+    users: validLotterySignupsUsers,
   });
   if (isErrorResult(saveResultsResult)) {
     return saveResultsResult;

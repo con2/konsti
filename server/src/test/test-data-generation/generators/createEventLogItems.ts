@@ -21,8 +21,8 @@ export const createEventLogItems = async (): Promise<void> => {
     (user) => user.username !== "admin" && user.username !== "helper",
   );
 
-  const eventLogUpdates = users.flatMap((user) => {
-    const randomProgramItems = sampleSize(twoPhaseSignups, 5);
+  const newAssignmentEventLogUpdates = users.flatMap((user) => {
+    const randomProgramItems = sampleSize(twoPhaseSignups, 3);
 
     return randomProgramItems.map((randomProgramItem, index) => ({
       username: user.username,
@@ -33,8 +33,24 @@ export const createEventLogItems = async (): Promise<void> => {
   });
 
   await addEventLogItems({
-    updates: eventLogUpdates,
+    updates: newAssignmentEventLogUpdates,
     action: EventLogAction.NEW_ASSIGNMENT,
+  });
+
+  const noAssignmentEventLogUpdates = users.flatMap((user) => {
+    const randomProgramItems = sampleSize(twoPhaseSignups, 2);
+
+    return randomProgramItems.map((randomProgramItem, index) => ({
+      username: user.username,
+      programItemId: "",
+      programItemStartTime: randomProgramItem.startTime,
+      createdAt: createdAtTimes[index].toISOString(),
+    }));
+  });
+
+  await addEventLogItems({
+    updates: noAssignmentEventLogUpdates,
+    action: EventLogAction.NO_ASSIGNMENT,
   });
 };
 

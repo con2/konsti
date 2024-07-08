@@ -89,6 +89,6 @@ export const postEventLogItemIsSeen = async (
   const response = await api.post<
     PostEventLogIsSeenResponse,
     PostEventLogIsSeenRequest
-  >(ApiEndpoint.EVENT_LOG, request);
+  >(ApiEndpoint.EVENT_LOG_IS_SEEN, request);
   return response.data;
 };

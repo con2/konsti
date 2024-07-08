@@ -2,37 +2,37 @@ import { logger } from "server/utils/logger";
 import { User } from "shared/types/models/user";
 import { ProgramItem } from "shared/types/models/programItem";
 
-export const getSelectedAttendees = (
-  attendees: readonly User[],
+export const getGroupCreators = (
+  users: readonly User[],
   startingProgramItems: readonly ProgramItem[],
 ): User[] => {
-  logger.debug("Get selected attendees");
+  logger.debug("Get group creators");
 
   // Get users who have lottery signups for starting program items
   const selectedAttendees = [] as User[];
 
-  attendees.forEach((attendee) => {
+  users.forEach((user) => {
     let match = false;
-    for (let i = 0; i < attendee.lotterySignups.length; i += 1) {
+    for (let i = 0; i < user.lotterySignups.length; i += 1) {
       for (let j = 0; j < startingProgramItems.length; j += 1) {
         if (
-          attendee.lotterySignups[i].programItem.programItemId ===
+          user.lotterySignups[i].programItem.programItemId ===
           startingProgramItems[j].programItemId
         ) {
           match = true;
           break;
         }
       }
-      // Attendee matched, break
+      // User matched, break
       if (match) {
-        selectedAttendees.push(attendee);
+        selectedAttendees.push(user);
         break;
       }
     }
   });
 
   logger.debug(
-    `Found ${selectedAttendees.length} attendees for this start time`,
+    `Found ${selectedAttendees.length} group creators for this start time`,
   );
 
   return selectedAttendees;

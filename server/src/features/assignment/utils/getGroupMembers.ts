@@ -3,16 +3,16 @@ import { User } from "shared/types/models/user";
 
 export const getGroupMembers = (
   groupCreators: readonly User[],
-  attendees: readonly User[],
+  users: readonly User[],
 ): readonly User[] => {
-  logger.debug("Add group members to groups");
+  logger.debug("Get group members");
 
   const selectedAttendeesWithSignups = [] as User[];
 
   for (const groupCreator of groupCreators) {
     // Skip individual users
     if (groupCreator.groupCode !== "0") {
-      for (const attendee of attendees) {
+      for (const attendee of users) {
         // User is in the group but is not the creator
         if (
           attendee.groupCode === groupCreator.groupCode &&

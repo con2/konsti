@@ -44,18 +44,20 @@ export const addEventLogItems = async (
 
   try {
     await UserModel.bulkWrite(bulkOps);
-    logger.info(`MongoDB: Action log item added for users ${uniq(usernames)}`);
+    logger.info(
+      `MongoDB: Action log item ${action} added for ${uniq(usernames).length} users: ${uniq(usernames)}`,
+    );
     return makeSuccessResult(undefined);
   } catch (error) {
     logger.error(
-      `MongoDB: Error adding event log item for users ${uniq(usernames)}: %s`,
+      `MongoDB: Error adding event log item ${action} for ${uniq(usernames).length} users ${uniq(usernames)}: %s`,
       error,
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
 
-export const updateEventLogItem = async (
+export const updateEventLogItemIsSeen = async (
   request: PostEventLogIsSeenRequest,
 ): Promise<Result<EventLogItem[] | null, MongoDbError>> => {
   const { username, eventLogItemId, isSeen } = request;
@@ -95,14 +97,17 @@ export const updateEventLogItem = async (
 
 export const deleteEventLogItemsByStartTime = async (
   startTime: string,
-  action: EventLogAction,
+  actions: EventLogAction[],
 ): Promise<Result<void, MongoDbError>> => {
   try {
     await UserModel.updateMany(
       {},
       {
         $pull: {
-          eventLogItems: { programItemStartTime: startTime, action },
+          eventLogItems: {
+            programItemStartTime: startTime,
+            action: { $in: actions },
+          },
         },
       },
     );

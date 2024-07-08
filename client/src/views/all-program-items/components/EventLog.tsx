@@ -2,13 +2,14 @@ import { ReactElement, useCallback, useEffect, useRef } from "react";
 import dayjs from "dayjs";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import { orderBy } from "lodash-es";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { submitUpdateEventLogIsSeen } from "client/views/login/loginThunks";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
 import { RaisedCard } from "client/components/RaisedCard";
-import { AppRoute } from "client/app/AppRoutes";
+import { EventLogNewAssignment } from "client/views/all-program-items/components/EventLogNewAssignment";
+import { EventLogAction } from "shared/types/models/eventLog";
+import { EventLogNoAssignment } from "client/views/all-program-items/components/EventLogNoAssignment";
 
 export const EventLog = (): ReactElement => {
   const { t } = useTranslation();
@@ -65,38 +66,22 @@ export const EventLog = (): ReactElement => {
         (item) => item.createdAt,
         "desc",
       ).map((eventLogItem) => {
-        const foundProgramItem = programItems.find(
-          (programItem) =>
-            programItem.programItemId === eventLogItem.programItemId,
-        );
-        if (!foundProgramItem) {
-          return;
-        }
         return (
           <RaisedCard
             isHighlighted={!eventLogItem.isSeen}
             key={eventLogItem.eventLogItemId}
           >
-            <span>
-              {t(`eventLogActions.${eventLogItem.action}`, {
-                PROGRAM_TYPE: t(
-                  `programTypeIllative.${foundProgramItem.programType}`,
-                ),
-              })}{" "}
-              <StyledLink
-                to={`${AppRoute.PROGRAM_ITEM}/${eventLogItem.programItemId}`}
-              >
-                {foundProgramItem.title}
-              </StyledLink>
-              .
-            </span>
+            {eventLogItem.action === EventLogAction.NEW_ASSIGNMENT && (
+              <EventLogNewAssignment
+                eventLogItem={eventLogItem}
+                programItems={programItems}
+                showDetails={true}
+              />
+            )}
 
-            <StartTime>
-              {t("eventLog.programItemDetails", {
-                START_TIME: getWeekdayAndTime(foundProgramItem.startTime),
-                LOCATION: foundProgramItem.location,
-              })}
-            </StartTime>
+            {eventLogItem.action === EventLogAction.NO_ASSIGNMENT && (
+              <EventLogNoAssignment eventLogItem={eventLogItem} />
+            )}
 
             <MessageCreatedAt>
               <span>{getTime(eventLogItem.createdAt)}</span>
@@ -108,19 +93,11 @@ export const EventLog = (): ReactElement => {
   );
 };
 
-const StartTime = styled.div`
-  margin: 8px 0 0 0;
-`;
-
 const MessageCreatedAt = styled.div`
   display: flex;
   justify-content: right;
   margin: 8px 4px -4px 0;
   color: ${(props) => props.theme.textSecondary};
-`;
-
-const StyledLink = styled(Link)`
-  margin: 8px 0 0 0;
 `;
 
 const Title = styled.h1`

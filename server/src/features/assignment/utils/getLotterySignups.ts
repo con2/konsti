@@ -2,20 +2,19 @@ import { logger } from "server/utils/logger";
 import { LotterySignup } from "server/types/userTypes";
 import { User } from "shared/types/models/user";
 
-export const getLotterySignups = (
-  attendees: readonly User[],
-): LotterySignup[] => {
+export const getLotterySignups = (users: readonly User[]): LotterySignup[] => {
   logger.debug("Get lottery signups");
   const lotterySignups: LotterySignup[] = [];
 
-  // Get lottery signups for all attendees
-  attendees.forEach((attendee) => {
-    if (attendee.lotterySignups.length !== 0) {
-      attendee.lotterySignups.forEach((lotterySignup) => {
+  // Get lottery signups for all users
+  users.forEach((user) => {
+    if (user.lotterySignups.length !== 0) {
+      user.lotterySignups.forEach((lotterySignup) => {
         lotterySignups.push({
-          username: attendee.username,
+          username: user.username,
           programItemId: lotterySignup.programItem.programItemId,
           priority: lotterySignup.priority,
+          startTime: lotterySignup.time,
         });
       });
     }
