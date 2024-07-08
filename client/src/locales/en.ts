@@ -277,7 +277,8 @@ export const translationEN = {
   },
   eventLogActions: {
     newAssignment: "You were assigned to the {{PROGRAM_TYPE}}",
-    noAssignment: "You didn't get a seat in {{START_TIME}} lottery",
+    noAssignment:
+      "Spots for program items at {{START_TIME}} were randomized. Unfortunately, we couldn’t fit you into any of your chosen program items.",
   },
   notificationBar: {
     showAll: "Show all notifications",
