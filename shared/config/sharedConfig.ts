@@ -189,6 +189,10 @@ export const sharedConfig: SharedConfig = {
     "revontulten-taikaa-3-pelautus", // Revontulten taikaa, 3. pelautus
     "revontulten-taikaa-4-pelautus", // Revontulten taikaa, 4. pelautus
     "vaeltajien-tarina", // Vaeltajien tarina
+    "sangyn-allaunder-your-bed-escape-1-pelautus1-run", // Sängyn Alla/Under Your Bed escape, 1. pelautus/1. run
+    "sangyn-allaunder-your-bed-escape-2-pelautus2-run", // Sängyn Alla/Under Your Bed escape, 2. pelautus/2. run
+    "sangyn-allaunder-your-bed-escape-3-pelautus3-run", // Sängyn Alla/Under Your Bed escape, 3. pelautus/3. run
+    "sangyn-allaunder-your-bed-escape-4-pelautus4-run", // Sängyn Alla/Under Your Bed escape, 4. pelautus/4. run
   ],
 
   signupQuestions: [
