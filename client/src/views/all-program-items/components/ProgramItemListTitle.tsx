@@ -2,99 +2,23 @@ import { ReactElement, useRef } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { capitalize } from "lodash-es";
-import { getTime, getWeekdayAndTime } from "client/utils/timeFormatter";
-import { Signup } from "shared/types/models/user";
-import { SignupStrategy } from "shared/config/sharedConfigTypes";
+import { getWeekdayAndTime } from "client/utils/timeFormatter";
 import { MOBILE_MARGIN } from "client/globalStyle";
-import { config } from "shared/config";
-import {
-  getAlgorithmSignupEndTime,
-  getAlgorithmSignupStartTime,
-} from "shared/utils/signupTimes";
 
 interface Props {
   startTime: string;
-  lotterySignups: readonly Signup[];
-  directSignups: readonly Signup[];
-  timeslotSignupStrategy: SignupStrategy;
-  isGroupCreator: boolean;
-  groupCode: string;
 }
 
-export const ProgramItemListTitle = ({
-  startTime,
-  lotterySignups,
-  directSignups,
-  timeslotSignupStrategy,
-  isGroupCreator,
-  groupCode,
-}: Props): ReactElement => {
+export const ProgramItemListTitle = ({ startTime }: Props): ReactElement => {
   const { t } = useTranslation();
   const intersectionRef = useRef<HTMLDivElement | null>(null);
 
-  const formattedStartTime = capitalize(getWeekdayAndTime(startTime));
-
-  const algorithmSignupStartTime = getTime(
-    getAlgorithmSignupStartTime(startTime).toISOString(),
-  );
-  const algorithmSignupEndTime = getTime(
-    getAlgorithmSignupEndTime(startTime).toISOString(),
-  );
-
-  const lotterySignupsCount = lotterySignups.filter(
-    (programItem) => programItem.programItem.startTime === startTime,
-  ).length;
-  const directSignup = directSignups.find(
-    (programItem) => programItem.programItem.startTime === startTime,
-  );
-
   return (
     <ProgramItemListTitleContainer key={startTime} ref={intersectionRef}>
-      <StyledProgramItemListTitle>
-        <StartTimeContainer>
-          <StartTime>{formattedStartTime}</StartTime>
-          {timeslotSignupStrategy === SignupStrategy.ALGORITHM && (
-            <DirectSignupCount>{lotterySignupsCount} / 3</DirectSignupCount>
-          )}
-        </StartTimeContainer>
-
-        {config.shared().manualSignupMode === "none" &&
-          timeslotSignupStrategy === SignupStrategy.ALGORITHM && (
-            <span>
-              ({t("lotterySignupOpenBetween")} {algorithmSignupStartTime}-
-              {algorithmSignupEndTime})
-            </span>
-          )}
-
-        {timeslotSignupStrategy === SignupStrategy.DIRECT && (
-          <DirectSignupCount>
-            {directSignup ? directSignup.programItem.title : ""}
-          </DirectSignupCount>
-        )}
-      </StyledProgramItemListTitle>
-
-      {timeslotSignupStrategy === SignupStrategy.ALGORITHM &&
-        groupCode !== "0" && (
-          <GroupInfo>
-            {isGroupCreator ? (
-              <InfoText>{t("group.signupForWholeGroup")}</InfoText>
-            ) : (
-              <InfoText>{t("group.signupDisabledNotCreator")}</InfoText>
-            )}
-          </GroupInfo>
-        )}
+      <StyledHeader>{capitalize(getWeekdayAndTime(startTime))}</StyledHeader>
     </ProgramItemListTitleContainer>
   );
 };
-
-const StartTimeContainer = styled.span`
-  display: flex;
-  justify-content: space-between;
-`;
-
-const DirectSignupCount = styled.span`
-  float: right;
-`;
 
 const ProgramItemListTitleContainer = styled.div`
   z-index: 2;
@@ -120,22 +44,6 @@ const ProgramItemListTitleContainer = styled.div`
   }
 `;
 
-const StyledProgramItemListTitle = styled.h3`
-  display: flex;
-  flex-direction: column;
-  margin: 0;
-  padding: 0;
-`;
-
-const GroupInfo = styled.p`
-  margin: 0;
-  padding: 10px 0 0 0;
-`;
-
-const InfoText = styled.span`
-  font-weight: 600;
-`;
-
-const StartTime = styled.span`
-  padding-right: 6px;
+const StyledHeader = styled.h2`
+  margin: 4px 0 4px 0;
 `;
