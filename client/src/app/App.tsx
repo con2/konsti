@@ -12,7 +12,7 @@ import { ErrorBar } from "client/components/ErrorBar";
 import { MOBILE_MARGIN } from "client/globalStyle";
 import { TestTime } from "client/test/test-components/TestTime";
 import { Announcement } from "client/components/Announcement";
-import { NotificationBar } from "client/components/NotificationBar";
+import { NotificationBar } from "client/views/event-log/NotificationBar";
 import { resetNetworkError } from "client/views/admin/adminUtils";
 
 const { loadedSettings, showTestValues, showAnnouncement, dataUpdateInterval } =

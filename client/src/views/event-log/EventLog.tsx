@@ -7,9 +7,9 @@ import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { submitUpdateEventLogIsSeen } from "client/views/login/loginThunks";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
 import { RaisedCard } from "client/components/RaisedCard";
-import { EventLogNewAssignment } from "client/views/all-program-items/components/EventLogNewAssignment";
+import { EventLogNewAssignment } from "client/views/event-log/EventLogNewAssignment";
 import { EventLogAction } from "shared/types/models/eventLog";
-import { EventLogNoAssignment } from "client/views/all-program-items/components/EventLogNoAssignment";
+import { EventLogNoAssignment } from "client/views/event-log/EventLogNoAssignment";
 
 export const EventLog = (): ReactElement => {
   const { t } = useTranslation();
