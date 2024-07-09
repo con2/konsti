@@ -307,11 +307,8 @@ export const translationFI = {
     confirmCancellation: "Peruuta ilmoittautuminen",
     staySignedUp: "Pysy ilmoittautuneena",
     expectedDuration: "Kesto {{EXPECTED_DURATION}}",
-    signupOpens: "Ilmoittautuminen alkaa",
     directSignupOpenNow: "Ilmoittautuminen on avoinna",
-    lotterySignupOpenNow: "Arvontaan ilmoittautuminen avoinna",
     loginToSignup: "Kirjaudu sisään ilmoittautumista varten",
-    lotterySignupOpens: "Arvontaan ilmoittautuminen alkaa",
     signupAlwaysOpen: "Ilmoittautuminen aina auki",
     inGroupWarning:
       "Jos ilmoittaudut {{PROGRAM_TYPE}}, sinut poistetaan ryhmästäsi.",

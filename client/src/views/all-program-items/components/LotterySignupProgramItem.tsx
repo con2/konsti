@@ -10,10 +10,7 @@ import {
 } from "client/views/my-program-items/myProgramItemsThunks";
 import { Signup } from "shared/types/models/user";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
-import {
-  getFormattedTime,
-  isAlreadyLotterySigned,
-} from "./allProgramItemsUtils";
+import { isAlreadyLotterySigned } from "./allProgramItemsUtils";
 import { Button, ButtonStyle } from "client/components/Button";
 import { ErrorMessage } from "client/components/ErrorMessage";
 import { CancelSignupForm } from "client/views/all-program-items/components/CancelSignupForm";
@@ -103,17 +100,6 @@ export const LotterySignupProgramItem = ({
   if (!loggedIn) {
     return (
       <NotLoggedSignupInfo>
-        <div>
-          {!lotterySignupOpen && (
-            <>
-              <span>{t("signup.lotterySignupOpens")}</span>{" "}
-              <BoldText>
-                {getFormattedTime(algorithmSignupStartTime, timeNow)}
-              </BoldText>
-            </>
-          )}
-          {lotterySignupOpen && <span>{t("signup.lotterySignupOpenNow")}</span>}
-        </div>
         <CreateAccountLink>
           <Link to={`/login`}>{t("signup.loginToSignup")}</Link>
         </CreateAccountLink>
@@ -129,15 +115,6 @@ export const LotterySignupProgramItem = ({
           <>
             {lotterySignupsForTimeslot.length >= 3 && (
               <p>{t("signup.cannotLotterySignupMoreProgramItems")}</p>
-            )}
-
-            {!lotterySignupOpen && (
-              <p>
-                {t("signup.lotterySignupOpens")}{" "}
-                <BoldText>
-                  {getFormattedTime(algorithmSignupStartTime, timeNow)}
-                </BoldText>
-              </p>
             )}
 
             {lotterySignupOpen &&

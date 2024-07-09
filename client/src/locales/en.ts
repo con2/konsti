@@ -304,11 +304,8 @@ export const translationEN = {
     confirmCancellation: "Cancel your sign-up",
     staySignedUp: "Stay signed up",
     expectedDuration: "Duration {{EXPECTED_DURATION}}",
-    signupOpens: "Sign-up opens",
     directSignupOpenNow: "Sign-up is open",
-    lotterySignupOpenNow: "Lottery sign-up open",
     loginToSignup: "Log in to sign up",
-    lotterySignupOpens: "Lottery sign-up opens",
     signupAlwaysOpen: "Sign-up always open",
     inGroupWarning:
       "If you sign up to a {{PROGRAM_TYPE}}, you will be removed from your current group.",
