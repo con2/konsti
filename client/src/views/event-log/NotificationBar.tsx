@@ -7,8 +7,8 @@ import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { HEADER_HEIGHT } from "client/components/Header";
 import { submitUpdateEventLogIsSeen } from "client/views/login/loginThunks";
 import { EventLogAction } from "shared/types/models/eventLog";
-import { EventLogNewAssignment } from "client/views/all-program-items/components/EventLogNewAssignment";
-import { EventLogNoAssignment } from "client/views/all-program-items/components/EventLogNoAssignment";
+import { EventLogNewAssignment } from "client/views/event-log/EventLogNewAssignment";
+import { EventLogNoAssignment } from "client/views/event-log/EventLogNoAssignment";
 
 export const NotificationBar = (): ReactElement | null => {
   const { t } = useTranslation();

@@ -17,7 +17,7 @@ import { isAdmin, isAdminOrHelp } from "client/utils/checkUserGroup";
 import { AboutView } from "client/views/about/AboutView";
 import { FaqView } from "client/views/about/FaqView";
 import { Tabs } from "client/components/Tabs";
-import { EventLog } from "client/views/all-program-items/components/EventLog";
+import { EventLog } from "client/views/event-log/EventLog";
 import { ProfileView } from "client/views/profile/ProfileView";
 import { InstructionsView } from "client/views/about/InstructionsView";
 import { KompassiLoginCallback } from "client/components/KompassiLoginCallback";
