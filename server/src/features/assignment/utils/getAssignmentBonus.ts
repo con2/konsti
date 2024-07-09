@@ -48,7 +48,7 @@ export const getAssignmentBonus = (
   const firstTimeBonus =
     averagePreviousDirectSignups <= 0.5 ? config.server().firstSignupBonus : 0;
 
-  /** Cumulative first time bonus */
+  /** Additional first time bonus */
 
   // Get group members with previous NO_ASSIGNMENT event log items
   const groupMembersWithPreviousFailedLotterySignup =
@@ -58,13 +58,13 @@ export const getAssignmentBonus = (
       );
     });
 
-  // Give additional cumulative first time bonus to the whole group if half of the group members have previous failed lottery signup
+  // Give additional first time bonus to the whole group if half of the group members have previous failed lottery signup
   const averageFailedLotterySignups =
     groupMembersWithPreviousFailedLotterySignup.length / attendeeGroup.length;
-  const cumulativeFirstTimeBonus =
+  const additionalFirstTimeBonus =
     averageFailedLotterySignups >= 0.5
-      ? config.server().cumulativeFirstSignupBonus
+      ? config.server().additionalFirstSignupBonus
       : 0;
 
-  return firstTimeBonus + cumulativeFirstTimeBonus;
+  return firstTimeBonus + additionalFirstTimeBonus;
 };

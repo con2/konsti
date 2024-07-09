@@ -12,7 +12,7 @@ import { EventLogAction, EventLogItem } from "shared/types/models/eventLog";
 const startTime = "2019-11-23T12:00:00+02:00";
 const groupCreatorGroupCode = "123-234-345";
 
-const { firstSignupBonus, cumulativeFirstSignupBonus } = config.server();
+const { firstSignupBonus, additionalFirstSignupBonus } = config.server();
 
 const getLotterySignups = (): Signup[] => {
   return [
@@ -335,7 +335,7 @@ describe("should NOT give first time bonus", () => {
   });
 });
 
-describe("should give cumulative bonus", () => {
+describe("should give additional bonus", () => {
   test("for single user with previous failed lottery signups", () => {
     const users = getUsers({ count: 1, pastLotterySignupUsers: 1 });
     const attendeeGroups = [users];
@@ -345,7 +345,7 @@ describe("should give cumulative bonus", () => {
       value: [
         {
           event: testProgramItem.programItemId,
-          gain: 1 + firstSignupBonus + cumulativeFirstSignupBonus,
+          gain: 1 + firstSignupBonus + additionalFirstSignupBonus,
           id: groupCreatorGroupCode,
           size: 1,
         },
@@ -362,7 +362,7 @@ describe("should give cumulative bonus", () => {
       value: [
         {
           event: testProgramItem.programItemId,
-          gain: 1 + firstSignupBonus + cumulativeFirstSignupBonus,
+          gain: 1 + firstSignupBonus + additionalFirstSignupBonus,
           id: groupCreatorGroupCode,
           size: 4,
         },
@@ -371,7 +371,7 @@ describe("should give cumulative bonus", () => {
   });
 });
 
-describe("should NOT give cumulative bonus", () => {
+describe("should NOT give additional bonus", () => {
   test("for single user with previous direct signup", () => {
     const users = getUsers({ count: 1, pastLotterySignupUsers: 1 });
     const attendeeGroups = [users];
