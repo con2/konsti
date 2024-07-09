@@ -34,6 +34,7 @@ export interface SharedConfig {
   signupOpen: boolean;
   resultsVisible: boolean;
   addToKonsti: string[];
+  addToKonstiInvalidType: string[];
   noKonstiSignupIds: string[];
   signupQuestions: SignupQuestion[];
   tournamentSignupQuestion: Omit<SignupQuestion, "programItemId"> | null;
@@ -118,7 +119,7 @@ export const sharedConfig: SharedConfig = {
     "kps-turnaus-rps-tournament", // KPS-turnaus / RPS Tournament
     "keppielainten-ja-keppihirvioiden-kilpailut", // Keppieläinten ja keppihirviöiden kilpailut!
 
-    // ** ropecon2023_signuplist - no need to hand pick after Kompassi importer updated**
+    // ** ropecon2023_signuplist - no need to hand pick after Kompassi importer updated **
 
     // Turnaukset: muu / Tournament: Other
     "pikamaalauskilpailu-speed-painting-contest-1-pefri", // Pikamaalauskilpailu / Speed Painting Contest 1 (Pe/Fri)
@@ -137,6 +138,11 @@ export const sharedConfig: SharedConfig = {
     // Turnaukset: korttipelit / Tournament: Card games
     "mtg-bulk-commander", // MtG Bulk Commander
     "clash-of-decks-turnaus", // Clash of Decks turnaus
+  ],
+
+  addToKonstiInvalidType: [
+    // Meetup
+    "looking-for-geek-friends-norttiystavia-etsimassa", // Looking for Geek Friends | Nörttiystäviä etsimässä
   ],
 
   // These program items have hand picked revolving door status
