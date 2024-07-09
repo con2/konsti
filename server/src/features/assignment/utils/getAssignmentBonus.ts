@@ -1,6 +1,8 @@
+import { partition } from "lodash-es";
 import { config } from "shared/config";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import { User } from "shared/types/models/user";
+import { EventLogAction } from "shared/types/models/eventLog";
 
 export const getAssignmentBonus = (
   attendeeGroup: User[],
@@ -9,7 +11,8 @@ export const getAssignmentBonus = (
   const { twoPhaseSignupProgramTypes, directSignupAlwaysOpenIds } =
     config.shared();
 
-  const signupsAffectingBonus = directSignups.filter(
+  // Take program items with "twoPhaseSignupProgramTypes" which are not in "directSignupAlwaysOpenIds"
+  const bonusAffectingDirectSignupsProgramItems = directSignups.filter(
     (directSignup) =>
       twoPhaseSignupProgramTypes.includes(
         directSignup.programItem.programType,
@@ -19,16 +22,49 @@ export const getAssignmentBonus = (
       ),
   );
 
-  const groupMembersWithSignups = attendeeGroup.flatMap((groupMember) => {
-    return signupsAffectingBonus.flatMap((signup) => {
-      return signup.userSignups.filter(
-        (userSignup) => userSignup.username === groupMember.username,
+  /** First time bonus */
+
+  // Get group members with direct signups or NEW_ASSIGNMENT event log items
+  const [groupMembersWithDirectSignups, groupMembersWithoutDirectSignups] =
+    partition(attendeeGroup, (groupMember) => {
+      const previousDirectSignup = bonusAffectingDirectSignupsProgramItems.find(
+        (programItem) => {
+          return programItem.userSignups.find(
+            (userSignup) => userSignup.username === groupMember.username,
+          );
+        },
+      );
+      const newAssignmentEvent = groupMember.eventLogItems.find(
+        (eventLogItem) => eventLogItem.action === EventLogAction.NEW_ASSIGNMENT,
+      );
+      if (previousDirectSignup ?? newAssignmentEvent) {
+        return groupMember;
+      }
+    });
+
+  // Give first time bonus to the whole group if half of the group members don't have previous direct signups
+  const averagePreviousDirectSignups =
+    groupMembersWithDirectSignups.length / attendeeGroup.length;
+  const firstTimeBonus =
+    averagePreviousDirectSignups <= 0.5 ? config.server().firstSignupBonus : 0;
+
+  /** Additional first time bonus */
+
+  // Get group members with previous NO_ASSIGNMENT event log items and without direct signups
+  const groupMembersWithPreviousFailedLotterySignup =
+    groupMembersWithoutDirectSignups.filter((groupMember) => {
+      return groupMember.eventLogItems.find(
+        (eventLogItem) => eventLogItem.action === EventLogAction.NO_ASSIGNMENT,
       );
     });
-  });
 
-  const averageSignups = groupMembersWithSignups.length / attendeeGroup.length;
+  // Give additional first time bonus to the whole group if half of the group members have previous failed lottery signups
+  const averageFailedLotterySignups =
+    groupMembersWithPreviousFailedLotterySignup.length / attendeeGroup.length;
+  const additionalFirstTimeBonus =
+    averageFailedLotterySignups >= 0.5
+      ? config.server().additionalFirstSignupBonus
+      : 0;
 
-  const bonus = averageSignups < 0.5 ? config.server().firtSignupBonus : 0;
-  return bonus;
+  return firstTimeBonus + additionalFirstTimeBonus;
 };

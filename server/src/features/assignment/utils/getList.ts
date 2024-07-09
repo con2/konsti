@@ -15,6 +15,7 @@ import {
 } from "shared/utils/result";
 import { AssignmentError } from "shared/types/api/errors";
 
+// TODO: This should not return Result since it's just synchronous logic
 export const getList = (
   attendeeGroups: readonly User[][],
   startTime: string,
