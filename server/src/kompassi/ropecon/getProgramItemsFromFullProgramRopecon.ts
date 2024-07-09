@@ -34,6 +34,17 @@ export const getProgramItemsFromFullProgramRopecon = (
   logger.info(`Found ${kompassiProgramItems.length} valid program items`);
 
   const matchingProgramItems = kompassiProgramItems.flatMap((programItem) => {
+    // Hand picked program items with invalid program type - use 'other' program type
+    if (config.shared().addToKonstiInvalidType.includes(programItem.slug)) {
+      return {
+        ...programItem,
+        cachedDimensions: {
+          ...programItem.cachedDimensions,
+          konsti: [KompassiKonstiProgramTypeRopecon.OTHER],
+        },
+      };
+    }
+
     // Take program items with Konsti dimension and valid program type
     const programType = first(programItem.cachedDimensions.konsti);
 
