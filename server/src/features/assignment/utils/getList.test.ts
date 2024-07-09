@@ -10,6 +10,8 @@ import { config } from "shared/config";
 const startTime = "2019-11-23T12:00:00+02:00";
 const groupCreatorGroupCode = "123-234-345";
 
+const { firstSignupBonus, cumulativeFirstSignupBonus } = config.server();
+
 const getLotterySignup = (): Signup => {
   return {
     programItem: testProgramItem,
@@ -121,19 +123,19 @@ test("should return as many results as user groups", () => {
     value: [
       {
         event: testProgramItem.programItemId,
-        gain: 21,
+        gain: 1 + firstSignupBonus,
         id: groupCreatorGroupCode,
         size: 1,
       },
       {
         event: testProgramItem.programItemId,
-        gain: 21,
+        gain: 1 + firstSignupBonus,
         id: groupCreatorGroupCode,
         size: 1,
       },
       {
         event: testProgramItem.programItemId,
-        gain: 21,
+        gain: 1 + firstSignupBonus,
         id: groupCreatorGroupCode,
         size: 1,
       },
@@ -151,7 +153,7 @@ describe("should give first time bonus", () => {
       value: [
         {
           event: testProgramItem.programItemId,
-          gain: 21,
+          gain: 1 + firstSignupBonus,
           id: groupCreatorGroupCode,
           size: 1,
         },
@@ -170,7 +172,7 @@ describe("should give first time bonus", () => {
       value: [
         {
           event: testProgramItem.programItemId,
-          gain: 21,
+          gain: 1 + firstSignupBonus,
           id: groupCreatorGroupCode,
           size: 1,
         },
@@ -192,7 +194,7 @@ describe("should give first time bonus", () => {
       value: [
         {
           event: testProgramItem.programItemId,
-          gain: 21,
+          gain: 1 + firstSignupBonus,
           id: groupCreatorGroupCode,
           size: 1,
         },
@@ -218,7 +220,7 @@ describe("should give first time bonus", () => {
       value: [
         {
           event: testProgramItem.programItemId,
-          gain: 21,
+          gain: 1 + firstSignupBonus,
           id: groupCreatorGroupCode,
           size: 1,
         },
@@ -237,7 +239,7 @@ describe("should give first time bonus", () => {
       value: [
         {
           event: testProgramItem.programItemId,
-          gain: 21,
+          gain: 1 + firstSignupBonus,
           id: groupCreatorGroupCode,
           size: 2,
         },
@@ -257,7 +259,7 @@ describe("should give first time bonus", () => {
       value: [
         {
           event: testProgramItem.programItemId,
-          gain: 21,
+          gain: 1 + firstSignupBonus,
           id: groupCreatorGroupCode,
           size: 2,
         },
@@ -327,7 +329,7 @@ describe("should give cumulative bonus", () => {
       value: [
         {
           event: testProgramItem.programItemId,
-          gain: 26,
+          gain: 1 + firstSignupBonus + cumulativeFirstSignupBonus,
           id: groupCreatorGroupCode,
           size: 1,
         },
@@ -344,7 +346,7 @@ describe("should give cumulative bonus", () => {
       value: [
         {
           event: testProgramItem.programItemId,
-          gain: 26,
+          gain: 1 + firstSignupBonus + cumulativeFirstSignupBonus,
           id: groupCreatorGroupCode,
           size: 4,
         },
@@ -405,7 +407,7 @@ describe("should NOT give cumulative bonus", () => {
       value: [
         {
           event: testProgramItem.programItemId,
-          gain: 21,
+          gain: 1 + firstSignupBonus,
           id: groupCreatorGroupCode,
           size: 5,
         },
