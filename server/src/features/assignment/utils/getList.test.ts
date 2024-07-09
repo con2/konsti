@@ -309,6 +309,51 @@ describe("should give first time bonus", () => {
       ],
     });
   });
+
+  test("for group with half NEW_ASSIGNMENT events", () => {
+    const users = getUsers({
+      count: 2,
+      pastLotterySignupUsers: 1,
+      pastSuccessLotterySignups: 1,
+    });
+    const attendeeGroups = [users];
+    const list = getList(attendeeGroups, startTime, []);
+
+    expect(list).toEqual({
+      value: [
+        {
+          event: testProgramItem.programItemId,
+          gain: 1 + firstSignupBonus,
+          id: groupCreatorGroupCode,
+          size: 2,
+        },
+      ],
+    });
+  });
+
+  test("for group with NEW_ASSIGNMENT event and previous direct signup", () => {
+    // First group member has NEW_ASSIGNMENT, second group member has direct signup
+    const users = getUsers({
+      count: 4,
+      pastLotterySignupUsers: 1,
+      pastSuccessLotterySignups: 1,
+    });
+    const attendeeGroups = [users];
+    const list = getList(attendeeGroups, startTime, [
+      getPreviousDirectSignup({ username: users[1].username }),
+    ]);
+
+    expect(list).toEqual({
+      value: [
+        {
+          event: testProgramItem.programItemId,
+          gain: 1 + firstSignupBonus,
+          id: groupCreatorGroupCode,
+          size: 4,
+        },
+      ],
+    });
+  });
 });
 
 describe("should NOT give first time bonus", () => {
