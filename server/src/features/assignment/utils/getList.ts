@@ -16,13 +16,20 @@ import {
 import { AssignmentError } from "shared/types/api/errors";
 import { ProgramItem } from "shared/types/models/programItem";
 
+interface GetListParams {
+  attendeeGroups: readonly User[][];
+  startTime: string;
+  directSignups: readonly DirectSignupsForProgramItem[];
+  lotterySignupProgramItems: readonly ProgramItem[];
+}
+
 // TODO: This should not return Result since it's just synchronous logic
-export const getList = (
-  attendeeGroups: readonly User[][],
-  startTime: string,
-  directSignups: readonly DirectSignupsForProgramItem[],
-  lotterySignupProgramItems: readonly ProgramItem[],
-): Result<ListItem[], AssignmentError> => {
+export const getList = ({
+  attendeeGroups,
+  startTime,
+  directSignups,
+  lotterySignupProgramItems,
+}: GetListParams): Result<ListItem[], AssignmentError> => {
   const results = attendeeGroups.flatMap((attendeeGroup) => {
     const firstMember = first(attendeeGroup);
     if (!firstMember) {
