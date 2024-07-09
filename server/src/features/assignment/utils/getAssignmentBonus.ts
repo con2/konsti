@@ -3,10 +3,12 @@ import { config } from "shared/config";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import { User } from "shared/types/models/user";
 import { EventLogAction } from "shared/types/models/eventLog";
+import { ProgramItem } from "shared/types/models/programItem";
 
 export const getAssignmentBonus = (
   attendeeGroup: User[],
   directSignups: readonly DirectSignupsForProgramItem[],
+  lotterySignupProgramItems: readonly ProgramItem[],
 ): number => {
   const { twoPhaseSignupProgramTypes, directSignupAlwaysOpenIds } =
     config.shared();
@@ -35,8 +37,17 @@ export const getAssignmentBonus = (
         },
       );
       const newAssignmentEvent = groupMember.eventLogItems.find(
-        (eventLogItem) => eventLogItem.action === EventLogAction.NEW_ASSIGNMENT,
+        (eventLogItem) => {
+          const previousAssignment =
+            eventLogItem.action === EventLogAction.NEW_ASSIGNMENT;
+          const programItemExists = lotterySignupProgramItems.some(
+            (programItem) =>
+              programItem.programItemId === eventLogItem.programItemId,
+          );
+          return previousAssignment && programItemExists;
+        },
       );
+
       if (previousDirectSignup ?? newAssignmentEvent) {
         return groupMember;
       }
