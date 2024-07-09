@@ -25,12 +25,31 @@ const getLotterySignups = (): Signup[] => {
   ];
 };
 
-const getPastNoLotterySignupEvents = (count: number): EventLogItem[] => {
+const getPastLotterySignupEvents = ({
+  pastFailureLotterySignups,
+  pastSuccessLotterySignups,
+}: {
+  pastFailureLotterySignups: number;
+  pastSuccessLotterySignups: number;
+}): EventLogItem[] => {
   const eventLogItems: EventLogItem[] = [];
-  for (let i = 0; i < count; i++) {
+  for (let i = 0; i < pastFailureLotterySignups; i++) {
     eventLogItems.push({
       eventLogItemId: faker.string.alphanumeric(10),
       action: EventLogAction.NO_ASSIGNMENT,
+      isSeen: false,
+      programItemId: testProgramItem.programItemId,
+      programItemStartTime: dayjs(startTime)
+        .subtract(i + 1, "hours")
+        .toISOString(),
+      createdAt: dayjs(startTime).subtract(1, "hours").toISOString(),
+    });
+  }
+
+  for (let i = 0; i < pastSuccessLotterySignups; i++) {
+    eventLogItems.push({
+      eventLogItemId: faker.string.alphanumeric(10),
+      action: EventLogAction.NEW_ASSIGNMENT,
       isSeen: false,
       programItemId: testProgramItem.programItemId,
       programItemStartTime: dayjs(startTime)
@@ -47,12 +66,14 @@ const getUsers = ({
   count,
   noLotterySignups = false,
   pastLotterySignupUsers = 0,
-  pastLotterySignups = 1,
+  pastFailureLotterySignups = 0,
+  pastSuccessLotterySignups = 0,
 }: {
   count: number;
   noLotterySignups?: boolean;
   pastLotterySignupUsers?: number;
-  pastLotterySignups?: number;
+  pastSuccessLotterySignups?: number;
+  pastFailureLotterySignups?: number;
 }): User[] => {
   const users: User[] = [];
   let pastLotterySignupUsersCounter = pastLotterySignupUsers;
@@ -77,7 +98,10 @@ const getUsers = ({
         lotterySignups: noLotterySignups ? [] : getLotterySignups(),
         eventLogItems:
           pastLotterySignupUsersCounter > 0
-            ? getPastNoLotterySignupEvents(pastLotterySignups)
+            ? getPastLotterySignupEvents({
+                pastFailureLotterySignups,
+                pastSuccessLotterySignups,
+              })
             : [],
       });
     } else {
@@ -88,7 +112,10 @@ const getUsers = ({
         lotterySignups: [],
         eventLogItems:
           pastLotterySignupUsersCounter > 0
-            ? getPastNoLotterySignupEvents(pastLotterySignups)
+            ? getPastLotterySignupEvents({
+                pastFailureLotterySignups,
+                pastSuccessLotterySignups,
+              })
             : [],
       });
     }
@@ -337,7 +364,32 @@ describe("should NOT give first time bonus", () => {
 
 describe("should give additional bonus", () => {
   test("for single user with previous failed lottery signups", () => {
-    const users = getUsers({ count: 1, pastLotterySignupUsers: 1 });
+    const users = getUsers({
+      count: 1,
+      pastLotterySignupUsers: 1,
+      pastFailureLotterySignups: 1,
+    });
+    const attendeeGroups = [users];
+    const list = getList(attendeeGroups, startTime, []);
+
+    expect(list).toEqual({
+      value: [
+        {
+          event: testProgramItem.programItemId,
+          gain: 1 + firstSignupBonus + additionalFirstSignupBonus,
+          id: groupCreatorGroupCode,
+          size: 1,
+        },
+      ],
+    });
+  });
+
+  test("for single user with multiple failed lottery signups", () => {
+    const users = getUsers({
+      count: 1,
+      pastLotterySignupUsers: 1,
+      pastFailureLotterySignups: 4,
+    });
     const attendeeGroups = [users];
     const list = getList(attendeeGroups, startTime, []);
 
@@ -354,7 +406,11 @@ describe("should give additional bonus", () => {
   });
 
   test("for group with half previous failed lottery signups", () => {
-    const users = getUsers({ count: 4, pastLotterySignupUsers: 2 });
+    const users = getUsers({
+      count: 4,
+      pastLotterySignupUsers: 2,
+      pastFailureLotterySignups: 1,
+    });
     const attendeeGroups = [users];
     const list = getList(attendeeGroups, startTime, []);
 
@@ -380,6 +436,28 @@ describe("should NOT give additional bonus", () => {
         username: users[0].username,
       }),
     ]);
+
+    expect(list).toEqual({
+      value: [
+        {
+          event: testProgramItem.programItemId,
+          gain: 1,
+          id: groupCreatorGroupCode,
+          size: 1,
+        },
+      ],
+    });
+  });
+
+  test("for single user with NEW_ASSIGNMENT event", () => {
+    const users = getUsers({
+      count: 1,
+      pastLotterySignupUsers: 1,
+      pastFailureLotterySignups: 1,
+      pastSuccessLotterySignups: 1,
+    });
+    const attendeeGroups = [users];
+    const list = getList(attendeeGroups, startTime, []);
 
     expect(list).toEqual({
       value: [

@@ -11,7 +11,7 @@ export const getAssignmentBonus = (
   const { twoPhaseSignupProgramTypes, directSignupAlwaysOpenIds } =
     config.shared();
 
-  // Take program items with two phase signup which are not "signup always open"
+  // Take program items with "twoPhaseSignupProgramTypes" which are not in "directSignupAlwaysOpenIds"
   const bonusAffectingDirectSignupsProgramItems = directSignups.filter(
     (directSignup) =>
       twoPhaseSignupProgramTypes.includes(
@@ -42,7 +42,7 @@ export const getAssignmentBonus = (
       }
     });
 
-  // Give first time bonus to the whole group if half of the group members don't have previous direct signup
+  // Give first time bonus to the whole group if half of the group members don't have previous direct signups
   const averagePreviousDirectSignups =
     groupMembersWithDirectSignups.length / attendeeGroup.length;
   const firstTimeBonus =
@@ -50,7 +50,7 @@ export const getAssignmentBonus = (
 
   /** Additional first time bonus */
 
-  // Get group members with previous NO_ASSIGNMENT event log items
+  // Get group members with previous NO_ASSIGNMENT event log items and without direct signups
   const groupMembersWithPreviousFailedLotterySignup =
     groupMembersWithoutDirectSignups.filter((groupMember) => {
       return groupMember.eventLogItems.find(
@@ -58,7 +58,7 @@ export const getAssignmentBonus = (
       );
     });
 
-  // Give additional first time bonus to the whole group if half of the group members have previous failed lottery signup
+  // Give additional first time bonus to the whole group if half of the group members have previous failed lottery signups
   const averageFailedLotterySignups =
     groupMembersWithPreviousFailedLotterySignup.length / attendeeGroup.length;
   const additionalFirstTimeBonus =
