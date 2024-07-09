@@ -1,46 +1,61 @@
 import { describe, expect, test, vi } from "vitest";
 import dayjs from "dayjs";
+import { faker } from "@faker-js/faker";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { getList } from "server/features/assignment/utils/getList";
 import { Signup, User, UserGroup } from "shared/types/models/user";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import { ProgramType } from "shared/types/models/programItem";
 import { config } from "shared/config";
+import { EventLogAction, EventLogItem } from "shared/types/models/eventLog";
 
 const startTime = "2019-11-23T12:00:00+02:00";
 const groupCreatorGroupCode = "123-234-345";
 
 const { firstSignupBonus, cumulativeFirstSignupBonus } = config.server();
 
-const getLotterySignup = (): Signup => {
-  return {
-    programItem: testProgramItem,
-    priority: 1,
-    time: startTime,
-    message: "",
-  };
+const getLotterySignups = (): Signup[] => {
+  return [
+    {
+      programItem: testProgramItem,
+      priority: 1,
+      time: startTime,
+      message: "",
+    },
+  ];
 };
 
-const getPastLotterySignup = (): Signup => {
-  return {
-    programItem: testProgramItem,
-    priority: 1,
-    time: dayjs(startTime).subtract(1, "hours").toISOString(),
-    message: "",
-  };
+const getPastNoLotterySignupEvents = (count: number): EventLogItem[] => {
+  const eventLogItems: EventLogItem[] = [];
+  for (let i = 0; i < count; i++) {
+    eventLogItems.push({
+      eventLogItemId: faker.string.alphanumeric(10),
+      action: EventLogAction.NO_ASSIGNMENT,
+      isSeen: false,
+      programItemId: testProgramItem.programItemId,
+      programItemStartTime: dayjs(startTime)
+        .subtract(i + 1, "hours")
+        .toISOString(),
+      createdAt: dayjs(startTime).subtract(1, "hours").toISOString(),
+    });
+  }
+
+  return eventLogItems;
 };
 
 const getUsers = ({
   count,
   noLotterySignups = false,
-  pastLotterySignups = 0,
+  pastLotterySignupUsers = 0,
+  pastLotterySignups = 1,
 }: {
   count: number;
   noLotterySignups?: boolean;
+  pastLotterySignupUsers?: number;
   pastLotterySignups?: number;
 }): User[] => {
   const users: User[] = [];
-  let pastLotterySignupsCounter = pastLotterySignups;
+  let pastLotterySignupUsersCounter = pastLotterySignupUsers;
 
   for (let i = 0; i < count; i++) {
     const defaultUserValues = {
@@ -52,7 +67,6 @@ const getUsers = ({
       groupCode: groupCreatorGroupCode,
       favoriteProgramItemIds: [],
       createdAt: dayjs(startTime).subtract(4, "hours").toISOString(),
-      eventLogItems: [],
     };
 
     if (i === 0) {
@@ -60,24 +74,26 @@ const getUsers = ({
         ...defaultUserValues,
         username: "group-creator-with-lottery-signup",
         groupCreatorCode: groupCreatorGroupCode,
-        lotterySignups: noLotterySignups
-          ? []
-          : [
-              getLotterySignup(),
-              pastLotterySignupsCounter > 0 ? getPastLotterySignup() : [],
-            ].flat(),
+        lotterySignups: noLotterySignups ? [] : getLotterySignups(),
+        eventLogItems:
+          pastLotterySignupUsersCounter > 0
+            ? getPastNoLotterySignupEvents(pastLotterySignups)
+            : [],
       });
     } else {
       users.push({
         ...defaultUserValues,
         username: `group-member-${i}`,
         groupCreatorCode: "0",
-        lotterySignups:
-          pastLotterySignupsCounter > 0 ? [getPastLotterySignup()] : [],
+        lotterySignups: [],
+        eventLogItems:
+          pastLotterySignupUsersCounter > 0
+            ? getPastNoLotterySignupEvents(pastLotterySignups)
+            : [],
       });
     }
 
-    pastLotterySignupsCounter--;
+    pastLotterySignupUsersCounter--;
   }
 
   return users;
@@ -321,7 +337,7 @@ describe("should NOT give first time bonus", () => {
 
 describe("should give cumulative bonus", () => {
   test("for single user with previous failed lottery signups", () => {
-    const users = getUsers({ count: 1, pastLotterySignups: 1 });
+    const users = getUsers({ count: 1, pastLotterySignupUsers: 1 });
     const attendeeGroups = [users];
     const list = getList(attendeeGroups, startTime, []);
 
@@ -338,7 +354,7 @@ describe("should give cumulative bonus", () => {
   });
 
   test("for group with half previous failed lottery signups", () => {
-    const users = getUsers({ count: 4, pastLotterySignups: 2 });
+    const users = getUsers({ count: 4, pastLotterySignupUsers: 2 });
     const attendeeGroups = [users];
     const list = getList(attendeeGroups, startTime, []);
 
@@ -357,7 +373,7 @@ describe("should give cumulative bonus", () => {
 
 describe("should NOT give cumulative bonus", () => {
   test("for single user with previous direct signup", () => {
-    const users = getUsers({ count: 1, pastLotterySignups: 1 });
+    const users = getUsers({ count: 1, pastLotterySignupUsers: 1 });
     const attendeeGroups = [users];
     const list = getList(attendeeGroups, startTime, [
       getPreviousDirectSignup({
@@ -399,7 +415,7 @@ describe("should NOT give cumulative bonus", () => {
   });
 
   test("for group with less than half previous failed lottery signups", () => {
-    const users = getUsers({ count: 5, pastLotterySignups: 2 });
+    const users = getUsers({ count: 5, pastLotterySignupUsers: 2 });
     const attendeeGroups = [users];
     const list = getList(attendeeGroups, startTime, []);
 

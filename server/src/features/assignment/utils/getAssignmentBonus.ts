@@ -2,11 +2,11 @@ import { partition } from "lodash-es";
 import { config } from "shared/config";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import { User } from "shared/types/models/user";
+import { EventLogAction } from "shared/types/models/eventLog";
 
 export const getAssignmentBonus = (
   attendeeGroup: User[],
   directSignups: readonly DirectSignupsForProgramItem[],
-  startTime: string,
 ): number => {
   const { twoPhaseSignupProgramTypes, directSignupAlwaysOpenIds } =
     config.shared();
@@ -24,7 +24,7 @@ export const getAssignmentBonus = (
 
   /** First time bonus */
 
-  // Get group members with and without direct signups
+  // Get group members with direct signups or NEW_ASSIGNMENT event log items
   const [groupMembersWithDirectSignups, groupMembersWithoutDirectSignups] =
     partition(attendeeGroup, (groupMember) => {
       const previousDirectSignup = bonusAffectingDirectSignupsProgramItems.find(
@@ -34,7 +34,10 @@ export const getAssignmentBonus = (
           );
         },
       );
-      if (previousDirectSignup) {
+      const newAssignmentEvent = groupMember.eventLogItems.find(
+        (eventLogItem) => eventLogItem.action === EventLogAction.NEW_ASSIGNMENT,
+      );
+      if (previousDirectSignup ?? newAssignmentEvent) {
         return groupMember;
       }
     });
@@ -47,11 +50,11 @@ export const getAssignmentBonus = (
 
   /** Cumulative first time bonus */
 
-  // Get group members without direct signups and with previous lottery signup
+  // Get group members with previous NO_ASSIGNMENT event log items
   const groupMembersWithPreviousFailedLotterySignup =
-    groupMembersWithoutDirectSignups.flatMap((groupMember) => {
-      return groupMember.lotterySignups.filter(
-        (lotterySignup) => lotterySignup.time !== startTime,
+    groupMembersWithoutDirectSignups.filter((groupMember) => {
+      return groupMember.eventLogItems.find(
+        (eventLogItem) => eventLogItem.action === EventLogAction.NO_ASSIGNMENT,
       );
     });
 

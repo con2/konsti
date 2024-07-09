@@ -45,7 +45,7 @@ export const getList = (
               : firstMember.serial,
           size: attendeeGroup.length,
           event: lotterySignup.programItem.programItemId,
-          gain: getGain(lotterySignup, attendeeGroup, directSignups, startTime),
+          gain: getGain(lotterySignup, attendeeGroup, directSignups),
         };
       });
 
@@ -71,9 +71,8 @@ const getGain = (
   lotterySignup: Signup,
   attendeeGroup: User[],
   directSignups: readonly DirectSignupsForProgramItem[],
-  startTime: string,
 ): number => {
-  const bonus = getAssignmentBonus(attendeeGroup, directSignups, startTime);
+  const bonus = getAssignmentBonus(attendeeGroup, directSignups);
 
   switch (lotterySignup.priority) {
     case 1:
