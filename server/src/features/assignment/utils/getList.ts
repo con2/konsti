@@ -14,12 +14,14 @@ import {
   unwrapResult,
 } from "shared/utils/result";
 import { AssignmentError } from "shared/types/api/errors";
+import { ProgramItem } from "shared/types/models/programItem";
 
 // TODO: This should not return Result since it's just synchronous logic
 export const getList = (
   attendeeGroups: readonly User[][],
   startTime: string,
   directSignups: readonly DirectSignupsForProgramItem[],
+  lotterySignupProgramItems: readonly ProgramItem[],
 ): Result<ListItem[], AssignmentError> => {
   const results = attendeeGroups.flatMap((attendeeGroup) => {
     const firstMember = first(attendeeGroup);
@@ -45,7 +47,12 @@ export const getList = (
               : firstMember.serial,
           size: attendeeGroup.length,
           event: lotterySignup.programItem.programItemId,
-          gain: getGain(lotterySignup, attendeeGroup, directSignups),
+          gain: getGain(
+            lotterySignup,
+            attendeeGroup,
+            directSignups,
+            lotterySignupProgramItems,
+          ),
         };
       });
 
@@ -71,8 +78,13 @@ const getGain = (
   lotterySignup: Signup,
   attendeeGroup: User[],
   directSignups: readonly DirectSignupsForProgramItem[],
+  lotterySignupProgramItems: readonly ProgramItem[],
 ): number => {
-  const bonus = getAssignmentBonus(attendeeGroup, directSignups);
+  const bonus = getAssignmentBonus(
+    attendeeGroup,
+    directSignups,
+    lotterySignupProgramItems,
+  );
 
   switch (lotterySignup.priority) {
     case 1:

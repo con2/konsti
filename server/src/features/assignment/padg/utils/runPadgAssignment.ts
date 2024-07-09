@@ -29,7 +29,12 @@ export const runPadgAssignment = (
   }
   const groups = unwrapResult(groupsResult);
   const events = getEvents(lotterySignupProgramItems, directSignups);
-  const listResult = getList(attendeeGroups, startTime, directSignups);
+  const listResult = getList(
+    attendeeGroups,
+    startTime,
+    directSignups,
+    lotterySignupProgramItems,
+  );
   if (isErrorResult(listResult)) {
     return listResult;
   }

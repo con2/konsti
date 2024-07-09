@@ -39,7 +39,12 @@ export const runRandomAssignment = (
     lotterySignupProgramItems,
     directSignups,
   );
-  const listResult = getList(attendeeGroups, startTime, directSignups);
+  const listResult = getList(
+    attendeeGroups,
+    startTime,
+    directSignups,
+    lotterySignupProgramItems,
+  );
   if (isErrorResult(listResult)) {
     return listResult;
   }
