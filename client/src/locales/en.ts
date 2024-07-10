@@ -310,7 +310,8 @@ export const translationEN = {
     inGroupWarning:
       "If you sign up to a {{PROGRAM_TYPE}}, you will be removed from your current group.",
     groupCreatorWarning:
-      "If you sign up to a {{PROGRAM_TYPE}}, the group you created will be deleted.",
+      "If you sign up to a {{PROGRAM_TYPE}}, the group you created will be deleted. Groups can only be used in lottery signups.",
+    groupSignupInfo: "Please note that you are signing up your whole group.",
     currentSignup: "You have signed up to this {{PROGRAM_TYPE}}.",
     entryFee: "Material fee {{ENTRY_FEE}}",
     entryFeeInfo:
@@ -322,7 +323,7 @@ export const translationEN = {
     noAttendees: "No {{ATTENDEE_TYPE}}",
     loginLink: "Log in",
     loginLinkEnding: " to see {{ATTENDEE_TYPE}}.",
-    signupQuestionAriaLabel: "Signup question",
+    signupQuestionAriaLabel: "Sign-up question",
     help: {
       doesNotRequireSignup:
         "This {{PROGRAM_TYPE}} does not require signing up.",

@@ -19,6 +19,7 @@ import { config } from "shared/config";
 import { SignupStrategy } from "shared/config/sharedConfigTypes";
 import { getAlgorithmSignupStartTime } from "shared/utils/signupTimes";
 import { getIsInGroup } from "client/views/group/groupUtils";
+import { InfoText } from "client/components/InfoText";
 
 interface Props {
   programItem: ProgramItem;

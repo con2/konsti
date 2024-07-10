@@ -27,6 +27,7 @@ import { ButtonGroup } from "client/components/ButtonGroup";
 import { Dropdown } from "client/components/Dropdown";
 import { Checkbox } from "client/components/Checkbox";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
+import { InfoText } from "client/components/InfoText";
 
 interface Props {
   programItem: ProgramItem;
@@ -137,26 +138,26 @@ export const DirectSignupForm = ({
         .twoPhaseSignupProgramTypes.includes(programItem.programType) &&
         !directSignupAlwaysOpenIds.includes(programItem.programItemId) &&
         isInGroup && (
-          <p>
+          <>
             {!isGroupCreator && (
-              <Warning>
+              <InfoText>
                 {t("signup.inGroupWarning", {
                   PROGRAM_TYPE: t(
                     `programTypeIllative.${programItem.programType}`,
                   ),
                 })}
-              </Warning>
+              </InfoText>
             )}
             {isGroupCreator && (
-              <Warning>
+              <InfoText>
                 {t("signup.groupCreatorWarning", {
                   PROGRAM_TYPE: t(
                     `programTypeIllative.${programItem.programType}`,
                   ),
                 })}
-              </Warning>
+              </InfoText>
             )}
-          </p>
+          </>
         )}
 
       {signupQuestion && (
@@ -251,14 +252,6 @@ export const DirectSignupForm = ({
     </SignupForm>
   );
 };
-
-const Warning = styled.span`
-  display: inline-block;
-  background-color: ${(props) => props.theme.warningBackground};
-  border: 1px solid ${(props) => props.theme.warningBorder};
-  border-radius: 4px;
-  padding: 6px;
-`;
 
 const SignupForm = styled.form`
   display: flex;
