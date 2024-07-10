@@ -1,6 +1,5 @@
 import { ReactElement, useRef } from "react";
 import styled from "styled-components";
-import { useTranslation } from "react-i18next";
 import { capitalize } from "lodash-es";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
 import { MOBILE_MARGIN } from "client/globalStyle";
@@ -10,7 +9,6 @@ interface Props {
 }
 
 export const ProgramItemListTitle = ({ startTime }: Props): ReactElement => {
-  const { t } = useTranslation();
   const intersectionRef = useRef<HTMLDivElement | null>(null);
 
   return (

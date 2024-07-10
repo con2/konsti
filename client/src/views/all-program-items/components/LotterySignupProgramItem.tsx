@@ -19,7 +19,6 @@ import { config } from "shared/config";
 import { SignupStrategy } from "shared/config/sharedConfigTypes";
 import { getAlgorithmSignupStartTime } from "shared/utils/signupTimes";
 import { getIsInGroup } from "client/views/group/groupUtils";
-import { InfoText } from "client/components/InfoText";
 
 interface Props {
   programItem: ProgramItem;
@@ -202,10 +201,6 @@ const LotterySignupContainer = styled.div`
   border-radius: 5px;
   border-left: 5px solid ${(props) => props.theme.infoBorder};
   background-color: ${(props) => props.theme.infoBackground};
-`;
-
-const BoldText = styled.span`
-  font-weight: 600;
 `;
 
 const ButtonContainer = styled.div`
