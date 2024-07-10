@@ -342,7 +342,7 @@ export const translationFI = {
         "Osallistujat valitaan arvonnalla. Arvontaan ilmoittautuminen päättyy: ",
       algorithmSignupEnded: "Osallistujat valittiin arvonnalla.",
       directSignupStarts:
-        "Suora ilmoittautuminen jäljelle jääneisiin ja peruutuspaikkoihin: ",
+        " Suora ilmoittautuminen jäljelle jääneisiin ja peruutuspaikkoihin: ",
     },
   },
   attendeeType: {

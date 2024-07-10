@@ -338,7 +338,7 @@ export const translationEN = {
       algorithmSignupOpen:
         "Participants are selected in a lottery. Lottery sign-up closes ",
       algorithmSignupEnded: "Participants were selected in a lottery.",
-      directSignupStarts: "Direct sign-up to remaining and cancelled spots: ",
+      directSignupStarts: " Direct sign-up to remaining and cancelled spots: ",
     },
   },
   attendeeType: {
