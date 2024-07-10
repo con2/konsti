@@ -7,6 +7,7 @@ import { SignupStrategy } from "shared/config/sharedConfigTypes";
 import { isRevolvingDoorWorkshop } from "client/utils/isRevolvingDoorWorkshop";
 import { Signup } from "shared/types/models/user";
 import { SignupHelpText } from "client/views/all-program-items/components/SignupHelpText";
+import { getTimeNow } from "client/utils/getTimeNow";
 
 interface Props {
   signupStrategy: SignupStrategy;
@@ -42,6 +43,8 @@ export const SignupInfo = ({
     .noKonstiSignupIds.includes(programItem.programItemId);
   const normalSignup = requiresSignup && konstiSignup;
 
+  const isSignupOver = getTimeNow().isSameOrAfter(programItem.startTime);
+
   return (
     <div>
       <SignupHelpText
@@ -51,23 +54,23 @@ export const SignupInfo = ({
         startTime={startTime}
       />
 
-      {!isDirectSignupMode && normalSignup && (
-        <LotterySignupProgramItem
-          programItem={programItem}
-          startTime={startTime}
-          lotterySignups={lotterySignups}
-        />
-      )}
-
-      {isDirectSignupMode && normalSignup && (
-        <DirectSignupProgramItem
-          programItem={programItem}
-          programItemIsFull={attendees >= programItem.maxAttendance}
-          startTime={startTime}
-          loading={loading}
-          setLoading={setLoading}
-        />
-      )}
+      {normalSignup &&
+        !isSignupOver &&
+        (!isDirectSignupMode ? (
+          <LotterySignupProgramItem
+            programItem={programItem}
+            startTime={startTime}
+            lotterySignups={lotterySignups}
+          />
+        ) : (
+          <DirectSignupProgramItem
+            programItem={programItem}
+            programItemIsFull={attendees >= programItem.maxAttendance}
+            startTime={startTime}
+            loading={loading}
+            setLoading={setLoading}
+          />
+        ))}
     </div>
   );
 };
