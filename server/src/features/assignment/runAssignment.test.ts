@@ -30,6 +30,8 @@ import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { assertUserUpdatedCorrectly } from "server/features/assignment/runAssignmentTestUtils";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 import { ProgramItemModel } from "server/features/program-item/programItemSchema";
+import { addEventLogItems } from "server/features/user/event-log/eventLogRepository";
+import { EventLogAction } from "shared/types/models/eventLog";
 
 // This needs to be adjusted if test data is changed
 const expectedResultsCount = 18;
@@ -664,6 +666,65 @@ describe("Assignment with first time bonus", () => {
       time: dayjs(testProgramItem.startTime).subtract(2, "hours").toISOString(),
       message: "",
       priority: DIRECT_SIGNUP_PRIORITY,
+    });
+  });
+
+  test("should assign user with previous failed lottery signup", async () => {
+    const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
+
+    // Populate database
+    await saveProgramItems([
+      { ...testProgramItem, minAttendance: 1, maxAttendance: 1 },
+      { ...testProgramItem2, minAttendance: 1, maxAttendance: 1 },
+    ]);
+    await saveUser(mockUser);
+    await saveUser(mockUser2);
+
+    await addEventLogItems({
+      updates: [
+        {
+          username: mockUser2.username,
+          programItemId: testProgramItem.programItemId,
+          programItemStartTime: testProgramItem.startTime,
+          createdAt: dayjs().toISOString(),
+        },
+      ],
+      action: EventLogAction.NO_ASSIGNMENT,
+    });
+
+    // First user has higher priority but second user has additional first time bonus
+    await saveLotterySignups({
+      username: mockUser.username,
+      lotterySignups: [{ ...mockLotterySignups[1], priority: 1 }],
+    });
+    await saveLotterySignups({
+      username: mockUser2.username,
+      lotterySignups: [{ ...mockLotterySignups[1], priority: 3 }],
+    });
+
+    const assignResults = unsafelyUnwrap(
+      await runAssignment({
+        assignmentStrategy,
+        startTime: testProgramItem2.startTime,
+      }),
+    );
+    expect(assignResults.status).toEqual("success");
+    expect(assignResults.results.length).toEqual(1);
+
+    const signupsAfterUpdate = unsafelyUnwrap(await findDirectSignups());
+    const assignmentSignup = signupsAfterUpdate.find(
+      (signup) =>
+        signup.programItem.programItemId === testProgramItem2.programItemId,
+    );
+
+    expect(assignmentSignup?.programItem.programItemId).toEqual(
+      mockLotterySignups[1].programItem.programItemId,
+    );
+    expect(assignmentSignup?.userSignups[0]).toMatchObject({
+      username: mockUser2.username,
+      time: mockLotterySignups[1].programItem.startTime,
+      message: "",
+      priority: 3,
     });
   });
 });
