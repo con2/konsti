@@ -78,16 +78,32 @@ You can browse the <Link to={'/program/list'}>program list</Link> without loggin
 
 <Expand>
 <Fi>
-### Tilin luominen ja sisäänkirjautuminen
+### Onko vanha tunnukseni edelleen voimassa?
 </Fi>
 
 <En>
-### Registering and logging in
+### Is my old account still active?
 </En>
 
 <Fi>
 Aikaisempien tapahtumien Konsti-käyttäjätilit eivät ole enää käytössä, vaan sinun on luotava uusi tili tapahtumalle {props.conventionName} {props.conventionYear}.
+</Fi>
 
+<En>
+Konsti accounts from previous events have been removed, so you will need to create a new one for {props.conventionName} {props.conventionYear}.
+</En>
+</Expand>
+
+<Expand>
+<Fi>
+### Tilin luominen ja sisäänkirjautuminen, onko vanha tunnukseni edelleen voimassa?
+</Fi>
+
+<En>
+### Registering and logging in, is my old account still active?
+</En>
+
+<Fi>
 <LoginLocal>
 Uuden käyttäjätilin luomiseen tarvitset rekisteröintikoodin, joita on saatavilla Pelitiskiltä (Halli 3), Larp- ja Roolipelitiskiltä tai Infosta (molemmat pääaulassa, eteläisen sisäänkäynnin luona).
 </LoginLocal>
@@ -101,8 +117,6 @@ Kompassi-kirjautumisen jälkeen voit valita itsellesi Konsti-käyttäjätunnukse
 </Fi>
 
 <En>
-Konsti accounts from previous events have been removed, so you will need to create a new one for {props.conventionName} {props.conventionYear}.
-
 <LoginLocal>
 For creating an account, you will need a registration code, which you can get from the Gaming Desk (Hall 3), the Larp & RPG Desk or the Info Desk (both in the southern entrance lobby).
 </LoginLocal>
@@ -208,13 +222,16 @@ Konsti will show you a notification if you get a spot in a game in the lottery. 
 </En>
 </SignupLottery>
 
+</Expand>
+
 <Ropecon>
+<Expand>
 <Fi>
-#### Pyöröoviohjelmanumerot
+### Pyöröoviohjelmanumerot
 </Fi>
 
 <En>
-#### Revolving door program items
+### Revolving door program items
 </En>
 
 <Fi>
@@ -224,8 +241,8 @@ Pyöröoviohjelmanumeroissa osallistujat voivat lähteä ohjelmanumerosta ja tul
 <En>
 Revolving door program items are program items where participants can freely join and leave. The first participants can sign up for these program items as usual, but after the revolving door program item begin, they are displayed in the program list for their whole duration.
 </En>
-</Ropecon>
 </Expand>
+</Ropecon>
 
 <Expand>
 <Fi>
@@ -278,23 +295,37 @@ The first games of the convention only have the direct sign-up phase since there
 </Hitpoint>
 </En>
 
+</Expand>
+
 <SignupLottery>
+<Expand>
 <Fi>
-#### Ryhmät
+### Ryhmänä ilmoittautuminen
 </Fi>
 
 <En>
-#### Groups
+### Groups signup
 </En>
 
 <Fi>
-Roolipeleihin voi ilmoittautua myös ryhmänä. Silloin arvonta-algoritmi sijoittaa kaikki ryhmän jäsenet samaan peliin (sikäli kun arpaonni suosii silloin kun ilmoittautuneita on enemmän kuin paikkoja). Voit luoda ryhmän <Link to={'/profile/group'}>Ryhmä-näkymässä</Link>. Samassa näkymässä voit myös liittyä olemassa olevaan ryhmään. Tätä varten tarvitset ryhmän perustajalta liittymiskoodin, jonka näkee ryhmän luomisen jälkeen.
+Roolipelien arvontaan voi ilmoittautua myös ryhmänä. Silloin arvonta-algoritmi sijoittaa kaikki ryhmän jäsenet samaan peliin. Voit luoda ryhmän <Link to={'/profile/group'}>Ryhmä-näkymässä</Link>. Samassa näkymässä voit myös liittyä olemassa olevaan ryhmään. Tätä varten tarvitset ryhmän perustajalta liittymiskoodin, jonka näkee ryhmän luomisen jälkeen.
+
+Kun ryhmä on muodostettu, ryhmän perustaja ilmoittautuu sen jäsenten puolesta roolipelien arvontaan.
+
+Ryhmässä ollessaan, sen jäsenet eivät voi suoraan ilmoittautua muihin pöytäroolipeleihin. Jos ryhmän jäsen suoraan ilmoittautuu pöytäroolipeliin, hänet poistetaan ryhmästä tai ryhmän perustajan tapauksessa ryhmä suljetaan.
+
+Jos olet saanut arvonnassa paikan pelistä ja poistut ryhmästä, paikkasi pelissä säilyy.
+
 </Fi>
 
 <En>
-You can sign up to role-playing games also as a member of a group. Then, the lottery algorithm will assign all members of the group to the same game. For games with more sign-ups than places, it is of course possible that the group will not get a spot in the game at all.
+You can also sign up as a group for the role-playing game lottery. In that case, the lottery algorithm places all group members in the same game. You can create a group in the <Link to={'/profile/group'}>Group view</Link>. In the same view, you can also join an existing group. For this, you need a joining code from the group's creator, which is visible after the group is created.
 
-You can create a group on the <Link to={'/profile/group'}>group page</Link>. There, you can also join an existing group, for which you will need a group code from the person who created the group. The code is available after the group is creted. Only the group creator can sign up the group to games.
+Once the group is formed, the group's creator signs up its members for the role-playing game lottery.
+
+While in a group, its members cannot directly sign up for other tabletop role-playing games. If a group member directly signs up for a tabletop role-playing game, they will be removed from the group or, in the case of the group's creator, the group will be closed.
+
+If you have secured a spot in a game through the lottery and you leave the group, your spot in the game will remain.
 
 </En>
 
@@ -313,8 +344,8 @@ Jos sinulla on jo suoria ilmoittautumisia peleihin, et voi luoda uutta ryhmää 
 <En>
 If you already have direct sign-ups to games, you can't create a new group or join an existing one. These sign-ups will be shown on the group page.
 </En>
-</SignupLottery>
 </Expand>
+</SignupLottery>
 
 <Ropecon>
 <Expand>
@@ -446,12 +477,12 @@ Workshops use direct signup and seats are reserved in signup order.
 
 <Fi>
 - Työpajoihin ilmoittautuminen aukeaa neljä tuntia ennen työpajan alkua.
-- Paitsi jos työpaja alkaa ennen klo 12, niin ilmoittautuminen aukeaa edellisenä päivänä klo 18.
+- Jos työpaja alkaa ennen klo 12, niin ilmoittautuminen aukeaa edellisenä päivänä klo 18.
 </Fi>
 
 <En>
 - Signup for the workshops opens four hours before the workshop begins.
-- Except if the workshop begins before 12 PM, then registration opens the previous day at 6 PM.
+- If the workshop begins before 12 PM, then registration opens the previous day at 6 PM.
 </En>
 </Expand>
 
@@ -545,24 +576,24 @@ If the program item uses a lottery signup, the list of participants will appear 
 
 <Expand>
 <Fi>
-### Mitä teen, jos ohjelman ajankohta muuttuu tai ohjelman kuvausta pitää päivittää?
+### Mitä teen, jos ohjelmanumeroni ajankohta muuttuu tai sen kuvausta pitää päivittää?
 </Fi>
 
 <En>
-### What should I do if the time of my program changes or the program description needs to be updated?
+### What should I do if the time of my program item changes or the description needs to be updated?
 </En>
 
 <Fi>
-Vapaaehtoiset Pelitiskillä tai Larp- ja Roolipelitiskillä auttavat ohjelman tietojen päivittämisessä.
+Vapaaehtoiset Pelitiskillä tai Larp- ja Roolipelitiskillä auttavat ohjelmanumeron tietojen päivittämisessä.
 
-Aikaisemmat suorat ilmoittautumiset ohjelmanumeroon säilyvät ennallaan. Jos ohjelmanumeroon on käynnissä arvonta, arvontailmoittautumiset poistetaan.
+Jos ajankohta muuttuu, aikaisemmat suorat ilmoittautumiset ohjelmanumeroon säilyvät ennallaan. Jos ohjelmanumeroon on käynnissä arvontaan ilmoittautuminen, jo tehdyt arvontailmoittautumiset perutaan.
 
 </Fi>
 
 <En>
 Volunteers at the Gaming Desk or the Larp & RPG Desk will assist in updating program information.
 
-Previous direct signups for the program items will remain unchanged. If a lottery is ongoing for the program item, the lottery signups will be removed.
+Previous direct signups for the program items will remain unchanged. If a lottery signup is ongoing for the program item, any previously submitted lottery signups will be canceled.
 
 </En>
 </Expand>
