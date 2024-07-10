@@ -4182,7 +4182,7 @@
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-19"],
-      "room": ["halli-1b-tyopajatila-1"],
+      "room": ["halli-1b-tyopajatila-2"],
       "type": ["workshop"],
       "topic": ["crafts", "theme"],
       "konsti": ["workshop"],
@@ -4196,7 +4196,7 @@
         "startTime": "2024-07-19T17:00:00+00:00",
         "endTime": "2024-07-19T19:45:00+00:00",
         "lengthMinutes": 165,
-        "location": "Halli 1B Työpajatila 1"
+        "location": "Halli 1B Työpajatila 2"
       }
     ]
   },
@@ -6763,7 +6763,7 @@
   {
     "slug": "middle-earth-strategy-battle-game-turnaustournament",
     "title": "Middle-Earth Strategy Battle Game (turnaus/tournament)",
-    "description": "Middle-Earth Strategy Battle game on Taru Sormusten Herrasta aiheinen strategiapeli, jossa otetaan mittaa toisistaan Keski-Maan armeijoilla! MESBG on Games-Workshopin luoma peli, jota pelataan 28mm maalatuilla figuureilla.\r\n\r\nMiddle-Earth Strategy battle game is a The Lord of The Rings themed strategy wargame. Middle-Earth strategy battle game is a miniature game created by Games Workshop’s which is played with 28mm painted miniatures.",
+    "description": "Middle-Earth Strategy Battle game on Taru Sormusten Herrasta aiheinen strategiapeli, jossa otetaan mittaa toisistaan Keski-Maan armeijoilla! MESBG on Games Workshopin luoma peli, jota pelataan 28mm maalatuilla figuureilla.\r\n\r\nMiddle-Earth Strategy battle game is a The Lord of The Rings themed strategy wargame. Middle-Earth strategy battle game is a miniature game created by Games Workshop’s which is played with 28mm painted miniatures.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-20"],
@@ -7697,7 +7697,7 @@
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-20"],
-      "room": ["sali-312"],
+      "room": ["sali-211"],
       "type": ["gaming"],
       "topic": ["penandpaper"],
       "konsti": ["tabletopRPG"],
@@ -7721,7 +7721,7 @@
         "startTime": "2024-07-20T07:00:00+00:00",
         "endTime": "2024-07-20T10:00:00+00:00",
         "lengthMinutes": 180,
-        "location": "Sali 312"
+        "location": "Sali 211"
       }
     ]
   },
@@ -8078,7 +8078,7 @@
   {
     "slug": "varttinakehrayspaja",
     "title": "Värttinäkehräyspaja",
-    "description": "Värttinäpaja tulee jälleen! Tänäkin vuonna luvassa tiukkoja käänteitä ja hikikarpaloita villan ja kepin parissa!\r\n\r\nVärttinällä kehräys on parhaimmillaan meditatiivinen harrastus mutta myös harjoitusta vaativa postkapitalismiin valmentava taito, jota voi kokemuksen myötä harrastaa lähes missä tahansa kulkee. Pajassa kannustetaan aloittamaan nollasta ja sen yläpuolelta ja epäonnistumaan rohkeasti. Testataan kiinnostuksen mukaan erilaisia värjäämättömiä villoja ja ehkä Jopa Muita Kuituja. Pajassa on saatavilla kokeiluun harjoitusvärttinän lisäksi myös muutamia eri kokoisia ja -mallisia värttinöitä. Mahdollisuus viedä oma värttinä kotiin työpajan päätteeksi (tällä kertaa oikeasti) hintaan 12 €. \r\n\r\nTestaa sorminäppäryytesi rajoja! Näe kohuttu \"kirpparin kuhmuinen Vanha Keppi\"! Todista työvälineen putoamista lattialle uudestaan ja uudestaan!  \r\n”Oletko koskaan halunnut olla kehrääjä, ja jos olet, nyt se on mahdollista, sillä uusi kehrääjä on saapunut ja se olet sinä.” -Vanha sananlasku.\r\n\r\nIlmoittautuminen Konstissa perjantaina 19.7. kello 18 alkaen. Työpajamaksu 2 €.",
+    "description": "Värttinäpaja tulee jälleen! Tänäkin vuonna luvassa tiukkoja käänteitä ja hikikarpaloita villan ja kepin parissa!\r\n\r\nVärttinällä kehräys on parhaimmillaan meditatiivinen harrastus mutta myös harjoitusta vaativa postkapitalismiin valmentava taito, jota voi kokemuksen myötä harrastaa lähes missä tahansa kulkee. Pajassa kannustetaan aloittamaan nollasta ja sen yläpuolelta ja epäonnistumaan rohkeasti. Testataan kiinnostuksen mukaan erilaisia värjäämättömiä villoja ja ehkä Jopa Muita Kuituja. Pajassa on saatavilla kokeiluun harjoitusvärttinän lisäksi myös muutamia eri kokoisia ja -mallisia värttinöitä. Mahdollisuus viedä oma värttinä kotiin työpajan päätteeksi (tällä kertaa oikeasti) hintaan 12 €. \r\n\r\nTestaa sorminäppäryytesi rajoja! Näe kohuttu \"kirpparin kuhmuinen Vanha Keppi\"! Todista työvälineen putoamista lattialle uudestaan ja uudestaan! \r\n”Oletko koskaan halunnut olla kehrääjä, ja jos olet, nyt se on mahdollista, sillä uusi kehrääjä on saapunut ja se olet sinä.” -Vanha sananlasku.\r\n\r\nIlmoittautuminen Konstissa perjantaina 19.7. kello 18 alkaen. Työpajamaksu 2 €.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-20"],
@@ -14142,7 +14142,7 @@
   {
     "slug": "varttinakehrayspaja-2",
     "title": "Värttinäkehräyspaja",
-    "description": "Värttinäpaja tulee jälleen! Tänäkin vuonna luvassa tiukkoja käänteitä ja hikikarpaloita villan ja kepin parissa!\r\n\r\nVärttinällä kehräys on parhaimmillaan meditatiivinen harrastus mutta myös harjoitusta vaativa postkapitalismiin valmentava taito, jota voi kokemuksen myötä harrastaa lähes missä tahansa kulkee. Pajassa kannustetaan aloittamaan nollasta ja sen yläpuolelta ja epäonnistumaan rohkeasti. Testataan kiinnostuksen mukaan erilaisia värjäämättömiä villoja ja ehkä Jopa Muita Kuituja. Pajassa on saatavilla kokeiluun harjoitusvärttinän lisäksi myös muutamia eri kokoisia ja -mallisia värttinöitä. Mahdollisuus viedä oma värttinä kotiin työpajan päätteeksi (tällä kertaa oikeasti) hintaan 12 €. \r\n\r\nTestaa sorminäppäryytesi rajoja! Näe kohuttu \"kirpparin kuhmuinen Vanha Keppi\"! Todista työvälineen putoamista lattialle uudestaan ja uudestaan!  \r\n”Oletko koskaan halunnut olla kehrääjä, ja jos olet, nyt se on mahdollista, sillä uusi kehrääjä on saapunut ja se olet sinä.” -Vanha sananlasku.\r\n\r\nIlmoittautuminen Konstissa lauantaina 20.7. kello 15 alkaen. Työpajamaksu 2 €.",
+    "description": "Värttinäpaja tulee jälleen! Tänäkin vuonna luvassa tiukkoja käänteitä ja hikikarpaloita villan ja kepin parissa!\r\n\r\nVärttinällä kehräys on parhaimmillaan meditatiivinen harrastus mutta myös harjoitusta vaativa postkapitalismiin valmentava taito, jota voi kokemuksen myötä harrastaa lähes missä tahansa kulkee. Pajassa kannustetaan aloittamaan nollasta ja sen yläpuolelta ja epäonnistumaan rohkeasti. Testataan kiinnostuksen mukaan erilaisia värjäämättömiä villoja ja ehkä Jopa Muita Kuituja. Pajassa on saatavilla kokeiluun harjoitusvärttinän lisäksi myös muutamia eri kokoisia ja -mallisia värttinöitä. Mahdollisuus viedä oma värttinä kotiin työpajan päätteeksi (tällä kertaa oikeasti) hintaan 12 €. \r\n\r\nTestaa sorminäppäryytesi rajoja! Näe kohuttu \"kirpparin kuhmuinen Vanha Keppi\"! Todista työvälineen putoamista lattialle uudestaan ja uudestaan! \r\n”Oletko koskaan halunnut olla kehrääjä, ja jos olet, nyt se on mahdollista, sillä uusi kehrääjä on saapunut ja se olet sinä.” -Vanha sananlasku.\r\n\r\nIlmoittautuminen Konstissa lauantaina 20.7. kello 15 alkaen. Työpajamaksu 2 €.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-20"],
@@ -15108,7 +15108,7 @@
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-20"],
-      "room": ["halli-1b-tyopajatila-1"],
+      "room": ["halli-1b-tyopajatila-2"],
       "type": ["workshop"],
       "topic": ["theme"],
       "konsti": ["workshop"],
@@ -15122,7 +15122,7 @@
         "startTime": "2024-07-20T15:00:00+00:00",
         "endTime": "2024-07-20T17:45:00+00:00",
         "lengthMinutes": 165,
-        "location": "Halli 1B Työpajatila 1"
+        "location": "Halli 1B Työpajatila 2"
       }
     ]
   },
@@ -15158,7 +15158,7 @@
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-20"],
-      "room": ["halli-1b-tyopajatila-2"],
+      "room": ["halli-1b-tyopajatila-1"],
       "type": ["workshop"],
       "topic": ["miniatures", "theme"],
       "konsti": ["workshop"],
@@ -15172,7 +15172,7 @@
         "startTime": "2024-07-20T15:00:00+00:00",
         "endTime": "2024-07-20T16:45:00+00:00",
         "lengthMinutes": 105,
-        "location": "Halli 1B Työpajatila 2"
+        "location": "Halli 1B Työpajatila 1"
       }
     ]
   },
@@ -15904,37 +15904,6 @@
         "endTime": "2024-07-20T18:00:00+00:00",
         "lengthMinutes": 60,
         "location": "Halli 3 Boffaussali"
-      }
-    ]
-  },
-  {
-    "slug": "wizards-against-humanity-2",
-    "title": "Wizards Against Humanity #2",
-    "description": "Pelaat velhoa, mutta perinteisten noppien sijaan teetkin loitsusi Cards Against Humanity -pelin korteilla.\r\n\r\nLoitsusi eivät välttämättä tee sitä, mitä odotat tai edes mitä haluat, joten yllätyksiä on luvassa.\r\n\r\nAvoin (ja tietyllä tapaa kiero) mieli sekä hyvä huumorintaju ovat edellytykset tämän pelin pelaamiseen (Cards Against Humanityn tunteminen ei ole tarpeen, mutta auttaa tietämään mitä peliltä voi odottaa).\r\n\r\nAihepiiristä (pääasiassa Cards Against Humanity -korteista) johtuen peli on K-18.\r\n\r\nPeli pelataan suomeksi, mutta hahmolomake ja kortit ovat englanniksi.",
-    "cachedHosts": "<redacted>",
-    "cachedDimensions": {
-      "date": ["2024-07-20"],
-      "room": ["sali-211"],
-      "type": ["gaming"],
-      "topic": ["penandpaper"],
-      "konsti": ["tabletopRPG"],
-      "audience": ["k-18", "beginners"],
-      "language": ["fi"],
-      "accessibility": ["texts-with-no-recordings", "requires-dexterity"]
-    },
-    "cachedAnnotations": {
-      "konsti:rpgSystem": "Oma järjestelmä",
-      "ropecon:gameSlogan": "Yllätyksellistä velhoilua Cards Against Humanity -korteilla.",
-      "konsti:maxAttendance": 4,
-      "konsti:minAttendance": 2,
-      "ropecon:contentWarnings": "Cards Against Humanity -kortit saattavat sisältää vaihtelevassa määrin epämiellyttäviä aiheita."
-    },
-    "scheduleItems": [
-      {
-        "startTime": "2024-07-20T17:00:00+00:00",
-        "endTime": "2024-07-20T21:00:00+00:00",
-        "lengthMinutes": 240,
-        "location": "Sali 211"
       }
     ]
   },
@@ -17474,6 +17443,37 @@
         "endTime": "2024-07-20T23:00:00+00:00",
         "lengthMinutes": 180,
         "location": "Sali 317"
+      }
+    ]
+  },
+  {
+    "slug": "wizards-against-humanity-2",
+    "title": "Wizards Against Humanity #2",
+    "description": "Pelaat velhoa, mutta perinteisten noppien sijaan teetkin loitsusi Cards Against Humanity -pelin korteilla.\r\n\r\nLoitsusi eivät välttämättä tee sitä, mitä odotat tai edes mitä haluat, joten yllätyksiä on luvassa.\r\n\r\nAvoin (ja tietyllä tapaa kiero) mieli sekä hyvä huumorintaju ovat edellytykset tämän pelin pelaamiseen (Cards Against Humanityn tunteminen ei ole tarpeen, mutta auttaa tietämään mitä peliltä voi odottaa).\r\n\r\nAihepiiristä (pääasiassa Cards Against Humanity -korteista) johtuen peli on K-18.\r\n\r\nPeli pelataan suomeksi, mutta hahmolomake ja kortit ovat englanniksi.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-07-20"],
+      "room": ["sali-211"],
+      "type": ["gaming"],
+      "topic": ["penandpaper"],
+      "konsti": ["tabletopRPG"],
+      "audience": ["k-18", "beginners"],
+      "language": ["fi"],
+      "accessibility": ["texts-with-no-recordings", "requires-dexterity"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Oma järjestelmä",
+      "ropecon:gameSlogan": "Yllätyksellistä velhoilua Cards Against Humanity -korteilla.",
+      "konsti:maxAttendance": 4,
+      "konsti:minAttendance": 2,
+      "ropecon:contentWarnings": "Cards Against Humanity -kortit saattavat sisältää vaihtelevassa määrin epämiellyttäviä aiheita."
+    },
+    "scheduleItems": [
+      {
+        "startTime": "2024-07-20T20:00:00+00:00",
+        "endTime": "2024-07-21T00:00:00+00:00",
+        "lengthMinutes": 240,
+        "location": "Sali 211"
       }
     ]
   },
@@ -22068,6 +22068,8 @@
       ]
     },
     "cachedAnnotations": {
+      "ropecon:otherAuthor": "Anna Ukkonen",
+      "konsti:minAttendance": 9,
       "ropecon:numCharacters": 10,
       "ropecon:contentWarnings": "Cthulhu, mustasukkaisuus, mahdollinen kinastelu, kevyt kultistitouhuilu, kateus"
     },
@@ -23212,7 +23214,7 @@
       "date": ["2024-07-21"],
       "room": ["sali-209"],
       "type": ["talk", "presentation"],
-      "topic": [],
+      "topic": ["dance"],
       "konsti": [],
       "audience": ["aimed-adults"],
       "language": ["fi"],

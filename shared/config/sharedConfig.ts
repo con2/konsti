@@ -173,6 +173,7 @@ export const sharedConfig: SharedConfig = {
     "olosuhteet-zombimaailmanloppu-co-op-circumstances-zombie-apocalypse-co-op", // Olosuhteet - Zombimaailmanloppu (co-op) / Circumstances – Zombie Apocalypse (co-op)
     "charlie-ei-surffaa-su", // Charlie ei surffaa (Su)
     "seikkailu-r", // seikkailu r
+    "torchbearer", // Puhdistuksen labyrintti - Labyrinth of absolution
   ],
 
   // These program items are imported to Konsti but don't have Konsti signup
@@ -184,6 +185,7 @@ export const sharedConfig: SharedConfig = {
     "indiehuone-indie-room-indierummet", // Indiehuone / Indie Room / Indierummet
     "indiehuone-indie-room-indierummet-2", // Indiehuone / Indie Room / Indierummet
     "indiehuone-indie-room-indierummet-3", // Indiehuone / Indie Room / Indierummet
+    "torchbearer", // Puhdistuksen labyrintti - Labyrinth of absolution
 
     // LARPS
     "henkien-yo", // Henkien yö
