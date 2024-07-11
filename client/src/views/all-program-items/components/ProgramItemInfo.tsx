@@ -105,7 +105,7 @@ export const ProgramItemInfo = ({ programItem }: Props): ReactElement => {
 
       {programItem.gameSystem && (
         <ResponsiveColumnRow>
-          <DetailTitle>{t("programItemInfo.otherAuthor")}</DetailTitle>
+          <DetailTitle>{t("programItemInfo.gameSystem")}</DetailTitle>
           {programItem.gameSystem}
         </ResponsiveColumnRow>
       )}
