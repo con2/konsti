@@ -77,14 +77,7 @@ export const AllProgramItemsList = ({ programItems }: Props): ReactElement => {
 
       return (
         <div key={startTime}>
-          <ProgramItemListTitle
-            startTime={startTime}
-            lotterySignups={ownOrGroupCreatorLotterySignups}
-            directSignups={directSignups}
-            timeslotSignupStrategy={timeslotSignupStrategy}
-            isGroupCreator={isGroupCreator}
-            groupCode={groupCode}
-          />
+          <ProgramItemListTitle startTime={startTime} />
 
           {programItemsForStartTime.map((programItem) => {
             const programItemSignups = signups.find(
