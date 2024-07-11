@@ -284,7 +284,7 @@ export const translationFI = {
     newAssignmentProgramItemMissing:
       "Olet päässyt arvonnassa ohjelmanumeroon {{PROGRAM_ITEM_ID}} mutta se on peruuntunut.",
     noAssignment:
-      "Paikat klo {{START_TIME}} alkaviin ohjelmanumeroihin arvottiin. Ikävä kyllä et mahtunut mukaan mihinkään valitsemaasi ohjelmaan.",
+      "Paikat klo {{START_TIME}} alkaviin ohjelmanumeroihin arvottiin. Ikävä kyllä et mahtunut mukaan mihinkään valitsemaasi ohjelmanumeroon.",
   },
   notificationBar: {
     showAll: "Näytä kaikki ilmoitukset",

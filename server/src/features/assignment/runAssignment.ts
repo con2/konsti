@@ -130,6 +130,7 @@ export const runAssignment = async ({
     algorithm: assignResults.algorithm,
     message: assignResults.message,
     users: validLotterySignupsUsers,
+    programItems: validLotterySignupProgramItems,
   });
   if (isErrorResult(saveResultsResult)) {
     return saveResultsResult;

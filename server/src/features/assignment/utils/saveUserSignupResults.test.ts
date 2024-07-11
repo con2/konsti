@@ -6,7 +6,10 @@ import {
   testProgramItem,
   testProgramItem2,
 } from "shared/tests/testProgramItem";
-import { saveProgramItems } from "server/features/program-item/programItemRepository";
+import {
+  findProgramItems,
+  saveProgramItems,
+} from "server/features/program-item/programItemRepository";
 import {
   mockLotterySignups,
   mockUser,
@@ -61,7 +64,14 @@ test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items", async () => 
   ];
 
   const users = unsafelyUnwrap(await findUsers());
-  await saveUserSignupResults(testProgramItem.startTime, results, users);
+  const programItems = unsafelyUnwrap(await findProgramItems());
+
+  await saveUserSignupResults({
+    startTime: testProgramItem.startTime,
+    results,
+    users,
+    programItems,
+  });
 
   const usersAfterSave = unsafelyUnwrap(await findUsers());
 
@@ -82,6 +92,53 @@ test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items", async () => 
 
   expect(usersWithNoAssignEventLogItem).toHaveLength(1);
   expect(usersWithNoAssignEventLogItem[0].username).toEqual(mockUser2.username);
+});
+
+test("should add NO_ASSIGNMENT event log item to group members", async () => {
+  const groupCode = "abc-dfg-hij";
+
+  await saveUser({ ...mockUser, groupCode, groupCreatorCode: groupCode });
+  await saveUser({ ...mockUser2, groupCode });
+
+  await saveProgramItems([
+    { ...testProgramItem, minAttendance: 1, maxAttendance: 1 },
+  ]);
+
+  await saveLotterySignups({
+    username: mockUser.username,
+    lotterySignups: [{ ...mockLotterySignups[0] }],
+  });
+
+  const results: UserAssignmentResult[] = [];
+
+  const users = unsafelyUnwrap(await findUsers());
+  const programItems = unsafelyUnwrap(await findProgramItems());
+
+  await saveUserSignupResults({
+    startTime: testProgramItem.startTime,
+    results,
+    users,
+    programItems,
+  });
+
+  const usersAfterSave = unsafelyUnwrap(await findUsers());
+
+  const usersWithAssignEventLogItem = usersAfterSave.filter((user) => {
+    return user.eventLogItems.find(
+      (eventLogItem) => eventLogItem.action === EventLogAction.NEW_ASSIGNMENT,
+    );
+  });
+
+  expect(usersWithAssignEventLogItem).toHaveLength(0);
+
+  const usersWithNoAssignEventLogItem = usersAfterSave.filter((user) => {
+    return user.eventLogItems.find(
+      (eventLogItem) => eventLogItem.action === EventLogAction.NO_ASSIGNMENT,
+    );
+  });
+
+  expect(usersWithNoAssignEventLogItem).toHaveLength(2);
+  // expect(usersWithNoAssignEventLogItem[0].username).toEqual(mockUser2.username);
 });
 
 test("should only add one event log item with multiple lottery signups", async () => {
@@ -134,7 +191,14 @@ test("should only add one event log item with multiple lottery signups", async (
   ];
 
   const users = unsafelyUnwrap(await findUsers());
-  await saveUserSignupResults(testProgramItem.startTime, results, users);
+  const programItems = unsafelyUnwrap(await findProgramItems());
+
+  await saveUserSignupResults({
+    startTime: testProgramItem.startTime,
+    results,
+    users,
+    programItems,
+  });
 
   const usersAfterSave = unsafelyUnwrap(await findUsers());
   const usersWithAssignEventLogItem = usersAfterSave.filter((user) => {
@@ -211,7 +275,14 @@ test("should not add event log items after assigment if signup is dropped due to
   ];
 
   const users = unsafelyUnwrap(await findUsers());
-  await saveUserSignupResults(testProgramItem.startTime, results, users);
+  const programItems = unsafelyUnwrap(await findProgramItems());
+
+  await saveUserSignupResults({
+    startTime: testProgramItem.startTime,
+    results,
+    users,
+    programItems,
+  });
 
   const signupsAfterSave = unsafelyUnwrap(await findDirectSignups());
   expect(signupsAfterSave).toHaveLength(1);

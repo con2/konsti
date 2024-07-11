@@ -23,12 +23,24 @@ import { EventLogAction } from "shared/types/models/eventLog";
 import { config } from "shared/config";
 import { getLotterySignups } from "server/features/assignment/utils/getLotterySignups";
 import { User } from "shared/types/models/user";
+import { getGroupCreators } from "server/features/assignment/utils/getGroupCreators";
+import { getGroupMembersWithCreatorLotterySignups } from "server/features/assignment/utils/getGroupMembers";
+import { getStartingProgramItems } from "server/features/assignment/utils/getStartingProgramItems";
+import { ProgramItem } from "shared/types/models/programItem";
 
-export const saveUserSignupResults = async (
-  startTime: string,
-  results: readonly UserAssignmentResult[],
-  users: User[],
-): Promise<Result<void, MongoDbError>> => {
+interface SaveUserSignupResultsParams {
+  startTime: string;
+  results: readonly UserAssignmentResult[];
+  users: User[];
+  programItems: ProgramItem[];
+}
+
+export const saveUserSignupResults = async ({
+  startTime,
+  results,
+  users,
+  programItems,
+}: SaveUserSignupResultsParams): Promise<Result<void, MongoDbError>> => {
   // Remove previous assignment result for the same start time
   // This does not remove "directSignupAlwaysOpen" signups or previous signups from moved program items
   const delAssignmentSignupsByStartTimeResult =
@@ -138,8 +150,14 @@ export const saveUserSignupResults = async (
   }
 
   // Get users who didn't get a seat in lottery
-
-  const lotterySignups = getLotterySignups(users);
+  const startingProgramItems = getStartingProgramItems(programItems, startTime);
+  const groupCreators = getGroupCreators(users, startingProgramItems);
+  const groupMembers = getGroupMembersWithCreatorLotterySignups(
+    groupCreators,
+    users,
+  );
+  const allAttendees = groupCreators.concat(groupMembers);
+  const lotterySignups = getLotterySignups(allAttendees);
 
   const lotterySignupsForStartingTime = lotterySignups.filter((lotterySignup) =>
     dayjs(lotterySignup.startTime).isSame(dayjs(startTime)),
