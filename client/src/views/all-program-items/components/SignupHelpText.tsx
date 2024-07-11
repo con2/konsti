@@ -1,6 +1,8 @@
 import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import dayjs from "dayjs";
+import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ProgramItem, SignupType } from "shared/types/models/programItem";
 import { getTimeNow } from "client/utils/getTimeNow";
 import { isRevolvingDoorWorkshop } from "client/utils/isRevolvingDoorWorkshop";
@@ -86,6 +88,7 @@ export const SignupHelpText = ({
     if (!directSignupStarted) {
       return (
         <p>
+          <FontAwesomeIcon icon={"user-plus"} />{" "}
           {t("signup.help.directSignupStartsLater")}{" "}
           <b>{getFormattedTime(directSignupStartTime, timeNow)}</b>.
         </p>
@@ -93,6 +96,7 @@ export const SignupHelpText = ({
     }
     return (
       <p>
+        <FontAwesomeIcon icon={"user-plus"} />{" "}
         {t("signup.help.directSignupOpenNow")}{" "}
         <b>{getFormattedTime(programStartTime, timeNow)}</b>.
       </p>
@@ -104,6 +108,7 @@ export const SignupHelpText = ({
     // Waiting for sign up to start
     return (
       <p>
+        <FontAwesomeIcon icon={"dice-three"} />{" "}
         {t("signup.help.algorithmSignupStartsLater")}
         <b>
           {getFormattedInterval(
@@ -130,6 +135,7 @@ export const SignupHelpText = ({
     // Algorithm sign-up happening now
     return (
       <p>
+        <FontAwesomeIcon icon={"dice-three"} />{" "}
         {t("signup.help.algorithmSignupOpen")}
         <b>{getFormattedTime(algorithmSignupEndTime, timeNow)}</b>.
         {t("signup.help.directSignupStarts")}
@@ -147,6 +153,7 @@ export const SignupHelpText = ({
   return (
     // Algorithm sign-up ended, direct sign-up starting or started
     <p>
+      <FontAwesomeIcon icon={"dice-three"} />{" "}
       {t("signup.help.algorithmSignupEnded")}
       {t("signup.help.directSignupStarts")}
       <b>
