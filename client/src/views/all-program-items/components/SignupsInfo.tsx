@@ -10,8 +10,6 @@ import { ExpandButton } from "client/components/ExpandButton";
 import { SignupQuestion } from "shared/types/models/settings";
 
 interface Props {
-  isEnterGameMode: boolean;
-  isNormalSignup: boolean;
   isLoggedIn: boolean;
   programItem: ProgramItem;
   signups: UserSignup[];
@@ -19,8 +17,6 @@ interface Props {
 }
 
 export const SignupsInfo = ({
-  isEnterGameMode,
-  isNormalSignup,
   isLoggedIn,
   programItem,
   signups,
@@ -46,73 +42,71 @@ export const SignupsInfo = ({
 
   return (
     <div>
-      {isEnterGameMode && isNormalSignup && (
-        <SignupsInfoContainer>
-          {t("signup.signupCount", {
-            ATTENDEE_COUNT: signups.length,
-            MAX_ATTENDANCE: programItem.maxAttendance,
-          })}
-          <ExpandButton
-            isExpanded={isExpanded}
-            showMoreText={showMoreText}
-            showLessText={showLessText}
-            showMoreAriaLabel={showMoreText}
-            showLessAriaLabel={showLessText}
-            ariaControls={ariaId}
-            onClick={() => setIsExpanded(!isExpanded)}
-          />
+      <SignupsInfoContainer>
+        {t("signup.signupCount", {
+          ATTENDEE_COUNT: signups.length,
+          MAX_ATTENDANCE: programItem.maxAttendance,
+        })}
+        <ExpandButton
+          isExpanded={isExpanded}
+          showMoreText={showMoreText}
+          showLessText={showLessText}
+          showMoreAriaLabel={showMoreText}
+          showLessAriaLabel={showLessText}
+          ariaControls={ariaId}
+          onClick={() => setIsExpanded(!isExpanded)}
+        />
 
-          {isExpanded && signups.length === 0 && (
-            <NoAttendeesText>
-              {t("signup.noAttendees", {
-                ATTENDEE_TYPE: t(
-                  `attendeeTypePlural.${getAttendeeType(programItem.programType)}`,
-                ),
-              })}
-            </NoAttendeesText>
-          )}
+        {isExpanded && signups.length === 0 && (
+          <NoAttendeesText>
+            {t("signup.noAttendees", {
+              ATTENDEE_TYPE: t(
+                `attendeeTypePlural.${getAttendeeType(programItem.programType)}`,
+              ),
+            })}
+          </NoAttendeesText>
+        )}
 
-          {isExpanded && signups.length > 0 && isLoggedIn && (
-            <>
-              {publicSignupQuestion && (
-                <QuestionContainer>
-                  <FontAwesomeIcon
-                    aria-label={t("signup.signupQuestionAriaLabel")}
-                    icon={["far", "comment"]}
-                  />
-                  <span>
-                    {": "}
-                    {i18n.language === "fi"
-                      ? publicSignupQuestion.questionFi
-                      : publicSignupQuestion.questionEn}
-                  </span>
-                </QuestionContainer>
-              )}
-              <AttendeeList>
-                {sortBy(signups, ["username"]).map((signup) => (
-                  <li key={signup.username}>
-                    {signup.username}
-                    {publicSignupQuestion && (
-                      <AnswerText>: {signup.signupMessage}</AnswerText>
-                    )}
-                  </li>
-                ))}
-              </AttendeeList>
-            </>
-          )}
+        {isExpanded && signups.length > 0 && isLoggedIn && (
+          <>
+            {publicSignupQuestion && (
+              <QuestionContainer>
+                <FontAwesomeIcon
+                  aria-label={t("signup.signupQuestionAriaLabel")}
+                  icon={["far", "comment"]}
+                />
+                <span>
+                  {": "}
+                  {i18n.language === "fi"
+                    ? publicSignupQuestion.questionFi
+                    : publicSignupQuestion.questionEn}
+                </span>
+              </QuestionContainer>
+            )}
+            <AttendeeList>
+              {sortBy(signups, ["username"]).map((signup) => (
+                <li key={signup.username}>
+                  {signup.username}
+                  {publicSignupQuestion && (
+                    <AnswerText>: {signup.signupMessage}</AnswerText>
+                  )}
+                </li>
+              ))}
+            </AttendeeList>
+          </>
+        )}
 
-          {isExpanded && signups.length > 0 && !isLoggedIn && (
-            <AttendeeText>
-              <Link to={"/login"}>{t("signup.loginLink")}</Link>
-              {t("signup.loginLinkEnding", {
-                ATTENDEE_TYPE: t(
-                  `attendeeTypePluralNominative.${getAttendeeType(programItem.programType)}`,
-                ),
-              })}
-            </AttendeeText>
-          )}
-        </SignupsInfoContainer>
-      )}
+        {isExpanded && signups.length > 0 && !isLoggedIn && (
+          <AttendeeText>
+            <Link to={"/login"}>{t("signup.loginLink")}</Link>
+            {t("signup.loginLinkEnding", {
+              ATTENDEE_TYPE: t(
+                `attendeeTypePluralNominative.${getAttendeeType(programItem.programType)}`,
+              ),
+            })}
+          </AttendeeText>
+        )}
+      </SignupsInfoContainer>
     </div>
   );
 };

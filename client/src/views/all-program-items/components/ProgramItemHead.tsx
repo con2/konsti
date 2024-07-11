@@ -120,11 +120,9 @@ export const ProgramItemHead = ({
               ENTRY_FEE: programItem.entryFee,
             })}
         </Row>
-        {isEnterGameMode && isNormalSignup && allValuesValid && (
+        {isNormalSignup && allValuesValid && (
           <Row>
             <SignupsInfo
-              isEnterGameMode={isEnterGameMode}
-              isNormalSignup={isNormalSignup}
               programItem={programItem}
               signups={signups}
               isLoggedIn={loggedIn}
