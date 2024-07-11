@@ -33,6 +33,7 @@ export const LotterySignupForm = ({
   const dispatch = useAppDispatch();
   // We need all lottery signups here
   const lotterySignups = useAppSelector(selectLotterySignups);
+  const isGroupCreator = useAppSelector((state) => state.group.isGroupCreator);
 
   const selectedPriorities = lotterySignups
     .filter(
@@ -112,7 +113,7 @@ export const LotterySignupForm = ({
         options={options}
         selectedValue={priority.toString()}
       />
-      (isGroupCreator && <InfoText>{t("signup.groupSignupInfo")}</InfoText>
+      {isGroupCreator && <InfoText>{t("signup.groupSignupInfo")}</InfoText>}
       <StyledButtonGroup>
         <StyledButton
           onClick={handleSignup}
