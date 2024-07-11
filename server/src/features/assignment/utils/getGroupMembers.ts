@@ -1,7 +1,7 @@
 import { logger } from "server/utils/logger";
 import { User } from "shared/types/models/user";
 
-export const getGroupMembers = (
+export const getGroupMembersWithCreatorLotterySignups = (
   groupCreators: readonly User[],
   users: readonly User[],
 ): readonly User[] => {
@@ -12,16 +12,16 @@ export const getGroupMembers = (
   for (const groupCreator of groupCreators) {
     // Skip individual users
     if (groupCreator.groupCode !== "0") {
-      for (const attendee of users) {
+      for (const user of users) {
         // User is in the group but is not the creator
         if (
-          attendee.groupCode === groupCreator.groupCode &&
-          attendee.username !== groupCreator.username
+          user.groupCode === groupCreator.groupCode &&
+          user.username !== groupCreator.username
         ) {
-          // attendee.lotterySignups = groupCreator.lotterySignups
+          // Group member gets group creator's lottery signups
           selectedAttendeesWithSignups.push(
             Object.assign({
-              ...attendee,
+              ...user,
               lotterySignups: groupCreator.lotterySignups,
             }) as User,
           );

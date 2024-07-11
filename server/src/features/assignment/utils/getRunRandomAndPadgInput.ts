@@ -3,7 +3,7 @@ import { getLotterySignups } from "server/features/assignment/utils/getLotterySi
 import { getLotterySignupProgramItems } from "server/features/assignment/utils/getLotterySignupProgramItems";
 import { getGroupCreators } from "server/features/assignment/utils/getGroupCreators";
 import { getAttendeeGroups } from "server/features/assignment/utils/getAttendeeGroups";
-import { getGroupMembers } from "server/features/assignment/utils/getGroupMembers";
+import { getGroupMembersWithCreatorLotterySignups } from "server/features/assignment/utils/getGroupMembers";
 import { User } from "shared/types/models/user";
 import { ProgramItem } from "shared/types/models/programItem";
 import { RunRandomAndPadgInput } from "server/types/resultTypes";
@@ -46,7 +46,10 @@ export const getRunRandomAndPadgInput = (
   const groupCreators = getGroupCreators(users, startingProgramItems);
 
   // Get group members based on group creators
-  const groupMembers = getGroupMembers(groupCreators, users);
+  const groupMembers = getGroupMembersWithCreatorLotterySignups(
+    groupCreators,
+    users,
+  );
 
   // Combine group creators and group members
   const allAttendees = groupCreators.concat(groupMembers);
