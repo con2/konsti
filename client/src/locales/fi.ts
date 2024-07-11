@@ -186,7 +186,8 @@ export const translationFI = {
   details: "lisätietoja",
   noLotterySignupResult:
     "Valitettavasti et mahtunut mihinkään ohjelmanumeroon arvonnassa.",
-  invalidProgramItemId: "Ohjelmanumeroa ei löydy, viallinen tunniste",
+  invalidProgramItemId:
+    "Ohjelmanumeroa {{PROGRAM_ITEM_ID}} ei löydy. Joko ohjelmanumeroon ei ilmoittauduta Konstin avulla tai tunniste on virheellinen.",
   feedbackTitle: "Palaute",
   feedbackInstruction:
     "Piditkö {{PROGRAM_TYPE}}? Lähetä palautetta järjestäjälle! Palautteet toimitetaan tapahtuman jälkeen.",
