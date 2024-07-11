@@ -1,6 +1,7 @@
 import dayjs from "dayjs";
 import isBetween from "dayjs/plugin/isBetween";
 import isSameOrAfter from "dayjs/plugin/isSameOrAfter";
+import isSameOrBefore from "dayjs/plugin/isSameOrBefore";
 import relativeTime from "dayjs/plugin/relativeTime";
 import updateLocale from "dayjs/plugin/updateLocale";
 import utc from "dayjs/plugin/utc";
@@ -12,6 +13,7 @@ export const TIMEZONE = "Europe/Helsinki";
 export const initializeDayjs = (): void => {
   dayjs.extend(isBetween);
   dayjs.extend(isSameOrAfter);
+  dayjs.extend(isSameOrBefore);
   dayjs.extend(relativeTime);
   dayjs.extend(updateLocale);
   dayjs.extend(utc); // Required by timezone

@@ -51,7 +51,7 @@ export const GroupView = (): ReactElement => {
   const isInGroup = getIsInGroup(groupCode);
   const timeNow = getTimeNow();
   const directSignupsAfterNow = filteredActiveDirectSignups.filter(
-    (programItem) => timeNow.isBefore(dayjs(programItem.time)),
+    (programItem) => timeNow.isSameOrBefore(dayjs(programItem.time)),
   );
   const hasDirectSignups = directSignupsAfterNow.length > 0;
 
