@@ -19,6 +19,9 @@ export const FeedbackForm = ({ programItem }: Props): ReactElement => {
 
   // Hide / show clicked
   const sendFeedbackEvent = async (): Promise<void> => {
+    if (feedbackValue.length === 0) {
+      return;
+    }
     setSubmitting(true);
 
     try {
