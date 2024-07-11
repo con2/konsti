@@ -1,7 +1,6 @@
 import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import dayjs from "dayjs";
-import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ProgramItem, SignupType } from "shared/types/models/programItem";
 import { getTimeNow } from "client/utils/getTimeNow";
