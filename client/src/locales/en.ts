@@ -184,7 +184,8 @@ export const translationEN = {
   details: "details",
   noLotterySignupResult:
     "Unfortunately, you didn't get a spot in any program item in the lottery.",
-  invalidProgramItemId: "Program item not found, invalid ID",
+  invalidProgramItemId:
+    "Program item {{PROGRAM_ITEM_ID}} not found. Either program item does not use Konsti for signups or the identifier is incorrect.",
   feedbackTitle: "Feedback",
   feedbackInstruction:
     "Did you enjoy the {{PROGRAM_TYPE}}? Send feedback to the organizer! They will receive it after the event.",

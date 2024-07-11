@@ -94,9 +94,7 @@ export const ProgramItemPage = (): ReactElement => {
         />
       )}
       {!loading && !foundProgramItem && (
-        <div>
-          {t("invalidProgramItemId")} {programItemId}.
-        </div>
+        <p>{t("invalidProgramItemId", { PROGRAM_ITEM_ID: programItemId })}</p>
       )}
     </div>
   );
