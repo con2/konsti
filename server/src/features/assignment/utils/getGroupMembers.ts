@@ -7,7 +7,7 @@ export const getGroupMembersWithCreatorLotterySignups = (
 ): readonly User[] => {
   logger.debug("Get group members");
 
-  const selectedAttendeesWithSignups = [] as User[];
+  const selectedAttendeesWithSignups: User[] = [];
 
   for (const groupCreator of groupCreators) {
     // Skip individual users

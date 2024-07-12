@@ -100,14 +100,13 @@ describe("Assignment with valid data", () => {
 
     const startTime2 = dayjs(conventionStartTime).add(3, "hours").toISOString();
 
-    const assignResults2 = unsafelyUnwrap(
-      await runAssignment({
-        assignmentStrategy,
-        startTime: startTime2,
-      }),
-    );
+    const assignResults2Result = await runAssignment({
+      assignmentStrategy,
+      startTime: startTime2,
+    });
+    expect(assignResults2Result.error).toBeUndefined();
+    const assignResults2 = unsafelyUnwrap(assignResults2Result);
 
-    expect(assignResults2.status).toEqual("success");
     // Second assignment has less available attendees -> less results
     expect(assignResults2.results.length).toBeGreaterThanOrEqual(
       expectedResultsCount - assignResults.results.length,

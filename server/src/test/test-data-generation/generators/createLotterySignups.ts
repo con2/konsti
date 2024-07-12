@@ -43,7 +43,7 @@ export const createLotterySignups = async (): Promise<void> => {
 const getRandomLotterySignup = (
   programItems: readonly ProgramItem[],
 ): Signup[] => {
-  const lotterySignups = [] as Signup[];
+  const lotterySignups: Signup[] = [];
   let randomIndex;
 
   const { twoPhaseSignupProgramTypes, noKonstiSignupIds } = config.shared();

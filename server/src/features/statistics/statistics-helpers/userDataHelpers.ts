@@ -7,7 +7,7 @@ export const getUsersWithoutProgramItems = (
   users: readonly User[],
 ): readonly User[] => {
   const counter = 0;
-  const usersWithoutProgramItems = [] as User[];
+  const usersWithoutProgramItems: User[] = [];
   // TODO: Update to use signup collection
   /*
   users.forEach((user) => {
@@ -31,7 +31,7 @@ export const getUsersWithoutSignups = (
   users: readonly User[],
 ): readonly User[] => {
   let counter = 0;
-  const usersWithoutSignups = [] as User[];
+  const usersWithoutSignups: User[] = [];
   users.forEach((user) => {
     if (user.lotterySignups.length === 0) {
       usersWithoutSignups.push(user);
