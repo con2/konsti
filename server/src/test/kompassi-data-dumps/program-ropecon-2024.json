@@ -1342,6 +1342,40 @@
     ]
   },
   {
+    "slug": "tayta-su-peli",
+    "title": "Blood Bowl tutuksi! Demo ja info",
+    "description": "Esittelemme Blood Bowl miniatyyripelin säännöt ja päästämme kiinnostuneet kokeilemaan peliä.\r\n\r\nBlood Bowl on Warhammer maailmaan perustuva rugbymäistä urheiluottelua mallintava lautapeli, jossa on mahtava sekoitus taktiikkaa, tuuria ja luovuutta. Pelissä monet tutut ja tuntemattomat fantasiarodut sekä hirviöt ottavat toisistaan mittaa yrittäen murjoa vastustajat nurmikkoon ja ehkä tehdä pari maaliakin.\r\n\r\n-----\r\n\r\nWe explain the rules and help interested people to try out Blood Bowl.\r\n\r\nBlood Bowl is a miniature tabletop game in the Warhammer universe. The game portrays a rygby-like sports event and it's a wonderful mix of tactics, luck and creativity. In the game many familiar and strange fantasy races and monsters try to smash their opponents to the ground and maybe try to score some goals while they're at it.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-07-19"],
+      "room": ["halli-3-figualue"],
+      "type": ["gaming", "demo"],
+      "topic": ["miniatures"],
+      "konsti": ["other"],
+      "audience": [
+        "all-ages",
+        "aimed-between-13-17",
+        "aimed-adults",
+        "beginners"
+      ],
+      "language": ["fi", "en"],
+      "accessibility": []
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Blood Bowl 2020",
+      "konsti:maxAttendance": 4,
+      "ropecon:contentWarnings": "Väkivalta/violence"
+    },
+    "scheduleItems": [
+      {
+        "startTime": "2024-07-19T13:00:00+00:00",
+        "endTime": "2024-07-19T16:00:00+00:00",
+        "lengthMinutes": 180,
+        "location": "Halli 3 Figualue"
+      }
+    ]
+  },
+  {
     "slug": "yo-oopperassa-night-at-the-opera",
     "title": "Yö Oopperassa / Night at the Opera",
     "description": "Suomeksi:\r\nTerve, choombat! On vuosi 2045. Night Cityn yliopistoalueella kohisee. Useita opiskelijanuoria on kadonnut viime päivien aikana. Tämä ei tietenkään sinänsä poikkea kaupungin tavallisesta arjesta, mutta tapausten tiheys herättää huomiota, ja nyt kadonneiden joukossa on joku jonka porukoilla on riittävästi tuohta saada taskuunsa sekä poliisin että teidän kaltaisenne ryhmän edgerunnereita tutkimaan tapausta. Pääepäiltyinä on vampyyrejä larppaava katujengi, mutta jää teidän koplan hommaksi saattaa tutkimus loppuun siellä minne lain koura ei yletä.\r\n\r\nOdotukset pelaajille: Valmius heittäytyä tarinaan ja sen tunnelmaan, EI aikaisempaa kokemusta \"Night at the Opera\" valmisseikkailusta.\r\n\r\nIn English:\r\n'sup, choombas! It's the year 2045. The Night City university district is brewing. Several young students have gone missing in the last few days. Such isn't of course typically so unusual in the city, but the close proximity of the cases has garnered some attention and now the victims include someone who's folks have enough dough to get both the cops and a crew of edgerunners such as yourselves looking into the case. The main suspects is a street gang that likes to larp as vampires, but it's up to your crew to bring the investigation to a close there where the hand of law doesn't reach.\r\n\r\nExpecting players to: Be ready to dive into the story and atmosphere. To have NO experience of the pre-written adventure \"Night at the Opera\".",
@@ -4062,34 +4096,6 @@
     ]
   },
   {
-    "slug": "legendary-marvel-2-pelautus",
-    "title": "Legendary Marvel",
-    "description": "Pakanrakennusta Marvelin supersankareiden parissa. Pelaajat toimivat yhdessä peliä vastaan, ja mekaniikat opastetaan pelin edetessä. Peli vaatii hieman englannin osaamista, mutta yhteistyössä pelaten kokeneemmat pelaajat voivat opastaa uudempia ja nuorempia pelaajia. Peli sopii teemansa puolesta n. 10 vuotiaasta alkaen kaiken ikäisille. Yksittäinen pelikerta kestää noin 45-60 min.\r\n\r\nDeckbuilding in the world of Marvel Superheroes. The players co-operate together against the game. Some English competence required, but more seasoned players can assist newer ones. The theme is suitable for anyone aged 10+. A single scenario takes about 45-60 minutes of playtime.",
-    "cachedHosts": "<redacted>",
-    "cachedDimensions": {
-      "date": ["2024-07-19"],
-      "room": ["halli-3-kokemuspiste"],
-      "type": ["experience", "gaming", "open-gaming"],
-      "topic": ["cardgames", "theme"],
-      "konsti": ["experiencePoint"],
-      "audience": ["all-ages", "beginners"],
-      "language": ["fi"],
-      "accessibility": []
-    },
-    "cachedAnnotations": {
-      "konsti:rpgSystem": "Legendary Marvel",
-      "konsti:maxAttendance": 5
-    },
-    "scheduleItems": [
-      {
-        "startTime": "2024-07-19T16:00:00+00:00",
-        "endTime": "2024-07-19T19:00:00+00:00",
-        "lengthMinutes": 180,
-        "location": "Halli 3 Kokemuspiste"
-      }
-    ]
-  },
-  {
     "slug": "kristjans-game-2",
     "title": "The Tomb",
     "description": "A mystery is buried deep beneath the surface, seeking to be uncovered for thousands of years. These forces are not to be trifled with, yet trifle you shall. Will your wits and might be enough or do you succumb to the perils that await in the darkness?\r\n\r\nInvestigation amidst dangers in a compact dungeon\r\nEnglish only\r\n16+\r\nReady-made characters provided\r\nLast 30 minutes is reserved for giving feedback to the GM about what you liked and did not like",
@@ -4175,8 +4181,8 @@
     "scheduleItems": [
       {
         "startTime": "2024-07-19T16:30:00+00:00",
-        "endTime": "2024-07-19T19:30:00+00:00",
-        "lengthMinutes": 180,
+        "endTime": "2024-07-19T19:00:00+00:00",
+        "lengthMinutes": 150,
         "location": "Halli 3 Kokemuspiste"
       }
     ]
@@ -5125,8 +5131,8 @@
     "scheduleItems": [
       {
         "startTime": "2024-07-19T18:00:00+00:00",
-        "endTime": "2024-07-19T18:43:00+00:00",
-        "lengthMinutes": 43,
+        "endTime": "2024-07-19T18:45:00+00:00",
+        "lengthMinutes": 45,
         "location": "Sali 203A"
       }
     ]
@@ -8418,6 +8424,40 @@
         "endTime": "2024-07-20T10:30:00+00:00",
         "lengthMinutes": 210,
         "location": "Halli 3 Figuturnausalue"
+      }
+    ]
+  },
+  {
+    "slug": "tayta-la-peli",
+    "title": "Blood Bowliin tutustuminen ja demo La",
+    "description": "Esittelemme Blood Bowl miniatyyripelin säännöt ja päästämme kiinnostuneet kokeilemaan peliä.\r\n\r\nBlood Bowl on Warhammer maailmaan perustuva rugbymäistä urheiluottelua mallintava lautapeli, jossa on mahtava sekoitus taktiikkaa, tuuria ja luovuutta. Pelissä monet tutut ja tuntemattomat fantasiarodut sekä hirviöt ottavat toisistaan mittaa yrittäen murjoa vastustajat nurmikkoon ja ehkä tehdä pari maaliakin.\r\n\r\n-----\r\n\r\nWe explain the rules and help interested people to try out Blood Bowl.\r\n\r\nBlood Bowl is a miniature tabletop game in the Warhammer universe. The game portrays a rygby-like sports event and it's a wonderful mix of tactics, luck and creativity. In the game many familiar and strange fantasy races and monsters try to smash their opponents to the ground and maybe try to score some goals while they're at it.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-07-20"],
+      "room": ["halli-3-figualue"],
+      "type": ["gaming", "demo"],
+      "topic": ["miniatures"],
+      "konsti": ["other"],
+      "audience": [
+        "all-ages",
+        "aimed-between-13-17",
+        "aimed-adults",
+        "beginners"
+      ],
+      "language": ["fi", "en"],
+      "accessibility": []
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Blood bowl 2020",
+      "konsti:maxAttendance": 4,
+      "ropecon:contentWarnings": "Väkivalta/violence"
+    },
+    "scheduleItems": [
+      {
+        "startTime": "2024-07-20T07:00:00+00:00",
+        "endTime": "2024-07-20T17:00:00+00:00",
+        "lengthMinutes": 600,
+        "location": "Halli 3 Figualue"
       }
     ]
   },
@@ -15889,6 +15929,34 @@
     ]
   },
   {
+    "slug": "legendary-marvel-2-pelautus",
+    "title": "Legendary Marvel",
+    "description": "Pakanrakennusta Marvelin supersankareiden parissa. Pelaajat toimivat yhdessä peliä vastaan, ja mekaniikat opastetaan pelin edetessä. Peli vaatii hieman englannin osaamista, mutta yhteistyössä pelaten kokeneemmat pelaajat voivat opastaa uudempia ja nuorempia pelaajia. Peli sopii teemansa puolesta n. 10 vuotiaasta alkaen kaiken ikäisille. Yksittäinen pelikerta kestää noin 45-60 min.\r\n\r\nDeckbuilding in the world of Marvel Superheroes. The players co-operate together against the game. Some English competence required, but more seasoned players can assist newer ones. The theme is suitable for anyone aged 10+. A single scenario takes about 45-60 minutes of playtime.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-07-20"],
+      "room": ["halli-3-kokemuspiste"],
+      "type": ["experience", "gaming", "open-gaming"],
+      "topic": ["cardgames", "theme"],
+      "konsti": ["experiencePoint"],
+      "audience": ["all-ages", "beginners"],
+      "language": ["fi"],
+      "accessibility": []
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Legendary Marvel",
+      "konsti:maxAttendance": 5
+    },
+    "scheduleItems": [
+      {
+        "startTime": "2024-07-20T16:00:00+00:00",
+        "endTime": "2024-07-20T19:00:00+00:00",
+        "lengthMinutes": 180,
+        "location": "Halli 3 Kokemuspiste"
+      }
+    ]
+  },
+  {
     "slug": "your-novel-how-to-get-the-darn-thing-finished",
     "title": "Your Novel: How to Get the Darn Thing Finished",
     "description": "Ever had an \"I could write a novel\" moment, but struggled to get it off the ground? Or are you in the middle of a draft and have found yourself hitting a wall? You're not alone.\r\n\r\nIt took me about 20 years to write my first novel. No, that is not an exaggeration. I hit so many road blocks along the way, but I finally got my story into the hands of beta readers. Looking ahead to my next novel, there is a lot I will do differently.\r\n\r\nWe'll take a look at the foundations of storytelling, analyse advice from professional writers, and explore best practises for sitting down in that chair and getting words on the page - all with the aim of getting that beta draft done and ready to share. It can be done!",
@@ -19367,6 +19435,35 @@
     ]
   },
   {
+    "slug": "tayta-pe-bloodbowl",
+    "title": "Blood Bowl esittely ja demo / Blood Bowl introduction and demo",
+    "description": "Esittelemme Blood Bowl miniatyyripelin säännöt ja päästämme kiinnostuneet kokeilemaan peliä.\r\n\r\nBlood Bowl on Warhammer maailmaan perustuva rugbymäistä urheiluottelua mallintava lautapeli, jossa on mahtava sekoitus taktiikkaa, tuuria ja luovuutta. Pelissä monet tutut ja tuntemattomat fantasiarodut sekä hirviöt ottavat toisistaan mittaa yrittäen murjoa vastustajat nurmikkoon ja ehkä tehdä pari maaliakin.\r\n\r\n-----\r\n\r\nWe explain the rules and help interested people to try out Blood Bowl.\r\n\r\nBlood Bowl is a miniature tabletop game in the Warhammer universe. The game portrays a rygby-like sports event and it's a wonderful mix of tactics, luck and creativity. In the game many familiar and strange fantasy races and monsters try to smash their opponents to the ground and maybe try to score some goals while they're at it.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-07-21"],
+      "room": ["halli-3-figualue"],
+      "type": ["gaming", "demo"],
+      "topic": ["miniatures", "theme"],
+      "konsti": ["other"],
+      "audience": ["all-ages", "beginners"],
+      "language": ["fi", "en"],
+      "accessibility": []
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Blood Bowl",
+      "konsti:maxAttendance": 4,
+      "ropecon:contentWarnings": "Väkivalta"
+    },
+    "scheduleItems": [
+      {
+        "startTime": "2024-07-21T07:00:00+00:00",
+        "endTime": "2024-07-21T10:00:00+00:00",
+        "lengthMinutes": 180,
+        "location": "Halli 3 Figualue"
+      }
+    ]
+  },
+  {
     "slug": "lankaperuukit",
     "title": "Lankaperuukit",
     "description": "Luennolla esitellään langasta valmistettuja peruukkeja, sekä käydään teoriassa läpi miten sellaisen voi valmistaa itse ilman ompelukonetta ja pienellä budjetilla! Puhutaan myös kampausten luomisesta erilaisilla langoilla ja esillä on mm. historia- sekä fantasiahenkisiä peruukkeja. Käymme myös hieman läpi, miten valmistat peruukkipohjan oman pään mittojen mukaan.",
@@ -22041,11 +22138,14 @@
       "type": ["gaming", "demo"],
       "topic": ["miniatures"],
       "konsti": ["other"],
-      "audience": [],
+      "audience": ["all-ages", "beginners"],
       "language": ["fi"],
-      "accessibility": []
+      "accessibility": ["colorblind"]
     },
-    "cachedAnnotations": { "konsti:maxAttendance": 5 },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Itse tehty / Self made",
+      "konsti:maxAttendance": 1
+    },
     "scheduleItems": [
       {
         "startTime": "2024-07-21T10:00:00+00:00",
