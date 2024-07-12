@@ -57,8 +57,16 @@ export const GroupView = (): ReactElement => {
 
   return (
     <div className="group-view">
-      <p>{t("group.groupLotterySignupGuide")}</p>
-      {/* <p>{t("group.groupLotterySignupTabletopOnly")}</p*/}
+      <p>
+        {t("group.groupLotterySignupGuide")}{" "}
+        {t("group.groupLotterySignupProgramTypes")}{" "}
+        {twoPhaseSignupProgramTypes
+          .map((twoPhaseSignupProgramType) =>
+            t(`programTypePlural.${twoPhaseSignupProgramType}`),
+          )
+          .join(", ")}
+        .
+      </p>
 
       {!isInGroup && (
         <>
