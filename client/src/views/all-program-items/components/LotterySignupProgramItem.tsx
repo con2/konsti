@@ -10,10 +10,7 @@ import {
 } from "client/views/my-program-items/myProgramItemsThunks";
 import { Signup } from "shared/types/models/user";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
-import {
-  getSignupOpensDate,
-  isAlreadyLotterySigned,
-} from "./allProgramItemsUtils";
+import { isAlreadyLotterySigned } from "./allProgramItemsUtils";
 import { Button, ButtonStyle } from "client/components/Button";
 import { ErrorMessage } from "client/components/ErrorMessage";
 import { CancelSignupForm } from "client/views/all-program-items/components/CancelSignupForm";
@@ -103,17 +100,6 @@ export const LotterySignupProgramItem = ({
   if (!loggedIn) {
     return (
       <NotLoggedSignupInfo>
-        <div>
-          {!lotterySignupOpen && (
-            <>
-              <span>{t("signup.lotterySignupOpens")}</span>{" "}
-              <BoldText>
-                {getSignupOpensDate(algorithmSignupStartTime, timeNow)}
-              </BoldText>
-            </>
-          )}
-          {lotterySignupOpen && <span>{t("signup.lotterySignupOpenNow")}</span>}
-        </div>
         <CreateAccountLink>
           <Link to={`/login`}>{t("signup.loginToSignup")}</Link>
         </CreateAccountLink>
@@ -123,21 +109,16 @@ export const LotterySignupProgramItem = ({
 
   return (
     <>
+      {config.shared().signupOpen && isInGroup && !isGroupCreator && (
+        <p>{t("group.signupDisabledNotCreator")}</p>
+      )}
+
       {config.shared().signupOpen &&
         !alreadySignedToProgramItem &&
         canSignToProgramItems && (
           <>
             {lotterySignupsForTimeslot.length >= 3 && (
               <p>{t("signup.cannotLotterySignupMoreProgramItems")}</p>
-            )}
-
-            {!lotterySignupOpen && (
-              <p>
-                {t("signup.lotterySignupOpens")}{" "}
-                <BoldText>
-                  {getSignupOpensDate(algorithmSignupStartTime, timeNow)}
-                </BoldText>
-              </p>
             )}
 
             {lotterySignupOpen &&
@@ -160,7 +141,6 @@ export const LotterySignupProgramItem = ({
               )}
           </>
         )}
-
       {alreadySignedToProgramItem && (
         <>
           <LotterySignupContainer>
@@ -198,14 +178,12 @@ export const LotterySignupProgramItem = ({
           )}
         </>
       )}
-
       {errorMessage && (
         <ErrorMessage
           message={t(errorMessage)}
           closeError={() => setErrorMessage(null)}
         />
       )}
-
       {signupFormOpen && !alreadySignedToProgramItem && (
         <LotterySignupForm
           programItem={programItem}
@@ -224,10 +202,6 @@ const LotterySignupContainer = styled.div`
   border-radius: 5px;
   border-left: 5px solid ${(props) => props.theme.infoBorder};
   background-color: ${(props) => props.theme.infoBackground};
-`;
-
-const BoldText = styled.span`
-  font-weight: 600;
 `;
 
 const ButtonContainer = styled.div`

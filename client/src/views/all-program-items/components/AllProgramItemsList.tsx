@@ -7,7 +7,6 @@ import { useAppSelector } from "client/utils/hooks";
 import { ProgramItem } from "shared/types/models/programItem";
 import { ProgramItemListTitle } from "client/views/all-program-items/components/ProgramItemListTitle";
 import { getLotterySignups } from "client/utils/getUpcomingProgramItems";
-import { getTimeslotSignupStrategy } from "client/views/all-program-items/allProgramItemsUtils";
 import {
   selectDirectSignups,
   selectFavoriteProgramItems,
@@ -16,6 +15,7 @@ import {
 import { RaisedCard } from "client/components/RaisedCard";
 import { getIsInGroup } from "client/views/group/groupUtils";
 import { SignupQuestion } from "shared/types/models/settings";
+import { SignupStrategy } from "shared/config/sharedConfigTypes";
 
 interface Props {
   programItems: readonly ProgramItem[];
@@ -71,20 +71,9 @@ export const AllProgramItemsList = ({ programItems }: Props): ReactElement => {
 
   const programItemsList = Object.entries(programItemsByStartTime).map(
     ([startTime, programItemsForStartTime]) => {
-      const timeslotSignupStrategy = getTimeslotSignupStrategy(
-        programItemsForStartTime,
-      );
-
       return (
         <div key={startTime}>
-          <ProgramItemListTitle
-            startTime={startTime}
-            lotterySignups={ownOrGroupCreatorLotterySignups}
-            directSignups={directSignups}
-            timeslotSignupStrategy={timeslotSignupStrategy}
-            isGroupCreator={isGroupCreator}
-            groupCode={groupCode}
-          />
+          <ProgramItemListTitle startTime={startTime} />
 
           {programItemsForStartTime.map((programItem) => {
             const programItemSignups = signups.find(
@@ -99,7 +88,9 @@ export const AllProgramItemsList = ({ programItems }: Props): ReactElement => {
                 programItem={programItem}
                 startTime={startTime}
                 signups={programItemSignups?.users ?? []}
-                signupStrategy={timeslotSignupStrategy}
+                signupStrategy={
+                  programItem.signupStrategy ?? SignupStrategy.DIRECT
+                }
                 lotterySignups={ownOrGroupCreatorLotterySignups}
                 directSignups={directSignups}
                 loading={loading}
@@ -111,6 +102,7 @@ export const AllProgramItemsList = ({ programItems }: Props): ReactElement => {
                 publicSignupQuestion={getPublicSignupQuestion(
                   programItem.programItemId,
                 )}
+                isInGroup={isInGroup}
               />
             );
           })}

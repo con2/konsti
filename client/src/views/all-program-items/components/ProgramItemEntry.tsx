@@ -32,6 +32,7 @@ interface Props {
   userGroup: UserGroup;
   favoriteProgramItems: readonly ProgramItem[];
   publicSignupQuestion?: SignupQuestion;
+  isInGroup: boolean;
 }
 
 export const ProgramItemEntry = ({
@@ -49,6 +50,7 @@ export const ProgramItemEntry = ({
   userGroup,
   favoriteProgramItems,
   publicSignupQuestion,
+  isInGroup,
 }: Props): ReactElement => {
   const { t } = useTranslation();
 
@@ -131,6 +133,7 @@ export const ProgramItemEntry = ({
           attendees={signups.length}
           loading={loading}
           setLoading={setLoading}
+          isInGroup={isInGroup}
         />
       )}
     </StyledCard>

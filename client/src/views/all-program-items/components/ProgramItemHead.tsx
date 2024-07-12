@@ -120,11 +120,9 @@ export const ProgramItemHead = ({
               ENTRY_FEE: programItem.entryFee,
             })}
         </Row>
-        {isEnterGameMode && isNormalSignup && allValuesValid && (
+        {isNormalSignup && allValuesValid && (
           <Row>
             <SignupsInfo
-              isEnterGameMode={isEnterGameMode}
-              isNormalSignup={isNormalSignup}
               programItem={programItem}
               signups={signups}
               isLoggedIn={loggedIn}
@@ -133,23 +131,25 @@ export const ProgramItemHead = ({
           </Row>
         )}
 
-        {signups.length < programItem.minAttendance && isNormalSignup && (
-          <Row>
-            {t("signup.attendeesNeeded", {
-              COUNT: programItem.minAttendance - signups.length,
-              ATTENDEE_TYPE:
-                programItem.minAttendance - signups.length === 1
-                  ? t(
-                      `attendeeType.${getAttendeeType(programItem.programType)}`,
-                    )
-                  : t(
-                      `attendeeTypePartitive.${getAttendeeType(
-                        programItem.programType,
-                      )}`,
-                    ),
-            })}
-          </Row>
-        )}
+        {signups.length < programItem.minAttendance &&
+          isNormalSignup &&
+          isEnterGameMode && (
+            <Row>
+              {t("signup.attendeesNeeded", {
+                COUNT: programItem.minAttendance - signups.length,
+                ATTENDEE_TYPE:
+                  programItem.minAttendance - signups.length === 1
+                    ? t(
+                        `attendeeType.${getAttendeeType(programItem.programType)}`,
+                      )
+                    : t(
+                        `attendeeTypePartitive.${getAttendeeType(
+                          programItem.programType,
+                        )}`,
+                      ),
+              })}
+            </Row>
+          )}
         {!isEnterGameMode && isNormalSignup && (
           <Row>
             <PopularityInfo

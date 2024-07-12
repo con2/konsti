@@ -1,5 +1,4 @@
 import { ReactElement } from "react";
-import { useTranslation } from "react-i18next";
 import { ProgramItem } from "shared/types/models/programItem";
 import { DirectSignupProgramItem } from "client/views/all-program-items/components/DirectSignupProgramItem";
 import { LotterySignupProgramItem } from "client/views/all-program-items/components/LotterySignupProgramItem";
@@ -7,6 +6,8 @@ import { config } from "shared/config";
 import { SignupStrategy } from "shared/config/sharedConfigTypes";
 import { isRevolvingDoorWorkshop } from "client/utils/isRevolvingDoorWorkshop";
 import { Signup } from "shared/types/models/user";
+import { SignupHelpText } from "client/views/all-program-items/components/SignupHelpText";
+import { getTimeNow } from "client/utils/getTimeNow";
 
 interface Props {
   signupStrategy: SignupStrategy;
@@ -16,6 +17,7 @@ interface Props {
   attendees: number;
   loading: boolean;
   setLoading: (loading: boolean) => void;
+  isInGroup: boolean;
 }
 
 export const SignupInfo = ({
@@ -26,9 +28,8 @@ export const SignupInfo = ({
   attendees,
   loading,
   setLoading,
+  isInGroup,
 }: Props): ReactElement => {
-  const { t } = useTranslation();
-
   const signupAlwaysOpen = config
     .shared()
     .directSignupAlwaysOpenIds.includes(programItem.programItemId);
@@ -44,41 +45,35 @@ export const SignupInfo = ({
     .noKonstiSignupIds.includes(programItem.programItemId);
   const normalSignup = requiresSignup && konstiSignup;
 
+  const isSignupOver = getTimeNow().isAfter(programItem.startTime);
+
   return (
     <div>
-      {!isDirectSignupMode && normalSignup && (
-        <LotterySignupProgramItem
-          programItem={programItem}
-          startTime={startTime}
-          lotterySignups={lotterySignups}
-        />
-      )}
+      <SignupHelpText
+        programItem={programItem}
+        isSignupAlwaysOpen={signupAlwaysOpen}
+        usesKonstiSignup={konstiSignup}
+        startTime={startTime}
+        isInGroup={isInGroup}
+      />
 
-      {isDirectSignupMode && normalSignup && (
-        <DirectSignupProgramItem
-          programItem={programItem}
-          programItemIsFull={attendees >= programItem.maxAttendance}
-          startTime={startTime}
-          loading={loading}
-          setLoading={setLoading}
-        />
-      )}
-
-      {!requiresSignup && (
-        <p>
-          {t("signup.doesNotRequireSignup", {
-            PROGRAM_TYPE: t(`programTypeIllative.${programItem.programType}`),
-          })}
-        </p>
-      )}
-
-      {!konstiSignup && (
-        <p>
-          {t("signup.noKonstiSignup", {
-            PROGRAM_TYPE: t(`programTypeIllative.${programItem.programType}`),
-          })}
-        </p>
-      )}
+      {normalSignup &&
+        !isSignupOver &&
+        (!isDirectSignupMode ? (
+          <LotterySignupProgramItem
+            programItem={programItem}
+            startTime={startTime}
+            lotterySignups={lotterySignups}
+          />
+        ) : (
+          <DirectSignupProgramItem
+            programItem={programItem}
+            programItemIsFull={attendees >= programItem.maxAttendance}
+            startTime={startTime}
+            loading={loading}
+            setLoading={setLoading}
+          />
+        ))}
     </div>
   );
 };

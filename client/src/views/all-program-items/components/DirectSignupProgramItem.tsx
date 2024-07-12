@@ -5,10 +5,7 @@ import { Link } from "react-router-dom";
 import { ProgramItem } from "shared/types/models/programItem";
 import { DirectSignupForm } from "./DirectSignupForm";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
-import {
-  getSignupOpensDate,
-  isAlreadyDirectySigned,
-} from "./allProgramItemsUtils";
+import { isAlreadyDirectySigned } from "./allProgramItemsUtils";
 import { Button, ButtonStyle } from "client/components/Button";
 import { CancelSignupForm } from "./CancelSignupForm";
 import {
@@ -87,19 +84,6 @@ export const DirectSignupProgramItem = ({
   if (!loggedIn) {
     return (
       <NotLoggedSignupInfo>
-        <div>
-          {timeNow.isBefore(directSignupStartTime) && (
-            <>
-              <span>{t("signup.signupOpens")}</span>{" "}
-              <BoldText>
-                {getSignupOpensDate(directSignupStartTime, timeNow)}
-              </BoldText>
-            </>
-          )}
-          {timeNow.isSameOrAfter(directSignupStartTime) && (
-            <span>{t("signup.directSignupOpenNow")}</span>
-          )}
-        </div>
         <CreateAccountLink>
           <Link to={`/login`}>{t("signup.loginToSignup")}</Link>
         </CreateAccountLink>
@@ -135,15 +119,6 @@ export const DirectSignupProgramItem = ({
 
           {!directSignupForTimeslot && (
             <>
-              {timeNow.isBefore(directSignupStartTime) && (
-                <p>
-                  {t("signup.signupOpens")}{" "}
-                  <BoldText>
-                    {getSignupOpensDate(directSignupStartTime, timeNow)}
-                  </BoldText>
-                </p>
-              )}
-
               {!signupFormOpen &&
                 timeNow.isSameOrAfter(directSignupStartTime) && (
                   <ButtonContainer>

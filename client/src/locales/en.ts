@@ -223,9 +223,7 @@ export const translationEN = {
     cancelSignupBeforeJoiningOrCreatingGroup:
       "You'll have to cancel these sign-ups before you can create or join a group.",
     signupDisabledNotCreator:
-      "You are a group member. Your group's creator will sign up the whole group to the lottery.",
-    signupForWholeGroup:
-      "You are the group creator. You can sign up the group to a lottery.",
+      "You can't sign up because you are a member of a group. Only the group creator can sign the group up for a lottery.",
     groupCreatorSignups:
       "You are the group creator. Your lottery sign-ups are the same for all group members.",
     inGroupSignups:
@@ -304,23 +302,18 @@ export const translationEN = {
     confirmCancellation: "Cancel your sign-up",
     staySignedUp: "Stay signed up",
     expectedDuration: "Duration {{EXPECTED_DURATION}}",
-    signupOpens: "Sign-up opens",
     directSignupOpenNow: "Sign-up is open",
-    lotterySignupOpenNow: "Lottery sign-up open",
     loginToSignup: "Log in to sign up",
-    lotterySignupOpens: "Lottery sign-up opens",
     signupAlwaysOpen: "Sign-up always open",
     inGroupWarning:
-      "If you sign up to a {{PROGRAM_TYPE}}, you will be removed from your current group.",
+      "If you sign up to a {{PROGRAM_TYPE}}, you will be removed from your current group. (Groups can only be used in lottery signups.)",
     groupCreatorWarning:
-      "If you sign up to a {{PROGRAM_TYPE}}, the group you created will be deleted.",
+      "If you sign up to a {{PROGRAM_TYPE}}, the group you created will be deleted. Groups can only be used in lottery signups.",
+    groupSignupInfo: "Please note that you are signing up your whole group.",
     currentSignup: "You have signed up to this {{PROGRAM_TYPE}}.",
     entryFee: "Material fee {{ENTRY_FEE}}",
     entryFeeInfo:
       "I understand that the workshop requires a material fee of {{ENTRY_FEE}}.",
-    doesNotRequireSignup: "This {{PROGRAM_TYPE}} does not require signing up.",
-    noKonstiSignup:
-      "This {{PROGRAM_TYPE}} does not use Konsti for signing up. See the program details for instructions.",
     minAttendanceMissing: "Missing info: minimum number of {{ATTENDEE_TYPE}}",
     maxAttendanceMissing: "Missing info: maximum number of {{ATTENDEE_TYPE}}",
     showAttendees: "Show {{ATTENDEE_TYPE}}",
@@ -328,7 +321,27 @@ export const translationEN = {
     noAttendees: "No {{ATTENDEE_TYPE}}",
     loginLink: "Log in",
     loginLinkEnding: " to see {{ATTENDEE_TYPE}}.",
-    signupQuestionAriaLabel: "Signup question",
+    signupQuestionAriaLabel: "Sign-up question",
+    help: {
+      doesNotRequireSignup:
+        "This {{PROGRAM_TYPE}} does not require signing up.",
+      noKonstiSignup:
+        "This {{PROGRAM_TYPE}} does not use Konsti for signing up. See the program details for instructions.",
+      signupAlwaysOpen:
+        " You can sign up to this {{PROGRAM_TYPE}} at any time.",
+      signupAlwaysOpenGroupMemberInfo:
+        "You can sign up even though you are a group member.",
+      directSignupStartsLater:
+        "Participants are selected in the order of sign-ups. Sign-up opens ",
+      directSignupOpenNow:
+        "Participants are selected in the order of sign-ups. Sign-up closes ",
+      algorithmSignupStartsLater:
+        "Participants are selected in a lottery. Lotter sign-up open ",
+      algorithmSignupOpen:
+        "Participants are selected in a lottery. Lottery sign-up closes ",
+      algorithmSignupEnded: "Participants were selected in a lottery.",
+      directSignupStarts: " Direct sign-up to remaining and cancelled spots: ",
+    },
   },
   attendeeType: {
     player: "player",

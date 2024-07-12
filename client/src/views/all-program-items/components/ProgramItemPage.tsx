@@ -91,6 +91,7 @@ export const ProgramItemPage = (): ReactElement => {
           userGroup={userGroup}
           favoriteProgramItems={favoriteProgramItems}
           publicSignupQuestion={publicSignupQuestion}
+          isInGroup={isInGroup}
         />
       )}
       {!loading && !foundProgramItem && (

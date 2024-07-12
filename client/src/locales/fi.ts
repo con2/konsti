@@ -225,9 +225,7 @@ export const translationFI = {
     cancelSignupBeforeJoiningOrCreatingGroup:
       "Sinun täytyy perua nämä ilmoittautumiset ennen kuin voit luoda ryhmän tai liittyä ryhmään.",
     signupDisabledNotCreator:
-      "Olet ryhmän jäsen. Ryhmän perustaja ilmoittautuu arvontaan ryhmän jäsenten puolesta.",
-    signupForWholeGroup:
-      "Olet ryhmän perustaja. Voit ilmoittautua arvontaan koko ryhmän puolesta.",
+      "Et voi ilmoittautua, koska olet ryhmän jäsen. Vain ryhmän perustaja voi ilmoittaa ryhmän arvontaan.",
     groupCreatorSignups:
       "Olet ryhmän perustaja. Valitsemasi arvonta-ilmoittautumiset ovat samat kaikille ryhmän jäsenille.",
     inGroupSignups:
@@ -307,23 +305,19 @@ export const translationFI = {
     confirmCancellation: "Peruuta ilmoittautuminen",
     staySignedUp: "Pysy ilmoittautuneena",
     expectedDuration: "Kesto {{EXPECTED_DURATION}}",
-    signupOpens: "Ilmoittautuminen alkaa",
     directSignupOpenNow: "Ilmoittautuminen on avoinna",
-    lotterySignupOpenNow: "Arvontaan ilmoittautuminen avoinna",
     loginToSignup: "Kirjaudu sisään ilmoittautumista varten",
-    lotterySignupOpens: "Arvontaan ilmoittautuminen alkaa",
     signupAlwaysOpen: "Ilmoittautuminen aina auki",
     inGroupWarning:
-      "Jos ilmoittaudut {{PROGRAM_TYPE}}, sinut poistetaan ryhmästäsi.",
+      "Jos ilmoittaudut {{PROGRAM_TYPE}}, sinut poistetaan ryhmästäsi. (Ryhmää voi käyttää ainoastaan arvontailmoittautumisissa.)",
     groupCreatorWarning:
-      "Jos ilmoittaudut {{PROGRAM_TYPE}}, perustamasi ryhmä poistetaan.",
+      "Jos ilmoittaudut {{PROGRAM_TYPE}}, perustamasi ryhmä poistetaan. Ryhmää voi käyttää ainoastaan arvontailmoittautumisissa.",
+    groupSignupInfo:
+      "Huomaathan, että olet ilmoittamassa koko ryhmäsi tähän arvontaan.",
     currentSignup: "Olet ilmoittautunut tähän {{PROGRAM_TYPE}}.",
     entryFee: "Materiaalimaksu {{ENTRY_FEE}}",
     entryFeeInfo:
       "Ymmärrän, että työpajaan kuuluu materiaalimaksu {{ENTRY_FEE}}.",
-    doesNotRequireSignup: "Tähän {{PROGRAM_TYPE}} ei tarvitse ilmoittautua",
-    noKonstiSignup:
-      "Tähän {{PROGRAM_TYPE}} ei ilmoittauduta Konstissa. Katso ilmoittautumisohjeet ohjelman lisätiedoista.",
     minAttendanceMissing: "Puuttuva tieto: vähimmäismäärä {{ATTENDEE_TYPE}}",
     maxAttendanceMissing: "Puuttuva tieto: maksimimäärä {{ATTENDEE_TYPE}}",
     showAttendees: "Näytä {{ATTENDEE_TYPE}}",
@@ -332,6 +326,26 @@ export const translationFI = {
     loginLink: "Kirjaudu sisään",
     loginLinkEnding: " nähdäksesi {{ATTENDEE_TYPE}}.",
     signupQuestionAriaLabel: "Lisätietokysymys",
+    help: {
+      doesNotRequireSignup: "Tähän {{PROGRAM_TYPE}} ei tarvitse ilmoittautua.",
+      noKonstiSignup:
+        "Tähän {{PROGRAM_TYPE}} ei ilmoittauduta Konstissa. Katso ilmoittautumisohjeet ohjelman lisätiedoista.",
+      signupAlwaysOpen:
+        "Tähän {{PROGRAM_TYPE}} voi ilmoittautua koko tapahtuman ajan.",
+      signupAlwaysOpenGroupMemberInfo:
+        " Voit ilmoittautua vaikka olet ryhmän jäsen.",
+      directSignupStartsLater:
+        "Osallistujat valitaan ilmoittautumisjärjestyksessä. Ilmoittautuminen alkaa: ",
+      directSignupOpenNow:
+        "Osallistujat valitaan ilmoittautumisjärjestyksessä. Ilmoittautuminen sulkeutuu: ",
+      algorithmSignupStartsLater:
+        "Osallistujat valitaan arvonnalla. Arvontaan ilmoittautuminen: ",
+      algorithmSignupOpen:
+        "Osallistujat valitaan arvonnalla. Arvontaan ilmoittautuminen päättyy: ",
+      algorithmSignupEnded: "Osallistujat valittiin arvonnalla.",
+      directSignupStarts:
+        " Suora ilmoittautuminen jäljelle jääneisiin ja peruutuspaikkoihin: ",
+    },
   },
   attendeeType: {
     player: "pelaaja",
