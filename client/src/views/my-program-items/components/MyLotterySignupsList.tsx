@@ -36,11 +36,10 @@ export const MyLotterySignupsList = ({
     <RaisedCard data-testid="lottery-signup-program-items-list">
       <Header>{t("lotterySignups")}</Header>
 
-      {!isGroupCreator && isGroupMember && (
-        <InfoText>{t("group.inGroupSignups")}</InfoText>
-      )}
+      {!isGroupCreator && isGroupMember && <p>{t("group.inGroupSignups")}</p>}
+
       {isGroupCreator && groupMembers.length > 0 && (
-        <InfoText>{t("group.groupCreatorSignups")}</InfoText>
+        <p>{t("group.groupCreatorSignups")}</p>
       )}
 
       {lotterySignups.length === 0 && (
@@ -55,10 +54,6 @@ export const MyLotterySignupsList = ({
     </RaisedCard>
   );
 };
-
-const InfoText = styled.p`
-  font-weight: 600;
-`;
 
 const Header = styled.h3`
   margin: 0 0 12px 0;

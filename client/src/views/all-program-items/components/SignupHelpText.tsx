@@ -22,6 +22,7 @@ interface Props {
   isSignupAlwaysOpen: boolean;
   usesKonstiSignup: boolean;
   startTime: string;
+  isInGroup: boolean;
 }
 
 export const SignupHelpText = ({
@@ -29,6 +30,7 @@ export const SignupHelpText = ({
   isSignupAlwaysOpen,
   usesKonstiSignup,
   startTime,
+  isInGroup,
 }: Props): ReactElement => {
   const { t } = useTranslation();
 
@@ -79,6 +81,9 @@ export const SignupHelpText = ({
         {t("signup.help.signupAlwaysOpen", {
           PROGRAM_TYPE: t(`programTypeIllative.${programItem.programType}`),
         })}
+        {isInGroup && (
+          <span>{t("signup.help.signupAlwaysOpenGroupMemberInfo")}</span>
+        )}
       </p>
     );
   }

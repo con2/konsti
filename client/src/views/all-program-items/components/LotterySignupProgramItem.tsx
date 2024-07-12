@@ -109,6 +109,10 @@ export const LotterySignupProgramItem = ({
 
   return (
     <>
+      {config.shared().signupOpen && isInGroup && !isGroupCreator && (
+        <p>{t("group.signupDisabledNotCreator")}</p>
+      )}
+
       {config.shared().signupOpen &&
         !alreadySignedToProgramItem &&
         canSignToProgramItems && (
@@ -137,7 +141,6 @@ export const LotterySignupProgramItem = ({
               )}
           </>
         )}
-
       {alreadySignedToProgramItem && (
         <>
           <LotterySignupContainer>
@@ -175,14 +178,12 @@ export const LotterySignupProgramItem = ({
           )}
         </>
       )}
-
       {errorMessage && (
         <ErrorMessage
           message={t(errorMessage)}
           closeError={() => setErrorMessage(null)}
         />
       )}
-
       {signupFormOpen && !alreadySignedToProgramItem && (
         <LotterySignupForm
           programItem={programItem}

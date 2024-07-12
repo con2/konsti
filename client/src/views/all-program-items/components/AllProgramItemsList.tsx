@@ -102,6 +102,7 @@ export const AllProgramItemsList = ({ programItems }: Props): ReactElement => {
                 publicSignupQuestion={getPublicSignupQuestion(
                   programItem.programItemId,
                 )}
+                isInGroup={isInGroup}
               />
             );
           })}

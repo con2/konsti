@@ -224,9 +224,7 @@ export const translationFI = {
     cancelSignupBeforeJoiningOrCreatingGroup:
       "Sinun täytyy perua nämä ilmoittautumiset ennen kuin voit luoda ryhmän tai liittyä ryhmään.",
     signupDisabledNotCreator:
-      "Olet ryhmän jäsen. Ryhmän perustaja ilmoittautuu arvontaan ryhmän jäsenten puolesta.",
-    signupForWholeGroup:
-      "Olet ryhmän perustaja. Voit ilmoittautua arvontaan koko ryhmän puolesta.",
+      "Et voi ilmoittautua, koska olet ryhmän jäsen. Vain ryhmän perustaja voi ilmoittaa ryhmän arvontaan.",
     groupCreatorSignups:
       "Olet ryhmän perustaja. Valitsemasi arvonta-ilmoittautumiset ovat samat kaikille ryhmän jäsenille.",
     inGroupSignups:
@@ -311,7 +309,7 @@ export const translationFI = {
     loginToSignup: "Kirjaudu sisään ilmoittautumista varten",
     signupAlwaysOpen: "Ilmoittautuminen aina auki",
     inGroupWarning:
-      "Jos ilmoittaudut {{PROGRAM_TYPE}}, sinut poistetaan ryhmästäsi.",
+      "Jos ilmoittaudut {{PROGRAM_TYPE}}, sinut poistetaan ryhmästäsi. (Ryhmää voi käyttää ainoastaan arvontailmoittautumisissa.)",
     groupCreatorWarning:
       "Jos ilmoittaudut {{PROGRAM_TYPE}}, perustamasi ryhmä poistetaan. Ryhmää voi käyttää ainoastaan arvontailmoittautumisissa.",
     groupSignupInfo:
@@ -334,6 +332,8 @@ export const translationFI = {
         "Tähän {{PROGRAM_TYPE}} ei ilmoittauduta Konstissa. Katso ilmoittautumisohjeet ohjelman lisätiedoista.",
       signupAlwaysOpen:
         "Tähän {{PROGRAM_TYPE}} voi ilmoittautua koko tapahtuman ajan.",
+      signupAlwaysOpenGroupMemberInfo:
+        " Voit ilmoittautua vaikka olet ryhmän jäsen.",
       directSignupStartsLater:
         "Osallistujat valitaan ilmoittautumisjärjestyksessä. Ilmoittautuminen alkaa: ",
       directSignupOpenNow:

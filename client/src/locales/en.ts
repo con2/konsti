@@ -222,9 +222,7 @@ export const translationEN = {
     cancelSignupBeforeJoiningOrCreatingGroup:
       "You'll have to cancel these sign-ups before you can create or join a group.",
     signupDisabledNotCreator:
-      "You are a group member. Your group's creator will sign up the whole group to the lottery.",
-    signupForWholeGroup:
-      "You are the group creator. You can sign up the group to a lottery.",
+      "You can't sign up because you are a member of a group. Only the group creator can sign the group up for a lottery.",
     groupCreatorSignups:
       "You are the group creator. Your lottery sign-ups are the same for all group members.",
     inGroupSignups:
@@ -308,7 +306,7 @@ export const translationEN = {
     loginToSignup: "Log in to sign up",
     signupAlwaysOpen: "Sign-up always open",
     inGroupWarning:
-      "If you sign up to a {{PROGRAM_TYPE}}, you will be removed from your current group.",
+      "If you sign up to a {{PROGRAM_TYPE}}, you will be removed from your current group. (Groups can only be used in lottery signups.)",
     groupCreatorWarning:
       "If you sign up to a {{PROGRAM_TYPE}}, the group you created will be deleted. Groups can only be used in lottery signups.",
     groupSignupInfo: "Please note that you are signing up your whole group.",
@@ -329,7 +327,10 @@ export const translationEN = {
         "This {{PROGRAM_TYPE}} does not require signing up.",
       noKonstiSignup:
         "This {{PROGRAM_TYPE}} does not use Konsti for signing up. See the program details for instructions.",
-      signupAlwaysOpen: "You can sign up to this {{PROGRAM_TYPE}} at any time.",
+      signupAlwaysOpen:
+        " You can sign up to this {{PROGRAM_TYPE}} at any time.",
+      signupAlwaysOpenGroupMemberInfo:
+        "You can sign up even though you are a group member.",
       directSignupStartsLater:
         "Participants are selected in the order of sign-ups. Sign-up opens ",
       directSignupOpenNow:

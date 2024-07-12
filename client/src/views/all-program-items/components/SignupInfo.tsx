@@ -17,6 +17,7 @@ interface Props {
   attendees: number;
   loading: boolean;
   setLoading: (loading: boolean) => void;
+  isInGroup: boolean;
 }
 
 export const SignupInfo = ({
@@ -27,6 +28,7 @@ export const SignupInfo = ({
   attendees,
   loading,
   setLoading,
+  isInGroup,
 }: Props): ReactElement => {
   const signupAlwaysOpen = config
     .shared()
@@ -43,7 +45,7 @@ export const SignupInfo = ({
     .noKonstiSignupIds.includes(programItem.programItemId);
   const normalSignup = requiresSignup && konstiSignup;
 
-  const isSignupOver = getTimeNow().isSameOrAfter(programItem.startTime);
+  const isSignupOver = getTimeNow().isAfter(programItem.startTime);
 
   return (
     <div>
@@ -52,6 +54,7 @@ export const SignupInfo = ({
         isSignupAlwaysOpen={signupAlwaysOpen}
         usesKonstiSignup={konstiSignup}
         startTime={startTime}
+        isInGroup={isInGroup}
       />
 
       {normalSignup &&
