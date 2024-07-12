@@ -9,7 +9,7 @@ export const getGroupCreators = (
   logger.debug("Get group creators");
 
   // Get users who have lottery signups for starting program items
-  const selectedAttendees = [] as User[];
+  const selectedAttendees: User[] = [];
 
   users.forEach((user) => {
     let match = false;

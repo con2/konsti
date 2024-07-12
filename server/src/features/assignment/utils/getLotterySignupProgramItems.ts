@@ -7,7 +7,7 @@ export const getLotterySignupProgramItems = (
   lotterySignups: readonly LotterySignup[],
 ): ProgramItem[] => {
   logger.debug("Get selected program items");
-  const lotterySignupProgramItems = [] as ProgramItem[];
+  const lotterySignupProgramItems: ProgramItem[] = [];
   let minAttendance = 0;
   let maxAttendance = 0;
 

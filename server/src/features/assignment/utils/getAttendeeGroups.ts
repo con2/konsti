@@ -6,7 +6,7 @@ export const getAttendeeGroups = (
 ): readonly User[][] => {
   const groupedUsers = groupBy(attendees, "groupCode");
 
-  const attendeesArray = [] as User[][];
+  const attendeesArray: User[][] = [];
   for (const [key, value] of Object.entries(groupedUsers)) {
     if (Array.isArray(value)) {
       if (key === "0") {

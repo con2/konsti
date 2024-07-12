@@ -25,7 +25,7 @@ export const removeSerials = async (): Promise<Result<void, MongoDbError>> => {
 export const saveSerials = async (
   count: number,
 ): Promise<Result<SerialDoc[], MongoDbError>> => {
-  const serialDocs = [] as SerialDoc[];
+  const serialDocs: SerialDoc[] = [];
   // create serials
   for (let i = 1; i <= count; i += 1) {
     const serial = generator.generate(10);

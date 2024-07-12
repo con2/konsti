@@ -7,7 +7,7 @@ export const getStartingProgramItems = (
   startTime: string,
 ): readonly ProgramItem[] => {
   logger.debug("Get starting program items");
-  const startingProgramItems = [] as ProgramItem[];
+  const startingProgramItems: ProgramItem[] = [];
   const selectedStartTime = dayjs(startTime);
 
   // Get program items that start at defined time
