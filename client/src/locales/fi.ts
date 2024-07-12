@@ -253,8 +253,7 @@ export const translationFI = {
       "Ryhmään liittyminen peruu kaikki aikaisemmat arvonta-ilmoittautumisesi.",
     groupLotterySignupGuide:
       "Ryhmä voi ilmoittautua samoihin peleihin arvontaa varten.",
-    groupLotterySignupTabletopOnly:
-      "Arvonta on käytössä ainoastaan pöytäroolipeleissä.",
+    groupLotterySignupProgramTypes: "Arvontaa käyttää",
     invalidGroupCode: "Virheellinen koodi",
     groupNotExist: "Ryhmää ei ole olemassa",
     generalGroupError: "Virhe ryhmää päivittäessä",

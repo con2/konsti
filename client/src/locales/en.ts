@@ -250,8 +250,7 @@ export const translationEN = {
     joiningGroupWillCancelLotterySignups:
       "Joining a group will cancel all your previous lottery signups.",
     groupLotterySignupGuide: "You can enter a lottery sign-up as a group.",
-    groupLotterySignupTabletopOnly:
-      "Only tabletop RPGs support lottery sign-up.",
+    groupLotterySignupProgramTypes: "Lottery sign-up is used by",
     invalidGroupCode: "Invalid code",
     groupNotExist: "Group does not exist",
     generalGroupError: "Error updating group",
