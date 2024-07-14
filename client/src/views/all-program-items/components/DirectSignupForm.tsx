@@ -1,4 +1,4 @@
-import { ReactElement, FormEvent, useState } from "react";
+import { FormEvent, ReactElement, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { ProgramItem } from "shared/types/models/programItem";
@@ -27,7 +27,7 @@ import { ButtonGroup } from "client/components/ButtonGroup";
 import { Dropdown } from "client/components/Dropdown";
 import { Checkbox } from "client/components/Checkbox";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
-import { InfoText } from "client/components/InfoText";
+import { InfoText, InfoTextVariant } from "client/components/InfoText";
 
 interface Props {
   programItem: ProgramItem;
@@ -140,7 +140,7 @@ export const DirectSignupForm = ({
         isInGroup && (
           <>
             {!isGroupCreator && (
-              <InfoText>
+              <InfoText variant={InfoTextVariant.WARNING}>
                 {t("signup.inGroupWarning", {
                   PROGRAM_TYPE: t(
                     `programTypeIllative.${programItem.programType}`,
@@ -149,7 +149,7 @@ export const DirectSignupForm = ({
               </InfoText>
             )}
             {isGroupCreator && (
-              <InfoText>
+              <InfoText variant={InfoTextVariant.WARNING}>
                 {t("signup.groupCreatorWarning", {
                   PROGRAM_TYPE: t(
                     `programTypeIllative.${programItem.programType}`,

@@ -107,7 +107,8 @@ export const theme = {
   warningBorder: yellow.primary,
 
   infoColor: blue.light,
-  warningColor: yellow.light,
+  warningColor: yellow.primary,
+  warningColorIcon: yellow.darker,
   errorColor: red.light,
 
   // Breakpoints
