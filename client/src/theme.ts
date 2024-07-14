@@ -110,6 +110,7 @@ export const theme = {
   warningColor: yellow.primary,
   warningColorIcon: yellow.darker,
   errorColor: red.light,
+  errorColorIcon: red.dark,
 
   // Breakpoints
   breakpointPhone: "768px",

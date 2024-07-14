@@ -2,10 +2,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
+import { addOpacity } from "client/utils/addOpacity";
 
 interface Props {
   message: string;
-  closeError: () => void;
+  // If left undefined, a close button won't be shown
+  closeError?: () => void;
 }
 
 export const ErrorMessage = ({
@@ -18,29 +20,38 @@ export const ErrorMessage = ({
     return null;
   }
   return (
-    <ErrorContainer>
-      <StyledErrorMessage>{message}</StyledErrorMessage>
-      <StyledIcon
-        onClick={closeError}
-        icon="xmark"
-        aria-label={t("iconAltText.closeError")}
-      />
-    </ErrorContainer>
+    <p>
+      <Container>
+        <ErrorIcon icon={"circle-exclamation"} />
+        {message}
+        {closeError && (
+          <CloseIcon
+            onClick={closeError}
+            icon="xmark"
+            aria-label={t("iconAltText.closeError")}
+          />
+        )}
+      </Container>
+    </p>
   );
 };
 
-const ErrorContainer = styled.div`
-  height: 24px;
+const Container = styled.span`
+  display: inline-block;
+  padding: 8px 6px;
+  border-radius: 5px;
+  border: 1px solid ${(props) => props.theme.errorColor};
+  background-color: ${(props) => addOpacity(props.theme.errorColor, "0.23")};
 `;
 
-const StyledErrorMessage = styled.span`
-  line-height: 24px;
-  margin-right: 8px;
-  color: ${(props) => props.theme.textError};
+const ErrorIcon = styled(FontAwesomeIcon)`
+  padding-right: 8px;
+  color: ${(props) => props.theme.errorColorIcon};
 `;
 
-const StyledIcon = styled(FontAwesomeIcon)`
+const CloseIcon = styled(FontAwesomeIcon)`
   cursor: pointer;
   font-size: ${(props) => props.theme.fontSizeLarge};
   vertical-align: text-bottom;
+  margin-left: 8px;
 `;

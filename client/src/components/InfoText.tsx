@@ -6,7 +6,6 @@ import { addOpacity } from "client/utils/addOpacity";
 export enum InfoTextVariant {
   INFO = "infoColor",
   WARNING = "warningColor",
-  ERROR = "errorColor",
 }
 
 interface Props {
