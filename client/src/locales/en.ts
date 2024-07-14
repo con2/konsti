@@ -200,7 +200,7 @@ export const translationEN = {
   startingTime: "Starting time",
   revolvingDoor: "Revolving door",
   revolvingDoorInstruction:
-    "You can join a revolving door {{PROGRAM_TYPE}} at any time if there is free space",
+    "You can join a revolving door {{PROGRAM_TYPE}} at any time if there is free space.",
   currentlyRunningRevolvingDoor:
     "All currently running revolving door {{PROGRAM_TYPE}}",
   noRunningRevolvingDoorProgramItems:
@@ -285,7 +285,7 @@ export const translationEN = {
   },
   signup: {
     alreadyLotterySigned:
-      "This {{PROGRAM_TYPE}} is priority {{CURRENT_PRIORITY}} on your lottery signups",
+      "This {{PROGRAM_TYPE}} is priority {{CURRENT_PRIORITY}} on your lottery signups.",
     directSignup: "Sign up",
     lotterySignup: "Lottery sign-up",
     cannotLotterySignupMoreProgramItems:

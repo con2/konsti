@@ -106,8 +106,9 @@ export const theme = {
   warningBackground: yellow.lighter,
   warningBorder: yellow.primary,
 
-  infoBorder: blue.light,
-  infoBackground: addOpacity(blue.light, "0.23"),
+  infoColor: blue.light,
+  warningColor: yellow.light,
+  errorColor: red.light,
 
   // Breakpoints
   breakpointPhone: "768px",

@@ -18,6 +18,7 @@ import { selectDirectSignups } from "client/views/my-program-items/myProgramItem
 import { getTimeNow } from "client/utils/getTimeNow";
 import { getDirectSignupStartTime } from "shared/utils/signupTimes";
 import { config } from "shared/config";
+import { InfoText } from "client/components/InfoText";
 
 interface Props {
   programItem: ProgramItem;
@@ -104,7 +105,7 @@ export const DirectSignupProgramItem = ({
       {signupOpen && !alreadySignedToProgramItem && !programItemIsFull && (
         <>
           {directSignupForTimeslot && (
-            <DirectSignupContainer>
+            <InfoText>
               {t("signup.alreadySignedToProgramItem", {
                 PROGRAM_TYPE: t(
                   `programTypeIllative.${directSignupForTimeslot.programItem.programType}`,
@@ -114,7 +115,7 @@ export const DirectSignupProgramItem = ({
                 {directSignupForTimeslot.programItem.title}
               </DirectSignupProgramItemTitle>
               . {t("signup.cannotSignupMoreThanOneProgramItem")}
-            </DirectSignupContainer>
+            </InfoText>
           )}
 
           {!directSignupForTimeslot && (
@@ -152,11 +153,11 @@ export const DirectSignupProgramItem = ({
 
       {alreadySignedToProgramItem && (
         <>
-          <DirectSignupContainer>
+          <InfoText>
             {t("signup.currentSignup", {
               PROGRAM_TYPE: t(`programTypeIllative.${programItem.programType}`),
             })}
-          </DirectSignupContainer>
+          </InfoText>
 
           {signupOpen && (
             <>
@@ -194,14 +195,6 @@ export const DirectSignupProgramItem = ({
     </>
   );
 };
-
-const DirectSignupContainer = styled.div`
-  border: 1px solid ${(props) => props.theme.infoBorder};
-  padding: 8px 6px;
-  border-radius: 5px;
-  border-left: 5px solid ${(props) => props.theme.infoBorder};
-  background-color: ${(props) => props.theme.infoBackground};
-`;
 
 const DirectSignupProgramItemTitle = styled.span`
   font-weight: 600;

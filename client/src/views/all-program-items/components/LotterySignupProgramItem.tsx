@@ -19,6 +19,7 @@ import { config } from "shared/config";
 import { SignupStrategy } from "shared/config/sharedConfigTypes";
 import { getAlgorithmSignupStartTime } from "shared/utils/signupTimes";
 import { getIsInGroup } from "client/views/group/groupUtils";
+import { InfoText } from "client/components/InfoText";
 
 interface Props {
   programItem: ProgramItem;
@@ -143,12 +144,12 @@ export const LotterySignupProgramItem = ({
         )}
       {alreadySignedToProgramItem && (
         <>
-          <LotterySignupContainer>
+          <InfoText>
             {t("signup.alreadyLotterySigned", {
               PROGRAM_TYPE: t(`programTypeSingular.${programItem.programType}`),
               CURRENT_PRIORITY: currentPriority,
             })}
-          </LotterySignupContainer>
+          </InfoText>
 
           {config.shared().signupOpen && (
             <>
@@ -194,15 +195,6 @@ export const LotterySignupProgramItem = ({
     </>
   );
 };
-
-const LotterySignupContainer = styled.div`
-  border: 1px solid ${(props) => props.theme.infoBorder};
-  padding: 8px 6px;
-  margin-bottom: 8px;
-  border-radius: 5px;
-  border-left: 5px solid ${(props) => props.theme.infoBorder};
-  background-color: ${(props) => props.theme.infoBackground};
-`;
 
 const ButtonContainer = styled.div`
   margin: 8px 0;
