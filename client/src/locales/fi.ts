@@ -299,6 +299,8 @@ export const translationFI = {
     alreadySignedToProgramItem: "Olet ilmoittautunut {{PROGRAM_TYPE}}",
     cannotSignupMoreThanOneProgramItem:
       "Et voi ilmoittautua toiseen samaan aikaan alkavaan ohjelmanumeroon.",
+    signupWillBeRemoved:
+      "Jos pääset tähän {{PROGRAM_TYPE_THIS}} arvonnassa, ilmoittautumisesi {{PROGRAM_TYPE_OTHER}} {{OTHER_PROGRAM_NAME}} perutaan.",
     signupCount: "{{ATTENDEE_COUNT}}/{{MAX_ATTENDANCE}} ilmoittautunutta",
     attendeesNeeded: "Tarvitaan vielä {{COUNT}} {{ATTENDEE_TYPE}}.",
     programItemFull: "Tämä {{PROGRAM_TYPE}} on täynnä.",

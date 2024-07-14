@@ -25,6 +25,7 @@ interface Props {
   programItem: ProgramItem;
   startTime: string;
   lotterySignups: readonly Signup[];
+  directSignups: readonly Signup[];
 }
 
 enum ClientError {
@@ -35,6 +36,7 @@ export const LotterySignupProgramItem = ({
   programItem,
   startTime,
   lotterySignups,
+  directSignups,
 }: Props): ReactElement | null => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
@@ -45,6 +47,9 @@ export const LotterySignupProgramItem = ({
   const groupCode = useAppSelector((state) => state.group.groupCode);
   const isInGroup = getIsInGroup(groupCode);
   const canSignToProgramItems = !isInGroup || isGroupCreator;
+  const directSignupForSlot = directSignups.find(
+    (signup) => signup.time === startTime,
+  );
 
   const [loading, setLoading] = useState(false);
   const [signupFormOpen, setSignupFormOpen] = useState(false);
@@ -190,6 +195,7 @@ export const LotterySignupProgramItem = ({
           programItem={programItem}
           startTime={startTime}
           onCancel={() => setSignupFormOpen(false)}
+          directSignupForSlot={directSignupForSlot}
         />
       )}
     </>

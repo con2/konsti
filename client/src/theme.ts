@@ -53,7 +53,7 @@ const gray = {
 
 const mainColor: Palette = green;
 
-export const theme = {
+export const theme: Record<string, string> = {
   // Colors
   backgroundBody: white,
   backgroundHighlight: white,
@@ -107,9 +107,12 @@ export const theme = {
   warningBorder: yellow.primary,
 
   infoColor: blue.light,
+  infoColorBackground: addOpacity(blue.light, "0.23"),
   warningColor: yellow.primary,
+  warningColorBackground: addOpacity(yellow.primary, "0.23"),
   warningColorIcon: yellow.darker,
   errorColor: red.light,
+  errorColorBackground: addOpacity(red.light, "0.23"),
   errorColorIcon: red.dark,
 
   // Breakpoints

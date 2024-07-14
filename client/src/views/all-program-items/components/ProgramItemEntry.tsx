@@ -129,6 +129,7 @@ export const ProgramItemEntry = ({
           signupStrategy={signupStrategy}
           startTime={startTime}
           lotterySignups={lotterySignups}
+          directSignups={directSignups}
           programItem={programItem}
           attendees={signups.length}
           loading={loading}

@@ -2,7 +2,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import { addOpacity } from "client/utils/addOpacity";
 
 interface Props {
   message: string;
@@ -41,7 +40,7 @@ const Container = styled.span`
   padding: 8px 6px;
   border-radius: 5px;
   border: 1px solid ${(props) => props.theme.errorColor};
-  background-color: ${(props) => addOpacity(props.theme.errorColor, "0.23")};
+  background-color: ${(props) => props.theme.errorColorBackground};
 `;
 
 const ErrorIcon = styled(FontAwesomeIcon)`

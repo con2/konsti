@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { ReactElement, ReactNode } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { addOpacity } from "client/utils/addOpacity";
 
 export enum InfoTextVariant {
   INFO = "infoColor",
@@ -34,7 +33,7 @@ const Container = styled.span<{
   ${(props) =>
     `
   border: 1px solid  ${props.theme[props.$variant]};
-  background-color: ${addOpacity(props.theme[props.$variant], "0.23")};
+  background-color: ${props.theme[`${props.$variant}Background`]};
     `}
 `;
 

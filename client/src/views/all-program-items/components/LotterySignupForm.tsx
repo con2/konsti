@@ -1,4 +1,4 @@
-import { ReactElement, FormEvent, useState, ChangeEvent } from "react";
+import { ChangeEvent, FormEvent, ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { upperFirst } from "lodash-es";
@@ -14,12 +14,13 @@ import { Dropdown } from "client/components/Dropdown";
 import { ButtonGroup } from "client/components/ButtonGroup";
 import { selectLotterySignups } from "client/views/my-program-items/myProgramItemsSlice";
 import { Signup } from "shared/types/models/user";
-import { InfoText } from "client/components/InfoText";
+import { InfoText, InfoTextVariant } from "client/components/InfoText";
 
 interface Props {
   programItem: ProgramItem;
   startTime: string;
   onCancel: () => void;
+  directSignupForSlot?: Signup;
 }
 
 const OPTIONS = [1, 2, 3];
@@ -28,6 +29,7 @@ export const LotterySignupForm = ({
   programItem,
   startTime,
   onCancel,
+  directSignupForSlot,
 }: Props): ReactElement => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
@@ -113,6 +115,25 @@ export const LotterySignupForm = ({
         options={options}
         selectedValue={priority.toString()}
       />
+      {directSignupForSlot && (
+        <InfoText variant={InfoTextVariant.WARNING}>
+          {t("signup.alreadySignedToProgramItem", {
+            PROGRAM_TYPE: t(
+              `programTypeIllative.${directSignupForSlot.programItem.programType}`,
+            ),
+          })}{" "}
+          <b>{directSignupForSlot.programItem.title}</b> {". "}
+          {t("signup.signupWillBeRemoved", {
+            PROGRAM_TYPE_THIS: t(
+              `programTypeIllative.${programItem.programType}`,
+            ),
+            PROGRAM_TYPE_OTHER: t(
+              `programTypeIllative.${directSignupForSlot.programItem.programType}`,
+            ),
+            OTHER_PROGRAM_NAME: directSignupForSlot.programItem.title,
+          })}
+        </InfoText>
+      )}
       {isGroupCreator && <InfoText>{t("signup.groupSignupInfo")}</InfoText>}
       <StyledButtonGroup>
         <StyledButton
