@@ -72,11 +72,7 @@ export const GroupView = (): ReactElement => {
         <>
           {hasDirectSignups && (
             <DirectSignupsContainer>
-              <p>
-                <BoldText>
-                  {t("group.hasDirectlySignedFollowingProgramItems")}
-                </BoldText>
-              </p>
+              <p>{t("group.hasDirectlySignedFollowingProgramItems")}</p>
               <ListItem>
                 {filteredActiveDirectSignups.map((programItem) => (
                   <li key={programItem.programItem.programItemId}>
@@ -88,11 +84,7 @@ export const GroupView = (): ReactElement => {
                   </li>
                 ))}
               </ListItem>
-              <p>
-                <BoldText>
-                  {t("group.cancelSignupBeforeJoiningOrCreatingGroup")}
-                </BoldText>
-              </p>
+              <p>{t("group.cancelSignupBeforeJoiningOrCreatingGroup")}</p>
             </DirectSignupsContainer>
           )}
 

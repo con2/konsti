@@ -81,7 +81,7 @@ export const translationFI = {
     organiser: "Järjestäjä",
     shortDescription: "Lyhyt kuvaus",
     revolvingDoor:
-      "Tämä on pyöröovi{{PROGRAM_TYPE}}, johon voi liittyä koska tahansa, jos {{PROGRAM_TYPE2}} on tilaa",
+      "Tämä on pyöröovi{{PROGRAM_TYPE}}, johon voi liittyä koska tahansa, jos {{PROGRAM_TYPE2}} on tilaa.",
     programType: "Ohjelmatyyppi",
     showMore: "Näytä lisää",
     showMoreAriaLabel: "Näytä lisää ohjelmanumerosta",
@@ -202,7 +202,7 @@ export const translationFI = {
   chooseTag: "Tagi",
   revolvingDoor: "Pyöröovi",
   revolvingDoorInstruction:
-    "Pyöröovi{{PROGRAM_TYPE}} voi liittyä koska tahansa, jos {{PROGRAM_TYPE2}} on tilaa",
+    "Pyöröovi{{PROGRAM_TYPE}} voi liittyä koska tahansa, jos {{PROGRAM_TYPE2}} on tilaa.",
   currentlyRunningRevolvingDoor:
     "Kaikki käynnissä olevat pyöröovi{{PROGRAM_TYPE}}",
   noRunningRevolvingDoorProgramItems:
@@ -288,7 +288,7 @@ export const translationFI = {
   },
   signup: {
     alreadyLotterySigned:
-      "Tämä {{PROGRAM_TYPE}} on arvontavaihtoehdoissa sijalla {{CURRENT_PRIORITY}}",
+      "Tämä {{PROGRAM_TYPE}} on arvontavaihtoehdoissa sijalla {{CURRENT_PRIORITY}}.",
     directSignup: "Ilmoittaudu",
     lotterySignup: "Ilmoittaudu arvontaan",
     cannotLotterySignupMoreProgramItems:
@@ -299,6 +299,8 @@ export const translationFI = {
     alreadySignedToProgramItem: "Olet ilmoittautunut {{PROGRAM_TYPE}}",
     cannotSignupMoreThanOneProgramItem:
       "Et voi ilmoittautua toiseen samaan aikaan alkavaan ohjelmanumeroon.",
+    signupWillBeRemoved:
+      "Jos pääset tähän {{PROGRAM_TYPE_THIS}} arvonnassa, ilmoittautumisesi {{PROGRAM_TYPE_OTHER}} {{OTHER_PROGRAM_NAME}} perutaan.",
     signupCount: "{{ATTENDEE_COUNT}}/{{MAX_ATTENDANCE}} ilmoittautunutta",
     attendeesNeeded: "Tarvitaan vielä {{COUNT}} {{ATTENDEE_TYPE}}.",
     programItemFull: "Tämä {{PROGRAM_TYPE}} on täynnä.",

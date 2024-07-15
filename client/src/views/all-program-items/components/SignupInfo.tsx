@@ -13,6 +13,7 @@ interface Props {
   signupStrategy: SignupStrategy;
   startTime: string;
   lotterySignups: readonly Signup[];
+  directSignups: readonly Signup[];
   programItem: ProgramItem;
   attendees: number;
   loading: boolean;
@@ -24,6 +25,7 @@ export const SignupInfo = ({
   signupStrategy,
   startTime,
   lotterySignups,
+  directSignups,
   programItem,
   attendees,
   loading,
@@ -64,6 +66,7 @@ export const SignupInfo = ({
             programItem={programItem}
             startTime={startTime}
             lotterySignups={lotterySignups}
+            directSignups={directSignups}
           />
         ) : (
           <DirectSignupProgramItem

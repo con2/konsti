@@ -7,6 +7,7 @@ import { getTimeNow } from "client/utils/getTimeNow";
 import { useAppSelector } from "client/utils/hooks";
 import { selectActiveProgramItems } from "client/views/admin/adminSlice";
 import { AppRoute } from "client/app/AppRoutes";
+import { InfoText } from "client/components/InfoText";
 
 export const RevolvingDoorProgramItemsInfo = (): ReactElement => {
   const { t } = useTranslation();
@@ -35,12 +36,12 @@ export const RevolvingDoorProgramItemsInfo = (): ReactElement => {
 
   return (
     <Container>
-      <RevolvingDoorInstruction>
+      <InfoText>
         {t("revolvingDoorInstruction", {
           PROGRAM_TYPE: t(`programTypeIllative.${activeProgramType}`),
           PROGRAM_TYPE2: t(`programTypeInessive.${activeProgramType}`),
         })}
-      </RevolvingDoorInstruction>
+      </InfoText>
       {/* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */}
       {!runningRevolvingDoorProgramItems ||
       runningRevolvingDoorProgramItems.length === 0 ? (
@@ -89,15 +90,6 @@ const Container = styled.div`
     margin-left: 0;
     margin-right: 0;
   }
-`;
-
-const RevolvingDoorInstruction = styled.div`
-  margin: 8px 0 16px 0;
-  border: 1px solid ${(props) => props.theme.infoBorder};
-  padding: 8px 6px;
-  border-radius: 5px;
-  border-left: 5px solid ${(props) => props.theme.infoBorder};
-  background-color: ${(props) => props.theme.infoBackground};
 `;
 
 const NoProgramItemsInfoText = styled.span`

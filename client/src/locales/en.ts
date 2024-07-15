@@ -200,7 +200,7 @@ export const translationEN = {
   startingTime: "Starting time",
   revolvingDoor: "Revolving door",
   revolvingDoorInstruction:
-    "You can join a revolving door {{PROGRAM_TYPE}} at any time if there is free space",
+    "You can join a revolving door {{PROGRAM_TYPE}} at any time if there is free space.",
   currentlyRunningRevolvingDoor:
     "All currently running revolving door {{PROGRAM_TYPE}}",
   noRunningRevolvingDoorProgramItems:
@@ -285,7 +285,7 @@ export const translationEN = {
   },
   signup: {
     alreadyLotterySigned:
-      "This {{PROGRAM_TYPE}} is priority {{CURRENT_PRIORITY}} on your lottery signups",
+      "This {{PROGRAM_TYPE}} is priority {{CURRENT_PRIORITY}} on your lottery signups.",
     directSignup: "Sign up",
     lotterySignup: "Lottery sign-up",
     cannotLotterySignupMoreProgramItems:
@@ -296,6 +296,8 @@ export const translationEN = {
     alreadySignedToProgramItem: "You already signed up to the {{PROGRAM_TYPE}}",
     cannotSignupMoreThanOneProgramItem:
       "You cannot sign up to another program item starting at the same time.",
+    signupWillBeRemoved:
+      "If you get a spot to this {{PROGRAM_TYPE_THIS}} in the lottery, your sign-up to the {{PROGRAM_TYPE_OTHER}} {{OTHER_PROGRAM_NAME}} will be canceled.",
     signupCount: "{{ATTENDEE_COUNT}}/{{MAX_ATTENDANCE}} sign-ups",
     attendeesNeeded: "{{COUNT}} more {{ATTENDEE_TYPE}} needed",
     programItemFull: "This {{PROGRAM_TYPE}} is full.",

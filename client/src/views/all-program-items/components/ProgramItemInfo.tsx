@@ -2,9 +2,9 @@ import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { capitalize } from "lodash-es";
-import { getWeekdayAndTime, getTime } from "client/utils/timeFormatter";
+import { getTime, getWeekdayAndTime } from "client/utils/timeFormatter";
 import { ProgramItem } from "shared/types/models/programItem";
-import { InfoText } from "client/components/InfoText";
+import { InfoText, InfoTextVariant } from "client/components/InfoText";
 
 interface Props {
   programItem: ProgramItem;
@@ -31,7 +31,7 @@ export const ProgramItemInfo = ({ programItem }: Props): ReactElement => {
   return (
     <DetailsContainer>
       {programItem.revolvingDoor && (
-        <InfoText>
+        <InfoText variant={InfoTextVariant.INFO}>
           {t("programItemInfo.revolvingDoor", {
             PROGRAM_TYPE: t(`programTypeSingular.${programItem.programType}`),
             PROGRAM_TYPE2: t(`programTypeInessive.${programItem.programType}`),
