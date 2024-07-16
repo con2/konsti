@@ -201,6 +201,7 @@ export const sharedConfig: SharedConfig = {
     "sangyn-allaunder-your-bed-escape-2-pelautus2-run", // Sängyn Alla/Under Your Bed escape, 2. pelautus/2. run
     "sangyn-allaunder-your-bed-escape-3-pelautus3-run", // Sängyn Alla/Under Your Bed escape, 3. pelautus/3. run
     "sangyn-allaunder-your-bed-escape-4-pelautus4-run", // Sängyn Alla/Under Your Bed escape, 4. pelautus/4. run
+    "sangyn-allaunder-your-bed-escape-5-pelautus5-run", // Sängyn Alla/Under Your Bed escape, 5. pelautus/5. run
   ],
 
   signupQuestions: [
@@ -271,6 +272,14 @@ export const sharedConfig: SharedConfig = {
         { optionFi: "Valkoinen", optionEn: "White" },
         { optionFi: "Zenitaali", optionEn: "Zenithal" },
       ],
+    },
+    {
+      programItemId: "kirjeita-pohjolassa", // Kirjeitä Pohjolassa
+      questionFi: "Puheliunnumerosi",
+      questionEn: "Your phone number",
+      private: true,
+      type: SignupQuestionType.TEXT,
+      selectOptions: [],
     },
   ],
 
