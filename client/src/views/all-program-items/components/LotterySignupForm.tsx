@@ -122,7 +122,8 @@ export const LotterySignupForm = ({
               `programTypeIllative.${directSignupForSlot.programItem.programType}`,
             ),
           })}{" "}
-          <b>{directSignupForSlot.programItem.title}</b> {". "}
+          <b>{directSignupForSlot.programItem.title}</b>
+          {". "}
           {t("signup.signupWillBeRemoved", {
             PROGRAM_TYPE_THIS: t(
               `programTypeIllative.${programItem.programType}`,
