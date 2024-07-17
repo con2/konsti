@@ -19,6 +19,7 @@ import {
 } from "server/kompassi/ropecon/kompassiProgramItemRopecon";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import { config } from "shared/config";
+import { getShortDescriptionFromDescription } from "server/utils/getShortDescriptionFromDescription";
 
 export const kompassiProgramItemMapperRopecon = (
   programItems: readonly KompassiProgramItemRopecon[],
@@ -45,7 +46,7 @@ export const kompassiProgramItemMapperRopecon = (
       minAttendance: programItem.cachedAnnotations["konsti:minAttendance"],
       maxAttendance: mapMaxAttendance(programItem),
       gameSystem: programItem.cachedAnnotations["konsti:rpgSystem"],
-      shortDescription: programItem.cachedAnnotations["ropecon:gameSlogan"],
+      shortDescription: mapShortDescription(programItem),
       revolvingDoor: mapRevolvingDoor(programItem),
       programType: mapProgramType(programItem),
       contentWarnings: programItem.cachedAnnotations["ropecon:contentWarnings"],
@@ -260,4 +261,14 @@ const mapMaxAttendance = (
   }
 
   return kompassiProgramItem.cachedAnnotations["konsti:maxAttendance"];
+};
+
+const mapShortDescription = (
+  kompassiProgramItem: KompassiProgramItemRopecon,
+): string => {
+  if (kompassiProgramItem.cachedAnnotations["ropecon:gameSlogan"]) {
+    return kompassiProgramItem.cachedAnnotations["ropecon:gameSlogan"];
+  }
+
+  return getShortDescriptionFromDescription(kompassiProgramItem.description);
 };

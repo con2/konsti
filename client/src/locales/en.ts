@@ -202,7 +202,7 @@ export const translationEN = {
   revolvingDoorInstruction:
     "You can join a revolving door {{PROGRAM_TYPE}} at any time if there is free space.",
   currentlyRunningRevolvingDoor:
-    "All currently running revolving door {{PROGRAM_TYPE}}",
+    "Currently running revolving door {{PROGRAM_TYPE}}",
   noRunningRevolvingDoorProgramItems:
     "No running revolving door {{PROGRAM_TYPE}}",
   group: {
