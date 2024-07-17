@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 import {
   AccessibilityValue,
   ProgramItem,
-  GameStyle,
+  Playstyle,
   Language,
   ProgramType,
   Tag,
@@ -10,7 +10,7 @@ import {
 } from "shared/types/models/programItem";
 import {
   KompassiProgramItemRopecon,
-  KompassiGameStyleRopecon,
+  KompassiPlaystyleRopecon,
   KompassiLanguageRopecon,
   KompassiKonstiProgramTypeRopecon,
   KompassiAudienceRopecon,
@@ -38,7 +38,7 @@ export const kompassiProgramItemMapperRopecon = (
         ),
       tags: mapTags(programItem),
       genres: [],
-      styles: mapGameStyles(programItem),
+      styles: mapPlaystyles(programItem.cachedDimensions.playstyle),
       languages: mapLanguages(programItem.cachedDimensions.language),
       endTime: dayjs(programItem.scheduleItems[0].endTime).toISOString(),
       people: programItem.cachedHosts,
@@ -129,34 +129,32 @@ const mapTags = (kompassiProgramItem: KompassiProgramItemRopecon): Tag[] => {
   return tags;
 };
 
-const mapGameStyles = (
-  kompassiProgramItem: KompassiProgramItemRopecon,
-): GameStyle[] => {
-  return kompassiProgramItem.styles.map((gameStyle) => {
-    switch (gameStyle) {
-      case KompassiGameStyleRopecon.SERIOUS:
-        return GameStyle.SERIOUS;
+const mapPlaystyles = (playstyles: KompassiPlaystyleRopecon[]): Playstyle[] => {
+  return playstyles.map((playstyle) => {
+    switch (playstyle) {
+      case KompassiPlaystyleRopecon.SERIOUS:
+        return Playstyle.SERIOUS;
 
-      case KompassiGameStyleRopecon.LIGHT:
-        return GameStyle.LIGHT;
+      case KompassiPlaystyleRopecon.LIGHT:
+        return Playstyle.LIGHT;
 
-      case KompassiGameStyleRopecon.RULES_HEAVY:
-        return GameStyle.RULES_HEAVY;
+      case KompassiPlaystyleRopecon.RULES_HEAVY:
+        return Playstyle.RULES_HEAVY;
 
-      case KompassiGameStyleRopecon.RULES_LIGHT:
-        return GameStyle.RULES_LIGHT;
+      case KompassiPlaystyleRopecon.RULES_LIGHT:
+        return Playstyle.RULES_LIGHT;
 
-      case KompassiGameStyleRopecon.STORY_DRIVEN:
-        return GameStyle.STORY_DRIVEN;
+      case KompassiPlaystyleRopecon.STORY_DRIVEN:
+        return Playstyle.STORY_DRIVEN;
 
-      case KompassiGameStyleRopecon.CHARACTER_DRIVEN:
-        return GameStyle.CHARACTER_DRIVEN;
+      case KompassiPlaystyleRopecon.CHARACTER_DRIVEN:
+        return Playstyle.CHARACTER_DRIVEN;
 
-      case KompassiGameStyleRopecon.COMBAT_DRIVEN:
-        return GameStyle.COMBAT_DRIVEN;
+      case KompassiPlaystyleRopecon.COMBAT_DRIVEN:
+        return Playstyle.COMBAT_DRIVEN;
 
       default:
-        return exhaustiveSwitchGuard(gameStyle);
+        return exhaustiveSwitchGuard(playstyle);
     }
   });
 };

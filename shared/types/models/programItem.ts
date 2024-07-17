@@ -25,7 +25,7 @@ export enum Genre {
   ADVENTURE = "adventure",
 }
 
-export enum GameStyle {
+export enum Playstyle {
   SERIOUS = "serious",
   LIGHT = "light",
   RULES_HEAVY = "rulesHeavy",
@@ -88,7 +88,7 @@ export const ProgramItemSchema = z.object({
   mins: z.number(),
   tags: z.array(z.nativeEnum(Tag)),
   genres: z.array(z.nativeEnum(Genre)),
-  styles: z.array(z.nativeEnum(GameStyle)),
+  styles: z.array(z.nativeEnum(Playstyle)),
   languages: z.array(z.nativeEnum(Language)),
   endTime: z.string(),
   people: z.string(),

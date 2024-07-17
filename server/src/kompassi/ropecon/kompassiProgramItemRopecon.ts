@@ -34,14 +34,14 @@ export enum KompassiAudienceRopecon {
   K_18 = "k-18",
 }
 
-export enum KompassiGameStyleRopecon {
+export enum KompassiPlaystyleRopecon {
   SERIOUS = "serious",
   LIGHT = "light",
-  RULES_HEAVY = "rules_heavy",
-  RULES_LIGHT = "rules_light",
-  STORY_DRIVEN = "story_driven",
-  CHARACTER_DRIVEN = "character_driven",
-  COMBAT_DRIVEN = "combat_driven",
+  RULES_HEAVY = "rules-heavy",
+  RULES_LIGHT = "rules-light",
+  STORY_DRIVEN = "story-driven",
+  CHARACTER_DRIVEN = "character-driven",
+  COMBAT_DRIVEN = "combat-driven",
 }
 
 export enum KompassiLanguageRopecon {
@@ -134,6 +134,19 @@ export const KompassiProgramItemSchemaRopecon = z.object({
         );
         return valid;
       }),
+    playstyle: z.array(z.nativeEnum(KompassiPlaystyleRopecon)).catch((ctx) => {
+      if (!Array.isArray(ctx.input)) {
+        return [];
+      }
+      const [valid, invalid] = partition(ctx.input, (playstyle) =>
+        Object.values(KompassiPlaystyleRopecon).includes(playstyle),
+      );
+      logger.error(
+        "%s",
+        new Error(`Invalid playstyle: ${JSON.stringify(invalid)}`),
+      );
+      return valid;
+    }),
   }),
   scheduleItems: z
     .array(
@@ -163,17 +176,6 @@ export const KompassiProgramItemSchemaRopecon = z.object({
     "ropecon:contentWarnings": z.string().catch(""),
     "ropecon:accessibilityOther": z.string().catch(""),
     "ropecon:gameSlogan": z.string().catch(""),
-  }),
-
-  styles: z.array(z.nativeEnum(KompassiGameStyleRopecon)).catch((ctx) => {
-    if (!Array.isArray(ctx.input)) {
-      return [];
-    }
-    const [valid, invalid] = partition(ctx.input, (style) =>
-      Object.values(KompassiGameStyleRopecon).includes(style),
-    );
-    logger.error("%s", new Error(`Invalid styles: ${JSON.stringify(invalid)}`));
-    return valid;
   }),
 
   revolving_door: z.boolean().catch(false),

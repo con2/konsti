@@ -69,7 +69,7 @@ export const translationFI = {
     help: "Ohjeet",
   },
   programItemInfo: {
-    gameStyle: "Pelityyli",
+    playstyle: "Pelityyli",
     runTime: "Aika",
     description: "Kuvaus",
     location: "Sijainti",
@@ -93,9 +93,9 @@ export const translationFI = {
     otherAccessibilityInformation: "Muu saavutettavuus",
     adminActions: "Ylläpito",
   },
-  gameStyle: {
-    serious: "Vakava pelityyli",
-    light: "Kevyt pelityyli",
+  playstyle: {
+    serious: "Vakava",
+    light: "Kevyt",
     rulesHeavy: "Raskaat säännöt",
     rulesLight: "Kevyet säännöt",
     storyDriven: "Tarinavetoinen",
