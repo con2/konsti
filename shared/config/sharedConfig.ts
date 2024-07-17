@@ -134,6 +134,10 @@ export const sharedConfig: SharedConfig = {
     // Turnaukset: lautapelit / Tournament: Board games
     "orcs-must-die-order-vs-unchained-ropecon-lopputaisteluropecon-final-fight", // Orcs Must Die! Order vs Unchained -Ropecon lopputaistelu/Ropecon Final Fight
     "ropeconin-backgammonmestari", // Ropeconin backgammonmestari
+    "puolenkuun-peliturnaus-uno-show-em-no-mercy", // Puolenkuun Peliturnaus: UNO SHOW EM NO MERCY!
+    "puolenkuun-lautapeliturnaus-ttr-san-fransisco", // Puolenkuun Lautapeliturnaus TTR San Fransisco
+    "puolenkuun-lautapeliturnaus-cascadia", // Puolenkuun Lautapeliturnaus CASCADIA
+    "puolenkuun-lautapeliturnaus-sequence-finnish-championship", // Puolenkuun Lautapeliturnaus - SEQUENCE Finnish Championship
 
     // Turnaukset: korttipelit / Tournament: Card games
     "mtg-bulk-commander", // MtG Bulk Commander
