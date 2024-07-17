@@ -20,7 +20,9 @@ export const HelperView = (): ReactElement => {
   const loginProvider = useAppSelector((state) => state.admin.loginProvider);
 
   const [selectedTool, setSelectedTool] = useState<HelperTool>(
-    HelperTool.PRIVATE_SIGNUP_MESSAGES,
+    loginProvider === LoginProvider.LOCAL
+      ? HelperTool.PASSWORD_MANAGEMENT
+      : HelperTool.PRIVATE_SIGNUP_MESSAGES,
   );
 
   const store = useStore();
