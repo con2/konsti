@@ -49,7 +49,7 @@ export const SignupHelpText = ({
 
   if (
     programItem.signupType === SignupType.NONE ||
-    timeNow.isSameOrAfter(programStartTime)
+    timeNow.isAfter(programStartTime)
   ) {
     // eslint-disable-next-line react/jsx-no-useless-fragment
     return <></>;
