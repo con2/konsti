@@ -13,9 +13,9 @@ import { config } from "shared/config";
 import { RaisedCard } from "client/components/RaisedCard";
 import { RadioButtonGroup } from "client/components/RadioButtonGroup";
 import {
-  getTagFilters,
-  getLanguageFilters,
-} from "client/views/all-program-items/components/searchAndFilterUtils";
+  selectLanguages,
+  selectTags,
+} from "client/views/all-program-items/allProgramItemsSlice";
 
 export enum StartingTimeOption {
   UPCOMING = "upcoming",
@@ -44,12 +44,8 @@ export const SearchAndFilterCard = ({
   const activeProgramType = useAppSelector(
     (state) => state.admin.activeProgramType,
   );
-  const programItems = useAppSelector(
-    (state) => state.allProgramItems.programItems,
-  );
-
-  const tagFilters = getTagFilters(programItems);
-  const languageFilters = getLanguageFilters(programItems);
+  const tagFilters = useAppSelector(selectTags);
+  const languageFilters = useAppSelector(selectLanguages);
 
   const tagOptions = [
     {
