@@ -33,8 +33,7 @@ export interface SharedConfig {
   manualSignupMode: SignupStrategy.ALGORITHM | SignupStrategy.DIRECT | "none";
   signupOpen: boolean;
   resultsVisible: boolean;
-  addToKonsti: string[];
-  addToKonstiInvalidType: string[];
+  addToKonstiOther: string[];
   noKonstiSignupIds: string[];
   signupQuestions: SignupQuestion[];
   tournamentSignupQuestion: Omit<SignupQuestion, "programItemId"> | null;
@@ -111,40 +110,14 @@ export const sharedConfig: SharedConfig = {
     "pathfinder-society-4-99-blessings-of-the-forest", // Pathfinder Society #4-99 Blessings of the Forest
   ],
 
-  // These program items are hand picked to be exported from Kompassi
-  addToKonsti: [
+  // Add these to Konsti under 'other' program type
+  addToKonstiOther: [
     // Other
     "harmaasusien-taisteluharjoitukset", // Harmaasusien taisteluharjoitukset
     "atarashii-naginata-lajinaytos-ja-kokeiluharjoitukset", // Atarashii Naginata: lajinäytös ja kokeiluharjoitukset
     "kps-turnaus-rps-tournament", // KPS-turnaus / RPS Tournament
     "keppielainten-ja-keppihirvioiden-kilpailut", // Keppieläinten ja keppihirviöiden kilpailut!
 
-    // ** ropecon2023_signuplist - no need to hand pick after Kompassi importer updated **
-
-    // Turnaukset: muu / Tournament: Other
-    "pikamaalauskilpailu-speed-painting-contest-1-pefri", // Pikamaalauskilpailu / Speed Painting Contest 1 (Pe/Fri)
-    "pikamaalauskilpailu-speed-painting-contest-2-pefri", // Pikamaalauskilpailu / Speed Painting Contest 2 (Pe/Fri)
-    "pikamaalauskilpailu-speed-painting-contest-3-lasat", // Pikamaalauskilpailu / Speed Painting Contest 3 (La/Sat)
-    "pikamaalauskilpailu-speed-painting-contest-4-lasat", // Pikamaalauskilpailu / Speed Painting Contest 4 (La/Sat)
-    "palapeliturnaus-joukkue-jigsaw-puzzle-tournament-teams", // Palapeliturnaus (Joukkue) | Jigsaw Puzzle Tournament (Teams)
-
-    // Figupelit: demotus / Miniature wargames: Demo game
-    "siniviivan-sankarit", // Siniviivan Sankarit
-
-    // Turnaukset: lautapelit / Tournament: Board games
-    "orcs-must-die-order-vs-unchained-ropecon-lopputaisteluropecon-final-fight", // Orcs Must Die! Order vs Unchained -Ropecon lopputaistelu/Ropecon Final Fight
-    "ropeconin-backgammonmestari", // Ropeconin backgammonmestari
-    "puolenkuun-peliturnaus-uno-show-em-no-mercy", // Puolenkuun Peliturnaus: UNO SHOW EM NO MERCY!
-    "puolenkuun-lautapeliturnaus-ttr-san-fransisco", // Puolenkuun Lautapeliturnaus TTR San Fransisco
-    "puolenkuun-lautapeliturnaus-cascadia", // Puolenkuun Lautapeliturnaus CASCADIA
-    "puolenkuun-lautapeliturnaus-sequence-finnish-championship", // Puolenkuun Lautapeliturnaus - SEQUENCE Finnish Championship
-
-    // Turnaukset: korttipelit / Tournament: Card games
-    "mtg-bulk-commander", // MtG Bulk Commander
-    "clash-of-decks-turnaus", // Clash of Decks turnaus
-  ],
-
-  addToKonstiInvalidType: [
     // Meetup
     "looking-for-geek-friends-norttiystavia-etsimassa", // Looking for Geek Friends | Nörttiystäviä etsimässä
   ],
@@ -162,6 +135,9 @@ export const sharedConfig: SharedConfig = {
     "indiehuone-indie-room-indierummet-2", // Indiehuone / Indie Room / Indierummet
     "indiehuone-indie-room-indierummet-3", // Indiehuone / Indie Room / Indierummet
     "torchbearer", // Torchbearer RPG: Puhdistuksen labyrintti - Labyrinth of absolution
+    "kokeile-pelinjohtamista-pe", // Kokeile pelinjohtamista pe
+    "kokeile-pelinjohtamista-piste-2", // 'Kokeile pelinjohtamista -piste la'
+    "kokeile-pelinjohtamista", // Kokeile pelinjohtamista (su)
 
     // LARPS
     "henkien-yo", // Henkien yö
