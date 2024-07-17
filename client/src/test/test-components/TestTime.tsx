@@ -6,7 +6,12 @@ import { useTranslation } from "react-i18next";
 import { testTimes } from "client/test/test-components/testComponentUtils";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { submitSetTestSettings } from "client/test/test-settings/testSettingsThunks";
-import { getDate, getShortWeekdayAndTime } from "client/utils/timeFormatter";
+import {
+  getDate,
+  getShortDate,
+  getShortWeekdayAndTime,
+  getTime,
+} from "client/utils/timeFormatter";
 import { Dropdown } from "client/components/Dropdown";
 import { loadData } from "client/utils/loadData";
 
@@ -34,8 +39,9 @@ export const TestTime = (): ReactElement => {
   const setTestTime = async (time: string): Promise<void> => {
     setLoading(true);
     await dispatch(submitSetTestSettings({ testTime: time }));
-    await loadData();
     setLoading(false);
+    setDropdownVisible(false);
+    await loadData();
   };
 
   const dropdownItems = testTimes.map((time) => {
@@ -55,16 +61,25 @@ export const TestTime = (): ReactElement => {
             selectedValue={dayjs(testTime).toISOString()}
             onChange={async (event: ChangeEvent<HTMLSelectElement>) => {
               await setTestTime(event.target.value);
-              setDropdownVisible(false);
             }}
             loading={loading}
           />
         ) : (
           // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions -- Test value
           <div onClick={() => setDropdownVisible(true)}>
-            {i18n.language === "fi"
-              ? capitalize(getShortWeekdayAndTime(testTime))
-              : capitalize(getShortWeekdayAndTime(testTime))}
+            {i18n.language === "fi" ? (
+              <>
+                {capitalize(getShortDate(testTime))}
+                <br />
+                {getTime(testTime)}
+              </>
+            ) : (
+              <>
+                {capitalize(getShortDate(testTime))}
+                <br />
+                {getTime(testTime)}
+              </>
+            )}
           </div>
         )}
       </StyledTestTime>
