@@ -1,4 +1,5 @@
 import fs from "fs";
+import { sortBy } from "lodash-es";
 import prettier from "prettier";
 import { getProgramFromServer } from "server/kompassi/getProgramItemsFromKompassi";
 import { KompassiProgramItem } from "server/kompassi/kompassiProgramItem";
@@ -13,11 +14,12 @@ const updateKompassiDataDump = async (): Promise<void> => {
     await getProgramFromServer(),
   ) as KompassiProgramItem[];
 
-  const formattedKompassiProgramItems = kompassiProgramItems.map(
-    (kompassiProgramItem) => ({
+  const formattedKompassiProgramItems = sortBy(
+    kompassiProgramItems.map((kompassiProgramItem) => ({
       ...kompassiProgramItem,
       cachedHosts: "<redacted>",
-    }),
+    })),
+    [(programItem) => programItem.slug],
   );
 
   fs.writeFileSync(
