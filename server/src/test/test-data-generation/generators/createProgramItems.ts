@@ -135,8 +135,8 @@ export const createProgramItems = async (
             "ropecon:contentWarnings": "Content warning",
             "ropecon:accessibilityOther": "Other accessibility information",
             "ropecon:gameSlogan": faker.lorem.sentence(),
+            "ropecon:isRevolvingDoor": Math.random() < 0.5,
           },
-          revolving_door: Math.random() < 0.5,
         };
 
         logger.info(`Stored program item ${kompassiProgramItemData.title}`);

@@ -230,7 +230,7 @@ const mapAccessibilityValues = (
 const mapRevolvingDoor = (
   kompassiProgramItem: KompassiProgramItemRopecon,
 ): boolean => {
-  if (kompassiProgramItem.revolving_door) {
+  if (kompassiProgramItem.cachedAnnotations["ropecon:isRevolvingDoor"]) {
     return true;
   }
 

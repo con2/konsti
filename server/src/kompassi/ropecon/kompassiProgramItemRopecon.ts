@@ -176,9 +176,8 @@ export const KompassiProgramItemSchemaRopecon = z.object({
     "ropecon:contentWarnings": z.string().catch(""),
     "ropecon:accessibilityOther": z.string().catch(""),
     "ropecon:gameSlogan": z.string().catch(""),
+    "ropecon:isRevolvingDoor": z.boolean().catch(false),
   }),
-
-  revolving_door: z.boolean().catch(false),
 });
 
 export type KompassiProgramItemRopecon = z.infer<

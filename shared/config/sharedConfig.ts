@@ -146,35 +146,7 @@ export const sharedConfig: SharedConfig = {
   ],
 
   // These program items have hand picked revolving door status
-  addRevolvingDoorIds: [
-    // RPG
-    "charlie-ei-surffaa-pe", // Charlie ei surffaa (Pe)
-    "berserkin-pesa-taalla-hirvioita-on-berserkers-nest-here-there-be-monsters-pe", // Berserkin Pesä: Täällä hirviöitä on / Berserker's Nest: Here there be monsters (Pe)
-    "seikkailu-d", // seikkailu d
-    "rogues-and-raiders-in-a-cursed-world-konnia-ja-kaappareita-kirotussa-maailmassa", // Rogues and Raiders in a Cursed World / Konnia ja kaappareita kirotussa maailmassa
-    "indiehuone-indie-room-indierummet", // Indiehuone / Indie Room / Indierummet
-    "indiehuone-indie-room-indierummet-2", // Indiehuone / Indie Room / Indierummet
-    "indiehuone-indie-room-indierummet-3", // Indiehuone / Indie Room / Indierummet
-    "olosuhteet-zombimaailmanloppu-pahispelautus-circumstances-zombie-apocalypse-villain-gameplay", // Olosuhteet - Zombimaailmanloppu (pahispelautus) / Circumstances – Zombie Apocalypse (villain gameplay)
-    "pelimestari-fi-presents-celebrity-cruise", // Pelimestari.fi presents: Celebrity cruise
-    "jatkot", // Jatkot
-    "berserkin-pesa-me-hirviot-berserkers-nest-we-the-monsters-la", // Berserkin Pesä: Me hirviöt / Berserker's Nest: We the monsters (La)
-    "charlie-ei-surffaa-la", // Charlie ei surffaa (La)
-    "the-cosmos-is-full-of-monsters-kosmos-on-taynna-hirvioita", // The Cosmos is Full of Monsters = Kosmos on täynnä hirviöitä
-    "pro-junta", // Pro-Junta
-    "musta-lippu-liehumaan-fly-the-black-flag", // Musta lippu liehumaan! / Fly the black flag!
-    "seikkailu-k", // seikkailu k
-    "varjojen-kartano-mansion-of-shadows-2", // Varjojen kartano/ Mansion of shadows 2
-    "rogues-and-raiders-in-a-cursed-world-2nd-game-konnia-ja-kaappareita-kirotussa-maailmassa-2-pelautus", // Rogues and Raiders in a Cursed World (2nd game) / Konnia ja kaappareita kirotussa maailmassa (2. pelautus)
-    "kadonneiden-tornien-kolmio", // Kadonneiden tornien kolmio
-    "overlord-2024-naytospeli", // Overlord 2024 näytöspeli
-    "overlord-2024-naytospeli-2", // Overlord 2024 näytöspeli
-    "overlord-2024-naytospeli-3", // Overlord 2024 näytöspeli
-    "olosuhteet-zombimaailmanloppu-co-op-circumstances-zombie-apocalypse-co-op", // Olosuhteet - Zombimaailmanloppu (co-op) / Circumstances – Zombie Apocalypse (co-op)
-    "charlie-ei-surffaa-su", // Charlie ei surffaa (Su)
-    "seikkailu-r", // seikkailu r
-    "torchbearer", // Puhdistuksen labyrintti - Labyrinth of absolution
-  ],
+  addRevolvingDoorIds: [],
 
   // These program items are imported to Konsti but don't have Konsti signup
   noKonstiSignupIds: [
