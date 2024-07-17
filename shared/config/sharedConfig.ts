@@ -161,7 +161,7 @@ export const sharedConfig: SharedConfig = {
     "indiehuone-indie-room-indierummet", // Indiehuone / Indie Room / Indierummet
     "indiehuone-indie-room-indierummet-2", // Indiehuone / Indie Room / Indierummet
     "indiehuone-indie-room-indierummet-3", // Indiehuone / Indie Room / Indierummet
-    "torchbearer", // Puhdistuksen labyrintti - Labyrinth of absolution
+    "torchbearer", // Torchbearer RPG: Puhdistuksen labyrintti - Labyrinth of absolution
 
     // LARPS
     "henkien-yo", // Henkien yö
