@@ -15,6 +15,12 @@ export const getDate = (time: string): string => {
   return dayjs(time).tz(TIMEZONE).format(timeFormat);
 };
 
+export const getShortDate = (time: string): string => {
+  const timeFormat = "ddd D.M.";
+  // eslint-disable-next-line no-restricted-syntax -- We want to call format here
+  return dayjs(time).tz(TIMEZONE).format(timeFormat);
+};
+
 export const getTime = (time: string): string => {
   const timeFormat = "HH:mm";
   // eslint-disable-next-line no-restricted-syntax -- We want to call format here
