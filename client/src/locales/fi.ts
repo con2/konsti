@@ -203,8 +203,7 @@ export const translationFI = {
   revolvingDoor: "Pyöröovi",
   revolvingDoorInstruction:
     "Pyöröovi{{PROGRAM_TYPE}} voi liittyä koska tahansa, jos {{PROGRAM_TYPE2}} on tilaa.",
-  currentlyRunningRevolvingDoor:
-    "Kaikki käynnissä olevat pyöröovi{{PROGRAM_TYPE}}",
+  currentlyRunningRevolvingDoor: "Käynnissä olevat pyöröovi{{PROGRAM_TYPE}}",
   noRunningRevolvingDoorProgramItems:
     "Ei käynnissä olevia pyöröovi{{PROGRAM_TYPE}}",
   group: {

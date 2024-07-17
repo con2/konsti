@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import dayjs from "dayjs";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { sortBy } from "lodash-es";
 import { getTimeNow } from "client/utils/getTimeNow";
 import { useAppSelector } from "client/utils/hooks";
 import { selectActiveProgramItems } from "client/views/admin/adminSlice";
@@ -23,15 +24,16 @@ export const RevolvingDoorProgramItemsInfo = (): ReactElement => {
   const hiddenProgramItemsIds = hiddenProgramItems.map((p) => p.programItemId);
 
   const timeNow = getTimeNow();
-  const runningRevolvingDoorProgramItems = activeProgramItems.filter(
-    (programItem) => {
+  const runningRevolvingDoorProgramItems = sortBy(
+    activeProgramItems.filter((programItem) => {
       return (
         programItem.revolvingDoor &&
         !hiddenProgramItemsIds.includes(programItem.programItemId) &&
         dayjs(programItem.startTime).isBefore(timeNow) &&
         dayjs(programItem.endTime).isAfter(timeNow)
       );
-    },
+    }),
+    [(programItem) => programItem.title],
   );
 
   return (
@@ -65,9 +67,7 @@ export const RevolvingDoorProgramItemsInfo = (): ReactElement => {
                 {programItem.title}
               </Link>{" "}
               <ProgramItemListShortDescription>
-                {programItem.shortDescription
-                  ? programItem.shortDescription
-                  : programItem.gameSystem}
+                {programItem.shortDescription}
               </ProgramItemListShortDescription>
             </div>
           ))}

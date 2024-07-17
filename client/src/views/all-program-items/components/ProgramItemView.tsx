@@ -1,8 +1,7 @@
-import { ReactElement, useMemo, useState } from "react";
+import { ReactElement, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { ProgramItem } from "shared/types/models/programItem";
-import { getShortDescriptionFromDescription } from "client/utils/getShortDescriptionFromDescription";
 import { ProgramItemInfo } from "client/views/all-program-items/components/ProgramItemInfo";
 import { config } from "shared/config";
 import { FeedbackForm } from "client/views/all-program-items/components/FeedbackForm";
@@ -25,21 +24,13 @@ export const ProgramItemView = ({
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
   const userGroup = useAppSelector((state) => state.login.userGroup);
 
-  const shortDescription = useMemo(
-    () =>
-      programItem.shortDescription.length > 0
-        ? programItem.shortDescription
-        : getShortDescriptionFromDescription(programItem.description),
-    [programItem],
-  );
-
   const [isExpanded, setIsExpanded] = useState<boolean>(isAlwaysExpanded);
 
   const id = `more-info-${programItem.programItemId}`;
 
   return (
     <div>
-      <ShortDescription>{`${shortDescription} `}</ShortDescription>
+      <ShortDescription>{`${programItem.shortDescription} `}</ShortDescription>
       {!isAlwaysExpanded && (
         <ExpandButton
           isExpanded={isExpanded}
