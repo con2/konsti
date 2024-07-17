@@ -7,7 +7,7 @@ import { saveProgramItems } from "server/features/program-item/programItemReposi
 import { config } from "shared/config";
 import {
   KompassiProgramItemRopecon,
-  KompassiGameStyleRopecon,
+  KompassiPlaystyleRopecon,
   KompassiLanguageRopecon,
   KompassiKonstiProgramTypeRopecon,
   KompassiAudienceRopecon,
@@ -109,6 +109,7 @@ export const createProgramItems = async (
               Object.values(KompassiAccessibilityRopecon),
               3,
             ),
+            playstyle: sampleSize(Object.values(KompassiPlaystyleRopecon), 2),
           },
           scheduleItems: [
             {
@@ -134,9 +135,8 @@ export const createProgramItems = async (
             "ropecon:contentWarnings": "Content warning",
             "ropecon:accessibilityOther": "Other accessibility information",
             "ropecon:gameSlogan": faker.lorem.sentence(),
+            "ropecon:isRevolvingDoor": Math.random() < 0.5,
           },
-          styles: sampleSize(Object.values(KompassiGameStyleRopecon), 2),
-          revolving_door: Math.random() < 0.5,
         };
 
         logger.info(`Stored program item ${kompassiProgramItemData.title}`);

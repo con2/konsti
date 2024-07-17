@@ -35,10 +35,10 @@ import {
 } from "server/features/direct-signup/directSignupRepository";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import {
-  KompassiGameStyleRopecon,
+  KompassiPlaystyleRopecon,
   KompassiAudienceRopecon,
 } from "server/kompassi/ropecon/kompassiProgramItemRopecon";
-import { GameStyle, Tag } from "shared/types/models/programItem";
+import { Playstyle, Tag } from "shared/types/models/programItem";
 import { logger } from "server/utils/logger";
 import { SignupQuestionType } from "shared/types/models/settings";
 import { config } from "shared/config";
@@ -335,14 +335,14 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
               [1],
               {},
             ],
+            playstyle: [
+              KompassiPlaystyleRopecon.CHARACTER_DRIVEN,
+              "invalid-style",
+              undefined,
+              [1],
+              {},
+            ],
           },
-          styles: [
-            KompassiGameStyleRopecon.CHARACTER_DRIVEN,
-            "invalid-style",
-            undefined,
-            [1],
-            {},
-          ],
           foobar: "this is unknown field",
         },
       ],
@@ -357,7 +357,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
 
     expect(programItems.length).toEqual(1);
     expect(programItems[0].tags).toEqual([Tag.BEGINNER_FRIENDLY]);
-    expect(programItems[0].styles).toEqual([GameStyle.CHARACTER_DRIVEN]);
+    expect(programItems[0].styles).toEqual([Playstyle.CHARACTER_DRIVEN]);
     // @ts-expect-error: Test
     expect(programItems[0].foobar).toEqual(undefined);
   });

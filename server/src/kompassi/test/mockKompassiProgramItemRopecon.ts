@@ -4,7 +4,7 @@ import {
 } from "shared/tests/testProgramItem";
 import {
   KompassiProgramItemRopecon,
-  KompassiGameStyleRopecon,
+  KompassiPlaystyleRopecon,
   KompassiLanguageRopecon,
   KompassiKonstiProgramTypeRopecon,
   KompassiAudienceRopecon,
@@ -32,6 +32,10 @@ export const mockKompassiProgramItemRopecon: KompassiProgramItemRopecon = {
       KompassiAccessibilityRopecon.LONG_TEXTS,
       KompassiAccessibilityRopecon.MOVING_AROUND,
     ],
+    playstyle: [
+      KompassiPlaystyleRopecon.CHARACTER_DRIVEN,
+      KompassiPlaystyleRopecon.RULES_LIGHT,
+    ],
   },
   scheduleItems: [
     {
@@ -51,12 +55,8 @@ export const mockKompassiProgramItemRopecon: KompassiProgramItemRopecon = {
     "ropecon:contentWarnings": testProgramItem.contentWarnings,
     "ropecon:accessibilityOther": "Other accessibility information",
     "ropecon:gameSlogan": testProgramItem.shortDescription,
+    "ropecon:isRevolvingDoor": false,
   },
-  styles: [
-    KompassiGameStyleRopecon.CHARACTER_DRIVEN,
-    KompassiGameStyleRopecon.RULES_LIGHT,
-  ],
-  revolving_door: false,
 };
 
 export const mockKompassiProgramItemRopecon2: KompassiProgramItemRopecon = {
@@ -79,6 +79,10 @@ export const mockKompassiProgramItemRopecon2: KompassiProgramItemRopecon = {
       KompassiAccessibilityRopecon.LONG_TEXTS,
       KompassiAccessibilityRopecon.MOVING_AROUND,
     ],
+    playstyle: [
+      KompassiPlaystyleRopecon.CHARACTER_DRIVEN,
+      KompassiPlaystyleRopecon.RULES_LIGHT,
+    ],
   },
   scheduleItems: [
     {
@@ -98,10 +102,6 @@ export const mockKompassiProgramItemRopecon2: KompassiProgramItemRopecon = {
     "ropecon:contentWarnings": testProgramItem2.contentWarnings,
     "ropecon:accessibilityOther": "Other accessibility information",
     "ropecon:gameSlogan": testProgramItem2.shortDescription,
+    "ropecon:isRevolvingDoor": false,
   },
-  styles: [
-    KompassiGameStyleRopecon.CHARACTER_DRIVEN,
-    KompassiGameStyleRopecon.RULES_LIGHT,
-  ],
-  revolving_door: false,
 };

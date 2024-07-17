@@ -119,8 +119,8 @@ export const ProgramItemInfo = ({ programItem }: Props): ReactElement => {
 
       {programItem.styles.length > 0 && (
         <ResponsiveColumnRow>
-          <DetailTitle>{t("programItemInfo.gameStyle")}</DetailTitle>
-          {programItem.styles.map((s) => t(`gameStyle.${s}`)).join(", ")}
+          <DetailTitle>{t("programItemInfo.playstyle")}</DetailTitle>
+          {programItem.styles.map((s) => t(`playstyle.${s}`)).join(", ")}
         </ResponsiveColumnRow>
       )}
     </DetailsContainer>

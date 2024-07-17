@@ -69,7 +69,7 @@ export const translationEN = {
     help: "Help",
   },
   programItemInfo: {
-    gameStyle: "Game style",
+    playstyle: "Playstyle",
     runTime: "Time",
     description: "Description",
     location: "Location",
@@ -93,9 +93,9 @@ export const translationEN = {
     otherAccessibilityInformation: "Other accessibility information",
     adminActions: "Admin actions",
   },
-  gameStyle: {
-    serious: "Serious game style",
-    light: "Light game style",
+  playstyle: {
+    serious: "Serious",
+    light: "Light",
     rulesHeavy: "Rules heavy",
     rulesLight: "Rules light",
     storyDriven: "Story driven",
