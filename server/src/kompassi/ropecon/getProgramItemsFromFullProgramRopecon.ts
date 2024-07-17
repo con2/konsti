@@ -12,12 +12,6 @@ import {
   KompassiProgramItemRopecon,
 } from "server/kompassi/ropecon/kompassiProgramItemRopecon";
 
-const handPickedProgramTypes = [
-  KompassiKonstiProgramTypeRopecon.TOURNAMENT,
-  KompassiKonstiProgramTypeRopecon.EXPERIENCE_POINT,
-  KompassiKonstiProgramTypeRopecon.OTHER,
-];
-
 export const getProgramItemsFromFullProgramRopecon = (
   programItems: unknown[],
 ): KompassiProgramItem[] => {
@@ -35,7 +29,7 @@ export const getProgramItemsFromFullProgramRopecon = (
 
   const matchingProgramItems = kompassiProgramItems.flatMap((programItem) => {
     // Hand picked program items with invalid program type - use 'other' program type
-    if (config.shared().addToKonstiInvalidType.includes(programItem.slug)) {
+    if (config.shared().addToKonstiOther.includes(programItem.slug)) {
       return {
         ...programItem,
         cachedDimensions: {
@@ -53,13 +47,6 @@ export const getProgramItemsFromFullProgramRopecon = (
       Object.values(KompassiKonstiProgramTypeRopecon).includes(programType);
 
     if (!validProgramType) {
-      return [];
-    }
-
-    if (
-      handPickedProgramTypes.includes(programType) &&
-      !config.shared().addToKonsti.includes(programItem.slug)
-    ) {
       return [];
     }
 
