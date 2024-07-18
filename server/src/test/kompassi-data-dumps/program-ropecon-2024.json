@@ -192,8 +192,8 @@
     "cachedAnnotations": {
       "konsti:rpgSystem": "Freeform larp",
       "ropecon:gameSlogan": "Eldest has died. Together, the Family must prepare a traditional, 5-day funeral.",
-      "konsti:maxAttendance": 9,
-      "konsti:minAttendance": 4,
+      "konsti:maxAttendance": 7,
+      "konsti:minAttendance": 2,
       "ropecon:contentWarnings": "Death, funeral",
       "ropecon:isRevolvingDoor": false
     },
@@ -1171,7 +1171,7 @@
       "room": ["halli-3-tanssiharjoitussali"],
       "type": ["activity"],
       "topic": [],
-      "konsti": [],
+      "konsti": ["other"],
       "audience": ["aimed-between-13-17", "aimed-adults", "beginners"],
       "language": ["fi", "en"],
       "playstyle": [],
@@ -3569,8 +3569,8 @@
     },
     "scheduleItems": [
       {
-        "startTime": "2024-07-20T08:30:00+00:00",
-        "endTime": "2024-07-20T12:30:00+00:00",
+        "startTime": "2024-07-20T08:00:00+00:00",
+        "endTime": "2024-07-20T12:00:00+00:00",
         "lengthMinutes": 240,
         "location": "Säde"
       }
@@ -4856,8 +4856,7 @@
       "accessibility": ["low-lighting", "duration-over-2h"]
     },
     "cachedAnnotations": {
-      "konsti:minAttendance": 3,
-      "ropecon:numCharacters": 5,
+      "ropecon:numCharacters": 3,
       "ropecon:isRevolvingDoor": false
     },
     "scheduleItems": [
@@ -4918,72 +4917,6 @@
         "endTime": "2024-07-20T16:00:00+00:00",
         "lengthMinutes": 60,
         "location": "Halli 1 Spektaakkelisali"
-      }
-    ]
-  },
-  {
-    "slug": "gabrielin-ilmestys-1-pelautus",
-    "title": "Gabrielin Ilmestys - 1. pelautus",
-    "description": "1400-luku. Ryhmä Järjen Oppikunnan jäseniä saa erikoislaatuisen ja hienovaraisuutta vaativan tehtävän Ruotsin itäiselle alueelle (lue: Suomeen).\r\n\r\nHahmot ovat korkeampaan tietoisuuteen heränneitä lahjakkaita ihmisiä, jotka kykenevät venyttämään todellisuuden rajoja.\r\n\r\nPeli sijoittuu World of Darkness-maailmaan, jossa historiallisuus ja yliluonnollisuus sekoittuvat. Virallista kaanonia ei kuitenkaan välttämättä noudateta, eikä pelaajilta odoteta pelimaailman tuntemusta. Säännöt tukevat luovuutta ja kekseliäisyyttä pelaajien osalta.\r\n\r\nPeli sisältää väkivaltaan, sotaan ja kristinuskoon liittyviä teemoja.",
-    "cachedHosts": "<redacted>",
-    "cachedDimensions": {
-      "date": ["2024-07-20"],
-      "room": ["mesta"],
-      "type": ["gaming"],
-      "topic": ["penandpaper", "theme"],
-      "konsti": ["tabletopRPG"],
-      "audience": ["aimed-adults", "beginners"],
-      "language": ["fi"],
-      "playstyle": ["serious", "story-driven"],
-      "accessibility": ["texts-with-no-recordings"]
-    },
-    "cachedAnnotations": {
-      "konsti:rpgSystem": "Mage: the Sorcerers Crusade",
-      "ropecon:gameSlogan": "Maagien salainen operaatio historiallisessa ympäristössä",
-      "konsti:maxAttendance": 4,
-      "konsti:minAttendance": 3,
-      "ropecon:contentWarnings": "Sotatilanne. Taistelu. Pelissä hahmot saattavat joutua tappamaan ihmisiä.",
-      "ropecon:isRevolvingDoor": false
-    },
-    "scheduleItems": [
-      {
-        "startTime": "2024-07-20T10:00:00+00:00",
-        "endTime": "2024-07-20T14:00:00+00:00",
-        "lengthMinutes": 240,
-        "location": "Mesta"
-      }
-    ]
-  },
-  {
-    "slug": "gabrielin-ilmestys-2-pelautus",
-    "title": "Gabrielin Ilmestys - 2. pelautus",
-    "description": "1400-luku. Ryhmä Järjen Oppikunnan jäseniä saa erikoislaatuisen ja hienovaraisuutta vaativan tehtävän Ruotsin itäiselle alueelle (lue: Suomeen).\r\n\r\nHahmot ovat korkeampaan tietoisuuteen heränneitä lahjakkaita ihmisiä, jotka kykenevät venyttämään todellisuuden rajoja.\r\n\r\nPeli sijoittuu World of Darkness-maailmaan, jossa historiallisuus ja yliluonnollisuus sekoittuvat. Virallista kaanonia ei kuitenkaan välttämättä noudateta, eikä pelaajilta odoteta pelimaailman tuntemusta. Säännöt tukevat luovuutta ja kekseliäisyyttä pelaajien osalta.\r\n\r\nPeli sisältää väkivaltaan, sotaan ja kristinuskoon liittyviä teemoja.",
-    "cachedHosts": "<redacted>",
-    "cachedDimensions": {
-      "date": ["2024-07-21"],
-      "room": ["mesta"],
-      "type": ["gaming"],
-      "topic": ["penandpaper", "theme"],
-      "konsti": ["tabletopRPG"],
-      "audience": ["aimed-adults", "beginners"],
-      "language": ["fi"],
-      "playstyle": ["serious", "story-driven"],
-      "accessibility": ["texts-with-no-recordings"]
-    },
-    "cachedAnnotations": {
-      "konsti:rpgSystem": "Mage: the Sorcerers Crusade",
-      "ropecon:gameSlogan": "Maagien salainen operaatio historiallisessa ympäristössä",
-      "konsti:maxAttendance": 4,
-      "konsti:minAttendance": 3,
-      "ropecon:contentWarnings": "Sotatilanne. Taistelu. Pelissä hahmot saattavat joutua tappamaan ihmisiä.",
-      "ropecon:isRevolvingDoor": false
-    },
-    "scheduleItems": [
-      {
-        "startTime": "2024-07-21T08:00:00+00:00",
-        "endTime": "2024-07-21T12:00:00+00:00",
-        "lengthMinutes": 240,
-        "location": "Mesta"
       }
     ]
   },
@@ -5470,7 +5403,7 @@
       "room": ["halli-3-tanssiharjoitussali"],
       "type": ["activity"],
       "topic": [],
-      "konsti": [],
+      "konsti": ["other"],
       "audience": ["aimed-between-13-17", "aimed-adults", "beginners"],
       "language": ["fi", "en"],
       "playstyle": [],
@@ -6558,8 +6491,8 @@
     },
     "scheduleItems": [
       {
-        "startTime": "2024-07-20T14:30:00+00:00",
-        "endTime": "2024-07-20T18:30:00+00:00",
+        "startTime": "2024-07-20T14:00:00+00:00",
+        "endTime": "2024-07-20T18:00:00+00:00",
         "lengthMinutes": 240,
         "location": "Säde"
       }
@@ -7245,8 +7178,8 @@
     },
     "scheduleItems": [
       {
-        "startTime": "2024-07-20T13:30:00+00:00",
-        "endTime": "2024-07-20T17:30:00+00:00",
+        "startTime": "2024-07-20T13:00:00+00:00",
+        "endTime": "2024-07-20T17:00:00+00:00",
         "lengthMinutes": 240,
         "location": "Säde"
       }
@@ -8252,7 +8185,7 @@
       "room": ["halli-1a"],
       "type": ["activity"],
       "topic": ["theme"],
-      "konsti": [],
+      "konsti": ["other"],
       "audience": ["aimed-under-13", "beginners"],
       "language": ["fi", "en"],
       "playstyle": [],
@@ -8889,7 +8822,7 @@
     "description": "Jännittääkö ajatus pelinjohtamisesta? Tuntuuko kynnys ekaan peliin liian korkealta? Tule kokeilemaan pelinjohtamista käytännössä valmiilla yhden kohtauksen minipelillä! Kokeile pelinjohtamista -piste tarjoaa valmiit skenaariot ja hahmot yksinkertaisilla säännöillä, ja ennen kaikkea valmiit pelaajat jotka ovat valmiita tukemaan ja kannustamaan uutta pelinjohtajaa.\r\n\r\nPisteen vetäjät ovat valmistautuneet siihen, että pelinjohtajaksi tulee aivan kokematon tyyppi. He pyrkivät tekemään pelistä turvallisen ja rauhallisen tilanteen, jossa ei tarvitse pelätä mokaamista tai jäätymistä. Skenaarion vetäminen kestää noin 15-45 minuuttia ja sen saa halutessaan myös keskeyttää. Saat pelin aikana neuvoja ja tukea juuri sen verran kuin haluat ja lopuksi halutessasi myös kannustavaa palautetta. Myös oma kaveri mahtuu halutessasi pöytään mukaan.\r\n\r\nSkenaariot ovat yhden kohtauksen mittaisia, melko yksinkertaisia tilanteita kuten \"seikkailijat menevät tavernaan tapaamaan uutta työnantajaa\" tai \"seikkailijat joutuvat väijytykseen matkalla\". Tarjolla on useampaa genreä ja skenaariot voi vetää joko tarkasti kuvauksen mukaan tai improvisoida niin paljon kuin itse haluaa. Peleissä käytetään yksinkertaista sääntömekaniikkaa ja valmiita hahmoja, jotka myös tuntevat jo toisensa skenaarion alkaessa.\r\n\r\nPelit pyörivät nonstop jonotuksella. Lauantaina lisäksi ennakkoon varattavia aikoja, kysy suoraan pisteeltä pe/la.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
-      "date": ["2024-07-20"],
+      "date": ["2024-07-21"],
       "room": ["sali-204"],
       "type": ["gaming"],
       "topic": ["penandpaper"],
@@ -8900,15 +8833,15 @@
       "accessibility": ["texts-with-no-recordings"]
     },
     "cachedAnnotations": {
-      "konsti:rpgSystem": "Täytä",
+      "konsti:rpgSystem": "oma",
       "ropecon:gameSlogan": "Tule kokeilemaan pelinjohtamista käytännössä valmiilla yhden kohtauksen minipelillä ja pelaajilla!",
       "konsti:maxAttendance": 1,
-      "ropecon:isRevolvingDoor": false
+      "ropecon:isRevolvingDoor": true
     },
     "scheduleItems": [
       {
-        "startTime": "2024-07-20T08:00:00+00:00",
-        "endTime": "2024-07-20T12:00:00+00:00",
+        "startTime": "2024-07-21T08:00:00+00:00",
+        "endTime": "2024-07-21T12:00:00+00:00",
         "lengthMinutes": 240,
         "location": "Sali 204"
       }
@@ -8934,7 +8867,7 @@
       "konsti:rpgSystem": "oma",
       "ropecon:gameSlogan": "Tule kokeilemaan pelinjohtamista käytännössä valmiilla yhden kohtauksen minipelillä ja pelaajilla!",
       "konsti:maxAttendance": 1,
-      "ropecon:isRevolvingDoor": false
+      "ropecon:isRevolvingDoor": true
     },
     "scheduleItems": [
       {
@@ -8958,14 +8891,14 @@
       "konsti": ["tabletopRPG"],
       "audience": [],
       "language": ["fi"],
-      "playstyle": [],
+      "playstyle": ["light", "rules-light"],
       "accessibility": []
     },
     "cachedAnnotations": {
       "konsti:rpgSystem": "oma",
       "ropecon:gameSlogan": "Tule kokeilemaan pelinjohtamista käytännössä valmiilla yhden kohtauksen minipelillä ja pelaajilla!",
       "konsti:maxAttendance": 2,
-      "ropecon:isRevolvingDoor": false
+      "ropecon:isRevolvingDoor": true
     },
     "scheduleItems": [
       {
@@ -9102,7 +9035,7 @@
       "room": ["sali-209"],
       "type": ["tournament"],
       "topic": ["theme"],
-      "konsti": [],
+      "konsti": ["other"],
       "audience": ["all-ages", "beginners"],
       "language": ["fi"],
       "playstyle": [],
@@ -10957,7 +10890,7 @@
   {
     "slug": "looking-for-geek-friends-norttiystavia-etsimassa",
     "title": "Looking for Geek Friends | Nörttiystäviä etsimässä",
-    "description": "Etsitkö uusia nörttiystäviä? Uutta peliseuraa? Tai conikaveria, jonka kanssa seikkailla viikonlopun ajan? Tervetuloa etsimään uusia nörttiystäviä ja tutustumaan ihmisiin hauskan platonisen \"ystäväpikadeittailun\" hengessä!\r\n\r\nTuothan mukanasi yhden hyvin koulutetun D20-nopan (paikan päällä on myös joitakin villejä noppia niitä tarvitseville).\r\n\r\nVaikka osallistujien lukumäärällä ei periaatteessa ole ylärajaa (tilarajoituksia lukuun ottamatta), formaatista johtuen osallistujia tulee olla aina parillinen määrä, eikä uusia osallistujia voida ottaa mukaan enää kesken ohjelman. Ohjelmaan ei ole ennakkoilmoittautumista, joten olethan paikalla siis hyvissä ajoin jo heti ohjelman alussa!\r\n\r\nHuom! LFGF:n kautta on tarkoitus etsiä vain ja ainoastaan uusia nörttiystäviä, ei siis romanttista seuraa. Jotta uusien nörttiystävien etsiminen olisi kaikille mahdollisimman mukava ja turvallinen kokemus, muistathan myös kunnioittaa muiden osallistujien rajoja ja noudattaa Ropeconin häirinnänvastaista linjausta.\r\n\r\nOhjelma on monikielinen ja avoin kaikille kävijöille, joten osallistujat voivat joutua välillä kommunikoimaan muiden kanssa ei-kotimaisen kielen avulla (yleensä englanniksi) tai esimerkiksi viittomakielen tulkin välityksellä. Tätä ei kannata kuitenkaan jännittää liikaa, sillä kierrokset ovat lyhyitä ja riittää, että tekee parhaansa niillä kielillä, mitä osaa!\r\n\r\n---\r\n\r\nLooking for new geeky friends? New people to join your gaming group? Or just someone to party up with for the convention weekend? Come and find new geeky friends and get to know people through some fun platonic \"friend speed dating\"!\r\n\r\nEach participant should bring along one well-trained D20 die (some wild dice will be available for those without any).\r\n\r\nAlthough theoretically there is no upper limit to the number of participants in this programme (other than the limitations of the venue), the format requires an even number of participants, and it is not possible to join in after the programme has already started. There's no sign-up in advance, so make sure you're at the venue in time as the programme starts so you don't miss out on the fun!\r\n\r\nPlease note that LFGF is meant only for finding new geeky friends: you will have to look elsewhere for romantic company. In order to make finding new geek friends as comfortable and safe as possible for everyone, please also remember to respect the boundaries of other participants and follow Ropecon's anti-harassment guidelines.\r\n\r\nSince this is a multi-language programme and open to all attendees, participants may at times have to communicate with others in their non-native language (such as English) or e.g. through a sign language interpreter. Please don't let that feel too intimidating, though, as each round is short and doing your best with the languages you know is more than enough!",
+    "description": "Etsitkö uusia nörttiystäviä? Uutta peliseuraa? Tai conikaveria, jonka kanssa seikkailla viikonlopun ajan? Tervetuloa etsimään uusia nörttiystäviä ja tutustumaan ihmisiin hauskan platonisen \"ystäväpikadeittailun\" hengessä! \r\n\r\nOsallistujat vaihtavat paikkaa ja juttukaveria pöydän ääressä parin minuutin välein - kun kello kilahtaa, maltathan siis lopettaa juttelun ja siirryt heti ohjeiden mukaan seuraavalle paikalle. Ohjelman lopussa on aikaa myös vapaalle jutustelulle, jos aika tuntui loppuneen kesken!\r\n\r\nTuothan mukanasi yhden hyvin koulutetun D20-nopan (paikan päällä on myös joitakin villejä noppia niitä tarvitseville).\r\n\r\nAiempien vuosien huimasta suosiosta johtuen tänä vuonna ohjelmaan on ennakkoilmoittautuminen Konstissa. Formaatista johtuen osallistujia tulee olla aina parillinen määrä, eikä uusia osallistujia voida ottaa mukaan enää kesken ohjelman. Olethan paikalla siis hyvissä ajoin jo heti ohjelman alussa! Mikäli paikalla ei ole parillista määrää osallistujia tai kaikki paikat eivät ole täyttyneet, voidaan mukaan ottaa myös muita paikalle saapuneita.\r\n\r\nHuom! LFGF:n kautta on tarkoitus etsiä vain ja ainoastaan uusia nörttiystäviä, ei siis romanttista seuraa. Jotta uusien nörttiystävien etsiminen olisi kaikille mahdollisimman mukava ja turvallinen kokemus, muistathan myös kunnioittaa muiden osallistujien rajoja ja noudattaa Ropeconin häirinnänvastaista linjausta.\r\n\r\nOhjelma on monikielinen ja avoin kaikille kävijöille, joten osallistujat voivat joutua välillä kommunikoimaan muiden kanssa ei-kotimaisen kielen avulla (yleensä englanniksi) tai esimerkiksi viittomakielen tulkin välityksellä. Tätä ei kannata kuitenkaan jännittää liikaa, sillä kierrokset ovat lyhyitä ja riittää, että tekee parhaansa niillä kielillä, mitä osaa!\r\n\r\n---\r\n\r\nLooking for new geeky friends? New people to join your gaming group? Or just someone to party up with for the convention weekend? Come and find new geeky friends and get to know people through some fun platonic \"friend speed dating\"!\r\n\r\nEach participant should bring along one well-trained D20 die (some wild dice will be available for those without any).\r\n\r\nParticipants will be changing their seats around the table every few minutes - when the bell rings, the chatting has to unfortunately stop and people will have to move according to the instructions. If you feel like you ran out of time and would like to continue talking with someone, there will be some time at the end of the programme for non-timed chatting!\r\n\r\nDue to the huge popularity of the programme in previous years, this year you will need to sign up beforehand via the Konsti app. The format requires an even number of participants, so it is not possible to join in after the programme has already started. Please make sure you're at the venue in time as the programme starts so you don't miss out on the fun! If there is not an even number of participants present or there are seats available when the programme is set to begin, it might be possible to join in by showing up.\r\n\r\nPlease note that LFGF is meant only for finding new geeky friends: you will have to look elsewhere for romantic company. In order to make finding new geek friends as comfortable and safe as possible for everyone, please also remember to respect the boundaries of other participants and follow Ropecon's anti-harassment guidelines.\r\n\r\nSince this is a multi-language programme and open to all attendees, participants may at times have to communicate with others in their non-native language (such as English) or e.g. through a sign language interpreter. Please don't let that feel too intimidating, though, as each round is short and doing your best with the languages you know is more than enough!",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-19"],
@@ -10968,16 +10901,17 @@
       "audience": ["all-ages", "beginners"],
       "language": ["fi", "en"],
       "playstyle": [],
-      "accessibility": []
+      "accessibility": ["moving-around"]
     },
     "cachedAnnotations": {
       "konsti:maxAttendance": 24,
-      "ropecon:isRevolvingDoor": false
+      "ropecon:isRevolvingDoor": false,
+      "ropecon:accessibilityOther": "Ohjelmassa vaihdetaan istumapaikkoja muutsman minuutin välein || Participants will be changing their seats every few minutes during the programme."
     },
     "scheduleItems": [
       {
-        "startTime": "2024-07-19T18:00:00+00:00",
-        "endTime": "2024-07-19T19:45:00+00:00",
+        "startTime": "2024-07-19T19:00:00+00:00",
+        "endTime": "2024-07-19T20:45:00+00:00",
         "lengthMinutes": 105,
         "location": "Halli 3 Lautapelikirjaston pelialue"
       }
@@ -11865,7 +11799,7 @@
   {
     "slug": "mass-effect-anhurin-kampanja-la-iltapaiva",
     "title": "Mass Effect: Anhurin kampanja",
-    "description": "Perustuu Mass Effect-pelisarjaan.\r\n\r\nOn vuosi 2178: Anhurin planeetta yhteissiirtokutna Terminuksessa. Planeetalla on käynnissä sisällissota orjuuden vastustajien ja bataarien Na'hesit puolueen välillä. Sisällissotaa pidetään räikeimpinä rikkomuksina sapientien olentojen oikeuksia vastaan galaksissa. Orjuuden vastustajat ovat alakynnessä ja pyrkivät hankkimaan salakuljettajia ja palkkasotureita kuten Eclipse ja Blue Suns taisteluun. Sisällissodan lisäksi galaktisia välejä kiristää Allianssin tekemä rankaisuretki Torfanin piraattikuuhun. Tuntematon Spectre-operaattori saa Citadelin neuvostolta tehtävän lopettaa sisällissota hinnalla millä hyvänsä ja estää Allianssin sekä Bataarien imperiumin ajautumisen konfliktiin.\r\n\r\n-Peluutus: Anhurin kampanja on viikonloppukampanja, jonka pelit ovat lyhytä 2-3 tunnin pelejä eri operaation vaiheista.\r\n-Kampanja: Kampanjassa on mahdollista pelata samaa hahmoa useassa skenariossa viikonlopun aikana.\r\n-Sisältö: Peli sisältää tummasävyistä kuvausta sodasta fantasiakontekstissa sekä taisteluista jotka simuloidaan figuureilla.\r\n-Järjestelmä: 4d6 WRS (Rajakatse Roolipeli yms…)\r\n-Kokemus: Jonkinlainen kokemus roolipelaamisesta on suotavaa. Kokemusta pelijärjestelmästä ei tarvita.\r\n\r\nILMOITTAUTUMINEN\r\nTähän ohjelmaan on ennakkoilmoittautuminen Kokemuspisteen infon luona (Halli 3, pohjoinen sisäänkäynti 3.3). Ilmoittautuminen alkaa perjantaina klo 16. Paikat täytetään ilmoittautumisjärjestyksessä. Peliin mahtuu 4 pelaajaa.",
+    "description": "Huom. Kaksi peräkkäistä pelautusta (klo 14 ja klo 16)!\r\n\r\nPerustuu Mass Effect-pelisarjaan.\r\n\r\nOn vuosi 2178: Anhurin planeetta yhteissiirtokutna Terminuksessa. Planeetalla on käynnissä sisällissota orjuuden vastustajien ja bataarien Na'hesit puolueen välillä. Sisällissotaa pidetään räikeimpinä rikkomuksina sapientien olentojen oikeuksia vastaan galaksissa. Orjuuden vastustajat ovat alakynnessä ja pyrkivät hankkimaan salakuljettajia ja palkkasotureita kuten Eclipse ja Blue Suns taisteluun. Sisällissodan lisäksi galaktisia välejä kiristää Allianssin tekemä rankaisuretki Torfanin piraattikuuhun. Tuntematon Spectre-operaattori saa Citadelin neuvostolta tehtävän lopettaa sisällissota hinnalla millä hyvänsä ja estää Allianssin sekä Bataarien imperiumin ajautumisen konfliktiin.\r\n\r\n-Peluutus: Anhurin kampanja on viikonloppukampanja, jonka pelit ovat lyhytä 2-3 tunnin pelejä eri operaation vaiheista.\r\n-Kampanja: Kampanjassa on mahdollista pelata samaa hahmoa useassa skenariossa viikonlopun aikana.\r\n-Sisältö: Peli sisältää tummasävyistä kuvausta sodasta fantasiakontekstissa sekä taisteluista jotka simuloidaan figuureilla.\r\n-Järjestelmä: 4d6 WRS (Rajakatse Roolipeli yms…)\r\n-Kokemus: Jonkinlainen kokemus roolipelaamisesta on suotavaa. Kokemusta pelijärjestelmästä ei tarvita.\r\n\r\nILMOITTAUTUMINEN\r\nKaksi peräkkäistä pelautusta klo 14 ja klo 16.\r\nTähän ohjelmaan on ennakkoilmoittautuminen Kokemuspisteen infon luona (Halli 3, pohjoinen sisäänkäynti 3.3). Ilmoittautuminen alkaa perjantaina klo 16. Paikat täytetään ilmoittautumisjärjestyksessä. Peliin mahtuu 4 pelaajaa.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-20"],
@@ -17592,8 +17526,8 @@
     },
     "scheduleItems": [
       {
-        "startTime": "2024-07-20T17:30:00+00:00",
-        "endTime": "2024-07-20T21:30:00+00:00",
+        "startTime": "2024-07-20T17:00:00+00:00",
+        "endTime": "2024-07-20T21:00:00+00:00",
         "lengthMinutes": 240,
         "location": "Säde"
       }
@@ -18828,8 +18762,8 @@
     },
     "scheduleItems": [
       {
-        "startTime": "2024-07-20T11:30:00+00:00",
-        "endTime": "2024-07-20T13:30:00+00:00",
+        "startTime": "2024-07-20T11:00:00+00:00",
+        "endTime": "2024-07-20T13:00:00+00:00",
         "lengthMinutes": 120,
         "location": "Mesta"
       }
@@ -20905,8 +20839,8 @@
     },
     "scheduleItems": [
       {
-        "startTime": "2024-07-20T07:30:00+00:00",
-        "endTime": "2024-07-20T11:30:00+00:00",
+        "startTime": "2024-07-20T07:00:00+00:00",
+        "endTime": "2024-07-20T11:00:00+00:00",
         "lengthMinutes": 240,
         "location": "Säde"
       }

@@ -31,7 +31,8 @@
     "update-game-popularity": "NODE_ENV=development tsx src/test/scripts/testUpdateGamePopularity.ts",
     "verify-results": "NODE_ENV=development tsx src/test/scripts/testVerifyResults.ts",
     "load-kompassi-data": "NODE_ENV=development tsx src/test/scripts/loadKompassiDataToDb.ts",
-    "update-kompassi-datadump": "NODE_ENV=development tsx src/test/scripts/updateKompassiDataDump.ts"
+    "update-kompassi-datadump": "NODE_ENV=development tsx src/test/scripts/updateKompassiDataDump.ts",
+    "check-start-times": "NODE_ENV=development tsx src/test/scripts/checkStartTimes.ts"
   },
   "dependencies": {
     "@faker-js/faker": "8.4.1",
