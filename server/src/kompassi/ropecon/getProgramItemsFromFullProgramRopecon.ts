@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import { first } from "lodash-es";
 import {
   checkUnknownKeys,
@@ -11,6 +12,7 @@ import {
   KompassiKonstiProgramTypeRopecon,
   KompassiProgramItemRopecon,
 } from "server/kompassi/ropecon/kompassiProgramItemRopecon";
+import { TIMEZONE } from "shared/utils/initializeDayjs";
 
 export const getProgramItemsFromFullProgramRopecon = (
   programItems: unknown[],
@@ -48,6 +50,18 @@ export const getProgramItemsFromFullProgramRopecon = (
 
     if (!validProgramType) {
       return [];
+    }
+
+    const startTime = programItem.scheduleItems[0].startTime;
+    const startMinute = dayjs(startTime).minute();
+    if (
+      programType === KompassiKonstiProgramTypeRopecon.TABLETOP_RPG &&
+      startMinute !== 0
+    ) {
+      logger.error(
+        // eslint-disable-next-line no-restricted-syntax
+        `Invalid RPG start time: ${dayjs(startTime).tz(TIMEZONE).format("HH:mm")} - ${programItem.title}`,
+      );
     }
 
     return programItem;
