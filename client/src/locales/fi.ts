@@ -468,7 +468,8 @@ export const translationFI = {
     flashingLights: "Välkkyvät tai voimakkaat valot",
     strongSmells: "Voimakkaat tuoksut",
     irritateSkin: "Ihoa ärsyttävät aineet tai materiaalit",
-    physicalContact: "Paljon liikkumista ilman mahdollisuutta istumiseen",
+    physicalContact:
+      "Fyysinen kontakti ja/tai suppea henkilökohtaisen tilan mahdollisuus",
     lowLighting: "Pimeä/heikko valaistus",
     movingAround: "Paljon liikkumista ilman mahdollisuutta istumiseen",
     video: "Video, jossa ei ole tekstitystä kuulorajoitteisille",

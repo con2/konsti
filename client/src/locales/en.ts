@@ -467,7 +467,7 @@ export const translationEN = {
     irritateSkin: "Materials or substances that irritate the skin",
     physicalContact: "Physical contact and/or low chances or personal space",
     lowLighting: "Darkness/low lighting",
-    movingAround: "Limited opportunies to move around",
+    movingAround: "A lot of moving around without a chance for sitting down",
     video: "Video without subtitles for the hearing impaired",
     recording: "Recording without a text version for the hearing impaired",
     colourblind: "Materials used can cause problems for the colourblind",
