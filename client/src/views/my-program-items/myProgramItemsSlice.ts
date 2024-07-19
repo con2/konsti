@@ -21,7 +21,7 @@ const myProgramItemsSlice = createSlice({
       return {
         ...state,
         directSignups: action.payload.directSignups,
-        favoriteProgramItems: action.payload.favoriteProgramItemIds,
+        favoriteProgramItemIds: action.payload.favoriteProgramItemIds,
         lotterySignups: action.payload.lotterySignups,
       };
     },
