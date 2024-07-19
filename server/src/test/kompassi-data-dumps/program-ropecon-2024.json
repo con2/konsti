@@ -331,6 +331,32 @@
     ]
   },
   {
+    "slug": "age-of-age-of-steam",
+    "title": "Age of Age of Steam",
+    "description": "Jatkuvaa pelautusta legendaarisesta Age of Steam -junapelistä, jonka suosiosta kertoo yli 200 toteutettua karttaa. 2-6 pelaajaa.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-07-19"],
+      "room": ["halli-3-kokemuspiste"],
+      "type": ["experience", "gaming", "open-gaming"],
+      "topic": ["boardgames"],
+      "konsti": [],
+      "audience": ["aimed-between-13-17", "aimed-adults"],
+      "language": ["fi", "en"],
+      "playstyle": [],
+      "accessibility": []
+    },
+    "cachedAnnotations": { "konsti:maxAttendance": 6 },
+    "scheduleItems": [
+      {
+        "startTime": "2024-07-19T12:30:00+00:00",
+        "endTime": "2024-07-19T14:30:00+00:00",
+        "lengthMinutes": 120,
+        "location": "Halli 3 Kokemuspiste"
+      }
+    ]
+  },
+  {
     "slug": "age-of-ropecon-gt-lasat",
     "title": "Age of Ropecon GT (La/Sat)",
     "description": "Annual Age of Sigmar Grand Tournament at Ropecon 2024! 5 games during two days (sat/sun)\r\n\r\nVuosittainen Ropecon 2024 Age of Sigmar turnaus! Pelissä pelataan 5 peliä kahden päivän aikana (la/su)",
@@ -477,7 +503,7 @@
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-21"],
-      "room": ["sade"],
+      "room": ["sali-311"],
       "type": ["gaming"],
       "topic": ["penandpaper", "theme"],
       "konsti": ["tabletopRPG"],
@@ -491,15 +517,14 @@
       "ropecon:gameSlogan": "Toiminnantäyteinen seikkailu ajan ja avaruuden halki - an action-packed adventure across time and space",
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 2,
-      "ropecon:contentWarnings": "Lievä fyysinen väkivalta, lievä kehollinen kauhu / Mild physical violence, mild body horror",
-      "ropecon:isRevolvingDoor": false
+      "ropecon:contentWarnings": "Lievä fyysinen väkivalta, lievä kehollinen kauhu / Mild physical violence, mild body horror"
     },
     "scheduleItems": [
       {
         "startTime": "2024-07-21T10:00:00+00:00",
         "endTime": "2024-07-21T13:00:00+00:00",
         "lengthMinutes": 180,
-        "location": "Säde"
+        "location": "Sali 311"
       }
     ]
   },
@@ -562,6 +587,32 @@
         "endTime": "2024-07-21T12:00:00+00:00",
         "lengthMinutes": 240,
         "location": "Säde"
+      }
+    ]
+  },
+  {
+    "slug": "alfonso-giraldes-banshee-painting-a-bust-in-90-minutes",
+    "title": "Alfonso Giraldes \"Banshee\": Painting a bust in 90 minutes",
+    "description": "Alfonso Giraldes \"Banshee\" is a legend of the miniature art world known for his pioneer work on many aspects of the miniature world all the way from painting to sculpting, teaching and even art direction.\r\n\r\nIn this demo Alfonso shows what 20 years of accumulated experience and a passion for the art form looks like by painting a bust in 90 minutes. \r\n\r\nYou can learn more about Alfonso and his works at:\r\n\r\nhttps://www.miniatureartacademy.com/\r\n\r\nhttps://www.puttyandpaint.com/BansheeArtStudio",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-07-21"],
+      "room": ["halli-1b-tyopajatila-2"],
+      "type": ["demo", "workshop"],
+      "topic": ["miniatures"],
+      "konsti": ["workshop"],
+      "audience": ["aimed-adults"],
+      "language": ["en"],
+      "playstyle": [],
+      "accessibility": ["limited-moving-opportunities", "colorblind"]
+    },
+    "cachedAnnotations": { "konsti:maxAttendance": 30 },
+    "scheduleItems": [
+      {
+        "startTime": "2024-07-21T09:00:00+00:00",
+        "endTime": "2024-07-21T10:45:00+00:00",
+        "lengthMinutes": 105,
+        "location": "Halli 1B Työpajatila 2"
       }
     ]
   },
@@ -1311,7 +1362,7 @@
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-19"],
-      "room": ["sali-318"],
+      "room": ["sali-211"],
       "type": ["gaming"],
       "topic": ["penandpaper", "theme"],
       "konsti": ["tabletopRPG"],
@@ -1330,15 +1381,14 @@
       "ropecon:gameSlogan": "High level D&D fighting. An ancient great wurm has arisen from the plane of fire to consume the entirety of Faerun. You have been summoned by two ancient gold dragons to stop him. The armies of good are besieging a volcano that the dragon brought with it. You are the absolute best of the best heroes that exist. You must slow down the arrogant dragon so that the armies of good can active a spell formation to banish him back to his home plane. If he fully materializes in the material plane, nothing will be able to stop him.",
       "konsti:maxAttendance": 6,
       "konsti:minAttendance": 4,
-      "ropecon:contentWarnings": "Violence, fire, bullying, torture",
-      "ropecon:isRevolvingDoor": false
+      "ropecon:contentWarnings": "Violence, fire, bullying, torture"
     },
     "scheduleItems": [
       {
         "startTime": "2024-07-19T17:00:00+00:00",
         "endTime": "2024-07-19T20:00:00+00:00",
         "lengthMinutes": 180,
-        "location": "Sali 318"
+        "location": "Sali 211"
       }
     ]
   },
@@ -2180,7 +2230,7 @@
   },
   {
     "slug": "cat-tastic-cuddle-party",
-    "title": "CAT-TASTIC Cuddle Party",
+    "title": "[PERUTTU] CAT-TASTIC Cuddle Party",
     "description": "Feeling a little low on purrs? Want to knead out some stress and experience the warmth of a purrfect cuddle puddle?\r\n\r\nThen join us for a CAT-TASTIC Cuddle Party!\r\n\r\nThis is a safe and supportive space to relax, purr along, and enjoy the company of fellow feline friends. Think of it as a giant basket overflowing with happy kitties!\r\n\r\nBring your favorite plush toys (no claws please!), softest blankets, and anything else that makes you feel like a pampered house panther. No shoes allowed, but feel free to put your favorite extra-cozy socks on.\r\n\r\nWhat to expect:\r\n- A meow-gical and inclusive environment\r\n- Gentle reminders and boundaries to ensure everyone feels safe and respected (just like our feline overlords prefer)\r\n- Plenty of space to sprawl out and cuddle with whoever you choose (or curl up solo if that's more your style)\r\n- Relaxing music with purring sounds and calming cat videos\r\n\r\nCome if you want to:\r\n- De-stress and unwind like a content kitty\r\n- Relieve loneliness and find your cuddle buddy purr-ever!\r\n- Make new fur-iends\r\n\r\nPlease note: This is a strictly non-sexual cuddle puddle. Any inappropriate behavior will result in being banished to the litter box (just kidding... but seriously, no funny business).\r\n\r\nWe look forward to cuddling with you! May your catnaps be epic and your purrs be endless!",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
@@ -2194,7 +2244,7 @@
       "playstyle": [],
       "accessibility": []
     },
-    "cachedAnnotations": { "ropecon:isRevolvingDoor": false },
+    "cachedAnnotations": {},
     "scheduleItems": [
       {
         "startTime": "2024-07-19T20:00:00+00:00",
@@ -2875,7 +2925,6 @@
     },
     "cachedAnnotations": {
       "ropecon:contentWarnings": "Esityksessä saattaa esiintyä kiroilua, raskaita teemoja ja alastomuutta. / The show might have distressing content such as strong language, heavy themes and nudity.",
-      "ropecon:isRevolvingDoor": false,
       "ropecon:accessibilityOther": "Tila on yleensä täynnä, joten huoneessa voi olla ahdasta ja kuumaa. Huoneessa ei ole tuolirivejä, vaan yleisö istuu lattialla tai seisoo huoneen takaosassa. Huoneen seinustoilla on varattuna tuoleja heille, jotka eivät voi istua lattialla tai seisoa esityksen ajan.\r\n\r\nThe space usually get full so it can get crowded and hot in the space. There are no rows of chairs in the room: the audience sits on the floor or stands in the back. There are chairs by the sides of the room for those who can't sit on the floor or stand for the duration of the show."
     },
     "scheduleItems": [
@@ -3256,6 +3305,38 @@
         "endTime": "2024-07-19T17:45:00+00:00",
         "lengthMinutes": 45,
         "location": "Sali 209"
+      }
+    ]
+  },
+  {
+    "slug": "di-mihotmail-com",
+    "title": "Vuosisadan juhlat, Feast of the Century",
+    "description": "Kuninkaan määräykset on toteutettava, välittämättä niiden järkevyydestä. Tähän on jokaisen kuningaskunnassa olijan totuttava ja hyväksyttävä. Nyt kuningas on päättänyt että vuosittainen Rauhanjuhla pidennetään seitsemän päivää kestäväksi karnevaaliksi. Hän on myös päättänyt muutamia vetonauloja karnevaaliin, muun muassa hirviöitä päästetään juhlakansan joukkoon \"nostamaan tunnelmaa\". Epätoivon partaalla oleva ministeri on luvannut teille, sekalaiselle palkkionmetsästäjäjoukolle, ruhtinaallisen palkkion hirviöiden vaarattomiksi tekemisestä sillä ehdolla ettette latista kuninkaan juhlatunnelmaa...\r\n\r\nVuosisadan juhlat soveltuu kaikille roolipelaajille peli- ja systeemikokemukseen katsomatta. Seikkailussa luova ongelmanratkaisukyky palkitaan, tavoitteisiin on useita eri tapoja päästä. \r\n\r\nThe king's orders are absolute, regardless of sanity. Everyone in the kingdom must adjust and accept this. Now the king has decided that the annual Peace celebration is extended to a weeklong carneval. He has also decided a few major attractions for the carneval, including releasing monsters to the public to \"liven up the mood\". A minister on the brink of despair has promised you, a ragtag bunch of mercenaries, a handsome reward for neutralizing the monsters. The catch is that you can't spoil the king's festive mood...\r\n\r\nFeast of the Century is suitable for all roleplayers regardless of their experience with roleplaying or the system. In the adventure creative problem solving is rewarded. There are many ways to reach your goals.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-07-21"],
+      "room": ["mesta"],
+      "type": ["gaming"],
+      "topic": ["penandpaper", "theme"],
+      "konsti": ["tabletopRPG"],
+      "audience": ["aimed-between-13-17", "aimed-adults", "beginners"],
+      "language": ["fi", "en"],
+      "playstyle": ["serious", "story-driven", "character-driven"],
+      "accessibility": ["duration-over-2h", "limited-moving-opportunities"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "D",
+      "ropecon:gameSlogan": "Vuosisadan mahdollisuus - vai seinähulluutta?",
+      "konsti:maxAttendance": 5,
+      "konsti:minAttendance": 3,
+      "ropecon:contentWarnings": "Väkivalta"
+    },
+    "scheduleItems": [
+      {
+        "startTime": "2024-07-21T07:00:00+00:00",
+        "endTime": "2024-07-21T11:00:00+00:00",
+        "lengthMinutes": 240,
+        "location": "Mesta"
       }
     ]
   },
@@ -3988,8 +4069,7 @@
     "cachedAnnotations": {
       "konsti:rpgSystem": "Epic: Armageddon",
       "konsti:maxAttendance": 4,
-      "konsti:minAttendance": 2,
-      "ropecon:isRevolvingDoor": false
+      "konsti:minAttendance": 2
     },
     "scheduleItems": [
       {
@@ -4032,32 +4112,6 @@
     ]
   },
   {
-    "slug": "erilaiset-noppajarjestelmat-matematiikka-ja-tilastotiede-tarinankerronassa",
-    "title": "Erilaiset noppajärjestelmät - matematiikka ja tilastotiede tarinankerronassa",
-    "description": "Erilaisia roolipelijärjestelmiä on monia, mutta yhteistä lähes kaikille on se, että niissä heitetään jos jonkinlaista noppaa tulosten satunnaistamista varten. Pelaajina teemme parhaamme taataksemme onnistumisemme, mutta keinot voivat poiketa toisistaan siitä riippuen, mitä noppia heitetään ja miten lukuja jälki- tai esikäsitellään. Tässä puheohjelmassa tutustumme siihen, miten erilaiset tavat käsitellä noppia ja niiden tuloksia voivat vaikuttaa tulosten tukeman tarinan syntyyn.",
-    "cachedHosts": "<redacted>",
-    "cachedDimensions": {
-      "date": ["2024-07-20"],
-      "room": ["sali-206"],
-      "type": ["talk", "presentation"],
-      "topic": ["penandpaper"],
-      "konsti": [],
-      "audience": ["all-ages"],
-      "language": [],
-      "playstyle": [],
-      "accessibility": []
-    },
-    "cachedAnnotations": { "ropecon:isRevolvingDoor": false },
-    "scheduleItems": [
-      {
-        "startTime": "2024-07-20T16:00:00+00:00",
-        "endTime": "2024-07-20T16:45:00+00:00",
-        "lengthMinutes": 45,
-        "location": "Sali 206"
-      }
-    ]
-  },
-  {
     "slug": "escape-from-the-pit-2",
     "title": "Escape from the Pit #2",
     "description": "English:\r\n\r\n\"Ever since childhood, you've lived in captivity within caves and dungeons \"for your own safety\", under surveillance. Only few of you've ever seen the stars or felt the wind on their face.\r\n\r\nSometimes inhabitants of Lucard's dungeon, \"blood stock\", are troublesome and disciplinary actions are in order. Those who undergo discipline are  the same again or they are never seen afterwards. Today, you were sent to discipline. But all is not lost: a hope for escape and new life opens up before you, if you dare to take the chance.\"\r\n\r\nPlayer characters are prisoners to bloodsucking monsters, watched by their minions. A chance to escape is here. Will you take it?\r\n\r\n***\r\nSuomeksi:\r\n\r\n\"Olette lapsuudestanne asti kasvaneet vankeudessa luolissa \"oman turvallisuutenne vuoksi\", tiukan tarkkailun alla. Vain harva teistä on nähnyt tähdet ja tuntenut tuulen kasvoillaan.\r\n\r\nToisinaan jotkut Lucardin luolan \"verikarjan\" jäsenistä rettelöivät ja joutuvat kurinpitoon, josta palaavat eivät ole enää kuin entisensä tai heitä ei sen koommin edes nähdä. Tänään te olette joutuneet kurinpitoon. Mutta kaikki ei ole menetetty: edessänne avautuu toivonkipinä paosta ja uudesta elämästä.\"\r\n\r\nPelaajahahmot ovat vankeja verta imevien hirviöiden luolassa, näiden kätyrien vahtimina. Pakomahdollisuuden avautuessa se on otettava. Oletko valmis?",
@@ -4076,9 +4130,8 @@
     "cachedAnnotations": {
       "konsti:rpgSystem": "Rolemaster Unified",
       "ropecon:gameSlogan": "Escape a lair of monsters / Pakoluolailua hirviöiden pesästä",
-      "konsti:maxAttendance": 5,
-      "konsti:minAttendance": 2,
-      "ropecon:isRevolvingDoor": false
+      "konsti:maxAttendance": 4,
+      "konsti:minAttendance": 2
     },
     "scheduleItems": [
       {
@@ -4221,7 +4274,7 @@
   {
     "slug": "fallout-finland-elamyshuone",
     "title": "Fallout Finland - Elämyshuone",
-    "description": "Fallout Finland -liveroolipelejä on järjestetty kymmenen vuoden ajan ja nyt sinulla on mahdollisuus kokea pala Raatosuon kylän elämää Messukeskuksessa! Tule tunnelmoimaan Holvi 2 -baariin Nuka-Colan äärelle, tutustu näytillä oleviin proppeihin ja osallistu elämyshuoneen ohjelmaan! \r\n\r\nFallout Finland perustuu Bethesdan Fallout -videopelisarjaan. Falloutin tapahtumat pohjautuvat pääosin Yhdysvaltoihin globaalin ydinsodan jälkeen, mutta Fallout Finland peilaa tämän retrofuturistisen maailman jälkeiset tapahtumat myös Suomeen paikallisesta historiasta inspiroituen.\r\n\r\nHuone on auki seuraavina aikoina:\r\n\r\nPe 17-22\r\nLa 14-22\r\nSu 12-15",
+    "description": "Fallout Finland -liveroolipelejä on järjestetty kymmenen vuoden ajan ja nyt sinulla on mahdollisuus kokea pala Raatosuon kylän elämää Messukeskuksessa! Tule tunnelmoimaan Holvi 2 -baariin Nuka-Colan äärelle, tutustu näytillä oleviin proppeihin ja osallistu elämyshuoneen ohjelmaan! \r\n\r\nFallout Finland perustuu Bethesdan Fallout -videopelisarjaan. Falloutin tapahtumat pohjautuvat pääosin Yhdysvaltoihin globaalin ydinsodan jälkeen, mutta Fallout Finland peilaa tämän retrofuturistisen maailman jälkeiset tapahtumat myös Suomeen paikallisesta historiasta inspiroituen.\r\n\r\nHuone on auki seuraavina aikoina:\r\n\r\nPe 17-22\r\n\r\nLa 14-22\r\n\r\nSu 12-15\r\n\r\nVariksenmarjan yhteislaulutuokiot:\r\nPe klo 20:30, La klo 16:30, Su klo 14:30\r\n\r\nPullonkorkkipeli La klo 17:00\r\n\r\nPokeria, Caravania ja Norpan onnenpyörää tarjolla kyseisen ohjelmanumeron vetäjän työvuorojen mukaisesti, eli hajanaisesti pitkin päivää.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-19"],
@@ -4762,6 +4815,84 @@
     ]
   },
   {
+    "slug": "figumaalauspiste-mini-painting-point-4",
+    "title": "Figumaalauspiste / Mini Painting Point",
+    "description": "Tule kokeilemaan miniatyyrien (figujen) maalaamista! Tämä on aloittelijaystävällinen, drop in -periaatteella pyörivä piste, josta saat sekä tarvittavat materiaalit että opastusta figumaalaukseen. Voit joko tuoda ja maalata oman miniatyyrin, tai valita yhden paikan päällä tarjolla olevista vaihtoehdoista ilman lisäkorvausta (maalatun figun saa omakseen).\r\n--------------------------------------------------------------------------------------\r\nCome and try out miniature painting! This is a beginner-friendly drop-in activity, where you'll get all the necessary materials and advice to start painting minis. You can either bring your own mini or choose from the available selection at the location free of charge (you're free to take the mini home afterwards).",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-07-20"],
+      "room": ["halli-5b-figumaalauspiste"],
+      "type": ["workshop"],
+      "topic": ["miniatures"],
+      "konsti": ["workshop"],
+      "audience": ["all-ages", "beginners"],
+      "language": ["fi"],
+      "playstyle": [],
+      "accessibility": []
+    },
+    "cachedAnnotations": {},
+    "scheduleItems": [
+      {
+        "startTime": "2024-07-20T07:00:00+00:00",
+        "endTime": "2024-07-20T17:00:00+00:00",
+        "lengthMinutes": 600,
+        "location": "Halli 5B Figumaalauspiste"
+      }
+    ]
+  },
+  {
+    "slug": "figumaalauspiste-mini-painting-point-5",
+    "title": "Figumaalauspiste / Mini Painting Point",
+    "description": "Tule kokeilemaan miniatyyrien (figujen) maalaamista! Tämä on aloittelijaystävällinen, drop in -periaatteella pyörivä piste, josta saat sekä tarvittavat materiaalit että opastusta figumaalaukseen. Voit joko tuoda ja maalata oman miniatyyrin, tai valita yhden paikan päällä tarjolla olevista vaihtoehdoista ilman lisäkorvausta (maalatun figun saa omakseen).\r\n--------------------------------------------------------------------------------------\r\nCome and try out miniature painting! This is a beginner-friendly drop-in activity, where you'll get all the necessary materials and advice to start painting minis. You can either bring your own mini or choose from the available selection at the location free of charge (you're free to take the mini home afterwards).",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-07-19"],
+      "room": ["halli-5b-figumaalauspiste"],
+      "type": ["workshop"],
+      "topic": ["miniatures"],
+      "konsti": ["workshop"],
+      "audience": ["all-ages", "beginners"],
+      "language": ["fi"],
+      "playstyle": [],
+      "accessibility": []
+    },
+    "cachedAnnotations": {},
+    "scheduleItems": [
+      {
+        "startTime": "2024-07-19T14:00:00+00:00",
+        "endTime": "2024-07-19T18:00:00+00:00",
+        "lengthMinutes": 240,
+        "location": "Halli 5B Figumaalauspiste"
+      }
+    ]
+  },
+  {
+    "slug": "figumaalauspiste-mini-painting-point-6",
+    "title": "Figumaalauspiste / Mini Painting Point",
+    "description": "Tule kokeilemaan miniatyyrien (figujen) maalaamista! Tämä on aloittelijaystävällinen, drop in -periaatteella pyörivä piste, josta saat sekä tarvittavat materiaalit että opastusta figumaalaukseen. Voit joko tuoda ja maalata oman miniatyyrin, tai valita yhden paikan päällä tarjolla olevista vaihtoehdoista ilman lisäkorvausta (maalatun figun saa omakseen).\r\n--------------------------------------------------------------------------------------\r\nCome and try out miniature painting! This is a beginner-friendly drop-in activity, where you'll get all the necessary materials and advice to start painting minis. You can either bring your own mini or choose from the available selection at the location free of charge (you're free to take the mini home afterwards).",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-07-21"],
+      "room": ["halli-5b-figumaalauspiste"],
+      "type": ["workshop"],
+      "topic": ["miniatures"],
+      "konsti": ["workshop"],
+      "audience": ["all-ages", "beginners"],
+      "language": ["fi"],
+      "playstyle": [],
+      "accessibility": []
+    },
+    "cachedAnnotations": {},
+    "scheduleItems": [
+      {
+        "startTime": "2024-07-21T07:00:00+00:00",
+        "endTime": "2024-07-21T13:00:00+00:00",
+        "lengthMinutes": 360,
+        "location": "Halli 5B Figumaalauspiste"
+      }
+    ]
+  },
+  {
     "slug": "figuprojektien-vertaisryhman-miitti-ja-figujenvaihtopiste",
     "title": "Figuprojektien vertaisryhmän miitti ja figujenvaihtopiste",
     "description": "Figuprojektien vertaisryhmä on erityisesti Facebookissa toimiva, kaikille avoin, yli 1600 figuharrastajan ryhmä. Vertaisryhmä edistää monipuolisesti figupeliharrastusta ympäri Suomea. Lisäksi FPVR järjestää myös miittejä, joihin kaikki figuilusta kiinnostuneet ovat tervetulleita mukaan kertomaan projekteistaan, saamaan uusia ideoita ja tutustumaan uusiin harrastuskavereihin. Ropeconin miitissä on luvassa mm. rentoa rupattelua, figujenvaihtopiste (figuja rahaksi, rahaa figuiksi, figuja figuiksi) ja erilaisten figuprojektien esittelyä. Tervetuloa paikalle!",
@@ -4846,7 +4977,7 @@
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-19"],
-      "room": ["sali-216a"],
+      "room": ["sali-218"],
       "type": ["gaming"],
       "topic": ["larp", "goh"],
       "konsti": ["larp"],
@@ -4855,16 +4986,13 @@
       "playstyle": [],
       "accessibility": ["low-lighting", "duration-over-2h"]
     },
-    "cachedAnnotations": {
-      "ropecon:numCharacters": 3,
-      "ropecon:isRevolvingDoor": false
-    },
+    "cachedAnnotations": { "ropecon:numCharacters": 3 },
     "scheduleItems": [
       {
         "startTime": "2024-07-19T17:00:00+00:00",
         "endTime": "2024-07-19T21:00:00+00:00",
         "lengthMinutes": 240,
-        "location": "Sali 216A"
+        "location": "Sali 218"
       }
     ]
   },
@@ -5396,7 +5524,7 @@
   {
     "slug": "harmaasusien-taisteluharjoitukset",
     "title": "Harmaasusien taisteluharjoitukset",
-    "description": "Oletko aina halunnut heiluttaa teräsmiekkaa tai kirvestä, larpeissa tai muuten vain? Tai kaipaatko hauskaa harrastusta ja uusia ystäviä? Harmaasusien terästaisteluharjoituksissa, tuttavallisemmin mättötreeneissä, perehdytään historiallisten teräsaseiden turvalliseen ja tehokkaaseen hallintaan mukavassa seurassa. Ota mukaan liikunnalliset vaatteet. Osallistujamäärä maksimissaan 20. Ilmoittautuminen ennakkoon Konstissa alkaen sunnuntaina klo 10.\r\n\r\n---\r\n\r\nHave you always wanted to swing a steel sword or an axe, in larps or otherwise? Or do you want a fun hobby and new friends? In the steel combat practice, more familiarly known as mättö trainings, we familiarize ourselves with the safe and effective handling of historical steel weapons in safe environment. Bring sports clothes. The maximum number of participants is 20. Pre-registration through Konsti starting Sunday at 10.00.",
+    "description": "Oletko aina halunnut heiluttaa teräsmiekkaa tai kirvestä, larpeissa tai muuten vain? Tai kaipaatko hauskaa harrastusta ja uusia ystäviä? Harmaasusien terästaisteluharjoituksissa, tuttavallisemmin mättötreeneissä, perehdytään historiallisten teräsaseiden turvalliseen ja tehokkaaseen hallintaan mukavassa seurassa. Ota mukaan liikunnalliset vaatteet. Osallistujamäärä maksimissaan 20. Ilmoittautuminen ennakkoon Konstissa alkaen sunnuntaina klo 11.30.\r\n\r\n---\r\n\r\nHave you always wanted to swing a steel sword or an axe, in larps or otherwise? Or do you want a fun hobby and new friends? In the steel combat practice, more familiarly known as mättö trainings, we familiarize ourselves with the safe and effective handling of historical steel weapons in safe environment. Bring sports clothes. The maximum number of participants is 20. Pre-registration through Konsti starting Sunday at 11.30.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-21"],
@@ -6021,11 +6149,11 @@
       "topic": ["dance"],
       "konsti": [],
       "audience": ["aimed-between-13-17", "aimed-adults"],
-      "language": ["fi", "en"],
+      "language": ["fi"],
       "playstyle": [],
       "accessibility": ["loud-sounds", "physical-contact", "moving-around"]
     },
-    "cachedAnnotations": { "ropecon:isRevolvingDoor": false },
+    "cachedAnnotations": {},
     "scheduleItems": [
       {
         "startTime": "2024-07-20T13:00:00+00:00",
@@ -6047,11 +6175,11 @@
       "topic": ["dance"],
       "konsti": [],
       "audience": ["aimed-between-13-17", "aimed-adults"],
-      "language": ["fi", "en"],
+      "language": ["fi"],
       "playstyle": [],
       "accessibility": ["loud-sounds", "physical-contact", "moving-around"]
     },
-    "cachedAnnotations": { "ropecon:isRevolvingDoor": false },
+    "cachedAnnotations": {},
     "scheduleItems": [
       {
         "startTime": "2024-07-19T19:00:00+00:00",
@@ -6959,38 +7087,6 @@
         "endTime": "2024-07-19T14:45:00+00:00",
         "lengthMinutes": 105,
         "location": "Sali 102"
-      }
-    ]
-  },
-  {
-    "slug": "imrryr-ei-palanut",
-    "title": "Imrryr ei palanut",
-    "description": "Toisin kuin Nuorten kuningaskuntien virallisessa historiassa kerrotaan: Imrryr ei kaatunut. Elric Melnibonen keisari yhdessä serkkujensa Cymorilin ja Yyrkoonin kanssa johdatti Melnibonen uuteen loistoon. He palasivat Melnibonen synnyinsijoille R'lin K'ren A ahan, ja kutsuivat muiden kuningaskuntien edustajat hallitsemaan heidän kanssaan. Pelaajahahmot edustavat Eshmiriä, joka sijaitsee kaukana merten ja Itkevän erämaan toisella puolella, ja he ovat juuri saapuneet kuningaskuntien uuteen ja tärkeimpään valtakeskittymään.",
-    "cachedHosts": "<redacted>",
-    "cachedDimensions": {
-      "date": ["2024-07-20"],
-      "room": ["sade"],
-      "type": ["gaming"],
-      "topic": ["penandpaper"],
-      "konsti": ["tabletopRPG"],
-      "audience": ["aimed-adults", "beginners"],
-      "language": ["fi"],
-      "playstyle": ["light", "rules-light", "story-driven", "character-driven"],
-      "accessibility": []
-    },
-    "cachedAnnotations": {
-      "konsti:rpgSystem": "Rune Quest 2. laitos",
-      "ropecon:gameSlogan": "Juonittelua Nuorissa kuningaskunnissa.",
-      "konsti:maxAttendance": 4,
-      "konsti:minAttendance": 2,
-      "ropecon:isRevolvingDoor": false
-    },
-    "scheduleItems": [
-      {
-        "startTime": "2024-07-20T18:00:00+00:00",
-        "endTime": "2024-07-20T22:00:00+00:00",
-        "lengthMinutes": 240,
-        "location": "Säde"
       }
     ]
   },
@@ -9426,7 +9522,7 @@
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-20"],
-      "room": ["sali-318"],
+      "room": ["mesta"],
       "type": ["gaming"],
       "topic": ["penandpaper", "theme"],
       "konsti": ["tabletopRPG"],
@@ -9445,15 +9541,14 @@
       "ropecon:gameSlogan": "Lähes perinteinen Viikon Keikka Tammerpoliksen varjojuoksijoille.",
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 2,
-      "ropecon:contentWarnings": "Väkivalta, kehokauhu, jengiläisyys, fantasialajien välinen rasismi, mahdollinen väkivalta eläimiä kohtaan, yhteiskuntaluokat",
-      "ropecon:isRevolvingDoor": false
+      "ropecon:contentWarnings": "Väkivalta, kehokauhu, jengiläisyys, fantasialajien välinen rasismi, mahdollinen väkivalta eläimiä kohtaan, yhteiskuntaluokat"
     },
     "scheduleItems": [
       {
         "startTime": "2024-07-20T15:00:00+00:00",
         "endTime": "2024-07-20T19:00:00+00:00",
         "lengthMinutes": 240,
-        "location": "Sali 318"
+        "location": "Mesta"
       }
     ]
   },
@@ -10045,7 +10140,7 @@
   {
     "slug": "lauteilla-digitaalinen-ratkaisuraati",
     "title": "Lauteilla – Digitaalinen ratkaisuraati",
-    "description": "Sinut on valittu kaikkia suomalaisia edustavaan kansalaisraatiin. Tehtävänne on ratkaista ilmastokriisi huomioiden eri näkökulmat. Teette tämän keskustelemalla somessa. Ketä sinä edustat? \r\n\r\nInternetissä pelattava larp kysyy, millaiseen vuorovaikutukseen some ajaa ihmisiä. \r\n\r\nPelin aloitustapaaminen on perjantaina ja lopetus lauantai-iltana. Pelaaminen tapahtuu omalla somealustallaan muun ohjelman ohessa ja edellyttää oman älypuhelimen käyttöä.",
+    "description": "Sinut on valittu kaikkia suomalaisia edustavaan kansalaisraatiin. Tehtävänne on ratkaista ilmastokriisi huomioiden eri näkökulmat. Teette tämän keskustelemalla somessa. Ketä sinä edustat? \r\n\r\nInternetissä pelattava larp kysyy, millaiseen vuorovaikutukseen some ajaa ihmisiä. \r\n\r\nPelin aloitustapaaminen on perjantaina ja lopetus lauantai-iltana. Pelaaminen tapahtuu omalla somealustallaan muun ohjelman ohessa ja edellyttää oman älypuhelimen käyttöä.\r\n\r\nPELIN ILMOITTAUTUMINEN OSOITTEESSA: https://vastapuhe.fi/",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-19"],
@@ -10061,8 +10156,7 @@
     "cachedAnnotations": {
       "konsti:minAttendance": 12,
       "ropecon:numCharacters": 34,
-      "ropecon:contentWarnings": "Verkkoviha/ vihapuhe teemana",
-      "ropecon:isRevolvingDoor": false
+      "ropecon:contentWarnings": "Verkkoviha/ vihapuhe teemana"
     },
     "scheduleItems": [
       {
@@ -11031,7 +11125,7 @@
   {
     "slug": "ludusoma-ropecon-play-goes-meditation-ropecon-edition-1",
     "title": "Ludusoma Ropecon – Play Goes Meditation (Ropecon Edition) 1",
-    "description": "Play & Meditation\r\nAt the intersection of these two powerful and mysterious moods and “energies”, interesting things begin to happen, and we become aware of the world and ourselves in a new way. 😊 ❤\r\n\r\nLudus = Play, Game, Playful Love\r\nSoma = Lived body and object body together form the soma\r\nDuso = Developing Understanding of Self and Others\r\n\r\nPlay – Meditation – Consciousness – Exploration.\r\nIn workshops, we play, practice, share, understand play, meditate, explore play, meditate while playing, play meditatively, and play with body awareness.\r\n\r\nWhat is known about play?\r\nWhere does play arise from? What about the playful mind?\r\nWhere does play begin, and where does it end?\r\nWhat is the smallest possible play?\r\nWhat is the difference between play, playfulness, and playfulness?\r\nWhat is the Magic Circle, and how does it relate to play?\r\nWhat is the spirit of play, and how is it called?\r\nWhat if the universe is just playing?\r\n\r\nThe entire workshop can be seen as a deep but safe meditation, a pause and movement meditation that focuses on play. We examine and practice play, playfulness, and playfulness, especially in relation to body awareness. The content of the workshop varies and is determined by the situation.\r\n\r\nEach workshop takes place if a sufficient number of participants attend. The minimum number of is two participants. Recommended amount is 3-4.\r\n\r\nThis can be seen as an introduction to meditation through play but also as an introduction to body-conscious play (for example participants for whom body awareness or meditation is somewhat familiar.)😊\r\n\r\nThere is no sign-up for this workshop - just show up!",
+    "description": "Play & Meditation\r\nAt the intersection of these two powerful and mysterious moods and “energies”, interesting things begin to happen, and we become aware of the world and ourselves in a new way. 😊 ❤\r\n\r\nLudus = Play, Game, Playful Love\r\nSoma = Lived body and object body together form the soma\r\nDuso = Developing Understanding of Self and Others\r\n\r\nPlay – Meditation – Consciousness – Exploration.\r\nIn workshops, we play, practice, share, understand play, meditate, explore play, meditate while playing, play meditatively, and play with body awareness.\r\n\r\nWhat is known about play?\r\nWhere does play arise from? What about the playful mind?\r\nWhere does play begin, and where does it end?\r\nWhat is the smallest possible play?\r\nWhat is the difference between play, playfulness, and playfulness?\r\nWhat is the Magic Circle, and how does it relate to play?\r\nWhat is the spirit of play, and how is it called?\r\nWhat if the universe is just playing?\r\n\r\nThe entire workshop can be seen as a deep but safe meditation, a pause and movement meditation that focuses on play. We examine and practice play, playfulness, and playfulness, especially in relation to body awareness. The content of the workshop varies and is determined by the situation.\r\n\r\nEach workshop takes place if a sufficient number of participants attend. The minimum number of is two participants. Recommended amount is 3-4.\r\n\r\nThis can be seen as an introduction to meditation through play but also as an introduction to body-conscious play (for example participants for whom body awareness or meditation is somewhat familiar.)😊\r\n\r\nSign up throught Konsti on Friday at 6PM.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-20"],
@@ -11044,7 +11138,7 @@
       "playstyle": [],
       "accessibility": []
     },
-    "cachedAnnotations": { "ropecon:isRevolvingDoor": false },
+    "cachedAnnotations": { "konsti:maxAttendance": 50 },
     "scheduleItems": [
       {
         "startTime": "2024-07-20T09:00:00+00:00",
@@ -11057,7 +11151,7 @@
   {
     "slug": "ludusoma-ropecon-play-goes-meditation-ropecon-edition-2",
     "title": "Ludusoma Ropecon – Play Goes Meditation (Ropecon Edition) 2",
-    "description": "Play & Meditation\r\nAt the intersection of these two powerful and mysterious moods and “energies”, interesting things begin to happen, and we become aware of the world and ourselves in a new way. 😊 ❤\r\n\r\nLudus = Play, Game, Playful Love\r\nSoma = Lived body and object body together form the soma\r\nDuso = Developing Understanding of Self and Others\r\n\r\nPlay – Meditation – Consciousness – Exploration.\r\nIn workshops, we play, practice, share, understand play, meditate, explore play, meditate while playing, play meditatively, and play with body awareness.\r\n\r\nWhat is known about play?\r\nWhere does play arise from? What about the playful mind?\r\nWhere does play begin, and where does it end?\r\nWhat is the smallest possible play?\r\nWhat is the difference between play, playfulness, and playfulness?\r\nWhat is the Magic Circle, and how does it relate to play?\r\nWhat is the spirit of play, and how is it called?\r\nWhat if the universe is just playing?\r\n\r\nThe entire workshop can be seen as a deep but safe meditation, a pause and movement meditation that focuses on play. We examine and practice play, playfulness, and playfulness, especially in relation to body awareness. The content of the workshop varies and is determined by the situation.\r\n\r\nEach workshop takes place if a sufficient number of participants attend. The minimum number of is two participants. Recommended amount is 3-4.\r\n\r\nThis can be seen as an introduction to meditation through play but also as an introduction to body-conscious play (for example participants for whom body awareness or meditation is somewhat familiar.)😊\r\n\r\nThere is no sign-up for this workshop - just show up!",
+    "description": "Play & Meditation\r\nAt the intersection of these two powerful and mysterious moods and “energies”, interesting things begin to happen, and we become aware of the world and ourselves in a new way. 😊 ❤\r\n\r\nLudus = Play, Game, Playful Love\r\nSoma = Lived body and object body together form the soma\r\nDuso = Developing Understanding of Self and Others\r\n\r\nPlay – Meditation – Consciousness – Exploration.\r\nIn workshops, we play, practice, share, understand play, meditate, explore play, meditate while playing, play meditatively, and play with body awareness.\r\n\r\nWhat is known about play?\r\nWhere does play arise from? What about the playful mind?\r\nWhere does play begin, and where does it end?\r\nWhat is the smallest possible play?\r\nWhat is the difference between play, playfulness, and playfulness?\r\nWhat is the Magic Circle, and how does it relate to play?\r\nWhat is the spirit of play, and how is it called?\r\nWhat if the universe is just playing?\r\n\r\nThe entire workshop can be seen as a deep but safe meditation, a pause and movement meditation that focuses on play. We examine and practice play, playfulness, and playfulness, especially in relation to body awareness. The content of the workshop varies and is determined by the situation.\r\n\r\nEach workshop takes place if a sufficient number of participants attend. The minimum number of is two participants. Recommended amount is 3-4.\r\n\r\nThis can be seen as an introduction to meditation through play but also as an introduction to body-conscious play (for example participants for whom body awareness or meditation is somewhat familiar.)😊\r\n\r\nSign up throught Konsti on Saturday at 6PM.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-21"],
@@ -11070,7 +11164,7 @@
       "playstyle": [],
       "accessibility": []
     },
-    "cachedAnnotations": { "ropecon:isRevolvingDoor": false },
+    "cachedAnnotations": { "konsti:maxAttendance": 50 },
     "scheduleItems": [
       {
         "startTime": "2024-07-21T09:00:00+00:00",
@@ -11696,14 +11790,13 @@
       "konsti:rpgSystem": "oma kevyt pelisysteemi",
       "ropecon:gameSlogan": "Lapset seikkailevat muinaislöytöjen parissa.",
       "konsti:maxAttendance": 4,
-      "konsti:minAttendance": 2,
-      "ropecon:isRevolvingDoor": false
+      "konsti:minAttendance": 2
     },
     "scheduleItems": [
       {
         "startTime": "2024-07-21T11:00:00+00:00",
-        "endTime": "2024-07-21T15:00:00+00:00",
-        "lengthMinutes": 240,
+        "endTime": "2024-07-21T13:00:00+00:00",
+        "lengthMinutes": 120,
         "location": "Sali 310"
       }
     ]
@@ -12143,40 +12236,6 @@
       {
         "startTime": "2024-07-20T07:00:00+00:00",
         "endTime": "2024-07-20T10:00:00+00:00",
-        "lengthMinutes": 180,
-        "location": "Säde"
-      }
-    ]
-  },
-  {
-    "slug": "menneiden-ja-nykyisten-paivien-seitit-3-pelautus",
-    "title": "Menneiden ja nykyisten päivien seitit (3. pelautus)",
-    "description": "Velhotar Myrtlen seikkailijajoukkio on pinteessä. Heidät värvättiin surmaamaan kauppakaravaaneja vaaninut hirviö, jota he seurasivat metsään eivätkä koskaan palanneet.\r\n\r\nTeidän tehtävänne on selvittää heidän kohtalonsa, pelastaa selviytyjät, sekä saattaa loppuun heidän aloittamansa tehtävä.\r\n\r\nPalkkaajanne on Oldric Rautatyranni, joka haluaa että pelastatte heidät.. Kahleissa, jotta heidät voidaan teloittaa asianmukaisin menoin.\r\n\r\nMyrtlen joukkion jäljet johtavat suuren metsikön ytimessä olevan vanhan, murenevan, sekä kasvillisuuden peitossa olevan haltiapalatsin edustalle, jossa vallitsee epäluonnollinen hiljaisuus.. Ja tästä seikkailumme alkaa.\r\n\r\nValmishahmot tasoilla 4-6, pelissä aikuisia teemoja; kauhun ja väkivallan muodossa. \r\n\r\nPelissä teillä on kaksi tuntia aikaa etsiä Myrtlen joukkiota, aarteita ja varusteita kunnes palatsissa vaaniva hirviö tulee etsimään teidät.\r\n\r\nSäännöstönä OSE ja pelityylinä OSR.",
-    "cachedHosts": "<redacted>",
-    "cachedDimensions": {
-      "date": ["2024-07-20"],
-      "room": ["sade"],
-      "type": ["gaming"],
-      "topic": ["penandpaper", "theme"],
-      "konsti": ["tabletopRPG"],
-      "audience": ["aimed-adults", "beginners"],
-      "language": ["fi"],
-      "playstyle": ["light", "rules-light", "character-driven"],
-      "accessibility": ["duration-over-2h"]
-    },
-    "cachedAnnotations": {
-      "konsti:rpgSystem": "Old-School Essentials",
-      "ropecon:gameSlogan": "Vanhan koulukunnan hirviönmetsästystä vaarallisessa vanhassa haltiapalatsissa.",
-      "konsti:maxAttendance": 5,
-      "konsti:minAttendance": 3,
-      "ropecon:contentWarnings": "Hämähäkit, väkivalta, kehokauhu (madonsyömiä ruumiita)",
-      "ropecon:isRevolvingDoor": false,
-      "ropecon:accessibilityOther": "Hahmolomakkeet vaativat hieman luetun englannin ymmärrystä."
-    },
-    "scheduleItems": [
-      {
-        "startTime": "2024-07-20T17:00:00+00:00",
-        "endTime": "2024-07-20T20:00:00+00:00",
         "lengthMinutes": 180,
         "location": "Säde"
       }
@@ -12666,7 +12725,7 @@
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-21"],
-      "room": ["halli-1b-tyopajatila-2"],
+      "room": ["halli-1b-tyopajatila-1"],
       "type": ["workshop"],
       "topic": ["miniatures", "theme"],
       "konsti": ["workshop"],
@@ -12675,16 +12734,13 @@
       "playstyle": [],
       "accessibility": ["irritate-skin", "requires-dexterity"]
     },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 10,
-      "ropecon:isRevolvingDoor": false
-    },
+    "cachedAnnotations": { "konsti:maxAttendance": 10 },
     "scheduleItems": [
       {
         "startTime": "2024-07-21T09:00:00+00:00",
         "endTime": "2024-07-21T10:45:00+00:00",
         "lengthMinutes": 105,
-        "location": "Halli 1B Työpajatila 2"
+        "location": "Halli 1B Työpajatila 1"
       }
     ]
   },
@@ -14324,8 +14380,7 @@
     },
     "cachedAnnotations": {
       "konsti:rpgSystem": "NAM, Battlefront Miniatures",
-      "konsti:maxAttendance": 10,
-      "ropecon:isRevolvingDoor": false
+      "konsti:maxAttendance": 10
     },
     "scheduleItems": [
       {
@@ -15039,8 +15094,7 @@
     "cachedAnnotations": {
       "konsti:rpgSystem": "Pathfinder 2E",
       "konsti:maxAttendance": 6,
-      "konsti:minAttendance": 2,
-      "ropecon:isRevolvingDoor": false
+      "konsti:minAttendance": 2
     },
     "scheduleItems": [
       {
@@ -16020,7 +16074,7 @@
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-20"],
-      "room": ["sali-318"],
+      "room": ["sali-317"],
       "type": ["gaming"],
       "topic": ["penandpaper", "theme"],
       "konsti": ["tabletopRPG"],
@@ -16040,15 +16094,14 @@
       "ropecon:gameSlogan": "A Pathfinder Society multi-table special",
       "konsti:maxAttendance": 24,
       "konsti:minAttendance": 6,
-      "ropecon:contentWarnings": "Violence, ritual sacrifice",
-      "ropecon:isRevolvingDoor": false
+      "ropecon:contentWarnings": "Violence, ritual sacrifice"
     },
     "scheduleItems": [
       {
         "startTime": "2024-07-20T14:00:00+00:00",
         "endTime": "2024-07-20T19:00:00+00:00",
         "lengthMinutes": 300,
-        "location": "Sali 318"
+        "location": "Sali 317"
       }
     ]
   },
@@ -16874,8 +16927,7 @@
     },
     "cachedAnnotations": {
       "konsti:rpgSystem": "Pikamaalauskilpailu",
-      "konsti:maxAttendance": 10,
-      "ropecon:isRevolvingDoor": false
+      "konsti:maxAttendance": 12
     },
     "scheduleItems": [
       {
@@ -16904,8 +16956,7 @@
     },
     "cachedAnnotations": {
       "konsti:rpgSystem": "Pikamaalauskilpailu",
-      "konsti:maxAttendance": 10,
-      "ropecon:isRevolvingDoor": false
+      "konsti:maxAttendance": 12
     },
     "scheduleItems": [
       {
@@ -16934,8 +16985,7 @@
     },
     "cachedAnnotations": {
       "konsti:rpgSystem": "Pikamaalauskilpailu",
-      "konsti:maxAttendance": 10,
-      "ropecon:isRevolvingDoor": false
+      "konsti:maxAttendance": 12
     },
     "scheduleItems": [
       {
@@ -16964,8 +17014,7 @@
     },
     "cachedAnnotations": {
       "konsti:rpgSystem": "Pikamaalauskilpailu",
-      "konsti:maxAttendance": 10,
-      "ropecon:isRevolvingDoor": false
+      "konsti:maxAttendance": 12
     },
     "scheduleItems": [
       {
@@ -17128,8 +17177,7 @@
     "cachedAnnotations": {
       "konsti:rpgSystem": "Pohjola (itse tehty skirmish-luokan miniatyyripeli jonka maailma on ottanut inspiraatiota mm. Kalevalasta)",
       "konsti:maxAttendance": 4,
-      "ropecon:contentWarnings": "väkivalta / violence",
-      "ropecon:isRevolvingDoor": false
+      "ropecon:contentWarnings": "väkivalta / violence"
     },
     "scheduleItems": [
       {
@@ -17882,6 +17930,68 @@
     ]
   },
   {
+    "slug": "puolenkuun-korttiturnaus-star-wars-unlimited-shadow-of-the-galaxy-single-elimination-release-turnaus",
+    "title": "Puolenkuun korttiturnaus: Star Wars Unlimited: Shadow of the Galaxy - Release-turnaus",
+    "description": "Star Wars Unlimited: Shadow of the Galaxy - Single Elimination Release-turnaus\r\n\r\nGalaxin tällä puolella taistellaan 1 vs. 1 valon tai pimeyden puolella.\r\n\r\nPelaajalla on oltava kuusi Star Wars Unlimited: Shadow of the Galaxy avaamatonta boosteria pelaamiseen, eli turnaus on sealed turnaus!\r\n\r\nTurnaukseen osallistujille varataan boostereita Puolenkuun osastolle.\r\n\r\nPuolenkuun Pelit tarjoaa muun tarvittavan turnauspelaamiseen.\r\nTurnauspeliin voi tutustua Puolenkuun Pelien myyntialueen demo-pöydillä.\r\n\r\nOsallistujia max. 16\r\nMinimi 4.\r\n\r\nOsallistujille kaikille SWU Grogu Promo Card!\r\n\r\nPalkintoina TOP-3:lle\r\n\r\n1. 5 kpl Star Wars Unlimited Shadow of the Galaxy boostereita + 20 € lahjakortti + Puolenkuun pelituote!\r\n2. 3 kpl Star Wars Unlimited Shadow of the Galaxy boostereita + 10 € lahjakortti\r\n3. 3 kpl Star Wars Unlimited Shadow of the Galaxy boostereita",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-07-19"],
+      "room": ["halli-3-turnaussali"],
+      "type": ["gaming", "tournament"],
+      "topic": ["cardgames"],
+      "konsti": ["tournament"],
+      "audience": ["all-ages"],
+      "language": ["fi", "en"],
+      "playstyle": [],
+      "accessibility": []
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Star Wars Unlimited: Shadow of the Galaxy",
+      "konsti:maxAttendance": 16,
+      "konsti:minAttendance": 4,
+      "ropecon:isRevolvingDoor": false
+    },
+    "scheduleItems": [
+      {
+        "startTime": "2024-07-19T14:00:00+00:00",
+        "endTime": "2024-07-19T17:00:00+00:00",
+        "lengthMinutes": 180,
+        "location": "Halli 3 Turnaussali"
+      }
+    ]
+  },
+  {
+    "slug": "puolenkuun-lautapeliturnaus-blokus",
+    "title": "Puolenkuun Lautapeliturnaus BLOKUS",
+    "description": "Blokkaa ja käytä tila hyödyksi, pyöritä Tetrismaiset palaset optimaalisissa asennoissa paikalleen ja voit olla Blokus-mestari!\r\n\r\nTurnauspeliin voi tutustua Puolenkuun Pelien myyntialueen demo-pöydillä ja tarjoamme turnaukseen Blokus-pelit pelattavaksi!\r\n\r\nPALKINNOT\r\n1. Blokus + 15 € lahjakortti + Puolenkuun pelituote!\r\n2. Blokus + 10 € lahjakortti\r\n3. 10 € lahjakortti\r\n\r\nMax 16 pelaajaa\r\nMinimi 4",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-07-19"],
+      "room": ["halli-3-turnaussali"],
+      "type": ["gaming", "tournament"],
+      "topic": ["boardgames"],
+      "konsti": ["tournament"],
+      "audience": [],
+      "language": ["fi", "en"],
+      "playstyle": [],
+      "accessibility": []
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Blokus",
+      "konsti:maxAttendance": 16,
+      "konsti:minAttendance": 4,
+      "ropecon:isRevolvingDoor": false
+    },
+    "scheduleItems": [
+      {
+        "startTime": "2024-07-19T14:00:00+00:00",
+        "endTime": "2024-07-19T17:00:00+00:00",
+        "lengthMinutes": 180,
+        "location": "Halli 3 Turnaussali"
+      }
+    ]
+  },
+  {
     "slug": "puolenkuun-lautapeliturnaus-cascadia",
     "title": "Puolenkuun Lautapeliturnaus CASCADIA",
     "description": "Rakenna ekosysteemi, joka on harmoniassa ympäröivän maailman kanssa.\r\n\r\nTurnauspeliin voi tutustua Puolenkuun Pelien myyntialueen demo-pöydillä ja tarjoamme turnaukseen pelit.\r\n\r\nMax 16 pelaajaa\r\nMinimi 4\r\n\r\n1. Cascadia + 15 € lahjakortti + Puolenkuun pelituote!\r\n2. Cascadia + 10 € lahjakortti\r\n3. 10 € lahjakortti",
@@ -18296,7 +18406,7 @@
   {
     "slug": "revontulten-taikaa-1-pelautus",
     "title": "Revontulten taikaa, 1. pelautus",
-    "description": "Sadutus larppi lapsille.\r\nSukellamme Kalevala vivahteiseen maailmaan pohtimaan mitä tapahtuu revontulten takana.\r\n\r\nPelin kulku:\r\nKaikki alkaa sadusta joka luo tunnelman maailmaan johon siirrymme. Lapset luovat sadun jälkeen oman hahmonsa ja jatkavat sadun loppuun larpaten.",
+    "description": "Revontulet tanssivat metsän eläimet käyttävät taikavoimiaan. Yllättäen revontulet katoavat ja metsän eläinten on yhdistettävä voimansa ja keksittävä keino, jolla tuoda revontulet takaisin taivaalle.   \r\n\r\nLarppi sijoittuu Kalevalan inspiroimaan maailmaan jossa eläimillä on taikavoimia.\r\n\r\nRevontulten taikaa on sadutus larppi. Yhdessä luomme tarinan miten saamme pelastettua revontulet. \r\nLarppi sopii monen ikäisille alle kouluikäistä vanhempien tuella koululaisiin.\r\n\r\nPeliin ilmoittaudutaan ropelarptiskillä.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-20"],
@@ -18326,7 +18436,7 @@
   {
     "slug": "revontulten-taikaa-2-pelautus",
     "title": "Revontulten taikaa, 2. pelautus",
-    "description": "Sadutus larppi lapsille.\r\nSukellamme Kalevala vivahteiseen maailmaan pohtimaan mitä tapahtuu revontulten takana.\r\n\r\nPelin kulku:\r\nKaikki alkaa sadusta joka luo tunnelman maailmaan johon siirrymme. Lapset luovat sadun jälkeen oman hahmonsa ja jatkavat sadun loppuun larpaten.",
+    "description": "Revontulet tanssivat metsän eläimet käyttävät taikavoimiaan. Yllättäen revontulet katoavat ja metsän eläinten on yhdistettävä voimansa ja keksittävä keino, jolla tuoda revontulet takaisin taivaalle.   \r\n\r\nLarppi sijoittuu Kalevalan inspiroimaan maailmaan jossa eläimillä on taikavoimia.\r\n\r\nRevontulten taikaa on sadutus larppi. Yhdessä luomme tarinan miten saamme pelastettua revontulet. \r\nLarppi sopii monen ikäisille alle kouluikäistä vanhempien tuella koululaisiin.\r\n\r\nPeliin ilmoittaudutaan ropelarptiskillä.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-20"],
@@ -18356,7 +18466,7 @@
   {
     "slug": "revontulten-taikaa-3-pelautus",
     "title": "Revontulten taikaa, 3. pelautus",
-    "description": "Sadutus larppi lapsille.\r\nSukellamme Kalevala vivahteiseen maailmaan pohtimaan mitä tapahtuu revontulten takana.\r\n\r\nPelin kulku:\r\nKaikki alkaa sadusta joka luo tunnelman maailmaan johon siirrymme. Lapset luovat sadun jälkeen oman hahmonsa ja jatkavat sadun loppuun larpaten.",
+    "description": "Revontulet tanssivat metsän eläimet käyttävät taikavoimiaan. Yllättäen revontulet katoavat ja metsän eläinten on yhdistettävä voimansa ja keksittävä keino, jolla tuoda revontulet takaisin taivaalle.   \r\n\r\nLarppi sijoittuu Kalevalan inspiroimaan maailmaan jossa eläimillä on taikavoimia.\r\n\r\nRevontulten taikaa on sadutus larppi. Yhdessä luomme tarinan miten saamme pelastettua revontulet. \r\nLarppi sopii monen ikäisille alle kouluikäistä vanhempien tuella koululaisiin.\r\n\r\nPeliin ilmoittaudutaan ropelarptiskillä.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-21"],
@@ -18386,7 +18496,7 @@
   {
     "slug": "revontulten-taikaa-4-pelautus",
     "title": "Revontulten taikaa, 4. pelautus",
-    "description": "Sadutus larppi lapsille.\r\nSukellamme Kalevala vivahteiseen maailmaan pohtimaan mitä tapahtuu revontulten takana.\r\n\r\nPelin kulku:\r\nKaikki alkaa sadusta joka luo tunnelman maailmaan johon siirrymme. Lapset luovat sadun jälkeen oman hahmonsa ja jatkavat sadun loppuun larpaten.",
+    "description": "Revontulet tanssivat metsän eläimet käyttävät taikavoimiaan. Yllättäen revontulet katoavat ja metsän eläinten on yhdistettävä voimansa ja keksittävä keino, jolla tuoda revontulet takaisin taivaalle.   \r\n\r\nLarppi sijoittuu Kalevalan inspiroimaan maailmaan jossa eläimillä on taikavoimia.\r\n\r\nRevontulten taikaa on sadutus larppi. Yhdessä luomme tarinan miten saamme pelastettua revontulet. \r\nLarppi sopii monen ikäisille alle kouluikäistä vanhempien tuella koululaisiin.\r\n\r\nPeliin ilmoittaudutaan ropelarptiskillä.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-21"],
@@ -18847,7 +18957,7 @@
       "playstyle": [],
       "accessibility": ["physical-contact", "moving-around"]
     },
-    "cachedAnnotations": { "ropecon:isRevolvingDoor": false },
+    "cachedAnnotations": {},
     "scheduleItems": [
       {
         "startTime": "2024-07-20T17:00:00+00:00",
@@ -19512,35 +19622,6 @@
         "endTime": "2024-07-20T13:45:00+00:00",
         "lengthMinutes": 105,
         "location": "Sali 207"
-      }
-    ]
-  },
-  {
-    "slug": "satunnaisia-kohtaamisia",
-    "title": "Satunnaisia kohtaamisia",
-    "description": "Soveltavan teatterin paja, jossa pyritään luomaan mahdollisimman hyviä satunnaisia kohtaamisia. Tarinankerronta ja heittäytyminen ovat olennaisia asioita. Hahmojen toimintaan ja motiiveihin tullaan kiinnittämään erityistä huomioita sekä kokeilemaan vaihtoehtoisia toimintamalleja. Tarkoitus on harjoitella itseilmaisua ja tilanteenratkaisutaitoja. \r\n\r\nIlmoittautuminen aukeaa Konstissa lauantaina klo 13.",
-    "cachedHosts": "<redacted>",
-    "cachedDimensions": {
-      "date": ["2024-07-20"],
-      "room": ["sali-102"],
-      "type": ["workshop"],
-      "topic": [],
-      "konsti": ["workshop"],
-      "audience": ["aimed-adults", "beginners"],
-      "language": ["fi"],
-      "playstyle": [],
-      "accessibility": ["physical-contact"]
-    },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 12,
-      "ropecon:isRevolvingDoor": false
-    },
-    "scheduleItems": [
-      {
-        "startTime": "2024-07-20T14:00:00+00:00",
-        "endTime": "2024-07-20T15:55:00+00:00",
-        "lengthMinutes": 115,
-        "location": "Sali 102"
       }
     ]
   },
@@ -21089,7 +21170,7 @@
     "description": "Tervetuloa maailmaan, missä taikuus kiertyy kaiken olevaisen ympärille. Olette mahtavia velhoja, joiden tieto ja taito ylittävät normaalin käsityskyvyn. Planeettanne on vaarassa supernovan vuoksi, joka uhkaa tuhota kaiken elämän. Tehtävänne on luoda supervoimakas taika-amuletti, joka pelastaa teidät supernovalta. Tämä vaatii uuden taikuuden tutkimista ja valjastamista. Onnistuminen vaatii velhomaista neroutta, suunnittelua ja riskien hallintaa... ja yhteistyötä. Mutta kenestä tulee kuuluisin? Ja kuka teistä kantaa amulettia ja hallitsee koko universumin voimia, kenties pysyen yhä viisaana ja oikeudenmukaisena?",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
-      "date": ["2024-07-19"],
+      "date": ["2024-07-21"],
       "room": ["sali-308"],
       "type": ["gaming"],
       "topic": ["penandpaper", "theme"],
@@ -21109,13 +21190,12 @@
       "ropecon:gameSlogan": "Universumin mahtavimmat taiat tutkitaan täällä!",
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
-      "ropecon:contentWarnings": "Voimankäyttö, väkivalta, kaikenlaiset outoudet magiassa, vallan korruptio, mahdollinen selkäänpuukotus ja machiavellismi.",
-      "ropecon:isRevolvingDoor": false
+      "ropecon:contentWarnings": "Voimankäyttö, väkivalta, kaikenlaiset outoudet magiassa, vallan korruptio, mahdollinen selkäänpuukotus ja machiavellismi."
     },
     "scheduleItems": [
       {
-        "startTime": "2024-07-19T19:00:00+00:00",
-        "endTime": "2024-07-19T22:00:00+00:00",
+        "startTime": "2024-07-21T10:00:00+00:00",
+        "endTime": "2024-07-21T13:00:00+00:00",
         "lengthMinutes": 180,
         "location": "Sali 308"
       }
@@ -21352,8 +21432,7 @@
     },
     "cachedAnnotations": {
       "konsti:rpgSystem": "Tarot",
-      "konsti:maxAttendance": 3,
-      "ropecon:isRevolvingDoor": false
+      "konsti:maxAttendance": 3
     },
     "scheduleItems": [
       {
@@ -21443,6 +21522,38 @@
         "endTime": "2024-07-20T07:45:00+00:00",
         "lengthMinutes": 45,
         "location": "Sali 201"
+      }
+    ]
+  },
+  {
+    "slug": "tayta-2",
+    "title": "Vuosisadan juhlat, Feast of the Century",
+    "description": "Kuninkaan määräykset on toteutettava, välittämättä niiden järkevyydestä. Tähän on jokaisen kuningaskunnassa olijan totuttava ja hyväksyttävä. Nyt kuningas on päättänyt että vuosittainen Rauhanjuhla pidennetään seitsemän päivää kestäväksi karnevaaliksi. Hän on myös päättänyt muutamia vetonauloja karnevaaliin, muun muassa hirviöitä päästetään juhlakansan joukkoon \"nostamaan tunnelmaa\". Epätoivon partaalla oleva ministeri on luvannut teille, sekalaiselle palkkionmetsästäjäjoukolle, ruhtinaallisen palkkion hirviöiden vaarattomiksi tekemisestä sillä ehdolla ettette latista kuninkaan juhlatunnelmaa...\r\n\r\nVuosisadan juhlat soveltuu kaikille roolipelaajille peli- ja systeemikokemukseen katsomatta. Seikkailussa luova ongelmanratkaisukyky palkitaan, tavoitteisiin on useita eri tapoja päästä\r\n\r\nThe king's orders are absolute, regardless of sanity. Everyone in the kingdom must adjust and accept this. Now the king has decided that the annual Peace celebration is extended to a weeklong carneval. He has also decided a few major attractions for the carneval, including releasing monsters to the public to \"liven up the mood\". A minister on the brink of despair has promised you, a ragtag bunch of mercenaries, a handsome reward for neutralizing the monsters. The catch is that you can't spoil the king's festive mood...\r\n\r\nFeast of the Century is suitable for all roleplayers regardless of their experience with roleplaying or the system. In the adventure creative problem solving is rewarded. There are many ways to reach your goals.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-07-20"],
+      "room": ["sali-311"],
+      "type": ["gaming"],
+      "topic": ["penandpaper", "theme"],
+      "konsti": ["tabletopRPG"],
+      "audience": ["aimed-between-13-17", "aimed-adults", "beginners"],
+      "language": ["fi", "en"],
+      "playstyle": ["serious", "story-driven", "character-driven"],
+      "accessibility": ["duration-over-2h", "limited-moving-opportunities"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "DnD 5e",
+      "ropecon:gameSlogan": "Vuosisadan mahdollisuus - vai seinähulluutta?",
+      "konsti:maxAttendance": 5,
+      "konsti:minAttendance": 3,
+      "ropecon:contentWarnings": "Väkivalta"
+    },
+    "scheduleItems": [
+      {
+        "startTime": "2024-07-20T07:00:00+00:00",
+        "endTime": "2024-07-20T11:00:00+00:00",
+        "lengthMinutes": 240,
+        "location": "Sali 311"
       }
     ]
   },
@@ -22920,10 +23031,9 @@
     "cachedAnnotations": {
       "konsti:rpgSystem": "Fiasco 2nd edition",
       "ropecon:gameSlogan": "Tarinavetoinen peli tuppukylän sekoilusta",
-      "konsti:maxAttendance": 4,
+      "konsti:maxAttendance": 3,
       "konsti:minAttendance": 3,
-      "ropecon:contentWarnings": "Väkivaltaa, päihteitä, seksiä",
-      "ropecon:isRevolvingDoor": false
+      "ropecon:contentWarnings": "Väkivaltaa, päihteitä, seksiä"
     },
     "scheduleItems": [
       {
@@ -22940,8 +23050,8 @@
     "description": "Meidän tuppukylässä asustaa hienoja ihmisiä. Täällä ei tapahdu paljoakaan ja näin me sen haluammekin olevan. Tai siis, täällä tapahtuu paljonkin, mutta niistä ei puhuta ääneen. Ei, vaikka siihen liittyy ampumistapauksia, päihteitä ja sekavia parisuhdeongelmia. Mutta siis mitään ei tapahdu täällä, ihan normaali tuppukylä siis.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
-      "date": ["2024-07-20"],
-      "room": ["sade"],
+      "date": ["2024-07-21"],
+      "room": ["mesta"],
       "type": ["gaming"],
       "topic": ["penandpaper"],
       "konsti": ["tabletopRPG"],
@@ -22953,17 +23063,16 @@
     "cachedAnnotations": {
       "konsti:rpgSystem": "Fiasco 2e",
       "ropecon:gameSlogan": "Tarinavetoinen peli tuppukylän sekoilusta",
-      "konsti:maxAttendance": 4,
+      "konsti:maxAttendance": 3,
       "konsti:minAttendance": 3,
-      "ropecon:contentWarnings": "Väkivaltaa, päihteitä, seksiä",
-      "ropecon:isRevolvingDoor": false
+      "ropecon:contentWarnings": "Väkivaltaa, päihteitä, seksiä"
     },
     "scheduleItems": [
       {
-        "startTime": "2024-07-20T10:00:00+00:00",
-        "endTime": "2024-07-20T13:00:00+00:00",
+        "startTime": "2024-07-21T08:00:00+00:00",
+        "endTime": "2024-07-21T11:00:00+00:00",
         "lengthMinutes": 180,
-        "location": "Säde"
+        "location": "Mesta"
       }
     ]
   },
@@ -22986,10 +23095,9 @@
     "cachedAnnotations": {
       "konsti:rpgSystem": "Fiasco 2e",
       "ropecon:gameSlogan": "Tarinavetoinen peli tuppukylän sekoilusta",
-      "konsti:maxAttendance": 4,
+      "konsti:maxAttendance": 3,
       "konsti:minAttendance": 3,
-      "ropecon:contentWarnings": "Väkivaltaa, päihteitä, seksiä",
-      "ropecon:isRevolvingDoor": false
+      "ropecon:contentWarnings": "Väkivaltaa, päihteitä, seksiä"
     },
     "scheduleItems": [
       {
@@ -23094,6 +23202,188 @@
         "endTime": "2024-07-20T13:00:00+00:00",
         "lengthMinutes": 120,
         "location": "Säde"
+      }
+    ]
+  },
+  {
+    "slug": "tutori-tutorial",
+    "title": "Tutor tutorial",
+    "description": "If Ropecon is new to you, the location feels complex, or you lack companions to join you in the , the easiest way to begin your visit is to join Tutors' tour of Ropecon. Our tutors in their pink cloaks go through the convention and guide you to its mysteries!",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-07-20"],
+      "room": ["etelaisen-sisaankaynnin-aula"],
+      "type": [],
+      "topic": [],
+      "konsti": [],
+      "audience": ["all-ages", "beginners"],
+      "language": ["fi"],
+      "playstyle": [],
+      "accessibility": []
+    },
+    "cachedAnnotations": {},
+    "scheduleItems": [
+      {
+        "startTime": "2024-07-20T08:30:00+00:00",
+        "endTime": "2024-07-20T09:15:00+00:00",
+        "lengthMinutes": 45,
+        "location": "Eteläisen sisäänkäynnin aula"
+      }
+    ]
+  },
+  {
+    "slug": "tuutorikierros",
+    "title": "Tuutorikierros",
+    "description": "Jos Ropecon on sinulle vieras, Messukeskus tuntuu valtavalta, eikä kiinnostaviin ohjelmiin ole kaveria seuraksi, niin helpoin tapa aloittaa on lähtemällä Ropeconin pinkkiviittaisten tuutorien mukaan opastetulle kierrokselle, jossa kierretään läpi koko Ropecon.\r\n\r\nLähtöpaikka: Infon edessä / Aula",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-07-19"],
+      "room": ["etelaisen-sisaankaynnin-aula"],
+      "type": [],
+      "topic": [],
+      "konsti": [],
+      "audience": ["all-ages", "beginners"],
+      "language": ["fi"],
+      "playstyle": [],
+      "accessibility": []
+    },
+    "cachedAnnotations": {},
+    "scheduleItems": [
+      {
+        "startTime": "2024-07-19T13:00:00+00:00",
+        "endTime": "2024-07-19T13:45:00+00:00",
+        "lengthMinutes": 45,
+        "location": "Eteläisen sisäänkäynnin aula"
+      }
+    ]
+  },
+  {
+    "slug": "tuutorikierros-2",
+    "title": "Tuutorikierros",
+    "description": "Jos Ropecon on sinulle vieras, Messukeskus tuntuu valtavalta, eikä kiinnostaviin ohjelmiin ole kaveria seuraksi, niin helpoin tapa aloittaa on lähtemällä Ropeconin pinkkiviittaisten tuutorien mukaan opastetulle kierrokselle, jossa kierretään läpi koko Ropecon.\r\n\r\nLähtöpaikka: Infon edessä / Aula",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-07-19"],
+      "room": ["etelaisen-sisaankaynnin-aula"],
+      "type": [],
+      "topic": [],
+      "konsti": [],
+      "audience": ["all-ages", "beginners"],
+      "language": ["fi"],
+      "playstyle": [],
+      "accessibility": []
+    },
+    "cachedAnnotations": {},
+    "scheduleItems": [
+      {
+        "startTime": "2024-07-19T15:00:00+00:00",
+        "endTime": "2024-07-19T15:45:00+00:00",
+        "lengthMinutes": 45,
+        "location": "Eteläisen sisäänkäynnin aula"
+      }
+    ]
+  },
+  {
+    "slug": "tuutorikierros-4",
+    "title": "Tuutorikierros",
+    "description": "Jos Ropecon on sinulle vieras, Messukeskus tuntuu valtavalta, eikä kiinnostaviin ohjelmiin ole kaveria seuraksi, niin helpoin tapa aloittaa on lähtemällä Ropeconin pinkkiviittaisten tuutorien mukaan opastetulle kierrokselle, jossa kierretään läpi koko Ropecon.\r\n\r\nLähtöpaikka: Infon edessä / Aula",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-07-20"],
+      "room": ["etelaisen-sisaankaynnin-aula"],
+      "type": [],
+      "topic": [],
+      "konsti": [],
+      "audience": ["all-ages", "beginners"],
+      "language": ["fi"],
+      "playstyle": [],
+      "accessibility": []
+    },
+    "cachedAnnotations": {},
+    "scheduleItems": [
+      {
+        "startTime": "2024-07-20T07:00:00+00:00",
+        "endTime": "2024-07-20T07:45:00+00:00",
+        "lengthMinutes": 45,
+        "location": "Eteläisen sisäänkäynnin aula"
+      }
+    ]
+  },
+  {
+    "slug": "tuutorikierros-5",
+    "title": "Tuutorikierros",
+    "description": "Jos Ropecon on sinulle vieras, Messukeskus tuntuu valtavalta, eikä kiinnostaviin ohjelmiin ole kaveria seuraksi, niin helpoin tapa aloittaa on lähtemällä Ropeconin pinkkiviittaisten tuutorien mukaan opastetulle kierrokselle, jossa kierretään läpi koko Ropecon.\r\n\r\nLähtöpaikka: Infon edessä / Aula",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-07-20"],
+      "room": ["etelaisen-sisaankaynnin-aula"],
+      "type": [],
+      "topic": [],
+      "konsti": [],
+      "audience": ["all-ages", "beginners"],
+      "language": ["fi"],
+      "playstyle": [],
+      "accessibility": []
+    },
+    "cachedAnnotations": {},
+    "scheduleItems": [
+      {
+        "startTime": "2024-07-20T08:30:00+00:00",
+        "endTime": "2024-07-20T09:15:00+00:00",
+        "lengthMinutes": 45,
+        "location": "Eteläisen sisäänkäynnin aula"
+      }
+    ]
+  },
+  {
+    "slug": "tuutorikierros-6",
+    "title": "Tuutorikierros",
+    "description": "Jos Ropecon on sinulle vieras, Messukeskus tuntuu valtavalta, eikä kiinnostaviin ohjelmiin ole kaveria seuraksi, niin helpoin tapa aloittaa on lähtemällä Ropeconin pinkkiviittaisten tuutorien mukaan opastetulle kierrokselle, jossa kierretään läpi koko Ropecon.\r\n\r\nLähtöpaikka: Infon edessä / Aula",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-07-20"],
+      "room": ["etelaisen-sisaankaynnin-aula"],
+      "type": [],
+      "topic": [],
+      "konsti": [],
+      "audience": ["all-ages", "beginners"],
+      "language": ["fi"],
+      "playstyle": [],
+      "accessibility": []
+    },
+    "cachedAnnotations": {},
+    "scheduleItems": [
+      {
+        "startTime": "2024-07-20T10:00:00+00:00",
+        "endTime": "2024-07-20T10:45:00+00:00",
+        "lengthMinutes": 45,
+        "location": "Eteläisen sisäänkäynnin aula"
+      }
+    ]
+  },
+  {
+    "slug": "tuutorikierros-7",
+    "title": "Tuutorikierros",
+    "description": "Jos Ropecon on sinulle vieras, Messukeskus tuntuu valtavalta, eikä kiinnostaviin ohjelmiin ole kaveria seuraksi, niin helpoin tapa aloittaa on lähtemällä Ropeconin pinkkiviittaisten tuutorien mukaan opastetulle kierrokselle, jossa kierretään läpi koko Ropecon.\r\n\r\nLähtöpaikka: Infon edessä / Aula",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-07-21"],
+      "room": ["etelaisen-sisaankaynnin-aula"],
+      "type": [],
+      "topic": [],
+      "konsti": [],
+      "audience": ["all-ages", "beginners"],
+      "language": ["fi"],
+      "playstyle": [],
+      "accessibility": []
+    },
+    "cachedAnnotations": {},
+    "scheduleItems": [
+      {
+        "startTime": "2024-07-21T09:00:00+00:00",
+        "endTime": "2024-07-21T09:45:00+00:00",
+        "lengthMinutes": 45,
+        "location": "Eteläisen sisäänkäynnin aula"
       }
     ]
   },
@@ -23448,6 +23738,43 @@
     ]
   },
   {
+    "slug": "uusi-tuuli",
+    "title": "Uusi tuuli",
+    "description": "Kylä meren ja aavikon välissä. Korventava kuivuus. Jotain on tehtävä.\r\n\r\nKoto on elänyt omaa elämaansä jo vuosikausia kaukana erämaan vaaroista ja muinaisten raunioista. Nyt mereltä kosteutta tuova tuuli on vaihtunut aavikon hiekkamyrskyyn. Muinainen Myrskykilpi on viimein pettänyt.\r\n\r\nErämaa on vaarallinen, mutta nyt Kodolla ei ole vaihtoehtoja. Kylän suojelijoiden on suunnattava erämaahan, vanhan kaupungin raunioille ja käännettävä aavikon tuulet… tai ainakin yritettävä parhaansa.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-07-19"],
+      "room": ["sali-306"],
+      "type": ["gaming"],
+      "topic": ["penandpaper", "theme"],
+      "konsti": ["tabletopRPG"],
+      "audience": ["aimed-adults"],
+      "language": ["fi"],
+      "playstyle": [
+        "serious",
+        "rules-light",
+        "story-driven",
+        "character-driven"
+      ],
+      "accessibility": []
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "oma",
+      "ropecon:gameSlogan": "Tarinapitoinen peli uuden ja vanhan maailman kohtaamisesta",
+      "konsti:maxAttendance": 4,
+      "konsti:minAttendance": 3,
+      "ropecon:contentWarnings": "luonnonkatastrofit, väkivalta, hirviöt, post-apokalyptinen maailma"
+    },
+    "scheduleItems": [
+      {
+        "startTime": "2024-07-19T18:00:00+00:00",
+        "endTime": "2024-07-19T22:00:00+00:00",
+        "lengthMinutes": 240,
+        "location": "Sali 306"
+      }
+    ]
+  },
+  {
     "slug": "uutuus-trolliusn-roll",
     "title": "Trollius'n Roll (peliuutuus)",
     "description": "Kotimainen uutuuspeli joka julkaistaan syksyllä 2024! Pääse ennakkoon testaamaan uutta roll & Write peliä. \r\n\r\nPeli sopii 7+ mutta pelissä on useita eri variantteja ja niistä haastavimmat sopivat hyvin myös peliharrastajille. \r\n\r\nTrollius'n Roll on nopeatempoinen noppapeli, joka näyttää nopeasti siltä että hyvällä onnella voitat pelin. Kuitenkin tulet huomaamaan että pelin voiton vie paras taktikoija.\r\n\r\nYhden pelin kesto on noin 20-45min ja uusi aloitetaan aina edellisen loputtua. Voit tulla seuraamaan myös muiden pelaamista.\r\n\r\nTule tutustumaan Trolliuksen maailmaan!\r\n\r\nDomestic novelty game that will be released in the fall of 2024!  Get early access to test the new Roll & Write game.\r\n\r\n The game is suitable for 7+, but the game has several different variants and the most challenging ones are also suitable for game enthusiasts.\r\n\r\n Trollius'n Roll is a fast-paced dice game that quickly looks like you'll win the game with good luck.  However, you will notice that the best tactician wins the game.  \r\n\r\nThe duration of one game is about 20-45 minutes, and a new one is always started after the previous one ends.  You can also come and watch others play.\r\n\r\n Come and discover the world of Trollius!",
@@ -23515,39 +23842,6 @@
     ]
   },
   {
-    "slug": "vaarojen-vuoren-varjossa",
-    "title": "Vaarojen vuoren varjossa",
-    "description": "Joukko kynnelle kykeneviä löytää itsensä seikkailijoiden kuvainnollisista saappaista herätessään paaluihin sidottuna tuntemattomalta aukealta. Pian suuri loihtija kertoo heille tämän kaiken olevan osa suurta ennustusta jossa ajan ja maailman tuho voidaan välttää vain jos he kykenevät noutamaan lumotun jalokiven läheiseltä vuorelta. Loihtijan itse kivettyessä heidän eteensä suuntia jaa jäljelle vain yksi: Kohti horisontissa kohoavaa vuoristoa.\r\n\r\nAiempaa osaamista Lamentationsista ei tarvita. Aikataulu tulee painamaan hahmojen niskaan, joten pientä stressiä on odotettavissa. Matalan loitsutason fantasiaa. Valmishahmot.",
-    "cachedHosts": "<redacted>",
-    "cachedDimensions": {
-      "date": ["2024-07-20"],
-      "room": ["sali-315"],
-      "type": ["gaming"],
-      "topic": ["penandpaper"],
-      "konsti": ["tabletopRPG"],
-      "audience": ["aimed-between-13-17", "aimed-adults", "beginners"],
-      "language": ["fi"],
-      "playstyle": ["serious", "rules-light", "story-driven"],
-      "accessibility": ["limited-moving-opportunities"]
-    },
-    "cachedAnnotations": {
-      "konsti:rpgSystem": "Lamentations of the Flame Princess",
-      "ropecon:gameSlogan": "Vanhakantainen Sinne ja Takaisin seikkailu",
-      "konsti:maxAttendance": 6,
-      "konsti:minAttendance": 2,
-      "ropecon:contentWarnings": "Vapaudenriisto, väkivalta, hukkumisen uhka",
-      "ropecon:isRevolvingDoor": false
-    },
-    "scheduleItems": [
-      {
-        "startTime": "2024-07-20T18:00:00+00:00",
-        "endTime": "2024-07-20T23:00:00+00:00",
-        "lengthMinutes": 300,
-        "location": "Sali 315"
-      }
-    ]
-  },
-  {
     "slug": "vaatesuunnittelua-larppaajille-miten-paasta-hahmon-saappaisiin",
     "title": "Vaatesuunnittelua larppaajille - miten päästä hahmon saappaisiin?",
     "description": "Jee, hyväksytty larppi-ilmoittautuminen! Hahmokin on juuri sitä mitä halusit. Mutta miten lomaileva avaruussotilas pukeutuu? Entä cyberpunk-nomadi? Ja mistä ihmeestä löytää kaavat Hugo Bossin 30-40-luvun tuotantoon?\r\nTämä ohjelma keskittyy proppaamisen suunnittelupuoleen, eli kaikkeen mikä tapahtuu ennen sitä, kun loimusametti ja saumuri kaivetaan esiin. Toisin sanottuna tylsää tehdastyötä tekevä ammattiompelija pääsee kerrankin vaahtoamaan designista ja silueteista. Esteettiseen puoleen keskittymisen lisäksi listaan omia epäonnistumisiani apuna käyttäen muutamia ikäviä reaalimaailman asioita, kuten vaikkapa ympäristö ja vuodenaika, jotka suunnitteluvaiheessa kannattaa ottaa huomioon kärsimyksen minimoimiseksi.",
@@ -23579,7 +23873,7 @@
   {
     "slug": "vaeltajien-tarina",
     "title": "Vaeltajien tarina",
-    "description": "Olet vaeltaja, muuttuvien ilmojen armoilla kulkija. Yksi niistä monista, joiden polut risteävät, ja jotka löytävät turvaa toisistaan. Maailmaa kansoittavat pelottavat olennot, toinen toistaan kamalammat, mutta jotenkin on elettävä. Teet parhaasi vältelläksesi näitä olentoja, jotkut niistä osaavat lentää, toiset ovat hädin tuskin kokoisiasi, mutta jokainen niistä on kovin vaarallinen. \r\n\r\nPahimpia niistä ovat kuitenkin jättiläiset. Ne, jotka katsovat teitä, ja päästävät jotain kummallista kieltä. Ne, joista ei koskaan tiedä, onko kyseessä vaara vai ei. Ne, jotka yrittävät ottaa teidät kiinni, ja jotka eivät tunnu koskaan luovuttavan. Jättiläiset, joita on kaikkialla. Aivan kaikkialla.\r\nMuistat kulkeneesi päiväkaupalla nälkäisenä, yrittäen metsästää parhaasi mukaan. Nälkä pakotti sinut lähemmäksi jättiläisten asutusta kuin koskaan aikaisemmin, mutta samalla tiesit, ettei se välttämättä ollut paha asia. Kunhan sinua ei nähtäisi, olisit turvassa. Otit epäröiviä askeleita, pohtien tarkkaan jokaista siirtoasi. Tarkkailit alueita, varoen jokaista liikahdusta. Mutta mitä ihmettä! Tuollahan on ruokaa! Ilahduit, lähestyen mahdollista saalista. Olisi selkeästi pitänyt tulla tänne jo aiemmin, mietit tyytyväisenä. Yhtäkkiä jokin pamahti, ja tajusit joutuneesi ansaan! Pelästyit, odotit tuntevasi kipua, mutta sitä ei koskaan tullut. \r\nSen sijaan sinut suljettiin omituiseen tilaan, josta et päässytkään enää vapaaksi. Päästät varoituksen, mutta sinua katsovat jättiläiset eivät tunnu ymmärtävän sitä. Entä keitä ovat nämä muut, lähes vaeltajan näköiset olennot, jotka puhuvat sinun kieltäsi? Miksi he kuitenkin ovat jotenkin… erilaisia? Aivan kuin he olisivat jättiläisten puolella, et varmastikaan voi luottaa heihin. Ainoastaan itseesi, ja omiin kykyihisi. \r\n\r\nMitä tulevaisuus tuo sinulle tullessaan? \r\n\r\nVaeltajien tarina on larppi, jota suositellaan yli 13-vuotiaille. Sen keskeisiä teemoja ovat tuntemattoman pelko, luottamus, konfliktit, ja erikielisyys. Larpissa osa hahmoista puhuu kielellä, jota toiset eivät ymmärrä. Larppi on aloittelijaystävällinen, mutta vaatii kykyä heittäytyä. Hahmojen inspiraationa toimivat Vaasan kissatalon iki-ihanat asukkaat, joten luvassa on melkoinen luonnekirjo! Otathan yhteyttä pelinjohtajaan, mikäli sinulla on kysyttävää.",
+    "description": "Olet vaeltaja, muuttuvien ilmojen armoilla kulkija. Yksi niistä monista, joiden polut risteävät, ja jotka löytävät turvaa toisistaan. Maailmaa kansoittavat pelottavat olennot, toinen toistaan kamalammat, mutta jotenkin on elettävä. Teet parhaasi vältelläksesi näitä olentoja, jotkut niistä osaavat lentää, toiset ovat hädin tuskin kokoisiasi, mutta jokainen niistä on kovin vaarallinen. \r\n\r\nPahimpia niistä ovat kuitenkin jättiläiset. Ne, jotka katsovat teitä, ja päästävät jotain kummallista kieltä. Ne, joista ei koskaan tiedä, onko kyseessä vaara vai ei. Ne, jotka yrittävät ottaa teidät kiinni, ja jotka eivät tunnu koskaan luovuttavan. Jättiläiset, joita on kaikkialla. Aivan kaikkialla.\r\nMuistat kulkeneesi päiväkaupalla nälkäisenä, yrittäen metsästää parhaasi mukaan. Nälkä pakotti sinut lähemmäksi jättiläisten asutusta kuin koskaan aikaisemmin, mutta samalla tiesit, ettei se välttämättä ollut paha asia. Kunhan sinua ei nähtäisi, olisit turvassa. Otit epäröiviä askeleita, pohtien tarkkaan jokaista siirtoasi. Tarkkailit alueita, varoen jokaista liikahdusta. Mutta mitä ihmettä! Tuollahan on ruokaa! Ilahduit, lähestyen mahdollista saalista. Olisi selkeästi pitänyt tulla tänne jo aiemmin, mietit tyytyväisenä. Yhtäkkiä jokin pamahti, ja tajusit joutuneesi ansaan! Pelästyit, odotit tuntevasi kipua, mutta sitä ei koskaan tullut. \r\nSen sijaan sinut suljettiin omituiseen tilaan, josta et päässytkään enää vapaaksi. Päästät varoituksen, mutta sinua katsovat jättiläiset eivät tunnu ymmärtävän sitä. Entä keitä ovat nämä muut, lähes vaeltajan näköiset olennot, jotka puhuvat sinun kieltäsi? Miksi he kuitenkin ovat jotenkin… erilaisia? Aivan kuin he olisivat jättiläisten puolella, et varmastikaan voi luottaa heihin. Ainoastaan itseesi, ja omiin kykyihisi. \r\n\r\nMitä tulevaisuus tuo sinulle tullessaan? \r\n\r\nVaeltajien tarina on larppi, jota suositellaan yli 13-vuotiaille. Sen keskeisiä teemoja ovat tuntemattoman pelko, luottamus, konfliktit, ja erikielisyys. Larpissa osa hahmoista puhuu kielellä, jota toiset eivät ymmärrä. Larppi on aloittelijaystävällinen, mutta vaatii kykyä heittäytyä. Hahmojen inspiraationa toimivat Vaasan kissatalon iki-ihanat asukkaat, joten luvassa on melkoinen luonnekirjo! Otathan yhteyttä pelinjohtajaan, mikäli sinulla on kysyttävää.\r\n\r\nHuom: Pelin ilmoittautuminen ropelarp-tiskillä",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-20"],
@@ -23601,7 +23895,6 @@
       "konsti:minAttendance": 6,
       "ropecon:numCharacters": 11,
       "ropecon:contentWarnings": "konflikti, syrjintä, menneisyyden traumat, tuntemattoman pelko, petturuus",
-      "ropecon:isRevolvingDoor": false,
       "ropecon:accessibilityOther": "Suosittelen lapsen seuraksi aikuista, sillä saattaa sisältä konsepteja, jotka voivat vaatia selittämistä. Pelinjohtaja auttaa tässä kuitenkin mielellään tarvittaessa, tilanteesta riippuen."
     },
     "scheduleItems": [
@@ -23883,7 +24176,7 @@
   {
     "slug": "varttinakehrayspaja",
     "title": "Värttinäkehräyspaja",
-    "description": "Värttinäpaja tulee jälleen! Tänäkin vuonna luvassa tiukkoja käänteitä ja hikikarpaloita villan ja kepin parissa!\r\n\r\nVärttinällä kehräys on parhaimmillaan meditatiivinen harrastus mutta myös harjoitusta vaativa postkapitalismiin valmentava taito, jota voi kokemuksen myötä harrastaa lähes missä tahansa kulkee. Pajassa kannustetaan aloittamaan nollasta ja sen yläpuolelta ja epäonnistumaan rohkeasti. Testataan kiinnostuksen mukaan erilaisia värjäämättömiä villoja ja ehkä Jopa Muita Kuituja. Pajassa on saatavilla kokeiluun harjoitusvärttinän lisäksi myös muutamia eri kokoisia ja -mallisia värttinöitä. Mahdollisuus viedä oma värttinä kotiin työpajan päätteeksi (tällä kertaa oikeasti) hintaan 12 €. \r\n\r\nTestaa sorminäppäryytesi rajoja! Näe kohuttu \"kirpparin kuhmuinen Vanha Keppi\"! Todista työvälineen putoamista lattialle uudestaan ja uudestaan! \r\n”Oletko koskaan halunnut olla kehrääjä, ja jos olet, nyt se on mahdollista, sillä uusi kehrääjä on saapunut ja se olet sinä.” -Vanha sananlasku.\r\n\r\nIlmoittautuminen Konstissa perjantaina 19.7. kello 18 alkaen.\r\nTyöpajamaksu 2 €. Mobilepay tai käteinen.",
+    "description": "Värttinäpaja tulee jälleen! Tänäkin vuonna luvassa tiukkoja käänteitä ja hikikarpaloita villan ja kepin parissa!\r\n\r\nVärttinällä kehräys on parhaimmillaan meditatiivinen harrastus mutta myös harjoitusta vaativa postkapitalismiin valmentava taito, jota voi kokemuksen myötä harrastaa lähes missä tahansa kulkee. Pajassa kannustetaan aloittamaan nollasta ja sen yläpuolelta ja epäonnistumaan rohkeasti. Testataan kiinnostuksen mukaan erilaisia värjäämättömiä villoja ja ehkä Jopa Muita Kuituja. Pajassa on saatavilla kokeiluun harjoitusvärttinän lisäksi myös muutamia eri kokoisia ja -mallisia värttinöitä. Mahdollisuus viedä oma värttinä kotiin työpajan päätteeksi (tällä kertaa oikeasti) hintaan 12 €. \r\n\r\nTestaa sorminäppäryytesi rajoja! Näe kohuttu \"kirpparin kuhmuinen Vanha Keppi\"! Todista työvälineen putoamista lattialle uudestaan ja uudestaan!  \r\n”Oletko koskaan halunnut olla kehrääjä, ja jos olet, nyt se on mahdollista, sillä uusi kehrääjä on saapunut ja se olet sinä.” -Vanha sananlasku.\r\n\r\nIlmoittautuminen Konstissa perjantaina 19.7. kello 18 alkaen.\r\nTyöpajamaksu 2 €. Mobilepay tai käteinen.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-20"],
@@ -23913,7 +24206,7 @@
   {
     "slug": "varttinakehrayspaja-2",
     "title": "Värttinäkehräyspaja",
-    "description": "Värttinäpaja tulee jälleen! Tänäkin vuonna luvassa tiukkoja käänteitä ja hikikarpaloita villan ja kepin parissa!\r\n\r\nVärttinällä kehräys on parhaimmillaan meditatiivinen harrastus mutta myös harjoitusta vaativa postkapitalismiin valmentava taito, jota voi kokemuksen myötä harrastaa lähes missä tahansa kulkee. Pajassa kannustetaan aloittamaan nollasta ja sen yläpuolelta ja epäonnistumaan rohkeasti. Testataan kiinnostuksen mukaan erilaisia värjäämättömiä villoja ja ehkä Jopa Muita Kuituja. Pajassa on saatavilla kokeiluun harjoitusvärttinän lisäksi myös muutamia eri kokoisia ja -mallisia värttinöitä. Mahdollisuus viedä oma värttinä kotiin työpajan päätteeksi (tällä kertaa oikeasti) hintaan 12 €. \r\n\r\nTestaa sorminäppäryytesi rajoja! Näe kohuttu \"kirpparin kuhmuinen Vanha Keppi\"! Todista työvälineen putoamista lattialle uudestaan ja uudestaan! \r\n”Oletko koskaan halunnut olla kehrääjä, ja jos olet, nyt se on mahdollista, sillä uusi kehrääjä on saapunut ja se olet sinä.” -Vanha sananlasku.\r\n\r\nIlmoittautuminen Konstissa lauantaina 20.7. kello 15 alkaen. Työpajamaksu 2 €.",
+    "description": "Värttinäpaja tulee jälleen! Tänäkin vuonna luvassa tiukkoja käänteitä ja hikikarpaloita villan ja kepin parissa!\r\n\r\nVärttinällä kehräys on parhaimmillaan meditatiivinen harrastus mutta myös harjoitusta vaativa postkapitalismiin valmentava taito, jota voi kokemuksen myötä harrastaa lähes missä tahansa kulkee. Pajassa kannustetaan aloittamaan nollasta ja sen yläpuolelta ja epäonnistumaan rohkeasti. Testataan kiinnostuksen mukaan erilaisia värjäämättömiä villoja ja ehkä Jopa Muita Kuituja. Pajassa on saatavilla kokeiluun harjoitusvärttinän lisäksi myös muutamia eri kokoisia ja -mallisia värttinöitä. Mahdollisuus viedä oma värttinä kotiin työpajan päätteeksi (tällä kertaa oikeasti) hintaan 12 €. \r\n\r\nTestaa sorminäppäryytesi rajoja! Näe kohuttu \"kirpparin kuhmuinen Vanha Keppi\"! Todista työvälineen putoamista lattialle uudestaan ja uudestaan!  \r\n”Oletko koskaan halunnut olla kehrääjä, ja jos olet, nyt se on mahdollista, sillä uusi kehrääjä on saapunut ja se olet sinä.” -Vanha sananlasku.\r\n\r\nIlmoittautuminen Konstissa lauantaina 20.7. kello 15 alkaen. Työpajamaksu 2 €.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-20"],
@@ -24600,6 +24893,32 @@
     ]
   },
   {
+    "slug": "warhammer-40-000-the-monsters-of-hyperbolea-susun",
+    "title": "Warhammer 40.000 - The Monsters of Hyperbölea (Su/Sun)",
+    "description": "Hyperbölean kammottavat hirviöt ovat kaivautuneet ulos pesistään ja hyökkäävät planeetalla liikkuvien joukkojen kimppuun!\r\n\r\nJo vuosia jatkunut taistelu Bölean planetaalla jatkuu taas kesällä 2024 Ropeconissa, kun perinteikäs Ropeconin Warhammer 40k-turnaus järjestetään taas! \r\n\r\nLuvassa viisi kierrosta nelkkaria ajankohtaisilla säännöillä! Turnauksen sääntöpaketti ja ilmoittautumislinkki tulevat myöhemmin!",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-07-21"],
+      "room": ["halli-3-figuturnausalue"],
+      "type": ["gaming", "tournament"],
+      "topic": ["miniatures"],
+      "konsti": [],
+      "audience": [],
+      "language": ["fi"],
+      "playstyle": [],
+      "accessibility": []
+    },
+    "cachedAnnotations": {},
+    "scheduleItems": [
+      {
+        "startTime": "2024-07-21T07:00:00+00:00",
+        "endTime": "2024-07-21T15:00:00+00:00",
+        "lengthMinutes": 480,
+        "location": "Halli 3 Figuturnausalue"
+      }
+    ]
+  },
+  {
     "slug": "warhammer-chaos-in-the-old-world-la-sat",
     "title": "Warhammer: Chaos In The Old World",
     "description": "Vanhan maailman on aika palaa. Kaaoksen jumalat taistelevat maailman herruudesta. Kuka turmelee kuolevaisten maailman parhaiten omaksi kuvakseen? Mutta varokaa, on myös pieni mahdollisuus, että pahuus karkoitetaan ja kaikki häviävät!\r\n\r\nILMOITTAUTUMINEN\r\nTähän ohjelmaan on ennakkoilmoittautuminen Kokemuspisteen infon luona (Halli 3, pohjoinen sisäänkäynti 3.3). Ilmoittautuminen alkaa perjantaina klo 16. Paikat täytetään ilmoittautumisjärjestyksessä. Peliin mahtuu 4 pelaajaa.\r\n\r\n***\r\nIt's time for the old world to burn. Chaos gods fight against each other from the dominance of the world. Who will corrupt the realm of mortals to his own image? But beware, there is still a spark of light in the world, which could bring doom to all evil gods.\r\n\r\nREGISTRATION\r\nPre-registration for this program is available at the Kokemuspiste info (Hall 3, north entrance 3.3). Registration starts on Friday at 4 pm. Places will be filled in order of registration. The game can accommodate 4 players.",
@@ -25217,7 +25536,7 @@
   {
     "slug": "yhteistoiminnallinen-roolipelaaminen-kaytannon-kokemuksia-ja-kaytanteita",
     "title": "Yhteistoiminnallinen roolipelaaminen - käytännön kokemuksia ja käytänteitä",
-    "description": "Yhteistoiminnallinen eli pelinjohtajaton peli. Esitys on käytännönläheinen ja perustuu omiin pelikokemuksiin tarinavetoisissa peleissä niin pelaajana, fasilitoijana kuin omaan käyttöön tehtyjen pelien suunnittelijana. Taustalla on vaikuttanut mm. Ironsworn, Mythic Game Master Emulator, Radiance Adventure Engine, Everwayn kortit ja Microscope.\r\n\r\nToivon esityksen tarjoavan ajatuksia, malleja ja rohkaisua pelityyllistä kiinnostuneille! Esitystä ei valitettavasti vedetä yhteistoiminnallisena, vaan perinteisempänä esityksenä.\r\n\r\nRopeconin ohjelmassa on tarjolla myös vetämäni peli “Johdantoseikkailu yhteistoiminnalliseen pelaamiseen”.",
+    "description": "Yhteistoiminnallinen eli pelinjohtajaton peli. Esitys on käytännönläheinen ja perustuu omiin pelikokemuksiin tarinavetoisissa peleissä niin pelaajana, fasilitoijana kuin omaan käyttöön tehtyjen pelien suunnittelijana. Taustalla on vaikuttanut mm. Ironsworn ja Mythic Game Master Emulator.\r\n\r\nToivon esityksen tarjoavan ajatuksia, malleja ja rohkaisua pelityyllistä kiinnostuneille! Esitystä ei valitettavasti vedetä yhteistoiminnallisena, vaan perinteisempänä esityksenä.\r\n\r\nRopeconin ohjelmassa on tarjolla myös vetämäni peli “Johdantoseikkailu yhteistoiminnalliseen pelaamiseen”.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-07-19"],
@@ -25242,7 +25561,7 @@
   },
   {
     "slug": "yo-oopperassa-night-at-the-opera",
-    "title": "Yö Oopperassa / Night at the Opera",
+    "title": "PERUTTU: Yö Oopperassa / Night at the Opera",
     "description": "Suomeksi:\r\nTerve, choombat! On vuosi 2045. Night Cityn yliopistoalueella kohisee. Useita opiskelijanuoria on kadonnut viime päivien aikana. Tämä ei tietenkään sinänsä poikkea kaupungin tavallisesta arjesta, mutta tapausten tiheys herättää huomiota, ja nyt kadonneiden joukossa on joku jonka porukoilla on riittävästi tuohta saada taskuunsa sekä poliisin että teidän kaltaisenne ryhmän edgerunnereita tutkimaan tapausta. Pääepäiltyinä on vampyyrejä larppaava katujengi, mutta jää teidän koplan hommaksi saattaa tutkimus loppuun siellä minne lain koura ei yletä.\r\n\r\nOdotukset pelaajille: Valmius heittäytyä tarinaan ja sen tunnelmaan, EI aikaisempaa kokemusta \"Night at the Opera\" valmisseikkailusta.\r\n\r\nIn English:\r\n'sup, choombas! It's the year 2045. The Night City university district is brewing. Several young students have gone missing in the last few days. Such isn't of course typically so unusual in the city, but the close proximity of the cases has garnered some attention and now the victims include someone who's folks have enough dough to get both the cops and a crew of edgerunners such as yourselves looking into the case. The main suspects is a street gang that likes to larp as vampires, but it's up to your crew to bring the investigation to a close there where the hand of law doesn't reach.\r\n\r\nExpecting players to: Be ready to dive into the story and atmosphere. To have NO experience of the pre-written adventure \"Night at the Opera\".",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
@@ -25261,8 +25580,7 @@
       "ropecon:gameSlogan": "Kyberpunkia kauhuvivahteella",
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
-      "ropecon:contentWarnings": "Aseellinen väkivalta, gore, rikollisuus, synkkä, viittaukset stalkkaukseen, mieto/kohtalainen body horror. / Weapon violence, gore, crime, dark, implications of stalking, mild-to-moderate body horror.",
-      "ropecon:isRevolvingDoor": false
+      "ropecon:contentWarnings": "Aseellinen väkivalta, gore, rikollisuus, synkkä, viittaukset stalkkaukseen, mieto/kohtalainen body horror. / Weapon violence, gore, crime, dark, implications of stalking, mild-to-moderate body horror."
     },
     "scheduleItems": [
       {
