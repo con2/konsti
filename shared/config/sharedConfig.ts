@@ -142,6 +142,7 @@ export const sharedConfig: SharedConfig = {
     // LARPS
     "henkien-yo", // Henkien yö
     "lauteilla-digitaalinen-ratkaisuraati", // Lauteilla – Digitaalinen ratkaisuraati
+    "lauteilla-digitaalinen-ratkaisuraati-paatostapaaminen", // Lauteilla – Digitaalinen ratkaisuraati: Päätöstapaaminen
     "metsien-viimeinen-huuto-the-last-cry-of-the-forest-1-pelautus1-run", // Metsien viimeinen huuto / The last cry of the forest, 1. pelautus/1. run
     "the-last-cry-of-the-forest-metsien-viimeinen-huuto-2-run2-pelautus", // The last cry of the forest / Metsien viimeinen huuto, 2. run/2. pelautus
     "revontulten-taikaa-1-pelautus", // Revontulten taikaa, 1. pelautus
