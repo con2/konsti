@@ -52,16 +52,18 @@ export const getProgramItemsFromFullProgramRopecon = (
       return [];
     }
 
-    const startTime = programItem.scheduleItems[0].startTime;
-    const startMinute = dayjs(startTime).minute();
-    if (
-      programType === KompassiKonstiProgramTypeRopecon.TABLETOP_RPG &&
-      startMinute !== 0
-    ) {
-      logger.error(
-        // eslint-disable-next-line no-restricted-syntax
-        `Invalid RPG start time: ${dayjs(startTime).tz(TIMEZONE).format("HH:mm")} - ${programItem.title}`,
-      );
+    if (config.shared().logInvalidStartTimes) {
+      const startTime = programItem.scheduleItems[0].startTime;
+      const startMinute = dayjs(startTime).minute();
+      if (
+        programType === KompassiKonstiProgramTypeRopecon.TABLETOP_RPG &&
+        startMinute !== 0
+      ) {
+        logger.error(
+          // eslint-disable-next-line no-restricted-syntax
+          `Invalid RPG start time: ${dayjs(startTime).tz(TIMEZONE).format("HH:mm")} - ${programItem.title}`,
+        );
+      }
     }
 
     return programItem;

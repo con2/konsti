@@ -41,6 +41,7 @@ export interface SharedConfig {
   addRevolvingDoorIds: string[];
   isEnglishProgramItems: string[];
   maxValueLength: number;
+  logInvalidStartTimes: boolean;
 }
 
 // Convention days
@@ -56,6 +57,7 @@ export const sharedConfig: SharedConfig = {
   manualSignupMode: "none",
   signupOpen: true,
   resultsVisible: true,
+  logInvalidStartTimes: false,
 
   twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
 
