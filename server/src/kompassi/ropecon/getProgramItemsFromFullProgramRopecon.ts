@@ -60,7 +60,7 @@ export const getProgramItemsFromFullProgramRopecon = (
         startMinute !== 0
       ) {
         logger.error(
-          "s",
+          "%s",
           new Error(
             // eslint-disable-next-line no-restricted-syntax
             `Invalid RPG start time: ${dayjs(startTime).tz(TIMEZONE).format("HH:mm")} - ${programItem.title}`,
