@@ -57,6 +57,9 @@ export const anonymizeData = async (
 
     logger.info(`users.json: ${user.username} -> ${randomUsername}`);
     user.username = randomUsername;
+    user.password = "<redacted>";
+    // @ts-expect-error -- Use invalid type for clarity
+    user.kompassiId = "<redacted>";
   });
 
   // Remove signup message answers
@@ -70,5 +73,5 @@ export const anonymizeData = async (
 
   await writeJson(year, event, "users", users);
   await writeJson(year, event, "results", results);
-  await writeJson(year, event, "signups", directSignups);
+  await writeJson(year, event, "direct-signups", directSignups);
 };
