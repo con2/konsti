@@ -1,0 +1,207 @@
+[
+  {
+    "hiddenProgramItems": [
+      { "programItemId": "yo-oopperassa-night-at-the-opera" },
+      { "programItemId": "tuppukylan-tarinoita-2" },
+      { "programItemId": "harhainen-sieniretki-2-pelautus" }
+    ],
+    "appOpen": false,
+    "signupStrategy": "algorithm+direct",
+    "loginProvider": "local",
+    "signupQuestions": [
+      {
+        "programItemId": "pikamaalauskilpailu-speed-painting-contest-3-lasat",
+        "questionFi": "Haluan, että maalattavan figuni pohjaväri on",
+        "questionEn": "I want my miniature to be primed",
+        "private": false,
+        "type": "select",
+        "selectOptions": [
+          {
+            "optionFi": "Musta",
+            "optionEn": "Black"
+          },
+          {
+            "optionFi": "Valkoinen",
+            "optionEn": "White"
+          },
+          {
+            "optionFi": "Zenitaali",
+            "optionEn": "Zenithal"
+          }
+        ]
+      },
+      {
+        "programItemId": "pikamaalauskilpailu-speed-painting-contest-1-pefri",
+        "questionFi": "Haluan, että maalattavan figuni pohjaväri on",
+        "questionEn": "I want my miniature to be primed",
+        "private": false,
+        "type": "select",
+        "selectOptions": [
+          {
+            "optionFi": "Musta",
+            "optionEn": "Black"
+          },
+          {
+            "optionFi": "Valkoinen",
+            "optionEn": "White"
+          },
+          {
+            "optionFi": "Zenitaali",
+            "optionEn": "Zenithal"
+          }
+        ]
+      },
+      {
+        "programItemId": "pikamaalauskilpailu-speed-painting-contest-2-pefri",
+        "questionFi": "Haluan, että maalattavan figuni pohjaväri on",
+        "questionEn": "I want my miniature to be primed",
+        "private": false,
+        "type": "select",
+        "selectOptions": [
+          {
+            "optionFi": "Musta",
+            "optionEn": "Black"
+          },
+          {
+            "optionFi": "Valkoinen",
+            "optionEn": "White"
+          },
+          {
+            "optionFi": "Zenitaali",
+            "optionEn": "Zenithal"
+          }
+        ]
+      },
+      {
+        "programItemId": "pikamaalauskilpailu-speed-painting-contest-4-lasat",
+        "questionFi": "Haluan, että maalattavan figuni pohjaväri on",
+        "questionEn": "I want my miniature to be primed",
+        "private": false,
+        "type": "select",
+        "selectOptions": [
+          {
+            "optionFi": "Musta",
+            "optionEn": "Black"
+          },
+          {
+            "optionFi": "Valkoinen",
+            "optionEn": "White"
+          },
+          {
+            "optionFi": "Zenitaali",
+            "optionEn": "Zenithal"
+          }
+        ]
+      },
+      {
+        "programItemId": "palapeliturnaus-joukkue-jigsaw-puzzle-tournament-teams",
+        "questionFi": "Syötä joukkueen nimi, kaikkien joukkueesi jäsenten (2-4 kpl) nimet, sekä ainakin yhden jäsenen sähköpostiosoite ja puhelinnumero mahdollista palkintoyhteydenottoa varten.",
+        "questionEn": "Please write the name of your team, the names of all team members (2-4 people) and an email address and phone number of at least one team member in case we need to contact you about a possible award.",
+        "private": true,
+        "type": "text",
+        "selectOptions": []
+      },
+      {
+        "programItemId": "kirjeita-pohjolassa",
+        "questionFi": "Puheliunnumerosi",
+        "questionEn": "Your phone number",
+        "private": true,
+        "type": "text",
+        "selectOptions": []
+      },
+      {
+        "programItemId": "pathfinder-society-4-99-blessings-of-the-forest",
+        "questionFi": "Hahmoluokka ja taso. Jos sinulla on useampi hahmo, merkitse ensisijainen hahmo sulkeilla.",
+        "questionEn": "Character class and level. If you have multiple characters, mark primary character with brackets.",
+        "private": false,
+        "type": "text",
+        "selectOptions": []
+      },
+      {
+        "programItemId": "puolenkuun-peliturnaus-uno-show-em-no-mercy",
+        "questionFi": "Syötä nimesi, sähköpostiosoitteesi ja puhelinnumerosi mahdollista palkintoyhteydenottoa varten.",
+        "questionEn": "Please write your name, email address and phone number in case we need to contact you about a possible award.",
+        "private": true,
+        "type": "text",
+        "selectOptions": []
+      },
+      {
+        "programItemId": "puolenkuun-lautapeliturnaus-cascadia",
+        "questionFi": "Syötä nimesi, sähköpostiosoitteesi ja puhelinnumerosi mahdollista palkintoyhteydenottoa varten.",
+        "questionEn": "Please write your name, email address and phone number in case we need to contact you about a possible award.",
+        "private": true,
+        "type": "text",
+        "selectOptions": []
+      },
+      {
+        "programItemId": "puolenkuun-lautapeliturnaus-ttr-san-fransisco",
+        "questionFi": "Syötä nimesi, sähköpostiosoitteesi ja puhelinnumerosi mahdollista palkintoyhteydenottoa varten.",
+        "questionEn": "Please write your name, email address and phone number in case we need to contact you about a possible award.",
+        "private": true,
+        "type": "text",
+        "selectOptions": []
+      },
+      {
+        "programItemId": "clash-of-decks-turnaus",
+        "questionFi": "Syötä nimesi, sähköpostiosoitteesi ja puhelinnumerosi mahdollista palkintoyhteydenottoa varten.",
+        "questionEn": "Please write your name, email address and phone number in case we need to contact you about a possible award.",
+        "private": true,
+        "type": "text",
+        "selectOptions": []
+      },
+      {
+        "programItemId": "puolenkuun-lautapeliturnaus-sequence-finnish-championship",
+        "questionFi": "Syötä nimesi, sähköpostiosoitteesi ja puhelinnumerosi mahdollista palkintoyhteydenottoa varten.",
+        "questionEn": "Please write your name, email address and phone number in case we need to contact you about a possible award.",
+        "private": true,
+        "type": "text",
+        "selectOptions": []
+      },
+      {
+        "programItemId": "ropeconin-backgammonmestari",
+        "questionFi": "Syötä nimesi, sähköpostiosoitteesi ja puhelinnumerosi mahdollista palkintoyhteydenottoa varten.",
+        "questionEn": "Please write your name, email address and phone number in case we need to contact you about a possible award.",
+        "private": true,
+        "type": "text",
+        "selectOptions": []
+      },
+      {
+        "programItemId": "mtg-bulk-commander",
+        "questionFi": "Syötä nimesi, sähköpostiosoitteesi ja puhelinnumerosi mahdollista palkintoyhteydenottoa varten.",
+        "questionEn": "Please write your name, email address and phone number in case we need to contact you about a possible award.",
+        "private": true,
+        "type": "text",
+        "selectOptions": []
+      },
+      {
+        "programItemId": "orcs-must-die-order-vs-unchained-ropecon-lopputaisteluropecon-final-fight",
+        "questionFi": "Syötä nimesi, sähköpostiosoitteesi ja puhelinnumerosi mahdollista palkintoyhteydenottoa varten.",
+        "questionEn": "Please write your name, email address and phone number in case we need to contact you about a possible award.",
+        "private": true,
+        "type": "text",
+        "selectOptions": []
+      },
+      {
+        "programItemId": "puolenkuun-korttiturnaus-star-wars-unlimited-shadow-of-the-galaxy-single-elimination-release-turnaus",
+        "questionFi": "Syötä nimesi, sähköpostiosoitteesi ja puhelinnumerosi mahdollista palkintoyhteydenottoa varten.",
+        "questionEn": "Please write your name, email address and phone number in case we need to contact you about a possible award.",
+        "private": true,
+        "type": "text",
+        "selectOptions": []
+      },
+      {
+        "programItemId": "puolenkuun-lautapeliturnaus-blokus",
+        "questionFi": "Syötä nimesi, sähköpostiosoitteesi ja puhelinnumerosi mahdollista palkintoyhteydenottoa varten.",
+        "questionEn": "Please write your name, email address and phone number in case we need to contact you about a possible award.",
+        "private": true,
+        "type": "text",
+        "selectOptions": []
+      }
+    ],
+    "programUpdateLastRun": "2024-07-23T09:35:00.022Z",
+    "assignmentLastRun": "2024-07-23T09:30:00.023Z",
+    "latestServerStartTime": "2024-07-22T10:39:41.773Z",
+    "createdAt": "2024-07-18T11:01:17.298Z",
+    "updatedAt": "2024-07-23T09:35:00.022Z"
+  }
+]

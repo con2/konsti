@@ -60,24 +60,6 @@ export const programItemIdFix = async (
   logger.info(`Loaded ${settings.length} program items`);
 
   users.map((user) => {
-    const tempFavoriteProgramItemIds = user.favoriteProgramItemIds.map(
-      (favoriteProgramItemId) => {
-        const matchingProgramItem = programItems.find(
-          // @ts-expect-error: $oid not in interface
-          (programItem) => programItem._id.$oid === favoriteProgramItemId.$oid,
-        );
-        if (!matchingProgramItem) {
-          logger.error(
-            `Favorite: program item for id ${JSON.stringify(
-              favoriteProgramItemId,
-            )} not found`,
-          );
-          return { programItemId: "<canceled>" };
-        }
-        return { programItemId: matchingProgramItem.programItemId };
-      },
-    );
-
     const tempLotterySignups = user.lotterySignups.map((lotterySignup) => {
       const matchingProgramItem = programItems.find(
         (programItem) =>
@@ -101,8 +83,6 @@ export const programItemIdFix = async (
       };
     });
 
-    // @ts-expect-error: We don't want whole program item details
-    user.favoriteProgramItemIds = tempFavoriteProgramItemIds;
     // @ts-expect-error: We don't want whole program item details
     user.lotterySignups = tempLotterySignups;
   });
@@ -165,6 +145,6 @@ export const programItemIdFix = async (
 
   await writeJson(year, event, "users", users);
   await writeJson(year, event, "results", results);
-  await writeJson(year, event, "signups", directSignups);
+  await writeJson(year, event, "direct-signups", directSignups);
   await writeJson(year, event, "settings", settings);
 };
