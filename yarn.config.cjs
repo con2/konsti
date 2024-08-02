@@ -7,7 +7,7 @@ const { defineConfig } = require("@yarnpkg/types"); // eslint-disable-line @type
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const enforceConsistentEnginesNodeValue = ({ Yarn }) => {
   for (const workspace of Yarn.workspaces()) {
-    workspace.set("engines.node", ">=20.12.2");
+    workspace.set("engines.node", ">=20.16.0");
   }
 };
 
