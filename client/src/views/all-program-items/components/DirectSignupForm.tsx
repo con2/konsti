@@ -59,8 +59,8 @@ export const DirectSignupForm = ({
   const [selectedValue, setSelectedValue] = useState<string>(
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     (i18n.language === "fi"
-      ? signupQuestion?.selectOptions[0]?.optionFi ?? ""
-      : signupQuestion?.selectOptions[0]?.optionEn ?? "") ?? "",
+      ? (signupQuestion?.selectOptions[0]?.optionFi ?? "")
+      : (signupQuestion?.selectOptions[0]?.optionEn ?? "")) ?? "",
   );
   const [agreeEntryFee, setAgreeEntryFee] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<
