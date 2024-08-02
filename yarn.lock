@@ -2070,7 +2070,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mongodb-js/saslprep@npm:^1.1.0, @mongodb-js/saslprep@npm:^1.1.5":
+"@mongodb-js/saslprep@npm:^1.1.5":
   version: 1.1.8
   resolution: "@mongodb-js/saslprep@npm:1.1.8"
   dependencies:
@@ -3377,16 +3377,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/whatwg-url@npm:^8.2.1":
-  version: 8.2.2
-  resolution: "@types/whatwg-url@npm:8.2.2"
-  dependencies:
-    "@types/node": "npm:*"
-    "@types/webidl-conversions": "npm:*"
-  checksum: 10c0/7e5b6837daff8c6d189b13d19cc6d69e3bf954751f4f8a92d9a762c7f32ba75464d8e686a69c7d70e5092499c8ac14933c0ed416cf563689b04c4e10bff95e40
-  languageName: node
-  linkType: hard
-
 "@types/ws@npm:^8.5.10":
   version: 8.5.12
   resolution: "@types/ws@npm:8.5.12"
@@ -4252,12 +4242,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"async-mutex@npm:^0.4.1":
-  version: 0.4.1
-  resolution: "async-mutex@npm:0.4.1"
+"async-mutex@npm:^0.5.0":
+  version: 0.5.0
+  resolution: "async-mutex@npm:0.5.0"
   dependencies:
     tslib: "npm:^2.4.0"
-  checksum: 10c0/3c412736c0bc4a9a2cfd948276a8caab8686aa615866a5bd20986e616f8945320acb310058a17afa1b31b8de6f634a78b7ec2217a33d7559b38f68bb85a95854
+  checksum: 10c0/9096e6ad6b674c894d8ddd5aa4c512b09bb05931b8746ebd634952b05685608b2b0820ed5c406e6569919ff5fe237ab3c491e6f2887d6da6b6ba906db3ee9c32
   languageName: node
   linkType: hard
 
@@ -4543,13 +4533,6 @@ __metadata:
   bin:
     browserslist: cli.js
   checksum: 10c0/3063bfdf812815346447f4796c8f04601bf5d62003374305fd323c2a463e42776475bcc5309264e39bcf9a8605851e53560695991a623be988138b3ff8c66642
-  languageName: node
-  linkType: hard
-
-"bson@npm:^5.5.0":
-  version: 5.5.1
-  resolution: "bson@npm:5.5.1"
-  checksum: 10c0/00fabdafe98d20609bd76f607cada03ec544b90225103f7ae859fba7674bd96cae56432b0516e30291af0c40634d306f8a45b63b706a034e95fe583c749ef5b3
   languageName: node
   linkType: hard
 
@@ -7924,7 +7907,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"https-proxy-agent@npm:^7.0.1, https-proxy-agent@npm:^7.0.4, https-proxy-agent@npm:^7.0.5":
+"https-proxy-agent@npm:^7.0.1, https-proxy-agent@npm:^7.0.5":
   version: 7.0.5
   resolution: "https-proxy-agent@npm:7.0.5"
   dependencies:
@@ -9050,7 +9033,7 @@ __metadata:
     generate-serial-number: "npm:0.0.3"
     helmet: "npm:7.1.0"
     jsonwebtoken: "npm:9.0.2"
-    mongodb-memory-server: "npm:9.4.1"
+    mongodb-memory-server: "npm:10.0.0"
     mongoose: "npm:8.5.2"
     morgan: "npm:1.10.0"
     supertest: "npm:7.0.0"
@@ -10250,16 +10233,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mongodb-connection-string-url@npm:^2.6.0":
-  version: 2.6.0
-  resolution: "mongodb-connection-string-url@npm:2.6.0"
-  dependencies:
-    "@types/whatwg-url": "npm:^8.2.1"
-    whatwg-url: "npm:^11.0.0"
-  checksum: 10c0/1e26b045063f4b3eb58fe445bfaf4e1ac3b9b9ceebc30c6deef5e769323cadb00e62cbe1d26a15fda457643d40a9ef9a24a94a1e993addb9261d87cad1fbf0ae
-  languageName: node
-  linkType: hard
-
 "mongodb-connection-string-url@npm:^3.0.0":
   version: 3.0.1
   resolution: "mongodb-connection-string-url@npm:3.0.1"
@@ -10270,33 +10243,33 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mongodb-memory-server-core@npm:9.4.1":
-  version: 9.4.1
-  resolution: "mongodb-memory-server-core@npm:9.4.1"
+"mongodb-memory-server-core@npm:10.0.0":
+  version: 10.0.0
+  resolution: "mongodb-memory-server-core@npm:10.0.0"
   dependencies:
-    async-mutex: "npm:^0.4.1"
+    async-mutex: "npm:^0.5.0"
     camelcase: "npm:^6.3.0"
     debug: "npm:^4.3.5"
     find-cache-dir: "npm:^3.3.2"
     follow-redirects: "npm:^1.15.6"
-    https-proxy-agent: "npm:^7.0.4"
-    mongodb: "npm:^5.9.2"
+    https-proxy-agent: "npm:^7.0.5"
+    mongodb: "npm:^6.7.0"
     new-find-package-json: "npm:^2.0.0"
-    semver: "npm:^7.6.2"
+    semver: "npm:^7.6.3"
     tar-stream: "npm:^3.1.7"
     tslib: "npm:^2.6.3"
     yauzl: "npm:^3.1.3"
-  checksum: 10c0/72132a28daaa5bfa2401425c1b1d17972cb14e7720a437c829ae38f6a90f19ff751a13e5d5744030e1a9eaa21dde98de4730e42ea3f3d0c21fe3a8b3a31e639a
+  checksum: 10c0/8ea7d42c60e40f3418a673a12b8fd5759104a63ba4b70e2c457088db6769c8675d34c0eba521f42df278dc2c2af94cfb2b5f7552f91743e15eb8a54d896b663e
   languageName: node
   linkType: hard
 
-"mongodb-memory-server@npm:9.4.1":
-  version: 9.4.1
-  resolution: "mongodb-memory-server@npm:9.4.1"
+"mongodb-memory-server@npm:10.0.0":
+  version: 10.0.0
+  resolution: "mongodb-memory-server@npm:10.0.0"
   dependencies:
-    mongodb-memory-server-core: "npm:9.4.1"
+    mongodb-memory-server-core: "npm:10.0.0"
     tslib: "npm:^2.6.3"
-  checksum: 10c0/219912fc78dd86cbbe68ae4040d2132d770933ef591362f0325d78e098a50cd0ce47df468527dc7ccba10c3654ff01c9d0bc6c0bca19d36c646d272e97f6f397
+  checksum: 10c0/c7c3a62e2150f7d111b7ee9c9ecb4dd75a09e0b26e38de24fe9003cf8949ee86b46e98eb9cecbe423c1f40fdc738d66398da6d85081695e54149164f098d5f59
   languageName: node
   linkType: hard
 
@@ -10334,27 +10307,27 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mongodb@npm:^5.9.2":
-  version: 5.9.2
-  resolution: "mongodb@npm:5.9.2"
+"mongodb@npm:^6.7.0":
+  version: 6.8.0
+  resolution: "mongodb@npm:6.8.0"
   dependencies:
-    "@mongodb-js/saslprep": "npm:^1.1.0"
-    bson: "npm:^5.5.0"
-    mongodb-connection-string-url: "npm:^2.6.0"
-    socks: "npm:^2.7.1"
+    "@mongodb-js/saslprep": "npm:^1.1.5"
+    bson: "npm:^6.7.0"
+    mongodb-connection-string-url: "npm:^3.0.0"
   peerDependencies:
     "@aws-sdk/credential-providers": ^3.188.0
-    "@mongodb-js/zstd": ^1.0.0
-    kerberos: ^1.0.0 || ^2.0.0
-    mongodb-client-encryption: ">=2.3.0 <3"
+    "@mongodb-js/zstd": ^1.1.0
+    gcp-metadata: ^5.2.0
+    kerberos: ^2.0.1
+    mongodb-client-encryption: ">=6.0.0 <7"
     snappy: ^7.2.2
-  dependenciesMeta:
-    "@mongodb-js/saslprep":
-      optional: true
+    socks: ^2.7.1
   peerDependenciesMeta:
     "@aws-sdk/credential-providers":
       optional: true
     "@mongodb-js/zstd":
+      optional: true
+    gcp-metadata:
       optional: true
     kerberos:
       optional: true
@@ -10362,7 +10335,9 @@ __metadata:
       optional: true
     snappy:
       optional: true
-  checksum: 10c0/c1bb3e0b390c74cd53ae2deedf6fb87d15f4bf11677f499b095c7fcd8d4692cd664a63b49b8b525330069faa0e689a76eda4b2a7a97bb7f26645d9310617b07f
+    socks:
+      optional: true
+  checksum: 10c0/5ea1b78d3d7915b7d8e1047f15247e7d831ff79c537c51656b34b5a223f917ab686b96cdf5eca7495a1f0125f7cc4b1355881645138c995a50c42b8b0665e518
   languageName: node
   linkType: hard
 
@@ -12543,7 +12518,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semver@npm:^7.3.5, semver@npm:^7.5.2, semver@npm:^7.5.3, semver@npm:^7.5.4, semver@npm:^7.6.0, semver@npm:^7.6.1, semver@npm:^7.6.2":
+"semver@npm:^7.3.5, semver@npm:^7.5.2, semver@npm:^7.5.3, semver@npm:^7.5.4, semver@npm:^7.6.0, semver@npm:^7.6.1, semver@npm:^7.6.3":
   version: 7.6.3
   resolution: "semver@npm:7.6.3"
   bin:
@@ -12829,7 +12804,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"socks@npm:^2.7.1, socks@npm:^2.8.3":
+"socks@npm:^2.8.3":
   version: 2.8.3
   resolution: "socks@npm:2.8.3"
   dependencies:
@@ -13658,15 +13633,6 @@ __metadata:
     universalify: "npm:^0.2.0"
     url-parse: "npm:^1.5.3"
   checksum: 10c0/aca7ff96054f367d53d1e813e62ceb7dd2eda25d7752058a74d64b7266fd07be75908f3753a32ccf866a2f997604b414cfb1916d6e7f69bc64d9d9939b0d6c45
-  languageName: node
-  linkType: hard
-
-"tr46@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "tr46@npm:3.0.0"
-  dependencies:
-    punycode: "npm:^2.1.1"
-  checksum: 10c0/cdc47cad3a9d0b6cb293e39ccb1066695ae6fdd39b9e4f351b010835a1f8b4f3a6dc3a55e896b421371187f22b48d7dac1b693de4f6551bdef7b6ab6735dfe3b
   languageName: node
   linkType: hard
 
@@ -14558,16 +14524,6 @@ __metadata:
   version: 4.0.0
   resolution: "whatwg-mimetype@npm:4.0.0"
   checksum: 10c0/a773cdc8126b514d790bdae7052e8bf242970cebd84af62fb2f35a33411e78e981f6c0ab9ed1fe6ec5071b09d5340ac9178e05b52d35a9c4bcf558ba1b1551df
-  languageName: node
-  linkType: hard
-
-"whatwg-url@npm:^11.0.0":
-  version: 11.0.0
-  resolution: "whatwg-url@npm:11.0.0"
-  dependencies:
-    tr46: "npm:^3.0.0"
-    webidl-conversions: "npm:^7.0.0"
-  checksum: 10c0/f7ec264976d7c725e0696fcaf9ebe056e14422eacbf92fdbb4462034609cba7d0c85ffa1aab05e9309d42969bcf04632ba5ed3f3882c516d7b093053315bf4c1
   languageName: node
   linkType: hard
 
