@@ -25,7 +25,7 @@
     "server",
     "shared",
     "playwright",
-    ".eslintrc.js",
+    "eslint.config.js",
     "lint-staged.config.js",
     "vitest.workspace.mts",
     "yarn.config.cjs"

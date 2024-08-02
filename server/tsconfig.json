@@ -3,6 +3,6 @@
   "compilerOptions": {
     "outDir": "lib"
   },
-  "include": ["**/*.js", "**/*.ts", "./.eslintrc.js", "vitest.config.mts"],
+  "include": ["**/*.js", "**/*.ts", "eslint.config.js", "vitest.config.mts"],
   "exclude": ["./node_modules", "./lib", "./coverage", "./front"]
 }

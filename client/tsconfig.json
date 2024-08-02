@@ -7,9 +7,9 @@
     "./src/**/*.js",
     "./src/**/*.ts",
     "./src/**/*.tsx",
-    "./.eslintrc.js",
-    "./webpack.config.ts",
-    "./babel.config.js",
+    "eslint.config.js",
+    "webpack.config.ts",
+    "babel.config.js",
     "vitest.config.mts"
   ],
   "exclude": ["./node_modules", "./build", "./coverage"]
