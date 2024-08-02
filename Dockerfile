@@ -1,5 +1,5 @@
 ### BUILD CLIENT
-FROM node:20.16.0-alpine3.20 as client-builder
+FROM node:20.16.0-alpine3.20 AS client-builder
 
 ARG env
 
@@ -7,7 +7,7 @@ ARG env
 WORKDIR /usr/src/builder
 
 # Copy client source
-COPY --chown=node:node package.json yarn.lock .yarnrc.yml babel.config.js tsconfig.json ./
+COPY --chown=node:node package.json yarn.lock .yarnrc.yml tsconfig.json ./
 COPY --chown=node:node .yarn ./.yarn/
 COPY --chown=node:node client ./client/
 COPY --chown=node:node shared ./shared/
@@ -17,7 +17,7 @@ RUN yarn \
   && yarn workspace konsti-client build:$env
 
 ### BUILD APP IMAGE
-FROM node:20.16.0-alpine3.20 as runner
+FROM node:20.16.0-alpine3.20 AS runner
 
 # Install init process tool to avoid Node running PID 1
 RUN apk --no-cache add dumb-init=1.2.5-r3
@@ -26,7 +26,7 @@ RUN apk --no-cache add dumb-init=1.2.5-r3
 WORKDIR /usr/src/app
 
 # Copy server source
-COPY --chown=node:node package.json yarn.lock .yarnrc.yml babel.config.js tsconfig.json ./
+COPY --chown=node:node package.json yarn.lock .yarnrc.yml tsconfig.json ./
 COPY --chown=node:node .yarn ./.yarn/
 COPY --chown=node:node server ./server/
 COPY --chown=node:node shared ./shared/
