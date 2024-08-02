@@ -13,7 +13,7 @@ module.exports = {
     // eslint-plugin-n
     "n/no-unpublished-import": "off", // Gives error when tests are in same folder as tested code
     "n/no-unsupported-features/es-syntax": "off", // Import and export declarations are not supported yet
-    "n/no-missing-import": "off", // Not working with babel-plugin-module-resolver and handled by eslint-plugin-import
+    "n/no-missing-import": "off", // Handled by tsc
     "n/no-extraneous-import": "off", // Doesn't work with Yarn workspace dependencies
 
     // @typescript-eslint

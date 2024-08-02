@@ -1,7 +1,24 @@
-// This separate config is required because of a bug in babel-plugin-module-resolver: https://github.com/tleunen/babel-plugin-module-resolver/issues/338
-module.exports = {
-  extends: "../babel.config.js",
-  plugins: [
+module.exports = (api) => {
+  api.cache.using(() => process.env.NODE_ENV);
+
+  const presets = [
+    "@babel/typescript",
+    [
+      "@babel/preset-env",
+      {
+        useBuiltIns: "entry",
+        corejs: "3",
+      },
+    ],
+    [
+      "@babel/preset-react",
+      {
+        runtime: "automatic",
+      },
+    ],
+  ];
+
+  const plugins = [
     [
       "babel-plugin-module-resolver",
       {
@@ -14,5 +31,16 @@ module.exports = {
         extensions: [".js", ".cjs,", ".ts", ".mts", ".tsx"],
       },
     ],
-  ],
+    "babel-plugin-styled-components",
+  ];
+
+  const target = process.env.npm_lifecycle_event;
+  if (target === "start") {
+    plugins.push(["react-refresh/babel"]);
+  }
+
+  return {
+    presets,
+    plugins,
+  };
 };
