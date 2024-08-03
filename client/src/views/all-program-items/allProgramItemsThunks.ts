@@ -30,6 +30,7 @@ export const submitUpdateProgramItems = (): AppThunk => {
     }
 
     if (programItemsUpdateResponse.status === "success") {
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
       dispatch(submitGetProgramItems());
     }
   };

@@ -1,4 +1,5 @@
 import "i18next";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { defaultNS, resources } from "client/utils/i18n";
 
 declare module "i18next" {

@@ -1,8 +1,0 @@
-{
-  "extends": "../tsconfig.json",
-  "compilerOptions": {
-    "outDir": "lib"
-  },
-  "include": ["**/*.js", "**/*.ts", "eslint.config.js", "vitest.config.mts"],
-  "exclude": ["./node_modules", "./lib", "./coverage", "./front"]
-}

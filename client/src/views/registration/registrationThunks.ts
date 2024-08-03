@@ -17,6 +17,7 @@ export const submitRegistration = (
     let registrationResponse;
     try {
       registrationResponse = await postRegistration(registrationFormFields);
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       // TODO
     }
@@ -35,6 +36,7 @@ export const submitRegistration = (
     }
 
     if (registrationResponse?.status === "success") {
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
       dispatch(
         submitLogin({
           username: registrationFormFields.username,

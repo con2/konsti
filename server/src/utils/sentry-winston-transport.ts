@@ -12,7 +12,6 @@ eslint-disable
 @typescript-eslint/explicit-function-return-type,
 promise/catch-or-return,
 promise/always-return,
-curly
 */
 
 // https://github.com/aandrewww/winston-transport-sentry-node/tree/master
@@ -174,5 +173,4 @@ eslint-enable
 @typescript-eslint/explicit-function-return-type,
 promise/catch-or-return,
 promise/always-return,
-curly
 */

@@ -8,6 +8,7 @@ import { initializeDayjs } from "shared/utils/initializeDayjs";
 getIconLibrary();
 
 // Translations
+// eslint-disable-next-line @typescript-eslint/no-floating-promises
 i18next.use(initReactI18next).init({
   lng: "en",
   fallbackLng: "en",

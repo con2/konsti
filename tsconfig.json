@@ -19,16 +19,5 @@
       "server/*": ["server/src/*"],
       "shared/*": ["shared/*"]
     }
-  },
-  "include": [
-    "client",
-    "server",
-    "shared",
-    "playwright",
-    "eslint.config.js",
-    "lint-staged.config.js",
-    "vitest.workspace.mts",
-    "yarn.config.cjs"
-  ],
-  "exclude": ["node_modules", "server/lib", "server/coverage"]
+  }
 }
