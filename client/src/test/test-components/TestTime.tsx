@@ -65,7 +65,6 @@ export const TestTime = (): ReactElement => {
             loading={loading}
           />
         ) : (
-          // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions -- Test value
           <div onClick={() => setDropdownVisible(true)}>
             {i18n.language === "fi" ? (
               <>

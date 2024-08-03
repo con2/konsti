@@ -11,5 +11,5 @@ COPY tsconfig.json ./
 COPY playwright ./playwright/
 COPY shared ./shared/
 
-RUN npm install --omit=dev \
-  && npm install @playwright/test@1.45.3
+RUN npm install --omit=dev --legacy-peer-deps \
+  && npm install @playwright/test@1.45.3 --legacy-peer-deps

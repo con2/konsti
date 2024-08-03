@@ -4,6 +4,7 @@ import { ApiError, ApiResult } from "shared/types/api/errors";
 
 // POST event log item
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const PostEventLogItemRequestSchema = z.object({
   updates: z.array(
     z.object({

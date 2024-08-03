@@ -2,6 +2,7 @@ import { ThunkAction } from "redux-thunk";
 import { Action } from "redux";
 import { ProgramItem, UserSignup } from "shared/types/models/programItem";
 import { GroupMember } from "shared/types/models/groups";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { store, combinedReducer } from "client/utils/store";
 import { UserProgramItems, UserGroup } from "shared/types/models/user";
 import { SignupQuestion } from "shared/types/models/settings";

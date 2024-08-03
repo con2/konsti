@@ -45,6 +45,7 @@ export const submitCreateGroup = (): AppThunk<
     }
 
     if (createGroupResponse.status === "success") {
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
       dispatch(submitGetGroup(createGroupResponse.groupCode));
       dispatch(
         submitUpdateGroupCodeAsync({
@@ -94,6 +95,7 @@ export const submitJoinGroup = (
     }
 
     if (joinGroupResponse.status === "success") {
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
       dispatch(submitGetGroup(joinGroupResponse.groupCode));
       dispatch(
         submitUpdateGroupCodeAsync({

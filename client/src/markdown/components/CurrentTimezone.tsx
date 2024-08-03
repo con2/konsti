@@ -2,7 +2,6 @@ import { ReactNode } from "react";
 import { getTimeNow } from "client/utils/getTimeNow";
 import { timezoneFormat } from "client/utils/timeFormatter";
 
-// eslint-disable-next-line import/no-unused-modules
 export const CurrentTimezone = (): ReactNode => {
   // eslint-disable-next-line no-restricted-syntax -- We want to use local time here
   return getTimeNow().format(timezoneFormat);

@@ -1,5 +1,5 @@
 /** @type {import('@yarnpkg/types')} */
-const { defineConfig } = require("@yarnpkg/types"); // eslint-disable-line @typescript-eslint/no-var-requires
+const { defineConfig } = require("@yarnpkg/types");
 
 // https://yarnpkg.com/features/constraints
 

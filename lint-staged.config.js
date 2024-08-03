@@ -16,7 +16,7 @@ module.exports = {
   },
   */
 
-  "{.eslintrc.js,package.json}": () => {
-    return ["yarn eslint-save-config", "git add **/eslint-config-*"];
+  "{eslint.config.mjs,package.json}": () => {
+    return ["yarn eslint-save-config", "git add eslint-config.json"];
   },
 };

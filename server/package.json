@@ -9,8 +9,7 @@
   "main": "index.ts",
   "type": "commonjs",
   "scripts": {
-    "eslint": "yarn run -T eslint . --ext .js,.cjs,.ts,.mts",
-    "eslint-save-config": "eslint --print-config .eslintrc.js > eslint-config-server.json && prettier --write eslint-config-server.json",
+    "eslint": "yarn run -T eslint .",
     "fixer": "tsx src/features/statistics/dataFixer.ts --",
     "generate-data": "tsx src/test/test-data-generation/parseCliOptions.ts",
     "initialize-db": "tsx src/utils/initializeDatabase.ts",

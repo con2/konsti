@@ -59,6 +59,7 @@ export const saveGroupCreatorCode = async (
       `MongoDB: Saved group creator code ${groupCreatorCode} for user ${username}`,
     );
     return makeSuccessResult(response);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error) {
     logger.error(
       `MongoDB: Error saving group creator code ${groupCreatorCode} for user ${username}`,

@@ -7,7 +7,6 @@ interface Props {
   not: boolean;
 }
 
-// eslint-disable-next-line import/no-unused-modules
 export const Solmukohta = ({ children, not }: Props): ReactNode => {
   const visibleContent = not
     ? config.shared().conventionName !== ConventionName.SOLMUKOHTA

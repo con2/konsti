@@ -15,6 +15,7 @@ export const resources = {
   },
 };
 
+// eslint-disable-next-line @typescript-eslint/no-floating-promises
 i18next
   .use(languageDetector)
   .use(initReactI18next)
