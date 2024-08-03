@@ -27,9 +27,6 @@ export default typescriptEslint.config(
   // Default
   {
     languageOptions: {
-      // sourceType: "module",
-      // ecmaVersion: 2021,
-      // parser: typescriptEslint.parser,
       parserOptions: {
         projectService: {
           allowDefaultProject: [
@@ -40,7 +37,6 @@ export default typescriptEslint.config(
           ],
           defaultProject: "./tsconfig.json",
         },
-        // impliedStrict: true,
         tsconfigRootDir: import.meta.dirname,
       },
     },
