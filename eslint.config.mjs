@@ -1,5 +1,6 @@
 // @ts-check
-import eslintConfigPrettier from "eslint-config-prettier";
+import eslint from "@eslint/js";
+import globals from "globals";
 import eslintPluginBan from "eslint-plugin-ban";
 import eslintPluginCommentsConfigs from "@eslint-community/eslint-plugin-eslint-comments/configs";
 import eslintPluginCompat from "eslint-plugin-compat";
@@ -7,7 +8,7 @@ import eslintPluginDeprecation from "eslint-plugin-deprecation";
 import eslintPluginImport from "eslint-plugin-import";
 import eslintPluginJsxA11y from "eslint-plugin-jsx-a11y";
 import eslintPluginN from "eslint-plugin-n";
-import eslintPluginPrettier from "eslint-plugin-prettier";
+import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
 import eslintPluginPromise from "eslint-plugin-promise";
 import eslintPluginReact from "eslint-plugin-react";
 import eslintPluginReactHooks from "eslint-plugin-react-hooks";
@@ -17,13 +18,14 @@ import typescriptEslint from "typescript-eslint";
 import { fixupPluginRules } from "@eslint/compat";
 
 export default typescriptEslint.config(
+  eslint.configs.recommended,
   ...typescriptEslint.configs.strictTypeChecked,
   ...typescriptEslint.configs.stylisticTypeChecked,
   eslintPluginCommentsConfigs.recommended,
   // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
   eslintPluginPromise.configs["flat/recommended"],
 
-  // Default
+  // ** Default **
   {
     languageOptions: {
       parserOptions: {
@@ -38,13 +40,15 @@ export default typescriptEslint.config(
         },
         tsconfigRootDir: import.meta.dirname,
       },
+      globals: {
+        ...globals.node,
+      },
     },
   },
 
   {
     ignores: [
       "**/.*", // Ignore dotfiles
-      "**/lib/**",
       "**/coverage/**",
       "**/front/**",
       "**/build/**",
@@ -54,28 +58,24 @@ export default typescriptEslint.config(
     plugins: {
       ban: fixupPluginRules(eslintPluginBan),
       vitest: eslintPluginVitest,
-      prettier: eslintPluginPrettier,
-      promise: eslintPluginPromise,
       // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
       import: fixupPluginRules(eslintPluginImport),
-      "@typescript-eslint": typescriptEslint.plugin,
       unicorn: eslintPluginUnicorn,
       deprecation: fixupPluginRules(eslintPluginDeprecation),
-      "import/parsers": typescriptEslint.parser,
     },
 
     settings: {
       "import/resolver": {
-        typescript: { alwaysTryTypes: true },
+        typescript: true,
       },
-      "import/parsers": {
-        "@typescript-eslint/parser": [".ts", ".tsx"],
-      },
+      // Regex for packages that should be treated as internal
       "import/internal-regex": "shared",
     },
 
     rules: {
       ...eslintPluginVitest.configs.recommended.rules,
+      // TODO: Enable, doesn't work with flat config yet
+      // ...eslintPluginImport.configs.recommended.rules,
       ...eslintPluginImport.configs.typescript.rules,
 
       // eslint
@@ -95,17 +95,10 @@ export default typescriptEslint.config(
       ],
       "no-else-return": "error",
       curly: "error",
-      "no-constant-binary-expression": "error",
-      "array-callback-return": "off",
-      "no-shadow": "off", // Required by @typescript-eslint/no-shadow
-
-      // eslint-plugin-prettier
-      "prettier/prettier": "error",
 
       // eslint-plugin-import
       // TODO: Enable, doesn't work with flat config yet https://github.com/import-js/eslint-plugin-import/issues/2964
       // "import/no-unused-modules": ["error", { unusedExports: true }],
-      "import/no-unresolved": "off",
       "import/order": ["error", { groups: ["builtin", "external"] }],
       "import/no-namespace": [
         "error",
@@ -122,14 +115,22 @@ export default typescriptEslint.config(
       // eslint-plugin-vitest
       "vitest/no-disabled-tests": "error",
       "vitest/no-focused-tests": "error",
-      "vitest/prefer-to-be": "off", // Don't want this
       "vitest/expect-expect": [
         "error",
         { assertFunctionNames: ["expect", "assertSignupTime"] },
       ],
 
+      // eslint-plugin-ban
+      "ban/ban": [
+        "error",
+        { name: "useDispatch", message: "Please use useAppDispatch()" },
+        { name: "useSelector", message: "Please use useAppSelector()" },
+      ],
+
+      // eslint-plugin-deprecation
+      "deprecation/deprecation": "error",
+
       // @typescript-eslint
-      "@typescript-eslint/no-explicit-any": "error",
       "@typescript-eslint/explicit-module-boundary-types": "error",
       "@typescript-eslint/explicit-function-return-type": [
         "error",
@@ -169,55 +170,17 @@ export default typescriptEslint.config(
           ],
         },
       ],
-      "@typescript-eslint/ban-ts-comment": [
-        "error",
-        {
-          "ts-expect-error": "allow-with-description",
-          "ts-ignore": true,
-          "ts-nocheck": true,
-          "ts-check": false,
-          minimumDescriptionLength: 3,
-        },
-      ],
-      "@typescript-eslint/array-type": [
-        "error",
-        {
-          default: "array-simple",
-        },
-      ],
-      "@typescript-eslint/strict-boolean-expressions": "off", // Forces unwanted code style
       "@typescript-eslint/restrict-template-expressions": "off", // Requires typing catch(e) every time
-      "@typescript-eslint/restrict-plus-operands": "off", // Doesn't support dynamic object occurance counting
-      "@typescript-eslint/key-spacing": "off", // Formatting handled by prettier
-
-      // eslint-plugin-ban
-      "ban/ban": [
-        "error",
-        { name: "useDispatch", message: "Please use useAppDispatch()" },
-        { name: "useSelector", message: "Please use useAppSelector()" },
-      ],
-
-      // eslint-plugin-deprecation
-      "deprecation/deprecation": "error",
 
       // TODO: Enable these rules
-      "@typescript-eslint/no-unsafe-enum-comparison": "off",
-      "@typescript-eslint/prefer-for-of": "off",
-      "@typescript-eslint/no-empty-function": "off",
       "@typescript-eslint/no-unsafe-member-access": "off",
-      "@typescript-eslint/no-unsafe-return": "off",
+      "@typescript-eslint/no-unsafe-return": "off", // Doesn't work with styled-components props
       "@typescript-eslint/no-unsafe-assignment": "off",
-      "@typescript-eslint/no-unsafe-call": "off",
-      "@typescript-eslint/unbound-method": "off",
-      "@typescript-eslint/consistent-type-imports": "off", // Tooling lacking, try again once TS 5.0 is released: https://devblogs.microsoft.com/typescript/announcing-typescript-5-0-beta/#verbatimmodulesyntax
-      "@typescript-eslint/no-wrapper-object-types": "off",
-      "@typescript-eslint/no-require-imports": "off",
       "@typescript-eslint/no-empty-object-type": "off",
-      "@typescript-eslint/no-unused-expressions": "off",
     },
   },
 
-  // Client
+  // ** Client **
   {
     files: ["client/**"],
 
@@ -285,7 +248,7 @@ export default typescriptEslint.config(
     },
   },
 
-  // Server
+  // ** Server **
   {
     files: ["server/**"],
 
@@ -298,5 +261,6 @@ export default typescriptEslint.config(
     },
   },
 
-  eslintConfigPrettier,
+  // Enables eslint-config-prettier
+  eslintPluginPrettierRecommended,
 );

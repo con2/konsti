@@ -81,6 +81,7 @@ axiosInstance.interceptors.response.use(
     }
 
     const response = error.response;
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     const method: HttpMethod = response.config.method.toUpperCase();
     const url: ApiEndpoint = response.config.url;
 

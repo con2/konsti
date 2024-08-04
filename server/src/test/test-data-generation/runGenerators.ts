@@ -57,7 +57,9 @@ export const runGenerators = async (
   if (options.users) {
     logger.info("Generate users");
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     !options.clean && (await removeUsers());
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     !options.clean && (await removeResults());
 
     await generateTestUsers(
@@ -75,7 +77,9 @@ export const runGenerators = async (
   if (options.programItems) {
     logger.info("Generate program items");
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     !options.clean && (await removeProgramItems());
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     !options.clean && (await removeResults());
 
     await createProgramItems(newProgramItemsCount);
@@ -85,7 +89,9 @@ export const runGenerators = async (
   if (options.lotterySignups) {
     logger.info("Generate lottery signups");
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     !options.clean && (await removeLotterySignups());
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     !options.clean && (await removeResults());
 
     await createLotterySignups();
@@ -94,7 +100,9 @@ export const runGenerators = async (
   if (options.directSignups) {
     logger.info("Generate direct signups");
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     !options.clean && (await removeDirectSignups());
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     !options.clean && (await removeResults());
 
     await createDirectSignups();
@@ -106,5 +114,6 @@ export const runGenerators = async (
     await createEventLogItems();
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-expressions
   settings.closeDb && (await db.gracefulExit());
 };

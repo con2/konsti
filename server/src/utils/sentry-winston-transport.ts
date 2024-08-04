@@ -10,6 +10,7 @@ eslint-disable
 @typescript-eslint/no-unnecessary-condition,
 @typescript-eslint/consistent-indexed-object-style,
 @typescript-eslint/explicit-function-return-type,
+@typescript-eslint/no-require-imports,
 promise/catch-or-return,
 promise/always-return,
 */
@@ -171,6 +172,7 @@ eslint-enable
 @typescript-eslint/no-unnecessary-condition,
 @typescript-eslint/consistent-indexed-object-style,
 @typescript-eslint/explicit-function-return-type,
+@typescript-eslint/no-require-imports,
 promise/catch-or-return,
 promise/always-return,
 */

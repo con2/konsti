@@ -11,6 +11,7 @@ export const getAttendeeGroups = (
     if (Array.isArray(value)) {
       if (key === "0") {
         // Loop array and add attendees individually
+        // eslint-disable-next-line @typescript-eslint/prefer-for-of
         for (let i = 0; i < value.length; i++) {
           attendeesArray.push([value[i]]);
         }

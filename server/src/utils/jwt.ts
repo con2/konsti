@@ -1,6 +1,6 @@
 import jsonwebtoken, { TokenExpiredError } from "jsonwebtoken";
 import { config } from "shared/config";
-import { JWTResult } from "server/types/jwtTypes";
+import { JWTBody, JWTBodySchema, JWTResponse } from "server/types/jwtTypes";
 import { UserGroup } from "shared/types/models/user";
 
 export const getJWT = (userGroup: UserGroup, username: string): string => {
@@ -16,14 +16,18 @@ export const getJWT = (userGroup: UserGroup, username: string): string => {
   return jsonwebtoken.sign(payload, getSecret(userGroup), options);
 };
 
-export const verifyJWT = (jwt: string, userGroup: UserGroup): JWTResult => {
+export const verifyJWT = (jwt: string, userGroup: UserGroup): JWTResponse => {
   try {
-    const result = jsonwebtoken.verify(jwt, getSecret(userGroup)) as JWTResult;
+    const jwtBody = jsonwebtoken.verify(jwt, getSecret(userGroup));
+    const result = JWTBodySchema.parse(jwtBody);
+
     return {
-      username: result.username,
-      userGroup: result.userGroup,
-      iat: result.iat,
-      exp: result.exp,
+      body: {
+        username: result.username,
+        userGroup: result.userGroup,
+        iat: result.iat,
+        exp: result.exp,
+      },
       status: "success",
       message: "success",
     };
@@ -32,26 +36,25 @@ export const verifyJWT = (jwt: string, userGroup: UserGroup): JWTResult => {
       return {
         status: "error",
         message: "expired jwt",
-        username: "",
-        userGroup: "",
-        iat: 0,
-        exp: 0,
+        body: { username: "", userGroup: UserGroup.USER, iat: 0, exp: 0 },
       };
     }
 
     return {
       status: "error",
       message: "unknown jwt error",
-      username: "",
-      userGroup: "",
-      iat: 0,
-      exp: 0,
+      body: { username: "", userGroup: UserGroup.USER, iat: 0, exp: 0 },
     };
   }
 };
 
-export const decodeJWT = (jwt: string): JWTResult => {
-  return jsonwebtoken.decode(jwt) as JWTResult;
+export const decodeJWT = (jwt: string): JWTBody | null => {
+  const decodedJwt = jsonwebtoken.decode(jwt);
+  const result = JWTBodySchema.safeParse(decodedJwt);
+  if (!result.success) {
+    return null;
+  }
+  return result.data;
 };
 
 const getSecret = (userGroup: UserGroup): string => {
@@ -69,7 +72,7 @@ const getSecret = (userGroup: UserGroup): string => {
 export const getJwtResponse = (
   jwt: string,
   requiredUserGroup: UserGroup | UserGroup[],
-): JWTResult => {
+): JWTResponse => {
   if (Array.isArray(requiredUserGroup)) {
     const responses = requiredUserGroup.map((userGroup) => {
       return verifyJWT(jwt, userGroup);

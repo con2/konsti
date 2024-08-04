@@ -123,7 +123,7 @@ const lotterySignupMultiple = async (
   programItems: readonly ProgramItem[],
   users: readonly User[],
 ): Promise<void> => {
-  const promises: Array<Promise<User>> = [];
+  const promises: Promise<User>[] = [];
 
   for (const user of users) {
     if (user.username !== "admin" && user.username !== "helper") {

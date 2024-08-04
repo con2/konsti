@@ -53,6 +53,7 @@ export const RegistrationForm = (): ReactElement => {
     const errorMessage = await dispatch(
       submitRegistration(registrationFormFields),
     );
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     errorMessage && setServerError(errorMessage);
   };
 

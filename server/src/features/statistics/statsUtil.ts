@@ -24,6 +24,7 @@ export const writeJson = async <T>(
   year: number,
   event: string,
   datatype: string,
+  // eslint-disable-next-line @typescript-eslint/no-wrapper-object-types
   data: T[] | Object,
 ): Promise<void> => {
   if (
@@ -110,6 +111,7 @@ export const toPercent = (num: number): number => {
   return Math.round(num * 100);
 };
 
+// eslint-disable-next-line @typescript-eslint/no-wrapper-object-types
 const getDataLength = <T>(data: T[] | Object): number => {
   if (Array.isArray(data)) {
     return data.length;

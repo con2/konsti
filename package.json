@@ -67,7 +67,9 @@
   "devDependencies": {
     "@eslint-community/eslint-plugin-eslint-comments": "4.3.0",
     "@eslint/compat": "1.1.1",
+    "@eslint/js": "9.8.0",
     "@playwright/test": "1.45.3",
+    "@types/eslint__js": "8.42.3",
     "@types/lodash-es": "4.17.12",
     "eslint": "9.8.0",
     "eslint-config-prettier": "9.1.0",
@@ -84,6 +86,7 @@
     "eslint-plugin-react-hooks": "4.6.2",
     "eslint-plugin-unicorn": "55.0.0",
     "eslint-plugin-vitest": "0.5.4",
+    "globals": "15.9.0",
     "husky": "9.1.4",
     "lint-staged": "15.2.7",
     "prettier": "3.3.3",

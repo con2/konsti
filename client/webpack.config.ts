@@ -25,6 +25,7 @@ const getEnvVariableFile = (): string | undefined => {
   }
 };
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-require-imports
 require("dotenv").config({ path: getEnvVariableFile() });
 
 const commonConfig: Configuration = {

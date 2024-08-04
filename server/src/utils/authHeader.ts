@@ -24,7 +24,7 @@ export const getAuthorizedUsername = (
   }
 
   logger.debug(`Auth: Valid jwt for user group ${requiredUserGroup}`);
-  return jwtResponse.username;
+  return jwtResponse.body.username;
 };
 
 export const authorizeUsingApiKey = (apiKey: string | undefined): boolean => {
