@@ -21,6 +21,7 @@ export const LogoutView = (): ReactElement => {
     if (isLocalLogin || userGroup === UserGroup.ADMIN) {
       dispatch(submitLogout());
     } else {
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
       doKompassiLogout();
     }
   }, [dispatch, isLocalLogin, userGroup]);

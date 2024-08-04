@@ -34,6 +34,7 @@ export const GroupView = (): ReactElement => {
     const fetchData = async (): Promise<void> => {
       await loadGroupMembers();
     };
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
     fetchData();
   }, [store]);
 

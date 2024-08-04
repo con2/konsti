@@ -13,7 +13,6 @@ import eslintPluginReact from "eslint-plugin-react";
 import eslintPluginReactHooks from "eslint-plugin-react-hooks";
 import eslintPluginUnicorn from "eslint-plugin-unicorn";
 import eslintPluginVitest from "eslint-plugin-vitest";
-import globals from "globals";
 import typescriptEslint from "typescript-eslint";
 import { fixupPluginRules } from "@eslint/compat";
 
@@ -54,7 +53,6 @@ export default typescriptEslint.config(
   {
     plugins: {
       ban: fixupPluginRules(eslintPluginBan),
-      compat: eslintPluginCompat,
       vitest: eslintPluginVitest,
       prettier: eslintPluginPrettier,
       promise: eslintPluginPromise,
@@ -131,7 +129,6 @@ export default typescriptEslint.config(
       ],
 
       // @typescript-eslint
-      "@typescript-eslint/ban-ts-comment": "error",
       "@typescript-eslint/no-explicit-any": "error",
       "@typescript-eslint/explicit-module-boundary-types": "error",
       "@typescript-eslint/explicit-function-return-type": [
@@ -221,29 +218,21 @@ export default typescriptEslint.config(
   },
 
   // Client
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
   {
-    files: ["**/*.tsx"],
+    files: ["client/**"],
 
-    ...eslintPluginReact.configs.flat["jsx-runtime"].recommended,
-    ...eslintPluginJsxA11y.flatConfigs.recommended,
+    extends: [
+      // 'recommended' configuration is not recommended anymore, use 'all' and disable some rules
+      eslintPluginReact.configs.flat.all,
+      // Disable some rules conflicting with new JSX transform from React 17
+      eslintPluginReact.configs.flat["jsx-runtime"],
+      eslintPluginJsxA11y.flatConfigs.recommended,
+      eslintPluginCompat.configs["flat/recommended"],
+    ],
 
     plugins: {
       react: eslintPluginReact,
       "react-hooks": fixupPluginRules(eslintPluginReactHooks),
-      compat: eslintPluginCompat,
-      "jsx-a11y": eslintPluginJsxA11y,
-    },
-
-    languageOptions: {
-      parserOptions: {
-        ecmaFeatures: {
-          jsx: true,
-        },
-      },
-      globals: {
-        ...globals.browser,
-      },
     },
 
     settings: {
@@ -254,24 +243,29 @@ export default typescriptEslint.config(
 
     rules: {
       // eslint-plugin-react
-      "react/no-multi-comp": "error",
-      "react/jsx-no-useless-fragment": "error",
       "react/forbid-elements": [
         "error",
         { forbid: [{ element: "button", message: "use <Button> instead" }] },
       ],
-      "react/no-unescaped-entities": "off",
+      "react/function-component-definition": "off",
+      "react/jsx-filename-extension": "off",
+      "react/jsx-no-leaked-render": "off",
+      "react/jsx-no-bind": "off",
+      "react/jsx-sort-props": "off",
+      "react/jsx-max-depth": "off",
+      "react/jsx-curly-brace-presence": "off",
+      "react/jsx-props-no-spreading": "off",
+      "react/jsx-no-literals": "off",
+      "react/prefer-read-only-props": "off",
+      "react/jsx-boolean-value": "off",
+      "react/require-default-props": "off",
+      "react/no-unused-prop-types": "off",
+      "react/destructuring-assignment": "off",
+      "react/forbid-component-props": "off",
 
       // eslint-plugin-react-hooks
       ...eslintPluginReactHooks.configs.recommended.rules,
-      "react-hooks/rules-of-hooks": "error",
       "react-hooks/exhaustive-deps": "error",
-
-      // eslint-plugin-compat
-      "compat/compat": "error",
-
-      // "eslint-plugin-jsx-a11y",
-      "jsx-a11y/no-onchange": "off", // TODO: Enable
 
       // @typescript-eslint
       "@typescript-eslint/no-misused-promises": [
@@ -279,7 +273,6 @@ export default typescriptEslint.config(
         {
           checksVoidReturn: {
             attributes: false, // https://github.com/typescript-eslint/typescript-eslint/pull/4623
-            arguments: false, // Some functions like setInterval expect a callback function parameter with void return
           },
         },
       ],
@@ -289,9 +282,6 @@ export default typescriptEslint.config(
           ignoreArrowShorthand: true,
         },
       ],
-
-      "@typescript-eslint/default-param-last": "off", // Problem setting Redux reducer initial state
-      "@typescript-eslint/no-floating-promises": "off", // TODO: Enable
     },
   },
 
@@ -299,27 +289,12 @@ export default typescriptEslint.config(
   {
     files: ["server/**"],
 
-    plugins: { n: eslintPluginN },
-
-    ...eslintPluginN.configs["flat/recommended-module"],
-
-    languageOptions: {
-      globals: {
-        ...globals.node,
-      },
-    },
+    extends: [eslintPluginN.configs["flat/recommended"]],
 
     rules: {
       // eslint-plugin-n
-      "n/no-unpublished-import": "off", // Gives error when tests are in same folder as tested code
-      "n/no-unsupported-features/es-syntax": "off", // Import and export declarations are not supported yet
       "n/no-missing-import": "off", // Handled by tsc
       "n/no-extraneous-import": "off", // Doesn't work with Yarn workspace dependencies
-
-      // @typescript-eslint
-      "@typescript-eslint/strict-boolean-expressions": "off", // Forces unwanted code style
-      "@typescript-eslint/restrict-template-expressions": "off", // Requires typing catch(e) every time
-      "@typescript-eslint/restrict-plus-operands": "off", // Doesn't support dynamic object occurance counting
     },
   },
 

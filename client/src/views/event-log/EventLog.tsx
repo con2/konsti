@@ -28,6 +28,7 @@ export const EventLog = (): ReactElement => {
       if (isSeen) {
         return;
       }
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
       dispatch(
         submitUpdateEventLogIsSeen({
           username,

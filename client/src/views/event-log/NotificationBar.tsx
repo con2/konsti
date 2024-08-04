@@ -48,6 +48,7 @@ export const NotificationBar = (): ReactElement | null => {
             icon="xmark"
             aria-label={t("iconAltText.closeNotification")}
             onClick={() => {
+              // eslint-disable-next-line @typescript-eslint/no-floating-promises
               dispatch(
                 submitUpdateEventLogIsSeen({
                   username,
