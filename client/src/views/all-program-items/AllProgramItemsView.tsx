@@ -71,6 +71,7 @@ export const AllProgramItemsView = (): ReactElement => {
       await loadProgramItems();
       setLoading(false);
     };
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
     fetchData();
   }, [store, testTime, signupStrategy]);
 

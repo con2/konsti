@@ -137,6 +137,7 @@ export const AdminView = (): ReactElement => {
           disabled={submitting}
           buttonStyle={ButtonStyle.PRIMARY}
           onClick={() => {
+            // eslint-disable-next-line @typescript-eslint/no-floating-promises
             submitUpdate();
           }}
         >
@@ -147,6 +148,7 @@ export const AdminView = (): ReactElement => {
           disabled={submitting}
           buttonStyle={ButtonStyle.PRIMARY}
           onClick={() => {
+            // eslint-disable-next-line @typescript-eslint/no-floating-promises
             toggleAppOpen();
           }}
         >
@@ -164,6 +166,7 @@ export const AdminView = (): ReactElement => {
           disabled={submitting}
           buttonStyle={ButtonStyle.PRIMARY}
           onClick={() => {
+            // eslint-disable-next-line @typescript-eslint/no-floating-promises
             submitAssign();
           }}
         >

@@ -29,9 +29,11 @@ export const App = (): ReactElement => {
       await loadData();
       setLoading(false);
     };
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
     fetchData();
 
     const startUpdateTimer = (): void => {
+      // eslint-disable-next-line @typescript-eslint/no-misused-promises
       setInterval(async () => {
         resetNetworkError();
         await fetchData();

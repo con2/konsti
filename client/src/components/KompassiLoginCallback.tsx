@@ -28,6 +28,7 @@ export const KompassiLoginCallback = (): ReactElement => {
       }
       navigate(`/`);
     };
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
     fetchData();
   }, [code, error, dispatch, navigate]);
 

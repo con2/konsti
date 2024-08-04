@@ -33,6 +33,7 @@ export const TestTime = (): ReactElement => {
         await dispatch(submitSetTestSettings({ testTime: defaultTestTime }));
       }
     };
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
     setInitialTestTime();
   });
 
@@ -65,6 +66,7 @@ export const TestTime = (): ReactElement => {
             loading={loading}
           />
         ) : (
+          // eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events
           <div onClick={() => setDropdownVisible(true)}>
             {i18n.language === "fi" ? (
               <>

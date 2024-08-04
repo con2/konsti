@@ -13,6 +13,7 @@ export const LanguageSelector = (): ReactElement => {
     await i18n.changeLanguage(lng);
 
   const setLanguage = (event: ChangeEvent<HTMLSelectElement>): void => {
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
     toggle(event.target.value);
     setLocale(event.target.value);
   };

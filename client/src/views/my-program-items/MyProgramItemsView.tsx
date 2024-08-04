@@ -57,6 +57,7 @@ export const MyProgramItemsView = (): ReactElement => {
       await loadUser();
       await loadGroupMembers();
     };
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
     fetchData();
   }, [store, testTime]);
 
