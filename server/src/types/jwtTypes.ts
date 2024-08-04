@@ -10,10 +10,8 @@ export const JWTBodySchema = z.object({
 
 export type JWTBody = z.infer<typeof JWTBodySchema>;
 
-export const JWTResponseSchema = z.object({
-  body: JWTBodySchema,
-  status: z.string(),
-  message: z.string(),
-});
-
-export type JWTResponse = z.infer<typeof JWTResponseSchema>;
+export interface JWTResponse {
+  body: JWTBody;
+  status: string;
+  message: string;
+}
