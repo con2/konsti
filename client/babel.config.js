@@ -1,4 +1,5 @@
 module.exports = (api) => {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
   api.cache.using(() => process.env.NODE_ENV);
 
   const presets = [

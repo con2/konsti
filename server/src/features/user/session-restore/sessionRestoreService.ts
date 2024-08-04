@@ -11,7 +11,6 @@ export const loginWithJwt = async (
   // Restore session
   const jwtData = decodeJWT(jwt);
 
-  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (!jwtData) {
     return {
       message: "Invalid jwt",
@@ -20,11 +19,7 @@ export const loginWithJwt = async (
     };
   }
 
-  if (
-    jwtData.userGroup !== UserGroup.USER &&
-    jwtData.userGroup !== UserGroup.ADMIN &&
-    jwtData.userGroup !== UserGroup.HELP
-  ) {
+  if (!Object.values(UserGroup).includes(jwtData.userGroup)) {
     return {
       message: "Invalid userGroup",
       status: "error",
@@ -42,8 +37,8 @@ export const loginWithJwt = async (
     };
   }
 
-  if (typeof jwtResponse.username === "string") {
-    const userResult = await findUser(jwtResponse.username);
+  if (typeof jwtResponse.body.username === "string") {
+    const userResult = await findUser(jwtResponse.body.username);
     if (isErrorResult(userResult)) {
       return {
         message: "Session restore error",
@@ -73,7 +68,7 @@ export const loginWithJwt = async (
 
     const settings = unwrapResult(findSettingsResult);
 
-    if (!settings.appOpen && user.userGroup === "user") {
+    if (!settings.appOpen && user.userGroup === UserGroup.USER) {
       return {
         errorId: "loginDisabled",
         message: "User login disabled",

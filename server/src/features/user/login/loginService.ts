@@ -5,6 +5,7 @@ import { findSettings } from "server/features/settings/settingsRepository";
 import { findUser } from "server/features/user/userRepository";
 import { logger } from "server/utils/logger";
 import { isErrorResult, unwrapResult } from "shared/utils/result";
+import { UserGroup } from "shared/types/models/user";
 
 export const login = async (
   username: string,
@@ -41,7 +42,7 @@ export const login = async (
 
   const settings = unwrapResult(findSettingsResult);
 
-  if (!settings.appOpen && user.userGroup === "user") {
+  if (!settings.appOpen && user.userGroup === UserGroup.USER) {
     return {
       errorId: "loginDisabled",
       message: "User login disabled",

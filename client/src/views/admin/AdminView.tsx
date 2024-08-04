@@ -43,9 +43,11 @@ export const AdminView = (): ReactElement => {
       return programItems;
     }
     const visibleProgramItems: ProgramItem[] = [];
+    // eslint-disable-next-line @typescript-eslint/prefer-for-of
     for (let i = 0; i < programItems.length; i += 1) {
       let match = false;
 
+      // eslint-disable-next-line @typescript-eslint/prefer-for-of
       for (let j = 0; j < hiddenProgramItems.length; j += 1) {
         if (
           programItems[i].programItemId === hiddenProgramItems[j].programItemId

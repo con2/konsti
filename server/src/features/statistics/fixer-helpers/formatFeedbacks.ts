@@ -73,7 +73,7 @@ export const formatFeedbacks = (year: number, event: string): void => {
         `${programType}: found ${programTypeFeedbacks.length} feedbacks`,
       );
 
-      // @ts-expect-error: FIXME
+      // @ts-expect-error: FIXME FIXME
       const groupedByOrganizerFeedbacks: Record<string, Message[]> = groupBy(
         programTypeFeedbacks,
         (feedback) => feedback.organizer,

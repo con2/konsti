@@ -60,7 +60,7 @@ export const initializeDayjs = (): void => {
 };
 
 const processRelativeTime = (
-  number: number,
+  number: string,
   _withoutSuffix: boolean,
   key: string,
   isFuture: boolean,

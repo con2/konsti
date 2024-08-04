@@ -358,7 +358,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     expect(programItems.length).toEqual(1);
     expect(programItems[0].tags).toEqual([Tag.BEGINNER_FRIENDLY]);
     expect(programItems[0].styles).toEqual([Playstyle.CHARACTER_DRIVEN]);
-    // @ts-expect-error: Test
+    // @ts-expect-error: Testing value
     expect(programItems[0].foobar).toEqual(undefined);
   });
 

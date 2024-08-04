@@ -49,7 +49,7 @@ export const getUsersWithoutSignups = (
 };
 
 export const getUsersSignupCount = (users: readonly User[]): void => {
-  const userSignupCounts: Array<Record<string, number>> = [];
+  const userSignupCounts: Record<string, number>[] = [];
   users.forEach((user) => {
     const lotterySignups = countBy(user.lotterySignups, "time");
     userSignupCounts.push(lotterySignups);

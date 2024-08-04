@@ -13,6 +13,7 @@ export const getLotterySignupProgramItems = (
 
   // Get valid program items from program items that are starting and program items that have lottery signups
   startingProgramItems.forEach((startingProgramItem) => {
+    // eslint-disable-next-line @typescript-eslint/prefer-for-of
     for (let i = 0; i < lotterySignups.length; i += 1) {
       if (
         startingProgramItem.programItemId === lotterySignups[i].programItemId

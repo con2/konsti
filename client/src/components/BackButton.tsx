@@ -10,6 +10,7 @@ export const BackButton = (): ReactElement => {
 
   const goBack = (): void => {
     // Navigate to front page if no previous page exists
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     window.history.state?.idx > 0 ? navigate(-1) : navigate("/");
   };
 

@@ -32,12 +32,16 @@ const App = lazyWithRetry(
 const { enableAxe, enableWhyDidYouRender } = config.client();
 
 if (enableWhyDidYouRender && process.env.NODE_ENV === "development") {
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
   const whyDidYouRender = require("@welldone-software/why-did-you-render");
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
   whyDidYouRender(React, { include: [/(.*?)/] });
 }
 
 if (enableAxe && process.env.NODE_ENV === "development") {
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
   const axe = require("@axe-core/react");
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
   axe(React, ReactDOM, 1000);
 }
 

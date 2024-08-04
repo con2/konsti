@@ -10,6 +10,7 @@ import { store } from "client/utils/store";
 import { AppDispatch } from "client/types/reduxTypes";
 import { submitGetTestSettings } from "client/test/test-settings/testSettingsThunks";
 import { config } from "shared/config";
+import { UserGroup } from "shared/types/models/user";
 
 export const loadData = async (): Promise<void> => {
   // Get app settings
@@ -77,7 +78,7 @@ export const loadUser = async (): Promise<void> => {
   const dispatch: AppDispatch = store.dispatch;
   const { loggedIn, userGroup, username } = state.login;
 
-  if (loggedIn && userGroup === "user") {
+  if (loggedIn && userGroup === UserGroup.USER) {
     await dispatch(submitGetUser(username));
   }
 };

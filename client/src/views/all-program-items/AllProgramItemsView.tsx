@@ -133,7 +133,7 @@ export const AllProgramItemsView = (): ReactElement => {
 
 const getVisibleProgramItems = (
   programItems: readonly ProgramItem[],
-  selectedView: string,
+  selectedView: StartingTimeOption,
   selectedTag: string,
 ): readonly ProgramItem[] => {
   const filteredProgramItems = getTagFilteredProgramItems(

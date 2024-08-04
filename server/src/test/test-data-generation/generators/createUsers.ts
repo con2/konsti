@@ -119,7 +119,7 @@ export const createUsersInGroup = async ({
 
   logger.info(`Generate data for ${groupSize} users in group ${groupCode}`);
 
-  const promises: Array<Promise<void>> = [];
+  const promises: Promise<void>[] = [];
   for (
     let groupMemberCount = 0;
     groupMemberCount < groupSize;
@@ -141,7 +141,7 @@ export const createUsersInGroup = async ({
 export const createIndividualUsers = async (count: number): Promise<void> => {
   logger.info(`Generate data for ${count} users`);
 
-  const promises: Array<Promise<void>> = [];
+  const promises: Promise<void>[] = [];
   for (let i = 0; i < count; i++) {
     promises.push(
       createUser({

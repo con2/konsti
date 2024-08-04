@@ -163,7 +163,7 @@ export const ProgramItemHead = ({
         )}
       </div>
       {/* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */}
-      {loggedIn && userGroup === "user" && programItem && (
+      {loggedIn && userGroup === UserGroup.USER && programItem && (
         <FavoriteButtonContainer>
           <FavoriteButton
             isFavorite={isFavorite}
