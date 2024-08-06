@@ -32,7 +32,10 @@ import {
 } from "server/test/mock-data/mockUser";
 import { closeServer, startServer } from "server/utils/server";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
-import { PostSignupQuestionRequest } from "shared/types/api/settings";
+import {
+  DeleteSignupQuestionRequest,
+  PostSignupQuestionRequest,
+} from "shared/types/api/settings";
 import {
   createSettings,
   findSettings,
@@ -221,8 +224,20 @@ describe(`POST ${ApiEndpoint.SIGNUP_QUESTION}`, () => {
   });
 
   test("should return 200 with admin authorization", async () => {
+    const requestData: PostSignupQuestionRequest = {
+      signupQuestion: {
+        programItemId: "123",
+        questionFi: "Character level",
+        questionEn: "public message",
+        private: false,
+        type: SignupQuestionType.TEXT,
+        selectOptions: [],
+      },
+    };
+
     const response = await request(server)
       .post(ApiEndpoint.SIGNUP_QUESTION)
+      .send(requestData)
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
     expect(response.status).toEqual(200);
   });
@@ -284,62 +299,65 @@ describe(`POST ${ApiEndpoint.SIGNUP_QUESTION}`, () => {
       requestData.signupQuestion,
     );
   });
+});
 
-  describe(`DELETE ${ApiEndpoint.SIGNUP_QUESTION}`, () => {
-    test("should return 401 without valid authorization", async () => {
-      const response = await request(server).post(ApiEndpoint.SIGNUP_QUESTION);
-      expect(response.status).toEqual(401);
-    });
+describe(`DELETE ${ApiEndpoint.SIGNUP_QUESTION}`, () => {
+  test("should return 401 without valid authorization", async () => {
+    const response = await request(server).delete(ApiEndpoint.SIGNUP_QUESTION);
+    expect(response.status).toEqual(401);
+  });
 
-    test("should return 401 with user authorization", async () => {
-      const response = await request(server)
-        .post(ApiEndpoint.SIGNUP_QUESTION)
-        .set("Authorization", `Bearer ${getJWT(UserGroup.USER, "testuser")}`);
-      expect(response.status).toEqual(401);
-    });
+  test("should return 401 with user authorization", async () => {
+    const response = await request(server)
+      .delete(ApiEndpoint.SIGNUP_QUESTION)
+      .set("Authorization", `Bearer ${getJWT(UserGroup.USER, "testuser")}`);
+    expect(response.status).toEqual(401);
+  });
 
-    test("should return 401 with helper authorization", async () => {
-      const response = await request(server)
-        .post(ApiEndpoint.SIGNUP_QUESTION)
-        .set("Authorization", `Bearer ${getJWT(UserGroup.HELP, "helper")}`);
-      expect(response.status).toEqual(401);
-    });
+  test("should return 401 with helper authorization", async () => {
+    const response = await request(server)
+      .delete(ApiEndpoint.SIGNUP_QUESTION)
+      .set("Authorization", `Bearer ${getJWT(UserGroup.HELP, "helper")}`);
+    expect(response.status).toEqual(401);
+  });
 
-    test("should return 200 with admin authorization", async () => {
-      const response = await request(server)
-        .post(ApiEndpoint.SIGNUP_QUESTION)
-        .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
-      expect(response.status).toEqual(200);
-    });
+  test("should return 200 with admin authorization", async () => {
+    const requestData: DeleteSignupQuestionRequest = { programItemId: "123" };
 
-    test("should delete signup question", async () => {
-      await createSettings();
+    const response = await request(server)
+      .delete(ApiEndpoint.SIGNUP_QUESTION)
+      .send(requestData)
+      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+    expect(response.status).toEqual(200);
+  });
 
-      const signupQuestion: SignupQuestion = {
-        programItemId: "123",
-        questionFi: "Character level",
-        questionEn: "public message",
-        private: false,
-        type: SignupQuestionType.SELECT,
-        selectOptions: [
-          { optionFi: "Option 1", optionEn: "Option 1" },
-          { optionFi: "Option 2", optionEn: "Option 2" },
-          { optionFi: "Option 3", optionEn: "Option 3" },
-        ],
-      };
+  test("should delete signup question", async () => {
+    await createSettings();
 
-      await saveSignupQuestion(signupQuestion);
+    const signupQuestion: SignupQuestion = {
+      programItemId: "123",
+      questionFi: "Character level",
+      questionEn: "public message",
+      private: false,
+      type: SignupQuestionType.SELECT,
+      selectOptions: [
+        { optionFi: "Option 1", optionEn: "Option 1" },
+        { optionFi: "Option 2", optionEn: "Option 2" },
+        { optionFi: "Option 3", optionEn: "Option 3" },
+      ],
+    };
 
-      const settings = unsafelyUnwrap(await findSettings());
-      expect(settings.signupQuestions).toHaveLength(1);
+    await saveSignupQuestion(signupQuestion);
 
-      await request(server)
-        .delete(ApiEndpoint.SIGNUP_QUESTION)
-        .send({ programItemId: "123" })
-        .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+    const settings = unsafelyUnwrap(await findSettings());
+    expect(settings.signupQuestions).toHaveLength(1);
 
-      const updatedSettings = unsafelyUnwrap(await findSettings());
-      expect(updatedSettings.signupQuestions).toHaveLength(0);
-    });
+    await request(server)
+      .delete(ApiEndpoint.SIGNUP_QUESTION)
+      .send({ programItemId: "123" })
+      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+
+    const updatedSettings = unsafelyUnwrap(await findSettings());
+    expect(updatedSettings.signupQuestions).toHaveLength(0);
   });
 });
