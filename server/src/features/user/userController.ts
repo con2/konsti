@@ -10,16 +10,13 @@ import { getAuthorizedUsername } from "server/utils/authHeader";
 import { logger } from "server/utils/logger";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
-  GetUserBySerialRequest,
   GetUserBySerialRequestSchema,
-  PostUserRequest,
-  PostUpdateUserPasswordRequest,
   PostUpdateUserPasswordRequestSchema,
   PostUserRequestSchema,
 } from "shared/types/api/users";
 
 export const postUser = async (
-  req: Request<{}, {}, PostUserRequest>,
+  req: Request,
   res: Response,
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.USERS}`);
@@ -39,7 +36,7 @@ export const postUser = async (
 };
 
 export const postUserPassword = async (
-  req: Request<{}, {}, PostUpdateUserPasswordRequest>,
+  req: Request,
   res: Response,
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.USERS_PASSWORD}`);
@@ -81,7 +78,7 @@ export const postUserPassword = async (
 };
 
 export const getUser = async (
-  req: Request<{}, {}, {}>,
+  req: Request,
   res: Response,
 ): Promise<Response> => {
   logger.info(`API call: GET ${ApiEndpoint.USERS}`);
@@ -99,7 +96,7 @@ export const getUser = async (
 };
 
 export const getUserBySerialOrUsername = async (
-  req: Request<{}, {}, GetUserBySerialRequest>,
+  req: Request,
   res: Response,
 ): Promise<Response> => {
   logger.info(`API call: GET ${ApiEndpoint.USERS_BY_SERIAL_OR_USERNAME}`);

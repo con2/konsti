@@ -16,7 +16,7 @@ const KompassiLoginResponseSchema = z.object({
 });
 
 export const getKompassiLoginMockRedirect = (
-  req: Request<{}, {}, {}>,
+  req: Request,
   res: Response,
 ): void => {
   const result = KompassiLoginResponseSchema.safeParse(req.query);
@@ -43,7 +43,7 @@ const KompassiLoginTokenSchema = z.object({
 });
 
 export const getKompassiLoginMockToken = (
-  req: Request<{}, {}, {}>,
+  req: Request,
   res: Response,
 ): void => {
   const result = KompassiLoginTokenSchema.safeParse(req.body);
@@ -67,7 +67,7 @@ export const getKompassiLoginMockToken = (
 };
 
 export const getKompassiLoginMockProfile = (
-  req: Request<{}, {}, {}>,
+  req: Request,
   res: Response,
 ): void => {
   if (req.headers.authorization !== `${tokenType} ${accessToken}`) {
@@ -98,7 +98,7 @@ const KompassiLoginLogoutSchema = z.object({
 });
 
 export const getKompassiLoginMockLogout = (
-  req: Request<{}, {}, {}>,
+  req: Request,
   res: Response,
 ): void => {
   const result = KompassiLoginLogoutSchema.safeParse(req.query);

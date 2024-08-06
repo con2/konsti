@@ -1,18 +1,24 @@
 import { z } from "zod";
 import { LoginProvider, SignupStrategy } from "shared/config/sharedConfigTypes";
-import { ProgramItem } from "shared/types/models/programItem";
+import {
+  ProgramItem,
+  ProgramItemSchema,
+} from "shared/types/models/programItem";
 import {
   Settings,
   SettingsSchema,
   SignupQuestion,
+  SignupQuestionSchema,
 } from "shared/types/models/settings";
 import { ApiResult } from "shared/types/api/errors";
 
 // POST hidden
 
-export interface PostHiddenRequest {
-  hiddenData: readonly ProgramItem[];
-}
+export const PostHiddenRequestSchema = z.object({
+  hiddenData: z.array(ProgramItemSchema).readonly(),
+});
+
+export type PostHiddenRequest = z.infer<typeof PostHiddenRequestSchema>;
 
 export interface PostHiddenResponse extends ApiResult {
   hiddenProgramItems: readonly ProgramItem[];
@@ -32,9 +38,13 @@ export type GetSettingsResponse = SettingsPayload & ApiResult;
 
 // POST signup question
 
-export interface PostSignupQuestionRequest {
-  signupQuestion: SignupQuestion;
-}
+export const PostSignupQuestionRequestSchema = z.object({
+  signupQuestion: SignupQuestionSchema,
+});
+
+export type PostSignupQuestionRequest = z.infer<
+  typeof PostSignupQuestionRequestSchema
+>;
 
 export interface PostSignupQuestionResponse extends ApiResult {
   signupQuestions: readonly SignupQuestion[];
@@ -42,9 +52,13 @@ export interface PostSignupQuestionResponse extends ApiResult {
 
 // DELETE signup question
 
-export interface DeleteSignupQuestionRequest {
-  programItemId: string;
-}
+export const DeleteSignupQuestionRequestSchema = z.object({
+  programItemId: z.string(),
+});
+
+export type DeleteSignupQuestionRequest = z.infer<
+  typeof DeleteSignupQuestionRequestSchema
+>;
 
 export type DeleteSignupQuestionResponse = PostSignupQuestionResponse;
 

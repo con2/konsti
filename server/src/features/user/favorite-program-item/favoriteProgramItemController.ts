@@ -1,16 +1,13 @@
 import { Request, Response } from "express";
 import { logger } from "server/utils/logger";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
-import {
-  PostFavoriteRequest,
-  PostFavoriteRequestSchema,
-} from "shared/types/api/favorite";
+import { PostFavoriteRequestSchema } from "shared/types/api/favorite";
 import { getAuthorizedUsername } from "server/utils/authHeader";
 import { UserGroup } from "shared/types/models/user";
 import { storeFavorite } from "server/features/user/favorite-program-item/favoriteProgramItemService";
 
 export const postFavorite = async (
-  req: Request<{}, {}, PostFavoriteRequest>,
+  req: Request,
   res: Response,
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.FAVORITE}`);

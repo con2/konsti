@@ -5,10 +5,7 @@ import {
   fetchTestSettings,
   updateTestSettings,
 } from "server/test/test-settings/testSettingsService";
-import {
-  PostTestSettingsRequest,
-  PostTestSettingsRequestSchema,
-} from "shared/test-types/api/testSettings";
+import { PostTestSettingsRequestSchema } from "shared/test-types/api/testSettings";
 
 export const getTestSettings = async (
   _req: Request,
@@ -21,7 +18,7 @@ export const getTestSettings = async (
 };
 
 export const postTestSettings = async (
-  req: Request<{}, {}, PostTestSettingsRequest>,
+  req: Request,
   res: Response,
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.TEST_SETTINGS}`);

@@ -30,9 +30,11 @@ export interface PostLoginError extends ApiError {
 
 // POST session recovery
 
-export interface PostSessionRecoveryRequest {
-  jwt: string;
-}
+export const PostSessionRecoveryRequestSchema = z.object({ jwt: z.string() });
+
+export type PostSessionRecoveryRequest = z.infer<
+  typeof PostSessionRecoveryRequestSchema
+>;
 
 export type PostSessionRecoveryResponse = PostLoginResponse;
 

@@ -35,14 +35,21 @@ export const postRegistration = async (
   return response.data;
 };
 
+interface GetUserParams {
+  username: string;
+}
+
 export const getUser = async (
   username: string,
 ): Promise<GetUserResponse | ApiError> => {
-  const response = await api.get<GetUserResponse, {}>(ApiEndpoint.USERS, {
-    params: {
-      username,
+  const response = await api.get<GetUserResponse, GetUserParams>(
+    ApiEndpoint.USERS,
+    {
+      params: {
+        username,
+      },
     },
-  });
+  );
   return response.data;
 };
 
@@ -77,7 +84,7 @@ export const updateUserPassword = async (
 export const getSignupMessages = async (): Promise<
   GetSignupMessagesResponse | GetSignupMessagesError
 > => {
-  const response = await api.get<GetSignupMessagesResponse, {}>(
+  const response = await api.get<GetSignupMessagesResponse>(
     ApiEndpoint.SIGNUP_MESSAGE,
   );
   return response.data;

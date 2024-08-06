@@ -2,13 +2,10 @@ import { Request, Response } from "express";
 import { login } from "server/features/user/login/loginService";
 import { logger } from "server/utils/logger";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
-import {
-  PostLoginRequest,
-  PostLoginRequestSchema,
-} from "shared/types/api/login";
+import { PostLoginRequestSchema } from "shared/types/api/login";
 
 export const postLogin = async (
-  req: Request<{}, {}, PostLoginRequest>,
+  req: Request,
   res: Response,
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.LOGIN}`);

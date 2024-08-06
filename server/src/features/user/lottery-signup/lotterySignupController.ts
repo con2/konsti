@@ -1,16 +1,13 @@
 import { Request, Response } from "express";
 import { logger } from "server/utils/logger";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
-import {
-  PostLotterySignupsRequest,
-  PostLotterySignupsRequestSchema,
-} from "shared/types/api/myProgramItems";
+import { PostLotterySignupsRequestSchema } from "shared/types/api/myProgramItems";
 import { getAuthorizedUsername } from "server/utils/authHeader";
 import { UserGroup } from "shared/types/models/user";
 import { storeLotterySignups } from "server/features/user/lottery-signup/lotterySignupService";
 
 export const postLotterySignups = async (
-  req: Request<{}, {}, PostLotterySignupsRequest>,
+  req: Request,
   res: Response,
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.LOTTERY_SIGNUP}`);

@@ -176,7 +176,6 @@ export default typescriptEslint.config(
       "@typescript-eslint/no-unsafe-member-access": "off",
       "@typescript-eslint/no-unsafe-return": "off", // Doesn't work with styled-components props
       "@typescript-eslint/no-unsafe-assignment": "off",
-      "@typescript-eslint/no-empty-object-type": "off",
     },
   },
 

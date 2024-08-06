@@ -11,15 +11,14 @@ import { getAuthorizedUsername } from "server/utils/authHeader";
 import { logger } from "server/utils/logger";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
-  DeleteSignupQuestionRequest,
-  PostHiddenRequest,
-  PostSettingsRequest,
+  DeleteSignupQuestionRequestSchema,
+  PostHiddenRequestSchema,
   PostSettingsRequestSchema,
-  PostSignupQuestionRequest,
+  PostSignupQuestionRequestSchema,
 } from "shared/types/api/settings";
 
 export const postHidden = async (
-  req: Request<{}, {}, PostHiddenRequest>,
+  req: Request,
   res: Response,
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.HIDDEN}`);
@@ -32,13 +31,23 @@ export const postHidden = async (
     return res.sendStatus(401);
   }
 
-  const hiddenData = req.body.hiddenData;
+  const result = PostHiddenRequestSchema.safeParse(req.body);
+  if (!result.success) {
+    logger.error(
+      "%s",
+      new Error(`Error validating postHidden body: ${result.error}`),
+    );
+    return res.sendStatus(422);
+  }
+
+  const { hiddenData } = result.data;
+
   const response = await storeHidden(hiddenData);
   return res.json(response);
 };
 
 export const getSettings = async (
-  _req: Request<{}, {}, {}>,
+  _req: Request,
   res: Response,
 ): Promise<Response> => {
   logger.info(`API call: GET ${ApiEndpoint.SETTINGS}`);
@@ -48,7 +57,7 @@ export const getSettings = async (
 };
 
 export const postSignupQuestion = async (
-  req: Request<{}, {}, PostSignupQuestionRequest>,
+  req: Request,
   res: Response,
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.SIGNUP_QUESTION}`);
@@ -61,12 +70,23 @@ export const postSignupQuestion = async (
     return res.sendStatus(401);
   }
 
-  const response = await storeSignupQuestion(req.body.signupQuestion);
+  const result = PostSignupQuestionRequestSchema.safeParse(req.body);
+  if (!result.success) {
+    logger.error(
+      "%s",
+      new Error(`Error validating postSignupQuestion body: ${result.error}`),
+    );
+    return res.sendStatus(422);
+  }
+
+  const { signupQuestion } = result.data;
+
+  const response = await storeSignupQuestion(signupQuestion);
   return res.json(response);
 };
 
 export const deleteSignupQuestion = async (
-  req: Request<{}, {}, DeleteSignupQuestionRequest>,
+  req: Request,
   res: Response,
 ): Promise<Response> => {
   logger.info(`API call: DELETE ${ApiEndpoint.SIGNUP_QUESTION}`);
@@ -79,12 +99,23 @@ export const deleteSignupQuestion = async (
     return res.sendStatus(401);
   }
 
-  const response = await removeSignupQuestion(req.body.programItemId);
+  const result = DeleteSignupQuestionRequestSchema.safeParse(req.body);
+  if (!result.success) {
+    logger.error(
+      "%s",
+      new Error(`Error validating deleteSignupQuestion body: ${result.error}`),
+    );
+    return res.sendStatus(422);
+  }
+
+  const { programItemId } = result.data;
+
+  const response = await removeSignupQuestion(programItemId);
   return res.json(response);
 };
 
 export const postSettings = async (
-  req: Request<{}, {}, PostSettingsRequest>,
+  req: Request,
   res: Response,
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.SETTINGS}`);

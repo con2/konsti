@@ -8,18 +8,12 @@ import {
 } from "server/utils/authHeader";
 import { logger } from "server/utils/logger";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
-import {
-  PostAssignmentRequest,
-  PostAssignmentRequestSchema,
-} from "shared/types/api/assignment";
-import {
-  GetResultsRequest,
-  GetResultsRequestSchema,
-} from "shared/types/api/results";
+import { PostAssignmentRequestSchema } from "shared/types/api/assignment";
+import { GetResultsRequestSchema } from "shared/types/api/results";
 import { autoAssignAttendees } from "server/utils/cron";
 
 export const getResults = async (
-  req: Request<{}, {}, GetResultsRequest>,
+  req: Request,
   res: Response,
 ): Promise<Response> => {
   logger.info(`API call: GET ${ApiEndpoint.RESULTS}`);
@@ -44,7 +38,7 @@ export const getResults = async (
 };
 
 export const postAssignment = async (
-  req: Request<{}, {}, PostAssignmentRequest>,
+  req: Request,
   res: Response,
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.ASSIGNMENT}`);
@@ -70,10 +64,7 @@ export const postAssignment = async (
   return res.json(response);
 };
 
-export const postAutoAssignment = (
-  req: Request<{}, {}, PostAssignmentRequest>,
-  res: Response,
-): Response => {
+export const postAutoAssignment = (req: Request, res: Response): Response => {
   logger.info(`API call: POST ${ApiEndpoint.ASSIGNMENT_CRON}`);
 
   const validAuthorization = authorizeUsingApiKey(req.headers.authorization);
