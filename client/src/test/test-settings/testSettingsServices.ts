@@ -10,7 +10,7 @@ import {
 export const getTestSettings = async (): Promise<
   GetTestSettingsResponse | ApiError
 > => {
-  const response = await api.get<GetTestSettingsResponse, {}>(
+  const response = await api.get<GetTestSettingsResponse>(
     ApiEndpoint.TEST_SETTINGS,
   );
   return response.data;

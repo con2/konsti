@@ -3,9 +3,7 @@ import { getAuthorizedUsername } from "server/utils/authHeader";
 import { logger } from "server/utils/logger";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
-  DeleteDirectSignupRequest,
   DeleteDirectSignupRequestSchema,
-  PostDirectSignupRequest,
   PostDirectSignupRequestSchema,
 } from "shared/types/api/myProgramItems";
 import { UserGroup } from "shared/types/models/user";
@@ -15,7 +13,7 @@ import {
 } from "server/features/direct-signup/directSignupService";
 
 export const postDirectSignup = async (
-  req: Request<{}, {}, PostDirectSignupRequest>,
+  req: Request,
   res: Response,
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.DIRECT_SIGNUP}`);
@@ -42,7 +40,7 @@ export const postDirectSignup = async (
 };
 
 export const deleteDirectSignup = async (
-  req: Request<{}, {}, DeleteDirectSignupRequest>,
+  req: Request,
   res: Response,
 ): Promise<Response> => {
   logger.info(`API call: DELETE ${ApiEndpoint.DIRECT_SIGNUP}`);

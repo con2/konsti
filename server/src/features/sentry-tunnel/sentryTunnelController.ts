@@ -8,10 +8,7 @@ import { getAuthorizedUsername } from "server/utils/authHeader";
 
 const PostSentryTunnelRequestSchema = z.instanceof(Buffer);
 
-export const postSentryTunnel = (
-  req: Request<{}, {}, string>,
-  res: Response,
-): Response => {
+export const postSentryTunnel = (req: Request, res: Response): Response => {
   logger.info(`API call: POST ${ApiEndpoint.SENTRY_TUNNEL}`);
 
   const result = PostSentryTunnelRequestSchema.safeParse(req.body);
@@ -30,10 +27,7 @@ export const postSentryTunnel = (
   return res.sendStatus(200);
 };
 
-export const getSentryTest = (
-  req: Request<{}, {}, null>,
-  res: Response,
-): Response => {
+export const getSentryTest = (req: Request, res: Response): Response => {
   logger.info(`API call: POST ${ApiEndpoint.SENTRY_TEST}`);
 
   const username = getAuthorizedUsername(

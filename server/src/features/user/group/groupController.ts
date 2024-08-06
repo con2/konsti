@@ -2,11 +2,8 @@ import { Request, Response } from "express";
 import { logger } from "server/utils/logger";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
-  GetGroupRequest,
   GetGroupRequestSchema,
-  PostCloseGroupRequest,
   PostCloseGroupRequestSchema,
-  PostJoinGroupRequest,
   PostJoinGroupRequestSchema,
 } from "shared/types/api/groups";
 import { getAuthorizedUsername } from "server/utils/authHeader";
@@ -20,7 +17,7 @@ import {
 } from "server/features/user/group/groupService";
 
 export const postCreateGroup = async (
-  req: Request<{}, {}, {}>,
+  req: Request,
   res: Response,
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.GROUP}`);
@@ -38,7 +35,7 @@ export const postCreateGroup = async (
 };
 
 export const postJoinGroup = async (
-  req: Request<{}, {}, PostJoinGroupRequest>,
+  req: Request,
   res: Response,
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.JOIN_GROUP}`);
@@ -66,7 +63,7 @@ export const postJoinGroup = async (
 };
 
 export const postLeaveGroup = async (
-  req: Request<{}, {}, {}>,
+  req: Request,
   res: Response,
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.LEAVE_GROUP}`);
@@ -84,7 +81,7 @@ export const postLeaveGroup = async (
 };
 
 export const postCloseGroup = async (
-  req: Request<{}, {}, PostCloseGroupRequest>,
+  req: Request,
   res: Response,
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.CLOSE_GROUP}`);
@@ -112,7 +109,7 @@ export const postCloseGroup = async (
 };
 
 export const getGroup = async (
-  req: Request<{}, {}, GetGroupRequest>,
+  req: Request,
   res: Response,
 ): Promise<Response> => {
   logger.info(`API call: GET ${ApiEndpoint.GROUP}`);

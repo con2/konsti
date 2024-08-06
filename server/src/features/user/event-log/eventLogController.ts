@@ -3,14 +3,11 @@ import { storeEventLogItemIsSeen } from "server/features/user/event-log/eventLog
 import { getAuthorizedUsername } from "server/utils/authHeader";
 import { logger } from "server/utils/logger";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
-import {
-  PostEventLogIsSeenRequest,
-  PostEventLogIsSeenRequestSchema,
-} from "shared/types/api/eventLog";
+import { PostEventLogIsSeenRequestSchema } from "shared/types/api/eventLog";
 import { UserGroup } from "shared/types/models/user";
 
 export const postEventLogItemIsSeen = async (
-  req: Request<{}, {}, PostEventLogIsSeenRequest>,
+  req: Request,
   res: Response,
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.EVENT_LOG_IS_SEEN}`);

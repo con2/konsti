@@ -10,7 +10,7 @@ import { ApiEndpoint } from "shared/constants/apiEndpoints";
 export const postUpdateProgramItems = async (): Promise<
   PostUpdateProgramItemsResponse | PostUpdateProgramItemsError
 > => {
-  const response = await api.post<PostUpdateProgramItemsResponse, {}>(
+  const response = await api.post<PostUpdateProgramItemsResponse>(
     ApiEndpoint.PROGRAM_ITEMS,
   );
   return response.data;
@@ -19,7 +19,7 @@ export const postUpdateProgramItems = async (): Promise<
 export const getProgramItems = async (): Promise<
   GetProgramItemsResponse | ApiError
 > => {
-  const response = await api.get<GetProgramItemsResponse, {}>(
+  const response = await api.get<GetProgramItemsResponse>(
     ApiEndpoint.PROGRAM_ITEMS,
   );
   return response.data;

@@ -36,7 +36,7 @@ export const postJoinGroup = async (
 export const postLeaveGroup = async (): Promise<
   PostLeaveGroupResponse | PostLeaveGroupError
 > => {
-  const response = await api.post<PostLeaveGroupResponse, {}>(
+  const response = await api.post<PostLeaveGroupResponse>(
     ApiEndpoint.LEAVE_GROUP,
   );
   return response.data;

@@ -8,7 +8,6 @@ import {
 import { ApiEndpoint, AuthEndpoint } from "shared/constants/apiEndpoints";
 import {
   PostKompassiLoginRequestSchema,
-  PostVerifyKompassiLoginRequest,
   PostVerifyKompassiLoginRequestSchema,
 } from "shared/types/api/login";
 import { getAuthUrl } from "server/features/kompassi-login/kompassiLoginUtils";
@@ -16,7 +15,7 @@ import { getAuthorizedUsername } from "server/utils/authHeader";
 import { UserGroup } from "shared/types/models/user";
 
 export const postKompassiLoginRedirect = (
-  req: Request<{}, {}, {}>,
+  req: Request,
   res: Response,
 ): Response => {
   logger.info(`API call: POST ${AuthEndpoint.KOMPASSI_LOGIN}`);
@@ -31,7 +30,7 @@ export const postKompassiLoginRedirect = (
 };
 
 export const postKompassiLoginCallback = async (
-  req: Request<{}, {}, string>,
+  req: Request,
   res: Response,
 ): Promise<Response> => {
   logger.info(`API call: POST ${AuthEndpoint.KOMPASSI_LOGIN_CALLBACK}`);
@@ -57,7 +56,7 @@ export const postKompassiLoginCallback = async (
 };
 
 export const postVerifyKompassiLogin = async (
-  req: Request<{}, {}, PostVerifyKompassiLoginRequest>,
+  req: Request,
   res: Response,
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.VERIFY_KOMPASSI_LOGIN}`);
@@ -87,7 +86,7 @@ export const postVerifyKompassiLogin = async (
 };
 
 export const postKompassiLogoutRedirect = (
-  req: Request<{}, {}, string>,
+  req: Request,
   res: Response,
 ): Response => {
   logger.info(`API call: POST ${AuthEndpoint.KOMPASSI_LOGOUT}`);

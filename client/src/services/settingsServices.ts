@@ -15,7 +15,7 @@ import { SignupQuestion } from "shared/types/models/settings";
 export const getSettings = async (): Promise<
   GetSettingsResponse | ApiError
 > => {
-  const response = await api.get<GetSettingsResponse, {}>(ApiEndpoint.SETTINGS);
+  const response = await api.get<GetSettingsResponse>(ApiEndpoint.SETTINGS);
   return response.data;
 };
 

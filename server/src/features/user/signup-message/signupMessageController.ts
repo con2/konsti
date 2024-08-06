@@ -6,7 +6,7 @@ import { UserGroup } from "shared/types/models/user";
 import { fetchSignupMessages } from "server/features/user/signup-message/signupMessageService";
 
 export const getSignupMessages = async (
-  req: Request<{}, {}, {}>,
+  req: Request,
   res: Response,
 ): Promise<Response> => {
   logger.info(`API call: GET ${ApiEndpoint.SIGNUP_MESSAGE}`);

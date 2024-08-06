@@ -13,7 +13,7 @@ import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { autoUpdateProgramItems } from "server/utils/cron";
 
 export const postUpdateProgramItems = async (
-  req: Request<{}, {}, {}>,
+  req: Request,
   res: Response,
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.PROGRAM_ITEMS}`);
@@ -31,7 +31,7 @@ export const postUpdateProgramItems = async (
 };
 
 export const postAutoUpdateProgramItems = (
-  req: Request<{}, {}, {}>,
+  req: Request,
   res: Response,
 ): Response => {
   logger.info(`API call: POST ${ApiEndpoint.PROGRAM_UPDATE_CRON}`);
@@ -49,7 +49,7 @@ export const postAutoUpdateProgramItems = (
 };
 
 export const getProgramItems = async (
-  _req: Request<{}, {}, {}>,
+  _req: Request,
   res: Response,
 ): Promise<Response> => {
   logger.info(`API call: GET ${ApiEndpoint.PROGRAM_ITEMS}`);

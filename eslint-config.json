@@ -191,7 +191,7 @@
     "@typescript-eslint/no-duplicate-enum-values": [2],
     "@typescript-eslint/no-duplicate-type-constituents": [2],
     "@typescript-eslint/no-dynamic-delete": [2],
-    "@typescript-eslint/no-empty-object-type": [0],
+    "@typescript-eslint/no-empty-object-type": [2],
     "@typescript-eslint/no-explicit-any": [2],
     "@typescript-eslint/no-extra-non-null-assertion": [2],
     "@typescript-eslint/no-extraneous-class": [2],

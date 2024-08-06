@@ -16,7 +16,7 @@ export type SignupQuestionSelectOption = z.infer<
   typeof SignupQuestionSelectOptionSchema
 >;
 
-const SignupQuestionSchema = z.object({
+export const SignupQuestionSchema = z.object({
   programItemId: z.string(),
   questionFi: z.string(),
   questionEn: z.string(),

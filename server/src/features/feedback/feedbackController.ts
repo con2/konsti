@@ -4,13 +4,10 @@ import { UserGroup } from "shared/types/models/user";
 import { storeFeedback } from "server/features/feedback/feedbackService";
 import { logger } from "server/utils/logger";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
-import {
-  PostFeedbackRequest,
-  PostFeedbackRequestSchema,
-} from "shared/types/api/feedback";
+import { PostFeedbackRequestSchema } from "shared/types/api/feedback";
 
 export const postFeedback = async (
-  req: Request<{}, {}, PostFeedbackRequest>,
+  req: Request,
   res: Response,
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.FEEDBACK}`);
