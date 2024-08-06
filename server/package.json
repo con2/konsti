@@ -35,11 +35,11 @@
   },
   "dependencies": {
     "@faker-js/faker": "8.4.1",
-    "@sentry/node": "8.22.0",
+    "@sentry/node": "8.24.0",
     "@vercel/ncc": "0.38.1",
     "bcryptjs": "2.4.3",
     "commander": "12.1.0",
-    "croner": "8.1.0",
+    "croner": "8.1.1",
     "dotenv": "16.4.5",
     "eventassigner-js": "0.1.6",
     "eventassigner-random": "0.3.2",
