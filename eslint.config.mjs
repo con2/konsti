@@ -172,7 +172,10 @@ export default typescriptEslint.config(
           ],
         },
       ],
-      "@typescript-eslint/restrict-template-expressions": "off", // Requires typing catch(e) every time
+      "@typescript-eslint/restrict-template-expressions": [
+        "error",
+        { allowArray: true, allowNumber: true },
+      ],
     },
   },
 

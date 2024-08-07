@@ -262,14 +262,10 @@
       }
     ],
     "@typescript-eslint/restrict-template-expressions": [
-      0,
+      2,
       {
-        "allowAny": false,
-        "allowBoolean": false,
-        "allowNullish": false,
-        "allowNumber": false,
-        "allowRegExp": false,
-        "allowNever": false
+        "allowArray": true,
+        "allowNumber": true
       }
     ],
     "no-return-await": [0],

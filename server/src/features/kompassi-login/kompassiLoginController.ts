@@ -44,6 +44,7 @@ export const postKompassiLoginCallback = async (
     logger.error(
       "%s",
       new Error(
+        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
         `Error validating postKompassiLoginCallback body: ${result.error}`,
       ),
     );
@@ -74,6 +75,7 @@ export const postVerifyKompassiLogin = async (
     logger.error(
       "%s",
       new Error(
+        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
         `Error validating postVerifyKompassiLogin body: ${result.error}`,
       ),
     );

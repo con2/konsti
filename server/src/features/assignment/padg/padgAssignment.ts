@@ -59,6 +59,7 @@ export const padgAssignment = (
     `Program items with lottery signups: ${lotterySignupProgramItems.length}`,
   );
   logger.debug(
+    // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
     `Selected attendees: ${allAttendees.length} (${numberOfIndividuals} individual, ${numberOfGroups} groups)`,
   );
 

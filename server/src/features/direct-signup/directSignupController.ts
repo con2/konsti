@@ -30,6 +30,7 @@ export const postDirectSignup = async (
   if (!result.success) {
     logger.error(
       "%s",
+      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
       new Error(`Error validating postDirectSignup body: ${result.error}`),
     );
     return res.sendStatus(422);
@@ -57,6 +58,7 @@ export const deleteDirectSignup = async (
   if (!result.success) {
     logger.error(
       "%s",
+      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
       new Error(`Error validating deleteDirectSignup body: ${result.error}`),
     );
     return res.sendStatus(422);

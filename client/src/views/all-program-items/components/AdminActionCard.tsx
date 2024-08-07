@@ -88,7 +88,7 @@ export const AdminActionCard = ({ programItem }: Props): ReactElement => {
     try {
       await dispatch(submitUpdateHidden(allHiddenProgramItems));
     } catch (error) {
-      // eslint-disable-next-line no-restricted-syntax -- TODO: Remove throw
+      // eslint-disable-next-line no-restricted-syntax, @typescript-eslint/restrict-template-expressions -- TODO: Remove throw
       throw new Error(`submitUpdateHidden error: ${error}`);
     } finally {
       setSubmitting(false);
@@ -103,7 +103,7 @@ export const AdminActionCard = ({ programItem }: Props): ReactElement => {
     try {
       await dispatch(submitDeleteSignupQuestion(programItem.programItemId));
     } catch (error) {
-      // eslint-disable-next-line no-restricted-syntax -- TODO: Remove throw
+      // eslint-disable-next-line no-restricted-syntax, @typescript-eslint/restrict-template-expressions -- TODO: Remove throw
       throw new Error(`deleteSignupQuestion error: ${error}`);
     } finally {
       setSubmitting(false);
@@ -126,7 +126,7 @@ export const AdminActionCard = ({ programItem }: Props): ReactElement => {
         }),
       );
     } catch (error) {
-      // eslint-disable-next-line no-restricted-syntax -- TODO: Remove throw
+      // eslint-disable-next-line no-restricted-syntax, @typescript-eslint/restrict-template-expressions -- TODO: Remove throw
       throw new Error(`addSignupQuestion error: ${error}`);
     } finally {
       setSubmitting(false);

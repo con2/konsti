@@ -88,6 +88,7 @@ export const findSettings = async (): Promise<
     if (!result.success) {
       logger.error(
         "%s",
+        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
         new Error(`Error validating findSettings response: ${result.error}`),
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);

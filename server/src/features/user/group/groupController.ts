@@ -52,6 +52,7 @@ export const postJoinGroup = async (
   if (!result.success) {
     logger.error(
       "%s",
+      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
       new Error(`Error validating postJoinGroup body: ${result.error}`),
     );
     return res.sendStatus(422);
@@ -98,6 +99,7 @@ export const postCloseGroup = async (
   if (!result.success) {
     logger.error(
       "%s",
+      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
       new Error(`Error validating postCloseGroup body: ${result.error}`),
     );
     return res.sendStatus(422);
@@ -126,6 +128,7 @@ export const getGroup = async (
   if (!result.success) {
     logger.error(
       "%s",
+      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
       new Error(`Error validating getGroup params: ${result.error}`),
     );
     return res.sendStatus(422);
