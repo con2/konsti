@@ -53,7 +53,7 @@ const gray = {
 
 const mainColor: Palette = green;
 
-export const theme: Record<string, string> = {
+export const theme = {
   // Colors
   backgroundBody: white,
   backgroundHighlight: white,
