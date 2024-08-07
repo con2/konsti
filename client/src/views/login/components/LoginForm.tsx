@@ -46,7 +46,7 @@ export const LoginForm = (): ReactElement => {
     }
 
     // Navigate to previous page or front page if no previous page exists
-    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions, @typescript-eslint/no-unsafe-member-access
     window.history.state?.idx > 0 ? navigate(-1) : navigate("/");
   };
 

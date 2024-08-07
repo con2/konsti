@@ -20,12 +20,13 @@ export const Expand = ({ children }: Props): ReactElement | null => {
   const headerElements = ["h3"];
 
   const [headers, elements] = partition(children, (child) =>
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     headerElements.includes(child.props.children.type as string),
   );
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const header = i18n.language === "fi" ? headers[0] : headers[1];
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
   const headerText = header.props.children.props.children;
 
   return (

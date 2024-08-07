@@ -98,6 +98,7 @@ describe(`GET ${ApiEndpoint.SIGNUP_MESSAGE}`, () => {
       .set("Authorization", `Bearer ${getJWT(UserGroup.HELP, "helper")}`);
 
     expect(response.status).toEqual(200);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(response.body.signupMessages.length).toEqual(2);
   });
 });

@@ -22,7 +22,7 @@ export default typescriptEslint.config(
   ...typescriptEslint.configs.strictTypeChecked,
   ...typescriptEslint.configs.stylisticTypeChecked,
   eslintPluginCommentsConfigs.recommended,
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
   eslintPluginPromise.configs["flat/recommended"],
 
   // ** Default **
@@ -77,6 +77,7 @@ export default typescriptEslint.config(
       ...eslintPluginVitest.configs.recommended.rules,
       // TODO: Enable, doesn't work with flat config yet
       // ...eslintPluginImport.configs.recommended.rules,
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       ...eslintPluginImport.configs.typescript.rules,
 
       // eslint
@@ -172,9 +173,6 @@ export default typescriptEslint.config(
         },
       ],
       "@typescript-eslint/restrict-template-expressions": "off", // Requires typing catch(e) every time
-
-      // TODO: Enable these rules
-      "@typescript-eslint/no-unsafe-member-access": "off",
     },
   },
 
@@ -184,9 +182,12 @@ export default typescriptEslint.config(
 
     extends: [
       // 'recommended' configuration is not recommended anymore, use 'all' and disable some rules
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       eslintPluginReact.configs.flat.all,
       // Disable some rules conflicting with new JSX transform from React 17
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       eslintPluginReact.configs.flat["jsx-runtime"],
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       eslintPluginJsxA11y.flatConfigs.recommended,
       eslintPluginCompat.configs["flat/recommended"],
     ],

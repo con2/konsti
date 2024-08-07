@@ -12,6 +12,7 @@ eslint-disable
 @typescript-eslint/explicit-function-return-type,
 @typescript-eslint/no-require-imports,
 @typescript-eslint/no-unsafe-assignment,
+@typescript-eslint/no-unsafe-member-access,
 promise/catch-or-return,
 promise/always-return,
 */
@@ -175,6 +176,7 @@ eslint-enable
 @typescript-eslint/explicit-function-return-type,
 @typescript-eslint/no-require-imports,
 @typescript-eslint/no-unsafe-assignment,
+@typescript-eslint/no-unsafe-member-access,
 promise/catch-or-return,
 promise/always-return,
 */

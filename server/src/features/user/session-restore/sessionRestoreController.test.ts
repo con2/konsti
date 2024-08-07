@@ -32,6 +32,7 @@ describe(`POST ${ApiEndpoint.SESSION_RESTORE}`, () => {
       .post(ApiEndpoint.SESSION_RESTORE)
       .send({ jwt: "testjwt" });
     expect(response.status).toEqual(200);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(response.body.message).toEqual("Invalid jwt");
   });
 
@@ -44,14 +45,16 @@ describe(`POST ${ApiEndpoint.SESSION_RESTORE}`, () => {
       .send({ username: mockUser.username, password: "password" });
 
     expect(loginResponse.status).toEqual(200);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(loginResponse.body.message).toEqual("User login success");
 
     const sessionRestoreResponse = await request(server)
       .post(ApiEndpoint.SESSION_RESTORE)
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
       .send({ jwt: loginResponse.body.jwt });
 
     expect(sessionRestoreResponse.status).toEqual(200);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(sessionRestoreResponse.body.message).toEqual(
       "Session restore success",
     );
