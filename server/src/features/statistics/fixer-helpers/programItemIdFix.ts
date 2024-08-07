@@ -14,6 +14,7 @@ export const programItemIdFix = async (
   year: number,
   event: string,
 ): Promise<void> => {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const users: User[] = JSON.parse(
     fs.readFileSync(
       `${config.server().statsDataDir}/${event}/${year}/users.json`,
@@ -23,6 +24,7 @@ export const programItemIdFix = async (
 
   logger.info(`Loaded ${users.length} users`);
 
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const results: ResultsCollectionEntry[] = JSON.parse(
     fs.readFileSync(
       `${config.server().statsDataDir}/${event}/${year}/results.json`,
@@ -32,6 +34,7 @@ export const programItemIdFix = async (
 
   logger.info(`Loaded ${results.length} results`);
 
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const programItems: ProgramItemDoc[] = JSON.parse(
     fs.readFileSync(
       `${config.server().statsDataDir}/${event}/${year}/program-items.json`,
@@ -41,6 +44,7 @@ export const programItemIdFix = async (
 
   logger.info(`Loaded ${programItems.length} program items`);
 
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const directSignups: DirectSignupDoc[] = JSON.parse(
     fs.readFileSync(
       `${config.server().statsDataDir}/${event}/${year}/direct-signups.json`,
@@ -50,6 +54,7 @@ export const programItemIdFix = async (
 
   logger.info(`Loaded ${programItems.length} program items`);
 
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const settings: SettingsDoc[] = JSON.parse(
     fs.readFileSync(
       `${config.server().statsDataDir}/${event}/${year}/settings.json`,

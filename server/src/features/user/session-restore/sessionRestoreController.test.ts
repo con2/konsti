@@ -48,6 +48,7 @@ describe(`POST ${ApiEndpoint.SESSION_RESTORE}`, () => {
 
     const sessionRestoreResponse = await request(server)
       .post(ApiEndpoint.SESSION_RESTORE)
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       .send({ jwt: loginResponse.body.jwt });
 
     expect(sessionRestoreResponse.status).toEqual(200);

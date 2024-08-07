@@ -219,7 +219,7 @@
     "@typescript-eslint/no-unnecessary-type-constraint": [2],
     "@typescript-eslint/no-unnecessary-type-parameters": [2],
     "@typescript-eslint/no-unsafe-argument": [2],
-    "@typescript-eslint/no-unsafe-assignment": [0],
+    "@typescript-eslint/no-unsafe-assignment": [2],
     "@typescript-eslint/no-unsafe-call": [2],
     "@typescript-eslint/no-unsafe-declaration-merging": [2],
     "@typescript-eslint/no-unsafe-enum-comparison": [2],

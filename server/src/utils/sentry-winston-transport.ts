@@ -11,6 +11,7 @@ eslint-disable
 @typescript-eslint/consistent-indexed-object-style,
 @typescript-eslint/explicit-function-return-type,
 @typescript-eslint/no-require-imports,
+@typescript-eslint/no-unsafe-assignment,
 promise/catch-or-return,
 promise/always-return,
 */
@@ -173,6 +174,7 @@ eslint-enable
 @typescript-eslint/consistent-indexed-object-style,
 @typescript-eslint/explicit-function-return-type,
 @typescript-eslint/no-require-imports,
+@typescript-eslint/no-unsafe-assignment,
 promise/catch-or-return,
 promise/always-return,
 */

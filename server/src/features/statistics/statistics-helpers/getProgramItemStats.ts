@@ -11,6 +11,7 @@ import { ProgramItem } from "shared/types/models/programItem";
 import { User } from "shared/types/models/user";
 
 export const getProgramItemStats = (year: number, event: string): void => {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const programItems: ProgramItem[] = JSON.parse(
     fs.readFileSync(
       `${config.server().statsDataDir}/${event}/${year}/program-items.json`,
@@ -20,6 +21,7 @@ export const getProgramItemStats = (year: number, event: string): void => {
 
   logger.info(`Loaded ${programItems.length} program items`);
 
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const users: User[] = JSON.parse(
     fs.readFileSync(
       `${config.server().statsDataDir}/${event}/${year}/users.json`,

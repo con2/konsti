@@ -50,7 +50,9 @@ axiosInstance.interceptors.response.use(
   (error: AxiosError) => {
     if (error.response && [301, 302].includes(error.response.status)) {
       // @ts-expect-error: TODO: Type this
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       const redirectUrl = error.response.data.location;
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       window.location.href = redirectUrl;
       return;
     }
@@ -80,9 +82,11 @@ axiosInstance.interceptors.response.use(
       };
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const response = error.response;
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment
     const method: HttpMethod = response.config.method.toUpperCase();
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const url: ApiEndpoint = response.config.url;
 
     const errorReason = getErrorReason(Number(response.status) || 0);

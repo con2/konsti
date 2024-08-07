@@ -108,6 +108,7 @@ export const saveProgramItems = async (
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const newProgramItemObjectIds: ObjectId[] = Object.values(
     response.upsertedIds,
   );
