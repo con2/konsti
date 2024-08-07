@@ -42,6 +42,7 @@ export const assignPadg = (
       logger.error(
         "%s",
         new Error(
+          // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
           `Padg assignment round failed: ${error}. Input: ${JSON.stringify(input)}`,
         ),
       );

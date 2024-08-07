@@ -24,6 +24,7 @@ export const postFavorite = async (
   if (!result.success) {
     logger.error(
       "%s",
+      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
       new Error(`Error validating postFavorite body: ${result.error}`),
     );
     return res.sendStatus(422);

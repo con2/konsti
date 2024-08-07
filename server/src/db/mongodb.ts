@@ -15,7 +15,7 @@ const connectToDb = async (
   try {
     await mongoose.connect(dbConnString, options);
   } catch (error) {
-    // eslint-disable-next-line no-restricted-syntax -- Server startup
+    // eslint-disable-next-line no-restricted-syntax, @typescript-eslint/restrict-template-expressions -- Server startup
     throw new Error(`MongoDB: Error connecting to DB: ${error}`);
   }
 
@@ -30,7 +30,7 @@ const gracefulExit = async (): Promise<void> => {
   try {
     await mongoose.connection.close();
   } catch (error) {
-    // eslint-disable-next-line no-restricted-syntax -- Server startup
+    // eslint-disable-next-line no-restricted-syntax, @typescript-eslint/restrict-template-expressions -- Server startup
     throw new Error(`MongoDB: Error shutting down db connection: ${error}`);
   }
 

@@ -67,6 +67,7 @@ const getKompassiTokens = async (
       logger.error(
         "%s",
         new Error(
+          // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
           `Error validating getKompassiTokens response: ${result.error}`,
         ),
       );
@@ -95,6 +96,7 @@ const getKompassiProfile = async (
       logger.error(
         "%s",
         new Error(
+          // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
           `Error validating getKompassiProfile response: ${result.error}`,
         ),
       );

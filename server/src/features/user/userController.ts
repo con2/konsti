@@ -25,6 +25,7 @@ export const postUser = async (
   if (!result.success) {
     logger.error(
       "%s",
+      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
       new Error(`Error validating postUser body: ${result.error}`),
     );
     return res.sendStatus(422);
@@ -54,6 +55,7 @@ export const postUserPassword = async (
   if (!result.success) {
     logger.error(
       "%s",
+      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
       new Error(`Error validating postUserPassword body: ${result.error}`),
     );
     return res.sendStatus(422);

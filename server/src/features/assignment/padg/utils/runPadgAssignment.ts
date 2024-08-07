@@ -52,6 +52,7 @@ export const runPadgAssignment = (
           groups,
         )}, events: ${JSON.stringify(events)}, list: ${JSON.stringify(
           list,
+          // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
         )}, updateL: ${updateL}`,
       ),
     );
