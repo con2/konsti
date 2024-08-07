@@ -9,6 +9,7 @@ export const readJson = <T>(
   event: string,
   datatype: string,
 ): T[] => {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const data = JSON.parse(
     fs.readFileSync(
       `${config.server().statsDataDir}/${event}/${year}/${datatype}.json`,

@@ -11,6 +11,7 @@ export const resendSentryRequest = async (
 ): Promise<null | ApiError> => {
   try {
     const piece = envelope.subarray(0, envelope.indexOf("\n"));
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const header = JSON.parse(piece.toString());
 
     const { host, pathname } = new url.URL(header.dsn as string);

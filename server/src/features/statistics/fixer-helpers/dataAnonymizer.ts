@@ -11,6 +11,7 @@ export const anonymizeData = async (
   year: number,
   event: string,
 ): Promise<void> => {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const users: User[] = JSON.parse(
     fs.readFileSync(
       `${config.server().statsDataDir}/${event}/${year}/users.json`,
@@ -18,6 +19,7 @@ export const anonymizeData = async (
     ),
   );
 
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const results: ResultsCollectionEntry[] = JSON.parse(
     fs.readFileSync(
       `${config.server().statsDataDir}/${event}/${year}/results.json`,
@@ -25,6 +27,7 @@ export const anonymizeData = async (
     ),
   );
 
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const directSignups: DirectSignupsForProgramItem[] = JSON.parse(
     fs.readFileSync(
       `${config.server().statsDataDir}/${event}/${year}/direct-signups.json`,

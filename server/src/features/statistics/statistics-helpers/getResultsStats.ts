@@ -10,6 +10,7 @@ import { ResultsCollectionEntry } from "server/types/resultTypes";
 import { ProgramItem } from "shared/types/models/programItem";
 
 export const getResultsStats = (year: number, event: string): void => {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const results: ResultsCollectionEntry[] = JSON.parse(
     fs.readFileSync(
       `${config.server().statsDataDir}/${event}/${year}/results.json`,
@@ -19,6 +20,7 @@ export const getResultsStats = (year: number, event: string): void => {
 
   logger.info(`Loaded ${results.length} results`);
 
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const programItems: ProgramItem[] = JSON.parse(
     fs.readFileSync(
       `${config.server().statsDataDir}/${event}/${year}/program-items.json`,

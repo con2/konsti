@@ -25,6 +25,7 @@ const enforceConsistentDependencies = ({ Yarn }) => {
 
     // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     for (const otherDependency of Yarn.dependencies({
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       ident: dependency.ident,
     })) {
       if (otherDependency.type === `peerDependencies`) {

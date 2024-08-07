@@ -57,6 +57,7 @@ const ignoredActions = [
   "admin/submitGetSignupMessagesAsync", // Private
 ];
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 const sentryReduxEnhancer = createReduxEnhancer({
   actionTransformer: (action) => {
     // Don't send large payloads or private data to sentry

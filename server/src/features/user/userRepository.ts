@@ -138,6 +138,7 @@ export const findUser = async (
       ...response,
       eventLogItems: response.eventLogItems.map((item) => ({
         // @ts-expect-error: Mongoose return value is missing nested _id
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         eventLogItemId: item._id,
         action: item.action,
         isSeen: item.isSeen,

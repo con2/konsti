@@ -72,6 +72,7 @@ export default typescriptEslint.config(
       "import/internal-regex": "shared",
     },
 
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     rules: {
       ...eslintPluginVitest.configs.recommended.rules,
       // TODO: Enable, doesn't work with flat config yet
@@ -174,7 +175,6 @@ export default typescriptEslint.config(
 
       // TODO: Enable these rules
       "@typescript-eslint/no-unsafe-member-access": "off",
-      "@typescript-eslint/no-unsafe-assignment": "off",
     },
   },
 

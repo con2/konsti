@@ -40,6 +40,7 @@ const postLogin = async (
     data: loginRequest,
   });
   expect(response.status()).toBe(200);
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const json = await response.json();
   // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   return json;
