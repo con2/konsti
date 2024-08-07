@@ -17,6 +17,7 @@ export const readJson = <T>(
   );
 
   logger.info(`Loaded ${data.length} ${datatype}`);
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   return data;
 };
 

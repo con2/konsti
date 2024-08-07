@@ -41,5 +41,8 @@ const StyledIcon = styled(FontAwesomeIcon)<{
   $color: string;
 }>`
   padding-right: 8px;
-  color: ${(props) => props.theme[props.$color]};
+  color: ${(props) =>
+    props.theme[ // eslint-disable-line @typescript-eslint/no-unsafe-return
+      props.$color
+    ]};
 `;
