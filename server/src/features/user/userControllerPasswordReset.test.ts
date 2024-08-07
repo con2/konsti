@@ -52,6 +52,7 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
         `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
       );
     expect(response.status).toEqual(200);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(response.body.status).toEqual("success");
   });
 
@@ -77,6 +78,7 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
       })
       .set("Authorization", `Bearer ${getJWT(UserGroup.HELP, "helper")}`);
     expect(response.status).toEqual(200);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(response.body.status).toEqual("success");
   });
 
@@ -89,7 +91,9 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
       })
       .set("Authorization", `Bearer ${getJWT(UserGroup.HELP, "helper")}`);
     expect(response.status).toEqual(200);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(response.body.status).toEqual("error");
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(response.body.errorId).toEqual("notAllowed");
 
     const response2 = await request(server)
@@ -100,7 +104,9 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
       })
       .set("Authorization", `Bearer ${getJWT(UserGroup.HELP, "helper")}`);
     expect(response2.status).toEqual(200);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(response2.body.status).toEqual("error");
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(response2.body.errorId).toEqual("notAllowed");
   });
 
@@ -116,6 +122,7 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
       })
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
     expect(response.status).toEqual(200);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(response.body.status).toEqual("success");
 
     const response2 = await request(server)
@@ -126,6 +133,7 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
       })
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
     expect(response2.status).toEqual(200);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(response2.body.status).toEqual("success");
   });
 
@@ -143,6 +151,7 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
         `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
       );
     expect(response.status).toEqual(200);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(response.body.status).toEqual("error");
   });
 });

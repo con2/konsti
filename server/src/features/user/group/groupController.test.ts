@@ -78,7 +78,9 @@ describe(`GET ${ApiEndpoint.GROUP}`, () => {
       );
 
     expect(response.status).toEqual(200);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(response.body.status).toEqual("success");
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(response.body.results.length).toEqual(2);
   });
 });
@@ -188,7 +190,9 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
       );
 
     expect(response.status).toEqual(200);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(response.body.status).toEqual("error");
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(response.body.message).toEqual("Signup in future");
   });
 });

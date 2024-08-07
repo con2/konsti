@@ -66,6 +66,7 @@ describe(`POST ${ApiEndpoint.VERIFY_KOMPASSI_LOGIN}`, () => {
         `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
       );
     expect(response.status).toEqual(200);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(response.body.status).toEqual("success");
 
     const user = unsafelyUnwrap(await findUser("new_username"));
@@ -90,7 +91,9 @@ describe(`POST ${ApiEndpoint.VERIFY_KOMPASSI_LOGIN}`, () => {
       );
 
     expect(response.status).toEqual(200);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(response.body.status).toEqual("error");
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(response.body.errorId).toEqual("usernameNotFree");
   });
 
@@ -110,6 +113,7 @@ describe(`POST ${ApiEndpoint.VERIFY_KOMPASSI_LOGIN}`, () => {
       );
 
     expect(response.status).toEqual(200);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(response.body.status).toEqual("success");
 
     const user = unsafelyUnwrap(await findUser(mockUser.username));

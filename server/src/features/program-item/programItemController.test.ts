@@ -103,8 +103,11 @@ describe(`GET ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     const response = await request(server).get(ApiEndpoint.PROGRAM_ITEMS);
     expect(response.status).toEqual(200);
 
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     const sortedProgramItems = sortBy(response.body.programItems, "title");
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(sortedProgramItems[0].users[0].signupMessage).toEqual(publicMessage);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(sortedProgramItems[1].users[0].signupMessage).toEqual("");
   });
 });

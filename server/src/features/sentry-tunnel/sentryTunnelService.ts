@@ -14,6 +14,7 @@ export const resendSentryRequest = async (
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const header = JSON.parse(piece.toString());
 
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     const { host, pathname } = new url.URL(header.dsn as string);
 
     if (!host.includes(sentryHost)) {

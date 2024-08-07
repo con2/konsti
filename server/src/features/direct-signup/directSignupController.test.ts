@@ -109,7 +109,9 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
         `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
       );
     expect(response.status).toEqual(200);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(response.body.status).toEqual("error");
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(response.body.message).toEqual("Signed program item not found");
   });
 
@@ -136,7 +138,9 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
         `Bearer ${getJWT(UserGroup.USER, "user_not_found")}`,
       );
     expect(response.status).toEqual(200);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(response.body.status).toEqual("error");
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(response.body.message).toEqual("Error finding user");
   });
 
@@ -166,7 +170,9 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
       );
 
     expect(response.status).toEqual(200);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(response.body.status).toEqual("error");
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(response.body.errorId).toEqual("signupNotOpenYet");
   });
 
@@ -204,7 +210,9 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
 
     // Check API response
     expect(response.status).toEqual(200);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(response.body.message).toEqual("Store signup success");
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(response.body.status).toEqual("success");
 
     // Check database
@@ -357,7 +365,9 @@ describe(`DELETE ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
         `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
       );
     expect(response.status).toEqual(200);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(response.body.status).toEqual("error");
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(response.body.message).toEqual("Delete signup failure");
   });
 
@@ -378,7 +388,9 @@ describe(`DELETE ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
         `Bearer ${getJWT(UserGroup.USER, "user_not_found")}`,
       );
     expect(response.status).toEqual(200);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(response.body.status).toEqual("error");
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(response.body.message).toEqual("Delete signup failure");
   });
 
@@ -419,7 +431,9 @@ describe(`DELETE ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
 
     // Check API response
     expect(response.status).toEqual(200);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(response.body.message).toEqual("Delete signup success");
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(response.body.status).toEqual("success");
 
     // Check database

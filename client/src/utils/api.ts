@@ -67,8 +67,11 @@ axiosInstance.interceptors.response.use(
   (response) => response,
   (error): { data: ApiError } => {
     if (
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       error.code === "ERR_NETWORK" ||
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       !error.response ||
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       error.response.status === 0
     ) {
       store.dispatch(addError(t(BackendErrorType.NETWORK_ERROR)));
@@ -82,13 +85,14 @@ axiosInstance.interceptors.response.use(
       };
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
     const response = error.response;
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
     const method: HttpMethod = response.config.method.toUpperCase();
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
     const url: ApiEndpoint = response.config.url;
 
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     const errorReason = getErrorReason(Number(response.status) || 0);
 
     store.dispatch(
