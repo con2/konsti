@@ -1,5 +1,5 @@
 import { createLogger, format, Logger, transports } from "winston";
-import Sentry from "./sentry-winston-transport";
+import Sentry from "winston-transport-sentry-node";
 import { config } from "shared/config";
 import { getDsn } from "server/utils/instrument";
 
