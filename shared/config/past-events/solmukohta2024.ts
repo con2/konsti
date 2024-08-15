@@ -22,8 +22,6 @@ interface SharedConfig {
     Record<ProgramType, ArrMin1<SignupWindow>>
   > | null;
   directSignupAlwaysOpenIds: string[];
-  tracesSampleRate: number;
-  enableSentryInDev: boolean;
   requireRegistrationCode: boolean;
   twoPhaseSignupProgramTypes: ProgramType[];
   manualSignupMode: SignupStrategy.ALGORITHM | SignupStrategy.DIRECT | "none";
@@ -101,8 +99,4 @@ const sharedConfig: SharedConfig = {
   // Convention info
   conventionName: ConventionName.SOLMUKOHTA,
   conventionYear: "2024",
-
-  // Sentry
-  tracesSampleRate: 0.0,
-  enableSentryInDev: false,
 };

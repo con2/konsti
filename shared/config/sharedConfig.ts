@@ -26,8 +26,6 @@ export interface SharedConfig {
   > | null;
   rollingSignupStartProgramTypes: ProgramType[];
   directSignupAlwaysOpenIds: string[];
-  tracesSampleRate: number;
-  enableSentryInDev: boolean;
   requireRegistrationCode: boolean;
   twoPhaseSignupProgramTypes: ProgramType[];
   manualSignupMode: SignupStrategy.ALGORITHM | SignupStrategy.DIRECT | "none";
@@ -40,7 +38,6 @@ export interface SharedConfig {
   tournamentSignupQuestionExcludeIds: string[];
   addRevolvingDoorIds: string[];
   isEnglishProgramItems: string[];
-  maxValueLength: number;
   logInvalidStartTimes: boolean;
 }
 
@@ -266,9 +263,4 @@ export const sharedConfig: SharedConfig = {
   // Convention info
   conventionName: ConventionName.ROPECON,
   conventionYear: "2024",
-
-  // Sentry
-  tracesSampleRate: 0.0,
-  enableSentryInDev: false,
-  maxValueLength: 100000,
 };
