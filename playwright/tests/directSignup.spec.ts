@@ -5,13 +5,13 @@ import {
   postTestSettings,
   login,
 } from "playwright/utils";
-import { sharedConfig } from "shared/config/sharedConfig";
+import { config } from "shared/config";
 
 test("Add direct signup", async ({ page, request }) => {
   logTestStart("Add direct signup");
   await populateDb(request);
   await postTestSettings(request, {
-    testTime: sharedConfig.conventionStartTime,
+    testTime: config.shared().conventionStartTime,
   });
   await login(page, request, { username: "test1", password: "test" });
 

@@ -4,7 +4,7 @@ import {
   KompassiProgramItemSchemaHitpoint,
   KompassiProgramTypeHitpoint,
 } from "server/kompassi/hitpoint/kompassiProgramItemHitpoint";
-import { sharedConfig } from "shared/config/sharedConfig";
+import { config } from "shared/config";
 import { KompassiProgramItem } from "server/kompassi/kompassiProgramItem";
 import {
   checkUnknownKeys,
@@ -28,7 +28,7 @@ export const getProgramItemsFromFullProgramHitpoint = (
 
   const matchingProgramItems = kompassiProgramItems.flatMap((programItem) => {
     // These program items are hand picked to be exported from Kompassi
-    if (sharedConfig.addToKonstiOther.includes(programItem.slug)) {
+    if (config.shared().addToKonstiOther.includes(programItem.slug)) {
       return programItem;
     }
 
