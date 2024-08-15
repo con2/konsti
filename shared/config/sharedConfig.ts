@@ -47,6 +47,10 @@ const saturday = "2024-07-20";
 const sunday = "2024-07-21";
 
 export const sharedConfig: SharedConfig = {
+  // Convention info
+  conventionName: ConventionName.ROPECON,
+  conventionYear: "2024",
+
   // Convention settings
   requireRegistrationCode: true,
   assignmentStrategy: AssignmentStrategy.RANDOM_PADG,
@@ -259,8 +263,4 @@ export const sharedConfig: SharedConfig = {
   PRE_SIGNUP_START: 60 * 4, // minutes
   DIRECT_SIGNUP_START: 60 * 2, // minutes
   PHASE_GAP: 15, // minutes
-
-  // Convention info
-  conventionName: ConventionName.ROPECON,
-  conventionYear: "2024",
 };

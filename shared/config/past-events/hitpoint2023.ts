@@ -41,6 +41,10 @@ interface SharedConfig {
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const sharedConfig: SharedConfig = {
+  // Convention info
+  conventionName: ConventionName.HITPOINT,
+  conventionYear: "2023",
+
   // Convention settings
   requireRegistrationCode: true,
   assignmentStrategy: AssignmentStrategy.RANDOM_PADG,
@@ -92,8 +96,4 @@ const sharedConfig: SharedConfig = {
   PRE_SIGNUP_START: 60 * 4, // minutes
   DIRECT_SIGNUP_START: 60 * 2, // minutes
   PHASE_GAP: 15, // minutes
-
-  // Convention info
-  conventionName: ConventionName.HITPOINT,
-  conventionYear: "2023",
 };
