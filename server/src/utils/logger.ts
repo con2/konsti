@@ -41,7 +41,7 @@ export const logger = createLogger({
     new Sentry({
       sentry: {
         dsn: getDsn(),
-        maxValueLength: config.shared().maxValueLength,
+        maxValueLength: config.sentry().maxValueLength,
       },
       level: "error",
       format: format.combine(

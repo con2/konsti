@@ -52,7 +52,7 @@ const getDsn = (): string | undefined => {
     case "staging":
       return "https://446b1c1e5b3048c4bb00b19b74aa55e6@o1321706.ingest.sentry.io/6578391";
     case "development":
-      return config.shared().enableSentryInDev
+      return config.sentry().enableSentryInDev
         ? "https://1fb97a74de6a44e3b16e8d29aeec3363@o1321706.ingest.sentry.io/6579491"
         : undefined;
     default:
@@ -68,7 +68,7 @@ init({
     browserTracingIntegration(),
   ],
   tracePropagationTargets: ["localhost", "dev.ropekonsti.fi", "ropekonsti.fi"],
-  tracesSampleRate: config.shared().tracesSampleRate,
+  tracesSampleRate: config.sentry().tracesSampleRate,
   normalizeDepth: 10,
   environment: process.env.SETTINGS,
   tunnel: ApiEndpoint.SENTRY_TUNNEL,
@@ -77,7 +77,7 @@ init({
     // https://github.com/getsentry/sentry-javascript/issues/3440
     "Non-Error promise rejection captured with value: Object Not Found Matching Id:",
   ],
-  maxValueLength: config.shared().maxValueLength,
+  maxValueLength: config.sentry().maxValueLength,
 });
 
 // Suspend fallback element

@@ -26,8 +26,6 @@ export interface SharedConfig {
   > | null;
   rollingSignupStartProgramTypes: ProgramType[];
   directSignupAlwaysOpenIds: string[];
-  tracesSampleRate: number;
-  enableSentryInDev: boolean;
   requireRegistrationCode: boolean;
   twoPhaseSignupProgramTypes: ProgramType[];
   manualSignupMode: SignupStrategy.ALGORITHM | SignupStrategy.DIRECT | "none";
@@ -40,7 +38,6 @@ export interface SharedConfig {
   tournamentSignupQuestionExcludeIds: string[];
   addRevolvingDoorIds: string[];
   isEnglishProgramItems: string[];
-  maxValueLength: number;
   logInvalidStartTimes: boolean;
 }
 
@@ -50,6 +47,10 @@ const saturday = "2024-07-20";
 const sunday = "2024-07-21";
 
 export const sharedConfig: SharedConfig = {
+  // Convention info
+  conventionName: ConventionName.ROPECON,
+  conventionYear: "2024",
+
   // Convention settings
   requireRegistrationCode: true,
   assignmentStrategy: AssignmentStrategy.RANDOM_PADG,
@@ -262,13 +263,4 @@ export const sharedConfig: SharedConfig = {
   PRE_SIGNUP_START: 60 * 4, // minutes
   DIRECT_SIGNUP_START: 60 * 2, // minutes
   PHASE_GAP: 15, // minutes
-
-  // Convention info
-  conventionName: ConventionName.ROPECON,
-  conventionYear: "2024",
-
-  // Sentry
-  tracesSampleRate: 0.0,
-  enableSentryInDev: false,
-  maxValueLength: 100000,
 };

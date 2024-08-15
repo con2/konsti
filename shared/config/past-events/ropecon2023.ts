@@ -28,8 +28,6 @@ interface SharedConfig {
     Record<ProgramType, ArrMin1<SignupWindow>>
   > | null;
   directSignupAlwaysOpenIds: string[];
-  tracesSampleRate: number;
-  enableSentryInDev: boolean;
   requireRegistrationCode: boolean;
   activeProgramTypes: ProgramType[];
   twoPhaseSignupProgramTypes: ProgramType[];
@@ -52,6 +50,10 @@ const sunday = "2023-07-30";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const sharedConfig: SharedConfig = {
+  // Convention info
+  conventionName: ConventionName.HITPOINT,
+  conventionYear: "2023",
+
   // Convention settings
   requireRegistrationCode: true,
   assignmentStrategy: AssignmentStrategy.RANDOM_PADG,
@@ -297,12 +299,4 @@ const sharedConfig: SharedConfig = {
   PRE_SIGNUP_START: 60 * 4, // minutes
   DIRECT_SIGNUP_START: 60 * 2, // minutes
   PHASE_GAP: 15, // minutes
-
-  // Convention info
-  conventionName: ConventionName.HITPOINT,
-  conventionYear: "2023",
-
-  // Sentry
-  tracesSampleRate: 0.0,
-  enableSentryInDev: false,
 };
