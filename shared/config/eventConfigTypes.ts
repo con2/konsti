@@ -21,6 +21,7 @@ export enum ConventionName {
   ROPECON = "Ropecon",
   HITPOINT = "Tracon Hitpoint",
   SOLMUKOHTA = "Solmukohta",
+  TRACON = "Tracon",
 }
 
 export type ArrMin1<T> = [T, ...T[]];

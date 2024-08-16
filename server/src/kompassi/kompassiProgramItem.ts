@@ -10,13 +10,19 @@ import {
   KompassiProgramItemSchemaSolmukohta,
   KompassiProgramItemSolmukohta,
 } from "server/kompassi/solmukohta/kompassiProgramItemSolmukohta";
+import {
+  KompassiProgramItemSchemaTracon,
+  KompassiProgramItemTracon,
+} from "server/kompassi/tracon/kompassiProgramItemTracon";
 
 export type KompassiProgramItem =
   | KompassiProgramItemRopecon
   | KompassiProgramItemHitpoint
-  | KompassiProgramItemSolmukohta;
+  | KompassiProgramItemSolmukohta
+  | KompassiProgramItemTracon;
 
 export type KompassiProgramItemSchema =
   | typeof KompassiProgramItemSchemaRopecon
   | typeof KompassiProgramItemSchemaHitpoint
-  | typeof KompassiProgramItemSchemaSolmukohta;
+  | typeof KompassiProgramItemSchemaSolmukohta
+  | typeof KompassiProgramItemSchemaTracon;
