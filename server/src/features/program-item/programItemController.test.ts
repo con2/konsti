@@ -114,7 +114,7 @@ describe(`GET ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
 
 describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
   beforeEach(() => {
-    vi.spyOn(config, "shared").mockReturnValue({
+    vi.spyOn(config, "event").mockReturnValue({
       ...config.event(),
       conventionName: ConventionName.ROPECON,
     });

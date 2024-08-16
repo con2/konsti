@@ -543,7 +543,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
   });
 
   test("should update previous signup of non-lottery program type if user has updated result", async () => {
-    vi.spyOn(config, "shared").mockReturnValueOnce({
+    vi.spyOn(config, "event").mockReturnValueOnce({
       ...config.event(),
       twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
     });

@@ -44,7 +44,7 @@ Object.values(ConventionName).map((conventionName) => {
   const mockKompassiProgramItems = getMockKompassiProgramItems(conventionName);
 
   test(`should parse convention ${conventionName} program items`, async () => {
-    vi.spyOn(config, "shared").mockReturnValue({
+    vi.spyOn(config, "event").mockReturnValue({
       ...config.event(),
       conventionName,
     });

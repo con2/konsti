@@ -38,7 +38,7 @@ beforeAll(() => {
 });
 
 beforeEach(async () => {
-  vi.spyOn(config, "shared").mockReturnValue({
+  vi.spyOn(config, "event").mockReturnValue({
     ...config.event(),
     conventionName: ConventionName.ROPECON,
   });

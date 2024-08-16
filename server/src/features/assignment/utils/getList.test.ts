@@ -269,7 +269,7 @@ describe("should give first time bonus", () => {
   });
 
   test("for single user with direct signup of 'directSignupAlwaysOpenIds' program item", () => {
-    vi.spyOn(config, "shared").mockReturnValueOnce({
+    vi.spyOn(config, "event").mockReturnValueOnce({
       ...config.event(),
       directSignupAlwaysOpenIds: [testProgramItem.programItemId],
     });

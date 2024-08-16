@@ -62,7 +62,7 @@ describe(`POST ${ApiEndpoint.USERS}`, () => {
   });
 
   test("should return 422 without serial if code is required", async () => {
-    vi.spyOn(config, "shared").mockReturnValue({
+    vi.spyOn(config, "event").mockReturnValue({
       ...config.event(),
       requireRegistrationCode: true,
     });
@@ -75,7 +75,7 @@ describe(`POST ${ApiEndpoint.USERS}`, () => {
   });
 
   test("should return 200 without serial if code is not required", async () => {
-    vi.spyOn(config, "shared").mockReturnValue({
+    vi.spyOn(config, "event").mockReturnValue({
       ...config.event(),
       requireRegistrationCode: false,
     });
