@@ -12,7 +12,7 @@
   "languageOptions": {
     "sourceType": "module",
     "ecmaVersion": "latest",
-    "parser": "typescript-eslint/parser@8.0.1",
+    "parser": "typescript-eslint/parser@8.1.0",
     "parserOptions": {
       "projectService": {
         "allowDefaultProject": {
@@ -104,8 +104,8 @@
   },
   "plugins": [
     "@",
-    "@typescript-eslint:@typescript-eslint/eslint-plugin@8.0.1",
-    "@eslint-community/eslint-comments:@eslint-community/eslint-plugin-eslint-comments@4.3.0",
+    "@typescript-eslint:@typescript-eslint/eslint-plugin@8.1.0",
+    "@eslint-community/eslint-comments:@eslint-community/eslint-plugin-eslint-comments@4.4.0",
     "promise",
     "ban",
     "vitest:vitest@0.5.3",
