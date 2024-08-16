@@ -10,9 +10,7 @@ import { config } from "shared/config";
 export const createEventLogItems = async (): Promise<void> => {
   const programItems = unsafelyUnwrap(await findProgramItems());
   const twoPhaseSignups = programItems.filter((programItem) =>
-    config
-      .event()
-      .twoPhaseSignupProgramTypes.includes(programItem.programType),
+    config.event().twoPhaseSignupProgramTypes.includes(programItem.programType),
   );
 
   const allUsers = unsafelyUnwrap(await findUsers());
