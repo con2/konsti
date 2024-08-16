@@ -4,7 +4,7 @@ import { ProgramItem } from "shared/types/models/programItem";
 import { TIMEZONE } from "shared/utils/initializeDayjs";
 
 export const getAlgorithmSignupStartTime = (startTime: string): Dayjs => {
-  const { conventionStartTime, PRE_SIGNUP_START } = config.shared();
+  const { conventionStartTime, PRE_SIGNUP_START } = config.event();
 
   // Set timezone because hour comparison and setting hour value
   const timezoneStartTime = dayjs(startTime)
@@ -25,7 +25,7 @@ export const getAlgorithmSignupStartTime = (startTime: string): Dayjs => {
 };
 
 export const getAlgorithmSignupEndTime = (startTime: string): Dayjs => {
-  const { DIRECT_SIGNUP_START } = config.shared();
+  const { DIRECT_SIGNUP_START } = config.event();
   return dayjs(startTime).subtract(DIRECT_SIGNUP_START, "minutes");
 };
 
@@ -38,7 +38,7 @@ export const getDirectSignupStartTime = (programItem: ProgramItem): Dayjs => {
     rollingSignupStartProgramTypes,
     directSignupAlwaysOpenIds,
     twoPhaseSignupProgramTypes,
-  } = config.shared();
+  } = config.event();
 
   // ** SIGNUP ALWAYS OPEN **
   const signupAlwaysOpen = directSignupAlwaysOpenIds.includes(

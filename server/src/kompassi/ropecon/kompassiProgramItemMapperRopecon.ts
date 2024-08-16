@@ -243,7 +243,7 @@ const mapRevolvingDoor = (
     return true;
   }
 
-  if (config.shared().addRevolvingDoorIds.includes(kompassiProgramItem.slug)) {
+  if (config.event().addRevolvingDoorIds.includes(kompassiProgramItem.slug)) {
     return true;
   }
 

@@ -1,7 +1,7 @@
 import { getProgramItemsFromFullProgramHitpoint } from "server/kompassi/hitpoint/getProgramItemsFromFullProgramHitpoint";
 import { getProgramItemsFromFullProgramRopecon } from "server/kompassi/ropecon/getProgramItemsFromFullProgramRopecon";
 import { getProgramItemsFromFullProgramSolmukohta } from "server/kompassi/solmukohta/getProgramItemsFromFullProgramSolmukohta";
-import { ConventionName } from "shared/config/sharedConfigTypes";
+import { ConventionName } from "shared/config/eventConfigTypes";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import { KompassiProgramItem } from "server/kompassi/kompassiProgramItem";
 

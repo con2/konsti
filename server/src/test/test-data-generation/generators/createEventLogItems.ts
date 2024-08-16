@@ -11,7 +11,7 @@ export const createEventLogItems = async (): Promise<void> => {
   const programItems = unsafelyUnwrap(await findProgramItems());
   const twoPhaseSignups = programItems.filter((programItem) =>
     config
-      .shared()
+      .event()
       .twoPhaseSignupProgramTypes.includes(programItem.programType),
   );
 

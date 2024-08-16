@@ -16,7 +16,7 @@ import {
   loadGroupMembers,
 } from "client/utils/loadData";
 import { useAppSelector } from "client/utils/hooks";
-import { SignupStrategy } from "shared/config/sharedConfigTypes";
+import { SignupStrategy } from "shared/config/eventConfigTypes";
 import {
   selectDirectSignups,
   selectFavoriteProgramItems,

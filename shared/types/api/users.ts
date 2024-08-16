@@ -31,7 +31,7 @@ export const PostUserRequestSchema = z.object({
     .string()
     .optional()
     .refine((input) => {
-      if (config.shared().requireRegistrationCode) {
+      if (config.event().requireRegistrationCode) {
         if (!input || input.trim().length === 0) {
           return false;
         }

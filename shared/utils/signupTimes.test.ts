@@ -17,7 +17,7 @@ const sunday = "2023-07-30";
 
 beforeEach(() => {
   vi.spyOn(config, "shared").mockReturnValue({
-    ...config.shared(),
+    ...config.event(),
     conventionStartTime: `${friday}T12:00:00Z`,
     twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
     directSignupWindows: {

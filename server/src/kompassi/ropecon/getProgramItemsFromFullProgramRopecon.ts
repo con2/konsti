@@ -31,7 +31,7 @@ export const getProgramItemsFromFullProgramRopecon = (
 
   const matchingProgramItems = kompassiProgramItems.flatMap((programItem) => {
     // Hand picked program items with invalid program type - use 'other' program type
-    if (config.shared().addToKonstiOther.includes(programItem.slug)) {
+    if (config.event().addToKonstiOther.includes(programItem.slug)) {
       return {
         ...programItem,
         cachedDimensions: {
@@ -52,7 +52,7 @@ export const getProgramItemsFromFullProgramRopecon = (
       return [];
     }
 
-    if (config.shared().logInvalidStartTimes) {
+    if (config.event().logInvalidStartTimes) {
       const startTime = programItem.scheduleItems[0].startTime;
       const startMinute = dayjs(startTime).minute();
       if (

@@ -25,7 +25,7 @@ import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { logger } from "server/utils/logger";
 import { saveTestSettings } from "server/test/test-settings/testSettingsRepository";
 import { config } from "shared/config";
-import { ConventionName } from "shared/config/sharedConfigTypes";
+import { ConventionName } from "shared/config/eventConfigTypes";
 
 let server: Server;
 
@@ -39,7 +39,7 @@ beforeAll(() => {
 
 beforeEach(async () => {
   vi.spyOn(config, "shared").mockReturnValue({
-    ...config.shared(),
+    ...config.event(),
     conventionName: ConventionName.ROPECON,
   });
   vi.spyOn(config, "server").mockReturnValue({

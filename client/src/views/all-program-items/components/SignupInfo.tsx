@@ -3,7 +3,7 @@ import { ProgramItem } from "shared/types/models/programItem";
 import { DirectSignupProgramItem } from "client/views/all-program-items/components/DirectSignupProgramItem";
 import { LotterySignupProgramItem } from "client/views/all-program-items/components/LotterySignupProgramItem";
 import { config } from "shared/config";
-import { SignupStrategy } from "shared/config/sharedConfigTypes";
+import { SignupStrategy } from "shared/config/eventConfigTypes";
 import { isRevolvingDoorWorkshop } from "client/utils/isRevolvingDoorWorkshop";
 import { Signup } from "shared/types/models/user";
 import { SignupHelpText } from "client/views/all-program-items/components/SignupHelpText";
@@ -33,17 +33,17 @@ export const SignupInfo = ({
   isInGroup,
 }: Props): ReactElement => {
   const signupAlwaysOpen = config
-    .shared()
+    .event()
     .directSignupAlwaysOpenIds.includes(programItem.programItemId);
 
   const isDirectSignupMode =
-    config.shared().manualSignupMode === SignupStrategy.DIRECT ||
+    config.event().manualSignupMode === SignupStrategy.DIRECT ||
     signupStrategy === SignupStrategy.DIRECT ||
     signupAlwaysOpen;
 
   const requiresSignup = !isRevolvingDoorWorkshop(programItem);
   const konstiSignup = !config
-    .shared()
+    .event()
     .noKonstiSignupIds.includes(programItem.programItemId);
   const normalSignup = requiresSignup && konstiSignup;
 

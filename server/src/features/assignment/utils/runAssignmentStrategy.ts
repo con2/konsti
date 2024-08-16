@@ -7,7 +7,7 @@ import {
   AssignmentResultStatus,
   AssignmentResult,
 } from "server/types/resultTypes";
-import { AssignmentStrategy } from "shared/config/sharedConfigTypes";
+import { AssignmentStrategy } from "shared/config/eventConfigTypes";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import {

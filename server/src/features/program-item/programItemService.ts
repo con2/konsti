@@ -25,7 +25,7 @@ import { kompassiProgramItemMapper } from "server/kompassi/kompassiProgramItemMa
 export const getProgramItemsForConvention = async (): Promise<
   Result<readonly ProgramItem[], KompassiError>
 > => {
-  const conventionName = config.shared().conventionName;
+  const conventionName = config.event().conventionName;
   const kompassiProgramItemsResult =
     await getProgramItemsFromKompassi(conventionName);
   if (isErrorResult(kompassiProgramItemsResult)) {

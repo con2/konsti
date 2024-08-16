@@ -138,7 +138,7 @@ export const RegistrationForm = (): ReactElement => {
           <FormFieldError>{errors.password.message}</FormFieldError>
         )}
 
-        {config.shared().requireRegistrationCode && (
+        {config.event().requireRegistrationCode && (
           <>
             <InputContainer>
               <StyledLabel htmlFor="serial">{t("serial")}</StyledLabel>

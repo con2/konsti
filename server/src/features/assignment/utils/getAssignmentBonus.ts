@@ -11,7 +11,7 @@ export const getAssignmentBonus = (
   lotterySignupProgramItems: readonly ProgramItem[],
 ): number => {
   const { twoPhaseSignupProgramTypes, directSignupAlwaysOpenIds } =
-    config.shared();
+    config.event();
 
   // Take program items with "twoPhaseSignupProgramTypes" which are not in "directSignupAlwaysOpenIds"
   const bonusAffectingDirectSignupsProgramItems = directSignups.filter(

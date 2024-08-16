@@ -1,7 +1,7 @@
 import { expect, test, vi } from "vitest";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { config } from "shared/config";
-import { ConventionName } from "shared/config/sharedConfigTypes";
+import { ConventionName } from "shared/config/eventConfigTypes";
 import { testHelperWrapper } from "server/kompassi/getProgramItemsFromKompassi";
 import {
   mockKompassiProgramItemRopecon,
@@ -45,7 +45,7 @@ Object.values(ConventionName).map((conventionName) => {
 
   test(`should parse convention ${conventionName} program items`, async () => {
     vi.spyOn(config, "shared").mockReturnValue({
-      ...config.shared(),
+      ...config.event(),
       conventionName,
     });
 

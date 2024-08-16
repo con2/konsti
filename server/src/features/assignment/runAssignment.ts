@@ -4,7 +4,7 @@ import { removeInvalidProgramItemsFromUsers } from "server/features/assignment/u
 import { AssignmentResult } from "server/types/resultTypes";
 import { findUsers } from "server/features/user/userRepository";
 import { findProgramItems } from "server/features/program-item/programItemRepository";
-import { AssignmentStrategy } from "shared/config/sharedConfigTypes";
+import { AssignmentStrategy } from "shared/config/eventConfigTypes";
 import { config } from "shared/config";
 import { removeOverlapSignups } from "server/features/assignment/utils/removeOverlapSignups";
 import { saveResults } from "server/features/assignment/utils/saveResults";
@@ -66,7 +66,7 @@ export const runAssignment = async ({
   const users = unwrapResult(usersResult);
 
   const { directSignupAlwaysOpenIds, twoPhaseSignupProgramTypes } =
-    config.shared();
+    config.event();
 
   // Remove invalid lottery signups from users
   // Only include "twoPhaseSignupProgramTypes" and don't include "directSignupAlwaysOpen" program items

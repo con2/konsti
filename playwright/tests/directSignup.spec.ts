@@ -11,7 +11,7 @@ test("Add direct signup", async ({ page, request }) => {
   logTestStart("Add direct signup");
   await populateDb(request);
   await postTestSettings(request, {
-    testTime: config.shared().conventionStartTime,
+    testTime: config.event().conventionStartTime,
   });
   await login(page, request, { username: "test1", password: "test" });
 

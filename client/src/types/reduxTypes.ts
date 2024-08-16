@@ -5,7 +5,7 @@ import { GroupMember } from "shared/types/models/groups";
 import { store, combinedReducer } from "client/utils/store";
 import { UserProgramItems, UserGroup } from "shared/types/models/user";
 import { SignupQuestion } from "shared/types/models/settings";
-import { LoginProvider, SignupStrategy } from "shared/config/sharedConfigTypes";
+import { LoginProvider, SignupStrategy } from "shared/config/eventConfigTypes";
 import { SignupMessage } from "shared/types/models/signupMessage";
 import { EventLogItem } from "shared/types/models/eventLog";
 import { ActiveProgramType } from "shared/config/clientConfigTypes";

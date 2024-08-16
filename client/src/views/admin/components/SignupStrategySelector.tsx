@@ -1,6 +1,6 @@
 import { ChangeEvent, ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { SignupStrategy } from "shared/config/sharedConfigTypes";
+import { SignupStrategy } from "shared/config/eventConfigTypes";
 import { Dropdown } from "client/components/Dropdown";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { submitSetSignupStrategy } from "client/views/admin/adminThunks";

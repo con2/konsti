@@ -42,7 +42,7 @@ import { Playstyle, Tag } from "shared/types/models/programItem";
 import { logger } from "server/utils/logger";
 import { SignupQuestionType } from "shared/types/models/settings";
 import { config } from "shared/config";
-import { ConventionName } from "shared/config/sharedConfigTypes";
+import { ConventionName } from "shared/config/eventConfigTypes";
 import { testHelperWrapper } from "server/kompassi/getProgramItemsFromKompassi";
 import {
   mockKompassiProgramItemRopecon,
@@ -115,7 +115,7 @@ describe(`GET ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
 describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
   beforeEach(() => {
     vi.spyOn(config, "shared").mockReturnValue({
-      ...config.shared(),
+      ...config.event(),
       conventionName: ConventionName.ROPECON,
     });
   });

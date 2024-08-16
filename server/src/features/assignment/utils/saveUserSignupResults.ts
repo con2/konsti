@@ -52,7 +52,7 @@ export const saveUserSignupResults = async ({
   // Only "directSignupAlwaysOpen" signups and previous signups from moved program items should be remaining
   const twoPhaseSignupsByStartTimeResult =
     await findDirectSignupsByProgramTypes(
-      config.shared().twoPhaseSignupProgramTypes,
+      config.event().twoPhaseSignupProgramTypes,
       startTime,
     );
   if (isErrorResult(twoPhaseSignupsByStartTimeResult)) {

@@ -12,7 +12,7 @@ import { MongoDbError } from "shared/types/api/errors";
 export const getDynamicStartTime = async (): Promise<
   Result<string, MongoDbError>
 > => {
-  const { DIRECT_SIGNUP_START } = config.shared();
+  const { DIRECT_SIGNUP_START } = config.event();
 
   const timeNowResult = await getTimeNow();
   if (isErrorResult(timeNowResult)) {
