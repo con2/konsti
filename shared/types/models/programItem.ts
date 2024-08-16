@@ -9,6 +9,7 @@ export enum ProgramType {
   EXPERIENCE_POINT = "experiencePoint",
   OTHER = "other",
   ROUNDTABLE_DISCUSSION = "roundtableDiscussion",
+  FLEAMARKET = "fleaMarket",
 }
 
 export enum Genre {

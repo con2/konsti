@@ -21,6 +21,7 @@ export const getAttendeeType = (
     case ProgramType.WORKSHOP:
     case ProgramType.OTHER:
     case ProgramType.ROUNDTABLE_DISCUSSION:
+    case ProgramType.FLEAMARKET:
       return AttendeeType.Participant;
 
     default:
