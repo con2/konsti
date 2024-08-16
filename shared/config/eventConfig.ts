@@ -5,14 +5,14 @@ import {
   ConventionName,
   SignupStrategy,
   SignupWindow,
-} from "shared/config/sharedConfigTypes";
+} from "shared/config/eventConfigTypes";
 import { ProgramType } from "shared/types/models/programItem";
 import {
   SignupQuestion,
   SignupQuestionType,
 } from "shared/types/models/settings";
 
-export interface SharedConfig {
+export interface EventConfig {
   assignmentStrategy: AssignmentStrategy;
   enableGroups: boolean;
   conventionName: ConventionName;
@@ -46,7 +46,7 @@ const friday = "2024-07-19";
 const saturday = "2024-07-20";
 const sunday = "2024-07-21";
 
-export const sharedConfig: SharedConfig = {
+export const eventConfig: EventConfig = {
   // Convention info
   conventionName: ConventionName.ROPECON,
   conventionYear: "2024",

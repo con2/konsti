@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { ChangePasswordForm } from "client/views/helper/components/ChangePasswordForm";
 import { useAppSelector } from "client/utils/hooks";
 import { Button, ButtonStyle } from "client/components/Button";
-import { LoginProvider } from "shared/config/sharedConfigTypes";
+import { LoginProvider } from "shared/config/eventConfigTypes";
 
 export const ProfileView = (): ReactElement => {
   const { t } = useTranslation();

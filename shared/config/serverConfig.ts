@@ -1,4 +1,4 @@
-import { LoginProvider, SignupStrategy } from "shared/config/sharedConfigTypes";
+import { LoginProvider, SignupStrategy } from "shared/config/eventConfigTypes";
 
 enum DataUri {
   ROPECON = "https://kompassi.eu/api/v1/events/ropecon2024/programme/ropecon",

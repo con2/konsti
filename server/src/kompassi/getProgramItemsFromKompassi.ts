@@ -17,7 +17,7 @@ import {
 } from "shared/utils/result";
 import { logger } from "server/utils/logger";
 import { config } from "shared/config";
-import { ConventionName } from "shared/config/sharedConfigTypes";
+import { ConventionName } from "shared/config/eventConfigTypes";
 import { getProgramItemsFromFullProgram } from "server/kompassi/getProgramItemsFromFullProgram";
 
 export const getProgramItemsFromKompassi = async (

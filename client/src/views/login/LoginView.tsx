@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { LoginForm } from "client/views/login/components/LoginForm";
 import { useAppSelector } from "client/utils/hooks";
-import { LoginProvider } from "shared/config/sharedConfigTypes";
+import { LoginProvider } from "shared/config/eventConfigTypes";
 import { KompassiLogin } from "client/views/login/components/KompassiLogin";
 import { Button, ButtonStyle } from "client/components/Button";
 

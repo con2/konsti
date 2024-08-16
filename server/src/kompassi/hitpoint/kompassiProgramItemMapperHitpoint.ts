@@ -92,7 +92,7 @@ const mapTags = (kompassiProgramItem: KompassiProgramItemHitpoint): Tag[] => {
 const mapLanguages = (
   kompassiProgramItem: KompassiProgramItemHitpoint,
 ): Language[] => {
-  const { isEnglishProgramItems } = config.shared();
+  const { isEnglishProgramItems } = config.event();
 
   if (isEnglishProgramItems.includes(kompassiProgramItem.slug)) {
     return [Language.ENGLISH];

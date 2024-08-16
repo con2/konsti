@@ -5,7 +5,7 @@ import { faker } from "@faker-js/faker";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { UserGroup } from "shared/types/models/user";
 import { getJWT } from "server/utils/jwt";
-import { LoginProvider, SignupStrategy } from "shared/config/sharedConfigTypes";
+import { LoginProvider, SignupStrategy } from "shared/config/eventConfigTypes";
 import {
   Settings,
   SignupQuestion,

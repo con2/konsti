@@ -1,7 +1,7 @@
 import { kompassiProgramItemMapperHitpoint } from "server/kompassi/hitpoint/kompassiProgramItemMapperHitpoint";
 import { kompassiProgramItemMapperRopecon } from "server/kompassi/ropecon/kompassiProgramItemMapperRopecon";
 import { kompassiProgramItemMapperSolmukohta } from "server/kompassi/solmukohta/kompassiProgramItemMapperSolmukohta";
-import { ConventionName } from "shared/config/sharedConfigTypes";
+import { ConventionName } from "shared/config/eventConfigTypes";
 import { ProgramItem } from "shared/types/models/programItem";
 import { KompassiProgramItem } from "server/kompassi/kompassiProgramItem";
 import { KompassiProgramItemHitpoint } from "server/kompassi/hitpoint/kompassiProgramItemHitpoint";

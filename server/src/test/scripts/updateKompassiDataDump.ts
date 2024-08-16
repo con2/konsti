@@ -8,7 +8,7 @@ import { logger } from "server/utils/logger";
 import { config } from "shared/config";
 
 const updateKompassiDataDump = async (): Promise<void> => {
-  const { conventionName, conventionYear } = config.shared();
+  const { conventionName, conventionYear } = config.event();
 
   const kompassiProgramItems = unsafelyUnwrap(
     await getProgramFromServer(),

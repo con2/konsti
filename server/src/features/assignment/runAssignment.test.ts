@@ -4,7 +4,7 @@ import dayjs from "dayjs";
 import { faker } from "@faker-js/faker";
 import { runAssignment } from "server/features/assignment/runAssignment";
 import { generateTestData } from "server/test/test-data-generation/generators/generateTestData";
-import { AssignmentStrategy } from "shared/config/sharedConfigTypes";
+import { AssignmentStrategy } from "shared/config/eventConfigTypes";
 import { config } from "shared/config";
 import { saveUser } from "server/features/user/userRepository";
 import { saveProgramItems } from "server/features/program-item/programItemRepository";
@@ -65,7 +65,7 @@ describe("Assignment with valid data", () => {
   });
 
   test("should return valid results after multiple executions on different times", async () => {
-    const { conventionStartTime } = config.shared();
+    const { conventionStartTime } = config.event();
     const assignmentStrategy = AssignmentStrategy.PADG;
     const startTime = dayjs(conventionStartTime).add(2, "hours").toISOString();
 
@@ -216,7 +216,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
 
   test("should not remove directSignupAlwaysOpen signups if user doesn't have updated result", async () => {
     const directSignupAlwaysOpenId =
-      config.shared().directSignupAlwaysOpenIds[0];
+      config.event().directSignupAlwaysOpenIds[0];
     const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
 
     // Populate database
@@ -376,7 +376,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
 
   test("should update directSignupAlwaysOpen signup with assignment signup if user has updated result", async () => {
     const directSignupAlwaysOpenId =
-      config.shared().directSignupAlwaysOpenIds[0];
+      config.event().directSignupAlwaysOpenIds[0];
     const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
 
     // Populate database
@@ -543,8 +543,8 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
   });
 
   test("should update previous signup of non-lottery program type if user has updated result", async () => {
-    vi.spyOn(config, "shared").mockReturnValueOnce({
-      ...config.shared(),
+    vi.spyOn(config, "event").mockReturnValueOnce({
+      ...config.event(),
       twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
     });
 
@@ -620,7 +620,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
 describe("Assignment with first time bonus", () => {
   test("should assign user without previous 'twoPhaseSignupProgramTypes' signup", async () => {
     const directSignupAlwaysOpenId =
-      config.shared().directSignupAlwaysOpenIds[0];
+      config.event().directSignupAlwaysOpenIds[0];
     const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
     const tournamentProgramItemId = "AIAHHUA";
 

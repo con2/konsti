@@ -13,7 +13,7 @@ export const HEADER_HEIGHT = 40;
 
 export const Header = (): ReactElement => {
   const { t } = useTranslation();
-  const { conventionName, conventionYear } = config.shared();
+  const { conventionName, conventionYear } = config.event();
 
   const appOpen = useAppSelector((state) => state.admin.appOpen);
 

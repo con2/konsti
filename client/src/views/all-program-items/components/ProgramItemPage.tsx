@@ -9,7 +9,7 @@ import {
   selectFavoriteProgramItems,
   selectLotterySignups,
 } from "client/views/my-program-items/myProgramItemsSlice";
-import { SignupStrategy } from "shared/config/sharedConfigTypes";
+import { SignupStrategy } from "shared/config/eventConfigTypes";
 import { getLotterySignups } from "client/utils/getUpcomingProgramItems";
 import { BackButton } from "client/components/BackButton";
 import { getIsInGroup } from "client/views/group/groupUtils";

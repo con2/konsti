@@ -3,7 +3,7 @@ import { Navigate } from "react-router-dom";
 import { submitLogout } from "client/views/logout/logoutActions";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { postKompassiLogoutRedirect } from "client/services/loginServices";
-import { LoginProvider } from "shared/config/sharedConfigTypes";
+import { LoginProvider } from "shared/config/eventConfigTypes";
 import { Loading } from "client/components/Loading";
 import { UserGroup } from "shared/types/models/user";
 

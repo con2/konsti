@@ -24,7 +24,7 @@ export const storeDirectSignup = async (
   signupRequest: PostDirectSignupRequest,
 ): Promise<PostDirectSignupResponse | PostDirectSignupError> => {
   const { startTime, directSignupProgramItemId, username } = signupRequest;
-  if (config.shared().noKonstiSignupIds.includes(directSignupProgramItemId)) {
+  if (config.event().noKonstiSignupIds.includes(directSignupProgramItemId)) {
     return {
       message: `No Konsti signup for this program item`,
       status: "error",

@@ -8,7 +8,7 @@ export const storeAssignment = async (
   startTime: string,
 ): Promise<PostAssignmentResponse | ApiError> => {
   const assignResultsResult = await runAssignment({
-    assignmentStrategy: config.shared().assignmentStrategy,
+    assignmentStrategy: config.event().assignmentStrategy,
     startTime,
   });
 

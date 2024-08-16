@@ -7,7 +7,7 @@ import { Button, ButtonStyle } from "client/components/Button";
 import { PrivateSignupMessages } from "client/views/helper/components/PrivateSignupMessages";
 import { ButtonGroup } from "client/components/ButtonGroup";
 import { useAppSelector } from "client/utils/hooks";
-import { LoginProvider } from "shared/config/sharedConfigTypes";
+import { LoginProvider } from "shared/config/eventConfigTypes";
 
 enum HelperTool {
   PASSWORD_MANAGEMENT = "passwordManagement",

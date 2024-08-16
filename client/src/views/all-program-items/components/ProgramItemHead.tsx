@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { ProgramItem, UserSignup } from "shared/types/models/programItem";
-import { SignupStrategy } from "shared/config/sharedConfigTypes";
+import { SignupStrategy } from "shared/config/eventConfigTypes";
 import { UserGroup } from "shared/types/models/user";
 import { FavoriteButton } from "client/components/FavoriteButton";
 import { Tags } from "client/components/Tags";
@@ -45,17 +45,17 @@ export const ProgramItemHead = ({
   const dispatch = useAppDispatch();
 
   const signupAlwaysOpen = config
-    .shared()
+    .event()
     .directSignupAlwaysOpenIds.includes(programItem.programItemId);
 
   const requiresSignup = !isRevolvingDoorWorkshop(programItem);
   const konstiSignup = !config
-    .shared()
+    .event()
     .noKonstiSignupIds.includes(programItem.programItemId);
   const isNormalSignup = requiresSignup && konstiSignup;
 
   const isEnterGameMode =
-    config.shared().manualSignupMode === SignupStrategy.DIRECT ||
+    config.event().manualSignupMode === SignupStrategy.DIRECT ||
     signupStrategy === SignupStrategy.DIRECT ||
     signupAlwaysOpen;
 

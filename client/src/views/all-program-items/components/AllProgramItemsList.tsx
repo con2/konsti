@@ -15,7 +15,7 @@ import {
 import { RaisedCard } from "client/components/RaisedCard";
 import { getIsInGroup } from "client/views/group/groupUtils";
 import { SignupQuestion } from "shared/types/models/settings";
-import { SignupStrategy } from "shared/config/sharedConfigTypes";
+import { SignupStrategy } from "shared/config/eventConfigTypes";
 
 interface Props {
   programItems: readonly ProgramItem[];

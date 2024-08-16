@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { LoginProvider, SignupStrategy } from "shared/config/sharedConfigTypes";
+import { LoginProvider, SignupStrategy } from "shared/config/eventConfigTypes";
 import {
   ProgramItem,
   ProgramItemSchema,

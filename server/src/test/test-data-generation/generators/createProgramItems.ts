@@ -20,13 +20,13 @@ import { MongoDbError } from "shared/types/api/errors";
 const PROGRAM_ITEM_ID_MAX = 10000000;
 
 const startTimes = [
-  dayjs(config.shared().conventionStartTime).toISOString(),
-  dayjs(config.shared().conventionStartTime).add(1, "hours").toISOString(),
-  dayjs(config.shared().conventionStartTime).add(2, "hours").toISOString(),
-  dayjs(config.shared().conventionStartTime).add(3, "hours").toISOString(),
-  dayjs(config.shared().conventionStartTime).add(4, "hours").toISOString(),
-  dayjs(config.shared().conventionStartTime).add(1, "days").toISOString(),
-  dayjs(config.shared().conventionStartTime).add(2, "days").toISOString(),
+  dayjs(config.event().conventionStartTime).toISOString(),
+  dayjs(config.event().conventionStartTime).add(1, "hours").toISOString(),
+  dayjs(config.event().conventionStartTime).add(2, "hours").toISOString(),
+  dayjs(config.event().conventionStartTime).add(3, "hours").toISOString(),
+  dayjs(config.event().conventionStartTime).add(4, "hours").toISOString(),
+  dayjs(config.event().conventionStartTime).add(1, "days").toISOString(),
+  dayjs(config.event().conventionStartTime).add(2, "days").toISOString(),
 ];
 
 const getMinAttendees = (

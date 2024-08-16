@@ -46,7 +46,7 @@ export const DirectSignupForm = ({
   loading,
   setLoading,
 }: Props): ReactElement => {
-  const { directSignupAlwaysOpenIds } = config.shared();
+  const { directSignupAlwaysOpenIds } = config.event();
 
   const { t, i18n } = useTranslation();
   const dispatch = useAppDispatch();
@@ -91,7 +91,7 @@ export const DirectSignupForm = ({
     // TODO: This logic should be on backend
     if (
       config
-        .shared()
+        .event()
         .twoPhaseSignupProgramTypes.includes(programItem.programType) &&
       !directSignupAlwaysOpenIds.includes(programItem.programItemId)
     ) {
@@ -134,7 +134,7 @@ export const DirectSignupForm = ({
   return (
     <SignupForm>
       {config
-        .shared()
+        .event()
         .twoPhaseSignupProgramTypes.includes(programItem.programType) &&
         !directSignupAlwaysOpenIds.includes(programItem.programItemId) &&
         isInGroup && (

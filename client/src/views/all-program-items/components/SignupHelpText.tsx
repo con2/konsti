@@ -36,7 +36,7 @@ export const SignupHelpText = ({
 
   const isAlgorithmSignup =
     config
-      .shared()
+      .event()
       .twoPhaseSignupProgramTypes.includes(programItem.programType) &&
     !tooEearlyForAlgorithmSignup(startTime);
 

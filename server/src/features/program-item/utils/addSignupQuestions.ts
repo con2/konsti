@@ -10,7 +10,7 @@ export const addSignupQuestions = async (): Promise<void> => {
     signupQuestions,
     tournamentSignupQuestion,
     tournamentSignupQuestionExcludeIds,
-  } = config.shared();
+  } = config.event();
 
   const questionPromises = signupQuestions.map(async (signupQuestion) => {
     await saveSignupQuestion(signupQuestion);

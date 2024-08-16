@@ -16,7 +16,7 @@ import { ErrorMessage } from "client/components/ErrorMessage";
 import { CancelSignupForm } from "client/views/all-program-items/components/CancelSignupForm";
 import { getTimeNow } from "client/utils/getTimeNow";
 import { config } from "shared/config";
-import { SignupStrategy } from "shared/config/sharedConfigTypes";
+import { SignupStrategy } from "shared/config/eventConfigTypes";
 import { getAlgorithmSignupStartTime } from "shared/utils/signupTimes";
 import { getIsInGroup } from "client/views/group/groupUtils";
 import { InfoText } from "client/components/InfoText";
@@ -101,7 +101,7 @@ export const LotterySignupProgramItem = ({
   const timeNow = getTimeNow();
   const lotterySignupOpen =
     timeNow.isSameOrAfter(algorithmSignupStartTime) ||
-    config.shared().manualSignupMode === SignupStrategy.ALGORITHM;
+    config.event().manualSignupMode === SignupStrategy.ALGORITHM;
 
   if (!loggedIn) {
     return (
@@ -115,11 +115,11 @@ export const LotterySignupProgramItem = ({
 
   return (
     <>
-      {config.shared().signupOpen && isInGroup && !isGroupCreator && (
+      {config.event().signupOpen && isInGroup && !isGroupCreator && (
         <p>{t("group.signupDisabledNotCreator")}</p>
       )}
 
-      {config.shared().signupOpen &&
+      {config.event().signupOpen &&
         !alreadySignedToProgramItem &&
         canSignToProgramItems && (
           <>
@@ -156,7 +156,7 @@ export const LotterySignupProgramItem = ({
             })}
           </InfoText>
 
-          {config.shared().signupOpen && (
+          {config.event().signupOpen && (
             <>
               {canSignToProgramItems && !cancelSignupFormOpen && (
                 <ButtonContainer>

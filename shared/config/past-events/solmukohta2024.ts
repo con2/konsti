@@ -5,11 +5,11 @@ import {
   ConventionName,
   SignupStrategy,
   SignupWindow,
-} from "shared/config/sharedConfigTypes";
+} from "shared/config/eventConfigTypes";
 import { ProgramType } from "shared/types/models/programItem";
 import { SignupQuestion } from "shared/types/models/settings";
 
-interface SharedConfig {
+interface EventConfig {
   assignmentStrategy: AssignmentStrategy;
   enableGroups: boolean;
   conventionName: ConventionName;
@@ -37,7 +37,7 @@ interface SharedConfig {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const sharedConfig: SharedConfig = {
+const eventConfig: EventConfig = {
   // Convention info
   conventionName: ConventionName.SOLMUKOHTA,
   conventionYear: "2024",

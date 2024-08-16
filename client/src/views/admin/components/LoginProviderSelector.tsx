@@ -1,6 +1,6 @@
 import { ChangeEvent, ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { LoginProvider } from "shared/config/sharedConfigTypes";
+import { LoginProvider } from "shared/config/eventConfigTypes";
 import { Dropdown } from "client/components/Dropdown";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { submitSetLoginProvider } from "client/views/admin/adminThunks";
