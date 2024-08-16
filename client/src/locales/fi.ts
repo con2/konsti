@@ -373,6 +373,7 @@ export const translationFI = {
     experiencePoint: "Kokemuspiste",
     other: "Muu ohjelma",
     roundtableDiscussion: "Keskustelupiiri",
+    fleaMarket: "Kirpputori",
   },
   programTypeSelection: {
     all: "Kaikki ohjelmatyypit",
@@ -383,6 +384,7 @@ export const translationFI = {
     experiencePoint: "Kokemuspiste",
     other: "Muu ohjelma",
     roundtableDiscussion: "Keskustelupiirit",
+    fleaMarket: "Kirpputoriajat",
   },
   programTypeSingular: {
     all: "ohjelmanumero",
@@ -393,6 +395,7 @@ export const translationFI = {
     experiencePoint: "peli",
     other: "ohjelmanumero",
     roundtableDiscussion: "keskustelupiiri",
+    fleaMarket: "kirpputoriaika",
   },
   programTypePlural: {
     all: "ohjelmanumerot",
@@ -403,6 +406,7 @@ export const translationFI = {
     experiencePoint: "pelit",
     other: "ohjelmanumerot",
     roundtableDiscussion: "keskustelupiirit",
+    fleaMarket: "kirpputoriajat",
   },
   programTypeGenetive: {
     all: "Ohjelmanumeron",
@@ -413,6 +417,7 @@ export const translationFI = {
     experiencePoint: "Pelin",
     other: "Ohjelmanumeron",
     roundtableDiscussion: "Keskustelupiirin",
+    fleaMarket: "kirpputoriajan",
   },
   programTypeElative: {
     all: "ohjelmanumerosta",
@@ -423,6 +428,7 @@ export const translationFI = {
     experiencePoint: "pelistä",
     other: "ohjelmanumerosta",
     roundtableDiscussion: "keskustelupiiristä",
+    fleaMarket: "kirpputoriajasta",
   },
   programTypePartitivePlural: {
     all: "ohjelmanumeroita",
@@ -433,6 +439,7 @@ export const translationFI = {
     experiencePoint: "pelejä",
     other: "ohjelmanumeroita",
     roundtableDiscussion: "keskustelupiirejä",
+    fleaMarket: "kirpputoriaikoja",
   },
   programTypeInessive: {
     all: "ohjelmanumerossa",
@@ -443,6 +450,7 @@ export const translationFI = {
     experiencePoint: "pelissä",
     other: "ohjelmanumerossa",
     roundtableDiscussion: "keskustelupiirissä",
+    fleaMarket: "kirpputoriajassa",
   },
   programTypeIllative: {
     all: "ohjelmanumeroon",
@@ -453,6 +461,7 @@ export const translationFI = {
     experiencePoint: "peliin",
     other: "ohjelmanumeroon",
     roundtableDiscussion: "keskustelupiiriin",
+    fleaMarket: "kirpputoriaikaan",
   },
   firstLogin: {
     serial: "Ota koodi talteen salasanan palauttamista varten:",
