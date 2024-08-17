@@ -38,7 +38,7 @@ import {
   KompassiPlaystyle,
   KompassiAudience,
 } from "server/kompassi/kompassiProgramItem";
-import { Playstyle, Tag } from "shared/types/models/programItem";
+import { Playstyle, ProgramType, Tag } from "shared/types/models/programItem";
 import { logger } from "server/utils/logger";
 import { SignupQuestionType } from "shared/types/models/settings";
 import { config } from "shared/config";
@@ -48,6 +48,7 @@ import {
   mockKompassiProgramItem,
   mockKompassiProgramItem2,
 } from "server/kompassi/test/mockKompassiProgramItem";
+import { GetProgramItemsResponse } from "shared/types/api/programItems";
 
 let server: Server;
 
@@ -109,6 +110,46 @@ describe(`GET ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     expect(sortedProgramItems[0].users[0].signupMessage).toEqual(publicMessage);
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(sortedProgramItems[1].users[0].signupMessage).toEqual("");
+  });
+
+  test(`should not return direct signup users for hideParticipantListProgramTypes`, async () => {
+    vi.spyOn(config, "event").mockReturnValue({
+      ...config.event(),
+      hideParticipantListProgramTypes: [ProgramType.FLEAMARKET],
+    });
+
+    await createSettings();
+    await saveProgramItems([
+      testProgramItem,
+      { ...testProgramItem2, programType: ProgramType.FLEAMARKET },
+    ]);
+    await saveUser(mockUser);
+
+    await saveDirectSignup(mockPostDirectSignupRequest);
+    await saveDirectSignup(mockPostDirectSignupRequest2);
+
+    const response = await request(server).get(ApiEndpoint.PROGRAM_ITEMS);
+    expect(response.status).toEqual(200);
+
+    const expectedResponse: GetProgramItemsResponse = {
+      message: "Program items downloaded",
+      status: "success",
+      programItems: [
+        {
+          programItem: testProgramItem,
+          users: [{ username: mockUser.username, signupMessage: "" }],
+        },
+        {
+          programItem: {
+            ...testProgramItem2,
+            programType: ProgramType.FLEAMARKET,
+          },
+          users: [{ username: "redacted", signupMessage: "redacted" }],
+        },
+      ],
+    };
+
+    expect(response.body).toMatchObject(expectedResponse);
   });
 });
 

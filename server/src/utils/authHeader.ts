@@ -27,6 +27,32 @@ export const getAuthorizedUsername = (
   return jwtResponse.body.username;
 };
 
+export const getAuthorizedUserGroup = (
+  authHeader: string | undefined,
+): UserGroup | null => {
+  logger.debug(`Auth: Get userGroup for user`);
+
+  if (!authHeader || authHeader.split(" ")[0] !== "Bearer") {
+    return null;
+  }
+
+  // Strip 'bearer' from authHeader
+  const jwt = authHeader.split("Bearer ")[1];
+
+  // Any userGroup is fine, we want to know what the group is
+  const jwtResponse = getJwtResponse(jwt, [
+    UserGroup.ADMIN,
+    UserGroup.HELP,
+    UserGroup.USER,
+  ]);
+
+  if (jwtResponse.status === "error") {
+    return null;
+  }
+
+  return jwtResponse.body.userGroup;
+};
+
 export const authorizeUsingApiKey = (apiKey: string | undefined): boolean => {
   if (process.env.NODE_ENV === "production" && !process.env.API_KEY) {
     return false;

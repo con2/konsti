@@ -33,6 +33,8 @@ export const eventConfig: EventConfig = {
 
   rollingSignupStartProgramTypes: [ProgramType.TABLETOP_RPG, ProgramType.LARP],
 
+  hideParticipantListProgramTypes: [ProgramType.FLEAMARKET],
+
   // These program items have their signup always open even if signup mode is set to algorithm
   directSignupAlwaysOpenIds: [],
 

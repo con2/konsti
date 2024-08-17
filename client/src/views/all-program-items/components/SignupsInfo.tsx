@@ -8,6 +8,9 @@ import { getAttendeeType } from "client/utils/getAttendeeType";
 import { ProgramItem, UserSignup } from "shared/types/models/programItem";
 import { ExpandButton } from "client/components/ExpandButton";
 import { SignupQuestion } from "shared/types/models/settings";
+import { config } from "shared/config";
+import { useAppSelector } from "client/utils/hooks";
+import { UserGroup } from "shared/types/models/user";
 
 interface Props {
   isLoggedIn: boolean;
@@ -23,6 +26,7 @@ export const SignupsInfo = ({
   publicSignupQuestion,
 }: Props): ReactElement => {
   const { t, i18n } = useTranslation();
+  const useGroup = useAppSelector((state) => state.login.userGroup);
 
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
@@ -40,6 +44,12 @@ export const SignupsInfo = ({
 
   const ariaId = `participants-for-${programItem.programItemId}`;
 
+  const hideParticipantList =
+    !(useGroup === UserGroup.ADMIN || useGroup === UserGroup.HELP) &&
+    config
+      .event()
+      .hideParticipantListProgramTypes.includes(programItem.programType);
+
   return (
     <div>
       <SignupsInfoContainer>
@@ -47,15 +57,18 @@ export const SignupsInfo = ({
           ATTENDEE_COUNT: signups.length,
           MAX_ATTENDANCE: programItem.maxAttendance,
         })}
-        <ExpandButton
-          isExpanded={isExpanded}
-          showMoreText={showMoreText}
-          showLessText={showLessText}
-          showMoreAriaLabel={showMoreText}
-          showLessAriaLabel={showLessText}
-          ariaControls={ariaId}
-          onClick={() => setIsExpanded(!isExpanded)}
-        />
+
+        {!hideParticipantList && (
+          <ExpandButton
+            isExpanded={isExpanded}
+            showMoreText={showMoreText}
+            showLessText={showLessText}
+            showMoreAriaLabel={showMoreText}
+            showLessAriaLabel={showLessText}
+            ariaControls={ariaId}
+            onClick={() => setIsExpanded(!isExpanded)}
+          />
+        )}
 
         {isExpanded && signups.length === 0 && (
           <NoAttendeesText>
