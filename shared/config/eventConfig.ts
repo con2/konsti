@@ -26,7 +26,7 @@ export const eventConfig: EventConfig = {
 
   twoPhaseSignupProgramTypes: [ProgramType.FLEAMARKET],
 
-  conventionStartTime: `${friday}T12:00:00Z`, // Fri 15:00 GMT+3
+  conventionStartTime: `${friday}T05:00:00Z`, // Fri 08:00 GMT+3
 
   directSignupWindows: {},
 
