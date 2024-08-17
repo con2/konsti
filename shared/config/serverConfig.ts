@@ -90,7 +90,7 @@ const prodConfig = {
   useTestTime: false,
 
   // Program update cron
-  autoUpdateProgramEnabled: true,
+  autoUpdateProgramEnabled: false,
   programUpdateInterval: `5,10,20,25,35,40,50,55 * * * *`,
 
   // Program update
@@ -118,7 +118,7 @@ const stagingConfig = {
   useTestTime: true,
 
   // Program update cron
-  autoUpdateProgramEnabled: false,
+  autoUpdateProgramEnabled: true,
   programUpdateInterval: `5,10,20,25,35,40,50,55 * * * *`,
 
   // Program update
