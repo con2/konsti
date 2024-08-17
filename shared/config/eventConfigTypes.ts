@@ -60,5 +60,4 @@ export interface EventConfig {
   addRevolvingDoorIds: string[];
   isEnglishProgramItems: string[];
   logInvalidStartTimes: boolean;
-  programTypes: ProgramType[];
 }
