@@ -35,10 +35,10 @@ export const verifyUserSignups = async (): Promise<
   signups.map(({ programItem, userSignups }) => {
     if (
       !config
-        .shared()
+        .event()
         .twoPhaseSignupProgramTypes.includes(programItem.programType) ||
       config
-        .shared()
+        .event()
         .directSignupAlwaysOpenIds.includes(programItem.programItemId)
     ) {
       return;

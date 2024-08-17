@@ -1,7 +1,7 @@
 import { expect, test, vi } from "vitest";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { config } from "shared/config";
-import { ConventionName } from "shared/config/sharedConfigTypes";
+import { ConventionName } from "shared/config/eventConfigTypes";
 import { testHelperWrapper } from "server/kompassi/getProgramItemsFromKompassi";
 import {
   mockKompassiProgramItemRopecon,
@@ -17,6 +17,10 @@ import {
   mockKompassiProgramItemSolmukohta,
   mockKompassiProgramItemSolmukohta2,
 } from "server/kompassi/test/mockKompassiProgramItemSolmukohta";
+import {
+  mockKompassiProgramItemTracon,
+  mockKompassiProgramItemTracon2,
+} from "server/kompassi/test/mockKompassiProgramItemTracon";
 import { KompassiProgramItem } from "server/kompassi/kompassiProgramItem";
 
 const getMockKompassiProgramItems = (
@@ -35,6 +39,8 @@ const getMockKompassiProgramItems = (
         mockKompassiProgramItemSolmukohta,
         mockKompassiProgramItemSolmukohta2,
       ];
+    case ConventionName.TRACON:
+      return [mockKompassiProgramItemTracon, mockKompassiProgramItemTracon2];
     default:
       return exhaustiveSwitchGuard(conventionName);
   }
@@ -44,8 +50,8 @@ Object.values(ConventionName).map((conventionName) => {
   const mockKompassiProgramItems = getMockKompassiProgramItems(conventionName);
 
   test(`should parse convention ${conventionName} program items`, async () => {
-    vi.spyOn(config, "shared").mockReturnValue({
-      ...config.shared(),
+    vi.spyOn(config, "event").mockReturnValue({
+      ...config.event(),
       conventionName,
     });
 

@@ -55,7 +55,7 @@ export const createGroup = async (
   const signups = unwrapResult(signupsResult);
 
   const { directSignupAlwaysOpenIds, twoPhaseSignupProgramTypes } =
-    config.shared();
+    config.event();
 
   const filteredSignups = signups
     .filter((signup) =>
@@ -168,7 +168,7 @@ export const joinGroup = async (
   const signups = unwrapResult(signupsResult);
 
   const { directSignupAlwaysOpenIds, twoPhaseSignupProgramTypes } =
-    config.shared();
+    config.event();
 
   const filteredSignups = signups
     .filter((signup) =>

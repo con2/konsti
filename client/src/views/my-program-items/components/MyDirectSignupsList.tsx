@@ -37,11 +37,11 @@ export const MyDirectSignupsList = ({
   return (
     <RaisedCard data-testid="direct-signup-program-items-list">
       <Header>{t("directSignups")}</Header>
-      {(!config.shared().resultsVisible || startTimes.length === 0) && (
+      {(!config.event().resultsVisible || startTimes.length === 0) && (
         <SecondaryText>{t("noDirectSignups")}</SecondaryText>
       )}
 
-      {config.shared().resultsVisible && startTimes.length !== 0 && (
+      {config.event().resultsVisible && startTimes.length !== 0 && (
         <DirectSignupsByStartTimes
           directSignups={sortBy(directSignups, [
             (directSignup) => directSignup.time,

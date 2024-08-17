@@ -46,7 +46,7 @@ const getRandomLotterySignup = (
   const lotterySignups: Signup[] = [];
   let randomIndex;
 
-  const { twoPhaseSignupProgramTypes, noKonstiSignupIds } = config.shared();
+  const { twoPhaseSignupProgramTypes, noKonstiSignupIds } = config.event();
 
   const activeProgramItems = programItems
     .filter((programItem) =>

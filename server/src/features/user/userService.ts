@@ -28,7 +28,7 @@ export const storeUser = async (
   maybeSerial: string | undefined,
 ): Promise<PostUserResponse | PostUserError> => {
   let serial;
-  if (!config.shared().requireRegistrationCode) {
+  if (!config.event().requireRegistrationCode) {
     const serialDocResult = await createSerial();
     if (isErrorResult(serialDocResult)) {
       return {

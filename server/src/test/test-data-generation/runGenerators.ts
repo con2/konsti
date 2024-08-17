@@ -36,7 +36,7 @@ export const runGenerators = async (
   initializeDayjs();
 
   // Generator settings
-  const enableGroups = config.shared().enableGroups;
+  const enableGroups = config.event().enableGroups;
 
   // Total users: newUsersCount + groupSize * numberOfGroups + testUsersCount
   const newUsersCount = 40; // Number of individual users

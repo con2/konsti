@@ -18,7 +18,7 @@ import { AppRoute } from "client/app/AppRoutes";
 
 export const GroupView = (): ReactElement => {
   const { directSignupAlwaysOpenIds, twoPhaseSignupProgramTypes } =
-    config.shared();
+    config.event();
 
   const username = useAppSelector((state) => state.login.username);
   const groupCode = useAppSelector((state) => state.group.groupCode);

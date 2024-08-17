@@ -5,7 +5,7 @@ import { faker } from "@faker-js/faker";
 import { assertUserUpdatedCorrectly } from "server/features/assignment/runAssignmentTestUtils";
 import { runAssignment } from "server/features/assignment/runAssignment";
 import { generateTestData } from "server/test/test-data-generation/generators/generateTestData";
-import { AssignmentStrategy } from "shared/config/sharedConfigTypes";
+import { AssignmentStrategy } from "shared/config/eventConfigTypes";
 import { config } from "shared/config";
 import { AssignmentResultStatus } from "server/types/resultTypes";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
@@ -55,7 +55,7 @@ test("Assignment with valid data should return success with random strategy", as
     testUsersCount,
   );
 
-  const { conventionStartTime } = config.shared();
+  const { conventionStartTime } = config.event();
   const assignmentStrategy = AssignmentStrategy.RANDOM;
   const startTime = dayjs(conventionStartTime).add(2, "hours").toISOString();
 
@@ -202,7 +202,7 @@ test("Assignment with no program items should return error with random strategy"
     testUsersCount,
   );
 
-  const { conventionStartTime } = config.shared();
+  const { conventionStartTime } = config.event();
   const assignmentStrategy = AssignmentStrategy.RANDOM;
   const startTime = dayjs(conventionStartTime).add(2, "hours").toISOString();
 
@@ -233,7 +233,7 @@ test("Assignment with no attendees should return error with random strategy", as
     testUsersCount,
   );
 
-  const { conventionStartTime } = config.shared();
+  const { conventionStartTime } = config.event();
   const assignmentStrategy = AssignmentStrategy.RANDOM;
   const startTime = dayjs(conventionStartTime).add(2, "hours").toISOString();
 

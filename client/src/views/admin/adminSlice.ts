@@ -2,7 +2,7 @@ import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { uniq } from "lodash-es";
 import { AdminState, RootState } from "client/types/reduxTypes";
 import { SettingsPayload } from "shared/types/api/settings";
-import { LoginProvider, SignupStrategy } from "shared/config/sharedConfigTypes";
+import { LoginProvider, SignupStrategy } from "shared/config/eventConfigTypes";
 import { ProgramItem, ProgramType } from "shared/types/models/programItem";
 import { SignupQuestion } from "shared/types/models/settings";
 import { SignupMessage } from "shared/types/models/signupMessage";

@@ -37,7 +37,7 @@ export const DirectSignupProgramItem = ({
 }: Props): ReactElement | null => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
-  const { signupOpen } = config.shared();
+  const { signupOpen } = config.event();
 
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
   const username = useAppSelector((state) => state.login.username);

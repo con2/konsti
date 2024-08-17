@@ -55,7 +55,7 @@
   },
   "dependencies": {
     "@yarnpkg/types": "4.0.0",
-    "axios": "1.7.3",
+    "axios": "1.7.4",
     "dayjs": "1.11.12",
     "lodash-es": "4.17.21",
     "ncp": "2.0.0",
@@ -65,7 +65,7 @@
     "zod": "3.23.8"
   },
   "devDependencies": {
-    "@eslint-community/eslint-plugin-eslint-comments": "4.3.0",
+    "@eslint-community/eslint-plugin-eslint-comments": "4.4.0",
     "@eslint/compat": "1.1.1",
     "@eslint/js": "9.9.0",
     "@playwright/test": "1.46.0",
@@ -88,9 +88,9 @@
     "eslint-plugin-vitest": "0.5.4",
     "globals": "15.9.0",
     "husky": "9.1.4",
-    "lint-staged": "15.2.8",
+    "lint-staged": "15.2.9",
     "prettier": "3.3.3",
-    "typescript-eslint": "8.0.1",
+    "typescript-eslint": "8.1.0",
     "vitest": "2.0.5"
   },
   "engines": {

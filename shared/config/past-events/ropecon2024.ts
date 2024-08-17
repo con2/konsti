@@ -1,52 +1,19 @@
 import dayjs from "dayjs";
 import {
-  ArrMin1,
   AssignmentStrategy,
   ConventionName,
-  SignupStrategy,
-  SignupWindow,
-} from "shared/config/sharedConfigTypes";
+  EventConfig,
+} from "shared/config/eventConfigTypes";
 import { ProgramType } from "shared/types/models/programItem";
-import {
-  SignupQuestion,
-  SignupQuestionType,
-} from "shared/types/models/settings";
-
-export interface SharedConfig {
-  assignmentStrategy: AssignmentStrategy;
-  enableGroups: boolean;
-  conventionName: ConventionName;
-  conventionYear: string;
-  conventionStartTime: string;
-  DIRECT_SIGNUP_START: number;
-  PRE_SIGNUP_START: number;
-  PHASE_GAP: number;
-  directSignupWindows: Partial<
-    Record<ProgramType, ArrMin1<SignupWindow>>
-  > | null;
-  rollingSignupStartProgramTypes: ProgramType[];
-  directSignupAlwaysOpenIds: string[];
-  requireRegistrationCode: boolean;
-  twoPhaseSignupProgramTypes: ProgramType[];
-  manualSignupMode: SignupStrategy.ALGORITHM | SignupStrategy.DIRECT | "none";
-  signupOpen: boolean;
-  resultsVisible: boolean;
-  addToKonstiOther: string[];
-  noKonstiSignupIds: string[];
-  signupQuestions: SignupQuestion[];
-  tournamentSignupQuestion: Omit<SignupQuestion, "programItemId"> | null;
-  tournamentSignupQuestionExcludeIds: string[];
-  addRevolvingDoorIds: string[];
-  isEnglishProgramItems: string[];
-  logInvalidStartTimes: boolean;
-}
+import { SignupQuestionType } from "shared/types/models/settings";
 
 // Convention days
 const friday = "2024-07-19";
 const saturday = "2024-07-20";
 const sunday = "2024-07-21";
 
-export const sharedConfig: SharedConfig = {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const eventConfig: Partial<EventConfig> = {
   // Convention info
   conventionName: ConventionName.ROPECON,
   conventionYear: "2024",

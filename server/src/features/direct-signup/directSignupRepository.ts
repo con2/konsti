@@ -449,10 +449,10 @@ export const delAssignmentDirectSignupsByStartTime = async (
     .filter(
       (programItem) =>
         config
-          .shared()
+          .event()
           .directSignupAlwaysOpenIds.includes(programItem.programItemId) ||
         !config
-          .shared()
+          .event()
           .twoPhaseSignupProgramTypes.includes(programItem.programType),
     )
     .map((programItem) => programItem._id);

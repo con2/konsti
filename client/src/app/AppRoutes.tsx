@@ -21,7 +21,7 @@ import { EventLog } from "client/views/event-log/EventLog";
 import { ProfileView } from "client/views/profile/ProfileView";
 import { InstructionsView } from "client/views/about/InstructionsView";
 import { KompassiLoginCallback } from "client/components/KompassiLoginCallback";
-import { LoginProvider } from "shared/config/sharedConfigTypes";
+import { LoginProvider } from "shared/config/eventConfigTypes";
 import { KompassiLoginUsernameForm } from "client/views/login/components/KompassiLoginUsernameForm";
 import { KompassiLogoutCallback } from "client/components/KompassiLogoutCallback";
 import { AuthEndpoint } from "shared/constants/apiEndpoints";
@@ -186,7 +186,7 @@ export const AppRoutes = (): ReactElement => {
           element={<ProgramItemPage />}
         />
         <Route path={AppRoute.NOTIFICATIONS} element={<EventLog />} />
-        {!isAdminOrHelp(userGroup) && config.shared().enableGroups ? (
+        {!isAdminOrHelp(userGroup) && config.event().enableGroups ? (
           <Route
             path={`${AppRoute.PROFILE}/*`}
             element={<Tabs tabContents={profileTabs} />}

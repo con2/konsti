@@ -6,7 +6,7 @@ import { useAppSelector } from "client/utils/hooks";
 import { Button, ButtonStyle } from "./Button";
 import { config } from "shared/config";
 import { HighlightStyle, RaisedCard } from "client/components/RaisedCard";
-import { LoginProvider } from "shared/config/sharedConfigTypes";
+import { LoginProvider } from "shared/config/eventConfigTypes";
 
 const firstLoginValue = "firstLogin";
 const FirstLoginValueSchema = z.literal(firstLoginValue);
@@ -36,8 +36,8 @@ export const FirstLogin = (): ReactElement | null => {
       return;
     }
 
-    const firstLoginKey = `${config.shared().conventionName}-${
-      config.shared().conventionYear
+    const firstLoginKey = `${config.event().conventionName}-${
+      config.event().conventionYear
     }-${username}`;
     const firstLogin = getFirstLoginState(firstLoginKey);
 

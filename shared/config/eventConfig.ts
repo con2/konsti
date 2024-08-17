@@ -5,11 +5,15 @@ import {
 } from "shared/config/eventConfigTypes";
 import { ProgramType } from "shared/types/models/programItem";
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const eventConfig: Partial<EventConfig> = {
+// Convention days
+const friday = "2024-09-06";
+// const saturday = "2024-09-07";
+// const sunday = "2024-09-07";
+
+export const eventConfig: EventConfig = {
   // Convention info
-  conventionName: ConventionName.HITPOINT,
-  conventionYear: "2023",
+  conventionName: ConventionName.TRACON,
+  conventionYear: "2024",
 
   // Convention settings
   requireRegistrationCode: true,
@@ -18,12 +22,21 @@ const eventConfig: Partial<EventConfig> = {
   manualSignupMode: "none",
   signupOpen: true,
   resultsVisible: true,
+  logInvalidStartTimes: false,
 
-  twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG, ProgramType.LARP],
+  programTypes: [
+    ProgramType.TABLETOP_RPG,
+    ProgramType.LARP,
+    ProgramType.FLEAMARKET,
+  ],
 
-  conventionStartTime: `2023-11-04T08:00:00Z`, // Sat 10:00 GMT+2
+  twoPhaseSignupProgramTypes: [ProgramType.FLEAMARKET],
 
-  directSignupWindows: null,
+  conventionStartTime: `${friday}T12:00:00Z`, // Fri 15:00 GMT+3
+
+  directSignupWindows: {},
+
+  rollingSignupStartProgramTypes: [ProgramType.TABLETOP_RPG, ProgramType.LARP],
 
   // These program items have their signup always open even if signup mode is set to algorithm
   directSignupAlwaysOpenIds: [],
@@ -35,14 +48,7 @@ const eventConfig: Partial<EventConfig> = {
   addRevolvingDoorIds: [],
 
   // These program items are imported to Konsti but don't have Konsti signup
-  noKonstiSignupIds: [
-    "p7429", // Peliä Pyynnöstä
-    "p7428", // Peliä Pyynnöstä
-    "p7272", // Indiepelipiste / Indie Game Point
-    "p7431", // Indiepelipiste / Indie Game Point
-    "p7381", // LARP-Telenovela: Häät
-    "p7426", // LARP-Telenovela: Häät
-  ],
+  noKonstiSignupIds: [],
 
   signupQuestions: [],
 
@@ -50,10 +56,7 @@ const eventConfig: Partial<EventConfig> = {
 
   tournamentSignupQuestionExcludeIds: [],
 
-  isEnglishProgramItems: [
-    "p7300", // In the Crowd
-    "p7340", // Introduction to PBTA: Dungeon World
-  ],
+  isEnglishProgramItems: [],
 
   // Two phase signup settings
   PRE_SIGNUP_START: 60 * 4, // minutes

@@ -370,6 +370,7 @@ export const translationEN = {
     experiencePoint: "Experience Point",
     other: "Other program",
     roundtableDiscussion: "Roundtable discussion",
+    fleaMarket: "Flea market",
   },
   programTypeSelection: {
     all: "All program types",
@@ -380,6 +381,7 @@ export const translationEN = {
     experiencePoint: "Experience Point",
     other: "Other program",
     roundtableDiscussion: "Roundtable discussion",
+    fleaMarket: "Flea market time",
   },
   programTypeSingular: {
     all: "program item",
@@ -390,6 +392,7 @@ export const translationEN = {
     experiencePoint: "game",
     other: "program item",
     roundtableDiscussion: "roundtable discussion",
+    fleaMarket: "flea market time",
   },
   programTypePlural: {
     all: "program items",
@@ -400,6 +403,7 @@ export const translationEN = {
     experiencePoint: "programs",
     other: "program items",
     roundtableDiscussion: "roundtable discussions",
+    fleaMarket: "flea market times",
   },
   programTypeGenetive: {
     all: "Program item",
@@ -410,6 +414,7 @@ export const translationEN = {
     experiencePoint: "Program",
     other: "Program item",
     roundtableDiscussion: "Roundtable discussion",
+    fleaMarket: "Flea market time",
   },
   programTypeElative: {
     all: "program item",
@@ -420,6 +425,7 @@ export const translationEN = {
     experiencePoint: "program",
     other: "program item",
     roundtableDiscussion: "roundtable discussion",
+    fleaMarket: "flea market time",
   },
   programTypePartitivePlural: {
     all: "program items",
@@ -430,6 +436,7 @@ export const translationEN = {
     experiencePoint: "games",
     other: "program items",
     roundtableDiscussion: "roundtable discussions",
+    fleaMarket: "flea market time",
   },
   programTypeInessive: {
     all: "program item",
@@ -440,6 +447,7 @@ export const translationEN = {
     experiencePoint: "game",
     other: "program item",
     roundtableDiscussion: "roundtable discussion",
+    fleaMarket: "flea market time",
   },
   programTypeIllative: {
     all: "program item",
@@ -450,6 +458,7 @@ export const translationEN = {
     experiencePoint: "program",
     other: "program item",
     roundtableDiscussion: "roundtable discussion",
+    fleaMarket: "flea market time",
   },
   firstLogin: {
     serial: "Save this code for recovering your password:",

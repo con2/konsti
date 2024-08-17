@@ -5,7 +5,7 @@ import { faker } from "@faker-js/faker";
 import { assertUserUpdatedCorrectly } from "server/features/assignment/runAssignmentTestUtils";
 import { runAssignment } from "server/features/assignment/runAssignment";
 import { generateTestData } from "server/test/test-data-generation/generators/generateTestData";
-import { AssignmentStrategy } from "shared/config/sharedConfigTypes";
+import { AssignmentStrategy } from "shared/config/eventConfigTypes";
 import { config } from "shared/config";
 import { AssignmentResultStatus } from "server/types/resultTypes";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
@@ -18,7 +18,7 @@ import { makeErrorResult } from "shared/utils/result";
 const expectedResultsCount = 20;
 const groupTestUsers = ["group1", "group2", "group3"];
 
-const { conventionStartTime } = config.shared();
+const { conventionStartTime } = config.event();
 
 beforeEach(async () => {
   await mongoose.connect(globalThis.__MONGO_URI__, {

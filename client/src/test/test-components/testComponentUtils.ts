@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 import { config } from "shared/config";
 
-const { conventionStartTime, PHASE_GAP } = config.shared();
+const { conventionStartTime, PHASE_GAP } = config.event();
 
 export const testTimes = [
   // Before convention

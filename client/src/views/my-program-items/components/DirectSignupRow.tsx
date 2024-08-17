@@ -76,7 +76,7 @@ export const DirectSignupRow = ({
           >
             {signup.programItem.title}
           </StyledLink>
-          {config.shared().signupOpen && !cancelSignupFormOpen && (
+          {config.event().signupOpen && !cancelSignupFormOpen && (
             <IconButton
               onClick={() => setCancelSignupFormOpen(true)}
               icon="calendar-xmark"
@@ -84,7 +84,7 @@ export const DirectSignupRow = ({
             />
           )}
         </div>
-        {config.shared().signupOpen && cancelSignupFormOpen && (
+        {config.event().signupOpen && cancelSignupFormOpen && (
           <CancelSignupFormContainer>
             <CancelSignupForm
               onCancelForm={() => {

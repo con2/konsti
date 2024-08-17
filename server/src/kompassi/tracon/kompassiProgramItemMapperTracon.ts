@@ -9,20 +9,20 @@ import {
   SignupType,
 } from "shared/types/models/programItem";
 import {
-  KompassiProgramItemRopecon,
-  KompassiPlaystyleRopecon,
-  KompassiLanguageRopecon,
-  KompassiKonstiProgramTypeRopecon,
-  KompassiAudienceRopecon,
-  KompassiAccessibilityRopecon,
-  KompassiTopicRopecon,
-} from "server/kompassi/ropecon/kompassiProgramItemRopecon";
+  KompassiProgramItemTracon,
+  KompassiPlaystyleTracon,
+  KompassiLanguageTracon,
+  KompassiKonstiProgramTypeTracon,
+  KompassiAudienceTracon,
+  KompassiAccessibilityTracon,
+  KompassiTopicTracon,
+} from "server/kompassi/tracon/kompassiProgramItemTracon";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import { config } from "shared/config";
 import { getShortDescriptionFromDescription } from "server/utils/getShortDescriptionFromDescription";
 
-export const kompassiProgramItemMapperRopecon = (
-  programItems: readonly KompassiProgramItemRopecon[],
+export const kompassiProgramItemMapperTracon = (
+  programItems: readonly KompassiProgramItemTracon[],
 ): readonly ProgramItem[] => {
   return programItems.map((programItem) => {
     return {
@@ -64,27 +64,27 @@ export const kompassiProgramItemMapperRopecon = (
 };
 
 const mapProgramType = (
-  kompassiProgramItem: KompassiProgramItemRopecon,
+  kompassiProgramItem: KompassiProgramItemTracon,
 ): ProgramType => {
   const programType = kompassiProgramItem.cachedDimensions.konsti[0];
 
   switch (programType) {
-    case KompassiKonstiProgramTypeRopecon.TABLETOP_RPG:
+    case KompassiKonstiProgramTypeTracon.TABLETOP_RPG:
       return ProgramType.TABLETOP_RPG;
 
-    case KompassiKonstiProgramTypeRopecon.LARP:
+    case KompassiKonstiProgramTypeTracon.LARP:
       return ProgramType.LARP;
 
-    case KompassiKonstiProgramTypeRopecon.TOURNAMENT:
+    case KompassiKonstiProgramTypeTracon.TOURNAMENT:
       return ProgramType.TOURNAMENT;
 
-    case KompassiKonstiProgramTypeRopecon.WORKSHOP:
+    case KompassiKonstiProgramTypeTracon.WORKSHOP:
       return ProgramType.WORKSHOP;
 
-    case KompassiKonstiProgramTypeRopecon.EXPERIENCE_POINT:
+    case KompassiKonstiProgramTypeTracon.EXPERIENCE_POINT:
       return ProgramType.EXPERIENCE_POINT;
 
-    case KompassiKonstiProgramTypeRopecon.OTHER:
+    case KompassiKonstiProgramTypeTracon.OTHER:
       return ProgramType.OTHER;
 
     default:
@@ -92,26 +92,26 @@ const mapProgramType = (
   }
 };
 
-const mapTags = (kompassiProgramItem: KompassiProgramItemRopecon): Tag[] => {
+const mapTags = (kompassiProgramItem: KompassiProgramItemTracon): Tag[] => {
   const audiences = kompassiProgramItem.cachedDimensions.audience;
   const tags: Tag[] = audiences.map((audience) => {
     switch (audience) {
-      case KompassiAudienceRopecon.K_18:
+      case KompassiAudienceTracon.K_18:
         return Tag.FOR_18_PLUS_ONLY;
 
-      case KompassiAudienceRopecon.BEGINNERS:
+      case KompassiAudienceTracon.BEGINNERS:
         return Tag.BEGINNER_FRIENDLY;
 
-      case KompassiAudienceRopecon.AIMED_UNDER_13:
+      case KompassiAudienceTracon.AIMED_UNDER_13:
         return Tag.AIMED_UNDER_13;
 
-      case KompassiAudienceRopecon.AIMED_BETWEEN_13_17:
+      case KompassiAudienceTracon.AIMED_BETWEEN_13_17:
         return Tag.AIMED_BETWEEN_13_17;
 
-      case KompassiAudienceRopecon.AIMED_ADULTS:
+      case KompassiAudienceTracon.AIMED_ADULTS:
         return Tag.AIMED_ADULTS;
 
-      case KompassiAudienceRopecon.ALL_AGES:
+      case KompassiAudienceTracon.ALL_AGES:
         return Tag.ALL_AGES;
 
       default:
@@ -120,38 +120,38 @@ const mapTags = (kompassiProgramItem: KompassiProgramItemRopecon): Tag[] => {
   });
 
   const topics = kompassiProgramItem.cachedDimensions.topic;
-  if (topics.includes(KompassiTopicRopecon.GOH)) {
+  if (topics.includes(KompassiTopicTracon.GOH)) {
     tags.push(Tag.GUEST_OF_HONOR);
   }
-  if (topics.includes(KompassiTopicRopecon.THEME)) {
+  if (topics.includes(KompassiTopicTracon.THEME)) {
     tags.push(Tag.THEME_MONSTERS);
   }
 
   return tags;
 };
 
-const mapPlaystyles = (playstyles: KompassiPlaystyleRopecon[]): Playstyle[] => {
+const mapPlaystyles = (playstyles: KompassiPlaystyleTracon[]): Playstyle[] => {
   return playstyles.map((playstyle) => {
     switch (playstyle) {
-      case KompassiPlaystyleRopecon.SERIOUS:
+      case KompassiPlaystyleTracon.SERIOUS:
         return Playstyle.SERIOUS;
 
-      case KompassiPlaystyleRopecon.LIGHT:
+      case KompassiPlaystyleTracon.LIGHT:
         return Playstyle.LIGHT;
 
-      case KompassiPlaystyleRopecon.RULES_HEAVY:
+      case KompassiPlaystyleTracon.RULES_HEAVY:
         return Playstyle.RULES_HEAVY;
 
-      case KompassiPlaystyleRopecon.RULES_LIGHT:
+      case KompassiPlaystyleTracon.RULES_LIGHT:
         return Playstyle.RULES_LIGHT;
 
-      case KompassiPlaystyleRopecon.STORY_DRIVEN:
+      case KompassiPlaystyleTracon.STORY_DRIVEN:
         return Playstyle.STORY_DRIVEN;
 
-      case KompassiPlaystyleRopecon.CHARACTER_DRIVEN:
+      case KompassiPlaystyleTracon.CHARACTER_DRIVEN:
         return Playstyle.CHARACTER_DRIVEN;
 
-      case KompassiPlaystyleRopecon.COMBAT_DRIVEN:
+      case KompassiPlaystyleTracon.COMBAT_DRIVEN:
         return Playstyle.COMBAT_DRIVEN;
 
       default:
@@ -161,20 +161,20 @@ const mapPlaystyles = (playstyles: KompassiPlaystyleRopecon[]): Playstyle[] => {
 };
 
 const mapLanguages = (
-  kompassiLanguages: KompassiLanguageRopecon[],
+  kompassiLanguages: KompassiLanguageTracon[],
 ): Language[] => {
   const languages: Language[] = [];
 
-  if (kompassiLanguages.includes(KompassiLanguageRopecon.FINNISH)) {
+  if (kompassiLanguages.includes(KompassiLanguageTracon.FINNISH)) {
     languages.push(Language.FINNISH);
   }
-  if (kompassiLanguages.includes(KompassiLanguageRopecon.ENGLISH)) {
+  if (kompassiLanguages.includes(KompassiLanguageTracon.ENGLISH)) {
     languages.push(Language.ENGLISH);
   }
-  if (kompassiLanguages.includes(KompassiLanguageRopecon.SWEDISH)) {
+  if (kompassiLanguages.includes(KompassiLanguageTracon.SWEDISH)) {
     languages.push(Language.SWEDISH);
   }
-  if (kompassiLanguages.includes(KompassiLanguageRopecon.LANGUAGE_FREE)) {
+  if (kompassiLanguages.includes(KompassiLanguageTracon.LANGUAGE_FREE)) {
     languages.push(Language.LANGUAGE_FREE);
   }
 
@@ -182,42 +182,42 @@ const mapLanguages = (
 };
 
 const mapAccessibilityValues = (
-  kompassiAccessibilityValues: KompassiAccessibilityRopecon[],
+  kompassiAccessibilityValues: KompassiAccessibilityTracon[],
 ): AccessibilityValue[] => {
   const accessibilityValues = kompassiAccessibilityValues.map(
     (kompassiAccessibilityValue) => {
       switch (kompassiAccessibilityValue) {
-        case KompassiAccessibilityRopecon.LOUD_SOUNDS:
+        case KompassiAccessibilityTracon.LOUD_SOUNDS:
           return AccessibilityValue.LOUD_SOUNDS;
-        case KompassiAccessibilityRopecon.PHYSICAL_CONTACT:
+        case KompassiAccessibilityTracon.PHYSICAL_CONTACT:
           return AccessibilityValue.PHYSICAL_CONTACT;
-        case KompassiAccessibilityRopecon.MOVING_AROUND:
+        case KompassiAccessibilityTracon.MOVING_AROUND:
           return AccessibilityValue.MOVING_AROUND;
-        case KompassiAccessibilityRopecon.DURATION_OVER_2H:
+        case KompassiAccessibilityTracon.DURATION_OVER_2H:
           return AccessibilityValue.DURATION_OVER_2H;
-        case KompassiAccessibilityRopecon.REQUIRES_DEXTERITY:
+        case KompassiAccessibilityTracon.REQUIRES_DEXTERITY:
           return AccessibilityValue.REQUIRES_DEXTERITY;
-        case KompassiAccessibilityRopecon.RECORDING:
+        case KompassiAccessibilityTracon.RECORDING:
           return AccessibilityValue.RECORDING;
-        case KompassiAccessibilityRopecon.REQUIRES_QUICK_REACTIONS:
+        case KompassiAccessibilityTracon.REQUIRES_QUICK_REACTIONS:
           return AccessibilityValue.REQUIRES_QUICK_REACTIONS;
-        case KompassiAccessibilityRopecon.COLORBLIND:
+        case KompassiAccessibilityTracon.COLORBLIND:
           return AccessibilityValue.COLORBLIND;
-        case KompassiAccessibilityRopecon.TEXTS_WITH_NO_RECORDINGS:
+        case KompassiAccessibilityTracon.TEXTS_WITH_NO_RECORDINGS:
           return AccessibilityValue.TEXTS_WITH_NO_RECORDINGS;
-        case KompassiAccessibilityRopecon.LIMITED_MOVING_OPPORTUNITIES:
+        case KompassiAccessibilityTracon.LIMITED_MOVING_OPPORTUNITIES:
           return AccessibilityValue.LIMITED_MOVING_OPPORTUNITIES;
-        case KompassiAccessibilityRopecon.FLASHING_LIGHTS:
+        case KompassiAccessibilityTracon.FLASHING_LIGHTS:
           return AccessibilityValue.FLASHING_LIGHTS;
-        case KompassiAccessibilityRopecon.LOW_LIGHTING:
+        case KompassiAccessibilityTracon.LOW_LIGHTING:
           return AccessibilityValue.LOW_LIGHTING;
-        case KompassiAccessibilityRopecon.LONG_TEXTS:
+        case KompassiAccessibilityTracon.LONG_TEXTS:
           return AccessibilityValue.LONG_TEXTS;
-        case KompassiAccessibilityRopecon.IRRITATE_SKIN:
+        case KompassiAccessibilityTracon.IRRITATE_SKIN:
           return AccessibilityValue.IRRITATE_SKIN;
-        case KompassiAccessibilityRopecon.VIDEO:
+        case KompassiAccessibilityTracon.VIDEO:
           return AccessibilityValue.VIDEO;
-        case KompassiAccessibilityRopecon.STRONG_SMELLS:
+        case KompassiAccessibilityTracon.STRONG_SMELLS:
           return AccessibilityValue.STRONG_SMELLS;
         default:
           return exhaustiveSwitchGuard(kompassiAccessibilityValue);
@@ -229,7 +229,7 @@ const mapAccessibilityValues = (
 };
 
 const mapRevolvingDoor = (
-  kompassiProgramItem: KompassiProgramItemRopecon,
+  kompassiProgramItem: KompassiProgramItemTracon,
 ): boolean => {
   if (kompassiProgramItem.cachedAnnotations["ropecon:isRevolvingDoor"]) {
     return true;
@@ -237,7 +237,7 @@ const mapRevolvingDoor = (
 
   if (
     kompassiProgramItem.cachedDimensions.konsti[0] ===
-      KompassiKonstiProgramTypeRopecon.WORKSHOP &&
+      KompassiKonstiProgramTypeTracon.WORKSHOP &&
     kompassiProgramItem.cachedAnnotations["konsti:maxAttendance"] === 0
   ) {
     return true;
@@ -251,11 +251,11 @@ const mapRevolvingDoor = (
 };
 
 const mapMaxAttendance = (
-  kompassiProgramItem: KompassiProgramItemRopecon,
+  kompassiProgramItem: KompassiProgramItemTracon,
 ): number => {
   if (
     kompassiProgramItem.cachedDimensions.konsti[0] ===
-    KompassiKonstiProgramTypeRopecon.LARP
+    KompassiKonstiProgramTypeTracon.LARP
   ) {
     return kompassiProgramItem.cachedAnnotations["ropecon:numCharacters"];
   }
@@ -264,7 +264,7 @@ const mapMaxAttendance = (
 };
 
 const mapShortDescription = (
-  kompassiProgramItem: KompassiProgramItemRopecon,
+  kompassiProgramItem: KompassiProgramItemTracon,
 ): string => {
   if (kompassiProgramItem.cachedAnnotations["ropecon:gameSlogan"]) {
     return kompassiProgramItem.cachedAnnotations["ropecon:gameSlogan"];

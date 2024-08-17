@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { LoginProvider } from "shared/config/sharedConfigTypes";
+import { LoginProvider } from "shared/config/eventConfigTypes";
 import { useAppSelector } from "client/utils/hooks";
 
 interface Props {

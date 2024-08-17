@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { SignupStrategy } from "shared/config/sharedConfigTypes";
+import { SignupStrategy } from "shared/config/eventConfigTypes";
 
 export enum ProgramType {
   TABLETOP_RPG = "tabletopRPG",
@@ -9,6 +9,7 @@ export enum ProgramType {
   EXPERIENCE_POINT = "experiencePoint",
   OTHER = "other",
   ROUNDTABLE_DISCUSSION = "roundtableDiscussion",
+  FLEAMARKET = "fleaMarket",
 }
 
 export enum Genre {

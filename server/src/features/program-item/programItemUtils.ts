@@ -11,7 +11,7 @@ import {
   ProgramItemWithUserSignups,
   UserSignup,
 } from "shared/types/models/programItem";
-import { SignupStrategy } from "shared/config/sharedConfigTypes";
+import { SignupStrategy } from "shared/config/eventConfigTypes";
 import { config } from "shared/config";
 import { findSettings } from "server/features/settings/settingsRepository";
 import { Settings, SignupQuestion } from "shared/types/models/settings";
@@ -129,7 +129,7 @@ const getSignupStrategyForProgramItem = (
   currentTime: Dayjs,
 ): SignupStrategy => {
   const start = dayjs(programItem.startTime);
-  const { DIRECT_SIGNUP_START, twoPhaseSignupProgramTypes } = config.shared();
+  const { DIRECT_SIGNUP_START, twoPhaseSignupProgramTypes } = config.event();
 
   if (settings.signupStrategy !== SignupStrategy.ALGORITHM_AND_DIRECT) {
     return settings.signupStrategy;

@@ -15,7 +15,7 @@ import { config } from "shared/config";
 export const updateProgramItemPopularity = async (): Promise<
   Result<void, MongoDbError | AssignmentError>
 > => {
-  const { twoPhaseSignupProgramTypes } = config.shared();
+  const { twoPhaseSignupProgramTypes } = config.event();
 
   logger.info(`Calculate program item popularity`);
 

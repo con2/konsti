@@ -2,7 +2,7 @@ import { ReactElement } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { ProgramItem, UserSignup } from "shared/types/models/programItem";
-import { SignupStrategy } from "shared/config/sharedConfigTypes";
+import { SignupStrategy } from "shared/config/eventConfigTypes";
 import { Signup, UserGroup } from "shared/types/models/user";
 import { RaisedCard } from "client/components/RaisedCard";
 import {
@@ -55,11 +55,11 @@ export const ProgramItemEntry = ({
   const { t } = useTranslation();
 
   const signupAlwaysOpen = config
-    .shared()
+    .event()
     .directSignupAlwaysOpenIds.includes(programItem.programItemId);
 
   const isDirectSignupMode =
-    config.shared().manualSignupMode === SignupStrategy.DIRECT ||
+    config.event().manualSignupMode === SignupStrategy.DIRECT ||
     signupStrategy === SignupStrategy.DIRECT ||
     signupAlwaysOpen;
 

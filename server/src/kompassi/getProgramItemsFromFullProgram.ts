@@ -1,7 +1,8 @@
 import { getProgramItemsFromFullProgramHitpoint } from "server/kompassi/hitpoint/getProgramItemsFromFullProgramHitpoint";
 import { getProgramItemsFromFullProgramRopecon } from "server/kompassi/ropecon/getProgramItemsFromFullProgramRopecon";
 import { getProgramItemsFromFullProgramSolmukohta } from "server/kompassi/solmukohta/getProgramItemsFromFullProgramSolmukohta";
-import { ConventionName } from "shared/config/sharedConfigTypes";
+import { getProgramItemsFromFullProgramTracon } from "server/kompassi/tracon/getProgramItemsFromFullProgramTracon";
+import { ConventionName } from "shared/config/eventConfigTypes";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import { KompassiProgramItem } from "server/kompassi/kompassiProgramItem";
 
@@ -16,6 +17,8 @@ export const getProgramItemsFromFullProgram = (
       return getProgramItemsFromFullProgramHitpoint(eventProgramItems);
     case ConventionName.SOLMUKOHTA:
       return getProgramItemsFromFullProgramSolmukohta(eventProgramItems);
+    case ConventionName.TRACON:
+      return getProgramItemsFromFullProgramTracon(eventProgramItems);
     default:
       return exhaustiveSwitchGuard(conventionName);
   }
