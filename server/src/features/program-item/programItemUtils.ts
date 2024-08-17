@@ -9,6 +9,7 @@ import { logger } from "server/utils/logger";
 import {
   ProgramItem,
   ProgramItemWithUserSignups,
+  ProgramType,
   UserSignup,
 } from "shared/types/models/programItem";
 import { SignupStrategy } from "shared/config/eventConfigTypes";
@@ -29,6 +30,7 @@ import {
 } from "shared/utils/result";
 import { MongoDbError } from "shared/types/api/errors";
 import { tooEearlyForAlgorithmSignup } from "shared/utils/tooEearlyForAlgorithmSignup";
+import { UserGroup } from "shared/types/models/user";
 
 export const removeDeletedProgramItems = async (
   updatedProgramItems: readonly ProgramItem[],
@@ -78,6 +80,7 @@ export const removeDeletedProgramItems = async (
 
 export const enrichProgramItems = async (
   programItems: readonly ProgramItemDoc[],
+  userGroup: UserGroup | null,
 ): Promise<Result<ProgramItemWithUserSignups[], MongoDbError>> => {
   const settingsResult = await findSettings();
   if (isErrorResult(settingsResult)) {
@@ -115,6 +118,8 @@ export const enrichProgramItems = async (
       users: getDirectSignupsForProgramItem(
         signups,
         programItem.programItemId,
+        programItem.programType,
+        userGroup,
         signupQuestion,
       ),
     };
@@ -156,11 +161,25 @@ const getSignupStrategyForProgramItem = (
 const getDirectSignupsForProgramItem = (
   directSignups: DirectSignupsForProgramItem[],
   programItemId: string,
+  programType: ProgramType,
+  userGroup: UserGroup | null,
   signupQuestion?: SignupQuestion | undefined,
 ): UserSignup[] => {
+  const { hideParticipantListProgramTypes } = config.event();
+
   const directSignupsForProgramItem = directSignups.filter(
     (signup) => signup.programItem.programItemId === programItemId,
   );
+
+  if (
+    hideParticipantListProgramTypes.includes(programType) &&
+    !(userGroup === UserGroup.ADMIN || userGroup === UserGroup.HELP)
+  ) {
+    return directSignupsForProgramItem.map((_directSignup) => ({
+      username: "redacted",
+      signupMessage: "redacted",
+    }));
+  }
 
   const formattedDirectSignupsForProgramItem =
     directSignupsForProgramItem.flatMap((directSignupForProgramItem) => {
