@@ -1,43 +1,12 @@
 import dayjs from "dayjs";
 import {
-  ArrMin1,
   AssignmentStrategy,
   ConventionName,
-  SignupStrategy,
-  SignupWindow,
+  EventConfig,
 } from "shared/config/eventConfigTypes";
-import { ProgramType } from "shared/types/models/programItem";
-import { SignupQuestion } from "shared/types/models/settings";
-
-interface EventConfig {
-  assignmentStrategy: AssignmentStrategy;
-  enableGroups: boolean;
-  conventionName: ConventionName;
-  conventionYear: string;
-  conventionStartTime: string;
-  DIRECT_SIGNUP_START: number;
-  PRE_SIGNUP_START: number;
-  PHASE_GAP: number;
-  directSignupWindows: Partial<
-    Record<ProgramType, ArrMin1<SignupWindow>>
-  > | null;
-  directSignupAlwaysOpenIds: string[];
-  requireRegistrationCode: boolean;
-  twoPhaseSignupProgramTypes: ProgramType[];
-  manualSignupMode: SignupStrategy.ALGORITHM | SignupStrategy.DIRECT | "none";
-  signupOpen: boolean;
-  resultsVisible: boolean;
-  addToKonsti: string[];
-  noKonstiSignupIds: string[];
-  signupQuestions: SignupQuestion[];
-  tournamentSignupQuestion: SignupQuestion | null;
-  tournamentSignupQuestionExcludeIds: string[];
-  addRevolvingDoorIds: string[];
-  isEnglishProgramItems: string[];
-}
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const eventConfig: EventConfig = {
+const eventConfig: Partial<EventConfig> = {
   // Convention info
   conventionName: ConventionName.SOLMUKOHTA,
   conventionYear: "2024",
@@ -78,8 +47,8 @@ const eventConfig: EventConfig = {
   // These program items have their signup always open even if signup mode is set to algorithm
   directSignupAlwaysOpenIds: [],
 
-  // These program items are hand picked to be exported from Kompassi
-  addToKonsti: [],
+  // Add these to Konsti under 'other' program type
+  addToKonstiOther: [],
 
   // These program items have hand picked revolving door status
   addRevolvingDoorIds: [],
