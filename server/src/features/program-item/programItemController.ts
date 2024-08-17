@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import {
   authorizeUsingApiKey,
+  getAuthorizedUserGroup,
   getAuthorizedUsername,
 } from "server/utils/authHeader";
 import { UserGroup } from "shared/types/models/user";
@@ -49,11 +50,12 @@ export const postAutoUpdateProgramItems = (
 };
 
 export const getProgramItems = async (
-  _req: Request,
+  req: Request,
   res: Response,
 ): Promise<Response> => {
   logger.info(`API call: GET ${ApiEndpoint.PROGRAM_ITEMS}`);
 
-  const response = await fetchProgramItems();
+  const userGroup = getAuthorizedUserGroup(req.headers.authorization);
+  const response = await fetchProgramItems(userGroup);
   return res.json(response);
 };

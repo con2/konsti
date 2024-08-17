@@ -48,6 +48,7 @@ export const verifyJWT = (jwt: string, userGroup: UserGroup): JWTResponse => {
   }
 };
 
+// Be careful: this does not verify jwt signature
 export const decodeJWT = (jwt: string): JWTBody | null => {
   const decodedJwt = jsonwebtoken.decode(jwt);
   const result = JWTBodySchema.safeParse(decodedJwt);

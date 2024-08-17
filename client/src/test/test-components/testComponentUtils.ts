@@ -31,6 +31,7 @@ export const testTimes = [
     .toISOString(),
   dayjs(conventionStartTime).add(3, "hours").toISOString(),
   dayjs(conventionStartTime).add(5, "hours").toISOString(),
+  dayjs(conventionStartTime).add(6, "hours").toISOString(),
   dayjs(conventionStartTime).add(8, "hours").toISOString(),
 
   // Saturday
