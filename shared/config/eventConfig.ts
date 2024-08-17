@@ -1,41 +1,9 @@
 import {
-  ArrMin1,
   AssignmentStrategy,
   ConventionName,
-  SignupStrategy,
-  SignupWindow,
+  EventConfig,
 } from "shared/config/eventConfigTypes";
 import { ProgramType } from "shared/types/models/programItem";
-import { SignupQuestion } from "shared/types/models/settings";
-
-export interface EventConfig {
-  assignmentStrategy: AssignmentStrategy;
-  enableGroups: boolean;
-  conventionName: ConventionName;
-  conventionYear: string;
-  conventionStartTime: string;
-  DIRECT_SIGNUP_START: number;
-  PRE_SIGNUP_START: number;
-  PHASE_GAP: number;
-  directSignupWindows: Partial<
-    Record<ProgramType, ArrMin1<SignupWindow>>
-  > | null;
-  rollingSignupStartProgramTypes: ProgramType[];
-  directSignupAlwaysOpenIds: string[];
-  requireRegistrationCode: boolean;
-  twoPhaseSignupProgramTypes: ProgramType[];
-  manualSignupMode: SignupStrategy.ALGORITHM | SignupStrategy.DIRECT | "none";
-  signupOpen: boolean;
-  resultsVisible: boolean;
-  addToKonstiOther: string[];
-  noKonstiSignupIds: string[];
-  signupQuestions: SignupQuestion[];
-  tournamentSignupQuestion: Omit<SignupQuestion, "programItemId"> | null;
-  tournamentSignupQuestionExcludeIds: string[];
-  addRevolvingDoorIds: string[];
-  isEnglishProgramItems: string[];
-  logInvalidStartTimes: boolean;
-}
 
 // Convention days
 const friday = "2024-09-06";
@@ -55,6 +23,12 @@ export const eventConfig: EventConfig = {
   signupOpen: true,
   resultsVisible: true,
   logInvalidStartTimes: false,
+
+  programTypes: [
+    ProgramType.TABLETOP_RPG,
+    ProgramType.LARP,
+    ProgramType.FLEAMARKET,
+  ],
 
   twoPhaseSignupProgramTypes: [ProgramType.FLEAMARKET],
 
