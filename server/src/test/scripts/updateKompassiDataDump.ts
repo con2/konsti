@@ -23,7 +23,7 @@ const updateKompassiDataDump = async (): Promise<void> => {
   );
 
   fs.writeFileSync(
-    `src/test/kompassi-data-dumps/program-${conventionName}-${conventionYear}.json`,
+    `src/test/kompassi-data-dumps/program-${conventionName.toLocaleLowerCase()}-${conventionYear}.json`,
     // eslint-disable-next-line no-restricted-syntax -- TODO: Fix, format() ban should only apply to dayjs().format()
     await prettier.format(JSON.stringify(formattedKompassiProgramItems), {
       parser: "json",

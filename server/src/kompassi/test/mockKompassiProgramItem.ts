@@ -3,16 +3,16 @@ import {
   testProgramItem2,
 } from "shared/tests/testProgramItem";
 import {
-  KompassiProgramItemRopecon,
-  KompassiPlaystyleRopecon,
-  KompassiLanguageRopecon,
-  KompassiKonstiProgramTypeRopecon,
-  KompassiAudienceRopecon,
-  KompassiAccessibilityRopecon,
-  KompassiTopicRopecon,
-} from "server/kompassi/ropecon/kompassiProgramItemRopecon";
+  KompassiProgramItem,
+  KompassiPlaystyle,
+  KompassiLanguage,
+  KompassiAudience,
+  KompassiAccessibility,
+  KompassiTopic,
+} from "server/kompassi/kompassiProgramItem";
+import { KompassiKonstiProgramType } from "server/kompassi/kompassiProgramItem";
 
-export const mockKompassiProgramItemRopecon: KompassiProgramItemRopecon = {
+export const mockKompassiProgramItem: KompassiProgramItem = {
   slug: testProgramItem.programItemId,
   title: testProgramItem.title,
   description: testProgramItem.description,
@@ -21,20 +21,17 @@ export const mockKompassiProgramItemRopecon: KompassiProgramItemRopecon = {
     date: [""],
     room: [testProgramItem.location],
     type: [""],
-    topic: [KompassiTopicRopecon.THEME],
-    konsti: [KompassiKonstiProgramTypeRopecon.TABLETOP_RPG],
-    audience: [
-      KompassiAudienceRopecon.BEGINNERS,
-      KompassiAudienceRopecon.AIMED_UNDER_13,
-    ],
-    language: [KompassiLanguageRopecon.FINNISH],
+    topic: [KompassiTopic.THEME],
+    konsti: [KompassiKonstiProgramType.TABLETOP_RPG],
+    audience: [KompassiAudience.BEGINNERS, KompassiAudience.AIMED_UNDER_13],
+    language: [KompassiLanguage.FINNISH],
     accessibility: [
-      KompassiAccessibilityRopecon.LONG_TEXTS,
-      KompassiAccessibilityRopecon.MOVING_AROUND,
+      KompassiAccessibility.LONG_TEXTS,
+      KompassiAccessibility.MOVING_AROUND,
     ],
     playstyle: [
-      KompassiPlaystyleRopecon.CHARACTER_DRIVEN,
-      KompassiPlaystyleRopecon.RULES_LIGHT,
+      KompassiPlaystyle.CHARACTER_DRIVEN,
+      KompassiPlaystyle.RULES_LIGHT,
     ],
   },
   scheduleItems: [
@@ -59,7 +56,7 @@ export const mockKompassiProgramItemRopecon: KompassiProgramItemRopecon = {
   },
 };
 
-export const mockKompassiProgramItemRopecon2: KompassiProgramItemRopecon = {
+export const mockKompassiProgramItem2: KompassiProgramItem = {
   slug: testProgramItem2.programItemId,
   title: testProgramItem2.title,
   description: testProgramItem2.description,
@@ -68,20 +65,17 @@ export const mockKompassiProgramItemRopecon2: KompassiProgramItemRopecon = {
     date: [""],
     room: [testProgramItem.location],
     type: [""],
-    topic: [KompassiTopicRopecon.THEME],
-    konsti: [KompassiKonstiProgramTypeRopecon.TABLETOP_RPG],
-    audience: [
-      KompassiAudienceRopecon.BEGINNERS,
-      KompassiAudienceRopecon.AIMED_UNDER_13,
-    ],
-    language: [KompassiLanguageRopecon.FINNISH],
+    topic: [KompassiTopic.THEME],
+    konsti: [KompassiKonstiProgramType.TABLETOP_RPG],
+    audience: [KompassiAudience.BEGINNERS, KompassiAudience.AIMED_UNDER_13],
+    language: [KompassiLanguage.FINNISH],
     accessibility: [
-      KompassiAccessibilityRopecon.LONG_TEXTS,
-      KompassiAccessibilityRopecon.MOVING_AROUND,
+      KompassiAccessibility.LONG_TEXTS,
+      KompassiAccessibility.MOVING_AROUND,
     ],
     playstyle: [
-      KompassiPlaystyleRopecon.CHARACTER_DRIVEN,
-      KompassiPlaystyleRopecon.RULES_LIGHT,
+      KompassiPlaystyle.CHARACTER_DRIVEN,
+      KompassiPlaystyle.RULES_LIGHT,
     ],
   },
   scheduleItems: [

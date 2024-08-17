@@ -26,15 +26,6 @@ const eventConfig: Partial<EventConfig> = {
   signupOpen: true,
   resultsVisible: true,
 
-  programTypes: [
-    ProgramType.TABLETOP_RPG,
-    ProgramType.LARP,
-    ProgramType.TOURNAMENT,
-    ProgramType.WORKSHOP,
-    ProgramType.EXPERIENCE_POINT,
-    ProgramType.OTHER,
-  ],
-
   twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
 
   conventionStartTime: `${friday}T12:00:00Z`, // Fri 15:00 GMT+3

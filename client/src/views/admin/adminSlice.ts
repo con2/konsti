@@ -12,10 +12,10 @@ import { ActiveProgramType } from "shared/config/clientConfigTypes";
 
 const getInitialActiveProgramType = (): ActiveProgramType => {
   const persistedState = loadSession();
-  const { activeProgramTypes } = config.client();
+  const { programTypeSelectOptions } = config.client();
 
-  if (activeProgramTypes.length === 1) {
-    return activeProgramTypes[0];
+  if (programTypeSelectOptions.length === 1) {
+    return programTypeSelectOptions[0];
   }
 
   return persistedState?.admin?.activeProgramType ?? "all";

@@ -35,9 +35,9 @@ import {
 } from "server/features/direct-signup/directSignupRepository";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import {
-  KompassiPlaystyleRopecon,
-  KompassiAudienceRopecon,
-} from "server/kompassi/ropecon/kompassiProgramItemRopecon";
+  KompassiPlaystyle,
+  KompassiAudience,
+} from "server/kompassi/kompassiProgramItem";
 import { Playstyle, Tag } from "shared/types/models/programItem";
 import { logger } from "server/utils/logger";
 import { SignupQuestionType } from "shared/types/models/settings";
@@ -45,9 +45,9 @@ import { config } from "shared/config";
 import { ConventionName } from "shared/config/eventConfigTypes";
 import { testHelperWrapper } from "server/kompassi/getProgramItemsFromKompassi";
 import {
-  mockKompassiProgramItemRopecon,
-  mockKompassiProgramItemRopecon2,
-} from "server/kompassi/test/mockKompassiProgramItemRopecon";
+  mockKompassiProgramItem,
+  mockKompassiProgramItem2,
+} from "server/kompassi/test/mockKompassiProgramItem";
 
 let server: Server;
 
@@ -128,7 +128,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
   test("should return 200 with valid authorization and add program items to DB", async () => {
     const spy = vi
       .spyOn(testHelperWrapper, "getEventProgramItems")
-      .mockResolvedValue({ value: [mockKompassiProgramItemRopecon] });
+      .mockResolvedValue({ value: [mockKompassiProgramItem] });
 
     const response = await request(server)
       .post(ApiEndpoint.PROGRAM_ITEMS)
@@ -144,7 +144,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
 
   test("should remove program items, lottery signups, direct signups, and favorite program items that are not in the server response", async () => {
     vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
-      value: [mockKompassiProgramItemRopecon],
+      value: [mockKompassiProgramItem],
     });
 
     await saveProgramItems([testProgramItem, testProgramItem2]);
@@ -239,10 +239,10 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
       value: [
         {
-          ...mockKompassiProgramItemRopecon,
+          ...mockKompassiProgramItem,
           scheduleItems: [
             {
-              ...mockKompassiProgramItemRopecon.scheduleItems[0],
+              ...mockKompassiProgramItem.scheduleItems[0],
               startTime: newStartTime,
             },
           ],
@@ -275,15 +275,15 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
       value: [
         {
-          ...mockKompassiProgramItemRopecon,
+          ...mockKompassiProgramItem,
           scheduleItems: [
             {
-              ...mockKompassiProgramItemRopecon.scheduleItems[0],
+              ...mockKompassiProgramItem.scheduleItems[0],
               startTime: newStartTime,
             },
           ],
         },
-        mockKompassiProgramItemRopecon2,
+        mockKompassiProgramItem2,
       ],
     });
 
@@ -327,19 +327,19 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
       value: [
         {
-          ...mockKompassiProgramItemRopecon,
+          ...mockKompassiProgramItem,
           cachedDimensions: {
-            ...mockKompassiProgramItemRopecon.cachedDimensions,
+            ...mockKompassiProgramItem.cachedDimensions,
             topic: [],
             audience: [
-              KompassiAudienceRopecon.BEGINNERS,
+              KompassiAudience.BEGINNERS,
               "invalid-tag",
               undefined,
               [1],
               {},
             ],
             playstyle: [
-              KompassiPlaystyleRopecon.CHARACTER_DRIVEN,
+              KompassiPlaystyle.CHARACTER_DRIVEN,
               "invalid-style",
               undefined,
               [1],
@@ -369,10 +369,10 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
       value: [
         {
-          ...mockKompassiProgramItemRopecon,
+          ...mockKompassiProgramItem,
           scheduleItems: [
             {
-              ...mockKompassiProgramItemRopecon.scheduleItems[0],
+              ...mockKompassiProgramItem.scheduleItems[0],
               startTime: null,
               endTime: null,
             },

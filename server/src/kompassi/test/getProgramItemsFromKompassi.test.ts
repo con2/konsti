@@ -4,23 +4,11 @@ import { config } from "shared/config";
 import { ConventionName } from "shared/config/eventConfigTypes";
 import { testHelperWrapper } from "server/kompassi/getProgramItemsFromKompassi";
 import {
-  mockKompassiProgramItemRopecon,
-  mockKompassiProgramItemRopecon2,
-} from "server/kompassi/test/mockKompassiProgramItemRopecon";
+  mockKompassiProgramItem,
+  mockKompassiProgramItem2,
+} from "server/kompassi/test/mockKompassiProgramItem";
 import { getProgramItemsForConvention } from "server/features/program-item/programItemService";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
-import {
-  mockKompassiProgramItemHitpoint,
-  mockKompassiProgramItemHitpoint2,
-} from "server/kompassi/test/mockKompassiProgramItemHitpoint";
-import {
-  mockKompassiProgramItemSolmukohta,
-  mockKompassiProgramItemSolmukohta2,
-} from "server/kompassi/test/mockKompassiProgramItemSolmukohta";
-import {
-  mockKompassiProgramItemTracon,
-  mockKompassiProgramItemTracon2,
-} from "server/kompassi/test/mockKompassiProgramItemTracon";
 import { KompassiProgramItem } from "server/kompassi/kompassiProgramItem";
 
 const getMockKompassiProgramItems = (
@@ -28,19 +16,13 @@ const getMockKompassiProgramItems = (
 ): KompassiProgramItem[] => {
   switch (conventionName) {
     case ConventionName.ROPECON:
-      return [mockKompassiProgramItemRopecon, mockKompassiProgramItemRopecon2];
+      return [mockKompassiProgramItem, mockKompassiProgramItem2];
     case ConventionName.HITPOINT:
-      return [
-        mockKompassiProgramItemHitpoint,
-        mockKompassiProgramItemHitpoint2,
-      ];
+      return [mockKompassiProgramItem, mockKompassiProgramItem2];
     case ConventionName.SOLMUKOHTA:
-      return [
-        mockKompassiProgramItemSolmukohta,
-        mockKompassiProgramItemSolmukohta2,
-      ];
+      return [mockKompassiProgramItem, mockKompassiProgramItem2];
     case ConventionName.TRACON:
-      return [mockKompassiProgramItemTracon, mockKompassiProgramItemTracon2];
+      return [mockKompassiProgramItem, mockKompassiProgramItem2];
     default:
       return exhaustiveSwitchGuard(conventionName);
   }

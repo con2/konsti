@@ -24,12 +24,6 @@ export const eventConfig: EventConfig = {
   resultsVisible: true,
   logInvalidStartTimes: false,
 
-  programTypes: [
-    ProgramType.TABLETOP_RPG,
-    ProgramType.LARP,
-    ProgramType.FLEAMARKET,
-  ],
-
   twoPhaseSignupProgramTypes: [ProgramType.FLEAMARKET],
 
   conventionStartTime: `${friday}T12:00:00Z`, // Fri 15:00 GMT+3

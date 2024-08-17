@@ -6,26 +6,22 @@ import {
 } from "server/kompassi/getProgramItemsFromKompassi";
 import { logger } from "server/utils/logger";
 import { config } from "shared/config";
-import { KompassiProgramItem } from "server/kompassi/kompassiProgramItem";
 import {
-  KompassiProgramItemSchemaRopecon,
-  KompassiKonstiProgramTypeRopecon,
-  KompassiProgramItemRopecon,
-} from "server/kompassi/ropecon/kompassiProgramItemRopecon";
+  KompassiKonstiProgramType,
+  KompassiProgramItemSchema,
+  KompassiProgramItem,
+} from "server/kompassi/kompassiProgramItem";
 import { TIMEZONE } from "shared/utils/initializeDayjs";
 
 export const getProgramItemsFromFullProgramRopecon = (
   programItems: unknown[],
 ): KompassiProgramItem[] => {
-  checkUnknownKeys(programItems, KompassiProgramItemSchemaRopecon);
+  checkUnknownKeys(programItems, KompassiProgramItemSchema);
 
   const kompassiProgramItems = programItems.flatMap((programItem) => {
-    const result = parseProgramItem(
-      programItem,
-      KompassiProgramItemSchemaRopecon,
-    );
+    const result = parseProgramItem(programItem, KompassiProgramItemSchema);
     return result ?? [];
-  }) as KompassiProgramItemRopecon[];
+  });
 
   logger.info(`Found ${kompassiProgramItems.length} valid program items`);
 
@@ -36,7 +32,7 @@ export const getProgramItemsFromFullProgramRopecon = (
         ...programItem,
         cachedDimensions: {
           ...programItem.cachedDimensions,
-          konsti: [KompassiKonstiProgramTypeRopecon.OTHER],
+          konsti: [KompassiKonstiProgramType.OTHER],
         },
       };
     }
@@ -46,7 +42,7 @@ export const getProgramItemsFromFullProgramRopecon = (
 
     const validProgramType =
       programType &&
-      Object.values(KompassiKonstiProgramTypeRopecon).includes(programType);
+      Object.values(KompassiKonstiProgramType).includes(programType);
 
     if (!validProgramType) {
       return [];
@@ -56,7 +52,7 @@ export const getProgramItemsFromFullProgramRopecon = (
       const startTime = programItem.scheduleItems[0].startTime;
       const startMinute = dayjs(startTime).minute();
       if (
-        programType === KompassiKonstiProgramTypeRopecon.TABLETOP_RPG &&
+        programType === KompassiKonstiProgramType.TABLETOP_RPG &&
         startMinute !== 0
       ) {
         logger.error(

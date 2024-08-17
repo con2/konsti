@@ -19,7 +19,7 @@ export const ProgramTypeSelection = ({ id }: Props): ReactElement => {
     (state) => state.admin.activeProgramType,
   );
 
-  const programTypes = config.client().activeProgramTypes;
+  const programTypes = config.client().programTypeSelectOptions;
 
   const dropdownItems = programTypes.map((programType) => ({
     value: programType,
