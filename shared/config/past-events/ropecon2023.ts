@@ -1,47 +1,11 @@
 import dayjs from "dayjs";
 import {
-  ArrMin1,
   AssignmentStrategy,
   ConventionName,
-  LoginProvider,
-  SignupStrategy,
-  SignupWindow,
+  EventConfig,
 } from "shared/config/eventConfigTypes";
 import { ProgramType } from "shared/types/models/programItem";
-import {
-  SignupQuestion,
-  SignupQuestionType,
-} from "shared/types/models/settings";
-
-interface EventConfig {
-  assignmentStrategy: AssignmentStrategy;
-  enableGroups: boolean;
-  defaultSignupStrategy: SignupStrategy;
-  defaultLoginProvider: LoginProvider;
-  conventionName: ConventionName;
-  conventionYear: string;
-  conventionStartTime: string;
-  DIRECT_SIGNUP_START: number;
-  PRE_SIGNUP_START: number;
-  PHASE_GAP: number;
-  directSignupWindows: Partial<
-    Record<ProgramType, ArrMin1<SignupWindow>>
-  > | null;
-  directSignupAlwaysOpenIds: string[];
-  requireRegistrationCode: boolean;
-  activeProgramTypes: ProgramType[];
-  twoPhaseSignupProgramTypes: ProgramType[];
-  directSignupProgramTypes: ProgramType[];
-  manualSignupMode: SignupStrategy.ALGORITHM | SignupStrategy.DIRECT | "none";
-  signupOpen: boolean;
-  resultsVisible: boolean;
-  addToKonsti: string[];
-  noKonstiSignupIds: string[];
-  signupQuestions: SignupQuestion[];
-  tournamentSignupQuestion: SignupQuestion | null;
-  tournamentSignupQuestionExcludeIds: string[];
-  addRevolvingDoorIds: string[];
-}
+import { SignupQuestionType } from "shared/types/models/settings";
 
 // Convention days
 const friday = "2023-07-28";
@@ -49,7 +13,7 @@ const saturday = "2023-07-29";
 const sunday = "2023-07-30";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const eventConfig: EventConfig = {
+const eventConfig: Partial<EventConfig> = {
   // Convention info
   conventionName: ConventionName.HITPOINT,
   conventionYear: "2023",
@@ -58,13 +22,11 @@ const eventConfig: EventConfig = {
   requireRegistrationCode: true,
   assignmentStrategy: AssignmentStrategy.RANDOM_PADG,
   enableGroups: true,
-  defaultSignupStrategy: SignupStrategy.ALGORITHM_AND_DIRECT,
-  defaultLoginProvider: LoginProvider.LOCAL,
   manualSignupMode: "none",
   signupOpen: true,
   resultsVisible: true,
 
-  activeProgramTypes: [
+  programTypes: [
     ProgramType.TABLETOP_RPG,
     ProgramType.LARP,
     ProgramType.TOURNAMENT,
@@ -74,14 +36,6 @@ const eventConfig: EventConfig = {
   ],
 
   twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
-
-  directSignupProgramTypes: [
-    ProgramType.LARP,
-    ProgramType.TOURNAMENT,
-    ProgramType.WORKSHOP,
-    ProgramType.EXPERIENCE_POINT,
-    ProgramType.OTHER,
-  ],
 
   conventionStartTime: `${friday}T12:00:00Z`, // Fri 15:00 GMT+3
 
@@ -175,8 +129,8 @@ const eventConfig: EventConfig = {
   // These program items have their signup always open even if signup mode is set to algorithm
   directSignupAlwaysOpenIds: [],
 
-  // These program items are hand picked to be exported from Kompassi
-  addToKonsti: [
+  // Add these to Konsti under 'other' program type
+  addToKonstiOther: [
     "p6787", // KPS-turnaus
     "p6500", // "\"Joo ja...\" -improtunti",
   ],
@@ -277,7 +231,6 @@ const eventConfig: EventConfig = {
   ],
 
   tournamentSignupQuestion: {
-    programItemId: "", // Filled later
     questionFi:
       "Syötä nimesi, sähköpostiosoitteesi ja puhelinnumerosi mahdollista palkintoyhteydenottoa varten.",
     questionEn:
