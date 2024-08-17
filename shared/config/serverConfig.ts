@@ -1,11 +1,5 @@
 import { LoginProvider, SignupStrategy } from "shared/config/eventConfigTypes";
 
-enum DataUri {
-  ROPECON = "https://kompassi.eu/api/v1/events/ropecon2024/programme/ropecon",
-  HITPOINT = "https://kompassi.eu/api/v1/events/hitpoint2023/programme/hitpoint",
-  SOLMUKOHTA = "https://kompassi.eu/api/v1/events/solmukohta2024/programme/ropecon",
-}
-
 export interface ServerConfig {
   port: number;
   debug: boolean;
@@ -16,7 +10,6 @@ export interface ServerConfig {
   jwtSecretKeyAdmin: string;
   jwtSecretKeyHelp: string;
   allowedCorsOrigins: readonly string[];
-  dataUri: DataUri;
   PADG_ASSIGNMENT_ROUNDS: number;
   RANDOM_ASSIGNMENT_ROUNDS: number;
   bundleCompression: boolean;
@@ -69,7 +62,6 @@ const commonConfig = {
   defaultLoginProvider: LoginProvider.LOCAL,
 
   // Convention settings
-  dataUri: DataUri.ROPECON,
   firstSignupBonus: 20,
   additionalFirstSignupBonus: 5,
   useLocalProgramFile: false,

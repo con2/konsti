@@ -21,45 +21,58 @@ import { config } from "shared/config";
 import { getShortDescriptionFromDescription } from "server/utils/getShortDescriptionFromDescription";
 import { KompassiKonstiProgramType } from "server/kompassi/kompassiProgramItem";
 
+const getProgramItemId = (
+  programItem: KompassiProgramItem,
+  index: number,
+): string => {
+  if (index === 0) {
+    return programItem.slug;
+  }
+  return `${programItem.slug}-${index}`;
+};
+
 export const kompassiProgramItemMapper = (
   programItems: readonly KompassiProgramItem[],
 ): readonly ProgramItem[] => {
-  return programItems.map((programItem) => {
-    return {
-      programItemId: programItem.slug,
-      title: programItem.title,
-      description: programItem.description,
-      location: programItem.scheduleItems[0].location,
-      startTime: dayjs(programItem.scheduleItems[0].startTime).toISOString(),
-      mins:
-        programItem.scheduleItems[0].lengthMinutes ||
-        dayjs(programItem.scheduleItems[0].endTime).diff(
-          dayjs(programItem.scheduleItems[0].startTime),
-          "minute",
+  return programItems.flatMap((programItem) => {
+    return programItem.scheduleItems.map((scheduleItems, index) => {
+      return {
+        programItemId: getProgramItemId(programItem, index),
+        title: scheduleItems.title,
+        description: programItem.description,
+        location: scheduleItems.location,
+        startTime: dayjs(scheduleItems.startTime).toISOString(),
+        mins:
+          scheduleItems.lengthMinutes ||
+          dayjs(scheduleItems.endTime).diff(
+            dayjs(scheduleItems.startTime),
+            "minute",
+          ),
+        tags: mapTags(programItem),
+        genres: [],
+        styles: mapPlaystyles(programItem.cachedDimensions.playstyle),
+        languages: mapLanguages(programItem.cachedDimensions.language),
+        endTime: dayjs(scheduleItems.endTime).toISOString(),
+        people: programItem.cachedHosts,
+        minAttendance: programItem.cachedAnnotations["konsti:minAttendance"],
+        maxAttendance: mapMaxAttendance(programItem),
+        gameSystem: programItem.cachedAnnotations["konsti:rpgSystem"],
+        shortDescription: mapShortDescription(programItem),
+        revolvingDoor: mapRevolvingDoor(programItem),
+        programType: mapProgramType(programItem),
+        contentWarnings:
+          programItem.cachedAnnotations["ropecon:contentWarnings"],
+        otherAuthor: programItem.cachedAnnotations["ropecon:otherAuthor"],
+        accessibilityValues: mapAccessibilityValues(
+          programItem.cachedDimensions.accessibility,
         ),
-      tags: mapTags(programItem),
-      genres: [],
-      styles: mapPlaystyles(programItem.cachedDimensions.playstyle),
-      languages: mapLanguages(programItem.cachedDimensions.language),
-      endTime: dayjs(programItem.scheduleItems[0].endTime).toISOString(),
-      people: programItem.cachedHosts,
-      minAttendance: programItem.cachedAnnotations["konsti:minAttendance"],
-      maxAttendance: mapMaxAttendance(programItem),
-      gameSystem: programItem.cachedAnnotations["konsti:rpgSystem"],
-      shortDescription: mapShortDescription(programItem),
-      revolvingDoor: mapRevolvingDoor(programItem),
-      programType: mapProgramType(programItem),
-      contentWarnings: programItem.cachedAnnotations["ropecon:contentWarnings"],
-      otherAuthor: programItem.cachedAnnotations["ropecon:otherAuthor"],
-      accessibilityValues: mapAccessibilityValues(
-        programItem.cachedDimensions.accessibility,
-      ),
-      popularity: 0,
-      otherAccessibilityInformation:
-        programItem.cachedAnnotations["ropecon:accessibilityOther"],
-      entryFee: programItem.cachedAnnotations["konsti:workshopFee"],
-      signupType: SignupType.KONSTI,
-    };
+        popularity: 0,
+        otherAccessibilityInformation:
+          programItem.cachedAnnotations["ropecon:accessibilityOther"],
+        entryFee: programItem.cachedAnnotations["konsti:workshopFee"],
+        signupType: SignupType.KONSTI,
+      };
+    });
   });
 };
 

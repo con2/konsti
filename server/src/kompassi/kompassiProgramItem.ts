@@ -155,6 +155,7 @@ export const KompassiProgramItemSchema = z.object({
   scheduleItems: z
     .array(
       z.object({
+        title: z.string().catch(""),
         startTime: z.string().datetime({ offset: true }),
         endTime: z.string().datetime({ offset: true }),
         lengthMinutes: z.number().catch(0),
