@@ -33,9 +33,7 @@ export const getProgramItemsForConvention = async (): Promise<
   }
 
   const kompassiProgramItems = unwrapResult(kompassiProgramItemsResult);
-  return makeSuccessResult(
-    kompassiProgramItemMapper(conventionName, kompassiProgramItems),
-  );
+  return makeSuccessResult(kompassiProgramItemMapper(kompassiProgramItems));
 };
 
 export const updateProgramItems = async (): Promise<

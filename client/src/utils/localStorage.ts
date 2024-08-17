@@ -8,7 +8,7 @@ import { ActiveProgramType } from "shared/config/clientConfigTypes";
 import { Locale } from "shared/types/locale";
 
 const isActive = (programType: ActiveProgramType): boolean =>
-  config.client().activeProgramTypes.includes(programType);
+  config.client().programTypeSelectOptions.includes(programType);
 
 const SessionSchema = z
   .object({
