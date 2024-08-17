@@ -25,6 +25,7 @@ import { LoginProvider } from "shared/config/sharedConfigTypes";
 import { KompassiLoginUsernameForm } from "client/views/login/components/KompassiLoginUsernameForm";
 import { KompassiLogoutCallback } from "client/components/KompassiLogoutCallback";
 import { AuthEndpoint } from "shared/constants/apiEndpoints";
+import {AdmissionTicketView} from "client/views/admission-ticket/AdmissionTicketView";
 
 export enum AppRoute {
   PROGRAM = "/program",
@@ -219,6 +220,10 @@ export const AppRoutes = (): ReactElement => {
         ) : (
           <Route path="/" element={<Navigate to={AppRoute.MY_PROGRAM} />} />
         )}
+        <Route
+          path={`${AppRoute.PROGRAM_ITEM}/:programItemId/admission`}
+          element={<AdmissionTicketView />}
+        />
         <Route path="/*" element={<Navigate to="/" />} />
       </Routes>
     );
