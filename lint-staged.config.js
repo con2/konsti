@@ -16,7 +16,7 @@ module.exports = {
   },
   */
 
-  "{eslint.config.mjs,package.json}": () => {
+  "{does-not-exist.ts}": () => {
     return ["yarn eslint-save-config", "git add eslint-config.json"];
   },
 };

@@ -1,4 +1,3 @@
-// @ts-check
 import eslint from "@eslint/js";
 import globals from "globals";
 import eslintPluginBan from "eslint-plugin-ban";
@@ -31,7 +30,6 @@ export default typescriptEslint.config(
       parserOptions: {
         projectService: {
           allowDefaultProject: [
-            "eslint.config.mjs",
             "lint-staged.config.js",
             "yarn.config.cjs",
             "client/babel.config.js",
@@ -52,6 +50,7 @@ export default typescriptEslint.config(
       "**/coverage/**",
       "**/front/**",
       "**/build/**",
+      "eslint.config.mjs",
     ],
   },
   {
