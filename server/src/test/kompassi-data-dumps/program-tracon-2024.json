@@ -17,10 +17,12 @@
     "cachedAnnotations": {
       "konsti:rpgSystem": "Praedor V2",
       "ropecon:gameSlogan": "Päiväreissu Borvariaan, tuo omat juomasi",
-      "konsti:maxAttendance": 6
+      "konsti:maxAttendance": 6,
+      "konsti:minAttendance": 2
     },
     "scheduleItems": [
       {
+        "slug": "alavilla-mailla-",
         "title": "Alavilla mailla",
         "startTime": "2024-09-06T13:30:00+00:00",
         "endTime": "2024-09-06T17:30:00+00:00",
@@ -47,10 +49,12 @@
     "cachedAnnotations": {
       "konsti:rpgSystem": "ALIEN Role-Playing Game",
       "ropecon:gameSlogan": "scifi, kehokauhu, selviytymiskauhu",
-      "konsti:maxAttendance": 4
+      "konsti:maxAttendance": 4,
+      "konsti:minAttendance": 3
     },
     "scheduleItems": [
       {
+        "slug": "alien-evac-",
         "title": "ALIEN: EVAC",
         "startTime": "2024-09-06T18:00:00+00:00",
         "endTime": "2024-09-06T20:00:00+00:00",
@@ -77,10 +81,12 @@
     "cachedAnnotations": {
       "konsti:rpgSystem": "ALIEN Role-Playing Game",
       "ropecon:gameSlogan": "scifi, selviytymiskauhu, kehokauhu",
-      "konsti:maxAttendance": 4
+      "konsti:maxAttendance": 4,
+      "konsti:minAttendance": 3
     },
     "scheduleItems": [
       {
+        "slug": "alien-fallout-",
         "title": "ALIEN: Fallout",
         "startTime": "2024-09-06T13:30:00+00:00",
         "endTime": "2024-09-06T15:30:00+00:00",
@@ -107,10 +113,12 @@
     "cachedAnnotations": {
       "konsti:rpgSystem": "RootRPG",
       "ropecon:gameSlogan": "Eläinhahmot seikkailevat fantasiamaailmassa",
-      "konsti:maxAttendance": 5
+      "konsti:maxAttendance": 5,
+      "konsti:minAttendance": 2
     },
     "scheduleItems": [
       {
+        "slug": "apua-metsanpeittoon-",
         "title": "Apua Metsänpeittoon - RootRPG",
         "startTime": "2024-09-07T08:00:00+00:00",
         "endTime": "2024-09-07T12:00:00+00:00",
@@ -137,6 +145,7 @@
     "cachedAnnotations": {},
     "scheduleItems": [
       {
+        "slug": "arsenic-lies-",
         "title": "Arsenic & Lies",
         "startTime": "2024-09-07T11:00:00+00:00",
         "endTime": "2024-09-07T13:45:00+00:00",
@@ -167,6 +176,7 @@
     },
     "scheduleItems": [
       {
+        "slug": "circumstances-zombie-apocalypse-co-op-",
         "title": "Circumstances – Zombie Apocalypse (co-op)",
         "startTime": "2024-09-08T07:30:00+00:00",
         "endTime": "2024-09-08T10:00:00+00:00",
@@ -197,6 +207,7 @@
     },
     "scheduleItems": [
       {
+        "slug": "circumstances-zombie-apocalypse-pahispelautus-",
         "title": "Circumstances – Zombie Apocalypse (pahispelautus)",
         "startTime": "2024-09-08T10:30:00+00:00",
         "endTime": "2024-09-08T13:00:00+00:00",
@@ -223,10 +234,12 @@
     "cachedAnnotations": {
       "konsti:rpgSystem": "Savage Worlds (SWADE)",
       "ropecon:gameSlogan": "Sotaanlähtö, ihmiskohtalot, Keski-Maa",
-      "konsti:maxAttendance": 5
+      "konsti:maxAttendance": 5,
+      "konsti:minAttendance": 2
     },
     "scheduleItems": [
       {
+        "slug": "ja-rohan-vastaa-kutsuun-",
         "title": "Ja Rohan vastaa kutsuun",
         "startTime": "2024-09-07T08:30:00+00:00",
         "endTime": "2024-09-07T13:00:00+00:00",
@@ -253,6 +266,7 @@
     "cachedAnnotations": { "konsti:maxAttendance": 130 },
     "scheduleItems": [
       {
+        "slug": "kirpputorin-ajanvaraus-lauantai-0930",
         "title": "Kirpputorin ajanvaraus LAUANTAI – Saapuminen kello 09:30–10:00",
         "startTime": "2024-09-07T06:30:00+00:00",
         "endTime": "2024-09-07T10:30:00+00:00",
@@ -260,6 +274,7 @@
         "location": "Sopraano"
       },
       {
+        "slug": "kirpputorin-ajanvaraus-lauantai-1000",
         "title": "Kirpputorin ajanvaraus LAUANTAI – Saapuminen kello 10:00–10:30",
         "startTime": "2024-09-07T06:30:00+00:00",
         "endTime": "2024-09-07T10:30:00+00:00",
@@ -267,6 +282,7 @@
         "location": "Sopraano"
       },
       {
+        "slug": "kirpputorin-ajanvaraus-lauantai-1030",
         "title": "Kirpputorin ajanvaraus LAUANTAI – Saapuminen kello 10:30–11:00",
         "startTime": "2024-09-07T06:30:00+00:00",
         "endTime": "2024-09-07T10:30:00+00:00",
@@ -274,6 +290,7 @@
         "location": "Sopraano"
       },
       {
+        "slug": "kirpputorin-ajanvaraus-lauantai-1100",
         "title": "Kirpputorin ajanvaraus LAUANTAI – Saapuminen kello 11:00–11:30",
         "startTime": "2024-09-07T06:30:00+00:00",
         "endTime": "2024-09-07T10:30:00+00:00",
@@ -281,6 +298,7 @@
         "location": "Sopraano"
       },
       {
+        "slug": "kirpputorin-ajanvaraus-lauantai-1130",
         "title": "Kirpputorin ajanvaraus LAUANTAI – Saapuminen kello 11:30–12:00",
         "startTime": "2024-09-07T06:30:00+00:00",
         "endTime": "2024-09-07T10:30:00+00:00",
@@ -288,6 +306,7 @@
         "location": "Sopraano"
       },
       {
+        "slug": "kirpputorin-ajanvaraus-lauantai-1200",
         "title": "Kirpputorin ajanvaraus LAUANTAI – Saapuminen kello 12:00–12:30",
         "startTime": "2024-09-07T06:30:00+00:00",
         "endTime": "2024-09-07T10:30:00+00:00",
@@ -295,6 +314,7 @@
         "location": "Sopraano"
       },
       {
+        "slug": "kirpputorin-ajanvaraus-lauantai-1230",
         "title": "Kirpputorin ajanvaraus LAUANTAI – Saapuminen kello 12:30–13:00",
         "startTime": "2024-09-07T06:30:00+00:00",
         "endTime": "2024-09-07T10:30:00+00:00",
@@ -302,6 +322,7 @@
         "location": "Sopraano"
       },
       {
+        "slug": "kirpputorin-ajanvaraus-lauantai-1300",
         "title": "Kirpputorin ajanvaraus LAUANTAI – Saapuminen kello 13:00–13:30",
         "startTime": "2024-09-07T06:30:00+00:00",
         "endTime": "2024-09-07T10:30:00+00:00",
@@ -328,6 +349,7 @@
     "cachedAnnotations": { "konsti:maxAttendance": 130 },
     "scheduleItems": [
       {
+        "slug": "kirpputorin-ajanvaraus-perjantai-1500",
         "title": "Kirpputorin ajanvaraus PERJANTAI – Saapuminen kello 15:00–15:30",
         "startTime": "2024-09-06T12:00:00+00:00",
         "endTime": "2024-09-06T18:30:00+00:00",
@@ -335,6 +357,7 @@
         "location": "Sopraano"
       },
       {
+        "slug": "kirpputorin-ajanvaraus-perjantai-1530",
         "title": "Kirpputorin ajanvaraus PERJANTAI – Saapuminen kello 15:30–16:00",
         "startTime": "2024-09-06T12:00:00+00:00",
         "endTime": "2024-09-06T18:30:00+00:00",
@@ -342,6 +365,7 @@
         "location": "Sopraano"
       },
       {
+        "slug": "kirpputorin-ajanvaraus-perjantai-1600",
         "title": "Kirpputorin ajanvaraus PERJANTAI – Saapuminen kello 16:00–16:30",
         "startTime": "2024-09-06T12:00:00+00:00",
         "endTime": "2024-09-06T18:30:00+00:00",
@@ -349,6 +373,7 @@
         "location": "Sopraano"
       },
       {
+        "slug": "kirpputorin-ajanvaraus-perjantai-1630",
         "title": "Kirpputorin ajanvaraus PERJANTAI – Saapuminen kello 16:30–17:00",
         "startTime": "2024-09-06T12:00:00+00:00",
         "endTime": "2024-09-06T18:30:00+00:00",
@@ -356,6 +381,7 @@
         "location": "Sopraano"
       },
       {
+        "slug": "kirpputorin-ajanvaraus-perjantai-1700",
         "title": "Kirpputorin ajanvaraus PERJANTAI – Saapuminen kello 17:00–17:30",
         "startTime": "2024-09-06T12:00:00+00:00",
         "endTime": "2024-09-06T18:30:00+00:00",
@@ -363,6 +389,7 @@
         "location": "Sopraano"
       },
       {
+        "slug": "kirpputorin-ajanvaraus-perjantai-1730",
         "title": "Kirpputorin ajanvaraus PERJANTAI – Saapuminen kello 17:30–18:00",
         "startTime": "2024-09-06T12:00:00+00:00",
         "endTime": "2024-09-06T18:30:00+00:00",
@@ -370,6 +397,7 @@
         "location": "Sopraano"
       },
       {
+        "slug": "kirpputorin-ajanvaraus-perjantai-1800",
         "title": "Kirpputorin ajanvaraus PERJANTAI – Saapuminen kello 18:00–18:30",
         "startTime": "2024-09-06T12:00:00+00:00",
         "endTime": "2024-09-06T18:30:00+00:00",
@@ -377,6 +405,7 @@
         "location": "Sopraano"
       },
       {
+        "slug": "kirpputorin-ajanvaraus-perjantai-1830",
         "title": "Kirpputorin ajanvaraus PERJANTAI – Saapuminen kello 18:30–19:00",
         "startTime": "2024-09-06T12:00:00+00:00",
         "endTime": "2024-09-06T18:30:00+00:00",
@@ -384,6 +413,7 @@
         "location": "Sopraano"
       },
       {
+        "slug": "kirpputorin-ajanvaraus-perjantai-1900",
         "title": "Kirpputorin ajanvaraus PERJANTAI – Saapuminen kello 19:00–19:30",
         "startTime": "2024-09-06T12:00:00+00:00",
         "endTime": "2024-09-06T18:30:00+00:00",
@@ -391,6 +421,7 @@
         "location": "Sopraano"
       },
       {
+        "slug": "kirpputorin-ajanvaraus-perjantai-1930",
         "title": "Kirpputorin ajanvaraus PERJANTAI – Saapuminen kello 19:30–20:00",
         "startTime": "2024-09-06T12:00:00+00:00",
         "endTime": "2024-09-06T18:30:00+00:00",
@@ -398,6 +429,7 @@
         "location": "Sopraano"
       },
       {
+        "slug": "kirpputorin-ajanvaraus-perjantai-2000",
         "title": "Kirpputorin ajanvaraus PERJANTAI – Saapuminen kello 20:00–20:30",
         "startTime": "2024-09-06T12:00:00+00:00",
         "endTime": "2024-09-06T18:30:00+00:00",
@@ -405,6 +437,7 @@
         "location": "Sopraano"
       },
       {
+        "slug": "kirpputorin-ajanvaraus-perjantai-2030",
         "title": "Kirpputorin ajanvaraus PERJANTAI – Saapuminen kello 20:30–21:00",
         "startTime": "2024-09-06T12:00:00+00:00",
         "endTime": "2024-09-06T18:30:00+00:00",
@@ -412,6 +445,7 @@
         "location": "Sopraano"
       },
       {
+        "slug": "kirpputorin-ajanvaraus-perjantai-2100",
         "title": "Kirpputorin ajanvaraus PERJANTAI – Saapuminen kello 21:00–21:30",
         "startTime": "2024-09-06T12:00:00+00:00",
         "endTime": "2024-09-06T18:30:00+00:00",
@@ -438,10 +472,12 @@
     "cachedAnnotations": {
       "konsti:rpgSystem": "Oma kevyt tarinankerronnallinen",
       "ropecon:gameSlogan": "hiihtokeskus teini kauhu",
-      "konsti:maxAttendance": 6
+      "konsti:maxAttendance": 6,
+      "konsti:minAttendance": 2
     },
     "scheduleItems": [
       {
+        "slug": "kriisitunturi-",
         "title": "Kriisitunturi",
         "startTime": "2024-09-06T16:00:00+00:00",
         "endTime": "2024-09-06T20:00:00+00:00",
@@ -468,10 +504,12 @@
     "cachedAnnotations": {
       "konsti:rpgSystem": "Shadowrun: Anarchy",
       "ropecon:gameSlogan": "Fantasy-cyberpunk, ammattirikollisuutta tyylillä",
-      "konsti:maxAttendance": 5
+      "konsti:maxAttendance": 5,
+      "konsti:minAttendance": 2
     },
     "scheduleItems": [
       {
+        "slug": "kusinen-homma-",
         "title": "Kusinen Homma",
         "startTime": "2024-09-07T14:00:00+00:00",
         "endTime": "2024-09-07T18:00:00+00:00",
@@ -498,10 +536,12 @@
     "cachedAnnotations": {
       "konsti:rpgSystem": "homebrew - oma systeemi",
       "ropecon:gameSlogan": "Magical mindscape mystery - maaginen mysteeri mielenmaisemassa",
-      "konsti:maxAttendance": 5
+      "konsti:maxAttendance": 5,
+      "konsti:minAttendance": 2
     },
     "scheduleItems": [
       {
+        "slug": "lantern-for-shadow-subconscious-tajunnan-varjojen-lyhty-",
         "title": "Lantern For Shadow Subconscious - Tajunnan Varjojen Lyhty",
         "startTime": "2024-09-06T14:00:00+00:00",
         "endTime": "2024-09-06T18:00:00+00:00",
@@ -528,10 +568,12 @@
     "cachedAnnotations": {
       "konsti:rpgSystem": "OmaMekaniikka",
       "ropecon:gameSlogan": "Jännittävää toiminnantäyteistä tieteisseikkailua!",
-      "konsti:maxAttendance": 6
+      "konsti:maxAttendance": 6,
+      "konsti:minAttendance": 3
     },
     "scheduleItems": [
       {
+        "slug": "lapimurto-",
         "title": "Läpimurto",
         "startTime": "2024-09-08T07:30:00+00:00",
         "endTime": "2024-09-08T11:30:00+00:00",
@@ -558,6 +600,7 @@
     "cachedAnnotations": {},
     "scheduleItems": [
       {
+        "slug": "larp-telenovela-haat-",
         "title": "LARP Telenovela: Häät",
         "startTime": "2024-09-07T16:00:00+00:00",
         "endTime": "2024-09-07T17:15:00+00:00",
@@ -584,10 +627,12 @@
     "cachedAnnotations": {
       "konsti:rpgSystem": "Our Briliant Ruin",
       "ropecon:gameSlogan": "Steampunkkia maailman loppuessa",
-      "konsti:maxAttendance": 5
+      "konsti:maxAttendance": 5,
+      "konsti:minAttendance": 2
     },
     "scheduleItems": [
       {
+        "slug": "meidan-loistava-turmio-",
         "title": "Meidän loistava turmiomme",
         "startTime": "2024-09-06T13:30:00+00:00",
         "endTime": "2024-09-06T17:30:00+00:00",
@@ -614,10 +659,12 @@
     "cachedAnnotations": {
       "konsti:rpgSystem": "Call of Cthulhu 7th edition",
       "ropecon:gameSlogan": "Mysteeri, kauhu, pimeys",
-      "konsti:maxAttendance": 5
+      "konsti:maxAttendance": 5,
+      "konsti:minAttendance": 2
     },
     "scheduleItems": [
       {
+        "slug": "mita-kellarista-loytyy-",
         "title": "Mitä kellarista löytyy?",
         "startTime": "2024-09-07T13:00:00+00:00",
         "endTime": "2024-09-07T18:00:00+00:00",
@@ -644,6 +691,7 @@
     "cachedAnnotations": {},
     "scheduleItems": [
       {
+        "slug": "muistojen-tanssi-larppi-",
         "title": "Muistojen tanssi -larppi",
         "startTime": "2024-09-08T11:00:00+00:00",
         "endTime": "2024-09-08T13:45:00+00:00",
@@ -670,10 +718,12 @@
     "cachedAnnotations": {
       "konsti:rpgSystem": "D&D 5e",
       "ropecon:gameSlogan": "vankilapako, hahmotraumat, synkkä",
-      "konsti:maxAttendance": 4
+      "konsti:maxAttendance": 4,
+      "konsti:minAttendance": 3
     },
     "scheduleItems": [
       {
+        "slug": "murheen-valama-vankila-",
         "title": "Murheen valama vankila",
         "startTime": "2024-09-07T08:30:00+00:00",
         "endTime": "2024-09-07T12:30:00+00:00",
@@ -700,10 +750,12 @@
     "cachedAnnotations": {
       "konsti:rpgSystem": "DnD 5e",
       "ropecon:gameSlogan": "kauhu jännitys vampyyri",
-      "konsti:maxAttendance": 5
+      "konsti:maxAttendance": 5,
+      "konsti:minAttendance": 3
     },
     "scheduleItems": [
       {
+        "slug": "olipa-kerran-sumuinen-yo-",
         "title": "Olipa kerran sumuinen yö",
         "startTime": "2024-09-06T13:00:00+00:00",
         "endTime": "2024-09-06T17:00:00+00:00",
@@ -730,10 +782,12 @@
     "cachedAnnotations": {
       "konsti:rpgSystem": "Pathfinder 2nd Edition.",
       "ropecon:gameSlogan": "Fantasy, Catastrophy, Call to Action",
-      "konsti:maxAttendance": 6
+      "konsti:maxAttendance": 6,
+      "konsti:minAttendance": 2
     },
     "scheduleItems": [
       {
+        "slug": "pathfinder-society-scenario-6-02-rain-falls-on-the-mountain-of-sea-and-sky-",
         "title": "Pathfinder Society Scenario #6-02: Rain Falls on the Mountain of Sea and Sky",
         "startTime": "2024-09-08T09:00:00+00:00",
         "endTime": "2024-09-08T13:00:00+00:00",
@@ -760,10 +814,12 @@
     "cachedAnnotations": {
       "konsti:rpgSystem": "Pathfinder 2E",
       "ropecon:gameSlogan": "Fantastinen seikkailu metsässä",
-      "konsti:maxAttendance": 6
+      "konsti:maxAttendance": 6,
+      "konsti:minAttendance": 3
     },
     "scheduleItems": [
       {
+        "slug": "pfs-2e-5-12-mischief-in-the-maze-",
         "title": "PFS 2E #5-12 Mischief in the Maze",
         "startTime": "2024-09-07T09:00:00+00:00",
         "endTime": "2024-09-07T13:00:00+00:00",
@@ -790,10 +846,12 @@
     "cachedAnnotations": {
       "konsti:rpgSystem": "Mörk Borg",
       "ropecon:gameSlogan": "Hulvattoman pimeää fantasiaa",
-      "konsti:maxAttendance": 5
+      "konsti:maxAttendance": 5,
+      "konsti:minAttendance": 3
     },
     "scheduleItems": [
       {
+        "slug": "ristipisto-",
         "title": "Ristipisto",
         "startTime": "2024-09-07T14:00:00+00:00",
         "endTime": "2024-09-07T18:00:00+00:00",
@@ -820,10 +878,12 @@
     "cachedAnnotations": {
       "konsti:rpgSystem": "Ryuutama",
       "ropecon:gameSlogan": "Matkaamiseen keskittyvä fantasiaseikkailu",
-      "konsti:maxAttendance": 5
+      "konsti:maxAttendance": 5,
+      "konsti:minAttendance": 2
     },
     "scheduleItems": [
       {
+        "slug": "ryuutama-luvattomuuksia-lingmeilissa-",
         "title": "Ryuutama - Luvattomuuksia Lingmeilissä",
         "startTime": "2024-09-08T08:30:00+00:00",
         "endTime": "2024-09-08T12:30:00+00:00",
@@ -850,10 +910,12 @@
     "cachedAnnotations": {
       "konsti:rpgSystem": "D&D 5e",
       "ropecon:gameSlogan": "korkeafantasia, korruptio, lystikäs",
-      "konsti:maxAttendance": 4
+      "konsti:maxAttendance": 4,
+      "konsti:minAttendance": 3
     },
     "scheduleItems": [
       {
+        "slug": "seestunturin-salaisuus-",
         "title": "Seestunturin salaisuus",
         "startTime": "2024-09-08T08:30:00+00:00",
         "endTime": "2024-09-08T13:30:00+00:00",
@@ -880,10 +942,12 @@
     "cachedAnnotations": {
       "konsti:rpgSystem": "D&D 5e",
       "ropecon:gameSlogan": "Horror, Discovery, ¿?¿?¿?¿?¿?¿",
-      "konsti:maxAttendance": 5
+      "konsti:maxAttendance": 5,
+      "konsti:minAttendance": 3
     },
     "scheduleItems": [
       {
+        "slug": "signal--",
         "title": "Signal: ¿?¿?¿?¿?¿?¿",
         "startTime": "2024-09-07T13:30:00+00:00",
         "endTime": "2024-09-07T17:30:00+00:00",
@@ -910,10 +974,12 @@
     "cachedAnnotations": {
       "konsti:rpgSystem": "Spire: The City Must Fall RPG",
       "ropecon:gameSlogan": "Vallankumousfantasiaa synkässä kaupungissa",
-      "konsti:maxAttendance": 5
+      "konsti:maxAttendance": 5,
+      "konsti:minAttendance": 3
     },
     "scheduleItems": [
       {
+        "slug": "spire-sammuttakaa-aurinko-",
         "title": "Spire - Sammuttakaa Aurinko",
         "startTime": "2024-09-07T08:30:00+00:00",
         "endTime": "2024-09-07T13:00:00+00:00",
@@ -940,10 +1006,12 @@
     "cachedAnnotations": {
       "konsti:rpgSystem": "The One Ring 2E",
       "ropecon:gameSlogan": "Middle Earth, fantasy, exploration",
-      "konsti:maxAttendance": 5
+      "konsti:maxAttendance": 5,
+      "konsti:minAttendance": 2
     },
     "scheduleItems": [
       {
+        "slug": "the-beast-of-angmar-",
         "title": "The Beast of Angmar",
         "startTime": "2024-09-07T13:00:00+00:00",
         "endTime": "2024-09-07T18:00:00+00:00",
@@ -970,10 +1038,12 @@
     "cachedAnnotations": {
       "konsti:rpgSystem": "Good Society - a Jane Austen rpg",
       "ropecon:gameSlogan": "Drama, Dancing, Daydreams",
-      "konsti:maxAttendance": 5
+      "konsti:maxAttendance": 5,
+      "konsti:minAttendance": 3
     },
     "scheduleItems": [
       {
+        "slug": "toiveet-ja-salaisuudet-dreams-and-secrets-",
         "title": "Toiveet ja salaisuudet - Dreams and Secrets",
         "startTime": "2024-09-07T08:30:00+00:00",
         "endTime": "2024-09-07T13:30:00+00:00",
@@ -1000,10 +1070,12 @@
     "cachedAnnotations": {
       "konsti:rpgSystem": "Tokyo Noir",
       "ropecon:gameSlogan": "D6 film noir",
-      "konsti:maxAttendance": 4
+      "konsti:maxAttendance": 4,
+      "konsti:minAttendance": 2
     },
     "scheduleItems": [
       {
+        "slug": "tokyo-noir-murhamysteeri-shinjukussa-",
         "title": "Tokyo Noir: Sikarinkatkuista",
         "startTime": "2024-09-07T13:30:00+00:00",
         "endTime": "2024-09-07T17:30:00+00:00",
@@ -1030,10 +1102,12 @@
     "cachedAnnotations": {
       "konsti:rpgSystem": "Blades in the Dark hack",
       "ropecon:gameSlogan": "Kevyt steampunk-murhamysteeri",
-      "konsti:maxAttendance": 4
+      "konsti:maxAttendance": 4,
+      "konsti:minAttendance": 2
     },
     "scheduleItems": [
       {
+        "slug": "tyhjyyden-meren-hirviot-",
         "title": "Tyhjyyden meren hirviöt",
         "startTime": "2024-09-07T13:30:00+00:00",
         "endTime": "2024-09-07T17:30:00+00:00",
@@ -1064,6 +1138,7 @@
     },
     "scheduleItems": [
       {
+        "slug": "v-",
         "title": "Valon Terhon Etsijät - peluutus 1.",
         "startTime": "2024-09-06T17:30:00+00:00",
         "endTime": "2024-09-06T20:00:00+00:00",
@@ -1094,6 +1169,7 @@
     },
     "scheduleItems": [
       {
+        "slug": "valon-terhon-etsijat-",
         "title": "Valon Terhon Etsijät - peluutus 2.",
         "startTime": "2024-09-07T09:30:00+00:00",
         "endTime": "2024-09-07T12:00:00+00:00",
@@ -1120,10 +1196,12 @@
     "cachedAnnotations": {
       "konsti:rpgSystem": "Thirsty Sword Lesbians",
       "ropecon:gameSlogan": "Ystävyys on taikaa",
-      "konsti:maxAttendance": 5
+      "konsti:maxAttendance": 5,
+      "konsti:minAttendance": 3
     },
     "scheduleItems": [
       {
+        "slug": "varjojen-sisarkunta-",
         "title": "Varjojen sisarkunta",
         "startTime": "2024-09-08T08:30:00+00:00",
         "endTime": "2024-09-08T13:00:00+00:00",
@@ -1150,10 +1228,12 @@
     "cachedAnnotations": {
       "konsti:rpgSystem": "Dungeons & Dragons 5e",
       "ropecon:gameSlogan": "fantasia, rento, aloittelijaystävällinen",
-      "konsti:maxAttendance": 5
+      "konsti:maxAttendance": 5,
+      "konsti:minAttendance": 3
     },
     "scheduleItems": [
       {
+        "slug": "velho-eevertin-omenapiirakka-",
         "title": "Velho Eevertin omenapiirakka",
         "startTime": "2024-09-08T08:00:00+00:00",
         "endTime": "2024-09-08T12:00:00+00:00",
@@ -1180,10 +1260,12 @@
     "cachedAnnotations": {
       "konsti:rpgSystem": "MÖRK BORG",
       "ropecon:gameSlogan": "Grim, lightweight, apocalyptic horror",
-      "konsti:maxAttendance": 6
+      "konsti:maxAttendance": 6,
+      "konsti:minAttendance": 2
     },
     "scheduleItems": [
       {
+        "slug": "viimeinen-liekki-the-flame-endling-",
         "title": "Viimeinen Liekki - The Flame Endling",
         "startTime": "2024-09-06T14:00:00+00:00",
         "endTime": "2024-09-06T18:00:00+00:00",
