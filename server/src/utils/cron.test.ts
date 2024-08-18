@@ -40,7 +40,8 @@ beforeAll(() => {
 beforeEach(async () => {
   vi.spyOn(config, "event").mockReturnValue({
     ...config.event(),
-    conventionName: ConventionName.ROPECON,
+    conventionName: ConventionName.TRACON,
+    conventionYear: "2024",
   });
   vi.spyOn(config, "server").mockReturnValue({
     ...config.server(),
