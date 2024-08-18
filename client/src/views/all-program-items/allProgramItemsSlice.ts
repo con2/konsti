@@ -49,10 +49,15 @@ export const selectProgramItems = (state: RootState): readonly ProgramItem[] =>
 export const selectTags = createSelector(
   [selectProgramItems],
   (programItems) => {
-    const ignoredTags = [Tag.GUEST_OF_HONOR, Tag.THEME_MONSTERS];
+    const ignoredTags = [
+      Tag.GUEST_OF_HONOR,
+      Tag.THEME_MONSTERS,
+      Tag.INTENDED_FOR_EXPERIENCED_PARTICIPANTS,
+    ];
 
     const tags = uniq([
       Tag.BEGINNER_FRIENDLY,
+      Tag.CHILDREN_FRIENDLY,
       Tag.ALL_AGES,
       Tag.AIMED_UNDER_13,
       Tag.AIMED_BETWEEN_13_17,
