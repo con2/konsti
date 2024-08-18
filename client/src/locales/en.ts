@@ -130,7 +130,7 @@ export const translationEN = {
     aimedAtChildrenBetween13to17: "Aimed at children between 13-17",
     aimedAtAdultAttendees: "Aimed at adult attendees",
     for18PlusOnly: "For 18+ only",
-    forExperiencedParticipants: "Experience with game system recommended",
+    forExperiencedParticipants: "Experience with game system",
     allAges: "All ages",
     themeMonsters: "Theme: Monsters",
   },
