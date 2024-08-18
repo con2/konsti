@@ -4,6 +4,7 @@ import { En } from "./components/En";
 import { Ropecon } from "./components/Ropecon";
 import { Hitpoint } from "./components/Hitpoint";
 import { Solmukohta } from "./components/Solmukohta";
+import { Tracon } from "./components/Tracon";
 import { LoginKompassi } from "./components/LoginKompassi";
 import { LoginLocal } from "./components/LoginLocal";
 import { SignupLottery } from "./components/SignupLottery";
@@ -12,6 +13,7 @@ import { FinnishTimezone } from "./components/FinnishTimezone";
 import { CurrentTime } from "./components/CurrentTime";
 import { FinnishTime } from "./components/FinnishTime";
 import { Expand } from "./components/Expand";
+import { Hide } from "./components/Hide";
 
 <Fi>
 ## Osallistujille
@@ -21,6 +23,7 @@ import { Expand } from "./components/Expand";
 ## For participants
 </En>
 
+<Hide>
 <Expand>
 <Fi>
 ### Mistä saan apua Konstin käyttöön?
@@ -58,14 +61,15 @@ Our volunteers at the Programme Desk will gladly assist you and help you sign up
 </Solmukohta>
 </En>
 </Expand>
+</Hide>
 
 <Expand>
 <Fi>
-### Kuinka aloitan Konstin käytön? Mistä saan rekisteröintikoodin?
+### Kuinka aloitan Konstin käytön? <LoginLocal>Mistä saan rekisteröintikoodin?</LoginLocal>
 </Fi>
 
 <En>
-### How to start using Konsti? Where can I get a registration code?
+### How to start using Konsti? <LoginLocal>Where can I get a registration code?</LoginLocal>
 </En>
 
 <Fi>
@@ -79,7 +83,7 @@ Lisäksi joudut keksimään itsellesi käyttäjätunnuksen ja salasanan. Tunnuks
 </LoginLocal>
 
 <LoginKompassi>
-Konstiin kirjaudutaan Kompassi-tunnuksella. Voit rekisteröidä Kompassi-tunnuksen Konstiin kirjautumisen yhteydessä <Link to={"/registration"}>Luo käyttäjätili -näkymässä</Link> tai jo ennen tapahtumaa Kompassin <Link to={"https://kompassi.eu/register"}>rekisteröintisivulla</Link>.
+Konstiin kirjaudutaan Kompassi-tunnuksella. Voit rekisteröidä Kompassi-tunnuksen Konstiin kirjautumisen yhteydessä <Link to={"/registration"}>kirjautumissivulla</Link> tai jo ennen tapahtumaa Kompassin <Link to={"https://kompassi.eu/register"}>rekisteröintisivulla</Link>.
 
 Kompassi-kirjautumisen jälkeen voit valita itsellesi Konsti-käyttäjätunnuksen. Tämän jälkeen voit kirjautua sisään ja ilmoittautua ohjelmanumeroihin. Voit käyttää Konstia millä vain haluamallasi laitteella kirjautumalla sisään.
 
@@ -88,7 +92,7 @@ Kompassi-kirjautumisen jälkeen voit valita itsellesi Konsti-käyttäjätunnukse
 
 <En>
 <LoginLocal>
-To begin using the Konsti app, you need to first register an account, which you can do on the <Link to={"/registration"}>registration page</Link>.
+To begin using the Konsti app, you need to first register an account, which you can do on the <Link to={"/registration"}>login page</Link>.
 
 To register an account you need a registration code. Registration codes can be picked up at either the Gaming Desk (Hall 3), at the Larp & RPG Desk or at the Info desk (both in the Southern Entrance lobby). This means that you cannot create a new account before arriving to the event.
 
@@ -186,6 +190,7 @@ If you lost your password before signing up for any program items, you can just 
 </Ropecon>
 </Expand>
 
+<Hide>
 <Expand>
 <Fi>
 ### Minulla ei ole mobiililaitetta, kuinka käytän Konstia tapahtuman aikana?
@@ -223,6 +228,7 @@ There are shared computers on the Programme Desk that you can use Konsti with. J
 </Solmukohta>
 </En>
 </Expand>
+</Hide>
 
 <Expand>
 <Fi>
@@ -243,6 +249,9 @@ Olethan tarkistanut, mikä tägi on valittuna, koska valinta voi rajoittaa näky
 <Solmukohta>
 Olethan tarkistanut, mikä tägi on valittuna, koska valinta voi rajoittaa näkyvillä olevia ohjelmanumeroita.
 </Solmukohta>
+<Tracon>
+Olethan tarkistanut, mikä tägi on valittuna, koska valinta voi rajoittaa näkyvillä olevia ohjelmanumeroita.
+</Tracon>
 </Fi>
 
 <En>
@@ -255,6 +264,9 @@ Have you checked which tag is selected, as they can filter the list of program i
 <Solmukohta>
 Have you checked which tag is selected, as they can filter the list of program items that are visible.
 </Solmukohta>
+<Tracon>
+Have you checked which tag is selected, as they can filter the list of program items that are visible.
+</Tracon>
 </En>
 
 <Fi>
@@ -276,60 +288,6 @@ If you still cannot find the program item you are looking for, it is possible th
 </Hitpoint>
 </En>
 </Expand>
-
-<SignupLottery>
-<Expand>
-<Fi>
-### Miksi en voi ilmoittautua haluamaani ohjelmanumeroon, vaikka se on Konstissa?
-</Fi>
-
-<En>
-### Why can I not sign up for a program item even though it's visible in Konsti?
-</En>
-
-<Fi>
-**Vaihtoehto 1:** Olet jo ilmoittautunut kolmeen saman tunnin aikana alkavan roolipelin arvontaan. Arvontavaiheessa jokaiselle tunnille voi valita enintään kolme suosikkipeliä toivejärjestyksessä 1-3.
-</Fi>
-
-<En>
-**Option 1:** You have already signed up for three role-playing games in the same starting time slot during the lottery sign-up phase. In the lottery sign-up phase, the user can choose up to three games and assign them in the order of preference from 1 to 3.
-</En>
-
-<Fi>
-**Vaihtoehto 2:** On menossa roolipelien ilmoittautumisvaiheiden välinen 15 min "väliaika". 2 tuntia ennen pelin alkua algoritmi sijoittaa pelaajat peleihin toivejärjestyksen mukaisesti. Tämän ensimmäisen vaiheen sijoitusten jälkeen on 15 minuutin väliaika, jonka aikana peleihin ei voi liittyä. Tässä tapauksessa kannattaa odottaa hetki, jotta pääsee ilmoittautumaan suoralla ilmoittautumisella jäljellä oleviin tyhjiin paikkoihin. Väliaika antaa käyttäjille aikaa tarkistaa, ovatko he päässeet arvonnassa peliin.
-</Fi>
-
-<En>
-**Option 2:** It happens to be the "intermission period": when signing up for role-playing games, there is a 15 min "intermission period" between the first lottery sign-up phase and the second direct sign-up phase when signing up for games is not possible at all. If it is 2 hours before the role-playing game is set to start and the lottery sign-up phase has just concluded, it is possible that the intermission period is currently active. If this is the case, just wait a moment as the sign-up process will resume after 15 minutes. Intermission gives users time to check if they have been selected for the game in the lottery."
-</En>
-
-<Fi>
-**Vaihtoehto 3:** Olet ryhmän jäsen ja ryhmän perustaja on ilmoittanut sinut mukaan pelipaikan arvontaan osana ryhmää, joten et voi enää ilmoittautua yksin muiden pelien arvontaan. Jos puolestaan olet ryhmän jäsen ja yrität ilmoittautua mukaan peliin suoralla ilmoittautumisella, sinut poistetaan ryhmästä. Jos olet ryhmän perustaja ja yrität ilmoittautua peliin suoralla ilmoittautumisella, ryhmä suljetaan.
-</Fi>
-
-<En>
-**Option 3:** "You are a member of a group, and the group creator has entered you into the game lottery as part of the group, so you can no longer enter other game lotteries individually. If you are a group member and try to enter a game via direct signup, you will be removed from the group. If you are the group creator and try to enter a game via direct signup, the group will be closed."
-</En>
-</Expand>
-
-<Expand>
-<Fi>
-### Miksi en pysty liittymään ryhmään/luomaan ryhmää?
-</Fi>
-
-<En>
-### Why can I not create or join a group?
-</En>
-
-<Fi>
-Jos sinulla on jo suoria ilmoittautumisia roolipeleihin, et voi luoda uutta ryhmää tai liittyä ryhmään. <Link to={"/profile/group"}>Ryhmä -näkymässä</Link> listataan ne pelit, jotka estävät ryhmän perustamisen tai ryhmään liittymisen.
-</Fi>
-
-<En>
-You cannot create a new group or join a group if you have already directly signed up for role-playing games. You can check which games are preventing you from creating or joining a group in the <Link to={"/profile/group"}>Group view</Link>.
-</En>
-</Expand>
-</SignupLottery>
 
 <Expand>
 <Fi>
@@ -360,26 +318,6 @@ Additionally, since signing up for a program item in one programme type does not
 </Ropecon>
 </En>
 </Expand>
-
-<SignupLottery>
-<Expand>
-<Fi>
-### Miksi en päässytkään pöytäroolipeliin, johon ilmoittauduin?
-</Fi>
-
-<En>
-### Why wasn't I signed up for the role-playing game I tried to sign up for?
-</En>
-
-<Fi>
-Roolipelien kohdalla käytössä on kaksivaiheinen ilmoittautumistapa, jossa ensin ilmoittaudutaan mukaan arvontaan. Tämä ei siis vielä takaa paikkaa valittuun peliin, vaan tarkoittaa, että olet mukana algoritmin suorittamassa paikkojen jaossa. Kun tämä alustava paikkajako on ohi, voi etenkin suosituimpien pelien kohdalla käydä niin, että kaikki eivät pääse mukaan haluamiinsa peleihin. Arvonnan jälkeen on kuitenkin vielä mahdollisuus päästä mukaan johonkin toiseen peliin suoran ilmoittautumisen kautta.
-</Fi>
-
-<En>
-For role-playing games, there is a two-step sign-up process where initially you enter a lottery. This does not guarantee a spot in the chosen game; rather, it means you are included in the algorithm-driven distribution of spots. After this preliminary distribution, especially for the most popular games, not everyone may be able to participate in their desired games. However, after the lottery, there is still a chance to join another game through direct registration.
-</En>
-</Expand>
-</SignupLottery>
 
 <Expand>
 <Fi>
@@ -470,6 +408,7 @@ If the program item uses a lottery signup, the list of participants will appear 
 </En>
 </Expand>
 
+<Hide>
 <Expand>
 <Fi>
 ### Mitä teen, jos ohjelmanumeroni ajankohta muuttuu tai sen kuvausta pitää päivittää?
@@ -479,6 +418,7 @@ If the program item uses a lottery signup, the list of participants will appear 
 ### What should I do if the time of my program item changes or the description needs to be updated?
 </En>
 
+<Ropecon>
 <Fi>
 Vapaaehtoiset Pelitiskillä tai Larp- ja Roolipelitiskillä auttavat ohjelmanumeron tietojen päivittämisessä.
 
@@ -492,17 +432,39 @@ Volunteers at the Gaming Desk or the Larp & RPG Desk will assist in updating pro
 Previous direct signups for the program items will remain unchanged. If a lottery signup is ongoing for the program item, any previously submitted lottery signups will be canceled.
 
 </En>
-</Expand>
+</Ropecon>
 
-<Expand>
+<Tracon>
 <Fi>
-### Mitä teen, jos kaikki osallistujat eivät tule paikalle?
+Vapaaehtoisemme Roolipelitiskillä auttavat ohjelmanumeron tietojen päivittämisessä.
 </Fi>
 
 <En>
-### What should I do if all participants do not show up?
+Volunteers at the RPG Desk will assist in updating program information.
+</En>
+</Tracon>
+
+<Fi>
+Jos ajankohta muuttuu, aikaisemmat suorat ilmoittautumiset ohjelmanumeroon säilyvät ennallaan. Jos ohjelmanumeroon on käynnissä arvontaan ilmoittautuminen, jo tehdyt arvontailmoittautumiset perutaan.
+</Fi>
+
+<En>
+Previous direct signups for the program items will remain unchanged. If a lottery signup is ongoing for the program item, any previously submitted lottery signups will be canceled.
+</En>
+</Expand>
+</Hide>
+
+<Hide>
+<Expand>
+<Fi>
+### Mitä teen, jos kaikki ilmoittautuneet eivät tule paikalle?
+</Fi>
+
+<En>
+### What should I do if all signed up participants don't show up?
 </En>
 
+<Ropecon>
 <Fi>
 Aluksi on hyvä odottaa hetki, jos osallistuvat ovat myöhässä. Jos osallistujat eivät kuitenkaan tule paikalle, voit pyytää Pelitiskin tai Larp- ja Roolipelitiskin vapaaehtoisia auttamaan lisäosallistujien etsimisessä. Voit myös itse täyttää puuttuvat paikat haluamallasi tavalla. Voit myös järjestää ohjelmanumeron paikalle saapuneella osallistujamäärällä.
 </Fi>
@@ -511,8 +473,23 @@ Aluksi on hyvä odottaa hetki, jos osallistuvat ovat myöhässä. Jos osallistuj
 Initially, it is good to wait for a moment in case participants are running late. If the participants still do not show up, you can ask the volunteers at the Gaming Desk or the Larp & RPG Desk to help find additional participants. You can also fill the missing spots yourself as you see fit. You can also proceed with the program item with the number of participants who have arrived.
 
 </En>
-</Expand>
+</Ropecon>
 
+<Tracon>
+<Fi>
+Aluksi on hyvä odottaa hetki, jos osallistuvat ovat myöhässä. Jos osallistujat eivät kuitenkaan tule paikalle, voit pyytää Pelitiskin tai Larp- ja Roolipelitiskin vapaaehtoisia auttamaan lisäosallistujien etsimisessä. Voit myös itse täyttää puuttuvat paikat haluamallasi tavalla. Voit myös järjestää ohjelmanumeron paikalle saapuneella osallistujamäärällä.
+</Fi>
+
+<En>
+Initially, it is good to wait for a moment in case participants are running late. If the participants still do not show up, you can ask the volunteers at the Gaming Desk or the Larp & RPG Desk to help find additional participants. You can also fill the missing spots yourself as you see fit. You can also proceed with the program item with the number of participants who have arrived.
+
+</En>
+</Tracon>
+
+</Expand>
+</Hide>
+
+<Ropecon>
 <Expand>
 <Fi>
 ### Mikä on lisätietokysymys?
@@ -544,3 +521,4 @@ There are two types of additional information questions: **public and private**.
 
 </En>
 </Expand>
+</Ropecon>

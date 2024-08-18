@@ -6,8 +6,8 @@ interface Props {
   children: ReactNode;
 }
 
-export const Solmukohta = ({ children }: Props): ReactNode => {
-  return config.event().conventionName === ConventionName.SOLMUKOHTA
+export const Tracon = ({ children }: Props): ReactNode => {
+  return config.event().conventionName === ConventionName.TRACON
     ? children
     : null;
 };
