@@ -130,8 +130,7 @@ export const translationFI = {
     aimedAtChildrenBetween13to17: "Suunnattu 13–17-vuotiaille",
     aimedAtAdultAttendees: "Suunnattu täysi-ikäisille",
     for18PlusOnly: "Vain täysi-ikäisille",
-    forExperiencedParticipants:
-      "Suositellaan aikaisempaa kokemusta pelijärjestelmästä",
+    forExperiencedParticipants: "Kokemusta pelijärjestelmästä",
     allAges: "Kaikenikäisille",
     themeMonsters: "Teema: Hirviöt",
   },
@@ -417,7 +416,7 @@ export const translationFI = {
     experiencePoint: "Pelin",
     other: "Ohjelmanumeron",
     roundtableDiscussion: "Keskustelupiirin",
-    fleaMarket: "kirpputoriajan",
+    fleaMarket: "Kirpputoriajan",
   },
   programTypeElative: {
     all: "ohjelmanumerosta",
