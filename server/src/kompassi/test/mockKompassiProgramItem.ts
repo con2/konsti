@@ -36,6 +36,7 @@ export const mockKompassiProgramItem: KompassiProgramItem = {
   },
   scheduleItems: [
     {
+      slug: testProgramItem.programItemId,
       title: testProgramItem.title,
       startTime: testProgramItem.startTime,
       endTime: testProgramItem.endTime,
@@ -81,6 +82,7 @@ export const mockKompassiProgramItem2: KompassiProgramItem = {
   },
   scheduleItems: [
     {
+      slug: testProgramItem2.programItemId,
       title: testProgramItem2.title,
       startTime: testProgramItem2.startTime,
       endTime: testProgramItem2.endTime,

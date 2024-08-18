@@ -21,23 +21,13 @@ import { config } from "shared/config";
 import { getShortDescriptionFromDescription } from "server/utils/getShortDescriptionFromDescription";
 import { KompassiKonstiProgramType } from "server/kompassi/kompassiProgramItem";
 
-const getProgramItemId = (
-  programItem: KompassiProgramItem,
-  index: number,
-): string => {
-  if (index === 0) {
-    return programItem.slug;
-  }
-  return `${programItem.slug}-${index}`;
-};
-
 export const kompassiProgramItemMapper = (
   programItems: readonly KompassiProgramItem[],
 ): readonly ProgramItem[] => {
   return programItems.flatMap((programItem) => {
-    return programItem.scheduleItems.map((scheduleItems, index) => {
+    return programItem.scheduleItems.map((scheduleItems) => {
       return {
-        programItemId: getProgramItemId(programItem, index),
+        programItemId: scheduleItems.slug,
         title: scheduleItems.title,
         description: programItem.description,
         location: scheduleItems.location,

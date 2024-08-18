@@ -87,10 +87,11 @@ export const createProgramItems = async (
     startTimes.forEach((startTime) => {
       for (let i = 0; i < programItemCount; i += 1) {
         const length = 180;
+        const slug = faker.number.int(PROGRAM_ITEM_ID_MAX).toString();
         const title = faker.word.words(3);
 
         const kompassiProgramItemData: KompassiProgramItem = {
-          slug: faker.number.int(PROGRAM_ITEM_ID_MAX).toString(),
+          slug,
           title,
           description: faker.lorem.sentences(5),
           cachedHosts: faker.internet.userName(),
@@ -107,6 +108,7 @@ export const createProgramItems = async (
           },
           scheduleItems: [
             {
+              slug,
               title,
               startTime: dayjs(startTime).toISOString(),
               endTime: dayjs(startTime).add(length, "minutes").toISOString(),
