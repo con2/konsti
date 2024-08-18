@@ -151,6 +151,7 @@ export const getProgramFromServer = async (): Promise<
                       cachedDimensions
                       cachedAnnotations
                       scheduleItems {
+                          slug
                           title
                           startTime
                           endTime
