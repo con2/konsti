@@ -53,6 +53,8 @@ export const Dropdown = ({
 };
 
 const StyledSelect = styled.select`
+  width: 100%;
+  text-overflow: ellipsis;
   border: 1px solid ${(props) => props.theme.borderInactive};
   font-size: ${(props) => props.theme.fontSizeNormal};
   padding: 6px;

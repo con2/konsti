@@ -130,7 +130,7 @@ export const translationFI = {
     aimedAtChildrenBetween13to17: "Suunnattu 13–17-vuotiaille",
     aimedAtAdultAttendees: "Suunnattu täysi-ikäisille",
     for18PlusOnly: "Vain täysi-ikäisille",
-    forExperiencedParticipants: "Aikaisempaa kokemusta pelijärjestelmästä",
+    forExperiencedParticipants: "Kokemusta pelijärjestelmästä",
     allAges: "Kaikenikäisille",
     themeMonsters: "Teema: Hirviöt",
   },
