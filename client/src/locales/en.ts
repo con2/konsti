@@ -559,6 +559,9 @@ export const translationEN = {
     nickVisibleHintText: "Your username will be visible to other Konsti users.",
     alreadyHaveAccountLogin: "Do you already have an account? Log in here.",
   },
+  admissionView: {
+    noAdmission: "You have not signed up for this program item.",
+  },
   iconAltText: {
     resetInput: "Reset input",
     openAccordion: "Open accordion menu",

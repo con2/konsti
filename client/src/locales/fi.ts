@@ -563,6 +563,9 @@ export const translationFI = {
       "Valitsemasi käyttäjänimi näkyy muille Konstin käyttäjille.",
     alreadyHaveAccountLogin: "Onko sinulla jo tili? Kirjaudu sisään tästä.",
   },
+  admissionView: {
+    noAdmission: "Et ole ilmoittautunut tähän ohjelmanumeroon.",
+  },
   iconAltText: {
     resetInput: "Tyhjennä syöte",
     openAccordion: "Avaa haitarivalikko",

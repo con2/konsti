@@ -124,6 +124,7 @@ export const theme = {
   fontSizeSmall: "14px",
   fontSizeNormal: "16px",
   fontSizeLarge: "20px",
+  fontSizeLarger: "24px",
   linkFontSize: "18px",
   mainHeaderFontSize: "24px",
 
@@ -131,6 +132,7 @@ export const theme = {
   iconSizeSmall: "16px",
   iconSizeNormal: "20px",
   iconSizeLarge: "24px",
+  iconSizeLarger: "32px",
 
   // Program item popularity icon colors
   popularityLow: "rgb(64, 106, 188)", // blue.primary with less saturation

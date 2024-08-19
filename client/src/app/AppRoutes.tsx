@@ -25,7 +25,7 @@ import { LoginProvider } from "shared/config/eventConfigTypes";
 import { KompassiLoginUsernameForm } from "client/views/login/components/KompassiLoginUsernameForm";
 import { KompassiLogoutCallback } from "client/components/KompassiLogoutCallback";
 import { AuthEndpoint } from "shared/constants/apiEndpoints";
-import {AdmissionTicketView} from "client/views/admission-ticket/AdmissionTicketView";
+import { AdmissionTicketView } from "client/views/admission-ticket/AdmissionTicketView";
 
 export enum AppRoute {
   PROGRAM = "/program",

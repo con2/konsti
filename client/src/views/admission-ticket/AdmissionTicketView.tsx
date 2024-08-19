@@ -1,10 +1,10 @@
-import {ReactElement, useEffect, useState} from "react";
-import {BackButton} from "client/components/BackButton";
-import {useParams} from "react-router-dom";
-import {useAppSelector} from "client/utils/hooks";
-import {useTranslation} from "react-i18next";
-import {Admission} from "client/views/admission-ticket/Admission";
-import {selectDirectSignups} from "client/views/my-program-items/myProgramItemsSlice";
+import { ReactElement, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { BackButton } from "client/components/BackButton";
+import { useAppSelector } from "client/utils/hooks";
+import { Admission } from "client/views/admission-ticket/Admission";
+import { selectDirectSignups } from "client/views/my-program-items/myProgramItemsSlice";
 
 export const AdmissionTicketView = (): ReactElement => {
   const { t } = useTranslation();
@@ -23,7 +23,10 @@ export const AdmissionTicketView = (): ReactElement => {
 
   const directSignups = useAppSelector(selectDirectSignups);
 
-  const isSignedUp = directSignups.findIndex(ds => ds.programItem.programItemId === programItemId) > 0
+  const isSignedUp =
+    directSignups.findIndex(
+      (ds) => ds.programItem.programItemId === programItemId,
+    ) > 0;
 
   useEffect(() => {
     setLoading(false);
@@ -35,9 +38,9 @@ export const AdmissionTicketView = (): ReactElement => {
       {!loading && !foundProgramItem && (
         <p>{t("invalidProgramItemId", { PROGRAM_ITEM_ID: programItemId })}</p>
       )}
-      {!loading && foundProgramItem &&
-      <Admission programItem={foundProgramItem} isSignedUp={isSignedUp}/>}
+      {!loading && foundProgramItem && (
+        <Admission programItem={foundProgramItem} isSignedUp={isSignedUp} />
+      )}
     </div>
-  )
-
-}
+  );
+};
