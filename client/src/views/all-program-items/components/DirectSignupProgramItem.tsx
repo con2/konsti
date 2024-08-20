@@ -1,7 +1,7 @@
 import { ReactElement, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { ProgramItem } from "shared/types/models/programItem";
 import { DirectSignupForm } from "./DirectSignupForm";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
@@ -163,6 +163,13 @@ export const DirectSignupProgramItem = ({
             <>
               {!cancelSignupFormOpen && (
                 <ButtonContainer>
+                  <NavLink
+                    to={`/program/item/${programItem.programItemId}/admission`}
+                  >
+                    <StyledButton buttonStyle={ButtonStyle.PRIMARY}>
+                      {t("button.showAdmissionTicket")}
+                    </StyledButton>
+                  </NavLink>
                   <StyledButton
                     onClick={() => setCancelSignupFormOpen(true)}
                     buttonStyle={ButtonStyle.SECONDARY}
@@ -207,7 +214,12 @@ const BoldText = styled.span`
 const ButtonContainer = styled.div`
   margin: 8px 0;
   display: flex;
+  gap: 8px;
   justify-content: center;
+
+  @media (max-width: ${(props) => props.theme.breakpointDesktop}) {
+    flex-direction: column;
+  }
 `;
 
 const StyledButton = styled(Button)`

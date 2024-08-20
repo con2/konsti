@@ -10,6 +10,7 @@ export const translationFI = {
     assignAttendees: "Sijoita ilmoittautuneet",
     signup: "Tallenna",
     cancelSignup: "Peru ilmoittautuminen",
+    showAdmissionTicket: "Näytä pääsylippu",
     back: "Takaisin",
     favorite: "Lisää suosikkeihin",
     hideProgramItem: "Piilota ohjelmanumero",

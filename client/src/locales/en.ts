@@ -10,6 +10,7 @@ export const translationEN = {
     assignAttendees: "Assign attendees",
     signup: "Save",
     cancelSignup: "Cancel sign-up",
+    showAdmissionTicket: "Show admission ticket",
     back: "Back",
     favorite: "Favorite",
     hideProgramItem: "Hide program item",
