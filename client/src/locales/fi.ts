@@ -565,6 +565,7 @@ export const translationFI = {
   },
   admissionView: {
     noAdmission: "Et ole ilmoittautunut tähän ohjelmanumeroon.",
+    admission: "Olet ilmoittautunut nimimerkillä ",
   },
   iconAltText: {
     resetInput: "Tyhjennä syöte",

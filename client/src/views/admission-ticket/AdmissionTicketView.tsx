@@ -24,9 +24,11 @@ export const AdmissionTicketView = (): ReactElement => {
   const directSignups = useAppSelector(selectDirectSignups);
 
   const isSignedUp =
-    directSignups.findIndex(
+    !!directSignups.find(
       (ds) => ds.programItem.programItemId === programItemId,
-    ) > 0;
+    );
+
+  const username = useAppSelector((state) => state.login.username);
 
   useEffect(() => {
     setLoading(false);
@@ -39,7 +41,11 @@ export const AdmissionTicketView = (): ReactElement => {
         <p>{t("invalidProgramItemId", { PROGRAM_ITEM_ID: programItemId })}</p>
       )}
       {!loading && foundProgramItem && (
-        <Admission programItem={foundProgramItem} isSignedUp={isSignedUp} />
+        <Admission
+          programItem={foundProgramItem}
+          isSignedUp={isSignedUp}
+          username={username}
+        />
       )}
     </div>
   );

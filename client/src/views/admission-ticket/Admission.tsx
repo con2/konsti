@@ -1,19 +1,24 @@
-import {ReactElement} from "react";
-import {ProgramItem} from "shared/types/models/programItem";
+import { ReactElement } from "react";
 import styled from "styled-components";
-import {config} from "shared/config";
-import {useTranslation} from "react-i18next";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {getTime, getWeekdayAndTime} from "client/utils/timeFormatter";
-import {capitalize} from "lodash-es";
-import {RaisedCard} from "client/components/RaisedCard";
+import { useTranslation } from "react-i18next";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { capitalize } from "lodash-es";
+import { getTime, getWeekdayAndTime } from "client/utils/timeFormatter";
+import { config } from "shared/config";
+import { ProgramItem } from "shared/types/models/programItem";
+import { RaisedCard } from "client/components/RaisedCard";
 
 interface Props {
   programItem: ProgramItem;
   isSignedUp: boolean;
+  username: string;
 }
 
-export const Admission = ({ programItem, isSignedUp }: Props): ReactElement => {
+export const Admission = ({
+  programItem,
+  isSignedUp,
+  username,
+}: Props): ReactElement => {
   const { t } = useTranslation();
   const { conventionName, conventionYear } = config.event();
 
@@ -31,12 +36,18 @@ export const Admission = ({ programItem, isSignedUp }: Props): ReactElement => {
             CONVENTION_YEAR: conventionYear,
           })}
         </Text>
-        <BoldText>{programItem?.title}</BoldText>
+        <BoldText>{programItem.title}</BoldText>
         <Text>{formatTime()}</Text>
 
-        {isSignedUp &&
-          <AdmissionIcon icon="ticket" />}
-
+        {isSignedUp && (
+          <>
+            <AdmissionIcon icon="circle-check" />
+            <Text>
+              {t("admissionView.admission")}
+              {username}.
+            </Text>
+          </>
+        )}
         {!isSignedUp && (
           <>
             <NoAdmissionIcon icon="ban" />
@@ -48,21 +59,24 @@ export const Admission = ({ programItem, isSignedUp }: Props): ReactElement => {
   );
 };
 
+const textSize = "28px";
+
 const TextContainer = styled.div`
   text-align: center;
 `;
 
 const BoldText = styled.p`
-  font-size: ${(props) => props.theme.fontSizeLarger};
+  font-size: ${textSize};
   font-weight: 600;
+  margin-bottom: -16px;
 `;
 
 const Text = styled.p`
-  font-size: ${(props) => props.theme.fontSizeLarger};
+  font-size: ${textSize};
 `;
 
 const StyledIcon = styled(FontAwesomeIcon)`
-  font-size: ${(props) => props.theme.iconSizeLarger};
+  font-size: 48px;
 `;
 
 const AdmissionIcon = styled(StyledIcon)`

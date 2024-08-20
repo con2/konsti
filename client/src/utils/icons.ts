@@ -29,7 +29,7 @@ import {
   faUserPlus as fasUserPlus,
   faTriangleExclamation as fasTriangleExclamation,
   faCircleExclamation as fasCircleExclamation,
-  faTicket as fasTicket,
+  faCircleCheck as fasCircleCheck,
   faBan as fasBan,
 } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -70,7 +70,7 @@ export const getIconLibrary = (): void => {
     fasUserPlus,
     fasTriangleExclamation,
     fasCircleExclamation,
-    fasTicket,
+    fasCircleCheck,
     fasBan,
   );
 };

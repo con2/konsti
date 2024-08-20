@@ -561,6 +561,7 @@ export const translationEN = {
   },
   admissionView: {
     noAdmission: "You have not signed up for this program item.",
+    admission: "You have signed up as user ",
   },
   iconAltText: {
     resetInput: "Reset input",
