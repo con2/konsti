@@ -1,4 +1,5 @@
 import { ReactElement } from "react";
+import styled from "styled-components";
 import { ProgramItem } from "shared/types/models/programItem";
 import { DirectSignupProgramItem } from "client/views/all-program-items/components/DirectSignupProgramItem";
 import { LotterySignupProgramItem } from "client/views/all-program-items/components/LotterySignupProgramItem";
@@ -8,6 +9,8 @@ import { isRevolvingDoorWorkshop } from "client/utils/isRevolvingDoorWorkshop";
 import { Signup } from "shared/types/models/user";
 import { SignupHelpText } from "client/views/all-program-items/components/SignupHelpText";
 import { getTimeNow } from "client/utils/getTimeNow";
+import { isAlreadyDirectySigned } from "client/views/all-program-items/components/allProgramItemsUtils";
+import { AdmissionTicketLink } from "client/views/all-program-items/components/AdmissionTicketLink";
 
 interface Props {
   signupStrategy: SignupStrategy;
@@ -49,6 +52,8 @@ export const SignupInfo = ({
 
   const isSignupOver = getTimeNow().isAfter(programItem.startTime);
 
+  const hasSignedUp = isAlreadyDirectySigned(programItem, directSignups);
+
   return (
     <div>
       <SignupHelpText
@@ -77,6 +82,17 @@ export const SignupInfo = ({
             setLoading={setLoading}
           />
         ))}
+
+      {isSignupOver && hasSignedUp && (
+        <LinkContainer>
+          <AdmissionTicketLink programItemId={programItem.programItemId} />
+        </LinkContainer>
+      )}
     </div>
   );
 };
+
+const LinkContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`;

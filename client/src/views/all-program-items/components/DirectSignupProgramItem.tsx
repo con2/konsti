@@ -1,7 +1,7 @@
 import { ReactElement, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ProgramItem } from "shared/types/models/programItem";
 import { DirectSignupForm } from "./DirectSignupForm";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
@@ -19,6 +19,7 @@ import { getTimeNow } from "client/utils/getTimeNow";
 import { getDirectSignupStartTime } from "shared/utils/signupTimes";
 import { config } from "shared/config";
 import { InfoText } from "client/components/InfoText";
+import { AdmissionTicketLink } from "client/views/all-program-items/components/AdmissionTicketLink";
 
 interface Props {
   programItem: ProgramItem;
@@ -163,13 +164,9 @@ export const DirectSignupProgramItem = ({
             <>
               {!cancelSignupFormOpen && (
                 <ButtonContainer>
-                  <NavLink
-                    to={`/program/item/${programItem.programItemId}/admission`}
-                  >
-                    <StyledButton buttonStyle={ButtonStyle.PRIMARY}>
-                      {t("button.showAdmissionTicket")}
-                    </StyledButton>
-                  </NavLink>
+                  <AdmissionTicketLink
+                    programItemId={programItem.programItemId}
+                  />
                   <StyledButton
                     onClick={() => setCancelSignupFormOpen(true)}
                     buttonStyle={ButtonStyle.SECONDARY}

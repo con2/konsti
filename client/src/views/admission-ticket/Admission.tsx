@@ -31,10 +31,7 @@ export const Admission = ({
     <RaisedCard>
       <TextContainer>
         <Text>
-          {t("appDescription", {
-            CONVENTION_NAME: conventionName,
-            CONVENTION_YEAR: conventionYear,
-          })}
+          {conventionName} {conventionYear}
         </Text>
         <BoldText>{programItem.title}</BoldText>
         <Text>{formatTime()}</Text>
