@@ -19,6 +19,7 @@ import { getTimeNow } from "client/utils/getTimeNow";
 import { getDirectSignupStartTime } from "shared/utils/signupTimes";
 import { config } from "shared/config";
 import { InfoText } from "client/components/InfoText";
+import { AdmissionTicketLink } from "client/views/all-program-items/components/AdmissionTicketLink";
 
 interface Props {
   programItem: ProgramItem;
@@ -163,6 +164,9 @@ export const DirectSignupProgramItem = ({
             <>
               {!cancelSignupFormOpen && (
                 <ButtonContainer>
+                  <AdmissionTicketLink
+                    programItemId={programItem.programItemId}
+                  />
                   <StyledButton
                     onClick={() => setCancelSignupFormOpen(true)}
                     buttonStyle={ButtonStyle.SECONDARY}
@@ -207,7 +211,12 @@ const BoldText = styled.span`
 const ButtonContainer = styled.div`
   margin: 8px 0;
   display: flex;
+  gap: 8px;
   justify-content: center;
+
+  @media (max-width: ${(props) => props.theme.breakpointDesktop}) {
+    flex-direction: column;
+  }
 `;
 
 const StyledButton = styled(Button)`
