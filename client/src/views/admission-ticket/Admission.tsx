@@ -1,12 +1,14 @@
-import { ReactElement } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { capitalize } from "lodash-es";
+import dayjs from "dayjs";
 import { getTime, getWeekdayAndTime } from "client/utils/timeFormatter";
 import { config } from "shared/config";
 import { ProgramItem } from "shared/types/models/programItem";
 import { RaisedCard } from "client/components/RaisedCard";
+import { TIMEZONE } from "shared/utils/initializeDayjs";
 
 interface Props {
   programItem: ProgramItem;
@@ -27,12 +29,28 @@ export const Admission = ({
     return `${capitalize(getWeekdayAndTime(programItem.startTime))}–${getTime(programItem.endTime)}`;
   };
 
+  const [currentTime, setCurrentTime] = useState(new Date());
+
+  useEffect(() => {
+    setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
+  }, []);
+
+  const formattedCurrentTime = (): string => {
+    const timeFormat = "HH:mm:ss";
+    // eslint-disable-next-line no-restricted-syntax -- We want to call format here
+    return dayjs(currentTime).tz(TIMEZONE).format(timeFormat);
+  };
+
   return (
     <RaisedCard>
       <TextContainer>
         <Text>
           {conventionName} {conventionYear}
         </Text>
+        <TimeText>{formattedCurrentTime()}</TimeText>
+
         <BoldText>{programItem.title}</BoldText>
         <Text>{formatTime()}</Text>
 
@@ -70,6 +88,12 @@ const BoldText = styled.p`
 
 const Text = styled.p`
   font-size: ${textSize};
+`;
+
+const TimeText = styled.p`
+  font-size: ${textSize};
+  margin-top: -16px;
+  color: ${(props) => props.theme.textSecondary};
 `;
 
 const StyledIcon = styled(FontAwesomeIcon)`

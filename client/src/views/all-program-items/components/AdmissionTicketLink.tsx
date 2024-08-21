@@ -11,16 +11,23 @@ export const AdmissionTicketLink = ({ programItemId }: Props): ReactElement => {
   const { t } = useTranslation();
 
   return (
-    <NavLink to={`/program/item/${programItemId}/admission`}>
+    <StyledLink to={`/program/item/${programItemId}/admission`}>
       <StyledButton buttonStyle={ButtonStyle.PRIMARY}>
         {t("button.showAdmissionTicket")}
       </StyledButton>
-    </NavLink>
+    </StyledLink>
   );
 };
 
 const StyledButton = styled(Button)`
   min-width: 400px;
+  @media (max-width: ${(props) => props.theme.breakpointDesktop}) {
+    width: 100%;
+    min-width: 0;
+  }
+`;
+
+const StyledLink = styled(NavLink)`
   @media (max-width: ${(props) => props.theme.breakpointDesktop}) {
     width: 100%;
     min-width: 0;
