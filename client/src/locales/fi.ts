@@ -10,6 +10,7 @@ export const translationFI = {
     assignAttendees: "Sijoita ilmoittautuneet",
     signup: "Tallenna",
     cancelSignup: "Peru ilmoittautuminen",
+    showAdmissionTicket: "Näytä pääsylippu",
     back: "Takaisin",
     favorite: "Lisää suosikkeihin",
     hideProgramItem: "Piilota ohjelmanumero",
@@ -561,6 +562,10 @@ export const translationFI = {
     nickVisibleHintText:
       "Valitsemasi käyttäjänimi näkyy muille Konstin käyttäjille.",
     alreadyHaveAccountLogin: "Onko sinulla jo tili? Kirjaudu sisään tästä.",
+  },
+  admissionView: {
+    noAdmission: "Et ole ilmoittautunut tähän ohjelmanumeroon.",
+    admission: "Olet ilmoittautunut nimimerkillä ",
   },
   iconAltText: {
     resetInput: "Tyhjennä syöte",

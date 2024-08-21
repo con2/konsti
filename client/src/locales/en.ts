@@ -10,6 +10,7 @@ export const translationEN = {
     assignAttendees: "Assign attendees",
     signup: "Save",
     cancelSignup: "Cancel sign-up",
+    showAdmissionTicket: "Show admission ticket",
     back: "Back",
     favorite: "Favorite",
     hideProgramItem: "Hide program item",
@@ -558,6 +559,10 @@ export const translationEN = {
   registrationView: {
     nickVisibleHintText: "Your username will be visible to other Konsti users.",
     alreadyHaveAccountLogin: "Do you already have an account? Log in here.",
+  },
+  admissionView: {
+    noAdmission: "You have not signed up for this program item.",
+    admission: "You have signed up as user ",
   },
   iconAltText: {
     resetInput: "Reset input",
