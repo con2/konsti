@@ -1,11 +1,11 @@
+import { first } from "lodash-es";
 import { logger } from "server/utils/logger";
 import {
-  KompassiProgramItemHitpoint,
-  KompassiProgramItemSchemaHitpoint,
-  KompassiProgramTypeHitpoint,
-} from "server/kompassi/hitpoint/kompassiProgramItemHitpoint";
+  KompassiProgramItem,
+  KompassiProgramItemSchema,
+  KompassiKonstiProgramType,
+} from "server/kompassi/kompassiProgramItem";
 import { config } from "shared/config";
-import { KompassiProgramItem } from "server/kompassi/kompassiProgramItem";
 import {
   checkUnknownKeys,
   parseProgramItem,
@@ -14,15 +14,12 @@ import {
 export const getProgramItemsFromFullProgramHitpoint = (
   programItems: unknown[],
 ): KompassiProgramItem[] => {
-  checkUnknownKeys(programItems, KompassiProgramItemSchemaHitpoint);
+  checkUnknownKeys(programItems, KompassiProgramItemSchema);
 
   const kompassiProgramItems = programItems.flatMap((programItem) => {
-    const result = parseProgramItem(
-      programItem,
-      KompassiProgramItemSchemaHitpoint,
-    );
+    const result = parseProgramItem(programItem, KompassiProgramItemSchema);
     return result ?? [];
-  }) as KompassiProgramItemHitpoint[];
+  });
 
   logger.info(`Found ${kompassiProgramItems.length} valid program items`);
 
@@ -32,12 +29,14 @@ export const getProgramItemsFromFullProgramHitpoint = (
       return programItem;
     }
 
-    // Take program items with valid program type
-    if (
-      !Object.values(KompassiProgramTypeHitpoint).includes(
-        programItem.category_title,
-      )
-    ) {
+    // Take program items with Konsti dimension and valid program type
+    const programType = first(programItem.cachedDimensions.konsti);
+
+    const validProgramType =
+      programType &&
+      Object.values(KompassiKonstiProgramType).includes(programType);
+
+    if (!validProgramType) {
       return [];
     }
 

@@ -1,29 +1,25 @@
+import { first } from "lodash-es";
 import {
   checkUnknownKeys,
   parseProgramItem,
 } from "server/kompassi/getProgramItemsFromKompassi";
 import { logger } from "server/utils/logger";
 import { config } from "shared/config";
-import { KompassiProgramItem } from "server/kompassi/kompassiProgramItem";
 import {
-  KompassiProgramItemSchemaSolmukohta,
-  KompassiProgramItemSolmukohta,
-  KompassiProgramTypeSolmukohta,
-  KompassiTagSolmukohta,
-} from "server/kompassi/solmukohta/kompassiProgramItemSolmukohta";
+  KompassiProgramItemSchema,
+  KompassiProgramItem,
+  KompassiKonstiProgramType,
+} from "server/kompassi/kompassiProgramItem";
 
 export const getProgramItemsFromFullProgramSolmukohta = (
   programItems: unknown[],
 ): KompassiProgramItem[] => {
-  checkUnknownKeys(programItems, KompassiProgramItemSchemaSolmukohta);
+  checkUnknownKeys(programItems, KompassiProgramItemSchema);
 
   const kompassiProgramItems = programItems.flatMap((programItem) => {
-    const result = parseProgramItem(
-      programItem,
-      KompassiProgramItemSchemaSolmukohta,
-    );
+    const result = parseProgramItem(programItem, KompassiProgramItemSchema);
     return result ?? [];
-  }) as KompassiProgramItemSolmukohta[];
+  });
 
   logger.info(`Found ${kompassiProgramItems.length} valid program items`);
 
@@ -33,19 +29,23 @@ export const getProgramItemsFromFullProgramSolmukohta = (
       return programItem;
     }
 
-    // Take program items with valid program type
-    if (
-      !Object.values(KompassiProgramTypeSolmukohta).includes(
-        programItem.category_title,
-      )
-    ) {
+    // Take program items with Konsti dimension and valid program type
+    const programType = first(programItem.cachedDimensions.konsti);
+
+    const validProgramType =
+      programType &&
+      Object.values(KompassiKonstiProgramType).includes(programType);
+
+    if (!validProgramType) {
       return [];
     }
 
+    /*
     // Take program items with tag "sk-advance-signup"
-    if (!programItem.tags.includes(KompassiTagSolmukohta.ADVANCE_SIGNUP)) {
+    if (!programItem.tags.includes(KompassiTag.ADVANCE_SIGNUP)) {
       return [];
     }
+      */
 
     return programItem;
   });

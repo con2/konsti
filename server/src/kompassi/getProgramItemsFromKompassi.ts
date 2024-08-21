@@ -5,6 +5,7 @@ import { z, ZodError } from "zod";
 import { uniq } from "lodash-es";
 import { KompassiError } from "shared/types/api/errors";
 import {
+  KompassiKonstiProgramType,
   KompassiProgramItem,
   KompassiProgramItemSchema,
 } from "server/kompassi/kompassiProgramItem";
@@ -66,7 +67,7 @@ const getProgramItemId = (programItem: unknown): unknown => {
 
 export const parseProgramItem = (
   programItem: unknown,
-  schema: KompassiProgramItemSchema,
+  schema: typeof KompassiProgramItemSchema,
 ): KompassiProgramItem | undefined => {
   const result = schema.safeParse(programItem);
 
@@ -134,13 +135,15 @@ export const getProgramFromServer = async (): Promise<
 > => {
   logger.info("GET event program from remote server");
 
+  const { conventionName, conventionYear } = config.event();
+
   const url = "https://kompassi.eu/graphql";
   const body = {
     query: `
-      query ProgramListQuery($event: String!) {
+      query ProgramListQuery($event: String!, $programTypes: [String!]! ) {
           event(slug: $event) {
               program {
-                  programs(hidePast: false) {
+                  programs(hidePast: false, filters: [{ dimension: "konsti", values: $programTypes }]) {
                       slug
                       title
                       description
@@ -148,6 +151,8 @@ export const getProgramFromServer = async (): Promise<
                       cachedDimensions
                       cachedAnnotations
                       scheduleItems {
+                          slug
+                          title
                           startTime
                           endTime
                           lengthMinutes
@@ -159,7 +164,8 @@ export const getProgramFromServer = async (): Promise<
       }
     `,
     variables: {
-      event: "ropecon2024",
+      event: `${conventionName.toLocaleLowerCase()}${conventionYear}`,
+      programTypes: Object.values(KompassiKonstiProgramType),
     },
   };
   const headers = { "Content-Type": "application/json" };
@@ -185,7 +191,7 @@ export const getProgramFromServer = async (): Promise<
 // TODO: Only checks top level object keys, not nested object keys
 export const checkUnknownKeys = (
   programItems: unknown[],
-  schema: KompassiProgramItemSchema,
+  schema: typeof KompassiProgramItemSchema,
 ): void => {
   const unknownKeys: string[] = programItems.flatMap((programItem) => {
     if (!programItem || typeof programItem !== "object") {

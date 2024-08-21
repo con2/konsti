@@ -6,26 +6,22 @@ import {
 } from "server/kompassi/getProgramItemsFromKompassi";
 import { logger } from "server/utils/logger";
 import { config } from "shared/config";
-import { KompassiProgramItem } from "server/kompassi/kompassiProgramItem";
 import {
-  KompassiProgramItemSchemaTracon,
-  KompassiKonstiProgramTypeTracon,
-  KompassiProgramItemTracon,
-} from "server/kompassi/tracon/kompassiProgramItemTracon";
+  KompassiKonstiProgramType,
+  KompassiProgramItem,
+  KompassiProgramItemSchema,
+} from "server/kompassi/kompassiProgramItem";
 import { TIMEZONE } from "shared/utils/initializeDayjs";
 
 export const getProgramItemsFromFullProgramTracon = (
   programItems: unknown[],
 ): KompassiProgramItem[] => {
-  checkUnknownKeys(programItems, KompassiProgramItemSchemaTracon);
+  checkUnknownKeys(programItems, KompassiProgramItemSchema);
 
   const kompassiProgramItems = programItems.flatMap((programItem) => {
-    const result = parseProgramItem(
-      programItem,
-      KompassiProgramItemSchemaTracon,
-    );
+    const result = parseProgramItem(programItem, KompassiProgramItemSchema);
     return result ?? [];
-  }) as KompassiProgramItemTracon[];
+  });
 
   logger.info(`Found ${kompassiProgramItems.length} valid program items`);
 
@@ -36,7 +32,7 @@ export const getProgramItemsFromFullProgramTracon = (
         ...programItem,
         cachedDimensions: {
           ...programItem.cachedDimensions,
-          konsti: [KompassiKonstiProgramTypeTracon.OTHER],
+          konsti: [KompassiKonstiProgramType.OTHER],
         },
       };
     }
@@ -46,7 +42,7 @@ export const getProgramItemsFromFullProgramTracon = (
 
     const validProgramType =
       programType &&
-      Object.values(KompassiKonstiProgramTypeTracon).includes(programType);
+      Object.values(KompassiKonstiProgramType).includes(programType);
 
     if (!validProgramType) {
       return [];
@@ -56,7 +52,7 @@ export const getProgramItemsFromFullProgramTracon = (
       const startTime = programItem.scheduleItems[0].startTime;
       const startMinute = dayjs(startTime).minute();
       if (
-        programType === KompassiKonstiProgramTypeTracon.TABLETOP_RPG &&
+        programType === KompassiKonstiProgramType.TABLETOP_RPG &&
         startMinute !== 0
       ) {
         logger.error(

@@ -2,20 +2,20 @@ import { faker } from "@faker-js/faker";
 import dayjs from "dayjs";
 import { sampleSize } from "lodash-es";
 import { logger } from "server/utils/logger";
-import { kompassiProgramItemMapperRopecon } from "server/kompassi/ropecon/kompassiProgramItemMapperRopecon";
+import { kompassiProgramItemMapper } from "server/kompassi/kompassiProgramItemMapper";
 import { saveProgramItems } from "server/features/program-item/programItemRepository";
 import { config } from "shared/config";
 import {
-  KompassiProgramItemRopecon,
-  KompassiPlaystyleRopecon,
-  KompassiLanguageRopecon,
-  KompassiKonstiProgramTypeRopecon,
-  KompassiAudienceRopecon,
-  KompassiAccessibilityRopecon,
-  KompassiTopicRopecon,
-} from "server/kompassi/ropecon/kompassiProgramItemRopecon";
+  KompassiProgramItem,
+  KompassiPlaystyle,
+  KompassiLanguage,
+  KompassiAudience,
+  KompassiAccessibility,
+  KompassiTopic,
+} from "server/kompassi/kompassiProgramItem";
 import { Result } from "shared/utils/result";
 import { MongoDbError } from "shared/types/api/errors";
+import { KompassiKonstiProgramType } from "server/kompassi/kompassiProgramItem";
 
 const PROGRAM_ITEM_ID_MAX = 10000000;
 
@@ -29,43 +29,39 @@ const startTimes = [
   dayjs(config.event().conventionStartTime).add(2, "days").toISOString(),
 ];
 
-const getMinAttendees = (
-  programType: KompassiKonstiProgramTypeRopecon,
-): number => {
-  if (programType === KompassiKonstiProgramTypeRopecon.TOURNAMENT) {
+const getMinAttendees = (programType: KompassiKonstiProgramType): number => {
+  if (programType === KompassiKonstiProgramType.TOURNAMENT) {
     return faker.number.int({ min: 6, max: 10 });
   }
 
-  if (programType === KompassiKonstiProgramTypeRopecon.WORKSHOP) {
+  if (programType === KompassiKonstiProgramType.WORKSHOP) {
     return 0;
   }
 
   return faker.number.int({ min: 2, max: 3 });
 };
 
-const getMaxAttendees = (
-  programType: KompassiKonstiProgramTypeRopecon,
-): number => {
-  if (programType === KompassiKonstiProgramTypeRopecon.TOURNAMENT) {
+const getMaxAttendees = (programType: KompassiKonstiProgramType): number => {
+  if (programType === KompassiKonstiProgramType.TOURNAMENT) {
     return faker.number.int({ min: 12, max: 20 });
   }
 
-  if (programType === KompassiKonstiProgramTypeRopecon.WORKSHOP) {
+  if (programType === KompassiKonstiProgramType.WORKSHOP) {
     return faker.number.int({ min: 12, max: 20 });
   }
 
   return faker.number.int({ min: 3, max: 4 });
 };
 
-const getTopics = (): KompassiTopicRopecon[] => {
-  const topics: KompassiTopicRopecon[] = [];
+const getTopics = (): KompassiTopic[] => {
+  const topics: KompassiTopic[] = [];
 
   if (Math.random() < 0.1) {
-    topics.push(KompassiTopicRopecon.GOH);
+    topics.push(KompassiTopic.GOH);
   }
 
   if (Math.random() < 0.1) {
-    topics.push(KompassiTopicRopecon.THEME);
+    topics.push(KompassiTopic.THEME);
   }
 
   return topics;
@@ -74,13 +70,13 @@ const getTopics = (): KompassiTopicRopecon[] => {
 export const createProgramItems = async (
   programItemCount: number,
 ): Promise<Result<void, MongoDbError>> => {
-  const kompassiProgramItems: KompassiProgramItemRopecon[] = [];
+  const kompassiProgramItems: KompassiProgramItem[] = [];
 
   const programTypes = [
-    KompassiKonstiProgramTypeRopecon.TABLETOP_RPG,
-    KompassiKonstiProgramTypeRopecon.LARP,
-    KompassiKonstiProgramTypeRopecon.TOURNAMENT,
-    KompassiKonstiProgramTypeRopecon.WORKSHOP,
+    KompassiKonstiProgramType.TABLETOP_RPG,
+    KompassiKonstiProgramType.LARP,
+    KompassiKonstiProgramType.TOURNAMENT,
+    KompassiKonstiProgramType.WORKSHOP,
   ];
 
   programTypes.map((programType) => {
@@ -91,10 +87,12 @@ export const createProgramItems = async (
     startTimes.forEach((startTime) => {
       for (let i = 0; i < programItemCount; i += 1) {
         const length = 180;
+        const slug = faker.number.int(PROGRAM_ITEM_ID_MAX).toString();
+        const title = faker.word.words(3);
 
-        const kompassiProgramItemData: KompassiProgramItemRopecon = {
-          slug: faker.number.int(PROGRAM_ITEM_ID_MAX).toString(),
-          title: faker.word.words(3),
+        const kompassiProgramItemData: KompassiProgramItem = {
+          slug,
+          title,
           description: faker.lorem.sentences(5),
           cachedHosts: faker.internet.userName(),
           cachedDimensions: {
@@ -103,16 +101,15 @@ export const createProgramItems = async (
             type: [""],
             topic: getTopics(),
             konsti: [programType],
-            audience: sampleSize(Object.values(KompassiAudienceRopecon), 3),
-            language: sampleSize(Object.values(KompassiLanguageRopecon), 1),
-            accessibility: sampleSize(
-              Object.values(KompassiAccessibilityRopecon),
-              3,
-            ),
-            playstyle: sampleSize(Object.values(KompassiPlaystyleRopecon), 2),
+            audience: sampleSize(Object.values(KompassiAudience), 3),
+            language: sampleSize(Object.values(KompassiLanguage), 1),
+            accessibility: sampleSize(Object.values(KompassiAccessibility), 3),
+            playstyle: sampleSize(Object.values(KompassiPlaystyle), 2),
           },
           scheduleItems: [
             {
+              slug,
+              title,
               startTime: dayjs(startTime).toISOString(),
               endTime: dayjs(startTime).add(length, "minutes").toISOString(),
               lengthMinutes: length,
@@ -121,7 +118,7 @@ export const createProgramItems = async (
           ],
           cachedAnnotations: {
             "konsti:rpgSystem":
-              programType === KompassiKonstiProgramTypeRopecon.TABLETOP_RPG
+              programType === KompassiKonstiProgramType.TABLETOP_RPG
                 ? "Test gamesystem"
                 : "",
             "ropecon:otherAuthor": "Other author",
@@ -129,9 +126,7 @@ export const createProgramItems = async (
             "konsti:maxAttendance": getMaxAttendees(programType),
             "ropecon:numCharacters": 6,
             "konsti:workshopFee":
-              programType === KompassiKonstiProgramTypeRopecon.WORKSHOP
-                ? "5€"
-                : "",
+              programType === KompassiKonstiProgramType.WORKSHOP ? "5€" : "",
             "ropecon:contentWarnings": "Content warning",
             "ropecon:accessibilityOther": "Other accessibility information",
             "ropecon:gameSlogan": faker.lorem.sentence(),
@@ -146,6 +141,6 @@ export const createProgramItems = async (
   });
 
   return await saveProgramItems(
-    kompassiProgramItemMapperRopecon(kompassiProgramItems),
+    kompassiProgramItemMapper(kompassiProgramItems),
   );
 };

@@ -131,7 +131,7 @@ export const translationEN = {
     aimedAtChildrenBetween13to17: "Aimed at children between 13-17",
     aimedAtAdultAttendees: "Aimed at adult attendees",
     for18PlusOnly: "For 18+ only",
-    forExperiencedParticipants: "Experience with game system recommended",
+    forExperiencedParticipants: "Experience with game system",
     allAges: "All ages",
     themeMonsters: "Theme: Monsters",
   },
@@ -382,7 +382,7 @@ export const translationEN = {
     experiencePoint: "Experience Point",
     other: "Other program",
     roundtableDiscussion: "Roundtable discussion",
-    fleaMarket: "Flea market time",
+    fleaMarket: "Flea market",
   },
   programTypeSingular: {
     all: "program item",
@@ -437,7 +437,7 @@ export const translationEN = {
     experiencePoint: "games",
     other: "program items",
     roundtableDiscussion: "roundtable discussions",
-    fleaMarket: "flea market time",
+    fleaMarket: "flea market times",
   },
   programTypeInessive: {
     all: "program item",

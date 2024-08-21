@@ -77,7 +77,7 @@ export const ProgramItemEntry = ({
     : isLotterySignedForCurrentProgramItem;
 
   const tags = [];
-  if (config.client().activeProgramTypes.length > 1) {
+  if (config.client().programTypeSelectOptions.length > 1) {
     tags.push(t(`programType.${programItem.programType}`));
   }
   if (programItem.gameSystem) {

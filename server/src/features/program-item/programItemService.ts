@@ -21,6 +21,7 @@ import { KompassiError } from "shared/types/api/errors";
 import { ProgramItem } from "shared/types/models/programItem";
 import { getProgramItemsFromKompassi } from "server/kompassi/getProgramItemsFromKompassi";
 import { kompassiProgramItemMapper } from "server/kompassi/kompassiProgramItemMapper";
+import { UserGroup } from "shared/types/models/user";
 
 export const getProgramItemsForConvention = async (): Promise<
   Result<readonly ProgramItem[], KompassiError>
@@ -33,9 +34,7 @@ export const getProgramItemsForConvention = async (): Promise<
   }
 
   const kompassiProgramItems = unwrapResult(kompassiProgramItemsResult);
-  return makeSuccessResult(
-    kompassiProgramItemMapper(conventionName, kompassiProgramItems),
-  );
+  return makeSuccessResult(kompassiProgramItemMapper(kompassiProgramItems));
 };
 
 export const updateProgramItems = async (): Promise<
@@ -91,9 +90,9 @@ export const updateProgramItems = async (): Promise<
   };
 };
 
-export const fetchProgramItems = async (): Promise<
-  GetProgramItemsResponse | GetProgramItemsError
-> => {
+export const fetchProgramItems = async (
+  userGroup: UserGroup | null,
+): Promise<GetProgramItemsResponse | GetProgramItemsError> => {
   const programItemsResult = await findProgramItems();
   if (isErrorResult(programItemsResult)) {
     return {
@@ -105,8 +104,10 @@ export const fetchProgramItems = async (): Promise<
 
   const programItems = unwrapResult(programItemsResult);
 
-  const programItemsWithAttendeesResult =
-    await enrichProgramItems(programItems);
+  const programItemsWithAttendeesResult = await enrichProgramItems(
+    programItems,
+    userGroup,
+  );
   if (isErrorResult(programItemsWithAttendeesResult)) {
     return {
       message: `Downloading program items failed`,

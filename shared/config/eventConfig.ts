@@ -24,19 +24,16 @@ export const eventConfig: EventConfig = {
   resultsVisible: true,
   logInvalidStartTimes: false,
 
-  programTypes: [
-    ProgramType.TABLETOP_RPG,
-    ProgramType.LARP,
-    ProgramType.FLEAMARKET,
-  ],
-
   twoPhaseSignupProgramTypes: [ProgramType.FLEAMARKET],
 
-  conventionStartTime: `${friday}T12:00:00Z`, // Fri 15:00 GMT+3
+  // Convention start at 15:00 GMT+3 but lottery signups start at 08:00 GMT+3
+  conventionStartTime: `${friday}T05:00:00Z`, // Fri 08:00 GMT+3
 
   directSignupWindows: {},
 
   rollingSignupStartProgramTypes: [ProgramType.TABLETOP_RPG, ProgramType.LARP],
+
+  hideParticipantListProgramTypes: [ProgramType.FLEAMARKET],
 
   // These program items have their signup always open even if signup mode is set to algorithm
   directSignupAlwaysOpenIds: [],

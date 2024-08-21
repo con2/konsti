@@ -13,23 +13,21 @@ export interface ClientConfig {
   enableOrganizerFeedback: boolean;
   enableTagDropdown: boolean;
   showAnnouncement: boolean;
-  activeProgramTypes: ActiveProgramType[];
+  programTypeSelectOptions: ActiveProgramType[];
   activeLanguages: Language[];
 }
 
 export const clientConfig: ClientConfig = {
   // Convention settings
-  enableRevolvingDoor: true,
+  enableRevolvingDoor: false,
   enableOrganizerFeedback: true,
   enableTagDropdown: true,
   showAnnouncement: false,
-  activeProgramTypes: [
+  programTypeSelectOptions: [
     "all",
     ProgramType.TABLETOP_RPG,
     ProgramType.LARP,
-    ProgramType.TOURNAMENT,
-    ProgramType.WORKSHOP,
-    ProgramType.OTHER,
+    ProgramType.FLEAMARKET,
   ],
   activeLanguages: [Language.FINNISH, Language.ENGLISH],
 
