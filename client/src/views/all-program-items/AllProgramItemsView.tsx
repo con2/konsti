@@ -1,6 +1,7 @@
 import { ReactElement, useEffect, useMemo, useState } from "react";
 import { useStore } from "react-redux";
 import { useDebounce } from "use-debounce";
+import { useSearchParams } from "react-router-dom";
 import { AllProgramItemsList } from "client/views/all-program-items/components/AllProgramItemsList";
 import { getUpcomingProgramItems } from "client/utils/getUpcomingProgramItems";
 import { loadProgramItems } from "client/utils/loadData";
@@ -11,8 +12,11 @@ import {
   ProgramType,
   Tag,
 } from "shared/types/models/programItem";
-import { useAppSelector } from "client/utils/hooks";
-import { selectActiveProgramItems } from "client/views/admin/adminSlice";
+import { useAppDispatch, useAppSelector } from "client/utils/hooks";
+import {
+  selectActiveProgramItems,
+  setActiveProgramType,
+} from "client/views/admin/adminSlice";
 import {
   SessionStorageValue,
   getSavedSearchTerm,
@@ -23,10 +27,16 @@ import {
   SearchAndFilterCard,
   StartingTimeOption,
 } from "client/views/all-program-items/components/SearchAndFilterCard";
+import { config } from "shared/config";
 
 export const MULTIPLE_WHITESPACES_REGEX = /\s\s+/g;
+const programTypeQueryParam = "programType";
 
 export const AllProgramItemsView = (): ReactElement => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const programTypeQueryParamValue = searchParams.get(programTypeQueryParam);
+  const dispatch = useAppDispatch();
+
   const activeProgramItems = useAppSelector(selectActiveProgramItems);
   const hiddenProgramItems = useAppSelector(
     (state) => state.admin.hiddenProgramItems,
@@ -103,6 +113,26 @@ export const AllProgramItemsView = (): ReactElement => {
 
     setFilteredProgramItems(programItemsFilteredBySearchTerm);
   }, [debouncedSearchTerm, activeVisibleProgramItems]);
+
+  const programTypePairs = config
+    .client()
+    .programTypeSelectOptions.map((type) => ({
+      lowerCase: type.toLocaleLowerCase(),
+      originalValue: type,
+    }));
+
+  useEffect(() => {
+    if (!programTypeQueryParamValue) {
+      return;
+    }
+    const programTypePair = programTypePairs.find(
+      (key) => key.lowerCase === programTypeQueryParamValue,
+    );
+    if (programTypePair) {
+      dispatch(setActiveProgramType(programTypePair.originalValue));
+    }
+    setSearchParams("");
+  }, [programTypePairs, dispatch, programTypeQueryParamValue, setSearchParams]);
 
   const memoizedProgramItems = useMemo(() => {
     return (

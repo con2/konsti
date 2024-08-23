@@ -3,7 +3,7 @@ import { uniq } from "lodash-es";
 import { AdminState, RootState } from "client/types/reduxTypes";
 import { SettingsPayload } from "shared/types/api/settings";
 import { LoginProvider, SignupStrategy } from "shared/config/eventConfigTypes";
-import { ProgramItem, ProgramType } from "shared/types/models/programItem";
+import { ProgramItem } from "shared/types/models/programItem";
 import { SignupQuestion } from "shared/types/models/settings";
 import { SignupMessage } from "shared/types/models/signupMessage";
 import { loadSession } from "client/utils/localStorage";
@@ -95,7 +95,7 @@ const adminSlice = createSlice({
       };
     },
 
-    setActiveProgramType(state, action: PayloadAction<ProgramType>) {
+    setActiveProgramType(state, action: PayloadAction<ActiveProgramType>) {
       return { ...state, activeProgramType: action.payload };
     },
 
