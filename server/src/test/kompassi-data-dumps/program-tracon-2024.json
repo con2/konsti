@@ -11,7 +11,7 @@
       "signup": ["konsti"],
       "audience": ["unrestricted", "beginner-friendly"],
       "category": ["roolipeliohjelma"],
-      "language": [],
+      "language": ["fi"],
       "accessibility": []
     },
     "cachedAnnotations": {
@@ -22,7 +22,7 @@
     },
     "scheduleItems": [
       {
-        "slug": "alavilla-mailla-",
+        "slug": "alavilla-mailla",
         "title": "Alavilla mailla",
         "startTime": "2024-09-06T13:30:00+00:00",
         "endTime": "2024-09-06T17:30:00+00:00",
@@ -43,7 +43,7 @@
       "signup": ["konsti"],
       "audience": ["r18"],
       "category": ["roolipeliohjelma"],
-      "language": ["en"],
+      "language": ["fi", "en"],
       "accessibility": []
     },
     "cachedAnnotations": {
@@ -54,7 +54,7 @@
     },
     "scheduleItems": [
       {
-        "slug": "alien-evac-",
+        "slug": "alien-evac",
         "title": "ALIEN: EVAC",
         "startTime": "2024-09-06T18:00:00+00:00",
         "endTime": "2024-09-06T20:00:00+00:00",
@@ -75,7 +75,7 @@
       "signup": ["konsti"],
       "audience": ["r18"],
       "category": ["roolipeliohjelma"],
-      "language": ["en"],
+      "language": ["fi", "en"],
       "accessibility": []
     },
     "cachedAnnotations": {
@@ -86,7 +86,7 @@
     },
     "scheduleItems": [
       {
-        "slug": "alien-fallout-",
+        "slug": "alien-fallout",
         "title": "ALIEN: Fallout",
         "startTime": "2024-09-06T13:30:00+00:00",
         "endTime": "2024-09-06T15:30:00+00:00",
@@ -107,7 +107,7 @@
       "signup": ["konsti"],
       "audience": ["unrestricted", "beginner-friendly"],
       "category": ["roolipeliohjelma"],
-      "language": [],
+      "language": ["fi"],
       "accessibility": []
     },
     "cachedAnnotations": {
@@ -118,7 +118,7 @@
     },
     "scheduleItems": [
       {
-        "slug": "apua-metsanpeittoon-",
+        "slug": "apua-metsanpeittoon",
         "title": "Apua Metsänpeittoon - RootRPG",
         "startTime": "2024-09-07T08:00:00+00:00",
         "endTime": "2024-09-07T12:00:00+00:00",
@@ -139,13 +139,13 @@
       "signup": ["konsti"],
       "audience": ["unrestricted"],
       "category": ["roolipeliohjelma"],
-      "language": [],
+      "language": ["fi"],
       "accessibility": []
     },
     "cachedAnnotations": {},
     "scheduleItems": [
       {
-        "slug": "arsenic-lies-",
+        "slug": "arsenic-lies",
         "title": "Arsenic & Lies",
         "startTime": "2024-09-07T11:00:00+00:00",
         "endTime": "2024-09-07T13:45:00+00:00",
@@ -166,7 +166,7 @@
       "signup": ["konsti"],
       "audience": ["unrestricted", "beginner-friendly"],
       "category": ["roolipeliohjelma"],
-      "language": ["en"],
+      "language": ["fi", "en"],
       "accessibility": []
     },
     "cachedAnnotations": {
@@ -176,7 +176,7 @@
     },
     "scheduleItems": [
       {
-        "slug": "circumstances-zombie-apocalypse-co-op-",
+        "slug": "circumstances-zombie-apocalypse-co-op",
         "title": "Circumstances – Zombie Apocalypse (co-op)",
         "startTime": "2024-09-08T07:30:00+00:00",
         "endTime": "2024-09-08T10:00:00+00:00",
@@ -197,7 +197,7 @@
       "signup": ["konsti"],
       "audience": ["unrestricted", "beginner-friendly"],
       "category": ["roolipeliohjelma"],
-      "language": ["en"],
+      "language": ["fi", "en"],
       "accessibility": []
     },
     "cachedAnnotations": {
@@ -207,7 +207,7 @@
     },
     "scheduleItems": [
       {
-        "slug": "circumstances-zombie-apocalypse-pahispelautus-",
+        "slug": "circumstances-zombie-apocalypse-pahispelautus",
         "title": "Circumstances – Zombie Apocalypse (pahispelautus)",
         "startTime": "2024-09-08T10:30:00+00:00",
         "endTime": "2024-09-08T13:00:00+00:00",
@@ -228,7 +228,7 @@
       "signup": ["konsti"],
       "audience": ["unrestricted", "beginner-friendly"],
       "category": ["roolipeliohjelma"],
-      "language": ["en"],
+      "language": ["fi", "en"],
       "accessibility": []
     },
     "cachedAnnotations": {
@@ -239,7 +239,7 @@
     },
     "scheduleItems": [
       {
-        "slug": "ja-rohan-vastaa-kutsuun-",
+        "slug": "ja-rohan-vastaa-kutsuun",
         "title": "Ja Rohan vastaa kutsuun",
         "startTime": "2024-09-07T08:30:00+00:00",
         "endTime": "2024-09-07T13:00:00+00:00",
@@ -260,7 +260,7 @@
       "signup": ["konsti"],
       "audience": ["unrestricted"],
       "category": ["muu-ohjelma"],
-      "language": [],
+      "language": ["fi"],
       "accessibility": []
     },
     "cachedAnnotations": { "konsti:maxAttendance": 130 },
@@ -343,14 +343,22 @@
       "signup": ["konsti"],
       "audience": ["unrestricted"],
       "category": ["muu-ohjelma"],
-      "language": [],
+      "language": ["fi"],
       "accessibility": []
     },
     "cachedAnnotations": { "konsti:maxAttendance": 130 },
     "scheduleItems": [
       {
-        "slug": "kirpputorin-ajanvaraus-perjantai-1500",
-        "title": "Kirpputorin ajanvaraus PERJANTAI – Saapuminen kello 15:00–15:30",
+        "slug": "kirpputorin-ajanvaraus-perjantai-2030",
+        "title": "Kirpputorin ajanvaraus PERJANTAI – Saapuminen kello 20:30–21:00",
+        "startTime": "2024-09-06T12:00:00+00:00",
+        "endTime": "2024-09-06T18:30:00+00:00",
+        "lengthMinutes": 390,
+        "location": "Sopraano"
+      },
+      {
+        "slug": "kirpputorin-ajanvaraus-perjantai-2100",
+        "title": "Kirpputorin ajanvaraus PERJANTAI – Saapuminen kello 21:00–21:30",
         "startTime": "2024-09-06T12:00:00+00:00",
         "endTime": "2024-09-06T18:30:00+00:00",
         "lengthMinutes": 390,
@@ -429,24 +437,16 @@
         "location": "Sopraano"
       },
       {
+        "slug": "kirpputorin-ajanvaraus-perjantai-1500",
+        "title": "Kirpputorin ajanvaraus PERJANTAI – Saapuminen kello 15:00–15:30",
+        "startTime": "2024-09-06T12:00:00+00:00",
+        "endTime": "2024-09-06T18:30:00+00:00",
+        "lengthMinutes": 390,
+        "location": "Sopraano"
+      },
+      {
         "slug": "kirpputorin-ajanvaraus-perjantai-2000",
         "title": "Kirpputorin ajanvaraus PERJANTAI – Saapuminen kello 20:00–20:30",
-        "startTime": "2024-09-06T12:00:00+00:00",
-        "endTime": "2024-09-06T18:30:00+00:00",
-        "lengthMinutes": 390,
-        "location": "Sopraano"
-      },
-      {
-        "slug": "kirpputorin-ajanvaraus-perjantai-2030",
-        "title": "Kirpputorin ajanvaraus PERJANTAI – Saapuminen kello 20:30–21:00",
-        "startTime": "2024-09-06T12:00:00+00:00",
-        "endTime": "2024-09-06T18:30:00+00:00",
-        "lengthMinutes": 390,
-        "location": "Sopraano"
-      },
-      {
-        "slug": "kirpputorin-ajanvaraus-perjantai-2100",
-        "title": "Kirpputorin ajanvaraus PERJANTAI – Saapuminen kello 21:00–21:30",
         "startTime": "2024-09-06T12:00:00+00:00",
         "endTime": "2024-09-06T18:30:00+00:00",
         "lengthMinutes": 390,
@@ -466,7 +466,7 @@
       "signup": ["konsti"],
       "audience": ["r18", "beginner-friendly"],
       "category": ["roolipeliohjelma"],
-      "language": ["en"],
+      "language": ["fi", "en"],
       "accessibility": []
     },
     "cachedAnnotations": {
@@ -477,7 +477,7 @@
     },
     "scheduleItems": [
       {
-        "slug": "kriisitunturi-",
+        "slug": "kriisitunturi",
         "title": "Kriisitunturi",
         "startTime": "2024-09-06T16:00:00+00:00",
         "endTime": "2024-09-06T20:00:00+00:00",
@@ -498,7 +498,7 @@
       "signup": ["konsti"],
       "audience": ["unrestricted", "beginner-friendly"],
       "category": ["roolipeliohjelma"],
-      "language": [],
+      "language": ["fi"],
       "accessibility": []
     },
     "cachedAnnotations": {
@@ -509,7 +509,7 @@
     },
     "scheduleItems": [
       {
-        "slug": "kusinen-homma-",
+        "slug": "kusinen-homma",
         "title": "Kusinen Homma",
         "startTime": "2024-09-07T14:00:00+00:00",
         "endTime": "2024-09-07T18:00:00+00:00",
@@ -530,7 +530,7 @@
       "signup": ["konsti"],
       "audience": ["unrestricted", "beginner-friendly"],
       "category": ["roolipeliohjelma"],
-      "language": ["en"],
+      "language": ["fi", "en"],
       "accessibility": []
     },
     "cachedAnnotations": {
@@ -541,7 +541,7 @@
     },
     "scheduleItems": [
       {
-        "slug": "lantern-for-shadow-subconscious-tajunnan-varjojen-lyhty-",
+        "slug": "lantern-for-shadow-subconscious-tajunnan-varjojen-lyhty",
         "title": "Lantern For Shadow Subconscious - Tajunnan Varjojen Lyhty",
         "startTime": "2024-09-06T14:00:00+00:00",
         "endTime": "2024-09-06T18:00:00+00:00",
@@ -562,7 +562,7 @@
       "signup": ["konsti"],
       "audience": ["r18", "beginner-friendly"],
       "category": ["roolipeliohjelma"],
-      "language": [],
+      "language": ["fi"],
       "accessibility": []
     },
     "cachedAnnotations": {
@@ -573,7 +573,7 @@
     },
     "scheduleItems": [
       {
-        "slug": "lapimurto-",
+        "slug": "lapimurto",
         "title": "Läpimurto",
         "startTime": "2024-09-08T07:30:00+00:00",
         "endTime": "2024-09-08T11:30:00+00:00",
@@ -594,13 +594,13 @@
       "signup": ["konsti"],
       "audience": ["unrestricted"],
       "category": ["roolipeliohjelma"],
-      "language": [],
+      "language": ["fi"],
       "accessibility": []
     },
     "cachedAnnotations": {},
     "scheduleItems": [
       {
-        "slug": "larp-telenovela-haat-",
+        "slug": "larp-telenovela-haat",
         "title": "LARP Telenovela: Häät",
         "startTime": "2024-09-07T16:00:00+00:00",
         "endTime": "2024-09-07T17:15:00+00:00",
@@ -621,7 +621,7 @@
       "signup": ["konsti"],
       "audience": ["unrestricted", "beginner-friendly"],
       "category": ["roolipeliohjelma"],
-      "language": ["en"],
+      "language": ["fi", "en"],
       "accessibility": []
     },
     "cachedAnnotations": {
@@ -632,7 +632,7 @@
     },
     "scheduleItems": [
       {
-        "slug": "meidan-loistava-turmio-",
+        "slug": "meidan-loistava-turmio",
         "title": "Meidän loistava turmiomme",
         "startTime": "2024-09-06T13:30:00+00:00",
         "endTime": "2024-09-06T17:30:00+00:00",
@@ -653,7 +653,7 @@
       "signup": ["konsti"],
       "audience": ["unrestricted", "beginner-friendly"],
       "category": ["roolipeliohjelma"],
-      "language": [],
+      "language": ["fi"],
       "accessibility": []
     },
     "cachedAnnotations": {
@@ -664,7 +664,7 @@
     },
     "scheduleItems": [
       {
-        "slug": "mita-kellarista-loytyy-",
+        "slug": "mita-kellarista-loytyy",
         "title": "Mitä kellarista löytyy?",
         "startTime": "2024-09-07T13:00:00+00:00",
         "endTime": "2024-09-07T18:00:00+00:00",
@@ -685,13 +685,13 @@
       "signup": ["konsti"],
       "audience": ["unrestricted"],
       "category": ["roolipeliohjelma"],
-      "language": [],
+      "language": ["fi"],
       "accessibility": []
     },
     "cachedAnnotations": {},
     "scheduleItems": [
       {
-        "slug": "muistojen-tanssi-larppi-",
+        "slug": "muistojen-tanssi-larppi",
         "title": "Muistojen tanssi -larppi",
         "startTime": "2024-09-08T11:00:00+00:00",
         "endTime": "2024-09-08T13:45:00+00:00",
@@ -712,7 +712,7 @@
       "signup": ["konsti"],
       "audience": ["unrestricted", "experienced"],
       "category": ["roolipeliohjelma"],
-      "language": [],
+      "language": ["fi"],
       "accessibility": []
     },
     "cachedAnnotations": {
@@ -723,7 +723,7 @@
     },
     "scheduleItems": [
       {
-        "slug": "murheen-valama-vankila-",
+        "slug": "murheen-valama-vankila",
         "title": "Murheen valama vankila",
         "startTime": "2024-09-07T08:30:00+00:00",
         "endTime": "2024-09-07T12:30:00+00:00",
@@ -744,7 +744,7 @@
       "signup": ["konsti"],
       "audience": ["unrestricted", "beginner-friendly"],
       "category": ["roolipeliohjelma"],
-      "language": [],
+      "language": ["fi"],
       "accessibility": []
     },
     "cachedAnnotations": {
@@ -755,7 +755,7 @@
     },
     "scheduleItems": [
       {
-        "slug": "olipa-kerran-sumuinen-yo-",
+        "slug": "olipa-kerran-sumuinen-yo",
         "title": "Olipa kerran sumuinen yö",
         "startTime": "2024-09-06T13:00:00+00:00",
         "endTime": "2024-09-06T17:00:00+00:00",
@@ -776,7 +776,7 @@
       "signup": ["konsti"],
       "audience": ["unrestricted", "beginner-friendly"],
       "category": ["roolipeliohjelma"],
-      "language": ["en"],
+      "language": ["fi", "en"],
       "accessibility": []
     },
     "cachedAnnotations": {
@@ -787,7 +787,7 @@
     },
     "scheduleItems": [
       {
-        "slug": "pathfinder-society-scenario-6-02-rain-falls-on-the-mountain-of-sea-and-sky-",
+        "slug": "pathfinder-society-scenario-6-02-rain-falls-on-the-mountain-of-sea-and-sky",
         "title": "Pathfinder Society Scenario #6-02: Rain Falls on the Mountain of Sea and Sky",
         "startTime": "2024-09-08T09:00:00+00:00",
         "endTime": "2024-09-08T13:00:00+00:00",
@@ -808,7 +808,7 @@
       "signup": ["konsti"],
       "audience": ["unrestricted", "beginner-friendly"],
       "category": ["roolipeliohjelma"],
-      "language": ["en"],
+      "language": ["fi", "en"],
       "accessibility": []
     },
     "cachedAnnotations": {
@@ -819,7 +819,7 @@
     },
     "scheduleItems": [
       {
-        "slug": "pfs-2e-5-12-mischief-in-the-maze-",
+        "slug": "pfs-2e-5-12-mischief-in-the-maze",
         "title": "PFS 2E #5-12 Mischief in the Maze",
         "startTime": "2024-09-07T09:00:00+00:00",
         "endTime": "2024-09-07T13:00:00+00:00",
@@ -840,7 +840,7 @@
       "signup": ["konsti"],
       "audience": ["r18", "beginner-friendly"],
       "category": ["roolipeliohjelma"],
-      "language": [],
+      "language": ["fi"],
       "accessibility": []
     },
     "cachedAnnotations": {
@@ -851,7 +851,7 @@
     },
     "scheduleItems": [
       {
-        "slug": "ristipisto-",
+        "slug": "ristipisto",
         "title": "Ristipisto",
         "startTime": "2024-09-07T14:00:00+00:00",
         "endTime": "2024-09-07T18:00:00+00:00",
@@ -872,7 +872,7 @@
       "signup": ["konsti"],
       "audience": ["unrestricted", "beginner-friendly"],
       "category": ["roolipeliohjelma"],
-      "language": [],
+      "language": ["fi"],
       "accessibility": []
     },
     "cachedAnnotations": {
@@ -883,7 +883,7 @@
     },
     "scheduleItems": [
       {
-        "slug": "ryuutama-luvattomuuksia-lingmeilissa-",
+        "slug": "ryuutama-luvattomuuksia-lingmeilissa",
         "title": "Ryuutama - Luvattomuuksia Lingmeilissä",
         "startTime": "2024-09-08T08:30:00+00:00",
         "endTime": "2024-09-08T12:30:00+00:00",
@@ -904,7 +904,7 @@
       "signup": ["konsti"],
       "audience": ["unrestricted", "experienced"],
       "category": ["roolipeliohjelma"],
-      "language": [],
+      "language": ["fi"],
       "accessibility": []
     },
     "cachedAnnotations": {
@@ -915,7 +915,7 @@
     },
     "scheduleItems": [
       {
-        "slug": "seestunturin-salaisuus-",
+        "slug": "seestunturin-salaisuus",
         "title": "Seestunturin salaisuus",
         "startTime": "2024-09-08T08:30:00+00:00",
         "endTime": "2024-09-08T13:30:00+00:00",
@@ -947,7 +947,7 @@
     },
     "scheduleItems": [
       {
-        "slug": "signal--",
+        "slug": "signal-",
         "title": "Signal: ¿?¿?¿?¿?¿?¿",
         "startTime": "2024-09-07T13:30:00+00:00",
         "endTime": "2024-09-07T17:30:00+00:00",
@@ -968,7 +968,7 @@
       "signup": ["konsti"],
       "audience": ["unrestricted", "beginner-friendly"],
       "category": ["roolipeliohjelma"],
-      "language": ["en"],
+      "language": ["fi", "en"],
       "accessibility": []
     },
     "cachedAnnotations": {
@@ -979,7 +979,7 @@
     },
     "scheduleItems": [
       {
-        "slug": "spire-sammuttakaa-aurinko-",
+        "slug": "spire-sammuttakaa-aurinko",
         "title": "Spire - Sammuttakaa Aurinko",
         "startTime": "2024-09-07T08:30:00+00:00",
         "endTime": "2024-09-07T13:00:00+00:00",
@@ -1000,7 +1000,7 @@
       "signup": ["konsti"],
       "audience": ["unrestricted", "beginner-friendly"],
       "category": ["roolipeliohjelma"],
-      "language": ["en"],
+      "language": ["fi", "en"],
       "accessibility": []
     },
     "cachedAnnotations": {
@@ -1011,7 +1011,7 @@
     },
     "scheduleItems": [
       {
-        "slug": "the-beast-of-angmar-",
+        "slug": "the-beast-of-angmar",
         "title": "The Beast of Angmar",
         "startTime": "2024-09-07T13:00:00+00:00",
         "endTime": "2024-09-07T18:00:00+00:00",
@@ -1032,7 +1032,7 @@
       "signup": ["konsti"],
       "audience": ["unrestricted"],
       "category": ["roolipeliohjelma"],
-      "language": ["en"],
+      "language": ["fi", "en"],
       "accessibility": []
     },
     "cachedAnnotations": {
@@ -1043,7 +1043,7 @@
     },
     "scheduleItems": [
       {
-        "slug": "toiveet-ja-salaisuudet-dreams-and-secrets-",
+        "slug": "toiveet-ja-salaisuudet-dreams-and-secrets",
         "title": "Toiveet ja salaisuudet - Dreams and Secrets",
         "startTime": "2024-09-07T08:30:00+00:00",
         "endTime": "2024-09-07T13:30:00+00:00",
@@ -1064,7 +1064,7 @@
       "signup": ["konsti"],
       "audience": ["unrestricted", "beginner-friendly"],
       "category": ["roolipeliohjelma"],
-      "language": [],
+      "language": ["fi"],
       "accessibility": []
     },
     "cachedAnnotations": {
@@ -1075,7 +1075,7 @@
     },
     "scheduleItems": [
       {
-        "slug": "tokyo-noir-murhamysteeri-shinjukussa-",
+        "slug": "tokyo-noir-murhamysteeri-shinjukussa",
         "title": "Tokyo Noir: Sikarinkatkuista",
         "startTime": "2024-09-07T13:30:00+00:00",
         "endTime": "2024-09-07T17:30:00+00:00",
@@ -1096,7 +1096,7 @@
       "signup": ["konsti"],
       "audience": ["unrestricted", "beginner-friendly"],
       "category": ["roolipeliohjelma"],
-      "language": [],
+      "language": ["fi"],
       "accessibility": []
     },
     "cachedAnnotations": {
@@ -1107,7 +1107,7 @@
     },
     "scheduleItems": [
       {
-        "slug": "tyhjyyden-meren-hirviot-",
+        "slug": "tyhjyyden-meren-hirviot",
         "title": "Tyhjyyden meren hirviöt",
         "startTime": "2024-09-07T13:30:00+00:00",
         "endTime": "2024-09-07T17:30:00+00:00",
@@ -1128,7 +1128,7 @@
       "signup": ["konsti"],
       "audience": ["unrestricted", "child-friendly", "beginner-friendly"],
       "category": ["roolipeliohjelma"],
-      "language": ["en"],
+      "language": ["fi", "en"],
       "accessibility": []
     },
     "cachedAnnotations": {
@@ -1138,7 +1138,7 @@
     },
     "scheduleItems": [
       {
-        "slug": "v-",
+        "slug": "v",
         "title": "Valon Terhon Etsijät - peluutus 1.",
         "startTime": "2024-09-06T17:30:00+00:00",
         "endTime": "2024-09-06T20:00:00+00:00",
@@ -1159,7 +1159,7 @@
       "signup": ["konsti"],
       "audience": ["unrestricted", "child-friendly", "beginner-friendly"],
       "category": ["roolipeliohjelma"],
-      "language": ["en"],
+      "language": ["fi", "en"],
       "accessibility": []
     },
     "cachedAnnotations": {
@@ -1169,7 +1169,7 @@
     },
     "scheduleItems": [
       {
-        "slug": "valon-terhon-etsijat-",
+        "slug": "valon-terhon-etsijat",
         "title": "Valon Terhon Etsijät - peluutus 2.",
         "startTime": "2024-09-07T09:30:00+00:00",
         "endTime": "2024-09-07T12:00:00+00:00",
@@ -1190,7 +1190,7 @@
       "signup": ["konsti"],
       "audience": ["r18", "beginner-friendly"],
       "category": ["roolipeliohjelma"],
-      "language": [],
+      "language": ["fi"],
       "accessibility": []
     },
     "cachedAnnotations": {
@@ -1201,7 +1201,7 @@
     },
     "scheduleItems": [
       {
-        "slug": "varjojen-sisarkunta-",
+        "slug": "varjojen-sisarkunta",
         "title": "Varjojen sisarkunta",
         "startTime": "2024-09-08T08:30:00+00:00",
         "endTime": "2024-09-08T13:00:00+00:00",
@@ -1222,7 +1222,7 @@
       "signup": ["konsti"],
       "audience": ["unrestricted", "child-friendly", "beginner-friendly"],
       "category": ["roolipeliohjelma"],
-      "language": [],
+      "language": ["fi"],
       "accessibility": []
     },
     "cachedAnnotations": {
@@ -1233,7 +1233,7 @@
     },
     "scheduleItems": [
       {
-        "slug": "velho-eevertin-omenapiirakka-",
+        "slug": "velho-eevertin-omenapiirakka",
         "title": "Velho Eevertin omenapiirakka",
         "startTime": "2024-09-08T08:00:00+00:00",
         "endTime": "2024-09-08T12:00:00+00:00",
@@ -1254,7 +1254,7 @@
       "signup": ["konsti"],
       "audience": ["unrestricted", "beginner-friendly"],
       "category": ["roolipeliohjelma"],
-      "language": ["en"],
+      "language": ["fi", "en"],
       "accessibility": []
     },
     "cachedAnnotations": {
@@ -1265,7 +1265,7 @@
     },
     "scheduleItems": [
       {
-        "slug": "viimeinen-liekki-the-flame-endling-",
+        "slug": "viimeinen-liekki-the-flame-endling",
         "title": "Viimeinen Liekki - The Flame Endling",
         "startTime": "2024-09-06T14:00:00+00:00",
         "endTime": "2024-09-06T18:00:00+00:00",
