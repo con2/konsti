@@ -24,7 +24,7 @@ const loginSlice = createSlice({
   name: "login",
   initialState,
   reducers: {
-    submitLoginAsync(state, action: PayloadAction<LoginState>) {
+    submitLoginAsync(state, action: PayloadAction<LoginState>): LoginState {
       return {
         ...state,
         username: action.payload.username,
@@ -41,7 +41,7 @@ const loginSlice = createSlice({
     submitUpdateEventLogItemsAsync(
       state,
       action: PayloadAction<EventLogItem[]>,
-    ) {
+    ): LoginState {
       return {
         ...state,
         eventLogItems: action.payload,
@@ -51,7 +51,7 @@ const loginSlice = createSlice({
     submitVerifyKompassiLoginAsync(
       state,
       action: PayloadAction<PostVerifyKompassiLoginPayload>,
-    ) {
+    ): LoginState {
       return {
         ...state,
         username: action.payload.username,
