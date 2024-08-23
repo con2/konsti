@@ -17,7 +17,10 @@ const groupSlice = createSlice({
   name: "group",
   initialState,
   reducers: {
-    submitUpdateGroupCodeAsync(state, action: PayloadAction<GroupCodeUpdate>) {
+    submitUpdateGroupCodeAsync(
+      state,
+      action: PayloadAction<GroupCodeUpdate>,
+    ): GroupState {
       return {
         ...state,
         groupCode: action.payload.groupCode,
@@ -25,14 +28,14 @@ const groupSlice = createSlice({
       };
     },
 
-    submitLeaveGroupAsync(state, action: PayloadAction<string>) {
+    submitLeaveGroupAsync(state, action: PayloadAction<string>): GroupState {
       return { ...state, groupCode: action.payload, groupMembers: [] };
     },
 
     submitUpdateGroupAsync(
       state,
       action: PayloadAction<readonly GroupMember[]>,
-    ) {
+    ): GroupState {
       return {
         ...state,
         groupMembers: action.payload,

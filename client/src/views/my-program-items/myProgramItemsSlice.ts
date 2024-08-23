@@ -17,7 +17,10 @@ const myProgramItemsSlice = createSlice({
   name: "myProgramItems",
   initialState,
   reducers: {
-    submitGetUserAsync(state, action: PayloadAction<UserProgramItems>) {
+    submitGetUserAsync(
+      state,
+      action: PayloadAction<UserProgramItems>,
+    ): MyProgramItemsState {
       return {
         ...state,
         directSignups: action.payload.directSignups,
@@ -29,7 +32,7 @@ const myProgramItemsSlice = createSlice({
     submitUpdateFavoritesAsync(
       state,
       action: PayloadAction<readonly FavoriteProgramItemId[]>,
-    ) {
+    ): MyProgramItemsState {
       return {
         ...state,
         favoriteProgramItemIds: action.payload,
@@ -39,16 +42,22 @@ const myProgramItemsSlice = createSlice({
     submitPostLotterySignupsAsync(
       state,
       action: PayloadAction<readonly Signup[]>,
-    ) {
+    ): MyProgramItemsState {
       return { ...state, lotterySignups: action.payload };
     },
 
-    submitPostDirectSignupAsync(state, action: PayloadAction<Signup>) {
+    submitPostDirectSignupAsync(
+      state,
+      action: PayloadAction<Signup>,
+    ): MyProgramItemsState {
       const directSignups = [...state.directSignups, action.payload];
       return { ...state, directSignups };
     },
 
-    submitDeleteDirectSignupAsync(state, action: PayloadAction<string>) {
+    submitDeleteDirectSignupAsync(
+      state,
+      action: PayloadAction<string>,
+    ): MyProgramItemsState {
       const directSignups = state.directSignups.filter(
         (programItem) =>
           programItem.programItem.programItemId !== action.payload,

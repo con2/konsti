@@ -43,11 +43,14 @@ const adminSlice = createSlice({
     submitUpdateHiddenAsync(
       state,
       action: PayloadAction<readonly ProgramItem[]>,
-    ) {
+    ): AdminState {
       return { ...state, hiddenProgramItems: action.payload };
     },
 
-    submitGetSettingsAsync(state, action: PayloadAction<SettingsPayload>) {
+    submitGetSettingsAsync(
+      state,
+      action: PayloadAction<SettingsPayload>,
+    ): AdminState {
       return {
         ...state,
         hiddenProgramItems: action.payload.hiddenProgramItems,
@@ -58,51 +61,66 @@ const adminSlice = createSlice({
       };
     },
 
-    submitSetSignupStrategyAsync(state, action: PayloadAction<SignupStrategy>) {
+    submitSetSignupStrategyAsync(
+      state,
+      action: PayloadAction<SignupStrategy>,
+    ): AdminState {
       return { ...state, signupStrategy: action.payload };
     },
 
-    submitSetLoginProviderAsync(state, action: PayloadAction<LoginProvider>) {
+    submitSetLoginProviderAsync(
+      state,
+      action: PayloadAction<LoginProvider>,
+    ): AdminState {
       return { ...state, loginProvider: action.payload };
     },
 
-    submitToggleAppOpenAsync(state, action: PayloadAction<boolean>) {
+    submitToggleAppOpenAsync(
+      state,
+      action: PayloadAction<boolean>,
+    ): AdminState {
       return { ...state, appOpen: action.payload };
     },
 
-    submitAssignmentResponseMessageAsync(state, action: PayloadAction<string>) {
+    submitAssignmentResponseMessageAsync(
+      state,
+      action: PayloadAction<string>,
+    ): AdminState {
       return { ...state, assignmentResponseMessage: action.payload };
     },
 
     updateSignupQuestions(
       state,
       action: PayloadAction<readonly SignupQuestion[]>,
-    ) {
+    ): AdminState {
       return { ...state, signupQuestions: action.payload };
     },
 
-    addError(state, action: PayloadAction<string>) {
+    addError(state, action: PayloadAction<string>): AdminState {
       return {
         ...state,
         errors: uniq([...state.errors, action.payload]),
       };
     },
 
-    removeError(state, action: PayloadAction<string>) {
+    removeError(state, action: PayloadAction<string>): AdminState {
       return {
         ...state,
         errors: state.errors.filter((error) => error !== action.payload),
       };
     },
 
-    setActiveProgramType(state, action: PayloadAction<ActiveProgramType>) {
+    setActiveProgramType(
+      state,
+      action: PayloadAction<ActiveProgramType>,
+    ): AdminState {
       return { ...state, activeProgramType: action.payload };
     },
 
     submitGetSignupMessagesAsync(
       state,
       action: PayloadAction<SignupMessage[]>,
-    ) {
+    ): AdminState {
       return { ...state, signupMessages: action.payload };
     },
   },
