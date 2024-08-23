@@ -9,7 +9,7 @@ const testSettingsSlice = createSlice({
   name: "testSettings",
   initialState,
   reducers: {
-    submitSetTestTime(state, action: PayloadAction<string>) {
+    submitSetTestTime(state, action: PayloadAction<string>): TestSettingsState {
       return { ...state, testTime: action.payload };
     },
   },

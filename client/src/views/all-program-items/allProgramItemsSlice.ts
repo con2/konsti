@@ -20,7 +20,7 @@ const allProgramItemsSlice = createSlice({
     submitGetProgramItemsAsync(
       state,
       action: PayloadAction<readonly ProgramItemWithUserSignups[]>,
-    ) {
+    ): AllProgramItemsState {
       return {
         ...state,
         programItems: action.payload.map(
