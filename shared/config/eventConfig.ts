@@ -30,7 +30,8 @@ export const eventConfig: EventConfig = {
 
   directSignupWindows: {},
 
-  rollingSignupStartProgramTypes: [ProgramType.TABLETOP_RPG, ProgramType.LARP],
+  rollingDirectSignupProgramTypes: [ProgramType.TABLETOP_RPG, ProgramType.LARP],
+  enableRollingDirectSignupPreviousDay: false,
 
   hideParticipantListProgramTypes: [ProgramType.FLEAMARKET],
 
