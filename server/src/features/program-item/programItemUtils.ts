@@ -29,7 +29,7 @@ import {
   unwrapResult,
 } from "shared/utils/result";
 import { MongoDbError } from "shared/types/api/errors";
-import { tooEearlyForAlgorithmSignup } from "shared/utils/tooEearlyForAlgorithmSignup";
+import { tooEarlyForLotterySignup } from "shared/utils/tooEarlyForLotterySignup";
 import { UserGroup } from "shared/types/models/user";
 
 export const removeDeletedProgramItems = async (
@@ -136,7 +136,7 @@ const getSignupStrategyForProgramItem = (
   const start = dayjs(programItem.startTime);
   const { directSignupPhaseStart, twoPhaseSignupProgramTypes } = config.event();
 
-  if (settings.signupStrategy !== SignupStrategy.ALGORITHM_AND_DIRECT) {
+  if (settings.signupStrategy !== SignupStrategy.LOTTERY_AND_DIRECT) {
     return settings.signupStrategy;
   }
 
@@ -144,7 +144,7 @@ const getSignupStrategyForProgramItem = (
     return SignupStrategy.DIRECT;
   }
 
-  if (tooEearlyForAlgorithmSignup(programItem.startTime)) {
+  if (tooEarlyForLotterySignup(programItem.startTime)) {
     return SignupStrategy.DIRECT;
   }
 
@@ -155,7 +155,7 @@ const getSignupStrategyForProgramItem = (
     return SignupStrategy.DIRECT;
   }
 
-  return SignupStrategy.ALGORITHM;
+  return SignupStrategy.LOTTERY;
 };
 
 const getDirectSignupsForProgramItem = (

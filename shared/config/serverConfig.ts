@@ -58,7 +58,7 @@ const commonConfig = {
   enableRemoveOverlapSignups: true,
 
   // Default DB values
-  defaultSignupStrategy: SignupStrategy.ALGORITHM_AND_DIRECT,
+  defaultSignupStrategy: SignupStrategy.LOTTERY_AND_DIRECT,
   defaultLoginProvider: LoginProvider.LOCAL,
 
   // Event settings

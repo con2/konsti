@@ -339,11 +339,11 @@ export const translationFI = {
         "Osallistujat valitaan ilmoittautumisjärjestyksessä. Ilmoittautuminen alkaa: ",
       directSignupOpenNow:
         "Osallistujat valitaan ilmoittautumisjärjestyksessä. Ilmoittautuminen sulkeutuu: ",
-      algorithmSignupStartsLater:
+      lotterySignupStartsLater:
         "Osallistujat valitaan arvonnalla. Arvontaan ilmoittautuminen: ",
-      algorithmSignupOpen:
+      lotterySignupOpen:
         "Osallistujat valitaan arvonnalla. Arvontaan ilmoittautuminen päättyy: ",
-      algorithmSignupEnded: "Osallistujat valittiin arvonnalla.",
+      lotterySignupEnded: "Osallistujat valittiin arvonnalla.",
       directSignupStarts:
         " Suora ilmoittautuminen jäljelle jääneisiin ja peruutuspaikkoihin: ",
     },
@@ -494,8 +494,8 @@ export const translationFI = {
   },
   strategies: {
     direct: "Suora",
-    algorithm: "Algoritmi",
-    "algorithm+direct": "Algoritmi + Suora",
+    lottery: "Arvonta",
+    "lottery+direct": "Arvonta + Suora",
   },
   loginProvider: {
     local: "Lokaali",
