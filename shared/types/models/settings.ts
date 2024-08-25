@@ -1,5 +1,8 @@
 import { z } from "zod";
-import { LoginProvider, SignupStrategy } from "shared/config/eventConfigTypes";
+import {
+  LoginProvider,
+  EventSignupStrategy,
+} from "shared/config/eventConfigTypes";
 import { ProgramItemSchema } from "shared/types/models/programItem";
 
 export enum SignupQuestionType {
@@ -31,7 +34,7 @@ export const SettingsSchema = z.object({
   hiddenProgramItems: z.array(ProgramItemSchema),
   appOpen: z.boolean(),
   signupQuestions: z.array(SignupQuestionSchema),
-  signupStrategy: z.nativeEnum(SignupStrategy),
+  signupStrategy: z.nativeEnum(EventSignupStrategy),
   programUpdateLastRun: z.string(),
   assignmentLastRun: z.string(),
   latestServerStartTime: z.string(),

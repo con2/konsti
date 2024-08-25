@@ -2,7 +2,7 @@ import { Dayjs } from "dayjs";
 import { ProgramType } from "shared/types/models/programItem";
 import { SignupQuestion } from "shared/types/models/settings";
 
-export enum SignupStrategy {
+export enum EventSignupStrategy {
   DIRECT = "direct",
   LOTTERY = "lottery",
   LOTTERY_AND_DIRECT = "lottery+direct",
@@ -49,7 +49,10 @@ export interface EventConfig {
   directSignupAlwaysOpenIds: string[];
   requireRegistrationCode: boolean;
   twoPhaseSignupProgramTypes: ProgramType[];
-  manualSignupMode: SignupStrategy.LOTTERY | SignupStrategy.DIRECT | "none";
+  manualSignupMode:
+    | EventSignupStrategy.LOTTERY
+    | EventSignupStrategy.DIRECT
+    | "none";
   signupOpen: boolean;
   resultsVisible: boolean;
   addToKonstiOther: string[];

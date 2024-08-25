@@ -2,8 +2,11 @@ import { ReactElement } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { ProgramItem, UserSignup } from "shared/types/models/programItem";
-import { SignupStrategy } from "shared/config/eventConfigTypes";
+import {
+  ProgramItem,
+  ProgramItemSignupStrategy,
+  UserSignup,
+} from "shared/types/models/programItem";
 import { UserGroup } from "shared/types/models/user";
 import { FavoriteButton } from "client/components/FavoriteButton";
 import { Tags } from "client/components/Tags";
@@ -17,11 +20,12 @@ import { isRevolvingDoorWorkshop } from "client/utils/isRevolvingDoorWorkshop";
 import { SignupsInfo } from "client/views/all-program-items/components/SignupsInfo";
 import { AppRoute } from "client/app/AppRoutes";
 import { SignupQuestion } from "shared/types/models/settings";
+import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 
 interface Props {
   programItem: ProgramItem;
   signups: UserSignup[];
-  signupStrategy: SignupStrategy;
+  signupStrategy: ProgramItemSignupStrategy;
   username: string;
   loggedIn: boolean;
   userGroup: UserGroup;
@@ -55,8 +59,8 @@ export const ProgramItemHead = ({
   const isNormalSignup = requiresSignup && konstiSignup;
 
   const isEnterGameMode =
-    config.event().manualSignupMode === SignupStrategy.DIRECT ||
-    signupStrategy === SignupStrategy.DIRECT ||
+    config.event().manualSignupMode === EventSignupStrategy.DIRECT ||
+    signupStrategy === ProgramItemSignupStrategy.DIRECT ||
     signupAlwaysOpen;
 
   const isFavorite =

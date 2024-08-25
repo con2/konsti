@@ -1,8 +1,11 @@
 import { ReactElement } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
-import { ProgramItem, UserSignup } from "shared/types/models/programItem";
-import { SignupStrategy } from "shared/config/eventConfigTypes";
+import {
+  ProgramItem,
+  ProgramItemSignupStrategy,
+  UserSignup,
+} from "shared/types/models/programItem";
 import { Signup, UserGroup } from "shared/types/models/user";
 import { RaisedCard } from "client/components/RaisedCard";
 import {
@@ -16,12 +19,13 @@ import { ProgramItemHead } from "client/views/all-program-items/components/Progr
 import { SignupQuestion } from "shared/types/models/settings";
 import { isRevolvingDoorWorkshop } from "client/utils/isRevolvingDoorWorkshop";
 import { ProgramItemErrors } from "client/views/all-program-items/components/ProgramItemErrors";
+import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 
 interface Props {
   programItem: ProgramItem;
   startTime: string;
   signups: UserSignup[];
-  signupStrategy: SignupStrategy;
+  signupStrategy: ProgramItemSignupStrategy;
   lotterySignups: readonly Signup[];
   directSignups: readonly Signup[];
   isAlwaysExpanded: boolean;
@@ -59,8 +63,8 @@ export const ProgramItemEntry = ({
     .directSignupAlwaysOpenIds.includes(programItem.programItemId);
 
   const isDirectSignupMode =
-    config.event().manualSignupMode === SignupStrategy.DIRECT ||
-    signupStrategy === SignupStrategy.DIRECT ||
+    config.event().manualSignupMode === EventSignupStrategy.DIRECT ||
+    signupStrategy === ProgramItemSignupStrategy.DIRECT ||
     signupAlwaysOpen;
 
   const isDirectlySignedCurrentProgramItem = isAlreadyDirectySigned(

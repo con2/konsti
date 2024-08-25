@@ -1,5 +1,4 @@
 import { z } from "zod";
-import { SignupStrategy } from "shared/config/eventConfigTypes";
 
 export enum ProgramType {
   TABLETOP_RPG = "tabletopRPG",
@@ -75,6 +74,11 @@ export enum AccessibilityValue {
   REQUIRES_QUICK_REACTIONS = "requiresQuickReactions",
 }
 
+export enum ProgramItemSignupStrategy {
+  DIRECT = "direct",
+  LOTTERY = "lottery",
+}
+
 export enum SignupType {
   KONSTI = "konsti",
   NONE = "none",
@@ -103,7 +107,7 @@ export const ProgramItemSchema = z.object({
   contentWarnings: z.string(),
   otherAuthor: z.string(),
   accessibilityValues: z.array(z.nativeEnum(AccessibilityValue)),
-  signupStrategy: z.optional(z.nativeEnum(SignupStrategy)),
+  signupStrategy: z.optional(z.nativeEnum(ProgramItemSignupStrategy)),
   otherAccessibilityInformation: z.string(),
   entryFee: z.string(),
   signupType: z.nativeEnum(SignupType),

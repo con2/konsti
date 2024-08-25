@@ -1,6 +1,6 @@
 import { ChangeEvent, ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { SignupStrategy } from "shared/config/eventConfigTypes";
+import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import { Dropdown } from "client/components/Dropdown";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { submitSetSignupStrategy } from "client/views/admin/adminThunks";
@@ -12,10 +12,10 @@ export const SignupStrategySelector = (): ReactElement => {
   const [loading, setLoading] = useState<boolean>(false);
 
   const strategies = [
-    { value: SignupStrategy.DIRECT, title: t("strategies.direct") },
-    { value: SignupStrategy.LOTTERY, title: t("strategies.lottery") },
+    { value: EventSignupStrategy.DIRECT, title: t("strategies.direct") },
+    { value: EventSignupStrategy.LOTTERY, title: t("strategies.lottery") },
     {
-      value: SignupStrategy.LOTTERY_AND_DIRECT,
+      value: EventSignupStrategy.LOTTERY_AND_DIRECT,
       title: t("strategies.lottery+direct"),
     },
   ];
@@ -29,7 +29,7 @@ export const SignupStrategySelector = (): ReactElement => {
         onChange={async (event: ChangeEvent<HTMLSelectElement>) => {
           setLoading(true);
           await dispatch(
-            submitSetSignupStrategy(event.target.value as SignupStrategy),
+            submitSetSignupStrategy(event.target.value as EventSignupStrategy),
           );
           setLoading(false);
         }}

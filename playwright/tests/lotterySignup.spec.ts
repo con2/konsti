@@ -6,13 +6,13 @@ import {
   postTestSettings,
   login,
 } from "playwright/utils";
-import { SignupStrategy } from "shared/config/eventConfigTypes";
+import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import { config } from "shared/config";
 
 test("Add lottery signup", async ({ page, request }) => {
   logTestStart("Add lottery signup");
   await populateDb(request);
-  await postSettings(request, { signupStrategy: SignupStrategy.LOTTERY });
+  await postSettings(request, { signupStrategy: EventSignupStrategy.LOTTERY });
   await postTestSettings(request, {
     testTime: config.event().eventStartTime,
   });
