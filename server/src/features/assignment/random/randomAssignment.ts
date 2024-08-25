@@ -17,7 +17,7 @@ import {
   unwrapResult,
 } from "shared/utils/result";
 import { AssignmentError } from "shared/types/api/errors";
-import { AssignmentStrategy } from "shared/config/eventConfigTypes";
+import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
 
 export const randomAssignment = (
   users: readonly User[],
@@ -33,7 +33,7 @@ export const randomAssignment = (
     return makeSuccessResult({
       results: [],
       message: "Random Assignment Result - No starting program items",
-      algorithm: AssignmentStrategy.RANDOM,
+      algorithm: AssignmentAlgorithm.RANDOM,
       status: AssignmentResultStatus.NO_STARTING_PROGRAM_ITEMS,
     });
   }
@@ -50,7 +50,7 @@ export const randomAssignment = (
     return makeSuccessResult({
       results: [],
       message: "Random Assignment Result - No lottery signups",
-      algorithm: AssignmentStrategy.RANDOM,
+      algorithm: AssignmentAlgorithm.RANDOM,
       status: AssignmentResultStatus.NO_LOTTERY_SIGNUPS,
     });
   }
@@ -94,7 +94,7 @@ export const randomAssignment = (
     Object.assign({
       ...assignmentResult,
       message,
-      algorithm: AssignmentStrategy.RANDOM,
+      algorithm: AssignmentAlgorithm.RANDOM,
       status: AssignmentResultStatus.SUCCESS,
     }),
   );

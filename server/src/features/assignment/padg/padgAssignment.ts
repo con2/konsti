@@ -17,7 +17,7 @@ import {
   unwrapResult,
 } from "shared/utils/result";
 import { AssignmentError } from "shared/types/api/errors";
-import { AssignmentStrategy } from "shared/config/eventConfigTypes";
+import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
 
 export const padgAssignment = (
   users: readonly User[],
@@ -33,7 +33,7 @@ export const padgAssignment = (
     return makeSuccessResult({
       results: [],
       message: "Padg Assignment Result - No starting program items",
-      algorithm: AssignmentStrategy.PADG,
+      algorithm: AssignmentAlgorithm.PADG,
       status: AssignmentResultStatus.NO_STARTING_PROGRAM_ITEMS,
     });
   }
@@ -50,7 +50,7 @@ export const padgAssignment = (
     return makeSuccessResult({
       results: [],
       message: "Padg Assignment Result - No lottery signups",
-      algorithm: AssignmentStrategy.PADG,
+      algorithm: AssignmentAlgorithm.PADG,
       status: AssignmentResultStatus.NO_LOTTERY_SIGNUPS,
     });
   }
@@ -95,7 +95,7 @@ export const padgAssignment = (
     Object.assign({
       ...assignmentResult,
       message,
-      algorithm: AssignmentStrategy.PADG,
+      algorithm: AssignmentAlgorithm.PADG,
       status: AssignmentResultStatus.SUCCESS,
     }),
   );

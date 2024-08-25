@@ -587,7 +587,7 @@ export const translationEN = {
     sentryTesting: "Sentry testing",
     sentryClientTest: "Client test",
     sentryBackendTest: "Backend test",
-    strategy: "Strategy",
+    signupStrategy: "Signup strategy",
     loginProvider: "Login provider",
   },
 } as const;

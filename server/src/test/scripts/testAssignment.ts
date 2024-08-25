@@ -2,28 +2,28 @@ import dayjs from "dayjs";
 import { logger } from "server/utils/logger";
 import { runAssignment } from "server/features/assignment/runAssignment";
 import { db } from "server/db/mongodb";
-import { AssignmentStrategy } from "shared/config/eventConfigTypes";
+import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
 import { config } from "shared/config";
 
 const testAssignment = async (
-  assignmentStrategy: AssignmentStrategy,
+  assignmentAlgorithm: AssignmentAlgorithm,
 ): Promise<void> => {
   const startTime = dayjs(config.event().eventStartTime)
     .add(3, "hours")
     .toISOString();
   await runAssignment({
-    assignmentStrategy,
+    assignmentAlgorithm,
     startTime,
   });
 };
 
-const getAssignmentStrategy = (userParameter: string): AssignmentStrategy => {
-  const strategies = Object.values(AssignmentStrategy);
-  if (strategies.includes(userParameter as AssignmentStrategy)) {
-    return userParameter as AssignmentStrategy;
+const getAssignmentAlgorithm = (userParameter: string): AssignmentAlgorithm => {
+  const algorithms = Object.values(AssignmentAlgorithm);
+  if (algorithms.includes(userParameter as AssignmentAlgorithm)) {
+    return userParameter as AssignmentAlgorithm;
   }
   // eslint-disable-next-line no-restricted-syntax -- Test script
-  throw new Error(`Give valid strategy parameter: ${strategies.join(", ")}`);
+  throw new Error(`Give valid algorithm parameter: ${algorithms.join(", ")}`);
 };
 
 const init = async (): Promise<void> => {
@@ -36,10 +36,10 @@ const init = async (): Promise<void> => {
   }
 
   const userParameter = process.argv[2];
-  const assignmentStrategy = getAssignmentStrategy(userParameter);
+  const assignmentAlgorithm = getAssignmentAlgorithm(userParameter);
 
   await db.connectToDb();
-  await testAssignment(assignmentStrategy);
+  await testAssignment(assignmentAlgorithm);
   await db.gracefulExit();
 };
 

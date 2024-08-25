@@ -5,7 +5,7 @@ import { faker } from "@faker-js/faker";
 import { assertUserUpdatedCorrectly } from "server/features/assignment/runAssignmentTestUtils";
 import { runAssignment } from "server/features/assignment/runAssignment";
 import { generateTestData } from "server/test/test-data-generation/generators/generateTestData";
-import { AssignmentStrategy } from "shared/config/eventConfigTypes";
+import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
 import { config } from "shared/config";
 import { AssignmentResultStatus } from "server/types/resultTypes";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
@@ -30,7 +30,7 @@ afterEach(async () => {
   await mongoose.disconnect();
 });
 
-test("Assignment with valid data should return success with random+padg strategy", async () => {
+test("Assignment with valid data should return success with random+padg algorithm", async () => {
   const newUsersCount = 20;
   const groupSize = 3;
   const numberOfGroups = 5;
@@ -45,14 +45,14 @@ test("Assignment with valid data should return success with random+padg strategy
     testUsersCount,
   );
 
-  const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
+  const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
   const startTime = dayjs(eventStartTime).add(2, "hours").toISOString();
 
   // FIRST RUN
 
   const assignResults = unsafelyUnwrap(
     await runAssignment({
-      assignmentStrategy,
+      assignmentAlgorithm,
       startTime,
     }),
   );
@@ -79,7 +79,7 @@ test("Assignment with valid data should return success with random+padg strategy
 
   const assignResults2 = unsafelyUnwrap(
     await runAssignment({
-      assignmentStrategy,
+      assignmentAlgorithm,
       startTime,
     }),
   );
@@ -103,7 +103,7 @@ test("Assignment with valid data should return success with random+padg strategy
   await assertUserUpdatedCorrectly(updatedUsers2);
 });
 
-test("Assignment with no program items should return error with random+padg strategy", async () => {
+test("Assignment with no program items should return error with random+padg algorithm", async () => {
   const newUsersCount = 1;
   const groupSize = 0;
   const numberOfGroups = 0;
@@ -118,12 +118,12 @@ test("Assignment with no program items should return error with random+padg stra
     testUsersCount,
   );
 
-  const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
+  const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
   const startTime = dayjs(eventStartTime).add(2, "hours").toISOString();
 
   const assignResults = unsafelyUnwrap(
     await runAssignment({
-      assignmentStrategy,
+      assignmentAlgorithm,
       startTime,
     }),
   );
@@ -133,7 +133,7 @@ test("Assignment with no program items should return error with random+padg stra
   );
 });
 
-test("Assignment with no attendees should return error with random+padg strategy", async () => {
+test("Assignment with no attendees should return error with random+padg algorithm", async () => {
   const newUsersCount = 0;
   const groupSize = 0;
   const numberOfGroups = 0;
@@ -148,12 +148,12 @@ test("Assignment with no attendees should return error with random+padg strategy
     testUsersCount,
   );
 
-  const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
+  const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
   const startTime = dayjs(eventStartTime).add(2, "hours").toISOString();
 
   const assignResults = unsafelyUnwrap(
     await runAssignment({
-      assignmentStrategy,
+      assignmentAlgorithm,
       startTime,
     }),
   );
@@ -168,17 +168,17 @@ test("If random assignment fails, should return PADG result", async () => {
     makeErrorResult(AssignmentError.UNKNOWN_ERROR),
   );
 
-  const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
+  const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
   const startTime = dayjs(eventStartTime).toISOString();
 
   const assignResults = unsafelyUnwrap(
     await runAssignment({
-      assignmentStrategy,
+      assignmentAlgorithm,
       startTime,
     }),
   );
 
-  expect(assignResults.algorithm).toEqual(AssignmentStrategy.PADG);
+  expect(assignResults.algorithm).toEqual(AssignmentAlgorithm.PADG);
   expect(assignResults.status).toEqual(
     AssignmentResultStatus.NO_STARTING_PROGRAM_ITEMS,
   );
@@ -189,17 +189,17 @@ test("If PADG assignment fails, should return random result", async () => {
     makeErrorResult(AssignmentError.UNKNOWN_ERROR),
   );
 
-  const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
+  const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
   const startTime = dayjs(eventStartTime).toISOString();
 
   const assignResults = unsafelyUnwrap(
     await runAssignment({
-      assignmentStrategy,
+      assignmentAlgorithm,
       startTime,
     }),
   );
 
-  expect(assignResults.algorithm).toEqual(AssignmentStrategy.RANDOM);
+  expect(assignResults.algorithm).toEqual(AssignmentAlgorithm.RANDOM);
   expect(assignResults.status).toEqual(
     AssignmentResultStatus.NO_STARTING_PROGRAM_ITEMS,
   );
@@ -213,11 +213,11 @@ test("If both assignments fail, should return error result", async () => {
     makeErrorResult(AssignmentError.UNKNOWN_ERROR),
   );
 
-  const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
+  const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
   const startTime = dayjs(eventStartTime).toISOString();
 
   const assignResultsResult = await runAssignment({
-    assignmentStrategy,
+    assignmentAlgorithm,
     startTime,
   });
 
