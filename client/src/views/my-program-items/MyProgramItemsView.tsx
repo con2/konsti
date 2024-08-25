@@ -16,7 +16,7 @@ import {
   loadGroupMembers,
 } from "client/utils/loadData";
 import { useAppSelector } from "client/utils/hooks";
-import { SignupStrategy } from "shared/config/eventConfigTypes";
+import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import {
   selectDirectSignups,
   selectFavoriteProgramItems,
@@ -116,7 +116,7 @@ export const MyProgramItemsView = (): ReactElement => {
           groupMembers,
         })}
       />
-      {signupStrategy !== SignupStrategy.DIRECT && (
+      {signupStrategy !== EventSignupStrategy.DIRECT && (
         <MyLotterySignupsList
           lotterySignups={getLotterySignups({
             lotterySignups,

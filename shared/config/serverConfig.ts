@@ -1,4 +1,7 @@
-import { LoginProvider, SignupStrategy } from "shared/config/eventConfigTypes";
+import {
+  LoginProvider,
+  EventSignupStrategy,
+} from "shared/config/eventConfigTypes";
 
 export interface ServerConfig {
   port: number;
@@ -29,7 +32,7 @@ export interface ServerConfig {
   consoleLogFormatJson: boolean;
   enableLoggingInTests: boolean;
   onlyCronjobs: boolean;
-  defaultSignupStrategy: SignupStrategy;
+  defaultSignupStrategy: EventSignupStrategy;
   defaultLoginProvider: LoginProvider;
 }
 
@@ -58,7 +61,7 @@ const commonConfig = {
   enableRemoveOverlapSignups: true,
 
   // Default DB values
-  defaultSignupStrategy: SignupStrategy.LOTTERY_AND_DIRECT,
+  defaultSignupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
   defaultLoginProvider: LoginProvider.LOCAL,
 
   // Event settings

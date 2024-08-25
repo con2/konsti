@@ -1,5 +1,8 @@
 import { z } from "zod";
-import { LoginProvider, SignupStrategy } from "shared/config/eventConfigTypes";
+import {
+  LoginProvider,
+  EventSignupStrategy,
+} from "shared/config/eventConfigTypes";
 import {
   ProgramItem,
   ProgramItemSchema,
@@ -30,7 +33,7 @@ export interface SettingsPayload {
   hiddenProgramItems: readonly ProgramItem[];
   appOpen: boolean;
   signupQuestions: readonly SignupQuestion[];
-  signupStrategy: SignupStrategy;
+  signupStrategy: EventSignupStrategy;
   loginProvider: LoginProvider;
 }
 

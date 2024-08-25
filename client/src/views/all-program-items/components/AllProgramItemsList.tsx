@@ -15,7 +15,7 @@ import {
 import { RaisedCard } from "client/components/RaisedCard";
 import { getIsInGroup } from "client/views/group/groupUtils";
 import { SignupQuestion } from "shared/types/models/settings";
-import { SignupStrategy } from "shared/config/eventConfigTypes";
+import { ProgramItemSignupStrategy } from "shared/types/models/programItem";
 
 interface Props {
   programItems: readonly ProgramItem[];
@@ -89,7 +89,7 @@ export const AllProgramItemsList = ({ programItems }: Props): ReactElement => {
                 startTime={startTime}
                 signups={programItemSignups?.users ?? []}
                 signupStrategy={
-                  programItem.signupStrategy ?? SignupStrategy.DIRECT
+                  programItem.signupStrategy ?? ProgramItemSignupStrategy.DIRECT
                 }
                 lotterySignups={ownOrGroupCreatorLotterySignups}
                 directSignups={directSignups}

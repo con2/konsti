@@ -10,9 +10,10 @@ import {
   ProgramItem,
   ProgramItemWithUserSignups,
   ProgramType,
+  ProgramItemSignupStrategy,
   UserSignup,
 } from "shared/types/models/programItem";
-import { SignupStrategy } from "shared/config/eventConfigTypes";
+import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import { config } from "shared/config";
 import { findSettings } from "server/features/settings/settingsRepository";
 import { Settings, SignupQuestion } from "shared/types/models/settings";
@@ -132,30 +133,40 @@ const getSignupStrategyForProgramItem = (
   programItem: ProgramItemDoc,
   settings: Settings,
   currentTime: Dayjs,
-): SignupStrategy => {
+): ProgramItemSignupStrategy => {
   const start = dayjs(programItem.startTime);
   const { directSignupPhaseStart, twoPhaseSignupProgramTypes } = config.event();
 
-  if (settings.signupStrategy !== SignupStrategy.LOTTERY_AND_DIRECT) {
-    return settings.signupStrategy;
+  // lottery
+
+  if (settings.signupStrategy === EventSignupStrategy.LOTTERY) {
+    return ProgramItemSignupStrategy.LOTTERY;
   }
 
+  // direct
+
+  if (settings.signupStrategy === EventSignupStrategy.DIRECT) {
+    return ProgramItemSignupStrategy.DIRECT;
+  }
+
+  // lottery+direct
+
   if (!twoPhaseSignupProgramTypes.includes(programItem.programType)) {
-    return SignupStrategy.DIRECT;
+    return ProgramItemSignupStrategy.DIRECT;
   }
 
   if (tooEarlyForLotterySignup(programItem.startTime)) {
-    return SignupStrategy.DIRECT;
+    return ProgramItemSignupStrategy.DIRECT;
   }
 
   const isAfterDirectSignupStarted = currentTime.isAfter(
     start.subtract(directSignupPhaseStart, "minutes"),
   );
   if (isAfterDirectSignupStarted) {
-    return SignupStrategy.DIRECT;
+    return ProgramItemSignupStrategy.DIRECT;
   }
 
-  return SignupStrategy.LOTTERY;
+  return ProgramItemSignupStrategy.LOTTERY;
 };
 
 const getDirectSignupsForProgramItem = (

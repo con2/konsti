@@ -2,7 +2,10 @@ import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { uniq } from "lodash-es";
 import { AdminState, RootState } from "client/types/reduxTypes";
 import { SettingsPayload } from "shared/types/api/settings";
-import { LoginProvider, SignupStrategy } from "shared/config/eventConfigTypes";
+import {
+  LoginProvider,
+  EventSignupStrategy,
+} from "shared/config/eventConfigTypes";
 import { ProgramItem } from "shared/types/models/programItem";
 import { SignupQuestion } from "shared/types/models/settings";
 import { SignupMessage } from "shared/types/models/signupMessage";
@@ -63,7 +66,7 @@ const adminSlice = createSlice({
 
     submitSetSignupStrategyAsync(
       state,
-      action: PayloadAction<SignupStrategy>,
+      action: PayloadAction<EventSignupStrategy>,
     ): AdminState {
       return { ...state, signupStrategy: action.payload };
     },
