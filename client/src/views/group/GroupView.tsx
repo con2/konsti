@@ -1,6 +1,5 @@
 import { ReactElement, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { useStore } from "react-redux";
 import styled from "styled-components";
 import dayjs from "dayjs";
 import { Link } from "react-router-dom";
@@ -28,15 +27,13 @@ export const GroupView = (): ReactElement => {
   const directSignups = useAppSelector(selectDirectSignups);
   const { t } = useTranslation();
 
-  const store = useStore();
-
   useEffect(() => {
     const fetchData = async (): Promise<void> => {
       await loadGroupMembers();
     };
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     fetchData();
-  }, [store]);
+  }, []);
 
   const filteredActiveDirectSignups = directSignups
     .filter(

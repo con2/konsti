@@ -67,7 +67,7 @@ export const ProgramItemPage = (): ReactElement => {
 
   useEffect(() => {
     setLoading(false);
-  }, [foundProgramItem]);
+  }, [/* effect dep */ foundProgramItem]);
 
   return (
     <div>

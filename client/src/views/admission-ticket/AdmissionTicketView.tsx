@@ -31,7 +31,7 @@ export const AdmissionTicketView = (): ReactElement => {
 
   useEffect(() => {
     setLoading(false);
-  }, [foundProgramItem, isSignedUp]);
+  }, [/* effect dep */ foundProgramItem, /* effect dep */ isSignedUp]);
 
   return (
     <div>
