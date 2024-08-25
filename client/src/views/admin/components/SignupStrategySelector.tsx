@@ -22,7 +22,7 @@ export const SignupStrategySelector = (): ReactElement => {
 
   return (
     <div>
-      <span>{t("admin.strategy")}</span>{" "}
+      <span>{t("admin.signupStrategy")}</span>{" "}
       <Dropdown
         options={strategies}
         selectedValue={signupStrategy as string}

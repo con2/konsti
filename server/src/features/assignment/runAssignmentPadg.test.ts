@@ -5,7 +5,7 @@ import { faker } from "@faker-js/faker";
 import { assertUserUpdatedCorrectly } from "server/features/assignment/runAssignmentTestUtils";
 import { runAssignment } from "server/features/assignment/runAssignment";
 import { generateTestData } from "server/test/test-data-generation/generators/generateTestData";
-import { AssignmentStrategy } from "shared/config/eventConfigTypes";
+import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
 import { config } from "shared/config";
 import { AssignmentResultStatus } from "server/types/resultTypes";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
@@ -40,7 +40,7 @@ afterEach(async () => {
   await mongoose.disconnect();
 });
 
-test("Assignment with valid data should return success with padg strategy", async () => {
+test("Assignment with valid data should return success with padg algorithm", async () => {
   const newUsersCount = 20;
   const groupSize = 3;
   const numberOfGroups = 5;
@@ -56,14 +56,14 @@ test("Assignment with valid data should return success with padg strategy", asyn
   );
 
   const { eventStartTime } = config.event();
-  const assignmentStrategy = AssignmentStrategy.PADG;
+  const assignmentAlgorithm = AssignmentAlgorithm.PADG;
   const startTime = dayjs(eventStartTime).add(2, "hours").toISOString();
 
   // FIRST RUN
 
   const assignResults = unsafelyUnwrap(
     await runAssignment({
-      assignmentStrategy,
+      assignmentAlgorithm,
       startTime,
     }),
   );
@@ -90,7 +90,7 @@ test("Assignment with valid data should return success with padg strategy", asyn
 
   const assignResults2 = unsafelyUnwrap(
     await runAssignment({
-      assignmentStrategy,
+      assignmentAlgorithm,
       startTime,
     }),
   );
@@ -115,7 +115,7 @@ test("Assignment with valid data should return success with padg strategy", asyn
 });
 
 test("Should adjust attendee limits if there are previous signups from moved program items", async () => {
-  const assignmentStrategy = AssignmentStrategy.PADG;
+  const assignmentAlgorithm = AssignmentAlgorithm.PADG;
 
   await saveProgramItems([
     { ...testProgramItem, minAttendance: 2, maxAttendance: 2 },
@@ -157,7 +157,7 @@ test("Should adjust attendee limits if there are previous signups from moved pro
 
   const assignResults = unsafelyUnwrap(
     await runAssignment({
-      assignmentStrategy,
+      assignmentAlgorithm,
       startTime: testProgramItem.startTime,
     }),
   );
@@ -187,7 +187,7 @@ test("Should adjust attendee limits if there are previous signups from moved pro
   ]);
 });
 
-test("Assignment with no program items should return error with padg strategy", async () => {
+test("Assignment with no program items should return error with padg algorithm", async () => {
   const newUsersCount = 1;
   const groupSize = 0;
   const numberOfGroups = 0;
@@ -203,12 +203,12 @@ test("Assignment with no program items should return error with padg strategy", 
   );
 
   const { eventStartTime } = config.event();
-  const assignmentStrategy = AssignmentStrategy.PADG;
+  const assignmentAlgorithm = AssignmentAlgorithm.PADG;
   const startTime = dayjs(eventStartTime).add(2, "hours").toISOString();
 
   const assignResults = unsafelyUnwrap(
     await runAssignment({
-      assignmentStrategy,
+      assignmentAlgorithm,
       startTime,
     }),
   );
@@ -218,7 +218,7 @@ test("Assignment with no program items should return error with padg strategy", 
   );
 });
 
-test("Assignment with no attendees should return error with padg strategy", async () => {
+test("Assignment with no attendees should return error with padg algorithm", async () => {
   const newUsersCount = 0;
   const groupSize = 0;
   const numberOfGroups = 0;
@@ -234,12 +234,12 @@ test("Assignment with no attendees should return error with padg strategy", asyn
   );
 
   const { eventStartTime } = config.event();
-  const assignmentStrategy = AssignmentStrategy.PADG;
+  const assignmentAlgorithm = AssignmentAlgorithm.PADG;
   const startTime = dayjs(eventStartTime).add(2, "hours").toISOString();
 
   const assignResults = unsafelyUnwrap(
     await runAssignment({
-      assignmentStrategy,
+      assignmentAlgorithm,
       startTime,
     }),
   );

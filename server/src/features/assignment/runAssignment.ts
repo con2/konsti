@@ -1,10 +1,10 @@
 import { logger } from "server/utils/logger";
-import { runAssignmentStrategy } from "server/features/assignment/utils/runAssignmentStrategy";
+import { runAssignmentAlgorithm } from "server/features/assignment/utils/runAssignmentAlgorithm";
 import { removeInvalidProgramItemsFromUsers } from "server/features/assignment/utils/removeInvalidProgramItemsFromUsers";
 import { AssignmentResult } from "server/types/resultTypes";
 import { findUsers } from "server/features/user/userRepository";
 import { findProgramItems } from "server/features/program-item/programItemRepository";
-import { AssignmentStrategy } from "shared/config/eventConfigTypes";
+import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
 import { config } from "shared/config";
 import { removeOverlapSignups } from "server/features/assignment/utils/removeOverlapSignups";
 import { saveResults } from "server/features/assignment/utils/saveResults";
@@ -21,14 +21,14 @@ import {
 import { AssignmentError, MongoDbError } from "shared/types/api/errors";
 
 interface RunAssignmentParams {
-  assignmentStrategy: AssignmentStrategy;
+  assignmentAlgorithm: AssignmentAlgorithm;
   startTime?: string;
   useDynamicStartTime?: boolean;
   assignmentDelay?: number;
 }
 
 export const runAssignment = async ({
-  assignmentStrategy,
+  assignmentAlgorithm,
   startTime,
   useDynamicStartTime = false,
   assignmentDelay = 0,
@@ -103,8 +103,8 @@ export const runAssignment = async ({
   }
   const directSignups = unwrapResult(directSignupsResult);
 
-  const assignResultsResult = runAssignmentStrategy(
-    assignmentStrategy,
+  const assignResultsResult = runAssignmentAlgorithm(
+    assignmentAlgorithm,
     validLotterySignupsUsers,
     validLotterySignupProgramItems,
     assignmentTime,

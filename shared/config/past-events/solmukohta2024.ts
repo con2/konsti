@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import {
-  AssignmentStrategy,
+  AssignmentAlgorithm,
   EventName,
   EventConfig,
 } from "shared/config/eventConfigTypes";
@@ -13,7 +13,7 @@ const eventConfig: Partial<EventConfig> = {
 
   // Event settings
   requireRegistrationCode: true,
-  assignmentStrategy: AssignmentStrategy.RANDOM_PADG,
+  assignmentAlgorithm: AssignmentAlgorithm.RANDOM_PADG,
   enableGroups: false,
   manualSignupMode: "none",
   signupOpen: true,

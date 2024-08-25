@@ -199,7 +199,7 @@ export const autoAssignAttendees = async (): Promise<void> => {
   logger.info("Auto assignment not running, continue");
 
   const runAssignmentResult = await runAssignment({
-    assignmentStrategy: config.event().assignmentStrategy,
+    assignmentAlgorithm: config.event().assignmentAlgorithm,
     useDynamicStartTime: true,
     assignmentDelay: autoAssignDelay,
   });

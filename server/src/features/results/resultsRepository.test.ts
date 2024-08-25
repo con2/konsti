@@ -4,7 +4,7 @@ import { faker } from "@faker-js/faker";
 import { ResultsModel } from "server/features/results/resultsSchema";
 import { UserAssignmentResult } from "shared/types/models/result";
 import { saveResult } from "server/features/results/resultsRepository";
-import { AssignmentStrategy } from "shared/config/eventConfigTypes";
+import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
 
 beforeEach(async () => {
   await mongoose.connect(globalThis.__MONGO_URI__, {
@@ -19,7 +19,7 @@ afterEach(async () => {
 test("should insert new result into collection", async () => {
   const signupResultData: UserAssignmentResult[] = [];
   const startTime = "2019-07-26T14:00:00.000Z";
-  const algorithm = AssignmentStrategy.PADG;
+  const algorithm = AssignmentAlgorithm.PADG;
   const message = "Test assign result message";
 
   await saveResult(signupResultData, startTime, algorithm, message);

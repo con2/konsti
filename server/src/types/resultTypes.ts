@@ -2,11 +2,12 @@ import mongoose, { ObjectId } from "mongoose";
 import { ProgramItem } from "shared/types/models/programItem";
 import { Signup, User } from "shared/types/models/user";
 import { UserAssignmentResult } from "shared/types/models/result";
+import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
 
 export interface ResultDoc
   extends UserAssignmentResult,
     mongoose.Document<ObjectId> {
-  algorithm: string;
+  algorithm: AssignmentAlgorithm;
   message: string;
 }
 
@@ -30,7 +31,7 @@ export enum AssignmentResultStatus {
 export interface AssignmentResult {
   results: readonly UserAssignmentResult[];
   message: string;
-  algorithm: string;
+  algorithm: AssignmentAlgorithm;
   status: AssignmentResultStatus;
 }
 
@@ -38,10 +39,10 @@ export interface ResultsCollectionEntry {
   startTime: string;
   results: readonly UserAssignmentResult[];
   message: string;
-  algorithm: string;
+  algorithm: AssignmentAlgorithm;
 }
 
-export interface AssignmentStrategyResult {
+export interface AssignmentAlgorithmResult {
   results: readonly UserAssignmentResult[];
   message: string;
 }

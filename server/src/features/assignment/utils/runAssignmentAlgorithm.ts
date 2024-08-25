@@ -7,7 +7,7 @@ import {
   AssignmentResultStatus,
   AssignmentResult,
 } from "server/types/resultTypes";
-import { AssignmentStrategy } from "shared/config/eventConfigTypes";
+import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import {
@@ -19,8 +19,8 @@ import {
 } from "shared/utils/result";
 import { AssignmentError } from "shared/types/api/errors";
 
-export const runAssignmentStrategy = (
-  assignmentStrategy: AssignmentStrategy,
+export const runAssignmentAlgorithm = (
+  assignmentAlgorithm: AssignmentAlgorithm,
   users: readonly User[],
   programItems: readonly ProgramItem[],
   startTime: string,
@@ -34,25 +34,30 @@ export const runAssignmentStrategy = (
     `Assigning users for program items starting at ${startTime.toString()}`,
   );
 
-  logger.info(`Assign strategy: ${assignmentStrategy}`);
+  logger.info(`Assign algorithm: ${assignmentAlgorithm}`);
 
-  if (assignmentStrategy === AssignmentStrategy.PADG) {
-    return runPadgStrategy(users, programItems, startTime, directSignups);
+  if (assignmentAlgorithm === AssignmentAlgorithm.PADG) {
+    return runPadgAlgorithm(users, programItems, startTime, directSignups);
   }
 
-  if (assignmentStrategy === AssignmentStrategy.RANDOM) {
-    return runRandomStrategy(users, programItems, startTime, directSignups);
+  if (assignmentAlgorithm === AssignmentAlgorithm.RANDOM) {
+    return runRandomAlgorithm(users, programItems, startTime, directSignups);
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-  if (assignmentStrategy === AssignmentStrategy.RANDOM_PADG) {
-    return runRandomPadgStrategy(users, programItems, startTime, directSignups);
+  if (assignmentAlgorithm === AssignmentAlgorithm.RANDOM_PADG) {
+    return runRandomPadgAlgorithm(
+      users,
+      programItems,
+      startTime,
+      directSignups,
+    );
   }
 
-  return exhaustiveSwitchGuard(assignmentStrategy);
+  return exhaustiveSwitchGuard(assignmentAlgorithm);
 };
 
-const runPadgStrategy = (
+const runPadgAlgorithm = (
   users: readonly User[],
   programItems: readonly ProgramItem[],
   startTime: string,
@@ -71,7 +76,7 @@ const runPadgStrategy = (
   return makeSuccessResult(padgResult);
 };
 
-const runRandomStrategy = (
+const runRandomAlgorithm = (
   users: readonly User[],
   programItems: readonly ProgramItem[],
   startTime: string,
@@ -90,7 +95,7 @@ const runRandomStrategy = (
   return makeSuccessResult(randomResult);
 };
 
-const runRandomPadgStrategy = (
+const runRandomPadgAlgorithm = (
   users: readonly User[],
   programItems: readonly ProgramItem[],
   startTime: string,
@@ -112,7 +117,7 @@ const runRandomPadgStrategy = (
     ? {
         results: [],
         message: `Random assignment failed: ${randomResultResult.error}`,
-        algorithm: AssignmentStrategy.RANDOM,
+        algorithm: AssignmentAlgorithm.RANDOM,
         status: AssignmentResultStatus.ERROR,
       }
     : unwrapResult(randomResultResult);
@@ -133,7 +138,7 @@ const runRandomPadgStrategy = (
     ? {
         results: [],
         message: `PADG assignment failed: ${padgResultResult.error}`,
-        algorithm: AssignmentStrategy.PADG,
+        algorithm: AssignmentAlgorithm.PADG,
         status: AssignmentResultStatus.ERROR,
       }
     : unwrapResult(padgResultResult);

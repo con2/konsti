@@ -3,7 +3,7 @@ import { getGroups } from "server/features/assignment/utils/getGroups";
 import { getList } from "server/features/assignment/utils/getList";
 import { getEvents } from "server/features/assignment/utils/getEvents";
 import { formatResults } from "server/features/assignment/utils/formatResults";
-import { AssignmentStrategyResult, Input } from "server/types/resultTypes";
+import { AssignmentAlgorithmResult, Input } from "server/types/resultTypes";
 import { ProgramItem } from "shared/types/models/programItem";
 import { User } from "shared/types/models/user";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
@@ -22,7 +22,7 @@ export const runPadgAssignment = (
   attendeeGroups: readonly User[][],
   startTime: string,
   directSignups: readonly DirectSignupsForProgramItem[],
-): Result<AssignmentStrategyResult, AssignmentError> => {
+): Result<AssignmentAlgorithmResult, AssignmentError> => {
   const groupsResult = getGroups(attendeeGroups, startTime);
   if (isErrorResult(groupsResult)) {
     return groupsResult;

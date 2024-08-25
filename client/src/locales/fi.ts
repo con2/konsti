@@ -590,7 +590,7 @@ export const translationFI = {
     sentryTesting: "Sentryn testaus",
     sentryClientTest: "Client-testi",
     sentryBackendTest: "Backend-testi",
-    strategy: "Strategia",
+    signupStrategy: "Ilmoittautumisstapa",
     loginProvider: "Kirjautumistapa",
   },
 } as const;
