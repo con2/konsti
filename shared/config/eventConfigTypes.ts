@@ -61,4 +61,5 @@ export interface EventConfig {
   isEnglishProgramItems: string[];
   logInvalidStartTimes: boolean;
   hideParticipantListProgramTypes: ProgramType[];
+  fixedLotterySignupTime: string | null;
 }
