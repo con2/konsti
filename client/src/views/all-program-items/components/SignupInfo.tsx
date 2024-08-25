@@ -11,7 +11,6 @@ import { SignupHelpText } from "client/views/all-program-items/components/Signup
 import { getTimeNow } from "client/utils/getTimeNow";
 import { isAlreadyDirectySigned } from "client/views/all-program-items/components/allProgramItemsUtils";
 import { AdmissionTicketLink } from "client/views/all-program-items/components/AdmissionTicketLink";
-import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 
 interface Props {
   signupStrategy: ProgramItemSignupStrategy;
@@ -41,9 +40,7 @@ export const SignupInfo = ({
     .directSignupAlwaysOpenIds.includes(programItem.programItemId);
 
   const isDirectSignupMode =
-    config.event().manualSignupMode === EventSignupStrategy.DIRECT ||
-    signupStrategy === ProgramItemSignupStrategy.DIRECT ||
-    signupAlwaysOpen;
+    signupStrategy === ProgramItemSignupStrategy.DIRECT || signupAlwaysOpen;
 
   const requiresSignup = !isRevolvingDoorWorkshop(programItem);
   const konstiSignup = !config
