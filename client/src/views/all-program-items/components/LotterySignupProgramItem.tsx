@@ -17,7 +17,7 @@ import { CancelSignupForm } from "client/views/all-program-items/components/Canc
 import { getTimeNow } from "client/utils/getTimeNow";
 import { config } from "shared/config";
 import { SignupStrategy } from "shared/config/eventConfigTypes";
-import { getAlgorithmSignupStartTime } from "shared/utils/signupTimes";
+import { getLotterySignupStartTime } from "shared/utils/signupTimes";
 import { getIsInGroup } from "client/views/group/groupUtils";
 import { InfoText } from "client/components/InfoText";
 
@@ -96,12 +96,12 @@ export const LotterySignupProgramItem = ({
     lotterySignups,
   );
 
-  const algorithmSignupStartTime = getAlgorithmSignupStartTime(startTime);
+  const lotterySignupStartTime = getLotterySignupStartTime(startTime);
 
   const timeNow = getTimeNow();
   const lotterySignupOpen =
-    timeNow.isSameOrAfter(algorithmSignupStartTime) ||
-    config.event().manualSignupMode === SignupStrategy.ALGORITHM;
+    timeNow.isSameOrAfter(lotterySignupStartTime) ||
+    config.event().manualSignupMode === SignupStrategy.LOTTERY;
 
   if (!loggedIn) {
     return (

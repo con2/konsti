@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, test, vi } from "vitest";
 import dayjs from "dayjs";
 import {
-  getAlgorithmSignupStartTime,
+  getLotterySignupStartTime,
   getDirectSignupStartTime,
 } from "shared/utils/signupTimes";
 import {
@@ -48,72 +48,72 @@ beforeEach(() => {
   });
 });
 
-describe(`Algorithm signup`, () => {
+describe(`Lottery signup`, () => {
   test("RPG starting at 15:00 should have signup starting at 15:00", () => {
     const startTime = `${friday}T12:00:00.000Z`;
-    const signupStartTime = getAlgorithmSignupStartTime(startTime);
+    const signupStartTime = getLotterySignupStartTime(startTime);
     expect(signupStartTime.toISOString()).toEqual(`${friday}T12:00:00.000Z`);
   });
 
   test("RPG starting at 16:00 should have signup starting at 15:00", () => {
     const startTime = `${friday}T13:00:00.000Z`;
-    const signupStartTime = getAlgorithmSignupStartTime(startTime);
+    const signupStartTime = getLotterySignupStartTime(startTime);
     expect(signupStartTime.toISOString()).toEqual(`${friday}T12:00:00.000Z`);
   });
 
   test("RPG starting at 17:00 should have signup starting at 15:00", () => {
     const startTime = `${friday}T14:00:00.000Z`;
-    const signupStartTime = getAlgorithmSignupStartTime(startTime);
+    const signupStartTime = getLotterySignupStartTime(startTime);
     expect(signupStartTime.toISOString()).toEqual(`${friday}T12:00:00.000Z`);
   });
 
   test("RPG starting at 18:00 should have signup starting at 15:00", () => {
     const startTime = `${friday}T15:00:00.000Z`;
-    const signupStartTime = getAlgorithmSignupStartTime(startTime);
+    const signupStartTime = getLotterySignupStartTime(startTime);
     expect(signupStartTime.toISOString()).toEqual(`${friday}T12:00:00.000Z`);
   });
 
   test("RPG starting at 19:00 should have signup starting at 15:00", () => {
     const startTime = `${friday}T16:00:00.000Z`;
-    const signupStartTime = getAlgorithmSignupStartTime(startTime);
+    const signupStartTime = getLotterySignupStartTime(startTime);
     expect(signupStartTime.toISOString()).toEqual(`${friday}T12:00:00.000Z`);
   });
 
   test("RPG starting at 20:00 should have signup starting at 16:00", () => {
     const startTime = `${friday}T17:00:00.000Z`;
-    const signupStartTime = getAlgorithmSignupStartTime(startTime);
+    const signupStartTime = getLotterySignupStartTime(startTime);
     expect(signupStartTime.toISOString()).toEqual(`${friday}T13:00:00.000Z`);
   });
 
   test("RPG starting at 21:00 should have signup starting at 17:00", () => {
     const startTime = `${friday}T18:00:00.000Z`;
-    const signupStartTime = getAlgorithmSignupStartTime(startTime);
+    const signupStartTime = getLotterySignupStartTime(startTime);
     expect(signupStartTime.toISOString()).toEqual(`${friday}T14:00:00.000Z`);
   });
 });
 
-describe(`Early algorithm signup`, () => {
+describe(`Early lottery signup`, () => {
   test("RPG starting at 09:00 should have signup starting at 22:00", () => {
     const startTime = `${saturday}T06:00:00.000Z`;
-    const signupStartTime = getAlgorithmSignupStartTime(startTime);
+    const signupStartTime = getLotterySignupStartTime(startTime);
     expect(signupStartTime.toISOString()).toEqual(`${friday}T19:00:00.000Z`);
   });
 
   test("RPG starting at 10:00 should have signup starting at 22:00", () => {
     const startTime = `${saturday}T07:00:00.000Z`;
-    const signupStartTime = getAlgorithmSignupStartTime(startTime);
+    const signupStartTime = getLotterySignupStartTime(startTime);
     expect(signupStartTime.toISOString()).toEqual(`${friday}T19:00:00.000Z`);
   });
 
   test("RPG starting at 11:00 should have signup starting at 07:00", () => {
     const startTime = `${saturday}T08:00:00.000Z`;
-    const signupStartTime = getAlgorithmSignupStartTime(startTime);
+    const signupStartTime = getLotterySignupStartTime(startTime);
     expect(signupStartTime.toISOString()).toEqual(`${saturday}T04:00:00.000Z`);
   });
 
   test("RPG starting at 12:00 should have signup starting at 08:00", () => {
     const startTime = `${saturday}T09:00:00.000Z`;
-    const signupStartTime = getAlgorithmSignupStartTime(startTime);
+    const signupStartTime = getLotterySignupStartTime(startTime);
     expect(signupStartTime.toISOString()).toEqual(`${saturday}T05:00:00.000Z`);
   });
 });

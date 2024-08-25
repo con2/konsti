@@ -6,8 +6,8 @@ import { ProgramItem, SignupType } from "shared/types/models/programItem";
 import { getTimeNow } from "client/utils/getTimeNow";
 import { isRevolvingDoorWorkshop } from "client/utils/isRevolvingDoorWorkshop";
 import {
-  getAlgorithmSignupEndTime,
-  getAlgorithmSignupStartTime,
+  getLotterySignupEndTime,
+  getLotterySignupStartTime,
   getDirectSignupStartTime,
 } from "shared/utils/signupTimes";
 import {
@@ -15,7 +15,7 @@ import {
   getFormattedInterval,
 } from "client/views/all-program-items/components/allProgramItemsUtils";
 import { config } from "shared/config";
-import { tooEearlyForAlgorithmSignup } from "shared/utils/tooEearlyForAlgorithmSignup";
+import { tooEarlyForLotterySignup } from "shared/utils/tooEarlyForLotterySignup";
 
 interface Props {
   programItem: ProgramItem;
@@ -34,18 +34,18 @@ export const SignupHelpText = ({
 }: Props): ReactElement => {
   const { t } = useTranslation();
 
-  const isAlgorithmSignup =
+  const isLotterySignup =
     config
       .event()
       .twoPhaseSignupProgramTypes.includes(programItem.programType) &&
-    !tooEearlyForAlgorithmSignup(startTime);
+    !tooEarlyForLotterySignup(startTime);
 
   const timeNow = getTimeNow();
   const programStartTime = dayjs(programItem.startTime);
   const directSignupStartTime = getDirectSignupStartTime(programItem);
   const directSignupStarted = timeNow.isSameOrAfter(directSignupStartTime);
-  const algorithmSignupStartTime = getAlgorithmSignupStartTime(startTime);
-  const algorithmSignupEndTime = getAlgorithmSignupEndTime(startTime);
+  const lotterySignupStartTime = getLotterySignupStartTime(startTime);
+  const lotterySignupEndTime = getLotterySignupEndTime(startTime);
 
   if (
     programItem.signupType === SignupType.NONE ||
@@ -88,7 +88,7 @@ export const SignupHelpText = ({
     );
   }
 
-  if (!isAlgorithmSignup) {
+  if (!isLotterySignup) {
     if (!directSignupStarted) {
       return (
         <p>
@@ -107,17 +107,17 @@ export const SignupHelpText = ({
     );
   }
 
-  // Algorithm sign-up
-  if (algorithmSignupStartTime.isSameOrAfter(timeNow)) {
+  // Lottery sign-up
+  if (lotterySignupStartTime.isSameOrAfter(timeNow)) {
     // Waiting for sign up to start
     return (
       <p>
         <FontAwesomeIcon icon={"dice-three"} />{" "}
-        {t("signup.help.algorithmSignupStartsLater")}
+        {t("signup.help.lotterySignupStartsLater")}
         <b>
           {getFormattedInterval(
-            algorithmSignupStartTime,
-            algorithmSignupEndTime,
+            lotterySignupStartTime,
+            lotterySignupEndTime,
             timeNow,
           )}
         </b>
@@ -133,15 +133,15 @@ export const SignupHelpText = ({
       </p>
     );
   } else if (
-    algorithmSignupEndTime.isSameOrAfter(timeNow) &&
+    lotterySignupEndTime.isSameOrAfter(timeNow) &&
     !directSignupStarted
   ) {
-    // Algorithm sign-up happening now
+    // Lottery sign-up happening now
     return (
       <p>
         <FontAwesomeIcon icon={"dice-three"} />{" "}
-        {t("signup.help.algorithmSignupOpen")}
-        <b>{getFormattedTime(algorithmSignupEndTime, timeNow)}</b>.
+        {t("signup.help.lotterySignupOpen")}
+        <b>{getFormattedTime(lotterySignupEndTime, timeNow)}</b>.
         {t("signup.help.directSignupStarts")}
         <b>
           {getFormattedInterval(
@@ -155,10 +155,10 @@ export const SignupHelpText = ({
     );
   }
   return (
-    // Algorithm sign-up ended, direct sign-up starting or started
+    // Lottery sign-up ended, direct sign-up starting or started
     <p>
       <FontAwesomeIcon icon={"dice-three"} />{" "}
-      {t("signup.help.algorithmSignupEnded")}
+      {t("signup.help.lotterySignupEnded")}
       {t("signup.help.directSignupStarts")}
       <b>
         {getFormattedInterval(directSignupStartTime, programStartTime, timeNow)}

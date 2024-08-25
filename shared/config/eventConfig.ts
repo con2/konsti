@@ -35,7 +35,7 @@ export const eventConfig: EventConfig = {
 
   hideParticipantListProgramTypes: [ProgramType.FLEAMARKET],
 
-  // These program items have their signup always open even if signup mode is set to algorithm
+  // These program items have their signup always open even if signup mode is set to lottery
   directSignupAlwaysOpenIds: [],
 
   // Add these to Konsti under 'other' program type

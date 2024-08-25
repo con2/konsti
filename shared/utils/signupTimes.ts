@@ -3,7 +3,7 @@ import { config } from "shared/config";
 import { ProgramItem } from "shared/types/models/programItem";
 import { TIMEZONE } from "shared/utils/initializeDayjs";
 
-export const getAlgorithmSignupStartTime = (startTime: string): Dayjs => {
+export const getLotterySignupStartTime = (startTime: string): Dayjs => {
   const { eventStartTime, preSignupStart } = config.event();
 
   // Set timezone because hour comparison and setting hour value
@@ -11,7 +11,7 @@ export const getAlgorithmSignupStartTime = (startTime: string): Dayjs => {
     .tz(TIMEZONE)
     .subtract(preSignupStart, "minutes");
 
-  // If algorithm signup starts before event start time, use event start time
+  // If lottery signup starts before event start time, use event start time
   if (timezoneStartTime.isBefore(dayjs(eventStartTime))) {
     return dayjs(eventStartTime);
   }
@@ -24,7 +24,7 @@ export const getAlgorithmSignupStartTime = (startTime: string): Dayjs => {
   return timezoneStartTime;
 };
 
-export const getAlgorithmSignupEndTime = (startTime: string): Dayjs => {
+export const getLotterySignupEndTime = (startTime: string): Dayjs => {
   const { directSignupPhaseStart } = config.event();
   return dayjs(startTime).subtract(directSignupPhaseStart, "minutes");
 };

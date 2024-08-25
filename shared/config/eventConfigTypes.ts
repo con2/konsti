@@ -4,8 +4,8 @@ import { SignupQuestion } from "shared/types/models/settings";
 
 export enum SignupStrategy {
   DIRECT = "direct",
-  ALGORITHM = "algorithm",
-  ALGORITHM_AND_DIRECT = "algorithm+direct",
+  LOTTERY = "lottery",
+  LOTTERY_AND_DIRECT = "lottery+direct",
 }
 
 export enum AssignmentStrategy {
@@ -49,7 +49,7 @@ export interface EventConfig {
   directSignupAlwaysOpenIds: string[];
   requireRegistrationCode: boolean;
   twoPhaseSignupProgramTypes: ProgramType[];
-  manualSignupMode: SignupStrategy.ALGORITHM | SignupStrategy.DIRECT | "none";
+  manualSignupMode: SignupStrategy.LOTTERY | SignupStrategy.DIRECT | "none";
   signupOpen: boolean;
   resultsVisible: boolean;
   addToKonstiOther: string[];

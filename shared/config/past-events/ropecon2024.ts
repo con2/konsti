@@ -75,7 +75,7 @@ const eventConfig: Partial<EventConfig> = {
 
   rollingSignupStartProgramTypes: [ProgramType.WORKSHOP, ProgramType.OTHER],
 
-  // These program items have their signup always open even if signup mode is set to algorithm
+  // These program items have their signup always open even if signup mode is set to lottery
   directSignupAlwaysOpenIds: [
     "pathfinder-society-4-99-blessings-of-the-forest", // Pathfinder Society #4-99 Blessings of the Forest
   ],
