@@ -4,7 +4,7 @@ import { removeInvalidProgramItemsFromUsers } from "server/features/assignment/u
 import { AssignmentResult } from "server/types/resultTypes";
 import { findUsers } from "server/features/user/userRepository";
 import { findProgramItems } from "server/features/program-item/programItemRepository";
-import { AssignmentStrategy } from "shared/config/eventConfigTypes";
+import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
 import { config } from "shared/config";
 import { removeOverlapSignups } from "server/features/assignment/utils/removeOverlapSignups";
 import { saveResults } from "server/features/assignment/utils/saveResults";
@@ -21,7 +21,7 @@ import {
 import { AssignmentError, MongoDbError } from "shared/types/api/errors";
 
 interface RunAssignmentParams {
-  assignmentStrategy: AssignmentStrategy;
+  assignmentStrategy: AssignmentAlgorithm;
   startTime?: string;
   useDynamicStartTime?: boolean;
   assignmentDelay?: number;

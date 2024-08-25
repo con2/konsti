@@ -6,11 +6,12 @@ import { Result, isErrorResult, makeSuccessResult } from "shared/utils/result";
 import { MongoDbError } from "shared/types/api/errors";
 import { User } from "shared/types/models/user";
 import { ProgramItem } from "shared/types/models/programItem";
+import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
 
 interface SaveResultsParams {
   results: readonly UserAssignmentResult[];
   startTime: string;
-  algorithm: string;
+  algorithm: AssignmentAlgorithm;
   message: string;
   users: User[];
   programItems: ProgramItem[];

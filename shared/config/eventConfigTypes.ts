@@ -8,7 +8,7 @@ export enum SignupStrategy {
   LOTTERY_AND_DIRECT = "lottery+direct",
 }
 
-export enum AssignmentStrategy {
+export enum AssignmentAlgorithm {
   PADG = "padg",
   RANDOM = "random",
   RANDOM_PADG = "random+padg",
@@ -34,7 +34,7 @@ export interface SignupWindow {
 }
 
 export interface EventConfig {
-  assignmentStrategy: AssignmentStrategy;
+  assignmentStrategy: AssignmentAlgorithm;
   enableGroups: boolean;
   eventName: EventName;
   eventYear: string;

@@ -4,7 +4,7 @@ import dayjs from "dayjs";
 import { faker } from "@faker-js/faker";
 import { runAssignment } from "server/features/assignment/runAssignment";
 import { generateTestData } from "server/test/test-data-generation/generators/generateTestData";
-import { AssignmentStrategy } from "shared/config/eventConfigTypes";
+import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
 import { config } from "shared/config";
 import { saveUser } from "server/features/user/userRepository";
 import { saveProgramItems } from "server/features/program-item/programItemRepository";
@@ -66,7 +66,7 @@ describe("Assignment with valid data", () => {
 
   test("should return valid results after multiple executions on different times", async () => {
     const { eventStartTime } = config.event();
-    const assignmentStrategy = AssignmentStrategy.PADG;
+    const assignmentStrategy = AssignmentAlgorithm.PADG;
     const startTime = dayjs(eventStartTime).add(2, "hours").toISOString();
 
     // FIRST RUN
@@ -131,7 +131,7 @@ describe("Assignment with valid data", () => {
 
 describe("Assignment with multiple program types and directSignupAlwaysOpen", () => {
   test("should not remove signups of non-'twoPhaseSignupProgramTypes' program types", async () => {
-    const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
+    const assignmentStrategy = AssignmentAlgorithm.RANDOM_PADG;
 
     // Populate database
     await saveProgramItems([
@@ -217,7 +217,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
   test("should not remove directSignupAlwaysOpen signups if user doesn't have updated result", async () => {
     const directSignupAlwaysOpenId =
       config.event().directSignupAlwaysOpenIds[0];
-    const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
+    const assignmentStrategy = AssignmentAlgorithm.RANDOM_PADG;
 
     // Populate database
     await saveProgramItems([
@@ -300,7 +300,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
   test("should not remove previous signup from moved program item if user doesn't have updated result", async () => {
     // User1, programItem1: 14:00 direct signup -> program item moved 15:00
     // User2, programItem2: 15:00 lottery signup -> doesn't affect user1 signup
-    const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
+    const assignmentStrategy = AssignmentAlgorithm.RANDOM_PADG;
 
     const assignmentTime = dayjs(testProgramItem.startTime)
       .add(1, "hours")
@@ -377,7 +377,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
   test("should update directSignupAlwaysOpen signup with assignment signup if user has updated result", async () => {
     const directSignupAlwaysOpenId =
       config.event().directSignupAlwaysOpenIds[0];
-    const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
+    const assignmentStrategy = AssignmentAlgorithm.RANDOM_PADG;
 
     // Populate database
     await saveProgramItems([
@@ -469,7 +469,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
   test("should update previous signup from moved program item with assignment signup if user has updated result", async () => {
     // ProgramItem1: 14:00 direct signup -> program item moved 15:00
     // ProgramItem2: 15:00 lottery signup -> replaces ProgramItem1
-    const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
+    const assignmentStrategy = AssignmentAlgorithm.RANDOM_PADG;
 
     const assignmentTime = dayjs(testProgramItem.startTime)
       .add(1, "hours")
@@ -550,7 +550,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
 
     // ProgramItem1: 14:00 direct signup LARP
     // ProgramItem2: 14:00 lottery signup TABLETOP_RPG -> replaces ProgramItem1
-    const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
+    const assignmentStrategy = AssignmentAlgorithm.RANDOM_PADG;
     const assignmentTime = testProgramItem.startTime;
 
     await saveProgramItems([
@@ -621,7 +621,7 @@ describe("Assignment with first time bonus", () => {
   test("should assign user without previous 'twoPhaseSignupProgramTypes' signup", async () => {
     const directSignupAlwaysOpenId =
       config.event().directSignupAlwaysOpenIds[0];
-    const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
+    const assignmentStrategy = AssignmentAlgorithm.RANDOM_PADG;
     const tournamentProgramItemId = "AIAHHUA";
 
     // Populate database
@@ -743,7 +743,7 @@ describe("Assignment with first time bonus", () => {
   });
 
   test("should assign user with previous failed lottery signup", async () => {
-    const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
+    const assignmentStrategy = AssignmentAlgorithm.RANDOM_PADG;
 
     // Populate database
     await saveProgramItems([

@@ -7,7 +7,7 @@ import {
   AssignmentResultStatus,
   AssignmentResult,
 } from "server/types/resultTypes";
-import { AssignmentStrategy } from "shared/config/eventConfigTypes";
+import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import {
@@ -20,7 +20,7 @@ import {
 import { AssignmentError } from "shared/types/api/errors";
 
 export const runAssignmentStrategy = (
-  assignmentStrategy: AssignmentStrategy,
+  assignmentStrategy: AssignmentAlgorithm,
   users: readonly User[],
   programItems: readonly ProgramItem[],
   startTime: string,
@@ -36,16 +36,16 @@ export const runAssignmentStrategy = (
 
   logger.info(`Assign strategy: ${assignmentStrategy}`);
 
-  if (assignmentStrategy === AssignmentStrategy.PADG) {
+  if (assignmentStrategy === AssignmentAlgorithm.PADG) {
     return runPadgStrategy(users, programItems, startTime, directSignups);
   }
 
-  if (assignmentStrategy === AssignmentStrategy.RANDOM) {
+  if (assignmentStrategy === AssignmentAlgorithm.RANDOM) {
     return runRandomStrategy(users, programItems, startTime, directSignups);
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-  if (assignmentStrategy === AssignmentStrategy.RANDOM_PADG) {
+  if (assignmentStrategy === AssignmentAlgorithm.RANDOM_PADG) {
     return runRandomPadgStrategy(users, programItems, startTime, directSignups);
   }
 
@@ -112,7 +112,7 @@ const runRandomPadgStrategy = (
     ? {
         results: [],
         message: `Random assignment failed: ${randomResultResult.error}`,
-        algorithm: AssignmentStrategy.RANDOM,
+        algorithm: AssignmentAlgorithm.RANDOM,
         status: AssignmentResultStatus.ERROR,
       }
     : unwrapResult(randomResultResult);
@@ -133,7 +133,7 @@ const runRandomPadgStrategy = (
     ? {
         results: [],
         message: `PADG assignment failed: ${padgResultResult.error}`,
-        algorithm: AssignmentStrategy.PADG,
+        algorithm: AssignmentAlgorithm.PADG,
         status: AssignmentResultStatus.ERROR,
       }
     : unwrapResult(padgResultResult);

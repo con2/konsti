@@ -5,7 +5,7 @@ import { faker } from "@faker-js/faker";
 import { assertUserUpdatedCorrectly } from "server/features/assignment/runAssignmentTestUtils";
 import { runAssignment } from "server/features/assignment/runAssignment";
 import { generateTestData } from "server/test/test-data-generation/generators/generateTestData";
-import { AssignmentStrategy } from "shared/config/eventConfigTypes";
+import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
 import { config } from "shared/config";
 import { AssignmentResultStatus } from "server/types/resultTypes";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
@@ -56,7 +56,7 @@ test("Assignment with valid data should return success with padg strategy", asyn
   );
 
   const { eventStartTime } = config.event();
-  const assignmentStrategy = AssignmentStrategy.PADG;
+  const assignmentStrategy = AssignmentAlgorithm.PADG;
   const startTime = dayjs(eventStartTime).add(2, "hours").toISOString();
 
   // FIRST RUN
@@ -115,7 +115,7 @@ test("Assignment with valid data should return success with padg strategy", asyn
 });
 
 test("Should adjust attendee limits if there are previous signups from moved program items", async () => {
-  const assignmentStrategy = AssignmentStrategy.PADG;
+  const assignmentStrategy = AssignmentAlgorithm.PADG;
 
   await saveProgramItems([
     { ...testProgramItem, minAttendance: 2, maxAttendance: 2 },
@@ -203,7 +203,7 @@ test("Assignment with no program items should return error with padg strategy", 
   );
 
   const { eventStartTime } = config.event();
-  const assignmentStrategy = AssignmentStrategy.PADG;
+  const assignmentStrategy = AssignmentAlgorithm.PADG;
   const startTime = dayjs(eventStartTime).add(2, "hours").toISOString();
 
   const assignResults = unsafelyUnwrap(
@@ -234,7 +234,7 @@ test("Assignment with no attendees should return error with padg strategy", asyn
   );
 
   const { eventStartTime } = config.event();
-  const assignmentStrategy = AssignmentStrategy.PADG;
+  const assignmentStrategy = AssignmentAlgorithm.PADG;
   const startTime = dayjs(eventStartTime).add(2, "hours").toISOString();
 
   const assignResults = unsafelyUnwrap(

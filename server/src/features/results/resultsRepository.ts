@@ -11,6 +11,7 @@ import {
   unwrapResult,
 } from "shared/utils/result";
 import { MongoDbError } from "shared/types/api/errors";
+import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
 
 export const removeResults = async (): Promise<Result<void, MongoDbError>> => {
   logger.info("MongoDB: remove ALL results from db");
@@ -52,7 +53,7 @@ type NewAssignmentResult = Omit<UserAssignmentResult, "directSignup"> & {
 export const saveResult = async (
   signupResultData: readonly UserAssignmentResult[],
   startTime: string,
-  algorithm: string,
+  algorithm: AssignmentAlgorithm,
   message: string,
 ): Promise<Result<void, MongoDbError>> => {
   const programItemsResult = await findProgramItems();

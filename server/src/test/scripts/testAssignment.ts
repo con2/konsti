@@ -2,11 +2,11 @@ import dayjs from "dayjs";
 import { logger } from "server/utils/logger";
 import { runAssignment } from "server/features/assignment/runAssignment";
 import { db } from "server/db/mongodb";
-import { AssignmentStrategy } from "shared/config/eventConfigTypes";
+import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
 import { config } from "shared/config";
 
 const testAssignment = async (
-  assignmentStrategy: AssignmentStrategy,
+  assignmentStrategy: AssignmentAlgorithm,
 ): Promise<void> => {
   const startTime = dayjs(config.event().eventStartTime)
     .add(3, "hours")
@@ -17,10 +17,10 @@ const testAssignment = async (
   });
 };
 
-const getAssignmentStrategy = (userParameter: string): AssignmentStrategy => {
-  const strategies = Object.values(AssignmentStrategy);
-  if (strategies.includes(userParameter as AssignmentStrategy)) {
-    return userParameter as AssignmentStrategy;
+const getAssignmentStrategy = (userParameter: string): AssignmentAlgorithm => {
+  const strategies = Object.values(AssignmentAlgorithm);
+  if (strategies.includes(userParameter as AssignmentAlgorithm)) {
+    return userParameter as AssignmentAlgorithm;
   }
   // eslint-disable-next-line no-restricted-syntax -- Test script
   throw new Error(`Give valid strategy parameter: ${strategies.join(", ")}`);
