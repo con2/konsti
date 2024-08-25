@@ -1,21 +1,21 @@
 import {
   AssignmentStrategy,
-  ConventionName,
+  EventName,
   EventConfig,
 } from "shared/config/eventConfigTypes";
 import { ProgramType } from "shared/types/models/programItem";
 
-// Convention days
+// Event days
 const friday = "2024-09-06";
 // const saturday = "2024-09-07";
 // const sunday = "2024-09-07";
 
 export const eventConfig: EventConfig = {
-  // Convention info
-  conventionName: ConventionName.TRACON,
-  conventionYear: "2024",
+  // Event info
+  eventName: EventName.TRACON,
+  eventYear: "2024",
 
-  // Convention settings
+  // Event settings
   requireRegistrationCode: true,
   assignmentStrategy: AssignmentStrategy.RANDOM_PADG,
   enableGroups: true,
@@ -26,8 +26,8 @@ export const eventConfig: EventConfig = {
 
   twoPhaseSignupProgramTypes: [ProgramType.FLEAMARKET],
 
-  // Convention start at 15:00 GMT+3 but lottery signups start at 08:00 GMT+3
-  conventionStartTime: `${friday}T05:00:00Z`, // Fri 08:00 GMT+3
+  // Event start at 15:00 GMT+3 but lottery signups start at 08:00 GMT+3
+  eventStartTime: `${friday}T05:00:00Z`, // Fri 08:00 GMT+3
 
   directSignupWindows: {},
 
@@ -56,7 +56,7 @@ export const eventConfig: EventConfig = {
   isEnglishProgramItems: [],
 
   // Two phase signup settings
-  PRE_SIGNUP_START: 60 * 4, // minutes
-  DIRECT_SIGNUP_START: 60 * 2, // minutes
-  PHASE_GAP: 15, // minutes
+  preSignupStart: 60 * 4, // minutes
+  directSignupPhaseStart: 60 * 2, // minutes
+  phaseGap: 15, // minutes
 };

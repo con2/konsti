@@ -1,24 +1,24 @@
 import dayjs from "dayjs";
 import {
   AssignmentStrategy,
-  ConventionName,
+  EventName,
   EventConfig,
 } from "shared/config/eventConfigTypes";
 import { ProgramType } from "shared/types/models/programItem";
 import { SignupQuestionType } from "shared/types/models/settings";
 
-// Convention days
+// Event days
 const friday = "2023-07-28";
 const saturday = "2023-07-29";
 const sunday = "2023-07-30";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const eventConfig: Partial<EventConfig> = {
-  // Convention info
-  conventionName: ConventionName.HITPOINT,
-  conventionYear: "2023",
+  // Event info
+  eventName: EventName.HITPOINT,
+  eventYear: "2023",
 
-  // Convention settings
+  // Event settings
   requireRegistrationCode: true,
   assignmentStrategy: AssignmentStrategy.RANDOM_PADG,
   enableGroups: true,
@@ -28,7 +28,7 @@ const eventConfig: Partial<EventConfig> = {
 
   twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
 
-  conventionStartTime: `${friday}T12:00:00Z`, // Fri 15:00 GMT+3
+  eventStartTime: `${friday}T12:00:00Z`, // Fri 15:00 GMT+3
 
   directSignupWindows: {
     larp: [
@@ -101,7 +101,7 @@ const eventConfig: Partial<EventConfig> = {
     ],
 
     experiencePoint: [
-      // Whole convention Fri - Sun
+      // Whole event Fri - Sun
       {
         signupWindowStart: dayjs(`${friday}T12:00:00Z`), // Fri 15:00 GMT+3
         signupWindowClose: dayjs(`${sunday}T21:00:00Z`), // Sun 24:00 GMT+3
@@ -109,7 +109,7 @@ const eventConfig: Partial<EventConfig> = {
     ],
 
     other: [
-      // Whole convention Fri - Sun
+      // Whole event Fri - Sun
       {
         signupWindowStart: dayjs(`${friday}T12:00:00Z`), // Fri 15:00 GMT+3
         signupWindowClose: dayjs(`${sunday}T21:00:00Z`), // Sun 24:00 GMT+3
@@ -240,7 +240,7 @@ const eventConfig: Partial<EventConfig> = {
   ],
 
   // Two phase signup settings
-  PRE_SIGNUP_START: 60 * 4, // minutes
-  DIRECT_SIGNUP_START: 60 * 2, // minutes
-  PHASE_GAP: 15, // minutes
+  preSignupStart: 60 * 4, // minutes
+  directSignupPhaseStart: 60 * 2, // minutes
+  phaseGap: 15, // minutes
 };

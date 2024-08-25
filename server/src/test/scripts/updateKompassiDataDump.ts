@@ -8,7 +8,7 @@ import { logger } from "server/utils/logger";
 import { config } from "shared/config";
 
 const updateKompassiDataDump = async (): Promise<void> => {
-  const { conventionName, conventionYear } = config.event();
+  const { eventName, eventYear } = config.event();
 
   const kompassiProgramItems = unsafelyUnwrap(
     await getProgramFromServer(),
@@ -23,7 +23,7 @@ const updateKompassiDataDump = async (): Promise<void> => {
   );
 
   fs.writeFileSync(
-    `src/test/kompassi-data-dumps/program-${conventionName.toLocaleLowerCase()}-${conventionYear}.json`,
+    `src/test/kompassi-data-dumps/program-${eventName.toLocaleLowerCase()}-${eventYear}.json`,
     // eslint-disable-next-line no-restricted-syntax -- TODO: Fix, format() ban should only apply to dayjs().format()
     await prettier.format(JSON.stringify(formattedKompassiProgramItems), {
       parser: "json",

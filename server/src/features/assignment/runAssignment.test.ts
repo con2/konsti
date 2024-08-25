@@ -65,9 +65,9 @@ describe("Assignment with valid data", () => {
   });
 
   test("should return valid results after multiple executions on different times", async () => {
-    const { conventionStartTime } = config.event();
+    const { eventStartTime } = config.event();
     const assignmentStrategy = AssignmentStrategy.PADG;
-    const startTime = dayjs(conventionStartTime).add(2, "hours").toISOString();
+    const startTime = dayjs(eventStartTime).add(2, "hours").toISOString();
 
     // FIRST RUN
 
@@ -98,7 +98,7 @@ describe("Assignment with valid data", () => {
 
     // SECOND RUN
 
-    const startTime2 = dayjs(conventionStartTime).add(3, "hours").toISOString();
+    const startTime2 = dayjs(eventStartTime).add(3, "hours").toISOString();
 
     const assignResults2Result = await runAssignment({
       assignmentStrategy,

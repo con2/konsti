@@ -18,7 +18,7 @@ export interface ClientConfig {
 }
 
 export const clientConfig: ClientConfig = {
-  // Convention settings
+  // Event settings
   enableRevolvingDoor: false,
   enableOrganizerFeedback: true,
   enableTagDropdown: true,

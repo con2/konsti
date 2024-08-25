@@ -4,16 +4,16 @@ import { ProgramItem } from "shared/types/models/programItem";
 import { TIMEZONE } from "shared/utils/initializeDayjs";
 
 export const getAlgorithmSignupStartTime = (startTime: string): Dayjs => {
-  const { conventionStartTime, PRE_SIGNUP_START } = config.event();
+  const { eventStartTime, preSignupStart } = config.event();
 
   // Set timezone because hour comparison and setting hour value
   const timezoneStartTime = dayjs(startTime)
     .tz(TIMEZONE)
-    .subtract(PRE_SIGNUP_START, "minutes");
+    .subtract(preSignupStart, "minutes");
 
-  // If algorithm signup starts before convention start time, use convention start time
-  if (timezoneStartTime.isBefore(dayjs(conventionStartTime))) {
-    return dayjs(conventionStartTime);
+  // If algorithm signup starts before event start time, use event start time
+  if (timezoneStartTime.isBefore(dayjs(eventStartTime))) {
+    return dayjs(eventStartTime);
   }
 
   const startTimeIsTooEarly = timezoneStartTime.hour() <= 6;
@@ -25,15 +25,15 @@ export const getAlgorithmSignupStartTime = (startTime: string): Dayjs => {
 };
 
 export const getAlgorithmSignupEndTime = (startTime: string): Dayjs => {
-  const { DIRECT_SIGNUP_START } = config.event();
-  return dayjs(startTime).subtract(DIRECT_SIGNUP_START, "minutes");
+  const { directSignupPhaseStart } = config.event();
+  return dayjs(startTime).subtract(directSignupPhaseStart, "minutes");
 };
 
 export const getDirectSignupStartTime = (programItem: ProgramItem): Dayjs => {
   const {
-    conventionStartTime,
-    DIRECT_SIGNUP_START,
-    PHASE_GAP,
+    eventStartTime,
+    directSignupPhaseStart,
+    phaseGap,
     directSignupWindows,
     rollingSignupStartProgramTypes,
     directSignupAlwaysOpenIds,
@@ -46,7 +46,7 @@ export const getDirectSignupStartTime = (programItem: ProgramItem): Dayjs => {
   );
 
   if (signupAlwaysOpen) {
-    return dayjs(conventionStartTime);
+    return dayjs(eventStartTime);
   }
 
   // ** TWO PHASE SIGNUPS **
@@ -54,27 +54,26 @@ export const getDirectSignupStartTime = (programItem: ProgramItem): Dayjs => {
   // "twoPhaseSignupProgramTypes" signup times are configured with DIRECT_SIGNUP_START
   if (twoPhaseSignupProgramTypes.includes(programItem.programType)) {
     const directSignupStart = dayjs(programItem.startTime).subtract(
-      DIRECT_SIGNUP_START,
+      directSignupPhaseStart,
       "minutes",
     );
 
-    // If convention starts at 15:00, DIRECT_SIGNUP_START is 2h and PHASE_GAP is 15min
+    // If event starts at 15:00, DIRECT_SIGNUP_START is 2h and PHASE_GAP is 15min
     //   Start time 15:00 -> signup start 13:00 -> fix to 15:00
     //   Start time 16:00 -> signup start 14:00 -> fix to 15:00
     //   Start time 17:00 -> signup start 15:15 -> fix to 15:00
     //   Start time 18:00 -> signup start 16:15 -> this is fine
-    const signupsBeforeThisStartAtConventionStart = dayjs(
-      conventionStartTime,
-    ).add(1, "hour");
+    const signupsBeforeThisStartAtEventStart = dayjs(eventStartTime).add(
+      1,
+      "hour",
+    );
 
-    if (
-      dayjs(directSignupStart).isBefore(signupsBeforeThisStartAtConventionStart)
-    ) {
-      return dayjs(conventionStartTime);
+    if (dayjs(directSignupStart).isBefore(signupsBeforeThisStartAtEventStart)) {
+      return dayjs(eventStartTime);
     }
 
     const directSignupStartWithPhaseGap = directSignupStart.add(
-      PHASE_GAP,
+      phaseGap,
       "minutes",
     );
 
@@ -87,9 +86,9 @@ export const getDirectSignupStartTime = (programItem: ProgramItem): Dayjs => {
     // Signup starts 4 hours before program item start time
     const rollingStartTime = dayjs(programItem.startTime).subtract(4, "hours");
 
-    // Earliest start time is convention start time
-    if (rollingStartTime.isBefore(dayjs(conventionStartTime))) {
-      return dayjs(conventionStartTime);
+    // Earliest start time is event start time
+    if (rollingStartTime.isBefore(dayjs(eventStartTime))) {
+      return dayjs(eventStartTime);
     }
 
     // If program item starts before 12:00, signup starts 18:00 previous day
@@ -112,7 +111,7 @@ export const getDirectSignupStartTime = (programItem: ProgramItem): Dayjs => {
     : undefined;
 
   if (!signupWindowsForProgramType) {
-    return dayjs(conventionStartTime);
+    return dayjs(eventStartTime);
   }
 
   const matchingSignupWindow = signupWindowsForProgramType.find(
@@ -125,5 +124,5 @@ export const getDirectSignupStartTime = (programItem: ProgramItem): Dayjs => {
       ),
   );
 
-  return matchingSignupWindow?.signupWindowStart ?? dayjs(conventionStartTime);
+  return matchingSignupWindow?.signupWindowStart ?? dayjs(eventStartTime);
 };
