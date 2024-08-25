@@ -338,11 +338,11 @@ export const translationEN = {
         "Participants are selected in the order of sign-ups. Sign-up opens ",
       directSignupOpenNow:
         "Participants are selected in the order of sign-ups. Sign-up closes ",
-      algorithmSignupStartsLater:
+      lotterySignupStartsLater:
         "Participants are selected in a lottery. Lotter sign-up open ",
-      algorithmSignupOpen:
+      lotterySignupOpen:
         "Participants are selected in a lottery. Lottery sign-up closes ",
-      algorithmSignupEnded: "Participants were selected in a lottery.",
+      lotterySignupEnded: "Participants were selected in a lottery.",
       directSignupStarts: " Direct sign-up to remaining and cancelled spots: ",
     },
   },
@@ -492,8 +492,8 @@ export const translationEN = {
   },
   strategies: {
     direct: "Direct",
-    algorithm: "Algorithm",
-    "algorithm+direct": "Algorithm + Direct",
+    lottery: "Lottery",
+    "lottery+direct": "Lottery + Direct",
   },
   loginProvider: {
     local: "Local",
