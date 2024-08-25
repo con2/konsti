@@ -51,14 +51,14 @@ export const getDirectSignupStartTime = (programItem: ProgramItem): Dayjs => {
 
   // ** TWO PHASE SIGNUPS **
 
-  // "twoPhaseSignupProgramTypes" signup times are configured with DIRECT_SIGNUP_START
+  // 'twoPhaseSignupProgramTypes' signup times are configured with 'directSignupPhaseStart'
   if (twoPhaseSignupProgramTypes.includes(programItem.programType)) {
     const directSignupStart = dayjs(programItem.startTime).subtract(
       directSignupPhaseStart,
       "minutes",
     );
 
-    // If event starts at 15:00, DIRECT_SIGNUP_START is 2h and PHASE_GAP is 15min
+    // If event starts at 15:00, 'directSignupPhaseStart' is 2h and 'phaseGap' is 15min
     //   Start time 15:00 -> signup start 13:00 -> fix to 15:00
     //   Start time 16:00 -> signup start 14:00 -> fix to 15:00
     //   Start time 17:00 -> signup start 15:15 -> fix to 15:00

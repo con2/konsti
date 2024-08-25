@@ -5,7 +5,7 @@ export const tooEearlyForAlgorithmSignup = (startTime: string): boolean => {
   const { eventStartTime } = config.event();
 
   // Return DIRECT for three first hours of event because there is no time for algorithm signup
-  // For example, if event starts at 15:00 and PRE_SIGNUP_START is 4h and DIRECT_SIGNUP_START is 2h
+  // For example, if event starts at 15:00 and 'preSignupStart' is 4h and 'directSignupPhaseStart' is 2h
   //   Start time 15:00 -> algorithm 11:00-13:00 -> use direct
   //   Start time 16:00 -> algorithm 12:00-14:00 -> use direct
   //   Start time 17:00 -> algorithm 13:00-15:00 -> use direct
