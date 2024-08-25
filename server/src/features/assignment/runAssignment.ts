@@ -1,5 +1,5 @@
 import { logger } from "server/utils/logger";
-import { runAssignmentAlgorithm } from "server/features/assignment/utils/runAssignmentStrategy";
+import { runAssignmentAlgorithm } from "server/features/assignment/utils/runAssignmentAlgorithm";
 import { removeInvalidProgramItemsFromUsers } from "server/features/assignment/utils/removeInvalidProgramItemsFromUsers";
 import { AssignmentResult } from "server/types/resultTypes";
 import { findUsers } from "server/features/user/userRepository";
