@@ -45,7 +45,7 @@ beforeEach(() => {
         },
       ],
     },
-    rollingSignupStartProgramTypes: [ProgramType.WORKSHOP],
+    rollingDirectSignupProgramTypes: [ProgramType.WORKSHOP],
   });
 });
 

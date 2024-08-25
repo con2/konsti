@@ -72,7 +72,7 @@ const eventConfig: Partial<EventConfig> = {
     ],
   },
 
-  rollingSignupStartProgramTypes: [ProgramType.WORKSHOP, ProgramType.OTHER],
+  rollingDirectSignupProgramTypes: [ProgramType.WORKSHOP, ProgramType.OTHER],
 
   // These program items have their signup always open even if signup mode is set to lottery
   directSignupAlwaysOpenIds: [
