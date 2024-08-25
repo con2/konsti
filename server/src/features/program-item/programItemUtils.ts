@@ -134,7 +134,7 @@ const getSignupStrategyForProgramItem = (
   currentTime: Dayjs,
 ): SignupStrategy => {
   const start = dayjs(programItem.startTime);
-  const { DIRECT_SIGNUP_START, twoPhaseSignupProgramTypes } = config.event();
+  const { directSignupPhaseStart, twoPhaseSignupProgramTypes } = config.event();
 
   if (settings.signupStrategy !== SignupStrategy.ALGORITHM_AND_DIRECT) {
     return settings.signupStrategy;
@@ -149,7 +149,7 @@ const getSignupStrategyForProgramItem = (
   }
 
   const isAfterDirectSignupStarted = currentTime.isAfter(
-    start.subtract(DIRECT_SIGNUP_START, "minutes"),
+    start.subtract(directSignupPhaseStart, "minutes"),
   );
   if (isAfterDirectSignupStarted) {
     return SignupStrategy.DIRECT;

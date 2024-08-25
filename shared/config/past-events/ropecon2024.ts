@@ -1,24 +1,24 @@
 import dayjs from "dayjs";
 import {
   AssignmentStrategy,
-  ConventionName,
+  EventName,
   EventConfig,
 } from "shared/config/eventConfigTypes";
 import { ProgramType } from "shared/types/models/programItem";
 import { SignupQuestionType } from "shared/types/models/settings";
 
-// Convention days
+// Event days
 const friday = "2024-07-19";
 const saturday = "2024-07-20";
 const sunday = "2024-07-21";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const eventConfig: Partial<EventConfig> = {
-  // Convention info
-  conventionName: ConventionName.ROPECON,
-  conventionYear: "2024",
+  // Event info
+  eventName: EventName.ROPECON,
+  eventYear: "2024",
 
-  // Convention settings
+  // Event settings
   requireRegistrationCode: true,
   assignmentStrategy: AssignmentStrategy.RANDOM_PADG,
   enableGroups: true,
@@ -29,7 +29,7 @@ const eventConfig: Partial<EventConfig> = {
 
   twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
 
-  conventionStartTime: `${friday}T12:00:00Z`, // Fri 15:00 GMT+3
+  eventStartTime: `${friday}T12:00:00Z`, // Fri 15:00 GMT+3
 
   directSignupWindows: {
     larp: [
@@ -227,7 +227,7 @@ const eventConfig: Partial<EventConfig> = {
   isEnglishProgramItems: [],
 
   // Two phase signup settings
-  PRE_SIGNUP_START: 60 * 4, // minutes
-  DIRECT_SIGNUP_START: 60 * 2, // minutes
-  PHASE_GAP: 15, // minutes
+  preSignupStart: 60 * 4, // minutes
+  directSignupPhaseStart: 60 * 2, // minutes
+  phaseGap: 15, // minutes
 };

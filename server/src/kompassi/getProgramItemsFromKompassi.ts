@@ -18,11 +18,11 @@ import {
 } from "shared/utils/result";
 import { logger } from "server/utils/logger";
 import { config } from "shared/config";
-import { ConventionName } from "shared/config/eventConfigTypes";
+import { EventName } from "shared/config/eventConfigTypes";
 import { getProgramItemsFromFullProgram } from "server/kompassi/getProgramItemsFromFullProgram";
 
 export const getProgramItemsFromKompassi = async (
-  conventionName: ConventionName,
+  eventName: EventName,
 ): Promise<Result<KompassiProgramItem[], KompassiError>> => {
   const eventProgramItemsResult =
     await testHelperWrapper.getEventProgramItems();
@@ -48,7 +48,7 @@ export const getProgramItemsFromKompassi = async (
   logger.info(`Loaded ${eventProgramItems.length} event program items`);
 
   const programItems = getProgramItemsFromFullProgram(
-    conventionName,
+    eventName,
     eventProgramItems,
   );
 
@@ -135,7 +135,7 @@ export const getProgramFromServer = async (): Promise<
 > => {
   logger.info("GET event program from remote server");
 
-  const { conventionName, conventionYear } = config.event();
+  const { eventName, eventYear } = config.event();
 
   const url = "https://kompassi.eu/graphql";
   const body = {
@@ -164,7 +164,7 @@ export const getProgramFromServer = async (): Promise<
       }
     `,
     variables: {
-      event: `${conventionName.toLocaleLowerCase()}${conventionYear}`,
+      event: `${eventName.toLocaleLowerCase()}${eventYear}`,
       programTypes: Object.values(KompassiKonstiProgramType),
     },
   };

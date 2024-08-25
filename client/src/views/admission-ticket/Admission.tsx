@@ -22,7 +22,7 @@ export const Admission = ({
   username,
 }: Props): ReactElement => {
   const { t } = useTranslation();
-  const { conventionName, conventionYear } = config.event();
+  const { eventName, eventYear } = config.event();
 
   const formatTime = (): string => {
     // Note that the dash should be an en dash
@@ -47,7 +47,7 @@ export const Admission = ({
     <RaisedCard>
       <TextContainer>
         <Text>
-          {conventionName} {conventionYear}
+          {eventName} {eventYear}
         </Text>
         <TimeText>{formattedCurrentTime()}</TimeText>
 

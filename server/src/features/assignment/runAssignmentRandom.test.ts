@@ -55,9 +55,9 @@ test("Assignment with valid data should return success with random strategy", as
     testUsersCount,
   );
 
-  const { conventionStartTime } = config.event();
+  const { eventStartTime } = config.event();
   const assignmentStrategy = AssignmentStrategy.RANDOM;
-  const startTime = dayjs(conventionStartTime).add(2, "hours").toISOString();
+  const startTime = dayjs(eventStartTime).add(2, "hours").toISOString();
 
   // FIRST RUN
 
@@ -202,9 +202,9 @@ test("Assignment with no program items should return error with random strategy"
     testUsersCount,
   );
 
-  const { conventionStartTime } = config.event();
+  const { eventStartTime } = config.event();
   const assignmentStrategy = AssignmentStrategy.RANDOM;
-  const startTime = dayjs(conventionStartTime).add(2, "hours").toISOString();
+  const startTime = dayjs(eventStartTime).add(2, "hours").toISOString();
 
   const assignResults = unsafelyUnwrap(
     await runAssignment({
@@ -233,9 +233,9 @@ test("Assignment with no attendees should return error with random strategy", as
     testUsersCount,
   );
 
-  const { conventionStartTime } = config.event();
+  const { eventStartTime } = config.event();
   const assignmentStrategy = AssignmentStrategy.RANDOM;
-  const startTime = dayjs(conventionStartTime).add(2, "hours").toISOString();
+  const startTime = dayjs(eventStartTime).add(2, "hours").toISOString();
 
   const assignResults = unsafelyUnwrap(
     await runAssignment({

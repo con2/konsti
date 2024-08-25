@@ -36,8 +36,8 @@ export const FirstLogin = (): ReactElement | null => {
       return;
     }
 
-    const firstLoginKey = `${config.event().conventionName}-${
-      config.event().conventionYear
+    const firstLoginKey = `${config.event().eventName}-${
+      config.event().eventYear
     }-${username}`;
     const firstLogin = getFirstLoginState(firstLoginKey);
 

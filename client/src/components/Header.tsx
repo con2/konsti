@@ -13,7 +13,7 @@ export const HEADER_HEIGHT = 40;
 
 export const Header = (): ReactElement => {
   const { t } = useTranslation();
-  const { conventionName, conventionYear } = config.event();
+  const { eventName, eventYear } = config.event();
 
   const appOpen = useAppSelector((state) => state.admin.appOpen);
 
@@ -24,8 +24,8 @@ export const Header = (): ReactElement => {
 
         <HeaderTitle>
           {t("appDescription", {
-            CONVENTION_NAME: conventionName,
-            CONVENTION_YEAR: conventionYear,
+            EVENT_NAME: eventName,
+            EVENT_YEAR: eventYear,
           })}
         </HeaderTitle>
 

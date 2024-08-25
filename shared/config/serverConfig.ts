@@ -61,7 +61,7 @@ const commonConfig = {
   defaultSignupStrategy: SignupStrategy.ALGORITHM_AND_DIRECT,
   defaultLoginProvider: LoginProvider.LOCAL,
 
-  // Convention settings
+  // Event settings
   firstSignupBonus: 20,
   additionalFirstSignupBonus: 5,
   useLocalProgramFile: false,

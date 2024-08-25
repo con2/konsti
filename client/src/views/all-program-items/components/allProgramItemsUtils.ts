@@ -29,11 +29,11 @@ export const isAlreadyDirectySigned = (
 };
 
 export const getFormattedTime = (time: Dayjs, timeNow: Dayjs): string => {
-  // Show weekday and time on convention week
-  if (timeNow.isSame(config.event().conventionStartTime, "week")) {
+  // Show weekday and time on event week
+  if (timeNow.isSame(config.event().eventStartTime, "week")) {
     return getWeekdayAndTime(time.toISOString());
   }
-  // Show full time before convention week
+  // Show full time before event week
   return getDateAndTime(time.toISOString());
 };
 
