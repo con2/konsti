@@ -49,10 +49,6 @@ export interface EventConfig {
   directSignupAlwaysOpenIds: string[];
   requireRegistrationCode: boolean;
   twoPhaseSignupProgramTypes: ProgramType[];
-  manualSignupMode:
-    | EventSignupStrategy.LOTTERY
-    | EventSignupStrategy.DIRECT
-    | "none";
   signupOpen: boolean;
   resultsVisible: boolean;
   addToKonstiOther: string[];

@@ -20,7 +20,6 @@ import { isRevolvingDoorWorkshop } from "client/utils/isRevolvingDoorWorkshop";
 import { SignupsInfo } from "client/views/all-program-items/components/SignupsInfo";
 import { AppRoute } from "client/app/AppRoutes";
 import { SignupQuestion } from "shared/types/models/settings";
-import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 
 interface Props {
   programItem: ProgramItem;
@@ -59,9 +58,7 @@ export const ProgramItemHead = ({
   const isNormalSignup = requiresSignup && konstiSignup;
 
   const isEnterGameMode =
-    config.event().manualSignupMode === EventSignupStrategy.DIRECT ||
-    signupStrategy === ProgramItemSignupStrategy.DIRECT ||
-    signupAlwaysOpen;
+    signupStrategy === ProgramItemSignupStrategy.DIRECT || signupAlwaysOpen;
 
   const isFavorite =
     favoriteProgramItems.find(

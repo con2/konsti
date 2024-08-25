@@ -22,7 +22,6 @@ const eventConfig: Partial<EventConfig> = {
   requireRegistrationCode: true,
   assignmentAlgorithm: AssignmentAlgorithm.RANDOM_PADG,
   enableGroups: true,
-  manualSignupMode: "none",
   signupOpen: true,
   resultsVisible: true,
 
