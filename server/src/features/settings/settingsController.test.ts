@@ -5,7 +5,10 @@ import { faker } from "@faker-js/faker";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { UserGroup } from "shared/types/models/user";
 import { getJWT } from "server/utils/jwt";
-import { LoginProvider, SignupStrategy } from "shared/config/eventConfigTypes";
+import {
+  LoginProvider,
+  EventSignupStrategy,
+} from "shared/config/eventConfigTypes";
 import {
   Settings,
   SignupQuestion,
@@ -99,7 +102,7 @@ describe(`POST ${ApiEndpoint.SETTINGS}`, () => {
       hiddenProgramItems: [],
       appOpen: true,
       signupQuestions: [testSignupQuestion],
-      signupStrategy: SignupStrategy.LOTTERY,
+      signupStrategy: EventSignupStrategy.LOTTERY,
       programUpdateLastRun: "2023-05-07T07:00:00.000Z",
       assignmentLastRun: "2023-05-07T07:00:00.000Z",
       latestServerStartTime: "2023-05-07T07:00:00.000Z",
@@ -120,7 +123,7 @@ describe(`POST ${ApiEndpoint.SETTINGS}`, () => {
 
     // Partial update
     const partialSettings: Partial<Settings> = {
-      signupStrategy: SignupStrategy.DIRECT,
+      signupStrategy: EventSignupStrategy.DIRECT,
     };
 
     const partialUpdateResponse = await request(server)
@@ -132,7 +135,7 @@ describe(`POST ${ApiEndpoint.SETTINGS}`, () => {
     expect(partialUpdateResponse.body).toEqual({
       status: "success",
       message: "Update settings success",
-      settings: { ...testSettings, signupStrategy: SignupStrategy.DIRECT },
+      settings: { ...testSettings, signupStrategy: EventSignupStrategy.DIRECT },
     });
   });
 });

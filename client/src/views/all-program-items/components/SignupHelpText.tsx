@@ -14,7 +14,7 @@ import {
   getFormattedTime,
   getFormattedInterval,
 } from "client/views/all-program-items/components/allProgramItemsUtils";
-import { SignupStrategy } from "shared/config/eventConfigTypes";
+import { ProgramItemSignupStrategy } from "shared/types/models/programItem";
 
 interface Props {
   programItem: ProgramItem;
@@ -33,7 +33,8 @@ export const SignupHelpText = ({
 }: Props): ReactElement => {
   const { t } = useTranslation();
 
-  const isLotterySignup = programItem.signupStrategy === SignupStrategy.LOTTERY;
+  const isLotterySignup =
+    programItem.signupStrategy === ProgramItemSignupStrategy.LOTTERY;
   const timeNow = getTimeNow();
   const programStartTime = dayjs(programItem.startTime);
   const directSignupStartTime = getDirectSignupStartTime(programItem);

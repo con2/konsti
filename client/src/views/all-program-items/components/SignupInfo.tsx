@@ -4,16 +4,17 @@ import { ProgramItem } from "shared/types/models/programItem";
 import { DirectSignupProgramItem } from "client/views/all-program-items/components/DirectSignupProgramItem";
 import { LotterySignupProgramItem } from "client/views/all-program-items/components/LotterySignupProgramItem";
 import { config } from "shared/config";
-import { SignupStrategy } from "shared/config/eventConfigTypes";
+import { ProgramItemSignupStrategy } from "shared/types/models/programItem";
 import { isRevolvingDoorWorkshop } from "client/utils/isRevolvingDoorWorkshop";
 import { Signup } from "shared/types/models/user";
 import { SignupHelpText } from "client/views/all-program-items/components/SignupHelpText";
 import { getTimeNow } from "client/utils/getTimeNow";
 import { isAlreadyDirectySigned } from "client/views/all-program-items/components/allProgramItemsUtils";
 import { AdmissionTicketLink } from "client/views/all-program-items/components/AdmissionTicketLink";
+import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 
 interface Props {
-  signupStrategy: SignupStrategy;
+  signupStrategy: ProgramItemSignupStrategy;
   startTime: string;
   lotterySignups: readonly Signup[];
   directSignups: readonly Signup[];
@@ -40,8 +41,8 @@ export const SignupInfo = ({
     .directSignupAlwaysOpenIds.includes(programItem.programItemId);
 
   const isDirectSignupMode =
-    config.event().manualSignupMode === SignupStrategy.DIRECT ||
-    signupStrategy === SignupStrategy.DIRECT ||
+    config.event().manualSignupMode === EventSignupStrategy.DIRECT ||
+    signupStrategy === ProgramItemSignupStrategy.DIRECT ||
     signupAlwaysOpen;
 
   const requiresSignup = !isRevolvingDoorWorkshop(programItem);
