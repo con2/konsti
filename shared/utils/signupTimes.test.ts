@@ -20,6 +20,7 @@ beforeEach(() => {
     ...config.event(),
     eventStartTime: `${friday}T12:00:00Z`,
     fixedLotterySignupTime: null,
+    enableRollingDirectSignupPreviousDay: true,
     twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
     directSignupWindows: {
       larp: [
@@ -45,7 +46,7 @@ beforeEach(() => {
         },
       ],
     },
-    rollingSignupStartProgramTypes: [ProgramType.WORKSHOP],
+    rollingDirectSignupProgramTypes: [ProgramType.WORKSHOP],
   });
 });
 
