@@ -1,47 +1,47 @@
 import { expect, test, vi } from "vitest";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { config } from "shared/config";
-import { ConventionName } from "shared/config/eventConfigTypes";
+import { EventName } from "shared/config/eventConfigTypes";
 import { testHelperWrapper } from "server/kompassi/getProgramItemsFromKompassi";
 import {
   mockKompassiProgramItem,
   mockKompassiProgramItem2,
 } from "server/kompassi/test/mockKompassiProgramItem";
-import { getProgramItemsForConvention } from "server/features/program-item/programItemService";
+import { getProgramItemsForEvent } from "server/features/program-item/programItemService";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import { KompassiProgramItem } from "server/kompassi/kompassiProgramItem";
 
 const getMockKompassiProgramItems = (
-  conventionName: ConventionName,
+  eventName: EventName,
 ): KompassiProgramItem[] => {
-  switch (conventionName) {
-    case ConventionName.ROPECON:
+  switch (eventName) {
+    case EventName.ROPECON:
       return [mockKompassiProgramItem, mockKompassiProgramItem2];
-    case ConventionName.HITPOINT:
+    case EventName.HITPOINT:
       return [mockKompassiProgramItem, mockKompassiProgramItem2];
-    case ConventionName.SOLMUKOHTA:
+    case EventName.SOLMUKOHTA:
       return [mockKompassiProgramItem, mockKompassiProgramItem2];
-    case ConventionName.TRACON:
+    case EventName.TRACON:
       return [mockKompassiProgramItem, mockKompassiProgramItem2];
     default:
-      return exhaustiveSwitchGuard(conventionName);
+      return exhaustiveSwitchGuard(eventName);
   }
 };
 
-Object.values(ConventionName).map((conventionName) => {
-  const mockKompassiProgramItems = getMockKompassiProgramItems(conventionName);
+Object.values(EventName).map((eventName) => {
+  const mockKompassiProgramItems = getMockKompassiProgramItems(eventName);
 
-  test(`should parse convention ${conventionName} program items`, async () => {
+  test(`should parse event ${eventName} program items`, async () => {
     vi.spyOn(config, "event").mockReturnValue({
       ...config.event(),
-      conventionName,
+      eventName,
     });
 
     vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
       value: mockKompassiProgramItems,
     });
 
-    const programItems = unsafelyUnwrap(await getProgramItemsForConvention());
+    const programItems = unsafelyUnwrap(await getProgramItemsForEvent());
     expect(programItems.length).toEqual(2);
   });
 });

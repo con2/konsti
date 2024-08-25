@@ -10,7 +10,7 @@ import { isErrorResult, unwrapResult } from "shared/utils/result";
 import { cleanupDatabase } from "server/utils/cleanupDatabse";
 import { addSignupQuestions } from "server/features/program-item/utils/addSignupQuestions";
 import { findSettings } from "server/features/settings/settingsRepository";
-import { getProgramItemsForConvention } from "server/features/program-item/programItemService";
+import { getProgramItemsForEvent } from "server/features/program-item/programItemService";
 
 const ADMIN_PASSWORD = "";
 const HELP_PASSWORD = "";
@@ -41,7 +41,7 @@ const initializeDatabase = async (): Promise<void> => {
 
   logger.info("Download program items from Kompassi");
 
-  const programItemsResult = await getProgramItemsForConvention();
+  const programItemsResult = await getProgramItemsForEvent();
   if (isErrorResult(programItemsResult)) {
     // eslint-disable-next-line no-restricted-syntax -- Data generation script
     throw new Error("Unable to load Kompassi program items");

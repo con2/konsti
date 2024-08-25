@@ -1,6 +1,6 @@
 export const translationFI = {
   appTitle: "Konsti",
-  appDescription: "Konsti – {{CONVENTION_NAME}} {{CONVENTION_YEAR}}",
+  appDescription: "Konsti – {{EVENT_NAME}} {{EVENT_YEAR}}",
   announcement: "Ilmoittautuminen on päättynyt. Tulokset julkaistaan piakkoin.",
   button: {
     logout: "Kirjaudu ulos",

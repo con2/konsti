@@ -22,7 +22,7 @@ export const getMissedSignups = (
   const pastSignupTimes = lotterySignupsStartTimes.filter(
     (lotterySignupsStartTime) => {
       const signupEndTime = dayjs(lotterySignupsStartTime).subtract(
-        config.event().DIRECT_SIGNUP_START - safePeriod,
+        config.event().directSignupPhaseStart - safePeriod,
         "minutes",
       );
 

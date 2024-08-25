@@ -5,8 +5,8 @@ import { config } from "shared/config";
 export const InstructionsView = (): ReactElement => {
   return (
     <Instructions
-      conventionName={config.event().conventionName}
-      conventionYear={config.event().conventionYear}
+      eventName={config.event().eventName}
+      eventYear={config.event().eventYear}
     />
   );
 };

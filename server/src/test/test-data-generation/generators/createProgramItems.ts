@@ -20,13 +20,13 @@ import { KompassiKonstiProgramType } from "server/kompassi/kompassiProgramItem";
 const PROGRAM_ITEM_ID_MAX = 10000000;
 
 const startTimes = [
-  dayjs(config.event().conventionStartTime).toISOString(),
-  dayjs(config.event().conventionStartTime).add(1, "hours").toISOString(),
-  dayjs(config.event().conventionStartTime).add(2, "hours").toISOString(),
-  dayjs(config.event().conventionStartTime).add(3, "hours").toISOString(),
-  dayjs(config.event().conventionStartTime).add(4, "hours").toISOString(),
-  dayjs(config.event().conventionStartTime).add(1, "days").toISOString(),
-  dayjs(config.event().conventionStartTime).add(2, "days").toISOString(),
+  dayjs(config.event().eventStartTime).toISOString(),
+  dayjs(config.event().eventStartTime).add(1, "hours").toISOString(),
+  dayjs(config.event().eventStartTime).add(2, "hours").toISOString(),
+  dayjs(config.event().eventStartTime).add(3, "hours").toISOString(),
+  dayjs(config.event().eventStartTime).add(4, "hours").toISOString(),
+  dayjs(config.event().eventStartTime).add(1, "days").toISOString(),
+  dayjs(config.event().eventStartTime).add(2, "days").toISOString(),
 ];
 
 const getMinAttendees = (programType: KompassiKonstiProgramType): number => {

@@ -14,7 +14,7 @@ test("Add lottery signup", async ({ page, request }) => {
   await populateDb(request);
   await postSettings(request, { signupStrategy: SignupStrategy.ALGORITHM });
   await postTestSettings(request, {
-    testTime: config.event().conventionStartTime,
+    testTime: config.event().eventStartTime,
   });
   await login(page, request, { username: "test1", password: "test" });
 

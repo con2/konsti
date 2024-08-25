@@ -23,12 +23,12 @@ import { getProgramItemsFromKompassi } from "server/kompassi/getProgramItemsFrom
 import { kompassiProgramItemMapper } from "server/kompassi/kompassiProgramItemMapper";
 import { UserGroup } from "shared/types/models/user";
 
-export const getProgramItemsForConvention = async (): Promise<
+export const getProgramItemsForEvent = async (): Promise<
   Result<readonly ProgramItem[], KompassiError>
 > => {
-  const conventionName = config.event().conventionName;
+  const eventName = config.event().eventName;
   const kompassiProgramItemsResult =
-    await getProgramItemsFromKompassi(conventionName);
+    await getProgramItemsFromKompassi(eventName);
   if (isErrorResult(kompassiProgramItemsResult)) {
     return kompassiProgramItemsResult;
   }
@@ -40,7 +40,7 @@ export const getProgramItemsForConvention = async (): Promise<
 export const updateProgramItems = async (): Promise<
   PostUpdateProgramItemsResponse | PostUpdateProgramItemsError
 > => {
-  const programItemsResult = await getProgramItemsForConvention();
+  const programItemsResult = await getProgramItemsForEvent();
   if (isErrorResult(programItemsResult)) {
     return {
       message: "Loading program items from Kompassi failed",

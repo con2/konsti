@@ -18,7 +18,7 @@ import { makeErrorResult } from "shared/utils/result";
 const expectedResultsCount = 20;
 const groupTestUsers = ["group1", "group2", "group3"];
 
-const { conventionStartTime } = config.event();
+const { eventStartTime } = config.event();
 
 beforeEach(async () => {
   await mongoose.connect(globalThis.__MONGO_URI__, {
@@ -46,7 +46,7 @@ test("Assignment with valid data should return success with random+padg strategy
   );
 
   const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
-  const startTime = dayjs(conventionStartTime).add(2, "hours").toISOString();
+  const startTime = dayjs(eventStartTime).add(2, "hours").toISOString();
 
   // FIRST RUN
 
@@ -119,7 +119,7 @@ test("Assignment with no program items should return error with random+padg stra
   );
 
   const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
-  const startTime = dayjs(conventionStartTime).add(2, "hours").toISOString();
+  const startTime = dayjs(eventStartTime).add(2, "hours").toISOString();
 
   const assignResults = unsafelyUnwrap(
     await runAssignment({
@@ -149,7 +149,7 @@ test("Assignment with no attendees should return error with random+padg strategy
   );
 
   const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
-  const startTime = dayjs(conventionStartTime).add(2, "hours").toISOString();
+  const startTime = dayjs(eventStartTime).add(2, "hours").toISOString();
 
   const assignResults = unsafelyUnwrap(
     await runAssignment({
@@ -169,7 +169,7 @@ test("If random assignment fails, should return PADG result", async () => {
   );
 
   const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
-  const startTime = dayjs(conventionStartTime).toISOString();
+  const startTime = dayjs(eventStartTime).toISOString();
 
   const assignResults = unsafelyUnwrap(
     await runAssignment({
@@ -190,7 +190,7 @@ test("If PADG assignment fails, should return random result", async () => {
   );
 
   const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
-  const startTime = dayjs(conventionStartTime).toISOString();
+  const startTime = dayjs(eventStartTime).toISOString();
 
   const assignResults = unsafelyUnwrap(
     await runAssignment({
@@ -214,7 +214,7 @@ test("If both assignments fail, should return error result", async () => {
   );
 
   const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
-  const startTime = dayjs(conventionStartTime).toISOString();
+  const startTime = dayjs(eventStartTime).toISOString();
 
   const assignResultsResult = await runAssignment({
     assignmentStrategy,

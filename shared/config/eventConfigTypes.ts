@@ -19,7 +19,7 @@ export enum LoginProvider {
   KOMPASSI = "kompassi",
 }
 
-export enum ConventionName {
+export enum EventName {
   ROPECON = "Ropecon",
   HITPOINT = "Tracon Hitpoint",
   SOLMUKOHTA = "Solmukohta",
@@ -36,12 +36,12 @@ export interface SignupWindow {
 export interface EventConfig {
   assignmentStrategy: AssignmentStrategy;
   enableGroups: boolean;
-  conventionName: ConventionName;
-  conventionYear: string;
-  conventionStartTime: string;
-  DIRECT_SIGNUP_START: number;
-  PRE_SIGNUP_START: number;
-  PHASE_GAP: number;
+  eventName: EventName;
+  eventYear: string;
+  eventStartTime: string;
+  directSignupPhaseStart: number;
+  preSignupStart: number;
+  phaseGap: number;
   directSignupWindows: Partial<
     Record<ProgramType, ArrMin1<SignupWindow>>
   > | null;
