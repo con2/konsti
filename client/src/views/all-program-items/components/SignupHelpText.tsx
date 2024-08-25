@@ -14,8 +14,7 @@ import {
   getFormattedTime,
   getFormattedInterval,
 } from "client/views/all-program-items/components/allProgramItemsUtils";
-import { config } from "shared/config";
-import { tooEarlyForLotterySignup } from "shared/utils/tooEarlyForLotterySignup";
+import { SignupStrategy } from "shared/config/eventConfigTypes";
 
 interface Props {
   programItem: ProgramItem;
@@ -34,12 +33,7 @@ export const SignupHelpText = ({
 }: Props): ReactElement => {
   const { t } = useTranslation();
 
-  const isLotterySignup =
-    config
-      .event()
-      .twoPhaseSignupProgramTypes.includes(programItem.programType) &&
-    !tooEarlyForLotterySignup(startTime);
-
+  const isLotterySignup = programItem.signupStrategy === SignupStrategy.LOTTERY;
   const timeNow = getTimeNow();
   const programStartTime = dayjs(programItem.startTime);
   const directSignupStartTime = getDirectSignupStartTime(programItem);

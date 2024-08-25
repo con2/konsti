@@ -19,6 +19,7 @@ beforeEach(() => {
   vi.spyOn(config, "event").mockReturnValue({
     ...config.event(),
     eventStartTime: `${friday}T12:00:00Z`,
+    fixedLotterySignupTime: null,
     twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
     directSignupWindows: {
       larp: [
