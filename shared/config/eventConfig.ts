@@ -59,4 +59,5 @@ export const eventConfig: EventConfig = {
   preSignupStart: 60 * 4, // minutes
   directSignupPhaseStart: 60 * 2, // minutes
   phaseGap: 15, // minutes
+  fixedLotterySignupTime: `${friday}T05:00:00Z`, // Fri 08:00 GMT+3
 };

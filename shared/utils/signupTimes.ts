@@ -4,12 +4,13 @@ import { ProgramItem } from "shared/types/models/programItem";
 import { TIMEZONE } from "shared/utils/initializeDayjs";
 
 export const getLotterySignupStartTime = (startTime: string): Dayjs => {
-  const { eventStartTime, preSignupStart } = config.event();
+  const { eventStartTime, preSignupStart, fixedLotterySignupTime } =
+    config.event();
 
   // Set timezone because hour comparison and setting hour value
-  const timezoneStartTime = dayjs(startTime)
-    .tz(TIMEZONE)
-    .subtract(preSignupStart, "minutes");
+  const timezoneStartTime = fixedLotterySignupTime
+    ? dayjs(fixedLotterySignupTime).tz(TIMEZONE)
+    : dayjs(startTime).tz(TIMEZONE).subtract(preSignupStart, "minutes");
 
   // If lottery signup starts before event start time, use event start time
   if (timezoneStartTime.isBefore(dayjs(eventStartTime))) {
