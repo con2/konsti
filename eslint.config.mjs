@@ -12,6 +12,7 @@ import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended"
 import eslintPluginPromise from "eslint-plugin-promise";
 import eslintPluginReact from "eslint-plugin-react";
 import eslintPluginReactHooks from "eslint-plugin-react-hooks";
+import eslintPluginReactHooksAddon from "eslint-plugin-react-hooks-addons";
 import eslintPluginUnicorn from "eslint-plugin-unicorn";
 import eslintPluginVitest from "eslint-plugin-vitest";
 import typescriptEslint from "typescript-eslint";
@@ -198,6 +199,7 @@ export default typescriptEslint.config(
     plugins: {
       react: eslintPluginReact,
       "react-hooks": fixupPluginRules(eslintPluginReactHooks),
+      "react-hooks-addons": fixupPluginRules(eslintPluginReactHooksAddon),
     },
 
     settings: {
@@ -231,6 +233,9 @@ export default typescriptEslint.config(
       // eslint-plugin-react-hooks
       ...eslintPluginReactHooks.configs.recommended.rules,
       "react-hooks/exhaustive-deps": "error",
+
+      // eslint-plugin-react-hooks-addons
+      "react-hooks-addons/no-unused-deps": "error",
 
       // @typescript-eslint
       "@typescript-eslint/no-misused-promises": [
