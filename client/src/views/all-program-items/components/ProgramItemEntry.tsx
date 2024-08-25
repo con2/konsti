@@ -19,7 +19,6 @@ import { ProgramItemHead } from "client/views/all-program-items/components/Progr
 import { SignupQuestion } from "shared/types/models/settings";
 import { isRevolvingDoorWorkshop } from "client/utils/isRevolvingDoorWorkshop";
 import { ProgramItemErrors } from "client/views/all-program-items/components/ProgramItemErrors";
-import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 
 interface Props {
   programItem: ProgramItem;
@@ -63,9 +62,7 @@ export const ProgramItemEntry = ({
     .directSignupAlwaysOpenIds.includes(programItem.programItemId);
 
   const isDirectSignupMode =
-    config.event().manualSignupMode === EventSignupStrategy.DIRECT ||
-    signupStrategy === ProgramItemSignupStrategy.DIRECT ||
-    signupAlwaysOpen;
+    signupStrategy === ProgramItemSignupStrategy.DIRECT || signupAlwaysOpen;
 
   const isDirectlySignedCurrentProgramItem = isAlreadyDirectySigned(
     programItem,
