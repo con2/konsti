@@ -40,7 +40,7 @@ afterEach(async () => {
   await mongoose.disconnect();
 });
 
-test("Assignment with valid data should return success with random strategy", async () => {
+test("Assignment with valid data should return success with random algorithm", async () => {
   const newUsersCount = 20;
   const groupSize = 3;
   const numberOfGroups = 5;
@@ -56,14 +56,14 @@ test("Assignment with valid data should return success with random strategy", as
   );
 
   const { eventStartTime } = config.event();
-  const assignmentStrategy = AssignmentAlgorithm.RANDOM;
+  const assignmentAlgorithm = AssignmentAlgorithm.RANDOM;
   const startTime = dayjs(eventStartTime).add(2, "hours").toISOString();
 
   // FIRST RUN
 
   const assignResults = unsafelyUnwrap(
     await runAssignment({
-      assignmentStrategy,
+      assignmentAlgorithm,
       startTime,
     }),
   );
@@ -90,7 +90,7 @@ test("Assignment with valid data should return success with random strategy", as
 
   const assignResults2 = unsafelyUnwrap(
     await runAssignment({
-      assignmentStrategy,
+      assignmentAlgorithm,
       startTime,
     }),
   );
@@ -115,7 +115,7 @@ test("Assignment with valid data should return success with random strategy", as
 });
 
 test("Should adjust attendee limits if there are previous signups from moved program items", async () => {
-  const assignmentStrategy = AssignmentAlgorithm.RANDOM;
+  const assignmentAlgorithm = AssignmentAlgorithm.RANDOM;
 
   await saveProgramItems([
     { ...testProgramItem, minAttendance: 2, maxAttendance: 2 },
@@ -157,7 +157,7 @@ test("Should adjust attendee limits if there are previous signups from moved pro
 
   const assignResults = unsafelyUnwrap(
     await runAssignment({
-      assignmentStrategy,
+      assignmentAlgorithm,
       startTime: testProgramItem.startTime,
     }),
   );
@@ -187,7 +187,7 @@ test("Should adjust attendee limits if there are previous signups from moved pro
   ]);
 });
 
-test("Assignment with no program items should return error with random strategy", async () => {
+test("Assignment with no program items should return error with random algorithm", async () => {
   const newUsersCount = 1;
   const groupSize = 0;
   const numberOfGroups = 0;
@@ -203,12 +203,12 @@ test("Assignment with no program items should return error with random strategy"
   );
 
   const { eventStartTime } = config.event();
-  const assignmentStrategy = AssignmentAlgorithm.RANDOM;
+  const assignmentAlgorithm = AssignmentAlgorithm.RANDOM;
   const startTime = dayjs(eventStartTime).add(2, "hours").toISOString();
 
   const assignResults = unsafelyUnwrap(
     await runAssignment({
-      assignmentStrategy,
+      assignmentAlgorithm,
       startTime,
     }),
   );
@@ -218,7 +218,7 @@ test("Assignment with no program items should return error with random strategy"
   );
 });
 
-test("Assignment with no attendees should return error with random strategy", async () => {
+test("Assignment with no attendees should return error with random algorithm", async () => {
   const newUsersCount = 0;
   const groupSize = 0;
   const numberOfGroups = 0;
@@ -234,12 +234,12 @@ test("Assignment with no attendees should return error with random strategy", as
   );
 
   const { eventStartTime } = config.event();
-  const assignmentStrategy = AssignmentAlgorithm.RANDOM;
+  const assignmentAlgorithm = AssignmentAlgorithm.RANDOM;
   const startTime = dayjs(eventStartTime).add(2, "hours").toISOString();
 
   const assignResults = unsafelyUnwrap(
     await runAssignment({
-      assignmentStrategy,
+      assignmentAlgorithm,
       startTime,
     }),
   );

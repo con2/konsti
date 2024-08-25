@@ -19,8 +19,8 @@ import {
 } from "shared/utils/result";
 import { AssignmentError } from "shared/types/api/errors";
 
-export const runAssignmentStrategy = (
-  assignmentStrategy: AssignmentAlgorithm,
+export const runAssignmentAlgorithm = (
+  assignmentAlgorithm: AssignmentAlgorithm,
   users: readonly User[],
   programItems: readonly ProgramItem[],
   startTime: string,
@@ -34,25 +34,30 @@ export const runAssignmentStrategy = (
     `Assigning users for program items starting at ${startTime.toString()}`,
   );
 
-  logger.info(`Assign strategy: ${assignmentStrategy}`);
+  logger.info(`Assign algorithm: ${assignmentAlgorithm}`);
 
-  if (assignmentStrategy === AssignmentAlgorithm.PADG) {
-    return runPadgStrategy(users, programItems, startTime, directSignups);
+  if (assignmentAlgorithm === AssignmentAlgorithm.PADG) {
+    return runPadgAlgorithm(users, programItems, startTime, directSignups);
   }
 
-  if (assignmentStrategy === AssignmentAlgorithm.RANDOM) {
-    return runRandomStrategy(users, programItems, startTime, directSignups);
+  if (assignmentAlgorithm === AssignmentAlgorithm.RANDOM) {
+    return runRandomAlgorithm(users, programItems, startTime, directSignups);
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-  if (assignmentStrategy === AssignmentAlgorithm.RANDOM_PADG) {
-    return runRandomPadgStrategy(users, programItems, startTime, directSignups);
+  if (assignmentAlgorithm === AssignmentAlgorithm.RANDOM_PADG) {
+    return runRandomPadgAlgorithm(
+      users,
+      programItems,
+      startTime,
+      directSignups,
+    );
   }
 
-  return exhaustiveSwitchGuard(assignmentStrategy);
+  return exhaustiveSwitchGuard(assignmentAlgorithm);
 };
 
-const runPadgStrategy = (
+const runPadgAlgorithm = (
   users: readonly User[],
   programItems: readonly ProgramItem[],
   startTime: string,
@@ -71,7 +76,7 @@ const runPadgStrategy = (
   return makeSuccessResult(padgResult);
 };
 
-const runRandomStrategy = (
+const runRandomAlgorithm = (
   users: readonly User[],
   programItems: readonly ProgramItem[],
   startTime: string,
@@ -90,7 +95,7 @@ const runRandomStrategy = (
   return makeSuccessResult(randomResult);
 };
 
-const runRandomPadgStrategy = (
+const runRandomPadgAlgorithm = (
   users: readonly User[],
   programItems: readonly ProgramItem[],
   startTime: string,

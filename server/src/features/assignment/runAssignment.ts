@@ -1,5 +1,5 @@
 import { logger } from "server/utils/logger";
-import { runAssignmentStrategy } from "server/features/assignment/utils/runAssignmentStrategy";
+import { runAssignmentAlgorithm } from "server/features/assignment/utils/runAssignmentStrategy";
 import { removeInvalidProgramItemsFromUsers } from "server/features/assignment/utils/removeInvalidProgramItemsFromUsers";
 import { AssignmentResult } from "server/types/resultTypes";
 import { findUsers } from "server/features/user/userRepository";
@@ -21,14 +21,14 @@ import {
 import { AssignmentError, MongoDbError } from "shared/types/api/errors";
 
 interface RunAssignmentParams {
-  assignmentStrategy: AssignmentAlgorithm;
+  assignmentAlgorithm: AssignmentAlgorithm;
   startTime?: string;
   useDynamicStartTime?: boolean;
   assignmentDelay?: number;
 }
 
 export const runAssignment = async ({
-  assignmentStrategy,
+  assignmentAlgorithm,
   startTime,
   useDynamicStartTime = false,
   assignmentDelay = 0,
@@ -103,8 +103,8 @@ export const runAssignment = async ({
   }
   const directSignups = unwrapResult(directSignupsResult);
 
-  const assignResultsResult = runAssignmentStrategy(
-    assignmentStrategy,
+  const assignResultsResult = runAssignmentAlgorithm(
+    assignmentAlgorithm,
     validLotterySignupsUsers,
     validLotterySignupProgramItems,
     assignmentTime,

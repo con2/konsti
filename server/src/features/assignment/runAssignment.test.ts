@@ -66,14 +66,14 @@ describe("Assignment with valid data", () => {
 
   test("should return valid results after multiple executions on different times", async () => {
     const { eventStartTime } = config.event();
-    const assignmentStrategy = AssignmentAlgorithm.PADG;
+    const assignmentAlgorithm = AssignmentAlgorithm.PADG;
     const startTime = dayjs(eventStartTime).add(2, "hours").toISOString();
 
     // FIRST RUN
 
     const assignResults = unsafelyUnwrap(
       await runAssignment({
-        assignmentStrategy,
+        assignmentAlgorithm,
         startTime,
       }),
     );
@@ -101,7 +101,7 @@ describe("Assignment with valid data", () => {
     const startTime2 = dayjs(eventStartTime).add(3, "hours").toISOString();
 
     const assignResults2Result = await runAssignment({
-      assignmentStrategy,
+      assignmentAlgorithm,
       startTime: startTime2,
     });
     expect(assignResults2Result.error).toBeUndefined();
@@ -131,7 +131,7 @@ describe("Assignment with valid data", () => {
 
 describe("Assignment with multiple program types and directSignupAlwaysOpen", () => {
   test("should not remove signups of non-'twoPhaseSignupProgramTypes' program types", async () => {
-    const assignmentStrategy = AssignmentAlgorithm.RANDOM_PADG;
+    const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
 
     // Populate database
     await saveProgramItems([
@@ -191,7 +191,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
 
     const assignResults = unsafelyUnwrap(
       await runAssignment({
-        assignmentStrategy,
+        assignmentAlgorithm,
         startTime: testProgramItem.startTime,
       }),
     );
@@ -217,7 +217,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
   test("should not remove directSignupAlwaysOpen signups if user doesn't have updated result", async () => {
     const directSignupAlwaysOpenId =
       config.event().directSignupAlwaysOpenIds[0];
-    const assignmentStrategy = AssignmentAlgorithm.RANDOM_PADG;
+    const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
 
     // Populate database
     await saveProgramItems([
@@ -266,7 +266,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
 
     const assignResults = unsafelyUnwrap(
       await runAssignment({
-        assignmentStrategy,
+        assignmentAlgorithm,
         startTime: testProgramItem.startTime,
       }),
     );
@@ -300,7 +300,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
   test("should not remove previous signup from moved program item if user doesn't have updated result", async () => {
     // User1, programItem1: 14:00 direct signup -> program item moved 15:00
     // User2, programItem2: 15:00 lottery signup -> doesn't affect user1 signup
-    const assignmentStrategy = AssignmentAlgorithm.RANDOM_PADG;
+    const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
 
     const assignmentTime = dayjs(testProgramItem.startTime)
       .add(1, "hours")
@@ -341,7 +341,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
 
     const assignResults = unsafelyUnwrap(
       await runAssignment({
-        assignmentStrategy,
+        assignmentAlgorithm,
         startTime: assignmentTime,
       }),
     );
@@ -377,7 +377,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
   test("should update directSignupAlwaysOpen signup with assignment signup if user has updated result", async () => {
     const directSignupAlwaysOpenId =
       config.event().directSignupAlwaysOpenIds[0];
-    const assignmentStrategy = AssignmentAlgorithm.RANDOM_PADG;
+    const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
 
     // Populate database
     await saveProgramItems([
@@ -439,7 +439,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
 
     const assignResults = unsafelyUnwrap(
       await runAssignment({
-        assignmentStrategy,
+        assignmentAlgorithm,
         startTime: testProgramItem.startTime,
       }),
     );
@@ -469,7 +469,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
   test("should update previous signup from moved program item with assignment signup if user has updated result", async () => {
     // ProgramItem1: 14:00 direct signup -> program item moved 15:00
     // ProgramItem2: 15:00 lottery signup -> replaces ProgramItem1
-    const assignmentStrategy = AssignmentAlgorithm.RANDOM_PADG;
+    const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
 
     const assignmentTime = dayjs(testProgramItem.startTime)
       .add(1, "hours")
@@ -512,7 +512,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
 
     const assignResults = unsafelyUnwrap(
       await runAssignment({
-        assignmentStrategy,
+        assignmentAlgorithm,
         startTime: assignmentTime,
       }),
     );
@@ -550,7 +550,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
 
     // ProgramItem1: 14:00 direct signup LARP
     // ProgramItem2: 14:00 lottery signup TABLETOP_RPG -> replaces ProgramItem1
-    const assignmentStrategy = AssignmentAlgorithm.RANDOM_PADG;
+    const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
     const assignmentTime = testProgramItem.startTime;
 
     await saveProgramItems([
@@ -588,7 +588,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
 
     const assignResults = unsafelyUnwrap(
       await runAssignment({
-        assignmentStrategy,
+        assignmentAlgorithm,
         startTime: assignmentTime,
       }),
     );
@@ -621,7 +621,7 @@ describe("Assignment with first time bonus", () => {
   test("should assign user without previous 'twoPhaseSignupProgramTypes' signup", async () => {
     const directSignupAlwaysOpenId =
       config.event().directSignupAlwaysOpenIds[0];
-    const assignmentStrategy = AssignmentAlgorithm.RANDOM_PADG;
+    const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
     const tournamentProgramItemId = "AIAHHUA";
 
     // Populate database
@@ -689,7 +689,7 @@ describe("Assignment with first time bonus", () => {
 
     const assignResults = unsafelyUnwrap(
       await runAssignment({
-        assignmentStrategy,
+        assignmentAlgorithm,
         startTime: testProgramItem.startTime,
       }),
     );
@@ -743,7 +743,7 @@ describe("Assignment with first time bonus", () => {
   });
 
   test("should assign user with previous failed lottery signup", async () => {
-    const assignmentStrategy = AssignmentAlgorithm.RANDOM_PADG;
+    const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
 
     // Populate database
     await saveProgramItems([
@@ -777,7 +777,7 @@ describe("Assignment with first time bonus", () => {
 
     const assignResults = unsafelyUnwrap(
       await runAssignment({
-        assignmentStrategy,
+        assignmentAlgorithm,
         startTime: testProgramItem2.startTime,
       }),
     );

@@ -7,7 +7,7 @@ import { getList } from "server/features/assignment/utils/getList";
 import { getRandomAssignEvents } from "server/features/assignment/random/utils/getRandomAssignEvents";
 import { formatResults } from "server/features/assignment/utils/formatResults";
 import { ProgramItem } from "shared/types/models/programItem";
-import { AssignmentStrategyResult } from "server/types/resultTypes";
+import { AssignmentAlgorithmResult } from "server/types/resultTypes";
 import {
   ListItem,
   RandomAssignUpdateLInput,
@@ -29,7 +29,7 @@ export const runRandomAssignment = (
   attendeeGroups: readonly User[][],
   startTime: string,
   directSignups: readonly DirectSignupsForProgramItem[],
-): Result<AssignmentStrategyResult, AssignmentError> => {
+): Result<AssignmentAlgorithmResult, AssignmentError> => {
   const groupsResult = getGroups(attendeeGroups, startTime);
   if (isErrorResult(groupsResult)) {
     return groupsResult;

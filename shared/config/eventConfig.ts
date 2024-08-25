@@ -17,7 +17,7 @@ export const eventConfig: EventConfig = {
 
   // Event settings
   requireRegistrationCode: true,
-  assignmentStrategy: AssignmentAlgorithm.RANDOM_PADG,
+  assignmentAlgorithm: AssignmentAlgorithm.RANDOM_PADG,
   enableGroups: true,
   manualSignupMode: "none",
   signupOpen: true,

@@ -34,7 +34,7 @@ export interface SignupWindow {
 }
 
 export interface EventConfig {
-  assignmentStrategy: AssignmentAlgorithm;
+  assignmentAlgorithm: AssignmentAlgorithm;
   enableGroups: boolean;
   eventName: EventName;
   eventYear: string;

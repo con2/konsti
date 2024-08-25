@@ -42,7 +42,7 @@ export interface ResultsCollectionEntry {
   algorithm: AssignmentAlgorithm;
 }
 
-export interface AssignmentStrategyResult {
+export interface AssignmentAlgorithmResult {
   results: readonly UserAssignmentResult[];
   message: string;
 }
