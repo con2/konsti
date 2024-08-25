@@ -46,6 +46,7 @@ export interface EventConfig {
     Record<ProgramType, ArrMin1<SignupWindow>>
   > | null;
   rollingSignupStartProgramTypes: ProgramType[];
+  enableRollingSignupPreviousDay: boolean;
   directSignupAlwaysOpenIds: string[];
   requireRegistrationCode: boolean;
   twoPhaseSignupProgramTypes: ProgramType[];
