@@ -6703,6 +6703,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"eslint-plugin-react-hooks-addons@npm:0.3.1":
+  version: 0.3.1
+  resolution: "eslint-plugin-react-hooks-addons@npm:0.3.1"
+  peerDependencies:
+    eslint: ">=3.0.0"
+  checksum: 10c0/7561377a208407f514e2cbb5f60286183d6dd7372f52284613021c0648a8d8e822a0960afc209e58f47c098d46fe7132ee1f1f843dcbe8e2fa029e64b5188c5f
+  languageName: node
+  linkType: hard
+
 "eslint-plugin-react-hooks@npm:4.6.2":
   version: 4.6.2
   resolution: "eslint-plugin-react-hooks@npm:4.6.2"
@@ -9282,6 +9291,7 @@ __metadata:
     eslint-plugin-promise: "npm:7.1.0"
     eslint-plugin-react: "npm:7.35.0"
     eslint-plugin-react-hooks: "npm:4.6.2"
+    eslint-plugin-react-hooks-addons: "npm:0.3.1"
     eslint-plugin-unicorn: "npm:55.0.0"
     eslint-plugin-vitest: "npm:0.5.4"
     globals: "npm:15.9.0"

@@ -1,5 +1,4 @@
 import { ReactElement, useEffect, useState } from "react";
-import { useStore } from "react-redux";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { MyLotterySignupsList } from "client/views/my-program-items/components/MyLotterySignupsList";
@@ -39,7 +38,6 @@ export const MyProgramItemsView = (): ReactElement => {
   const directSignups = useAppSelector(selectDirectSignups);
   const isGroupCreator = useAppSelector((state) => state.group.isGroupCreator);
   const groupMembers = useAppSelector((state) => state.group.groupMembers);
-  const testTime = useAppSelector((state) => state.testSettings.testTime);
   const signupStrategy = useAppSelector((state) => state.admin.signupStrategy);
   const groupCode = useAppSelector((state) => state.group.groupCode);
   const isInGroup = getIsInGroup(groupCode);
@@ -49,7 +47,6 @@ export const MyProgramItemsView = (): ReactElement => {
   const [showAllProgramItems, setShowAllProgramItems] = useState<boolean>(
     getSavedShowAllProgramItems(),
   );
-  const store = useStore();
 
   useEffect(() => {
     const fetchData = async (): Promise<void> => {
@@ -59,7 +56,7 @@ export const MyProgramItemsView = (): ReactElement => {
     };
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     fetchData();
-  }, [store, testTime]);
+  }, []);
 
   return (
     <MyProgramItemsViewContainer>

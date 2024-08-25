@@ -1,6 +1,5 @@
 import { ReactElement, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useStore } from "react-redux";
 import { PasswordManagement } from "client/views/helper/components/PasswordManagement";
 import { loadSettings, loadSignupMessages } from "client/utils/loadData";
 import { Button, ButtonStyle } from "client/components/Button";
@@ -25,8 +24,6 @@ export const HelperView = (): ReactElement => {
       : HelperTool.PRIVATE_SIGNUP_MESSAGES,
   );
 
-  const store = useStore();
-
   useEffect(() => {
     const fetchData = async (): Promise<void> => {
       await loadSettings();
@@ -34,7 +31,7 @@ export const HelperView = (): ReactElement => {
     };
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     fetchData();
-  }, [store]);
+  }, []);
 
   return (
     <div>

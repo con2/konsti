@@ -1,5 +1,4 @@
 import { ReactElement, useEffect, useMemo, useState } from "react";
-import { useStore } from "react-redux";
 import { useDebounce } from "use-debounce";
 import { useSearchParams } from "react-router-dom";
 import { AllProgramItemsList } from "client/views/all-program-items/components/AllProgramItemsList";
@@ -41,8 +40,6 @@ export const AllProgramItemsView = (): ReactElement => {
   const hiddenProgramItems = useAppSelector(
     (state) => state.admin.hiddenProgramItems,
   );
-  const testTime = useAppSelector((state) => state.testSettings.testTime);
-  const signupStrategy = useAppSelector((state) => state.admin.signupStrategy);
 
   const [selectedTag, setSelectedTag] = useState<Tag | Language | "">(
     getSavedTag(),
@@ -73,8 +70,6 @@ export const AllProgramItemsView = (): ReactElement => {
     [activeProgramItems, hiddenProgramItems],
   );
 
-  const store = useStore();
-
   useEffect(() => {
     setLoading(true);
     const fetchData = async (): Promise<void> => {
@@ -83,7 +78,7 @@ export const AllProgramItemsView = (): ReactElement => {
     };
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     fetchData();
-  }, [store, testTime, signupStrategy]);
+  }, []);
 
   useEffect(() => {
     sessionStorage.setItem(

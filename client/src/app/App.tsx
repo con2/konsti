@@ -1,5 +1,4 @@
 import { ReactElement, useEffect, useState } from "react";
-import { useStore } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import styled from "styled-components";
 import { AppRoutes } from "client/app/AppRoutes";
@@ -19,8 +18,6 @@ const { loadedSettings, showTestValues, showAnnouncement, dataUpdateInterval } =
   config.client();
 
 export const App = (): ReactElement => {
-  const store = useStore();
-
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
@@ -40,7 +37,7 @@ export const App = (): ReactElement => {
       }, dataUpdateInterval * 1000);
     };
     startUpdateTimer();
-  }, [store]);
+  }, []);
 
   getIconLibrary();
 
