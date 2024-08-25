@@ -1,5 +1,5 @@
 import { Fragment, ReactElement } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { capitalize } from "lodash-es";
@@ -7,9 +7,9 @@ import { getWeekdayAndTime } from "client/utils/timeFormatter";
 import { ProgramItem } from "shared/types/models/programItem";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { updateFavorite } from "client/utils/favorite";
-import { IconButton } from "client/components/IconButton";
 import { selectFavoriteProgramItems } from "client/views/my-program-items/myProgramItemsSlice";
-import { AppRoute } from "client/app/AppRoutes";
+import { RaisedCard } from "client/components/RaisedCard";
+import { TertiaryButton } from "client/components/TertiaryButton";
 
 interface Props {
   programItems: readonly ProgramItem[];
@@ -21,7 +21,9 @@ export const FavoritesByStartTimes = ({
   startTimes,
 }: Props): ReactElement => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
+
   const username = useAppSelector((state) => state.login.username);
   const favoriteProgramItems = useAppSelector(selectFavoriteProgramItems);
 
@@ -42,29 +44,39 @@ export const FavoritesByStartTimes = ({
           <Fragment key={startTime}>
             <StyledTime>{capitalize(getWeekdayAndTime(startTime))}</StyledTime>
 
-            <ul>
+            <StyledList>
               {programItems.map((programItem) => {
                 if (programItem.startTime === startTime) {
                   return (
                     <ProgramItemDetailsRow key={programItem.programItemId}>
-                      <StyledLink
-                        to={`${AppRoute.PROGRAM_ITEM}/${programItem.programItemId}`}
-                        data-testid={"program-item-title"}
-                      >
-                        {programItem.title}
-                      </StyledLink>
-                      <IconButton
-                        icon="heart-circle-xmark"
-                        onClick={async () => {
-                          await removeFavorite(programItem);
-                        }}
-                        ariaLabel={t("iconAltText.deleteFavorite")}
-                      />
+                      <RaisedCard>
+                        <GameTitle>{programItem.title}</GameTitle>
+                        <ButtonContainer>
+                          <TertiaryButton
+                            icon="circle-arrow-right"
+                            onClick={() => {
+                              navigate(
+                                `/program/item/${programItem.programItemId}`,
+                              );
+                            }}
+                          >
+                            {t("button.showInfo")}
+                          </TertiaryButton>
+                          <TertiaryButton
+                            onClick={async () => {
+                              await removeFavorite(programItem);
+                            }}
+                            icon={["far", "heart"]}
+                          >
+                            {t("button.unfavorite")}
+                          </TertiaryButton>
+                        </ButtonContainer>
+                      </RaisedCard>
                     </ProgramItemDetailsRow>
                   );
                 }
               })}
-            </ul>
+            </StyledList>
           </Fragment>
         );
       })}
@@ -83,11 +95,25 @@ const ProgramItemDetailsRow = styled.li`
   }
 `;
 
-const StyledTime = styled.p`
-  font-weight: 600;
-  margin: 10px 0;
+const StyledList = styled.ul`
+  margin: 0;
 `;
 
-const StyledLink = styled(Link)`
-  margin-right: 8px;
+const StyledTime = styled.h2`
+  margin: 12px 0 4px 0;
+  font-size: ${(props) => props.theme.fontSizeNormal};
 `;
+
+const GameTitle = styled.h3`
+  font-size: ${(props) => props.theme.fontSizeNormal};
+  font-weight: normal;
+  margin-top: 0;
+  margin-bottom: 8px;
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+`;
+
