@@ -13,7 +13,6 @@ import {
   getTime,
 } from "client/utils/timeFormatter";
 import { Dropdown } from "client/components/Dropdown";
-import { loadData } from "client/utils/loadData";
 
 export const TestTime = (): ReactElement => {
   const { i18n } = useTranslation();
@@ -42,7 +41,6 @@ export const TestTime = (): ReactElement => {
     await dispatch(submitSetTestSettings({ testTime: time }));
     setLoading(false);
     setDropdownVisible(false);
-    await loadData();
   };
 
   const dropdownItems = testTimes.map((time) => {

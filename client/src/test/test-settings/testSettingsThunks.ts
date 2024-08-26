@@ -4,7 +4,7 @@ import {
 } from "client/test/test-settings/testSettingsServices";
 import { submitSetTestTime } from "client/test/test-settings/testSettingsSlice";
 import { AppThunk } from "client/types/reduxTypes";
-import { loadProgramItems } from "client/utils/loadData";
+import { loadData } from "client/utils/loadData";
 
 export const submitGetTestSettings = (): AppThunk => {
   return async (dispatch): Promise<void> => {
@@ -36,7 +36,7 @@ export const submitSetTestSettings = ({
 
     if (response.status === "success") {
       dispatch(submitSetTestTime(response.testSettings.testTime));
-      await loadProgramItems();
+      await loadData();
     }
   };
 };
