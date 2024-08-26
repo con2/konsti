@@ -18,6 +18,10 @@ const updateKompassiDataDump = async (): Promise<void> => {
     kompassiProgramItems.map((kompassiProgramItem) => ({
       ...kompassiProgramItem,
       cachedHosts: "<redacted>",
+      scheduleItems: sortBy(
+        kompassiProgramItem.scheduleItems,
+        (scheduleItem) => scheduleItem.slug,
+      ),
     })),
     [(programItem) => programItem.slug],
   );

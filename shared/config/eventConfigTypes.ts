@@ -33,6 +33,11 @@ export interface SignupWindow {
   signupWindowClose: Dayjs;
 }
 
+export enum EntryConditionText {
+  K16 = "k16",
+  K18 = "k18",
+}
+
 export interface EventConfig {
   assignmentAlgorithm: AssignmentAlgorithm;
   enableGroups: boolean;
@@ -62,4 +67,8 @@ export interface EventConfig {
   logInvalidStartTimes: boolean;
   hideParticipantListProgramTypes: ProgramType[];
   fixedLotterySignupTime: string | null;
+  entryConditions: {
+    conditionText: EntryConditionText;
+    programItemIds: string[];
+  }[];
 }
