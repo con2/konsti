@@ -317,8 +317,6 @@ export const translationFI = {
       "Huomaathan, että olet ilmoittamassa koko ryhmäsi tähän arvontaan.",
     currentSignup: "Olet ilmoittautunut tähän {{PROGRAM_TYPE}}.",
     entryFee: "Materiaalimaksu {{ENTRY_FEE}}",
-    entryFeeInfo:
-      "Ymmärrän, että työpajaan kuuluu materiaalimaksu {{ENTRY_FEE}}.",
     minAttendanceMissing: "Puuttuva tieto: vähimmäismäärä {{ATTENDEE_TYPE}}",
     maxAttendanceMissing: "Puuttuva tieto: maksimimäärä {{ATTENDEE_TYPE}}",
     showAttendees: "Näytä {{ATTENDEE_TYPE}}",
@@ -346,6 +344,12 @@ export const translationFI = {
       lotterySignupEnded: "Osallistujat valittiin arvonnalla.",
       directSignupStarts:
         " Suora ilmoittautuminen jäljelle jääneisiin ja peruutuspaikkoihin: ",
+    },
+    signupCondition: {
+      entryFeeInfo:
+        "Ymmärrän, että työpajaan kuuluu materiaalimaksu {{ENTRY_FEE}}.",
+      k16: "Peli sisältää raskaita teemoja ja/tai väkivalta. Laittamalla rastin tähän ruutuun vakuutan olevani pelin aikana vähintään 16-vuotias.",
+      k18: "Peli sisältää hahmojen välistä flirttailua ja mahdollisesti muitakin aikuisempia teemoja. Turvallisemman tilan periaatteiden noudattamiseksi otamme peliin vain täysi-ikäisiä pelaajia. Laittamalla rastin tähän ruutuun vakuutan olevani pelin aikana vähintään 18-vuotias.",
     },
   },
   attendeeType: {

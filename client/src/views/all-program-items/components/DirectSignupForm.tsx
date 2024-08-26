@@ -28,6 +28,7 @@ import { Dropdown } from "client/components/Dropdown";
 import { Checkbox } from "client/components/Checkbox";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 import { InfoText, InfoTextVariant } from "client/components/InfoText";
+import { getEntryCondition } from "client/views/all-program-items/components/allProgramItemsUtils";
 
 interface Props {
   programItem: ProgramItem;
@@ -57,18 +58,20 @@ export const DirectSignupForm = ({
 
   const [userSignupMessage, setUserSignupMessage] = useState<string>("");
   const [selectedValue, setSelectedValue] = useState<string>(
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     (i18n.language === "fi"
-      ? (signupQuestion?.selectOptions[0]?.optionFi ?? "")
-      : (signupQuestion?.selectOptions[0]?.optionEn ?? "")) ?? "",
+      ? signupQuestion?.selectOptions[0]?.optionFi
+      : signupQuestion?.selectOptions[0]?.optionEn) ?? "",
   );
-  const [agreeEntryFee, setAgreeEntryFee] = useState<boolean>(false);
+  const [agreeEntryCondition, setAgreeEntryCondition] =
+    useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<
     | PostDirectSignupErrorMessage
     | PostLeaveGroupErrorMessage
     | PostCloseGroupErrorMessage
     | null
   >(null);
+
+  const entryCondition = getEntryCondition(programItem, t);
 
   const isInGroup = getIsInGroup(groupCode);
 
@@ -213,16 +216,14 @@ export const DirectSignupForm = ({
         </SignupQuestionContainer>
       )}
 
-      {!!programItem.entryFee && (
+      {entryCondition && (
         <Checkbox
-          checked={agreeEntryFee}
+          checked={agreeEntryCondition}
           onChange={() => {
-            setAgreeEntryFee(!agreeEntryFee);
+            setAgreeEntryCondition(!agreeEntryCondition);
           }}
-          label={t("signup.entryFeeInfo", {
-            ENTRY_FEE: programItem.entryFee,
-          })}
-          id={"entry-fee-agree-checkbox"}
+          label={entryCondition.label}
+          id={entryCondition.id}
         />
       )}
 
@@ -230,7 +231,7 @@ export const DirectSignupForm = ({
         <StyledButton
           onClick={handleSignup}
           buttonStyle={ButtonStyle.PRIMARY}
-          disabled={(!!programItem.entryFee && !agreeEntryFee) || loading}
+          disabled={(entryCondition && !agreeEntryCondition) ?? loading}
         >
           {t("signup.confirm")}
         </StyledButton>

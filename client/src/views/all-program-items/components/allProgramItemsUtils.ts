@@ -1,4 +1,5 @@
 import { Dayjs } from "dayjs";
+import { TFunction } from "i18next";
 import { ProgramItem } from "shared/types/models/programItem";
 import { Signup } from "shared/types/models/user";
 import {
@@ -51,4 +52,39 @@ export const getFormattedInterval = (
 
   // Note that the dash should be an en dash
   return `${startFormatted} – ${endFormatted}`;
+};
+
+interface EntryCondition {
+  label: string;
+  id: string;
+}
+
+export const getEntryCondition = (
+  programItem: ProgramItem,
+  t: TFunction,
+): EntryCondition | null => {
+  const { entryConditions } = config.event();
+
+  const foundCondition = entryConditions.find((entryCondition) => {
+    if (entryCondition.programItemIds.includes(programItem.programItemId)) {
+      return entryCondition;
+    }
+  });
+
+  if (foundCondition) {
+    return {
+      label: t(`signup.signupCondition.${foundCondition.conditionText}`),
+      id: "signup-condition-agree-checkbox",
+    };
+  }
+
+  if (programItem.entryFee) {
+    return {
+      label: t("signup.signupCondition.entryFeeInfo", {
+        ENTRY_FEE: programItem.entryFee,
+      }),
+      id: "entry-fee-agree-checkbox",
+    };
+  }
+  return null;
 };

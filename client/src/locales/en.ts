@@ -315,8 +315,6 @@ export const translationEN = {
     groupSignupInfo: "Please note that you are signing up your whole group.",
     currentSignup: "You have signed up to this {{PROGRAM_TYPE}}.",
     entryFee: "Material fee {{ENTRY_FEE}}",
-    entryFeeInfo:
-      "I understand that the workshop requires a material fee of {{ENTRY_FEE}}.",
     minAttendanceMissing: "Missing info: minimum number of {{ATTENDEE_TYPE}}",
     maxAttendanceMissing: "Missing info: maximum number of {{ATTENDEE_TYPE}}",
     showAttendees: "Show {{ATTENDEE_TYPE}}",
@@ -344,6 +342,12 @@ export const translationEN = {
         "Participants are selected in a lottery. Lottery sign-up closes ",
       lotterySignupEnded: "Participants were selected in a lottery.",
       directSignupStarts: " Direct sign-up to remaining and cancelled spots: ",
+    },
+    signupCondition: {
+      entryFeeInfo:
+        "I understand that the workshop requires a material fee of {{ENTRY_FEE}}.",
+      k16: "The game contains heavy themes and/or violence. By checking this box, I confirm that I am at least 16 years old during the game.",
+      k18: "The game includes flirting between characters and possibly other more mature themes. To ensure a safer environment, we only allow adult players in the game. By checking this box, I confirm that I am at least 18 years old during the game.",
     },
   },
   attendeeType: {

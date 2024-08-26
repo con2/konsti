@@ -349,16 +349,8 @@
     "cachedAnnotations": { "konsti:maxAttendance": 130 },
     "scheduleItems": [
       {
-        "slug": "kirpputorin-ajanvaraus-perjantai-2030",
-        "title": "Kirpputorin ajanvaraus PERJANTAI – Saapuminen kello 20:30–21:00",
-        "startTime": "2024-09-06T12:00:00+00:00",
-        "endTime": "2024-09-06T18:30:00+00:00",
-        "lengthMinutes": 390,
-        "location": "Sopraano"
-      },
-      {
-        "slug": "kirpputorin-ajanvaraus-perjantai-2100",
-        "title": "Kirpputorin ajanvaraus PERJANTAI – Saapuminen kello 21:00–21:30",
+        "slug": "kirpputorin-ajanvaraus-perjantai-1500",
+        "title": "Kirpputorin ajanvaraus PERJANTAI – Saapuminen kello 15:00–15:30",
         "startTime": "2024-09-06T12:00:00+00:00",
         "endTime": "2024-09-06T18:30:00+00:00",
         "lengthMinutes": 390,
@@ -437,16 +429,24 @@
         "location": "Sopraano"
       },
       {
-        "slug": "kirpputorin-ajanvaraus-perjantai-1500",
-        "title": "Kirpputorin ajanvaraus PERJANTAI – Saapuminen kello 15:00–15:30",
+        "slug": "kirpputorin-ajanvaraus-perjantai-2000",
+        "title": "Kirpputorin ajanvaraus PERJANTAI – Saapuminen kello 20:00–20:30",
         "startTime": "2024-09-06T12:00:00+00:00",
         "endTime": "2024-09-06T18:30:00+00:00",
         "lengthMinutes": 390,
         "location": "Sopraano"
       },
       {
-        "slug": "kirpputorin-ajanvaraus-perjantai-2000",
-        "title": "Kirpputorin ajanvaraus PERJANTAI – Saapuminen kello 20:00–20:30",
+        "slug": "kirpputorin-ajanvaraus-perjantai-2030",
+        "title": "Kirpputorin ajanvaraus PERJANTAI – Saapuminen kello 20:30–21:00",
+        "startTime": "2024-09-06T12:00:00+00:00",
+        "endTime": "2024-09-06T18:30:00+00:00",
+        "lengthMinutes": 390,
+        "location": "Sopraano"
+      },
+      {
+        "slug": "kirpputorin-ajanvaraus-perjantai-2100",
+        "title": "Kirpputorin ajanvaraus PERJANTAI – Saapuminen kello 21:00–21:30",
         "startTime": "2024-09-06T12:00:00+00:00",
         "endTime": "2024-09-06T18:30:00+00:00",
         "lengthMinutes": 390,
