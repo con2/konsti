@@ -2,6 +2,7 @@ import {
   AssignmentAlgorithm,
   EventName,
   EventConfig,
+  EntryConditionText,
 } from "shared/config/eventConfigTypes";
 import { ProgramType } from "shared/types/models/programItem";
 
@@ -54,6 +55,28 @@ export const eventConfig: EventConfig = {
   tournamentSignupQuestionExcludeIds: [],
 
   isEnglishProgramItems: [],
+
+  entryConditions: [
+    {
+      conditionText: EntryConditionText.K16,
+      programItemIds: [
+        "alien-evac", // ALIEN: EVAC
+        "alien-fallout", // ALIEN: Fallout
+        "kriisitunturi", // Kriisitunturi
+        "murheen-valama-vankila", // Murheen valama vankila
+        "seestunturin-salaisuus", // Seestunturin salaisuus
+        "ristipisto", // Ristipisto
+        "circumstances-zombie-apocalypse-co-op", // Circumstances – Zombie Apocalypse (co-op)
+        "circumstances-zombie-apocalypse-pahispelautus", // Circumstances – Zombie Apocalypse (pahispelautus)
+        "mita-kellarista-loytyy", // Mitä kellarista löytyy?
+        "kusinen-homma", // Kusinen Homma
+      ],
+    },
+    {
+      conditionText: EntryConditionText.K18,
+      programItemIds: ["varjojen-sisarkunta"], // Varjojen sisarkunta
+    },
+  ],
 
   // Two phase signup settings
   preSignupStart: 60 * 4, // minutes
