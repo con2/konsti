@@ -129,6 +129,7 @@ export const DirectSignupForm = ({
       return;
     }
 
+    // TODO: Don't reload program items, backend response should return all required data
     await loadProgramItems();
     onDirectSignupProgramItem();
     setLoading(false);
