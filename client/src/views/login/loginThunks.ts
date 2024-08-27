@@ -84,6 +84,7 @@ export const submitLogin = (
         }),
       );
 
+      // TODO: Remove these, backend response should return all required data
       await loadUser();
       await loadGroupMembers();
     }
@@ -218,6 +219,7 @@ export const submitKompassiLogin = (
         }),
       );
 
+      // TODO: Remove these, backend response should return all required data
       await loadUser();
       await loadGroupMembers();
     }

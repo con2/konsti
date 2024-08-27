@@ -1,4 +1,4 @@
-import { ReactElement, useEffect, useState } from "react";
+import { ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { MyLotterySignupsList } from "client/views/my-program-items/components/MyLotterySignupsList";
@@ -9,11 +9,7 @@ import {
   getUpcomingDirectSignups,
   getUpcomingFavorites,
 } from "client/utils/getUpcomingProgramItems";
-import {
-  loadUser,
-  loadProgramItems,
-  loadGroupMembers,
-} from "client/utils/loadData";
+
 import { useAppSelector } from "client/utils/hooks";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import {
@@ -47,16 +43,6 @@ export const MyProgramItemsView = (): ReactElement => {
   const [showAllProgramItems, setShowAllProgramItems] = useState<boolean>(
     getSavedShowAllProgramItems(),
   );
-
-  useEffect(() => {
-    const fetchData = async (): Promise<void> => {
-      await loadProgramItems();
-      await loadUser();
-      await loadGroupMembers();
-    };
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    fetchData();
-  }, []);
 
   return (
     <MyProgramItemsViewContainer>
