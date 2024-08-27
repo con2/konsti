@@ -94,6 +94,7 @@ export const loadGroupMembers = async (): Promise<void> => {
   }
 };
 
+// This includes public and private signup messages
 export const loadSignupMessages = async (): Promise<void> => {
   const dispatch: AppDispatch = store.dispatch;
   await dispatch(submitGetSignupMessages());

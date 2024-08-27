@@ -3,7 +3,6 @@ import { useDebounce } from "use-debounce";
 import { useSearchParams } from "react-router-dom";
 import { AllProgramItemsList } from "client/views/all-program-items/components/AllProgramItemsList";
 import { getUpcomingProgramItems } from "client/utils/getUpcomingProgramItems";
-import { loadProgramItems } from "client/utils/loadData";
 import { Loading } from "client/components/Loading";
 import {
   ProgramItem,
@@ -44,7 +43,7 @@ export const AllProgramItemsView = (): ReactElement => {
   const [selectedTag, setSelectedTag] = useState<Tag | Language | "">(
     getSavedTag(),
   );
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
   const [searchTerm, setSearchTerm] = useState<string>(getSavedSearchTerm());
   const [filteredProgramItems, setFilteredProgramItems] = useState<
     readonly ProgramItem[]
@@ -71,14 +70,8 @@ export const AllProgramItemsView = (): ReactElement => {
   );
 
   useEffect(() => {
-    setLoading(true);
-    const fetchData = async (): Promise<void> => {
-      await loadProgramItems();
-      setLoading(false);
-    };
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    fetchData();
-  }, []);
+    setLoading(false);
+  }, [/* effect dep */ activeProgramItems]);
 
   useEffect(() => {
     sessionStorage.setItem(
@@ -88,6 +81,7 @@ export const AllProgramItemsView = (): ReactElement => {
 
     if (debouncedSearchTerm.length === 0) {
       setFilteredProgramItems(activeVisibleProgramItems);
+      setLoading(false);
       return;
     }
 
@@ -107,6 +101,7 @@ export const AllProgramItemsView = (): ReactElement => {
     );
 
     setFilteredProgramItems(programItemsFilteredBySearchTerm);
+    setLoading(false);
   }, [debouncedSearchTerm, activeVisibleProgramItems]);
 
   const programTypePairs = config

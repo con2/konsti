@@ -56,6 +56,7 @@ export const DirectSignupRow = ({
     if (errorMessage) {
       setServerError(errorMessage);
     } else {
+      // TODO: Don't reload program items, backend response should return all required data
       await loadProgramItems();
       setCancelSignupFormOpen(false);
     }
