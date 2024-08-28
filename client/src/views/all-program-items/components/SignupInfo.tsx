@@ -5,7 +5,6 @@ import { DirectSignupProgramItem } from "client/views/all-program-items/componen
 import { LotterySignupProgramItem } from "client/views/all-program-items/components/LotterySignupProgramItem";
 import { config } from "shared/config";
 import { ProgramItemSignupStrategy } from "shared/types/models/programItem";
-import { isRevolvingDoorWorkshop } from "client/utils/isRevolvingDoorWorkshop";
 import { Signup } from "shared/types/models/user";
 import { SignupHelpText } from "client/views/all-program-items/components/SignupHelpText";
 import { getTimeNow } from "client/utils/getTimeNow";
@@ -22,6 +21,8 @@ interface Props {
   loading: boolean;
   setLoading: (loading: boolean) => void;
   isInGroup: boolean;
+  usesKonstiSignup: boolean;
+  isNormalSignup: boolean;
 }
 
 export const SignupInfo = ({
@@ -34,6 +35,8 @@ export const SignupInfo = ({
   loading,
   setLoading,
   isInGroup,
+  usesKonstiSignup,
+  isNormalSignup,
 }: Props): ReactElement => {
   const signupAlwaysOpen = config
     .event()
@@ -41,12 +44,6 @@ export const SignupInfo = ({
 
   const isDirectSignupMode =
     signupStrategy === ProgramItemSignupStrategy.DIRECT || signupAlwaysOpen;
-
-  const requiresSignup = !isRevolvingDoorWorkshop(programItem);
-  const konstiSignup = !config
-    .event()
-    .noKonstiSignupIds.includes(programItem.programItemId);
-  const normalSignup = requiresSignup && konstiSignup;
 
   const isSignupOver = getTimeNow().isAfter(programItem.startTime);
 
@@ -57,12 +54,12 @@ export const SignupInfo = ({
       <SignupHelpText
         programItem={programItem}
         isSignupAlwaysOpen={signupAlwaysOpen}
-        usesKonstiSignup={konstiSignup}
+        usesKonstiSignup={usesKonstiSignup}
         startTime={startTime}
         isInGroup={isInGroup}
       />
 
-      {normalSignup &&
+      {isNormalSignup &&
         !isSignupOver &&
         (!isDirectSignupMode ? (
           <LotterySignupProgramItem

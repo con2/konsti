@@ -16,7 +16,6 @@ import { PopularityInfo } from "client/components/PopularityInfo";
 import { updateFavorite, UpdateFavoriteOpts } from "client/utils/favorite";
 import { useAppDispatch } from "client/utils/hooks";
 import { config } from "shared/config";
-import { isRevolvingDoorWorkshop } from "client/utils/isRevolvingDoorWorkshop";
 import { SignupsInfo } from "client/views/all-program-items/components/SignupsInfo";
 import { AppRoute } from "client/app/AppRoutes";
 import { SignupQuestion } from "shared/types/models/settings";
@@ -31,6 +30,8 @@ interface Props {
   favoriteProgramItems: readonly ProgramItem[];
   publicSignupQuestion?: SignupQuestion;
   allValuesValid: boolean;
+  isNormalSignup: boolean;
+  requiresSignup: boolean;
 }
 
 export const ProgramItemHead = ({
@@ -43,6 +44,8 @@ export const ProgramItemHead = ({
   favoriteProgramItems,
   publicSignupQuestion,
   allValuesValid,
+  isNormalSignup,
+  requiresSignup,
 }: Props): ReactElement => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
@@ -50,12 +53,6 @@ export const ProgramItemHead = ({
   const signupAlwaysOpen = config
     .event()
     .directSignupAlwaysOpenIds.includes(programItem.programItemId);
-
-  const requiresSignup = !isRevolvingDoorWorkshop(programItem);
-  const konstiSignup = !config
-    .event()
-    .noKonstiSignupIds.includes(programItem.programItemId);
-  const isNormalSignup = requiresSignup && konstiSignup;
 
   const isEnterGameMode =
     signupStrategy === ProgramItemSignupStrategy.DIRECT || signupAlwaysOpen;

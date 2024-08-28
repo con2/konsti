@@ -131,6 +131,7 @@ export const createProgramItems = async (
             "ropecon:accessibilityOther": "Other accessibility information",
             "ropecon:gameSlogan": faker.lorem.sentence(),
             "ropecon:isRevolvingDoor": Math.random() < 0.5,
+            "konsti:isPlaceholder": Math.random() < 0.1,
           },
         };
 

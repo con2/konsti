@@ -2,7 +2,7 @@ import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import dayjs from "dayjs";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { ProgramItem, SignupType } from "shared/types/models/programItem";
+import { ProgramItem } from "shared/types/models/programItem";
 import { getTimeNow } from "client/utils/getTimeNow";
 import { isRevolvingDoorWorkshop } from "client/utils/isRevolvingDoorWorkshop";
 import {
@@ -42,10 +42,7 @@ export const SignupHelpText = ({
   const lotterySignupStartTime = getLotterySignupStartTime(startTime);
   const lotterySignupEndTime = getLotterySignupEndTime(startTime);
 
-  if (
-    programItem.signupType === SignupType.NONE ||
-    timeNow.isAfter(programStartTime)
-  ) {
+  if (timeNow.isAfter(programStartTime)) {
     // eslint-disable-next-line react/jsx-no-useless-fragment
     return <></>;
   }
