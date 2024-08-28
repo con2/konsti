@@ -3,17 +3,17 @@ import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { ProgramItem } from "shared/types/models/programItem";
-import { LotterySignupForm } from "./LotterySignupForm";
+import { LotterySignupForm } from "client/views/program-item/signup/components/LotterySignupForm";
 import {
   PostLotterySignupsErrorMessage,
   submitPostLotterySignups,
 } from "client/views/my-program-items/myProgramItemsThunks";
 import { Signup } from "shared/types/models/user";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
-import { isAlreadyLotterySigned } from "./allProgramItemsUtils";
+import { isAlreadyLotterySigned } from "client/views/program-item/programItemUtils";
 import { Button, ButtonStyle } from "client/components/Button";
 import { ErrorMessage } from "client/components/ErrorMessage";
-import { CancelSignupForm } from "client/views/all-program-items/components/CancelSignupForm";
+import { CancelSignupForm } from "client/views/program-item/signup/components/CancelSignupForm";
 import { getTimeNow } from "client/utils/getTimeNow";
 import { config } from "shared/config";
 import { getLotterySignupStartTime } from "shared/utils/signupTimes";

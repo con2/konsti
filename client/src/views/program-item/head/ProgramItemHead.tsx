@@ -16,7 +16,7 @@ import { PopularityInfo } from "client/components/PopularityInfo";
 import { updateFavorite, UpdateFavoriteOpts } from "client/utils/favorite";
 import { useAppDispatch } from "client/utils/hooks";
 import { config } from "shared/config";
-import { SignupsInfo } from "client/views/all-program-items/components/SignupsInfo";
+import { ProgramItemHeadSignupInfo } from "client/views/program-item/head/components/ProgramItemHeadSignupInfo";
 import { AppRoute } from "client/app/AppRoutes";
 import { SignupQuestion } from "shared/types/models/settings";
 
@@ -120,7 +120,7 @@ export const ProgramItemHead = ({
         </Row>
         {isNormalSignup && allValuesValid && (
           <Row>
-            <SignupsInfo
+            <ProgramItemHeadSignupInfo
               programItem={programItem}
               signups={signups}
               isLoggedIn={loggedIn}

@@ -19,7 +19,7 @@ interface Props {
   publicSignupQuestion?: SignupQuestion;
 }
 
-export const SignupsInfo = ({
+export const ProgramItemHeadSignupInfo = ({
   isLoggedIn,
   programItem,
   signups,

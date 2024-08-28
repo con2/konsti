@@ -12,14 +12,14 @@ import { RaisedCard } from "client/components/RaisedCard";
 import {
   isAlreadyDirectySigned,
   isAlreadyLotterySigned,
-} from "client/views/all-program-items/components/allProgramItemsUtils";
+} from "client/views/program-item/programItemUtils";
 import { config } from "shared/config";
-import { ProgramItemView } from "client/views/all-program-items/components/ProgramItemView";
-import { SignupInfo } from "client/views/all-program-items/components/SignupInfo";
-import { ProgramItemHead } from "client/views/all-program-items/components/ProgramItemHead";
+import { ProgramItemBody } from "client/views/program-item/body/ProgramItemBody";
+import { ProgramItemSignup } from "client/views/program-item/signup/ProgramItemSignup";
+import { ProgramItemHead } from "client/views/program-item/head/ProgramItemHead";
 import { SignupQuestion } from "shared/types/models/settings";
 import { isRevolvingDoorWorkshop } from "client/utils/isRevolvingDoorWorkshop";
-import { ProgramItemErrors } from "client/views/all-program-items/components/ProgramItemErrors";
+import { ProgramItemErrors } from "client/views/program-item/ProgramItemErrors";
 
 interface Props {
   programItem: ProgramItem;
@@ -133,13 +133,13 @@ export const ProgramItemEntry = ({
         />
       )}
 
-      <ProgramItemView
+      <ProgramItemBody
         programItem={programItem}
         isAlwaysExpanded={isAlwaysExpanded}
       />
 
       {allValuesValid && (
-        <SignupInfo
+        <ProgramItemSignup
           signupStrategy={signupStrategy}
           startTime={startTime}
           lotterySignups={lotterySignups}

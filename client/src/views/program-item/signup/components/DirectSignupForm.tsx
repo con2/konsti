@@ -28,7 +28,7 @@ import { Dropdown } from "client/components/Dropdown";
 import { Checkbox } from "client/components/Checkbox";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 import { InfoText, InfoTextVariant } from "client/components/InfoText";
-import { getEntryCondition } from "client/views/all-program-items/components/allProgramItemsUtils";
+import { getEntryCondition } from "client/views/program-item/programItemUtils";
 
 interface Props {
   programItem: ProgramItem;

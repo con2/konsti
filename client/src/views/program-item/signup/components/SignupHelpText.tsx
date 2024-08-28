@@ -13,7 +13,7 @@ import {
 import {
   getFormattedTime,
   getFormattedInterval,
-} from "client/views/all-program-items/components/allProgramItemsUtils";
+} from "client/views/program-item/programItemUtils";
 import { ProgramItemSignupStrategy } from "shared/types/models/programItem";
 
 interface Props {
