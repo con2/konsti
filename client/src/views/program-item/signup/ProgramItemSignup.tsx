@@ -1,15 +1,15 @@
 import { ReactElement } from "react";
 import styled from "styled-components";
 import { ProgramItem } from "shared/types/models/programItem";
-import { DirectSignupProgramItem } from "client/views/all-program-items/components/DirectSignupProgramItem";
-import { LotterySignupProgramItem } from "client/views/all-program-items/components/LotterySignupProgramItem";
+import { DirectSignupProgramItem } from "client/views/program-item/signup/components/DirectSignupProgramItem";
+import { LotterySignupProgramItem } from "client/views/program-item/signup/components/LotterySignupProgramItem";
 import { config } from "shared/config";
 import { ProgramItemSignupStrategy } from "shared/types/models/programItem";
 import { Signup } from "shared/types/models/user";
-import { SignupHelpText } from "client/views/all-program-items/components/SignupHelpText";
+import { SignupHelpText } from "client/views/program-item/signup/components/SignupHelpText";
 import { getTimeNow } from "client/utils/getTimeNow";
-import { isAlreadyDirectySigned } from "client/views/all-program-items/components/allProgramItemsUtils";
-import { AdmissionTicketLink } from "client/views/all-program-items/components/AdmissionTicketLink";
+import { isAlreadyDirectySigned } from "client/views/program-item/programItemUtils";
+import { AdmissionTicketLink } from "client/views/program-item/signup/components/AdmissionTicketLink";
 
 interface Props {
   signupStrategy: ProgramItemSignupStrategy;
@@ -25,7 +25,7 @@ interface Props {
   isNormalSignup: boolean;
 }
 
-export const SignupInfo = ({
+export const ProgramItemSignup = ({
   signupStrategy,
   startTime,
   lotterySignups,

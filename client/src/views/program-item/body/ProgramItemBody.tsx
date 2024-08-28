@@ -2,11 +2,11 @@ import { ReactElement, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { ProgramItem } from "shared/types/models/programItem";
-import { ProgramItemInfo } from "client/views/all-program-items/components/ProgramItemInfo";
+import { ProgramItemDetails } from "client/views/program-item/body/components/ProgramItemDetails";
 import { config } from "shared/config";
-import { FeedbackForm } from "client/views/all-program-items/components/FeedbackForm";
+import { FeedbackForm } from "client/views/program-item/body/components/FeedbackForm";
 import { UserGroup } from "shared/types/models/user";
-import { AdminActionCard } from "client/views/all-program-items/components/AdminActionCard";
+import { AdminActionCard } from "client/views/program-item/body/components/AdminActionCard";
 import { useAppSelector } from "client/utils/hooks";
 import { ExpandButton } from "client/components/ExpandButton";
 
@@ -15,7 +15,7 @@ interface Props {
   isAlwaysExpanded: boolean;
 }
 
-export const ProgramItemView = ({
+export const ProgramItemBody = ({
   programItem,
   isAlwaysExpanded,
 }: Props): ReactElement => {
@@ -44,7 +44,7 @@ export const ProgramItemView = ({
       )}
       {isExpanded && (
         <ExpandedDescriptionContainer id={id}>
-          <ProgramItemInfo programItem={programItem} />
+          <ProgramItemDetails programItem={programItem} />
           {loggedIn && config.client().enableOrganizerFeedback && (
             <FeedbackForm programItem={programItem} />
           )}

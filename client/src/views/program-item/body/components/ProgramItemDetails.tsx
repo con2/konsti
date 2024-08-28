@@ -10,7 +10,7 @@ interface Props {
   programItem: ProgramItem;
 }
 
-export const ProgramItemInfo = ({ programItem }: Props): ReactElement => {
+export const ProgramItemDetails = ({ programItem }: Props): ReactElement => {
   const { t } = useTranslation();
 
   const formatTime = (): string => {
