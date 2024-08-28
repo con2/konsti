@@ -9,7 +9,7 @@ import {
   DeleteDirectSignupErrorMessage,
   submitDeleteDirectSignup,
 } from "client/views/my-program-items/myProgramItemsThunks";
-import { CancelSignupForm } from "client/views/all-program-items/components/CancelSignupForm";
+import { CancelSignupForm } from "client/views/program-item/signup/components/CancelSignupForm";
 import { ErrorMessage } from "client/components/ErrorMessage";
 import { loadProgramItems } from "client/utils/loadData";
 import { config } from "shared/config";

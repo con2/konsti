@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 import { Loading } from "client/components/Loading";
 import { useAppSelector } from "client/utils/hooks";
-import { ProgramItemEntry } from "client/views/all-program-items/components/ProgramItemEntry";
+import { ProgramItemEntry } from "client/views/program-item/ProgramItemEntry";
 import {
   selectDirectSignups,
   selectFavoriteProgramItems,
@@ -14,7 +14,7 @@ import { getLotterySignups } from "client/utils/getUpcomingProgramItems";
 import { BackButton } from "client/components/BackButton";
 import { getIsInGroup } from "client/views/group/groupUtils";
 
-export const ProgramItemPage = (): ReactElement => {
+export const ProgramItemView = (): ReactElement => {
   const { t } = useTranslation();
 
   const { programItemId } = useParams();

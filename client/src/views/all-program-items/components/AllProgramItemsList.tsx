@@ -2,7 +2,7 @@ import { ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { sortBy, groupBy } from "lodash-es";
 import styled from "styled-components";
-import { ProgramItemEntry } from "./ProgramItemEntry";
+import { ProgramItemEntry } from "client/views/program-item/ProgramItemEntry";
 import { useAppSelector } from "client/utils/hooks";
 import { ProgramItem } from "shared/types/models/programItem";
 import { ProgramItemListTitle } from "client/views/all-program-items/components/ProgramItemListTitle";

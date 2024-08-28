@@ -3,11 +3,11 @@ import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { ProgramItem } from "shared/types/models/programItem";
-import { DirectSignupForm } from "./DirectSignupForm";
+import { DirectSignupForm } from "client/views/program-item/signup/components/DirectSignupForm";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
-import { isAlreadyDirectySigned } from "./allProgramItemsUtils";
+import { isAlreadyDirectySigned } from "client/views/program-item/programItemUtils";
 import { Button, ButtonStyle } from "client/components/Button";
-import { CancelSignupForm } from "./CancelSignupForm";
+import { CancelSignupForm } from "client/views/program-item/signup/components/CancelSignupForm";
 import {
   DeleteDirectSignupErrorMessage,
   submitDeleteDirectSignup,
@@ -19,7 +19,7 @@ import { getTimeNow } from "client/utils/getTimeNow";
 import { getDirectSignupStartTime } from "shared/utils/signupTimes";
 import { config } from "shared/config";
 import { InfoText } from "client/components/InfoText";
-import { AdmissionTicketLink } from "client/views/all-program-items/components/AdmissionTicketLink";
+import { AdmissionTicketLink } from "client/views/program-item/signup/components/AdmissionTicketLink";
 
 interface Props {
   programItem: ProgramItem;
