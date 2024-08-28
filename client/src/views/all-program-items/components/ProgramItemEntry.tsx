@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import {
   ProgramItem,
   ProgramItemSignupStrategy,
+  SignupType,
   UserSignup,
 } from "shared/types/models/programItem";
 import { Signup, UserGroup } from "shared/types/models/user";
@@ -61,6 +62,12 @@ export const ProgramItemEntry = ({
     .event()
     .directSignupAlwaysOpenIds.includes(programItem.programItemId);
 
+  const usesKonstiSignup =
+    !config.event().noKonstiSignupIds.includes(programItem.programItemId) &&
+    programItem.signupType === SignupType.KONSTI;
+  const requiresSignup = !isRevolvingDoorWorkshop(programItem);
+  const isNormalSignup = usesKonstiSignup && requiresSignup;
+
   const isDirectSignupMode =
     signupStrategy === ProgramItemSignupStrategy.DIRECT || signupAlwaysOpen;
 
@@ -91,8 +98,12 @@ export const ProgramItemEntry = ({
 
   const isValidMinAttendanceValue =
     isRevolvingDoorWorkshop(programItem) || programItem.minAttendance > 0;
+
   const isValidMaxAttendanceValue =
-    isRevolvingDoorWorkshop(programItem) || programItem.maxAttendance > 0;
+    isRevolvingDoorWorkshop(programItem) ||
+    !usesKonstiSignup ||
+    programItem.maxAttendance > 0;
+
   const allValuesValid = isValidMinAttendanceValue && isValidMaxAttendanceValue;
 
   return (
@@ -110,6 +121,8 @@ export const ProgramItemEntry = ({
         favoriteProgramItems={favoriteProgramItems}
         publicSignupQuestion={publicSignupQuestion}
         allValuesValid={allValuesValid}
+        isNormalSignup={isNormalSignup}
+        requiresSignup={requiresSignup}
       />
 
       {!allValuesValid && (
@@ -136,6 +149,8 @@ export const ProgramItemEntry = ({
           loading={loading}
           setLoading={setLoading}
           isInGroup={isInGroup}
+          usesKonstiSignup={usesKonstiSignup}
+          isNormalSignup={isNormalSignup}
         />
       )}
     </StyledCard>

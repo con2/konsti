@@ -169,6 +169,7 @@ export const KompassiProgramItemSchema = z.object({
     "ropecon:otherAuthor": z.string().catch(""),
     "konsti:minAttendance": z.number().catch(1),
     "konsti:maxAttendance": z.number().catch(0),
+    "konsti:isPlaceholder": z.boolean().catch(false),
     "ropecon:numCharacters": z.number().catch(0),
     "konsti:workshopFee": z
       .string()

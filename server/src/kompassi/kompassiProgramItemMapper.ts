@@ -60,7 +60,9 @@ export const kompassiProgramItemMapper = (
         otherAccessibilityInformation:
           programItem.cachedAnnotations["ropecon:accessibilityOther"],
         entryFee: programItem.cachedAnnotations["konsti:workshopFee"],
-        signupType: SignupType.KONSTI,
+        signupType: programItem.cachedAnnotations["konsti:isPlaceholder"]
+          ? SignupType.NONE
+          : SignupType.KONSTI,
       };
     });
   });

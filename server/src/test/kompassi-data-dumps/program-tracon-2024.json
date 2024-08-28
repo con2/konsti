@@ -41,7 +41,7 @@
       "room": ["roolipelipoyta-2"],
       "konsti": ["tabletopRPG"],
       "signup": ["konsti"],
-      "audience": ["r18"],
+      "audience": ["unrestricted"],
       "category": ["roolipeliohjelma"],
       "language": ["fi", "en"],
       "accessibility": []
@@ -73,7 +73,7 @@
       "room": ["roolipelipoyta-4"],
       "konsti": ["tabletopRPG"],
       "signup": ["konsti"],
-      "audience": ["r18"],
+      "audience": ["unrestricted"],
       "category": ["roolipeliohjelma"],
       "language": ["fi", "en"],
       "accessibility": []
@@ -464,7 +464,7 @@
       "room": ["roolipelipoyta-4"],
       "konsti": ["tabletopRPG"],
       "signup": ["konsti"],
-      "audience": ["r18", "beginner-friendly"],
+      "audience": ["unrestricted", "beginner-friendly"],
       "category": ["roolipeliohjelma"],
       "language": ["fi", "en"],
       "accessibility": []
@@ -560,7 +560,7 @@
       "room": ["roolipelipoyta-4"],
       "konsti": ["tabletopRPG"],
       "signup": ["konsti"],
-      "audience": ["r18", "beginner-friendly"],
+      "audience": ["unrestricted", "beginner-friendly"],
       "category": ["roolipeliohjelma"],
       "language": ["fi"],
       "accessibility": []
@@ -585,7 +585,7 @@
   {
     "slug": "larp-telenovela-haat",
     "title": "LARP Telenovela: Häät",
-    "description": "Oletko aina halunnut kokeilla LARPpaamista, mutta ilmoittautuminen on pelottavaa, ihmisiä on paljon ja se voi olla kallistakin? Vai onko kenties viime pelistä liian kauan ja LARPpi-hammasta jo kolottaa? Tämä on silloin ohjelma juuri sinulle! Tule toteuttamaan elämäsi draamalaamaisimpaa hääjuhlaa, jossa jokainen osallistuja on oman elämänsä äänekäs päähenkilö. \r\nPeli sopii niin ensikertalaisille, kuin kokeneillekin. Ennen pelin alkua käydään läpi nopeasti LARPpauksen perus säännöt ja pelikohtaiset oleelliset asiat, mutta osallistuminen edellyttää yleisiä LARPpauksen sääntöjen lukemista larp.fi:n nettisivuilta. ( https://larp.fi/?page_id=106 )",
+    "description": "Oletko aina halunnut kokeilla LARPpaamista, mutta ilmoittautuminen on pelottavaa, ihmisiä on paljon ja se voi olla kallistakin? Vai onko kenties viime pelistä liian kauan ja LARPpi-hammasta jo kolottaa? Tämä on silloin ohjelma juuri sinulle! Tule toteuttamaan elämäsi draamalaamaisimpaa hääjuhlaa, jossa jokainen osallistuja on oman elämänsä äänekäs päähenkilö. \r\nPeli sopii niin ensikertalaisille, kuin kokeneillekin. Ennen pelin alkua käydään läpi nopeasti LARPpauksen perus säännöt ja pelikohtaiset oleelliset asiat, mutta osallistuminen edellyttää yleisiä LARPpauksen sääntöjen lukemista larp.fi:n nettisivuilta. ( https://larp.fi/?page_id=106 )\r\n\r\nTähän peliin ilmoittaudutaan paperilomakkeella Roolipelitiskillä.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-09-07"],
@@ -597,7 +597,7 @@
       "language": ["fi"],
       "accessibility": []
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": { "konsti:isPlaceholder": true },
     "scheduleItems": [
       {
         "slug": "larp-telenovela-haat",
@@ -838,7 +838,7 @@
       "room": ["roolipelipoyta-6"],
       "konsti": ["tabletopRPG"],
       "signup": ["konsti"],
-      "audience": ["r18", "beginner-friendly"],
+      "audience": ["unrestricted", "beginner-friendly"],
       "category": ["roolipeliohjelma"],
       "language": ["fi"],
       "accessibility": []
@@ -934,7 +934,7 @@
       "room": ["roolipelipoyta-5"],
       "konsti": ["tabletopRPG"],
       "signup": ["konsti"],
-      "audience": ["r18", "experienced"],
+      "audience": ["unrestricted", "experienced"],
       "category": ["roolipeliohjelma"],
       "language": ["en"],
       "accessibility": []
