@@ -55,6 +55,7 @@ export const mockKompassiProgramItem: KompassiProgramItem = {
     "ropecon:accessibilityOther": "Other accessibility information",
     "ropecon:gameSlogan": testProgramItem.shortDescription,
     "ropecon:isRevolvingDoor": false,
+    "konsti:isPlaceholder": false,
   },
 };
 
@@ -101,5 +102,6 @@ export const mockKompassiProgramItem2: KompassiProgramItem = {
     "ropecon:accessibilityOther": "Other accessibility information",
     "ropecon:gameSlogan": testProgramItem2.shortDescription,
     "ropecon:isRevolvingDoor": false,
+    "konsti:isPlaceholder": false,
   },
 };
