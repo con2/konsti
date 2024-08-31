@@ -56,7 +56,7 @@ export const FavoritesByStartTimes = ({
                 if (programItem.startTime === startTime) {
                   return (
                     <MyProgramListItem key={programItem.programItemId}>
-                      <MyProgramGameTitle>
+                      <MyProgramGameTitle data-testid="program-item-title">
                         {programItem.title}
                       </MyProgramGameTitle>
                       <MyProgramButtonContainer>

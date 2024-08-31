@@ -30,7 +30,7 @@ export const MyFavoritesList = ({
   const startTimes = getStartTimes(favoriteProgramItems);
 
   return (
-    <RaisedCard>
+    <RaisedCard data-testid="favorite-program-items-list">
       <MyProgramHeader>{t("favoriteProgramItems")}</MyProgramHeader>
       <div>
         {favoriteProgramItems.length === 0 && (

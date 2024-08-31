@@ -41,7 +41,7 @@ export const LotterySignupsByStartTimes = ({
                   return (
                     <MyProgramListItem key={signup.programItem.programItemId}>
                       <Grid>
-                        <StyledTitle>
+                        <StyledTitle data-testid="program-item-title">
                           {`${signup.priority}) ${signup.programItem.title}`}
                         </StyledTitle>
                         <StyledPopularityInfo

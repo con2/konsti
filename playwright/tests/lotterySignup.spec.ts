@@ -54,5 +54,5 @@ test("Add lottery signup", async ({ page, request }) => {
     .locator("data-testid=program-item-title")
     .innerText();
 
-  expect(programItemTitle.trim()).toEqual(lotterySignupProgramItemTitle);
+  expect(programItemTitle.trim()).toContain(lotterySignupProgramItemTitle);
 });

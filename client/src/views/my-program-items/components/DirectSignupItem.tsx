@@ -74,7 +74,9 @@ export const DirectSignupItem = ({
 
   return (
     <MyProgramListItem>
-      <MyProgramGameTitle>{signup.programItem.title}</MyProgramGameTitle>
+      <MyProgramGameTitle data-testid="program-item-title">
+        {signup.programItem.title}
+      </MyProgramGameTitle>
 
       {!!signupQuestion && (
         <SignupQuestion>
