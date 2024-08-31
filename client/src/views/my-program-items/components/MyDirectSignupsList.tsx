@@ -7,7 +7,10 @@ import { getMissedSignups } from "client/views/my-program-items/utils/getMissedS
 import { Signup } from "shared/types/models/user";
 import { config } from "shared/config";
 import { RaisedCard } from "client/components/RaisedCard";
-import { MyProgramHeader } from "client/views/my-program-items/components/shared";
+import {
+  MyProgramHeader,
+  MyProgramSecondaryText,
+} from "client/views/my-program-items/components/shared";
 
 interface Props {
   directSignups: readonly Signup[];
@@ -39,7 +42,7 @@ export const MyDirectSignupsList = ({
     <RaisedCard>
       <MyProgramHeader>{t("directSignups")}</MyProgramHeader>
       {(!config.event().resultsVisible || startTimes.length === 0) && (
-        <SecondaryText>{t("noDirectSignups")}</SecondaryText>
+        <MyProgramSecondaryText>{t("noDirectSignups")}</MyProgramSecondaryText>
       )}
 
       {config.event().resultsVisible && startTimes.length !== 0 && (
@@ -54,7 +57,3 @@ export const MyDirectSignupsList = ({
     </RaisedCard>
   );
 };
-
-const SecondaryText = styled.span`
-  color: ${(props) => props.theme.textSecondary};
-`;

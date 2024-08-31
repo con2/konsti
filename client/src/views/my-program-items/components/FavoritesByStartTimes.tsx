@@ -1,6 +1,5 @@
 import { Fragment, ReactElement } from "react";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { capitalize } from "lodash-es";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
@@ -8,7 +7,6 @@ import { ProgramItem } from "shared/types/models/programItem";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { updateFavorite } from "client/utils/favorite";
 import { selectFavoriteProgramItems } from "client/views/my-program-items/myProgramItemsSlice";
-import { RaisedCard } from "client/components/RaisedCard";
 import { TertiaryButton } from "client/components/TertiaryButton";
 import {
   MyProgramButtonContainer,

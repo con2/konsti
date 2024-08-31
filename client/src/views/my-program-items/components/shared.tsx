@@ -37,3 +37,8 @@ export const MyProgramHeader = styled.h1`
   margin: 0 0 -8px 0;
   font-size: ${(props) => props.theme.fontSizeLarge};
 `;
+
+export const MyProgramSecondaryText = styled.p`
+  color: ${(props) => props.theme.textSecondary};
+  margin-bottom: 0;
+`;

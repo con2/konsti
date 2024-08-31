@@ -1,11 +1,19 @@
-import { ReactElement } from "react";
-import { Link } from "react-router-dom";
+import { Fragment, ReactElement } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { capitalize } from "lodash-es";
+import { useTranslation } from "react-i18next";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
 import { Signup } from "shared/types/models/user";
 import { PopularityInfo } from "client/components/PopularityInfo";
-import { AppRoute } from "client/app/AppRoutes";
+import {
+  MyProgramButtonContainer,
+  MyProgramGameTitle,
+  MyProgramList,
+  MyProgramListItem,
+  MyProgramTime,
+} from "client/views/my-program-items/components/shared";
+import { TertiaryButton } from "client/components/TertiaryButton";
 
 interface Props {
   lotterySignups: Signup[];
@@ -16,81 +24,87 @@ export const LotterySignupsByStartTimes = ({
   lotterySignups,
   startTimes,
 }: Props): ReactElement => {
+  const { t } = useTranslation();
+  const navigate = useNavigate();
+
   return (
-    <div>
+    <>
       {startTimes.map((startTime) => {
         return (
-          <div key={startTime}>
-            <StyledTime>{capitalize(getWeekdayAndTime(startTime))}</StyledTime>
-
-            <ul>
+          <Fragment key={startTime}>
+            <MyProgramTime>
+              {capitalize(getWeekdayAndTime(startTime))}
+            </MyProgramTime>
+            <MyProgramList>
               {lotterySignups.map((signup) => {
                 if (signup.time === startTime) {
                   return (
-                    <ProgramItemContainer
-                      key={signup.programItem.programItemId}
-                    >
-                      <RowLeftSide>
-                        <SignupPriority>{`${signup.priority})`}</SignupPriority>
-                        <StyledLink
-                          to={`${AppRoute.PROGRAM_ITEM}/${signup.programItem.programItemId}`}
-                          data-testid="program-item-title"
-                        >
-                          {signup.programItem.title}
-                        </StyledLink>
-                      </RowLeftSide>
-                      <PopularityContainer>
-                        <PopularityInfo
+                    <MyProgramListItem key={signup.programItem.programItemId}>
+                      <Grid>
+                        <StyledTitle>
+                          {`${signup.priority}) ${signup.programItem.title}`}
+                        </StyledTitle>
+                        <StyledPopularityInfo
                           minAttendance={signup.programItem.minAttendance}
                           maxAttendance={signup.programItem.maxAttendance}
                           popularity={signup.programItem.popularity}
                           includeMsg={false}
                           programType={signup.programItem.programType}
                         />
-                      </PopularityContainer>
-                    </ProgramItemContainer>
+                        <StyledButtons>
+                          <TertiaryButton
+                            icon="circle-arrow-right"
+                            onClick={() => {
+                              navigate(
+                                `/program/item/${signup.programItem.programItemId}`,
+                              );
+                            }}
+                          >
+                            {t("button.showInfo")}
+                          </TertiaryButton>
+                        </StyledButtons>
+                      </Grid>
+                    </MyProgramListItem>
                   );
                 }
               })}
-            </ul>
-          </div>
+            </MyProgramList>
+          </Fragment>
         );
       })}
-    </div>
+    </>
   );
 };
 
-const ProgramItemContainer = styled.li`
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 8px;
-  list-style: none;
+const Grid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 40px;
 
-  @media (max-width: ${(props) => props.theme.breakpointPhone}) {
-    justify-content: space-between;
+  @media (min-width: ${(props) => props.theme.breakpointPhone}) {
+    grid-template-columns: max-content 1fr;
   }
 `;
 
-const RowLeftSide = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
-const StyledLink = styled(Link)`
-  display: flex;
-  width: fit-content;
-`;
+const StyledPopularityInfo = styled(PopularityInfo)`
+  grid-column: 2;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  align-items: center;
+  justify-content: center;
 
-const PopularityContainer = styled.div`
-  margin-left: 10px;
-`;
-
-const StyledTime = styled.p`
-  font-weight: 600;
-  margin: 10px 0;
+  @media (min-width: ${(props) => props.theme.breakpointPhone}) {
+    justify-content: left;
+    padding-left: 8px;
+  }
 `;
 
-const SignupPriority = styled.span`
-  vertical-align: text-bottom;
+const StyledTitle = styled(MyProgramGameTitle)`
+  grid-column: 1;
+  grid-row: 1;
+  margin-top: 12px;
+`;
 
-  margin-right: 4px;
+const StyledButtons = styled(MyProgramButtonContainer)`
+  grid-column: 1;
+  grid-row: 2;
 `;
