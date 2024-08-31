@@ -38,7 +38,7 @@ export const MyDirectSignupsList = ({
   }, [missedSignups, directSignups]);
 
   return (
-    <RaisedCard>
+    <RaisedCard data-testid="direct-signup-program-items-list">
       <MyProgramHeader>{t("directSignups")}</MyProgramHeader>
       {(!config.event().resultsVisible || startTimes.length === 0) && (
         <MyProgramSecondaryText>{t("noDirectSignups")}</MyProgramSecondaryText>
