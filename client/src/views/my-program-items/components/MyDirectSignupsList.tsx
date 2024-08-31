@@ -1,7 +1,6 @@
 import { ReactElement, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { sortBy, uniq } from "lodash-es";
-import styled from "styled-components";
 import { DirectSignupsByStartTimes } from "./DirectSignupsByStartTimes";
 import { getMissedSignups } from "client/views/my-program-items/utils/getMissedSignups";
 import { Signup } from "shared/types/models/user";

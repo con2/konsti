@@ -1,7 +1,6 @@
 import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import { sortBy } from "lodash-es";
-import styled from "styled-components";
 import { getStartTimes } from "client/utils/getStartTimes";
 import { FavoritesByStartTimes } from "./FavoritesByStartTimes";
 import { ProgramItem } from "shared/types/models/programItem";

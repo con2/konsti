@@ -1,7 +1,6 @@
 import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import { sortBy } from "lodash-es";
-import styled from "styled-components";
 import { getStartTimes } from "client/utils/getStartTimes";
 import { LotterySignupsByStartTimes } from "./LotterySignupsByStartTimes";
 import { Signup } from "shared/types/models/user";
