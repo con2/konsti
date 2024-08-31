@@ -10,6 +10,13 @@ import { updateFavorite } from "client/utils/favorite";
 import { selectFavoriteProgramItems } from "client/views/my-program-items/myProgramItemsSlice";
 import { RaisedCard } from "client/components/RaisedCard";
 import { TertiaryButton } from "client/components/TertiaryButton";
+import {
+  MyProgramButtonContainer,
+  MyProgramGameTitle,
+  MyProgramList,
+  MyProgramListItem,
+  MyProgramTime,
+} from "client/views/my-program-items/components/shared";
 
 interface Props {
   programItems: readonly ProgramItem[];
@@ -42,78 +49,46 @@ export const FavoritesByStartTimes = ({
       {startTimes.map((startTime) => {
         return (
           <Fragment key={startTime}>
-            <StyledTime>{capitalize(getWeekdayAndTime(startTime))}</StyledTime>
+            <MyProgramTime>
+              {capitalize(getWeekdayAndTime(startTime))}
+            </MyProgramTime>
 
-            <StyledList>
+            <MyProgramList>
               {programItems.map((programItem) => {
                 if (programItem.startTime === startTime) {
                   return (
-                    <ProgramItemDetailsRow key={programItem.programItemId}>
-                      <RaisedCard>
-                        <GameTitle>{programItem.title}</GameTitle>
-                        <ButtonContainer>
-                          <TertiaryButton
-                            icon="circle-arrow-right"
-                            onClick={() => {
-                              navigate(
-                                `/program/item/${programItem.programItemId}`,
-                              );
-                            }}
-                          >
-                            {t("button.showInfo")}
-                          </TertiaryButton>
-                          <TertiaryButton
-                            onClick={async () => {
-                              await removeFavorite(programItem);
-                            }}
-                            icon={["far", "heart"]}
-                          >
-                            {t("button.unfavorite")}
-                          </TertiaryButton>
-                        </ButtonContainer>
-                      </RaisedCard>
-                    </ProgramItemDetailsRow>
+                    <MyProgramListItem key={programItem.programItemId}>
+                      <MyProgramGameTitle>
+                        {programItem.title}
+                      </MyProgramGameTitle>
+                      <MyProgramButtonContainer>
+                        <TertiaryButton
+                          icon="circle-arrow-right"
+                          onClick={() => {
+                            navigate(
+                              `/program/item/${programItem.programItemId}`,
+                            );
+                          }}
+                        >
+                          {t("button.showInfo")}
+                        </TertiaryButton>
+                        <TertiaryButton
+                          onClick={async () => {
+                            await removeFavorite(programItem);
+                          }}
+                          icon={["far", "heart"]}
+                        >
+                          {t("button.unfavorite")}
+                        </TertiaryButton>
+                      </MyProgramButtonContainer>
+                    </MyProgramListItem>
                   );
                 }
               })}
-            </StyledList>
+            </MyProgramList>
           </Fragment>
         );
       })}
     </>
   );
 };
-
-const ProgramItemDetailsRow = styled.li`
-  align-items: center;
-  justify-content: left;
-  margin-bottom: 8px;
-  list-style: none;
-
-  @media (max-width: ${(props) => props.theme.breakpointPhone}) {
-    justify-content: space-between;
-  }
-`;
-
-const StyledList = styled.ul`
-  margin: 0;
-`;
-
-const StyledTime = styled.h2`
-  margin: 12px 0 4px 0;
-  font-size: ${(props) => props.theme.fontSizeNormal};
-`;
-
-const GameTitle = styled.h3`
-  font-size: ${(props) => props.theme.fontSizeNormal};
-  font-weight: normal;
-  margin-top: 0;
-  margin-bottom: 8px;
-`;
-
-const ButtonContainer = styled.div`
-  display: flex;
-  align-items: flex-end;
-  gap: 12px;
-`;
-

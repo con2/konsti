@@ -31,6 +31,7 @@ import {
   faCircleCheck as fasCircleCheck,
   faBan as fasBan,
   faCircleArrowRight as fasCircleArrowRight,
+  faTicket as fasTicket,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faHeart as farHeart,
@@ -72,5 +73,6 @@ export const getIconLibrary = (): void => {
     fasCircleCheck,
     fasBan,
     fasCircleArrowRight,
+    fasTicket,
   );
 };

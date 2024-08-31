@@ -5,6 +5,8 @@ import styled from "styled-components";
 import { getStartTimes } from "client/utils/getStartTimes";
 import { FavoritesByStartTimes } from "./FavoritesByStartTimes";
 import { ProgramItem } from "shared/types/models/programItem";
+import { RaisedCard } from "client/components/RaisedCard";
+import { MyProgramHeader } from "client/views/my-program-items/components/shared";
 
 interface Props {
   favoriteProgramItems: readonly ProgramItem[];
@@ -26,8 +28,8 @@ export const MyFavoritesList = ({
   const startTimes = getStartTimes(favoriteProgramItems);
 
   return (
-    <>
-      <Header>{t("favoriteProgramItems")}</Header>
+    <RaisedCard>
+      <MyProgramHeader>{t("favoriteProgramItems")}</MyProgramHeader>
       <div>
         {favoriteProgramItems.length === 0 && (
           <SecondaryText>{t("noFavoriteProgramItems")}</SecondaryText>
@@ -39,14 +41,9 @@ export const MyFavoritesList = ({
           />
         )}
       </div>
-    </>
+    </RaisedCard>
   );
 };
-
-const Header = styled.h1`
-  margin: 0 0 12px 0;
-  font-size: ${(props) => props.theme.fontSizeLarge};
-`;
 
 const SecondaryText = styled.span`
   color: ${(props) => props.theme.textSecondary};
