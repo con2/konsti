@@ -36,6 +36,9 @@ export const eventConfig: EventConfig = {
 
   hideParticipantListProgramTypes: [ProgramType.FLEAMARKET],
 
+  // Direct signup open till program item endTime instead of startTime
+  directSignupOpenToEndProgramTypes: [ProgramType.FLEAMARKET],
+
   // These program items have their signup always open even if signup mode is set to lottery
   directSignupAlwaysOpenIds: [],
 

@@ -29,6 +29,7 @@ import { Checkbox } from "client/components/Checkbox";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 import { InfoText, InfoTextVariant } from "client/components/InfoText";
 import { getEntryCondition } from "client/views/program-item/programItemUtils";
+import { PostDirectSignupRequest } from "shared/types/api/myProgramItems";
 
 interface Props {
   programItem: ProgramItem;
@@ -83,10 +84,9 @@ export const DirectSignupForm = ({
     event.preventDefault();
     setLoading(true);
 
-    const enterData = {
+    const enterData: PostDirectSignupRequest = {
       username,
       directSignupProgramItemId: programItem.programItemId,
-      startTime: programItem.startTime,
       message: userSignupMessage || selectedValue,
       priority: DIRECT_SIGNUP_PRIORITY,
     };

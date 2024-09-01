@@ -9,6 +9,7 @@ import {
   getLotterySignupEndTime,
   getLotterySignupStartTime,
   getDirectSignupStartTime,
+  getDirectSignupEndTime,
 } from "shared/utils/signupTimes";
 import {
   getFormattedTime,
@@ -36,13 +37,13 @@ export const SignupHelpText = ({
   const isLotterySignup =
     programItem.signupStrategy === ProgramItemSignupStrategy.LOTTERY;
   const timeNow = getTimeNow();
-  const programStartTime = dayjs(programItem.startTime);
+  const directSignupEndTime = dayjs(getDirectSignupEndTime(programItem));
   const directSignupStartTime = getDirectSignupStartTime(programItem);
   const directSignupStarted = timeNow.isSameOrAfter(directSignupStartTime);
   const lotterySignupStartTime = getLotterySignupStartTime(startTime);
   const lotterySignupEndTime = getLotterySignupEndTime(startTime);
 
-  if (timeNow.isAfter(programStartTime)) {
+  if (timeNow.isAfter(directSignupEndTime)) {
     // eslint-disable-next-line react/jsx-no-useless-fragment
     return <></>;
   }
@@ -94,7 +95,7 @@ export const SignupHelpText = ({
       <p>
         <FontAwesomeIcon icon={"user-plus"} />{" "}
         {t("signup.help.directSignupOpenNow")}{" "}
-        <b>{getFormattedTime(programStartTime, timeNow)}</b>.
+        <b>{getFormattedTime(directSignupEndTime, timeNow)}</b>.
       </p>
     );
   }
@@ -117,7 +118,7 @@ export const SignupHelpText = ({
         <b>
           {getFormattedInterval(
             directSignupStartTime,
-            programStartTime,
+            directSignupEndTime,
             timeNow,
           )}
         </b>
@@ -138,7 +139,7 @@ export const SignupHelpText = ({
         <b>
           {getFormattedInterval(
             directSignupStartTime,
-            programStartTime,
+            directSignupEndTime,
             timeNow,
           )}
         </b>
@@ -153,7 +154,11 @@ export const SignupHelpText = ({
       {t("signup.help.lotterySignupEnded")}
       {t("signup.help.directSignupStarts")}
       <b>
-        {getFormattedInterval(directSignupStartTime, programStartTime, timeNow)}
+        {getFormattedInterval(
+          directSignupStartTime,
+          directSignupEndTime,
+          timeNow,
+        )}
       </b>
       .
     </p>

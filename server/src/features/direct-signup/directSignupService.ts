@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 import { findProgramItemById } from "server/features/program-item/programItemRepository";
 import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
-import { isValidSignupTime } from "server/features/user/userUtils";
+import { hasSignupEnded } from "server/features/user/userUtils";
 import {
   DeleteDirectSignupError,
   DeleteDirectSignupRequest,
@@ -10,7 +10,10 @@ import {
   PostDirectSignupRequest,
   PostDirectSignupResponse,
 } from "shared/types/api/myProgramItems";
-import { getDirectSignupStartTime } from "shared/utils/signupTimes";
+import {
+  getDirectSignupEndTime,
+  getDirectSignupStartTime,
+} from "shared/utils/signupTimes";
 import { logger } from "server/utils/logger";
 import {
   delDirectSignup,
@@ -19,11 +22,15 @@ import {
 import { findUser } from "server/features/user/userRepository";
 import { isErrorResult, unwrapResult } from "shared/utils/result";
 import { config } from "shared/config";
+import {
+  SignupRepositoryAddSignup,
+  SignupRepositoryDeleteSignup,
+} from "server/features/direct-signup/directSignupTypes";
 
 export const storeDirectSignup = async (
   signupRequest: PostDirectSignupRequest,
 ): Promise<PostDirectSignupResponse | PostDirectSignupError> => {
-  const { startTime, directSignupProgramItemId, username } = signupRequest;
+  const { directSignupProgramItemId, username } = signupRequest;
   if (config.event().noKonstiSignupIds.includes(directSignupProgramItemId)) {
     return {
       message: `No Konsti signup for this program item`,
@@ -47,45 +54,36 @@ export const storeDirectSignup = async (
     directSignupProgramItemId,
   );
   if (isErrorResult(programItemResult)) {
+    const message = `Signed program item ${directSignupProgramItemId} not found`;
+    logger.warn(message);
     return {
-      message: `Signed program item not found`,
+      message,
       status: "error",
       errorId: "unknown",
     };
   }
 
   const programItem = unwrapResult(programItemResult);
-  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-  if (!programItem) {
-    return {
-      message: `Signed program item not found`,
-      status: "error",
-      errorId: "unknown",
-    };
-  }
 
   const directSignupStartTime = getDirectSignupStartTime(programItem);
 
   if (timeNow.isBefore(directSignupStartTime)) {
-    logger.error(
-      "%s",
-      new Error(
-        `Signup for program item ${directSignupProgramItemId} not open yet, opens ${directSignupStartTime.toISOString()}`,
-      ),
-    );
+    const message = `Signup for program item ${directSignupProgramItemId} not open yet, opens ${directSignupStartTime.toISOString()}`;
+    logger.warn(message);
     return {
       errorId: "signupNotOpenYet",
-      message: "Waiting for phase gap to end",
+      message,
       status: "error",
     };
   }
 
-  const validSignupTime = isValidSignupTime({
-    startTime: dayjs(startTime),
+  const directSignupEndTime = getDirectSignupEndTime(programItem);
+  const signupEnded = hasSignupEnded({
+    signupEndTime: dayjs(directSignupEndTime),
     timeNow,
   });
 
-  if (!validSignupTime) {
+  if (signupEnded) {
     return {
       errorId: "signupEnded",
       message: "Signup time ended",
@@ -112,7 +110,12 @@ export const storeDirectSignup = async (
     };
   }
 
-  const signupResult = await saveDirectSignup(signupRequest);
+  const newDirectSignup: SignupRepositoryAddSignup = {
+    ...signupRequest,
+    startTime: programItem.startTime,
+  };
+
+  const signupResult = await saveDirectSignup(newDirectSignup);
   if (isErrorResult(signupResult)) {
     return {
       message: `Store signup failure`,
@@ -151,7 +154,7 @@ export const storeDirectSignup = async (
 export const removeDirectSignup = async (
   signupRequest: DeleteDirectSignupRequest,
 ): Promise<DeleteDirectSignupResponse | DeleteDirectSignupError> => {
-  const { startTime } = signupRequest;
+  const { directSignupProgramItemId } = signupRequest;
 
   const timeNowResult = await getTimeNow();
   if (isErrorResult(timeNowResult)) {
@@ -164,12 +167,27 @@ export const removeDirectSignup = async (
 
   const timeNow = unwrapResult(timeNowResult);
 
-  const validSignupTime = isValidSignupTime({
-    startTime: dayjs(startTime),
+  const programItemResult = await findProgramItemById(
+    directSignupProgramItemId,
+  );
+  if (isErrorResult(programItemResult)) {
+    const message = `Signed program item ${directSignupProgramItemId} not found`;
+    logger.warn(message);
+    return {
+      message,
+      status: "error",
+      errorId: "unknown",
+    };
+  }
+  const programItem = unwrapResult(programItemResult);
+
+  const directSignupEndTime = getDirectSignupEndTime(programItem);
+  const signupEnded = hasSignupEnded({
+    signupEndTime: dayjs(directSignupEndTime),
     timeNow,
   });
 
-  if (!validSignupTime) {
+  if (signupEnded) {
     return {
       errorId: "signupEnded",
       message: "Signup failure",
@@ -177,7 +195,9 @@ export const removeDirectSignup = async (
     };
   }
 
-  const signupResult = await delDirectSignup(signupRequest);
+  const deleteDirectSignup: SignupRepositoryDeleteSignup = signupRequest;
+
+  const signupResult = await delDirectSignup(deleteDirectSignup);
   if (isErrorResult(signupResult)) {
     return {
       message: "Delete signup failure",
