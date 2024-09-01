@@ -64,7 +64,7 @@ const getRandomLotterySignup = (
 
   // Select random program items for each start time
   firstFourTimes.forEach((startTime) => {
-    logger.debug(`Generate signups for time ${startTime}`);
+    logger.debug(`Generate lottery signups for time ${startTime}`);
     const programItemsForTime = activeProgramItems.filter(
       (activeProgramItem) =>
         dayjs(activeProgramItem.startTime).toISOString() ===
