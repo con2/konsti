@@ -6,7 +6,7 @@ import {
   AssignmentResult,
 } from "server/types/resultTypes";
 import { getStartingProgramItems } from "server/features/assignment/utils/getStartingProgramItems";
-import { getRunRandomAndPadgInput } from "server/features/assignment/utils/getRunRandomAndPadgInput";
+import { getRandomAndPadgInput } from "server/features/assignment/utils/getRandomAndPadgInput";
 import { runPadgAssignment } from "server/features/assignment/padg/utils/runPadgAssignment";
 import { logger } from "server/utils/logger";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
@@ -44,7 +44,7 @@ export const padgAssignment = (
     allAttendees,
     numberOfIndividuals,
     numberOfGroups,
-  } = getRunRandomAndPadgInput(users, programItems, startTime);
+  } = getRandomAndPadgInput(users, programItems, startTime);
   if (lotterySignupProgramItems.length === 0) {
     logger.debug("No lottery signups, stop!");
     return makeSuccessResult({
