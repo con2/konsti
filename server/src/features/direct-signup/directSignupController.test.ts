@@ -108,7 +108,9 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(response.body.status).toEqual("error");
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    expect(response.body.message).toEqual("Signed program item not found");
+    expect(response.body.message).toEqual(
+      "Signed program item invalid_program_item_id not found",
+    );
   });
 
   test("should return error when user is not found", async () => {
@@ -355,7 +357,9 @@ describe(`DELETE ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(response.body.status).toEqual("error");
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    expect(response.body.message).toEqual("Signed program item not found");
+    expect(response.body.message).toEqual(
+      "Signed program item invalid_program_item_id not found",
+    );
   });
 
   test("should return error when signup is not found", async () => {
