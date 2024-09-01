@@ -27,7 +27,7 @@
     "test:coverage": "yarn run -T vitest run --coverage --colors",
     "test:watch": "yarn run -T vitest watch",
     "type-check": "yarn run -T tsc --noEmit",
-    "update-program-popularity": "NODE_ENV=development tsx src/test/scripts/testUpdateProgramItemPopularity.ts",
+    "update-popularity": "NODE_ENV=development tsx src/test/scripts/testUpdateProgramItemPopularity.ts",
     "verify-results": "NODE_ENV=development tsx src/test/scripts/testVerifyResults.ts",
     "load-kompassi-data": "NODE_ENV=development tsx src/test/scripts/loadKompassiDataToDb.ts",
     "update-kompassi-datadump": "NODE_ENV=development tsx src/test/scripts/updateKompassiDataDump.ts",
