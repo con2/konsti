@@ -33,16 +33,16 @@ export const updateProgramItemPopularity = async (): Promise<
     twoPhaseSignupProgramTypes.includes(programItem.programType),
   );
 
-  const signupsResult = await findDirectSignups();
-  if (isErrorResult(signupsResult)) {
-    return signupsResult;
+  const directSignupsResult = await findDirectSignups();
+  if (isErrorResult(directSignupsResult)) {
+    return directSignupsResult;
   }
-  const signups = unwrapResult(signupsResult);
+  const directSignups = unwrapResult(directSignupsResult);
 
   const updateWithAssignResult = await updateWithAssign(
     users,
     programItems,
-    signups,
+    directSignups,
   );
   if (isErrorResult(updateWithAssignResult)) {
     return updateWithAssignResult;

@@ -72,4 +72,5 @@ export interface EventConfig {
     programItemIds: string[];
   }[];
   directSignupOpenToEndProgramTypes: ProgramType[];
+  activeProgramTypes: ProgramType[];
 }
