@@ -19,12 +19,12 @@ export const assignPadg = (
   list: ListItem[],
   updateL: (input: Input) => string,
 ): PadgRandomAssignResult[] => {
-  const { PADG_ASSIGNMENT_ROUNDS } = config.server();
+  const { padgAssignmentRounds } = config.server();
 
   let finalHappiness = 0;
   let finalAssignResults: PadgRandomAssignResult[] = [];
 
-  for (let i = 0; i < PADG_ASSIGNMENT_ROUNDS; i++) {
+  for (let i = 0; i < padgAssignmentRounds; i++) {
     const eventsCopy = cloneDeep(events);
 
     const input: PadgInput = {

@@ -51,13 +51,13 @@ export const runRandomAssignment = (
   const list = unwrapResult(listResult);
   const updateL = (input: RandomAssignUpdateLInput): ListItem[] => input.L;
 
-  const { RANDOM_ASSIGNMENT_ROUNDS } = config.server();
+  const { randomAssignmentRounds } = config.server();
   const input = {
     groups,
     events,
     L: list,
     updateL,
-    assignmentRounds: RANDOM_ASSIGNMENT_ROUNDS,
+    assignmentRounds: randomAssignmentRounds,
   };
 
   let assignResults: AssignmentElement[] | CheckResult | undefined;
