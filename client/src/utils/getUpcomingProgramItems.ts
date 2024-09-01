@@ -3,18 +3,17 @@ import { GroupMember } from "shared/types/models/groups";
 import { ProgramItem } from "shared/types/models/programItem";
 import { getTimeNow } from "client/utils/getTimeNow";
 import { Signup } from "shared/types/models/user";
+import { getDirectSignupEndTime } from "shared/utils/signupTimes";
 
 export const getUpcomingProgramItems = (
   programItems: readonly ProgramItem[],
-  offsetByHours = 0,
 ): readonly ProgramItem[] => {
   const timeNow = getTimeNow();
 
-  const upcomingProgramItems = programItems.filter((programItem) =>
-    dayjs(programItem.startTime)
-      .add(offsetByHours, "hours")
-      .isSameOrAfter(timeNow),
-  );
+  const upcomingProgramItems = programItems.filter((programItem) => {
+    const directSignupEndTime = getDirectSignupEndTime(programItem);
+    return dayjs(directSignupEndTime).isSameOrAfter(timeNow);
+  });
 
   return upcomingProgramItems;
 };

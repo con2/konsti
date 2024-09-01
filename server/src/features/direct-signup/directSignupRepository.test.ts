@@ -1,7 +1,6 @@
 import { expect, test, afterEach, beforeEach } from "vitest";
 import mongoose from "mongoose";
 import { faker } from "@faker-js/faker";
-import dayjs from "dayjs";
 import { saveUser } from "server/features/user/userRepository";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { saveProgramItems } from "server/features/program-item/programItemRepository";
@@ -19,6 +18,7 @@ import {
   saveDirectSignups,
 } from "server/features/direct-signup/directSignupRepository";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
+import { SignupRepositoryAddSignup } from "server/features/direct-signup/directSignupTypes";
 
 beforeEach(async () => {
   await mongoose.connect(globalThis.__MONGO_URI__, {
@@ -56,21 +56,6 @@ test("should delete signup from user", async () => {
   expect(response.userSignups.length).toEqual(0);
 });
 
-test("should delete signup from user even if program item start time has changed after signup", async () => {
-  await saveUser(mockUser);
-  await saveProgramItems([testProgramItem]);
-  await saveDirectSignup(mockPostDirectSignupRequest);
-
-  const response = unsafelyUnwrap(
-    await delDirectSignup({
-      ...mockPostDirectSignupRequest,
-      startTime: dayjs(testProgramItem.startTime).add(1, "hours").toISOString(),
-    }),
-  );
-
-  expect(response.userSignups.length).toEqual(0);
-});
-
 test("should limit max attendees if too many passed to saveDirectSignups", async () => {
   await saveUser(mockUser);
   await saveUser(mockUser2);
@@ -78,7 +63,7 @@ test("should limit max attendees if too many passed to saveDirectSignups", async
   await saveUser(mockUser4);
   await saveProgramItems([{ ...testProgramItem, maxAttendance: 2 }]);
 
-  const signups = [
+  const signups: SignupRepositoryAddSignup[] = [
     mockPostDirectSignupRequest,
     { ...mockPostDirectSignupRequest, username: mockUser2.username },
     { ...mockPostDirectSignupRequest, username: mockUser3.username },

@@ -71,7 +71,6 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const signup: PostDirectSignupRequest = {
       username: mockUser.username,
       directSignupProgramItemId: testProgramItem.programItemId,
-      startTime: testProgramItem.startTime,
       message:
         "Test message Test message Test message Test message Test message Test message Test message Test message Test message Test message Test message Test message Test message",
       priority: DIRECT_SIGNUP_PRIORITY,
@@ -95,9 +94,6 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const signup: PostDirectSignupRequest = {
       username: mockUser.username,
       directSignupProgramItemId: "invalid_program_item_id",
-      startTime: dayjs(testProgramItem.startTime)
-        .subtract(1, "hour")
-        .toISOString(),
       message: "",
       priority: DIRECT_SIGNUP_PRIORITY,
     };
@@ -112,7 +108,9 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(response.body.status).toEqual("error");
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    expect(response.body.message).toEqual("Signed program item not found");
+    expect(response.body.message).toEqual(
+      "Signed program item invalid_program_item_id not found",
+    );
   });
 
   test("should return error when user is not found", async () => {
@@ -126,7 +124,6 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const signup: PostDirectSignupRequest = {
       username: "user_not_found",
       directSignupProgramItemId: testProgramItem.programItemId,
-      startTime: testProgramItem.startTime,
       message: "",
       priority: DIRECT_SIGNUP_PRIORITY,
     };
@@ -157,7 +154,6 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const signup: PostDirectSignupRequest = {
       username: mockUser.username,
       directSignupProgramItemId: testProgramItem.programItemId,
-      startTime: testProgramItem.startTime,
       message: "",
       priority: DIRECT_SIGNUP_PRIORITY,
     };
@@ -196,7 +192,6 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const signup: PostDirectSignupRequest = {
       username: mockUser.username,
       directSignupProgramItemId: testProgramItem.programItemId,
-      startTime: testProgramItem.startTime,
       message: "Test message",
       priority: DIRECT_SIGNUP_PRIORITY,
     };
@@ -245,7 +240,6 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
       const signup: PostDirectSignupRequest = {
         username: user.username,
         directSignupProgramItemId: testProgramItem.programItemId,
-        startTime: testProgramItem.startTime,
         message: "Test message",
         priority: DIRECT_SIGNUP_PRIORITY,
       };
@@ -297,7 +291,6 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
       const signup: PostDirectSignupRequest = {
         username: user.username,
         directSignupProgramItemId: testProgramItem.programItemId,
-        startTime: testProgramItem.startTime,
         message: "Test message",
         priority: DIRECT_SIGNUP_PRIORITY,
       };
@@ -335,7 +328,6 @@ describe(`DELETE ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
   test("should return 422 with invalid parameters", async () => {
     const deleteRequest: Partial<DeleteDirectSignupRequest> = {
       username: "testuser",
-      directSignupProgramItemId: "ABCD1234",
     };
     const response = await request(server)
       .delete(ApiEndpoint.DIRECT_SIGNUP)
@@ -353,9 +345,6 @@ describe(`DELETE ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const deleteRequest: DeleteDirectSignupRequest = {
       username: mockUser.username,
       directSignupProgramItemId: "invalid_program_item_id",
-      startTime: dayjs(testProgramItem.startTime)
-        .subtract(1, "hour")
-        .toISOString(),
     };
     const response = await request(server)
       .delete(ApiEndpoint.DIRECT_SIGNUP)
@@ -368,7 +357,9 @@ describe(`DELETE ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(response.body.status).toEqual("error");
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    expect(response.body.message).toEqual("Delete signup failure");
+    expect(response.body.message).toEqual(
+      "Signed program item invalid_program_item_id not found",
+    );
   });
 
   test("should return error when signup is not found", async () => {
@@ -378,7 +369,6 @@ describe(`DELETE ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const deleteRequest: DeleteDirectSignupRequest = {
       username: "user_not_found",
       directSignupProgramItemId: testProgramItem.programItemId,
-      startTime: testProgramItem.startTime,
     };
     const response = await request(server)
       .delete(ApiEndpoint.DIRECT_SIGNUP)
@@ -419,7 +409,6 @@ describe(`DELETE ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const deleteRequest: DeleteDirectSignupRequest = {
       username: mockUser.username,
       directSignupProgramItemId: testProgramItem.programItemId,
-      startTime: testProgramItem.startTime,
     };
     const response = await request(server)
       .delete(ApiEndpoint.DIRECT_SIGNUP)

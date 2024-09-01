@@ -7,13 +7,13 @@ import {
 import { Signup } from "shared/types/models/user";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
-import { isValidSignupTime } from "server/features/user/userUtils";
+import { hasSignupEnded } from "server/features/user/userUtils";
 import { isErrorResult, unwrapResult } from "shared/utils/result";
 
 export const storeLotterySignups = async (
   lotterySignups: readonly Signup[],
   username: string,
-  startTime: string,
+  signupEndTime: string,
 ): Promise<PostLotterSignupsResponse | PostLotterySignupsError> => {
   const timeNowResult = await getTimeNow();
   if (isErrorResult(timeNowResult)) {
@@ -25,12 +25,12 @@ export const storeLotterySignups = async (
   }
 
   const timeNow = unwrapResult(timeNowResult);
-  const validSignupTime = isValidSignupTime({
-    startTime: dayjs(startTime),
+  const signupEnded = hasSignupEnded({
+    signupEndTime: dayjs(signupEndTime),
     timeNow,
   });
 
-  if (!validSignupTime) {
+  if (signupEnded) {
     return {
       errorId: "signupEnded",
       message: "Signup failure",
@@ -38,7 +38,6 @@ export const storeLotterySignups = async (
     };
   }
 
-  // Check for duplicate priorities, ie. some kind of error
   const programItemsByTimeslot = groupBy(
     lotterySignups,
     (programItem) => programItem.time,
@@ -48,6 +47,7 @@ export const storeLotterySignups = async (
     const priorities = programItems.map(
       (selectedProgramItem) => selectedProgramItem.priority,
     );
+    // Delete duplicate priorities, ie. some kind of error
     const uniqPriorities = uniq(priorities);
 
     if (priorities.length !== uniqPriorities.length) {
