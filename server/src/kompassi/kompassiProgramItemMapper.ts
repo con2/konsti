@@ -95,6 +95,9 @@ const mapProgramType = (
     case KompassiKonstiProgramType.FLEAMARKET:
       return ProgramType.FLEAMARKET;
 
+    case KompassiKonstiProgramType.ROUNDTABLE_DISCUSSION:
+      return ProgramType.ROUNDTABLE_DISCUSSION;
+
     default:
       return exhaustiveSwitchGuard(programType);
   }

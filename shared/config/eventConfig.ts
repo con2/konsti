@@ -24,6 +24,12 @@ export const eventConfig: EventConfig = {
   resultsVisible: true,
   logInvalidStartTimes: false,
 
+  activeProgramTypes: [
+    ProgramType.TABLETOP_RPG,
+    ProgramType.LARP,
+    ProgramType.FLEAMARKET,
+  ],
+
   twoPhaseSignupProgramTypes: [ProgramType.FLEAMARKET],
 
   // Event start at 15:00 GMT+3 but lottery signups start at 08:00 GMT+3

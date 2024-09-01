@@ -3,7 +3,7 @@ import { logger } from "server/utils/logger";
 import { db } from "server/db/mongodb";
 import { runGenerators } from "server/test/test-data-generation/runGenerators";
 
-const parseCliOptions = async (): Promise<void> => {
+const generateTestData = async (): Promise<void> => {
   const commander = new Command();
 
   commander
@@ -27,6 +27,6 @@ const parseCliOptions = async (): Promise<void> => {
   await runGenerators(options, { closeDb: true });
 };
 
-parseCliOptions().catch((error: unknown) => {
+generateTestData().catch((error: unknown) => {
   logger.error("%s", error);
 });

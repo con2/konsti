@@ -142,7 +142,10 @@
       "language": ["fi"],
       "accessibility": []
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:maxAttendance": 10,
+      "konsti:minAttendance": 5
+    },
     "scheduleItems": [
       {
         "slug": "arsenic-lies",
@@ -591,7 +594,7 @@
       "date": ["2024-09-07"],
       "room": ["puisto-ohjelmateltta-1"],
       "konsti": ["larp"],
-      "signup": ["konsti"],
+      "signup": ["rpg-desk"],
       "audience": ["unrestricted"],
       "category": ["roolipeliohjelma"],
       "language": ["fi"],
@@ -688,7 +691,10 @@
       "language": ["fi"],
       "accessibility": []
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:maxAttendance": 9,
+      "konsti:minAttendance": 6
+    },
     "scheduleItems": [
       {
         "slug": "muistojen-tanssi-larppi",
