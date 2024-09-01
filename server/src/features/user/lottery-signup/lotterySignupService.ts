@@ -30,7 +30,7 @@ export const storeLotterySignups = async (
     timeNow,
   });
 
-  if (!signupEnded) {
+  if (signupEnded) {
     return {
       errorId: "signupEnded",
       message: "Signup failure",

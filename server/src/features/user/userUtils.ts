@@ -18,9 +18,9 @@ export const hasSignupEnded = ({
     logger.warn(
       `Invalid signup time: timeNow: ${timeNow.toISOString()}, signupEndTime: ${signupEndTime.toISOString()}`,
     );
-    return false;
+    return true;
   }
-  return true;
+  return false;
 };
 
 export const createSerial = async (): Promise<
