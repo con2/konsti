@@ -5,7 +5,7 @@ import { SerialDoc } from "server/types/serialTypes";
 import { Result } from "shared/utils/result";
 import { MongoDbError } from "shared/types/api/errors";
 
-interface IsValidSignupTimeParams {
+interface HasSignupEndedParams {
   signupEndTime: Dayjs;
   timeNow: Dayjs;
 }
@@ -13,7 +13,7 @@ interface IsValidSignupTimeParams {
 export const hasSignupEnded = ({
   signupEndTime,
   timeNow,
-}: IsValidSignupTimeParams): boolean => {
+}: HasSignupEndedParams): boolean => {
   if (timeNow.isAfter(signupEndTime)) {
     logger.warn(
       `Invalid signup time: timeNow: ${timeNow.toISOString()}, signupEndTime: ${signupEndTime.toISOString()}`,
