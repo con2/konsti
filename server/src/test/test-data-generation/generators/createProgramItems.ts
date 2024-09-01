@@ -16,6 +16,8 @@ import {
 import { Result } from "shared/utils/result";
 import { MongoDbError } from "shared/types/api/errors";
 import { KompassiKonstiProgramType } from "server/kompassi/kompassiProgramItem";
+import { ProgramType } from "shared/types/models/programItem";
+import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 
 const PROGRAM_ITEM_ID_MAX = 10000000;
 
@@ -67,21 +69,53 @@ const getTopics = (): KompassiTopic[] => {
   return topics;
 };
 
+const mapKonstiProgramTypeToKompassiProgramType = (
+  programTypes: ProgramType[],
+): KompassiKonstiProgramType[] => {
+  return programTypes.map((programType) => {
+    switch (programType) {
+      case ProgramType.TABLETOP_RPG:
+        return KompassiKonstiProgramType.TABLETOP_RPG;
+
+      case ProgramType.LARP:
+        return KompassiKonstiProgramType.LARP;
+
+      case ProgramType.TOURNAMENT:
+        return KompassiKonstiProgramType.TOURNAMENT;
+
+      case ProgramType.WORKSHOP:
+        return KompassiKonstiProgramType.WORKSHOP;
+
+      case ProgramType.EXPERIENCE_POINT:
+        return KompassiKonstiProgramType.EXPERIENCE_POINT;
+
+      case ProgramType.OTHER:
+        return KompassiKonstiProgramType.OTHER;
+
+      case ProgramType.FLEAMARKET:
+        return KompassiKonstiProgramType.FLEAMARKET;
+
+      case ProgramType.ROUNDTABLE_DISCUSSION:
+        return KompassiKonstiProgramType.ROUNDTABLE_DISCUSSION;
+
+      default:
+        return exhaustiveSwitchGuard(programType);
+    }
+  });
+};
+
 export const createProgramItems = async (
   programItemCount: number,
 ): Promise<Result<void, MongoDbError>> => {
   const kompassiProgramItems: KompassiProgramItem[] = [];
 
-  const programTypes = [
-    KompassiKonstiProgramType.TABLETOP_RPG,
-    KompassiKonstiProgramType.LARP,
-    KompassiKonstiProgramType.TOURNAMENT,
-    KompassiKonstiProgramType.WORKSHOP,
-  ];
+  const kompassiProgramTypes = mapKonstiProgramTypeToKompassiProgramType(
+    config.event().activeProgramTypes,
+  );
 
-  programTypes.map((programType) => {
+  kompassiProgramTypes.map((kompassiProgramType) => {
     logger.info(
-      `Generate data for ${programItemCount} programs of type ${programType} for ${startTimes.length} start times`,
+      `Generate data for ${programItemCount} programs of type ${kompassiProgramType} for ${startTimes.length} start times`,
     );
 
     startTimes.forEach((startTime) => {
@@ -100,7 +134,7 @@ export const createProgramItems = async (
             room: [""],
             type: [""],
             topic: getTopics(),
-            konsti: [programType],
+            konsti: [kompassiProgramType],
             audience: sampleSize(Object.values(KompassiAudience), 3),
             language: sampleSize(Object.values(KompassiLanguage), 1),
             accessibility: sampleSize(Object.values(KompassiAccessibility), 3),
@@ -118,15 +152,17 @@ export const createProgramItems = async (
           ],
           cachedAnnotations: {
             "konsti:rpgSystem":
-              programType === KompassiKonstiProgramType.TABLETOP_RPG
+              kompassiProgramType === KompassiKonstiProgramType.TABLETOP_RPG
                 ? "Test gamesystem"
                 : "",
             "ropecon:otherAuthor": "Other author",
-            "konsti:minAttendance": getMinAttendees(programType),
-            "konsti:maxAttendance": getMaxAttendees(programType),
+            "konsti:minAttendance": getMinAttendees(kompassiProgramType),
+            "konsti:maxAttendance": getMaxAttendees(kompassiProgramType),
             "ropecon:numCharacters": 6,
             "konsti:workshopFee":
-              programType === KompassiKonstiProgramType.WORKSHOP ? "5€" : "",
+              kompassiProgramType === KompassiKonstiProgramType.WORKSHOP
+                ? "5€"
+                : "",
             "ropecon:contentWarnings": "Content warning",
             "ropecon:accessibilityOther": "Other accessibility information",
             "ropecon:gameSlogan": faker.lorem.sentence(),

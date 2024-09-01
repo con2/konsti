@@ -31,11 +31,12 @@ export const updateWithAssign = async (
   }
   const timeNow = unwrapResult(timeNowResult);
 
-  const startTimes = Object.keys(programItemsForStartTimes).filter(
+  const futureStartTimes = Object.keys(programItemsForStartTimes).filter(
     (startTime) => dayjs(startTime).isSameOrAfter(timeNow),
   );
 
-  const assignmentResultsResult = startTimes.map((startTime) => {
+  const assignmentResultsResult = futureStartTimes.map((startTime) => {
+    // TODO: Use runAssignmentAlgorithm() instead to run with all selected algorithms?
     return padgAssignment(users, programItems, startTime, directSignups);
   });
 

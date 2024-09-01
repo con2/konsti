@@ -24,6 +24,7 @@ export enum KompassiKonstiProgramType {
   EXPERIENCE_POINT = "experiencePoint",
   OTHER = "other",
   FLEAMARKET = "fleamarket",
+  ROUNDTABLE_DISCUSSION = "roundtableDiscussion",
 }
 
 export enum KompassiAudience {

@@ -8,7 +8,7 @@ import { User } from "shared/types/models/user";
 import { ProgramItem } from "shared/types/models/programItem";
 import { RunRandomAndPadgInput } from "server/types/resultTypes";
 
-export const getRunRandomAndPadgInput = (
+export const getRandomAndPadgInput = (
   users: readonly User[],
   programItems: readonly ProgramItem[],
   startTime: string,

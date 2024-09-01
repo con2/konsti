@@ -11,7 +11,7 @@
   "scripts": {
     "eslint": "yarn run -T eslint .",
     "fixer": "tsx src/features/statistics/dataFixer.ts --",
-    "generate-data": "tsx src/test/test-data-generation/parseCliOptions.ts",
+    "generate-data": "tsx src/test/test-data-generation/generateTestDataCli.ts",
     "initialize-db": "tsx src/utils/initializeDatabase.ts",
     "generate-serials": "tsx src/utils/generateSerials.ts",
     "lint": "yarn eslint && yarn prettier:check",
