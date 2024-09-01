@@ -13,8 +13,8 @@ export interface ServerConfig {
   jwtSecretKeyAdmin: string;
   jwtSecretKeyHelp: string;
   allowedCorsOrigins: readonly string[];
-  PADG_ASSIGNMENT_ROUNDS: number;
-  RANDOM_ASSIGNMENT_ROUNDS: number;
+  padgAssignmentRounds: number;
+  randomAssignmentRounds: number;
   bundleCompression: boolean;
   autoUpdateProgramEnabled: boolean;
   programUpdateInterval: string;
@@ -85,8 +85,8 @@ const prodConfig = {
   jwtSecretKeyHelp: process.env.JWT_SECRET_KEY_HELP ?? "",
   allowedCorsOrigins: getAllowedCorsOrigins(),
   debug: process.env.DEBUG === "true" || false,
-  PADG_ASSIGNMENT_ROUNDS: 300,
-  RANDOM_ASSIGNMENT_ROUNDS: 300,
+  padgAssignmentRounds: 300,
+  randomAssignmentRounds: 300,
   consoleLogFormatJson: true,
 
   // Dev
@@ -113,8 +113,8 @@ const stagingConfig = {
   jwtSecretKeyHelp: process.env.JWT_SECRET_KEY_HELP ?? "",
   allowedCorsOrigins: getAllowedCorsOrigins(),
   debug: process.env.DEBUG === "true" || false,
-  PADG_ASSIGNMENT_ROUNDS: 300,
-  RANDOM_ASSIGNMENT_ROUNDS: 300,
+  padgAssignmentRounds: 300,
+  randomAssignmentRounds: 300,
   consoleLogFormatJson: true,
 
   // Dev
@@ -147,8 +147,8 @@ const devConfig = {
     "http://server:5000",
   ]),
   debug: false,
-  PADG_ASSIGNMENT_ROUNDS: 300,
-  RANDOM_ASSIGNMENT_ROUNDS: 10,
+  padgAssignmentRounds: 300,
+  randomAssignmentRounds: 10,
   consoleLogFormatJson: false,
 
   // Dev
