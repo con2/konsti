@@ -10,6 +10,7 @@ import { SignupHelpText } from "client/views/program-item/signup/components/Sign
 import { getTimeNow } from "client/utils/getTimeNow";
 import { isAlreadyDirectySigned } from "client/views/program-item/programItemUtils";
 import { AdmissionTicketLink } from "client/views/program-item/signup/components/AdmissionTicketLink";
+import { getDirectSignupEndTime } from "shared/utils/signupTimes";
 
 interface Props {
   signupStrategy: ProgramItemSignupStrategy;
@@ -45,7 +46,8 @@ export const ProgramItemSignup = ({
   const isDirectSignupMode =
     signupStrategy === ProgramItemSignupStrategy.DIRECT || signupAlwaysOpen;
 
-  const isSignupOver = getTimeNow().isAfter(programItem.startTime);
+  const directSignupEndTime = getDirectSignupEndTime(programItem);
+  const isDirectSignupOver = getTimeNow().isAfter(directSignupEndTime);
 
   const hasSignedUp = isAlreadyDirectySigned(programItem, directSignups);
 
@@ -60,7 +62,7 @@ export const ProgramItemSignup = ({
       />
 
       {isNormalSignup &&
-        !isSignupOver &&
+        !isDirectSignupOver &&
         (!isDirectSignupMode ? (
           <LotterySignupProgramItem
             programItem={programItem}
@@ -78,7 +80,7 @@ export const ProgramItemSignup = ({
           />
         ))}
 
-      {isSignupOver && hasSignedUp && (
+      {isDirectSignupOver && hasSignedUp && (
         <LinkContainer>
           <AdmissionTicketLink programItemId={programItem.programItemId} />
         </LinkContainer>

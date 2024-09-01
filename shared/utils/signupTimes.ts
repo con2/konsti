@@ -129,3 +129,13 @@ export const getDirectSignupStartTime = (programItem: ProgramItem): Dayjs => {
 
   return matchingSignupWindow?.signupWindowStart ?? dayjs(eventStartTime);
 };
+
+export const getDirectSignupEndTime = (programItem: ProgramItem): string => {
+  const { directSignupOpenToEndProgramTypes } = config.event();
+
+  const directSignupOpenToEnd = directSignupOpenToEndProgramTypes.includes(
+    programItem.programType,
+  );
+
+  return directSignupOpenToEnd ? programItem.endTime : programItem.startTime;
+};

@@ -71,4 +71,5 @@ export interface EventConfig {
     conditionText: EntryConditionText;
     programItemIds: string[];
   }[];
+  directSignupOpenToEndProgramTypes: ProgramType[];
 }

@@ -4,8 +4,8 @@ import {
 } from "shared/tests/testProgramItem";
 import { NewUser } from "server/types/userTypes";
 import { Signup, UserGroup } from "shared/types/models/user";
-import { PostDirectSignupRequest } from "shared/types/api/myProgramItems";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
+import { SignupRepositoryAddSignup } from "server/features/direct-signup/directSignupTypes";
 
 export const mockUser: NewUser = {
   kompassiId: 0,
@@ -67,7 +67,7 @@ export const mockLotterySignups: readonly Signup[] = [
   },
 ];
 
-export const mockPostDirectSignupRequest: PostDirectSignupRequest = {
+export const mockPostDirectSignupRequest: SignupRepositoryAddSignup = {
   username: mockUser.username,
   directSignupProgramItemId: testProgramItem.programItemId,
   startTime: testProgramItem.startTime,
@@ -75,7 +75,7 @@ export const mockPostDirectSignupRequest: PostDirectSignupRequest = {
   priority: DIRECT_SIGNUP_PRIORITY,
 };
 
-export const mockPostDirectSignupRequest2: PostDirectSignupRequest = {
+export const mockPostDirectSignupRequest2: SignupRepositoryAddSignup = {
   username: mockUser.username,
   directSignupProgramItemId: testProgramItem2.programItemId,
   startTime: testProgramItem2.startTime,

@@ -7,16 +7,15 @@ import {
 } from "server/features/program-item/programItemRepository";
 import {
   DirectSignupsForProgramItem,
+  SignupRepositoryAddSignupResponse,
+  SignupRepositoryAddSignup,
+  SignupRepositoryDeleteSignup,
   UserDirectSignup,
 } from "server/features/direct-signup/directSignupTypes";
 import { SignupModel } from "server/features/direct-signup/directSignupSchema";
 import { logger } from "server/utils/logger";
 import { config } from "shared/config";
 import { MongoDbError } from "shared/types/api/errors";
-import {
-  DeleteDirectSignupRequest,
-  PostDirectSignupRequest,
-} from "shared/types/api/myProgramItems";
 import { ProgramType } from "shared/types/models/programItem";
 import {
   Result,
@@ -161,11 +160,12 @@ export const findUserDirectSignups = async (
 };
 
 export const saveDirectSignup = async (
-  signupsRequest: PostDirectSignupRequest,
+  signupsRequest: SignupRepositoryAddSignup,
 ): Promise<Result<DirectSignupsForProgramItem, MongoDbError>> => {
   const { username, directSignupProgramItemId, startTime, message, priority } =
     signupsRequest;
 
+  // TODO: Remove fetching program item
   const programItemResult = await findProgramItemById(
     directSignupProgramItemId,
   );
@@ -216,14 +216,9 @@ export const saveDirectSignup = async (
   }
 };
 
-interface SaveSignupsResponse {
-  modifiedCount: number;
-  droppedSignups: PostDirectSignupRequest[];
-}
-
 export const saveDirectSignups = async (
-  signupsRequests: PostDirectSignupRequest[],
-): Promise<Result<SaveSignupsResponse, MongoDbError>> => {
+  signupsRequests: SignupRepositoryAddSignup[],
+): Promise<Result<SignupRepositoryAddSignupResponse, MongoDbError>> => {
   const programItemsResult = await findProgramItems();
   if (isErrorResult(programItemsResult)) {
     return programItemsResult;
@@ -235,7 +230,7 @@ export const saveDirectSignups = async (
     (signupsRequest) => signupsRequest.directSignupProgramItemId,
   );
 
-  const droppedSignups: PostDirectSignupRequest[] = [];
+  const droppedSignups: SignupRepositoryAddSignup[] = [];
 
   const bulkOps = Object.entries(signupsByProgramItems).flatMap(
     ([programItemId, directSignups]) => {
@@ -246,7 +241,7 @@ export const saveDirectSignups = async (
         return [];
       }
 
-      let finalSignups: PostDirectSignupRequest[] = directSignups;
+      let finalSignups: SignupRepositoryAddSignup[] = directSignups;
       if (directSignups.length > programItem.maxAttendance) {
         logger.error(
           "%s",
@@ -299,10 +294,11 @@ export const saveDirectSignups = async (
 };
 
 export const delDirectSignup = async (
-  signupRequest: DeleteDirectSignupRequest,
+  signupRequest: SignupRepositoryDeleteSignup,
 ): Promise<Result<DirectSignupsForProgramItem, MongoDbError>> => {
   const { username, directSignupProgramItemId } = signupRequest;
 
+  // TODO: Remove fetching program item
   const programItemResult = await findProgramItemById(
     directSignupProgramItemId,
   );

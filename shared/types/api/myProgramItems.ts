@@ -7,6 +7,7 @@ import { Signup, SignupSchema } from "shared/types/models/user";
 
 export const PostLotterySignupsRequestSchema = z.object({
   lotterySignups: z.array(SignupSchema),
+  // TODO: Remove startTime and read it from program item on backend
   startTime: z.string(),
 });
 
@@ -27,7 +28,6 @@ export interface PostLotterySignupsError extends ApiError {
 export const PostDirectSignupRequestSchema = z.object({
   username: z.string(),
   directSignupProgramItemId: z.string(),
-  startTime: z.string(),
   message: z.string().max(SIGNUP_MESSAGE_LENGTH, "Message too long"),
   priority: z.number(),
 });
@@ -54,7 +54,6 @@ export interface PostDirectSignupError extends ApiError {
 export const DeleteDirectSignupRequestSchema = z.object({
   username: z.string(),
   directSignupProgramItemId: z.string(),
-  startTime: z.string(),
 });
 
 export type DeleteDirectSignupRequest = z.infer<

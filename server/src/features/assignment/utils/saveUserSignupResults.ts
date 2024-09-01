@@ -27,6 +27,7 @@ import { getGroupCreators } from "server/features/assignment/utils/getGroupCreat
 import { getGroupMembersWithCreatorLotterySignups } from "server/features/assignment/utils/getGroupMembers";
 import { getStartingProgramItems } from "server/features/assignment/utils/getStartingProgramItems";
 import { ProgramItem } from "shared/types/models/programItem";
+import { SignupRepositoryAddSignup } from "server/features/direct-signup/directSignupTypes";
 
 interface SaveUserSignupResultsParams {
   startTime: string;
@@ -75,7 +76,6 @@ export const saveUserSignupResults = async ({
       const delSignupResult = await delDirectSignup({
         username: existingSignup.username,
         directSignupProgramItemId: existingSignup.programItemId,
-        startTime: existingSignup.time,
       });
       if (isErrorResult(delSignupResult)) {
         return delSignupResult;
@@ -93,7 +93,7 @@ export const saveUserSignupResults = async ({
   }
 
   // Save new assignment results
-  const newSignups = results.map((result) => {
+  const newSignups: SignupRepositoryAddSignup[] = results.map((result) => {
     return {
       username: result.username,
       directSignupProgramItemId: result.directSignup.programItem.programItemId,

@@ -6,17 +6,17 @@ import { Result } from "shared/utils/result";
 import { MongoDbError } from "shared/types/api/errors";
 
 interface IsValidSignupTimeParams {
-  startTime: Dayjs;
+  signupEndTime: Dayjs;
   timeNow: Dayjs;
 }
 
-export const isValidSignupTime = ({
-  startTime,
+export const hasSignupEnded = ({
+  signupEndTime,
   timeNow,
 }: IsValidSignupTimeParams): boolean => {
-  if (timeNow.isAfter(startTime)) {
+  if (timeNow.isAfter(signupEndTime)) {
     logger.warn(
-      `Invalid signup time: timeNow: ${timeNow.toISOString()}, startTime: ${startTime.toISOString()}`,
+      `Invalid signup time: timeNow: ${timeNow.toISOString()}, signupEndTime: ${signupEndTime.toISOString()}`,
     );
     return false;
   }

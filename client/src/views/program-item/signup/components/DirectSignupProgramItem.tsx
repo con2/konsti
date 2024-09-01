@@ -66,7 +66,6 @@ export const DirectSignupProgramItem = ({
     const errorMessage = await dispatch(
       submitDeleteDirectSignup({
         username,
-        startTime: programItem.startTime,
         directSignupProgramItemId: programItem.programItemId,
       }),
     );
