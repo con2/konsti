@@ -62,12 +62,14 @@ export const randomAssignment = (
     `Selected attendees: ${allAttendees.length} (${numberOfIndividuals} individual, ${numberOfGroups} groups)`,
   );
 
+  logger.debug("Random assignment: start");
   const assignmentResultResult = runRandomAssignment(
     lotterySignupProgramItems,
     attendeeGroups,
     startTime,
     directSignups,
   );
+  logger.debug("Random assignment: completed");
   if (isErrorResult(assignmentResultResult)) {
     return assignmentResultResult;
   }

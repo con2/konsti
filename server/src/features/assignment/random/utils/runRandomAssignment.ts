@@ -23,6 +23,7 @@ import {
 } from "shared/utils/result";
 import { AssignmentError } from "shared/types/api/errors";
 import { logger } from "server/utils/logger";
+import { calculateHappiness } from "server/features/assignment/padg/utils/calculateHappiness";
 
 export const runRandomAssignment = (
   lotterySignupProgramItems: readonly ProgramItem[],
@@ -62,7 +63,9 @@ export const runRandomAssignment = (
 
   let assignResults: AssignmentElement[] | CheckResult | undefined;
   try {
+    logger.debug("Run random algorithm: start");
     assignResults = eventAssignment(input);
+    logger.debug("Run random algorithm: finished");
   } catch (error) {
     logger.error(
       "%s",
@@ -93,7 +96,9 @@ export const runRandomAssignment = (
   }
 
   const results = unwrapResult(resultsResult);
-  const message = "Random assignment completed";
+  const happiness = calculateHappiness(assignResults, groups);
+  const message = `Random assignment completed with happiness ${happiness}%`;
+  logger.debug(message);
 
   return makeSuccessResult({ results, message });
 };

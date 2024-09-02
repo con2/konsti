@@ -41,7 +41,9 @@ export const runPadgAssignment = (
   const list = unwrapResult(listResult);
   const updateL = (input: Input): string => input.list;
 
+  logger.debug("PADG assignment: start");
   const assignResults = assignPadg(groups, events, list, updateL);
+  logger.debug("PADG assignment: completed");
 
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (!assignResults) {
