@@ -273,12 +273,14 @@ const mapRevolvingDoor = (
 };
 
 const mapMaxAttendance = (kompassiProgramItem: KompassiProgramItem): number => {
+  /*
   if (
     kompassiProgramItem.cachedDimensions.konsti[0] ===
     KompassiKonstiProgramType.LARP
   ) {
     return kompassiProgramItem.cachedAnnotations["ropecon:numCharacters"];
   }
+  */
 
   return kompassiProgramItem.cachedAnnotations["konsti:maxAttendance"];
 };
