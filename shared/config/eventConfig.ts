@@ -24,6 +24,7 @@ export const eventConfig: EventConfig = {
   signupOpen: true,
   resultsVisible: true,
   logInvalidStartTimes: false,
+  enableRemoveOverlapSignups: false,
 
   activeProgramTypes: [
     ProgramType.TABLETOP_RPG,

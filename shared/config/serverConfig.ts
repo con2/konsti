@@ -18,7 +18,6 @@ export interface ServerConfig {
   bundleCompression: boolean;
   autoUpdateProgramEnabled: boolean;
   programUpdateInterval: string;
-  enableRemoveOverlapSignups: boolean;
   updateProgramItemPopularityEnabled: boolean;
   useLocalProgramFile: boolean;
   autoAssignAttendeesEnabled: boolean;
@@ -58,7 +57,6 @@ const commonConfig = {
 
   // App settings
   bundleCompression: true,
-  enableRemoveOverlapSignups: true,
 
   // Default DB values
   defaultSignupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,

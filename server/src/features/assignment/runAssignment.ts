@@ -136,7 +136,7 @@ export const runAssignment = async ({
     return saveResultsResult;
   }
 
-  if (config.server().enableRemoveOverlapSignups) {
+  if (config.event().enableRemoveOverlapSignups) {
     logger.info("Remove overlapping signups");
     const removeOverlapSignupsResult = await removeOverlapSignups(
       assignResults.results,
