@@ -25,6 +25,8 @@ export const assignPadg = (
   let finalAssignResults: PadgRandomAssignResult[] = [];
 
   for (let i = 0; i < padgAssignmentRounds; i++) {
+    logger.debug(`PADG algorithm round ${i + 1}`);
+
     const eventsCopy = cloneDeep(events);
 
     const input: PadgInput = {
