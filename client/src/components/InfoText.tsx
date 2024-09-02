@@ -10,10 +10,15 @@ export enum InfoTextVariant {
 interface Props {
   children: ReactNode;
   variant?: InfoTextVariant;
+  className?: string;
 }
 
-export const InfoText = ({ children, variant }: Props): ReactElement => (
-  <p>
+export const InfoText = ({
+  children,
+  variant,
+  className,
+}: Props): ReactElement => (
+  <p className={className}>
     <Container $variant={variant ?? InfoTextVariant.INFO}>
       {variant === InfoTextVariant.WARNING && (
         <StyledIcon $color={`${variant}Icon`} icon={"triangle-exclamation"} />

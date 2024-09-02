@@ -7,11 +7,13 @@ interface Props {
   message: string;
   // If left undefined, a close button won't be shown
   closeError?: () => void;
+  className?: string;
 }
 
 export const ErrorMessage = ({
   message,
   closeError,
+  className,
 }: Props): ReactElement | null => {
   const { t } = useTranslation();
 
@@ -19,7 +21,7 @@ export const ErrorMessage = ({
     return null;
   }
   return (
-    <p>
+    <p className={className}>
       <Container>
         <ErrorIcon icon={"circle-exclamation"} />
         {message}

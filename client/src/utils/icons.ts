@@ -21,7 +21,6 @@ import {
   faCircle as fasCircle,
   faDice as fasDice,
   faCalendarDays as fasCalendarDays,
-  faHeartCircleXmark as fasHeartCircleXmark,
   faCalendarXmark as fasCalendarXmark,
   faPersonChalkboard as fasPersonChalkboard,
   faArrowRight as fasArrowRight,
@@ -31,6 +30,8 @@ import {
   faCircleExclamation as fasCircleExclamation,
   faCircleCheck as fasCircleCheck,
   faBan as fasBan,
+  faCircleArrowRight as fasCircleArrowRight,
+  faTicket as fasTicket,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faHeart as farHeart,
@@ -62,7 +63,6 @@ export const getIconLibrary = (): void => {
     fasCircle,
     fasCalendarDays,
     fasDice,
-    fasHeartCircleXmark,
     fasCalendarXmark,
     fasPersonChalkboard,
     fasArrowRight,
@@ -72,5 +72,7 @@ export const getIconLibrary = (): void => {
     fasCircleExclamation,
     fasCircleCheck,
     fasBan,
+    fasCircleArrowRight,
+    fasTicket,
   );
 };

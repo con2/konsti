@@ -1,12 +1,15 @@
 import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import { sortBy } from "lodash-es";
-import styled from "styled-components";
 import { getStartTimes } from "client/utils/getStartTimes";
 import { LotterySignupsByStartTimes } from "./LotterySignupsByStartTimes";
 import { Signup } from "shared/types/models/user";
 import { RaisedCard } from "client/components/RaisedCard";
 import { useAppSelector } from "client/utils/hooks";
+import {
+  MyProgramHeader,
+  MyProgramSecondaryText,
+} from "client/views/my-program-items/components/shared";
 
 interface Props {
   lotterySignups: readonly Signup[];
@@ -34,7 +37,7 @@ export const MyLotterySignupsList = ({
 
   return (
     <RaisedCard data-testid="lottery-signup-program-items-list">
-      <Header>{t("lotterySignups")}</Header>
+      <MyProgramHeader>{t("lotterySignups")}</MyProgramHeader>
 
       {!isGroupCreator && isGroupMember && <p>{t("group.inGroupSignups")}</p>}
 
@@ -43,7 +46,7 @@ export const MyLotterySignupsList = ({
       )}
 
       {lotterySignups.length === 0 && (
-        <SecondaryText>{t("noLotterySignups")}</SecondaryText>
+        <MyProgramSecondaryText>{t("noLotterySignups")}</MyProgramSecondaryText>
       )}
       {lotterySignups.length !== 0 && (
         <LotterySignupsByStartTimes
@@ -54,11 +57,3 @@ export const MyLotterySignupsList = ({
     </RaisedCard>
   );
 };
-
-const Header = styled.h3`
-  margin: 0 0 12px 0;
-`;
-
-const SecondaryText = styled.span`
-  color: ${(props) => props.theme.textSecondary};
-`;

@@ -19,6 +19,7 @@ interface Props {
   popularity: number;
   includeMsg: boolean;
   programType: ProgramType;
+  className?: string;
 }
 
 export const PopularityInfo = ({
@@ -27,6 +28,7 @@ export const PopularityInfo = ({
   popularity,
   includeMsg,
   programType,
+  className,
 }: Props): ReactElement => {
   const { t } = useTranslation();
 
@@ -47,7 +49,7 @@ export const PopularityInfo = ({
   }, [maxAttendance, minAttendance, popularity]);
 
   return (
-    <ProgramItemPopularityContainer>
+    <ProgramItemPopularityContainer className={className}>
       <ProgramItemPopularityIcon icon={icon} color={color} aria-hidden="true" />{" "}
       {includeMsg && (
         <span>

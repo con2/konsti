@@ -1,11 +1,14 @@
 import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import { sortBy } from "lodash-es";
-import styled from "styled-components";
 import { getStartTimes } from "client/utils/getStartTimes";
 import { FavoritesByStartTimes } from "./FavoritesByStartTimes";
 import { ProgramItem } from "shared/types/models/programItem";
 import { RaisedCard } from "client/components/RaisedCard";
+import {
+  MyProgramHeader,
+  MyProgramSecondaryText,
+} from "client/views/my-program-items/components/shared";
 
 interface Props {
   favoriteProgramItems: readonly ProgramItem[];
@@ -28,10 +31,12 @@ export const MyFavoritesList = ({
 
   return (
     <RaisedCard data-testid="favorite-program-items-list">
-      <Header>{t("favoriteProgramItems")}</Header>
+      <MyProgramHeader>{t("favoriteProgramItems")}</MyProgramHeader>
       <div>
         {favoriteProgramItems.length === 0 && (
-          <SecondaryText>{t("noFavoriteProgramItems")}</SecondaryText>
+          <MyProgramSecondaryText>
+            {t("noFavoriteProgramItems")}
+          </MyProgramSecondaryText>
         )}
         {favoriteProgramItems.length !== 0 && (
           <FavoritesByStartTimes
@@ -43,11 +48,3 @@ export const MyFavoritesList = ({
     </RaisedCard>
   );
 };
-
-const Header = styled.h3`
-  margin: 0 0 12px 0;
-`;
-
-const SecondaryText = styled.span`
-  color: ${(props) => props.theme.textSecondary};
-`;

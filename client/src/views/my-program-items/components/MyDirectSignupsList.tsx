@@ -1,12 +1,15 @@
 import { ReactElement, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { sortBy, uniq } from "lodash-es";
-import styled from "styled-components";
 import { DirectSignupsByStartTimes } from "./DirectSignupsByStartTimes";
 import { getMissedSignups } from "client/views/my-program-items/utils/getMissedSignups";
 import { Signup } from "shared/types/models/user";
 import { config } from "shared/config";
 import { RaisedCard } from "client/components/RaisedCard";
+import {
+  MyProgramHeader,
+  MyProgramSecondaryText,
+} from "client/views/my-program-items/components/shared";
 
 interface Props {
   directSignups: readonly Signup[];
@@ -36,9 +39,9 @@ export const MyDirectSignupsList = ({
 
   return (
     <RaisedCard data-testid="direct-signup-program-items-list">
-      <Header>{t("directSignups")}</Header>
+      <MyProgramHeader>{t("directSignups")}</MyProgramHeader>
       {(!config.event().resultsVisible || startTimes.length === 0) && (
-        <SecondaryText>{t("noDirectSignups")}</SecondaryText>
+        <MyProgramSecondaryText>{t("noDirectSignups")}</MyProgramSecondaryText>
       )}
 
       {config.event().resultsVisible && startTimes.length !== 0 && (
@@ -53,11 +56,3 @@ export const MyDirectSignupsList = ({
     </RaisedCard>
   );
 };
-
-const Header = styled.h3`
-  margin: 0 0 12px 0;
-`;
-
-const SecondaryText = styled.span`
-  color: ${(props) => props.theme.textSecondary};
-`;

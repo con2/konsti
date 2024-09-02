@@ -58,3 +58,9 @@ export const formatProgramItemDuration = (mins: number): string => {
 
   return `${hoursStr} ${minutesStr}`;
 };
+
+export const formattedCurrentTime = (currentTime: Date): string => {
+  const timeFormat = "HH:mm:ss";
+  // eslint-disable-next-line no-restricted-syntax -- We want to call format here
+  return dayjs(currentTime).tz(TIMEZONE).format(timeFormat);
+};
