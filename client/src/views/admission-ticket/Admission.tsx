@@ -3,12 +3,14 @@ import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { capitalize } from "lodash-es";
-import dayjs from "dayjs";
-import { getTime, getWeekdayAndTime } from "client/utils/timeFormatter";
+import {
+  formattedCurrentTime,
+  getTime,
+  getWeekdayAndTime,
+} from "client/utils/timeFormatter";
 import { config } from "shared/config";
 import { ProgramItem } from "shared/types/models/programItem";
 import { RaisedCard } from "client/components/RaisedCard";
-import { TIMEZONE } from "shared/utils/initializeDayjs";
 
 interface Props {
   programItem: ProgramItem;
@@ -37,19 +39,13 @@ export const Admission = ({
     }, 1000);
   }, []);
 
-  const formattedCurrentTime = (): string => {
-    const timeFormat = "HH:mm:ss";
-    // eslint-disable-next-line no-restricted-syntax -- We want to call format here
-    return dayjs(currentTime).tz(TIMEZONE).format(timeFormat);
-  };
-
   return (
     <RaisedCard>
       <TextContainer>
         <Text>
           {eventName} {eventYear}
         </Text>
-        <TimeText>{formattedCurrentTime()}</TimeText>
+        <TimeText>{formattedCurrentTime(currentTime)}</TimeText>
 
         <BoldText>{programItem.title}</BoldText>
         <Text>{formatTime()}</Text>

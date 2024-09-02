@@ -3,9 +3,6 @@ import styled from "styled-components";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-/**
- * Specify
- */
 interface Props {
   children?: ReactNode;
   onClick?: MouseEventHandler;
