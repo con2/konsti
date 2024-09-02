@@ -15,6 +15,9 @@ import {
 } from "shared/utils/result";
 import { AssignmentError, MongoDbError } from "shared/types/api/errors";
 import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
+import { randomAssignment } from "server/features/assignment/random/randomAssignment";
+import { config } from "shared/config";
+import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
 
 export const updateWithAssign = async (
   users: readonly User[],
@@ -37,6 +40,9 @@ export const updateWithAssign = async (
 
   const assignmentResultsResult = futureStartTimes.map((startTime) => {
     // TODO: Use runAssignmentAlgorithm() instead to run with all selected algorithms?
+    if (config.event().popularityAlgorithm === AssignmentAlgorithm.RANDOM) {
+      return randomAssignment(users, programItems, startTime, directSignups);
+    }
     return padgAssignment(users, programItems, startTime, directSignups);
   });
 

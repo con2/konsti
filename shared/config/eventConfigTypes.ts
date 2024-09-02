@@ -73,4 +73,5 @@ export interface EventConfig {
   }[];
   directSignupOpenToEndProgramTypes: ProgramType[];
   activeProgramTypes: ProgramType[];
+  popularityAlgorithm: AssignmentAlgorithm.RANDOM | AssignmentAlgorithm.PADG;
 }
