@@ -4,7 +4,11 @@ import { useTranslation } from "react-i18next";
 import { capitalize } from "lodash-es";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
 import { Signup } from "shared/types/models/user";
-import { DirectSignupRow } from "client/views/my-program-items/components/DirectSignupRow";
+import { DirectSignupItem } from "client/views/my-program-items/components/DirectSignupItem";
+import {
+  MyProgramList,
+  MyProgramTime,
+} from "client/views/my-program-items/components/shared";
 
 interface Props {
   directSignups: readonly Signup[];
@@ -24,12 +28,14 @@ export const DirectSignupsByStartTimes = ({
       {startTimes.map((startTime) => {
         return (
           <div key={startTime}>
-            <StyledTime>{capitalize(getWeekdayAndTime(startTime))}</StyledTime>
+            <MyProgramTime>
+              {capitalize(getWeekdayAndTime(startTime))}
+            </MyProgramTime>
 
-            <ul>
+            <MyProgramList>
               {directSignups.map((signup) => {
                 return (
-                  <DirectSignupRow
+                  <DirectSignupItem
                     key={signup.programItem.programItemId}
                     signup={signup}
                     startTime={startTime}
@@ -40,13 +46,13 @@ export const DirectSignupsByStartTimes = ({
               {missedSignups.map((missedSignup) => {
                 if (missedSignup === startTime) {
                   return (
-                    <ProgramItemsList key={missedSignup}>
+                    <NoSignupText key={missedSignup}>
                       {t("noLotterySignupResult")}
-                    </ProgramItemsList>
+                    </NoSignupText>
                   );
                 }
               })}
-            </ul>
+            </MyProgramList>
           </div>
         );
       })}
@@ -54,12 +60,6 @@ export const DirectSignupsByStartTimes = ({
   );
 };
 
-const ProgramItemsList = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const StyledTime = styled.p`
-  font-weight: 600;
-  margin: 10px 0;
+const NoSignupText = styled.p`
+  color: ${(props) => props.theme.textSecondary};
 `;
