@@ -182,19 +182,18 @@ const getDirectSignupsForProgramItem = (
     (signup) => signup.programItem.programItemId === programItemId,
   );
 
-  if (
-    hideParticipantListProgramTypes.includes(programType) &&
-    !(userGroup === UserGroup.ADMIN || userGroup === UserGroup.HELP)
-  ) {
-    return directSignupsForProgramItem.map((_directSignup) => ({
-      username: "redacted",
-      signupMessage: "redacted",
-    }));
-  }
-
   const formattedDirectSignupsForProgramItem =
     directSignupsForProgramItem.flatMap((directSignupForProgramItem) => {
       return directSignupForProgramItem.userSignups.map((userSignups) => {
+        if (
+          hideParticipantListProgramTypes.includes(programType) &&
+          !(userGroup === UserGroup.ADMIN || userGroup === UserGroup.HELP)
+        ) {
+          return {
+            username: "redacted",
+            signupMessage: "redacted",
+          };
+        }
         return {
           username: userSignups.username,
           signupMessage: getSignupMessage(signupQuestion, userSignups.message),
