@@ -19,7 +19,7 @@ export const KompassiProfileSchema = z.object({
   display_name: z.string(),
   preferred_name_display_style: z.string(),
   email: z.string(),
-  birth_date: z.string(),
+  birth_date: z.string().or(z.null()),
   phone: z.string(),
   username: z.string(),
   groups: z.array(z.string()),
