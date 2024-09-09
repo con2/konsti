@@ -91,14 +91,14 @@ const prodConfig = {
   useTestTime: false,
 
   // Program update cron
-  autoUpdateProgramEnabled: true,
+  autoUpdateProgramEnabled: false,
   programUpdateInterval: `5,10,20,25,35,40,50,55 * * * *`,
 
   // Program update
   updateProgramItemPopularityEnabled: true,
 
   // Attendee assign cron
-  autoAssignAttendeesEnabled: true,
+  autoAssignAttendeesEnabled: false,
   autoAssignInterval: `0,15,30,45 * * * *`,
   autoAssignDelay: 1000 * 5,
 };
@@ -119,11 +119,11 @@ const stagingConfig = {
   useTestTime: true,
 
   // Program update cron
-  autoUpdateProgramEnabled: true,
+  autoUpdateProgramEnabled: false,
   programUpdateInterval: `5,10,20,25,35,40,50,55 * * * *`,
 
   // Program update
-  updateProgramItemPopularityEnabled: false,
+  updateProgramItemPopularityEnabled: true,
 
   // Attendee assign cron
   autoAssignAttendeesEnabled: false,
