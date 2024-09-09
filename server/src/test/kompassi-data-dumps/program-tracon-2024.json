@@ -602,7 +602,7 @@
   {
     "slug": "larp-telenovela-haat",
     "title": "LARP Telenovela: Häät",
-    "description": "Oletko aina halunnut kokeilla LARPpaamista, mutta ilmoittautuminen on pelottavaa, ihmisiä on paljon ja se voi olla kallistakin? Vai onko kenties viime pelistä liian kauan ja LARPpi-hammasta jo kolottaa? Tämä on silloin ohjelma juuri sinulle! Tule toteuttamaan elämäsi draamalaamaisimpaa hääjuhlaa, jossa jokainen osallistuja on oman elämänsä äänekäs päähenkilö. \r\nPeli sopii niin ensikertalaisille, kuin kokeneillekin. Ennen pelin alkua käydään läpi nopeasti LARPpauksen perus säännöt ja pelikohtaiset oleelliset asiat, mutta osallistuminen edellyttää yleisiä LARPpauksen sääntöjen lukemista larp.fi:n nettisivuilta. ( https://larp.fi/?page_id=106 )\r\n\r\nTähän peliin ilmoittaudutaan paperilomakkeella Roolipelitiskillä.",
+    "description": "Tule toteuttamaan elämäsi draamalaamaisimpaa hääjuhlaa, jossa jokainen osallistuja on oman elämänsä äänekäs päähenkilö. \r\n\r\nOletko aina halunnut kokeilla LARPpaamista, mutta ilmoittautuminen on pelottavaa, ihmisiä on paljon ja se voi olla kallistakin? Vai onko kenties viime pelistä liian kauan ja LARPpi-hammasta jo kolottaa? Tämä on silloin ohjelma juuri sinulle! \r\nPeli sopii niin ensikertalaisille, kuin kokeneillekin. Ennen pelin alkua käydään läpi nopeasti LARPpauksen perussäännöt ja pelikohtaiset oleelliset asiat, mutta osallistuminen edellyttää yleisiä LARPpauksen sääntöjen lukemista larp.fi:n nettisivuilta. ( https://larp.fi/?page_id=106 )\r\n\r\nTähän peliin ilmoittaudutaan paperilomakkeella Roolipelitiskillä. Ilmoittautuminen auki la klo 14-18.  Peliä varten tarvitset Discord-tunnuksen, sillä hahmot jaetaan ennen peliä Discordin kautta.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2024-09-07"],
@@ -633,8 +633,8 @@
     "description": "Our Brilliant Ruin sijoittuu Dramarkiin, paikkaan, jossa yhteiskunnan viimeiset hauraat jäännökset elävät kuolevan maailman varjossa. Turmio, yliluonnollinen voima, joka saastuttaa kaiken, mihin se koskettaa, on tuhonnut niin maantieteen kuin kulttuurinkin aiheuttaen tuhoa ja menettäen maalaismaiset alueet hirviömäisille olennoille. Kun maailma on syöksynyt ruosteeseen ja raunioihin, miten aiot viettää jäljellä olevan ajan?\r\n\r\nHahmot ovat perineet rapistuneen Crowscroftin kartanon, joka heidän pitäisi saada edustuskuntoon.\r\n\r\nOur Brilliant Ruin is a tabletop roleplaying game set in the Dramark, a place where the last fragile remains of society live in the shadow of a dying world. The Ruin, a preternatural force befouling everything it touches, has ravaged geography and culture alike, wreaking destructive havoc and loosing monstrous creatures into a previously bucolic region. With the world plunged into rust and ruin, how will you spend the time you have left?",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
-      "date": ["2024-09-06"],
-      "room": ["roolipelipoyta-5"],
+      "date": ["2024-09-07"],
+      "room": ["roolipelipoyta-6"],
       "konsti": ["tabletopRPG"],
       "signup": ["konsti"],
       "tickets": ["tracon"],
@@ -653,10 +653,10 @@
       {
         "slug": "meidan-loistava-turmio",
         "title": "Meidän loistava turmiomme",
-        "startTime": "2024-09-06T13:30:00+00:00",
-        "endTime": "2024-09-06T17:30:00+00:00",
+        "startTime": "2024-09-07T09:00:00+00:00",
+        "endTime": "2024-09-07T13:00:00+00:00",
         "lengthMinutes": 240,
-        "location": "Roolipelipöytä 5"
+        "location": "Roolipelipöytä 6"
       }
     ]
   },
@@ -824,39 +824,6 @@
     ]
   },
   {
-    "slug": "pfs-2e-5-12-mischief-in-the-maze",
-    "title": "PFS 2E #5-12 Mischief in the Maze",
-    "description": "Avoimen Tien Labyrintti on melkein stabilisoitu, mutta jostain syystä siellä kulkevat agentit päätyvät kuitenkin vääriin määränpäihin. Pelaajien tehtävänä on selvittää mikä tilanteen aiheuttaa ja estää mahdolliset tulevat vahingot mikäli mahdollista.Labyrintti on kuitenkin mystinen paikka ja seikkailijat saattavat päästä jopa esittelemään taiteenlahjojaan tanssimittelössä!\r\n\r\nSeikkailu sisältää fantasia olentoja, taistelua, sekä seikkailua metsäisessä miljöössä.\r\n\r\nTämä on Pathfinder Society-peli",
-    "cachedHosts": "<redacted>",
-    "cachedDimensions": {
-      "date": ["2024-09-07"],
-      "room": ["roolipelipoyta-6"],
-      "konsti": ["tabletopRPG"],
-      "signup": ["konsti"],
-      "tickets": ["tracon"],
-      "audience": ["unrestricted", "beginner-friendly"],
-      "category": ["roolipeliohjelma"],
-      "language": ["fi", "en"],
-      "accessibility": []
-    },
-    "cachedAnnotations": {
-      "konsti:rpgSystem": "Pathfinder 2E",
-      "ropecon:gameSlogan": "Fantastinen seikkailu metsässä",
-      "konsti:maxAttendance": 6,
-      "konsti:minAttendance": 3
-    },
-    "scheduleItems": [
-      {
-        "slug": "pfs-2e-5-12-mischief-in-the-maze",
-        "title": "PFS 2E #5-12 Mischief in the Maze",
-        "startTime": "2024-09-07T09:00:00+00:00",
-        "endTime": "2024-09-07T13:00:00+00:00",
-        "lengthMinutes": 240,
-        "location": "Roolipelipöytä 6"
-      }
-    ]
-  },
-  {
     "slug": "ristipisto",
     "title": "Ristipisto",
     "description": "\"Eräänä päivänä Sönderfall katosi. Tiedon levittyä pääkaupunkiin Kuningas Fathmu IX:n hovissa kohistiin. Miten kokonainen saari saattoi pyyhkiytyä pois kartalta? \r\n\r\nVielä huolestuttavammaksi osoittautui se, että tapausta tutkimaan lähetetyt sotilaat eivät koskaan palanneet takaisin. \r\n\r\nKoska joukkojen ja resurssien tuhlaaminen yhden saaren takia ei ole ollut ruhtinaan mieleen, on Fathmu IX antanut teille onnekkeilla rikollisille mahdollisuuden lunastaa vapautenne. Etsikää Sönderfall ja ansaitkaa vapautenne.\" \r\n\r\nPelissä käsitellään synkkiä teemoja, mutta mukana on vahva tujaus huumoria. Pelaajien kannattaa varautua kohtaamaan kauhutematiikkaa, kehokauhua sekä kuvauksia väkivallasta (mutta ei mitään liian mautonta). Pidetään pelipöytä kaikille turvallisena tilana!",
@@ -994,8 +961,8 @@
     "description": "Elätte Tornissa, jättimäisessä megarakennuksessa ja maailman oudoimmassa kaupungissa. Olette droweja, Tornin valtaväestöä, jota julma haltijahallinto sortaa. Palvelette Seurakuntaa, salamyhkäistä kulttia, joka johtaa vastarintaa korkea haltijoita, 'Aelfiriejä',  vastaan.\r\n\r\nSeurakunta on antanut teille tehtävän. Aelfirien kirkon arkkipiispa on jäämässä eläkkeelle. Tämä on ongelma, sillä hänen toimintansa on ollut Seurakunnalle hyväksi, ja hänen seuraajansa on kovanlinjan kiihkoilija, joka tulee vainoamaan Kuun Jumalataren palvojia entistä voimakkaammin.\r\nTeidän tulee estää tämän kiihkouskovaisen pääsemästä virkaan ja varmistaaksenne, että joku aatteeseeme myönteisemmin suhtautuva (tai ainakin sellainen, jota voidaan helposti hallita).\r\n\r\nAvainsanat:, totalitaristi hallitus, kapinallisuus, salaliitot, rohkeus\r\n\r\nSääntöosaaminen: Ei tarvitse tietää ennalta, käydään pelin alussa läpi.\r\nIkäraja: 16\r\nPelaajia: 3-5\r\nKesto: Noin 4,5h\r\nHahmot: Valitaan valmishahmoista\r\nPelityylit: Pelaajavetoinen ja toiminnallinen\r\nKäytännöt: X-kortti käytössä\r\nKoostumus: ihmissuhteita, juonittelua ja rikoksia\r\nSisältövaroitus: hyväksikäyttö (henkinen, emotionaalinen, fyysinen)",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
-      "date": ["2024-09-07"],
-      "room": ["roolipelipoyta-4"],
+      "date": ["2024-09-08"],
+      "room": ["roolipelipoyta-1"],
       "konsti": ["tabletopRPG"],
       "signup": ["konsti"],
       "tickets": ["tracon"],
@@ -1014,10 +981,10 @@
       {
         "slug": "spire-sammuttakaa-aurinko",
         "title": "Spire - Sammuttakaa Aurinko",
-        "startTime": "2024-09-07T08:30:00+00:00",
-        "endTime": "2024-09-07T13:00:00+00:00",
+        "startTime": "2024-09-08T08:00:00+00:00",
+        "endTime": "2024-09-08T12:30:00+00:00",
         "lengthMinutes": 270,
-        "location": "Roolipelipöytä 4"
+        "location": "Roolipelipöytä 1"
       }
     ]
   },
@@ -1214,39 +1181,6 @@
         "endTime": "2024-09-07T12:00:00+00:00",
         "lengthMinutes": 150,
         "location": "Roolipelipöytä 3"
-      }
-    ]
-  },
-  {
-    "slug": "varjojen-sisarkunta",
-    "title": "Varjojen sisarkunta",
-    "description": "Kuhisevan modernissa O:n kaupungissa, missä taikuus ja yliluonnolliset kulkevat tavallisen kansan keskuudessa, joukko nuoria löytävät itsensä tulleen vedetyksi yhteen kohtalon armosta. Jokainen tahoillaan on kohdannut Hadian, mysteerisen varjo-olennon, joka on kutsunut heidät kaupungin trendikkäimpään kahvilaan, Pimennykseen, missä heidän seikkailunsa alkaisi.\r\n\r\nMonet oudot tapaukset ovat alkaneet haittaamaan kaupunkia, häiriten normaalia arkea, aiheuttaen kaaosta ja pelkoa väen keskuudessa. Ihmiset ovat puhuneet nähneensä outoja olentoja hiipimässä varjoissa, ja kokeneensa outoja maagisia purkauksia.\r\n\r\nHadia paljastaa, että Malakar, pimeä maagi on näiden kummallisten tapahtumien takana ja haluaa varastamallaan Varjosydän-nimisellä amuletilla rikkoa maailmojen välisen herkän tasapainon ja syöstä maailman pala kerrallaan pimeyteen, aloittaen O:n kaupungista. Hadia tietää, että Malakar on jo aloittanut rituaalinsa ja toivookin, että se mitä pikimmin pysäytetään\r\n\r\nNuorten sankareidemme on haasteiden rinnalla opittava tekemään yhteistyötä keskenään, luottamaan toisiinsa, sillä eroistaan huolimatta vain yhdessä he voivat kukistaa kaupunkia uhkaavat pimeyden voimat. Yhdessä he voivat löytää voimansa ja rohkeutensa tähän urotyöhön, voidakseen pysäyttää Malakar ja tämän pimeyden joukot ja pelastaa päivä.\r\n\r\n\r\n\r\nThirsty sword lesbians on kevytsääntöinen ja tarinavetoinen pelisysteemi, jonka säännöt selvitetään pelin kuluessa. Tärkeintä on tietää että systeemi on hyvin sateenkaareva, ja sisältää runsaasti janoisia miekkalesboja (huom. Hahmojen ei tarvitse olla janoisia tai lesboja eikä valita aseekseen miekkaa ollakseen sallittu hahmo tässä systeemissä). Ethän hae peliin, mikäli sateenkaariteemat eivät ole sinulle.\r\n\r\nTeemoiltaan hyvin kevyt, sillä pelisysteemi kannustaa ihmissuhteiden ja romanssin pelaamiseen, mitkä ovat pelin pääpainoina.\r\nMukaan tarvitsee vain muistiinpanovälineet ja hyvän mielen, noppia saa ottaa halutessaan mukaan mutta niitä ei välttämättä tarvitse käyttää. Alustavasti kaikki materiaali (nopat ja hahmolomakkeet) tulee pelinjohtajalta, ja on pääosin englanniksi vaikka peli itse pelataankin suomeksi. Suomenkielistä hahmolomaketta ei ole mahdollista saada.\r\n\r\nHuomio. Tämä peli on ottanut huomattavasti vaikutteita perinteisestä taikatyttögenrestä niin juonessaan kuin muissa elementeissä, mutta kaikki mahdolliset viittaukset kyseiseen mediaan on tahattomia, sillä pelinjohtaja ei itse juurikaan kuluta kyseistä mediaa.",
-    "cachedHosts": "<redacted>",
-    "cachedDimensions": {
-      "date": ["2024-09-08"],
-      "room": ["roolipelipoyta-1"],
-      "konsti": ["tabletopRPG"],
-      "signup": ["konsti"],
-      "tickets": ["tracon"],
-      "audience": ["r18", "beginner-friendly"],
-      "category": ["roolipeliohjelma"],
-      "language": ["fi"],
-      "accessibility": []
-    },
-    "cachedAnnotations": {
-      "konsti:rpgSystem": "Thirsty Sword Lesbians",
-      "ropecon:gameSlogan": "Ystävyys on taikaa",
-      "konsti:maxAttendance": 5,
-      "konsti:minAttendance": 3
-    },
-    "scheduleItems": [
-      {
-        "slug": "varjojen-sisarkunta",
-        "title": "Varjojen sisarkunta",
-        "startTime": "2024-09-08T08:30:00+00:00",
-        "endTime": "2024-09-08T13:00:00+00:00",
-        "lengthMinutes": 270,
-        "location": "Roolipelipöytä 1"
       }
     ]
   },
