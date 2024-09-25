@@ -34,7 +34,7 @@
     "check-start-times": "NODE_ENV=development tsx src/test/scripts/checkStartTimes.ts"
   },
   "dependencies": {
-    "@faker-js/faker": "8.4.1",
+    "@faker-js/faker": "9.0.2",
     "@sentry/node": "8.32.0",
     "@vercel/ncc": "0.38.2",
     "bcryptjs": "2.4.3",
