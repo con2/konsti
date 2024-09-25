@@ -175,6 +175,7 @@ export const submitGetGroup = (
 
     if (getGroupResponse.status === "error") {
       switch (getGroupResponse.errorId) {
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         case "unknown":
           return GetGroupErrorMessage.UNKNOWN;
         default:

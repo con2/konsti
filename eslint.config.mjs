@@ -4,7 +4,6 @@ import globals from "globals";
 import eslintPluginBan from "eslint-plugin-ban";
 import eslintPluginCommentsConfigs from "@eslint-community/eslint-plugin-eslint-comments/configs";
 import eslintPluginCompat from "eslint-plugin-compat";
-import eslintPluginDeprecation from "eslint-plugin-deprecation";
 import eslintPluginImport from "eslint-plugin-import";
 import eslintPluginJsxA11y from "eslint-plugin-jsx-a11y";
 import eslintPluginN from "eslint-plugin-n";
@@ -62,7 +61,6 @@ export default typescriptEslint.config(
       // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
       import: fixupPluginRules(eslintPluginImport),
       unicorn: eslintPluginUnicorn,
-      deprecation: fixupPluginRules(eslintPluginDeprecation),
     },
 
     settings: {
@@ -130,9 +128,6 @@ export default typescriptEslint.config(
         { name: "useSelector", message: "Please use useAppSelector()" },
       ],
 
-      // eslint-plugin-deprecation
-      "deprecation/deprecation": "error",
-
       // @typescript-eslint
       "@typescript-eslint/explicit-module-boundary-types": "error",
       "@typescript-eslint/explicit-function-return-type": [
@@ -177,6 +172,7 @@ export default typescriptEslint.config(
         "error",
         { allowArray: true, allowNumber: true },
       ],
+      "@typescript-eslint/no-deprecated": "error",
     },
   },
 

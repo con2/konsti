@@ -174,7 +174,7 @@ const getDirectSignupsForProgramItem = (
   programItemId: string,
   programType: ProgramType,
   userGroup: UserGroup | null,
-  signupQuestion?: SignupQuestion | undefined,
+  signupQuestion?: SignupQuestion,
 ): UserSignup[] => {
   const { hideParticipantListProgramTypes } = config.event();
 
