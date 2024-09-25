@@ -116,7 +116,6 @@ const devConfig: Configuration = {
   },
 
   plugins: [
-    // @ts-expect-error - FIXME FIXME FIXME FIXME
     new Dotenv({ path: "./config/dev.env" }),
     new ReactRefreshWebpackPlugin(),
   ],
@@ -134,7 +133,6 @@ const prodConfig: Configuration = {
   },
 
   plugins: [
-    // @ts-expect-error - FIXME FIXME FIXME FIXME
     new Dotenv({ path: getEnvVariableFile() }),
     new CompressionPlugin({
       filename: "[path][base].gz",
