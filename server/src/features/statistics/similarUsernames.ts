@@ -1,5 +1,6 @@
 import fs from "fs";
 import { distance, closest } from "fastest-levenshtein";
+import { sortBy } from "lodash-es";
 import { logger } from "server/utils/logger";
 import { User } from "shared/types/models/user";
 import { config } from "shared/config";
@@ -43,6 +44,22 @@ export const getSimilarUsernames = (year: number, event: string): void => {
 
   const similarUsernames = results.filter((result) => result.distance === 1);
 
-  logger.info(JSON.stringify(similarUsernames, null, 2));
-  logger.info(`Found ${similarUsernames.length} similar usernames`);
+  const filteredResults = [];
+  const pairSet = new Set();
+
+  for (const pair of similarUsernames) {
+    // Normalize the pair by sorting the usernames alphabetically
+    const normalizedPair = [pair.username, pair.closest].sort().join(",");
+
+    // If the pair is not in the set, add it to the set and include the item in the filtered results
+    if (!pairSet.has(normalizedPair)) {
+      pairSet.add(normalizedPair);
+      filteredResults.push(pair);
+    }
+  }
+
+  const sortedResults = sortBy(filteredResults, (result) => result.username);
+
+  logger.info(JSON.stringify(sortedResults, null, 2));
+  logger.info(`Found ${sortedResults.length} similar usernames`);
 };
