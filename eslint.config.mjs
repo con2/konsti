@@ -32,7 +32,6 @@ export default typescriptEslint.config(
         projectService: {
           allowDefaultProject: [
             "eslint.config.mjs",
-            "lint-staged.config.js",
             "yarn.config.cjs",
             "client/babel.config.js",
           ],
