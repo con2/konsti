@@ -29,7 +29,6 @@
     "docker:db": "yarn docker:db-run 2>/dev/null || yarn docker:db-start",
     "docker:db-run": "docker run -p 27017:27017 -d --name konsti-mongodb mongo:7.0.12-jammy",
     "docker:db-start": "docker start konsti-mongodb",
-    "eslint-save-config": "eslint --print-config eslint.config.mjs > eslint-config.json && prettier --write eslint-config.json",
     "eslint-inspect-config": "eslint --inspect-config",
     "eslint-timings": "TIMING=1 yarn eslint",
     "eslint:client": "yarn workspace konsti-client eslint",
@@ -87,8 +86,6 @@
     "eslint-plugin-unicorn": "55.0.0",
     "eslint-plugin-vitest": "0.5.4",
     "globals": "15.9.0",
-    "husky": "9.1.6",
-    "lint-staged": "15.2.10",
     "prettier": "3.3.3",
     "typescript-eslint": "8.7.0",
     "vitest": "2.1.1"
