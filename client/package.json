@@ -19,7 +19,6 @@
     "eslint": "yarn run -T eslint .",
     "start": "webpack serve",
     "stylelint": "stylelint \"./**/*.{tsx,ts}\"",
-    "stylelint-lint-staged": "stylelint",
     "test": "yarn run -T vitest run",
     "test:coverage": "yarn run -T vitest run --coverage --colors",
     "test:watch": "yarn run -T vitest watch",
