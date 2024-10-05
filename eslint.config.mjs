@@ -1,7 +1,6 @@
 // @ts-check
 import eslint from "@eslint/js";
 import globals from "globals";
-import eslintPluginBan from "eslint-plugin-ban";
 import eslintPluginCommentsConfigs from "@eslint-community/eslint-plugin-eslint-comments/configs";
 import eslintPluginCompat from "eslint-plugin-compat";
 import eslintPluginImport from "eslint-plugin-import";
@@ -14,8 +13,8 @@ import eslintPluginReactHooks from "eslint-plugin-react-hooks";
 import eslintPluginReactHooksAddon from "eslint-plugin-react-hooks-addons";
 import eslintPluginUnicorn from "eslint-plugin-unicorn";
 import eslintPluginVitest from "eslint-plugin-vitest";
+import eslintPluginOnlyError from "eslint-plugin-only-error";
 import typescriptEslint from "typescript-eslint";
-import { fixupPluginRules } from "@eslint/compat";
 
 export default typescriptEslint.config(
   eslint.configs.recommended,
@@ -24,6 +23,11 @@ export default typescriptEslint.config(
   eslintPluginCommentsConfigs.recommended,
   // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
   eslintPluginPromise.configs["flat/recommended"],
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
+  eslintPluginImport.flatConfigs.recommended,
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
+  eslintPluginImport.flatConfigs.typescript,
+  eslintPluginReactHooksAddon.configs.recommended,
 
   // ** Default **
   {
@@ -55,11 +59,9 @@ export default typescriptEslint.config(
   },
   {
     plugins: {
-      ban: fixupPluginRules(eslintPluginBan),
       vitest: eslintPluginVitest,
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-      import: fixupPluginRules(eslintPluginImport),
       unicorn: eslintPluginUnicorn,
+      onlyError: eslintPluginOnlyError,
     },
 
     settings: {
@@ -70,13 +72,8 @@ export default typescriptEslint.config(
       "import/internal-regex": "shared",
     },
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     rules: {
       ...eslintPluginVitest.configs.recommended.rules,
-      // TODO: Enable, doesn't work with flat config yet
-      // ...eslintPluginImport.configs.recommended.rules,
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-      ...eslintPluginImport.configs.typescript.rules,
 
       // eslint
       "no-param-reassign": "error",
@@ -92,6 +89,14 @@ export default typescriptEslint.config(
           selector: "MemberExpression[property.name='format']",
           message: "Import from timeFormatter.ts or use dayjs().toISOString",
         },
+        {
+          selector: "CallExpression[callee.name='useDispatch']",
+          message: "Please use useAppDispatch()",
+        },
+        {
+          selector: "CallExpression[callee.name='useSelector']",
+          message: "Please use useAppSelector()",
+        },
       ],
       "no-else-return": "error",
       curly: "error",
@@ -104,13 +109,18 @@ export default typescriptEslint.config(
         "error",
         {
           ignore: [
-            "padgAssignment", // Needs wildcard import for vi.spyon
-            "randomAssignment", // Needs wildcard import for vi.spyon
-            "signupTimes", // Needs wildcard import for vi.spyon
+            "padgAssignment", // Needs wildcard import for vi.spyOn()
+            "randomAssignment", // Needs wildcard import for vi.spyOn()
+            "signupTimes", // Needs wildcard import for vi.spyOn()
           ],
         },
       ], // Don't want to use namespace imports
+      "import/no-unresolved": ["error", { ignore: ["\\.gif$"] }],
+
       "import/namespace": "off", // Don't want to use namespace imports
+      "import/no-named-as-default": "off", // Doesn't work with styled-components
+      "import/no-named-as-default-member": "off", // Doesn't work with i18next.use()
+      "import/default": "off", // Doesn't work with prettier default import
 
       // eslint-plugin-vitest
       "vitest/no-disabled-tests": "error",
@@ -118,13 +128,6 @@ export default typescriptEslint.config(
       "vitest/expect-expect": [
         "error",
         { assertFunctionNames: ["expect", "assertSignupTime"] },
-      ],
-
-      // eslint-plugin-ban
-      "ban/ban": [
-        "error",
-        { name: "useDispatch", message: "Please use useAppDispatch()" },
-        { name: "useSelector", message: "Please use useAppSelector()" },
       ],
 
       // @typescript-eslint
@@ -181,10 +184,8 @@ export default typescriptEslint.config(
 
     extends: [
       // 'recommended' configuration is not recommended anymore, use 'all' and disable some rules
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       eslintPluginReact.configs.flat.all,
       // Disable some rules conflicting with new JSX transform from React 17
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       eslintPluginReact.configs.flat["jsx-runtime"],
       // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       eslintPluginJsxA11y.flatConfigs.recommended,
@@ -193,8 +194,7 @@ export default typescriptEslint.config(
 
     plugins: {
       react: eslintPluginReact,
-      "react-hooks": fixupPluginRules(eslintPluginReactHooks),
-      "react-hooks-addons": fixupPluginRules(eslintPluginReactHooksAddon),
+      "react-hooks": eslintPluginReactHooks,
     },
 
     settings: {
