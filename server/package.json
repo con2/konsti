@@ -47,7 +47,7 @@
     "express-static-gzip": "2.1.8",
     "fastest-levenshtein": "1.0.16",
     "generate-serial-number": "0.0.3",
-    "helmet": "7.1.0",
+    "helmet": "8.0.0",
     "jsonwebtoken": "9.0.2",
     "mongoose": "8.7.0",
     "morgan": "1.10.0",
