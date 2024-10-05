@@ -1,10 +1,12 @@
 import { ReactElement } from "react";
 import styled from "styled-components";
-import { ProgramItem } from "shared/types/models/programItem";
+import {
+  ProgramItem,
+  ProgramItemSignupStrategy,
+} from "shared/types/models/programItem";
 import { DirectSignupProgramItem } from "client/views/program-item/signup/components/DirectSignupProgramItem";
 import { LotterySignupProgramItem } from "client/views/program-item/signup/components/LotterySignupProgramItem";
 import { config } from "shared/config";
-import { ProgramItemSignupStrategy } from "shared/types/models/programItem";
 import { Signup } from "shared/types/models/user";
 import { SignupHelpText } from "client/views/program-item/signup/components/SignupHelpText";
 import { getTimeNow } from "client/utils/getTimeNow";

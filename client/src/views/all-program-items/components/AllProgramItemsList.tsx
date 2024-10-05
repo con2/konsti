@@ -4,7 +4,10 @@ import { sortBy, groupBy } from "lodash-es";
 import styled from "styled-components";
 import { ProgramItemEntry } from "client/views/program-item/ProgramItemEntry";
 import { useAppSelector } from "client/utils/hooks";
-import { ProgramItem } from "shared/types/models/programItem";
+import {
+  ProgramItem,
+  ProgramItemSignupStrategy,
+} from "shared/types/models/programItem";
 import { ProgramItemListTitle } from "client/views/all-program-items/components/ProgramItemListTitle";
 import { getLotterySignups } from "client/utils/getUpcomingProgramItems";
 import {
@@ -15,7 +18,6 @@ import {
 import { RaisedCard } from "client/components/RaisedCard";
 import { getIsInGroup } from "client/views/group/groupUtils";
 import { SignupQuestion } from "shared/types/models/settings";
-import { ProgramItemSignupStrategy } from "shared/types/models/programItem";
 
 interface Props {
   programItems: readonly ProgramItem[];

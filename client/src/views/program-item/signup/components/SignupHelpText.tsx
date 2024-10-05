@@ -2,7 +2,10 @@ import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import dayjs from "dayjs";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { ProgramItem } from "shared/types/models/programItem";
+import {
+  ProgramItem,
+  ProgramItemSignupStrategy,
+} from "shared/types/models/programItem";
 import { getTimeNow } from "client/utils/getTimeNow";
 import { isRevolvingDoorWorkshop } from "client/utils/isRevolvingDoorWorkshop";
 import {
@@ -15,7 +18,6 @@ import {
   getFormattedTime,
   getFormattedInterval,
 } from "client/views/program-item/programItemUtils";
-import { ProgramItemSignupStrategy } from "shared/types/models/programItem";
 
 interface Props {
   programItem: ProgramItem;
