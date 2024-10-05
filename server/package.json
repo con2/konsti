@@ -49,10 +49,10 @@
     "generate-serial-number": "0.0.3",
     "helmet": "7.1.0",
     "jsonwebtoken": "9.0.2",
-    "mongoose": "8.6.3",
+    "mongoose": "8.7.0",
     "morgan": "1.10.0",
     "tsx": "4.19.1",
-    "winston": "3.14.2",
+    "winston": "3.15.0",
     "winston-transport-sentry-node": "3.0.0"
   },
   "devDependencies": {

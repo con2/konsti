@@ -9504,11 +9504,11 @@ __metadata:
     helmet: "npm:7.1.0"
     jsonwebtoken: "npm:9.0.2"
     mongodb-memory-server: "npm:10.0.1"
-    mongoose: "npm:8.6.3"
+    mongoose: "npm:8.7.0"
     morgan: "npm:1.10.0"
     supertest: "npm:7.0.0"
     tsx: "npm:4.19.1"
-    winston: "npm:3.14.2"
+    winston: "npm:3.15.0"
     winston-transport-sentry-node: "npm:3.0.0"
   languageName: unknown
   linkType: soft
@@ -10653,41 +10653,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mongodb@npm:6.8.0":
-  version: 6.8.0
-  resolution: "mongodb@npm:6.8.0"
-  dependencies:
-    "@mongodb-js/saslprep": "npm:^1.1.5"
-    bson: "npm:^6.7.0"
-    mongodb-connection-string-url: "npm:^3.0.0"
-  peerDependencies:
-    "@aws-sdk/credential-providers": ^3.188.0
-    "@mongodb-js/zstd": ^1.1.0
-    gcp-metadata: ^5.2.0
-    kerberos: ^2.0.1
-    mongodb-client-encryption: ">=6.0.0 <7"
-    snappy: ^7.2.2
-    socks: ^2.7.1
-  peerDependenciesMeta:
-    "@aws-sdk/credential-providers":
-      optional: true
-    "@mongodb-js/zstd":
-      optional: true
-    gcp-metadata:
-      optional: true
-    kerberos:
-      optional: true
-    mongodb-client-encryption:
-      optional: true
-    snappy:
-      optional: true
-    socks:
-      optional: true
-  checksum: 10c0/5ea1b78d3d7915b7d8e1047f15247e7d831ff79c537c51656b34b5a223f917ab686b96cdf5eca7495a1f0125f7cc4b1355881645138c995a50c42b8b0665e518
-  languageName: node
-  linkType: hard
-
-"mongodb@npm:^6.7.0":
+"mongodb@npm:6.9.0, mongodb@npm:^6.7.0":
   version: 6.9.0
   resolution: "mongodb@npm:6.9.0"
   dependencies:
@@ -10721,18 +10687,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mongoose@npm:8.6.3":
-  version: 8.6.3
-  resolution: "mongoose@npm:8.6.3"
+"mongoose@npm:8.7.0":
+  version: 8.7.0
+  resolution: "mongoose@npm:8.7.0"
   dependencies:
     bson: "npm:^6.7.0"
     kareem: "npm:2.6.3"
-    mongodb: "npm:6.8.0"
+    mongodb: "npm:6.9.0"
     mpath: "npm:0.9.0"
     mquery: "npm:5.0.0"
     ms: "npm:2.1.3"
     sift: "npm:17.1.3"
-  checksum: 10c0/60d4333077ed0248916e546efc7f4c8d08d0ad4f69f7aea625c009afeb38089b0d260561ae5bbeaef33f2cff8ce009c0a8774fda3b00be2453bd97083b61e9a7
+  checksum: 10c0/99c38ec8e13d0d5110e772d477da0313f953a52249356fe89924ba5b4fca32dafae9e9011957bfc3d794daabc939701b2de1f937e7b00b07e38e3e2fe8c2f0dd
   languageName: node
   linkType: hard
 
@@ -14855,7 +14821,26 @@ __metadata:
   languageName: node
   linkType: hard
 
-"winston@npm:3.14.2, winston@npm:^3.3.3":
+"winston@npm:3.15.0":
+  version: 3.15.0
+  resolution: "winston@npm:3.15.0"
+  dependencies:
+    "@colors/colors": "npm:^1.6.0"
+    "@dabh/diagnostics": "npm:^2.0.2"
+    async: "npm:^3.2.3"
+    is-stream: "npm:^2.0.0"
+    logform: "npm:^2.6.0"
+    one-time: "npm:^1.0.0"
+    readable-stream: "npm:^3.4.0"
+    safe-stable-stringify: "npm:^2.3.1"
+    stack-trace: "npm:0.0.x"
+    triple-beam: "npm:^1.3.0"
+    winston-transport: "npm:^4.7.0"
+  checksum: 10c0/ed987e48fdfdd3f27974107f96e5a84688747d9a2be341e6838c5be4c76ebba1a11cc20320b8def4d907981b7268ebccaa6326b1ed75c50f549ee81c211e1b4d
+  languageName: node
+  linkType: hard
+
+"winston@npm:^3.3.3":
   version: 3.14.2
   resolution: "winston@npm:3.14.2"
   dependencies:
