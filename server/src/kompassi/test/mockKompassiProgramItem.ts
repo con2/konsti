@@ -9,8 +9,8 @@ import {
   KompassiAudience,
   KompassiAccessibility,
   KompassiTopic,
+  KompassiKonstiProgramType,
 } from "server/kompassi/kompassiProgramItem";
-import { KompassiKonstiProgramType } from "server/kompassi/kompassiProgramItem";
 
 export const mockKompassiProgramItem: KompassiProgramItem = {
   slug: testProgramItem.programItemId,

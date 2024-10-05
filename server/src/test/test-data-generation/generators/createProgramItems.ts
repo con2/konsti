@@ -12,10 +12,10 @@ import {
   KompassiAudience,
   KompassiAccessibility,
   KompassiTopic,
+  KompassiKonstiProgramType,
 } from "server/kompassi/kompassiProgramItem";
 import { Result } from "shared/utils/result";
 import { MongoDbError } from "shared/types/api/errors";
-import { KompassiKonstiProgramType } from "server/kompassi/kompassiProgramItem";
 import { ProgramType } from "shared/types/models/programItem";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 

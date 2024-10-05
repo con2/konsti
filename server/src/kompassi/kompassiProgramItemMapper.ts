@@ -15,11 +15,11 @@ import {
   KompassiAudience,
   KompassiAccessibility,
   KompassiTopic,
+  KompassiKonstiProgramType,
 } from "server/kompassi/kompassiProgramItem";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import { config } from "shared/config";
 import { getShortDescriptionFromDescription } from "server/utils/getShortDescriptionFromDescription";
-import { KompassiKonstiProgramType } from "server/kompassi/kompassiProgramItem";
 
 export const kompassiProgramItemMapper = (
   programItems: readonly KompassiProgramItem[],
