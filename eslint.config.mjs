@@ -1,7 +1,6 @@
 // @ts-check
 import eslint from "@eslint/js";
 import globals from "globals";
-import eslintPluginBan from "eslint-plugin-ban";
 import eslintPluginCommentsConfigs from "@eslint-community/eslint-plugin-eslint-comments/configs";
 import eslintPluginCompat from "eslint-plugin-compat";
 import eslintPluginImport from "eslint-plugin-import";
@@ -16,7 +15,6 @@ import eslintPluginUnicorn from "eslint-plugin-unicorn";
 import eslintPluginVitest from "eslint-plugin-vitest";
 import eslintPluginOnlyError from "eslint-plugin-only-error";
 import typescriptEslint from "typescript-eslint";
-import { fixupPluginRules } from "@eslint/compat";
 
 export default typescriptEslint.config(
   eslint.configs.recommended,
@@ -29,6 +27,7 @@ export default typescriptEslint.config(
   eslintPluginImport.flatConfigs.recommended,
   // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
   eslintPluginImport.flatConfigs.typescript,
+  eslintPluginReactHooksAddon.configs.recommended,
 
   // ** Default **
   {
@@ -60,7 +59,6 @@ export default typescriptEslint.config(
   },
   {
     plugins: {
-      ban: fixupPluginRules(eslintPluginBan),
       vitest: eslintPluginVitest,
       unicorn: eslintPluginUnicorn,
       onlyError: eslintPluginOnlyError,
@@ -90,6 +88,14 @@ export default typescriptEslint.config(
         {
           selector: "MemberExpression[property.name='format']",
           message: "Import from timeFormatter.ts or use dayjs().toISOString",
+        },
+        {
+          selector: "CallExpression[callee.name='useDispatch']",
+          message: "Please use useAppDispatch()",
+        },
+        {
+          selector: "CallExpression[callee.name='useSelector']",
+          message: "Please use useAppSelector()",
         },
       ],
       "no-else-return": "error",
@@ -122,13 +128,6 @@ export default typescriptEslint.config(
       "vitest/expect-expect": [
         "error",
         { assertFunctionNames: ["expect", "assertSignupTime"] },
-      ],
-
-      // eslint-plugin-ban
-      "ban/ban": [
-        "error",
-        { name: "useDispatch", message: "Please use useAppDispatch()" },
-        { name: "useSelector", message: "Please use useAppSelector()" },
       ],
 
       // @typescript-eslint
@@ -195,8 +194,7 @@ export default typescriptEslint.config(
 
     plugins: {
       react: eslintPluginReact,
-      "react-hooks": fixupPluginRules(eslintPluginReactHooks),
-      "react-hooks-addons": fixupPluginRules(eslintPluginReactHooksAddon),
+      "react-hooks": eslintPluginReactHooks,
     },
 
     settings: {
