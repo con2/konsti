@@ -1,0 +1,953 @@
+// Found 190 similar usernames
+[
+  {
+    "username": "aapopo",
+    "closest": "aappo",
+    "distance": 1
+  },
+  {
+    "username": "aarne",
+    "closest": "aarni",
+    "distance": 1
+  },
+  {
+    "username": "aaro",
+    "closest": "aarop",
+    "distance": 1
+  },
+  {
+    "username": "aini",
+    "closest": "aivi",
+    "distance": 1
+  },
+  {
+    "username": "aku",
+    "closest": "akul",
+    "distance": 1
+  },
+  {
+    "username": "altti",
+    "closest": "alttz",
+    "distance": 1
+  },
+  {
+    "username": "ande",
+    "closest": "andu",
+    "distance": 1
+  },
+  {
+    "username": "andu",
+    "closest": "annu",
+    "distance": 1
+  },
+  {
+    "username": "anjo",
+    "closest": "anno",
+    "distance": 1
+  },
+  {
+    "username": "anni",
+    "closest": "annu",
+    "distance": 1
+  },
+  {
+    "username": "anniina",
+    "closest": "anniinal",
+    "distance": 1
+  },
+  {
+    "username": "annis",
+    "closest": "anni",
+    "distance": 1
+  },
+  {
+    "username": "annu",
+    "closest": "anno",
+    "distance": 1
+  },
+  {
+    "username": "anpo",
+    "closest": "anno",
+    "distance": 1
+  },
+  {
+    "username": "antti",
+    "closest": "anttik",
+    "distance": 1
+  },
+  {
+    "username": "anttiki",
+    "closest": "anttik",
+    "distance": 1
+  },
+  {
+    "username": "anttil",
+    "closest": "anttik",
+    "distance": 1
+  },
+  {
+    "username": "anttiw",
+    "closest": "anttik",
+    "distance": 1
+  },
+  {
+    "username": "arttu",
+    "closest": "arttut",
+    "distance": 1
+  },
+  {
+    "username": "axel",
+    "closest": "axell",
+    "distance": 1
+  },
+  {
+    "username": "dare",
+    "closest": "dark",
+    "distance": 1
+  },
+  {
+    "username": "eetur",
+    "closest": "eetu",
+    "distance": 1
+  },
+  {
+    "username": "elena",
+    "closest": "elina",
+    "distance": 1
+  },
+  {
+    "username": "ellat",
+    "closest": "ellam",
+    "distance": 1
+  },
+  {
+    "username": "emery",
+    "closest": "emry",
+    "distance": 1
+  },
+  {
+    "username": "emma",
+    "closest": "emmi",
+    "distance": 1
+  },
+  {
+    "username": "emmak",
+    "closest": "emma",
+    "distance": 1
+  },
+  {
+    "username": "emmas",
+    "closest": "emma",
+    "distance": 1
+  },
+  {
+    "username": "emppu",
+    "closest": "emppuv",
+    "distance": 1
+  },
+  {
+    "username": "epietari",
+    "closest": "epietar1",
+    "distance": 1
+  },
+  {
+    "username": "era",
+    "closest": "eri",
+    "distance": 1
+  },
+  {
+    "username": "erin",
+    "closest": "eri",
+    "distance": 1
+  },
+  {
+    "username": "fred",
+    "closest": "freo",
+    "distance": 1
+  },
+  {
+    "username": "haju",
+    "closest": "havu",
+    "distance": 1
+  },
+  {
+    "username": "hanna k",
+    "closest": "hanna m",
+    "distance": 1
+  },
+  {
+    "username": "heini",
+    "closest": "heidi",
+    "distance": 1
+  },
+  {
+    "username": "heiski",
+    "closest": "heikki",
+    "distance": 1
+  },
+  {
+    "username": "hela",
+    "closest": "heta",
+    "distance": 1
+  },
+  {
+    "username": "heli",
+    "closest": "hela",
+    "distance": 1
+  },
+  {
+    "username": "henksuli",
+    "closest": "henkseli",
+    "distance": 1
+  },
+  {
+    "username": "hennaw",
+    "closest": "henna",
+    "distance": 1
+  },
+  {
+    "username": "henrig",
+    "closest": "henri",
+    "distance": 1
+  },
+  {
+    "username": "hiihu",
+    "closest": "hihhu",
+    "distance": 1
+  },
+  {
+    "username": "iikka",
+    "closest": "iikko",
+    "distance": 1
+  },
+  {
+    "username": "jan1",
+    "closest": "jani",
+    "distance": 1
+  },
+  {
+    "username": "jani",
+    "closest": "janic",
+    "distance": 1
+  },
+  {
+    "username": "janij",
+    "closest": "jani",
+    "distance": 1
+  },
+  {
+    "username": "janne",
+    "closest": "jannel",
+    "distance": 1
+  },
+  {
+    "username": "jannevee",
+    "closest": "janne vee",
+    "distance": 1
+  },
+  {
+    "username": "japi",
+    "closest": "jani",
+    "distance": 1
+  },
+  {
+    "username": "jassu",
+    "closest": "jasu",
+    "distance": 1
+  },
+  {
+    "username": "jasum",
+    "closest": "jasu",
+    "distance": 1
+  },
+  {
+    "username": "jaws",
+    "closest": "jaw",
+    "distance": 1
+  },
+  {
+    "username": "jellu",
+    "closest": "jelle",
+    "distance": 1
+  },
+  {
+    "username": "jenna",
+    "closest": "jenni",
+    "distance": 1
+  },
+  {
+    "username": "jennid",
+    "closest": "jenni",
+    "distance": 1
+  },
+  {
+    "username": "jesseh",
+    "closest": "jesse",
+    "distance": 1
+  },
+  {
+    "username": "jkv",
+    "closest": "jkj",
+    "distance": 1
+  },
+  {
+    "username": "joeli",
+    "closest": "joel",
+    "distance": 1
+  },
+  {
+    "username": "joelku",
+    "closest": "joelkum",
+    "distance": 1
+  },
+  {
+    "username": "joha",
+    "closest": "jova",
+    "distance": 1
+  },
+  {
+    "username": "jonttu",
+    "closest": "jontte",
+    "distance": 1
+  },
+  {
+    "username": "jooa",
+    "closest": "joha",
+    "distance": 1
+  },
+  {
+    "username": "joonasm",
+    "closest": "joonas",
+    "distance": 1
+  },
+  {
+    "username": "juho",
+    "closest": "juhok",
+    "distance": 1
+  },
+  {
+    "username": "juho2",
+    "closest": "juho",
+    "distance": 1
+  },
+  {
+    "username": "juhoh",
+    "closest": "juho",
+    "distance": 1
+  },
+  {
+    "username": "juka",
+    "closest": "jukka",
+    "distance": 1
+  },
+  {
+    "username": "jukka",
+    "closest": "jukkak",
+    "distance": 1
+  },
+  {
+    "username": "jukkae",
+    "closest": "jukka",
+    "distance": 1
+  },
+  {
+    "username": "juku",
+    "closest": "juki",
+    "distance": 1
+  },
+  {
+    "username": "juliana",
+    "closest": "julianna",
+    "distance": 1
+  },
+  {
+    "username": "julias",
+    "closest": "julia",
+    "distance": 1
+  },
+  {
+    "username": "jullr",
+    "closest": "julli",
+    "distance": 1
+  },
+  {
+    "username": "jusa",
+    "closest": "juka",
+    "distance": 1
+  },
+  {
+    "username": "jussi",
+    "closest": "jussis",
+    "distance": 1
+  },
+  {
+    "username": "jussia",
+    "closest": "jussis",
+    "distance": 1
+  },
+  {
+    "username": "juuli",
+    "closest": "julli",
+    "distance": 1
+  },
+  {
+    "username": "kaisa",
+    "closest": "kaisla",
+    "distance": 1
+  },
+  {
+    "username": "kami",
+    "closest": "kai",
+    "distance": 1
+  },
+  {
+    "username": "kari",
+    "closest": "kai",
+    "distance": 1
+  },
+  {
+    "username": "katja",
+    "closest": "kata",
+    "distance": 1
+  },
+  {
+    "username": "katti",
+    "closest": "katri",
+    "distance": 1
+  },
+  {
+    "username": "kimi",
+    "closest": "kiki",
+    "distance": 1
+  },
+  {
+    "username": "kristiina",
+    "closest": "kristiina!",
+    "distance": 1
+  },
+  {
+    "username": "kuikka",
+    "closest": "kukka",
+    "distance": 1
+  },
+  {
+    "username": "kuutti1",
+    "closest": "kuutti",
+    "distance": 1
+  },
+  {
+    "username": "lasse",
+    "closest": "lassev",
+    "distance": 1
+  },
+  {
+    "username": "laura",
+    "closest": "laurai",
+    "distance": 1
+  },
+  {
+    "username": "lauri",
+    "closest": "laura",
+    "distance": 1
+  },
+  {
+    "username": "laurim",
+    "closest": "lauri",
+    "distance": 1
+  },
+  {
+    "username": "lauru",
+    "closest": "laura",
+    "distance": 1
+  },
+  {
+    "username": "leaf_",
+    "closest": "leafy",
+    "distance": 1
+  },
+  {
+    "username": "leo",
+    "closest": "leo1",
+    "distance": 1
+  },
+  {
+    "username": "leo10",
+    "closest": "leo1",
+    "distance": 1
+  },
+  {
+    "username": "liisak",
+    "closest": "liisa",
+    "distance": 1
+  },
+  {
+    "username": "loviisa",
+    "closest": "loviisap",
+    "distance": 1
+  },
+  {
+    "username": "lumi",
+    "closest": "lumi2",
+    "distance": 1
+  },
+  {
+    "username": "lumpo",
+    "closest": "lupo",
+    "distance": 1
+  },
+  {
+    "username": "lupo",
+    "closest": "lupu",
+    "distance": 1
+  },
+  {
+    "username": "luu",
+    "closest": "lupu",
+    "distance": 1
+  },
+  {
+    "username": "lyyra",
+    "closest": "lyra",
+    "distance": 1
+  },
+  {
+    "username": "mana",
+    "closest": "masa",
+    "distance": 1
+  },
+  {
+    "username": "maran",
+    "closest": "marian",
+    "distance": 1
+  },
+  {
+    "username": "marde",
+    "closest": "marie",
+    "distance": 1
+  },
+  {
+    "username": "marek",
+    "closest": "mare",
+    "distance": 1
+  },
+  {
+    "username": "margo",
+    "closest": "marjo",
+    "distance": 1
+  },
+  {
+    "username": "mari",
+    "closest": "marie",
+    "distance": 1
+  },
+  {
+    "username": "maria",
+    "closest": "marie",
+    "distance": 1
+  },
+  {
+    "username": "marie",
+    "closest": "mare",
+    "distance": 1
+  },
+  {
+    "username": "marita",
+    "closest": "maria",
+    "distance": 1
+  },
+  {
+    "username": "marjo",
+    "closest": "marko",
+    "distance": 1
+  },
+  {
+    "username": "markus h",
+    "closest": "markush",
+    "distance": 1
+  },
+  {
+    "username": "mauri",
+    "closest": "mari",
+    "distance": 1
+  },
+  {
+    "username": "meira",
+    "closest": "meirah",
+    "distance": 1
+  },
+  {
+    "username": "mikaelk",
+    "closest": "mikaelw",
+    "distance": 1
+  },
+  {
+    "username": "mikaelw",
+    "closest": "mikael",
+    "distance": 1
+  },
+  {
+    "username": "mikko",
+    "closest": "mirko",
+    "distance": 1
+  },
+  {
+    "username": "mikkog",
+    "closest": "mikko",
+    "distance": 1
+  },
+  {
+    "username": "mikkok",
+    "closest": "mikkog",
+    "distance": 1
+  },
+  {
+    "username": "miksu",
+    "closest": "miku",
+    "distance": 1
+  },
+  {
+    "username": "mills",
+    "closest": "milla",
+    "distance": 1
+  },
+  {
+    "username": "minna",
+    "closest": "minea",
+    "distance": 1
+  },
+  {
+    "username": "minni",
+    "closest": "minna",
+    "distance": 1
+  },
+  {
+    "username": "mira",
+    "closest": "mirk",
+    "distance": 1
+  },
+  {
+    "username": "mirko",
+    "closest": "mirk",
+    "distance": 1
+  },
+  {
+    "username": "moo",
+    "closest": "momo",
+    "distance": 1
+  },
+  {
+    "username": "moyzhes",
+    "closest": "moyzhesl",
+    "distance": 1
+  },
+  {
+    "username": "mtm",
+    "closest": "mto",
+    "distance": 1
+  },
+  {
+    "username": "mto",
+    "closest": "mtoh",
+    "distance": 1
+  },
+  {
+    "username": "muusi",
+    "closest": "muuli",
+    "distance": 1
+  },
+  {
+    "username": "napu",
+    "closest": "nappu",
+    "distance": 1
+  },
+  {
+    "username": "nico",
+    "closest": "niko",
+    "distance": 1
+  },
+  {
+    "username": "nightingale",
+    "closest": "nightingaler",
+    "distance": 1
+  },
+  {
+    "username": "niki",
+    "closest": "nik",
+    "distance": 1
+  },
+  {
+    "username": "nix",
+    "closest": "nik",
+    "distance": 1
+  },
+  {
+    "username": "norppu",
+    "closest": "norppa",
+    "distance": 1
+  },
+  {
+    "username": "oliviak",
+    "closest": "olivian",
+    "distance": 1
+  },
+  {
+    "username": "oni",
+    "closest": "onni",
+    "distance": 1
+  },
+  {
+    "username": "onni",
+    "closest": "onnip",
+    "distance": 1
+  },
+  {
+    "username": "onnik",
+    "closest": "onni",
+    "distance": 1
+  },
+  {
+    "username": "outiz",
+    "closest": "outi",
+    "distance": 1
+  },
+  {
+    "username": "paulin",
+    "closest": "pauli",
+    "distance": 1
+  },
+  {
+    "username": "paulr",
+    "closest": "pauli",
+    "distance": 1
+  },
+  {
+    "username": "pessi",
+    "closest": "pessiä",
+    "distance": 1
+  },
+  {
+    "username": "petri",
+    "closest": "petr",
+    "distance": 1
+  },
+  {
+    "username": "piksa",
+    "closest": "piks_",
+    "distance": 1
+  },
+  {
+    "username": "pirtti",
+    "closest": "pitti",
+    "distance": 1
+  },
+  {
+    "username": "raki",
+    "closest": "rami",
+    "distance": 1
+  },
+  {
+    "username": "ramih",
+    "closest": "rami",
+    "distance": 1
+  },
+  {
+    "username": "remi",
+    "closest": "rei",
+    "distance": 1
+  },
+  {
+    "username": "rikus",
+    "closest": "riku",
+    "distance": 1
+  },
+  {
+    "username": "rix",
+    "closest": "rio",
+    "distance": 1
+  },
+  {
+    "username": "rosi",
+    "closest": "rosa",
+    "distance": 1
+  },
+  {
+    "username": "rosma",
+    "closest": "rosa",
+    "distance": 1
+  },
+  {
+    "username": "runok",
+    "closest": "runoi",
+    "distance": 1
+  },
+  {
+    "username": "saana",
+    "closest": "sanna",
+    "distance": 1
+  },
+  {
+    "username": "sadu",
+    "closest": "satu",
+    "distance": 1
+  },
+  {
+    "username": "sami",
+    "closest": "samp",
+    "distance": 1
+  },
+  {
+    "username": "sampoj",
+    "closest": "sampon",
+    "distance": 1
+  },
+  {
+    "username": "santeri",
+    "closest": "santerie",
+    "distance": 1
+  },
+  {
+    "username": "satul",
+    "closest": "satu",
+    "distance": 1
+  },
+  {
+    "username": "soma",
+    "closest": "sora",
+    "distance": 1
+  },
+  {
+    "username": "sora",
+    "closest": "soraa",
+    "distance": 1
+  },
+  {
+    "username": "sora2",
+    "closest": "sora",
+    "distance": 1
+  },
+  {
+    "username": "taika",
+    "closest": "taija",
+    "distance": 1
+  },
+  {
+    "username": "tarja",
+    "closest": "taija",
+    "distance": 1
+  },
+  {
+    "username": "tele",
+    "closest": "tepe",
+    "distance": 1
+  },
+  {
+    "username": "tepi",
+    "closest": "tepe",
+    "distance": 1
+  },
+  {
+    "username": "teppi",
+    "closest": "tepi",
+    "distance": 1
+  },
+  {
+    "username": "terom",
+    "closest": "terok",
+    "distance": 1
+  },
+  {
+    "username": "tiina",
+    "closest": "tiinak",
+    "distance": 1
+  },
+  {
+    "username": "tiinan",
+    "closest": "tiina",
+    "distance": 1
+  },
+  {
+    "username": "tiinat",
+    "closest": "tiina",
+    "distance": 1
+  },
+  {
+    "username": "timo",
+    "closest": "tio",
+    "distance": 1
+  },
+  {
+    "username": "tomi",
+    "closest": "tommi",
+    "distance": 1
+  },
+  {
+    "username": "tommi",
+    "closest": "tommih",
+    "distance": 1
+  },
+  {
+    "username": "tuomas",
+    "closest": "tuomask",
+    "distance": 1
+  },
+  {
+    "username": "tuomasm",
+    "closest": "tuomas",
+    "distance": 1
+  },
+  {
+    "username": "tuomok",
+    "closest": "tuomon",
+    "distance": 1
+  },
+  {
+    "username": "turja",
+    "closest": "tuija",
+    "distance": 1
+  },
+  {
+    "username": "ukkoq",
+    "closest": "ukko",
+    "distance": 1
+  },
+  {
+    "username": "v-m",
+    "closest": "v-k",
+    "distance": 1
+  },
+  {
+    "username": "veera",
+    "closest": "vera",
+    "distance": 1
+  },
+  {
+    "username": "veeti",
+    "closest": "veetu",
+    "distance": 1
+  },
+  {
+    "username": "venla",
+    "closest": "venlak",
+    "distance": 1
+  },
+  {
+    "username": "viljavi",
+    "closest": "viljami",
+    "distance": 1
+  },
+  {
+    "username": "villeh",
+    "closest": "ville",
+    "distance": 1
+  },
+  {
+    "username": "vilma",
+    "closest": "vilmae",
+    "distance": 1
+  },
+  {
+    "username": "ware",
+    "closest": "ward",
+    "distance": 1
+  }
+]
