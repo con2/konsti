@@ -2,50 +2,39 @@ import {
   AssignmentAlgorithm,
   EventName,
   EventConfig,
-  EntryConditionText,
 } from "shared/config/eventConfigTypes";
 import { ProgramType } from "shared/types/models/programItem";
 
-// Event days
-const friday = "2024-09-06";
-// const saturday = "2024-09-07";
-// const sunday = "2024-09-07";
-
 export const eventConfig: EventConfig = {
   // Event info
-  eventName: EventName.TRACON,
+  eventName: EventName.HITPOINT,
   eventYear: "2024",
 
   // Event settings
   requireRegistrationCode: true,
-  assignmentAlgorithm: AssignmentAlgorithm.RANDOM,
-  popularityAlgorithm: AssignmentAlgorithm.RANDOM,
+  assignmentAlgorithm: AssignmentAlgorithm.RANDOM_PADG,
+  popularityAlgorithm: AssignmentAlgorithm.PADG,
   enableGroups: true,
   signupOpen: true,
   resultsVisible: true,
-  logInvalidStartTimes: false,
-  enableRemoveOverlapSignups: false,
+  logInvalidStartTimes: true,
+  enableRemoveOverlapSignups: true,
 
-  activeProgramTypes: [
-    ProgramType.TABLETOP_RPG,
-    ProgramType.LARP,
-    ProgramType.FLEAMARKET,
-  ],
+  activeProgramTypes: [ProgramType.TABLETOP_RPG, ProgramType.LARP],
 
-  twoPhaseSignupProgramTypes: [ProgramType.FLEAMARKET],
+  twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG, ProgramType.LARP],
 
-  // Event start at 15:00 GMT+3 but lottery signups start at 08:00 GMT+3
-  eventStartTime: `${friday}T05:00:00Z`, // Fri 08:00 GMT+3
+  eventStartTime: `2024-11-02T07:00:00Z`, // Sat 10:00 GMT+3
 
   directSignupWindows: {},
 
-  rollingDirectSignupProgramTypes: [ProgramType.TABLETOP_RPG, ProgramType.LARP],
+  rollingDirectSignupProgramTypes: [],
   enableRollingDirectSignupPreviousDay: false,
 
-  hideParticipantListProgramTypes: [ProgramType.FLEAMARKET],
+  hideParticipantListProgramTypes: [],
 
   // Direct signup open till program item endTime instead of startTime
-  directSignupOpenToEndProgramTypes: [ProgramType.FLEAMARKET],
+  directSignupOpenToEndProgramTypes: [],
 
   // These program items have their signup always open even if signup mode is set to lottery
   directSignupAlwaysOpenIds: [],
@@ -67,31 +56,14 @@ export const eventConfig: EventConfig = {
 
   isEnglishProgramItems: [],
 
-  entryConditions: [
-    {
-      conditionText: EntryConditionText.K16,
-      programItemIds: [
-        "alien-evac", // ALIEN: EVAC
-        "alien-fallout", // ALIEN: Fallout
-        "kriisitunturi", // Kriisitunturi
-        "murheen-valama-vankila", // Murheen valama vankila
-        "seestunturin-salaisuus", // Seestunturin salaisuus
-        "ristipisto", // Ristipisto
-        "circumstances-zombie-apocalypse-co-op", // Circumstances – Zombie Apocalypse (co-op)
-        "circumstances-zombie-apocalypse-pahispelautus", // Circumstances – Zombie Apocalypse (pahispelautus)
-        "mita-kellarista-loytyy", // Mitä kellarista löytyy?
-        "kusinen-homma", // Kusinen Homma
-      ],
-    },
-    {
-      conditionText: EntryConditionText.K18,
-      programItemIds: ["varjojen-sisarkunta"], // Varjojen sisarkunta
-    },
-  ],
+  // Require checkbox to be checked before signing up
+  entryConditions: [],
 
   // Two phase signup settings
   preSignupStart: 60 * 4, // minutes
   directSignupPhaseStart: 60 * 2, // minutes
   phaseGap: 15, // minutes
-  fixedLotterySignupTime: `${friday}T05:00:00Z`, // Fri 08:00 GMT+3
+
+  // Use fixed time to open all lottery signups for the whole event
+  fixedLotterySignupTime: null,
 };
