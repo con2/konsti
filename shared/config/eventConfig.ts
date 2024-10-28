@@ -24,7 +24,7 @@ export const eventConfig: EventConfig = {
 
   twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG, ProgramType.LARP],
 
-  eventStartTime: `2024-11-02T07:00:00Z`, // Sat 10:00 GMT+3
+  eventStartTime: `2024-11-02T08:00:00Z`, // Sat 10:00 GMT+2
 
   directSignupWindows: {},
 
@@ -46,7 +46,10 @@ export const eventConfig: EventConfig = {
   addRevolvingDoorIds: [],
 
   // These program items are imported to Konsti but don't have Konsti signup
-  noKonstiSignupIds: [],
+  noKonstiSignupIds: [
+    "pelia-pyynnosta-lauantai", // Peliä pyynnöstä lauantai
+    "pelia-pyynnosta-sunnuntai", // Peliä pyynnöstä sunnuntai
+  ],
 
   signupQuestions: [],
 

@@ -23,12 +23,7 @@ export const clientConfig: ClientConfig = {
   enableOrganizerFeedback: true,
   enableTagDropdown: true,
   showAnnouncement: false,
-  programTypeSelectOptions: [
-    "all",
-    ProgramType.TABLETOP_RPG,
-    ProgramType.LARP,
-    ProgramType.FLEAMARKET,
-  ],
+  programTypeSelectOptions: ["all", ProgramType.TABLETOP_RPG, ProgramType.LARP],
   activeLanguages: [Language.FINNISH, Language.ENGLISH],
 
   // Dev
