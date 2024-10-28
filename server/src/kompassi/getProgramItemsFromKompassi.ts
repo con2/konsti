@@ -20,6 +20,7 @@ import { logger } from "server/utils/logger";
 import { config } from "shared/config";
 import { EventName } from "shared/config/eventConfigTypes";
 import { getProgramItemsFromFullProgram } from "server/kompassi/getProgramItemsFromFullProgram";
+import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 
 export const getProgramItemsFromKompassi = async (
   eventName: EventName,
@@ -130,6 +131,21 @@ const KompassiResponseFormSchema = z.object({
   }),
 });
 
+const eventNameToKompassiEventName = (eventName: EventName): string => {
+  switch (eventName) {
+    case EventName.ROPECON:
+      return "ropecon";
+    case EventName.HITPOINT:
+      return "hitpoint";
+    case EventName.SOLMUKOHTA:
+      return "solmukohta";
+    case EventName.TRACON:
+      return "tracon";
+    default:
+      return exhaustiveSwitchGuard(eventName);
+  }
+};
+
 export const getProgramFromServer = async (): Promise<
   Result<unknown, KompassiError>
 > => {
@@ -164,7 +180,7 @@ export const getProgramFromServer = async (): Promise<
       }
     `,
     variables: {
-      event: `${eventName.toLocaleLowerCase()}${eventYear}`,
+      event: `${eventNameToKompassiEventName(eventName)}${eventYear}`,
       programTypes: Object.values(KompassiKonstiProgramType),
     },
   };

@@ -99,7 +99,7 @@ export const KompassiProgramItemSchema = z.object({
       );
       return valid;
     }),
-    konsti: z.array(z.nativeEnum(KompassiKonstiProgramType)).catch([]),
+    konsti: z.array(z.nativeEnum(KompassiKonstiProgramType)),
     audience: z.array(z.nativeEnum(KompassiAudience)).catch((ctx) => {
       if (!Array.isArray(ctx.input)) {
         return [];
