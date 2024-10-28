@@ -1,0 +1,1525 @@
+[
+  {
+    "slug": "alavilla-mailla",
+    "title": "Alavilla mailla",
+    "description": "Harva on nähnyt taivasta tai muuta kuolemanjälkeistä palkintoa. Helvetti, sen sijaan? Sen nähdäkseen tarvitse vain ylittää Suden autiomaa. Tai näin eräs vanha praedor sinulle kertoi. Nyt on aika astua sen rajan ylitse ja nähdä omin silmin, lunastavatko Borvarian rauniot kaikki niistä annetut lupaukset. Mainetta ja kunniaa, vai nopea tie kuolemaan? Se on sinun käsissäsi... onhan?\r\n\r\nKäytettävissä on aikaisempien praedorien muistiinpanoja ja karttoja. Kenties sinunkin raapustuksesi vielä johdattavat jonkun pelastukseen... tai varmaan kuolemaan.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-11-03"],
+      "room": ["ropeluokka-1-poyta-a", "ropeluokka-1"],
+      "type": ["gaming"],
+      "topic": ["penandpaper"],
+      "konsti": ["tabletopRPG"],
+      "signup": ["konsti"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Praedor V2",
+      "ropecon:gameSlogan": "Päiväreissu Borvariaan, tuo omat juomasi",
+      "konsti:maxAttendance": 6,
+      "konsti:minAttendance": 2
+    },
+    "scheduleItems": [
+      {
+        "slug": "alavilla-mailla",
+        "title": "Alavilla mailla",
+        "startTime": "2024-11-03T11:00:00+02:00",
+        "endTime": "2024-11-03T15:00:00+02:00",
+        "lengthMinutes": 240,
+        "location": "Ropeluokka 1 Pöytä A"
+      }
+    ]
+  },
+  {
+    "slug": "alice-is-missing",
+    "title": "Alice is Missing",
+    "description": "Alice is Missing is a silent role-playing game about the disappearance of Alice Briarwood, a high school junior in the small town of Silent Falls.\r\n\r\n​After a spoken preparatory phase, the game is played without verbal communication. Players inhabit their character for the entirety of the 90-minute play session, and instead of speaking, send text messages back and forth to the other characters in a discord chat, as well as individually, as though they aren’t in the same place together.\r\n\r\n​Hauntingly beautiful, deeply personal, and highly innovative, Alice is Missing puts a strong focus on the emotional engagement between players, immersing them in a tense, dramatic mystery that unfolds organically through the text messages they send to one another.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-11-02"],
+      "room": ["ropeluokka-2-poyta-a", "ropeluokka-2"],
+      "type": ["gaming"],
+      "topic": ["penandpaper"],
+      "konsti": ["tabletopRPG"],
+      "signup": ["konsti"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Alice is Missing",
+      "ropecon:gameSlogan": "A silent and emotionally engaging role-playing game about the disappearance of a high school junior.",
+      "konsti:maxAttendance": 4,
+      "konsti:minAttendance": 2
+    },
+    "scheduleItems": [
+      {
+        "slug": "alice-is-missing",
+        "title": "Alice is Missing",
+        "startTime": "2024-11-02T19:00:00+02:00",
+        "endTime": "2024-11-02T23:00:00+02:00",
+        "lengthMinutes": 240,
+        "location": "Ropeluokka 2 Pöytä A"
+      }
+    ]
+  },
+  {
+    "slug": "alien-uscss-traconis",
+    "title": "Alien - USCSS Traconis",
+    "description": "Traconista ja Comicconista tuttu G.O.D. -skenaario Alienin maailmasta.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-11-03"],
+      "room": ["ropeluokka-2-poyta-b", "ropeluokka-2"],
+      "type": ["gaming"],
+      "topic": ["penandpaper"],
+      "konsti": ["tabletopRPG"],
+      "signup": ["konsti"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Alien Light",
+      "ropecon:gameSlogan": "Alien - Se varmaan jää henkiin.",
+      "konsti:maxAttendance": 5,
+      "konsti:minAttendance": 3
+    },
+    "scheduleItems": [
+      {
+        "slug": "alien-uscss-traconis",
+        "title": "Alien - USCSS Traconis",
+        "startTime": "2024-11-03T14:00:00+02:00",
+        "endTime": "2024-11-03T16:30:00+02:00",
+        "lengthMinutes": 150,
+        "location": "Ropeluokka 2 Pöytä B"
+      }
+    ]
+  },
+  {
+    "slug": "alien-uscss-traconis-2",
+    "title": "Alien - USCSS Traconis",
+    "description": "Traconista ja Comicconista tuttu G.O.D. -skenaario Alienin maailmasta.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-11-02"],
+      "room": ["ropeluokka-1-poyta-c", "ropeluokka-1"],
+      "type": ["gaming"],
+      "topic": ["penandpaper"],
+      "konsti": ["tabletopRPG"],
+      "signup": ["konsti"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Alien Light",
+      "ropecon:gameSlogan": "Alien - Se varmaan jää henkiin.",
+      "konsti:maxAttendance": 5,
+      "konsti:minAttendance": 3
+    },
+    "scheduleItems": [
+      {
+        "slug": "alien-uscss-traconis-2",
+        "title": "Alien - USCSS Traconis",
+        "startTime": "2024-11-02T20:00:00+02:00",
+        "endTime": "2024-11-02T23:00:00+02:00",
+        "lengthMinutes": 180,
+        "location": "Ropeluokka 1 Pöytä C"
+      }
+    ]
+  },
+  {
+    "slug": "auld-sanguine",
+    "title": "Auld Sanguine - A New Year's Eve Vampire the Masquerade Story",
+    "description": "New Year’s Eve. You’ve been invited to a party to talk to Isabella, a friend of a friend and young (and minorly famous) online streamer who talks about paganism, kitchen magic, and other self-described “witchy shit.” She’s being harassed by someone who knows too much about vampires. Can you deal with this last piece of business before the ball drops at midnight?\r\n\r\nThis VtM chronicle is best suited for a group of 3-6 players, and it is meant to introduce you to the World of Darkness, \"gothic-punk\" version of the modern world where players assume the role of vampires and deal with their night-to-night struggles against their own bestial natures, vampire hunters, and each other.\r\n\r\nVampire: The Masquerade addresses the darkness in the real world through horror stories. This Story includes in-world\r\nreferences and expressions of the following: violence, stalking, torture, and death.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-11-03"],
+      "room": ["ropeluokka-1-poyta-b", "ropeluokka-1"],
+      "type": ["gaming"],
+      "topic": ["penandpaper"],
+      "konsti": ["tabletopRPG"],
+      "signup": ["konsti"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Vampire the Masquerade, 5th Edition",
+      "ropecon:gameSlogan": "Isabella, a friend of a friend, is being harassed by someone who knows too much about vampires. Can you deal with it before it's too late?",
+      "konsti:maxAttendance": 6,
+      "konsti:minAttendance": 3
+    },
+    "scheduleItems": [
+      {
+        "slug": "auld-sanguine",
+        "title": "Auld Sanguine - A New Year's Eve Vampire the Masquerade Story",
+        "startTime": "2024-11-03T11:00:00+02:00",
+        "endTime": "2024-11-03T15:00:00+02:00",
+        "lengthMinutes": 240,
+        "location": "Ropeluokka 1 Pöytä B"
+      }
+    ]
+  },
+  {
+    "slug": "berserkin-pesa-vallat-ja-vaet",
+    "title": "Berserkin Pesä: Vallat ja väet",
+    "description": "Veteraaniseikkailijat ovat perustaneet uuden kuningaskunnan vanhan raunioille. Yksi heistä on noussut valtaistuimelle ja ottanut kuningattarekseen Rautavaaran paronin tyttären Christinen. Sisällissota on ohi, mutta yhä on voimia, jotka eivät pidä uusista vallanpitäjistä.\r\n\r\nUransa alussa olevat seikkailijat saavat vihiä juonista, joita tyytymättömät tahot ovat punoneet uusien vallanpitäjien pään menoksi. Heillä on edessään valinta: saattaa juonet uuden kuninkaan ja hänen neuvostonsa tietoon vai osallistua vaikutusvaltansa vähenemiseen tyytymättömien ruhtinaiden salaliittoon?\r\n\r\nPeli toteutetaan pyöröovi-tyylisenä, jolloin peliin voi liittyä ja siitä voi poistua vapaasti. Pelin ilmapiiri pyritään pitämään rentona, jotta kaikilla olisi hyvä fiilis.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-11-02"],
+      "room": ["ropeluokka-2-poyta-c", "ropeluokka-2"],
+      "type": ["gaming"],
+      "topic": ["penandpaper"],
+      "konsti": ["tabletopRPG"],
+      "signup": ["konsti"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Dungeons&Dragons 5E",
+      "ropecon:gameSlogan": "Kevyttä D&D-tarinankerrontaa, juonia ja salaliittoja, sankareita ja pahiksia.",
+      "konsti:maxAttendance": 8,
+      "konsti:minAttendance": 2
+    },
+    "scheduleItems": [
+      {
+        "slug": "berserkin-pesa-vallat-ja-vaet",
+        "title": "Berserkin Pesä: Vallat ja väet",
+        "startTime": "2024-11-02T16:00:00+02:00",
+        "endTime": "2024-11-02T20:00:00+02:00",
+        "lengthMinutes": 240,
+        "location": "Ropeluokka 2 Pöytä C"
+      }
+    ]
+  },
+  {
+    "slug": "city-of-the-scorpion-god",
+    "title": "City of the Scorpion God",
+    "description": "“Deep in a forsaken desert, weeks away from this life-giving river, lies a ruined city of yore. It was destroyed by our people in the ancient times, for the city was dedicated to a foul god of scorpions. Yet even after all these centuries, the scorpion cult persists. They hide in the deserts and plot doom to all civilization. Now they have struck our beautiful city and stolen my daughter. The cult will take her to their ruined city and sacrifice her to their false god under the next full moon!”\r\n\r\n“Go forth, bring back my daughter and I will pay you her weight in silver, this I vow in name of the Great Serpent.”\r\n\r\nCity of the Scorpion God is a Sword & Sorcery adventure, where a ragtag group of mercenaries explore a ruined city surrounded by a forsaken desert. They must face fanatical cultists, overgrown scorpions and eldritch threats to save the taken child. The scenario is a miniature sandbox, where the players explore an entire ruined city on their own terms. \r\n\r\nKeywords: Sword & Sorcery, exploration, ancient ruins, monsters, possible PvP.\r\n\r\nPelataan suomeksi jos pöytään ei tule yhteen pelaajaa, joka ei osaa suomea. Jos edes yksi jolle se on ongelma, pelikielenä on englanti.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-11-02"],
+      "room": ["ropeluokka-3-poyta-a", "ropeluokka-3"],
+      "type": ["gaming"],
+      "topic": ["penandpaper"],
+      "konsti": ["tabletopRPG"],
+      "signup": ["konsti"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Fail Forward",
+      "ropecon:gameSlogan": "Sword & Sorcery adventure, where a ragtag group of mercenaries try to rescue a kidnapped child.",
+      "konsti:maxAttendance": 5,
+      "konsti:minAttendance": 3
+    },
+    "scheduleItems": [
+      {
+        "slug": "city-of-the-scorpion-god",
+        "title": "City of the Scorpion God",
+        "startTime": "2024-11-02T11:00:00+02:00",
+        "endTime": "2024-11-02T15:00:00+02:00",
+        "lengthMinutes": 240,
+        "location": "Ropeluokka 3 Pöytä A"
+      }
+    ]
+  },
+  {
+    "slug": "deathmatch-island",
+    "title": "Deathmatch Island",
+    "description": "Narratiivinen battleroyale, jossa genren konventioiden mukaisesti yksi kisailija vie voiton muiden hengen kustannuksella, elleivät kilpailijat liittoudu Tuotantoa vastaan rikkoakseen pelin.\r\n\r\nPelissä arvostetaan heittäytymiskykyä ja narratiivisia refleksejä, mutta nämä eivät ole välttämättömiä. Conipelissä käytämme valmiiksi luotuja hahmoja. Graafinen kuolemantuottamus ja väkivalta kuuluvat peliin, vaikkeivat nämä ole ainoita puolia. Sisällöllisesti referenssinä voisi olla esimerkiksi Selviytyjien ja Squid Gamen hybridi.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-11-02"],
+      "room": ["ropeluokka-2-poyta-a", "ropeluokka-2"],
+      "type": ["gaming"],
+      "topic": ["penandpaper"],
+      "konsti": ["tabletopRPG"],
+      "signup": ["konsti"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Deathmatch Island / Paragon",
+      "ropecon:gameSlogan": "Battleroyalea paratiisisaarilla",
+      "konsti:maxAttendance": 5,
+      "konsti:minAttendance": 3
+    },
+    "scheduleItems": [
+      {
+        "slug": "deathmatch-island",
+        "title": "Deathmatch Island",
+        "startTime": "2024-11-02T11:00:00+02:00",
+        "endTime": "2024-11-02T15:00:00+02:00",
+        "lengthMinutes": 240,
+        "location": "Ropeluokka 2 Pöytä A"
+      }
+    ]
+  },
+  {
+    "slug": "duty-unto-death-a-dragon-age-rpg",
+    "title": "Duty Unto Death - A Dragon Age RPG",
+    "description": "As seen on Wil Wheaton's TableTop.\r\nA Grey Warden initiation mission set in Ferelden. Duncan is leading your party to a Grey Warden Gathering for you initiation, when you receive a request to head to a tragic tower at the veil of Fade that has captured an emissary of the Grey Warden's of Orlais.\r\n\r\nFor characters lvl 2-4, ready made available, you can bring your own.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-11-02"],
+      "room": ["ropeluokka-2-poyta-b", "ropeluokka-2"],
+      "type": ["gaming"],
+      "topic": ["penandpaper"],
+      "konsti": ["tabletopRPG"],
+      "signup": ["konsti"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "The Adventure Game Engine (AGE)",
+      "ropecon:gameSlogan": "Perinteistyylistä fantasiaroolipelausta Dragon Agen maailmassa.",
+      "konsti:maxAttendance": 5,
+      "konsti:minAttendance": 3
+    },
+    "scheduleItems": [
+      {
+        "slug": "duty-unto-death-a-dragon-age-rpg",
+        "title": "Duty Unto Death - A Dragon Age RPG",
+        "startTime": "2024-11-02T11:00:00+02:00",
+        "endTime": "2024-11-02T14:00:00+02:00",
+        "lengthMinutes": 180,
+        "location": "Ropeluokka 2 Pöytä B"
+      }
+    ]
+  },
+  {
+    "slug": "eco-mofos-into-the-antlions-den",
+    "title": "ECO MOFOS!! INTO THE ANTLION'S DEN",
+    "description": "A giant antlion dug a pit in the desert wastes, unearthing an ancient library. Enticed by the knowledge inside, a rebel researcher trekked to the pit and never returned. Rig up some jet-engine-powered boards to sand-surf deep into the pit and face down with the antlion in this rescue mission. Maybe you’ll even find a good book along the way.\r\n\r\nPlay a group of misfits who have found each other in the wastes and ruins of the fallen world. The past is just a hazy legend, the story scattered over thousands of usb sticks and servers, but the future is there to be written. Eco-punk rules-light near-future adventure Marked by the Odd.\r\n\r\nINTO THE ANTLION'S DEN is a beginner friendly hex crawl adventure of ECO MOFOS!! for 3-5 players. Safety mechanics are in use to keep the game safe & comfortable for all participants. The game can be played in Finnish or English.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-11-02"],
+      "room": ["ropeluokka-3-poyta-c", "ropeluokka-3"],
+      "type": ["gaming"],
+      "topic": ["penandpaper"],
+      "konsti": ["tabletopRPG"],
+      "signup": ["konsti"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Mark of the Odd / Cairn",
+      "ropecon:gameSlogan": "Posthuman punked up weirdhope crawl role-play",
+      "konsti:maxAttendance": 5,
+      "konsti:minAttendance": 3
+    },
+    "scheduleItems": [
+      {
+        "slug": "eco-mofos-into-the-antlions-den",
+        "title": "ECO MOFOS!! INTO THE ANTLION'S DEN",
+        "startTime": "2024-11-02T12:00:00+02:00",
+        "endTime": "2024-11-02T16:00:00+02:00",
+        "lengthMinutes": 240,
+        "location": "Ropeluokka 3 Pöytä C"
+      }
+    ]
+  },
+  {
+    "slug": "elava-pakohuone",
+    "title": "Elävä pakohuone",
+    "description": "Tervetuloa tyrmään. Elämme keskiaikaa, ja sinut on laitettu lukkojen taakse tai ehkäpä koko iloinen rosvojoukkiosi on heitetty telkien taakse mikäli teitä on isompi ryhmä saapumassa paikalle (max. 4 hlö) samaan selliin muutaman muun rosvon kanssa. Kyllä, luit aivan oikein, tyrmässä on jo ennestään aikaisempia vankeja!\r\n\r\nMuut rosvot vaikuttavat kuitenkin suhteellisen leppoisilta ja hiljaisilta tyypeiltä, minkä takia teitä kiinnostaakin enemmän kuinka pääsette takaisin ihmisten ilmoille. Tätä varten sellistä löytyy vihjeitä, mutta pystyttekö ratkaisemaan kaikki arvoitukset ja pakenemaan ennen kuin aika loppuu?\r\n\r\nPeli on aloittelijaystävällinen ja sopii kaikenikäisille, mutta alle 15 -vuotiaita suositellaan osallistumaan vanhemman tai kokeneemman pelaajan kanssa tehtävien suorittamisen sujuvoittamiseksi.\r\n\r\nPelautukset alkavat kello 12, 14 ja 16. Ilmoittautuminen Konstin kautta.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-11-03"],
+      "room": ["elava-pakohuone"],
+      "type": ["gaming"],
+      "topic": ["larp"],
+      "konsti": ["larp"],
+      "signup": ["konsti"]
+    },
+    "cachedAnnotations": { "konsti:maxAttendance": 4 },
+    "scheduleItems": [
+      {
+        "slug": "elava-pakohuone-12",
+        "title": "Elävä pakohuone",
+        "startTime": "2024-11-03T12:00:00+02:00",
+        "endTime": "2024-11-03T13:00:00+02:00",
+        "lengthMinutes": 60,
+        "location": "Elävä pakohuone"
+      },
+      {
+        "slug": "elava-pakohuone-14",
+        "title": "Elävä pakohuone",
+        "startTime": "2024-11-03T14:00:00+02:00",
+        "endTime": "2024-11-03T15:00:00+02:00",
+        "lengthMinutes": 60,
+        "location": "Elävä pakohuone"
+      },
+      {
+        "slug": "elava-pakohuone-16",
+        "title": "Elävä pakohuone",
+        "startTime": "2024-11-03T16:00:00+02:00",
+        "endTime": "2024-11-03T17:00:00+02:00",
+        "lengthMinutes": 60,
+        "location": "Elävä pakohuone"
+      }
+    ]
+  },
+  {
+    "slug": "frendeja-kundeja-ja-pullonpyoritysta",
+    "title": "Frendejä, kundeja ja pullonpyöritystä",
+    "description": "\"Okei mun vuoro, kerro tykkäätsä jostain pojasta meiän koulussa?\"\r\n\r\nFrendejä, kundeja ja pullonpyöritystä on Cathy Hopkinsin kirjasarjasta inspiroitunut peli yökyläreissulla pullonpyöritystä pelaavista teinitytöistä. Puhutaan koulusta, kavereista, harrastuksista, haaveista - ja pojista!\r\n\r\nPelissä on tarkoitus eläytyä slice of life -hengessä normaaliin teiniarkeen: aiheet ovat hahmoille henkilökohtaisesti merkittäviä mutta kukaan ei kuole eikä maailmaa tarvitse pelastaa.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-11-02"],
+      "room": ["larppi-1"],
+      "type": ["gaming"],
+      "topic": ["larp"],
+      "konsti": ["larp"],
+      "signup": ["konsti"]
+    },
+    "cachedAnnotations": {
+      "ropecon:gameSlogan": "Slice of life draama: Teinitytöt pelaavat pullonpyöritystä",
+      "konsti:maxAttendance": 5
+    },
+    "scheduleItems": [
+      {
+        "slug": "frendeja-kundeja-ja-pullonpyoritysta",
+        "title": "Frendejä, kundeja ja pullonpyöritystä",
+        "startTime": "2024-11-02T20:00:00+02:00",
+        "endTime": "2024-11-02T23:00:00+02:00",
+        "lengthMinutes": 180,
+        "location": "Larppi 1"
+      }
+    ]
+  },
+  {
+    "slug": "ihmiskarjujen-yo-night-of-the-hogmen",
+    "title": "Ihmiskarjujen yö / Night of the Hogmen",
+    "description": "Paikalliset viranomaiset ovat asettaneet Gatlockin kaupungin karanteeniin. Miksi? Sinä ja matkatoverisi olette ehtineet pyhäinpäivänä viimeisen postivaunun kyytiin kohti Gatlockia kaukana pohjoisessa. Sade hakkaa vaunun kattoa ja hevoset kuulostavat hätääntyneiltä. Mitä ovat nuo kukkuloilta kantautuvat eläimelliset äänet? \r\n\r\nHuono-onnisten matkalaisten seurue kamppailee selviytymisestään 1700-luvun Englannin maalaismaisemassa. Kuka selviytyy karjumiesten kauhuista?\r\n\r\nSisältö suunnattu vähintään 15-vuotiaille osallistujille. Sisältää englanninkielisiä hahmolomakkeita ja muuta pelimateriaalia.\r\n\r\nPelityyli: kevyt, toimintaa ja draamaa\r\nSisältövaroitus: verta, väkivaltaa ja kuoleman vaaraa (K15)",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-11-02"],
+      "room": ["ropenurkka-2"],
+      "type": ["gaming"],
+      "topic": ["penandpaper"],
+      "konsti": ["tabletopRPG"],
+      "signup": ["konsti"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Teeth RPG, kertasessioon sovitettu Forged in the Dark -systeemi",
+      "ropecon:gameSlogan": "Toiminnantäyteinen kauhuseikkailu värikkäillä valmishahmoilla 1700-luvun Englannissa.",
+      "konsti:maxAttendance": 5,
+      "konsti:minAttendance": 3
+    },
+    "scheduleItems": [
+      {
+        "slug": "ihmiskarjujen-yo-night-of-the-hogmen",
+        "title": "Ihmiskarjujen yö / Night of the Hogmen",
+        "startTime": "2024-11-02T17:00:00+02:00",
+        "endTime": "2024-11-02T21:00:00+02:00",
+        "lengthMinutes": 240,
+        "location": "Ropenurkka 2"
+      }
+    ]
+  },
+  {
+    "slug": "juokse-juokse-kultaseni",
+    "title": "Juokse, juokse, kultaseni",
+    "description": "Juokse, juokse, kultaseni on kauhuteemainen peli, jossa pelaajat tutkivat unohdettua taloa. 20 vuotta sitten Marywoodin pikkukaupungin kaduilla juoksi hullu mies, joka tuomittiin vaimonsa ja lastensa murhista, ennen kuin lähetettiin mielisairaalaan kauas pois. Nyt mies on vihdoin kuollut ja talo, jossa hirmuteot tapahtuivat, on myynnissä. Pelaajat ovat ostajaehdokkaita, jotka haluavat selvittää, olisiko talo tiluksineen sopiva uudeksi kodiksi. Ihmetys vaihtuu kuitenkin nopeasti peloksi, kun talosta alkaa selvitä uusia puolia - ja herää kysymys, oliko mies lopulta murhien takana vai ei.\r\n\r\nJuokse, juokse, kultaseni sisältää pakokauhua ja väkivaltaa. Kuvailuissa mennään niin pitkälle kuin pelaajat kokevat hyväksi. Peli ei sisällä esimerkiksi seksuaalista väkivaltaa tai päihteitä, muttei ole lapsiystävällinen. Pelistä saa lähteä, kun siltä tuntuu, ja sen saa keskeyttää missä tahansa tilanteessa. Peli on aloittelijaystävällinen.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-11-02"],
+      "room": ["ropenurkka-x"],
+      "type": ["gaming"],
+      "topic": ["penandpaper"],
+      "konsti": ["tabletopRPG"],
+      "signup": ["konsti"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Dread",
+      "ropecon:gameSlogan": "Pelaajat tutkivat unohdettua taloa, eikä selviytyminen ole taattua.",
+      "konsti:maxAttendance": 5,
+      "konsti:minAttendance": 3
+    },
+    "scheduleItems": [
+      {
+        "slug": "juokse-juokse-kultaseni",
+        "title": "Juokse, juokse, kultaseni",
+        "startTime": "2024-11-02T18:00:00+02:00",
+        "endTime": "2024-11-02T22:30:00+02:00",
+        "lengthMinutes": 270,
+        "location": "Ropenurkka X"
+      }
+    ]
+  },
+  {
+    "slug": "kirottu-matka",
+    "title": "Kirottu Matka",
+    "description": "Elämme vuotta 1912, jossa matkustamme eräällä höyrylaivalla kohti New Yorkia, mutta matkalla tapahtuu jotain, mitä kukaan matkustaja ei olisi voinut ikinä odottaa. Seuraava asia mitä tiedätte, leppoisa matka on muuttunut selviytymistaisteluksi silmän räpäyksessä.\r\n\r\nTietoja pelaajille: Peli sivuaa oikean maailman historiaa jonka tapahtumat saattavat olla raskaita tai järkyttäviä. Peli on myös järjestelmänsä puolesta kauhua joten pelaajia pyydetään varautumaan siihen.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-11-02"],
+      "room": ["ropenurkka-1"],
+      "type": ["gaming"],
+      "topic": ["penandpaper"],
+      "konsti": ["tabletopRPG"],
+      "signup": ["konsti"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Call of Cthulhu 7th Edition",
+      "ropecon:gameSlogan": "Laivamatka New Yorkiin saa kauhean käänteen, kun laivasta paljastuu jotain hirveää.",
+      "konsti:maxAttendance": 5,
+      "konsti:minAttendance": 3
+    },
+    "scheduleItems": [
+      {
+        "slug": "kirottu-matka",
+        "title": "Kirottu Matka",
+        "startTime": "2024-11-02T11:00:00+02:00",
+        "endTime": "2024-11-02T14:00:00+02:00",
+        "lengthMinutes": 180,
+        "location": "Ropenurkka 1"
+      }
+    ]
+  },
+  {
+    "slug": "kirottu-matka-2",
+    "title": "Kirottu Matka",
+    "description": "Elämme vuotta 1912, jossa matkustamme eräällä höyrylaivalla kohti New Yorkia, mutta matkalla tapahtuu jotain, mitä kukaan matkustaja ei olisi voinut ikinä odottaa. Seuraava asia mitä tiedätte, leppoisa matka on muuttunut selviytymistaisteluksi silmän räpäyksessä.\r\n\r\nTietoja pelaajille: Peli sivuaa oikean maailman historiaa jonka tapahtumat saattavat olla raskaita tai järkyttäviä. Peli on myös järjestelmänsä puolesta kauhua joten pelaajia pyydetään varautumaan siihen.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-11-02"],
+      "room": ["ropenurkka-1"],
+      "type": ["gaming"],
+      "topic": ["penandpaper"],
+      "konsti": ["tabletopRPG"],
+      "signup": ["konsti"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Call of Cthulhu 7th Edition",
+      "ropecon:gameSlogan": "Laivamatka New Yorkiin saa kauhean käänteen, kun laivasta paljastuu jotain hirveää.",
+      "konsti:maxAttendance": 5,
+      "konsti:minAttendance": 3
+    },
+    "scheduleItems": [
+      {
+        "slug": "kirottu-matka-2",
+        "title": "Kirottu Matka",
+        "startTime": "2024-11-02T20:00:00+02:00",
+        "endTime": "2024-11-02T23:00:00+02:00",
+        "lengthMinutes": 180,
+        "location": "Ropenurkka 1"
+      }
+    ]
+  },
+  {
+    "slug": "kuonojoen-lohikaarme",
+    "title": "Kuonojoen lohikäärme",
+    "description": "Vanha Erakko-Martti  on paennut syrjäisestä laaksostaan Kuonojoen varrelta ja kertoo hurjaa tarinaa hänen luolansa vallanneesta lohikäärmeestä. Hän koettaa houkutella seikkailijoita häätämään lohikäärmeen kertomalla luolien perälle piilotetuista vanhoista kammioista. Te olette ne houkat, jotka tarttuivat syöttiin.\r\n\r\nVanhan koulukunnan luolastorymistely Kuonojoen laakson kallioluolastossa. Tiedossa käytävien mittaamista, soihtujen laskemista ja alati uhkaava kuolemanvaara. Kuka onnistuu luikahtamaan kaikkien vaarojen ohi ja palaamaan upporikkaana?",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-11-02"],
+      "room": ["ropeluokka-2-poyta-b", "ropeluokka-2"],
+      "type": ["gaming"],
+      "topic": ["penandpaper"],
+      "konsti": ["tabletopRPG"],
+      "signup": ["konsti"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Holveja & Hirviöitä (OSR)",
+      "ropecon:gameSlogan": "Vanhan koulukunnan luolastorymistelyä",
+      "konsti:maxAttendance": 6,
+      "konsti:minAttendance": 2
+    },
+    "scheduleItems": [
+      {
+        "slug": "kuonojoen-lohikaarme",
+        "title": "Kuonojoen lohikäärme",
+        "startTime": "2024-11-02T15:00:00+02:00",
+        "endTime": "2024-11-02T19:00:00+02:00",
+        "lengthMinutes": 240,
+        "location": "Ropeluokka 2 Pöytä B"
+      }
+    ]
+  },
+  {
+    "slug": "lapimurto",
+    "title": "Läpimurto",
+    "description": "Suuri koe ihmismielen ja koneen yhdistämiseksi on alkamassa MindArean tutkimuslaitoksessa! Henkilökunnan on oltava tänään hereillä ja läsnä tänä kriittisenä hetkenä ihmiskunnan historiassa! Kuka haluaisit olla näistä yhdeksästä ammattilaisesta? Tule rohkeasti mukaan tekemään historiaa!",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-11-03"],
+      "room": ["ropeluokka-1-poyta-c", "ropeluokka-1"],
+      "type": ["gaming"],
+      "topic": ["penandpaper"],
+      "konsti": ["tabletopRPG"],
+      "signup": ["konsti"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "OmaMekaniikka",
+      "ropecon:gameSlogan": "Jännittävää toiminnantäyteistä tieteisseikkailua!",
+      "konsti:maxAttendance": 7,
+      "konsti:minAttendance": 5
+    },
+    "scheduleItems": [
+      {
+        "slug": "lapimurto",
+        "title": "Läpimurto",
+        "startTime": "2024-11-03T11:00:00+02:00",
+        "endTime": "2024-11-03T15:00:00+02:00",
+        "lengthMinutes": 240,
+        "location": "Ropeluokka 1 Pöytä C"
+      }
+    ]
+  },
+  {
+    "slug": "lollo-praedor",
+    "title": "L&L Gorgoniuksen Koodeksi",
+    "description": "Perinteistä L&L-seikkailua, jossa sankarit tutkivat raunioita ja luolastoja aarteita etsien. Samalla testataan muutamia Gorgoniuksen Koodeksi -lähdekirjan lisäsääntöjä, esineitä ja hirviöitä. Peli ei sovi ihan lapsille.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-11-02"],
+      "room": ["ropeluokka-1-poyta-b", "ropeluokka-1"],
+      "type": ["gaming"],
+      "topic": ["penandpaper"],
+      "konsti": ["tabletopRPG"],
+      "signup": ["konsti"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Legendoja & Lohikäärmeitä",
+      "ropecon:gameSlogan": "Perineistä L&L -seikkailua höystettynä Gorgoniuksen koodeksilla",
+      "konsti:maxAttendance": 5,
+      "konsti:minAttendance": 3
+    },
+    "scheduleItems": [
+      {
+        "slug": "lollo-praedor",
+        "title": "L&L Gorgoniuksen Koodeksi",
+        "startTime": "2024-11-02T11:00:00+02:00",
+        "endTime": "2024-11-02T15:00:00+02:00",
+        "lengthMinutes": 240,
+        "location": "Ropeluokka 1 Pöytä B"
+      }
+    ]
+  },
+  {
+    "slug": "maaginen-arkisto",
+    "title": "Maaginen arkisto",
+    "description": "Ikivanhasta kirjastosta universumin laidalta kiirii hätähuuto. Yksisarvissankareiden apua tarvitaan kipeästi!\r\n\r\nHyppää mukaan kepeään seikkailuun, jossa tärkeää on hahmoon eläytyminen ja luovien ratkaisujen keksiminen yhdessä. Luvassa on taikuutta, kavionkopsetta ja kummallisia käänteitä.\r\n\r\nVoit valita valmishahmon tai luoda itse juuri niin ihastuttavan tai hurjapäisen yksisarvisen kuin haluat. Yksinkertaiset pelimekaniikat on helppo oppia. Peli sopii aloittelijoille.\r\n\r\nYksisarvisten maailman ja tämän seikkailun on luonut pelintekijä Olga Nisumaa.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-11-02"],
+      "room": ["ropeluokka-3-poyta-b", "ropeluokka-3"],
+      "type": ["gaming"],
+      "topic": ["penandpaper"],
+      "konsti": ["tabletopRPG"],
+      "signup": ["konsti"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Yksisarvisten maailma",
+      "ropecon:gameSlogan": "Taianomainen seikkailu yksisarvisten maailmassa",
+      "konsti:maxAttendance": 5,
+      "konsti:minAttendance": 3
+    },
+    "scheduleItems": [
+      {
+        "slug": "maaginen-arkisto",
+        "title": "Maaginen arkisto",
+        "startTime": "2024-11-02T11:00:00+02:00",
+        "endTime": "2024-11-02T15:00:00+02:00",
+        "lengthMinutes": 240,
+        "location": "Ropeluokka 3 Pöytä B"
+      }
+    ]
+  },
+  {
+    "slug": "mates-dates-and-sleepovers",
+    "title": "Mates, Dates and Sleepovers",
+    "description": "“Soooo, if you had to kiss anyone in our school, who would it be?” \r\n\r\nMates, Dates, and Sleepovers is a teenage drama where a group of teenage girls play spin the bottle at a sleepover. The game is loosely based on Cathy Hopkins’s Mates, Dates book series. It is time to talk about friends, school, hobbies, and – of course! – cute boys.\r\n\r\nThe game is a slice of life -type of a drama: the stories are important and meaningful to the characters themselves but no-one is going to die and the world will not end.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-11-02"],
+      "room": ["larppi-1"],
+      "type": ["gaming"],
+      "topic": ["larp"],
+      "konsti": ["larp"],
+      "signup": ["konsti"]
+    },
+    "cachedAnnotations": {
+      "ropecon:gameSlogan": "Slice of life: teenage girls play spin the bottle",
+      "konsti:maxAttendance": 5
+    },
+    "scheduleItems": [
+      {
+        "slug": "mates-dates-and-sleepovers",
+        "title": "Mates, Dates and Sleepovers",
+        "startTime": "2024-11-02T11:00:00+02:00",
+        "endTime": "2024-11-02T14:00:00+02:00",
+        "lengthMinutes": 180,
+        "location": "Larppi 1"
+      }
+    ]
+  },
+  {
+    "slug": "meripihkalinna",
+    "title": "Meripihkalinna",
+    "description": "Nilja, samurai, keuhkotautinen velhotar, pöllöltä näyttävä temppeliritari ja joku sivuhahmo huomaavat olevansa vangittuna oudon velhosuvun kartanossa. Kuinka päästä pois Chäteau d'Ambervillestä? Rennolla meiningillä vedettyä luolaholvaamista 5. tason hahmoilla D&D;n expert-säännöillä. Seikkailuna moduuli X2 Castle Amber, jota pelataan sen verran kuin ehditään. Osa Sankarten polku-kampanjaa, jossa seikkailua jatketaan samoilla hahmoilla mutta eri pelaajilla. Sopii aloittelijoille siinä missä konkareillekin.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-11-03"],
+      "room": ["ropeluokka-3-poyta-b", "ropeluokka-3"],
+      "type": ["gaming"],
+      "topic": ["penandpaper"],
+      "konsti": ["tabletopRPG"],
+      "signup": ["konsti"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Dungeons & Dragons (punalaatikko)",
+      "ropecon:gameSlogan": "Fantasiaseikkailua hullujen velhojen kartanossa luolien ja lohikäärmeiden hengessä",
+      "konsti:maxAttendance": 5
+    },
+    "scheduleItems": [
+      {
+        "slug": "meripihkalinna",
+        "title": "Meripihkalinna",
+        "startTime": "2024-11-03T12:00:00+02:00",
+        "endTime": "2024-11-03T15:30:00+02:00",
+        "lengthMinutes": 210,
+        "location": "Ropeluokka 3 Pöytä B"
+      }
+    ]
+  },
+  {
+    "slug": "monster",
+    "title": "Monster",
+    "description": "Listen, brave souls, for the spirits have spoken! A dire mission lies before you! \r\n\r\nThe spirits speak of Toregene, a warrior princess, fierce and noble, ensnared by a horde of enemies, their malice as dark as the night. She stands alone, a beacon of strength and hope, her heart burning with the fire of a thousand battles. Yet, even the mightiest need allies in their hour of need.\r\n\r\nYou are those allies, chosen by fate and guided by the spirits, for our spirits are alined with hers. The path to her rescue is fraught with peril, but fear not, for you will not walk it alone. With you, you will take Alagh and Borjigin, our two formidable steeds, great iron beasts, imbued with the spirits of ancient warriors and thunderous storms. These monster trucks, forged in the crucible of the spirit world, roar with the power of the earth and the storm itself, ready to tear through the ranks of her foes.\r\n\r\nAs dawn breaks and the first light of day touches the earth, you will mount these fearsome machines. Their engines will roar like the lions of old, their tires will churn the ground like the hooves of stampeding beasts. You will drive them, not with your hands alone, but with your very spirit, becoming one with these monstrous creations.\r\n\r\nThe enemies will tremble, their hearts clutched by fear, as you descend upon them like the wrath of the gods. Your path will be one of destruction and liberation, the fury of your advance scattering the wicked like leaves before a storm. The air will be thick with dust and the scent of battle, but your focus must remain unbroken, your resolve as unyielding as iron.\r\n\r\nReach the princess, and you will find her clad in armor that glints like the moon, her eyes blazing with the spirit of the wolf. Pull her from the grasp of her enemies and set her upon one of the trucks. Together, you will carve a path to freedom, leaving behind a tale of valor and spirit that will be sung by bards for generations.\r\n\r\nThis mission is not just a rescue; it is a testament to the bond between the living and the spirit world, a dance of courage and power that transcends the mortal coil. Go now, warriors, with the blessings of the spirits. May your hearts be fierce, your minds be sharp, and your spirits be unbreakable. The warrior princess awaits, and destiny calls. Answer it with the fury of the storm and the strength of the earth.\r\n\r\n---\r\nPre-generated characters\r\nJos kaikki osallistujat puhuvat suomea, sessio vedetään suomeksi",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-11-02"],
+      "room": ["ropeluokka-2-poyta-c", "ropeluokka-2"],
+      "type": ["gaming"],
+      "topic": ["penandpaper"],
+      "konsti": ["tabletopRPG"],
+      "signup": ["konsti"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Phoenix RPS; own system that's been in constant use (and occasional development) since 1991",
+      "ropecon:gameSlogan": "Post-apocalyptic monster trucks, machine spirit shamans, dinosaurs, and a desert ride",
+      "konsti:maxAttendance": 5,
+      "konsti:minAttendance": 4
+    },
+    "scheduleItems": [
+      {
+        "slug": "monster",
+        "title": "Monster",
+        "startTime": "2024-11-02T11:00:00+02:00",
+        "endTime": "2024-11-02T15:00:00+02:00",
+        "lengthMinutes": 240,
+        "location": "Ropeluokka 2 Pöytä C"
+      }
+    ]
+  },
+  {
+    "slug": "mysteerien-maatila",
+    "title": "Mysteerien Maatila",
+    "description": "Paikka: 2.krs, Harrastusseura Revontulen pistee\r\nTervetuloa maagiselle maatilalle! Fantasiamaailmaan sijoittuvassa roolipelissä joukko entistiä seikkailijoita ja paikkaansa maailmassa hakevia kaupunkilaisia sijoitetaan syrjäiselle maatilalle tienaamaan itselleen työnteolla varoja rakentaa itselleen tulevaisuus, sekä oppia hyödyllisiä taitoja, kuten maagista maanviljelystä, taikayrttien kasvatusta ja maagisten eläinten hoitoa.\r\n\r\nMutta onko Sydämen Tilalla kaikki niinkuin kuuluu? Mitä salaisuuksia kätkeytyy tilan emännän, madam Hertan lämpimän hymyn taa? Tule mukaan jännittävälle seikkailulle pöytäroolipelissä Harrastusseura Revontulen pisteellä, jossa voit päivän aikana käydä ilmoittautumassa ja suunnittelemassa hahmosi roolihahmotyöpajassa!\r\n\r\nPeli sijoittuu sitä varta vasten kehitettyyn maagismoderniin Qrasgolin maailmaan, jossa erilaiset ihmisen kaltaiset, mutta omanlaisiaan piirteitä omaavat kansat elävät rinnatusten. Pelata voi esimerkiksi eläinten piirteitä omaavilla ranlateilla, voimakkaita taikuuden virtauksia hallitsevilla magikansoilla, sekä tavallisilla ihmisillä. Tule viihtymään mielenkiintoisessa pelisessiossamme, sopii myös ensikertalaisille!",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-11-02"],
+      "room": [],
+      "type": ["gaming"],
+      "topic": ["penandpaper"],
+      "konsti": ["tabletopRPG"],
+      "signup": ["konsti"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "itse kehitetty yksinkertainen lautapeli",
+      "ropecon:gameSlogan": "Fantasiamaailmaan sijoittuva seikkailupeli kera mysteerin, höysteenä ripaus maatilasimulaatiota!",
+      "konsti:maxAttendance": 7,
+      "konsti:minAttendance": 3
+    },
+    "scheduleItems": [
+      {
+        "slug": "mysteerien-maatila",
+        "title": "Mysteerien Maatila",
+        "startTime": "2024-11-02T17:00:00+02:00",
+        "endTime": "2024-11-02T20:00:00+02:00",
+        "lengthMinutes": 180,
+        "location": ""
+      }
+    ]
+  },
+  {
+    "slug": "neuvoston-umpisolmu",
+    "title": "Neuvoston umpisolmu",
+    "description": "Suur-Trakonian valtakunnan päivänpolitiikka on umpisolmussa: Kenelle kuuluvat yksisarvisten jouhien keräily- ja myyntioikeudet? Druidit Ilman Metsiä vaativat taikaolentojen metsästyksen lopettamista, mutta kuinka hirviönmetsästäjille silloin käy? Entäpä toteutuuko taikapohattojen himoitsema traakkiväylä herkän Keijumetsän läpi?\r\n\r\nPelaat suuren killan päällikköä tärkeissä neuvotteluissa. Luvassa on lahjontaa, uhkailua, liittolaisuutta sekä (pelaajien) hyvää mieltä.\r\n\r\nValmiiksi kirjoitetut hahmot.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-11-03"],
+      "room": ["larppi-1"],
+      "type": ["gaming"],
+      "topic": ["larp"],
+      "konsti": ["larp"],
+      "signup": ["konsti"]
+    },
+    "cachedAnnotations": {
+      "ropecon:gameSlogan": "Suur-Trakonian kiltapomot napit vastakkain",
+      "konsti:maxAttendance": 5
+    },
+    "scheduleItems": [
+      {
+        "slug": "neuvoston-umpisolmu",
+        "title": "Neuvoston umpisolmu",
+        "startTime": "2024-11-03T11:00:00+02:00",
+        "endTime": "2024-11-03T14:00:00+02:00",
+        "lengthMinutes": 180,
+        "location": "Larppi 1"
+      }
+    ]
+  },
+  {
+    "slug": "offworlders-kosmoksen-karsein-keikka",
+    "title": "Offworlders: Kosmoksen karsein keikka",
+    "description": "Kipeästi korjauksia kaipaavan avaruusaluksen miehistö palkataan hoitamaan se kuuluisa nopea keikka. Pitäisi käydä hakemassa takaisin kotiin yksi rikas, hemmoteltu ja todellisuudesta vahvasti irrallaan oleva diplomaattisuvun vesa. Kuinka vaikeaa se voi olla? Palkkiokin on vähintään kohtuullinen vaivaan nähden. Navigaattori valmiiksi ja aluksen kokka Punarvasu I:n suuntaan!\r\n\r\nRämisevää ja rähjäisenpuoleista scifiseikkailua maailmassa, joka ei kuitenkaan ole ihan kauhean kamala tai synkkä - paitsi kenties oikein huono-onnisille. Pelimekaniikka on kevyt sekä helppo opetella, hahmot tehdään valmiiksi pelin alussa ja samalla käydään läpi turvamekaniikat. Peli sisältää väkivaltaa ja kehokauhua (humoristisella otteella).",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-11-02"],
+      "room": ["ropeluokka-1-poyta-c", "ropeluokka-1"],
+      "type": ["gaming"],
+      "topic": ["penandpaper"],
+      "konsti": ["tabletopRPG"],
+      "signup": ["konsti"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Offworlders",
+      "ropecon:gameSlogan": "Rämisevää ja rähjäisenpuoleista scifiseikkailua",
+      "konsti:maxAttendance": 4,
+      "konsti:minAttendance": 2
+    },
+    "scheduleItems": [
+      {
+        "slug": "offworlders-kosmoksen-karsein-keikka",
+        "title": "Offworlders: Kosmoksen karsein keikka",
+        "startTime": "2024-11-02T14:00:00+02:00",
+        "endTime": "2024-11-02T18:00:00+02:00",
+        "lengthMinutes": 240,
+        "location": "Ropeluokka 1 Pöytä C"
+      }
+    ]
+  },
+  {
+    "slug": "pathfinder-society-scenario-6-01-intro-year-of-immortal-influence",
+    "title": "Pathfinder Society Scenario #6-01: Intro: Year of Immortal Influence",
+    "description": "A Pathfinder Society Scenario designed for 1st- through 4th-level characters.\r\n\r\nA new year comes for the Pathfinder Society, and what better way to start it off than by attending a fancy event? The Pathfinders find themselves invited to a charity dinner to benefit the Knights of Lastwall fighting in far-off lands against the lich king, Tar-Baphon. They're not the only important Absalom-based faction there however, as the event is filled with lords and ladies and socialites of all kinds, including the Peacebuilders, a group dedicated to ensuring the Pathfinder Society pays for any of its mistakes. In the middle of dinner, evidence of a strange ritual is found and the Pathfinders must investigate before dinner becomes a murder mystery!\r\n\r\nWritten by Rigby Bendele",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-11-03"],
+      "room": ["ropenurkka-1"],
+      "type": ["gaming"],
+      "topic": ["penandpaper"],
+      "konsti": ["tabletopRPG"],
+      "signup": ["konsti"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Pathfinder (2e) Society",
+      "ropecon:gameSlogan": "While mingling with Absalom’s elite at a charity dinner, Pathfinders must investigate a mysterious ritual before the event turns deadly.",
+      "konsti:maxAttendance": 4,
+      "konsti:minAttendance": 2
+    },
+    "scheduleItems": [
+      {
+        "slug": "pathfinder-society-scenario-6-01-intro-year-of-immortal-influence",
+        "title": "Pathfinder Society Scenario #6-01: Intro: Year of Immortal Influence",
+        "startTime": "2024-11-03T12:00:00+02:00",
+        "endTime": "2024-11-03T16:00:00+02:00",
+        "lengthMinutes": 240,
+        "location": "Ropenurkka 1"
+      }
+    ]
+  },
+  {
+    "slug": "pathfinder-society-special-3-99-fate-in-the-future",
+    "title": "Pathfinder Society Scenario #6-01: Intro: Year of Immortal Influence",
+    "description": "A Pathfinder Society Scenario designed for 1st- through 4th-level characters.\r\n\r\nA new year comes for the Pathfinder Society, and what better way to start it off than by attending a fancy event? The Pathfinders find themselves invited to a charity dinner to benefit the Knights of Lastwall fighting in far-off lands against the lich king, Tar-Baphon. They're not the only important Absalom-based faction there however, as the event is filled with lords and ladies and socialites of all kinds, including the Peacebuilders, a group dedicated to ensuring the Pathfinder Society pays for any of its mistakes. In the middle of dinner, evidence of a strange ritual is found and the Pathfinders must investigate before dinner becomes a murder mystery!\r\n\r\nWritten by Rigby Bendele",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-11-02"],
+      "room": ["ropenurkka-2"],
+      "type": ["gaming"],
+      "topic": ["penandpaper"],
+      "konsti": ["tabletopRPG"],
+      "signup": ["konsti"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Pathfinder (2e) Society",
+      "ropecon:gameSlogan": "While mingling with Absalom’s elite at a charity dinner, Pathfinders must investigate a mysterious ritual before the event turns deadly.",
+      "konsti:maxAttendance": 6,
+      "konsti:minAttendance": 4
+    },
+    "scheduleItems": [
+      {
+        "slug": "pathfinder-society-special-3-99-fate-in-the-future",
+        "title": "Pathfinder Society Scenario #6-01: Intro: Year of Immortal Influence",
+        "startTime": "2024-11-02T12:00:00+02:00",
+        "endTime": "2024-11-02T16:00:00+02:00",
+        "lengthMinutes": 240,
+        "location": "Ropenurkka 2"
+      }
+    ]
+  },
+  {
+    "slug": "pelia-pyynnosta-lauantai",
+    "title": "Peliä pyynnöstä lauantai",
+    "description": "Peliä pyynnöstä tarjoaa lyhyttä matalan kynnyksen roolipelaamista pääasiassa skenaariokisan pelien muodossa. Näihin alle tunnin peleihin ei tarvitse ilmoittautua etukäteen, tulet vain paikalle roolipelitiskille ja sisäänheittäjä etsii sinulle pelin. Pelejä alkaa aina kun Peliä pyynnöstä pelinjohtajia on vapaana. Lisäksi sisäänheittäjä etsii tarvittaessa kävijöiden joukosta lisää pelaajia, että pelit lähtevät käyntiin. Skenaariokisan pelejä on useita erilaisia, joten pelaamaan kannattaa tulla useamminkin!",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-11-02"],
+      "room": [],
+      "type": ["gaming"],
+      "topic": ["penandpaper"],
+      "konsti": ["tabletopRPG"],
+      "signup": ["konsti"]
+    },
+    "cachedAnnotations": {},
+    "scheduleItems": [
+      {
+        "slug": "pelia-pyynnosta-lauantai",
+        "title": "Peliä pyynnöstä lauantai",
+        "startTime": "2024-11-02T11:00:00+02:00",
+        "endTime": "2024-11-02T21:00:00+02:00",
+        "lengthMinutes": 600,
+        "location": ""
+      }
+    ]
+  },
+  {
+    "slug": "pelia-pyynnosta-sunnuntai",
+    "title": "Peliä pyynnöstä sunnuntai",
+    "description": "Peliä pyynnöstä tarjoaa lyhyttä matalan kynnyksen roolipelaamista pääasiassa skenaariokisan pelien muodossa. Näihin alle tunnin peleihin ei tarvitse ilmoittautua etukäteen, tulet vain paikalle roolipelitiskille ja sisäänheittäjä etsii sinulle pelin. Pelejä alkaa aina kun Peliä pyynnöstä pelinjohtajia on vapaana. Lisäksi sisäänheittäjä etsii tarvittaessa kävijöiden joukosta lisää pelaajia, että pelit lähtevät käyntiin. Skenaariokisan pelejä on useita erilaisia, joten pelaamaan kannattaa tulla useamminkin!",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-11-03"],
+      "room": [],
+      "type": ["gaming"],
+      "topic": ["penandpaper"],
+      "konsti": ["tabletopRPG"],
+      "signup": ["konsti"]
+    },
+    "cachedAnnotations": {},
+    "scheduleItems": [
+      {
+        "slug": "pelia-pyynnosta-sunnuntai",
+        "title": "Peliä pyynnöstä sunnuntai",
+        "startTime": "2024-11-03T11:00:00+02:00",
+        "endTime": "2024-11-03T16:00:00+02:00",
+        "lengthMinutes": 300,
+        "location": ""
+      }
+    ]
+  },
+  {
+    "slug": "pelipoyta-ry-peluuttaa-ryuutama",
+    "title": "Pelipöytä ry peluuttaa: Ryuutama",
+    "description": "Keväänmaassa, kuten muillakin Yonnian maailmantasoilla, ikivanha perinne kutsuu jokaisen henkilön edes kerran elämässään Taipaleelle. Taipaleella ei ole määrättyä pituutta eikä tavoitetta, mutta usein jo itse matka ja kokemus seikkailusta luo ikimuistoisen ja lämpimän kokemuksen. Joten pakkaa rinkkasi ja astu tielle tuntemattomalle!\r\n\r\nRyuutama on kevytmielinen fantasiaroolipeli vuodenajoista, ihmeistä ja matkoista. Peli hakee inspiraatiota tunnelmaansa hidastahtisista hyvänmielen animeista. Peli pelataan valmishahmoilla.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-11-02"],
+      "room": ["ropeluokka-1-poyta-a", "ropeluokka-1"],
+      "type": ["gaming"],
+      "topic": ["penandpaper"],
+      "konsti": ["tabletopRPG"],
+      "signup": ["konsti"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Ryuutama: Natural Fantasy RPG",
+      "ropecon:gameSlogan": "Joukko nuoria kyläläisiä suuntaa ensimmäiselle seikkailulleen.",
+      "konsti:maxAttendance": 4,
+      "konsti:minAttendance": 2
+    },
+    "scheduleItems": [
+      {
+        "slug": "pelipoyta-ry-peluuttaa-ryuutama",
+        "title": "Pelipöytä ry peluuttaa: Ryuutama",
+        "startTime": "2024-11-02T11:00:00+02:00",
+        "endTime": "2024-11-02T15:00:00+02:00",
+        "lengthMinutes": 240,
+        "location": "Ropeluokka 1 Pöytä A"
+      }
+    ]
+  },
+  {
+    "slug": "praedor-kirotut-kuninkaanvaalit",
+    "title": "Praedor: Kirotut kuninkaanvaalit",
+    "description": "Etelän metsäläispäälliköt valitsevat uutta kuningasta. Äänestää voi raudalla, myrkyllä ja kirotulla kullalla. Onko kohtalo nostanut maattomat seikkailijat kuninkaantekijöiksi?\r\n\r\nPraedor-roolipelin tekijä Ville Vuorela peluuttaa one-shot session seikkailunnälkäisille! Luvassa on vaaroja, aarteita ja synkkiä kohtaloita kirottujen raunioiden uumenissa. Käytämme yksinkertaistettuja valmishahmoja ja seikkailukortteja, eikä aiempi kokemus Praedorista tai edes pöytäroolipeleistä ole tarpeen.\r\n\r\nPraedor on rouhea suomalainen fantasiaroolipeli taiteilija Petri Hiltusen samannimisten sarjakuvatarinoiden maailmasta.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-11-03"],
+      "room": ["ropeluokka-3-poyta-a", "ropeluokka-3"],
+      "type": ["gaming"],
+      "topic": ["penandpaper"],
+      "konsti": ["tabletopRPG"],
+      "signup": ["konsti"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Praedor",
+      "ropecon:gameSlogan": "Vauhdikasta miekkaa, magiaa ja juonittelua Praedor-tarinoiden maailmassa!",
+      "konsti:maxAttendance": 6,
+      "konsti:minAttendance": 2
+    },
+    "scheduleItems": [
+      {
+        "slug": "praedor-kirotut-kuninkaanvaalit",
+        "title": "Praedor: Kirotut kuninkaanvaalit",
+        "startTime": "2024-11-03T11:00:00+02:00",
+        "endTime": "2024-11-03T15:00:00+02:00",
+        "lengthMinutes": 240,
+        "location": "Ropeluokka 3 Pöytä A"
+      }
+    ]
+  },
+  {
+    "slug": "praedor-kirotut-kuninkaanvaalit-2",
+    "title": "Praedor: Kirotut kuninkaanvaalit",
+    "description": "Etelän metsäläispäälliköt valitsevat uutta kuningasta. Äänestää voi raudalla, myrkyllä ja kirotulla kullalla. Onko kohtalo nostanut maattomat seikkailijat kuninkaantekijöiksi?\r\n\r\nPraedor-roolipelin tekijä Ville Vuorela peluuttaa one-shot session seikkailunnälkäisille! Luvassa on vaaroja, aarteita ja synkkiä kohtaloita kirottujen raunioiden uumenissa. Käytämme yksinkertaistettuja valmishahmoja ja seikkailukortteja, eikä aiempi kokemus Praedorista tai edes pöytäroolipeleistä ole tarpeen.\r\n\r\nPraedor on rouhea suomalainen fantasiaroolipeli taiteilija Petri Hiltusen samannimisten sarjakuvatarinoiden maailmasta.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-11-02"],
+      "room": ["ropeluokka-2-poyta-b", "ropeluokka-2"],
+      "type": ["gaming"],
+      "topic": ["penandpaper"],
+      "konsti": ["tabletopRPG"],
+      "signup": ["konsti"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Praedor: Kirotut kuninkaanvaalit",
+      "ropecon:gameSlogan": "Vauhdikasta miekkaa, magiaa ja juonittelua Praedor-tarinoiden maailmassa!",
+      "konsti:maxAttendance": 6,
+      "konsti:minAttendance": 2
+    },
+    "scheduleItems": [
+      {
+        "slug": "praedor-kirotut-kuninkaanvaalit-2",
+        "title": "Praedor: Kirotut kuninkaanvaalit",
+        "startTime": "2024-11-02T19:00:00+02:00",
+        "endTime": "2024-11-02T23:00:00+02:00",
+        "lengthMinutes": 240,
+        "location": "Ropeluokka 2 Pöytä B"
+      }
+    ]
+  },
+  {
+    "slug": "red-tundra",
+    "title": "Red Tundra",
+    "description": "Olette kiertäneet maailmaa muutaman vuoden ja tuntuu hyvältä palata kotiin laumanne kanssa tapaamaan vanhoja ystäviä. Mutta kaikki ei ole hyvin. Varakkaat turistit ovat keksineet uuden harrastuksen täällä Kanadan erämaassa - susien metsästyksen helikoptereilla.\r\n\r\nTe olette garouta, ihmissusia ja Maaäidin vannoutuneita suojelijoita. On velvollisuutenne auttaa serkkujanne!\r\n-----\r\nYou've been away from your home town for a few years and it feels good to be back visiting the old stomping grounds with your pack, meeting old friends. But all is not well. The very rich have a new hobby out here in the Canadian wilds: Shooting wolves from helicopters.\r\n\r\nYou're Garou, werewolves and sworn protectors of the earth. You must protect your wolf cousins from this cruel sport!",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-11-02"],
+      "room": ["ropeluokka-3-poyta-c", "ropeluokka-3"],
+      "type": ["gaming"],
+      "topic": ["penandpaper"],
+      "konsti": ["tabletopRPG"],
+      "signup": ["konsti"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Werewolf: The Apocalypse 5E",
+      "ropecon:gameSlogan": "Ihmissudet vastaan rikkaat sudenmetsästäjät - väkivaltaa, kehokauhua ja ekoterrorismia.",
+      "konsti:maxAttendance": 6,
+      "konsti:minAttendance": 3
+    },
+    "scheduleItems": [
+      {
+        "slug": "red-tundra",
+        "title": "Red Tundra",
+        "startTime": "2024-11-02T17:00:00+02:00",
+        "endTime": "2024-11-02T21:00:00+02:00",
+        "lengthMinutes": 240,
+        "location": "Ropeluokka 3 Pöytä C"
+      }
+    ]
+  },
+  {
+    "slug": "ruhtinaan-aika",
+    "title": "Ruhtinaan aika",
+    "description": "Suomen rannikolle asettuu frankkilainen sotapäällikkö ja hänen karaistuneita asemiehiään! Ukko julistautuu Suomen ruhtinaaksi ja alkaa hallita maata kuin olisi mikälkin kuningas. Kuinka umpimieliset ja nurkkakuntaiset kylänpäälliköt oikein suhtautuvat tulokkaaseen ja hänen rautapeitaisiin sotureihinsa? Onko Kalevalan rauha mennyttä?",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-11-02"],
+      "room": ["ropeluokka-3-poyta-a", "ropeluokka-3"],
+      "type": ["gaming"],
+      "topic": ["penandpaper"],
+      "konsti": ["tabletopRPG"],
+      "signup": ["konsti"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Roudan maa/HeroQuest",
+      "ropecon:gameSlogan": "Valtapeliä kalevalaisessa fantasiamaailmassa",
+      "konsti:maxAttendance": 5
+    },
+    "scheduleItems": [
+      {
+        "slug": "ruhtinaan-aika",
+        "title": "Ruhtinaan aika",
+        "startTime": "2024-11-02T16:00:00+02:00",
+        "endTime": "2024-11-02T18:00:00+02:00",
+        "lengthMinutes": 120,
+        "location": "Ropeluokka 3 Pöytä A"
+      }
+    ]
+  },
+  {
+    "slug": "sakaheitto-livepelautus",
+    "title": "Säkäheitto livepelautus",
+    "description": "Säkäheiton \"Kirotun Maan Koluajat\" -roolipelikampanjasta tuttu Jasper \"Jaspa\" Pakkanen on täysin vakuuttunut siitä, että hänen äkillinen sinkoutumisensa Jaconian fantasiamaailmaan on hänen alitajuntansa tuottamaa koomaunta. Toinen maailma, mikä on Jaspalle erityisen rakas ja tuttu, on Skyrim-videopelin maailma ja tähän hän on useaan otteeseen verrannutkin Jaconiaa seikkailunsa aikana. Vaan miten käy, kun eräänä yönä hän avaa silmänsä ja herääkin Jaconian sijaan Skyrimista? Onko grafiikat ja maailman mekaniikat sittenkään Jaconiaa paremmat? Entä miten \"Praedorien kuningas\" pärjää maailmassa, jossa taikuus ja lohikäärmeet ovat yhtä yleisiä näkyjä kuin Simpsonit televisiossa tai humalaiset huutelijat katukuvassa täällä Koti-Suomessa?\r\n\r\nSäkäheitto -podcastin porukka tuo tapahtumaan mukanaan interaktiivisen pelisession, jossa Jaspa ajautuu seikkailuun rakastamansa videopelin maailmassa. Hänen apureikseen joutuu 2-4 etukäteen kirjoitettua valmishahmoa, joiden pelaajat valitaan paikan päällä ohjelman yleisön joukosta. Sekoilua on siis varmasti tiedossa! Peli tullaan nauhoittamaan ja julkaisemaan jälkikäteen osana Säkäheiton actual play -ohjelmaa. Aiempaa tietämystä, tai osaamista Praedor-pelisysteemistä ei tarvita osallistumiseen. Vielä vähemmän sitä tarvitaan pelin seuraamiseen. Tule katsomaan, miten seikkailijoiden käy!",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-11-02"],
+      "room": ["larppi-1"],
+      "type": ["gaming"],
+      "topic": ["penandpaper"],
+      "konsti": ["tabletopRPG"],
+      "signup": ["konsti"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Praedor",
+      "ropecon:gameSlogan": "Interaktiivinen yleisöpeli",
+      "konsti:maxAttendance": 4,
+      "konsti:minAttendance": 2
+    },
+    "scheduleItems": [
+      {
+        "slug": "sakaheitto-livepelautus",
+        "title": "Säkäheitto livepelautus",
+        "startTime": "2024-11-02T15:00:00+02:00",
+        "endTime": "2024-11-02T18:00:00+02:00",
+        "lengthMinutes": 180,
+        "location": "Larppi 1"
+      }
+    ]
+  },
+  {
+    "slug": "scamatania-kaunojen-kari-wwn",
+    "title": "Scamatania: Kaunojen kari (WWN)",
+    "description": "Matkaajien laiva on haaksirikkoutunut hylätylle saarelle, vai onko se sellainen? Pelaajat pyrkivät haastelähtöisesti päästä pois Kaunojen karilta, saarelta jonne niin moni kalastus-, kauppa- ja piraattilaiva on tuhoutunut. Tapoja päästä saarelta pois on monia, mutta saarella on myös monta tapaa saada hahmot hengiltä. Tule mukaan fantasiaseikkailuun lämpimällä epämielyttävällä trooppisella saarella.\r\n\r\nScamatania - pelimaailmassa tapahtuva seikkailu, jota tällä kertaa pelataan Worlds Without Number - OSR pelijärjestelmällä. Pelaajien hahmot ovat valmishahmoja tasolla 1 ja aikaisempaa kokemusta roolipeleistä ei tarvita ja tarvittaessa opetetaan aivan alusta saakka. Avoimella mielellä ja pienellä heittäytymisellä pääset pitkälle. Kesto maksimissaan 4 tuntia hitaallakin porukalla.\r\nSkenaariota inspiroivat asiat populaarikulttuurista: Cast Away, Kärpästen herra, Robinson Crusoe ja Pillars of Eternity 2: Deadfire. Tämä seikkailu on tarkoitus julkaista ilmaisena sääntöneutraalina pdf-versiona syksyn aikana, pelinjohtajalta saa varmasti asiasta lisää tietoa!",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-11-02"],
+      "room": ["ropeluokka-3-poyta-a", "ropeluokka-3"],
+      "type": ["gaming"],
+      "topic": ["penandpaper"],
+      "konsti": ["tabletopRPG"],
+      "signup": ["konsti"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Worlds Without Number",
+      "ropecon:gameSlogan": "Haaksirikkoutuneet matkaajat pyrkivät pääsemään hylätyltä saarelta karkuun",
+      "konsti:maxAttendance": 6,
+      "konsti:minAttendance": 2
+    },
+    "scheduleItems": [
+      {
+        "slug": "scamatania-kaunojen-kari-wwn",
+        "title": "Scamatania: Kaunojen kari (WWN)",
+        "startTime": "2024-11-02T19:00:00+02:00",
+        "endTime": "2024-11-02T23:00:00+02:00",
+        "lengthMinutes": 240,
+        "location": "Ropeluokka 3 Pöytä A"
+      }
+    ]
+  },
+  {
+    "slug": "session-zero-tavernassa-tapahtuu",
+    "title": "Session Zero - Tavernassa tapahtuu",
+    "description": "Tarjolla aloittelija-ystävällinen kokeilu roolipeli missä käydään läpi mitä on roolipelaaminen, millaisia sääntöjä on hyvä olla pelaajien kesken, kuinka pelinvetäjän ei pitäisi olla vastustaja vaan auttava käsi viemässä pelaajien tarinaa eteenpäin (eli semmoisia yleisiä hyviä tapoja), mukavuusrajojen löytäminen ja niiden asettelu... erilaisten pelityylien läpikäynti ja hyväksyttäminen. Rikotaan ennakkoluulot että roolipelaaminen vaatii jotain näyttelijän taitoja tai että vain yksi tapa pelata olisi \"se oikea\".  Kevyesti turvallisessa asetelmassa kokeillaan, mitä hahmolla voi tehdä ja miten peliä pelataan. \r\n\r\nPelin tavoitteena on kerätä tietoa tarjolla olevasta tehtävästä tavernan hahmoilta. \r\n\r\n(Can be offered in English as well)",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-11-02"],
+      "room": ["ropenurkka-1"],
+      "type": ["gaming"],
+      "topic": ["penandpaper"],
+      "konsti": ["tabletopRPG"],
+      "signup": ["konsti"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "DnD 5e",
+      "ropecon:gameSlogan": "Klassinen \"Tapaatte tavernassa\" -asetelma jonka läpi opetellaan pelaamaan",
+      "konsti:maxAttendance": 6,
+      "konsti:minAttendance": 3
+    },
+    "scheduleItems": [
+      {
+        "slug": "session-zero-tavernassa-tapahtuu",
+        "title": "Session Zero - Tavernassa tapahtuu",
+        "startTime": "2024-11-02T15:00:00+02:00",
+        "endTime": "2024-11-02T16:30:00+02:00",
+        "lengthMinutes": 90,
+        "location": "Ropenurkka 1"
+      }
+    ]
+  },
+  {
+    "slug": "session-zero-tavernassa-tapahtuu-2",
+    "title": "Session Zero - Tavernassa tapahtuu",
+    "description": "Tarjolla aloittelija-ystävällinen kokeilu roolipeli missä käydään läpi mitä on roolipelaaminen, millaisia sääntöjä on hyvä olla pelaajien kesken, kuinka pelinvetäjän ei pitäisi olla vastustaja vaan auttava käsi viemässä pelaajien tarinaa eteenpäin (eli semmoisia yleisiä hyviä tapoja), mukavuusrajojen löytäminen ja niiden asettelu... erilaisten pelityylien läpikäynti ja hyväksyttäminen. Rikotaan ennakkoluulot että roolipelaaminen vaatii jotain näyttelijän taitoja tai että vain yksi tapa pelata olisi \"se oikea\".  Kevyesti turvallisessa asetelmassa kokeillaan, mitä hahmolla voi tehdä ja miten peliä pelataan. \r\n\r\nPelin tavoitteena on kerätä tietoa tarjolla olevasta tehtävästä tavernan hahmoilta. \r\n\r\n(Can be offered in English as well)",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-11-02"],
+      "room": ["ropenurkka-1"],
+      "type": ["gaming"],
+      "topic": ["penandpaper"],
+      "konsti": ["tabletopRPG"],
+      "signup": ["konsti"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "DnD 5e",
+      "ropecon:gameSlogan": "Klassinen \"Tapaatte tavernassa\" -asetelma jonka läpi opetellaan pelaamaan",
+      "konsti:maxAttendance": 6,
+      "konsti:minAttendance": 3
+    },
+    "scheduleItems": [
+      {
+        "slug": "session-zero-tavernassa-tapahtuu-2",
+        "title": "Session Zero - Tavernassa tapahtuu",
+        "startTime": "2024-11-02T17:00:00+02:00",
+        "endTime": "2024-11-02T18:30:00+02:00",
+        "lengthMinutes": 90,
+        "location": "Ropenurkka 1"
+      }
+    ]
+  },
+  {
+    "slug": "song-of-ice-and-fire-demo",
+    "title": "Song of Ice and Fire demo",
+    "description": "Tulen ja jään maailmaan (Game of Thrones) sijoittuvassa miniatyyrisotapelissä eri suvut ja niiden sankarit kamppailevat Westerosin hallinnasta.\r\n\r\nPeli on helppo oppia, mutta vastustajan kukistaminen onkin sitten asia erikseen.\r\n\r\nPelissä joukot liikkuvat taistelukentällä, mutta samaan aikaan kulisseissa tapahtuva juonittelu vaikuttaa myös pelin kulkuun R.R. Martinin kirjoille tyypilliseen tapaan.\r\n\r\nTässä demossa vastakkain ovat Yövartio ja House Bolton.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-11-02"],
+      "room": ["figunurkka-4"],
+      "type": ["gaming"],
+      "topic": ["miniatures", "penandpaper"],
+      "konsti": ["tabletopRPG"],
+      "signup": ["konsti"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "A Song of Ice and Fire (by CMON)",
+      "ropecon:gameSlogan": "Miniatyyrisotapeli Tulen ja Jään maailmassa",
+      "konsti:maxAttendance": 2,
+      "konsti:minAttendance": 2
+    },
+    "scheduleItems": [
+      {
+        "slug": "song-of-ice-and-fire-demo",
+        "title": "Song of Ice and Fire demo",
+        "startTime": "2024-11-02T12:00:00+02:00",
+        "endTime": "2024-11-02T20:00:00+02:00",
+        "lengthMinutes": 480,
+        "location": "Figunurkka 4"
+      }
+    ]
+  },
+  {
+    "slug": "space-1889-pakkolasku-venuksen-viidakkoon",
+    "title": "Space 1889: Pakkolasku Venuksen viidakkoon",
+    "description": "Syrjäiselle Fort Davidille matkalla oleva eetteri lennokki tekee pakkolaskun keskellä Venuksen dinosauruksia kuhisevaa viidakkoa. Läheisillä kallioilla havaittu vartiotorni on paras paikka lähettää merkki mahdollisille pelastusaluksille. Pelaajien hahmot muodostavat seurueen, jonka tehtävä on vaeltaa viidakon läpi kallioille.\r\n\r\nPeli on uusinta versio klassisesta Space 1889 pelistä, jossa viktoriaanisessa vaihtoehtohistoriassa lennetään laivoilla avaruudessa ja lähiplaneetat ovat saneet vaikutteita pulp kirjallisuudesta. Pelissä sivutaan kolonialismi ja muita synkempiä aiheita, mutta kaikki seurueen jäsenet ovat tasa-arvoisessa asemassa. Hahmoilla on ristikkäisiä tavoitteita.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-11-02"],
+      "room": ["ropeluokka-2-poyta-a", "ropeluokka-2"],
+      "type": ["gaming"],
+      "topic": ["penandpaper"],
+      "konsti": ["tabletopRPG"],
+      "signup": ["konsti"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Space 1889 (Ubiquity)",
+      "ropecon:gameSlogan": "Selviytymistä ja juonittelua viktoriaanisessa vaihtoehtohistoriassa",
+      "konsti:maxAttendance": 5,
+      "konsti:minAttendance": 2
+    },
+    "scheduleItems": [
+      {
+        "slug": "space-1889-pakkolasku-venuksen-viidakkoon",
+        "title": "Space 1889: Pakkolasku Venuksen viidakkoon",
+        "startTime": "2024-11-02T16:00:00+02:00",
+        "endTime": "2024-11-02T18:00:00+02:00",
+        "lengthMinutes": 120,
+        "location": "Ropeluokka 2 Pöytä A"
+      }
+    ]
+  },
+  {
+    "slug": "space-1889-pakolasku-venuksen-viidakkoon",
+    "title": "Space 1889: Pakkolasku Venuksen viidakkoon",
+    "description": "Syrjäiselle Fort Davidille matkalla oleva eetteri lennokki tekee pakkolaskun keskellä Venuksen dinosauruksia kuhisevaa viidakkoa. Läheisillä kallioilla havaittu vartiotorni on paras paikka lähettää merkki mahdollisille pelastusaluksille. Pelaajien hahmot muodostavat seurueen, jonka tehtävä on vaeltaa viidakon läpi kallioille.\r\n\r\nPeli on uusinta versio klassisesta Space 1889 pelistä, jossa viktoriaanisessa vaihtoehtohistoriassa lennetään laivoilla avaruudessa ja lähiplaneetat ovat saneet vaikutteita pulp kirjallisuudesta. Pelissä sivutaan kolonialismi ja muita synkempiä aiheita, mutta kaikki seurueen jäsenet ovat tasa-arvoisessa asemassa. Hahmoilla on ristikkäisiä tavoitteita.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-11-03"],
+      "room": ["ropeluokka-3-poyta-c", "ropeluokka-3"],
+      "type": ["gaming"],
+      "topic": ["penandpaper"],
+      "konsti": ["tabletopRPG"],
+      "signup": ["konsti"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Space 1889 (Ubiquity)",
+      "ropecon:gameSlogan": "Selviytymistä ja juonittelua viktoriaanisessa vaihtoehtohistoriassa",
+      "konsti:maxAttendance": 5,
+      "konsti:minAttendance": 2
+    },
+    "scheduleItems": [
+      {
+        "slug": "space-1889-pakolasku-venuksen-viidakkoon",
+        "title": "Space 1889: Pakkolasku Venuksen viidakkoon",
+        "startTime": "2024-11-03T14:00:00+02:00",
+        "endTime": "2024-11-03T16:00:00+02:00",
+        "lengthMinutes": 120,
+        "location": "Ropeluokka 3 Pöytä C"
+      }
+    ]
+  },
+  {
+    "slug": "taivaskone",
+    "title": "Taivaskone",
+    "description": "Sirpale ihmiskuntaa on jäänyt jumiin kaukaiseen tähtijärjestelmään ja koittaa selviytyä siellä parhaansa mukaan, kaivaen ja keräten ympäröiviltä planeetoilta, kuilta ja asteroidelta resursseja. Näihin lukeutuu myös kauan sitten eläneiden Rakentajien jälkeensä jättämät rauniot ja sieltä löytyvät artefaktit. \r\n\r\nMuutama päivä sitten Moubarra 4 -asteroidikuulla viisi malminetsijää katosi tutkiessaan kuun pintaan ilmestynyttä railoa. Heidän viimeiset viestinsä kertoivat syvyyksistä löytyneistä rakennelmista, ja korkeasta Ruosteen määrästä. Kaivosaseman oma pelastuspartio joutui siksi kääntymään takaisin, ja Kaivoskollektiivi on nyt pyytänyt Tutkijoiden kiltaa apuun.\r\n\r\nSeikkailu on Coriolis: The Great Darkin quickstart-säännöissä mukana tuleva The Sky Machine -introseikkailu, conimittaan tiivistettynä. Kokemus jostain aiemmasta Free Leaguen/Fria Liganin MYZ-pelisysteemiä käyttävästä pelistä on avuksi, mutta ei tarpeen – ja kuten aina muissakin FL:n peleissä, tässäkin on joitain omia tuunauksia. Tämän Corioliksen uusimman laitoksen sisältö inspiroituu mm. pulp-arkeologiasta, vuorikiipeilystä ja syvänmerensukelluksesta, mutta sisältää myös lähinnä avaruuden tyhjyyteen ja muinaiseen mystiseen Rakentajien sivilisaatioon liittyviä kevyitä jännitys- tai kauhuelementtejä. Taistelua on jonkin verran, melko kevyellä sääntömekaniikalla.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-11-03"],
+      "room": ["ropenurkka-2"],
+      "type": ["gaming"],
+      "topic": ["penandpaper"],
+      "konsti": ["tabletopRPG"],
+      "signup": ["konsti"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Coriolis: The Great Dark",
+      "ropecon:gameSlogan": "Kaukaisessa tähtijärjestelmässä ryhmä Rakentajien raunioiden tutkijoita lähtee pelastamaan kadonneita malminetsijöitä.",
+      "konsti:maxAttendance": 4,
+      "konsti:minAttendance": 3
+    },
+    "scheduleItems": [
+      {
+        "slug": "taivaskone",
+        "title": "Taivaskone",
+        "startTime": "2024-11-03T12:00:00+02:00",
+        "endTime": "2024-11-03T16:00:00+02:00",
+        "lengthMinutes": 240,
+        "location": "Ropenurkka 2"
+      }
+    ]
+  },
+  {
+    "slug": "the-dalish-curse-a-dragon-age-rpg",
+    "title": "The Dalish Curse - A Dragon Age RPG",
+    "description": "Your lives in the village of Vintiver have turned drastically, as people from the village have turned up butchered by an unknown attacker. First it was livestock, lately more and more people. Some of the villagers have started blaming the \"knife-ears\" that recently were in the area, as there were disagreements - regardless that those were settled amicably. Rumour about a Dalish curse has started to spread. Now you have encountered a wounded elven woman, a Dalish it seems, that seems to be babbling about some great evil.\r\n\r\nFor characters lvl 2-4, ready made available, you can bring your own.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-11-03"],
+      "room": ["ropeluokka-2-poyta-c", "ropeluokka-2"],
+      "type": ["gaming"],
+      "topic": ["penandpaper"],
+      "konsti": ["tabletopRPG"],
+      "signup": ["konsti"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "The Adventure Game Engine (AGE)",
+      "ropecon:gameSlogan": "Perinteistyylistä fantasiaroolipelausta Dragon Agen maailmassa.",
+      "konsti:maxAttendance": 5,
+      "konsti:minAttendance": 3
+    },
+    "scheduleItems": [
+      {
+        "slug": "the-dalish-curse-a-dragon-age-rpg",
+        "title": "The Dalish Curse - A Dragon Age RPG",
+        "startTime": "2024-11-03T11:00:00+02:00",
+        "endTime": "2024-11-03T14:00:00+02:00",
+        "lengthMinutes": 180,
+        "location": "Ropeluokka 2 Pöytä C"
+      }
+    ]
+  },
+  {
+    "slug": "the-lighthouse",
+    "title": "The Lighthouse",
+    "description": "Draw your trenchcoat tighter, the cold wind crawls right under your skin. You check the tattered old map once more and you are sure: this is it. This is the old lighthouse the old fisher had described.\r\n\r\nStep inside and uncover the dark secrets that are buried in the depths and heights of the old lighthouse.\r\n\r\nWill you find what you are looking for or will madness and the rough sea claim you?",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-11-03"],
+      "room": ["ropenurkka-x"],
+      "type": ["gaming"],
+      "topic": ["penandpaper"],
+      "konsti": ["tabletopRPG"],
+      "signup": ["konsti"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Call of Cthulhu 7e",
+      "ropecon:gameSlogan": "Beginner friendly intro for Call of Cthulhu - no previous experience required. Trigger warning for common horror themes, 18+ only!",
+      "konsti:maxAttendance": 5,
+      "konsti:minAttendance": 3
+    },
+    "scheduleItems": [
+      {
+        "slug": "the-lighthouse",
+        "title": "The Lighthouse",
+        "startTime": "2024-11-03T12:00:00+02:00",
+        "endTime": "2024-11-03T16:00:00+02:00",
+        "lengthMinutes": 240,
+        "location": "Ropenurkka X"
+      }
+    ]
+  },
+  {
+    "slug": "timantin-savyvirhe-2",
+    "title": "Timantin sävyvirhe",
+    "description": "Pelin genre on transhumanistinen mysteeri scifi.\r\n\r\nPeli sijoittuu maapallon lähitulevaisuuteen USA:ssa. Pelaatte Franchise periaatteella toimivan NovaTrix ongelmanratkaisuketjun yhtä toimistoa. Yksi pelaajista on toimiston omistava yrittäjä, muut hänen alaisiaan.\r\n\r\nToimisto saa toimeksiannon etsiä todisteita oikeusjuttuun vainajan tuhkasta valmistetun timantin väärän värisävyn takia.\r\n\r\nSisältövaroitukset: Itsemurha, seksin havainointi, seksuaalinen väkivalta, hämähäkkieläimet\r\n\r\nPeli on ikärajalla rajattu teemojensa takia.\r\n\r\nPeli soveltuu aloittelijalle.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-11-02"],
+      "room": ["ropenurkka-x"],
+      "type": ["gaming"],
+      "topic": ["penandpaper"],
+      "konsti": ["tabletopRPG"],
+      "signup": ["konsti"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Tarinoita tietoisuuden ajalta",
+      "ropecon:gameSlogan": "SciFi mysteeri maapallon dystopisessa lähitulevaisuudessa.",
+      "konsti:maxAttendance": 4,
+      "konsti:minAttendance": 2
+    },
+    "scheduleItems": [
+      {
+        "slug": "timantin-savyvirhe-2",
+        "title": "Timantin sävyvirhe",
+        "startTime": "2024-11-02T11:00:00+02:00",
+        "endTime": "2024-11-02T15:00:00+02:00",
+        "lengthMinutes": 240,
+        "location": "Ropenurkka X"
+      }
+    ]
+  },
+  {
+    "slug": "toivottavasti-kukaan-ei-huomaa",
+    "title": "Toivottavasti kukaan ei huomaa!",
+    "description": "Astukaamme pohtimaan roolipelin keinoin syvälle sisimpäämme teljettyjä taakkoja. Toivottavasti ne eivät ryöpsähdä esiin pahimmalla mahdollisella hetkellä.\r\n\r\nTarinavetoinen, ohjattu improvisaatioroolipeli. Pelaajina pääsette vaikuttamaan millaisessa maailmassa käsittelemme ajatustemme varjopuolia.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-11-03"],
+      "room": ["ropeluokka-2-poyta-a", "ropeluokka-2"],
+      "type": ["gaming"],
+      "topic": ["penandpaper"],
+      "konsti": ["tabletopRPG"],
+      "signup": ["konsti"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Oma",
+      "ropecon:gameSlogan": "Astukaamme pohtimaan roolipelin keinoin syvälle sisimpäämme teljettyjä taakkoja.",
+      "konsti:maxAttendance": 4,
+      "konsti:minAttendance": 2
+    },
+    "scheduleItems": [
+      {
+        "slug": "toivottavasti-kukaan-ei-huomaa",
+        "title": "Toivottavasti kukaan ei huomaa!",
+        "startTime": "2024-11-03T11:00:00+02:00",
+        "endTime": "2024-11-03T15:00:00+02:00",
+        "lengthMinutes": 240,
+        "location": "Ropeluokka 2 Pöytä A"
+      }
+    ]
+  },
+  {
+    "slug": "toivottavasti-kukaan-ei-huomaa-2",
+    "title": "Toivottavasti kukaan ei huomaa!",
+    "description": "Astukaamme pohtimaan roolipelin keinoin syvälle sisimpäämme teljettyjä taakkoja. Toivottavasti ne eivät ryöpsähdä esiin pahimmalla mahdollisella hetkellä.\r\n\r\nTarinavetoinen, ohjattu improvisaatioroolipeli. Pelaajina pääsette vaikuttamaan millaisessa maailmassa käsittelemme ajatustemme varjopuolia.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-11-02"],
+      "room": ["ropeluokka-1-poyta-a", "ropeluokka-1"],
+      "type": ["gaming"],
+      "topic": ["penandpaper"],
+      "konsti": ["tabletopRPG"],
+      "signup": ["konsti"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Oma",
+      "ropecon:gameSlogan": "Astukaamme pohtimaan roolipelin keinoin syvälle sisimpäämme teljettyjä taakkoja.",
+      "konsti:maxAttendance": 4,
+      "konsti:minAttendance": 2
+    },
+    "scheduleItems": [
+      {
+        "slug": "toivottavasti-kukaan-ei-huomaa-2",
+        "title": "Toivottavasti kukaan ei huomaa!",
+        "startTime": "2024-11-02T16:00:00+02:00",
+        "endTime": "2024-11-02T20:00:00+02:00",
+        "lengthMinutes": 240,
+        "location": "Ropeluokka 1 Pöytä A"
+      }
+    ]
+  },
+  {
+    "slug": "tyhjyyden-meren-hirviot",
+    "title": "Tyhjyyden meren hirviöt",
+    "description": "Steampunk-murhamysteeri valtamerialuksessa Blades in the Darkin fantastisen viktoriaanisessa maailmassa, mutta kevyemmin säännöin!\r\n\r\nPelaajat voivat osallistua tarinankehittelyyn ja mysteerin ratkaisu selviää pelinjohtajallekin vasta pelin aikana. Peli liikkuu aikajanalla edestakaisin uusien juonenkäänteiden paljastuessa.\r\n\r\nPelityyli on kevyt ja rento ja sopii myös aloittelijoille.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-11-02"],
+      "room": ["ropeluokka-1-poyta-b", "ropeluokka-1"],
+      "type": ["gaming"],
+      "topic": ["penandpaper"],
+      "konsti": ["tabletopRPG"],
+      "signup": ["konsti"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Blades in the Dark hack",
+      "ropecon:gameSlogan": "Kevyt steampunk-murhamysteeri",
+      "konsti:maxAttendance": 4,
+      "konsti:minAttendance": 2
+    },
+    "scheduleItems": [
+      {
+        "slug": "tyhjyyden-meren-hirviot",
+        "title": "Tyhjyyden meren hirviöt",
+        "startTime": "2024-11-02T16:00:00+02:00",
+        "endTime": "2024-11-02T20:00:00+02:00",
+        "lengthMinutes": 240,
+        "location": "Ropeluokka 1 Pöytä B"
+      }
+    ]
+  },
+  {
+    "slug": "vaiettu-menneisyys",
+    "title": "Vaiettu menneisyys",
+    "description": "Tule luomaan miekka & magia -novellin alkutilanne yhdessä – ja sitten pelaamaan sen päähenkilöitä! \r\n\r\nPyhäinpäivän tunnelmissa arvotaan oraakkeli Vaiettu menneisyys -teemasta: Eläviä kuolleita, räyhähenkiä, virvatulia. Haamut ja aaveet janoavat kuolevaisten elinvoimaa. Jumalia, demoneita ja kuolevaisia kamppailemassa mystisten voimien herruudesta. \r\n\r\nIn a Wicked Agessa pelaajat arpovat yhdessä oraakkelin, joka määrittelee session alkutilanteen ja hahmojen siemenet. Pelaajat valitsevat ja tekevät hahmonsa, pelinjohtaja ohjaa loppuja, ja yhdessä pelataan koko novellin kaari kohtaus kohtaukselta. Vaikutteet: Conan, Tanith Leen kirjat, Elric, Excalibur jne.\r\n\r\nSisältää: Yhteiskehittelyä – alkutilanne ja hahmot kehitellään yhdessä arvottujen oraakkelien pohjalta. Pelaajahahmo vs. pelaajahahmo -tilanteita – Pelaajahahmojen intressit voivat olla keskenään konfliktissa. Kevyet säännöt, pientä sääntöjen hienosäätöä alkup. peliin nähden.\r\n\r\nSopii aloittelijoille ja varttuneille pelaajille (oman harkinnan mukaan 15+ -vuotiaille).",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-11-03"],
+      "room": ["ropeluokka-2-poyta-b", "ropeluokka-2"],
+      "type": ["gaming"],
+      "topic": ["penandpaper"],
+      "konsti": ["tabletopRPG"],
+      "signup": ["konsti"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "In a Wicked Age*",
+      "ropecon:gameSlogan": "Veret seisauttava miekka & magia -peli yhteiskehittelyllisesti",
+      "konsti:maxAttendance": 4,
+      "konsti:minAttendance": 3
+    },
+    "scheduleItems": [
+      {
+        "slug": "vaiettu-menneisyys",
+        "title": "Vaiettu menneisyys",
+        "startTime": "2024-11-03T11:00:00+02:00",
+        "endTime": "2024-11-03T14:00:00+02:00",
+        "lengthMinutes": 180,
+        "location": "Ropeluokka 2 Pöytä B"
+      }
+    ]
+  },
+  {
+    "slug": "waking-of-willowby-hall",
+    "title": "Waking of Willowby Hall",
+    "description": "Hylätty kummituskartano ja sitä vartioivat epäkuolleet, vanhan kultin salaisuudet, porukka hanhivarkaita ja vihainen jättiläinen.\r\n\r\nWaking of Willowby Hall on Ben Miltonin kirjoittama loistava minihiekkalaatikko, missä pelaajia rajoittaa vain heidän oma luovuutensa ja seikkailun sisältämät vaarat. Jokainen ryhmä löytää omanlaisensa polun kartanon läpi.\r\n\r\nKnave 2e on erittäin yksinkertainen D&D-tyylinen pelijärjestelmä, joka on suunniteltu yhteensopivaksi vanhan liiton (OSR) pelien kanssa. Pelinjohtajalla on valikoima valmishahmoja.\r\n\r\n--\r\nA haunted manor and the undead who guard it, the secrets of an ancient cult, a group of goose thieves and an angry giant.\r\n\r\nWaking of Willowby Hall is Ben Milton's amazing mini sandbox adventure, where player choices are only limited by their ingenuity and the dangers of the adventure. Each group finds its own unique route through the manor.\r\n\r\nKnave 2e is a very simple D&D-style system, designed to be compatible with old-school systems. The GM has a selection of premade characters.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-11-02"],
+      "room": ["ropeluokka-3-poyta-b", "ropeluokka-3"],
+      "type": ["gaming"],
+      "topic": ["penandpaper"],
+      "konsti": ["tabletopRPG"],
+      "signup": ["konsti"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Knave 2e",
+      "ropecon:gameSlogan": "OSR dungeoncrawling",
+      "konsti:maxAttendance": 5,
+      "konsti:minAttendance": 3
+    },
+    "scheduleItems": [
+      {
+        "slug": "waking-of-willowby-hall",
+        "title": "Waking of Willowby Hall",
+        "startTime": "2024-11-02T18:00:00+02:00",
+        "endTime": "2024-11-02T22:00:00+02:00",
+        "lengthMinutes": 240,
+        "location": "Ropeluokka 3 Pöytä B"
+      }
+    ]
+  }
+]
