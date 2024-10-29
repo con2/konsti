@@ -44,7 +44,7 @@ Konstin käytössä auttavat Pelitiski (Halli 3) ja Larp- ja Roolipelitiski (ete
 </Ropecon>
 
 <Hitpoint>
-Konstin kautta voi ilmoittautua pöytäroolipeleihin ja larppeihin.
+Konstin kautta voi ilmoittautua pöytäroolipeleihin, larppeihin ja työpajoihin.
 
 Konstin käytössä auttaa Roolipelitiski. Tiskillä on myös tietokoneita, joilla Konstia voi käyttää.
 
@@ -65,7 +65,7 @@ The Gaming Desk (Hall 3) and the Larp & RPG Desk (southern entrance lobby) will 
 </Ropecon>
 
 <Hitpoint>
-Konsti is used to sign up for tabletop role-playing games and larps.
+Konsti is used to sign up for tabletop role-playing games, larps and workshops.
 
 The RPG Desk will help you with using Konsti. The desks also have shared computers for using Konsti.
 
@@ -96,6 +96,7 @@ You can browse the <Link to={"/program/list"}>program list</Link> without loggin
 ### Is my old account still active?
 </En>
 
+<LoginLocal>
 <Fi>
 Aikaisempien tapahtumien Konsti-käyttäjätilit eivät ole enää käytössä, vaan sinun on luotava uusi tili tapahtumalle {props.eventName} {props.eventYear}.
 </Fi>
@@ -103,6 +104,24 @@ Aikaisempien tapahtumien Konsti-käyttäjätilit eivät ole enää käytössä, 
 <En>
 Konsti accounts from previous events have been removed, so you will need to create a new one for {props.eventName} {props.eventYear}.
 </En>
+</LoginLocal>
+
+<LoginKompassi>
+<Fi>
+Aikaisemmin luotu Kompassi-tunnuksesi on edelleen olemassa.
+
+Aikaisempien tapahtumien Konsti-käyttäjänimi eivät ole enää käytössä. Sinun on valittava uusi Konsti-käyttäjänimi tapahtumalle {props.eventName} {props.eventYear}.
+
+</Fi>
+
+<En>
+The Kompassi account you previously created still exists.
+
+Konsti usernames from past events are no longer in use. You will need to choose a new Konsti username for the event {props.eventName} {props.eventYear}.
+
+</En>
+</LoginKompassi>
+
 </Expand>
 
 <Expand>
@@ -122,7 +141,7 @@ Uuden käyttäjätilin luomiseen tarvitset rekisteröintikoodin, joita on saatav
 <LoginKompassi>
 Konstiin kirjaudutaan Kompassi-tunnuksella. Voit rekisteröidä Kompassi-tunnuksen Konstin  kirjautumisen yhteydessä <Link to={"/login"}>kirjautumissivulta</Link> tai jo ennen tapahtumaa Kompassin <Link to={"https://kompassi.eu/register"}>rekisteröintisivulla</Link>.
 
-Kompassi-kirjautumisen jälkeen voit valita itsellesi Konsti-käyttäjätunnuksen. Tämän jälkeen voit kirjautua sisään ja ilmoittautua ohjelmanumeroihin.
+Ensimmäisellä kirjautumiskerralla voit valita itsellesi Konsti-käyttäjänimen. Tämän jälkeen voit ilmoittautua ohjelmanumeroihin.
 
 </LoginKompassi>
 </Fi>
@@ -135,7 +154,7 @@ For creating an account, you will need a registration code, which you can get fr
 <LoginKompassi>
 You can log in to Konsti using your Kompassi account. You can register a Kompassi account while logging in to Konsti via the <Link to={"/registration"}>login page</Link> or before the convention from the <Link to={"https://kompassi.eu/register"}>Kompassi registration page</Link>.
 
-After logging in with Kompassi, you can choose a Konsti username. Following this, you can log in and sign up for program items.
+On your first login, you can choose a Konsti username for yourself. Following this, you can sign up for program items.
 
 </LoginKompassi>
 
@@ -203,6 +222,7 @@ Ohjelmanumeroihin ilmoittaudutaan arvonnalla. Arvonnan jälkeen jäljelle jään
 
 - **Roolipelit**: Arvonta
 - **Larpit**: Arvonta
+- **Työpajat**: Arvonta
 
 </Fi>
 
@@ -211,6 +231,7 @@ You can sign up for program items through a lottery. After lottery, remaining se
 
 - **Role-playing games**: Lottery
 - **LARPs**: Lottery
+- **Workshops**: Lottery
 
 </En>
 </Hitpoint>
@@ -336,19 +357,19 @@ Revolving door program items are program items where participants can freely joi
 
 <Ropecon>
 <Fi>
-Konstin roolipeli-ilmoittautuminen tapahtuu kahdessa vaiheessa: arvonnalla ja suoralla ilmoittautumisessa. Arvonnassa Konstin algoritmi jakaa pelipaikkoja käyttäjien asettamien toiveiden mukaan. Arvontaan voi ilmoittautua neljä tuntia ennen kunkin pelin alkua, paitsi seuraavan aamun peleihin jo edellisenä iltana. On mahdollista ilmoittautua kolmen eri pelin arvontaan kutakin pelien alkamisajankohtaa kohti.
+Konstin roolipeli-ilmoittautuminen tapahtuu kahdessa vaiheessa: arvonnalla ja suoralla ilmoittautumisessa. Arvonnassa Konstin algoritmi jakaa pelipaikkoja käyttäjien asettamien toiveiden mukaan. Arvontaan voi ilmoittautua 4h ennen kunkin pelin alkua, paitsi seuraavan aamun peleihin jo edellisenä iltana. On mahdollista ilmoittautua kolmen eri pelin arvontaan kutakin pelien alkamisajankohtaa kohti.
 </Fi>
 
 <En>
-Tabletop RPG sign-up in Konsti happens in two phases: lottery and direct sign-up. The lottery phase uses an algorithm to assign users to games while taking into account the preferences they have chosen for the games they have signed up for. The phase starts four hours before a game begins, except for the first games on mornings, for which the sign-up starts the night before. In lottery phase, you can choose up to three games for each time slot.
+Tabletop RPG sign-up in Konsti happens in two phases: lottery and direct sign-up. The lottery phase uses an algorithm to assign users to games while taking into account the preferences they have chosen for the games they have signed up for. The phase starts 4h before a game begins, except for the first games on mornings, for which the sign-up starts the night before. In lottery phase, you can choose up to three games for each time slot.
 </En>
 
 <Fi>
-Arvontaan ilmoittautuminen päättyy kaksi tuntia ennen pelin alkua, minkä jälkeen Konsti sijoittaa ilmoittautuneet peleihin heidän toiveidensa mukaisesti. Ilmoittautuminen sulkeutuu arvonnan jälkeen 15 minuutiksi. Tämän vartin aikana käyttäjä voi tarkistaa, mihin peliin on päässyt mukaan ja halutessaan osallistua sen jälkeen suoraan ilmoittautumiseen.
+Arvontaan ilmoittautuminen päättyy 2h ennen pelin alkua, minkä jälkeen Konsti sijoittaa ilmoittautuneet peleihin heidän toiveidensa mukaisesti. Ilmoittautuminen sulkeutuu arvonnan jälkeen 15 minuutiksi. Tämän vartin aikana käyttäjä voi tarkistaa, mihin peliin on päässyt mukaan ja halutessaan osallistua sen jälkeen suoraan ilmoittautumiseen.
 </Fi>
 
 <En>
-The lottery sign-up phase ends two hours before game starts, after which the Konsti algorithm places users into games based on their chosen preferences. After this initial placement, signing up for games is closed for 15 minutes. During this "intermission period" you can take a look at the results of the lottery sign-up, and decide whether you want to participate in the second phase of the sign-up process or not.
+The lottery sign-up phase ends 2h before game starts, after which the Konsti algorithm places users into games based on their chosen preferences. After this initial placement, signing up for games is closed for 15 minutes. During this "intermission period" you can take a look at the results of the lottery sign-up, and decide whether you want to participate in the second phase of the sign-up process or not.
 </En>
 
 <Fi>
@@ -362,19 +383,19 @@ After the initial placements and the 15-minute intermission period, the direct s
 
 <Hitpoint>
 <Fi>
-Konstin roolipeli-ilmoittautuminen tapahtuu kahdessa vaiheessa: arvonnalla ja suoralla ilmoittautumisessa. Arvonnassa Konstin algoritmi jakaa pelipaikkoja käyttäjien asettamien toiveiden mukaan. Arvontaan voi ilmoittautua neljä tuntia ennen kunkin pelin alkua, paitsi seuraavan aamun peleihin jo edellisenä iltana. On mahdollista ilmoittautua kolmen eri pelin arvontaan kutakin pelien alkamisajankohtaa kohti.
+Konstin roolipeli-ilmoittautuminen tapahtuu kahdessa vaiheessa: arvonnalla ja suoralla ilmoittautumisessa. Arvonnassa Konstin algoritmi jakaa pelipaikkoja käyttäjien asettamien toiveiden mukaan. Arvontaan voi ilmoittautua 4h ennen kunkin pelin alkua, paitsi seuraavan aamun peleihin jo edellisenä iltana. On mahdollista ilmoittautua kolmen eri pelin arvontaan kutakin pelien alkamisajankohtaa kohti.
 </Fi>
 
 <En>
-Tabletop RPG sign-up in Konsti happens in two phases: lottery and direct sign-up. The lottery phase uses an algorithm to assign users to games while taking into account the preferences they have chosen for the games they have signed up for. The phase starts four hours before a game begins, except for the first games on mornings, for which the sign-up starts the night before. In lottery phase, you can choose up to three games for each time slot.
+Tabletop RPG sign-up in Konsti happens in two phases: lottery and direct sign-up. The lottery phase uses an algorithm to assign users to games while taking into account the preferences they have chosen for the games they have signed up for. The phase starts 4h before a game begins, except for the first games on mornings, for which the sign-up starts the night before. In lottery phase, you can choose up to three games for each time slot.
 </En>
 
 <Fi>
-Arvontaan ilmoittautuminen päättyy kaksi tuntia ennen pelin alkua, minkä jälkeen Konsti sijoittaa ilmoittautuneet peleihin heidän toiveidensa mukaisesti. Ilmoittautuminen sulkeutuu arvonnan jälkeen 15 minuutiksi. Tämän vartin aikana käyttäjä voi tarkistaa, mihin peliin on päässyt mukaan ja halutessaan osallistua sen jälkeen suoraan ilmoittautumiseen.
+Arvontaan ilmoittautuminen päättyy 2h ennen pelin alkua, minkä jälkeen Konsti sijoittaa ilmoittautuneet peleihin heidän toiveidensa mukaisesti. Ilmoittautuminen sulkeutuu arvonnan jälkeen 15 minuutiksi. Tämän vartin aikana käyttäjä voi tarkistaa, mihin peliin on päässyt mukaan ja halutessaan osallistua sen jälkeen suoraan ilmoittautumiseen.
 </Fi>
 
 <En>
-The lottery sign-up phase ends two hours before game starts, after which the Konsti algorithm places users into games based on their chosen preferences. After this initial placement, signing up for games is closed for 15 minutes. During this "intermission period" you can take a look at the results of the lottery sign-up, and decide whether you want to participate in the second phase of the sign-up process or not.
+The lottery sign-up phase ends 2h before game starts, after which the Konsti algorithm places users into games based on their chosen preferences. After this initial placement, signing up for games is closed for 15 minutes. During this "intermission period" you can take a look at the results of the lottery sign-up, and decide whether you want to participate in the second phase of the sign-up process or not.
 </En>
 
 <Fi>
@@ -388,11 +409,11 @@ After the initial placements and the 15-minute intermission period, the direct s
 
 <Tracon>
 <Fi>
-Roolipeleihin ilmoittaudutaan suoraan eli paikat täytetään ilmoittautumisjärjestyksessä. Roolipeleihin ilmoittautuminen aukeaa neljä tuntia ennen pelin alkua.
+Roolipeleihin ilmoittaudutaan suoraan eli paikat täytetään ilmoittautumisjärjestyksessä. Roolipeleihin ilmoittautuminen aukeaa 4h ennen pelin alkua.
 </Fi>
 
 <En>
-Role-playing games use direct signup and seats are reserved in signup order. Signup for role-playing games opens four hours before the game begins.
+Role-playing games use direct signup and seats are reserved in signup order. Signup for role-playing games opens 4h before the game begins.
 </En>
 
 </Tracon>
@@ -402,7 +423,7 @@ Role-playing games use direct signup and seats are reserved in signup order. Sig
 Perjantain klo 16 ja klo 17 peleihin eli kahteen ensimmäiseen alkamisajankohtaan on ainoastaan suora ilmoittautuminen, koska arvonnalle ei ole aikaa.
 </Ropecon>
 <Hitpoint>
-Kahteen ensimmäiseen alkamisajankohtaan on ainoastaan suora ilmoittautuminen, koska arvonnalle ei ole aikaa.
+Lauantaina klo 10:00 - 12:00 alkaviin peleihin on ainoastaan suora ilmoittautuminen, koska arvonnalle ei ole aikaa.
 </Hitpoint>
 </Fi>
 
@@ -411,7 +432,7 @@ Kahteen ensimmäiseen alkamisajankohtaan on ainoastaan suora ilmoittautuminen, k
 The first games of the convention, which start on Friday at 4PM and 5PM, only have the direct sign-up phase since there is no time for lottery.
 </Ropecon>
 <Hitpoint>
-The first games of the convention only have the direct sign-up phase since there is no time for lottery.
+On Saturday, games starting between 10:00 and 12:00 use direct signup, as there is no time for a lottery.
 </Hitpoint>
 </En>
 
@@ -428,19 +449,19 @@ The first games of the convention only have the direct sign-up phase since there
 
 <Hitpoint>
 <Fi>
-Konstin larp-ilmoittautuminen tapahtuu kahdessa vaiheessa: arvonnalla ja suoralla ilmoittautumisessa. Arvonnassa Konstin algoritmi jakaa pelipaikkoja käyttäjien asettamien toiveiden mukaan. Arvontaan voi ilmoittautua neljä tuntia ennen kunkin pelin alkua, paitsi seuraavan aamun peleihin jo edellisenä iltana. On mahdollista ilmoittautua kolmen eri pelin arvontaan kutakin pelien alkamisajankohtaa kohti.
+Konstin larp-ilmoittautuminen tapahtuu kahdessa vaiheessa: arvonnalla ja suoralla ilmoittautumisessa. Arvonnassa Konstin algoritmi jakaa pelipaikkoja käyttäjien asettamien toiveiden mukaan. Arvontaan voi ilmoittautua 4h ennen kunkin pelin alkua, paitsi seuraavan aamun peleihin jo edellisenä iltana. On mahdollista ilmoittautua kolmen eri pelin arvontaan kutakin pelien alkamisajankohtaa kohti.
 </Fi>
 
 <En>
-Tabletop RPG sign-up in Konsti happens in two phases: lottery and direct sign-up. The lottery phase uses an algorithm to assign users to games while taking into account the preferences they have chosen for the games they have signed up for. The phase starts four hours before a game begins, except for the first games on mornings, for which the sign-up starts the night before. In lottery phase, you can choose up to three games for each time slot.
+Tabletop RPG sign-up in Konsti happens in two phases: lottery and direct sign-up. The lottery phase uses an algorithm to assign users to games while taking into account the preferences they have chosen for the games they have signed up for. The phase starts 4h before a game begins, except for the first games on mornings, for which the sign-up starts the night before. In lottery phase, you can choose up to three games for each time slot.
 </En>
 
 <Fi>
-Arvontaan ilmoittautuminen päättyy kaksi tuntia ennen pelin alkua, minkä jälkeen Konsti sijoittaa ilmoittautuneet peleihin heidän toiveidensa mukaisesti. Ilmoittautuminen sulkeutuu arvonnan jälkeen 15 minuutiksi. Tämän vartin aikana käyttäjä voi tarkistaa, mihin peliin on päässyt mukaan ja halutessaan osallistua sen jälkeen suoraan ilmoittautumiseen.
+Arvontaan ilmoittautuminen päättyy 2h ennen pelin alkua, minkä jälkeen Konsti sijoittaa ilmoittautuneet peleihin heidän toiveidensa mukaisesti. Ilmoittautuminen sulkeutuu arvonnan jälkeen 15 minuutiksi. Tämän vartin aikana käyttäjä voi tarkistaa, mihin peliin on päässyt mukaan ja halutessaan osallistua sen jälkeen suoraan ilmoittautumiseen.
 </Fi>
 
 <En>
-The lottery sign-up phase ends two hours before game starts, after which the Konsti algorithm places users into games based on their chosen preferences. After this initial placement, signing up for games is closed for 15 minutes. During this "intermission period" you can take a look at the results of the lottery sign-up, and decide whether you want to participate in the second phase of the sign-up process or not.
+The lottery sign-up phase ends 2h before game starts, after which the Konsti algorithm places users into games based on their chosen preferences. After this initial placement, signing up for games is closed for 15 minutes. During this "intermission period" you can take a look at the results of the lottery sign-up, and decide whether you want to participate in the second phase of the sign-up process or not.
 </En>
 
 <Fi>
@@ -451,14 +472,22 @@ Suora ilmoittautuminen alkaa 1 h 45 min ennen pelin alkua. Tässä vaiheessa on 
 After the initial placements and the 15-minute intermission period, the direct sign-up phase begins. During the last 1h 45 min before the game is set to begin, you can sign up for a game as long as there is still room for new attendees. You do not need to participate in the lottery sign-up phase to be able to sign up during the direct sign-up period.
 </En>
 
-</Hitpoint>
-<Tracon>
 <Fi>
-Larppeihin ilmoittautuminen aukeaa neljä tuntia ennen larpin alkua. Larppeihin ilmoittaudutaan suoraan eli paikat täytetään ilmoittautumisjärjestyksessä.
+Lauantaina klo 10:00 - 12:00 alkaviin larppeihi on ainoastaan suora ilmoittautuminen, koska arvonnalle ei ole aikaa.
 </Fi>
 
 <En>
-Larps use direct signup and seats are reserved in signup order. Signup for larps opens four hours before the larp begins.
+On Saturday, larps starting between 10:00 and 12:00 use direct signup, as there is no time for a lottery.
+</En>
+
+</Hitpoint>
+<Tracon>
+<Fi>
+Larppeihin ilmoittautuminen aukeaa 4h ennen larpin alkua. Larppeihin ilmoittaudutaan suoraan eli paikat täytetään ilmoittautumisjärjestyksessä.
+</Fi>
+
+<En>
+Larps use direct signup and seats are reserved in signup order. Signup for larps opens 4h before the larp begins.
 </En>
 </Tracon>
 
@@ -552,6 +581,7 @@ Turnausten ilmoittautumisen yhteydessä Konstissa saatetaan kysyä käyttäjält
 When signing up for a tournament via the Konsti app, the user is prompted to fill in their name and contact information (email and phone number) before confirming their signup. This is done to make sure that tournament organizers can get a hold of the winners and other possible prize recipients after the tournament. This information is not shown to other Konsti users, only to Ropecon desk staff, who will pass on necessary contact information to tournament organizers.
 </En>
 </Expand>
+</Ropecon>
 
 <Expand>
 <Fi>
@@ -561,6 +591,8 @@ When signing up for a tournament via the Konsti app, the user is prompted to fil
 <En>
 ### Workshop sign-ups
 </En>
+
+<Ropecon>
 
 <Fi>
 Työpajoihin ilmoittaudutaan suoraan eli paikat täytetään ilmoittautumisjärjestyksessä.
@@ -579,16 +611,53 @@ Workshops use direct signup and seats are reserved in signup order.
 </En>
 
 <Fi>
-- Työpajoihin ilmoittautuminen aukeaa neljä tuntia ennen työpajan alkua.
+- Työpajoihin ilmoittautuminen aukeaa 4h ennen työpajan alkua.
 - Jos työpaja alkaa ennen klo 12, niin ilmoittautuminen aukeaa edellisenä päivänä klo 18.
 </Fi>
 
 <En>
-- Signup for the workshops opens four hours before the workshop begins.
+- Signup for the workshops opens 4h before the workshop begins.
 - If the workshop begins before 12 PM, then registration opens the previous day at 6 PM.
 </En>
+</Ropecon>
+
+<Hitpoint>
+<Fi>
+Konstin työpajailmoittautuminen tapahtuu kahdessa vaiheessa: arvonnalla ja suoralla ilmoittautumisessa. Arvonnassa Konstin algoritmi jakaa pelipaikkoja käyttäjien asettamien toiveiden mukaan. Arvontaan voi ilmoittautua 4h ennen kunkin pelin alkua, paitsi seuraavan aamun peleihin jo edellisenä iltana. On mahdollista ilmoittautua kolmen eri pelin arvontaan kutakin pelien alkamisajankohtaa kohti.
+</Fi>
+
+<En>
+Workshop sign-up in Konsti happens in two phases: lottery and direct sign-up. The lottery phase uses an algorithm to assign users to games while taking into account the preferences they have chosen for the games they have signed up for. The phase starts 4h before a game begins, except for the first games on mornings, for which the sign-up starts the night before. In lottery phase, you can choose up to three games for each time slot.
+</En>
+
+<Fi>
+Arvontaan ilmoittautuminen päättyy 2h ennen pelin alkua, minkä jälkeen Konsti sijoittaa ilmoittautuneet peleihin heidän toiveidensa mukaisesti. Ilmoittautuminen sulkeutuu arvonnan jälkeen 15 minuutiksi. Tämän vartin aikana käyttäjä voi tarkistaa, mihin peliin on päässyt mukaan ja halutessaan osallistua sen jälkeen suoraan ilmoittautumiseen.
+</Fi>
+
+<En>
+The lottery sign-up phase ends 2h before game starts, after which the Konsti algorithm places users into games based on their chosen preferences. After this initial placement, signing up for games is closed for 15 minutes. During this "intermission period" you can take a look at the results of the lottery sign-up, and decide whether you want to participate in the second phase of the sign-up process or not.
+</En>
+
+<Fi>
+Suora ilmoittautuminen alkaa 1 h 45 min ennen pelin alkua. Tässä vaiheessa on vielä mahdollista napata paikka itseään kiinnostavasta pelistä niin kauan, kun siinä on vielä tilaa. Suoraan ilmoittautumiseen voi osallistua, vaikka ei olisi osallistunut arvontaan.
+</Fi>
+
+<En>
+After the initial placements and the 15-minute intermission period, the direct sign-up phase begins. During the last 1h 45 min before the game is set to begin, you can sign up for a game as long as there is still room for new attendees. You do not need to participate in the lottery sign-up phase to be able to sign up during the direct sign-up period.
+</En>
+
+<Fi>
+Lauantaina klo 10:00 - 12:00 alkaviin työpajoihin on ainoastaan suora ilmoittautuminen, koska arvonnalle ei ole aikaa.
+</Fi>
+
+<En>
+On Saturday, workshops starting between 10:00 and 12:00 use direct signup, as there is no time for a lottery.
+</En>
+</Hitpoint>
+
 </Expand>
 
+<Ropecon>
 <Expand>
 <Fi>
 ### Muuhun ohjelmaan ilmoittautuminen
@@ -615,12 +684,12 @@ Other program items use direct signup and seats are reserved in signup order.
 </En>
 
 <Fi>
-- Muihin ohjelmanumeroihin ilmoittautuminen aukeaa neljä tuntia ennen ohjelmanumeron alkua.
+- Muihin ohjelmanumeroihin ilmoittautuminen aukeaa 4h ennen ohjelmanumeron alkua.
 - Paitsi jos ohjelmanumero alkaa ennen klo 12, niin ilmoittautuminen aukeaa edellisenä päivänä klo 18.
 </Fi>
 
 <En>
-- Signup for other program items opens four hours before the program item begins.
+- Signup for other program items opens 4h before the program item begins.
 - Except if the program item begins before 12 PM, then registration opens the previous day at 6 PM.
 </En>
 </Expand>
@@ -640,7 +709,7 @@ Other program items use direct signup and seats are reserved in signup order.
 <Fi>
 Kirpputorille ilmoittaudutaan jonotusaikoihin eli mihin aikaan voit saapua jonottamaan kirpputorille pääsyä.
 
-Ilmoittautuminen tapahtuu arvontaa käyttäen ja jäljelle jääneet paikat ja peruutuspaikat täytetään ilmoittautumisjärjestyksessä. Arvontaan ilmoittautuminen alkaa perjantaina klo 08:00 ja arvonta suoritetaan aina kaksi tuntia ennen kirpputorin avautumista.
+Ilmoittautuminen tapahtuu arvontaa käyttäen ja jäljelle jääneet paikat ja peruutuspaikat täytetään ilmoittautumisjärjestyksessä. Arvontaan ilmoittautuminen alkaa perjantaina klo 08:00 ja arvonta suoritetaan aina 2h ennen kirpputorin avautumista.
 
 Voit ilmoittautua kerralla kolmen eri kirpputoriajankohdan arvontaan.
 
@@ -651,7 +720,7 @@ Esitä Konstista löytyä pääsylippu, kun saavut jonottamaan.
 <En>
 For flea market, you will sign up for queue times, which means the time you can arrive to wait in line for entry to the flea market.
 
-Signup is done via a lottery, and any remaining spots and cancellation spots will be filled in the order of signup. Signup for the lottery begins on Friday at 08:00, and the lottery is always held two hours before the flea market opens.
+Signup is done via a lottery, and any remaining spots and cancellation spots will be filled in the order of signup. Signup for the lottery begins on Friday at 08:00, and the lottery is always held 2h before the flea market opens.
 
 You can sign up for the lottery for up to three different flea market times at once.
 
