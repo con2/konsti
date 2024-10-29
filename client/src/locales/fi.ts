@@ -562,7 +562,7 @@ export const translationFI = {
     createKompassiAccountHint:
       "Konstiin kirjautuminen ei ole vielä avoinna, mutta voit jo luoda Kompassi-tunnuksen, jonka avulla Konstiin kirjaudutaan.",
     createKompassiAccount: "Luo Kompassi-tunnus",
-    chooseKonstiUsername: "Valitse Konsti-käyttäjänimi",
+    chooseKonstiUsername: "Valitse Konsti-nimimerkki",
   },
   registrationView: {
     nickVisibleHintText:
