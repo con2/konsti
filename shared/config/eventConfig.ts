@@ -20,9 +20,17 @@ export const eventConfig: EventConfig = {
   logInvalidStartTimes: true,
   enableRemoveOverlapSignups: true,
 
-  activeProgramTypes: [ProgramType.TABLETOP_RPG, ProgramType.LARP],
+  activeProgramTypes: [
+    ProgramType.TABLETOP_RPG,
+    ProgramType.LARP,
+    ProgramType.WORKSHOP,
+  ],
 
-  twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG, ProgramType.LARP],
+  twoPhaseSignupProgramTypes: [
+    ProgramType.TABLETOP_RPG,
+    ProgramType.LARP,
+    ProgramType.WORKSHOP,
+  ],
 
   eventStartTime: `2024-11-02T08:00:00Z`, // Sat 10:00 GMT+2
 
@@ -46,10 +54,7 @@ export const eventConfig: EventConfig = {
   addRevolvingDoorIds: [],
 
   // These program items are imported to Konsti but don't have Konsti signup
-  noKonstiSignupIds: [
-    "pelia-pyynnosta-lauantai", // Peliä pyynnöstä lauantai
-    "pelia-pyynnosta-sunnuntai", // Peliä pyynnöstä sunnuntai
-  ],
+  noKonstiSignupIds: [],
 
   signupQuestions: [],
 
@@ -69,4 +74,7 @@ export const eventConfig: EventConfig = {
 
   // Use fixed time to open all lottery signups for the whole event
   fixedLotterySignupTime: null,
+
+  // If workshop doesn't have max attendees, mark it as a revolving door
+  enableRevolvingDoorWorkshopsIfNoMax: false,
 };
