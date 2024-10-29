@@ -257,12 +257,14 @@ const mapRevolvingDoor = (
     return true;
   }
 
-  if (
-    kompassiProgramItem.cachedDimensions.konsti[0] ===
-      KompassiKonstiProgramType.WORKSHOP &&
-    kompassiProgramItem.cachedAnnotations["konsti:maxAttendance"] === 0
-  ) {
-    return true;
+  if (config.event().enableRevolvingDoorWorkshopsIfNoMax) {
+    if (
+      kompassiProgramItem.cachedDimensions.konsti[0] ===
+        KompassiKonstiProgramType.WORKSHOP &&
+      kompassiProgramItem.cachedAnnotations["konsti:maxAttendance"] === 0
+    ) {
+      return true;
+    }
   }
 
   if (config.event().addRevolvingDoorIds.includes(kompassiProgramItem.slug)) {
