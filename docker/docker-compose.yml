@@ -16,7 +16,7 @@ services:
       - mongo
 
   mongo:
-    image: mongo:7.0.14-jammy
+    image: mongo:7.0.15-jammy
     container_name: konsti-mongodb
     restart: always
     ports:
