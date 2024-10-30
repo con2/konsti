@@ -61,8 +61,6 @@ const eventConfig: Partial<EventConfig> = {
 
   tournamentSignupQuestionExcludeIds: [],
 
-  isEnglishProgramItems: [],
-
   // Two phase signup settings
   preSignupStart: 60 * 4, // minutes
   directSignupPhaseStart: 60 * 2, // minutes

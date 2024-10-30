@@ -3,7 +3,7 @@ import {
   EventName,
   EventConfig,
 } from "shared/config/eventConfigTypes";
-import { ProgramType } from "shared/types/models/programItem";
+import { Language, ProgramType } from "shared/types/models/programItem";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const eventConfig: Partial<EventConfig> = {
@@ -49,10 +49,16 @@ const eventConfig: Partial<EventConfig> = {
 
   tournamentSignupQuestionExcludeIds: [],
 
-  isEnglishProgramItems: [
-    "p7300", // In the Crowd
-    "p7340", // Introduction to PBTA: Dungeon World
-  ],
+  customDetailsProgramItems: {
+    // In the Crowd
+    p7300: {
+      languages: [Language.ENGLISH],
+    },
+    // Introduction to PBTA: Dungeon World
+    p7340: {
+      languages: [Language.ENGLISH],
+    },
+  },
 
   // Two phase signup settings
   preSignupStart: 60 * 4, // minutes

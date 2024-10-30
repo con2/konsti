@@ -369,6 +369,56 @@
     ]
   },
   {
+    "slug": "hahmotyopaja",
+    "title": "Hahmotyöpaja",
+    "description": "Kehitä ja suunnittele omia hahmojasi Harrastusseura Revontulen hahmotyöpajassa! Pajassa on valmiita hahmokaavakkeita ja kuvapohjia, joiden kautta voit joko ideoida ihan uutta hahmoa tai löytää uusia ideoita nykyiseen. Voit myös kehittää hahmon pelattavaksi Mysteerien Maatila -roolipeliin, sekä ilmoittautua siihen mukaan!",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-11-02"],
+      "room": [],
+      "type": ["workshop"],
+      "topic": ["penandpaper"],
+      "konsti": ["workshop"],
+      "signup": ["none"]
+    },
+    "cachedAnnotations": { "konsti:isPlaceholder": true },
+    "scheduleItems": [
+      {
+        "slug": "hahmotyopaja",
+        "title": "Hahmotyöpaja",
+        "startTime": "2024-11-02T11:00:00+02:00",
+        "endTime": "2024-11-02T21:00:00+02:00",
+        "lengthMinutes": 600,
+        "location": ""
+      }
+    ]
+  },
+  {
+    "slug": "hahmotyopaja-2",
+    "title": "Hahmotyöpaja",
+    "description": "Kehitä ja suunnittele omia hahmojasi Harrastusseura Revontulen hahmotyöpajassa! Pajassa on valmiita hahmokaavakkeita ja kuvapohjia, joiden kautta voit joko ideoida ihan uutta hahmoa tai löytää uusia ideoita nykyiseen. Voit myös kehittää hahmon pelattavaksi Mysteerien Maatila -roolipeliin, sekä ilmoittautua siihen mukaan!",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-11-03"],
+      "room": [],
+      "type": ["workshop"],
+      "topic": ["penandpaper"],
+      "konsti": ["workshop"],
+      "signup": ["none"]
+    },
+    "cachedAnnotations": { "konsti:isPlaceholder": true },
+    "scheduleItems": [
+      {
+        "slug": "hahmotyopaja-2",
+        "title": "Hahmotyöpaja",
+        "startTime": "2024-11-03T10:00:00+02:00",
+        "endTime": "2024-11-03T16:00:00+02:00",
+        "lengthMinutes": 360,
+        "location": ""
+      }
+    ]
+  },
+  {
     "slug": "ihmiskarjujen-yo-night-of-the-hogmen",
     "title": "Ihmiskarjujen yö / Night of the Hogmen",
     "description": "Paikalliset viranomaiset ovat asettaneet Gatlockin kaupungin karanteeniin. Miksi? Sinä ja matkatoverisi olette ehtineet pyhäinpäivänä viimeisen postivaunun kyytiin kohti Gatlockia kaukana pohjoisessa. Sade hakkaa vaunun kattoa ja hevoset kuulostavat hätääntyneiltä. Mitä ovat nuo kukkuloilta kantautuvat eläimelliset äänet? \r\n\r\nHuono-onnisten matkalaisten seurue kamppailee selviytymisestään 1700-luvun Englannin maalaismaisemassa. Kuka selviytyy karjumiesten kauhuista?\r\n\r\nSisältö suunnattu vähintään 15-vuotiaille osallistujille. Sisältää englanninkielisiä hahmolomakkeita ja muuta pelimateriaalia.\r\n\r\nPelityyli: kevyt, toimintaa ja draamaa\r\nSisältövaroitus: verta, väkivaltaa ja kuoleman vaaraa (K15)",
@@ -545,6 +595,31 @@
         "endTime": "2024-11-03T15:00:00+02:00",
         "lengthMinutes": 240,
         "location": "Ropeluokka 1 Pöytä C"
+      }
+    ]
+  },
+  {
+    "slug": "larppimiekkailuworkshop",
+    "title": "Larppimiekkailuworkshop",
+    "description": "Workshopin tavoitteena on tutustua miekkailuun lateksi- tmv. larppimiekoilla tavalla, joka mahdollistaa turvallisen mutta näyttävän ja realistisen tuntuisen ei-kilpailullisen taistelun larpeissa. Workshopissa käydään läpi osallistujien lähtötaso huomioiden historiallisen miekkailun perusteita yhden käden miekalla ja tutkitaan, miten (lateksi)miekkojen kanssa heilutaan turvallisesti, miten miekkailun larpeissa saa näyttämään ja tuntumaan siistiltä ja miten larppimiekkailu eroaa miekkailusta ”oikeasti”.\r\n\r\nJos sinulta löytyy lateksimiekka omasta takaa, ota mukaan; järjestäjän puolesta tarjolla on puukeppejä. Muuten workshopiin riittää mukavat vaatteet, joissa voi liikkua; hanskat (mitkä tahansa) voivat tehdä miekan tai kepin käsittelystä mukavampaa mutta eivät ole välttämättömät.\r\n\r\nPS. Ohjelman pituus on 1,5 tuntia, mutta jos olet ilmoittautunut klo 16 alkavaan ropeen, voit kaikin mokomin livistää sen alkaessa – älä anna sen estää sinua osallistumasta ensimmäiseen 60 minuuttiin tästä workshopista!",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2024-11-02"],
+      "room": ["lautapelialue", "lautapelialue-aktiviteettinurkka"],
+      "type": ["workshop"],
+      "topic": ["larp"],
+      "konsti": ["workshop"],
+      "signup": ["konsti"]
+    },
+    "cachedAnnotations": { "konsti:maxAttendance": 10 },
+    "scheduleItems": [
+      {
+        "slug": "larppimiekkailuworkshop",
+        "title": "Larppimiekkailuworkshop",
+        "startTime": "2024-11-02T15:00:00+02:00",
+        "endTime": "2024-11-02T16:30:00+02:00",
+        "lengthMinutes": 90,
+        "location": "Lautapelialue, aktiviteettinurkka"
       }
     ]
   },
@@ -799,8 +874,8 @@
     "cachedAnnotations": {
       "konsti:rpgSystem": "Pathfinder (2e) Society",
       "ropecon:gameSlogan": "While mingling with Absalom’s elite at a charity dinner, Pathfinders must investigate a mysterious ritual before the event turns deadly.",
-      "konsti:maxAttendance": 4,
-      "konsti:minAttendance": 2
+      "konsti:maxAttendance": 6,
+      "konsti:minAttendance": 3
     },
     "scheduleItems": [
       {
@@ -856,7 +931,7 @@
       "konsti": ["tabletopRPG"],
       "signup": ["konsti"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": { "konsti:isPlaceholder": true },
     "scheduleItems": [
       {
         "slug": "pelia-pyynnosta-lauantai",
@@ -881,7 +956,7 @@
       "konsti": ["tabletopRPG"],
       "signup": ["konsti"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": { "konsti:isPlaceholder": true },
     "scheduleItems": [
       {
         "slug": "pelia-pyynnosta-sunnuntai",
