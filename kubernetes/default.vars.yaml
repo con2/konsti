@@ -31,7 +31,7 @@ ingress_letsencrypt_enabled: false
 ingress_letsencrypt_cluster_issuer: letsencrypt-prod
 
 mongodb_managed: true
-mongodb_image: mongo:7.0.14-jammy
+mongodb_image: mongo:7.0.15-jammy
 mongodb_connection_string: mongodb://mongodb:27017/konsti
 
 smtp_hostname: ""
