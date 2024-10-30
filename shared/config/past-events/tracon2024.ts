@@ -65,8 +65,6 @@ export const eventConfig: Partial<EventConfig> = {
 
   tournamentSignupQuestionExcludeIds: [],
 
-  isEnglishProgramItems: [],
-
   entryConditions: [
     {
       conditionText: EntryConditionText.K16,

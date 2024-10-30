@@ -1,5 +1,5 @@
 import { Dayjs } from "dayjs";
-import { ProgramType } from "shared/types/models/programItem";
+import { Language, ProgramType, Tag } from "shared/types/models/programItem";
 import { SignupQuestion } from "shared/types/models/settings";
 
 export enum EventSignupStrategy {
@@ -63,7 +63,6 @@ export interface EventConfig {
   tournamentSignupQuestion: Omit<SignupQuestion, "programItemId"> | null;
   tournamentSignupQuestionExcludeIds: string[];
   addRevolvingDoorIds: string[];
-  isEnglishProgramItems: string[];
   logInvalidStartTimes: boolean;
   hideParticipantListProgramTypes: ProgramType[];
   fixedLotterySignupTime: string | null;
@@ -76,4 +75,12 @@ export interface EventConfig {
   popularityAlgorithm: AssignmentAlgorithm.RANDOM | AssignmentAlgorithm.PADG;
   enableRemoveOverlapSignups: boolean;
   enableRevolvingDoorWorkshopsIfNoMax: boolean;
+  customDetailsProgramItems: Record<
+    string,
+    | {
+        tags?: Tag[];
+        languages?: Language[];
+      }
+    | undefined
+  >;
 }
