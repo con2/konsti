@@ -115,7 +115,7 @@ export const KompassiProgramItemSchema = z.object({
     }),
     language: z.array(z.nativeEnum(KompassiLanguage)).catch((ctx) => {
       if (!Array.isArray(ctx.input)) {
-        return [];
+        return [KompassiLanguage.FINNISH];
       }
       const [valid, invalid] = partition(ctx.input, (language) =>
         Object.values(KompassiLanguage).includes(language),

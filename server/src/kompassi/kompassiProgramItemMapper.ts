@@ -21,6 +21,8 @@ import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import { config } from "shared/config";
 import { getShortDescriptionFromDescription } from "server/utils/getShortDescriptionFromDescription";
 
+const { customDetailsProgramItems } = config.event();
+
 export const kompassiProgramItemMapper = (
   programItems: readonly KompassiProgramItem[],
 ): readonly ProgramItem[] => {
@@ -41,7 +43,7 @@ export const kompassiProgramItemMapper = (
         tags: mapTags(programItem),
         genres: [],
         styles: mapPlaystyles(programItem.cachedDimensions.playstyle),
-        languages: mapLanguages(programItem.cachedDimensions.language),
+        languages: mapLanguages(programItem),
         endTime: dayjs(scheduleItems.endTime).toISOString(),
         people: programItem.cachedHosts,
         minAttendance: programItem.cachedAnnotations["konsti:minAttendance"],
@@ -104,6 +106,11 @@ const mapProgramType = (
 };
 
 const mapTags = (kompassiProgramItem: KompassiProgramItem): Tag[] => {
+  const customDetails = customDetailsProgramItems[kompassiProgramItem.slug];
+  if (customDetails?.tags) {
+    return customDetails.tags;
+  }
+
   const audiences = kompassiProgramItem.cachedDimensions.audience;
   const tags: Tag[] = audiences.flatMap((audience) => {
     switch (audience) {
@@ -184,7 +191,13 @@ const mapPlaystyles = (playstyles: KompassiPlaystyle[]): Playstyle[] => {
   });
 };
 
-const mapLanguages = (kompassiLanguages: KompassiLanguage[]): Language[] => {
+const mapLanguages = (kompassiProgramItem: KompassiProgramItem): Language[] => {
+  const customDetails = customDetailsProgramItems[kompassiProgramItem.slug];
+  if (customDetails?.languages) {
+    return customDetails.languages;
+  }
+
+  const kompassiLanguages = kompassiProgramItem.cachedDimensions.language;
   const languages: Language[] = [];
 
   if (kompassiLanguages.includes(KompassiLanguage.FINNISH)) {

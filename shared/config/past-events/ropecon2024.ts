@@ -223,8 +223,6 @@ const eventConfig: Partial<EventConfig> = {
     "pikamaalauskilpailu-speed-painting-contest-4-lasat",
   ],
 
-  isEnglishProgramItems: [],
-
   // Two phase signup settings
   preSignupStart: 60 * 4, // minutes
   directSignupPhaseStart: 60 * 2, // minutes
