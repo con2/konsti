@@ -99,7 +99,7 @@ export const eventConfig: EventConfig = {
     // Auld Sanguine - A New Year's Eve Vampire the Masquerade Story
     "auld-sanguine": {
       tags: [Tag.FOR_18_PLUS_ONLY, Tag.BEGINNER_FRIENDLY],
-      languages: [Language.FINNISH, Language.ENGLISH],
+      languages: [Language.ENGLISH],
     },
     // Läpimurto
     lapimurto: {
@@ -108,7 +108,7 @@ export const eventConfig: EventConfig = {
     // The Lighthouse
     "the-lighthouse": {
       tags: [Tag.FOR_18_PLUS_ONLY, Tag.BEGINNER_FRIENDLY],
-      languages: [Language.FINNISH, Language.ENGLISH],
+      languages: [Language.ENGLISH],
     },
     // Pelipöytä ry peluuttaa: Ryuutama
     "pelipoyta-ry-peluuttaa-ryuutama": {
@@ -127,7 +127,7 @@ export const eventConfig: EventConfig = {
     // Mates, Dates and Sleepovers
     "mates-dates-and-sleepovers": {
       tags: [Tag.BEGINNER_FRIENDLY],
-      languages: [Language.FINNISH, Language.ENGLISH],
+      languages: [Language.ENGLISH],
     },
     // Duty Unto Death - A Dragon Age RPG
     "duty-unto-death-a-dragon-age-rpg": {
@@ -142,7 +142,7 @@ export const eventConfig: EventConfig = {
     // Pathfinder Society Scenario #6-01: Intro: Year of Immortal Influence
     "pathfinder-society-scenario-6-01-intro-year-of-immortal-influence": {
       tags: [Tag.BEGINNER_FRIENDLY],
-      languages: [Language.FINNISH, Language.ENGLISH],
+      languages: [Language.ENGLISH],
     },
     // Red Tundra
     "red-tundra": {
@@ -151,7 +151,7 @@ export const eventConfig: EventConfig = {
     // Alice is Missing
     "alice-is-missing": {
       tags: [Tag.BEGINNER_FRIENDLY],
-      languages: [Language.FINNISH, Language.ENGLISH],
+      languages: [Language.ENGLISH],
     },
     // The Dalish Curse - A Dragon Age RPG
     "the-dalish-curse-a-dragon-age-rpg": {
@@ -161,7 +161,7 @@ export const eventConfig: EventConfig = {
     // Pathfinder Society Scenario #6-01: Intro: Year of Immortal Influence
     "pathfinder-society-special-3-99-fate-in-the-future": {
       tags: [Tag.BEGINNER_FRIENDLY],
-      languages: [Language.FINNISH, Language.ENGLISH],
+      languages: [Language.ENGLISH],
     },
     // Maaginen arkisto
     "maaginen-arkisto": {
