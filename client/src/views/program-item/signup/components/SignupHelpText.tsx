@@ -2,10 +2,7 @@ import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import dayjs from "dayjs";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  ProgramItem,
-  ProgramItemSignupStrategy,
-} from "shared/types/models/programItem";
+import { ProgramItem } from "shared/types/models/programItem";
 import { getTimeNow } from "client/utils/getTimeNow";
 import { isRevolvingDoorWorkshop } from "client/utils/isRevolvingDoorWorkshop";
 import {
@@ -18,6 +15,8 @@ import {
   getFormattedTime,
   getFormattedInterval,
 } from "client/views/program-item/programItemUtils";
+import { tooEarlyForLotterySignup } from "shared/utils/tooEarlyForLotterySignup";
+import { config } from "shared/config";
 
 interface Props {
   programItem: ProgramItem;
@@ -37,7 +36,10 @@ export const SignupHelpText = ({
   const { t } = useTranslation();
 
   const isLotterySignup =
-    programItem.signupStrategy === ProgramItemSignupStrategy.LOTTERY;
+    config
+      .event()
+      .twoPhaseSignupProgramTypes.includes(programItem.programType) &&
+    !tooEarlyForLotterySignup(startTime);
   const timeNow = getTimeNow();
   const directSignupEndTime = dayjs(getDirectSignupEndTime(programItem));
   const directSignupStartTime = getDirectSignupStartTime(programItem);
