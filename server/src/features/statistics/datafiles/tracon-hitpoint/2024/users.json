@@ -1,0 +1,6045 @@
+[
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "478253",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "4270825740",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [],
+    "createdAt": "2024-10-30T19:58:29.987Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "534154",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "1296086919",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [
+      "pelipoyta-ry-peluuttaa-ryuutama",
+      "deathmatch-island"
+    ],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "elava-pakohuone-12" },
+        "priority": 1,
+        "time": "2024-11-03T10:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "elava-pakohuone-14" },
+        "priority": 1,
+        "time": "2024-11-03T12:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "elava-pakohuone-16" },
+        "priority": 1,
+        "time": "2024-11-03T14:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-03T10:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T08:00:05.679Z"
+      },
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-03T12:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T10:00:05.576Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "elava-pakohuone-16",
+        "programItemStartTime": "2024-11-03T14:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T12:00:05.53Z"
+      }
+    ],
+    "createdAt": "2024-10-30T21:43:38.184Z",
+    "updatedAt": "2024-11-03T15:54:55.914Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "941139",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "7759443646",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": ["elava-pakohuone-12", "elava-pakohuone-14"],
+    "lotterySignups": [],
+    "eventLogItems": [],
+    "createdAt": "2024-10-31T03:14:37.022Z",
+    "updatedAt": "2024-11-04T09:05:00.388Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "96725",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "4818950117",
+    "groupCreatorCode": "8e0-d36-55e",
+    "groupCode": "8e0-d36-55e",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "praedor-kirotut-kuninkaanvaalit" },
+        "priority": 1,
+        "time": "2024-11-03T09:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "alavilla-mailla" },
+        "priority": 2,
+        "time": "2024-11-03T09:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "alavilla-mailla",
+        "programItemStartTime": "2024-11-03T09:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T07:00:05.609Z"
+      }
+    ],
+    "createdAt": "2024-10-31T03:21:35.004Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "833504",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "1546962463",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [
+      "kirottu-matka",
+      "pelipoyta-ry-peluuttaa-ryuutama",
+      "deathmatch-island",
+      "offworlders-kosmoksen-karsein-keikka",
+      "sakaheitto-livepelautus",
+      "kuonojoen-lohikaarme",
+      "tyhjyyden-meren-hirviot",
+      "space-1889-pakkolasku-venuksen-viidakkoon",
+      "toivottavasti-kukaan-ei-huomaa-2",
+      "juokse-juokse-kultaseni",
+      "duty-unto-death-a-dragon-age-rpg"
+    ],
+    "lotterySignups": [
+      {
+        "programItem": {
+          "programItemId": "space-1889-pakkolasku-venuksen-viidakkoon"
+        },
+        "priority": 1,
+        "time": "2024-11-02T14:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "tyhjyyden-meren-hirviot" },
+        "priority": 2,
+        "time": "2024-11-02T14:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "space-1889-pakkolasku-venuksen-viidakkoon",
+        "programItemStartTime": "2024-11-02T14:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T12:00:05.552Z"
+      }
+    ],
+    "createdAt": "2024-10-31T04:44:37.832Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "374030",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "9781180428",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "kirottu-matka-2" },
+        "priority": 1,
+        "time": "2024-11-02T18:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "alien-uscss-traconis-2" },
+        "priority": 2,
+        "time": "2024-11-02T18:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "taivaskone" },
+        "priority": 1,
+        "time": "2024-11-03T10:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "the-lighthouse" },
+        "priority": 2,
+        "time": "2024-11-03T10:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "kirottu-matka-2",
+        "programItemStartTime": "2024-11-02T18:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T16:00:05.575Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "taivaskone",
+        "programItemStartTime": "2024-11-03T10:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T08:00:05.645Z"
+      }
+    ],
+    "createdAt": "2024-10-31T05:39:13.012Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "285472",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "6074666881",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [
+      "praedor-kirotut-kuninkaanvaalit-2",
+      "alien-uscss-traconis-2",
+      "city-of-the-scorpion-god"
+    ],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "praedor-kirotut-kuninkaanvaalit-2" },
+        "priority": 1,
+        "time": "2024-11-02T17:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "city-of-the-scorpion-god" },
+        "priority": 2,
+        "time": "2024-11-02T17:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "praedor-kirotut-kuninkaanvaalit-2",
+        "programItemStartTime": "2024-11-02T17:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T15:00:05.549Z"
+      }
+    ],
+    "createdAt": "2024-10-31T06:02:35.009Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "335864",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "6964822511",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": ["praedor-kirotut-kuninkaanvaalit", "taivaskone"],
+    "lotterySignups": [],
+    "eventLogItems": [],
+    "createdAt": "2024-10-31T06:08:23.457Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "729322",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "4443080751",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [
+      "kirottu-matka",
+      "offworlders-kosmoksen-karsein-keikka",
+      "kuonojoen-lohikaarme",
+      "ruhtinaan-aika",
+      "tyhjyyden-meren-hirviot",
+      "space-1889-pakkolasku-venuksen-viidakkoon",
+      "ihmiskarjujen-yo-night-of-the-hogmen",
+      "red-tundra",
+      "juokse-juokse-kultaseni",
+      "auld-sanguine",
+      "alice-is-missing",
+      "space-1889-pakolasku-venuksen-viidakkoon"
+    ],
+    "lotterySignups": [
+      {
+        "programItem": {
+          "programItemId": "space-1889-pakkolasku-venuksen-viidakkoon"
+        },
+        "priority": 1,
+        "time": "2024-11-02T14:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "tyhjyyden-meren-hirviot" },
+        "priority": 2,
+        "time": "2024-11-02T14:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "ruhtinaan-aika" },
+        "priority": 3,
+        "time": "2024-11-02T14:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "juokse-juokse-kultaseni" },
+        "priority": 1,
+        "time": "2024-11-02T16:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "elava-pakohuone-12" },
+        "priority": 1,
+        "time": "2024-11-03T10:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "ruhtinaan-aika",
+        "programItemStartTime": "2024-11-02T14:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T12:00:05.552Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "juokse-juokse-kultaseni",
+        "programItemStartTime": "2024-11-02T16:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T14:00:05.468Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "elava-pakohuone-12",
+        "programItemStartTime": "2024-11-03T10:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-03T08:00:05.645Z"
+      }
+    ],
+    "createdAt": "2024-10-31T06:57:36.274Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "599171",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "8387072419",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [
+      "pelipoyta-ry-peluuttaa-ryuutama",
+      "city-of-the-scorpion-god",
+      "kuonojoen-lohikaarme",
+      "berserkin-pesa-vallat-ja-vaet",
+      "alice-is-missing",
+      "praedor-kirotut-kuninkaanvaalit-2",
+      "juokse-juokse-kultaseni"
+    ],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "berserkin-pesa-vallat-ja-vaet" },
+        "priority": 1,
+        "time": "2024-11-02T14:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "berserkin-pesa-vallat-ja-vaet",
+        "programItemStartTime": "2024-11-02T14:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T12:00:05.552Z"
+      }
+    ],
+    "createdAt": "2024-10-31T07:27:57.534Z",
+    "updatedAt": "2024-11-04T09:05:00.388Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "260427",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "8506415481",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "kuonojoen-lohikaarme" },
+        "priority": 1,
+        "time": "2024-11-02T13:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": {
+          "programItemId": "space-1889-pakolasku-venuksen-viidakkoon"
+        },
+        "priority": 1,
+        "time": "2024-11-03T12:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-02T13:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T11:00:05.588Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "space-1889-pakolasku-venuksen-viidakkoon",
+        "programItemStartTime": "2024-11-03T12:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-03T10:00:05.55Z"
+      }
+    ],
+    "createdAt": "2024-10-31T07:55:42.623Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "991118",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "0677582363",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [],
+    "createdAt": "2024-10-31T08:01:45.708Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "758313",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "8109127228",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [],
+    "createdAt": "2024-10-31T08:51:48.133Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "878009",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "8657883537",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [],
+    "createdAt": "2024-10-31T10:49:58.355Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "335134",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "3691473445",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": ["lollo-praedor", "kuonojoen-lohikaarme"],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "kuonojoen-lohikaarme" },
+        "priority": 1,
+        "time": "2024-11-02T13:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "kuonojoen-lohikaarme",
+        "programItemStartTime": "2024-11-02T13:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-02T11:00:05.559Z"
+      }
+    ],
+    "createdAt": "2024-10-31T11:00:45.324Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "934216",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "9826828569",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [
+      "pathfinder-society-special-3-99-fate-in-the-future",
+      "toivottavasti-kukaan-ei-huomaa-2",
+      "alien-uscss-traconis-2"
+    ],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "toivottavasti-kukaan-ei-huomaa-2" },
+        "priority": 1,
+        "time": "2024-11-02T14:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "alien-uscss-traconis-2" },
+        "priority": 1,
+        "time": "2024-11-02T18:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "taivaskone" },
+        "priority": 1,
+        "time": "2024-11-03T10:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "toivottavasti-kukaan-ei-huomaa-2",
+        "programItemStartTime": "2024-11-02T14:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T12:00:05.552Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "alien-uscss-traconis-2",
+        "programItemStartTime": "2024-11-02T18:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T16:00:05.575Z"
+      },
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-03T10:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T08:00:05.679Z"
+      }
+    ],
+    "createdAt": "2024-10-31T11:03:00.515Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "198867",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "5527491871",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [],
+    "createdAt": "2024-10-31T11:04:07.223Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "534059",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "2484857517",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [
+      "lollo-praedor",
+      "pathfinder-society-special-3-99-fate-in-the-future",
+      "sakaheitto-livepelautus",
+      "berserkin-pesa-vallat-ja-vaet",
+      "praedor-kirotut-kuninkaanvaalit-2",
+      "alavilla-mailla",
+      "praedor-kirotut-kuninkaanvaalit",
+      "auld-sanguine",
+      "pathfinder-society-scenario-6-01-intro-year-of-immortal-influence",
+      "elava-pakohuone-16"
+    ],
+    "lotterySignups": [],
+    "eventLogItems": [],
+    "createdAt": "2024-10-31T12:58:18.464Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "879999",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "0257174144",
+    "groupCreatorCode": "14b-32c-404",
+    "groupCode": "14b-32c-404",
+    "favoriteProgramItemIds": [
+      "pelipoyta-ry-peluuttaa-ryuutama",
+      "hahmotyopaja",
+      "hahmotyopaja-2",
+      "neuvoston-umpisolmu",
+      "elava-pakohuone-12"
+    ],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "elava-pakohuone-12" },
+        "priority": 1,
+        "time": "2024-11-03T10:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-03T10:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T08:00:05.679Z"
+      }
+    ],
+    "createdAt": "2024-10-31T14:04:18.216Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "920292",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "0083839597",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "elava-pakohuone-14" },
+        "priority": 1,
+        "time": "2024-11-03T12:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "elava-pakohuone-14",
+        "programItemStartTime": "2024-11-03T12:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-03T10:00:05.55Z"
+      }
+    ],
+    "createdAt": "2024-10-31T14:09:30.596Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "816005",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "0085151645",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [
+      "timantin-savyvirhe-2",
+      "kirottu-matka",
+      "tyhjyyden-meren-hirviot",
+      "space-1889-pakkolasku-venuksen-viidakkoon",
+      "ihmiskarjujen-yo-night-of-the-hogmen",
+      "the-lighthouse",
+      "alice-is-missing",
+      "praedor-kirotut-kuninkaanvaalit-2",
+      "kirottu-matka-2",
+      "alien-uscss-traconis-2",
+      "taivaskone",
+      "space-1889-pakolasku-venuksen-viidakkoon",
+      "alien-uscss-traconis"
+    ],
+    "lotterySignups": [
+      {
+        "programItem": {
+          "programItemId": "ihmiskarjujen-yo-night-of-the-hogmen"
+        },
+        "priority": 1,
+        "time": "2024-11-02T15:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "the-lighthouse" },
+        "priority": 1,
+        "time": "2024-11-03T10:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "taivaskone" },
+        "priority": 2,
+        "time": "2024-11-03T10:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "ihmiskarjujen-yo-night-of-the-hogmen",
+        "programItemStartTime": "2024-11-02T15:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T13:00:05.518Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "the-lighthouse",
+        "programItemStartTime": "2024-11-03T10:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T08:00:05.645Z"
+      }
+    ],
+    "createdAt": "2024-10-31T14:44:31.096Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "623696",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "9983216434",
+    "groupCreatorCode": "0",
+    "groupCode": "1bd-5c7-5ff",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-02T15:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T13:00:05.552Z"
+      },
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-02T16:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T14:00:05.488Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "kirottu-matka-2",
+        "programItemStartTime": "2024-11-02T18:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T16:00:05.575Z"
+      }
+    ],
+    "createdAt": "2024-10-31T14:59:42.922Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "804539",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "7196353952",
+    "groupCreatorCode": "0",
+    "groupCode": "14b-32c-404",
+    "favoriteProgramItemIds": [
+      "pelipoyta-ry-peluuttaa-ryuutama",
+      "elava-pakohuone-12"
+    ],
+    "lotterySignups": [],
+    "eventLogItems": [
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-03T10:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-03T08:00:05.679Z"
+      }
+    ],
+    "createdAt": "2024-10-31T15:50:07.241Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "751445",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "7325164916",
+    "groupCreatorCode": "1bd-5c7-5ff",
+    "groupCode": "1bd-5c7-5ff",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [
+      {
+        "programItem": {
+          "programItemId": "ihmiskarjujen-yo-night-of-the-hogmen"
+        },
+        "priority": 1,
+        "time": "2024-11-02T15:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "juokse-juokse-kultaseni" },
+        "priority": 1,
+        "time": "2024-11-02T16:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "kirottu-matka-2" },
+        "priority": 1,
+        "time": "2024-11-02T18:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-02T15:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T13:00:05.552Z"
+      },
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-02T16:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T14:00:05.488Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "kirottu-matka-2",
+        "programItemStartTime": "2024-11-02T18:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T16:00:05.575Z"
+      }
+    ],
+    "createdAt": "2024-10-31T16:16:09.723Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "287921",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "7139104397",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [],
+    "createdAt": "2024-10-31T16:41:07.687Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "646848",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "1269369086",
+    "groupCreatorCode": "886-ecd-a0b",
+    "groupCode": "886-ecd-a0b",
+    "favoriteProgramItemIds": [
+      "lollo-praedor",
+      "kirottu-matka",
+      "pelipoyta-ry-peluuttaa-ryuutama",
+      "deathmatch-island",
+      "pathfinder-society-special-3-99-fate-in-the-future"
+    ],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "juokse-juokse-kultaseni" },
+        "priority": 1,
+        "time": "2024-11-02T16:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "alice-is-missing" },
+        "priority": 1,
+        "time": "2024-11-02T17:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "the-dalish-curse-a-dragon-age-rpg" },
+        "priority": 1,
+        "time": "2024-11-03T09:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "praedor-kirotut-kuninkaanvaalit" },
+        "priority": 2,
+        "time": "2024-11-03T09:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "alavilla-mailla" },
+        "priority": 3,
+        "time": "2024-11-03T09:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-02T16:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T14:00:05.488Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "alice-is-missing",
+        "programItemStartTime": "2024-11-02T17:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T15:00:05.549Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "the-dalish-curse-a-dragon-age-rpg",
+        "programItemStartTime": "2024-11-03T09:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-03T07:00:05.609Z"
+      }
+    ],
+    "createdAt": "2024-10-31T17:07:35.239Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "802874",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "1601821596",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [
+      "larppimiekkailuworkshop",
+      "toivottavasti-kukaan-ei-huomaa",
+      "pelia-pyynnosta-sunnuntai",
+      "elava-pakohuone-16"
+    ],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "toivottavasti-kukaan-ei-huomaa" },
+        "priority": 1,
+        "time": "2024-11-03T09:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "elava-pakohuone-16" },
+        "priority": 1,
+        "time": "2024-11-03T14:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-02T13:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T11:00:05.588Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "toivottavasti-kukaan-ei-huomaa",
+        "programItemStartTime": "2024-11-03T09:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T07:00:05.609Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "elava-pakohuone-16",
+        "programItemStartTime": "2024-11-03T14:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T12:00:05.53Z"
+      }
+    ],
+    "createdAt": "2024-10-31T17:23:28.363Z",
+    "updatedAt": "2024-11-04T09:05:00.388Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "653744",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "5313517988",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [
+      "red-tundra",
+      "juokse-juokse-kultaseni",
+      "alice-is-missing",
+      "tyhjyyden-meren-hirviot"
+    ],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "berserkin-pesa-vallat-ja-vaet" },
+        "priority": 1,
+        "time": "2024-11-02T14:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "juokse-juokse-kultaseni" },
+        "priority": 1,
+        "time": "2024-11-02T16:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "berserkin-pesa-vallat-ja-vaet",
+        "programItemStartTime": "2024-11-02T14:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T12:00:05.552Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "juokse-juokse-kultaseni",
+        "programItemStartTime": "2024-11-02T16:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T14:00:05.468Z"
+      }
+    ],
+    "createdAt": "2024-10-31T19:51:24.294Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "169906",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "6739065792",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [
+      "duty-unto-death-a-dragon-age-rpg",
+      "the-dalish-curse-a-dragon-age-rpg"
+    ],
+    "lotterySignups": [],
+    "eventLogItems": [],
+    "createdAt": "2024-10-31T20:08:34.47Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "284629",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "1730987177",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": ["tyhjyyden-meren-hirviot"],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "tyhjyyden-meren-hirviot" },
+        "priority": 1,
+        "time": "2024-11-02T14:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "tyhjyyden-meren-hirviot",
+        "programItemStartTime": "2024-11-02T14:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T12:00:05.552Z"
+      }
+    ],
+    "createdAt": "2024-10-31T21:40:44.33Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "645816",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "9129879145",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [],
+    "createdAt": "2024-11-01T05:28:07.323Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "720173",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "8489179120",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [
+      "timantin-savyvirhe-2",
+      "deathmatch-island",
+      "ruhtinaan-aika",
+      "space-1889-pakkolasku-venuksen-viidakkoon",
+      "juokse-juokse-kultaseni",
+      "auld-sanguine",
+      "the-lighthouse",
+      "alien-uscss-traconis-2",
+      "space-1889-pakolasku-venuksen-viidakkoon",
+      "alien-uscss-traconis"
+    ],
+    "lotterySignups": [
+      {
+        "programItem": {
+          "programItemId": "space-1889-pakkolasku-venuksen-viidakkoon"
+        },
+        "priority": 1,
+        "time": "2024-11-02T14:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "ruhtinaan-aika" },
+        "priority": 2,
+        "time": "2024-11-02T14:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "praedor-kirotut-kuninkaanvaalit-2" },
+        "priority": 1,
+        "time": "2024-11-02T17:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "auld-sanguine" },
+        "priority": 1,
+        "time": "2024-11-03T09:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "ruhtinaan-aika",
+        "programItemStartTime": "2024-11-02T14:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T12:00:05.552Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "praedor-kirotut-kuninkaanvaalit-2",
+        "programItemStartTime": "2024-11-02T17:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T15:00:05.549Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "auld-sanguine",
+        "programItemStartTime": "2024-11-03T09:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T07:00:05.609Z"
+      }
+    ],
+    "createdAt": "2024-11-01T06:31:57.051Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "65445",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "9756680956",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [
+      "city-of-the-scorpion-god",
+      "sakaheitto-livepelautus"
+    ],
+    "lotterySignups": [],
+    "eventLogItems": [],
+    "createdAt": "2024-11-01T09:07:09.284Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "445334",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "0433662442",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [
+      "kirottu-matka",
+      "praedor-kirotut-kuninkaanvaalit-2",
+      "praedor-kirotut-kuninkaanvaalit"
+    ],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "praedor-kirotut-kuninkaanvaalit-2" },
+        "priority": 1,
+        "time": "2024-11-02T17:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "praedor-kirotut-kuninkaanvaalit-2",
+        "programItemStartTime": "2024-11-02T17:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T15:00:05.549Z"
+      }
+    ],
+    "createdAt": "2024-11-01T09:13:08.801Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "203638",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "1910354164",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [
+      "offworlders-kosmoksen-karsein-keikka",
+      "larppimiekkailuworkshop",
+      "tyhjyyden-meren-hirviot",
+      "juokse-juokse-kultaseni",
+      "auld-sanguine",
+      "the-lighthouse"
+    ],
+    "lotterySignups": [
+      {
+        "programItem": {
+          "programItemId": "offworlders-kosmoksen-karsein-keikka"
+        },
+        "priority": 1,
+        "time": "2024-11-02T12:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "auld-sanguine" },
+        "priority": 1,
+        "time": "2024-11-03T09:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "the-lighthouse" },
+        "priority": 1,
+        "time": "2024-11-03T10:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "offworlders-kosmoksen-karsein-keikka",
+        "programItemStartTime": "2024-11-02T12:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T10:00:05.518Z"
+      },
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-03T09:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T07:00:05.648Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "the-lighthouse",
+        "programItemStartTime": "2024-11-03T10:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T08:00:05.645Z"
+      }
+    ],
+    "createdAt": "2024-11-01T10:38:10.976Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "258646",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "3556084956",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [
+      "offworlders-kosmoksen-karsein-keikka",
+      "alien-uscss-traconis-2",
+      "auld-sanguine",
+      "elava-pakohuone-12",
+      "elava-pakohuone-14",
+      "elava-pakohuone-16",
+      "pathfinder-society-special-3-99-fate-in-the-future"
+    ],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "auld-sanguine" },
+        "priority": 1,
+        "time": "2024-11-03T09:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "auld-sanguine",
+        "programItemStartTime": "2024-11-03T09:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T07:00:05.609Z"
+      }
+    ],
+    "createdAt": "2024-11-01T11:04:54.555Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "19891",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "5315363282",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [],
+    "createdAt": "2024-11-01T13:24:07.91Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "287943",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "8510222998",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [
+      "hahmotyopaja",
+      "pelia-pyynnosta-lauantai",
+      "toivottavasti-kukaan-ei-huomaa-2",
+      "mysteerien-maatila",
+      "toivottavasti-kukaan-ei-huomaa",
+      "pelia-pyynnosta-sunnuntai",
+      "hahmotyopaja-2",
+      "elava-pakohuone-14",
+      "elava-pakohuone-12"
+    ],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "elava-pakohuone-12" },
+        "priority": 1,
+        "time": "2024-11-03T10:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "session-zero-tavernassa-tapahtuu",
+        "programItemStartTime": "2024-11-02T13:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T11:00:05.559Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "elava-pakohuone-12",
+        "programItemStartTime": "2024-11-03T10:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-03T08:00:05.645Z"
+      }
+    ],
+    "createdAt": "2024-11-01T13:44:38.834Z",
+    "updatedAt": "2024-11-04T09:05:00.388Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "623085",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "6690126344",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [
+      "kirottu-matka",
+      "praedor-kirotut-kuninkaanvaalit-2",
+      "lollo-praedor"
+    ],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "praedor-kirotut-kuninkaanvaalit-2" },
+        "priority": 1,
+        "time": "2024-11-02T17:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "praedor-kirotut-kuninkaanvaalit-2",
+        "programItemStartTime": "2024-11-02T17:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T15:00:05.549Z"
+      }
+    ],
+    "createdAt": "2024-11-01T14:02:14.358Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "117894",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "0768403875",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [
+      "mates-dates-and-sleepovers",
+      "offworlders-kosmoksen-karsein-keikka",
+      "ihmiskarjujen-yo-night-of-the-hogmen",
+      "elava-pakohuone-16"
+    ],
+    "lotterySignups": [
+      {
+        "programItem": {
+          "programItemId": "offworlders-kosmoksen-karsein-keikka"
+        },
+        "priority": 1,
+        "time": "2024-11-02T12:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "auld-sanguine" },
+        "priority": 1,
+        "time": "2024-11-03T09:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "toivottavasti-kukaan-ei-huomaa" },
+        "priority": 2,
+        "time": "2024-11-03T09:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "neuvoston-umpisolmu" },
+        "priority": 3,
+        "time": "2024-11-03T09:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "the-lighthouse" },
+        "priority": 1,
+        "time": "2024-11-03T10:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "elava-pakohuone-16" },
+        "priority": 1,
+        "time": "2024-11-03T14:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "offworlders-kosmoksen-karsein-keikka",
+        "programItemStartTime": "2024-11-02T12:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T10:00:05.518Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "toivottavasti-kukaan-ei-huomaa",
+        "programItemStartTime": "2024-11-03T09:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T07:00:05.609Z"
+      },
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-03T10:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T08:00:05.679Z"
+      },
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-03T14:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-03T12:00:05.554Z"
+      }
+    ],
+    "createdAt": "2024-11-01T14:13:11.905Z",
+    "updatedAt": "2024-11-03T12:00:05.554Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "533720",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "1581290937",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [
+      "lollo-praedor",
+      "pathfinder-society-special-3-99-fate-in-the-future",
+      "offworlders-kosmoksen-karsein-keikka",
+      "kuonojoen-lohikaarme",
+      "tyhjyyden-meren-hirviot",
+      "space-1889-pakkolasku-venuksen-viidakkoon",
+      "red-tundra",
+      "praedor-kirotut-kuninkaanvaalit-2",
+      "alien-uscss-traconis-2",
+      "kirottu-matka-2"
+    ],
+    "lotterySignups": [],
+    "eventLogItems": [],
+    "createdAt": "2024-11-01T14:26:27.055Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "80282",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "0767565476",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [
+      "kirottu-matka",
+      "ruhtinaan-aika",
+      "tyhjyyden-meren-hirviot",
+      "ihmiskarjujen-yo-night-of-the-hogmen",
+      "red-tundra",
+      "juokse-juokse-kultaseni",
+      "kirottu-matka-2",
+      "the-lighthouse"
+    ],
+    "lotterySignups": [
+      {
+        "programItem": {
+          "programItemId": "ihmiskarjujen-yo-night-of-the-hogmen"
+        },
+        "priority": 2,
+        "time": "2024-11-02T15:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "red-tundra" },
+        "priority": 1,
+        "time": "2024-11-02T15:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "the-lighthouse" },
+        "priority": 1,
+        "time": "2024-11-03T10:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "red-tundra",
+        "programItemStartTime": "2024-11-02T15:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T13:00:05.518Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "the-lighthouse",
+        "programItemStartTime": "2024-11-03T10:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T08:00:05.645Z"
+      }
+    ],
+    "createdAt": "2024-11-01T15:52:48.159Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "508384",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "7652362570",
+    "groupCreatorCode": "c3a-eed-f1b",
+    "groupCode": "c3a-eed-f1b",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "larppimiekkailuworkshop" },
+        "priority": 3,
+        "time": "2024-11-02T13:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "kirottu-matka-2" },
+        "priority": 1,
+        "time": "2024-11-02T18:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "alien-uscss-traconis" },
+        "priority": 1,
+        "time": "2024-11-03T12:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "larppimiekkailuworkshop",
+        "programItemStartTime": "2024-11-02T13:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T11:00:05.559Z"
+      },
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-02T18:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T16:00:05.603Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "alien-uscss-traconis",
+        "programItemStartTime": "2024-11-03T12:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T10:00:05.55Z"
+      }
+    ],
+    "createdAt": "2024-11-01T16:48:11.935Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "106163",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "6607089403",
+    "groupCreatorCode": "0",
+    "groupCode": "c3a-eed-f1b",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "larppimiekkailuworkshop",
+        "programItemStartTime": "2024-11-02T13:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-02T11:00:05.559Z"
+      },
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-02T18:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-02T16:00:05.603Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "alien-uscss-traconis",
+        "programItemStartTime": "2024-11-03T12:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-03T10:00:05.55Z"
+      }
+    ],
+    "createdAt": "2024-11-01T16:50:18.4Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "247688",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "6685578376",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [
+      "ruhtinaan-aika",
+      "space-1889-pakkolasku-venuksen-viidakkoon",
+      "juokse-juokse-kultaseni",
+      "alice-is-missing",
+      "praedor-kirotut-kuninkaanvaalit-2",
+      "kirottu-matka-2",
+      "praedor-kirotut-kuninkaanvaalit",
+      "taivaskone",
+      "space-1889-pakolasku-venuksen-viidakkoon"
+    ],
+    "lotterySignups": [
+      {
+        "programItem": {
+          "programItemId": "offworlders-kosmoksen-karsein-keikka"
+        },
+        "priority": 1,
+        "time": "2024-11-02T12:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "ruhtinaan-aika" },
+        "priority": 1,
+        "time": "2024-11-02T14:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": {
+          "programItemId": "space-1889-pakkolasku-venuksen-viidakkoon"
+        },
+        "priority": 2,
+        "time": "2024-11-02T14:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "taivaskone" },
+        "priority": 1,
+        "time": "2024-11-03T10:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-02T12:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T10:00:05.541Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "ruhtinaan-aika",
+        "programItemStartTime": "2024-11-02T14:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T12:00:05.552Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "taivaskone",
+        "programItemStartTime": "2024-11-03T10:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T08:00:05.645Z"
+      }
+    ],
+    "createdAt": "2024-11-01T17:01:08.058Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "318838",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "1880103799",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [
+      "offworlders-kosmoksen-karsein-keikka",
+      "ruhtinaan-aika",
+      "space-1889-pakkolasku-venuksen-viidakkoon",
+      "red-tundra",
+      "mysteerien-maatila",
+      "praedor-kirotut-kuninkaanvaalit-2",
+      "alavilla-mailla",
+      "space-1889-pakolasku-venuksen-viidakkoon",
+      "elava-pakohuone-14"
+    ],
+    "lotterySignups": [
+      {
+        "programItem": {
+          "programItemId": "offworlders-kosmoksen-karsein-keikka"
+        },
+        "priority": 1,
+        "time": "2024-11-02T12:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": {
+          "programItemId": "space-1889-pakolasku-venuksen-viidakkoon"
+        },
+        "priority": 1,
+        "time": "2024-11-03T12:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "offworlders-kosmoksen-karsein-keikka",
+        "programItemStartTime": "2024-11-02T12:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T10:00:05.518Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "space-1889-pakolasku-venuksen-viidakkoon",
+        "programItemStartTime": "2024-11-03T12:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-03T10:00:05.55Z"
+      }
+    ],
+    "createdAt": "2024-11-01T17:48:29.845Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "528932",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "5644949223",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [],
+    "createdAt": "2024-11-01T17:58:24.132Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "613300",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "5162437726",
+    "groupCreatorCode": "0",
+    "groupCode": "c3a-eed-f1b",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "larppimiekkailuworkshop",
+        "programItemStartTime": "2024-11-02T13:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-02T11:00:05.559Z"
+      },
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-02T18:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-02T16:00:05.603Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "alien-uscss-traconis",
+        "programItemStartTime": "2024-11-03T12:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-03T10:00:05.55Z"
+      }
+    ],
+    "createdAt": "2024-11-01T18:23:32.568Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "137136",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "9834879018",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [
+      "lollo-praedor",
+      "kirottu-matka",
+      "duty-unto-death-a-dragon-age-rpg",
+      "city-of-the-scorpion-god",
+      "offworlders-kosmoksen-karsein-keikka",
+      "larppimiekkailuworkshop",
+      "ruhtinaan-aika",
+      "tyhjyyden-meren-hirviot",
+      "berserkin-pesa-vallat-ja-vaet",
+      "space-1889-pakkolasku-venuksen-viidakkoon",
+      "ihmiskarjujen-yo-night-of-the-hogmen",
+      "red-tundra",
+      "mysteerien-maatila",
+      "juokse-juokse-kultaseni",
+      "the-lighthouse",
+      "praedor-kirotut-kuninkaanvaalit-2",
+      "kirottu-matka-2",
+      "alavilla-mailla",
+      "praedor-kirotut-kuninkaanvaalit",
+      "elava-pakohuone-12",
+      "elava-pakohuone-16",
+      "elava-pakohuone-14",
+      "meripihkalinna",
+      "taivaskone",
+      "space-1889-pakolasku-venuksen-viidakkoon"
+    ],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "the-lighthouse" },
+        "priority": 1,
+        "time": "2024-11-03T10:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "taivaskone" },
+        "priority": 2,
+        "time": "2024-11-03T10:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "the-lighthouse",
+        "programItemStartTime": "2024-11-03T10:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-03T08:00:05.645Z"
+      }
+    ],
+    "createdAt": "2024-11-01T18:33:03.226Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "734782",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "4660003528",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [
+      "kirottu-matka",
+      "offworlders-kosmoksen-karsein-keikka",
+      "space-1889-pakkolasku-venuksen-viidakkoon",
+      "pelipoyta-ry-peluuttaa-ryuutama"
+    ],
+    "lotterySignups": [
+      {
+        "programItem": {
+          "programItemId": "space-1889-pakkolasku-venuksen-viidakkoon"
+        },
+        "priority": 1,
+        "time": "2024-11-02T14:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "ruhtinaan-aika" },
+        "priority": 2,
+        "time": "2024-11-02T14:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "ruhtinaan-aika",
+        "programItemStartTime": "2024-11-02T14:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T12:00:05.552Z"
+      }
+    ],
+    "createdAt": "2024-11-01T18:55:46.974Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "713008",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "8175666588",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [
+      "mates-dates-and-sleepovers",
+      "kirottu-matka",
+      "hahmotyopaja",
+      "deathmatch-island",
+      "pelia-pyynnosta-lauantai",
+      "offworlders-kosmoksen-karsein-keikka",
+      "tyhjyyden-meren-hirviot",
+      "space-1889-pakkolasku-venuksen-viidakkoon",
+      "mysteerien-maatila",
+      "auld-sanguine",
+      "alavilla-mailla",
+      "vaiettu-menneisyys",
+      "the-lighthouse"
+    ],
+    "lotterySignups": [
+      {
+        "programItem": {
+          "programItemId": "offworlders-kosmoksen-karsein-keikka"
+        },
+        "priority": 1,
+        "time": "2024-11-02T12:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": {
+          "programItemId": "space-1889-pakkolasku-venuksen-viidakkoon"
+        },
+        "priority": 1,
+        "time": "2024-11-02T14:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "tyhjyyden-meren-hirviot" },
+        "priority": 2,
+        "time": "2024-11-02T14:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "auld-sanguine" },
+        "priority": 1,
+        "time": "2024-11-03T09:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "vaiettu-menneisyys" },
+        "priority": 2,
+        "time": "2024-11-03T09:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "alavilla-mailla" },
+        "priority": 3,
+        "time": "2024-11-03T09:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-02T12:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T10:00:05.541Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "tyhjyyden-meren-hirviot",
+        "programItemStartTime": "2024-11-02T14:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T12:00:05.552Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "vaiettu-menneisyys",
+        "programItemStartTime": "2024-11-03T09:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T07:00:05.609Z"
+      }
+    ],
+    "createdAt": "2024-11-01T19:07:17.277Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "691088",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "4099316855",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "city-of-the-scorpion-god" },
+        "priority": 2,
+        "time": "2024-11-02T17:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "praedor-kirotut-kuninkaanvaalit-2" },
+        "priority": 3,
+        "time": "2024-11-02T17:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "the-dalish-curse-a-dragon-age-rpg" },
+        "priority": 2,
+        "time": "2024-11-03T09:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "vaiettu-menneisyys" },
+        "priority": 3,
+        "time": "2024-11-03T09:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "the-lighthouse" },
+        "priority": 1,
+        "time": "2024-11-03T10:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "city-of-the-scorpion-god",
+        "programItemStartTime": "2024-11-02T17:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T15:00:05.549Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "vaiettu-menneisyys",
+        "programItemStartTime": "2024-11-03T09:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T07:00:05.609Z"
+      },
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-03T10:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T08:00:05.679Z"
+      }
+    ],
+    "createdAt": "2024-11-01T19:34:29.015Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "559697",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "5879202413",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [],
+    "createdAt": "2024-11-01T19:51:02.141Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "25827",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "8592292448",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [
+      "pelia-pyynnosta-lauantai",
+      "sakaheitto-livepelautus",
+      "larppimiekkailuworkshop",
+      "ruhtinaan-aika",
+      "pelia-pyynnosta-sunnuntai",
+      "praedor-kirotut-kuninkaanvaalit"
+    ],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "larppimiekkailuworkshop" },
+        "priority": 1,
+        "time": "2024-11-02T13:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "larppimiekkailuworkshop",
+        "programItemStartTime": "2024-11-02T13:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T11:00:05.559Z"
+      }
+    ],
+    "createdAt": "2024-11-01T19:59:48.214Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "468504",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "5259899853",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "red-tundra" },
+        "priority": 2,
+        "time": "2024-11-02T15:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "red-tundra",
+        "programItemStartTime": "2024-11-02T15:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T13:00:05.518Z"
+      }
+    ],
+    "createdAt": "2024-11-01T20:13:06.421Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "219650",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "3058836655",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [],
+    "createdAt": "2024-11-01T20:15:19.627Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "662969",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "5613615284",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [],
+    "createdAt": "2024-11-01T20:28:03.259Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "706083",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "8868485585",
+    "groupCreatorCode": "853-a3b-def",
+    "groupCode": "853-a3b-def",
+    "favoriteProgramItemIds": [
+      "timantin-savyvirhe-2",
+      "deathmatch-island",
+      "tyhjyyden-meren-hirviot",
+      "juokse-juokse-kultaseni",
+      "frendeja-kundeja-ja-pullonpyoritysta",
+      "alien-uscss-traconis-2"
+    ],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "juokse-juokse-kultaseni" },
+        "priority": 1,
+        "time": "2024-11-02T16:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "juokse-juokse-kultaseni",
+        "programItemStartTime": "2024-11-02T16:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T14:00:05.468Z"
+      }
+    ],
+    "createdAt": "2024-11-01T20:46:02.937Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "604301",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "0062516307",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-02T15:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T13:00:05.552Z"
+      }
+    ],
+    "createdAt": "2024-11-01T21:01:55.184Z",
+    "updatedAt": "2024-11-04T09:05:00.388Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "937554",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "0052484854",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": ["offworlders-kosmoksen-karsein-keikka"],
+    "lotterySignups": [
+      {
+        "programItem": {
+          "programItemId": "offworlders-kosmoksen-karsein-keikka"
+        },
+        "priority": 1,
+        "time": "2024-11-02T12:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "kuonojoen-lohikaarme" },
+        "priority": 1,
+        "time": "2024-11-02T13:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "auld-sanguine" },
+        "priority": 1,
+        "time": "2024-11-03T09:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "taivaskone" },
+        "priority": 1,
+        "time": "2024-11-03T10:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-02T12:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T10:00:05.541Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "kuonojoen-lohikaarme",
+        "programItemStartTime": "2024-11-02T13:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T11:00:05.559Z"
+      },
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-03T09:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T07:00:05.649Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "taivaskone",
+        "programItemStartTime": "2024-11-03T10:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T08:00:05.645Z"
+      }
+    ],
+    "createdAt": "2024-11-01T21:07:07.344Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "35578",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "6390260120",
+    "groupCreatorCode": "0",
+    "groupCode": "886-ecd-a0b",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-02T16:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T14:00:05.488Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "alice-is-missing",
+        "programItemStartTime": "2024-11-02T17:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T15:00:05.549Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "the-dalish-curse-a-dragon-age-rpg",
+        "programItemStartTime": "2024-11-03T09:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-03T07:00:05.609Z"
+      }
+    ],
+    "createdAt": "2024-11-01T21:18:35.441Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "194249",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "3985017916",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": ["meripihkalinna"],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "city-of-the-scorpion-god" },
+        "priority": 1,
+        "time": "2024-11-02T17:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "praedor-kirotut-kuninkaanvaalit-2" },
+        "priority": 2,
+        "time": "2024-11-02T17:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "alice-is-missing" },
+        "priority": 3,
+        "time": "2024-11-02T17:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "city-of-the-scorpion-god",
+        "programItemStartTime": "2024-11-02T17:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T15:00:05.549Z"
+      }
+    ],
+    "createdAt": "2024-11-01T21:27:09.538Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "874275",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "8215448450",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [],
+    "createdAt": "2024-11-01T22:05:13.418Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "611198",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "6139315466",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [
+      "ruhtinaan-aika",
+      "tyhjyyden-meren-hirviot",
+      "ihmiskarjujen-yo-night-of-the-hogmen",
+      "toivottavasti-kukaan-ei-huomaa",
+      "kirottu-matka-2",
+      "alien-uscss-traconis-2",
+      "neuvoston-umpisolmu",
+      "elava-pakohuone-14",
+      "taivaskone",
+      "alien-uscss-traconis"
+    ],
+    "lotterySignups": [],
+    "eventLogItems": [],
+    "createdAt": "2024-11-01T22:05:24.167Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "781504",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "2340409156",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [
+      "kirottu-matka",
+      "duty-unto-death-a-dragon-age-rpg",
+      "larppimiekkailuworkshop",
+      "tyhjyyden-meren-hirviot",
+      "red-tundra",
+      "toivottavasti-kukaan-ei-huomaa",
+      "auld-sanguine",
+      "the-dalish-curse-a-dragon-age-rpg",
+      "the-lighthouse"
+    ],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "red-tundra" },
+        "priority": 1,
+        "time": "2024-11-02T15:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "auld-sanguine" },
+        "priority": 1,
+        "time": "2024-11-03T09:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "the-dalish-curse-a-dragon-age-rpg" },
+        "priority": 2,
+        "time": "2024-11-03T09:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "red-tundra",
+        "programItemStartTime": "2024-11-02T15:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T13:00:05.518Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "auld-sanguine",
+        "programItemStartTime": "2024-11-03T09:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T07:00:05.609Z"
+      }
+    ],
+    "createdAt": "2024-11-01T22:15:46.569Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "218166",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "5176137395",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "auld-sanguine" },
+        "priority": 1,
+        "time": "2024-11-03T09:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "auld-sanguine",
+        "programItemStartTime": "2024-11-03T09:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T07:00:05.609Z"
+      }
+    ],
+    "createdAt": "2024-11-02T02:27:04.896Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "322086",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "6801376192",
+    "groupCreatorCode": "0",
+    "groupCode": "c3a-eed-f1b",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "larppimiekkailuworkshop",
+        "programItemStartTime": "2024-11-02T13:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-02T11:00:05.559Z"
+      },
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-02T18:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-02T16:00:05.603Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "alien-uscss-traconis",
+        "programItemStartTime": "2024-11-03T12:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-03T10:00:05.55Z"
+      }
+    ],
+    "createdAt": "2024-11-02T04:42:12.527Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "603247",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "9365185470",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": ["pelipoyta-ry-peluuttaa-ryuutama"],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "tyhjyyden-meren-hirviot" },
+        "priority": 1,
+        "time": "2024-11-02T14:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": {
+          "programItemId": "space-1889-pakkolasku-venuksen-viidakkoon"
+        },
+        "priority": 2,
+        "time": "2024-11-02T14:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-02T14:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T12:00:05.578Z"
+      }
+    ],
+    "createdAt": "2024-11-02T05:17:56.149Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "430633",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "4141434276",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [
+      "kirottu-matka",
+      "pelipoyta-ry-peluuttaa-ryuutama",
+      "tyhjyyden-meren-hirviot",
+      "space-1889-pakkolasku-venuksen-viidakkoon",
+      "red-tundra",
+      "the-lighthouse",
+      "kirottu-matka-2",
+      "elava-pakohuone-12"
+    ],
+    "lotterySignups": [
+      {
+        "programItem": {
+          "programItemId": "space-1889-pakkolasku-venuksen-viidakkoon"
+        },
+        "priority": 1,
+        "time": "2024-11-02T14:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "tyhjyyden-meren-hirviot" },
+        "priority": 2,
+        "time": "2024-11-02T14:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "city-of-the-scorpion-god" },
+        "priority": 1,
+        "time": "2024-11-02T17:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "kirottu-matka-2" },
+        "priority": 1,
+        "time": "2024-11-02T18:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "taivaskone" },
+        "priority": 1,
+        "time": "2024-11-03T10:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "the-lighthouse" },
+        "priority": 2,
+        "time": "2024-11-03T10:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "space-1889-pakkolasku-venuksen-viidakkoon",
+        "programItemStartTime": "2024-11-02T14:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T12:00:05.552Z"
+      },
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-02T17:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T15:00:05.587Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "kirottu-matka-2",
+        "programItemStartTime": "2024-11-02T18:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T16:00:05.575Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "taivaskone",
+        "programItemStartTime": "2024-11-03T10:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T08:00:05.645Z"
+      }
+    ],
+    "createdAt": "2024-11-02T05:44:59.659Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "364157",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "9368046034",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [
+      "auld-sanguine",
+      "praedor-kirotut-kuninkaanvaalit-2",
+      "praedor-kirotut-kuninkaanvaalit",
+      "lollo-praedor"
+    ],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "praedor-kirotut-kuninkaanvaalit" },
+        "priority": 1,
+        "time": "2024-11-03T09:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "praedor-kirotut-kuninkaanvaalit",
+        "programItemStartTime": "2024-11-03T09:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T07:00:05.609Z"
+      }
+    ],
+    "createdAt": "2024-11-02T05:45:47.698Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": false,
+    "username": "503288",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "2940997253",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [],
+    "createdAt": "2024-11-02T06:10:32.23Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "21147",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "9830149275",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [
+      "kirottu-matka",
+      "hahmotyopaja",
+      "deathmatch-island",
+      "pelia-pyynnosta-lauantai",
+      "offworlders-kosmoksen-karsein-keikka",
+      "tyhjyyden-meren-hirviot",
+      "space-1889-pakkolasku-venuksen-viidakkoon",
+      "ihmiskarjujen-yo-night-of-the-hogmen",
+      "ruhtinaan-aika"
+    ],
+    "lotterySignups": [],
+    "eventLogItems": [
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-02T12:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-02T10:00:05.541Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "tyhjyyden-meren-hirviot",
+        "programItemStartTime": "2024-11-02T14:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-02T12:00:05.552Z"
+      }
+    ],
+    "createdAt": "2024-11-02T06:15:40.239Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "111164",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "1725654782",
+    "groupCreatorCode": "acd-389-61e",
+    "groupCode": "acd-389-61e",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "elava-pakohuone-12" },
+        "priority": 1,
+        "time": "2024-11-03T10:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "elava-pakohuone-14" },
+        "priority": 1,
+        "time": "2024-11-03T12:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "elava-pakohuone-16" },
+        "priority": 1,
+        "time": "2024-11-03T14:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-03T10:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T08:00:05.679Z"
+      },
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-03T12:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T10:00:05.576Z"
+      },
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-03T14:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T12:00:05.554Z"
+      }
+    ],
+    "createdAt": "2024-11-02T06:21:31.957Z",
+    "updatedAt": "2024-11-03T12:02:14.991Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "752423",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "5908672669",
+    "groupCreatorCode": "50a-f7c-e94",
+    "groupCode": "50a-f7c-e94",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [
+      {
+        "programItem": {
+          "programItemId": "space-1889-pakkolasku-venuksen-viidakkoon"
+        },
+        "priority": 1,
+        "time": "2024-11-02T14:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "city-of-the-scorpion-god" },
+        "priority": 1,
+        "time": "2024-11-02T17:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "alice-is-missing" },
+        "priority": 2,
+        "time": "2024-11-02T17:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "alien-uscss-traconis-2" },
+        "priority": 1,
+        "time": "2024-11-02T18:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "the-dalish-curse-a-dragon-age-rpg" },
+        "priority": 1,
+        "time": "2024-11-03T09:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "auld-sanguine" },
+        "priority": 2,
+        "time": "2024-11-03T09:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "the-lighthouse" },
+        "priority": 1,
+        "time": "2024-11-03T10:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": {
+          "programItemId": "pathfinder-society-scenario-6-01-intro-year-of-immortal-influence"
+        },
+        "priority": 2,
+        "time": "2024-11-03T10:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "meripihkalinna" },
+        "priority": 3,
+        "time": "2024-11-03T10:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "space-1889-pakkolasku-venuksen-viidakkoon",
+        "programItemStartTime": "2024-11-02T14:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T12:00:05.552Z"
+      },
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-02T17:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T15:00:05.587Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "alien-uscss-traconis-2",
+        "programItemStartTime": "2024-11-02T18:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T16:00:05.575Z"
+      },
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-03T09:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T07:00:05.649Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "pathfinder-society-scenario-6-01-intro-year-of-immortal-influence",
+        "programItemStartTime": "2024-11-03T10:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T08:00:05.645Z"
+      }
+    ],
+    "createdAt": "2024-11-02T06:22:52.288Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "704351",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "0970827333",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [
+      "timantin-savyvirhe-2",
+      "eco-mofos-into-the-antlions-den",
+      "pelia-pyynnosta-lauantai",
+      "offworlders-kosmoksen-karsein-keikka",
+      "the-lighthouse",
+      "taivaskone"
+    ],
+    "lotterySignups": [],
+    "eventLogItems": [],
+    "createdAt": "2024-11-02T06:26:49.171Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "819385",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "4056061312",
+    "groupCreatorCode": "0",
+    "groupCode": "50a-f7c-e94",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "space-1889-pakkolasku-venuksen-viidakkoon",
+        "programItemStartTime": "2024-11-02T14:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T12:00:05.552Z"
+      },
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-02T17:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T15:00:05.587Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "alien-uscss-traconis-2",
+        "programItemStartTime": "2024-11-02T18:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T16:00:05.575Z"
+      },
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-03T09:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-03T07:00:05.649Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "pathfinder-society-scenario-6-01-intro-year-of-immortal-influence",
+        "programItemStartTime": "2024-11-03T10:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T08:00:05.645Z"
+      }
+    ],
+    "createdAt": "2024-11-02T06:27:02.997Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "916303",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "2383725369",
+    "groupCreatorCode": "0",
+    "groupCode": "50a-f7c-e94",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "space-1889-pakkolasku-venuksen-viidakkoon",
+        "programItemStartTime": "2024-11-02T14:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-02T12:00:05.552Z"
+      },
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-02T17:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-02T15:00:05.587Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "alien-uscss-traconis-2",
+        "programItemStartTime": "2024-11-02T18:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-02T16:00:05.575Z"
+      },
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-03T09:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-03T07:00:05.649Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "pathfinder-society-scenario-6-01-intro-year-of-immortal-influence",
+        "programItemStartTime": "2024-11-03T10:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-03T08:00:05.645Z"
+      }
+    ],
+    "createdAt": "2024-11-02T06:34:15.733Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "375916",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "4491210458",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": ["tyhjyyden-meren-hirviot", "vaiettu-menneisyys"],
+    "lotterySignups": [],
+    "eventLogItems": [],
+    "createdAt": "2024-11-02T06:48:27.19Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "189803",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "2064796952",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": ["mysteerien-maatila", "meripihkalinna"],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "red-tundra" },
+        "priority": 1,
+        "time": "2024-11-02T15:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "meripihkalinna" },
+        "priority": 1,
+        "time": "2024-11-03T10:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "session-zero-tavernassa-tapahtuu",
+        "programItemStartTime": "2024-11-02T13:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T11:00:05.559Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "red-tundra",
+        "programItemStartTime": "2024-11-02T15:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T13:00:05.518Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "meripihkalinna",
+        "programItemStartTime": "2024-11-03T10:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T08:00:05.645Z"
+      }
+    ],
+    "createdAt": "2024-11-02T06:49:01.442Z",
+    "updatedAt": "2024-11-04T09:05:00.388Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "222718",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "3803911050",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "city-of-the-scorpion-god" },
+        "priority": 1,
+        "time": "2024-11-02T17:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "praedor-kirotut-kuninkaanvaalit-2" },
+        "priority": 2,
+        "time": "2024-11-02T17:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "city-of-the-scorpion-god",
+        "programItemStartTime": "2024-11-02T17:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-02T15:00:05.549Z"
+      }
+    ],
+    "createdAt": "2024-11-02T07:05:09.727Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "612118",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "4507283226",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "alice-is-missing" },
+        "priority": 1,
+        "time": "2024-11-02T17:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "alice-is-missing",
+        "programItemStartTime": "2024-11-02T17:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T15:00:05.549Z"
+      }
+    ],
+    "createdAt": "2024-11-02T07:18:44.967Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "364272",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "4159579103",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "ruhtinaan-aika" },
+        "priority": 1,
+        "time": "2024-11-02T14:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": {
+          "programItemId": "pathfinder-society-scenario-6-01-intro-year-of-immortal-influence"
+        },
+        "priority": 1,
+        "time": "2024-11-03T10:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "the-lighthouse" },
+        "priority": 2,
+        "time": "2024-11-03T10:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "ruhtinaan-aika",
+        "programItemStartTime": "2024-11-02T14:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-02T12:00:05.552Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "pathfinder-society-scenario-6-01-intro-year-of-immortal-influence",
+        "programItemStartTime": "2024-11-03T10:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-03T08:00:05.645Z"
+      }
+    ],
+    "createdAt": "2024-11-02T07:19:48.54Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "565592",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "6474872808",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [
+      "timantin-savyvirhe-2",
+      "kirottu-matka",
+      "pelipoyta-ry-peluuttaa-ryuutama",
+      "the-lighthouse"
+    ],
+    "lotterySignups": [],
+    "eventLogItems": [],
+    "createdAt": "2024-11-02T07:23:01.16Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "132985",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "9271520067",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [
+      "eco-mofos-into-the-antlions-den",
+      "city-of-the-scorpion-god",
+      "offworlders-kosmoksen-karsein-keikka",
+      "kuonojoen-lohikaarme",
+      "larppimiekkailuworkshop",
+      "space-1889-pakkolasku-venuksen-viidakkoon",
+      "ihmiskarjujen-yo-night-of-the-hogmen",
+      "red-tundra",
+      "kirottu-matka-2",
+      "alien-uscss-traconis-2",
+      "taivaskone",
+      "pathfinder-society-special-3-99-fate-in-the-future"
+    ],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "red-tundra" },
+        "priority": 1,
+        "time": "2024-11-02T15:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": {
+          "programItemId": "ihmiskarjujen-yo-night-of-the-hogmen"
+        },
+        "priority": 2,
+        "time": "2024-11-02T15:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "red-tundra",
+        "programItemStartTime": "2024-11-02T15:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T13:00:05.518Z"
+      }
+    ],
+    "createdAt": "2024-11-02T07:31:30.348Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "546495",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "3603241252",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [],
+    "createdAt": "2024-11-02T07:37:10.63Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "758706",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "6372891694",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "city-of-the-scorpion-god" },
+        "priority": 1,
+        "time": "2024-11-02T17:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "city-of-the-scorpion-god",
+        "programItemStartTime": "2024-11-02T17:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T15:00:05.549Z"
+      }
+    ],
+    "createdAt": "2024-11-02T07:39:57.454Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "968261",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "0499194868",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [
+      "timantin-savyvirhe-2",
+      "alice-is-missing",
+      "tyhjyyden-meren-hirviot"
+    ],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "tyhjyyden-meren-hirviot" },
+        "priority": 1,
+        "time": "2024-11-02T14:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "tyhjyyden-meren-hirviot",
+        "programItemStartTime": "2024-11-02T14:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-02T12:00:05.552Z"
+      }
+    ],
+    "createdAt": "2024-11-02T07:46:37.132Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "570261",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "9047768503",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [],
+    "createdAt": "2024-11-02T07:47:24.651Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "144818",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "6872724478",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [],
+    "createdAt": "2024-11-02T07:48:06.744Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "876561",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "4616581056",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [],
+    "createdAt": "2024-11-02T07:51:37.371Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "608267",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "5277832456",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [],
+    "createdAt": "2024-11-02T07:54:09.289Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "137204",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "5128269841",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [
+      "ihmiskarjujen-yo-night-of-the-hogmen",
+      "alice-is-missing",
+      "hahmotyopaja-2",
+      "taivaskone",
+      "the-lighthouse"
+    ],
+    "lotterySignups": [
+      {
+        "programItem": {
+          "programItemId": "ihmiskarjujen-yo-night-of-the-hogmen"
+        },
+        "priority": 1,
+        "time": "2024-11-02T15:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "ihmiskarjujen-yo-night-of-the-hogmen",
+        "programItemStartTime": "2024-11-02T15:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T13:00:05.518Z"
+      }
+    ],
+    "createdAt": "2024-11-02T07:54:17.428Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "990107",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "7270184000",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "berserkin-pesa-vallat-ja-vaet" },
+        "priority": 1,
+        "time": "2024-11-02T14:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "alien-uscss-traconis-2" },
+        "priority": 1,
+        "time": "2024-11-02T18:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "auld-sanguine" },
+        "priority": 1,
+        "time": "2024-11-03T09:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "meripihkalinna" },
+        "priority": 1,
+        "time": "2024-11-03T10:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "the-lighthouse" },
+        "priority": 2,
+        "time": "2024-11-03T10:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "alien-uscss-traconis" },
+        "priority": 1,
+        "time": "2024-11-03T12:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": {
+          "programItemId": "space-1889-pakolasku-venuksen-viidakkoon"
+        },
+        "priority": 2,
+        "time": "2024-11-03T12:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "berserkin-pesa-vallat-ja-vaet",
+        "programItemStartTime": "2024-11-02T14:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T12:00:05.552Z"
+      },
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-02T18:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T16:00:05.603Z"
+      },
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-03T09:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T07:00:05.649Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "meripihkalinna",
+        "programItemStartTime": "2024-11-03T10:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T08:00:05.645Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "space-1889-pakolasku-venuksen-viidakkoon",
+        "programItemStartTime": "2024-11-03T12:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T10:00:05.55Z"
+      }
+    ],
+    "createdAt": "2024-11-02T07:55:54.652Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "662977",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "8163589891",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [
+      {
+        "programItem": {
+          "programItemId": "frendeja-kundeja-ja-pullonpyoritysta"
+        },
+        "priority": 1,
+        "time": "2024-11-02T18:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "frendeja-kundeja-ja-pullonpyoritysta",
+        "programItemStartTime": "2024-11-02T18:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T16:00:05.575Z"
+      }
+    ],
+    "createdAt": "2024-11-02T07:57:10.727Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "138767",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "6175369880",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [
+      "alavilla-mailla",
+      "taivaskone",
+      "the-lighthouse"
+    ],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "auld-sanguine" },
+        "priority": 1,
+        "time": "2024-11-03T09:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "praedor-kirotut-kuninkaanvaalit" },
+        "priority": 2,
+        "time": "2024-11-03T09:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "praedor-kirotut-kuninkaanvaalit",
+        "programItemStartTime": "2024-11-03T09:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T07:00:05.609Z"
+      }
+    ],
+    "createdAt": "2024-11-02T07:59:56.186Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "456125",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "3284000654",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "alien-uscss-traconis-2" },
+        "priority": 1,
+        "time": "2024-11-02T18:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "alien-uscss-traconis-2",
+        "programItemStartTime": "2024-11-02T18:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T16:00:05.575Z"
+      }
+    ],
+    "createdAt": "2024-11-02T08:02:32.729Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "325029",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "3582590372",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "city-of-the-scorpion-god" },
+        "priority": 1,
+        "time": "2024-11-02T17:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "city-of-the-scorpion-god",
+        "programItemStartTime": "2024-11-02T17:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-02T15:00:05.549Z"
+      }
+    ],
+    "createdAt": "2024-11-02T08:09:33.922Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "396144",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "8977827925",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [
+      "kirottu-matka",
+      "duty-unto-death-a-dragon-age-rpg",
+      "tyhjyyden-meren-hirviot",
+      "juokse-juokse-kultaseni",
+      "the-dalish-curse-a-dragon-age-rpg",
+      "alice-is-missing",
+      "praedor-kirotut-kuninkaanvaalit-2",
+      "kirottu-matka-2",
+      "elava-pakohuone-12",
+      "pathfinder-society-special-3-99-fate-in-the-future"
+    ],
+    "lotterySignups": [],
+    "eventLogItems": [],
+    "createdAt": "2024-11-02T08:20:00.125Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "975534",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "9601847321",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [],
+    "createdAt": "2024-11-02T08:24:32.735Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "739012",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "2055763607",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "the-lighthouse" },
+        "priority": 1,
+        "time": "2024-11-03T10:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "taivaskone" },
+        "priority": 2,
+        "time": "2024-11-03T10:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "meripihkalinna" },
+        "priority": 3,
+        "time": "2024-11-03T10:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "the-lighthouse",
+        "programItemStartTime": "2024-11-03T10:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-03T08:00:05.645Z"
+      }
+    ],
+    "createdAt": "2024-11-02T08:31:16.12Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "352422",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "0541013140",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [],
+    "createdAt": "2024-11-02T08:33:21.013Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "635844",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "5618753981",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "meripihkalinna" },
+        "priority": 1,
+        "time": "2024-11-03T10:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "meripihkalinna",
+        "programItemStartTime": "2024-11-03T10:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-03T08:00:05.645Z"
+      }
+    ],
+    "createdAt": "2024-11-02T08:40:31.789Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "72930",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "1203939796",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [
+      "pelia-pyynnosta-lauantai",
+      "toivottavasti-kukaan-ei-huomaa-2",
+      "juokse-juokse-kultaseni",
+      "toivottavasti-kukaan-ei-huomaa",
+      "frendeja-kundeja-ja-pullonpyoritysta",
+      "pelia-pyynnosta-sunnuntai",
+      "the-lighthouse"
+    ],
+    "lotterySignups": [],
+    "eventLogItems": [],
+    "createdAt": "2024-11-02T08:44:16.166Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "895217",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "9230396195",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [
+      {
+        "programItem": {
+          "programItemId": "offworlders-kosmoksen-karsein-keikka"
+        },
+        "priority": 1,
+        "time": "2024-11-02T12:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "praedor-kirotut-kuninkaanvaalit-2" },
+        "priority": 2,
+        "time": "2024-11-02T17:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "offworlders-kosmoksen-karsein-keikka",
+        "programItemStartTime": "2024-11-02T12:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T10:00:05.518Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "praedor-kirotut-kuninkaanvaalit-2",
+        "programItemStartTime": "2024-11-02T17:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T15:00:05.549Z"
+      }
+    ],
+    "createdAt": "2024-11-02T09:00:37.774Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "147170",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "6040718436",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [],
+    "createdAt": "2024-11-02T09:01:19.116Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "599344",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "7896011074",
+    "groupCreatorCode": "0",
+    "groupCode": "c3a-eed-f1b",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "larppimiekkailuworkshop",
+        "programItemStartTime": "2024-11-02T13:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-02T11:00:05.559Z"
+      },
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-02T18:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-02T16:00:05.603Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "alien-uscss-traconis",
+        "programItemStartTime": "2024-11-03T12:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-03T10:00:05.55Z"
+      }
+    ],
+    "createdAt": "2024-11-02T09:16:22.943Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "813191",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "2136296601",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [
+      "pathfinder-society-scenario-6-01-intro-year-of-immortal-influence",
+      "pathfinder-society-special-3-99-fate-in-the-future"
+    ],
+    "lotterySignups": [],
+    "eventLogItems": [],
+    "createdAt": "2024-11-02T09:33:32.147Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "495631",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "0850323817",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [
+      "city-of-the-scorpion-god",
+      "space-1889-pakkolasku-venuksen-viidakkoon",
+      "praedor-kirotut-kuninkaanvaalit-2",
+      "kirottu-matka-2",
+      "alien-uscss-traconis-2",
+      "space-1889-pakolasku-venuksen-viidakkoon",
+      "the-dalish-curse-a-dragon-age-rpg"
+    ],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "the-dalish-curse-a-dragon-age-rpg" },
+        "priority": 1,
+        "time": "2024-11-03T09:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "the-dalish-curse-a-dragon-age-rpg",
+        "programItemStartTime": "2024-11-03T09:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T07:00:05.609Z"
+      }
+    ],
+    "createdAt": "2024-11-02T09:43:31.205Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "982326",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "6282016861",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": ["ihmiskarjujen-yo-night-of-the-hogmen"],
+    "lotterySignups": [
+      {
+        "programItem": {
+          "programItemId": "ihmiskarjujen-yo-night-of-the-hogmen"
+        },
+        "priority": 1,
+        "time": "2024-11-02T15:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "ihmiskarjujen-yo-night-of-the-hogmen",
+        "programItemStartTime": "2024-11-02T15:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T13:00:05.518Z"
+      }
+    ],
+    "createdAt": "2024-11-02T09:46:25.31Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "166778",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "3026834261",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [],
+    "createdAt": "2024-11-02T09:55:39.915Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "214234",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "2273267969",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [],
+    "createdAt": "2024-11-02T10:01:44.336Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "737061",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "5237064315",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "kuonojoen-lohikaarme" },
+        "priority": 1,
+        "time": "2024-11-02T13:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "meripihkalinna" },
+        "priority": 1,
+        "time": "2024-11-03T10:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "kuonojoen-lohikaarme",
+        "programItemStartTime": "2024-11-02T13:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T11:00:05.559Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "meripihkalinna",
+        "programItemStartTime": "2024-11-03T10:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T08:00:05.645Z"
+      }
+    ],
+    "createdAt": "2024-11-02T10:07:54.627Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "841288",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "3638200794",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "session-zero-tavernassa-tapahtuu",
+        "programItemStartTime": "2024-11-02T13:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-02T11:00:05.559Z"
+      }
+    ],
+    "createdAt": "2024-11-02T10:13:10.551Z",
+    "updatedAt": "2024-11-04T09:05:00.388Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "995327",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "2526805037",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "session-zero-tavernassa-tapahtuu",
+        "programItemStartTime": "2024-11-02T13:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T11:00:05.559Z"
+      }
+    ],
+    "createdAt": "2024-11-02T10:13:41.028Z",
+    "updatedAt": "2024-11-04T09:05:00.388Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "895833",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "9214420292",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "session-zero-tavernassa-tapahtuu",
+        "programItemStartTime": "2024-11-02T13:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T11:00:05.559Z"
+      }
+    ],
+    "createdAt": "2024-11-02T10:16:49.622Z",
+    "updatedAt": "2024-11-04T09:05:00.388Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "334443",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "5734609505",
+    "groupCreatorCode": "234-f3c-b33",
+    "groupCode": "234-f3c-b33",
+    "favoriteProgramItemIds": [
+      "praedor-kirotut-kuninkaanvaalit-2",
+      "alien-uscss-traconis-2"
+    ],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "alien-uscss-traconis-2" },
+        "priority": 1,
+        "time": "2024-11-02T18:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-02T18:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T16:00:05.603Z"
+      }
+    ],
+    "createdAt": "2024-11-02T10:46:15.859Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "403648",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "8658903987",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [
+      "elava-pakohuone-12",
+      "elava-pakohuone-16",
+      "neuvoston-umpisolmu",
+      "elava-pakohuone-14",
+      "pelia-pyynnosta-sunnuntai"
+    ],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "elava-pakohuone-12" },
+        "priority": 1,
+        "time": "2024-11-03T10:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "elava-pakohuone-12",
+        "programItemStartTime": "2024-11-03T10:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T08:00:05.645Z"
+      }
+    ],
+    "createdAt": "2024-11-02T10:48:40.11Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "871734",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "3741115806",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": ["ihmiskarjujen-yo-night-of-the-hogmen"],
+    "lotterySignups": [
+      {
+        "programItem": {
+          "programItemId": "ihmiskarjujen-yo-night-of-the-hogmen"
+        },
+        "priority": 1,
+        "time": "2024-11-02T15:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "ihmiskarjujen-yo-night-of-the-hogmen",
+        "programItemStartTime": "2024-11-02T15:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-02T13:00:05.518Z"
+      }
+    ],
+    "createdAt": "2024-11-02T10:50:58.057Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "316718",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "6761749396",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "kuonojoen-lohikaarme" },
+        "priority": 1,
+        "time": "2024-11-02T13:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "kuonojoen-lohikaarme",
+        "programItemStartTime": "2024-11-02T13:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-02T11:00:05.559Z"
+      }
+    ],
+    "createdAt": "2024-11-02T10:52:39.125Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "334478",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "4943047458",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "kuonojoen-lohikaarme" },
+        "priority": 1,
+        "time": "2024-11-02T13:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "kuonojoen-lohikaarme",
+        "programItemStartTime": "2024-11-02T13:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T11:00:05.559Z"
+      }
+    ],
+    "createdAt": "2024-11-02T10:54:08.127Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "830589",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "9220845243",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "kuonojoen-lohikaarme" },
+        "priority": 1,
+        "time": "2024-11-02T13:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "kuonojoen-lohikaarme",
+        "programItemStartTime": "2024-11-02T13:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-02T11:00:05.559Z"
+      }
+    ],
+    "createdAt": "2024-11-02T10:56:35.126Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "908239",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "1028568879",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [
+      "ihmiskarjujen-yo-night-of-the-hogmen",
+      "red-tundra",
+      "praedor-kirotut-kuninkaanvaalit-2",
+      "kirottu-matka-2",
+      "alien-uscss-traconis-2"
+    ],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "red-tundra" },
+        "priority": 1,
+        "time": "2024-11-02T15:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "red-tundra",
+        "programItemStartTime": "2024-11-02T15:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T13:00:05.518Z"
+      }
+    ],
+    "createdAt": "2024-11-02T10:57:15.264Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "930070",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "6210619646",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "elava-pakohuone-12" },
+        "priority": 1,
+        "time": "2024-11-03T10:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "session-zero-tavernassa-tapahtuu",
+        "programItemStartTime": "2024-11-02T13:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T11:00:05.559Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "elava-pakohuone-12",
+        "programItemStartTime": "2024-11-03T10:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-03T08:00:05.645Z"
+      }
+    ],
+    "createdAt": "2024-11-02T10:57:31.759Z",
+    "updatedAt": "2024-11-04T09:05:00.388Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "712290",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "6312016428",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [
+      "frendeja-kundeja-ja-pullonpyoritysta",
+      "neuvoston-umpisolmu",
+      "hahmotyopaja-2"
+    ],
+    "lotterySignups": [
+      {
+        "programItem": {
+          "programItemId": "frendeja-kundeja-ja-pullonpyoritysta"
+        },
+        "priority": 1,
+        "time": "2024-11-02T18:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "frendeja-kundeja-ja-pullonpyoritysta",
+        "programItemStartTime": "2024-11-02T18:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T16:00:05.575Z"
+      }
+    ],
+    "createdAt": "2024-11-02T10:59:53.436Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "700648",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "5092564599",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "praedor-kirotut-kuninkaanvaalit-2" },
+        "priority": 1,
+        "time": "2024-11-02T17:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "praedor-kirotut-kuninkaanvaalit-2",
+        "programItemStartTime": "2024-11-02T17:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T15:00:05.549Z"
+      }
+    ],
+    "createdAt": "2024-11-02T11:01:56.051Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "19393",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "4752259459",
+    "groupCreatorCode": "0",
+    "groupCode": "234-f3c-b33",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-02T18:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-02T16:00:05.603Z"
+      }
+    ],
+    "createdAt": "2024-11-02T11:03:50.429Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "907236",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "1324100898",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-02T15:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-02T13:00:05.552Z"
+      }
+    ],
+    "createdAt": "2024-11-02T11:13:57.681Z",
+    "updatedAt": "2024-11-04T09:05:00.388Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "415137",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "2812400022",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [
+      {
+        "programItem": {
+          "programItemId": "space-1889-pakkolasku-venuksen-viidakkoon"
+        },
+        "priority": 1,
+        "time": "2024-11-02T14:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "toivottavasti-kukaan-ei-huomaa-2" },
+        "priority": 2,
+        "time": "2024-11-02T14:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "tyhjyyden-meren-hirviot" },
+        "priority": 3,
+        "time": "2024-11-02T14:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "elava-pakohuone-14" },
+        "priority": 1,
+        "time": "2024-11-03T12:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "toivottavasti-kukaan-ei-huomaa-2",
+        "programItemStartTime": "2024-11-02T14:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T12:00:05.552Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "elava-pakohuone-14",
+        "programItemStartTime": "2024-11-03T12:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T10:00:05.55Z"
+      }
+    ],
+    "createdAt": "2024-11-02T11:20:53.22Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "430916",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "0678899691",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [],
+    "createdAt": "2024-11-02T11:24:40.712Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "846226",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "3799944974",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [],
+    "createdAt": "2024-11-02T11:31:59.282Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "177463",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "0992320523",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [
+      "the-lighthouse",
+      "alavilla-mailla",
+      "vaiettu-menneisyys",
+      "meripihkalinna",
+      "taivaskone",
+      "alien-uscss-traconis",
+      "alien-uscss-traconis-2"
+    ],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "vaiettu-menneisyys" },
+        "priority": 1,
+        "time": "2024-11-03T09:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "auld-sanguine" },
+        "priority": 2,
+        "time": "2024-11-03T09:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "alien-uscss-traconis" },
+        "priority": 1,
+        "time": "2024-11-03T12:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "vaiettu-menneisyys",
+        "programItemStartTime": "2024-11-03T09:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T07:00:05.609Z"
+      },
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-03T12:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T10:00:05.576Z"
+      }
+    ],
+    "createdAt": "2024-11-02T11:47:52.771Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "297921",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "2145384323",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [],
+    "createdAt": "2024-11-02T12:03:31.071Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "406316",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "7744521878",
+    "groupCreatorCode": "d64-989-311",
+    "groupCode": "d64-989-311",
+    "favoriteProgramItemIds": [
+      "elava-pakohuone-12",
+      "elava-pakohuone-14",
+      "elava-pakohuone-16"
+    ],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "elava-pakohuone-14" },
+        "priority": 1,
+        "time": "2024-11-03T12:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "elava-pakohuone-16" },
+        "priority": 1,
+        "time": "2024-11-03T14:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-03T12:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T10:00:05.576Z"
+      },
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-03T14:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-03T12:00:05.554Z"
+      }
+    ],
+    "createdAt": "2024-11-02T12:18:02.324Z",
+    "updatedAt": "2024-11-03T12:00:05.554Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "162943",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "3369808351",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "mysteerien-maatila" },
+        "priority": 1,
+        "time": "2024-11-02T15:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-02T15:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-02T13:00:05.552Z"
+      }
+    ],
+    "createdAt": "2024-11-02T12:21:16.51Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "992253",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "1933897579",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [],
+    "createdAt": "2024-11-02T12:26:53.553Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "502176",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "6903666961",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [],
+    "createdAt": "2024-11-02T12:54:51.328Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "982821",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "4416776385",
+    "groupCreatorCode": "0",
+    "groupCode": "853-a3b-def",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "juokse-juokse-kultaseni",
+        "programItemStartTime": "2024-11-02T16:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-02T14:00:05.468Z"
+      }
+    ],
+    "createdAt": "2024-11-02T12:58:56.901Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "998206",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "0078867223",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [
+      "pathfinder-society-scenario-6-01-intro-year-of-immortal-influence"
+    ],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "juokse-juokse-kultaseni" },
+        "priority": 1,
+        "time": "2024-11-02T16:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": {
+          "programItemId": "pathfinder-society-scenario-6-01-intro-year-of-immortal-influence"
+        },
+        "priority": 1,
+        "time": "2024-11-03T10:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "juokse-juokse-kultaseni",
+        "programItemStartTime": "2024-11-02T16:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T14:00:05.468Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "pathfinder-society-scenario-6-01-intro-year-of-immortal-influence",
+        "programItemStartTime": "2024-11-03T10:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T08:00:05.645Z"
+      }
+    ],
+    "createdAt": "2024-11-02T13:06:24.992Z",
+    "updatedAt": "2024-11-03T16:25:19.774Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "556204",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "4102371780",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "elava-pakohuone-14" },
+        "priority": 1,
+        "time": "2024-11-03T12:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "elava-pakohuone-14",
+        "programItemStartTime": "2024-11-03T12:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T10:00:05.55Z"
+      }
+    ],
+    "createdAt": "2024-11-02T13:14:59.754Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "328245",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "7227531170",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [],
+    "createdAt": "2024-11-02T13:22:46.396Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "90262",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "4187097169",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [],
+    "createdAt": "2024-11-02T13:23:33.729Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "133244",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "2029981137",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "alice-is-missing" },
+        "priority": 1,
+        "time": "2024-11-02T17:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "alice-is-missing",
+        "programItemStartTime": "2024-11-02T17:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T15:00:05.549Z"
+      }
+    ],
+    "createdAt": "2024-11-02T13:46:32.18Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "971949",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "9498772475",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [],
+    "createdAt": "2024-11-02T13:49:47.526Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "77939",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "5245122030",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "praedor-kirotut-kuninkaanvaalit" },
+        "priority": 2,
+        "time": "2024-11-03T09:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "vaiettu-menneisyys" },
+        "priority": 1,
+        "time": "2024-11-03T09:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "vaiettu-menneisyys",
+        "programItemStartTime": "2024-11-03T09:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T07:00:05.609Z"
+      }
+    ],
+    "createdAt": "2024-11-02T14:08:02.992Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "40649",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "7624600644",
+    "groupCreatorCode": "0",
+    "groupCode": "234-f3c-b33",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-02T18:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-02T16:00:05.603Z"
+      }
+    ],
+    "createdAt": "2024-11-02T14:28:01.116Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "647326",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "9780349164",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "kirottu-matka-2" },
+        "priority": 1,
+        "time": "2024-11-02T18:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "alien-uscss-traconis-2" },
+        "priority": 2,
+        "time": "2024-11-02T18:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "auld-sanguine" },
+        "priority": 1,
+        "time": "2024-11-03T09:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "kirottu-matka-2",
+        "programItemStartTime": "2024-11-02T18:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-02T16:00:05.575Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "auld-sanguine",
+        "programItemStartTime": "2024-11-03T09:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T07:00:05.609Z"
+      }
+    ],
+    "createdAt": "2024-11-02T15:00:24.825Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "691296",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "3010137408",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [],
+    "createdAt": "2024-11-02T15:57:18.912Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "586598",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "0608549622",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [],
+    "createdAt": "2024-11-02T15:58:30.482Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "13110",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "0844856906",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [],
+    "createdAt": "2024-11-02T16:32:04.303Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "332445",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "8361377230",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "alavilla-mailla" },
+        "priority": 2,
+        "time": "2024-11-03T09:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "meripihkalinna" },
+        "priority": 1,
+        "time": "2024-11-03T10:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "alavilla-mailla",
+        "programItemStartTime": "2024-11-03T09:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T07:00:05.609Z"
+      }
+    ],
+    "createdAt": "2024-11-02T16:56:59.337Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "30658",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "7975969069",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "auld-sanguine" },
+        "priority": 2,
+        "time": "2024-11-03T09:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "meripihkalinna" },
+        "priority": 1,
+        "time": "2024-11-03T10:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "auld-sanguine",
+        "programItemStartTime": "2024-11-03T09:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T07:00:05.609Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "meripihkalinna",
+        "programItemStartTime": "2024-11-03T10:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T08:00:05.645Z"
+      }
+    ],
+    "createdAt": "2024-11-02T16:59:35.568Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "299876",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "8170785250",
+    "groupCreatorCode": "0",
+    "groupCode": "8e0-d36-55e",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "alavilla-mailla",
+        "programItemStartTime": "2024-11-03T09:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T07:00:05.609Z"
+      }
+    ],
+    "createdAt": "2024-11-02T17:33:57.678Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "148452",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "0966182727",
+    "groupCreatorCode": "403-7dc-267",
+    "groupCode": "403-7dc-267",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "praedor-kirotut-kuninkaanvaalit" },
+        "priority": 1,
+        "time": "2024-11-03T09:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "praedor-kirotut-kuninkaanvaalit",
+        "programItemStartTime": "2024-11-03T09:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T07:00:05.609Z"
+      }
+    ],
+    "createdAt": "2024-11-02T19:21:00.192Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "997190",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "8291779869",
+    "groupCreatorCode": "0",
+    "groupCode": "403-7dc-267",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "praedor-kirotut-kuninkaanvaalit",
+        "programItemStartTime": "2024-11-03T09:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-03T07:00:05.609Z"
+      }
+    ],
+    "createdAt": "2024-11-02T19:33:44.926Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "829872",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "3387802170",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "alavilla-mailla" },
+        "priority": 1,
+        "time": "2024-11-03T09:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "alavilla-mailla",
+        "programItemStartTime": "2024-11-03T09:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T07:00:05.609Z"
+      }
+    ],
+    "createdAt": "2024-11-03T05:12:52.283Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "423737",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "1710317924",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "the-dalish-curse-a-dragon-age-rpg" },
+        "priority": 1,
+        "time": "2024-11-03T09:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "elava-pakohuone-16" },
+        "priority": 1,
+        "time": "2024-11-03T14:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "the-dalish-curse-a-dragon-age-rpg",
+        "programItemStartTime": "2024-11-03T09:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T07:00:05.609Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "elava-pakohuone-16",
+        "programItemStartTime": "2024-11-03T14:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T12:00:05.53Z"
+      }
+    ],
+    "createdAt": "2024-11-03T06:01:50.915Z",
+    "updatedAt": "2024-11-03T13:51:09.231Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "268259",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "2207957818",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [
+      "toivottavasti-kukaan-ei-huomaa",
+      "space-1889-pakolasku-venuksen-viidakkoon"
+    ],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "toivottavasti-kukaan-ei-huomaa" },
+        "priority": 1,
+        "time": "2024-11-03T09:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "toivottavasti-kukaan-ei-huomaa",
+        "programItemStartTime": "2024-11-03T09:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T07:00:05.609Z"
+      }
+    ],
+    "createdAt": "2024-11-03T06:03:34.892Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "787233",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "5450078109",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "the-dalish-curse-a-dragon-age-rpg" },
+        "priority": 1,
+        "time": "2024-11-03T09:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "elava-pakohuone-16" },
+        "priority": 1,
+        "time": "2024-11-03T14:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "the-dalish-curse-a-dragon-age-rpg",
+        "programItemStartTime": "2024-11-03T09:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T07:00:05.609Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "elava-pakohuone-16",
+        "programItemStartTime": "2024-11-03T14:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T12:00:05.53Z"
+      }
+    ],
+    "createdAt": "2024-11-03T06:24:31.236Z",
+    "updatedAt": "2024-11-03T13:26:16.378Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "960352",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "8459337732",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "elava-pakohuone-12" },
+        "priority": 1,
+        "time": "2024-11-03T10:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "elava-pakohuone-14" },
+        "priority": 1,
+        "time": "2024-11-03T12:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-03T10:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T08:00:05.679Z"
+      },
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-03T12:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T10:00:05.576Z"
+      }
+    ],
+    "createdAt": "2024-11-03T06:51:25.961Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "155757",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "6780014723",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [],
+    "createdAt": "2024-11-03T07:00:37.756Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "127493",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "3103716977",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-03T10:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-03T08:00:05.679Z"
+      },
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-03T12:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-03T10:00:05.576Z"
+      }
+    ],
+    "createdAt": "2024-11-03T07:05:00.852Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "123355",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "2316527874",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [],
+    "createdAt": "2024-11-03T07:07:33.428Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "921748",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "3570072078",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-03T10:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-03T08:00:05.679Z"
+      },
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-03T12:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-03T10:00:05.576Z"
+      }
+    ],
+    "createdAt": "2024-11-03T07:09:41.472Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "611013",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "7895126378",
+    "groupCreatorCode": "0",
+    "groupCode": "acd-389-61e",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-03T10:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-03T08:00:05.679Z"
+      },
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-03T12:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-03T10:00:05.576Z"
+      },
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-03T14:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-03T12:00:05.554Z"
+      }
+    ],
+    "createdAt": "2024-11-03T07:11:43.626Z",
+    "updatedAt": "2024-11-03T12:00:05.554Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "635750",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "8905906775",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": ["auld-sanguine", "the-lighthouse"],
+    "lotterySignups": [],
+    "eventLogItems": [],
+    "createdAt": "2024-11-03T07:18:47.246Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "695024",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "4798641322",
+    "groupCreatorCode": "0",
+    "groupCode": "d64-989-311",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-03T12:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-03T10:00:05.576Z"
+      },
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-03T14:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-03T12:00:05.554Z"
+      }
+    ],
+    "createdAt": "2024-11-03T07:29:14.275Z",
+    "updatedAt": "2024-11-03T12:00:05.554Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "104188",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "0707836516",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "elava-pakohuone-14" },
+        "priority": 1,
+        "time": "2024-11-03T12:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "elava-pakohuone-14",
+        "programItemStartTime": "2024-11-03T12:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T10:00:05.55Z"
+      }
+    ],
+    "createdAt": "2024-11-03T08:04:51.571Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "551503",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "1696405131",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [],
+    "createdAt": "2024-11-03T08:09:13.378Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "880646",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "9582237401",
+    "groupCreatorCode": "e79-e66-459",
+    "groupCode": "e79-e66-459",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "elava-pakohuone-14" },
+        "priority": 1,
+        "time": "2024-11-03T12:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-03T12:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T10:00:05.576Z"
+      }
+    ],
+    "createdAt": "2024-11-03T08:22:43.601Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "964490",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "8965177069",
+    "groupCreatorCode": "0",
+    "groupCode": "e79-e66-459",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-03T12:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-03T10:00:05.576Z"
+      }
+    ],
+    "createdAt": "2024-11-03T08:23:23.443Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "825854",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "9636718273",
+    "groupCreatorCode": "0",
+    "groupCode": "e79-e66-459",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-03T12:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-03T10:00:05.576Z"
+      }
+    ],
+    "createdAt": "2024-11-03T08:24:29.605Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "854667",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "1280462464",
+    "groupCreatorCode": "0",
+    "groupCode": "e79-e66-459",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-03T12:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-03T10:00:05.576Z"
+      }
+    ],
+    "createdAt": "2024-11-03T08:28:07.699Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "971518",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "5792051392",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [],
+    "createdAt": "2024-11-03T08:47:23.21Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "111534",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "5661044049",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [
+      {
+        "programItem": {
+          "programItemId": "space-1889-pakolasku-venuksen-viidakkoon"
+        },
+        "priority": 1,
+        "time": "2024-11-03T12:00:00Z",
+        "message": ""
+      },
+      {
+        "programItem": { "programItemId": "alien-uscss-traconis" },
+        "priority": 2,
+        "time": "2024-11-03T12:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "space-1889-pakolasku-venuksen-viidakkoon",
+        "programItemStartTime": "2024-11-03T12:00:00Z",
+        "isSeen": true,
+        "createdAt": "2024-11-03T10:00:05.55Z"
+      }
+    ],
+    "createdAt": "2024-11-03T08:48:40.534Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "911479",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "2118674304",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [],
+    "eventLogItems": [],
+    "createdAt": "2024-11-03T10:39:26.632Z",
+    "updatedAt": "2024-11-03T12:00:05.494Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "202569",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "4199734486",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoriteProgramItemIds": [],
+    "lotterySignups": [
+      {
+        "programItem": { "programItemId": "elava-pakohuone-16" },
+        "priority": 1,
+        "time": "2024-11-03T14:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "noAssignment",
+        "programItemId": "",
+        "programItemStartTime": "2024-11-03T14:00:00Z",
+        "isSeen": false,
+        "createdAt": "2024-11-03T12:00:05.554Z"
+      }
+    ],
+    "createdAt": "2024-11-03T11:10:17.963Z",
+    "updatedAt": "2024-11-03T12:00:05.554Z"
+  }
+]
