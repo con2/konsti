@@ -95,7 +95,7 @@ const createUser = async ({
 
   const registrationData: NewUser = {
     kompassiId: 0,
-    username: testUsers ? `group${userNumber}` : faker.internet.userName(),
+    username: testUsers ? `group${userNumber}` : faker.internet.username(),
     passwordHash,
     userGroup: UserGroup.USER,
     serial: faker.number.int(SERIAL_MAX).toString(),
