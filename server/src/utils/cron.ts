@@ -51,7 +51,7 @@ export const startCronJobs = async (): Promise<void> => {
   if (autoUpdateProgramEnabled) {
     logger.info("Start cronjob: program auto update");
 
-    const autoUpdateProgramItemsJob = Cron(
+    const autoUpdateProgramItemsJob = new Cron(
       programUpdateInterval,
       {
         name: "autoUpdateProgramItems",
@@ -66,7 +66,7 @@ export const startCronJobs = async (): Promise<void> => {
   if (autoAssignAttendeesEnabled) {
     logger.info("Start cronjob: automatic attendee assignment");
 
-    const autoAssignAttendeesJob = Cron(
+    const autoAssignAttendeesJob = new Cron(
       autoAssignInterval,
       {
         name: "autoAssignAttendees",

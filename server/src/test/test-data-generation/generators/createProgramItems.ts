@@ -128,7 +128,7 @@ export const createProgramItems = async (
           slug,
           title,
           description: faker.lorem.sentences(5),
-          cachedHosts: faker.internet.userName(),
+          cachedHosts: faker.internet.username(),
           cachedDimensions: {
             date: [""],
             room: [""],
