@@ -1,5 +1,5 @@
 ### BUILD CLIENT
-FROM node:20.16.0-alpine3.20 AS client-builder
+FROM node:22.11.0-alpine3.20 AS client-builder
 
 ARG env
 
@@ -17,7 +17,7 @@ RUN yarn \
   && yarn workspace konsti-client build:$env
 
 ### BUILD APP IMAGE
-FROM node:20.16.0-alpine3.20 AS runner
+FROM node:22.11.0-alpine3.20 AS runner
 
 # Install init process tool to avoid Node running PID 1
 RUN apk --no-cache add dumb-init=1.2.5-r3

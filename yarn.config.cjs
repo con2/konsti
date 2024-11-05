@@ -10,7 +10,7 @@ const enforceConsistentEnginesNodeValue = ({ Yarn }) => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
   for (const workspace of Yarn.workspaces()) {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-    workspace.set("engines.node", ">=20.16.0");
+    workspace.set("engines.node", ">=22.11.0");
   }
 };
 
