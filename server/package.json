@@ -59,7 +59,7 @@
     "@types/bcryptjs": "2.4.6",
     "@types/jsonwebtoken": "9.0.7",
     "@types/morgan": "1.9.9",
-    "@types/node": "20.16.13",
+    "@types/node": "22.9.0",
     "@types/supertest": "6.0.2",
     "mongodb-memory-server": "10.1.2",
     "supertest": "7.0.0"
