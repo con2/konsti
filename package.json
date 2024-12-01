@@ -54,7 +54,7 @@
   },
   "dependencies": {
     "@yarnpkg/types": "4.0.0",
-    "axios": "1.7.7",
+    "axios": "1.7.8",
     "dayjs": "1.11.13",
     "lodash-es": "4.17.21",
     "ncp": "2.0.0",
@@ -87,7 +87,7 @@
     "globals": "15.12.0",
     "prettier": "3.3.3",
     "typescript-eslint": "8.16.0",
-    "vitest": "2.1.4"
+    "vitest": "2.1.6"
   },
   "engines": {
     "node": ">=22.11.0"
