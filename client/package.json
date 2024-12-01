@@ -25,9 +25,9 @@
     "type-check": "yarn run -T tsc --noEmit"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "6.6.0",
-    "@fortawesome/free-regular-svg-icons": "6.6.0",
-    "@fortawesome/free-solid-svg-icons": "6.6.0",
+    "@fortawesome/fontawesome-svg-core": "6.7.1",
+    "@fortawesome/free-regular-svg-icons": "6.7.1",
+    "@fortawesome/free-solid-svg-icons": "6.7.1",
     "@fortawesome/react-fontawesome": "0.2.2",
     "@reduxjs/toolkit": "2.3.0",
     "@sentry/react": "8.37.1",
