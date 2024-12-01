@@ -9,10 +9,8 @@ const consoleOutputFormat = config.server().consoleLogFormatJson
       format.splat(),
       format.printf((info) => {
         return JSON.stringify({
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
           timestamp: info.timestamp,
           level: info.level,
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
           message: info.message,
         });
       }),
@@ -24,6 +22,7 @@ const consoleOutputFormat = config.server().consoleLogFormatJson
       }),
       format.splat(),
       format.printf((info) => {
+        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
         return `${info.timestamp} ${info.level}: ${info.message}`;
       }),
     );
@@ -49,10 +48,8 @@ export const logger = createLogger({
         format.splat(),
         format.printf((info) => {
           return JSON.stringify({
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
             timestamp: info.timestamp,
             level: info.level,
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
             message: info.message,
           });
         }),
