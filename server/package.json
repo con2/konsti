@@ -52,7 +52,7 @@
     "mongoose": "8.8.3",
     "morgan": "1.10.0",
     "tsx": "4.19.2",
-    "winston": "3.16.0",
+    "winston": "3.17.0",
     "winston-transport-sentry-node": "3.0.0"
   },
   "devDependencies": {
