@@ -9,6 +9,7 @@ import { useAppDispatch } from "client/utils/hooks";
 import { LoginErrorMessage, submitLogin } from "client/views/login/loginThunks";
 import { ErrorMessage } from "client/components/ErrorMessage";
 import { UncontrolledInput } from "client/components/UncontrolledInput";
+import { navigateToPreviousOrRoot } from "client/utils/navigation";
 
 export interface LoginFormFields {
   username: string;
@@ -45,9 +46,7 @@ export const LoginForm = (): ReactElement => {
       return;
     }
 
-    // Navigate to previous page or front page if no previous page exists
-    // eslint-disable-next-line @typescript-eslint/no-unused-expressions, @typescript-eslint/no-unsafe-member-access
-    window.history.state?.idx > 0 ? navigate(-1) : navigate("/");
+    await navigateToPreviousOrRoot(window.history, navigate);
   };
 
   return (

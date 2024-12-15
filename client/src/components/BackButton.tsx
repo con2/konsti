@@ -3,15 +3,14 @@ import { useNavigate } from "react-router";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { navigateToPreviousOrRoot } from "client/utils/navigation";
 
 export const BackButton = (): ReactElement => {
   const navigate = useNavigate();
   const { t } = useTranslation();
 
-  const goBack = (): void => {
-    // Navigate to front page if no previous page exists
-    // eslint-disable-next-line @typescript-eslint/no-unused-expressions, @typescript-eslint/no-unsafe-member-access
-    window.history.state?.idx > 0 ? navigate(-1) : navigate("/");
+  const goBack = async (): Promise<void> => {
+    await navigateToPreviousOrRoot(window.history, navigate);
   };
 
   return (
@@ -19,9 +18,9 @@ export const BackButton = (): ReactElement => {
       role="link"
       tabIndex={0}
       onClick={goBack}
-      onKeyDown={(event) => {
+      onKeyDown={async (event) => {
         if (event.key === "Enter") {
-          goBack();
+          await goBack();
         }
       }}
     >
