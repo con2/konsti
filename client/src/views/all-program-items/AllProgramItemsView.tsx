@@ -1,6 +1,6 @@
 import { ReactElement, useEffect, useMemo, useState } from "react";
 import { useDebounce } from "use-debounce";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router";
 import { AllProgramItemsList } from "client/views/all-program-items/components/AllProgramItemsList";
 import { getUpcomingProgramItems } from "client/utils/getUpcomingProgramItems";
 import { Loading } from "client/components/Loading";

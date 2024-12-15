@@ -1,7 +1,7 @@
 import { ReactElement, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { sortBy } from "lodash-es";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getAttendeeType } from "client/utils/getAttendeeType";

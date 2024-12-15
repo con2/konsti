@@ -1,5 +1,5 @@
 import { ReactElement, useEffect } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate } from "react-router";
 import { submitLogout } from "client/views/logout/logoutActions";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { postKompassiLogoutRedirect } from "client/services/loginServices";

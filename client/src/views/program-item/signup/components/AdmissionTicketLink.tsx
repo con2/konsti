@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { Button, ButtonStyle } from "client/components/Button";

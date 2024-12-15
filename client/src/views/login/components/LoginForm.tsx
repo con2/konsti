@@ -2,7 +2,7 @@ import { ReactElement, useState } from "react";
 import { SubmitHandler, useForm, useFormState } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, ButtonStyle } from "client/components/Button";
 import { useAppDispatch } from "client/utils/hooks";

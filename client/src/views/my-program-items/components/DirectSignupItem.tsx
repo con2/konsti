@@ -1,7 +1,7 @@
 import { ReactElement, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Signup } from "shared/types/models/user";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";

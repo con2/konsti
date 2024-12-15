@@ -1,5 +1,5 @@
 import { ReactElement, useEffect } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router";
 import { submitKompassiLogin } from "client/views/login/loginThunks";
 import { useAppDispatch } from "client/utils/hooks";
 import { Loading } from "client/components/Loading";
