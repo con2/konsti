@@ -64,7 +64,7 @@ export const LoggedInUserNavigation = (props: {
 
       {isAdminOrHelp(userGroup) && (
         <>
-          <RouterLink onClick={props.onSelect} to={AppRoute.HELP}>
+          <RouterLink onClick={props.onSelect} to={AppRoute.HELPER}>
             {t("button.helper")}
           </RouterLink>
           <RouterLink onClick={props.onSelect} to={AppRoute.PROFILE}>
