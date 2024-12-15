@@ -13,6 +13,7 @@ import { FinnishTimezone } from "./components/FinnishTimezone";
 import { CurrentTime } from "./components/CurrentTime";
 import { FinnishTime } from "./components/FinnishTime";
 import { Expand } from "./components/Expand";
+import { AppRoute, ProfileTab } from "../app/AppRoutes";
 
 <Fi>
 ## Osallistujille
@@ -85,7 +86,7 @@ For flea market signups, the flea market volunteers will help you.
 
 <Fi>
 <LoginLocal>
-Konstin käyttö kannattaa aloittaa rekisteröimällä itsellesi käyttäjätunnus. Voit tehdä tämän <Link to={"/registration"}>Luo käyttäjätili -näkymässä</Link>.
+Konstin käyttö kannattaa aloittaa rekisteröimällä itsellesi käyttäjätunnus. Voit tehdä tämän <Link to={AppRoute.REGISTRATION}>Luo käyttäjätili -näkymässä</Link>.
 
 Rekisteröitymiseen tarvitset rekisteröintikoodin. Rekisteröintikoodeja saa Ropeconissa Pelitiskiltä (Halli 3) sekä Larp- ja Roolipelitiskiltä ja Infosta (Pääaula, Eteläinen sisäänkäynti). Käyttäjätilin voi siis käytännössä luoda vasta tapahtumassa paikan päällä.
 
@@ -94,7 +95,7 @@ Lisäksi joudut keksimään itsellesi käyttäjätunnuksen ja salasanan. Tunnuks
 </LoginLocal>
 
 <LoginKompassi>
-Konstiin kirjaudutaan Kompassi-tunnuksella. Voit rekisteröidä Kompassi-tunnuksen Konstiin kirjautumisen yhteydessä <Link to={"/registration"}>kirjautumissivulla</Link> tai jo ennen tapahtumaa Kompassin <Link to={"https://kompassi.eu/register"}>rekisteröintisivulla</Link>.
+Konstiin kirjaudutaan Kompassi-tunnuksella. Voit rekisteröidä Kompassi-tunnuksen Konstiin kirjautumisen yhteydessä <Link to={AppRoute.REGISTRATION}>kirjautumissivulla</Link> tai jo ennen tapahtumaa Kompassin <Link to={"https://kompassi.eu/register"}>rekisteröintisivulla</Link>.
 
 Ensimmäisellä kirjautumiskerralla voit valita itsellesi Konsti-nimimerkin. Tämän jälkeen voit ilmoittautua ohjelmanumeroihin. Voit käyttää Konstia millä vain haluamallasi laitteella kirjautumalla sisään.
 
@@ -103,7 +104,7 @@ Ensimmäisellä kirjautumiskerralla voit valita itsellesi Konsti-nimimerkin. Tä
 
 <En>
 <LoginLocal>
-To begin using the Konsti app, you need to first register an account, which you can do on the <Link to={"/registration"}>login page</Link>.
+To begin using the Konsti app, you need to first register an account, which you can do on the <Link to={AppRoute.REGISTRATION}>login page</Link>.
 
 To register an account you need a registration code. Registration codes can be picked up at either the Gaming Desk (Hall 3), at the Larp & RPG Desk or at the Info desk (both in the Southern Entrance lobby). This means that you cannot create a new account before arriving to the event.
 
@@ -112,7 +113,7 @@ In addition, you will also have come up with a username and password. After regi
 </LoginLocal>
 
 <LoginKompassi>
-You can log in to Konsti using Kompassi account. You can register Kompassi account while logging in to Konsti via <Link to={"/registration"}>registration page</Link> or before the event from <Link to={"https://kompassi.eu/register"}>Kompassi registration page</Link>.
+You can log in to Konsti using Kompassi account. You can register Kompassi account while logging in to Konsti via <Link to={AppRoute.REGISTRATION}>registration page</Link> or before the event from <Link to={"https://kompassi.eu/register"}>Kompassi registration page</Link>.
 
 On your first login, you can choose a Konsti username for yourself. Following this, you can sign up for program items. You can use your Konsti account on any device by logging in.
 
@@ -177,7 +178,7 @@ All times in Konsti use Finland's timezone (<FinnishTimezone/>).
 
 <Fi>
 <LoginLocal>
-Jos olet kirjautunut Konstiin, voit vaihtaa salasanan <Link to={"/profile/profile"}>Profiili-näkymässä</Link>.
+Jos olet kirjautunut Konstiin, voit vaihtaa salasanan <Link to={ProfileTab.PROFILE}>Profiili-näkymässä</Link>.
 </LoginLocal>
 
 <LoginKompassi>
@@ -187,7 +188,7 @@ Konstiin kirjaudutaan Kompassi-tunnuksella eli salasana vaihdetaan Kompassin <Li
 
 <En>
 <LoginLocal>
-If you are logged in to Konsti, you can change your password in the <Link to={"/profile/profile"}>Profile view</Link>.
+If you are logged in to Konsti, you can change your password in the <Link to={ProfileTab.PROFILE}>Profile view</Link>.
 </LoginLocal>
 
 <LoginKompassi>
