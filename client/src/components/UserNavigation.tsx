@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 import { useAppSelector } from "client/utils/hooks";
 import { LoginProvider } from "shared/config/eventConfigTypes";
-import { AppRoute } from "client/app/AppRoutes";
+import { AppRoute, ProgramTab } from "client/app/AppRoutes";
 
 export const UserNavigation = (props: {
   onSelect: () => void;
@@ -17,7 +17,7 @@ export const UserNavigation = (props: {
     <StyledRoutes>
       <RouterLink
         onClick={props.onSelect}
-        to={AppRoute.PROGRAM_LIST}
+        to={ProgramTab.PROGRAM_LIST}
         data-testid="program-list-page-link"
       >
         {t("pages.program")}

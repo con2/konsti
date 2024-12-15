@@ -3,6 +3,7 @@ import { Navigate, NavLink, Route, Routes } from "react-router-dom";
 import styled from "styled-components";
 import { IconName } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { last } from "lodash-es";
 
 interface TabContent {
   headerText: string;
@@ -32,13 +33,20 @@ export const Tabs = ({ tabContents }: Props): ReactElement => {
         </TabsList>
       </TabsNav>
       <Routes>
+        {/* If no tab selected, select first tab */}
         <Route
           path={""}
           element={<Navigate to={tabContents[0].path} replace={true} />}
         />
-        {tabContents.map((t) => (
-          <Route path={t.path} element={t.element} key={t.path} />
-        ))}
+        {tabContents.map((t) => {
+          return (
+            <Route
+              path={last(t.path.split("/"))}
+              element={t.element}
+              key={t.path}
+            />
+          );
+        })}
       </Routes>
     </>
   );

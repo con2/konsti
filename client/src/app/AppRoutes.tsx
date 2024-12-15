@@ -30,9 +30,7 @@ import { AdmissionTicketView } from "client/views/admission-ticket/AdmissionTick
 export enum AppRoute {
   ROOT = "/",
   PROGRAM = "/program",
-  PROGRAM_LIST = "/program/list",
   PROGRAM_ITEM = "/program/item",
-  MY_PROGRAM = "/program/myprogram",
   HELPER = "/helper",
   ADMIN = "/admin",
   ADMIN_LOGIN = "/admin/login",
@@ -46,20 +44,20 @@ export enum AppRoute {
   ANY = "/*",
 }
 
-enum ProgramTab {
-  MY_PROGRAM = "myprogram",
-  PROGRAM_LIST = "list",
+export enum ProgramTab {
+  MY_PROGRAM = "/program/myprogram",
+  PROGRAM_LIST = "/program/list",
 }
 
 enum AboutTab {
-  HELP = "help",
-  FAQ = "faq",
-  ABOUT = "about",
+  HELP = "/about/help",
+  FAQ = "/about/faq",
+  ABOUT = "/about/about",
 }
 
 enum ProfileTab {
-  PROFILE = "profile",
-  GROUP = "group",
+  PROFILE = "/profile/profile",
+  GROUP = "/profile/group",
 }
 
 export const AppRoutes = (): ReactElement => {
@@ -138,10 +136,10 @@ export const AppRoutes = (): ReactElement => {
             <Route path={AppRoute.HELPER} element={<HelperView />} />
             <Route
               path={AppRoute.PROGRAM}
-              element={<Navigate replace to={AppRoute.PROGRAM_LIST} />}
+              element={<Navigate replace to={ProgramTab.PROGRAM_LIST} />}
             />
             <Route
-              path={AppRoute.PROGRAM_LIST}
+              path={ProgramTab.PROGRAM_LIST}
               element={<AllProgramItemsView />}
             />
             <Route
@@ -180,7 +178,7 @@ export const AppRoutes = (): ReactElement => {
       <Routes>
         {isAdminOrHelp(userGroup) ? (
           <Route
-            path={AppRoute.PROGRAM_LIST}
+            path={ProgramTab.PROGRAM_LIST}
             element={<AllProgramItemsView />}
           />
         ) : (
@@ -226,12 +224,12 @@ export const AppRoutes = (): ReactElement => {
         {isAdminOrHelp(userGroup) ? (
           <Route
             path={AppRoute.ROOT}
-            element={<Navigate to={AppRoute.PROGRAM_LIST} />}
+            element={<Navigate to={ProgramTab.PROGRAM_LIST} />}
           />
         ) : (
           <Route
             path={AppRoute.ROOT}
-            element={<Navigate to={AppRoute.MY_PROGRAM} />}
+            element={<Navigate to={ProgramTab.MY_PROGRAM} />}
           />
         )}
         <Route
@@ -252,9 +250,9 @@ export const AppRoutes = (): ReactElement => {
       )}
       <Route
         path={AppRoute.PROGRAM}
-        element={<Navigate replace to={AppRoute.PROGRAM_LIST} />}
+        element={<Navigate replace to={ProgramTab.PROGRAM_LIST} />}
       />
-      <Route path={AppRoute.PROGRAM_LIST} element={<AllProgramItemsView />} />
+      <Route path={ProgramTab.PROGRAM_LIST} element={<AllProgramItemsView />} />
       <Route
         path={`${AppRoute.PROGRAM_ITEM}/:programItemId`}
         element={<ProgramItemView />}
