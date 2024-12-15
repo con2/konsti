@@ -33,7 +33,7 @@ export enum AppRoute {
   PROGRAM_LIST = "/program/list",
   PROGRAM_ITEM = "/program/item",
   MY_PROGRAM = "/program/myprogram",
-  HELP = "/help",
+  HELPER = "/helper",
   ADMIN = "/admin",
   ADMIN_LOGIN = "/admin/login",
   PROFILE = "/profile",
@@ -129,7 +129,7 @@ export const AppRoutes = (): ReactElement => {
         )}
         {isAdminOrHelp(userGroup) && (
           <>
-            <Route path={AppRoute.HELP} element={<HelperView />} />
+            <Route path={AppRoute.HELPER} element={<HelperView />} />
             <Route
               path={AppRoute.PROGRAM}
               element={<Navigate replace to={AppRoute.PROGRAM_LIST} />}
@@ -211,7 +211,7 @@ export const AppRoutes = (): ReactElement => {
         <Route path={AppRoute.LOGIN} element={<LoginView />} />
         <Route path={AppRoute.ADMIN_LOGIN} element={<LoginView />} />
         {isAdminOrHelp(userGroup) && (
-          <Route path={AppRoute.HELP} element={<HelperView />} />
+          <Route path={AppRoute.HELPER} element={<HelperView />} />
         )}
         <Route
           path={`${AppRoute.ABOUT}/*`}
