@@ -11,6 +11,7 @@ import { SignupQuestion } from "shared/types/models/settings";
 import { config } from "shared/config";
 import { useAppSelector } from "client/utils/hooks";
 import { UserGroup } from "shared/types/models/user";
+import { AppRoute } from "client/app/AppRoutes";
 
 interface Props {
   isLoggedIn: boolean;
@@ -111,7 +112,7 @@ export const ProgramItemHeadSignupInfo = ({
 
         {isExpanded && signups.length > 0 && !isLoggedIn && (
           <AttendeeText>
-            <Link to={"/login"}>{t("signup.loginLink")}</Link>
+            <Link to={AppRoute.LOGIN}>{t("signup.loginLink")}</Link>
             {t("signup.loginLinkEnding", {
               ATTENDEE_TYPE: t(
                 `attendeeTypePluralNominative.${getAttendeeType(programItem.programType)}`,
