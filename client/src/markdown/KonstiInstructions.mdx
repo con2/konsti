@@ -9,6 +9,7 @@ import { LoginKompassi } from "./components/LoginKompassi";
 import { LoginLocal } from "./components/LoginLocal";
 import { SignupLottery } from "./components/SignupLottery";
 import { Expand } from "./components/Expand";
+import { AppRoute, ProgramTab, ProfileTab } from "../app/AppRoutes";
 
 <Fi>
 ## Käyttöohjeet
@@ -78,11 +79,11 @@ Konsti is used to sign up for tabletop role-playing games, larps and flea market
 </En>
 
 <Fi>
-Voit selata <Link to={"/program/list"}>ohjelmalistaa</Link> kirjautumatta sisään, mutta ohjelmaan ilmoittautumiseen vaaditaan käyttäjätili.
+Voit selata <Link to={ProgramTab.PROGRAM_LIST}>ohjelmalistaa</Link> kirjautumatta sisään, mutta ohjelmaan ilmoittautumiseen vaaditaan käyttäjätili.
 </Fi>
 
 <En>
-You can browse the <Link to={"/program/list"}>program list</Link> without logging in, but to register for programs, a user account is required.
+You can browse the <Link to={ProgramTab.PROGRAM_LIST}>program list</Link> without logging in, but to register for programs, a user account is required.
 </En>
 
 </Expand>
@@ -139,7 +140,7 @@ Uuden käyttäjätilin luomiseen tarvitset rekisteröintikoodin, joita on saatav
 </LoginLocal>
 
 <LoginKompassi>
-Konstiin kirjaudutaan Kompassi-tunnuksella. Voit rekisteröidä Kompassi-tunnuksen Konstin  kirjautumisen yhteydessä <Link to={"/login"}>kirjautumissivulta</Link> tai jo ennen tapahtumaa Kompassin <Link to={"https://kompassi.eu/register"}>rekisteröintisivulla</Link>.
+Konstiin kirjaudutaan Kompassi-tunnuksella. Voit rekisteröidä Kompassi-tunnuksen Konstin  kirjautumisen yhteydessä <Link to={AppRoute.LOGIN}>kirjautumissivulta</Link> tai jo ennen tapahtumaa Kompassin <Link to={"https://kompassi.eu/register"}>rekisteröintisivulla</Link>.
 
 Ensimmäisellä kirjautumiskerralla voit valita itsellesi Konsti-nimimerkin. Tämän jälkeen voit ilmoittautua ohjelmanumeroihin.
 
@@ -152,7 +153,7 @@ For creating an account, you will need a registration code, which you can get fr
 </LoginLocal>
 
 <LoginKompassi>
-You can log in to Konsti using your Kompassi account. You can register a Kompassi account while logging in to Konsti via the <Link to={"/registration"}>login page</Link> or before the convention from the <Link to={"https://kompassi.eu/register"}>Kompassi registration page</Link>.
+You can log in to Konsti using your Kompassi account. You can register a Kompassi account while logging in to Konsti via the <Link to={AppRoute.REGISTRATION}>login page</Link> or before the convention from the <Link to={"https://kompassi.eu/register"}>Kompassi registration page</Link>.
 
 On your first login, you can choose a Konsti username for yourself. Following this, you can sign up for program items.
 
@@ -162,13 +163,13 @@ On your first login, you can choose a Konsti username for yourself. Following th
 
 <Fi>
 <Ropecon>
-Rekisteröintikoodi kannattaa pitää tallessa siltä varalta, että et pääsekään enää kirjautumaan sisään tunnuksellasi. Sitä tarvitaan salasanan vaihtamiseen. Rekisteröintikoodi näkyy ensimmäisen sisäänkirjautumisen yhteydessä sivuston ylälaidassa, ja sen löytää myöhemmin myös <Link to={"/profile/profile"}>profiilisivulta</Link>.
+Rekisteröintikoodi kannattaa pitää tallessa siltä varalta, että et pääsekään enää kirjautumaan sisään tunnuksellasi. Sitä tarvitaan salasanan vaihtamiseen. Rekisteröintikoodi näkyy ensimmäisen sisäänkirjautumisen yhteydessä sivuston ylälaidassa, ja sen löytää myöhemmin myös <Link to={ProfileTab.PROFILE}>profiilisivulta</Link>.
 </Ropecon>
 </Fi>
 
 <En>
 <Ropecon>
-Please save your registration code. You will need it if you log out of Konsti and then need to change your password. The code is visible in Konsti after you first log in. Later, you can see it on the <Link to={"/profile/profile"}>profile page</Link>.
+Please save your registration code. You will need it if you log out of Konsti and then need to change your password. The code is visible in Konsti after you first log in. Later, you can see it on the <Link to={ProfileTab.PROFILE}>profile page</Link>.
 </Ropecon>
 </En>
 </Expand>
@@ -183,11 +184,11 @@ Please save your registration code. You will need it if you log out of Konsti an
 </En>
 
 <Fi>
-<Link to={"/program/list"}>Ohjelma-sivulla</Link> on listattu ohjelmanumerot, joihin Konstissa voi ilmoittautua. Jos jonkin ohjelmanumeron ilmoittautuminen ei ole alkanut, ohjelman esittelyteksissä näkyy, milloin ilmoittautuminen on avoinna ja onko kyseessä arvonta vai suora ilmoittautuminen.
+<Link to={ProgramTab.PROGRAM_LIST}>Ohjelma-sivulla</Link> on listattu ohjelmanumerot, joihin Konstissa voi ilmoittautua. Jos jonkin ohjelmanumeron ilmoittautuminen ei ole alkanut, ohjelman esittelyteksissä näkyy, milloin ilmoittautuminen on avoinna ja onko kyseessä arvonta vai suora ilmoittautuminen.
 </Fi>
 
 <En>
-The <Link to={"/program/list"}>program list page</Link> displays all program items that uses Konsti for sign-ups. If the sign-up period for a given program item has not yet opened, the info text will show when the sign-up will start<SignupLottery>and whether it will be a lottery sign-up or a direct sign-up</SignupLottery>.
+The <Link to={ProgramTab.PROGRAM_LIST}>program list page</Link> displays all program items that uses Konsti for sign-ups. If the sign-up period for a given program item has not yet opened, the info text will show when the sign-up will start<SignupLottery>and whether it will be a lottery sign-up or a direct sign-up</SignupLottery>.
 </En>
 
 <Fi>
@@ -257,11 +258,11 @@ You can sign up for program items either through a lottery or directly in the si
 </Tracon>
 
 <Fi>
-Jos ohjelmanumeron ilmoittautuminen on käynnissä, näkyy sen tietojen alla Ilmoittaudu-painike. Jo tehdyn ilmoittautumisen voi perua joko <Link to={"/program/myprogram"}>Oma ohjelmani</Link> -näkymässä tai <Link to={"/program/list"}>Kaikki ohjelma</Link> -näkymässä.
+Jos ohjelmanumeron ilmoittautuminen on käynnissä, näkyy sen tietojen alla Ilmoittaudu-painike. Jo tehdyn ilmoittautumisen voi perua joko <Link to={ProgramTab.MY_PROGRAM}>Oma ohjelmani</Link> -näkymässä tai <Link to={ProgramTab.PROGRAM_LIST}>Kaikki ohjelma</Link> -näkymässä.
 </Fi>
 
 <En>
-If the sign-up period for a program item is ongoing, a sign-up button will be displayed on the item's info card. You can cancel your sign-up either on the <Link to={"/program/myprogram"}>My Program page</Link> or on the <Link to={"/program/list"}>program list</Link>.
+If the sign-up period for a program item is ongoing, a sign-up button will be displayed on the item's info card. You can cancel your sign-up either on the <Link to={ProgramTab.MY_PROGRAM}>My Program page</Link> or on the <Link to={ProgramTab.PROGRAM_LIST}>program list</Link>.
 </En>
 
 <Fi>
@@ -274,11 +275,11 @@ The sign-up start periodically. You can see when a sign-up starts on the program
 
 <SignupLottery>
 <Fi>
-Konsti näyttää sinulle arvonnan jälkeen ilmoituksen, pääsitkö arvonnassa ohjelmanumeroon. Ilmoitukset näet myös <Link to={"/notifications"}>Ilmoitukset</Link>-sivulta. Kaikki omat ilmoittautumistuloksesi näet <Link to={"/program/myprogram"}>Oma ohjelmani</Link> -näkymässä.
+Konsti näyttää sinulle arvonnan jälkeen ilmoituksen, pääsitkö arvonnassa ohjelmanumeroon. Ilmoitukset näet myös <Link to={AppRoute.NOTIFICATIONS}>Ilmoitukset</Link>-sivulta. Kaikki omat ilmoittautumistuloksesi näet <Link to={ProgramTab.MY_PROGRAM}>Oma ohjelmani</Link> -näkymässä.
 </Fi>
 
 <En>
-Konsti will show you a notification if you get a spot in a program item in the lottery. Notifications are also visible on the <Link to={"/notifications"}>Notifications</Link> page. You can see all your sign-up results on the <Link to={"/program/myprogram"}>My Program page</Link>.
+Konsti will show you a notification if you get a spot in a program item in the lottery. Notifications are also visible on the <Link to={AppRoute.NOTIFICATIONS}>Notifications</Link> page. You can see all your sign-up results on the <Link to={ProgramTab.MY_PROGRAM}>My Program page</Link>.
 </En>
 </SignupLottery>
 
@@ -295,7 +296,7 @@ Konsti will show you a notification if you get a spot in a program item in the l
 </En>
 
 <Fi>
-Arvontaan voi ilmoittautua myös ryhmänä. Silloin arvonta-algoritmi sijoittaa kaikki ryhmän jäsenet samaan ohjelmanumeroon. Voit luoda ryhmän <Link to={"/profile/group"}>Ryhmä-näkymässä</Link>. Samassa näkymässä voit myös liittyä olemassa olevaan ryhmään. Tätä varten tarvitset ryhmän perustajalta liittymiskoodin, jonka näkee ryhmän luomisen jälkeen.
+Arvontaan voi ilmoittautua myös ryhmänä. Silloin arvonta-algoritmi sijoittaa kaikki ryhmän jäsenet samaan ohjelmanumeroon. Voit luoda ryhmän <Link to={ProfileTab.GROUP}>Ryhmä-näkymässä</Link>. Samassa näkymässä voit myös liittyä olemassa olevaan ryhmään. Tätä varten tarvitset ryhmän perustajalta liittymiskoodin, jonka näkee ryhmän luomisen jälkeen.
 
 Kun ryhmä on muodostettu, ryhmän perustaja ilmoittautuu sen jäsenten puolesta arvontaan.
 
@@ -306,7 +307,7 @@ Jos olet saanut arvonnassa paikan ohjelmanumerosta ja poistut ryhmästä, paikka
 </Fi>
 
 <En>
-You can also sign up as a group for the lottery. In that case, the lottery algorithm places all group members in the same program item. You can create a group in the <Link to={"/profile/group"}>Group view</Link>. In the same view, you can also join an existing group. For this, you need a joining code from the group's creator, which is visible after the group is created.
+You can also sign up as a group for the lottery. In that case, the lottery algorithm places all group members in the same program item. You can create a group in the <Link to={ProfileTab.GROUP}>Group view</Link>. In the same view, you can also join an existing group. For this, you need a joining code from the group's creator, which is visible after the group is created.
 
 Once the group is formed, the group's creator signs up its members for the lottery.
 

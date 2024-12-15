@@ -55,7 +55,7 @@ enum AboutTab {
   ABOUT = "/about/about",
 }
 
-enum ProfileTab {
+export enum ProfileTab {
   PROFILE = "/profile/profile",
   GROUP = "/profile/group",
 }
