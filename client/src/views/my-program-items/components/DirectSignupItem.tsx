@@ -21,6 +21,7 @@ import {
 } from "client/views/my-program-items/components/shared";
 import { ErrorMessage } from "client/components/ErrorMessage";
 import { InfoText, InfoTextVariant } from "client/components/InfoText";
+import { AppRoute } from "client/app/AppRoutes";
 
 interface Props {
   signup: Signup;
@@ -113,17 +114,19 @@ export const DirectSignupItem = ({
         <StyledButtonContainer>
           <TertiaryButton
             icon="circle-arrow-right"
-            onClick={() => {
-              navigate(`/program/item/${signup.programItem.programItemId}`);
+            onClick={async () => {
+              await navigate(
+                `${AppRoute.PROGRAM_ITEM}/${signup.programItem.programItemId}`,
+              );
             }}
           >
             {t("button.showInfo")}
           </TertiaryButton>
           <TertiaryButton
             icon="ticket"
-            onClick={() => {
-              navigate(
-                `/program/item/${signup.programItem.programItemId}/admission`,
+            onClick={async () => {
+              await navigate(
+                `${AppRoute.PROGRAM_ITEM}/${signup.programItem.programItemId}/admission`,
               );
             }}
           >

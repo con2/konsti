@@ -3,6 +3,7 @@ import { useNavigate, useSearchParams } from "react-router";
 import { submitKompassiLogin } from "client/views/login/loginThunks";
 import { useAppDispatch } from "client/utils/hooks";
 import { Loading } from "client/components/Loading";
+import { AppRoute } from "client/app/AppRoutes";
 
 export const KompassiLoginCallback = (): ReactElement => {
   const dispatch = useAppDispatch();
@@ -18,15 +19,15 @@ export const KompassiLoginCallback = (): ReactElement => {
       if (code) {
         const errorMessage = await dispatch(submitKompassiLogin(code));
         if (errorMessage) {
-          navigate(`/login?error=${errorMessage}`);
+          await navigate(`${AppRoute.LOGIN}?error=${errorMessage}`);
           return;
         }
       }
       if (error) {
-        navigate(`/login`);
+        await navigate(AppRoute.LOGIN);
         return;
       }
-      navigate(`/`);
+      await navigate(AppRoute.ROOT);
     };
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     fetchData();

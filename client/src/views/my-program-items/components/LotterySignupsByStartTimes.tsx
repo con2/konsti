@@ -14,6 +14,7 @@ import {
   MyProgramTime,
 } from "client/views/my-program-items/components/shared";
 import { TertiaryButton } from "client/components/TertiaryButton";
+import { AppRoute } from "client/app/AppRoutes";
 
 interface Props {
   lotterySignups: Signup[];
@@ -54,9 +55,9 @@ export const LotterySignupsByStartTimes = ({
                         <StyledButtons>
                           <TertiaryButton
                             icon="circle-arrow-right"
-                            onClick={() => {
-                              navigate(
-                                `/program/item/${signup.programItem.programItemId}`,
+                            onClick={async () => {
+                              await navigate(
+                                `${AppRoute.PROGRAM_ITEM}/${signup.programItem.programItemId}`,
                               );
                             }}
                           >

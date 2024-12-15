@@ -1,4 +1,5 @@
 import { NavigateFunction } from "react-router";
+import { AppRoute } from "client/app/AppRoutes";
 
 // Navigate to previous page or front page if no previous page exists
 export const navigateToPreviousOrRoot = async (
@@ -9,5 +10,5 @@ export const navigateToPreviousOrRoot = async (
   if (history.state?.idx > 0) {
     await navigate(-1);
   }
-  await navigate("/");
+  await navigate(AppRoute.ROOT);
 };
