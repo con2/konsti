@@ -8996,7 +8996,7 @@ __metadata:
     react-router: "npm:7.0.2"
     regenerator-runtime: "npm:0.14.1"
     styled-components: "npm:6.1.13"
-    stylelint: "npm:16.11.0"
+    stylelint: "npm:16.12.0"
     stylelint-config-recommended: "npm:14.0.1"
     stylelint-no-unsupported-browser-features: "npm:8.0.2"
     use-debounce: "npm:10.0.4"
@@ -13099,9 +13099,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stylelint@npm:16.11.0":
-  version: 16.11.0
-  resolution: "stylelint@npm:16.11.0"
+"stylelint@npm:16.12.0":
+  version: 16.12.0
+  resolution: "stylelint@npm:16.12.0"
   dependencies:
     "@csstools/css-parser-algorithms": "npm:^3.0.4"
     "@csstools/css-tokenizer": "npm:^3.0.3"
@@ -13139,11 +13139,11 @@ __metadata:
     string-width: "npm:^4.2.3"
     supports-hyperlinks: "npm:^3.1.0"
     svg-tags: "npm:^1.0.0"
-    table: "npm:^6.8.2"
+    table: "npm:^6.9.0"
     write-file-atomic: "npm:^5.0.1"
   bin:
     stylelint: bin/stylelint.mjs
-  checksum: 10c0/65638247fb4e5eacb032e3a98412a13ad8b343d2d58e22d61b96ada72808b5b7e736c845937b3bcfde04c0bfa2120383b507e530afe876dafe824a93c337258f
+  checksum: 10c0/d60bc6136f5bdc4e49ec22aee4d82130c4e9c94aa7d249da9dda315a862615e74acaefb24c560529b2102f8c27dde473b148ffcee861f5dab7b0225254765102
   languageName: node
   linkType: hard
 
@@ -13240,7 +13240,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"table@npm:^6.8.2":
+"table@npm:^6.9.0":
   version: 6.9.0
   resolution: "table@npm:6.9.0"
   dependencies:
