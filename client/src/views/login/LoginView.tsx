@@ -1,6 +1,6 @@
 import { ReactElement, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router";
 import { LoginForm } from "client/views/login/components/LoginForm";
 import { useAppSelector } from "client/utils/hooks";
 import { LoginProvider } from "shared/config/eventConfigTypes";

@@ -1,6 +1,6 @@
 import { ReactElement, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router";
 import { z } from "zod";
 import { Button, ButtonStyle } from "client/components/Button";
 import { postKompassiLoginRedirect } from "client/services/loginServices";

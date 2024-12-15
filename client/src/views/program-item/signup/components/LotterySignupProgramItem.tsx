@@ -1,7 +1,7 @@
 import { ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { ProgramItem } from "shared/types/models/programItem";
 import { LotterySignupForm } from "client/views/program-item/signup/components/LotterySignupForm";
 import {

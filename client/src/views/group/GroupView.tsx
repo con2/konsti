@@ -2,7 +2,7 @@ import { ReactElement, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import dayjs from "dayjs";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { GroupMembersList } from "client/views/group/components/GroupMembersList";
 import { loadGroupMembers } from "client/utils/loadData";
 import { useAppSelector } from "client/utils/hooks";

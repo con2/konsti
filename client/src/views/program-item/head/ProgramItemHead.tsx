@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { useTranslation } from "react-i18next";
 import {
   ProgramItem,

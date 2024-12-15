@@ -1,6 +1,6 @@
 import { ReactElement, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useParams } from "react-router-dom";
+import { useParams } from "react-router";
 import { Loading } from "client/components/Loading";
 import { useAppSelector } from "client/utils/hooks";
 import { ProgramItemEntry } from "client/views/program-item/ProgramItemEntry";
