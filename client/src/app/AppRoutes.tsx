@@ -28,6 +28,7 @@ import { AuthEndpoint } from "shared/constants/apiEndpoints";
 import { AdmissionTicketView } from "client/views/admission-ticket/AdmissionTicketView";
 
 export enum AppRoute {
+  ROOT = "/",
   PROGRAM = "/program",
   PROGRAM_LIST = "/program/list",
   PROGRAM_ITEM = "/program/item",
@@ -42,6 +43,7 @@ export enum AppRoute {
   ABOUT = "/about",
   NOTIFICATIONS = "/notifications",
   KOMPASSI_LOGOUT_CALLBACK = "/kompassi-logout-callback",
+  ANY = "/*",
 }
 
 enum AppRouteTab {
@@ -152,8 +154,8 @@ export const AppRoutes = (): ReactElement => {
           path={`${AppRoute.ABOUT}/*`}
           element={<Tabs tabContents={aboutTabs} />}
         />
-        <Route path="/" element={<div />} />
-        <Route path="/*" element={<Navigate to="/" />} />
+        <Route path={AppRoute.ROOT} element={<div />} />
+        <Route path={AppRoute.ANY} element={<Navigate to={AppRoute.ROOT} />} />
       </Routes>
     );
   }
@@ -163,7 +165,7 @@ export const AppRoutes = (): ReactElement => {
       return (
         <Routes>
           <Route path={AppRoute.LOGOUT} element={<LogoutView />} />
-          <Route path="/*" element={<KompassiLoginUsernameForm />} />
+          <Route path={AppRoute.ANY} element={<KompassiLoginUsernameForm />} />
         </Routes>
       );
     }
@@ -216,15 +218,21 @@ export const AppRoutes = (): ReactElement => {
           element={<Tabs tabContents={aboutTabs} />}
         />
         {isAdminOrHelp(userGroup) ? (
-          <Route path="/" element={<Navigate to={AppRoute.PROGRAM_LIST} />} />
+          <Route
+            path={AppRoute.ROOT}
+            element={<Navigate to={AppRoute.PROGRAM_LIST} />}
+          />
         ) : (
-          <Route path="/" element={<Navigate to={AppRoute.MY_PROGRAM} />} />
+          <Route
+            path={AppRoute.ROOT}
+            element={<Navigate to={AppRoute.MY_PROGRAM} />}
+          />
         )}
         <Route
           path={`${AppRoute.PROGRAM_ITEM}/:programItemId/admission`}
           element={<AdmissionTicketView />}
         />
-        <Route path="/*" element={<Navigate to="/" />} />
+        <Route path={AppRoute.ANY} element={<Navigate to={AppRoute.ROOT} />} />
       </Routes>
     );
   }
@@ -249,12 +257,15 @@ export const AppRoutes = (): ReactElement => {
         path={`${AppRoute.ABOUT}/*`}
         element={<Tabs tabContents={aboutTabs} />}
       />
-      <Route path="/" element={<Navigate to={AppRoute.PROGRAM} />} />
+      <Route
+        path={AppRoute.ROOT}
+        element={<Navigate to={AppRoute.PROGRAM} />}
+      />
       <Route
         path={AuthEndpoint.KOMPASSI_LOGIN_CALLBACK}
         element={<KompassiLoginCallback />}
       />
-      <Route path="/*" element={<Navigate to={AppRoute.LOGIN} />} />
+      <Route path={AppRoute.ANY} element={<Navigate to={AppRoute.LOGIN} />} />
     </Routes>
   );
 };

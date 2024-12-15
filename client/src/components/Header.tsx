@@ -8,6 +8,7 @@ import { Navigation } from "./Navigation";
 import { FirstLogin } from "./FirstLogin";
 import { useAppSelector } from "client/utils/hooks";
 import { config } from "shared/config";
+import { AppRoute } from "client/app/AppRoutes";
 
 export const HEADER_HEIGHT = 40;
 
@@ -30,7 +31,10 @@ export const Header = (): ReactElement => {
         </HeaderTitle>
 
         <HeaderRightSideContainer>
-          <StyledLink to={"/about"} aria-label={t("iconAltText.aboutKonsti")}>
+          <StyledLink
+            to={AppRoute.ABOUT}
+            aria-label={t("iconAltText.aboutKonsti")}
+          >
             <StyledIcon icon="circle-question" aria-hidden="true" />
           </StyledLink>
           <HeaderLanguageSelector />

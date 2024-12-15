@@ -7,6 +7,7 @@ import { useAppSelector } from "client/utils/hooks";
 import { config } from "shared/config";
 import { isAdmin, isAdminOrHelp, isUser } from "client/utils/checkUserGroup";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
+import { AppRoute } from "client/app/AppRoutes";
 
 export const LoggedInUserNavigation = (props: {
   onSelect: () => void;
@@ -20,12 +21,12 @@ export const LoggedInUserNavigation = (props: {
 
   return (
     <StyledRoutes>
-      <RouterLink onClick={props.onSelect} to="/program">
+      <RouterLink onClick={props.onSelect} to={AppRoute.PROGRAM}>
         {t("pages.program")}
       </RouterLink>
 
       {!directSignup && isUser(userGroup) && (
-        <RouterLink onClick={props.onSelect} to="/notifications">
+        <RouterLink onClick={props.onSelect} to={AppRoute.NOTIFICATIONS}>
           {t("pages.notifications")}
           {unseenEvents.length > 0 && (
             <EventNumberContainer
@@ -44,7 +45,7 @@ export const LoggedInUserNavigation = (props: {
       {isUser(userGroup) && config.event().enableGroups && (
         <RouterLink
           onClick={props.onSelect}
-          to="/profile"
+          to={AppRoute.PROFILE}
           data-testid={"link-profile"}
         >
           {t("pages.profileAndGroup")}
@@ -54,7 +55,7 @@ export const LoggedInUserNavigation = (props: {
       {isUser(userGroup) && !config.event().enableGroups && (
         <RouterLink
           onClick={props.onSelect}
-          to="/profile"
+          to={AppRoute.PROFILE}
           data-testid={"link-profile"}
         >
           {t("pages.profile")}
@@ -63,26 +64,26 @@ export const LoggedInUserNavigation = (props: {
 
       {isAdminOrHelp(userGroup) && (
         <>
-          <RouterLink onClick={props.onSelect} to="/help">
+          <RouterLink onClick={props.onSelect} to={AppRoute.HELP}>
             {t("button.helper")}
           </RouterLink>
-          <RouterLink onClick={props.onSelect} to="/profile">
+          <RouterLink onClick={props.onSelect} to={AppRoute.PROFILE}>
             {t("pages.profile")}
           </RouterLink>
         </>
       )}
 
       {isAdmin(userGroup) && (
-        <RouterLink onClick={props.onSelect} to="/admin">
+        <RouterLink onClick={props.onSelect} to={AppRoute.ADMIN}>
           {t("pages.admin")}
         </RouterLink>
       )}
 
-      <RouterLink onClick={props.onSelect} to="/about/help">
+      <RouterLink onClick={props.onSelect} to={AppRoute.ABOUT}>
         {t("pages.help")}
       </RouterLink>
 
-      <RouterLink onClick={props.onSelect} to="/logout">
+      <RouterLink onClick={props.onSelect} to={AppRoute.LOGOUT}>
         {t("button.logout")}
       </RouterLink>
     </StyledRoutes>

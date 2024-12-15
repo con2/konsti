@@ -6,6 +6,7 @@ import { postKompassiLogoutRedirect } from "client/services/loginServices";
 import { LoginProvider } from "shared/config/eventConfigTypes";
 import { Loading } from "client/components/Loading";
 import { UserGroup } from "shared/types/models/user";
+import { AppRoute } from "client/app/AppRoutes";
 
 export const LogoutView = (): ReactElement => {
   const dispatch = useAppDispatch();
@@ -28,7 +29,7 @@ export const LogoutView = (): ReactElement => {
 
   return (
     <>
-      {isLocalLogin && <Navigate to="/program" replace />}
+      {isLocalLogin && <Navigate to={AppRoute.PROGRAM} replace />}
       {!isLocalLogin && <Loading />}
     </>
   );
