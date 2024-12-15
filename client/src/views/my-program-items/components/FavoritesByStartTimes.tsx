@@ -15,6 +15,7 @@ import {
   MyProgramListItem,
   MyProgramTime,
 } from "client/views/my-program-items/components/shared";
+import { AppRoute } from "client/app/AppRoutes";
 
 interface Props {
   programItems: readonly ProgramItem[];
@@ -62,9 +63,9 @@ export const FavoritesByStartTimes = ({
                       <MyProgramButtonContainer>
                         <TertiaryButton
                           icon="circle-arrow-right"
-                          onClick={() => {
-                            navigate(
-                              `/program/item/${programItem.programItemId}`,
+                          onClick={async () => {
+                            await navigate(
+                              `${AppRoute.PROGRAM_ITEM}/${programItem.programItemId}`,
                             );
                           }}
                         >

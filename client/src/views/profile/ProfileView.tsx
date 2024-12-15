@@ -6,6 +6,7 @@ import { ChangePasswordForm } from "client/views/helper/components/ChangePasswor
 import { useAppSelector } from "client/utils/hooks";
 import { Button, ButtonStyle } from "client/components/Button";
 import { LoginProvider } from "shared/config/eventConfigTypes";
+import { AppRoute } from "client/app/AppRoutes";
 
 export const ProfileView = (): ReactElement => {
   const { t } = useTranslation();
@@ -30,7 +31,7 @@ export const ProfileView = (): ReactElement => {
         )}
         <StyledButton
           buttonStyle={ButtonStyle.SECONDARY}
-          onClick={() => navigate("/logout")}
+          onClick={() => navigate(AppRoute.LOGOUT)}
         >
           {t("button.logout")}
         </StyledButton>

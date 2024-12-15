@@ -6,6 +6,7 @@ import { useAppSelector } from "client/utils/hooks";
 import { LoginProvider } from "shared/config/eventConfigTypes";
 import { KompassiLogin } from "client/views/login/components/KompassiLogin";
 import { Button, ButtonStyle } from "client/components/Button";
+import { AppRoute } from "client/app/AppRoutes";
 
 export const LoginView = (): ReactElement => {
   const { t } = useTranslation();
@@ -19,8 +20,12 @@ export const LoginView = (): ReactElement => {
   const adminLogin = location.pathname === "/admin/login";
 
   useEffect(() => {
+    const navigateToRoot = async (): Promise<void> => {
+      await navigate(AppRoute.ROOT);
+    };
     if (loggedIn) {
-      navigate("/");
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
+      navigateToRoot();
     }
   }, [loggedIn, navigate]);
 
