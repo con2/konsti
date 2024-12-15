@@ -46,12 +46,18 @@ export enum AppRoute {
   ANY = "/*",
 }
 
-enum AppRouteTab {
+enum ProgramTab {
   MY_PROGRAM = "myprogram",
   PROGRAM_LIST = "list",
+}
+
+enum AboutTab {
   HELP = "help",
   FAQ = "faq",
   ABOUT = "about",
+}
+
+enum ProfileTab {
   PROFILE = "profile",
   GROUP = "group",
 }
@@ -71,14 +77,14 @@ export const AppRoutes = (): ReactElement => {
   const programTabs = [
     {
       headerText: t("pages.myProgram"),
-      path: AppRouteTab.MY_PROGRAM,
+      path: ProgramTab.MY_PROGRAM,
       element: <MyProgramItemsView />,
       icon: "dice" as IconName,
       "data-testid": "my-program-tab",
     },
     {
       headerText: t("pages.programList"),
-      path: AppRouteTab.PROGRAM_LIST,
+      path: ProgramTab.PROGRAM_LIST,
       element: <AllProgramItemsView />,
       icon: "calendar-days" as IconName,
       "data-testid": "program-list-tab",
@@ -88,19 +94,19 @@ export const AppRoutes = (): ReactElement => {
   const aboutTabs = [
     {
       headerText: t("aboutView.instructions"),
-      path: AppRouteTab.HELP,
+      path: AboutTab.HELP,
       element: <InstructionsView />,
       icon: "person-chalkboard" as IconName,
     },
     {
       headerText: t("aboutView.faq"),
-      path: AppRouteTab.FAQ,
+      path: AboutTab.FAQ,
       element: <FaqView />,
       icon: "question" as IconName,
     },
     {
       headerText: t("aboutView.about"),
-      path: AppRouteTab.ABOUT,
+      path: AboutTab.ABOUT,
       element: <AboutView />,
       icon: "info" as IconName,
     },
@@ -109,13 +115,13 @@ export const AppRoutes = (): ReactElement => {
   const profileTabs = [
     {
       headerText: t("profileView.profileTab"),
-      path: AppRouteTab.PROFILE,
+      path: ProfileTab.PROFILE,
       element: <ProfileView />,
       icon: "user" as IconName,
     },
     {
       headerText: t("profileView.groupTab"),
-      path: AppRouteTab.GROUP,
+      path: ProfileTab.GROUP,
       element: <GroupView />,
       icon: "users" as IconName,
     },
