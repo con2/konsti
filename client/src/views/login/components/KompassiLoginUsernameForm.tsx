@@ -15,6 +15,7 @@ import {
   USERNAME_LENGTH_MAX,
   USERNAME_LENGTH_MIN,
 } from "shared/constants/validation";
+import { navigateToPreviousOrRoot } from "client/utils/navigation";
 
 interface KompassiLoginUsernameFormFields {
   username: string;
@@ -52,9 +53,7 @@ export const KompassiLoginUsernameForm = (): ReactElement => {
       return;
     }
 
-    // Navigate to previous page or front page if no previous page exists
-    // eslint-disable-next-line @typescript-eslint/no-unused-expressions, @typescript-eslint/no-unsafe-member-access
-    window.history.state?.idx > 0 ? navigate(-1) : navigate("/");
+    await navigateToPreviousOrRoot(window.history, navigate);
   };
 
   return (
