@@ -30,7 +30,7 @@ export const ProgramItemBody = ({
 
   return (
     <div>
-      <ShortDescription>{`${programItem.shortDescription} `}</ShortDescription>
+      <ShortDescription>{programItem.shortDescription}</ShortDescription>
       {!isAlwaysExpanded && (
         <ExpandButton
           isExpanded={isExpanded}
@@ -63,6 +63,5 @@ const ExpandedDescriptionContainer = styled.div`
 
 const ShortDescription = styled.p`
   overflow-wrap: break-word;
-  word-break: break-word;
   margin: 8px 0 8px 0;
 `;

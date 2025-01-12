@@ -27,7 +27,6 @@ const ProgramItemListTitleContainer = styled.div`
   border-radius: 4px;
   position: sticky;
   top: 0;
-
   box-shadow: ${(props) => props.theme.shadowHigher};
 
   @media (max-width: ${(props) => props.theme.breakpointPhone}) {
