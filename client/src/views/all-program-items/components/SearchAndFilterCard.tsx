@@ -156,7 +156,6 @@ const Container = styled(RaisedCard)`
   display: grid;
   row-gap: 16px;
   column-gap: 24px;
-
   grid-template-columns: 1fr 1fr;
 
   @media (max-width: ${(props) => props.theme.breakpointPhone}) {

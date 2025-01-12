@@ -129,7 +129,6 @@ export const ProgramItemDetails = ({ programItem }: Props): ReactElement => {
 
 const DetailsContainer = styled.div`
   overflow-wrap: break-word;
-  word-break: break-word;
   white-space: pre-line;
 `;
 
