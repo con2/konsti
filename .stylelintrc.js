@@ -27,6 +27,7 @@ module.exports = {
     "declaration-block-no-redundant-longhand-properties": null, // Don't want this
     "color-function-notation": null, // Don't want this
     "alpha-value-notation": null, // Don't want this
+    "declaration-empty-line-before": null, // Don't want this
 
     // @double-great/stylelint-a11y
     // Same rules as in recommended config - enable single rules since config doesn't work
