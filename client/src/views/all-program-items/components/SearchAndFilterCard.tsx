@@ -16,6 +16,7 @@ import {
   selectLanguages,
   selectTags,
 } from "client/views/all-program-items/allProgramItemsSlice";
+import { Checkbox } from "client/components/Checkbox";
 
 export enum StartingTimeOption {
   UPCOMING = "upcoming",
@@ -30,6 +31,8 @@ interface Props {
   setSelectedStartingTime: Dispatch<SetStateAction<StartingTimeOption>>;
   searchTerm: string;
   setSearchTerm: Dispatch<SetStateAction<string>>;
+  hideFullItems: boolean;
+  setHideFullItems: Dispatch<SetStateAction<boolean>>;
 }
 
 export const SearchAndFilterCard = ({
@@ -39,6 +42,8 @@ export const SearchAndFilterCard = ({
   setSelectedStartingTime,
   searchTerm,
   setSearchTerm,
+  hideFullItems,
+  setHideFullItems,
 }: Props): ReactElement => {
   const { t } = useTranslation();
   const activeProgramType = useAppSelector(
@@ -141,6 +146,14 @@ export const SearchAndFilterCard = ({
           resetValue={() => {
             setSearchTerm("");
           }}
+        />
+      </InputContainer>
+      <InputContainer>
+        <Checkbox
+          checked={hideFullItems}
+          onChange={() => setHideFullItems(!hideFullItems)}
+          id="hide-full-items"
+          label={t(`hideFullItems`)}
         />
       </InputContainer>
       {selectedStartingTime === StartingTimeOption.REVOLVING_DOOR && (

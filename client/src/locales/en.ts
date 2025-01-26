@@ -49,6 +49,7 @@ export const translationEN = {
   findTitleOrUsername: "{{PROGRAM_TYPE}} title or username",
   searchWithTitle: "{{PROGRAM_TYPE}} title",
   searchWithTitleOrSystem: "{{PROGRAM_TYPE}} title or system",
+  hideFullItems: "Hide program items that are full",
   language: {
     english: "English",
     englishShort: "EN",
