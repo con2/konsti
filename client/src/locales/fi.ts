@@ -49,6 +49,7 @@ export const translationFI = {
   findTitleOrUsername: "{{PROGRAM_TYPE}} nimi tai käyttäjänimi",
   searchWithTitle: "{{PROGRAM_TYPE}} nimi",
   searchWithTitleOrSystem: "{{PROGRAM_TYPE}} nimi tai järjestelmä",
+  hideFullItems: "Piilota täynnä olevat ohjelmanumerot",
   language: {
     english: "Englanti",
     englishShort: "EN",

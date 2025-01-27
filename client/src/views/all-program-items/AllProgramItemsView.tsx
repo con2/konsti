@@ -30,6 +30,10 @@ import { config } from "shared/config";
 export const MULTIPLE_WHITESPACES_REGEX = /\s\s+/g;
 const programTypeQueryParam = "programType";
 
+type ProgramItemWithFullness = ProgramItem & {
+  isFull: boolean;
+};
+
 export const AllProgramItemsView = (): ReactElement => {
   const [searchParams, setSearchParams] = useSearchParams();
   const programTypeQueryParamValue = searchParams.get(programTypeQueryParam);
@@ -39,14 +43,18 @@ export const AllProgramItemsView = (): ReactElement => {
   const hiddenProgramItems = useAppSelector(
     (state) => state.admin.hiddenProgramItems,
   );
+  const signups = useAppSelector(
+    (state) => state.allProgramItems.directSignups,
+  );
 
   const [selectedTag, setSelectedTag] = useState<Tag | Language | "">(
     getSavedTag(),
   );
   const [loading, setLoading] = useState<boolean>(true);
   const [searchTerm, setSearchTerm] = useState<string>(getSavedSearchTerm());
+  const [hideFullItems, setHideFullItems] = useState<boolean>(false);
   const [filteredProgramItems, setFilteredProgramItems] = useState<
-    readonly ProgramItem[]
+    readonly ProgramItemWithFullness[]
   >([]);
   const [selectedStartingTime, setSelectedStartingTime] =
     useState<StartingTimeOption>(getSavedStartingTime());
@@ -55,23 +63,38 @@ export const AllProgramItemsView = (): ReactElement => {
     leading: true,
   });
 
-  const activeVisibleProgramItems = useMemo(
+  const activeVisibleProgramItems: ProgramItemWithFullness[] = useMemo(
     () =>
-      activeProgramItems.filter((programItem) => {
-        const hidden = hiddenProgramItems.find(
-          (hiddenProgramItem) =>
-            programItem.programItemId === hiddenProgramItem.programItemId,
-        );
-        if (!hidden) {
-          return programItem;
-        }
-      }),
-    [activeProgramItems, hiddenProgramItems],
+      activeProgramItems
+        .filter((programItem) => {
+          const hidden = hiddenProgramItems.find(
+            (hiddenProgramItem) =>
+              programItem.programItemId === hiddenProgramItem.programItemId,
+          );
+          if (!hidden) {
+            return programItem;
+          }
+        })
+        .map((programItem) => {
+          const signupCount =
+            signups.find(
+              (signup) => signup.programItemId == programItem.programItemId,
+            )?.users.length ?? -1;
+          return {
+            ...programItem,
+            isFull: signupCount >= programItem.maxAttendance,
+          };
+        }),
+    [activeProgramItems, hiddenProgramItems, signups],
   );
 
   useEffect(() => {
     setLoading(false);
-  }, [/* effect dep */ activeProgramItems]);
+  }, [
+    /* effect dep */ activeProgramItems,
+    /* effect dep */ hiddenProgramItems,
+    /* effect dep */ signups,
+  ]);
 
   useEffect(() => {
     sessionStorage.setItem(
@@ -131,10 +154,11 @@ export const AllProgramItemsView = (): ReactElement => {
           filteredProgramItems,
           selectedStartingTime,
           selectedTag,
+          hideFullItems,
         )}
       />
     );
-  }, [filteredProgramItems, selectedStartingTime, selectedTag]);
+  }, [filteredProgramItems, hideFullItems, selectedStartingTime, selectedTag]);
 
   return (
     <>
@@ -145,6 +169,8 @@ export const AllProgramItemsView = (): ReactElement => {
         setSelectedStartingTime={setSelectedStartingTime}
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
+        hideFullItems={hideFullItems}
+        setHideFullItems={setHideFullItems}
       />
       {loading ? <Loading /> : memoizedProgramItems}
     </>
@@ -152,30 +178,35 @@ export const AllProgramItemsView = (): ReactElement => {
 };
 
 const getVisibleProgramItems = (
-  programItems: readonly ProgramItem[],
+  programItems: readonly ProgramItemWithFullness[],
   selectedView: StartingTimeOption,
   selectedTag: string,
+  hideFull: boolean,
 ): readonly ProgramItem[] => {
-  const filteredProgramItems = getTagFilteredProgramItems(
+  const tagFilteredProgramItems = getTagFilteredProgramItems(
     programItems,
     selectedTag,
   );
 
+  const fullnessFiltered = hideFull
+    ? tagFilteredProgramItems.filter((item) => !item.isFull)
+    : tagFilteredProgramItems;
+
   if (selectedView === StartingTimeOption.UPCOMING) {
-    return getUpcomingProgramItems(filteredProgramItems);
+    return getUpcomingProgramItems(fullnessFiltered);
   } else if (selectedView === StartingTimeOption.REVOLVING_DOOR) {
-    return getUpcomingProgramItems(filteredProgramItems).filter(
+    return getUpcomingProgramItems(fullnessFiltered).filter(
       (programItem) => programItem.revolvingDoor,
     );
   }
 
-  return filteredProgramItems;
+  return fullnessFiltered;
 };
 
 const getTagFilteredProgramItems = (
-  programItems: readonly ProgramItem[],
+  programItems: readonly ProgramItemWithFullness[],
   selectedTag: string,
-): readonly ProgramItem[] => {
+): readonly ProgramItemWithFullness[] => {
   if (!selectedTag) {
     return programItems;
   }
