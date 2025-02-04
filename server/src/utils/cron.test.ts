@@ -33,6 +33,9 @@ const timeNow = "2019-07-26T17:00:00.000Z";
 const previousJobRunning = 30; // Seconds since last run
 const previousJobFinished = 31; // Seconds since last run
 
+const infoLoggerSpy = vi.spyOn(logger, "info");
+const errorLoggerSpy = vi.spyOn(logger, "error");
+
 beforeAll(() => {
   vi.setSystemTime(timeNow);
 });
@@ -57,13 +60,13 @@ beforeEach(async () => {
 });
 
 afterEach(async () => {
+  infoLoggerSpy.mockClear();
+  errorLoggerSpy.mockClear();
   await closeServer(server);
 });
 
 describe("Progam update cronjob", () => {
   test("should run program update and set programUpdateLastRun time", async () => {
-    const infoLoggerSpy = vi.spyOn(logger, "info");
-
     const oldTime = dayjs(timeNow)
       .subtract(previousJobFinished, "seconds")
       .toISOString();
@@ -83,9 +86,6 @@ describe("Progam update cronjob", () => {
   });
 
   test("should not start update if program update is already running", async () => {
-    const infoLoggerSpy = vi.spyOn(logger, "info");
-    const errorLoggerSpy = vi.spyOn(logger, "error");
-
     const oldTime = dayjs(timeNow)
       .subtract(previousJobRunning, "seconds")
       .toISOString();
@@ -106,9 +106,6 @@ describe("Progam update cronjob", () => {
   });
 
   test("if cronjob is run twice, should run program update only once", async () => {
-    const infoLoggerSpy = vi.spyOn(logger, "info");
-    const errorLoggerSpy = vi.spyOn(logger, "error");
-
     const oldTime = dayjs(timeNow)
       .subtract(previousJobFinished, "seconds")
       .toISOString();
@@ -132,8 +129,6 @@ describe("Progam update cronjob", () => {
   });
 
   test("should not run program update if newer server instance is started", async () => {
-    const errorLoggerSpy = vi.spyOn(logger, "error");
-
     const oldTime = dayjs(timeNow).subtract(1, "seconds").toISOString();
     await saveSettings({ latestServerStartTime: oldTime });
 
@@ -151,8 +146,6 @@ describe("Progam update cronjob", () => {
 
 describe("Assignment cronjob", () => {
   test("should run assignment and set assignmentLastRun time", async () => {
-    const infoLoggerSpy = vi.spyOn(logger, "info");
-
     const oldTime = dayjs(timeNow)
       .subtract(previousJobFinished, "seconds")
       .toISOString();
@@ -172,9 +165,6 @@ describe("Assignment cronjob", () => {
   });
 
   test("should not run assignment if assignment is already running", async () => {
-    const infoLoggerSpy = vi.spyOn(logger, "info");
-    const errorLoggerSpy = vi.spyOn(logger, "error");
-
     const oldTime = dayjs(timeNow)
       .subtract(previousJobRunning, "seconds")
       .toISOString();
@@ -195,9 +185,6 @@ describe("Assignment cronjob", () => {
   });
 
   test("if cronjob is run twice, should run assignment only once", async () => {
-    const infoLoggerSpy = vi.spyOn(logger, "info");
-    const errorLoggerSpy = vi.spyOn(logger, "error");
-
     const oldTime = dayjs(timeNow)
       .subtract(previousJobFinished, "seconds")
       .toISOString();
@@ -221,8 +208,6 @@ describe("Assignment cronjob", () => {
   });
 
   test("should not run assignment if newer server instance is started", async () => {
-    const errorLoggerSpy = vi.spyOn(logger, "error");
-
     const oldTime = dayjs(timeNow).subtract(1, "seconds").toISOString();
     await saveSettings({ latestServerStartTime: oldTime });
 
