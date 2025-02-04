@@ -30,7 +30,7 @@ export const saveUser = async (
     kompassiUsernameAccepted: false,
     username: newUserData.username,
     password: newUserData.passwordHash,
-    userGroup: newUserData.userGroup ? newUserData.userGroup : UserGroup.USER,
+    userGroup: newUserData.userGroup ?? UserGroup.USER,
     serial: newUserData.serial,
     groupCode:
       typeof newUserData.groupCode === "string" ? newUserData.groupCode : "0",

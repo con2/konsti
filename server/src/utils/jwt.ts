@@ -1,4 +1,4 @@
-import jsonwebtoken, { TokenExpiredError } from "jsonwebtoken";
+import jsonwebtoken, { SignOptions, TokenExpiredError } from "jsonwebtoken";
 import { config } from "shared/config";
 import { JWTBody, JWTBodySchema, JWTResponse } from "server/types/jwtTypes";
 import { UserGroup } from "shared/types/models/user";
@@ -9,7 +9,7 @@ export const getJWT = (userGroup: UserGroup, username: string): string => {
     userGroup,
   };
 
-  const options = {
+  const options: SignOptions = {
     expiresIn: "14 days",
   };
 
