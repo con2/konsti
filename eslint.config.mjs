@@ -72,6 +72,11 @@ export default typescriptEslint.config(
       "import/internal-regex": "shared",
     },
 
+    linterOptions: {
+      reportUnusedInlineConfigs: "error",
+      reportUnusedDisableDirectives: "error",
+    },
+
     rules: {
       ...eslintPluginVitest.configs.recommended.rules,
 
