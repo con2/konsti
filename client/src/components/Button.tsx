@@ -62,7 +62,7 @@ const StyledButton = styled.button<{ $buttonStyle: ButtonStyle }>`
           color: ${props.theme.textMain};
           padding: 6px 20px;
 
-          ${disabledButton}`; // eslint-disable-line @typescript-eslint/restrict-template-expressions
+          ${disabledButton}`; // eslint-disable-line @typescript-eslint/restrict-template-expressions, @typescript-eslint/no-base-to-string
     }
     if (!props.disabled && props.$buttonStyle === ButtonStyle.SECONDARY) {
       return `
@@ -89,7 +89,7 @@ const StyledButton = styled.button<{ $buttonStyle: ButtonStyle }>`
           color: ${props.theme.buttonPrimaryText};
           padding: 8px 20px;
 
-          ${disabledButton}`; // eslint-disable-line @typescript-eslint/restrict-template-expressions
+          ${disabledButton}`; // eslint-disable-line @typescript-eslint/restrict-template-expressions, @typescript-eslint/no-base-to-string
     }
 
     // Default: primary, not disabled

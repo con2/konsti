@@ -65,11 +65,11 @@
   },
   "devDependencies": {
     "@eslint-community/eslint-plugin-eslint-comments": "4.4.1",
-    "@eslint/js": "9.18.0",
-    "@playwright/test": "1.49.1",
+    "@eslint/js": "9.19.0",
+    "@playwright/test": "1.50.1",
     "@types/eslint__js": "8.42.3",
     "@types/lodash-es": "4.17.12",
-    "eslint": "9.18.0",
+    "eslint": "9.19.0",
     "eslint-config-prettier": "9.1.0",
     "eslint-import-resolver-typescript": "3.7.0",
     "eslint-plugin-compat": "6.0.2",
@@ -77,17 +77,17 @@
     "eslint-plugin-jsx-a11y": "6.10.2",
     "eslint-plugin-n": "17.15.1",
     "eslint-plugin-only-error": "1.0.2",
-    "eslint-plugin-prettier": "5.2.1",
+    "eslint-plugin-prettier": "5.2.3",
     "eslint-plugin-promise": "7.2.1",
-    "eslint-plugin-react": "7.37.3",
+    "eslint-plugin-react": "7.37.4",
     "eslint-plugin-react-hooks": "5.1.0",
     "eslint-plugin-react-hooks-addons": "0.4.1",
     "eslint-plugin-unicorn": "56.0.1",
     "eslint-plugin-vitest": "0.5.4",
     "globals": "15.14.0",
     "prettier": "3.4.2",
-    "typescript-eslint": "8.19.0",
-    "vitest": "2.1.8"
+    "typescript-eslint": "8.23.0",
+    "vitest": "2.1.9"
   },
   "engines": {
     "node": ">=22.11.0"
