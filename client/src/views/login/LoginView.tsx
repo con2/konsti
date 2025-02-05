@@ -6,7 +6,8 @@ import { useAppSelector } from "client/utils/hooks";
 import { LoginProvider } from "shared/config/eventConfigTypes";
 import { KompassiLogin } from "client/views/login/components/KompassiLogin";
 import { Button, ButtonStyle } from "client/components/Button";
-import { AppRoute } from "client/app/AppRoutes";
+import { ProgramTab } from "client/app/AppRoutes";
+import { isAdminOrHelp } from "client/utils/checkUserGroup";
 
 export const LoginView = (): ReactElement => {
   const { t } = useTranslation();
@@ -14,20 +15,25 @@ export const LoginView = (): ReactElement => {
   const location = useLocation();
 
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
+  const userGroup = useAppSelector((state) => state.login.userGroup);
   const loginProvider = useAppSelector((state) => state.admin.loginProvider);
   const appOpen = useAppSelector((state) => state.admin.appOpen);
 
   const adminLogin = location.pathname === "/admin/login";
 
   useEffect(() => {
-    const navigateToRoot = async (): Promise<void> => {
-      await navigate(AppRoute.ROOT);
+    const navigateToRoot = async (route: ProgramTab): Promise<void> => {
+      await navigate(route);
     };
     if (loggedIn) {
+      if (isAdminOrHelp(userGroup)) {
+        // eslint-disable-next-line @typescript-eslint/no-floating-promises
+        navigateToRoot(ProgramTab.PROGRAM_LIST);
+      }
       // eslint-disable-next-line @typescript-eslint/no-floating-promises
-      navigateToRoot();
+      navigateToRoot(ProgramTab.MY_PROGRAM);
     }
-  }, [loggedIn, navigate]);
+  }, [loggedIn, navigate, userGroup]);
 
   return (
     <div>

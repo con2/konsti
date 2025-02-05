@@ -62,6 +62,7 @@ export const LoginForm = (): ReactElement => {
             },
           })}
           type={"text"}
+          autoComplete="username"
           data-testid={"login-form-input-username"}
         />
       </InputContainer>
@@ -82,6 +83,7 @@ export const LoginForm = (): ReactElement => {
               },
             })}
             type={passwordVisible ? "text" : "password"}
+            autoComplete="current-password"
             data-testid={"login-form-input-password"}
           />
 
