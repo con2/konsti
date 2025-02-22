@@ -3176,15 +3176,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/eslint__js@npm:8.42.3":
-  version: 8.42.3
-  resolution: "@types/eslint__js@npm:8.42.3"
-  dependencies:
-    "@types/eslint": "npm:*"
-  checksum: 10c0/ccc5180b92155929a089ffb03ed62625216dcd5e46dd3197c6f82370ce8b52c7cb9df66c06b0a3017995409e023bc9eafe5a3f009e391960eacefaa1b62d9a56
-  languageName: node
-  linkType: hard
-
 "@types/estree-jsx@npm:^1.0.0":
   version: 1.0.5
   resolution: "@types/estree-jsx@npm:1.0.5"
@@ -9152,7 +9143,6 @@ __metadata:
     "@eslint-community/eslint-plugin-eslint-comments": "npm:4.4.1"
     "@eslint/js": "npm:9.21.0"
     "@playwright/test": "npm:1.50.1"
-    "@types/eslint__js": "npm:8.42.3"
     "@types/lodash-es": "npm:4.17.12"
     "@vitest/eslint-plugin": "npm:1.1.32-beta.1"
     "@yarnpkg/types": "npm:4.0.0"
