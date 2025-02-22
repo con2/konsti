@@ -156,7 +156,7 @@ export const saveUserSignupResults = async ({
     groupCreators,
     users,
   );
-  const allAttendees = groupCreators.concat(groupMembers);
+  const allAttendees = [...groupCreators, ...groupMembers];
   const lotterySignups = getLotterySignups(allAttendees);
 
   const lotterySignupsForStartingTime = lotterySignups.filter((lotterySignup) =>

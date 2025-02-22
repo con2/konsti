@@ -78,5 +78,5 @@ const processRelativeTime = (
     y: ["vuosi", "vuoden"],
     yy: [number + " vuotta", number + " vuoden"],
   };
-  return !isFuture ? format[key][0] : format[key][1];
+  return isFuture ? format[key][1] : format[key][0];
 };

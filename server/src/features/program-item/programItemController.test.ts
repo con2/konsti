@@ -1,4 +1,4 @@
-import { Server } from "http";
+import { Server } from "node:http";
 import request from "supertest";
 import { faker } from "@faker-js/faker";
 import dayjs from "dayjs";

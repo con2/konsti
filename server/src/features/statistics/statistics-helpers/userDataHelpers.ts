@@ -32,12 +32,12 @@ export const getUsersWithoutSignups = (
 ): readonly User[] => {
   let counter = 0;
   const usersWithoutSignups: User[] = [];
-  users.forEach((user) => {
+  for (const user of users) {
     if (user.lotterySignups.length === 0) {
       usersWithoutSignups.push(user);
       counter += 1;
     }
-  });
+  }
 
   logger.info(
     `Attendees without any lottery signups: ${counter}/${users.length} (${toPercent(
@@ -50,18 +50,19 @@ export const getUsersWithoutSignups = (
 
 export const getUsersSignupCount = (users: readonly User[]): void => {
   const userSignupCounts: Record<string, number>[] = [];
-  users.forEach((user) => {
+  for (const user of users) {
     const lotterySignups = countBy(user.lotterySignups, "time");
     userSignupCounts.push(lotterySignups);
-  });
+  }
 
   const programItemLotterySignups: Record<string, number> = {};
-  userSignupCounts.forEach((userSignups: Record<string, number>) => {
+
+  for (const userSignups of userSignupCounts) {
     for (const signupTime in userSignups) {
       programItemLotterySignups[userSignups[signupTime]] =
         ++programItemLotterySignups[userSignups[signupTime]] || 1;
     }
-  });
+  }
 
   logger.info(
     `Users signed for this many program items when they didn't get signed:`,
@@ -69,10 +70,10 @@ export const getUsersSignupCount = (users: readonly User[]): void => {
   );
 
   const signupCount: Record<string, number> = {};
-  userSignupCounts.forEach((userSignups: Record<string, number>) => {
+  for (const userSignups of userSignupCounts) {
     signupCount[Object.keys(userSignups).length] =
       ++signupCount[Object.keys(userSignups).length] || 1;
-  });
+  }
 
   logger.info(
     `Users didn't get into any program items after this many signup attempts:`,

@@ -10,7 +10,7 @@ export const BackButton = (): ReactElement => {
   const { t } = useTranslation();
 
   const goBack = async (): Promise<void> => {
-    await navigateToPreviousOrRoot(window.history, navigate);
+    await navigateToPreviousOrRoot(globalThis.history, navigate);
   };
 
   return (

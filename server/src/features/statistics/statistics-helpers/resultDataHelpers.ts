@@ -27,7 +27,7 @@ export const getMaximumNumberOfAttendeesByTime = (
 ): Record<string, number> => {
   const maxNumberOfAttendeesByTime: Record<string, number> = {};
 
-  programItems.forEach((programItem) => {
+  for (const programItem of programItems) {
     if (!maxNumberOfAttendeesByTime[programItem.startTime]) {
       maxNumberOfAttendeesByTime[programItem.startTime] = 0;
     }
@@ -35,7 +35,7 @@ export const getMaximumNumberOfAttendeesByTime = (
     maxNumberOfAttendeesByTime[programItem.startTime] =
       maxNumberOfAttendeesByTime[programItem.startTime] +
       programItem.maxAttendance;
-  });
+  }
 
   logger.debug(
     `Maximum number of seats by start times: \n`,

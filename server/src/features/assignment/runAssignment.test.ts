@@ -87,7 +87,7 @@ describe("Assignment with valid data", () => {
       groupTestUsers.includes(result.username),
     );
 
-    if (groupResults.length) {
+    if (groupResults.length > 0) {
       expect(groupResults.length).toEqual(groupTestUsers.length);
     } else {
       expect(groupResults.length).toEqual(0);
@@ -116,7 +116,7 @@ describe("Assignment with valid data", () => {
       groupTestUsers.includes(result.username),
     );
 
-    if (groupResults2.length) {
+    if (groupResults2.length > 0) {
       expect(groupResults2.length).toEqual(groupTestUsers.length);
     } else {
       expect(groupResults2.length).toEqual(0);

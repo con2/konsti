@@ -1,4 +1,4 @@
-import fs from "fs";
+import fs from "node:fs";
 import { isEqual } from "lodash-es";
 import { logger } from "server/utils/logger";
 import { User } from "shared/types/models/user";

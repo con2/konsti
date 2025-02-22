@@ -118,7 +118,7 @@ export const createProgramItems = async (
       `Generate data for ${programItemCount} programs of type ${kompassiProgramType} for ${startTimes.length} start times`,
     );
 
-    startTimes.forEach((startTime) => {
+    for (const startTime of startTimes) {
       for (let i = 0; i < programItemCount; i += 1) {
         const length = 180;
         const slug = faker.number.int(PROGRAM_ITEM_ID_MAX).toString();
@@ -174,7 +174,7 @@ export const createProgramItems = async (
         logger.info(`Stored program item ${kompassiProgramItemData.title}`);
         kompassiProgramItems.push(kompassiProgramItemData);
       }
-    });
+    }
   });
 
   return await saveProgramItems(

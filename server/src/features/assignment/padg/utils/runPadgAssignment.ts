@@ -17,6 +17,8 @@ import {
 import { AssignmentError } from "shared/types/api/errors";
 import { logger } from "server/utils/logger";
 
+const updateL = (input: Input): string => input.list;
+
 export const runPadgAssignment = (
   lotterySignupProgramItems: readonly ProgramItem[],
   attendeeGroups: readonly User[][],
@@ -39,7 +41,6 @@ export const runPadgAssignment = (
     return listResult;
   }
   const list = unwrapResult(listResult);
-  const updateL = (input: Input): string => input.list;
 
   logger.debug("PADG assignment: start");
   const assignResults = assignPadg(groups, events, list, updateL);

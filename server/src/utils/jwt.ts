@@ -59,15 +59,17 @@ export const decodeJWT = (jwt: string): JWTBody | null => {
 };
 
 const getSecret = (userGroup: UserGroup): string => {
-  if (userGroup === UserGroup.ADMIN) {
-    return config.server().jwtSecretKeyAdmin;
-  } else if (userGroup === UserGroup.USER) {
-    return config.server().jwtSecretKey;
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-  } else if (userGroup === UserGroup.HELP) {
-    return config.server().jwtSecretKeyHelp;
+  switch (userGroup) {
+    case UserGroup.ADMIN: {
+      return config.server().jwtSecretKeyAdmin;
+    }
+    case UserGroup.USER: {
+      return config.server().jwtSecretKey;
+    }
+    case UserGroup.HELP: {
+      return config.server().jwtSecretKeyHelp;
+    }
   }
-  return "";
 };
 
 export const getJwtResponse = (

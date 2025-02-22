@@ -112,11 +112,11 @@ export const AllProgramItemsView = (): ReactElement => {
       (activeProgramItem) => {
         return (
           activeProgramItem.title
-            .replace(MULTIPLE_WHITESPACES_REGEX, " ")
+            .replaceAll(MULTIPLE_WHITESPACES_REGEX, " ")
             .toLocaleLowerCase()
             .includes(debouncedSearchTerm.toLocaleLowerCase()) ||
           activeProgramItem.gameSystem
-            .replace(MULTIPLE_WHITESPACES_REGEX, " ")
+            .replaceAll(MULTIPLE_WHITESPACES_REGEX, " ")
             .toLocaleLowerCase()
             .includes(debouncedSearchTerm.toLocaleLowerCase())
         );

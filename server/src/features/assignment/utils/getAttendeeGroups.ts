@@ -7,16 +7,15 @@ export const getAttendeeGroups = (
   const groupedUsers = groupBy(attendees, "groupCode");
 
   const attendeesArray: User[][] = [];
-  for (const [key, value] of Object.entries(groupedUsers)) {
-    if (Array.isArray(value)) {
-      if (key === "0") {
+  for (const [groupCode, users] of Object.entries(groupedUsers)) {
+    if (Array.isArray(users)) {
+      if (groupCode === "0") {
         // Loop array and add attendees individually
-        // eslint-disable-next-line @typescript-eslint/prefer-for-of
-        for (let i = 0; i < value.length; i++) {
-          attendeesArray.push([value[i]]);
+        for (const user of users) {
+          attendeesArray.push([user]);
         }
       } else {
-        attendeesArray.push(value);
+        attendeesArray.push(users);
       }
     }
   }

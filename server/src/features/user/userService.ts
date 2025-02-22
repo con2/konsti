@@ -28,7 +28,9 @@ export const storeUser = async (
   maybeSerial: string | undefined,
 ): Promise<PostUserResponse | PostUserError> => {
   let serial;
-  if (!config.event().requireRegistrationCode) {
+  if (config.event().requireRegistrationCode) {
+    serial = maybeSerial;
+  } else {
     const serialDocResult = await createSerial();
     if (isErrorResult(serialDocResult)) {
       return {
@@ -39,8 +41,6 @@ export const storeUser = async (
     }
     const serialDoc = unwrapResult(serialDocResult);
     serial = serialDoc[0].serial;
-  } else {
-    serial = maybeSerial;
   }
 
   if (serial === undefined) {
@@ -179,17 +179,14 @@ export const storeUser = async (
   };
 };
 
-const PASSWORD_CHANGE_NOT_ALLOWED = ["admin", "helper"];
+const PASSWORD_CHANGE_NOT_ALLOWED = new Set(["admin", "helper"]);
 
 export const storeUserPassword = async (
   username: string,
   password: string,
   requester: string,
 ): Promise<PostUpdateUserPasswordResponse | ApiError> => {
-  if (
-    requester === "helper" &&
-    PASSWORD_CHANGE_NOT_ALLOWED.includes(username)
-  ) {
+  if (requester === "helper" && PASSWORD_CHANGE_NOT_ALLOWED.has(username)) {
     return {
       message: "Password change not allowed",
       status: "error",

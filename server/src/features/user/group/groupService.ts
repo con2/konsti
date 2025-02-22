@@ -1,4 +1,4 @@
-import { randomBytes } from "crypto";
+import { randomBytes } from "node:crypto";
 import dayjs from "dayjs";
 import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
 import { findUserDirectSignups } from "server/features/direct-signup/directSignupRepository";
@@ -32,7 +32,7 @@ import {
 } from "shared/utils/result";
 
 export const generateGroupCode = (): string => {
-  const baseCode = randomBytes(5).toString("hex").substring(0, 9);
+  const baseCode = randomBytes(5).toString("hex").slice(0, 9);
   return [
     baseCode.slice(0, 3),
     baseCode.slice(3, 6),

@@ -1,4 +1,4 @@
-import path from "path";
+import path from "node:path";
 import { CleanWebpackPlugin } from "clean-webpack-plugin";
 import CompressionPlugin from "compression-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";

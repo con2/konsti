@@ -17,10 +17,10 @@ export const ProgramItemDetails = ({ programItem }: Props): ReactElement => {
     const hours = Math.floor(programItem.mins / 60);
     const minutes = Math.round((programItem.mins / 60 - hours) * 60);
 
-    const minutesDuration = !minutes ? `` : ` ${minutes}\xa0${t("minutes")}`;
+    const minutesDuration = minutes ? ` ${minutes}\u00A0${t("minutes")}` : ``;
 
     // Note that the dash should be an en dash
-    return `${capitalize(getWeekdayAndTime(programItem.startTime))}–${getTime(programItem.endTime)} (${hours}\xa0${t("hours")}${minutesDuration})`;
+    return `${capitalize(getWeekdayAndTime(programItem.startTime))}–${getTime(programItem.endTime)} (${hours}\u00A0${t("hours")}${minutesDuration})`;
   };
 
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition

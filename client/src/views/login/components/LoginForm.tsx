@@ -46,7 +46,7 @@ export const LoginForm = (): ReactElement => {
       return;
     }
 
-    await navigateToPreviousOrRoot(window.history, navigate);
+    await navigateToPreviousOrRoot(globalThis.history, navigate);
   };
 
   return (

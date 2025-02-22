@@ -11,15 +11,14 @@ export const getGroupCreators = (
   // Get users who have lottery signups for starting program items
   const selectedAttendees: User[] = [];
 
-  users.forEach((user) => {
+  for (const user of users) {
     let match = false;
     // eslint-disable-next-line @typescript-eslint/prefer-for-of
     for (let i = 0; i < user.lotterySignups.length; i += 1) {
-      // eslint-disable-next-line @typescript-eslint/prefer-for-of
-      for (let j = 0; j < startingProgramItems.length; j += 1) {
+      for (const startingProgramItem of startingProgramItems) {
         if (
           user.lotterySignups[i].programItem.programItemId ===
-          startingProgramItems[j].programItemId
+          startingProgramItem.programItemId
         ) {
           match = true;
           break;
@@ -31,7 +30,7 @@ export const getGroupCreators = (
         break;
       }
     }
-  });
+  }
 
   logger.debug(
     `Found ${selectedAttendees.length} group creators for this start time`,

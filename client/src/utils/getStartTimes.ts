@@ -7,7 +7,7 @@ export const getStartTimes = (
     return programItem.startTime;
   });
 
-  const uniqueTimes = [...Array.from(new Set(startTimes))];
+  const uniqueTimes = [...new Set(startTimes)];
   const sortedTimes = uniqueTimes.sort();
 
   return sortedTimes;

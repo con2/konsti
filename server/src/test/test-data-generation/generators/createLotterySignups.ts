@@ -59,11 +59,11 @@ const getRandomLotterySignup = (
   const startTimes = activeProgramItems.map((activeProgramItem) =>
     dayjs(activeProgramItem.startTime).toISOString(),
   );
-  const uniqueTimes = Array.from(new Set(startTimes));
+  const uniqueTimes = [...new Set(startTimes)];
   const firstFourTimes = uniqueTimes.slice(0, 4);
 
   // Select random program items for each start time
-  firstFourTimes.forEach((startTime) => {
+  for (const startTime of firstFourTimes) {
     logger.debug(`Generate lottery signups for time ${startTime}`);
     const programItemsForTime = activeProgramItems.filter(
       (activeProgramItem) =>
@@ -81,7 +81,7 @@ const getRandomLotterySignup = (
 
       const randomProgramItem = programItemsForTime[randomIndex];
 
-      const duplicate = !!lotterySignups.find(
+      const duplicate = lotterySignups.some(
         (lotterySignup) =>
           lotterySignup.programItem.programItemId ===
           randomProgramItem.programItemId,
@@ -98,7 +98,7 @@ const getRandomLotterySignup = (
         });
       }
     }
-  });
+  }
 
   return lotterySignups;
 };

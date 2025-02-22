@@ -126,7 +126,7 @@ export const AllProgramItemsList = ({ programItems }: Props): ReactElement => {
           </NoProgramItemsText>
         </RaisedCard>
       )}
-      {programItems.length !== 0 && programItemsList}
+      {programItems.length > 0 && programItemsList}
     </div>
   );
 };

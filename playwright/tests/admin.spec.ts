@@ -16,7 +16,7 @@ test("Hide program item", async ({ page, request }) => {
 
   const hiddenProgramItemTitle = await firstProgramItem
     .locator("data-testid=program-item-title")
-    .innerText();
+    .textContent();
 
   await firstProgramItem.locator("data-testid=program-item-title").click();
 
@@ -31,7 +31,7 @@ test("Hide program item", async ({ page, request }) => {
 
   const visibleFirstProgramItemTitle = await firstProgramItemAfterHide
     .locator("data-testid=program-item-title")
-    .innerText();
+    .textContent();
 
   expect(visibleFirstProgramItemTitle).not.toEqual(hiddenProgramItemTitle);
 
@@ -41,7 +41,7 @@ test("Hide program item", async ({ page, request }) => {
   const visibleFirstProgramItemTitleAfterReload =
     await firstProgramItemAfterHide
       .locator("data-testid=program-item-title")
-      .innerText();
+      .textContent();
 
   expect(visibleFirstProgramItemTitleAfterReload).not.toEqual(
     hiddenProgramItemTitle,

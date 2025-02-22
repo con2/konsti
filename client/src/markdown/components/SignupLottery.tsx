@@ -9,5 +9,5 @@ interface Props {
 export const SignupLottery = ({ children }: Props): ReactNode => {
   const signupStrategy = useAppSelector((state) => state.admin.signupStrategy);
 
-  return signupStrategy !== EventSignupStrategy.DIRECT ? children : null;
+  return signupStrategy === EventSignupStrategy.DIRECT ? null : children;
 };

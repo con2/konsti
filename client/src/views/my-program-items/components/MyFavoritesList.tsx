@@ -38,7 +38,7 @@ export const MyFavoritesList = ({
             {t("noFavoriteProgramItems")}
           </MyProgramSecondaryText>
         )}
-        {favoriteProgramItems.length !== 0 && (
+        {favoriteProgramItems.length > 0 && (
           <FavoritesByStartTimes
             programItems={sortedProgramItems}
             startTimes={startTimes}

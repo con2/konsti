@@ -252,10 +252,7 @@ export const saveDirectSignups = async (
         const shuffledSignups = shuffle(directSignups);
         finalSignups = shuffledSignups.slice(0, programItem.maxAttendance);
         droppedSignups.push(
-          ...shuffledSignups.slice(
-            programItem.maxAttendance,
-            shuffledSignups.length,
-          ),
+          ...shuffledSignups.slice(programItem.maxAttendance),
         );
       }
 
@@ -377,8 +374,8 @@ export const delDirectSignupDocumentsByProgramItemIds = async (
     ),
   );
 
-  const programItemObjectIds = programItemsInDb.flatMap((programItemInDb) =>
-    programItemInDb?._id ? programItemInDb._id : [],
+  const programItemObjectIds = programItemsInDb.flatMap(
+    (programItemInDb) => programItemInDb?._id ?? [],
   );
 
   try {
@@ -410,8 +407,8 @@ export const resetDirectSignupsByProgramItemIds = async (
     ),
   );
 
-  const programItemObjectIds = programItemsInDb.flatMap((programItemInDb) =>
-    programItemInDb?._id ? programItemInDb._id : [],
+  const programItemObjectIds = programItemsInDb.flatMap(
+    (programItemInDb) => programItemInDb?._id ?? [],
   );
 
   try {

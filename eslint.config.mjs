@@ -28,17 +28,14 @@ export default typescriptEslint.config(
   // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
   eslintPluginImport.flatConfigs.typescript,
   eslintPluginReactHooksAddon.configs.recommended,
+  eslintPluginUnicorn.configs.recommended,
 
   // ** Default **
   {
     languageOptions: {
       parserOptions: {
         projectService: {
-          allowDefaultProject: [
-            "eslint.config.mjs",
-            "yarn.config.cjs",
-            "client/babel.config.js",
-          ],
+          allowDefaultProject: ["eslint.config.mjs", "yarn.config.cjs"],
           defaultProject: "./tsconfig.json",
         },
         tsconfigRootDir: import.meta.dirname,
@@ -55,13 +52,13 @@ export default typescriptEslint.config(
       "**/coverage/**",
       "**/front/**",
       "**/build/**",
+      "client/babel.config.js",
     ],
   },
   {
     plugins: {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       vitest: eslintPluginVitest,
-      unicorn: eslintPluginUnicorn,
       onlyError: eslintPluginOnlyError,
     },
 
@@ -123,7 +120,7 @@ export default typescriptEslint.config(
           ],
         },
       ], // Don't want to use namespace imports
-      "import/no-unresolved": ["error", { ignore: ["\\.gif$"] }],
+      "import/no-unresolved": ["error", { ignore: [String.raw`\.gif$`] }],
 
       "import/namespace": "off", // Don't want to use namespace imports
       "import/no-named-as-default": "off", // Doesn't work with styled-components
@@ -137,6 +134,18 @@ export default typescriptEslint.config(
         "error",
         { assertFunctionNames: ["expect", "assertSignupTime"] },
       ],
+
+      // eslint-plugin-unicorn
+      "unicorn/prefer-top-level-await": "off", // Top-level await not supported
+      "unicorn/prefer-module": "off", // import.meta not supported
+      "unicorn/no-useless-undefined": "off", // We return undefined for success Result without value
+      "unicorn/no-array-reduce": "off", // Don't want this
+      "unicorn/numeric-separators-style": "off", // Don't want this
+      "unicorn/switch-case-braces": "off", // Don't want this
+      "unicorn/no-lonely-if": "off", // Don't want this
+      "unicorn/no-null": "off", // Don't want this
+      "unicorn/prevent-abbreviations": "off", // Don't want this
+      "unicorn/filename-case": "off", // Don't want this
 
       // @typescript-eslint
       "@typescript-eslint/explicit-module-boundary-types": "error",

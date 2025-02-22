@@ -1,4 +1,4 @@
-import fs from "fs";
+import fs from "node:fs";
 import { groupBy } from "lodash-es";
 import dayjs from "dayjs";
 import { z } from "zod";

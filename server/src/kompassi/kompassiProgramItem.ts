@@ -1,3 +1,5 @@
+/* eslint-disable unicorn/catch-error-name */
+
 import { z } from "zod";
 import { partition } from "lodash-es";
 import { logger } from "server/utils/logger";
@@ -189,3 +191,5 @@ export const KompassiProgramItemSchema = z.object({
 });
 
 export type KompassiProgramItem = z.infer<typeof KompassiProgramItemSchema>;
+
+/* eslint-enable unicorn/catch-error-name */

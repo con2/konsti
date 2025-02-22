@@ -66,8 +66,7 @@ const recoverSession = async (): Promise<void> => {
   if (!loggedIn && jwt) {
     try {
       await dispatch(submitSessionRecovery(jwt));
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    } catch (error) {
+    } catch {
       console.log(`Error loading saved session, reset session...`); // eslint-disable-line no-console
     }
   }

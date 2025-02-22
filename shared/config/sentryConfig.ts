@@ -5,7 +5,7 @@ export interface SentryConfig {
 }
 
 export const sentryConfig: SentryConfig = {
-  tracesSampleRate: 0.0,
+  tracesSampleRate: 0,
   enableSentryInDev: false,
   maxValueLength: 100000,
 };

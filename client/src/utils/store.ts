@@ -51,17 +51,17 @@ const rootReducer = (
   return combinedReducer(state, action);
 };
 
-const ignoredActions = [
+const ignoredActions = new Set([
   "allProgramItems/submitGetProgramItemsAsync", // Program items is huge
   "admin/submitGetSettingsAsync", // HiddenProgramItems is huge
   "admin/submitGetSignupMessagesAsync", // Private
-];
+]);
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 const sentryReduxEnhancer = createReduxEnhancer({
   actionTransformer: (action) => {
     // Don't send large payloads or private data to sentry
-    if (ignoredActions.includes(action.type as string)) {
+    if (ignoredActions.has(action.type as string)) {
       return null;
     }
 
@@ -111,12 +111,14 @@ const sentryReduxEnhancer = createReduxEnhancer({
 export const store = configureStore({
   reducer: rootReducer,
   devTools:
-    process.env.SETTINGS !== "production"
-      ? {
+    process.env.SETTINGS === "production"
+      ? false
+      : {
           trace: config.client().enableReduxTrace,
           traceLimit: 25,
-        }
-      : false,
-  enhancers: (getDefaultEnhancers) =>
-    getDefaultEnhancers().concat(sentryReduxEnhancer),
+        },
+  enhancers: (getDefaultEnhancers) => {
+    // eslint-disable-next-line unicorn/prefer-spread
+    return getDefaultEnhancers().concat(sentryReduxEnhancer);
+  },
 });

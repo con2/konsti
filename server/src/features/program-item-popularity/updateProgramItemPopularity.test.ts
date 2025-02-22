@@ -1,4 +1,4 @@
-import { Server } from "http";
+import { Server } from "node:http";
 import { expect, test, afterEach, beforeEach, vi } from "vitest";
 import { faker } from "@faker-js/faker";
 import dayjs from "dayjs";

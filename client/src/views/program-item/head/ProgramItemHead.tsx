@@ -20,6 +20,15 @@ import { ProgramItemHeadSignupInfo } from "client/views/program-item/head/compon
 import { AppRoute } from "client/app/AppRoutes";
 import { SignupQuestion } from "shared/types/models/settings";
 
+const updateFavoriteHandler = async (
+  updateOpts: UpdateFavoriteOpts,
+): Promise<void> => {
+  if (!updateOpts.programItem.programItemId) {
+    return;
+  }
+  await updateFavorite(updateOpts);
+};
+
 interface Props {
   programItem: ProgramItem;
   signups: UserSignup[];
@@ -57,11 +66,10 @@ export const ProgramItemHead = ({
   const isEnterGameMode =
     signupStrategy === ProgramItemSignupStrategy.DIRECT || signupAlwaysOpen;
 
-  const isFavorite =
-    favoriteProgramItems.find(
-      (favoriteProgramItem) =>
-        favoriteProgramItem.programItemId === programItem.programItemId,
-    ) !== undefined;
+  const isFavorite = favoriteProgramItems.some(
+    (favoriteProgramItem) =>
+      favoriteProgramItem.programItemId === programItem.programItemId,
+  );
 
   const tags = [];
   if (config.client().programTypeSelectOptions.length > 1) {
@@ -73,15 +81,6 @@ export const ProgramItemHead = ({
   programItem.languages.map((language) => {
     tags.push(t(`programItemLanguage.${language}`));
   });
-
-  const updateFavoriteHandler = async (
-    updateOpts: UpdateFavoriteOpts,
-  ): Promise<void> => {
-    if (!updateOpts.programItem.programItemId) {
-      return;
-    }
-    await updateFavorite(updateOpts);
-  };
 
   return (
     <Container>
@@ -104,9 +103,9 @@ export const ProgramItemHead = ({
             programItem.minAttendance > 0 &&
             programItem.maxAttendance > 0 && (
               <span>
-                {programItem.minAttendance !== programItem.maxAttendance
-                  ? `${programItem.minAttendance}–${programItem.maxAttendance}`
-                  : `${programItem.maxAttendance}`}
+                {programItem.minAttendance === programItem.maxAttendance
+                  ? `${programItem.maxAttendance}`
+                  : `${programItem.minAttendance}–${programItem.maxAttendance}`}
                 {"\u00A0"}
                 {t(
                   `attendeeTypePartitive.${getAttendeeType(programItem.programType)}`,

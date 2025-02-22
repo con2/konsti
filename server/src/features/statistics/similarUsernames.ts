@@ -1,4 +1,4 @@
-import fs from "fs";
+import fs from "node:fs";
 import { distance, closest } from "fastest-levenshtein";
 import { sortBy } from "lodash-es";
 import { logger } from "server/utils/logger";

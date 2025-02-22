@@ -1,4 +1,4 @@
-import { Server } from "http";
+import { Server } from "node:http";
 import { expect, test, afterEach, beforeEach, describe, vi } from "vitest";
 import request, { Test } from "supertest";
 import { faker } from "@faker-js/faker";

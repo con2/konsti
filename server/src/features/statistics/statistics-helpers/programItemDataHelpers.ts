@@ -40,14 +40,14 @@ export const getNumberOfFullProgramItems = (
   const usersByProgramItems = getUsersByProgramItems(users);
 
   let counter = 0;
-  programItems.forEach((programItem) => {
+  for (const programItem of programItems) {
     if (
       programItem.maxAttendance ===
       usersByProgramItems[programItem.programItemId]
     ) {
       counter++;
     }
-  });
+  }
 
   logger.info(
     `Program items with maximum number of attendees: ${counter}/${
@@ -65,7 +65,7 @@ const getSignupsByStartTime = (
     "Warning: Inaccurate because forming groups deletes lotterySignups",
   );
 
-  users.forEach((user) => {
+  for (const user of users) {
     let groupSize = 1;
 
     if (user.groupCode !== "0" && user.groupCode === user.serial) {
@@ -86,7 +86,7 @@ const getSignupsByStartTime = (
       userSignupCountsByTime[lotterySignup] =
         userSignupCountsByTime[lotterySignup] + groupSize || groupSize;
     }
-  });
+  }
 
   // logger.info(`Total number of signups by time: \n`, userSignupCountsByTime)
   return userSignupCountsByTime;
@@ -127,39 +127,40 @@ export const getDemandByProgramItem = (
       ).length;
     }
 
-    user.lotterySignups.forEach((lotterySignup) => {
+    for (const lotterySignup of user.lotterySignups) {
       const foundProgramItem = programItems.find(
         (programItem) =>
           programItem.programItemId === lotterySignup.programItem.programItemId,
       );
 
       if (!foundProgramItem) {
-        return;
+        continue;
       }
 
       acc[foundProgramItem.title] = {
-        first: acc[foundProgramItem.title].first
-          ? acc[foundProgramItem.title].first
-          : 0,
-        second: acc[foundProgramItem.title].second
-          ? acc[foundProgramItem.title].second
-          : 0,
-        third: acc[foundProgramItem.title].third
-          ? acc[foundProgramItem.title].third
-          : 0,
+        first: acc[foundProgramItem.title].first,
+        second: acc[foundProgramItem.title].second,
+        third: acc[foundProgramItem.title].third,
       };
 
-      if (lotterySignup.priority === 1) {
-        acc[foundProgramItem.title].first =
-          acc[foundProgramItem.title].first + groupSize;
-      } else if (lotterySignup.priority === 2) {
-        acc[foundProgramItem.title].second =
-          ++acc[foundProgramItem.title].second + groupSize;
-      } else if (lotterySignup.priority === 3) {
-        acc[foundProgramItem.title].third =
-          ++acc[foundProgramItem.title].third + groupSize;
+      switch (lotterySignup.priority) {
+        case 1: {
+          acc[foundProgramItem.title].first =
+            acc[foundProgramItem.title].first + groupSize;
+          break;
+        }
+        case 2: {
+          acc[foundProgramItem.title].second =
+            ++acc[foundProgramItem.title].second + groupSize;
+          break;
+        }
+        case 3: {
+          acc[foundProgramItem.title].third =
+            ++acc[foundProgramItem.title].third + groupSize;
+          break;
+        }
       }
-    });
+    }
     return acc;
   }, {});
 

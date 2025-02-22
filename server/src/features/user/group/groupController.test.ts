@@ -1,4 +1,4 @@
-import { Server } from "http";
+import { Server } from "node:http";
 import { expect, test, afterEach, beforeEach, describe } from "vitest";
 import request from "supertest";
 import { faker } from "@faker-js/faker";
@@ -107,7 +107,7 @@ describe(`POST ${ApiEndpoint.GROUP}`, () => {
     const updatedUser = unsafelyUnwrap(await findUser(mockUser.username));
     expect(updatedUser?.groupCode).toEqual(updatedUser?.groupCreatorCode);
 
-    const groupCodeMatcher = RegExp(
+    const groupCodeMatcher = new RegExp(
       "^[a-zA-Z0-9]{3}-[a-zA-Z0-9]{3}-[a-zA-Z0-9]{3}$",
     );
     expect(groupCodeMatcher.test(updatedUser?.groupCode ?? "")).toBeTruthy();

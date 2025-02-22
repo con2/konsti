@@ -17,8 +17,7 @@ export const submitRegistration = (
     let registrationResponse;
     try {
       registrationResponse = await postRegistration(registrationFormFields);
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    } catch (error) {
+    } catch {
       // TODO
     }
 

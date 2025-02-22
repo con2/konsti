@@ -33,7 +33,7 @@ test("Add direct signup", async ({ page, request }) => {
 
   const directSignupProgramItemTitle = await firstProgramItem
     .locator("data-testid=program-item-title")
-    .innerText();
+    .textContent();
 
   await firstProgramItem.getByRole("button", { name: /sign up/i }).click();
   await firstProgramItem.getByRole("button", { name: /confirm/i }).click();
@@ -47,7 +47,7 @@ test("Add direct signup", async ({ page, request }) => {
 
   const programItemTitle = await directSignupProgramItems
     .locator("data-testid=program-item-title")
-    .innerText();
+    .textContent();
 
-  expect(programItemTitle.trim()).toEqual(directSignupProgramItemTitle);
+  expect(programItemTitle?.trim()).toEqual(directSignupProgramItemTitle);
 });

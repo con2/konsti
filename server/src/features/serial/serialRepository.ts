@@ -38,7 +38,7 @@ export const saveSerials = async (
 
     const existingSerial = unwrapResult(findSerialResult);
 
-    if (existingSerial || rawSerials.filter((s) => s === serial).length > 0) {
+    if (existingSerial || rawSerials.includes(serial)) {
       i -= 1;
       continue;
     }
