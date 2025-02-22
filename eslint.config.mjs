@@ -12,7 +12,7 @@ import eslintPluginReact from "eslint-plugin-react";
 import eslintPluginReactHooks from "eslint-plugin-react-hooks";
 import eslintPluginReactHooksAddon from "eslint-plugin-react-hooks-addons";
 import eslintPluginUnicorn from "eslint-plugin-unicorn";
-import eslintPluginVitest from "eslint-plugin-vitest";
+import eslintPluginVitest from "@vitest/eslint-plugin";
 import eslintPluginOnlyError from "eslint-plugin-only-error";
 import typescriptEslint from "typescript-eslint";
 
@@ -59,6 +59,7 @@ export default typescriptEslint.config(
   },
   {
     plugins: {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       vitest: eslintPluginVitest,
       unicorn: eslintPluginUnicorn,
       onlyError: eslintPluginOnlyError,
@@ -77,7 +78,9 @@ export default typescriptEslint.config(
       reportUnusedDisableDirectives: "error",
     },
 
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     rules: {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       ...eslintPluginVitest.configs.recommended.rules,
 
       // eslint
@@ -127,7 +130,7 @@ export default typescriptEslint.config(
       "import/no-named-as-default-member": "off", // Doesn't work with i18next.use()
       "import/default": "off", // Doesn't work with prettier default import
 
-      // eslint-plugin-vitest
+      // @vitest/eslint-plugin
       "vitest/no-disabled-tests": "error",
       "vitest/no-focused-tests": "error",
       "vitest/expect-expect": [
