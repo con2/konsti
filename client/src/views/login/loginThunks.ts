@@ -55,39 +55,37 @@ export const submitLogin = (
         case "unknown":
           return LoginErrorMessage.UNKNOWN;
         default:
-          exhaustiveSwitchGuard(loginResponse.errorId);
+          return exhaustiveSwitchGuard(loginResponse.errorId);
       }
     }
 
-    if (loginResponse.status === "success") {
-      saveSession({
-        login: { jwt: loginResponse.jwt },
-      });
+    saveSession({
+      login: { jwt: loginResponse.jwt },
+    });
 
-      dispatch(
-        submitLoginAsync({
-          loggedIn: true,
-          username: loginResponse.username,
-          jwt: loginResponse.jwt,
-          userGroup: loginResponse.userGroup,
-          serial: loginResponse.serial,
-          eventLogItems: loginResponse.eventLogItems,
-          kompassiUsernameAccepted: loginResponse.kompassiUsernameAccepted,
-          kompassiId: loginResponse.kompassiId,
-        }),
-      );
+    dispatch(
+      submitLoginAsync({
+        loggedIn: true,
+        username: loginResponse.username,
+        jwt: loginResponse.jwt,
+        userGroup: loginResponse.userGroup,
+        serial: loginResponse.serial,
+        eventLogItems: loginResponse.eventLogItems,
+        kompassiUsernameAccepted: loginResponse.kompassiUsernameAccepted,
+        kompassiId: loginResponse.kompassiId,
+      }),
+    );
 
-      dispatch(
-        submitUpdateGroupCodeAsync({
-          groupCode: loginResponse.groupCode,
-          isGroupCreator: loginResponse.groupCreatorCode !== "0",
-        }),
-      );
+    dispatch(
+      submitUpdateGroupCodeAsync({
+        groupCode: loginResponse.groupCode,
+        isGroupCreator: loginResponse.groupCreatorCode !== "0",
+      }),
+    );
 
-      // TODO: Remove these, backend response should return all required data
-      await loadUser();
-      await loadGroupMembers();
-    }
+    // TODO: Remove these, backend response should return all required data
+    await loadUser();
+    await loadGroupMembers();
   };
 };
 
@@ -116,35 +114,33 @@ export const submitSessionRecovery = (jwt: string): AppThunk => {
           // eslint-disable-next-line no-restricted-syntax -- TODO: Remove throw
           throw new Error(`error.unknown`);
         default:
-          exhaustiveSwitchGuard(loginResponse.errorId);
+          return exhaustiveSwitchGuard(loginResponse.errorId);
       }
     }
 
-    if (loginResponse.status === "success") {
-      saveSession({
-        login: { jwt: loginResponse.jwt },
-      });
+    saveSession({
+      login: { jwt: loginResponse.jwt },
+    });
 
-      dispatch(
-        submitLoginAsync({
-          loggedIn: true,
-          username: loginResponse.username,
-          jwt: loginResponse.jwt,
-          userGroup: loginResponse.userGroup,
-          serial: loginResponse.serial,
-          eventLogItems: loginResponse.eventLogItems,
-          kompassiUsernameAccepted: loginResponse.kompassiUsernameAccepted,
-          kompassiId: loginResponse.kompassiId,
-        }),
-      );
+    dispatch(
+      submitLoginAsync({
+        loggedIn: true,
+        username: loginResponse.username,
+        jwt: loginResponse.jwt,
+        userGroup: loginResponse.userGroup,
+        serial: loginResponse.serial,
+        eventLogItems: loginResponse.eventLogItems,
+        kompassiUsernameAccepted: loginResponse.kompassiUsernameAccepted,
+        kompassiId: loginResponse.kompassiId,
+      }),
+    );
 
-      dispatch(
-        submitUpdateGroupCodeAsync({
-          groupCode: loginResponse.groupCode,
-          isGroupCreator: loginResponse.groupCreatorCode !== "0",
-        }),
-      );
-    }
+    dispatch(
+      submitUpdateGroupCodeAsync({
+        groupCode: loginResponse.groupCode,
+        isGroupCreator: loginResponse.groupCreatorCode !== "0",
+      }),
+    );
   };
 };
 
@@ -190,39 +186,37 @@ export const submitKompassiLogin = (
         case "unknown":
           return LoginErrorMessage.UNKNOWN;
         default:
-          exhaustiveSwitchGuard(loginResponse.errorId);
+          return exhaustiveSwitchGuard(loginResponse.errorId);
       }
     }
 
-    if (loginResponse.status === "success") {
-      saveSession({
-        login: { jwt: loginResponse.jwt },
-      });
+    saveSession({
+      login: { jwt: loginResponse.jwt },
+    });
 
-      dispatch(
-        submitLoginAsync({
-          loggedIn: true,
-          username: loginResponse.username,
-          jwt: loginResponse.jwt,
-          userGroup: loginResponse.userGroup,
-          serial: loginResponse.serial,
-          eventLogItems: loginResponse.eventLogItems,
-          kompassiUsernameAccepted: loginResponse.kompassiUsernameAccepted,
-          kompassiId: loginResponse.kompassiId,
-        }),
-      );
+    dispatch(
+      submitLoginAsync({
+        loggedIn: true,
+        username: loginResponse.username,
+        jwt: loginResponse.jwt,
+        userGroup: loginResponse.userGroup,
+        serial: loginResponse.serial,
+        eventLogItems: loginResponse.eventLogItems,
+        kompassiUsernameAccepted: loginResponse.kompassiUsernameAccepted,
+        kompassiId: loginResponse.kompassiId,
+      }),
+    );
 
-      dispatch(
-        submitUpdateGroupCodeAsync({
-          groupCode: loginResponse.groupCode,
-          isGroupCreator: loginResponse.groupCreatorCode !== "0",
-        }),
-      );
+    dispatch(
+      submitUpdateGroupCodeAsync({
+        groupCode: loginResponse.groupCode,
+        isGroupCreator: loginResponse.groupCreatorCode !== "0",
+      }),
+    );
 
-      // TODO: Remove these, backend response should return all required data
-      await loadUser();
-      await loadGroupMembers();
-    }
+    // TODO: Remove these, backend response should return all required data
+    await loadUser();
+    await loadGroupMembers();
   };
 };
 
@@ -244,20 +238,18 @@ export const submitVerifyKompassiLogin = (
         case "unknown":
           return KompassiVerifyErrorMessage.UNKNOWN;
         default:
-          exhaustiveSwitchGuard(response.errorId);
+          return exhaustiveSwitchGuard(response.errorId);
       }
     }
 
-    if (response.status === "success") {
-      dispatch(
-        submitVerifyKompassiLoginAsync({
-          username: response.username,
-          kompassiUsernameAccepted: response.kompassiUsernameAccepted,
-          jwt: response.jwt,
-        }),
-      );
+    dispatch(
+      submitVerifyKompassiLoginAsync({
+        username: response.username,
+        kompassiUsernameAccepted: response.kompassiUsernameAccepted,
+        jwt: response.jwt,
+      }),
+    );
 
-      await dispatch(submitSessionRecovery(response.jwt));
-    }
+    await dispatch(submitSessionRecovery(response.jwt));
   };
 };

@@ -72,18 +72,15 @@ export const LotterySignupForm = ({
       return;
     }
 
-    const newProgramItem: Signup[] = [
-      {
-        programItem,
-        priority,
-        time: programItem.startTime,
-        message: "",
-      },
-    ];
-
+    const newProgramItem: Signup = {
+      programItem,
+      priority,
+      time: programItem.startTime,
+      message: "",
+    };
     const error = await dispatch(
       submitPostLotterySignups({
-        lotterySignups: [...lotterySignups, ...newProgramItem],
+        lotterySignups: [...lotterySignups, newProgramItem],
         startTime: programItem.startTime,
       }),
     );

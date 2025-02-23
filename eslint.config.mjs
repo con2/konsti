@@ -120,7 +120,7 @@ export default typescriptEslint.config(
           ],
         },
       ], // Don't want to use namespace imports
-      "import/no-unresolved": ["error", { ignore: [String.raw`\.gif$`] }],
+      "import/no-unresolved": ["error", { ignore: [String.raw`.gif$`] }],
 
       "import/namespace": "off", // Don't want to use namespace imports
       "import/no-named-as-default": "off", // Doesn't work with styled-components

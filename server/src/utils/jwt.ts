@@ -2,6 +2,7 @@ import jsonwebtoken, { SignOptions, TokenExpiredError } from "jsonwebtoken";
 import { config } from "shared/config";
 import { JWTBody, JWTBodySchema, JWTResponse } from "server/types/jwtTypes";
 import { UserGroup } from "shared/types/models/user";
+import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 
 export const getJWT = (userGroup: UserGroup, username: string): string => {
   const payload = {
@@ -69,6 +70,8 @@ const getSecret = (userGroup: UserGroup): string => {
     case UserGroup.HELP: {
       return config.server().jwtSecretKeyHelp;
     }
+    default:
+      return exhaustiveSwitchGuard(userGroup);
   }
 };
 

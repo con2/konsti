@@ -30,18 +30,16 @@ export const submitRegistration = (
         case "unknown":
           return RegistrationErrorMessage.UNKNOWN;
         default:
-          exhaustiveSwitchGuard(registrationResponse.errorId);
+          return exhaustiveSwitchGuard(registrationResponse.errorId);
       }
     }
 
-    if (registrationResponse?.status === "success") {
-      // eslint-disable-next-line @typescript-eslint/no-floating-promises
-      dispatch(
-        submitLogin({
-          username: registrationFormFields.username,
-          password: registrationFormFields.password,
-        }),
-      );
-    }
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
+    dispatch(
+      submitLogin({
+        username: registrationFormFields.username,
+        password: registrationFormFields.password,
+      }),
+    );
   };
 };
