@@ -1,4 +1,4 @@
-import fs from "fs";
+import fs from "node:fs";
 import { sortBy } from "lodash-es";
 import prettier from "prettier";
 import { getProgramFromServer } from "server/kompassi/getProgramItemsFromKompassi";

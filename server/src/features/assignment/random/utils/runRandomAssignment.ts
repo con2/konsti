@@ -25,6 +25,8 @@ import { AssignmentError } from "shared/types/api/errors";
 import { logger } from "server/utils/logger";
 import { calculateHappiness } from "server/features/assignment/padg/utils/calculateHappiness";
 
+const updateL = (input: RandomAssignUpdateLInput): ListItem[] => input.L;
+
 export const runRandomAssignment = (
   lotterySignupProgramItems: readonly ProgramItem[],
   attendeeGroups: readonly User[][],
@@ -50,7 +52,6 @@ export const runRandomAssignment = (
     return listResult;
   }
   const list = unwrapResult(listResult);
-  const updateL = (input: RandomAssignUpdateLInput): ListItem[] => input.L;
 
   const { randomAssignmentRounds } = config.server();
   const input = {

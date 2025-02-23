@@ -1,6 +1,6 @@
-import http, { Server } from "http";
-import path from "path";
-import { once } from "events";
+import http, { Server } from "node:http";
+import path from "node:path";
+import { once } from "node:events";
 import express, { Request, Response, NextFunction } from "express";
 import { setupExpressErrorHandler } from "@sentry/node";
 import helmet from "helmet";

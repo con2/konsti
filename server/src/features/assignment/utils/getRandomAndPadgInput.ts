@@ -52,7 +52,7 @@ export const getRandomAndPadgInput = (
   );
 
   // Combine group creators and group members
-  const allAttendees = groupCreators.concat(groupMembers);
+  const allAttendees = [...groupCreators, ...groupMembers];
 
   // Combine users to groups, single user is size 1 group
   const attendeeGroups = getAttendeeGroups(allAttendees);

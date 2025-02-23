@@ -1,4 +1,4 @@
-import fs from "fs";
+import fs from "node:fs";
 import { size } from "lodash-es";
 import prettier from "prettier";
 import { config } from "shared/config";

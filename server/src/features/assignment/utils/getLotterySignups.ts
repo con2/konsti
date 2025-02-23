@@ -7,18 +7,18 @@ export const getLotterySignups = (users: readonly User[]): LotterySignup[] => {
   const lotterySignups: LotterySignup[] = [];
 
   // Get lottery signups for all users
-  users.forEach((user) => {
-    if (user.lotterySignups.length !== 0) {
-      user.lotterySignups.forEach((lotterySignup) => {
+  for (const user of users) {
+    if (user.lotterySignups.length > 0) {
+      for (const lotterySignup of user.lotterySignups) {
         lotterySignups.push({
           username: user.username,
           programItemId: lotterySignup.programItem.programItemId,
           priority: lotterySignup.priority,
           startTime: lotterySignup.time,
         });
-      });
+      }
     }
-  });
+  }
 
   logger.debug(`Found ${lotterySignups.length} lottery signups`);
 

@@ -17,11 +17,11 @@ export const Expand = ({ children }: Props): ReactElement | null => {
     return null;
   }
 
-  const headerElements = ["h3"];
+  const headerElements = new Set(["h3"]);
 
   const [headers, elements] = partition(children, (child) =>
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    headerElements.includes(child.props.children.type as string),
+    headerElements.has(child.props.children.type as string),
   );
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment

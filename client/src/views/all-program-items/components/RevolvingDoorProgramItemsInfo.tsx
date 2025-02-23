@@ -21,14 +21,16 @@ export const RevolvingDoorProgramItemsInfo = (): ReactElement => {
     (state) => state.admin.activeProgramType,
   );
 
-  const hiddenProgramItemsIds = hiddenProgramItems.map((p) => p.programItemId);
+  const hiddenProgramItemsIds = new Set(
+    hiddenProgramItems.map((p) => p.programItemId),
+  );
 
   const timeNow = getTimeNow();
   const runningRevolvingDoorProgramItems = sortBy(
     activeProgramItems.filter((programItem) => {
       return (
         programItem.revolvingDoor &&
-        !hiddenProgramItemsIds.includes(programItem.programItemId) &&
+        !hiddenProgramItemsIds.has(programItem.programItemId) &&
         dayjs(programItem.startTime).isBefore(timeNow) &&
         dayjs(programItem.endTime).isAfter(timeNow)
       );

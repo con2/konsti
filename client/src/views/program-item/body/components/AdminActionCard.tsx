@@ -77,7 +77,7 @@ export const AdminActionCard = ({ programItem }: Props): ReactElement => {
     const programItemIndex = hiddenProgramItems.findIndex(
       (p) => p.programItemId === programItem.programItemId,
     );
-    const allHiddenProgramItems = hiddenProgramItems.slice();
+    const allHiddenProgramItems = [...hiddenProgramItems];
 
     if (newHidden && programItemIndex === -1) {
       allHiddenProgramItems.push(programItem);

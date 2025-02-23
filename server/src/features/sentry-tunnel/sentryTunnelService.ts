@@ -1,10 +1,10 @@
-import url from "url";
+import url from "node:url";
 import axios from "axios";
 import { logger } from "server/utils/logger";
 import { ApiError } from "shared/types/api/errors";
 
 const sentryHost = "sentry.io";
-const knownProjectIds = ["/6579203", "/6578391", "/6579491"];
+const knownProjectIds = new Set(["/6579203", "/6578391", "/6579491"]);
 
 export const resendSentryRequest = async (
   envelope: Buffer,
@@ -28,7 +28,7 @@ export const resendSentryRequest = async (
 
     const projectId = pathname.endsWith("/") ? pathname.slice(0, -1) : pathname;
 
-    if (!knownProjectIds.includes(projectId)) {
+    if (!knownProjectIds.has(projectId)) {
       logger.error("%s", new Error(`invalid project id: ${projectId}`));
       return {
         message: "Sentry tunnel: Invalid project",

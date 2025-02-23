@@ -49,9 +49,9 @@ export const getList = ({
       .map((lotterySignup) => {
         return {
           id:
-            firstMember.groupCode !== "0"
-              ? firstMember.groupCode
-              : firstMember.serial,
+            firstMember.groupCode === "0"
+              ? firstMember.serial
+              : firstMember.groupCode,
           size: attendeeGroup.length,
           event: lotterySignup.programItem.programItemId,
           gain: getGain(

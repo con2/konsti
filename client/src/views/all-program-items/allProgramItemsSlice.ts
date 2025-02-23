@@ -49,11 +49,11 @@ export const selectProgramItems = (state: RootState): readonly ProgramItem[] =>
 export const selectTags = createSelector(
   [selectProgramItems],
   (programItems) => {
-    const ignoredTags = [
+    const ignoredTags = new Set([
       Tag.GUEST_OF_HONOR,
       Tag.THEME_MONSTERS,
       Tag.INTENDED_FOR_EXPERIENCED_PARTICIPANTS,
-    ];
+    ]);
 
     const tags = uniq([
       Tag.BEGINNER_FRIENDLY,
@@ -71,14 +71,14 @@ export const selectTags = createSelector(
           programItem.tags.includes(tag),
         );
       })
-      .filter((tag) => !ignoredTags.includes(tag));
+      .filter((tag) => !ignoredTags.has(tag));
   },
 );
 
 export const selectLanguages = createSelector(
   [selectProgramItems],
   (programItems) => {
-    const ignoredLanguages = [Language.LANGUAGE_FREE];
+    const ignoredLanguages = new Set([Language.LANGUAGE_FREE]);
 
     const languages = uniq([
       Language.FINNISH,
@@ -92,6 +92,6 @@ export const selectLanguages = createSelector(
           programItem.languages.includes(language),
         );
       })
-      .filter((language) => !ignoredLanguages.includes(language));
+      .filter((language) => !ignoredLanguages.has(language));
   },
 );

@@ -6,12 +6,11 @@ export const getShortDescriptionFromDescription = (
 ): string => {
   let shortDescription = "";
 
-  const descriptionArray = description
-    .replace(matchNextSentence, "$1|")
-    .split("|");
+  const sentences = description.replaceAll(matchNextSentence, "$1|").split("|");
 
-  for (const value of descriptionArray) {
-    shortDescription = shortDescription.concat(`${value} `);
+  for (const sentence of sentences) {
+    // eslint-disable-next-line unicorn/prefer-spread -- False positive
+    shortDescription = shortDescription.concat(`${sentence} `);
     if (shortDescription.length >= SHORT_DESCRIPTION_MAX_LENGTH) {
       break;
     }

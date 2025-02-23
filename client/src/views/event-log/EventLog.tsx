@@ -11,6 +11,17 @@ import { EventLogNewAssignment } from "client/views/event-log/EventLogNewAssignm
 import { EventLogAction } from "shared/types/models/eventLog";
 import { EventLogNoAssignment } from "client/views/event-log/EventLogNoAssignment";
 
+const getTime = (createdAt: string): string => {
+  const timeNow = dayjs();
+  const relativeTimePeriod = dayjs(createdAt).add(4, "hours");
+
+  const useRelativeTime = timeNow.isBefore(relativeTimePeriod);
+  if (useRelativeTime) {
+    return dayjs().to(createdAt);
+  }
+  return getWeekdayAndTime(createdAt);
+};
+
 export const EventLog = (): ReactElement => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
@@ -42,17 +53,6 @@ export const EventLog = (): ReactElement => {
   useEffect(() => {
     setEventsSeen();
   }, [setEventsSeen]);
-
-  const getTime = (createdAt: string): string => {
-    const timeNow = dayjs();
-    const relativeTimePeriod = dayjs(createdAt).add(4, "hours");
-
-    const useRelativeTime = timeNow.isBefore(relativeTimePeriod);
-    if (useRelativeTime) {
-      return dayjs().to(createdAt);
-    }
-    return getWeekdayAndTime(createdAt);
-  };
 
   return (
     <div>

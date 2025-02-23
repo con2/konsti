@@ -19,7 +19,7 @@ test("Add favorite", async ({ page, request }) => {
 
   const favoriteProgramItemTitle = await firstProgramItem
     .locator("data-testid=program-item-title")
-    .innerText();
+    .textContent();
 
   await firstProgramItem.locator("data-testid=add-favorite-button").click();
 
@@ -32,7 +32,7 @@ test("Add favorite", async ({ page, request }) => {
 
   const programItemTitle = await favoriteProgramItems
     .locator("data-testid=program-item-title")
-    .innerText();
+    .textContent();
 
-  expect(programItemTitle.trim()).toEqual(favoriteProgramItemTitle);
+  expect(programItemTitle?.trim()).toEqual(favoriteProgramItemTitle);
 });

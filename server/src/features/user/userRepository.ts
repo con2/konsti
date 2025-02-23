@@ -161,10 +161,10 @@ export const findUserBySerial = async (
       .lean<User>()
       .populate("lotterySignups.programItem");
 
-    if (!response) {
-      logger.info(`MongoDB: User with serial ${serial} not found`);
-    } else {
+    if (response) {
       logger.debug(`MongoDB: Found user with serial ${serial}`);
+    } else {
+      logger.info(`MongoDB: User with serial ${serial} not found`);
     }
     return makeSuccessResult(response);
   } catch (error) {
@@ -187,10 +187,10 @@ export const findUserByKompassiId = async (
       .lean<User>()
       .populate("lotterySignups.programItem");
 
-    if (!response) {
-      logger.info(`MongoDB: User with Kompassi id ${kompassiId} not found`);
-    } else {
+    if (response) {
       logger.debug(`MongoDB: Found user with Kompassi id ${kompassiId}`);
+    } else {
+      logger.info(`MongoDB: User with Kompassi id ${kompassiId} not found`);
     }
     return makeSuccessResult(response);
   } catch (error) {
@@ -209,10 +209,10 @@ export const findUserSerial = async (
 
   try {
     const response = await UserModel.findOne({ serial }).lean<User>();
-    if (!response) {
-      logger.info(`MongoDB: Serial ${serial} not found`);
-    } else {
+    if (response) {
       logger.debug(`MongoDB: Found Serial ${serial}`);
+    } else {
+      logger.info(`MongoDB: Serial ${serial} not found`);
     }
     return makeSuccessResult(response);
   } catch (error) {
@@ -228,6 +228,7 @@ export const findUsers = async (
 
   const filter = usernames ? { username: { $in: usernames } } : {};
   try {
+    // eslint-disable-next-line unicorn/no-array-callback-reference -- False positive
     const users = await UserModel.find(filter)
       .lean<User[]>()
       .populate("lotterySignups.programItem");

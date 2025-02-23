@@ -37,9 +37,9 @@ export const getGroups = (
 
     return makeSuccessResult({
       id:
-        firstMember.groupCode !== "0"
-          ? firstMember.groupCode
-          : firstMember.serial,
+        firstMember.groupCode === "0"
+          ? firstMember.serial
+          : firstMember.groupCode,
       size: attendeeGroup.length,
       pref: sortedLotterySignups.map(
         (lotterySignup) => lotterySignup.programItem.programItemId,

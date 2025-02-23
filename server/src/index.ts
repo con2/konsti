@@ -1,5 +1,5 @@
 import "server/utils/instrument";
-import { Server } from "http";
+import { Server } from "node:http";
 import { startServer, closeServer } from "server/utils/server";
 import { logger } from "server/utils/logger";
 import { startCronJobs } from "server/utils/cron";
@@ -50,7 +50,7 @@ const init = (): void => {
     logger.info(`Node environment: ${process.env.NODE_ENV}`);
   } else {
     // eslint-disable-next-line no-restricted-syntax -- Server startup
-    throw new Error(`Node environment NODE_ENV missing`);
+    throw new TypeError(`Node environment NODE_ENV missing`);
   }
 
   startApp().catch((error: unknown) => {

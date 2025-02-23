@@ -11,12 +11,12 @@ export const getStartingProgramItems = (
   const selectedStartTime = dayjs(startTime);
 
   // Get program items that start at defined time
-  programItems.forEach((programItem) => {
+  for (const programItem of programItems) {
     const programItemStartTime = dayjs(programItem.startTime);
     if (programItemStartTime.isSame(selectedStartTime, "minute")) {
       startingProgramItems.push(programItem);
     }
-  });
+  }
 
   logger.debug(
     `Found ${startingProgramItems.length} program items for this start time`,

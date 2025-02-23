@@ -2,6 +2,7 @@ import jsonwebtoken, { SignOptions, TokenExpiredError } from "jsonwebtoken";
 import { config } from "shared/config";
 import { JWTBody, JWTBodySchema, JWTResponse } from "server/types/jwtTypes";
 import { UserGroup } from "shared/types/models/user";
+import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 
 export const getJWT = (userGroup: UserGroup, username: string): string => {
   const payload = {
@@ -59,15 +60,19 @@ export const decodeJWT = (jwt: string): JWTBody | null => {
 };
 
 const getSecret = (userGroup: UserGroup): string => {
-  if (userGroup === UserGroup.ADMIN) {
-    return config.server().jwtSecretKeyAdmin;
-  } else if (userGroup === UserGroup.USER) {
-    return config.server().jwtSecretKey;
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-  } else if (userGroup === UserGroup.HELP) {
-    return config.server().jwtSecretKeyHelp;
+  switch (userGroup) {
+    case UserGroup.ADMIN: {
+      return config.server().jwtSecretKeyAdmin;
+    }
+    case UserGroup.USER: {
+      return config.server().jwtSecretKey;
+    }
+    case UserGroup.HELP: {
+      return config.server().jwtSecretKeyHelp;
+    }
+    default:
+      return exhaustiveSwitchGuard(userGroup);
   }
-  return "";
 };
 
 export const getJwtResponse = (

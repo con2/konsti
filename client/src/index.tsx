@@ -1,3 +1,4 @@
+// eslint-disable-next-line unicorn/no-unnecessary-polyfills
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 import { createRoot } from "react-dom/client";
@@ -88,7 +89,7 @@ const loader = (
 );
 
 const render = (): void => {
-  const container = document.getElementById("main");
+  const container = document.querySelector("#main");
 
   if (!container) {
     // eslint-disable-next-line no-restricted-syntax -- We want to throw here
@@ -113,6 +114,6 @@ const render = (): void => {
   );
 };
 
-window.onload = () => {
+globalThis.addEventListener("load", () => {
   render();
-};
+});

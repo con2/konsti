@@ -43,21 +43,18 @@ export const AdminView = (): ReactElement => {
       return programItems;
     }
     const visibleProgramItems: ProgramItem[] = [];
-    // eslint-disable-next-line @typescript-eslint/prefer-for-of
-    for (let i = 0; i < programItems.length; i += 1) {
+
+    for (const programItem of programItems) {
       let match = false;
 
-      // eslint-disable-next-line @typescript-eslint/prefer-for-of
-      for (let j = 0; j < hiddenProgramItems.length; j += 1) {
-        if (
-          programItems[i].programItemId === hiddenProgramItems[j].programItemId
-        ) {
+      for (const hiddenProgramItem of hiddenProgramItems) {
+        if (programItem.programItemId === hiddenProgramItem.programItemId) {
           match = true;
           break;
         }
       }
       if (!match) {
-        visibleProgramItems.push(programItems[i]);
+        visibleProgramItems.push(programItem);
       }
     }
     return visibleProgramItems;
@@ -68,7 +65,7 @@ export const AdminView = (): ReactElement => {
     const startTimes = visibleProgramItems.map(
       (programItem) => programItem.startTime,
     );
-    const times = [...Array.from(new Set(startTimes))].sort();
+    const times = [...new Set(startTimes)].sort();
 
     return times.map((time) => {
       const formattedDate = capitalize(getWeekdayAndTime(time));

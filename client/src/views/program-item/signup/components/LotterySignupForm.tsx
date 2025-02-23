@@ -37,14 +37,16 @@ export const LotterySignupForm = ({
   const lotterySignups = useAppSelector(selectLotterySignups);
   const isGroupCreator = useAppSelector((state) => state.group.isGroupCreator);
 
-  const selectedPriorities = lotterySignups
-    .filter(
-      (lotterySignup) => lotterySignup.programItem.startTime === startTime,
-    )
-    .map((lotterySignup) => lotterySignup.priority);
+  const selectedPriorities = new Set(
+    lotterySignups
+      .filter(
+        (lotterySignup) => lotterySignup.programItem.startTime === startTime,
+      )
+      .map((lotterySignup) => lotterySignup.priority),
+  );
 
   const firstUnselected = OPTIONS.filter(
-    (option) => !selectedPriorities.includes(option),
+    (option) => !selectedPriorities.has(option),
   );
 
   const firstOption = firstUnselected.length > 0 ? firstUnselected[0] : 1;
@@ -56,7 +58,7 @@ export const LotterySignupForm = ({
     useState<PostLotterySignupsErrorMessage | null>(null);
 
   const onChange = (event: ChangeEvent<HTMLSelectElement>): void => {
-    setPriority(parseInt(event.target.value, 10));
+    setPriority(Number.parseInt(event.target.value, 10));
   };
 
   const handleCancel = (): void => {
@@ -70,18 +72,15 @@ export const LotterySignupForm = ({
       return;
     }
 
-    const newProgramItem: Signup[] = [
-      {
-        programItem,
-        priority,
-        time: programItem.startTime,
-        message: "",
-      },
-    ];
-
+    const newProgramItem: Signup = {
+      programItem,
+      priority,
+      time: programItem.startTime,
+      message: "",
+    };
     const error = await dispatch(
       submitPostLotterySignups({
-        lotterySignups: lotterySignups.concat(newProgramItem),
+        lotterySignups: [...lotterySignups, newProgramItem],
         startTime: programItem.startTime,
       }),
     );
@@ -99,7 +98,7 @@ export const LotterySignupForm = ({
     return {
       value: nStr,
       title: nStr,
-      disabled: selectedPriorities.includes(n),
+      disabled: selectedPriorities.has(n),
     };
   });
 

@@ -36,7 +36,7 @@ test("Add lottery signup", async ({ page, request }) => {
 
   const lotterySignupProgramItemTitle = await firstProgramItem
     .locator("data-testid=program-item-title")
-    .innerText();
+    .textContent();
 
   await firstProgramItem
     .getByRole("button", { name: /lottery sign-up/i })
@@ -52,7 +52,7 @@ test("Add lottery signup", async ({ page, request }) => {
 
   const programItemTitle = await lotterySignupProgramItems
     .locator("data-testid=program-item-title")
-    .innerText();
+    .textContent();
 
-  expect(programItemTitle.trim()).toContain(lotterySignupProgramItemTitle);
+  expect(programItemTitle?.trim()).toContain(lotterySignupProgramItemTitle);
 });

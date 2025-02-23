@@ -53,7 +53,7 @@ axiosInstance.interceptors.response.use(
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       const redirectUrl = error.response.data.location;
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-      window.location.href = redirectUrl;
+      globalThis.location.href = redirectUrl;
       return;
     }
 

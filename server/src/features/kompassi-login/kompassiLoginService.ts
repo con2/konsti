@@ -40,7 +40,7 @@ export const getBaseUrl = (): string => {
 
 export const clientId = process.env.KOMPASSI_CLIENT_ID ?? "";
 const clientSecret = process.env.KOMPASSI_CLIENT_SECRET ?? "";
-const accessGroups = ["users"];
+const accessGroups = new Set(["users"]);
 
 const getKompassiTokens = async (
   code: string,
@@ -137,7 +137,7 @@ export const doKompassiLogin = async (
   const profile = unwrapResult(profileResult);
 
   const groupNames = profile.groups.filter((groupName) =>
-    accessGroups.includes(groupName),
+    accessGroups.has(groupName),
   );
 
   if (groupNames.length === 0) {

@@ -1,4 +1,4 @@
-module.exports = (api) => {
+const babelConfig = (api) => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
   api.cache.using(() => process.env.NODE_ENV);
 
@@ -45,3 +45,5 @@ module.exports = (api) => {
     plugins,
   };
 };
+
+module.exports = babelConfig;

@@ -65,20 +65,20 @@ export const ProgramItemSignup = ({
 
       {isNormalSignup &&
         !isDirectSignupOver &&
-        (!isDirectSignupMode ? (
-          <LotterySignupProgramItem
-            programItem={programItem}
-            startTime={startTime}
-            lotterySignups={lotterySignups}
-            directSignups={directSignups}
-          />
-        ) : (
+        (isDirectSignupMode ? (
           <DirectSignupProgramItem
             programItem={programItem}
             programItemIsFull={attendees >= programItem.maxAttendance}
             startTime={startTime}
             loading={loading}
             setLoading={setLoading}
+          />
+        ) : (
+          <LotterySignupProgramItem
+            programItem={programItem}
+            startTime={startTime}
+            lotterySignups={lotterySignups}
+            directSignups={directSignups}
           />
         ))}
 

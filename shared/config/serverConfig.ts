@@ -48,7 +48,7 @@ const commonConfig = {
   // Server settings
   port:
     typeof process.env.PORT === "string"
-      ? parseInt(process.env.PORT, 10)
+      ? Number.parseInt(process.env.PORT, 10)
       : 5000,
   onlyCronjobs: process.env.ONLY_CRONJOBS === "true" ? true : false,
 

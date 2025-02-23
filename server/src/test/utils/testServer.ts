@@ -1,4 +1,4 @@
-import { Server } from "http";
+import { Server } from "node:http";
 import { faker } from "@faker-js/faker";
 import mongoose from "mongoose";
 interface StartTestServerReturn {
@@ -21,8 +21,8 @@ export const startTestServer = async (
 export const stopTestServer = async (server: Server): Promise<void> => {
   const module = await import("server/utils/server");
   // Delete mongoose models because vi.resetModules() doesn't handle it correctly
-  Object.keys(mongoose.models).forEach((k) => {
-    mongoose.deleteModel(k);
-  });
+  for (const model of Object.keys(mongoose.models)) {
+    mongoose.deleteModel(model);
+  }
   await module.closeServer(server);
 };

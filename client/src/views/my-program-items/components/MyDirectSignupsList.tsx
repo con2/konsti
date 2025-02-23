@@ -30,11 +30,10 @@ export const MyDirectSignupsList = ({
   }, [lotterySignups, directSignups]);
 
   useEffect(() => {
-    setStartTimes(
-      directSignups
-        .map((directSignup) => directSignup.programItem.startTime)
-        .concat(missedSignups),
+    const directSignupStartTimes = directSignups.map(
+      (directSignup) => directSignup.programItem.startTime,
     );
+    setStartTimes([...directSignupStartTimes, ...missedSignups]);
   }, [missedSignups, directSignups]);
 
   return (
@@ -44,7 +43,7 @@ export const MyDirectSignupsList = ({
         <MyProgramSecondaryText>{t("noDirectSignups")}</MyProgramSecondaryText>
       )}
 
-      {config.event().resultsVisible && startTimes.length !== 0 && (
+      {config.event().resultsVisible && startTimes.length > 0 && (
         <DirectSignupsByStartTimes
           directSignups={sortBy(directSignups, [
             (directSignup) => directSignup.time,

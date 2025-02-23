@@ -40,20 +40,18 @@ export const submitCreateGroup = (): AppThunk<
         case "unknown":
           return PostCreateGroupErrorMessage.UNKNOWN;
         default:
-          exhaustiveSwitchGuard(createGroupResponse.errorId);
+          return exhaustiveSwitchGuard(createGroupResponse.errorId);
       }
     }
 
-    if (createGroupResponse.status === "success") {
-      // eslint-disable-next-line @typescript-eslint/no-floating-promises
-      dispatch(submitGetGroup(createGroupResponse.groupCode));
-      dispatch(
-        submitUpdateGroupCodeAsync({
-          groupCode: createGroupResponse.groupCode,
-          isGroupCreator: true,
-        }),
-      );
-    }
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
+    dispatch(submitGetGroup(createGroupResponse.groupCode));
+    dispatch(
+      submitUpdateGroupCodeAsync({
+        groupCode: createGroupResponse.groupCode,
+        isGroupCreator: true,
+      }),
+    );
   };
 };
 
@@ -90,20 +88,18 @@ export const submitJoinGroup = (
         case "unknown":
           return PostJoinGroupErrorMessage.UNKNOWN;
         default:
-          exhaustiveSwitchGuard(joinGroupResponse.errorId);
+          return exhaustiveSwitchGuard(joinGroupResponse.errorId);
       }
     }
 
-    if (joinGroupResponse.status === "success") {
-      // eslint-disable-next-line @typescript-eslint/no-floating-promises
-      dispatch(submitGetGroup(joinGroupResponse.groupCode));
-      dispatch(
-        submitUpdateGroupCodeAsync({
-          groupCode: joinGroupResponse.groupCode,
-          isGroupCreator: false,
-        }),
-      );
-    }
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
+    dispatch(submitGetGroup(joinGroupResponse.groupCode));
+    dispatch(
+      submitUpdateGroupCodeAsync({
+        groupCode: joinGroupResponse.groupCode,
+        isGroupCreator: false,
+      }),
+    );
   };
 };
 
@@ -125,13 +121,11 @@ export const submitLeaveGroup = (): AppThunk<
         case "unknown":
           return PostLeaveGroupErrorMessage.UNKNOWN;
         default:
-          exhaustiveSwitchGuard(leaveGroupResponse.errorId);
+          return exhaustiveSwitchGuard(leaveGroupResponse.errorId);
       }
     }
 
-    if (leaveGroupResponse.status === "success") {
-      dispatch(submitLeaveGroupAsync(leaveGroupResponse.groupCode));
-    }
+    dispatch(submitLeaveGroupAsync(leaveGroupResponse.groupCode));
   };
 };
 
@@ -153,13 +147,11 @@ export const submitCloseGroup = (
         case "unknown":
           return PostCloseGroupErrorMessage.UNKNOWN;
         default:
-          exhaustiveSwitchGuard(leaveGroupResponse.errorId);
+          return exhaustiveSwitchGuard(leaveGroupResponse.errorId);
       }
     }
 
-    if (leaveGroupResponse.status === "success") {
-      dispatch(submitLeaveGroupAsync(leaveGroupResponse.groupCode));
-    }
+    dispatch(submitLeaveGroupAsync(leaveGroupResponse.groupCode));
   };
 };
 
@@ -179,12 +171,10 @@ export const submitGetGroup = (
         case "unknown":
           return GetGroupErrorMessage.UNKNOWN;
         default:
-          exhaustiveSwitchGuard(getGroupResponse.errorId);
+          return exhaustiveSwitchGuard(getGroupResponse.errorId);
       }
     }
 
-    if (getGroupResponse.status === "success") {
-      dispatch(submitUpdateGroupAsync(getGroupResponse.results));
-    }
+    dispatch(submitUpdateGroupAsync(getGroupResponse.results));
   };
 };

@@ -1,4 +1,4 @@
-import fs from "fs";
+import fs from "node:fs";
 import { faker } from "@faker-js/faker";
 import { logger } from "server/utils/logger";
 import { User } from "shared/types/models/user";
@@ -35,44 +35,44 @@ export const anonymizeData = async (
     ),
   );
 
-  users.forEach((user) => {
+  for (const user of users) {
     const randomUsername = faker.number.int(1000000).toString();
 
-    results.forEach((result) => {
-      result.results.forEach((userResult) => {
+    for (const result of results) {
+      for (const userResult of result.results) {
         if (user.username === userResult.username) {
           logger.info(`results.json: ${user.username} -> ${randomUsername}`);
           userResult.username = randomUsername;
         }
-      });
-    });
+      }
+    }
 
-    directSignups.forEach((signup) => {
-      signup.userSignups.forEach((userSignup) => {
+    for (const signup of directSignups) {
+      for (const userSignup of signup.userSignups) {
         if (user.username === userSignup.username) {
           logger.info(
             `direct-signups.json: ${user.username} -> ${randomUsername}`,
           );
           userSignup.username = randomUsername;
         }
-      });
-    });
+      }
+    }
 
     logger.info(`users.json: ${user.username} -> ${randomUsername}`);
     user.username = randomUsername;
     user.password = "<redacted>";
     // @ts-expect-error -- Use invalid type for clarity
     user.kompassiId = "<redacted>";
-  });
+  }
 
   // Remove signup message answers
-  directSignups.forEach((signup) => {
-    signup.userSignups.forEach((userSignup) => {
+  for (const signup of directSignups) {
+    for (const userSignup of signup.userSignups) {
       if (userSignup.message !== "") {
         userSignup.message = "<redacted>";
       }
-    });
-  });
+    }
+  }
 
   await writeJson(year, event, "users", users);
   await writeJson(year, event, "results", results);

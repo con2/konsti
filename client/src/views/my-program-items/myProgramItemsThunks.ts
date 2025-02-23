@@ -105,13 +105,11 @@ export const submitPostDirectSignup = (
         case "unknown":
           return PostDirectSignupErrorMessage.UNKNOWN;
         default:
-          exhaustiveSwitchGuard(signupResponse.errorId);
+          return exhaustiveSwitchGuard(signupResponse.errorId);
       }
     }
 
-    if (signupResponse.status === "success") {
-      dispatch(submitPostDirectSignupAsync(signupResponse.directSignup));
-    }
+    dispatch(submitPostDirectSignupAsync(signupResponse.directSignup));
   };
 };
 
@@ -135,12 +133,11 @@ export const submitDeleteDirectSignup = (
         case "unknown":
           return DeleteDirectSignupErrorMessage.UNKNOWN;
         default:
-          exhaustiveSwitchGuard(signupResponse.errorId);
+          return exhaustiveSwitchGuard(signupResponse.errorId);
       }
     }
-    if (signupResponse.status === "success") {
-      dispatch(submitDeleteDirectSignupAsync(data.directSignupProgramItemId));
-    }
+
+    dispatch(submitDeleteDirectSignupAsync(data.directSignupProgramItemId));
   };
 };
 
@@ -167,12 +164,10 @@ export const submitPostLotterySignups = (
         case "unknown":
           return PostLotterySignupsErrorMessage.UNKNOWN;
         default:
-          exhaustiveSwitchGuard(signupResponse.errorId);
+          return exhaustiveSwitchGuard(signupResponse.errorId);
       }
     }
 
-    if (signupResponse.status === "success") {
-      dispatch(submitPostLotterySignupsAsync(signupResponse.lotterySignups));
-    }
+    dispatch(submitPostLotterySignupsAsync(signupResponse.lotterySignups));
   };
 };
