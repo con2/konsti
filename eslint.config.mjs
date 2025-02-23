@@ -108,7 +108,6 @@ export default typescriptEslint.config(
       curly: "error",
 
       // eslint-plugin-import
-      // TODO: Enable, doesn't work with flat config yet https://github.com/import-js/eslint-plugin-import/issues/2964
       "import/no-unused-modules": ["error", { unusedExports: true }],
       "import/order": ["error", { groups: ["builtin", "external"] }],
       "import/no-namespace": [
