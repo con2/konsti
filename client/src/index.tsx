@@ -89,7 +89,7 @@ const loader = (
 );
 
 const render = (): void => {
-  const container = document.querySelector("main");
+  const container = document.querySelector("#main");
 
   if (!container) {
     // eslint-disable-next-line no-restricted-syntax -- We want to throw here
@@ -114,6 +114,6 @@ const render = (): void => {
   );
 };
 
-globalThis.addEventListener("onload", () => {
+globalThis.addEventListener("load", () => {
   render();
 });
