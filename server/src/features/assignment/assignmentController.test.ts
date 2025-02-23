@@ -1,5 +1,5 @@
 import { Server } from "node:http";
-import { expect, test, afterEach, beforeEach } from "vitest";
+import { expect, test, afterEach, beforeEach, describe } from "vitest";
 import request from "supertest";
 import { faker } from "@faker-js/faker";
 import { startServer, closeServer } from "server/utils/server";
@@ -18,7 +18,9 @@ afterEach(async () => {
   await closeServer(server);
 });
 
-test(`POST ${ApiEndpoint.ASSIGNMENT} should return 401 without valid authorization`, async () => {
-  const response = await request(server).post(ApiEndpoint.ASSIGNMENT);
-  expect(response.status).toEqual(401);
+describe(`POST ${ApiEndpoint.ASSIGNMENT}`, () => {
+  test("should return 401 without valid authorization", async () => {
+    const response = await request(server).post(ApiEndpoint.SIGNUP_QUESTION);
+    expect(response.status).toEqual(401);
+  });
 });

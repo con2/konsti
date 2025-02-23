@@ -1,24 +1,34 @@
-import { expect, test, afterEach, beforeEach, vi } from "vitest";
+import { expect, test, afterEach, beforeEach } from "vitest";
 import mongoose from "mongoose";
 import dayjs from "dayjs";
 import { faker } from "@faker-js/faker";
-import { assertUserUpdatedCorrectly } from "server/features/assignment/runAssignmentTestUtils";
-import { runAssignment } from "server/features/assignment/runAssignment";
+import { assertUserUpdatedCorrectly } from "server/features/assignment/run-assignment/runAssignmentTestUtils";
+import { runAssignment } from "server/features/assignment/run-assignment/runAssignment";
 import { generateTestData } from "server/test/test-data-generation/generators/generateTestData";
 import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
 import { config } from "shared/config";
 import { AssignmentResultStatus } from "server/types/resultTypes";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
-import * as randomAssign from "server/features/assignment/random/randomAssignment";
-import * as padgAssign from "server/features/assignment/padg/padgAssignment";
-import { AssignmentError } from "shared/types/api/errors";
-import { makeErrorResult } from "shared/utils/result";
+import { saveProgramItems } from "server/features/program-item/programItemRepository";
+import { testProgramItem } from "shared/tests/testProgramItem";
+import { saveUser } from "server/features/user/userRepository";
+import {
+  mockPostDirectSignupRequest,
+  mockLotterySignups,
+  mockUser,
+  mockUser2,
+  mockUser3,
+  mockUser4,
+} from "server/test/mock-data/mockUser";
+import {
+  findDirectSignups,
+  saveDirectSignup,
+} from "server/features/direct-signup/directSignupRepository";
+import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 
 // This needs to be adjusted if test data is changed
 const expectedResultsCount = 20;
 const groupTestUsers = ["group1", "group2", "group3"];
-
-const { eventStartTime } = config.event();
 
 beforeEach(async () => {
   await mongoose.connect(globalThis.__MONGO_URI__, {
@@ -30,7 +40,7 @@ afterEach(async () => {
   await mongoose.disconnect();
 });
 
-test("Assignment with valid data should return success with random+padg algorithm", async () => {
+test("Assignment with valid data should return success with random algorithm", async () => {
   const newUsersCount = 20;
   const groupSize = 3;
   const numberOfGroups = 5;
@@ -45,7 +55,8 @@ test("Assignment with valid data should return success with random+padg algorith
     testUsersCount,
   );
 
-  const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
+  const { eventStartTime } = config.event();
+  const assignmentAlgorithm = AssignmentAlgorithm.RANDOM;
   const startTime = dayjs(eventStartTime).add(2, "hours").toISOString();
 
   // FIRST RUN
@@ -103,7 +114,80 @@ test("Assignment with valid data should return success with random+padg algorith
   await assertUserUpdatedCorrectly(updatedUsers2);
 });
 
-test("Assignment with no program items should return error with random+padg algorithm", async () => {
+test("Should adjust attendee limits if there are previous signups from moved program items", async () => {
+  const assignmentAlgorithm = AssignmentAlgorithm.RANDOM;
+
+  await saveProgramItems([
+    { ...testProgramItem, minAttendance: 2, maxAttendance: 2 },
+  ]);
+  await saveUser(mockUser);
+  await saveUser(mockUser2);
+  await saveUser(mockUser3);
+  await saveUser(mockUser4);
+
+  // ** Save previous signups
+
+  // This should remain because of different startTime
+  await saveDirectSignup({
+    ...mockPostDirectSignupRequest,
+    startTime: dayjs(testProgramItem.startTime)
+      .subtract(1, "hours")
+      .toISOString(),
+  });
+
+  // This should be removed becase of same startTime
+  await saveDirectSignup({
+    ...mockPostDirectSignupRequest,
+    username: mockUser2.username,
+  });
+
+  // ** Save selected program items
+
+  // This will get assigned
+  await saveLotterySignups({
+    username: mockUser3.username,
+    lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
+  });
+
+  // This will not get assigned because program item full
+  await saveLotterySignups({
+    username: mockUser4.username,
+    lotterySignups: [{ ...mockLotterySignups[0], priority: 3 }],
+  });
+
+  const assignResults = unsafelyUnwrap(
+    await runAssignment({
+      assignmentAlgorithm,
+      startTime: testProgramItem.startTime,
+    }),
+  );
+  expect(assignResults.status).toEqual("success");
+  expect(assignResults.results.length).toEqual(1);
+
+  const signupsAfterUpdate = unsafelyUnwrap(await findDirectSignups());
+
+  const assignmentSignup = signupsAfterUpdate.find(
+    (signup) =>
+      signup.programItem.programItemId === testProgramItem.programItemId,
+  );
+
+  expect(assignmentSignup?.userSignups).toMatchObject([
+    {
+      username: mockUser.username,
+      time: dayjs(testProgramItem.startTime).subtract(1, "hours").toISOString(),
+      message: "",
+      priority: 0,
+    },
+    {
+      username: mockUser3.username,
+      time: mockLotterySignups[0].programItem.startTime,
+      message: "",
+      priority: 1,
+    },
+  ]);
+});
+
+test("Assignment with no program items should return error with random algorithm", async () => {
   const newUsersCount = 1;
   const groupSize = 0;
   const numberOfGroups = 0;
@@ -118,7 +202,8 @@ test("Assignment with no program items should return error with random+padg algo
     testUsersCount,
   );
 
-  const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
+  const { eventStartTime } = config.event();
+  const assignmentAlgorithm = AssignmentAlgorithm.RANDOM;
   const startTime = dayjs(eventStartTime).add(2, "hours").toISOString();
 
   const assignResults = unsafelyUnwrap(
@@ -133,7 +218,7 @@ test("Assignment with no program items should return error with random+padg algo
   );
 });
 
-test("Assignment with no attendees should return error with random+padg algorithm", async () => {
+test("Assignment with no attendees should return error with random algorithm", async () => {
   const newUsersCount = 0;
   const groupSize = 0;
   const numberOfGroups = 0;
@@ -148,7 +233,8 @@ test("Assignment with no attendees should return error with random+padg algorith
     testUsersCount,
   );
 
-  const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
+  const { eventStartTime } = config.event();
+  const assignmentAlgorithm = AssignmentAlgorithm.RANDOM;
   const startTime = dayjs(eventStartTime).add(2, "hours").toISOString();
 
   const assignResults = unsafelyUnwrap(
@@ -161,65 +247,4 @@ test("Assignment with no attendees should return error with random+padg algorith
   expect(assignResults.status).toEqual(
     AssignmentResultStatus.NO_LOTTERY_SIGNUPS,
   );
-});
-
-test("If random assignment fails, should return PADG result", async () => {
-  vi.spyOn(randomAssign, "randomAssignment").mockReturnValueOnce(
-    makeErrorResult(AssignmentError.UNKNOWN_ERROR),
-  );
-
-  const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
-  const startTime = dayjs(eventStartTime).toISOString();
-
-  const assignResults = unsafelyUnwrap(
-    await runAssignment({
-      assignmentAlgorithm,
-      startTime,
-    }),
-  );
-
-  expect(assignResults.algorithm).toEqual(AssignmentAlgorithm.PADG);
-  expect(assignResults.status).toEqual(
-    AssignmentResultStatus.NO_STARTING_PROGRAM_ITEMS,
-  );
-});
-
-test("If PADG assignment fails, should return random result", async () => {
-  vi.spyOn(padgAssign, "padgAssignment").mockReturnValueOnce(
-    makeErrorResult(AssignmentError.UNKNOWN_ERROR),
-  );
-
-  const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
-  const startTime = dayjs(eventStartTime).toISOString();
-
-  const assignResults = unsafelyUnwrap(
-    await runAssignment({
-      assignmentAlgorithm,
-      startTime,
-    }),
-  );
-
-  expect(assignResults.algorithm).toEqual(AssignmentAlgorithm.RANDOM);
-  expect(assignResults.status).toEqual(
-    AssignmentResultStatus.NO_STARTING_PROGRAM_ITEMS,
-  );
-});
-
-test("If both assignments fail, should return error result", async () => {
-  vi.spyOn(randomAssign, "randomAssignment").mockReturnValueOnce(
-    makeErrorResult(AssignmentError.UNKNOWN_ERROR),
-  );
-  vi.spyOn(padgAssign, "padgAssignment").mockReturnValueOnce(
-    makeErrorResult(AssignmentError.UNKNOWN_ERROR),
-  );
-
-  const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
-  const startTime = dayjs(eventStartTime).toISOString();
-
-  const assignResultsResult = await runAssignment({
-    assignmentAlgorithm,
-    startTime,
-  });
-
-  expect(assignResultsResult.error).toEqual(AssignmentError.UNKNOWN_ERROR);
 });

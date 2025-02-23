@@ -5,6 +5,7 @@ interface Props {
   children: ReactNode;
 }
 
+// eslint-disable-next-line import/no-unused-modules
 export const En = ({ children }: Props): ReactNode => {
   const { i18n } = useTranslation();
 

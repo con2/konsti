@@ -1,6 +1,6 @@
 import { logger } from "server/utils/logger";
 import { ResultsModel } from "server/features/results/resultsSchema";
-import { NewSignup, ResultsCollectionEntry } from "server/types/resultTypes";
+import { NewSignup } from "server/types/resultTypes";
 import { findProgramItems } from "server/features/program-item/programItemRepository";
 import { UserAssignmentResult } from "shared/types/models/result";
 import {
@@ -20,28 +20,6 @@ export const removeResults = async (): Promise<Result<void, MongoDbError>> => {
     return makeSuccessResult(undefined);
   } catch (error) {
     logger.error("MongoDB: Error removing ALL results: %s", error);
-    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
-  }
-};
-
-export const findResult = async (
-  startTime: string,
-): Promise<Result<ResultsCollectionEntry | null, MongoDbError>> => {
-  try {
-    const response = await ResultsModel.findOne(
-      { startTime },
-      "-_id -__v -createdAt -updatedAt -result._id",
-    )
-      .lean<ResultsCollectionEntry>()
-      .sort({ createdAt: -1 })
-      .populate("results.directSignup.programItem");
-    logger.debug(`MongoDB: Results data found for time ${startTime}`);
-    return makeSuccessResult(response);
-  } catch (error) {
-    logger.error(
-      `MongoDB: Error finding results data for time ${startTime}: %s`,
-      error,
-    );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };

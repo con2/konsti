@@ -6,6 +6,7 @@ interface Props {
   children: ReactNode;
 }
 
+// eslint-disable-next-line import/no-unused-modules
 export const LoginKompassi = ({ children }: Props): ReactNode => {
   const loginProvider = useAppSelector((state) => state.admin.loginProvider);
 

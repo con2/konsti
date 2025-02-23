@@ -1,0 +1,2 @@
+// This file is required for the ESLint rule import/no-unused-modules to work
+// https://github.com/import-js/eslint-plugin-import/issues/3079

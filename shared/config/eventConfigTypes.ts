@@ -26,9 +26,9 @@ export enum EventName {
   TRACON = "Tracon",
 }
 
-export type ArrMin1<T> = [T, ...T[]];
+type ArrMin1<T> = [T, ...T[]];
 
-export interface SignupWindow {
+interface SignupWindow {
   signupWindowStart: Dayjs;
   signupWindowClose: Dayjs;
 }

@@ -6,6 +6,7 @@ interface Props {
   children: ReactNode;
 }
 
+// eslint-disable-next-line import/no-unused-modules
 export const Hitpoint = ({ children }: Props): ReactNode => {
   return config.event().eventName === EventName.HITPOINT ? children : null;
 };

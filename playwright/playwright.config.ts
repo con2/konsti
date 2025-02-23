@@ -66,4 +66,5 @@ const config: PlaywrightTestConfig = {
   },
 };
 
+// eslint-disable-next-line import/no-unused-modules
 export default config;

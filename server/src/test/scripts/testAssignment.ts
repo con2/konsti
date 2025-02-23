@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import { logger } from "server/utils/logger";
-import { runAssignment } from "server/features/assignment/runAssignment";
+import { runAssignment } from "server/features/assignment/run-assignment/runAssignment";
 import { db } from "server/db/mongodb";
 import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
 import { config } from "shared/config";
