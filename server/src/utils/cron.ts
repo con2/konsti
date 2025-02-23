@@ -2,7 +2,7 @@ import { Cron } from "croner";
 import dayjs from "dayjs";
 import { logger } from "server/utils/logger";
 import { config } from "shared/config";
-import { runAssignment } from "server/features/assignment/runAssignment";
+import { runAssignment } from "server/features/assignment/run-assignment/runAssignment";
 import { Result, isErrorResult, makeSuccessResult } from "shared/utils/result";
 import { updateProgramItems } from "server/features/program-item/programItemService";
 import {

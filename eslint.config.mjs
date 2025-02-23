@@ -16,6 +16,7 @@ import eslintPluginVitest from "@vitest/eslint-plugin";
 import eslintPluginOnlyError from "eslint-plugin-only-error";
 import typescriptEslint from "typescript-eslint";
 
+// eslint-disable-next-line import/no-unused-modules
 export default typescriptEslint.config(
   eslint.configs.recommended,
   ...typescriptEslint.configs.strictTypeChecked,
@@ -107,8 +108,7 @@ export default typescriptEslint.config(
       curly: "error",
 
       // eslint-plugin-import
-      // TODO: Enable, doesn't work with flat config yet https://github.com/import-js/eslint-plugin-import/issues/2964
-      // "import/no-unused-modules": ["error", { unusedExports: true }],
+      "import/no-unused-modules": ["error", { unusedExports: true }],
       "import/order": ["error", { groups: ["builtin", "external"] }],
       "import/no-namespace": [
         "error",

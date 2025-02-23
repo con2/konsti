@@ -1,32 +1,34 @@
-import { runAssignment } from "server/features/assignment/runAssignment";
-import { PostAssignmentResponse } from "shared/types/api/assignment";
-import { ApiError } from "shared/types/api/errors";
-import { config } from "shared/config";
-import { isSuccessResult, unwrapResult } from "shared/utils/result";
+import { Request, Response } from "express";
+import { PostAssignmentRequestSchema } from "shared/types/api/assignment";
+import { UserGroup } from "shared/types/models/user";
+import { getAuthorizedUsername } from "server/utils/authHeader";
+import { logger } from "server/utils/logger";
+import { ApiEndpoint } from "shared/constants/apiEndpoints";
+import { storeAssignment } from "server/features/assignment/assignmentService";
 
-export const storeAssignment = async (
-  startTime: string,
-): Promise<PostAssignmentResponse | ApiError> => {
-  const assignResultsResult = await runAssignment({
-    assignmentAlgorithm: config.event().assignmentAlgorithm,
-    startTime,
-  });
+export const postAssignment = async (
+  req: Request,
+  res: Response,
+): Promise<Response> => {
+  logger.info(`API call: POST ${ApiEndpoint.ASSIGNMENT}`);
 
-  if (isSuccessResult(assignResultsResult)) {
-    const assignResults = unwrapResult(assignResultsResult);
-
-    return {
-      message: "Assignment success",
-      status: "success",
-      results: assignResults.results,
-      resultMessage: assignResults.message,
-      startTime,
-    };
+  const username = getAuthorizedUsername(
+    req.headers.authorization,
+    UserGroup.ADMIN,
+  );
+  if (!username) {
+    return res.sendStatus(401);
   }
 
-  return {
-    message: `Assignment failed`,
-    status: "error",
-    errorId: "unknown",
-  };
+  const result = PostAssignmentRequestSchema.safeParse(req.body);
+  if (!result.success) {
+    logger.error(
+      "Parsing postAssignment() request body failed: %s",
+      result.error,
+    );
+    return res.sendStatus(422);
+  }
+
+  const response = await storeAssignment(result.data.startTime);
+  return res.json(response);
 };

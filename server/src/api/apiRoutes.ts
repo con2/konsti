@@ -8,15 +8,9 @@ import {
 import { postFeedback } from "server/features/feedback/feedbackController";
 import {
   getProgramItems,
-  postAutoUpdateProgramItems,
   postUpdateProgramItems,
 } from "server/features/program-item/programItemController";
 import { getHealthStatus } from "server/features/health/healthController";
-import {
-  getResults,
-  postAssignment,
-  postAutoAssignment,
-} from "server/features/results/resultsController";
 import { getSentryTest } from "server/features/sentry-tunnel/sentryTunnelController";
 import {
   deleteSignupQuestion,
@@ -60,6 +54,7 @@ import {
   getKompassiLoginMockRedirect,
   getKompassiLoginMockToken,
 } from "server/test/kompassi-mock-service/kompassiMockService";
+import { postAssignment } from "server/features/assignment/assignmentController";
 
 export const apiRoutes = express.Router();
 
@@ -85,8 +80,6 @@ apiRoutes.post(ApiEndpoint.USERS_PASSWORD, postUserPassword);
 apiRoutes.post(ApiEndpoint.SETTINGS, postSettings);
 apiRoutes.post(ApiEndpoint.DIRECT_SIGNUP, postDirectSignup);
 apiRoutes.post(ApiEndpoint.EVENT_LOG_IS_SEEN, postEventLogItemIsSeen);
-apiRoutes.post(ApiEndpoint.PROGRAM_UPDATE_CRON, postAutoUpdateProgramItems);
-apiRoutes.post(ApiEndpoint.ASSIGNMENT_CRON, postAutoAssignment);
 apiRoutes.post(ApiEndpoint.VERIFY_KOMPASSI_LOGIN, postVerifyKompassiLogin);
 
 /* GET routes */
@@ -98,7 +91,6 @@ apiRoutes.get(
   getUserBySerialOrUsername,
 );
 apiRoutes.get(ApiEndpoint.SETTINGS, getSettings);
-apiRoutes.get(ApiEndpoint.RESULTS, getResults);
 apiRoutes.get(ApiEndpoint.GROUP, getGroup);
 apiRoutes.get(ApiEndpoint.SIGNUP_MESSAGE, getSignupMessages);
 apiRoutes.get(ApiEndpoint.SENTRY_TEST, getSentryTest);

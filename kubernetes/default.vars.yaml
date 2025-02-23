@@ -3,7 +3,6 @@ konsti_image: konsti
 
 # Set to false to manage a secret called "konsti" yourself
 konsti_secret_managed: true
-konsti_api_key: not so secret key
 konsti_jwt_secret_key: also not very secret
 konsti_jwt_secret_key_admin: please change me
 konsti_jwt_secret_key_help: also this should be changed
@@ -71,11 +70,6 @@ konsti_environment:
     value: !Format "{smtp_port}"
   - name: SMTP_FROM_EMAIL
     value: !Var smtp_from_email
-  - name: API_KEY
-    valueFrom:
-      secretKeyRef:
-        name: konsti
-        key: apiKey
   - name: CONN_STRING
     valueFrom:
       secretKeyRef:
