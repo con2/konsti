@@ -55,7 +55,8 @@ enum AboutTab {
   ABOUT = "/about/about",
 }
 
-enum ProfileTab {
+// eslint-disable-next-line import/no-unused-modules
+export enum ProfileTab {
   PROFILE = "/profile/profile",
   GROUP = "/profile/group",
 }
