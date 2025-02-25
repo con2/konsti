@@ -14,7 +14,10 @@ import eslintPluginReactHooksAddon from "eslint-plugin-react-hooks-addons";
 import eslintPluginUnicorn from "eslint-plugin-unicorn";
 import eslintPluginVitest from "@vitest/eslint-plugin";
 import eslintPluginOnlyError from "eslint-plugin-only-error";
+import eslintPluginMdx from "eslint-plugin-mdx";
 import typescriptEslint from "typescript-eslint";
+
+const filetypesGlob = "**/*.{ts,tsx,mts,cjs,mjs}";
 
 // eslint-disable-next-line import/no-unused-modules
 export default typescriptEslint.config(
@@ -28,11 +31,12 @@ export default typescriptEslint.config(
   eslintPluginImport.flatConfigs.recommended,
   // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
   eslintPluginImport.flatConfigs.typescript,
-  eslintPluginReactHooksAddon.configs.recommended,
   eslintPluginUnicorn.configs.recommended,
 
   // ** Default **
   {
+    files: [filetypesGlob],
+
     languageOptions: {
       parserOptions: {
         projectService: {
@@ -69,6 +73,9 @@ export default typescriptEslint.config(
       },
       // Regex for packages that should be treated as internal
       "import/internal-regex": "shared",
+      "import/parsers": {
+        "eslint-mdx": [".mdx"],
+      },
     },
 
     linterOptions: {
@@ -197,13 +204,14 @@ export default typescriptEslint.config(
 
   // ** Client **
   {
-    files: ["client/**"],
+    files: [`client/${filetypesGlob}`],
 
     extends: [
       // 'recommended' configuration is not recommended anymore, use 'all' and disable some rules
       eslintPluginReact.configs.flat.all,
       // Disable some rules conflicting with new JSX transform from React 17
       eslintPluginReact.configs.flat["jsx-runtime"],
+      eslintPluginReactHooksAddon.configs.recommended,
       // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       eslintPluginJsxA11y.flatConfigs.recommended,
       eslintPluginCompat.configs["flat/recommended"],
@@ -269,7 +277,7 @@ export default typescriptEslint.config(
 
   // ** Server **
   {
-    files: ["server/**"],
+    files: [`server/${filetypesGlob}`],
 
     extends: [eslintPluginN.configs["flat/recommended"]],
 
@@ -280,6 +288,38 @@ export default typescriptEslint.config(
     },
   },
 
-  // Enables eslint-config-prettier
+  // ** MDX support **
+  {
+    ...eslintPluginMdx.flat,
+
+    ignores: ["*.md/*.ts", "*.mdx/*.ts"],
+
+    extends: [
+      eslintPluginReact.configs.flat.all,
+      eslintPluginReact.configs.flat["jsx-runtime"],
+      typescriptEslint.configs.disableTypeChecked,
+    ],
+
+    settings: {
+      react: {
+        version: "detect",
+      },
+    },
+
+    rules: {
+      // eslint
+      "no-undef": "off",
+
+      // eslint-plugin-react
+      "react/jsx-filename-extension": "off",
+      "react/jsx-no-literals": "off",
+      "react/jsx-max-depth": "off",
+      "react/jsx-curly-brace-presence": "off",
+      "react/no-unescaped-entities": "off",
+      "react/self-closing-comp": "off",
+    },
+  },
+
+  // ** eslint-config-prettier **
   eslintPluginPrettierRecommended,
 );
