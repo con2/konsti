@@ -68,7 +68,7 @@
     "@eslint/js": "9.21.0",
     "@playwright/test": "1.50.1",
     "@types/lodash-es": "4.17.12",
-    "@vitest/eslint-plugin": "1.1.32-beta.1",
+    "@vitest/eslint-plugin": "1.1.33",
     "eslint": "9.21.0",
     "eslint-config-prettier": "10.0.1",
     "eslint-import-resolver-typescript": "3.8.3",
@@ -86,8 +86,8 @@
     "eslint-plugin-unicorn": "57.0.0",
     "globals": "16.0.0",
     "prettier": "3.5.2",
-    "typescript-eslint": "8.24.1",
-    "vitest": "3.0.6"
+    "typescript-eslint": "8.25.0",
+    "vitest": "3.0.7"
   },
   "engines": {
     "node": ">=22.11.0"
