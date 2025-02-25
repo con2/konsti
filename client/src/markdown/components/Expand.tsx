@@ -9,7 +9,6 @@ interface Props {
   children: ReactNode;
 }
 
-// eslint-disable-next-line import/no-unused-modules
 export const Expand = ({ children }: Props): ReactElement | null => {
   const { t, i18n } = useTranslation();
   const [isExpanded, setIsExpanded] = useState<boolean>(false);

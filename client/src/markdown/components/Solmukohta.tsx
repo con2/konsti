@@ -6,7 +6,6 @@ interface Props {
   children: ReactNode;
 }
 
-// eslint-disable-next-line import/no-unused-modules
 export const Solmukohta = ({ children }: Props): ReactNode => {
   return config.event().eventName === EventName.SOLMUKOHTA ? children : null;
 };
