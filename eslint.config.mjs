@@ -62,7 +62,6 @@ export default typescriptEslint.config(
   },
   {
     plugins: {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       vitest: eslintPluginVitest,
       onlyError: eslintPluginOnlyError,
     },
@@ -83,9 +82,7 @@ export default typescriptEslint.config(
       reportUnusedDisableDirectives: "error",
     },
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     rules: {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       ...eslintPluginVitest.configs.recommended.rules,
 
       // eslint
