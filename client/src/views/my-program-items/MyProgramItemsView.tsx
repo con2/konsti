@@ -25,6 +25,7 @@ import {
 } from "client/utils/sessionStorage";
 import { RadioButtonGroup } from "client/components/RadioButtonGroup";
 import { getIsInGroup } from "client/views/group/groupUtils";
+import { ScrollToTopButton } from "client/components/ScrollToTopButton";
 
 export const MyProgramItemsView = (): ReactElement => {
   const { t } = useTranslation();
@@ -112,6 +113,7 @@ export const MyProgramItemsView = (): ReactElement => {
           isGroupMember={isGroupMember}
         />
       )}
+      <ScrollToTopButton />
     </MyProgramItemsViewContainer>
   );
 };
