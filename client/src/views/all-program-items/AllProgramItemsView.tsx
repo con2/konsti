@@ -26,6 +26,7 @@ import {
   StartingTimeOption,
 } from "client/views/all-program-items/components/SearchAndFilterCard";
 import { config } from "shared/config";
+import { ScrollToTopButton } from "client/components/ScrollToTopButton";
 
 export const MULTIPLE_WHITESPACES_REGEX = /\s\s+/g;
 const programTypeQueryParam = "programType";
@@ -173,6 +174,7 @@ export const AllProgramItemsView = (): ReactElement => {
         setHideFullItems={setHideFullItems}
       />
       {loading ? <Loading /> : memoizedProgramItems}
+      <ScrollToTopButton />
     </>
   );
 };

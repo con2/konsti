@@ -34,6 +34,7 @@ export const translationFI = {
     addSignupQuestion: "Lisää ilmoittautumiskysymys",
     removeSignupQuestion: "Poista ilmoittautumiskysymys",
     close: "Sulje",
+    scrollToTop: "Palaa sivun yläreunaan",
   },
   username: "Käyttäjänimi",
   password: "Salasana",

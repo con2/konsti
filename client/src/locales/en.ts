@@ -34,6 +34,7 @@ export const translationEN = {
     addSignupQuestion: "Add sign-up question",
     removeSignupQuestion: "Delete sign-up question",
     close: "Close",
+    scrollToTop: "Scroll to top",
   },
   username: "Username",
   password: "Password",
