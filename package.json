@@ -53,8 +53,8 @@
     "update-yarn": "yarn set version stable"
   },
   "dependencies": {
-    "@yarnpkg/types": "4.0.0",
-    "axios": "1.7.9",
+    "@yarnpkg/types": "4.0.1",
+    "axios": "1.8.1",
     "dayjs": "1.11.13",
     "lodash-es": "4.17.21",
     "ncp": "2.0.0",
@@ -68,20 +68,20 @@
     "@eslint/js": "9.21.0",
     "@playwright/test": "1.50.1",
     "@types/lodash-es": "4.17.12",
-    "@vitest/eslint-plugin": "1.1.33",
+    "@vitest/eslint-plugin": "1.1.36",
     "eslint": "9.21.0",
-    "eslint-config-prettier": "10.0.1",
+    "eslint-config-prettier": "10.0.2",
     "eslint-import-resolver-typescript": "3.8.3",
     "eslint-plugin-compat": "6.0.2",
     "eslint-plugin-import": "2.31.0",
     "eslint-plugin-jsx-a11y": "6.10.2",
     "eslint-plugin-mdx": "3.1.5",
-    "eslint-plugin-n": "17.15.1",
+    "eslint-plugin-n": "17.16.1",
     "eslint-plugin-only-error": "1.0.2",
     "eslint-plugin-prettier": "5.2.3",
     "eslint-plugin-promise": "7.2.1",
     "eslint-plugin-react": "7.37.4",
-    "eslint-plugin-react-hooks": "5.1.0",
+    "eslint-plugin-react-hooks": "5.2.0",
     "eslint-plugin-react-hooks-addons": "0.4.1",
     "eslint-plugin-unicorn": "57.0.0",
     "globals": "16.0.0",
@@ -92,5 +92,5 @@
   "engines": {
     "node": ">=22.11.0"
   },
-  "packageManager": "yarn@4.6.0"
+  "packageManager": "yarn@4.7.0"
 }
