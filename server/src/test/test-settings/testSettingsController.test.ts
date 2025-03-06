@@ -1,6 +1,6 @@
 import { expect, test, vi, afterEach, describe } from "vitest";
 import request from "supertest";
-import { ApiEndpoint } from "shared/constants/apiEndpoints";
+import { ApiDevEndpoint } from "shared/constants/apiEndpoints";
 import { startTestServer, stopTestServer } from "server/test/utils/testServer";
 import { TestSettings } from "shared/test-types/models/testSettings";
 
@@ -9,13 +9,13 @@ afterEach(() => {
   vi.resetModules();
 });
 
-describe(`GET ${ApiEndpoint.TEST_SETTINGS}`, () => {
+describe(`GET ${ApiDevEndpoint.TEST_SETTINGS}`, () => {
   test("should return 404 on production", async () => {
     vi.stubEnv("SETTINGS", "production");
     const { server } = await startTestServer(globalThis.__MONGO_URI__);
 
     try {
-      const response = await request(server).get(ApiEndpoint.TEST_SETTINGS);
+      const response = await request(server).get(ApiDevEndpoint.TEST_SETTINGS);
       expect(response.status).toEqual(404);
     } finally {
       await stopTestServer(server);
@@ -27,7 +27,7 @@ describe(`GET ${ApiEndpoint.TEST_SETTINGS}`, () => {
     const { server } = await startTestServer(globalThis.__MONGO_URI__);
 
     try {
-      const response = await request(server).get(ApiEndpoint.TEST_SETTINGS);
+      const response = await request(server).get(ApiDevEndpoint.TEST_SETTINGS);
       expect(response.status).toEqual(200);
       expect(response.body).toEqual({
         status: "success",
@@ -40,13 +40,13 @@ describe(`GET ${ApiEndpoint.TEST_SETTINGS}`, () => {
   });
 });
 
-describe(`POST ${ApiEndpoint.TEST_SETTINGS}`, () => {
+describe(`POST ${ApiDevEndpoint.TEST_SETTINGS}`, () => {
   test("should return 404 on production", async () => {
     vi.stubEnv("SETTINGS", "production");
     const { server } = await startTestServer(globalThis.__MONGO_URI__);
 
     try {
-      const response = await request(server).post(ApiEndpoint.TEST_SETTINGS);
+      const response = await request(server).post(ApiDevEndpoint.TEST_SETTINGS);
       expect(response.status).toEqual(404);
     } finally {
       await stopTestServer(server);
@@ -59,7 +59,7 @@ describe(`POST ${ApiEndpoint.TEST_SETTINGS}`, () => {
 
     try {
       const response = await request(server)
-        .post(ApiEndpoint.TEST_SETTINGS)
+        .post(ApiDevEndpoint.TEST_SETTINGS)
         .send({ testTime: 12345 });
       expect(response.status).toEqual(422);
     } finally {
@@ -77,7 +77,7 @@ describe(`POST ${ApiEndpoint.TEST_SETTINGS}`, () => {
       };
 
       const response = await request(server)
-        .post(ApiEndpoint.TEST_SETTINGS)
+        .post(ApiDevEndpoint.TEST_SETTINGS)
         .send(testSettings);
 
       expect(response.status).toEqual(200);

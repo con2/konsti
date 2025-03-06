@@ -1,8 +1,10 @@
 import { expect, APIRequestContext, Page } from "@playwright/test";
-import { ApiEndpoint } from "shared/constants/apiEndpoints";
-import { PopulateDbOptions } from "shared/test-types/api/populateDb";
+import { ApiDevEndpoint, ApiEndpoint } from "shared/constants/apiEndpoints";
+import { PopulateDbOptions } from "shared/test-types/api/testData";
 import { TestSettings } from "shared/test-types/models/testSettings";
 import { PostLoginRequest, PostLoginResponse } from "shared/types/api/login";
+import { PostUserRequest } from "shared/types/api/users";
+import { ProgramItem } from "shared/types/models/programItem";
 import { Settings } from "shared/types/models/settings";
 
 const baseUrl = process.env.PLAYWRIGHT_BASEURL ?? `http://localhost:5000`;
@@ -16,19 +18,59 @@ const defaultPopulateDbOptions = {
   eventLog: false,
 };
 
+export const logTestStart = (testName: string): void => {
+  console.log(`Start test: ${testName}`); // eslint-disable-line no-console
+};
+
 export const populateDb = async (
   request: APIRequestContext,
   populateDbOptions: PopulateDbOptions = defaultPopulateDbOptions,
 ): Promise<void> => {
-  const url = `${baseUrl}${ApiEndpoint.POPULATE_DB}`;
+  const url = `${baseUrl}${ApiDevEndpoint.POPULATE_DB}`;
   const response = await request.post(url, {
     data: populateDbOptions,
   });
   expect(response.status()).toBe(200);
 };
 
-export const logTestStart = (testName: string): void => {
-  console.log(`Start test: ${testName}`); // eslint-disable-line no-console
+export const clearDb = async (request: APIRequestContext): Promise<void> => {
+  const url = `${baseUrl}${ApiDevEndpoint.CLEAR_DB}`;
+  const response = await request.post(url);
+  expect(response.status()).toBe(200);
+};
+
+export const addProgramItems = async (
+  request: APIRequestContext,
+  programItems: Partial<ProgramItem>[] = [],
+): Promise<void> => {
+  const url = `${baseUrl}${ApiDevEndpoint.ADD_PROGRAM_ITEMS}`;
+  const response = await request.post(url, {
+    data: programItems,
+  });
+  expect(response.status()).toBe(200);
+};
+
+export const postUser = async (
+  request: APIRequestContext,
+  user: PostUserRequest,
+): Promise<void> => {
+  const url = `${baseUrl}${ApiEndpoint.USERS}`;
+  const response = await request.post(url, {
+    data: user,
+  });
+  expect(response.status()).toBe(200);
+};
+
+export const addSerials = async (
+  request: APIRequestContext,
+  count: number,
+): Promise<string[]> => {
+  const url = `${baseUrl}${ApiDevEndpoint.ADD_SERIALS}`;
+  const response = await request.post(url, {
+    data: { count },
+  });
+  expect(response.status()).toBe(200);
+  return response.json() as unknown as string[];
 };
 
 const postLogin = async (
@@ -99,7 +141,7 @@ export const postTestSettings = async (
     username: "admin",
     password: "test",
   });
-  const url = `${baseUrl}${ApiEndpoint.TEST_SETTINGS}`;
+  const url = `${baseUrl}${ApiDevEndpoint.TEST_SETTINGS}`;
   const response = await request.post(url, {
     data: testSettings,
     headers: { Authorization: `Bearer ${loginResponse.jwt}` },

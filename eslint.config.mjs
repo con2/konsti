@@ -150,6 +150,7 @@ export default typescriptEslint.config(
       "unicorn/no-null": "off", // Don't want this
       "unicorn/prevent-abbreviations": "off", // Don't want this
       "unicorn/filename-case": "off", // Don't want this
+      "unicorn/prefer-ternary": "off", // Don't want this
 
       // @typescript-eslint
       "@typescript-eslint/explicit-module-boundary-types": "error",
