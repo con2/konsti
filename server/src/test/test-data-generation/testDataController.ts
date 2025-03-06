@@ -121,7 +121,7 @@ export const postAddSerials = async (
     logger.error(
       "%s",
       // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-      new Error(`Error validating postAddProgramItems body: ${result.error}`),
+      new Error(`Error validating postAddSerials body: ${result.error}`),
     );
     return res.sendStatus(422);
   }
