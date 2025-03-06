@@ -91,16 +91,14 @@ export const postAddProgramItems = async (
     return res.sendStatus(422);
   }
 
-  if (result.data.length === 0) {
-    await saveProgramItems([testProgramItem]);
-  } else {
-    await saveProgramItems(
-      result.data.map((programItem) => ({
-        ...testProgramItem,
-        ...programItem,
-      })),
-    );
-  }
+  result.data.length === 0
+    ? await saveProgramItems([testProgramItem])
+    : await saveProgramItems(
+        result.data.map((programItem) => ({
+          ...testProgramItem,
+          ...programItem,
+        })),
+      );
 
   return res.sendStatus(200);
 };
