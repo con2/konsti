@@ -14,6 +14,7 @@
     "resolveJsonModule": true,
     "allowUnreachableCode": false,
     "noErrorTruncation": true,
+    "libReplacement": false,
     "paths": {
       "client/*": ["client/src/*"],
       "server/*": ["server/src/*"],
