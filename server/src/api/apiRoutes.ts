@@ -42,12 +42,21 @@ import {
   getUserBySerialOrUsername,
   postUserPassword,
 } from "server/features/user/userController";
-import { postPopulateDb } from "server/test/test-data-generation/testDataController";
+import {
+  postClearDb,
+  postAddProgramItems,
+  postPopulateDb,
+  postAddSerials,
+} from "server/test/test-data-generation/testDataController";
 import {
   getTestSettings,
   postTestSettings,
 } from "server/test/test-settings/testSettingsController";
-import { ApiEndpoint, AuthEndpoint } from "shared/constants/apiEndpoints";
+import {
+  ApiDevEndpoint,
+  ApiEndpoint,
+  AuthEndpoint,
+} from "shared/constants/apiEndpoints";
 import {
   getKompassiLoginMockLogout,
   getKompassiLoginMockProfile,
@@ -104,9 +113,12 @@ apiRoutes.delete(ApiEndpoint.DIRECT_SIGNUP, deleteDirectSignup);
 /* DEV routes */
 
 if (process.env.SETTINGS !== "production") {
-  apiRoutes.post(ApiEndpoint.TEST_SETTINGS, postTestSettings);
-  apiRoutes.get(ApiEndpoint.TEST_SETTINGS, getTestSettings);
-  apiRoutes.post(ApiEndpoint.POPULATE_DB, postPopulateDb);
+  apiRoutes.post(ApiDevEndpoint.TEST_SETTINGS, postTestSettings);
+  apiRoutes.get(ApiDevEndpoint.TEST_SETTINGS, getTestSettings);
+  apiRoutes.post(ApiDevEndpoint.POPULATE_DB, postPopulateDb);
+  apiRoutes.post(ApiDevEndpoint.CLEAR_DB, postClearDb);
+  apiRoutes.post(ApiDevEndpoint.ADD_PROGRAM_ITEMS, postAddProgramItems);
+  apiRoutes.post(ApiDevEndpoint.ADD_SERIALS, postAddSerials);
 }
 
 /* Kompassi login routes */

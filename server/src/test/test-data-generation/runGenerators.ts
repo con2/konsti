@@ -18,7 +18,7 @@ import {
 import { createEventLogItems } from "server/test/test-data-generation/generators/createEventLogItems";
 import { cleanupDatabase } from "server/utils/cleanupDatabse";
 import { initializeDayjs } from "shared/utils/initializeDayjs";
-import { PopulateDbOptions } from "shared/test-types/api/populateDb";
+import { PopulateDbOptions } from "shared/test-types/api/testData";
 
 interface Settings {
   closeDb: boolean;

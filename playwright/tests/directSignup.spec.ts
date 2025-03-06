@@ -1,17 +1,31 @@
 import { test, expect } from "@playwright/test";
+import dayjs from "dayjs";
 import {
   logTestStart,
-  populateDb,
   postTestSettings,
   login,
+  addProgramItems,
+  postUser,
+  addSerials,
+  clearDb,
 } from "playwright/utils";
-import { config } from "shared/config";
+import { PostUserRequest } from "shared/types/api/users";
+
+const testUser: PostUserRequest = {
+  username: "test1",
+  password: "test",
+};
 
 test("Add direct signup", async ({ page, request }) => {
   logTestStart("Add direct signup");
-  await populateDb(request);
+  await clearDb(request);
+  const serials = await addSerials(request, 1);
+  await postUser(request, { ...testUser, serial: serials[0] });
+  await addProgramItems(request, [
+    { startTime: dayjs().add(1, "hour").startOf("hour").toISOString() },
+  ]);
   await postTestSettings(request, {
-    testTime: config.event().eventStartTime,
+    testTime: dayjs().toISOString(),
   });
   await login(page, request, { username: "test1", password: "test" });
 

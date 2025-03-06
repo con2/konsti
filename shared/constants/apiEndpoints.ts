@@ -17,14 +17,20 @@ export enum ApiEndpoint {
   SIGNUP_MESSAGE = "/api/signup-message",
   SESSION_RESTORE = "/api/session-restore",
   USERS_PASSWORD = "/api/users/password",
-  TEST_SETTINGS = "/api/test-settings",
-  POPULATE_DB = "/api/populate-db",
   DIRECT_SIGNUP = "/api/direct-signup",
   SENTRY_TUNNEL = "/api/sentry",
   SENTRY_TEST = "/api/sentry-test",
   EVENT_LOG_IS_SEEN = "/api/event-log-is-seen",
   HEALTH = "/api/health",
   VERIFY_KOMPASSI_LOGIN = "/api/verify-kompassi-login",
+}
+
+export enum ApiDevEndpoint {
+  TEST_SETTINGS = "/api/test-settings",
+  POPULATE_DB = "/api/populate-db",
+  CLEAR_DB = "/api/clear-db",
+  ADD_PROGRAM_ITEMS = "/api/add-program-item",
+  ADD_SERIALS = "/api/add-serial",
 }
 
 export enum AuthEndpoint {

@@ -196,6 +196,10 @@ export default typescriptEslint.config(
         { allowArray: true, allowNumber: true },
       ],
       "@typescript-eslint/no-deprecated": "error",
+      "@typescript-eslint/no-unused-expressions": [
+        "error",
+        { allowTernary: true },
+      ],
     },
   },
 

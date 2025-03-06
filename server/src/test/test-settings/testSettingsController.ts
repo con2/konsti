@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { logger } from "server/utils/logger";
-import { ApiEndpoint } from "shared/constants/apiEndpoints";
+import { ApiDevEndpoint } from "shared/constants/apiEndpoints";
 import {
   fetchTestSettings,
   updateTestSettings,
@@ -11,7 +11,7 @@ export const getTestSettings = async (
   _req: Request,
   res: Response,
 ): Promise<Response> => {
-  logger.info(`API call: GET ${ApiEndpoint.TEST_SETTINGS}`);
+  logger.info(`API call: GET ${ApiDevEndpoint.TEST_SETTINGS}`);
 
   const response = await fetchTestSettings();
   return res.json(response);
@@ -21,7 +21,7 @@ export const postTestSettings = async (
   req: Request,
   res: Response,
 ): Promise<Response> => {
-  logger.info(`API call: POST ${ApiEndpoint.TEST_SETTINGS}`);
+  logger.info(`API call: POST ${ApiDevEndpoint.TEST_SETTINGS}`);
 
   const result = PostTestSettingsRequestSchema.safeParse(req.body);
   if (!result.success) {
