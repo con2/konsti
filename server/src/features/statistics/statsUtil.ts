@@ -23,12 +23,11 @@ export const readJson = <T>(
   return data;
 };
 
-export const writeJson = async <T>(
+export const writeJson = async (
   year: number,
   event: string,
   datatype: string,
-  // eslint-disable-next-line @typescript-eslint/no-wrapper-object-types
-  data: T[] | Object,
+  data: unknown[],
 ): Promise<void> => {
   if (
     !fs.existsSync(`${config.server().statsDataDir}/${event}/${year}/temp/`)
@@ -114,8 +113,7 @@ export const toPercent = (num: number): number => {
   return Math.round(num * 100);
 };
 
-// eslint-disable-next-line @typescript-eslint/no-wrapper-object-types
-const getDataLength = <T>(data: T[] | Object): number => {
+const getDataLength = (data: unknown[] | Record<string, Message[]>): number => {
   if (Array.isArray(data)) {
     return data.length;
   }
