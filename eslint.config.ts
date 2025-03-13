@@ -6,7 +6,6 @@ import eslintPluginCommentsConfigs from "@eslint-community/eslint-plugin-eslint-
 import eslintPluginCompat from "eslint-plugin-compat";
 // @ts-expect-error: Missing types
 import eslintPluginImport from "eslint-plugin-import";
-// @ts-expect-error: Missing types
 import eslintPluginJsxA11y from "eslint-plugin-jsx-a11y";
 import eslintPluginN from "eslint-plugin-n";
 import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
@@ -222,7 +221,6 @@ export default defineConfig([
       eslintPluginReact.configs.flat["jsx-runtime"],
       // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       eslintPluginReactHooksAddon.configs.recommended,
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       eslintPluginJsxA11y.flatConfigs.recommended,
       eslintPluginCompat.configs["flat/recommended"],
     ],

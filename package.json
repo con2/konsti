@@ -67,6 +67,7 @@
     "@eslint-community/eslint-plugin-eslint-comments": "4.4.1",
     "@eslint/js": "9.22.0",
     "@playwright/test": "1.51.0",
+    "@types/eslint-plugin-jsx-a11y": "6.10.0",
     "@types/lodash-es": "4.17.12",
     "@vitest/eslint-plugin": "1.1.37",
     "eslint": "9.22.0",

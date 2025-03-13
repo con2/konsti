@@ -2994,6 +2994,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/eslint-plugin-jsx-a11y@npm:6.10.0":
+  version: 6.10.0
+  resolution: "@types/eslint-plugin-jsx-a11y@npm:6.10.0"
+  dependencies:
+    "@types/eslint": "npm:*"
+  checksum: 10c0/ec494e0ea56a0a10140316a74463eb8a6ac5ed02d7408ef91444f7c0c9bc875866a9d0be7a761f1631ea543c2413b1db947bf7cb1df9d936171e5d82f71c6772
+  languageName: node
+  linkType: hard
+
 "@types/eslint-scope@npm:^3.7.7":
   version: 3.7.7
   resolution: "@types/eslint-scope@npm:3.7.7"
@@ -9037,6 +9046,7 @@ __metadata:
     "@eslint-community/eslint-plugin-eslint-comments": "npm:4.4.1"
     "@eslint/js": "npm:9.22.0"
     "@playwright/test": "npm:1.51.0"
+    "@types/eslint-plugin-jsx-a11y": "npm:6.10.0"
     "@types/lodash-es": "npm:4.17.12"
     "@vitest/eslint-plugin": "npm:1.1.37"
     "@yarnpkg/types": "npm:4.0.1"
