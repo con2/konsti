@@ -1,18 +1,23 @@
-// @ts-check
 import eslint from "@eslint/js";
+import { defineConfig, globalIgnores } from "eslint/config";
 import globals from "globals";
+// @ts-expect-error: Missing types
 import eslintPluginCommentsConfigs from "@eslint-community/eslint-plugin-eslint-comments/configs";
 import eslintPluginCompat from "eslint-plugin-compat";
+// @ts-expect-error: Missing types
 import eslintPluginImport from "eslint-plugin-import";
 import eslintPluginJsxA11y from "eslint-plugin-jsx-a11y";
 import eslintPluginN from "eslint-plugin-n";
 import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
+// @ts-expect-error: Missing types
 import eslintPluginPromise from "eslint-plugin-promise";
 import eslintPluginReact from "eslint-plugin-react";
 import eslintPluginReactHooks from "eslint-plugin-react-hooks";
+// @ts-expect-error: Missing types
 import eslintPluginReactHooksAddon from "eslint-plugin-react-hooks-addons";
 import eslintPluginUnicorn from "eslint-plugin-unicorn";
 import eslintPluginVitest from "@vitest/eslint-plugin";
+// @ts-expect-error: Missing types
 import eslintPluginOnlyError from "eslint-plugin-only-error";
 import eslintPluginMdx from "eslint-plugin-mdx";
 import typescriptEslint from "typescript-eslint";
@@ -20,18 +25,27 @@ import typescriptEslint from "typescript-eslint";
 const filetypesGlob = "**/*.{ts,tsx,mts,cjs,mjs}";
 
 // eslint-disable-next-line import/no-unused-modules
-export default typescriptEslint.config(
+export default defineConfig([
   eslint.configs.recommended,
-  ...typescriptEslint.configs.strictTypeChecked,
-  ...typescriptEslint.configs.stylisticTypeChecked,
+  typescriptEslint.configs.strictTypeChecked,
+  typescriptEslint.configs.stylisticTypeChecked,
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
   eslintPluginCommentsConfigs.recommended,
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
   eslintPluginPromise.configs["flat/recommended"],
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
   eslintPluginImport.flatConfigs.recommended,
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
   eslintPluginImport.flatConfigs.typescript,
   eslintPluginUnicorn.configs.recommended,
+
+  globalIgnores([
+    "**/.*", // Ignore dotfiles
+    "**/coverage/**",
+    "**/front/**",
+    "**/build/**",
+    "client/babel.config.js",
+  ]),
 
   // ** Default **
   {
@@ -40,9 +54,10 @@ export default typescriptEslint.config(
     languageOptions: {
       parserOptions: {
         projectService: {
-          allowDefaultProject: ["eslint.config.mjs", "yarn.config.cjs"],
+          allowDefaultProject: ["yarn.config.cjs"],
           defaultProject: "./tsconfig.json",
         },
+        // @ts-expect-error: FIXME FIXME FIXME
         tsconfigRootDir: import.meta.dirname,
       },
       globals: {
@@ -52,17 +67,9 @@ export default typescriptEslint.config(
   },
 
   {
-    ignores: [
-      "**/.*", // Ignore dotfiles
-      "**/coverage/**",
-      "**/front/**",
-      "**/build/**",
-      "client/babel.config.js",
-    ],
-  },
-  {
     plugins: {
       vitest: eslintPluginVitest,
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       onlyError: eslintPluginOnlyError,
     },
 
@@ -212,8 +219,8 @@ export default typescriptEslint.config(
       eslintPluginReact.configs.flat.all,
       // Disable some rules conflicting with new JSX transform from React 17
       eslintPluginReact.configs.flat["jsx-runtime"],
-      eslintPluginReactHooksAddon.configs.recommended,
       // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+      eslintPluginReactHooksAddon.configs.recommended,
       eslintPluginJsxA11y.flatConfigs.recommended,
       eslintPluginCompat.configs["flat/recommended"],
     ],
@@ -293,8 +300,6 @@ export default typescriptEslint.config(
   {
     ...eslintPluginMdx.flat,
 
-    ignores: ["*.md/*.ts", "*.mdx/*.ts"],
-
     extends: [
       eslintPluginReact.configs.flat.all,
       eslintPluginReact.configs.flat["jsx-runtime"],
@@ -323,4 +328,4 @@ export default typescriptEslint.config(
 
   // ** eslint-config-prettier **
   eslintPluginPrettierRecommended,
-);
+]);
