@@ -1,26 +1,23 @@
 # Konsti
 
-[![Build](https://github.com/con2/konsti/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/con2/konsti/actions/workflows/test.yml)
+[![Build](https://github.com/con2/konsti/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/con2/konsti/actions/workflows/test.yml) [![Known Vulnerabilities](https://snyk.io/test/github/con2/konsti/badge.svg)](https://snyk.io/test/github/con2/konsti)
 
-[![Known Vulnerabilities](https://snyk.io/test/github/con2/konsti/badge.svg)](https://snyk.io/test/github/con2/konsti)
+Event signup application Konsti. Support first-come signup and lottery signup.
 
-Event signup application Konsti. The application is used to sign up and assign users to events. Registered users can choose weighted preferences for different time slots and event seats are quickly allocated using [Hungarian algorithm](https://en.wikipedia.org/wiki/Hungarian_algorithm), [eventassigner-js](https://github.com/Altesmi/eventassigner-js), or [brute force approximation](https://github.com/Altesmi/eventassigner-random). Users can form groups to be assigned into the same event.
+Konsti is used by conventions like [Ropecon](https://ropecon.fi), [Tracon](https://tracon.fi), [Tracon Hitpoint](https://hitpoint.tracon.fi), and [Solmukohta](https://solmukohta.eu). Konsti has been in use since Ropecon 2017 and is used by thousands of users. Event data is fetched from [Kompassi Event Management System](https://kompassi.eu/).
 
-Konsti is used by roleplaying conventions [Ropecon](https://ropecon.fi) and [Tracon Hitpoint](https://hitpoint.tracon.fi). Event data is fetched from [Kompassi Event Management System](https://kompassi.eu/).
+## Features
 
-Registered users by year:
-
-- Ropecon 2017: 550 (live, Hungarian algorithm)
-- Ropecon 2018: 850 (live, brute force approximation)
-- Ropecon 2019: 920 (live, eventassigner-js + brute force approximation)
-- Tracon Hitpoint 2019: 150 (live, eventassigner-js + brute force approximation)
-- Ropecon 2021: 150 (remote, direct signup)
-- Ropecon 2022: 1080 (live, assignment + direct signup)
+- First-come signups
+- Lottery signup using [eventassigner-js](https://github.com/Altesmi/eventassigner-js) and [eventassigner-random](https://github.com/Altesmi/eventassigner-random).
+  - Users can choose weighted preferences
+  - Users can form groups to be assigned into the same event
 
 ## Quick Start
 
 - Requirements
 
+  - Node.js 22.11.0
   - Docker
   - Yarn
 
@@ -55,18 +52,19 @@ In this case, access the frontend at `localhost:5000`.
 - General
 
   - TypeScript
+  - Zod
   - Prettier & ESlint
-  - Jest
+  - Vitest
   - Playwright
 
-- Back-end
+- Backend
 
   - Node.js
   - Express
   - MongoDB
-  - AWS
+  - Kubernetes
 
-- Front-end
+- Frontend
 
   - React
   - Redux & Redux Toolkit
