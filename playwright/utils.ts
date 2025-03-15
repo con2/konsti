@@ -46,7 +46,7 @@ export const addProgramItems = async (
   expect(response.status()).toBe(200);
 };
 
-export const postUser = async (
+const postUser = async (
   request: APIRequestContext,
   user: PostUserRequest,
 ): Promise<void> => {
@@ -57,7 +57,7 @@ export const postUser = async (
   expect(response.status()).toBe(200);
 };
 
-export const addSerials = async (
+const addSerials = async (
   request: APIRequestContext,
   count: number,
 ): Promise<string[]> => {
@@ -67,6 +67,19 @@ export const addSerials = async (
   });
   expect(response.status()).toBe(200);
   return response.json() as unknown as string[];
+};
+
+export const addUser = async (
+  request: APIRequestContext,
+  username?: string,
+): Promise<void> => {
+  const testUser: PostUserRequest = {
+    username: username ?? "test1",
+    password: "test",
+  };
+
+  const serials = await addSerials(request, 1);
+  await postUser(request, { ...testUser, serial: serials[0] });
 };
 
 const postLogin = async (

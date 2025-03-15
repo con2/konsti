@@ -4,21 +4,13 @@ import {
   postTestSettings,
   login,
   addProgramItems,
-  postUser,
-  addSerials,
   clearDb,
+  addUser,
 } from "playwright/utils";
-import { PostUserRequest } from "shared/types/api/users";
-
-const testUser: PostUserRequest = {
-  username: "test1",
-  password: "test",
-};
 
 test("Add direct signup", async ({ page, request }) => {
   await clearDb(request);
-  const serials = await addSerials(request, 1);
-  await postUser(request, { ...testUser, serial: serials[0] });
+  await addUser(request);
   await addProgramItems(request, [
     { startTime: dayjs().add(1, "hour").startOf("hour").toISOString() },
   ]);
