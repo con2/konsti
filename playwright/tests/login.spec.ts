@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { populateDb } from "playwright/utils";
+import { populateDb } from "playwright/playwrightUtils";
 
 test("Admin login", async ({ page, request }) => {
   await populateDb(request);

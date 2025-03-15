@@ -4,7 +4,7 @@ import {
   postSettings,
   postTestSettings,
   login,
-} from "playwright/utils";
+} from "playwright/playwrightUtils";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import { config } from "shared/config";
 

@@ -6,7 +6,7 @@ import {
   addProgramItems,
   clearDb,
   addUser,
-} from "playwright/utils";
+} from "playwright/playwrightUtils";
 
 test("Add direct signup", async ({ page, request }) => {
   await clearDb(request);
