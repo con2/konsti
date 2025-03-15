@@ -18,10 +18,6 @@ const defaultPopulateDbOptions = {
   eventLog: false,
 };
 
-export const logTestStart = (testName: string): void => {
-  console.log(`Start test: ${testName}`); // eslint-disable-line no-console
-};
-
 export const populateDb = async (
   request: APIRequestContext,
   populateDbOptions: PopulateDbOptions = defaultPopulateDbOptions,

@@ -1,8 +1,7 @@
 import { test, expect } from "@playwright/test";
-import { logTestStart, populateDb, login } from "playwright/utils";
+import { populateDb, login } from "playwright/utils";
 
 test("Add favorite", async ({ page, request }) => {
-  logTestStart("Add favorite");
   await populateDb(request);
   await login(page, request, { username: "test1", password: "test" });
 

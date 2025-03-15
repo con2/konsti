@@ -1,7 +1,6 @@
 import { test, expect } from "@playwright/test";
 import dayjs from "dayjs";
 import {
-  logTestStart,
   postTestSettings,
   login,
   addProgramItems,
@@ -17,7 +16,6 @@ const testUser: PostUserRequest = {
 };
 
 test("Add direct signup", async ({ page, request }) => {
-  logTestStart("Add direct signup");
   await clearDb(request);
   const serials = await addSerials(request, 1);
   await postUser(request, { ...testUser, serial: serials[0] });
