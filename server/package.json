@@ -56,7 +56,6 @@
     "winston-transport-sentry-node": "3.0.0"
   },
   "devDependencies": {
-    "@types/bcryptjs": "2.4.6",
     "@types/jsonwebtoken": "9.0.9",
     "@types/morgan": "1.9.9",
     "@types/node": "22.13.10",

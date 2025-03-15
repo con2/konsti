@@ -72,7 +72,7 @@
     "@vitest/eslint-plugin": "1.1.37",
     "eslint": "9.22.0",
     "eslint-config-prettier": "10.1.1",
-    "eslint-import-resolver-typescript": "3.8.6",
+    "eslint-import-resolver-typescript": "3.9.0",
     "eslint-plugin-compat": "6.0.2",
     "eslint-plugin-import": "2.31.0",
     "eslint-plugin-jsx-a11y": "6.10.2",
