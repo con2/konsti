@@ -1,8 +1,7 @@
 import { test, expect } from "@playwright/test";
-import { logTestStart, populateDb } from "playwright/utils";
+import { populateDb } from "playwright/playwrightUtils";
 
 test("Admin login", async ({ page, request }) => {
-  logTestStart("Admin login");
   await populateDb(request);
 
   const username = "admin";
@@ -29,7 +28,6 @@ test("Admin login", async ({ page, request }) => {
 });
 
 test("User login", async ({ page, request }) => {
-  logTestStart("User login");
   await populateDb(request);
 
   const username = "test1";
