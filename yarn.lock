@@ -3033,15 +3033,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/bcryptjs@npm:3.0.0":
-  version: 3.0.0
-  resolution: "@types/bcryptjs@npm:3.0.0"
-  dependencies:
-    bcryptjs: "npm:*"
-  checksum: 10c0/5d61ce381736f8252627cf32f2bbc17003c0361c6cf63ac23034a651b9c1edfdbf8f786730816e0b5257a927ffa369658562183a68495eb07ca2ddc77fbb171c
-  languageName: node
-  linkType: hard
-
 "@types/body-parser@npm:*":
   version: 1.19.5
   resolution: "@types/body-parser@npm:1.19.5"
@@ -4665,7 +4656,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bcryptjs@npm:*, bcryptjs@npm:3.0.2":
+"bcryptjs@npm:3.0.2":
   version: 3.0.2
   resolution: "bcryptjs@npm:3.0.2"
   bin:
@@ -9218,7 +9209,6 @@ __metadata:
   dependencies:
     "@faker-js/faker": "npm:9.6.0"
     "@sentry/node": "npm:9.5.0"
-    "@types/bcryptjs": "npm:3.0.0"
     "@types/jsonwebtoken": "npm:9.0.9"
     "@types/morgan": "npm:1.9.9"
     "@types/node": "npm:22.13.10"
