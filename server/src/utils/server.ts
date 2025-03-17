@@ -98,10 +98,13 @@ export const startServer = async ({
         expressStaticGzip(staticPath, {
           enableBrotli: true,
           orderPreference: ["br", "gz"],
+          serveStatic: {
+            acceptRanges: false,
+          },
         }),
       );
     } else {
-      app.use(express.static(staticPath));
+      app.use(express.static(staticPath, { acceptRanges: false }));
     }
   }
 
