@@ -1,0 +1,5 @@
+User-agent: iubenda-radar
+Disallow: /
+
+User-agent: *
+Disallow:

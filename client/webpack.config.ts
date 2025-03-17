@@ -7,6 +7,7 @@ import { Configuration } from "webpack";
 import "webpack-dev-server";
 import { merge } from "webpack-merge";
 import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
+import CopyWebpackPlugin from "copy-webpack-plugin";
 
 const TARGET = process.env.npm_lifecycle_event;
 
@@ -51,6 +52,14 @@ const commonConfig: Configuration = {
       title: "Konsti",
       favicon: path.resolve(__dirname, "assets", "favicon.png"),
       template: path.resolve(__dirname, "src", "index.html"),
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, "assets", "robots.txt"),
+          to: "robots.txt",
+        },
+      ],
     }),
   ],
 
