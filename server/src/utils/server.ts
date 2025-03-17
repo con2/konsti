@@ -99,12 +99,12 @@ export const startServer = async ({
           enableBrotli: true,
           orderPreference: ["br", "gz"],
           serveStatic: {
-            fallthrough: false,
+            acceptRanges: false,
           },
         }),
       );
     } else {
-      app.use(express.static(staticPath, { fallthrough: false }));
+      app.use(express.static(staticPath, { acceptRanges: false }));
     }
   }
 
