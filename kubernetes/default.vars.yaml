@@ -29,6 +29,8 @@ ingress_public_hostnames_https:
 ingress_letsencrypt_enabled: false
 ingress_letsencrypt_cluster_issuer: letsencrypt-prod
 
+ingress_class_name: nginx
+
 mongodb_managed: true
 mongodb_image: mongo:7.0.15-jammy
 mongodb_connection_string: mongodb://mongodb:27017/konsti
