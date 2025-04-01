@@ -19,10 +19,11 @@ import eslintPluginUnicorn from "eslint-plugin-unicorn";
 import eslintPluginVitest from "@vitest/eslint-plugin";
 // @ts-expect-error: Missing types
 import eslintPluginOnlyError from "eslint-plugin-only-error";
-import eslintPluginMdx from "eslint-plugin-mdx";
+// eslint-disable-next-line import/no-namespace
+import * as eslintPluginMdx from "eslint-plugin-mdx";
 import typescriptEslint from "typescript-eslint";
 
-const filetypesGlob = "**/*.{ts,tsx,mts,cjs,mjs}";
+const filetypesGlob = "**/*.{ts,tsx,mts,js,cjs,mjs}";
 
 // eslint-disable-next-line import/no-unused-modules
 export default defineConfig([
@@ -298,6 +299,8 @@ export default defineConfig([
 
   // ** MDX support **
   {
+    files: ["**/*.mdx"],
+
     ...eslintPluginMdx.flat,
 
     extends: [
