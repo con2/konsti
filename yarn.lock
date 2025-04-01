@@ -9177,6 +9177,7 @@ __metadata:
     "@playwright/test": "npm:1.51.1"
     "@types/eslint-plugin-jsx-a11y": "npm:6.10.0"
     "@types/lodash-es": "npm:4.17.12"
+    "@typescript-eslint/utils": "npm:8.29.0"
     "@vitest/eslint-plugin": "npm:1.1.38"
     "@yarnpkg/types": "npm:4.0.1"
     axios: "npm:1.8.4"
