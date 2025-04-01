@@ -301,7 +301,7 @@ export default defineConfig([
 
   // ** MDX support **
   {
-    files: [`client/src/markdown/${filetypesGlob}`],
+    files: ["**/*.mdx"],
 
     ...eslintPluginMdx.flat,
 
