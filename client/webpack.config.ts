@@ -122,6 +122,7 @@ const devConfig: Configuration = {
     port: 8000,
     hot: true,
     historyApiFallback: true, // respond to 404s with index.html
+    allowedHosts: "all",
   },
 
   plugins: [

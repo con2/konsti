@@ -108,7 +108,7 @@ export const startServer = async ({
     }
   }
 
-  app.get("/*", (req: Request, res: Response) => {
+  app.get("/*splat", (req: Request, res: Response) => {
     if (req.originalUrl.includes("/api/")) {
       res.sendStatus(404);
     } else {
