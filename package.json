@@ -69,6 +69,7 @@
     "@playwright/test": "1.51.1",
     "@types/eslint-plugin-jsx-a11y": "6.10.0",
     "@types/lodash-es": "4.17.12",
+    "@typescript-eslint/utils": "8.29.0",
     "@vitest/eslint-plugin": "1.1.38",
     "eslint": "9.23.0",
     "eslint-config-prettier": "10.1.1",
