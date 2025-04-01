@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-unresolved
 import { defineWorkspace } from "vitest/config";
 
 // eslint-disable-next-line import/no-unused-modules
