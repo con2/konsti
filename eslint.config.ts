@@ -48,6 +48,7 @@ export default defineConfig([
     "**/front/**",
     "**/build/**",
     "client/babel.config.js",
+    "*.chunk.bundle.js",
   ]),
 
   // ** Default **
