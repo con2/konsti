@@ -1,5 +1,4 @@
 import eslint from "@eslint/js";
-// eslint-disable-next-line import/no-unresolved
 import { defineConfig, globalIgnores } from "eslint/config";
 import globals from "globals";
 // @ts-expect-error: Missing types
@@ -22,7 +21,6 @@ import eslintPluginVitest from "@vitest/eslint-plugin";
 import eslintPluginOnlyError from "eslint-plugin-only-error";
 // eslint-disable-next-line import/no-namespace
 import * as eslintPluginMdx from "eslint-plugin-mdx";
-// eslint-disable-next-line import/no-unresolved
 import typescriptEslint from "typescript-eslint";
 
 const filetypesGlob = "**/*.{ts,tsx,mts,js,cjs,mjs}";

@@ -1,5 +1,4 @@
 import path from "node:path";
-// eslint-disable-next-line import/no-unresolved
 import { defineConfig } from "vitest/config";
 
 // eslint-disable-next-line import/no-unused-modules
