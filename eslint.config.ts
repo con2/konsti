@@ -48,7 +48,6 @@ export default defineConfig([
     "**/front/**",
     "**/build/**",
     "client/babel.config.js",
-    "*.chunk.bundle.js",
   ]),
 
   // ** Default **
@@ -302,6 +301,8 @@ export default defineConfig([
 
   // ** MDX support **
   {
+    files: [filetypesGlob],
+
     ...eslintPluginMdx.flat,
 
     extends: [
