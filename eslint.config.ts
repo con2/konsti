@@ -25,7 +25,7 @@ import * as eslintPluginMdx from "eslint-plugin-mdx";
 // eslint-disable-next-line import/no-unresolved
 import typescriptEslint from "typescript-eslint";
 
-const filetypesGlob = "**/*.{ts,tsx,mts,cjs,mjs}";
+const filetypesGlob = "**/*.{ts,tsx,mts,js,cjs,mjs}";
 
 // eslint-disable-next-line import/no-unused-modules
 export default defineConfig([
