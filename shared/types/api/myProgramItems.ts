@@ -1,12 +1,16 @@
 import { z } from "zod";
 import { SIGNUP_MESSAGE_LENGTH } from "shared/constants/validation";
 import { ApiError, ApiResult } from "shared/types/api/errors";
-import { Signup, SignupSchema } from "shared/types/models/user";
+import {
+  DirectSignup,
+  LotterySignup,
+  LotterySignupSchema,
+} from "shared/types/models/user";
 
 // POST lottery signup
 
 export const PostLotterySignupsRequestSchema = z.object({
-  lotterySignups: z.array(SignupSchema),
+  lotterySignups: z.array(LotterySignupSchema),
   // TODO: Remove startTime and read it from program item on backend
   startTime: z.string(),
 });
@@ -16,7 +20,7 @@ export type PostLotterySignupsRequest = z.infer<
 >;
 
 export interface PostLotterSignupsResponse extends ApiResult {
-  lotterySignups: readonly Signup[];
+  lotterySignups: readonly LotterySignup[];
 }
 
 export interface PostLotterySignupsError extends ApiError {
@@ -37,7 +41,7 @@ export type PostDirectSignupRequest = z.infer<
 >;
 
 export interface PostDirectSignupResponse extends ApiResult {
-  directSignup: Signup;
+  directSignup: DirectSignup;
 }
 
 export interface PostDirectSignupError extends ApiError {

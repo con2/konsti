@@ -1,7 +1,7 @@
 import { Dayjs } from "dayjs";
 import { TFunction } from "i18next";
 import { ProgramItem } from "shared/types/models/programItem";
-import { Signup } from "shared/types/models/user";
+import { DirectSignup, LotterySignup } from "shared/types/models/user";
 import {
   getDateAndTime,
   getTime,
@@ -11,21 +11,19 @@ import { config } from "shared/config";
 
 export const isAlreadyLotterySigned = (
   programItemToCheck: ProgramItem,
-  lotterySignups: readonly Signup[],
+  lotterySignups: readonly LotterySignup[],
 ): boolean => {
   return lotterySignups.some(
-    (g: Signup) =>
-      g.programItem.programItemId === programItemToCheck.programItemId,
+    (g) => g.programItem.programItemId === programItemToCheck.programItemId,
   );
 };
 
 export const isAlreadyDirectySigned = (
   programItemToCheck: ProgramItem,
-  directSignups: readonly Signup[],
+  directSignups: readonly DirectSignup[],
 ): boolean => {
   return directSignups.some(
-    (g: Signup) =>
-      g.programItem.programItemId === programItemToCheck.programItemId,
+    (g) => g.programItem.programItemId === programItemToCheck.programItemId,
   );
 };
 

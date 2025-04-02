@@ -1,6 +1,6 @@
-import { Signup } from "shared/types/models/user";
+import { DirectSignup } from "shared/types/models/user";
 
 export interface UserAssignmentResult {
   username: string;
-  directSignup: Signup;
+  directSignup: DirectSignup;
 }

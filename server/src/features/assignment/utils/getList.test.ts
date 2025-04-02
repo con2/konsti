@@ -3,7 +3,7 @@ import dayjs from "dayjs";
 import { faker } from "@faker-js/faker";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { getList } from "server/features/assignment/utils/getList";
-import { Signup, User, UserGroup } from "shared/types/models/user";
+import { LotterySignup, User, UserGroup } from "shared/types/models/user";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import { ProgramType } from "shared/types/models/programItem";
 import { config } from "shared/config";
@@ -14,7 +14,7 @@ const groupCreatorGroupCode = "123-234-345";
 
 const { firstSignupBonus, additionalFirstSignupBonus } = config.server();
 
-const getLotterySignups = (): Signup[] => {
+const getLotterySignups = (): LotterySignup[] => {
   return [
     {
       programItem: testProgramItem,

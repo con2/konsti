@@ -3,7 +3,7 @@ import {
   testProgramItem2,
 } from "shared/tests/testProgramItem";
 import { NewUser } from "server/types/userTypes";
-import { Signup, UserGroup } from "shared/types/models/user";
+import { LotterySignup, UserGroup } from "shared/types/models/user";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 import { SignupRepositoryAddSignup } from "server/features/direct-signup/directSignupTypes";
 
@@ -52,7 +52,7 @@ export const mockUser5: NewUser = {
   groupCode: "0",
 };
 
-export const mockLotterySignups: readonly Signup[] = [
+export const mockLotterySignups: readonly LotterySignup[] = [
   {
     programItem: testProgramItem,
     priority: 1,

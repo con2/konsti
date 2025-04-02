@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Signup } from "shared/types/models/user";
+import { DirectSignup } from "shared/types/models/user";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import {
   DeleteDirectSignupErrorMessage,
@@ -24,7 +24,7 @@ import { InfoText, InfoTextVariant } from "client/components/InfoText";
 import { AppRoute } from "client/app/AppRoutes";
 
 interface Props {
-  signup: Signup;
+  signup: DirectSignup;
   startTime: string;
 }
 

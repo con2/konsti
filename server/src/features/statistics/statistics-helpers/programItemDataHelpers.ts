@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 import { countBy } from "lodash-es";
 import { logger } from "server/utils/logger";
 import { ProgramItem } from "shared/types/models/programItem";
-import { Signup, User } from "shared/types/models/user";
+import { DirectSignup, User } from "shared/types/models/user";
 import { getMaximumNumberOfAttendeesByTime } from "./resultDataHelpers";
 import { PriorityObject } from "server/types/commonTypes";
 import { toPercent } from "server/features/statistics/statsUtil";
@@ -25,7 +25,7 @@ const getUsersByProgramItems = (
 ): Record<string, number> => {
   // TODO: Update to use signup collection
   // const directSignups = users.flatMap((user) => user.directSignups);
-  const directSignups: Signup[] = [];
+  const directSignups: DirectSignup[] = [];
   const usersByProgramItems = countBy(
     directSignups,
     "programItem.programItemId",

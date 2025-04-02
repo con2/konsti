@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { capitalize } from "lodash-es";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
-import { Signup } from "shared/types/models/user";
+import { DirectSignup } from "shared/types/models/user";
 import { DirectSignupItem } from "client/views/my-program-items/components/DirectSignupItem";
 import {
   MyProgramList,
@@ -11,7 +11,7 @@ import {
 } from "client/views/my-program-items/components/shared";
 
 interface Props {
-  directSignups: readonly Signup[];
+  directSignups: readonly DirectSignup[];
   startTimes: readonly string[];
   missedSignups: readonly string[];
 }

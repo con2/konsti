@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 import { GroupMember } from "shared/types/models/groups";
 import { ProgramItem } from "shared/types/models/programItem";
 import { getTimeNow } from "client/utils/getTimeNow";
-import { Signup } from "shared/types/models/user";
+import { DirectSignup, LotterySignup } from "shared/types/models/user";
 import { getDirectSignupEndTime } from "shared/utils/signupTimes";
 
 export const getUpcomingProgramItems = (
@@ -19,8 +19,8 @@ export const getUpcomingProgramItems = (
 };
 
 const getUpcomingLotterySignups = (
-  lotterySignups: readonly Signup[],
-): readonly Signup[] => {
+  lotterySignups: readonly LotterySignup[],
+): readonly LotterySignup[] => {
   const timeNow = getTimeNow();
 
   const upcomingLotterySignups = lotterySignups.filter((lotterySignup) => {
@@ -45,7 +45,7 @@ const getGroupCreator = (
 };
 
 interface GetLotterySignupsParams {
-  lotterySignups: readonly Signup[];
+  lotterySignups: readonly LotterySignup[];
   isGroupCreator: boolean;
   groupMembers: readonly GroupMember[];
   isInGroup: boolean;
@@ -58,7 +58,7 @@ export const getLotterySignups = ({
   groupMembers,
   isInGroup,
   getAllProgramItems,
-}: GetLotterySignupsParams): readonly Signup[] => {
+}: GetLotterySignupsParams): readonly LotterySignup[] => {
   if (isGroupCreator || !isInGroup) {
     return getAllProgramItems
       ? lotterySignups
@@ -81,8 +81,8 @@ export const getLotterySignups = ({
 };
 
 export const getUpcomingDirectSignups = (
-  directSignups: readonly Signup[],
-): readonly Signup[] => {
+  directSignups: readonly DirectSignup[],
+): readonly DirectSignup[] => {
   const timeNow = getTimeNow();
 
   const upcomingProgramItems = directSignups.filter((directSignup) =>

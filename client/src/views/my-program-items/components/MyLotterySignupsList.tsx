@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { sortBy } from "lodash-es";
 import { getStartTimes } from "client/utils/getStartTimes";
 import { LotterySignupsByStartTimes } from "./LotterySignupsByStartTimes";
-import { Signup } from "shared/types/models/user";
+import { LotterySignup } from "shared/types/models/user";
 import { RaisedCard } from "client/components/RaisedCard";
 import { useAppSelector } from "client/utils/hooks";
 import {
@@ -12,7 +12,7 @@ import {
 } from "client/views/my-program-items/components/shared";
 
 interface Props {
-  lotterySignups: readonly Signup[];
+  lotterySignups: readonly LotterySignup[];
   isGroupCreator: boolean;
   isGroupMember: boolean;
 }

@@ -8,7 +8,7 @@ import {
   PostLotterySignupsErrorMessage,
   submitPostLotterySignups,
 } from "client/views/my-program-items/myProgramItemsThunks";
-import { Signup } from "shared/types/models/user";
+import { DirectSignup, LotterySignup } from "shared/types/models/user";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { isAlreadyLotterySigned } from "client/views/program-item/programItemUtils";
 import { Button, ButtonStyle } from "client/components/Button";
@@ -23,8 +23,8 @@ import { InfoText } from "client/components/InfoText";
 interface Props {
   programItem: ProgramItem;
   startTime: string;
-  lotterySignups: readonly Signup[];
-  directSignups: readonly Signup[];
+  lotterySignups: readonly LotterySignup[];
+  directSignups: readonly DirectSignup[];
 }
 
 enum ClientError {
@@ -62,8 +62,7 @@ export const LotterySignupProgramItem = ({
   ): Promise<void> => {
     setLoading(true);
     const newSignupData = lotterySignups.filter(
-      (g: Signup) =>
-        g.programItem.programItemId !== programItemToRemove.programItemId,
+      (g) => g.programItem.programItemId !== programItemToRemove.programItemId,
     );
 
     const error = await dispatch(

@@ -7,7 +7,11 @@ import {
   SignupType,
   UserSignup,
 } from "shared/types/models/programItem";
-import { Signup, UserGroup } from "shared/types/models/user";
+import {
+  DirectSignup,
+  LotterySignup,
+  UserGroup,
+} from "shared/types/models/user";
 import { RaisedCard } from "client/components/RaisedCard";
 import {
   isAlreadyDirectySigned,
@@ -26,8 +30,8 @@ interface Props {
   startTime: string;
   signups: UserSignup[];
   signupStrategy: ProgramItemSignupStrategy;
-  lotterySignups: readonly Signup[];
-  directSignups: readonly Signup[];
+  lotterySignups: readonly LotterySignup[];
+  directSignups: readonly DirectSignup[];
   isAlwaysExpanded: boolean;
   loading: boolean;
   setLoading: (loading: boolean) => void;

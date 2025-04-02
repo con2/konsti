@@ -17,7 +17,7 @@ import {
 } from "shared/types/api/users";
 import { ApiError } from "shared/types/api/errors";
 import { findUserDirectSignups } from "server/features/direct-signup/directSignupRepository";
-import { Signup } from "shared/types/models/user";
+import { DirectSignup } from "shared/types/models/user";
 import { isErrorResult, unwrapResult } from "shared/utils/result";
 import { config } from "shared/config";
 import { createSerial } from "server/features/user/userUtils";
@@ -259,7 +259,7 @@ export const fetchUserByUsername = async (
   const signups = unwrapResult(signupsResult);
 
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-  const directSignups: Signup[] = signups
+  const directSignups: DirectSignup[] = signups
     ? signups.flatMap((signup) => {
         const signupForUser = signup.userSignups.find(
           (userSignup) => userSignup.username === username,
