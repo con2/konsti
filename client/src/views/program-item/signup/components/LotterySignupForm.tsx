@@ -13,14 +13,14 @@ import { ErrorMessage } from "client/components/ErrorMessage";
 import { Dropdown } from "client/components/Dropdown";
 import { ButtonGroup } from "client/components/ButtonGroup";
 import { selectLotterySignups } from "client/views/my-program-items/myProgramItemsSlice";
-import { Signup } from "shared/types/models/user";
+import { DirectSignup, LotterySignup } from "shared/types/models/user";
 import { InfoText, InfoTextVariant } from "client/components/InfoText";
 
 interface Props {
   programItem: ProgramItem;
   startTime: string;
   onCancel: () => void;
-  directSignupForSlot?: Signup;
+  directSignupForSlot?: DirectSignup;
 }
 
 const OPTIONS = [1, 2, 3];
@@ -72,7 +72,7 @@ export const LotterySignupForm = ({
       return;
     }
 
-    const newProgramItem: Signup = {
+    const newProgramItem: LotterySignup = {
       programItem,
       priority,
       time: programItem.startTime,

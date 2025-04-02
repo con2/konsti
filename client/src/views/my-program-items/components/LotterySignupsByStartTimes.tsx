@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { capitalize } from "lodash-es";
 import { useTranslation } from "react-i18next";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
-import { Signup } from "shared/types/models/user";
+import { LotterySignup } from "shared/types/models/user";
 import { PopularityInfo } from "client/components/PopularityInfo";
 import {
   MyProgramButtonContainer,
@@ -17,7 +17,7 @@ import { TertiaryButton } from "client/components/TertiaryButton";
 import { AppRoute } from "client/app/AppRoutes";
 
 interface Props {
-  lotterySignups: Signup[];
+  lotterySignups: LotterySignup[];
   startTimes: readonly string[];
 }
 

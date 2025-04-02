@@ -3,7 +3,7 @@ import { PadgRandomAssignResult } from "server/types/padgRandomAssignTypes";
 import { logger } from "server/utils/logger";
 import { AssignmentError } from "shared/types/api/errors";
 import { UserAssignmentResult } from "shared/types/models/result";
-import { Signup, User } from "shared/types/models/user";
+import { DirectSignup, User } from "shared/types/models/user";
 import {
   Result,
   makeErrorResult,
@@ -35,7 +35,7 @@ export const formatResults = (
     })
     .flat();
 
-  const getDirectSignup = (attendee: User): Signup | undefined => {
+  const getDirectSignup = (attendee: User): DirectSignup | undefined => {
     return attendee.lotterySignups.find((lotterySignup) => {
       return assignResults.find(
         (assignResult) =>

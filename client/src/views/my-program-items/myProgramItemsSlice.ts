@@ -2,8 +2,9 @@ import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { MyProgramItemsState, RootState } from "client/types/reduxTypes";
 import { selectProgramItems } from "client/views/all-program-items/allProgramItemsSlice";
 import {
+  DirectSignup,
   FavoriteProgramItemId,
-  Signup,
+  LotterySignup,
   UserProgramItems,
 } from "shared/types/models/user";
 
@@ -41,14 +42,14 @@ const myProgramItemsSlice = createSlice({
 
     submitPostLotterySignupsAsync(
       state,
-      action: PayloadAction<readonly Signup[]>,
+      action: PayloadAction<readonly LotterySignup[]>,
     ): MyProgramItemsState {
       return { ...state, lotterySignups: action.payload };
     },
 
     submitPostDirectSignupAsync(
       state,
-      action: PayloadAction<Signup>,
+      action: PayloadAction<DirectSignup>,
     ): MyProgramItemsState {
       const directSignups = [...state.directSignups, action.payload];
       return { ...state, directSignups };
@@ -79,11 +80,13 @@ export const myProgramItemsReducer = myProgramItemsSlice.reducer;
 
 // SELECTORS
 
-export const selectDirectSignups = (state: RootState): readonly Signup[] =>
-  state.myProgramItems.directSignups;
+export const selectDirectSignups = (
+  state: RootState,
+): readonly DirectSignup[] => state.myProgramItems.directSignups;
 
-export const selectLotterySignups = (state: RootState): readonly Signup[] =>
-  state.myProgramItems.lotterySignups;
+export const selectLotterySignups = (
+  state: RootState,
+): readonly LotterySignup[] => state.myProgramItems.lotterySignups;
 
 const selectFavoriteProgramItemIds = (
   state: RootState,

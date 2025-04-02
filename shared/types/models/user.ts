@@ -2,14 +2,24 @@ import { z } from "zod";
 import { EventLogItem } from "shared/types/models/eventLog";
 import { ProgramItemSchema } from "shared/types/models/programItem";
 
-export const SignupSchema = z.object({
+export const LotterySignupSchema = z.object({
   programItem: ProgramItemSchema,
   priority: z.number(),
   time: z.string(),
   message: z.string(),
 });
 
-export type Signup = z.infer<typeof SignupSchema>;
+export type LotterySignup = z.infer<typeof LotterySignupSchema>;
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const DirectSignupSchema = z.object({
+  programItem: ProgramItemSchema,
+  priority: z.number(),
+  time: z.string(),
+  message: z.string(),
+});
+
+export type DirectSignup = z.infer<typeof DirectSignupSchema>;
 
 export enum UserGroup {
   USER = "user",
@@ -29,15 +39,15 @@ export interface User {
   groupCode: string;
   groupCreatorCode: string;
   favoriteProgramItemIds: readonly FavoriteProgramItemId[];
-  lotterySignups: readonly Signup[];
+  lotterySignups: readonly LotterySignup[];
   createdAt: string;
   eventLogItems: EventLogItem[];
 }
 
 export interface UserProgramItems {
-  directSignups: readonly Signup[];
+  directSignups: readonly DirectSignup[];
   favoriteProgramItemIds: readonly string[];
-  lotterySignups: readonly Signup[];
+  lotterySignups: readonly LotterySignup[];
 }
 
 export interface NewFavorite {

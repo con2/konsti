@@ -1,6 +1,6 @@
 import { logger } from "server/utils/logger";
 import { ResultsModel } from "server/features/results/resultsSchema";
-import { NewSignup } from "server/types/resultTypes";
+import { NewDirectSignup } from "server/types/resultTypes";
 import { findProgramItems } from "server/features/program-item/programItemRepository";
 import { UserAssignmentResult } from "shared/types/models/result";
 import {
@@ -25,7 +25,7 @@ export const removeResults = async (): Promise<Result<void, MongoDbError>> => {
 };
 
 type NewAssignmentResult = Omit<UserAssignmentResult, "directSignup"> & {
-  directSignup: NewSignup;
+  directSignup: NewDirectSignup;
 };
 
 export const saveResult = async (

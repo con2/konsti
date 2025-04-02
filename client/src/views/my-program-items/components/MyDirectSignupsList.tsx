@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { sortBy, uniq } from "lodash-es";
 import { DirectSignupsByStartTimes } from "./DirectSignupsByStartTimes";
 import { getMissedSignups } from "client/views/my-program-items/utils/getMissedSignups";
-import { Signup } from "shared/types/models/user";
+import { DirectSignup, LotterySignup } from "shared/types/models/user";
 import { config } from "shared/config";
 import { RaisedCard } from "client/components/RaisedCard";
 import {
@@ -12,8 +12,8 @@ import {
 } from "client/views/my-program-items/components/shared";
 
 interface Props {
-  directSignups: readonly Signup[];
-  lotterySignups: readonly Signup[];
+  directSignups: readonly DirectSignup[];
+  lotterySignups: readonly LotterySignup[];
 }
 
 export const MyDirectSignupsList = ({

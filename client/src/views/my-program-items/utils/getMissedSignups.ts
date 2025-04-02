@@ -2,11 +2,11 @@ import dayjs from "dayjs";
 import { getStartTimes } from "client/utils/getStartTimes";
 import { config } from "shared/config";
 import { getTimeNow } from "client/utils/getTimeNow";
-import { Signup } from "shared/types/models/user";
+import { DirectSignup, LotterySignup } from "shared/types/models/user";
 
 export const getMissedSignups = (
-  lotterySignups: readonly Signup[],
-  directSignups: readonly Signup[],
+  lotterySignups: readonly LotterySignup[],
+  directSignups: readonly DirectSignup[],
 ): string[] => {
   // Wait this long before showing "you didn't get into program item"
   // TODO: Instead of hard-coding, figure dynamically if assignment is still running

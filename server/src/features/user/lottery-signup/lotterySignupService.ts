@@ -4,14 +4,14 @@ import {
   PostLotterySignupsError,
   PostLotterSignupsResponse,
 } from "shared/types/api/myProgramItems";
-import { Signup } from "shared/types/models/user";
+import { LotterySignup } from "shared/types/models/user";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
 import { hasSignupEnded } from "server/features/user/userUtils";
 import { isErrorResult, unwrapResult } from "shared/utils/result";
 
 export const storeLotterySignups = async (
-  lotterySignups: readonly Signup[],
+  lotterySignups: readonly LotterySignup[],
   username: string,
   signupEndTime: string,
 ): Promise<PostLotterSignupsResponse | PostLotterySignupsError> => {

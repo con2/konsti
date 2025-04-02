@@ -7,7 +7,7 @@ import {
 import { DirectSignupProgramItem } from "client/views/program-item/signup/components/DirectSignupProgramItem";
 import { LotterySignupProgramItem } from "client/views/program-item/signup/components/LotterySignupProgramItem";
 import { config } from "shared/config";
-import { Signup } from "shared/types/models/user";
+import { DirectSignup, LotterySignup } from "shared/types/models/user";
 import { SignupHelpText } from "client/views/program-item/signup/components/SignupHelpText";
 import { getTimeNow } from "client/utils/getTimeNow";
 import { isAlreadyDirectySigned } from "client/views/program-item/programItemUtils";
@@ -17,8 +17,8 @@ import { getDirectSignupEndTime } from "shared/utils/signupTimes";
 interface Props {
   signupStrategy: ProgramItemSignupStrategy;
   startTime: string;
-  lotterySignups: readonly Signup[];
-  directSignups: readonly Signup[];
+  lotterySignups: readonly LotterySignup[];
+  directSignups: readonly DirectSignup[];
   programItem: ProgramItem;
   attendees: number;
   loading: boolean;

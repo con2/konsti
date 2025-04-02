@@ -6,7 +6,7 @@ import { updateProgramItemPopularity } from "server/features/program-item-popula
 import { ProgramItem } from "shared/types/models/programItem";
 import { findUsers } from "server/features/user/userRepository";
 import { findProgramItems } from "server/features/program-item/programItemRepository";
-import { Signup, User } from "shared/types/models/user";
+import { LotterySignup, User } from "shared/types/models/user";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { config } from "shared/config";
@@ -42,8 +42,8 @@ export const createLotterySignups = async (): Promise<void> => {
 
 const getRandomLotterySignup = (
   programItems: readonly ProgramItem[],
-): Signup[] => {
-  const lotterySignups: Signup[] = [];
+): LotterySignup[] => {
+  const lotterySignups: LotterySignup[] = [];
   let randomIndex;
 
   const { twoPhaseSignupProgramTypes, noKonstiSignupIds } = config.event();

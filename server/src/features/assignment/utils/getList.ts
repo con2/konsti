@@ -2,7 +2,7 @@ import { first } from "lodash-es";
 import dayjs from "dayjs";
 import { ListItem } from "server/types/padgRandomAssignTypes";
 import { getAssignmentBonus } from "server/features/assignment/utils/getAssignmentBonus";
-import { Signup, User } from "shared/types/models/user";
+import { LotterySignup, User } from "shared/types/models/user";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import { logger } from "server/utils/logger";
 import {
@@ -82,7 +82,7 @@ export const getList = ({
 };
 
 const getGain = (
-  lotterySignup: Signup,
+  lotterySignup: LotterySignup,
   attendeeGroup: User[],
   directSignups: readonly DirectSignupsForProgramItem[],
   lotterySignupProgramItems: readonly ProgramItem[],

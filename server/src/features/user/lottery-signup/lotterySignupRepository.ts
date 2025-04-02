@@ -1,6 +1,6 @@
 import { findProgramItems } from "server/features/program-item/programItemRepository";
 import { UserModel } from "server/features/user/userSchema";
-import { NewSignup, UserLotterySignups } from "server/types/resultTypes";
+import { NewLotterySignup, UserLotterySignups } from "server/types/resultTypes";
 import { logger } from "server/utils/logger";
 import { MongoDbError } from "shared/types/api/errors";
 import { User } from "shared/types/models/user";
@@ -25,7 +25,7 @@ export const saveLotterySignups = async (
 
   const programItems = unwrapResult(programItemsResult);
 
-  const formattedData = lotterySignups.reduce<NewSignup[]>(
+  const formattedData = lotterySignups.reduce<NewLotterySignup[]>(
     (acc, lotterySignup) => {
       const programItemDocInDb = programItems.find(
         (programItem) =>

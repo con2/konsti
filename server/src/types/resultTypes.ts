@@ -1,6 +1,6 @@
 import mongoose, { ObjectId } from "mongoose";
 import { ProgramItem } from "shared/types/models/programItem";
-import { Signup, User } from "shared/types/models/user";
+import { DirectSignup, LotterySignup, User } from "shared/types/models/user";
 import { UserAssignmentResult } from "shared/types/models/result";
 import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
 
@@ -12,13 +12,18 @@ export interface ResultDoc
 }
 
 // For saving new signups to DB where program item is replaced with ObjectId _id
-export type NewSignup = Omit<Signup, "programItem"> & {
+export type NewLotterySignup = Omit<LotterySignup, "programItem"> & {
+  programItem: ObjectId;
+};
+
+// For saving new signups to DB where program item is replaced with ObjectId _id
+export type NewDirectSignup = Omit<DirectSignup, "programItem"> & {
   programItem: ObjectId;
 };
 
 export interface UserLotterySignups {
   username: string;
-  lotterySignups: readonly Signup[];
+  lotterySignups: readonly LotterySignup[];
 }
 
 export enum AssignmentResultStatus {
