@@ -21,7 +21,7 @@ export const InfoText = ({
   <p className={className}>
     <Container $variant={variant ?? InfoTextVariant.INFO}>
       {variant === InfoTextVariant.WARNING && (
-        <StyledIcon $color={`${variant}Icon`} icon={"triangle-exclamation"} />
+        <StyledIcon $variant={variant} icon={"triangle-exclamation"} />
       )}
       {children}
     </Container>
@@ -29,7 +29,7 @@ export const InfoText = ({
 );
 
 const Container = styled.span<{
-  $variant: string;
+  $variant: InfoTextVariant;
 }>`
   display: inline-block;
   padding: 8px 6px;
@@ -37,17 +37,18 @@ const Container = styled.span<{
 
   ${(props) =>
     `
-  border: 1px solid  ${props.theme[props.$variant]};
-  background-color: ${props.theme[`${props.$variant}Background`]};
-    `}
+    border: 1px solid  ${props.theme[props.$variant]};
+    background-color: ${props.theme[`${props.$variant}Background`]};
+  `}
 `;
 
 const StyledIcon = styled(FontAwesomeIcon)<{
-  $color: string;
+  $variant: InfoTextVariant.WARNING;
 }>`
   padding-right: 8px;
-  color: ${(props) =>
-    props.theme[ // eslint-disable-line @typescript-eslint/no-unsafe-return
-      props.$color
-    ]};
+
+  ${(props) =>
+    `
+      color: ${props.theme[`${props.$variant}Icon`]};
+  `}
 `;

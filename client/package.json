@@ -30,7 +30,7 @@
     "@fortawesome/free-solid-svg-icons": "6.7.2",
     "@fortawesome/react-fontawesome": "0.2.2",
     "@reduxjs/toolkit": "2.6.1",
-    "@sentry/react": "9.10.1",
+    "@sentry/react": "9.11.0",
     "browserslist": "4.24.4",
     "core-js": "3.41.0",
     "i18next": "24.2.3",
@@ -42,7 +42,7 @@
     "react-redux": "9.2.0",
     "react-router": "7.4.1",
     "regenerator-runtime": "0.14.1",
-    "styled-components": "6.1.16",
+    "styled-components": "6.1.17",
     "use-debounce": "10.0.4"
   },
   "devDependencies": {
@@ -58,8 +58,8 @@
     "@pmmmwh/react-refresh-webpack-plugin": "0.5.16",
     "@types/dotenv-webpack": "7.0.8",
     "@types/mdx": "2.0.13",
-    "@types/react": "19.0.12",
-    "@types/react-dom": "19.0.4",
+    "@types/react": "19.1.0",
+    "@types/react-dom": "19.1.1",
     "@welldone-software/why-did-you-render": "10.0.1",
     "babel-loader": "10.0.0",
     "babel-plugin-module-resolver": "5.0.2",
