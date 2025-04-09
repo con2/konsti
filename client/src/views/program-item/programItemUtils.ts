@@ -23,7 +23,7 @@ export const isAlreadyDirectySigned = (
   directSignups: readonly DirectSignup[],
 ): boolean => {
   return directSignups.some(
-    (g) => g.programItem.programItemId === programItemToCheck.programItemId,
+    (g) => g.programItemId === programItemToCheck.programItemId,
   );
 };
 

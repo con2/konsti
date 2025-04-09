@@ -1,9 +1,6 @@
 import { differenceBy } from "lodash-es";
 import dayjs, { Dayjs } from "dayjs";
-import {
-  findProgramItems,
-  removeProgramItems,
-} from "server/features/program-item/programItemRepository";
+import { removeProgramItems } from "server/features/program-item/programItemRepository";
 import { ProgramItemDoc } from "server/types/programItemTypes";
 import { logger } from "server/utils/logger";
 import {
@@ -32,18 +29,14 @@ import {
 import { MongoDbError } from "shared/types/api/errors";
 import { tooEarlyForLotterySignup } from "shared/utils/tooEarlyForLotterySignup";
 import { UserGroup } from "shared/types/models/user";
+import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
 
 export const removeDeletedProgramItems = async (
   updatedProgramItems: readonly ProgramItem[],
+  currentProgramItems: readonly ProgramItem[],
 ): Promise<Result<number, MongoDbError>> => {
   logger.info("Remove deleted program items");
 
-  const currentProgramItemsResult = await findProgramItems();
-  if (isErrorResult(currentProgramItemsResult)) {
-    return currentProgramItemsResult;
-  }
-
-  const currentProgramItems = unwrapResult(currentProgramItemsResult);
   const deletedProgramItems = differenceBy(
     currentProgramItems,
     updatedProgramItems,
@@ -135,7 +128,7 @@ const getSignupStrategyForProgramItem = (
   currentTime: Dayjs,
 ): ProgramItemSignupStrategy => {
   const start = dayjs(programItem.startTime);
-  const { directSignupPhaseStart, twoPhaseSignupProgramTypes } = config.event();
+  const { directSignupPhaseStart } = config.event();
 
   // lottery
 
@@ -151,7 +144,7 @@ const getSignupStrategyForProgramItem = (
 
   // lottery+direct
 
-  if (!twoPhaseSignupProgramTypes.includes(programItem.programType)) {
+  if (!isLotterySignupProgramItem(programItem)) {
     return ProgramItemSignupStrategy.DIRECT;
   }
 
@@ -179,7 +172,7 @@ const getDirectSignupsForProgramItem = (
   const { hideParticipantListProgramTypes } = config.event();
 
   const directSignupsForProgramItem = directSignups.filter(
-    (signup) => signup.programItem.programItemId === programItemId,
+    (signup) => signup.programItemId === programItemId,
   );
 
   const formattedDirectSignupsForProgramItem =

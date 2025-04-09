@@ -35,15 +35,14 @@ export const fetchSignupMessages = async (): Promise<
     return signup.userSignups.flatMap((userSignup) => {
       if (userSignup.message) {
         const signupQuestion = settings.signupQuestions.find(
-          (question) =>
-            question.programItemId === signup.programItem.programItemId,
+          (question) => question.programItemId === signup.programItemId,
         );
         if (!signupQuestion) {
           return [];
         }
 
         return {
-          programItemId: signup.programItem.programItemId,
+          programItemId: signup.programItemId,
           username: userSignup.username,
           message: userSignup.message,
           private: signupQuestion.private,

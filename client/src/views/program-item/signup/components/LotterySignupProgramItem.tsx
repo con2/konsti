@@ -8,7 +8,7 @@ import {
   PostLotterySignupsErrorMessage,
   submitPostLotterySignups,
 } from "client/views/my-program-items/myProgramItemsThunks";
-import { DirectSignup, LotterySignup } from "shared/types/models/user";
+import { LotterySignup } from "shared/types/models/user";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { isAlreadyLotterySigned } from "client/views/program-item/programItemUtils";
 import { Button, ButtonStyle } from "client/components/Button";
@@ -19,12 +19,13 @@ import { config } from "shared/config";
 import { getLotterySignupStartTime } from "shared/utils/signupTimes";
 import { getIsInGroup } from "client/views/group/groupUtils";
 import { InfoText } from "client/components/InfoText";
+import { DirectSignupWithProgramItem } from "client/views/my-program-items/myProgramItemsSlice";
 
 interface Props {
   programItem: ProgramItem;
   startTime: string;
   lotterySignups: readonly LotterySignup[];
-  directSignups: readonly DirectSignup[];
+  directSignups: readonly DirectSignupWithProgramItem[];
 }
 
 enum ClientError {

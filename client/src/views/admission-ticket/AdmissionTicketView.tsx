@@ -24,7 +24,7 @@ export const AdmissionTicketView = (): ReactElement => {
   const directSignups = useAppSelector(selectDirectSignups);
 
   const isSignedUp = directSignups.some(
-    (ds) => ds.programItem.programItemId === programItemId,
+    (ds) => ds.programItemId === programItemId,
   );
 
   const username = useAppSelector((state) => state.login.username);

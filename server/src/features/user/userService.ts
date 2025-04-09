@@ -258,23 +258,20 @@ export const fetchUserByUsername = async (
 
   const signups = unwrapResult(signupsResult);
 
-  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-  const directSignups: DirectSignup[] = signups
-    ? signups.flatMap((signup) => {
-        const signupForUser = signup.userSignups.find(
-          (userSignup) => userSignup.username === username,
-        );
-        if (!signupForUser) {
-          return [];
-        }
-        return {
-          programItem: signup.programItem,
-          priority: signupForUser.priority,
-          time: signupForUser.time,
-          message: signupForUser.message,
-        };
-      })
-    : [];
+  const directSignups: DirectSignup[] = signups.flatMap((signup) => {
+    const signupForUser = signup.userSignups.find(
+      (userSignup) => userSignup.username === username,
+    );
+    if (!signupForUser) {
+      return [];
+    }
+    return {
+      programItemId: signup.programItemId,
+      priority: signupForUser.priority,
+      time: signupForUser.time,
+      message: signupForUser.message,
+    };
+  });
 
   return {
     message: "Getting user data success",

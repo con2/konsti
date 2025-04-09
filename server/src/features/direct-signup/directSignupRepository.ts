@@ -1,6 +1,5 @@
 import dayjs from "dayjs";
 import { groupBy, shuffle } from "lodash-es";
-import { ObjectId } from "mongoose";
 import {
   findProgramItemById,
   findProgramItems,
@@ -14,9 +13,7 @@ import {
 } from "server/features/direct-signup/directSignupTypes";
 import { SignupModel } from "server/features/direct-signup/directSignupSchema";
 import { logger } from "server/utils/logger";
-import { config } from "shared/config";
 import { MongoDbError } from "shared/types/api/errors";
-import { ProgramType } from "shared/types/models/programItem";
 import {
   Result,
   isErrorResult,
@@ -24,6 +21,7 @@ import {
   makeSuccessResult,
   unwrapResult,
 } from "shared/utils/result";
+import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
 
 export const removeDirectSignups = async (): Promise<
   Result<void, MongoDbError>
@@ -45,9 +43,7 @@ export const findDirectSignups = async (): Promise<
     const results = await SignupModel.find(
       {},
       "-createdAt -updatedAt -_id -__v -userSignups._id",
-    )
-      .lean<DirectSignupsForProgramItem[]>()
-      .populate("programItem", "-createdAt -updatedAt -_id -__v");
+    ).lean<DirectSignupsForProgramItem[]>();
 
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (!results) {
@@ -57,20 +53,17 @@ export const findDirectSignups = async (): Promise<
 
     logger.debug(`MongoDB: Direct signups found`);
 
-    const resultsWithFormattedTime = results
-      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-      .filter((result) => result.programItem) // Filter results with failed populate
-      .map((result) => {
-        return {
-          ...result,
-          userSignups: result.userSignups.map((userSignup) => {
-            return {
-              ...userSignup,
-              time: dayjs(userSignup.time).toISOString(),
-            };
-          }),
-        };
-      });
+    const resultsWithFormattedTime = results.map((result) => {
+      return {
+        ...result,
+        userSignups: result.userSignups.map((userSignup) => {
+          return {
+            ...userSignup,
+            time: dayjs(userSignup.time).toISOString(),
+          };
+        }),
+      };
+    });
     return makeSuccessResult(resultsWithFormattedTime);
   } catch (error) {
     logger.error("MongoDB: Error finding direct signups: %s", error);
@@ -82,8 +75,7 @@ interface FindDirectSignupsByProgramTypesResponse extends UserDirectSignup {
   programItemId: string;
 }
 
-export const findDirectSignupsByProgramTypes = async (
-  programTypes: ProgramType[],
+export const findDirectSignupsByStartTime = async (
   startTime: string,
 ): Promise<Result<FindDirectSignupsByProgramTypesResponse[], MongoDbError>> => {
   const programItemsResult = await findProgramItems();
@@ -92,20 +84,19 @@ export const findDirectSignupsByProgramTypes = async (
   }
   const programItems = unwrapResult(programItemsResult);
 
-  const programItemsByProgramTypesForStartTimeObjectIds = programItems
+  const programItemsByProgramTypesForStartTimeIds = programItems
     .filter((programItem) =>
       dayjs(programItem.startTime).isSame(dayjs(startTime)),
     )
-    .filter((programItem) => programTypes.includes(programItem.programType))
-    .map((programItem) => programItem._id);
+    .map((programItem) => programItem.programItemId);
 
   try {
     const signups = await SignupModel.find(
-      { programItem: { $in: programItemsByProgramTypesForStartTimeObjectIds } },
+      {
+        programItemId: { $in: programItemsByProgramTypesForStartTimeIds },
+      },
       "-createdAt -updatedAt -_id -__v",
-    )
-      .lean<DirectSignupsForProgramItem[]>()
-      .populate("programItem", "-createdAt -updatedAt -_id -__v");
+    ).lean<DirectSignupsForProgramItem[]>();
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (!signups) {
       logger.info(`MongoDB: Signups for time ${startTime} not found`);
@@ -118,7 +109,7 @@ export const findDirectSignupsByProgramTypes = async (
       signups.flatMap((signup) => {
         return signup.userSignups.map((userSignup) => ({
           ...userSignup,
-          programItemId: signup.programItem.programItemId,
+          programItemId: signup.programItemId,
         }));
       });
 
@@ -138,10 +129,8 @@ export const findUserDirectSignups = async (
   try {
     const response = await SignupModel.find(
       { "userSignups.username": username },
-      "-createdAt -updatedAt -_id -__v",
-    )
-      .lean<DirectSignupsForProgramItem[]>()
-      .populate("programItem", "-createdAt -updatedAt -_id -__v");
+      "-createdAt -updatedAt -_id -__v -userSignups._id",
+    ).lean<DirectSignupsForProgramItem[]>();
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (!response) {
       logger.info(`MongoDB: Signups for user ${username} not found`);
@@ -177,7 +166,7 @@ export const saveDirectSignup = async (
   try {
     const signup = await SignupModel.findOneAndUpdate(
       {
-        programItem: programItem._id,
+        programItemId: directSignupProgramItemId,
         count: { $lt: programItem.maxAttendance },
         "userSignups.username": { $ne: username },
       },
@@ -196,12 +185,10 @@ export const saveDirectSignup = async (
         new: true,
         fields: "-userSignups._id -_id -__v -createdAt -updatedAt",
       },
-    )
-      .lean<DirectSignupsForProgramItem>()
-      .populate("programItem");
+    ).lean<DirectSignupsForProgramItem>();
     if (!signup) {
       logger.warn(
-        `Saving signup for user ${username} failed: program item ${programItem.programItemId} not found or program item full`,
+        `Saving signup for user '${username}' failed: program item '${directSignupProgramItemId}' not found or program item full`,
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
@@ -209,7 +196,7 @@ export const saveDirectSignup = async (
     return makeSuccessResult(signup);
   } catch (error) {
     logger.error(
-      `MongoDB: Error saving signup for user ${username}: %s`,
+      `MongoDB: Error saving signup for user '${username}': %s`,
       error,
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
@@ -259,7 +246,7 @@ export const saveDirectSignups = async (
       return {
         updateOne: {
           filter: {
-            programItem: programItem._id,
+            programItemId: programItem.programItemId,
           },
           update: {
             $addToSet: {
@@ -306,7 +293,10 @@ export const delDirectSignup = async (
 
   try {
     const signup = await SignupModel.findOneAndUpdate(
-      { programItem: programItem._id, "userSignups.username": username },
+      {
+        programItemId: programItem.programItemId,
+        "userSignups.username": username,
+      },
       {
         $pull: {
           userSignups: {
@@ -316,9 +306,7 @@ export const delDirectSignup = async (
         $inc: { count: -1 },
       },
       { new: true, fields: "-userSignups._id -_id -__v -createdAt -updatedAt" },
-    )
-      .lean<DirectSignupsForProgramItem>()
-      .populate("programItem", "-createdAt -updatedAt -_id -__v");
+    ).lean<DirectSignupsForProgramItem>();
 
     if (!signup) {
       logger.error(
@@ -362,25 +350,9 @@ export const delDirectSignup = async (
 export const delDirectSignupDocumentsByProgramItemIds = async (
   programItemIds: string[],
 ): Promise<Result<void, MongoDbError>> => {
-  const programItemsResult = await findProgramItems();
-  if (isErrorResult(programItemsResult)) {
-    return programItemsResult;
-  }
-  const programItems = unwrapResult(programItemsResult);
-
-  const programItemsInDb = programItemIds.map((programItemId) =>
-    programItems.find(
-      (programItem) => programItem.programItemId === programItemId,
-    ),
-  );
-
-  const programItemObjectIds = programItemsInDb.flatMap(
-    (programItemInDb) => programItemInDb?._id ?? [],
-  );
-
   try {
     await SignupModel.deleteMany({
-      programItem: { $in: programItemObjectIds },
+      programItemId: { $in: programItemIds },
     });
     return makeSuccessResult(undefined);
   } catch (error) {
@@ -395,26 +367,10 @@ export const delDirectSignupDocumentsByProgramItemIds = async (
 export const resetDirectSignupsByProgramItemIds = async (
   programItemIds: string[],
 ): Promise<Result<void, MongoDbError>> => {
-  const programItemsResult = await findProgramItems();
-  if (isErrorResult(programItemsResult)) {
-    return programItemsResult;
-  }
-  const programItems = unwrapResult(programItemsResult);
-
-  const programItemsInDb = programItemIds.map((programItemId) =>
-    programItems.find(
-      (programItem) => programItem.programItemId === programItemId,
-    ),
-  );
-
-  const programItemObjectIds = programItemsInDb.flatMap(
-    (programItemInDb) => programItemInDb?._id ?? [],
-  );
-
   try {
     await SignupModel.updateMany(
       {
-        programItem: { $in: programItemObjectIds },
+        programItemId: { $in: programItemIds },
       },
       { userSignups: [], count: 0 },
     );
@@ -438,22 +394,14 @@ export const delAssignmentDirectSignupsByStartTime = async (
   const programItems = unwrapResult(programItemsResult);
 
   // Only remove "twoPhaseSignupProgramTypes" signups and don't remove "directSignupAlwaysOpen" signups
-  const doNotRemoveProgramItemObjectIds = programItems
-    .filter(
-      (programItem) =>
-        config
-          .event()
-          .directSignupAlwaysOpenIds.includes(programItem.programItemId) ||
-        !config
-          .event()
-          .twoPhaseSignupProgramTypes.includes(programItem.programType),
-    )
-    .map((programItem) => programItem._id);
+  const doNotRemoveProgramItemIds = programItems
+    .filter((programItem) => !isLotterySignupProgramItem(programItem))
+    .map((programItem) => programItem.programItemId);
 
   try {
     await SignupModel.updateMany(
       {
-        programItem: { $nin: doNotRemoveProgramItemObjectIds },
+        programItemId: { $nin: doNotRemoveProgramItemIds },
       },
       [
         {
@@ -483,11 +431,11 @@ export const delAssignmentDirectSignupsByStartTime = async (
 };
 
 export const createEmptyDirectSignupDocumentForProgramItems = async (
-  programItemObjectIds: ObjectId[],
+  programItemIds: string[],
 ): Promise<Result<void, MongoDbError>> => {
-  const signupDocs = programItemObjectIds.map((programItemObjectId) => {
+  const signupDocs = programItemIds.map((programItemId) => {
     return new SignupModel({
-      programItem: programItemObjectId,
+      programItemId,
       userSignups: [],
       count: 0,
     });
@@ -496,12 +444,12 @@ export const createEmptyDirectSignupDocumentForProgramItems = async (
   try {
     await SignupModel.create(signupDocs);
     logger.info(
-      `MongoDB: Signup collection created for ${programItemObjectIds.length} program items `,
+      `MongoDB: Signup collection created for ${programItemIds.length} program items `,
     );
     return makeSuccessResult(undefined);
   } catch (error) {
     logger.error(
-      `MongoDB: Creating signup collection for ${programItemObjectIds.length} program items failed: %s`,
+      `MongoDB: Creating signup collection for ${programItemIds.length} program items failed: %s`,
       error,
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);

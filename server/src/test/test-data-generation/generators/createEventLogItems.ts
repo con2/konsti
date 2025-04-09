@@ -5,12 +5,12 @@ import { addEventLogItems } from "server/features/user/event-log/eventLogReposit
 import { findUsers } from "server/features/user/userRepository";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { EventLogAction } from "shared/types/models/eventLog";
-import { config } from "shared/config";
+import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
 
 export const createEventLogItems = async (): Promise<void> => {
   const programItems = unsafelyUnwrap(await findProgramItems());
   const twoPhaseSignups = programItems.filter((programItem) =>
-    config.event().twoPhaseSignupProgramTypes.includes(programItem.programType),
+    isLotterySignupProgramItem(programItem),
   );
 
   const allUsers = unsafelyUnwrap(await findUsers());

@@ -13,7 +13,7 @@ export type LotterySignup = z.infer<typeof LotterySignupSchema>;
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const DirectSignupSchema = z.object({
-  programItem: ProgramItemSchema,
+  programItemId: z.string(),
   priority: z.number(),
   time: z.string(),
   message: z.string(),

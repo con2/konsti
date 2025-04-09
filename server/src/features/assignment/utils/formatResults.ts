@@ -1,5 +1,5 @@
 import { first } from "lodash-es";
-import { PadgRandomAssignResult } from "server/types/padgRandomAssignTypes";
+import { PadgRandomAssignResult } from "server/types/assignmentTypes";
 import { logger } from "server/utils/logger";
 import { AssignmentError } from "shared/types/api/errors";
 import { UserAssignmentResult } from "shared/types/models/result";
@@ -36,7 +36,7 @@ export const formatResults = (
     .flat();
 
   const getDirectSignup = (attendee: User): DirectSignup | undefined => {
-    return attendee.lotterySignups.find((lotterySignup) => {
+    const foundSignup = attendee.lotterySignups.find((lotterySignup) => {
       return assignResults.find(
         (assignResult) =>
           (assignResult.id === attendee.groupCode ||
@@ -44,6 +44,17 @@ export const formatResults = (
           assignResult.assignment === lotterySignup.programItem.programItemId,
       );
     });
+
+    if (!foundSignup) {
+      return undefined;
+    }
+
+    return {
+      programItemId: foundSignup.programItem.programItemId,
+      priority: foundSignup.priority,
+      time: foundSignup.time,
+      message: foundSignup.message,
+    };
   };
 
   const results = selectedAttendees.reduce<UserAssignmentResult[]>(

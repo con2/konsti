@@ -2,8 +2,9 @@ import dayjs from "dayjs";
 import { GroupMember } from "shared/types/models/groups";
 import { ProgramItem } from "shared/types/models/programItem";
 import { getTimeNow } from "client/utils/getTimeNow";
-import { DirectSignup, LotterySignup } from "shared/types/models/user";
+import { LotterySignup } from "shared/types/models/user";
 import { getDirectSignupEndTime } from "shared/utils/signupTimes";
+import { DirectSignupWithProgramItem } from "client/views/my-program-items/myProgramItemsSlice";
 
 export const getUpcomingProgramItems = (
   programItems: readonly ProgramItem[],
@@ -81,8 +82,8 @@ export const getLotterySignups = ({
 };
 
 export const getUpcomingDirectSignups = (
-  directSignups: readonly DirectSignup[],
-): readonly DirectSignup[] => {
+  directSignups: readonly DirectSignupWithProgramItem[],
+): readonly DirectSignupWithProgramItem[] => {
   const timeNow = getTimeNow();
 
   const upcomingProgramItems = directSignups.filter((directSignup) =>

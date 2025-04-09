@@ -7,29 +7,15 @@ import { ProgramItem } from "shared/types/models/programItem";
 
 export const getAssignmentBonus = (
   attendeeGroup: User[],
-  directSignups: readonly DirectSignupsForProgramItem[],
+  lotteryValidDirectSignups: readonly DirectSignupsForProgramItem[],
   lotterySignupProgramItems: readonly ProgramItem[],
 ): number => {
-  const { twoPhaseSignupProgramTypes, directSignupAlwaysOpenIds } =
-    config.event();
-
-  // Take program items with "twoPhaseSignupProgramTypes" which are not in "directSignupAlwaysOpenIds"
-  const bonusAffectingDirectSignupsProgramItems = directSignups.filter(
-    (directSignup) =>
-      twoPhaseSignupProgramTypes.includes(
-        directSignup.programItem.programType,
-      ) &&
-      !directSignupAlwaysOpenIds.includes(
-        directSignup.programItem.programItemId,
-      ),
-  );
-
   /** First time bonus */
 
   // Get group members with direct signups or NEW_ASSIGNMENT event log items
   const [groupMembersWithDirectSignups, groupMembersWithoutDirectSignups] =
     partition(attendeeGroup, (groupMember) => {
-      const previousDirectSignup = bonusAffectingDirectSignupsProgramItems.find(
+      const previousDirectSignup = lotteryValidDirectSignups.find(
         (programItem) => {
           return programItem.userSignups.find(
             (userSignup) => userSignup.username === groupMember.username,

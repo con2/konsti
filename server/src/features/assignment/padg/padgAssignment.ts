@@ -23,7 +23,7 @@ export const padgAssignment = (
   users: readonly User[],
   programItems: readonly ProgramItem[],
   startTime: string,
-  directSignups: readonly DirectSignupsForProgramItem[],
+  lotteryValidDirectSignups: readonly DirectSignupsForProgramItem[],
 ): Result<AssignmentResult, AssignmentError> => {
   logger.debug(`***** Run Padg Assignment for ${startTime}`);
   const startingProgramItems = getStartingProgramItems(programItems, startTime);
@@ -44,7 +44,8 @@ export const padgAssignment = (
     allAttendees,
     numberOfIndividuals,
     numberOfGroups,
-  } = getRandomAndPadgInput(users, programItems, startTime);
+  } = getRandomAndPadgInput(users, startingProgramItems);
+
   if (lotterySignupProgramItems.length === 0) {
     logger.debug("No lottery signups, stop!");
     return makeSuccessResult({
@@ -67,7 +68,7 @@ export const padgAssignment = (
     lotterySignupProgramItems,
     attendeeGroups,
     startTime,
-    directSignups,
+    lotteryValidDirectSignups,
   );
   if (isErrorResult(assignmentResultResult)) {
     return assignmentResultResult;
@@ -76,9 +77,7 @@ export const padgAssignment = (
   const assignmentResult = unwrapResult(assignmentResultResult);
 
   const selectedUniqueProgramItems = uniq(
-    assignmentResult.results.map(
-      (result) => result.directSignup.programItem.programItemId,
-    ),
+    assignmentResult.results.map((result) => result.directSignup.programItemId),
   );
 
   const message = `Padg Assignment Result - Attendees: ${

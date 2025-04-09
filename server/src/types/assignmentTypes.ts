@@ -11,13 +11,8 @@ export interface Event {
   id: id; // program item id
   min: number; // program item min attendees
   max: number; // program item max attendees
-  groups: readonly Group[]; // groups signed for the program item
-}
-
-export interface RandomAssignEvent {
-  id: id;
-  min: number;
-  max: number;
+  // TODO: Should be 'groups: readonly Group[]' for PADG but changed to match eventassigner-random types
+  // TODO: Groups parameter is not used so this doesn't matter
   groups: id[];
 }
 
@@ -30,7 +25,7 @@ export interface ListItem {
 
 export interface RandomAssignUpdateLInput {
   groups: Group[];
-  events: RandomAssignEvent[];
+  events: Event[];
   assignment: PadgRandomAssignResult[];
   unassignedGroups: Group[];
   L: ListElement[];

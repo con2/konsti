@@ -38,9 +38,7 @@ test("should add new signup for user", async () => {
     await saveDirectSignup(mockPostDirectSignupRequest),
   );
 
-  expect(response.programItem.programItemId).toEqual(
-    testProgramItem.programItemId,
-  );
+  expect(response.programItemId).toEqual(testProgramItem.programItemId);
   expect(response.userSignups[0].username).toEqual(mockUser.username);
 });
 

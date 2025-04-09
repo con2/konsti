@@ -55,7 +55,7 @@ test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items", async () => 
     {
       username: mockUser.username,
       directSignup: {
-        programItem: testProgramItem,
+        programItemId: testProgramItem.programItemId,
         priority: 1,
         time: testProgramItem.startTime,
         message: "",
@@ -182,7 +182,7 @@ test("should only add one event log item with multiple lottery signups", async (
     {
       username: mockUser.username,
       directSignup: {
-        programItem: testProgramItem,
+        programItemId: testProgramItem.programItemId,
         priority: 1,
         time: testProgramItem.startTime,
         message: "",
@@ -239,7 +239,7 @@ test("should not add event log items after assigment if signup is dropped due to
     {
       username: mockUser.username,
       directSignup: {
-        programItem: testProgramItem,
+        programItemId: testProgramItem.programItemId,
         priority: 1,
         time: testProgramItem.startTime,
         message: "",
@@ -248,7 +248,7 @@ test("should not add event log items after assigment if signup is dropped due to
     {
       username: mockUser2.username,
       directSignup: {
-        programItem: testProgramItem,
+        programItemId: testProgramItem.programItemId,
         priority: 1,
         time: testProgramItem.startTime,
         message: "",
@@ -257,7 +257,7 @@ test("should not add event log items after assigment if signup is dropped due to
     {
       username: mockUser3.username,
       directSignup: {
-        programItem: testProgramItem,
+        programItemId: testProgramItem.programItemId,
         priority: 1,
         time: testProgramItem.startTime,
         message: "",
@@ -266,7 +266,7 @@ test("should not add event log items after assigment if signup is dropped due to
     {
       username: mockUser4.username,
       directSignup: {
-        programItem: testProgramItem,
+        programItemId: testProgramItem.programItemId,
         priority: 1,
         time: testProgramItem.startTime,
         message: "",

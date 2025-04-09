@@ -10,7 +10,6 @@ import {
 } from "server/features/user/group/groupRepository";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { findUser } from "server/features/user/userRepository";
-import { config } from "shared/config";
 import { MongoDbError } from "shared/types/api/errors";
 import {
   PostCloseGroupResponse,
@@ -30,6 +29,8 @@ import {
   makeSuccessResult,
   unwrapResult,
 } from "shared/utils/result";
+import { findProgramItems } from "server/features/program-item/programItemRepository";
+import { getLotteryValidDirectSignups } from "server/features/assignment/utils/prepareAssignmentParams";
 
 export const generateGroupCode = (): string => {
   const baseCode = randomBytes(5).toString("hex").slice(0, 9);
@@ -51,20 +52,22 @@ export const createGroup = async (
       errorId: "unknown",
     };
   }
-
   const signups = unwrapResult(signupsResult);
 
-  const { directSignupAlwaysOpenIds, twoPhaseSignupProgramTypes } =
-    config.event();
+  const programItemsResult = await findProgramItems();
+  if (isErrorResult(programItemsResult)) {
+    return {
+      message: "Error finding program items",
+      status: "error",
+      errorId: "unknown",
+    };
+  }
+  const programItems = unwrapResult(programItemsResult);
 
-  const filteredSignups = signups
-    .filter((signup) =>
-      twoPhaseSignupProgramTypes.includes(signup.programItem.programType),
-    )
-    .filter(
-      (signup) =>
-        !directSignupAlwaysOpenIds.includes(signup.programItem.programItemId),
-    );
+  const lotteryValidDirectSignups = getLotteryValidDirectSignups(
+    signups,
+    programItems,
+  );
 
   const timeNowResult = await getTimeNow();
   if (isErrorResult(timeNowResult)) {
@@ -77,7 +80,7 @@ export const createGroup = async (
 
   const timeNow = unwrapResult(timeNowResult);
 
-  const userDirectSignups = filteredSignups.flatMap(
+  const userDirectSignups = lotteryValidDirectSignups.flatMap(
     (signup) => signup.userSignups,
   );
   const userHasDirectSignups = userDirectSignups.some((userSignup) =>
@@ -167,17 +170,20 @@ export const joinGroup = async (
 
   const signups = unwrapResult(signupsResult);
 
-  const { directSignupAlwaysOpenIds, twoPhaseSignupProgramTypes } =
-    config.event();
+  const programItemsResult = await findProgramItems();
+  if (isErrorResult(programItemsResult)) {
+    return {
+      message: "Error finding program items",
+      status: "error",
+      errorId: "unknown",
+    };
+  }
+  const programItems = unwrapResult(programItemsResult);
 
-  const filteredSignups = signups
-    .filter((signup) =>
-      twoPhaseSignupProgramTypes.includes(signup.programItem.programType),
-    )
-    .filter(
-      (signup) =>
-        !directSignupAlwaysOpenIds.includes(signup.programItem.programItemId),
-    );
+  const lotteryValidDirectSignups = getLotteryValidDirectSignups(
+    signups,
+    programItems,
+  );
 
   const timeNowResult = await getTimeNow();
   if (isErrorResult(timeNowResult)) {
@@ -190,7 +196,7 @@ export const joinGroup = async (
 
   const timeNow = unwrapResult(timeNowResult);
 
-  const userDirectSignups = filteredSignups.flatMap(
+  const userDirectSignups = lotteryValidDirectSignups.flatMap(
     (signup) => signup.userSignups,
   );
   const userHasDirectSignups = userDirectSignups.some((userSignup) =>

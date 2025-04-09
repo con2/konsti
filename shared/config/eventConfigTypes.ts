@@ -72,7 +72,6 @@ export interface EventConfig {
   }[];
   directSignupOpenToEndProgramTypes: ProgramType[];
   activeProgramTypes: ProgramType[];
-  popularityAlgorithm: AssignmentAlgorithm.RANDOM | AssignmentAlgorithm.PADG;
   enableRemoveOverlapSignups: boolean;
   enableRevolvingDoorWorkshopsIfNoMax: boolean;
   customDetailsProgramItems: Record<

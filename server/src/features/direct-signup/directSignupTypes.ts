@@ -1,5 +1,4 @@
 import mongoose, { ObjectId } from "mongoose";
-import { ProgramItem } from "shared/types/models/programItem";
 
 export interface UserDirectSignup {
   username: string;
@@ -9,7 +8,7 @@ export interface UserDirectSignup {
 }
 
 export interface DirectSignupsForProgramItem {
-  programItem: ProgramItem;
+  programItemId: string;
   userSignups: readonly UserDirectSignup[];
   count?: number;
 }

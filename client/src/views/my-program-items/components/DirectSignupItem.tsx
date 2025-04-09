@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { DirectSignup } from "shared/types/models/user";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import {
   DeleteDirectSignupErrorMessage,
@@ -22,9 +21,10 @@ import {
 import { ErrorMessage } from "client/components/ErrorMessage";
 import { InfoText, InfoTextVariant } from "client/components/InfoText";
 import { AppRoute } from "client/app/AppRoutes";
+import { DirectSignupWithProgramItem } from "client/views/my-program-items/myProgramItemsSlice";
 
 interface Props {
-  signup: DirectSignup;
+  signup: DirectSignupWithProgramItem;
   startTime: string;
 }
 
@@ -47,7 +47,7 @@ export const DirectSignupItem = ({
     useState<DeleteDirectSignupErrorMessage | null>(null);
 
   const signupQuestion = signupQuestions.find(
-    (question) => question.programItemId === signup.programItem.programItemId,
+    (question) => question.programItemId === signup.programItemId,
   );
 
   const removeSignup = async (): Promise<void> => {
@@ -55,7 +55,7 @@ export const DirectSignupItem = ({
     const errorMessage = await dispatch(
       submitDeleteDirectSignup({
         username,
-        directSignupProgramItemId: signup.programItem.programItemId,
+        directSignupProgramItemId: signup.programItemId,
       }),
     );
 
@@ -116,7 +116,7 @@ export const DirectSignupItem = ({
             icon="circle-arrow-right"
             onClick={async () => {
               await navigate(
-                `${AppRoute.PROGRAM_ITEM}/${signup.programItem.programItemId}`,
+                `${AppRoute.PROGRAM_ITEM}/${signup.programItemId}`,
               );
             }}
           >
@@ -126,7 +126,7 @@ export const DirectSignupItem = ({
             icon="ticket"
             onClick={async () => {
               await navigate(
-                `${AppRoute.PROGRAM_ITEM}/${signup.programItem.programItemId}/admission`,
+                `${AppRoute.PROGRAM_ITEM}/${signup.programItemId}/admission`,
               );
             }}
           >

@@ -5,7 +5,7 @@ export const mockResults: UserAssignmentResult[] = [
   {
     username: "Test User",
     directSignup: {
-      programItem: testProgramItem,
+      programItemId: testProgramItem.programItemId,
       priority: 1,
       time: " 2019-07-26 14:00:00.000Z",
       message: "",

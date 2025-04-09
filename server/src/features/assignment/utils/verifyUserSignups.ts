@@ -3,7 +3,6 @@ import { logger } from "server/utils/logger";
 import { User } from "shared/types/models/user";
 import { findUsers } from "server/features/user/userRepository";
 import { findDirectSignups } from "server/features/direct-signup/directSignupRepository";
-import { config } from "shared/config";
 import {
   Result,
   isErrorResult,
@@ -12,6 +11,8 @@ import {
   unwrapResult,
 } from "shared/utils/result";
 import { MongoDbError } from "shared/types/api/errors";
+import { findProgramItems } from "server/features/program-item/programItemRepository";
+import { getLotteryValidDirectSignups } from "server/features/assignment/utils/prepareAssignmentParams";
 
 export const verifyUserSignups = async (): Promise<
   Result<void, MongoDbError>
@@ -22,28 +23,26 @@ export const verifyUserSignups = async (): Promise<
   if (isErrorResult(usersResult)) {
     return usersResult;
   }
-
   const users = unwrapResult(usersResult);
 
   const signupsResult = await findDirectSignups();
   if (isErrorResult(signupsResult)) {
     return signupsResult;
   }
-
   const signups = unwrapResult(signupsResult);
 
-  signups.map(({ programItem, userSignups }) => {
-    if (
-      !config
-        .event()
-        .twoPhaseSignupProgramTypes.includes(programItem.programType) ||
-      config
-        .event()
-        .directSignupAlwaysOpenIds.includes(programItem.programItemId)
-    ) {
-      return;
-    }
+  const programItemsResult = await findProgramItems();
+  if (isErrorResult(programItemsResult)) {
+    return programItemsResult;
+  }
+  const programItems = unwrapResult(programItemsResult);
 
+  const lotteryValidDirectSignups = getLotteryValidDirectSignups(
+    signups,
+    programItems,
+  );
+
+  lotteryValidDirectSignups.map(({ programItemId, userSignups }) => {
     // Verify group member signups match with group creators lotterySignups
     // If not in group -> user is group creator
 
@@ -69,8 +68,7 @@ export const verifyUserSignups = async (): Promise<
 
       const matchingCreatorLotterySignup = groupCreator.lotterySignups.find(
         (creatorLotterySignup) =>
-          creatorLotterySignup.programItem.programItemId ===
-            programItem.programItemId &&
+          creatorLotterySignup.programItem.programItemId === programItemId &&
           dayjs(creatorLotterySignup.time).isSame(userSignup.time),
       );
 
@@ -78,7 +76,7 @@ export const verifyUserSignups = async (): Promise<
         logger.error(
           "%s",
           new Error(
-            `No matching signed program item found from group creator: ${userSignup.username} - ${programItem.title}`,
+            `No matching signed program item found from group creator: ${userSignup.username} - ${programItemId}`,
           ),
         );
         return makeErrorResult(MongoDbError.UNKNOWN_ERROR);

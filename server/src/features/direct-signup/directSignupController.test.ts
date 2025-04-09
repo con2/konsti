@@ -215,7 +215,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
       await findUserDirectSignups(mockUser.username),
     );
 
-    expect(modifiedSignups[0].programItem.programItemId).toEqual(
+    expect(modifiedSignups[0].programItemId).toEqual(
       testProgramItem.programItemId,
     );
     expect(modifiedSignups[0].userSignups[0].message).toEqual("Test message");
@@ -264,8 +264,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
 
     const signups = unsafelyUnwrap(await findDirectSignups());
     const matchingSignup = signups.find(
-      (signup) =>
-        signup.programItem.programItemId === testProgramItem.programItemId,
+      (signup) => signup.programItemId === testProgramItem.programItemId,
     );
     expect(matchingSignup?.userSignups.length).toEqual(maxAttendance);
     expect(matchingSignup?.count).toEqual(maxAttendance);
@@ -311,8 +310,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     expect(signups).toHaveLength(1);
 
     const matchingSignup = signups.find(
-      (signup) =>
-        signup.programItem.programItemId === testProgramItem.programItemId,
+      (signup) => signup.programItemId === testProgramItem.programItemId,
     );
     expect(matchingSignup?.userSignups.length).toEqual(maxAttendance);
     expect(matchingSignup?.count).toEqual(maxAttendance);
@@ -400,7 +398,7 @@ describe(`DELETE ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
       await findUserDirectSignups(mockUser.username),
     );
 
-    expect(nonModifiedSignup[0].programItem.programItemId).toEqual(
+    expect(nonModifiedSignup[0].programItemId).toEqual(
       testProgramItem.programItemId,
     );
     expect(nonModifiedSignup[0].userSignups.length).toEqual(1);

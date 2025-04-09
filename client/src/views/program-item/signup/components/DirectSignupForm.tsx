@@ -21,7 +21,6 @@ import {
   submitCloseGroup,
   submitLeaveGroup,
 } from "client/views/group/groupThunks";
-import { config } from "shared/config";
 import { TextArea } from "client/components/TextArea";
 import { ButtonGroup } from "client/components/ButtonGroup";
 import { Dropdown } from "client/components/Dropdown";
@@ -30,6 +29,7 @@ import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 import { InfoText, InfoTextVariant } from "client/components/InfoText";
 import { getEntryCondition } from "client/views/program-item/programItemUtils";
 import { PostDirectSignupRequest } from "shared/types/api/myProgramItems";
+import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
 
 interface Props {
   programItem: ProgramItem;
@@ -48,8 +48,6 @@ export const DirectSignupForm = ({
   loading,
   setLoading,
 }: Props): ReactElement => {
-  const { directSignupAlwaysOpenIds } = config.event();
-
   const { t, i18n } = useTranslation();
   const dispatch = useAppDispatch();
 
@@ -92,12 +90,7 @@ export const DirectSignupForm = ({
     };
 
     // TODO: This logic should be on backend
-    if (
-      config
-        .event()
-        .twoPhaseSignupProgramTypes.includes(programItem.programType) &&
-      !directSignupAlwaysOpenIds.includes(programItem.programItemId)
-    ) {
+    if (isLotterySignupProgramItem(programItem)) {
       if (isInGroup && !isGroupCreator) {
         const leaveGroupError = await dispatch(submitLeaveGroup());
 
@@ -137,32 +130,28 @@ export const DirectSignupForm = ({
 
   return (
     <SignupForm>
-      {config
-        .event()
-        .twoPhaseSignupProgramTypes.includes(programItem.programType) &&
-        !directSignupAlwaysOpenIds.includes(programItem.programItemId) &&
-        isInGroup && (
-          <>
-            {!isGroupCreator && (
-              <InfoText variant={InfoTextVariant.WARNING}>
-                {t("signup.inGroupWarning", {
-                  PROGRAM_TYPE: t(
-                    `programTypeIllative.${programItem.programType}`,
-                  ),
-                })}
-              </InfoText>
-            )}
-            {isGroupCreator && (
-              <InfoText variant={InfoTextVariant.WARNING}>
-                {t("signup.groupCreatorWarning", {
-                  PROGRAM_TYPE: t(
-                    `programTypeIllative.${programItem.programType}`,
-                  ),
-                })}
-              </InfoText>
-            )}
-          </>
-        )}
+      {isLotterySignupProgramItem(programItem) && isInGroup && (
+        <>
+          {!isGroupCreator && (
+            <InfoText variant={InfoTextVariant.WARNING}>
+              {t("signup.inGroupWarning", {
+                PROGRAM_TYPE: t(
+                  `programTypeIllative.${programItem.programType}`,
+                ),
+              })}
+            </InfoText>
+          )}
+          {isGroupCreator && (
+            <InfoText variant={InfoTextVariant.WARNING}>
+              {t("signup.groupCreatorWarning", {
+                PROGRAM_TYPE: t(
+                  `programTypeIllative.${programItem.programType}`,
+                ),
+              })}
+            </InfoText>
+          )}
+        </>
+      )}
 
       {signupQuestion && (
         <SignupQuestionContainer>

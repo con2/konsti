@@ -10,7 +10,6 @@ import { saveUser } from "server/features/user/userRepository";
 import { saveProgramItems } from "server/features/program-item/programItemRepository";
 import {
   findDirectSignups,
-  findUserDirectSignups,
   saveDirectSignup,
 } from "server/features/direct-signup/directSignupRepository";
 import {
@@ -130,102 +129,93 @@ describe("Assignment with valid data", () => {
 });
 
 describe("Assignment with multiple program types and directSignupAlwaysOpen", () => {
-  test("should not remove signups of non-'twoPhaseSignupProgramTypes' program types", async () => {
-    const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
+  test("should update previous non-lottery signup if user has updated result", async () => {
+    vi.spyOn(config, "event").mockReturnValue({
+      ...config.event(),
+      twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
+    });
 
-    // Populate database
+    // ProgramItem1: 14:00 direct signup LARP
+    // ProgramItem2: 14:00 lottery signup TABLETOP_RPG -> replaces ProgramItem1
+    const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
+    const assignmentTime = testProgramItem.startTime;
+
     await saveProgramItems([
-      testProgramItem,
+      { ...testProgramItem, programType: ProgramType.LARP },
       {
         ...testProgramItem2,
-        startTime: testProgramItem.startTime,
-        programType: ProgramType.TOURNAMENT,
+        minAttendance: 1,
+        startTime: assignmentTime,
       },
     ]);
+
     await saveUser(mockUser);
-    await saveUser(mockUser2);
 
     await saveLotterySignups({
       username: mockUser.username,
       lotterySignups: [
-        { ...mockLotterySignups[0], priority: 2 },
         {
-          // non-"twoPhaseSignupProgramTypes" signed program item should be ignored
-          programItem: {
-            ...testProgramItem2,
-            programType: ProgramType.TOURNAMENT,
-          },
-          priority: 1,
-          time: testProgramItem.startTime,
-          message: "",
-        },
-      ],
-    });
-    await saveLotterySignups({
-      username: mockUser2.username,
-      lotterySignups: [
-        { ...mockLotterySignups[0], priority: 2 },
-        {
-          // non-"twoPhaseSignupProgramTypes" signed program item should be ignored
-          programItem: {
-            ...testProgramItem2,
-            programType: ProgramType.TOURNAMENT,
-          },
-          priority: 1,
-          time: testProgramItem.startTime,
-          message: "",
+          ...mockLotterySignups[1],
+          time: assignmentTime,
         },
       ],
     });
 
-    // This should not be removed
-    await saveDirectSignup({
-      ...mockPostDirectSignupRequest2,
-      startTime: testProgramItem.startTime,
-    });
+    // User has previous direct LARP signup - this should be replaced by assignment result
+    await saveDirectSignup(mockPostDirectSignupRequest);
+    const signupsBeforeUpdate = unsafelyUnwrap(await findDirectSignups());
 
-    const signupsBeforeUpdate = unsafelyUnwrap(
-      await findUserDirectSignups(mockUser.username),
+    const programItemsWithSignups = signupsBeforeUpdate.filter(
+      (signup) => signup.userSignups.length > 0,
     );
-    expect(signupsBeforeUpdate.length).toEqual(1);
+    expect(programItemsWithSignups).toHaveLength(1);
+    expect(programItemsWithSignups[0].programItemId).toEqual(
+      testProgramItem.programItemId,
+    );
 
     const assignResults = unsafelyUnwrap(
       await runAssignment({
         assignmentAlgorithm,
-        startTime: testProgramItem.startTime,
+        startTime: assignmentTime,
       }),
     );
-
     expect(assignResults.status).toEqual("success");
-    expect(assignResults.results.length).toEqual(2);
-
-    const signupsAfterUpdate = unsafelyUnwrap(
-      await findUserDirectSignups(mockUser.username),
+    expect(assignResults.results).toHaveLength(1);
+    expect(assignResults.results[0].directSignup.programItemId).toEqual(
+      testProgramItem2.programItemId,
     );
 
-    const tournamentSignup = signupsAfterUpdate.find(
-      (signup) => signup.programItem.programType === ProgramType.TOURNAMENT,
-    );
-    const rpgSignup = signupsAfterUpdate.find(
-      (signup) => signup.programItem.programType === ProgramType.TABLETOP_RPG,
-    );
+    const signupsAfterUpdate = unsafelyUnwrap(await findDirectSignups());
 
-    expect(tournamentSignup?.userSignups.length).toEqual(1);
-    expect(rpgSignup?.userSignups.length).toEqual(2);
+    const previousLarpSignup = signupsAfterUpdate.find(
+      (signup) => signup.programItemId === testProgramItem.programItemId,
+    );
+    expect(previousLarpSignup?.userSignups).toHaveLength(0);
+
+    const assignmentSignup = signupsAfterUpdate.find(
+      (signup) => signup.programItemId === testProgramItem2.programItemId,
+    );
+    expect(assignmentSignup?.userSignups).toHaveLength(1);
+    expect(assignmentSignup?.userSignups[0].username).toEqual(
+      mockUser.username,
+    );
   });
 
-  test("should not remove directSignupAlwaysOpen signups if user doesn't have updated result", async () => {
-    const directSignupAlwaysOpenId =
-      config.event().directSignupAlwaysOpenIds[0];
+  test("should not remove previous non-lottery signup if user doesn't have updated result", async () => {
+    vi.spyOn(config, "event").mockReturnValue({
+      ...config.event(),
+      twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
+    });
+
     const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
 
     // Populate database
     await saveProgramItems([
-      { ...testProgramItem, minAttendance: 1 },
+      { ...testProgramItem, minAttendance: 1, maxAttendance: 1 },
       {
         ...testProgramItem2,
         startTime: testProgramItem.startTime,
-        programItemId: directSignupAlwaysOpenId,
+        programType: ProgramType.LARP,
         minAttendance: 1,
       },
     ]);
@@ -234,27 +224,18 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
 
     await saveLotterySignups({
       username: mockUser.username,
-      lotterySignups: [
-        { ...mockLotterySignups[0], priority: 2 },
-        {
-          // directSignupAlwaysOpen signed program item should be ignored
-          programItem: {
-            ...testProgramItem2,
-            programItemId: directSignupAlwaysOpenId,
-          },
-          priority: 1,
-          time: testProgramItem.startTime,
-          message: "",
-        },
-      ],
+      lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
+    });
+    await saveLotterySignups({
+      username: mockUser2.username,
+      lotterySignups: [{ ...mockLotterySignups[0], priority: 2 }],
     });
 
-    // This should not be removed even if start time is same as assignment time
+    // This signup should not be removed even if start time is same as assignment time
     await saveDirectSignup({
       ...mockPostDirectSignupRequest2,
       username: mockUser2.username,
       startTime: testProgramItem.startTime,
-      directSignupProgramItemId: directSignupAlwaysOpenId,
     });
 
     const signupsBeforeUpdate = unsafelyUnwrap(await findDirectSignups());
@@ -274,7 +255,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     expect(assignResults.status).toEqual("success");
     expect(assignResults.results.length).toEqual(1);
     assignResults.results.map((result) => {
-      expect(result.directSignup.programItem.programItemId).toEqual(
+      expect(result.directSignup.programItemId).toEqual(
         testProgramItem.programItemId,
       );
     });
@@ -282,12 +263,11 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     const signupsAfterUpdate = unsafelyUnwrap(await findDirectSignups());
 
     const assignmentSignup = signupsAfterUpdate.find(
-      (signup) =>
-        signup.programItem.programItemId === testProgramItem.programItemId,
+      (signup) => signup.programItemId === testProgramItem.programItemId,
     );
 
     const directSignupAlwaysOpenSignup = signupsAfterUpdate.find(
-      (signup) => signup.programItem.programItemId === directSignupAlwaysOpenId,
+      (signup) => signup.programItemId === testProgramItem2.programItemId,
     );
 
     expect(assignmentSignup?.userSignups.length).toEqual(1);
@@ -297,86 +277,13 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     );
   });
 
-  test("should not remove previous signup from moved program item if user doesn't have updated result", async () => {
-    // User1, programItem1: 14:00 direct signup -> program item moved 15:00
-    // User2, programItem2: 15:00 lottery signup -> doesn't affect user1 signup
-    const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
-
-    const assignmentTime = dayjs(testProgramItem.startTime)
-      .add(1, "hours")
-      .toISOString();
-
-    await saveProgramItems([
-      { ...testProgramItem },
-      {
-        ...testProgramItem2,
-        minAttendance: 1,
-        startTime: assignmentTime,
-      },
-    ]);
-    await saveUser(mockUser);
-    await saveUser(mockUser2);
-
-    // User 1 has previous signup from moved program item - this should not be removed
-    await saveDirectSignup(mockPostDirectSignupRequest);
-
-    await ProgramItemModel.updateOne(
-      { programItemId: testProgramItem.programItemId },
-      {
-        startTime: assignmentTime,
-      },
-    );
-
-    // User 2 has selected program item for assignment
-    await saveLotterySignups({
-      username: mockUser2.username,
-      lotterySignups: [{ ...mockLotterySignups[1] }],
+  test("should update 'directSignupAlwaysOpen' signup with assignment signup if user has updated result", async () => {
+    const directSignupAlwaysOpenId = "1234";
+    vi.spyOn(config, "event").mockReturnValue({
+      ...config.event(),
+      directSignupAlwaysOpenIds: [directSignupAlwaysOpenId],
     });
 
-    const signupsBeforeUpdate = unsafelyUnwrap(await findDirectSignups());
-    const programItemsWithSignups = signupsBeforeUpdate.filter(
-      (signup) => signup.userSignups.length > 0,
-    );
-    expect(programItemsWithSignups).toHaveLength(1);
-
-    const assignResults = unsafelyUnwrap(
-      await runAssignment({
-        assignmentAlgorithm,
-        startTime: assignmentTime,
-      }),
-    );
-    expect(assignResults.status).toEqual("success");
-    expect(assignResults.results).toHaveLength(1);
-    assignResults.results.map((result) => {
-      expect(result.directSignup.programItem.programItemId).toEqual(
-        testProgramItem2.programItemId,
-      );
-    });
-
-    const signupsAfterUpdate = unsafelyUnwrap(await findDirectSignups());
-
-    const previousSignupFromMovedProgramItem = signupsAfterUpdate.find(
-      (signup) =>
-        signup.programItem.programItemId === testProgramItem.programItemId,
-    );
-    expect(previousSignupFromMovedProgramItem?.userSignups).toHaveLength(1);
-    expect(previousSignupFromMovedProgramItem?.userSignups[0].username).toEqual(
-      mockUser.username,
-    );
-
-    const assignmentSignup = signupsAfterUpdate.find(
-      (signup) =>
-        signup.programItem.programItemId === testProgramItem2.programItemId,
-    );
-    expect(assignmentSignup?.userSignups).toHaveLength(1);
-    expect(assignmentSignup?.userSignups[0].username).toEqual(
-      mockUser2.username,
-    );
-  });
-
-  test("should update directSignupAlwaysOpen signup with assignment signup if user has updated result", async () => {
-    const directSignupAlwaysOpenId =
-      config.event().directSignupAlwaysOpenIds[0];
     const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
 
     // Populate database
@@ -447,7 +354,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     expect(assignResults.status).toEqual("success");
     expect(assignResults.results.length).toEqual(2);
     assignResults.results.map((result) => {
-      expect(result.directSignup.programItem.programItemId).toEqual(
+      expect(result.directSignup.programItemId).toEqual(
         testProgramItem.programItemId,
       );
     });
@@ -455,15 +362,100 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     const signupsAfterUpdate = unsafelyUnwrap(await findDirectSignups());
 
     const assignmentSignup = signupsAfterUpdate.find(
-      (signup) =>
-        signup.programItem.programItemId === testProgramItem.programItemId,
+      (signup) => signup.programItemId === testProgramItem.programItemId,
     );
     const directSignupAlwaysOpenSignup = signupsAfterUpdate.find(
-      (signup) => signup.programItem.programItemId === directSignupAlwaysOpenId,
+      (signup) => signup.programItemId === directSignupAlwaysOpenId,
     );
 
     expect(assignmentSignup?.userSignups.length).toEqual(2);
     expect(directSignupAlwaysOpenSignup?.userSignups.length).toEqual(0);
+  });
+
+  test("should not remove 'directSignupAlwaysOpen' signups if user doesn't have updated result", async () => {
+    const directSignupAlwaysOpenId = "1234";
+    vi.spyOn(config, "event").mockReturnValue({
+      ...config.event(),
+      directSignupAlwaysOpenIds: [directSignupAlwaysOpenId],
+    });
+
+    const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
+
+    // Populate database
+    await saveProgramItems([
+      { ...testProgramItem, minAttendance: 1 },
+      {
+        ...testProgramItem2,
+        startTime: testProgramItem.startTime,
+        programItemId: directSignupAlwaysOpenId,
+        minAttendance: 1,
+      },
+    ]);
+    await saveUser(mockUser);
+    await saveUser(mockUser2);
+
+    await saveLotterySignups({
+      username: mockUser.username,
+      lotterySignups: [
+        { ...mockLotterySignups[0], priority: 2 },
+        {
+          // directSignupAlwaysOpen signed program item should be ignored
+          programItem: {
+            ...testProgramItem2,
+            programItemId: directSignupAlwaysOpenId,
+          },
+          priority: 1,
+          time: testProgramItem.startTime,
+          message: "",
+        },
+      ],
+    });
+
+    // This signup should not be removed even if start time is same as assignment time
+    await saveDirectSignup({
+      ...mockPostDirectSignupRequest2,
+      username: mockUser2.username,
+      startTime: testProgramItem.startTime,
+      directSignupProgramItemId: directSignupAlwaysOpenId,
+    });
+
+    const signupsBeforeUpdate = unsafelyUnwrap(await findDirectSignups());
+
+    const programItemsWithSignups = signupsBeforeUpdate.filter(
+      (signup) => signup.userSignups.length > 0,
+    );
+    expect(programItemsWithSignups.length).toEqual(1);
+
+    const assignResults = unsafelyUnwrap(
+      await runAssignment({
+        assignmentAlgorithm,
+        startTime: testProgramItem.startTime,
+      }),
+    );
+
+    expect(assignResults.status).toEqual("success");
+    expect(assignResults.results.length).toEqual(1);
+    assignResults.results.map((result) => {
+      expect(result.directSignup.programItemId).toEqual(
+        testProgramItem.programItemId,
+      );
+    });
+
+    const signupsAfterUpdate = unsafelyUnwrap(await findDirectSignups());
+
+    const assignmentSignup = signupsAfterUpdate.find(
+      (signup) => signup.programItemId === testProgramItem.programItemId,
+    );
+
+    const directSignupAlwaysOpenSignup = signupsAfterUpdate.find(
+      (signup) => signup.programItemId === directSignupAlwaysOpenId,
+    );
+
+    expect(assignmentSignup?.userSignups.length).toEqual(1);
+    expect(directSignupAlwaysOpenSignup?.userSignups.length).toEqual(1);
+    expect(directSignupAlwaysOpenSignup?.userSignups[0].username).toEqual(
+      mockUser2.username,
+    );
   });
 
   test("should update previous signup from moved program item with assignment signup if user has updated result", async () => {
@@ -519,7 +511,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     expect(assignResults.status).toEqual("success");
     expect(assignResults.results).toHaveLength(1);
     assignResults.results.map((result) => {
-      expect(result.directSignup.programItem.programItemId).toEqual(
+      expect(result.directSignup.programItemId).toEqual(
         testProgramItem2.programItemId,
       );
     });
@@ -527,14 +519,12 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     const signupsAfterUpdate = unsafelyUnwrap(await findDirectSignups());
 
     const previousSignupFromMovedProgramItem = signupsAfterUpdate.find(
-      (signup) =>
-        signup.programItem.programItemId === testProgramItem.programItemId,
+      (signup) => signup.programItemId === testProgramItem.programItemId,
     );
     expect(previousSignupFromMovedProgramItem?.userSignups).toHaveLength(0);
 
     const assignmentSignup = signupsAfterUpdate.find(
-      (signup) =>
-        signup.programItem.programItemId === testProgramItem2.programItemId,
+      (signup) => signup.programItemId === testProgramItem2.programItemId,
     );
     expect(assignmentSignup?.userSignups).toHaveLength(1);
     expect(assignmentSignup?.userSignups[0].username).toEqual(
@@ -542,49 +532,47 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     );
   });
 
-  test("should update previous signup of non-lottery program type if user has updated result", async () => {
-    vi.spyOn(config, "event").mockReturnValueOnce({
-      ...config.event(),
-      twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
-    });
-
-    // ProgramItem1: 14:00 direct signup LARP
-    // ProgramItem2: 14:00 lottery signup TABLETOP_RPG -> replaces ProgramItem1
+  test("should not remove previous signup from moved program item if user doesn't have updated result", async () => {
+    // User1, programItem1: 14:00 direct signup -> program item moved 15:00
+    // User2, programItem2: 15:00 lottery signup -> doesn't affect user1 signup
     const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
-    const assignmentTime = testProgramItem.startTime;
+
+    const assignmentTime = dayjs(testProgramItem.startTime)
+      .add(1, "hours")
+      .toISOString();
 
     await saveProgramItems([
-      { ...testProgramItem, programType: ProgramType.LARP },
+      { ...testProgramItem },
       {
         ...testProgramItem2,
         minAttendance: 1,
         startTime: assignmentTime,
       },
     ]);
-
     await saveUser(mockUser);
+    await saveUser(mockUser2);
 
+    // User 1 has previous signup from moved program item - this signup should not be removed
+    await saveDirectSignup(mockPostDirectSignupRequest);
+
+    await ProgramItemModel.updateOne(
+      { programItemId: testProgramItem.programItemId },
+      {
+        startTime: assignmentTime,
+      },
+    );
+
+    // User 2 has selected program item for assignment
     await saveLotterySignups({
-      username: mockUser.username,
-      lotterySignups: [
-        {
-          ...mockLotterySignups[1],
-          time: assignmentTime,
-        },
-      ],
+      username: mockUser2.username,
+      lotterySignups: [{ ...mockLotterySignups[1] }],
     });
 
-    // User has previous direct LARP signup - this should be replaced by assignment result
-    await saveDirectSignup(mockPostDirectSignupRequest);
     const signupsBeforeUpdate = unsafelyUnwrap(await findDirectSignups());
-
     const programItemsWithSignups = signupsBeforeUpdate.filter(
       (signup) => signup.userSignups.length > 0,
     );
     expect(programItemsWithSignups).toHaveLength(1);
-    expect(programItemsWithSignups[0].programItem.programType).toEqual(
-      ProgramType.LARP,
-    );
 
     const assignResults = unsafelyUnwrap(
       await runAssignment({
@@ -594,33 +582,47 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     );
     expect(assignResults.status).toEqual("success");
     expect(assignResults.results).toHaveLength(1);
-    expect(
-      assignResults.results[0].directSignup.programItem.programItemId,
-    ).toEqual(testProgramItem2.programItemId);
+    assignResults.results.map((result) => {
+      expect(result.directSignup.programItemId).toEqual(
+        testProgramItem2.programItemId,
+      );
+    });
 
     const signupsAfterUpdate = unsafelyUnwrap(await findDirectSignups());
 
-    const previousLarpSignup = signupsAfterUpdate.find(
-      (signup) =>
-        signup.programItem.programItemId === testProgramItem.programItemId,
+    const previousSignupFromMovedProgramItem = signupsAfterUpdate.find(
+      (signup) => signup.programItemId === testProgramItem.programItemId,
     );
-    expect(previousLarpSignup?.userSignups).toHaveLength(0);
+    expect(previousSignupFromMovedProgramItem?.userSignups).toHaveLength(1);
+    expect(previousSignupFromMovedProgramItem?.userSignups[0].username).toEqual(
+      mockUser.username,
+    );
 
     const assignmentSignup = signupsAfterUpdate.find(
-      (signup) =>
-        signup.programItem.programItemId === testProgramItem2.programItemId,
+      (signup) => signup.programItemId === testProgramItem2.programItemId,
     );
     expect(assignmentSignup?.userSignups).toHaveLength(1);
     expect(assignmentSignup?.userSignups[0].username).toEqual(
-      mockUser.username,
+      mockUser2.username,
     );
   });
 });
 
 describe("Assignment with first time bonus", () => {
-  test("should assign user without previous 'twoPhaseSignupProgramTypes' signup", async () => {
-    const directSignupAlwaysOpenId =
-      config.event().directSignupAlwaysOpenIds[0];
+  test("should assign user without previous lottery signup", async () => {
+    const directSignupAlwaysOpenId = "1234";
+
+    vi.spyOn(config, "event").mockReturnValue({
+      ...config.event(),
+      twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
+      directSignupAlwaysOpenIds: [directSignupAlwaysOpenId],
+    });
+
+    vi.spyOn(config, "event").mockReturnValue({
+      ...config.event(),
+      directSignupAlwaysOpenIds: [directSignupAlwaysOpenId],
+    });
+
     const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
     const tournamentProgramItemId = "AIAHHUA";
 
@@ -659,7 +661,7 @@ describe("Assignment with first time bonus", () => {
         .toISOString(),
     });
 
-    // Tournament signup should not affect the bonus
+    // Non-lottery signup (tournament) should not affect the bonus
     await saveDirectSignup({
       username: mockUser2.username,
       directSignupProgramItemId: tournamentProgramItemId,
@@ -670,7 +672,7 @@ describe("Assignment with first time bonus", () => {
       priority: DIRECT_SIGNUP_PRIORITY,
     });
 
-    // directSignupAlwaysOpen signup should not affect the bonus
+    // 'directSignupAlwaysOpen' signup should not affect the bonus
     await saveDirectSignup({
       username: mockUser2.username,
       directSignupProgramItemId: directSignupAlwaysOpenId,
@@ -699,41 +701,38 @@ describe("Assignment with first time bonus", () => {
     const signupsAfterUpdate = unsafelyUnwrap(await findDirectSignups());
 
     const assignmentSignup = signupsAfterUpdate.find(
-      (signup) =>
-        signup.programItem.programItemId === testProgramItem.programItemId,
+      (signup) => signup.programItemId === testProgramItem.programItemId,
     );
-
-    const previousRpgSignup = signupsAfterUpdate.find(
-      (signup) =>
-        signup.programItem.programItemId === testProgramItem2.programItemId,
-    );
-
-    const previousTournamentSignup = signupsAfterUpdate.find(
-      (signup) => signup.programItem.programItemId === tournamentProgramItemId,
-    );
-
-    const previousDirectSignupAlwaysOpenSignup = signupsAfterUpdate.find(
-      (signup) => signup.programItem.programItemId === directSignupAlwaysOpenId,
-    );
-
     expect(assignmentSignup?.userSignups[0]).toMatchObject({
       username: mockUser2.username,
       time: mockLotterySignups[0].programItem.startTime,
       message: "",
       priority: 3,
     });
+
+    const previousRpgSignup = signupsAfterUpdate.find(
+      (signup) => signup.programItemId === testProgramItem2.programItemId,
+    );
     expect(previousRpgSignup?.userSignups[0]).toMatchObject({
       username: mockUser.username,
       time: dayjs(testProgramItem.startTime).subtract(1, "hours").toISOString(),
       message: "",
       priority: DIRECT_SIGNUP_PRIORITY,
     });
+
+    const previousTournamentSignup = signupsAfterUpdate.find(
+      (signup) => signup.programItemId === tournamentProgramItemId,
+    );
     expect(previousTournamentSignup?.userSignups[0]).toMatchObject({
       username: mockUser2.username,
       time: dayjs(testProgramItem.startTime).subtract(1, "hours").toISOString(),
       message: "",
       priority: DIRECT_SIGNUP_PRIORITY,
     });
+
+    const previousDirectSignupAlwaysOpenSignup = signupsAfterUpdate.find(
+      (signup) => signup.programItemId === directSignupAlwaysOpenId,
+    );
     expect(previousDirectSignupAlwaysOpenSignup?.userSignups[0]).toMatchObject({
       username: mockUser2.username,
       time: dayjs(testProgramItem.startTime).subtract(2, "hours").toISOString(),
@@ -786,11 +785,10 @@ describe("Assignment with first time bonus", () => {
 
     const signupsAfterUpdate = unsafelyUnwrap(await findDirectSignups());
     const assignmentSignup = signupsAfterUpdate.find(
-      (signup) =>
-        signup.programItem.programItemId === testProgramItem2.programItemId,
+      (signup) => signup.programItemId === testProgramItem2.programItemId,
     );
 
-    expect(assignmentSignup?.programItem.programItemId).toEqual(
+    expect(assignmentSignup?.programItemId).toEqual(
       mockLotterySignups[1].programItem.programItemId,
     );
     expect(assignmentSignup?.userSignups[0]).toMatchObject({

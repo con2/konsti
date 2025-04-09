@@ -12,15 +12,18 @@ import { Button, ButtonStyle } from "client/components/Button";
 import { ErrorMessage } from "client/components/ErrorMessage";
 import { Dropdown } from "client/components/Dropdown";
 import { ButtonGroup } from "client/components/ButtonGroup";
-import { selectLotterySignups } from "client/views/my-program-items/myProgramItemsSlice";
-import { DirectSignup, LotterySignup } from "shared/types/models/user";
+import {
+  DirectSignupWithProgramItem,
+  selectLotterySignups,
+} from "client/views/my-program-items/myProgramItemsSlice";
+import { LotterySignup } from "shared/types/models/user";
 import { InfoText, InfoTextVariant } from "client/components/InfoText";
 
 interface Props {
   programItem: ProgramItem;
   startTime: string;
   onCancel: () => void;
-  directSignupForSlot?: DirectSignup;
+  directSignupForSlot?: DirectSignupWithProgramItem;
 }
 
 const OPTIONS = [1, 2, 3];

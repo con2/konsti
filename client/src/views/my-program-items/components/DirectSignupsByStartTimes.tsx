@@ -3,15 +3,15 @@ import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { capitalize } from "lodash-es";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
-import { DirectSignup } from "shared/types/models/user";
 import { DirectSignupItem } from "client/views/my-program-items/components/DirectSignupItem";
 import {
   MyProgramList,
   MyProgramTime,
 } from "client/views/my-program-items/components/shared";
+import { DirectSignupWithProgramItem } from "client/views/my-program-items/myProgramItemsSlice";
 
 interface Props {
-  directSignups: readonly DirectSignup[];
+  directSignups: readonly DirectSignupWithProgramItem[];
   startTimes: readonly string[];
   missedSignups: readonly string[];
 }
@@ -36,7 +36,7 @@ export const DirectSignupsByStartTimes = ({
               {directSignups.map((signup) => {
                 return (
                   <DirectSignupItem
-                    key={signup.programItem.programItemId}
+                    key={signup.programItemId}
                     signup={signup}
                     startTime={startTime}
                   />
