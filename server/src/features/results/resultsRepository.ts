@@ -1,6 +1,5 @@
 import { logger } from "server/utils/logger";
 import { ResultsModel } from "server/features/results/resultsSchema";
-import { NewDirectSignup } from "server/types/resultTypes";
 import { findProgramItems } from "server/features/program-item/programItemRepository";
 import { UserAssignmentResult } from "shared/types/models/result";
 import {
@@ -24,10 +23,6 @@ export const removeResults = async (): Promise<Result<void, MongoDbError>> => {
   }
 };
 
-type NewAssignmentResult = Omit<UserAssignmentResult, "directSignup"> & {
-  directSignup: NewDirectSignup;
-};
-
 export const saveResult = async (
   signupResultData: readonly UserAssignmentResult[],
   startTime: string,
@@ -41,19 +36,18 @@ export const saveResult = async (
   }
 
   const programItems = unwrapResult(programItemsResult);
-  const results = signupResultData.reduce<NewAssignmentResult[]>(
+  const results = signupResultData.reduce<UserAssignmentResult[]>(
     (acc, result) => {
       const programItemDocInDb = programItems.find(
         (programItem) =>
-          programItem.programItemId ===
-          result.directSignup.programItem.programItemId,
+          programItem.programItemId === result.directSignup.programItemId,
       );
 
       if (programItemDocInDb?._id) {
         acc.push({
           username: result.username,
           directSignup: {
-            programItem: programItemDocInDb._id,
+            programItemId: programItemDocInDb.programItemId,
             priority: result.directSignup.priority,
             time: result.directSignup.time,
             message: "",

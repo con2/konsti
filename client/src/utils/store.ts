@@ -90,7 +90,7 @@ const sentryReduxEnhancer = createReduxEnhancer({
         directSignups: state?.myProgramItems?.directSignups?.map(
           (directSignup) => ({
             ...directSignup,
-            programItem: directSignup?.programItem?.programItemId,
+            programItem: directSignup?.programItemId,
             message: "<Message hidden>",
           }),
         ),

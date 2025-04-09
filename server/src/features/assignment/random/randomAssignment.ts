@@ -23,7 +23,7 @@ export const randomAssignment = (
   users: readonly User[],
   programItems: readonly ProgramItem[],
   startTime: string,
-  directSignups: readonly DirectSignupsForProgramItem[],
+  lotteryValidDirectSignups: readonly DirectSignupsForProgramItem[],
 ): Result<AssignmentResult, AssignmentError> => {
   logger.debug(`***** Run Random Assignment for ${startTime}`);
   const startingProgramItems = getStartingProgramItems(programItems, startTime);
@@ -37,13 +37,14 @@ export const randomAssignment = (
       status: AssignmentResultStatus.NO_STARTING_PROGRAM_ITEMS,
     });
   }
+
   const {
     lotterySignupProgramItems,
     attendeeGroups,
     allAttendees,
     numberOfIndividuals,
     numberOfGroups,
-  } = getRandomAndPadgInput(users, programItems, startTime);
+  } = getRandomAndPadgInput(users, startingProgramItems);
 
   if (lotterySignupProgramItems.length === 0) {
     logger.debug("No lottery signups, stop!");
@@ -67,7 +68,7 @@ export const randomAssignment = (
     lotterySignupProgramItems,
     attendeeGroups,
     startTime,
-    directSignups,
+    lotteryValidDirectSignups,
   );
   logger.debug("Random assignment: completed");
   if (isErrorResult(assignmentResultResult)) {
@@ -77,9 +78,7 @@ export const randomAssignment = (
   const assignmentResult = unwrapResult(assignmentResultResult);
 
   const selectedUniqueProgramItems = uniq(
-    assignmentResult.results.map(
-      (result) => result.directSignup.programItem.programItemId,
-    ),
+    assignmentResult.results.map((result) => result.directSignup.programItemId),
   );
 
   const message = `Random Assignment Result - Attendees: ${

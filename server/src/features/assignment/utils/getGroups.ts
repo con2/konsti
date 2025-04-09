@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import { first, sortBy } from "lodash-es";
-import { Group } from "server/types/padgRandomAssignTypes";
+import { Group } from "server/types/assignmentTypes";
 import { logger } from "server/utils/logger";
 import { AssignmentError } from "shared/types/api/errors";
 import { User } from "shared/types/models/user";

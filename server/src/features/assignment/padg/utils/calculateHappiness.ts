@@ -1,7 +1,4 @@
-import {
-  PadgRandomAssignResult,
-  Group,
-} from "server/types/padgRandomAssignTypes";
+import { PadgRandomAssignResult, Group } from "server/types/assignmentTypes";
 
 export const calculateHappiness = (
   assignResults: PadgRandomAssignResult[],

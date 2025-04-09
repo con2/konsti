@@ -10,14 +10,10 @@ if (!config.server().enableLoggingInTests) {
   vi.doMock("server/utils/logger", () => {
     return {
       logger: {
-        // eslint-disable-next-line @typescript-eslint/no-empty-function
-        info: vi.fn().mockImplementation(() => {}),
-        // eslint-disable-next-line @typescript-eslint/no-empty-function
-        debug: vi.fn().mockImplementation(() => {}),
-        // eslint-disable-next-line @typescript-eslint/no-empty-function
-        warn: vi.fn().mockImplementation(() => {}),
-        // eslint-disable-next-line @typescript-eslint/no-empty-function
-        error: vi.fn().mockImplementation(() => {}),
+        info: vi.fn().mockImplementation(() => null),
+        debug: vi.fn().mockImplementation(() => null),
+        warn: vi.fn().mockImplementation(() => null),
+        error: vi.fn().mockImplementation(() => null),
       },
     };
   });

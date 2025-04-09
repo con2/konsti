@@ -20,7 +20,6 @@ const eventConfig: Partial<EventConfig> = {
   // Event settings
   requireRegistrationCode: true,
   assignmentAlgorithm: AssignmentAlgorithm.RANDOM,
-  popularityAlgorithm: AssignmentAlgorithm.RANDOM,
   enableGroups: true,
   signupOpen: true,
   resultsVisible: true,

@@ -1,7 +1,7 @@
 import { expect, test, afterEach, beforeEach } from "vitest";
 import mongoose from "mongoose";
 import { faker } from "@faker-js/faker";
-import { removeOverlapSignups } from "server/features/assignment/utils/removeOverlapSignups";
+import { removeOverlapLotterySignups } from "server/features/assignment/utils/removeOverlapLotterySignups";
 import { mockUser, mockLotterySignups } from "server/test/mock-data/mockUser";
 import { mockResults } from "server/test/mock-data/mockResults";
 import {
@@ -39,7 +39,8 @@ test("should remove overlapping lottery signups from user", async () => {
   const insertedUser = unsafelyUnwrap(await findUser(mockUser.username));
   expect(insertedUser?.lotterySignups.length).toEqual(2);
 
-  await removeOverlapSignups(mockResults);
+  const programItems = unsafelyUnwrap(await findProgramItems());
+  await removeOverlapLotterySignups(mockResults, programItems);
 
   const updatedUser = unsafelyUnwrap(await findUser(mockUser.username));
   expect(updatedUser?.lotterySignups.length).toEqual(1);

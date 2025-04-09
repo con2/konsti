@@ -13,7 +13,6 @@ export const eventConfig: EventConfig = {
   // Event settings
   requireRegistrationCode: true,
   assignmentAlgorithm: AssignmentAlgorithm.RANDOM_PADG,
-  popularityAlgorithm: AssignmentAlgorithm.PADG,
   enableGroups: true,
   signupOpen: true,
   resultsVisible: true,

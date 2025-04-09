@@ -4,7 +4,7 @@ import { UserAssignmentResult } from "shared/types/models/result";
 import {
   delDirectSignup,
   delAssignmentDirectSignupsByStartTime,
-  findDirectSignupsByProgramTypes,
+  findDirectSignupsByStartTime,
   saveDirectSignups,
 } from "server/features/direct-signup/directSignupRepository";
 import {
@@ -20,7 +20,6 @@ import {
   deleteEventLogItemsByStartTime,
 } from "server/features/user/event-log/eventLogRepository";
 import { EventLogAction } from "shared/types/models/eventLog";
-import { config } from "shared/config";
 import { getLotterySignups } from "server/features/assignment/utils/getLotterySignups";
 import { User } from "shared/types/models/user";
 import { getGroupCreators } from "server/features/assignment/utils/getGroupCreators";
@@ -42,20 +41,17 @@ export const saveUserSignupResults = async ({
   users,
   programItems,
 }: SaveUserSignupResultsParams): Promise<Result<void, MongoDbError>> => {
-  // Remove previous assignment result for the same start time
-  // This does not remove "directSignupAlwaysOpen" signups or previous signups from moved program items
+  // Remove previous lottery result for the same start time
+  // This does not remove non-lottery signups or previous signups from moved program items
   const delAssignmentSignupsByStartTimeResult =
     await delAssignmentDirectSignupsByStartTime(startTime);
   if (isErrorResult(delAssignmentSignupsByStartTimeResult)) {
     return delAssignmentSignupsByStartTimeResult;
   }
 
-  // Only "directSignupAlwaysOpen" signups and previous signups from moved program items should be remaining
+  // Only non-lottery signups and previous signups from moved program items should be remaining
   const twoPhaseSignupsByStartTimeResult =
-    await findDirectSignupsByProgramTypes(
-      config.event().twoPhaseSignupProgramTypes,
-      startTime,
-    );
+    await findDirectSignupsByStartTime(startTime);
   if (isErrorResult(twoPhaseSignupsByStartTimeResult)) {
     return twoPhaseSignupsByStartTimeResult;
   }
@@ -96,7 +92,7 @@ export const saveUserSignupResults = async ({
   const newSignups: SignupRepositoryAddSignup[] = results.map((result) => {
     return {
       username: result.username,
-      directSignupProgramItemId: result.directSignup.programItem.programItemId,
+      directSignupProgramItemId: result.directSignup.programItemId,
       startTime,
       message: result.directSignup.message,
       priority: result.directSignup.priority,
@@ -128,7 +124,7 @@ export const saveUserSignupResults = async ({
             (signup) =>
               !(
                 signup.directSignupProgramItemId ===
-                  result.directSignup.programItem.programItemId &&
+                  result.directSignup.programItemId &&
                 signup.username === result.username
               ),
           );
@@ -139,7 +135,7 @@ export const saveUserSignupResults = async ({
   const newAssignmentEventLogItemsResult = await addEventLogItems({
     updates: finalResults.map((result) => ({
       username: result.username,
-      programItemId: result.directSignup.programItem.programItemId,
+      programItemId: result.directSignup.programItemId,
       programItemStartTime: startTime,
       createdAt: dayjs().toISOString(),
     })),

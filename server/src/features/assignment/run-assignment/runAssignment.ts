@@ -6,7 +6,7 @@ import { findUsers } from "server/features/user/userRepository";
 import { findProgramItems } from "server/features/program-item/programItemRepository";
 import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
 import { config } from "shared/config";
-import { removeOverlapSignups } from "server/features/assignment/utils/removeOverlapSignups";
+import { removeOverlapLotterySignups } from "server/features/assignment/utils/removeOverlapLotterySignups";
 import { saveResults } from "server/features/assignment/utils/saveResults";
 import { getDynamicStartTime } from "server/features/assignment/utils/getDynamicStartTime";
 import { sleep } from "server/utils/sleep";
@@ -19,6 +19,7 @@ import {
   unwrapResult,
 } from "shared/utils/result";
 import { AssignmentError, MongoDbError } from "shared/types/api/errors";
+import { prepareAssignmentParams } from "server/features/assignment/utils/prepareAssignmentParams";
 
 interface RunAssignmentParams {
   assignmentAlgorithm: AssignmentAlgorithm;
@@ -53,6 +54,10 @@ export const runAssignment = async ({
     logger.info("Waiting done, start assignment");
   }
 
+  logger.info(
+    `Assigning users for program items starting at ${assignmentTime.toString()}`,
+  );
+
   const removeInvalidProgramItemsResult =
     await removeInvalidProgramItemsFromUsers();
   if (isErrorResult(removeInvalidProgramItemsResult)) {
@@ -65,37 +70,11 @@ export const runAssignment = async ({
   }
   const users = unwrapResult(usersResult);
 
-  const { directSignupAlwaysOpenIds, twoPhaseSignupProgramTypes } =
-    config.event();
-
-  // Remove invalid lottery signups from users
-  // Only include "twoPhaseSignupProgramTypes" and don't include "directSignupAlwaysOpen" program items
-  const validLotterySignupsUsers = users.map((user) => {
-    const matchingLotterySignups = user.lotterySignups.filter(
-      (lotterySignup) =>
-        twoPhaseSignupProgramTypes.includes(
-          lotterySignup.programItem.programType,
-        ) &&
-        !directSignupAlwaysOpenIds.includes(
-          lotterySignup.programItem.programItemId,
-        ),
-    );
-
-    return { ...user, lotterySignups: matchingLotterySignups };
-  });
-
   const programItemsResult = await findProgramItems();
   if (isErrorResult(programItemsResult)) {
     return programItemsResult;
   }
   const programItems = unwrapResult(programItemsResult);
-
-  // Only include "twoPhaseSignupProgramTypes" and don't include "directSignupAlwaysOpen" program items
-  const validLotterySignupProgramItems = programItems.filter(
-    (programItem) =>
-      twoPhaseSignupProgramTypes.includes(programItem.programType) &&
-      !directSignupAlwaysOpenIds.includes(programItem.programItemId),
-  );
 
   const directSignupsResult = await findDirectSignups();
   if (isErrorResult(directSignupsResult)) {
@@ -103,12 +82,18 @@ export const runAssignment = async ({
   }
   const directSignups = unwrapResult(directSignupsResult);
 
+  const {
+    validLotterySignupsUsers,
+    validLotterySignupProgramItems,
+    lotteryValidDirectSignups,
+  } = prepareAssignmentParams(users, programItems, directSignups);
+
   const assignResultsResult = runAssignmentAlgorithm(
     assignmentAlgorithm,
     validLotterySignupsUsers,
     validLotterySignupProgramItems,
     assignmentTime,
-    directSignups,
+    lotteryValidDirectSignups,
   );
   if (isErrorResult(assignResultsResult)) {
     return assignResultsResult;
@@ -130,7 +115,7 @@ export const runAssignment = async ({
     algorithm: assignResults.algorithm,
     message: assignResults.message,
     users: validLotterySignupsUsers,
-    programItems: validLotterySignupProgramItems,
+    programItems,
   });
   if (isErrorResult(saveResultsResult)) {
     return saveResultsResult;
@@ -138,8 +123,9 @@ export const runAssignment = async ({
 
   if (config.event().enableRemoveOverlapSignups) {
     logger.info("Remove overlapping signups");
-    const removeOverlapSignupsResult = await removeOverlapSignups(
+    const removeOverlapSignupsResult = await removeOverlapLotterySignups(
       assignResults.results,
+      validLotterySignupProgramItems,
     );
     if (isErrorResult(removeOverlapSignupsResult)) {
       return removeOverlapSignupsResult;

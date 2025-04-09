@@ -2,7 +2,10 @@ import { expect, test, afterEach, beforeEach } from "vitest";
 import mongoose from "mongoose";
 import { faker } from "@faker-js/faker";
 import { ProgramItemModel } from "server/features/program-item/programItemSchema";
-import { saveProgramItems } from "server/features/program-item/programItemRepository";
+import {
+  findProgramItems,
+  saveProgramItems,
+} from "server/features/program-item/programItemRepository";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { removeDeletedProgramItems } from "server/features/program-item/programItemUtils";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
@@ -35,8 +38,9 @@ test("should remove signup document when program item is removed", async () => {
   const signups = unsafelyUnwrap(await findDirectSignups());
   expect(signups).toHaveLength(1);
 
+  const currentProgramItems = unsafelyUnwrap(await findProgramItems());
   const deletedProgramItemsCount = unsafelyUnwrap(
-    await removeDeletedProgramItems([]),
+    await removeDeletedProgramItems([], currentProgramItems),
   );
   expect(deletedProgramItemsCount).toEqual(1);
 

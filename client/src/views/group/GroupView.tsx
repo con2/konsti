@@ -14,10 +14,10 @@ import { getTimeNow } from "client/utils/getTimeNow";
 import { selectDirectSignups } from "client/views/my-program-items/myProgramItemsSlice";
 import { config } from "shared/config";
 import { AppRoute } from "client/app/AppRoutes";
+import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
 
 export const GroupView = (): ReactElement => {
-  const { directSignupAlwaysOpenIds, twoPhaseSignupProgramTypes } =
-    config.event();
+  const { twoPhaseSignupProgramTypes } = config.event();
 
   const username = useAppSelector((state) => state.login.username);
   const groupCode = useAppSelector((state) => state.group.groupCode);
@@ -35,16 +35,9 @@ export const GroupView = (): ReactElement => {
     fetchData();
   }, []);
 
-  const filteredActiveDirectSignups = directSignups
-    .filter(
-      (directSignup) =>
-        !directSignupAlwaysOpenIds.includes(
-          directSignup.programItem.programItemId,
-        ),
-    )
-    .filter((directSignup) =>
-      twoPhaseSignupProgramTypes.includes(directSignup.programItem.programType),
-    );
+  const filteredActiveDirectSignups = directSignups.filter((directSignup) =>
+    isLotterySignupProgramItem(directSignup.programItem),
+  );
 
   const isInGroup = getIsInGroup(groupCode);
   const timeNow = getTimeNow();
@@ -72,12 +65,12 @@ export const GroupView = (): ReactElement => {
             <DirectSignupsContainer>
               <p>{t("group.hasDirectlySignedFollowingProgramItems")}</p>
               <ListItem>
-                {filteredActiveDirectSignups.map((programItem) => (
-                  <li key={programItem.programItem.programItemId}>
+                {filteredActiveDirectSignups.map((directSignup) => (
+                  <li key={directSignup.programItemId}>
                     <Link
-                      to={`${AppRoute.PROGRAM_ITEM}/${programItem.programItem.programItemId}`}
+                      to={`${AppRoute.PROGRAM_ITEM}/${directSignup.programItemId}`}
                     >
-                      {programItem.programItem.title}
+                      {directSignup.programItem.title}
                     </Link>
                   </li>
                 ))}

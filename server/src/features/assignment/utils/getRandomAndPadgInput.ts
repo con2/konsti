@@ -1,4 +1,3 @@
-import { getStartingProgramItems } from "server/features/assignment/utils/getStartingProgramItems";
 import { getLotterySignups } from "server/features/assignment/utils/getLotterySignups";
 import { getLotterySignupProgramItems } from "server/features/assignment/utils/getLotterySignupProgramItems";
 import { getGroupCreators } from "server/features/assignment/utils/getGroupCreators";
@@ -10,21 +9,8 @@ import { RunRandomAndPadgInput } from "server/types/resultTypes";
 
 export const getRandomAndPadgInput = (
   users: readonly User[],
-  programItems: readonly ProgramItem[],
-  startTime: string,
+  startingProgramItems: readonly ProgramItem[],
 ): RunRandomAndPadgInput => {
-  const startingProgramItems = getStartingProgramItems(programItems, startTime);
-
-  if (startingProgramItems.length === 0) {
-    return {
-      lotterySignupProgramItems: [],
-      attendeeGroups: [],
-      allAttendees: [],
-      numberOfIndividuals: 0,
-      numberOfGroups: 0,
-    };
-  }
-
   const lotterySignups = getLotterySignups(users);
 
   if (lotterySignups.length === 0) {

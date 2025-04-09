@@ -1,4 +1,4 @@
-import { ObjectId } from "mongoose";
+import { differenceBy } from "lodash-es";
 import { logger } from "server/utils/logger";
 import { ProgramItemModel } from "server/features/program-item/programItemSchema";
 import { updateMovedProgramItems } from "server/features/assignment/utils/updateMovedProgramItems";
@@ -9,6 +9,7 @@ import {
   Result,
   makeErrorResult,
   isErrorResult,
+  unwrapResult,
 } from "shared/utils/result";
 import { removeDeletedProgramItems } from "server/features/program-item/programItemUtils";
 import { removeInvalidProgramItemsFromUsers } from "server/features/assignment/utils/removeInvalidProgramItemsFromUsers";
@@ -38,9 +39,17 @@ export const saveProgramItems = async (
 ): Promise<Result<void, MongoDbError>> => {
   logger.info("MongoDB: Store program items to DB");
 
+  const currentProgramItemsResult = await findProgramItems();
+  if (isErrorResult(currentProgramItemsResult)) {
+    return currentProgramItemsResult;
+  }
+  const currentProgramItems = unwrapResult(currentProgramItemsResult);
+
   // This will remove direct signups and program items
-  const removeDeletedProgramItemsResult =
-    await removeDeletedProgramItems(programItems);
+  const removeDeletedProgramItemsResult = await removeDeletedProgramItems(
+    programItems,
+    currentProgramItems,
+  );
   if (isErrorResult(removeDeletedProgramItemsResult)) {
     return removeDeletedProgramItemsResult;
   }
@@ -99,29 +108,29 @@ export const saveProgramItems = async (
     };
   });
 
-  let response;
   try {
-    response = await ProgramItemModel.bulkWrite(bulkOps);
+    await ProgramItemModel.bulkWrite(bulkOps);
     logger.debug("MongoDB: Program items saved to DB successfully");
   } catch (error) {
     logger.error("Error saving program items to DB: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-  const newProgramItemObjectIds: ObjectId[] = Object.values(
-    response.upsertedIds,
-  );
-  logger.info(
-    `MongoDB: Found ${newProgramItemObjectIds.length} new program items`,
+  const newProgramItems = differenceBy(
+    programItems,
+    currentProgramItems,
+    "programItemId",
   );
 
+  logger.info(`MongoDB: Found ${newProgramItems.length} new program items`);
+
   // Create signup document for new program items
-  if (newProgramItemObjectIds.length > 0) {
+  if (newProgramItems.length > 0) {
+    const newProgramItemIds = newProgramItems.map(
+      (newProgramItem) => newProgramItem.programItemId,
+    );
     const createEmptySignupResult =
-      await createEmptyDirectSignupDocumentForProgramItems(
-        newProgramItemObjectIds,
-      );
+      await createEmptyDirectSignupDocumentForProgramItems(newProgramItemIds);
     if (isErrorResult(createEmptySignupResult)) {
       return createEmptySignupResult;
     }

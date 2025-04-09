@@ -228,7 +228,9 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
       await findUserDirectSignups(mockUser.username),
     );
     expect(updatedSignups.length).toEqual(1);
-    expect(updatedSignups[0].programItem.title).toEqual(testProgramItem.title);
+    expect(updatedSignups[0].programItemId).toEqual(
+      testProgramItem.programItemId,
+    );
   });
 
   test("should not modify anything if server response is invalid", async () => {

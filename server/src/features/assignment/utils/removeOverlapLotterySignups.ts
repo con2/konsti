@@ -13,14 +13,16 @@ import {
   unwrapResult,
 } from "shared/utils/result";
 import { MongoDbError } from "shared/types/api/errors";
+import { ProgramItem } from "shared/types/models/programItem";
 
 // TODO: Can this be deleted?
 dayjs.extend(isBetween);
 
-export const removeOverlapSignups = async (
+export const removeOverlapLotterySignups = async (
   results: readonly UserAssignmentResult[],
+  programItems: readonly ProgramItem[],
 ): Promise<Result<void, MongoDbError>> => {
-  logger.debug("Find overlapping signups");
+  logger.debug("Find overlapping lottery signups");
   const signupData: UserLotterySignups[] = [];
 
   const usersResult = await findUsers();
@@ -30,24 +32,31 @@ export const removeOverlapSignups = async (
 
   const users = unwrapResult(usersResult);
 
-  results.map((result) => {
-    const directSignupProgramItem = result.directSignup.programItem;
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+  results.flatMap((result) => {
+    const directSignupProgramItem = programItems.find(
+      (programItem) =>
+        programItem.programItemId === result.directSignup.programItemId,
+    );
+
     if (!directSignupProgramItem) {
       logger.error(
         "%s",
-        new Error("removeOverlapSignups: Error finding direct signup"),
+        new Error(
+          `removeOverlapLotterySignups: Error finding direct signup: ${result.directSignup.programItemId}`,
+        ),
       );
-      return;
+      return [];
     }
 
     const signedUser = users.find((user) => user.username === result.username);
     if (!signedUser) {
       logger.error(
         "%s",
-        new Error("removeOverlapSignups: Error finding signed user"),
+        new Error(
+          `removeOverlapLotterySignups: Error finding signed user: ${result.username}`,
+        ),
       );
-      return;
+      return [];
     }
 
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
@@ -65,9 +74,11 @@ export const removeOverlapSignups = async (
     if (!newLotterySignups) {
       logger.error(
         "%s",
-        new Error("removeOverlapSignups: Error finding lottery signups"),
+        new Error(
+          `removeOverlapLotterySignups: Error finding lottery signups for user ${signedUser.username}`,
+        ),
       );
-      return;
+      return [];
     }
 
     signupData.push({

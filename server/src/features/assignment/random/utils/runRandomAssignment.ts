@@ -4,14 +4,13 @@ import { CheckResult } from "eventassigner-random/lib/typings/checkResult";
 import { config } from "shared/config";
 import { getGroups } from "server/features/assignment/utils/getGroups";
 import { getList } from "server/features/assignment/utils/getList";
-import { getRandomAssignEvents } from "server/features/assignment/random/utils/getRandomAssignEvents";
 import { formatResults } from "server/features/assignment/utils/formatResults";
 import { ProgramItem } from "shared/types/models/programItem";
 import { AssignmentAlgorithmResult } from "server/types/resultTypes";
 import {
   ListItem,
   RandomAssignUpdateLInput,
-} from "server/types/padgRandomAssignTypes";
+} from "server/types/assignmentTypes";
 import { User } from "shared/types/models/user";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import {
@@ -24,6 +23,7 @@ import {
 import { AssignmentError } from "shared/types/api/errors";
 import { logger } from "server/utils/logger";
 import { calculateHappiness } from "server/features/assignment/padg/utils/calculateHappiness";
+import { getEvents } from "server/features/assignment/utils/getEvents";
 
 const updateL = (input: RandomAssignUpdateLInput): ListItem[] => input.L;
 
@@ -31,27 +31,23 @@ export const runRandomAssignment = (
   lotterySignupProgramItems: readonly ProgramItem[],
   attendeeGroups: readonly User[][],
   startTime: string,
-  directSignups: readonly DirectSignupsForProgramItem[],
+  lotteryValidDirectSignups: readonly DirectSignupsForProgramItem[],
 ): Result<AssignmentAlgorithmResult, AssignmentError> => {
   const groupsResult = getGroups(attendeeGroups, startTime);
   if (isErrorResult(groupsResult)) {
     return groupsResult;
   }
   const groups = unwrapResult(groupsResult);
-  const events = getRandomAssignEvents(
+  const events = getEvents(
     lotterySignupProgramItems,
-    directSignups,
+    lotteryValidDirectSignups,
   );
-  const listResult = getList({
+  const list = getList({
     attendeeGroups,
     startTime,
-    directSignups,
+    lotteryValidDirectSignups,
     lotterySignupProgramItems,
   });
-  if (isErrorResult(listResult)) {
-    return listResult;
-  }
-  const list = unwrapResult(listResult);
 
   const { randomAssignmentRounds } = config.server();
   const input = {

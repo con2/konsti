@@ -1,35 +1,25 @@
 import { first } from "lodash-es";
 import dayjs from "dayjs";
-import { ListItem } from "server/types/padgRandomAssignTypes";
+import { ListItem } from "server/types/assignmentTypes";
 import { getAssignmentBonus } from "server/features/assignment/utils/getAssignmentBonus";
 import { LotterySignup, User } from "shared/types/models/user";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import { logger } from "server/utils/logger";
-import {
-  Result,
-  isErrorResult,
-  isSuccessResult,
-  makeErrorResult,
-  makeSuccessResult,
-  unwrapResult,
-} from "shared/utils/result";
-import { AssignmentError } from "shared/types/api/errors";
 import { ProgramItem } from "shared/types/models/programItem";
 
 interface GetListParams {
   attendeeGroups: readonly User[][];
   startTime: string;
-  directSignups: readonly DirectSignupsForProgramItem[];
+  lotteryValidDirectSignups: readonly DirectSignupsForProgramItem[];
   lotterySignupProgramItems: readonly ProgramItem[];
 }
 
-// TODO: This should not return Result since it's just synchronous logic
 export const getList = ({
   attendeeGroups,
   startTime,
-  directSignups,
+  lotteryValidDirectSignups,
   lotterySignupProgramItems,
-}: GetListParams): Result<ListItem[], AssignmentError> => {
+}: GetListParams): ListItem[] => {
   const results = attendeeGroups.flatMap((attendeeGroup) => {
     const firstMember = first(attendeeGroup);
     if (!firstMember) {
@@ -37,7 +27,7 @@ export const getList = ({
         "%s",
         new Error("Padg or Random assign: error getting first member"),
       );
-      return makeErrorResult(AssignmentError.UNKNOWN_ERROR);
+      return [];
     }
 
     const list = firstMember.lotterySignups
@@ -57,39 +47,27 @@ export const getList = ({
           gain: getGain(
             lotterySignup,
             attendeeGroup,
-            directSignups,
+            lotteryValidDirectSignups,
             lotterySignupProgramItems,
           ),
         };
       });
 
-    return makeSuccessResult(list);
+    return list;
   });
 
-  const someResultFailed = results.some((result) => isErrorResult(result));
-  if (someResultFailed) {
-    return makeErrorResult(AssignmentError.UNKNOWN_ERROR);
-  }
-
-  const successResults = results.flatMap((result) => {
-    if (isSuccessResult(result)) {
-      return unwrapResult(result);
-    }
-    return [];
-  });
-
-  return makeSuccessResult(successResults);
+  return results;
 };
 
 const getGain = (
   lotterySignup: LotterySignup,
   attendeeGroup: User[],
-  directSignups: readonly DirectSignupsForProgramItem[],
+  lotteryValidDirectSignups: readonly DirectSignupsForProgramItem[],
   lotterySignupProgramItems: readonly ProgramItem[],
 ): number => {
   const bonus = getAssignmentBonus(
     attendeeGroup,
-    directSignups,
+    lotteryValidDirectSignups,
     lotterySignupProgramItems,
   );
 

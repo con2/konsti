@@ -10,6 +10,7 @@ import { LotterySignup, User } from "shared/types/models/user";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { config } from "shared/config";
+import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
 
 export const createLotterySignups = async (): Promise<void> => {
   const programItems = unsafelyUnwrap(await findProgramItems());
@@ -46,12 +47,10 @@ const getRandomLotterySignup = (
   const lotterySignups: LotterySignup[] = [];
   let randomIndex;
 
-  const { twoPhaseSignupProgramTypes, noKonstiSignupIds } = config.event();
+  const { noKonstiSignupIds } = config.event();
 
   const activeProgramItems = programItems
-    .filter((programItem) =>
-      twoPhaseSignupProgramTypes.includes(programItem.programType),
-    )
+    .filter((programItem) => isLotterySignupProgramItem(programItem))
     .filter(
       (programItem) => !noKonstiSignupIds.includes(programItem.programItemId),
     );

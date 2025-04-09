@@ -1,6 +1,7 @@
 import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { MyProgramItemsState, RootState } from "client/types/reduxTypes";
 import { selectProgramItems } from "client/views/all-program-items/allProgramItemsSlice";
+import { ProgramItem } from "shared/types/models/programItem";
 import {
   DirectSignup,
   FavoriteProgramItemId,
@@ -60,8 +61,7 @@ const myProgramItemsSlice = createSlice({
       action: PayloadAction<string>,
     ): MyProgramItemsState {
       const directSignups = state.directSignups.filter(
-        (programItem) =>
-          programItem.programItem.programItemId !== action.payload,
+        (directSignup) => directSignup.programItemId !== action.payload,
       );
       return { ...state, directSignups };
     },
@@ -80,9 +80,32 @@ export const myProgramItemsReducer = myProgramItemsSlice.reducer;
 
 // SELECTORS
 
-export const selectDirectSignups = (
+export type DirectSignupWithProgramItem = DirectSignup & {
+  programItem: ProgramItem;
+};
+
+export const selectDirectSignups: (
   state: RootState,
-): readonly DirectSignup[] => state.myProgramItems.directSignups;
+) => DirectSignupWithProgramItem[] = createSelector(
+  [
+    selectProgramItems,
+    (state: RootState) => state.myProgramItems.directSignups,
+  ],
+  (programItems, directSignups) => {
+    return directSignups.flatMap((directSignup) => {
+      const signedProgramItem = programItems.find(
+        (programItem) =>
+          programItem.programItemId === directSignup.programItemId,
+      );
+
+      if (!signedProgramItem) {
+        return [];
+      }
+
+      return { ...directSignup, programItem: signedProgramItem };
+    });
+  },
+);
 
 export const selectLotterySignups = (
   state: RootState,
@@ -93,11 +116,12 @@ const selectFavoriteProgramItemIds = (
 ): readonly FavoriteProgramItemId[] =>
   state.myProgramItems.favoriteProgramItemIds;
 
-export const selectFavoriteProgramItems = createSelector(
-  [selectProgramItems, selectFavoriteProgramItemIds],
-  (programItems, favoriteProgramItemIds) => {
-    return programItems.filter((programItem) =>
-      favoriteProgramItemIds.includes(programItem.programItemId),
-    );
-  },
-);
+export const selectFavoriteProgramItems: (state: RootState) => ProgramItem[] =
+  createSelector(
+    [selectProgramItems, selectFavoriteProgramItemIds],
+    (programItems, favoriteProgramItemIds) => {
+      return programItems.filter((programItem) =>
+        favoriteProgramItemIds.includes(programItem.programItemId),
+      );
+    },
+  );

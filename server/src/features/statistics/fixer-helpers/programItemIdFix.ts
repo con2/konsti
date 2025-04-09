@@ -95,19 +95,19 @@ export const programItemIdFix = async (
   results.map((result) => {
     result.results.map((userResult) => {
       const matchingProgramItem = programItems.find((programItem) => {
-        return isEqual(programItem._id, userResult.directSignup.programItem);
+        return isEqual(programItem._id, userResult.directSignup.programItemId);
       });
 
       if (!matchingProgramItem) {
         logger.error(
           `Results: program item for id ${JSON.stringify(
-            userResult.directSignup.programItem,
+            userResult.directSignup.programItemId,
           )} not found`,
         );
         userResult.directSignup = {
           ...userResult.directSignup,
           // @ts-expect-error: We don't want whole program item details
-          programItem: { programItemId: "<canceled>" },
+          programItemId: { programItemId: "<canceled>" },
         };
         return;
       }
@@ -115,7 +115,7 @@ export const programItemIdFix = async (
       userResult.directSignup = {
         ...userResult.directSignup,
         // @ts-expect-error: We don't want whole program item details
-        programItem: {
+        programItemId: {
           programItemId: matchingProgramItem.programItemId,
         },
       };
@@ -124,9 +124,8 @@ export const programItemIdFix = async (
 
   directSignups.map((signup) => {
     programItems.map((programItem) => {
-      if (isEqual(programItem._id, signup.programItem)) {
-        // @ts-expect-error: We don't want whole program item details
-        signup.programItem = { programItemId: programItem.programItemId };
+      if (isEqual(programItem.programItemId, signup.programItemId)) {
+        signup.programItemId = programItem.programItemId;
       }
     });
   });
