@@ -1,13 +1,12 @@
 module.exports = {
   plugins: [
     "stylelint-no-unsupported-browser-features",
-    // "@double-great/stylelint-a11y",
+    "@double-great/stylelint-a11y",
   ],
 
   extends: [
     "stylelint-config-standard",
-    // Recommended config doesn't work: https://github.com/double-great/stylelint-a11y/issues/65
-    // "@double-great/stylelint-a11y/recommended",
+    "@double-great/stylelint-a11y/recommended",
   ],
 
   customSyntax: "postcss-styled-syntax",
@@ -28,13 +27,7 @@ module.exports = {
     "color-function-notation": null, // Don't want this
     "alpha-value-notation": null, // Don't want this
     "declaration-empty-line-before": null, // Don't want this
-
-    // @double-great/stylelint-a11y
-    // Same rules as in recommended config - enable single rules since config doesn't work
-    // TODO: Doesn't work with stylelint 16.13.0
-    // "a11y/media-prefers-reduced-motion": true,
-    // "a11y/no-outline-none": true,
-    // "a11y/selector-pseudo-class-focus": true,
+    "color-function-alias-notation": null, // Don't want this
 
     // no-unsupported-browser-features
     "plugin/no-unsupported-browser-features": [
