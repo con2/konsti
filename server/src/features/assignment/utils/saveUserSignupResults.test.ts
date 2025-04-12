@@ -23,7 +23,7 @@ import { saveUserSignupResults } from "server/features/assignment/utils/saveUser
 import { UserAssignmentResult } from "shared/types/models/result";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { EventLogAction } from "shared/types/models/eventLog";
-import { NotificationTask, NotificationTaskType, setupQueue } from "server/utils/notificationQueue";
+import { NotificationTask, NotificationTaskType, setupEmailNotificationQueue } from "server/utils/notificationQueue";
 import { queueAsPromised } from "fastq";
 
 let queue: queueAsPromised<NotificationTask>
@@ -33,7 +33,7 @@ beforeEach(async () => {
     dbName: faker.string.alphanumeric(10),
   });
   if (!queue) {
-    queue = setupQueue()
+    queue = setupEmailNotificationQueue()
   }
   queue.pause()
 });
