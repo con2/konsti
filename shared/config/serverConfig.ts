@@ -33,6 +33,7 @@ export interface ServerConfig {
   onlyCronjobs: boolean;
   defaultSignupStrategy: EventSignupStrategy;
   defaultLoginProvider: LoginProvider;
+  emailNotificationQueueWorkerCount: number;
 }
 
 const getAllowedCorsOrigins = (localOrigins: string[] = []): string[] => {
@@ -73,6 +74,9 @@ const commonConfig = {
 
   // Tests
   enableLoggingInTests: false,
+
+  // Email notifications
+  emailNotificationQueueWorkerCount: 1
 };
 
 const prodConfig = {
