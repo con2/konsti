@@ -23,15 +23,24 @@ import { saveUserSignupResults } from "server/features/assignment/utils/saveUser
 import { UserAssignmentResult } from "shared/types/models/result";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { EventLogAction } from "shared/types/models/eventLog";
+import { NotificationTask, NotificationTaskType, setupQueue } from "server/utils/notificationQueue";
+import { queueAsPromised } from "fastq";
+
+let queue: queueAsPromised<NotificationTask>
 
 beforeEach(async () => {
   await mongoose.connect(globalThis.__MONGO_URI__, {
     dbName: faker.string.alphanumeric(10),
   });
+  if (!queue) {
+    queue = setupQueue()
+  }
+  queue.pause()
 });
 
 afterEach(async () => {
   await mongoose.disconnect();
+  queue.kill()
 });
 
 test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items", async () => {
@@ -92,6 +101,13 @@ test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items", async () => 
 
   expect(usersWithNoAssignEventLogItem).toHaveLength(1);
   expect(usersWithNoAssignEventLogItem[0].username).toEqual(mockUser2.username);
+  
+  const queueAfterUserSignup = queue.getQueue()
+  expect(queueAfterUserSignup).toHaveLength(2)
+  expect(queueAfterUserSignup[0].username).toEqual(mockUser.username)
+  expect(queueAfterUserSignup[0].type).toEqual(NotificationTaskType.SEND_EMAIL_ACCEPTED)
+  expect(queueAfterUserSignup[1].username).toEqual(mockUser2.username)
+  expect(queueAfterUserSignup[1].type).toEqual(NotificationTaskType.SEND_EMAIL_REJECTED)
 });
 
 test("should add NO_ASSIGNMENT event log item to group members", async () => {
@@ -138,7 +154,11 @@ test("should add NO_ASSIGNMENT event log item to group members", async () => {
   });
 
   expect(usersWithNoAssignEventLogItem).toHaveLength(2);
-  // expect(usersWithNoAssignEventLogItem[0].username).toEqual(mockUser2.username);
+  
+  const queueAfterUserSignup = queue.getQueue()
+  expect(queueAfterUserSignup).toHaveLength(2)
+  expect(queueAfterUserSignup[0].type).toEqual(NotificationTaskType.SEND_EMAIL_REJECTED)
+  expect(queueAfterUserSignup[1].type).toEqual(NotificationTaskType.SEND_EMAIL_REJECTED)
 });
 
 test("should only add one event log item with multiple lottery signups", async () => {
@@ -226,6 +246,13 @@ test("should only add one event log item with multiple lottery signups", async (
   expect(usersWithNoAssignEventLogItem[0].eventLogItems[0].action).toEqual(
     EventLogAction.NO_ASSIGNMENT,
   );
+
+  const queueAfterUserSignup = queue.getQueue()
+  expect(queueAfterUserSignup).toHaveLength(2)
+  expect(queueAfterUserSignup[0].username).toEqual(mockUser.username)
+  expect(queueAfterUserSignup[0].type).toEqual(NotificationTaskType.SEND_EMAIL_ACCEPTED)
+  expect(queueAfterUserSignup[1].username).toEqual(mockUser2.username)
+  expect(queueAfterUserSignup[1].type).toEqual(NotificationTaskType.SEND_EMAIL_REJECTED)
 });
 
 test("should not add event log items after assigment if signup is dropped due to error", async () => {
@@ -298,4 +325,13 @@ test("should not add event log items after assigment if signup is dropped due to
   );
   expect(usersWithoutEventLogItem).toHaveLength(1);
   expect(usersWithEventLogItem).toHaveLength(3);
+  
+  const queueAfterUserSignup = queue.getQueue()
+  expect(queueAfterUserSignup).toHaveLength(3)
+  expect(queueAfterUserSignup[0].username).toEqual(mockUser.username)
+  expect(queueAfterUserSignup[0].type).toEqual(NotificationTaskType.SEND_EMAIL_ACCEPTED)
+  expect(queueAfterUserSignup[1].username).toEqual(mockUser3.username)
+  expect(queueAfterUserSignup[1].type).toEqual(NotificationTaskType.SEND_EMAIL_ACCEPTED)
+  expect(queueAfterUserSignup[2].username).toEqual(mockUser4.username)
+  expect(queueAfterUserSignup[2].type).toEqual(NotificationTaskType.SEND_EMAIL_ACCEPTED)
 });

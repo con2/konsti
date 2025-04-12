@@ -14,7 +14,7 @@ import {
   makeSuccessResult,
   unwrapResult,
 } from "shared/utils/result";
-import { MongoDbError } from "shared/types/api/errors";
+import { MongoDbError, QueueError } from "shared/types/api/errors";
 import {
   addEventLogItems,
   deleteEventLogItemsByStartTime,
@@ -28,6 +28,7 @@ import { getGroupMembersWithCreatorLotterySignups } from "server/features/assign
 import { getStartingProgramItems } from "server/features/assignment/utils/getStartingProgramItems";
 import { ProgramItem } from "shared/types/models/programItem";
 import { SignupRepositoryAddSignup } from "server/features/direct-signup/directSignupTypes";
+import { addNotificationsBulk, NotificationTaskType } from "server/utils/notificationQueue";
 
 interface SaveUserSignupResultsParams {
   startTime: string;
@@ -41,7 +42,7 @@ export const saveUserSignupResults = async ({
   results,
   users,
   programItems,
-}: SaveUserSignupResultsParams): Promise<Result<void, MongoDbError>> => {
+}: SaveUserSignupResultsParams): Promise<Result<void, MongoDbError | QueueError>> => {
   // Remove previous assignment result for the same start time
   // This does not remove "directSignupAlwaysOpen" signups or previous signups from moved program items
   const delAssignmentSignupsByStartTimeResult =
@@ -149,6 +150,15 @@ export const saveUserSignupResults = async ({
     return newAssignmentEventLogItemsResult;
   }
 
+  const newAssingmentEmailNotificationsResult = await addNotificationsBulk(finalResults.map((result) => ({
+    type: NotificationTaskType.SEND_EMAIL_ACCEPTED,
+    username: result.username
+  })))
+
+  if (isErrorResult(newAssingmentEmailNotificationsResult)) {
+    return newAssingmentEmailNotificationsResult;
+  }
+
   // Get users who didn't get a seat in lottery
   const startingProgramItems = getStartingProgramItems(programItems, startTime);
   const groupCreators = getGroupCreators(users, startingProgramItems);
@@ -196,6 +206,15 @@ export const saveUserSignupResults = async ({
     });
     if (isErrorResult(noAssignmentEventLogItemsResult)) {
       return noAssignmentEventLogItemsResult;
+    }
+
+    const noAssingmentEmailNotificationsResult = await addNotificationsBulk(noAssignmentLotterySignupUsernames.map((noAssignmentLotterySignupUsername) => ({
+      type: NotificationTaskType.SEND_EMAIL_REJECTED,
+      username: noAssignmentLotterySignupUsername
+    })))
+
+    if (isErrorResult(noAssingmentEmailNotificationsResult)) {
+      return noAssingmentEmailNotificationsResult;
     }
   }
 

@@ -36,3 +36,8 @@ export enum AssignmentError {
 export enum BcryptError {
   UNKNOWN_ERROR = "unknownError",
 }
+
+export enum QueueError {
+  QUEUE_NOT_INITIALIZED = "queueNotInitialized",
+  FAILED_TO_PUSH = "failedToPush"
+}
