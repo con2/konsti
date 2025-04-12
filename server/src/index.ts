@@ -37,7 +37,7 @@ const startApp = async (): Promise<void> => {
     logger.info("Cronjobs not started, set ONLY_CRONJOBS to enable cronjobs");
   }
 
-  setupQueue();
+  setupQueue(config.server().emailNotificationQueueWorkerCount);
 
   process.once("SIGINT", (signal: string) => {
     closeServer(server, signal).catch((error: unknown) => {

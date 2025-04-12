@@ -36,6 +36,7 @@ export interface ServerConfig {
   defaultLoginProvider: LoginProvider;
   logInvalidStartTimes: boolean;
   logMissingScheduleItems: boolean; // If scheduleItems is missing, program item is ignored
+  emailNotificationQueueWorkerCount: number;
 }
 
 const getAllowedCorsOrigins = (localOrigins: string[] = []): string[] => {
@@ -83,6 +84,8 @@ const commonConfig = {
   // Data checks
   logInvalidStartTimes: false,
   logMissingScheduleItems: false,
+  // Email notifications
+  emailNotificationQueueWorkerCount: 1
 };
 
 const prodConfig = {
