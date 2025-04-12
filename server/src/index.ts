@@ -5,7 +5,7 @@ import { logger } from "server/utils/logger";
 import { startCronJobs } from "server/utils/cron";
 import { config } from "shared/config";
 import { initializeDayjs } from "shared/utils/initializeDayjs";
-import { setupQueue } from "./utils/notificationQueue";
+import { setupEmailNotificationQueue } from "./utils/notificationQueue";
 
 const startApp = async (): Promise<void> => {
   initializeDayjs();
@@ -37,7 +37,7 @@ const startApp = async (): Promise<void> => {
     logger.info("Cronjobs not started, set ONLY_CRONJOBS to enable cronjobs");
   }
 
-  setupQueue(config.server().emailNotificationQueueWorkerCount);
+  setupEmailNotificationQueue(config.server().emailNotificationQueueWorkerCount);
 
   process.once("SIGINT", (signal: string) => {
     closeServer(server, signal).catch((error: unknown) => {

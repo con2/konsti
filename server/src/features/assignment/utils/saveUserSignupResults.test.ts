@@ -5,7 +5,7 @@ import dayjs from "dayjs";
 import {
   NotificationTask,
   NotificationTaskType,
-  setupQueue,
+  setupEmailNotificationQueue,
 } from "server/utils/notificationQueue";
 import { queueAsPromised } from "fastq";
 import { findUsers, saveUser } from "server/features/user/userRepository";
@@ -39,7 +39,7 @@ beforeEach(async () => {
     dbName: faker.string.alphanumeric(10),
   });
   if (!queue) {
-    queue = setupQueue();
+    queue = setupEmailNotificationQueue();
   }
   queue.pause();
 });
