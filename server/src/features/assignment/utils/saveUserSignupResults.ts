@@ -1,5 +1,9 @@
 import dayjs from "dayjs";
 import { unique } from "remeda";
+import {
+  addNotificationsBulk,
+  NotificationTaskType,
+} from "server/utils/notificationQueue";
 import { UserAssignmentResult } from "shared/types/models/result";
 import {
   delDirectSignup,
@@ -14,7 +18,7 @@ import {
   makeSuccessResult,
   unwrapResult,
 } from "shared/utils/result";
-import { MongoDbError } from "shared/types/api/errors";
+import { MongoDbError, QueueError } from "shared/types/api/errors";
 import {
   addEventLogItems,
   deleteEventLogItemsByStartTime,
@@ -41,7 +45,9 @@ export const saveUserSignupResults = async ({
   results,
   users,
   programItems,
-}: SaveUserSignupResultsParams): Promise<Result<void, MongoDbError>> => {
+}: SaveUserSignupResultsParams): Promise<
+  Result<void, MongoDbError | QueueError>
+> => {
   // Remove previous lottery result for the same start time
   // This does not remove non-lottery signups or previous signups from moved program items
   const delAssignmentSignupsByStartTimeResult =
@@ -148,6 +154,17 @@ export const saveUserSignupResults = async ({
     return newAssignmentEventLogItemsResult;
   }
 
+  const newAssingmentEmailNotificationsResult = await addNotificationsBulk(
+    finalResults.map((result) => ({
+      type: NotificationTaskType.SEND_EMAIL_ACCEPTED,
+      username: result.username,
+    })),
+  );
+
+  if (isErrorResult(newAssingmentEmailNotificationsResult)) {
+    return newAssingmentEmailNotificationsResult;
+  }
+
   // Get users who didn't get a seat in lottery
   const startingProgramItems = getStartingProgramItems(
     programItems,
@@ -208,6 +225,19 @@ export const saveUserSignupResults = async ({
     });
     if (isErrorResult(noAssignmentEventLogItemsResult)) {
       return noAssignmentEventLogItemsResult;
+    }
+
+    const noAssingmentEmailNotificationsResult = await addNotificationsBulk(
+      noAssignmentLotterySignupUsernames.map(
+        (noAssignmentLotterySignupUsername) => ({
+          type: NotificationTaskType.SEND_EMAIL_REJECTED,
+          username: noAssignmentLotterySignupUsername,
+        }),
+      ),
+    );
+
+    if (isErrorResult(noAssingmentEmailNotificationsResult)) {
+      return noAssingmentEmailNotificationsResult;
     }
   }
 
