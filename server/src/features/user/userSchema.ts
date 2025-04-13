@@ -11,6 +11,7 @@ const UserSchema = new mongoose.Schema(
     serial: String,
     groupCreatorCode: String,
     groupCode: String,
+    email: String,
     favoriteProgramItemIds: [String],
     lotterySignups: [
       {

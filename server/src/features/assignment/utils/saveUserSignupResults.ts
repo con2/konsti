@@ -152,7 +152,9 @@ export const saveUserSignupResults = async ({
 
   const newAssingmentEmailNotificationsResult = await addNotificationsBulk(finalResults.map((result) => ({
     type: NotificationTaskType.SEND_EMAIL_ACCEPTED,
-    username: result.username
+    username: result.username,
+    program: result.directSignup.programItem.title,
+    programStartTime: result.directSignup.programItem.startTime
   })))
 
   if (isErrorResult(newAssingmentEmailNotificationsResult)) {
@@ -210,7 +212,9 @@ export const saveUserSignupResults = async ({
 
     const noAssingmentEmailNotificationsResult = await addNotificationsBulk(noAssignmentLotterySignupUsernames.map((noAssignmentLotterySignupUsername) => ({
       type: NotificationTaskType.SEND_EMAIL_REJECTED,
-      username: noAssignmentLotterySignupUsername
+      username: noAssignmentLotterySignupUsername,
+      program: "",
+      programStartTime: startTime
     })))
 
     if (isErrorResult(noAssingmentEmailNotificationsResult)) {

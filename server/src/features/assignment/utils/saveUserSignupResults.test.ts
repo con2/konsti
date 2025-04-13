@@ -28,13 +28,13 @@ import { queueAsPromised } from "fastq";
 import { NullSender } from "server/features/notifications/nullSender";
 
 let queue: queueAsPromised<NotificationTask>
+const sender = new NullSender()
 
 beforeEach(async () => {
   await mongoose.connect(globalThis.__MONGO_URI__, {
     dbName: faker.string.alphanumeric(10),
   });
   if (!queue) {
-    const sender = new NullSender()
     queue = setupEmailNotificationQueue(sender, 1)
   }
   queue.pause()
@@ -45,7 +45,7 @@ afterEach(async () => {
   queue.kill()
 });
 
-test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items", async () => {
+test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items and email notifications", async () => {
   await saveUser(mockUser);
   await saveUser(mockUser2);
 
@@ -104,12 +104,34 @@ test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items", async () => 
   expect(usersWithNoAssignEventLogItem).toHaveLength(1);
   expect(usersWithNoAssignEventLogItem[0].username).toEqual(mockUser2.username);
   
-  const queueAfterUserSignup = queue.getQueue()
-  expect(queueAfterUserSignup).toHaveLength(2)
-  expect(queueAfterUserSignup[0].username).toEqual(mockUser.username)
-  expect(queueAfterUserSignup[0].type).toEqual(NotificationTaskType.SEND_EMAIL_ACCEPTED)
-  expect(queueAfterUserSignup[1].username).toEqual(mockUser2.username)
-  expect(queueAfterUserSignup[1].type).toEqual(NotificationTaskType.SEND_EMAIL_REJECTED)
+  const queueAfterUserSignup = queue.getQueue();
+  expect(queueAfterUserSignup).toHaveLength(2);
+  expect(queueAfterUserSignup[0].username).toEqual(mockUser.username);
+  expect(queueAfterUserSignup[0].type).toEqual(NotificationTaskType.SEND_EMAIL_ACCEPTED);
+  expect(queueAfterUserSignup[1].username).toEqual(mockUser2.username);
+  expect(queueAfterUserSignup[1].type).toEqual(NotificationTaskType.SEND_EMAIL_REJECTED);
+
+  queue.resume();
+  await queue.drained();
+  const messages = sender.getMessages();
+  const expectedAcceptedBody = `Hei ${mockUser.username}!
+Olet ollut onnekas ja paasit peliin Test program item
+Pelin alkaa 2019-07-26T14:00:00.000Z.
+
+Terveisin Konsti.`;
+  const expectedAcceptedSubject = "Sinut on hyvaksytty peliin Test program item";
+  const expectedRejectedBody = `Hei ${mockUser2.username}!
+Et paassyt peliin 2019-07-26T14:00:00.000Z arvonnassa
+
+Terveisin Konsti.`;
+  const expectedRejectedSubject = "Et paassyt arvonnassa yhteenkaan peliin";
+
+  expect(messages[0].body).toEqual(expectedAcceptedBody)
+  expect(messages[0].subject).toEqual(expectedAcceptedSubject)
+  expect(messages[0].to).toEqual(["user@example.com"])
+  expect(messages[1].body).toEqual(expectedRejectedBody)
+  expect(messages[1].subject).toEqual(expectedRejectedSubject)
+  expect(messages[1].to).toEqual(["user@example.com"])
 });
 
 test("should add NO_ASSIGNMENT event log item to group members", async () => {
@@ -327,13 +349,4 @@ test("should not add event log items after assigment if signup is dropped due to
   );
   expect(usersWithoutEventLogItem).toHaveLength(1);
   expect(usersWithEventLogItem).toHaveLength(3);
-  
-  const queueAfterUserSignup = queue.getQueue()
-  expect(queueAfterUserSignup).toHaveLength(3)
-  expect(queueAfterUserSignup[0].username).toEqual(mockUser.username)
-  expect(queueAfterUserSignup[0].type).toEqual(NotificationTaskType.SEND_EMAIL_ACCEPTED)
-  expect(queueAfterUserSignup[1].username).toEqual(mockUser3.username)
-  expect(queueAfterUserSignup[1].type).toEqual(NotificationTaskType.SEND_EMAIL_ACCEPTED)
-  expect(queueAfterUserSignup[2].username).toEqual(mockUser4.username)
-  expect(queueAfterUserSignup[2].type).toEqual(NotificationTaskType.SEND_EMAIL_ACCEPTED)
 });
