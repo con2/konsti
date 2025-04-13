@@ -9,8 +9,16 @@ export class MailgunSender implements EmailSender {
     private client
 
     constructor() {
+        const username = config.server().mailgunUsername
+        const key = config.server().mailgunAPIKey
+        const url = config.server().mailgunURL
+
+        if (!username || !key || !url) {
+            throw new Error("No username, key or url set for mailgun!")
+        }
+
         this.mailgun = new Mailgun(FormData)
-        this.client = this.mailgun.client({username: config.server().mailgunUsername, key: config.server().mailgunAPIKey, url: config.server().mailgunURL})
+        this.client = this.mailgun.client({username, key, url})
     }
 
     async send(message: EmailMessage): Promise<EmailSendResponse> {
