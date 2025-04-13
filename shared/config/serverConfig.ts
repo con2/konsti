@@ -34,6 +34,9 @@ export interface ServerConfig {
   defaultSignupStrategy: EventSignupStrategy;
   defaultLoginProvider: LoginProvider;
   emailNotificationQueueWorkerCount: number;
+  mailgunURL: string
+  mailgunUsername: string
+  mailgunAPIKey: string
 }
 
 const getAllowedCorsOrigins = (localOrigins: string[] = []): string[] => {
@@ -76,7 +79,10 @@ const commonConfig = {
   enableLoggingInTests: false,
 
   // Email notifications
-  emailNotificationQueueWorkerCount: 1
+  emailNotificationQueueWorkerCount: 1,
+  mailgunURL: process.env.MAILGUN_URL ?? "https://api.mailgun.net",
+  mailgunUsername: process.env.MAILGUN_USERNAME ?? "",
+  mailgunAPIKey: process.env.MAILGUN_API_KEY ?? "",
 };
 
 const prodConfig = {
