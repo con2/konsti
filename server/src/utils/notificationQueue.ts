@@ -2,6 +2,12 @@ import * as fastq from "fastq";
 import type { queueAsPromised } from "fastq";
 import { QueueError } from "shared/types/api/errors";
 import { makeErrorResult, makeSuccessResult, Result } from "shared/utils/result";
+import Mailgun from "mailgun.js";
+import FormData from "form-data";
+import { config } from "shared/config";
+import { EmailSender } from "server/features/notifications/senderCommon";
+import { MailgunSender } from "server/features/notifications/MailgunSender";
+import { emailNotificationWorker } from "server/features/notifications/emailNotificationWorker";
 
 export enum NotificationTaskType {
     SEND_EMAIL_ACCEPTED,
@@ -41,15 +47,11 @@ export async function addNotification(notification: NotificationTask): Promise<R
     }
 }
 
-export function setupEmailNotificationQueue(workerCount: number = 1): queueAsPromised<NotificationTask>   {
-    queue = fastq.promise(asyncWorker, workerCount)
+export function setupEmailNotificationQueue(sender: EmailSender, workerCount: number = 1): queueAsPromised<NotificationTask>   {
+    queue = fastq.promise((notification) => emailNotificationWorker(notification, sender), workerCount)
     return queue
 }
 
 export function getQueue(): queueAsPromised<NotificationTask> {
     return queue
-}
-
-export async function asyncWorker (arg: NotificationTask): Promise<void> {
-    console.log(arg.type)
 }

@@ -31,6 +31,7 @@ import { UserAssignmentResult } from "shared/types/models/result";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { EventLogAction } from "shared/types/models/eventLog";
 import { config } from "shared/config";
+import { NullSender } from "server/features/notifications/nullSender";
 
 let queue: queueAsPromised<NotificationTask>;
 
@@ -39,7 +40,8 @@ beforeEach(async () => {
     dbName: faker.string.alphanumeric(10),
   });
   if (!queue) {
-    queue = setupEmailNotificationQueue();
+    const sender = new NullSender()
+    queue = setupEmailNotificationQueue(sender, 1)
   }
   queue.pause();
 });

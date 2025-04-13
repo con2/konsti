@@ -37,6 +37,9 @@ export interface ServerConfig {
   logInvalidStartTimes: boolean;
   logMissingScheduleItems: boolean; // If scheduleItems is missing, program item is ignored
   emailNotificationQueueWorkerCount: number;
+  mailgunURL: string
+  mailgunUsername: string
+  mailgunAPIKey: string
 }
 
 const getAllowedCorsOrigins = (localOrigins: string[] = []): string[] => {
@@ -85,7 +88,10 @@ const commonConfig = {
   logInvalidStartTimes: false,
   logMissingScheduleItems: false,
   // Email notifications
-  emailNotificationQueueWorkerCount: 1
+  emailNotificationQueueWorkerCount: 1,
+  mailgunURL: process.env.MAILGUN_URL ?? "https://api.mailgun.net",
+  mailgunUsername: process.env.MAILGUN_USERNAME ?? "",
+  mailgunAPIKey: process.env.MAILGUN_API_KEY ?? "",
 };
 
 const prodConfig = {
