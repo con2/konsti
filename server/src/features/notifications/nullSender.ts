@@ -7,6 +7,6 @@ export class NullSender implements EmailSender {
             message: "",
             details: "",
             status: 200
-        }
+        };
     }
 }

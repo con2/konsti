@@ -15,39 +15,39 @@ export type NotificationTask = {
   username: string
 }
 
-let queue: queueAsPromised<NotificationTask>
+let queue: queueAsPromised<NotificationTask>;
 
 export async function addNotificationsBulk(notifications: NotificationTask[]): Promise<Result<boolean, QueueError>> {
     if (notifications.length == 0) {
-        return makeSuccessResult(true)
+        return makeSuccessResult(true);
     }
 
     try {
         notifications.forEach(addNotification)
-        return makeSuccessResult(true)
+        return makeSuccessResult(true);
     } catch {
-        return makeErrorResult(QueueError.FAILED_TO_PUSH)
+        return makeErrorResult(QueueError.FAILED_TO_PUSH);
     }
 }
 
 export async function addNotification(notification: NotificationTask): Promise<Result<boolean, QueueError>> {
     if (!queue) {
-        return makeErrorResult(QueueError.QUEUE_NOT_INITIALIZED)
+        return makeErrorResult(QueueError.QUEUE_NOT_INITIALIZED);
     }
     
     try {
-        await queue.push(notification)
-        return makeSuccessResult(true)
+        await queue.push(notification);
+        return makeSuccessResult(true);
     } catch {
-        return makeErrorResult(QueueError.FAILED_TO_PUSH)
+        return makeErrorResult(QueueError.FAILED_TO_PUSH);
     }
 }
 
 export function setupEmailNotificationQueue(sender: EmailSender, workerCount: number = 1): queueAsPromised<NotificationTask>   {
-    queue = fastq.promise((notification) => emailNotificationWorker(notification, sender), workerCount)
-    return queue
+    queue = fastq.promise((notification) => emailNotificationWorker(notification, sender), workerCount);
+    return queue;
 }
 
 export function getQueue(): queueAsPromised<NotificationTask> {
-    return queue
+    return queue;
 }
