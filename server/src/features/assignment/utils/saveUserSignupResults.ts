@@ -154,12 +154,12 @@ export const saveUserSignupResults = async ({
     return newAssignmentEventLogItemsResult;
   }
 
-  const newAssingmentEmailNotificationsResult = await addNotificationsBulk(
-    finalResults.map((result) => ({
-      type: NotificationTaskType.SEND_EMAIL_ACCEPTED,
-      username: result.username,
-    })),
-  );
+  const newAssingmentEmailNotificationsResult = await addNotificationsBulk(finalResults.map((result) => ({
+    type: NotificationTaskType.SEND_EMAIL_ACCEPTED,
+    username: result.username,
+    program: result.directSignup.programItem.title,
+    programStartTime: result.directSignup.programItem.startTime
+  })))
 
   if (isErrorResult(newAssingmentEmailNotificationsResult)) {
     return newAssingmentEmailNotificationsResult;
@@ -227,14 +227,12 @@ export const saveUserSignupResults = async ({
       return noAssignmentEventLogItemsResult;
     }
 
-    const noAssingmentEmailNotificationsResult = await addNotificationsBulk(
-      noAssignmentLotterySignupUsernames.map(
-        (noAssignmentLotterySignupUsername) => ({
-          type: NotificationTaskType.SEND_EMAIL_REJECTED,
-          username: noAssignmentLotterySignupUsername,
-        }),
-      ),
-    );
+    const noAssingmentEmailNotificationsResult = await addNotificationsBulk(noAssignmentLotterySignupUsernames.map((noAssignmentLotterySignupUsername) => ({
+      type: NotificationTaskType.SEND_EMAIL_REJECTED,
+      username: noAssignmentLotterySignupUsername,
+      program: "",
+      programStartTime: startTime
+    })))
 
     if (isErrorResult(noAssingmentEmailNotificationsResult)) {
       return noAssingmentEmailNotificationsResult;

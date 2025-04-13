@@ -13,6 +13,8 @@ export enum NotificationTaskType {
 export type NotificationTask = {
   type: NotificationTaskType
   username: string
+  program: string
+  programStartTime: string
 }
 
 let queue: queueAsPromised<NotificationTask>;

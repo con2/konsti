@@ -40,6 +40,7 @@ export const saveUser = async (
     favoriteProgramItemIds: [],
     lotterySignups: [],
     eventLogItems: [],
+    email: newUserData.email,
   };
 
   const user = new UserModel(newUser);

@@ -8,6 +8,7 @@ export interface NewUser {
   userGroup?: UserGroup;
   groupCode?: string;
   groupCreatorCode?: string;
+  email?: string;
 }
 
 export interface AssignmentLotterySignup {
