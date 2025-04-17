@@ -13,7 +13,12 @@ test("Add direct signup", async ({ page, request }) => {
   await clearDb(request);
   await addUser(request);
   await addProgramItems(request, [
-    { startTime: dayjs().add(1, "hour").startOf("hour").toISOString() },
+    {
+      startTime: dayjs(config.event().eventStartTime)
+        .add(1, "hour")
+        .startOf("hour")
+        .toISOString(),
+    },
   ]);
   await postTestSettings(request, {
     testTime: config.event().eventStartTime,
