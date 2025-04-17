@@ -7,15 +7,21 @@ import {
   clearDb,
   addUser,
 } from "playwright/playwrightUtils";
+import { config } from "shared/config";
 
 test("Add direct signup", async ({ page, request }) => {
   await clearDb(request);
   await addUser(request);
   await addProgramItems(request, [
-    { startTime: dayjs().add(1, "hour").startOf("hour").toISOString() },
+    {
+      startTime: dayjs(config.event().eventStartTime)
+        .add(1, "hour")
+        .startOf("hour")
+        .toISOString(),
+    },
   ]);
   await postTestSettings(request, {
-    testTime: dayjs().toISOString(),
+    testTime: config.event().eventStartTime,
   });
   await login(page, request, { username: "test1", password: "test" });
 
