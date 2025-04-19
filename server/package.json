@@ -34,13 +34,13 @@
     "check-start-times": "NODE_ENV=development tsx src/test/scripts/checkStartTimes.ts"
   },
   "dependencies": {
-    "@faker-js/faker": "9.6.0",
-    "@sentry/node": "9.12.0",
+    "@faker-js/faker": "9.7.0",
+    "@sentry/node": "9.13.0",
     "@vercel/ncc": "0.38.3",
     "bcryptjs": "3.0.2",
     "commander": "13.1.0",
     "croner": "9.0.0",
-    "dotenv": "16.4.7",
+    "dotenv": "16.5.0",
     "eventassigner-js": "0.1.6",
     "eventassigner-random": "0.3.2",
     "express": "5.1.0",
@@ -58,7 +58,7 @@
   "devDependencies": {
     "@types/jsonwebtoken": "9.0.9",
     "@types/morgan": "1.9.9",
-    "@types/node": "22.14.0",
+    "@types/node": "22.14.1",
     "@types/supertest": "6.0.3",
     "mongodb-memory-server": "10.1.4",
     "supertest": "7.1.0"
