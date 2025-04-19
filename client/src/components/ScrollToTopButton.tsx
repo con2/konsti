@@ -9,7 +9,7 @@ export const ScrollToTopButton = (): ReactElement => {
   return (
     <FloatingButton
       aria-label={t("button.scrollToTop")}
-      onClick={() => window.scrollTo(0, 0)}
+      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
     >
       <Icon aria-hidden="true" icon="chevron-up" />
     </FloatingButton>
@@ -25,12 +25,17 @@ const FloatingButton = styled.button`
   cursor: pointer;
   width: 48px;
   height: 48px;
+  box-shadow: ${(props) => props.theme.shadowHigher};
 
   @media (max-width: ${(props) => props.theme.breakpointPhone}) {
+    position: sticky;
+    display: block;
+    margin-top: calc(100vh + 48px);
+    margin-left: auto;
     width: 36px;
     height: 36px;
     bottom: 12px;
-    right: 12px;
+    margin-right: 12px;
   }
 
   background: ${(props) => props.theme.buttonPrimaryBackground};
