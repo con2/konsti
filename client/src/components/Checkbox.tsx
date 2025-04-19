@@ -1,28 +1,16 @@
-import { ReactElement } from "react";
+import { ReactElement, InputHTMLAttributes } from "react";
 import styled from "styled-components";
 
-interface Props {
-  checked: boolean;
-  onChange: () => void;
+type Props = {
   label: string;
   id: string;
-}
+} & InputHTMLAttributes<HTMLInputElement>;
 
-export const Checkbox = ({
-  checked,
-  onChange,
-  label,
-  id,
-}: Props): ReactElement => {
+export const Checkbox = (props: Props): ReactElement => {
   return (
     <div>
-      <StyledCheckbox
-        type={"checkbox"}
-        checked={checked}
-        onChange={onChange}
-        id={id}
-      />
-      <label htmlFor={id}>{label}</label>
+      <StyledCheckbox {...props} type={"checkbox"} />
+      <label htmlFor={props.id}>{props.label}</label>
     </div>
   );
 };

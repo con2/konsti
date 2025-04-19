@@ -16,9 +16,12 @@ import {
   USERNAME_LENGTH_MIN,
 } from "shared/constants/validation";
 import { navigateToPreviousOrRoot } from "client/utils/navigation";
+import { PrivacyPolicy } from "client/components/PrivacyPolicy";
+import { Checkbox } from "client/components/Checkbox";
 
 interface KompassiLoginUsernameFormFields {
   username: string;
+  registerDescription: boolean;
 }
 
 export const KompassiLoginUsernameForm = (): ReactElement => {
@@ -90,6 +93,26 @@ export const KompassiLoginUsernameForm = (): ReactElement => {
       {errors.username && (
         <FormFieldError>{errors.username.message}</FormFieldError>
       )}
+
+      <FormRow>
+        <Checkbox
+          {...register("registerDescription", {
+            required: t(`validation.required`),
+            onChange: () => {
+              setServerError(null);
+            },
+          })}
+          id={"registerDescriptionCheckbox"}
+          label={t("agreePrivacyPolicy")}
+        />
+      </FormRow>
+
+      {errors.registerDescription && (
+        <FormFieldError>{errors.registerDescription.message}</FormFieldError>
+      )}
+
+      <PrivacyPolicy />
+
       <FormRow>
         <Button
           type="submit"
