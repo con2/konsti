@@ -3,7 +3,6 @@ import { SubmitHandler, useForm, useFormState } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import styled, { css } from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Accordion } from "client/components/Accordion";
 import { config } from "shared/config";
 import { Button, ButtonStyle } from "client/components/Button";
 import { useAppDispatch } from "client/utils/hooks";
@@ -18,8 +17,9 @@ import {
   USERNAME_LENGTH_MIN,
 } from "shared/constants/validation";
 import { ErrorMessage } from "client/components/ErrorMessage";
-import PrivacyPolicy from "client/markdown/PrivacyPolicy.mdx";
 import { UncontrolledInput } from "client/components/UncontrolledInput";
+import { Checkbox } from "client/components/Checkbox";
+import { PrivacyPolicy } from "client/components/PrivacyPolicy";
 
 export interface RegistrationFormFields {
   password: string;
@@ -165,33 +165,21 @@ export const RegistrationForm = (): ReactElement => {
         )}
 
         <FormRow>
-          <label htmlFor="registerDescriptionCheckbox">
-            <StyledCheckbox
-              {...register("registerDescription", {
-                required: t(`validation.required`),
-                onChange: () => {
-                  setServerError(null);
-                },
-              })}
-              type={"checkbox"}
-              id={"registerDescriptionCheckbox"}
-            />
-            {t("agreePrivacyPolicy")}
-          </label>
+          <Checkbox
+            {...register("registerDescription", {
+              required: t(`validation.required`),
+              onChange: () => {
+                setServerError(null);
+              },
+            })}
+            id={"registerDescriptionCheckbox"}
+            label={t("agreePrivacyPolicy")}
+          />
         </FormRow>
 
         {errors.registerDescription && (
           <FormFieldError>{errors.registerDescription.message}</FormFieldError>
         )}
-
-        <Accordion
-          closeAccordionText={t("hidePrivacyPolicy")}
-          openAccordionText={t("showPrivacyPolicy")}
-        >
-          <PrivacyPolicyContent>
-            <PrivacyPolicy />
-          </PrivacyPolicyContent>
-        </Accordion>
 
         <FormRow>
           <Button
@@ -202,6 +190,8 @@ export const RegistrationForm = (): ReactElement => {
             {t("button.register")}
           </Button>
         </FormRow>
+
+        <PrivacyPolicy />
 
         {serverError && (
           <ErrorMessage
@@ -250,19 +240,8 @@ const FormFieldIcon = styled.span`
   font-size: ${(props) => props.theme.fontSizeLarge};
 `;
 
-const StyledCheckbox = styled.input`
-  margin-right: 8px;
-  transform: scale(1.4);
-  width: 16px;
-  accent-color: ${(props) => props.theme.formAccent};
-`;
-
 const SmallLabel = styled.label`
   font-size: ${(props) => props.theme.fontSizeSmaller};
-`;
-
-const PrivacyPolicyContent = styled.div`
-  padding: 0 10px;
 `;
 
 const StyledForm = styled.form`
