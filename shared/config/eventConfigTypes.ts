@@ -17,6 +17,7 @@ export enum AssignmentAlgorithm {
 export enum LoginProvider {
   LOCAL = "local",
   KOMPASSI = "kompassi",
+  LOCAL_KOMPASSI = "local+kompassi",
 }
 
 export enum EventName {
