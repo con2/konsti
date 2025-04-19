@@ -48,20 +48,10 @@ export const Accordion = ({
         {open ? closeAccordionText : openAccordionText}
       </AccordionToggle>
 
-      {open && (
-        <AccordionContent>
-          <div>{children}</div>
-        </AccordionContent>
-      )}
+      {open && <div>{children}</div>}
     </div>
   );
 };
-
-const AccordionContent = styled.div`
-  box-shadow: 0 1px 0 rgba(9, 30, 66, 0.25);
-  border: 1px solid ${(props) => props.theme.borderInactive};
-  border-radius: 3px;
-`;
 
 const AccordionToggle = styled(Button)`
   padding: 6px 10px;

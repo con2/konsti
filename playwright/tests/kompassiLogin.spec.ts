@@ -18,6 +18,7 @@ test("Kompassi login", async ({ page, request }) => {
     })
     .click();
 
+  await page.getByRole("checkbox", { name: /privacy policy/i }).check();
   await page.getByRole("button", { name: /save/i }).click();
 
   // Check if login was completed
