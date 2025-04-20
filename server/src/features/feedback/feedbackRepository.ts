@@ -20,7 +20,7 @@ export const saveFeedback = async (
   try {
     await feedback.save();
     logger.info(`MongoDB: Feedback saved successfully`);
-    return makeSuccessResult(undefined);
+    return makeSuccessResult();
   } catch (error) {
     logger.error("MongoDB: Feedback save error: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);

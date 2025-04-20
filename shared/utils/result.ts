@@ -49,7 +49,9 @@ export const isErrorResult = <T, Err>(
   return result.error !== undefined;
 };
 
-export const makeSuccessResult = <U>(value: U): SuccessResult<U> => ({
+export const makeSuccessResult = <U>(
+  value: U = undefined as unknown as U,
+): SuccessResult<U> => ({
   value,
 });
 

@@ -28,7 +28,7 @@ export const setLatestServerStartTime = async (): Promise<
     return settingsResult;
   }
 
-  return makeSuccessResult(undefined);
+  return makeSuccessResult();
 };
 
 export const startCronJobs = async (): Promise<void> => {

@@ -47,7 +47,7 @@ export const addEventLogItems = async (
     logger.info(
       `MongoDB: Action log item ${action} added for ${uniq(usernames).length} users: ${uniq(usernames)}`,
     );
-    return makeSuccessResult(undefined);
+    return makeSuccessResult();
   } catch (error) {
     logger.error(
       `MongoDB: Error adding event log item ${action} for ${uniq(usernames).length} users ${uniq(usernames)}: %s`,
@@ -112,7 +112,7 @@ export const deleteEventLogItemsByStartTime = async (
         },
       },
     );
-    return makeSuccessResult(undefined);
+    return makeSuccessResult();
   } catch (error) {
     logger.error(
       `Deleting event log items for startTime ${startTime} failed: %s`,

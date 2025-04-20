@@ -35,7 +35,7 @@ export const updateMovedProgramItems = async (
   });
 
   if (movedProgramItems.length === 0) {
-    return makeSuccessResult(undefined);
+    return makeSuccessResult();
   }
 
   logger.info(`Found ${movedProgramItems.length} moved program items`);
@@ -47,7 +47,7 @@ export const updateMovedProgramItems = async (
     return removeMovedLotterySignupsResult;
   }
 
-  return makeSuccessResult(undefined);
+  return makeSuccessResult();
 };
 
 const removeMovedLotterySignups = async (
@@ -104,5 +104,5 @@ const removeMovedLotterySignups = async (
     return updateUsersResult;
   }
 
-  return makeSuccessResult(undefined);
+  return makeSuccessResult();
 };

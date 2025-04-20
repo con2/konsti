@@ -24,7 +24,7 @@ export const removeSettings = async (): Promise<Result<void, MongoDbError>> => {
   logger.info("MongoDB: remove ALL settings from db");
   try {
     await SettingsModel.deleteMany({});
-    return makeSuccessResult(undefined);
+    return makeSuccessResult();
   } catch (error) {
     logger.error("MongoDB: Error removing settings: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
@@ -246,7 +246,7 @@ export const setProgramUpdateLastRun = async (
     logger.info(
       `MongoDB: Program update last run set: ${programUpdateNextRun}`,
     );
-    return makeSuccessResult(undefined);
+    return makeSuccessResult();
   } catch (error) {
     logger.error("MongoDB: Error updating program update last run: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
@@ -271,7 +271,7 @@ export const setAssignmentLastRun = async (
       return makeErrorResult(MongoDbError.SETTINGS_NOT_FOUND);
     }
     logger.info(`MongoDB: Assignment last run set: ${assignmentNextRun}`);
-    return makeSuccessResult(undefined);
+    return makeSuccessResult();
   } catch (error) {
     logger.error("MongoDB: Error updating assignment last run: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
@@ -291,7 +291,7 @@ export const isLatestStartedServerInstance = async (
       return makeErrorResult(MongoDbError.SETTINGS_NOT_FOUND);
     }
     logger.info(`MongoDB: Latest server start time found, is latest`);
-    return makeSuccessResult(undefined);
+    return makeSuccessResult();
   } catch (error) {
     logger.error("MongoDB: Error getting latest server start time: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);

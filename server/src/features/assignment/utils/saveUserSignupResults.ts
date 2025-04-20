@@ -77,7 +77,7 @@ export const saveUserSignupResults = async ({
         return delSignupResult;
       }
     }
-    return makeSuccessResult(undefined);
+    return makeSuccessResult();
   });
 
   const deleteResults = await Promise.all(deletePromises);
@@ -195,5 +195,5 @@ export const saveUserSignupResults = async ({
     }
   }
 
-  return makeSuccessResult(undefined);
+  return makeSuccessResult();
 };

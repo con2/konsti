@@ -92,7 +92,7 @@ export const removeOverlapLotterySignups = async (
     if (isErrorResult(saveLotterySignupsResult)) {
       return saveLotterySignupsResult;
     }
-    return makeSuccessResult(undefined);
+    return makeSuccessResult();
   });
 
   const saveResults = await Promise.all(promises);
@@ -103,5 +103,5 @@ export const removeOverlapLotterySignups = async (
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 
-  return makeSuccessResult(undefined);
+  return makeSuccessResult();
 };

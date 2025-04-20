@@ -27,7 +27,7 @@ export const removeProgramItems = async (
     await ProgramItemModel.deleteMany(
       programItemIds ? { programItemId: { $in: programItemIds } } : {},
     );
-    return makeSuccessResult(undefined);
+    return makeSuccessResult();
   } catch (error) {
     logger.error("MongoDB: Error removing program items: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
@@ -136,7 +136,7 @@ export const saveProgramItems = async (
     }
   }
 
-  return makeSuccessResult(undefined);
+  return makeSuccessResult();
 };
 
 export const findProgramItems = async (): Promise<
@@ -195,7 +195,7 @@ export const saveProgramItemPopularity = async (
     logger.info(
       `MongoDB: Updated popularity for ${popularityUpdates.length} program items`,
     );
-    return makeSuccessResult(undefined);
+    return makeSuccessResult();
   } catch (error) {
     logger.error("Error updating program item popularity: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
