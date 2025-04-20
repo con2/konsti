@@ -74,7 +74,7 @@ export const removeLotterySignups = async (): Promise<
   logger.info("MongoDB: remove ALL signups from db");
   try {
     await UserModel.updateMany({}, { lotterySignups: [] });
-    return makeSuccessResult(undefined);
+    return makeSuccessResult();
   } catch (error) {
     logger.error("MongoDB: Error removing lottery signups: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);

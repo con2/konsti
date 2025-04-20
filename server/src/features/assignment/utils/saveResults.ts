@@ -49,5 +49,5 @@ export const saveResults = async ({
     return saveUserSignupResultsResult;
   }
 
-  return makeSuccessResult(undefined);
+  return makeSuccessResult();
 };

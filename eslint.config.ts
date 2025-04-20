@@ -150,7 +150,6 @@ export default defineConfig([
       // eslint-plugin-unicorn
       "unicorn/prefer-top-level-await": "off", // Top-level await not supported
       "unicorn/prefer-module": "off", // import.meta not supported
-      "unicorn/no-useless-undefined": "off", // We return undefined for success Result without value
       "unicorn/no-array-reduce": "off", // Don't want this
       "unicorn/numeric-separators-style": "off", // Don't want this
       "unicorn/switch-case-braces": "off", // Don't want this

@@ -84,7 +84,7 @@ export const verifyUserSignups = async (): Promise<
     });
   });
 
-  return makeSuccessResult(undefined);
+  return makeSuccessResult();
 };
 
 const getGroupCreator = (

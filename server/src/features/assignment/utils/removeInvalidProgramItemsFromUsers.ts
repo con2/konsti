@@ -90,5 +90,5 @@ export const removeInvalidProgramItemsFromUsers = async (): Promise<
     return updateUsersResult;
   }
 
-  return makeSuccessResult(undefined);
+  return makeSuccessResult();
 };

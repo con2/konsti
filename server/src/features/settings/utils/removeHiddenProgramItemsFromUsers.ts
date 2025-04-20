@@ -89,5 +89,5 @@ export const removeHiddenProgramItemsFromUsers = async (
     `Hidden program items removed from users and direct signups reset`,
   );
 
-  return makeSuccessResult(undefined);
+  return makeSuccessResult();
 };

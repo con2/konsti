@@ -29,7 +29,7 @@ export const removeDirectSignups = async (): Promise<
   logger.info("MongoDB: remove ALL direct signups from db");
   try {
     await SignupModel.deleteMany({});
-    return makeSuccessResult(undefined);
+    return makeSuccessResult();
   } catch (error) {
     logger.error("MongoDB: Error removing direct signups: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
@@ -354,7 +354,7 @@ export const delDirectSignupDocumentsByProgramItemIds = async (
     await SignupModel.deleteMany({
       programItemId: { $in: programItemIds },
     });
-    return makeSuccessResult(undefined);
+    return makeSuccessResult();
   } catch (error) {
     logger.error(
       "MongoDB: Error removing signup documents for program item IDs: %s",
@@ -374,7 +374,7 @@ export const resetDirectSignupsByProgramItemIds = async (
       },
       { userSignups: [], count: 0 },
     );
-    return makeSuccessResult(undefined);
+    return makeSuccessResult();
   } catch (error) {
     logger.error(
       "MongoDB: Error removing signups for program item IDs: %s",
@@ -423,7 +423,7 @@ export const delAssignmentDirectSignupsByStartTime = async (
       ],
     );
     logger.info(`MongoDB: Deleted old signups for startTime: ${startTime}`);
-    return makeSuccessResult(undefined);
+    return makeSuccessResult();
   } catch (error) {
     logger.error("MongoDB: Error removing invalid signup: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
@@ -446,7 +446,7 @@ export const createEmptyDirectSignupDocumentForProgramItems = async (
     logger.info(
       `MongoDB: Signup collection created for ${programItemIds.length} program items `,
     );
-    return makeSuccessResult(undefined);
+    return makeSuccessResult();
   } catch (error) {
     logger.error(
       `MongoDB: Creating signup collection for ${programItemIds.length} program items failed: %s`,

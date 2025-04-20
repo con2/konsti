@@ -113,5 +113,5 @@ export const updateProgramItemPopularity = async (): Promise<
 
   logger.info("Program item popularity updated");
 
-  return makeSuccessResult(undefined);
+  return makeSuccessResult();
 };

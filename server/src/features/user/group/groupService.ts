@@ -355,7 +355,7 @@ export const closeGroup = async (
     if (isErrorResult(saveGroupCodeResult)) {
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
-    return makeSuccessResult(undefined);
+    return makeSuccessResult();
   });
 
   const results = await Promise.all(leaveGroupPromises);

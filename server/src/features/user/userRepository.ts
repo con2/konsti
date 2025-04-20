@@ -15,7 +15,7 @@ export const removeUsers = async (): Promise<Result<void, MongoDbError>> => {
   logger.info("MongoDB: remove ALL users from db");
   try {
     await UserModel.deleteMany({});
-    return makeSuccessResult(undefined);
+    return makeSuccessResult();
   } catch (error) {
     logger.error("MongoDB: Error removing users: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
@@ -80,7 +80,7 @@ export const updateUsersByUsername = async (
 
   try {
     await UserModel.bulkWrite(bulkOps);
-    return makeSuccessResult(undefined);
+    return makeSuccessResult();
   } catch (error) {
     logger.error(
       `MongoDB: Error updating users ${users.map((user) => user.username)}: %s`,

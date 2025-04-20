@@ -16,7 +16,7 @@ export const removeResults = async (): Promise<Result<void, MongoDbError>> => {
   logger.info("MongoDB: remove ALL results from db");
   try {
     await ResultsModel.deleteMany({});
-    return makeSuccessResult(undefined);
+    return makeSuccessResult();
   } catch (error) {
     logger.error("MongoDB: Error removing ALL results: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
@@ -68,7 +68,7 @@ export const saveResult = async (
     logger.debug(
       `MongoDB: Signup results for start time ${startTime} stored to separate collection`,
     );
-    return makeSuccessResult(undefined);
+    return makeSuccessResult();
   } catch (error) {
     logger.error(
       `MongoDB: Error storing signup results for start time ${startTime} to separate collection: %s`,

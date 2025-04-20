@@ -18,7 +18,7 @@ export const removeTestSettings = async (): Promise<
   logger.info("MongoDB: remove ALL test settings from db");
   try {
     await TestSettingsModel.deleteMany({});
-    return makeSuccessResult(undefined);
+    return makeSuccessResult();
   } catch (error) {
     logger.error("MongoDB: Error removing test settings: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
