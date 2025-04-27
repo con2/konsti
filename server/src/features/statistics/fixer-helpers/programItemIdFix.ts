@@ -1,5 +1,4 @@
 import fs from "node:fs";
-import { isEqual } from "lodash-es";
 import { logger } from "server/utils/logger";
 import { User } from "shared/types/models/user";
 import { ProgramItemDoc } from "server/types/programItemTypes";
@@ -94,7 +93,9 @@ export const programItemIdFix = async (
   results.map((result) => {
     result.results.map((userResult) => {
       const matchingProgramItem = programItems.find((programItem) => {
-        return isEqual(programItem._id, userResult.directSignup.programItemId);
+        return (
+          programItem.programItemId === userResult.directSignup.programItemId
+        );
       });
 
       if (!matchingProgramItem) {
@@ -123,7 +124,7 @@ export const programItemIdFix = async (
 
   directSignups.map((signup) => {
     programItems.map((programItem) => {
-      if (isEqual(programItem.programItemId, signup.programItemId)) {
+      if (programItem.programItemId === signup.programItemId) {
         signup.programItemId = programItem.programItemId;
       }
     });
@@ -133,8 +134,8 @@ export const programItemIdFix = async (
 
   settings.map((setting) => {
     programItems.map((programItem) => {
-      setting.hiddenProgramItemIds.map((hiddenProgramItem) => {
-        if (isEqual(programItem._id, hiddenProgramItem)) {
+      setting.hiddenProgramItemIds.map((hiddenProgramItemId) => {
+        if (programItem.programItemId === hiddenProgramItemId) {
           tempHiddenProgramItemIds.push(programItem.programItemId);
         }
       });
