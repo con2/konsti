@@ -13,7 +13,6 @@ import {
   PostSettingsResponse,
   PostSignupQuestionResponse,
 } from "shared/types/api/settings";
-import { ProgramItem } from "shared/types/models/programItem";
 import { removeHiddenProgramItemsFromUsers } from "server/features/settings/utils/removeHiddenProgramItemsFromUsers";
 import { SignupQuestion } from "shared/types/models/settings";
 import { isErrorResult, unwrapResult } from "shared/utils/result";
@@ -35,7 +34,7 @@ export const fetchSettings = async (): Promise<
   return {
     message: "Getting settings success",
     status: "success",
-    hiddenProgramItems: settings.hiddenProgramItems,
+    hiddenProgramItemIds: settings.hiddenProgramItemIds,
     appOpen: settings.appOpen,
     signupQuestions: settings.signupQuestions,
     signupStrategy: settings.signupStrategy,
@@ -44,9 +43,9 @@ export const fetchSettings = async (): Promise<
 };
 
 export const storeHidden = async (
-  hiddenData: readonly ProgramItem[],
+  hiddenProgramItemIds: readonly string[],
 ): Promise<PostHiddenResponse | ApiError> => {
-  const settingsResult = await saveHidden(hiddenData);
+  const settingsResult = await saveHidden(hiddenProgramItemIds);
   if (isErrorResult(settingsResult)) {
     return {
       message: "Update hidden failure",
@@ -58,7 +57,7 @@ export const storeHidden = async (
   const settings = unwrapResult(settingsResult);
 
   const removeHiddenProgramItemsFromUsersResult =
-    await removeHiddenProgramItemsFromUsers(settings.hiddenProgramItems);
+    await removeHiddenProgramItemsFromUsers(settings.hiddenProgramItemIds);
   if (isErrorResult(removeHiddenProgramItemsFromUsersResult)) {
     return {
       message: "Update hidden failure",
@@ -70,7 +69,7 @@ export const storeHidden = async (
   return {
     message: "Update hidden success",
     status: "success",
-    hiddenProgramItems: settings.hiddenProgramItems,
+    hiddenProgramItemIds: settings.hiddenProgramItemIds,
   };
 };
 

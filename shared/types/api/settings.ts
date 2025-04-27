@@ -4,10 +4,6 @@ import {
   EventSignupStrategy,
 } from "shared/config/eventConfigTypes";
 import {
-  ProgramItem,
-  ProgramItemSchema,
-} from "shared/types/models/programItem";
-import {
   Settings,
   SettingsSchema,
   SignupQuestion,
@@ -18,19 +14,19 @@ import { ApiResult } from "shared/types/api/errors";
 // POST hidden
 
 export const PostHiddenRequestSchema = z.object({
-  hiddenData: z.array(ProgramItemSchema).readonly(),
+  hiddenProgramItemIds: z.array(z.string()).readonly(),
 });
 
 export type PostHiddenRequest = z.infer<typeof PostHiddenRequestSchema>;
 
 export interface PostHiddenResponse extends ApiResult {
-  hiddenProgramItems: readonly ProgramItem[];
+  hiddenProgramItemIds: readonly string[];
 }
 
 // GET settings
 
 export interface SettingsPayload {
-  hiddenProgramItems: readonly ProgramItem[];
+  hiddenProgramItemIds: readonly string[];
   appOpen: boolean;
   signupQuestions: readonly SignupQuestion[];
   signupStrategy: EventSignupStrategy;

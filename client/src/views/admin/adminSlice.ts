@@ -26,7 +26,7 @@ const getInitialActiveProgramType = (): ActiveProgramType => {
 
 const initialState = (): AdminState => {
   return {
-    hiddenProgramItems: [],
+    hiddenProgramItemIds: [],
     activeAssignmentTime: "",
     appOpen: true,
     assignmentResponseMessage: "",
@@ -45,9 +45,9 @@ const adminSlice = createSlice({
   reducers: {
     submitUpdateHiddenAsync(
       state,
-      action: PayloadAction<readonly ProgramItem[]>,
+      action: PayloadAction<readonly string[]>,
     ): AdminState {
-      return { ...state, hiddenProgramItems: action.payload };
+      return { ...state, hiddenProgramItemIds: action.payload };
     },
 
     submitGetSettingsAsync(
@@ -56,7 +56,7 @@ const adminSlice = createSlice({
     ): AdminState {
       return {
         ...state,
-        hiddenProgramItems: action.payload.hiddenProgramItems,
+        hiddenProgramItemIds: action.payload.hiddenProgramItemIds,
         appOpen: action.payload.appOpen,
         signupQuestions: action.payload.signupQuestions,
         signupStrategy: action.payload.signupStrategy,
@@ -164,3 +164,16 @@ export const selectActiveProgramItems = createSelector(
     );
   },
 );
+
+const selectHiddenProgramItemIds = (state: RootState): readonly string[] =>
+  state.admin.hiddenProgramItemIds;
+
+export const selectHiddenProgramItems: (state: RootState) => ProgramItem[] =
+  createSelector(
+    [selectProgramItems, selectHiddenProgramItemIds],
+    (programItems, hiddenProgramItemIds) => {
+      return programItems.filter((programItem) =>
+        hiddenProgramItemIds.includes(programItem.programItemId),
+      );
+    },
+  );

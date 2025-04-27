@@ -6,7 +6,6 @@ import { ProgramItemDoc } from "server/types/programItemTypes";
 import { ResultsCollectionEntry } from "server/types/resultTypes";
 import { writeJson } from "server/features/statistics/statsUtil";
 import { config } from "shared/config";
-import { ProgramItem } from "shared/types/models/programItem";
 import { DirectSignupDoc } from "server/features/direct-signup/directSignupTypes";
 import { SettingsDoc } from "server/types/settingsTypes";
 
@@ -130,22 +129,19 @@ export const programItemIdFix = async (
     });
   });
 
-  const tempHiddenProgramItems: ProgramItem[] = [];
+  const tempHiddenProgramItemIds: string[] = [];
 
   settings.map((setting) => {
     programItems.map((programItem) => {
-      setting.hiddenProgramItems.map((hiddenProgramItem) => {
+      setting.hiddenProgramItemIds.map((hiddenProgramItem) => {
         if (isEqual(programItem._id, hiddenProgramItem)) {
-          // @ts-expect-error: We don't want whole program item details
-          tempHiddenProgramItems.push({
-            programItemId: programItem.programItemId,
-          });
+          tempHiddenProgramItemIds.push(programItem.programItemId);
         }
       });
     });
   });
 
-  settings[0].hiddenProgramItems = tempHiddenProgramItems;
+  settings[0].hiddenProgramItemIds = tempHiddenProgramItemIds;
 
   await writeJson(year, event, "users", users);
   await writeJson(year, event, "results", results);

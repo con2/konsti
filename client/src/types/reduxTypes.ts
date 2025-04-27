@@ -14,7 +14,7 @@ import { EventLogItem } from "shared/types/models/eventLog";
 import { ActiveProgramType } from "shared/config/clientConfigTypes";
 
 export interface AdminState {
-  hiddenProgramItems: readonly ProgramItem[];
+  hiddenProgramItemIds: readonly string[];
   activeAssignmentTime: string;
   appOpen: boolean;
   assignmentResponseMessage: string;

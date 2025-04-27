@@ -99,7 +99,7 @@ describe(`POST ${ApiEndpoint.SETTINGS}`, () => {
 
     // Full update
     const testSettings: Settings = {
-      hiddenProgramItems: [],
+      hiddenProgramItemIds: [],
       appOpen: true,
       signupQuestions: [testSignupQuestion],
       signupStrategy: EventSignupStrategy.LOTTERY,
@@ -165,7 +165,7 @@ describe(`POST ${ApiEndpoint.HIDDEN}`, () => {
 
     const response = await request(server)
       .post(ApiEndpoint.HIDDEN)
-      .send({ hiddenData: [testProgramItem] })
+      .send({ hiddenProgramItemIds: [testProgramItem.programItemId] })
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
 
     expect(response.status).toEqual(200);
@@ -189,20 +189,21 @@ describe(`POST ${ApiEndpoint.HIDDEN}`, () => {
     await saveUser(mockUser);
     await saveDirectSignup(mockPostDirectSignupRequest);
 
-    const signups = unsafelyUnwrap(await findDirectSignups());
-    expect(signups).toHaveLength(1);
-    expect(signups[0].userSignups).toHaveLength(1);
-    expect(signups[0].count).toEqual(1);
+    const signupsBefore = unsafelyUnwrap(await findDirectSignups());
+    expect(signupsBefore).toHaveLength(1);
+    expect(signupsBefore[0].userSignups).toHaveLength(1);
+    expect(signupsBefore[0].count).toEqual(1);
 
     await request(server)
       .post(ApiEndpoint.HIDDEN)
-      .send({ hiddenData: [testProgramItem] })
+      .send({ hiddenProgramItemIds: [testProgramItem.programItemId] })
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
 
-    const signups2 = unsafelyUnwrap(await findDirectSignups());
-    expect(signups2).toHaveLength(1);
-    expect(signups2[0].userSignups).toEqual([]);
-    expect(signups2[0].count).toEqual(0);
+    const signupsAfter = unsafelyUnwrap(await findDirectSignups());
+    expect(signupsAfter).toHaveLength(1);
+    // HERE
+    expect(signupsAfter[0].userSignups).toEqual([]);
+    expect(signupsAfter[0].count).toEqual(0);
   });
 });
 

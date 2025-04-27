@@ -1,4 +1,3 @@
-import { ObjectId } from "mongoose";
 import dayjs from "dayjs";
 import { logger } from "server/utils/logger";
 import { SettingsModel } from "server/features/settings/settingsSchema";
@@ -7,8 +6,6 @@ import {
   SettingsSchema,
   SignupQuestion,
 } from "shared/types/models/settings";
-import { ProgramItem } from "shared/types/models/programItem";
-import { findProgramItems } from "server/features/program-item/programItemRepository";
 import { PostSettingsRequest } from "shared/types/api/settings";
 import { SettingsDoc } from "server/types/settingsTypes";
 import {
@@ -53,9 +50,7 @@ export const findSettings = async (): Promise<
     const settings = await SettingsModel.findOne(
       {},
       "-signupQuestions._id -_id -__v -createdAt -updatedAt",
-    )
-      .lean<Settings>()
-      .populate("hiddenProgramItems");
+    ).lean<Settings>();
 
     if (!settings) {
       const createSettingsResult = await createSettings();
@@ -70,13 +65,6 @@ export const findSettings = async (): Promise<
 
     const settingsWithFormattedDates: Settings = {
       ...settings,
-      hiddenProgramItems: settings.hiddenProgramItems.map(
-        (hiddenProgramItem) => ({
-          ...hiddenProgramItem,
-          startTime: dayjs(hiddenProgramItem.startTime).toISOString(),
-          endTime: dayjs(hiddenProgramItem.endTime).toISOString(),
-        }),
-      ),
       programUpdateLastRun: dayjs(settings.programUpdateLastRun).toISOString(),
       assignmentLastRun: dayjs(settings.assignmentLastRun).toISOString(),
       latestServerStartTime: dayjs(
@@ -102,40 +90,20 @@ export const findSettings = async (): Promise<
 };
 
 export const saveHidden = async (
-  hiddenProgramItems: readonly ProgramItem[],
+  hiddenProgramItemIds: readonly string[],
 ): Promise<Result<Settings, MongoDbError>> => {
-  const programItemsResult = await findProgramItems();
-  if (isErrorResult(programItemsResult)) {
-    return programItemsResult;
-  }
-
-  const programItems = unwrapResult(programItemsResult);
-  const formattedData = hiddenProgramItems.reduce<ObjectId[]>(
-    (acc, hiddenProgramItem) => {
-      const programItemDocInDb = programItems.find(
-        (programItem) =>
-          programItem.programItemId === hiddenProgramItem.programItemId,
-      );
-      if (programItemDocInDb?._id) {
-        acc.push(programItemDocInDb._id);
-      }
-      return acc;
-    },
-    [],
-  );
-
   try {
     const settings = await SettingsModel.findOneAndUpdate(
       {},
       {
-        hiddenProgramItems: formattedData,
+        hiddenProgramItemIds,
       },
       {
         new: true,
         upsert: true,
         fields: "-_id -__v -createdAt -updatedAt",
       },
-    ).populate("hiddenProgramItems");
+    );
     logger.info(`MongoDB: Hidden data updated`);
     return makeSuccessResult(settings);
   } catch (error) {

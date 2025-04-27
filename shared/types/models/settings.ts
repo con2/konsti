@@ -3,7 +3,6 @@ import {
   LoginProvider,
   EventSignupStrategy,
 } from "shared/config/eventConfigTypes";
-import { ProgramItemSchema } from "shared/types/models/programItem";
 
 export enum SignupQuestionType {
   TEXT = "text",
@@ -31,7 +30,7 @@ export const SignupQuestionSchema = z.object({
 export type SignupQuestion = z.infer<typeof SignupQuestionSchema>;
 
 export const SettingsSchema = z.object({
-  hiddenProgramItems: z.array(ProgramItemSchema),
+  hiddenProgramItemIds: z.array(z.string()),
   appOpen: z.boolean(),
   signupQuestions: z.array(SignupQuestionSchema),
   signupStrategy: z.nativeEnum(EventSignupStrategy),

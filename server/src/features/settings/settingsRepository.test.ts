@@ -32,13 +32,13 @@ afterEach(async () => {
 test("should set defaults if settings not found", async () => {
   await findSettings();
   const defaultSettings = {
-    hiddenProgramItems: [],
+    hiddenProgramItemIds: [],
     signupTime: null,
     appOpen: true,
   };
   const insertedSettings = await SettingsModel.findOne({});
-  expect(insertedSettings?.hiddenProgramItems.length).toEqual(
-    defaultSettings.hiddenProgramItems.length,
+  expect(insertedSettings?.hiddenProgramItemIds.length).toEqual(
+    defaultSettings.hiddenProgramItemIds.length,
   );
   expect(insertedSettings?.appOpen).toEqual(defaultSettings.appOpen);
 });
@@ -46,18 +46,26 @@ test("should set defaults if settings not found", async () => {
 test("should update hidden program items", async () => {
   const hiddenProgramItems = [testProgramItem, testProgramItem2];
   await saveProgramItems(hiddenProgramItems);
-  await saveHidden(hiddenProgramItems);
+  await saveHidden(
+    hiddenProgramItems.map(
+      (hiddenProgramItem) => hiddenProgramItem.programItemId,
+    ),
+  );
   const insertedSettings = await SettingsModel.findOne({});
-  expect(insertedSettings?.hiddenProgramItems.length).toEqual(
+  expect(insertedSettings?.hiddenProgramItemIds.length).toEqual(
     hiddenProgramItems.length,
   );
 });
 
 test("should not return hidden program items that are not in DB", async () => {
   const hiddenProgramItems = [testProgramItem, testProgramItem2];
-  await saveHidden(hiddenProgramItems);
+  await saveHidden(
+    hiddenProgramItems.map(
+      (hiddenProgramItem) => hiddenProgramItem.programItemId,
+    ),
+  );
   const insertedSettings = await SettingsModel.findOne({});
-  expect(insertedSettings?.hiddenProgramItems.length).toEqual(0);
+  expect(insertedSettings?.hiddenProgramItemIds.length).toEqual(0);
 });
 
 test("should update appOpen status", async () => {

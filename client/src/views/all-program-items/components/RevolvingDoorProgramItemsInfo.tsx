@@ -6,7 +6,10 @@ import styled from "styled-components";
 import { sortBy } from "lodash-es";
 import { getTimeNow } from "client/utils/getTimeNow";
 import { useAppSelector } from "client/utils/hooks";
-import { selectActiveProgramItems } from "client/views/admin/adminSlice";
+import {
+  selectActiveProgramItems,
+  selectHiddenProgramItems,
+} from "client/views/admin/adminSlice";
 import { AppRoute } from "client/app/AppRoutes";
 import { InfoText } from "client/components/InfoText";
 
@@ -14,9 +17,7 @@ export const RevolvingDoorProgramItemsInfo = (): ReactElement => {
   const { t } = useTranslation();
 
   const activeProgramItems = useAppSelector(selectActiveProgramItems);
-  const hiddenProgramItems = useAppSelector(
-    (state) => state.admin.hiddenProgramItems,
-  );
+  const hiddenProgramItems = useAppSelector(selectHiddenProgramItems);
   const activeProgramType = useAppSelector(
     (state) => state.admin.activeProgramType,
   );
