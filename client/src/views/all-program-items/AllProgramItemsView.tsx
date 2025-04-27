@@ -13,6 +13,7 @@ import {
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import {
   selectActiveProgramItems,
+  selectHiddenProgramItems,
   setActiveProgramType,
 } from "client/views/admin/adminSlice";
 import {
@@ -41,9 +42,7 @@ export const AllProgramItemsView = (): ReactElement => {
   const dispatch = useAppDispatch();
 
   const activeProgramItems = useAppSelector(selectActiveProgramItems);
-  const hiddenProgramItems = useAppSelector(
-    (state) => state.admin.hiddenProgramItems,
-  );
+  const hiddenProgramItems = useAppSelector(selectHiddenProgramItems);
   const signups = useAppSelector(
     (state) => state.allProgramItems.directSignups,
   );

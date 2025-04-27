@@ -18,15 +18,14 @@ import { Dropdown, Option } from "client/components/Dropdown";
 import { SignupStrategySelector } from "client/views/admin/components/SignupStrategySelector";
 import { ButtonGroup } from "client/components/ButtonGroup";
 import { LoginProviderSelector } from "client/views/admin/components/LoginProviderSelector";
+import { selectHiddenProgramItems } from "client/views/admin/adminSlice";
 
 export const AdminView = (): ReactElement => {
   const programItems = useAppSelector(
     (state) => state.allProgramItems.programItems,
   );
   const appOpen = useAppSelector((state) => state.admin.appOpen);
-  const hiddenProgramItems = useAppSelector(
-    (state) => state.admin.hiddenProgramItems,
-  );
+  const hiddenProgramItems = useAppSelector(selectHiddenProgramItems);
   const signupQuestions = useAppSelector(
     (state) => state.admin.signupQuestions,
   );
@@ -38,10 +37,6 @@ export const AdminView = (): ReactElement => {
   const { t } = useTranslation();
 
   const getVisibleProgramItems = (): readonly ProgramItem[] => {
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-    if (!hiddenProgramItems) {
-      return programItems;
-    }
     const visibleProgramItems: ProgramItem[] = [];
 
     for (const programItem of programItems) {

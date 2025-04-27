@@ -5,7 +5,6 @@ import {
   postSignupQuestion,
   postSettings,
 } from "client/services/settingsServices";
-import { ProgramItem } from "shared/types/models/programItem";
 import { AppThunk } from "client/types/reduxTypes";
 import {
   submitUpdateHiddenAsync,
@@ -27,10 +26,10 @@ import { getSentryTest } from "client/views/admin/adminService";
 import { postAssignment } from "client/services/assignmentServices";
 
 export const submitUpdateHidden = (
-  hiddenProgramItems: readonly ProgramItem[],
+  hiddenProgramItemIds: readonly string[],
 ): AppThunk => {
   return async (dispatch): Promise<void> => {
-    const updateHiddenResponse = await postHidden(hiddenProgramItems);
+    const updateHiddenResponse = await postHidden(hiddenProgramItemIds);
 
     if (updateHiddenResponse.status === "error") {
       // TODO
@@ -38,7 +37,7 @@ export const submitUpdateHidden = (
 
     if (updateHiddenResponse.status === "success") {
       dispatch(
-        submitUpdateHiddenAsync(updateHiddenResponse.hiddenProgramItems),
+        submitUpdateHiddenAsync(updateHiddenResponse.hiddenProgramItemIds),
       );
     }
   };
@@ -55,7 +54,7 @@ export const submitGetSettings = (): AppThunk => {
     if (settingsResponse.status === "success") {
       dispatch(
         submitGetSettingsAsync({
-          hiddenProgramItems: settingsResponse.hiddenProgramItems,
+          hiddenProgramItemIds: settingsResponse.hiddenProgramItemIds,
           appOpen: settingsResponse.appOpen,
           signupQuestions: settingsResponse.signupQuestions,
           signupStrategy: settingsResponse.signupStrategy,

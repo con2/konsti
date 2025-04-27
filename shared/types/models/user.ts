@@ -27,6 +27,7 @@ export enum UserGroup {
   HELP = "help",
 }
 
+// TODO: Is this useful?
 export type FavoriteProgramItemId = string;
 
 export interface User {

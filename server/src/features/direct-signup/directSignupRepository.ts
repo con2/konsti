@@ -365,7 +365,7 @@ export const delDirectSignupDocumentsByProgramItemIds = async (
 };
 
 export const resetDirectSignupsByProgramItemIds = async (
-  programItemIds: string[],
+  programItemIds: readonly string[],
 ): Promise<Result<void, MongoDbError>> => {
   try {
     await SignupModel.updateMany(

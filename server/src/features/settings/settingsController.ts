@@ -41,9 +41,9 @@ export const postHidden = async (
     return res.sendStatus(422);
   }
 
-  const { hiddenData } = result.data;
+  const { hiddenProgramItemIds } = result.data;
 
-  const response = await storeHidden(hiddenData);
+  const response = await storeHidden(hiddenProgramItemIds);
   return res.json(response);
 };
 

@@ -4,13 +4,7 @@ import { config } from "shared/config";
 
 const SettingsSchema = new mongoose.Schema(
   {
-    hiddenProgramItems: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "program-item",
-        default: [],
-      },
-    ],
+    hiddenProgramItemIds: [String],
     appOpen: { type: Boolean, default: true },
     signupQuestions: [
       {

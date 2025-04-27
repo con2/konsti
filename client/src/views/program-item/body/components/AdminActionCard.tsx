@@ -19,6 +19,7 @@ import {
 } from "shared/types/models/settings";
 import { Checkbox } from "client/components/Checkbox";
 import { UncontrolledInput } from "client/components/UncontrolledInput";
+import { selectHiddenProgramItems } from "client/views/admin/adminSlice";
 
 interface Props {
   programItem: ProgramItem;
@@ -28,9 +29,7 @@ export const AdminActionCard = ({ programItem }: Props): ReactElement => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
 
-  const hiddenProgramItems = useAppSelector(
-    (state) => state.admin.hiddenProgramItems,
-  );
+  const hiddenProgramItems = useAppSelector(selectHiddenProgramItems);
   const signupQuestions = useAppSelector(
     (state) => state.admin.signupQuestions,
   );
@@ -53,18 +52,18 @@ export const AdminActionCard = ({ programItem }: Props): ReactElement => {
 
   useEffect(() => {
     // Check if hidden
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     hiddenProgramItems.find((hiddenProgramItem) => {
       if (hiddenProgramItem.programItemId === programItem.programItemId) {
         setHidden(true);
+        return true;
       }
     });
 
     // Check if signup question exists
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     signupQuestions.find((signupQuestion) => {
       if (signupQuestion.programItemId === programItem.programItemId) {
         setHasSignupQuestion(true);
+        return true;
       }
     });
   }, [programItem.programItemId, hiddenProgramItems, signupQuestions]);
@@ -86,7 +85,13 @@ export const AdminActionCard = ({ programItem }: Props): ReactElement => {
     }
 
     try {
-      await dispatch(submitUpdateHidden(allHiddenProgramItems));
+      await dispatch(
+        submitUpdateHidden(
+          allHiddenProgramItems.map(
+            (hiddenProgramItem) => hiddenProgramItem.programItemId,
+          ),
+        ),
+      );
     } catch (error) {
       // eslint-disable-next-line no-restricted-syntax, @typescript-eslint/restrict-template-expressions -- TODO: Remove throw
       throw new Error(`submitUpdateHidden error: ${error}`);

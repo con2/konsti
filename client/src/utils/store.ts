@@ -81,7 +81,7 @@ const sentryReduxEnhancer = createReduxEnhancer({
       },
       admin: {
         ...state?.admin,
-        hiddenProgramItems: `Hidden program items count: ${state?.admin?.hiddenProgramItems?.length}`,
+        hiddenProgramItemIds: `Hidden program items count: ${state?.admin?.hiddenProgramItemIds?.length}`,
         signupQuestions: `Signup questions count: ${state?.admin?.signupQuestions?.length}`,
         signupMessages: `Signup messages count: ${state?.admin?.signupMessages?.length}`,
       },
