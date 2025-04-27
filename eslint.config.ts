@@ -218,7 +218,6 @@ export default defineConfig([
       eslintPluginReact.configs.flat.all,
       // Disable some rules conflicting with new JSX transform from React 17
       eslintPluginReact.configs.flat["jsx-runtime"],
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       eslintPluginReactHooksAddon.configs.recommended,
       eslintPluginJsxA11y.flatConfigs.recommended,
       eslintPluginCompat.configs["flat/recommended"],
