@@ -4,8 +4,8 @@ import styled from "styled-components";
 import { upperFirst } from "lodash-es";
 import { ProgramItem } from "shared/types/models/programItem";
 import {
-  PostLotterySignupsErrorMessage,
-  submitPostLotterySignups,
+  PostLotterySignupErrorMessage,
+  submitPostLotterySignup,
 } from "client/views/my-program-items/myProgramItemsThunks";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { Button, ButtonStyle } from "client/components/Button";
@@ -58,7 +58,7 @@ export const LotterySignupForm = ({
   const [priority, setPriority] = useState<number>(firstOption);
 
   const [errorMessage, setErrorMessage] =
-    useState<PostLotterySignupsErrorMessage | null>(null);
+    useState<PostLotterySignupErrorMessage | null>(null);
 
   const onChange = (event: ChangeEvent<HTMLSelectElement>): void => {
     setPriority(Number.parseInt(event.target.value, 10));
@@ -81,12 +81,7 @@ export const LotterySignupForm = ({
       time: programItem.startTime,
       message: "",
     };
-    const error = await dispatch(
-      submitPostLotterySignups({
-        lotterySignups: [...lotterySignups, newProgramItem],
-        startTime: programItem.startTime,
-      }),
-    );
+    const error = await dispatch(submitPostLotterySignup(newProgramItem));
 
     if (error) {
       setErrorMessage(error);

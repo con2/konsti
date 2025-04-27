@@ -1,12 +1,18 @@
 import { Request, Response } from "express";
 import { logger } from "server/utils/logger";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
-import { PostLotterySignupsRequestSchema } from "shared/types/api/myProgramItems";
+import {
+  DeleteLotterySignupRequestSchema,
+  PostLotterySignupRequestSchema,
+} from "shared/types/api/myProgramItems";
 import { getAuthorizedUsername } from "server/utils/authHeader";
 import { UserGroup } from "shared/types/models/user";
-import { storeLotterySignups } from "server/features/user/lottery-signup/lotterySignupService";
+import {
+  removeLotterySignup,
+  storeLotterySignup,
+} from "server/features/user/lottery-signup/lotterySignupService";
 
-export const postLotterySignups = async (
+export const postLotterySignup = async (
   req: Request,
   res: Response,
 ): Promise<Response> => {
@@ -20,22 +26,44 @@ export const postLotterySignups = async (
     return res.sendStatus(401);
   }
 
-  const result = PostLotterySignupsRequestSchema.safeParse(req.body);
+  const result = PostLotterySignupRequestSchema.safeParse(req.body);
   if (!result.success) {
     logger.error(
       "%s",
       // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-      new Error(`Error validating postLotterySignups body: ${result.error}`),
+      new Error(`Error validating postLotterySignup body: ${result.error}`),
     );
     return res.sendStatus(422);
   }
 
-  const { lotterySignups, startTime } = result.data;
+  const response = await storeLotterySignup(result.data, username);
+  return res.json(response);
+};
 
-  const response = await storeLotterySignups(
-    lotterySignups,
-    username,
-    startTime,
+export const deleteLotterySignup = async (
+  req: Request,
+  res: Response,
+): Promise<Response> => {
+  logger.info(`API call: DELETE ${ApiEndpoint.LOTTERY_SIGNUP}`);
+
+  const username = getAuthorizedUsername(
+    req.headers.authorization,
+    UserGroup.USER,
   );
+  if (!username) {
+    return res.sendStatus(401);
+  }
+
+  const result = DeleteLotterySignupRequestSchema.safeParse(req.body);
+  if (!result.success) {
+    logger.error(
+      "%s",
+      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+      new Error(`Error validating deleteLotterySignup body: ${result.error}`),
+    );
+    return res.sendStatus(422);
+  }
+
+  const response = await removeLotterySignup(result.data, username);
   return res.json(response);
 };

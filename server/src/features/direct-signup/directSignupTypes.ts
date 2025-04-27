@@ -29,8 +29,3 @@ export interface SignupRepositoryAddSignupResponse {
   modifiedCount: number;
   droppedSignups: SignupRepositoryAddSignup[];
 }
-
-export interface SignupRepositoryDeleteSignup {
-  username: string;
-  directSignupProgramItemId: string;
-}

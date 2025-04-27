@@ -41,11 +41,21 @@ const myProgramItemsSlice = createSlice({
       };
     },
 
-    submitPostLotterySignupsAsync(
+    submitPostLotterySignupAsync(
       state,
       action: PayloadAction<readonly LotterySignup[]>,
     ): MyProgramItemsState {
       return { ...state, lotterySignups: action.payload };
+    },
+
+    submitDeleteLotterySignupAsync(
+      state,
+      action: PayloadAction<string>,
+    ): MyProgramItemsState {
+      const lotterySignups = state.lotterySignups.filter(
+        (lotterySignup) => lotterySignup.programItemId !== action.payload,
+      );
+      return { ...state, lotterySignups };
     },
 
     submitPostDirectSignupAsync(
@@ -71,7 +81,8 @@ const myProgramItemsSlice = createSlice({
 export const {
   submitGetUserAsync,
   submitUpdateFavoritesAsync,
-  submitPostLotterySignupsAsync,
+  submitPostLotterySignupAsync,
+  submitDeleteLotterySignupAsync,
   submitPostDirectSignupAsync,
   submitDeleteDirectSignupAsync,
 } = myProgramItemsSlice.actions;

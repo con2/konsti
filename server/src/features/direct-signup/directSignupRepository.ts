@@ -8,7 +8,6 @@ import {
   DirectSignupsForProgramItem,
   SignupRepositoryAddSignupResponse,
   SignupRepositoryAddSignup,
-  SignupRepositoryDeleteSignup,
   UserDirectSignup,
 } from "server/features/direct-signup/directSignupTypes";
 import { SignupModel } from "server/features/direct-signup/directSignupSchema";
@@ -22,6 +21,7 @@ import {
   unwrapResult,
 } from "shared/utils/result";
 import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
+import { DeleteDirectSignupRequest } from "shared/types/api/myProgramItems";
 
 export const removeDirectSignups = async (): Promise<
   Result<void, MongoDbError>
@@ -278,7 +278,7 @@ export const saveDirectSignups = async (
 };
 
 export const delDirectSignup = async (
-  signupRequest: SignupRepositoryDeleteSignup,
+  signupRequest: DeleteDirectSignupRequest,
 ): Promise<Result<DirectSignupsForProgramItem, MongoDbError>> => {
   const { username, directSignupProgramItemId } = signupRequest;
 

@@ -4,6 +4,7 @@ import { EventLogItem } from "shared/types/models/eventLog";
 export const LotterySignupSchema = z.object({
   programItemId: z.string(),
   priority: z.number(),
+  // TODO: Rename to 'signedToStartTime' or similar
   time: z.string(),
   message: z.string(),
 });

@@ -5,8 +5,8 @@ import { Link } from "react-router";
 import { ProgramItem } from "shared/types/models/programItem";
 import { LotterySignupForm } from "client/views/program-item/signup/components/LotterySignupForm";
 import {
-  PostLotterySignupsErrorMessage,
-  submitPostLotterySignups,
+  PostLotterySignupErrorMessage,
+  submitDeleteLotterySignup,
 } from "client/views/my-program-items/myProgramItemsThunks";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { isAlreadyLotterySigned } from "client/views/program-item/programItemUtils";
@@ -58,21 +58,17 @@ export const LotterySignupProgramItem = ({
   const [signupFormOpen, setSignupFormOpen] = useState(false);
   const [cancelSignupFormOpen, setCancelSignupFormOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState<
-    ClientError | PostLotterySignupsErrorMessage | null
+    ClientError | PostLotterySignupErrorMessage | null
   >(null);
 
   const removeLotterySignup = async (
     programItemToRemove: ProgramItem,
   ): Promise<void> => {
     setLoading(true);
-    const newSignupData = lotterySignups.filter(
-      (g) => g.programItemId !== programItemToRemove.programItemId,
-    );
 
     const error = await dispatch(
-      submitPostLotterySignups({
-        lotterySignups: newSignupData,
-        startTime: programItemToRemove.startTime,
+      submitDeleteLotterySignup({
+        lotterySignupProgramItemId: programItemToRemove.programItemId,
       }),
     );
 
