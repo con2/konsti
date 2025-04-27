@@ -13,7 +13,6 @@ import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended"
 import eslintPluginPromise from "eslint-plugin-promise";
 import eslintPluginReact from "eslint-plugin-react";
 import eslintPluginReactHooks from "eslint-plugin-react-hooks";
-// @ts-expect-error: Missing types
 import eslintPluginReactHooksAddon from "eslint-plugin-react-hooks-addons";
 import eslintPluginUnicorn from "eslint-plugin-unicorn";
 import eslintPluginVitest from "@vitest/eslint-plugin";
@@ -219,7 +218,6 @@ export default defineConfig([
       eslintPluginReact.configs.flat.all,
       // Disable some rules conflicting with new JSX transform from React 17
       eslintPluginReact.configs.flat["jsx-runtime"],
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       eslintPluginReactHooksAddon.configs.recommended,
       eslintPluginJsxA11y.flatConfigs.recommended,
       eslintPluginCompat.configs["flat/recommended"],
