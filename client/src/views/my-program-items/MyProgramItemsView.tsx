@@ -26,6 +26,7 @@ import {
 import { RadioButtonGroup } from "client/components/RadioButtonGroup";
 import { getIsInGroup } from "client/views/group/groupUtils";
 import { ScrollToTopButton } from "client/components/ScrollToTopButton";
+import { selectGroupMembers } from "client/views/group/groupSlice";
 
 export const MyProgramItemsView = (): ReactElement => {
   const { t } = useTranslation();
@@ -34,7 +35,7 @@ export const MyProgramItemsView = (): ReactElement => {
   const favoriteProgramItems = useAppSelector(selectFavoriteProgramItems);
   const directSignups = useAppSelector(selectDirectSignups);
   const isGroupCreator = useAppSelector((state) => state.group.isGroupCreator);
-  const groupMembers = useAppSelector((state) => state.group.groupMembers);
+  const groupMembers = useAppSelector(selectGroupMembers);
   const signupStrategy = useAppSelector((state) => state.admin.signupStrategy);
   const groupCode = useAppSelector((state) => state.group.groupCode);
   const isInGroup = getIsInGroup(groupCode);

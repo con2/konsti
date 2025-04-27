@@ -3,10 +3,22 @@ import { ProgramItem } from "shared/types/models/programItem";
 import { User } from "shared/types/models/user";
 import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
 
-const getValidLotterySignupsUsers = (users: User[]): User[] => {
+const getValidLotterySignupsUsers = (
+  users: User[],
+  programItems: ProgramItem[],
+): User[] => {
   return users.map((user) => {
-    const matchingLotterySignups = user.lotterySignups.filter((lotterySignup) =>
-      isLotterySignupProgramItem(lotterySignup.programItem),
+    const matchingLotterySignups = user.lotterySignups.filter(
+      (lotterySignup) => {
+        const foundProgramItem = programItems.find(
+          (programItem) =>
+            programItem.programItemId === lotterySignup.programItemId,
+        );
+        if (!foundProgramItem) {
+          return false;
+        }
+        return isLotterySignupProgramItem(foundProgramItem);
+      },
     );
 
     return { ...user, lotterySignups: matchingLotterySignups };
@@ -44,7 +56,10 @@ export const prepareAssignmentParams = (
 ): AssignmentParams => {
   // Remove invalid lottery signups from users
   // Only include "twoPhaseSignupProgramTypes" and don't include "directSignupAlwaysOpen" program items
-  const validLotterySignupsUsers = getValidLotterySignupsUsers(users);
+  const validLotterySignupsUsers = getValidLotterySignupsUsers(
+    users,
+    programItems,
+  );
 
   // Only include "twoPhaseSignupProgramTypes" and don't include "directSignupAlwaysOpen" program items
   const validLotterySignupProgramItems = programItems.filter((programItem) =>

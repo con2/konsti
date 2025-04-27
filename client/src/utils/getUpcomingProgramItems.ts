@@ -1,10 +1,12 @@
 import dayjs from "dayjs";
-import { GroupMember } from "shared/types/models/groups";
 import { ProgramItem } from "shared/types/models/programItem";
 import { getTimeNow } from "client/utils/getTimeNow";
-import { LotterySignup } from "shared/types/models/user";
 import { getDirectSignupEndTime } from "shared/utils/signupTimes";
-import { DirectSignupWithProgramItem } from "client/views/my-program-items/myProgramItemsSlice";
+import {
+  DirectSignupWithProgramItem,
+  LotterySignupWithProgramItem,
+} from "client/views/my-program-items/myProgramItemsSlice";
+import { GroupMemberWithLotteryProgramItem } from "client/views/group/groupSlice";
 
 export const getUpcomingProgramItems = (
   programItems: readonly ProgramItem[],
@@ -20,8 +22,8 @@ export const getUpcomingProgramItems = (
 };
 
 const getUpcomingLotterySignups = (
-  lotterySignups: readonly LotterySignup[],
-): readonly LotterySignup[] => {
+  lotterySignups: readonly LotterySignupWithProgramItem[],
+): readonly LotterySignupWithProgramItem[] => {
   const timeNow = getTimeNow();
 
   const upcomingLotterySignups = lotterySignups.filter((lotterySignup) => {
@@ -34,8 +36,8 @@ const getUpcomingLotterySignups = (
 };
 
 const getGroupCreator = (
-  groupMembers: readonly GroupMember[],
-): GroupMember | null => {
+  groupMembers: readonly GroupMemberWithLotteryProgramItem[],
+): GroupMemberWithLotteryProgramItem | null => {
   const groupCreator = groupMembers.find(
     (member) => member.groupCreatorCode === member.groupCode,
   );
@@ -46,9 +48,9 @@ const getGroupCreator = (
 };
 
 interface GetLotterySignupsParams {
-  lotterySignups: readonly LotterySignup[];
+  lotterySignups: readonly LotterySignupWithProgramItem[];
   isGroupCreator: boolean;
-  groupMembers: readonly GroupMember[];
+  groupMembers: readonly GroupMemberWithLotteryProgramItem[];
   isInGroup: boolean;
   getAllProgramItems: boolean;
 }
@@ -59,7 +61,7 @@ export const getLotterySignups = ({
   groupMembers,
   isInGroup,
   getAllProgramItems,
-}: GetLotterySignupsParams): readonly LotterySignup[] => {
+}: GetLotterySignupsParams): readonly LotterySignupWithProgramItem[] => {
   if (isGroupCreator || !isInGroup) {
     return getAllProgramItems
       ? lotterySignups

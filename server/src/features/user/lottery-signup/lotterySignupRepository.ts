@@ -1,15 +1,12 @@
-import { findProgramItems } from "server/features/program-item/programItemRepository";
 import { UserModel } from "server/features/user/userSchema";
-import { NewLotterySignup, UserLotterySignups } from "server/types/resultTypes";
+import { UserLotterySignups } from "server/types/resultTypes";
 import { logger } from "server/utils/logger";
 import { MongoDbError } from "shared/types/api/errors";
 import { User } from "shared/types/models/user";
 import {
   Result,
-  isErrorResult,
   makeErrorResult,
   makeSuccessResult,
-  unwrapResult,
 } from "shared/utils/result";
 
 export const saveLotterySignups = async (
@@ -17,42 +14,14 @@ export const saveLotterySignups = async (
 ): Promise<Result<User, MongoDbError>> => {
   const { lotterySignups, username } = signupData;
 
-  const programItemsResult = await findProgramItems();
-
-  if (isErrorResult(programItemsResult)) {
-    return programItemsResult;
-  }
-
-  const programItems = unwrapResult(programItemsResult);
-
-  const formattedData = lotterySignups.reduce<NewLotterySignup[]>(
-    (acc, lotterySignup) => {
-      const programItemDocInDb = programItems.find(
-        (programItem) =>
-          programItem.programItemId === lotterySignup.programItem.programItemId,
-      );
-
-      if (programItemDocInDb?._id) {
-        acc.push({
-          programItem: programItemDocInDb._id,
-          priority: lotterySignup.priority,
-          time: lotterySignup.time,
-          message: lotterySignup.message,
-        });
-      }
-      return acc;
-    },
-    [],
-  );
-
   try {
     const signupResponse = await UserModel.findOneAndUpdate(
       { username },
       {
-        lotterySignups: formattedData,
+        lotterySignups,
       },
-      { new: true, fields: "-lotterySignups._id" },
-    ).populate("lotterySignups.programItem");
+      { new: true },
+    );
     if (!signupResponse) {
       logger.error("%s", new Error("Error saving lottery signups"));
       return makeErrorResult(MongoDbError.SIGNUP_NOT_FOUND);

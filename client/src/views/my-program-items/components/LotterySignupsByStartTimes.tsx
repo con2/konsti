@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { capitalize } from "lodash-es";
 import { useTranslation } from "react-i18next";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
-import { LotterySignup } from "shared/types/models/user";
 import { PopularityInfo } from "client/components/PopularityInfo";
 import {
   MyProgramButtonContainer,
@@ -15,9 +14,10 @@ import {
 } from "client/views/my-program-items/components/shared";
 import { TertiaryButton } from "client/components/TertiaryButton";
 import { AppRoute } from "client/app/AppRoutes";
+import { LotterySignupWithProgramItem } from "client/views/my-program-items/myProgramItemsSlice";
 
 interface Props {
-  lotterySignups: LotterySignup[];
+  lotterySignups: LotterySignupWithProgramItem[];
   startTimes: readonly string[];
 }
 
@@ -40,7 +40,7 @@ export const LotterySignupsByStartTimes = ({
               {lotterySignups.map((signup) => {
                 if (signup.time === startTime) {
                   return (
-                    <MyProgramListItem key={signup.programItem.programItemId}>
+                    <MyProgramListItem key={signup.programItemId}>
                       <Grid>
                         <StyledTitle data-testid="program-item-title">
                           {`${signup.priority}) ${signup.programItem.title}`}
@@ -57,7 +57,7 @@ export const LotterySignupsByStartTimes = ({
                             icon="circle-arrow-right"
                             onClick={async () => {
                               await navigate(
-                                `${AppRoute.PROGRAM_ITEM}/${signup.programItem.programItemId}`,
+                                `${AppRoute.PROGRAM_ITEM}/${signup.programItemId}`,
                               );
                             }}
                           >

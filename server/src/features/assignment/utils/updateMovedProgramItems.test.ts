@@ -55,7 +55,7 @@ test("should remove lottery signups for moved program items from users", async (
   const updatedUser = unsafelyUnwrap(await findUser(mockUser.username));
 
   expect(updatedUser?.lotterySignups.length).toEqual(1);
-  expect(updatedUser?.lotterySignups[0].programItem.programItemId).toEqual(
+  expect(updatedUser?.lotterySignups[0].programItemId).toEqual(
     testProgramItem2.programItemId,
   );
 });

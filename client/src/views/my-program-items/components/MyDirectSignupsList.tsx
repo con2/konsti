@@ -3,18 +3,20 @@ import { useTranslation } from "react-i18next";
 import { sortBy, uniq } from "lodash-es";
 import { DirectSignupsByStartTimes } from "./DirectSignupsByStartTimes";
 import { getMissedSignups } from "client/views/my-program-items/utils/getMissedSignups";
-import { LotterySignup } from "shared/types/models/user";
 import { config } from "shared/config";
 import { RaisedCard } from "client/components/RaisedCard";
 import {
   MyProgramHeader,
   MyProgramSecondaryText,
 } from "client/views/my-program-items/components/shared";
-import { DirectSignupWithProgramItem } from "client/views/my-program-items/myProgramItemsSlice";
+import {
+  DirectSignupWithProgramItem,
+  LotterySignupWithProgramItem,
+} from "client/views/my-program-items/myProgramItemsSlice";
 
 interface Props {
   directSignups: readonly DirectSignupWithProgramItem[];
-  lotterySignups: readonly LotterySignup[];
+  lotterySignups: readonly LotterySignupWithProgramItem[];
 }
 
 export const MyDirectSignupsList = ({

@@ -18,6 +18,7 @@ import {
 import { RaisedCard } from "client/components/RaisedCard";
 import { getIsInGroup } from "client/views/group/groupUtils";
 import { SignupQuestion } from "shared/types/models/settings";
+import { selectGroupMembers } from "client/views/group/groupSlice";
 
 interface Props {
   programItems: readonly ProgramItem[];
@@ -34,7 +35,7 @@ export const AllProgramItemsList = ({ programItems }: Props): ReactElement => {
   const activeProgramType = useAppSelector(
     (state) => state.admin.activeProgramType,
   );
-  const groupMembers = useAppSelector((state) => state.group.groupMembers);
+  const groupMembers = useAppSelector(selectGroupMembers);
   const isGroupCreator = useAppSelector((state) => state.group.isGroupCreator);
   const groupCode = useAppSelector((state) => state.group.groupCode);
   const username = useAppSelector((state) => state.login.username);

@@ -15,6 +15,7 @@ import { selectDirectSignups } from "client/views/my-program-items/myProgramItem
 import { config } from "shared/config";
 import { AppRoute } from "client/app/AppRoutes";
 import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
+import { selectGroupMembers } from "client/views/group/groupSlice";
 
 export const GroupView = (): ReactElement => {
   const { twoPhaseSignupProgramTypes } = config.event();
@@ -22,7 +23,7 @@ export const GroupView = (): ReactElement => {
   const username = useAppSelector((state) => state.login.username);
   const groupCode = useAppSelector((state) => state.group.groupCode);
   const isGroupCreator = useAppSelector((state) => state.group.isGroupCreator);
-  const groupMembers = useAppSelector((state) => state.group.groupMembers);
+  const groupMembers = useAppSelector(selectGroupMembers);
 
   const directSignups = useAppSelector(selectDirectSignups);
   const { t } = useTranslation();

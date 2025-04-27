@@ -130,7 +130,7 @@ export const getDemandByProgramItem = (
     for (const lotterySignup of user.lotterySignups) {
       const foundProgramItem = programItems.find(
         (programItem) =>
-          programItem.programItemId === lotterySignup.programItem.programItemId,
+          programItem.programItemId === lotterySignup.programItemId,
       );
 
       if (!foundProgramItem) {

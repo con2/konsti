@@ -14,7 +14,7 @@ export const isAlreadyLotterySigned = (
   lotterySignups: readonly LotterySignup[],
 ): boolean => {
   return lotterySignups.some(
-    (g) => g.programItem.programItemId === programItemToCheck.programItemId,
+    (g) => g.programItemId === programItemToCheck.programItemId,
   );
 };
 

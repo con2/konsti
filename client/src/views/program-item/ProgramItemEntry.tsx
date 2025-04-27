@@ -7,7 +7,7 @@ import {
   SignupType,
   UserSignup,
 } from "shared/types/models/programItem";
-import { LotterySignup, UserGroup } from "shared/types/models/user";
+import { UserGroup } from "shared/types/models/user";
 import { RaisedCard } from "client/components/RaisedCard";
 import {
   isAlreadyDirectySigned,
@@ -20,14 +20,17 @@ import { ProgramItemHead } from "client/views/program-item/head/ProgramItemHead"
 import { SignupQuestion } from "shared/types/models/settings";
 import { isRevolvingDoorWorkshop } from "client/utils/isRevolvingDoorWorkshop";
 import { ProgramItemErrors } from "client/views/program-item/ProgramItemErrors";
-import { DirectSignupWithProgramItem } from "client/views/my-program-items/myProgramItemsSlice";
+import {
+  DirectSignupWithProgramItem,
+  LotterySignupWithProgramItem,
+} from "client/views/my-program-items/myProgramItemsSlice";
 
 interface Props {
   programItem: ProgramItem;
   startTime: string;
   signups: UserSignup[];
   signupStrategy: ProgramItemSignupStrategy;
-  lotterySignups: readonly LotterySignup[];
+  lotterySignups: readonly LotterySignupWithProgramItem[];
   directSignups: readonly DirectSignupWithProgramItem[];
   isAlwaysExpanded: boolean;
   loading: boolean;

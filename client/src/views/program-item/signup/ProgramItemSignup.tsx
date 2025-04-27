@@ -7,18 +7,20 @@ import {
 import { DirectSignupProgramItem } from "client/views/program-item/signup/components/DirectSignupProgramItem";
 import { LotterySignupProgramItem } from "client/views/program-item/signup/components/LotterySignupProgramItem";
 import { config } from "shared/config";
-import { LotterySignup } from "shared/types/models/user";
 import { SignupHelpText } from "client/views/program-item/signup/components/SignupHelpText";
 import { getTimeNow } from "client/utils/getTimeNow";
 import { isAlreadyDirectySigned } from "client/views/program-item/programItemUtils";
 import { AdmissionTicketLink } from "client/views/program-item/signup/components/AdmissionTicketLink";
 import { getDirectSignupEndTime } from "shared/utils/signupTimes";
-import { DirectSignupWithProgramItem } from "client/views/my-program-items/myProgramItemsSlice";
+import {
+  DirectSignupWithProgramItem,
+  LotterySignupWithProgramItem,
+} from "client/views/my-program-items/myProgramItemsSlice";
 
 interface Props {
   signupStrategy: ProgramItemSignupStrategy;
   startTime: string;
-  lotterySignups: readonly LotterySignup[];
+  lotterySignups: readonly LotterySignupWithProgramItem[];
   directSignups: readonly DirectSignupWithProgramItem[];
   programItem: ProgramItem;
   attendees: number;

@@ -304,10 +304,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
         { ...mockLotterySignups[0], priority: 2 },
         {
           // directSignupAlwaysOpen signed program item should be ignored
-          programItem: {
-            ...testProgramItem2,
-            programItemId: directSignupAlwaysOpenId,
-          },
+          programItemId: directSignupAlwaysOpenId,
           priority: 1,
           time: testProgramItem.startTime,
           message: "",
@@ -320,10 +317,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
         { ...mockLotterySignups[0], priority: 2 },
         {
           // directSignupAlwaysOpen signed program item should be ignored
-          programItem: {
-            ...testProgramItem2,
-            programItemId: directSignupAlwaysOpenId,
-          },
+          programItemId: directSignupAlwaysOpenId,
           priority: 1,
           time: testProgramItem.startTime,
           message: "",
@@ -400,10 +394,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
         { ...mockLotterySignups[0], priority: 2 },
         {
           // directSignupAlwaysOpen signed program item should be ignored
-          programItem: {
-            ...testProgramItem2,
-            programItemId: directSignupAlwaysOpenId,
-          },
+          programItemId: directSignupAlwaysOpenId,
           priority: 1,
           time: testProgramItem.startTime,
           message: "",
@@ -705,7 +696,7 @@ describe("Assignment with first time bonus", () => {
     );
     expect(assignmentSignup?.userSignups[0]).toMatchObject({
       username: mockUser2.username,
-      time: mockLotterySignups[0].programItem.startTime,
+      time: testProgramItem.startTime,
       message: "",
       priority: 3,
     });
@@ -789,11 +780,11 @@ describe("Assignment with first time bonus", () => {
     );
 
     expect(assignmentSignup?.programItemId).toEqual(
-      mockLotterySignups[1].programItem.programItemId,
+      mockLotterySignups[1].programItemId,
     );
     expect(assignmentSignup?.userSignups[0]).toMatchObject({
       username: mockUser2.username,
-      time: mockLotterySignups[1].programItem.startTime,
+      time: testProgramItem2.startTime,
       message: "",
       priority: 3,
     });

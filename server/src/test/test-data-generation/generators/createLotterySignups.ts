@@ -82,15 +82,14 @@ const getRandomLotterySignup = (
 
       const duplicate = lotterySignups.some(
         (lotterySignup) =>
-          lotterySignup.programItem.programItemId ===
-          randomProgramItem.programItemId,
+          lotterySignup.programItemId === randomProgramItem.programItemId,
       );
 
       if (duplicate) {
         i -= 1;
       } else {
         lotterySignups.push({
-          programItem: randomProgramItem,
+          programItemId: randomProgramItem.programItemId,
           priority: i + 1,
           time: randomProgramItem.startTime,
           message: "",

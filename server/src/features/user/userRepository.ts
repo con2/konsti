@@ -102,9 +102,7 @@ export const updateUserPassword = async (
         password,
       },
       { new: true, fields: "-_id -__v -createdAt -updatedAt" },
-    )
-      .lean<User>()
-      .populate("lotterySignups.programItem");
+    ).lean<User>();
     logger.debug(`MongoDB: Password for user ${username} updated`);
     if (!response) {
       return makeErrorResult(MongoDbError.USER_NOT_FOUND);
@@ -123,12 +121,7 @@ export const findUser = async (
   username: string,
 ): Promise<Result<User | null, MongoDbError>> => {
   try {
-    const response = await UserModel.findOne(
-      { username },
-      "-lotterySignups._id",
-    )
-      .lean<User>()
-      .populate("lotterySignups.programItem");
+    const response = await UserModel.findOne({ username }).lean<User>();
     if (!response) {
       logger.info(`MongoDB: User ${username} not found`);
       return makeSuccessResult(null);
@@ -157,9 +150,7 @@ export const findUserBySerial = async (
   serial: string,
 ): Promise<Result<User | null, MongoDbError>> => {
   try {
-    const response = await UserModel.findOne({ serial }, "-lotterySignups._id")
-      .lean<User>()
-      .populate("lotterySignups.programItem");
+    const response = await UserModel.findOne({ serial }).lean<User>();
 
     if (response) {
       logger.debug(`MongoDB: Found user with serial ${serial}`);
@@ -180,12 +171,7 @@ export const findUserByKompassiId = async (
   kompassiId: number,
 ): Promise<Result<User | null, MongoDbError>> => {
   try {
-    const response = await UserModel.findOne(
-      { kompassiId },
-      "-lotterySignups._id",
-    )
-      .lean<User>()
-      .populate("lotterySignups.programItem");
+    const response = await UserModel.findOne({ kompassiId }).lean<User>();
 
     if (response) {
       logger.debug(`MongoDB: Found user with Kompassi id ${kompassiId}`);
@@ -229,9 +215,7 @@ export const findUsers = async (
   const filter = usernames ? { username: { $in: usernames } } : {};
   try {
     // eslint-disable-next-line unicorn/no-array-callback-reference -- False positive
-    const users = await UserModel.find(filter)
-      .lean<User[]>()
-      .populate("lotterySignups.programItem");
+    const users = await UserModel.find(filter).lean<User[]>();
     return makeSuccessResult(users);
   } catch (error) {
     logger.error("MongoDB: Error fetching users: %s", error);
@@ -251,9 +235,7 @@ export const updateUserKompassiLoginStatus = async (
         kompassiUsernameAccepted: true,
       },
       { new: true, fields: "-_id -__v -createdAt -updatedAt" },
-    )
-      .lean<User>()
-      .populate("lotterySignups.programItem");
+    ).lean<User>();
 
     if (!response) {
       logger.error(

@@ -59,27 +59,22 @@ export const removeOverlapLotterySignups = async (
       return [];
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-    const newLotterySignups = signedUser?.lotterySignups.filter(
+    const newLotterySignups = signedUser.lotterySignups.filter(
       (lotterySignup) => {
+        const foundProgramItem = programItems.find(
+          (programItem) =>
+            programItem.programItemId === lotterySignup.programItemId,
+        );
+        if (!foundProgramItem) {
+          return false;
+        }
         // If lottery signup takes place during the length of direct signup program item, cancel it
-        return !dayjs(lotterySignup.programItem.startTime).isBetween(
+        return !dayjs(foundProgramItem.startTime).isBetween(
           dayjs(directSignupProgramItem.startTime).add(1, "minutes"),
           dayjs(directSignupProgramItem.endTime),
         );
       },
     );
-
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-    if (!newLotterySignups) {
-      logger.error(
-        "%s",
-        new Error(
-          `removeOverlapLotterySignups: Error finding lottery signups for user ${signedUser.username}`,
-        ),
-      );
-      return [];
-    }
 
     signupData.push({
       username: signedUser.username,

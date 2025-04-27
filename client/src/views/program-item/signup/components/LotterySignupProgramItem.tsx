@@ -8,7 +8,6 @@ import {
   PostLotterySignupsErrorMessage,
   submitPostLotterySignups,
 } from "client/views/my-program-items/myProgramItemsThunks";
-import { LotterySignup } from "shared/types/models/user";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { isAlreadyLotterySigned } from "client/views/program-item/programItemUtils";
 import { Button, ButtonStyle } from "client/components/Button";
@@ -19,12 +18,16 @@ import { config } from "shared/config";
 import { getLotterySignupStartTime } from "shared/utils/signupTimes";
 import { getIsInGroup } from "client/views/group/groupUtils";
 import { InfoText } from "client/components/InfoText";
-import { DirectSignupWithProgramItem } from "client/views/my-program-items/myProgramItemsSlice";
+import {
+  DirectSignupWithProgramItem,
+  LotterySignupWithProgramItem,
+} from "client/views/my-program-items/myProgramItemsSlice";
+import { selectGroupMembers } from "client/views/group/groupSlice";
 
 interface Props {
   programItem: ProgramItem;
   startTime: string;
-  lotterySignups: readonly LotterySignup[];
+  lotterySignups: readonly LotterySignupWithProgramItem[];
   directSignups: readonly DirectSignupWithProgramItem[];
 }
 
@@ -42,7 +45,7 @@ export const LotterySignupProgramItem = ({
   const dispatch = useAppDispatch();
 
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
-  const groupMembers = useAppSelector((state) => state.group.groupMembers);
+  const groupMembers = useAppSelector(selectGroupMembers);
   const isGroupCreator = useAppSelector((state) => state.group.isGroupCreator);
   const groupCode = useAppSelector((state) => state.group.groupCode);
   const isInGroup = getIsInGroup(groupCode);
@@ -63,7 +66,7 @@ export const LotterySignupProgramItem = ({
   ): Promise<void> => {
     setLoading(true);
     const newSignupData = lotterySignups.filter(
-      (g) => g.programItem.programItemId !== programItemToRemove.programItemId,
+      (g) => g.programItemId !== programItemToRemove.programItemId,
     );
 
     const error = await dispatch(
@@ -83,7 +86,7 @@ export const LotterySignupProgramItem = ({
   };
 
   const currentPriority = lotterySignups.find(
-    (p) => p.programItem.programItemId === programItem.programItemId,
+    (p) => p.programItemId === programItem.programItemId,
   )?.priority;
 
   const lotterySignupsForTimeslot = lotterySignups.filter(

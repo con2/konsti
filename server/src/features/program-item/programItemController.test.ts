@@ -216,8 +216,8 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
 
     const updatedUser = unsafelyUnwrap(await findUser(mockUser.username));
     expect(updatedUser?.lotterySignups.length).toEqual(1);
-    expect(updatedUser?.lotterySignups[0].programItem.title).toEqual(
-      testProgramItem.title,
+    expect(updatedUser?.lotterySignups[0].programItemId).toEqual(
+      testProgramItem.programItemId,
     );
     expect(updatedUser?.favoriteProgramItemIds.length).toEqual(1);
     expect(updatedUser?.favoriteProgramItemIds[0]).toEqual(
@@ -353,8 +353,8 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
 
     const updatedUser = unsafelyUnwrap(await findUser(mockUser.username));
     expect(updatedUser?.lotterySignups.length).toEqual(1);
-    expect(updatedUser?.lotterySignups[0].programItem.title).toEqual(
-      testProgramItem2.title,
+    expect(updatedUser?.lotterySignups[0].programItemId).toEqual(
+      testProgramItem2.programItemId,
     );
     expect(updatedUser?.favoriteProgramItemIds.length).toEqual(2);
 

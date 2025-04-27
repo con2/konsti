@@ -172,8 +172,8 @@ describe(`POST ${ApiEndpoint.HIDDEN}`, () => {
 
     const updatedUser = unsafelyUnwrap(await findUser(mockUser.username));
     expect(updatedUser?.lotterySignups.length).toEqual(1);
-    expect(updatedUser?.lotterySignups[0].programItem.title).toEqual(
-      testProgramItem2.title,
+    expect(updatedUser?.lotterySignups[0].programItemId).toEqual(
+      testProgramItem2.programItemId,
     );
     expect(updatedUser?.favoriteProgramItemIds.length).toEqual(1);
 

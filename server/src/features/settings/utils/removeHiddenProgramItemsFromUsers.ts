@@ -36,7 +36,7 @@ export const removeHiddenProgramItemsFromUsers = async (
     // Lottery signups to remove
     const lotterySignups = user.lotterySignups.filter((lotterySignup) => {
       const hiddenFound = hiddenProgramItemIds.find((hiddenProgramItemId) => {
-        return hiddenProgramItemId === lotterySignup.programItem.programItemId;
+        return hiddenProgramItemId === lotterySignup.programItemId;
       });
       if (!hiddenFound) {
         return lotterySignup;

@@ -11,11 +11,6 @@ export interface ResultDoc
   message: string;
 }
 
-// For saving new signups to DB where program item is replaced with ObjectId _id
-export type NewLotterySignup = Omit<LotterySignup, "programItem"> & {
-  programItem: ObjectId;
-};
-
 export interface UserLotterySignups {
   username: string;
   lotterySignups: readonly LotterySignup[];

@@ -36,9 +36,11 @@ export const removeInvalidProgramItemsFromUsers = async (): Promise<
 
   const usersToUpdate: User[] = users.flatMap<User>((user) => {
     const validLotterySignups = user.lotterySignups.filter((lotterySignup) => {
-      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-      if (lotterySignup.programItem !== null) {
-        return lotterySignup.programItem;
+      const foundProgramItem = programItemIds.find(
+        (programItemId) => programItemId === lotterySignup.programItemId,
+      );
+      if (foundProgramItem) {
+        return lotterySignup;
       }
     });
 
