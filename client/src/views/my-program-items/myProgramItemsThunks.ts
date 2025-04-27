@@ -5,18 +5,21 @@ import {
   submitDeleteDirectSignupAsync,
   submitPostDirectSignupAsync,
   submitGetUserAsync,
-  submitPostLotterySignupsAsync,
+  submitPostLotterySignupAsync,
   submitUpdateFavoritesAsync,
+  submitDeleteLotterySignupAsync,
 } from "client/views/my-program-items/myProgramItemsSlice";
 import {
   DeleteDirectSignupRequest,
+  DeleteLotterySignupRequest,
   PostDirectSignupRequest,
-  PostLotterySignupsRequest,
+  PostLotterySignupRequest,
 } from "shared/types/api/myProgramItems";
 import {
   deleteDirectSignup,
+  deleteLotterySignup,
   postDirectSignup,
-  postLotterySignups,
+  postLotterySignup,
 } from "client/services/myProgramItemsServices";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import { NewFavorite } from "shared/types/models/user";
@@ -141,33 +144,58 @@ export const submitDeleteDirectSignup = (
   };
 };
 
-export enum PostLotterySignupsErrorMessage {
+export enum PostLotterySignupErrorMessage {
   SIGNUP_ENDED = "signupError.signupEnded",
   SAME_PRIORITY = "signupError.samePriority",
   UNKNOWN = "signupError.generic",
 }
 
-export const submitPostLotterySignups = (
-  signupData: PostLotterySignupsRequest,
-): AppThunk<Promise<PostLotterySignupsErrorMessage | undefined>> => {
+export const submitPostLotterySignup = (
+  signupData: PostLotterySignupRequest,
+): AppThunk<Promise<PostLotterySignupErrorMessage | undefined>> => {
   return async (
     dispatch,
-  ): Promise<PostLotterySignupsErrorMessage | undefined> => {
-    const signupResponse = await postLotterySignups(signupData);
+  ): Promise<PostLotterySignupErrorMessage | undefined> => {
+    const signupResponse = await postLotterySignup(signupData);
 
     if (signupResponse.status === "error") {
       switch (signupResponse.errorId) {
         case "signupEnded":
-          return PostLotterySignupsErrorMessage.SIGNUP_ENDED;
+          return PostLotterySignupErrorMessage.SIGNUP_ENDED;
         case "samePriority":
-          return PostLotterySignupsErrorMessage.SAME_PRIORITY;
+          return PostLotterySignupErrorMessage.SAME_PRIORITY;
         case "unknown":
-          return PostLotterySignupsErrorMessage.UNKNOWN;
+          return PostLotterySignupErrorMessage.UNKNOWN;
         default:
           return exhaustiveSwitchGuard(signupResponse.errorId);
       }
     }
 
-    dispatch(submitPostLotterySignupsAsync(signupResponse.lotterySignups));
+    dispatch(submitPostLotterySignupAsync(signupResponse.lotterySignups));
+  };
+};
+
+export const submitDeleteLotterySignup = (
+  signupData: DeleteLotterySignupRequest,
+): AppThunk<Promise<PostLotterySignupErrorMessage | undefined>> => {
+  return async (
+    dispatch,
+  ): Promise<PostLotterySignupErrorMessage | undefined> => {
+    const signupResponse = await deleteLotterySignup(signupData);
+
+    if (signupResponse.status === "error") {
+      switch (signupResponse.errorId) {
+        case "signupEnded":
+          return PostLotterySignupErrorMessage.SIGNUP_ENDED;
+        case "unknown":
+          return PostLotterySignupErrorMessage.UNKNOWN;
+        default:
+          return exhaustiveSwitchGuard(signupResponse.errorId);
+      }
+    }
+
+    dispatch(
+      submitDeleteLotterySignupAsync(signupData.lotterySignupProgramItemId),
+    );
   };
 };

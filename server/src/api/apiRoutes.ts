@@ -34,7 +34,10 @@ import {
 } from "server/features/user/group/groupController";
 import { postLogin } from "server/features/user/login/loginController";
 import { postSessionRestore } from "server/features/user/session-restore/sessionRestoreController";
-import { postLotterySignups } from "server/features/user/lottery-signup/lotterySignupController";
+import {
+  deleteLotterySignup,
+  postLotterySignup,
+} from "server/features/user/lottery-signup/lotterySignupController";
 import { getSignupMessages } from "server/features/user/signup-message/signupMessageController";
 import {
   getUser,
@@ -75,7 +78,7 @@ apiRoutes.post(ApiEndpoint.PROGRAM_ITEMS, postUpdateProgramItems);
 apiRoutes.post(ApiEndpoint.USERS, postUser);
 apiRoutes.post(ApiEndpoint.LOGIN, postLogin);
 apiRoutes.post(ApiEndpoint.ASSIGNMENT, postAssignment);
-apiRoutes.post(ApiEndpoint.LOTTERY_SIGNUP, postLotterySignups);
+apiRoutes.post(ApiEndpoint.LOTTERY_SIGNUP, postLotterySignup);
 apiRoutes.post(ApiEndpoint.FAVORITE, postFavorite);
 apiRoutes.post(ApiEndpoint.HIDDEN, postHidden);
 apiRoutes.post(ApiEndpoint.FEEDBACK, postFeedback);
@@ -109,6 +112,7 @@ apiRoutes.get(ApiEndpoint.HEALTH, getHealthStatus);
 
 apiRoutes.delete(ApiEndpoint.SIGNUP_QUESTION, deleteSignupQuestion);
 apiRoutes.delete(ApiEndpoint.DIRECT_SIGNUP, deleteDirectSignup);
+apiRoutes.delete(ApiEndpoint.LOTTERY_SIGNUP, deleteLotterySignup);
 
 /* DEV routes */
 

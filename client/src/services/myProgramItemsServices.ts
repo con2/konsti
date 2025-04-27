@@ -7,18 +7,31 @@ import {
   PostDirectSignupError,
   PostDirectSignupRequest,
   PostDirectSignupResponse,
-  PostLotterySignupsError,
-  PostLotterySignupsRequest,
-  PostLotterSignupsResponse,
+  PostLotterySignupError,
+  PostLotterySignupRequest,
+  PostLotterSignupResponse,
+  DeleteLotterySignupRequest,
+  DeleteLotterySignupResponse,
+  DeleteLotterySignupError,
 } from "shared/types/api/myProgramItems";
 
-export const postLotterySignups = async (
-  signupData: PostLotterySignupsRequest,
-): Promise<PostLotterSignupsResponse | PostLotterySignupsError> => {
+export const postLotterySignup = async (
+  requestData: PostLotterySignupRequest,
+): Promise<PostLotterSignupResponse | PostLotterySignupError> => {
   const response = await api.post<
-    PostLotterSignupsResponse,
-    PostLotterySignupsRequest
-  >(ApiEndpoint.LOTTERY_SIGNUP, signupData);
+    PostLotterSignupResponse,
+    PostLotterySignupRequest
+  >(ApiEndpoint.LOTTERY_SIGNUP, requestData);
+  return response.data;
+};
+
+export const deleteLotterySignup = async (
+  requestData: DeleteLotterySignupRequest,
+): Promise<DeleteLotterySignupResponse | DeleteLotterySignupError> => {
+  const response = await api.delete<
+    DeleteLotterySignupResponse,
+    DeleteLotterySignupRequest
+  >(ApiEndpoint.LOTTERY_SIGNUP, { data: requestData });
   return response.data;
 };
 

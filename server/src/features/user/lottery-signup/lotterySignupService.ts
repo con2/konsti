@@ -1,20 +1,24 @@
-import { groupBy, uniq } from "lodash-es";
 import dayjs from "dayjs";
 import {
-  PostLotterySignupsError,
-  PostLotterSignupsResponse,
+  PostLotterySignupError,
+  PostLotterSignupResponse,
+  DeleteLotterySignupRequest,
+  DeleteLotterySignupResponse,
+  DeleteLotterySignupError,
 } from "shared/types/api/myProgramItems";
 import { LotterySignup } from "shared/types/models/user";
-import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
+import {
+  delLotterySignup,
+  saveLotterySignup,
+} from "server/features/user/lottery-signup/lotterySignupRepository";
 import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
 import { hasSignupEnded } from "server/features/user/userUtils";
 import { isErrorResult, unwrapResult } from "shared/utils/result";
 
-export const storeLotterySignups = async (
-  lotterySignups: readonly LotterySignup[],
+export const storeLotterySignup = async (
+  lotterySignup: LotterySignup,
   username: string,
-  signupEndTime: string,
-): Promise<PostLotterSignupsResponse | PostLotterySignupsError> => {
+): Promise<PostLotterSignupResponse | PostLotterySignupError> => {
   const timeNowResult = await getTimeNow();
   if (isErrorResult(timeNowResult)) {
     return {
@@ -23,13 +27,12 @@ export const storeLotterySignups = async (
       errorId: "unknown",
     };
   }
-
   const timeNow = unwrapResult(timeNowResult);
+
   const signupEnded = hasSignupEnded({
-    signupEndTime: dayjs(signupEndTime),
+    signupEndTime: dayjs(lotterySignup.time),
     timeNow,
   });
-
   if (signupEnded) {
     return {
       errorId: "signupEnded",
@@ -38,29 +41,17 @@ export const storeLotterySignups = async (
     };
   }
 
-  const programItemsByTimeslot = groupBy(
-    lotterySignups,
-    (programItem) => programItem.time,
-  );
+  // TODO: Handle case where same priority submitted for same start time
+  /*
+  return {
+    message: "Duplicate priority score found",
+    status: "error",
+    errorId: "samePriority",
+  };
+  */
 
-  for (const [, programItems] of Object.entries(programItemsByTimeslot)) {
-    const priorities = programItems.map(
-      (selectedProgramItem) => selectedProgramItem.priority,
-    );
-    // Delete duplicate priorities, ie. some kind of error
-    const uniqPriorities = uniq(priorities);
-
-    if (priorities.length !== uniqPriorities.length) {
-      return {
-        message: "Duplicate priority score found",
-        status: "error",
-        errorId: "samePriority",
-      };
-    }
-  }
-
-  const responseResult = await saveLotterySignups({
-    lotterySignups,
+  const responseResult = await saveLotterySignup({
+    lotterySignup,
     username,
   });
 
@@ -79,4 +70,24 @@ export const storeLotterySignups = async (
     status: "success",
     lotterySignups: response.lotterySignups,
   };
+};
+
+export const removeLotterySignup = async (
+  removeRequest: DeleteLotterySignupRequest,
+  username: string,
+): Promise<DeleteLotterySignupResponse | DeleteLotterySignupError> => {
+  const responseResult = await delLotterySignup({
+    lotterySignupProgramItemId: removeRequest.lotterySignupProgramItemId,
+    username,
+  });
+
+  if (isErrorResult(responseResult)) {
+    return {
+      message: "Removing lottery signup failed",
+      status: "error",
+      errorId: "unknown",
+    };
+  }
+
+  return { message: "Lottery signup remove success", status: "success" };
 };

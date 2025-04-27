@@ -9,22 +9,35 @@ import {
 
 // POST lottery signup
 
-export const PostLotterySignupsRequestSchema = z.object({
-  lotterySignups: z.array(LotterySignupSchema),
-  // TODO: Remove startTime and read it from program item on backend
-  startTime: z.string(),
-});
+// TODO: Remove 'time' and read it from program item on backend
+export const PostLotterySignupRequestSchema = LotterySignupSchema;
 
-export type PostLotterySignupsRequest = z.infer<
-  typeof PostLotterySignupsRequestSchema
+export type PostLotterySignupRequest = z.infer<
+  typeof PostLotterySignupRequestSchema
 >;
 
-export interface PostLotterSignupsResponse extends ApiResult {
+export interface PostLotterSignupResponse extends ApiResult {
   lotterySignups: readonly LotterySignup[];
 }
 
-export interface PostLotterySignupsError extends ApiError {
+export interface PostLotterySignupError extends ApiError {
   errorId: "unknown" | "signupEnded" | "samePriority";
+}
+
+// DELETE lottery signup
+
+export const DeleteLotterySignupRequestSchema = z.object({
+  lotterySignupProgramItemId: z.string(),
+});
+
+export type DeleteLotterySignupRequest = z.infer<
+  typeof DeleteLotterySignupRequestSchema
+>;
+
+export type DeleteLotterySignupResponse = ApiResult;
+
+export interface DeleteLotterySignupError extends ApiError {
+  errorId: "unknown" | "signupEnded";
 }
 
 // POST direct signup
@@ -56,6 +69,7 @@ export interface PostDirectSignupError extends ApiError {
 // DELETE direct signup
 
 export const DeleteDirectSignupRequestSchema = z.object({
+  // TODO: Delete username, it's read from jwt
   username: z.string(),
   directSignupProgramItemId: z.string(),
 });

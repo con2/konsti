@@ -22,10 +22,7 @@ import {
 import { findUser } from "server/features/user/userRepository";
 import { isErrorResult, unwrapResult } from "shared/utils/result";
 import { config } from "shared/config";
-import {
-  SignupRepositoryAddSignup,
-  SignupRepositoryDeleteSignup,
-} from "server/features/direct-signup/directSignupTypes";
+import { SignupRepositoryAddSignup } from "server/features/direct-signup/directSignupTypes";
 
 export const storeDirectSignup = async (
   signupRequest: PostDirectSignupRequest,
@@ -195,9 +192,7 @@ export const removeDirectSignup = async (
     };
   }
 
-  const deleteDirectSignup: SignupRepositoryDeleteSignup = signupRequest;
-
-  const signupResult = await delDirectSignup(deleteDirectSignup);
+  const signupResult = await delDirectSignup(signupRequest);
   if (isErrorResult(signupResult)) {
     return {
       message: "Delete signup failure",
