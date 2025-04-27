@@ -17,7 +17,7 @@ export const getGroupCreators = (
     for (let i = 0; i < user.lotterySignups.length; i += 1) {
       for (const startingProgramItem of startingProgramItems) {
         if (
-          user.lotterySignups[i].programItem.programItemId ===
+          user.lotterySignups[i].programItemId ===
           startingProgramItem.programItemId
         ) {
           match = true;

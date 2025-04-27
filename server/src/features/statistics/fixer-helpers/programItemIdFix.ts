@@ -66,8 +66,7 @@ export const programItemIdFix = async (
     const tempLotterySignups = user.lotterySignups.map((lotterySignup) => {
       const matchingProgramItem = programItems.find(
         (programItem) =>
-          // @ts-expect-error: $oid not in interface
-          programItem._id.$oid === lotterySignup.programItem.$oid,
+          programItem.programItemId === lotterySignup.programItemId,
       );
       if (!matchingProgramItem) {
         logger.error(
@@ -86,7 +85,6 @@ export const programItemIdFix = async (
       };
     });
 
-    // @ts-expect-error: We don't want whole program item details
     user.lotterySignups = tempLotterySignups;
   });
 
@@ -106,18 +104,14 @@ export const programItemIdFix = async (
         );
         userResult.directSignup = {
           ...userResult.directSignup,
-          // @ts-expect-error: We don't want whole program item details
-          programItemId: { programItemId: "<canceled>" },
+          programItemId: "<canceled>",
         };
         return;
       }
 
       userResult.directSignup = {
         ...userResult.directSignup,
-        // @ts-expect-error: We don't want whole program item details
-        programItemId: {
-          programItemId: matchingProgramItem.programItemId,
-        },
+        programItemId: matchingProgramItem.programItemId,
       };
     });
   });

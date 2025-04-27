@@ -13,6 +13,7 @@ import { ProgramItemSignupStrategy } from "shared/types/models/programItem";
 import { getLotterySignups } from "client/utils/getUpcomingProgramItems";
 import { BackButton } from "client/components/BackButton";
 import { getIsInGroup } from "client/views/group/groupUtils";
+import { selectGroupMembers } from "client/views/group/groupSlice";
 
 export const ProgramItemView = (): ReactElement => {
   const { t } = useTranslation();
@@ -34,7 +35,7 @@ export const ProgramItemView = (): ReactElement => {
   // Figure out if user has signed up to this program item
   const lotterySignups = useAppSelector(selectLotterySignups);
   const isGroupCreator = useAppSelector((state) => state.group.isGroupCreator);
-  const groupMembers = useAppSelector((state) => state.group.groupMembers);
+  const groupMembers = useAppSelector(selectGroupMembers);
   const groupCode = useAppSelector((state) => state.group.groupCode);
   const isInGroup = getIsInGroup(groupCode);
 

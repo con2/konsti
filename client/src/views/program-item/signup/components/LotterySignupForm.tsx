@@ -76,7 +76,7 @@ export const LotterySignupForm = ({
     }
 
     const newProgramItem: LotterySignup = {
-      programItem,
+      programItemId: programItem.programItemId,
       priority,
       time: programItem.startTime,
       message: "",

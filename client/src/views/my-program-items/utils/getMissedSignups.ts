@@ -2,10 +2,11 @@ import dayjs from "dayjs";
 import { getStartTimes } from "client/utils/getStartTimes";
 import { config } from "shared/config";
 import { getTimeNow } from "client/utils/getTimeNow";
-import { DirectSignup, LotterySignup } from "shared/types/models/user";
+import { DirectSignup } from "shared/types/models/user";
+import { LotterySignupWithProgramItem } from "client/views/my-program-items/myProgramItemsSlice";
 
 export const getMissedSignups = (
-  lotterySignups: readonly LotterySignup[],
+  lotterySignups: readonly LotterySignupWithProgramItem[],
   directSignups: readonly DirectSignup[],
 ): string[] => {
   // Wait this long before showing "you didn't get into program item"

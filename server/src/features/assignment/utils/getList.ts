@@ -43,7 +43,7 @@ export const getList = ({
               ? firstMember.serial
               : firstMember.groupCode,
           size: attendeeGroup.length,
-          event: lotterySignup.programItem.programItemId,
+          event: lotterySignup.programItemId,
           gain: getGain(
             lotterySignup,
             attendeeGroup,

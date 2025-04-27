@@ -107,9 +107,32 @@ export const selectDirectSignups: (
   },
 );
 
-export const selectLotterySignups = (
+export type LotterySignupWithProgramItem = LotterySignup & {
+  programItem: ProgramItem;
+};
+
+export const selectLotterySignups: (
   state: RootState,
-): readonly LotterySignup[] => state.myProgramItems.lotterySignups;
+) => readonly LotterySignupWithProgramItem[] = createSelector(
+  [
+    selectProgramItems,
+    (state: RootState) => state.myProgramItems.lotterySignups,
+  ],
+  (programItems, lotterySignups) => {
+    return lotterySignups.flatMap((lotterySignup) => {
+      const signedProgramItem = programItems.find(
+        (programItem) =>
+          programItem.programItemId === lotterySignup.programItemId,
+      );
+
+      if (!signedProgramItem) {
+        return [];
+      }
+
+      return { ...lotterySignup, programItem: signedProgramItem };
+    });
+  },
+);
 
 const selectFavoriteProgramItemIds = (
   state: RootState,

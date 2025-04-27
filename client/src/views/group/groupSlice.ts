@@ -1,5 +1,7 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { GroupState } from "client/types/reduxTypes";
+import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { GroupState, RootState } from "client/types/reduxTypes";
+import { selectProgramItems } from "client/views/all-program-items/allProgramItemsSlice";
+import { LotterySignupWithProgramItem } from "client/views/my-program-items/myProgramItemsSlice";
 import { GroupMember } from "shared/types/models/groups";
 
 const initialState: GroupState = {
@@ -51,3 +53,36 @@ export const {
 } = groupSlice.actions;
 
 export const groupReducer = groupSlice.reducer;
+
+// SELECTORS
+
+export type GroupMemberWithLotteryProgramItem = Omit<
+  GroupMember,
+  "lotterySignups"
+> & {
+  lotterySignups: LotterySignupWithProgramItem[];
+};
+
+export const selectGroupMembers: (
+  state: RootState,
+) => GroupMemberWithLotteryProgramItem[] = createSelector(
+  [selectProgramItems, (state: RootState) => state.group.groupMembers],
+  (programItems, groupMembers) => {
+    return groupMembers.map((groupMember) => {
+      const updatedSignups: LotterySignupWithProgramItem[] =
+        groupMember.lotterySignups.flatMap((lotterySignup) => {
+          const signedProgramItem = programItems.find(
+            (programItem) =>
+              programItem.programItemId === lotterySignup.programItemId,
+          );
+
+          if (!signedProgramItem) {
+            return [];
+          }
+
+          return { ...lotterySignup, programItem: signedProgramItem };
+        });
+      return { ...groupMember, lotterySignups: updatedSignups };
+    });
+  },
+);

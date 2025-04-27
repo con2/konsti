@@ -3,16 +3,17 @@ import { useTranslation } from "react-i18next";
 import { sortBy } from "lodash-es";
 import { getStartTimes } from "client/utils/getStartTimes";
 import { LotterySignupsByStartTimes } from "./LotterySignupsByStartTimes";
-import { LotterySignup } from "shared/types/models/user";
 import { RaisedCard } from "client/components/RaisedCard";
 import { useAppSelector } from "client/utils/hooks";
 import {
   MyProgramHeader,
   MyProgramSecondaryText,
 } from "client/views/my-program-items/components/shared";
+import { selectGroupMembers } from "client/views/group/groupSlice";
+import { LotterySignupWithProgramItem } from "client/views/my-program-items/myProgramItemsSlice";
 
 interface Props {
-  lotterySignups: readonly LotterySignup[];
+  lotterySignups: readonly LotterySignupWithProgramItem[];
   isGroupCreator: boolean;
   isGroupMember: boolean;
 }
@@ -24,7 +25,7 @@ export const MyLotterySignupsList = ({
 }: Props): ReactElement => {
   const { t } = useTranslation();
 
-  const groupMembers = useAppSelector((state) => state.group.groupMembers);
+  const groupMembers = useAppSelector(selectGroupMembers);
 
   const sortedLotterySignups = sortBy(lotterySignups, [
     (lotterySignup) => lotterySignup.programItem.startTime,

@@ -53,7 +53,6 @@ const rootReducer = (
 
 const ignoredActions = new Set([
   "allProgramItems/submitGetProgramItemsAsync", // Program items is huge
-  "admin/submitGetSettingsAsync", // HiddenProgramItems is huge
   "admin/submitGetSignupMessagesAsync", // Private
 ]);
 
@@ -90,14 +89,7 @@ const sentryReduxEnhancer = createReduxEnhancer({
         directSignups: state?.myProgramItems?.directSignups?.map(
           (directSignup) => ({
             ...directSignup,
-            programItem: directSignup?.programItemId,
             message: "<Message hidden>",
-          }),
-        ),
-        lotterySignups: state?.myProgramItems?.lotterySignups?.map(
-          (lotterySignup) => ({
-            ...lotterySignup,
-            programItem: lotterySignup?.programItem?.programItemId,
           }),
         ),
       },

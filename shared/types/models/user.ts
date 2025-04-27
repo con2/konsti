@@ -1,9 +1,8 @@
 import { z } from "zod";
 import { EventLogItem } from "shared/types/models/eventLog";
-import { ProgramItemSchema } from "shared/types/models/programItem";
 
 export const LotterySignupSchema = z.object({
-  programItem: ProgramItemSchema,
+  programItemId: z.string(),
   priority: z.number(),
   time: z.string(),
   message: z.string(),

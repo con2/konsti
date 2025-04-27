@@ -16,7 +16,7 @@ const { firstSignupBonus, additionalFirstSignupBonus } = config.server();
 const getLotterySignups = (): LotterySignup[] => {
   return [
     {
-      programItem: testProgramItem,
+      programItemId: testProgramItem.programItemId,
       priority: 1,
       time: startTime,
       message: "",

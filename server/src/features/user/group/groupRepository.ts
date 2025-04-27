@@ -12,11 +12,8 @@ export const findGroupMembers = async (
   groupCode: string,
 ): Promise<Result<User[], MongoDbError>> => {
   try {
-    const response = await UserModel.find({ groupCode })
-      .lean<User[]>()
-      .populate("lotterySignups.programItem");
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-    if (!response || response.length === 0) {
+    const response = await UserModel.find({ groupCode }).lean<User[]>();
+    if (response.length === 0) {
       logger.info(`MongoDB: group ${groupCode} not found`);
     } else {
       logger.debug(

@@ -41,7 +41,7 @@ export const formatResults = (
         (assignResult) =>
           (assignResult.id === attendee.groupCode ||
             assignResult.id === attendee.serial) &&
-          assignResult.assignment === lotterySignup.programItem.programItemId,
+          assignResult.assignment === lotterySignup.programItemId,
       );
     });
 
@@ -50,7 +50,7 @@ export const formatResults = (
     }
 
     return {
-      programItemId: foundSignup.programItem.programItemId,
+      programItemId: foundSignup.programItemId,
       priority: foundSignup.priority,
       time: foundSignup.time,
       message: foundSignup.message,

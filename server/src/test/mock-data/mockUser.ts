@@ -54,13 +54,13 @@ export const mockUser5: NewUser = {
 
 export const mockLotterySignups: readonly LotterySignup[] = [
   {
-    programItem: testProgramItem,
+    programItemId: testProgramItem.programItemId,
     priority: 1,
     time: testProgramItem.startTime,
     message: "",
   },
   {
-    programItem: testProgramItem2,
+    programItemId: testProgramItem2.programItemId,
     priority: 1,
     time: testProgramItem2.startTime,
     message: "",

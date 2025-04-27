@@ -14,10 +14,7 @@ const UserSchema = new mongoose.Schema(
     favoriteProgramItemIds: [String],
     lotterySignups: [
       {
-        programItem: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: "program-item",
-        },
+        programItemId: String,
         priority: Number,
         time: Date,
         message: String,
