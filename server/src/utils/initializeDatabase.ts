@@ -15,6 +15,7 @@ import { getProgramItemsForEvent } from "server/features/program-item/programIte
 const ADMIN_PASSWORD = "";
 const HELP_PASSWORD = "";
 const CREATE_TEST_USERS = false;
+const UPDATE_PROGRAM_ITEMS = true;
 
 const initializeDatabase = async (): Promise<void> => {
   if (process.env.NODE_ENV === "production") {
@@ -39,15 +40,18 @@ const initializeDatabase = async (): Promise<void> => {
     await createTestUsers({ userCount: 5 });
   }
 
-  logger.info("Download program items from Kompassi");
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+  if (UPDATE_PROGRAM_ITEMS) {
+    logger.info("Download program items from Kompassi");
 
-  const programItemsResult = await getProgramItemsForEvent();
-  if (isErrorResult(programItemsResult)) {
-    // eslint-disable-next-line no-restricted-syntax -- Data generation script
-    throw new Error("Unable to load Kompassi program items");
+    const programItemsResult = await getProgramItemsForEvent();
+    if (isErrorResult(programItemsResult)) {
+      // eslint-disable-next-line no-restricted-syntax -- Data generation script
+      throw new Error("Unable to load Kompassi program items");
+    }
+    const kompassiProgramItems = unwrapResult(programItemsResult);
+    await saveProgramItems(kompassiProgramItems);
   }
-  const kompassiProgramItems = unwrapResult(programItemsResult);
-  await saveProgramItems(kompassiProgramItems);
 
   // This will create default settings
   await findSettings();
