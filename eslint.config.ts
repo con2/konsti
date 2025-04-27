@@ -13,7 +13,6 @@ import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended"
 import eslintPluginPromise from "eslint-plugin-promise";
 import eslintPluginReact from "eslint-plugin-react";
 import eslintPluginReactHooks from "eslint-plugin-react-hooks";
-// @ts-expect-error: Missing types
 import eslintPluginReactHooksAddon from "eslint-plugin-react-hooks-addons";
 import eslintPluginUnicorn from "eslint-plugin-unicorn";
 import eslintPluginVitest from "@vitest/eslint-plugin";
