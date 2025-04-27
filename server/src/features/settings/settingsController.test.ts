@@ -201,7 +201,6 @@ describe(`POST ${ApiEndpoint.HIDDEN}`, () => {
 
     const signupsAfter = unsafelyUnwrap(await findDirectSignups());
     expect(signupsAfter).toHaveLength(1);
-    // HERE
     expect(signupsAfter[0].userSignups).toEqual([]);
     expect(signupsAfter[0].count).toEqual(0);
   });
