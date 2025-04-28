@@ -521,7 +521,7 @@ export const translationEN = {
     showMore: "Show more",
     showLess: "Show less",
     inProgress:
-      "Not all information is up to date yet and the content will be updated",
+      "Not all information on the instruction page is up to date yet and the content will be updated",
   },
   profileView: {
     profileTab: "Profile",
