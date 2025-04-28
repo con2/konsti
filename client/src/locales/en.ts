@@ -520,6 +520,8 @@ export const translationEN = {
     faq: "FAQ",
     showMore: "Show more",
     showLess: "Show less",
+    inProgress:
+      "Not all information on the instruction page is up to date yet and the content will be updated",
   },
   profileView: {
     profileTab: "Profile",

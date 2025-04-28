@@ -2,17 +2,20 @@ import { ReactElement } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { HEADER_HEIGHT } from "client/components/Header";
 import { submitUpdateEventLogIsSeen } from "client/views/login/loginThunks";
 import { EventLogAction } from "shared/types/models/eventLog";
 import { EventLogNewAssignment } from "client/views/event-log/EventLogNewAssignment";
 import { EventLogNoAssignment } from "client/views/event-log/EventLogNoAssignment";
+import { AboutTab } from "client/app/AppRoutes";
+import { config } from "shared/config";
 
 export const NotificationBar = (): ReactElement | null => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
+  const location = useLocation();
 
   const username = useAppSelector((state) => state.login.username);
   const programItems = useAppSelector(
@@ -21,7 +24,7 @@ export const NotificationBar = (): ReactElement | null => {
   const eventLogItems = useAppSelector((state) => state.login.eventLogItems);
   const unseenEvents = eventLogItems.filter((item) => !item.isSeen);
 
-  const errorList = unseenEvents.map((unseenEvent) => {
+  const notificationList = unseenEvents.map((unseenEvent) => {
     return (
       <StyledNotification
         key={`${unseenEvent.action}-${unseenEvent.createdAt}`}
@@ -63,7 +66,17 @@ export const NotificationBar = (): ReactElement | null => {
     );
   });
 
-  return <NotificationContainer>{errorList}</NotificationContainer>;
+  if (config.client().showAboutPageInProgress) {
+    if (Object.values(AboutTab).includes(location.pathname as AboutTab)) {
+      notificationList.push(
+        <StyledNotification key="about-in-progress">
+          {t("aboutView.inProgress")}
+        </StyledNotification>,
+      );
+    }
+  }
+
+  return <NotificationContainer>{notificationList}</NotificationContainer>;
 };
 
 const StyledNotification = styled.div`

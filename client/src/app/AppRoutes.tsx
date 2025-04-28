@@ -49,7 +49,7 @@ export enum ProgramTab {
   PROGRAM_LIST = "/program/list",
 }
 
-enum AboutTab {
+export enum AboutTab {
   HELP = "/about/help",
   FAQ = "/about/faq",
   ABOUT = "/about/about",
