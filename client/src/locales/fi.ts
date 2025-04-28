@@ -523,7 +523,7 @@ export const translationFI = {
     showMore: "Näytä lisää",
     showLess: "Näytä vähemmän",
     inProgress:
-      "Kaikki ohjesivun tiedot eivät ole vielä ajantasalla ja sisältö päivittyy",
+      "Kaikki ohjesivun tiedot eivät ole vielä ajan tasalla ja sisältö päivittyy",
   },
   profileView: {
     profileTab: "Profiili",
