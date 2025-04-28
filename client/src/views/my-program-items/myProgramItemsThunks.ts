@@ -175,20 +175,25 @@ export const submitPostLotterySignup = (
   };
 };
 
+export enum DeleteLotterySignupErrorMessage {
+  SIGNUP_ENDED = "signupError.signupEnded",
+  UNKNOWN = "signupError.generic",
+}
+
 export const submitDeleteLotterySignup = (
   signupData: DeleteLotterySignupRequest,
-): AppThunk<Promise<PostLotterySignupErrorMessage | undefined>> => {
+): AppThunk<Promise<DeleteLotterySignupErrorMessage | undefined>> => {
   return async (
     dispatch,
-  ): Promise<PostLotterySignupErrorMessage | undefined> => {
+  ): Promise<DeleteLotterySignupErrorMessage | undefined> => {
     const signupResponse = await deleteLotterySignup(signupData);
 
     if (signupResponse.status === "error") {
       switch (signupResponse.errorId) {
         case "signupEnded":
-          return PostLotterySignupErrorMessage.SIGNUP_ENDED;
+          return DeleteLotterySignupErrorMessage.SIGNUP_ENDED;
         case "unknown":
-          return PostLotterySignupErrorMessage.UNKNOWN;
+          return DeleteLotterySignupErrorMessage.UNKNOWN;
         default:
           return exhaustiveSwitchGuard(signupResponse.errorId);
       }
