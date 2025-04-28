@@ -522,6 +522,8 @@ export const translationFI = {
     faq: "UKK",
     showMore: "Näytä lisää",
     showLess: "Näytä vähemmän",
+    inProgress:
+      "Kaikki tiedot eivät ole ajantasalla vielä ja sisältö päivittyy",
   },
   profileView: {
     profileTab: "Profiili",

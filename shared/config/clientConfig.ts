@@ -15,6 +15,7 @@ export interface ClientConfig {
   showAnnouncement: boolean;
   programTypeSelectOptions: ActiveProgramType[];
   activeLanguages: Language[];
+  showAboutPageInProgress: boolean;
 }
 
 export const clientConfig: ClientConfig = {
@@ -22,12 +23,15 @@ export const clientConfig: ClientConfig = {
   enableRevolvingDoor: false,
   enableOrganizerFeedback: true,
   enableTagDropdown: true,
+  showAboutPageInProgress: true,
   showAnnouncement: false,
   programTypeSelectOptions: [
     "all",
     ProgramType.TABLETOP_RPG,
     ProgramType.LARP,
     ProgramType.WORKSHOP,
+    ProgramType.TOURNAMENT,
+    ProgramType.OTHER,
   ],
   activeLanguages: [Language.FINNISH, Language.ENGLISH],
 
