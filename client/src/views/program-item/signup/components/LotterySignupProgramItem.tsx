@@ -5,7 +5,7 @@ import { Link } from "react-router";
 import { ProgramItem } from "shared/types/models/programItem";
 import { LotterySignupForm } from "client/views/program-item/signup/components/LotterySignupForm";
 import {
-  PostLotterySignupErrorMessage,
+  DeleteLotterySignupErrorMessage,
   submitDeleteLotterySignup,
 } from "client/views/my-program-items/myProgramItemsThunks";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
@@ -58,7 +58,7 @@ export const LotterySignupProgramItem = ({
   const [signupFormOpen, setSignupFormOpen] = useState(false);
   const [cancelSignupFormOpen, setCancelSignupFormOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState<
-    ClientError | PostLotterySignupErrorMessage | null
+    ClientError | DeleteLotterySignupErrorMessage | null
   >(null);
 
   const removeLotterySignup = async (
