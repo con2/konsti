@@ -324,9 +324,7 @@ describe(`DELETE ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
   });
 
   test("should return 422 with invalid parameters", async () => {
-    const deleteRequest: Partial<DeleteDirectSignupRequest> = {
-      username: "testuser",
-    };
+    const deleteRequest: Partial<DeleteDirectSignupRequest> = {};
     const response = await request(server)
       .delete(ApiEndpoint.DIRECT_SIGNUP)
       .send(deleteRequest)
@@ -341,7 +339,6 @@ describe(`DELETE ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     await saveUser(mockUser);
 
     const deleteRequest: DeleteDirectSignupRequest = {
-      username: mockUser.username,
       directSignupProgramItemId: "invalid_program_item_id",
     };
     const response = await request(server)
@@ -365,7 +362,6 @@ describe(`DELETE ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     await saveProgramItems([testProgramItem]);
 
     const deleteRequest: DeleteDirectSignupRequest = {
-      username: "user_not_found",
       directSignupProgramItemId: testProgramItem.programItemId,
     };
     const response = await request(server)
@@ -405,7 +401,6 @@ describe(`DELETE ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
 
     // Update direct signups
     const deleteRequest: DeleteDirectSignupRequest = {
-      username: mockUser.username,
       directSignupProgramItemId: testProgramItem.programItemId,
     };
     const response = await request(server)

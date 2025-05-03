@@ -36,7 +36,6 @@ export const DirectSignupItem = ({
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
 
-  const username = useAppSelector((state) => state.login.username);
   const signupQuestions = useAppSelector(
     (state) => state.admin.signupQuestions,
   );
@@ -54,7 +53,6 @@ export const DirectSignupItem = ({
     setLoading(true);
     const errorMessage = await dispatch(
       submitDeleteDirectSignup({
-        username,
         directSignupProgramItemId: signup.programItemId,
       }),
     );

@@ -41,7 +41,6 @@ export const DirectSignupProgramItem = ({
   const { signupOpen } = config.event();
 
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
-  const username = useAppSelector((state) => state.login.username);
   const directSignups = useAppSelector(selectDirectSignups);
   const signupQuestions = useAppSelector(
     (state) => state.admin.signupQuestions,
@@ -65,7 +64,6 @@ export const DirectSignupProgramItem = ({
     setLoading(true);
     const errorMessage = await dispatch(
       submitDeleteDirectSignup({
-        username,
         directSignupProgramItemId: programItem.programItemId,
       }),
     );

@@ -64,6 +64,6 @@ export const deleteDirectSignup = async (
     return res.sendStatus(422);
   }
 
-  const response = await removeDirectSignup(result.data);
+  const response = await removeDirectSignup(result.data, username);
   return res.json(response);
 };
