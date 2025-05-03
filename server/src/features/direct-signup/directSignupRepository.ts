@@ -21,7 +21,6 @@ import {
   unwrapResult,
 } from "shared/utils/result";
 import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
-import { DeleteDirectSignupRequest } from "shared/types/api/myProgramItems";
 
 export const removeDirectSignups = async (): Promise<
   Result<void, MongoDbError>
@@ -277,24 +276,21 @@ export const saveDirectSignups = async (
   }
 };
 
-export const delDirectSignup = async (
-  signupRequest: DeleteDirectSignupRequest,
-): Promise<Result<DirectSignupsForProgramItem, MongoDbError>> => {
-  const { username, directSignupProgramItemId } = signupRequest;
+interface DelDirectSignupParams {
+  directSignupProgramItemId: string;
+  username: string;
+}
 
-  // TODO: Remove fetching program item
-  const programItemResult = await findProgramItemById(
-    directSignupProgramItemId,
-  );
-  if (isErrorResult(programItemResult)) {
-    return programItemResult;
-  }
-  const programItem = unwrapResult(programItemResult);
-
+export const delDirectSignup = async ({
+  directSignupProgramItemId,
+  username,
+}: DelDirectSignupParams): Promise<
+  Result<DirectSignupsForProgramItem, MongoDbError>
+> => {
   try {
     const signup = await SignupModel.findOneAndUpdate(
       {
-        programItemId: programItem.programItemId,
+        programItemId: directSignupProgramItemId,
         "userSignups.username": username,
       },
       {
@@ -312,7 +308,7 @@ export const delDirectSignup = async (
       logger.error(
         "%s",
         new Error(
-          `Signups to program item ${programItem.programItemId} for user ${username} not found`,
+          `Signups to program item ${directSignupProgramItemId} for user ${username} not found`,
         ),
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
@@ -326,21 +322,21 @@ export const delDirectSignup = async (
       logger.error(
         "%s",
         new Error(
-          `Error removing signup to program item ${programItem.programItemId} from user ${username}`,
+          `Error removing signup to program item ${directSignupProgramItemId} from user ${username}`,
         ),
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
 
     logger.info(
-      `MongoDB: Signup removed - program item: ${
-        programItem.programItemId
-      }, user: ${username}, starting: ${dayjs(programItem.startTime).toISOString()}`,
+      `MongoDB: Signup removed for program item ${
+        directSignupProgramItemId
+      } from user ${username}`,
     );
     return makeSuccessResult(signup);
   } catch (error) {
     logger.error(
-      `MongoDB: Error deleting signup to program item ${programItem.programItemId} from user ${username}: %s`,
+      `MongoDB: Error deleting signup to program item ${directSignupProgramItemId} from user ${username}: %s`,
       error,
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);

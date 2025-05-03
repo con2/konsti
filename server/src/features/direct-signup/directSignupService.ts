@@ -150,6 +150,7 @@ export const storeDirectSignup = async (
 
 export const removeDirectSignup = async (
   signupRequest: DeleteDirectSignupRequest,
+  username: string,
 ): Promise<DeleteDirectSignupResponse | DeleteDirectSignupError> => {
   const { directSignupProgramItemId } = signupRequest;
 
@@ -192,7 +193,10 @@ export const removeDirectSignup = async (
     };
   }
 
-  const signupResult = await delDirectSignup(signupRequest);
+  const signupResult = await delDirectSignup({
+    directSignupProgramItemId: signupRequest.directSignupProgramItemId,
+    username,
+  });
   if (isErrorResult(signupResult)) {
     return {
       message: "Delete signup failure",

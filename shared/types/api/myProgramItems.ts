@@ -69,8 +69,6 @@ export interface PostDirectSignupError extends ApiError {
 // DELETE direct signup
 
 export const DeleteDirectSignupRequestSchema = z.object({
-  // TODO: Delete username, it's read from jwt
-  username: z.string(),
   directSignupProgramItemId: z.string(),
 });
 
