@@ -1,10 +1,6 @@
 [
   {
-    "hiddenGames": [
-      { "programItemId": "p4692" },
-      { "programItemId": "p4671" },
-      { "programItemId": "p4717" }
-    ],
+    "hiddenProgramItemIds": ["p4692", "p4671", "p4717"],
     "signupTime": null,
     "appOpen": false,
     "signupQuestions": [
@@ -13,7 +9,7 @@
         "message": "Hahmoluokka ja taso / Character class and level"
       }
     ],
-    "createdAt": { "$date": "2021-06-28T12:19:30.049Z" },
-    "updatedAt": { "$date": "2021-08-04T11:25:22.853Z" }
+    "createdAt": "2021-06-28T12:19:30.049Z",
+    "updatedAt": "2021-08-04T11:25:22.853Z"
   }
 ]

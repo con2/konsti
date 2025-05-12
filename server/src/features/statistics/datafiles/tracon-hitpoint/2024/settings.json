@@ -1,6 +1,6 @@
 [
   {
-    "hiddenProgramItems": [],
+    "hiddenProgramItemIds": [],
     "appOpen": false,
     "signupStrategy": "lottery+direct",
     "loginProvider": "kompassi",

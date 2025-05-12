@@ -1,6 +1,6 @@
 [
   {
-    "hiddenGames": [],
+    "hiddenProgramItemIds": [],
     "appOpen": false,
     "signupStrategy": "direct",
     "loginProvider": "kompassi",
