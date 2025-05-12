@@ -51,7 +51,7 @@ export const LotterySignupProgramItem = ({
   const isInGroup = getIsInGroup(groupCode);
   const canSignToProgramItems = !isInGroup || isGroupCreator;
   const directSignupForSlot = directSignups.find(
-    (signup) => signup.time === startTime,
+    (signup) => signup.signedToStartTime === startTime,
   );
 
   const [loading, setLoading] = useState(false);

@@ -6,11 +6,11 @@ import { config } from "shared/config";
 import { isSuccessResult, unwrapResult } from "shared/utils/result";
 
 export const storeAssignment = async (
-  startTime: string,
+  assignmentTime: string,
 ): Promise<PostAssignmentResponse | ApiError> => {
   const assignResultsResult = await runAssignment({
     assignmentAlgorithm: config.event().assignmentAlgorithm,
-    startTime,
+    assignmentTime,
   });
 
   if (isSuccessResult(assignResultsResult)) {
@@ -21,7 +21,7 @@ export const storeAssignment = async (
       status: "success",
       results: assignResults.results,
       resultMessage: assignResults.message,
-      startTime,
+      assignmentTime,
     };
   }
 

@@ -41,7 +41,7 @@ test(`Should update program item popularity`, async () => {
       {
         programItemId: testProgramItem.programItemId,
         priority: 1,
-        time: testProgramItem.startTime,
+        signedToStartTime: testProgramItem.startTime,
         message: "",
       },
     ],
@@ -52,7 +52,7 @@ test(`Should update program item popularity`, async () => {
       {
         programItemId: testProgramItem.programItemId,
         priority: 1,
-        time: testProgramItem.startTime,
+        signedToStartTime: testProgramItem.startTime,
         message: "",
       },
     ],
@@ -111,7 +111,7 @@ test(`Should only update program item popularity of upcoming program items`, asy
       {
         programItemId: testProgramItem.programItemId,
         priority: 1,
-        time: testProgramItem.startTime,
+        signedToStartTime: testProgramItem.startTime,
         message: "",
       },
     ],
@@ -124,7 +124,9 @@ test(`Should only update program item popularity of upcoming program items`, asy
       {
         programItemId: testProgramItem2.programItemId,
         priority: 1,
-        time: dayjs(testProgramItem.startTime).add(2, "hours").toISOString(),
+        signedToStartTime: dayjs(testProgramItem.startTime)
+          .add(2, "hours")
+          .toISOString(),
         message: "",
       },
     ],

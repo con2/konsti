@@ -8,7 +8,7 @@ import { DirectSignupsForProgramItem } from "server/features/direct-signup/direc
 import { config } from "shared/config";
 import { EventLogAction, EventLogItem } from "shared/types/models/eventLog";
 
-const startTime = "2019-11-23T12:00:00+02:00";
+const assignmentTime = "2019-11-23T12:00:00+02:00";
 const groupCreatorGroupCode = "123-234-345";
 
 const { firstSignupBonus, additionalFirstSignupBonus } = config.server();
@@ -18,7 +18,7 @@ const getLotterySignups = (): LotterySignup[] => {
     {
       programItemId: testProgramItem.programItemId,
       priority: 1,
-      time: startTime,
+      signedToStartTime: assignmentTime,
       message: "",
     },
   ];
@@ -38,10 +38,10 @@ const getPastLotterySignupEvents = ({
       action: EventLogAction.NO_ASSIGNMENT,
       isSeen: false,
       programItemId: testProgramItem.programItemId,
-      programItemStartTime: dayjs(startTime)
+      programItemStartTime: dayjs(assignmentTime)
         .subtract(i + 1, "hours")
         .toISOString(),
-      createdAt: dayjs(startTime).subtract(1, "hours").toISOString(),
+      createdAt: dayjs(assignmentTime).subtract(1, "hours").toISOString(),
     });
   }
 
@@ -51,10 +51,10 @@ const getPastLotterySignupEvents = ({
       action: EventLogAction.NEW_ASSIGNMENT,
       isSeen: false,
       programItemId: testProgramItem.programItemId,
-      programItemStartTime: dayjs(startTime)
+      programItemStartTime: dayjs(assignmentTime)
         .subtract(i + 1, "hours")
         .toISOString(),
-      createdAt: dayjs(startTime).subtract(1, "hours").toISOString(),
+      createdAt: dayjs(assignmentTime).subtract(1, "hours").toISOString(),
     });
   }
 
@@ -86,7 +86,7 @@ const getUsers = ({
       serial: `12${i}`,
       groupCode: groupCreatorGroupCode,
       favoriteProgramItemIds: [],
-      createdAt: dayjs(startTime).subtract(4, "hours").toISOString(),
+      createdAt: dayjs(assignmentTime).subtract(4, "hours").toISOString(),
     };
 
     if (i === 0) {
@@ -136,7 +136,9 @@ const getPreviousDirectSignup = ({
       {
         username,
         priority: 1,
-        time: dayjs(startTime).subtract(1, "hours").toISOString(),
+        signedToStartTime: dayjs(assignmentTime)
+          .subtract(1, "hours")
+          .toISOString(),
         message: "",
       },
     ],
@@ -148,7 +150,7 @@ test("should return empty array if user has no lottery signups", () => {
   const attendeeGroups = [users, users, users];
   const list = getList({
     attendeeGroups,
-    startTime,
+    assignmentTime,
     lotteryValidDirectSignups: [],
     lotterySignupProgramItems: [testProgramItem],
   });
@@ -161,7 +163,7 @@ test("should return as many results as user groups", () => {
   const attendeeGroups = [users, users, users];
   const list = getList({
     attendeeGroups,
-    startTime,
+    assignmentTime,
     lotteryValidDirectSignups: [],
     lotterySignupProgramItems: [testProgramItem],
   });
@@ -195,7 +197,7 @@ describe("should give first time bonus", () => {
     const attendeeGroups = [users];
     const list = getList({
       attendeeGroups,
-      startTime,
+      assignmentTime,
       lotteryValidDirectSignups: [],
       lotterySignupProgramItems: [testProgramItem],
     });
@@ -215,7 +217,7 @@ describe("should give first time bonus", () => {
     const attendeeGroups = [users];
     const list = getList({
       attendeeGroups,
-      startTime,
+      assignmentTime,
       lotteryValidDirectSignups: [
         getPreviousDirectSignup({ username: "foobar user" }),
       ],
@@ -241,7 +243,7 @@ describe("should give first time bonus", () => {
     const attendeeGroups = [users];
     const list = getList({
       attendeeGroups,
-      startTime,
+      assignmentTime,
       lotteryValidDirectSignups: [],
       lotterySignupProgramItems: [],
     });
@@ -261,7 +263,7 @@ describe("should give first time bonus", () => {
     const attendeeGroups = [users];
     const list = getList({
       attendeeGroups,
-      startTime,
+      assignmentTime,
       lotteryValidDirectSignups: [
         getPreviousDirectSignup({ username: "foobar user" }),
       ],
@@ -284,7 +286,7 @@ describe("should give first time bonus", () => {
     const attendeeGroups = [users];
     const list = getList({
       attendeeGroups,
-      startTime,
+      assignmentTime,
       lotteryValidDirectSignups: [
         getPreviousDirectSignup({ username: users[0].username }),
       ],
@@ -310,7 +312,7 @@ describe("should give first time bonus", () => {
     const attendeeGroups = [users];
     const list = getList({
       attendeeGroups,
-      startTime,
+      assignmentTime,
       lotteryValidDirectSignups: [],
       lotterySignupProgramItems: [testProgramItem],
     });
@@ -335,7 +337,7 @@ describe("should give first time bonus", () => {
     const attendeeGroups = [users];
     const list = getList({
       attendeeGroups,
-      startTime,
+      assignmentTime,
       lotteryValidDirectSignups: [
         getPreviousDirectSignup({ username: users[1].username }),
       ],
@@ -361,7 +363,7 @@ describe("should give first time bonus", () => {
     const attendeeGroups = [users];
     const list = getList({
       attendeeGroups,
-      startTime,
+      assignmentTime,
       lotteryValidDirectSignups: [],
       lotterySignupProgramItems: [],
     });
@@ -383,7 +385,7 @@ describe("should NOT give first time bonus", () => {
     const attendeeGroups = [users];
     const list = getList({
       attendeeGroups,
-      startTime,
+      assignmentTime,
       lotteryValidDirectSignups: [
         getPreviousDirectSignup({
           username: users[0].username,
@@ -408,7 +410,7 @@ describe("should NOT give first time bonus", () => {
     const attendeeGroups = [users];
     const list = getList({
       attendeeGroups,
-      startTime,
+      assignmentTime,
       lotteryValidDirectSignups: [
         getPreviousDirectSignup({
           username: users[0].username,
@@ -444,7 +446,7 @@ describe("should give additional bonus", () => {
     const attendeeGroups = [users];
     const list = getList({
       attendeeGroups,
-      startTime,
+      assignmentTime,
       lotteryValidDirectSignups: [],
       lotterySignupProgramItems: [testProgramItem],
     });
@@ -468,7 +470,7 @@ describe("should give additional bonus", () => {
     const attendeeGroups = [users];
     const list = getList({
       attendeeGroups,
-      startTime,
+      assignmentTime,
       lotteryValidDirectSignups: [],
       lotterySignupProgramItems: [testProgramItem],
     });
@@ -492,7 +494,7 @@ describe("should give additional bonus", () => {
     const attendeeGroups = [users];
     const list = getList({
       attendeeGroups,
-      startTime,
+      assignmentTime,
       lotteryValidDirectSignups: [],
       lotterySignupProgramItems: [testProgramItem],
     });
@@ -514,7 +516,7 @@ describe("should NOT give additional bonus", () => {
     const attendeeGroups = [users];
     const list = getList({
       attendeeGroups,
-      startTime,
+      assignmentTime,
       lotteryValidDirectSignups: [
         getPreviousDirectSignup({
           username: users[0].username,
@@ -543,7 +545,7 @@ describe("should NOT give additional bonus", () => {
     const attendeeGroups = [users];
     const list = getList({
       attendeeGroups,
-      startTime,
+      assignmentTime,
       lotteryValidDirectSignups: [],
       lotterySignupProgramItems: [testProgramItem],
     });
@@ -563,7 +565,7 @@ describe("should NOT give additional bonus", () => {
     const attendeeGroups = [users];
     const list = getList({
       attendeeGroups,
-      startTime,
+      assignmentTime,
       lotteryValidDirectSignups: [
         getPreviousDirectSignup({
           username: users[0].username,
@@ -587,7 +589,7 @@ describe("should NOT give additional bonus", () => {
     const attendeeGroups = [users];
     const list = getList({
       attendeeGroups,
-      startTime,
+      assignmentTime,
       lotteryValidDirectSignups: [],
       lotterySignupProgramItems: [testProgramItem],
     });

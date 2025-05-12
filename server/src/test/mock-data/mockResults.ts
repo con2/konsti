@@ -7,7 +7,7 @@ export const mockResults: UserAssignmentResult[] = [
     directSignup: {
       programItemId: testProgramItem.programItemId,
       priority: 1,
-      time: " 2019-07-26 14:00:00.000Z",
+      signedToStartTime: " 2019-07-26 14:00:00.000Z",
       message: "",
     },
   },

@@ -30,10 +30,10 @@ const updateL = (input: RandomAssignUpdateLInput): ListItem[] => input.L;
 export const runRandomAssignment = (
   lotterySignupProgramItems: readonly ProgramItem[],
   attendeeGroups: readonly User[][],
-  startTime: string,
+  assignmentTime: string,
   lotteryValidDirectSignups: readonly DirectSignupsForProgramItem[],
 ): Result<AssignmentAlgorithmResult, AssignmentError> => {
-  const groupsResult = getGroups(attendeeGroups, startTime);
+  const groupsResult = getGroups(attendeeGroups, assignmentTime);
   if (isErrorResult(groupsResult)) {
     return groupsResult;
   }
@@ -44,7 +44,7 @@ export const runRandomAssignment = (
   );
   const list = getList({
     attendeeGroups,
-    startTime,
+    assignmentTime,
     lotteryValidDirectSignups,
     lotterySignupProgramItems,
   });
@@ -68,7 +68,7 @@ export const runRandomAssignment = (
       "%s",
       new Error(
         // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-        `Random assignment failed: ${error}. Start time: ${startTime}, Input: ${JSON.stringify(input)}`,
+        `Random assignment failed: ${error}. Assignment time: ${assignmentTime}, Input: ${JSON.stringify(input)}`,
       ),
     );
     return makeErrorResult(AssignmentError.UNKNOWN_ERROR);

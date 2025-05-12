@@ -10,7 +10,7 @@ import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
 
 interface SaveResultsParams {
   results: readonly UserAssignmentResult[];
-  startTime: string;
+  assignmentTime: string;
   algorithm: AssignmentAlgorithm;
   message: string;
   users: User[];
@@ -19,18 +19,18 @@ interface SaveResultsParams {
 
 export const saveResults = async ({
   results,
-  startTime,
+  assignmentTime,
   algorithm,
   message,
   users,
   programItems,
 }: SaveResultsParams): Promise<Result<void, MongoDbError>> => {
   logger.info(
-    `Save all signup results to separate collection for start time ${startTime}`,
+    `Save all signup results to separate collection for assignment time ${assignmentTime}`,
   );
   const saveResultResult = await saveResult(
     results,
-    startTime,
+    assignmentTime,
     algorithm,
     message,
   );
@@ -38,9 +38,9 @@ export const saveResults = async ({
     return saveResultResult;
   }
 
-  logger.info(`Save user signup results for start time ${startTime}`);
+  logger.info(`Save user signup results for assignment time ${assignmentTime}`);
   const saveUserSignupResultsResult = await saveUserSignupResults({
-    startTime,
+    assignmentTime,
     results,
     users,
     programItems,

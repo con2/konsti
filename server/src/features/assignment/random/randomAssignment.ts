@@ -22,11 +22,14 @@ import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
 export const randomAssignment = (
   users: readonly User[],
   programItems: readonly ProgramItem[],
-  startTime: string,
+  assignmentTime: string,
   lotteryValidDirectSignups: readonly DirectSignupsForProgramItem[],
 ): Result<AssignmentResult, AssignmentError> => {
-  logger.debug(`***** Run Random Assignment for ${startTime}`);
-  const startingProgramItems = getStartingProgramItems(programItems, startTime);
+  logger.debug(`***** Run Random Assignment for ${assignmentTime}`);
+  const startingProgramItems = getStartingProgramItems(
+    programItems,
+    assignmentTime,
+  );
 
   if (startingProgramItems.length === 0) {
     logger.debug("No starting program items, stop!");
@@ -67,7 +70,7 @@ export const randomAssignment = (
   const assignmentResultResult = runRandomAssignment(
     lotterySignupProgramItems,
     attendeeGroups,
-    startTime,
+    assignmentTime,
     lotteryValidDirectSignups,
   );
   logger.debug("Random assignment: completed");

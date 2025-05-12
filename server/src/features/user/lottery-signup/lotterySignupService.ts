@@ -30,7 +30,7 @@ export const storeLotterySignup = async (
   const timeNow = unwrapResult(timeNowResult);
 
   const signupEnded = hasSignupEnded({
-    signupEndTime: dayjs(lotterySignup.time),
+    signupEndTime: dayjs(lotterySignup.signedToStartTime),
     timeNow,
   });
   if (signupEnded) {

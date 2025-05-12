@@ -58,7 +58,9 @@ export const findDirectSignups = async (): Promise<
         userSignups: result.userSignups.map((userSignup) => {
           return {
             ...userSignup,
-            time: dayjs(userSignup.time).toISOString(),
+            signedToStartTime: dayjs(
+              userSignup.signedToStartTime,
+            ).toISOString(),
           };
         }),
       };
@@ -150,8 +152,13 @@ export const findUserDirectSignups = async (
 export const saveDirectSignup = async (
   signupsRequest: SignupRepositoryAddSignup,
 ): Promise<Result<DirectSignupsForProgramItem, MongoDbError>> => {
-  const { username, directSignupProgramItemId, startTime, message, priority } =
-    signupsRequest;
+  const {
+    username,
+    directSignupProgramItemId,
+    signedToStartTime,
+    message,
+    priority,
+  } = signupsRequest;
 
   // TODO: Remove fetching program item
   const programItemResult = await findProgramItemById(
@@ -174,7 +181,7 @@ export const saveDirectSignup = async (
           userSignups: {
             username,
             priority,
-            time: startTime,
+            signedToStartTime,
             message,
           },
         },
@@ -252,7 +259,7 @@ export const saveDirectSignups = async (
               userSignups: finalSignups.map((signup) => ({
                 username: signup.username,
                 priority: signup.priority,
-                time: signup.startTime,
+                signedToStartTime: signup.signedToStartTime,
                 message: signup.message,
               })),
             },
@@ -381,7 +388,7 @@ export const resetDirectSignupsByProgramItemIds = async (
 };
 
 export const delAssignmentDirectSignupsByStartTime = async (
-  startTime: string,
+  assignmentTime: string,
 ): Promise<Result<void, MongoDbError>> => {
   const programItemsResult = await findProgramItems();
   if (isErrorResult(programItemsResult)) {
@@ -407,7 +414,10 @@ export const delAssignmentDirectSignupsByStartTime = async (
                 input: "$userSignups",
                 as: "userSignup",
                 cond: {
-                  $ne: ["$$userSignup.time", new Date(startTime)],
+                  $ne: [
+                    "$$userSignup.signedToStartTime",
+                    new Date(assignmentTime),
+                  ],
                 },
               },
             },
@@ -418,7 +428,9 @@ export const delAssignmentDirectSignupsByStartTime = async (
         },
       ],
     );
-    logger.info(`MongoDB: Deleted old signups for startTime: ${startTime}`);
+    logger.info(
+      `MongoDB: Deleted old signups for assignmentTime: ${assignmentTime}`,
+    );
     return makeSuccessResult();
   } catch (error) {
     logger.error("MongoDB: Error removing invalid signup: %s", error);

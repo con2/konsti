@@ -13,9 +13,9 @@ export interface NewUser {
   groupCreatorCode?: string;
 }
 
-export interface LotterySignup {
+export interface AssignmentLotterySignup {
   username: string;
   programItemId: string;
   priority: number;
-  startTime: string;
+  signedToStartTime: string;
 }

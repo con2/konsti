@@ -92,10 +92,10 @@ export const DirectSignupItem = ({
         </SignupQuestion>
       )}
 
-      {signup.time !== signup.programItem.startTime && (
+      {signup.signedToStartTime !== signup.programItem.startTime && (
         <StyledInfoText variant={InfoTextVariant.WARNING}>
           {t("myProgramView.startingTimeChanged")}{" "}
-          {getShortWeekdayAndTime(signup.time)}{" "}
+          {getShortWeekdayAndTime(signup.signedToStartTime)}{" "}
           <FontAwesomeIcon icon="arrow-right" />{" "}
           {getShortWeekdayAndTime(signup.programItem.startTime)}
         </StyledInfoText>

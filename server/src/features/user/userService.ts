@@ -268,7 +268,7 @@ export const fetchUserByUsername = async (
     return {
       programItemId: signup.programItemId,
       priority: signupForUser.priority,
-      time: signupForUser.time,
+      signedToStartTime: signupForUser.signedToStartTime,
       message: signupForUser.message,
     };
   });

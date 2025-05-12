@@ -56,13 +56,13 @@ export const mockLotterySignups: readonly LotterySignup[] = [
   {
     programItemId: testProgramItem.programItemId,
     priority: 1,
-    time: testProgramItem.startTime,
+    signedToStartTime: testProgramItem.startTime,
     message: "",
   },
   {
     programItemId: testProgramItem2.programItemId,
     priority: 1,
-    time: testProgramItem2.startTime,
+    signedToStartTime: testProgramItem2.startTime,
     message: "",
   },
 ];
@@ -70,7 +70,7 @@ export const mockLotterySignups: readonly LotterySignup[] = [
 export const mockPostDirectSignupRequest: SignupRepositoryAddSignup = {
   username: mockUser.username,
   directSignupProgramItemId: testProgramItem.programItemId,
-  startTime: testProgramItem.startTime,
+  signedToStartTime: testProgramItem.startTime,
   message: "",
   priority: DIRECT_SIGNUP_PRIORITY,
 };
@@ -78,7 +78,7 @@ export const mockPostDirectSignupRequest: SignupRepositoryAddSignup = {
 export const mockPostDirectSignupRequest2: SignupRepositoryAddSignup = {
   username: mockUser.username,
   directSignupProgramItemId: testProgramItem2.programItemId,
-  startTime: testProgramItem2.startTime,
+  signedToStartTime: testProgramItem2.startTime,
   message: "",
   priority: DIRECT_SIGNUP_PRIORITY,
 };

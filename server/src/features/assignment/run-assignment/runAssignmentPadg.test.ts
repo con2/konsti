@@ -57,14 +57,14 @@ test("Assignment with valid data should return success with padg algorithm", asy
 
   const { eventStartTime } = config.event();
   const assignmentAlgorithm = AssignmentAlgorithm.PADG;
-  const startTime = dayjs(eventStartTime).add(2, "hours").toISOString();
+  const assignmentTime = dayjs(eventStartTime).add(2, "hours").toISOString();
 
   // FIRST RUN
 
   const assignResults = unsafelyUnwrap(
     await runAssignment({
       assignmentAlgorithm,
-      startTime,
+      assignmentTime,
     }),
   );
 
@@ -91,7 +91,7 @@ test("Assignment with valid data should return success with padg algorithm", asy
   const assignResults2 = unsafelyUnwrap(
     await runAssignment({
       assignmentAlgorithm,
-      startTime,
+      assignmentTime,
     }),
   );
 
@@ -130,7 +130,7 @@ test("Should adjust attendee limits if there are previous signups from moved pro
   // This should remain because of different startTime
   await saveDirectSignup({
     ...mockPostDirectSignupRequest,
-    startTime: dayjs(testProgramItem.startTime)
+    signedToStartTime: dayjs(testProgramItem.startTime)
       .subtract(1, "hours")
       .toISOString(),
   });
@@ -158,7 +158,7 @@ test("Should adjust attendee limits if there are previous signups from moved pro
   const assignResults = unsafelyUnwrap(
     await runAssignment({
       assignmentAlgorithm,
-      startTime: testProgramItem.startTime,
+      assignmentTime: testProgramItem.startTime,
     }),
   );
   expect(assignResults.status).toEqual("success");
@@ -173,13 +173,15 @@ test("Should adjust attendee limits if there are previous signups from moved pro
   expect(assignmentSignup?.userSignups).toMatchObject([
     {
       username: mockUser.username,
-      time: dayjs(testProgramItem.startTime).subtract(1, "hours").toISOString(),
+      signedToStartTime: dayjs(testProgramItem.startTime)
+        .subtract(1, "hours")
+        .toISOString(),
       message: "",
       priority: 0,
     },
     {
       username: mockUser3.username,
-      time: testProgramItem.startTime,
+      signedToStartTime: testProgramItem.startTime,
       message: "",
       priority: 1,
     },
@@ -203,12 +205,12 @@ test("Assignment with no program items should return error with padg algorithm",
 
   const { eventStartTime } = config.event();
   const assignmentAlgorithm = AssignmentAlgorithm.PADG;
-  const startTime = dayjs(eventStartTime).add(2, "hours").toISOString();
+  const assignmentTime = dayjs(eventStartTime).add(2, "hours").toISOString();
 
   const assignResults = unsafelyUnwrap(
     await runAssignment({
       assignmentAlgorithm,
-      startTime,
+      assignmentTime,
     }),
   );
 
@@ -234,12 +236,12 @@ test("Assignment with no attendees should return error with padg algorithm", asy
 
   const { eventStartTime } = config.event();
   const assignmentAlgorithm = AssignmentAlgorithm.PADG;
-  const startTime = dayjs(eventStartTime).add(2, "hours").toISOString();
+  const assignmentTime = dayjs(eventStartTime).add(2, "hours").toISOString();
 
   const assignResults = unsafelyUnwrap(
     await runAssignment({
       assignmentAlgorithm,
-      startTime,
+      assignmentTime,
     }),
   );
 

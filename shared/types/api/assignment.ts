@@ -5,7 +5,7 @@ import { ApiResult } from "shared/types/api/errors";
 // POST assignment
 
 export const PostAssignmentRequestSchema = z.object({
-  startTime: z.string().min(1),
+  assignmentTime: z.string().min(1),
 });
 
 export type PostAssignmentRequest = z.infer<typeof PostAssignmentRequestSchema>;
@@ -13,5 +13,5 @@ export type PostAssignmentRequest = z.infer<typeof PostAssignmentRequestSchema>;
 export interface PostAssignmentResponse extends ApiResult {
   resultMessage: string;
   results: readonly UserAssignmentResult[];
-  startTime: string;
+  assignmentTime: string;
 }

@@ -1,10 +1,12 @@
 import { logger } from "server/utils/logger";
-import { LotterySignup } from "server/types/userTypes";
+import { AssignmentLotterySignup } from "server/types/userTypes";
 import { User } from "shared/types/models/user";
 
-export const getLotterySignups = (users: readonly User[]): LotterySignup[] => {
+export const getLotterySignups = (
+  users: readonly User[],
+): AssignmentLotterySignup[] => {
   logger.debug("Get lottery signups");
-  const lotterySignups: LotterySignup[] = [];
+  const lotterySignups: AssignmentLotterySignup[] = [];
 
   // Get lottery signups for all users
   for (const user of users) {
@@ -14,7 +16,7 @@ export const getLotterySignups = (users: readonly User[]): LotterySignup[] => {
           username: user.username,
           programItemId: lotterySignup.programItemId,
           priority: lotterySignup.priority,
-          startTime: lotterySignup.time,
+          signedToStartTime: lotterySignup.signedToStartTime,
         });
       }
     }

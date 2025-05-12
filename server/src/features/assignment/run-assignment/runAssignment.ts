@@ -23,14 +23,14 @@ import { prepareAssignmentParams } from "server/features/assignment/utils/prepar
 
 interface RunAssignmentParams {
   assignmentAlgorithm: AssignmentAlgorithm;
-  startTime?: string;
+  assignmentTime?: string;
   useDynamicStartTime?: boolean;
   assignmentDelay?: number;
 }
 
 export const runAssignment = async ({
   assignmentAlgorithm,
-  startTime,
+  assignmentTime,
   useDynamicStartTime = false,
   assignmentDelay = 0,
 }: RunAssignmentParams): Promise<
@@ -38,13 +38,13 @@ export const runAssignment = async ({
 > => {
   const assignmentTimeResult = useDynamicStartTime
     ? await getDynamicStartTime()
-    : makeSuccessResult(startTime);
+    : makeSuccessResult(assignmentTime);
   if (isErrorResult(assignmentTimeResult)) {
     return assignmentTimeResult;
   }
-  const assignmentTime = unwrapResult(assignmentTimeResult);
+  const resolvedAssignmentTime = unwrapResult(assignmentTimeResult);
 
-  if (!assignmentTime) {
+  if (!resolvedAssignmentTime) {
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 
@@ -55,7 +55,7 @@ export const runAssignment = async ({
   }
 
   logger.info(
-    `Assigning users for program items starting at ${assignmentTime.toString()}`,
+    `Assigning users for program items starting at ${resolvedAssignmentTime.toString()}`,
   );
 
   const removeInvalidProgramItemsResult =
@@ -92,7 +92,7 @@ export const runAssignment = async ({
     assignmentAlgorithm,
     validLotterySignupsUsers,
     validLotterySignupProgramItems,
-    assignmentTime,
+    resolvedAssignmentTime,
     lotteryValidDirectSignups,
   );
   if (isErrorResult(assignResultsResult)) {
@@ -102,7 +102,7 @@ export const runAssignment = async ({
 
   if (assignResults.results.length === 0) {
     logger.warn(
-      `No assign results for start time ${assignmentTime}: ${JSON.stringify(
+      `No assign results for start time ${resolvedAssignmentTime}: ${JSON.stringify(
         assignResults,
       )}`,
     );
@@ -111,7 +111,7 @@ export const runAssignment = async ({
 
   const saveResultsResult = await saveResults({
     results: assignResults.results,
-    startTime: assignmentTime,
+    assignmentTime: resolvedAssignmentTime,
     algorithm: assignResults.algorithm,
     message: assignResults.message,
     users: validLotterySignupsUsers,

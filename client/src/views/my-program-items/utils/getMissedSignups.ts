@@ -42,7 +42,7 @@ export const getMissedSignups = (
 
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     directSignups.find((directSignup) => {
-      if (directSignup.time === pastSignupTime) {
+      if (directSignup.signedToStartTime === pastSignupTime) {
         found = true;
       }
     });

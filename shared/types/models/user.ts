@@ -4,8 +4,7 @@ import { EventLogItem } from "shared/types/models/eventLog";
 export const LotterySignupSchema = z.object({
   programItemId: z.string(),
   priority: z.number(),
-  // TODO: Rename to 'signedToStartTime' or similar
-  time: z.string(),
+  signedToStartTime: z.string(),
   message: z.string(),
 });
 
@@ -15,7 +14,7 @@ export type LotterySignup = z.infer<typeof LotterySignupSchema>;
 const DirectSignupSchema = z.object({
   programItemId: z.string(),
   priority: z.number(),
-  time: z.string(),
+  signedToStartTime: z.string(),
   message: z.string(),
 });
 

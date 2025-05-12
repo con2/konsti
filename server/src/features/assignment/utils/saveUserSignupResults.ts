@@ -29,14 +29,14 @@ import { ProgramItem } from "shared/types/models/programItem";
 import { SignupRepositoryAddSignup } from "server/features/direct-signup/directSignupTypes";
 
 interface SaveUserSignupResultsParams {
-  startTime: string;
+  assignmentTime: string;
   results: readonly UserAssignmentResult[];
   users: User[];
   programItems: ProgramItem[];
 }
 
 export const saveUserSignupResults = async ({
-  startTime,
+  assignmentTime,
   results,
   users,
   programItems,
@@ -44,14 +44,14 @@ export const saveUserSignupResults = async ({
   // Remove previous lottery result for the same start time
   // This does not remove non-lottery signups or previous signups from moved program items
   const delAssignmentSignupsByStartTimeResult =
-    await delAssignmentDirectSignupsByStartTime(startTime);
+    await delAssignmentDirectSignupsByStartTime(assignmentTime);
   if (isErrorResult(delAssignmentSignupsByStartTimeResult)) {
     return delAssignmentSignupsByStartTimeResult;
   }
 
   // Only non-lottery signups and previous signups from moved program items should be remaining
   const twoPhaseSignupsByStartTimeResult =
-    await findDirectSignupsByStartTime(startTime);
+    await findDirectSignupsByStartTime(assignmentTime);
   if (isErrorResult(twoPhaseSignupsByStartTimeResult)) {
     return twoPhaseSignupsByStartTimeResult;
   }
@@ -93,7 +93,7 @@ export const saveUserSignupResults = async ({
     return {
       username: result.username,
       directSignupProgramItemId: result.directSignup.programItemId,
-      startTime,
+      signedToStartTime: assignmentTime,
       message: result.directSignup.message,
       priority: result.directSignup.priority,
     };
@@ -108,7 +108,7 @@ export const saveUserSignupResults = async ({
 
   // Remove eventLog items from same start time
   const deleteEventLogItemsByStartTimeResult =
-    await deleteEventLogItemsByStartTime(startTime, [
+    await deleteEventLogItemsByStartTime(assignmentTime, [
       EventLogAction.NEW_ASSIGNMENT,
       EventLogAction.NO_ASSIGNMENT,
     ]);
@@ -136,7 +136,7 @@ export const saveUserSignupResults = async ({
     updates: finalResults.map((result) => ({
       username: result.username,
       programItemId: result.directSignup.programItemId,
-      programItemStartTime: startTime,
+      programItemStartTime: assignmentTime,
       createdAt: dayjs().toISOString(),
     })),
     action: EventLogAction.NEW_ASSIGNMENT,
@@ -146,7 +146,10 @@ export const saveUserSignupResults = async ({
   }
 
   // Get users who didn't get a seat in lottery
-  const startingProgramItems = getStartingProgramItems(programItems, startTime);
+  const startingProgramItems = getStartingProgramItems(
+    programItems,
+    assignmentTime,
+  );
   const groupCreators = getGroupCreators(users, startingProgramItems);
   const groupMembers = getGroupMembersWithCreatorLotterySignups(
     groupCreators,
@@ -156,7 +159,7 @@ export const saveUserSignupResults = async ({
   const lotterySignups = getLotterySignups(allAttendees);
 
   const lotterySignupsForStartingTime = lotterySignups.filter((lotterySignup) =>
-    dayjs(lotterySignup.startTime).isSame(dayjs(startTime)),
+    dayjs(lotterySignup.signedToStartTime).isSame(dayjs(assignmentTime)),
   );
 
   const lotterySignupUsernames = uniq(
@@ -184,7 +187,7 @@ export const saveUserSignupResults = async ({
         (noAssignmentLotterySignupUsername) => ({
           username: noAssignmentLotterySignupUsername,
           programItemId: "",
-          programItemStartTime: startTime,
+          programItemStartTime: assignmentTime,
           createdAt: dayjs().toISOString(),
         }),
       ),

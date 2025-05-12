@@ -49,7 +49,7 @@ export const MyDirectSignupsList = ({
       {config.event().resultsVisible && startTimes.length > 0 && (
         <DirectSignupsByStartTimes
           directSignups={sortBy(directSignups, [
-            (directSignup) => directSignup.time,
+            (directSignup) => directSignup.signedToStartTime,
           ])}
           startTimes={uniq(startTimes).sort()}
           missedSignups={missedSignups}

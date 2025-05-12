@@ -8,7 +8,7 @@ const DirectSignupSchema = new mongoose.Schema(
       {
         username: String,
         priority: Number,
-        time: Date,
+        signedToStartTime: Date,
         message: String,
       },
     ],
