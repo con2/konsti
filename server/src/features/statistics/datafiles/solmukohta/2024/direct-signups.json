@@ -1,53 +1,53 @@
 [
   {
-    "game": { "programItemId": "p7608" },
+    "programItemId": "p7608",
     "userSignups": [
       {
         "username": "760388",
         "priority": 0,
-        "time": "2024-04-11T16:00:00Z",
+        "signedToStartTime": "2024-04-11T16:00:00Z",
         "message": ""
       },
       {
         "username": "361578",
         "priority": 0,
-        "time": "2024-04-11T16:00:00Z",
+        "signedToStartTime": "2024-04-11T16:00:00Z",
         "message": ""
       },
       {
         "username": "135096",
         "priority": 0,
-        "time": "2024-04-11T16:00:00Z",
+        "signedToStartTime": "2024-04-11T16:00:00Z",
         "message": ""
       },
       {
         "username": "888190",
         "priority": 0,
-        "time": "2024-04-11T16:00:00Z",
+        "signedToStartTime": "2024-04-11T16:00:00Z",
         "message": ""
       },
       {
         "username": "5187",
         "priority": 0,
-        "time": "2024-04-11T16:00:00Z",
+        "signedToStartTime": "2024-04-11T16:00:00Z",
         "message": ""
       },
       {
         "username": "363514",
         "priority": 0,
-        "time": "2024-04-11T16:00:00Z",
+        "signedToStartTime": "2024-04-11T16:00:00Z",
         "message": ""
       },
       {
         "username": "855833",
         "priority": 0,
-        "time": "2024-04-11T16:00:00Z",
+        "signedToStartTime": "2024-04-11T16:00:00Z",
         "message": ""
       },
       {
         "username": "630578",
         "priority": 0,
-        "time": "2024-04-11T16:00:00Z",
+        "signedToStartTime": "2024-04-11T16:00:00Z",
         "message": ""
       }
     ],
@@ -56,90 +56,90 @@
     "updatedAt": "2024-04-11T14:35:42.528Z"
   },
   {
-    "game": { "programItemId": "p7682" },
+    "programItemId": "p7682",
     "userSignups": [
       {
         "username": "890712",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "719649",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "135096",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "154397",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "81970",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "585984",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "582570",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "192086",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "993821",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "145174",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "619803",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "880059",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "987448",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "327339",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       }
     ],
@@ -148,246 +148,246 @@
     "updatedAt": "2024-04-05T07:17:21.553Z"
   },
   {
-    "game": { "programItemId": "p7583" },
+    "programItemId": "p7583",
     "userSignups": [
       {
         "username": "320822",
         "priority": 0,
-        "time": "2024-04-12T13:00:00Z",
+        "signedToStartTime": "2024-04-12T13:00:00Z",
         "message": ""
       },
       {
         "username": "411980",
         "priority": 0,
-        "time": "2024-04-12T13:00:00Z",
+        "signedToStartTime": "2024-04-12T13:00:00Z",
         "message": ""
       },
       {
         "username": "338762",
         "priority": 0,
-        "time": "2024-04-12T13:00:00Z",
+        "signedToStartTime": "2024-04-12T13:00:00Z",
         "message": ""
       },
       {
         "username": "344225",
         "priority": 0,
-        "time": "2024-04-12T13:00:00Z",
+        "signedToStartTime": "2024-04-12T13:00:00Z",
         "message": ""
       },
       {
         "username": "81970",
         "priority": 0,
-        "time": "2024-04-12T13:00:00Z",
+        "signedToStartTime": "2024-04-12T13:00:00Z",
         "message": ""
       },
       {
         "username": "135096",
         "priority": 0,
-        "time": "2024-04-12T13:00:00Z",
+        "signedToStartTime": "2024-04-12T13:00:00Z",
         "message": ""
       },
       {
         "username": "601490",
         "priority": 0,
-        "time": "2024-04-12T13:00:00Z",
+        "signedToStartTime": "2024-04-12T13:00:00Z",
         "message": ""
       },
       {
         "username": "525231",
         "priority": 0,
-        "time": "2024-04-12T13:00:00Z",
+        "signedToStartTime": "2024-04-12T13:00:00Z",
         "message": ""
       },
       {
         "username": "289846",
         "priority": 0,
-        "time": "2024-04-12T13:00:00Z",
+        "signedToStartTime": "2024-04-12T13:00:00Z",
         "message": ""
       },
       {
         "username": "808941",
         "priority": 0,
-        "time": "2024-04-12T13:00:00Z",
+        "signedToStartTime": "2024-04-12T13:00:00Z",
         "message": ""
       },
       {
         "username": "827290",
         "priority": 0,
-        "time": "2024-04-12T13:00:00Z",
+        "signedToStartTime": "2024-04-12T13:00:00Z",
         "message": ""
       },
       {
         "username": "729691",
         "priority": 0,
-        "time": "2024-04-12T13:00:00Z",
+        "signedToStartTime": "2024-04-12T13:00:00Z",
         "message": ""
       },
       {
         "username": "283302",
         "priority": 0,
-        "time": "2024-04-12T13:00:00Z",
+        "signedToStartTime": "2024-04-12T13:00:00Z",
         "message": ""
       },
       {
         "username": "661506",
         "priority": 0,
-        "time": "2024-04-12T13:00:00Z",
+        "signedToStartTime": "2024-04-12T13:00:00Z",
         "message": ""
       },
       {
         "username": "393397",
         "priority": 0,
-        "time": "2024-04-12T13:00:00Z",
+        "signedToStartTime": "2024-04-12T13:00:00Z",
         "message": ""
       },
       {
         "username": "241079",
         "priority": 0,
-        "time": "2024-04-12T13:00:00Z",
+        "signedToStartTime": "2024-04-12T13:00:00Z",
         "message": ""
       },
       {
         "username": "565594",
         "priority": 0,
-        "time": "2024-04-12T13:00:00Z",
+        "signedToStartTime": "2024-04-12T13:00:00Z",
         "message": ""
       },
       {
         "username": "764642",
         "priority": 0,
-        "time": "2024-04-12T13:00:00Z",
+        "signedToStartTime": "2024-04-12T13:00:00Z",
         "message": ""
       },
       {
         "username": "575611",
         "priority": 0,
-        "time": "2024-04-12T13:00:00Z",
+        "signedToStartTime": "2024-04-12T13:00:00Z",
         "message": ""
       },
       {
         "username": "603034",
         "priority": 0,
-        "time": "2024-04-12T13:00:00Z",
+        "signedToStartTime": "2024-04-12T13:00:00Z",
         "message": ""
       },
       {
         "username": "531791",
         "priority": 0,
-        "time": "2024-04-12T13:00:00Z",
+        "signedToStartTime": "2024-04-12T13:00:00Z",
         "message": ""
       },
       {
         "username": "385635",
         "priority": 0,
-        "time": "2024-04-12T13:00:00Z",
+        "signedToStartTime": "2024-04-12T13:00:00Z",
         "message": ""
       },
       {
         "username": "987448",
         "priority": 0,
-        "time": "2024-04-12T13:00:00Z",
+        "signedToStartTime": "2024-04-12T13:00:00Z",
         "message": ""
       },
       {
         "username": "205976",
         "priority": 0,
-        "time": "2024-04-12T13:00:00Z",
+        "signedToStartTime": "2024-04-12T13:00:00Z",
         "message": ""
       },
       {
         "username": "379732",
         "priority": 0,
-        "time": "2024-04-12T13:00:00Z",
+        "signedToStartTime": "2024-04-12T13:00:00Z",
         "message": ""
       },
       {
         "username": "132145",
         "priority": 0,
-        "time": "2024-04-12T13:00:00Z",
+        "signedToStartTime": "2024-04-12T13:00:00Z",
         "message": ""
       },
       {
         "username": "622530",
         "priority": 0,
-        "time": "2024-04-12T13:00:00Z",
+        "signedToStartTime": "2024-04-12T13:00:00Z",
         "message": ""
       },
       {
         "username": "694948",
         "priority": 0,
-        "time": "2024-04-12T13:00:00Z",
+        "signedToStartTime": "2024-04-12T13:00:00Z",
         "message": ""
       },
       {
         "username": "360266",
         "priority": 0,
-        "time": "2024-04-12T13:00:00Z",
+        "signedToStartTime": "2024-04-12T13:00:00Z",
         "message": ""
       },
       {
         "username": "955333",
         "priority": 0,
-        "time": "2024-04-12T13:00:00Z",
+        "signedToStartTime": "2024-04-12T13:00:00Z",
         "message": ""
       },
       {
         "username": "764115",
         "priority": 0,
-        "time": "2024-04-12T13:00:00Z",
+        "signedToStartTime": "2024-04-12T13:00:00Z",
         "message": ""
       },
       {
         "username": "140078",
         "priority": 0,
-        "time": "2024-04-12T13:00:00Z",
+        "signedToStartTime": "2024-04-12T13:00:00Z",
         "message": ""
       },
       {
         "username": "663676",
         "priority": 0,
-        "time": "2024-04-12T13:00:00Z",
+        "signedToStartTime": "2024-04-12T13:00:00Z",
         "message": ""
       },
       {
         "username": "708345",
         "priority": 0,
-        "time": "2024-04-12T13:00:00Z",
+        "signedToStartTime": "2024-04-12T13:00:00Z",
         "message": ""
       },
       {
         "username": "342155",
         "priority": 0,
-        "time": "2024-04-12T13:00:00Z",
+        "signedToStartTime": "2024-04-12T13:00:00Z",
         "message": ""
       },
       {
         "username": "886743",
         "priority": 0,
-        "time": "2024-04-12T13:00:00Z",
+        "signedToStartTime": "2024-04-12T13:00:00Z",
         "message": ""
       },
       {
         "username": "788558",
         "priority": 0,
-        "time": "2024-04-12T13:00:00Z",
+        "signedToStartTime": "2024-04-12T13:00:00Z",
         "message": ""
       },
       {
         "username": "282316",
         "priority": 0,
-        "time": "2024-04-12T13:00:00Z",
+        "signedToStartTime": "2024-04-12T13:00:00Z",
         "message": ""
       },
       {
         "username": "884964",
         "priority": 0,
-        "time": "2024-04-12T13:00:00Z",
+        "signedToStartTime": "2024-04-12T13:00:00Z",
         "message": ""
       },
       {
         "username": "51786",
         "priority": 0,
-        "time": "2024-04-12T13:00:00Z",
+        "signedToStartTime": "2024-04-12T13:00:00Z",
         "message": ""
       }
     ],
@@ -396,120 +396,120 @@
     "updatedAt": "2024-04-12T12:40:55.678Z"
   },
   {
-    "game": { "programItemId": "p7638" },
+    "programItemId": "p7638",
     "userSignups": [
       {
         "username": "194747",
         "priority": 0,
-        "time": "2024-04-12T15:00:00Z",
+        "signedToStartTime": "2024-04-12T15:00:00Z",
         "message": ""
       },
       {
         "username": "135096",
         "priority": 0,
-        "time": "2024-04-12T15:00:00Z",
+        "signedToStartTime": "2024-04-12T15:00:00Z",
         "message": ""
       },
       {
         "username": "354249",
         "priority": 0,
-        "time": "2024-04-12T15:00:00Z",
+        "signedToStartTime": "2024-04-12T15:00:00Z",
         "message": ""
       },
       {
         "username": "760388",
         "priority": 0,
-        "time": "2024-04-12T15:00:00Z",
+        "signedToStartTime": "2024-04-12T15:00:00Z",
         "message": ""
       },
       {
         "username": "411980",
         "priority": 0,
-        "time": "2024-04-12T15:00:00Z",
+        "signedToStartTime": "2024-04-12T15:00:00Z",
         "message": ""
       },
       {
         "username": "665640",
         "priority": 0,
-        "time": "2024-04-12T15:00:00Z",
+        "signedToStartTime": "2024-04-12T15:00:00Z",
         "message": ""
       },
       {
         "username": "59258",
         "priority": 0,
-        "time": "2024-04-12T15:00:00Z",
+        "signedToStartTime": "2024-04-12T15:00:00Z",
         "message": ""
       },
       {
         "username": "601490",
         "priority": 0,
-        "time": "2024-04-12T15:00:00Z",
+        "signedToStartTime": "2024-04-12T15:00:00Z",
         "message": ""
       },
       {
         "username": "125833",
         "priority": 0,
-        "time": "2024-04-12T15:00:00Z",
+        "signedToStartTime": "2024-04-12T15:00:00Z",
         "message": ""
       },
       {
         "username": "289846",
         "priority": 0,
-        "time": "2024-04-12T15:00:00Z",
+        "signedToStartTime": "2024-04-12T15:00:00Z",
         "message": ""
       },
       {
         "username": "40729",
         "priority": 0,
-        "time": "2024-04-12T15:00:00Z",
+        "signedToStartTime": "2024-04-12T15:00:00Z",
         "message": ""
       },
       {
         "username": "182168",
         "priority": 0,
-        "time": "2024-04-12T15:00:00Z",
+        "signedToStartTime": "2024-04-12T15:00:00Z",
         "message": ""
       },
       {
         "username": "582570",
         "priority": 0,
-        "time": "2024-04-12T15:00:00Z",
+        "signedToStartTime": "2024-04-12T15:00:00Z",
         "message": ""
       },
       {
         "username": "344225",
         "priority": 0,
-        "time": "2024-04-12T15:00:00Z",
+        "signedToStartTime": "2024-04-12T15:00:00Z",
         "message": ""
       },
       {
         "username": "320822",
         "priority": 0,
-        "time": "2024-04-12T15:00:00Z",
+        "signedToStartTime": "2024-04-12T15:00:00Z",
         "message": ""
       },
       {
         "username": "888190",
         "priority": 0,
-        "time": "2024-04-12T15:00:00Z",
+        "signedToStartTime": "2024-04-12T15:00:00Z",
         "message": ""
       },
       {
         "username": "25730",
         "priority": 0,
-        "time": "2024-04-12T15:00:00Z",
+        "signedToStartTime": "2024-04-12T15:00:00Z",
         "message": ""
       },
       {
         "username": "830239",
         "priority": 0,
-        "time": "2024-04-12T15:00:00Z",
+        "signedToStartTime": "2024-04-12T15:00:00Z",
         "message": ""
       },
       {
         "username": "282316",
         "priority": 0,
-        "time": "2024-04-12T15:00:00Z",
+        "signedToStartTime": "2024-04-12T15:00:00Z",
         "message": ""
       }
     ],
@@ -518,144 +518,144 @@
     "updatedAt": "2024-04-12T14:54:09.102Z"
   },
   {
-    "game": { "programItemId": "p7500" },
+    "programItemId": "p7500",
     "userSignups": [
       {
         "username": "194747",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "336350",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "40729",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "368974",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "338762",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "154397",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "135096",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "888190",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "289846",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "354249",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "621161",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "808941",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "309580",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "993821",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "363514",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "145174",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "715742",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "603034",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "17801",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "531791",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "282316",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "498777",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "95204",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       }
     ],
@@ -664,97 +664,97 @@
     "updatedAt": "2024-04-13T07:08:04.315Z"
   },
   {
-    "game": { "programItemId": "p7636" },
+    "programItemId": "p7636",
     "userSignups": [],
     "count": 0,
     "createdAt": "2024-03-24T18:57:39.064Z",
     "updatedAt": "2024-03-24T18:57:39.064Z"
   },
   {
-    "game": { "programItemId": "p7552" },
+    "programItemId": "p7552",
     "userSignups": [
       {
         "username": "582570",
         "priority": 0,
-        "time": "2024-04-13T06:30:00Z",
+        "signedToStartTime": "2024-04-13T06:30:00Z",
         "message": ""
       },
       {
         "username": "497106",
         "priority": 0,
-        "time": "2024-04-13T06:30:00Z",
+        "signedToStartTime": "2024-04-13T06:30:00Z",
         "message": ""
       },
       {
         "username": "729691",
         "priority": 0,
-        "time": "2024-04-13T06:30:00Z",
+        "signedToStartTime": "2024-04-13T06:30:00Z",
         "message": ""
       },
       {
         "username": "969005",
         "priority": 0,
-        "time": "2024-04-13T06:30:00Z",
+        "signedToStartTime": "2024-04-13T06:30:00Z",
         "message": ""
       },
       {
         "username": "855833",
         "priority": 0,
-        "time": "2024-04-13T06:30:00Z",
+        "signedToStartTime": "2024-04-13T06:30:00Z",
         "message": ""
       },
       {
         "username": "368035",
         "priority": 0,
-        "time": "2024-04-13T06:30:00Z",
+        "signedToStartTime": "2024-04-13T06:30:00Z",
         "message": ""
       },
       {
         "username": "95204",
         "priority": 0,
-        "time": "2024-04-13T06:30:00Z",
+        "signedToStartTime": "2024-04-13T06:30:00Z",
         "message": ""
       },
       {
         "username": "630578",
         "priority": 0,
-        "time": "2024-04-13T06:30:00Z",
+        "signedToStartTime": "2024-04-13T06:30:00Z",
         "message": ""
       },
       {
         "username": "411564",
         "priority": 0,
-        "time": "2024-04-13T06:30:00Z",
+        "signedToStartTime": "2024-04-13T06:30:00Z",
         "message": ""
       },
       {
         "username": "710224",
         "priority": 0,
-        "time": "2024-04-13T06:30:00Z",
+        "signedToStartTime": "2024-04-13T06:30:00Z",
         "message": ""
       },
       {
         "username": "515559",
         "priority": 0,
-        "time": "2024-04-13T06:30:00Z",
+        "signedToStartTime": "2024-04-13T06:30:00Z",
         "message": ""
       },
       {
         "username": "206576",
         "priority": 0,
-        "time": "2024-04-13T06:30:00Z",
+        "signedToStartTime": "2024-04-13T06:30:00Z",
         "message": ""
       },
       {
         "username": "955333",
         "priority": 0,
-        "time": "2024-04-13T06:30:00Z",
+        "signedToStartTime": "2024-04-13T06:30:00Z",
         "message": ""
       },
       {
         "username": "140078",
         "priority": 0,
-        "time": "2024-04-13T06:30:00Z",
+        "signedToStartTime": "2024-04-13T06:30:00Z",
         "message": ""
       }
     ],
@@ -763,60 +763,60 @@
     "updatedAt": "2024-04-13T06:06:46.171Z"
   },
   {
-    "game": { "programItemId": "p7662" },
+    "programItemId": "p7662",
     "userSignups": [
       {
         "username": "354249",
         "priority": 0,
-        "time": "2024-04-11T16:00:00Z",
+        "signedToStartTime": "2024-04-11T16:00:00Z",
         "message": ""
       },
       {
         "username": "827290",
         "priority": 0,
-        "time": "2024-04-11T16:00:00Z",
+        "signedToStartTime": "2024-04-11T16:00:00Z",
         "message": ""
       },
       {
         "username": "53410",
         "priority": 0,
-        "time": "2024-04-11T16:00:00Z",
+        "signedToStartTime": "2024-04-11T16:00:00Z",
         "message": ""
       },
       {
         "username": "17801",
         "priority": 0,
-        "time": "2024-04-11T16:00:00Z",
+        "signedToStartTime": "2024-04-11T16:00:00Z",
         "message": ""
       },
       {
         "username": "101144",
         "priority": 0,
-        "time": "2024-04-11T16:00:00Z",
+        "signedToStartTime": "2024-04-11T16:00:00Z",
         "message": ""
       },
       {
         "username": "764115",
         "priority": 0,
-        "time": "2024-04-11T16:00:00Z",
+        "signedToStartTime": "2024-04-11T16:00:00Z",
         "message": ""
       },
       {
         "username": "598746",
         "priority": 0,
-        "time": "2024-04-11T16:00:00Z",
+        "signedToStartTime": "2024-04-11T16:00:00Z",
         "message": ""
       },
       {
         "username": "17587",
         "priority": 0,
-        "time": "2024-04-11T16:00:00Z",
+        "signedToStartTime": "2024-04-11T16:00:00Z",
         "message": ""
       },
       {
         "username": "155420",
         "priority": 0,
-        "time": "2024-04-11T16:00:00Z",
+        "signedToStartTime": "2024-04-11T16:00:00Z",
         "message": ""
       }
     ],
@@ -825,162 +825,162 @@
     "updatedAt": "2024-04-11T15:17:58.426Z"
   },
   {
-    "game": { "programItemId": "p7566" },
+    "programItemId": "p7566",
     "userSignups": [
       {
         "username": "46575",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       },
       {
         "username": "408351",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       },
       {
         "username": "750988",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       },
       {
         "username": "11006",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       },
       {
         "username": "125833",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       },
       {
         "username": "859830",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       },
       {
         "username": "192086",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       },
       {
         "username": "808941",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       },
       {
         "username": "621161",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       },
       {
         "username": "928293",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       },
       {
         "username": "316152",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       },
       {
         "username": "95204",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       },
       {
         "username": "630578",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       },
       {
         "username": "185953",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       },
       {
         "username": "710224",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       },
       {
         "username": "515559",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       },
       {
         "username": "519249",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       },
       {
         "username": "52741",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       },
       {
         "username": "722624",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       },
       {
         "username": "661962",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       },
       {
         "username": "495468",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       },
       {
         "username": "880386",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       },
       {
         "username": "11222",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       },
       {
         "username": "144897",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       },
       {
         "username": "297577",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       },
       {
         "username": "827883",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       }
     ],
@@ -989,96 +989,96 @@
     "updatedAt": "2024-04-12T10:48:29.634Z"
   },
   {
-    "game": { "programItemId": "p7577" },
+    "programItemId": "p7577",
     "userSignups": [
       {
         "username": "336350",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "46575",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "279946",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "952060",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "17801",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "603034",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "185953",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "171024",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "52741",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "722624",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "53479",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "653484",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "140078",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "793125",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "297577",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       }
     ],
@@ -1087,162 +1087,162 @@
     "updatedAt": "2024-04-12T06:41:28.841Z"
   },
   {
-    "game": { "programItemId": "p7606" },
+    "programItemId": "p7606",
     "userSignups": [
       {
         "username": "750988",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "335573",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "582570",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "585984",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "420129",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "205976",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "351020",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "223295",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "513282",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "619803",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "668236",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "676533",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "51084",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "515559",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "653484",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "710224",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "519249",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "175834",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "210929",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "853201",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "764115",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "495468",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "880386",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "11222",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "949973",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "630578",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       }
     ],
@@ -1251,78 +1251,78 @@
     "updatedAt": "2024-04-12T06:17:11.92Z"
   },
   {
-    "game": { "programItemId": "p7501" },
+    "programItemId": "p7501",
     "userSignups": [
       {
         "username": "102952",
         "priority": 0,
-        "time": "2024-04-13T10:00:00Z",
+        "signedToStartTime": "2024-04-13T10:00:00Z",
         "message": ""
       },
       {
         "username": "125833",
         "priority": 0,
-        "time": "2024-04-13T10:00:00Z",
+        "signedToStartTime": "2024-04-13T10:00:00Z",
         "message": ""
       },
       {
         "username": "601490",
         "priority": 0,
-        "time": "2024-04-13T10:00:00Z",
+        "signedToStartTime": "2024-04-13T10:00:00Z",
         "message": ""
       },
       {
         "username": "320822",
         "priority": 0,
-        "time": "2024-04-13T10:00:00Z",
+        "signedToStartTime": "2024-04-13T10:00:00Z",
         "message": ""
       },
       {
         "username": "661506",
         "priority": 0,
-        "time": "2024-04-13T10:00:00Z",
+        "signedToStartTime": "2024-04-13T10:00:00Z",
         "message": ""
       },
       {
         "username": "696394",
         "priority": 0,
-        "time": "2024-04-13T10:00:00Z",
+        "signedToStartTime": "2024-04-13T10:00:00Z",
         "message": ""
       },
       {
         "username": "521030",
         "priority": 0,
-        "time": "2024-04-13T10:00:00Z",
+        "signedToStartTime": "2024-04-13T10:00:00Z",
         "message": ""
       },
       {
         "username": "351847",
         "priority": 0,
-        "time": "2024-04-13T10:00:00Z",
+        "signedToStartTime": "2024-04-13T10:00:00Z",
         "message": ""
       },
       {
         "username": "11222",
         "priority": 0,
-        "time": "2024-04-13T10:00:00Z",
+        "signedToStartTime": "2024-04-13T10:00:00Z",
         "message": ""
       },
       {
         "username": "680674",
         "priority": 0,
-        "time": "2024-04-13T10:00:00Z",
+        "signedToStartTime": "2024-04-13T10:00:00Z",
         "message": ""
       },
       {
         "username": "223295",
         "priority": 0,
-        "time": "2024-04-13T10:00:00Z",
+        "signedToStartTime": "2024-04-13T10:00:00Z",
         "message": ""
       },
       {
         "username": "639401",
         "priority": 0,
-        "time": "2024-04-13T10:00:00Z",
+        "signedToStartTime": "2024-04-13T10:00:00Z",
         "message": ""
       }
     ],
@@ -1331,36 +1331,36 @@
     "updatedAt": "2024-04-13T08:46:10.669Z"
   },
   {
-    "game": { "programItemId": "p7508" },
+    "programItemId": "p7508",
     "userSignups": [
       {
         "username": "808941",
         "priority": 0,
-        "time": "2024-04-13T11:00:00Z",
+        "signedToStartTime": "2024-04-13T11:00:00Z",
         "message": ""
       },
       {
         "username": "710224",
         "priority": 0,
-        "time": "2024-04-13T11:00:00Z",
+        "signedToStartTime": "2024-04-13T11:00:00Z",
         "message": ""
       },
       {
         "username": "528221",
         "priority": 0,
-        "time": "2024-04-13T11:00:00Z",
+        "signedToStartTime": "2024-04-13T11:00:00Z",
         "message": ""
       },
       {
         "username": "661962",
         "priority": 0,
-        "time": "2024-04-13T11:00:00Z",
+        "signedToStartTime": "2024-04-13T11:00:00Z",
         "message": ""
       },
       {
         "username": "297577",
         "priority": 0,
-        "time": "2024-04-13T11:00:00Z",
+        "signedToStartTime": "2024-04-13T11:00:00Z",
         "message": ""
       }
     ],
@@ -1369,48 +1369,48 @@
     "updatedAt": "2024-04-13T08:39:44.291Z"
   },
   {
-    "game": { "programItemId": "p7626" },
+    "programItemId": "p7626",
     "userSignups": [
       {
         "username": "582570",
         "priority": 0,
-        "time": "2024-04-12T06:30:00Z",
+        "signedToStartTime": "2024-04-12T06:30:00Z",
         "message": ""
       },
       {
         "username": "354249",
         "priority": 0,
-        "time": "2024-04-12T06:30:00Z",
+        "signedToStartTime": "2024-04-12T06:30:00Z",
         "message": ""
       },
       {
         "username": "35452",
         "priority": 0,
-        "time": "2024-04-12T06:30:00Z",
+        "signedToStartTime": "2024-04-12T06:30:00Z",
         "message": ""
       },
       {
         "username": "969005",
         "priority": 0,
-        "time": "2024-04-12T06:30:00Z",
+        "signedToStartTime": "2024-04-12T06:30:00Z",
         "message": ""
       },
       {
         "username": "145174",
         "priority": 0,
-        "time": "2024-04-12T06:30:00Z",
+        "signedToStartTime": "2024-04-12T06:30:00Z",
         "message": ""
       },
       {
         "username": "220373",
         "priority": 0,
-        "time": "2024-04-12T06:30:00Z",
+        "signedToStartTime": "2024-04-12T06:30:00Z",
         "message": ""
       },
       {
         "username": "521030",
         "priority": 0,
-        "time": "2024-04-12T06:30:00Z",
+        "signedToStartTime": "2024-04-12T06:30:00Z",
         "message": ""
       }
     ],
@@ -1419,66 +1419,66 @@
     "updatedAt": "2024-04-12T06:22:37.809Z"
   },
   {
-    "game": { "programItemId": "p7657" },
+    "programItemId": "p7657",
     "userSignups": [
       {
         "username": "601490",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "198181",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "382167",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "307848",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "755893",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "379732",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "661962",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "880386",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "52404",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "388127",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       }
     ],
@@ -1487,96 +1487,96 @@
     "updatedAt": "2024-04-12T06:41:03.363Z"
   },
   {
-    "game": { "programItemId": "p7607" },
+    "programItemId": "p7607",
     "userSignups": [
       {
         "username": "368974",
         "priority": 0,
-        "time": "2024-04-12T09:00:00Z",
+        "signedToStartTime": "2024-04-12T09:00:00Z",
         "message": ""
       },
       {
         "username": "11006",
         "priority": 0,
-        "time": "2024-04-12T09:00:00Z",
+        "signedToStartTime": "2024-04-12T09:00:00Z",
         "message": ""
       },
       {
         "username": "338762",
         "priority": 0,
-        "time": "2024-04-12T09:00:00Z",
+        "signedToStartTime": "2024-04-12T09:00:00Z",
         "message": ""
       },
       {
         "username": "40729",
         "priority": 0,
-        "time": "2024-04-12T09:00:00Z",
+        "signedToStartTime": "2024-04-12T09:00:00Z",
         "message": ""
       },
       {
         "username": "289846",
         "priority": 0,
-        "time": "2024-04-12T09:00:00Z",
+        "signedToStartTime": "2024-04-12T09:00:00Z",
         "message": ""
       },
       {
         "username": "125833",
         "priority": 0,
-        "time": "2024-04-12T09:00:00Z",
+        "signedToStartTime": "2024-04-12T09:00:00Z",
         "message": ""
       },
       {
         "username": "226296",
         "priority": 0,
-        "time": "2024-04-12T09:00:00Z",
+        "signedToStartTime": "2024-04-12T09:00:00Z",
         "message": ""
       },
       {
         "username": "665640",
         "priority": 0,
-        "time": "2024-04-12T09:00:00Z",
+        "signedToStartTime": "2024-04-12T09:00:00Z",
         "message": ""
       },
       {
         "username": "216333",
         "priority": 0,
-        "time": "2024-04-12T09:00:00Z",
+        "signedToStartTime": "2024-04-12T09:00:00Z",
         "message": ""
       },
       {
         "username": "582570",
         "priority": 0,
-        "time": "2024-04-12T09:00:00Z",
+        "signedToStartTime": "2024-04-12T09:00:00Z",
         "message": ""
       },
       {
         "username": "760388",
         "priority": 0,
-        "time": "2024-04-12T09:00:00Z",
+        "signedToStartTime": "2024-04-12T09:00:00Z",
         "message": ""
       },
       {
         "username": "933322",
         "priority": 0,
-        "time": "2024-04-12T09:00:00Z",
+        "signedToStartTime": "2024-04-12T09:00:00Z",
         "message": ""
       },
       {
         "username": "209102",
         "priority": 0,
-        "time": "2024-04-12T09:00:00Z",
+        "signedToStartTime": "2024-04-12T09:00:00Z",
         "message": ""
       },
       {
         "username": "621161",
         "priority": 0,
-        "time": "2024-04-12T09:00:00Z",
+        "signedToStartTime": "2024-04-12T09:00:00Z",
         "message": ""
       },
       {
         "username": "808941",
         "priority": 0,
-        "time": "2024-04-12T09:00:00Z",
+        "signedToStartTime": "2024-04-12T09:00:00Z",
         "message": ""
       }
     ],
@@ -1585,246 +1585,246 @@
     "updatedAt": "2024-04-12T08:27:03.688Z"
   },
   {
-    "game": { "programItemId": "p7582" },
+    "programItemId": "p7582",
     "userSignups": [
       {
         "username": "320822",
         "priority": 0,
-        "time": "2024-04-12T14:00:00Z",
+        "signedToStartTime": "2024-04-12T14:00:00Z",
         "message": ""
       },
       {
         "username": "552856",
         "priority": 0,
-        "time": "2024-04-12T14:00:00Z",
+        "signedToStartTime": "2024-04-12T14:00:00Z",
         "message": ""
       },
       {
         "username": "933322",
         "priority": 0,
-        "time": "2024-04-12T14:00:00Z",
+        "signedToStartTime": "2024-04-12T14:00:00Z",
         "message": ""
       },
       {
         "username": "411980",
         "priority": 0,
-        "time": "2024-04-12T14:00:00Z",
+        "signedToStartTime": "2024-04-12T14:00:00Z",
         "message": ""
       },
       {
         "username": "166168",
         "priority": 0,
-        "time": "2024-04-12T14:00:00Z",
+        "signedToStartTime": "2024-04-12T14:00:00Z",
         "message": ""
       },
       {
         "username": "870907",
         "priority": 0,
-        "time": "2024-04-12T14:00:00Z",
+        "signedToStartTime": "2024-04-12T14:00:00Z",
         "message": ""
       },
       {
         "username": "137750",
         "priority": 0,
-        "time": "2024-04-12T14:00:00Z",
+        "signedToStartTime": "2024-04-12T14:00:00Z",
         "message": ""
       },
       {
         "username": "363514",
         "priority": 0,
-        "time": "2024-04-12T14:00:00Z",
+        "signedToStartTime": "2024-04-12T14:00:00Z",
         "message": ""
       },
       {
         "username": "629506",
         "priority": 0,
-        "time": "2024-04-12T14:00:00Z",
+        "signedToStartTime": "2024-04-12T14:00:00Z",
         "message": ""
       },
       {
         "username": "368035",
         "priority": 0,
-        "time": "2024-04-12T14:00:00Z",
+        "signedToStartTime": "2024-04-12T14:00:00Z",
         "message": ""
       },
       {
         "username": "513282",
         "priority": 0,
-        "time": "2024-04-12T14:00:00Z",
+        "signedToStartTime": "2024-04-12T14:00:00Z",
         "message": ""
       },
       {
         "username": "145174",
         "priority": 0,
-        "time": "2024-04-12T14:00:00Z",
+        "signedToStartTime": "2024-04-12T14:00:00Z",
         "message": ""
       },
       {
         "username": "840267",
         "priority": 0,
-        "time": "2024-04-12T14:00:00Z",
+        "signedToStartTime": "2024-04-12T14:00:00Z",
         "message": ""
       },
       {
         "username": "880059",
         "priority": 0,
-        "time": "2024-04-12T14:00:00Z",
+        "signedToStartTime": "2024-04-12T14:00:00Z",
         "message": ""
       },
       {
         "username": "316152",
         "priority": 0,
-        "time": "2024-04-12T14:00:00Z",
+        "signedToStartTime": "2024-04-12T14:00:00Z",
         "message": ""
       },
       {
         "username": "847721",
         "priority": 0,
-        "time": "2024-04-12T14:00:00Z",
+        "signedToStartTime": "2024-04-12T14:00:00Z",
         "message": ""
       },
       {
         "username": "603034",
         "priority": 0,
-        "time": "2024-04-12T14:00:00Z",
+        "signedToStartTime": "2024-04-12T14:00:00Z",
         "message": ""
       },
       {
         "username": "676533",
         "priority": 0,
-        "time": "2024-04-12T14:00:00Z",
+        "signedToStartTime": "2024-04-12T14:00:00Z",
         "message": ""
       },
       {
         "username": "212901",
         "priority": 0,
-        "time": "2024-04-12T14:00:00Z",
+        "signedToStartTime": "2024-04-12T14:00:00Z",
         "message": ""
       },
       {
         "username": "307848",
         "priority": 0,
-        "time": "2024-04-12T14:00:00Z",
+        "signedToStartTime": "2024-04-12T14:00:00Z",
         "message": ""
       },
       {
         "username": "411564",
         "priority": 0,
-        "time": "2024-04-12T14:00:00Z",
+        "signedToStartTime": "2024-04-12T14:00:00Z",
         "message": ""
       },
       {
         "username": "664635",
         "priority": 0,
-        "time": "2024-04-12T14:00:00Z",
+        "signedToStartTime": "2024-04-12T14:00:00Z",
         "message": ""
       },
       {
         "username": "79108",
         "priority": 0,
-        "time": "2024-04-12T14:00:00Z",
+        "signedToStartTime": "2024-04-12T14:00:00Z",
         "message": ""
       },
       {
         "username": "755893",
         "priority": 0,
-        "time": "2024-04-12T14:00:00Z",
+        "signedToStartTime": "2024-04-12T14:00:00Z",
         "message": ""
       },
       {
         "username": "167747",
         "priority": 0,
-        "time": "2024-04-12T14:00:00Z",
+        "signedToStartTime": "2024-04-12T14:00:00Z",
         "message": ""
       },
       {
         "username": "175834",
         "priority": 0,
-        "time": "2024-04-12T14:00:00Z",
+        "signedToStartTime": "2024-04-12T14:00:00Z",
         "message": ""
       },
       {
         "username": "521030",
         "priority": 0,
-        "time": "2024-04-12T14:00:00Z",
+        "signedToStartTime": "2024-04-12T14:00:00Z",
         "message": ""
       },
       {
         "username": "206576",
         "priority": 0,
-        "time": "2024-04-12T14:00:00Z",
+        "signedToStartTime": "2024-04-12T14:00:00Z",
         "message": ""
       },
       {
         "username": "298393",
         "priority": 0,
-        "time": "2024-04-12T14:00:00Z",
+        "signedToStartTime": "2024-04-12T14:00:00Z",
         "message": ""
       },
       {
         "username": "329628",
         "priority": 0,
-        "time": "2024-04-12T14:00:00Z",
+        "signedToStartTime": "2024-04-12T14:00:00Z",
         "message": ""
       },
       {
         "username": "271323",
         "priority": 0,
-        "time": "2024-04-12T14:00:00Z",
+        "signedToStartTime": "2024-04-12T14:00:00Z",
         "message": ""
       },
       {
         "username": "955333",
         "priority": 0,
-        "time": "2024-04-12T14:00:00Z",
+        "signedToStartTime": "2024-04-12T14:00:00Z",
         "message": ""
       },
       {
         "username": "544924",
         "priority": 0,
-        "time": "2024-04-12T14:00:00Z",
+        "signedToStartTime": "2024-04-12T14:00:00Z",
         "message": ""
       },
       {
         "username": "610752",
         "priority": 0,
-        "time": "2024-04-12T14:00:00Z",
+        "signedToStartTime": "2024-04-12T14:00:00Z",
         "message": ""
       },
       {
         "username": "168338",
         "priority": 0,
-        "time": "2024-04-12T14:00:00Z",
+        "signedToStartTime": "2024-04-12T14:00:00Z",
         "message": ""
       },
       {
         "username": "827883",
         "priority": 0,
-        "time": "2024-04-12T14:00:00Z",
+        "signedToStartTime": "2024-04-12T14:00:00Z",
         "message": ""
       },
       {
         "username": "283974",
         "priority": 0,
-        "time": "2024-04-12T14:00:00Z",
+        "signedToStartTime": "2024-04-12T14:00:00Z",
         "message": ""
       },
       {
         "username": "695597",
         "priority": 0,
-        "time": "2024-04-12T14:00:00Z",
+        "signedToStartTime": "2024-04-12T14:00:00Z",
         "message": ""
       },
       {
         "username": "687586",
         "priority": 0,
-        "time": "2024-04-12T14:00:00Z",
+        "signedToStartTime": "2024-04-12T14:00:00Z",
         "message": ""
       },
       {
         "username": "221822",
         "priority": 0,
-        "time": "2024-04-12T14:00:00Z",
+        "signedToStartTime": "2024-04-12T14:00:00Z",
         "message": ""
       }
     ],
@@ -1833,36 +1833,36 @@
     "updatedAt": "2024-04-12T12:45:02.039Z"
   },
   {
-    "game": { "programItemId": "p7513" },
+    "programItemId": "p7513",
     "userSignups": [
       {
         "username": "692997",
         "priority": 0,
-        "time": "2024-04-13T07:00:00Z",
+        "signedToStartTime": "2024-04-13T07:00:00Z",
         "message": ""
       },
       {
         "username": "665640",
         "priority": 0,
-        "time": "2024-04-13T07:00:00Z",
+        "signedToStartTime": "2024-04-13T07:00:00Z",
         "message": ""
       },
       {
         "username": "46575",
         "priority": 0,
-        "time": "2024-04-13T07:00:00Z",
+        "signedToStartTime": "2024-04-13T07:00:00Z",
         "message": ""
       },
       {
         "username": "11006",
         "priority": 0,
-        "time": "2024-04-13T07:00:00Z",
+        "signedToStartTime": "2024-04-13T07:00:00Z",
         "message": ""
       },
       {
         "username": "81970",
         "priority": 0,
-        "time": "2024-04-13T07:00:00Z",
+        "signedToStartTime": "2024-04-13T07:00:00Z",
         "message": ""
       }
     ],
@@ -1871,96 +1871,96 @@
     "updatedAt": "2024-04-04T17:00:38.134Z"
   },
   {
-    "game": { "programItemId": "p7646" },
+    "programItemId": "p7646",
     "userSignups": [
       {
         "username": "59258",
         "priority": 0,
-        "time": "2024-04-13T07:00:00Z",
+        "signedToStartTime": "2024-04-13T07:00:00Z",
         "message": ""
       },
       {
         "username": "125833",
         "priority": 0,
-        "time": "2024-04-13T07:00:00Z",
+        "signedToStartTime": "2024-04-13T07:00:00Z",
         "message": ""
       },
       {
         "username": "719649",
         "priority": 0,
-        "time": "2024-04-13T07:00:00Z",
+        "signedToStartTime": "2024-04-13T07:00:00Z",
         "message": ""
       },
       {
         "username": "226296",
         "priority": 0,
-        "time": "2024-04-13T07:00:00Z",
+        "signedToStartTime": "2024-04-13T07:00:00Z",
         "message": ""
       },
       {
         "username": "525231",
         "priority": 0,
-        "time": "2024-04-13T07:00:00Z",
+        "signedToStartTime": "2024-04-13T07:00:00Z",
         "message": ""
       },
       {
         "username": "870907",
         "priority": 0,
-        "time": "2024-04-13T07:00:00Z",
+        "signedToStartTime": "2024-04-13T07:00:00Z",
         "message": ""
       },
       {
         "username": "986026",
         "priority": 0,
-        "time": "2024-04-13T07:00:00Z",
+        "signedToStartTime": "2024-04-13T07:00:00Z",
         "message": ""
       },
       {
         "username": "95204",
         "priority": 0,
-        "time": "2024-04-13T07:00:00Z",
+        "signedToStartTime": "2024-04-13T07:00:00Z",
         "message": ""
       },
       {
         "username": "51084",
         "priority": 0,
-        "time": "2024-04-13T07:00:00Z",
+        "signedToStartTime": "2024-04-13T07:00:00Z",
         "message": ""
       },
       {
         "username": "755893",
         "priority": 0,
-        "time": "2024-04-13T07:00:00Z",
+        "signedToStartTime": "2024-04-13T07:00:00Z",
         "message": ""
       },
       {
         "username": "710224",
         "priority": 0,
-        "time": "2024-04-13T07:00:00Z",
+        "signedToStartTime": "2024-04-13T07:00:00Z",
         "message": ""
       },
       {
         "username": "928293",
         "priority": 0,
-        "time": "2024-04-13T07:00:00Z",
+        "signedToStartTime": "2024-04-13T07:00:00Z",
         "message": ""
       },
       {
         "username": "413669",
         "priority": 0,
-        "time": "2024-04-13T07:00:00Z",
+        "signedToStartTime": "2024-04-13T07:00:00Z",
         "message": ""
       },
       {
         "username": "182168",
         "priority": 0,
-        "time": "2024-04-13T07:00:00Z",
+        "signedToStartTime": "2024-04-13T07:00:00Z",
         "message": ""
       },
       {
         "username": "429715",
         "priority": 0,
-        "time": "2024-04-13T07:00:00Z",
+        "signedToStartTime": "2024-04-13T07:00:00Z",
         "message": ""
       }
     ],
@@ -1969,132 +1969,132 @@
     "updatedAt": "2024-04-12T15:38:53.815Z"
   },
   {
-    "game": { "programItemId": "p7640" },
+    "programItemId": "p7640",
     "userSignups": [
       {
         "username": "46491",
         "priority": 0,
-        "time": "2024-04-13T10:00:00Z",
+        "signedToStartTime": "2024-04-13T10:00:00Z",
         "message": ""
       },
       {
         "username": "830239",
         "priority": 0,
-        "time": "2024-04-13T10:00:00Z",
+        "signedToStartTime": "2024-04-13T10:00:00Z",
         "message": ""
       },
       {
         "username": "53410",
         "priority": 0,
-        "time": "2024-04-13T10:00:00Z",
+        "signedToStartTime": "2024-04-13T10:00:00Z",
         "message": ""
       },
       {
         "username": "363514",
         "priority": 0,
-        "time": "2024-04-13T10:00:00Z",
+        "signedToStartTime": "2024-04-13T10:00:00Z",
         "message": ""
       },
       {
         "username": "145174",
         "priority": 0,
-        "time": "2024-04-13T10:00:00Z",
+        "signedToStartTime": "2024-04-13T10:00:00Z",
         "message": ""
       },
       {
         "username": "655763",
         "priority": 0,
-        "time": "2024-04-13T10:00:00Z",
+        "signedToStartTime": "2024-04-13T10:00:00Z",
         "message": ""
       },
       {
         "username": "603034",
         "priority": 0,
-        "time": "2024-04-13T10:00:00Z",
+        "signedToStartTime": "2024-04-13T10:00:00Z",
         "message": ""
       },
       {
         "username": "307848",
         "priority": 0,
-        "time": "2024-04-13T10:00:00Z",
+        "signedToStartTime": "2024-04-13T10:00:00Z",
         "message": ""
       },
       {
         "username": "327339",
         "priority": 0,
-        "time": "2024-04-13T10:00:00Z",
+        "signedToStartTime": "2024-04-13T10:00:00Z",
         "message": ""
       },
       {
         "username": "79108",
         "priority": 0,
-        "time": "2024-04-13T10:00:00Z",
+        "signedToStartTime": "2024-04-13T10:00:00Z",
         "message": ""
       },
       {
         "username": "52741",
         "priority": 0,
-        "time": "2024-04-13T10:00:00Z",
+        "signedToStartTime": "2024-04-13T10:00:00Z",
         "message": ""
       },
       {
         "username": "528221",
         "priority": 0,
-        "time": "2024-04-13T10:00:00Z",
+        "signedToStartTime": "2024-04-13T10:00:00Z",
         "message": ""
       },
       {
         "username": "955333",
         "priority": 0,
-        "time": "2024-04-13T10:00:00Z",
+        "signedToStartTime": "2024-04-13T10:00:00Z",
         "message": ""
       },
       {
         "username": "764115",
         "priority": 0,
-        "time": "2024-04-13T10:00:00Z",
+        "signedToStartTime": "2024-04-13T10:00:00Z",
         "message": ""
       },
       {
         "username": "495468",
         "priority": 0,
-        "time": "2024-04-13T10:00:00Z",
+        "signedToStartTime": "2024-04-13T10:00:00Z",
         "message": ""
       },
       {
         "username": "34087",
         "priority": 0,
-        "time": "2024-04-13T10:00:00Z",
+        "signedToStartTime": "2024-04-13T10:00:00Z",
         "message": ""
       },
       {
         "username": "140078",
         "priority": 0,
-        "time": "2024-04-13T10:00:00Z",
+        "signedToStartTime": "2024-04-13T10:00:00Z",
         "message": ""
       },
       {
         "username": "967257",
         "priority": 0,
-        "time": "2024-04-13T10:00:00Z",
+        "signedToStartTime": "2024-04-13T10:00:00Z",
         "message": ""
       },
       {
         "username": "996296",
         "priority": 0,
-        "time": "2024-04-13T10:00:00Z",
+        "signedToStartTime": "2024-04-13T10:00:00Z",
         "message": ""
       },
       {
         "username": "676533",
         "priority": 0,
-        "time": "2024-04-13T10:00:00Z",
+        "signedToStartTime": "2024-04-13T10:00:00Z",
         "message": ""
       },
       {
         "username": "853723",
         "priority": 0,
-        "time": "2024-04-13T10:00:00Z",
+        "signedToStartTime": "2024-04-13T10:00:00Z",
         "message": ""
       }
     ],
@@ -2103,180 +2103,180 @@
     "updatedAt": "2024-04-13T09:39:37.77Z"
   },
   {
-    "game": { "programItemId": "p7580" },
+    "programItemId": "p7580",
     "userSignups": [
       {
         "username": "320822",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "760388",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "552856",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "514168",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "361578",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "411980",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "289846",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "125833",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "166168",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "827290",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "205976",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "53410",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "363514",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "855833",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "368035",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "494483",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "212901",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "847721",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "283974",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "413669",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "282316",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "630578",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "329628",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "360266",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "424185",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "241137",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "695597",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "11222",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "655763",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       }
     ],
@@ -2285,72 +2285,72 @@
     "updatedAt": "2024-04-12T06:51:35.126Z"
   },
   {
-    "game": { "programItemId": "p7632" },
+    "programItemId": "p7632",
     "userSignups": [
       {
         "username": "226296",
         "priority": 0,
-        "time": "2024-04-12T10:00:00Z",
+        "signedToStartTime": "2024-04-12T10:00:00Z",
         "message": ""
       },
       {
         "username": "135096",
         "priority": 0,
-        "time": "2024-04-12T10:00:00Z",
+        "signedToStartTime": "2024-04-12T10:00:00Z",
         "message": ""
       },
       {
         "username": "830239",
         "priority": 0,
-        "time": "2024-04-12T10:00:00Z",
+        "signedToStartTime": "2024-04-12T10:00:00Z",
         "message": ""
       },
       {
         "username": "363514",
         "priority": 0,
-        "time": "2024-04-12T10:00:00Z",
+        "signedToStartTime": "2024-04-12T10:00:00Z",
         "message": ""
       },
       {
         "username": "145174",
         "priority": 0,
-        "time": "2024-04-12T10:00:00Z",
+        "signedToStartTime": "2024-04-12T10:00:00Z",
         "message": ""
       },
       {
         "username": "880059",
         "priority": 0,
-        "time": "2024-04-12T10:00:00Z",
+        "signedToStartTime": "2024-04-12T10:00:00Z",
         "message": ""
       },
       {
         "username": "220373",
         "priority": 0,
-        "time": "2024-04-12T10:00:00Z",
+        "signedToStartTime": "2024-04-12T10:00:00Z",
         "message": ""
       },
       {
         "username": "439123",
         "priority": 0,
-        "time": "2024-04-12T10:00:00Z",
+        "signedToStartTime": "2024-04-12T10:00:00Z",
         "message": ""
       },
       {
         "username": "307848",
         "priority": 0,
-        "time": "2024-04-12T10:00:00Z",
+        "signedToStartTime": "2024-04-12T10:00:00Z",
         "message": ""
       },
       {
         "username": "846441",
         "priority": 0,
-        "time": "2024-04-12T10:00:00Z",
+        "signedToStartTime": "2024-04-12T10:00:00Z",
         "message": ""
       },
       {
         "username": "996296",
         "priority": 0,
-        "time": "2024-04-12T10:00:00Z",
+        "signedToStartTime": "2024-04-12T10:00:00Z",
         "message": ""
       }
     ],
@@ -2359,126 +2359,126 @@
     "updatedAt": "2024-04-12T09:34:06.963Z"
   },
   {
-    "game": { "programItemId": "p7659" },
+    "programItemId": "p7659",
     "userSignups": [
       {
         "username": "293700",
         "priority": 0,
-        "time": "2024-04-12T10:00:00Z",
+        "signedToStartTime": "2024-04-12T10:00:00Z",
         "message": ""
       },
       {
         "username": "344225",
         "priority": 0,
-        "time": "2024-04-12T10:00:00Z",
+        "signedToStartTime": "2024-04-12T10:00:00Z",
         "message": ""
       },
       {
         "username": "552856",
         "priority": 0,
-        "time": "2024-04-12T10:00:00Z",
+        "signedToStartTime": "2024-04-12T10:00:00Z",
         "message": ""
       },
       {
         "username": "888190",
         "priority": 0,
-        "time": "2024-04-12T10:00:00Z",
+        "signedToStartTime": "2024-04-12T10:00:00Z",
         "message": ""
       },
       {
         "username": "234612",
         "priority": 0,
-        "time": "2024-04-12T10:00:00Z",
+        "signedToStartTime": "2024-04-12T10:00:00Z",
         "message": ""
       },
       {
         "username": "205976",
         "priority": 0,
-        "time": "2024-04-12T10:00:00Z",
+        "signedToStartTime": "2024-04-12T10:00:00Z",
         "message": ""
       },
       {
         "username": "870907",
         "priority": 0,
-        "time": "2024-04-12T10:00:00Z",
+        "signedToStartTime": "2024-04-12T10:00:00Z",
         "message": ""
       },
       {
         "username": "993821",
         "priority": 0,
-        "time": "2024-04-12T10:00:00Z",
+        "signedToStartTime": "2024-04-12T10:00:00Z",
         "message": ""
       },
       {
         "username": "513282",
         "priority": 0,
-        "time": "2024-04-12T10:00:00Z",
+        "signedToStartTime": "2024-04-12T10:00:00Z",
         "message": ""
       },
       {
         "username": "619803",
         "priority": 0,
-        "time": "2024-04-12T10:00:00Z",
+        "signedToStartTime": "2024-04-12T10:00:00Z",
         "message": ""
       },
       {
         "username": "218054",
         "priority": 0,
-        "time": "2024-04-12T10:00:00Z",
+        "signedToStartTime": "2024-04-12T10:00:00Z",
         "message": ""
       },
       {
         "username": "212901",
         "priority": 0,
-        "time": "2024-04-12T10:00:00Z",
+        "signedToStartTime": "2024-04-12T10:00:00Z",
         "message": ""
       },
       {
         "username": "603034",
         "priority": 0,
-        "time": "2024-04-12T10:00:00Z",
+        "signedToStartTime": "2024-04-12T10:00:00Z",
         "message": ""
       },
       {
         "username": "385635",
         "priority": 0,
-        "time": "2024-04-12T10:00:00Z",
+        "signedToStartTime": "2024-04-12T10:00:00Z",
         "message": ""
       },
       {
         "username": "51084",
         "priority": 0,
-        "time": "2024-04-12T10:00:00Z",
+        "signedToStartTime": "2024-04-12T10:00:00Z",
         "message": ""
       },
       {
         "username": "327339",
         "priority": 0,
-        "time": "2024-04-12T10:00:00Z",
+        "signedToStartTime": "2024-04-12T10:00:00Z",
         "message": ""
       },
       {
         "username": "653484",
         "priority": 0,
-        "time": "2024-04-12T10:00:00Z",
+        "signedToStartTime": "2024-04-12T10:00:00Z",
         "message": ""
       },
       {
         "username": "167747",
         "priority": 0,
-        "time": "2024-04-12T10:00:00Z",
+        "signedToStartTime": "2024-04-12T10:00:00Z",
         "message": ""
       },
       {
         "username": "774435",
         "priority": 0,
-        "time": "2024-04-12T10:00:00Z",
+        "signedToStartTime": "2024-04-12T10:00:00Z",
         "message": ""
       },
       {
         "username": "544924",
         "priority": 0,
-        "time": "2024-04-12T10:00:00Z",
+        "signedToStartTime": "2024-04-12T10:00:00Z",
         "message": ""
       }
     ],
@@ -2487,72 +2487,72 @@
     "updatedAt": "2024-04-12T08:40:22.716Z"
   },
   {
-    "game": { "programItemId": "p7499" },
+    "programItemId": "p7499",
     "userSignups": [
       {
         "username": "320822",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       },
       {
         "username": "601490",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       },
       {
         "username": "411980",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       },
       {
         "username": "342453",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       },
       {
         "username": "174111",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       },
       {
         "username": "730547",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       },
       {
         "username": "198181",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       },
       {
         "username": "655763",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       },
       {
         "username": "241079",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       },
       {
         "username": "79108",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       },
       {
         "username": "379732",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       }
     ],
@@ -2561,30 +2561,30 @@
     "updatedAt": "2024-04-12T08:29:01.393Z"
   },
   {
-    "game": { "programItemId": "p7489" },
+    "programItemId": "p7489",
     "userSignups": [
       {
         "username": "335573",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       },
       {
         "username": "53410",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       },
       {
         "username": "830239",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       },
       {
         "username": "955333",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       }
     ],
@@ -2593,150 +2593,150 @@
     "updatedAt": "2024-04-12T09:50:33.68Z"
   },
   {
-    "game": { "programItemId": "p7496" },
+    "programItemId": "p7496",
     "userSignups": [
       {
         "username": "692997",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "335573",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "40729",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "808941",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "342453",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "420129",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "621161",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "840267",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "191172",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "575611",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "461731",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "51084",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "79108",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "710224",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "58372",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "694948",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "955333",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "17578",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "192810",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "102265",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "37270",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "62524",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "598402",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       },
       {
         "username": "680674",
         "priority": 0,
-        "time": "2024-04-12T07:00:00Z",
+        "signedToStartTime": "2024-04-12T07:00:00Z",
         "message": ""
       }
     ],
@@ -2745,120 +2745,120 @@
     "updatedAt": "2024-04-12T06:25:15.145Z"
   },
   {
-    "game": { "programItemId": "p7613" },
+    "programItemId": "p7613",
     "userSignups": [
       {
         "username": "552856",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "514168",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "411980",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "320822",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "279946",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "234612",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "283302",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "393397",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "884964",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "167747",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "132145",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "298393",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "722624",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "955333",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "513106",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "168338",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "197511",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "687586",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       },
       {
         "username": "695597",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       }
     ],
@@ -2867,186 +2867,186 @@
     "updatedAt": "2024-04-13T07:55:06.121Z"
   },
   {
-    "game": { "programItemId": "p7601" },
+    "programItemId": "p7601",
     "userSignups": [
       {
         "username": "293700",
         "priority": 0,
-        "time": "2024-04-13T11:00:00Z",
+        "signedToStartTime": "2024-04-13T11:00:00Z",
         "message": ""
       },
       {
         "username": "621161",
         "priority": 0,
-        "time": "2024-04-13T11:00:00Z",
+        "signedToStartTime": "2024-04-13T11:00:00Z",
         "message": ""
       },
       {
         "username": "25730",
         "priority": 0,
-        "time": "2024-04-13T11:00:00Z",
+        "signedToStartTime": "2024-04-13T11:00:00Z",
         "message": ""
       },
       {
         "username": "382167",
         "priority": 0,
-        "time": "2024-04-13T11:00:00Z",
+        "signedToStartTime": "2024-04-13T11:00:00Z",
         "message": ""
       },
       {
         "username": "715510",
         "priority": 0,
-        "time": "2024-04-13T11:00:00Z",
+        "signedToStartTime": "2024-04-13T11:00:00Z",
         "message": ""
       },
       {
         "username": "145174",
         "priority": 0,
-        "time": "2024-04-13T11:00:00Z",
+        "signedToStartTime": "2024-04-13T11:00:00Z",
         "message": ""
       },
       {
         "username": "241079",
         "priority": 0,
-        "time": "2024-04-13T11:00:00Z",
+        "signedToStartTime": "2024-04-13T11:00:00Z",
         "message": ""
       },
       {
         "username": "191172",
         "priority": 0,
-        "time": "2024-04-13T11:00:00Z",
+        "signedToStartTime": "2024-04-13T11:00:00Z",
         "message": ""
       },
       {
         "username": "220373",
         "priority": 0,
-        "time": "2024-04-13T11:00:00Z",
+        "signedToStartTime": "2024-04-13T11:00:00Z",
         "message": ""
       },
       {
         "username": "461731",
         "priority": 0,
-        "time": "2024-04-13T11:00:00Z",
+        "signedToStartTime": "2024-04-13T11:00:00Z",
         "message": ""
       },
       {
         "username": "385635",
         "priority": 0,
-        "time": "2024-04-13T11:00:00Z",
+        "signedToStartTime": "2024-04-13T11:00:00Z",
         "message": ""
       },
       {
         "username": "987448",
         "priority": 0,
-        "time": "2024-04-13T11:00:00Z",
+        "signedToStartTime": "2024-04-13T11:00:00Z",
         "message": ""
       },
       {
         "username": "234091",
         "priority": 0,
-        "time": "2024-04-13T11:00:00Z",
+        "signedToStartTime": "2024-04-13T11:00:00Z",
         "message": ""
       },
       {
         "username": "653484",
         "priority": 0,
-        "time": "2024-04-13T11:00:00Z",
+        "signedToStartTime": "2024-04-13T11:00:00Z",
         "message": ""
       },
       {
         "username": "519249",
         "priority": 0,
-        "time": "2024-04-13T11:00:00Z",
+        "signedToStartTime": "2024-04-13T11:00:00Z",
         "message": ""
       },
       {
         "username": "132145",
         "priority": 0,
-        "time": "2024-04-13T11:00:00Z",
+        "signedToStartTime": "2024-04-13T11:00:00Z",
         "message": ""
       },
       {
         "username": "955333",
         "priority": 0,
-        "time": "2024-04-13T11:00:00Z",
+        "signedToStartTime": "2024-04-13T11:00:00Z",
         "message": ""
       },
       {
         "username": "513106",
         "priority": 0,
-        "time": "2024-04-13T11:00:00Z",
+        "signedToStartTime": "2024-04-13T11:00:00Z",
         "message": ""
       },
       {
         "username": "365995",
         "priority": 0,
-        "time": "2024-04-13T11:00:00Z",
+        "signedToStartTime": "2024-04-13T11:00:00Z",
         "message": ""
       },
       {
         "username": "137750",
         "priority": 0,
-        "time": "2024-04-13T11:00:00Z",
+        "signedToStartTime": "2024-04-13T11:00:00Z",
         "message": ""
       },
       {
         "username": "755893",
         "priority": 0,
-        "time": "2024-04-13T11:00:00Z",
+        "signedToStartTime": "2024-04-13T11:00:00Z",
         "message": ""
       },
       {
         "username": "880386",
         "priority": 0,
-        "time": "2024-04-13T11:00:00Z",
+        "signedToStartTime": "2024-04-13T11:00:00Z",
         "message": ""
       },
       {
         "username": "37270",
         "priority": 0,
-        "time": "2024-04-13T11:00:00Z",
+        "signedToStartTime": "2024-04-13T11:00:00Z",
         "message": ""
       },
       {
         "username": "479749",
         "priority": 0,
-        "time": "2024-04-13T11:00:00Z",
+        "signedToStartTime": "2024-04-13T11:00:00Z",
         "message": ""
       },
       {
         "username": "52404",
         "priority": 0,
-        "time": "2024-04-13T11:00:00Z",
+        "signedToStartTime": "2024-04-13T11:00:00Z",
         "message": ""
       },
       {
         "username": "11222",
         "priority": 0,
-        "time": "2024-04-13T11:00:00Z",
+        "signedToStartTime": "2024-04-13T11:00:00Z",
         "message": ""
       },
       {
         "username": "289846",
         "priority": 0,
-        "time": "2024-04-13T11:00:00Z",
+        "signedToStartTime": "2024-04-13T11:00:00Z",
         "message": ""
       },
       {
         "username": "949973",
         "priority": 0,
-        "time": "2024-04-13T11:00:00Z",
+        "signedToStartTime": "2024-04-13T11:00:00Z",
         "message": ""
       },
       {
         "username": "531791",
         "priority": 0,
-        "time": "2024-04-13T11:00:00Z",
+        "signedToStartTime": "2024-04-13T11:00:00Z",
         "message": ""
       },
       {
         "username": "750262",
         "priority": 0,
-        "time": "2024-04-13T11:00:00Z",
+        "signedToStartTime": "2024-04-13T11:00:00Z",
         "message": ""
       }
     ],
@@ -3055,78 +3055,78 @@
     "updatedAt": "2024-04-13T09:14:45.081Z"
   },
   {
-    "game": { "programItemId": "p7507" },
+    "programItemId": "p7507",
     "userSignups": [
       {
         "username": "461092",
         "priority": 0,
-        "time": "2024-04-13T11:00:00Z",
+        "signedToStartTime": "2024-04-13T11:00:00Z",
         "message": ""
       },
       {
         "username": "336350",
         "priority": 0,
-        "time": "2024-04-13T11:00:00Z",
+        "signedToStartTime": "2024-04-13T11:00:00Z",
         "message": ""
       },
       {
         "username": "35452",
         "priority": 0,
-        "time": "2024-04-13T11:00:00Z",
+        "signedToStartTime": "2024-04-13T11:00:00Z",
         "message": ""
       },
       {
         "username": "209102",
         "priority": 0,
-        "time": "2024-04-13T11:00:00Z",
+        "signedToStartTime": "2024-04-13T11:00:00Z",
         "message": ""
       },
       {
         "username": "335573",
         "priority": 0,
-        "time": "2024-04-13T11:00:00Z",
+        "signedToStartTime": "2024-04-13T11:00:00Z",
         "message": ""
       },
       {
         "username": "890712",
         "priority": 0,
-        "time": "2024-04-13T11:00:00Z",
+        "signedToStartTime": "2024-04-13T11:00:00Z",
         "message": ""
       },
       {
         "username": "338762",
         "priority": 0,
-        "time": "2024-04-13T11:00:00Z",
+        "signedToStartTime": "2024-04-13T11:00:00Z",
         "message": ""
       },
       {
         "username": "59258",
         "priority": 0,
-        "time": "2024-04-13T11:00:00Z",
+        "signedToStartTime": "2024-04-13T11:00:00Z",
         "message": ""
       },
       {
         "username": "582570",
         "priority": 0,
-        "time": "2024-04-13T11:00:00Z",
+        "signedToStartTime": "2024-04-13T11:00:00Z",
         "message": ""
       },
       {
         "username": "135096",
         "priority": 0,
-        "time": "2024-04-13T11:00:00Z",
+        "signedToStartTime": "2024-04-13T11:00:00Z",
         "message": ""
       },
       {
         "username": "279946",
         "priority": 0,
-        "time": "2024-04-13T11:00:00Z",
+        "signedToStartTime": "2024-04-13T11:00:00Z",
         "message": ""
       },
       {
         "username": "722624",
         "priority": 0,
-        "time": "2024-04-13T11:00:00Z",
+        "signedToStartTime": "2024-04-13T11:00:00Z",
         "message": ""
       }
     ],
@@ -3135,132 +3135,132 @@
     "updatedAt": "2024-04-13T06:24:46.413Z"
   },
   {
-    "game": { "programItemId": "p7674" },
+    "programItemId": "p7674",
     "userSignups": [
       {
         "username": "125833",
         "priority": 0,
-        "time": "2024-04-13T14:00:00Z",
+        "signedToStartTime": "2024-04-13T14:00:00Z",
         "message": ""
       },
       {
         "username": "289846",
         "priority": 0,
-        "time": "2024-04-13T14:00:00Z",
+        "signedToStartTime": "2024-04-13T14:00:00Z",
         "message": ""
       },
       {
         "username": "223301",
         "priority": 0,
-        "time": "2024-04-13T14:00:00Z",
+        "signedToStartTime": "2024-04-13T14:00:00Z",
         "message": ""
       },
       {
         "username": "747453",
         "priority": 0,
-        "time": "2024-04-13T14:00:00Z",
+        "signedToStartTime": "2024-04-13T14:00:00Z",
         "message": ""
       },
       {
         "username": "420129",
         "priority": 0,
-        "time": "2024-04-13T14:00:00Z",
+        "signedToStartTime": "2024-04-13T14:00:00Z",
         "message": ""
       },
       {
         "username": "629506",
         "priority": 0,
-        "time": "2024-04-13T14:00:00Z",
+        "signedToStartTime": "2024-04-13T14:00:00Z",
         "message": ""
       },
       {
         "username": "198181",
         "priority": 0,
-        "time": "2024-04-13T14:00:00Z",
+        "signedToStartTime": "2024-04-13T14:00:00Z",
         "message": ""
       },
       {
         "username": "603034",
         "priority": 0,
-        "time": "2024-04-13T14:00:00Z",
+        "signedToStartTime": "2024-04-13T14:00:00Z",
         "message": ""
       },
       {
         "username": "987448",
         "priority": 0,
-        "time": "2024-04-13T14:00:00Z",
+        "signedToStartTime": "2024-04-13T14:00:00Z",
         "message": ""
       },
       {
         "username": "51084",
         "priority": 0,
-        "time": "2024-04-13T14:00:00Z",
+        "signedToStartTime": "2024-04-13T14:00:00Z",
         "message": ""
       },
       {
         "username": "185953",
         "priority": 0,
-        "time": "2024-04-13T14:00:00Z",
+        "signedToStartTime": "2024-04-13T14:00:00Z",
         "message": ""
       },
       {
         "username": "79108",
         "priority": 0,
-        "time": "2024-04-13T14:00:00Z",
+        "signedToStartTime": "2024-04-13T14:00:00Z",
         "message": ""
       },
       {
         "username": "519249",
         "priority": 0,
-        "time": "2024-04-13T14:00:00Z",
+        "signedToStartTime": "2024-04-13T14:00:00Z",
         "message": ""
       },
       {
         "username": "360266",
         "priority": 0,
-        "time": "2024-04-13T14:00:00Z",
+        "signedToStartTime": "2024-04-13T14:00:00Z",
         "message": ""
       },
       {
         "username": "955333",
         "priority": 0,
-        "time": "2024-04-13T14:00:00Z",
+        "signedToStartTime": "2024-04-13T14:00:00Z",
         "message": ""
       },
       {
         "username": "610752",
         "priority": 0,
-        "time": "2024-04-13T14:00:00Z",
+        "signedToStartTime": "2024-04-13T14:00:00Z",
         "message": ""
       },
       {
         "username": "102265",
         "priority": 0,
-        "time": "2024-04-13T14:00:00Z",
+        "signedToStartTime": "2024-04-13T14:00:00Z",
         "message": ""
       },
       {
         "username": "880386",
         "priority": 0,
-        "time": "2024-04-13T14:00:00Z",
+        "signedToStartTime": "2024-04-13T14:00:00Z",
         "message": ""
       },
       {
         "username": "58372",
         "priority": 0,
-        "time": "2024-04-13T14:00:00Z",
+        "signedToStartTime": "2024-04-13T14:00:00Z",
         "message": ""
       },
       {
         "username": "11222",
         "priority": 0,
-        "time": "2024-04-13T14:00:00Z",
+        "signedToStartTime": "2024-04-13T14:00:00Z",
         "message": ""
       },
       {
         "username": "949973",
         "priority": 0,
-        "time": "2024-04-13T14:00:00Z",
+        "signedToStartTime": "2024-04-13T14:00:00Z",
         "message": ""
       }
     ],
@@ -3269,96 +3269,96 @@
     "updatedAt": "2024-04-13T10:24:18.035Z"
   },
   {
-    "game": { "programItemId": "p7643" },
+    "programItemId": "p7643",
     "userSignups": [
       {
         "username": "40729",
         "priority": 0,
-        "time": "2024-04-13T12:00:00Z",
+        "signedToStartTime": "2024-04-13T12:00:00Z",
         "message": ""
       },
       {
         "username": "226296",
         "priority": 0,
-        "time": "2024-04-13T12:00:00Z",
+        "signedToStartTime": "2024-04-13T12:00:00Z",
         "message": ""
       },
       {
         "username": "361578",
         "priority": 0,
-        "time": "2024-04-13T12:00:00Z",
+        "signedToStartTime": "2024-04-13T12:00:00Z",
         "message": ""
       },
       {
         "username": "289846",
         "priority": 0,
-        "time": "2024-04-13T12:00:00Z",
+        "signedToStartTime": "2024-04-13T12:00:00Z",
         "message": ""
       },
       {
         "username": "601490",
         "priority": 0,
-        "time": "2024-04-13T12:00:00Z",
+        "signedToStartTime": "2024-04-13T12:00:00Z",
         "message": ""
       },
       {
         "username": "182168",
         "priority": 0,
-        "time": "2024-04-13T12:00:00Z",
+        "signedToStartTime": "2024-04-13T12:00:00Z",
         "message": ""
       },
       {
         "username": "585984",
         "priority": 0,
-        "time": "2024-04-13T12:00:00Z",
+        "signedToStartTime": "2024-04-13T12:00:00Z",
         "message": ""
       },
       {
         "username": "942771",
         "priority": 0,
-        "time": "2024-04-13T12:00:00Z",
+        "signedToStartTime": "2024-04-13T12:00:00Z",
         "message": ""
       },
       {
         "username": "205976",
         "priority": 0,
-        "time": "2024-04-13T12:00:00Z",
+        "signedToStartTime": "2024-04-13T12:00:00Z",
         "message": ""
       },
       {
         "username": "870907",
         "priority": 0,
-        "time": "2024-04-13T12:00:00Z",
+        "signedToStartTime": "2024-04-13T12:00:00Z",
         "message": ""
       },
       {
         "username": "629506",
         "priority": 0,
-        "time": "2024-04-13T12:00:00Z",
+        "signedToStartTime": "2024-04-13T12:00:00Z",
         "message": ""
       },
       {
         "username": "283302",
         "priority": 0,
-        "time": "2024-04-13T12:00:00Z",
+        "signedToStartTime": "2024-04-13T12:00:00Z",
         "message": ""
       },
       {
         "username": "969005",
         "priority": 0,
-        "time": "2024-04-13T12:00:00Z",
+        "signedToStartTime": "2024-04-13T12:00:00Z",
         "message": ""
       },
       {
         "username": "521030",
         "priority": 0,
-        "time": "2024-04-13T12:00:00Z",
+        "signedToStartTime": "2024-04-13T12:00:00Z",
         "message": ""
       },
       {
         "username": "209986",
         "priority": 0,
-        "time": "2024-04-13T12:00:00Z",
+        "signedToStartTime": "2024-04-13T12:00:00Z",
         "message": ""
       }
     ],
@@ -3367,60 +3367,60 @@
     "updatedAt": "2024-04-13T09:00:05.966Z"
   },
   {
-    "game": { "programItemId": "p7587" },
+    "programItemId": "p7587",
     "userSignups": [
       {
         "username": "135096",
         "priority": 0,
-        "time": "2024-04-13T15:00:00Z",
+        "signedToStartTime": "2024-04-13T15:00:00Z",
         "message": ""
       },
       {
         "username": "810388",
         "priority": 0,
-        "time": "2024-04-13T15:00:00Z",
+        "signedToStartTime": "2024-04-13T15:00:00Z",
         "message": ""
       },
       {
         "username": "517746",
         "priority": 0,
-        "time": "2024-04-13T15:00:00Z",
+        "signedToStartTime": "2024-04-13T15:00:00Z",
         "message": ""
       },
       {
         "username": "385635",
         "priority": 0,
-        "time": "2024-04-13T15:00:00Z",
+        "signedToStartTime": "2024-04-13T15:00:00Z",
         "message": ""
       },
       {
         "username": "52741",
         "priority": 0,
-        "time": "2024-04-13T15:00:00Z",
+        "signedToStartTime": "2024-04-13T15:00:00Z",
         "message": ""
       },
       {
         "username": "34087",
         "priority": 0,
-        "time": "2024-04-13T15:00:00Z",
+        "signedToStartTime": "2024-04-13T15:00:00Z",
         "message": ""
       },
       {
         "username": "307848",
         "priority": 0,
-        "time": "2024-04-13T15:00:00Z",
+        "signedToStartTime": "2024-04-13T15:00:00Z",
         "message": ""
       },
       {
         "username": "663676",
         "priority": 0,
-        "time": "2024-04-13T15:00:00Z",
+        "signedToStartTime": "2024-04-13T15:00:00Z",
         "message": ""
       },
       {
         "username": "144897",
         "priority": 0,
-        "time": "2024-04-13T15:00:00Z",
+        "signedToStartTime": "2024-04-13T15:00:00Z",
         "message": ""
       }
     ],
@@ -3429,12 +3429,12 @@
     "updatedAt": "2024-04-13T12:59:11.583Z"
   },
   {
-    "game": { "programItemId": "p7664" },
+    "programItemId": "p7664",
     "userSignups": [
       {
         "username": "101144",
         "priority": 0,
-        "time": "2024-04-13T08:00:00Z",
+        "signedToStartTime": "2024-04-13T08:00:00Z",
         "message": ""
       }
     ],
@@ -3443,54 +3443,54 @@
     "updatedAt": "2024-04-07T08:56:23.604Z"
   },
   {
-    "game": { "programItemId": "p7503" },
+    "programItemId": "p7503",
     "userSignups": [
       {
         "username": "719649",
         "priority": 0,
-        "time": "2024-04-13T11:00:00Z",
+        "signedToStartTime": "2024-04-13T11:00:00Z",
         "message": ""
       },
       {
         "username": "760388",
         "priority": 0,
-        "time": "2024-04-13T11:00:00Z",
+        "signedToStartTime": "2024-04-13T11:00:00Z",
         "message": ""
       },
       {
         "username": "216333",
         "priority": 0,
-        "time": "2024-04-13T11:00:00Z",
+        "signedToStartTime": "2024-04-13T11:00:00Z",
         "message": ""
       },
       {
         "username": "11006",
         "priority": 0,
-        "time": "2024-04-13T11:00:00Z",
+        "signedToStartTime": "2024-04-13T11:00:00Z",
         "message": ""
       },
       {
         "username": "81970",
         "priority": 0,
-        "time": "2024-04-13T11:00:00Z",
+        "signedToStartTime": "2024-04-13T11:00:00Z",
         "message": ""
       },
       {
         "username": "497106",
         "priority": 0,
-        "time": "2024-04-13T11:00:00Z",
+        "signedToStartTime": "2024-04-13T11:00:00Z",
         "message": ""
       },
       {
         "username": "928293",
         "priority": 0,
-        "time": "2024-04-13T11:00:00Z",
+        "signedToStartTime": "2024-04-13T11:00:00Z",
         "message": ""
       },
       {
         "username": "938592",
         "priority": 0,
-        "time": "2024-04-13T11:00:00Z",
+        "signedToStartTime": "2024-04-13T11:00:00Z",
         "message": ""
       }
     ],
@@ -3499,102 +3499,102 @@
     "updatedAt": "2024-04-13T10:43:01.985Z"
   },
   {
-    "game": { "programItemId": "p7680" },
+    "programItemId": "p7680",
     "userSignups": [
       {
         "username": "368974",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       },
       {
         "username": "719649",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       },
       {
         "username": "154397",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       },
       {
         "username": "59258",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       },
       {
         "username": "810388",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       },
       {
         "username": "223301",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       },
       {
         "username": "729691",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       },
       {
         "username": "969005",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       },
       {
         "username": "715742",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       },
       {
         "username": "498777",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       },
       {
         "username": "327339",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       },
       {
         "username": "528221",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       },
       {
         "username": "544924",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       },
       {
         "username": "938592",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       },
       {
         "username": "34087",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       },
       {
         "username": "804923",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       }
     ],
@@ -3603,96 +3603,96 @@
     "updatedAt": "2024-04-12T10:54:31.139Z"
   },
   {
-    "game": { "programItemId": "p7921" },
+    "programItemId": "p7921",
     "userSignups": [
       {
         "username": "708345",
         "priority": 0,
-        "time": "2024-04-13T07:00:00Z",
+        "signedToStartTime": "2024-04-13T07:00:00Z",
         "message": ""
       },
       {
         "username": "582570",
         "priority": 0,
-        "time": "2024-04-13T07:00:00Z",
+        "signedToStartTime": "2024-04-13T07:00:00Z",
         "message": ""
       },
       {
         "username": "890712",
         "priority": 0,
-        "time": "2024-04-13T07:00:00Z",
+        "signedToStartTime": "2024-04-13T07:00:00Z",
         "message": ""
       },
       {
         "username": "335573",
         "priority": 0,
-        "time": "2024-04-13T07:00:00Z",
+        "signedToStartTime": "2024-04-13T07:00:00Z",
         "message": ""
       },
       {
         "username": "192086",
         "priority": 0,
-        "time": "2024-04-13T07:00:00Z",
+        "signedToStartTime": "2024-04-13T07:00:00Z",
         "message": ""
       },
       {
         "username": "810388",
         "priority": 0,
-        "time": "2024-04-13T07:00:00Z",
+        "signedToStartTime": "2024-04-13T07:00:00Z",
         "message": ""
       },
       {
         "username": "363514",
         "priority": 0,
-        "time": "2024-04-13T07:00:00Z",
+        "signedToStartTime": "2024-04-13T07:00:00Z",
         "message": ""
       },
       {
         "username": "855833",
         "priority": 0,
-        "time": "2024-04-13T07:00:00Z",
+        "signedToStartTime": "2024-04-13T07:00:00Z",
         "message": ""
       },
       {
         "username": "145174",
         "priority": 0,
-        "time": "2024-04-13T07:00:00Z",
+        "signedToStartTime": "2024-04-13T07:00:00Z",
         "message": ""
       },
       {
         "username": "191172",
         "priority": 0,
-        "time": "2024-04-13T07:00:00Z",
+        "signedToStartTime": "2024-04-13T07:00:00Z",
         "message": ""
       },
       {
         "username": "880059",
         "priority": 0,
-        "time": "2024-04-13T07:00:00Z",
+        "signedToStartTime": "2024-04-13T07:00:00Z",
         "message": ""
       },
       {
         "username": "987448",
         "priority": 0,
-        "time": "2024-04-13T07:00:00Z",
+        "signedToStartTime": "2024-04-13T07:00:00Z",
         "message": ""
       },
       {
         "username": "327339",
         "priority": 0,
-        "time": "2024-04-13T07:00:00Z",
+        "signedToStartTime": "2024-04-13T07:00:00Z",
         "message": ""
       },
       {
         "username": "297577",
         "priority": 0,
-        "time": "2024-04-13T07:00:00Z",
+        "signedToStartTime": "2024-04-13T07:00:00Z",
         "message": ""
       },
       {
         "username": "185953",
         "priority": 0,
-        "time": "2024-04-13T07:00:00Z",
+        "signedToStartTime": "2024-04-13T07:00:00Z",
         "message": ""
       }
     ],
@@ -3701,24 +3701,24 @@
     "updatedAt": "2024-04-13T06:04:48.647Z"
   },
   {
-    "game": { "programItemId": "p8151" },
+    "programItemId": "p8151",
     "userSignups": [
       {
         "username": "209102",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       },
       {
         "username": "209986",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       },
       {
         "username": "750262",
         "priority": 0,
-        "time": "2024-04-12T11:00:00Z",
+        "signedToStartTime": "2024-04-12T11:00:00Z",
         "message": ""
       }
     ],

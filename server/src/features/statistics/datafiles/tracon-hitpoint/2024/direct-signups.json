@@ -1,29 +1,29 @@
 [
   {
-    "programItem": { "programItemId": "timantin-savyvirhe-2" },
+    "programItemId": "timantin-savyvirhe-2",
     "userSignups": [
       {
         "username": "720173",
         "priority": 0,
-        "time": "2024-11-02T09:00:00Z",
+        "signedToStartTime": "2024-11-02T09:00:00Z",
         "message": ""
       },
       {
         "username": "364272",
         "priority": 0,
-        "time": "2024-11-02T09:00:00Z",
+        "signedToStartTime": "2024-11-02T09:00:00Z",
         "message": ""
       },
       {
         "username": "194249",
         "priority": 0,
-        "time": "2024-11-02T09:00:00Z",
+        "signedToStartTime": "2024-11-02T09:00:00Z",
         "message": ""
       },
       {
         "username": "704351",
         "priority": 0,
-        "time": "2024-11-02T09:00:00Z",
+        "signedToStartTime": "2024-11-02T09:00:00Z",
         "message": ""
       }
     ],
@@ -32,36 +32,36 @@
     "updatedAt": "2024-11-03T12:00:05.36Z"
   },
   {
-    "programItem": { "programItemId": "lollo-praedor" },
+    "programItemId": "lollo-praedor",
     "userSignups": [
       {
         "username": "646848",
         "priority": 0,
-        "time": "2024-11-02T09:00:00Z",
+        "signedToStartTime": "2024-11-02T09:00:00Z",
         "message": ""
       },
       {
         "username": "35578",
         "priority": 0,
-        "time": "2024-11-02T09:00:00Z",
+        "signedToStartTime": "2024-11-02T09:00:00Z",
         "message": ""
       },
       {
         "username": "325029",
         "priority": 0,
-        "time": "2024-11-02T09:00:00Z",
+        "signedToStartTime": "2024-11-02T09:00:00Z",
         "message": ""
       },
       {
         "username": "623696",
         "priority": 0,
-        "time": "2024-11-02T09:00:00Z",
+        "signedToStartTime": "2024-11-02T09:00:00Z",
         "message": ""
       },
       {
         "username": "751445",
         "priority": 0,
-        "time": "2024-11-02T09:00:00Z",
+        "signedToStartTime": "2024-11-02T09:00:00Z",
         "message": ""
       }
     ],
@@ -70,30 +70,30 @@
     "updatedAt": "2024-11-03T12:00:05.36Z"
   },
   {
-    "programItem": { "programItemId": "pelipoyta-ry-peluuttaa-ryuutama" },
+    "programItemId": "pelipoyta-ry-peluuttaa-ryuutama",
     "userSignups": [
       {
         "username": "430633",
         "priority": 0,
-        "time": "2024-11-02T09:00:00Z",
+        "signedToStartTime": "2024-11-02T09:00:00Z",
         "message": ""
       },
       {
         "username": "599171",
         "priority": 0,
-        "time": "2024-11-02T09:00:00Z",
+        "signedToStartTime": "2024-11-02T09:00:00Z",
         "message": ""
       },
       {
         "username": "879999",
         "priority": 0,
-        "time": "2024-11-02T09:00:00Z",
+        "signedToStartTime": "2024-11-02T09:00:00Z",
         "message": ""
       },
       {
         "username": "603247",
         "priority": 0,
-        "time": "2024-11-02T09:00:00Z",
+        "signedToStartTime": "2024-11-02T09:00:00Z",
         "message": ""
       }
     ],
@@ -102,36 +102,36 @@
     "updatedAt": "2024-11-03T12:00:05.36Z"
   },
   {
-    "programItem": { "programItemId": "city-of-the-scorpion-god" },
+    "programItemId": "city-of-the-scorpion-god",
     "userSignups": [
       {
         "username": "691088",
         "priority": 2,
-        "time": "2024-11-02T17:00:00Z",
+        "signedToStartTime": "2024-11-02T17:00:00Z",
         "message": ""
       },
       {
         "username": "194249",
         "priority": 1,
-        "time": "2024-11-02T17:00:00Z",
+        "signedToStartTime": "2024-11-02T17:00:00Z",
         "message": ""
       },
       {
         "username": "222718",
         "priority": 1,
-        "time": "2024-11-02T17:00:00Z",
+        "signedToStartTime": "2024-11-02T17:00:00Z",
         "message": ""
       },
       {
         "username": "758706",
         "priority": 1,
-        "time": "2024-11-02T17:00:00Z",
+        "signedToStartTime": "2024-11-02T17:00:00Z",
         "message": ""
       },
       {
         "username": "325029",
         "priority": 1,
-        "time": "2024-11-02T17:00:00Z",
+        "signedToStartTime": "2024-11-02T17:00:00Z",
         "message": ""
       }
     ],
@@ -140,36 +140,36 @@
     "updatedAt": "2024-11-03T12:00:05.36Z"
   },
   {
-    "programItem": { "programItemId": "duty-unto-death-a-dragon-age-rpg" },
+    "programItemId": "duty-unto-death-a-dragon-age-rpg",
     "userSignups": [
       {
         "username": "781504",
         "priority": 0,
-        "time": "2024-11-02T09:00:00Z",
+        "signedToStartTime": "2024-11-02T09:00:00Z",
         "message": ""
       },
       {
         "username": "456125",
         "priority": 0,
-        "time": "2024-11-02T09:00:00Z",
+        "signedToStartTime": "2024-11-02T09:00:00Z",
         "message": ""
       },
       {
         "username": "570261",
         "priority": 0,
-        "time": "2024-11-02T09:00:00Z",
+        "signedToStartTime": "2024-11-02T09:00:00Z",
         "message": ""
       },
       {
         "username": "396144",
         "priority": 0,
-        "time": "2024-11-02T09:00:00Z",
+        "signedToStartTime": "2024-11-02T09:00:00Z",
         "message": ""
       },
       {
         "username": "662969",
         "priority": 0,
-        "time": "2024-11-02T09:00:00Z",
+        "signedToStartTime": "2024-11-02T09:00:00Z",
         "message": ""
       }
     ],
@@ -178,36 +178,36 @@
     "updatedAt": "2024-11-03T12:00:05.36Z"
   },
   {
-    "programItem": { "programItemId": "kirottu-matka" },
+    "programItemId": "kirottu-matka",
     "userSignups": [
       {
         "username": "80282",
         "priority": 0,
-        "time": "2024-11-02T09:00:00Z",
+        "signedToStartTime": "2024-11-02T09:00:00Z",
         "message": ""
       },
       {
         "username": "833504",
         "priority": 0,
-        "time": "2024-11-02T09:00:00Z",
+        "signedToStartTime": "2024-11-02T09:00:00Z",
         "message": ""
       },
       {
         "username": "729322",
         "priority": 0,
-        "time": "2024-11-02T09:00:00Z",
+        "signedToStartTime": "2024-11-02T09:00:00Z",
         "message": ""
       },
       {
         "username": "734782",
         "priority": 0,
-        "time": "2024-11-02T09:00:00Z",
+        "signedToStartTime": "2024-11-02T09:00:00Z",
         "message": ""
       },
       {
         "username": "565592",
         "priority": 0,
-        "time": "2024-11-02T09:00:00Z",
+        "signedToStartTime": "2024-11-02T09:00:00Z",
         "message": ""
       }
     ],
@@ -216,30 +216,30 @@
     "updatedAt": "2024-11-03T12:00:05.36Z"
   },
   {
-    "programItem": { "programItemId": "deathmatch-island" },
+    "programItemId": "deathmatch-island",
     "userSignups": [
       {
         "username": "534154",
         "priority": 0,
-        "time": "2024-11-02T09:00:00Z",
+        "signedToStartTime": "2024-11-02T09:00:00Z",
         "message": ""
       },
       {
         "username": "285472",
         "priority": 0,
-        "time": "2024-11-02T09:00:00Z",
+        "signedToStartTime": "2024-11-02T09:00:00Z",
         "message": ""
       },
       {
         "username": "468504",
         "priority": 0,
-        "time": "2024-11-02T09:00:00Z",
+        "signedToStartTime": "2024-11-02T09:00:00Z",
         "message": ""
       },
       {
         "username": "990107",
         "priority": 0,
-        "time": "2024-11-02T09:00:00Z",
+        "signedToStartTime": "2024-11-02T09:00:00Z",
         "message": ""
       }
     ],
@@ -248,59 +248,57 @@
     "updatedAt": "2024-11-03T12:00:05.36Z"
   },
   {
-    "programItem": { "programItemId": "hahmotyopaja" },
+    "programItemId": "hahmotyopaja",
     "userSignups": [],
     "count": 0,
     "createdAt": "2024-10-30T19:53:31.576Z",
     "updatedAt": "2024-11-03T12:00:05.36Z"
   },
   {
-    "programItem": { "programItemId": "pelia-pyynnosta-lauantai" },
+    "programItemId": "pelia-pyynnosta-lauantai",
     "userSignups": [],
     "count": 0,
     "createdAt": "2024-10-30T19:53:31.576Z",
     "updatedAt": "2024-11-03T12:00:05.36Z"
   },
   {
-    "programItem": { "programItemId": "eco-mofos-into-the-antlions-den" },
+    "programItemId": "eco-mofos-into-the-antlions-den",
     "userSignups": [],
     "count": 0,
     "createdAt": "2024-10-30T19:53:31.576Z",
     "updatedAt": "2024-11-03T12:00:05.36Z"
   },
   {
-    "programItem": {
-      "programItemId": "pathfinder-society-special-3-99-fate-in-the-future"
-    },
+    "programItemId": "pathfinder-society-special-3-99-fate-in-the-future",
     "userSignups": [
       {
         "username": "934216",
         "priority": 0,
-        "time": "2024-11-02T10:00:00Z",
+        "signedToStartTime": "2024-11-02T10:00:00Z",
         "message": ""
       },
       {
         "username": "138767",
         "priority": 0,
-        "time": "2024-11-02T10:00:00Z",
+        "signedToStartTime": "2024-11-02T10:00:00Z",
         "message": ""
       },
       {
         "username": "739012",
         "priority": 0,
-        "time": "2024-11-02T10:00:00Z",
+        "signedToStartTime": "2024-11-02T10:00:00Z",
         "message": ""
       },
       {
         "username": "635844",
         "priority": 0,
-        "time": "2024-11-02T10:00:00Z",
+        "signedToStartTime": "2024-11-02T10:00:00Z",
         "message": ""
       },
       {
         "username": "132985",
         "priority": 0,
-        "time": "2024-11-02T10:00:00Z",
+        "signedToStartTime": "2024-11-02T10:00:00Z",
         "message": ""
       }
     ],
@@ -309,30 +307,30 @@
     "updatedAt": "2024-11-03T12:00:05.36Z"
   },
   {
-    "programItem": { "programItemId": "offworlders-kosmoksen-karsein-keikka" },
+    "programItemId": "offworlders-kosmoksen-karsein-keikka",
     "userSignups": [
       {
         "username": "203638",
         "priority": 1,
-        "time": "2024-11-02T12:00:00Z",
+        "signedToStartTime": "2024-11-02T12:00:00Z",
         "message": ""
       },
       {
         "username": "117894",
         "priority": 1,
-        "time": "2024-11-02T12:00:00Z",
+        "signedToStartTime": "2024-11-02T12:00:00Z",
         "message": ""
       },
       {
         "username": "318838",
         "priority": 1,
-        "time": "2024-11-02T12:00:00Z",
+        "signedToStartTime": "2024-11-02T12:00:00Z",
         "message": ""
       },
       {
         "username": "895217",
         "priority": 1,
-        "time": "2024-11-02T12:00:00Z",
+        "signedToStartTime": "2024-11-02T12:00:00Z",
         "message": ""
       }
     ],
@@ -341,49 +339,49 @@
     "updatedAt": "2024-11-03T12:00:05.36Z"
   },
   {
-    "programItem": { "programItemId": "sakaheitto-livepelautus" },
+    "programItemId": "sakaheitto-livepelautus",
     "userSignups": [],
     "count": 0,
     "createdAt": "2024-10-30T19:53:31.576Z",
     "updatedAt": "2024-11-03T12:00:05.36Z"
   },
   {
-    "programItem": { "programItemId": "kuonojoen-lohikaarme" },
+    "programItemId": "kuonojoen-lohikaarme",
     "userSignups": [
       {
         "username": "335134",
         "priority": 1,
-        "time": "2024-11-02T13:00:00Z",
+        "signedToStartTime": "2024-11-02T13:00:00Z",
         "message": ""
       },
       {
         "username": "937554",
         "priority": 1,
-        "time": "2024-11-02T13:00:00Z",
+        "signedToStartTime": "2024-11-02T13:00:00Z",
         "message": ""
       },
       {
         "username": "737061",
         "priority": 1,
-        "time": "2024-11-02T13:00:00Z",
+        "signedToStartTime": "2024-11-02T13:00:00Z",
         "message": ""
       },
       {
         "username": "316718",
         "priority": 1,
-        "time": "2024-11-02T13:00:00Z",
+        "signedToStartTime": "2024-11-02T13:00:00Z",
         "message": ""
       },
       {
         "username": "334478",
         "priority": 1,
-        "time": "2024-11-02T13:00:00Z",
+        "signedToStartTime": "2024-11-02T13:00:00Z",
         "message": ""
       },
       {
         "username": "830589",
         "priority": 1,
-        "time": "2024-11-02T13:00:00Z",
+        "signedToStartTime": "2024-11-02T13:00:00Z",
         "message": ""
       }
     ],
@@ -392,36 +390,36 @@
     "updatedAt": "2024-11-03T12:00:05.36Z"
   },
   {
-    "programItem": { "programItemId": "ruhtinaan-aika" },
+    "programItemId": "ruhtinaan-aika",
     "userSignups": [
       {
         "username": "729322",
         "priority": 3,
-        "time": "2024-11-02T14:00:00Z",
+        "signedToStartTime": "2024-11-02T14:00:00Z",
         "message": ""
       },
       {
         "username": "720173",
         "priority": 2,
-        "time": "2024-11-02T14:00:00Z",
+        "signedToStartTime": "2024-11-02T14:00:00Z",
         "message": ""
       },
       {
         "username": "247688",
         "priority": 1,
-        "time": "2024-11-02T14:00:00Z",
+        "signedToStartTime": "2024-11-02T14:00:00Z",
         "message": ""
       },
       {
         "username": "734782",
         "priority": 2,
-        "time": "2024-11-02T14:00:00Z",
+        "signedToStartTime": "2024-11-02T14:00:00Z",
         "message": ""
       },
       {
         "username": "364272",
         "priority": 1,
-        "time": "2024-11-02T14:00:00Z",
+        "signedToStartTime": "2024-11-02T14:00:00Z",
         "message": ""
       }
     ],
@@ -430,48 +428,48 @@
     "updatedAt": "2024-11-03T12:00:05.36Z"
   },
   {
-    "programItem": { "programItemId": "larppimiekkailuworkshop" },
+    "programItemId": "larppimiekkailuworkshop",
     "userSignups": [
       {
         "username": "25827",
         "priority": 1,
-        "time": "2024-11-02T13:00:00Z",
+        "signedToStartTime": "2024-11-02T13:00:00Z",
         "message": ""
       },
       {
         "username": "508384",
         "priority": 3,
-        "time": "2024-11-02T13:00:00Z",
+        "signedToStartTime": "2024-11-02T13:00:00Z",
         "message": ""
       },
       {
         "username": "106163",
         "priority": 3,
-        "time": "2024-11-02T13:00:00Z",
+        "signedToStartTime": "2024-11-02T13:00:00Z",
         "message": ""
       },
       {
         "username": "613300",
         "priority": 3,
-        "time": "2024-11-02T13:00:00Z",
+        "signedToStartTime": "2024-11-02T13:00:00Z",
         "message": ""
       },
       {
         "username": "322086",
         "priority": 3,
-        "time": "2024-11-02T13:00:00Z",
+        "signedToStartTime": "2024-11-02T13:00:00Z",
         "message": ""
       },
       {
         "username": "599344",
         "priority": 3,
-        "time": "2024-11-02T13:00:00Z",
+        "signedToStartTime": "2024-11-02T13:00:00Z",
         "message": ""
       },
       {
         "username": "802874",
         "priority": 0,
-        "time": "2024-11-02T13:00:00Z",
+        "signedToStartTime": "2024-11-02T13:00:00Z",
         "message": ""
       }
     ],
@@ -480,30 +478,30 @@
     "updatedAt": "2024-11-03T12:00:05.36Z"
   },
   {
-    "programItem": { "programItemId": "mates-dates-and-sleepovers" },
+    "programItemId": "mates-dates-and-sleepovers",
     "userSignups": [
       {
         "username": "117894",
         "priority": 0,
-        "time": "2024-11-02T09:00:00Z",
+        "signedToStartTime": "2024-11-02T09:00:00Z",
         "message": ""
       },
       {
         "username": "222718",
         "priority": 0,
-        "time": "2024-11-02T09:00:00Z",
+        "signedToStartTime": "2024-11-02T09:00:00Z",
         "message": ""
       },
       {
         "username": "612118",
         "priority": 0,
-        "time": "2024-11-02T09:00:00Z",
+        "signedToStartTime": "2024-11-02T09:00:00Z",
         "message": ""
       },
       {
         "username": "318838",
         "priority": 0,
-        "time": "2024-11-02T09:00:00Z",
+        "signedToStartTime": "2024-11-02T09:00:00Z",
         "message": ""
       }
     ],
@@ -512,38 +510,36 @@
     "updatedAt": "2024-11-03T12:00:05.36Z"
   },
   {
-    "programItem": {
-      "programItemId": "space-1889-pakkolasku-venuksen-viidakkoon"
-    },
+    "programItemId": "space-1889-pakkolasku-venuksen-viidakkoon",
     "userSignups": [
       {
         "username": "833504",
         "priority": 1,
-        "time": "2024-11-02T14:00:00Z",
+        "signedToStartTime": "2024-11-02T14:00:00Z",
         "message": ""
       },
       {
         "username": "430633",
         "priority": 1,
-        "time": "2024-11-02T14:00:00Z",
+        "signedToStartTime": "2024-11-02T14:00:00Z",
         "message": ""
       },
       {
         "username": "752423",
         "priority": 1,
-        "time": "2024-11-02T14:00:00Z",
+        "signedToStartTime": "2024-11-02T14:00:00Z",
         "message": ""
       },
       {
         "username": "819385",
         "priority": 1,
-        "time": "2024-11-02T14:00:00Z",
+        "signedToStartTime": "2024-11-02T14:00:00Z",
         "message": ""
       },
       {
         "username": "916303",
         "priority": 1,
-        "time": "2024-11-02T14:00:00Z",
+        "signedToStartTime": "2024-11-02T14:00:00Z",
         "message": ""
       }
     ],
@@ -552,18 +548,18 @@
     "updatedAt": "2024-11-03T12:00:05.36Z"
   },
   {
-    "programItem": { "programItemId": "toivottavasti-kukaan-ei-huomaa-2" },
+    "programItemId": "toivottavasti-kukaan-ei-huomaa-2",
     "userSignups": [
       {
         "username": "934216",
         "priority": 1,
-        "time": "2024-11-02T14:00:00Z",
+        "signedToStartTime": "2024-11-02T14:00:00Z",
         "message": ""
       },
       {
         "username": "415137",
         "priority": 2,
-        "time": "2024-11-02T14:00:00Z",
+        "signedToStartTime": "2024-11-02T14:00:00Z",
         "message": ""
       }
     ],
@@ -572,18 +568,18 @@
     "updatedAt": "2024-11-03T12:00:05.36Z"
   },
   {
-    "programItem": { "programItemId": "mysteerien-maatila" },
+    "programItemId": "mysteerien-maatila",
     "userSignups": [
       {
         "username": "456125",
         "priority": 0,
-        "time": "2024-11-02T15:00:00Z",
+        "signedToStartTime": "2024-11-02T15:00:00Z",
         "message": ""
       },
       {
         "username": "971949",
         "priority": 0,
-        "time": "2024-11-02T15:00:00Z",
+        "signedToStartTime": "2024-11-02T15:00:00Z",
         "message": ""
       }
     ],
@@ -592,36 +588,36 @@
     "updatedAt": "2024-11-03T12:00:05.36Z"
   },
   {
-    "programItem": { "programItemId": "ihmiskarjujen-yo-night-of-the-hogmen" },
+    "programItemId": "ihmiskarjujen-yo-night-of-the-hogmen",
     "userSignups": [
       {
         "username": "816005",
         "priority": 1,
-        "time": "2024-11-02T15:00:00Z",
+        "signedToStartTime": "2024-11-02T15:00:00Z",
         "message": ""
       },
       {
         "username": "137204",
         "priority": 1,
-        "time": "2024-11-02T15:00:00Z",
+        "signedToStartTime": "2024-11-02T15:00:00Z",
         "message": ""
       },
       {
         "username": "982326",
         "priority": 1,
-        "time": "2024-11-02T15:00:00Z",
+        "signedToStartTime": "2024-11-02T15:00:00Z",
         "message": ""
       },
       {
         "username": "871734",
         "priority": 1,
-        "time": "2024-11-02T15:00:00Z",
+        "signedToStartTime": "2024-11-02T15:00:00Z",
         "message": ""
       },
       {
         "username": "556204",
         "priority": 0,
-        "time": "2024-11-02T15:00:00Z",
+        "signedToStartTime": "2024-11-02T15:00:00Z",
         "message": ""
       }
     ],
@@ -630,42 +626,42 @@
     "updatedAt": "2024-11-03T12:00:05.36Z"
   },
   {
-    "programItem": { "programItemId": "red-tundra" },
+    "programItemId": "red-tundra",
     "userSignups": [
       {
         "username": "80282",
         "priority": 1,
-        "time": "2024-11-02T15:00:00Z",
+        "signedToStartTime": "2024-11-02T15:00:00Z",
         "message": ""
       },
       {
         "username": "468504",
         "priority": 2,
-        "time": "2024-11-02T15:00:00Z",
+        "signedToStartTime": "2024-11-02T15:00:00Z",
         "message": ""
       },
       {
         "username": "781504",
         "priority": 1,
-        "time": "2024-11-02T15:00:00Z",
+        "signedToStartTime": "2024-11-02T15:00:00Z",
         "message": ""
       },
       {
         "username": "189803",
         "priority": 1,
-        "time": "2024-11-02T15:00:00Z",
+        "signedToStartTime": "2024-11-02T15:00:00Z",
         "message": ""
       },
       {
         "username": "132985",
         "priority": 1,
-        "time": "2024-11-02T15:00:00Z",
+        "signedToStartTime": "2024-11-02T15:00:00Z",
         "message": ""
       },
       {
         "username": "908239",
         "priority": 1,
-        "time": "2024-11-02T15:00:00Z",
+        "signedToStartTime": "2024-11-02T15:00:00Z",
         "message": ""
       }
     ],
@@ -674,30 +670,30 @@
     "updatedAt": "2024-11-03T12:00:05.36Z"
   },
   {
-    "programItem": { "programItemId": "juokse-juokse-kultaseni" },
+    "programItemId": "juokse-juokse-kultaseni",
     "userSignups": [
       {
         "username": "729322",
         "priority": 1,
-        "time": "2024-11-02T16:00:00Z",
+        "signedToStartTime": "2024-11-02T16:00:00Z",
         "message": ""
       },
       {
         "username": "998206",
         "priority": 1,
-        "time": "2024-11-02T16:00:00Z",
+        "signedToStartTime": "2024-11-02T16:00:00Z",
         "message": ""
       },
       {
         "username": "706083",
         "priority": 1,
-        "time": "2024-11-02T16:00:00Z",
+        "signedToStartTime": "2024-11-02T16:00:00Z",
         "message": ""
       },
       {
         "username": "982821",
         "priority": 1,
-        "time": "2024-11-02T16:00:00Z",
+        "signedToStartTime": "2024-11-02T16:00:00Z",
         "message": ""
       }
     ],
@@ -706,42 +702,42 @@
     "updatedAt": "2024-11-03T12:00:05.36Z"
   },
   {
-    "programItem": { "programItemId": "praedor-kirotut-kuninkaanvaalit-2" },
+    "programItemId": "praedor-kirotut-kuninkaanvaalit-2",
     "userSignups": [
       {
         "username": "285472",
         "priority": 1,
-        "time": "2024-11-02T17:00:00Z",
+        "signedToStartTime": "2024-11-02T17:00:00Z",
         "message": ""
       },
       {
         "username": "720173",
         "priority": 1,
-        "time": "2024-11-02T17:00:00Z",
+        "signedToStartTime": "2024-11-02T17:00:00Z",
         "message": ""
       },
       {
         "username": "445334",
         "priority": 1,
-        "time": "2024-11-02T17:00:00Z",
+        "signedToStartTime": "2024-11-02T17:00:00Z",
         "message": ""
       },
       {
         "username": "623085",
         "priority": 1,
-        "time": "2024-11-02T17:00:00Z",
+        "signedToStartTime": "2024-11-02T17:00:00Z",
         "message": ""
       },
       {
         "username": "895217",
         "priority": 2,
-        "time": "2024-11-02T17:00:00Z",
+        "signedToStartTime": "2024-11-02T17:00:00Z",
         "message": ""
       },
       {
         "username": "700648",
         "priority": 1,
-        "time": "2024-11-02T17:00:00Z",
+        "signedToStartTime": "2024-11-02T17:00:00Z",
         "message": ""
       }
     ],
@@ -750,30 +746,30 @@
     "updatedAt": "2024-11-03T12:00:05.36Z"
   },
   {
-    "programItem": { "programItemId": "alice-is-missing" },
+    "programItemId": "alice-is-missing",
     "userSignups": [
       {
         "username": "612118",
         "priority": 1,
-        "time": "2024-11-02T17:00:00Z",
+        "signedToStartTime": "2024-11-02T17:00:00Z",
         "message": ""
       },
       {
         "username": "133244",
         "priority": 1,
-        "time": "2024-11-02T17:00:00Z",
+        "signedToStartTime": "2024-11-02T17:00:00Z",
         "message": ""
       },
       {
         "username": "646848",
         "priority": 1,
-        "time": "2024-11-02T17:00:00Z",
+        "signedToStartTime": "2024-11-02T17:00:00Z",
         "message": ""
       },
       {
         "username": "35578",
         "priority": 1,
-        "time": "2024-11-02T17:00:00Z",
+        "signedToStartTime": "2024-11-02T17:00:00Z",
         "message": ""
       }
     ],
@@ -782,24 +778,24 @@
     "updatedAt": "2024-11-03T12:00:05.36Z"
   },
   {
-    "programItem": { "programItemId": "frendeja-kundeja-ja-pullonpyoritysta" },
+    "programItemId": "frendeja-kundeja-ja-pullonpyoritysta",
     "userSignups": [
       {
         "username": "662977",
         "priority": 1,
-        "time": "2024-11-02T18:00:00Z",
+        "signedToStartTime": "2024-11-02T18:00:00Z",
         "message": ""
       },
       {
         "username": "712290",
         "priority": 1,
-        "time": "2024-11-02T18:00:00Z",
+        "signedToStartTime": "2024-11-02T18:00:00Z",
         "message": ""
       },
       {
         "username": "975534",
         "priority": 0,
-        "time": "2024-11-02T18:00:00Z",
+        "signedToStartTime": "2024-11-02T18:00:00Z",
         "message": ""
       }
     ],
@@ -808,43 +804,43 @@
     "updatedAt": "2024-11-03T12:00:05.36Z"
   },
   {
-    "programItem": { "programItemId": "hahmotyopaja-2" },
+    "programItemId": "hahmotyopaja-2",
     "userSignups": [],
     "count": 0,
     "createdAt": "2024-10-30T19:53:31.577Z",
     "updatedAt": "2024-11-03T12:00:05.36Z"
   },
   {
-    "programItem": { "programItemId": "kirottu-matka-2" },
+    "programItemId": "kirottu-matka-2",
     "userSignups": [
       {
         "username": "374030",
         "priority": 1,
-        "time": "2024-11-02T18:00:00Z",
+        "signedToStartTime": "2024-11-02T18:00:00Z",
         "message": ""
       },
       {
         "username": "430633",
         "priority": 1,
-        "time": "2024-11-02T18:00:00Z",
+        "signedToStartTime": "2024-11-02T18:00:00Z",
         "message": ""
       },
       {
         "username": "647326",
         "priority": 1,
-        "time": "2024-11-02T18:00:00Z",
+        "signedToStartTime": "2024-11-02T18:00:00Z",
         "message": ""
       },
       {
         "username": "751445",
         "priority": 1,
-        "time": "2024-11-02T18:00:00Z",
+        "signedToStartTime": "2024-11-02T18:00:00Z",
         "message": ""
       },
       {
         "username": "623696",
         "priority": 1,
-        "time": "2024-11-02T18:00:00Z",
+        "signedToStartTime": "2024-11-02T18:00:00Z",
         "message": ""
       }
     ],
@@ -853,36 +849,36 @@
     "updatedAt": "2024-11-03T12:00:05.36Z"
   },
   {
-    "programItem": { "programItemId": "alien-uscss-traconis-2" },
+    "programItemId": "alien-uscss-traconis-2",
     "userSignups": [
       {
         "username": "934216",
         "priority": 1,
-        "time": "2024-11-02T18:00:00Z",
+        "signedToStartTime": "2024-11-02T18:00:00Z",
         "message": ""
       },
       {
         "username": "456125",
         "priority": 1,
-        "time": "2024-11-02T18:00:00Z",
+        "signedToStartTime": "2024-11-02T18:00:00Z",
         "message": ""
       },
       {
         "username": "752423",
         "priority": 1,
-        "time": "2024-11-02T18:00:00Z",
+        "signedToStartTime": "2024-11-02T18:00:00Z",
         "message": ""
       },
       {
         "username": "819385",
         "priority": 1,
-        "time": "2024-11-02T18:00:00Z",
+        "signedToStartTime": "2024-11-02T18:00:00Z",
         "message": ""
       },
       {
         "username": "916303",
         "priority": 1,
-        "time": "2024-11-02T18:00:00Z",
+        "signedToStartTime": "2024-11-02T18:00:00Z",
         "message": ""
       }
     ],
@@ -891,30 +887,30 @@
     "updatedAt": "2024-11-03T12:00:05.36Z"
   },
   {
-    "programItem": { "programItemId": "alavilla-mailla" },
+    "programItemId": "alavilla-mailla",
     "userSignups": [
       {
         "username": "829872",
         "priority": 1,
-        "time": "2024-11-03T09:00:00Z",
+        "signedToStartTime": "2024-11-03T09:00:00Z",
         "message": ""
       },
       {
         "username": "96725",
         "priority": 2,
-        "time": "2024-11-03T09:00:00Z",
+        "signedToStartTime": "2024-11-03T09:00:00Z",
         "message": ""
       },
       {
         "username": "299876",
         "priority": 2,
-        "time": "2024-11-03T09:00:00Z",
+        "signedToStartTime": "2024-11-03T09:00:00Z",
         "message": ""
       },
       {
         "username": "551503",
         "priority": 0,
-        "time": "2024-11-03T09:00:00Z",
+        "signedToStartTime": "2024-11-03T09:00:00Z",
         "message": ""
       }
     ],
@@ -923,24 +919,24 @@
     "updatedAt": "2024-11-03T12:00:05.36Z"
   },
   {
-    "programItem": { "programItemId": "toivottavasti-kukaan-ei-huomaa" },
+    "programItemId": "toivottavasti-kukaan-ei-huomaa",
     "userSignups": [
       {
         "username": "802874",
         "priority": 1,
-        "time": "2024-11-03T09:00:00Z",
+        "signedToStartTime": "2024-11-03T09:00:00Z",
         "message": ""
       },
       {
         "username": "117894",
         "priority": 2,
-        "time": "2024-11-03T09:00:00Z",
+        "signedToStartTime": "2024-11-03T09:00:00Z",
         "message": ""
       },
       {
         "username": "268259",
         "priority": 1,
-        "time": "2024-11-03T09:00:00Z",
+        "signedToStartTime": "2024-11-03T09:00:00Z",
         "message": ""
       }
     ],
@@ -949,42 +945,42 @@
     "updatedAt": "2024-11-03T12:00:05.36Z"
   },
   {
-    "programItem": { "programItemId": "praedor-kirotut-kuninkaanvaalit" },
+    "programItemId": "praedor-kirotut-kuninkaanvaalit",
     "userSignups": [
       {
         "username": "364157",
         "priority": 1,
-        "time": "2024-11-03T09:00:00Z",
+        "signedToStartTime": "2024-11-03T09:00:00Z",
         "message": ""
       },
       {
         "username": "138767",
         "priority": 2,
-        "time": "2024-11-03T09:00:00Z",
+        "signedToStartTime": "2024-11-03T09:00:00Z",
         "message": ""
       },
       {
         "username": "148452",
         "priority": 1,
-        "time": "2024-11-03T09:00:00Z",
+        "signedToStartTime": "2024-11-03T09:00:00Z",
         "message": ""
       },
       {
         "username": "997190",
         "priority": 1,
-        "time": "2024-11-03T09:00:00Z",
+        "signedToStartTime": "2024-11-03T09:00:00Z",
         "message": ""
       },
       {
         "username": "194249",
         "priority": 0,
-        "time": "2024-11-03T09:00:00Z",
+        "signedToStartTime": "2024-11-03T09:00:00Z",
         "message": ""
       },
       {
         "username": "456125",
         "priority": 0,
-        "time": "2024-11-03T09:00:00Z",
+        "signedToStartTime": "2024-11-03T09:00:00Z",
         "message": ""
       }
     ],
@@ -993,42 +989,42 @@
     "updatedAt": "2024-11-03T12:00:05.36Z"
   },
   {
-    "programItem": { "programItemId": "auld-sanguine" },
+    "programItemId": "auld-sanguine",
     "userSignups": [
       {
         "username": "720173",
         "priority": 1,
-        "time": "2024-11-03T09:00:00Z",
+        "signedToStartTime": "2024-11-03T09:00:00Z",
         "message": ""
       },
       {
         "username": "258646",
         "priority": 1,
-        "time": "2024-11-03T09:00:00Z",
+        "signedToStartTime": "2024-11-03T09:00:00Z",
         "message": ""
       },
       {
         "username": "781504",
         "priority": 1,
-        "time": "2024-11-03T09:00:00Z",
+        "signedToStartTime": "2024-11-03T09:00:00Z",
         "message": ""
       },
       {
         "username": "647326",
         "priority": 1,
-        "time": "2024-11-03T09:00:00Z",
+        "signedToStartTime": "2024-11-03T09:00:00Z",
         "message": ""
       },
       {
         "username": "534154",
         "priority": 0,
-        "time": "2024-11-03T09:00:00Z",
+        "signedToStartTime": "2024-11-03T09:00:00Z",
         "message": ""
       },
       {
         "username": "565592",
         "priority": 0,
-        "time": "2024-11-03T09:00:00Z",
+        "signedToStartTime": "2024-11-03T09:00:00Z",
         "message": ""
       }
     ],
@@ -1037,24 +1033,24 @@
     "updatedAt": "2024-11-03T12:00:05.36Z"
   },
   {
-    "programItem": { "programItemId": "neuvoston-umpisolmu" },
+    "programItemId": "neuvoston-umpisolmu",
     "userSignups": [
       {
         "username": "712290",
         "priority": 0,
-        "time": "2024-11-03T09:00:00Z",
+        "signedToStartTime": "2024-11-03T09:00:00Z",
         "message": ""
       },
       {
         "username": "971518",
         "priority": 0,
-        "time": "2024-11-03T09:00:00Z",
+        "signedToStartTime": "2024-11-03T09:00:00Z",
         "message": ""
       },
       {
         "username": "468504",
         "priority": 0,
-        "time": "2024-11-03T09:00:00Z",
+        "signedToStartTime": "2024-11-03T09:00:00Z",
         "message": ""
       }
     ],
@@ -1063,30 +1059,30 @@
     "updatedAt": "2024-11-03T12:00:05.36Z"
   },
   {
-    "programItem": { "programItemId": "vaiettu-menneisyys" },
+    "programItemId": "vaiettu-menneisyys",
     "userSignups": [
       {
         "username": "713008",
         "priority": 2,
-        "time": "2024-11-03T09:00:00Z",
+        "signedToStartTime": "2024-11-03T09:00:00Z",
         "message": ""
       },
       {
         "username": "691088",
         "priority": 3,
-        "time": "2024-11-03T09:00:00Z",
+        "signedToStartTime": "2024-11-03T09:00:00Z",
         "message": ""
       },
       {
         "username": "177463",
         "priority": 1,
-        "time": "2024-11-03T09:00:00Z",
+        "signedToStartTime": "2024-11-03T09:00:00Z",
         "message": ""
       },
       {
         "username": "77939",
         "priority": 1,
-        "time": "2024-11-03T09:00:00Z",
+        "signedToStartTime": "2024-11-03T09:00:00Z",
         "message": ""
       }
     ],
@@ -1095,37 +1091,37 @@
     "updatedAt": "2024-11-03T12:00:05.36Z"
   },
   {
-    "programItem": { "programItemId": "pelia-pyynnosta-sunnuntai" },
+    "programItemId": "pelia-pyynnosta-sunnuntai",
     "userSignups": [],
     "count": 0,
     "createdAt": "2024-10-30T19:53:31.577Z",
     "updatedAt": "2024-11-03T12:00:05.36Z"
   },
   {
-    "programItem": { "programItemId": "elava-pakohuone-12" },
+    "programItemId": "elava-pakohuone-12",
     "userSignups": [
       {
         "username": "729322",
         "priority": 1,
-        "time": "2024-11-03T10:00:00Z",
+        "signedToStartTime": "2024-11-03T10:00:00Z",
         "message": ""
       },
       {
         "username": "287943",
         "priority": 1,
-        "time": "2024-11-03T10:00:00Z",
+        "signedToStartTime": "2024-11-03T10:00:00Z",
         "message": ""
       },
       {
         "username": "403648",
         "priority": 1,
-        "time": "2024-11-03T10:00:00Z",
+        "signedToStartTime": "2024-11-03T10:00:00Z",
         "message": ""
       },
       {
         "username": "930070",
         "priority": 1,
-        "time": "2024-11-03T10:00:00Z",
+        "signedToStartTime": "2024-11-03T10:00:00Z",
         "message": ""
       }
     ],
@@ -1134,36 +1130,36 @@
     "updatedAt": "2024-11-03T12:00:05.36Z"
   },
   {
-    "programItem": { "programItemId": "the-dalish-curse-a-dragon-age-rpg" },
+    "programItemId": "the-dalish-curse-a-dragon-age-rpg",
     "userSignups": [
       {
         "username": "495631",
         "priority": 1,
-        "time": "2024-11-03T09:00:00Z",
+        "signedToStartTime": "2024-11-03T09:00:00Z",
         "message": ""
       },
       {
         "username": "423737",
         "priority": 1,
-        "time": "2024-11-03T09:00:00Z",
+        "signedToStartTime": "2024-11-03T09:00:00Z",
         "message": ""
       },
       {
         "username": "787233",
         "priority": 1,
-        "time": "2024-11-03T09:00:00Z",
+        "signedToStartTime": "2024-11-03T09:00:00Z",
         "message": ""
       },
       {
         "username": "646848",
         "priority": 1,
-        "time": "2024-11-03T09:00:00Z",
+        "signedToStartTime": "2024-11-03T09:00:00Z",
         "message": ""
       },
       {
         "username": "35578",
         "priority": 1,
-        "time": "2024-11-03T09:00:00Z",
+        "signedToStartTime": "2024-11-03T09:00:00Z",
         "message": ""
       }
     ],
@@ -1172,30 +1168,30 @@
     "updatedAt": "2024-11-03T12:00:05.36Z"
   },
   {
-    "programItem": { "programItemId": "elava-pakohuone-14" },
+    "programItemId": "elava-pakohuone-14",
     "userSignups": [
       {
         "username": "920292",
         "priority": 1,
-        "time": "2024-11-03T12:00:00Z",
+        "signedToStartTime": "2024-11-03T12:00:00Z",
         "message": ""
       },
       {
         "username": "415137",
         "priority": 1,
-        "time": "2024-11-03T12:00:00Z",
+        "signedToStartTime": "2024-11-03T12:00:00Z",
         "message": ""
       },
       {
         "username": "556204",
         "priority": 1,
-        "time": "2024-11-03T12:00:00Z",
+        "signedToStartTime": "2024-11-03T12:00:00Z",
         "message": ""
       },
       {
         "username": "104188",
         "priority": 1,
-        "time": "2024-11-03T12:00:00Z",
+        "signedToStartTime": "2024-11-03T12:00:00Z",
         "message": ""
       }
     ],
@@ -1204,30 +1200,30 @@
     "updatedAt": "2024-11-03T12:00:05.36Z"
   },
   {
-    "programItem": { "programItemId": "elava-pakohuone-16" },
+    "programItemId": "elava-pakohuone-16",
     "userSignups": [
       {
         "username": "534154",
         "priority": 1,
-        "time": "2024-11-03T14:00:00Z",
+        "signedToStartTime": "2024-11-03T14:00:00Z",
         "message": ""
       },
       {
         "username": "802874",
         "priority": 1,
-        "time": "2024-11-03T14:00:00Z",
+        "signedToStartTime": "2024-11-03T14:00:00Z",
         "message": ""
       },
       {
         "username": "423737",
         "priority": 1,
-        "time": "2024-11-03T14:00:00Z",
+        "signedToStartTime": "2024-11-03T14:00:00Z",
         "message": ""
       },
       {
         "username": "787233",
         "priority": 1,
-        "time": "2024-11-03T14:00:00Z",
+        "signedToStartTime": "2024-11-03T14:00:00Z",
         "message": ""
       }
     ],
@@ -1236,36 +1232,36 @@
     "updatedAt": "2024-11-03T12:00:05.473Z"
   },
   {
-    "programItem": { "programItemId": "berserkin-pesa-vallat-ja-vaet" },
+    "programItemId": "berserkin-pesa-vallat-ja-vaet",
     "userSignups": [
       {
         "username": "599171",
         "priority": 1,
-        "time": "2024-11-02T14:00:00Z",
+        "signedToStartTime": "2024-11-02T14:00:00Z",
         "message": ""
       },
       {
         "username": "653744",
         "priority": 1,
-        "time": "2024-11-02T14:00:00Z",
+        "signedToStartTime": "2024-11-02T14:00:00Z",
         "message": ""
       },
       {
         "username": "990107",
         "priority": 1,
-        "time": "2024-11-02T14:00:00Z",
+        "signedToStartTime": "2024-11-02T14:00:00Z",
         "message": ""
       },
       {
         "username": "895833",
         "priority": 0,
-        "time": "2024-11-02T14:00:00Z",
+        "signedToStartTime": "2024-11-02T14:00:00Z",
         "message": ""
       },
       {
         "username": "297921",
         "priority": 0,
-        "time": "2024-11-02T14:00:00Z",
+        "signedToStartTime": "2024-11-02T14:00:00Z",
         "message": ""
       }
     ],
@@ -1274,24 +1270,24 @@
     "updatedAt": "2024-11-03T12:00:05.36Z"
   },
   {
-    "programItem": { "programItemId": "tyhjyyden-meren-hirviot" },
+    "programItemId": "tyhjyyden-meren-hirviot",
     "userSignups": [
       {
         "username": "284629",
         "priority": 1,
-        "time": "2024-11-02T14:00:00Z",
+        "signedToStartTime": "2024-11-02T14:00:00Z",
         "message": ""
       },
       {
         "username": "968261",
         "priority": 1,
-        "time": "2024-11-02T14:00:00Z",
+        "signedToStartTime": "2024-11-02T14:00:00Z",
         "message": ""
       },
       {
         "username": "21147",
         "priority": 2,
-        "time": "2024-11-02T14:00:00Z",
+        "signedToStartTime": "2024-11-02T14:00:00Z",
         "message": ""
       }
     ],
@@ -1300,30 +1296,30 @@
     "updatedAt": "2024-11-03T12:00:05.36Z"
   },
   {
-    "programItem": { "programItemId": "taivaskone" },
+    "programItemId": "taivaskone",
     "userSignups": [
       {
         "username": "374030",
         "priority": 1,
-        "time": "2024-11-03T10:00:00Z",
+        "signedToStartTime": "2024-11-03T10:00:00Z",
         "message": ""
       },
       {
         "username": "247688",
         "priority": 1,
-        "time": "2024-11-03T10:00:00Z",
+        "signedToStartTime": "2024-11-03T10:00:00Z",
         "message": ""
       },
       {
         "username": "937554",
         "priority": 1,
-        "time": "2024-11-03T10:00:00Z",
+        "signedToStartTime": "2024-11-03T10:00:00Z",
         "message": ""
       },
       {
         "username": "430633",
         "priority": 1,
-        "time": "2024-11-03T10:00:00Z",
+        "signedToStartTime": "2024-11-03T10:00:00Z",
         "message": ""
       }
     ],
@@ -1332,44 +1328,42 @@
     "updatedAt": "2024-11-03T12:00:05.36Z"
   },
   {
-    "programItem": {
-      "programItemId": "pathfinder-society-scenario-6-01-intro-year-of-immortal-influence"
-    },
+    "programItemId": "pathfinder-society-scenario-6-01-intro-year-of-immortal-influence",
     "userSignups": [
       {
         "username": "364272",
         "priority": 1,
-        "time": "2024-11-03T10:00:00Z",
+        "signedToStartTime": "2024-11-03T10:00:00Z",
         "message": ""
       },
       {
         "username": "998206",
         "priority": 1,
-        "time": "2024-11-03T10:00:00Z",
+        "signedToStartTime": "2024-11-03T10:00:00Z",
         "message": ""
       },
       {
         "username": "752423",
         "priority": 2,
-        "time": "2024-11-03T10:00:00Z",
+        "signedToStartTime": "2024-11-03T10:00:00Z",
         "message": ""
       },
       {
         "username": "819385",
         "priority": 2,
-        "time": "2024-11-03T10:00:00Z",
+        "signedToStartTime": "2024-11-03T10:00:00Z",
         "message": ""
       },
       {
         "username": "916303",
         "priority": 2,
-        "time": "2024-11-03T10:00:00Z",
+        "signedToStartTime": "2024-11-03T10:00:00Z",
         "message": ""
       },
       {
         "username": "214234",
         "priority": 0,
-        "time": "2024-11-03T10:00:00Z",
+        "signedToStartTime": "2024-11-03T10:00:00Z",
         "message": ""
       }
     ],
@@ -1378,38 +1372,36 @@
     "updatedAt": "2024-11-03T12:00:05.36Z"
   },
   {
-    "programItem": {
-      "programItemId": "space-1889-pakolasku-venuksen-viidakkoon"
-    },
+    "programItemId": "space-1889-pakolasku-venuksen-viidakkoon",
     "userSignups": [
       {
         "username": "260427",
         "priority": 1,
-        "time": "2024-11-03T12:00:00Z",
+        "signedToStartTime": "2024-11-03T12:00:00Z",
         "message": ""
       },
       {
         "username": "318838",
         "priority": 1,
-        "time": "2024-11-03T12:00:00Z",
+        "signedToStartTime": "2024-11-03T12:00:00Z",
         "message": ""
       },
       {
         "username": "111534",
         "priority": 1,
-        "time": "2024-11-03T12:00:00Z",
+        "signedToStartTime": "2024-11-03T12:00:00Z",
         "message": ""
       },
       {
         "username": "911479",
         "priority": 0,
-        "time": "2024-11-03T12:00:00Z",
+        "signedToStartTime": "2024-11-03T12:00:00Z",
         "message": ""
       },
       {
         "username": "921748",
         "priority": 0,
-        "time": "2024-11-03T12:00:00Z",
+        "signedToStartTime": "2024-11-03T12:00:00Z",
         "message": ""
       }
     ],
@@ -1418,36 +1410,36 @@
     "updatedAt": "2024-11-03T12:00:05.36Z"
   },
   {
-    "programItem": { "programItemId": "alien-uscss-traconis" },
+    "programItemId": "alien-uscss-traconis",
     "userSignups": [
       {
         "username": "106163",
         "priority": 1,
-        "time": "2024-11-03T12:00:00Z",
+        "signedToStartTime": "2024-11-03T12:00:00Z",
         "message": ""
       },
       {
         "username": "613300",
         "priority": 1,
-        "time": "2024-11-03T12:00:00Z",
+        "signedToStartTime": "2024-11-03T12:00:00Z",
         "message": ""
       },
       {
         "username": "322086",
         "priority": 1,
-        "time": "2024-11-03T12:00:00Z",
+        "signedToStartTime": "2024-11-03T12:00:00Z",
         "message": ""
       },
       {
         "username": "599344",
         "priority": 1,
-        "time": "2024-11-03T12:00:00Z",
+        "signedToStartTime": "2024-11-03T12:00:00Z",
         "message": ""
       },
       {
         "username": "990107",
         "priority": 0,
-        "time": "2024-11-03T12:00:00Z",
+        "signedToStartTime": "2024-11-03T12:00:00Z",
         "message": ""
       }
     ],
@@ -1456,36 +1448,36 @@
     "updatedAt": "2024-11-03T12:00:05.36Z"
   },
   {
-    "programItem": { "programItemId": "the-lighthouse" },
+    "programItemId": "the-lighthouse",
     "userSignups": [
       {
         "username": "816005",
         "priority": 1,
-        "time": "2024-11-03T10:00:00Z",
+        "signedToStartTime": "2024-11-03T10:00:00Z",
         "message": ""
       },
       {
         "username": "203638",
         "priority": 1,
-        "time": "2024-11-03T10:00:00Z",
+        "signedToStartTime": "2024-11-03T10:00:00Z",
         "message": ""
       },
       {
         "username": "80282",
         "priority": 1,
-        "time": "2024-11-03T10:00:00Z",
+        "signedToStartTime": "2024-11-03T10:00:00Z",
         "message": ""
       },
       {
         "username": "137136",
         "priority": 1,
-        "time": "2024-11-03T10:00:00Z",
+        "signedToStartTime": "2024-11-03T10:00:00Z",
         "message": ""
       },
       {
         "username": "739012",
         "priority": 1,
-        "time": "2024-11-03T10:00:00Z",
+        "signedToStartTime": "2024-11-03T10:00:00Z",
         "message": ""
       }
     ],
@@ -1494,36 +1486,36 @@
     "updatedAt": "2024-11-03T12:00:05.36Z"
   },
   {
-    "programItem": { "programItemId": "meripihkalinna" },
+    "programItemId": "meripihkalinna",
     "userSignups": [
       {
         "username": "189803",
         "priority": 1,
-        "time": "2024-11-03T10:00:00Z",
+        "signedToStartTime": "2024-11-03T10:00:00Z",
         "message": ""
       },
       {
         "username": "635844",
         "priority": 1,
-        "time": "2024-11-03T10:00:00Z",
+        "signedToStartTime": "2024-11-03T10:00:00Z",
         "message": ""
       },
       {
         "username": "737061",
         "priority": 1,
-        "time": "2024-11-03T10:00:00Z",
+        "signedToStartTime": "2024-11-03T10:00:00Z",
         "message": ""
       },
       {
         "username": "30658",
         "priority": 1,
-        "time": "2024-11-03T10:00:00Z",
+        "signedToStartTime": "2024-11-03T10:00:00Z",
         "message": ""
       },
       {
         "username": "332445",
         "priority": 0,
-        "time": "2024-11-03T10:00:00Z",
+        "signedToStartTime": "2024-11-03T10:00:00Z",
         "message": ""
       }
     ],
@@ -1532,7 +1524,7 @@
     "updatedAt": "2024-11-03T12:00:05.36Z"
   },
   {
-    "programItem": { "programItemId": "miniatyyrien-maalausopetusta-3" },
+    "programItemId": "miniatyyrien-maalausopetusta-3",
     "userSignups": [],
     "count": 0,
     "createdAt": "2024-11-03T08:10:00.406Z",

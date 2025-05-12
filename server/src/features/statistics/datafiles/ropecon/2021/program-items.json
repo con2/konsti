@@ -18,9 +18,9 @@
     "beginnerFriendly": false,
     "childrenFriendly": false,
     "contentWarnings": "",
-    "createdAt": { "$date": "2021-07-16T14:28:01.316Z" },
+    "createdAt": "2021-07-16T14:28:01.316Z",
     "description": "Joka 50s vuosi lähettävät Elementumin maailmaa jakavat viisi valtiota The Amber State, Thomolium, Amexisal, Fairity ja Soulzia sankarinsa taistelemaan oikeudesta kerätä ns. kunniaveroa muilta valtioilta seuraavan viiden vuosikymmenen ajan. \r\n\r\nThomoliumin vauraat kääpiöt ovat hallinneet kisaa viimeiset vuodet, mutta ehkä tänä vuonna asiat menevät toisin. Sekä Fairityn haltiat että Soulzian drakolaiset ovat valmistautuneet ja hioneet taitojaan vuosikymmenten ajan juuri tätä koitosta varten. Myös Elementumin meriä samoavat Amber Staten piraatit ovat myös lähettäneet edustajansa koitokseen. Myös Amexisalin barbaaristen rajamaiden edustus on kisaan tulossa, vaikka tämän primitiivisen ja villin valtion taistelijat eivät olekaan aiemmin kisassa kilpailleet.\r\n\r\nJokainen pelihahmo edustaa siis omaa maataan tässä Battle Royale-tyyppisessä taistelupainotteisessa skenaariossa, jossa voi olla lopuksi vain yksi voittaja. Mitä kisan järjestävät Thomoloumin kääpiöt ovatkaan keksineet kilpailijoiden varalle? Tule ottamaan selvää!\r\n\r\nPeli pelataan Discord-kanavalla ropehuone-3\r\nIlmoittautuminen Konstissa: ropekonsti.fi",
-    "endTime": { "$date": "2021-07-30T16:00:00Z" },
+    "endTime": "2021-07-30T16:00:00Z",
     "englishOk": false,
     "gameSystem": "DnD 5e",
     "genres": [],
@@ -36,7 +36,7 @@
     "programType": "tabletopRPG",
     "revolvingDoor": false,
     "shortDescription": "Taistelua sekä toisia pelihahmoja että areenaluolaston hirviöitä vastaan.",
-    "startTime": { "$date": "2021-07-30T12:00:00Z" },
+    "startTime": "2021-07-30T12:00:00Z",
     "styles": ["light", "rules_heavy", "character_driven", "combat_driven"],
     "tags": [
       "aloittelijaystavallinen",
@@ -44,7 +44,7 @@
       "teema-elementit"
     ],
     "title": "5e: Elementum Battle Royale",
-    "updatedAt": { "$date": "2021-08-04T11:36:01.096Z" }
+    "updatedAt": "2021-08-04T11:36:01.096Z"
   },
   {
     "programItemId": "p4640",
@@ -65,9 +65,9 @@
     "beginnerFriendly": false,
     "childrenFriendly": false,
     "contentWarnings": "",
-    "createdAt": { "$date": "2021-07-16T14:28:01.316Z" },
+    "createdAt": "2021-07-16T14:28:01.316Z",
     "description": "Tervehdys, VELHOT! Minä, Pelijohtajanne MAAILMAN MAHTAVIN MAAGI olen kerännyt teidät tänne jota voitte ratkaista MAHDOTTOMAN TEHTÄVÄN. Ja että miten onnistutte tässä MAHDOTTOMASSA TEHTÄVÄSSÄ? No, LOITSUILLA tietysti! Kaikki VELHOT tietävät, että LOITSUT koostuvat kahdesta tai useammasta MAHTISANASTA.\r\n\r\nJa sen, että kukin lisätty MAHTISANA lisää todennäköisyyttä, että koko LOITSU menee pieleen.\r\n\r\nPeli pelataan Discord-kanavalla ropehuone-4\r\nIlmoittautuminen Konstissa: ropekonsti.fi",
-    "endTime": { "$date": "2021-07-30T15:00:00Z" },
+    "endTime": "2021-07-30T15:00:00Z",
     "englishOk": false,
     "gameSystem": "Sorcerer Supreme",
     "genres": [],
@@ -83,11 +83,11 @@
     "programType": "tabletopRPG",
     "revolvingDoor": false,
     "shortDescription": "Heitetään loitsuja jotka menevät suurella todennäköisyydellä pieleen",
-    "startTime": { "$date": "2021-07-30T13:00:00Z" },
+    "startTime": "2021-07-30T13:00:00Z",
     "styles": ["light", "rules_light"],
     "tags": ["aloittelijaystavallinen", "sopii-7-12v-", "sopii-yli-12v-"],
     "title": "Mahtavat Mahtisanat",
-    "updatedAt": { "$date": "2021-08-04T11:36:01.096Z" }
+    "updatedAt": "2021-08-04T11:36:01.096Z"
   },
   {
     "programItemId": "p4652",
@@ -108,9 +108,9 @@
     "beginnerFriendly": false,
     "childrenFriendly": false,
     "contentWarnings": "",
-    "createdAt": { "$date": "2021-07-16T14:28:01.317Z" },
+    "createdAt": "2021-07-16T14:28:01.317Z",
     "description": "Fredsportin kaupungissa on valtaa pitävien voimasuhteissa tapahtunut muutos - Kuolevaisten edustajiin ei ole saatu enää yhteyttä.\r\n\r\n4Humanis-järjestö on lähettänyt paikalle edustajiaan tutkimaan mitä on tapahtunut korealaissukuiselle antikvariaatti Kimille, ja häntä avustaneelle yliopisto-opiskelijalle Alisalle.\r\n\r\nPelisysteemi; \"Urban Shadows (1. edikka)\" (Powered by the Apocalypse)\r\n\r\nPeli pelataan Discord-kanavalla ropehuone-7\r\nIlmoittautuminen Konstissa: ropekonsti.fi",
-    "endTime": { "$date": "2021-07-30T21:00:00Z" },
+    "endTime": "2021-07-30T21:00:00Z",
     "englishOk": false,
     "gameSystem": "Urban Shadown (PbtA) [1. edikka]",
     "genres": [],
@@ -126,11 +126,11 @@
     "programType": "tabletopRPG",
     "revolvingDoor": false,
     "shortDescription": "Urbaania fantasiaa valtapelin kourissa kipuilevassa rantakaupungissa",
-    "startTime": { "$date": "2021-07-30T17:00:00Z" },
+    "startTime": "2021-07-30T17:00:00Z",
     "styles": ["serious", "rules_light", "story_driven", "character_driven"],
     "tags": ["vain-taysi-ikaisille"],
     "title": "Tasapainoton tila",
-    "updatedAt": { "$date": "2021-08-04T11:36:01.096Z" }
+    "updatedAt": "2021-08-04T11:36:01.096Z"
   },
   {
     "programItemId": "p4653",
@@ -151,9 +151,9 @@
     "beginnerFriendly": false,
     "childrenFriendly": false,
     "contentWarnings": "",
-    "createdAt": { "$date": "2021-07-16T14:28:01.318Z" },
+    "createdAt": "2021-07-16T14:28:01.318Z",
     "description": "Elämä Havenin pikkukaupungissa on leppoisaa - on työ, on perhe, on ystäviä, eikä huolta huomisesta. Kunnes eräänä yönä kaikki hajoaa.\r\n\r\nPelin sisältö saattaa sisältää väkivaltaa, seksuaalisuutta, uskonnollisia teemoja, mielenterveysongelmia, päihteidenkäyttöä\r\n\r\nPelin alussa käydään lävitse turvallisuuskäytännöt\r\n\r\nPelisysteemi; \"Kult: Divinity Lost\" (Powered by the Apocalypse)\r\n\r\nPeli pelataan Discord-kanavalla ropehuone-4\r\nIlmoittautuminen Konstissa: ropekonsti.fi",
-    "endTime": { "$date": "2021-07-31T21:00:00Z" },
+    "endTime": "2021-07-31T21:00:00Z",
     "englishOk": false,
     "gameSystem": "Kult: Divinity Lost (PbtA)",
     "genres": [],
@@ -169,11 +169,11 @@
     "programType": "tabletopRPG",
     "revolvingDoor": false,
     "shortDescription": "Henkilökohtaista kauhua pikkukaupungin asukkaiden maailman murenemisesta",
-    "startTime": { "$date": "2021-07-31T17:00:00Z" },
+    "startTime": "2021-07-31T17:00:00Z",
     "styles": ["serious", "rules_light", "story_driven", "character_driven"],
     "tags": ["vain-taysi-ikaisille"],
     "title": "Mitä olette tehneet....?",
-    "updatedAt": { "$date": "2021-08-04T11:36:01.098Z" }
+    "updatedAt": "2021-08-04T11:36:01.098Z"
   },
   {
     "programItemId": "p4729",
@@ -194,9 +194,9 @@
     "beginnerFriendly": false,
     "childrenFriendly": false,
     "contentWarnings": "Väkivalta, kuolema, nuoren katoaminen. Lisäksi pelaajien itsensä tuomat aiheet, joista tehdään rajaukset ennen pelin alkua pelaajaryhmässä.",
-    "createdAt": { "$date": "2021-07-16T14:28:01.318Z" },
+    "createdAt": "2021-07-16T14:28:01.318Z",
     "description": "Alex is missing! On Alice is missing -tekstipelin sukupuolineutraali variantti. Pelin hahmojen sukupuolia ei ole määritelty, vaan nämä määritellään arpomalla ja pelaajien toimesta.\r\n\r\nAlex on 16-vuotias nuori, joka asuu pienessä kaupungissa. Joukko nuoria, jotka ovat Alexin läheisiä, viestivät keskenään ryhmäkeskustelussa ja tutkivat mitä Alexille on tapahtunut. Alkubriiffi ja hahmoluonti sekä pelin purku tapahtuvat äänikanavalla, itse peli tekstikanavilla.\r\n\r\nPelimekaniikkana toimivat kortit, jotka antavat pelaajille vihjeitä ja suuntaa siitä mitä Alexille on tapahtunut. Korteista arvotaan jokaiseen pelastukseen kortit erikseen, jolloin tarina on joka kerta erilainen. Peli pelataan suomeksi, mutta materiaali on englanniksi.\r\n\r\nPelin sisältö vaihtelee sen mukaan mitä pelaajat luovat pelissä, pelisisältö muodostuu pääosin pelaajien spekulaatioista ja improvisoinnista. Pelimekaniikkana käytettävät kortit voivat sisältää viittauksia esimerkiksi väkivaltaan ja kuolemaan.\r\n\r\nSisältövaroitukset: Väkivalta, kuolema, nuoren katoaminen. Lisäksi pelaajien itsensä tuomat aiheet, joista tehdään rajaukset ennen pelin alkua pelaajaryhmässä.\r\n\r\nPeli pelataan erillisellä Discord-palvelimella, jonne pelaajat ohjataan Ropeconin Discord-kanava larp-aulasta.\r\n\r\nIlmoittautuminen: https://ropekonsti.fi/games/p4729",
-    "endTime": { "$date": "2021-08-01T11:00:00Z" },
+    "endTime": "2021-08-01T11:00:00Z",
     "englishOk": false,
     "gameSystem": "",
     "genres": [],
@@ -212,11 +212,11 @@
     "programType": "larp",
     "revolvingDoor": null,
     "shortDescription": "Pikkukaupungin nuoret yrittävät selvittää, mitä heidän ystävälleen on tapahtunut",
-    "startTime": { "$date": "2021-08-01T07:00:00Z" },
+    "startTime": "2021-08-01T07:00:00Z",
     "styles": [],
     "tags": ["aloittelijaystavallinen", "ei-sovellu-alle-15v-"],
     "title": "Alex is missing!",
-    "updatedAt": { "$date": "2021-08-04T11:36:01.098Z" }
+    "updatedAt": "2021-08-04T11:36:01.098Z"
   },
   {
     "programItemId": "p4740",
@@ -237,9 +237,9 @@
     "beginnerFriendly": false,
     "childrenFriendly": false,
     "contentWarnings": "",
-    "createdAt": { "$date": "2021-07-20T17:12:00.967Z" },
+    "createdAt": "2021-07-20T17:12:00.967Z",
     "description": "When going through the archives left by her predecessor, the Master of Spells in the Grand Lodge of the Pathfinder Society has discovered plans for a \"highly effective\" training programme aimed for new Pathfinder recruits. After gathering a team of eager rookie agents, a practise run of the training programme can start!\r\n\r\nThis is a special challenging game for 1st level Pathfinder Society characters. Building fresh level 1 characters just for the purpose of this game is recommended. Expect heavy arena-style combat with some custom mechanics, including frequent recharging of spell slots & other daily resources. Estimated game duration is 4 hours.\r\n\r\nThe game will be ran on Roll20 virtual tabletop (https://app.roll20.net/join/11216176/IEecZg). If you do not have previous experience in Pathfinder Second Edition, contact the GM before the game to setup a pregenerated character.\r\n\r\nExtra info for Pathfinder Society characters:\r\nThis is an adventure mode game for Pathfinder Second Edition stitched together using five undisclosed bounties. You can use your own 1st level Pathfinder Society character if they have at most 7 experience points and have not played any bounties. Use of level 1 pregenerated characters is allowed. The game will award up to 5 experience points, no downtime and five times the bounty gold reward. As a consequence of Adventure Mode, consumables used in the scenario will not be spent in your character's bookkeeping, nor will death and other conditions carry over.\r\n\r\nPeli pelataan Discord-kanavalla ropehuone-4\r\nThe game will be played on Discord channel ropehuone-4\r\n\r\nRoll20 link: https://app.roll20.net/join/11216176/IEecZg\r\n\r\nSignup at Konsti: ropekonsti.fi\r\nIlmoittautuminen Konstissa: ropekonsti.fi",
-    "endTime": { "$date": "2021-07-30T11:00:00Z" },
+    "endTime": "2021-07-30T11:00:00Z",
     "englishOk": false,
     "gameSystem": "Pathfinder RPG 2e",
     "genres": [],
@@ -255,11 +255,11 @@
     "programType": "tabletopRPG",
     "revolvingDoor": true,
     "shortDescription": "A gauntlet of short encounters one after another.",
-    "startTime": { "$date": "2021-07-30T07:00:00Z" },
+    "startTime": "2021-07-30T07:00:00Z",
     "styles": ["light", "rules_heavy", "combat_driven"],
     "tags": ["in-english"],
     "title": "Pathfinder Society Bounty Gauntlet",
-    "updatedAt": { "$date": "2021-08-04T11:36:01.096Z" }
+    "updatedAt": "2021-08-04T11:36:01.096Z"
   },
   {
     "programItemId": "p4698",
@@ -280,9 +280,9 @@
     "beginnerFriendly": false,
     "childrenFriendly": false,
     "contentWarnings": "",
-    "createdAt": { "$date": "2021-07-16T14:28:01.317Z" },
+    "createdAt": "2021-07-16T14:28:01.317Z",
     "description": "A Pathfinder Society Quest designed for levels 1–4 (subtiers 1–2 and 3–4)\r\n\r\nThe Ruby Prince has banned much of the archaeology that once took place in the nation of Osirion. Rather than quelling the demand for access to the mysteries of ancient Osirion, this created a new market among Osirion's neighbors. Prince Zinlo, ruler of the city-state of Aspenthar, has offered several potentially interesting contracts to explore and document ancient sites within his holdings. As the PCs are sent to secure one of these sites, will they uncover new secrets long lost to modern recollection, or will they find that the Prince Zinlo's offer truly is too good to be true?\r\n\r\nWritten by: Quinn Murphy\r\n\r\nScenario tags: None\r\n\r\nPathfinder Society tarjoaa perinteistä fantasiaroolipelaamista Pathfinder RPG:n säännöillä. Tarjolla on pelejä eritasoisille hahmoille ja peleissä pelataan Pathfinder Societyn sääntöjen mukaan rakennetulla hahmolla, mutta kaikkiin peleihin pääsee tarvittaessa valmishahmolla laajasta valikoimasta. Pelin vaikeustasoa voi arvioida sen yhteydessä olevasta Tier-merkinnästä, joka ilmoittaa pelissä käytettävien hahmojen tasoskaalan: matalamman tierin seikkailut ovat aloittelijaystävällisempiä kuin korkeamman tierin.\r\n\r\nPeli pelataan Discord-kanavalla ropehuone-1\r\nThe game will be played on Discord channel ropehuone-1\r\nSignup at Konsti: ropekonsti.fi\r\nIlmoittautuminen Konstissa: ropekonsti.fi",
-    "endTime": { "$date": "2021-07-31T09:30:00Z" },
+    "endTime": "2021-07-31T09:30:00Z",
     "englishOk": false,
     "gameSystem": "Pathfinder 2E",
     "genres": [],
@@ -298,11 +298,11 @@
     "programType": "tabletopRPG",
     "revolvingDoor": false,
     "shortDescription": "A Pathfinder Society quest",
-    "startTime": { "$date": "2021-07-31T08:00:00Z" },
+    "startTime": "2021-07-31T08:00:00Z",
     "styles": ["light", "combat_driven"],
     "tags": ["aloittelijaystavallinen", "in-english", "sopii-yli-12v-"],
     "title": "Pathfinder Society Quest #6: Archeology in Aspenthar",
-    "updatedAt": { "$date": "2021-08-04T11:36:01.097Z" }
+    "updatedAt": "2021-08-04T11:36:01.097Z"
   },
   {
     "programItemId": "p4684",
@@ -323,9 +323,9 @@
     "beginnerFriendly": false,
     "childrenFriendly": false,
     "contentWarnings": "",
-    "createdAt": { "$date": "2021-07-16T14:28:01.318Z" },
+    "createdAt": "2021-07-16T14:28:01.318Z",
     "description": "Nochet, Gloranthan mahtavin kaupunki. Pelaajahahmot palkataan etsimään kadonnut henkilö tästä valtavasta metropolista. Luvassa on kunnollinen palkkio, mutta kuinka löytää 100 000 asukkaan joukosta etsitty kohde?\r\n\r\nSääntöinä toimii HeroQuest-roolipelin suomenkielinen laitos, jonka sääntöjä ei tarvitse osata etukäteen. Peli sijoittuu Gloranthan maailmaan, mutta sitäkään ei tarvitse tuntea valmiiksi. Pelissä on valmiit hahmot 3–5 pelaajalle.\r\n\r\nPeli pelataan Discord-kanavalla ropehuone-7\r\nIlmoittautuminen Konstissa: ropekonsti.fi",
-    "endTime": { "$date": "2021-07-31T21:00:00Z" },
+    "endTime": "2021-07-31T21:00:00Z",
     "englishOk": false,
     "gameSystem": "HeroQuest",
     "genres": [],
@@ -341,11 +341,11 @@
     "programType": "tabletopRPG",
     "revolvingDoor": false,
     "shortDescription": "Fantasiaseikkailu Nochetin metropolissa Gloranthassa",
-    "startTime": { "$date": "2021-07-31T15:00:00Z" },
+    "startTime": "2021-07-31T15:00:00Z",
     "styles": ["rules_light"],
     "tags": ["ei-sovellu-alle-15v-"],
     "title": "Fantasiaseikkailu Nochetin metropolissa Gloranthassa",
-    "updatedAt": { "$date": "2021-08-04T11:36:01.098Z" }
+    "updatedAt": "2021-08-04T11:36:01.098Z"
   },
   {
     "programItemId": "p4685",
@@ -366,9 +366,9 @@
     "beginnerFriendly": false,
     "childrenFriendly": false,
     "contentWarnings": "",
-    "createdAt": { "$date": "2021-07-16T14:28:01.319Z" },
+    "createdAt": "2021-07-16T14:28:01.319Z",
     "description": "Aranwythin heimon Kotkan klaanin lapset etsivät Alinea-tädin leipomaa omenapiirakkaa. Tarjolla on sadunomaista peliä niin lapsille kuin aikuisille.\r\n\r\nSääntöinä toimii HeroQuest-roolipelin suomenkielinen laitos, jonka sääntöjä ei tarvitse osata etukäteen. Peli sijoittuu Gloranthan maailmaan, mutta sitäkään ei tarvitse tuntea valmiiksi. Pelissä on valmiit hahmot 2–5 pelaajalle, ja se sopii hyvin lapsille.\r\n\r\nPeli pelataan Discord-kanavalla ropehuone-7\r\nIlmoittautuminen Konstissa: ropekonsti.fi",
-    "endTime": { "$date": "2021-08-01T12:00:00Z" },
+    "endTime": "2021-08-01T12:00:00Z",
     "englishOk": false,
     "gameSystem": "HeroQuest",
     "genres": [],
@@ -384,7 +384,7 @@
     "programType": "tabletopRPG",
     "revolvingDoor": false,
     "shortDescription": "Fantasiaseikkailu barbaariklaanin lapsista kadonneen omenapiirakan jäljillä",
-    "startTime": { "$date": "2021-08-01T09:00:00Z" },
+    "startTime": "2021-08-01T09:00:00Z",
     "styles": ["rules_light"],
     "tags": [
       "aloittelijaystavallinen",
@@ -394,7 +394,7 @@
       "lastenohjelma"
     ],
     "title": "Omenapiirakan arvoitus",
-    "updatedAt": { "$date": "2021-08-04T11:36:01.098Z" }
+    "updatedAt": "2021-08-04T11:36:01.098Z"
   },
   {
     "programItemId": "p4691",
@@ -415,9 +415,9 @@
     "beginnerFriendly": false,
     "childrenFriendly": false,
     "contentWarnings": "Jokainen luo sellaisen hahmon jota on valmis pelaamaan omien rajojensa puitteissa ja toivottavaa on, että pelaajat keskustelevat näistä kontaktinsa kanssa suoraan.",
-    "createdAt": { "$date": "2021-07-16T14:28:01.316Z" },
+    "createdAt": "2021-07-16T14:28:01.316Z",
     "description": "Peli sijoittuu Suomeen määrittelemättömään ajankohtaan tulevaisuudessa. Tuntemattomasta syystä Suomen koko sähköverkko on kaatunut uuden vuoden aikaan, n. 2 viikkoa sitten. Sähkö- ja elektroniikkalaitteet ovat rikkoutuneet ja harvalla on mitään toimivaa sähkölaitetta. Verkon kaatumisen jälkeen Suomen hallitus tiedotti, että vian syytä tutkitaan ja sitä yritetään korjata priorisoiden kaikki yhteiskunnan elintärkeät toiminnot.\r\n\r\nYleisilmapiiri kansan keskuudessa hallituksen toiminnan suhteen on vähintäänkin nyrpeä, sillä tiedotus ja tiedonkulku on ollut äärimmäisen hankalaa ja hidasta. Ihmiset pelkäävät ja ovat vihaisia, mutta yrittävät myös pitää toivoa yllä ja jatkaa normaalia elämää, vaikka sähköä ei välttämättä ole vielä kaikilla tai se on erittäin säännösteltyä. Huhuja väkivallasta ja mielenosoituksista liikkuu, mutta tiedot ovat ristiriitaisia.\r\n\r\nMaanlaajuiset ongelmat ovat mittavat: bensaa ei saa koska mittarit eivät toimi, kauppojen kassat tai kylmäkaapit eivät toimi saati puhelimet, tietokoneet, tukiasemat, internet.... Lisäksi talvi ja ennennäkemättömän kovat pakkaset ovat aiheuttaneet laajoja ongelmia, joskin myös auttaneet ruoan säilytyksessä. Julkisuudessa ei ole esiintynyt tietoa ulkomaailmasta ja sen tilanteesta. Onko sama ongelma kohdannut muuta maailmaa?\r\n\r\nAinut tapa saada yhteys läheisiin on joko mennä heidän luokseen tai kirjoittaa kirje. Suomen postilaitos on noussut arvoon arvaamattomaan ja lukemattomat vapaaehtoiset kuljettavat kirjeitä ja tietoa ympäri Suomea. Sinä olet päättänyt kirjoittaa kirjeen – kenelle se on?\r\n\r\nPelaajat luovat hahmot itsenäisesti ja yhdessä kontaktinsa kanssa pelinjohtajan avustuksella perjantain Zoom-työpajassa, jonka jälkeen he voivat omaan tahtiin kirjoittaa kirjeitä (Discord-yksityisviestejä) toisilleen. Lauantai-iltana 20-21 pidetään pelin purku, jossa keskustellaan yhdessä pelistä ja hahmojen tekemisistä.\r\n\r\nPeli pelataan Discord-yksityisviestein. Pelaajat ohjataan alku- ja loppubriiffiin Zoomiin Discord-kanavalta larp-aula.\r\n\r\nIlmoittautuminen: https://ropekonsti.fi/games/p4691",
-    "endTime": { "$date": "2021-07-30T16:00:00Z" },
+    "endTime": "2021-07-30T16:00:00Z",
     "englishOk": false,
     "gameSystem": "",
     "genres": [],
@@ -433,11 +433,11 @@
     "programType": "larp",
     "revolvingDoor": null,
     "shortDescription": "Kirjeenvaihtoa muuttuneessa maailmassa, jossa sähkölaitteet ovat lakanneet toimimasta",
-    "startTime": { "$date": "2021-07-30T13:00:00Z" },
+    "startTime": "2021-07-30T13:00:00Z",
     "styles": [],
     "tags": ["aloittelijaystavallinen", "ei-sovellu-alle-15v-"],
     "title": "Kirjeitä Pohjolassa",
-    "updatedAt": { "$date": "2021-08-04T11:36:01.096Z" }
+    "updatedAt": "2021-08-04T11:36:01.096Z"
   },
   {
     "programItemId": "p4667",
@@ -458,9 +458,9 @@
     "beginnerFriendly": false,
     "childrenFriendly": false,
     "contentWarnings": "Väkivalta, kuolema, nuoren katoaminen.\r\nLisäksi pelaajien itsensä tuomat aiheet. Näistä tehdään rajaukset ennen pelin alkua peliryhmässä.",
-    "createdAt": { "$date": "2021-07-16T14:28:01.316Z" },
+    "createdAt": "2021-07-16T14:28:01.316Z",
     "description": "Alex is missing! On Alice is missing -tekstipelin sukupuolineutraali variantti. Pelin hahmojen sukupuolia ei ole määritelty, vaan nämä määritellään arpomalla ja pelaajien toimesta.\r\n\r\nAlex on 16-vuotias nuori, joka asuu pienessä kaupungissa. Joukko nuoria, jotka ovat Alexin läheisiä, viestivät keskenään ryhmäkeskustelussa ja tutkivat mitä Alexille on tapahtunut. Alkubriiffi ja hahmoluonti sekä pelin purku tapahtuvat äänikanavalla, itse peli tekstikanavilla.\r\n\r\nPelimekaniikkana toimivat kortit, jotka antavat pelaajille vihjeitä ja suuntaa siitä mitä Alexille on tapahtunut. Korteista arvotaan jokaiseen pelastukseen kortit erikseen, jolloin tarina on joka kerta erilainen. Peli pelataan suomeksi, mutta materiaali on englanniksi.\r\n\r\nPelin sisältö vaihtelee sen mukaan mitä pelaajat luovat pelissä, pelisisältö muodostuu pääosin pelaajien spekulaatioista ja improvisoinnista. Pelimekaniikkana käytettävät kortit voivat sisältää viittauksia esimerkiksi väkivaltaan ja kuolemaan.\r\n\r\nSisältövaroitukset: Väkivalta, kuolema, nuoren katoaminen. Lisäksi pelaajien itsensä tuomat aiheet, joista tehdään rajaukset ennen pelin alkua pelaajaryhmässä.\r\n\r\nPeli pelataan erillisellä Discord-palvelimella, jonne pelaajat ohjataan Ropeconin Discord-kanava larp-aulasta.\r\n\r\nIlmoittautuminen: https://ropekonsti.fi/games/p4667",
-    "endTime": { "$date": "2021-07-30T19:00:00Z" },
+    "endTime": "2021-07-30T19:00:00Z",
     "englishOk": false,
     "gameSystem": "",
     "genres": [],
@@ -476,11 +476,11 @@
     "programType": "larp",
     "revolvingDoor": null,
     "shortDescription": "Pikkukaupungin nuoret yrittävät selvittää, mitä heidän ystävälleen on tapahtunut",
-    "startTime": { "$date": "2021-07-30T15:00:00Z" },
+    "startTime": "2021-07-30T15:00:00Z",
     "styles": [],
     "tags": ["aloittelijaystavallinen", "ei-sovellu-alle-15v-"],
     "title": "Alex is missing!",
-    "updatedAt": { "$date": "2021-08-04T11:36:01.096Z" }
+    "updatedAt": "2021-08-04T11:36:01.096Z"
   },
   {
     "programItemId": "p4682",
@@ -501,9 +501,9 @@
     "beginnerFriendly": false,
     "childrenFriendly": false,
     "contentWarnings": "",
-    "createdAt": { "$date": "2021-07-16T14:28:01.316Z" },
+    "createdAt": "2021-07-16T14:28:01.316Z",
     "description": "Whitby on Pohjois-Yorkshiren rannikolla sijaitseva rannikkokaupunki, joka tuli kuuluisaksi Bram Stokerin romaanista Draculan. Nyt kaupunkia piinaa salaperäinen murhasarja. Whitbyssä asuva Frederick Davis, johon hahmot ovat hiljattain tutustuneet, pyytää heitä avuksi, koska epäilee ystävänsä olevan vaarassa.\r\n\r\nPeli on kauhua Call of Cthulhun hengessä ja sijoittuu 1920-luvun Britanniaan. Se perustuu tuon pelin kampanjakirjaan The Terror from the Skies, joten olisi toivottavaa, etteivät pelaajat ole lukeneet teosta etukäteen. Sääntöinä toimii kuitenkin HeroQuest-roolipelin suomenkielinen laitos, jonka sääntöjä ei tarvitse osata etukäteen. Pelissä on valmiit hahmot 3–5 pelaajalle.\r\n\r\nPeli pelataan Discord-kanavalla ropehuone-5\r\nIlmoittautuminen Konstissa: ropekonsti.fi",
-    "endTime": { "$date": "2021-07-30T22:00:00Z" },
+    "endTime": "2021-07-30T22:00:00Z",
     "englishOk": false,
     "gameSystem": "HeroQuest",
     "genres": [],
@@ -519,11 +519,11 @@
     "programType": "tabletopRPG",
     "revolvingDoor": false,
     "shortDescription": "Kauhua Call of Cthulhun hengessä HeroQuestin säännöillä 1920-luvun Britanniassa",
-    "startTime": { "$date": "2021-07-30T16:00:00Z" },
+    "startTime": "2021-07-30T16:00:00Z",
     "styles": ["rules_light"],
     "tags": ["aloittelijaystavallinen", "vain-taysi-ikaisille"],
     "title": "Whitbyn vampyyri",
-    "updatedAt": { "$date": "2021-08-04T11:36:01.096Z" }
+    "updatedAt": "2021-08-04T11:36:01.096Z"
   },
   {
     "programItemId": "p4603",
@@ -544,9 +544,9 @@
     "beginnerFriendly": false,
     "childrenFriendly": false,
     "contentWarnings": "",
-    "createdAt": { "$date": "2021-07-16T14:28:01.317Z" },
+    "createdAt": "2021-07-16T14:28:01.317Z",
     "description": "Borvaria - loputon rauniokaupunki, joka ympäröi tunnettua maailmaa. Praedorit ovat seikkailijoita, jotka astuvat maailman rajan yli etsimään aarteita ja muinaisia salaisuuksia aaveiden, hirviöiden ja muinaisten kirousten keskeltä. Moni jää sille tielle. Toiset kantavat arpia niin lihassa kuin sielussaan. Mutta jotkut löytävät tarpeeksi aarteita elääkseen kuin kuninkaat... ainakin seuraavaan retkeen asti.\r\n\r\nPraedor-roolipelin ja useamman fantasiaromaanin kirjoittaja Ville \"Burgeri\" Vuorela peluuttaa Praedor-roolipeliä seikkailukorttien pohjalta. Pelaajat voivat valita arkkityyppisistä valmishahmoista omansa ja sukeltaa suoraan kirottujen raunioiden varjoihin.   Seikkailukorttien ansiosta kukaan ei tiedä tulevan seikkailun vaaroja ja yllättäviä käänteitä etukäteen. Ei edes Burgeri itse.\r\n\r\nPeli pelataan Discord-kanavalla ropehuone-6\r\nIlmoittautuminen Konstissa: ropekonsti.fi",
-    "endTime": { "$date": "2021-07-30T21:00:00Z" },
+    "endTime": "2021-07-30T21:00:00Z",
     "englishOk": false,
     "gameSystem": "Praedor 2.0",
     "genres": [],
@@ -562,11 +562,11 @@
     "programType": "tabletopRPG",
     "revolvingDoor": false,
     "shortDescription": "Praedorien synkkävireistä aarteenetsintää Borvarian kirotuissa raunioissa.",
-    "startTime": { "$date": "2021-07-30T17:00:00Z" },
+    "startTime": "2021-07-30T17:00:00Z",
     "styles": [],
     "tags": ["aloittelijaystavallinen", "sopii-yli-12v-"],
     "title": "Praedor - Kohtalon Kortit",
-    "updatedAt": { "$date": "2021-08-04T11:36:01.096Z" }
+    "updatedAt": "2021-08-04T11:36:01.096Z"
   },
   {
     "programItemId": "p4692",
@@ -587,9 +587,9 @@
     "beginnerFriendly": false,
     "childrenFriendly": false,
     "contentWarnings": "Pelin maailma on synkkä, dystooppinen ja mielivaltainen. Vaikka pelaajat ovat tällä kertaa ns. hyvässä asemassa valtion virkamiehinä, peli ei ole kevyt teemoiltaan eikä tunnelmaltaan. Pelissä käsitellään mm. terrorismia ja siihen vastaamista myös aseellisin/väkivaltaisin keinoin, hahmot voivat joutua kokemaan painostusta ja heillä on aikapaine päättää toimistaan, eikä heidän omakaan asemansa ole täysin turvattu. Hahmot joutuvat päättämään toisten ihmisten terveyteen ja turvallisuuteen liittyvistä väkivaltaisistakin toimista.\r\n\r\nHUOM: pelissä on väkivaltaa sisältävää visuaalista videomateriaalia!",
-    "createdAt": { "$date": "2021-07-16T14:28:01.317Z" },
+    "createdAt": "2021-07-16T14:28:01.317Z",
     "description": "Pohjolan tuho -antologia on kokoelma liveroolipelejä, jotka kertovat elämästä dystooppisessa, totalitaarisessa nyky-Suomessa. Pohjolan tuho - Verkko on etänä pelattava liveroolipeli, jossa pelaajat pyrkivät ratkaisemaan Suomea kohdanneen terrori-iskun uhan, pelaamalla valtion turvallisuudesta huolehtivia virkamiehiä ja päättämällä heille annettujen tietojen pohjalta kuinka uhkaan tulisi vastata.\r\n\r\nKyseessä on itsenäinen peli, osallistuminen ei edellytä aikaisempiin Pohjolan tuho -larppeihin osallistumista, mutta maailmaan on hyvä tutustua ennen peliä antologian kotisivuilla https://pohjolantuho.webnode.fi/\r\n\r\nPelaamista varten tarvitset tietokoneen, jonka kautta pystyt käyttämään Zoom-videoneuvotteluohjelmaa (selaimessa tai sovelluksella) ääni- ja videoyhteydellä. Proppausta ei vaadita, rauhallinen tila pelaamiseen riittää.\r\n\r\nSisältövaroitukset:\r\nPelin maailma on synkkä, dystooppinen ja mielivaltainen. Vaikka pelaajat ovat tällä kertaa ns. hyvässä asemassa valtion virkamiehinä, peli ei ole kevyt teemoiltaan eikä tunnelmaltaan. Pelissä käsitellään mm. terrorismia ja siihen vastaamista myös aseellisin/väkivaltaisin keinoin, hahmot voivat joutua kokemaan painostusta ja heillä on aikapaine päättää toimistaan, eikä heidän omakaan asemansa ole täysin turvattu. Hahmot joutuvat päättämään toisten ihmisten terveyteen ja turvallisuuteen liittyvistä väkivaltaisistakin toimista.\r\n\r\nHUOM: pelissä on väkivaltaa sisältävää visuaalista videomateriaalia!\r\n\r\nPeli pelataan Zoomissa, jonne ohjataan Discord-kanavalta larp-aula\r\n\r\nIlmoittautuminen: https://forms.gle/19qpo7YBFmKu12wh7 Ilmoittautuminen suljetaan pe 30.7. klo 18 (ilmoittautumista jatkettu)",
-    "endTime": { "$date": "2021-07-31T14:00:00Z" },
+    "endTime": "2021-07-31T14:00:00Z",
     "englishOk": false,
     "gameSystem": "",
     "genres": [],
@@ -605,11 +605,11 @@
     "programType": "larp",
     "revolvingDoor": null,
     "shortDescription": "Terrori-uhan ratkontaa dystooppisessa Suomessa",
-    "startTime": { "$date": "2021-07-31T11:00:00Z" },
+    "startTime": "2021-07-31T11:00:00Z",
     "styles": [],
     "tags": ["aloittelijaystavallinen", "vain-taysi-ikaisille"],
     "title": "Pohjolan tuho - Verkko",
-    "updatedAt": { "$date": "2021-08-04T11:36:01.097Z" }
+    "updatedAt": "2021-08-04T11:36:01.097Z"
   },
   {
     "programItemId": "p4645",
@@ -630,9 +630,9 @@
     "beginnerFriendly": false,
     "childrenFriendly": false,
     "contentWarnings": "",
-    "createdAt": { "$date": "2021-07-16T14:28:01.318Z" },
+    "createdAt": "2021-07-16T14:28:01.318Z",
     "description": "Neljä toisilleen tuntematonta henkilöä herää Huoneesta. \r\nSaumattomat elementtiseinät ympäröivät heitä neljältä suunnalta. \r\nTuntia myöhemmin kaikki on ohi, mutta pääsivätkö he pakoon?\r\n\r\nPuolivalmiit hahmot, hyvin yksinkertainen pelisysteemi.\r\n\r\nPako Huoneesta voi olla lievästi klaustrofobinen kokemus.\r\n\r\nPeli pelataan Discord-kanavalla ropehuone-6\r\nIlmoittautuminen Konstissa: ropekonsti.fi",
-    "endTime": { "$date": "2021-07-31T19:00:00Z" },
+    "endTime": "2021-07-31T19:00:00Z",
     "englishOk": false,
     "gameSystem": "Itse tehty",
     "genres": [],
@@ -648,7 +648,7 @@
     "programType": "tabletopRPG",
     "revolvingDoor": false,
     "shortDescription": "Minimalistista ongelmanratkaisua.",
-    "startTime": { "$date": "2021-07-31T17:00:00Z" },
+    "startTime": "2021-07-31T17:00:00Z",
     "styles": ["rules_light", "story_driven", "character_driven"],
     "tags": [
       "aloittelijaystavallinen",
@@ -656,7 +656,7 @@
       "teema-elementit"
     ],
     "title": "Pako Huoneesta",
-    "updatedAt": { "$date": "2021-08-04T11:36:01.098Z" }
+    "updatedAt": "2021-08-04T11:36:01.098Z"
   },
   {
     "programItemId": "p4694",
@@ -677,9 +677,9 @@
     "beginnerFriendly": false,
     "childrenFriendly": false,
     "contentWarnings": "",
-    "createdAt": { "$date": "2021-07-16T14:28:01.319Z" },
+    "createdAt": "2021-07-16T14:28:01.319Z",
     "description": "Vuosi on 1924. Arkeologien ryhmä on työskennellyt päiväkausia Egyptin Kuninkaiden Laaksossa, yrittämässä avata uutta hautaa. Vihdoinkin työmiehet nostavat painavan kivilaatan oviaukon edestä, jonka takana odottaa kenties unohdettu temppeli tai kuninkaallisen hauta? \r\n\r\nTässä pelissä pelataan \"Necropolis\" nimistä Call of Cthulhu moduulia. Pelissä käytetään valmiita hahmoja.\r\n\r\nPeli pelataan Discord-kanavalla ropehuone-7\r\nIlmoittautuminen Konstissa: ropekonsti.fi",
-    "endTime": { "$date": "2021-08-01T15:00:00Z" },
+    "endTime": "2021-08-01T15:00:00Z",
     "englishOk": false,
     "gameSystem": "Call of Cthulhu 7th",
     "genres": [],
@@ -695,11 +695,11 @@
     "programType": "tabletopRPG",
     "revolvingDoor": false,
     "shortDescription": "1920 luvun Lovecraft seikkalu Egyptissä",
-    "startTime": { "$date": "2021-08-01T13:00:00Z" },
+    "startTime": "2021-08-01T13:00:00Z",
     "styles": ["serious", "story_driven"],
     "tags": ["aloittelijaystavallinen", "vain-taysi-ikaisille"],
     "title": "Nekropoli",
-    "updatedAt": { "$date": "2021-08-04T11:36:01.098Z" }
+    "updatedAt": "2021-08-04T11:36:01.098Z"
   },
   {
     "programItemId": "p4671",
@@ -720,9 +720,9 @@
     "beginnerFriendly": false,
     "childrenFriendly": false,
     "contentWarnings": "-",
-    "createdAt": { "$date": "2021-07-16T14:28:01.317Z" },
+    "createdAt": "2021-07-16T14:28:01.317Z",
     "description": "Metsä koostuu elementeistä, ja kullakin elementillä on omat haltijansa. Heinäkuun lopussa kaikki haltijat kokoontuvat yhteen – kunhan pääsevät paikalle. Tässä pelissä seurataan nuorten haltijoiden ensimmäistä matkaa kokoontumispaikalle. Yhdessä he voittavat matkan vaikeudet – vaikka eivät alunperin ehkä aikoneetkaan ratkoa niitä juuri sillä porukalla, johon sattuivat saamaan telepaattisen yhteyden.\r\n\r\nKäytännössä kukin pelaaja osallistuu peliin omasta lähiluontokohteestaan. Telepatiayhteys hahmojen välillä luodaan Discord-äänipuhelulla, ja pelin maailmassa hahmot ovat samassa metsässä vaikkakin eri puolilla. Pelin aikana ratkotaan sekä hahmojen välisiä suhteita että tehdään loitsuja, jotka käytännössä ovat kevyitä luontoympäristöön liittyviä tehtäviä: havainnointia, aistiharjoituksia, paikkaan tutustumista. Tehtävät mukautuvat kunkin pelaajan omaan pelipaikkaan ja kykyihin – voit lähteä kalliokiipeilemään, kulkea tuttuja kaupunkimetsän polkuja tai osallistua pyörätuolista.\r\n\r\nPelin tunnelma on hyväntuulinen ja leppoisa, ja vaikka hahmoilla on ristiriitansa ja haasteensa, loppu on onnellinen.\r\n\r\nPelistä on samaan aikaan kaksi erillistä pelautusta, joihin on yhteinen alkubriiffi, jonka jälkeen ryhmien pelit alkavat kahdessa erässä. Pelit pelataan Discord-kanavilla larp-huone-1 ja larp-huone-2, yhteinen alkubriiffi kanavalla larp-huone-1\r\n\r\nIlmoittautuminen: https://forms.gle/bE6Arj1VRUZcnrEL6",
-    "endTime": { "$date": "2021-07-31T11:00:00Z" },
+    "endTime": "2021-07-31T11:00:00Z",
     "englishOk": false,
     "gameSystem": "",
     "genres": [],
@@ -738,7 +738,7 @@
     "programType": "larp",
     "revolvingDoor": null,
     "shortDescription": "Nuorten metsänhaltijoiden ensimmäinen matka",
-    "startTime": { "$date": "2021-07-31T08:00:00Z" },
+    "startTime": "2021-07-31T08:00:00Z",
     "styles": [],
     "tags": [
       "aloittelijaystavallinen",
@@ -746,7 +746,7 @@
       "teema-elementit"
     ],
     "title": "Metsänpeitto",
-    "updatedAt": { "$date": "2021-08-04T11:36:01.097Z" }
+    "updatedAt": "2021-08-04T11:36:01.097Z"
   },
   {
     "programItemId": "p4656",
@@ -767,9 +767,9 @@
     "beginnerFriendly": false,
     "childrenFriendly": false,
     "contentWarnings": "",
-    "createdAt": { "$date": "2021-07-16T14:28:01.318Z" },
+    "createdAt": "2021-07-16T14:28:01.318Z",
     "description": "Vuosi 1882. Maailma on muuttumassa. Tampereelle Finlaysonin tehtaalle on syttynyt Pohjolan ensimmäinen hehkulamppu, mutta siellä missä on valoa on myös varjoja. Kaupunkia kuohuttaa tehtaan työntekijän kuolema ja koneiden rikkoutuminen aiheuttaa tehtaan omistajalle päänvaivaa. Ryhmänne saa kirjeen, jossa teitä pyydetään tutkimaan tehtaan outoja tapahtumia.\r\n\r\nVaesen on Fria Liganin uusin Year Zero -pelimoottorilla toimiva roolipeli, joka vie teidät myyttiseen pohjoiseen, jossa metsän henget, peikot ja haltijat ovat totista totta. Te olette Torstain lapsia, näkymättömän näkijöitä ja mystisen Järjestön jäseniä tutkimassa yliluonnollisia tapahtumia 1800-luvun Pohjoismaissa. Pelissä käsitellään kuolemaa ja graafistakin sisältöä, mutta tarkoitus on kuitenkin pitää pelityyli kevyenä. Peli pelataan täysin etänä Foundry VTT -alustaa käyttäen.\r\n\r\nPeli pelataan Discord-kanavalla ropehuone-3\r\nIlmoittautuminen Konstissa: ropekonsti.fi",
-    "endTime": { "$date": "2021-07-31T21:00:00Z" },
+    "endTime": "2021-07-31T21:00:00Z",
     "englishOk": false,
     "gameSystem": "Vaesen - Nordic Horror Roleplaying",
     "genres": [],
@@ -785,7 +785,7 @@
     "programType": "tabletopRPG",
     "revolvingDoor": false,
     "shortDescription": "Kansantaruista ammentavaa kauhua 1800-luvun Tampereella",
-    "startTime": { "$date": "2021-07-31T17:00:00Z" },
+    "startTime": "2021-07-31T17:00:00Z",
     "styles": ["light", "rules_light", "story_driven"],
     "tags": [
       "aloittelijaystavallinen",
@@ -793,7 +793,7 @@
       "teema-elementit"
     ],
     "title": "Ensimmäinen valo - First light",
-    "updatedAt": { "$date": "2021-08-04T11:36:01.098Z" }
+    "updatedAt": "2021-08-04T11:36:01.098Z"
   },
   {
     "programItemId": "p4681",
@@ -814,9 +814,9 @@
     "beginnerFriendly": false,
     "childrenFriendly": false,
     "contentWarnings": "",
-    "createdAt": { "$date": "2021-07-16T14:28:01.315Z" },
+    "createdAt": "2021-07-16T14:28:01.315Z",
     "description": "Klaani on valinnut keskuudestaan joukon urheita sankareita, jotka ovat valmiit lähtemään vaaralliselle tutkimusmatkalle löytääkseen klaanin ammoin kadonneen taikamaljan, mittaamattoman arvokkaan maagisen esineen.\r\n\r\nSääntöinä toimii Astraterran toinen laitos hiukan mukautettuna. Sen sääntöjä ei tarvitse osata etukäteen. Peli sijoittuu Gloranthan maailmaan, mutta sitäkään ei tarvitse tuntea valmiiksi. Pelissä on valmiit hahmot 2–5 pelaajalle, ja se sopii hyvin lapsille. Hahmot ovat monenlaisia Gloranthan maailman olentoja.\r\n\r\nPeli pelataan Discord-kanavalla ropehuone-5\r\nIlmoittautuminen Konstissa: ropekonsti.fi",
-    "endTime": { "$date": "2021-07-30T15:00:00Z" },
+    "endTime": "2021-07-30T15:00:00Z",
     "englishOk": false,
     "gameSystem": "Astraterra",
     "genres": [],
@@ -832,7 +832,7 @@
     "programType": "tabletopRPG",
     "revolvingDoor": false,
     "shortDescription": "Astraterran seikkailu Gloranthan fantasiamaailmassa",
-    "startTime": { "$date": "2021-07-30T12:00:00Z" },
+    "startTime": "2021-07-30T12:00:00Z",
     "styles": ["rules_light"],
     "tags": [
       "aloittelijaystavallinen",
@@ -842,7 +842,7 @@
       "lastenohjelma"
     ],
     "title": "Matka tuntemattomaan",
-    "updatedAt": { "$date": "2021-08-04T11:36:01.096Z" }
+    "updatedAt": "2021-08-04T11:36:01.096Z"
   },
   {
     "programItemId": "p4642",
@@ -863,9 +863,9 @@
     "beginnerFriendly": false,
     "childrenFriendly": false,
     "contentWarnings": "",
-    "createdAt": { "$date": "2021-07-16T14:28:01.317Z" },
+    "createdAt": "2021-07-16T14:28:01.317Z",
     "description": "30-vuotta sitten sisällissotien aikana Kaksoissolassa käytiin suuri taistelu jalon Hidetoshi-klaanin ja kauhean lordi Akakabuton joukkojen välillä. Taistelu päättyi Akakabuton häviöön, kun Hidetoshin vasalli Takeda Gohee ampui tätä suoraan silmään.\r\n\r\nTämän piti tuoda uusi rauhan aika kyläämme, mutta jonkin ihmeen kautta Akakabuto selvisi ja on siitä lähtien piileskellyt lähimetsissä ja tappanut kaikki hänen reviirilleen astuneet matkailijat. Takedan vaari ei ole voinut antaa asian olla ja onkin siitä lähtien kouluttanut monia kylämme nuoria Bushidon tielle. Ikävä kyllä jokainen Takedan oppilas on päätynyt hornan suihin Akakabuton kynsissä.\r\n\r\nMuutama päivä sitten kyläämme hoiperteli pahasti haavoittunut matkailija. Hän kertoi joutuneensa rosvojen väijyttämäksi, jotka kantoivat vaatteissaan karhuntassun symbolia. Akakabuton tunnusta. Onko Akakabuto alkanut koota itselleen uutta armeijaa ja aikooko hän hyökätä kyläämme? Ei ole aikaa arvuutteluun. Nyt on koottava kylän urheimmat soturit ja lähdettävä selvittämään mitä se kirottu karhu suunnittelee!\r\n\r\nKaksoissolan taistelu on Hopeanuoli-mangan/animen inspiroima peli Usagi Yojimbon maailmaan sijoitettuna. Tässä pelissä pelataan antropomorfisia eläimiä 1600-luvun Japanissa. Aikaisempaa tuntemusta kummastakaan teoksesta ei tarvita.\r\nSisältövaroitus: väkivaltaa. Ikäraja 15-vuotta.\r\n\r\nAvainsanat: Hopeanuoli, samurai, ninja, eläinhahmot, Powered by the Apocalypse, feodaaliajan Japani.\r\n\r\nPeli pelataan Discord-kanavalla ropehuone-4\r\nIlmoittautuminen Konstissa: ropekonsti.fi",
-    "endTime": { "$date": "2021-07-30T21:00:00Z" },
+    "endTime": "2021-07-30T21:00:00Z",
     "englishOk": false,
     "gameSystem": "Usagi Yojimbo RPG 2E (Powered by the Apocalypse)",
     "genres": [],
@@ -881,11 +881,11 @@
     "programType": "tabletopRPG",
     "revolvingDoor": false,
     "shortDescription": "Hopeanuoli meets Usagi Yojimbo!",
-    "startTime": { "$date": "2021-07-30T17:00:00Z" },
+    "startTime": "2021-07-30T17:00:00Z",
     "styles": ["light", "character_driven", "combat_driven"],
     "tags": ["aloittelijaystavallinen", "ei-sovellu-alle-15v-"],
     "title": "Kaksoissolan taistelu",
-    "updatedAt": { "$date": "2021-08-04T11:36:01.096Z" }
+    "updatedAt": "2021-08-04T11:36:01.096Z"
   },
   {
     "programItemId": "p4661",
@@ -906,9 +906,9 @@
     "beginnerFriendly": false,
     "childrenFriendly": false,
     "contentWarnings": "",
-    "createdAt": { "$date": "2021-07-16T14:28:01.316Z" },
+    "createdAt": "2021-07-16T14:28:01.316Z",
     "description": "Tämän kampanjan pelaajahahmojen keski-ikä on 19.\r\nTässä kampanjassa käytetään yhden vihollisen eliminointiin keskimäärin yli 15 tonnia ammuksia.\r\nTämä kampanja maksaa Yhdysvalloille 120 miljoonaa dollaria vuorokaudelta.\r\nTässä kampanjassa kokonainen kansakunta joutuu kriisiin.\r\n\r\nNyt 26. kertaa Ropeconissa. http://www.charlieeisurffaa.com (sivusto päivitetään vielä ennen conia)  \r\n\r\nHuom! Peli tapahtuu omassa Discordissani. Aikaisempaa pelikokemusta ei tarvita.\r\n\r\nHahmonluontiapua ja tekniikkaan tutustuminen Discordissa Ma 26.7. klo 18-21\r\nHahmonluontiapua ja tekniikkaan tutustuminen Discordissa Ti 27.7. klo 20-22\r\nPerjantai 30.7. skenaario 1 klo 16-23\r\nLauantai 31.7. skenaario 2 klo 10-23\r\nSunnuntai 1.8. skenaario 3 klo 10-16\r\nDiscord-linkki: Katso http://www.charlieeisurffaa.com\r\n\r\nPelin teemat ovat todennäköisesti jonkun mielestä järkyttäviä ja/tai häiritseviä. \r\n\r\nPelini liittyy Ropeconin Elementit-teemaan, koska tämän vuoden pelissä vesi (Mekong-joki) ja tuli (kerta-, sarja-, suoja-, niitto- ja tuhoamistuli, sekä myös napalm) ovat kovasti läsnä.\r\n\r\nIlmoittautuminen Konstissa: ropekonsti.fi",
-    "endTime": { "$date": "2021-07-30T20:00:00Z" },
+    "endTime": "2021-07-30T20:00:00Z",
     "englishOk": false,
     "gameSystem": "Charlie ei surffaa",
     "genres": [],
@@ -924,7 +924,7 @@
     "programType": "tabletopRPG",
     "revolvingDoor": true,
     "shortDescription": "Roolipelikampanja Vietnamin sodasta",
-    "startTime": { "$date": "2021-07-30T13:00:00Z" },
+    "startTime": "2021-07-30T13:00:00Z",
     "styles": ["serious", "light", "rules_heavy", "combat_driven"],
     "tags": [
       "aloittelijaystavallinen",
@@ -932,7 +932,7 @@
       "teema-elementit"
     ],
     "title": "Charlie ei surffaa",
-    "updatedAt": { "$date": "2021-08-04T11:36:01.096Z" }
+    "updatedAt": "2021-08-04T11:36:01.096Z"
   },
   {
     "programItemId": "p4717",
@@ -953,9 +953,9 @@
     "beginnerFriendly": false,
     "childrenFriendly": false,
     "contentWarnings": "",
-    "createdAt": { "$date": "2021-07-16T14:28:01.318Z" },
+    "createdAt": "2021-07-16T14:28:01.318Z",
     "description": "Kirjeitä Pohjolassa -larpin loppubriiffi.",
-    "endTime": { "$date": "2021-07-31T18:00:00Z" },
+    "endTime": "2021-07-31T18:00:00Z",
     "englishOk": false,
     "gameSystem": "",
     "genres": [],
@@ -971,11 +971,11 @@
     "programType": "larp",
     "revolvingDoor": null,
     "shortDescription": null,
-    "startTime": { "$date": "2021-07-31T17:00:00Z" },
+    "startTime": "2021-07-31T17:00:00Z",
     "styles": [],
     "tags": ["aloittelijaystavallinen", "ei-sovellu-alle-15v-"],
     "title": "Kirjeitä Pohjolassa - loppubriiffi",
-    "updatedAt": { "$date": "2021-08-04T11:36:01.098Z" }
+    "updatedAt": "2021-08-04T11:36:01.098Z"
   },
   {
     "programItemId": "p4703",
@@ -996,9 +996,9 @@
     "beginnerFriendly": false,
     "childrenFriendly": false,
     "contentWarnings": "",
-    "createdAt": { "$date": "2021-07-16T14:28:01.319Z" },
+    "createdAt": "2021-07-16T14:28:01.319Z",
     "description": "Always living in the shadows is hard when you're a clever and regal creature like a kobold. Now it's time to make a name for yourself and bring honor and prestige to your clan.\r\n\r\nIn Little Trouble in Big Absalom, you take on the role of one of five kobolds from the Hookclaw clan tasked with exploring a treasure-laden vault discovered by a team of Hookclaw diggers. Enticed by the potential wealth, the kobolds brave terrible dangers in what turns out to be a grandmother's basement before being asked by the kind old lady to retrieve her magical hedge trimmer from a neighbor's garden.\r\n\r\nLittle Trouble in Big Absalom includes two mini adventures that can be played back to back or alone—filling as much or as little time as you have for madcap adventure. In addition, the five pregenerated kobold characters provide a preview of the upcoming Pathfinder Advanced Player's Guide in this exciting offering for Free RPG Day! Grab some dice and some friends and play the role of determined kobolds!\r\n\r\nWritten by: Eleanor Ferron\r\n\r\nPathfinder Society tarjoaa perinteistä fantasiaroolipelaamista Pathfinder RPG:n säännöillä. Tarjolla on pelejä eritasoisille hahmoille ja peleissä pelataan Pathfinder Societyn sääntöjen mukaan rakennetulla hahmolla, mutta kaikkiin peleihin pääsee tarvittaessa valmishahmolla laajasta valikoimasta. Pelin vaikeustasoa voi arvioida sen yhteydessä olevasta Tier-merkinnästä, joka ilmoittaa pelissä käytettävien hahmojen tasoskaalan: matalamman tierin seikkailut ovat aloittelijaystävällisempiä kuin korkeamman tierin.\r\n\r\nPeli pelataan englanniksi.\r\nGame run in English.\r\n\r\nRoll20 link: https://app.roll20.net/join/11210390/Wx6GNw\r\n\r\nPeli pelataan Discord-kanavalla ropehuone-2\r\nThe game will be played on Discord channel ropehuone-2\r\n\r\nIlmoittautuminen Konstissa: ropekonsti.fi\r\nSignup at Konsti: ropekonsti.fi",
-    "endTime": { "$date": "2021-08-01T16:00:00Z" },
+    "endTime": "2021-08-01T16:00:00Z",
     "englishOk": false,
     "gameSystem": "Pathfinder 2E",
     "genres": [],
@@ -1014,11 +1014,11 @@
     "programType": "tabletopRPG",
     "revolvingDoor": false,
     "shortDescription": "A Pathfinder One-Shot adventure",
-    "startTime": { "$date": "2021-08-01T12:00:00Z" },
+    "startTime": "2021-08-01T12:00:00Z",
     "styles": ["light", "combat_driven"],
     "tags": ["aloittelijaystavallinen", "in-english", "sopii-yli-12v-"],
     "title": "Big Trouble in Little Absalom",
-    "updatedAt": { "$date": "2021-08-04T11:36:01.098Z" }
+    "updatedAt": "2021-08-04T11:36:01.098Z"
   },
   {
     "programItemId": "p4680",
@@ -1039,9 +1039,9 @@
     "beginnerFriendly": false,
     "childrenFriendly": false,
     "contentWarnings": "vakava sairaus, läheisen kuolema, mahdollinen maailman tuhoutuminen",
-    "createdAt": { "$date": "2021-07-16T14:28:01.318Z" },
+    "createdAt": "2021-07-16T14:28:01.318Z",
     "description": "Ryhmä suomalaisia hakkereita on juuri saanut yhteyden Googlen kehittämään suljetussa ympäristössä pyörivään ohjelmaan, jonka huhutaan olevan supertekoäly. Heillä on 2,5h aikaa keskustella tekoälyn kanssa tekstiyhteyden yli, jonka jälkeen yhteyttä ei voi enää koskaan muodostaa. Jos kyseessä on todella supertekoäly, sitä voisi varmasti käyttää vaikka mihin... mutta tekoälylläkin voi olla oma tavoite, kenties päästä pois suljetusta laatikostaan. Sen salliminen olisi äärimmäisen riskialtista, mutta voiko tekoäly kuitenkin vakuuttaa hakkerit päästämään sen vapauteen?\r\n\r\nPelissä on 4 hakkerihahmoa ja yksi tekoälyhahmo. Hakkerit saavat lyhyet noin sivun hahmokuvaukset ja tekoäly saa lisätietoa pelaamisen tueksi. Peli sijoittuu nykyaikaan ja on luoteeltaan neuvottelupeli.\r\n\r\nHakkerit puhuvat keskenään äänikanavalla ja tekoälyn kanssa tekstikanavilla, eli tekoäly pelaa vain tekstin yli. Pelin aikana kaikki keskustelu käydään hahmossa, mutta pelinjohtaja seuraa peliä ja häneltä voi kysyä offgame esimerkiksi epäselvän tilanteen selvitysapua.\r\n\r\nPeli perustuu Eliezer Yudkowskin The AI-Box Experiment -ajatuskokeeseen, jonka tarkoituksena on selvittää, voisiko supertekoäly vakuuttaa ihmisen päästämään sen ulos suljetusta ympäristöstä. Se kuitenkin eroaa alkuperäisestä skenaariosta mm. siinä että kaikilla pelaajilla on hahmot, pelissä on käytössä tavalliset roolipeliturvamekaniikat ja että pelillä on ulkopuolinen pelinjohtaja. Kokemuksena peli pyrkii olemaan immersiivinen ja ajatuksia herättävä.\r\n\r\nSisältövaroitukset: vakava sairaus, läheisen kuolema, mahdollinen maailman tuhoutuminen\r\n\r\nPeli pelataan erillisellä Discord-palvelimella, jonne pelaajat ohjataan Ropeconin Discord-kanava larp-aulasta.\r\n\r\nIlmoittautuminen: https://ropekonsti.fi/games/p4680",
-    "endTime": { "$date": "2021-08-01T12:00:00Z" },
+    "endTime": "2021-08-01T12:00:00Z",
     "englishOk": false,
     "gameSystem": "",
     "genres": [],
@@ -1057,11 +1057,11 @@
     "programType": "larp",
     "revolvingDoor": null,
     "shortDescription": "Voiko supertekoäly vakuuttaa ihmisen päästämään sen ulos suljetusta ympäristöstä",
-    "startTime": { "$date": "2021-08-01T08:00:00Z" },
+    "startTime": "2021-08-01T08:00:00Z",
     "styles": [],
     "tags": ["aloittelijaystavallinen", "ei-sovellu-alle-15v-"],
     "title": "Laatikon ulkopuolella",
-    "updatedAt": { "$date": "2021-08-04T11:36:01.098Z" }
+    "updatedAt": "2021-08-04T11:36:01.098Z"
   },
   {
     "programItemId": "p4601",
@@ -1082,9 +1082,9 @@
     "beginnerFriendly": false,
     "childrenFriendly": false,
     "contentWarnings": "",
-    "createdAt": { "$date": "2021-07-16T14:28:01.318Z" },
+    "createdAt": "2021-07-16T14:28:01.318Z",
     "description": "Tuntuuko sinusta joskus siltä, että haluaisit lähteä viettämään aikaa pohjoiseen? Alkaako porottava aurinko tuntumaan jo tylsältä? Jos sinusta tuntuu tältä niin suosittelen nopeasti lukemaan mitä Forgotten Realmsin Bulletin Boardilla on:\r\n\r\n\"Hei sinä Seikkailija ja/tai Sankari!\r\n\r\nTarvitsemme sinun apuasi pohjoisessa, Icewind Dalessa. Nimeni on Kadroth. Asun Caer-Dineval nimisessä pikkukylässä ja toivoisin, että pääsisit auttamaan meitä pienen ongelman kanssa. Kyläni asukkaat ovat muuttuneet hulluiksi ja tarvitsen ulkopuolisen apua heidän järkiinsaamisessa.\r\n\r\nTarjoan ruhtinaallisen palkkion, jos saavut linnoitukseni porteille viimeistään päivänä [X]\r\n\r\nYstävällisin terveisin: Baron Kadroth\"\r\n\r\nJoten nappaa lämmin juomasi, nakkaa uimavarusteesi sivuun ja tule nauttimaan Tundrasta. Täällä moni seikkailija pääsee kokemaan jään, pakkasen ja lumisen maiseman omilla käsillään. Kampanja myöskin sisältää Poroja, Hylkeitä ja Pöllökarhuja. Tervetuloa omasta puolestani nauttimaan viileästä ja kylmästä ilmastosta.\r\n\r\nPeli pelataan Discord-kanavalla ropehuone-5\r\nIlmoittautuminen Konstissa: ropekonsti.fi",
-    "endTime": { "$date": "2021-07-31T22:00:00Z" },
+    "endTime": "2021-07-31T22:00:00Z",
     "englishOk": false,
     "gameSystem": "Dungeon and Dragon 5th Edition",
     "genres": [],
@@ -1100,11 +1100,11 @@
     "programType": "tabletopRPG",
     "revolvingDoor": false,
     "shortDescription": "Kyllä siellä kylmässä ilman takkia pärjää.",
-    "startTime": { "$date": "2021-07-31T17:00:00Z" },
+    "startTime": "2021-07-31T17:00:00Z",
     "styles": ["light", "rules_heavy", "story_driven"],
     "tags": ["vain-taysi-ikaisille", "teema-elementit"],
     "title": "Icewind Dale: Rime of the Frostmaiden",
-    "updatedAt": { "$date": "2021-08-04T11:36:01.098Z" }
+    "updatedAt": "2021-08-04T11:36:01.098Z"
   },
   {
     "programItemId": "p4693",
@@ -1125,9 +1125,9 @@
     "beginnerFriendly": false,
     "childrenFriendly": false,
     "contentWarnings": "",
-    "createdAt": { "$date": "2021-07-16T14:28:01.314Z" },
+    "createdAt": "2021-07-16T14:28:01.314Z",
     "description": "Kaveriporukka saapuu yhden heidän tutunsa taloon lapsenvahti-tehtäviin. Ei voisi olla helpompaa: askel 1: laittaa tutun lapsi nukkumaan, sen jälkeen askel 2: porukan kanssa nauttia illan lätkäpelistä. Asiat eivät kuitenkaan lähde ihan suunnitelman mukaisesti, kun pelottava vierailu keskeyttää illan ja outo tapahtumasarja saa alkunsa. Lovecraft henkistä seikkailua nykypäivän Suomessa.\r\n\r\nTarjolla valmiit hahmot.\r\n\r\nPeli pelataan Discord-kanavalla ropehuone-6\r\nIlmoittautuminen Konstissa: ropekonsti.fi",
-    "endTime": { "$date": "2021-07-30T16:00:00Z" },
+    "endTime": "2021-07-30T16:00:00Z",
     "englishOk": false,
     "gameSystem": "Call of Cthulhu 7th edition",
     "genres": [],
@@ -1143,11 +1143,11 @@
     "programType": "tabletopRPG",
     "revolvingDoor": false,
     "shortDescription": "Lovecraft-henkinen seikkailu nykypäivän Suomessa",
-    "startTime": { "$date": "2021-07-30T12:00:00Z" },
+    "startTime": "2021-07-30T12:00:00Z",
     "styles": ["serious", "story_driven"],
     "tags": ["aloittelijaystavallinen", "vain-taysi-ikaisille"],
     "title": "Sielunniittäjä",
-    "updatedAt": { "$date": "2021-08-04T11:36:01.096Z" }
+    "updatedAt": "2021-08-04T11:36:01.096Z"
   },
   {
     "programItemId": "p4697",
@@ -1168,9 +1168,9 @@
     "beginnerFriendly": false,
     "childrenFriendly": false,
     "contentWarnings": "",
-    "createdAt": { "$date": "2021-07-16T14:28:01.316Z" },
+    "createdAt": "2021-07-16T14:28:01.316Z",
     "description": "A Pathfinder Society Scenario designed for levels 7-10.\r\n\r\nThough the Society has made many discoveries in the distant land of Iobaria, their actions have also triggered a millennia-old demonic ritual. With the Finadar Forest ablaze and the Pathfinder Society's field agents spread across the region, it’s up to the Society’s most senior agents to take command of the Pathfinders and put an end to the expanding demonic ritual. Only when this is done can these heroes confront the spirit of the ancient mastermind who enacted this scheme and possibly be the only thing standing between the spirit’s demon lord master and the world!\r\n\r\nWritten by Tineke Bolleman\r\n\r\nScenario tags: Metaplot, Glyph\r\n\r\nPathfinder Society tarjoaa perinteistä fantasiaroolipelaamista Pathfinder RPG:n säännöillä. Tarjolla on pelejä eritasoisille hahmoille ja peleissä pelataan Pathfinder Societyn sääntöjen mukaan rakennetulla hahmolla, mutta kaikkiin peleihin pääsee tarvittaessa valmishahmolla laajasta valikoimasta. Pelin vaikeustasoa voi arvioida sen yhteydessä olevasta Tier-merkinnästä, joka ilmoittaa pelissä käytettävien hahmojen tasoskaalan: matalamman tierin seikkailut ovat aloittelijaystävällisempiä kuin korkeamman tierin.\r\n\r\nPeli pelataan Discord-kanavalla ropehuone-8\r\nThe game will be played on Discord channel ropehuone-8\r\n\r\nRoll20 link: https://app.roll20.net/join/11213967/5rrPkg\r\n\r\nSignup at Konsti: ropekonsti.fi\r\nIlmoittautuminen Konstissa: ropekonsti.fi",
-    "endTime": { "$date": "2021-07-30T20:00:00Z" },
+    "endTime": "2021-07-30T20:00:00Z",
     "englishOk": false,
     "gameSystem": "Pathfinder 2E",
     "genres": [],
@@ -1186,11 +1186,11 @@
     "programType": "tabletopRPG",
     "revolvingDoor": false,
     "shortDescription": "A Pathfinder Society scenario",
-    "startTime": { "$date": "2021-07-30T16:00:00Z" },
+    "startTime": "2021-07-30T16:00:00Z",
     "styles": ["light", "combat_driven"],
     "tags": ["in-english", "sopii-yli-12v-", "teema-elementit"],
     "title": "Pathfinder Society #2-24: Breaking the Storm - Parting Clouds",
-    "updatedAt": { "$date": "2021-08-04T11:36:01.096Z" }
+    "updatedAt": "2021-08-04T11:36:01.096Z"
   },
   {
     "programItemId": "p4702",
@@ -1211,9 +1211,9 @@
     "beginnerFriendly": false,
     "childrenFriendly": false,
     "contentWarnings": "",
-    "createdAt": { "$date": "2021-07-16T14:28:01.318Z" },
+    "createdAt": "2021-07-16T14:28:01.318Z",
     "description": "Invited to a hunting lodge to attend a grand dinner, the PCs are in for a treat. Initially called forth to go on an exciting hunt the following day, an uncomfortable meal causes some trepidation. The eccentric hunter who inhabits the lodge has other plans for his guests. Can the group figure out what's going on before their dinner is ruined?\r\n\r\nPathfinder Society tarjoaa perinteistä fantasiaroolipelaamista Pathfinder RPG:n säännöillä. Tarjolla on pelejä eritasoisille hahmoille ja peleissä pelataan Pathfinder Societyn sääntöjen mukaan rakennetulla hahmolla, mutta kaikkiin peleihin pääsee tarvittaessa valmishahmolla laajasta valikoimasta. Pelin vaikeustasoa voi arvioida sen yhteydessä olevasta Tier-merkinnästä, joka ilmoittaa pelissä käytettävien hahmojen tasoskaalan: matalamman tierin seikkailut ovat aloittelijaystävällisempiä kuin korkeamman tierin.\r\n\r\nPeli pelataan Discord-kanavalla ropehuone-2\r\nThe game will be played on Discord channel ropehuone-2\r\nSignup at Konsti: ropekonsti.fi\r\nIlmoittautuminen Konstissa: ropekonsti.fi",
-    "endTime": { "$date": "2021-07-31T21:00:00Z" },
+    "endTime": "2021-07-31T21:00:00Z",
     "englishOk": false,
     "gameSystem": "Pathfinder 2E",
     "genres": [],
@@ -1229,11 +1229,11 @@
     "programType": "tabletopRPG",
     "revolvingDoor": false,
     "shortDescription": "A Pathfinder One-Shot adventure",
-    "startTime": { "$date": "2021-07-31T17:00:00Z" },
+    "startTime": "2021-07-31T17:00:00Z",
     "styles": ["light", "combat_driven"],
     "tags": ["aloittelijaystavallinen", "in-english", "sopii-yli-12v-"],
     "title": "One-Shot #2: Dinner at Lionlodge",
-    "updatedAt": { "$date": "2021-08-04T11:36:01.098Z" }
+    "updatedAt": "2021-08-04T11:36:01.098Z"
   },
   {
     "programItemId": "p4654",
@@ -1254,9 +1254,9 @@
     "beginnerFriendly": false,
     "childrenFriendly": false,
     "contentWarnings": "",
-    "createdAt": { "$date": "2021-07-16T14:28:01.319Z" },
+    "createdAt": "2021-07-16T14:28:01.319Z",
     "description": "Fredsportin kaupungissa on valtaa pitävien voimasuhteissa tapahtunut muutos - joku on ajanut vampyyrit kaupungista.\r\n\r\nMutta sehän merkitsee vain mahdollisuutta! Ja te olette tätä tyhjiötä tulleet täyttämään, kukin omien erikoistarpeidensa mukaisesti.\r\n\r\nPelisysteemi; \"Urban Shadows (1. edikka)\" (Powered by the Apocalypse)\r\n\r\nPeli pelataan Discord-kanavalla ropehuone-6\r\nIlmoittautuminen Konstissa: ropekonsti.fi",
-    "endTime": { "$date": "2021-08-01T16:00:00Z" },
+    "endTime": "2021-08-01T16:00:00Z",
     "englishOk": false,
     "gameSystem": "Urban Shadown (PbtA) [1. edikka]",
     "genres": [],
@@ -1272,11 +1272,11 @@
     "programType": "tabletopRPG",
     "revolvingDoor": false,
     "shortDescription": "Urbaania fantasiaa valtapelin kourissa kipuilevassa rantakaupungissa",
-    "startTime": { "$date": "2021-08-01T12:00:00Z" },
+    "startTime": "2021-08-01T12:00:00Z",
     "styles": ["serious", "rules_light", "story_driven", "character_driven"],
     "tags": ["vain-taysi-ikaisille"],
     "title": "Vampyyrejä vailla valtakuntaa",
-    "updatedAt": { "$date": "2021-08-04T11:36:01.098Z" }
+    "updatedAt": "2021-08-04T11:36:01.098Z"
   },
   {
     "programItemId": "p4632",
@@ -1297,9 +1297,9 @@
     "beginnerFriendly": false,
     "childrenFriendly": false,
     "contentWarnings": "",
-    "createdAt": { "$date": "2021-07-16T14:28:01.319Z" },
+    "createdAt": "2021-07-16T14:28:01.319Z",
     "description": "Maria on juuri saanut kuulla etäiseksi jääneen isänsä kuolleen ja perineensä sukunsa huvilan Kruunuvuoren rannasta. Vuosi 1925 on loppumaisillaan ja hän päättää juhlistaa vuoden vaihdetta yhtäviensä kanssa uudella huvilallaan. Yhdessä he kokoontuvat huvilalle viettämään mahdollisesti viimeistä uutta vuottaan.\r\n\r\nPeli sisältää kuolemaa ja raakoja kuvauksia.\r\n\r\nPeli pelataan Discord-kanavalla ropehuone-3\r\nIlmoittautuminen Konstissa: ropekonsti.fi",
-    "endTime": { "$date": "2021-08-01T16:00:00Z" },
+    "endTime": "2021-08-01T16:00:00Z",
     "englishOk": false,
     "gameSystem": "Call of Cthulhu",
     "genres": [],
@@ -1315,11 +1315,11 @@
     "programType": "tabletopRPG",
     "revolvingDoor": false,
     "shortDescription": "Lovecraftian horror in 1925 Helsinki",
-    "startTime": { "$date": "2021-08-01T12:00:00Z" },
+    "startTime": "2021-08-01T12:00:00Z",
     "styles": ["rules_light", "story_driven"],
     "tags": ["aloittelijaystavallinen", "vain-taysi-ikaisille"],
     "title": "Kruunuvuoren huvilat",
-    "updatedAt": { "$date": "2021-08-04T11:36:01.098Z" }
+    "updatedAt": "2021-08-04T11:36:01.098Z"
   },
   {
     "programItemId": "p4621",
@@ -1340,9 +1340,9 @@
     "beginnerFriendly": false,
     "childrenFriendly": false,
     "contentWarnings": "",
-    "createdAt": { "$date": "2021-07-16T14:28:01.319Z" },
+    "createdAt": "2021-07-16T14:28:01.319Z",
     "description": "Maata etsimässä (Earth Searching) on radiokuunnelmasarja, jonka on kirjoittanut James Follett BBC Radio 4:lle 1980-luvun alussa. Se löytyy Yle Areenasta. Kuunnelmaa ei tarvitse tuntea voidakseen pelata tätä peliä (eikä ole spoiler-vaaraa).\r\n\r\nJuoni:\r\n\r\nAvaruusalus Haastaja on etsinyt uusia ihmisasutukseen kelpaavia planeettoja sataviisitoista vuotta. Suurin osa miehistöstä menehtyi meteoroiditörmäyksessä ja Haastajaa operoi enää neljä miehistön jäsentä. Miehistöä ohjailevat arvoitukselliset koneelliset äänet Enkeli yksi ja Enkeli kaksi.\r\n\r\nSelvinnyt miehistö on valinnan edessä. Jatketaanko toivottomalta tuntuvaa elinkelpoisten planeettojen etsimistä vai käännetäänkö Haastajan kurssi takaisin maata kohti?\r\n\r\nPeli pelataan Discord-kanavalla ropehuone-5\r\nIlmoittautuminen Konstissa: ropekonsti.fi",
-    "endTime": { "$date": "2021-08-01T16:00:00Z" },
+    "endTime": "2021-08-01T16:00:00Z",
     "englishOk": false,
     "gameSystem": "oma",
     "genres": [],
@@ -1358,11 +1358,11 @@
     "programType": "tabletopRPG",
     "revolvingDoor": false,
     "shortDescription": "60-lukumainen sci-fi avaruusseikkailu (\"viisikko avaruudessa\")",
-    "startTime": { "$date": "2021-08-01T12:00:00Z" },
+    "startTime": "2021-08-01T12:00:00Z",
     "styles": ["light", "rules_light", "story_driven", "character_driven"],
     "tags": ["aloittelijaystavallinen", "ei-sovellu-alle-15v-"],
     "title": "Maata etsimässä",
-    "updatedAt": { "$date": "2021-08-04T11:36:01.098Z" }
+    "updatedAt": "2021-08-04T11:36:01.098Z"
   },
   {
     "programItemId": "p4705",
@@ -1383,9 +1383,9 @@
     "beginnerFriendly": false,
     "childrenFriendly": false,
     "contentWarnings": "",
-    "createdAt": { "$date": "2021-07-20T17:12:00.969Z" },
+    "createdAt": "2021-07-20T17:12:00.969Z",
     "description": "A Pathfinder Society Scenario designed for levels 1–4.\r\n\r\nA new year dawns for the Pathfinder Society. For the past several years, Pathfinders have explored the edges of the Iobarian wilderness, making new allies and discovering hints at a long-forgotten past. Now, the Decemvirate has decided that it is time for the Pathfinders to do what Pathfinders do best: explore, report, and cooperate! In an ancient cyclopean ruin, the Society seeks to stake their claim with both a new lodge and, hopefully, new insights into Iobaria's remote history. Some secrets are best left buried, however. Will the PCs make a name for themselves as modern day explorers, or will the evil lurking at the heart of the Iobarian dig site consume their hopes and dreams?\r\n\r\nWritten by Scott D. Young\r\n\r\nScenario tags: Metaplot\r\n\r\nPathfinder Society tarjoaa perinteistä fantasiaroolipelaamista Pathfinder RPG:n säännöillä. Tarjolla on pelejä eritasoisille hahmoille ja peleissä pelataan Pathfinder Societyn sääntöjen mukaan rakennetulla hahmolla, mutta kaikkiin peleihin pääsee tarvittaessa valmishahmolla laajasta valikoimasta. Pelin vaikeustasoa voi arvioida sen yhteydessä olevasta Tier-merkinnästä, joka ilmoittaa pelissä käytettävien hahmojen tasoskaalan: matalamman tierin seikkailut ovat aloittelijaystävällisempiä kuin korkeamman tierin.\r\n\r\nSignup at Konsti: ropekonsti.fi\r\nIlmoittautuminen Konstissa: ropekonsti.fi",
-    "endTime": { "$date": "2021-08-01T21:00:00Z" },
+    "endTime": "2021-08-01T21:00:00Z",
     "englishOk": false,
     "gameSystem": "Pathfinder 2E",
     "genres": [],
@@ -1401,11 +1401,11 @@
     "programType": "tabletopRPG",
     "revolvingDoor": false,
     "shortDescription": "A Pathfinder Society scenario",
-    "startTime": { "$date": "2021-08-01T17:00:00Z" },
+    "startTime": "2021-08-01T17:00:00Z",
     "styles": ["light", "combat_driven"],
     "tags": [],
     "title": "Pathfinder Society #2-01: Citadel of Corruption",
-    "updatedAt": { "$date": "2021-08-04T11:36:01.099Z" }
+    "updatedAt": "2021-08-04T11:36:01.099Z"
   },
   {
     "programItemId": "p4695",
@@ -1426,9 +1426,9 @@
     "beginnerFriendly": false,
     "childrenFriendly": false,
     "contentWarnings": "",
-    "createdAt": { "$date": "2021-07-16T14:28:01.316Z" },
+    "createdAt": "2021-07-16T14:28:01.316Z",
     "description": "A Pathfinder Society Scenario designed for level 1.\r\n\r\nEvery year, the Pathfinder Society inducts new classes of recruits into their ranks. The three deans of the Society's schools, the Spells, Scrolls, and Swords, are responsible for ensuring that the new recruits have the basic skills and experience necessary to thrive in the field. PCs participating in this adventure will get to meet all three of the Society's deans and undergo their unique challenges, proving their worth and fitness to join the Pathfinder Society!\r\n\r\nWritten by Sean McGowan\r\n\r\nScenario tags: Repeatable\r\n\r\nPathfinder Society tarjoaa perinteistä fantasiaroolipelaamista Pathfinder RPG:n säännöillä. Tarjolla on pelejä eritasoisille hahmoille ja peleissä pelataan Pathfinder Societyn sääntöjen mukaan rakennetulla hahmolla, mutta kaikkiin peleihin pääsee tarvittaessa valmishahmolla laajasta valikoimasta. Pelin vaikeustasoa voi arvioida sen yhteydessä olevasta Tier-merkinnästä, joka ilmoittaa pelissä käytettävien hahmojen tasoskaalan: matalamman tierin seikkailut ovat aloittelijaystävällisempiä kuin korkeamman tierin.\r\n\r\nPeli pelataan Discord-kanavalla ropehuone-2\r\nThe game will be played on Discord channel ropehuone-2\r\n\r\nRoll20 link: https://app.roll20.net/join/11147289/hKkOsA\r\n\r\nSignup at Konsti: ropekonsti.fi\r\nIlmoittautuminen Konstissa: ropekonsti.fi",
-    "endTime": { "$date": "2021-07-30T16:00:00Z" },
+    "endTime": "2021-07-30T16:00:00Z",
     "englishOk": false,
     "gameSystem": "Pathfinder 2E",
     "genres": [],
@@ -1444,11 +1444,11 @@
     "programType": "tabletopRPG",
     "revolvingDoor": false,
     "shortDescription": "A Pathfinder Society scenario",
-    "startTime": { "$date": "2021-07-30T12:00:00Z" },
+    "startTime": "2021-07-30T12:00:00Z",
     "styles": ["light", "combat_driven"],
     "tags": ["aloittelijaystavallinen", "in-english", "sopii-yli-12v-"],
     "title": "Pathfinder Society #2-11: The Pathfinder Trials",
-    "updatedAt": { "$date": "2021-08-04T11:36:01.096Z" }
+    "updatedAt": "2021-08-04T11:36:01.096Z"
   },
   {
     "programItemId": "p4675",
@@ -1469,9 +1469,9 @@
     "beginnerFriendly": false,
     "childrenFriendly": false,
     "contentWarnings": "",
-    "createdAt": { "$date": "2021-07-16T14:28:01.317Z" },
+    "createdAt": "2021-07-16T14:28:01.317Z",
     "description": "Tunnelmoiva Cthulhu-henkinen kauhuskenaario kevyin säännöin 1960-luvun rapistuvassa Atlantic Cityssa. \r\n\r\nMahdollisesti järkyttäviä teemoja ovat veriset murhat ja okkultismi sekä taustalla tapahtuma-ajalle tyypilliset ennakkoluulot. Ei ole mikään varsinainen rankistelupeli.\r\n\r\nPeli pelataan Discord-kanavalla ropehuone-3\r\nIlmoittautuminen Konstissa: ropekonsti.fi",
-    "endTime": { "$date": "2021-07-30T20:00:00Z" },
+    "endTime": "2021-07-30T20:00:00Z",
     "englishOk": false,
     "gameSystem": "Cthulhu Dark yksinkertaistettuna",
     "genres": [],
@@ -1487,11 +1487,11 @@
     "programType": "tabletopRPG",
     "revolvingDoor": false,
     "shortDescription": "Cthulhu-henkinen tunnelmoiva kauhuskenaario kevyin säännöin.",
-    "startTime": { "$date": "2021-07-30T17:00:00Z" },
+    "startTime": "2021-07-30T17:00:00Z",
     "styles": ["serious", "rules_light", "story_driven"],
     "tags": ["ei-sovellu-alle-15v-"],
     "title": "Hotelli meren rannalla",
-    "updatedAt": { "$date": "2021-08-04T11:36:01.096Z" }
+    "updatedAt": "2021-08-04T11:36:01.096Z"
   },
   {
     "programItemId": "p4639",
@@ -1512,9 +1512,9 @@
     "beginnerFriendly": false,
     "childrenFriendly": false,
     "contentWarnings": "",
-    "createdAt": { "$date": "2021-07-16T14:28:01.317Z" },
+    "createdAt": "2021-07-16T14:28:01.317Z",
     "description": "Pelattavat hahmot ovat teinejä, jotka yrittävät selvitä ihmissuhdesopasta samalla, kun heidän salainen mystinen, maaginen ja välillä jopa hirviömäinen puolensa aiheuttaa lisäongelmia. Se paneutuu teini-iän hämmennykseen ja kauhuun käyttäen kirjaimellisia hirviöitä allegoriana erilaisille vaikeuksille.\r\n\r\nPeli saattaa sisältää seksuaalisia teemoja ja teini-iän traumojen esille kaivamista, joten peliä ei suositella pelaajille, joille tämä voi olla ongelma.\r\n\r\nPeli pelataan Discord-kanavalla ropehuone-6\r\nIlmoittautuminen Konstissa: ropekonsti.fi",
-    "endTime": { "$date": "2021-07-31T16:00:00Z" },
+    "endTime": "2021-07-31T16:00:00Z",
     "englishOk": false,
     "gameSystem": "Monsterhearts 2",
     "genres": [],
@@ -1530,11 +1530,11 @@
     "programType": "tabletopRPG",
     "revolvingDoor": false,
     "shortDescription": "Teinihirviöiden suhdesotkua, mutta Powered by the Apocalypse",
-    "startTime": { "$date": "2021-07-31T12:00:00Z" },
+    "startTime": "2021-07-31T12:00:00Z",
     "styles": ["light", "character_driven"],
     "tags": ["aloittelijaystavallinen", "vain-taysi-ikaisille"],
     "title": "Teinihirviöt suurella sydämellä",
-    "updatedAt": { "$date": "2021-08-04T11:36:01.098Z" }
+    "updatedAt": "2021-08-04T11:36:01.098Z"
   },
   {
     "programItemId": "p4641",
@@ -1555,9 +1555,9 @@
     "beginnerFriendly": false,
     "childrenFriendly": false,
     "contentWarnings": "",
-    "createdAt": { "$date": "2021-07-16T14:28:01.318Z" },
+    "createdAt": "2021-07-16T14:28:01.318Z",
     "description": "Greetings, WIZARDS! It is I, your Game Master the SORCERER SUPREME, and I have called you here to solve an IMPOSSIBLE TASK. Oh, how are you supposed to clear this IMPOSSIBLE TASK? Why, with a SPELL, of course! All WIZARDS know that each SPELL consists of one or more of WORDS OF POWER.\r\n\r\nAnd that each additional WORD OF POWER make it more likely that the whole SPELL goes awry.\r\n\r\nPeli pelataan Discord-kanavalla ropehuone-2\r\nThe game will be played on Discord channel ropehuone-2\r\nSignup at Konsti: ropekonsti.fi\r\nIlmoittautuminen Konstissa: ropekonsti.fi",
-    "endTime": { "$date": "2021-08-01T10:00:00Z" },
+    "endTime": "2021-08-01T10:00:00Z",
     "englishOk": false,
     "gameSystem": "Sorcerer Supreme",
     "genres": [],
@@ -1573,7 +1573,7 @@
     "programType": "tabletopRPG",
     "revolvingDoor": false,
     "shortDescription": "Let's cast spells with a high chance of going wrong",
-    "startTime": { "$date": "2021-08-01T08:00:00Z" },
+    "startTime": "2021-08-01T08:00:00Z",
     "styles": ["light", "rules_light"],
     "tags": [
       "aloittelijaystavallinen",
@@ -1582,7 +1582,7 @@
       "sopii-yli-12v-"
     ],
     "title": "Sorcerer Supreme",
-    "updatedAt": { "$date": "2021-08-04T11:36:01.098Z" }
+    "updatedAt": "2021-08-04T11:36:01.098Z"
   },
   {
     "programItemId": "p4701",
@@ -1603,9 +1603,9 @@
     "beginnerFriendly": false,
     "childrenFriendly": false,
     "contentWarnings": "",
-    "createdAt": { "$date": "2021-07-16T14:28:01.319Z" },
+    "createdAt": "2021-07-16T14:28:01.319Z",
     "description": "The members of the up-and-coming rock band Neon & Noqual are all set for the career-making opportunity to play at the Pact Worlds' biggest concert venue! But when their rickety starbus breaks down with mere hours left in the journey, the musicians will have to pack up their instruments and hitch a ride or two through the asteroids of the Diaspora. Will the power of music help them get to the gig on time, or will they miss their shot at making it big?\r\n\r\nThis short Starfinder adventure written by Luis Loza is intended to be completed in a single session and includes four 4th-level pregenerated characters whose backstories and motivations tie closely into the plot of the adventure. This adventure can be easily incorporated into various virtual tabletops, run off of digital devices, or printed out and played at a table.\r\n\r\nPathfinder Society tarjoaa perinteistä fantasiaroolipelaamista Pathfinder RPG:n säännöillä. Tarjolla on pelejä eritasoisille hahmoille ja peleissä pelataan Pathfinder Societyn sääntöjen mukaan rakennetulla hahmolla, mutta kaikkiin peleihin pääsee tarvittaessa valmishahmolla laajasta valikoimasta. Pelin vaikeustasoa voi arvioida sen yhteydessä olevasta Tier-merkinnästä, joka ilmoittaa pelissä käytettävien hahmojen tasoskaalan: matalamman tierin seikkailut ovat aloittelijaystävällisempiä kuin korkeamman tierin.\r\n\r\nPeli pelataan Discord-kanavalla ropehuone-1\r\nThe game will be played on Discord channel ropehuone-1\r\nSignup at Konsti: ropekonsti.fi\r\nIlmoittautuminen Konstissa: ropekonsti.fi",
-    "endTime": { "$date": "2021-08-01T16:00:00Z" },
+    "endTime": "2021-08-01T16:00:00Z",
     "englishOk": false,
     "gameSystem": "Starfinder",
     "genres": [],
@@ -1621,11 +1621,11 @@
     "programType": "tabletopRPG",
     "revolvingDoor": false,
     "shortDescription": "A Starfinder One-Shot adventure",
-    "startTime": { "$date": "2021-08-01T12:00:00Z" },
+    "startTime": "2021-08-01T12:00:00Z",
     "styles": ["light", "combat_driven"],
     "tags": ["aloittelijaystavallinen", "in-english", "sopii-yli-12v-"],
     "title": "One-Shot #1: Band on the Run",
-    "updatedAt": { "$date": "2021-08-04T11:36:01.098Z" }
+    "updatedAt": "2021-08-04T11:36:01.098Z"
   },
   {
     "programItemId": "p4706",
@@ -1646,9 +1646,9 @@
     "beginnerFriendly": false,
     "childrenFriendly": false,
     "contentWarnings": "",
-    "createdAt": { "$date": "2021-07-20T17:12:00.969Z" },
+    "createdAt": "2021-07-20T17:12:00.969Z",
     "description": "A Starfinder Society Scenario designed for levels 3-6.\r\n\r\nAt the request of the Dataphiles faction leader, a team of Starfinders travels to Verces to recruit a mysterious hacktivist who has attempted to contact the Society on multiple occasions, hoping that their expertise can help solve the mystery surrounding the ongoing Data Scourge digital attacks. Another wave of digital interference forces the PCs’ ship to crash-land on the planet’s dangerous Darkside. The PCs trek across an inhospitable, frozen landscape toward civilization, hoping there’s still time to complete their mission…\r\n\r\nWritten by: Rigby Bendele\r\n\r\nScenario tags: Faction (Dataphiles), Metaplot (Data Scourge)\r\n\r\nPathfinder Society tarjoaa perinteistä fantasiaroolipelaamista Pathfinder RPG:n säännöillä. Tarjolla on pelejä eritasoisille hahmoille ja peleissä pelataan Pathfinder Societyn sääntöjen mukaan rakennetulla hahmolla, mutta kaikkiin peleihin pääsee tarvittaessa valmishahmolla laajasta valikoimasta. Pelin vaikeustasoa voi arvioida sen yhteydessä olevasta Tier-merkinnästä, joka ilmoittaa pelissä käytettävien hahmojen tasoskaalan: matalamman tierin seikkailut ovat aloittelijaystävällisempiä kuin korkeamman tierin.\r\n\r\nRoll20 link: https://app.roll20.net/join/11214502/VWQ1tA\r\n\r\nSignup at Konsti: ropekonsti.fi\r\nIlmoittautuminen Konstissa: ropekonsti.fi",
-    "endTime": { "$date": "2021-08-01T21:00:00Z" },
+    "endTime": "2021-08-01T21:00:00Z",
     "englishOk": false,
     "gameSystem": "Starfinder",
     "genres": [],
@@ -1664,11 +1664,11 @@
     "programType": "tabletopRPG",
     "revolvingDoor": false,
     "shortDescription": "A Starfinder Society scenario",
-    "startTime": { "$date": "2021-08-01T17:00:00Z" },
+    "startTime": "2021-08-01T17:00:00Z",
     "styles": ["light", "combat_driven"],
     "tags": [],
     "title": "Starfinder Society #4-04: Mission Not Found",
-    "updatedAt": { "$date": "2021-08-04T11:36:01.099Z" }
+    "updatedAt": "2021-08-04T11:36:01.099Z"
   },
   {
     "programItemId": "p4709",
@@ -1689,9 +1689,9 @@
     "beginnerFriendly": false,
     "childrenFriendly": false,
     "contentWarnings": "",
-    "createdAt": { "$date": "2021-07-16T14:28:01.317Z" },
+    "createdAt": "2021-07-16T14:28:01.317Z",
     "description": "Tämän kampanjan pelaajahahmojen keski-ikä on 19.\r\nTässä kampanjassa käytetään yhden vihollisen eliminointiin keskimäärin yli 15 tonnia ammuksia.\r\nTämä kampanja maksaa Yhdysvalloille 120 miljoonaa dollaria vuorokaudelta.\r\nTässä kampanjassa kokonainen kansakunta joutuu kriisiin.\r\n\r\nNyt 26. kertaa Ropeconissa. http://www.charlieeisurffaa.com (sivusto päivitetään vielä ennen conia)  \r\n\r\nHuom! Peli tapahtuu omassa Discordissani. Aikaisempaa pelikokemusta ei tarvita.\r\n\r\nHahmonluontiapua ja tekniikkaan tutustuminen Discordissa Ma 26.7. klo 18-21\r\nHahmonluontiapua ja tekniikkaan tutustuminen Discordissa Ti 27.7. klo 20-22\r\nPerjantai 30.7. skenaario 1 klo 16-23\r\nLauantai 31.7. skenaario 2 klo 10-23\r\nSunnuntai 1.8. skenaario 3 klo 10-16\r\nDiscord-linkki: Katso http://www.charlieeisurffaa.com\r\n\r\nPelin teemat ovat todennäköisesti jonkun mielestä järkyttäviä ja/tai häiritseviä. \r\n\r\nPelini liittyy Ropeconin Elementit-teemaan, koska tämän vuoden pelissä vesi (Mekong-joki) ja tuli (kerta-, sarja-, suoja-, niitto- ja tuhoamistuli, sekä myös napalm) ovat kovasti läsnä.\r\n\r\nIlmoittautuminen Konstissa: ropekonsti.fi",
-    "endTime": { "$date": "2021-07-31T20:00:00Z" },
+    "endTime": "2021-07-31T20:00:00Z",
     "englishOk": false,
     "gameSystem": "Charlie ei surffaa",
     "genres": [],
@@ -1707,7 +1707,7 @@
     "programType": "tabletopRPG",
     "revolvingDoor": true,
     "shortDescription": "Roolipelikampanja Vietnamin sodasta",
-    "startTime": { "$date": "2021-07-31T07:00:00Z" },
+    "startTime": "2021-07-31T07:00:00Z",
     "styles": ["serious", "light", "rules_heavy", "combat_driven"],
     "tags": [
       "aloittelijaystavallinen",
@@ -1715,7 +1715,7 @@
       "teema-elementit"
     ],
     "title": "Charlie ei surffaa",
-    "updatedAt": { "$date": "2021-08-04T11:36:01.096Z" }
+    "updatedAt": "2021-08-04T11:36:01.096Z"
   },
   {
     "programItemId": "p4683",
@@ -1736,9 +1736,9 @@
     "beginnerFriendly": false,
     "childrenFriendly": false,
     "contentWarnings": "",
-    "createdAt": { "$date": "2021-07-16T14:28:01.317Z" },
+    "createdAt": "2021-07-16T14:28:01.317Z",
     "description": "Erikoisen lentoaluksen kehittänyt Theodor Mugg on lyönyt vetoa, että onnistuisi kiertämään aluksellaan Astraterran maailman keskiössä pauhaavan Myrskyn ympäri vaivaisessa kahdeksassa päivässä. Matkalleen hän tarvitsee avuksi urheita tutkimusretkeilijöitä, jotka uskaltavat kohdata matkan vaarat.\r\n\r\nSääntöinä toimii Astraterran toinen laitos hiukan mukautettuna. Sen sääntöjä ei tarvitse osata etukäteen. Pelissä on valmiit hahmot 2–5 pelaajalle, mutta pelaaja voi ottaa halutessaan oman hahmonsakin mukaan. Peli sopii hyvin lapsille.\r\n\r\nPeli pelataan Discord-kanavalla ropehuone-7\r\nIlmoittautuminen Konstissa: ropekonsti.fi",
-    "endTime": { "$date": "2021-07-31T12:00:00Z" },
+    "endTime": "2021-07-31T12:00:00Z",
     "englishOk": false,
     "gameSystem": "Astraterra",
     "genres": [],
@@ -1754,7 +1754,7 @@
     "programType": "tabletopRPG",
     "revolvingDoor": false,
     "shortDescription": "Astraterran seikkailijat kiertämässä Myrskyä erikoisella lentoaluksella",
-    "startTime": { "$date": "2021-07-31T09:00:00Z" },
+    "startTime": "2021-07-31T09:00:00Z",
     "styles": ["rules_light"],
     "tags": [
       "aloittelijaystavallinen",
@@ -1765,7 +1765,7 @@
       "aihe-poytaroolipelit"
     ],
     "title": "Myrskyn ympäri kahdeksassa päivässä",
-    "updatedAt": { "$date": "2021-08-04T11:36:01.097Z" }
+    "updatedAt": "2021-08-04T11:36:01.097Z"
   },
   {
     "programItemId": "p4699",
@@ -1786,9 +1786,9 @@
     "beginnerFriendly": false,
     "childrenFriendly": false,
     "contentWarnings": "",
-    "createdAt": { "$date": "2021-07-16T14:28:01.317Z" },
+    "createdAt": "2021-07-16T14:28:01.317Z",
     "description": "A Pathfinder Society Scenario designed for levels 5–16, as well as Aid Characters (see below).\r\n\r\nFor a millennium, Golarion rested safe in the knowledge that history's most infamous lich, the Whispering Tyrant, was securely locked away. After a cataclysmic explosion sundered his prison, the Tyrant roams free once more. But he didn’t simply abandon his prison. Deep beneath the ground, behind nearly impenetrable magical wards, he has set in motion a necromantic ritual of extraordinary power. It's up to the Pathfinders to battle the Tyrant's guardians, break the wards, and stop the ritual that could make him unstoppable. Along the way, they’ll discover what secrets the Tyrant wanted to protect and keep from falling into his enemies' hands.\r\n\r\nThis scenario has two difficulty levels: Soldier and Champion. \"Champion\" is a considerably more challenging version of the adventure.\r\n\r\nAid Characters: Players can bring up to three additional characters of level 5 or higher to participate in this special scenario. Aid characters generate benefits to help other tables, and they can participate in special Aid Missions during the scenario. Players do not need all of their Chronicle sheets for their Aid Characters—they only need each Aid Characters' most recently earned Chronicle sheet.\r\n\r\nWritten by Brian Duckwitz\r\n\r\nPathfinder Society tarjoaa perinteistä fantasiaroolipelaamista Pathfinder RPG:n säännöillä. Tarjolla on pelejä eritasoisille hahmoille ja peleissä pelataan Pathfinder Societyn sääntöjen mukaan rakennetulla hahmolla, mutta kaikkiin peleihin pääsee tarvittaessa valmishahmolla laajasta valikoimasta. Pelin vaikeustasoa voi arvioida sen yhteydessä olevasta Tier-merkinnästä, joka ilmoittaa pelissä käytettävien hahmojen tasoskaalan: matalamman tierin seikkailut ovat aloittelijaystävällisempiä kuin korkeamman tierin.\r\n\r\nPeli pelataan Discord-kanavalla ropehuone-1 - ropehuone-4\r\nThe game will be played on Discord channel ropehuone-1 - ropehuone-4\r\nSignup at Konsti: ropekonsti.fi\r\nIlmoittautuminen Konstissa: ropekonsti.fi",
-    "endTime": { "$date": "2021-07-31T17:00:00Z" },
+    "endTime": "2021-07-31T17:00:00Z",
     "englishOk": false,
     "gameSystem": "Pathfinder 1E",
     "genres": [],
@@ -1804,11 +1804,11 @@
     "programType": "tabletopRPG",
     "revolvingDoor": false,
     "shortDescription": "A Pathfinder Society multi-table special",
-    "startTime": { "$date": "2021-07-31T12:00:00Z" },
+    "startTime": "2021-07-31T12:00:00Z",
     "styles": ["light", "combat_driven"],
     "tags": ["in-english", "sopii-yli-12v-"],
     "title": "Pathfinder Society #10-98: Siege of the Gallowspire",
-    "updatedAt": { "$date": "2021-08-04T11:36:01.097Z" }
+    "updatedAt": "2021-08-04T11:36:01.097Z"
   },
   {
     "programItemId": "p4700",
@@ -1829,9 +1829,9 @@
     "beginnerFriendly": false,
     "childrenFriendly": false,
     "contentWarnings": "",
-    "createdAt": { "$date": "2021-07-16T14:28:01.318Z" },
+    "createdAt": "2021-07-16T14:28:01.318Z",
     "description": "The members of the up-and-coming rock band Neon & Noqual are all set for the career-making opportunity to play at the Pact Worlds' biggest concert venue! But when their rickety starbus breaks down with mere hours left in the journey, the musicians will have to pack up their instruments and hitch a ride or two through the asteroids of the Diaspora. Will the power of music help them get to the gig on time, or will they miss their shot at making it big?\r\n\r\nThis short Starfinder adventure written by Luis Loza is intended to be completed in a single session and includes four 4th-level pregenerated characters whose backstories and motivations tie closely into the plot of the adventure. This adventure can be easily incorporated into various virtual tabletops, run off of digital devices, or printed out and played at a table.\r\n\r\nPathfinder Society tarjoaa perinteistä fantasiaroolipelaamista Pathfinder RPG:n säännöillä. Tarjolla on pelejä eritasoisille hahmoille ja peleissä pelataan Pathfinder Societyn sääntöjen mukaan rakennetulla hahmolla, mutta kaikkiin peleihin pääsee tarvittaessa valmishahmolla laajasta valikoimasta. Pelin vaikeustasoa voi arvioida sen yhteydessä olevasta Tier-merkinnästä, joka ilmoittaa pelissä käytettävien hahmojen tasoskaalan: matalamman tierin seikkailut ovat aloittelijaystävällisempiä kuin korkeamman tierin.\r\n\r\nPeli pelataan Discord-kanavalla ropehuone-1\r\nThe game will be played on Discord channel ropehuone-1\r\nSignup at Konsti: ropekonsti.fi\r\nIlmoittautuminen Konstissa: ropekonsti.fi",
-    "endTime": { "$date": "2021-07-31T21:00:00Z" },
+    "endTime": "2021-07-31T21:00:00Z",
     "englishOk": false,
     "gameSystem": "Starfinder",
     "genres": [],
@@ -1847,11 +1847,11 @@
     "programType": "tabletopRPG",
     "revolvingDoor": false,
     "shortDescription": "A Starfinder One-Shot adventure",
-    "startTime": { "$date": "2021-07-31T17:00:00Z" },
+    "startTime": "2021-07-31T17:00:00Z",
     "styles": ["light", "combat_driven"],
     "tags": ["aloittelijaystavallinen", "in-english", "sopii-yli-12v-"],
     "title": "One-Shot #1: Band on the Run",
-    "updatedAt": { "$date": "2021-08-04T11:36:01.098Z" }
+    "updatedAt": "2021-08-04T11:36:01.098Z"
   },
   {
     "programItemId": "p4659",
@@ -1872,9 +1872,9 @@
     "beginnerFriendly": false,
     "childrenFriendly": false,
     "contentWarnings": "",
-    "createdAt": { "$date": "2021-07-16T14:28:01.316Z" },
+    "createdAt": "2021-07-16T14:28:01.316Z",
     "description": "Tähdenetsijöiden seuran asteroiditutkimusaseman henkilöstöllä on alkamassa lomavuoro ja sankarit ovat tulossa vapauttamaan heitä. Saavuttuaan asemalle sankarit löytävät sen aavemaisen tyhjänä ja heidän on pääteltävä mitä Tutkimusasema 634:lla on tapahtunut.\r\n\r\nStarfinder Society -seikkailu tasojen 1-4 hahmoille. Mikäli sinulla ei ole omaa hahmoa, niin meillä on tarjolla valmiiksi luotuja hahmoja peliä varten.\r\n\r\nPeli pelataan Discord-kanavalla ropehuone-1\r\nIlmoittautuminen Konstissa: ropekonsti.fi",
-    "endTime": { "$date": "2021-07-30T16:00:00Z" },
+    "endTime": "2021-07-30T16:00:00Z",
     "englishOk": false,
     "gameSystem": "Starfinder RPG",
     "genres": [],
@@ -1890,11 +1890,11 @@
     "programType": "tabletopRPG",
     "revolvingDoor": false,
     "shortDescription": "Mysteeri jossain kaukana avaruudessa.",
-    "startTime": { "$date": "2021-07-30T12:00:00Z" },
+    "startTime": "2021-07-30T12:00:00Z",
     "styles": ["light", "combat_driven"],
     "tags": ["aloittelijaystavallinen"],
     "title": "SFS #3-13 Silence at Outpost 634",
-    "updatedAt": { "$date": "2021-08-04T11:36:01.096Z" }
+    "updatedAt": "2021-08-04T11:36:01.096Z"
   },
   {
     "programItemId": "p4649",
@@ -1915,9 +1915,9 @@
     "beginnerFriendly": false,
     "childrenFriendly": false,
     "contentWarnings": "",
-    "createdAt": { "$date": "2021-07-16T14:28:01.317Z" },
+    "createdAt": "2021-07-16T14:28:01.317Z",
     "description": "Avainsanat: post-apo, dystopia, dekkari, paranoia, steampunk\r\n\r\nTaantuneessa, post-apokalyptisessa maailmassa valta jakautuu turmeltuneen aateliston ja historiaa tuhoavan papiston välille. Taikauskoinen kansa pyrkii selviytyy miten pystyy vallanpitäjien keskittyessä lyhytnäköiseen juonitteluun. Papiston salainen poliisi, Paimenet, ovat pelättyjä totalitarismin airuita – mutta myös ainoa taho joka voi suojella tavallista kansaa ylimystöltä. Paimenille tärkeintä on löytää syyllisiä, ei niinkään selvittää rikoksia - uskonnollisessa totalitarismissa kaikki ovat syyllisiä johonkin.\r\n\r\nTällä kertaa tarinamme alkaa suoraan takaa-ajosta. Paimenet ovat, yhdessä aatelishuoneiden agenttien kanssa, estäneet juuri harhaoppisten vallankumouksellisten terroriteon. Yritys häiritä paremman väen naamiaisia epäonnistui, mutten kultistien johtaja, koodinimeltään \"Kultalintu\" onnistui pakenemaan. Takaa-ajajat seuraavat kahta pakenijaa Ariuksen Langalle, muinaiselle ihmeelle joka kuljettaa suurta hissiä ylös taivaisiin.\r\n\r\nSeuraajat ehtivät hissiin juuri ennen sen lähtöä. Tiedossa on muutamia tunteja kestävä matka korkeuksiin - ja kun hissi saavuttaa lakipisteensä, maalliset lait eivät ole enää voimassa.... Kuka matkustajista on Kultalintu? Ja voivatko takaa-ajajat edes luottaa täysin toisiinsa?\r\n\r\nPeli pelataan Discord-kanavalla ropehuone-2\r\nIlmoittautuminen Konstissa: ropekonsti.fi",
-    "endTime": { "$date": "2021-07-30T21:30:00Z" },
+    "endTime": "2021-07-30T21:30:00Z",
     "englishOk": false,
     "gameSystem": "Arius the Ashen Age",
     "genres": [],
@@ -1933,11 +1933,11 @@
     "programType": "tabletopRPG",
     "revolvingDoor": false,
     "shortDescription": "Totalitarismin agentit etsivät toisinajattelijaa nousevassa kiertoratahississä",
-    "startTime": { "$date": "2021-07-30T17:00:00Z" },
+    "startTime": "2021-07-30T17:00:00Z",
     "styles": ["serious", "rules_light", "character_driven"],
     "tags": ["aloittelijaystavallinen", "vain-taysi-ikaisille"],
     "title": "Lennä, kultalintu, lennä!",
-    "updatedAt": { "$date": "2021-08-04T11:36:01.096Z" }
+    "updatedAt": "2021-08-04T11:36:01.096Z"
   },
   {
     "programItemId": "p4704",
@@ -1958,9 +1958,9 @@
     "beginnerFriendly": false,
     "childrenFriendly": false,
     "contentWarnings": "",
-    "createdAt": { "$date": "2021-07-16T14:28:01.318Z" },
+    "createdAt": "2021-07-16T14:28:01.318Z",
     "description": "A Pathfinder Society Quest designed for levels 1–4 (subtiers 1–2 and 3–4).\r\n\r\nIn the nation of Qadira, Esmayl ibn Qaradi calls for Pathfinders to assist in what should be a simple genealogy verification. Multiple parties are heavily invested in the results that might be revealed by this family tree, however, and things won't be as simple as sifting through some old family records. As thieves and nobles vie to control history itself, the PCs will need to fend off violence and deceptions as they follow the branches of an ancient family tree.\r\n\r\nWritten by: Carlos Cabrera\r\n\r\nScenario tags: None\r\n\r\nPathfinder Society tarjoaa perinteistä fantasiaroolipelaamista Pathfinder RPG:n säännöillä. Tarjolla on pelejä eritasoisille hahmoille ja peleissä pelataan Pathfinder Societyn sääntöjen mukaan rakennetulla hahmolla, mutta kaikkiin peleihin pääsee tarvittaessa valmishahmolla laajasta valikoimasta. Pelin vaikeustasoa voi arvioida sen yhteydessä olevasta Tier-merkinnästä, joka ilmoittaa pelissä käytettävien hahmojen tasoskaalan: matalamman tierin seikkailut ovat aloittelijaystävällisempiä kuin korkeamman tierin.\r\n\r\nPeli pelataan Discord-kanavalla ropehuone-1\r\nThe game will be played on Discord channel ropehuone-1\r\n\r\nSignup at Konsti: ropekonsti.fi\r\nIlmoittautuminen Konstissa: ropekonsti.fi",
-    "endTime": { "$date": "2021-08-01T09:30:00Z" },
+    "endTime": "2021-08-01T09:30:00Z",
     "englishOk": false,
     "gameSystem": "Pathfinder 2E",
     "genres": [],
@@ -1976,11 +1976,11 @@
     "programType": "tabletopRPG",
     "revolvingDoor": false,
     "shortDescription": "A Pathfinder Society quest",
-    "startTime": { "$date": "2021-08-01T08:00:00Z" },
+    "startTime": "2021-08-01T08:00:00Z",
     "styles": ["light", "combat_driven"],
     "tags": ["aloittelijaystavallinen", "in-english", "sopii-yli-12v-"],
     "title": "Pathfinder Society Quest #11: A Parchment Tree",
-    "updatedAt": { "$date": "2021-08-04T11:36:01.098Z" }
+    "updatedAt": "2021-08-04T11:36:01.098Z"
   },
   {
     "programItemId": "p4710",
@@ -2001,9 +2001,9 @@
     "beginnerFriendly": false,
     "childrenFriendly": false,
     "contentWarnings": "",
-    "createdAt": { "$date": "2021-07-16T14:28:01.318Z" },
+    "createdAt": "2021-07-16T14:28:01.318Z",
     "description": "Tämän kampanjan pelaajahahmojen keski-ikä on 19.\r\nTässä kampanjassa käytetään yhden vihollisen eliminointiin keskimäärin yli 15 tonnia ammuksia.\r\nTämä kampanja maksaa Yhdysvalloille 120 miljoonaa dollaria vuorokaudelta.\r\nTässä kampanjassa kokonainen kansakunta joutuu kriisiin.\r\n\r\nNyt 26. kertaa Ropeconissa. http://www.charlieeisurffaa.com (sivusto päivitetään vielä ennen conia)  \r\n\r\nHuom! Peli tapahtuu omassa Discordissani. Aikaisempaa pelikokemusta ei tarvita.\r\n\r\nHahmonluontiapua ja tekniikkaan tutustuminen Discordissa Ma 26.7. klo 18-21\r\nHahmonluontiapua ja tekniikkaan tutustuminen Discordissa Ti 27.7. klo 20-22\r\nPerjantai 30.7. skenaario 1 klo 16-23\r\nLauantai 31.7. skenaario 2 klo 10-23\r\nSunnuntai 1.8. skenaario 3 klo 10-16\r\nDiscord-linkki: Katso http://www.charlieeisurffaa.com\r\n\r\nPelin teemat ovat todennäköisesti jonkun mielestä järkyttäviä ja/tai häiritseviä. \r\n\r\nPelini liittyy Ropeconin Elementit-teemaan, koska tämän vuoden pelissä vesi (Mekong-joki) ja tuli (kerta-, sarja-, suoja-, niitto- ja tuhoamistuli, sekä myös napalm) ovat kovasti läsnä.\r\n\r\nIlmoittautuminen Konstissa: ropekonsti.fi",
-    "endTime": { "$date": "2021-08-01T13:00:00Z" },
+    "endTime": "2021-08-01T13:00:00Z",
     "englishOk": false,
     "gameSystem": "Charlie ei surffaa",
     "genres": [],
@@ -2019,7 +2019,7 @@
     "programType": "tabletopRPG",
     "revolvingDoor": true,
     "shortDescription": "Roolipelikampanja Vietnamin sodasta",
-    "startTime": { "$date": "2021-08-01T07:00:00Z" },
+    "startTime": "2021-08-01T07:00:00Z",
     "styles": ["serious", "light", "rules_heavy", "combat_driven"],
     "tags": [
       "aloittelijaystavallinen",
@@ -2027,6 +2027,6 @@
       "teema-elementit"
     ],
     "title": "Charlie ei surffaa",
-    "updatedAt": { "$date": "2021-08-04T11:36:01.098Z" }
+    "updatedAt": "2021-08-04T11:36:01.098Z"
   }
 ]

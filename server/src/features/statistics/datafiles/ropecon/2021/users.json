@@ -8,26 +8,26 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4661" },
+        "programItemId": "p4661",
         "priority": 1,
-        "time": { "$date": "2021-07-30T13:00:00Z" },
+        "signedToStartTime": "2021-07-30T13:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4709" },
+        "programItemId": "p4709",
         "priority": 1,
-        "time": { "$date": "2021-07-31T07:00:00Z" },
+        "signedToStartTime": "2021-07-31T07:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4710" },
+        "programItemId": "p4710",
         "priority": 1,
-        "time": { "$date": "2021-08-01T07:00:00Z" },
+        "signedToStartTime": "2021-08-01T07:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-25T21:45:26.6Z" },
-    "updatedAt": { "$date": "2021-07-25T21:47:37.254Z" }
+    "createdAt": "2021-07-25T21:45:26.6Z",
+    "updatedAt": "2021-07-25T21:47:37.254Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -38,14 +38,14 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4709" },
+        "programItemId": "p4709",
         "priority": 1,
-        "time": { "$date": "2021-07-31T07:00:00Z" },
+        "signedToStartTime": "2021-07-31T07:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-25T21:55:02.889Z" },
-    "updatedAt": { "$date": "2021-07-25T21:55:21.642Z" }
+    "createdAt": "2021-07-25T21:55:02.889Z",
+    "updatedAt": "2021-07-25T21:55:21.642Z"
   },
   {
     "favoriteProgramItemIds": ["p4661", "p4709"],
@@ -56,26 +56,26 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4661" },
+        "programItemId": "p4661",
         "priority": 1,
-        "time": { "$date": "2021-07-30T13:00:00Z" },
+        "signedToStartTime": "2021-07-30T13:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4709" },
+        "programItemId": "p4709",
         "priority": 1,
-        "time": { "$date": "2021-07-31T07:00:00Z" },
+        "signedToStartTime": "2021-07-31T07:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4710" },
+        "programItemId": "p4710",
         "priority": 1,
-        "time": { "$date": "2021-08-01T07:00:00Z" },
+        "signedToStartTime": "2021-08-01T07:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-25T22:20:59.584Z" },
-    "updatedAt": { "$date": "2021-07-25T22:28:01.62Z" }
+    "createdAt": "2021-07-25T22:20:59.584Z",
+    "updatedAt": "2021-07-25T22:28:01.62Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -86,26 +86,26 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4661" },
+        "programItemId": "p4661",
         "priority": 1,
-        "time": { "$date": "2021-07-30T13:00:00Z" },
+        "signedToStartTime": "2021-07-30T13:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4709" },
+        "programItemId": "p4709",
         "priority": 1,
-        "time": { "$date": "2021-07-31T07:00:00Z" },
+        "signedToStartTime": "2021-07-31T07:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4710" },
+        "programItemId": "p4710",
         "priority": 1,
-        "time": { "$date": "2021-08-01T07:00:00Z" },
+        "signedToStartTime": "2021-08-01T07:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-25T22:27:52.964Z" },
-    "updatedAt": { "$date": "2021-07-25T22:29:08.822Z" }
+    "createdAt": "2021-07-25T22:27:52.964Z",
+    "updatedAt": "2021-07-25T22:29:08.822Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -116,26 +116,26 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4661" },
+        "programItemId": "p4661",
         "priority": 1,
-        "time": { "$date": "2021-07-30T13:00:00Z" },
+        "signedToStartTime": "2021-07-30T13:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4709" },
+        "programItemId": "p4709",
         "priority": 1,
-        "time": { "$date": "2021-07-31T07:00:00Z" },
+        "signedToStartTime": "2021-07-31T07:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4710" },
+        "programItemId": "p4710",
         "priority": 1,
-        "time": { "$date": "2021-08-01T07:00:00Z" },
+        "signedToStartTime": "2021-08-01T07:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-25T23:03:22.196Z" },
-    "updatedAt": { "$date": "2021-07-25T23:03:56.534Z" }
+    "createdAt": "2021-07-25T23:03:22.196Z",
+    "updatedAt": "2021-07-25T23:03:56.534Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -146,26 +146,26 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4661" },
+        "programItemId": "p4661",
         "priority": 1,
-        "time": { "$date": "2021-07-30T13:00:00Z" },
+        "signedToStartTime": "2021-07-30T13:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4709" },
+        "programItemId": "p4709",
         "priority": 1,
-        "time": { "$date": "2021-07-31T07:00:00Z" },
+        "signedToStartTime": "2021-07-31T07:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4710" },
+        "programItemId": "p4710",
         "priority": 1,
-        "time": { "$date": "2021-08-01T07:00:00Z" },
+        "signedToStartTime": "2021-08-01T07:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-26T05:56:22.668Z" },
-    "updatedAt": { "$date": "2021-07-26T05:57:26.761Z" }
+    "createdAt": "2021-07-26T05:56:22.668Z",
+    "updatedAt": "2021-07-26T05:57:26.761Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -176,26 +176,26 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4661" },
+        "programItemId": "p4661",
         "priority": 1,
-        "time": { "$date": "2021-07-30T13:00:00Z" },
+        "signedToStartTime": "2021-07-30T13:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4709" },
+        "programItemId": "p4709",
         "priority": 1,
-        "time": { "$date": "2021-07-31T07:00:00Z" },
+        "signedToStartTime": "2021-07-31T07:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4710" },
+        "programItemId": "p4710",
         "priority": 1,
-        "time": { "$date": "2021-08-01T07:00:00Z" },
+        "signedToStartTime": "2021-08-01T07:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-26T06:18:34.68Z" },
-    "updatedAt": { "$date": "2021-07-26T06:22:33.647Z" }
+    "createdAt": "2021-07-26T06:18:34.68Z",
+    "updatedAt": "2021-07-26T06:22:33.647Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -206,14 +206,14 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4642" },
+        "programItemId": "p4642",
         "priority": 1,
-        "time": { "$date": "2021-07-30T17:00:00Z" },
+        "signedToStartTime": "2021-07-30T17:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-26T06:20:34.68Z" },
-    "updatedAt": { "$date": "2021-07-29T10:21:15.237Z" }
+    "createdAt": "2021-07-26T06:20:34.68Z",
+    "updatedAt": "2021-07-29T10:21:15.237Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -224,32 +224,32 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4740" },
+        "programItemId": "p4740",
         "priority": 1,
-        "time": { "$date": "2021-07-30T07:00:00Z" },
+        "signedToStartTime": "2021-07-30T07:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4697" },
+        "programItemId": "p4697",
         "priority": 1,
-        "time": { "$date": "2021-07-30T16:00:00Z" },
+        "signedToStartTime": "2021-07-30T16:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4699" },
+        "programItemId": "p4699",
         "priority": 1,
-        "time": { "$date": "2021-07-31T12:00:00Z" },
+        "signedToStartTime": "2021-07-31T12:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4704" },
+        "programItemId": "p4704",
         "priority": 1,
-        "time": { "$date": "2021-08-01T08:00:00Z" },
+        "signedToStartTime": "2021-08-01T08:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-26T06:25:34.079Z" },
-    "updatedAt": { "$date": "2021-07-31T20:07:11.046Z" }
+    "createdAt": "2021-07-26T06:25:34.079Z",
+    "updatedAt": "2021-07-31T20:07:11.046Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -260,26 +260,26 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4661" },
+        "programItemId": "p4661",
         "priority": 1,
-        "time": { "$date": "2021-07-30T13:00:00Z" },
+        "signedToStartTime": "2021-07-30T13:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4709" },
+        "programItemId": "p4709",
         "priority": 1,
-        "time": { "$date": "2021-07-31T07:00:00Z" },
+        "signedToStartTime": "2021-07-31T07:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4710" },
+        "programItemId": "p4710",
         "priority": 1,
-        "time": { "$date": "2021-08-01T07:00:00Z" },
+        "signedToStartTime": "2021-08-01T07:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-26T07:06:12.801Z" },
-    "updatedAt": { "$date": "2021-07-26T07:07:30.235Z" }
+    "createdAt": "2021-07-26T07:06:12.801Z",
+    "updatedAt": "2021-07-26T07:07:30.235Z"
   },
   {
     "favoriteProgramItemIds": ["p4642"],
@@ -289,8 +289,8 @@
     "groupCode": "0",
     "lotterySignups": [],
     "directSignups": [],
-    "createdAt": { "$date": "2021-07-26T08:13:06.835Z" },
-    "updatedAt": { "$date": "2021-07-26T15:30:46.57Z" }
+    "createdAt": "2021-07-26T08:13:06.835Z",
+    "updatedAt": "2021-07-26T15:30:46.57Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -301,26 +301,26 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4698" },
+        "programItemId": "p4698",
         "priority": 1,
-        "time": { "$date": "2021-07-31T08:00:00Z" },
+        "signedToStartTime": "2021-07-31T08:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4697" },
+        "programItemId": "p4697",
         "priority": 1,
-        "time": { "$date": "2021-07-30T16:00:00Z" },
+        "signedToStartTime": "2021-07-30T16:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4704" },
+        "programItemId": "p4704",
         "priority": 1,
-        "time": { "$date": "2021-08-01T08:00:00Z" },
+        "signedToStartTime": "2021-08-01T08:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-26T08:15:12.113Z" },
-    "updatedAt": { "$date": "2021-07-29T16:43:38.394Z" }
+    "createdAt": "2021-07-26T08:15:12.113Z",
+    "updatedAt": "2021-07-29T16:43:38.394Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -331,26 +331,26 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4661" },
+        "programItemId": "p4661",
         "priority": 1,
-        "time": { "$date": "2021-07-30T13:00:00Z" },
+        "signedToStartTime": "2021-07-30T13:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4709" },
+        "programItemId": "p4709",
         "priority": 1,
-        "time": { "$date": "2021-07-31T07:00:00Z" },
+        "signedToStartTime": "2021-07-31T07:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4710" },
+        "programItemId": "p4710",
         "priority": 1,
-        "time": { "$date": "2021-08-01T07:00:00Z" },
+        "signedToStartTime": "2021-08-01T07:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-26T08:36:59.479Z" },
-    "updatedAt": { "$date": "2021-07-26T08:37:30.07Z" }
+    "createdAt": "2021-07-26T08:36:59.479Z",
+    "updatedAt": "2021-07-26T08:37:30.07Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -360,8 +360,8 @@
     "groupCode": "0",
     "lotterySignups": [],
     "directSignups": [],
-    "createdAt": { "$date": "2021-07-26T08:37:09.265Z" },
-    "updatedAt": { "$date": "2021-07-29T06:05:55.195Z" }
+    "createdAt": "2021-07-26T08:37:09.265Z",
+    "updatedAt": "2021-07-29T06:05:55.195Z"
   },
   {
     "favoriteProgramItemIds": [
@@ -381,44 +381,44 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4653" },
+        "programItemId": "p4653",
         "priority": 1,
-        "time": { "$date": "2021-07-31T17:00:00Z" },
+        "signedToStartTime": "2021-07-31T17:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4685" },
+        "programItemId": "p4685",
         "priority": 1,
-        "time": { "$date": "2021-08-01T09:00:00Z" },
+        "signedToStartTime": "2021-08-01T09:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4621" },
+        "programItemId": "p4621",
         "priority": 1,
-        "time": { "$date": "2021-08-01T12:00:00Z" },
+        "signedToStartTime": "2021-08-01T12:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4706" },
+        "programItemId": "p4706",
         "priority": 1,
-        "time": { "$date": "2021-08-01T17:00:00Z" },
+        "signedToStartTime": "2021-08-01T17:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4683" },
+        "programItemId": "p4683",
         "priority": 1,
-        "time": { "$date": "2021-07-31T09:00:00Z" },
+        "signedToStartTime": "2021-07-31T09:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4649" },
+        "programItemId": "p4649",
         "priority": 1,
-        "time": { "$date": "2021-07-30T17:00:00Z" },
+        "signedToStartTime": "2021-07-30T17:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-26T11:09:29.647Z" },
-    "updatedAt": { "$date": "2021-08-01T08:04:24.935Z" }
+    "createdAt": "2021-07-26T11:09:29.647Z",
+    "updatedAt": "2021-08-01T08:04:24.935Z"
   },
   {
     "favoriteProgramItemIds": ["p4601"],
@@ -429,14 +429,14 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4601" },
+        "programItemId": "p4601",
         "priority": 1,
-        "time": { "$date": "2021-07-31T17:00:00Z" },
+        "signedToStartTime": "2021-07-31T17:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-26T11:41:04.717Z" },
-    "updatedAt": { "$date": "2021-07-26T11:43:26.107Z" }
+    "createdAt": "2021-07-26T11:41:04.717Z",
+    "updatedAt": "2021-07-26T11:43:26.107Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -447,26 +447,26 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4661" },
+        "programItemId": "p4661",
         "priority": 1,
-        "time": { "$date": "2021-07-30T13:00:00Z" },
+        "signedToStartTime": "2021-07-30T13:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4709" },
+        "programItemId": "p4709",
         "priority": 1,
-        "time": { "$date": "2021-07-31T07:00:00Z" },
+        "signedToStartTime": "2021-07-31T07:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4710" },
+        "programItemId": "p4710",
         "priority": 1,
-        "time": { "$date": "2021-08-01T07:00:00Z" },
+        "signedToStartTime": "2021-08-01T07:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-26T13:09:29.379Z" },
-    "updatedAt": { "$date": "2021-07-26T13:11:42.231Z" }
+    "createdAt": "2021-07-26T13:09:29.379Z",
+    "updatedAt": "2021-07-26T13:11:42.231Z"
   },
   {
     "favoriteProgramItemIds": [
@@ -485,32 +485,32 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4661" },
+        "programItemId": "p4661",
         "priority": 1,
-        "time": { "$date": "2021-07-30T13:00:00Z" },
+        "signedToStartTime": "2021-07-30T13:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4632" },
+        "programItemId": "p4632",
         "priority": 1,
-        "time": { "$date": "2021-08-01T12:00:00Z" },
+        "signedToStartTime": "2021-08-01T12:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4709" },
+        "programItemId": "p4709",
         "priority": 1,
-        "time": { "$date": "2021-07-31T07:00:00Z" },
+        "signedToStartTime": "2021-07-31T07:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4710" },
+        "programItemId": "p4710",
         "priority": 1,
-        "time": { "$date": "2021-08-01T07:00:00Z" },
+        "signedToStartTime": "2021-08-01T07:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-26T13:40:29.797Z" },
-    "updatedAt": { "$date": "2021-07-28T20:13:26.928Z" }
+    "createdAt": "2021-07-26T13:40:29.797Z",
+    "updatedAt": "2021-07-28T20:13:26.928Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -521,26 +521,26 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4661" },
+        "programItemId": "p4661",
         "priority": 1,
-        "time": { "$date": "2021-07-30T13:00:00Z" },
+        "signedToStartTime": "2021-07-30T13:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4709" },
+        "programItemId": "p4709",
         "priority": 1,
-        "time": { "$date": "2021-07-31T07:00:00Z" },
+        "signedToStartTime": "2021-07-31T07:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4710" },
+        "programItemId": "p4710",
         "priority": 1,
-        "time": { "$date": "2021-08-01T07:00:00Z" },
+        "signedToStartTime": "2021-08-01T07:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-26T13:48:01.055Z" },
-    "updatedAt": { "$date": "2021-07-26T13:49:08.57Z" }
+    "createdAt": "2021-07-26T13:48:01.055Z",
+    "updatedAt": "2021-07-26T13:49:08.57Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -550,8 +550,8 @@
     "groupCode": "0",
     "lotterySignups": [],
     "directSignups": [],
-    "createdAt": { "$date": "2021-07-26T14:29:52.975Z" },
-    "updatedAt": { "$date": "2021-07-30T09:47:43.584Z" }
+    "createdAt": "2021-07-26T14:29:52.975Z",
+    "updatedAt": "2021-07-30T09:47:43.584Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -561,8 +561,8 @@
     "groupCode": "0",
     "lotterySignups": [],
     "directSignups": [],
-    "createdAt": { "$date": "2021-07-26T14:51:23.23Z" },
-    "updatedAt": { "$date": "2021-07-26T16:22:45.343Z" }
+    "createdAt": "2021-07-26T14:51:23.23Z",
+    "updatedAt": "2021-07-26T16:22:45.343Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -572,8 +572,8 @@
     "groupCode": "0",
     "lotterySignups": [],
     "directSignups": [],
-    "createdAt": { "$date": "2021-07-26T15:01:23.92Z" },
-    "updatedAt": { "$date": "2021-07-31T15:07:42.434Z" }
+    "createdAt": "2021-07-26T15:01:23.92Z",
+    "updatedAt": "2021-07-31T15:07:42.434Z"
   },
   {
     "favoriteProgramItemIds": ["p4601"],
@@ -584,14 +584,14 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4601" },
+        "programItemId": "p4601",
         "priority": 1,
-        "time": { "$date": "2021-07-31T17:00:00Z" },
+        "signedToStartTime": "2021-07-31T17:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-26T15:10:03.909Z" },
-    "updatedAt": { "$date": "2021-07-26T15:11:48.667Z" }
+    "createdAt": "2021-07-26T15:10:03.909Z",
+    "updatedAt": "2021-07-26T15:11:48.667Z"
   },
   {
     "favoriteProgramItemIds": [
@@ -609,14 +609,14 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4649" },
+        "programItemId": "p4649",
         "priority": 1,
-        "time": { "$date": "2021-07-30T17:00:00Z" },
+        "signedToStartTime": "2021-07-30T17:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-26T15:24:53.535Z" },
-    "updatedAt": { "$date": "2021-07-26T15:36:59.807Z" }
+    "createdAt": "2021-07-26T15:24:53.535Z",
+    "updatedAt": "2021-07-26T15:36:59.807Z"
   },
   {
     "favoriteProgramItemIds": ["p4699"],
@@ -627,14 +627,14 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4699" },
+        "programItemId": "p4699",
         "priority": 1,
-        "time": { "$date": "2021-07-31T12:00:00Z" },
+        "signedToStartTime": "2021-07-31T12:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-26T15:25:01.735Z" },
-    "updatedAt": { "$date": "2021-07-26T15:25:56.987Z" }
+    "createdAt": "2021-07-26T15:25:01.735Z",
+    "updatedAt": "2021-07-26T15:25:56.987Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -644,8 +644,8 @@
     "groupCode": "0",
     "lotterySignups": [],
     "directSignups": [],
-    "createdAt": { "$date": "2021-07-26T15:26:10.803Z" },
-    "updatedAt": { "$date": "2021-07-26T17:21:35.604Z" }
+    "createdAt": "2021-07-26T15:26:10.803Z",
+    "updatedAt": "2021-07-26T17:21:35.604Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -656,14 +656,14 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4667" },
+        "programItemId": "p4667",
         "priority": 1,
-        "time": { "$date": "2021-07-30T15:00:00Z" },
+        "signedToStartTime": "2021-07-30T15:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-26T15:29:34.172Z" },
-    "updatedAt": { "$date": "2021-07-26T15:30:09.181Z" }
+    "createdAt": "2021-07-26T15:29:34.172Z",
+    "updatedAt": "2021-07-26T15:30:09.181Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -674,14 +674,14 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4654" },
+        "programItemId": "p4654",
         "priority": 1,
-        "time": { "$date": "2021-08-01T12:00:00Z" },
+        "signedToStartTime": "2021-08-01T12:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-26T15:56:56.918Z" },
-    "updatedAt": { "$date": "2021-07-26T16:21:29.282Z" }
+    "createdAt": "2021-07-26T15:56:56.918Z",
+    "updatedAt": "2021-07-26T16:21:29.282Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -692,20 +692,20 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4601" },
+        "programItemId": "p4601",
         "priority": 1,
-        "time": { "$date": "2021-07-31T17:00:00Z" },
+        "signedToStartTime": "2021-07-31T17:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4699" },
+        "programItemId": "p4699",
         "priority": 1,
-        "time": { "$date": "2021-07-31T12:00:00Z" },
+        "signedToStartTime": "2021-07-31T12:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-26T16:05:45.179Z" },
-    "updatedAt": { "$date": "2021-07-29T21:30:03.974Z" }
+    "createdAt": "2021-07-26T16:05:45.179Z",
+    "updatedAt": "2021-07-29T21:30:03.974Z"
   },
   {
     "favoriteProgramItemIds": ["p4697", "p4705", "p4695"],
@@ -716,14 +716,14 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4697" },
+        "programItemId": "p4697",
         "priority": 1,
-        "time": { "$date": "2021-07-30T16:00:00Z" },
+        "signedToStartTime": "2021-07-30T16:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-26T16:08:33.928Z" },
-    "updatedAt": { "$date": "2021-07-26T19:06:04.403Z" }
+    "createdAt": "2021-07-26T16:08:33.928Z",
+    "updatedAt": "2021-07-26T19:06:04.403Z"
   },
   {
     "favoriteProgramItemIds": ["p4601"],
@@ -734,14 +734,14 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4601" },
+        "programItemId": "p4601",
         "priority": 1,
-        "time": { "$date": "2021-07-31T17:00:00Z" },
+        "signedToStartTime": "2021-07-31T17:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-26T16:24:10.59Z" },
-    "updatedAt": { "$date": "2021-07-26T16:26:21.022Z" }
+    "createdAt": "2021-07-26T16:24:10.59Z",
+    "updatedAt": "2021-07-26T16:26:21.022Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -752,20 +752,20 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4729" },
+        "programItemId": "p4729",
         "priority": 1,
-        "time": { "$date": "2021-08-01T07:00:00Z" },
+        "signedToStartTime": "2021-08-01T07:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4645" },
+        "programItemId": "p4645",
         "priority": 1,
-        "time": { "$date": "2021-07-31T17:00:00Z" },
+        "signedToStartTime": "2021-07-31T17:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-26T16:27:36.207Z" },
-    "updatedAt": { "$date": "2021-07-26T17:04:03.389Z" }
+    "createdAt": "2021-07-26T16:27:36.207Z",
+    "updatedAt": "2021-07-26T17:04:03.389Z"
   },
   {
     "favoriteProgramItemIds": ["p4740", "p4702", "p4701", "p4699"],
@@ -776,32 +776,32 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4698" },
+        "programItemId": "p4698",
         "priority": 1,
-        "time": { "$date": "2021-07-31T08:00:00Z" },
+        "signedToStartTime": "2021-07-31T08:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4705" },
+        "programItemId": "p4705",
         "priority": 1,
-        "time": { "$date": "2021-08-01T17:00:00Z" },
+        "signedToStartTime": "2021-08-01T17:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4699" },
+        "programItemId": "p4699",
         "priority": 1,
-        "time": { "$date": "2021-07-31T12:00:00Z" },
+        "signedToStartTime": "2021-07-31T12:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4704" },
+        "programItemId": "p4704",
         "priority": 1,
-        "time": { "$date": "2021-08-01T08:00:00Z" },
+        "signedToStartTime": "2021-08-01T08:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-26T16:27:55.302Z" },
-    "updatedAt": { "$date": "2021-07-30T14:04:01.355Z" }
+    "createdAt": "2021-07-26T16:27:55.302Z",
+    "updatedAt": "2021-07-30T14:04:01.355Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -812,26 +812,26 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4656" },
+        "programItemId": "p4656",
         "priority": 1,
-        "time": { "$date": "2021-07-31T17:00:00Z" },
+        "signedToStartTime": "2021-07-31T17:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4621" },
+        "programItemId": "p4621",
         "priority": 1,
-        "time": { "$date": "2021-08-01T12:00:00Z" },
+        "signedToStartTime": "2021-08-01T12:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4675" },
+        "programItemId": "p4675",
         "priority": 1,
-        "time": { "$date": "2021-07-30T17:00:00Z" },
+        "signedToStartTime": "2021-07-30T17:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-26T16:28:48.037Z" },
-    "updatedAt": { "$date": "2021-07-29T09:57:19.593Z" }
+    "createdAt": "2021-07-26T16:28:48.037Z",
+    "updatedAt": "2021-07-29T09:57:19.593Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -841,8 +841,8 @@
     "groupCode": "0",
     "lotterySignups": [],
     "directSignups": [],
-    "createdAt": { "$date": "2021-07-26T17:00:27.896Z" },
-    "updatedAt": { "$date": "2021-07-27T07:51:57.678Z" }
+    "createdAt": "2021-07-26T17:00:27.896Z",
+    "updatedAt": "2021-07-27T07:51:57.678Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -853,26 +853,26 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4698" },
+        "programItemId": "p4698",
         "priority": 1,
-        "time": { "$date": "2021-07-31T08:00:00Z" },
+        "signedToStartTime": "2021-07-31T08:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4706" },
+        "programItemId": "p4706",
         "priority": 1,
-        "time": { "$date": "2021-08-01T17:00:00Z" },
+        "signedToStartTime": "2021-08-01T17:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4700" },
+        "programItemId": "p4700",
         "priority": 1,
-        "time": { "$date": "2021-07-31T17:00:00Z" },
+        "signedToStartTime": "2021-07-31T17:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-26T17:21:53.506Z" },
-    "updatedAt": { "$date": "2021-07-29T03:58:03.426Z" }
+    "createdAt": "2021-07-26T17:21:53.506Z",
+    "updatedAt": "2021-07-29T03:58:03.426Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -883,26 +883,26 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4603" },
+        "programItemId": "p4603",
         "priority": 1,
-        "time": { "$date": "2021-07-30T17:00:00Z" },
+        "signedToStartTime": "2021-07-30T17:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4656" },
+        "programItemId": "p4656",
         "priority": 1,
-        "time": { "$date": "2021-07-31T17:00:00Z" },
+        "signedToStartTime": "2021-07-31T17:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4654" },
+        "programItemId": "p4654",
         "priority": 1,
-        "time": { "$date": "2021-08-01T12:00:00Z" },
+        "signedToStartTime": "2021-08-01T12:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-26T17:26:13.282Z" },
-    "updatedAt": { "$date": "2021-07-26T17:34:02.549Z" }
+    "createdAt": "2021-07-26T17:26:13.282Z",
+    "updatedAt": "2021-07-26T17:34:02.549Z"
   },
   {
     "favoriteProgramItemIds": ["p4684", "p4685", "p4694", "p4621", "p4683"],
@@ -912,8 +912,8 @@
     "groupCode": "0",
     "lotterySignups": [],
     "directSignups": [],
-    "createdAt": { "$date": "2021-07-26T18:02:15.196Z" },
-    "updatedAt": { "$date": "2021-07-26T22:21:46.467Z" }
+    "createdAt": "2021-07-26T18:02:15.196Z",
+    "updatedAt": "2021-07-26T22:21:46.467Z"
   },
   {
     "favoriteProgramItemIds": ["p4641"],
@@ -923,8 +923,8 @@
     "groupCode": "0",
     "lotterySignups": [],
     "directSignups": [],
-    "createdAt": { "$date": "2021-07-26T18:04:33.275Z" },
-    "updatedAt": { "$date": "2021-07-26T19:38:57.519Z" }
+    "createdAt": "2021-07-26T18:04:33.275Z",
+    "updatedAt": "2021-07-26T19:38:57.519Z"
   },
   {
     "favoriteProgramItemIds": ["p4653", "p4684", "p4682", "p4675"],
@@ -935,20 +935,20 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4684" },
+        "programItemId": "p4684",
         "priority": 1,
-        "time": { "$date": "2021-07-31T15:00:00Z" },
+        "signedToStartTime": "2021-07-31T15:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4682" },
+        "programItemId": "p4682",
         "priority": 1,
-        "time": { "$date": "2021-07-30T16:00:00Z" },
+        "signedToStartTime": "2021-07-30T16:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-26T18:58:03.894Z" },
-    "updatedAt": { "$date": "2021-07-27T08:31:21.614Z" }
+    "createdAt": "2021-07-26T18:58:03.894Z",
+    "updatedAt": "2021-07-27T08:31:21.614Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -958,8 +958,8 @@
     "groupCode": "0",
     "lotterySignups": [],
     "directSignups": [],
-    "createdAt": { "$date": "2021-07-26T19:06:49.712Z" },
-    "updatedAt": { "$date": "2021-07-26T19:06:49.712Z" }
+    "createdAt": "2021-07-26T19:06:49.712Z",
+    "updatedAt": "2021-07-26T19:06:49.712Z"
   },
   {
     "favoriteProgramItemIds": ["p4703", "p4697", "p4705", "p4704"],
@@ -970,26 +970,26 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4697" },
+        "programItemId": "p4697",
         "priority": 1,
-        "time": { "$date": "2021-07-30T16:00:00Z" },
+        "signedToStartTime": "2021-07-30T16:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4705" },
+        "programItemId": "p4705",
         "priority": 1,
-        "time": { "$date": "2021-08-01T17:00:00Z" },
+        "signedToStartTime": "2021-08-01T17:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4704" },
+        "programItemId": "p4704",
         "priority": 1,
-        "time": { "$date": "2021-08-01T08:00:00Z" },
+        "signedToStartTime": "2021-08-01T08:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-26T19:25:35.625Z" },
-    "updatedAt": { "$date": "2021-07-31T09:18:56.413Z" }
+    "createdAt": "2021-07-26T19:25:35.625Z",
+    "updatedAt": "2021-07-31T09:18:56.413Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -1000,14 +1000,14 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4699" },
+        "programItemId": "p4699",
         "priority": 1,
-        "time": { "$date": "2021-07-31T12:00:00Z" },
+        "signedToStartTime": "2021-07-31T12:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-26T19:36:06.95Z" },
-    "updatedAt": { "$date": "2021-07-29T14:25:37.404Z" }
+    "createdAt": "2021-07-26T19:36:06.95Z",
+    "updatedAt": "2021-07-29T14:25:37.404Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -1017,8 +1017,8 @@
     "groupCode": "0",
     "lotterySignups": [],
     "directSignups": [],
-    "createdAt": { "$date": "2021-07-26T20:06:04.042Z" },
-    "updatedAt": { "$date": "2021-07-26T20:06:04.042Z" }
+    "createdAt": "2021-07-26T20:06:04.042Z",
+    "updatedAt": "2021-07-26T20:06:04.042Z"
   },
   {
     "favoriteProgramItemIds": ["p4699"],
@@ -1029,14 +1029,14 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4706" },
+        "programItemId": "p4706",
         "priority": 1,
-        "time": { "$date": "2021-08-01T17:00:00Z" },
+        "signedToStartTime": "2021-08-01T17:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-26T20:26:38.352Z" },
-    "updatedAt": { "$date": "2021-07-29T15:07:54.382Z" }
+    "createdAt": "2021-07-26T20:26:38.352Z",
+    "updatedAt": "2021-07-29T15:07:54.382Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -1046,8 +1046,8 @@
     "groupCode": "0",
     "lotterySignups": [],
     "directSignups": [],
-    "createdAt": { "$date": "2021-07-26T20:27:07.301Z" },
-    "updatedAt": { "$date": "2021-07-26T20:27:07.301Z" }
+    "createdAt": "2021-07-26T20:27:07.301Z",
+    "updatedAt": "2021-07-26T20:27:07.301Z"
   },
   {
     "favoriteProgramItemIds": [
@@ -1069,32 +1069,32 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4667" },
+        "programItemId": "p4667",
         "priority": 1,
-        "time": { "$date": "2021-07-30T15:00:00Z" },
+        "signedToStartTime": "2021-07-30T15:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4681" },
+        "programItemId": "p4681",
         "priority": 1,
-        "time": { "$date": "2021-07-30T12:00:00Z" },
+        "signedToStartTime": "2021-07-30T12:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4654" },
+        "programItemId": "p4654",
         "priority": 1,
-        "time": { "$date": "2021-08-01T12:00:00Z" },
+        "signedToStartTime": "2021-08-01T12:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4639" },
+        "programItemId": "p4639",
         "priority": 1,
-        "time": { "$date": "2021-07-31T12:00:00Z" },
+        "signedToStartTime": "2021-07-31T12:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-26T20:29:29.079Z" },
-    "updatedAt": { "$date": "2021-07-30T11:29:11.4Z" }
+    "createdAt": "2021-07-26T20:29:29.079Z",
+    "updatedAt": "2021-07-30T11:29:11.4Z"
   },
   {
     "favoriteProgramItemIds": ["p4642", "p4601", "p4632"],
@@ -1105,26 +1105,26 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4681" },
+        "programItemId": "p4681",
         "priority": 1,
-        "time": { "$date": "2021-07-30T12:00:00Z" },
+        "signedToStartTime": "2021-07-30T12:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4642" },
+        "programItemId": "p4642",
         "priority": 1,
-        "time": { "$date": "2021-07-30T17:00:00Z" },
+        "signedToStartTime": "2021-07-30T17:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4632" },
+        "programItemId": "p4632",
         "priority": 1,
-        "time": { "$date": "2021-08-01T12:00:00Z" },
+        "signedToStartTime": "2021-08-01T12:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-26T21:13:30.394Z" },
-    "updatedAt": { "$date": "2021-07-30T11:54:37.187Z" }
+    "createdAt": "2021-07-26T21:13:30.394Z",
+    "updatedAt": "2021-07-30T11:54:37.187Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -1135,14 +1135,14 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4640" },
+        "programItemId": "p4640",
         "priority": 1,
-        "time": { "$date": "2021-07-30T13:00:00Z" },
+        "signedToStartTime": "2021-07-30T13:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-26T21:30:17.533Z" },
-    "updatedAt": { "$date": "2021-07-26T21:57:05.933Z" }
+    "createdAt": "2021-07-26T21:30:17.533Z",
+    "updatedAt": "2021-07-26T21:57:05.933Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -1152,8 +1152,8 @@
     "groupCode": "0",
     "lotterySignups": [],
     "directSignups": [],
-    "createdAt": { "$date": "2021-07-26T21:31:20.889Z" },
-    "updatedAt": { "$date": "2021-07-29T14:42:48.253Z" }
+    "createdAt": "2021-07-26T21:31:20.889Z",
+    "updatedAt": "2021-07-29T14:42:48.253Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -1164,20 +1164,20 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4656" },
+        "programItemId": "p4656",
         "priority": 1,
-        "time": { "$date": "2021-07-31T17:00:00Z" },
+        "signedToStartTime": "2021-07-31T17:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4661" },
+        "programItemId": "p4661",
         "priority": 1,
-        "time": { "$date": "2021-07-30T13:00:00Z" },
+        "signedToStartTime": "2021-07-30T13:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-26T21:36:28.178Z" },
-    "updatedAt": { "$date": "2021-07-28T11:34:10.608Z" }
+    "createdAt": "2021-07-26T21:36:28.178Z",
+    "updatedAt": "2021-07-28T11:34:10.608Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -1188,38 +1188,38 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4702" },
+        "programItemId": "p4702",
         "priority": 1,
-        "time": { "$date": "2021-07-31T17:00:00Z" },
+        "signedToStartTime": "2021-07-31T17:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4621" },
+        "programItemId": "p4621",
         "priority": 1,
-        "time": { "$date": "2021-08-01T12:00:00Z" },
+        "signedToStartTime": "2021-08-01T12:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4695" },
+        "programItemId": "p4695",
         "priority": 1,
-        "time": { "$date": "2021-07-30T12:00:00Z" },
+        "signedToStartTime": "2021-07-30T12:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4706" },
+        "programItemId": "p4706",
         "priority": 1,
-        "time": { "$date": "2021-08-01T17:00:00Z" },
+        "signedToStartTime": "2021-08-01T17:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4699" },
+        "programItemId": "p4699",
         "priority": 1,
-        "time": { "$date": "2021-07-31T12:00:00Z" },
+        "signedToStartTime": "2021-07-31T12:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-26T22:17:03.506Z" },
-    "updatedAt": { "$date": "2021-07-29T09:47:56.724Z" }
+    "createdAt": "2021-07-26T22:17:03.506Z",
+    "updatedAt": "2021-07-29T09:47:56.724Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -1229,8 +1229,8 @@
     "groupCode": "0",
     "lotterySignups": [],
     "directSignups": [],
-    "createdAt": { "$date": "2021-07-27T06:32:14.309Z" },
-    "updatedAt": { "$date": "2021-07-27T06:32:14.309Z" }
+    "createdAt": "2021-07-27T06:32:14.309Z",
+    "updatedAt": "2021-07-27T06:32:14.309Z"
   },
   {
     "favoriteProgramItemIds": ["p4703", "p4706", "p4699", "p4700"],
@@ -1241,26 +1241,26 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4703" },
+        "programItemId": "p4703",
         "priority": 1,
-        "time": { "$date": "2021-08-01T12:00:00Z" },
+        "signedToStartTime": "2021-08-01T12:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4706" },
+        "programItemId": "p4706",
         "priority": 1,
-        "time": { "$date": "2021-08-01T17:00:00Z" },
+        "signedToStartTime": "2021-08-01T17:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4699" },
+        "programItemId": "p4699",
         "priority": 1,
-        "time": { "$date": "2021-07-31T12:00:00Z" },
+        "signedToStartTime": "2021-07-31T12:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-27T06:45:37.574Z" },
-    "updatedAt": { "$date": "2021-07-31T16:45:04.34Z" }
+    "createdAt": "2021-07-27T06:45:37.574Z",
+    "updatedAt": "2021-07-31T16:45:04.34Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -1271,14 +1271,14 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4694" },
+        "programItemId": "p4694",
         "priority": 1,
-        "time": { "$date": "2021-08-01T13:00:00Z" },
+        "signedToStartTime": "2021-08-01T13:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-27T07:37:11.767Z" },
-    "updatedAt": { "$date": "2021-07-27T07:39:22.444Z" }
+    "createdAt": "2021-07-27T07:37:11.767Z",
+    "updatedAt": "2021-07-27T07:39:22.444Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -1288,8 +1288,8 @@
     "groupCode": "0",
     "lotterySignups": [],
     "directSignups": [],
-    "createdAt": { "$date": "2021-07-27T07:43:26.672Z" },
-    "updatedAt": { "$date": "2021-07-27T07:43:26.672Z" }
+    "createdAt": "2021-07-27T07:43:26.672Z",
+    "updatedAt": "2021-07-27T07:43:26.672Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -1300,32 +1300,32 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4740" },
+        "programItemId": "p4740",
         "priority": 1,
-        "time": { "$date": "2021-07-30T07:00:00Z" },
+        "signedToStartTime": "2021-07-30T07:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4702" },
+        "programItemId": "p4702",
         "priority": 1,
-        "time": { "$date": "2021-07-31T17:00:00Z" },
+        "signedToStartTime": "2021-07-31T17:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4695" },
+        "programItemId": "p4695",
         "priority": 1,
-        "time": { "$date": "2021-07-30T12:00:00Z" },
+        "signedToStartTime": "2021-07-30T12:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4699" },
+        "programItemId": "p4699",
         "priority": 1,
-        "time": { "$date": "2021-07-31T12:00:00Z" },
+        "signedToStartTime": "2021-07-31T12:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-27T08:06:38.914Z" },
-    "updatedAt": { "$date": "2021-07-29T15:06:51.426Z" }
+    "createdAt": "2021-07-27T08:06:38.914Z",
+    "updatedAt": "2021-07-29T15:06:51.426Z"
   },
   {
     "favoriteProgramItemIds": ["p4729", "p4691"],
@@ -1336,14 +1336,14 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4680" },
+        "programItemId": "p4680",
         "priority": 1,
-        "time": { "$date": "2021-08-01T08:00:00Z" },
+        "signedToStartTime": "2021-08-01T08:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-27T08:39:27.223Z" },
-    "updatedAt": { "$date": "2021-07-28T09:36:47.246Z" }
+    "createdAt": "2021-07-27T08:39:27.223Z",
+    "updatedAt": "2021-07-28T09:36:47.246Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -1353,8 +1353,8 @@
     "groupCode": "0",
     "lotterySignups": [],
     "directSignups": [],
-    "createdAt": { "$date": "2021-07-27T08:41:22.843Z" },
-    "updatedAt": { "$date": "2021-07-31T21:11:50.874Z" }
+    "createdAt": "2021-07-27T08:41:22.843Z",
+    "updatedAt": "2021-07-31T21:11:50.874Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -1364,8 +1364,8 @@
     "groupCode": "0",
     "lotterySignups": [],
     "directSignups": [],
-    "createdAt": { "$date": "2021-07-27T08:42:36.091Z" },
-    "updatedAt": { "$date": "2021-07-27T10:01:23.956Z" }
+    "createdAt": "2021-07-27T08:42:36.091Z",
+    "updatedAt": "2021-07-27T10:01:23.956Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -1376,14 +1376,14 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4675" },
+        "programItemId": "p4675",
         "priority": 1,
-        "time": { "$date": "2021-07-30T17:00:00Z" },
+        "signedToStartTime": "2021-07-30T17:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-27T10:28:39.325Z" },
-    "updatedAt": { "$date": "2021-07-31T07:55:52.346Z" }
+    "createdAt": "2021-07-27T10:28:39.325Z",
+    "updatedAt": "2021-07-31T07:55:52.346Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -1394,14 +1394,14 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4675" },
+        "programItemId": "p4675",
         "priority": 1,
-        "time": { "$date": "2021-07-30T17:00:00Z" },
+        "signedToStartTime": "2021-07-30T17:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-27T10:30:50.66Z" },
-    "updatedAt": { "$date": "2021-07-28T14:32:55.37Z" }
+    "createdAt": "2021-07-27T10:30:50.66Z",
+    "updatedAt": "2021-07-28T14:32:55.37Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -1412,14 +1412,14 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4632" },
+        "programItemId": "p4632",
         "priority": 1,
-        "time": { "$date": "2021-08-01T12:00:00Z" },
+        "signedToStartTime": "2021-08-01T12:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-27T10:33:44.102Z" },
-    "updatedAt": { "$date": "2021-07-27T10:35:22.08Z" }
+    "createdAt": "2021-07-27T10:33:44.102Z",
+    "updatedAt": "2021-07-27T10:35:22.08Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -1430,32 +1430,32 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4681" },
+        "programItemId": "p4681",
         "priority": 1,
-        "time": { "$date": "2021-07-30T12:00:00Z" },
+        "signedToStartTime": "2021-07-30T12:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4642" },
+        "programItemId": "p4642",
         "priority": 1,
-        "time": { "$date": "2021-07-30T17:00:00Z" },
+        "signedToStartTime": "2021-07-30T17:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4701" },
+        "programItemId": "p4701",
         "priority": 1,
-        "time": { "$date": "2021-08-01T12:00:00Z" },
+        "signedToStartTime": "2021-08-01T12:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4683" },
+        "programItemId": "p4683",
         "priority": 1,
-        "time": { "$date": "2021-07-31T09:00:00Z" },
+        "signedToStartTime": "2021-07-31T09:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-27T14:55:40.627Z" },
-    "updatedAt": { "$date": "2021-07-31T13:27:31.199Z" }
+    "createdAt": "2021-07-27T14:55:40.627Z",
+    "updatedAt": "2021-07-31T13:27:31.199Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -1466,26 +1466,26 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4685" },
+        "programItemId": "p4685",
         "priority": 1,
-        "time": { "$date": "2021-08-01T09:00:00Z" },
+        "signedToStartTime": "2021-08-01T09:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4681" },
+        "programItemId": "p4681",
         "priority": 1,
-        "time": { "$date": "2021-07-30T12:00:00Z" },
+        "signedToStartTime": "2021-07-30T12:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4683" },
+        "programItemId": "p4683",
         "priority": 1,
-        "time": { "$date": "2021-07-31T09:00:00Z" },
+        "signedToStartTime": "2021-07-31T09:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-27T15:48:03.913Z" },
-    "updatedAt": { "$date": "2021-07-27T16:39:59.991Z" }
+    "createdAt": "2021-07-27T15:48:03.913Z",
+    "updatedAt": "2021-07-27T16:39:59.991Z"
   },
   {
     "favoriteProgramItemIds": [
@@ -1508,20 +1508,20 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4729" },
+        "programItemId": "p4729",
         "priority": 1,
-        "time": { "$date": "2021-08-01T07:00:00Z" },
+        "signedToStartTime": "2021-08-01T07:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4691" },
+        "programItemId": "p4691",
         "priority": 1,
-        "time": { "$date": "2021-07-30T13:00:00Z" },
+        "signedToStartTime": "2021-07-30T13:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-27T17:35:16.321Z" },
-    "updatedAt": { "$date": "2021-07-29T14:59:48.777Z" }
+    "createdAt": "2021-07-27T17:35:16.321Z",
+    "updatedAt": "2021-07-29T14:59:48.777Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -1531,8 +1531,8 @@
     "groupCode": "0",
     "lotterySignups": [],
     "directSignups": [],
-    "createdAt": { "$date": "2021-07-27T20:20:25.991Z" },
-    "updatedAt": { "$date": "2021-07-27T20:20:25.991Z" }
+    "createdAt": "2021-07-27T20:20:25.991Z",
+    "updatedAt": "2021-07-27T20:20:25.991Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -1542,8 +1542,8 @@
     "groupCode": "0",
     "lotterySignups": [],
     "directSignups": [],
-    "createdAt": { "$date": "2021-07-27T21:02:01.924Z" },
-    "updatedAt": { "$date": "2021-07-27T21:02:01.924Z" }
+    "createdAt": "2021-07-27T21:02:01.924Z",
+    "updatedAt": "2021-07-27T21:02:01.924Z"
   },
   {
     "favoriteProgramItemIds": ["p4684", "p4685", "p4682", "p4681", "p4683"],
@@ -1553,8 +1553,8 @@
     "groupCode": "0",
     "lotterySignups": [],
     "directSignups": [],
-    "createdAt": { "$date": "2021-07-27T22:10:07.733Z" },
-    "updatedAt": { "$date": "2021-07-27T22:16:55.465Z" }
+    "createdAt": "2021-07-27T22:10:07.733Z",
+    "updatedAt": "2021-07-27T22:16:55.465Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -1565,14 +1565,14 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4667" },
+        "programItemId": "p4667",
         "priority": 1,
-        "time": { "$date": "2021-07-30T15:00:00Z" },
+        "signedToStartTime": "2021-07-30T15:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-28T00:01:31.723Z" },
-    "updatedAt": { "$date": "2021-07-28T00:02:12.626Z" }
+    "createdAt": "2021-07-28T00:01:31.723Z",
+    "updatedAt": "2021-07-28T00:02:12.626Z"
   },
   {
     "favoriteProgramItemIds": ["p4603", "p4694", "p4656", "p4654"],
@@ -1583,20 +1583,20 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4603" },
+        "programItemId": "p4603",
         "priority": 1,
-        "time": { "$date": "2021-07-30T17:00:00Z" },
+        "signedToStartTime": "2021-07-30T17:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4656" },
+        "programItemId": "p4656",
         "priority": 1,
-        "time": { "$date": "2021-07-31T17:00:00Z" },
+        "signedToStartTime": "2021-07-31T17:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-28T03:05:16.09Z" },
-    "updatedAt": { "$date": "2021-08-01T08:45:44.256Z" }
+    "createdAt": "2021-07-28T03:05:16.09Z",
+    "updatedAt": "2021-08-01T08:45:44.256Z"
   },
   {
     "favoriteProgramItemIds": ["p4603"],
@@ -1607,14 +1607,14 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4603" },
+        "programItemId": "p4603",
         "priority": 1,
-        "time": { "$date": "2021-07-30T17:00:00Z" },
+        "signedToStartTime": "2021-07-30T17:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-28T04:53:21.485Z" },
-    "updatedAt": { "$date": "2021-07-28T04:53:50.166Z" }
+    "createdAt": "2021-07-28T04:53:21.485Z",
+    "updatedAt": "2021-07-28T04:53:50.166Z"
   },
   {
     "favoriteProgramItemIds": ["p4603", "p4656", "p4681", "p4693", "p4675"],
@@ -1625,14 +1625,14 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4675" },
+        "programItemId": "p4675",
         "priority": 1,
-        "time": { "$date": "2021-07-30T17:00:00Z" },
+        "signedToStartTime": "2021-07-30T17:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-28T07:58:14.478Z" },
-    "updatedAt": { "$date": "2021-07-31T13:17:00.082Z" }
+    "createdAt": "2021-07-28T07:58:14.478Z",
+    "updatedAt": "2021-07-31T13:17:00.082Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -1642,8 +1642,8 @@
     "groupCode": "0",
     "lotterySignups": [],
     "directSignups": [],
-    "createdAt": { "$date": "2021-07-28T09:56:25.136Z" },
-    "updatedAt": { "$date": "2021-07-28T09:56:25.136Z" }
+    "createdAt": "2021-07-28T09:56:25.136Z",
+    "updatedAt": "2021-07-28T09:56:25.136Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -1653,8 +1653,8 @@
     "groupCode": "0",
     "lotterySignups": [],
     "directSignups": [],
-    "createdAt": { "$date": "2021-07-28T12:22:06.022Z" },
-    "updatedAt": { "$date": "2021-07-31T14:15:19.402Z" }
+    "createdAt": "2021-07-28T12:22:06.022Z",
+    "updatedAt": "2021-07-31T14:15:19.402Z"
   },
   {
     "favoriteProgramItemIds": ["p4699"],
@@ -1664,8 +1664,8 @@
     "groupCode": "0",
     "lotterySignups": [],
     "directSignups": [],
-    "createdAt": { "$date": "2021-07-28T12:29:51.662Z" },
-    "updatedAt": { "$date": "2021-07-29T11:57:12.356Z" }
+    "createdAt": "2021-07-28T12:29:51.662Z",
+    "updatedAt": "2021-07-29T11:57:12.356Z"
   },
   {
     "favoriteProgramItemIds": ["p4703", "p4699"],
@@ -1676,32 +1676,32 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4740" },
+        "programItemId": "p4740",
         "priority": 1,
-        "time": { "$date": "2021-07-30T07:00:00Z" },
+        "signedToStartTime": "2021-07-30T07:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4695" },
+        "programItemId": "p4695",
         "priority": 1,
-        "time": { "$date": "2021-07-30T12:00:00Z" },
+        "signedToStartTime": "2021-07-30T12:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4700" },
+        "programItemId": "p4700",
         "priority": 1,
-        "time": { "$date": "2021-07-31T17:00:00Z" },
+        "signedToStartTime": "2021-07-31T17:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4704" },
+        "programItemId": "p4704",
         "priority": 1,
-        "time": { "$date": "2021-08-01T08:00:00Z" },
+        "signedToStartTime": "2021-08-01T08:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-28T12:30:16.137Z" },
-    "updatedAt": { "$date": "2021-07-31T13:36:26.344Z" }
+    "createdAt": "2021-07-28T12:30:16.137Z",
+    "updatedAt": "2021-07-31T13:36:26.344Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -1712,38 +1712,38 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4740" },
+        "programItemId": "p4740",
         "priority": 1,
-        "time": { "$date": "2021-07-30T07:00:00Z" },
+        "signedToStartTime": "2021-07-30T07:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4698" },
+        "programItemId": "p4698",
         "priority": 1,
-        "time": { "$date": "2021-07-31T08:00:00Z" },
+        "signedToStartTime": "2021-07-31T08:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4703" },
+        "programItemId": "p4703",
         "priority": 1,
-        "time": { "$date": "2021-08-01T12:00:00Z" },
+        "signedToStartTime": "2021-08-01T12:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4695" },
+        "programItemId": "p4695",
         "priority": 1,
-        "time": { "$date": "2021-07-30T12:00:00Z" },
+        "signedToStartTime": "2021-07-30T12:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4700" },
+        "programItemId": "p4700",
         "priority": 1,
-        "time": { "$date": "2021-07-31T17:00:00Z" },
+        "signedToStartTime": "2021-07-31T17:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-28T12:34:50.658Z" },
-    "updatedAt": { "$date": "2021-07-28T12:53:13.535Z" }
+    "createdAt": "2021-07-28T12:34:50.658Z",
+    "updatedAt": "2021-07-28T12:53:13.535Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -1754,14 +1754,14 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4703" },
+        "programItemId": "p4703",
         "priority": 1,
-        "time": { "$date": "2021-08-01T12:00:00Z" },
+        "signedToStartTime": "2021-08-01T12:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-28T13:09:41.784Z" },
-    "updatedAt": { "$date": "2021-07-28T13:12:04.071Z" }
+    "createdAt": "2021-07-28T13:09:41.784Z",
+    "updatedAt": "2021-07-28T13:12:04.071Z"
   },
   {
     "favoriteProgramItemIds": ["p4701", "p4706", "p4699"],
@@ -1772,26 +1772,26 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4701" },
+        "programItemId": "p4701",
         "priority": 1,
-        "time": { "$date": "2021-08-01T12:00:00Z" },
+        "signedToStartTime": "2021-08-01T12:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4706" },
+        "programItemId": "p4706",
         "priority": 1,
-        "time": { "$date": "2021-08-01T17:00:00Z" },
+        "signedToStartTime": "2021-08-01T17:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4699" },
+        "programItemId": "p4699",
         "priority": 1,
-        "time": { "$date": "2021-07-31T12:00:00Z" },
+        "signedToStartTime": "2021-07-31T12:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-28T14:15:02.855Z" },
-    "updatedAt": { "$date": "2021-07-31T22:34:16.935Z" }
+    "createdAt": "2021-07-28T14:15:02.855Z",
+    "updatedAt": "2021-07-31T22:34:16.935Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -1802,14 +1802,14 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4645" },
+        "programItemId": "p4645",
         "priority": 1,
-        "time": { "$date": "2021-07-31T17:00:00Z" },
+        "signedToStartTime": "2021-07-31T17:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-28T18:17:47.849Z" },
-    "updatedAt": { "$date": "2021-07-28T18:19:34.814Z" }
+    "createdAt": "2021-07-28T18:17:47.849Z",
+    "updatedAt": "2021-07-28T18:19:34.814Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -1820,20 +1820,20 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4740" },
+        "programItemId": "p4740",
         "priority": 1,
-        "time": { "$date": "2021-07-30T07:00:00Z" },
+        "signedToStartTime": "2021-07-30T07:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4695" },
+        "programItemId": "p4695",
         "priority": 1,
-        "time": { "$date": "2021-07-30T12:00:00Z" },
+        "signedToStartTime": "2021-07-30T12:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-28T18:42:21.755Z" },
-    "updatedAt": { "$date": "2021-07-28T18:42:56.408Z" }
+    "createdAt": "2021-07-28T18:42:21.755Z",
+    "updatedAt": "2021-07-28T18:42:56.408Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -1843,8 +1843,8 @@
     "groupCode": "0",
     "lotterySignups": [],
     "directSignups": [],
-    "createdAt": { "$date": "2021-07-28T19:12:03.02Z" },
-    "updatedAt": { "$date": "2021-07-28T19:12:03.02Z" }
+    "createdAt": "2021-07-28T19:12:03.02Z",
+    "updatedAt": "2021-07-28T19:12:03.02Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -1855,20 +1855,20 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4729" },
+        "programItemId": "p4729",
         "priority": 1,
-        "time": { "$date": "2021-08-01T07:00:00Z" },
+        "signedToStartTime": "2021-08-01T07:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4694" },
+        "programItemId": "p4694",
         "priority": 1,
-        "time": { "$date": "2021-08-01T13:00:00Z" },
+        "signedToStartTime": "2021-08-01T13:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-28T20:23:28.841Z" },
-    "updatedAt": { "$date": "2021-07-28T20:45:48.674Z" }
+    "createdAt": "2021-07-28T20:23:28.841Z",
+    "updatedAt": "2021-07-28T20:45:48.674Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -1878,8 +1878,8 @@
     "groupCode": "0",
     "lotterySignups": [],
     "directSignups": [],
-    "createdAt": { "$date": "2021-07-28T20:26:46.251Z" },
-    "updatedAt": { "$date": "2021-07-28T20:26:46.251Z" }
+    "createdAt": "2021-07-28T20:26:46.251Z",
+    "updatedAt": "2021-07-28T20:26:46.251Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -1889,8 +1889,8 @@
     "groupCode": "0",
     "lotterySignups": [],
     "directSignups": [],
-    "createdAt": { "$date": "2021-07-29T03:55:49.083Z" },
-    "updatedAt": { "$date": "2021-07-29T19:34:00.982Z" }
+    "createdAt": "2021-07-29T03:55:49.083Z",
+    "updatedAt": "2021-07-29T19:34:00.982Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -1901,20 +1901,20 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4698" },
+        "programItemId": "p4698",
         "priority": 1,
-        "time": { "$date": "2021-07-31T08:00:00Z" },
+        "signedToStartTime": "2021-07-31T08:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4603" },
+        "programItemId": "p4603",
         "priority": 1,
-        "time": { "$date": "2021-07-30T17:00:00Z" },
+        "signedToStartTime": "2021-07-30T17:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-29T05:55:16.602Z" },
-    "updatedAt": { "$date": "2021-07-31T06:16:19.986Z" }
+    "createdAt": "2021-07-29T05:55:16.602Z",
+    "updatedAt": "2021-07-31T06:16:19.986Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -1924,8 +1924,8 @@
     "groupCode": "0",
     "lotterySignups": [],
     "directSignups": [],
-    "createdAt": { "$date": "2021-07-29T05:55:22.246Z" },
-    "updatedAt": { "$date": "2021-07-29T05:55:22.246Z" }
+    "createdAt": "2021-07-29T05:55:22.246Z",
+    "updatedAt": "2021-07-29T05:55:22.246Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -1936,20 +1936,20 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4684" },
+        "programItemId": "p4684",
         "priority": 1,
-        "time": { "$date": "2021-07-31T15:00:00Z" },
+        "signedToStartTime": "2021-07-31T15:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4710" },
+        "programItemId": "p4710",
         "priority": 1,
-        "time": { "$date": "2021-08-01T07:00:00Z" },
+        "signedToStartTime": "2021-08-01T07:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-29T07:07:57.253Z" },
-    "updatedAt": { "$date": "2021-07-29T07:14:40.746Z" }
+    "createdAt": "2021-07-29T07:07:57.253Z",
+    "updatedAt": "2021-07-29T07:14:40.746Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -1959,8 +1959,8 @@
     "groupCode": "0",
     "lotterySignups": [],
     "directSignups": [],
-    "createdAt": { "$date": "2021-07-29T07:30:55.553Z" },
-    "updatedAt": { "$date": "2021-07-29T07:30:55.553Z" }
+    "createdAt": "2021-07-29T07:30:55.553Z",
+    "updatedAt": "2021-07-29T07:30:55.553Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -1971,14 +1971,14 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4682" },
+        "programItemId": "p4682",
         "priority": 1,
-        "time": { "$date": "2021-07-30T16:00:00Z" },
+        "signedToStartTime": "2021-07-30T16:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-29T07:50:45.231Z" },
-    "updatedAt": { "$date": "2021-07-30T15:03:56.614Z" }
+    "createdAt": "2021-07-29T07:50:45.231Z",
+    "updatedAt": "2021-07-30T15:03:56.614Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -1989,14 +1989,14 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4691" },
+        "programItemId": "p4691",
         "priority": 1,
-        "time": { "$date": "2021-07-30T13:00:00Z" },
+        "signedToStartTime": "2021-07-30T13:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-29T08:42:33.794Z" },
-    "updatedAt": { "$date": "2021-07-29T08:43:53.266Z" }
+    "createdAt": "2021-07-29T08:42:33.794Z",
+    "updatedAt": "2021-07-29T08:43:53.266Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -2007,20 +2007,20 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4684" },
+        "programItemId": "p4684",
         "priority": 1,
-        "time": { "$date": "2021-07-31T15:00:00Z" },
+        "signedToStartTime": "2021-07-31T15:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4705" },
+        "programItemId": "p4705",
         "priority": 1,
-        "time": { "$date": "2021-08-01T17:00:00Z" },
+        "signedToStartTime": "2021-08-01T17:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-29T10:12:20.847Z" },
-    "updatedAt": { "$date": "2021-07-29T10:32:09.258Z" }
+    "createdAt": "2021-07-29T10:12:20.847Z",
+    "updatedAt": "2021-07-29T10:32:09.258Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -2031,14 +2031,14 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4684" },
+        "programItemId": "p4684",
         "priority": 1,
-        "time": { "$date": "2021-07-31T15:00:00Z" },
+        "signedToStartTime": "2021-07-31T15:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-29T10:30:52.833Z" },
-    "updatedAt": { "$date": "2021-07-29T10:31:17.867Z" }
+    "createdAt": "2021-07-29T10:30:52.833Z",
+    "updatedAt": "2021-07-29T10:31:17.867Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -2049,14 +2049,14 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4729" },
+        "programItemId": "p4729",
         "priority": 1,
-        "time": { "$date": "2021-08-01T07:00:00Z" },
+        "signedToStartTime": "2021-08-01T07:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-29T10:35:51.584Z" },
-    "updatedAt": { "$date": "2021-07-29T10:36:09.439Z" }
+    "createdAt": "2021-07-29T10:35:51.584Z",
+    "updatedAt": "2021-07-29T10:36:09.439Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -2067,14 +2067,14 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4684" },
+        "programItemId": "p4684",
         "priority": 1,
-        "time": { "$date": "2021-07-31T15:00:00Z" },
+        "signedToStartTime": "2021-07-31T15:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-29T10:40:17.167Z" },
-    "updatedAt": { "$date": "2021-07-29T10:44:53.025Z" }
+    "createdAt": "2021-07-29T10:40:17.167Z",
+    "updatedAt": "2021-07-29T10:44:53.025Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -2084,8 +2084,8 @@
     "groupCode": "0",
     "lotterySignups": [],
     "directSignups": [],
-    "createdAt": { "$date": "2021-07-29T11:14:04.28Z" },
-    "updatedAt": { "$date": "2021-07-29T11:14:04.28Z" }
+    "createdAt": "2021-07-29T11:14:04.28Z",
+    "updatedAt": "2021-07-29T11:14:04.28Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -2096,32 +2096,32 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4653" },
+        "programItemId": "p4653",
         "priority": 1,
-        "time": { "$date": "2021-07-31T17:00:00Z" },
+        "signedToStartTime": "2021-07-31T17:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4694" },
+        "programItemId": "p4694",
         "priority": 1,
-        "time": { "$date": "2021-08-01T13:00:00Z" },
+        "signedToStartTime": "2021-08-01T13:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4639" },
+        "programItemId": "p4639",
         "priority": 1,
-        "time": { "$date": "2021-07-31T12:00:00Z" },
+        "signedToStartTime": "2021-07-31T12:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4683" },
+        "programItemId": "p4683",
         "priority": 1,
-        "time": { "$date": "2021-07-31T09:00:00Z" },
+        "signedToStartTime": "2021-07-31T09:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-29T11:16:27.339Z" },
-    "updatedAt": { "$date": "2021-07-31T15:10:27.052Z" }
+    "createdAt": "2021-07-29T11:16:27.339Z",
+    "updatedAt": "2021-07-31T15:10:27.052Z"
   },
   {
     "favoriteProgramItemIds": ["p4694"],
@@ -2132,14 +2132,14 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4601" },
+        "programItemId": "p4601",
         "priority": 1,
-        "time": { "$date": "2021-07-31T17:00:00Z" },
+        "signedToStartTime": "2021-07-31T17:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-29T12:09:08.783Z" },
-    "updatedAt": { "$date": "2021-07-29T12:18:27.326Z" }
+    "createdAt": "2021-07-29T12:09:08.783Z",
+    "updatedAt": "2021-07-29T12:18:27.326Z"
   },
   {
     "favoriteProgramItemIds": ["p4703", "p4699"],
@@ -2150,14 +2150,14 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4699" },
+        "programItemId": "p4699",
         "priority": 1,
-        "time": { "$date": "2021-07-31T12:00:00Z" },
+        "signedToStartTime": "2021-07-31T12:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-29T13:29:05.171Z" },
-    "updatedAt": { "$date": "2021-07-31T11:45:01.888Z" }
+    "createdAt": "2021-07-29T13:29:05.171Z",
+    "updatedAt": "2021-07-31T11:45:01.888Z"
   },
   {
     "favoriteProgramItemIds": ["p4698", "p4704"],
@@ -2168,14 +2168,14 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4704" },
+        "programItemId": "p4704",
         "priority": 1,
-        "time": { "$date": "2021-08-01T08:00:00Z" },
+        "signedToStartTime": "2021-08-01T08:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-29T13:43:41.613Z" },
-    "updatedAt": { "$date": "2021-07-31T07:51:42.939Z" }
+    "createdAt": "2021-07-29T13:43:41.613Z",
+    "updatedAt": "2021-07-31T07:51:42.939Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -2186,14 +2186,14 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4652" },
+        "programItemId": "p4652",
         "priority": 1,
-        "time": { "$date": "2021-07-30T17:00:00Z" },
+        "signedToStartTime": "2021-07-30T17:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-29T14:08:47.027Z" },
-    "updatedAt": { "$date": "2021-07-29T15:58:39.909Z" }
+    "createdAt": "2021-07-29T14:08:47.027Z",
+    "updatedAt": "2021-07-29T15:58:39.909Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -2204,14 +2204,14 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4702" },
+        "programItemId": "p4702",
         "priority": 1,
-        "time": { "$date": "2021-07-31T17:00:00Z" },
+        "signedToStartTime": "2021-07-31T17:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-29T14:11:44.423Z" },
-    "updatedAt": { "$date": "2021-07-31T16:31:39.18Z" }
+    "createdAt": "2021-07-29T14:11:44.423Z",
+    "updatedAt": "2021-07-31T16:31:39.18Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -2221,8 +2221,8 @@
     "groupCode": "0",
     "lotterySignups": [],
     "directSignups": [],
-    "createdAt": { "$date": "2021-07-29T15:13:13.287Z" },
-    "updatedAt": { "$date": "2021-07-29T15:13:13.287Z" }
+    "createdAt": "2021-07-29T15:13:13.287Z",
+    "updatedAt": "2021-07-29T15:13:13.287Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -2233,32 +2233,32 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4682" },
+        "programItemId": "p4682",
         "priority": 1,
-        "time": { "$date": "2021-07-30T16:00:00Z" },
+        "signedToStartTime": "2021-07-30T16:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4694" },
+        "programItemId": "p4694",
         "priority": 1,
-        "time": { "$date": "2021-08-01T13:00:00Z" },
+        "signedToStartTime": "2021-08-01T13:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4601" },
+        "programItemId": "p4601",
         "priority": 1,
-        "time": { "$date": "2021-07-31T17:00:00Z" },
+        "signedToStartTime": "2021-07-31T17:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4693" },
+        "programItemId": "p4693",
         "priority": 1,
-        "time": { "$date": "2021-07-30T12:00:00Z" },
+        "signedToStartTime": "2021-07-30T12:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-29T15:15:22.077Z" },
-    "updatedAt": { "$date": "2021-07-30T14:43:18.244Z" }
+    "createdAt": "2021-07-29T15:15:22.077Z",
+    "updatedAt": "2021-07-30T14:43:18.244Z"
   },
   {
     "favoriteProgramItemIds": ["p4680"],
@@ -2269,14 +2269,14 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4680" },
+        "programItemId": "p4680",
         "priority": 1,
-        "time": { "$date": "2021-08-01T08:00:00Z" },
+        "signedToStartTime": "2021-08-01T08:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-29T19:22:26.912Z" },
-    "updatedAt": { "$date": "2021-07-30T12:01:34.733Z" }
+    "createdAt": "2021-07-29T19:22:26.912Z",
+    "updatedAt": "2021-07-30T12:01:34.733Z"
   },
   {
     "favoriteProgramItemIds": ["p4639"],
@@ -2287,14 +2287,14 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4639" },
+        "programItemId": "p4639",
         "priority": 1,
-        "time": { "$date": "2021-07-31T12:00:00Z" },
+        "signedToStartTime": "2021-07-31T12:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-29T20:21:41.259Z" },
-    "updatedAt": { "$date": "2021-07-31T11:59:16.667Z" }
+    "createdAt": "2021-07-29T20:21:41.259Z",
+    "updatedAt": "2021-07-31T11:59:16.667Z"
   },
   {
     "favoriteProgramItemIds": ["p4694", "p4693"],
@@ -2304,8 +2304,8 @@
     "groupCode": "0",
     "lotterySignups": [],
     "directSignups": [],
-    "createdAt": { "$date": "2021-07-29T20:29:47.045Z" },
-    "updatedAt": { "$date": "2021-07-30T15:49:37.274Z" }
+    "createdAt": "2021-07-29T20:29:47.045Z",
+    "updatedAt": "2021-07-30T15:49:37.274Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -2315,8 +2315,8 @@
     "groupCode": "0",
     "lotterySignups": [],
     "directSignups": [],
-    "createdAt": { "$date": "2021-07-29T20:46:49.946Z" },
-    "updatedAt": { "$date": "2021-07-29T20:46:49.946Z" }
+    "createdAt": "2021-07-29T20:46:49.946Z",
+    "updatedAt": "2021-07-29T20:46:49.946Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -2327,50 +2327,50 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4640" },
+        "programItemId": "p4640",
         "priority": 1,
-        "time": { "$date": "2021-07-30T13:00:00Z" },
+        "signedToStartTime": "2021-07-30T13:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4685" },
+        "programItemId": "p4685",
         "priority": 1,
-        "time": { "$date": "2021-08-01T09:00:00Z" },
+        "signedToStartTime": "2021-08-01T09:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4667" },
+        "programItemId": "p4667",
         "priority": 1,
-        "time": { "$date": "2021-07-30T15:00:00Z" },
+        "signedToStartTime": "2021-07-30T15:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4645" },
+        "programItemId": "p4645",
         "priority": 1,
-        "time": { "$date": "2021-07-31T17:00:00Z" },
+        "signedToStartTime": "2021-07-31T17:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4621" },
+        "programItemId": "p4621",
         "priority": 1,
-        "time": { "$date": "2021-08-01T12:00:00Z" },
+        "signedToStartTime": "2021-08-01T12:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4639" },
+        "programItemId": "p4639",
         "priority": 1,
-        "time": { "$date": "2021-07-31T12:00:00Z" },
+        "signedToStartTime": "2021-07-31T12:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4639" },
+        "programItemId": "p4639",
         "priority": 1,
-        "time": { "$date": "2021-07-31T12:00:00Z" },
+        "signedToStartTime": "2021-07-31T12:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-30T04:28:31.287Z" },
-    "updatedAt": { "$date": "2021-07-31T09:11:31.775Z" }
+    "createdAt": "2021-07-30T04:28:31.287Z",
+    "updatedAt": "2021-07-31T09:11:31.775Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -2380,8 +2380,8 @@
     "groupCode": "0",
     "lotterySignups": [],
     "directSignups": [],
-    "createdAt": { "$date": "2021-07-30T05:04:20.694Z" },
-    "updatedAt": { "$date": "2021-07-30T05:04:20.694Z" }
+    "createdAt": "2021-07-30T05:04:20.694Z",
+    "updatedAt": "2021-07-30T05:04:20.694Z"
   },
   {
     "favoriteProgramItemIds": ["p4652", "p4693", "p4701"],
@@ -2392,14 +2392,14 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4649" },
+        "programItemId": "p4649",
         "priority": 1,
-        "time": { "$date": "2021-07-30T17:00:00Z" },
+        "signedToStartTime": "2021-07-30T17:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-30T09:53:15.929Z" },
-    "updatedAt": { "$date": "2021-07-31T15:14:17.834Z" }
+    "createdAt": "2021-07-30T09:53:15.929Z",
+    "updatedAt": "2021-07-31T15:14:17.834Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -2409,8 +2409,8 @@
     "groupCode": "0",
     "lotterySignups": [],
     "directSignups": [],
-    "createdAt": { "$date": "2021-07-30T10:03:20.484Z" },
-    "updatedAt": { "$date": "2021-07-30T10:03:20.484Z" }
+    "createdAt": "2021-07-30T10:03:20.484Z",
+    "updatedAt": "2021-07-30T10:03:20.484Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -2421,14 +2421,14 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4667" },
+        "programItemId": "p4667",
         "priority": 1,
-        "time": { "$date": "2021-07-30T15:00:00Z" },
+        "signedToStartTime": "2021-07-30T15:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-30T10:16:14.396Z" },
-    "updatedAt": { "$date": "2021-07-30T10:16:44.319Z" }
+    "createdAt": "2021-07-30T10:16:14.396Z",
+    "updatedAt": "2021-07-30T10:16:44.319Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -2439,32 +2439,32 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4674" },
+        "programItemId": "p4674",
         "priority": 1,
-        "time": { "$date": "2021-07-30T12:00:00Z" },
+        "signedToStartTime": "2021-07-30T12:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4640" },
+        "programItemId": "p4640",
         "priority": 1,
-        "time": { "$date": "2021-07-30T13:00:00Z" },
+        "signedToStartTime": "2021-07-30T13:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4698" },
+        "programItemId": "p4698",
         "priority": 1,
-        "time": { "$date": "2021-07-31T08:00:00Z" },
+        "signedToStartTime": "2021-07-31T08:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4680" },
+        "programItemId": "p4680",
         "priority": 1,
-        "time": { "$date": "2021-08-01T08:00:00Z" },
+        "signedToStartTime": "2021-08-01T08:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-30T10:22:59.619Z" },
-    "updatedAt": { "$date": "2021-07-30T15:48:32.384Z" }
+    "createdAt": "2021-07-30T10:22:59.619Z",
+    "updatedAt": "2021-07-30T15:48:32.384Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -2475,20 +2475,20 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4682" },
+        "programItemId": "p4682",
         "priority": 1,
-        "time": { "$date": "2021-07-30T16:00:00Z" },
+        "signedToStartTime": "2021-07-30T16:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4693" },
+        "programItemId": "p4693",
         "priority": 1,
-        "time": { "$date": "2021-07-30T12:00:00Z" },
+        "signedToStartTime": "2021-07-30T12:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-30T10:24:12.681Z" },
-    "updatedAt": { "$date": "2021-07-30T11:07:46.295Z" }
+    "createdAt": "2021-07-30T10:24:12.681Z",
+    "updatedAt": "2021-07-30T11:07:46.295Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -2498,8 +2498,8 @@
     "groupCode": "0",
     "lotterySignups": [],
     "directSignups": [],
-    "createdAt": { "$date": "2021-07-30T10:32:00.644Z" },
-    "updatedAt": { "$date": "2021-07-30T10:32:00.644Z" }
+    "createdAt": "2021-07-30T10:32:00.644Z",
+    "updatedAt": "2021-07-30T10:32:00.644Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -2510,20 +2510,20 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4674" },
+        "programItemId": "p4674",
         "priority": 1,
-        "time": { "$date": "2021-07-30T12:00:00Z" },
+        "signedToStartTime": "2021-07-30T12:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4683" },
+        "programItemId": "p4683",
         "priority": 1,
-        "time": { "$date": "2021-07-31T09:00:00Z" },
+        "signedToStartTime": "2021-07-31T09:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-30T10:58:42.04Z" },
-    "updatedAt": { "$date": "2021-07-30T11:06:14.349Z" }
+    "createdAt": "2021-07-30T10:58:42.04Z",
+    "updatedAt": "2021-07-30T11:06:14.349Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -2534,26 +2534,26 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4680" },
+        "programItemId": "p4680",
         "priority": 1,
-        "time": { "$date": "2021-08-01T08:00:00Z" },
+        "signedToStartTime": "2021-08-01T08:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4695" },
+        "programItemId": "p4695",
         "priority": 1,
-        "time": { "$date": "2021-07-30T12:00:00Z" },
+        "signedToStartTime": "2021-07-30T12:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4649" },
+        "programItemId": "p4649",
         "priority": 1,
-        "time": { "$date": "2021-07-30T17:00:00Z" },
+        "signedToStartTime": "2021-07-30T17:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-30T11:03:23.316Z" },
-    "updatedAt": { "$date": "2021-07-30T11:16:45.831Z" }
+    "createdAt": "2021-07-30T11:03:23.316Z",
+    "updatedAt": "2021-07-30T11:16:45.831Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -2563,8 +2563,8 @@
     "groupCode": "0",
     "lotterySignups": [],
     "directSignups": [],
-    "createdAt": { "$date": "2021-07-30T11:28:14.83Z" },
-    "updatedAt": { "$date": "2021-07-30T11:28:14.83Z" }
+    "createdAt": "2021-07-30T11:28:14.83Z",
+    "updatedAt": "2021-07-30T11:28:14.83Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -2574,8 +2574,8 @@
     "groupCode": "0",
     "lotterySignups": [],
     "directSignups": [],
-    "createdAt": { "$date": "2021-07-30T11:46:13.87Z" },
-    "updatedAt": { "$date": "2021-07-30T11:46:13.87Z" }
+    "createdAt": "2021-07-30T11:46:13.87Z",
+    "updatedAt": "2021-07-30T11:46:13.87Z"
   },
   {
     "favoriteProgramItemIds": ["p4653", "p4680", "p4641"],
@@ -2585,8 +2585,8 @@
     "groupCode": "0",
     "lotterySignups": [],
     "directSignups": [],
-    "createdAt": { "$date": "2021-07-30T11:54:35.522Z" },
-    "updatedAt": { "$date": "2021-07-30T11:58:22.852Z" }
+    "createdAt": "2021-07-30T11:54:35.522Z",
+    "updatedAt": "2021-07-30T11:58:22.852Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -2597,14 +2597,14 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4682" },
+        "programItemId": "p4682",
         "priority": 1,
-        "time": { "$date": "2021-07-30T16:00:00Z" },
+        "signedToStartTime": "2021-07-30T16:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-30T12:42:52.58Z" },
-    "updatedAt": { "$date": "2021-07-30T12:55:09.722Z" }
+    "createdAt": "2021-07-30T12:42:52.58Z",
+    "updatedAt": "2021-07-30T12:55:09.722Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -2615,14 +2615,14 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4642" },
+        "programItemId": "p4642",
         "priority": 1,
-        "time": { "$date": "2021-07-30T17:00:00Z" },
+        "signedToStartTime": "2021-07-30T17:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-30T12:44:41.171Z" },
-    "updatedAt": { "$date": "2021-07-30T16:50:10.268Z" }
+    "createdAt": "2021-07-30T12:44:41.171Z",
+    "updatedAt": "2021-07-30T16:50:10.268Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -2632,8 +2632,8 @@
     "groupCode": "0",
     "lotterySignups": [],
     "directSignups": [],
-    "createdAt": { "$date": "2021-07-30T13:02:38.347Z" },
-    "updatedAt": { "$date": "2021-07-30T13:02:38.347Z" }
+    "createdAt": "2021-07-30T13:02:38.347Z",
+    "updatedAt": "2021-07-30T13:02:38.347Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -2644,26 +2644,26 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4697" },
+        "programItemId": "p4697",
         "priority": 1,
-        "time": { "$date": "2021-07-30T16:00:00Z" },
+        "signedToStartTime": "2021-07-30T16:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4702" },
+        "programItemId": "p4702",
         "priority": 1,
-        "time": { "$date": "2021-07-31T17:00:00Z" },
+        "signedToStartTime": "2021-07-31T17:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4699" },
+        "programItemId": "p4699",
         "priority": 1,
-        "time": { "$date": "2021-07-31T12:00:00Z" },
+        "signedToStartTime": "2021-07-31T12:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-30T13:14:58.54Z" },
-    "updatedAt": { "$date": "2021-08-01T12:03:01.096Z" }
+    "createdAt": "2021-07-30T13:14:58.54Z",
+    "updatedAt": "2021-08-01T12:03:01.096Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -2673,8 +2673,8 @@
     "groupCode": "0",
     "lotterySignups": [],
     "directSignups": [],
-    "createdAt": { "$date": "2021-07-30T13:27:44.139Z" },
-    "updatedAt": { "$date": "2021-07-30T13:27:44.139Z" }
+    "createdAt": "2021-07-30T13:27:44.139Z",
+    "updatedAt": "2021-07-30T13:27:44.139Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -2684,8 +2684,8 @@
     "groupCode": "0",
     "lotterySignups": [],
     "directSignups": [],
-    "createdAt": { "$date": "2021-07-30T13:28:18.495Z" },
-    "updatedAt": { "$date": "2021-07-30T13:28:18.495Z" }
+    "createdAt": "2021-07-30T13:28:18.495Z",
+    "updatedAt": "2021-07-30T13:28:18.495Z"
   },
   {
     "favoriteProgramItemIds": ["p4729", "p4694", "p4632", "p4621"],
@@ -2695,8 +2695,8 @@
     "groupCode": "0",
     "lotterySignups": [],
     "directSignups": [],
-    "createdAt": { "$date": "2021-07-30T13:59:34.38Z" },
-    "updatedAt": { "$date": "2021-07-30T14:05:47.676Z" }
+    "createdAt": "2021-07-30T13:59:34.38Z",
+    "updatedAt": "2021-07-30T14:05:47.676Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -2706,8 +2706,8 @@
     "groupCode": "0",
     "lotterySignups": [],
     "directSignups": [],
-    "createdAt": { "$date": "2021-07-30T14:25:26.326Z" },
-    "updatedAt": { "$date": "2021-07-30T14:25:26.326Z" }
+    "createdAt": "2021-07-30T14:25:26.326Z",
+    "updatedAt": "2021-07-30T14:25:26.326Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -2718,14 +2718,14 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4603" },
+        "programItemId": "p4603",
         "priority": 1,
-        "time": { "$date": "2021-07-30T17:00:00Z" },
+        "signedToStartTime": "2021-07-30T17:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-30T14:25:32.004Z" },
-    "updatedAt": { "$date": "2021-07-30T14:25:58.995Z" }
+    "createdAt": "2021-07-30T14:25:32.004Z",
+    "updatedAt": "2021-07-30T14:25:58.995Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -2736,14 +2736,14 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4680" },
+        "programItemId": "p4680",
         "priority": 1,
-        "time": { "$date": "2021-08-01T08:00:00Z" },
+        "signedToStartTime": "2021-08-01T08:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-30T14:34:53.39Z" },
-    "updatedAt": { "$date": "2021-07-30T14:35:31.888Z" }
+    "createdAt": "2021-07-30T14:34:53.39Z",
+    "updatedAt": "2021-07-30T14:35:31.888Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -2753,8 +2753,8 @@
     "groupCode": "0",
     "lotterySignups": [],
     "directSignups": [],
-    "createdAt": { "$date": "2021-07-30T14:38:08.581Z" },
-    "updatedAt": { "$date": "2021-07-30T14:38:08.581Z" }
+    "createdAt": "2021-07-30T14:38:08.581Z",
+    "updatedAt": "2021-07-30T14:38:08.581Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -2764,8 +2764,8 @@
     "groupCode": "0",
     "lotterySignups": [],
     "directSignups": [],
-    "createdAt": { "$date": "2021-07-30T14:44:37.322Z" },
-    "updatedAt": { "$date": "2021-07-30T14:44:37.322Z" }
+    "createdAt": "2021-07-30T14:44:37.322Z",
+    "updatedAt": "2021-07-30T14:44:37.322Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -2775,8 +2775,8 @@
     "groupCode": "0",
     "lotterySignups": [],
     "directSignups": [],
-    "createdAt": { "$date": "2021-07-30T14:44:57.008Z" },
-    "updatedAt": { "$date": "2021-07-31T08:55:45.502Z" }
+    "createdAt": "2021-07-30T14:44:57.008Z",
+    "updatedAt": "2021-07-31T08:55:45.502Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -2786,8 +2786,8 @@
     "groupCode": "0",
     "lotterySignups": [],
     "directSignups": [],
-    "createdAt": { "$date": "2021-07-30T15:06:23.507Z" },
-    "updatedAt": { "$date": "2021-07-30T15:06:23.507Z" }
+    "createdAt": "2021-07-30T15:06:23.507Z",
+    "updatedAt": "2021-07-30T15:06:23.507Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -2797,8 +2797,8 @@
     "groupCode": "0",
     "lotterySignups": [],
     "directSignups": [],
-    "createdAt": { "$date": "2021-07-30T15:34:22.164Z" },
-    "updatedAt": { "$date": "2021-07-30T15:34:22.164Z" }
+    "createdAt": "2021-07-30T15:34:22.164Z",
+    "updatedAt": "2021-07-30T15:34:22.164Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -2809,26 +2809,26 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4632" },
+        "programItemId": "p4632",
         "priority": 1,
-        "time": { "$date": "2021-08-01T12:00:00Z" },
+        "signedToStartTime": "2021-08-01T12:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4699" },
+        "programItemId": "p4699",
         "priority": 1,
-        "time": { "$date": "2021-07-31T12:00:00Z" },
+        "signedToStartTime": "2021-07-31T12:00:00Z",
         "message": ""
       },
       {
-        "programItem": { "programItemId": "p4649" },
+        "programItemId": "p4649",
         "priority": 1,
-        "time": { "$date": "2021-07-30T17:00:00Z" },
+        "signedToStartTime": "2021-07-30T17:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-30T15:37:45.722Z" },
-    "updatedAt": { "$date": "2021-08-01T11:29:26.264Z" }
+    "createdAt": "2021-07-30T15:37:45.722Z",
+    "updatedAt": "2021-08-01T11:29:26.264Z"
   },
   {
     "favoriteProgramItemIds": ["p4703"],
@@ -2839,14 +2839,14 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4703" },
+        "programItemId": "p4703",
         "priority": 1,
-        "time": { "$date": "2021-08-01T12:00:00Z" },
+        "signedToStartTime": "2021-08-01T12:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-30T16:00:30.553Z" },
-    "updatedAt": { "$date": "2021-07-30T16:51:00.566Z" }
+    "createdAt": "2021-07-30T16:00:30.553Z",
+    "updatedAt": "2021-07-30T16:51:00.566Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -2856,8 +2856,8 @@
     "groupCode": "0",
     "lotterySignups": [],
     "directSignups": [],
-    "createdAt": { "$date": "2021-07-30T16:16:52.621Z" },
-    "updatedAt": { "$date": "2021-07-30T16:16:52.621Z" }
+    "createdAt": "2021-07-30T16:16:52.621Z",
+    "updatedAt": "2021-07-30T16:16:52.621Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -2868,14 +2868,14 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4699" },
+        "programItemId": "p4699",
         "priority": 1,
-        "time": { "$date": "2021-07-31T12:00:00Z" },
+        "signedToStartTime": "2021-07-31T12:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-30T17:01:09.755Z" },
-    "updatedAt": { "$date": "2021-07-30T17:02:23.37Z" }
+    "createdAt": "2021-07-30T17:01:09.755Z",
+    "updatedAt": "2021-07-30T17:02:23.37Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -2885,8 +2885,8 @@
     "groupCode": "0",
     "lotterySignups": [],
     "directSignups": [],
-    "createdAt": { "$date": "2021-07-30T19:05:53.825Z" },
-    "updatedAt": { "$date": "2021-07-31T14:58:24.037Z" }
+    "createdAt": "2021-07-30T19:05:53.825Z",
+    "updatedAt": "2021-07-31T14:58:24.037Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -2897,14 +2897,14 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4701" },
+        "programItemId": "p4701",
         "priority": 1,
-        "time": { "$date": "2021-08-01T12:00:00Z" },
+        "signedToStartTime": "2021-08-01T12:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-30T21:33:12.926Z" },
-    "updatedAt": { "$date": "2021-07-31T07:59:27.746Z" }
+    "createdAt": "2021-07-30T21:33:12.926Z",
+    "updatedAt": "2021-07-31T07:59:27.746Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -2914,8 +2914,8 @@
     "groupCode": "0",
     "lotterySignups": [],
     "directSignups": [],
-    "createdAt": { "$date": "2021-07-31T08:11:34.08Z" },
-    "updatedAt": { "$date": "2021-07-31T08:11:34.08Z" }
+    "createdAt": "2021-07-31T08:11:34.08Z",
+    "updatedAt": "2021-07-31T08:11:34.08Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -2925,8 +2925,8 @@
     "groupCode": "0",
     "lotterySignups": [],
     "directSignups": [],
-    "createdAt": { "$date": "2021-07-31T17:02:34.015Z" },
-    "updatedAt": { "$date": "2021-07-31T17:02:34.015Z" }
+    "createdAt": "2021-07-31T17:02:34.015Z",
+    "updatedAt": "2021-07-31T17:02:34.015Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -2937,14 +2937,14 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4621" },
+        "programItemId": "p4621",
         "priority": 1,
-        "time": { "$date": "2021-08-01T12:00:00Z" },
+        "signedToStartTime": "2021-08-01T12:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-31T17:15:24.061Z" },
-    "updatedAt": { "$date": "2021-07-31T17:19:14.038Z" }
+    "createdAt": "2021-07-31T17:15:24.061Z",
+    "updatedAt": "2021-07-31T17:19:14.038Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -2955,14 +2955,14 @@
     "lotterySignups": [],
     "directSignups": [
       {
-        "programItem": { "programItemId": "p4703" },
+        "programItemId": "p4703",
         "priority": 1,
-        "time": { "$date": "2021-08-01T12:00:00Z" },
+        "signedToStartTime": "2021-08-01T12:00:00Z",
         "message": ""
       }
     ],
-    "createdAt": { "$date": "2021-07-31T18:39:57.437Z" },
-    "updatedAt": { "$date": "2021-07-31T18:40:23.597Z" }
+    "createdAt": "2021-07-31T18:39:57.437Z",
+    "updatedAt": "2021-07-31T18:40:23.597Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -2972,8 +2972,8 @@
     "groupCode": "0",
     "lotterySignups": [],
     "directSignups": [],
-    "createdAt": { "$date": "2021-07-31T18:46:47.576Z" },
-    "updatedAt": { "$date": "2021-08-01T07:39:14.473Z" }
+    "createdAt": "2021-07-31T18:46:47.576Z",
+    "updatedAt": "2021-08-01T07:39:14.473Z"
   },
   {
     "favoriteProgramItemIds": [],
@@ -2983,7 +2983,7 @@
     "groupCode": "0",
     "lotterySignups": [],
     "directSignups": [],
-    "createdAt": { "$date": "2021-08-01T08:27:07.763Z" },
-    "updatedAt": { "$date": "2021-08-01T08:27:07.763Z" }
+    "createdAt": "2021-08-01T08:27:07.763Z",
+    "updatedAt": "2021-08-01T08:27:07.763Z"
   }
 ]

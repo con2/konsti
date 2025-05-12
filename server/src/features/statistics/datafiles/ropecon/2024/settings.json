@@ -1,9 +1,9 @@
 [
   {
-    "hiddenProgramItems": [
-      { "programItemId": "yo-oopperassa-night-at-the-opera" },
-      { "programItemId": "tuppukylan-tarinoita-2" },
-      { "programItemId": "harhainen-sieniretki-2-pelautus" }
+    "hiddenProgramItemIds": [
+      "yo-oopperassa-night-at-the-opera",
+      "tuppukylan-tarinoita-2",
+      "harhainen-sieniretki-2-pelautus"
     ],
     "appOpen": false,
     "signupStrategy": "algorithm+direct",

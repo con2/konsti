@@ -1,48 +1,48 @@
 [
   {
-    "game": { "programItemId": "p7381" },
+    "programItemId": "p7381",
     "userSignups": [],
     "count": 0,
     "createdAt": "2023-11-02T16:35:05.861Z",
     "updatedAt": "2023-11-05T10:00:15.636Z"
   },
   {
-    "game": { "programItemId": "p7284" },
+    "programItemId": "p7284",
     "userSignups": [
       {
         "username": "575241",
         "priority": 0,
-        "time": "2023-11-04T09:00:00Z",
+        "signedToStartTime": "2023-11-04T09:00:00Z",
         "message": ""
       },
       {
         "username": "611296",
         "priority": 0,
-        "time": "2023-11-04T09:00:00Z",
+        "signedToStartTime": "2023-11-04T09:00:00Z",
         "message": ""
       },
       {
         "username": "788510",
         "priority": 0,
-        "time": "2023-11-04T09:00:00Z",
+        "signedToStartTime": "2023-11-04T09:00:00Z",
         "message": ""
       },
       {
         "username": "77079",
         "priority": 0,
-        "time": "2023-11-04T09:00:00Z",
+        "signedToStartTime": "2023-11-04T09:00:00Z",
         "message": ""
       },
       {
         "username": "715884",
         "priority": 0,
-        "time": "2023-11-04T09:00:00Z",
+        "signedToStartTime": "2023-11-04T09:00:00Z",
         "message": ""
       },
       {
         "username": "446644",
         "priority": 0,
-        "time": "2023-11-04T09:00:00Z",
+        "signedToStartTime": "2023-11-04T09:00:00Z",
         "message": ""
       }
     ],
@@ -51,36 +51,36 @@
     "updatedAt": "2023-11-05T10:00:15.636Z"
   },
   {
-    "game": { "programItemId": "p7340" },
+    "programItemId": "p7340",
     "userSignups": [
       {
         "username": "720914",
         "priority": 0,
-        "time": "2023-11-04T09:00:00Z",
+        "signedToStartTime": "2023-11-04T09:00:00Z",
         "message": ""
       },
       {
         "username": "679690",
         "priority": 0,
-        "time": "2023-11-04T09:00:00Z",
+        "signedToStartTime": "2023-11-04T09:00:00Z",
         "message": ""
       },
       {
         "username": "932611",
         "priority": 0,
-        "time": "2023-11-04T09:00:00Z",
+        "signedToStartTime": "2023-11-04T09:00:00Z",
         "message": ""
       },
       {
         "username": "69267",
         "priority": 0,
-        "time": "2023-11-04T09:00:00Z",
+        "signedToStartTime": "2023-11-04T09:00:00Z",
         "message": ""
       },
       {
         "username": "343757",
         "priority": 0,
-        "time": "2023-11-04T09:00:00Z",
+        "signedToStartTime": "2023-11-04T09:00:00Z",
         "message": ""
       }
     ],
@@ -89,18 +89,18 @@
     "updatedAt": "2023-11-05T10:00:15.636Z"
   },
   {
-    "game": { "programItemId": "p7310" },
+    "programItemId": "p7310",
     "userSignups": [
       {
         "username": "786772",
         "priority": 0,
-        "time": "2023-11-04T09:00:00Z",
+        "signedToStartTime": "2023-11-04T09:00:00Z",
         "message": ""
       },
       {
         "username": "952181",
         "priority": 0,
-        "time": "2023-11-04T09:00:00Z",
+        "signedToStartTime": "2023-11-04T09:00:00Z",
         "message": ""
       }
     ],
@@ -109,30 +109,30 @@
     "updatedAt": "2023-11-05T10:00:15.636Z"
   },
   {
-    "game": { "programItemId": "p7361" },
+    "programItemId": "p7361",
     "userSignups": [
       {
         "username": "535516",
         "priority": 0,
-        "time": "2023-11-04T09:00:00Z",
+        "signedToStartTime": "2023-11-04T09:00:00Z",
         "message": ""
       },
       {
         "username": "976069",
         "priority": 0,
-        "time": "2023-11-04T09:00:00Z",
+        "signedToStartTime": "2023-11-04T09:00:00Z",
         "message": ""
       },
       {
         "username": "787207",
         "priority": 0,
-        "time": "2023-11-04T09:00:00Z",
+        "signedToStartTime": "2023-11-04T09:00:00Z",
         "message": ""
       },
       {
         "username": "260741",
         "priority": 0,
-        "time": "2023-11-04T09:00:00Z",
+        "signedToStartTime": "2023-11-04T09:00:00Z",
         "message": ""
       }
     ],
@@ -141,36 +141,36 @@
     "updatedAt": "2023-11-05T10:00:15.636Z"
   },
   {
-    "game": { "programItemId": "p7353" },
+    "programItemId": "p7353",
     "userSignups": [
       {
         "username": "574120",
         "priority": 0,
-        "time": "2023-11-04T09:00:00Z",
+        "signedToStartTime": "2023-11-04T09:00:00Z",
         "message": ""
       },
       {
         "username": "732448",
         "priority": 0,
-        "time": "2023-11-04T09:00:00Z",
+        "signedToStartTime": "2023-11-04T09:00:00Z",
         "message": ""
       },
       {
         "username": "657141",
         "priority": 0,
-        "time": "2023-11-04T09:00:00Z",
+        "signedToStartTime": "2023-11-04T09:00:00Z",
         "message": ""
       },
       {
         "username": "593894",
         "priority": 0,
-        "time": "2023-11-04T09:00:00Z",
+        "signedToStartTime": "2023-11-04T09:00:00Z",
         "message": ""
       },
       {
         "username": "911685",
         "priority": 0,
-        "time": "2023-11-04T09:00:00Z",
+        "signedToStartTime": "2023-11-04T09:00:00Z",
         "message": ""
       }
     ],
@@ -179,30 +179,30 @@
     "updatedAt": "2023-11-05T10:00:15.636Z"
   },
   {
-    "game": { "programItemId": "p7300" },
+    "programItemId": "p7300",
     "userSignups": [
       {
         "username": "325398",
         "priority": 0,
-        "time": "2023-11-04T09:00:00Z",
+        "signedToStartTime": "2023-11-04T09:00:00Z",
         "message": ""
       },
       {
         "username": "639753",
         "priority": 0,
-        "time": "2023-11-04T09:00:00Z",
+        "signedToStartTime": "2023-11-04T09:00:00Z",
         "message": ""
       },
       {
         "username": "612919",
         "priority": 0,
-        "time": "2023-11-04T09:00:00Z",
+        "signedToStartTime": "2023-11-04T09:00:00Z",
         "message": ""
       },
       {
         "username": "577037",
         "priority": 0,
-        "time": "2023-11-04T09:00:00Z",
+        "signedToStartTime": "2023-11-04T09:00:00Z",
         "message": ""
       }
     ],
@@ -211,42 +211,42 @@
     "updatedAt": "2023-11-05T10:00:15.636Z"
   },
   {
-    "game": { "programItemId": "p7347" },
+    "programItemId": "p7347",
     "userSignups": [
       {
         "username": "641422",
         "priority": 0,
-        "time": "2023-11-04T09:00:00Z",
+        "signedToStartTime": "2023-11-04T09:00:00Z",
         "message": ""
       },
       {
         "username": "265543",
         "priority": 0,
-        "time": "2023-11-04T09:00:00Z",
+        "signedToStartTime": "2023-11-04T09:00:00Z",
         "message": ""
       },
       {
         "username": "550858",
         "priority": 0,
-        "time": "2023-11-04T09:00:00Z",
+        "signedToStartTime": "2023-11-04T09:00:00Z",
         "message": ""
       },
       {
         "username": "759022",
         "priority": 0,
-        "time": "2023-11-04T09:00:00Z",
+        "signedToStartTime": "2023-11-04T09:00:00Z",
         "message": ""
       },
       {
         "username": "173900",
         "priority": 0,
-        "time": "2023-11-04T09:00:00Z",
+        "signedToStartTime": "2023-11-04T09:00:00Z",
         "message": ""
       },
       {
         "username": "503509",
         "priority": 0,
-        "time": "2023-11-04T09:00:00Z",
+        "signedToStartTime": "2023-11-04T09:00:00Z",
         "message": ""
       }
     ],
@@ -255,37 +255,37 @@
     "updatedAt": "2023-11-05T10:00:15.636Z"
   },
   {
-    "game": { "programItemId": "p7429" },
+    "programItemId": "p7429",
     "userSignups": [],
     "count": 0,
     "createdAt": "2023-11-02T16:35:05.862Z",
     "updatedAt": "2023-11-05T10:00:15.636Z"
   },
   {
-    "game": { "programItemId": "p7363" },
+    "programItemId": "p7363",
     "userSignups": [
       {
         "username": "198170",
         "priority": 0,
-        "time": "2023-11-04T10:00:00Z",
+        "signedToStartTime": "2023-11-04T10:00:00Z",
         "message": ""
       },
       {
         "username": "103566",
         "priority": 0,
-        "time": "2023-11-04T10:00:00Z",
+        "signedToStartTime": "2023-11-04T10:00:00Z",
         "message": ""
       },
       {
         "username": "263055",
         "priority": 0,
-        "time": "2023-11-04T10:00:00Z",
+        "signedToStartTime": "2023-11-04T10:00:00Z",
         "message": ""
       },
       {
         "username": "133879",
         "priority": 0,
-        "time": "2023-11-04T10:00:00Z",
+        "signedToStartTime": "2023-11-04T10:00:00Z",
         "message": ""
       }
     ],
@@ -294,49 +294,49 @@
     "updatedAt": "2023-11-05T10:00:15.636Z"
   },
   {
-    "game": { "programItemId": "p7272" },
+    "programItemId": "p7272",
     "userSignups": [],
     "count": 0,
     "createdAt": "2023-11-02T16:35:05.862Z",
     "updatedAt": "2023-11-05T10:00:15.636Z"
   },
   {
-    "game": { "programItemId": "p7343" },
+    "programItemId": "p7343",
     "userSignups": [
       {
         "username": "90752",
         "priority": 0,
-        "time": "2023-11-04T10:00:00Z",
+        "signedToStartTime": "2023-11-04T10:00:00Z",
         "message": ""
       },
       {
         "username": "574662",
         "priority": 0,
-        "time": "2023-11-04T10:00:00Z",
+        "signedToStartTime": "2023-11-04T10:00:00Z",
         "message": ""
       },
       {
         "username": "59450",
         "priority": 0,
-        "time": "2023-11-04T10:00:00Z",
+        "signedToStartTime": "2023-11-04T10:00:00Z",
         "message": ""
       },
       {
         "username": "938497",
         "priority": 0,
-        "time": "2023-11-04T10:00:00Z",
+        "signedToStartTime": "2023-11-04T10:00:00Z",
         "message": ""
       },
       {
         "username": "293448",
         "priority": 0,
-        "time": "2023-11-04T10:00:00Z",
+        "signedToStartTime": "2023-11-04T10:00:00Z",
         "message": ""
       },
       {
         "username": "714941",
         "priority": 0,
-        "time": "2023-11-04T10:00:00Z",
+        "signedToStartTime": "2023-11-04T10:00:00Z",
         "message": ""
       }
     ],
@@ -345,36 +345,36 @@
     "updatedAt": "2023-11-05T10:00:15.636Z"
   },
   {
-    "game": { "programItemId": "p7345" },
+    "programItemId": "p7345",
     "userSignups": [
       {
         "username": "732614",
         "priority": 1,
-        "time": "2023-11-04T13:00:00Z",
+        "signedToStartTime": "2023-11-04T13:00:00Z",
         "message": ""
       },
       {
         "username": "486628",
         "priority": 1,
-        "time": "2023-11-04T13:00:00Z",
+        "signedToStartTime": "2023-11-04T13:00:00Z",
         "message": ""
       },
       {
         "username": "875354",
         "priority": 1,
-        "time": "2023-11-04T13:00:00Z",
+        "signedToStartTime": "2023-11-04T13:00:00Z",
         "message": ""
       },
       {
         "username": "689497",
         "priority": 1,
-        "time": "2023-11-04T13:00:00Z",
+        "signedToStartTime": "2023-11-04T13:00:00Z",
         "message": ""
       },
       {
         "username": "802116",
         "priority": 1,
-        "time": "2023-11-04T13:00:00Z",
+        "signedToStartTime": "2023-11-04T13:00:00Z",
         "message": ""
       }
     ],
@@ -383,31 +383,31 @@
     "updatedAt": "2023-11-05T10:00:15.636Z"
   },
   {
-    "game": { "programItemId": "p7426" },
+    "programItemId": "p7426",
     "userSignups": [],
     "count": 0,
     "createdAt": "2023-11-02T16:35:05.862Z",
     "updatedAt": "2023-11-05T10:00:15.636Z"
   },
   {
-    "game": { "programItemId": "p7338" },
+    "programItemId": "p7338",
     "userSignups": [
       {
         "username": "192858",
         "priority": 1,
-        "time": "2023-11-04T11:00:00Z",
+        "signedToStartTime": "2023-11-04T11:00:00Z",
         "message": ""
       },
       {
         "username": "956919",
         "priority": 1,
-        "time": "2023-11-04T11:00:00Z",
+        "signedToStartTime": "2023-11-04T11:00:00Z",
         "message": ""
       },
       {
         "username": "799122",
         "priority": 1,
-        "time": "2023-11-04T11:00:00Z",
+        "signedToStartTime": "2023-11-04T11:00:00Z",
         "message": ""
       }
     ],
@@ -416,30 +416,30 @@
     "updatedAt": "2023-11-05T10:00:15.636Z"
   },
   {
-    "game": { "programItemId": "p7334" },
+    "programItemId": "p7334",
     "userSignups": [
       {
         "username": "273506",
         "priority": 0,
-        "time": "2023-11-04T09:00:00Z",
+        "signedToStartTime": "2023-11-04T09:00:00Z",
         "message": ""
       },
       {
         "username": "268201",
         "priority": 0,
-        "time": "2023-11-04T09:00:00Z",
+        "signedToStartTime": "2023-11-04T09:00:00Z",
         "message": ""
       },
       {
         "username": "711325",
         "priority": 0,
-        "time": "2023-11-04T09:00:00Z",
+        "signedToStartTime": "2023-11-04T09:00:00Z",
         "message": ""
       },
       {
         "username": "238669",
         "priority": 0,
-        "time": "2023-11-04T09:00:00Z",
+        "signedToStartTime": "2023-11-04T09:00:00Z",
         "message": ""
       }
     ],
@@ -448,36 +448,36 @@
     "updatedAt": "2023-11-05T10:00:15.636Z"
   },
   {
-    "game": { "programItemId": "p7359" },
+    "programItemId": "p7359",
     "userSignups": [
       {
         "username": "859875",
         "priority": 0,
-        "time": "2023-11-04T09:00:00Z",
+        "signedToStartTime": "2023-11-04T09:00:00Z",
         "message": ""
       },
       {
         "username": "210186",
         "priority": 0,
-        "time": "2023-11-04T09:00:00Z",
+        "signedToStartTime": "2023-11-04T09:00:00Z",
         "message": ""
       },
       {
         "username": "155888",
         "priority": 0,
-        "time": "2023-11-04T09:00:00Z",
+        "signedToStartTime": "2023-11-04T09:00:00Z",
         "message": ""
       },
       {
         "username": "324210",
         "priority": 0,
-        "time": "2023-11-04T09:00:00Z",
+        "signedToStartTime": "2023-11-04T09:00:00Z",
         "message": ""
       },
       {
         "username": "557144",
         "priority": 0,
-        "time": "2023-11-04T09:00:00Z",
+        "signedToStartTime": "2023-11-04T09:00:00Z",
         "message": ""
       }
     ],
@@ -486,36 +486,36 @@
     "updatedAt": "2023-11-05T10:00:15.636Z"
   },
   {
-    "game": { "programItemId": "p7360" },
+    "programItemId": "p7360",
     "userSignups": [
       {
         "username": "65784",
         "priority": 1,
-        "time": "2023-11-04T15:00:00Z",
+        "signedToStartTime": "2023-11-04T15:00:00Z",
         "message": ""
       },
       {
         "username": "268201",
         "priority": 1,
-        "time": "2023-11-04T15:00:00Z",
+        "signedToStartTime": "2023-11-04T15:00:00Z",
         "message": ""
       },
       {
         "username": "287707",
         "priority": 1,
-        "time": "2023-11-04T15:00:00Z",
+        "signedToStartTime": "2023-11-04T15:00:00Z",
         "message": ""
       },
       {
         "username": "787207",
         "priority": 1,
-        "time": "2023-11-04T15:00:00Z",
+        "signedToStartTime": "2023-11-04T15:00:00Z",
         "message": ""
       },
       {
         "username": "976069",
         "priority": 1,
-        "time": "2023-11-04T15:00:00Z",
+        "signedToStartTime": "2023-11-04T15:00:00Z",
         "message": ""
       }
     ],
@@ -524,42 +524,42 @@
     "updatedAt": "2023-11-05T10:00:15.636Z"
   },
   {
-    "game": { "programItemId": "p7368" },
+    "programItemId": "p7368",
     "userSignups": [
       {
         "username": "946238",
         "priority": 1,
-        "time": "2023-11-04T15:00:00Z",
+        "signedToStartTime": "2023-11-04T15:00:00Z",
         "message": ""
       },
       {
         "username": "997499",
         "priority": 1,
-        "time": "2023-11-04T15:00:00Z",
+        "signedToStartTime": "2023-11-04T15:00:00Z",
         "message": ""
       },
       {
         "username": "198170",
         "priority": 1,
-        "time": "2023-11-04T15:00:00Z",
+        "signedToStartTime": "2023-11-04T15:00:00Z",
         "message": ""
       },
       {
         "username": "133879",
         "priority": 1,
-        "time": "2023-11-04T15:00:00Z",
+        "signedToStartTime": "2023-11-04T15:00:00Z",
         "message": ""
       },
       {
         "username": "263055",
         "priority": 1,
-        "time": "2023-11-04T15:00:00Z",
+        "signedToStartTime": "2023-11-04T15:00:00Z",
         "message": ""
       },
       {
         "username": "471057",
         "priority": 1,
-        "time": "2023-11-04T15:00:00Z",
+        "signedToStartTime": "2023-11-04T15:00:00Z",
         "message": ""
       }
     ],
@@ -568,30 +568,30 @@
     "updatedAt": "2023-11-05T10:00:15.636Z"
   },
   {
-    "game": { "programItemId": "p7298" },
+    "programItemId": "p7298",
     "userSignups": [
       {
         "username": "983766",
         "priority": 1,
-        "time": "2023-11-04T16:00:00Z",
+        "signedToStartTime": "2023-11-04T16:00:00Z",
         "message": ""
       },
       {
         "username": "611296",
         "priority": 1,
-        "time": "2023-11-04T16:00:00Z",
+        "signedToStartTime": "2023-11-04T16:00:00Z",
         "message": ""
       },
       {
         "username": "324064",
         "priority": 1,
-        "time": "2023-11-04T16:00:00Z",
+        "signedToStartTime": "2023-11-04T16:00:00Z",
         "message": ""
       },
       {
         "username": "228264",
         "priority": 0,
-        "time": "2023-11-04T16:00:00Z",
+        "signedToStartTime": "2023-11-04T16:00:00Z",
         "message": ""
       }
     ],
@@ -600,30 +600,30 @@
     "updatedAt": "2023-11-05T10:00:15.636Z"
   },
   {
-    "game": { "programItemId": "p7364" },
+    "programItemId": "p7364",
     "userSignups": [
       {
         "username": "162093",
         "priority": 1,
-        "time": "2023-11-04T15:00:00Z",
+        "signedToStartTime": "2023-11-04T15:00:00Z",
         "message": ""
       },
       {
         "username": "862271",
         "priority": 2,
-        "time": "2023-11-04T15:00:00Z",
+        "signedToStartTime": "2023-11-04T15:00:00Z",
         "message": ""
       },
       {
         "username": "384992",
         "priority": 2,
-        "time": "2023-11-04T15:00:00Z",
+        "signedToStartTime": "2023-11-04T15:00:00Z",
         "message": ""
       },
       {
         "username": "606398",
         "priority": 1,
-        "time": "2023-11-04T15:00:00Z",
+        "signedToStartTime": "2023-11-04T15:00:00Z",
         "message": ""
       }
     ],
@@ -632,42 +632,42 @@
     "updatedAt": "2023-11-05T10:00:15.636Z"
   },
   {
-    "game": { "programItemId": "p7341" },
+    "programItemId": "p7341",
     "userSignups": [
       {
         "username": "238669",
         "priority": 2,
-        "time": "2023-11-04T16:00:00Z",
+        "signedToStartTime": "2023-11-04T16:00:00Z",
         "message": ""
       },
       {
         "username": "535516",
         "priority": 1,
-        "time": "2023-11-04T16:00:00Z",
+        "signedToStartTime": "2023-11-04T16:00:00Z",
         "message": ""
       },
       {
         "username": "588901",
         "priority": 1,
-        "time": "2023-11-04T16:00:00Z",
+        "signedToStartTime": "2023-11-04T16:00:00Z",
         "message": ""
       },
       {
         "username": "732614",
         "priority": 1,
-        "time": "2023-11-04T16:00:00Z",
+        "signedToStartTime": "2023-11-04T16:00:00Z",
         "message": ""
       },
       {
         "username": "486628",
         "priority": 1,
-        "time": "2023-11-04T16:00:00Z",
+        "signedToStartTime": "2023-11-04T16:00:00Z",
         "message": ""
       },
       {
         "username": "689497",
         "priority": 1,
-        "time": "2023-11-04T16:00:00Z",
+        "signedToStartTime": "2023-11-04T16:00:00Z",
         "message": ""
       }
     ],
@@ -676,42 +676,42 @@
     "updatedAt": "2023-11-05T10:00:15.636Z"
   },
   {
-    "game": { "programItemId": "p7335" },
+    "programItemId": "p7335",
     "userSignups": [
       {
         "username": "503509",
         "priority": 1,
-        "time": "2023-11-04T16:00:00Z",
+        "signedToStartTime": "2023-11-04T16:00:00Z",
         "message": ""
       },
       {
         "username": "253287",
         "priority": 2,
-        "time": "2023-11-04T16:00:00Z",
+        "signedToStartTime": "2023-11-04T16:00:00Z",
         "message": ""
       },
       {
         "username": "96808",
         "priority": 2,
-        "time": "2023-11-04T16:00:00Z",
+        "signedToStartTime": "2023-11-04T16:00:00Z",
         "message": ""
       },
       {
         "username": "223931",
         "priority": 2,
-        "time": "2023-11-04T16:00:00Z",
+        "signedToStartTime": "2023-11-04T16:00:00Z",
         "message": ""
       },
       {
         "username": "686327",
         "priority": 2,
-        "time": "2023-11-04T16:00:00Z",
+        "signedToStartTime": "2023-11-04T16:00:00Z",
         "message": ""
       },
       {
         "username": "204351",
         "priority": 0,
-        "time": "2023-11-04T16:00:00Z",
+        "signedToStartTime": "2023-11-04T16:00:00Z",
         "message": ""
       }
     ],
@@ -720,24 +720,24 @@
     "updatedAt": "2023-11-05T10:00:15.636Z"
   },
   {
-    "game": { "programItemId": "p7269" },
+    "programItemId": "p7269",
     "userSignups": [
       {
         "username": "574120",
         "priority": 1,
-        "time": "2023-11-04T17:00:00Z",
+        "signedToStartTime": "2023-11-04T17:00:00Z",
         "message": ""
       },
       {
         "username": "535516",
         "priority": 0,
-        "time": "2023-11-04T17:00:00Z",
+        "signedToStartTime": "2023-11-04T17:00:00Z",
         "message": ""
       },
       {
         "username": "234442",
         "priority": 0,
-        "time": "2023-11-04T17:00:00Z",
+        "signedToStartTime": "2023-11-04T17:00:00Z",
         "message": ""
       }
     ],
@@ -746,30 +746,30 @@
     "updatedAt": "2023-11-05T10:00:15.636Z"
   },
   {
-    "game": { "programItemId": "p7279" },
+    "programItemId": "p7279",
     "userSignups": [
       {
         "username": "711325",
         "priority": 1,
-        "time": "2023-11-04T17:00:00Z",
+        "signedToStartTime": "2023-11-04T17:00:00Z",
         "message": ""
       },
       {
         "username": "253868",
         "priority": 1,
-        "time": "2023-11-04T17:00:00Z",
+        "signedToStartTime": "2023-11-04T17:00:00Z",
         "message": ""
       },
       {
         "username": "315055",
         "priority": 1,
-        "time": "2023-11-04T17:00:00Z",
+        "signedToStartTime": "2023-11-04T17:00:00Z",
         "message": ""
       },
       {
         "username": "124406",
         "priority": 1,
-        "time": "2023-11-04T17:00:00Z",
+        "signedToStartTime": "2023-11-04T17:00:00Z",
         "message": ""
       }
     ],
@@ -778,36 +778,36 @@
     "updatedAt": "2023-11-05T10:00:15.636Z"
   },
   {
-    "game": { "programItemId": "p7273" },
+    "programItemId": "p7273",
     "userSignups": [
       {
         "username": "614924",
         "priority": 2,
-        "time": "2023-11-04T17:00:00Z",
+        "signedToStartTime": "2023-11-04T17:00:00Z",
         "message": ""
       },
       {
         "username": "79888",
         "priority": 2,
-        "time": "2023-11-04T17:00:00Z",
+        "signedToStartTime": "2023-11-04T17:00:00Z",
         "message": ""
       },
       {
         "username": "267331",
         "priority": 2,
-        "time": "2023-11-04T17:00:00Z",
+        "signedToStartTime": "2023-11-04T17:00:00Z",
         "message": ""
       },
       {
         "username": "847579",
         "priority": 2,
-        "time": "2023-11-04T17:00:00Z",
+        "signedToStartTime": "2023-11-04T17:00:00Z",
         "message": ""
       },
       {
         "username": "754356",
         "priority": 2,
-        "time": "2023-11-04T17:00:00Z",
+        "signedToStartTime": "2023-11-04T17:00:00Z",
         "message": ""
       }
     ],
@@ -816,30 +816,30 @@
     "updatedAt": "2023-11-05T10:00:15.636Z"
   },
   {
-    "game": { "programItemId": "p7373" },
+    "programItemId": "p7373",
     "userSignups": [
       {
         "username": "577037",
         "priority": 1,
-        "time": "2023-11-04T18:00:00Z",
+        "signedToStartTime": "2023-11-04T18:00:00Z",
         "message": ""
       },
       {
         "username": "715884",
         "priority": 1,
-        "time": "2023-11-04T18:00:00Z",
+        "signedToStartTime": "2023-11-04T18:00:00Z",
         "message": ""
       },
       {
         "username": "38533",
         "priority": 1,
-        "time": "2023-11-04T18:00:00Z",
+        "signedToStartTime": "2023-11-04T18:00:00Z",
         "message": ""
       },
       {
         "username": "422934",
         "priority": 1,
-        "time": "2023-11-04T18:00:00Z",
+        "signedToStartTime": "2023-11-04T18:00:00Z",
         "message": ""
       }
     ],
@@ -848,42 +848,42 @@
     "updatedAt": "2023-11-05T10:00:15.636Z"
   },
   {
-    "game": { "programItemId": "p7346" },
+    "programItemId": "p7346",
     "userSignups": [
       {
         "username": "859875",
         "priority": 1,
-        "time": "2023-11-04T18:00:00Z",
+        "signedToStartTime": "2023-11-04T18:00:00Z",
         "message": ""
       },
       {
         "username": "450792",
         "priority": 1,
-        "time": "2023-11-04T18:00:00Z",
+        "signedToStartTime": "2023-11-04T18:00:00Z",
         "message": ""
       },
       {
         "username": "269163",
         "priority": 1,
-        "time": "2023-11-04T18:00:00Z",
+        "signedToStartTime": "2023-11-04T18:00:00Z",
         "message": ""
       },
       {
         "username": "976735",
         "priority": 1,
-        "time": "2023-11-04T18:00:00Z",
+        "signedToStartTime": "2023-11-04T18:00:00Z",
         "message": ""
       },
       {
         "username": "155888",
         "priority": 1,
-        "time": "2023-11-04T18:00:00Z",
+        "signedToStartTime": "2023-11-04T18:00:00Z",
         "message": ""
       },
       {
         "username": "265543",
         "priority": 0,
-        "time": "2023-11-04T18:00:00Z",
+        "signedToStartTime": "2023-11-04T18:00:00Z",
         "message": ""
       }
     ],
@@ -892,36 +892,36 @@
     "updatedAt": "2023-11-05T10:00:15.636Z"
   },
   {
-    "game": { "programItemId": "p7339" },
+    "programItemId": "p7339",
     "userSignups": [
       {
         "username": "238669",
         "priority": 0,
-        "time": "2023-11-05T09:00:00Z",
+        "signedToStartTime": "2023-11-05T09:00:00Z",
         "message": ""
       },
       {
         "username": "293448",
         "priority": 0,
-        "time": "2023-11-05T09:00:00Z",
+        "signedToStartTime": "2023-11-05T09:00:00Z",
         "message": ""
       },
       {
         "username": "714941",
         "priority": 0,
-        "time": "2023-11-05T09:00:00Z",
+        "signedToStartTime": "2023-11-05T09:00:00Z",
         "message": ""
       },
       {
         "username": "20285",
         "priority": 0,
-        "time": "2023-11-05T09:00:00Z",
+        "signedToStartTime": "2023-11-05T09:00:00Z",
         "message": ""
       },
       {
         "username": "574120",
         "priority": 0,
-        "time": "2023-11-05T09:00:00Z",
+        "signedToStartTime": "2023-11-05T09:00:00Z",
         "message": ""
       }
     ],
@@ -930,42 +930,42 @@
     "updatedAt": "2023-11-05T10:00:15.636Z"
   },
   {
-    "game": { "programItemId": "p7270" },
+    "programItemId": "p7270",
     "userSignups": [
       {
         "username": "198170",
         "priority": 1,
-        "time": "2023-11-05T09:00:00Z",
+        "signedToStartTime": "2023-11-05T09:00:00Z",
         "message": ""
       },
       {
         "username": "133879",
         "priority": 1,
-        "time": "2023-11-05T09:00:00Z",
+        "signedToStartTime": "2023-11-05T09:00:00Z",
         "message": ""
       },
       {
         "username": "263055",
         "priority": 1,
-        "time": "2023-11-05T09:00:00Z",
+        "signedToStartTime": "2023-11-05T09:00:00Z",
         "message": ""
       },
       {
         "username": "471057",
         "priority": 1,
-        "time": "2023-11-05T09:00:00Z",
+        "signedToStartTime": "2023-11-05T09:00:00Z",
         "message": ""
       },
       {
         "username": "454671",
         "priority": 1,
-        "time": "2023-11-05T09:00:00Z",
+        "signedToStartTime": "2023-11-05T09:00:00Z",
         "message": ""
       },
       {
         "username": "192858",
         "priority": 0,
-        "time": "2023-11-05T09:00:00Z",
+        "signedToStartTime": "2023-11-05T09:00:00Z",
         "message": ""
       }
     ],
@@ -974,56 +974,56 @@
     "updatedAt": "2023-11-05T10:00:15.636Z"
   },
   {
-    "game": { "programItemId": "p7428" },
+    "programItemId": "p7428",
     "userSignups": [],
     "count": 0,
     "createdAt": "2023-11-02T16:35:05.862Z",
     "updatedAt": "2023-11-05T10:00:15.636Z"
   },
   {
-    "game": { "programItemId": "p7431" },
+    "programItemId": "p7431",
     "userSignups": [],
     "count": 0,
     "createdAt": "2023-11-02T16:35:05.862Z",
     "updatedAt": "2023-11-05T10:00:15.636Z"
   },
   {
-    "game": { "programItemId": "p7285" },
+    "programItemId": "p7285",
     "userSignups": [
       {
         "username": "862271",
         "priority": 1,
-        "time": "2023-11-05T10:00:00Z",
+        "signedToStartTime": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
         "username": "938497",
         "priority": 1,
-        "time": "2023-11-05T10:00:00Z",
+        "signedToStartTime": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
         "username": "760768",
         "priority": 1,
-        "time": "2023-11-05T10:00:00Z",
+        "signedToStartTime": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
         "username": "155200",
         "priority": 1,
-        "time": "2023-11-05T10:00:00Z",
+        "signedToStartTime": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
         "username": "287707",
         "priority": 1,
-        "time": "2023-11-05T10:00:00Z",
+        "signedToStartTime": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
         "username": "268101",
         "priority": 1,
-        "time": "2023-11-05T10:00:00Z",
+        "signedToStartTime": "2023-11-05T10:00:00Z",
         "message": ""
       }
     ],
@@ -1032,36 +1032,36 @@
     "updatedAt": "2023-11-05T10:00:15.636Z"
   },
   {
-    "game": { "programItemId": "p7358" },
+    "programItemId": "p7358",
     "userSignups": [
       {
         "username": "298569",
         "priority": 1,
-        "time": "2023-11-05T10:00:00Z",
+        "signedToStartTime": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
         "username": "821561",
         "priority": 1,
-        "time": "2023-11-05T10:00:00Z",
+        "signedToStartTime": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
         "username": "614924",
         "priority": 1,
-        "time": "2023-11-05T10:00:00Z",
+        "signedToStartTime": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
         "username": "79888",
         "priority": 1,
-        "time": "2023-11-05T10:00:00Z",
+        "signedToStartTime": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
         "username": "90752",
         "priority": 0,
-        "time": "2023-11-05T10:00:00Z",
+        "signedToStartTime": "2023-11-05T10:00:00Z",
         "message": ""
       }
     ],
@@ -1070,24 +1070,24 @@
     "updatedAt": "2023-11-05T10:00:15.636Z"
   },
   {
-    "game": { "programItemId": "p7336" },
+    "programItemId": "p7336",
     "userSignups": [
       {
         "username": "503509",
         "priority": 0,
-        "time": "2023-11-05T10:00:00Z",
+        "signedToStartTime": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
         "username": "363586",
         "priority": 0,
-        "time": "2023-11-05T10:00:00Z",
+        "signedToStartTime": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
         "username": "234442",
         "priority": 0,
-        "time": "2023-11-05T10:00:00Z",
+        "signedToStartTime": "2023-11-05T10:00:00Z",
         "message": ""
       }
     ],
@@ -1096,30 +1096,30 @@
     "updatedAt": "2023-11-05T10:00:15.636Z"
   },
   {
-    "game": { "programItemId": "p7299" },
+    "programItemId": "p7299",
     "userSignups": [
       {
         "username": "228264",
         "priority": 1,
-        "time": "2023-11-05T10:00:00Z",
+        "signedToStartTime": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
         "username": "786772",
         "priority": 2,
-        "time": "2023-11-05T10:00:00Z",
+        "signedToStartTime": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
         "username": "952181",
         "priority": 2,
-        "time": "2023-11-05T10:00:00Z",
+        "signedToStartTime": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
         "username": "268201",
         "priority": 0,
-        "time": "2023-11-05T10:00:00Z",
+        "signedToStartTime": "2023-11-05T10:00:00Z",
         "message": ""
       }
     ],
@@ -1128,36 +1128,36 @@
     "updatedAt": "2023-11-05T10:00:15.636Z"
   },
   {
-    "game": { "programItemId": "p7362" },
+    "programItemId": "p7362",
     "userSignups": [
       {
         "username": "294621",
         "priority": 1,
-        "time": "2023-11-05T10:00:00Z",
+        "signedToStartTime": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
         "username": "999140",
         "priority": 1,
-        "time": "2023-11-05T10:00:00Z",
+        "signedToStartTime": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
         "username": "348259",
         "priority": 1,
-        "time": "2023-11-05T10:00:00Z",
+        "signedToStartTime": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
         "username": "898935",
         "priority": 2,
-        "time": "2023-11-05T10:00:00Z",
+        "signedToStartTime": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
         "username": "510442",
         "priority": 2,
-        "time": "2023-11-05T10:00:00Z",
+        "signedToStartTime": "2023-11-05T10:00:00Z",
         "message": ""
       }
     ],
@@ -1166,36 +1166,36 @@
     "updatedAt": "2023-11-05T10:00:15.636Z"
   },
   {
-    "game": { "programItemId": "p7274" },
+    "programItemId": "p7274",
     "userSignups": [
       {
         "username": "535516",
         "priority": 1,
-        "time": "2023-11-04T14:00:00Z",
+        "signedToStartTime": "2023-11-04T14:00:00Z",
         "message": ""
       },
       {
         "username": "77079",
         "priority": 1,
-        "time": "2023-11-04T14:00:00Z",
+        "signedToStartTime": "2023-11-04T14:00:00Z",
         "message": ""
       },
       {
         "username": "550858",
         "priority": 1,
-        "time": "2023-11-04T14:00:00Z",
+        "signedToStartTime": "2023-11-04T14:00:00Z",
         "message": ""
       },
       {
         "username": "746678",
         "priority": 1,
-        "time": "2023-11-04T14:00:00Z",
+        "signedToStartTime": "2023-11-04T14:00:00Z",
         "message": ""
       },
       {
         "username": "298569",
         "priority": 1,
-        "time": "2023-11-04T14:00:00Z",
+        "signedToStartTime": "2023-11-04T14:00:00Z",
         "message": ""
       }
     ],
@@ -1204,36 +1204,36 @@
     "updatedAt": "2023-11-05T10:00:15.636Z"
   },
   {
-    "game": { "programItemId": "p7365" },
+    "programItemId": "p7365",
     "userSignups": [
       {
         "username": "535516",
         "priority": 1,
-        "time": "2023-11-05T10:00:00Z",
+        "signedToStartTime": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
         "username": "210186",
         "priority": 1,
-        "time": "2023-11-05T10:00:00Z",
+        "signedToStartTime": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
         "username": "315055",
         "priority": 1,
-        "time": "2023-11-05T10:00:00Z",
+        "signedToStartTime": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
         "username": "204351",
         "priority": 1,
-        "time": "2023-11-05T10:00:00Z",
+        "signedToStartTime": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
         "username": "38604",
         "priority": 1,
-        "time": "2023-11-05T10:00:00Z",
+        "signedToStartTime": "2023-11-05T10:00:00Z",
         "message": ""
       }
     ],
@@ -1242,30 +1242,30 @@
     "updatedAt": "2023-11-05T10:00:15.636Z"
   },
   {
-    "game": { "programItemId": "p7369" },
+    "programItemId": "p7369",
     "userSignups": [
       {
         "username": "192858",
         "priority": 1,
-        "time": "2023-11-05T11:00:00Z",
+        "signedToStartTime": "2023-11-05T11:00:00Z",
         "message": ""
       },
       {
         "username": "574662",
         "priority": 1,
-        "time": "2023-11-05T11:00:00Z",
+        "signedToStartTime": "2023-11-05T11:00:00Z",
         "message": ""
       },
       {
         "username": "370318",
         "priority": 1,
-        "time": "2023-11-05T11:00:00Z",
+        "signedToStartTime": "2023-11-05T11:00:00Z",
         "message": ""
       },
       {
         "username": "946238",
         "priority": 0,
-        "time": "2023-11-05T11:00:00Z",
+        "signedToStartTime": "2023-11-05T11:00:00Z",
         "message": ""
       }
     ],
@@ -1274,42 +1274,42 @@
     "updatedAt": "2023-11-05T10:32:22.566Z"
   },
   {
-    "game": { "programItemId": "p7280" },
+    "programItemId": "p7280",
     "userSignups": [
       {
         "username": "575241",
         "priority": 2,
-        "time": "2023-11-04T13:00:00Z",
+        "signedToStartTime": "2023-11-04T13:00:00Z",
         "message": ""
       },
       {
         "username": "269163",
         "priority": 1,
-        "time": "2023-11-04T13:00:00Z",
+        "signedToStartTime": "2023-11-04T13:00:00Z",
         "message": ""
       },
       {
         "username": "155200",
         "priority": 2,
-        "time": "2023-11-04T13:00:00Z",
+        "signedToStartTime": "2023-11-04T13:00:00Z",
         "message": ""
       },
       {
         "username": "614924",
         "priority": 1,
-        "time": "2023-11-04T13:00:00Z",
+        "signedToStartTime": "2023-11-04T13:00:00Z",
         "message": ""
       },
       {
         "username": "79888",
         "priority": 1,
-        "time": "2023-11-04T13:00:00Z",
+        "signedToStartTime": "2023-11-04T13:00:00Z",
         "message": ""
       },
       {
         "username": "273506",
         "priority": 0,
-        "time": "2023-11-04T13:00:00Z",
+        "signedToStartTime": "2023-11-04T13:00:00Z",
         "message": ""
       }
     ],
@@ -1318,24 +1318,24 @@
     "updatedAt": "2023-11-05T10:00:15.636Z"
   },
   {
-    "game": { "programItemId": "p7344" },
+    "programItemId": "p7344",
     "userSignups": [
       {
         "username": "805342",
         "priority": 1,
-        "time": "2023-11-05T12:00:00Z",
+        "signedToStartTime": "2023-11-05T12:00:00Z",
         "message": ""
       },
       {
         "username": "894037",
         "priority": 1,
-        "time": "2023-11-05T12:00:00Z",
+        "signedToStartTime": "2023-11-05T12:00:00Z",
         "message": ""
       },
       {
         "username": "714772",
         "priority": 1,
-        "time": "2023-11-05T12:00:00Z",
+        "signedToStartTime": "2023-11-05T12:00:00Z",
         "message": ""
       }
     ],
@@ -1344,30 +1344,30 @@
     "updatedAt": "2023-11-05T10:00:15.727Z"
   },
   {
-    "game": { "programItemId": "p7367" },
+    "programItemId": "p7367",
     "userSignups": [
       {
         "username": "273506",
         "priority": 1,
-        "time": "2023-11-05T10:00:00Z",
+        "signedToStartTime": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
         "username": "715884",
         "priority": 2,
-        "time": "2023-11-05T10:00:00Z",
+        "signedToStartTime": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
         "username": "384992",
         "priority": 1,
-        "time": "2023-11-05T10:00:00Z",
+        "signedToStartTime": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
         "username": "265543",
         "priority": 0,
-        "time": "2023-11-05T10:00:00Z",
+        "signedToStartTime": "2023-11-05T10:00:00Z",
         "message": ""
       }
     ],
@@ -1376,42 +1376,42 @@
     "updatedAt": "2023-11-05T10:00:15.636Z"
   },
   {
-    "game": { "programItemId": "p7424" },
+    "programItemId": "p7424",
     "userSignups": [
       {
         "username": "575241",
         "priority": 1,
-        "time": "2023-11-05T12:00:00Z",
+        "signedToStartTime": "2023-11-05T12:00:00Z",
         "message": ""
       },
       {
         "username": "550858",
         "priority": 1,
-        "time": "2023-11-05T12:00:00Z",
+        "signedToStartTime": "2023-11-05T12:00:00Z",
         "message": ""
       },
       {
         "username": "681786",
         "priority": 1,
-        "time": "2023-11-05T12:00:00Z",
+        "signedToStartTime": "2023-11-05T12:00:00Z",
         "message": ""
       },
       {
         "username": "743940",
         "priority": 1,
-        "time": "2023-11-05T12:00:00Z",
+        "signedToStartTime": "2023-11-05T12:00:00Z",
         "message": ""
       },
       {
         "username": "613493",
         "priority": 1,
-        "time": "2023-11-05T12:00:00Z",
+        "signedToStartTime": "2023-11-05T12:00:00Z",
         "message": ""
       },
       {
         "username": "967328",
         "priority": 1,
-        "time": "2023-11-05T12:00:00Z",
+        "signedToStartTime": "2023-11-05T12:00:00Z",
         "message": ""
       }
     ],

@@ -4,29 +4,29 @@
       {
         "username": "192858",
         "directSignup": {
-          "programItem": { "programItemId": "p7338" },
+          "programItemId": "p7338",
           "priority": 1,
-          "time": "2023-11-04T11:00:00Z"
+          "signedToStartTime": "2023-11-04T11:00:00Z"
         }
       },
       {
         "username": "956919",
         "directSignup": {
-          "programItem": { "programItemId": "p7338" },
+          "programItemId": "p7338",
           "priority": 1,
-          "time": "2023-11-04T11:00:00Z"
+          "signedToStartTime": "2023-11-04T11:00:00Z"
         }
       },
       {
         "username": "799122",
         "directSignup": {
-          "programItem": { "programItemId": "p7338" },
+          "programItemId": "p7338",
           "priority": 1,
-          "time": "2023-11-04T11:00:00Z"
+          "signedToStartTime": "2023-11-04T11:00:00Z"
         }
       }
     ],
-    "startTime": "2023-11-04T11:00:00Z",
+    "assignmentTime": "2023-11-04T11:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assign Result - Players: 3/3 (100%), Games: 1/1 (100%)",
     "createdAt": "2023-11-04T09:00:10.422Z",
@@ -37,85 +37,85 @@
       {
         "username": "575241",
         "directSignup": {
-          "programItem": { "programItemId": "p7280" },
+          "programItemId": "p7280",
           "priority": 2,
-          "time": "2023-11-04T13:00:00Z"
+          "signedToStartTime": "2023-11-04T13:00:00Z"
         }
       },
       {
         "username": "732614",
         "directSignup": {
-          "programItem": { "programItemId": "p7345" },
+          "programItemId": "p7345",
           "priority": 1,
-          "time": "2023-11-04T13:00:00Z"
+          "signedToStartTime": "2023-11-04T13:00:00Z"
         }
       },
       {
         "username": "486628",
         "directSignup": {
-          "programItem": { "programItemId": "p7345" },
+          "programItemId": "p7345",
           "priority": 1,
-          "time": "2023-11-04T13:00:00Z"
+          "signedToStartTime": "2023-11-04T13:00:00Z"
         }
       },
       {
         "username": "875354",
         "directSignup": {
-          "programItem": { "programItemId": "p7345" },
+          "programItemId": "p7345",
           "priority": 1,
-          "time": "2023-11-04T13:00:00Z"
+          "signedToStartTime": "2023-11-04T13:00:00Z"
         }
       },
       {
         "username": "689497",
         "directSignup": {
-          "programItem": { "programItemId": "p7345" },
+          "programItemId": "p7345",
           "priority": 1,
-          "time": "2023-11-04T13:00:00Z"
+          "signedToStartTime": "2023-11-04T13:00:00Z"
         }
       },
       {
         "username": "269163",
         "directSignup": {
-          "programItem": { "programItemId": "p7280" },
+          "programItemId": "p7280",
           "priority": 1,
-          "time": "2023-11-04T13:00:00Z"
+          "signedToStartTime": "2023-11-04T13:00:00Z"
         }
       },
       {
         "username": "802116",
         "directSignup": {
-          "programItem": { "programItemId": "p7345" },
+          "programItemId": "p7345",
           "priority": 1,
-          "time": "2023-11-04T13:00:00Z"
+          "signedToStartTime": "2023-11-04T13:00:00Z"
         }
       },
       {
         "username": "155200",
         "directSignup": {
-          "programItem": { "programItemId": "p7280" },
+          "programItemId": "p7280",
           "priority": 2,
-          "time": "2023-11-04T13:00:00Z"
+          "signedToStartTime": "2023-11-04T13:00:00Z"
         }
       },
       {
         "username": "614924",
         "directSignup": {
-          "programItem": { "programItemId": "p7280" },
+          "programItemId": "p7280",
           "priority": 1,
-          "time": "2023-11-04T13:00:00Z"
+          "signedToStartTime": "2023-11-04T13:00:00Z"
         }
       },
       {
         "username": "79888",
         "directSignup": {
-          "programItem": { "programItemId": "p7280" },
+          "programItemId": "p7280",
           "priority": 1,
-          "time": "2023-11-04T13:00:00Z"
+          "signedToStartTime": "2023-11-04T13:00:00Z"
         }
       }
     ],
-    "startTime": "2023-11-04T13:00:00Z",
+    "assignmentTime": "2023-11-04T13:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assign Result - Players: 10/12 (83%), Games: 2/2 (100%)",
     "createdAt": "2023-11-04T11:00:10.805Z",
@@ -126,45 +126,45 @@
       {
         "username": "535516",
         "directSignup": {
-          "programItem": { "programItemId": "p7274" },
+          "programItemId": "p7274",
           "priority": 1,
-          "time": "2023-11-04T14:00:00Z"
+          "signedToStartTime": "2023-11-04T14:00:00Z"
         }
       },
       {
         "username": "77079",
         "directSignup": {
-          "programItem": { "programItemId": "p7274" },
+          "programItemId": "p7274",
           "priority": 1,
-          "time": "2023-11-04T14:00:00Z"
+          "signedToStartTime": "2023-11-04T14:00:00Z"
         }
       },
       {
         "username": "550858",
         "directSignup": {
-          "programItem": { "programItemId": "p7274" },
+          "programItemId": "p7274",
           "priority": 1,
-          "time": "2023-11-04T14:00:00Z"
+          "signedToStartTime": "2023-11-04T14:00:00Z"
         }
       },
       {
         "username": "746678",
         "directSignup": {
-          "programItem": { "programItemId": "p7274" },
+          "programItemId": "p7274",
           "priority": 1,
-          "time": "2023-11-04T14:00:00Z"
+          "signedToStartTime": "2023-11-04T14:00:00Z"
         }
       },
       {
         "username": "298569",
         "directSignup": {
-          "programItem": { "programItemId": "p7274" },
+          "programItemId": "p7274",
           "priority": 1,
-          "time": "2023-11-04T14:00:00Z"
+          "signedToStartTime": "2023-11-04T14:00:00Z"
         }
       }
     ],
-    "startTime": "2023-11-04T14:00:00Z",
+    "assignmentTime": "2023-11-04T14:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assign Result - Players: 5/14 (36%), Games: 1/1 (100%)",
     "createdAt": "2023-11-04T12:00:11.086Z",
@@ -175,165 +175,165 @@
       {
         "username": "983766",
         "directSignup": {
-          "programItem": { "programItemId": "<canceled>" },
+          "programItemId": "<canceled>",
           "priority": 1,
-          "time": "2023-11-04T15:00:00Z"
+          "signedToStartTime": "2023-11-04T15:00:00Z"
         }
       },
       {
         "username": "65784",
         "directSignup": {
-          "programItem": { "programItemId": "p7360" },
+          "programItemId": "p7360",
           "priority": 1,
-          "time": "2023-11-04T15:00:00Z"
+          "signedToStartTime": "2023-11-04T15:00:00Z"
         }
       },
       {
         "username": "946238",
         "directSignup": {
-          "programItem": { "programItemId": "p7368" },
+          "programItemId": "p7368",
           "priority": 1,
-          "time": "2023-11-04T15:00:00Z"
+          "signedToStartTime": "2023-11-04T15:00:00Z"
         }
       },
       {
         "username": "997499",
         "directSignup": {
-          "programItem": { "programItemId": "p7368" },
+          "programItemId": "p7368",
           "priority": 1,
-          "time": "2023-11-04T15:00:00Z"
+          "signedToStartTime": "2023-11-04T15:00:00Z"
         }
       },
       {
         "username": "198170",
         "directSignup": {
-          "programItem": { "programItemId": "p7368" },
+          "programItemId": "p7368",
           "priority": 1,
-          "time": "2023-11-04T15:00:00Z"
+          "signedToStartTime": "2023-11-04T15:00:00Z"
         }
       },
       {
         "username": "715884",
         "directSignup": {
-          "programItem": { "programItemId": "<canceled>" },
+          "programItemId": "<canceled>",
           "priority": 1,
-          "time": "2023-11-04T15:00:00Z"
+          "signedToStartTime": "2023-11-04T15:00:00Z"
         }
       },
       {
         "username": "574120",
         "directSignup": {
-          "programItem": { "programItemId": "<canceled>" },
+          "programItemId": "<canceled>",
           "priority": 1,
-          "time": "2023-11-04T15:00:00Z"
+          "signedToStartTime": "2023-11-04T15:00:00Z"
         }
       },
       {
         "username": "268201",
         "directSignup": {
-          "programItem": { "programItemId": "p7360" },
+          "programItemId": "p7360",
           "priority": 1,
-          "time": "2023-11-04T15:00:00Z"
+          "signedToStartTime": "2023-11-04T15:00:00Z"
         }
       },
       {
         "username": "162093",
         "directSignup": {
-          "programItem": { "programItemId": "p7364" },
+          "programItemId": "p7364",
           "priority": 1,
-          "time": "2023-11-04T15:00:00Z"
+          "signedToStartTime": "2023-11-04T15:00:00Z"
         }
       },
       {
         "username": "862271",
         "directSignup": {
-          "programItem": { "programItemId": "p7364" },
+          "programItemId": "p7364",
           "priority": 2,
-          "time": "2023-11-04T15:00:00Z"
+          "signedToStartTime": "2023-11-04T15:00:00Z"
         }
       },
       {
         "username": "384992",
         "directSignup": {
-          "programItem": { "programItemId": "p7364" },
+          "programItemId": "p7364",
           "priority": 2,
-          "time": "2023-11-04T15:00:00Z"
+          "signedToStartTime": "2023-11-04T15:00:00Z"
         }
       },
       {
         "username": "287707",
         "directSignup": {
-          "programItem": { "programItemId": "p7360" },
+          "programItemId": "p7360",
           "priority": 1,
-          "time": "2023-11-04T15:00:00Z"
+          "signedToStartTime": "2023-11-04T15:00:00Z"
         }
       },
       {
         "username": "681786",
         "directSignup": {
-          "programItem": { "programItemId": "<canceled>" },
+          "programItemId": "<canceled>",
           "priority": 2,
-          "time": "2023-11-04T15:00:00Z"
+          "signedToStartTime": "2023-11-04T15:00:00Z"
         }
       },
       {
         "username": "422934",
         "directSignup": {
-          "programItem": { "programItemId": "<canceled>" },
+          "programItemId": "<canceled>",
           "priority": 1,
-          "time": "2023-11-04T15:00:00Z"
+          "signedToStartTime": "2023-11-04T15:00:00Z"
         }
       },
       {
         "username": "606398",
         "directSignup": {
-          "programItem": { "programItemId": "p7364" },
+          "programItemId": "p7364",
           "priority": 1,
-          "time": "2023-11-04T15:00:00Z"
+          "signedToStartTime": "2023-11-04T15:00:00Z"
         }
       },
       {
         "username": "787207",
         "directSignup": {
-          "programItem": { "programItemId": "p7360" },
+          "programItemId": "p7360",
           "priority": 1,
-          "time": "2023-11-04T15:00:00Z"
+          "signedToStartTime": "2023-11-04T15:00:00Z"
         }
       },
       {
         "username": "976069",
         "directSignup": {
-          "programItem": { "programItemId": "p7360" },
+          "programItemId": "p7360",
           "priority": 1,
-          "time": "2023-11-04T15:00:00Z"
+          "signedToStartTime": "2023-11-04T15:00:00Z"
         }
       },
       {
         "username": "133879",
         "directSignup": {
-          "programItem": { "programItemId": "p7368" },
+          "programItemId": "p7368",
           "priority": 1,
-          "time": "2023-11-04T15:00:00Z"
+          "signedToStartTime": "2023-11-04T15:00:00Z"
         }
       },
       {
         "username": "263055",
         "directSignup": {
-          "programItem": { "programItemId": "p7368" },
+          "programItemId": "p7368",
           "priority": 1,
-          "time": "2023-11-04T15:00:00Z"
+          "signedToStartTime": "2023-11-04T15:00:00Z"
         }
       },
       {
         "username": "471057",
         "directSignup": {
-          "programItem": { "programItemId": "p7368" },
+          "programItemId": "p7368",
           "priority": 1,
-          "time": "2023-11-04T15:00:00Z"
+          "signedToStartTime": "2023-11-04T15:00:00Z"
         }
       }
     ],
-    "startTime": "2023-11-04T15:00:00Z",
+    "assignmentTime": "2023-11-04T15:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assign Result - Players: 20/33 (61%), Games: 4/4 (100%)",
     "createdAt": "2023-11-04T13:00:11.578Z",
@@ -344,133 +344,133 @@
       {
         "username": "238669",
         "directSignup": {
-          "programItem": { "programItemId": "p7341" },
+          "programItemId": "p7341",
           "priority": 2,
-          "time": "2023-11-04T16:00:00Z"
+          "signedToStartTime": "2023-11-04T16:00:00Z"
         }
       },
       {
         "username": "535516",
         "directSignup": {
-          "programItem": { "programItemId": "p7341" },
+          "programItemId": "p7341",
           "priority": 1,
-          "time": "2023-11-04T16:00:00Z"
+          "signedToStartTime": "2023-11-04T16:00:00Z"
         }
       },
       {
         "username": "983766",
         "directSignup": {
-          "programItem": { "programItemId": "p7298" },
+          "programItemId": "p7298",
           "priority": 1,
-          "time": "2023-11-04T16:00:00Z"
+          "signedToStartTime": "2023-11-04T16:00:00Z"
         }
       },
       {
         "username": "711325",
         "directSignup": {
-          "programItem": { "programItemId": "p7298" },
+          "programItemId": "p7298",
           "priority": 2,
-          "time": "2023-11-04T16:00:00Z"
+          "signedToStartTime": "2023-11-04T16:00:00Z"
         }
       },
       {
         "username": "611296",
         "directSignup": {
-          "programItem": { "programItemId": "p7298" },
+          "programItemId": "p7298",
           "priority": 1,
-          "time": "2023-11-04T16:00:00Z"
+          "signedToStartTime": "2023-11-04T16:00:00Z"
         }
       },
       {
         "username": "588901",
         "directSignup": {
-          "programItem": { "programItemId": "p7341" },
+          "programItemId": "p7341",
           "priority": 1,
-          "time": "2023-11-04T16:00:00Z"
+          "signedToStartTime": "2023-11-04T16:00:00Z"
         }
       },
       {
         "username": "503509",
         "directSignup": {
-          "programItem": { "programItemId": "p7335" },
+          "programItemId": "p7335",
           "priority": 1,
-          "time": "2023-11-04T16:00:00Z"
+          "signedToStartTime": "2023-11-04T16:00:00Z"
         }
       },
       {
         "username": "324064",
         "directSignup": {
-          "programItem": { "programItemId": "p7298" },
+          "programItemId": "p7298",
           "priority": 1,
-          "time": "2023-11-04T16:00:00Z"
+          "signedToStartTime": "2023-11-04T16:00:00Z"
         }
       },
       {
         "username": "732614",
         "directSignup": {
-          "programItem": { "programItemId": "p7341" },
+          "programItemId": "p7341",
           "priority": 1,
-          "time": "2023-11-04T16:00:00Z"
+          "signedToStartTime": "2023-11-04T16:00:00Z"
         }
       },
       {
         "username": "486628",
         "directSignup": {
-          "programItem": { "programItemId": "p7341" },
+          "programItemId": "p7341",
           "priority": 1,
-          "time": "2023-11-04T16:00:00Z"
+          "signedToStartTime": "2023-11-04T16:00:00Z"
         }
       },
       {
         "username": "875354",
         "directSignup": {
-          "programItem": { "programItemId": "p7335" },
+          "programItemId": "p7335",
           "priority": 2,
-          "time": "2023-11-04T16:00:00Z"
+          "signedToStartTime": "2023-11-04T16:00:00Z"
         }
       },
       {
         "username": "689497",
         "directSignup": {
-          "programItem": { "programItemId": "p7341" },
+          "programItemId": "p7341",
           "priority": 1,
-          "time": "2023-11-04T16:00:00Z"
+          "signedToStartTime": "2023-11-04T16:00:00Z"
         }
       },
       {
         "username": "253287",
         "directSignup": {
-          "programItem": { "programItemId": "p7335" },
+          "programItemId": "p7335",
           "priority": 2,
-          "time": "2023-11-04T16:00:00Z"
+          "signedToStartTime": "2023-11-04T16:00:00Z"
         }
       },
       {
         "username": "96808",
         "directSignup": {
-          "programItem": { "programItemId": "p7335" },
+          "programItemId": "p7335",
           "priority": 2,
-          "time": "2023-11-04T16:00:00Z"
+          "signedToStartTime": "2023-11-04T16:00:00Z"
         }
       },
       {
         "username": "223931",
         "directSignup": {
-          "programItem": { "programItemId": "p7335" },
+          "programItemId": "p7335",
           "priority": 2,
-          "time": "2023-11-04T16:00:00Z"
+          "signedToStartTime": "2023-11-04T16:00:00Z"
         }
       },
       {
         "username": "686327",
         "directSignup": {
-          "programItem": { "programItemId": "p7335" },
+          "programItemId": "p7335",
           "priority": 2,
-          "time": "2023-11-04T16:00:00Z"
+          "signedToStartTime": "2023-11-04T16:00:00Z"
         }
       }
     ],
-    "startTime": "2023-11-04T16:00:00Z",
+    "assignmentTime": "2023-11-04T16:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assign Result - Players: 16/19 (84%), Games: 3/3 (100%)",
     "createdAt": "2023-11-04T14:00:11.649Z",
@@ -481,101 +481,101 @@
       {
         "username": "711325",
         "directSignup": {
-          "programItem": { "programItemId": "p7279" },
+          "programItemId": "p7279",
           "priority": 1,
-          "time": "2023-11-04T17:00:00Z"
+          "signedToStartTime": "2023-11-04T17:00:00Z"
         }
       },
       {
         "username": "253868",
         "directSignup": {
-          "programItem": { "programItemId": "p7279" },
+          "programItemId": "p7279",
           "priority": 1,
-          "time": "2023-11-04T17:00:00Z"
+          "signedToStartTime": "2023-11-04T17:00:00Z"
         }
       },
       {
         "username": "612919",
         "directSignup": {
-          "programItem": { "programItemId": "p7269" },
+          "programItemId": "p7269",
           "priority": 1,
-          "time": "2023-11-04T17:00:00Z"
+          "signedToStartTime": "2023-11-04T17:00:00Z"
         }
       },
       {
         "username": "715884",
         "directSignup": {
-          "programItem": { "programItemId": "p7269" },
+          "programItemId": "p7269",
           "priority": 1,
-          "time": "2023-11-04T17:00:00Z"
+          "signedToStartTime": "2023-11-04T17:00:00Z"
         }
       },
       {
         "username": "574120",
         "directSignup": {
-          "programItem": { "programItemId": "p7269" },
+          "programItemId": "p7269",
           "priority": 1,
-          "time": "2023-11-04T17:00:00Z"
+          "signedToStartTime": "2023-11-04T17:00:00Z"
         }
       },
       {
         "username": "315055",
         "directSignup": {
-          "programItem": { "programItemId": "p7279" },
+          "programItemId": "p7279",
           "priority": 1,
-          "time": "2023-11-04T17:00:00Z"
+          "signedToStartTime": "2023-11-04T17:00:00Z"
         }
       },
       {
         "username": "124406",
         "directSignup": {
-          "programItem": { "programItemId": "p7279" },
+          "programItemId": "p7279",
           "priority": 1,
-          "time": "2023-11-04T17:00:00Z"
+          "signedToStartTime": "2023-11-04T17:00:00Z"
         }
       },
       {
         "username": "614924",
         "directSignup": {
-          "programItem": { "programItemId": "p7273" },
+          "programItemId": "p7273",
           "priority": 2,
-          "time": "2023-11-04T17:00:00Z"
+          "signedToStartTime": "2023-11-04T17:00:00Z"
         }
       },
       {
         "username": "79888",
         "directSignup": {
-          "programItem": { "programItemId": "p7273" },
+          "programItemId": "p7273",
           "priority": 2,
-          "time": "2023-11-04T17:00:00Z"
+          "signedToStartTime": "2023-11-04T17:00:00Z"
         }
       },
       {
         "username": "267331",
         "directSignup": {
-          "programItem": { "programItemId": "p7273" },
+          "programItemId": "p7273",
           "priority": 2,
-          "time": "2023-11-04T17:00:00Z"
+          "signedToStartTime": "2023-11-04T17:00:00Z"
         }
       },
       {
         "username": "847579",
         "directSignup": {
-          "programItem": { "programItemId": "p7273" },
+          "programItemId": "p7273",
           "priority": 2,
-          "time": "2023-11-04T17:00:00Z"
+          "signedToStartTime": "2023-11-04T17:00:00Z"
         }
       },
       {
         "username": "754356",
         "directSignup": {
-          "programItem": { "programItemId": "p7273" },
+          "programItemId": "p7273",
           "priority": 2,
-          "time": "2023-11-04T17:00:00Z"
+          "signedToStartTime": "2023-11-04T17:00:00Z"
         }
       }
     ],
-    "startTime": "2023-11-04T17:00:00Z",
+    "assignmentTime": "2023-11-04T17:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assign Result - Players: 12/12 (100%), Games: 3/3 (100%)",
     "createdAt": "2023-11-04T15:00:11.906Z",
@@ -586,85 +586,85 @@
       {
         "username": "577037",
         "directSignup": {
-          "programItem": { "programItemId": "p7373" },
+          "programItemId": "p7373",
           "priority": 1,
-          "time": "2023-11-04T18:00:00Z"
+          "signedToStartTime": "2023-11-04T18:00:00Z"
         }
       },
       {
         "username": "715884",
         "directSignup": {
-          "programItem": { "programItemId": "p7373" },
+          "programItemId": "p7373",
           "priority": 1,
-          "time": "2023-11-04T18:00:00Z"
+          "signedToStartTime": "2023-11-04T18:00:00Z"
         }
       },
       {
         "username": "859875",
         "directSignup": {
-          "programItem": { "programItemId": "p7346" },
+          "programItemId": "p7346",
           "priority": 1,
-          "time": "2023-11-04T18:00:00Z"
+          "signedToStartTime": "2023-11-04T18:00:00Z"
         }
       },
       {
         "username": "450792",
         "directSignup": {
-          "programItem": { "programItemId": "p7346" },
+          "programItemId": "p7346",
           "priority": 1,
-          "time": "2023-11-04T18:00:00Z"
+          "signedToStartTime": "2023-11-04T18:00:00Z"
         }
       },
       {
         "username": "269163",
         "directSignup": {
-          "programItem": { "programItemId": "p7346" },
+          "programItemId": "p7346",
           "priority": 1,
-          "time": "2023-11-04T18:00:00Z"
+          "signedToStartTime": "2023-11-04T18:00:00Z"
         }
       },
       {
         "username": "38533",
         "directSignup": {
-          "programItem": { "programItemId": "p7373" },
+          "programItemId": "p7373",
           "priority": 1,
-          "time": "2023-11-04T18:00:00Z"
+          "signedToStartTime": "2023-11-04T18:00:00Z"
         }
       },
       {
         "username": "422934",
         "directSignup": {
-          "programItem": { "programItemId": "p7373" },
+          "programItemId": "p7373",
           "priority": 1,
-          "time": "2023-11-04T18:00:00Z"
+          "signedToStartTime": "2023-11-04T18:00:00Z"
         }
       },
       {
         "username": "976735",
         "directSignup": {
-          "programItem": { "programItemId": "p7346" },
+          "programItemId": "p7346",
           "priority": 1,
-          "time": "2023-11-04T18:00:00Z"
+          "signedToStartTime": "2023-11-04T18:00:00Z"
         }
       },
       {
         "username": "155888",
         "directSignup": {
-          "programItem": { "programItemId": "p7346" },
+          "programItemId": "p7346",
           "priority": 1,
-          "time": "2023-11-04T18:00:00Z"
+          "signedToStartTime": "2023-11-04T18:00:00Z"
         }
       },
       {
         "username": "324210",
         "directSignup": {
-          "programItem": { "programItemId": "p7346" },
+          "programItemId": "p7346",
           "priority": 1,
-          "time": "2023-11-04T18:00:00Z"
+          "signedToStartTime": "2023-11-04T18:00:00Z"
         }
       }
     ],
-    "startTime": "2023-11-04T18:00:00Z",
+    "assignmentTime": "2023-11-04T18:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assign Result - Players: 10/11 (91%), Games: 2/2 (100%)",
     "createdAt": "2023-11-04T16:00:12.221Z",
@@ -675,77 +675,77 @@
       {
         "username": "238669",
         "directSignup": {
-          "programItem": { "programItemId": "<canceled>" },
+          "programItemId": "<canceled>",
           "priority": 1,
-          "time": "2023-11-05T09:00:00Z"
+          "signedToStartTime": "2023-11-05T09:00:00Z"
         }
       },
       {
         "username": "198170",
         "directSignup": {
-          "programItem": { "programItemId": "p7270" },
+          "programItemId": "p7270",
           "priority": 1,
-          "time": "2023-11-05T09:00:00Z"
+          "signedToStartTime": "2023-11-05T09:00:00Z"
         }
       },
       {
         "username": "503509",
         "directSignup": {
-          "programItem": { "programItemId": "<canceled>" },
+          "programItemId": "<canceled>",
           "priority": 1,
-          "time": "2023-11-05T09:00:00Z"
+          "signedToStartTime": "2023-11-05T09:00:00Z"
         }
       },
       {
         "username": "20285",
         "directSignup": {
-          "programItem": { "programItemId": "<canceled>" },
+          "programItemId": "<canceled>",
           "priority": 1,
-          "time": "2023-11-05T09:00:00Z"
+          "signedToStartTime": "2023-11-05T09:00:00Z"
         }
       },
       {
         "username": "894037",
         "directSignup": {
-          "programItem": { "programItemId": "<canceled>" },
+          "programItemId": "<canceled>",
           "priority": 1,
-          "time": "2023-11-05T09:00:00Z"
+          "signedToStartTime": "2023-11-05T09:00:00Z"
         }
       },
       {
         "username": "133879",
         "directSignup": {
-          "programItem": { "programItemId": "p7270" },
+          "programItemId": "p7270",
           "priority": 1,
-          "time": "2023-11-05T09:00:00Z"
+          "signedToStartTime": "2023-11-05T09:00:00Z"
         }
       },
       {
         "username": "263055",
         "directSignup": {
-          "programItem": { "programItemId": "p7270" },
+          "programItemId": "p7270",
           "priority": 1,
-          "time": "2023-11-05T09:00:00Z"
+          "signedToStartTime": "2023-11-05T09:00:00Z"
         }
       },
       {
         "username": "471057",
         "directSignup": {
-          "programItem": { "programItemId": "p7270" },
+          "programItemId": "p7270",
           "priority": 1,
-          "time": "2023-11-05T09:00:00Z"
+          "signedToStartTime": "2023-11-05T09:00:00Z"
         }
       },
       {
         "username": "454671",
         "directSignup": {
-          "programItem": { "programItemId": "p7270" },
+          "programItemId": "p7270",
           "priority": 1,
-          "time": "2023-11-05T09:00:00Z"
+          "signedToStartTime": "2023-11-05T09:00:00Z"
         }
       }
     ],
-    "startTime": "2023-11-05T09:00:00Z",
+    "assignmentTime": "2023-11-05T09:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assign Result - Players: 9/10 (90%), Games: 2/3 (67%)",
     "createdAt": "2023-11-05T07:00:15.081Z",
@@ -756,229 +756,229 @@
       {
         "username": "508675",
         "directSignup": {
-          "programItem": { "programItemId": "p7358" },
+          "programItemId": "p7358",
           "priority": 1,
-          "time": "2023-11-05T10:00:00Z"
+          "signedToStartTime": "2023-11-05T10:00:00Z"
         }
       },
       {
         "username": "720914",
         "directSignup": {
-          "programItem": { "programItemId": "p7367" },
+          "programItemId": "p7367",
           "priority": 1,
-          "time": "2023-11-05T10:00:00Z"
+          "signedToStartTime": "2023-11-05T10:00:00Z"
         }
       },
       {
         "username": "228264",
         "directSignup": {
-          "programItem": { "programItemId": "p7299" },
+          "programItemId": "p7299",
           "priority": 1,
-          "time": "2023-11-05T10:00:00Z"
+          "signedToStartTime": "2023-11-05T10:00:00Z"
         }
       },
       {
         "username": "535516",
         "directSignup": {
-          "programItem": { "programItemId": "p7365" },
+          "programItemId": "p7365",
           "priority": 1,
-          "time": "2023-11-05T10:00:00Z"
+          "signedToStartTime": "2023-11-05T10:00:00Z"
         }
       },
       {
         "username": "273506",
         "directSignup": {
-          "programItem": { "programItemId": "p7367" },
+          "programItemId": "p7367",
           "priority": 1,
-          "time": "2023-11-05T10:00:00Z"
+          "signedToStartTime": "2023-11-05T10:00:00Z"
         }
       },
       {
         "username": "715884",
         "directSignup": {
-          "programItem": { "programItemId": "p7367" },
+          "programItemId": "p7367",
           "priority": 2,
-          "time": "2023-11-05T10:00:00Z"
+          "signedToStartTime": "2023-11-05T10:00:00Z"
         }
       },
       {
         "username": "210186",
         "directSignup": {
-          "programItem": { "programItemId": "p7365" },
+          "programItemId": "p7365",
           "priority": 1,
-          "time": "2023-11-05T10:00:00Z"
+          "signedToStartTime": "2023-11-05T10:00:00Z"
         }
       },
       {
         "username": "862271",
         "directSignup": {
-          "programItem": { "programItemId": "p7285" },
+          "programItemId": "p7285",
           "priority": 1,
-          "time": "2023-11-05T10:00:00Z"
+          "signedToStartTime": "2023-11-05T10:00:00Z"
         }
       },
       {
         "username": "938497",
         "directSignup": {
-          "programItem": { "programItemId": "p7285" },
+          "programItemId": "p7285",
           "priority": 1,
-          "time": "2023-11-05T10:00:00Z"
+          "signedToStartTime": "2023-11-05T10:00:00Z"
         }
       },
       {
         "username": "384992",
         "directSignup": {
-          "programItem": { "programItemId": "p7367" },
+          "programItemId": "p7367",
           "priority": 1,
-          "time": "2023-11-05T10:00:00Z"
+          "signedToStartTime": "2023-11-05T10:00:00Z"
         }
       },
       {
         "username": "298569",
         "directSignup": {
-          "programItem": { "programItemId": "p7358" },
+          "programItemId": "p7358",
           "priority": 1,
-          "time": "2023-11-05T10:00:00Z"
+          "signedToStartTime": "2023-11-05T10:00:00Z"
         }
       },
       {
         "username": "760768",
         "directSignup": {
-          "programItem": { "programItemId": "p7285" },
+          "programItemId": "p7285",
           "priority": 1,
-          "time": "2023-11-05T10:00:00Z"
+          "signedToStartTime": "2023-11-05T10:00:00Z"
         }
       },
       {
         "username": "155200",
         "directSignup": {
-          "programItem": { "programItemId": "p7285" },
+          "programItemId": "p7285",
           "priority": 1,
-          "time": "2023-11-05T10:00:00Z"
+          "signedToStartTime": "2023-11-05T10:00:00Z"
         }
       },
       {
         "username": "287707",
         "directSignup": {
-          "programItem": { "programItemId": "p7285" },
+          "programItemId": "p7285",
           "priority": 1,
-          "time": "2023-11-05T10:00:00Z"
+          "signedToStartTime": "2023-11-05T10:00:00Z"
         }
       },
       {
         "username": "821561",
         "directSignup": {
-          "programItem": { "programItemId": "p7358" },
+          "programItemId": "p7358",
           "priority": 1,
-          "time": "2023-11-05T10:00:00Z"
+          "signedToStartTime": "2023-11-05T10:00:00Z"
         }
       },
       {
         "username": "315055",
         "directSignup": {
-          "programItem": { "programItemId": "p7365" },
+          "programItemId": "p7365",
           "priority": 1,
-          "time": "2023-11-05T10:00:00Z"
+          "signedToStartTime": "2023-11-05T10:00:00Z"
         }
       },
       {
         "username": "204351",
         "directSignup": {
-          "programItem": { "programItemId": "p7365" },
+          "programItemId": "p7365",
           "priority": 1,
-          "time": "2023-11-05T10:00:00Z"
+          "signedToStartTime": "2023-11-05T10:00:00Z"
         }
       },
       {
         "username": "294621",
         "directSignup": {
-          "programItem": { "programItemId": "p7362" },
+          "programItemId": "p7362",
           "priority": 1,
-          "time": "2023-11-05T10:00:00Z"
+          "signedToStartTime": "2023-11-05T10:00:00Z"
         }
       },
       {
         "username": "999140",
         "directSignup": {
-          "programItem": { "programItemId": "p7362" },
+          "programItemId": "p7362",
           "priority": 1,
-          "time": "2023-11-05T10:00:00Z"
+          "signedToStartTime": "2023-11-05T10:00:00Z"
         }
       },
       {
         "username": "268101",
         "directSignup": {
-          "programItem": { "programItemId": "p7285" },
+          "programItemId": "p7285",
           "priority": 1,
-          "time": "2023-11-05T10:00:00Z"
+          "signedToStartTime": "2023-11-05T10:00:00Z"
         }
       },
       {
         "username": "38604",
         "directSignup": {
-          "programItem": { "programItemId": "p7365" },
+          "programItemId": "p7365",
           "priority": 1,
-          "time": "2023-11-05T10:00:00Z"
+          "signedToStartTime": "2023-11-05T10:00:00Z"
         }
       },
       {
         "username": "348259",
         "directSignup": {
-          "programItem": { "programItemId": "p7362" },
+          "programItemId": "p7362",
           "priority": 1,
-          "time": "2023-11-05T10:00:00Z"
+          "signedToStartTime": "2023-11-05T10:00:00Z"
         }
       },
       {
         "username": "786772",
         "directSignup": {
-          "programItem": { "programItemId": "p7299" },
+          "programItemId": "p7299",
           "priority": 2,
-          "time": "2023-11-05T10:00:00Z"
+          "signedToStartTime": "2023-11-05T10:00:00Z"
         }
       },
       {
         "username": "952181",
         "directSignup": {
-          "programItem": { "programItemId": "p7299" },
+          "programItemId": "p7299",
           "priority": 2,
-          "time": "2023-11-05T10:00:00Z"
+          "signedToStartTime": "2023-11-05T10:00:00Z"
         }
       },
       {
         "username": "614924",
         "directSignup": {
-          "programItem": { "programItemId": "p7358" },
+          "programItemId": "p7358",
           "priority": 1,
-          "time": "2023-11-05T10:00:00Z"
+          "signedToStartTime": "2023-11-05T10:00:00Z"
         }
       },
       {
         "username": "79888",
         "directSignup": {
-          "programItem": { "programItemId": "p7358" },
+          "programItemId": "p7358",
           "priority": 1,
-          "time": "2023-11-05T10:00:00Z"
+          "signedToStartTime": "2023-11-05T10:00:00Z"
         }
       },
       {
         "username": "898935",
         "directSignup": {
-          "programItem": { "programItemId": "p7362" },
+          "programItemId": "p7362",
           "priority": 2,
-          "time": "2023-11-05T10:00:00Z"
+          "signedToStartTime": "2023-11-05T10:00:00Z"
         }
       },
       {
         "username": "510442",
         "directSignup": {
-          "programItem": { "programItemId": "p7362" },
+          "programItemId": "p7362",
           "priority": 2,
-          "time": "2023-11-05T10:00:00Z"
+          "signedToStartTime": "2023-11-05T10:00:00Z"
         }
       }
     ],
-    "startTime": "2023-11-05T10:00:00Z",
+    "assignmentTime": "2023-11-05T10:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assign Result - Players: 28/38 (74%), Games: 6/7 (86%)",
     "createdAt": "2023-11-05T08:00:15.491Z",
@@ -989,37 +989,37 @@
       {
         "username": "192858",
         "directSignup": {
-          "programItem": { "programItemId": "p7369" },
+          "programItemId": "p7369",
           "priority": 1,
-          "time": "2023-11-05T11:00:00Z"
+          "signedToStartTime": "2023-11-05T11:00:00Z"
         }
       },
       {
         "username": "574662",
         "directSignup": {
-          "programItem": { "programItemId": "p7369" },
+          "programItemId": "p7369",
           "priority": 1,
-          "time": "2023-11-05T11:00:00Z"
+          "signedToStartTime": "2023-11-05T11:00:00Z"
         }
       },
       {
         "username": "681786",
         "directSignup": {
-          "programItem": { "programItemId": "p7369" },
+          "programItemId": "p7369",
           "priority": 2,
-          "time": "2023-11-05T11:00:00Z"
+          "signedToStartTime": "2023-11-05T11:00:00Z"
         }
       },
       {
         "username": "370318",
         "directSignup": {
-          "programItem": { "programItemId": "p7369" },
+          "programItemId": "p7369",
           "priority": 1,
-          "time": "2023-11-05T11:00:00Z"
+          "signedToStartTime": "2023-11-05T11:00:00Z"
         }
       }
     ],
-    "startTime": "2023-11-05T11:00:00Z",
+    "assignmentTime": "2023-11-05T11:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assign Result - Players: 4/13 (31%), Games: 1/1 (100%)",
     "createdAt": "2023-11-05T09:00:15.347Z",
@@ -1030,77 +1030,77 @@
       {
         "username": "575241",
         "directSignup": {
-          "programItem": { "programItemId": "p7424" },
+          "programItemId": "p7424",
           "priority": 1,
-          "time": "2023-11-05T12:00:00Z"
+          "signedToStartTime": "2023-11-05T12:00:00Z"
         }
       },
       {
         "username": "550858",
         "directSignup": {
-          "programItem": { "programItemId": "p7424" },
+          "programItemId": "p7424",
           "priority": 1,
-          "time": "2023-11-05T12:00:00Z"
+          "signedToStartTime": "2023-11-05T12:00:00Z"
         }
       },
       {
         "username": "681786",
         "directSignup": {
-          "programItem": { "programItemId": "p7424" },
+          "programItemId": "p7424",
           "priority": 1,
-          "time": "2023-11-05T12:00:00Z"
+          "signedToStartTime": "2023-11-05T12:00:00Z"
         }
       },
       {
         "username": "805342",
         "directSignup": {
-          "programItem": { "programItemId": "p7344" },
+          "programItemId": "p7344",
           "priority": 1,
-          "time": "2023-11-05T12:00:00Z"
+          "signedToStartTime": "2023-11-05T12:00:00Z"
         }
       },
       {
         "username": "894037",
         "directSignup": {
-          "programItem": { "programItemId": "p7344" },
+          "programItemId": "p7344",
           "priority": 1,
-          "time": "2023-11-05T12:00:00Z"
+          "signedToStartTime": "2023-11-05T12:00:00Z"
         }
       },
       {
         "username": "743940",
         "directSignup": {
-          "programItem": { "programItemId": "p7424" },
+          "programItemId": "p7424",
           "priority": 1,
-          "time": "2023-11-05T12:00:00Z"
+          "signedToStartTime": "2023-11-05T12:00:00Z"
         }
       },
       {
         "username": "714772",
         "directSignup": {
-          "programItem": { "programItemId": "p7344" },
+          "programItemId": "p7344",
           "priority": 1,
-          "time": "2023-11-05T12:00:00Z"
+          "signedToStartTime": "2023-11-05T12:00:00Z"
         }
       },
       {
         "username": "613493",
         "directSignup": {
-          "programItem": { "programItemId": "p7424" },
+          "programItemId": "p7424",
           "priority": 1,
-          "time": "2023-11-05T12:00:00Z"
+          "signedToStartTime": "2023-11-05T12:00:00Z"
         }
       },
       {
         "username": "967328",
         "directSignup": {
-          "programItem": { "programItemId": "p7424" },
+          "programItemId": "p7424",
           "priority": 1,
-          "time": "2023-11-05T12:00:00Z"
+          "signedToStartTime": "2023-11-05T12:00:00Z"
         }
       }
     ],
-    "startTime": "2023-11-05T12:00:00Z",
+    "assignmentTime": "2023-11-05T12:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assign Result - Players: 9/12 (75%), Games: 2/2 (100%)",
     "createdAt": "2023-11-05T10:00:15.596Z",
