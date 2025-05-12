@@ -31,7 +31,7 @@ export interface AssignmentResult {
 }
 
 export interface ResultsCollectionEntry {
-  startTime: string;
+  assignmentTime: string;
   results: readonly UserAssignmentResult[];
   message: string;
   algorithm: AssignmentAlgorithm;

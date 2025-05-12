@@ -91,7 +91,7 @@ const getRandomLotterySignup = (
         lotterySignups.push({
           programItemId: randomProgramItem.programItemId,
           priority: i + 1,
-          time: randomProgramItem.startTime,
+          signedToStartTime: randomProgramItem.startTime,
           message: "",
         });
       }

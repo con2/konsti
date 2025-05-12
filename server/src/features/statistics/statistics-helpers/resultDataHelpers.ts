@@ -8,7 +8,7 @@ export const getSignupsByTime = (
 ): Record<string, number> => {
   const signupsByTime = results.reduce<Record<string, number>>(
     (acc, result) => {
-      acc[result.startTime] = result.results.length;
+      acc[result.assignmentTime] = result.results.length;
       return acc;
     },
     {},

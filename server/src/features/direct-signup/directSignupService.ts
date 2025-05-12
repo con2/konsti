@@ -109,7 +109,7 @@ export const storeDirectSignup = async (
 
   const newDirectSignup: SignupRepositoryAddSignup = {
     ...signupRequest,
-    startTime: programItem.startTime,
+    signedToStartTime: programItem.startTime,
   };
 
   const signupResult = await saveDirectSignup(newDirectSignup);
@@ -135,7 +135,7 @@ export const storeDirectSignup = async (
       directSignup: {
         programItemId: signup.programItemId,
         priority: newSignup.priority,
-        time: newSignup.time,
+        signedToStartTime: newSignup.signedToStartTime,
         message: newSignup.message,
       },
     };

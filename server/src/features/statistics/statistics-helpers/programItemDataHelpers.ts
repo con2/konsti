@@ -76,7 +76,8 @@ const getSignupsByStartTime = (
 
     const lotterySignups = user.lotterySignups.reduce<Record<string, number>>(
       (acc, lotterySignup) => {
-        acc[lotterySignup.time] = acc[lotterySignup.time] + 1 || 1;
+        acc[lotterySignup.signedToStartTime] =
+          acc[lotterySignup.signedToStartTime] + 1 || 1;
         return acc;
       },
       {},

@@ -38,7 +38,7 @@ export const LotterySignupsByStartTimes = ({
             </MyProgramTime>
             <MyProgramList>
               {lotterySignups.map((signup) => {
-                if (signup.time === startTime) {
+                if (signup.signedToStartTime === startTime) {
                   return (
                     <MyProgramListItem key={signup.programItemId}>
                       <Grid>

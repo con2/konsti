@@ -84,7 +84,7 @@ export const createGroup = async (
     (signup) => signup.userSignups,
   );
   const userHasDirectSignups = userDirectSignups.some((userSignup) =>
-    timeNow.isBefore(dayjs(userSignup.time)),
+    timeNow.isBefore(dayjs(userSignup.signedToStartTime)),
   );
 
   // User cannot have RPG signups in future when creating a group
@@ -200,7 +200,7 @@ export const joinGroup = async (
     (signup) => signup.userSignups,
   );
   const userHasDirectSignups = userDirectSignups.some((userSignup) =>
-    timeNow.isBefore(dayjs(userSignup.time)),
+    timeNow.isBefore(dayjs(userSignup.signedToStartTime)),
   );
 
   // User cannot have RPG signups in future when joining in group

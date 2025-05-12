@@ -153,10 +153,10 @@ export const submitGetSentryTest = (): AppThunk => {
 };
 
 export const submitAssignment = (
-  signupTime: string,
+  assignmentTime: string,
 ): AppThunk<Promise<string | undefined>> => {
   return async (dispatch): Promise<string | undefined> => {
-    const assignResponse = await postAssignment(signupTime);
+    const assignResponse = await postAssignment(assignmentTime);
 
     if (assignResponse.status === "error") {
       return assignResponse.message;

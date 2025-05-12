@@ -9,11 +9,11 @@ const ResultsSchema = new mongoose.Schema(
         directSignup: {
           programItemId: String,
           priority: Number,
-          time: Date,
+          signedToStartTime: Date,
         },
       },
     ],
-    startTime: Date,
+    assignmentTime: Date,
     algorithm: String,
     message: String,
   },

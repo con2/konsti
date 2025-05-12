@@ -25,7 +25,7 @@ export const removeResults = async (): Promise<Result<void, MongoDbError>> => {
 
 export const saveResult = async (
   signupResultData: readonly UserAssignmentResult[],
-  startTime: string,
+  assignmentTime: string,
   algorithm: AssignmentAlgorithm,
   message: string,
 ): Promise<Result<void, MongoDbError>> => {
@@ -49,7 +49,7 @@ export const saveResult = async (
           directSignup: {
             programItemId: programItemDocInDb.programItemId,
             priority: result.directSignup.priority,
-            time: result.directSignup.time,
+            signedToStartTime: result.directSignup.signedToStartTime,
             message: "",
           },
         });
@@ -61,17 +61,17 @@ export const saveResult = async (
 
   try {
     await ResultsModel.replaceOne(
-      { startTime },
-      { startTime, results, algorithm, message },
+      { assignmentTime },
+      { assignmentTime, results, algorithm, message },
       { upsert: true },
     );
     logger.debug(
-      `MongoDB: Signup results for start time ${startTime} stored to separate collection`,
+      `MongoDB: Signup results for assignment time ${assignmentTime} stored to separate collection`,
     );
     return makeSuccessResult();
   } catch (error) {
     logger.error(
-      `MongoDB: Error storing signup results for start time ${startTime} to separate collection: %s`,
+      `MongoDB: Error storing signup results for assignment time ${assignmentTime} to separate collection: %s`,
       error,
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);

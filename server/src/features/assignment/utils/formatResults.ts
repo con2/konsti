@@ -52,7 +52,7 @@ export const formatResults = (
     return {
       programItemId: foundSignup.programItemId,
       priority: foundSignup.priority,
-      time: foundSignup.time,
+      signedToStartTime: foundSignup.signedToStartTime,
       message: foundSignup.message,
     };
   };

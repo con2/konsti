@@ -57,7 +57,7 @@ test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items", async () => 
       directSignup: {
         programItemId: testProgramItem.programItemId,
         priority: 1,
-        time: testProgramItem.startTime,
+        signedToStartTime: testProgramItem.startTime,
         message: "",
       },
     },
@@ -67,7 +67,7 @@ test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items", async () => 
   const programItems = unsafelyUnwrap(await findProgramItems());
 
   await saveUserSignupResults({
-    startTime: testProgramItem.startTime,
+    assignmentTime: testProgramItem.startTime,
     results,
     users,
     programItems,
@@ -115,7 +115,7 @@ test("should add NO_ASSIGNMENT event log item to group members", async () => {
   const programItems = unsafelyUnwrap(await findProgramItems());
 
   await saveUserSignupResults({
-    startTime: testProgramItem.startTime,
+    assignmentTime: testProgramItem.startTime,
     results,
     users,
     programItems,
@@ -161,7 +161,7 @@ test("should only add one event log item with multiple lottery signups", async (
       {
         ...mockLotterySignups[1],
         priority: 2,
-        time: testProgramItem.startTime,
+        signedToStartTime: testProgramItem.startTime,
       },
     ],
   });
@@ -173,7 +173,7 @@ test("should only add one event log item with multiple lottery signups", async (
       {
         ...mockLotterySignups[1],
         priority: 3,
-        time: testProgramItem.startTime,
+        signedToStartTime: testProgramItem.startTime,
       },
     ],
   });
@@ -184,7 +184,7 @@ test("should only add one event log item with multiple lottery signups", async (
       directSignup: {
         programItemId: testProgramItem.programItemId,
         priority: 1,
-        time: testProgramItem.startTime,
+        signedToStartTime: testProgramItem.startTime,
         message: "",
       },
     },
@@ -194,7 +194,7 @@ test("should only add one event log item with multiple lottery signups", async (
   const programItems = unsafelyUnwrap(await findProgramItems());
 
   await saveUserSignupResults({
-    startTime: testProgramItem.startTime,
+    assignmentTime: testProgramItem.startTime,
     results,
     users,
     programItems,
@@ -241,7 +241,7 @@ test("should not add event log items after assigment if signup is dropped due to
       directSignup: {
         programItemId: testProgramItem.programItemId,
         priority: 1,
-        time: testProgramItem.startTime,
+        signedToStartTime: testProgramItem.startTime,
         message: "",
       },
     },
@@ -250,7 +250,7 @@ test("should not add event log items after assigment if signup is dropped due to
       directSignup: {
         programItemId: testProgramItem.programItemId,
         priority: 1,
-        time: testProgramItem.startTime,
+        signedToStartTime: testProgramItem.startTime,
         message: "",
       },
     },
@@ -259,7 +259,7 @@ test("should not add event log items after assigment if signup is dropped due to
       directSignup: {
         programItemId: testProgramItem.programItemId,
         priority: 1,
-        time: testProgramItem.startTime,
+        signedToStartTime: testProgramItem.startTime,
         message: "",
       },
     },
@@ -268,7 +268,7 @@ test("should not add event log items after assigment if signup is dropped due to
       directSignup: {
         programItemId: testProgramItem.programItemId,
         priority: 1,
-        time: testProgramItem.startTime,
+        signedToStartTime: testProgramItem.startTime,
         message: "",
       },
     },
@@ -278,7 +278,7 @@ test("should not add event log items after assigment if signup is dropped due to
   const programItems = unsafelyUnwrap(await findProgramItems());
 
   await saveUserSignupResults({
-    startTime: testProgramItem.startTime,
+    assignmentTime: testProgramItem.startTime,
     results,
     users,
     programItems,

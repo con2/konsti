@@ -66,14 +66,14 @@ describe("Assignment with valid data", () => {
   test("should return valid results after multiple executions on different times", async () => {
     const { eventStartTime } = config.event();
     const assignmentAlgorithm = AssignmentAlgorithm.PADG;
-    const startTime = dayjs(eventStartTime).add(2, "hours").toISOString();
+    const assignmentTime = dayjs(eventStartTime).add(2, "hours").toISOString();
 
     // FIRST RUN
 
     const assignResults = unsafelyUnwrap(
       await runAssignment({
         assignmentAlgorithm,
-        startTime,
+        assignmentTime,
       }),
     );
 
@@ -101,7 +101,7 @@ describe("Assignment with valid data", () => {
 
     const assignResults2Result = await runAssignment({
       assignmentAlgorithm,
-      startTime: startTime2,
+      assignmentTime: startTime2,
     });
     expect(assignResults2Result.error).toBeUndefined();
     const assignResults2 = unsafelyUnwrap(assignResults2Result);
@@ -156,7 +156,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       lotterySignups: [
         {
           ...mockLotterySignups[1],
-          time: assignmentTime,
+          signedToStartTime: assignmentTime,
         },
       ],
     });
@@ -176,7 +176,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     const assignResults = unsafelyUnwrap(
       await runAssignment({
         assignmentAlgorithm,
-        startTime: assignmentTime,
+        assignmentTime,
       }),
     );
     expect(assignResults.status).toEqual("success");
@@ -235,7 +235,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     await saveDirectSignup({
       ...mockPostDirectSignupRequest2,
       username: mockUser2.username,
-      startTime: testProgramItem.startTime,
+      signedToStartTime: testProgramItem.startTime,
     });
 
     const signupsBeforeUpdate = unsafelyUnwrap(await findDirectSignups());
@@ -248,7 +248,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     const assignResults = unsafelyUnwrap(
       await runAssignment({
         assignmentAlgorithm,
-        startTime: testProgramItem.startTime,
+        assignmentTime: testProgramItem.startTime,
       }),
     );
 
@@ -306,7 +306,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
           // directSignupAlwaysOpen signed program item should be ignored
           programItemId: directSignupAlwaysOpenId,
           priority: 1,
-          time: testProgramItem.startTime,
+          signedToStartTime: testProgramItem.startTime,
           message: "",
         },
       ],
@@ -319,7 +319,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
           // directSignupAlwaysOpen signed program item should be ignored
           programItemId: directSignupAlwaysOpenId,
           priority: 1,
-          time: testProgramItem.startTime,
+          signedToStartTime: testProgramItem.startTime,
           message: "",
         },
       ],
@@ -330,7 +330,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     // This should be replaced by assignment
     await saveDirectSignup({
       ...mockPostDirectSignupRequest2,
-      startTime: testProgramItem.startTime,
+      signedToStartTime: testProgramItem.startTime,
       directSignupProgramItemId: directSignupAlwaysOpenId,
     });
 
@@ -341,7 +341,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     const assignResults = unsafelyUnwrap(
       await runAssignment({
         assignmentAlgorithm,
-        startTime: testProgramItem.startTime,
+        assignmentTime: testProgramItem.startTime,
       }),
     );
 
@@ -396,7 +396,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
           // directSignupAlwaysOpen signed program item should be ignored
           programItemId: directSignupAlwaysOpenId,
           priority: 1,
-          time: testProgramItem.startTime,
+          signedToStartTime: testProgramItem.startTime,
           message: "",
         },
       ],
@@ -406,7 +406,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     await saveDirectSignup({
       ...mockPostDirectSignupRequest2,
       username: mockUser2.username,
-      startTime: testProgramItem.startTime,
+      signedToStartTime: testProgramItem.startTime,
       directSignupProgramItemId: directSignupAlwaysOpenId,
     });
 
@@ -420,7 +420,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     const assignResults = unsafelyUnwrap(
       await runAssignment({
         assignmentAlgorithm,
-        startTime: testProgramItem.startTime,
+        assignmentTime: testProgramItem.startTime,
       }),
     );
 
@@ -496,7 +496,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     const assignResults = unsafelyUnwrap(
       await runAssignment({
         assignmentAlgorithm,
-        startTime: assignmentTime,
+        assignmentTime,
       }),
     );
     expect(assignResults.status).toEqual("success");
@@ -568,7 +568,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     const assignResults = unsafelyUnwrap(
       await runAssignment({
         assignmentAlgorithm,
-        startTime: assignmentTime,
+        assignmentTime,
       }),
     );
     expect(assignResults.status).toEqual("success");
@@ -647,7 +647,7 @@ describe("Assignment with first time bonus", () => {
     await saveDirectSignup({
       ...mockPostDirectSignupRequest2,
       username: mockUser.username,
-      startTime: dayjs(testProgramItem.startTime)
+      signedToStartTime: dayjs(testProgramItem.startTime)
         .subtract(1, "hours")
         .toISOString(),
     });
@@ -656,7 +656,7 @@ describe("Assignment with first time bonus", () => {
     await saveDirectSignup({
       username: mockUser2.username,
       directSignupProgramItemId: tournamentProgramItemId,
-      startTime: dayjs(testProgramItem.startTime)
+      signedToStartTime: dayjs(testProgramItem.startTime)
         .subtract(1, "hours")
         .toISOString(),
       message: "",
@@ -667,7 +667,7 @@ describe("Assignment with first time bonus", () => {
     await saveDirectSignup({
       username: mockUser2.username,
       directSignupProgramItemId: directSignupAlwaysOpenId,
-      startTime: dayjs(testProgramItem.startTime)
+      signedToStartTime: dayjs(testProgramItem.startTime)
         .subtract(2, "hours")
         .toISOString(),
       message: "",
@@ -683,7 +683,7 @@ describe("Assignment with first time bonus", () => {
     const assignResults = unsafelyUnwrap(
       await runAssignment({
         assignmentAlgorithm,
-        startTime: testProgramItem.startTime,
+        assignmentTime: testProgramItem.startTime,
       }),
     );
     expect(assignResults.status).toEqual("success");
@@ -696,7 +696,7 @@ describe("Assignment with first time bonus", () => {
     );
     expect(assignmentSignup?.userSignups[0]).toMatchObject({
       username: mockUser2.username,
-      time: testProgramItem.startTime,
+      signedToStartTime: testProgramItem.startTime,
       message: "",
       priority: 3,
     });
@@ -706,7 +706,9 @@ describe("Assignment with first time bonus", () => {
     );
     expect(previousRpgSignup?.userSignups[0]).toMatchObject({
       username: mockUser.username,
-      time: dayjs(testProgramItem.startTime).subtract(1, "hours").toISOString(),
+      signedToStartTime: dayjs(testProgramItem.startTime)
+        .subtract(1, "hours")
+        .toISOString(),
       message: "",
       priority: DIRECT_SIGNUP_PRIORITY,
     });
@@ -716,7 +718,9 @@ describe("Assignment with first time bonus", () => {
     );
     expect(previousTournamentSignup?.userSignups[0]).toMatchObject({
       username: mockUser2.username,
-      time: dayjs(testProgramItem.startTime).subtract(1, "hours").toISOString(),
+      signedToStartTime: dayjs(testProgramItem.startTime)
+        .subtract(1, "hours")
+        .toISOString(),
       message: "",
       priority: DIRECT_SIGNUP_PRIORITY,
     });
@@ -726,7 +730,9 @@ describe("Assignment with first time bonus", () => {
     );
     expect(previousDirectSignupAlwaysOpenSignup?.userSignups[0]).toMatchObject({
       username: mockUser2.username,
-      time: dayjs(testProgramItem.startTime).subtract(2, "hours").toISOString(),
+      signedToStartTime: dayjs(testProgramItem.startTime)
+        .subtract(2, "hours")
+        .toISOString(),
       message: "",
       priority: DIRECT_SIGNUP_PRIORITY,
     });
@@ -768,7 +774,7 @@ describe("Assignment with first time bonus", () => {
     const assignResults = unsafelyUnwrap(
       await runAssignment({
         assignmentAlgorithm,
-        startTime: testProgramItem2.startTime,
+        assignmentTime: testProgramItem2.startTime,
       }),
     );
     expect(assignResults.status).toEqual("success");
@@ -784,7 +790,7 @@ describe("Assignment with first time bonus", () => {
     );
     expect(assignmentSignup?.userSignups[0]).toMatchObject({
       username: mockUser2.username,
-      time: testProgramItem2.startTime,
+      signedToStartTime: testProgramItem2.startTime,
       message: "",
       priority: 3,
     });

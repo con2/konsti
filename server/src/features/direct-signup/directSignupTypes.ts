@@ -3,7 +3,7 @@ import mongoose, { ObjectId } from "mongoose";
 export interface UserDirectSignup {
   username: string;
   priority: number;
-  time: string;
+  signedToStartTime: string;
   message: string;
 }
 
@@ -22,7 +22,7 @@ export interface SignupRepositoryAddSignup {
   directSignupProgramItemId: string;
   message: string;
   priority: number;
-  startTime: string;
+  signedToStartTime: string;
 }
 
 export interface SignupRepositoryAddSignupResponse {

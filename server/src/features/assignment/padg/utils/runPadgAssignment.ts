@@ -43,10 +43,10 @@ const updateL = (input: Input): string => input.list;
 export const runPadgAssignment = (
   lotterySignupProgramItems: readonly ProgramItem[],
   attendeeGroups: readonly User[][],
-  startTime: string,
+  assignmentTime: string,
   lotteryValidDirectSignups: readonly DirectSignupsForProgramItem[],
 ): Result<AssignmentAlgorithmResult, AssignmentError> => {
-  const groupsResult = getGroups(attendeeGroups, startTime);
+  const groupsResult = getGroups(attendeeGroups, assignmentTime);
   if (isErrorResult(groupsResult)) {
     return groupsResult;
   }
@@ -57,7 +57,7 @@ export const runPadgAssignment = (
   );
   const list = getList({
     attendeeGroups,
-    startTime,
+    assignmentTime,
     lotteryValidDirectSignups,
     lotterySignupProgramItems,
   });
@@ -119,7 +119,7 @@ export const runPadgAssignment = (
     logger.error(
       "%s",
       new Error(
-        `Padg assignment for start time ${startTime} failed with input: groups: ${JSON.stringify(
+        `Padg assignment for start time ${assignmentTime} failed with input: groups: ${JSON.stringify(
           groups,
         )}, events: ${JSON.stringify(events)}, list: ${JSON.stringify(
           list,

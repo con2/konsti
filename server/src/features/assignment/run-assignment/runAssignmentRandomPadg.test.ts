@@ -46,14 +46,14 @@ test("Assignment with valid data should return success with random+padg algorith
   );
 
   const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
-  const startTime = dayjs(eventStartTime).add(2, "hours").toISOString();
+  const assignmentTime = dayjs(eventStartTime).add(2, "hours").toISOString();
 
   // FIRST RUN
 
   const assignResults = unsafelyUnwrap(
     await runAssignment({
       assignmentAlgorithm,
-      startTime,
+      assignmentTime,
     }),
   );
 
@@ -80,7 +80,7 @@ test("Assignment with valid data should return success with random+padg algorith
   const assignResults2 = unsafelyUnwrap(
     await runAssignment({
       assignmentAlgorithm,
-      startTime,
+      assignmentTime,
     }),
   );
 
@@ -119,12 +119,12 @@ test("Assignment with no program items should return error with random+padg algo
   );
 
   const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
-  const startTime = dayjs(eventStartTime).add(2, "hours").toISOString();
+  const assignmentTime = dayjs(eventStartTime).add(2, "hours").toISOString();
 
   const assignResults = unsafelyUnwrap(
     await runAssignment({
       assignmentAlgorithm,
-      startTime,
+      assignmentTime,
     }),
   );
 
@@ -149,12 +149,12 @@ test("Assignment with no attendees should return error with random+padg algorith
   );
 
   const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
-  const startTime = dayjs(eventStartTime).add(2, "hours").toISOString();
+  const assignmentTime = dayjs(eventStartTime).add(2, "hours").toISOString();
 
   const assignResults = unsafelyUnwrap(
     await runAssignment({
       assignmentAlgorithm,
-      startTime,
+      assignmentTime,
     }),
   );
 
@@ -169,12 +169,12 @@ test("If random assignment fails, should return PADG result", async () => {
   );
 
   const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
-  const startTime = dayjs(eventStartTime).toISOString();
+  const assignmentTime = dayjs(eventStartTime).toISOString();
 
   const assignResults = unsafelyUnwrap(
     await runAssignment({
       assignmentAlgorithm,
-      startTime,
+      assignmentTime,
     }),
   );
 
@@ -190,12 +190,12 @@ test("If PADG assignment fails, should return random result", async () => {
   );
 
   const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
-  const startTime = dayjs(eventStartTime).toISOString();
+  const assignmentTime = dayjs(eventStartTime).toISOString();
 
   const assignResults = unsafelyUnwrap(
     await runAssignment({
       assignmentAlgorithm,
-      startTime,
+      assignmentTime,
     }),
   );
 
@@ -214,11 +214,11 @@ test("If both assignments fail, should return error result", async () => {
   );
 
   const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
-  const startTime = dayjs(eventStartTime).toISOString();
+  const assignmentTime = dayjs(eventStartTime).toISOString();
 
   const assignResultsResult = await runAssignment({
     assignmentAlgorithm,
-    startTime,
+    assignmentTime,
   });
 
   expect(assignResultsResult.error).toEqual(AssignmentError.UNKNOWN_ERROR);

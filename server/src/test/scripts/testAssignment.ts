@@ -8,12 +8,12 @@ import { config } from "shared/config";
 const testAssignment = async (
   assignmentAlgorithm: AssignmentAlgorithm,
 ): Promise<void> => {
-  const startTime = dayjs(config.event().eventStartTime)
+  const assignmentTime = dayjs(config.event().eventStartTime)
     .add(3, "hours")
     .toISOString();
   await runAssignment({
     assignmentAlgorithm,
-    startTime,
+    assignmentTime,
   });
 };
 

@@ -9,14 +9,14 @@ import { ProgramItem } from "shared/types/models/programItem";
 
 interface GetListParams {
   attendeeGroups: readonly User[][];
-  startTime: string;
+  assignmentTime: string;
   lotteryValidDirectSignups: readonly DirectSignupsForProgramItem[];
   lotterySignupProgramItems: readonly ProgramItem[];
 }
 
 export const getList = ({
   attendeeGroups,
-  startTime,
+  assignmentTime,
   lotteryValidDirectSignups,
   lotterySignupProgramItems,
 }: GetListParams): ListItem[] => {
@@ -33,8 +33,8 @@ export const getList = ({
     const list = firstMember.lotterySignups
       .filter(
         (lotterySignup) =>
-          dayjs(lotterySignup.time).toISOString() ===
-          dayjs(startTime).toISOString(),
+          dayjs(lotterySignup.signedToStartTime).toISOString() ===
+          dayjs(assignmentTime).toISOString(),
       )
       .map((lotterySignup) => {
         return {

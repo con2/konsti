@@ -17,7 +17,7 @@ export const getEvents = (
 
     const changedSignups = programItemSignup?.userSignups.filter(
       (userSignup) => {
-        const startTimeChanged = !dayjs(userSignup.time).isSame(
+        const startTimeChanged = !dayjs(userSignup.signedToStartTime).isSame(
           dayjs(lotterySignupProgramItem.startTime),
         );
         if (startTimeChanged) {
