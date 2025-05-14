@@ -44,7 +44,7 @@
     "eventassigner-js": "0.1.6",
     "eventassigner-random": "0.3.2",
     "express": "5.1.0",
-    "express-static-gzip": "2.2.0",
+    "express-static-gzip": "3.0.0",
     "fastest-levenshtein": "1.0.16",
     "generate-serial-number": "0.0.3",
     "helmet": "8.1.0",
