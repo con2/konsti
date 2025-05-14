@@ -25,7 +25,7 @@ export const getList = ({
     if (!firstMember) {
       logger.error(
         "%s",
-        new Error("Padg or Random assign: error getting first member"),
+        new Error("Assignment getList: error getting first member"),
       );
       return [];
     }

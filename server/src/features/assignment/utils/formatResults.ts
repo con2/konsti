@@ -1,20 +1,38 @@
 import { first } from "remeda";
 import { PadgRandomAssignResult } from "server/types/assignmentTypes";
 import { logger } from "server/utils/logger";
-import { AssignmentError } from "shared/types/api/errors";
 import { UserAssignmentResult } from "shared/types/models/result";
 import { DirectSignup, User } from "shared/types/models/user";
-import {
-  Result,
-  makeErrorResult,
-  makeSuccessResult,
-} from "shared/utils/result";
+
+const getDirectSignup = (
+  assignResults: PadgRandomAssignResult[],
+  attendee: User,
+): DirectSignup | null => {
+  const foundSignup = attendee.lotterySignups.find((lotterySignup) => {
+    return assignResults.find(
+      (assignResult) =>
+        (assignResult.id === attendee.groupCode ||
+          assignResult.id === attendee.serial) &&
+        assignResult.assignment === lotterySignup.programItemId,
+    );
+  });
+
+  if (!foundSignup) {
+    return null;
+  }
+
+  return {
+    programItemId: foundSignup.programItemId,
+    priority: foundSignup.priority,
+    signedToStartTime: foundSignup.signedToStartTime,
+    message: foundSignup.message,
+  };
+};
 
 export const formatResults = (
   assignResults: PadgRandomAssignResult[],
   attendeeGroups: readonly User[][],
-): Result<readonly UserAssignmentResult[], AssignmentError> => {
-  // TODO: Sync function should not return Result
+): readonly UserAssignmentResult[] => {
   const selectedAttendees = attendeeGroups
     .filter((attendeeGroup) => {
       const firstMember = first(attendeeGroup);
@@ -22,9 +40,9 @@ export const formatResults = (
       if (!firstMember) {
         logger.error(
           "%s",
-          new Error("Padg assign: error getting first member"),
+          new Error("Assignment formatResults: error getting first member"),
         );
-        return makeErrorResult(AssignmentError.UNKNOWN_ERROR);
+        return false;
       }
 
       return assignResults.find(
@@ -36,31 +54,9 @@ export const formatResults = (
     })
     .flat();
 
-  const getDirectSignup = (attendee: User): DirectSignup | undefined => {
-    const foundSignup = attendee.lotterySignups.find((lotterySignup) => {
-      return assignResults.find(
-        (assignResult) =>
-          (assignResult.id === attendee.groupCode ||
-            assignResult.id === attendee.serial) &&
-          assignResult.assignment === lotterySignup.programItemId,
-      );
-    });
-
-    if (!foundSignup) {
-      return undefined;
-    }
-
-    return {
-      programItemId: foundSignup.programItemId,
-      priority: foundSignup.priority,
-      signedToStartTime: foundSignup.signedToStartTime,
-      message: foundSignup.message,
-    };
-  };
-
   const results = selectedAttendees.reduce<UserAssignmentResult[]>(
     (acc, attendee) => {
-      const directSignup = getDirectSignup(attendee);
+      const directSignup = getDirectSignup(assignResults, attendee);
       if (directSignup) {
         acc.push({
           username: attendee.username,
@@ -72,5 +68,5 @@ export const formatResults = (
     [],
   );
 
-  return makeSuccessResult(results);
+  return results;
 };

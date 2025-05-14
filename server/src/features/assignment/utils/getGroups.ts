@@ -2,26 +2,20 @@ import dayjs from "dayjs";
 import { first, sortBy } from "remeda";
 import { Group } from "server/types/assignmentTypes";
 import { logger } from "server/utils/logger";
-import { AssignmentError } from "shared/types/api/errors";
 import { User } from "shared/types/models/user";
-import {
-  Result,
-  isErrorResult,
-  isSuccessResult,
-  makeErrorResult,
-  makeSuccessResult,
-  unwrapResult,
-} from "shared/utils/result";
 
 export const getGroups = (
   attendeeGroups: readonly User[][],
   assignmentTime: string,
-): Result<Group[], AssignmentError> => {
-  const results = attendeeGroups.map((attendeeGroup) => {
+): Group[] => {
+  const results = attendeeGroups.flatMap((attendeeGroup) => {
     const firstMember = first(attendeeGroup);
     if (!firstMember) {
-      logger.error("%s", new Error("Padg assign: error getting first member"));
-      return makeErrorResult(AssignmentError.UNKNOWN_ERROR);
+      logger.error(
+        "%s",
+        new Error("Assignment getGroups: error getting first member"),
+      );
+      return [];
     }
 
     const lotterySignupsForStartTime = firstMember.lotterySignups.filter(
@@ -35,7 +29,7 @@ export const getGroups = (
       (lotterySignup) => lotterySignup.priority,
     );
 
-    return makeSuccessResult({
+    return {
       id:
         firstMember.groupCode === "0"
           ? firstMember.serial
@@ -44,20 +38,8 @@ export const getGroups = (
       pref: sortedLotterySignups.map(
         (lotterySignup) => lotterySignup.programItemId,
       ),
-    });
+    };
   });
 
-  const someResultFailed = results.some((result) => isErrorResult(result));
-  if (someResultFailed) {
-    return makeErrorResult(AssignmentError.UNKNOWN_ERROR);
-  }
-
-  const successResults = results.flatMap((result) => {
-    if (isSuccessResult(result)) {
-      return unwrapResult(result);
-    }
-    return [];
-  });
-
-  return makeSuccessResult(successResults);
+  return results;
 };

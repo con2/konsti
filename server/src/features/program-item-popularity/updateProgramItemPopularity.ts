@@ -12,7 +12,7 @@ import {
   makeSuccessResult,
   unwrapResult,
 } from "shared/utils/result";
-import { AssignmentError, MongoDbError } from "shared/types/api/errors";
+import { MongoDbError } from "shared/types/api/errors";
 import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
 import { config } from "shared/config";
 import { runAssignmentAlgorithm } from "server/features/assignment/utils/runAssignmentAlgorithm";
@@ -22,7 +22,7 @@ import { prepareAssignmentParams } from "server/features/assignment/utils/prepar
 import { logger } from "server/utils/logger";
 
 export const updateProgramItemPopularity = async (): Promise<
-  Result<void, MongoDbError | AssignmentError>
+  Result<void, MongoDbError>
 > => {
   logger.info(`Calculate program item popularity`);
 
@@ -66,24 +66,31 @@ export const updateProgramItemPopularity = async (): Promise<
   );
 
   // TODO: Only update popularity for startTimes where lottery signup is open
-  const assignmentResultsResult = futureStartTimes.map((startTime) => {
-    return runAssignmentAlgorithm(
+  const assignmentResults = futureStartTimes.map((startTime) => {
+    const result = runAssignmentAlgorithm(
       config.event().assignmentAlgorithm,
       validLotterySignupsUsers,
       validLotterySignupProgramItems,
       startTime,
       lotteryValidDirectSignups,
     );
+    return { result, startTime };
   });
 
-  const someAssignmentFailed = assignmentResultsResult.some(
-    (assignmentResult) => isErrorResult(assignmentResult),
-  );
-  if (someAssignmentFailed) {
-    return makeErrorResult(AssignmentError.UNKNOWN_ERROR);
-  }
+  const successResults = assignmentResults.flatMap((assignmentResult) => {
+    if (isErrorResult(assignmentResult.result)) {
+      logger.error(
+        "%s",
+        new Error(
+          `Popularity update: assignment for start time ${assignmentResult.startTime} failed: ${assignmentResult.result.error}`,
+        ),
+      );
+      return [];
+    }
+    return assignmentResult.result;
+  });
 
-  const results = assignmentResultsResult.flatMap((result) => {
+  const results = successResults.flatMap((result) => {
     if (isSuccessResult(result)) {
       return unwrapResult(result).results;
     }
