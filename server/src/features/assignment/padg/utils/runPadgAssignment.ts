@@ -10,10 +10,8 @@ import { User } from "shared/types/models/user";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import {
   Result,
-  isErrorResult,
   makeErrorResult,
   makeSuccessResult,
-  unwrapResult,
 } from "shared/utils/result";
 import { AssignmentError } from "shared/types/api/errors";
 import { logger } from "server/utils/logger";
@@ -46,11 +44,7 @@ export const runPadgAssignment = (
   assignmentTime: string,
   lotteryValidDirectSignups: readonly DirectSignupsForProgramItem[],
 ): Result<AssignmentAlgorithmResult, AssignmentError> => {
-  const groupsResult = getGroups(attendeeGroups, assignmentTime);
-  if (isErrorResult(groupsResult)) {
-    return groupsResult;
-  }
-  const groups = unwrapResult(groupsResult);
+  const groups = getGroups(attendeeGroups, assignmentTime);
   const events = getEvents(
     lotterySignupProgramItems,
     lotteryValidDirectSignups,
@@ -130,12 +124,7 @@ export const runPadgAssignment = (
     return makeErrorResult(AssignmentError.UNKNOWN_ERROR);
   }
 
-  const resultsResult = formatResults(finalAssignResults, attendeeGroups);
-  if (isErrorResult(resultsResult)) {
-    return resultsResult;
-  }
-
-  const results = unwrapResult(resultsResult);
+  const results = formatResults(finalAssignResults, attendeeGroups);
   const message = "Padg assignment completed";
 
   return makeSuccessResult({ results, message });
