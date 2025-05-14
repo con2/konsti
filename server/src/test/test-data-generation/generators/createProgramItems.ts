@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker";
 import dayjs from "dayjs";
-import { sampleSize } from "lodash-es";
+import { sample } from "remeda";
 import { logger } from "server/utils/logger";
 import { kompassiProgramItemMapper } from "server/kompassi/kompassiProgramItemMapper";
 import { saveProgramItems } from "server/features/program-item/programItemRepository";
@@ -135,10 +135,10 @@ export const createProgramItems = async (
             type: [""],
             topic: getTopics(),
             konsti: [kompassiProgramType],
-            audience: sampleSize(Object.values(KompassiAudience), 3),
-            language: sampleSize(Object.values(KompassiLanguage), 1),
-            accessibility: sampleSize(Object.values(KompassiAccessibility), 3),
-            playstyle: sampleSize(Object.values(KompassiPlaystyle), 2),
+            audience: sample(Object.values(KompassiAudience), 3),
+            language: sample(Object.values(KompassiLanguage), 1),
+            accessibility: sample(Object.values(KompassiAccessibility), 3),
+            playstyle: sample(Object.values(KompassiPlaystyle), 2),
           },
           scheduleItems: [
             {

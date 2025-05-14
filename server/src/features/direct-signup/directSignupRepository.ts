@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import { groupBy, shuffle } from "lodash-es";
+import { groupBy, shuffle } from "remeda";
 import {
   findProgramItemById,
   findProgramItems,

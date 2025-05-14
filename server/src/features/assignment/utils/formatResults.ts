@@ -1,4 +1,4 @@
-import { first } from "lodash-es";
+import { first } from "remeda";
 import { PadgRandomAssignResult } from "server/types/assignmentTypes";
 import { logger } from "server/utils/logger";
 import { AssignmentError } from "shared/types/api/errors";
@@ -14,6 +14,7 @@ export const formatResults = (
   assignResults: PadgRandomAssignResult[],
   attendeeGroups: readonly User[][],
 ): Result<readonly UserAssignmentResult[], AssignmentError> => {
+  // TODO: Sync function should not return Result
   const selectedAttendees = attendeeGroups
     .filter((attendeeGroup) => {
       const firstMember = first(attendeeGroup);

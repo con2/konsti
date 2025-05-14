@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
-import { sortBy } from "lodash-es";
+import { sortBy } from "remeda";
 import { getStartTimes } from "client/utils/getStartTimes";
 import { FavoritesByStartTimes } from "./FavoritesByStartTimes";
 import { ProgramItem } from "shared/types/models/programItem";
@@ -21,10 +21,9 @@ export const MyFavoritesList = ({
 
   const sortedProgramItems: readonly ProgramItem[] = sortBy(
     favoriteProgramItems,
-    [
-      (favoriteProgramItem) => favoriteProgramItem.startTime,
-      (favoriteProgramItem) => favoriteProgramItem.title.toLowerCase(),
-    ],
+
+    (favoriteProgramItem) => favoriteProgramItem.startTime,
+    (favoriteProgramItem) => favoriteProgramItem.title.toLowerCase(),
   );
 
   const startTimes = getStartTimes(favoriteProgramItems);

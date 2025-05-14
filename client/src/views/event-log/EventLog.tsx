@@ -2,7 +2,7 @@ import { ReactElement, useCallback, useEffect, useRef } from "react";
 import dayjs from "dayjs";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import { orderBy } from "lodash-es";
+import { sortBy } from "remeda";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { submitUpdateEventLogIsSeen } from "client/views/login/loginThunks";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
@@ -62,11 +62,10 @@ export const EventLog = (): ReactElement => {
         <RaisedCard>{t("eventLog.noNotifications")}</RaisedCard>
       )}
 
-      {orderBy(
-        localEventLogItems.current,
+      {sortBy(localEventLogItems.current, [
         (item) => item.createdAt,
         "desc",
-      ).map((eventLogItem) => {
+      ]).map((eventLogItem) => {
         return (
           <RaisedCard
             isHighlighted={!eventLogItem.isSeen}

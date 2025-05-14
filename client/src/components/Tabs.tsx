@@ -3,7 +3,7 @@ import { Navigate, NavLink, Route, Routes } from "react-router";
 import styled from "styled-components";
 import { IconName } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { last } from "lodash-es";
+import { last } from "remeda";
 
 interface TabContent {
   headerText: string;

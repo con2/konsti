@@ -1,5 +1,5 @@
 import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { uniq } from "lodash-es";
+import { unique } from "remeda";
 import { AdminState, RootState } from "client/types/reduxTypes";
 import { SettingsPayload } from "shared/types/api/settings";
 import {
@@ -102,7 +102,7 @@ const adminSlice = createSlice({
     addError(state, action: PayloadAction<string>): AdminState {
       return {
         ...state,
-        errors: uniq([...state.errors, action.payload]),
+        errors: unique([...state.errors, action.payload]),
       };
     },
 

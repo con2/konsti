@@ -1,4 +1,4 @@
-import { first } from "lodash-es";
+import { first } from "remeda";
 import dayjs from "dayjs";
 import { ListItem } from "server/types/assignmentTypes";
 import { getAssignmentBonus } from "server/features/assignment/utils/getAssignmentBonus";

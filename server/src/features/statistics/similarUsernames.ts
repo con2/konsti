@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import { distance, closest } from "fastest-levenshtein";
-import { sortBy } from "lodash-es";
+import { sortBy } from "remeda";
 import { logger } from "server/utils/logger";
 import { User } from "shared/types/models/user";
 import { config } from "shared/config";

@@ -1,6 +1,6 @@
 import { ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { sortBy, groupBy } from "lodash-es";
+import { sortBy, groupBy } from "remeda";
 import styled from "styled-components";
 import { ProgramItemEntry } from "client/views/program-item/ProgramItemEntry";
 import { useAppSelector } from "client/utils/hooks";
@@ -65,12 +65,16 @@ export const AllProgramItemsList = ({ programItems }: Props): ReactElement => {
     getAllProgramItems: true,
   });
 
-  const sortedProgramItems = sortBy(programItems, [
+  const sortedProgramItems = sortBy(
+    programItems,
     (programItem) => programItem.startTime,
     (programItem) => programItem.title.toLowerCase(),
-  ]);
+  );
 
-  const programItemsByStartTime = groupBy(sortedProgramItems, "startTime");
+  const programItemsByStartTime = groupBy(
+    sortedProgramItems,
+    (programItem) => programItem.startTime,
+  );
 
   const programItemsList = Object.entries(programItemsByStartTime).map(
     ([startTime, programItemsForStartTime]) => {

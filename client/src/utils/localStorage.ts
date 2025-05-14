@@ -1,4 +1,4 @@
-import { merge } from "lodash-es";
+import { merge } from "remeda";
 import { z } from "zod";
 import { LocalStorageState } from "client/types/reduxTypes";
 import { ProgramType } from "shared/types/models/programItem";

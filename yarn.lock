@@ -3316,22 +3316,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/lodash-es@npm:4.17.12":
-  version: 4.17.12
-  resolution: "@types/lodash-es@npm:4.17.12"
-  dependencies:
-    "@types/lodash": "npm:*"
-  checksum: 10c0/5d12d2cede07f07ab067541371ed1b838a33edb3c35cb81b73284e93c6fd0c4bbeaefee984e69294bffb53f62d7272c5d679fdba8e595ff71e11d00f2601dde0
-  languageName: node
-  linkType: hard
-
-"@types/lodash@npm:*":
-  version: 4.17.16
-  resolution: "@types/lodash@npm:4.17.16"
-  checksum: 10c0/cf017901b8ab1d7aabc86d5189d9288f4f99f19a75caf020c0e2c77b8d4cead4db0d0b842d009b029339f92399f49f34377dd7c2721053388f251778b4c23534
-  languageName: node
-  linkType: hard
-
 "@types/mdast@npm:^4.0.0":
   version: 4.0.4
   resolution: "@types/mdast@npm:4.0.4"
@@ -9322,7 +9306,6 @@ __metadata:
     "@eslint/js": "npm:9.25.1"
     "@playwright/test": "npm:1.52.0"
     "@types/eslint-plugin-jsx-a11y": "npm:6.10.0"
-    "@types/lodash-es": "npm:4.17.12"
     "@typescript-eslint/utils": "npm:8.31.0"
     "@vitest/eslint-plugin": "npm:1.1.43"
     "@yarnpkg/types": "npm:4.0.1"
@@ -9345,10 +9328,10 @@ __metadata:
     eslint-plugin-unicorn: "npm:58.0.0"
     globals: "npm:16.0.0"
     jiti: "npm:2.4.2"
-    lodash-es: "npm:4.17.21"
     ncp: "npm:2.0.0"
     npm-run-all2: "npm:7.0.2"
     prettier: "npm:3.5.3"
+    remeda: "npm:2.21.5"
     rimraf: "npm:6.0.1"
     typescript: "npm:5.8.3"
     typescript-eslint: "npm:8.31.0"
@@ -9500,13 +9483,6 @@ __metadata:
   dependencies:
     p-locate: "npm:^5.0.0"
   checksum: 10c0/d3972ab70dfe58ce620e64265f90162d247e87159b6126b01314dd67be43d50e96a50b517bce2d9452a79409c7614054c277b5232377de50416564a77ac7aad3
-  languageName: node
-  linkType: hard
-
-"lodash-es@npm:4.17.21":
-  version: 4.17.21
-  resolution: "lodash-es@npm:4.17.21"
-  checksum: 10c0/fb407355f7e6cd523a9383e76e6b455321f0f153a6c9625e21a8827d10c54c2a2341bd2ae8d034358b60e07325e1330c14c224ff582d04612a46a4f0479ff2f2
   languageName: node
   linkType: hard
 
@@ -12403,6 +12379,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"remeda@npm:2.21.5":
+  version: 2.21.5
+  resolution: "remeda@npm:2.21.5"
+  dependencies:
+    type-fest: "npm:^4.40.1"
+  checksum: 10c0/c30123e280e2c87254a4f8f22014c8cc7cdc0c69d824aaddb381f05b40bef7bc8fbab18cb4ec42df5b85815d4412314e259d4a3a44fb9aa6a5acd067e1fddfb0
+  languageName: node
+  linkType: hard
+
 "renderkid@npm:^3.0.0":
   version: 3.0.0
   resolution: "renderkid@npm:3.0.0"
@@ -14142,6 +14127,13 @@ __metadata:
   version: 4.40.1
   resolution: "type-fest@npm:4.40.1"
   checksum: 10c0/590cb7d4dcd3da83efe49b5b52cd041661f6fa29f18cb76650fe1fdeb4090688e92955656e9d981e606abb13d25c0418be8c6c6504d80e87fe18dc9ca0888392
+  languageName: node
+  linkType: hard
+
+"type-fest@npm:^4.40.1":
+  version: 4.41.0
+  resolution: "type-fest@npm:4.41.0"
+  checksum: 10c0/f5ca697797ed5e88d33ac8f1fec21921839871f808dc59345c9cf67345bfb958ce41bd821165dbf3ae591cedec2bf6fe8882098dfdd8dc54320b859711a2c1e4
   languageName: node
   linkType: hard
 

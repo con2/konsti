@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import { countBy, groupBy } from "lodash-es";
+import { countBy, groupBy } from "remeda";
 import {
   findProgramItems,
   saveProgramItemPopularity,
@@ -94,7 +94,7 @@ export const updateProgramItemPopularity = async (): Promise<
     (result) => result.directSignup.programItemId,
   );
 
-  const groupedSignups = countBy(directSignupsProgramItemIds);
+  const groupedSignups = countBy(directSignupsProgramItemIds, (id) => id);
 
   const programItemPopularityUpdates = validLotterySignupProgramItems
     .map((programItem) => ({

@@ -1,5 +1,4 @@
 import fs from "node:fs";
-import { size } from "lodash-es";
 import prettier from "prettier";
 import { config } from "shared/config";
 import { logger } from "server/utils/logger";
@@ -117,5 +116,5 @@ const getDataLength = (data: unknown[] | Record<string, Message[]>): number => {
   if (Array.isArray(data)) {
     return data.length;
   }
-  return size(data);
+  return Object.keys(data).length;
 };

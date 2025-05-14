@@ -1,5 +1,5 @@
 import fs from "node:fs";
-import { sortBy } from "lodash-es";
+import { sortBy } from "remeda";
 import prettier from "prettier";
 import { getProgramFromServer } from "server/kompassi/getProgramItemsFromKompassi";
 import { KompassiProgramItem } from "server/kompassi/kompassiProgramItem";
@@ -23,7 +23,7 @@ const updateKompassiDataDump = async (): Promise<void> => {
         (scheduleItem) => scheduleItem.slug,
       ),
     })),
-    [(programItem) => programItem.slug],
+    (programItem) => programItem.slug,
   );
 
   fs.writeFileSync(

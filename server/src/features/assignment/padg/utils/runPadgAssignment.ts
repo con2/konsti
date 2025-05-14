@@ -1,5 +1,5 @@
 import eventassigner from "eventassigner-js";
-import { cloneDeep, sortBy } from "lodash-es";
+import { clone, sortBy } from "remeda";
 import { getGroups } from "server/features/assignment/utils/getGroups";
 import { getList } from "server/features/assignment/utils/getList";
 import { getEvents } from "server/features/assignment/utils/getEvents";
@@ -30,9 +30,9 @@ import { calculateHappiness } from "server/features/assignment/padg/utils/calcul
 const sortList = (list: ListItem[], i: number): ListItem[] => {
   switch (i) {
     case 0:
-      return sortBy(list, "gain");
+      return sortBy(list, (item) => item.gain);
     case 1:
-      return sortBy(list, "size");
+      return sortBy(list, (item) => item.size);
     default:
       return list.sort((_a, _b) => 0.5 - Math.random());
   }
@@ -72,7 +72,7 @@ export const runPadgAssignment = (
     logger.debug(`PADG algorithm round ${i + 1}`);
 
     // Bug in eventassigner-js: mutates input array
-    const eventsCopy = cloneDeep(events);
+    const eventsCopy = clone(events);
 
     const input: PadgInput = {
       groups,

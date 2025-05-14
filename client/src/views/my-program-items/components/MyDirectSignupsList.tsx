@@ -1,6 +1,6 @@
 import { ReactElement, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { sortBy, uniq } from "lodash-es";
+import { sortBy, unique } from "remeda";
 import { DirectSignupsByStartTimes } from "./DirectSignupsByStartTimes";
 import { getMissedSignups } from "client/views/my-program-items/utils/getMissedSignups";
 import { config } from "shared/config";
@@ -48,10 +48,11 @@ export const MyDirectSignupsList = ({
 
       {config.event().resultsVisible && startTimes.length > 0 && (
         <DirectSignupsByStartTimes
-          directSignups={sortBy(directSignups, [
+          directSignups={sortBy(
+            directSignups,
             (directSignup) => directSignup.signedToStartTime,
-          ])}
-          startTimes={uniq(startTimes).sort()}
+          )}
+          startTimes={unique(startTimes).sort()}
           missedSignups={missedSignups}
         />
       )}

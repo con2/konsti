@@ -2,7 +2,7 @@ import { ReactElement, useEffect, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { capitalize } from "lodash-es";
+import { capitalize } from "remeda";
 import {
   formattedCurrentTime,
   getTime,

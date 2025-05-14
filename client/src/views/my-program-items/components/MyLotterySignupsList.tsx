@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
-import { sortBy } from "lodash-es";
+import { sortBy } from "remeda";
 import { getStartTimes } from "client/utils/getStartTimes";
 import { LotterySignupsByStartTimes } from "./LotterySignupsByStartTimes";
 import { RaisedCard } from "client/components/RaisedCard";
@@ -27,10 +27,11 @@ export const MyLotterySignupsList = ({
 
   const groupMembers = useAppSelector(selectGroupMembers);
 
-  const sortedLotterySignups = sortBy(lotterySignups, [
+  const sortedLotterySignups = sortBy(
+    lotterySignups,
     (lotterySignup) => lotterySignup.programItem.startTime,
     (lotterySignup) => lotterySignup.priority,
-  ]);
+  );
 
   const startTimes = getStartTimes(
     lotterySignups.map((lotterySignup) => lotterySignup.programItem),

@@ -2,7 +2,7 @@ import { ReactElement, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router";
-import { sortBy } from "lodash-es";
+import { sortBy } from "remeda";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getAttendeeType } from "client/utils/getAttendeeType";
 import { ProgramItem, UserSignup } from "shared/types/models/programItem";
@@ -98,7 +98,7 @@ export const ProgramItemHeadSignupInfo = ({
               </QuestionContainer>
             )}
             <AttendeeList>
-              {sortBy(signups, ["username"]).map((signup) => (
+              {sortBy(signups, (signup) => signup.username).map((signup) => (
                 <li key={signup.username}>
                   {signup.username}
                   {publicSignupQuestion && (

@@ -1,6 +1,6 @@
 import { ChangeEvent, ReactElement, useEffect, useState } from "react";
 import styled from "styled-components";
-import { first, capitalize } from "lodash-es";
+import { first, capitalize } from "remeda";
 import dayjs from "dayjs";
 import { useTranslation } from "react-i18next";
 import { testTimes } from "client/test/test-components/testComponentUtils";

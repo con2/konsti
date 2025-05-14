@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import { sampleSize } from "lodash-es";
+import { sample } from "remeda";
 import { findProgramItems } from "server/features/program-item/programItemRepository";
 import { addEventLogItems } from "server/features/user/event-log/eventLogRepository";
 import { findUsers } from "server/features/user/userRepository";
@@ -20,7 +20,7 @@ export const createEventLogItems = async (): Promise<void> => {
   );
 
   const newAssignmentEventLogUpdates = users.flatMap((user) => {
-    const randomProgramItems = sampleSize(twoPhaseSignups, 3);
+    const randomProgramItems = sample(twoPhaseSignups, 3);
 
     return randomProgramItems.map((randomProgramItem, index) => ({
       username: user.username,
@@ -36,7 +36,7 @@ export const createEventLogItems = async (): Promise<void> => {
   });
 
   const noAssignmentEventLogUpdates = users.flatMap((user) => {
-    const randomProgramItems = sampleSize(twoPhaseSignups, 2);
+    const randomProgramItems = sample(twoPhaseSignups, 2);
 
     return randomProgramItems.map((randomProgramItem, index) => ({
       username: user.username,

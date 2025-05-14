@@ -1,4 +1,3 @@
-import { differenceBy } from "lodash-es";
 import dayjs, { Dayjs } from "dayjs";
 import { removeProgramItems } from "server/features/program-item/programItemRepository";
 import { ProgramItemDoc } from "server/types/programItemTypes";
@@ -30,6 +29,7 @@ import { MongoDbError } from "shared/types/api/errors";
 import { tooEarlyForLotterySignup } from "shared/utils/tooEarlyForLotterySignup";
 import { UserGroup } from "shared/types/models/user";
 import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
+import { differenceBy } from "shared/utils/remedaExtend";
 
 export const removeDeletedProgramItems = async (
   updatedProgramItems: readonly ProgramItem[],
@@ -40,7 +40,7 @@ export const removeDeletedProgramItems = async (
   const deletedProgramItems = differenceBy(
     currentProgramItems,
     updatedProgramItems,
-    "programItemId",
+    (programItem) => programItem.programItemId,
   );
 
   if (deletedProgramItems.length > 0) {

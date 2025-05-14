@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import axios from "axios";
 import { z, ZodError } from "zod";
-import { uniq } from "lodash-es";
+import { unique } from "remeda";
 import { KompassiError } from "shared/types/api/errors";
 import {
   KompassiKonstiProgramType,
@@ -223,7 +223,7 @@ export const checkUnknownKeys = (
     logger.error(
       "%s",
       new Error(
-        `Found unknown keys for program items: ${uniq(unknownKeys).join(" ")}`,
+        `Found unknown keys for program items: ${unique(unknownKeys).join(" ")}`,
       ),
     );
   }

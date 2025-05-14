@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import { first } from "lodash-es";
+import { first } from "remeda";
 import {
   checkUnknownKeys,
   parseProgramItem,

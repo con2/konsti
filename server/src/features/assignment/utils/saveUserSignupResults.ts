@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import { uniq } from "lodash-es";
+import { unique } from "remeda";
 import { UserAssignmentResult } from "shared/types/models/result";
 import {
   delDirectSignup,
@@ -162,7 +162,7 @@ export const saveUserSignupResults = async ({
     dayjs(lotterySignup.signedToStartTime).isSame(dayjs(assignmentTime)),
   );
 
-  const lotterySignupUsernames = uniq(
+  const lotterySignupUsernames = unique(
     lotterySignupsForStartingTime.map(
       (lotterySignup) => lotterySignup.username,
     ),

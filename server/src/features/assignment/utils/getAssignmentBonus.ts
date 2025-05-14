@@ -1,4 +1,4 @@
-import { partition } from "lodash-es";
+import { partition } from "remeda";
 import { config } from "shared/config";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import { User } from "shared/types/models/user";
@@ -35,8 +35,9 @@ export const getAssignmentBonus = (
       );
 
       if (previousDirectSignup ?? newAssignmentEvent) {
-        return groupMember;
+        return true;
       }
+      return false;
     });
 
   // Give first time bonus to the whole group if half of the group members don't have previous direct signups

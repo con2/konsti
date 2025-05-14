@@ -1,4 +1,4 @@
-import { uniq } from "lodash-es";
+import { unique } from "remeda";
 import { User } from "shared/types/models/user";
 import { ProgramItem } from "shared/types/models/programItem";
 import {
@@ -79,7 +79,7 @@ export const padgAssignment = (
 
   const assignmentResult = unwrapResult(assignmentResultResult);
 
-  const selectedUniqueProgramItems = uniq(
+  const selectedUniqueProgramItems = unique(
     assignmentResult.results.map((result) => result.directSignup.programItemId),
   );
 

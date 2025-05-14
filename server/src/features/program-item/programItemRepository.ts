@@ -1,4 +1,3 @@
-import { differenceBy } from "lodash-es";
 import { logger } from "server/utils/logger";
 import { ProgramItemModel } from "server/features/program-item/programItemSchema";
 import { updateMovedProgramItems } from "server/features/assignment/utils/updateMovedProgramItems";
@@ -15,6 +14,7 @@ import { removeDeletedProgramItems } from "server/features/program-item/programI
 import { removeInvalidProgramItemsFromUsers } from "server/features/assignment/utils/removeInvalidProgramItemsFromUsers";
 import { MongoDbError } from "shared/types/api/errors";
 import { createEmptyDirectSignupDocumentForProgramItems } from "server/features/direct-signup/directSignupRepository";
+import { differenceBy } from "shared/utils/remedaExtend";
 
 export const removeProgramItems = async (
   programItemIds?: string[],
@@ -35,7 +35,7 @@ export const removeProgramItems = async (
 };
 
 export const saveProgramItems = async (
-  programItems: readonly ProgramItem[],
+  updatedProgramItems: readonly ProgramItem[],
 ): Promise<Result<void, MongoDbError>> => {
   logger.info("MongoDB: Store program items to DB");
 
@@ -47,7 +47,7 @@ export const saveProgramItems = async (
 
   // This will remove direct signups and program items
   const removeDeletedProgramItemsResult = await removeDeletedProgramItems(
-    programItems,
+    updatedProgramItems,
     currentProgramItems,
   );
   if (isErrorResult(removeDeletedProgramItemsResult)) {
@@ -62,12 +62,12 @@ export const saveProgramItems = async (
   }
 
   const updateMovedProgramItemsResult =
-    await updateMovedProgramItems(programItems);
+    await updateMovedProgramItems(updatedProgramItems);
   if (isErrorResult(updateMovedProgramItemsResult)) {
     return updateMovedProgramItemsResult;
   }
 
-  const bulkOps = programItems.map((programItem) => {
+  const bulkOps = updatedProgramItems.map((programItem) => {
     const newProgramItem: Omit<ProgramItem, "popularity"> = {
       programItemId: programItem.programItemId,
       title: programItem.title,
@@ -117,9 +117,9 @@ export const saveProgramItems = async (
   }
 
   const newProgramItems = differenceBy(
-    programItems,
+    updatedProgramItems,
     currentProgramItems,
-    "programItemId",
+    (programItem) => programItem.programItemId,
   );
 
   logger.info(`MongoDB: Found ${newProgramItems.length} new program items`);
