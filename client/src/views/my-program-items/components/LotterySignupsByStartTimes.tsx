@@ -1,7 +1,7 @@
 import { Fragment, ReactElement } from "react";
 import { useNavigate } from "react-router";
 import styled from "styled-components";
-import { capitalize } from "lodash-es";
+import { capitalize } from "remeda";
 import { useTranslation } from "react-i18next";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
 import { PopularityInfo } from "client/components/PopularityInfo";

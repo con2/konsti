@@ -1,7 +1,7 @@
 import { ChangeEvent, FormEvent, ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import { upperFirst } from "lodash-es";
+import { capitalize } from "remeda";
 import { ProgramItem } from "shared/types/models/programItem";
 import {
   PostLotterySignupErrorMessage,
@@ -103,7 +103,7 @@ export const LotterySignupForm = ({
   return (
     <form>
       {t("signup.programItemPriority", {
-        PROGRAM_TYPE: upperFirst(
+        PROGRAM_TYPE: capitalize(
           t(`programTypeSingular.${programItem.programType}`),
         ),
       })}{" "}

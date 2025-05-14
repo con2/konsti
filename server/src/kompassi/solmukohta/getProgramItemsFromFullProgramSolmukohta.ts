@@ -1,4 +1,4 @@
-import { first } from "lodash-es";
+import { first } from "remeda";
 import {
   checkUnknownKeys,
   parseProgramItem,

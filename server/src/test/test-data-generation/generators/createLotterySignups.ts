@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker";
 import dayjs from "dayjs";
-import { groupBy } from "lodash-es";
+import { groupBy } from "remeda";
 import { logger } from "server/utils/logger";
 import { updateProgramItemPopularity } from "server/features/program-item-popularity/updateProgramItemPopularity";
 import { ProgramItem } from "shared/types/models/programItem";
@@ -23,7 +23,7 @@ export const createLotterySignups = async (): Promise<void> => {
   logger.info(`Signup: ${programItems.length} program items`);
   logger.info(`Signup: ${users.length} users`);
 
-  const groupedUsers = groupBy(users, "groupCode");
+  const groupedUsers = groupBy(users, (user) => user.groupCode);
 
   for (const [groupCode, groupMembers] of Object.entries(groupedUsers)) {
     // Individual users

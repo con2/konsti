@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import { first, sortBy } from "lodash-es";
+import { first, sortBy } from "remeda";
 import { Group } from "server/types/assignmentTypes";
 import { logger } from "server/utils/logger";
 import { AssignmentError } from "shared/types/api/errors";

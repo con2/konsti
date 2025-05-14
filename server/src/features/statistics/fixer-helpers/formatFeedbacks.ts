@@ -1,5 +1,5 @@
 import fs from "node:fs";
-import { groupBy } from "lodash-es";
+import { groupBy } from "remeda";
 import dayjs from "dayjs";
 import { z } from "zod";
 import { logger } from "server/utils/logger";

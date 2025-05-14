@@ -1,6 +1,6 @@
 import { ReactElement, useRef } from "react";
 import styled from "styled-components";
-import { capitalize } from "lodash-es";
+import { capitalize } from "remeda";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
 import { MOBILE_MARGIN } from "client/globalStyle";
 

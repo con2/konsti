@@ -1,7 +1,7 @@
 /* eslint-disable unicorn/catch-error-name */
 
 import { z } from "zod";
-import { partition } from "lodash-es";
+import { partition } from "remeda";
 import { logger } from "server/utils/logger";
 
 export enum KompassiTopic {

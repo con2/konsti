@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import dayjs from "dayjs";
 import { Link } from "react-router";
 import styled from "styled-components";
-import { sortBy } from "lodash-es";
+import { sortBy } from "remeda";
 import { getTimeNow } from "client/utils/getTimeNow";
 import { useAppSelector } from "client/utils/hooks";
 import {
@@ -36,7 +36,7 @@ export const RevolvingDoorProgramItemsInfo = (): ReactElement => {
         dayjs(programItem.endTime).isAfter(timeNow)
       );
     }),
-    [(programItem) => programItem.title],
+    (programItem) => programItem.title,
   );
 
   return (

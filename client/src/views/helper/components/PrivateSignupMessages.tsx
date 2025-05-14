@@ -1,7 +1,7 @@
 import { ReactElement, useEffect, useState } from "react";
 import { Link } from "react-router";
 import { useTranslation } from "react-i18next";
-import { groupBy, sortBy, capitalize } from "lodash-es";
+import { groupBy, sortBy, capitalize } from "remeda";
 import styled from "styled-components";
 import { useAppSelector } from "client/utils/hooks";
 import { ProgramItem } from "shared/types/models/programItem";
@@ -47,15 +47,21 @@ export const PrivateSignupMessages = (): ReactElement => {
   );
 
   const groupedSignupQuestions = groupBy(
-    sortBy(signupQuestionsWithProgramItems, "programItem.startTime"),
-    "programItem.startTime",
+    sortBy(
+      signupQuestionsWithProgramItems,
+      (signupQuestion) => signupQuestion.programItem.startTime,
+    ),
+    (signupQuestion) => signupQuestion.programItem.startTime,
   );
 
   const privateSignupMessages = signupMessages.filter(
     (signupMessage) => signupMessage.private,
   );
 
-  const groupedSignupMessages = groupBy(privateSignupMessages, "programItemId");
+  const groupedSignupMessages = groupBy(
+    privateSignupMessages,
+    (signupQuestion) => signupQuestion.programItemId,
+  );
 
   useEffect(() => {
     if (searchTerm.length === 0) {
@@ -100,10 +106,11 @@ export const PrivateSignupMessages = (): ReactElement => {
 
       {Object.entries(groupedSignupQuestions).map(
         ([startTime, signupQuestionsWithProgramItem]) => {
-          const sortedSignupQuestions = sortBy(signupQuestionsWithProgramItem, [
+          const sortedSignupQuestions = sortBy(
+            signupQuestionsWithProgramItem,
             (signupQuestion) =>
               signupQuestion.programItem.title.toLocaleLowerCase(),
-          ]);
+          );
 
           return (
             <div key={startTime}>

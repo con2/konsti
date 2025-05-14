@@ -1,4 +1,4 @@
-import { countBy } from "lodash-es";
+import { countBy } from "remeda";
 import { logger } from "server/utils/logger";
 import { User } from "shared/types/models/user";
 import { toPercent } from "server/features/statistics/statsUtil";
@@ -51,7 +51,10 @@ export const getUsersWithoutSignups = (
 export const getUsersSignupCount = (users: readonly User[]): void => {
   const userSignupCounts: Record<string, number>[] = [];
   for (const user of users) {
-    const lotterySignups = countBy(user.lotterySignups, "time");
+    const lotterySignups = countBy(
+      user.lotterySignups,
+      (lotterySignup) => lotterySignup.signedToStartTime,
+    );
     userSignupCounts.push(lotterySignups);
   }
 

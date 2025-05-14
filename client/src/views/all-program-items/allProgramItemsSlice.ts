@@ -1,5 +1,5 @@
 import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { uniq } from "lodash-es";
+import { unique } from "remeda";
 import { AllProgramItemsState, RootState } from "client/types/reduxTypes";
 import {
   Language,
@@ -55,7 +55,7 @@ export const selectTags = createSelector(
       Tag.INTENDED_FOR_EXPERIENCED_PARTICIPANTS,
     ]);
 
-    const tags = uniq([
+    const tags = unique([
       Tag.BEGINNER_FRIENDLY,
       Tag.CHILDREN_FRIENDLY,
       Tag.ALL_AGES,
@@ -80,7 +80,7 @@ export const selectLanguages = createSelector(
   (programItems) => {
     const ignoredLanguages = new Set([Language.LANGUAGE_FREE]);
 
-    const languages = uniq([
+    const languages = unique([
       Language.FINNISH,
       Language.ENGLISH,
       Language.SWEDISH,

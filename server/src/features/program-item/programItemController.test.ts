@@ -2,7 +2,7 @@ import { Server } from "node:http";
 import request from "supertest";
 import { faker } from "@faker-js/faker";
 import dayjs from "dayjs";
-import { sortBy } from "lodash-es";
+import { sortBy } from "remeda";
 import { expect, test, vi, afterEach, beforeEach, describe } from "vitest";
 import { startServer, closeServer } from "server/utils/server";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
@@ -104,11 +104,13 @@ describe(`GET ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     const response = await request(server).get(ApiEndpoint.PROGRAM_ITEMS);
     expect(response.status).toEqual(200);
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    const sortedProgramItems = sortBy(response.body.programItems, "title");
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+    const { programItems } = response.body as GetProgramItemsResponse;
+
+    const sortedProgramItems = sortBy(
+      programItems,
+      (programItem) => programItem.programItem.title,
+    );
     expect(sortedProgramItems[0].users[0].signupMessage).toEqual(publicMessage);
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(sortedProgramItems[1].users[0].signupMessage).toEqual("");
   });
 
@@ -248,7 +250,10 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     const programItems = unsafelyUnwrap(await findProgramItems());
 
     expect(programItems.length).toEqual(2);
-    const sortedProgramItems = sortBy(programItems, "title");
+    const sortedProgramItems = sortBy(
+      programItems,
+      (programItem) => programItem.title,
+    );
     expect(sortedProgramItems[0].title).toEqual(testProgramItem.title);
     expect(sortedProgramItems[1].title).toEqual(testProgramItem2.title);
   });
@@ -268,7 +273,10 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     const programItems = unsafelyUnwrap(await findProgramItems());
 
     expect(programItems.length).toEqual(2);
-    const sortedProgramItems = sortBy(programItems, "title");
+    const sortedProgramItems = sortBy(
+      programItems,
+      (programItem) => programItem.title,
+    );
     expect(sortedProgramItems[0].title).toEqual(testProgramItem.title);
     expect(sortedProgramItems[1].title).toEqual(testProgramItem2.title);
   });

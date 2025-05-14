@@ -1,4 +1,4 @@
-import { uniq } from "lodash-es";
+import { unique } from "remeda";
 import { logger } from "server/utils/logger";
 import { getStartingProgramItems } from "server/features/assignment/utils/getStartingProgramItems";
 import { runRandomAssignment } from "server/features/assignment/random/utils/runRandomAssignment";
@@ -80,7 +80,7 @@ export const randomAssignment = (
 
   const assignmentResult = unwrapResult(assignmentResultResult);
 
-  const selectedUniqueProgramItems = uniq(
+  const selectedUniqueProgramItems = unique(
     assignmentResult.results.map((result) => result.directSignup.programItemId),
   );
 

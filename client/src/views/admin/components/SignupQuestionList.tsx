@@ -2,7 +2,7 @@ import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router";
 import styled from "styled-components";
-import { sortBy } from "lodash-es";
+import { sortBy } from "remeda";
 import { ProgramItem } from "shared/types/models/programItem";
 import { SignupQuestion } from "shared/types/models/settings";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
@@ -32,10 +32,11 @@ export const SignupQuestionList = ({
     },
   );
 
-  const sortedSignupQuestions = sortBy(signupQuestionsWithProgramItems, [
-    "programItem.startTime",
+  const sortedSignupQuestions = sortBy(
+    signupQuestionsWithProgramItems,
+    (signupQuestion) => signupQuestion.programItem.startTime,
     (signupQuestion) => signupQuestion.programItem.title.toLocaleLowerCase(),
-  ]);
+  );
 
   return (
     <div>

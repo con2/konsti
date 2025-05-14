@@ -1,4 +1,4 @@
-import { first } from "lodash-es";
+import { first } from "remeda";
 import { logger } from "server/utils/logger";
 import {
   KompassiProgramItem,

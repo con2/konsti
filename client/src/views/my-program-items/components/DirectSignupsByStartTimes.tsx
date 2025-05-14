@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
-import { capitalize } from "lodash-es";
+import { capitalize } from "remeda";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
 import { DirectSignupItem } from "client/views/my-program-items/components/DirectSignupItem";
 import {

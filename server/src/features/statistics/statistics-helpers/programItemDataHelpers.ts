@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import { countBy } from "lodash-es";
+import { countBy } from "remeda";
 import { logger } from "server/utils/logger";
 import { ProgramItem } from "shared/types/models/programItem";
 import { DirectSignup, User } from "shared/types/models/user";
@@ -11,7 +11,10 @@ import { TIMEZONE } from "shared/utils/initializeDayjs";
 export const getProgramItemsByStartTime = (
   programItems: readonly ProgramItem[],
 ): Record<string, number> => {
-  const programItemsByTime = countBy(programItems, "startTime");
+  const programItemsByTime = countBy(
+    programItems,
+    (programItem) => programItem.startTime,
+  );
 
   logger.info(
     `Number of program items for each start time: \n`,
@@ -28,7 +31,7 @@ const getUsersByProgramItems = (
   const directSignups: DirectSignup[] = [];
   const usersByProgramItems = countBy(
     directSignups,
-    "programItem.programItemId",
+    (directSignup) => directSignup.programItemId,
   );
   return usersByProgramItems;
 };

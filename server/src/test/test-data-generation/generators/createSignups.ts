@@ -1,5 +1,5 @@
 import { faker } from "@faker-js/faker";
-import { groupBy } from "lodash-es";
+import { groupBy } from "remeda";
 import { logger } from "server/utils/logger";
 import { findUsers } from "server/features/user/userRepository";
 import { findProgramItems } from "server/features/program-item/programItemRepository";
@@ -28,7 +28,7 @@ export const createDirectSignups = async (): Promise<void> => {
 
   const programItemsByProgramType = groupBy(
     shuffledProgramItems,
-    "programType",
+    (programItem) => programItem.programType,
   );
 
   const promises = Object.entries(programItemsByProgramType).flatMap(
