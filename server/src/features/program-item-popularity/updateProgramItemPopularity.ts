@@ -7,7 +7,6 @@ import {
 import {
   Result,
   isErrorResult,
-  isSuccessResult,
   makeErrorResult,
   makeSuccessResult,
   unwrapResult,
@@ -87,15 +86,10 @@ export const updateProgramItemPopularity = async (): Promise<
       );
       return [];
     }
-    return assignmentResult.result;
+    return unwrapResult(assignmentResult.result);
   });
 
-  const results = successResults.flatMap((result) => {
-    if (isSuccessResult(result)) {
-      return unwrapResult(result).results;
-    }
-    return [];
-  });
+  const results = successResults.flatMap((result) => result.results);
 
   const directSignupsProgramItemIds = results.map(
     (result) => result.directSignup.programItemId,
