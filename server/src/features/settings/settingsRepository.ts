@@ -35,7 +35,7 @@ export const createSettings = async (): Promise<
   const defaultSettings = new SettingsModel();
   try {
     const settings = await defaultSettings.save();
-    logger.info(`MongoDB: Default settings saved to DB`);
+    logger.info("MongoDB: Default settings saved to DB");
     return makeSuccessResult(settings);
   } catch (error) {
     logger.error("MongoDB: Add default settings error: %s", error);
@@ -61,7 +61,7 @@ export const findSettings = async (): Promise<
       return makeSuccessResult(defaultSettings);
     }
 
-    logger.debug(`MongoDB: Settings data found`);
+    logger.debug("MongoDB: Settings data found");
 
     const settingsWithFormattedDates: Settings = {
       ...settings,
@@ -104,7 +104,7 @@ export const saveHidden = async (
         fields: "-_id -__v -createdAt -updatedAt",
       },
     );
-    logger.info(`MongoDB: Hidden data updated`);
+    logger.info("MongoDB: Hidden data updated");
     return makeSuccessResult(settings);
   } catch (error) {
     logger.error("MongoDB: Error updating hidden program items: %s", error);
@@ -133,7 +133,7 @@ export const saveSignupQuestion = async (
     if (!settings) {
       return makeErrorResult(MongoDbError.SETTINGS_NOT_FOUND);
     }
-    logger.info(`MongoDB: Signup question updated`);
+    logger.info("MongoDB: Signup question updated");
     return makeSuccessResult(settings);
   } catch (error) {
     logger.error(
@@ -162,7 +162,7 @@ export const delSignupQuestion = async (
       logger.error("%s", new Error("MongoDB: Signup question not found"));
       return makeErrorResult(MongoDbError.SIGNUP_QUESTION_NOT_FOUND);
     }
-    logger.info(`MongoDB: Signup info deleted`);
+    logger.info("MongoDB: Signup info deleted");
     return makeSuccessResult(settings);
   } catch (error) {
     logger.error(
@@ -186,7 +186,7 @@ export const saveSettings = async (
         fields: "-createdAt -updatedAt -_id -__v -signupQuestions._id",
       },
     );
-    logger.info(`MongoDB: App settings updated`);
+    logger.info("MongoDB: App settings updated");
     return makeSuccessResult(updatedSettings.toJSON<SettingsDoc>());
   } catch (error) {
     logger.error("MongoDB: Error updating app settings: %s", error);
@@ -258,7 +258,7 @@ export const isLatestStartedServerInstance = async (
     if (!response) {
       return makeErrorResult(MongoDbError.SETTINGS_NOT_FOUND);
     }
-    logger.info(`MongoDB: Latest server start time found, is latest`);
+    logger.info("MongoDB: Latest server start time found, is latest");
     return makeSuccessResult();
   } catch (error) {
     logger.error("MongoDB: Error getting latest server start time: %s", error);

@@ -20,7 +20,7 @@ const eventConfig: Partial<EventConfig> = {
 
   twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG, ProgramType.LARP],
 
-  eventStartTime: `2023-11-04T08:00:00Z`, // Sat 10:00 GMT+2
+  eventStartTime: "2023-11-04T08:00:00Z", // Sat 10:00 GMT+2
 
   directSignupWindows: null,
 

@@ -34,7 +34,7 @@ export const unwrapResult: UnwrapResult = <T, Err>({
     return error as NonUndefined<Err>; // Typescript is getting confused and returning this type as `T | undefined` unless we add the type assertion
   }
   // eslint-disable-next-line no-restricted-syntax -- This is some kind of runtime error we want to catch
-  throw new Error(`Received no value or error at runtime when opening Result`);
+  throw new Error("Received no value or error at runtime when opening Result");
 };
 
 export const isSuccessResult = <T, Err>(

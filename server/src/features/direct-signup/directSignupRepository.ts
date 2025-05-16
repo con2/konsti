@@ -46,11 +46,11 @@ export const findDirectSignups = async (): Promise<
 
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (!results) {
-      logger.info(`MongoDB: Direct signups not found`);
+      logger.info("MongoDB: Direct signups not found");
       return makeSuccessResult([]);
     }
 
-    logger.debug(`MongoDB: Direct signups found`);
+    logger.debug("MongoDB: Direct signups found");
 
     const resultsWithFormattedTime = results.map((result) => {
       return {
@@ -278,7 +278,7 @@ export const saveDirectSignups = async (
       droppedSignups,
     });
   } catch (error) {
-    logger.error(`MongoDB: Error saving direct signups: %s`, error);
+    logger.error("MongoDB: Error saving direct signups: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };

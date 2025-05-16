@@ -67,7 +67,7 @@ const recoverSession = async (): Promise<void> => {
     try {
       await dispatch(submitSessionRecovery(jwt));
     } catch {
-      console.log(`Error loading saved session, reset session...`); // eslint-disable-line no-console
+      console.log("Error loading saved session, reset session..."); // eslint-disable-line no-console
     }
   }
 };

@@ -29,7 +29,7 @@ export const eventConfig: EventConfig = {
 
   twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG, ProgramType.WORKSHOP],
 
-  eventStartTime: `2025-07-25T12:00:00Z`, // Fri 15:00 GMT+3
+  eventStartTime: "2025-07-25T12:00:00Z", // Fri 15:00 GMT+3
 
   directSignupWindows: {},
 

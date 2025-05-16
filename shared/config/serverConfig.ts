@@ -92,14 +92,14 @@ const prodConfig = {
 
   // Program update cron
   autoUpdateProgramEnabled: false,
-  programUpdateInterval: `5,10,20,25,35,40,50,55 * * * *`,
+  programUpdateInterval: "5,10,20,25,35,40,50,55 * * * *",
 
   // Program update
   updateProgramItemPopularityEnabled: false,
 
   // Attendee assign cron
   autoAssignAttendeesEnabled: false,
-  autoAssignInterval: `0,15,30,45 * * * *`,
+  autoAssignInterval: "0,15,30,45 * * * *",
   autoAssignDelay: 1000 * 5,
 };
 
@@ -120,14 +120,14 @@ const stagingConfig = {
 
   // Program update cron
   autoUpdateProgramEnabled: false,
-  programUpdateInterval: `5,10,20,25,35,40,50,55 * * * *`,
+  programUpdateInterval: "5,10,20,25,35,40,50,55 * * * *",
 
   // Program update
   updateProgramItemPopularityEnabled: false,
 
   // Attendee assign cron
   autoAssignAttendeesEnabled: false,
-  autoAssignInterval: `0,15,30,45 * * * *`,
+  autoAssignInterval: "0,15,30,45 * * * *",
   autoAssignDelay: 1000 * 5,
 };
 
@@ -154,14 +154,14 @@ const devConfig = {
 
   // Program update cron
   autoUpdateProgramEnabled: true,
-  programUpdateInterval: `5,10,20,25,35,40,50,55 * * * *`,
+  programUpdateInterval: "5,10,20,25,35,40,50,55 * * * *",
 
   // Program update
   updateProgramItemPopularityEnabled: true,
 
   // Attendee assign cron
   autoAssignAttendeesEnabled: true,
-  autoAssignInterval: `0,15,30,45 * * * *`,
+  autoAssignInterval: "0,15,30,45 * * * *",
   autoAssignDelay: 1000 * 1,
 };
 

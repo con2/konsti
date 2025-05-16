@@ -50,7 +50,7 @@ beforeEach(() => {
   });
 });
 
-describe(`Lottery signup`, () => {
+describe("Lottery signup", () => {
   test("RPG starting at 15:00 should have signup starting at 15:00", () => {
     const startTime = `${friday}T12:00:00.000Z`;
     const signupStartTime = getLotterySignupStartTime(startTime);
@@ -94,7 +94,7 @@ describe(`Lottery signup`, () => {
   });
 });
 
-describe(`Early lottery signup`, () => {
+describe("Early lottery signup", () => {
   test("RPG starting at 09:00 should have signup starting at 22:00", () => {
     const startTime = `${saturday}T06:00:00.000Z`;
     const signupStartTime = getLotterySignupStartTime(startTime);
@@ -120,7 +120,7 @@ describe(`Early lottery signup`, () => {
   });
 });
 
-describe(`Two phase direct signup`, () => {
+describe("Two phase direct signup", () => {
   test("RPG starting at 15:00 should have signup starting at 15:00", () => {
     const startTime = `${friday}T12:00:00.000Z`;
     const signupStartTime = getDirectSignupStartTime({
@@ -188,7 +188,7 @@ describe(`Two phase direct signup`, () => {
   });
 });
 
-describe(`Direct signup with signup windows`, () => {
+describe("Direct signup with signup windows", () => {
   const testLarp = { ...testProgramItem, programType: ProgramType.LARP };
   const testLarp2 = { ...testProgramItem2, programType: ProgramType.LARP };
 
@@ -255,7 +255,7 @@ describe(`Direct signup with signup windows`, () => {
   });
 });
 
-describe(`Direct signup with rolling signup`, () => {
+describe("Direct signup with rolling signup", () => {
   const testWorkshop = {
     ...testProgramItem,
     programType: ProgramType.WORKSHOP,

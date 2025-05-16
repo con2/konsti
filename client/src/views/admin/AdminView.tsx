@@ -92,7 +92,7 @@ export const AdminView = (): ReactElement => {
     try {
       await dispatch(submitUpdateProgramItems());
     } catch (error) {
-      console.log(`submitProgramItemsUpdate error:`, error); // eslint-disable-line no-console
+      console.log("submitProgramItemsUpdate error:", error); // eslint-disable-line no-console
     }
     setSubmitting(false);
   };
@@ -119,7 +119,7 @@ export const AdminView = (): ReactElement => {
     try {
       await dispatch(submitToggleAppOpen(!appOpen));
     } catch (error) {
-      console.log(`submitToggleAppOpen error:`, error); // eslint-disable-line no-console
+      console.log("submitToggleAppOpen error:", error); // eslint-disable-line no-console
     }
     setSubmitting(false);
   };

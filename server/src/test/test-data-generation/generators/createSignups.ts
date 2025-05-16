@@ -11,7 +11,7 @@ import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 
 export const createDirectSignups = async (): Promise<void> => {
-  logger.info(`Generate direct signup data`);
+  logger.info("Generate direct signup data");
 
   const programItems = unsafelyUnwrap(await findProgramItems());
   const allUsers = unsafelyUnwrap(await findUsers());

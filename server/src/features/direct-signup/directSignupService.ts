@@ -30,7 +30,7 @@ export const storeDirectSignup = async (
   const { directSignupProgramItemId, username } = signupRequest;
   if (config.event().noKonstiSignupIds.includes(directSignupProgramItemId)) {
     return {
-      message: `No Konsti signup for this program item`,
+      message: "No Konsti signup for this program item",
       status: "error",
       errorId: "noKonstiSignup",
     };
@@ -39,7 +39,7 @@ export const storeDirectSignup = async (
   const timeNowResult = await getTimeNow();
   if (isErrorResult(timeNowResult)) {
     return {
-      message: `Unable to get current time`,
+      message: "Unable to get current time",
       status: "error",
       errorId: "unknown",
     };
@@ -91,7 +91,7 @@ export const storeDirectSignup = async (
   const userResult = await findUser(username);
   if (isErrorResult(userResult)) {
     return {
-      message: `Error finding user`,
+      message: "Error finding user",
       status: "error",
       errorId: "unknown",
     };
@@ -101,7 +101,7 @@ export const storeDirectSignup = async (
 
   if (!user) {
     return {
-      message: `Error finding user`,
+      message: "Error finding user",
       status: "error",
       errorId: "unknown",
     };
@@ -115,7 +115,7 @@ export const storeDirectSignup = async (
   const signupResult = await saveDirectSignup(newDirectSignup);
   if (isErrorResult(signupResult)) {
     return {
-      message: `Store signup failure`,
+      message: "Store signup failure",
       status: "error",
       errorId: "unknown",
     };
@@ -157,7 +157,7 @@ export const removeDirectSignup = async (
   const timeNowResult = await getTimeNow();
   if (isErrorResult(timeNowResult)) {
     return {
-      message: `Unable to get current time`,
+      message: "Unable to get current time",
       status: "error",
       errorId: "unknown",
     };

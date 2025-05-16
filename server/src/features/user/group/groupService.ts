@@ -72,7 +72,7 @@ export const createGroup = async (
   const timeNowResult = await getTimeNow();
   if (isErrorResult(timeNowResult)) {
     return {
-      message: `Unable to get current time`,
+      message: "Unable to get current time",
       status: "error",
       errorId: "unknown",
     };
@@ -188,7 +188,7 @@ export const joinGroup = async (
   const timeNowResult = await getTimeNow();
   if (isErrorResult(timeNowResult)) {
     return {
-      message: `Unable to get current time`,
+      message: "Unable to get current time",
       status: "error",
       errorId: "unknown",
     };

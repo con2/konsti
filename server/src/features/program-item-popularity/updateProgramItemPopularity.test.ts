@@ -30,7 +30,7 @@ afterEach(async () => {
   await closeServer(server);
 });
 
-test(`Should update program item popularity`, async () => {
+test("Should update program item popularity", async () => {
   vi.setSystemTime(testProgramItem.startTime);
 
   await saveProgramItems([testProgramItem, testProgramItem2]);
@@ -88,7 +88,7 @@ test(`Should update program item popularity`, async () => {
   expect(updatedSecondProgramItem?.popularity).toEqual(0);
 });
 
-test(`Should only update program item popularity of upcoming program items`, async () => {
+test("Should only update program item popularity of upcoming program items", async () => {
   const timeNow = dayjs(testProgramItem.startTime)
     .add(1, "hours")
     .toISOString();

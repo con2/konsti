@@ -10,7 +10,7 @@ import { generateGroupCode } from "server/features/user/group/groupService";
 const SERIAL_MAX = 10000000;
 
 export const createAdminUser = async (password?: string): Promise<void> => {
-  logger.info(`Generate data for admin user "admin:test"`);
+  logger.info('Generate data for admin user "admin:test"');
 
   const passwordHash = unsafelyUnwrap(await hashPassword(password ?? "test"));
 
@@ -26,7 +26,7 @@ export const createAdminUser = async (password?: string): Promise<void> => {
 };
 
 export const createHelpUser = async (password?: string): Promise<void> => {
-  logger.info(`Generate data for help user "helper:test"`);
+  logger.info('Generate data for help user "helper:test"');
 
   const passwordHash = unsafelyUnwrap(await hashPassword(password ?? "test"));
 

@@ -113,7 +113,7 @@ export const ProgramItemHead = ({
               </span>
             )}
           {!!programItem.entryFee &&
-            t(`signup.entryFee`, {
+            t("signup.entryFee", {
               ENTRY_FEE: programItem.entryFee,
             })}
         </Row>

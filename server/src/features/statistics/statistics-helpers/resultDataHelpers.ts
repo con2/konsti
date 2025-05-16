@@ -15,7 +15,7 @@ export const getSignupsByTime = (
   );
 
   logger.debug(
-    `Number of people entering to program items by start times: \n`,
+    "Number of people entering to program items by start times: \n",
     signupsByTime,
   );
 
@@ -38,7 +38,7 @@ export const getMaximumNumberOfAttendeesByTime = (
   }
 
   logger.debug(
-    `Maximum number of seats by start times: \n`,
+    "Maximum number of seats by start times: \n",
     maxNumberOfAttendeesByTime,
   );
 

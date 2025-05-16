@@ -67,16 +67,16 @@ export const KompassiLoginUsernameForm = (): ReactElement => {
         <StyledInput
           id="username"
           {...register("username", {
-            required: t(`validation.required`),
+            required: t("validation.required"),
             minLength: {
               value: USERNAME_LENGTH_MIN,
-              message: t(`validation.tooShort`, {
+              message: t("validation.tooShort", {
                 length: USERNAME_LENGTH_MIN,
               }),
             },
             maxLength: {
               value: USERNAME_LENGTH_MAX,
-              message: t(`validation.tooLong`, {
+              message: t("validation.tooLong", {
                 length: USERNAME_LENGTH_MAX,
               }),
             },
@@ -97,7 +97,7 @@ export const KompassiLoginUsernameForm = (): ReactElement => {
       <FormRow>
         <Checkbox
           {...register("registerDescription", {
-            required: t(`validation.required`),
+            required: t("validation.required"),
             onChange: () => {
               setServerError(null);
             },

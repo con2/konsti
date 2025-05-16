@@ -23,7 +23,7 @@ import { logger } from "server/utils/logger";
 export const updateProgramItemPopularity = async (): Promise<
   Result<void, MongoDbError>
 > => {
-  logger.info(`Calculate program item popularity`);
+  logger.info("Calculate program item popularity");
 
   const usersResult = await findUsers();
   if (isErrorResult(usersResult)) {

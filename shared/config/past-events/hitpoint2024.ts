@@ -32,7 +32,7 @@ const eventConfig: EventConfig = {
     ProgramType.WORKSHOP,
   ],
 
-  eventStartTime: `2024-11-02T08:00:00Z`, // Sat 10:00 GMT+2
+  eventStartTime: "2024-11-02T08:00:00Z", // Sat 10:00 GMT+2
 
   directSignupWindows: {},
 

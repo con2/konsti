@@ -56,7 +56,7 @@ export const LoginForm = (): ReactElement => {
         <StyledInput
           id="username"
           {...register("username", {
-            required: t(`validation.required`),
+            required: t("validation.required"),
             onChange: () => {
               setServerError(null);
             },
@@ -77,7 +77,7 @@ export const LoginForm = (): ReactElement => {
           <StyledInput
             id="password"
             {...register("password", {
-              required: t(`validation.required`),
+              required: t("validation.required"),
               onChange: () => {
                 setServerError(null);
               },

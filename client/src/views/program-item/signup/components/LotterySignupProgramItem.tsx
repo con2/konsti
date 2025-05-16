@@ -103,7 +103,7 @@ export const LotterySignupProgramItem = ({
     return (
       <NotLoggedSignupInfo>
         <CreateAccountLink>
-          <Link to={`/login`}>{t("signup.loginToSignup")}</Link>
+          <Link to={"/login"}>{t("signup.loginToSignup")}</Link>
         </CreateAccountLink>
       </NotLoggedSignupInfo>
     );

@@ -30,7 +30,7 @@ export const runGenerators = async (
 ): Promise<void> => {
   if (process.env.NODE_ENV === "production") {
     // eslint-disable-next-line no-restricted-syntax -- Data generation script
-    throw new Error(`Data creation not allowed in production`);
+    throw new Error("Data creation not allowed in production");
   }
 
   initializeDayjs();

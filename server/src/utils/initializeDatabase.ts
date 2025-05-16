@@ -20,7 +20,7 @@ const UPDATE_PROGRAM_ITEMS = true;
 const initializeDatabase = async (): Promise<void> => {
   if (process.env.NODE_ENV === "production") {
     // eslint-disable-next-line no-restricted-syntax -- Data generation script
-    throw new Error(`Data creation not allowed in production`);
+    throw new Error("Data creation not allowed in production");
   }
 
   await db.connectToDb();
