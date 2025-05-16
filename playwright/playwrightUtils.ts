@@ -7,7 +7,7 @@ import { PostUserRequest } from "shared/types/api/users";
 import { ProgramItem } from "shared/types/models/programItem";
 import { Settings } from "shared/types/models/settings";
 
-const baseUrl = process.env.PLAYWRIGHT_BASEURL ?? `http://localhost:5000`;
+const baseUrl = process.env.PLAYWRIGHT_BASEURL ?? "http://localhost:5000";
 
 const defaultPopulateDbOptions = {
   clean: true,

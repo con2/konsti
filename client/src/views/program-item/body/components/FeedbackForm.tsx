@@ -27,7 +27,7 @@ export const FeedbackForm = ({ programItem }: Props): ReactElement => {
     try {
       await postFeedback(programItem.programItemId, feedbackValue);
     } catch (error) {
-      console.log(`postFeedback error:`, error); // eslint-disable-line no-console
+      console.log("postFeedback error:", error); // eslint-disable-line no-console
     }
     setFeedbackSent(true);
     setSubmitting(false);

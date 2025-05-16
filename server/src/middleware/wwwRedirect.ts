@@ -17,7 +17,7 @@ export const wwwRedirect = (
   const hostHasWww = /^www\./.test(host);
 
   if (hostHasWww) {
-    logger.info(`Redirect WWW to non-WWW host`);
+    logger.info("Redirect WWW to non-WWW host");
 
     const protocol = req.protocol;
     const hostWithoutWww = host.replace(/^www\./, "");

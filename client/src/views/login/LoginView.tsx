@@ -45,7 +45,7 @@ export const LoginView = (): ReactElement => {
 
           <LoginForm />
 
-          <Link to={`/registration`}>
+          <Link to={"/registration"}>
             <p>{t("loginView.noAccountRegister")}</p>
           </Link>
         </>

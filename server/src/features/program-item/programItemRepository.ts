@@ -144,7 +144,7 @@ export const findProgramItems = async (): Promise<
 > => {
   try {
     const response = await ProgramItemModel.find({});
-    logger.debug(`MongoDB: Find all program items`);
+    logger.debug("MongoDB: Find all program items");
     return makeSuccessResult(response);
   } catch (error) {
     logger.error("MongoDB: Error fetching program items: %s", error);

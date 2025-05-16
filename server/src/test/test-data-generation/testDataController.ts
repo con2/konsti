@@ -17,7 +17,7 @@ export const postPopulateDb = async (
 ): Promise<Response> => {
   if (process.env.NODE_ENV === "production") {
     // eslint-disable-next-line no-restricted-syntax -- Data generation script
-    throw new Error(`Data creation not allowed in production`);
+    throw new Error("Data creation not allowed in production");
   }
 
   logger.info(`API call: POST ${ApiDevEndpoint.POPULATE_DB}`);
@@ -62,7 +62,7 @@ export const postClearDb = async (
 ): Promise<Response> => {
   if (process.env.NODE_ENV === "production") {
     // eslint-disable-next-line no-restricted-syntax -- Data generation script
-    throw new Error(`Data creation not allowed in production`);
+    throw new Error("Data creation not allowed in production");
   }
 
   logger.info(`API call: POST ${ApiDevEndpoint.CLEAR_DB}`);
@@ -76,7 +76,7 @@ export const postAddProgramItems = async (
 ): Promise<Response> => {
   if (process.env.NODE_ENV === "production") {
     // eslint-disable-next-line no-restricted-syntax -- Data generation script
-    throw new Error(`Data creation not allowed in production`);
+    throw new Error("Data creation not allowed in production");
   }
 
   logger.info(`API call: POST ${ApiDevEndpoint.ADD_PROGRAM_ITEMS}`);
@@ -109,7 +109,7 @@ export const postAddSerials = async (
 ): Promise<Response> => {
   if (process.env.NODE_ENV === "production") {
     // eslint-disable-next-line no-restricted-syntax -- Data generation script
-    throw new Error(`Data creation not allowed in production`);
+    throw new Error("Data creation not allowed in production");
   }
 
   logger.info(`API call: POST ${ApiDevEndpoint.ADD_SERIALS}`);

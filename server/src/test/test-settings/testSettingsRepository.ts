@@ -33,7 +33,7 @@ const createTestSettings = async (): Promise<
 
   try {
     const testSettings = await defaultSettings.save();
-    logger.info(`MongoDB: Default test settings saved to DB`);
+    logger.info("MongoDB: Default test settings saved to DB");
     return makeSuccessResult(testSettings);
   } catch (error) {
     logger.error("MongoDB: Add default test settings error: %s", error);
@@ -57,7 +57,7 @@ export const findTestSettings = async (): Promise<
       const defaultTestSettings = unwrapResult(createTestSettingsResult);
       return makeSuccessResult(defaultTestSettings);
     }
-    logger.debug(`MongoDB: Test settings data found`);
+    logger.debug("MongoDB: Test settings data found");
     return makeSuccessResult(testSettings);
   } catch (error) {
     logger.error("MongoDB: Error finding test settings data: %s", error);
@@ -75,7 +75,7 @@ export const saveTestSettings = async (
         upsert: true,
         fields: "-createdAt -updatedAt",
       });
-    logger.info(`MongoDB: Test settings updated`);
+    logger.info("MongoDB: Test settings updated");
     return makeSuccessResult(updatedTestSettings.toJSON<TestSettingsDoc>());
   } catch (error) {
     logger.error("MongoDB: Error updating test settings: %s", error);

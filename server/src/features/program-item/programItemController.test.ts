@@ -64,12 +64,12 @@ afterEach(async () => {
 });
 
 describe(`GET ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
-  test(`should return 200`, async () => {
+  test("should return 200", async () => {
     const response = await request(server).get(ApiEndpoint.PROGRAM_ITEMS);
     expect(response.status).toEqual(200);
   });
 
-  test(`should not return private signup messages`, async () => {
+  test("should not return private signup messages", async () => {
     await createSettings();
     await saveProgramItems([testProgramItem, testProgramItem2]);
     await saveUser(mockUser);
@@ -114,7 +114,7 @@ describe(`GET ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     expect(sortedProgramItems[1].users[0].signupMessage).toEqual("");
   });
 
-  test(`should not return direct signup users for hideParticipantListProgramTypes`, async () => {
+  test("should not return direct signup users for hideParticipantListProgramTypes", async () => {
     vi.spyOn(config, "event").mockReturnValue({
       ...config.event(),
       hideParticipantListProgramTypes: [ProgramType.FLEAMARKET],
@@ -163,7 +163,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     });
   });
 
-  test(`should return 401 without valid authorization`, async () => {
+  test("should return 401 without valid authorization", async () => {
     const response = await request(server).post(ApiEndpoint.PROGRAM_ITEMS);
     expect(response.status).toEqual(401);
   });

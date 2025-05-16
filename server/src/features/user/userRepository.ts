@@ -210,7 +210,7 @@ export const findUserSerial = async (
 export const findUsers = async (
   usernames?: string[],
 ): Promise<Result<User[], MongoDbError>> => {
-  logger.debug(`MongoDB: Find all users`);
+  logger.debug("MongoDB: Find all users");
 
   const filter = usernames ? { username: { $in: usernames } } : {};
   try {

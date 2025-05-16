@@ -12,7 +12,7 @@ export const storeEventLogItemIsSeen = async (
   const updateEventLogItemResult = await updateEventLogItemIsSeen(request);
   if (isErrorResult(updateEventLogItemResult)) {
     return {
-      message: `Unable to update event log item isSeen`,
+      message: "Unable to update event log item isSeen",
       status: "error",
       errorId: "unknown",
     };
@@ -22,7 +22,7 @@ export const storeEventLogItemIsSeen = async (
 
   if (!eventLogItems) {
     return {
-      message: `Unable to update event log item isSeen`,
+      message: "Unable to update event log item isSeen",
       status: "error",
       errorId: "unknown",
     };

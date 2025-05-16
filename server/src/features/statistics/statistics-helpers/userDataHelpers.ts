@@ -68,7 +68,7 @@ export const getUsersSignupCount = (users: readonly User[]): void => {
   }
 
   logger.info(
-    `Users signed for this many program items when they didn't get signed:`,
+    "Users signed for this many program items when they didn't get signed:",
     programItemLotterySignups,
   );
 
@@ -79,7 +79,7 @@ export const getUsersSignupCount = (users: readonly User[]): void => {
   }
 
   logger.info(
-    `Users didn't get into any program items after this many signup attempts:`,
+    "Users didn't get into any program items after this many signup attempts:",
     signupCount,
   );
 };

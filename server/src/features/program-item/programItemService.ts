@@ -96,7 +96,7 @@ export const fetchProgramItems = async (
   const programItemsResult = await findProgramItems();
   if (isErrorResult(programItemsResult)) {
     return {
-      message: `Downloading program items failed`,
+      message: "Downloading program items failed",
       status: "error",
       errorId: "unknown",
     };
@@ -110,7 +110,7 @@ export const fetchProgramItems = async (
   );
   if (isErrorResult(programItemsWithAttendeesResult)) {
     return {
-      message: `Downloading program items failed`,
+      message: "Downloading program items failed",
       status: "error",
       errorId: "unknown",
     };

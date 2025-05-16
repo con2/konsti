@@ -17,7 +17,7 @@ export const getProgramItemsByStartTime = (
   );
 
   logger.info(
-    `Number of program items for each start time: \n`,
+    "Number of program items for each start time: \n",
     programItemsByTime,
   );
   return programItemsByTime;

@@ -21,6 +21,7 @@ import eslintPluginOnlyError from "eslint-plugin-only-error";
 // eslint-disable-next-line import/no-namespace
 import * as eslintPluginMdx from "eslint-plugin-mdx";
 import typescriptEslint from "typescript-eslint";
+import { noUselessTemplateLiteral } from "./eslint-rules/noUselessTemplateLiteral";
 
 const filetypesGlob = "**/*.{ts,tsx,mts,js,cjs,mjs}";
 
@@ -71,6 +72,11 @@ export default defineConfig([
       vitest: eslintPluginVitest,
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       onlyError: eslintPluginOnlyError,
+      custom: {
+        rules: {
+          "no-useless-template-literal": noUselessTemplateLiteral,
+        },
+      },
     },
 
     settings: {
@@ -91,6 +97,9 @@ export default defineConfig([
 
     rules: {
       ...eslintPluginVitest.configs.recommended.rules,
+
+      // Custom rules in eslint-rules directory
+      "custom/no-useless-template-literal": "error",
 
       // eslint
       "no-param-reassign": "error",

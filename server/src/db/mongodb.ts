@@ -6,7 +6,7 @@ const connectToDb = async (
   dbConnString: string = config.server().dbConnString,
   dbName: string = config.server().dbName,
 ): Promise<void> => {
-  logger.info(`MongoDB: Connecting`);
+  logger.info("MongoDB: Connecting");
 
   const options = {
     dbName,
@@ -19,7 +19,7 @@ const connectToDb = async (
     throw new Error(`MongoDB: Error connecting to DB: ${error}`);
   }
 
-  logger.info(`MongoDB: Connection successful`);
+  logger.info("MongoDB: Connection successful");
 
   mongoose.connection.on("error", (error) => {
     logger.error("MongoDB: Connection error: %s", error);
@@ -34,7 +34,7 @@ const gracefulExit = async (): Promise<void> => {
     throw new Error(`MongoDB: Error shutting down db connection: ${error}`);
   }
 
-  logger.info(`MongoDB connection closed`);
+  logger.info("MongoDB connection closed");
 };
 
 export const db = {

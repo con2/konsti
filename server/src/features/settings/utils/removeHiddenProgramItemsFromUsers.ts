@@ -17,7 +17,7 @@ import {
 export const removeHiddenProgramItemsFromUsers = async (
   hiddenProgramItemIds: readonly string[],
 ): Promise<Result<void, MongoDbError>> => {
-  logger.info(`Remove hidden program items from users`);
+  logger.info("Remove hidden program items from users");
 
   if (hiddenProgramItemIds.length === 0) {
     return makeErrorResult(MongoDbError.NO_HIDDEN_PROGRAM_ITEMS);
@@ -80,7 +80,7 @@ export const removeHiddenProgramItemsFromUsers = async (
   }
 
   logger.info(
-    `Hidden program items removed from users and direct signups reset`,
+    "Hidden program items removed from users and direct signups reset",
   );
 
   return makeSuccessResult();

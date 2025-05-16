@@ -20,7 +20,7 @@ const enforceConsistentDependencies = ({ Yarn }) => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
   for (const dependency of Yarn.dependencies()) {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    if (dependency.type === `peerDependencies`) {
+    if (dependency.type === "peerDependencies") {
       continue;
     }
 
@@ -30,7 +30,7 @@ const enforceConsistentDependencies = ({ Yarn }) => {
       ident: dependency.ident,
     })) {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-      if (otherDependency.type === `peerDependencies`) {
+      if (otherDependency.type === "peerDependencies") {
         continue;
       }
 

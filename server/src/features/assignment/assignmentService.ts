@@ -26,7 +26,7 @@ export const storeAssignment = async (
   }
 
   return {
-    message: `Assignment failed`,
+    message: "Assignment failed",
     status: "error",
     errorId: "unknown",
   };

@@ -42,7 +42,7 @@ export const NotificationBar = (): ReactElement | null => {
             <EventLogNoAssignment eventLogItem={unseenEvent} />
           )}
           <ShowAllLinkContainer>
-            <Link to={`/notifications`}>{t("notificationBar.showAll")}</Link>
+            <Link to={"/notifications"}>{t("notificationBar.showAll")}</Link>
           </ShowAllLinkContainer>
         </div>
 

@@ -100,7 +100,7 @@ export const autoUpdateProgramItems = async (): Promise<void> => {
     if (latestServerResult.error === MongoDbError.SETTINGS_NOT_FOUND) {
       logger.error(
         "%s",
-        new Error(`Cronjobs: Newer server instance running, stop`),
+        new Error("Cronjobs: Newer server instance running, stop"),
       );
       return;
     }
@@ -165,7 +165,7 @@ export const autoAssignAttendees = async (): Promise<void> => {
     if (latestServerResult.error === MongoDbError.SETTINGS_NOT_FOUND) {
       logger.error(
         "%s",
-        new Error(`Cronjobs: Newer server instance running, stop`),
+        new Error("Cronjobs: Newer server instance running, stop"),
       );
       return;
     }

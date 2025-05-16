@@ -27,7 +27,7 @@ export const EventLogNewAssignment = ({
     <div>
       {!foundProgramItem && (
         <span>
-          {t(`eventLogActions.newAssignmentProgramItemMissing`, {
+          {t("eventLogActions.newAssignmentProgramItemMissing", {
             PROGRAM_ITEM_ID: eventLogItem.programItemId,
           })}
         </span>
@@ -36,7 +36,7 @@ export const EventLogNewAssignment = ({
       {foundProgramItem && (
         <>
           <span>
-            {t(`eventLogActions.newAssignment`, {
+            {t("eventLogActions.newAssignment", {
               PROGRAM_TYPE: t(
                 `programTypeIllative.${foundProgramItem.programType}`,
               ),

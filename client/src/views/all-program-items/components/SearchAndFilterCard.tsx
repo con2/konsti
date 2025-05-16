@@ -153,7 +153,7 @@ export const SearchAndFilterCard = ({
           checked={hideFullItems}
           onChange={() => setHideFullItems(!hideFullItems)}
           id="hide-full-items"
-          label={t(`hideFullItems`)}
+          label={t("hideFullItems")}
         />
       </InputContainer>
       {selectedStartingTime === StartingTimeOption.REVOLVING_DOOR && (

@@ -12,7 +12,7 @@ export const EventLogNoAssignment = ({ eventLogItem }: Props): ReactElement => {
   return (
     <div>
       <span>
-        {t(`eventLogActions.noAssignment`, {
+        {t("eventLogActions.noAssignment", {
           START_TIME: getTime(eventLogItem.programItemStartTime),
         })}
       </span>

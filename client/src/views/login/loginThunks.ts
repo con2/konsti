@@ -112,7 +112,7 @@ export const submitSessionRecovery = (jwt: string): AppThunk => {
           throw new Error("error.loginDisabled");
         case "unknown":
           // eslint-disable-next-line no-restricted-syntax -- TODO: Remove throw
-          throw new Error(`error.unknown`);
+          throw new Error("error.unknown");
         default:
           return exhaustiveSwitchGuard(loginResponse.errorId);
       }
