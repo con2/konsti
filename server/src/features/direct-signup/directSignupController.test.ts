@@ -32,12 +32,18 @@ import {
   PostDirectSignupResponse,
 } from "shared/types/api/myProgramItems";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
-import * as signupTimes from "shared/utils/signupTimes";
 import { config } from "shared/config";
 
 let server: Server;
 
 beforeEach(async () => {
+  // Signup start defaults to 'eventStartTime' if before
+  vi.spyOn(config, "event").mockReturnValue({
+    ...config.event(),
+    eventStartTime: dayjs(testProgramItem.startTime)
+      .subtract(config.event().preSignupStart, "minutes")
+      .toISOString(),
+  });
   server = await startServer({
     dbConnString: globalThis.__MONGO_URI__,
     dbName: faker.string.alphanumeric(10),
@@ -118,9 +124,6 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
 
   test("should return error when user is not found", async () => {
     vi.setSystemTime(testProgramItem.startTime);
-    vi.spyOn(signupTimes, "getDirectSignupStartTime").mockReturnValue(
-      dayjs(testProgramItem.startTime),
-    );
 
     await saveProgramItems([testProgramItem]);
 
@@ -178,12 +181,6 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     vi.setSystemTime(
       dayjs(testProgramItem.startTime).add(1, "second").toISOString(),
     );
-    vi.spyOn(config, "event").mockReturnValue({
-      ...config.event(),
-      eventStartTime: dayjs(testProgramItem.startTime)
-        .subtract(config.event().preSignupStart, "minutes")
-        .toISOString(),
-    });
 
     await saveProgramItems([testProgramItem]);
     await saveUser(mockUser);
@@ -211,9 +208,6 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
 
   test("should return success when user and program item are found", async () => {
     vi.setSystemTime(testProgramItem.startTime);
-    vi.spyOn(signupTimes, "getDirectSignupStartTime").mockReturnValue(
-      dayjs(testProgramItem.startTime),
-    );
 
     // Populate database
     await saveProgramItems([testProgramItem]);
@@ -260,9 +254,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
 
   test("should not sign too many attendees to program item", async () => {
     vi.setSystemTime(testProgramItem.startTime);
-    vi.spyOn(signupTimes, "getDirectSignupStartTime").mockReturnValue(
-      dayjs(testProgramItem.startTime),
-    );
+
     const maxAttendance = 2;
 
     // Populate database
@@ -309,9 +301,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
 
   test("should not create new signup collection when program item is full", async () => {
     vi.setSystemTime(testProgramItem.startTime);
-    vi.spyOn(signupTimes, "getDirectSignupStartTime").mockReturnValue(
-      dayjs(testProgramItem.startTime),
-    );
+
     const maxAttendance = 2;
 
     // Populate database
@@ -417,9 +407,6 @@ describe(`DELETE ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
 
   test("should return success when user and program item are found", async () => {
     vi.setSystemTime(testProgramItem.startTime);
-    vi.spyOn(signupTimes, "getDirectSignupStartTime").mockReturnValue(
-      dayjs(testProgramItem.startTime),
-    );
 
     // Populate database
     await saveProgramItems([testProgramItem]);

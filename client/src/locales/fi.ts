@@ -179,7 +179,9 @@ export const translationFI = {
     cancelFailed: "Virhe ilmoittautumista peruessa",
     signupEnded: "Ilmoittautuminen päättynyt",
     samePriority: "Prioriteetti on jo valittu",
+    invalidPriority: "Virheellinen prioriteetti",
     signupNotOpenYet: "Ilmoittautuminen ei ole vielä auki",
+    programItemNotFound: "Ohjelmanumeroa ei löytynyt",
     programItemFull: "Ohjelma on täynnä.",
     noKonstiSignup:
       "Tähän ohjelmaan ei ilmoittauduta Konstissa. Katso ilmoittautumisohjeet ohjelman lisätiedoista.",
