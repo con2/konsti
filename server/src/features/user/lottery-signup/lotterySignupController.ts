@@ -36,7 +36,12 @@ export const postLotterySignup = async (
     return res.sendStatus(422);
   }
 
-  const response = await storeLotterySignup(result.data, username);
+  const response = await storeLotterySignup({
+    programItemId: result.data.programItemId,
+    priority: result.data.priority,
+    username,
+  });
+
   return res.json(response);
 };
 

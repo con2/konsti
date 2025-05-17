@@ -179,7 +179,9 @@ export const translationEN = {
     cancelFailed: "Error canceling sign-up",
     signupEnded: "Sign-up ended",
     samePriority: "Priority already selected",
+    invalidPriority: "Invalid priority",
     signupNotOpenYet: "Sign-up not open yet",
+    programItemNotFound: "Program item not found",
     programItemFull: "This program item is full.",
     noKonstiSignup:
       "This program does not use Konsti for signing up. See the program details for instructions.",

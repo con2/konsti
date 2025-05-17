@@ -1,12 +1,11 @@
 import dayjs from "dayjs";
 import {
   PostLotterySignupError,
-  PostLotterSignupResponse,
+  PostLotterySignupResponse,
   DeleteLotterySignupRequest,
   DeleteLotterySignupResponse,
   DeleteLotterySignupError,
 } from "shared/types/api/myProgramItems";
-import { LotterySignup } from "shared/types/models/user";
 import {
   delLotterySignup,
   saveLotterySignup,
@@ -14,11 +13,47 @@ import {
 import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
 import { hasSignupEnded } from "server/features/user/userUtils";
 import { isErrorResult, unwrapResult } from "shared/utils/result";
+import { findProgramItemById } from "server/features/program-item/programItemRepository";
+import {
+  getLotterySignupEndTime,
+  getLotterySignupStartTime,
+} from "shared/utils/signupTimes";
+import { logger } from "server/utils/logger";
+import { findUser } from "server/features/user/userRepository";
 
-export const storeLotterySignup = async (
-  lotterySignup: LotterySignup,
-  username: string,
-): Promise<PostLotterSignupResponse | PostLotterySignupError> => {
+const validPriorities = new Set([1, 2, 3]);
+
+interface StoreLotterySignupParams {
+  programItemId: string;
+  priority: number;
+  username: string;
+}
+
+export const storeLotterySignup = async ({
+  programItemId,
+  priority,
+  username,
+}: StoreLotterySignupParams): Promise<
+  PostLotterySignupResponse | PostLotterySignupError
+> => {
+  if (!validPriorities.has(priority)) {
+    return {
+      errorId: "invalidPriority",
+      message: `Invalid priority: ${priority}`,
+      status: "error",
+    };
+  }
+
+  const programItemResult = await findProgramItemById(programItemId);
+  if (isErrorResult(programItemResult)) {
+    return {
+      message: `Program item not found: ${programItemId}`,
+      status: "error",
+      errorId: "programItemNotFound",
+    };
+  }
+  const programItem = unwrapResult(programItemResult);
+
   const timeNowResult = await getTimeNow();
   if (isErrorResult(timeNowResult)) {
     return {
@@ -29,26 +64,69 @@ export const storeLotterySignup = async (
   }
   const timeNow = unwrapResult(timeNowResult);
 
+  const lotterySignupStartTime = getLotterySignupStartTime(
+    programItem.startTime,
+  );
+  if (timeNow.isBefore(lotterySignupStartTime)) {
+    const message = `Signup for program item ${programItemId} not open yet, opens ${lotterySignupStartTime.toISOString()}`;
+    logger.warn(message);
+    return {
+      errorId: "signupNotOpenYet",
+      message,
+      status: "error",
+    };
+  }
+
+  const lotterySignupEndTime = getLotterySignupEndTime(programItem.startTime);
   const signupEnded = hasSignupEnded({
-    signupEndTime: dayjs(lotterySignup.signedToStartTime),
+    signupEndTime: lotterySignupEndTime,
     timeNow,
   });
   if (signupEnded) {
     return {
       errorId: "signupEnded",
-      message: "Signup failure",
+      message: `Signup for program item ${programItemId} has ended at ${lotterySignupEndTime.toISOString()}`,
       status: "error",
     };
   }
 
-  // TODO: Handle case where same priority submitted for same start time
-  /*
-  return {
-    message: "Duplicate priority score found",
-    status: "error",
-    errorId: "samePriority",
+  const userResult = await findUser(username);
+  if (isErrorResult(userResult)) {
+    return {
+      message: "Error finding user",
+      status: "error",
+      errorId: "unknown",
+    };
+  }
+  const user = unwrapResult(userResult);
+  if (!user) {
+    return {
+      message: "Error finding user",
+      status: "error",
+      errorId: "unknown",
+    };
+  }
+
+  const priorityReserved = user.lotterySignups.some(
+    (lotterySignup) =>
+      dayjs(lotterySignup.signedToStartTime).isSame(
+        dayjs(programItem.startTime),
+      ) && lotterySignup.priority === priority,
+  );
+
+  if (priorityReserved) {
+    return {
+      message: "Duplicate priority score found",
+      status: "error",
+      errorId: "samePriority",
+    };
+  }
+
+  const lotterySignup = {
+    programItemId,
+    priority,
+    signedToStartTime: programItem.startTime,
   };
-  */
 
   const responseResult = await saveLotterySignup({
     lotterySignup,
@@ -66,7 +144,7 @@ export const storeLotterySignup = async (
   const response = unwrapResult(responseResult);
 
   return {
-    message: "Signup success",
+    message: "Lottery signup success",
     status: "success",
     lotterySignups: response.lotterySignups,
   };

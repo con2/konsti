@@ -1,13 +1,10 @@
 import { EventLogItem } from "shared/types/models/eventLog";
 
-export const LotterySignupSchema = z.object({
-  programItemId: z.string(),
-  priority: z.number(),
-  signedToStartTime: z.string(),
-  message: z.string(),
-});
-
-export type LotterySignup = z.infer<typeof LotterySignupSchema>;
+export interface LotterySignup {
+  programItemId: string;
+  priority: number;
+  signedToStartTime: string;
+}
 
 export interface DirectSignup {
   programItemId: string;

@@ -9,7 +9,7 @@ import {
   PostDirectSignupResponse,
   PostLotterySignupError,
   PostLotterySignupRequest,
-  PostLotterSignupResponse,
+  PostLotterySignupResponse,
   DeleteLotterySignupRequest,
   DeleteLotterySignupResponse,
   DeleteLotterySignupError,
@@ -17,9 +17,9 @@ import {
 
 export const postLotterySignup = async (
   requestData: PostLotterySignupRequest,
-): Promise<PostLotterSignupResponse | PostLotterySignupError> => {
+): Promise<PostLotterySignupResponse | PostLotterySignupError> => {
   const response = await api.post<
-    PostLotterSignupResponse,
+    PostLotterySignupResponse,
     PostLotterySignupRequest
   >(ApiEndpoint.LOTTERY_SIGNUP, requestData);
   return response.data;
