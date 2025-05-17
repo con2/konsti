@@ -69,6 +69,9 @@ export const deleteLotterySignup = async (
     return res.sendStatus(422);
   }
 
-  const response = await removeLotterySignup(result.data, username);
+  const response = await removeLotterySignup(
+    result.data.lotterySignupProgramItemId,
+    username,
+  );
   return res.json(response);
 };

@@ -41,7 +41,7 @@ export type DeleteLotterySignupRequest = z.infer<
 export type DeleteLotterySignupResponse = ApiResult;
 
 export interface DeleteLotterySignupError extends ApiError {
-  errorId: "unknown" | "signupEnded";
+  errorId: "unknown" | "signupEnded" | "programItemNotFound";
 }
 
 // POST direct signup

@@ -2,7 +2,6 @@ import dayjs from "dayjs";
 import {
   PostLotterySignupError,
   PostLotterySignupResponse,
-  DeleteLotterySignupRequest,
   DeleteLotterySignupResponse,
   DeleteLotterySignupError,
 } from "shared/types/api/myProgramItems";
@@ -151,11 +150,46 @@ export const storeLotterySignup = async ({
 };
 
 export const removeLotterySignup = async (
-  removeRequest: DeleteLotterySignupRequest,
+  lotterySignupProgramItemId: string,
   username: string,
 ): Promise<DeleteLotterySignupResponse | DeleteLotterySignupError> => {
+  const programItemResult = await findProgramItemById(
+    lotterySignupProgramItemId,
+  );
+  if (isErrorResult(programItemResult)) {
+    return {
+      message: `Program item not found: ${lotterySignupProgramItemId}`,
+      status: "error",
+      errorId: "programItemNotFound",
+    };
+  }
+  const programItem = unwrapResult(programItemResult);
+
+  const timeNowResult = await getTimeNow();
+  if (isErrorResult(timeNowResult)) {
+    return {
+      message: "Unable to get current time",
+      status: "error",
+      errorId: "unknown",
+    };
+  }
+  const timeNow = unwrapResult(timeNowResult);
+
+  const lotterySignupEndTime = getLotterySignupEndTime(programItem.startTime);
+  const signupEnded = hasSignupEnded({
+    signupEndTime: lotterySignupEndTime,
+    timeNow,
+  });
+  if (signupEnded) {
+    return {
+      errorId: "signupEnded",
+      message: `Signup for program item ${lotterySignupProgramItemId} has ended at ${lotterySignupEndTime.toISOString()}`,
+      status: "error",
+    };
+  }
+
   const responseResult = await delLotterySignup({
-    lotterySignupProgramItemId: removeRequest.lotterySignupProgramItemId,
+    lotterySignupProgramItemId,
     username,
   });
 

@@ -16,6 +16,7 @@ import {
   PostLotterySignupError,
   PostLotterySignupRequest,
   DeleteLotterySignupRequest,
+  DeleteLotterySignupError,
 } from "shared/types/api/myProgramItems";
 import { config } from "shared/config";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
@@ -271,9 +272,61 @@ describe(`DELETE ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     expect(response.status).toEqual(422);
   });
 
-  test("should return success on completed delete", async () => {
-    vi.setSystemTime(testProgramItem.startTime);
+  test("should return error when signup is closed", async () => {
+    vi.setSystemTime(
+      dayjs(testProgramItem.startTime).add(1, "second").toISOString(),
+    );
 
+    await saveProgramItems([testProgramItem]);
+    await saveUser(mockUser);
+
+    const signup: DeleteLotterySignupRequest = {
+      lotterySignupProgramItemId: testProgramItem.programItemId,
+    };
+    const response = await request(server)
+      .delete(ApiEndpoint.LOTTERY_SIGNUP)
+      .send(signup)
+      .set(
+        "Authorization",
+        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
+      );
+
+    expect(response.status).toEqual(200);
+
+    const body = response.body as DeleteLotterySignupError;
+    expect(body.status).toEqual("error");
+    expect(body.errorId).toEqual("signupEnded");
+  });
+
+  test("should return error when program item is not found", async () => {
+    vi.setSystemTime(
+      dayjs(testProgramItem.startTime).subtract(1, "hour").toISOString(),
+    );
+    await saveUser(mockUser);
+
+    const signup: DeleteLotterySignupRequest = {
+      lotterySignupProgramItemId: "not-found",
+    };
+    const response = await request(server)
+      .delete(ApiEndpoint.LOTTERY_SIGNUP)
+      .send(signup)
+      .set(
+        "Authorization",
+        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
+      );
+    expect(response.status).toEqual(200);
+
+    const body = response.body as DeleteLotterySignupError;
+    expect(body.status).toEqual("error");
+    expect(body.message).toEqual("Program item not found: not-found");
+  });
+
+  test("should return success on completed delete", async () => {
+    vi.setSystemTime(
+      dayjs(testProgramItem.startTime)
+        .subtract(config.event().preSignupStart + 1, "minutes")
+        .toISOString(),
+    );
     await saveProgramItems([testProgramItem]);
     await saveUser(mockUser);
     await saveLotterySignups({
@@ -302,8 +355,8 @@ describe(`DELETE ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     expect(response.status).toEqual(200);
 
     const body = response.body as PostLotterySignupResponse;
-    expect(body.status).toEqual("success");
     expect(body.message).toEqual("Lottery signup remove success");
+    expect(body.status).toEqual("success");
 
     const modifiedUser = unsafelyUnwrap(await findUser(mockUser.username));
     expect(modifiedUser?.lotterySignups).toHaveLength(0);
