@@ -8,6 +8,10 @@ import { getJWT } from "server/utils/jwt";
 import { saveUser } from "server/features/user/userRepository";
 import { mockUser } from "server/test/mock-data/mockUser";
 import { closeServer, startServer } from "server/utils/server";
+import {
+  PostUpdateUserPasswordError,
+  PostUpdateUserPasswordResponse,
+} from "shared/types/api/users";
 
 let server: Server;
 
@@ -52,8 +56,8 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
         `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
       );
     expect(response.status).toEqual(200);
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    expect(response.body.status).toEqual("success");
+    const body = response.body as PostUpdateUserPasswordResponse;
+    expect(body.status).toEqual("success");
   });
 
   test("should not allow user to change other user's password", async () => {
@@ -78,8 +82,8 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
       })
       .set("Authorization", `Bearer ${getJWT(UserGroup.HELP, "helper")}`);
     expect(response.status).toEqual(200);
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    expect(response.body.status).toEqual("success");
+    const body = response.body as PostUpdateUserPasswordResponse;
+    expect(body.status).toEqual("success");
   });
 
   test("should not allow helper to change password for 'admin' or 'helper' users", async () => {
@@ -91,10 +95,10 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
       })
       .set("Authorization", `Bearer ${getJWT(UserGroup.HELP, "helper")}`);
     expect(response.status).toEqual(200);
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    expect(response.body.status).toEqual("error");
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    expect(response.body.errorId).toEqual("notAllowed");
+
+    const body = response.body as PostUpdateUserPasswordError;
+    expect(body.status).toEqual("error");
+    expect(body.errorId).toEqual("notAllowed");
 
     const response2 = await request(server)
       .post(ApiEndpoint.USERS_PASSWORD)
@@ -104,10 +108,10 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
       })
       .set("Authorization", `Bearer ${getJWT(UserGroup.HELP, "helper")}`);
     expect(response2.status).toEqual(200);
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    expect(response2.body.status).toEqual("error");
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    expect(response2.body.errorId).toEqual("notAllowed");
+
+    const body2 = response2.body as PostUpdateUserPasswordError;
+    expect(body2.status).toEqual("error");
+    expect(body2.errorId).toEqual("notAllowed");
   });
 
   test("should allow admin to change password for 'admin' or 'helper' users", async () => {
@@ -122,8 +126,9 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
       })
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
     expect(response.status).toEqual(200);
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    expect(response.body.status).toEqual("success");
+
+    const body = response.body as PostUpdateUserPasswordResponse;
+    expect(body.status).toEqual("success");
 
     const response2 = await request(server)
       .post(ApiEndpoint.USERS_PASSWORD)
@@ -133,8 +138,9 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
       })
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
     expect(response2.status).toEqual(200);
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    expect(response2.body.status).toEqual("success");
+
+    const body2 = response2.body as PostUpdateUserPasswordResponse;
+    expect(body2.status).toEqual("success");
   });
 
   test("should not allow Kompassi login user to change local password", async () => {
@@ -151,7 +157,8 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
         `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
       );
     expect(response.status).toEqual(200);
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    expect(response.body.status).toEqual("error");
+
+    const body = response.body as PostUpdateUserPasswordError;
+    expect(body.status).toEqual("error");
   });
 });
