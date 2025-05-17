@@ -37,7 +37,7 @@ const getMinAttendees = (programType: KompassiKonstiProgramType): number => {
   }
 
   if (programType === KompassiKonstiProgramType.WORKSHOP) {
-    return 0;
+    return 1;
   }
 
   return faker.number.int({ min: 2, max: 3 });
