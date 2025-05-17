@@ -36,7 +36,12 @@ export const postLotterySignup = async (
     return res.sendStatus(422);
   }
 
-  const response = await storeLotterySignup(result.data, username);
+  const response = await storeLotterySignup({
+    programItemId: result.data.programItemId,
+    priority: result.data.priority,
+    username,
+  });
+
   return res.json(response);
 };
 
@@ -64,6 +69,9 @@ export const deleteLotterySignup = async (
     return res.sendStatus(422);
   }
 
-  const response = await removeLotterySignup(result.data, username);
+  const response = await removeLotterySignup(
+    result.data.lotterySignupProgramItemId,
+    username,
+  );
   return res.json(response);
 };

@@ -1,24 +1,17 @@
-import { z } from "zod";
 import { EventLogItem } from "shared/types/models/eventLog";
 
-export const LotterySignupSchema = z.object({
-  programItemId: z.string(),
-  priority: z.number(),
-  signedToStartTime: z.string(),
-  message: z.string(),
-});
+export interface LotterySignup {
+  programItemId: string;
+  priority: number;
+  signedToStartTime: string;
+}
 
-export type LotterySignup = z.infer<typeof LotterySignupSchema>;
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const DirectSignupSchema = z.object({
-  programItemId: z.string(),
-  priority: z.number(),
-  signedToStartTime: z.string(),
-  message: z.string(),
-});
-
-export type DirectSignup = z.infer<typeof DirectSignupSchema>;
+export interface DirectSignup {
+  programItemId: string;
+  priority: number;
+  signedToStartTime: string;
+  message: string;
+}
 
 export enum UserGroup {
   USER = "user",

@@ -42,7 +42,6 @@ test("Should update program item popularity", async () => {
         programItemId: testProgramItem.programItemId,
         priority: 1,
         signedToStartTime: testProgramItem.startTime,
-        message: "",
       },
     ],
     username: mockUser.username,
@@ -53,7 +52,6 @@ test("Should update program item popularity", async () => {
         programItemId: testProgramItem.programItemId,
         priority: 1,
         signedToStartTime: testProgramItem.startTime,
-        message: "",
       },
     ],
     username: mockUser2.username,
@@ -112,7 +110,6 @@ test("Should only update program item popularity of upcoming program items", asy
         programItemId: testProgramItem.programItemId,
         priority: 1,
         signedToStartTime: testProgramItem.startTime,
-        message: "",
       },
     ],
     username: mockUser.username,
@@ -127,7 +124,6 @@ test("Should only update program item popularity of upcoming program items", asy
         signedToStartTime: dayjs(testProgramItem.startTime)
           .add(2, "hours")
           .toISOString(),
-        message: "",
       },
     ],
     username: mockUser2.username,

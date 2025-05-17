@@ -79,7 +79,6 @@ export const LotterySignupForm = ({
       programItemId: programItem.programItemId,
       priority,
       signedToStartTime: programItem.startTime,
-      message: "",
     };
     const error = await dispatch(submitPostLotterySignup(newProgramItem));
 

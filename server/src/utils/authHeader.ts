@@ -19,7 +19,7 @@ export const getAuthorizedUsername = (
   const jwtResponse = getJwtResponse(jwt, requiredUserGroup);
 
   if (jwtResponse.status === "error") {
-    logger.info(`Auth: Invalid jwt for user group ${requiredUserGroup}`);
+    logger.info(`Auth: Invalid jwt for user group '${requiredUserGroup}'`);
     return null;
   }
 

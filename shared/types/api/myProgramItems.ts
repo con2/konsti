@@ -1,27 +1,31 @@
 import { z } from "zod";
 import { SIGNUP_MESSAGE_LENGTH } from "shared/constants/validation";
 import { ApiError, ApiResult } from "shared/types/api/errors";
-import {
-  DirectSignup,
-  LotterySignup,
-  LotterySignupSchema,
-} from "shared/types/models/user";
+import { DirectSignup, LotterySignup } from "shared/types/models/user";
 
 // POST lottery signup
 
-// TODO: Remove 'time' and read it from program item on backend
-export const PostLotterySignupRequestSchema = LotterySignupSchema;
+export const PostLotterySignupRequestSchema = z.object({
+  programItemId: z.string(),
+  priority: z.number(),
+});
 
 export type PostLotterySignupRequest = z.infer<
   typeof PostLotterySignupRequestSchema
 >;
 
-export interface PostLotterSignupResponse extends ApiResult {
+export interface PostLotterySignupResponse extends ApiResult {
   lotterySignups: readonly LotterySignup[];
 }
 
 export interface PostLotterySignupError extends ApiError {
-  errorId: "unknown" | "signupEnded" | "samePriority";
+  errorId:
+    | "unknown"
+    | "signupEnded"
+    | "samePriority"
+    | "invalidPriority"
+    | "programItemNotFound"
+    | "signupNotOpenYet";
 }
 
 // DELETE lottery signup
@@ -37,7 +41,7 @@ export type DeleteLotterySignupRequest = z.infer<
 export type DeleteLotterySignupResponse = ApiResult;
 
 export interface DeleteLotterySignupError extends ApiError {
-  errorId: "unknown" | "signupEnded";
+  errorId: "unknown" | "signupEnded" | "programItemNotFound";
 }
 
 // POST direct signup

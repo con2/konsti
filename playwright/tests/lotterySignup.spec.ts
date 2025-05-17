@@ -1,15 +1,26 @@
 import { test, expect } from "@playwright/test";
+import dayjs from "dayjs";
 import {
-  populateDb,
   postSettings,
   postTestSettings,
   login,
+  addProgramItems,
+  populateDb,
 } from "playwright/playwrightUtils";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import { config } from "shared/config";
 
 test("Add lottery signup", async ({ page, request }) => {
-  await populateDb(request);
+  await populateDb(request, { clean: true, users: true });
+  await addProgramItems(request, [
+    {
+      startTime: dayjs(config.event().eventStartTime)
+        .add(2, "hour")
+        .startOf("hour")
+        .toISOString(),
+    },
+  ]);
+
   await postSettings(request, { signupStrategy: EventSignupStrategy.LOTTERY });
   await postTestSettings(request, {
     testTime: config.event().eventStartTime,

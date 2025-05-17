@@ -19,7 +19,6 @@ const getLotterySignups = (): LotterySignup[] => {
       programItemId: testProgramItem.programItemId,
       priority: 1,
       signedToStartTime: assignmentTime,
-      message: "",
     },
   ];
 };

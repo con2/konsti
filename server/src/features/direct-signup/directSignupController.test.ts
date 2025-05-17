@@ -18,7 +18,6 @@ import {
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { saveUser } from "server/features/user/userRepository";
 import { saveProgramItems } from "server/features/program-item/programItemRepository";
-import { saveTestSettings } from "server/test/test-settings/testSettingsRepository";
 import {
   findDirectSignups,
   findUserDirectSignups,
@@ -28,14 +27,23 @@ import { NewUser } from "server/types/userTypes";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import {
   DeleteDirectSignupRequest,
+  PostDirectSignupError,
   PostDirectSignupRequest,
+  PostDirectSignupResponse,
 } from "shared/types/api/myProgramItems";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
-import * as signupTimes from "shared/utils/signupTimes";
+import { config } from "shared/config";
 
 let server: Server;
 
 beforeEach(async () => {
+  // Signup start defaults to 'eventStartTime' if before
+  vi.spyOn(config, "event").mockReturnValue({
+    ...config.event(),
+    eventStartTime: dayjs(testProgramItem.startTime)
+      .subtract(config.event().preSignupStart, "minutes")
+      .toISOString(),
+  });
   server = await startServer({
     dbConnString: globalThis.__MONGO_URI__,
     dbName: faker.string.alphanumeric(10),
@@ -43,6 +51,7 @@ beforeEach(async () => {
 });
 
 afterEach(async () => {
+  vi.resetAllMocks();
   await closeServer(server);
 });
 
@@ -105,19 +114,16 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
         `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
       );
     expect(response.status).toEqual(200);
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    expect(response.body.status).toEqual("error");
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    expect(response.body.message).toEqual(
+
+    const body = response.body as PostDirectSignupError;
+    expect(body.status).toEqual("error");
+    expect(body.message).toEqual(
       "Signed program item invalid_program_item_id not found",
     );
   });
 
   test("should return error when user is not found", async () => {
     vi.setSystemTime(testProgramItem.startTime);
-    vi.spyOn(signupTimes, "getDirectSignupStartTime").mockReturnValue(
-      dayjs(testProgramItem.startTime),
-    );
 
     await saveProgramItems([testProgramItem]);
 
@@ -135,21 +141,20 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
         `Bearer ${getJWT(UserGroup.USER, "user_not_found")}`,
       );
     expect(response.status).toEqual(200);
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    expect(response.body.status).toEqual("error");
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    expect(response.body.message).toEqual("Error finding user");
+
+    const body = response.body as PostDirectSignupError;
+    expect(body.status).toEqual("error");
+    expect(body.message).toEqual("Error finding user");
   });
 
   test("should return error when signup is not yet open", async () => {
+    // This test time should land to phaseGap
+    vi.setSystemTime(
+      dayjs(testProgramItem.startTime).subtract(2, "hours").toISOString(),
+    );
+
     await saveProgramItems([testProgramItem]);
     await saveUser(mockUser);
-    await saveTestSettings({
-      // This test time should land to phaseGap
-      testTime: dayjs(testProgramItem.startTime)
-        .subtract(2, "hours")
-        .toISOString(),
-    });
 
     const signup: PostDirectSignupRequest = {
       username: mockUser.username,
@@ -166,17 +171,43 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
       );
 
     expect(response.status).toEqual(200);
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    expect(response.body.status).toEqual("error");
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    expect(response.body.errorId).toEqual("signupNotOpenYet");
+
+    const body = response.body as PostDirectSignupError;
+    expect(body.status).toEqual("error");
+    expect(body.errorId).toEqual("signupNotOpenYet");
+  });
+
+  test("should return error when signup is closed", async () => {
+    vi.setSystemTime(
+      dayjs(testProgramItem.startTime).add(1, "second").toISOString(),
+    );
+
+    await saveProgramItems([testProgramItem]);
+    await saveUser(mockUser);
+
+    const signup: PostDirectSignupRequest = {
+      username: mockUser.username,
+      directSignupProgramItemId: testProgramItem.programItemId,
+      message: "",
+      priority: DIRECT_SIGNUP_PRIORITY,
+    };
+    const response = await request(server)
+      .post(ApiEndpoint.DIRECT_SIGNUP)
+      .send(signup)
+      .set(
+        "Authorization",
+        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
+      );
+
+    expect(response.status).toEqual(200);
+
+    const body = response.body as PostDirectSignupError;
+    expect(body.status).toEqual("error");
+    expect(body.errorId).toEqual("signupEnded");
   });
 
   test("should return success when user and program item are found", async () => {
     vi.setSystemTime(testProgramItem.startTime);
-    vi.spyOn(signupTimes, "getDirectSignupStartTime").mockReturnValue(
-      dayjs(testProgramItem.startTime),
-    );
 
     // Populate database
     await saveProgramItems([testProgramItem]);
@@ -205,10 +236,10 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
 
     // Check API response
     expect(response.status).toEqual(200);
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    expect(response.body.message).toEqual("Store signup success");
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    expect(response.body.status).toEqual("success");
+
+    const body = response.body as PostDirectSignupResponse;
+    expect(body.message).toEqual("Store signup success");
+    expect(body.status).toEqual("success");
 
     // Check database
     const modifiedSignups = unsafelyUnwrap(
@@ -223,9 +254,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
 
   test("should not sign too many attendees to program item", async () => {
     vi.setSystemTime(testProgramItem.startTime);
-    vi.spyOn(signupTimes, "getDirectSignupStartTime").mockReturnValue(
-      dayjs(testProgramItem.startTime),
-    );
+
     const maxAttendance = 2;
 
     // Populate database
@@ -272,9 +301,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
 
   test("should not create new signup collection when program item is full", async () => {
     vi.setSystemTime(testProgramItem.startTime);
-    vi.spyOn(signupTimes, "getDirectSignupStartTime").mockReturnValue(
-      dayjs(testProgramItem.startTime),
-    );
+
     const maxAttendance = 2;
 
     // Populate database
@@ -349,10 +376,10 @@ describe(`DELETE ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
         `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
       );
     expect(response.status).toEqual(200);
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    expect(response.body.status).toEqual("error");
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    expect(response.body.message).toEqual(
+
+    const body = response.body as PostDirectSignupError;
+    expect(body.status).toEqual("error");
+    expect(body.message).toEqual(
       "Signed program item invalid_program_item_id not found",
     );
   });
@@ -372,17 +399,14 @@ describe(`DELETE ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
         `Bearer ${getJWT(UserGroup.USER, "user_not_found")}`,
       );
     expect(response.status).toEqual(200);
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    expect(response.body.status).toEqual("error");
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    expect(response.body.message).toEqual("Delete signup failure");
+
+    const body = response.body as PostDirectSignupError;
+    expect(body.status).toEqual("error");
+    expect(body.message).toEqual("Delete signup failure");
   });
 
   test("should return success when user and program item are found", async () => {
     vi.setSystemTime(testProgramItem.startTime);
-    vi.spyOn(signupTimes, "getDirectSignupStartTime").mockReturnValue(
-      dayjs(testProgramItem.startTime),
-    );
 
     // Populate database
     await saveProgramItems([testProgramItem]);
@@ -413,10 +437,10 @@ describe(`DELETE ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
 
     // Check API response
     expect(response.status).toEqual(200);
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    expect(response.body.message).toEqual("Delete signup success");
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    expect(response.body.status).toEqual("success");
+
+    const body = response.body as PostDirectSignupResponse;
+    expect(body.message).toEqual("Delete signup success");
+    expect(body.status).toEqual("success");
 
     // Check database
     const modifiedSignup = unsafelyUnwrap(

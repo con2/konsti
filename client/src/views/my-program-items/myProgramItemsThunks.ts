@@ -147,6 +147,8 @@ export const submitDeleteDirectSignup = (
 export enum PostLotterySignupErrorMessage {
   SIGNUP_ENDED = "signupError.signupEnded",
   SAME_PRIORITY = "signupError.samePriority",
+  PROGRAM_ITEM_NOT_FOUND = "signupError.programItemNotFound",
+  SIGNUP_NOT_OPEN_YET = "signupError.signupNotOpenYet",
   UNKNOWN = "signupError.generic",
 }
 
@@ -164,6 +166,12 @@ export const submitPostLotterySignup = (
           return PostLotterySignupErrorMessage.SIGNUP_ENDED;
         case "samePriority":
           return PostLotterySignupErrorMessage.SAME_PRIORITY;
+        case "invalidPriority":
+          return PostLotterySignupErrorMessage.SIGNUP_NOT_OPEN_YET;
+        case "programItemNotFound":
+          return PostLotterySignupErrorMessage.PROGRAM_ITEM_NOT_FOUND;
+        case "signupNotOpenYet":
+          return PostLotterySignupErrorMessage.SIGNUP_NOT_OPEN_YET;
         case "unknown":
           return PostLotterySignupErrorMessage.UNKNOWN;
         default:
@@ -178,6 +186,7 @@ export const submitPostLotterySignup = (
 export enum DeleteLotterySignupErrorMessage {
   SIGNUP_ENDED = "signupError.signupEnded",
   UNKNOWN = "signupError.generic",
+  PROGRAM_ITEM_NOT_FOUND = "signupError.programItemNotFound",
 }
 
 export const submitDeleteLotterySignup = (
@@ -194,6 +203,8 @@ export const submitDeleteLotterySignup = (
           return DeleteLotterySignupErrorMessage.SIGNUP_ENDED;
         case "unknown":
           return DeleteLotterySignupErrorMessage.UNKNOWN;
+        case "programItemNotFound":
+          return DeleteLotterySignupErrorMessage.PROGRAM_ITEM_NOT_FOUND;
         default:
           return exhaustiveSwitchGuard(signupResponse.errorId);
       }
