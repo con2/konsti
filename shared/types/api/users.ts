@@ -66,6 +66,8 @@ export interface PostUpdateUserPasswordResponse extends ApiResult {
   username: string;
 }
 
+export type PostUpdateUserPasswordError = ApiError;
+
 // GET user by serial
 
 export const GetUserBySerialRequestSchema = z.object({

@@ -5,6 +5,8 @@ import { faker } from "@faker-js/faker";
 import dayjs from "dayjs";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
+  GetGroupError,
+  GetGroupResponse,
   PostCloseGroupRequest,
   PostJoinGroupRequest,
 } from "shared/types/api/groups";
@@ -78,10 +80,10 @@ describe(`GET ${ApiEndpoint.GROUP}`, () => {
       );
 
     expect(response.status).toEqual(200);
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    expect(response.body.status).toEqual("success");
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    expect(response.body.results.length).toEqual(2);
+
+    const body = response.body as GetGroupResponse;
+    expect(body.status).toEqual("success");
+    expect(body.results.length).toEqual(2);
   });
 });
 
@@ -190,10 +192,10 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
       );
 
     expect(response.status).toEqual(200);
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    expect(response.body.status).toEqual("error");
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    expect(response.body.message).toEqual("Signup in future");
+
+    const body = response.body as GetGroupError;
+    expect(body.status).toEqual("error");
+    expect(body.message).toEqual("Signup in future");
   });
 });
 

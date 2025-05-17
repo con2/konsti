@@ -6,7 +6,11 @@ import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { closeServer, startServer } from "server/utils/server";
 import { UserGroup } from "shared/types/models/user";
 import { getJWT } from "server/utils/jwt";
-import { PostVerifyKompassiLoginRequest } from "shared/types/api/login";
+import {
+  PostVerifyKompassiLoginError,
+  PostVerifyKompassiLoginRequest,
+  PostVerifyKompassiLoginResponse,
+} from "shared/types/api/login";
 import { findUser, saveUser } from "server/features/user/userRepository";
 import { mockUser, mockUser2 } from "server/test/mock-data/mockUser";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
@@ -66,8 +70,8 @@ describe(`POST ${ApiEndpoint.VERIFY_KOMPASSI_LOGIN}`, () => {
         `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
       );
     expect(response.status).toEqual(200);
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    expect(response.body.status).toEqual("success");
+    const body = response.body as PostVerifyKompassiLoginResponse;
+    expect(body.status).toEqual("success");
 
     const user = unsafelyUnwrap(await findUser("new_username"));
     expect(user?.kompassiId).toEqual(10);
@@ -91,10 +95,10 @@ describe(`POST ${ApiEndpoint.VERIFY_KOMPASSI_LOGIN}`, () => {
       );
 
     expect(response.status).toEqual(200);
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    expect(response.body.status).toEqual("error");
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    expect(response.body.errorId).toEqual("usernameNotFree");
+
+    const body = response.body as PostVerifyKompassiLoginError;
+    expect(body.status).toEqual("error");
+    expect(body.errorId).toEqual("usernameNotFree");
   });
 
   test("should not check for existing username if username not changed", async () => {
@@ -113,8 +117,8 @@ describe(`POST ${ApiEndpoint.VERIFY_KOMPASSI_LOGIN}`, () => {
       );
 
     expect(response.status).toEqual(200);
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    expect(response.body.status).toEqual("success");
+    const body = response.body as PostVerifyKompassiLoginResponse;
+    expect(body.status).toEqual("success");
 
     const user = unsafelyUnwrap(await findUser(mockUser.username));
     expect(user?.kompassiId).toEqual(10);

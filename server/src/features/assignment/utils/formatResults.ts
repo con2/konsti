@@ -25,7 +25,8 @@ const getDirectSignup = (
     programItemId: foundSignup.programItemId,
     priority: foundSignup.priority,
     signedToStartTime: foundSignup.signedToStartTime,
-    message: foundSignup.message,
+    // Direct signups received from lottery don't have signup messages
+    message: "",
   };
 };
 

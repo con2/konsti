@@ -11,6 +11,7 @@ import {
 import {
   GetUserBySerialResponse,
   GetUserResponse,
+  PostUpdateUserPasswordError,
   PostUpdateUserPasswordResponse,
   PostUserError,
   PostUserResponse,
@@ -185,7 +186,7 @@ export const storeUserPassword = async (
   username: string,
   password: string,
   requester: string,
-): Promise<PostUpdateUserPasswordResponse | ApiError> => {
+): Promise<PostUpdateUserPasswordResponse | PostUpdateUserPasswordError> => {
   if (requester === "helper" && PASSWORD_CHANGE_NOT_ALLOWED.has(username)) {
     return {
       message: "Password change not allowed",

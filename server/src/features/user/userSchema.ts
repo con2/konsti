@@ -17,7 +17,6 @@ const UserSchema = new mongoose.Schema(
         programItemId: String,
         priority: Number,
         signedToStartTime: Date,
-        message: String,
       },
     ],
     eventLogItems: [
