@@ -57,13 +57,11 @@ export const mockLotterySignups: readonly LotterySignup[] = [
     programItemId: testProgramItem.programItemId,
     priority: 1,
     signedToStartTime: testProgramItem.startTime,
-    message: "",
   },
   {
     programItemId: testProgramItem2.programItemId,
     priority: 1,
     signedToStartTime: testProgramItem2.startTime,
-    message: "",
   },
 ];
 
