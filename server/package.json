@@ -30,6 +30,7 @@
     "update-popularity": "NODE_ENV=development tsx src/test/scripts/testUpdateProgramItemPopularity.ts",
     "verify-results": "NODE_ENV=development tsx src/test/scripts/testVerifyResults.ts",
     "load-kompassi-data": "NODE_ENV=development tsx src/test/scripts/loadKompassiDataToDb.ts",
+    "load-past-event-data": "NODE_ENV=development tsx src/test/scripts/loadPastEventDataToDb.ts",
     "update-kompassi-datadump": "NODE_ENV=development tsx src/test/scripts/updateKompassiDataDump.ts",
     "check-start-times": "NODE_ENV=development tsx src/test/scripts/checkStartTimes.ts"
   },
