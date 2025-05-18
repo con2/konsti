@@ -1,14 +1,16 @@
-import { NavigateFunction } from "react-router";
+import { NavigationType, NavigateFunction } from "react-router";
 import { AppRoute } from "client/app/AppRoutes";
 
-// Navigate to previous page or front page if no previous page exists
 export const navigateToPreviousOrRoot = async (
-  history: History,
+  navigationType: NavigationType,
   navigate: NavigateFunction,
 ): Promise<void> => {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-  if (history.state?.idx > 0) {
-    await navigate(-1);
+  // Navigate to front page if no previous page exists
+  if (navigationType === NavigationType.Pop) {
+    await navigate(AppRoute.ROOT);
+    return;
   }
-  await navigate(AppRoute.ROOT);
+
+  // Navigate to previous page
+  await navigate(-1);
 };

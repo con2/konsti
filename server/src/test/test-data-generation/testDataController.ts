@@ -26,8 +26,9 @@ export const postPopulateDb = async (
   if (!result.success) {
     logger.error(
       "%s",
-      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-      new Error(`Error validating postPopulateDb body: ${result.error}`),
+      new Error(
+        `Error validating postPopulateDb body: ${JSON.stringify(result.error)}`,
+      ),
     );
     return res.sendStatus(422);
   }
@@ -85,8 +86,9 @@ export const postAddProgramItems = async (
   if (!result.success) {
     logger.error(
       "%s",
-      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-      new Error(`Error validating postAddProgramItems body: ${result.error}`),
+      new Error(
+        `Error validating postAddProgramItems body: ${JSON.stringify(result.error)}`,
+      ),
     );
     return res.sendStatus(422);
   }
@@ -118,8 +120,9 @@ export const postAddSerials = async (
   if (!result.success) {
     logger.error(
       "%s",
-      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-      new Error(`Error validating postAddSerials body: ${result.error}`),
+      new Error(
+        `Error validating postAddSerials body: ${JSON.stringify(result.error)}`,
+      ),
     );
     return res.sendStatus(422);
   }

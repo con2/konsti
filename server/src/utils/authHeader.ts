@@ -6,7 +6,7 @@ export const getAuthorizedUsername = (
   authHeader: string | undefined,
   requiredUserGroup: UserGroup | UserGroup[],
 ): string | null => {
-  logger.debug(`Auth: Require jwt for user group ${requiredUserGroup}`);
+  logger.debug(`Auth: Require jwt for user group ${String(requiredUserGroup)}`);
 
   if (!authHeader || authHeader.split(" ")[0] !== "Bearer") {
     logger.info("Auth: No auth header");
@@ -19,11 +19,13 @@ export const getAuthorizedUsername = (
   const jwtResponse = getJwtResponse(jwt, requiredUserGroup);
 
   if (jwtResponse.status === "error") {
-    logger.info(`Auth: Invalid jwt for user group '${requiredUserGroup}'`);
+    logger.info(
+      `Auth: Invalid jwt for user group '${String(requiredUserGroup)}'`,
+    );
     return null;
   }
 
-  logger.debug(`Auth: Valid jwt for user group ${requiredUserGroup}`);
+  logger.debug(`Auth: Valid jwt for user group ${String(requiredUserGroup)}`);
   return jwtResponse.body.username;
 };
 

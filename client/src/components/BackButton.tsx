@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate, useNavigationType } from "react-router";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,10 +7,11 @@ import { navigateToPreviousOrRoot } from "client/utils/navigation";
 
 export const BackButton = (): ReactElement => {
   const navigate = useNavigate();
+  const navigationType = useNavigationType();
   const { t } = useTranslation();
 
   const goBack = async (): Promise<void> => {
-    await navigateToPreviousOrRoot(globalThis.history, navigate);
+    await navigateToPreviousOrRoot(navigationType, navigate);
   };
 
   return (

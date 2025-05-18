@@ -35,8 +35,9 @@ export const postHidden = async (
   if (!result.success) {
     logger.error(
       "%s",
-      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-      new Error(`Error validating postHidden body: ${result.error}`),
+      new Error(
+        `Error validating postHidden body: ${JSON.stringify(result.error)}`,
+      ),
     );
     return res.sendStatus(422);
   }
@@ -75,8 +76,9 @@ export const postSignupQuestion = async (
   if (!result.success) {
     logger.error(
       "%s",
-      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-      new Error(`Error validating postSignupQuestion body: ${result.error}`),
+      new Error(
+        `Error validating postSignupQuestion body: ${JSON.stringify(result.error)}`,
+      ),
     );
     return res.sendStatus(422);
   }
@@ -105,8 +107,9 @@ export const deleteSignupQuestion = async (
   if (!result.success) {
     logger.error(
       "%s",
-      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-      new Error(`Error validating deleteSignupQuestion body: ${result.error}`),
+      new Error(
+        `Error validating deleteSignupQuestion body: ${JSON.stringify(result.error)}`,
+      ),
     );
     return res.sendStatus(422);
   }
@@ -135,8 +138,9 @@ export const postSettings = async (
   if (!result.success) {
     logger.error(
       "%s",
-      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-      new Error(`Error validating postSettings body: ${result.error}`),
+      new Error(
+        `Error validating postSettings body: ${JSON.stringify(result.error)}`,
+      ),
     );
     return res.sendStatus(422);
   }

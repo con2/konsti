@@ -24,8 +24,9 @@ export const postFeedback = async (
   if (!result.success) {
     logger.error(
       "%s",
-      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-      new Error(`Error validating postFeedback body: ${result.error}`),
+      new Error(
+        `Error validating postFeedback body: ${JSON.stringify(result.error)}`,
+      ),
     );
     return res.sendStatus(422);
   }

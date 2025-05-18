@@ -15,8 +15,9 @@ export const postSentryTunnel = (req: Request, res: Response): Response => {
   if (!result.success) {
     logger.error(
       "%s",
-      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-      new Error(`Error validating postSentryTunnel body: ${result.error}`),
+      new Error(
+        `Error validating postSentryTunnel body: ${JSON.stringify(result.error)}`,
+      ),
     );
     return res.sendStatus(422);
   }

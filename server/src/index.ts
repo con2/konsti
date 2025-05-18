@@ -16,8 +16,7 @@ const startApp = async (): Promise<void> => {
       port: config.server().port,
     });
   } catch (error) {
-    // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-    logger.error("%s", new Error(`Starting server failed: ${error}`));
+    logger.error("%s", new Error(`Starting server failed: ${String(error)}`));
     return;
   }
 

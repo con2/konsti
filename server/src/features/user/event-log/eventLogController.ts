@@ -25,8 +25,7 @@ export const postEventLogItemIsSeen = async (
     logger.error(
       "%s",
       new Error(
-        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-        `Error validating postEventLogItemIsSeen body: ${result.error}`,
+        `Error validating postEventLogItemIsSeen body: ${JSON.stringify(result.error)}`,
       ),
     );
     return res.sendStatus(422);

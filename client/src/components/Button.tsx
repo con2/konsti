@@ -56,57 +56,61 @@ const StyledButton = styled.button<{ $buttonStyle: ButtonStyle }>`
 
   ${(props) => {
     if (props.disabled && props.$buttonStyle === ButtonStyle.SECONDARY) {
-      return `
-          background: ${props.theme.buttonSecondaryBackground};
-          border: 2px solid ${props.theme.buttonSecondaryBorder};
-          color: ${props.theme.textMain};
-          padding: 6px 20px;
+      return css`
+        background: ${props.theme.buttonSecondaryBackground};
+        border: 2px solid ${props.theme.buttonSecondaryBorder};
+        color: ${props.theme.textMain};
+        padding: 6px 20px;
 
-          ${disabledButton}`; // eslint-disable-line @typescript-eslint/restrict-template-expressions, @typescript-eslint/no-base-to-string
+        ${disabledButton}
+      `;
     }
     if (!props.disabled && props.$buttonStyle === ButtonStyle.SECONDARY) {
-      return `
-          background: ${props.theme.buttonSecondaryBackground};
-          border: 2px solid ${props.theme.buttonSecondaryBorder};
+      return css`
+        background: ${props.theme.buttonSecondaryBackground};
+        border: 2px solid ${props.theme.buttonSecondaryBorder};
+        color: ${props.theme.textMain};
+        padding: 6px 20px;
+
+        &:hover,
+        &:focus-visible {
+          background: ${props.theme.buttonSecondaryHover};
           color: ${props.theme.textMain};
-          padding: 6px 20px;
+        }
 
-          &:hover, &:focus-visible {
-            background: ${props.theme.buttonSecondaryHover};
-            color: ${props.theme.textMain};
-          }
-
-          &:active {
-            background: ${props.theme.buttonSecondaryClicked};
-            box-shadow: none;
-          }
+        &:active {
+          background: ${props.theme.buttonSecondaryClicked};
+          box-shadow: none;
+        }
       `;
     }
     if (props.disabled && props.$buttonStyle === ButtonStyle.PRIMARY) {
-      return `
-          background: ${props.theme.buttonPrimaryBackground};
-          border: none;
-          color: ${props.theme.buttonPrimaryText};
-          padding: 8px 20px;
+      return css`
+        background: ${props.theme.buttonPrimaryBackground};
+        border: none;
+        color: ${props.theme.buttonPrimaryText};
+        padding: 8px 20px;
 
-          ${disabledButton}`; // eslint-disable-line @typescript-eslint/restrict-template-expressions, @typescript-eslint/no-base-to-string
+        ${disabledButton}
+      `;
     }
 
     // Default: primary, not disabled
-    return `
-          background: ${props.theme.buttonPrimaryBackground};
-          border: none;
-          color: ${props.theme.buttonPrimaryText};
-          padding: 8px 20px;
+    return css`
+      background: ${props.theme.buttonPrimaryBackground};
+      border: none;
+      color: ${props.theme.buttonPrimaryText};
+      padding: 8px 20px;
 
-          &:hover, &:focus-visible {
-            background: ${props.theme.buttonPrimaryHover};
-            color: ${props.theme.buttonPrimaryText};
-            }
-          &:active {
-            background: ${props.theme.buttonPrimaryClicked};
-            box-shadow: none;
-            }
-      `;
+      &:hover,
+      &:focus-visible {
+        background: ${props.theme.buttonPrimaryHover};
+        color: ${props.theme.buttonPrimaryText};
+      }
+      &:active {
+        background: ${props.theme.buttonPrimaryClicked};
+        box-shadow: none;
+      }
+    `;
   }}
 `;

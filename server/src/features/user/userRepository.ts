@@ -83,7 +83,7 @@ export const updateUsersByUsername = async (
     return makeSuccessResult();
   } catch (error) {
     logger.error(
-      `MongoDB: Error updating users ${users.map((user) => user.username)}: %s`,
+      `MongoDB: Error updating users ${String(users.map((user) => user.username))}: %s`,
       error,
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
