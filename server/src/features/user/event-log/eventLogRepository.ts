@@ -45,12 +45,12 @@ export const addEventLogItems = async (
   try {
     await UserModel.bulkWrite(bulkOps);
     logger.info(
-      `MongoDB: Action log item ${action} added for ${unique(usernames).length} users: ${unique(usernames)}`,
+      `MongoDB: Action log item ${action} added for ${unique(usernames).length} users: ${String(unique(usernames))}`,
     );
     return makeSuccessResult();
   } catch (error) {
     logger.error(
-      `MongoDB: Error adding event log item ${action} for ${unique(usernames).length} users ${unique(usernames)}: %s`,
+      `MongoDB: Error adding event log item ${action} for ${unique(usernames).length} users ${String(unique(usernames))}: %s`,
       error,
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
