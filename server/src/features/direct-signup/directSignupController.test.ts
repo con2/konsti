@@ -63,7 +63,6 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
 
   test("should return 422 with invalid parameters", async () => {
     const signup: Partial<PostDirectSignupRequest> = {
-      username: mockUser.username,
       directSignupProgramItemId: "ABCD1234",
     };
     const response = await request(server)
@@ -78,7 +77,6 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
 
   test("should return 422 if signup message is too long", async () => {
     const signup: PostDirectSignupRequest = {
-      username: mockUser.username,
       directSignupProgramItemId: testProgramItem.programItemId,
       message:
         "Test message Test message Test message Test message Test message Test message Test message Test message Test message Test message Test message Test message Test message",
@@ -101,7 +99,6 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     await saveUser(mockUser);
 
     const signup: PostDirectSignupRequest = {
-      username: mockUser.username,
       directSignupProgramItemId: "invalid_program_item_id",
       message: "",
       priority: DIRECT_SIGNUP_PRIORITY,
@@ -128,7 +125,6 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     await saveProgramItems([testProgramItem]);
 
     const signup: PostDirectSignupRequest = {
-      username: "user_not_found",
       directSignupProgramItemId: testProgramItem.programItemId,
       message: "",
       priority: DIRECT_SIGNUP_PRIORITY,
@@ -157,7 +153,6 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     await saveUser(mockUser);
 
     const signup: PostDirectSignupRequest = {
-      username: mockUser.username,
       directSignupProgramItemId: testProgramItem.programItemId,
       message: "",
       priority: DIRECT_SIGNUP_PRIORITY,
@@ -186,7 +181,6 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     await saveUser(mockUser);
 
     const signup: PostDirectSignupRequest = {
-      username: mockUser.username,
       directSignupProgramItemId: testProgramItem.programItemId,
       message: "",
       priority: DIRECT_SIGNUP_PRIORITY,
@@ -221,7 +215,6 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
 
     // Update direct signups
     const signup: PostDirectSignupRequest = {
-      username: mockUser.username,
       directSignupProgramItemId: testProgramItem.programItemId,
       message: "Test message",
       priority: DIRECT_SIGNUP_PRIORITY,
@@ -267,7 +260,6 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
 
     const makeRequest = async (user: NewUser): Promise<Test> => {
       const signup: PostDirectSignupRequest = {
-        username: user.username,
         directSignupProgramItemId: testProgramItem.programItemId,
         message: "Test message",
         priority: DIRECT_SIGNUP_PRIORITY,
@@ -315,7 +307,6 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
 
     const makeRequest = async (user: NewUser): Promise<Test> => {
       const signup: PostDirectSignupRequest = {
-        username: user.username,
         directSignupProgramItemId: testProgramItem.programItemId,
         message: "Test message",
         priority: DIRECT_SIGNUP_PRIORITY,

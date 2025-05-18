@@ -8,14 +8,14 @@ import {
 } from "shared/utils/result";
 import {
   PostEventLogIsSeenRequest,
-  PostEventLogItemRequest,
+  NewEventLogItems,
 } from "shared/types/api/eventLog";
 import { UserModel } from "server/features/user/userSchema";
 import { logger } from "server/utils/logger";
 import { EventLogAction, EventLogItem } from "shared/types/models/eventLog";
 
 export const addEventLogItems = async (
-  eventLogRequest: PostEventLogItemRequest,
+  eventLogRequest: NewEventLogItems,
 ): Promise<Result<void, MongoDbError>> => {
   const { updates, action } = eventLogRequest;
 
@@ -59,8 +59,9 @@ export const addEventLogItems = async (
 
 export const updateEventLogItemIsSeen = async (
   request: PostEventLogIsSeenRequest,
+  username: string,
 ): Promise<Result<EventLogItem[] | null, MongoDbError>> => {
-  const { username, eventLogItemId, isSeen } = request;
+  const { eventLogItemId, isSeen } = request;
   try {
     const response = await UserModel.findOneAndUpdate(
       { username, "eventLogItems._id": eventLogItemId },

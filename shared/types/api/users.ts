@@ -54,7 +54,7 @@ export interface PostUserError extends ApiError {
 // POST update user password
 
 export const PostUpdateUserPasswordRequestSchema = z.object({
-  userToUpdateUsername: z.string(),
+  usernameToUpdate: z.string(),
   password: z.string(),
 });
 

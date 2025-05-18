@@ -26,8 +26,9 @@ import { SignupRepositoryAddSignup } from "server/features/direct-signup/directS
 
 export const storeDirectSignup = async (
   signupRequest: PostDirectSignupRequest,
+  username: string,
 ): Promise<PostDirectSignupResponse | PostDirectSignupError> => {
-  const { directSignupProgramItemId, username } = signupRequest;
+  const { directSignupProgramItemId } = signupRequest;
   if (config.event().noKonstiSignupIds.includes(directSignupProgramItemId)) {
     return {
       message: "No Konsti signup for this program item",
@@ -109,6 +110,7 @@ export const storeDirectSignup = async (
 
   const newDirectSignup: SignupRepositoryAddSignup = {
     ...signupRequest,
+    username,
     signedToStartTime: programItem.startTime,
   };
 

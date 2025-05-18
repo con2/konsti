@@ -36,7 +36,7 @@ export const postDirectSignup = async (
     return res.sendStatus(422);
   }
 
-  const response = await storeDirectSignup(result.data);
+  const response = await storeDirectSignup(result.data, username);
   return res.json(response);
 };
 

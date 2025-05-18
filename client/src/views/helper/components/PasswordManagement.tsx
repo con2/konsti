@@ -5,12 +5,12 @@ import { getUserBySerialOrUsername } from "client/services/userServices";
 import { Button, ButtonStyle } from "client/components/Button";
 import { ChangePasswordForm } from "client/views/helper/components/ChangePasswordForm";
 import { ControlledInput } from "client/components/ControlledInput";
-import { getWeekdayAndTime } from "client/utils/timeFormatter";
+import { getDateAndTime } from "client/utils/timeFormatter";
 
 export const PasswordManagement = (): ReactElement => {
   const { t } = useTranslation();
 
-  const [username, setUsername] = useState<string>("");
+  const [usernameToUpdate, setUsernameToUpdate] = useState<string>("");
   const [userSerialInput, setUserSerialInput] = useState<string>("");
   const [changePasswordInputVisible, setChangePasswordInputVisible] =
     useState<boolean>(false);
@@ -37,10 +37,10 @@ export const PasswordManagement = (): ReactElement => {
         <Message>
           {t("passwordManagement.foundUser")}: {response.username} (
           {response.serial}) - {t("passwordManagement.userCreatedAt")}{" "}
-          {getWeekdayAndTime(response.createdAt)}
+          {getDateAndTime(response.createdAt)}
         </Message>,
       );
-      setUsername(response.username);
+      setUsernameToUpdate(response.username);
       setChangePasswordInputVisible(true);
     }
   };
@@ -70,7 +70,9 @@ export const PasswordManagement = (): ReactElement => {
 
       {userFoundMessage}
 
-      {changePasswordInputVisible && <ChangePasswordForm username={username} />}
+      {changePasswordInputVisible && (
+        <ChangePasswordForm usernameToUpdate={usernameToUpdate} />
+      )}
     </div>
   );
 };

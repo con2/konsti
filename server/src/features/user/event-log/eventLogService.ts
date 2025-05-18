@@ -8,8 +8,12 @@ import { isErrorResult, unwrapResult } from "shared/utils/result";
 
 export const storeEventLogItemIsSeen = async (
   request: PostEventLogIsSeenRequest,
+  username: string,
 ): Promise<PostEventLogIsSeenResponse | PostEventLogIsSeenError> => {
-  const updateEventLogItemResult = await updateEventLogItemIsSeen(request);
+  const updateEventLogItemResult = await updateEventLogItemIsSeen(
+    request,
+    username,
+  );
   if (isErrorResult(updateEventLogItemResult)) {
     return {
       message: "Unable to update event log item isSeen",

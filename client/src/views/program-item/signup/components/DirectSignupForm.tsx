@@ -83,7 +83,6 @@ export const DirectSignupForm = ({
     setLoading(true);
 
     const enterData: PostDirectSignupRequest = {
-      username,
       directSignupProgramItemId: programItem.programItemId,
       message: userSignupMessage || selectedValue,
       priority: DIRECT_SIGNUP_PRIORITY,

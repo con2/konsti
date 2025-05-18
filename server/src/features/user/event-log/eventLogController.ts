@@ -32,6 +32,6 @@ export const postEventLogItemIsSeen = async (
     return res.sendStatus(422);
   }
 
-  const response = await storeEventLogItemIsSeen(result.data);
+  const response = await storeEventLogItemIsSeen(result.data, username);
   return res.json(response);
 };
