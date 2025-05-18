@@ -2,7 +2,7 @@ import { ReactElement, useState } from "react";
 import { SubmitHandler, useForm, useFormState } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import { useNavigate } from "react-router";
+import { useNavigate, useNavigationType } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, ButtonStyle } from "client/components/Button";
 import { useAppDispatch } from "client/utils/hooks";
@@ -20,6 +20,7 @@ export const LoginForm = (): ReactElement => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const navigationType = useNavigationType();
 
   const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
   const [serverError, setServerError] = useState<LoginErrorMessage | null>(
@@ -46,7 +47,7 @@ export const LoginForm = (): ReactElement => {
       return;
     }
 
-    await navigateToPreviousOrRoot(globalThis.history, navigate);
+    await navigateToPreviousOrRoot(navigationType, navigate);
   };
 
   return (

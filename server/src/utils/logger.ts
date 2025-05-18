@@ -22,8 +22,7 @@ const consoleOutputFormat = config.server().consoleLogFormatJson
       }),
       format.splat(),
       format.printf((info) => {
-        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-        return `${info.timestamp} ${info.level}: ${info.message}`;
+        return `${String(info.timestamp)} ${info.level}: ${String(info.message)}`;
       }),
     );
 

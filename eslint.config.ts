@@ -208,7 +208,7 @@ export default defineConfig([
       ],
       "@typescript-eslint/restrict-template-expressions": [
         "error",
-        { allowArray: true, allowNumber: true },
+        { allowNumber: true },
       ],
       "@typescript-eslint/no-deprecated": "error",
       "@typescript-eslint/no-unused-expressions": [

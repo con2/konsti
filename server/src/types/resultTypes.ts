@@ -46,10 +46,8 @@ export interface RunRandomAndPadgInput {
   lotterySignupProgramItems: readonly ProgramItem[];
   attendeeGroups: readonly User[][];
   allAttendees: readonly User[];
-  // eslint-disable-next-line @typescript-eslint/no-wrapper-object-types
-  numberOfIndividuals: Number;
-  // eslint-disable-next-line @typescript-eslint/no-wrapper-object-types
-  numberOfGroups: Number;
+  numberOfIndividuals: number;
+  numberOfGroups: number;
 }
 
 export interface Input {

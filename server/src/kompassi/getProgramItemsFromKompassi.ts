@@ -81,8 +81,7 @@ export const parseProgramItem = (
       logger.error(
         "%s",
         new Error(
-          // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-          `Invalid program item ${getProgramItemId(programItem)} at path ${issue.path}: ${issue.message}`,
+          `Invalid program item ${String(getProgramItemId(programItem))} at path ${String(issue.path)}: ${issue.message}`,
         ),
       );
     });
@@ -90,8 +89,7 @@ export const parseProgramItem = (
   }
 
   logger.error(
-    // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-    `Unknown error while parsing program item ${getProgramItemId(programItem)}: %s`,
+    `Unknown error while parsing program item ${String(getProgramItemId(programItem))}: %s`,
     result.error,
   );
 };

@@ -2,7 +2,7 @@ import { ReactElement, useState } from "react";
 import { SubmitHandler, useForm, useFormState } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import { useNavigate } from "react-router";
+import { useNavigate, useNavigationType } from "react-router";
 import { Button, ButtonStyle } from "client/components/Button";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import {
@@ -28,6 +28,7 @@ export const KompassiLoginUsernameForm = (): ReactElement => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const navigationType = useNavigationType();
 
   const username = useAppSelector((state) => state.login.username);
 
@@ -56,7 +57,7 @@ export const KompassiLoginUsernameForm = (): ReactElement => {
       return;
     }
 
-    await navigateToPreviousOrRoot(globalThis.history, navigate);
+    await navigateToPreviousOrRoot(navigationType, navigate);
   };
 
   return (

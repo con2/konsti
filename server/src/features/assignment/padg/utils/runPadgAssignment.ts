@@ -85,8 +85,7 @@ export const runPadgAssignment = (
       logger.error(
         "%s",
         new Error(
-          // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-          `Padg assignment round failed: ${error}. Input: ${JSON.stringify(input)}`,
+          `Padg assignment round failed: ${String(error)}. Input: ${JSON.stringify(input)}`,
         ),
       );
     }
@@ -117,8 +116,7 @@ export const runPadgAssignment = (
           groups,
         )}, events: ${JSON.stringify(events)}, list: ${JSON.stringify(
           list,
-          // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-        )}, updateL: ${updateL}`,
+        )}, updateL: ${JSON.stringify(updateL)}`,
       ),
     );
     return makeErrorResult(AssignmentError.UNKNOWN_ERROR);

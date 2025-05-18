@@ -61,8 +61,7 @@ export const runRandomAssignment = (
     logger.error(
       "%s",
       new Error(
-        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-        `Random assignment failed: ${error}. Assignment time: ${assignmentTime}, Input: ${JSON.stringify(input)}`,
+        `Random assignment failed: ${String(error)}. Assignment time: ${assignmentTime}, Input: ${JSON.stringify(input)}`,
       ),
     );
     return makeErrorResult(AssignmentError.UNKNOWN_ERROR);

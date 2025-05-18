@@ -30,8 +30,9 @@ export const postLotterySignup = async (
   if (!result.success) {
     logger.error(
       "%s",
-      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-      new Error(`Error validating postLotterySignup body: ${result.error}`),
+      new Error(
+        `Error validating postLotterySignup body: ${JSON.stringify(result.error)}`,
+      ),
     );
     return res.sendStatus(422);
   }
@@ -63,8 +64,9 @@ export const deleteLotterySignup = async (
   if (!result.success) {
     logger.error(
       "%s",
-      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-      new Error(`Error validating deleteLotterySignup body: ${result.error}`),
+      new Error(
+        `Error validating deleteLotterySignup body: ${JSON.stringify(result.error)}`,
+      ),
     );
     return res.sendStatus(422);
   }

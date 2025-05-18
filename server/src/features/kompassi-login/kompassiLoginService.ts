@@ -67,8 +67,7 @@ const getKompassiTokens = async (
       logger.error(
         "%s",
         new Error(
-          // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-          `Error validating getKompassiTokens response: ${result.error}`,
+          `Error validating getKompassiTokens response: ${JSON.stringify(result.error)}`,
         ),
       );
       return makeErrorResult(KompassiLoginError.UNKNOWN_ERROR);
@@ -96,8 +95,7 @@ const getKompassiProfile = async (
       logger.error(
         "%s",
         new Error(
-          // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-          `Error validating getKompassiProfile response: ${result.error}`,
+          `Error validating getKompassiProfile response: ${JSON.stringify(result.error)}`,
         ),
       );
       return makeErrorResult(KompassiLoginError.UNKNOWN_ERROR);
