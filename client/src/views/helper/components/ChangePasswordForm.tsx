@@ -54,15 +54,13 @@ export const ChangePasswordForm = ({
       changePasswordInput,
     );
 
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-    if (!response || response.status === "error") {
+    if (response.status === "error") {
       setPasswordChangeMessage(
         <Message error={true}>
           {t("passwordManagement.changingPasswordError")}
         </Message>,
       );
-      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-    } else if (response.status === "success") {
+    } else {
       setPasswordChangeMessage(
         <Message>{t("passwordManagement.changingPasswordSuccess")}</Message>,
       );
