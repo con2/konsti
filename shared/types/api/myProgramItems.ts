@@ -47,7 +47,6 @@ export interface DeleteLotterySignupError extends ApiError {
 // POST direct signup
 
 export const PostDirectSignupRequestSchema = z.object({
-  username: z.string(),
   directSignupProgramItemId: z.string(),
   message: z.string().max(SIGNUP_MESSAGE_LENGTH, "Message too long"),
   priority: z.number(),

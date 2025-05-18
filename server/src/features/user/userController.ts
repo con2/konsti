@@ -61,10 +61,10 @@ export const postUserPassword = async (
     return res.sendStatus(422);
   }
 
-  const { userToUpdateUsername, password } = result.data;
+  const { usernameToUpdate, password } = result.data;
 
   if (
-    requesterUsername !== userToUpdateUsername &&
+    requesterUsername !== usernameToUpdate &&
     requesterUsername !== "helper" &&
     requesterUsername !== "admin"
   ) {
@@ -72,7 +72,7 @@ export const postUserPassword = async (
   }
 
   const response = await storeUserPassword(
-    userToUpdateUsername,
+    usernameToUpdate,
     password,
     requesterUsername,
   );

@@ -30,7 +30,6 @@ export const EventLog = (): ReactElement => {
   const programItems = useAppSelector(
     (state) => state.allProgramItems.programItems,
   );
-  const username = useAppSelector((state) => state.login.username);
 
   const localEventLogItems = useRef(eventLogItems);
 
@@ -42,13 +41,12 @@ export const EventLog = (): ReactElement => {
       // eslint-disable-next-line @typescript-eslint/no-floating-promises
       dispatch(
         submitUpdateEventLogIsSeen({
-          username,
           eventLogItemId,
           isSeen: true,
         }),
       );
     });
-  }, [dispatch, eventLogItems, username]);
+  }, [dispatch, eventLogItems]);
 
   useEffect(() => {
     setEventsSeen();

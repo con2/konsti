@@ -36,7 +36,7 @@ export const ProfileView = (): ReactElement => {
           {t("button.logout")}
         </StyledButton>
       </UserInfoContainer>
-      {isLocalLogin && <ChangePasswordForm username={username} />}
+      {isLocalLogin && <ChangePasswordForm usernameToUpdate={username} />}
     </Container>
   );
 };

@@ -17,7 +17,6 @@ export const NotificationBar = (): ReactElement | null => {
   const dispatch = useAppDispatch();
   const location = useLocation();
 
-  const username = useAppSelector((state) => state.login.username);
   const programItems = useAppSelector(
     (state) => state.allProgramItems.programItems,
   );
@@ -54,7 +53,6 @@ export const NotificationBar = (): ReactElement | null => {
               // eslint-disable-next-line @typescript-eslint/no-floating-promises
               dispatch(
                 submitUpdateEventLogIsSeen({
-                  username,
                   eventLogItemId: unseenEvent.eventLogItemId,
                   isSeen: true,
                 }),
