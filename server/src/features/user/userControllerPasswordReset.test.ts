@@ -10,6 +10,7 @@ import { mockUser } from "server/test/mock-data/mockUser";
 import { closeServer, startServer } from "server/utils/server";
 import {
   PostUpdateUserPasswordError,
+  PostUpdateUserPasswordRequest,
   PostUpdateUserPasswordResponse,
 } from "shared/types/api/users";
 
@@ -45,12 +46,14 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
   test("should allow user to change own password", async () => {
     await saveUser(mockUser);
 
+    const requestData: PostUpdateUserPasswordRequest = {
+      usernameToUpdate: mockUser.username,
+      password: "testpass",
+    };
+
     const response = await request(server)
       .post(ApiEndpoint.USERS_PASSWORD)
-      .send({
-        userToUpdateUsername: mockUser.username,
-        password: "testpass",
-      })
+      .send(requestData)
       .set(
         "Authorization",
         `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
@@ -61,12 +64,14 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
   });
 
   test("should not allow user to change other user's password", async () => {
+    const requestData: PostUpdateUserPasswordRequest = {
+      usernameToUpdate: "another_user",
+      password: "testpass",
+    };
+
     const response = await request(server)
       .post(ApiEndpoint.USERS_PASSWORD)
-      .send({
-        userToUpdateUsername: "another_user",
-        password: "testpass",
-      })
+      .send(requestData)
       .set("Authorization", `Bearer ${getJWT(UserGroup.USER, "testuser")}`);
     expect(response.status).toEqual(401);
   });
@@ -74,12 +79,14 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
   test("should allow helper to change other user's password", async () => {
     await saveUser(mockUser);
 
+    const requestData: PostUpdateUserPasswordRequest = {
+      usernameToUpdate: mockUser.username,
+      password: "testpass",
+    };
+
     const response = await request(server)
       .post(ApiEndpoint.USERS_PASSWORD)
-      .send({
-        userToUpdateUsername: mockUser.username,
-        password: "testpass",
-      })
+      .send(requestData)
       .set("Authorization", `Bearer ${getJWT(UserGroup.HELP, "helper")}`);
     expect(response.status).toEqual(200);
     const body = response.body as PostUpdateUserPasswordResponse;
@@ -87,12 +94,14 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
   });
 
   test("should not allow helper to change password for 'admin' or 'helper' users", async () => {
+    const adminRequestData: PostUpdateUserPasswordRequest = {
+      usernameToUpdate: "admin",
+      password: "testpass",
+    };
+
     const response = await request(server)
       .post(ApiEndpoint.USERS_PASSWORD)
-      .send({
-        userToUpdateUsername: "admin",
-        password: "testpass",
-      })
+      .send(adminRequestData)
       .set("Authorization", `Bearer ${getJWT(UserGroup.HELP, "helper")}`);
     expect(response.status).toEqual(200);
 
@@ -100,12 +109,14 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
     expect(body.status).toEqual("error");
     expect(body.errorId).toEqual("notAllowed");
 
+    const helperRequestData: PostUpdateUserPasswordRequest = {
+      usernameToUpdate: "helper",
+      password: "testpass",
+    };
+
     const response2 = await request(server)
       .post(ApiEndpoint.USERS_PASSWORD)
-      .send({
-        userToUpdateUsername: "helper",
-        password: "testpass",
-      })
+      .send(helperRequestData)
       .set("Authorization", `Bearer ${getJWT(UserGroup.HELP, "helper")}`);
     expect(response2.status).toEqual(200);
 
@@ -118,24 +129,28 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
     await saveUser({ ...mockUser, username: "admin" });
     await saveUser({ ...mockUser, username: "helper" });
 
+    const adminRequestData: PostUpdateUserPasswordRequest = {
+      usernameToUpdate: "admin",
+      password: "testpass",
+    };
+
     const response = await request(server)
       .post(ApiEndpoint.USERS_PASSWORD)
-      .send({
-        userToUpdateUsername: "admin",
-        password: "testpass",
-      })
+      .send(adminRequestData)
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
     expect(response.status).toEqual(200);
 
     const body = response.body as PostUpdateUserPasswordResponse;
     expect(body.status).toEqual("success");
 
+    const helperRequestData: PostUpdateUserPasswordRequest = {
+      usernameToUpdate: "helper",
+      password: "testpass",
+    };
+
     const response2 = await request(server)
       .post(ApiEndpoint.USERS_PASSWORD)
-      .send({
-        userToUpdateUsername: "helper",
-        password: "testpass",
-      })
+      .send(helperRequestData)
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
     expect(response2.status).toEqual(200);
 
@@ -146,12 +161,14 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
   test("should not allow Kompassi login user to change local password", async () => {
     await saveUser({ ...mockUser, kompassiId: 100 });
 
+    const requestData: PostUpdateUserPasswordRequest = {
+      usernameToUpdate: mockUser.username,
+      password: "testpass",
+    };
+
     const response = await request(server)
       .post(ApiEndpoint.USERS_PASSWORD)
-      .send({
-        userToUpdateUsername: mockUser.username,
-        password: "testpass",
-      })
+      .send(requestData)
       .set(
         "Authorization",
         `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
