@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { DirectSignupDoc } from "server/features/direct-signup/directSignupTypes";
+import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 
 const DirectSignupSchema = new mongoose.Schema(
   {
@@ -16,6 +16,10 @@ const DirectSignupSchema = new mongoose.Schema(
   },
   { timestamps: true },
 );
+
+interface DirectSignupDoc
+  extends DirectSignupsForProgramItem,
+    mongoose.Document {}
 
 export const SignupModel = mongoose.model<DirectSignupDoc>(
   "direct-signup",

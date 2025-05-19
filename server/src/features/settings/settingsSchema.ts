@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
-import { SettingsDoc } from "server/types/settingsTypes";
 import { config } from "shared/config";
+import { Settings } from "shared/types/models/settings";
 
 const SettingsSchema = new mongoose.Schema(
   {
@@ -35,6 +35,8 @@ const SettingsSchema = new mongoose.Schema(
   },
   { timestamps: true },
 );
+
+interface SettingsDoc extends Settings, mongoose.Document {}
 
 export const SettingsModel = mongoose.model<SettingsDoc>(
   "settings",

@@ -2,7 +2,6 @@ import { logger } from "server/utils/logger";
 import { TestSettings } from "shared/test-types/models/testSettings";
 import { TestSettingsModel } from "server/test/test-settings/testSettingsSchema";
 import { PostTestSettingsRequest } from "shared/test-types/api/testSettings";
-import { TestSettingsDoc } from "server/types/testSettingsTypes";
 import {
   Result,
   isErrorResult,
@@ -69,14 +68,17 @@ export const saveTestSettings = async (
   settings: PostTestSettingsRequest,
 ): Promise<Result<TestSettings, MongoDbError>> => {
   try {
-    const updatedTestSettings =
-      await TestSettingsModel.findOneAndUpdate<TestSettingsDoc>({}, settings, {
+    const updatedTestSettings = await TestSettingsModel.findOneAndUpdate(
+      {},
+      settings,
+      {
         new: true,
         upsert: true,
         fields: "-createdAt -updatedAt",
-      });
+      },
+    ).lean<TestSettings>();
     logger.info("MongoDB: Test settings updated");
-    return makeSuccessResult(updatedTestSettings.toJSON<TestSettingsDoc>());
+    return makeSuccessResult(updatedTestSettings);
   } catch (error) {
     logger.error("MongoDB: Error updating test settings: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);

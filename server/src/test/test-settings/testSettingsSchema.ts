@@ -1,7 +1,5 @@
-import mongoose, { ObjectId } from "mongoose";
+import mongoose from "mongoose";
 import { TestSettings } from "shared/test-types/models/testSettings";
-
-interface TestSettingsDoc extends TestSettings, mongoose.Document<ObjectId> {}
 
 const TestSettingsSchema = new mongoose.Schema(
   {
@@ -9,6 +7,8 @@ const TestSettingsSchema = new mongoose.Schema(
   },
   { timestamps: true },
 );
+
+interface TestSettingsDoc extends TestSettings, mongoose.Document {}
 
 export const TestSettingsModel = mongoose.model<TestSettingsDoc>(
   "test-settings",

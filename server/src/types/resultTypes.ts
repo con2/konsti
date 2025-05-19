@@ -1,15 +1,7 @@
-import mongoose, { ObjectId } from "mongoose";
 import { ProgramItem } from "shared/types/models/programItem";
 import { LotterySignup, User } from "shared/types/models/user";
 import { UserAssignmentResult } from "shared/types/models/result";
 import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
-
-export interface ResultDoc
-  extends UserAssignmentResult,
-    mongoose.Document<ObjectId> {
-  algorithm: AssignmentAlgorithm;
-  message: string;
-}
 
 export interface UserLotterySignups {
   username: string;

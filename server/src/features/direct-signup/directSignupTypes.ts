@@ -1,5 +1,3 @@
-import mongoose, { ObjectId } from "mongoose";
-
 export interface UserDirectSignup {
   username: string;
   priority: number;
@@ -12,10 +10,6 @@ export interface DirectSignupsForProgramItem {
   userSignups: readonly UserDirectSignup[];
   count?: number;
 }
-
-export interface DirectSignupDoc
-  extends DirectSignupsForProgramItem,
-    mongoose.Document<ObjectId> {}
 
 export interface SignupRepositoryAddSignup {
   username: string;

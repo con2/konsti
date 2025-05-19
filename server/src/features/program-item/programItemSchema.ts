@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { ProgramItemDoc } from "server/types/programItemTypes";
+import { ProgramItem } from "shared/types/models/programItem";
 
 const programItemSchema = new mongoose.Schema(
   {
@@ -31,6 +31,8 @@ const programItemSchema = new mongoose.Schema(
   },
   { timestamps: true },
 );
+
+interface ProgramItemDoc extends ProgramItem, mongoose.Document {}
 
 export const ProgramItemModel = mongoose.model<ProgramItemDoc>(
   "program-item",

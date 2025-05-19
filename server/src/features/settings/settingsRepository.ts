@@ -7,7 +7,6 @@ import {
   SignupQuestion,
 } from "shared/types/models/settings";
 import { PostSettingsRequest } from "shared/types/api/settings";
-import { SettingsDoc } from "server/types/settingsTypes";
 import {
   Result,
   isErrorResult,
@@ -178,17 +177,13 @@ export const saveSettings = async (
   settings: PostSettingsRequest,
 ): Promise<Result<Settings, MongoDbError>> => {
   try {
-    const updatedSettings = await SettingsModel.findOneAndUpdate<SettingsDoc>(
-      {},
-      settings,
-      {
-        new: true,
-        upsert: true,
-        fields: "-createdAt -updatedAt -_id -__v -signupQuestions._id",
-      },
-    );
+    const updatedSettings = await SettingsModel.findOneAndUpdate({}, settings, {
+      new: true,
+      upsert: true,
+      fields: "-createdAt -updatedAt -_id -__v -signupQuestions._id",
+    }).lean<Settings>();
     logger.info("MongoDB: App settings updated");
-    return makeSuccessResult(updatedSettings.toJSON<SettingsDoc>());
+    return makeSuccessResult(updatedSettings);
   } catch (error) {
     logger.error("MongoDB: Error updating app settings: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);

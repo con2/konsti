@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { ResultDoc } from "server/types/resultTypes";
+import { UserAssignmentResult } from "shared/types/models/result";
 
 const ResultsSchema = new mongoose.Schema(
   {
@@ -19,5 +19,7 @@ const ResultsSchema = new mongoose.Schema(
   },
   { timestamps: true },
 );
+
+interface ResultDoc extends UserAssignmentResult, mongoose.Document {}
 
 export const ResultsModel = mongoose.model<ResultDoc>("results", ResultsSchema);

@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { FeedbackDoc } from "server/types/feedbackTypes";
+import { Feedback } from "shared/types/models/feedback";
 
 const feedbackSchema = new mongoose.Schema(
   {
@@ -9,6 +9,8 @@ const feedbackSchema = new mongoose.Schema(
   },
   { timestamps: true },
 );
+
+interface FeedbackDoc extends Feedback, mongoose.Document {}
 
 export const FeedbackModel = mongoose.model<FeedbackDoc>(
   "feedback",

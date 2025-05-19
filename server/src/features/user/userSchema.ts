@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { UserDoc } from "server/types/userTypes";
+import { User } from "shared/types/models/user";
 
 const UserSchema = new mongoose.Schema(
   {
@@ -31,5 +31,7 @@ const UserSchema = new mongoose.Schema(
   },
   { timestamps: true },
 );
+
+interface UserDoc extends User, mongoose.Document {}
 
 export const UserModel = mongoose.model<UserDoc>("user", UserSchema);
