@@ -1,5 +1,4 @@
 import dayjs from "dayjs";
-import isBetween from "dayjs/plugin/isBetween"; // ES 2015
 import { logger } from "server/utils/logger";
 import { UserLotterySignups } from "server/types/resultTypes";
 import { findUsers } from "server/features/user/userRepository";
@@ -15,9 +14,6 @@ import {
 import { MongoDbError } from "shared/types/api/errors";
 import { ProgramItem } from "shared/types/models/programItem";
 
-// TODO: Can this be deleted?
-dayjs.extend(isBetween);
-
 export const removeOverlapLotterySignups = async (
   results: readonly UserAssignmentResult[],
   programItems: readonly ProgramItem[],
@@ -29,7 +25,6 @@ export const removeOverlapLotterySignups = async (
   if (isErrorResult(usersResult)) {
     return usersResult;
   }
-
   const users = unwrapResult(usersResult);
 
   results.flatMap((result) => {
@@ -59,6 +54,7 @@ export const removeOverlapLotterySignups = async (
       return [];
     }
 
+    // Cancel all lottery signups that start during the lottery direct signup
     const newLotterySignups = signedUser.lotterySignups.filter(
       (lotterySignup) => {
         const foundProgramItem = programItems.find(
@@ -68,7 +64,6 @@ export const removeOverlapLotterySignups = async (
         if (!foundProgramItem) {
           return false;
         }
-        // If lottery signup takes place during the length of direct signup program item, cancel it
         return !dayjs(foundProgramItem.startTime).isBetween(
           dayjs(directSignupProgramItem.startTime).add(1, "minutes"),
           dayjs(directSignupProgramItem.endTime),
@@ -76,10 +71,13 @@ export const removeOverlapLotterySignups = async (
       },
     );
 
-    signupData.push({
-      username: signedUser.username,
-      lotterySignups: newLotterySignups,
-    });
+    // Only update users whose lottery signups changed
+    if (signedUser.lotterySignups.length !== newLotterySignups.length) {
+      signupData.push({
+        username: signedUser.username,
+        lotterySignups: newLotterySignups,
+      });
+    }
   });
 
   const promises = signupData.map(async (signup) => {
