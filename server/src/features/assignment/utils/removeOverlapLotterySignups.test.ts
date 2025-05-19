@@ -63,11 +63,10 @@ test("should remove overlapping lottery signups from user", async () => {
   });
   const user1Result: UserAssignmentResult = {
     username: mockUser.username,
-    directSignup: {
+    assignmentSignup: {
       programItemId: testProgramItem.programItemId,
       priority: 1,
       signedToStartTime: testProgramItem.startTime,
-      message: "",
     },
   };
 
@@ -86,11 +85,10 @@ test("should remove overlapping lottery signups from user", async () => {
   });
   const user2Result: UserAssignmentResult = {
     username: mockUser2.username,
-    directSignup: {
+    assignmentSignup: {
       programItemId: testProgramItem.programItemId,
       priority: 1,
       signedToStartTime: testProgramItem.startTime,
-      message: "",
     },
   };
 

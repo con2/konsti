@@ -181,7 +181,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     );
     expect(assignResults.status).toEqual("success");
     expect(assignResults.results).toHaveLength(1);
-    expect(assignResults.results[0].directSignup.programItemId).toEqual(
+    expect(assignResults.results[0].assignmentSignup.programItemId).toEqual(
       testProgramItem2.programItemId,
     );
 
@@ -255,7 +255,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     expect(assignResults.status).toEqual("success");
     expect(assignResults.results.length).toEqual(1);
     assignResults.results.map((result) => {
-      expect(result.directSignup.programItemId).toEqual(
+      expect(result.assignmentSignup.programItemId).toEqual(
         testProgramItem.programItemId,
       );
     });
@@ -346,7 +346,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     expect(assignResults.status).toEqual("success");
     expect(assignResults.results.length).toEqual(2);
     assignResults.results.map((result) => {
-      expect(result.directSignup.programItemId).toEqual(
+      expect(result.assignmentSignup.programItemId).toEqual(
         testProgramItem.programItemId,
       );
     });
@@ -424,7 +424,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     expect(assignResults.status).toEqual("success");
     expect(assignResults.results.length).toEqual(1);
     assignResults.results.map((result) => {
-      expect(result.directSignup.programItemId).toEqual(
+      expect(result.assignmentSignup.programItemId).toEqual(
         testProgramItem.programItemId,
       );
     });
@@ -499,7 +499,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     expect(assignResults.status).toEqual("success");
     expect(assignResults.results).toHaveLength(1);
     assignResults.results.map((result) => {
-      expect(result.directSignup.programItemId).toEqual(
+      expect(result.assignmentSignup.programItemId).toEqual(
         testProgramItem2.programItemId,
       );
     });
@@ -571,7 +571,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     expect(assignResults.status).toEqual("success");
     expect(assignResults.results).toHaveLength(1);
     assignResults.results.map((result) => {
-      expect(result.directSignup.programItemId).toEqual(
+      expect(result.assignmentSignup.programItemId).toEqual(
         testProgramItem2.programItemId,
       );
     });

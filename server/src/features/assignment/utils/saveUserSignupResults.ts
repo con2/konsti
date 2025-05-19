@@ -92,10 +92,11 @@ export const saveUserSignupResults = async ({
   const newSignups: SignupRepositoryAddSignup[] = results.map((result) => {
     return {
       username: result.username,
-      directSignupProgramItemId: result.directSignup.programItemId,
+      directSignupProgramItemId: result.assignmentSignup.programItemId,
       signedToStartTime: assignmentTime,
-      message: result.directSignup.message,
-      priority: result.directSignup.priority,
+      // Signups received from assignment don't have signup messages
+      message: "",
+      priority: result.assignmentSignup.priority,
     };
   });
 
@@ -124,7 +125,7 @@ export const saveUserSignupResults = async ({
             (signup) =>
               !(
                 signup.directSignupProgramItemId ===
-                  result.directSignup.programItemId &&
+                  result.assignmentSignup.programItemId &&
                 signup.username === result.username
               ),
           );
@@ -135,7 +136,7 @@ export const saveUserSignupResults = async ({
   const newAssignmentEventLogItemsResult = await addEventLogItems({
     updates: finalResults.map((result) => ({
       username: result.username,
-      programItemId: result.directSignup.programItemId,
+      programItemId: result.assignmentSignup.programItemId,
       programItemStartTime: assignmentTime,
       createdAt: dayjs().toISOString(),
     })),

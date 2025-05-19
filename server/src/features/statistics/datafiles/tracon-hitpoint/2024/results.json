@@ -3,7 +3,7 @@
     "results": [
       {
         "username": "203638",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "offworlders-kosmoksen-karsein-keikka",
           "priority": 1,
           "signedToStartTime": "2024-11-02T12:00:00Z"
@@ -11,7 +11,7 @@
       },
       {
         "username": "117894",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "offworlders-kosmoksen-karsein-keikka",
           "priority": 1,
           "signedToStartTime": "2024-11-02T12:00:00Z"
@@ -19,7 +19,7 @@
       },
       {
         "username": "318838",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "offworlders-kosmoksen-karsein-keikka",
           "priority": 1,
           "signedToStartTime": "2024-11-02T12:00:00Z"
@@ -27,7 +27,7 @@
       },
       {
         "username": "895217",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "offworlders-kosmoksen-karsein-keikka",
           "priority": 1,
           "signedToStartTime": "2024-11-02T12:00:00Z"
@@ -44,7 +44,7 @@
     "results": [
       {
         "username": "335134",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "kuonojoen-lohikaarme",
           "priority": 1,
           "signedToStartTime": "2024-11-02T13:00:00Z"
@@ -52,7 +52,7 @@
       },
       {
         "username": "287943",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "<canceled>",
           "priority": 1,
           "signedToStartTime": "2024-11-02T13:00:00Z"
@@ -60,7 +60,7 @@
       },
       {
         "username": "25827",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "larppimiekkailuworkshop",
           "priority": 1,
           "signedToStartTime": "2024-11-02T13:00:00Z"
@@ -68,7 +68,7 @@
       },
       {
         "username": "937554",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "kuonojoen-lohikaarme",
           "priority": 1,
           "signedToStartTime": "2024-11-02T13:00:00Z"
@@ -76,7 +76,7 @@
       },
       {
         "username": "189803",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "<canceled>",
           "priority": 1,
           "signedToStartTime": "2024-11-02T13:00:00Z"
@@ -84,7 +84,7 @@
       },
       {
         "username": "737061",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "kuonojoen-lohikaarme",
           "priority": 1,
           "signedToStartTime": "2024-11-02T13:00:00Z"
@@ -92,7 +92,7 @@
       },
       {
         "username": "841288",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "<canceled>",
           "priority": 1,
           "signedToStartTime": "2024-11-02T13:00:00Z"
@@ -100,7 +100,7 @@
       },
       {
         "username": "995327",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "<canceled>",
           "priority": 1,
           "signedToStartTime": "2024-11-02T13:00:00Z"
@@ -108,7 +108,7 @@
       },
       {
         "username": "895833",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "<canceled>",
           "priority": 1,
           "signedToStartTime": "2024-11-02T13:00:00Z"
@@ -116,7 +116,7 @@
       },
       {
         "username": "316718",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "kuonojoen-lohikaarme",
           "priority": 1,
           "signedToStartTime": "2024-11-02T13:00:00Z"
@@ -124,7 +124,7 @@
       },
       {
         "username": "334478",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "kuonojoen-lohikaarme",
           "priority": 1,
           "signedToStartTime": "2024-11-02T13:00:00Z"
@@ -132,7 +132,7 @@
       },
       {
         "username": "830589",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "kuonojoen-lohikaarme",
           "priority": 1,
           "signedToStartTime": "2024-11-02T13:00:00Z"
@@ -140,7 +140,7 @@
       },
       {
         "username": "930070",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "<canceled>",
           "priority": 1,
           "signedToStartTime": "2024-11-02T13:00:00Z"
@@ -148,7 +148,7 @@
       },
       {
         "username": "508384",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "larppimiekkailuworkshop",
           "priority": 3,
           "signedToStartTime": "2024-11-02T13:00:00Z"
@@ -156,7 +156,7 @@
       },
       {
         "username": "106163",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "larppimiekkailuworkshop",
           "priority": 3,
           "signedToStartTime": "2024-11-02T13:00:00Z"
@@ -164,7 +164,7 @@
       },
       {
         "username": "613300",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "larppimiekkailuworkshop",
           "priority": 3,
           "signedToStartTime": "2024-11-02T13:00:00Z"
@@ -172,7 +172,7 @@
       },
       {
         "username": "322086",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "larppimiekkailuworkshop",
           "priority": 3,
           "signedToStartTime": "2024-11-02T13:00:00Z"
@@ -180,7 +180,7 @@
       },
       {
         "username": "599344",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "larppimiekkailuworkshop",
           "priority": 3,
           "signedToStartTime": "2024-11-02T13:00:00Z"
@@ -197,7 +197,7 @@
     "results": [
       {
         "username": "833504",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "space-1889-pakkolasku-venuksen-viidakkoon",
           "priority": 1,
           "signedToStartTime": "2024-11-02T14:00:00Z"
@@ -205,7 +205,7 @@
       },
       {
         "username": "729322",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "ruhtinaan-aika",
           "priority": 3,
           "signedToStartTime": "2024-11-02T14:00:00Z"
@@ -213,7 +213,7 @@
       },
       {
         "username": "599171",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "berserkin-pesa-vallat-ja-vaet",
           "priority": 1,
           "signedToStartTime": "2024-11-02T14:00:00Z"
@@ -221,7 +221,7 @@
       },
       {
         "username": "934216",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "toivottavasti-kukaan-ei-huomaa-2",
           "priority": 1,
           "signedToStartTime": "2024-11-02T14:00:00Z"
@@ -229,7 +229,7 @@
       },
       {
         "username": "653744",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "berserkin-pesa-vallat-ja-vaet",
           "priority": 1,
           "signedToStartTime": "2024-11-02T14:00:00Z"
@@ -237,7 +237,7 @@
       },
       {
         "username": "284629",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "tyhjyyden-meren-hirviot",
           "priority": 1,
           "signedToStartTime": "2024-11-02T14:00:00Z"
@@ -245,7 +245,7 @@
       },
       {
         "username": "720173",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "ruhtinaan-aika",
           "priority": 2,
           "signedToStartTime": "2024-11-02T14:00:00Z"
@@ -253,7 +253,7 @@
       },
       {
         "username": "247688",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "ruhtinaan-aika",
           "priority": 1,
           "signedToStartTime": "2024-11-02T14:00:00Z"
@@ -261,7 +261,7 @@
       },
       {
         "username": "734782",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "ruhtinaan-aika",
           "priority": 2,
           "signedToStartTime": "2024-11-02T14:00:00Z"
@@ -269,7 +269,7 @@
       },
       {
         "username": "430633",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "space-1889-pakkolasku-venuksen-viidakkoon",
           "priority": 1,
           "signedToStartTime": "2024-11-02T14:00:00Z"
@@ -277,7 +277,7 @@
       },
       {
         "username": "364272",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "ruhtinaan-aika",
           "priority": 1,
           "signedToStartTime": "2024-11-02T14:00:00Z"
@@ -285,7 +285,7 @@
       },
       {
         "username": "968261",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "tyhjyyden-meren-hirviot",
           "priority": 1,
           "signedToStartTime": "2024-11-02T14:00:00Z"
@@ -293,7 +293,7 @@
       },
       {
         "username": "990107",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "berserkin-pesa-vallat-ja-vaet",
           "priority": 1,
           "signedToStartTime": "2024-11-02T14:00:00Z"
@@ -301,7 +301,7 @@
       },
       {
         "username": "415137",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "toivottavasti-kukaan-ei-huomaa-2",
           "priority": 2,
           "signedToStartTime": "2024-11-02T14:00:00Z"
@@ -309,7 +309,7 @@
       },
       {
         "username": "713008",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "tyhjyyden-meren-hirviot",
           "priority": 2,
           "signedToStartTime": "2024-11-02T14:00:00Z"
@@ -317,7 +317,7 @@
       },
       {
         "username": "21147",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "tyhjyyden-meren-hirviot",
           "priority": 2,
           "signedToStartTime": "2024-11-02T14:00:00Z"
@@ -325,7 +325,7 @@
       },
       {
         "username": "752423",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "space-1889-pakkolasku-venuksen-viidakkoon",
           "priority": 1,
           "signedToStartTime": "2024-11-02T14:00:00Z"
@@ -333,7 +333,7 @@
       },
       {
         "username": "819385",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "space-1889-pakkolasku-venuksen-viidakkoon",
           "priority": 1,
           "signedToStartTime": "2024-11-02T14:00:00Z"
@@ -341,7 +341,7 @@
       },
       {
         "username": "916303",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "space-1889-pakkolasku-venuksen-viidakkoon",
           "priority": 1,
           "signedToStartTime": "2024-11-02T14:00:00Z"
@@ -358,7 +358,7 @@
     "results": [
       {
         "username": "816005",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "ihmiskarjujen-yo-night-of-the-hogmen",
           "priority": 1,
           "signedToStartTime": "2024-11-02T15:00:00Z"
@@ -366,7 +366,7 @@
       },
       {
         "username": "80282",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "red-tundra",
           "priority": 1,
           "signedToStartTime": "2024-11-02T15:00:00Z"
@@ -374,7 +374,7 @@
       },
       {
         "username": "468504",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "red-tundra",
           "priority": 2,
           "signedToStartTime": "2024-11-02T15:00:00Z"
@@ -382,7 +382,7 @@
       },
       {
         "username": "781504",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "red-tundra",
           "priority": 1,
           "signedToStartTime": "2024-11-02T15:00:00Z"
@@ -390,7 +390,7 @@
       },
       {
         "username": "189803",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "red-tundra",
           "priority": 1,
           "signedToStartTime": "2024-11-02T15:00:00Z"
@@ -398,7 +398,7 @@
       },
       {
         "username": "132985",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "red-tundra",
           "priority": 1,
           "signedToStartTime": "2024-11-02T15:00:00Z"
@@ -406,7 +406,7 @@
       },
       {
         "username": "137204",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "ihmiskarjujen-yo-night-of-the-hogmen",
           "priority": 1,
           "signedToStartTime": "2024-11-02T15:00:00Z"
@@ -414,7 +414,7 @@
       },
       {
         "username": "982326",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "ihmiskarjujen-yo-night-of-the-hogmen",
           "priority": 1,
           "signedToStartTime": "2024-11-02T15:00:00Z"
@@ -422,7 +422,7 @@
       },
       {
         "username": "871734",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "ihmiskarjujen-yo-night-of-the-hogmen",
           "priority": 1,
           "signedToStartTime": "2024-11-02T15:00:00Z"
@@ -430,7 +430,7 @@
       },
       {
         "username": "908239",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "red-tundra",
           "priority": 1,
           "signedToStartTime": "2024-11-02T15:00:00Z"
@@ -447,7 +447,7 @@
     "results": [
       {
         "username": "729322",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "juokse-juokse-kultaseni",
           "priority": 1,
           "signedToStartTime": "2024-11-02T16:00:00Z"
@@ -455,7 +455,7 @@
       },
       {
         "username": "653744",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "juokse-juokse-kultaseni",
           "priority": 1,
           "signedToStartTime": "2024-11-02T16:00:00Z"
@@ -463,7 +463,7 @@
       },
       {
         "username": "998206",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "juokse-juokse-kultaseni",
           "priority": 1,
           "signedToStartTime": "2024-11-02T16:00:00Z"
@@ -471,7 +471,7 @@
       },
       {
         "username": "706083",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "juokse-juokse-kultaseni",
           "priority": 1,
           "signedToStartTime": "2024-11-02T16:00:00Z"
@@ -479,7 +479,7 @@
       },
       {
         "username": "982821",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "juokse-juokse-kultaseni",
           "priority": 1,
           "signedToStartTime": "2024-11-02T16:00:00Z"
@@ -496,7 +496,7 @@
     "results": [
       {
         "username": "285472",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "praedor-kirotut-kuninkaanvaalit-2",
           "priority": 1,
           "signedToStartTime": "2024-11-02T17:00:00Z"
@@ -504,7 +504,7 @@
       },
       {
         "username": "720173",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "praedor-kirotut-kuninkaanvaalit-2",
           "priority": 1,
           "signedToStartTime": "2024-11-02T17:00:00Z"
@@ -512,7 +512,7 @@
       },
       {
         "username": "445334",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "praedor-kirotut-kuninkaanvaalit-2",
           "priority": 1,
           "signedToStartTime": "2024-11-02T17:00:00Z"
@@ -520,7 +520,7 @@
       },
       {
         "username": "623085",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "praedor-kirotut-kuninkaanvaalit-2",
           "priority": 1,
           "signedToStartTime": "2024-11-02T17:00:00Z"
@@ -528,7 +528,7 @@
       },
       {
         "username": "691088",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "city-of-the-scorpion-god",
           "priority": 2,
           "signedToStartTime": "2024-11-02T17:00:00Z"
@@ -536,7 +536,7 @@
       },
       {
         "username": "194249",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "city-of-the-scorpion-god",
           "priority": 1,
           "signedToStartTime": "2024-11-02T17:00:00Z"
@@ -544,7 +544,7 @@
       },
       {
         "username": "222718",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "city-of-the-scorpion-god",
           "priority": 1,
           "signedToStartTime": "2024-11-02T17:00:00Z"
@@ -552,7 +552,7 @@
       },
       {
         "username": "612118",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "alice-is-missing",
           "priority": 1,
           "signedToStartTime": "2024-11-02T17:00:00Z"
@@ -560,7 +560,7 @@
       },
       {
         "username": "758706",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "city-of-the-scorpion-god",
           "priority": 1,
           "signedToStartTime": "2024-11-02T17:00:00Z"
@@ -568,7 +568,7 @@
       },
       {
         "username": "325029",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "city-of-the-scorpion-god",
           "priority": 1,
           "signedToStartTime": "2024-11-02T17:00:00Z"
@@ -576,7 +576,7 @@
       },
       {
         "username": "895217",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "praedor-kirotut-kuninkaanvaalit-2",
           "priority": 2,
           "signedToStartTime": "2024-11-02T17:00:00Z"
@@ -584,7 +584,7 @@
       },
       {
         "username": "700648",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "praedor-kirotut-kuninkaanvaalit-2",
           "priority": 1,
           "signedToStartTime": "2024-11-02T17:00:00Z"
@@ -592,7 +592,7 @@
       },
       {
         "username": "133244",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "alice-is-missing",
           "priority": 1,
           "signedToStartTime": "2024-11-02T17:00:00Z"
@@ -600,7 +600,7 @@
       },
       {
         "username": "646848",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "alice-is-missing",
           "priority": 1,
           "signedToStartTime": "2024-11-02T17:00:00Z"
@@ -608,7 +608,7 @@
       },
       {
         "username": "35578",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "alice-is-missing",
           "priority": 1,
           "signedToStartTime": "2024-11-02T17:00:00Z"
@@ -625,7 +625,7 @@
     "results": [
       {
         "username": "374030",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "kirottu-matka-2",
           "priority": 1,
           "signedToStartTime": "2024-11-02T18:00:00Z"
@@ -633,7 +633,7 @@
       },
       {
         "username": "934216",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "alien-uscss-traconis-2",
           "priority": 1,
           "signedToStartTime": "2024-11-02T18:00:00Z"
@@ -641,7 +641,7 @@
       },
       {
         "username": "430633",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "kirottu-matka-2",
           "priority": 1,
           "signedToStartTime": "2024-11-02T18:00:00Z"
@@ -649,7 +649,7 @@
       },
       {
         "username": "662977",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "frendeja-kundeja-ja-pullonpyoritysta",
           "priority": 1,
           "signedToStartTime": "2024-11-02T18:00:00Z"
@@ -657,7 +657,7 @@
       },
       {
         "username": "456125",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "alien-uscss-traconis-2",
           "priority": 1,
           "signedToStartTime": "2024-11-02T18:00:00Z"
@@ -665,7 +665,7 @@
       },
       {
         "username": "712290",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "frendeja-kundeja-ja-pullonpyoritysta",
           "priority": 1,
           "signedToStartTime": "2024-11-02T18:00:00Z"
@@ -673,7 +673,7 @@
       },
       {
         "username": "647326",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "kirottu-matka-2",
           "priority": 1,
           "signedToStartTime": "2024-11-02T18:00:00Z"
@@ -681,7 +681,7 @@
       },
       {
         "username": "751445",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "kirottu-matka-2",
           "priority": 1,
           "signedToStartTime": "2024-11-02T18:00:00Z"
@@ -689,7 +689,7 @@
       },
       {
         "username": "623696",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "kirottu-matka-2",
           "priority": 1,
           "signedToStartTime": "2024-11-02T18:00:00Z"
@@ -697,7 +697,7 @@
       },
       {
         "username": "752423",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "alien-uscss-traconis-2",
           "priority": 1,
           "signedToStartTime": "2024-11-02T18:00:00Z"
@@ -705,7 +705,7 @@
       },
       {
         "username": "819385",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "alien-uscss-traconis-2",
           "priority": 1,
           "signedToStartTime": "2024-11-02T18:00:00Z"
@@ -713,7 +713,7 @@
       },
       {
         "username": "916303",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "alien-uscss-traconis-2",
           "priority": 1,
           "signedToStartTime": "2024-11-02T18:00:00Z"
@@ -730,7 +730,7 @@
     "results": [
       {
         "username": "802874",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "toivottavasti-kukaan-ei-huomaa",
           "priority": 1,
           "signedToStartTime": "2024-11-03T09:00:00Z"
@@ -738,7 +738,7 @@
       },
       {
         "username": "720173",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "auld-sanguine",
           "priority": 1,
           "signedToStartTime": "2024-11-03T09:00:00Z"
@@ -746,7 +746,7 @@
       },
       {
         "username": "258646",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "auld-sanguine",
           "priority": 1,
           "signedToStartTime": "2024-11-03T09:00:00Z"
@@ -754,7 +754,7 @@
       },
       {
         "username": "117894",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "toivottavasti-kukaan-ei-huomaa",
           "priority": 2,
           "signedToStartTime": "2024-11-03T09:00:00Z"
@@ -762,7 +762,7 @@
       },
       {
         "username": "713008",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "vaiettu-menneisyys",
           "priority": 2,
           "signedToStartTime": "2024-11-03T09:00:00Z"
@@ -770,7 +770,7 @@
       },
       {
         "username": "691088",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "vaiettu-menneisyys",
           "priority": 3,
           "signedToStartTime": "2024-11-03T09:00:00Z"
@@ -778,7 +778,7 @@
       },
       {
         "username": "781504",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "auld-sanguine",
           "priority": 1,
           "signedToStartTime": "2024-11-03T09:00:00Z"
@@ -786,7 +786,7 @@
       },
       {
         "username": "218166",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "auld-sanguine",
           "priority": 1,
           "signedToStartTime": "2024-11-03T09:00:00Z"
@@ -794,7 +794,7 @@
       },
       {
         "username": "364157",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "praedor-kirotut-kuninkaanvaalit",
           "priority": 1,
           "signedToStartTime": "2024-11-03T09:00:00Z"
@@ -802,7 +802,7 @@
       },
       {
         "username": "138767",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "praedor-kirotut-kuninkaanvaalit",
           "priority": 2,
           "signedToStartTime": "2024-11-03T09:00:00Z"
@@ -810,7 +810,7 @@
       },
       {
         "username": "495631",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "the-dalish-curse-a-dragon-age-rpg",
           "priority": 1,
           "signedToStartTime": "2024-11-03T09:00:00Z"
@@ -818,7 +818,7 @@
       },
       {
         "username": "177463",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "vaiettu-menneisyys",
           "priority": 1,
           "signedToStartTime": "2024-11-03T09:00:00Z"
@@ -826,7 +826,7 @@
       },
       {
         "username": "77939",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "vaiettu-menneisyys",
           "priority": 1,
           "signedToStartTime": "2024-11-03T09:00:00Z"
@@ -834,7 +834,7 @@
       },
       {
         "username": "647326",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "auld-sanguine",
           "priority": 1,
           "signedToStartTime": "2024-11-03T09:00:00Z"
@@ -842,7 +842,7 @@
       },
       {
         "username": "332445",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "alavilla-mailla",
           "priority": 2,
           "signedToStartTime": "2024-11-03T09:00:00Z"
@@ -850,7 +850,7 @@
       },
       {
         "username": "30658",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "auld-sanguine",
           "priority": 2,
           "signedToStartTime": "2024-11-03T09:00:00Z"
@@ -858,7 +858,7 @@
       },
       {
         "username": "829872",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "alavilla-mailla",
           "priority": 1,
           "signedToStartTime": "2024-11-03T09:00:00Z"
@@ -866,7 +866,7 @@
       },
       {
         "username": "423737",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "the-dalish-curse-a-dragon-age-rpg",
           "priority": 1,
           "signedToStartTime": "2024-11-03T09:00:00Z"
@@ -874,7 +874,7 @@
       },
       {
         "username": "268259",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "toivottavasti-kukaan-ei-huomaa",
           "priority": 1,
           "signedToStartTime": "2024-11-03T09:00:00Z"
@@ -882,7 +882,7 @@
       },
       {
         "username": "787233",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "the-dalish-curse-a-dragon-age-rpg",
           "priority": 1,
           "signedToStartTime": "2024-11-03T09:00:00Z"
@@ -890,7 +890,7 @@
       },
       {
         "username": "96725",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "alavilla-mailla",
           "priority": 2,
           "signedToStartTime": "2024-11-03T09:00:00Z"
@@ -898,7 +898,7 @@
       },
       {
         "username": "299876",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "alavilla-mailla",
           "priority": 2,
           "signedToStartTime": "2024-11-03T09:00:00Z"
@@ -906,7 +906,7 @@
       },
       {
         "username": "646848",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "the-dalish-curse-a-dragon-age-rpg",
           "priority": 1,
           "signedToStartTime": "2024-11-03T09:00:00Z"
@@ -914,7 +914,7 @@
       },
       {
         "username": "35578",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "the-dalish-curse-a-dragon-age-rpg",
           "priority": 1,
           "signedToStartTime": "2024-11-03T09:00:00Z"
@@ -922,7 +922,7 @@
       },
       {
         "username": "148452",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "praedor-kirotut-kuninkaanvaalit",
           "priority": 1,
           "signedToStartTime": "2024-11-03T09:00:00Z"
@@ -930,7 +930,7 @@
       },
       {
         "username": "997190",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "praedor-kirotut-kuninkaanvaalit",
           "priority": 1,
           "signedToStartTime": "2024-11-03T09:00:00Z"
@@ -947,7 +947,7 @@
     "results": [
       {
         "username": "374030",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "taivaskone",
           "priority": 1,
           "signedToStartTime": "2024-11-03T10:00:00Z"
@@ -955,7 +955,7 @@
       },
       {
         "username": "729322",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "elava-pakohuone-12",
           "priority": 1,
           "signedToStartTime": "2024-11-03T10:00:00Z"
@@ -963,7 +963,7 @@
       },
       {
         "username": "816005",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "the-lighthouse",
           "priority": 1,
           "signedToStartTime": "2024-11-03T10:00:00Z"
@@ -971,7 +971,7 @@
       },
       {
         "username": "203638",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "the-lighthouse",
           "priority": 1,
           "signedToStartTime": "2024-11-03T10:00:00Z"
@@ -979,7 +979,7 @@
       },
       {
         "username": "287943",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "elava-pakohuone-12",
           "priority": 1,
           "signedToStartTime": "2024-11-03T10:00:00Z"
@@ -987,7 +987,7 @@
       },
       {
         "username": "80282",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "the-lighthouse",
           "priority": 1,
           "signedToStartTime": "2024-11-03T10:00:00Z"
@@ -995,7 +995,7 @@
       },
       {
         "username": "247688",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "taivaskone",
           "priority": 1,
           "signedToStartTime": "2024-11-03T10:00:00Z"
@@ -1003,7 +1003,7 @@
       },
       {
         "username": "137136",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "the-lighthouse",
           "priority": 1,
           "signedToStartTime": "2024-11-03T10:00:00Z"
@@ -1011,7 +1011,7 @@
       },
       {
         "username": "937554",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "taivaskone",
           "priority": 1,
           "signedToStartTime": "2024-11-03T10:00:00Z"
@@ -1019,7 +1019,7 @@
       },
       {
         "username": "430633",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "taivaskone",
           "priority": 1,
           "signedToStartTime": "2024-11-03T10:00:00Z"
@@ -1027,7 +1027,7 @@
       },
       {
         "username": "189803",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "meripihkalinna",
           "priority": 1,
           "signedToStartTime": "2024-11-03T10:00:00Z"
@@ -1035,7 +1035,7 @@
       },
       {
         "username": "364272",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "pathfinder-society-scenario-6-01-intro-year-of-immortal-influence",
           "priority": 1,
           "signedToStartTime": "2024-11-03T10:00:00Z"
@@ -1043,7 +1043,7 @@
       },
       {
         "username": "990107",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "meripihkalinna",
           "priority": 1,
           "signedToStartTime": "2024-11-03T10:00:00Z"
@@ -1051,7 +1051,7 @@
       },
       {
         "username": "739012",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "the-lighthouse",
           "priority": 1,
           "signedToStartTime": "2024-11-03T10:00:00Z"
@@ -1059,7 +1059,7 @@
       },
       {
         "username": "635844",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "meripihkalinna",
           "priority": 1,
           "signedToStartTime": "2024-11-03T10:00:00Z"
@@ -1067,7 +1067,7 @@
       },
       {
         "username": "737061",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "meripihkalinna",
           "priority": 1,
           "signedToStartTime": "2024-11-03T10:00:00Z"
@@ -1075,7 +1075,7 @@
       },
       {
         "username": "403648",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "elava-pakohuone-12",
           "priority": 1,
           "signedToStartTime": "2024-11-03T10:00:00Z"
@@ -1083,7 +1083,7 @@
       },
       {
         "username": "930070",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "elava-pakohuone-12",
           "priority": 1,
           "signedToStartTime": "2024-11-03T10:00:00Z"
@@ -1091,7 +1091,7 @@
       },
       {
         "username": "998206",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "pathfinder-society-scenario-6-01-intro-year-of-immortal-influence",
           "priority": 1,
           "signedToStartTime": "2024-11-03T10:00:00Z"
@@ -1099,7 +1099,7 @@
       },
       {
         "username": "30658",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "meripihkalinna",
           "priority": 1,
           "signedToStartTime": "2024-11-03T10:00:00Z"
@@ -1107,7 +1107,7 @@
       },
       {
         "username": "752423",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "pathfinder-society-scenario-6-01-intro-year-of-immortal-influence",
           "priority": 2,
           "signedToStartTime": "2024-11-03T10:00:00Z"
@@ -1115,7 +1115,7 @@
       },
       {
         "username": "819385",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "pathfinder-society-scenario-6-01-intro-year-of-immortal-influence",
           "priority": 2,
           "signedToStartTime": "2024-11-03T10:00:00Z"
@@ -1123,7 +1123,7 @@
       },
       {
         "username": "916303",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "pathfinder-society-scenario-6-01-intro-year-of-immortal-influence",
           "priority": 2,
           "signedToStartTime": "2024-11-03T10:00:00Z"
@@ -1140,7 +1140,7 @@
     "results": [
       {
         "username": "260427",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "space-1889-pakolasku-venuksen-viidakkoon",
           "priority": 1,
           "signedToStartTime": "2024-11-03T12:00:00Z"
@@ -1148,7 +1148,7 @@
       },
       {
         "username": "920292",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "elava-pakohuone-14",
           "priority": 1,
           "signedToStartTime": "2024-11-03T12:00:00Z"
@@ -1156,7 +1156,7 @@
       },
       {
         "username": "318838",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "space-1889-pakolasku-venuksen-viidakkoon",
           "priority": 1,
           "signedToStartTime": "2024-11-03T12:00:00Z"
@@ -1164,7 +1164,7 @@
       },
       {
         "username": "990107",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "space-1889-pakolasku-venuksen-viidakkoon",
           "priority": 2,
           "signedToStartTime": "2024-11-03T12:00:00Z"
@@ -1172,7 +1172,7 @@
       },
       {
         "username": "415137",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "elava-pakohuone-14",
           "priority": 1,
           "signedToStartTime": "2024-11-03T12:00:00Z"
@@ -1180,7 +1180,7 @@
       },
       {
         "username": "556204",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "elava-pakohuone-14",
           "priority": 1,
           "signedToStartTime": "2024-11-03T12:00:00Z"
@@ -1188,7 +1188,7 @@
       },
       {
         "username": "104188",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "elava-pakohuone-14",
           "priority": 1,
           "signedToStartTime": "2024-11-03T12:00:00Z"
@@ -1196,7 +1196,7 @@
       },
       {
         "username": "111534",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "space-1889-pakolasku-venuksen-viidakkoon",
           "priority": 1,
           "signedToStartTime": "2024-11-03T12:00:00Z"
@@ -1204,7 +1204,7 @@
       },
       {
         "username": "508384",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "alien-uscss-traconis",
           "priority": 1,
           "signedToStartTime": "2024-11-03T12:00:00Z"
@@ -1212,7 +1212,7 @@
       },
       {
         "username": "106163",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "alien-uscss-traconis",
           "priority": 1,
           "signedToStartTime": "2024-11-03T12:00:00Z"
@@ -1220,7 +1220,7 @@
       },
       {
         "username": "613300",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "alien-uscss-traconis",
           "priority": 1,
           "signedToStartTime": "2024-11-03T12:00:00Z"
@@ -1228,7 +1228,7 @@
       },
       {
         "username": "322086",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "alien-uscss-traconis",
           "priority": 1,
           "signedToStartTime": "2024-11-03T12:00:00Z"
@@ -1236,7 +1236,7 @@
       },
       {
         "username": "599344",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "alien-uscss-traconis",
           "priority": 1,
           "signedToStartTime": "2024-11-03T12:00:00Z"
@@ -1253,7 +1253,7 @@
     "results": [
       {
         "username": "534154",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "elava-pakohuone-16",
           "priority": 1,
           "signedToStartTime": "2024-11-03T14:00:00Z"
@@ -1261,7 +1261,7 @@
       },
       {
         "username": "802874",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "elava-pakohuone-16",
           "priority": 1,
           "signedToStartTime": "2024-11-03T14:00:00Z"
@@ -1269,7 +1269,7 @@
       },
       {
         "username": "423737",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "elava-pakohuone-16",
           "priority": 1,
           "signedToStartTime": "2024-11-03T14:00:00Z"
@@ -1277,7 +1277,7 @@
       },
       {
         "username": "787233",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "elava-pakohuone-16",
           "priority": 1,
           "signedToStartTime": "2024-11-03T14:00:00Z"

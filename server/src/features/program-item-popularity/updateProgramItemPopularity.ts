@@ -91,11 +91,11 @@ export const updateProgramItemPopularity = async (): Promise<
 
   const results = successResults.flatMap((result) => result.results);
 
-  const directSignupsProgramItemIds = results.map(
-    (result) => result.directSignup.programItemId,
+  const assignmentSignupsProgramItemIds = results.map(
+    (result) => result.assignmentSignup.programItemId,
   );
 
-  const groupedSignups = countBy(directSignupsProgramItemIds, (id) => id);
+  const groupedSignups = countBy(assignmentSignupsProgramItemIds, (id) => id);
 
   const programItemPopularityUpdates = validLotterySignupProgramItems
     .map((programItem) => ({

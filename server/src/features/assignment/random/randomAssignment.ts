@@ -80,7 +80,9 @@ export const randomAssignment = (
   const assignmentResult = unwrapResult(assignmentResultResult);
 
   const selectedUniqueProgramItems = unique(
-    assignmentResult.results.map((result) => result.directSignup.programItemId),
+    assignmentResult.results.map(
+      (result) => result.assignmentSignup.programItemId,
+    ),
   );
 
   const message = `Random Assignment Result - Attendees: ${

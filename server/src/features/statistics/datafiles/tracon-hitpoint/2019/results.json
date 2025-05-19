@@ -4,7 +4,7 @@
     "results": [
       {
         "username": "224769",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3983",
           "priority": 1,
           "signedToStartTime": "2019-11-23T10:00:00.000Z"
@@ -12,7 +12,7 @@
       },
       {
         "username": "963305",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3994",
           "priority": 1,
           "signedToStartTime": "2019-11-23T10:00:00.000Z"
@@ -20,7 +20,7 @@
       },
       {
         "username": "362060",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3994",
           "priority": 1,
           "signedToStartTime": "2019-11-23T10:00:00.000Z"
@@ -28,7 +28,7 @@
       },
       {
         "username": "261670",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4041",
           "priority": 2,
           "signedToStartTime": "2019-11-23T10:00:00.000Z"
@@ -36,7 +36,7 @@
       },
       {
         "username": "351774",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3983",
           "priority": 2,
           "signedToStartTime": "2019-11-23T10:00:00.000Z"
@@ -44,7 +44,7 @@
       },
       {
         "username": "802638",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4071",
           "priority": 1,
           "signedToStartTime": "2019-11-23T10:00:00.000Z"
@@ -52,7 +52,7 @@
       },
       {
         "username": "25319",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4071",
           "priority": 1,
           "signedToStartTime": "2019-11-23T10:00:00.000Z"
@@ -60,7 +60,7 @@
       },
       {
         "username": "562584",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3994",
           "priority": 1,
           "signedToStartTime": "2019-11-23T10:00:00.000Z"
@@ -68,7 +68,7 @@
       },
       {
         "username": "846747",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3974",
           "priority": 1,
           "signedToStartTime": "2019-11-23T10:00:00.000Z"
@@ -76,7 +76,7 @@
       },
       {
         "username": "844182",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3974",
           "priority": 3,
           "signedToStartTime": "2019-11-23T10:00:00.000Z"
@@ -84,7 +84,7 @@
       },
       {
         "username": "158866",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3994",
           "priority": 1,
           "signedToStartTime": "2019-11-23T10:00:00.000Z"
@@ -92,7 +92,7 @@
       },
       {
         "username": "10753",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3974",
           "priority": 1,
           "signedToStartTime": "2019-11-23T10:00:00.000Z"
@@ -100,7 +100,7 @@
       },
       {
         "username": "546302",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4038",
           "priority": 2,
           "signedToStartTime": "2019-11-23T10:00:00.000Z"
@@ -108,7 +108,7 @@
       },
       {
         "username": "398250",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3983",
           "priority": 1,
           "signedToStartTime": "2019-11-23T10:00:00.000Z"
@@ -116,7 +116,7 @@
       },
       {
         "username": "594488",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3994",
           "priority": 1,
           "signedToStartTime": "2019-11-23T10:00:00.000Z"
@@ -124,7 +124,7 @@
       },
       {
         "username": "199718",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4071",
           "priority": 1,
           "signedToStartTime": "2019-11-23T10:00:00.000Z"
@@ -132,7 +132,7 @@
       },
       {
         "username": "443481",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3994",
           "priority": 1,
           "signedToStartTime": "2019-11-23T10:00:00.000Z"
@@ -140,7 +140,7 @@
       },
       {
         "username": "650130",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4041",
           "priority": 1,
           "signedToStartTime": "2019-11-23T10:00:00.000Z"
@@ -148,7 +148,7 @@
       },
       {
         "username": "209553",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3963",
           "priority": 3,
           "signedToStartTime": "2019-11-23T10:00:00.000Z"
@@ -156,7 +156,7 @@
       },
       {
         "username": "852796",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3963",
           "priority": 1,
           "signedToStartTime": "2019-11-23T10:00:00.000Z"
@@ -164,7 +164,7 @@
       },
       {
         "username": "154753",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3983",
           "priority": 1,
           "signedToStartTime": "2019-11-23T10:00:00.000Z"
@@ -172,7 +172,7 @@
       },
       {
         "username": "921995",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4071",
           "priority": 1,
           "signedToStartTime": "2019-11-23T10:00:00.000Z"
@@ -180,7 +180,7 @@
       },
       {
         "username": "123498",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4071",
           "priority": 1,
           "signedToStartTime": "2019-11-23T10:00:00.000Z"
@@ -188,7 +188,7 @@
       },
       {
         "username": "84899",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3963",
           "priority": 1,
           "signedToStartTime": "2019-11-23T10:00:00.000Z"
@@ -196,7 +196,7 @@
       },
       {
         "username": "261992",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3983",
           "priority": 1,
           "signedToStartTime": "2019-11-23T10:00:00.000Z"
@@ -204,7 +204,7 @@
       },
       {
         "username": "748511",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3974",
           "priority": 1,
           "signedToStartTime": "2019-11-23T10:00:00.000Z"
@@ -212,7 +212,7 @@
       },
       {
         "username": "248050",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4038",
           "priority": 1,
           "signedToStartTime": "2019-11-23T10:00:00.000Z"
@@ -220,7 +220,7 @@
       },
       {
         "username": "912525",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4038",
           "priority": 1,
           "signedToStartTime": "2019-11-23T10:00:00.000Z"
@@ -228,7 +228,7 @@
       },
       {
         "username": "60212",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4041",
           "priority": 1,
           "signedToStartTime": "2019-11-23T10:00:00.000Z"
@@ -236,7 +236,7 @@
       },
       {
         "username": "7111",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4041",
           "priority": 1,
           "signedToStartTime": "2019-11-23T10:00:00.000Z"
@@ -244,7 +244,7 @@
       },
       {
         "username": "659117",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3963",
           "priority": 1,
           "signedToStartTime": "2019-11-23T10:00:00.000Z"
@@ -252,7 +252,7 @@
       },
       {
         "username": "228215",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3963",
           "priority": 1,
           "signedToStartTime": "2019-11-23T10:00:00.000Z"
@@ -269,7 +269,7 @@
     "results": [
       {
         "username": "966736",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3985",
           "priority": 1,
           "signedToStartTime": "2019-11-23T11:00:00.000Z"
@@ -277,7 +277,7 @@
       },
       {
         "username": "723760",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4017",
           "priority": 1,
           "signedToStartTime": "2019-11-23T11:00:00.000Z"
@@ -285,7 +285,7 @@
       },
       {
         "username": "738758",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3985",
           "priority": 1,
           "signedToStartTime": "2019-11-23T11:00:00.000Z"
@@ -293,7 +293,7 @@
       },
       {
         "username": "427445",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4001",
           "priority": 1,
           "signedToStartTime": "2019-11-23T11:00:00.000Z"
@@ -301,7 +301,7 @@
       },
       {
         "username": "741992",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4017",
           "priority": 1,
           "signedToStartTime": "2019-11-23T11:00:00.000Z"
@@ -309,7 +309,7 @@
       },
       {
         "username": "310218",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4017",
           "priority": 1,
           "signedToStartTime": "2019-11-23T11:00:00.000Z"
@@ -317,7 +317,7 @@
       },
       {
         "username": "861764",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3947",
           "priority": 1,
           "signedToStartTime": "2019-11-23T11:00:00.000Z"
@@ -325,7 +325,7 @@
       },
       {
         "username": "234093",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4017",
           "priority": 1,
           "signedToStartTime": "2019-11-23T11:00:00.000Z"
@@ -333,7 +333,7 @@
       },
       {
         "username": "643134",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3947",
           "priority": 1,
           "signedToStartTime": "2019-11-23T11:00:00.000Z"
@@ -341,7 +341,7 @@
       },
       {
         "username": "445485",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4017",
           "priority": 2,
           "signedToStartTime": "2019-11-23T11:00:00.000Z"
@@ -349,7 +349,7 @@
       },
       {
         "username": "517920",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3947",
           "priority": 1,
           "signedToStartTime": "2019-11-23T11:00:00.000Z"
@@ -357,7 +357,7 @@
       },
       {
         "username": "739339",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4017",
           "priority": 2,
           "signedToStartTime": "2019-11-23T11:00:00.000Z"
@@ -365,7 +365,7 @@
       },
       {
         "username": "296219",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3947",
           "priority": 2,
           "signedToStartTime": "2019-11-23T11:00:00.000Z"
@@ -373,7 +373,7 @@
       },
       {
         "username": "910850",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3985",
           "priority": 1,
           "signedToStartTime": "2019-11-23T11:00:00.000Z"
@@ -381,7 +381,7 @@
       },
       {
         "username": "304534",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3985",
           "priority": 1,
           "signedToStartTime": "2019-11-23T11:00:00.000Z"
@@ -389,7 +389,7 @@
       },
       {
         "username": "94605",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3985",
           "priority": 1,
           "signedToStartTime": "2019-11-23T11:00:00.000Z"
@@ -397,7 +397,7 @@
       },
       {
         "username": "184561",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4001",
           "priority": 1,
           "signedToStartTime": "2019-11-23T11:00:00.000Z"
@@ -405,7 +405,7 @@
       },
       {
         "username": "221831",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3985",
           "priority": 1,
           "signedToStartTime": "2019-11-23T11:00:00.000Z"
@@ -413,7 +413,7 @@
       },
       {
         "username": "403440",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3947",
           "priority": 1,
           "signedToStartTime": "2019-11-23T11:00:00.000Z"
@@ -421,7 +421,7 @@
       },
       {
         "username": "661687",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3947",
           "priority": 1,
           "signedToStartTime": "2019-11-23T11:00:00.000Z"
@@ -429,7 +429,7 @@
       },
       {
         "username": "756592",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3947",
           "priority": 1,
           "signedToStartTime": "2019-11-23T11:00:00.000Z"
@@ -437,7 +437,7 @@
       },
       {
         "username": "175872",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4001",
           "priority": 1,
           "signedToStartTime": "2019-11-23T11:00:00.000Z"
@@ -445,7 +445,7 @@
       },
       {
         "username": "810673",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4001",
           "priority": 1,
           "signedToStartTime": "2019-11-23T11:00:00.000Z"
@@ -462,7 +462,7 @@
     "results": [
       {
         "username": "224769",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4002",
           "priority": 1,
           "signedToStartTime": "2019-11-23T13:00:00.000Z"
@@ -470,7 +470,7 @@
       },
       {
         "username": "484114",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4002",
           "priority": 1,
           "signedToStartTime": "2019-11-23T13:00:00.000Z"
@@ -478,7 +478,7 @@
       },
       {
         "username": "261670",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3975",
           "priority": 1,
           "signedToStartTime": "2019-11-23T13:00:00.000Z"
@@ -486,7 +486,7 @@
       },
       {
         "username": "505502",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4099",
           "priority": 1,
           "signedToStartTime": "2019-11-23T13:00:00.000Z"
@@ -494,7 +494,7 @@
       },
       {
         "username": "678400",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4099",
           "priority": 1,
           "signedToStartTime": "2019-11-23T13:00:00.000Z"
@@ -502,7 +502,7 @@
       },
       {
         "username": "168609",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4099",
           "priority": 1,
           "signedToStartTime": "2019-11-23T13:00:00.000Z"
@@ -510,7 +510,7 @@
       },
       {
         "username": "979986",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3975",
           "priority": 1,
           "signedToStartTime": "2019-11-23T13:00:00.000Z"
@@ -518,7 +518,7 @@
       },
       {
         "username": "184561",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3975",
           "priority": 1,
           "signedToStartTime": "2019-11-23T13:00:00.000Z"
@@ -526,7 +526,7 @@
       },
       {
         "username": "777072",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3975",
           "priority": 1,
           "signedToStartTime": "2019-11-23T13:00:00.000Z"
@@ -534,7 +534,7 @@
       },
       {
         "username": "50252",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4099",
           "priority": 3,
           "signedToStartTime": "2019-11-23T13:00:00.000Z"
@@ -542,7 +542,7 @@
       },
       {
         "username": "718112",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3975",
           "priority": 1,
           "signedToStartTime": "2019-11-23T13:00:00.000Z"
@@ -550,7 +550,7 @@
       },
       {
         "username": "69770",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4002",
           "priority": 1,
           "signedToStartTime": "2019-11-23T13:00:00.000Z"
@@ -558,7 +558,7 @@
       },
       {
         "username": "453871",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4099",
           "priority": 2,
           "signedToStartTime": "2019-11-23T13:00:00.000Z"
@@ -566,7 +566,7 @@
       },
       {
         "username": "490276",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4099",
           "priority": 1,
           "signedToStartTime": "2019-11-23T13:00:00.000Z"
@@ -574,7 +574,7 @@
       },
       {
         "username": "561874",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3975",
           "priority": 2,
           "signedToStartTime": "2019-11-23T13:00:00.000Z"
@@ -582,7 +582,7 @@
       },
       {
         "username": "681392",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4002",
           "priority": 1,
           "signedToStartTime": "2019-11-23T13:00:00.000Z"
@@ -590,7 +590,7 @@
       },
       {
         "username": "832790",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4002",
           "priority": 1,
           "signedToStartTime": "2019-11-23T13:00:00.000Z"
@@ -607,7 +607,7 @@
     "results": [
       {
         "username": "963305",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4011",
           "priority": 1,
           "signedToStartTime": "2019-11-23T15:00:00.000Z"
@@ -615,7 +615,7 @@
       },
       {
         "username": "362060",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4011",
           "priority": 1,
           "signedToStartTime": "2019-11-23T15:00:00.000Z"
@@ -623,7 +623,7 @@
       },
       {
         "username": "261670",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4015",
           "priority": 1,
           "signedToStartTime": "2019-11-23T15:00:00.000Z"
@@ -631,7 +631,7 @@
       },
       {
         "username": "427445",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4011",
           "priority": 1,
           "signedToStartTime": "2019-11-23T15:00:00.000Z"
@@ -639,7 +639,7 @@
       },
       {
         "username": "844182",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3969",
           "priority": 1,
           "signedToStartTime": "2019-11-23T15:00:00.000Z"
@@ -647,7 +647,7 @@
       },
       {
         "username": "158866",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4011",
           "priority": 1,
           "signedToStartTime": "2019-11-23T15:00:00.000Z"
@@ -655,7 +655,7 @@
       },
       {
         "username": "445485",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4015",
           "priority": 1,
           "signedToStartTime": "2019-11-23T15:00:00.000Z"
@@ -663,7 +663,7 @@
       },
       {
         "username": "678400",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4051",
           "priority": 1,
           "signedToStartTime": "2019-11-23T15:00:00.000Z"
@@ -671,7 +671,7 @@
       },
       {
         "username": "10753",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4015",
           "priority": 1,
           "signedToStartTime": "2019-11-23T15:00:00.000Z"
@@ -679,7 +679,7 @@
       },
       {
         "username": "181695",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4011",
           "priority": 1,
           "signedToStartTime": "2019-11-23T15:00:00.000Z"
@@ -687,7 +687,7 @@
       },
       {
         "username": "55040",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4051",
           "priority": 1,
           "signedToStartTime": "2019-11-23T15:00:00.000Z"
@@ -695,7 +695,7 @@
       },
       {
         "username": "910850",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4012",
           "priority": 1,
           "signedToStartTime": "2019-11-23T15:00:00.000Z"
@@ -703,7 +703,7 @@
       },
       {
         "username": "304534",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4012",
           "priority": 1,
           "signedToStartTime": "2019-11-23T15:00:00.000Z"
@@ -711,7 +711,7 @@
       },
       {
         "username": "50252",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3969",
           "priority": 3,
           "signedToStartTime": "2019-11-23T15:00:00.000Z"
@@ -719,7 +719,7 @@
       },
       {
         "username": "504684",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4051",
           "priority": 2,
           "signedToStartTime": "2019-11-23T15:00:00.000Z"
@@ -727,7 +727,7 @@
       },
       {
         "username": "69770",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4012",
           "priority": 1,
           "signedToStartTime": "2019-11-23T15:00:00.000Z"
@@ -735,7 +735,7 @@
       },
       {
         "username": "681392",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4051",
           "priority": 2,
           "signedToStartTime": "2019-11-23T15:00:00.000Z"
@@ -743,7 +743,7 @@
       },
       {
         "username": "176868",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3969",
           "priority": 1,
           "signedToStartTime": "2019-11-23T15:00:00.000Z"
@@ -751,7 +751,7 @@
       },
       {
         "username": "993288",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4011",
           "priority": 1,
           "signedToStartTime": "2019-11-23T15:00:00.000Z"
@@ -759,7 +759,7 @@
       },
       {
         "username": "121812",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4011",
           "priority": 1,
           "signedToStartTime": "2019-11-23T15:00:00.000Z"
@@ -767,7 +767,7 @@
       },
       {
         "username": "60212",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3969",
           "priority": 1,
           "signedToStartTime": "2019-11-23T15:00:00.000Z"
@@ -775,7 +775,7 @@
       },
       {
         "username": "7111",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3969",
           "priority": 1,
           "signedToStartTime": "2019-11-23T15:00:00.000Z"
@@ -783,7 +783,7 @@
       },
       {
         "username": "846747",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4015",
           "priority": 1,
           "signedToStartTime": "2019-11-23T15:00:00.000Z"
@@ -791,7 +791,7 @@
       },
       {
         "username": "25319",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4015",
           "priority": 1,
           "signedToStartTime": "2019-11-23T15:00:00.000Z"
@@ -799,7 +799,7 @@
       },
       {
         "username": "875033",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4015",
           "priority": 1,
           "signedToStartTime": "2019-11-23T15:00:00.000Z"
@@ -807,7 +807,7 @@
       },
       {
         "username": "267806",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4012",
           "priority": 2,
           "signedToStartTime": "2019-11-23T15:00:00.000Z"
@@ -815,7 +815,7 @@
       },
       {
         "username": "116365",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4012",
           "priority": 2,
           "signedToStartTime": "2019-11-23T15:00:00.000Z"
@@ -832,7 +832,7 @@
     "results": [
       {
         "username": "802638",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4070",
           "priority": 1,
           "signedToStartTime": "2019-11-23T16:00:00.000Z"
@@ -840,7 +840,7 @@
       },
       {
         "username": "310218",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4007",
           "priority": 1,
           "signedToStartTime": "2019-11-23T16:00:00.000Z"
@@ -848,7 +848,7 @@
       },
       {
         "username": "517920",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4007",
           "priority": 1,
           "signedToStartTime": "2019-11-23T16:00:00.000Z"
@@ -856,7 +856,7 @@
       },
       {
         "username": "398250",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4013",
           "priority": 1,
           "signedToStartTime": "2019-11-23T16:00:00.000Z"
@@ -864,7 +864,7 @@
       },
       {
         "username": "443481",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4007",
           "priority": 1,
           "signedToStartTime": "2019-11-23T16:00:00.000Z"
@@ -872,7 +872,7 @@
       },
       {
         "username": "209553",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3999",
           "priority": 1,
           "signedToStartTime": "2019-11-23T16:00:00.000Z"
@@ -880,7 +880,7 @@
       },
       {
         "username": "296219",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4007",
           "priority": 1,
           "signedToStartTime": "2019-11-23T16:00:00.000Z"
@@ -888,7 +888,7 @@
       },
       {
         "username": "184561",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4070",
           "priority": 1,
           "signedToStartTime": "2019-11-23T16:00:00.000Z"
@@ -896,7 +896,7 @@
       },
       {
         "username": "453871",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3999",
           "priority": 1,
           "signedToStartTime": "2019-11-23T16:00:00.000Z"
@@ -904,7 +904,7 @@
       },
       {
         "username": "490276",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3999",
           "priority": 1,
           "signedToStartTime": "2019-11-23T16:00:00.000Z"
@@ -912,7 +912,7 @@
       },
       {
         "username": "772525",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4070",
           "priority": 2,
           "signedToStartTime": "2019-11-23T16:00:00.000Z"
@@ -920,7 +920,7 @@
       },
       {
         "username": "439607",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4007",
           "priority": 1,
           "signedToStartTime": "2019-11-23T16:00:00.000Z"
@@ -928,7 +928,7 @@
       },
       {
         "username": "415207",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4013",
           "priority": 1,
           "signedToStartTime": "2019-11-23T16:00:00.000Z"
@@ -936,7 +936,7 @@
       },
       {
         "username": "384501",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4013",
           "priority": 1,
           "signedToStartTime": "2019-11-23T16:00:00.000Z"
@@ -944,7 +944,7 @@
       },
       {
         "username": "374688",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4007",
           "priority": 1,
           "signedToStartTime": "2019-11-23T16:00:00.000Z"
@@ -952,7 +952,7 @@
       },
       {
         "username": "913097",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4070",
           "priority": 1,
           "signedToStartTime": "2019-11-23T16:00:00.000Z"
@@ -960,7 +960,7 @@
       },
       {
         "username": "89746",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4070",
           "priority": 1,
           "signedToStartTime": "2019-11-23T16:00:00.000Z"
@@ -968,7 +968,7 @@
       },
       {
         "username": "967510",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4013",
           "priority": 1,
           "signedToStartTime": "2019-11-23T16:00:00.000Z"
@@ -976,7 +976,7 @@
       },
       {
         "username": "935201",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4013",
           "priority": 1,
           "signedToStartTime": "2019-11-23T16:00:00.000Z"
@@ -984,7 +984,7 @@
       },
       {
         "username": "204871",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3999",
           "priority": 1,
           "signedToStartTime": "2019-11-23T16:00:00.000Z"
@@ -992,7 +992,7 @@
       },
       {
         "username": "891283",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3999",
           "priority": 1,
           "signedToStartTime": "2019-11-23T16:00:00.000Z"
@@ -1009,7 +1009,7 @@
     "results": [
       {
         "username": "861764",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4005",
           "priority": 1,
           "signedToStartTime": "2019-11-23T17:00:00.000Z"
@@ -1017,7 +1017,7 @@
       },
       {
         "username": "853614",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4005",
           "priority": 3,
           "signedToStartTime": "2019-11-23T17:00:00.000Z"
@@ -1025,7 +1025,7 @@
       },
       {
         "username": "688782",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4005",
           "priority": 3,
           "signedToStartTime": "2019-11-23T17:00:00.000Z"
@@ -1033,7 +1033,7 @@
       },
       {
         "username": "160466",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4005",
           "priority": 3,
           "signedToStartTime": "2019-11-23T17:00:00.000Z"
@@ -1041,7 +1041,7 @@
       },
       {
         "username": "479680",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4005",
           "priority": 3,
           "signedToStartTime": "2019-11-23T17:00:00.000Z"
@@ -1058,7 +1058,7 @@
     "results": [
       {
         "username": "723760",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3976",
           "priority": 1,
           "signedToStartTime": "2019-11-24T09:00:00.000Z"
@@ -1066,7 +1066,7 @@
       },
       {
         "username": "441643",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3954",
           "priority": 1,
           "signedToStartTime": "2019-11-24T09:00:00.000Z"
@@ -1074,7 +1074,7 @@
       },
       {
         "username": "25319",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3954",
           "priority": 1,
           "signedToStartTime": "2019-11-24T09:00:00.000Z"
@@ -1082,7 +1082,7 @@
       },
       {
         "username": "10753",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3976",
           "priority": 1,
           "signedToStartTime": "2019-11-24T09:00:00.000Z"
@@ -1090,7 +1090,7 @@
       },
       {
         "username": "398250",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4006",
           "priority": 2,
           "signedToStartTime": "2019-11-24T09:00:00.000Z"
@@ -1098,7 +1098,7 @@
       },
       {
         "username": "154753",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3954",
           "priority": 1,
           "signedToStartTime": "2019-11-24T09:00:00.000Z"
@@ -1106,7 +1106,7 @@
       },
       {
         "username": "403440",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3954",
           "priority": 1,
           "signedToStartTime": "2019-11-24T09:00:00.000Z"
@@ -1114,7 +1114,7 @@
       },
       {
         "username": "921995",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3954",
           "priority": 1,
           "signedToStartTime": "2019-11-24T09:00:00.000Z"
@@ -1122,7 +1122,7 @@
       },
       {
         "username": "123498",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3976",
           "priority": 1,
           "signedToStartTime": "2019-11-24T09:00:00.000Z"
@@ -1130,7 +1130,7 @@
       },
       {
         "username": "118972",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3954",
           "priority": 1,
           "signedToStartTime": "2019-11-24T09:00:00.000Z"
@@ -1138,7 +1138,7 @@
       },
       {
         "username": "234646",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4006",
           "priority": 1,
           "signedToStartTime": "2019-11-24T09:00:00.000Z"
@@ -1146,7 +1146,7 @@
       },
       {
         "username": "993288",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4006",
           "priority": 1,
           "signedToStartTime": "2019-11-24T09:00:00.000Z"
@@ -1154,7 +1154,7 @@
       },
       {
         "username": "515948",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3976",
           "priority": 1,
           "signedToStartTime": "2019-11-24T09:00:00.000Z"
@@ -1162,7 +1162,7 @@
       },
       {
         "username": "384501",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3976",
           "priority": 1,
           "signedToStartTime": "2019-11-24T09:00:00.000Z"
@@ -1179,7 +1179,7 @@
     "results": [
       {
         "username": "224769",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3950",
           "priority": 3,
           "signedToStartTime": "2019-11-24T10:00:00.000Z"
@@ -1187,7 +1187,7 @@
       },
       {
         "username": "966736",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3980",
           "priority": 1,
           "signedToStartTime": "2019-11-24T10:00:00.000Z"
@@ -1195,7 +1195,7 @@
       },
       {
         "username": "688782",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3984",
           "priority": 1,
           "signedToStartTime": "2019-11-24T10:00:00.000Z"
@@ -1203,7 +1203,7 @@
       },
       {
         "username": "678400",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4000",
           "priority": 1,
           "signedToStartTime": "2019-11-24T10:00:00.000Z"
@@ -1211,7 +1211,7 @@
       },
       {
         "username": "199718",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3950",
           "priority": 3,
           "signedToStartTime": "2019-11-24T10:00:00.000Z"
@@ -1219,7 +1219,7 @@
       },
       {
         "username": "128635",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4049",
           "priority": 1,
           "signedToStartTime": "2019-11-24T10:00:00.000Z"
@@ -1227,7 +1227,7 @@
       },
       {
         "username": "852796",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4049",
           "priority": 1,
           "signedToStartTime": "2019-11-24T10:00:00.000Z"
@@ -1235,7 +1235,7 @@
       },
       {
         "username": "84899",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4000",
           "priority": 2,
           "signedToStartTime": "2019-11-24T10:00:00.000Z"
@@ -1243,7 +1243,7 @@
       },
       {
         "username": "910850",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3950",
           "priority": 2,
           "signedToStartTime": "2019-11-24T10:00:00.000Z"
@@ -1251,7 +1251,7 @@
       },
       {
         "username": "811618",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3984",
           "priority": 1,
           "signedToStartTime": "2019-11-24T10:00:00.000Z"
@@ -1259,7 +1259,7 @@
       },
       {
         "username": "50252",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3950",
           "priority": 1,
           "signedToStartTime": "2019-11-24T10:00:00.000Z"
@@ -1267,7 +1267,7 @@
       },
       {
         "username": "381256",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4000",
           "priority": 1,
           "signedToStartTime": "2019-11-24T10:00:00.000Z"
@@ -1275,7 +1275,7 @@
       },
       {
         "username": "69770",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3956",
           "priority": 1,
           "signedToStartTime": "2019-11-24T10:00:00.000Z"
@@ -1283,7 +1283,7 @@
       },
       {
         "username": "453871",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4049",
           "priority": 2,
           "signedToStartTime": "2019-11-24T10:00:00.000Z"
@@ -1291,7 +1291,7 @@
       },
       {
         "username": "490276",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4049",
           "priority": 1,
           "signedToStartTime": "2019-11-24T10:00:00.000Z"
@@ -1299,7 +1299,7 @@
       },
       {
         "username": "681392",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3980",
           "priority": 1,
           "signedToStartTime": "2019-11-24T10:00:00.000Z"
@@ -1307,7 +1307,7 @@
       },
       {
         "username": "761762",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3980",
           "priority": 1,
           "signedToStartTime": "2019-11-24T10:00:00.000Z"
@@ -1315,7 +1315,7 @@
       },
       {
         "username": "330939",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3980",
           "priority": 1,
           "signedToStartTime": "2019-11-24T10:00:00.000Z"
@@ -1323,7 +1323,7 @@
       },
       {
         "username": "429617",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3950",
           "priority": 1,
           "signedToStartTime": "2019-11-24T10:00:00.000Z"
@@ -1331,7 +1331,7 @@
       },
       {
         "username": "746036",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3950",
           "priority": 1,
           "signedToStartTime": "2019-11-24T10:00:00.000Z"
@@ -1339,7 +1339,7 @@
       },
       {
         "username": "913097",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3984",
           "priority": 1,
           "signedToStartTime": "2019-11-24T10:00:00.000Z"
@@ -1347,7 +1347,7 @@
       },
       {
         "username": "89746",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3984",
           "priority": 1,
           "signedToStartTime": "2019-11-24T10:00:00.000Z"
@@ -1355,7 +1355,7 @@
       },
       {
         "username": "60212",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3984",
           "priority": 3,
           "signedToStartTime": "2019-11-24T10:00:00.000Z"
@@ -1363,7 +1363,7 @@
       },
       {
         "username": "7111",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3984",
           "priority": 3,
           "signedToStartTime": "2019-11-24T10:00:00.000Z"
@@ -1371,7 +1371,7 @@
       },
       {
         "username": "659117",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3980",
           "priority": 3,
           "signedToStartTime": "2019-11-24T10:00:00.000Z"
@@ -1379,7 +1379,7 @@
       },
       {
         "username": "228215",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3980",
           "priority": 3,
           "signedToStartTime": "2019-11-24T10:00:00.000Z"
@@ -1387,7 +1387,7 @@
       },
       {
         "username": "846747",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3956",
           "priority": 1,
           "signedToStartTime": "2019-11-24T10:00:00.000Z"
@@ -1395,7 +1395,7 @@
       },
       {
         "username": "716482",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3956",
           "priority": 1,
           "signedToStartTime": "2019-11-24T10:00:00.000Z"
@@ -1403,7 +1403,7 @@
       },
       {
         "username": "942120",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3950",
           "priority": 3,
           "signedToStartTime": "2019-11-24T10:00:00.000Z"
@@ -1411,7 +1411,7 @@
       },
       {
         "username": "870780",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p3950",
           "priority": 3,
           "signedToStartTime": "2019-11-24T10:00:00.000Z"
@@ -1419,7 +1419,7 @@
       },
       {
         "username": "307275",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4000",
           "priority": 1,
           "signedToStartTime": "2019-11-24T10:00:00.000Z"
@@ -1427,7 +1427,7 @@
       },
       {
         "username": "551140",
-        "directSignup": {
+        "assignmentSignup": {
           "programItemId": "p4000",
           "priority": 1,
           "signedToStartTime": "2019-11-24T10:00:00.000Z"
