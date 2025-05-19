@@ -28,16 +28,16 @@ export const removeOverlapLotterySignups = async (
   const users = unwrapResult(usersResult);
 
   results.flatMap((result) => {
-    const directSignupProgramItem = programItems.find(
+    const assignmentSignupProgramItem = programItems.find(
       (programItem) =>
-        programItem.programItemId === result.directSignup.programItemId,
+        programItem.programItemId === result.assignmentSignup.programItemId,
     );
 
-    if (!directSignupProgramItem) {
+    if (!assignmentSignupProgramItem) {
       logger.error(
         "%s",
         new Error(
-          `removeOverlapLotterySignups: Error finding direct signup: ${result.directSignup.programItemId}`,
+          `removeOverlapLotterySignups: Error finding assignment signup: ${result.assignmentSignup.programItemId}`,
         ),
       );
       return [];
@@ -65,8 +65,8 @@ export const removeOverlapLotterySignups = async (
           return false;
         }
         return !dayjs(foundProgramItem.startTime).isBetween(
-          dayjs(directSignupProgramItem.startTime).add(1, "minutes"),
-          dayjs(directSignupProgramItem.endTime),
+          dayjs(assignmentSignupProgramItem.startTime).add(1, "minutes"),
+          dayjs(assignmentSignupProgramItem.endTime),
         );
       },
     );

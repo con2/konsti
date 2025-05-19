@@ -79,7 +79,9 @@ export const padgAssignment = (
   const assignmentResult = unwrapResult(assignmentResultResult);
 
   const selectedUniqueProgramItems = unique(
-    assignmentResult.results.map((result) => result.directSignup.programItemId),
+    assignmentResult.results.map(
+      (result) => result.assignmentSignup.programItemId,
+    ),
   );
 
   const message = `Padg Assignment Result - Attendees: ${

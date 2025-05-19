@@ -54,11 +54,10 @@ test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items", async () => 
   const results: UserAssignmentResult[] = [
     {
       username: mockUser.username,
-      directSignup: {
+      assignmentSignup: {
         programItemId: testProgramItem.programItemId,
         priority: 1,
         signedToStartTime: testProgramItem.startTime,
-        message: "",
       },
     },
   ];
@@ -181,11 +180,10 @@ test("should only add one event log item with multiple lottery signups", async (
   const results: UserAssignmentResult[] = [
     {
       username: mockUser.username,
-      directSignup: {
+      assignmentSignup: {
         programItemId: testProgramItem.programItemId,
         priority: 1,
         signedToStartTime: testProgramItem.startTime,
-        message: "",
       },
     },
   ];
@@ -238,38 +236,34 @@ test("should not add event log items after assigment if signup is dropped due to
   const results: UserAssignmentResult[] = [
     {
       username: mockUser.username,
-      directSignup: {
+      assignmentSignup: {
         programItemId: testProgramItem.programItemId,
         priority: 1,
         signedToStartTime: testProgramItem.startTime,
-        message: "",
       },
     },
     {
       username: mockUser2.username,
-      directSignup: {
+      assignmentSignup: {
         programItemId: testProgramItem.programItemId,
         priority: 1,
         signedToStartTime: testProgramItem.startTime,
-        message: "",
       },
     },
     {
       username: mockUser3.username,
-      directSignup: {
+      assignmentSignup: {
         programItemId: testProgramItem.programItemId,
         priority: 1,
         signedToStartTime: testProgramItem.startTime,
-        message: "",
       },
     },
     {
       username: mockUser4.username,
-      directSignup: {
+      assignmentSignup: {
         programItemId: testProgramItem.programItemId,
         priority: 1,
         signedToStartTime: testProgramItem.startTime,
-        message: "",
       },
     },
   ];

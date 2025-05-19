@@ -6,7 +6,7 @@ const ResultsSchema = new mongoose.Schema(
     results: [
       {
         username: String,
-        directSignup: {
+        assignmentSignup: {
           programItemId: String,
           priority: Number,
           signedToStartTime: Date,

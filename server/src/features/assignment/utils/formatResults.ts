@@ -1,13 +1,16 @@
 import { first } from "remeda";
 import { PadgRandomAssignResult } from "server/types/assignmentTypes";
 import { logger } from "server/utils/logger";
-import { UserAssignmentResult } from "shared/types/models/result";
-import { DirectSignup, User } from "shared/types/models/user";
+import {
+  AssignmentSignup,
+  UserAssignmentResult,
+} from "shared/types/models/result";
+import { User } from "shared/types/models/user";
 
-const getDirectSignup = (
+const getAssignmentSignup = (
   assignResults: PadgRandomAssignResult[],
   attendee: User,
-): DirectSignup | null => {
+): AssignmentSignup | null => {
   const foundSignup = attendee.lotterySignups.find((lotterySignup) => {
     return assignResults.find(
       (assignResult) =>
@@ -25,8 +28,6 @@ const getDirectSignup = (
     programItemId: foundSignup.programItemId,
     priority: foundSignup.priority,
     signedToStartTime: foundSignup.signedToStartTime,
-    // Direct signups received from lottery don't have signup messages
-    message: "",
   };
 };
 
@@ -57,11 +58,11 @@ export const formatResults = (
 
   const results = selectedAttendees.reduce<UserAssignmentResult[]>(
     (acc, attendee) => {
-      const directSignup = getDirectSignup(assignResults, attendee);
-      if (directSignup) {
+      const assignmentSignup = getAssignmentSignup(assignResults, attendee);
+      if (assignmentSignup) {
         acc.push({
           username: attendee.username,
-          directSignup,
+          assignmentSignup,
         });
       }
       return acc;

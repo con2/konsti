@@ -92,25 +92,26 @@ export const programItemIdFix = async (
     result.results.map((userResult) => {
       const matchingProgramItem = programItems.find((programItem) => {
         return (
-          programItem.programItemId === userResult.directSignup.programItemId
+          programItem.programItemId ===
+          userResult.assignmentSignup.programItemId
         );
       });
 
       if (!matchingProgramItem) {
         logger.error(
           `Results: program item for id ${JSON.stringify(
-            userResult.directSignup.programItemId,
+            userResult.assignmentSignup.programItemId,
           )} not found`,
         );
-        userResult.directSignup = {
-          ...userResult.directSignup,
+        userResult.assignmentSignup = {
+          ...userResult.assignmentSignup,
           programItemId: "<canceled>",
         };
         return;
       }
 
-      userResult.directSignup = {
-        ...userResult.directSignup,
+      userResult.assignmentSignup = {
+        ...userResult.assignmentSignup,
         programItemId: matchingProgramItem.programItemId,
       };
     });
