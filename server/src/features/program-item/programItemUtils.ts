@@ -1,6 +1,5 @@
 import dayjs, { Dayjs } from "dayjs";
 import { removeProgramItems } from "server/features/program-item/programItemRepository";
-import { ProgramItemDoc } from "server/types/programItemTypes";
 import { logger } from "server/utils/logger";
 import {
   ProgramItem,
@@ -34,7 +33,7 @@ import { differenceBy } from "shared/utils/remedaExtend";
 export const removeDeletedProgramItems = async (
   updatedProgramItems: readonly ProgramItem[],
   currentProgramItems: readonly ProgramItem[],
-): Promise<Result<number, MongoDbError>> => {
+): Promise<Result<readonly ProgramItem[], MongoDbError>> => {
   logger.info("Remove deleted program items");
 
   const deletedProgramItems = differenceBy(
@@ -68,12 +67,11 @@ export const removeDeletedProgramItems = async (
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-  return makeSuccessResult(deletedProgramItems.length ?? 0);
+  return makeSuccessResult(deletedProgramItems);
 };
 
 export const enrichProgramItems = async (
-  programItems: readonly ProgramItemDoc[],
+  programItems: readonly ProgramItem[],
   userGroup: UserGroup | null,
 ): Promise<Result<ProgramItemWithUserSignups[], MongoDbError>> => {
   const settingsResult = await findSettings();
@@ -102,7 +100,7 @@ export const enrichProgramItems = async (
     );
     return {
       programItem: {
-        ...programItem.toJSON<ProgramItemDoc>(),
+        ...programItem,
         signupStrategy: getSignupStrategyForProgramItem(
           programItem,
           settings,
@@ -123,7 +121,7 @@ export const enrichProgramItems = async (
 };
 
 const getSignupStrategyForProgramItem = (
-  programItem: ProgramItemDoc,
+  programItem: ProgramItem,
   settings: Settings,
   currentTime: Dayjs,
 ): ProgramItemSignupStrategy => {

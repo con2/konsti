@@ -1,13 +1,10 @@
 import { logger } from "server/utils/logger";
 import { ResultsModel } from "server/features/results/resultsSchema";
-import { findProgramItems } from "server/features/program-item/programItemRepository";
 import { UserAssignmentResult } from "shared/types/models/result";
 import {
   Result,
-  isErrorResult,
   makeErrorResult,
   makeSuccessResult,
-  unwrapResult,
 } from "shared/utils/result";
 import { MongoDbError } from "shared/types/api/errors";
 import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
@@ -29,40 +26,10 @@ export const saveResult = async (
   algorithm: AssignmentAlgorithm,
   message: string,
 ): Promise<Result<void, MongoDbError>> => {
-  const programItemsResult = await findProgramItems();
-
-  if (isErrorResult(programItemsResult)) {
-    return programItemsResult;
-  }
-
-  const programItems = unwrapResult(programItemsResult);
-  const results = signupResultData.reduce<UserAssignmentResult[]>(
-    (acc, result) => {
-      const programItemDocInDb = programItems.find(
-        (programItem) =>
-          programItem.programItemId === result.directSignup.programItemId,
-      );
-
-      if (programItemDocInDb?._id) {
-        acc.push({
-          username: result.username,
-          directSignup: {
-            programItemId: programItemDocInDb.programItemId,
-            priority: result.directSignup.priority,
-            signedToStartTime: result.directSignup.signedToStartTime,
-            message: "",
-          },
-        });
-      }
-      return acc;
-    },
-    [],
-  );
-
   try {
     await ResultsModel.replaceOne(
       { assignmentTime },
-      { assignmentTime, results, algorithm, message },
+      { assignmentTime, results: signupResultData, algorithm, message },
       { upsert: true },
     );
     logger.debug(

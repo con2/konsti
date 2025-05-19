@@ -1,6 +1,8 @@
 import { logger } from "server/utils/logger";
 import { removeInvalidProgramItemsFromUsers } from "server/features/assignment/utils/removeInvalidProgramItemsFromUsers";
 import { db } from "server/db/mongodb";
+import { isErrorResult, unwrapResult } from "shared/utils/result";
+import { findProgramItems } from "server/features/program-item/programItemRepository";
 
 const removeInvalidProgramItems = async (): Promise<void> => {
   try {
@@ -12,7 +14,13 @@ const removeInvalidProgramItems = async (): Promise<void> => {
   }
 
   try {
-    await removeInvalidProgramItemsFromUsers();
+    const programItemsResult = await findProgramItems();
+    if (isErrorResult(programItemsResult)) {
+      // eslint-disable-next-line no-restricted-syntax -- Test script
+      throw new Error("Finding program items failed");
+    }
+    const programItems = unwrapResult(programItemsResult);
+    await removeInvalidProgramItemsFromUsers(programItems);
   } catch (error) {
     logger.error("Error removing invalid program items: %s", error);
     // eslint-disable-next-line no-restricted-syntax -- Test script
