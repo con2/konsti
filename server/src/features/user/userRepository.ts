@@ -129,15 +129,14 @@ export const findUser = async (
     logger.debug(`MongoDB: Found user ${username}`);
     return makeSuccessResult({
       ...response,
-      eventLogItems: response.eventLogItems.map((item) => ({
-        // @ts-expect-error: Mongoose return value is missing nested _id
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-        eventLogItemId: item._id,
-        action: item.action,
-        isSeen: item.isSeen,
-        programItemId: item.programItemId,
-        programItemStartTime: dayjs(item.programItemStartTime).toISOString(),
-        createdAt: dayjs(item.createdAt).toISOString(),
+      lotterySignups: response.lotterySignups.map((lotterySignup) => ({
+        ...lotterySignup,
+        signedToStartTime: dayjs(lotterySignup.signedToStartTime).toISOString(),
+      })),
+      eventLogItems: response.eventLogItems.map((logItem) => ({
+        ...logItem,
+        programItemStartTime: dayjs(logItem.programItemStartTime).toISOString(),
+        createdAt: dayjs(logItem.createdAt).toISOString(),
       })),
     });
   } catch (error) {
