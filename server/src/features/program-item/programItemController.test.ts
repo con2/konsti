@@ -186,6 +186,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
   });
 
   test("should remove program items, lottery signups, direct signups, and favorite program items that are not in the server response", async () => {
+    // Kompassi only returns one program items when there are two in DB
     vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
       value: [mockKompassiProgramItem],
     });

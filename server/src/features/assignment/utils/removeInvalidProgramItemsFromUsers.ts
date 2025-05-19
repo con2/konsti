@@ -1,10 +1,10 @@
-import { findProgramItems } from "server/features/program-item/programItemRepository";
 import {
   findUsers,
   updateUsersByUsername,
 } from "server/features/user/userRepository";
 import { logger } from "server/utils/logger";
 import { MongoDbError } from "shared/types/api/errors";
+import { ProgramItem } from "shared/types/models/programItem";
 import { User } from "shared/types/models/user";
 import {
   Result,
@@ -13,16 +13,11 @@ import {
   unwrapResult,
 } from "shared/utils/result";
 
-export const removeInvalidProgramItemsFromUsers = async (): Promise<
-  Result<void, MongoDbError>
-> => {
+export const removeInvalidProgramItemsFromUsers = async (
+  programItems: ProgramItem[],
+): Promise<Result<void, MongoDbError>> => {
   logger.info("Remove invalid program items from users");
 
-  const programItemsResult = await findProgramItems();
-  if (isErrorResult(programItemsResult)) {
-    return programItemsResult;
-  }
-  const programItems = unwrapResult(programItemsResult);
   const programItemIds = programItems.map(
     (programItem) => programItem.programItemId,
   );

@@ -58,8 +58,14 @@ export const runAssignment = async ({
     `Assigning users for program items starting at ${resolvedAssignmentTime.toString()}`,
   );
 
+  const programItemsResult = await findProgramItems();
+  if (isErrorResult(programItemsResult)) {
+    return programItemsResult;
+  }
+  const programItems = unwrapResult(programItemsResult);
+
   const removeInvalidProgramItemsResult =
-    await removeInvalidProgramItemsFromUsers();
+    await removeInvalidProgramItemsFromUsers(programItems);
   if (isErrorResult(removeInvalidProgramItemsResult)) {
     return removeInvalidProgramItemsResult;
   }
@@ -69,12 +75,6 @@ export const runAssignment = async ({
     return usersResult;
   }
   const users = unwrapResult(usersResult);
-
-  const programItemsResult = await findProgramItems();
-  if (isErrorResult(programItemsResult)) {
-    return programItemsResult;
-  }
-  const programItems = unwrapResult(programItemsResult);
 
   const directSignupsResult = await findDirectSignups();
   if (isErrorResult(directSignupsResult)) {

@@ -1,7 +1,6 @@
 import { logger } from "server/utils/logger";
 import { ProgramItemModel } from "server/features/program-item/programItemSchema";
 import { updateMovedProgramItems } from "server/features/assignment/utils/updateMovedProgramItems";
-import { ProgramItemDoc } from "server/types/programItemTypes";
 import { ProgramItem } from "shared/types/models/programItem";
 import {
   makeSuccessResult,
@@ -45,18 +44,27 @@ export const saveProgramItems = async (
   }
   const currentProgramItems = unwrapResult(currentProgramItemsResult);
 
-  // This will remove direct signups and program items
-  const removeDeletedProgramItemsResult = await removeDeletedProgramItems(
+  // If program item was deleted, remove program item and direct signups
+  const deletedProgramItemsResult = await removeDeletedProgramItems(
     updatedProgramItems,
     currentProgramItems,
   );
-  if (isErrorResult(removeDeletedProgramItemsResult)) {
-    return removeDeletedProgramItemsResult;
+  if (isErrorResult(deletedProgramItemsResult)) {
+    return deletedProgramItemsResult;
   }
+  const deletedProgramItems = unwrapResult(deletedProgramItemsResult);
 
-  // If program items were deleted, this will remove lottery signups and favorite program items
+  const remainingProgramItems = currentProgramItems.filter(
+    (currentItem) =>
+      !deletedProgramItems.some(
+        (deletedItem) =>
+          currentItem.programItemId === deletedItem.programItemId,
+      ),
+  );
+
+  // If program item was deleted, remove lottery signups and favorite program items
   const removeInvalidProgramItemsResult =
-    await removeInvalidProgramItemsFromUsers();
+    await removeInvalidProgramItemsFromUsers(remainingProgramItems);
   if (isErrorResult(removeInvalidProgramItemsResult)) {
     return removeInvalidProgramItemsResult;
   }
@@ -140,10 +148,10 @@ export const saveProgramItems = async (
 };
 
 export const findProgramItems = async (): Promise<
-  Result<ProgramItemDoc[], MongoDbError>
+  Result<ProgramItem[], MongoDbError>
 > => {
   try {
-    const response = await ProgramItemModel.find({});
+    const response = await ProgramItemModel.find({}).lean<ProgramItem[]>();
     logger.debug("MongoDB: Find all program items");
     return makeSuccessResult(response);
   } catch (error) {
@@ -154,11 +162,13 @@ export const findProgramItems = async (): Promise<
 
 export const findProgramItemById = async (
   programItemId: string,
-): Promise<Result<ProgramItemDoc, MongoDbError>> => {
+): Promise<Result<ProgramItem, MongoDbError>> => {
   logger.debug(`MongoDB: Find program item with id ${programItemId}`);
 
   try {
-    const response = await ProgramItemModel.findOne({ programItemId });
+    const response = await ProgramItemModel.findOne({
+      programItemId,
+    }).lean<ProgramItem>();
     if (!response) {
       return makeErrorResult(MongoDbError.PROGRAM_ITEM_NOT_FOUND);
     }
