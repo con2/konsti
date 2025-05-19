@@ -1,12 +1,11 @@
 import fs from "node:fs";
 import { logger } from "server/utils/logger";
-import { User } from "shared/types/models/user";
-import { ProgramItemDoc } from "server/types/programItemTypes";
+import { DirectSignup, User } from "shared/types/models/user";
 import { ResultsCollectionEntry } from "server/types/resultTypes";
 import { writeJson } from "server/features/statistics/statsUtil";
 import { config } from "shared/config";
-import { DirectSignupDoc } from "server/features/direct-signup/directSignupTypes";
 import { SettingsDoc } from "server/types/settingsTypes";
+import { ProgramItem } from "shared/types/models/programItem";
 
 export const programItemIdFix = async (
   year: number,
@@ -33,7 +32,7 @@ export const programItemIdFix = async (
   logger.info(`Loaded ${results.length} results`);
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-  const programItems: ProgramItemDoc[] = JSON.parse(
+  const programItems: ProgramItem[] = JSON.parse(
     fs.readFileSync(
       `${config.server().statsDataDir}/${event}/${year}/program-items.json`,
       "utf8",
@@ -43,7 +42,7 @@ export const programItemIdFix = async (
   logger.info(`Loaded ${programItems.length} program items`);
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-  const directSignups: DirectSignupDoc[] = JSON.parse(
+  const directSignups: DirectSignup[] = JSON.parse(
     fs.readFileSync(
       `${config.server().statsDataDir}/${event}/${year}/direct-signups.json`,
       "utf8",
