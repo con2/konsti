@@ -9368,6 +9368,8 @@ __metadata:
     jsonwebtoken: "npm:9.0.2"
     mongodb-memory-server: "npm:10.1.4"
     mongoose: "npm:8.15.0"
+    mongoose-lean-getters: "npm:2.2.2"
+    mongoose-lean-virtuals: "npm:2.0.0"
     morgan: "npm:1.10.0"
     supertest: "npm:7.1.1"
     tsx: "npm:4.19.4"
@@ -10569,7 +10571,28 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mongoose@npm:8.15.0":
+"mongoose-lean-getters@npm:2.2.2":
+  version: 2.2.2
+  resolution: "mongoose-lean-getters@npm:2.2.2"
+  dependencies:
+    mongoose: "npm:^8.5.1"
+    mpath: "npm:0.9.x"
+  checksum: 10c0/35da1187d9188b8ba61112f6c53a9e2c9348e7ebdff324300b1f15d568e2d12fd8e83f6293934af9664e1748f62fe8e516e69dafba851f32cdcd2405191e2ad3
+  languageName: node
+  linkType: hard
+
+"mongoose-lean-virtuals@npm:2.0.0":
+  version: 2.0.0
+  resolution: "mongoose-lean-virtuals@npm:2.0.0"
+  dependencies:
+    mpath: "npm:^0.8.4"
+  peerDependencies:
+    mongoose: ">=8.0.0"
+  checksum: 10c0/d80092a41b786eb49c68fdf8f5b50a7961dc56786606708c3d5954ffa02231c928913da914106d374ee32a56309ae5abce04c309f20e799ebbbc5f18b84e59fc
+  languageName: node
+  linkType: hard
+
+"mongoose@npm:8.15.0, mongoose@npm:^8.5.1":
   version: 8.15.0
   resolution: "mongoose@npm:8.15.0"
   dependencies:
@@ -10597,10 +10620,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mpath@npm:0.9.0":
+"mpath@npm:0.9.0, mpath@npm:0.9.x":
   version: 0.9.0
   resolution: "mpath@npm:0.9.0"
   checksum: 10c0/ac1a77ebbd44567f122fb3026c9647836215d5bb75b54064d1f3d998125644fe7a775b89441b94d4d60f43ad9638a12d830a9e29f36116e93b8cdfd111816e8f
+  languageName: node
+  linkType: hard
+
+"mpath@npm:^0.8.4":
+  version: 0.8.4
+  resolution: "mpath@npm:0.8.4"
+  checksum: 10c0/ebec4657d01c3b51e63dac31a0d21c14067b000f5f8a9240619f67f0dea1d64da972209da11ceff13f7ecb0b76be61ea87313ba3c5bf5cd3f6c506b0f977793f
   languageName: node
   linkType: hard
 

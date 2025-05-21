@@ -16,7 +16,6 @@ export const getTimeNow = async (): Promise<Result<Dayjs, MongoDbError>> => {
       return findTestSettingsResult;
     }
     const testSettings = unwrapResult(findTestSettingsResult);
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     return makeSuccessResult(dayjs(testSettings.testTime ?? dayjs()));
   }
 

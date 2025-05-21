@@ -1,11 +1,7 @@
-import { UserModel } from "server/features/user/userSchema";
+import { UserModel, UserSchemaDb } from "server/features/user/userSchema";
 import { logger } from "server/utils/logger";
 import { MongoDbError } from "shared/types/api/errors";
-import {
-  FavoriteProgramItemId,
-  NewFavorite,
-  User,
-} from "shared/types/models/user";
+import { FavoriteProgramItemId, NewFavorite } from "shared/types/models/user";
 import {
   Result,
   makeSuccessResult,
@@ -23,8 +19,8 @@ export const saveFavorite = async (
       {
         favoriteProgramItemIds,
       },
-      { new: true, fields: "favoriteProgramItemIds" },
-    ).lean<User>();
+      { new: true },
+    ).lean();
     logger.info(
       `MongoDB: Favorite data stored for user ${newFavorite.username}`,
     );
@@ -32,7 +28,19 @@ export const saveFavorite = async (
       logger.error("%s", new Error(`MongoDB: User ${username} not found`));
       return makeErrorResult(MongoDbError.USER_NOT_FOUND);
     }
-    return makeSuccessResult(response.favoriteProgramItemIds);
+
+    const result = UserSchemaDb.safeParse(response);
+    if (!result.success) {
+      logger.error(
+        "%s",
+        new Error(
+          `Error validating saveFavorite DB value: ${JSON.stringify(result.error)}`,
+        ),
+      );
+      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+    }
+
+    return makeSuccessResult(result.data.favoriteProgramItemIds);
   } catch (error) {
     logger.error(
       `MongoDB: Error storing favorite data for user ${newFavorite.username}: %s`,

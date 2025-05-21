@@ -1,4 +1,6 @@
-import { UserModel } from "server/features/user/userSchema";
+import { z } from "zod";
+import { UserModel, UserSchemaDb } from "server/features/user/userSchema";
+import { convertDatesToStrings } from "server/utils/convertDatesToStrings";
 import { logger } from "server/utils/logger";
 import { MongoDbError } from "shared/types/api/errors";
 import { User } from "shared/types/models/user";
@@ -12,7 +14,7 @@ export const findGroupMembers = async (
   groupCode: string,
 ): Promise<Result<User[], MongoDbError>> => {
   try {
-    const response = await UserModel.find({ groupCode }).lean<User[]>();
+    const response = await UserModel.find({ groupCode }).lean();
     if (response.length === 0) {
       logger.info(`MongoDB: group ${groupCode} not found`);
     } else {
@@ -20,7 +22,19 @@ export const findGroupMembers = async (
         `MongoDB: Found group ${groupCode} with ${response.length} members`,
       );
     }
-    return makeSuccessResult(response);
+
+    const result = z.array(UserSchemaDb).safeParse(response);
+    if (!result.success) {
+      logger.error(
+        "%s",
+        new Error(
+          `Error validating findGroupMembers DB value: ${JSON.stringify(result.error)}`,
+        ),
+      );
+      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+    }
+
+    return makeSuccessResult(convertDatesToStrings(result.data));
   } catch (error) {
     logger.error(`MongoDB: Error finding group ${groupCode}: %s`, error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
@@ -51,11 +65,22 @@ export const saveGroupCreatorCode = async (
       { username },
       { groupCode: groupCreatorCode, groupCreatorCode },
       { new: true },
-    ).lean<User>();
+    ).lean();
     logger.info(
       `MongoDB: Saved group creator code ${groupCreatorCode} for user ${username}`,
     );
-    return makeSuccessResult(response);
+
+    const result = UserSchemaDb.safeParse(response);
+    if (!result.success) {
+      logger.error(
+        "%s",
+        new Error(
+          `Error validating saveGroupCreatorCode DB value: ${JSON.stringify(result.error)}`,
+        ),
+      );
+      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+    }
+    return makeSuccessResult(convertDatesToStrings(result.data));
   } catch {
     logger.error(
       `MongoDB: Error saving group creator code ${groupCreatorCode} for user ${username}`,
@@ -72,14 +97,24 @@ export const saveGroupCode = async (
     const response = await UserModel.findOneAndUpdate(
       { username },
       { groupCode },
-      { new: true, fields: "groupCode" },
-    ).lean<User>();
+      { new: true },
+    ).lean();
     if (groupCode === "0") {
       logger.info(`MongoDB: User ${username} left group`);
     } else {
       logger.info(`MongoDB: Group ${groupCode} stored for user ${username}`);
     }
-    return makeSuccessResult(response);
+    const result = UserSchemaDb.safeParse(response);
+    if (!result.success) {
+      logger.error(
+        "%s",
+        new Error(
+          `Error validating saveGroupCode DB value: ${JSON.stringify(result.error)}`,
+        ),
+      );
+      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+    }
+    return makeSuccessResult(convertDatesToStrings(result.data));
   } catch (error) {
     logger.error(
       `MongoDB: Error storing group ${groupCode} stored for user ${username}: %s`,

@@ -1,10 +1,16 @@
 import mongoose from "mongoose";
-import { Serial } from "server/types/serialTypes";
+import { z } from "zod";
 
-const SerialSchema = new mongoose.Schema({
+export const SerialSchemaDb = z
+  .object({
+    serial: z.string(),
+  })
+  .strip();
+
+type SerialDb = z.infer<typeof SerialSchemaDb>;
+
+const serialSchema = new mongoose.Schema<SerialDb>({
   serial: String,
 });
 
-interface SerialDoc extends Serial, mongoose.Document {}
-
-export const SerialModel = mongoose.model<SerialDoc>("serial", SerialSchema);
+export const SerialModel = mongoose.model<SerialDb>("serial", serialSchema);

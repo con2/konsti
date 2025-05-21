@@ -1,8 +1,28 @@
 import mongoose from "mongoose";
+import { z } from "zod";
 import { config } from "shared/config";
-import { Settings } from "shared/types/models/settings";
+import { SignupQuestionSchema } from "shared/types/models/settings";
+import {
+  EventSignupStrategy,
+  LoginProvider,
+} from "shared/config/eventConfigTypes";
 
-const SettingsSchema = new mongoose.Schema(
+export const SettingsSchemaDb = z
+  .object({
+    hiddenProgramItemIds: z.array(z.string()),
+    appOpen: z.boolean(),
+    signupQuestions: z.array(SignupQuestionSchema),
+    signupStrategy: z.nativeEnum(EventSignupStrategy),
+    programUpdateLastRun: z.date(),
+    assignmentLastRun: z.date(),
+    latestServerStartTime: z.date(),
+    loginProvider: z.nativeEnum(LoginProvider),
+  })
+  .strip();
+
+type SettingsDb = z.infer<typeof SettingsSchemaDb>;
+
+const settingsSchema = new mongoose.Schema<SettingsDb>(
   {
     hiddenProgramItemIds: [String],
     appOpen: { type: Boolean, default: true },
@@ -25,9 +45,21 @@ const SettingsSchema = new mongoose.Schema(
       type: String,
       default: config.server().defaultSignupStrategy,
     },
-    programUpdateLastRun: { type: Date, default: Date.now },
-    assignmentLastRun: { type: Date, default: Date.now },
-    latestServerStartTime: { type: Date, default: Date.now },
+    programUpdateLastRun: {
+      type: Date,
+      get: (value: Date) => new Date(value),
+      default: () => new Date(),
+    },
+    assignmentLastRun: {
+      type: Date,
+      get: (value: Date) => new Date(value),
+      default: () => new Date(),
+    },
+    latestServerStartTime: {
+      type: Date,
+      get: (value: Date) => new Date(value),
+      default: () => new Date(),
+    },
     loginProvider: {
       type: String,
       default: config.server().defaultLoginProvider,
@@ -36,9 +68,7 @@ const SettingsSchema = new mongoose.Schema(
   { timestamps: true },
 );
 
-interface SettingsDoc extends Settings, mongoose.Document {}
-
-export const SettingsModel = mongoose.model<SettingsDoc>(
+export const SettingsModel = mongoose.model<SettingsDb>(
   "settings",
-  SettingsSchema,
+  settingsSchema,
 );

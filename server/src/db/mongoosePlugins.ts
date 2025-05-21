@@ -1,4 +1,5 @@
 import mongoose, { Schema } from "mongoose";
+import mongooseLeanGetters from "mongoose-lean-getters";
 
 mongoose.plugin((schema: Schema) => {
   schema.set("toJSON", {
@@ -9,3 +10,10 @@ mongoose.plugin((schema: Schema) => {
     },
   });
 });
+
+// Enable lean() getters and always apply getters
+mongoose.plugin(mongooseLeanGetters, { defaultLeanOptions: { getters: true } });
+
+// Always apply getters
+mongoose.set("toObject", { getters: true, virtuals: true });
+mongoose.set("toJSON", { getters: true, virtuals: true });

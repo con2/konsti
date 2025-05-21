@@ -1,6 +1,10 @@
+import { z } from "zod";
 import generator from "generate-serial-number";
 import { logger } from "server/utils/logger";
-import { SerialModel } from "server/features/serial/serialSchema";
+import {
+  SerialModel,
+  SerialSchemaDb,
+} from "server/features/serial/serialSchema";
 import { Serial } from "server/types/serialTypes";
 import {
   Result,
@@ -55,7 +59,18 @@ export const saveSerials = async (
     logger.info(
       `MongoDB: Serials data saved. (${serials.length} serials saved)`,
     );
-    return makeSuccessResult(response);
+
+    const result = z.array(SerialSchemaDb).safeParse(response);
+    if (!result.success) {
+      logger.error(
+        "%s",
+        new Error(
+          `Error validating saveSerials DB value: ${JSON.stringify(result.error)}`,
+        ),
+      );
+      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+    }
+    return makeSuccessResult(result.data);
   } catch (error) {
     logger.error("MongoDB: Error saving serials data: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
@@ -67,7 +82,7 @@ export const findSerial = async (
 ): Promise<Result<boolean, MongoDbError>> => {
   let response;
   try {
-    response = await SerialModel.findOne({ serial }).lean<Serial>();
+    response = await SerialModel.findOne({ serial }).lean();
   } catch (error) {
     logger.error(`MongoDB: Error finding serial ${serial}: %s`, error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);

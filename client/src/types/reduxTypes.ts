@@ -56,7 +56,7 @@ export interface GroupState {
 export type MyProgramItemsState = UserProgramItems;
 
 export interface TestSettingsState {
-  testTime: string;
+  testTime: string | null;
 }
 
 export interface LocalStorageState {
