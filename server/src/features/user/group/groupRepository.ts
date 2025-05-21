@@ -66,6 +66,12 @@ export const saveGroupCreatorCode = async (
       { groupCode: groupCreatorCode, groupCreatorCode },
       { new: true },
     ).lean();
+
+    if (!response) {
+      logger.info(`MongoDB: saveGroupCreatorCode user ${username} not found`);
+      return makeSuccessResult(null);
+    }
+
     logger.info(
       `MongoDB: Saved group creator code ${groupCreatorCode} for user ${username}`,
     );
@@ -99,6 +105,12 @@ export const saveGroupCode = async (
       { groupCode },
       { new: true },
     ).lean();
+
+    if (!response) {
+      logger.info(`MongoDB: saveGroupCode user ${username} not found`);
+      return makeSuccessResult(null);
+    }
+
     if (groupCode === "0") {
       logger.info(`MongoDB: User ${username} left group`);
     } else {

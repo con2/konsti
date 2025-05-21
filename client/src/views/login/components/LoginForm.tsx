@@ -2,14 +2,12 @@ import { ReactElement, useState } from "react";
 import { SubmitHandler, useForm, useFormState } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import { useNavigate, useNavigationType } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, ButtonStyle } from "client/components/Button";
 import { useAppDispatch } from "client/utils/hooks";
 import { LoginErrorMessage, submitLogin } from "client/views/login/loginThunks";
 import { ErrorMessage } from "client/components/ErrorMessage";
 import { UncontrolledInput } from "client/components/UncontrolledInput";
-import { navigateToPreviousOrRoot } from "client/utils/navigation";
 
 export interface LoginFormFields {
   username: string;
@@ -19,8 +17,6 @@ export interface LoginFormFields {
 export const LoginForm = (): ReactElement => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
-  const navigate = useNavigate();
-  const navigationType = useNavigationType();
 
   const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
   const [serverError, setServerError] = useState<LoginErrorMessage | null>(
@@ -46,8 +42,6 @@ export const LoginForm = (): ReactElement => {
       setServerError(errorMessage);
       return;
     }
-
-    await navigateToPreviousOrRoot(navigationType, navigate);
   };
 
   return (

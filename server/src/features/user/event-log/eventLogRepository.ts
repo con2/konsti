@@ -74,23 +74,24 @@ export const updateEventLogItemIsSeen = async (
       },
     ).lean();
 
-    if (response) {
-      const result = UserSchemaDb.safeParse(response);
-      if (!result.success) {
-        logger.error(
-          "%s",
-          new Error(
-            `Error validating updateEventLogItemIsSeen DB value: ${JSON.stringify(result.error)}`,
-          ),
-        );
-        return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
-      }
-
-      return makeSuccessResult(
-        convertDatesToStrings(result.data).eventLogItems.map((item) => item),
-      );
+    if (!response) {
+      return makeSuccessResult(null);
     }
-    return makeSuccessResult(null);
+
+    const result = UserSchemaDb.safeParse(response);
+    if (!result.success) {
+      logger.error(
+        "%s",
+        new Error(
+          `Error validating updateEventLogItemIsSeen DB value: ${JSON.stringify(result.error)}`,
+        ),
+      );
+      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+    }
+
+    return makeSuccessResult(
+      convertDatesToStrings(result.data).eventLogItems.map((item) => item),
+    );
   } catch (error) {
     logger.error(
       `MongoDB: Error updating event log item for user ${username}: %s`,

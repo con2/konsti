@@ -1,39 +1,43 @@
 import { ReactElement, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { Link, useLocation, useNavigate } from "react-router";
+import {
+  Link,
+  useLocation,
+  useNavigate,
+  useNavigationType,
+} from "react-router";
 import { LoginForm } from "client/views/login/components/LoginForm";
 import { useAppSelector } from "client/utils/hooks";
 import { LoginProvider } from "shared/config/eventConfigTypes";
 import { KompassiLogin } from "client/views/login/components/KompassiLogin";
 import { Button, ButtonStyle } from "client/components/Button";
-import { ProgramTab } from "client/app/AppRoutes";
-import { isAdminOrHelp } from "client/utils/checkUserGroup";
+import { navigateToPreviousOrRoot } from "client/utils/navigation";
+import { usePreviousLocation } from "client/app/HistoryContext";
+import { AppRoute } from "client/app/AppRoutes";
 
 export const LoginView = (): ReactElement => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const location = useLocation();
+  const navigationType = useNavigationType();
+  const prevLocation = usePreviousLocation();
 
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
-  const userGroup = useAppSelector((state) => state.login.userGroup);
   const loginProvider = useAppSelector((state) => state.admin.loginProvider);
   const appOpen = useAppSelector((state) => state.admin.appOpen);
 
   const adminLogin = location.pathname === "/admin/login";
 
   useEffect(() => {
-    const navigateToRoot = async (route: ProgramTab): Promise<void> => {
-      await navigate(route);
-    };
     if (loggedIn) {
-      if (isAdminOrHelp(userGroup)) {
+      if (prevLocation?.pathname === "/program/list") {
         // eslint-disable-next-line @typescript-eslint/no-floating-promises
-        navigateToRoot(ProgramTab.PROGRAM_LIST);
+        navigate(AppRoute.ROOT);
       }
       // eslint-disable-next-line @typescript-eslint/no-floating-promises
-      navigateToRoot(ProgramTab.MY_PROGRAM);
+      navigateToPreviousOrRoot(navigationType, navigate);
     }
-  }, [loggedIn, navigate, userGroup]);
+  }, [loggedIn, navigate, navigationType, prevLocation]);
 
   return (
     <div>

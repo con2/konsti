@@ -175,11 +175,12 @@ export const findUserBySerial = async (
   try {
     const response = await UserModel.findOne({ serial }).lean();
 
-    if (response) {
-      logger.debug(`MongoDB: Found user with serial ${serial}`);
-    } else {
+    if (!response) {
       logger.info(`MongoDB: User with serial ${serial} not found`);
+      return makeSuccessResult(null);
     }
+
+    logger.debug(`MongoDB: Found user with serial ${serial}`);
 
     const result = UserSchemaDb.safeParse(response);
     if (!result.success) {
@@ -207,11 +208,12 @@ export const findUserByKompassiId = async (
   try {
     const response = await UserModel.findOne({ kompassiId }).lean();
 
-    if (response) {
-      logger.debug(`MongoDB: Found user with Kompassi id ${kompassiId}`);
-    } else {
+    if (!response) {
       logger.info(`MongoDB: User with Kompassi id ${kompassiId} not found`);
+      return makeSuccessResult(null);
     }
+
+    logger.debug(`MongoDB: Found user with Kompassi id ${kompassiId}`);
 
     const result = UserSchemaDb.safeParse(response);
     if (!result.success) {
@@ -240,11 +242,13 @@ export const findUserSerial = async (
 
   try {
     const response = await UserModel.findOne({ serial }).lean();
-    if (response) {
-      logger.debug(`MongoDB: Found Serial ${serial}`);
-    } else {
+
+    if (!response) {
       logger.info(`MongoDB: Serial ${serial} not found`);
+      return makeSuccessResult(null);
     }
+
+    logger.debug(`MongoDB: Found Serial ${serial}`);
 
     const result = UserSchemaDb.safeParse(response);
     if (!result.success) {

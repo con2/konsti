@@ -10,7 +10,7 @@ import {
 
 export const saveFavorite = async (
   newFavorite: NewFavorite,
-): Promise<Result<readonly FavoriteProgramItemId[] | null, MongoDbError>> => {
+): Promise<Result<readonly FavoriteProgramItemId[], MongoDbError>> => {
   const { username, favoriteProgramItemIds } = newFavorite;
 
   try {
@@ -21,13 +21,15 @@ export const saveFavorite = async (
       },
       { new: true },
     ).lean();
-    logger.info(
-      `MongoDB: Favorite data stored for user ${newFavorite.username}`,
-    );
+
     if (!response) {
       logger.error("%s", new Error(`MongoDB: User ${username} not found`));
       return makeErrorResult(MongoDbError.USER_NOT_FOUND);
     }
+
+    logger.info(
+      `MongoDB: Favorite data stored for user ${newFavorite.username}`,
+    );
 
     const result = UserSchemaDb.safeParse(response);
     if (!result.success) {

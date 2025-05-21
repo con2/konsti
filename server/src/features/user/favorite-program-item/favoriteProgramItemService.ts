@@ -19,17 +19,9 @@ export const storeFavorite = async (
 
   const favoriteProgramItemIds = unwrapResult(saveFavoriteResult);
 
-  if (favoriteProgramItemIds) {
-    return {
-      message: "Update favorite success",
-      status: "success",
-      favoriteProgramItemIds,
-    };
-  }
-
   return {
-    message: "Update favorite failure",
-    status: "error",
-    errorId: "unknown",
+    message: "Update favorite success",
+    status: "success",
+    favoriteProgramItemIds,
   };
 };
