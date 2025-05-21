@@ -24,14 +24,6 @@ export const storeEventLogItemIsSeen = async (
 
   const eventLogItems = unwrapResult(updateEventLogItemResult);
 
-  if (!eventLogItems) {
-    return {
-      message: "Unable to update event log item isSeen",
-      status: "error",
-      errorId: "unknown",
-    };
-  }
-
   return {
     status: "success",
     message: "Event saved",

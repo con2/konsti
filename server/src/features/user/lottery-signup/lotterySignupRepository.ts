@@ -1,5 +1,6 @@
-import { UserModel } from "server/features/user/userSchema";
+import { UserModel, UserSchemaDb } from "server/features/user/userSchema";
 import { UserLotterySignups } from "server/types/resultTypes";
+import { convertDatesToStrings } from "server/utils/convertDatesToStrings";
 import { logger } from "server/utils/logger";
 import { MongoDbError } from "shared/types/api/errors";
 import { LotterySignup, User } from "shared/types/models/user";
@@ -15,19 +16,31 @@ export const saveLotterySignups = async (
   const { lotterySignups, username } = signupData;
 
   try {
-    const signupResponse = await UserModel.findOneAndUpdate(
+    const response = await UserModel.findOneAndUpdate(
       { username },
       {
         lotterySignups,
       },
       { new: true },
-    );
-    if (!signupResponse) {
+    ).lean();
+    if (!response) {
       logger.error("%s", new Error("Error saving lottery signups"));
       return makeErrorResult(MongoDbError.SIGNUP_NOT_FOUND);
     }
     logger.debug(`MongoDB: Signup data stored for user ${username}`);
-    return makeSuccessResult(signupResponse);
+
+    const result = UserSchemaDb.safeParse(response);
+    if (!result.success) {
+      logger.error(
+        "%s",
+        new Error(
+          `Error validating saveLotterySignups DB value: ${JSON.stringify(result.error)}`,
+        ),
+      );
+      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+    }
+
+    return makeSuccessResult(convertDatesToStrings(result.data));
   } catch (error) {
     logger.error(
       `MongoDB: Error storing signup data for user ${username}: %s`,
@@ -47,7 +60,7 @@ export const saveLotterySignup = async ({
   username,
 }: SaveLotterySignupParams): Promise<Result<User, MongoDbError>> => {
   try {
-    const signupResponse = await UserModel.findOneAndUpdate(
+    const response = await UserModel.findOneAndUpdate(
       { username },
       {
         $addToSet: {
@@ -59,8 +72,8 @@ export const saveLotterySignup = async ({
         },
       },
       { new: true },
-    );
-    if (!signupResponse) {
+    ).lean();
+    if (!response) {
       logger.error(
         "%s",
         new Error(
@@ -72,7 +85,19 @@ export const saveLotterySignup = async ({
     logger.debug(
       `MongoDB: Lottery signup ${lotterySignup.programItemId} saved for user ${username}`,
     );
-    return makeSuccessResult(signupResponse);
+
+    const result = UserSchemaDb.safeParse(response);
+    if (!result.success) {
+      logger.error(
+        "%s",
+        new Error(
+          `Error validating saveLotterySignup DB value: ${JSON.stringify(result.error)}`,
+        ),
+      );
+      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+    }
+
+    return makeSuccessResult(convertDatesToStrings(result.data));
   } catch (error) {
     logger.error(
       `MongoDB: Error saving lottery signup ${lotterySignup.programItemId} for user ${username}: %s`,
@@ -92,7 +117,7 @@ export const delLotterySignup = async ({
   username,
 }: DeleteLotterySignupParams): Promise<Result<User, MongoDbError>> => {
   try {
-    const signupResponse = await UserModel.findOneAndUpdate(
+    const response = await UserModel.findOneAndUpdate(
       { username },
       {
         $pull: {
@@ -102,8 +127,8 @@ export const delLotterySignup = async ({
         },
       },
       { new: true },
-    );
-    if (!signupResponse) {
+    ).lean();
+    if (!response) {
       logger.error(
         "%s",
         new Error(
@@ -115,7 +140,19 @@ export const delLotterySignup = async ({
     logger.debug(
       `MongoDB: Lottery signup ${lotterySignupProgramItemId} deleted from user ${username}`,
     );
-    return makeSuccessResult(signupResponse);
+
+    const result = UserSchemaDb.safeParse(response);
+    if (!result.success) {
+      logger.error(
+        "%s",
+        new Error(
+          `Error validating delLotterySignup DB value: ${JSON.stringify(result.error)}`,
+        ),
+      );
+      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+    }
+
+    return makeSuccessResult(convertDatesToStrings(result.data));
   } catch (error) {
     logger.error(
       `MongoDB: Error deleting lottery signup ${lotterySignupProgramItemId} from user ${username}: %s`,

@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 import { populateDb, login } from "playwright/playwrightUtils";
 
 test("Add favorite", async ({ page, request }) => {
-  await populateDb(request);
+  await populateDb(request, { clean: true, users: true, programItems: true });
   await login(page, request, { username: "test1", password: "test" });
 
   await page.goto("/");

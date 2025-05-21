@@ -81,7 +81,7 @@ describe(`POST ${ApiDevEndpoint.TEST_SETTINGS}`, () => {
         .send(testSettings);
 
       expect(response.status).toEqual(200);
-      expect(response.body).toEqual({
+      expect(response.body).toMatchObject({
         status: "success",
         message: "Update test settings success",
         testSettings,

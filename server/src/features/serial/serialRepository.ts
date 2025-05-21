@@ -1,7 +1,11 @@
+import { z } from "zod";
 import generator from "generate-serial-number";
 import { logger } from "server/utils/logger";
-import { SerialModel } from "server/features/serial/serialSchema";
-import { SerialDoc, Serial } from "server/types/serialTypes";
+import {
+  SerialModel,
+  SerialSchemaDb,
+} from "server/features/serial/serialSchema";
+import { Serial } from "server/types/serialTypes";
 import {
   Result,
   isErrorResult,
@@ -24,12 +28,12 @@ export const removeSerials = async (): Promise<Result<void, MongoDbError>> => {
 
 export const saveSerials = async (
   count: number,
-): Promise<Result<SerialDoc[], MongoDbError>> => {
-  const serialDocs: SerialDoc[] = [];
+): Promise<Result<Serial[], MongoDbError>> => {
+  const serials: Serial[] = [];
   // create serials
   for (let i = 1; i <= count; i += 1) {
     const serial = generator.generate(10);
-    const rawSerials = serialDocs.map((serialDoc) => serialDoc.serial);
+    const rawSerials = serials.map((s) => s.serial);
 
     const findSerialResult = await findSerial(serial);
     if (isErrorResult(findSerialResult)) {
@@ -42,7 +46,7 @@ export const saveSerials = async (
       i -= 1;
       continue;
     }
-    serialDocs.push(
+    serials.push(
       new SerialModel({
         serial,
       }),
@@ -51,11 +55,22 @@ export const saveSerials = async (
   }
 
   try {
-    const response = await SerialModel.create(serialDocs);
+    const response = await SerialModel.create(serials);
     logger.info(
-      `MongoDB: Serials data saved. (${serialDocs.length} serials saved)`,
+      `MongoDB: Serials data saved. (${serials.length} serials saved)`,
     );
-    return makeSuccessResult(response);
+
+    const result = z.array(SerialSchemaDb).safeParse(response);
+    if (!result.success) {
+      logger.error(
+        "%s",
+        new Error(
+          `Error validating saveSerials DB value: ${JSON.stringify(result.error)}`,
+        ),
+      );
+      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+    }
+    return makeSuccessResult(result.data);
   } catch (error) {
     logger.error("MongoDB: Error saving serials data: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
@@ -67,7 +82,7 @@ export const findSerial = async (
 ): Promise<Result<boolean, MongoDbError>> => {
   let response;
   try {
-    response = await SerialModel.findOne({ serial }).lean<Serial>();
+    response = await SerialModel.findOne({ serial }).lean();
   } catch (error) {
     logger.error(`MongoDB: Error finding serial ${serial}: %s`, error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);

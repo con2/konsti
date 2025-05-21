@@ -1,7 +1,4 @@
-import mongoose, { ObjectId } from "mongoose";
-import { User, UserGroup } from "shared/types/models/user";
-
-export interface UserDoc extends User, mongoose.Document<ObjectId> {}
+import { UserGroup } from "shared/types/models/user";
 
 export interface NewUser {
   kompassiId: number;

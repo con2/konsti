@@ -1,14 +1,34 @@
 import mongoose from "mongoose";
-import { DirectSignupDoc } from "server/features/direct-signup/directSignupTypes";
+import { z } from "zod";
 
-const DirectSignupSchema = new mongoose.Schema(
+const UserSignupsSchema = z.object({
+  username: z.string(),
+  priority: z.number(),
+  signedToStartTime: z.date(),
+  message: z.string(),
+});
+
+export const DirectSignupSchemaDb = z
+  .object({
+    programItemId: z.string(),
+    userSignups: z.array(UserSignupsSchema),
+    count: z.number().optional(),
+  })
+  .strip();
+
+type DirectSignupDb = z.infer<typeof DirectSignupSchemaDb>;
+
+const directSignupSchema = new mongoose.Schema<DirectSignupDb>(
   {
     programItemId: String,
     userSignups: [
       {
         username: String,
         priority: Number,
-        signedToStartTime: Date,
+        signedToStartTime: {
+          type: Date,
+          get: (value: Date) => new Date(value),
+        },
         message: String,
       },
     ],
@@ -17,7 +37,7 @@ const DirectSignupSchema = new mongoose.Schema(
   { timestamps: true },
 );
 
-export const SignupModel = mongoose.model<DirectSignupDoc>(
+export const SignupModel = mongoose.model<DirectSignupDb>(
   "direct-signup",
-  DirectSignupSchema,
+  directSignupSchema,
 );

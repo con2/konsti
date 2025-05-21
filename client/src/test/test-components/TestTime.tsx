@@ -18,9 +18,7 @@ export const TestTime = (): ReactElement => {
   const { i18n } = useTranslation();
   const dispatch = useAppDispatch();
 
-  const testTime: string = useAppSelector(
-    (state) => state.testSettings.testTime,
-  );
+  const testTime = useAppSelector((state) => state.testSettings.testTime);
 
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const [loading, setLoading] = useState<boolean>(false);
@@ -68,15 +66,15 @@ export const TestTime = (): ReactElement => {
           <div onClick={() => setDropdownVisible(true)}>
             {i18n.language === "fi" ? (
               <>
-                {capitalize(getShortDate(testTime))}
+                {testTime && capitalize(getShortDate(testTime))}
                 <br />
-                {getTime(testTime)}
+                {testTime && getTime(testTime)}
               </>
             ) : (
               <>
-                {capitalize(getShortDate(testTime))}
+                {testTime && capitalize(getShortDate(testTime))}
                 <br />
-                {getTime(testTime)}
+                {testTime && getTime(testTime)}
               </>
             )}
           </div>

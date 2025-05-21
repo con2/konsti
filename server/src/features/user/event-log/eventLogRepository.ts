@@ -1,4 +1,3 @@
-import dayjs from "dayjs";
 import { unique } from "remeda";
 import { MongoDbError } from "shared/types/api/errors";
 import {
@@ -10,9 +9,10 @@ import {
   PostEventLogIsSeenRequest,
   NewEventLogItems,
 } from "shared/types/api/eventLog";
-import { UserModel } from "server/features/user/userSchema";
+import { UserModel, UserSchemaDb } from "server/features/user/userSchema";
 import { logger } from "server/utils/logger";
 import { EventLogAction, EventLogItem } from "shared/types/models/eventLog";
+import { convertDatesToStrings } from "server/utils/convertDatesToStrings";
 
 export const addEventLogItems = async (
   eventLogRequest: NewEventLogItems,
@@ -60,7 +60,7 @@ export const addEventLogItems = async (
 export const updateEventLogItemIsSeen = async (
   request: PostEventLogIsSeenRequest,
   username: string,
-): Promise<Result<EventLogItem[] | null, MongoDbError>> => {
+): Promise<Result<EventLogItem[], MongoDbError>> => {
   const { eventLogItemId, isSeen } = request;
   try {
     const response = await UserModel.findOneAndUpdate(
@@ -72,22 +72,29 @@ export const updateEventLogItemIsSeen = async (
         arrayFilters: [{ "logItem._id": eventLogItemId }],
         new: true,
       },
-    );
-    if (response) {
-      return makeSuccessResult(
-        response.eventLogItems.map((item) => ({
-          // @ts-expect-error: Mongoose return value is missing nested _id
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-          eventLogItemId: item._id,
-          programItemStartTime: dayjs(item.programItemStartTime).toISOString(),
-          action: item.action,
-          isSeen: item.isSeen,
-          programItemId: item.programItemId,
-          createdAt: dayjs(item.createdAt).toISOString(),
-        })),
+    ).lean();
+
+    if (!response) {
+      logger.info(
+        `MongoDB: updateEventLogItemIsSeen user ${username} not found`,
       );
+      return makeErrorResult(MongoDbError.USER_NOT_FOUND);
     }
-    return makeSuccessResult(null);
+
+    const result = UserSchemaDb.safeParse(response);
+    if (!result.success) {
+      logger.error(
+        "%s",
+        new Error(
+          `Error validating updateEventLogItemIsSeen DB value: ${JSON.stringify(result.error)}`,
+        ),
+      );
+      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+    }
+
+    return makeSuccessResult(
+      convertDatesToStrings(result.data).eventLogItems.map((item) => item),
+    );
   } catch (error) {
     logger.error(
       `MongoDB: Error updating event log item for user ${username}: %s`,

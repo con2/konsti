@@ -1,13 +1,15 @@
 import { expect, test, afterEach, beforeEach } from "vitest";
 import mongoose from "mongoose";
 import { faker } from "@faker-js/faker";
-import { ResultsModel } from "server/features/results/resultsSchema";
 import { UserAssignmentResult } from "shared/types/models/result";
-import { saveResult } from "server/features/results/resultsRepository";
+import {
+  findResults,
+  saveResult,
+} from "server/features/results/resultsRepository";
 import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
 import { mockUser, mockUser2 } from "server/test/mock-data/mockUser";
 import { testProgramItem } from "shared/tests/testProgramItem";
-import { AssignmentResult } from "server/types/resultTypes";
+import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 
 beforeEach(async () => {
   await mongoose.connect(globalThis.__MONGO_URI__, {
@@ -44,7 +46,7 @@ test("should insert new result into collection", async () => {
 
   await saveResult(signupResults, assignmentTime, algorithm, message);
 
-  const insertedResults = await ResultsModel.find().lean<AssignmentResult[]>();
+  const insertedResults = unsafelyUnwrap(await findResults());
   expect(insertedResults).toHaveLength(1);
 
   expect(insertedResults[0]).toMatchObject({
@@ -53,7 +55,7 @@ test("should insert new result into collection", async () => {
         assignmentSignup: {
           programItemId: testProgramItem.programItemId,
           priority: 1,
-          signedToStartTime: new Date(testProgramItem.startTime),
+          signedToStartTime: testProgramItem.startTime,
         },
         username: mockUser.username,
       },
@@ -61,13 +63,13 @@ test("should insert new result into collection", async () => {
         assignmentSignup: {
           programItemId: testProgramItem.programItemId,
           priority: 1,
-          signedToStartTime: new Date(testProgramItem.startTime),
+          signedToStartTime: testProgramItem.startTime,
         },
         username: mockUser2.username,
       },
     ],
     message,
-    assignmentTime: new Date(assignmentTime),
+    assignmentTime,
     algorithm,
   });
 });

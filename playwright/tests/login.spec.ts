@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 import { populateDb } from "playwright/playwrightUtils";
 
 test("Admin login", async ({ page, request }) => {
-  await populateDb(request);
+  await populateDb(request, { clean: true, users: true, programItems: true });
 
   const username = "admin";
   const password = "test";
@@ -28,7 +28,7 @@ test("Admin login", async ({ page, request }) => {
 });
 
 test("User login", async ({ page, request }) => {
-  await populateDb(request);
+  await populateDb(request, { clean: true, users: true, programItems: true });
 
   const username = "test1";
   const password = "test";
@@ -51,4 +51,33 @@ test("User login", async ({ page, request }) => {
   await page.click("data-testid=navigation-icon");
   const link = page.getByRole("link", { name: /profile & group/i });
   await expect(link).toBeVisible();
+});
+
+test("Login redirect back to program item", async ({ page, request }) => {
+  await populateDb(request, { clean: true, users: true, programItems: true });
+
+  const username = "test1";
+  const password = "test";
+
+  await page.goto("/");
+
+  const firstProgramItem = page.locator(
+    "data-testid=program-item-container >> nth=0",
+  );
+
+  const fistProgramItemTitle =
+    firstProgramItem.getByTestId("program-item-title");
+
+  await fistProgramItemTitle.click();
+  await page.getByRole("link", { name: "Log in to sign up" }).click();
+  await page.fill("data-testid=login-form-input-username", username);
+  await page.fill("data-testid=login-form-input-password", password);
+  await page.click("data-testid=login-button");
+
+  const programItemTitle = await page
+    .getByTestId("program-item-title")
+    .getByRole("link")
+    .textContent();
+
+  expect(programItemTitle).toEqual(await fistProgramItemTitle.textContent());
 });

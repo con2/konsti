@@ -1,5 +1,9 @@
+import { z } from "zod";
 import { logger } from "server/utils/logger";
-import { ProgramItemModel } from "server/features/program-item/programItemSchema";
+import {
+  ProgramItemModel,
+  ProgramItemSchemaDb,
+} from "server/features/program-item/programItemSchema";
 import { updateMovedProgramItems } from "server/features/assignment/utils/updateMovedProgramItems";
 import { ProgramItem } from "shared/types/models/programItem";
 import {
@@ -14,6 +18,7 @@ import { removeInvalidProgramItemsFromUsers } from "server/features/assignment/u
 import { MongoDbError } from "shared/types/api/errors";
 import { createEmptyDirectSignupDocumentForProgramItems } from "server/features/direct-signup/directSignupRepository";
 import { differenceBy } from "shared/utils/remedaExtend";
+import { convertDatesToStrings } from "server/utils/convertDatesToStrings";
 
 export const removeProgramItems = async (
   programItemIds?: string[],
@@ -151,9 +156,19 @@ export const findProgramItems = async (): Promise<
   Result<ProgramItem[], MongoDbError>
 > => {
   try {
-    const response = await ProgramItemModel.find({}).lean<ProgramItem[]>();
+    const response = await ProgramItemModel.find({}).lean();
     logger.debug("MongoDB: Find all program items");
-    return makeSuccessResult(response);
+    const result = z.array(ProgramItemSchemaDb).safeParse(response);
+    if (!result.success) {
+      logger.error(
+        "%s",
+        new Error(
+          `Error validating findProgramItems DB value: ${JSON.stringify(result.error)}`,
+        ),
+      );
+      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+    }
+    return makeSuccessResult(convertDatesToStrings(result.data));
   } catch (error) {
     logger.error("MongoDB: Error fetching program items: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
@@ -168,11 +183,21 @@ export const findProgramItemById = async (
   try {
     const response = await ProgramItemModel.findOne({
       programItemId,
-    }).lean<ProgramItem>();
+    }).lean();
     if (!response) {
       return makeErrorResult(MongoDbError.PROGRAM_ITEM_NOT_FOUND);
     }
-    return makeSuccessResult(response);
+    const result = ProgramItemSchemaDb.safeParse(response);
+    if (!result.success) {
+      logger.error(
+        "%s",
+        new Error(
+          `Error validating findProgramItemById DB value: ${JSON.stringify(result.error)}`,
+        ),
+      );
+      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+    }
+    return makeSuccessResult(convertDatesToStrings(result.data));
   } catch (error) {
     logger.error("MongoDB: Error fetching programItemId: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);

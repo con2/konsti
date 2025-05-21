@@ -4,8 +4,8 @@ import { DirectSignup, User } from "shared/types/models/user";
 import { ResultsCollectionEntry } from "server/types/resultTypes";
 import { writeJson } from "server/features/statistics/statsUtil";
 import { config } from "shared/config";
-import { SettingsDoc } from "server/types/settingsTypes";
 import { ProgramItem } from "shared/types/models/programItem";
+import { Settings } from "shared/types/models/settings";
 
 export const programItemIdFix = async (
   year: number,
@@ -52,7 +52,7 @@ export const programItemIdFix = async (
   logger.info(`Loaded ${programItems.length} program items`);
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-  const settings: SettingsDoc[] = JSON.parse(
+  const settings: Settings[] = JSON.parse(
     fs.readFileSync(
       `${config.server().statsDataDir}/${event}/${year}/settings.json`,
       "utf8",

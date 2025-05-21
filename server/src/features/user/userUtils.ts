@@ -1,9 +1,9 @@
 import { Dayjs } from "dayjs";
 import { logger } from "server/utils/logger";
 import { saveSerials } from "server/features/serial/serialRepository";
-import { SerialDoc } from "server/types/serialTypes";
 import { Result } from "shared/utils/result";
 import { MongoDbError } from "shared/types/api/errors";
+import { Serial } from "server/types/serialTypes";
 
 interface HasSignupEndedParams {
   signupEndTime: Dayjs;
@@ -24,7 +24,7 @@ export const hasSignupEnded = ({
 };
 
 export const createSerial = async (): Promise<
-  Result<SerialDoc[], MongoDbError>
+  Result<Serial[], MongoDbError>
 > => {
   return await saveSerials(1);
 };

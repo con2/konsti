@@ -176,6 +176,7 @@ export const removeLotterySignup = async (
   const timeNow = unwrapResult(timeNowResult);
 
   const lotterySignupEndTime = getLotterySignupEndTime(programItem.startTime);
+
   const signupEnded = hasSignupEnded({
     signupEndTime: lotterySignupEndTime,
     timeNow,

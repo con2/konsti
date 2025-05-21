@@ -140,18 +140,10 @@ export const createGroup = async (
 
   const saveGroupResponse = unwrapResult(saveGroupResponseResult);
 
-  if (saveGroupResponse) {
-    return {
-      message: "Create group success",
-      status: "success",
-      groupCode: saveGroupResponse.groupCode,
-    };
-  }
-
   return {
-    message: "Save group failure",
-    status: "error",
-    errorId: "unknown",
+    message: "Create group success",
+    status: "success",
+    groupCode: saveGroupResponse.groupCode,
   };
 };
 
@@ -278,18 +270,10 @@ export const joinGroup = async (
 
   const saveGroupResponse = unwrapResult(saveGroupResponseResult);
 
-  if (saveGroupResponse) {
-    return {
-      message: "Joined to group success",
-      status: "success",
-      groupCode: saveGroupResponse.groupCode,
-    };
-  }
-
   return {
-    message: "Failed to update group",
-    status: "error",
-    errorId: "unknown",
+    message: "Joined to group success",
+    status: "success",
+    groupCode: saveGroupResponse.groupCode,
   };
 };
 
@@ -307,18 +291,10 @@ export const leaveGroup = async (
 
   const saveGroupResponse = unwrapResult(saveGroupResponseResult);
 
-  if (saveGroupResponse) {
-    return {
-      message: "Leave group success",
-      status: "success",
-      groupCode: saveGroupResponse.groupCode,
-    };
-  }
-
   return {
-    message: "Failed to leave group",
-    status: "error",
-    errorId: "failedToLeave",
+    message: "Leave group success",
+    status: "success",
+    groupCode: saveGroupResponse.groupCode,
   };
 };
 

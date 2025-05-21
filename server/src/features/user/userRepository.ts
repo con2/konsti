@@ -1,6 +1,6 @@
-import dayjs from "dayjs";
+import { z } from "zod";
 import { logger } from "server/utils/logger";
-import { UserModel } from "server/features/user/userSchema";
+import { UserModel, UserSchemaDb } from "server/features/user/userSchema";
 import { NewUser } from "server/types/userTypes";
 import { Serial } from "server/types/serialTypes";
 import { User, UserGroup } from "shared/types/models/user";
@@ -10,6 +10,7 @@ import {
   makeSuccessResult,
 } from "shared/utils/result";
 import { MongoDbError } from "shared/types/api/errors";
+import { convertDatesToStrings } from "server/utils/convertDatesToStrings";
 
 export const removeUsers = async (): Promise<Result<void, MongoDbError>> => {
   logger.info("MongoDB: remove ALL users from db");
@@ -48,7 +49,18 @@ export const saveUser = async (
   try {
     const response = await user.save();
     logger.info(`MongoDB: User ${newUserData.username} saved to DB`);
-    return makeSuccessResult(response);
+
+    const result = UserSchemaDb.safeParse(response.toObject());
+    if (!result.success) {
+      logger.error(
+        "%s",
+        new Error(
+          `Error validating saveUser DB value: ${JSON.stringify(result.error)}`,
+        ),
+      );
+      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+    }
+    return makeSuccessResult(convertDatesToStrings(result.data));
   } catch (error) {
     logger.error(
       `MongoDB: Error creating new user ${newUserData.username}: %s`,
@@ -101,13 +113,24 @@ export const updateUserPassword = async (
       {
         password,
       },
-      { new: true, fields: "-_id -__v -createdAt -updatedAt" },
-    ).lean<User>();
+      { new: true },
+    ).lean();
     logger.debug(`MongoDB: Password for user ${username} updated`);
     if (!response) {
       return makeErrorResult(MongoDbError.USER_NOT_FOUND);
     }
-    return makeSuccessResult(response);
+
+    const result = UserSchemaDb.safeParse(response);
+    if (!result.success) {
+      logger.error(
+        "%s",
+        new Error(
+          `Error validating updateUserPassword DB value: ${JSON.stringify(result.error)}`,
+        ),
+      );
+      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+    }
+    return makeSuccessResult(convertDatesToStrings(result.data));
   } catch (error) {
     logger.error(
       `MongoDB: Error updating password for user ${username}: %s`,
@@ -121,24 +144,25 @@ export const findUser = async (
   username: string,
 ): Promise<Result<User | null, MongoDbError>> => {
   try {
-    const response = await UserModel.findOne({ username }).lean<User>();
+    const response = await UserModel.findOne({ username }).lean();
     if (!response) {
       logger.info(`MongoDB: User ${username} not found`);
       return makeSuccessResult(null);
     }
     logger.debug(`MongoDB: Found user ${username}`);
-    return makeSuccessResult({
-      ...response,
-      lotterySignups: response.lotterySignups.map((lotterySignup) => ({
-        ...lotterySignup,
-        signedToStartTime: dayjs(lotterySignup.signedToStartTime).toISOString(),
-      })),
-      eventLogItems: response.eventLogItems.map((logItem) => ({
-        ...logItem,
-        programItemStartTime: dayjs(logItem.programItemStartTime).toISOString(),
-        createdAt: dayjs(logItem.createdAt).toISOString(),
-      })),
-    });
+
+    const result = UserSchemaDb.safeParse(response);
+    if (!result.success) {
+      logger.error(
+        "%s",
+        new Error(
+          `Error validating findUser DB value: ${JSON.stringify(result.error)}`,
+        ),
+      );
+      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+    }
+
+    return makeSuccessResult(convertDatesToStrings(result.data));
   } catch (error) {
     logger.error(`MongoDB: Error finding user ${username}: %s`, error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
@@ -149,14 +173,26 @@ export const findUserBySerial = async (
   serial: string,
 ): Promise<Result<User | null, MongoDbError>> => {
   try {
-    const response = await UserModel.findOne({ serial }).lean<User>();
+    const response = await UserModel.findOne({ serial }).lean();
 
-    if (response) {
-      logger.debug(`MongoDB: Found user with serial ${serial}`);
-    } else {
+    if (!response) {
       logger.info(`MongoDB: User with serial ${serial} not found`);
+      return makeSuccessResult(null);
     }
-    return makeSuccessResult(response);
+
+    logger.debug(`MongoDB: Found user with serial ${serial}`);
+
+    const result = UserSchemaDb.safeParse(response);
+    if (!result.success) {
+      logger.error(
+        "%s",
+        new Error(
+          `Error validating findUserBySerial DB value: ${JSON.stringify(result.error)}`,
+        ),
+      );
+      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+    }
+    return makeSuccessResult(convertDatesToStrings(result.data));
   } catch (error) {
     logger.error(
       `MongoDB: Error finding user with serial ${serial}: %s`,
@@ -170,14 +206,26 @@ export const findUserByKompassiId = async (
   kompassiId: number,
 ): Promise<Result<User | null, MongoDbError>> => {
   try {
-    const response = await UserModel.findOne({ kompassiId }).lean<User>();
+    const response = await UserModel.findOne({ kompassiId }).lean();
 
-    if (response) {
-      logger.debug(`MongoDB: Found user with Kompassi id ${kompassiId}`);
-    } else {
+    if (!response) {
       logger.info(`MongoDB: User with Kompassi id ${kompassiId} not found`);
+      return makeSuccessResult(null);
     }
-    return makeSuccessResult(response);
+
+    logger.debug(`MongoDB: Found user with Kompassi id ${kompassiId}`);
+
+    const result = UserSchemaDb.safeParse(response);
+    if (!result.success) {
+      logger.error(
+        "%s",
+        new Error(
+          `Error validating findUserByKompassiId DB value: ${JSON.stringify(result.error)}`,
+        ),
+      );
+      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+    }
+    return makeSuccessResult(convertDatesToStrings(result.data));
   } catch (error) {
     logger.error(
       `MongoDB: Error finding user with Kompassi id ${kompassiId}: %s`,
@@ -193,13 +241,26 @@ export const findUserSerial = async (
   const serial = serialData.serial;
 
   try {
-    const response = await UserModel.findOne({ serial }).lean<User>();
-    if (response) {
-      logger.debug(`MongoDB: Found Serial ${serial}`);
-    } else {
+    const response = await UserModel.findOne({ serial }).lean();
+
+    if (!response) {
       logger.info(`MongoDB: Serial ${serial} not found`);
+      return makeSuccessResult(null);
     }
-    return makeSuccessResult(response);
+
+    logger.debug(`MongoDB: Found Serial ${serial}`);
+
+    const result = UserSchemaDb.safeParse(response);
+    if (!result.success) {
+      logger.error(
+        "%s",
+        new Error(
+          `Error validating findUserSerial DB value: ${JSON.stringify(result.error)}`,
+        ),
+      );
+      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+    }
+    return makeSuccessResult(convertDatesToStrings(result.data));
   } catch (error) {
     logger.error(`MongoDB: Error finding Serial ${serial}: %s`, error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
@@ -211,11 +272,22 @@ export const findUsers = async (
 ): Promise<Result<User[], MongoDbError>> => {
   logger.debug("MongoDB: Find all users");
 
-  const filter = usernames ? { username: { $in: usernames } } : {};
   try {
-    // eslint-disable-next-line unicorn/no-array-callback-reference -- False positive
-    const users = await UserModel.find(filter).lean<User[]>();
-    return makeSuccessResult(users);
+    const users = await UserModel.find(
+      usernames ? { username: { $in: usernames } } : {},
+    ).lean();
+
+    const result = z.array(UserSchemaDb).safeParse(users);
+    if (!result.success) {
+      logger.error(
+        "%s",
+        new Error(
+          `Error validating findUsers DB value: ${JSON.stringify(result.error)}`,
+        ),
+      );
+      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+    }
+    return makeSuccessResult(convertDatesToStrings(result.data));
   } catch (error) {
     logger.error("MongoDB: Error fetching users: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
@@ -233,8 +305,8 @@ export const updateUserKompassiLoginStatus = async (
         username: newUsername,
         kompassiUsernameAccepted: true,
       },
-      { new: true, fields: "-_id -__v -createdAt -updatedAt" },
-    ).lean<User>();
+      { new: true },
+    ).lean();
 
     if (!response) {
       logger.error(
@@ -245,7 +317,18 @@ export const updateUserKompassiLoginStatus = async (
       );
       return makeErrorResult(MongoDbError.USER_NOT_FOUND);
     }
-    return makeSuccessResult(response);
+
+    const result = UserSchemaDb.safeParse(response);
+    if (!result.success) {
+      logger.error(
+        "%s",
+        new Error(
+          `Error validating updateUserKompassiLoginStatus DB value: ${JSON.stringify(result.error)}`,
+        ),
+      );
+      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+    }
+    return makeSuccessResult(convertDatesToStrings(result.data));
   } catch (error) {
     logger.error(
       `MongoDB: Error updating Kompassi login status for user ${oldUsername}: %s`,

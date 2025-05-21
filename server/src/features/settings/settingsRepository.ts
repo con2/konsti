@@ -1,13 +1,11 @@
 import dayjs from "dayjs";
 import { logger } from "server/utils/logger";
-import { SettingsModel } from "server/features/settings/settingsSchema";
 import {
-  Settings,
-  SettingsSchema,
-  SignupQuestion,
-} from "shared/types/models/settings";
+  SettingsModel,
+  SettingsSchemaDb,
+} from "server/features/settings/settingsSchema";
+import { Settings, SignupQuestion } from "shared/types/models/settings";
 import { PostSettingsRequest } from "shared/types/api/settings";
-import { SettingsDoc } from "server/types/settingsTypes";
 import {
   Result,
   isErrorResult,
@@ -16,6 +14,7 @@ import {
   makeErrorResult,
 } from "shared/utils/result";
 import { MongoDbError } from "shared/types/api/errors";
+import { convertDatesToStrings } from "server/utils/convertDatesToStrings";
 
 export const removeSettings = async (): Promise<Result<void, MongoDbError>> => {
   logger.info("MongoDB: remove ALL settings from db");
@@ -35,8 +34,21 @@ export const createSettings = async (): Promise<
   const defaultSettings = new SettingsModel();
   try {
     const settings = await defaultSettings.save();
+
+    const result = SettingsSchemaDb.safeParse(settings.toObject());
+    if (!result.success) {
+      logger.error(
+        "%s",
+        new Error(
+          `Error validating createSettings DB value: ${JSON.stringify(result.error)}`,
+        ),
+      );
+      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+    }
+
     logger.info("MongoDB: Default settings saved to DB");
-    return makeSuccessResult(settings);
+
+    return makeSuccessResult(convertDatesToStrings(result.data));
   } catch (error) {
     logger.error("MongoDB: Add default settings error: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
@@ -47,10 +59,7 @@ export const findSettings = async (): Promise<
   Result<Settings, MongoDbError>
 > => {
   try {
-    const settings = await SettingsModel.findOne(
-      {},
-      "-signupQuestions._id -_id -__v -createdAt -updatedAt",
-    ).lean<Settings>();
+    const settings = await SettingsModel.findOne({}).lean();
 
     if (!settings) {
       const createSettingsResult = await createSettings();
@@ -63,27 +72,18 @@ export const findSettings = async (): Promise<
 
     logger.debug("MongoDB: Settings data found");
 
-    const settingsWithFormattedDates: Settings = {
-      ...settings,
-      programUpdateLastRun: dayjs(settings.programUpdateLastRun).toISOString(),
-      assignmentLastRun: dayjs(settings.assignmentLastRun).toISOString(),
-      latestServerStartTime: dayjs(
-        settings.latestServerStartTime,
-      ).toISOString(),
-    };
-
-    const result = SettingsSchema.safeParse(settingsWithFormattedDates);
+    const result = SettingsSchemaDb.safeParse(settings);
     if (!result.success) {
       logger.error(
         "%s",
         new Error(
-          `Error validating findSettings response: ${JSON.stringify(result.error)}`,
+          `Error validating findSettings DB value: ${JSON.stringify(result.error)}`,
         ),
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
 
-    return makeSuccessResult(result.data);
+    return makeSuccessResult(convertDatesToStrings(result.data));
   } catch (error) {
     logger.error("MongoDB: Error finding settings data: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
@@ -102,11 +102,23 @@ export const saveHidden = async (
       {
         new: true,
         upsert: true,
-        fields: "-_id -__v -createdAt -updatedAt",
       },
-    );
+    ).lean();
+
     logger.info("MongoDB: Hidden data updated");
-    return makeSuccessResult(settings);
+
+    const result = SettingsSchemaDb.safeParse(settings);
+    if (!result.success) {
+      logger.error(
+        "%s",
+        new Error(
+          `Error validating saveHidden DB value: ${JSON.stringify(result.error)}`,
+        ),
+      );
+      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+    }
+
+    return makeSuccessResult(convertDatesToStrings(result.data));
   } catch (error) {
     logger.error("MongoDB: Error updating hidden program items: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
@@ -128,14 +140,25 @@ export const saveSignupQuestion = async (
       },
       {
         new: true,
-        fields: "-signupQuestions._id -_id -__v -createdAt -updatedAt",
       },
-    );
+    ).lean();
     if (!settings) {
       return makeErrorResult(MongoDbError.SETTINGS_NOT_FOUND);
     }
     logger.info("MongoDB: Signup question updated");
-    return makeSuccessResult(settings);
+
+    const result = SettingsSchemaDb.safeParse(settings);
+    if (!result.success) {
+      logger.error(
+        "%s",
+        new Error(
+          `Error validating saveSignupQuestion DB value: ${JSON.stringify(result.error)}`,
+        ),
+      );
+      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+    }
+
+    return makeSuccessResult(convertDatesToStrings(result.data));
   } catch (error) {
     logger.error(
       "MongoDB: Error updating program item signup question: %s",
@@ -156,15 +179,26 @@ export const delSignupQuestion = async (
       },
       {
         new: true,
-        fields: "-signupQuestions._id -_id -__v -createdAt -updatedAt",
       },
-    );
+    ).lean();
     if (!settings) {
       logger.error("%s", new Error("MongoDB: Signup question not found"));
       return makeErrorResult(MongoDbError.SIGNUP_QUESTION_NOT_FOUND);
     }
     logger.info("MongoDB: Signup info deleted");
-    return makeSuccessResult(settings);
+
+    const result = SettingsSchemaDb.safeParse(settings);
+    if (!result.success) {
+      logger.error(
+        "%s",
+        new Error(
+          `Error validating delSignupQuestion DB value: ${JSON.stringify(result.error)}`,
+        ),
+      );
+      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+    }
+
+    return makeSuccessResult(convertDatesToStrings(result.data));
   } catch (error) {
     logger.error(
       "MongoDB: Error deleting program item signup question: %s",
@@ -178,17 +212,24 @@ export const saveSettings = async (
   settings: PostSettingsRequest,
 ): Promise<Result<Settings, MongoDbError>> => {
   try {
-    const updatedSettings = await SettingsModel.findOneAndUpdate<SettingsDoc>(
-      {},
-      settings,
-      {
-        new: true,
-        upsert: true,
-        fields: "-createdAt -updatedAt -_id -__v -signupQuestions._id",
-      },
-    );
+    const updatedSettings = await SettingsModel.findOneAndUpdate({}, settings, {
+      new: true,
+      upsert: true,
+    }).lean();
     logger.info("MongoDB: App settings updated");
-    return makeSuccessResult(updatedSettings.toJSON<SettingsDoc>());
+
+    const result = SettingsSchemaDb.safeParse(updatedSettings);
+    if (!result.success) {
+      logger.error(
+        "%s",
+        new Error(
+          `Error validating saveSettings DB value: ${JSON.stringify(result.error)}`,
+        ),
+      );
+      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+    }
+
+    return makeSuccessResult(convertDatesToStrings(result.data));
   } catch (error) {
     logger.error("MongoDB: Error updating app settings: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
@@ -208,7 +249,7 @@ export const setProgramUpdateLastRun = async (
       {
         programUpdateLastRun: programUpdateNextRun,
       },
-    );
+    ).lean();
     if (!response) {
       return makeErrorResult(MongoDbError.SETTINGS_NOT_FOUND);
     }
@@ -235,7 +276,7 @@ export const setAssignmentLastRun = async (
       {
         assignmentLastRun: assignmentNextRun,
       },
-    );
+    ).lean();
     if (!response) {
       return makeErrorResult(MongoDbError.SETTINGS_NOT_FOUND);
     }
@@ -255,7 +296,7 @@ export const isLatestStartedServerInstance = async (
       latestServerStartTime: {
         $eq: dayjs(latestServerStartTime).toISOString(),
       },
-    });
+    }).lean();
     if (!response) {
       return makeErrorResult(MongoDbError.SETTINGS_NOT_FOUND);
     }

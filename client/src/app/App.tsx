@@ -13,6 +13,7 @@ import { TestTime } from "client/test/test-components/TestTime";
 import { Announcement } from "client/components/Announcement";
 import { NotificationBar } from "client/views/event-log/NotificationBar";
 import { resetNetworkError } from "client/views/admin/adminUtils";
+import { HistoryProvider } from "client/app/HistoryContext";
 
 const { loadedSettings, showTestValues, showAnnouncement, dataUpdateInterval } =
   config.client();
@@ -47,14 +48,16 @@ export const App = (): ReactElement => {
 
       {!loading && (
         <BrowserRouter>
-          {loadedSettings !== "production" && showTestValues && <TestTime />}
-          <Header />
-          <ErrorBar />
-          <NotificationBar />
-          {showAnnouncement && <Announcement />}
-          <AppContainer>
-            <AppRoutes />
-          </AppContainer>
+          <HistoryProvider>
+            {loadedSettings !== "production" && showTestValues && <TestTime />}
+            <Header />
+            <ErrorBar />
+            <NotificationBar />
+            {showAnnouncement && <Announcement />}
+            <AppContainer>
+              <AppRoutes />
+            </AppContainer>
+          </HistoryProvider>
         </BrowserRouter>
       )}
     </>

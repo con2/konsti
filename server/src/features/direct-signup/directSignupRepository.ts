@@ -1,5 +1,6 @@
 import dayjs from "dayjs";
 import { groupBy, shuffle } from "remeda";
+import { z } from "zod";
 import {
   findProgramItemById,
   findProgramItems,
@@ -10,7 +11,10 @@ import {
   SignupRepositoryAddSignup,
   UserDirectSignup,
 } from "server/features/direct-signup/directSignupTypes";
-import { SignupModel } from "server/features/direct-signup/directSignupSchema";
+import {
+  DirectSignupSchemaDb,
+  SignupModel,
+} from "server/features/direct-signup/directSignupSchema";
 import { logger } from "server/utils/logger";
 import { MongoDbError } from "shared/types/api/errors";
 import {
@@ -21,6 +25,7 @@ import {
   unwrapResult,
 } from "shared/utils/result";
 import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
+import { convertDatesToStrings } from "server/utils/convertDatesToStrings";
 
 export const removeDirectSignups = async (): Promise<
   Result<void, MongoDbError>
@@ -39,33 +44,31 @@ export const findDirectSignups = async (): Promise<
   Result<DirectSignupsForProgramItem[], MongoDbError>
 > => {
   try {
-    const results = await SignupModel.find(
+    const response = await SignupModel.find(
       {},
       "-createdAt -updatedAt -_id -__v -userSignups._id",
-    ).lean<DirectSignupsForProgramItem[]>();
+    ).lean();
 
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-    if (!results) {
+    if (!response) {
       logger.info("MongoDB: Direct signups not found");
       return makeSuccessResult([]);
     }
 
     logger.debug("MongoDB: Direct signups found");
 
-    const resultsWithFormattedTime = results.map((result) => {
-      return {
-        ...result,
-        userSignups: result.userSignups.map((userSignup) => {
-          return {
-            ...userSignup,
-            signedToStartTime: dayjs(
-              userSignup.signedToStartTime,
-            ).toISOString(),
-          };
-        }),
-      };
-    });
-    return makeSuccessResult(resultsWithFormattedTime);
+    const result = z.array(DirectSignupSchemaDb).safeParse(response);
+    if (!result.success) {
+      logger.error(
+        "%s",
+        new Error(
+          `Error validating findDirectSignups DB value: ${JSON.stringify(result.error)}`,
+        ),
+      );
+      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+    }
+
+    return makeSuccessResult(convertDatesToStrings(result.data));
   } catch (error) {
     logger.error("MongoDB: Error finding direct signups: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
@@ -97,7 +100,7 @@ export const findDirectSignupsByStartTime = async (
         programItemId: { $in: programItemsByProgramTypesForStartTimeIds },
       },
       "-createdAt -updatedAt -_id -__v",
-    ).lean<DirectSignupsForProgramItem[]>();
+    ).lean();
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (!signups) {
       logger.info(`MongoDB: Signups for time ${startTime} not found`);
@@ -107,7 +110,7 @@ export const findDirectSignupsByStartTime = async (
     logger.debug(`MongoDB: Found signups for time ${startTime}`);
 
     const formattedResponse: FindDirectSignupsByProgramTypesResponse[] =
-      signups.flatMap((signup) => {
+      convertDatesToStrings(signups).flatMap((signup) => {
         return signup.userSignups.map((userSignup) => ({
           ...userSignup,
           programItemId: signup.programItemId,
@@ -131,7 +134,7 @@ export const findUserDirectSignups = async (
     const response = await SignupModel.find(
       { "userSignups.username": username },
       "-createdAt -updatedAt -_id -__v -userSignups._id",
-    ).lean<DirectSignupsForProgramItem[]>();
+    ).lean();
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (!response) {
       logger.info(`MongoDB: Signups for user ${username} not found`);
@@ -139,7 +142,19 @@ export const findUserDirectSignups = async (
     }
 
     logger.debug(`MongoDB: Found signups for user ${username}`);
-    return makeSuccessResult(response);
+
+    const result = z.array(DirectSignupSchemaDb).safeParse(response);
+    if (!result.success) {
+      logger.error(
+        "%s",
+        new Error(
+          `Error validating findUserDirectSignups DB value: ${JSON.stringify(result.error)}`,
+        ),
+      );
+      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+    }
+
+    return makeSuccessResult(convertDatesToStrings(result.data));
   } catch (error) {
     logger.error(
       `MongoDB: Error finding signups for user ${username}: %s`,
@@ -189,9 +204,8 @@ export const saveDirectSignup = async (
       },
       {
         new: true,
-        fields: "-userSignups._id -_id -__v -createdAt -updatedAt",
       },
-    ).lean<DirectSignupsForProgramItem>();
+    ).lean();
     if (!signup) {
       logger.warn(
         `Saving signup for user '${username}' failed: program item '${directSignupProgramItemId}' not found or program item full`,
@@ -199,7 +213,19 @@ export const saveDirectSignup = async (
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
     logger.info(`MongoDB: Signup saved for user ${username}`);
-    return makeSuccessResult(signup);
+
+    const result = DirectSignupSchemaDb.safeParse(signup);
+    if (!result.success) {
+      logger.error(
+        "%s",
+        new Error(
+          `Error validating saveDirectSignup DB value: ${JSON.stringify(result.error)}`,
+        ),
+      );
+      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+    }
+
+    return makeSuccessResult(convertDatesToStrings(result.data));
   } catch (error) {
     logger.error(
       `MongoDB: Error saving signup for user '${username}': %s`,
@@ -308,8 +334,8 @@ export const delDirectSignup = async ({
         },
         $inc: { count: -1 },
       },
-      { new: true, fields: "-userSignups._id -_id -__v -createdAt -updatedAt" },
-    ).lean<DirectSignupsForProgramItem>();
+      { new: true },
+    ).lean();
 
     if (!signup) {
       logger.error(
@@ -340,7 +366,19 @@ export const delDirectSignup = async ({
         directSignupProgramItemId
       } from user ${username}`,
     );
-    return makeSuccessResult(signup);
+
+    const result = DirectSignupSchemaDb.safeParse(signup);
+    if (!result.success) {
+      logger.error(
+        "%s",
+        new Error(
+          `Error validating delDirectSignup DB value: ${JSON.stringify(result.error)}`,
+        ),
+      );
+      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+    }
+
+    return makeSuccessResult(convertDatesToStrings(result.data));
   } catch (error) {
     logger.error(
       `MongoDB: Error deleting signup to program item ${directSignupProgramItemId} from user ${username}: %s`,
