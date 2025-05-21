@@ -249,7 +249,7 @@ export const setProgramUpdateLastRun = async (
       {
         programUpdateLastRun: programUpdateNextRun,
       },
-    );
+    ).lean();
     if (!response) {
       return makeErrorResult(MongoDbError.SETTINGS_NOT_FOUND);
     }
@@ -276,7 +276,7 @@ export const setAssignmentLastRun = async (
       {
         assignmentLastRun: assignmentNextRun,
       },
-    );
+    ).lean();
     if (!response) {
       return makeErrorResult(MongoDbError.SETTINGS_NOT_FOUND);
     }
@@ -296,7 +296,7 @@ export const isLatestStartedServerInstance = async (
       latestServerStartTime: {
         $eq: dayjs(latestServerStartTime).toISOString(),
       },
-    });
+    }).lean();
     if (!response) {
       return makeErrorResult(MongoDbError.SETTINGS_NOT_FOUND);
     }

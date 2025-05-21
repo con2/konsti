@@ -59,7 +59,7 @@ export const checkGroupExists = async (
 export const saveGroupCreatorCode = async (
   groupCreatorCode: string,
   username: string,
-): Promise<Result<User | null, MongoDbError>> => {
+): Promise<Result<User, MongoDbError>> => {
   try {
     const response = await UserModel.findOneAndUpdate(
       { username },
@@ -69,7 +69,7 @@ export const saveGroupCreatorCode = async (
 
     if (!response) {
       logger.info(`MongoDB: saveGroupCreatorCode user ${username} not found`);
-      return makeSuccessResult(null);
+      return makeErrorResult(MongoDbError.USER_NOT_FOUND);
     }
 
     logger.info(
@@ -98,7 +98,7 @@ export const saveGroupCreatorCode = async (
 export const saveGroupCode = async (
   groupCode: string,
   username: string,
-): Promise<Result<User | null, MongoDbError>> => {
+): Promise<Result<User, MongoDbError>> => {
   try {
     const response = await UserModel.findOneAndUpdate(
       { username },
@@ -108,7 +108,7 @@ export const saveGroupCode = async (
 
     if (!response) {
       logger.info(`MongoDB: saveGroupCode user ${username} not found`);
-      return makeSuccessResult(null);
+      return makeErrorResult(MongoDbError.USER_NOT_FOUND);
     }
 
     if (groupCode === "0") {

@@ -60,7 +60,7 @@ export const addEventLogItems = async (
 export const updateEventLogItemIsSeen = async (
   request: PostEventLogIsSeenRequest,
   username: string,
-): Promise<Result<EventLogItem[] | null, MongoDbError>> => {
+): Promise<Result<EventLogItem[], MongoDbError>> => {
   const { eventLogItemId, isSeen } = request;
   try {
     const response = await UserModel.findOneAndUpdate(
@@ -75,7 +75,10 @@ export const updateEventLogItemIsSeen = async (
     ).lean();
 
     if (!response) {
-      return makeSuccessResult(null);
+      logger.info(
+        `MongoDB: updateEventLogItemIsSeen user ${username} not found`,
+      );
+      return makeErrorResult(MongoDbError.USER_NOT_FOUND);
     }
 
     const result = UserSchemaDb.safeParse(response);

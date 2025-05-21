@@ -7,7 +7,6 @@ initializeDayjs();
 
 if (!config.server().enableLoggingInTests) {
   // Don't show logging in tests
-  /*
   vi.doMock("server/utils/logger", () => {
     return {
       logger: {
@@ -18,7 +17,6 @@ if (!config.server().enableLoggingInTests) {
       },
     };
   });
-  */
 }
 
 // Defined in globalSetup.ts
