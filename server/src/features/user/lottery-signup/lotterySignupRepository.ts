@@ -1,6 +1,5 @@
 import { UserModel, UserSchemaDb } from "server/features/user/userSchema";
 import { UserLotterySignups } from "server/types/resultTypes";
-import { convertDatesToStrings } from "server/utils/convertDatesToStrings";
 import { logger } from "server/utils/logger";
 import { MongoDbError } from "shared/types/api/errors";
 import { LotterySignup, User } from "shared/types/models/user";
@@ -40,7 +39,7 @@ export const saveLotterySignups = async (
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
 
-    return makeSuccessResult(convertDatesToStrings(result.data));
+    return makeSuccessResult(result.data);
   } catch (error) {
     logger.error(
       `MongoDB: Error storing signup data for user ${username}: %s`,
@@ -97,7 +96,7 @@ export const saveLotterySignup = async ({
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
 
-    return makeSuccessResult(convertDatesToStrings(result.data));
+    return makeSuccessResult(result.data);
   } catch (error) {
     logger.error(
       `MongoDB: Error saving lottery signup ${lotterySignup.programItemId} for user ${username}: %s`,
@@ -152,7 +151,7 @@ export const delLotterySignup = async ({
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
 
-    return makeSuccessResult(convertDatesToStrings(result.data));
+    return makeSuccessResult(result.data);
   } catch (error) {
     logger.error(
       `MongoDB: Error deleting lottery signup ${lotterySignupProgramItemId} from user ${username}: %s`,

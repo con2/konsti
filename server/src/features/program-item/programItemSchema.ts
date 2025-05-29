@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { z } from "zod";
+import dayjs from "dayjs";
 import {
   AccessibilityValue,
   Genre,
@@ -17,13 +18,13 @@ export const ProgramItemSchemaDb = z
     title: z.string(),
     description: z.string(),
     location: z.string(),
-    startTime: z.date(),
+    startTime: z.date().transform((date) => dayjs(date).toISOString()),
     mins: z.number(),
     tags: z.array(z.nativeEnum(Tag)),
     genres: z.array(z.nativeEnum(Genre)),
     styles: z.array(z.nativeEnum(Playstyle)),
     languages: z.array(z.nativeEnum(Language)),
-    endTime: z.date(),
+    endTime: z.date().transform((date) => dayjs(date).toISOString()),
     people: z.string(),
     minAttendance: z.number(),
     maxAttendance: z.number(),
@@ -50,12 +51,14 @@ const programItemSchema = new mongoose.Schema<ProgramItemDb>(
     title: String,
     description: String,
     location: String,
+    // @ts-expect-error -- Zod type takes but date but returns string
     startTime: { type: Date, get: (value: Date) => new Date(value) },
     mins: Number,
     tags: Array,
     genres: Array,
     styles: Array,
     languages: [String],
+    // @ts-expect-error -- Zod type takes but date but returns string
     endTime: { type: Date, get: (value: Date) => new Date(value) },
     people: String,
     minAttendance: Number,

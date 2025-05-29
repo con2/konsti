@@ -14,7 +14,6 @@ import {
   makeErrorResult,
 } from "shared/utils/result";
 import { MongoDbError } from "shared/types/api/errors";
-import { convertDatesToStrings } from "server/utils/convertDatesToStrings";
 
 export const removeSettings = async (): Promise<Result<void, MongoDbError>> => {
   logger.info("MongoDB: remove ALL settings from db");
@@ -48,7 +47,7 @@ export const createSettings = async (): Promise<
 
     logger.info("MongoDB: Default settings saved to DB");
 
-    return makeSuccessResult(convertDatesToStrings(result.data));
+    return makeSuccessResult(result.data);
   } catch (error) {
     logger.error("MongoDB: Add default settings error: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
@@ -83,7 +82,7 @@ export const findSettings = async (): Promise<
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
 
-    return makeSuccessResult(convertDatesToStrings(result.data));
+    return makeSuccessResult(result.data);
   } catch (error) {
     logger.error("MongoDB: Error finding settings data: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
@@ -118,7 +117,7 @@ export const saveHidden = async (
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
 
-    return makeSuccessResult(convertDatesToStrings(result.data));
+    return makeSuccessResult(result.data);
   } catch (error) {
     logger.error("MongoDB: Error updating hidden program items: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
@@ -158,7 +157,7 @@ export const saveSignupQuestion = async (
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
 
-    return makeSuccessResult(convertDatesToStrings(result.data));
+    return makeSuccessResult(result.data);
   } catch (error) {
     logger.error(
       "MongoDB: Error updating program item signup question: %s",
@@ -198,7 +197,7 @@ export const delSignupQuestion = async (
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
 
-    return makeSuccessResult(convertDatesToStrings(result.data));
+    return makeSuccessResult(result.data);
   } catch (error) {
     logger.error(
       "MongoDB: Error deleting program item signup question: %s",
@@ -229,7 +228,7 @@ export const saveSettings = async (
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
 
-    return makeSuccessResult(convertDatesToStrings(result.data));
+    return makeSuccessResult(result.data);
   } catch (error) {
     logger.error("MongoDB: Error updating app settings: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);

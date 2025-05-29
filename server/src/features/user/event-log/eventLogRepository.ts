@@ -12,7 +12,6 @@ import {
 import { UserModel, UserSchemaDb } from "server/features/user/userSchema";
 import { logger } from "server/utils/logger";
 import { EventLogAction, EventLogItem } from "shared/types/models/eventLog";
-import { convertDatesToStrings } from "server/utils/convertDatesToStrings";
 
 export const addEventLogItems = async (
   eventLogRequest: NewEventLogItems,
@@ -92,9 +91,7 @@ export const updateEventLogItemIsSeen = async (
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
 
-    return makeSuccessResult(
-      convertDatesToStrings(result.data).eventLogItems.map((item) => item),
-    );
+    return makeSuccessResult(result.data.eventLogItems);
   } catch (error) {
     logger.error(
       `MongoDB: Error updating event log item for user ${username}: %s`,

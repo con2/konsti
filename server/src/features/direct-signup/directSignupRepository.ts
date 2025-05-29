@@ -25,7 +25,6 @@ import {
   unwrapResult,
 } from "shared/utils/result";
 import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
-import { convertDatesToStrings } from "server/utils/convertDatesToStrings";
 
 export const removeDirectSignups = async (): Promise<
   Result<void, MongoDbError>
@@ -68,7 +67,7 @@ export const findDirectSignups = async (): Promise<
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
 
-    return makeSuccessResult(convertDatesToStrings(result.data));
+    return makeSuccessResult(result.data);
   } catch (error) {
     logger.error("MongoDB: Error finding direct signups: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
@@ -110,7 +109,7 @@ export const findDirectSignupsByStartTime = async (
     logger.debug(`MongoDB: Found signups for time ${startTime}`);
 
     const formattedResponse: FindDirectSignupsByProgramTypesResponse[] =
-      convertDatesToStrings(signups).flatMap((signup) => {
+      signups.flatMap((signup) => {
         return signup.userSignups.map((userSignup) => ({
           ...userSignup,
           programItemId: signup.programItemId,
@@ -154,7 +153,7 @@ export const findUserDirectSignups = async (
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
 
-    return makeSuccessResult(convertDatesToStrings(result.data));
+    return makeSuccessResult(result.data);
   } catch (error) {
     logger.error(
       `MongoDB: Error finding signups for user ${username}: %s`,
@@ -225,7 +224,7 @@ export const saveDirectSignup = async (
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
 
-    return makeSuccessResult(convertDatesToStrings(result.data));
+    return makeSuccessResult(result.data);
   } catch (error) {
     logger.error(
       `MongoDB: Error saving signup for user '${username}': %s`,
@@ -378,7 +377,7 @@ export const delDirectSignup = async ({
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
 
-    return makeSuccessResult(convertDatesToStrings(result.data));
+    return makeSuccessResult(result.data);
   } catch (error) {
     logger.error(
       `MongoDB: Error deleting signup to program item ${directSignupProgramItemId} from user ${username}: %s`,

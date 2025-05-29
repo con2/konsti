@@ -1,10 +1,11 @@
 import mongoose from "mongoose";
 import { z } from "zod";
+import dayjs from "dayjs";
 
 const UserSignupsSchema = z.object({
   username: z.string(),
   priority: z.number(),
-  signedToStartTime: z.date(),
+  signedToStartTime: z.date().transform((date) => dayjs(date).toISOString()),
   message: z.string(),
 });
 

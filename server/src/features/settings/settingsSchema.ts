@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { z } from "zod";
+import dayjs from "dayjs";
 import { config } from "shared/config";
 import { SignupQuestionSchema } from "shared/types/models/settings";
 import {
@@ -13,9 +14,13 @@ export const SettingsSchemaDb = z
     appOpen: z.boolean(),
     signupQuestions: z.array(SignupQuestionSchema),
     signupStrategy: z.nativeEnum(EventSignupStrategy),
-    programUpdateLastRun: z.date(),
-    assignmentLastRun: z.date(),
-    latestServerStartTime: z.date(),
+    programUpdateLastRun: z
+      .date()
+      .transform((date) => dayjs(date).toISOString()),
+    assignmentLastRun: z.date().transform((date) => dayjs(date).toISOString()),
+    latestServerStartTime: z
+      .date()
+      .transform((date) => dayjs(date).toISOString()),
     loginProvider: z.nativeEnum(LoginProvider),
   })
   .strip();
@@ -45,16 +50,19 @@ const settingsSchema = new mongoose.Schema<SettingsDb>(
       type: String,
       default: config.server().defaultSignupStrategy,
     },
+    // @ts-expect-error -- Zod type takes but date but returns string
     programUpdateLastRun: {
       type: Date,
       get: (value: Date) => new Date(value),
       default: () => new Date(),
     },
+    // @ts-expect-error -- Zod type takes but date but returns string
     assignmentLastRun: {
       type: Date,
       get: (value: Date) => new Date(value),
       default: () => new Date(),
     },
+    // @ts-expect-error -- Zod type takes but date but returns string
     latestServerStartTime: {
       type: Date,
       get: (value: Date) => new Date(value),

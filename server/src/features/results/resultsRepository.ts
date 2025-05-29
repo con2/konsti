@@ -12,7 +12,6 @@ import {
 } from "shared/utils/result";
 import { MongoDbError } from "shared/types/api/errors";
 import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
-import { convertDatesToStrings } from "server/utils/convertDatesToStrings";
 
 export const removeResults = async (): Promise<Result<void, MongoDbError>> => {
   logger.info("MongoDB: remove ALL results from db");
@@ -74,7 +73,7 @@ export const findResults = async (): Promise<
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
-    return makeSuccessResult(convertDatesToStrings(result.data));
+    return makeSuccessResult(result.data);
   } catch (error) {
     logger.error("MongoDB: Error fetching results: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
