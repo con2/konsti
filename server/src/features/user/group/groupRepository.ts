@@ -1,6 +1,5 @@
 import { z } from "zod";
 import { UserModel, UserSchemaDb } from "server/features/user/userSchema";
-import { convertDatesToStrings } from "server/utils/convertDatesToStrings";
 import { logger } from "server/utils/logger";
 import { MongoDbError } from "shared/types/api/errors";
 import { User } from "shared/types/models/user";
@@ -34,7 +33,7 @@ export const findGroupMembers = async (
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
 
-    return makeSuccessResult(convertDatesToStrings(result.data));
+    return makeSuccessResult(result.data);
   } catch (error) {
     logger.error(`MongoDB: Error finding group ${groupCode}: %s`, error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
@@ -86,7 +85,7 @@ export const saveGroupCreatorCode = async (
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
-    return makeSuccessResult(convertDatesToStrings(result.data));
+    return makeSuccessResult(result.data);
   } catch {
     logger.error(
       `MongoDB: Error saving group creator code ${groupCreatorCode} for user ${username}`,
@@ -126,7 +125,7 @@ export const saveGroupCode = async (
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
-    return makeSuccessResult(convertDatesToStrings(result.data));
+    return makeSuccessResult(result.data);
   } catch (error) {
     logger.error(
       `MongoDB: Error storing group ${groupCode} stored for user ${username}: %s`,

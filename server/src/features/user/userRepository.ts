@@ -10,7 +10,6 @@ import {
   makeSuccessResult,
 } from "shared/utils/result";
 import { MongoDbError } from "shared/types/api/errors";
-import { convertDatesToStrings } from "server/utils/convertDatesToStrings";
 
 export const removeUsers = async (): Promise<Result<void, MongoDbError>> => {
   logger.info("MongoDB: remove ALL users from db");
@@ -60,7 +59,7 @@ export const saveUser = async (
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
-    return makeSuccessResult(convertDatesToStrings(result.data));
+    return makeSuccessResult(result.data);
   } catch (error) {
     logger.error(
       `MongoDB: Error creating new user ${newUserData.username}: %s`,
@@ -130,7 +129,7 @@ export const updateUserPassword = async (
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
-    return makeSuccessResult(convertDatesToStrings(result.data));
+    return makeSuccessResult(result.data);
   } catch (error) {
     logger.error(
       `MongoDB: Error updating password for user ${username}: %s`,
@@ -162,7 +161,7 @@ export const findUser = async (
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
 
-    return makeSuccessResult(convertDatesToStrings(result.data));
+    return makeSuccessResult(result.data);
   } catch (error) {
     logger.error(`MongoDB: Error finding user ${username}: %s`, error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
@@ -192,7 +191,7 @@ export const findUserBySerial = async (
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
-    return makeSuccessResult(convertDatesToStrings(result.data));
+    return makeSuccessResult(result.data);
   } catch (error) {
     logger.error(
       `MongoDB: Error finding user with serial ${serial}: %s`,
@@ -225,7 +224,7 @@ export const findUserByKompassiId = async (
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
-    return makeSuccessResult(convertDatesToStrings(result.data));
+    return makeSuccessResult(result.data);
   } catch (error) {
     logger.error(
       `MongoDB: Error finding user with Kompassi id ${kompassiId}: %s`,
@@ -260,7 +259,7 @@ export const findUserSerial = async (
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
-    return makeSuccessResult(convertDatesToStrings(result.data));
+    return makeSuccessResult(result.data);
   } catch (error) {
     logger.error(`MongoDB: Error finding Serial ${serial}: %s`, error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
@@ -287,7 +286,7 @@ export const findUsers = async (
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
-    return makeSuccessResult(convertDatesToStrings(result.data));
+    return makeSuccessResult(result.data);
   } catch (error) {
     logger.error("MongoDB: Error fetching users: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
@@ -328,7 +327,7 @@ export const updateUserKompassiLoginStatus = async (
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
-    return makeSuccessResult(convertDatesToStrings(result.data));
+    return makeSuccessResult(result.data);
   } catch (error) {
     logger.error(
       `MongoDB: Error updating Kompassi login status for user ${oldUsername}: %s`,

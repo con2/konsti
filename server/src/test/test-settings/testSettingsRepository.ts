@@ -13,7 +13,6 @@ import {
   unwrapResult,
 } from "shared/utils/result";
 import { MongoDbError } from "shared/types/api/errors";
-import { convertDatesToStrings } from "server/utils/convertDatesToStrings";
 
 export const removeTestSettings = async (): Promise<
   Result<void, MongoDbError>
@@ -49,7 +48,7 @@ const createTestSettings = async (): Promise<
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
 
-    return makeSuccessResult(convertDatesToStrings(result.data));
+    return makeSuccessResult(result.data);
   } catch (error) {
     logger.error("MongoDB: Add default test settings error: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
@@ -60,10 +59,7 @@ export const findTestSettings = async (): Promise<
   Result<TestSettings, MongoDbError>
 > => {
   try {
-    const testSettings = await TestSettingsModel.findOne(
-      {},
-      "-_id -__v -createdAt -updatedAt",
-    ).lean();
+    const testSettings = await TestSettingsModel.findOne({}).lean();
     if (!testSettings) {
       const createTestSettingsResult = await createTestSettings();
       if (isErrorResult(createTestSettingsResult)) {
@@ -85,7 +81,7 @@ export const findTestSettings = async (): Promise<
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
 
-    return makeSuccessResult(convertDatesToStrings(result.data));
+    return makeSuccessResult(result.data);
   } catch (error) {
     logger.error("MongoDB: Error finding test settings data: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
@@ -117,7 +113,7 @@ export const saveTestSettings = async (
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
 
-    return makeSuccessResult(convertDatesToStrings(result.data));
+    return makeSuccessResult(result.data);
   } catch (error) {
     logger.error("MongoDB: Error updating test settings: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);

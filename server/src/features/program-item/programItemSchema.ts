@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { z } from "zod";
+import dayjs from "dayjs";
 import {
   AccessibilityValue,
   Genre,
@@ -17,13 +18,13 @@ export const ProgramItemSchemaDb = z
     title: z.string(),
     description: z.string(),
     location: z.string(),
-    startTime: z.date(),
+    startTime: z.date().transform((date) => dayjs(date).toISOString()),
     mins: z.number(),
     tags: z.array(z.nativeEnum(Tag)),
     genres: z.array(z.nativeEnum(Genre)),
     styles: z.array(z.nativeEnum(Playstyle)),
     languages: z.array(z.nativeEnum(Language)),
-    endTime: z.date(),
+    endTime: z.date().transform((date) => dayjs(date).toISOString()),
     people: z.string(),
     minAttendance: z.number(),
     maxAttendance: z.number(),
@@ -42,9 +43,7 @@ export const ProgramItemSchemaDb = z
   })
   .strip();
 
-type ProgramItemDb = z.infer<typeof ProgramItemSchemaDb>;
-
-const programItemSchema = new mongoose.Schema<ProgramItemDb>(
+const programItemSchema = new mongoose.Schema(
   {
     programItemId: String,
     title: String,
@@ -75,7 +74,7 @@ const programItemSchema = new mongoose.Schema<ProgramItemDb>(
   { timestamps: true },
 );
 
-export const ProgramItemModel = mongoose.model<ProgramItemDb>(
+export const ProgramItemModel = mongoose.model(
   "program-item",
   programItemSchema,
 );

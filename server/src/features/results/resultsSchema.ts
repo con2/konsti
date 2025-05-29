@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { z } from "zod";
+import dayjs from "dayjs";
 
 export const ResultsSchemaDb = z
   .object({
@@ -9,19 +10,19 @@ export const ResultsSchemaDb = z
         assignmentSignup: z.object({
           programItemId: z.string(),
           priority: z.number(),
-          signedToStartTime: z.date(),
+          signedToStartTime: z
+            .date()
+            .transform((date) => dayjs(date).toISOString()),
         }),
       }),
     ),
-    assignmentTime: z.date(),
+    assignmentTime: z.date().transform((date) => dayjs(date).toISOString()),
     algorithm: z.string(),
     message: z.string(),
   })
   .strip();
 
-type ResultsDb = z.infer<typeof ResultsSchemaDb>;
-
-const resultsSchema = new mongoose.Schema<ResultsDb>(
+const resultsSchema = new mongoose.Schema(
   {
     results: [
       {
@@ -43,4 +44,4 @@ const resultsSchema = new mongoose.Schema<ResultsDb>(
   { timestamps: true },
 );
 
-export const ResultsModel = mongoose.model<ResultsDb>("results", resultsSchema);
+export const ResultsModel = mongoose.model("results", resultsSchema);

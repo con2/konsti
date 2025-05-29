@@ -1,15 +1,17 @@
+import dayjs from "dayjs";
 import mongoose from "mongoose";
 import { z } from "zod";
 
 export const TestSettingsSchemaDb = z
   .object({
-    testTime: z.date().nullable(),
+    testTime: z
+      .date()
+      .nullable()
+      .transform((date) => (date ? dayjs(date).toISOString() : date)),
   })
   .strip();
 
-type TestSettingsDb = z.infer<typeof TestSettingsSchemaDb>;
-
-const testSettingsSchema = new mongoose.Schema<TestSettingsDb>(
+const testSettingsSchema = new mongoose.Schema(
   {
     testTime: {
       type: Date,
@@ -20,7 +22,7 @@ const testSettingsSchema = new mongoose.Schema<TestSettingsDb>(
   { timestamps: true },
 );
 
-export const TestSettingsModel = mongoose.model<TestSettingsDb>(
+export const TestSettingsModel = mongoose.model(
   "test-settings",
   testSettingsSchema,
 );

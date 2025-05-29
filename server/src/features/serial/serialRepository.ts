@@ -49,7 +49,7 @@ export const saveSerials = async (
     serials.push(
       new SerialModel({
         serial,
-      }),
+      }) as Serial,
     );
     logger.info(`MongoDB: Created new serial: ${serial}`);
   }

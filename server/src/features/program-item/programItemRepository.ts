@@ -18,7 +18,6 @@ import { removeInvalidProgramItemsFromUsers } from "server/features/assignment/u
 import { MongoDbError } from "shared/types/api/errors";
 import { createEmptyDirectSignupDocumentForProgramItems } from "server/features/direct-signup/directSignupRepository";
 import { differenceBy } from "shared/utils/remedaExtend";
-import { convertDatesToStrings } from "server/utils/convertDatesToStrings";
 
 export const removeProgramItems = async (
   programItemIds?: string[],
@@ -168,7 +167,7 @@ export const findProgramItems = async (): Promise<
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
-    return makeSuccessResult(convertDatesToStrings(result.data));
+    return makeSuccessResult(result.data);
   } catch (error) {
     logger.error("MongoDB: Error fetching program items: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
@@ -197,7 +196,7 @@ export const findProgramItemById = async (
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
-    return makeSuccessResult(convertDatesToStrings(result.data));
+    return makeSuccessResult(result.data);
   } catch (error) {
     logger.error("MongoDB: Error fetching programItemId: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);

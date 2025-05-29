@@ -1,10 +1,11 @@
 import mongoose from "mongoose";
 import { z } from "zod";
+import dayjs from "dayjs";
 
 const UserSignupsSchema = z.object({
   username: z.string(),
   priority: z.number(),
-  signedToStartTime: z.date(),
+  signedToStartTime: z.date().transform((date) => dayjs(date).toISOString()),
   message: z.string(),
 });
 
@@ -16,9 +17,7 @@ export const DirectSignupSchemaDb = z
   })
   .strip();
 
-type DirectSignupDb = z.infer<typeof DirectSignupSchemaDb>;
-
-const directSignupSchema = new mongoose.Schema<DirectSignupDb>(
+const directSignupSchema = new mongoose.Schema(
   {
     programItemId: String,
     userSignups: [
@@ -37,7 +36,4 @@ const directSignupSchema = new mongoose.Schema<DirectSignupDb>(
   { timestamps: true },
 );
 
-export const SignupModel = mongoose.model<DirectSignupDb>(
-  "direct-signup",
-  directSignupSchema,
-);
+export const SignupModel = mongoose.model("direct-signup", directSignupSchema);
