@@ -69,6 +69,8 @@ test("Login redirect back to program item", async ({ page, request }) => {
     firstProgramItem.getByTestId("program-item-title");
 
   await fistProgramItemTitle.click();
+  await page.waitForURL("/program/item/*");
+
   await page.getByRole("link", { name: "Log in to sign up" }).click();
   await page.fill("data-testid=login-form-input-username", username);
   await page.fill("data-testid=login-form-input-password", password);
