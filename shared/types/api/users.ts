@@ -43,7 +43,6 @@ export const PostUserRequestSchema = z.object({
 export type PostUserRequest = z.infer<typeof PostUserRequestSchema>;
 
 export interface PostUserResponse extends ApiResult {
-  password: string;
   username: string;
 }
 

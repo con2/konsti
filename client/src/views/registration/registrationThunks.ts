@@ -14,14 +14,9 @@ export const submitRegistration = (
   registrationFormFields: RegistrationFormFields,
 ): AppThunk<Promise<RegistrationErrorMessage | undefined>> => {
   return async (dispatch): Promise<RegistrationErrorMessage | undefined> => {
-    let registrationResponse;
-    try {
-      registrationResponse = await postRegistration(registrationFormFields);
-    } catch {
-      // TODO
-    }
+    const registrationResponse = await postRegistration(registrationFormFields);
 
-    if (registrationResponse?.status === "error") {
+    if (registrationResponse.status === "error") {
       switch (registrationResponse.errorId) {
         case "usernameNotFree":
           return RegistrationErrorMessage.USERNAME_TAKEN;

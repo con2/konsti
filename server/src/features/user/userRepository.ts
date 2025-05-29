@@ -1,4 +1,3 @@
-import { z } from "zod";
 import { logger } from "server/utils/logger";
 import { UserModel, UserSchemaDb } from "server/features/user/userSchema";
 import { NewUser } from "server/types/userTypes";
@@ -276,17 +275,21 @@ export const findUsers = async (
       usernames ? { username: { $in: usernames } } : {},
     ).lean();
 
-    const result = z.array(UserSchemaDb).safeParse(users);
-    if (!result.success) {
-      logger.error(
-        "%s",
-        new Error(
-          `Error validating findUsers DB value: ${JSON.stringify(result.error)}`,
-        ),
-      );
-      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
-    }
-    return makeSuccessResult(result.data);
+    const results = users.flatMap((user) => {
+      const result = UserSchemaDb.safeParse(user);
+      if (!result.success) {
+        logger.error(
+          "%s",
+          new Error(
+            `Error validating findUsers DB value: username: ${user.username}, ${JSON.stringify(result.error)}`,
+          ),
+        );
+        return [];
+      }
+      return result.data;
+    });
+
+    return makeSuccessResult(results);
   } catch (error) {
     logger.error("MongoDB: Error fetching users: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);

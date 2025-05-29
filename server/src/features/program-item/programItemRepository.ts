@@ -1,4 +1,3 @@
-import { z } from "zod";
 import { logger } from "server/utils/logger";
 import {
   ProgramItemModel,
@@ -157,17 +156,22 @@ export const findProgramItems = async (): Promise<
   try {
     const response = await ProgramItemModel.find({}).lean();
     logger.debug("MongoDB: Find all program items");
-    const result = z.array(ProgramItemSchemaDb).safeParse(response);
-    if (!result.success) {
-      logger.error(
-        "%s",
-        new Error(
-          `Error validating findProgramItems DB value: ${JSON.stringify(result.error)}`,
-        ),
-      );
-      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
-    }
-    return makeSuccessResult(result.data);
+
+    const programItems = response.flatMap((programItem) => {
+      const result = ProgramItemSchemaDb.safeParse(programItem);
+      if (!result.success) {
+        logger.error(
+          "%s",
+          new Error(
+            `Error validating findProgramItems DB value: programItemId: ${programItem.programItemId}, ${JSON.stringify(result.error)}`,
+          ),
+        );
+        return [];
+      }
+      return result.data;
+    });
+
+    return makeSuccessResult(programItems);
   } catch (error) {
     logger.error("MongoDB: Error fetching program items: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);

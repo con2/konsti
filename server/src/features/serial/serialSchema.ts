@@ -8,7 +8,7 @@ export const SerialSchemaDb = z
   .strip();
 
 const serialSchema = new mongoose.Schema({
-  serial: String,
+  serial: { type: String, required: true },
 });
 
 export const SerialModel = mongoose.model("serial", serialSchema);

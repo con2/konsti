@@ -1,4 +1,3 @@
-import { z } from "zod";
 import { UserModel, UserSchemaDb } from "server/features/user/userSchema";
 import { logger } from "server/utils/logger";
 import { MongoDbError } from "shared/types/api/errors";
@@ -22,18 +21,21 @@ export const findGroupMembers = async (
       );
     }
 
-    const result = z.array(UserSchemaDb).safeParse(response);
-    if (!result.success) {
-      logger.error(
-        "%s",
-        new Error(
-          `Error validating findGroupMembers DB value: ${JSON.stringify(result.error)}`,
-        ),
-      );
-      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
-    }
+    const results = response.flatMap((user) => {
+      const result = UserSchemaDb.safeParse(user);
+      if (!result.success) {
+        logger.error(
+          "%s",
+          new Error(
+            `Error validating findGroupMembers DB value: username: ${user.username}, ${JSON.stringify(result.error)}`,
+          ),
+        );
+        return [];
+      }
+      return result.data;
+    });
 
-    return makeSuccessResult(result.data);
+    return makeSuccessResult(results);
   } catch (error) {
     logger.error(`MongoDB: Error finding group ${groupCode}: %s`, error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);

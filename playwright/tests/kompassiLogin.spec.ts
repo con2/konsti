@@ -17,6 +17,7 @@ test("Kompassi login", async ({ page, request }) => {
       name: /login or create account/i,
     })
     .click();
+  await page.waitForURL("/");
 
   await page.getByRole("checkbox", { name: /privacy policy/i }).check();
   await page.getByRole("button", { name: /save/i }).click();
