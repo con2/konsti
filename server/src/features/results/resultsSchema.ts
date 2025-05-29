@@ -22,24 +22,31 @@ export const ResultsSchemaDb = z
   })
   .strip();
 
+const assignmentSignupSchema = new mongoose.Schema({
+  programItemId: { type: String, required: true },
+  priority: { type: Number, required: true },
+  signedToStartTime: {
+    type: Date,
+    get: (value: Date) => new Date(value),
+    required: true,
+  },
+});
+
+const resultsArraySchema = new mongoose.Schema({
+  username: { type: String, required: true },
+  assignmentSignup: { type: assignmentSignupSchema, required: true },
+});
+
 const resultsSchema = new mongoose.Schema(
   {
-    results: [
-      {
-        username: String,
-        assignmentSignup: {
-          programItemId: String,
-          priority: Number,
-          signedToStartTime: {
-            type: Date,
-            get: (value: Date) => new Date(value),
-          },
-        },
-      },
-    ],
-    assignmentTime: { type: Date, get: (value: Date) => new Date(value) },
-    algorithm: String,
-    message: String,
+    results: { type: [resultsArraySchema], required: true },
+    assignmentTime: {
+      type: Date,
+      get: (value: Date) => new Date(value),
+      required: true,
+    },
+    algorithm: { type: String, required: true },
+    message: { type: String, required: true },
   },
   { timestamps: true },
 );

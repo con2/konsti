@@ -12,9 +12,9 @@ const FeedbackSchemaDb = z
 
 const feedbackSchema = new mongoose.Schema(
   {
-    programItemId: String,
-    feedback: String,
-    username: String,
+    programItemId: { type: String, required: true },
+    feedback: { type: String, required: true },
+    username: { type: String, required: true },
   },
   { timestamps: true },
 );

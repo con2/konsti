@@ -37,15 +37,26 @@ export const UserSchemaDb = z
   })
   .strip();
 
+const lotterySignupSchema = new mongoose.Schema({
+  programItemId: { type: String, required: true },
+  priority: { type: Number, required: true },
+  signedToStartTime: {
+    type: Date,
+    get: (value: Date) => new Date(value),
+    required: true,
+  },
+});
+
 const eventLogItemSchema = new mongoose.Schema(
   {
-    action: String,
-    programItemId: String,
+    action: { type: String, required: true },
+    programItemId: { type: String, required: true },
     programItemStartTime: {
       type: Date,
       get: (value: Date) => new Date(value),
+      required: true,
     },
-    isSeen: Boolean,
+    isSeen: { type: Boolean, required: true },
     createdAt: { type: Date, get: (value: Date) => new Date(value) },
   },
   {
@@ -61,30 +72,21 @@ const eventLogItemSchema = new mongoose.Schema(
 
 const userSchema = new mongoose.Schema(
   {
-    kompassiId: Number,
-    kompassiUsernameAccepted: Boolean,
-    username: String,
-    password: String,
-    userGroup: String,
-    serial: String,
-    groupCreatorCode: String,
-    groupCode: String,
-    favoriteProgramItemIds: [String],
+    kompassiId: { type: Number, required: true },
+    kompassiUsernameAccepted: { type: Boolean, required: true },
+    username: { type: String, required: true },
+    password: { type: String, required: true },
+    userGroup: { type: String, required: true },
+    serial: { type: String, required: true },
+    groupCreatorCode: { type: String, required: true },
+    groupCode: { type: String, required: true },
+    favoriteProgramItemIds: { type: [String], required: true },
+    lotterySignups: { type: [lotterySignupSchema], required: true },
+    eventLogItems: { type: [eventLogItemSchema], required: true },
     createdAt: {
       type: Date,
       get: (value: Date) => new Date(value),
     },
-    lotterySignups: [
-      {
-        programItemId: String,
-        priority: Number,
-        signedToStartTime: {
-          type: Date,
-          get: (value: Date) => new Date(value),
-        },
-      },
-    ],
-    eventLogItems: [eventLogItemSchema],
   },
   {
     timestamps: true,

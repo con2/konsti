@@ -17,20 +17,21 @@ export const DirectSignupSchemaDb = z
   })
   .strip();
 
+const userSignupSchema = new mongoose.Schema({
+  username: { type: String, required: true },
+  priority: { type: Number, required: true },
+  signedToStartTime: {
+    type: Date,
+    get: (value: Date) => new Date(value),
+    required: true,
+  },
+  message: { type: String, default: "" },
+});
+
 const directSignupSchema = new mongoose.Schema(
   {
-    programItemId: String,
-    userSignups: [
-      {
-        username: String,
-        priority: Number,
-        signedToStartTime: {
-          type: Date,
-          get: (value: Date) => new Date(value),
-        },
-        message: String,
-      },
-    ],
+    programItemId: { type: String, required: true },
+    userSignups: { type: [userSignupSchema], required: true },
     count: { type: Number, default: 0 },
   },
   { timestamps: true },

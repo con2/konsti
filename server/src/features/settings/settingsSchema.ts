@@ -25,25 +25,25 @@ export const SettingsSchemaDb = z
   })
   .strip();
 
+const selectOptionSchema = new mongoose.Schema({
+  optionFi: { type: String, required: true },
+  optionEn: { type: String, required: true },
+});
+
+const signupQuestionSchema = new mongoose.Schema({
+  programItemId: { type: String, required: true },
+  questionFi: { type: String, required: true },
+  questionEn: { type: String, required: true },
+  private: { type: Boolean, required: true },
+  type: { type: String, required: true },
+  selectOptions: { type: [selectOptionSchema], default: [] },
+});
+
 const settingsSchema = new mongoose.Schema(
   {
-    hiddenProgramItemIds: [String],
+    hiddenProgramItemIds: { type: [String], default: [] },
     appOpen: { type: Boolean, default: true },
-    signupQuestions: [
-      {
-        programItemId: { type: String },
-        questionFi: { type: String },
-        questionEn: { type: String },
-        private: { type: Boolean },
-        type: { type: String },
-        selectOptions: [
-          {
-            optionFi: { type: String },
-            optionEn: { type: String },
-          },
-        ],
-      },
-    ],
+    signupQuestions: { type: [signupQuestionSchema], default: [] },
     signupStrategy: {
       type: String,
       default: config.server().defaultSignupStrategy,

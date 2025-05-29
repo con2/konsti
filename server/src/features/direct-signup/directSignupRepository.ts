@@ -1,6 +1,5 @@
 import dayjs from "dayjs";
 import { groupBy, shuffle } from "remeda";
-import { z } from "zod";
 import {
   findProgramItemById,
   findProgramItems,
@@ -53,18 +52,21 @@ export const findDirectSignups = async (): Promise<
 
     logger.debug("MongoDB: Direct signups found");
 
-    const result = z.array(DirectSignupSchemaDb).safeParse(response);
-    if (!result.success) {
-      logger.error(
-        "%s",
-        new Error(
-          `Error validating findDirectSignups DB value: ${JSON.stringify(result.error)}`,
-        ),
-      );
-      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
-    }
+    const signups = response.flatMap((signup) => {
+      const result = DirectSignupSchemaDb.safeParse(signup);
+      if (!result.success) {
+        logger.error(
+          "%s",
+          new Error(
+            `Error validating findDirectSignups DB value: programItemId: ${signup.programItemId}, ${JSON.stringify(result.error)}`,
+          ),
+        );
+        return [];
+      }
+      return result.data;
+    });
 
-    return makeSuccessResult(result.data);
+    return makeSuccessResult(signups);
   } catch (error) {
     logger.error("MongoDB: Error finding direct signups: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
@@ -102,19 +104,22 @@ export const findDirectSignupsByStartTime = async (
 
     logger.debug(`MongoDB: Found signups for time ${startTime}`);
 
-    const result = z.array(DirectSignupSchemaDb).safeParse(response);
-    if (!result.success) {
-      logger.error(
-        "%s",
-        new Error(
-          `Error validating findDirectSignupsByStartTime DB value: ${JSON.stringify(result.error)}`,
-        ),
-      );
-      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
-    }
+    const signups = response.flatMap((signup) => {
+      const result = DirectSignupSchemaDb.safeParse(signup);
+      if (!result.success) {
+        logger.error(
+          "%s",
+          new Error(
+            `Error validating findDirectSignupsByStartTime DB value: programItemId: ${signup.programItemId}, ${JSON.stringify(result.error)}`,
+          ),
+        );
+        return [];
+      }
+      return result.data;
+    });
 
     const formattedResponse: FindDirectSignupsByProgramTypesResponse[] =
-      result.data.flatMap((signup) => {
+      signups.flatMap((signup) => {
         return signup.userSignups.map((userSignup) => ({
           ...userSignup,
           programItemId: signup.programItemId,
@@ -146,18 +151,21 @@ export const findUserDirectSignups = async (
 
     logger.debug(`MongoDB: Found signups for user ${username}`);
 
-    const result = z.array(DirectSignupSchemaDb).safeParse(response);
-    if (!result.success) {
-      logger.error(
-        "%s",
-        new Error(
-          `Error validating findUserDirectSignups DB value: ${JSON.stringify(result.error)}`,
-        ),
-      );
-      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
-    }
+    const signups = response.flatMap((signup) => {
+      const result = DirectSignupSchemaDb.safeParse(signup);
+      if (!result.success) {
+        logger.error(
+          "%s",
+          new Error(
+            `Error validating findUserDirectSignups DB value: programItemId: ${signup.programItemId}, ${JSON.stringify(result.error)}`,
+          ),
+        );
+        return [];
+      }
+      return result.data;
+    });
 
-    return makeSuccessResult(result.data);
+    return makeSuccessResult(signups);
   } catch (error) {
     logger.error(
       `MongoDB: Error finding signups for user ${username}: %s`,
@@ -209,13 +217,14 @@ export const saveDirectSignup = async (
         new: true,
       },
     ).lean();
+
     if (!signup) {
       logger.warn(
-        `Saving signup for user '${username}' failed: program item '${directSignupProgramItemId}' not found or program item full`,
+        `Saving direct signup for user '${username}' failed: program item '${directSignupProgramItemId}' not found or program item full`,
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
-    logger.info(`MongoDB: Signup saved for user ${username}`);
+    logger.info(`MongoDB: Direct signup saved for user ${username}`);
 
     const result = DirectSignupSchemaDb.safeParse(signup);
     if (!result.success) {
@@ -231,7 +240,7 @@ export const saveDirectSignup = async (
     return makeSuccessResult(result.data);
   } catch (error) {
     logger.error(
-      `MongoDB: Error saving signup for user '${username}': %s`,
+      `MongoDB: Error saving direct signup for user '${username}': %s`,
       error,
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);

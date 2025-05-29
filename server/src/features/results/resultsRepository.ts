@@ -1,4 +1,4 @@
-import { z } from "zod";
+import dayjs from "dayjs";
 import { logger } from "server/utils/logger";
 import {
   ResultsModel,
@@ -63,17 +63,21 @@ export const findResults = async (): Promise<
     const response = await ResultsModel.find({}).lean();
     logger.debug("MongoDB: Find all results");
 
-    const result = z.array(ResultsSchemaDb).safeParse(response);
-    if (!result.success) {
-      logger.error(
-        "%s",
-        new Error(
-          `Error validating findResults DB value: ${JSON.stringify(result.error)}`,
-        ),
-      );
-      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
-    }
-    return makeSuccessResult(result.data);
+    const results = response.flatMap((assignmentResult) => {
+      const result = ResultsSchemaDb.safeParse(assignmentResult);
+      if (!result.success) {
+        logger.error(
+          "%s",
+          new Error(
+            `Error validating findResults DB value: assignmentTime: ${dayjs(assignmentResult.assignmentTime).toISOString()}, ${JSON.stringify(result.error)}`,
+          ),
+        );
+        return [];
+      }
+      return result.data;
+    });
+
+    return makeSuccessResult(results);
   } catch (error) {
     logger.error("MongoDB: Error fetching results: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);

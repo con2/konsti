@@ -78,22 +78,20 @@ export const enrichProgramItems = async (
   if (isErrorResult(settingsResult)) {
     return settingsResult;
   }
-
   const settings = unwrapResult(settingsResult);
 
   const signupsResult = await findDirectSignups();
   if (isErrorResult(signupsResult)) {
     return signupsResult;
   }
-
   const signups = unwrapResult(signupsResult);
 
   const currentTimeResult = await getTimeNow();
   if (isErrorResult(currentTimeResult)) {
     return currentTimeResult;
   }
-
   const currentTime = unwrapResult(currentTimeResult);
+
   const enrichedProgramItems = programItems.map((programItem) => {
     const signupQuestion = settings.signupQuestions.find(
       (message) => message.programItemId === programItem.programItemId,

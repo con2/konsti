@@ -17,3 +17,6 @@ mongoose.plugin(mongooseLeanGetters, { defaultLeanOptions: { getters: true } });
 // Always apply getters
 mongoose.set("toObject", { getters: true, virtuals: true });
 mongoose.set("toJSON", { getters: true, virtuals: true });
+
+// Always run schema validation
+mongoose.set("runValidators", true);

@@ -1,4 +1,3 @@
-import { z } from "zod";
 import generator from "generate-serial-number";
 import { logger } from "server/utils/logger";
 import {
@@ -60,17 +59,21 @@ export const saveSerials = async (
       `MongoDB: Serials data saved. (${serials.length} serials saved)`,
     );
 
-    const result = z.array(SerialSchemaDb).safeParse(response);
-    if (!result.success) {
-      logger.error(
-        "%s",
-        new Error(
-          `Error validating saveSerials DB value: ${JSON.stringify(result.error)}`,
-        ),
-      );
-      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
-    }
-    return makeSuccessResult(result.data);
+    const results = response.flatMap((serial) => {
+      const result = SerialSchemaDb.safeParse(serial);
+      if (!result.success) {
+        logger.error(
+          "%s",
+          new Error(
+            `Error validating saveSerials DB value: ${JSON.stringify(result.error)}`,
+          ),
+        );
+        return [];
+      }
+      return result.data;
+    });
+
+    return makeSuccessResult(results);
   } catch (error) {
     logger.error("MongoDB: Error saving serials data: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
