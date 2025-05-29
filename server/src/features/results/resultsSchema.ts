@@ -22,9 +22,7 @@ export const ResultsSchemaDb = z
   })
   .strip();
 
-type ResultsDb = z.infer<typeof ResultsSchemaDb>;
-
-const resultsSchema = new mongoose.Schema<ResultsDb>(
+const resultsSchema = new mongoose.Schema(
   {
     results: [
       {
@@ -39,7 +37,6 @@ const resultsSchema = new mongoose.Schema<ResultsDb>(
         },
       },
     ],
-    // @ts-expect-error -- Zod type takes date but returns string
     assignmentTime: { type: Date, get: (value: Date) => new Date(value) },
     algorithm: String,
     message: String,
@@ -47,4 +44,4 @@ const resultsSchema = new mongoose.Schema<ResultsDb>(
   { timestamps: true },
 );
 
-export const ResultsModel = mongoose.model<ResultsDb>("results", resultsSchema);
+export const ResultsModel = mongoose.model("results", resultsSchema);

@@ -43,10 +43,7 @@ export const findDirectSignups = async (): Promise<
   Result<DirectSignupsForProgramItem[], MongoDbError>
 > => {
   try {
-    const response = await SignupModel.find(
-      {},
-      "-createdAt -updatedAt -_id -__v -userSignups._id",
-    ).lean();
+    const response = await SignupModel.find({}).lean();
 
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (!response) {
@@ -94,22 +91,30 @@ export const findDirectSignupsByStartTime = async (
     .map((programItem) => programItem.programItemId);
 
   try {
-    const signups = await SignupModel.find(
-      {
-        programItemId: { $in: programItemsByProgramTypesForStartTimeIds },
-      },
-      "-createdAt -updatedAt -_id -__v",
-    ).lean();
+    const response = await SignupModel.find({
+      programItemId: { $in: programItemsByProgramTypesForStartTimeIds },
+    }).lean();
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-    if (!signups) {
+    if (!response) {
       logger.info(`MongoDB: Signups for time ${startTime} not found`);
       return makeSuccessResult([]);
     }
 
     logger.debug(`MongoDB: Found signups for time ${startTime}`);
 
+    const result = z.array(DirectSignupSchemaDb).safeParse(response);
+    if (!result.success) {
+      logger.error(
+        "%s",
+        new Error(
+          `Error validating findDirectSignupsByStartTime DB value: ${JSON.stringify(result.error)}`,
+        ),
+      );
+      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+    }
+
     const formattedResponse: FindDirectSignupsByProgramTypesResponse[] =
-      signups.flatMap((signup) => {
+      result.data.flatMap((signup) => {
         return signup.userSignups.map((userSignup) => ({
           ...userSignup,
           programItemId: signup.programItemId,
@@ -130,10 +135,9 @@ export const findUserDirectSignups = async (
   username: string,
 ): Promise<Result<DirectSignupsForProgramItem[], MongoDbError>> => {
   try {
-    const response = await SignupModel.find(
-      { "userSignups.username": username },
-      "-createdAt -updatedAt -_id -__v -userSignups._id",
-    ).lean();
+    const response = await SignupModel.find({
+      "userSignups.username": username,
+    }).lean();
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (!response) {
       logger.info(`MongoDB: Signups for user ${username} not found`);

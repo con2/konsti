@@ -25,9 +25,7 @@ export const SettingsSchemaDb = z
   })
   .strip();
 
-type SettingsDb = z.infer<typeof SettingsSchemaDb>;
-
-const settingsSchema = new mongoose.Schema<SettingsDb>(
+const settingsSchema = new mongoose.Schema(
   {
     hiddenProgramItemIds: [String],
     appOpen: { type: Boolean, default: true },
@@ -50,19 +48,16 @@ const settingsSchema = new mongoose.Schema<SettingsDb>(
       type: String,
       default: config.server().defaultSignupStrategy,
     },
-    // @ts-expect-error -- Zod type takes date but returns string
     programUpdateLastRun: {
       type: Date,
       get: (value: Date) => new Date(value),
       default: () => new Date(),
     },
-    // @ts-expect-error -- Zod type takes date but returns string
     assignmentLastRun: {
       type: Date,
       get: (value: Date) => new Date(value),
       default: () => new Date(),
     },
-    // @ts-expect-error -- Zod type takes date but returns string
     latestServerStartTime: {
       type: Date,
       get: (value: Date) => new Date(value),
@@ -76,7 +71,4 @@ const settingsSchema = new mongoose.Schema<SettingsDb>(
   { timestamps: true },
 );
 
-export const SettingsModel = mongoose.model<SettingsDb>(
-  "settings",
-  settingsSchema,
-);
+export const SettingsModel = mongoose.model("settings", settingsSchema);

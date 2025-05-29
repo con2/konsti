@@ -10,9 +10,7 @@ const FeedbackSchemaDb = z
   })
   .strip();
 
-type FeedbackDb = z.infer<typeof FeedbackSchemaDb>;
-
-const feedbackSchema = new mongoose.Schema<FeedbackDb>(
+const feedbackSchema = new mongoose.Schema(
   {
     programItemId: String,
     feedback: String,
@@ -21,7 +19,4 @@ const feedbackSchema = new mongoose.Schema<FeedbackDb>(
   { timestamps: true },
 );
 
-export const FeedbackModel = mongoose.model<FeedbackDb>(
-  "feedback",
-  feedbackSchema,
-);
+export const FeedbackModel = mongoose.model("feedback", feedbackSchema);

@@ -43,22 +43,18 @@ export const ProgramItemSchemaDb = z
   })
   .strip();
 
-type ProgramItemDb = z.infer<typeof ProgramItemSchemaDb>;
-
-const programItemSchema = new mongoose.Schema<ProgramItemDb>(
+const programItemSchema = new mongoose.Schema(
   {
     programItemId: String,
     title: String,
     description: String,
     location: String,
-    // @ts-expect-error -- Zod type takes date but returns string
     startTime: { type: Date, get: (value: Date) => new Date(value) },
     mins: Number,
     tags: Array,
     genres: Array,
     styles: Array,
     languages: [String],
-    // @ts-expect-error -- Zod type takes date but returns string
     endTime: { type: Date, get: (value: Date) => new Date(value) },
     people: String,
     minAttendance: Number,
@@ -78,7 +74,7 @@ const programItemSchema = new mongoose.Schema<ProgramItemDb>(
   { timestamps: true },
 );
 
-export const ProgramItemModel = mongoose.model<ProgramItemDb>(
+export const ProgramItemModel = mongoose.model(
   "program-item",
   programItemSchema,
 );

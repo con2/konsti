@@ -37,8 +37,6 @@ export const UserSchemaDb = z
   })
   .strip();
 
-type UserDb = z.infer<typeof UserSchemaDb>;
-
 const eventLogItemSchema = new mongoose.Schema(
   {
     action: String,
@@ -61,7 +59,7 @@ const eventLogItemSchema = new mongoose.Schema(
   },
 );
 
-const userSchema = new mongoose.Schema<UserDb>(
+const userSchema = new mongoose.Schema(
   {
     kompassiId: Number,
     kompassiUsernameAccepted: Boolean,
@@ -72,7 +70,6 @@ const userSchema = new mongoose.Schema<UserDb>(
     groupCreatorCode: String,
     groupCode: String,
     favoriteProgramItemIds: [String],
-    // @ts-expect-error -- Zod type takes date but returns string
     createdAt: {
       type: Date,
       get: (value: Date) => new Date(value),
@@ -98,4 +95,4 @@ userSchema.plugin(mongooseLeanVirtuals, {
   enabledByDefault: true,
 });
 
-export const UserModel = mongoose.model<UserDb>("user", userSchema);
+export const UserModel = mongoose.model("user", userSchema);

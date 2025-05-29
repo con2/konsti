@@ -7,10 +7,8 @@ export const SerialSchemaDb = z
   })
   .strip();
 
-type SerialDb = z.infer<typeof SerialSchemaDb>;
-
-const serialSchema = new mongoose.Schema<SerialDb>({
+const serialSchema = new mongoose.Schema({
   serial: String,
 });
 
-export const SerialModel = mongoose.model<SerialDb>("serial", serialSchema);
+export const SerialModel = mongoose.model("serial", serialSchema);

@@ -11,11 +11,8 @@ export const TestSettingsSchemaDb = z
   })
   .strip();
 
-type TestSettingsDb = z.infer<typeof TestSettingsSchemaDb>;
-
-const testSettingsSchema = new mongoose.Schema<TestSettingsDb>(
+const testSettingsSchema = new mongoose.Schema(
   {
-    // @ts-expect-error -- Zod type takes date but returns string
     testTime: {
       type: Date,
       get: (value: Date | null) => (value ? new Date(value) : value),
@@ -25,7 +22,7 @@ const testSettingsSchema = new mongoose.Schema<TestSettingsDb>(
   { timestamps: true },
 );
 
-export const TestSettingsModel = mongoose.model<TestSettingsDb>(
+export const TestSettingsModel = mongoose.model(
   "test-settings",
   testSettingsSchema,
 );
