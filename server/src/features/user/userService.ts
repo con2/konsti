@@ -167,7 +167,6 @@ export const storeUser = async (
           message: "User registration success",
           status: "success",
           username: saveUserResponse.username,
-          password: saveUserResponse.password,
         };
       }
     }

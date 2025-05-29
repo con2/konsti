@@ -25,7 +25,7 @@ const userSignupSchema = new mongoose.Schema({
     get: (value: Date) => new Date(value),
     required: true,
   },
-  message: { type: String, default: "" },
+  message: { type: String, required: true },
 });
 
 const directSignupSchema = new mongoose.Schema(
