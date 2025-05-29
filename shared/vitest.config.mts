@@ -6,6 +6,10 @@ export default defineConfig({
   test: {
     environment: "node",
     setupFiles: ["./setupTests.ts"],
+    coverage: {
+      provider: "istanbul",
+      reporter: ["text", "html", "lcov"],
+    },
   },
   resolve: {
     alias: {
