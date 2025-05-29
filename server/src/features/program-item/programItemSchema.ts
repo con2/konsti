@@ -51,14 +51,14 @@ const programItemSchema = new mongoose.Schema<ProgramItemDb>(
     title: String,
     description: String,
     location: String,
-    // @ts-expect-error -- Zod type takes but date but returns string
+    // @ts-expect-error -- Zod type takes date but returns string
     startTime: { type: Date, get: (value: Date) => new Date(value) },
     mins: Number,
     tags: Array,
     genres: Array,
     styles: Array,
     languages: [String],
-    // @ts-expect-error -- Zod type takes but date but returns string
+    // @ts-expect-error -- Zod type takes date but returns string
     endTime: { type: Date, get: (value: Date) => new Date(value) },
     people: String,
     minAttendance: Number,

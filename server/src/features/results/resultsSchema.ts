@@ -39,7 +39,7 @@ const resultsSchema = new mongoose.Schema<ResultsDb>(
         },
       },
     ],
-    // @ts-expect-error -- Zod type takes but date but returns string
+    // @ts-expect-error -- Zod type takes date but returns string
     assignmentTime: { type: Date, get: (value: Date) => new Date(value) },
     algorithm: String,
     message: String,

@@ -15,7 +15,7 @@ type TestSettingsDb = z.infer<typeof TestSettingsSchemaDb>;
 
 const testSettingsSchema = new mongoose.Schema<TestSettingsDb>(
   {
-    // @ts-expect-error -- Zod type takes but date but returns string
+    // @ts-expect-error -- Zod type takes date but returns string
     testTime: {
       type: Date,
       get: (value: Date | null) => (value ? new Date(value) : value),

@@ -50,19 +50,19 @@ const settingsSchema = new mongoose.Schema<SettingsDb>(
       type: String,
       default: config.server().defaultSignupStrategy,
     },
-    // @ts-expect-error -- Zod type takes but date but returns string
+    // @ts-expect-error -- Zod type takes date but returns string
     programUpdateLastRun: {
       type: Date,
       get: (value: Date) => new Date(value),
       default: () => new Date(),
     },
-    // @ts-expect-error -- Zod type takes but date but returns string
+    // @ts-expect-error -- Zod type takes date but returns string
     assignmentLastRun: {
       type: Date,
       get: (value: Date) => new Date(value),
       default: () => new Date(),
     },
-    // @ts-expect-error -- Zod type takes but date but returns string
+    // @ts-expect-error -- Zod type takes date but returns string
     latestServerStartTime: {
       type: Date,
       get: (value: Date) => new Date(value),

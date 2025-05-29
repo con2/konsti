@@ -72,7 +72,7 @@ const userSchema = new mongoose.Schema<UserDb>(
     groupCreatorCode: String,
     groupCode: String,
     favoriteProgramItemIds: [String],
-    // @ts-expect-error -- Zod type takes but date but returns string
+    // @ts-expect-error -- Zod type takes date but returns string
     createdAt: {
       type: Date,
       get: (value: Date) => new Date(value),
