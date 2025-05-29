@@ -1,5 +1,5 @@
 import path from "node:path";
-import { defineConfig } from "vitest/config";
+import { coverageConfigDefaults, defineConfig } from "vitest/config";
 
 // eslint-disable-next-line import/no-unused-modules
 export default defineConfig({
@@ -9,6 +9,16 @@ export default defineConfig({
     setupFiles: ["./src/test/setupTests.ts"],
     testTimeout: 30 * 1000,
     hookTimeout: 60 * 1000,
+    coverage: {
+      provider: "istanbul",
+      include: ["src"],
+      exclude: [
+        "src/test/**/*",
+        "src/features/statistics/**/*",
+        ...coverageConfigDefaults.exclude,
+      ],
+      reporter: ["text", "html", "lcov"],
+    },
   },
   resolve: {
     alias: {

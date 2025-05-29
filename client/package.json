@@ -20,7 +20,7 @@
     "start": "webpack serve",
     "stylelint": "stylelint \"./**/*.{tsx,ts}\"",
     "test": "yarn run -T vitest run",
-    "test:coverage": "yarn run -T vitest run --coverage --colors",
+    "test:coverage": "yarn run -T vitest run --coverage",
     "test:watch": "yarn run -T vitest watch",
     "type-check": "yarn run -T tsc --noEmit"
   },

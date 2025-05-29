@@ -24,7 +24,7 @@
     "stats": "tsx src/features/statistics/statGenerator.ts --",
     "test": "yarn run -T vitest run",
     "test-assign": "NODE_ENV=development tsx src/test/scripts/testAssignment.ts",
-    "test:coverage": "yarn run -T vitest run --coverage --colors",
+    "test:coverage": "yarn run -T vitest run --coverage",
     "test:watch": "yarn run -T vitest watch",
     "type-check": "yarn run -T tsc --noEmit",
     "update-popularity": "NODE_ENV=development tsx src/test/scripts/testUpdateProgramItemPopularity.ts",
