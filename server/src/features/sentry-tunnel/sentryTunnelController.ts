@@ -30,7 +30,7 @@ export const postSentryTunnel = (req: Request, res: Response): Response => {
 };
 
 export const getSentryTest = (req: Request, res: Response): Response => {
-  logger.info(`API call: POST ${ApiEndpoint.SENTRY_TEST}`);
+  logger.info(`API call: GET ${ApiEndpoint.SENTRY_TEST}`);
 
   const username = getAuthorizedUsername(
     req.headers.authorization,

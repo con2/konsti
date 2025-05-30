@@ -8,7 +8,7 @@ interface NewEventLogItem {
   username: string;
   programItemId: string;
   programItemStartTime: string;
-  createdAt: string; // TODO: Should this be date?
+  createdAt: string;
 }
 
 export interface NewEventLogItems {

@@ -77,7 +77,7 @@ export const updateEventLogItemIsSeen = async (
       logger.info(
         `MongoDB: updateEventLogItemIsSeen user ${username} not found`,
       );
-      return makeErrorResult(MongoDbError.USER_NOT_FOUND);
+      return makeErrorResult(MongoDbError.USER_OR_LOG_ITEM_NOT_FOUND);
     }
 
     const result = UserSchemaDb.safeParse(response);
