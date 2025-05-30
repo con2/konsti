@@ -36,7 +36,7 @@
   },
   "dependencies": {
     "@faker-js/faker": "9.8.0",
-    "@sentry/node": "9.19.0",
+    "@sentry/node": "9.24.0",
     "@vercel/ncc": "0.38.3",
     "bcryptjs": "3.0.2",
     "commander": "14.0.0",
@@ -50,7 +50,7 @@
     "generate-serial-number": "0.0.3",
     "helmet": "8.1.0",
     "jsonwebtoken": "9.0.2",
-    "mongoose": "8.15.0",
+    "mongoose": "8.15.1",
     "mongoose-lean-getters": "2.2.2",
     "mongoose-lean-virtuals": "2.0.0",
     "morgan": "1.10.0",
@@ -61,7 +61,7 @@
   "devDependencies": {
     "@types/jsonwebtoken": "9.0.9",
     "@types/morgan": "1.9.9",
-    "@types/node": "22.15.18",
+    "@types/node": "22.15.27",
     "@types/supertest": "6.0.3",
     "mongodb-memory-server": "10.1.4",
     "supertest": "7.1.1"
