@@ -17,6 +17,7 @@ export enum MongoDbError {
   SIGNUP_QUESTION_NOT_FOUND = "signupQuestionNotFound",
   SIGNUP_NOT_FOUND = "signupNotFound",
   SETTINGS_NOT_FOUND = "settingsNotFound",
+  USER_OR_LOG_ITEM_NOT_FOUND = "userOrLogItemNotFound",
 }
 
 export enum KompassiError {
