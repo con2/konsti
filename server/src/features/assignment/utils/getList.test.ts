@@ -141,6 +141,7 @@ const getPreviousDirectSignup = ({
         message: "",
       },
     ],
+    count: 0,
   };
 };
 
