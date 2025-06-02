@@ -72,8 +72,10 @@ export const saveProgramItems = async (
     return removeInvalidProgramItemsResult;
   }
 
-  const updateMovedProgramItemsResult =
-    await updateMovedProgramItems(updatedProgramItems);
+  const updateMovedProgramItemsResult = await updateMovedProgramItems(
+    updatedProgramItems,
+    currentProgramItems,
+  );
   if (isErrorResult(updateMovedProgramItemsResult)) {
     return updateMovedProgramItemsResult;
   }

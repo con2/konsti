@@ -1,9 +1,6 @@
 import dayjs from "dayjs";
 import { groupBy, shuffle } from "remeda";
-import {
-  findProgramItemById,
-  findProgramItems,
-} from "server/features/program-item/programItemRepository";
+import { findProgramItemById } from "server/features/program-item/programItemRepository";
 import {
   DirectSignupsForProgramItem,
   SignupRepositoryAddSignupResponse,
@@ -24,6 +21,7 @@ import {
   unwrapResult,
 } from "shared/utils/result";
 import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
+import { ProgramItem } from "shared/types/models/programItem";
 
 export const removeDirectSignups = async (): Promise<
   Result<void, MongoDbError>
@@ -73,20 +71,15 @@ export const findDirectSignups = async (): Promise<
   }
 };
 
-interface FindDirectSignupsByProgramTypesResponse extends UserDirectSignup {
+interface FindDirectSignupsByStartTimeResponse extends UserDirectSignup {
   programItemId: string;
 }
 
 export const findDirectSignupsByStartTime = async (
   startTime: string,
-): Promise<Result<FindDirectSignupsByProgramTypesResponse[], MongoDbError>> => {
-  const programItemsResult = await findProgramItems();
-  if (isErrorResult(programItemsResult)) {
-    return programItemsResult;
-  }
-  const programItems = unwrapResult(programItemsResult);
-
-  const programItemsByProgramTypesForStartTimeIds = programItems
+  programItems: ProgramItem[],
+): Promise<Result<FindDirectSignupsByStartTimeResponse[], MongoDbError>> => {
+  const programItemsIds = programItems
     .filter((programItem) =>
       dayjs(programItem.startTime).isSame(dayjs(startTime)),
     )
@@ -94,7 +87,7 @@ export const findDirectSignupsByStartTime = async (
 
   try {
     const response = await SignupModel.find({
-      programItemId: { $in: programItemsByProgramTypesForStartTimeIds },
+      programItemId: { $in: programItemsIds },
     }).lean();
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (!response) {
@@ -118,7 +111,7 @@ export const findDirectSignupsByStartTime = async (
       return result.data;
     });
 
-    const formattedResponse: FindDirectSignupsByProgramTypesResponse[] =
+    const formattedResponse: FindDirectSignupsByStartTimeResponse[] =
       signups.flatMap((signup) => {
         return signup.userSignups.map((userSignup) => ({
           ...userSignup,
@@ -224,7 +217,9 @@ export const saveDirectSignup = async (
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
-    logger.info(`MongoDB: Direct signup saved for user ${username}`);
+    logger.info(
+      `MongoDB: Direct signup to '${directSignupProgramItemId}' saved for user "${username}"`,
+    );
 
     const result = DirectSignupSchemaDb.safeParse(signup);
     if (!result.success) {
@@ -249,13 +244,8 @@ export const saveDirectSignup = async (
 
 export const saveDirectSignups = async (
   signupsRequests: SignupRepositoryAddSignup[],
+  programItems: ProgramItem[],
 ): Promise<Result<SignupRepositoryAddSignupResponse, MongoDbError>> => {
-  const programItemsResult = await findProgramItems();
-  if (isErrorResult(programItemsResult)) {
-    return programItemsResult;
-  }
-  const programItems = unwrapResult(programItemsResult);
-
   const signupsByProgramItems = groupBy(
     signupsRequests,
     (signupsRequest) => signupsRequest.directSignupProgramItemId,
@@ -374,9 +364,9 @@ export const delDirectSignup = async ({
     }
 
     logger.info(
-      `MongoDB: Signup removed for program item ${
+      `MongoDB: Direct signup to '${
         directSignupProgramItemId
-      } from user ${username}`,
+      }' removed from user '${username}'`,
     );
 
     const result = DirectSignupSchemaDb.safeParse(signup);
@@ -439,13 +429,8 @@ export const resetDirectSignupsByProgramItemIds = async (
 
 export const delAssignmentDirectSignupsByStartTime = async (
   assignmentTime: string,
+  programItems: ProgramItem[],
 ): Promise<Result<void, MongoDbError>> => {
-  const programItemsResult = await findProgramItems();
-  if (isErrorResult(programItemsResult)) {
-    return programItemsResult;
-  }
-  const programItems = unwrapResult(programItemsResult);
-
   // Only remove "twoPhaseSignupProgramTypes" signups and don't remove "directSignupAlwaysOpen" signups
   const doNotRemoveProgramItemIds = programItems
     .filter((programItem) => !isLotterySignupProgramItem(programItem))

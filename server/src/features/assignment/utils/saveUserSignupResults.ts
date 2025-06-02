@@ -44,27 +44,27 @@ export const saveUserSignupResults = async ({
   // Remove previous lottery result for the same start time
   // This does not remove non-lottery signups or previous signups from moved program items
   const delAssignmentSignupsByStartTimeResult =
-    await delAssignmentDirectSignupsByStartTime(assignmentTime);
+    await delAssignmentDirectSignupsByStartTime(assignmentTime, programItems);
   if (isErrorResult(delAssignmentSignupsByStartTimeResult)) {
     return delAssignmentSignupsByStartTimeResult;
   }
 
   // Only non-lottery signups and previous signups from moved program items should be remaining
-  const twoPhaseSignupsByStartTimeResult =
-    await findDirectSignupsByStartTime(assignmentTime);
-  if (isErrorResult(twoPhaseSignupsByStartTimeResult)) {
-    return twoPhaseSignupsByStartTimeResult;
-  }
-  const twoPhaseSignupsByStartTime = unwrapResult(
-    twoPhaseSignupsByStartTimeResult,
+  const directSignupsByStartTimeResult = await findDirectSignupsByStartTime(
+    assignmentTime,
+    programItems,
   );
+  if (isErrorResult(directSignupsByStartTimeResult)) {
+    return directSignupsByStartTimeResult;
+  }
+  const directSignupsByStartTime = unwrapResult(directSignupsByStartTimeResult);
 
-  // Resolve conflicting existing signups
+  // Resolve conflicting existing direct signups
   // If user has existing signups...
   // ... and new assignment result -> remove existing
   // ... and no new assignment result -> keep existing
   const deletePromises = results.map(async (result) => {
-    const existingSignup = twoPhaseSignupsByStartTime.find(
+    const existingSignup = directSignupsByStartTime.find(
       (signup) => signup.username === result.username,
     );
 
@@ -101,7 +101,7 @@ export const saveUserSignupResults = async ({
   });
 
   // This might drop some signups if by some error too many signups are passed for a program item
-  const saveSignupsResult = await saveDirectSignups(newSignups);
+  const saveSignupsResult = await saveDirectSignups(newSignups, programItems);
   if (isErrorResult(saveSignupsResult)) {
     return saveSignupsResult;
   }
