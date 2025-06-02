@@ -8,7 +8,7 @@ export interface UserDirectSignup {
 export interface DirectSignupsForProgramItem {
   programItemId: string;
   userSignups: readonly UserDirectSignup[];
-  count?: number;
+  count: number;
 }
 
 export interface SignupRepositoryAddSignup {

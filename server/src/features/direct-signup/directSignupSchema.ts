@@ -13,7 +13,7 @@ export const DirectSignupSchemaDb = z
   .object({
     programItemId: z.string(),
     userSignups: z.array(UserSignupsSchema),
-    count: z.number().optional(),
+    count: z.number(),
   })
   .strip();
 
