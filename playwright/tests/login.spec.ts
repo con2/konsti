@@ -1,8 +1,18 @@
 import { test, expect } from "@playwright/test";
-import { populateDb } from "playwright/playwrightUtils";
+import {
+  addProgramItems,
+  populateDb,
+  postTestSettings,
+} from "playwright/playwrightUtils";
+import { testProgramItem } from "shared/tests/testProgramItem";
+import { ProgramType } from "shared/types/models/programItem";
 
 test("Admin login", async ({ page, request }) => {
-  await populateDb(request, { clean: true, users: true, programItems: true });
+  await populateDb(request, { clean: true, users: true });
+  await addProgramItems(request);
+  await postTestSettings(request, {
+    testTime: testProgramItem.startTime,
+  });
 
   const username = "admin";
   const password = "test";
@@ -28,7 +38,11 @@ test("Admin login", async ({ page, request }) => {
 });
 
 test("User login", async ({ page, request }) => {
-  await populateDb(request, { clean: true, users: true, programItems: true });
+  await populateDb(request, { clean: true, users: true });
+  await addProgramItems(request);
+  await postTestSettings(request, {
+    testTime: testProgramItem.startTime,
+  });
 
   const username = "test1";
   const password = "test";
@@ -54,7 +68,15 @@ test("User login", async ({ page, request }) => {
 });
 
 test("Login redirect back to program item", async ({ page, request }) => {
-  await populateDb(request, { clean: true, users: true, programItems: true });
+  await populateDb(request, { clean: true, users: true });
+  await addProgramItems(request, [
+    {
+      programType: ProgramType.TABLETOP_RPG,
+    },
+  ]);
+  await postTestSettings(request, {
+    testTime: testProgramItem.startTime,
+  });
 
   const username = "test1";
   const password = "test";
