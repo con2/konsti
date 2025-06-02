@@ -19,7 +19,6 @@ import {
   delDirectSignup,
   saveDirectSignup,
 } from "server/features/direct-signup/directSignupRepository";
-import { findUser } from "server/features/user/userRepository";
 import { isErrorResult, unwrapResult } from "shared/utils/result";
 import { config } from "shared/config";
 import { SignupRepositoryAddSignup } from "server/features/direct-signup/directSignupTypes";
@@ -86,25 +85,6 @@ export const storeDirectSignup = async (
       errorId: "signupEnded",
       message: "Signup time ended",
       status: "error",
-    };
-  }
-
-  const userResult = await findUser(username);
-  if (isErrorResult(userResult)) {
-    return {
-      message: "Error finding user",
-      status: "error",
-      errorId: "unknown",
-    };
-  }
-
-  const user = unwrapResult(userResult);
-
-  if (!user) {
-    return {
-      message: "Error finding user",
-      status: "error",
-      errorId: "unknown",
     };
   }
 

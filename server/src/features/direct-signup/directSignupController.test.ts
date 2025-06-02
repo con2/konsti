@@ -119,30 +119,6 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     );
   });
 
-  test("should return error when user is not found", async () => {
-    vi.setSystemTime(testProgramItem.startTime);
-
-    await saveProgramItems([testProgramItem]);
-
-    const signup: PostDirectSignupRequest = {
-      directSignupProgramItemId: testProgramItem.programItemId,
-      message: "",
-      priority: DIRECT_SIGNUP_PRIORITY,
-    };
-    const response = await request(server)
-      .post(ApiEndpoint.DIRECT_SIGNUP)
-      .send(signup)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, "user_not_found")}`,
-      );
-    expect(response.status).toEqual(200);
-
-    const body = response.body as PostDirectSignupError;
-    expect(body.status).toEqual("error");
-    expect(body.message).toEqual("Error finding user");
-  });
-
   test("should return error when signup is not yet open", async () => {
     // This test time should land to phaseGap
     vi.setSystemTime(
@@ -200,20 +176,17 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     expect(body.errorId).toEqual("signupEnded");
   });
 
-  test("should return success when user and program item are found", async () => {
+  test("should return success with valid data", async () => {
     vi.setSystemTime(testProgramItem.startTime);
 
-    // Populate database
     await saveProgramItems([testProgramItem]);
     await saveUser(mockUser);
 
-    // Check starting conditions
     const nonModifiedSignups = unsafelyUnwrap(
       await findUserDirectSignups(mockUser.username),
     );
     expect(nonModifiedSignups.length).toEqual(0);
 
-    // Update direct signups
     const signup: PostDirectSignupRequest = {
       directSignupProgramItemId: testProgramItem.programItemId,
       message: "Test message",
@@ -227,14 +200,12 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
         `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
       );
 
-    // Check API response
     expect(response.status).toEqual(200);
 
     const body = response.body as PostDirectSignupResponse;
     expect(body.message).toEqual("Store signup success");
     expect(body.status).toEqual("success");
 
-    // Check database
     const modifiedSignups = unsafelyUnwrap(
       await findUserDirectSignups(mockUser.username),
     );
@@ -250,7 +221,6 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
 
     const maxAttendance = 2;
 
-    // Populate database
     await saveProgramItems([{ ...testProgramItem, maxAttendance }]);
     await saveUser(mockUser);
     await saveUser(mockUser2);
@@ -281,8 +251,6 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
       makeRequest(mockUser5),
     ]);
 
-    // Check results
-
     const signups = unsafelyUnwrap(await findDirectSignups());
     const matchingSignup = signups.find(
       (signup) => signup.programItemId === testProgramItem.programItemId,
@@ -296,7 +264,6 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
 
     const maxAttendance = 2;
 
-    // Populate database
     await saveProgramItems([{ ...testProgramItem, maxAttendance }]);
     await saveUser(mockUser);
     await saveUser(mockUser2);
@@ -323,7 +290,6 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     // Save two more signups at the same time -> one should fail and only one signup collection should exist
     await Promise.all([makeRequest(mockUser2), makeRequest(mockUser3)]);
 
-    // Check results
     const signups = unsafelyUnwrap(await findDirectSignups());
     expect(signups).toHaveLength(1);
 
@@ -399,12 +365,10 @@ describe(`DELETE ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
   test("should return success when user and program item are found", async () => {
     vi.setSystemTime(testProgramItem.startTime);
 
-    // Populate database
     await saveProgramItems([testProgramItem]);
     await saveUser(mockUser);
     await saveDirectSignup(mockPostDirectSignupRequest);
 
-    // Check starting conditions
     const nonModifiedSignup = unsafelyUnwrap(
       await findUserDirectSignups(mockUser.username),
     );
@@ -414,7 +378,6 @@ describe(`DELETE ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     );
     expect(nonModifiedSignup[0].userSignups.length).toEqual(1);
 
-    // Update direct signups
     const deleteRequest: DeleteDirectSignupRequest = {
       directSignupProgramItemId: testProgramItem.programItemId,
     };
@@ -426,14 +389,12 @@ describe(`DELETE ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
         `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
       );
 
-    // Check API response
     expect(response.status).toEqual(200);
 
     const body = response.body as PostDirectSignupResponse;
     expect(body.message).toEqual("Delete signup success");
     expect(body.status).toEqual("success");
 
-    // Check database
     const modifiedSignup = unsafelyUnwrap(
       await findUserDirectSignups(mockUser.username),
     );

@@ -209,7 +209,6 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
 
     const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
 
-    // Populate database
     await saveProgramItems([
       { ...testProgramItem, minAttendance: 1, maxAttendance: 1 },
       {
@@ -286,7 +285,6 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
 
     const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
 
-    // Populate database
     await saveProgramItems([
       testProgramItem,
       {
@@ -373,7 +371,6 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
 
     const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
 
-    // Populate database
     await saveProgramItems([
       { ...testProgramItem, minAttendance: 1 },
       {
@@ -614,7 +611,6 @@ describe("Assignment with first time bonus", () => {
     const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
     const tournamentProgramItemId = "AIAHHUA";
 
-    // Populate database
     await saveProgramItems([
       { ...testProgramItem, minAttendance: 1, maxAttendance: 1 },
       testProgramItem2,
@@ -738,7 +734,6 @@ describe("Assignment with first time bonus", () => {
   test("should assign user with previous failed lottery signup", async () => {
     const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
 
-    // Populate database
     await saveProgramItems([
       { ...testProgramItem, minAttendance: 1, maxAttendance: 1 },
       { ...testProgramItem2, minAttendance: 1, maxAttendance: 1 },
