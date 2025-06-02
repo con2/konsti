@@ -50,7 +50,8 @@ test("should remove lottery signups for moved program items from users", async (
     },
   );
 
-  await updateMovedProgramItems(insertedProgramItems);
+  const updatedProgramItems = unsafelyUnwrap(await findProgramItems());
+  await updateMovedProgramItems(insertedProgramItems, updatedProgramItems);
 
   const updatedUser = unsafelyUnwrap(await findUser(mockUser.username));
 

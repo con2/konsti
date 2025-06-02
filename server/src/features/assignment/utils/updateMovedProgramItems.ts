@@ -1,7 +1,6 @@
 import dayjs from "dayjs";
 import { logger } from "server/utils/logger";
 import { ProgramItem } from "shared/types/models/programItem";
-import { findProgramItems } from "server/features/program-item/programItemRepository";
 import {
   findUsers,
   updateUsersByUsername,
@@ -17,13 +16,8 @@ import { User } from "shared/types/models/user";
 
 export const updateMovedProgramItems = async (
   updatedProgramItems: readonly ProgramItem[],
+  currentProgramItems: readonly ProgramItem[],
 ): Promise<Result<void, MongoDbError>> => {
-  const currentProgramItemsResult = await findProgramItems();
-  if (isErrorResult(currentProgramItemsResult)) {
-    return currentProgramItemsResult;
-  }
-
-  const currentProgramItems = unwrapResult(currentProgramItemsResult);
   const movedProgramItems = currentProgramItems.filter((currentProgramItem) => {
     return updatedProgramItems.find((updatedProgramItem) => {
       return (

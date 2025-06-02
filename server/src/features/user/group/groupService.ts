@@ -151,6 +151,16 @@ export const joinGroup = async (
   username: string,
   groupCode: string,
 ): Promise<PostJoinGroupResponse | PostJoinGroupError> => {
+  const timeNowResult = await getTimeNow();
+  if (isErrorResult(timeNowResult)) {
+    return {
+      message: "Unable to get current time",
+      status: "error",
+      errorId: "unknown",
+    };
+  }
+  const timeNow = unwrapResult(timeNowResult);
+
   const signupsResult = await findUserDirectSignups(username);
   if (isErrorResult(signupsResult)) {
     return {
@@ -159,7 +169,6 @@ export const joinGroup = async (
       errorId: "unknown",
     };
   }
-
   const signups = unwrapResult(signupsResult);
 
   const programItemsResult = await findProgramItems();
@@ -177,25 +186,15 @@ export const joinGroup = async (
     programItems,
   );
 
-  const timeNowResult = await getTimeNow();
-  if (isErrorResult(timeNowResult)) {
-    return {
-      message: "Unable to get current time",
-      status: "error",
-      errorId: "unknown",
-    };
-  }
-
-  const timeNow = unwrapResult(timeNowResult);
-
   const userDirectSignups = lotteryValidDirectSignups.flatMap(
     (signup) => signup.userSignups,
   );
+
   const userHasDirectSignups = userDirectSignups.some((userSignup) =>
     timeNow.isBefore(dayjs(userSignup.signedToStartTime)),
   );
 
-  // User cannot have RPG signups in future when joining in group
+  // User cannot have direct signups in future when joining a group
   if (userHasDirectSignups) {
     return {
       message: "Signup in future",

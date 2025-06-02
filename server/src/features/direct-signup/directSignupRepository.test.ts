@@ -3,7 +3,10 @@ import mongoose from "mongoose";
 import { faker } from "@faker-js/faker";
 import { saveUser } from "server/features/user/userRepository";
 import { testProgramItem } from "shared/tests/testProgramItem";
-import { saveProgramItems } from "server/features/program-item/programItemRepository";
+import {
+  findProgramItems,
+  saveProgramItems,
+} from "server/features/program-item/programItemRepository";
 import {
   mockPostDirectSignupRequest,
   mockUser,
@@ -68,7 +71,10 @@ test("should limit max attendees if too many passed to saveDirectSignups", async
     { ...mockPostDirectSignupRequest, username: mockUser4.username },
   ];
 
-  const response = unsafelyUnwrap(await saveDirectSignups(signups));
+  const programItems = unsafelyUnwrap(await findProgramItems());
+  const response = unsafelyUnwrap(
+    await saveDirectSignups(signups, programItems),
+  );
   expect(response.modifiedCount).toEqual(1);
   expect(response.droppedSignups).toHaveLength(2);
 
