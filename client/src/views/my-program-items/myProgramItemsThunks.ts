@@ -25,6 +25,7 @@ import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import { NewFavorite } from "shared/types/models/user";
 import { submitUpdateEventLogItemsAsync } from "client/views/login/loginSlice";
 import { submitUpdateGroupCodeAsync } from "client/views/group/groupSlice";
+import { submitUpdateDirectSignupAsync } from "client/views/all-program-items/allProgramItemsSlice";
 
 export const submitGetUser = (username: string): AppThunk => {
   return async (dispatch): Promise<void> => {
@@ -113,6 +114,15 @@ export const submitPostDirectSignup = (
     }
 
     dispatch(submitPostDirectSignupAsync(signupResponse.directSignup));
+    dispatch(
+      submitUpdateDirectSignupAsync({
+        programItemId: signupResponse.allSignups.programItemId,
+        updates: signupResponse.allSignups.userSignups.map((userSignup) => ({
+          username: userSignup.username,
+          signupMessage: userSignup.message,
+        })),
+      }),
+    );
   };
 };
 
@@ -141,6 +151,15 @@ export const submitDeleteDirectSignup = (
     }
 
     dispatch(submitDeleteDirectSignupAsync(data.directSignupProgramItemId));
+    dispatch(
+      submitUpdateDirectSignupAsync({
+        programItemId: signupResponse.allSignups.programItemId,
+        updates: signupResponse.allSignups.userSignups.map((userSignup) => ({
+          username: userSignup.username,
+          signupMessage: userSignup.message,
+        })),
+      }),
+    );
   };
 };
 

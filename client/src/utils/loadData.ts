@@ -45,7 +45,7 @@ const loadTestSettings = async (): Promise<void> => {
   await dispatch(submitGetTestSettings());
 };
 
-export const loadProgramItems = async (): Promise<void> => {
+const loadProgramItems = async (): Promise<void> => {
   const state = store.getState();
   const dispatch: AppDispatch = store.dispatch;
   const { appOpen } = state.admin;

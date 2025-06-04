@@ -12,7 +12,6 @@ import {
   DeleteDirectSignupErrorMessage,
   submitDeleteDirectSignup,
 } from "client/views/my-program-items/myProgramItemsThunks";
-import { loadProgramItems } from "client/utils/loadData";
 import { ErrorMessage } from "client/components/ErrorMessage";
 import { selectDirectSignups } from "client/views/my-program-items/myProgramItemsSlice";
 import { getTimeNow } from "client/utils/getTimeNow";
@@ -71,8 +70,6 @@ export const DirectSignupProgramItem = ({
     if (errorMessage) {
       setServerError(errorMessage);
     } else {
-      // TODO: Don't reload program items, backend response should return all required data
-      await loadProgramItems();
       setCancelSignupFormOpen(false);
     }
     setLoading(false);

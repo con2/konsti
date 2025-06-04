@@ -193,7 +193,7 @@ const getDirectSignupsForProgramItem = (
   return formattedDirectSignupsForProgramItem;
 };
 
-const getSignupMessage = (
+export const getSignupMessage = (
   signupQuestion: SignupQuestion | undefined,
   signupMessage: string,
 ): string => {
@@ -201,6 +201,5 @@ const getSignupMessage = (
     return "";
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-  return signupMessage ?? "";
+  return signupMessage;
 };
