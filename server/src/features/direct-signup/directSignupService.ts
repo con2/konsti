@@ -22,6 +22,8 @@ import {
 import { isErrorResult, unwrapResult } from "shared/utils/result";
 import { config } from "shared/config";
 import { SignupRepositoryAddSignup } from "server/features/direct-signup/directSignupTypes";
+import { getSignupMessage } from "server/features/program-item/programItemUtils";
+import { findSettings } from "server/features/settings/settingsRepository";
 
 export const storeDirectSignup = async (
   signupRequest: PostDirectSignupRequest,
@@ -44,7 +46,6 @@ export const storeDirectSignup = async (
       errorId: "unknown",
     };
   }
-
   const timeNow = unwrapResult(timeNowResult);
 
   const programItemResult = await findProgramItemById(
@@ -59,7 +60,6 @@ export const storeDirectSignup = async (
       errorId: "unknown",
     };
   }
-
   const programItem = unwrapResult(programItemResult);
 
   const directSignupStartTime = getDirectSignupStartTime(programItem);
@@ -102,15 +102,26 @@ export const storeDirectSignup = async (
       errorId: "unknown",
     };
   }
-
   const signup = unwrapResult(signupResult);
 
   const newSignup = signup.userSignups.find(
     (userSignup) => userSignup.username === username,
   );
 
-  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-  if (signup && newSignup) {
+  const settingsResult = await findSettings();
+  if (isErrorResult(settingsResult)) {
+    return {
+      message: "Error loading settings",
+      status: "error",
+      errorId: "unknown",
+    };
+  }
+  const settings = unwrapResult(settingsResult);
+  const signupQuestion = settings.signupQuestions.find(
+    (message) => message.programItemId === programItem.programItemId,
+  );
+
+  if (newSignup) {
     return {
       message: "Store signup success",
       status: "success",
@@ -118,7 +129,14 @@ export const storeDirectSignup = async (
         programItemId: signup.programItemId,
         priority: newSignup.priority,
         signedToStartTime: newSignup.signedToStartTime,
-        message: newSignup.message,
+        message: getSignupMessage(signupQuestion, newSignup.message),
+      },
+      allSignups: {
+        programItemId: signup.programItemId,
+        userSignups: signup.userSignups.map((userSignup) => ({
+          username: userSignup.username,
+          message: getSignupMessage(signupQuestion, userSignup.message),
+        })),
       },
     };
   }
@@ -186,20 +204,30 @@ export const removeDirectSignup = async (
       errorId: "unknown",
     };
   }
-
   const signup = unwrapResult(signupResult);
 
-  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-  if (signup) {
+  const settingsResult = await findSettings();
+  if (isErrorResult(settingsResult)) {
     return {
-      message: "Delete signup success",
-      status: "success",
+      message: "Error loading settings",
+      status: "error",
+      errorId: "unknown",
     };
   }
+  const settings = unwrapResult(settingsResult);
+  const signupQuestion = settings.signupQuestions.find(
+    (message) => message.programItemId === programItem.programItemId,
+  );
 
   return {
-    message: "Delete signup failure for unknown reason",
-    status: "error",
-    errorId: "unknown",
+    message: "Delete signup success",
+    status: "success",
+    allSignups: {
+      programItemId: signup.programItemId,
+      userSignups: signup.userSignups.map((userSignup) => ({
+        username: userSignup.username,
+        message: getSignupMessage(signupQuestion, userSignup.message),
+      })),
+    },
   };
 };

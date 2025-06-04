@@ -8,6 +8,14 @@ import {
   Tag,
 } from "shared/types/models/programItem";
 
+interface DirectSignupUpdate {
+  programItemId: string;
+  updates: {
+    username: string;
+    signupMessage: string;
+  }[];
+}
+
 const initialState: AllProgramItemsState = {
   programItems: [],
   directSignups: [],
@@ -34,10 +42,25 @@ const allProgramItemsSlice = createSlice({
         }),
       };
     },
+
+    submitUpdateDirectSignupAsync(
+      state,
+      action: PayloadAction<DirectSignupUpdate>,
+    ): AllProgramItemsState {
+      const index = state.directSignups.findIndex(
+        (directSignup) =>
+          directSignup.programItemId === action.payload.programItemId,
+      );
+      if (index !== -1) {
+        state.directSignups[index].users = action.payload.updates;
+      }
+      return state;
+    },
   },
 });
 
-export const { submitGetProgramItemsAsync } = allProgramItemsSlice.actions;
+export const { submitGetProgramItemsAsync, submitUpdateDirectSignupAsync } =
+  allProgramItemsSlice.actions;
 
 export const allProgramItemsReducer = allProgramItemsSlice.reducer;
 

@@ -58,6 +58,10 @@ export type PostDirectSignupRequest = z.infer<
 
 export interface PostDirectSignupResponse extends ApiResult {
   directSignup: DirectSignup;
+  allSignups: {
+    programItemId: string;
+    userSignups: { username: string; message: string }[];
+  };
 }
 
 export interface PostDirectSignupError extends ApiError {
@@ -79,7 +83,12 @@ export type DeleteDirectSignupRequest = z.infer<
   typeof DeleteDirectSignupRequestSchema
 >;
 
-export type DeleteDirectSignupResponse = ApiResult;
+export interface DeleteDirectSignupResponse extends ApiResult {
+  allSignups: {
+    programItemId: string;
+    userSignups: { username: string; message: string }[];
+  };
+}
 
 export interface DeleteDirectSignupError extends ApiError {
   errorId: "unknown" | "signupEnded";

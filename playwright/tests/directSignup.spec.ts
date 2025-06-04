@@ -9,7 +9,7 @@ import {
 } from "playwright/playwrightUtils";
 import { config } from "shared/config";
 
-test("Add direct signup", async ({ page, request }) => {
+test("Add and cancel direct signup", async ({ page, request }) => {
   await clearDb(request);
   await addUser(request);
   await addProgramItems(request, [
@@ -45,8 +45,21 @@ test("Add direct signup", async ({ page, request }) => {
     .locator("data-testid=program-item-title")
     .textContent();
 
+  await expect(page.getByTestId("program-item-container")).toContainText(
+    "0/4 sign-ups",
+  );
+
   await firstProgramItem.getByRole("button", { name: /sign up/i }).click();
   await firstProgramItem.getByRole("button", { name: /confirm/i }).click();
+
+  // Check attendee count is incremented
+  await expect(page.getByTestId("program-item-container")).toContainText(
+    "1/4 sign-ups",
+  );
+  await page.getByRole("button", { name: "Show players" }).click();
+  await expect(
+    page.getByTestId("program-item-container").getByRole("listitem"),
+  ).toContainText("test1");
 
   // Go to My Program and check direct signup program item title
   await page.click("data-testid=my-program-tab");
@@ -60,4 +73,31 @@ test("Add direct signup", async ({ page, request }) => {
     .textContent();
 
   expect(programItemTitle?.trim()).toEqual(directSignupProgramItemTitle);
+
+  // Cancel direct signup on My Program page
+  await page.getByRole("button", { name: "Cancel sign-up" }).click();
+  await page.getByRole("button", { name: "Cancel your sign-up" }).click();
+  await expect(
+    page.getByTestId("direct-signup-program-items-list").getByRole("paragraph"),
+  ).toContainText(
+    "No sign-ups. You can sign up to program in the All Program view.",
+  );
+
+  // Navigate back to program list and sign again and cancel
+  await page.getByTestId("program-list-tab").click();
+  await expect(page.getByTestId("program-item-container")).toContainText(
+    "0/4 sign-ups",
+  );
+
+  await page.getByRole("button", { name: "Sign up" }).click();
+  await page.getByRole("button", { name: "Confirm" }).click();
+  await expect(page.getByTestId("program-item-container")).toContainText(
+    "1/4 sign-ups",
+  );
+
+  await page.getByRole("button", { name: "Cancel sign-up" }).click();
+  await page.getByRole("button", { name: "Cancel your sign-up" }).click();
+  await expect(page.getByTestId("program-item-container")).toContainText(
+    "0/4 sign-ups",
+  );
 });

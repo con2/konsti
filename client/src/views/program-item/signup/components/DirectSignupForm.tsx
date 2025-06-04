@@ -12,7 +12,6 @@ import {
   SignupQuestion,
   SignupQuestionType,
 } from "shared/types/models/settings";
-import { loadProgramItems } from "client/utils/loadData";
 import { ErrorMessage } from "client/components/ErrorMessage";
 import { getIsInGroup } from "client/views/group/groupUtils";
 import {
@@ -117,13 +116,10 @@ export const DirectSignupForm = ({
     const error = await dispatch(submitPostDirectSignup(enterData));
     if (error) {
       setErrorMessage(error);
-      setLoading(false);
-      return;
+    } else {
+      onDirectSignupProgramItem();
     }
 
-    // TODO: Don't reload program items, backend response should return all required data
-    await loadProgramItems();
-    onDirectSignupProgramItem();
     setLoading(false);
   };
 

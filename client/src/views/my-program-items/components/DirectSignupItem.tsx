@@ -9,7 +9,6 @@ import {
   submitDeleteDirectSignup,
 } from "client/views/my-program-items/myProgramItemsThunks";
 import { CancelSignupForm } from "client/views/program-item/signup/components/CancelSignupForm";
-import { loadProgramItems } from "client/utils/loadData";
 import { config } from "shared/config";
 import { getShortWeekdayAndTime } from "client/utils/timeFormatter";
 import { TertiaryButton } from "client/components/TertiaryButton";
@@ -60,8 +59,6 @@ export const DirectSignupItem = ({
     if (errorMessage) {
       setServerError(errorMessage);
     } else {
-      // TODO: Don't reload program items, backend response should return all required data
-      await loadProgramItems();
       setCancelSignupFormOpen(false);
     }
     setLoading(false);
