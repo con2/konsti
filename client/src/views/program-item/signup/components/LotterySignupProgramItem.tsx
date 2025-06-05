@@ -76,7 +76,6 @@ export const LotterySignupProgramItem = ({
       setErrorMessage(error);
     } else {
       setCancelSignupFormOpen(false);
-      setSignupFormOpen(false);
     }
     setLoading(false);
   };
@@ -190,7 +189,7 @@ export const LotterySignupProgramItem = ({
         <LotterySignupForm
           programItem={programItem}
           startTime={startTime}
-          onCancel={() => setSignupFormOpen(false)}
+          closeSignupForm={() => setSignupFormOpen(false)}
           directSignupForSlot={directSignupForSlot}
         />
       )}

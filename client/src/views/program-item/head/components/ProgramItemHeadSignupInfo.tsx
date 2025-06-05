@@ -17,6 +17,7 @@ interface Props {
   isLoggedIn: boolean;
   programItem: ProgramItem;
   signups: UserSignup[];
+  isEnterGameMode: boolean;
   publicSignupQuestion?: SignupQuestion;
 }
 
@@ -24,6 +25,7 @@ export const ProgramItemHeadSignupInfo = ({
   isLoggedIn,
   programItem,
   signups,
+  isEnterGameMode,
   publicSignupQuestion,
 }: Props): ReactElement => {
   const { t, i18n } = useTranslation();
@@ -52,76 +54,84 @@ export const ProgramItemHeadSignupInfo = ({
       .hideParticipantListProgramTypes.includes(programItem.programType);
 
   return (
-    <div>
-      <SignupsInfoContainer>
+    <SignupsInfoContainer>
+      <div>
         {t("signup.signupCount", {
           ATTENDEE_COUNT: signups.length,
           MAX_ATTENDANCE: programItem.maxAttendance,
         })}
 
-        {!hideParticipantList && (
-          <ExpandButton
-            isExpanded={isExpanded}
-            showMoreText={showMoreText}
-            showLessText={showLessText}
-            showMoreAriaLabel={showMoreText}
-            showLessAriaLabel={showLessText}
-            ariaControls={ariaId}
-            onClick={() => setIsExpanded(!isExpanded)}
-          />
-        )}
-
-        {isExpanded && signups.length === 0 && (
-          <NoAttendeesText>
-            {t("signup.noAttendees", {
-              ATTENDEE_TYPE: t(
-                `attendeeTypePlural.${getAttendeeType(programItem.programType)}`,
-              ),
+        {signups.length < programItem.minAttendance && isEnterGameMode && (
+          <AttendeesNeeded>
+            {t("signup.attendeesNeeded", {
+              COUNT: programItem.minAttendance - signups.length,
             })}
-          </NoAttendeesText>
+          </AttendeesNeeded>
         )}
+      </div>
 
-        {isExpanded && signups.length > 0 && isLoggedIn && (
-          <>
-            {publicSignupQuestion && (
-              <QuestionContainer>
-                <FontAwesomeIcon
-                  aria-label={t("signup.signupQuestionAriaLabel")}
-                  icon={["far", "comment"]}
-                />
-                <span>
-                  {": "}
-                  {i18n.language === "fi"
-                    ? publicSignupQuestion.questionFi
-                    : publicSignupQuestion.questionEn}
-                </span>
-              </QuestionContainer>
-            )}
-            <AttendeeList>
-              {sortBy(signups, (signup) => signup.username).map((signup) => (
-                <li key={signup.username}>
-                  {signup.username}
-                  {publicSignupQuestion && (
-                    <AnswerText>: {signup.signupMessage}</AnswerText>
-                  )}
-                </li>
-              ))}
-            </AttendeeList>
-          </>
-        )}
+      {!hideParticipantList && (
+        <ExpandButton
+          isExpanded={isExpanded}
+          showMoreText={showMoreText}
+          showLessText={showLessText}
+          showMoreAriaLabel={showMoreText}
+          showLessAriaLabel={showLessText}
+          ariaControls={ariaId}
+          onClick={() => setIsExpanded(!isExpanded)}
+        />
+      )}
 
-        {isExpanded && signups.length > 0 && !isLoggedIn && (
-          <AttendeeText>
-            <Link to={AppRoute.LOGIN}>{t("signup.loginLink")}</Link>
-            {t("signup.loginLinkEnding", {
-              ATTENDEE_TYPE: t(
-                `attendeeTypePluralNominative.${getAttendeeType(programItem.programType)}`,
-              ),
-            })}
-          </AttendeeText>
-        )}
-      </SignupsInfoContainer>
-    </div>
+      {isExpanded && signups.length === 0 && (
+        <NoAttendeesText>
+          {t("signup.noAttendees", {
+            ATTENDEE_TYPE: t(
+              `attendeeTypePlural.${getAttendeeType(programItem.programType)}`,
+            ),
+          })}
+        </NoAttendeesText>
+      )}
+
+      {isExpanded && signups.length > 0 && isLoggedIn && (
+        <>
+          {publicSignupQuestion && (
+            <QuestionContainer>
+              <FontAwesomeIcon
+                aria-label={t("signup.signupQuestionAriaLabel")}
+                icon={["far", "comment"]}
+              />
+              <span>
+                {": "}
+                {i18n.language === "fi"
+                  ? publicSignupQuestion.questionFi
+                  : publicSignupQuestion.questionEn}
+              </span>
+            </QuestionContainer>
+          )}
+          <AttendeeList>
+            {sortBy(signups, (signup) => signup.username).map((signup) => (
+              <li key={signup.username}>
+                {signup.username}
+                {publicSignupQuestion && (
+                  <AnswerText>: {signup.signupMessage}</AnswerText>
+                )}
+              </li>
+            ))}
+          </AttendeeList>
+        </>
+      )}
+
+      {isExpanded && signups.length > 0 && !isLoggedIn && (
+        <AttendeeText>
+          <Link to={AppRoute.LOGIN}>{t("signup.loginLink")}</Link>
+          {t("signup.loginLinkEnding", {
+            ATTENDEE_TYPE: t(
+              `attendeeTypePluralNominative.${getAttendeeType(programItem.programType)}`,
+            ),
+          })}
+        </AttendeeText>
+      )}
+    </SignupsInfoContainer>
   );
 };
 
@@ -162,4 +172,9 @@ const AttendeeList = styled.ul`
   li:last-child {
     padding-bottom: 0;
   }
+`;
+
+const AttendeesNeeded = styled.span`
+  color: ${(props) => props.theme.textSecondary};
+  padding-left: 8px;
 `;

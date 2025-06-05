@@ -123,30 +123,12 @@ export const ProgramItemHead = ({
               programItem={programItem}
               signups={signups}
               isLoggedIn={loggedIn}
+              isEnterGameMode={isEnterGameMode}
               publicSignupQuestion={publicSignupQuestion}
             />
           </Row>
         )}
 
-        {signups.length < programItem.minAttendance &&
-          isNormalSignup &&
-          isEnterGameMode && (
-            <Row>
-              {t("signup.attendeesNeeded", {
-                COUNT: programItem.minAttendance - signups.length,
-                ATTENDEE_TYPE:
-                  programItem.minAttendance - signups.length === 1
-                    ? t(
-                        `attendeeType.${getAttendeeType(programItem.programType)}`,
-                      )
-                    : t(
-                        `attendeeTypePartitive.${getAttendeeType(
-                          programItem.programType,
-                        )}`,
-                      ),
-              })}
-            </Row>
-          )}
         {!isEnterGameMode && isNormalSignup && (
           <Row>
             <PopularityInfo

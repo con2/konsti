@@ -22,7 +22,7 @@ import { InfoText, InfoTextVariant } from "client/components/InfoText";
 interface Props {
   programItem: ProgramItem;
   startTime: string;
-  onCancel: () => void;
+  closeSignupForm: () => void;
   directSignupForSlot?: DirectSignupWithProgramItem;
 }
 
@@ -31,7 +31,7 @@ const OPTIONS = [1, 2, 3];
 export const LotterySignupForm = ({
   programItem,
   startTime,
-  onCancel,
+  closeSignupForm,
   directSignupForSlot,
 }: Props): ReactElement => {
   const { t } = useTranslation();
@@ -65,7 +65,7 @@ export const LotterySignupForm = ({
   };
 
   const handleCancel = (): void => {
-    onCancel();
+    closeSignupForm();
   };
 
   const handleSignup = async (event: FormEvent): Promise<void> => {
@@ -87,6 +87,7 @@ export const LotterySignupForm = ({
     } else {
       setErrorMessage(null);
     }
+    closeSignupForm();
     setLoading(false);
   };
 

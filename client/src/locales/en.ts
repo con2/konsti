@@ -306,7 +306,7 @@ export const translationEN = {
     signupWillBeRemoved:
       "If you get a spot to this {{PROGRAM_TYPE_THIS}} in the lottery, your sign-up to the {{PROGRAM_TYPE_OTHER}} {{OTHER_PROGRAM_NAME}} will be canceled.",
     signupCount: "{{ATTENDEE_COUNT}}/{{MAX_ATTENDANCE}} sign-ups",
-    attendeesNeeded: "{{COUNT}} more {{ATTENDEE_TYPE}} needed",
+    attendeesNeeded: "Need {{COUNT}} more",
     programItemFull: "This {{PROGRAM_TYPE}} is full.",
     confirmCancellation: "Cancel your sign-up",
     staySignedUp: "Stay signed up",
