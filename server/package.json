@@ -36,7 +36,7 @@
   },
   "dependencies": {
     "@faker-js/faker": "9.8.0",
-    "@sentry/node": "9.24.0",
+    "@sentry/node": "9.26.0",
     "@vercel/ncc": "0.38.3",
     "bcryptjs": "3.0.2",
     "commander": "14.0.0",
@@ -61,7 +61,7 @@
   "devDependencies": {
     "@types/jsonwebtoken": "9.0.9",
     "@types/morgan": "1.9.9",
-    "@types/node": "22.15.27",
+    "@types/node": "22.15.29",
     "@types/supertest": "6.0.3",
     "mongodb-memory-server": "10.1.4",
     "supertest": "7.1.1"
