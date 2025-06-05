@@ -80,10 +80,6 @@ export const LotterySignupsByStartTimes = ({
 const Grid = styled.div`
   display: grid;
   grid-template-columns: 1fr 40px;
-
-  @media (min-width: ${(props) => props.theme.breakpointPhone}) {
-    grid-template-columns: max-content 1fr;
-  }
 `;
 
 const StyledPopularityInfo = styled(PopularityInfo)`
