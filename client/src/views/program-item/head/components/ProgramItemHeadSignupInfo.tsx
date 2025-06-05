@@ -176,5 +176,5 @@ const AttendeeList = styled.ul`
 
 const AttendeesNeeded = styled.span`
   color: ${(props) => props.theme.textSecondary};
-  padding-left: 8px;
+  padding-left: 16px;
 `;
