@@ -307,7 +307,7 @@ export const translationFI = {
     signupWillBeRemoved:
       "Jos pääset tähän {{PROGRAM_TYPE_THIS}} arvonnassa, ilmoittautumisesi {{PROGRAM_TYPE_OTHER}} {{OTHER_PROGRAM_NAME}} perutaan.",
     signupCount: "{{ATTENDEE_COUNT}}/{{MAX_ATTENDANCE}} ilmoittautunutta",
-    attendeesNeeded: "Tarvitaan vielä {{COUNT}} {{ATTENDEE_TYPE}}.",
+    attendeesNeeded: "Tarvitaan {{COUNT}} lisää",
     programItemFull: "Tämä {{PROGRAM_TYPE}} on täynnä.",
     confirmCancellation: "Peruuta ilmoittautuminen",
     staySignedUp: "Pysy ilmoittautuneena",
