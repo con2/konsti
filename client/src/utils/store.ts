@@ -12,6 +12,7 @@ import { myProgramItemsReducer } from "client/views/my-program-items/myProgramIt
 import { adminReducer } from "client/views/admin/adminSlice";
 import { testSettingsReducer } from "client/test/test-settings/testSettingsSlice";
 import { groupReducer } from "client/views/group/groupSlice";
+import { loadingReducer } from "client/state/loading/loadingSlice";
 
 export const combinedReducer = combineReducers({
   allProgramItems: allProgramItemsReducer,
@@ -20,6 +21,7 @@ export const combinedReducer = combineReducers({
   admin: adminReducer,
   testSettings: testSettingsReducer,
   group: groupReducer,
+  loading: loadingReducer,
 });
 
 // Reducer to reset state

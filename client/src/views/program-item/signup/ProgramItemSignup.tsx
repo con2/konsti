@@ -24,8 +24,6 @@ interface Props {
   directSignups: readonly DirectSignupWithProgramItem[];
   programItem: ProgramItem;
   attendees: number;
-  loading: boolean;
-  setLoading: (loading: boolean) => void;
   isInGroup: boolean;
   usesKonstiSignup: boolean;
   isNormalSignup: boolean;
@@ -38,8 +36,6 @@ export const ProgramItemSignup = ({
   directSignups,
   programItem,
   attendees,
-  loading,
-  setLoading,
   isInGroup,
   usesKonstiSignup,
   isNormalSignup,
@@ -73,8 +69,6 @@ export const ProgramItemSignup = ({
             programItem={programItem}
             programItemIsFull={attendees >= programItem.maxAttendance}
             startTime={startTime}
-            loading={loading}
-            setLoading={setLoading}
           />
         ) : (
           <LotterySignupProgramItem

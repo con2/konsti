@@ -85,8 +85,6 @@ export const ProgramItemView = (): ReactElement => {
           }
           lotterySignups={ownOrGroupCreatorLotterySignups}
           directSignups={directSignups}
-          loading={loading}
-          setLoading={setLoading}
           username={username}
           loggedIn={loggedIn}
           userGroup={userGroup}

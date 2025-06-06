@@ -18,6 +18,7 @@ import {
 } from "client/views/my-program-items/myProgramItemsSlice";
 import { LotterySignup } from "shared/types/models/user";
 import { InfoText, InfoTextVariant } from "client/components/InfoText";
+import { startLoading, stopLoading } from "client/state/loading/loadingSlice";
 
 interface Props {
   programItem: ProgramItem;
@@ -36,9 +37,11 @@ export const LotterySignupForm = ({
 }: Props): ReactElement => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
+
   // We need all lottery signups here
   const lotterySignups = useAppSelector(selectLotterySignups);
   const isGroupCreator = useAppSelector((state) => state.group.isGroupCreator);
+  const loading = useAppSelector((state) => state.loading);
 
   const selectedPriorities = new Set(
     lotterySignups
@@ -54,7 +57,6 @@ export const LotterySignupForm = ({
 
   const firstOption = firstUnselected.length > 0 ? firstUnselected[0] : 1;
 
-  const [loading, setLoading] = useState(false);
   const [priority, setPriority] = useState<number>(firstOption);
 
   const [errorMessage, setErrorMessage] =
@@ -70,7 +72,7 @@ export const LotterySignupForm = ({
 
   const handleSignup = async (event: FormEvent): Promise<void> => {
     event.preventDefault();
-    setLoading(true);
+    dispatch(startLoading());
     if (!priority) {
       return;
     }
@@ -88,7 +90,7 @@ export const LotterySignupForm = ({
       setErrorMessage(null);
     }
     closeSignupForm();
-    setLoading(false);
+    dispatch(stopLoading());
   };
 
   const options = OPTIONS.map((n) => {

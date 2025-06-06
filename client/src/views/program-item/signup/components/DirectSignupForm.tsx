@@ -29,14 +29,13 @@ import { InfoText, InfoTextVariant } from "client/components/InfoText";
 import { getEntryCondition } from "client/views/program-item/programItemUtils";
 import { PostDirectSignupRequest } from "shared/types/api/myProgramItems";
 import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
+import { startLoading, stopLoading } from "client/state/loading/loadingSlice";
 
 interface Props {
   programItem: ProgramItem;
   signupQuestion: SignupQuestion | undefined;
   onDirectSignupProgramItem: () => void;
   onCancelSignup: () => void;
-  loading: boolean;
-  setLoading: (loading: boolean) => void;
 }
 
 export const DirectSignupForm = ({
@@ -44,8 +43,6 @@ export const DirectSignupForm = ({
   onDirectSignupProgramItem,
   onCancelSignup,
   signupQuestion,
-  loading,
-  setLoading,
 }: Props): ReactElement => {
   const { t, i18n } = useTranslation();
   const dispatch = useAppDispatch();
@@ -53,6 +50,7 @@ export const DirectSignupForm = ({
   const username = useAppSelector((state) => state.login.username);
   const groupCode = useAppSelector((state) => state.group.groupCode);
   const isGroupCreator = useAppSelector((state) => state.group.isGroupCreator);
+  const loading = useAppSelector((state) => state.loading);
 
   const [userSignupMessage, setUserSignupMessage] = useState<string>("");
   const [selectedValue, setSelectedValue] = useState<string>(
@@ -79,7 +77,7 @@ export const DirectSignupForm = ({
 
   const handleSignup = async (event: FormEvent): Promise<void> => {
     event.preventDefault();
-    setLoading(true);
+    dispatch(startLoading());
 
     const enterData: PostDirectSignupRequest = {
       directSignupProgramItemId: programItem.programItemId,
@@ -120,7 +118,7 @@ export const DirectSignupForm = ({
       onDirectSignupProgramItem();
     }
 
-    setLoading(false);
+    dispatch(stopLoading());
   };
 
   return (

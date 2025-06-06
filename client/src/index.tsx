@@ -36,7 +36,10 @@ if (enableWhyDidYouRender && process.env.NODE_ENV === "development") {
   // eslint-disable-next-line @typescript-eslint/no-require-imports, @typescript-eslint/no-unsafe-assignment
   const whyDidYouRender = require("@welldone-software/why-did-you-render");
   // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-  whyDidYouRender(React, { include: [/(.*?)/] });
+  whyDidYouRender(React, {
+    include: [/(.*?)/],
+    exclude: [/^FontAwesomeIcon$/, /^Link$/, /^Button$/],
+  });
 }
 
 if (enableAxe && process.env.NODE_ENV === "development") {
