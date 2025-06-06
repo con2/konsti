@@ -1,4 +1,4 @@
-import { ReactElement, useState } from "react";
+import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import { sortBy, groupBy } from "remeda";
 import styled from "styled-components";
@@ -43,8 +43,6 @@ export const AllProgramItemsList = ({ programItems }: Props): ReactElement => {
   const userGroup = useAppSelector((state) => state.login.userGroup);
   const favoriteProgramItems = useAppSelector(selectFavoriteProgramItems);
   const isInGroup = getIsInGroup(groupCode);
-
-  const [loading, setLoading] = useState(false);
 
   const signupQuestions = useAppSelector(
     (state) => state.admin.signupQuestions,
@@ -100,8 +98,6 @@ export const AllProgramItemsList = ({ programItems }: Props): ReactElement => {
                 }
                 lotterySignups={ownOrGroupCreatorLotterySignups}
                 directSignups={directSignups}
-                loading={loading}
-                setLoading={setLoading}
                 username={username}
                 loggedIn={loggedIn}
                 userGroup={userGroup}

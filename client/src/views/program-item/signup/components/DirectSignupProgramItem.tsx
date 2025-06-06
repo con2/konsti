@@ -19,21 +19,18 @@ import { getDirectSignupStartTime } from "shared/utils/signupTimes";
 import { config } from "shared/config";
 import { InfoText } from "client/components/InfoText";
 import { AdmissionTicketLink } from "client/views/program-item/signup/components/AdmissionTicketLink";
+import { startLoading, stopLoading } from "client/state/loading/loadingSlice";
 
 interface Props {
   programItem: ProgramItem;
   startTime: string;
   programItemIsFull: boolean;
-  loading: boolean;
-  setLoading: (loading: boolean) => void;
 }
 
 export const DirectSignupProgramItem = ({
   programItem,
   startTime,
   programItemIsFull,
-  loading,
-  setLoading,
 }: Props): ReactElement | null => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
@@ -44,6 +41,7 @@ export const DirectSignupProgramItem = ({
   const signupQuestions = useAppSelector(
     (state) => state.admin.signupQuestions,
   );
+  const loading = useAppSelector((state) => state.loading);
 
   const [signupFormOpen, setSignupFormOpen] = useState(false);
   const [cancelSignupFormOpen, setCancelSignupFormOpen] = useState(false);
@@ -60,7 +58,7 @@ export const DirectSignupProgramItem = ({
   );
 
   const removeSignup = async (): Promise<void> => {
-    setLoading(true);
+    dispatch(startLoading());
     const errorMessage = await dispatch(
       submitDeleteDirectSignup({
         directSignupProgramItemId: programItem.programItemId,
@@ -72,7 +70,7 @@ export const DirectSignupProgramItem = ({
     } else {
       setCancelSignupFormOpen(false);
     }
-    setLoading(false);
+    dispatch(stopLoading());
   };
 
   const directSignupStartTime = getDirectSignupStartTime(programItem);
@@ -138,8 +136,6 @@ export const DirectSignupProgramItem = ({
                   )}
                   onDirectSignupProgramItem={() => setSignupFormOpen(false)}
                   onCancelSignup={() => setSignupFormOpen(false)}
-                  loading={loading}
-                  setLoading={setLoading}
                 />
               )}
             </>

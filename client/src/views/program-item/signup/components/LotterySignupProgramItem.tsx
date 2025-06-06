@@ -23,6 +23,7 @@ import {
   LotterySignupWithProgramItem,
 } from "client/views/my-program-items/myProgramItemsSlice";
 import { selectGroupMembers } from "client/views/group/groupSlice";
+import { startLoading, stopLoading } from "client/state/loading/loadingSlice";
 
 interface Props {
   programItem: ProgramItem;
@@ -48,13 +49,14 @@ export const LotterySignupProgramItem = ({
   const groupMembers = useAppSelector(selectGroupMembers);
   const isGroupCreator = useAppSelector((state) => state.group.isGroupCreator);
   const groupCode = useAppSelector((state) => state.group.groupCode);
+  const loading = useAppSelector((state) => state.loading);
+
   const isInGroup = getIsInGroup(groupCode);
   const canSignToProgramItems = !isInGroup || isGroupCreator;
   const directSignupForSlot = directSignups.find(
     (signup) => signup.signedToStartTime === startTime,
   );
 
-  const [loading, setLoading] = useState(false);
   const [signupFormOpen, setSignupFormOpen] = useState(false);
   const [cancelSignupFormOpen, setCancelSignupFormOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState<
@@ -64,7 +66,7 @@ export const LotterySignupProgramItem = ({
   const removeLotterySignup = async (
     programItemToRemove: ProgramItem,
   ): Promise<void> => {
-    setLoading(true);
+    dispatch(startLoading());
 
     const error = await dispatch(
       submitDeleteLotterySignup({
@@ -77,7 +79,7 @@ export const LotterySignupProgramItem = ({
     } else {
       setCancelSignupFormOpen(false);
     }
-    setLoading(false);
+    dispatch(stopLoading());
   };
 
   const currentPriority = lotterySignups.find(
@@ -135,6 +137,7 @@ export const LotterySignupProgramItem = ({
                       }
                     }}
                     buttonStyle={ButtonStyle.PRIMARY}
+                    disabled={loading}
                   >
                     {t("signup.lotterySignup")}
                   </StyledButton>

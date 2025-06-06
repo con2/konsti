@@ -33,8 +33,6 @@ interface Props {
   lotterySignups: readonly LotterySignupWithProgramItem[];
   directSignups: readonly DirectSignupWithProgramItem[];
   isAlwaysExpanded: boolean;
-  loading: boolean;
-  setLoading: (loading: boolean) => void;
   username: string;
   loggedIn: boolean;
   userGroup: UserGroup;
@@ -51,8 +49,6 @@ export const ProgramItemEntry = ({
   lotterySignups,
   directSignups,
   isAlwaysExpanded,
-  loading,
-  setLoading,
   username,
   loggedIn,
   userGroup,
@@ -150,8 +146,6 @@ export const ProgramItemEntry = ({
           directSignups={directSignups}
           programItem={programItem}
           attendees={signups.length}
-          loading={loading}
-          setLoading={setLoading}
           isInGroup={isInGroup}
           usesKonstiSignup={usesKonstiSignup}
           isNormalSignup={isNormalSignup}
