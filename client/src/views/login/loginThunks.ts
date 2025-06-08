@@ -1,3 +1,4 @@
+import { isDeepEqual } from "remeda";
 import {
   postKompassiLoginCallback,
   postVerifyKompassiLogin,
@@ -81,12 +82,13 @@ enum SubmitSessionRecoveryErrorMessage {
 }
 
 export const submitSessionRecovery = (
-  jwt: string,
+  currentJwt: string,
 ): AppThunk<Promise<SubmitSessionRecoveryErrorMessage | undefined>> => {
   return async (
     dispatch,
+    useState,
   ): Promise<SubmitSessionRecoveryErrorMessage | undefined> => {
-    const loginResponse = await postSessionRecovery(jwt);
+    const loginResponse = await postSessionRecovery(currentJwt);
 
     if (loginResponse.status === "error") {
       clearSession();
@@ -108,25 +110,36 @@ export const submitSessionRecovery = (
       login: { jwt: loginResponse.jwt },
     });
 
-    dispatch(
-      submitLoginAsync({
-        loggedIn: true,
-        username: loginResponse.username,
-        jwt: loginResponse.jwt,
-        userGroup: loginResponse.userGroup,
-        serial: loginResponse.serial,
-        eventLogItems: loginResponse.eventLogItems,
-        kompassiUsernameAccepted: loginResponse.kompassiUsernameAccepted,
-        kompassiId: loginResponse.kompassiId,
-      }),
-    );
+    const state = useState();
 
-    dispatch(
-      submitUpdateGroupCodeAsync({
-        groupCode: loginResponse.groupCode,
-        isGroupCreator: loginResponse.groupCreatorCode !== "0",
-      }),
-    );
+    const updatedLogin = {
+      loggedIn: true,
+      username: loginResponse.username,
+      jwt: loginResponse.jwt,
+      userGroup: loginResponse.userGroup,
+      serial: loginResponse.serial,
+      eventLogItems: loginResponse.eventLogItems,
+      kompassiUsernameAccepted: loginResponse.kompassiUsernameAccepted,
+      kompassiId: loginResponse.kompassiId,
+    };
+
+    if (!isDeepEqual(state.login, updatedLogin)) {
+      dispatch(submitLoginAsync(updatedLogin));
+    }
+
+    const currentGroup = {
+      groupCode: state.group.groupCode,
+      isGroupCreator: state.group.isGroupCreator,
+    };
+
+    const updatedGroup = {
+      groupCode: loginResponse.groupCode,
+      isGroupCreator: loginResponse.groupCreatorCode !== "0",
+    };
+
+    if (!isDeepEqual(currentGroup, updatedGroup)) {
+      dispatch(submitUpdateGroupCodeAsync(updatedGroup));
+    }
   };
 };
 

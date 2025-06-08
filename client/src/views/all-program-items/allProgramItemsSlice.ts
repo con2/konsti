@@ -1,12 +1,11 @@
 import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { unique } from "remeda";
-import { AllProgramItemsState, RootState } from "client/types/reduxTypes";
 import {
-  Language,
-  ProgramItem,
-  ProgramItemWithUserSignups,
-  Tag,
-} from "shared/types/models/programItem";
+  AllProgramItemsState,
+  ProgramItemDirectSignups,
+  RootState,
+} from "client/types/reduxTypes";
+import { Language, ProgramItem, Tag } from "shared/types/models/programItem";
 
 interface DirectSignupUpdate {
   programItemId: string;
@@ -27,19 +26,21 @@ const allProgramItemsSlice = createSlice({
   reducers: {
     submitGetProgramItemsAsync(
       state,
-      action: PayloadAction<readonly ProgramItemWithUserSignups[]>,
+      action: PayloadAction<ProgramItem[]>,
     ): AllProgramItemsState {
       return {
         ...state,
-        programItems: action.payload.map(
-          (programItemWithAttendees) => programItemWithAttendees.programItem,
-        ),
-        directSignups: action.payload.map((programItemWithAttendees) => {
-          return {
-            users: programItemWithAttendees.users,
-            programItemId: programItemWithAttendees.programItem.programItemId,
-          };
-        }),
+        programItems: action.payload,
+      };
+    },
+
+    submitGetDirectSignupsAsync(
+      state,
+      action: PayloadAction<ProgramItemDirectSignups[]>,
+    ): AllProgramItemsState {
+      return {
+        ...state,
+        directSignups: action.payload,
       };
     },
 
@@ -59,8 +60,11 @@ const allProgramItemsSlice = createSlice({
   },
 });
 
-export const { submitGetProgramItemsAsync, submitUpdateDirectSignupAsync } =
-  allProgramItemsSlice.actions;
+export const {
+  submitGetProgramItemsAsync,
+  submitGetDirectSignupsAsync,
+  submitUpdateDirectSignupAsync,
+} = allProgramItemsSlice.actions;
 
 export const allProgramItemsReducer = allProgramItemsSlice.reducer;
 

@@ -1,3 +1,4 @@
+import { isDeepEqual } from "remeda";
 import {
   postCreateGroup,
   getGroup,
@@ -162,7 +163,10 @@ enum GetGroupErrorMessage {
 export const submitGetGroup = (
   groupCode: string,
 ): AppThunk<Promise<GetGroupErrorMessage | undefined>> => {
-  return async (dispatch): Promise<GetGroupErrorMessage | undefined> => {
+  return async (
+    dispatch,
+    useState,
+  ): Promise<GetGroupErrorMessage | undefined> => {
     const getGroupResponse = await getGroup(groupCode);
 
     if (getGroupResponse.status === "error") {
@@ -175,6 +179,12 @@ export const submitGetGroup = (
       }
     }
 
-    dispatch(submitUpdateGroupAsync(getGroupResponse.results));
+    const state = useState();
+
+    const updatedGroupMembers = getGroupResponse.results;
+
+    if (!isDeepEqual(state.group.groupMembers, updatedGroupMembers)) {
+      dispatch(submitUpdateGroupAsync(updatedGroupMembers));
+    }
   };
 };

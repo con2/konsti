@@ -1,19 +1,44 @@
+import { isDeepEqual } from "remeda";
 import {
   getProgramItems,
   postUpdateProgramItems,
 } from "client/services/programItemsServices";
 import { AppThunk } from "client/types/reduxTypes";
-import { submitGetProgramItemsAsync } from "client/views/all-program-items/allProgramItemsSlice";
+import {
+  submitGetDirectSignupsAsync,
+  submitGetProgramItemsAsync,
+} from "client/views/all-program-items/allProgramItemsSlice";
 
 export const submitGetProgramItems = (): AppThunk => {
-  return async (dispatch): Promise<void> => {
+  return async (dispatch, getState): Promise<void> => {
     const getProgramItemsResponse = await getProgramItems();
 
     if (getProgramItemsResponse.status === "error") {
       return;
     }
 
-    dispatch(submitGetProgramItemsAsync(getProgramItemsResponse.programItems));
+    const state = getState();
+
+    const programItems = getProgramItemsResponse.programItems.map(
+      (programItemWithAttendees) => programItemWithAttendees.programItem,
+    );
+
+    if (!isDeepEqual(state.allProgramItems.programItems, programItems)) {
+      dispatch(submitGetProgramItemsAsync(programItems));
+    }
+
+    const directSignups = getProgramItemsResponse.programItems.map(
+      (programItemWithAttendees) => {
+        return {
+          users: programItemWithAttendees.users,
+          programItemId: programItemWithAttendees.programItem.programItemId,
+        };
+      },
+    );
+
+    if (!isDeepEqual(state.allProgramItems.directSignups, directSignups)) {
+      dispatch(submitGetDirectSignupsAsync(directSignups));
+    }
   };
 };
 
