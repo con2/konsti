@@ -24,13 +24,17 @@ export const FeedbackForm = ({ programItem }: Props): ReactElement => {
     }
     setSubmitting(true);
 
-    try {
-      await postFeedback(programItem.programItemId, feedbackValue);
-    } catch (error) {
-      console.log("postFeedback error:", error); // eslint-disable-line no-console
+    const response = await postFeedback(
+      programItem.programItemId,
+      feedbackValue,
+    );
+
+    if (response.status === "error") {
+      console.log("postFeedback error:", response.message); // eslint-disable-line no-console
+    } else {
+      setFeedbackSent(true);
+      setSubmitting(false);
     }
-    setFeedbackSent(true);
-    setSubmitting(false);
   };
 
   const handleFeedbackChange = (

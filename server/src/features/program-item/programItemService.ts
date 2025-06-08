@@ -45,7 +45,7 @@ export const updateProgramItems = async (): Promise<
     return {
       message: "Loading program items from Kompassi failed",
       status: "error",
-      errorId: "unknown",
+      errorId: "kompassiError",
     };
   }
 
@@ -98,10 +98,9 @@ export const fetchProgramItems = async (
     return {
       message: "Downloading program items failed",
       status: "error",
-      errorId: "unknown",
+      errorId: "databaseError",
     };
   }
-
   const programItems = unwrapResult(programItemsResult);
 
   const programItemsWithAttendeesResult = await enrichProgramItems(
@@ -110,12 +109,11 @@ export const fetchProgramItems = async (
   );
   if (isErrorResult(programItemsWithAttendeesResult)) {
     return {
-      message: "Downloading program items failed",
+      message: "Enriching program items failed",
       status: "error",
       errorId: "unknown",
     };
   }
-
   const programItemsWithAttendees = unwrapResult(
     programItemsWithAttendeesResult,
   );

@@ -89,11 +89,15 @@ export const AdminView = (): ReactElement => {
 
   const submitUpdate = async (): Promise<void> => {
     setSubmitting(true);
-    try {
-      await dispatch(submitUpdateProgramItems());
-    } catch (error) {
-      console.log("submitProgramItemsUpdate error:", error); // eslint-disable-line no-console
+    const errorMessage = await dispatch(submitUpdateProgramItems());
+
+    if (errorMessage) {
+      showMessage({
+        value: errorMessage,
+        style: "error",
+      });
     }
+
     setSubmitting(false);
   };
 
@@ -116,11 +120,16 @@ export const AdminView = (): ReactElement => {
 
   const toggleAppOpen = async (): Promise<void> => {
     setSubmitting(true);
-    try {
-      await dispatch(submitToggleAppOpen(!appOpen));
-    } catch (error) {
-      console.log("submitToggleAppOpen error:", error); // eslint-disable-line no-console
+
+    const errorMessage = await dispatch(submitToggleAppOpen(!appOpen));
+
+    if (errorMessage) {
+      showMessage({
+        value: errorMessage,
+        style: "error",
+      });
     }
+
     setSubmitting(false);
   };
 

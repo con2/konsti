@@ -22,6 +22,10 @@ export interface GetUserResponse extends ApiResult {
   eventLogItems: EventLogItem[];
 }
 
+export interface GetUserError extends ApiError {
+  errorId: "unknown";
+}
+
 // POST user
 
 export const PostUserRequestSchema = z.object({
@@ -65,7 +69,9 @@ export interface PostUpdateUserPasswordResponse extends ApiResult {
   username: string;
 }
 
-export type PostUpdateUserPasswordError = ApiError;
+export interface PostUpdateUserPasswordError extends ApiError {
+  errorId: "unknown" | "notAllowed";
+}
 
 // GET user by serial
 
@@ -81,6 +87,10 @@ export interface GetUserBySerialResponse extends ApiResult {
   serial: string;
   username: string;
   createdAt: string;
+}
+
+export interface GetUserBySerialError extends ApiError {
+  errorId: "unknown";
 }
 
 // GET signup messages

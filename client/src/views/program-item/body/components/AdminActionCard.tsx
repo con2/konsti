@@ -84,59 +84,63 @@ export const AdminActionCard = ({ programItem }: Props): ReactElement => {
       allHiddenProgramItems.splice(programItemIndex, 1);
     }
 
-    try {
-      await dispatch(
-        submitUpdateHidden(
-          allHiddenProgramItems.map(
-            (hiddenProgramItem) => hiddenProgramItem.programItemId,
-          ),
+    const error = await dispatch(
+      submitUpdateHidden(
+        allHiddenProgramItems.map(
+          (hiddenProgramItem) => hiddenProgramItem.programItemId,
         ),
-      );
-    } catch (error) {
-      // eslint-disable-next-line no-restricted-syntax -- TODO: Remove throw
-      throw new Error(`submitUpdateHidden error: ${String(error)}`);
-    } finally {
-      setSubmitting(false);
+      ),
+    );
+
+    if (error) {
+      // eslint-disable-next-line no-console
+      console.log(`submitUpdateHidden error: ${String(error)}`);
+    } else {
+      setHidden(newHidden);
     }
 
-    setHidden(newHidden);
+    setSubmitting(false);
   };
 
   const deleteSignupQuestion = async (): Promise<void> => {
     setSubmitting(true);
 
-    try {
-      await dispatch(submitDeleteSignupQuestion(programItem.programItemId));
-    } catch (error) {
-      // eslint-disable-next-line no-restricted-syntax -- TODO: Remove throw
-      throw new Error(`deleteSignupQuestion error: ${String(error)}`);
-    } finally {
-      setSubmitting(false);
+    const error = await dispatch(
+      submitDeleteSignupQuestion(programItem.programItemId),
+    );
+
+    if (error) {
+      // eslint-disable-next-line no-console
+      console.log(`deleteSignupQuestion error: ${String(error)}`);
+    } else {
+      setHasSignupQuestion(false);
     }
-    setHasSignupQuestion(false);
+
+    setSubmitting(false);
   };
 
   const addSignupQuestion = async (): Promise<void> => {
     setSubmitting(true);
 
-    try {
-      await dispatch(
-        submitAddSignupQuestion({
-          programItemId: programItem.programItemId,
-          questionFi: signupQuestionInputFi,
-          questionEn: signupQuestionInputEn,
-          private: isPrivateSignupQuestion,
-          type: questionType,
-          selectOptions,
-        }),
-      );
-    } catch (error) {
-      // eslint-disable-next-line no-restricted-syntax -- TODO: Remove throw
-      throw new Error(`addSignupQuestion error: ${String(error)}`);
-    } finally {
-      setSubmitting(false);
+    const error = await dispatch(
+      submitAddSignupQuestion({
+        programItemId: programItem.programItemId,
+        questionFi: signupQuestionInputFi,
+        questionEn: signupQuestionInputEn,
+        private: isPrivateSignupQuestion,
+        type: questionType,
+        selectOptions,
+      }),
+    );
+
+    if (error) {
+      // eslint-disable-next-line no-console
+      console.log(`addSignupQuestion error: ${String(error)}`);
+    } else {
+      setHasSignupQuestion(true);
     }
-    setHasSignupQuestion(true);
+
+    setSubmitting(false);
 
     // Clear inputs
     setSignupQuestionInputVisible(false);

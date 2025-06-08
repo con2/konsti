@@ -1,7 +1,7 @@
 import { api } from "client/utils/api";
-import { ApiError } from "shared/types/api/errors";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
+  PostFeedbackError,
   PostFeedbackRequest,
   PostFeedbackResponse,
 } from "shared/types/api/feedback";
@@ -9,7 +9,7 @@ import {
 export const postFeedback = async (
   programItemId: string,
   feedback: string,
-): Promise<PostFeedbackResponse | ApiError> => {
+): Promise<PostFeedbackResponse | PostFeedbackError> => {
   const response = await api.post<PostFeedbackResponse, PostFeedbackRequest>(
     ApiEndpoint.FEEDBACK,
     {

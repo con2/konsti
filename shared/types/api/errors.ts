@@ -4,9 +4,9 @@ export interface ApiResult {
 }
 
 export interface ApiError {
+  status: "error";
   errorId: string;
   message: string;
-  status: "error";
 }
 
 export enum MongoDbError {

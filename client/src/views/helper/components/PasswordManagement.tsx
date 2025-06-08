@@ -25,24 +25,23 @@ export const PasswordManagement = (): ReactElement => {
 
     const response = await getUserBySerialOrUsername(userSerialInput);
 
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-    if (!response || response.status === "error") {
+    if (response.status === "error") {
       setUserFoundMessage(
         <Message error={true}>{t("passwordManagement.userNotFound")}</Message>,
       );
       setChangePasswordInputVisible(false);
-      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-    } else if (response.status === "success") {
-      setUserFoundMessage(
-        <Message>
-          {t("passwordManagement.foundUser")}: {response.username} (
-          {response.serial}) - {t("passwordManagement.userCreatedAt")}{" "}
-          {getDateAndTime(response.createdAt)}
-        </Message>,
-      );
-      setUsernameToUpdate(response.username);
-      setChangePasswordInputVisible(true);
+      return;
     }
+
+    setUserFoundMessage(
+      <Message>
+        {t("passwordManagement.foundUser")}: {response.username} (
+        {response.serial}) - {t("passwordManagement.userCreatedAt")}{" "}
+        {getDateAndTime(response.createdAt)}
+      </Message>,
+    );
+    setUsernameToUpdate(response.username);
+    setChangePasswordInputVisible(true);
   };
 
   const handleSerialChange = (event: ChangeEvent<HTMLInputElement>): void => {

@@ -6,9 +6,13 @@ import { ApiError } from "shared/types/api/errors";
 const sentryHost = "sentry.io";
 const knownProjectIds = new Set(["/6579203", "/6578391", "/6579491"]);
 
+interface ResendSentryError extends ApiError {
+  errorId: "unknown";
+}
+
 export const resendSentryRequest = async (
   envelope: Buffer,
-): Promise<null | ApiError> => {
+): Promise<null | ResendSentryError> => {
   try {
     const piece = envelope.subarray(0, envelope.indexOf("\n"));
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment

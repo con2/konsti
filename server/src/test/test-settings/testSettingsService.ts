@@ -2,16 +2,17 @@ import {
   findTestSettings,
   saveTestSettings,
 } from "server/test/test-settings/testSettingsRepository";
-import { ApiError } from "shared/types/api/errors";
 import {
+  GetTestSettingsError,
   GetTestSettingsResponse,
+  PostTestSettingsError,
   PostTestSettingsRequest,
   PostTestSettingsResponse,
 } from "shared/test-types/api/testSettings";
 import { isErrorResult, unwrapResult } from "shared/utils/result";
 
 export const fetchTestSettings = async (): Promise<
-  GetTestSettingsResponse | ApiError
+  GetTestSettingsResponse | GetTestSettingsError
 > => {
   const responseResult = await findTestSettings();
   if (isErrorResult(responseResult)) {
@@ -33,7 +34,7 @@ export const fetchTestSettings = async (): Promise<
 
 export const updateTestSettings = async (
   settings: PostTestSettingsRequest,
-): Promise<PostTestSettingsResponse | ApiError> => {
+): Promise<PostTestSettingsResponse | PostTestSettingsError> => {
   const responseResult = await saveTestSettings(settings);
   if (isErrorResult(responseResult)) {
     return {

@@ -9,14 +9,15 @@ import {
   saveUser,
 } from "server/features/user/userRepository";
 import {
+  GetUserBySerialError,
   GetUserBySerialResponse,
+  GetUserError,
   GetUserResponse,
   PostUpdateUserPasswordError,
   PostUpdateUserPasswordResponse,
   PostUserError,
   PostUserResponse,
 } from "shared/types/api/users";
-import { ApiError } from "shared/types/api/errors";
 import { findUserDirectSignups } from "server/features/direct-signup/directSignupRepository";
 import { DirectSignup } from "shared/types/models/user";
 import { isErrorResult, unwrapResult } from "shared/utils/result";
@@ -228,7 +229,7 @@ export const storeUserPassword = async (
 
 export const fetchUserByUsername = async (
   username: string,
-): Promise<GetUserResponse | ApiError> => {
+): Promise<GetUserResponse | GetUserError> => {
   const userResult = await findUser(username);
   if (isErrorResult(userResult)) {
     return {
@@ -291,7 +292,7 @@ export const fetchUserByUsername = async (
 
 export const fetchUserBySerialOrUsername = async (
   searchTerm: string,
-): Promise<GetUserBySerialResponse | ApiError> => {
+): Promise<GetUserBySerialResponse | GetUserBySerialError> => {
   // Try to find user first with serial
   const userBySerialResult = await findUserBySerial(searchTerm);
   if (isErrorResult(userBySerialResult)) {

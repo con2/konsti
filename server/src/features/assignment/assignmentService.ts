@@ -1,13 +1,15 @@
 import { Request, Response } from "express";
 import { runAssignment } from "server/features/assignment/run-assignment/runAssignment";
-import { PostAssignmentResponse } from "shared/types/api/assignment";
-import { ApiError } from "shared/types/api/errors";
+import {
+  PostAssignmentError,
+  PostAssignmentResponse,
+} from "shared/types/api/assignment";
 import { config } from "shared/config";
 import { isSuccessResult, unwrapResult } from "shared/utils/result";
 
 export const storeAssignment = async (
   assignmentTime: string,
-): Promise<PostAssignmentResponse | ApiError> => {
+): Promise<PostAssignmentResponse | PostAssignmentError> => {
   const assignResultsResult = await runAssignment({
     assignmentAlgorithm: config.event().assignmentAlgorithm,
     assignmentTime,

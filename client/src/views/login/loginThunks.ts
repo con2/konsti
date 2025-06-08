@@ -7,12 +7,6 @@ import {
 import { saveSession, clearSession } from "client/utils/localStorage";
 import { AppThunk } from "client/types/reduxTypes";
 import {
-  PostKompassiLoginError,
-  PostKompassiLoginResponse,
-  PostLoginError,
-  PostLoginResponse,
-} from "shared/types/api/login";
-import {
   submitLoginAsync,
   submitUpdateEventLogItemsAsync,
   submitVerifyKompassiLoginAsync,
@@ -35,18 +29,9 @@ export const submitLogin = (
   loginFormFields: LoginFormFields,
 ): AppThunk<Promise<LoginErrorMessage | undefined>> => {
   return async (dispatch): Promise<LoginErrorMessage | undefined> => {
-    let loginResponse: PostLoginResponse | PostLoginError;
-    try {
-      loginResponse = await postLogin(loginFormFields);
-    } catch (error) {
-      clearSession();
-      // eslint-disable-next-line no-restricted-syntax -- TODO: Remove throw
-      throw error;
-    }
+    const loginResponse = await postLogin(loginFormFields);
 
     if (loginResponse.status === "error") {
-      clearSession();
-
       switch (loginResponse.errorId) {
         case "loginFailed":
           return LoginErrorMessage.LOGIN_FAILED;
@@ -89,30 +74,22 @@ export const submitLogin = (
   };
 };
 
-export const submitSessionRecovery = (jwt: string): AppThunk => {
-  return async (dispatch): Promise<void> => {
-    let loginResponse: PostLoginResponse | PostLoginError;
-    try {
-      loginResponse = await postSessionRecovery(jwt);
-    } catch (error) {
-      clearSession();
-      // eslint-disable-next-line no-restricted-syntax -- TODO: Remove throw
-      throw error;
-    }
+export const submitSessionRecovery = (
+  jwt: string,
+): AppThunk<Promise<string | undefined>> => {
+  return async (dispatch): Promise<string | undefined> => {
+    const loginResponse = await postSessionRecovery(jwt);
 
     if (loginResponse.status === "error") {
       clearSession();
 
       switch (loginResponse.errorId) {
         case "loginFailed":
-          // eslint-disable-next-line no-restricted-syntax -- TODO: Remove throw
-          throw new Error("error.loginFailed");
+          return "error.loginFailed";
         case "loginDisabled":
-          // eslint-disable-next-line no-restricted-syntax -- TODO: Remove throw
-          throw new Error("error.loginDisabled");
+          return "error.loginDisabled";
         case "unknown":
-          // eslint-disable-next-line no-restricted-syntax -- TODO: Remove throw
-          throw new Error("error.unknown");
+          return "error.unknown";
         default:
           return exhaustiveSwitchGuard(loginResponse.errorId);
       }
@@ -151,12 +128,10 @@ export const submitUpdateEventLogIsSeen = (
     const response = await postEventLogItemIsSeen(request);
 
     if (response.status === "error") {
-      // TODO
+      return;
     }
 
-    if (response.status === "success") {
-      dispatch(submitUpdateEventLogItemsAsync(response.eventLogItems));
-    }
+    dispatch(submitUpdateEventLogItemsAsync(response.eventLogItems));
   };
 };
 
@@ -164,18 +139,9 @@ export const submitKompassiLogin = (
   code: string,
 ): AppThunk<Promise<LoginErrorMessage | undefined>> => {
   return async (dispatch): Promise<LoginErrorMessage | undefined> => {
-    let loginResponse: PostKompassiLoginResponse | PostKompassiLoginError;
-    try {
-      loginResponse = await postKompassiLoginCallback(code);
-    } catch (error) {
-      clearSession();
-      // eslint-disable-next-line no-restricted-syntax -- TODO: Remove throw
-      throw error;
-    }
+    const loginResponse = await postKompassiLoginCallback(code);
 
     if (loginResponse.status === "error") {
-      clearSession();
-
       switch (loginResponse.errorId) {
         case "loginFailed":
           return LoginErrorMessage.LOGIN_FAILED;
