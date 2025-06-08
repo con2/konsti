@@ -74,22 +74,31 @@ export const submitLogin = (
   };
 };
 
+enum SubmitSessionRecoveryErrorMessage {
+  LOGIN_FAILED = "error.loginFailed",
+  LOGIN_DISABLED = "error.loginDisabled",
+  UNKNOWN = "error.unknown",
+}
+
 export const submitSessionRecovery = (
   jwt: string,
-): AppThunk<Promise<string | undefined>> => {
-  return async (dispatch): Promise<string | undefined> => {
+): AppThunk<Promise<SubmitSessionRecoveryErrorMessage | undefined>> => {
+  return async (
+    dispatch,
+  ): Promise<SubmitSessionRecoveryErrorMessage | undefined> => {
     const loginResponse = await postSessionRecovery(jwt);
 
     if (loginResponse.status === "error") {
       clearSession();
 
+      // TODO: Show "session expired" error
       switch (loginResponse.errorId) {
         case "loginFailed":
-          return "error.loginFailed";
+          return SubmitSessionRecoveryErrorMessage.LOGIN_FAILED;
         case "loginDisabled":
-          return "error.loginDisabled";
+          return SubmitSessionRecoveryErrorMessage.LOGIN_DISABLED;
         case "unknown":
-          return "error.unknown";
+          return SubmitSessionRecoveryErrorMessage.UNKNOWN;
         default:
           return exhaustiveSwitchGuard(loginResponse.errorId);
       }
