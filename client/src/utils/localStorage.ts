@@ -7,6 +7,8 @@ import { config } from "shared/config";
 import { ActiveProgramType } from "shared/config/clientConfigTypes";
 import { Locale } from "shared/types/locale";
 
+const localStorageStateKey = "state";
+
 const isActive = (programType: ActiveProgramType): boolean =>
   config.client().programTypeSelectOptions.includes(programType);
 
@@ -27,7 +29,7 @@ const SessionSchema = z
 type LocalStorage = z.infer<typeof SessionSchema>;
 
 export const loadSession = (): LocalStorage | undefined => {
-  const serializedValue = localStorage.getItem("state");
+  const serializedValue = localStorage.getItem(localStorageStateKey);
   if (!serializedValue) {
     return undefined;
   }
@@ -50,22 +52,13 @@ export const loadSession = (): LocalStorage | undefined => {
 export const saveSession = (state: Partial<LocalStorageState>): void => {
   const previousSession = loadSession();
   const newSession = previousSession ? merge(previousSession, state) : state;
-
-  try {
-    const serializedState = JSON.stringify(newSession);
-    localStorage.setItem("state", serializedState);
-  } catch (error) {
-    console.error(error); // eslint-disable-line no-console
-  }
+  const serializedState = JSON.stringify(newSession);
+  localStorage.setItem(localStorageStateKey, serializedState);
 };
 
 export const clearSession = (): void => {
-  try {
-    localStorage.removeItem("state");
-    sessionStorage.clear();
-  } catch (error) {
-    console.error(error); // eslint-disable-line no-console
-  }
+  localStorage.removeItem(localStorageStateKey);
+  sessionStorage.clear();
 };
 
 // Locale uses same 'languageKey' as i18next but i18next has separate logic for handling localStorage

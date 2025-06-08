@@ -1,19 +1,22 @@
 import { api } from "client/utils/api";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
-import { ApiError } from "shared/types/api/errors";
 import {
   DeleteSignupQuestionRequest,
   DeleteSignupQuestionResponse,
   GetSettingsResponse,
+  DeleteSignupQuestionError,
   PostSettingsRequest,
   PostSettingsResponse,
+  PostSignupQuestionError,
   PostSignupQuestionRequest,
   PostSignupQuestionResponse,
+  PostSettingsError,
+  GetSettingsError,
 } from "shared/types/api/settings";
 import { SignupQuestion } from "shared/types/models/settings";
 
 export const getSettings = async (): Promise<
-  GetSettingsResponse | ApiError
+  GetSettingsResponse | GetSettingsError
 > => {
   const response = await api.get<GetSettingsResponse>(ApiEndpoint.SETTINGS);
   return response.data;
@@ -21,7 +24,7 @@ export const getSettings = async (): Promise<
 
 export const postSettings = async (
   settings: PostSettingsRequest,
-): Promise<PostSettingsResponse | ApiError> => {
+): Promise<PostSettingsResponse | PostSettingsError> => {
   const response = await api.post<PostSettingsResponse, PostSettingsRequest>(
     ApiEndpoint.SETTINGS,
     settings,
@@ -31,7 +34,7 @@ export const postSettings = async (
 
 export const postSignupQuestion = async (
   signupQuestion: SignupQuestion,
-): Promise<PostSignupQuestionResponse | ApiError> => {
+): Promise<PostSignupQuestionResponse | PostSignupQuestionError> => {
   const response = await api.post<
     PostSignupQuestionResponse,
     PostSignupQuestionRequest
@@ -43,7 +46,7 @@ export const postSignupQuestion = async (
 
 export const deleteSignupQuestion = async (
   programItemId: string,
-): Promise<DeleteSignupQuestionResponse | ApiError> => {
+): Promise<DeleteSignupQuestionResponse | DeleteSignupQuestionError> => {
   const response = await api.delete<
     DeleteSignupQuestionResponse,
     DeleteSignupQuestionRequest

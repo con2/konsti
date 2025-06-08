@@ -11,12 +11,10 @@ export const submitGetTestSettings = (): AppThunk => {
     const response = await getTestSettings();
 
     if (response.status === "error") {
-      // TODO
+      return;
     }
 
-    if (response.status === "success") {
-      dispatch(submitSetTestTime(response.testSettings.testTime));
-    }
+    dispatch(submitSetTestTime(response.testSettings.testTime));
   };
 };
 
@@ -31,12 +29,10 @@ export const submitSetTestSettings = ({
     });
 
     if (response.status === "error") {
-      // TODO
+      return;
     }
 
-    if (response.status === "success") {
-      dispatch(submitSetTestTime(response.testSettings.testTime));
-      await loadData();
-    }
+    dispatch(submitSetTestTime(response.testSettings.testTime));
+    await loadData();
   };
 };

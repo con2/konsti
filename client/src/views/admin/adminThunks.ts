@@ -27,19 +27,17 @@ import { postAssignment } from "client/services/assignmentServices";
 
 export const submitUpdateHidden = (
   hiddenProgramItemIds: readonly string[],
-): AppThunk => {
-  return async (dispatch): Promise<void> => {
+): AppThunk<Promise<string | undefined>> => {
+  return async (dispatch): Promise<string | undefined> => {
     const updateHiddenResponse = await postHidden(hiddenProgramItemIds);
 
     if (updateHiddenResponse.status === "error") {
-      // TODO
+      return updateHiddenResponse.message;
     }
 
-    if (updateHiddenResponse.status === "success") {
-      dispatch(
-        submitUpdateHiddenAsync(updateHiddenResponse.hiddenProgramItemIds),
-      );
-    }
+    dispatch(
+      submitUpdateHiddenAsync(updateHiddenResponse.hiddenProgramItemIds),
+    );
   };
 };
 
@@ -48,41 +46,39 @@ export const submitGetSettings = (): AppThunk => {
     const settingsResponse = await getSettings();
 
     if (settingsResponse.status === "error") {
-      // TODO
+      return;
     }
 
-    if (settingsResponse.status === "success") {
-      dispatch(
-        submitGetSettingsAsync({
-          hiddenProgramItemIds: settingsResponse.hiddenProgramItemIds,
-          appOpen: settingsResponse.appOpen,
-          signupQuestions: settingsResponse.signupQuestions,
-          signupStrategy: settingsResponse.signupStrategy,
-          loginProvider: settingsResponse.loginProvider,
-        }),
-      );
-    }
+    dispatch(
+      submitGetSettingsAsync({
+        hiddenProgramItemIds: settingsResponse.hiddenProgramItemIds,
+        appOpen: settingsResponse.appOpen,
+        signupQuestions: settingsResponse.signupQuestions,
+        signupStrategy: settingsResponse.signupStrategy,
+        loginProvider: settingsResponse.loginProvider,
+      }),
+    );
   };
 };
 
-export const submitToggleAppOpen = (appOpen: boolean): AppThunk => {
-  return async (dispatch): Promise<void> => {
+export const submitToggleAppOpen = (
+  appOpen: boolean,
+): AppThunk<Promise<string | undefined>> => {
+  return async (dispatch): Promise<string | undefined> => {
     const postSettingsResponse = await postSettings({ appOpen });
 
     if (postSettingsResponse.status === "error") {
-      // TODO
+      return postSettingsResponse.message;
     }
 
-    if (postSettingsResponse.status === "success") {
-      dispatch(submitToggleAppOpenAsync(postSettingsResponse.settings.appOpen));
-    }
+    dispatch(submitToggleAppOpenAsync(postSettingsResponse.settings.appOpen));
   };
 };
 
 export const submitAddSignupQuestion = (
   signupQuestion: SignupQuestion,
-): AppThunk => {
-  return async (dispatch): Promise<void> => {
+): AppThunk<Promise<string | undefined>> => {
+  return async (dispatch): Promise<string | undefined> => {
     const response = await postSignupQuestion({
       programItemId: signupQuestion.programItemId,
       questionFi: signupQuestion.questionFi,
@@ -93,26 +89,24 @@ export const submitAddSignupQuestion = (
     });
 
     if (response.status === "error") {
-      // TODO
+      return response.message;
     }
 
-    if (response.status === "success") {
-      dispatch(updateSignupQuestions(response.signupQuestions));
-    }
+    dispatch(updateSignupQuestions(response.signupQuestions));
   };
 };
 
-export const submitDeleteSignupQuestion = (programItemId: string): AppThunk => {
-  return async (dispatch): Promise<void> => {
+export const submitDeleteSignupQuestion = (
+  programItemId: string,
+): AppThunk<Promise<string | undefined>> => {
+  return async (dispatch): Promise<string | undefined> => {
     const response = await deleteSignupQuestion(programItemId);
 
     if (response.status === "error") {
-      // TODO
+      return response.message;
     }
 
-    if (response.status === "success") {
-      dispatch(updateSignupQuestions(response.signupQuestions));
-    }
+    dispatch(updateSignupQuestions(response.signupQuestions));
   };
 };
 
@@ -123,12 +117,10 @@ export const submitSetSignupStrategy = (
     const response = await postSettings({ signupStrategy });
 
     if (response.status === "error") {
-      // TODO
+      return;
     }
 
-    if (response.status === "success") {
-      dispatch(submitSetSignupStrategyAsync(response.settings.signupStrategy));
-    }
+    dispatch(submitSetSignupStrategyAsync(response.settings.signupStrategy));
   };
 };
 
@@ -137,12 +129,10 @@ export const submitGetSignupMessages = (): AppThunk => {
     const response = await getSignupMessages();
 
     if (response.status === "error") {
-      // TODO
+      return;
     }
 
-    if (response.status === "success") {
-      dispatch(submitGetSignupMessagesAsync(response.signupMessages));
-    }
+    dispatch(submitGetSignupMessagesAsync(response.signupMessages));
   };
 };
 
@@ -175,11 +165,9 @@ export const submitSetLoginProvider = (
     const response = await postSettings({ loginProvider });
 
     if (response.status === "error") {
-      // TODO
+      return;
     }
 
-    if (response.status === "success") {
-      dispatch(submitSetLoginProviderAsync(response.settings.loginProvider));
-    }
+    dispatch(submitSetLoginProviderAsync(response.settings.loginProvider));
   };
 };

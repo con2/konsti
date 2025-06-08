@@ -34,14 +34,14 @@ export const updateFavorite = async (
     favoriteProgramItemIds.splice(programItemIndex, 1);
   }
 
-  try {
-    await dispatch(
-      submitUpdateFavorites({
-        username,
-        favoriteProgramItemIds,
-      }),
-    );
-  } catch (error) {
+  const error = await dispatch(
+    submitUpdateFavorites({
+      username,
+      favoriteProgramItemIds,
+    }),
+  );
+
+  if (error) {
     // eslint-disable-next-line no-restricted-syntax -- TODO: Remove throw
     throw new Error(`submitUpdateFavorites error: ${String(error)}`);
   }

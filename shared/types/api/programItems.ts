@@ -11,7 +11,7 @@ export interface PostUpdateProgramItemsResponse extends ApiResult {
 }
 
 export interface PostUpdateProgramItemsError extends ApiError {
-  errorId: "unknown";
+  errorId: "unknown" | "kompassiError";
 }
 
 // GET program items
@@ -21,5 +21,5 @@ export interface GetProgramItemsResponse extends ApiResult {
 }
 
 export interface GetProgramItemsError extends ApiError {
-  errorId: "unknown";
+  errorId: "unknown" | "databaseError";
 }

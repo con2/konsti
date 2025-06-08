@@ -32,51 +32,47 @@ export const submitGetUser = (username: string): AppThunk => {
     const getUserResponse = await getUser(username);
 
     if (getUserResponse.status === "error") {
-      // TODO
+      return;
     }
 
-    if (getUserResponse.status === "success") {
-      const directSignups = getUserResponse.programItems.directSignups;
-      const favoriteProgramItemIds =
-        getUserResponse.programItems.favoriteProgramItemIds;
-      const lotterySignups = getUserResponse.programItems.lotterySignups;
-      const eventLogItems = getUserResponse.eventLogItems;
+    const directSignups = getUserResponse.programItems.directSignups;
+    const favoriteProgramItemIds =
+      getUserResponse.programItems.favoriteProgramItemIds;
+    const lotterySignups = getUserResponse.programItems.lotterySignups;
+    const eventLogItems = getUserResponse.eventLogItems;
 
-      dispatch(
-        submitGetUserAsync({
-          directSignups,
-          favoriteProgramItemIds,
-          lotterySignups,
-        }),
-      );
+    dispatch(
+      submitGetUserAsync({
+        directSignups,
+        favoriteProgramItemIds,
+        lotterySignups,
+      }),
+    );
 
-      dispatch(submitUpdateEventLogItemsAsync(eventLogItems));
+    dispatch(submitUpdateEventLogItemsAsync(eventLogItems));
 
-      dispatch(
-        submitUpdateGroupCodeAsync({
-          groupCode: getUserResponse.groupCode,
-          isGroupCreator: getUserResponse.groupCreatorCode !== "0",
-        }),
-      );
-    }
+    dispatch(
+      submitUpdateGroupCodeAsync({
+        groupCode: getUserResponse.groupCode,
+        isGroupCreator: getUserResponse.groupCreatorCode !== "0",
+      }),
+    );
   };
 };
 
-export const submitUpdateFavorites = (newFavorite: NewFavorite): AppThunk => {
-  return async (dispatch): Promise<void> => {
+export const submitUpdateFavorites = (
+  newFavorite: NewFavorite,
+): AppThunk<Promise<string | undefined>> => {
+  return async (dispatch): Promise<string | undefined> => {
     const updateFavoriteResponse = await postFavorite(newFavorite);
 
     if (updateFavoriteResponse.status === "error") {
-      // TODO
+      return updateFavoriteResponse.errorId;
     }
 
-    if (updateFavoriteResponse.status === "success") {
-      dispatch(
-        submitUpdateFavoritesAsync(
-          updateFavoriteResponse.favoriteProgramItemIds,
-        ),
-      );
-    }
+    dispatch(
+      submitUpdateFavoritesAsync(updateFavoriteResponse.favoriteProgramItemIds),
+    );
   };
 };
 

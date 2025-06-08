@@ -5,12 +5,17 @@ import {
   delSignupQuestion,
   saveSettings,
 } from "server/features/settings/settingsRepository";
-import { ApiError } from "shared/types/api/errors";
 import {
+  DeleteSignupQuestionError,
+  DeleteSignupQuestionResponse,
+  GetSettingsError,
   GetSettingsResponse,
+  PostHiddenError,
   PostHiddenResponse,
+  PostSettingsError,
   PostSettingsRequest,
   PostSettingsResponse,
+  PostSignupQuestionError,
   PostSignupQuestionResponse,
 } from "shared/types/api/settings";
 import { removeHiddenProgramItemsFromUsers } from "server/features/settings/utils/removeHiddenProgramItemsFromUsers";
@@ -18,7 +23,7 @@ import { SignupQuestion } from "shared/types/models/settings";
 import { isErrorResult, unwrapResult } from "shared/utils/result";
 
 export const fetchSettings = async (): Promise<
-  GetSettingsResponse | ApiError
+  GetSettingsResponse | GetSettingsError
 > => {
   const findSettingsResult = await findSettings();
   if (isErrorResult(findSettingsResult)) {
@@ -44,7 +49,7 @@ export const fetchSettings = async (): Promise<
 
 export const storeHidden = async (
   hiddenProgramItemIds: readonly string[],
-): Promise<PostHiddenResponse | ApiError> => {
+): Promise<PostHiddenResponse | PostHiddenError> => {
   const settingsResult = await saveHidden(hiddenProgramItemIds);
   if (isErrorResult(settingsResult)) {
     return {
@@ -75,7 +80,7 @@ export const storeHidden = async (
 
 export const storeSignupQuestion = async (
   signupQuestionData: SignupQuestion,
-): Promise<PostSignupQuestionResponse | ApiError> => {
+): Promise<PostSignupQuestionResponse | PostSignupQuestionError> => {
   const saveSignupQuestionResult = await saveSignupQuestion(signupQuestionData);
   if (isErrorResult(saveSignupQuestionResult)) {
     return {
@@ -96,7 +101,7 @@ export const storeSignupQuestion = async (
 
 export const removeSignupQuestion = async (
   programItemId: string,
-): Promise<PostSignupQuestionResponse | ApiError> => {
+): Promise<DeleteSignupQuestionResponse | DeleteSignupQuestionError> => {
   const delSignupQuestionResult = await delSignupQuestion(programItemId);
   if (isErrorResult(delSignupQuestionResult)) {
     return {
@@ -117,7 +122,7 @@ export const removeSignupQuestion = async (
 
 export const updateSettings = async (
   settings: PostSettingsRequest,
-): Promise<PostSettingsResponse | ApiError> => {
+): Promise<PostSettingsResponse | PostSettingsError> => {
   const saveSettingsResult = await saveSettings(settings);
   if (isErrorResult(saveSettingsResult)) {
     return {

@@ -88,8 +88,8 @@ export const LotterySignupForm = ({
       setErrorMessage(error);
     } else {
       setErrorMessage(null);
+      closeSignupForm();
     }
-    closeSignupForm();
     dispatch(stopLoading());
   };
 

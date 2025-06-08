@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { UserAssignmentResult } from "shared/types/models/result";
-import { ApiResult } from "shared/types/api/errors";
+import { ApiError, ApiResult } from "shared/types/api/errors";
 
 // POST assignment
 
@@ -14,4 +14,8 @@ export interface PostAssignmentResponse extends ApiResult {
   resultMessage: string;
   results: readonly UserAssignmentResult[];
   assignmentTime: string;
+}
+
+export interface PostAssignmentError extends ApiError {
+  errorId: "unknown";
 }

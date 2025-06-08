@@ -10,28 +10,23 @@ export const submitGetProgramItems = (): AppThunk => {
     const getProgramItemsResponse = await getProgramItems();
 
     if (getProgramItemsResponse.status === "error") {
-      // TODO
+      return;
     }
 
-    if (getProgramItemsResponse.status === "success") {
-      dispatch(
-        submitGetProgramItemsAsync(getProgramItemsResponse.programItems),
-      );
-    }
+    dispatch(submitGetProgramItemsAsync(getProgramItemsResponse.programItems));
   };
 };
 
-export const submitUpdateProgramItems = (): AppThunk => {
-  return async (dispatch): Promise<void> => {
+export const submitUpdateProgramItems = (): AppThunk<
+  Promise<string | undefined>
+> => {
+  return async (dispatch): Promise<string | undefined> => {
     const programItemsUpdateResponse = await postUpdateProgramItems();
 
     if (programItemsUpdateResponse.status === "error") {
-      // TODO
+      return programItemsUpdateResponse.message;
     }
 
-    if (programItemsUpdateResponse.status === "success") {
-      // eslint-disable-next-line @typescript-eslint/no-floating-promises
-      dispatch(submitGetProgramItems());
-    }
+    await dispatch(submitGetProgramItems());
   };
 };

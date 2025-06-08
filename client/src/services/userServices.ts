@@ -1,12 +1,14 @@
 import { api } from "client/utils/api";
-import { ApiError } from "shared/types/api/errors";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
   GetSignupMessagesError,
   GetSignupMessagesResponse,
+  GetUserBySerialError,
   GetUserBySerialRequest,
   GetUserBySerialResponse,
+  GetUserError,
   GetUserResponse,
+  PostUpdateUserPasswordError,
   PostUpdateUserPasswordRequest,
   PostUpdateUserPasswordResponse,
   PostUserError,
@@ -15,6 +17,7 @@ import {
 } from "shared/types/api/users";
 import { RegistrationFormFields } from "client/views/registration/components/RegistrationForm";
 import {
+  PostEventLogIsSeenError,
   PostEventLogIsSeenRequest,
   PostEventLogIsSeenResponse,
 } from "shared/types/api/eventLog";
@@ -41,7 +44,7 @@ interface GetUserParams {
 
 export const getUser = async (
   username: string,
-): Promise<GetUserResponse | ApiError> => {
+): Promise<GetUserResponse | GetUserError> => {
   const response = await api.get<GetUserResponse, GetUserParams>(
     ApiEndpoint.USERS,
     {
@@ -55,7 +58,7 @@ export const getUser = async (
 
 export const getUserBySerialOrUsername = async (
   searchTerm: string,
-): Promise<GetUserBySerialResponse | ApiError> => {
+): Promise<GetUserBySerialResponse | GetUserBySerialError> => {
   const response = await api.get<
     GetUserBySerialResponse,
     GetUserBySerialRequest
@@ -70,7 +73,7 @@ export const getUserBySerialOrUsername = async (
 export const updateUserPassword = async (
   usernameToUpdate: string,
   password: string,
-): Promise<PostUpdateUserPasswordResponse | ApiError> => {
+): Promise<PostUpdateUserPasswordResponse | PostUpdateUserPasswordError> => {
   const response = await api.post<
     PostUpdateUserPasswordResponse,
     PostUpdateUserPasswordRequest
@@ -92,7 +95,7 @@ export const getSignupMessages = async (): Promise<
 
 export const postEventLogItemIsSeen = async (
   request: PostEventLogIsSeenRequest,
-): Promise<PostEventLogIsSeenResponse | ApiError> => {
+): Promise<PostEventLogIsSeenResponse | PostEventLogIsSeenError> => {
   const response = await api.post<
     PostEventLogIsSeenResponse,
     PostEventLogIsSeenRequest
