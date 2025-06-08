@@ -1,3 +1,4 @@
+import { isDeepEqual } from "remeda";
 import { getUser } from "client/services/userServices";
 import { postFavorite } from "client/services/favoriteServices";
 import { AppThunk } from "client/types/reduxTypes";
@@ -28,35 +29,45 @@ import { submitUpdateGroupCodeAsync } from "client/views/group/groupSlice";
 import { submitUpdateDirectSignupAsync } from "client/views/all-program-items/allProgramItemsSlice";
 
 export const submitGetUser = (username: string): AppThunk => {
-  return async (dispatch): Promise<void> => {
+  return async (dispatch, useState): Promise<void> => {
     const getUserResponse = await getUser(username);
 
     if (getUserResponse.status === "error") {
       return;
     }
 
-    const directSignups = getUserResponse.programItems.directSignups;
-    const favoriteProgramItemIds =
-      getUserResponse.programItems.favoriteProgramItemIds;
-    const lotterySignups = getUserResponse.programItems.lotterySignups;
-    const eventLogItems = getUserResponse.eventLogItems;
+    const state = useState();
 
-    dispatch(
-      submitGetUserAsync({
-        directSignups,
-        favoriteProgramItemIds,
-        lotterySignups,
-      }),
-    );
+    const updatedMyProgramItems = {
+      directSignups: getUserResponse.programItems.directSignups,
+      favoriteProgramItemIds:
+        getUserResponse.programItems.favoriteProgramItemIds,
+      lotterySignups: getUserResponse.programItems.lotterySignups,
+    };
 
-    dispatch(submitUpdateEventLogItemsAsync(eventLogItems));
+    if (!isDeepEqual(state.myProgramItems, updatedMyProgramItems)) {
+      dispatch(submitGetUserAsync(updatedMyProgramItems));
+    }
 
-    dispatch(
-      submitUpdateGroupCodeAsync({
-        groupCode: getUserResponse.groupCode,
-        isGroupCreator: getUserResponse.groupCreatorCode !== "0",
-      }),
-    );
+    const updatedEventLogItems = getUserResponse.eventLogItems;
+
+    if (!isDeepEqual(state.login.eventLogItems, updatedEventLogItems)) {
+      dispatch(submitUpdateEventLogItemsAsync(updatedEventLogItems));
+    }
+
+    const currentGroup = {
+      groupCode: state.group.groupCode,
+      isGroupCreator: state.group.isGroupCreator,
+    };
+
+    const updatedGroup = {
+      groupCode: getUserResponse.groupCode,
+      isGroupCreator: getUserResponse.groupCreatorCode !== "0",
+    };
+
+    if (!isDeepEqual(currentGroup, updatedGroup)) {
+      dispatch(submitUpdateGroupCodeAsync(updatedGroup));
+    }
   };
 };
 

@@ -1,3 +1,4 @@
+import { isDeepEqual } from "remeda";
 import { postHidden } from "client/services/hiddenServices";
 import {
   deleteSignupQuestion,
@@ -42,22 +43,34 @@ export const submitUpdateHidden = (
 };
 
 export const submitGetSettings = (): AppThunk => {
-  return async (dispatch): Promise<void> => {
+  return async (dispatch, useState): Promise<void> => {
     const settingsResponse = await getSettings();
 
     if (settingsResponse.status === "error") {
       return;
     }
 
-    dispatch(
-      submitGetSettingsAsync({
-        hiddenProgramItemIds: settingsResponse.hiddenProgramItemIds,
-        appOpen: settingsResponse.appOpen,
-        signupQuestions: settingsResponse.signupQuestions,
-        signupStrategy: settingsResponse.signupStrategy,
-        loginProvider: settingsResponse.loginProvider,
-      }),
-    );
+    const state = useState();
+
+    const currentSettings = {
+      hiddenProgramItemIds: state.admin.hiddenProgramItemIds,
+      appOpen: state.admin.appOpen,
+      signupQuestions: state.admin.signupQuestions,
+      signupStrategy: state.admin.signupStrategy,
+      loginProvider: state.admin.loginProvider,
+    };
+
+    const updatedSettings = {
+      hiddenProgramItemIds: settingsResponse.hiddenProgramItemIds,
+      appOpen: settingsResponse.appOpen,
+      signupQuestions: settingsResponse.signupQuestions,
+      signupStrategy: settingsResponse.signupStrategy,
+      loginProvider: settingsResponse.loginProvider,
+    };
+
+    if (!isDeepEqual(currentSettings, updatedSettings)) {
+      dispatch(submitGetSettingsAsync(updatedSettings));
+    }
   };
 };
 

@@ -26,7 +26,7 @@ export interface AdminState {
   loginProvider: LoginProvider | undefined;
 }
 
-interface ProgramItemDirectSignups {
+export interface ProgramItemDirectSignups {
   users: UserSignup[];
   programItemId: string;
 }
