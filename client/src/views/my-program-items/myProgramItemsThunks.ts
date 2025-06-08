@@ -49,10 +49,10 @@ export const submitGetUser = (username: string): AppThunk => {
       dispatch(submitGetUserAsync(updatedMyProgramItems));
     }
 
-    const { eventLogItems } = getUserResponse;
+    const updatedEventLogItems = getUserResponse.eventLogItems;
 
-    if (!isDeepEqual(state.login.eventLogItems, eventLogItems)) {
-      dispatch(submitUpdateEventLogItemsAsync(eventLogItems));
+    if (!isDeepEqual(state.login.eventLogItems, updatedEventLogItems)) {
+      dispatch(submitUpdateEventLogItemsAsync(updatedEventLogItems));
     }
 
     const currentGroup = {
