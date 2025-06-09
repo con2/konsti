@@ -7,6 +7,7 @@ import {
   ProgramType,
   Tag,
   SignupType,
+  Popularity,
 } from "shared/types/models/programItem";
 
 export const testProgramItem: ProgramItem = {
@@ -37,7 +38,7 @@ export const testProgramItem: ProgramItem = {
   gameSystem: "Test gamesystem",
   shortDescription: "Short description",
   revolvingDoor: true,
-  popularity: 0,
+  popularity: Popularity.NULL,
   programType: ProgramType.TABLETOP_RPG,
   contentWarnings: "",
   otherAuthor: "",
@@ -78,7 +79,7 @@ export const testProgramItem2: ProgramItem = {
   gameSystem: "Test gamesystem",
   shortDescription: "Short description",
   revolvingDoor: true,
-  popularity: 0,
+  popularity: Popularity.NULL,
   programType: ProgramType.TABLETOP_RPG,
   contentWarnings: "",
   otherAuthor: "",

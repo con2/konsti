@@ -1,3 +1,4 @@
+import { fileURLToPath } from "node:url";
 import eslint from "@eslint/js";
 import { defineConfig, globalIgnores } from "eslint/config";
 import globals from "globals";
@@ -21,9 +22,13 @@ import eslintPluginOnlyError from "eslint-plugin-only-error";
 // eslint-disable-next-line import/no-namespace
 import * as eslintPluginMdx from "eslint-plugin-mdx";
 import typescriptEslint from "typescript-eslint";
+import { includeIgnoreFile } from "@eslint/compat";
 import { noUselessTemplateLiteral } from "./eslint-rules/noUselessTemplateLiteral";
 
 const filetypesGlob = "**/*.{ts,tsx,mts,js,cjs,mjs}";
+
+// @ts-expect-error: import.met not allowed
+const gitignorePath = fileURLToPath(new URL(".gitignore", import.meta.url));
 
 // eslint-disable-next-line import/no-unused-modules
 export default defineConfig([
@@ -40,11 +45,14 @@ export default defineConfig([
   eslintPluginImport.flatConfigs.typescript,
   eslintPluginUnicorn.configs.recommended,
 
+  includeIgnoreFile(gitignorePath),
+
   globalIgnores([
     "**/.*", // Ignore dotfiles
     "**/coverage/**",
     "**/front/**",
     "**/build/**",
+    "client/babel.config.js",
     "client/babel.config.js",
   ]),
 
@@ -58,7 +66,7 @@ export default defineConfig([
           allowDefaultProject: ["yarn.config.cjs"],
           defaultProject: "./tsconfig.json",
         },
-        // @ts-expect-error: FIXME FIXME FIXME
+        // @ts-expect-error: import.met not allowed
         tsconfigRootDir: import.meta.dirname,
       },
       globals: {
@@ -126,6 +134,7 @@ export default defineConfig([
       ],
       "no-else-return": "error",
       curly: "error",
+      "no-implicit-coercion": ["error", { boolean: false }],
 
       // eslint-plugin-import
       "import/no-unused-modules": ["error", { unusedExports: true }],

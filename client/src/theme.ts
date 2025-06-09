@@ -131,11 +131,14 @@ export const theme = {
   iconSizeSmall: "16px",
   iconSizeNormal: "20px",
   iconSizeLarge: "24px",
+  iconSizeExtra: "30px",
 
   // Program item popularity icon colors
   popularityLow: "rgb(64, 106, 188)", // blue.primary with less saturation
   popularityMedium: green.primary,
-  popularityHigh: "rgb(245, 86, 99)", // red.primary with less saturation,
+  popularityHigh: "rgb(255, 165, 0)",
+  popularityVeryHigh: "rgb(252, 129, 139)",
+  popularityExtreme: "rgb(255, 0, 21)",
 
   // Shadows
   shadowLower: "0 3px 4px rgba(0, 0, 0, 0.12), 0 3px 4px rgba(0, 0, 0, 0.19)",

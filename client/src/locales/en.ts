@@ -533,6 +533,8 @@ export const translationEN = {
     low: "More {{ATTENDEE_TYPE}} needed",
     medium: "Enough {{ATTENDEE_TYPE}} to run",
     high: "More interested {{ATTENDEE_TYPE}} than seats",
+    veryHigh: "Much more interested {{ATTENDEE_TYPE}} than seats",
+    extreme: "Much, much more interested {{ATTENDEE_TYPE}} than seats",
   },
   selectedProgramType: "Program type",
   yes: "Yes",

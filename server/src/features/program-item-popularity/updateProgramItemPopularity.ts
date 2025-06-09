@@ -19,6 +19,52 @@ import { findUsers } from "server/features/user/userRepository";
 import { findDirectSignups } from "server/features/direct-signup/directSignupRepository";
 import { prepareAssignmentParams } from "server/features/assignment/utils/prepareAssignmentParams";
 import { logger } from "server/utils/logger";
+import { LotterySignup } from "shared/types/models/user";
+import { Popularity } from "shared/types/models/programItem";
+
+interface GetPopularityParams {
+  minAttendance: number;
+  maxAttendance: number;
+  assignmentPopularity: number;
+  lotterySignups: LotterySignup[];
+}
+
+const getPopularity = ({
+  minAttendance,
+  maxAttendance,
+  assignmentPopularity,
+  lotterySignups,
+}: GetPopularityParams): Popularity => {
+  // Use assignment result when popularity is not maximum
+  if (assignmentPopularity < minAttendance) {
+    return Popularity.LOW;
+  }
+  if (
+    assignmentPopularity >= minAttendance &&
+    assignmentPopularity < maxAttendance
+  ) {
+    return Popularity.MEDIUM;
+  }
+
+  // When assignment popularity is maximum, we need to use additional modifier to determine HIGH, VERY_HIGH and CRITICAL
+  const priority1 = lotterySignups.filter((signup) => signup.priority === 1);
+  const priority2 = lotterySignups.filter((signup) => signup.priority === 2);
+  const priority3 = lotterySignups.filter((signup) => signup.priority === 3);
+
+  const modifier =
+    (priority1.length + priority2.length / 2 + priority3.length / 3) /
+    maxAttendance;
+
+  if (modifier >= 5) {
+    return Popularity.EXTREME;
+  }
+
+  if (modifier >= 3) {
+    return Popularity.VERY_HIGH;
+  }
+
+  return Popularity.HIGH;
+};
 
 export const updateProgramItemPopularity = async (): Promise<
   Result<void, MongoDbError>
@@ -49,7 +95,7 @@ export const updateProgramItemPopularity = async (): Promise<
     lotteryValidDirectSignups,
   } = prepareAssignmentParams(users, programItems, directSignups);
 
-  const programItemsForStartTimes = groupBy(
+  const programItemsByStartTimes = groupBy(
     validLotterySignupProgramItems,
     (programItem) => dayjs(programItem.startTime).toISOString(),
   );
@@ -60,7 +106,7 @@ export const updateProgramItemPopularity = async (): Promise<
   }
   const timeNow = unwrapResult(timeNowResult);
 
-  const futureStartTimes = Object.keys(programItemsForStartTimes).filter(
+  const futureStartTimes = Object.keys(programItemsByStartTimes).filter(
     (startTime) => dayjs(startTime).isSameOrAfter(timeNow),
   );
 
@@ -89,25 +135,46 @@ export const updateProgramItemPopularity = async (): Promise<
     return unwrapResult(assignmentResult.result);
   });
 
-  const results = successResults.flatMap((result) => result.results);
-
-  const assignmentSignupsProgramItemIds = results.map(
-    (result) => result.assignmentSignup.programItemId,
+  const userAssignmentProgramIds = successResults
+    .flatMap((result) => result.results)
+    .map((result) => result.assignmentSignup.programItemId);
+  const programItemSignupsCounts = countBy(
+    userAssignmentProgramIds,
+    (id) => id,
   );
 
-  const groupedSignups = countBy(assignmentSignupsProgramItemIds, (id) => id);
+  const lotterySignups = validLotterySignupsUsers.flatMap(
+    (user) => user.lotterySignups,
+  );
+  const groupedLotterySignups = groupBy(
+    lotterySignups,
+    (signup) => signup.programItemId,
+  );
 
-  const programItemPopularityUpdates = validLotterySignupProgramItems
-    .map((programItem) => ({
-      programItemId: programItem.programItemId,
-      popularity: groupedSignups[programItem.programItemId],
-    }))
-    .filter((popularityUpdate) => popularityUpdate.popularity);
+  const programItemPopularityUpdates = Object.entries(
+    programItemSignupsCounts,
+  ).flatMap(([programItemId, assignmentPopularity]) => {
+    const programItem = validLotterySignupProgramItems.find(
+      (item) => item.programItemId === programItemId,
+    );
+    if (!programItem) {
+      return [];
+    }
+
+    return {
+      programItemId,
+      popularity: getPopularity({
+        minAttendance: programItem.minAttendance,
+        maxAttendance: programItem.maxAttendance,
+        assignmentPopularity,
+        lotterySignups: groupedLotterySignups[programItemId],
+      }),
+    };
+  });
 
   const saveProgramItemPopularityResult = await saveProgramItemPopularity(
     programItemPopularityUpdates,
   );
-
   if (isErrorResult(saveProgramItemPopularityResult)) {
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }

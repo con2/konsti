@@ -32,11 +32,6 @@ lib
 # Zip files
 *.zip
 
-# Elastic Beanstalk Files
-.elasticbeanstalk/*
-!.elasticbeanstalk/*.cfg.yml
-!.elasticbeanstalk/*.global.yml
-
 # Mac
 .DS_Store
 
@@ -63,6 +58,7 @@ test-results
 
 # ESlint
 .eslintcache
+eslint.config.bundled*
 
 # Emskaffolden
 *.compiled.yaml

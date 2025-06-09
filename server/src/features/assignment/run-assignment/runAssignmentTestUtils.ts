@@ -16,6 +16,11 @@ import {
 import { MongoDbError } from "shared/types/api/errors";
 import { findProgramItems } from "server/features/program-item/programItemRepository";
 import { getLotteryValidDirectSignups } from "server/features/assignment/utils/prepareAssignmentParams";
+import { generateTestUsers } from "server/test/test-data-generation/generators/generateTestData";
+import { createProgramItems } from "server/test/test-data-generation/generators/createProgramItems";
+import { createLotterySignups } from "server/test/test-data-generation/generators/createLotterySignups";
+
+export const firstLotterySignupSlot = 3;
 
 const getGroupCreator = (
   users: User[],
@@ -131,4 +136,23 @@ export const assertUserUpdatedCorrectly = async (
   });
 
   await verifyUserSignups();
+};
+
+export const generateTestData = async (
+  newUsersCount: number,
+  newProgramItemsCount: number,
+  groupSize: number,
+  numberOfGroups: number,
+  testUsersCount: number,
+): Promise<void> => {
+  await generateTestUsers(
+    newUsersCount,
+    groupSize,
+    numberOfGroups,
+    testUsersCount,
+  );
+
+  await createProgramItems(newProgramItemsCount);
+
+  await createLotterySignups();
 };

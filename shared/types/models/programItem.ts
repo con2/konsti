@@ -84,6 +84,15 @@ export enum SignupType {
   NONE = "none",
 }
 
+export enum Popularity {
+  NULL = "notSet",
+  LOW = "low",
+  MEDIUM = "medium",
+  HIGH = "high",
+  VERY_HIGH = "veryHigh",
+  EXTREME = "extreme",
+}
+
 export const ProgramItemSchema = z.object({
   programItemId: z.string(),
   title: z.string(),
@@ -100,7 +109,7 @@ export const ProgramItemSchema = z.object({
   minAttendance: z.number(),
   maxAttendance: z.number(),
   gameSystem: z.string(),
-  popularity: z.number(),
+  popularity: z.nativeEnum(Popularity),
   shortDescription: z.string(),
   revolvingDoor: z.boolean(),
   programType: z.nativeEnum(ProgramType),

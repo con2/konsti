@@ -3,27 +3,6 @@ import {
   createTestUsers,
   createUsersInGroup,
 } from "server/test/test-data-generation/generators/createUsers";
-import { createProgramItems } from "server/test/test-data-generation/generators/createProgramItems";
-import { createLotterySignups } from "server/test/test-data-generation/generators/createLotterySignups";
-
-export const generateTestData = async (
-  newUsersCount: number,
-  newProgramItemsCount: number,
-  groupSize: number,
-  numberOfGroups: number,
-  testUsersCount: number,
-): Promise<void> => {
-  await generateTestUsers(
-    newUsersCount,
-    groupSize,
-    numberOfGroups,
-    testUsersCount,
-  );
-
-  await createProgramItems(newProgramItemsCount);
-
-  await createLotterySignups();
-};
 
 export const generateTestUsers = async (
   newUsersCount: number,

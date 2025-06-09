@@ -2,9 +2,12 @@ import { expect, test, afterEach, beforeEach } from "vitest";
 import mongoose from "mongoose";
 import dayjs from "dayjs";
 import { faker } from "@faker-js/faker";
-import { assertUserUpdatedCorrectly } from "server/features/assignment/run-assignment/runAssignmentTestUtils";
+import {
+  assertUserUpdatedCorrectly,
+  firstLotterySignupSlot,
+  generateTestData,
+} from "server/features/assignment/run-assignment/runAssignmentTestUtils";
 import { runAssignment } from "server/features/assignment/run-assignment/runAssignment";
-import { generateTestData } from "server/test/test-data-generation/generators/generateTestData";
 import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
 import { config } from "shared/config";
 import { AssignmentResultStatus } from "server/types/resultTypes";
@@ -57,7 +60,9 @@ test("Assignment with valid data should return success with padg algorithm", asy
 
   const { eventStartTime } = config.event();
   const assignmentAlgorithm = AssignmentAlgorithm.PADG;
-  const assignmentTime = dayjs(eventStartTime).add(2, "hours").toISOString();
+  const assignmentTime = dayjs(eventStartTime)
+    .add(firstLotterySignupSlot, "hours")
+    .toISOString();
 
   // FIRST RUN
 

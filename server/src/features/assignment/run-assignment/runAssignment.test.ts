@@ -3,7 +3,6 @@ import mongoose from "mongoose";
 import dayjs from "dayjs";
 import { faker } from "@faker-js/faker";
 import { runAssignment } from "server/features/assignment/run-assignment/runAssignment";
-import { generateTestData } from "server/test/test-data-generation/generators/generateTestData";
 import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
 import { config } from "shared/config";
 import { saveUser } from "server/features/user/userRepository";
@@ -26,7 +25,11 @@ import {
 import { ProgramType } from "shared/types/models/programItem";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
-import { assertUserUpdatedCorrectly } from "server/features/assignment/run-assignment/runAssignmentTestUtils";
+import {
+  assertUserUpdatedCorrectly,
+  firstLotterySignupSlot,
+  generateTestData,
+} from "server/features/assignment/run-assignment/runAssignmentTestUtils";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 import { ProgramItemModel } from "server/features/program-item/programItemSchema";
 import { addEventLogItems } from "server/features/user/event-log/eventLogRepository";
@@ -66,7 +69,9 @@ describe("Assignment with valid data", () => {
   test("should return valid results after multiple executions on different times", async () => {
     const { eventStartTime } = config.event();
     const assignmentAlgorithm = AssignmentAlgorithm.PADG;
-    const assignmentTime = dayjs(eventStartTime).add(2, "hours").toISOString();
+    const assignmentTime = dayjs(eventStartTime)
+      .add(firstLotterySignupSlot, "hours")
+      .toISOString();
 
     // FIRST RUN
 

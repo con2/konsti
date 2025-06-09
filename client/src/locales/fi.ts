@@ -535,6 +535,8 @@ export const translationFI = {
     low: "Tarvitaan lisää {{ATTENDEE_TYPE}}",
     medium: "Tarpeeksi {{ATTENDEE_TYPE}} toteutuakseen",
     high: "Enemmän kiinnostuneita kuin paikkoja",
+    veryHigh: "Paljon enemmän kiinnostuneita kuin paikkoja",
+    extreme: "Tosi paljon enemmän kiinnostuneita kuin paikkoja",
   },
   selectedProgramType: "Ohjelmatyyppi",
   yes: "Kyllä",

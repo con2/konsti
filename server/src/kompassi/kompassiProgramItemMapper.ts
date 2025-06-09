@@ -7,6 +7,7 @@ import {
   ProgramType,
   Tag,
   SignupType,
+  Popularity,
 } from "shared/types/models/programItem";
 import {
   KompassiProgramItem,
@@ -58,7 +59,7 @@ export const kompassiProgramItemMapper = (
         accessibilityValues: mapAccessibilityValues(
           programItem.cachedDimensions.accessibility,
         ),
-        popularity: 0,
+        popularity: Popularity.NULL,
         otherAccessibilityInformation:
           programItem.cachedAnnotations["ropecon:accessibilityOther"],
         entryFee: programItem.cachedAnnotations["konsti:workshopFee"],

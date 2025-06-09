@@ -1,6 +1,5 @@
-import { faker } from "@faker-js/faker";
 import dayjs from "dayjs";
-import { groupBy } from "remeda";
+import { groupBy, sample } from "remeda";
 import { logger } from "server/utils/logger";
 import { updateProgramItemPopularity } from "server/features/program-item-popularity/updateProgramItemPopularity";
 import { ProgramItem } from "shared/types/models/programItem";
@@ -44,9 +43,6 @@ export const createLotterySignups = async (): Promise<void> => {
 const getRandomLotterySignup = (
   programItems: readonly ProgramItem[],
 ): LotterySignup[] => {
-  const lotterySignups: LotterySignup[] = [];
-  let randomIndex;
-
   const { noKonstiSignupIds } = config.event();
 
   const activeProgramItems = programItems
@@ -59,10 +55,11 @@ const getRandomLotterySignup = (
     dayjs(activeProgramItem.startTime).toISOString(),
   );
   const uniqueTimes = [...new Set(startTimes)];
-  const firstFourTimes = uniqueTimes.slice(0, 4);
+  // Three first times are direct signup only
+  const firstFourTimes = uniqueTimes.slice(3, 7);
 
   // Select random program items for each start time
-  for (const startTime of firstFourTimes) {
+  return firstFourTimes.flatMap((startTime) => {
     logger.debug(`Generate lottery signups for time ${startTime}`);
     const programItemsForTime = activeProgramItems.filter(
       (activeProgramItem) =>
@@ -71,33 +68,14 @@ const getRandomLotterySignup = (
     );
 
     const numberOfSignups = Math.min(programItemsForTime.length, 3);
+    const randomProgramItems = sample(programItemsForTime, numberOfSignups);
 
-    for (let i = 0; i < numberOfSignups; i += 1) {
-      randomIndex = faker.number.int({
-        min: 0,
-        max: programItemsForTime.length - 1,
-      });
-
-      const randomProgramItem = programItemsForTime[randomIndex];
-
-      const duplicate = lotterySignups.some(
-        (lotterySignup) =>
-          lotterySignup.programItemId === randomProgramItem.programItemId,
-      );
-
-      if (duplicate) {
-        i -= 1;
-      } else {
-        lotterySignups.push({
-          programItemId: randomProgramItem.programItemId,
-          priority: i + 1,
-          signedToStartTime: randomProgramItem.startTime,
-        });
-      }
-    }
-  }
-
-  return lotterySignups;
+    return randomProgramItems.map((programItem, index) => ({
+      programItemId: programItem.programItemId,
+      priority: index + 1,
+      signedToStartTime: programItem.startTime,
+    }));
+  });
 };
 
 const doLotterySignup = async (
