@@ -132,8 +132,6 @@ export const ProgramItemHead = ({
         {!isEnterGameMode && isNormalSignup && (
           <Row>
             <PopularityInfo
-              minAttendance={programItem.minAttendance}
-              maxAttendance={programItem.maxAttendance}
               popularity={programItem.popularity}
               includeMsg={true}
               programType={programItem.programType}

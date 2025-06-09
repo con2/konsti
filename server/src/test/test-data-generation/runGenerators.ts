@@ -39,7 +39,7 @@ export const runGenerators = async (
   const enableGroups = config.event().enableGroups;
 
   // Total users: newUsersCount + groupSize * numberOfGroups + testUsersCount
-  const newUsersCount = 40; // Number of individual users
+  const newUsersCount = 60; // Number of individual users
 
   const groupSize = enableGroups ? 4 : 0; // How many users in each group
   const numberOfGroups = enableGroups ? 15 : 0; // Number of groups

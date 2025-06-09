@@ -4,7 +4,7 @@ import {
   ProgramItemSchemaDb,
 } from "server/features/program-item/programItemSchema";
 import { updateMovedProgramItems } from "server/features/assignment/utils/updateMovedProgramItems";
-import { ProgramItem } from "shared/types/models/programItem";
+import { Popularity, ProgramItem } from "shared/types/models/programItem";
 import {
   makeSuccessResult,
   Result,
@@ -211,7 +211,7 @@ export const findProgramItemById = async (
 
 interface PopularityUpdate {
   programItemId: string;
-  popularity: number;
+  popularity: Popularity;
 }
 
 export const saveProgramItemPopularity = async (

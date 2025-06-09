@@ -46,8 +46,6 @@ export const LotterySignupsByStartTimes = ({
                           {`${signup.priority}) ${signup.programItem.title}`}
                         </StyledTitle>
                         <StyledPopularityInfo
-                          minAttendance={signup.programItem.minAttendance}
-                          maxAttendance={signup.programItem.maxAttendance}
                           popularity={signup.programItem.popularity}
                           includeMsg={false}
                           programType={signup.programItem.programType}
