@@ -9,7 +9,11 @@ import {
   submitGetProgramItemsAsync,
 } from "client/views/all-program-items/allProgramItemsSlice";
 
-export const submitGetProgramItems = (): AppThunk => {
+export const submitGetProgramItems = ({
+  forceUpdate,
+}: {
+  forceUpdate: boolean;
+}): AppThunk => {
   return async (dispatch, getState): Promise<void> => {
     const getProgramItemsResponse = await getProgramItems();
 
@@ -23,7 +27,10 @@ export const submitGetProgramItems = (): AppThunk => {
       (programItemWithAttendees) => programItemWithAttendees.programItem,
     );
 
-    if (!isDeepEqual(state.allProgramItems.programItems, programItems)) {
+    if (
+      forceUpdate ||
+      !isDeepEqual(state.allProgramItems.programItems, programItems)
+    ) {
       dispatch(submitGetProgramItemsAsync(programItems));
     }
 
@@ -36,7 +43,10 @@ export const submitGetProgramItems = (): AppThunk => {
       },
     );
 
-    if (!isDeepEqual(state.allProgramItems.directSignups, directSignups)) {
+    if (
+      forceUpdate ||
+      !isDeepEqual(state.allProgramItems.directSignups, directSignups)
+    ) {
       dispatch(submitGetDirectSignupsAsync(directSignups));
     }
   };
@@ -52,6 +62,6 @@ export const submitUpdateProgramItems = (): AppThunk<
       return programItemsUpdateResponse.message;
     }
 
-    await dispatch(submitGetProgramItems());
+    await dispatch(submitGetProgramItems({ forceUpdate: false }));
   };
 };

@@ -29,7 +29,7 @@ export const loadData = async (): Promise<void> => {
 
   // Get program items data
   // Must be loaded after user to be able to access state.login
-  await loadProgramItems();
+  await loadProgramItems({ forceUpdate: false });
 
   // Get group members
   await loadGroupMembers();
@@ -45,7 +45,11 @@ const loadTestSettings = async (): Promise<void> => {
   await dispatch(submitGetTestSettings());
 };
 
-const loadProgramItems = async (): Promise<void> => {
+export const loadProgramItems = async ({
+  forceUpdate,
+}: {
+  forceUpdate: boolean;
+}): Promise<void> => {
   const state = store.getState();
   const dispatch: AppDispatch = store.dispatch;
   const { appOpen } = state.admin;
@@ -55,7 +59,7 @@ const loadProgramItems = async (): Promise<void> => {
     return;
   }
 
-  await dispatch(submitGetProgramItems());
+  await dispatch(submitGetProgramItems({ forceUpdate }));
 };
 
 const recoverSession = async (): Promise<void> => {
