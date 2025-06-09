@@ -20,6 +20,8 @@ import { generateTestUsers } from "server/test/test-data-generation/generators/g
 import { createProgramItems } from "server/test/test-data-generation/generators/createProgramItems";
 import { createLotterySignups } from "server/test/test-data-generation/generators/createLotterySignups";
 
+export const firstLotterySignupSlot = 3;
+
 const getGroupCreator = (
   users: User[],
   user: User,

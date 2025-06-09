@@ -27,6 +27,7 @@ import { saveLotterySignups } from "server/features/user/lottery-signup/lotteryS
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import {
   assertUserUpdatedCorrectly,
+  firstLotterySignupSlot,
   generateTestData,
 } from "server/features/assignment/run-assignment/runAssignmentTestUtils";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
@@ -68,7 +69,9 @@ describe("Assignment with valid data", () => {
   test("should return valid results after multiple executions on different times", async () => {
     const { eventStartTime } = config.event();
     const assignmentAlgorithm = AssignmentAlgorithm.PADG;
-    const assignmentTime = dayjs(eventStartTime).add(2, "hours").toISOString();
+    const assignmentTime = dayjs(eventStartTime)
+      .add(firstLotterySignupSlot, "hours")
+      .toISOString();
 
     // FIRST RUN
 

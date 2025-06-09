@@ -4,6 +4,7 @@ import dayjs from "dayjs";
 import { faker } from "@faker-js/faker";
 import {
   assertUserUpdatedCorrectly,
+  firstLotterySignupSlot,
   generateTestData,
 } from "server/features/assignment/run-assignment/runAssignmentTestUtils";
 import { runAssignment } from "server/features/assignment/run-assignment/runAssignment";
@@ -48,7 +49,9 @@ test("Assignment with valid data should return success with random+padg algorith
   );
 
   const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
-  const assignmentTime = dayjs(eventStartTime).add(2, "hours").toISOString();
+  const assignmentTime = dayjs(eventStartTime)
+    .add(firstLotterySignupSlot, "hours")
+    .toISOString();
 
   // FIRST RUN
 

@@ -16,6 +16,7 @@ import {
 } from "server/features/program-item/programItemRepository";
 import { updateProgramItemPopularity } from "server/features/program-item-popularity/updateProgramItemPopularity";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
+import { Popularity } from "shared/types/models/programItem";
 
 let server: Server;
 
@@ -63,12 +64,12 @@ test("Should update program item popularity", async () => {
     (programItem) =>
       programItem.programItemId === testProgramItem.programItemId,
   );
-  expect(firstProgramItem?.popularity).toEqual(0);
+  expect(firstProgramItem?.popularity).toEqual(Popularity.NULL);
   const secondProgramItem = programItems.find(
     (programItem) =>
       programItem.programItemId === testProgramItem2.programItemId,
   );
-  expect(secondProgramItem?.popularity).toEqual(0);
+  expect(secondProgramItem?.popularity).toEqual(Popularity.NULL);
 
   await updateProgramItemPopularity();
 
@@ -78,12 +79,12 @@ test("Should update program item popularity", async () => {
     (programItem) =>
       programItem.programItemId === testProgramItem.programItemId,
   );
-  expect(updatedFirstProgramItem?.popularity).toEqual(2);
+  expect(updatedFirstProgramItem?.popularity).toEqual(Popularity.MEDIUM);
   const updatedSecondProgramItem = updatedProgramItems.find(
     (programItem) =>
       programItem.programItemId === testProgramItem2.programItemId,
   );
-  expect(updatedSecondProgramItem?.popularity).toEqual(0);
+  expect(updatedSecondProgramItem?.popularity).toEqual(Popularity.NULL);
 });
 
 test("Should only update program item popularity of upcoming program items", async () => {
@@ -136,12 +137,12 @@ test("Should only update program item popularity of upcoming program items", asy
     (programItem) =>
       programItem.programItemId === testProgramItem.programItemId,
   );
-  expect(firstProgramItem?.popularity).toEqual(0);
+  expect(firstProgramItem?.popularity).toEqual(Popularity.NULL);
   const secondProgramItem = programItems.find(
     (programItem) =>
       programItem.programItemId === testProgramItem2.programItemId,
   );
-  expect(secondProgramItem?.popularity).toEqual(0);
+  expect(secondProgramItem?.popularity).toEqual(Popularity.NULL);
 
   await updateProgramItemPopularity();
 
@@ -152,11 +153,11 @@ test("Should only update program item popularity of upcoming program items", asy
     (programItem) =>
       programItem.programItemId === testProgramItem.programItemId,
   );
-  expect(updatedFirstProgramItem?.popularity).toEqual(0);
+  expect(updatedFirstProgramItem?.popularity).toEqual(Popularity.NULL);
 
   const updatedSecondProgramItem = updatedProgramItems.find(
     (programItem) =>
       programItem.programItemId === testProgramItem2.programItemId,
   );
-  expect(updatedSecondProgramItem?.popularity).toEqual(1);
+  expect(updatedSecondProgramItem?.popularity).toEqual(Popularity.MEDIUM);
 });
