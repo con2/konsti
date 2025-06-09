@@ -4,8 +4,8 @@ import {
   ProgramItem,
   ProgramItemSignupStrategy,
 } from "shared/types/models/programItem";
-import { DirectSignupProgramItem } from "client/views/program-item/signup/components/DirectSignupProgramItem";
-import { LotterySignupProgramItem } from "client/views/program-item/signup/components/LotterySignupProgramItem";
+import { ProgramItemDirectSignup } from "client/views/program-item/signup/components/direct-signup/ProgramItemDirectSignup";
+import { ProgramItemLotterySignup } from "client/views/program-item/signup/components/lottery-signup/ProgramItemLotterySignup";
 import { config } from "shared/config";
 import { SignupHelpText } from "client/views/program-item/signup/components/SignupHelpText";
 import { getTimeNow } from "client/utils/getTimeNow";
@@ -65,13 +65,13 @@ export const ProgramItemSignup = ({
       {isNormalSignup &&
         !isDirectSignupOver &&
         (isDirectSignupMode ? (
-          <DirectSignupProgramItem
+          <ProgramItemDirectSignup
             programItem={programItem}
             programItemIsFull={attendees >= programItem.maxAttendance}
             startTime={startTime}
           />
         ) : (
-          <LotterySignupProgramItem
+          <ProgramItemLotterySignup
             programItem={programItem}
             startTime={startTime}
             lotterySignups={lotterySignups}

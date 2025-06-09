@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router";
 import { ProgramItem } from "shared/types/models/programItem";
-import { DirectSignupForm } from "client/views/program-item/signup/components/DirectSignupForm";
+import { DirectSignupForm } from "client/views/program-item/signup/components/direct-signup/DirectSignupForm";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { isAlreadyDirectySigned } from "client/views/program-item/programItemUtils";
 import { Button, ButtonStyle } from "client/components/Button";
@@ -27,7 +27,7 @@ interface Props {
   programItemIsFull: boolean;
 }
 
-export const DirectSignupProgramItem = ({
+export const ProgramItemDirectSignup = ({
   programItem,
   startTime,
   programItemIsFull,
@@ -87,7 +87,7 @@ export const DirectSignupProgramItem = ({
   }
 
   return (
-    <>
+    <Container>
       {signupOpen && programItemIsFull && (
         <BoldText>
           {t("signup.programItemFull", {
@@ -105,9 +105,9 @@ export const DirectSignupProgramItem = ({
                   `programTypeIllative.${directSignupForTimeslot.programItem.programType}`,
                 ),
               })}{" "}
-              <DirectSignupProgramItemTitle>
+              <DirectSignupTitle>
                 {directSignupForTimeslot.programItem.title}
-              </DirectSignupProgramItemTitle>
+              </DirectSignupTitle>
               . {t("signup.cannotSignupMoreThanOneProgramItem")}
             </InfoText>
           )}
@@ -187,11 +187,16 @@ export const DirectSignupProgramItem = ({
           closeError={() => setServerError(null)}
         />
       )}
-    </>
+    </Container>
   );
 };
 
-const DirectSignupProgramItemTitle = styled.span`
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const DirectSignupTitle = styled.span`
   font-weight: 600;
 `;
 
