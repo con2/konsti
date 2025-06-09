@@ -4,7 +4,7 @@ import {
 } from "client/test/test-settings/testSettingsServices";
 import { submitSetTestTime } from "client/test/test-settings/testSettingsSlice";
 import { AppThunk } from "client/types/reduxTypes";
-import { loadData } from "client/utils/loadData";
+import { loadProgramItems } from "client/utils/loadData";
 
 export const submitGetTestSettings = (): AppThunk => {
   return async (dispatch): Promise<void> => {
@@ -33,6 +33,8 @@ export const submitSetTestSettings = ({
     }
 
     dispatch(submitSetTestTime(response.testSettings.testTime));
-    await loadData();
+
+    // Force rerender of memoized program items list
+    await loadProgramItems({ forceUpdate: true });
   };
 };
