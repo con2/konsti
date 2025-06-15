@@ -15,7 +15,7 @@ import {
   PostUserRequest,
   PostUserResponse,
 } from "shared/types/api/users";
-import { RegistrationFormFields } from "client/views/registration/components/RegistrationForm";
+import { KonstiRegistrationFormFields } from "client/views/registration/components/KonstiRegistrationPage";
 import {
   PostEventLogIsSeenError,
   PostEventLogIsSeenRequest,
@@ -23,7 +23,7 @@ import {
 } from "shared/types/api/eventLog";
 
 export const postRegistration = async (
-  registrationFormFields: RegistrationFormFields,
+  registrationFormFields: KonstiRegistrationFormFields,
 ): Promise<PostUserResponse | PostUserError> => {
   const { username, password, serial } = registrationFormFields;
 

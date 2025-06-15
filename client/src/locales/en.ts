@@ -592,8 +592,13 @@ export const translationEN = {
     chooseKonstiUsername: "Choose a Konsti username",
   },
   registrationView: {
-    nickVisibleHintText: "Your username will be visible to other Konsti users.",
+    kompassiAndKonstiInfo:
+      "You can log in using a Kompassi account or create a Konsti account. A Konsti account is removed after this event.",
+    nickVisibleHintText: "Your username will be visible to other users.",
     alreadyHaveAccountLogin: "Do you already have an account? Log in here.",
+    konstiAccount: "Konsti account",
+    kompassiAccount: "Kompassi account",
+    linkToLogin: "Log in or create a Kompassi account.",
   },
   admissionView: {
     noAdmission: "You have not signed up for this program item.",
