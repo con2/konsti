@@ -21,14 +21,14 @@ import { UncontrolledInput } from "client/components/UncontrolledInput";
 import { Checkbox } from "client/components/Checkbox";
 import { PrivacyPolicy } from "client/components/PrivacyPolicy";
 
-export interface RegistrationFormFields {
+interface KonstiRegistrationFormFields {
   password: string;
   username: string;
   registerDescription: boolean;
   serial?: string;
 }
 
-export const RegistrationForm = (): ReactElement => {
+export const KonstiRegistrationForm = (): ReactElement => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
 
@@ -41,13 +41,13 @@ export const RegistrationForm = (): ReactElement => {
     handleSubmit,
     formState: { errors },
     control,
-  } = useForm<RegistrationFormFields>();
+  } = useForm<KonstiRegistrationFormFields>();
 
   const { isSubmitting } = useFormState({
     control,
   });
 
-  const onSubmit: SubmitHandler<RegistrationFormFields> = async (
+  const onSubmit: SubmitHandler<KonstiRegistrationFormFields> = async (
     registrationFormFields,
   ): Promise<void> => {
     const errorMessage = await dispatch(
@@ -181,6 +181,8 @@ export const RegistrationForm = (): ReactElement => {
           <FormFieldError>{errors.registerDescription.message}</FormFieldError>
         )}
 
+        <PrivacyPolicy />
+
         <FormRow>
           <Button
             disabled={isSubmitting}
@@ -190,8 +192,6 @@ export const RegistrationForm = (): ReactElement => {
             {t("button.register")}
           </Button>
         </FormRow>
-
-        <PrivacyPolicy />
 
         {serverError && (
           <ErrorMessage
@@ -212,7 +212,11 @@ const widthDefinition = css`
 `;
 
 const StyledInput = styled(UncontrolledInput)`
-  width: min(250px, 100%);
+  width: min(260px, 100%);
+
+  @media (min-width: ${(props) => props.theme.breakpointDesktop}) {
+    width: 360px;
+  }
 `;
 
 const FormRow = styled.div`
@@ -221,8 +225,6 @@ const FormRow = styled.div`
   flex: 0 1 auto;
   flex-direction: row;
   justify-content: flex-start;
-
-  ${widthDefinition}
 `;
 
 const FormFieldError = styled.div`
@@ -238,9 +240,11 @@ const FormFieldError = styled.div`
 const FormFieldIcon = styled.span`
   padding: 0 0 0 8px;
   font-size: ${(props) => props.theme.fontSizeLarge};
+  cursor: pointer;
 `;
 
 const SmallLabel = styled.label`
+  margin-top: -8px;
   font-size: ${(props) => props.theme.fontSizeSmaller};
 `;
 

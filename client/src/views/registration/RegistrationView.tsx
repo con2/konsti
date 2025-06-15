@@ -1,19 +1,17 @@
 import { ReactElement } from "react";
-import { Link } from "react-router";
-import { useTranslation } from "react-i18next";
-import { RegistrationForm } from "client/views/registration/components/RegistrationForm";
+import { KonstiRegistrationPage } from "client/views/registration/components/KonstiRegistrationPage";
+import { LoginProvider } from "shared/config/eventConfigTypes";
+import { useAppSelector } from "client/utils/hooks";
+import { KonstiAndKompassiRegistrationPage } from "client/views/registration/components/KonstiAndKompassiRegistrationPage";
 
 export const RegistrationView = (): ReactElement => {
-  const { t } = useTranslation();
+  const loginProvider = useAppSelector((state) => state.admin.loginProvider);
 
-  return (
-    <>
-      <h2>{t("pageTitle.registration")}</h2>
-      <p>{t("loginView.oldAccountsNotWorking")}</p>
-      <RegistrationForm />{" "}
-      <Link to={"/login"}>
-        <p>{t("registrationView.alreadyHaveAccountLogin")}</p>
-      </Link>
-    </>
-  );
+  if (loginProvider == LoginProvider.LOCAL) {
+    return <KonstiRegistrationPage />;
+  } else if (loginProvider == LoginProvider.LOCAL_KOMPASSI) {
+    return <KonstiAndKompassiRegistrationPage />;
+  }
+  // No separate page for Kompassi-only case, registration happens in Kompassi.
+  return null;
 };

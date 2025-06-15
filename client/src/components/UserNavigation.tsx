@@ -31,7 +31,7 @@ export const UserNavigation = (props: {
         {t("button.login")}
       </RouterLink>
 
-      {appOpen && loginProvider === LoginProvider.LOCAL && (
+      {appOpen && loginProvider !== LoginProvider.KOMPASSI && (
         <RouterLink
           onClick={props.onSelect}
           to={AppRoute.REGISTRATION}
