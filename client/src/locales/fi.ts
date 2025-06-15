@@ -36,7 +36,7 @@ export const translationFI = {
     close: "Sulje",
     scrollToTop: "Palaa sivun yläreunaan",
   },
-  username: "Käyttäjänimi",
+  username: "Nimimerkki",
   password: "Salasana",
   serial: "Rekisteröintikoodi",
   code: "Koodi",
@@ -47,7 +47,7 @@ export const translationFI = {
   hide: "Piilota",
   sortBy: "Järjestys",
   find: "Etsi",
-  findTitleOrUsername: "{{PROGRAM_TYPE}} nimi tai käyttäjänimi",
+  findTitleOrUsername: "{{PROGRAM_TYPE}} nimi tai nimimerkki",
   searchWithTitle: "{{PROGRAM_TYPE}} nimi",
   searchWithTitleOrSystem: "{{PROGRAM_TYPE}} nimi tai järjestelmä",
   hideFullItems: "Piilota täynnä olevat ohjelmanumerot",
@@ -149,9 +149,9 @@ export const translationFI = {
   directSignups: "Ilmoittautumiset",
   hiddenProgramItems: "Piilotetut ohjelmanumerot",
   error: {
-    usernameTaken: "Käyttäjänimi on jo olemassa",
+    usernameTaken: "Nimimerkki on jo olemassa",
     invalidSerial: "Virheellinen rekisteröintikoodi",
-    loginFailed: "Käyttäjänimi ja salasana eivät täsmää",
+    loginFailed: "Nimimerkki ja salasana eivät täsmää",
     loginDisabled: "Kirjautuminen on suljettu",
     invalidUserGroup: "Virheellinen käyttäjäryhmä",
     unknown: "Tuntematon virhe",
@@ -267,7 +267,7 @@ export const translationFI = {
   passwordManagement: {
     helperPasswordManagement: "Vaihda salasana",
     userCode: "Käyttäjän koodi",
-    userCodeOrUsername: "Käyttäjän koodi tai käyttäjänimi",
+    userCodeOrUsername: "Käyttäjän koodi tai nimimerkki",
     changePassword: "Vaihda salasana",
     newPassword: "Uusi salasana",
     userNotFound: "Käyttäjää ei löytynyt",
@@ -573,9 +573,13 @@ export const translationFI = {
     chooseKonstiUsername: "Valitse Konsti-nimimerkki",
   },
   registrationView: {
-    nickVisibleHintText:
-      "Valitsemasi käyttäjänimi näkyy muille Konstin käyttäjille.",
+    kompassiAndKonstiInfo:
+      "Voit kirjautua sisään joko Konstin omalla tai Kompassi-tunnuksella.",
+    nickVisibleHintText: "Nimimerkkisi näkyy muille käyttäjille.",
     alreadyHaveAccountLogin: "Onko sinulla jo tili? Kirjaudu sisään tästä.",
+    konstiAccount: "Konsti-tunnus",
+    kompassiAccount: "Kompassi-tunnus",
+    linkToLogin: "Kirjaudu sisään tai luo Kompassi-tunnus.",
   },
   admissionView: {
     noAdmission: "Et ole ilmoittautunut tähän ohjelmanumeroon.",

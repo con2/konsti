@@ -245,7 +245,7 @@ export const AppRoutes = (): ReactElement => {
     <Routes>
       <Route path={AppRoute.LOGIN} element={<LoginView />} />
       <Route path={AppRoute.ADMIN_LOGIN} element={<LoginView />} />
-      {loginProvider === LoginProvider.LOCAL && (
+      {loginProvider !== LoginProvider.KOMPASSI && (
         <Route path={AppRoute.REGISTRATION} element={<RegistrationView />} />
       )}
       <Route
