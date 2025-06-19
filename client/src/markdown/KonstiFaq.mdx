@@ -12,6 +12,7 @@ import { FinnishTimezone } from "./components/FinnishTimezone";
 import { CurrentTime } from "./components/CurrentTime";
 import { FinnishTime } from "./components/FinnishTime";
 import { Expand } from "./components/Expand";
+import { LotteryThermometerValues } from "./components/LotteryThermometerValues";
 // eslint-disable-next-line @typescript-eslint/no-restricted-imports
 import { AppRoute, ProfileTab } from "../app/AppRoutes";
 
@@ -382,6 +383,23 @@ Jos et jostain syystä pääsekään ohjelmanumeroon, johon olet jo ilmoittautun
 
 <En>
 If you cannot make it to the program item you have signed up for via the Konsti app and the sign-up period is still ongoing, please make sure to cancel your sign-up as soon as possible. This way someone else will have a chance to sign up for the program item and fill your seat!
+</En>
+</Expand>
+
+<Expand>
+<Fi>
+### Mitä arvonnan lämpömittari tarkoittaa?
+</Fi>
+<En>
+### What does the lottery signup thermometer mean?
+</En>
+<Fi>
+Kun ohjelmanumeroon ilmoittaudutaan arvonnalla, ohjelmanumeron suosiota kuvataan lämpömittarilla, jossa on viisi porrasta.
+<LotteryThermometerValues/>
+</Fi>
+<En>
+When you sign up for a program item through a lottery, the popularity of the program item is represented by a thermometer with five levels.
+<LotteryThermometerValues/>
 </En>
 </Expand>
 
