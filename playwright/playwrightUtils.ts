@@ -3,6 +3,7 @@ import { ApiDevEndpoint, ApiEndpoint } from "shared/constants/apiEndpoints";
 import { PopulateDbOptions } from "shared/test-types/api/testData";
 import { TestSettings } from "shared/test-types/models/testSettings";
 import { PostLoginRequest, PostLoginResponse } from "shared/types/api/login";
+import { PostDirectSignupRequest } from "shared/types/api/myProgramItems";
 import { PostUserRequest } from "shared/types/api/users";
 import { ProgramItem } from "shared/types/models/programItem";
 import { Settings } from "shared/types/models/settings";
@@ -71,10 +72,10 @@ const addSerials = async (
 
 export const addUser = async (
   request: APIRequestContext,
-  username?: string,
+  username: string,
 ): Promise<void> => {
   const testUser: PostUserRequest = {
-    username: username ?? "test1",
+    username,
     password: "test",
   };
 
@@ -153,6 +154,23 @@ export const postTestSettings = async (
   const url = `${baseUrl}${ApiDevEndpoint.TEST_SETTINGS}`;
   const response = await request.post(url, {
     data: testSettings,
+    headers: { Authorization: `Bearer ${loginResponse.jwt}` },
+  });
+  expect(response.status()).toBe(200);
+};
+
+export const testPostDirectSignup = async (
+  request: APIRequestContext,
+  username: string,
+  directSignup: PostDirectSignupRequest,
+): Promise<void> => {
+  const loginResponse = await postLogin(request, {
+    username,
+    password: "test",
+  });
+  const url = `${baseUrl}${ApiEndpoint.DIRECT_SIGNUP}`;
+  const response = await request.post(url, {
+    data: directSignup,
     headers: { Authorization: `Bearer ${loginResponse.jwt}` },
   });
   expect(response.status()).toBe(200);

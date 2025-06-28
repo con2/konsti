@@ -104,10 +104,6 @@ export const storeDirectSignup = async (
   }
   const signup = unwrapResult(signupResult);
 
-  const newSignup = signup.userSignups.find(
-    (userSignup) => userSignup.username === username,
-  );
-
   const settingsResult = await findSettings();
   if (isErrorResult(settingsResult)) {
     return {
@@ -121,30 +117,38 @@ export const storeDirectSignup = async (
     (message) => message.programItemId === programItem.programItemId,
   );
 
+  const allSignups = {
+    programItemId: signup.programItemId,
+    userSignups: signup.userSignups.map((userSignup) => ({
+      username: userSignup.username,
+      message: getSignupMessage(signupQuestion, userSignup.message),
+    })),
+  };
+
+  // Check if current user is signed in
+  // If user is not included, the program item was full
+  const newSignup = signup.userSignups.find(
+    (userSignup) => userSignup.username === username,
+  );
+
   if (newSignup) {
     return {
       message: "Store signup success",
       status: "success",
+      allSignups,
       directSignup: {
         programItemId: signup.programItemId,
         priority: newSignup.priority,
         signedToStartTime: newSignup.signedToStartTime,
         message: getSignupMessage(signupQuestion, newSignup.message),
       },
-      allSignups: {
-        programItemId: signup.programItemId,
-        userSignups: signup.userSignups.map((userSignup) => ({
-          username: userSignup.username,
-          message: getSignupMessage(signupQuestion, userSignup.message),
-        })),
-      },
     };
   }
 
   return {
-    message: "Store signup failure for unknown reason",
-    status: "error",
-    errorId: "unknown",
+    message: "Program item full",
+    status: "success",
+    allSignups,
   };
 };
 

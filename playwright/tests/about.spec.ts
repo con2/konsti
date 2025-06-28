@@ -3,7 +3,7 @@ import { addUser, clearDb, login } from "playwright/playwrightUtils";
 
 test("About page views content logged", async ({ page, request }) => {
   await clearDb(request);
-  await addUser(request);
+  await addUser(request, "test1");
   await login(page, request, { username: "test1", password: "test" });
 
   await page.goto("/");

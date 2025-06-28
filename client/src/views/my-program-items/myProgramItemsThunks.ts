@@ -107,8 +107,6 @@ export const submitPostDirectSignup = (
       switch (signupResponse.errorId) {
         case "signupEnded":
           return PostDirectSignupErrorMessage.SIGNUP_ENDED;
-        case "programItemFull":
-          return PostDirectSignupErrorMessage.PROGRAM_ITEM_FULL;
         case "signupNotOpenYet":
           return PostDirectSignupErrorMessage.SIGNUP_NOT_OPEN_YET;
         case "noKonstiSignup":
@@ -120,7 +118,7 @@ export const submitPostDirectSignup = (
       }
     }
 
-    dispatch(submitPostDirectSignupAsync(signupResponse.directSignup));
+    // Update current signups for program item
     dispatch(
       submitUpdateDirectSignupAsync({
         programItemId: signupResponse.allSignups.programItemId,
@@ -130,6 +128,14 @@ export const submitPostDirectSignup = (
         })),
       }),
     );
+
+    // Show error if signup failed, ie. program item is full
+    if (!signupResponse.directSignup) {
+      return PostDirectSignupErrorMessage.PROGRAM_ITEM_FULL;
+    }
+
+    // If signup success, update for user
+    dispatch(submitPostDirectSignupAsync(signupResponse.directSignup));
   };
 };
 

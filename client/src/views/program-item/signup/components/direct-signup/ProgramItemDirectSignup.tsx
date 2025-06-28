@@ -89,11 +89,11 @@ export const ProgramItemDirectSignup = ({
   return (
     <Container>
       {signupOpen && programItemIsFull && (
-        <BoldText>
+        <ProgramItemFullText data-testid="program-item-full">
           {t("signup.programItemFull", {
             PROGRAM_TYPE: t(`programTypeSingular.${programItem.programType}`),
           })}
-        </BoldText>
+        </ProgramItemFullText>
       )}
 
       {signupOpen && !alreadySignedToProgramItem && !programItemIsFull && (
@@ -200,7 +200,7 @@ const DirectSignupTitle = styled.span`
   font-weight: 600;
 `;
 
-const BoldText = styled.span`
+const ProgramItemFullText = styled.span`
   font-weight: 600;
 `;
 

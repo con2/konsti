@@ -108,7 +108,7 @@ export const ProgramItemHeadSignupInfo = ({
               </span>
             </QuestionContainer>
           )}
-          <AttendeeList>
+          <AttendeeList data-testid="attendee-list">
             {sortBy(signups, (signup) => signup.username).map((signup) => (
               <li key={signup.username}>
                 {signup.username}

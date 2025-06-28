@@ -42,12 +42,6 @@ export const findDirectSignups = async (): Promise<
   try {
     const response = await SignupModel.find({}).lean();
 
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-    if (!response) {
-      logger.info("MongoDB: Direct signups not found");
-      return makeSuccessResult([]);
-    }
-
     logger.debug("MongoDB: Direct signups found");
 
     const signups = response.flatMap((signup) => {
@@ -71,6 +65,39 @@ export const findDirectSignups = async (): Promise<
   }
 };
 
+export const findDirectSignupByProgramItemId = async (
+  programItemId: string,
+): Promise<Result<DirectSignupsForProgramItem | null, MongoDbError>> => {
+  try {
+    const response = await SignupModel.findOne({ programItemId }).lean();
+
+    if (!response) {
+      logger.info("MongoDB: Direct signup for program item not found");
+      return makeSuccessResult(null);
+    }
+
+    logger.debug("MongoDB: Direct signup for program item found");
+
+    const result = DirectSignupSchemaDb.safeParse(response);
+    if (!result.success) {
+      logger.error(
+        "%s",
+        new Error(
+          `Error validating findDirectSignupByProgramItemId DB value: programItemId: ${response.programItemId}, ${JSON.stringify(result.error)}`,
+        ),
+      );
+    }
+
+    return makeSuccessResult(result.data);
+  } catch (error) {
+    logger.error(
+      "MongoDB: Error finding direct signup for program item: %s",
+      error,
+    );
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+  }
+};
+
 interface FindDirectSignupsByStartTimeResponse extends UserDirectSignup {
   programItemId: string;
 }
@@ -89,11 +116,6 @@ export const findDirectSignupsByStartTime = async (
     const response = await SignupModel.find({
       programItemId: { $in: programItemsIds },
     }).lean();
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-    if (!response) {
-      logger.info(`MongoDB: Signups for time ${startTime} not found`);
-      return makeSuccessResult([]);
-    }
 
     logger.debug(`MongoDB: Found signups for time ${startTime}`);
 
@@ -136,11 +158,6 @@ export const findUserDirectSignups = async (
     const response = await SignupModel.find({
       "userSignups.username": username,
     }).lean();
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-    if (!response) {
-      logger.info(`MongoDB: Signups for user ${username} not found`);
-      return makeSuccessResult([]);
-    }
 
     logger.debug(`MongoDB: Found signups for user ${username}`);
 
@@ -189,7 +206,7 @@ export const saveDirectSignup = async (
   const programItem = unwrapResult(programItemResult);
 
   try {
-    const signup = await SignupModel.findOneAndUpdate(
+    const response = await SignupModel.findOneAndUpdate(
       {
         programItemId: directSignupProgramItemId,
         count: { $lt: programItem.maxAttendance },
@@ -211,17 +228,31 @@ export const saveDirectSignup = async (
       },
     ).lean();
 
-    if (!signup) {
-      logger.warn(
-        `Saving direct signup for user '${username}' failed: program item '${directSignupProgramItemId}' not found or program item full`,
+    // No response means that direct signups for program item is either not found of program item is full
+    if (!response) {
+      const signupResult = await findDirectSignupByProgramItemId(
+        directSignupProgramItemId,
       );
-      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+      if (isErrorResult(signupResult)) {
+        return signupResult;
+      }
+      const signup = unwrapResult(signupResult);
+
+      if (!signup) {
+        logger.warn(
+          `Saving direct signup for user '${username}' failed: program item '${directSignupProgramItemId}' not found`,
+        );
+        return makeErrorResult(MongoDbError.SIGNUP_NOT_FOUND);
+      }
+
+      return makeSuccessResult(signup);
     }
+
     logger.info(
       `MongoDB: Direct signup to '${directSignupProgramItemId}' saved for user "${username}"`,
     );
 
-    const result = DirectSignupSchemaDb.safeParse(signup);
+    const result = DirectSignupSchemaDb.safeParse(response);
     if (!result.success) {
       logger.error(
         "%s",
