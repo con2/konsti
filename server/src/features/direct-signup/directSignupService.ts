@@ -144,7 +144,7 @@ export const storeDirectSignup = async (
   }
 
   return {
-    message: "Store signup success",
+    message: "Program item full",
     status: "success",
     allSignups: {
       programItemId: signup.programItemId,
