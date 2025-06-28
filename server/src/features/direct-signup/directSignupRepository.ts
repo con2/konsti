@@ -72,25 +72,28 @@ export const findDirectSignupByProgramItemId = async (
     const response = await SignupModel.findOne({ programItemId }).lean();
 
     if (!response) {
-      logger.info("MongoDB: Direct signup not found");
+      logger.info("MongoDB: Direct signup for program item not found");
       return makeSuccessResult(null);
     }
 
-    logger.debug("MongoDB: Direct signup found");
+    logger.debug("MongoDB: Direct signup for program item found");
 
     const result = DirectSignupSchemaDb.safeParse(response);
     if (!result.success) {
       logger.error(
         "%s",
         new Error(
-          `Error validating findDirectSignup DB value: programItemId: ${response.programItemId}, ${JSON.stringify(result.error)}`,
+          `Error validating findDirectSignupByProgramItemId DB value: programItemId: ${response.programItemId}, ${JSON.stringify(result.error)}`,
         ),
       );
     }
 
     return makeSuccessResult(result.data);
   } catch (error) {
-    logger.error("MongoDB: Error finding direct signup: %s", error);
+    logger.error(
+      "MongoDB: Error finding direct signup for program item: %s",
+      error,
+    );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
