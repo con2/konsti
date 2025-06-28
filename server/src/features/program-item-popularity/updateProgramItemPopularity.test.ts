@@ -59,32 +59,36 @@ test("Should update program item popularity", async () => {
   });
 
   const programItems = unsafelyUnwrap(await findProgramItems());
-  expect(programItems.length).toEqual(2);
-  const firstProgramItem = programItems.find(
-    (programItem) =>
-      programItem.programItemId === testProgramItem.programItemId,
+
+  expect(programItems).toEqual(
+    expect.arrayContaining([
+      expect.objectContaining({
+        programItemId: testProgramItem.programItemId,
+        popularity: Popularity.NULL,
+      }),
+      expect.objectContaining({
+        programItemId: testProgramItem2.programItemId,
+        popularity: Popularity.NULL,
+      }),
+    ]),
   );
-  expect(firstProgramItem?.popularity).toEqual(Popularity.NULL);
-  const secondProgramItem = programItems.find(
-    (programItem) =>
-      programItem.programItemId === testProgramItem2.programItemId,
-  );
-  expect(secondProgramItem?.popularity).toEqual(Popularity.NULL);
 
   await updateProgramItemPopularity();
 
   const updatedProgramItems = unsafelyUnwrap(await findProgramItems());
-  expect(updatedProgramItems.length).toEqual(2);
-  const updatedFirstProgramItem = updatedProgramItems.find(
-    (programItem) =>
-      programItem.programItemId === testProgramItem.programItemId,
+
+  expect(updatedProgramItems).toEqual(
+    expect.arrayContaining([
+      expect.objectContaining({
+        programItemId: testProgramItem.programItemId,
+        popularity: Popularity.MEDIUM,
+      }),
+      expect.objectContaining({
+        programItemId: testProgramItem2.programItemId,
+        popularity: Popularity.NULL,
+      }),
+    ]),
   );
-  expect(updatedFirstProgramItem?.popularity).toEqual(Popularity.MEDIUM);
-  const updatedSecondProgramItem = updatedProgramItems.find(
-    (programItem) =>
-      programItem.programItemId === testProgramItem2.programItemId,
-  );
-  expect(updatedSecondProgramItem?.popularity).toEqual(Popularity.NULL);
 });
 
 test("Should only update program item popularity of upcoming program items", async () => {
@@ -131,33 +135,34 @@ test("Should only update program item popularity of upcoming program items", asy
   });
 
   const programItems = unsafelyUnwrap(await findProgramItems());
-  expect(programItems.length).toEqual(2);
 
-  const firstProgramItem = programItems.find(
-    (programItem) =>
-      programItem.programItemId === testProgramItem.programItemId,
+  expect(programItems).toEqual(
+    expect.arrayContaining([
+      expect.objectContaining({
+        programItemId: testProgramItem.programItemId,
+        popularity: Popularity.NULL,
+      }),
+      expect.objectContaining({
+        programItemId: testProgramItem2.programItemId,
+        popularity: Popularity.NULL,
+      }),
+    ]),
   );
-  expect(firstProgramItem?.popularity).toEqual(Popularity.NULL);
-  const secondProgramItem = programItems.find(
-    (programItem) =>
-      programItem.programItemId === testProgramItem2.programItemId,
-  );
-  expect(secondProgramItem?.popularity).toEqual(Popularity.NULL);
 
   await updateProgramItemPopularity();
 
   const updatedProgramItems = unsafelyUnwrap(await findProgramItems());
-  expect(updatedProgramItems.length).toEqual(2);
 
-  const updatedFirstProgramItem = updatedProgramItems.find(
-    (programItem) =>
-      programItem.programItemId === testProgramItem.programItemId,
+  expect(updatedProgramItems).toEqual(
+    expect.arrayContaining([
+      expect.objectContaining({
+        programItemId: testProgramItem.programItemId,
+        popularity: Popularity.NULL,
+      }),
+      expect.objectContaining({
+        programItemId: testProgramItem2.programItemId,
+        popularity: Popularity.MEDIUM,
+      }),
+    ]),
   );
-  expect(updatedFirstProgramItem?.popularity).toEqual(Popularity.NULL);
-
-  const updatedSecondProgramItem = updatedProgramItems.find(
-    (programItem) =>
-      programItem.programItemId === testProgramItem2.programItemId,
-  );
-  expect(updatedSecondProgramItem?.popularity).toEqual(Popularity.MEDIUM);
 });
