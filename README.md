@@ -16,7 +16,6 @@ Konsti is used by conventions like [Ropecon](https://ropecon.fi), [Tracon](https
 ## Quick Start
 
 - Requirements
-
   - Node.js 22.11.0
   - Docker
   - Yarn
@@ -33,7 +32,6 @@ Konsti is used by conventions like [Ropecon](https://ropecon.fi), [Tracon](https
 - Open `localhost:8000`
 
 - Login credentials for different roles
-
   - **Admin**: admin:test
   - **Users**: test1:test | test2:test | test3:test
   - **Users in same group**: group1:test | group2:test | group3:test
@@ -50,7 +48,6 @@ In this case, access the frontend at `localhost:5000`.
 ## Tech
 
 - General
-
   - TypeScript
   - Zod
   - Prettier & ESlint
@@ -58,14 +55,12 @@ In this case, access the frontend at `localhost:5000`.
   - Playwright
 
 - Backend
-
   - Node.js
   - Express
   - MongoDB
   - Kubernetes
 
 - Frontend
-
   - React
   - Redux & Redux Toolkit
   - Webpack
