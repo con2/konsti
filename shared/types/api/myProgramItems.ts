@@ -57,7 +57,7 @@ export type PostDirectSignupRequest = z.infer<
 >;
 
 export interface PostDirectSignupResponse extends ApiResult {
-  directSignup: DirectSignup;
+  directSignup?: DirectSignup;
   allSignups: {
     programItemId: string;
     userSignups: { username: string; message: string }[];
@@ -65,12 +65,7 @@ export interface PostDirectSignupResponse extends ApiResult {
 }
 
 export interface PostDirectSignupError extends ApiError {
-  errorId:
-    | "unknown"
-    | "programItemFull"
-    | "signupEnded"
-    | "signupNotOpenYet"
-    | "noKonstiSignup";
+  errorId: "unknown" | "signupEnded" | "signupNotOpenYet" | "noKonstiSignup";
 }
 
 // DELETE direct signup
