@@ -12,10 +12,10 @@ test("About page views content logged", async ({ page, request }) => {
   await expect(page.locator("h2")).toContainText("Konsti Help");
 
   await page.getByRole("link", { name: "FAQ" }).click();
-  await expect(page.locator("#main")).toContainText("For participants");
+  await expect(page.locator("h2").first()).toContainText("For participants");
 
   await page.getByRole("link", { name: "About", exact: true }).click();
-  await expect(page.getByRole("heading")).toContainText("What is Konsti?");
+  await expect(page.locator("h2")).toContainText("What is Konsti?");
 });
 
 test("About page views content not logged", async ({ page, request }) => {
@@ -27,8 +27,8 @@ test("About page views content not logged", async ({ page, request }) => {
   await expect(page.locator("h2")).toContainText("Konsti Help");
 
   await page.getByRole("link", { name: "FAQ" }).click();
-  await expect(page.locator("#main")).toContainText("For participants");
+  await expect(page.locator("h2").first()).toContainText("For participants");
 
   await page.getByRole("link", { name: "About", exact: true }).click();
-  await expect(page.getByRole("heading")).toContainText("What is Konsti?");
+  await expect(page.locator("h2")).toContainText("What is Konsti?");
 });
