@@ -9,13 +9,16 @@ test("About page views content logged", async ({ page, request }) => {
   await page.goto("/");
 
   await page.getByRole("link", { name: "About Konsti" }).click();
-  await expect(page.locator("h2")).toContainText("Konsti Help");
+  const helpHeading = page.locator("h2", { hasText: "Konsti Help" });
+  await expect(helpHeading).toBeVisible();
 
   await page.getByRole("link", { name: "FAQ" }).click();
-  await expect(page.locator("h2").first()).toContainText("For participants");
+  const faqHeading = page.locator("h2", { hasText: "For participants" });
+  await expect(faqHeading).toBeVisible();
 
   await page.getByRole("link", { name: "About", exact: true }).click();
-  await expect(page.locator("h2")).toContainText("What is Konsti?");
+  const aboutHeading = page.locator("h2", { hasText: "What is Konsti?" });
+  await expect(aboutHeading).toBeVisible();
 });
 
 test("About page views content not logged", async ({ page, request }) => {
@@ -24,11 +27,14 @@ test("About page views content not logged", async ({ page, request }) => {
   await page.goto("/");
 
   await page.getByRole("link", { name: "About Konsti" }).click();
-  await expect(page.locator("h2")).toContainText("Konsti Help");
+  const helpHeading = page.locator("h2", { hasText: "Konsti Help" });
+  await expect(helpHeading).toBeVisible();
 
   await page.getByRole("link", { name: "FAQ" }).click();
-  await expect(page.locator("h2").first()).toContainText("For participants");
+  const faqHeading = page.locator("h2", { hasText: "For participants" });
+  await expect(faqHeading).toBeVisible();
 
   await page.getByRole("link", { name: "About", exact: true }).click();
-  await expect(page.locator("h2")).toContainText("What is Konsti?");
+  const aboutHeading = page.locator("h2", { hasText: "What is Konsti?" });
+  await expect(aboutHeading).toBeVisible();
 });
