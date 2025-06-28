@@ -63,6 +63,8 @@ const commonConfig = {
   defaultLoginProvider: LoginProvider.LOCAL,
 
   // Event settings
+  padgAssignmentRounds: 5,
+  randomAssignmentRounds: 300,
   firstSignupBonus: 20,
   additionalFirstSignupBonus: 5,
   useLocalProgramFile: false,
@@ -83,8 +85,6 @@ const prodConfig = {
   jwtSecretKeyHelp: process.env.JWT_SECRET_KEY_HELP ?? "",
   allowedCorsOrigins: getAllowedCorsOrigins(),
   debug: process.env.DEBUG === "true" || false,
-  padgAssignmentRounds: 300,
-  randomAssignmentRounds: 300,
   consoleLogFormatJson: true,
 
   // Dev
@@ -111,8 +111,6 @@ const stagingConfig = {
   jwtSecretKeyHelp: process.env.JWT_SECRET_KEY_HELP ?? "",
   allowedCorsOrigins: getAllowedCorsOrigins(),
   debug: process.env.DEBUG === "true" || false,
-  padgAssignmentRounds: 300,
-  randomAssignmentRounds: 300,
   consoleLogFormatJson: true,
 
   // Dev
@@ -145,8 +143,6 @@ const devConfig = {
     "http://server:5000",
   ]),
   debug: false,
-  padgAssignmentRounds: 300,
-  randomAssignmentRounds: 10,
   consoleLogFormatJson: false,
 
   // Dev
