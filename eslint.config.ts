@@ -5,7 +5,6 @@ import globals from "globals";
 // @ts-expect-error: Missing types
 import eslintPluginCommentsConfigs from "@eslint-community/eslint-plugin-eslint-comments/configs";
 import eslintPluginCompat from "eslint-plugin-compat";
-// @ts-expect-error: Missing types
 import eslintPluginImport from "eslint-plugin-import";
 import eslintPluginJsxA11y from "eslint-plugin-jsx-a11y";
 import eslintPluginN from "eslint-plugin-n";
@@ -25,7 +24,7 @@ import typescriptEslint from "typescript-eslint";
 import { includeIgnoreFile } from "@eslint/compat";
 import { noUselessTemplateLiteral } from "./eslint-rules/noUselessTemplateLiteral";
 
-const filetypesGlob = "**/*.{ts,tsx,mts,js,cjs,mjs}";
+const filetypesGlob = "**/*.{ts,tsx,cts,mts,js,cjs,mjs}";
 
 // @ts-expect-error: import.met not allowed
 const gitignorePath = fileURLToPath(new URL(".gitignore", import.meta.url));
@@ -39,9 +38,7 @@ export default defineConfig([
   eslintPluginCommentsConfigs.recommended,
   // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
   eslintPluginPromise.configs["flat/recommended"],
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
   eslintPluginImport.flatConfigs.recommended,
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
   eslintPluginImport.flatConfigs.typescript,
   eslintPluginUnicorn.configs.recommended,
 
