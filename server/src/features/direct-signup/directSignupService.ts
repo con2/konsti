@@ -117,6 +117,14 @@ export const storeDirectSignup = async (
     (message) => message.programItemId === programItem.programItemId,
   );
 
+  const allSignups = {
+    programItemId: signup.programItemId,
+    userSignups: signup.userSignups.map((userSignup) => ({
+      username: userSignup.username,
+      message: getSignupMessage(signupQuestion, userSignup.message),
+    })),
+  };
+
   // Check if current user is signed in
   // If user is not included, the program item was full
   const newSignup = signup.userSignups.find(
@@ -127,18 +135,12 @@ export const storeDirectSignup = async (
     return {
       message: "Store signup success",
       status: "success",
+      allSignups,
       directSignup: {
         programItemId: signup.programItemId,
         priority: newSignup.priority,
         signedToStartTime: newSignup.signedToStartTime,
         message: getSignupMessage(signupQuestion, newSignup.message),
-      },
-      allSignups: {
-        programItemId: signup.programItemId,
-        userSignups: signup.userSignups.map((userSignup) => ({
-          username: userSignup.username,
-          message: getSignupMessage(signupQuestion, userSignup.message),
-        })),
       },
     };
   }
@@ -146,13 +148,7 @@ export const storeDirectSignup = async (
   return {
     message: "Program item full",
     status: "success",
-    allSignups: {
-      programItemId: signup.programItemId,
-      userSignups: signup.userSignups.map((userSignup) => ({
-        username: userSignup.username,
-        message: getSignupMessage(signupQuestion, userSignup.message),
-      })),
-    },
+    allSignups,
   };
 };
 

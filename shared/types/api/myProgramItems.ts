@@ -57,11 +57,11 @@ export type PostDirectSignupRequest = z.infer<
 >;
 
 export interface PostDirectSignupResponse extends ApiResult {
-  directSignup?: DirectSignup;
   allSignups: {
     programItemId: string;
     userSignups: { username: string; message: string }[];
   };
+  directSignup?: DirectSignup;
 }
 
 export interface PostDirectSignupError extends ApiError {
