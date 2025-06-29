@@ -8,7 +8,7 @@ import {
   saveGroupCode,
   saveGroupCreatorCode,
 } from "server/features/user/group/groupRepository";
-import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
+import { delLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { findUser } from "server/features/user/userRepository";
 import { MongoDbError } from "shared/types/api/errors";
 import {
@@ -228,13 +228,15 @@ export const joinGroup = async (
   }
 
   // Clean upcoming lottery signups
-  const pastLotterySignups = user.lotterySignups.filter((lotterySignup) =>
-    timeNow.isSameOrAfter(dayjs(lotterySignup.signedToStartTime)),
-  );
+  const upcomingLotterySignupIds = user.lotterySignups
+    .filter((lotterySignup) =>
+      timeNow.isBefore(dayjs(lotterySignup.signedToStartTime)),
+    )
+    .map((lotterySignup) => lotterySignup.programItemId);
 
-  if (user.lotterySignups.length !== pastLotterySignups.length) {
-    const saveLotterySignupsResult = await saveLotterySignups({
-      lotterySignups: pastLotterySignups,
+  if (upcomingLotterySignupIds.length > 0) {
+    const saveLotterySignupsResult = await delLotterySignups({
+      lotterySignupProgramItemIds: upcomingLotterySignupIds,
       username,
     });
     if (isErrorResult(saveLotterySignupsResult)) {
