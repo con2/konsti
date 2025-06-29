@@ -114,7 +114,7 @@ export const NotInGroupActions = ({ disabled }: Props): ReactElement => {
       {showJoinGroup && (
         <>
           <InfoTextParagraph>
-            {t("group.joiningGroupWillCancelLotterySignups")}
+            {t("group.joiningGroupWillCancelUpcomingLotterySignups")}
           </InfoTextParagraph>
 
           <StyledInput

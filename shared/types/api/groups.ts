@@ -32,7 +32,7 @@ export interface PostJoinGroupError extends ApiError {
     | "alreadyInGroup"
     | "invalidGroupCode"
     | "groupDoesNotExist"
-    | "removePreviousLotterySignupsFailed"
+    | "removeUpcomingLotterySignupsFailed"
     | "upcomingDirectSignups"
     | "errorFindingUser";
 }

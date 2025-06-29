@@ -1,5 +1,5 @@
 import { randomBytes } from "node:crypto";
-import dayjs from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
 import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
 import { findUserDirectSignups } from "server/features/direct-signup/directSignupRepository";
 import {
@@ -43,17 +43,8 @@ export const generateGroupCode = (): string => {
 
 const checkUpcomingDirectSignups = async (
   username: string,
+  timeNow: Dayjs,
 ): Promise<PostCreateGroupError | PostJoinGroupError | null> => {
-  const timeNowResult = await getTimeNow();
-  if (isErrorResult(timeNowResult)) {
-    return {
-      message: "Unable to get current time",
-      status: "error",
-      errorId: "unknown",
-    };
-  }
-  const timeNow = unwrapResult(timeNowResult);
-
   const directSignupsResult = await findUserDirectSignups(username);
   if (isErrorResult(directSignupsResult)) {
     return {
@@ -100,8 +91,21 @@ const checkUpcomingDirectSignups = async (
 export const createGroup = async (
   username: string,
 ): Promise<PostCreateGroupResponse | PostCreateGroupError> => {
+  const timeNowResult = await getTimeNow();
+  if (isErrorResult(timeNowResult)) {
+    return {
+      message: "Unable to get current time",
+      status: "error",
+      errorId: "unknown",
+    };
+  }
+  const timeNow = unwrapResult(timeNowResult);
+
   // User cannot have direct signups in future when joining a group
-  const hasUpcomingDirectSignups = await checkUpcomingDirectSignups(username);
+  const hasUpcomingDirectSignups = await checkUpcomingDirectSignups(
+    username,
+    timeNow,
+  );
   if (hasUpcomingDirectSignups) {
     return hasUpcomingDirectSignups as PostCreateGroupError;
   }
@@ -161,11 +165,25 @@ export const joinGroup = async (
   username: string,
   groupCode: string,
 ): Promise<PostJoinGroupResponse | PostJoinGroupError> => {
+  const timeNowResult = await getTimeNow();
+  if (isErrorResult(timeNowResult)) {
+    return {
+      message: "Unable to get current time",
+      status: "error",
+      errorId: "unknown",
+    };
+  }
+  const timeNow = unwrapResult(timeNowResult);
+
   // User cannot have direct signups in future when joining a group
-  const hasUpcomingDirectSignups = await checkUpcomingDirectSignups(username);
+  const hasUpcomingDirectSignups = await checkUpcomingDirectSignups(
+    username,
+    timeNow,
+  );
   if (hasUpcomingDirectSignups) {
     return hasUpcomingDirectSignups as PostJoinGroupError;
   }
+
   // Check if user is already in a group (or has created a group)
   const userResult = await findUser(username);
   if (isErrorResult(userResult)) {
@@ -175,11 +193,15 @@ export const joinGroup = async (
       errorId: "errorFindingUser",
     };
   }
-  const userResponse = unwrapResult(userResult);
-  if (
-    userResponse?.groupCode !== "0" ||
-    userResponse.groupCreatorCode !== "0"
-  ) {
+  const user = unwrapResult(userResult);
+  if (!user) {
+    return {
+      message: "User not found",
+      status: "error",
+      errorId: "unknown",
+    };
+  }
+  if (user.groupCode !== "0" || user.groupCreatorCode !== "0") {
     return {
       message: "User has a group or is a member of a group",
       status: "error",
@@ -191,7 +213,7 @@ export const joinGroup = async (
   const groupExistsResult = await checkGroupExists(groupCode);
   if (isErrorResult(groupExistsResult)) {
     return {
-      message: "Error in finding group",
+      message: "Error finding group",
       status: "error",
       errorId: "unknown",
     };
@@ -205,17 +227,23 @@ export const joinGroup = async (
     };
   }
 
-  // Clean previous lottery signups
-  const saveLotterySignupsResult = await saveLotterySignups({
-    lotterySignups: [],
-    username,
-  });
-  if (isErrorResult(saveLotterySignupsResult)) {
-    return {
-      message: "Error removing previous lottery signups",
-      status: "error",
-      errorId: "removePreviousLotterySignupsFailed",
-    };
+  // Clean upcoming lottery signups
+  const pastLotterySignups = user.lotterySignups.filter((lotterySignup) =>
+    timeNow.isSameOrAfter(dayjs(lotterySignup.signedToStartTime)),
+  );
+
+  if (user.lotterySignups.length !== pastLotterySignups.length) {
+    const saveLotterySignupsResult = await saveLotterySignups({
+      lotterySignups: pastLotterySignups,
+      username,
+    });
+    if (isErrorResult(saveLotterySignupsResult)) {
+      return {
+        message: "Error removing upcoming lottery signups",
+        status: "error",
+        errorId: "removeUpcomingLotterySignupsFailed",
+      };
+    }
   }
 
   // Group exists, join
