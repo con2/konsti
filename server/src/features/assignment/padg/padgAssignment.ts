@@ -23,7 +23,7 @@ export const padgAssignment = (
   users: readonly User[],
   programItems: readonly ProgramItem[],
   assignmentTime: string,
-  lotteryValidDirectSignups: readonly DirectSignupsForProgramItem[],
+  lotteryParticipantDirectSignups: readonly DirectSignupsForProgramItem[],
 ): Result<AssignmentResult, AssignmentError> => {
   logger.debug(`***** Run Padg Assignment for ${assignmentTime}`);
   const startingProgramItems = getStartingProgramItems(
@@ -70,7 +70,7 @@ export const padgAssignment = (
     lotterySignupProgramItems,
     attendeeGroups,
     assignmentTime,
-    lotteryValidDirectSignups,
+    lotteryParticipantDirectSignups,
   );
   if (isErrorResult(assignmentResultResult)) {
     return assignmentResultResult;

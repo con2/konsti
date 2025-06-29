@@ -151,7 +151,7 @@ test("should return empty array if user has no lottery signups", () => {
   const list = getList({
     attendeeGroups,
     assignmentTime,
-    lotteryValidDirectSignups: [],
+    lotteryParticipantDirectSignups: [],
     lotterySignupProgramItems: [testProgramItem],
   });
 
@@ -164,7 +164,7 @@ test("should return as many results as user groups", () => {
   const list = getList({
     attendeeGroups,
     assignmentTime,
-    lotteryValidDirectSignups: [],
+    lotteryParticipantDirectSignups: [],
     lotterySignupProgramItems: [testProgramItem],
   });
 
@@ -198,7 +198,7 @@ describe("should give first time bonus", () => {
     const list = getList({
       attendeeGroups,
       assignmentTime,
-      lotteryValidDirectSignups: [],
+      lotteryParticipantDirectSignups: [],
       lotterySignupProgramItems: [testProgramItem],
     });
 
@@ -218,7 +218,7 @@ describe("should give first time bonus", () => {
     const list = getList({
       attendeeGroups,
       assignmentTime,
-      lotteryValidDirectSignups: [
+      lotteryParticipantDirectSignups: [
         getPreviousDirectSignup({ username: "foobar user" }),
       ],
       lotterySignupProgramItems: [testProgramItem],
@@ -244,7 +244,7 @@ describe("should give first time bonus", () => {
     const list = getList({
       attendeeGroups,
       assignmentTime,
-      lotteryValidDirectSignups: [],
+      lotteryParticipantDirectSignups: [],
       lotterySignupProgramItems: [],
     });
 
@@ -264,7 +264,7 @@ describe("should give first time bonus", () => {
     const list = getList({
       attendeeGroups,
       assignmentTime,
-      lotteryValidDirectSignups: [
+      lotteryParticipantDirectSignups: [
         getPreviousDirectSignup({ username: "foobar user" }),
       ],
       lotterySignupProgramItems: [testProgramItem],
@@ -287,7 +287,7 @@ describe("should give first time bonus", () => {
     const list = getList({
       attendeeGroups,
       assignmentTime,
-      lotteryValidDirectSignups: [
+      lotteryParticipantDirectSignups: [
         getPreviousDirectSignup({ username: users[0].username }),
       ],
       lotterySignupProgramItems: [testProgramItem],
@@ -313,7 +313,7 @@ describe("should give first time bonus", () => {
     const list = getList({
       attendeeGroups,
       assignmentTime,
-      lotteryValidDirectSignups: [],
+      lotteryParticipantDirectSignups: [],
       lotterySignupProgramItems: [testProgramItem],
     });
 
@@ -338,7 +338,7 @@ describe("should give first time bonus", () => {
     const list = getList({
       attendeeGroups,
       assignmentTime,
-      lotteryValidDirectSignups: [
+      lotteryParticipantDirectSignups: [
         getPreviousDirectSignup({ username: users[1].username }),
       ],
       lotterySignupProgramItems: [testProgramItem],
@@ -364,7 +364,7 @@ describe("should give first time bonus", () => {
     const list = getList({
       attendeeGroups,
       assignmentTime,
-      lotteryValidDirectSignups: [],
+      lotteryParticipantDirectSignups: [],
       lotterySignupProgramItems: [],
     });
 
@@ -386,7 +386,7 @@ describe("should NOT give first time bonus", () => {
     const list = getList({
       attendeeGroups,
       assignmentTime,
-      lotteryValidDirectSignups: [
+      lotteryParticipantDirectSignups: [
         getPreviousDirectSignup({
           username: users[0].username,
         }),
@@ -411,7 +411,7 @@ describe("should NOT give first time bonus", () => {
     const list = getList({
       attendeeGroups,
       assignmentTime,
-      lotteryValidDirectSignups: [
+      lotteryParticipantDirectSignups: [
         getPreviousDirectSignup({
           username: users[0].username,
         }),
@@ -447,7 +447,7 @@ describe("should give additional bonus", () => {
     const list = getList({
       attendeeGroups,
       assignmentTime,
-      lotteryValidDirectSignups: [],
+      lotteryParticipantDirectSignups: [],
       lotterySignupProgramItems: [testProgramItem],
     });
 
@@ -471,7 +471,7 @@ describe("should give additional bonus", () => {
     const list = getList({
       attendeeGroups,
       assignmentTime,
-      lotteryValidDirectSignups: [],
+      lotteryParticipantDirectSignups: [],
       lotterySignupProgramItems: [testProgramItem],
     });
 
@@ -495,7 +495,7 @@ describe("should give additional bonus", () => {
     const list = getList({
       attendeeGroups,
       assignmentTime,
-      lotteryValidDirectSignups: [],
+      lotteryParticipantDirectSignups: [],
       lotterySignupProgramItems: [testProgramItem],
     });
 
@@ -517,7 +517,7 @@ describe("should NOT give additional bonus", () => {
     const list = getList({
       attendeeGroups,
       assignmentTime,
-      lotteryValidDirectSignups: [
+      lotteryParticipantDirectSignups: [
         getPreviousDirectSignup({
           username: users[0].username,
         }),
@@ -546,7 +546,7 @@ describe("should NOT give additional bonus", () => {
     const list = getList({
       attendeeGroups,
       assignmentTime,
-      lotteryValidDirectSignups: [],
+      lotteryParticipantDirectSignups: [],
       lotterySignupProgramItems: [testProgramItem],
     });
 
@@ -566,7 +566,7 @@ describe("should NOT give additional bonus", () => {
     const list = getList({
       attendeeGroups,
       assignmentTime,
-      lotteryValidDirectSignups: [
+      lotteryParticipantDirectSignups: [
         getPreviousDirectSignup({
           username: users[0].username,
         }),
@@ -590,7 +590,7 @@ describe("should NOT give additional bonus", () => {
     const list = getList({
       attendeeGroups,
       assignmentTime,
-      lotteryValidDirectSignups: [],
+      lotteryParticipantDirectSignups: [],
       lotterySignupProgramItems: [testProgramItem],
     });
 

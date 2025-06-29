@@ -5,12 +5,12 @@ import { DirectSignupsForProgramItem } from "server/features/direct-signup/direc
 
 export const getEvents = (
   lotterySignupProgramItems: readonly ProgramItem[],
-  lotteryValidDirectSignups: readonly DirectSignupsForProgramItem[],
+  lotteryParticipantDirectSignups: readonly DirectSignupsForProgramItem[],
 ): Event[] => {
   return lotterySignupProgramItems.map((lotterySignupProgramItem) => {
     // Program item can have existing direct signups if program item's start time has changed
     // Consider existing direct signups when determining program item attendee limits
-    const programItemSignup = lotteryValidDirectSignups.find(
+    const programItemSignup = lotteryParticipantDirectSignups.find(
       (signup) =>
         signup.programItemId === lotterySignupProgramItem.programItemId,
     );

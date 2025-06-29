@@ -24,7 +24,7 @@ export const runAssignmentAlgorithm = (
   users: readonly User[],
   programItems: readonly ProgramItem[],
   assignmentTime: string,
-  lotteryValidDirectSignups: readonly DirectSignupsForProgramItem[],
+  lotteryParticipantDirectSignups: readonly DirectSignupsForProgramItem[],
 ): Result<AssignmentResult, AssignmentError> => {
   logger.info(
     `Received data for ${users.length} users and ${programItems.length} program items`,
@@ -37,7 +37,7 @@ export const runAssignmentAlgorithm = (
       users,
       programItems,
       assignmentTime,
-      lotteryValidDirectSignups,
+      lotteryParticipantDirectSignups,
     );
   }
 
@@ -46,7 +46,7 @@ export const runAssignmentAlgorithm = (
       users,
       programItems,
       assignmentTime,
-      lotteryValidDirectSignups,
+      lotteryParticipantDirectSignups,
     );
   }
 
@@ -56,7 +56,7 @@ export const runAssignmentAlgorithm = (
       users,
       programItems,
       assignmentTime,
-      lotteryValidDirectSignups,
+      lotteryParticipantDirectSignups,
     );
   }
 
@@ -67,13 +67,13 @@ const runPadgAlgorithm = (
   users: readonly User[],
   programItems: readonly ProgramItem[],
   assignmentTime: string,
-  lotteryValidDirectSignups: readonly DirectSignupsForProgramItem[],
+  lotteryParticipantDirectSignups: readonly DirectSignupsForProgramItem[],
 ): Result<AssignmentResult, AssignmentError> => {
   const padgResultResult = padgAssignment(
     users,
     programItems,
     assignmentTime,
-    lotteryValidDirectSignups,
+    lotteryParticipantDirectSignups,
   );
   if (isErrorResult(padgResultResult)) {
     return padgResultResult;
@@ -86,13 +86,13 @@ const runRandomAlgorithm = (
   users: readonly User[],
   programItems: readonly ProgramItem[],
   assignmentTime: string,
-  lotteryValidDirectSignups: readonly DirectSignupsForProgramItem[],
+  lotteryParticipantDirectSignups: readonly DirectSignupsForProgramItem[],
 ): Result<AssignmentResult, AssignmentError> => {
   const randomResultResult = randomAssignment(
     users,
     programItems,
     assignmentTime,
-    lotteryValidDirectSignups,
+    lotteryParticipantDirectSignups,
   );
   if (isErrorResult(randomResultResult)) {
     return randomResultResult;
@@ -105,13 +105,13 @@ const runRandomPadgAlgorithm = (
   users: readonly User[],
   programItems: readonly ProgramItem[],
   assignmentTime: string,
-  lotteryValidDirectSignups: readonly DirectSignupsForProgramItem[],
+  lotteryParticipantDirectSignups: readonly DirectSignupsForProgramItem[],
 ): Result<AssignmentResult, AssignmentError> => {
   const randomResultResult = randomAssignment(
     users,
     programItems,
     assignmentTime,
-    lotteryValidDirectSignups,
+    lotteryParticipantDirectSignups,
   );
   if (isErrorResult(randomResultResult)) {
     logger.error(
@@ -132,7 +132,7 @@ const runRandomPadgAlgorithm = (
     users,
     programItems,
     assignmentTime,
-    lotteryValidDirectSignups,
+    lotteryParticipantDirectSignups,
   );
   if (isErrorResult(padgResultResult)) {
     logger.error(
