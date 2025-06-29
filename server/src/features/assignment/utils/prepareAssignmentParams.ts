@@ -25,6 +25,7 @@ const getValidLotterySignupsUsers = (
   });
 };
 
+// "Lottery participant" means program item took part in lottery and direct signup is either from lottery or after lottery
 export const getLotteryParticipantDirectSignups = (
   directSignups: readonly DirectSignupsForProgramItem[],
   programItems: readonly ProgramItem[],
