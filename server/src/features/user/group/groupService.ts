@@ -31,6 +31,7 @@ import {
 } from "shared/utils/result";
 import { findProgramItems } from "server/features/program-item/programItemRepository";
 import { getLotteryParticipantDirectSignups } from "server/features/assignment/utils/prepareAssignmentParams";
+import { ProgramItem } from "shared/types/models/programItem";
 
 export const generateGroupCode = (): string => {
   const baseCode = randomBytes(5).toString("hex").slice(0, 9);
@@ -43,39 +44,38 @@ export const generateGroupCode = (): string => {
 
 const checkUpcomingDirectSignups = async (
   username: string,
+  programItems: ProgramItem[],
   timeNow: Dayjs,
 ): Promise<PostCreateGroupError | PostJoinGroupError | null> => {
-  const directSignupsResult = await findUserDirectSignups(username);
-  if (isErrorResult(directSignupsResult)) {
+  const userDirectSignupsResult = await findUserDirectSignups(username);
+  if (isErrorResult(userDirectSignupsResult)) {
     return {
       message: "Error finding signups",
       status: "error",
       errorId: "unknown",
     };
   }
-  const directSignups = unwrapResult(directSignupsResult);
-
-  const programItemsResult = await findProgramItems();
-  if (isErrorResult(programItemsResult)) {
-    return {
-      message: "Error finding program items",
-      status: "error",
-      errorId: "unknown",
-    };
-  }
-  const programItems = unwrapResult(programItemsResult);
+  const userDirectSignups = unwrapResult(userDirectSignupsResult);
 
   const lotteryParticipantDirectSignups = getLotteryParticipantDirectSignups(
-    directSignups,
+    userDirectSignups,
     programItems,
   );
 
-  const userDirectSignups = lotteryParticipantDirectSignups.flatMap(
-    (signup) => signup.userSignups,
+  const userDirectSignupProgramItems = lotteryParticipantDirectSignups.flatMap(
+    (signup) => {
+      const found = programItems.find(
+        (programItem) => programItem.programItemId === signup.programItemId,
+      );
+      if (!found) {
+        return [];
+      }
+      return found;
+    },
   );
 
-  const userHasUpcomingDirectSignups = userDirectSignups.some((userSignup) =>
-    timeNow.isBefore(dayjs(userSignup.signedToStartTime)),
+  const userHasUpcomingDirectSignups = userDirectSignupProgramItems.some(
+    (programItem) => timeNow.isBefore(dayjs(programItem.startTime)),
   );
   if (userHasUpcomingDirectSignups) {
     return {
@@ -101,9 +101,20 @@ export const createGroup = async (
   }
   const timeNow = unwrapResult(timeNowResult);
 
+  const programItemsResult = await findProgramItems();
+  if (isErrorResult(programItemsResult)) {
+    return {
+      message: "Error finding program items",
+      status: "error",
+      errorId: "unknown",
+    };
+  }
+  const programItems = unwrapResult(programItemsResult);
+
   // User cannot have direct signups in future when joining a group
   const hasUpcomingDirectSignups = await checkUpcomingDirectSignups(
     username,
+    programItems,
     timeNow,
   );
   if (hasUpcomingDirectSignups) {
@@ -175,9 +186,20 @@ export const joinGroup = async (
   }
   const timeNow = unwrapResult(timeNowResult);
 
+  const programItemsResult = await findProgramItems();
+  if (isErrorResult(programItemsResult)) {
+    return {
+      message: "Error finding program items",
+      status: "error",
+      errorId: "unknown",
+    };
+  }
+  const programItems = unwrapResult(programItemsResult);
+
   // User cannot have direct signups in future when joining a group
   const hasUpcomingDirectSignups = await checkUpcomingDirectSignups(
     username,
+    programItems,
     timeNow,
   );
   if (hasUpcomingDirectSignups) {
@@ -228,15 +250,23 @@ export const joinGroup = async (
   }
 
   // Clean upcoming lottery signups
-  const upcomingLotterySignupIds = user.lotterySignups
-    .filter((lotterySignup) =>
-      timeNow.isBefore(dayjs(lotterySignup.signedToStartTime)),
-    )
-    .map((lotterySignup) => lotterySignup.programItemId);
+  const lotterySignupProgramItems = user.lotterySignups.flatMap((signup) => {
+    const found = programItems.find(
+      (programItem) => programItem.programItemId === signup.programItemId,
+    );
+    if (!found) {
+      return [];
+    }
+    return found;
+  });
 
-  if (upcomingLotterySignupIds.length > 0) {
+  const upcomingLotterySignupProgramItemIds = lotterySignupProgramItems
+    .filter((programItem) => timeNow.isBefore(dayjs(programItem.startTime)))
+    .map((programItem) => programItem.programItemId);
+
+  if (upcomingLotterySignupProgramItemIds.length > 0) {
     const saveLotterySignupsResult = await delLotterySignups({
-      lotterySignupProgramItemIds: upcomingLotterySignupIds,
+      lotterySignupProgramItemIds: upcomingLotterySignupProgramItemIds,
       username,
     });
     if (isErrorResult(saveLotterySignupsResult)) {
