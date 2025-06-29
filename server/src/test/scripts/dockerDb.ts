@@ -1,7 +1,7 @@
 import { execSync } from "node:child_process";
 import { logger } from "server/utils/logger";
 
-export const mongoDbVersion = "8.0.10";
+const mongoDbVersion = "8.0.10";
 const containerName = `konsti-mongodb-${mongoDbVersion}`;
 
 const isMongoContainerRunning = (): boolean => {

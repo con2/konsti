@@ -2,6 +2,7 @@ import { vi } from "vitest";
 import { initializeDayjs } from "shared/utils/initializeDayjs";
 import { config } from "shared/config";
 import { ProgramType } from "shared/types/models/programItem";
+import { mongoDbPort } from "server/test/globalSetup";
 
 initializeDayjs();
 
@@ -20,7 +21,7 @@ if (!config.server().enableLoggingInTests) {
 }
 
 // Defined in globalSetup.ts
-globalThis.__MONGO_URI__ = "mongodb://127.0.0.1:57233/";
+globalThis.__MONGO_URI__ = `mongodb://127.0.0.1:${mongoDbPort}/`;
 
 vi.spyOn(config, "event").mockReturnValue({
   ...config.event(),
