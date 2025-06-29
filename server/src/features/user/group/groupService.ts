@@ -30,7 +30,7 @@ import {
   unwrapResult,
 } from "shared/utils/result";
 import { findProgramItems } from "server/features/program-item/programItemRepository";
-import { getLotteryValidDirectSignups } from "server/features/assignment/utils/prepareAssignmentParams";
+import { getLotteryParticipantDirectSignups } from "server/features/assignment/utils/prepareAssignmentParams";
 
 export const generateGroupCode = (): string => {
   const baseCode = randomBytes(5).toString("hex").slice(0, 9);
@@ -64,7 +64,7 @@ export const createGroup = async (
   }
   const programItems = unwrapResult(programItemsResult);
 
-  const lotteryValidDirectSignups = getLotteryValidDirectSignups(
+  const lotteryParticipantDirectSignups = getLotteryParticipantDirectSignups(
     signups,
     programItems,
   );
@@ -80,7 +80,7 @@ export const createGroup = async (
 
   const timeNow = unwrapResult(timeNowResult);
 
-  const userDirectSignups = lotteryValidDirectSignups.flatMap(
+  const userDirectSignups = lotteryParticipantDirectSignups.flatMap(
     (signup) => signup.userSignups,
   );
   const userHasDirectSignups = userDirectSignups.some((userSignup) =>
@@ -181,12 +181,12 @@ export const joinGroup = async (
   }
   const programItems = unwrapResult(programItemsResult);
 
-  const lotteryValidDirectSignups = getLotteryValidDirectSignups(
+  const lotteryParticipantDirectSignups = getLotteryParticipantDirectSignups(
     signups,
     programItems,
   );
 
-  const userDirectSignups = lotteryValidDirectSignups.flatMap(
+  const userDirectSignups = lotteryParticipantDirectSignups.flatMap(
     (signup) => signup.userSignups,
   );
 

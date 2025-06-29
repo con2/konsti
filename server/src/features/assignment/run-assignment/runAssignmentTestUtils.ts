@@ -15,7 +15,7 @@ import {
 } from "shared/utils/result";
 import { MongoDbError } from "shared/types/api/errors";
 import { findProgramItems } from "server/features/program-item/programItemRepository";
-import { getLotteryValidDirectSignups } from "server/features/assignment/utils/prepareAssignmentParams";
+import { getLotteryParticipantDirectSignups } from "server/features/assignment/utils/prepareAssignmentParams";
 import { generateTestUsers } from "server/test/test-data-generation/generators/generateTestData";
 import { createProgramItems } from "server/test/test-data-generation/generators/createProgramItems";
 import { createLotterySignups } from "server/test/test-data-generation/generators/createLotterySignups";
@@ -71,12 +71,12 @@ export const verifyUserSignups = async (): Promise<
   }
   const programItems = unwrapResult(programItemsResult);
 
-  const lotteryValidDirectSignups = getLotteryValidDirectSignups(
+  const lotteryParticipantDirectSignups = getLotteryParticipantDirectSignups(
     signups,
     programItems,
   );
 
-  lotteryValidDirectSignups.map(({ programItemId, userSignups }) => {
+  lotteryParticipantDirectSignups.map(({ programItemId, userSignups }) => {
     // Verify group member signups match with group creators lotterySignups
     // If not in group -> user is group creator
 

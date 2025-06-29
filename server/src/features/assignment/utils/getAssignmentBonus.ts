@@ -7,7 +7,7 @@ import { ProgramItem } from "shared/types/models/programItem";
 
 export const getAssignmentBonus = (
   attendeeGroup: User[],
-  lotteryValidDirectSignups: readonly DirectSignupsForProgramItem[],
+  lotteryParticipantDirectSignups: readonly DirectSignupsForProgramItem[],
   lotterySignupProgramItems: readonly ProgramItem[],
 ): number => {
   /** First time bonus */
@@ -15,7 +15,7 @@ export const getAssignmentBonus = (
   // Get group members with direct signups or NEW_ASSIGNMENT event log items
   const [groupMembersWithDirectSignups, groupMembersWithoutDirectSignups] =
     partition(attendeeGroup, (groupMember) => {
-      const previousDirectSignup = lotteryValidDirectSignups.find(
+      const previousDirectSignup = lotteryParticipantDirectSignups.find(
         (programItem) => {
           return programItem.userSignups.find(
             (userSignup) => userSignup.username === groupMember.username,

@@ -29,17 +29,17 @@ export const runRandomAssignment = (
   lotterySignupProgramItems: readonly ProgramItem[],
   attendeeGroups: readonly User[][],
   assignmentTime: string,
-  lotteryValidDirectSignups: readonly DirectSignupsForProgramItem[],
+  lotteryParticipantDirectSignups: readonly DirectSignupsForProgramItem[],
 ): Result<AssignmentAlgorithmResult, AssignmentError> => {
   const groups = getGroups(attendeeGroups, assignmentTime);
   const events = getEvents(
     lotterySignupProgramItems,
-    lotteryValidDirectSignups,
+    lotteryParticipantDirectSignups,
   );
   const list = getList({
     attendeeGroups,
     assignmentTime,
-    lotteryValidDirectSignups,
+    lotteryParticipantDirectSignups,
     lotterySignupProgramItems,
   });
 

@@ -10,14 +10,14 @@ import { ProgramItem } from "shared/types/models/programItem";
 interface GetListParams {
   attendeeGroups: readonly User[][];
   assignmentTime: string;
-  lotteryValidDirectSignups: readonly DirectSignupsForProgramItem[];
+  lotteryParticipantDirectSignups: readonly DirectSignupsForProgramItem[];
   lotterySignupProgramItems: readonly ProgramItem[];
 }
 
 export const getList = ({
   attendeeGroups,
   assignmentTime,
-  lotteryValidDirectSignups,
+  lotteryParticipantDirectSignups,
   lotterySignupProgramItems,
 }: GetListParams): ListItem[] => {
   const results = attendeeGroups.flatMap((attendeeGroup) => {
@@ -47,7 +47,7 @@ export const getList = ({
           gain: getGain(
             lotterySignup,
             attendeeGroup,
-            lotteryValidDirectSignups,
+            lotteryParticipantDirectSignups,
             lotterySignupProgramItems,
           ),
         };
@@ -62,12 +62,12 @@ export const getList = ({
 const getGain = (
   lotterySignup: LotterySignup,
   attendeeGroup: User[],
-  lotteryValidDirectSignups: readonly DirectSignupsForProgramItem[],
+  lotteryParticipantDirectSignups: readonly DirectSignupsForProgramItem[],
   lotterySignupProgramItems: readonly ProgramItem[],
 ): number => {
   const bonus = getAssignmentBonus(
     attendeeGroup,
-    lotteryValidDirectSignups,
+    lotteryParticipantDirectSignups,
     lotterySignupProgramItems,
   );
 

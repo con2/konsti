@@ -25,7 +25,7 @@ const getValidLotterySignupsUsers = (
   });
 };
 
-export const getLotteryValidDirectSignups = (
+export const getLotteryParticipantDirectSignups = (
   directSignups: readonly DirectSignupsForProgramItem[],
   programItems: readonly ProgramItem[],
 ): readonly DirectSignupsForProgramItem[] => {
@@ -36,17 +36,19 @@ export const getLotteryValidDirectSignups = (
       .map((programItem) => programItem.programItemId),
   );
 
-  const lotteryValidDirectSignups = directSignups.filter((directSignup) => {
-    return lotteryValidProgramItemsIds.has(directSignup.programItemId);
-  });
+  const lotteryParticipantDirectSignups = directSignups.filter(
+    (directSignup) => {
+      return lotteryValidProgramItemsIds.has(directSignup.programItemId);
+    },
+  );
 
-  return lotteryValidDirectSignups;
+  return lotteryParticipantDirectSignups;
 };
 
 interface AssignmentParams {
   validLotterySignupsUsers: User[];
   validLotterySignupProgramItems: ProgramItem[];
-  lotteryValidDirectSignups: readonly DirectSignupsForProgramItem[];
+  lotteryParticipantDirectSignups: readonly DirectSignupsForProgramItem[];
 }
 
 export const prepareAssignmentParams = (
@@ -67,7 +69,7 @@ export const prepareAssignmentParams = (
   );
 
   // Take program items with "twoPhaseSignupProgramTypes" which are not in "directSignupAlwaysOpenIds"
-  const lotteryValidDirectSignups = getLotteryValidDirectSignups(
+  const lotteryParticipantDirectSignups = getLotteryParticipantDirectSignups(
     directSignups,
     programItems,
   );
@@ -75,6 +77,6 @@ export const prepareAssignmentParams = (
   return {
     validLotterySignupsUsers,
     validLotterySignupProgramItems,
-    lotteryValidDirectSignups,
+    lotteryParticipantDirectSignups,
   };
 };

@@ -85,7 +85,7 @@ export const runAssignment = async ({
   const {
     validLotterySignupsUsers,
     validLotterySignupProgramItems,
-    lotteryValidDirectSignups,
+    lotteryParticipantDirectSignups,
   } = prepareAssignmentParams(users, programItems, directSignups);
 
   const assignResultsResult = runAssignmentAlgorithm(
@@ -93,7 +93,7 @@ export const runAssignment = async ({
     validLotterySignupsUsers,
     validLotterySignupProgramItems,
     resolvedAssignmentTime,
-    lotteryValidDirectSignups,
+    lotteryParticipantDirectSignups,
   );
   if (isErrorResult(assignResultsResult)) {
     return assignResultsResult;

@@ -47,7 +47,7 @@ export const updateProgramItemPopularity = async (): Promise<
   const {
     validLotterySignupsUsers,
     validLotterySignupProgramItems,
-    lotteryValidDirectSignups,
+    lotteryParticipantDirectSignups,
   } = prepareAssignmentParams(users, programItems, directSignups);
 
   const programItemsByStartTimes = groupBy(
@@ -72,7 +72,7 @@ export const updateProgramItemPopularity = async (): Promise<
       validLotterySignupsUsers,
       validLotterySignupProgramItems,
       startTime,
-      lotteryValidDirectSignups,
+      lotteryParticipantDirectSignups,
     );
     return { result, startTime };
   });
