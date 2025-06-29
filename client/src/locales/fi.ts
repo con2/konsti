@@ -216,8 +216,8 @@ export const translationFI = {
     error: {
       cannotUseOwnSerial: "Et voi käyttää omaa koodia ryhmään liittymisessä",
       groupExists: "Ryhmä on jo olemassa",
-      removePreviousLotterySignupsFailed:
-        "Virhe aikaisempia arvontailmoittautumisia poistaessa, yritä uudelleen.",
+      removeUpcomingLotterySignupsFailed:
+        "Virhe aktiivisia arvontailmoittautumisia poistaessa, yritä uudelleen.",
       onlyCreatorCanCloseGroup: "Vain ryhmän perustaja voi sulkea ryhmän.",
       memberUpcomingDirectSignups:
         "Sinulla on jo ilmoittautumisia peleihin. Poista ilmoittautumiset ennen kuin liityt ryhmään.",
@@ -252,8 +252,8 @@ export const translationFI = {
     groupCreatorInfo:
       "Voit ilmoittautua arvontaan koko ryhmän puolesta. Varmistathan, että ryhmä ei ole liian iso valitsemiisi ohjelmanumeroihin liittymistä varten. Ryhmän perustaja ei voi poistua ryhmästä, mutta voi sulkea ryhmän. Tällöin kaikki ryhmän jäsenet poistetaan ryhmästä.",
     groupCodeInfo: "Muut voivat liittyä tähän ryhmään koodilla ",
-    joiningGroupWillCancelLotterySignups:
-      "Ryhmään liittyminen peruu kaikki aikaisemmat arvonta-ilmoittautumisesi.",
+    joiningGroupWillCancelUpcomingLotterySignups:
+      "Ryhmään liittyminen peruu kaikki aktiiviset arvonta-ilmoittautumisesi.",
     groupLotterySignupGuide:
       "Ryhmä voi ilmoittautua samoihin peleihin arvontaa varten.",
     groupLotterySignupProgramTypes: "Arvontaa käyttää",

@@ -60,7 +60,7 @@ export enum PostJoinGroupErrorMessage {
   GROUP_NOT_EXIST = "group.groupNotExist",
   UNKNOWN = "group.generalGroupError",
   CANNOT_JOIN_OWN_GROUP = "group.error.cannotUseOwnSerial",
-  REMOVE_PREVIOUS_LOTTERY_SIGNUPS_FAILED = "group.error.removePreviousLotterySignupsFailed",
+  REMOVE_UPCOMING_LOTTERY_SIGNUPS_FAILED = "group.error.removeUpcomingLotterySignupsFailed",
   MEMBER_UPCOMING_DIRECT_SIGNUPS = "group.error.memberUpcomingDirectSignups",
   ALREADY_IN_GROUP = "group.error.alreadyInGroup",
 }
@@ -77,8 +77,8 @@ export const submitJoinGroup = (
           return PostJoinGroupErrorMessage.INVALID_GROUP_CODE;
         case "groupDoesNotExist":
           return PostJoinGroupErrorMessage.GROUP_NOT_EXIST;
-        case "removePreviousLotterySignupsFailed":
-          return PostJoinGroupErrorMessage.REMOVE_PREVIOUS_LOTTERY_SIGNUPS_FAILED;
+        case "removeUpcomingLotterySignupsFailed":
+          return PostJoinGroupErrorMessage.REMOVE_UPCOMING_LOTTERY_SIGNUPS_FAILED;
         case "upcomingDirectSignups":
           return PostJoinGroupErrorMessage.MEMBER_UPCOMING_DIRECT_SIGNUPS;
         case "errorFindingUser":

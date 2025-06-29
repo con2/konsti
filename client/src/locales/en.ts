@@ -216,8 +216,8 @@ export const translationEN = {
     error: {
       cannotUseOwnSerial: "You cannot use your own serial to join a group.",
       groupExists: "Group already exists.",
-      removePreviousLotterySignupsFailed:
-        "Error deleting previous lottery sign-ups, try again.",
+      removeUpcomingLotterySignupsFailed:
+        "Error deleting active lottery sign-ups, try again.",
       onlyCreatorCanCloseGroup: "Only the group creator can close a group.",
       memberUpcomingDirectSignups:
         "You already have sign-ups. You will have to cancel those before joining a group.",
@@ -252,8 +252,8 @@ export const translationEN = {
     groupCreatorInfo:
       "You can sign up your group to the lottery. Please make sure that the group is not too big for the selected program items. The group creator cannot leave the group, but can close it. This will remove all members from the group.",
     groupCodeInfo: "Others can join this group with the code ",
-    joiningGroupWillCancelLotterySignups:
-      "Joining a group will cancel all your previous lottery signups.",
+    joiningGroupWillCancelUpcomingLotterySignups:
+      "Joining a group will cancel all your active lottery signups.",
     groupLotterySignupGuide: "You can enter a lottery sign-up as a group.",
     groupLotterySignupProgramTypes: "Lottery sign-up is used by",
     invalidGroupCode: "Invalid code",

@@ -132,19 +132,33 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
     expect(response.status).toEqual(422);
   });
 
-  test("should join group", async () => {
+  test("should join group and remove upcoming lottery signups", async () => {
+    const timeNow = dayjs(testProgramItem.startTime);
+    await saveTestSettings({
+      testTime: timeNow.toISOString(),
+    });
+
     const groupCode = "123-234-345";
 
     await saveProgramItems([testProgramItem, testProgramItem2]);
     await saveUser({ ...mockUser, groupCode, groupCreatorCode: groupCode });
     await saveUser(mockUser2);
-    const userWithSignups = unsafelyUnwrap(
+
+    const pastLotterySignup = {
+      ...mockLotterySignups[0],
+      signedToStartTime: timeNow.toISOString(),
+    };
+    const upcomingLotterySignup = {
+      ...mockLotterySignups[1],
+      signedToStartTime: timeNow.add(1, "minute").toISOString(),
+    };
+    const user = unsafelyUnwrap(
       await saveLotterySignups({
-        lotterySignups: mockLotterySignups,
+        lotterySignups: [pastLotterySignup, upcomingLotterySignup],
         username: mockUser2.username,
       }),
     );
-    expect(userWithSignups.lotterySignups.length).toEqual(2);
+    expect(user.lotterySignups.length).toEqual(2);
 
     const groupRequest: PostJoinGroupRequest = {
       groupCode,
@@ -157,14 +171,17 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
         "Authorization",
         `Bearer ${getJWT(UserGroup.USER, mockUser2.username)}`,
       );
-
     expect(response.status).toEqual(200);
+
     const updatedUser = unsafelyUnwrap(await findUser(mockUser2.username));
     expect(updatedUser?.groupCode).toEqual(groupCode);
-    expect(updatedUser?.lotterySignups.length).toEqual(0);
+    expect(updatedUser?.lotterySignups.length).toEqual(1);
+    expect(updatedUser?.lotterySignups[0].programItemId).toEqual(
+      pastLotterySignup.programItemId,
+    );
   });
 
-  test("should return error if existing upcoming signups", async () => {
+  test("should return error if existing upcoming direct signups", async () => {
     await saveTestSettings({
       testTime: dayjs(testProgramItem.startTime)
         .subtract(2, "hours")
