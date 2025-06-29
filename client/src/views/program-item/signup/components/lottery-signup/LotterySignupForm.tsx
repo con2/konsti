@@ -22,7 +22,6 @@ import { startLoading, stopLoading } from "client/state/loading/loadingSlice";
 
 interface Props {
   programItem: ProgramItem;
-  startTime: string;
   closeSignupForm: () => void;
   directSignupForSlot?: DirectSignupWithProgramItem;
 }
@@ -31,7 +30,6 @@ const OPTIONS = [1, 2, 3];
 
 export const LotterySignupForm = ({
   programItem,
-  startTime,
   closeSignupForm,
   directSignupForSlot,
 }: Props): ReactElement => {
@@ -46,7 +44,8 @@ export const LotterySignupForm = ({
   const selectedPriorities = new Set(
     lotterySignups
       .filter(
-        (lotterySignup) => lotterySignup.programItem.startTime === startTime,
+        (lotterySignup) =>
+          lotterySignup.programItem.startTime === programItem.startTime,
       )
       .map((lotterySignup) => lotterySignup.priority),
   );

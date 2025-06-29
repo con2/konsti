@@ -27,7 +27,6 @@ import { startLoading, stopLoading } from "client/state/loading/loadingSlice";
 
 interface Props {
   programItem: ProgramItem;
-  startTime: string;
   lotterySignups: readonly LotterySignupWithProgramItem[];
   directSignups: readonly DirectSignupWithProgramItem[];
 }
@@ -38,7 +37,6 @@ enum ClientError {
 
 export const ProgramItemLotterySignup = ({
   programItem,
-  startTime,
   lotterySignups,
   directSignups,
 }: Props): ReactElement | null => {
@@ -54,7 +52,7 @@ export const ProgramItemLotterySignup = ({
   const isInGroup = getIsInGroup(groupCode);
   const canSignToProgramItems = !isInGroup || isGroupCreator;
   const directSignupForSlot = directSignups.find(
-    (signup) => signup.signedToStartTime === startTime,
+    (signup) => signup.signedToStartTime === programItem.startTime,
   );
 
   const [signupFormOpen, setSignupFormOpen] = useState(false);
@@ -87,7 +85,7 @@ export const ProgramItemLotterySignup = ({
   )?.priority;
 
   const lotterySignupsForTimeslot = lotterySignups.filter(
-    (p) => p.programItem.startTime === startTime,
+    (signup) => signup.programItem.startTime === programItem.startTime,
   );
 
   const alreadySignedToProgramItem = isAlreadyLotterySigned(
@@ -95,7 +93,9 @@ export const ProgramItemLotterySignup = ({
     lotterySignups,
   );
 
-  const lotterySignupStartTime = getLotterySignupStartTime(startTime);
+  const lotterySignupStartTime = getLotterySignupStartTime(
+    programItem.startTime,
+  );
 
   const timeNow = getTimeNow();
   const lotterySignupOpen = timeNow.isSameOrAfter(lotterySignupStartTime);
@@ -191,7 +191,6 @@ export const ProgramItemLotterySignup = ({
       {signupFormOpen && !alreadySignedToProgramItem && (
         <LotterySignupForm
           programItem={programItem}
-          startTime={startTime}
           closeSignupForm={() => setSignupFormOpen(false)}
           directSignupForSlot={directSignupForSlot}
         />

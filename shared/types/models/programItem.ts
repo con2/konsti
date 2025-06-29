@@ -74,7 +74,7 @@ export enum AccessibilityValue {
   REQUIRES_QUICK_REACTIONS = "requiresQuickReactions",
 }
 
-export enum ProgramItemSignupStrategy {
+export enum SignupStrategy {
   DIRECT = "direct",
   LOTTERY = "lottery",
 }
@@ -116,7 +116,7 @@ export const ProgramItemSchema = z.object({
   contentWarnings: z.string(),
   otherAuthor: z.string(),
   accessibilityValues: z.array(z.nativeEnum(AccessibilityValue)),
-  signupStrategy: z.optional(z.nativeEnum(ProgramItemSignupStrategy)),
+  signupStrategy: z.optional(z.nativeEnum(SignupStrategy)),
   otherAccessibilityInformation: z.string(),
   entryFee: z.string(),
   signupType: z.nativeEnum(SignupType),

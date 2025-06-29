@@ -15,7 +15,7 @@ export const getUpcomingProgramItems = (
 
   const upcomingProgramItems = programItems.filter((programItem) => {
     const directSignupEndTime = getDirectSignupEndTime(programItem);
-    return dayjs(directSignupEndTime).isSameOrAfter(timeNow);
+    return directSignupEndTime.isSameOrAfter(timeNow);
   });
 
   return upcomingProgramItems;

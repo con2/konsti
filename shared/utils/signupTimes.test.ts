@@ -3,6 +3,10 @@ import dayjs from "dayjs";
 import {
   getLotterySignupStartTime,
   getDirectSignupStartTime,
+  getLotterySignupNotStarted,
+  getLotterySignupInProgress,
+  getDirectSignupInProgress,
+  getDirectSignupEnded,
 } from "shared/utils/signupTimes";
 import {
   testProgramItem,
@@ -337,5 +341,150 @@ describe("Direct signup with rolling signup", () => {
     const startTime = `${sunday}T08:00:00.000Z`;
     const signupTime = `${saturday}T15:00:00.000Z`;
     assertSignupTime(startTime, signupTime);
+  });
+});
+
+describe("Relative lottery signup state", () => {
+  const startTime = `${saturday}T12:00:00.000Z`;
+
+  test("Lottery signup not yet started", () => {
+    const { preSignupStart } = config.event();
+    const timeNow = dayjs(`${saturday}T12:00:00.000Z`).subtract(
+      preSignupStart + 1,
+      "minutes",
+    );
+    const lotterySignupNotStarted = getLotterySignupNotStarted(
+      startTime,
+      timeNow,
+    );
+    expect(lotterySignupNotStarted).toEqual(true);
+  });
+
+  test("Lottery signup started", () => {
+    const { preSignupStart } = config.event();
+    const timeNow = dayjs(`${saturday}T12:00:00.000Z`).subtract(
+      preSignupStart,
+      "minutes",
+    );
+    const lotterySignupNotStarted = getLotterySignupNotStarted(
+      startTime,
+      timeNow,
+    );
+    expect(lotterySignupNotStarted).toEqual(false);
+  });
+
+  test("Lottery signup not in progress yet", () => {
+    const { preSignupStart } = config.event();
+    const timeNow = dayjs(`${saturday}T12:00:00.000Z`).subtract(
+      preSignupStart + 1,
+      "minutes",
+    );
+    const lotterySignupInProgress = getLotterySignupInProgress(
+      startTime,
+      timeNow,
+    );
+    expect(lotterySignupInProgress).toEqual(false);
+  });
+
+  test("Lottery signup in progress, lower limit", () => {
+    const { preSignupStart } = config.event();
+    const timeNow = dayjs(`${saturday}T12:00:00.000Z`).subtract(
+      preSignupStart,
+      "minutes",
+    );
+    const lotterySignupInProgress = getLotterySignupInProgress(
+      startTime,
+      timeNow,
+    );
+    expect(lotterySignupInProgress).toEqual(true);
+  });
+
+  test("Lottery signup in progress, upper limit", () => {
+    const { directSignupPhaseStart } = config.event();
+    const timeNow = dayjs(`${saturday}T12:00:00.000Z`).subtract(
+      directSignupPhaseStart,
+      "minutes",
+    );
+    const lotterySignupInProgress = getLotterySignupInProgress(
+      startTime,
+      timeNow,
+    );
+    expect(lotterySignupInProgress).toEqual(true);
+  });
+
+  test("Lottery signup ended", () => {
+    const { directSignupPhaseStart } = config.event();
+    const timeNow = dayjs(`${saturday}T12:00:00.000Z`).subtract(
+      directSignupPhaseStart - 1,
+      "minutes",
+    );
+    const lotterySignupInProgress = getLotterySignupInProgress(
+      startTime,
+      timeNow,
+    );
+    expect(lotterySignupInProgress).toEqual(false);
+  });
+});
+
+describe("Relative direct signup state", () => {
+  const programItem = {
+    ...testProgramItem,
+    startTime: `${saturday}T12:00:00.000Z`,
+  };
+
+  test("Direct signup not in progress yet", () => {
+    const { directSignupPhaseStart, phaseGap } = config.event();
+    const timeNow = dayjs(programItem.startTime).subtract(
+      directSignupPhaseStart - phaseGap + 1,
+      "minutes",
+    );
+    const directSignupInProgress = getDirectSignupInProgress(
+      programItem,
+      timeNow,
+    );
+    expect(directSignupInProgress).toEqual(false);
+  });
+
+  test("Direct signup in progress, lower limit", () => {
+    const { directSignupPhaseStart, phaseGap } = config.event();
+    const timeNow = dayjs(programItem.startTime).subtract(
+      directSignupPhaseStart - phaseGap,
+      "minutes",
+    );
+    const directSignupInProgress = getDirectSignupInProgress(
+      programItem,
+      timeNow,
+    );
+    expect(directSignupInProgress).toEqual(true);
+  });
+
+  test("Direct signup in progress, upper limit", () => {
+    const timeNow = dayjs(programItem.startTime);
+    const directSignupInProgress = getDirectSignupInProgress(
+      programItem,
+      timeNow,
+    );
+    expect(directSignupInProgress).toEqual(true);
+  });
+
+  test("Direct signup not in progress anymore", () => {
+    const timeNow = dayjs(programItem.startTime).add(1, "minute");
+    const directSignupInProgress = getDirectSignupInProgress(
+      programItem,
+      timeNow,
+    );
+    expect(directSignupInProgress).toEqual(false);
+  });
+
+  test("Direct signup ended", () => {
+    const timeNow = dayjs(programItem.startTime).add(1, "minute");
+    const directSignupEnded = getDirectSignupEnded(programItem, timeNow);
+    expect(directSignupEnded).toEqual(true);
+  });
+
+  test("Direct signup not ended", () => {
+    const timeNow = dayjs(programItem.startTime);
+    const directSignupEnded = getDirectSignupEnded(programItem, timeNow);
+    expect(directSignupEnded).toEqual(false);
   });
 });

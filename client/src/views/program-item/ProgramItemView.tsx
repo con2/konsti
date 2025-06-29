@@ -6,10 +6,9 @@ import { useAppSelector } from "client/utils/hooks";
 import { ProgramItemEntry } from "client/views/program-item/ProgramItemEntry";
 import {
   selectDirectSignups,
-  selectFavoriteProgramItems,
   selectLotterySignups,
 } from "client/views/my-program-items/myProgramItemsSlice";
-import { ProgramItemSignupStrategy } from "shared/types/models/programItem";
+import { SignupStrategy } from "shared/types/models/programItem";
 import { getLotterySignups } from "client/utils/getUpcomingProgramItems";
 import { BackButton } from "client/components/BackButton";
 import { getIsInGroup } from "client/views/group/groupUtils";
@@ -30,7 +29,6 @@ export const ProgramItemView = (): ReactElement => {
   const username = useAppSelector((state) => state.login.username);
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
   const userGroup = useAppSelector((state) => state.login.userGroup);
-  const favoriteProgramItems = useAppSelector(selectFavoriteProgramItems);
 
   // Figure out if user has signed up to this program item
   const lotterySignups = useAppSelector(selectLotterySignups);
@@ -78,19 +76,17 @@ export const ProgramItemView = (): ReactElement => {
         <ProgramItemEntry
           isAlwaysExpanded={true}
           programItem={foundProgramItem}
-          startTime={foundProgramItem.startTime}
           signups={programSignups}
           signupStrategy={
-            foundProgramItem.signupStrategy ?? ProgramItemSignupStrategy.DIRECT
+            foundProgramItem.signupStrategy ?? SignupStrategy.DIRECT
           }
           lotterySignups={ownOrGroupCreatorLotterySignups}
           directSignups={directSignups}
           username={username}
           loggedIn={loggedIn}
           userGroup={userGroup}
-          favoriteProgramItems={favoriteProgramItems}
-          publicSignupQuestion={publicSignupQuestion}
           isInGroup={isInGroup}
+          publicSignupQuestion={publicSignupQuestion}
         />
       )}
       {!loading && !foundProgramItem && (

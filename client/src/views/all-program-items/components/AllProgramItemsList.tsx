@@ -4,15 +4,11 @@ import { sortBy, groupBy } from "remeda";
 import styled from "styled-components";
 import { ProgramItemEntry } from "client/views/program-item/ProgramItemEntry";
 import { useAppSelector } from "client/utils/hooks";
-import {
-  ProgramItem,
-  ProgramItemSignupStrategy,
-} from "shared/types/models/programItem";
+import { ProgramItem, SignupStrategy } from "shared/types/models/programItem";
 import { ProgramItemListTitle } from "client/views/all-program-items/components/ProgramItemListTitle";
 import { getLotterySignups } from "client/utils/getUpcomingProgramItems";
 import {
   selectDirectSignups,
-  selectFavoriteProgramItems,
   selectLotterySignups,
 } from "client/views/my-program-items/myProgramItemsSlice";
 import { RaisedCard } from "client/components/RaisedCard";
@@ -41,7 +37,6 @@ export const AllProgramItemsList = ({ programItems }: Props): ReactElement => {
   const username = useAppSelector((state) => state.login.username);
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
   const userGroup = useAppSelector((state) => state.login.userGroup);
-  const favoriteProgramItems = useAppSelector(selectFavoriteProgramItems);
   const isInGroup = getIsInGroup(groupCode);
 
   const signupQuestions = useAppSelector(
@@ -50,10 +45,11 @@ export const AllProgramItemsList = ({ programItems }: Props): ReactElement => {
 
   const getPublicSignupQuestion = (
     programItemId: string,
-  ): SignupQuestion | undefined =>
-    signupQuestions.find(
+  ): SignupQuestion | undefined => {
+    return signupQuestions.find(
       (s) => s.programItemId === programItemId && !s.private,
     );
+  };
 
   const ownOrGroupCreatorLotterySignups = getLotterySignups({
     lotterySignups,
@@ -91,21 +87,19 @@ export const AllProgramItemsList = ({ programItems }: Props): ReactElement => {
                 key={programItem.programItemId}
                 isAlwaysExpanded={false}
                 programItem={programItem}
-                startTime={startTime}
                 signups={programItemSignups?.users ?? []}
                 signupStrategy={
-                  programItem.signupStrategy ?? ProgramItemSignupStrategy.DIRECT
+                  programItem.signupStrategy ?? SignupStrategy.DIRECT
                 }
                 lotterySignups={ownOrGroupCreatorLotterySignups}
                 directSignups={directSignups}
                 username={username}
                 loggedIn={loggedIn}
                 userGroup={userGroup}
-                favoriteProgramItems={favoriteProgramItems}
+                isInGroup={isInGroup}
                 publicSignupQuestion={getPublicSignupQuestion(
                   programItem.programItemId,
                 )}
-                isInGroup={isInGroup}
               />
             );
           })}
