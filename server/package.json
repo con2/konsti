@@ -32,7 +32,8 @@
     "load-kompassi-data": "NODE_ENV=development tsx src/test/scripts/loadKompassiDataToDb.ts",
     "load-past-event-data": "NODE_ENV=development tsx src/test/scripts/loadPastEventDataToDb.ts",
     "update-kompassi-datadump": "NODE_ENV=development tsx src/test/scripts/updateKompassiDataDump.ts",
-    "check-start-times": "NODE_ENV=development tsx src/test/scripts/checkStartTimes.ts"
+    "check-start-times": "NODE_ENV=development tsx src/test/scripts/checkStartTimes.ts",
+    "docker:db": "tsx src/test/scripts/dockerDb.ts"
   },
   "dependencies": {
     "@faker-js/faker": "9.8.0",
