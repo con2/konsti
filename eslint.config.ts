@@ -306,6 +306,7 @@ export default defineConfig([
       // eslint-plugin-n
       "n/no-missing-import": "off", // Handled by tsc
       "n/no-extraneous-import": "off", // Doesn't work with Yarn workspace dependencies
+      "n/no-process-exit": "off", // eslint-plugin-unicorn has extended version
     },
   },
 
