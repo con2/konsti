@@ -23,13 +23,11 @@ import { startLoading, stopLoading } from "client/state/loading/loadingSlice";
 
 interface Props {
   programItem: ProgramItem;
-  startTime: string;
   programItemIsFull: boolean;
 }
 
 export const ProgramItemDirectSignup = ({
   programItem,
-  startTime,
   programItemIsFull,
 }: Props): ReactElement | null => {
   const dispatch = useAppDispatch();
@@ -49,7 +47,7 @@ export const ProgramItemDirectSignup = ({
     useState<DeleteDirectSignupErrorMessage | null>(null);
 
   const directSignupForTimeslot = directSignups.find(
-    (p) => p.programItem.startTime === startTime,
+    (signup) => signup.programItem.startTime === programItem.startTime,
   );
 
   const alreadySignedToProgramItem = isAlreadyDirectySigned(

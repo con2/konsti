@@ -1,6 +1,5 @@
 import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
-import dayjs from "dayjs";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ProgramItem } from "shared/types/models/programItem";
 import { getTimeNow } from "client/utils/getTimeNow";
@@ -10,6 +9,10 @@ import {
   getLotterySignupStartTime,
   getDirectSignupStartTime,
   getDirectSignupEndTime,
+  getLotterySignupNotStarted,
+  getLotterySignupInProgress,
+  getDirectSignupInProgress,
+  getDirectSignupEnded,
 } from "shared/utils/signupTimes";
 import {
   getFormattedTime,
@@ -22,7 +25,6 @@ interface Props {
   programItem: ProgramItem;
   isSignupAlwaysOpen: boolean;
   usesKonstiSignup: boolean;
-  startTime: string;
   isInGroup: boolean;
 }
 
@@ -30,24 +32,40 @@ export const SignupHelpText = ({
   programItem,
   isSignupAlwaysOpen,
   usesKonstiSignup,
-  startTime,
   isInGroup,
-}: Props): ReactElement => {
+}: Props): ReactElement | null => {
   const { t } = useTranslation();
 
+  // Cannot use programItem.signupStrategy here since it's relative to time
   const isLotterySignup =
     isLotterySignupProgramItem(programItem) &&
-    !tooEarlyForLotterySignup(startTime);
-  const timeNow = getTimeNow();
-  const directSignupEndTime = dayjs(getDirectSignupEndTime(programItem));
-  const directSignupStartTime = getDirectSignupStartTime(programItem);
-  const directSignupStarted = timeNow.isSameOrAfter(directSignupStartTime);
-  const lotterySignupStartTime = getLotterySignupStartTime(startTime);
-  const lotterySignupEndTime = getLotterySignupEndTime(startTime);
+    !tooEarlyForLotterySignup(programItem.startTime);
 
-  if (timeNow.isAfter(directSignupEndTime)) {
-    // eslint-disable-next-line react/jsx-no-useless-fragment
-    return <></>;
+  const timeNow = getTimeNow();
+
+  const lotterySignupStartTime = getLotterySignupStartTime(
+    programItem.startTime,
+  );
+  const lotterySignupEndTime = getLotterySignupEndTime(programItem.startTime);
+  const lotterySignupNotStarted = getLotterySignupNotStarted(
+    programItem.startTime,
+    timeNow,
+  );
+  const lotterySignupInProgress = getLotterySignupInProgress(
+    programItem.startTime,
+    timeNow,
+  );
+
+  const directSignupEndTime = getDirectSignupEndTime(programItem);
+  const directSignupStartTime = getDirectSignupStartTime(programItem);
+  const directSignupInProgress = getDirectSignupInProgress(
+    programItem,
+    timeNow,
+  );
+  const directSignupEnded = getDirectSignupEnded(programItem, timeNow);
+
+  if (directSignupEnded) {
+    return null;
   }
 
   if (isRevolvingDoorWorkshop(programItem)) {
@@ -84,7 +102,7 @@ export const SignupHelpText = ({
   }
 
   if (!isLotterySignup) {
-    if (!directSignupStarted) {
+    if (!directSignupInProgress) {
       return (
         <p>
           <FontAwesomeIcon icon={"user-plus"} />{" "}
@@ -93,6 +111,7 @@ export const SignupHelpText = ({
         </p>
       );
     }
+
     return (
       <p>
         <FontAwesomeIcon icon={"user-plus"} />{" "}
@@ -103,7 +122,7 @@ export const SignupHelpText = ({
   }
 
   // Lottery sign-up
-  if (lotterySignupStartTime.isSameOrAfter(timeNow)) {
+  if (lotterySignupNotStarted) {
     // Waiting for sign up to start
     return (
       <p>
@@ -127,10 +146,9 @@ export const SignupHelpText = ({
         .
       </p>
     );
-  } else if (
-    lotterySignupEndTime.isSameOrAfter(timeNow) &&
-    !directSignupStarted
-  ) {
+  }
+
+  if (lotterySignupInProgress) {
     // Lottery sign-up happening now
     return (
       <p>
@@ -149,6 +167,7 @@ export const SignupHelpText = ({
       </p>
     );
   }
+
   return (
     // Lottery sign-up ended, direct sign-up starting or started
     <p>

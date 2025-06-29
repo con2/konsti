@@ -1,4 +1,3 @@
-import dayjs from "dayjs";
 import { findProgramItemById } from "server/features/program-item/programItemRepository";
 import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
 import { hasSignupEnded } from "server/features/user/userUtils";
@@ -76,7 +75,7 @@ export const storeDirectSignup = async (
 
   const directSignupEndTime = getDirectSignupEndTime(programItem);
   const signupEnded = hasSignupEnded({
-    signupEndTime: dayjs(directSignupEndTime),
+    signupEndTime: directSignupEndTime,
     timeNow,
   });
 
@@ -185,7 +184,7 @@ export const removeDirectSignup = async (
 
   const directSignupEndTime = getDirectSignupEndTime(programItem);
   const signupEnded = hasSignupEnded({
-    signupEndTime: dayjs(directSignupEndTime),
+    signupEndTime: directSignupEndTime,
     timeNow,
   });
 

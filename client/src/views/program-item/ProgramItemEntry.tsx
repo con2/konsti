@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import {
   ProgramItem,
-  ProgramItemSignupStrategy,
+  SignupStrategy,
   SignupType,
   UserSignup,
 } from "shared/types/models/programItem";
@@ -27,23 +27,20 @@ import {
 
 interface Props {
   programItem: ProgramItem;
-  startTime: string;
   signups: UserSignup[];
-  signupStrategy: ProgramItemSignupStrategy;
+  signupStrategy: SignupStrategy;
   lotterySignups: readonly LotterySignupWithProgramItem[];
   directSignups: readonly DirectSignupWithProgramItem[];
   isAlwaysExpanded: boolean;
   username: string;
   loggedIn: boolean;
   userGroup: UserGroup;
-  favoriteProgramItems: readonly ProgramItem[];
-  publicSignupQuestion?: SignupQuestion;
   isInGroup: boolean;
+  publicSignupQuestion: SignupQuestion | undefined;
 }
 
 export const ProgramItemEntry = ({
   programItem,
-  startTime,
   signups,
   signupStrategy,
   lotterySignups,
@@ -52,24 +49,23 @@ export const ProgramItemEntry = ({
   username,
   loggedIn,
   userGroup,
-  favoriteProgramItems,
-  publicSignupQuestion,
   isInGroup,
+  publicSignupQuestion,
 }: Props): ReactElement => {
   const { t } = useTranslation();
-
-  const signupAlwaysOpen = config
-    .event()
-    .directSignupAlwaysOpenIds.includes(programItem.programItemId);
+  const { noKonstiSignupIds, directSignupAlwaysOpenIds } = config.event();
 
   const usesKonstiSignup =
-    !config.event().noKonstiSignupIds.includes(programItem.programItemId) &&
-    programItem.signupType === SignupType.KONSTI;
-  const requiresSignup = !isRevolvingDoorWorkshop(programItem);
-  const isNormalSignup = usesKonstiSignup && requiresSignup;
+    programItem.signupType === SignupType.KONSTI &&
+    !noKonstiSignupIds.includes(programItem.programItemId);
+  const signupNotRequired = isRevolvingDoorWorkshop(programItem);
+  const signupRequired = usesKonstiSignup && !signupNotRequired;
 
+  const signupAlwaysOpen = directSignupAlwaysOpenIds.includes(
+    programItem.programItemId,
+  );
   const isDirectSignupMode =
-    signupStrategy === ProgramItemSignupStrategy.DIRECT || signupAlwaysOpen;
+    signupStrategy === SignupStrategy.DIRECT || signupAlwaysOpen;
 
   const isDirectlySignedCurrentProgramItem = isAlreadyDirectySigned(
     programItem,
@@ -114,15 +110,13 @@ export const ProgramItemEntry = ({
       <ProgramItemHead
         programItem={programItem}
         signups={signups}
-        signupStrategy={signupStrategy}
         username={username}
         loggedIn={loggedIn}
         userGroup={userGroup}
-        favoriteProgramItems={favoriteProgramItems}
-        publicSignupQuestion={publicSignupQuestion}
         allValuesValid={allValuesValid}
-        isNormalSignup={isNormalSignup}
-        requiresSignup={requiresSignup}
+        signupRequired={signupRequired}
+        isDirectSignupMode={isDirectSignupMode}
+        publicSignupQuestion={publicSignupQuestion}
       />
 
       {!allValuesValid && (
@@ -141,14 +135,13 @@ export const ProgramItemEntry = ({
       {allValuesValid && (
         <ProgramItemSignup
           signupStrategy={signupStrategy}
-          startTime={startTime}
           lotterySignups={lotterySignups}
           directSignups={directSignups}
           programItem={programItem}
           attendees={signups.length}
           isInGroup={isInGroup}
           usesKonstiSignup={usesKonstiSignup}
-          isNormalSignup={isNormalSignup}
+          signupRequired={signupRequired}
         />
       )}
     </StyledCard>

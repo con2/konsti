@@ -130,12 +130,54 @@ export const getDirectSignupStartTime = (programItem: ProgramItem): Dayjs => {
   return matchingSignupWindow?.signupWindowStart ?? dayjs(eventStartTime);
 };
 
-export const getDirectSignupEndTime = (programItem: ProgramItem): string => {
+export const getDirectSignupEndTime = (programItem: ProgramItem): Dayjs => {
   const { directSignupOpenToEndProgramTypes } = config.event();
 
   const directSignupOpenToEnd = directSignupOpenToEndProgramTypes.includes(
     programItem.programType,
   );
 
-  return directSignupOpenToEnd ? programItem.endTime : programItem.startTime;
+  return directSignupOpenToEnd
+    ? dayjs(programItem.endTime)
+    : dayjs(programItem.startTime);
+};
+
+export const getLotterySignupNotStarted = (
+  startTime: string,
+  timeNow: Dayjs,
+): boolean => {
+  const lotterySignupStartTime = getLotterySignupStartTime(startTime);
+  return timeNow.isBefore(lotterySignupStartTime);
+};
+
+export const getLotterySignupInProgress = (
+  startTime: string,
+  timeNow: Dayjs,
+): boolean => {
+  const lotterySignupStartTime = getLotterySignupStartTime(startTime);
+  const lotterySignupEndTime = getLotterySignupEndTime(startTime);
+  return (
+    timeNow.isSameOrAfter(lotterySignupStartTime) &&
+    timeNow.isSameOrBefore(lotterySignupEndTime)
+  );
+};
+
+export const getDirectSignupInProgress = (
+  programItem: ProgramItem,
+  timeNow: Dayjs,
+): boolean => {
+  const directSignupStartTime = getDirectSignupStartTime(programItem);
+  const directSignupEndTime = getDirectSignupEndTime(programItem);
+  return (
+    timeNow.isSameOrAfter(directSignupStartTime) &&
+    timeNow.isSameOrBefore(directSignupEndTime)
+  );
+};
+
+export const getDirectSignupEnded = (
+  programItem: ProgramItem,
+  timeNow: Dayjs,
+): boolean => {
+  const directSignupEndTime = getDirectSignupEndTime(programItem);
+  return timeNow.isAfter(directSignupEndTime);
 };

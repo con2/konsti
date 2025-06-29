@@ -17,15 +17,15 @@ interface Props {
   isLoggedIn: boolean;
   programItem: ProgramItem;
   signups: UserSignup[];
-  isEnterGameMode: boolean;
-  publicSignupQuestion?: SignupQuestion;
+  isDirectSignupMode: boolean;
+  publicSignupQuestion: SignupQuestion | undefined;
 }
 
 export const ProgramItemHeadSignupInfo = ({
   isLoggedIn,
   programItem,
   signups,
-  isEnterGameMode,
+  isDirectSignupMode,
   publicSignupQuestion,
 }: Props): ReactElement => {
   const { t, i18n } = useTranslation();
@@ -61,7 +61,7 @@ export const ProgramItemHeadSignupInfo = ({
           MAX_ATTENDANCE: programItem.maxAttendance,
         })}
 
-        {signups.length < programItem.minAttendance && isEnterGameMode && (
+        {signups.length < programItem.minAttendance && isDirectSignupMode && (
           <AttendeesNeeded>
             {t("signup.attendeesNeeded", {
               COUNT: programItem.minAttendance - signups.length,

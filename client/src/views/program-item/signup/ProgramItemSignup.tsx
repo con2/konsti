@@ -1,9 +1,6 @@
 import { ReactElement } from "react";
 import styled from "styled-components";
-import {
-  ProgramItem,
-  ProgramItemSignupStrategy,
-} from "shared/types/models/programItem";
+import { ProgramItem, SignupStrategy } from "shared/types/models/programItem";
 import { ProgramItemDirectSignup } from "client/views/program-item/signup/components/direct-signup/ProgramItemDirectSignup";
 import { ProgramItemLotterySignup } from "client/views/program-item/signup/components/lottery-signup/ProgramItemLotterySignup";
 import { config } from "shared/config";
@@ -18,34 +15,32 @@ import {
 } from "client/views/my-program-items/myProgramItemsSlice";
 
 interface Props {
-  signupStrategy: ProgramItemSignupStrategy;
-  startTime: string;
+  signupStrategy: SignupStrategy;
   lotterySignups: readonly LotterySignupWithProgramItem[];
   directSignups: readonly DirectSignupWithProgramItem[];
   programItem: ProgramItem;
   attendees: number;
   isInGroup: boolean;
   usesKonstiSignup: boolean;
-  isNormalSignup: boolean;
+  signupRequired: boolean;
 }
 
 export const ProgramItemSignup = ({
   signupStrategy,
-  startTime,
   lotterySignups,
   directSignups,
   programItem,
   attendees,
   isInGroup,
   usesKonstiSignup,
-  isNormalSignup,
+  signupRequired,
 }: Props): ReactElement => {
   const signupAlwaysOpen = config
     .event()
     .directSignupAlwaysOpenIds.includes(programItem.programItemId);
 
   const isDirectSignupMode =
-    signupStrategy === ProgramItemSignupStrategy.DIRECT || signupAlwaysOpen;
+    signupStrategy === SignupStrategy.DIRECT || signupAlwaysOpen;
 
   const directSignupEndTime = getDirectSignupEndTime(programItem);
   const isDirectSignupOver = getTimeNow().isAfter(directSignupEndTime);
@@ -58,22 +53,19 @@ export const ProgramItemSignup = ({
         programItem={programItem}
         isSignupAlwaysOpen={signupAlwaysOpen}
         usesKonstiSignup={usesKonstiSignup}
-        startTime={startTime}
         isInGroup={isInGroup}
       />
 
-      {isNormalSignup &&
+      {signupRequired &&
         !isDirectSignupOver &&
         (isDirectSignupMode ? (
           <ProgramItemDirectSignup
             programItem={programItem}
             programItemIsFull={attendees >= programItem.maxAttendance}
-            startTime={startTime}
           />
         ) : (
           <ProgramItemLotterySignup
             programItem={programItem}
-            startTime={startTime}
             lotterySignups={lotterySignups}
             directSignups={directSignups}
           />
