@@ -219,9 +219,9 @@ export const translationFI = {
       removePreviousLotterySignupsFailed:
         "Virhe aikaisempia arvontailmoittautumisia poistaessa, yritä uudelleen.",
       onlyCreatorCanCloseGroup: "Vain ryhmän perustaja voi sulkea ryhmän.",
-      userHasDirectSignups:
+      memberUpcomingDirectSignups:
         "Sinulla on jo ilmoittautumisia peleihin. Poista ilmoittautumiset ennen kuin liityt ryhmään.",
-      creatorHasDirectSignups:
+      creatorUpcomingDirectSignups:
         "Sinulla on jo ilmoittautumisia peleihin. Poista ilmoittautumiset ennen kuin voit luoda ryhmän.",
       alreadyInGroup: "Kuulut jo toiseen ryhmään.",
     },

@@ -21,7 +21,7 @@ import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 export enum PostCreateGroupErrorMessage {
   UNKNOWN = "group.generalGroupError",
   GROUP_EXISTS = "group.error.groupExists",
-  CREATOR_HAS_DIRECT_SIGNUPS = "group.error.creatorHasDirectSignups",
+  CREATOR_UPCOMING_DIRECT_SIGNUPS = "group.error.creatorUpcomingDirectSignups",
 }
 
 export const submitCreateGroup = (): AppThunk<
@@ -34,8 +34,8 @@ export const submitCreateGroup = (): AppThunk<
       switch (createGroupResponse.errorId) {
         case "groupExists":
           return PostCreateGroupErrorMessage.GROUP_EXISTS;
-        case "userHasDirectSignups":
-          return PostCreateGroupErrorMessage.CREATOR_HAS_DIRECT_SIGNUPS;
+        case "upcomingDirectSignups":
+          return PostCreateGroupErrorMessage.CREATOR_UPCOMING_DIRECT_SIGNUPS;
         case "errorFindingUser":
           return PostCreateGroupErrorMessage.UNKNOWN;
         case "unknown":
@@ -45,8 +45,7 @@ export const submitCreateGroup = (): AppThunk<
       }
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    dispatch(submitGetGroup(createGroupResponse.groupCode));
+    await dispatch(submitGetGroup(createGroupResponse.groupCode));
     dispatch(
       submitUpdateGroupCodeAsync({
         groupCode: createGroupResponse.groupCode,
@@ -62,7 +61,7 @@ export enum PostJoinGroupErrorMessage {
   UNKNOWN = "group.generalGroupError",
   CANNOT_JOIN_OWN_GROUP = "group.error.cannotUseOwnSerial",
   REMOVE_PREVIOUS_LOTTERY_SIGNUPS_FAILED = "group.error.removePreviousLotterySignupsFailed",
-  USER_HAS_DIRECT_SIGNUPS = "group.error.userHasDirectSignups",
+  MEMBER_UPCOMING_DIRECT_SIGNUPS = "group.error.memberUpcomingDirectSignups",
   ALREADY_IN_GROUP = "group.error.alreadyInGroup",
 }
 
@@ -80,8 +79,8 @@ export const submitJoinGroup = (
           return PostJoinGroupErrorMessage.GROUP_NOT_EXIST;
         case "removePreviousLotterySignupsFailed":
           return PostJoinGroupErrorMessage.REMOVE_PREVIOUS_LOTTERY_SIGNUPS_FAILED;
-        case "userHasDirectSignups":
-          return PostJoinGroupErrorMessage.USER_HAS_DIRECT_SIGNUPS;
+        case "upcomingDirectSignups":
+          return PostJoinGroupErrorMessage.MEMBER_UPCOMING_DIRECT_SIGNUPS;
         case "errorFindingUser":
           return PostJoinGroupErrorMessage.UNKNOWN;
         case "alreadyInGroup":
@@ -93,8 +92,7 @@ export const submitJoinGroup = (
       }
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    dispatch(submitGetGroup(joinGroupResponse.groupCode));
+    await dispatch(submitGetGroup(joinGroupResponse.groupCode));
     dispatch(
       submitUpdateGroupCodeAsync({
         groupCode: joinGroupResponse.groupCode,

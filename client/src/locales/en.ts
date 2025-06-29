@@ -219,9 +219,9 @@ export const translationEN = {
       removePreviousLotterySignupsFailed:
         "Error deleting previous lottery sign-ups, try again.",
       onlyCreatorCanCloseGroup: "Only the group creator can close a group.",
-      userHasDirectSignups:
+      memberUpcomingDirectSignups:
         "You already have sign-ups. You will have to cancel those before joining a group.",
-      creatorHasDirectSignups:
+      creatorUpcomingDirectSignups:
         "You already have sign-ups. You will have to cancel those before creating a group.",
       alreadyInGroup: "You are already a member of a group.",
     },

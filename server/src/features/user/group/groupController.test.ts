@@ -195,7 +195,7 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
 
     const body = response.body as GetGroupError;
     expect(body.status).toEqual("error");
-    expect(body.message).toEqual("Signup in future");
+    expect(body.message).toEqual("User has upcoming direct signups");
   });
 });
 

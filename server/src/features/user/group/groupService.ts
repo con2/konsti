@@ -41,18 +41,28 @@ export const generateGroupCode = (): string => {
   ].join("-");
 };
 
-export const createGroup = async (
+const checkUpcomingDirectSignups = async (
   username: string,
-): Promise<PostCreateGroupResponse | PostCreateGroupError> => {
-  const signupsResult = await findUserDirectSignups(username);
-  if (isErrorResult(signupsResult)) {
+): Promise<PostCreateGroupError | PostJoinGroupError | null> => {
+  const timeNowResult = await getTimeNow();
+  if (isErrorResult(timeNowResult)) {
+    return {
+      message: "Unable to get current time",
+      status: "error",
+      errorId: "unknown",
+    };
+  }
+  const timeNow = unwrapResult(timeNowResult);
+
+  const directSignupsResult = await findUserDirectSignups(username);
+  if (isErrorResult(directSignupsResult)) {
     return {
       message: "Error finding signups",
       status: "error",
       errorId: "unknown",
     };
   }
-  const signups = unwrapResult(signupsResult);
+  const directSignups = unwrapResult(directSignupsResult);
 
   const programItemsResult = await findProgramItems();
   if (isErrorResult(programItemsResult)) {
@@ -65,35 +75,35 @@ export const createGroup = async (
   const programItems = unwrapResult(programItemsResult);
 
   const lotteryParticipantDirectSignups = getLotteryParticipantDirectSignups(
-    signups,
+    directSignups,
     programItems,
   );
-
-  const timeNowResult = await getTimeNow();
-  if (isErrorResult(timeNowResult)) {
-    return {
-      message: "Unable to get current time",
-      status: "error",
-      errorId: "unknown",
-    };
-  }
-
-  const timeNow = unwrapResult(timeNowResult);
 
   const userDirectSignups = lotteryParticipantDirectSignups.flatMap(
     (signup) => signup.userSignups,
   );
-  const userHasDirectSignups = userDirectSignups.some((userSignup) =>
+
+  const userHasUpcomingDirectSignups = userDirectSignups.some((userSignup) =>
     timeNow.isBefore(dayjs(userSignup.signedToStartTime)),
   );
-
-  // User cannot have RPG signups in future when creating a group
-  if (userHasDirectSignups) {
+  if (userHasUpcomingDirectSignups) {
     return {
-      message: "Signup in future",
+      message: "User has upcoming direct signups",
       status: "error",
-      errorId: "userHasDirectSignups",
+      errorId: "upcomingDirectSignups",
     };
+  }
+
+  return null;
+};
+
+export const createGroup = async (
+  username: string,
+): Promise<PostCreateGroupResponse | PostCreateGroupError> => {
+  // User cannot have direct signups in future when joining a group
+  const hasUpcomingDirectSignups = await checkUpcomingDirectSignups(username);
+  if (hasUpcomingDirectSignups) {
+    return hasUpcomingDirectSignups as PostCreateGroupError;
   }
 
   // Check if group exists or user is already in a group
@@ -151,58 +161,11 @@ export const joinGroup = async (
   username: string,
   groupCode: string,
 ): Promise<PostJoinGroupResponse | PostJoinGroupError> => {
-  const timeNowResult = await getTimeNow();
-  if (isErrorResult(timeNowResult)) {
-    return {
-      message: "Unable to get current time",
-      status: "error",
-      errorId: "unknown",
-    };
-  }
-  const timeNow = unwrapResult(timeNowResult);
-
-  const signupsResult = await findUserDirectSignups(username);
-  if (isErrorResult(signupsResult)) {
-    return {
-      message: "Error finding signups",
-      status: "error",
-      errorId: "unknown",
-    };
-  }
-  const signups = unwrapResult(signupsResult);
-
-  const programItemsResult = await findProgramItems();
-  if (isErrorResult(programItemsResult)) {
-    return {
-      message: "Error finding program items",
-      status: "error",
-      errorId: "unknown",
-    };
-  }
-  const programItems = unwrapResult(programItemsResult);
-
-  const lotteryParticipantDirectSignups = getLotteryParticipantDirectSignups(
-    signups,
-    programItems,
-  );
-
-  const userDirectSignups = lotteryParticipantDirectSignups.flatMap(
-    (signup) => signup.userSignups,
-  );
-
-  const userHasDirectSignups = userDirectSignups.some((userSignup) =>
-    timeNow.isBefore(dayjs(userSignup.signedToStartTime)),
-  );
-
   // User cannot have direct signups in future when joining a group
-  if (userHasDirectSignups) {
-    return {
-      message: "Signup in future",
-      status: "error",
-      errorId: "userHasDirectSignups",
-    };
+  const hasUpcomingDirectSignups = await checkUpcomingDirectSignups(username);
+  if (hasUpcomingDirectSignups) {
+    return hasUpcomingDirectSignups as PostJoinGroupError;
   }
-
   // Check if user is already in a group (or has created a group)
   const userResult = await findUser(username);
   if (isErrorResult(userResult)) {
@@ -212,7 +175,6 @@ export const joinGroup = async (
       errorId: "errorFindingUser",
     };
   }
-
   const userResponse = unwrapResult(userResult);
   if (
     userResponse?.groupCode !== "0" ||
@@ -234,7 +196,6 @@ export const joinGroup = async (
       errorId: "unknown",
     };
   }
-
   const groupExistsResponse = unwrapResult(groupExistsResult);
   if (!groupExistsResponse) {
     return {
