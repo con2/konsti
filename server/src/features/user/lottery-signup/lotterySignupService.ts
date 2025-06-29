@@ -6,7 +6,7 @@ import {
   DeleteLotterySignupError,
 } from "shared/types/api/myProgramItems";
 import {
-  delLotterySignup,
+  delLotterySignups,
   saveLotterySignup,
 } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
@@ -189,8 +189,8 @@ export const removeLotterySignup = async (
     };
   }
 
-  const responseResult = await delLotterySignup({
-    lotterySignupProgramItemId,
+  const responseResult = await delLotterySignups({
+    lotterySignupProgramItemIds: [lotterySignupProgramItemId],
     username,
   });
 
