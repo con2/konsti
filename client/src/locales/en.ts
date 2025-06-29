@@ -343,7 +343,7 @@ export const translationEN = {
       directSignupOpenNow:
         "Participants are selected in the order of sign-ups. Sign-up closes ",
       lotterySignupStartsLater:
-        "Participants are selected in a lottery. Lotter sign-up open ",
+        "Participants are selected in a lottery. Lottery sign-up open ",
       lotterySignupOpen:
         "Participants are selected in a lottery. Lottery sign-up closes ",
       lotterySignupEnded: "Participants were selected in a lottery.",
