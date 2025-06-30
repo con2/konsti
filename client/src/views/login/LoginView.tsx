@@ -6,14 +6,15 @@ import {
   useNavigate,
   useNavigationType,
 } from "react-router";
-import { LoginForm } from "client/views/login/components/LoginForm";
+import { LocalLoginForm } from "client/views/login/components/LocalLoginForm";
 import { useAppSelector } from "client/utils/hooks";
 import { LoginProvider } from "shared/config/eventConfigTypes";
 import { KompassiLogin } from "client/views/login/components/KompassiLogin";
-import { Button, ButtonStyle } from "client/components/Button";
 import { navigateToPreviousOrRoot } from "client/utils/navigation";
 import { usePreviousLocation } from "client/app/HistoryContext";
 import { AppRoute } from "client/app/AppRoutes";
+import { InfoText } from "client/components/InfoText";
+import { KompassiAndLocalLogin } from "client/views/login/components/KompassiAndLocalLogin";
 
 export const LoginView = (): ReactElement => {
   const { t } = useTranslation();
@@ -26,7 +27,7 @@ export const LoginView = (): ReactElement => {
   const loginProvider = useAppSelector((state) => state.admin.loginProvider);
   const appOpen = useAppSelector((state) => state.admin.appOpen);
 
-  const adminLogin = location.pathname === "/admin/login";
+  const isAdminLogin = location.pathname === "/admin/login";
 
   useEffect(() => {
     if (loggedIn) {
@@ -43,33 +44,48 @@ export const LoginView = (): ReactElement => {
     <div>
       <h2>{t("pageTitle.login")}</h2>
 
-      {(loginProvider === LoginProvider.LOCAL || adminLogin) && (
+      {(loginProvider === LoginProvider.LOCAL || isAdminLogin) && (
         <>
           <p>{t("loginView.oldAccountsNotWorking")}</p>
-
-          <LoginForm />
-
+          <LocalLoginForm />
           <Link to={"/registration"}>
             <p>{t("loginView.noAccountRegister")}</p>
           </Link>
         </>
       )}
 
-      {loginProvider === LoginProvider.KOMPASSI && !adminLogin && (
+      {loginProvider === LoginProvider.KOMPASSI && (
         <>
-          {appOpen && <KompassiLogin />}
+          {appOpen && (
+            <>
+              <p>{t("loginView.kompassiLoginHint")}</p>
+              <KompassiLogin />
+            </>
+          )}
           {!appOpen && (
             <>
+              <InfoText>{t("loginView.notOpenYet")}</InfoText>
               <p>{t("loginView.createKompassiAccountHint")}</p>
 
-              <Button
-                buttonStyle={ButtonStyle.PRIMARY}
-                onClick={() => {
-                  window.open("https://kompassi.eu/login", "_blank");
-                }}
-              >
-                {t("loginView.createKompassiAccount")}
-              </Button>
+              <Link to={"https://kompassi.eu/login"}>
+                <p>{t("loginView.createKompassiAccount")}</p>
+              </Link>
+            </>
+          )}
+        </>
+      )}
+
+      {loginProvider === LoginProvider.LOCAL_KOMPASSI && (
+        <>
+          {appOpen && <KompassiAndLocalLogin />}
+          {!appOpen && (
+            <>
+              <InfoText>{t("loginView.notOpenYet")}</InfoText>
+              <p>{t("loginView.createKompassiAccountHint")}</p>
+
+              <Link to={"https://kompassi.eu/login"}>
+                <p>{t("loginView.createKompassiAccount")}</p>
+              </Link>
             </>
           )}
         </>

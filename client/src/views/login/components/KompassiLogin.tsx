@@ -1,11 +1,12 @@
 import { ReactElement, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Link, useSearchParams } from "react-router";
+import { useSearchParams } from "react-router";
 import { z } from "zod";
-import { Button, ButtonStyle } from "client/components/Button";
+import styled from "styled-components";
 import { postKompassiLoginRedirect } from "client/services/loginServices";
 import { LoginErrorMessage } from "client/views/login/loginThunks";
 import { ErrorMessage } from "client/components/ErrorMessage";
+import { Button, ButtonStyle } from "client/components/Button";
 
 export const KompassiLogin = (): ReactElement => {
   const { t } = useTranslation();
@@ -27,10 +28,15 @@ export const KompassiLogin = (): ReactElement => {
   }, [searchParams]);
 
   return (
-    <>
-      <Link to={"https://kompassi.eu/login"}>
-        <p>{t("registrationView.linkToLogin")}</p>
-      </Link>
+    <Container>
+      <Button
+        buttonStyle={ButtonStyle.PRIMARY}
+        onClick={async () => {
+          await postKompassiLoginRedirect();
+        }}
+      >
+        {t("loginView.kompassiLogin")}
+      </Button>
       {serverError && (
         <ErrorMessage
           message={t(serverError)}
@@ -40,6 +46,12 @@ export const KompassiLogin = (): ReactElement => {
           }}
         />
       )}
-    </>
+    </Container>
   );
 };
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;

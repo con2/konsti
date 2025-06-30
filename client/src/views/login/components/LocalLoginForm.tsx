@@ -14,7 +14,7 @@ export interface LoginFormFields {
   password: string;
 }
 
-export const LoginForm = (): ReactElement => {
+export const LocalLoginForm = (): ReactElement => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
 
@@ -136,7 +136,11 @@ const FormFieldError = styled.div`
 `;
 
 const StyledInput = styled(UncontrolledInput)`
-  width: min(250px, 100%);
+  width: min(260px, 100%);
+
+  @media (min-width: ${(props) => props.theme.breakpointDesktop}) {
+    width: 360px;
+  }
 `;
 
 const FormRow = styled.div`
@@ -144,7 +148,6 @@ const FormRow = styled.div`
   display: flex;
   flex: 0 1 auto;
   flex-direction: row;
-  width: 50%;
   justify-content: flex-start;
 
   @media (max-width: ${(props) => props.theme.breakpointPhone}) {
@@ -154,6 +157,7 @@ const FormRow = styled.div`
 
 const FormFieldIcon = styled.span`
   font-size: ${(props) => props.theme.fontSizeLarge};
+  cursor: pointer;
 `;
 
 const StyledForm = styled.form`

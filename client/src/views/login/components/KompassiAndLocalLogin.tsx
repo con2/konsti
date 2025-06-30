@@ -1,19 +1,19 @@
 import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
+import { Link } from "react-router";
 import KompassiLogo from "client/components/icons/kompassi.svg";
 import KonstiLogo from "client/components/icons/konsti.svg";
 import { RaisedCard } from "client/components/RaisedCard";
 import { KompassiLogin } from "client/views/login/components/KompassiLogin";
-import { KonstiRegistrationForm } from "client/views/registration/components/KonstiRegistrationForm";
+import { LocalLoginForm } from "client/views/login/components/LocalLoginForm";
 
-export const KonstiAndKompassiRegistrationPage = (): ReactElement => {
+export const KompassiAndLocalLogin = (): ReactElement => {
   const { t } = useTranslation();
 
   return (
     <Container>
-      <StyledH2>{t("pageTitle.registration")}</StyledH2>
-      <StyledP>{t("registrationView.kompassiAndKonstiInfo")}</StyledP>
+      {t("loginView.kompassiAndLocalLoginHint")}
       <StyledCard>
         <KompassiHeader>
           <KompassiIcon aria-hidden={true} />
@@ -26,7 +26,10 @@ export const KonstiAndKompassiRegistrationPage = (): ReactElement => {
           <KonstiIcon aria-hidden={true} />
           {t("registrationView.konstiAccount")}
         </StyledH3>
-        <KonstiRegistrationForm />
+        <LocalLoginForm />
+        <Link to={"/registration"}>
+          <StyledP>{t("loginView.noAccountRegister")}</StyledP>
+        </Link>
       </StyledCard>
     </Container>
   );
@@ -36,14 +39,6 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0;
-`;
-
-const StyledP = styled.p`
-  margin-bottom: 4px;
-`;
-
-const StyledH2 = styled.h2`
-  margin-bottom: 0;
 `;
 
 const StyledH3 = styled.h3`
@@ -77,4 +72,8 @@ const KonstiIcon = styled(KonstiLogo)`
   height: 24px;
   vertical-align: middle;
   padding-right: 4px;
+`;
+
+const StyledP = styled.p`
+  margin-bottom: 4px;
 `;

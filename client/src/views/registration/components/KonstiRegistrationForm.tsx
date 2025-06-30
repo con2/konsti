@@ -238,7 +238,6 @@ const FormFieldError = styled.div`
 `;
 
 const FormFieldIcon = styled.span`
-  padding: 0 0 0 8px;
   font-size: ${(props) => props.theme.fontSizeLarge};
   cursor: pointer;
 `;

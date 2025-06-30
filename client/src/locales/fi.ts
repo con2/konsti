@@ -587,11 +587,16 @@ export const translationFI = {
     oldAccountsNotWorking:
       "Huomaathan, että aikaisempien tapahtumien käyttäjätilit eivät ole käytössä.",
     noAccountRegister: "Ei käyttäjätiliä? Luo käyttäjätili täällä.",
-    kompassiLoginHint: "Konstiin kirjaudutaan Kompassi-tunnuksella",
+    kompassiLoginHint: "Konstiin kirjaudutaan Kompassi-tunnuksella.",
+    kompassiAndLocalLoginHint:
+      "Voit kirjautua sisään joko Kompassi- tai Konsti-tunnuksella.",
     kompassiLogin: "Kirjaudu tai luo tunnus",
+    notOpenYet: "Konstiin kirjautuminen ei vielä ole avoinna.",
     createKompassiAccountHint:
-      "Konstiin kirjautuminen ei ole vielä avoinna, mutta voit jo luoda Kompassi-tunnuksen, jonka avulla Konstiin kirjaudutaan.",
-    createKompassiAccount: "Luo Kompassi-tunnus",
+      "Konstiin ei vielä voi kirjautua, mutta voit jo luoda Kompassi-tunnuksen, jolla Konstiin kirjaudutaan.",
+    createKompassiLocalAccountHint:
+      "Voit kirjautua Konstiin joko Kompassi-tunnuksella tai Konsti-tunnuksella, jonka voit luoda kun Konstin kirjautuminen aukeaa. Kompassi-tunnuksen voit luoda jo nyt.",
+    createKompassiAccount: "Luo Kompassi-tunnus.",
     chooseKonstiUsername: "Valitse Konsti-nimimerkki",
   },
   registrationView: {
