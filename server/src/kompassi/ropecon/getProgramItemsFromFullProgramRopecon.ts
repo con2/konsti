@@ -49,20 +49,25 @@ export const getProgramItemsFromFullProgramRopecon = (
     }
 
     if (config.event().logInvalidStartTimes) {
-      const startTime = programItem.scheduleItems[0].startTime;
-      const startMinute = dayjs(startTime).minute();
-      if (
-        programType === KompassiKonstiProgramType.TABLETOP_RPG &&
-        startMinute !== 0
-      ) {
-        logger.error(
-          "%s",
-          new Error(
-            // eslint-disable-next-line no-restricted-syntax
-            `Invalid RPG start time: ${dayjs(startTime).tz(TIMEZONE).format("HH:mm")} - ${programItem.title}`,
-          ),
-        );
-      }
+      const startTimes = programItem.scheduleItems.map(
+        (scheduleItem) => scheduleItem.startTime,
+      );
+
+      startTimes.map((startTime) => {
+        const startMinute = dayjs(startTime).minute();
+        if (
+          programType === KompassiKonstiProgramType.TABLETOP_RPG &&
+          startMinute !== 0
+        ) {
+          logger.error(
+            "%s",
+            new Error(
+              // eslint-disable-next-line no-restricted-syntax
+              `Invalid RPG start time: ${dayjs(startTime).tz(TIMEZONE).format("HH:mm")} - ${programItem.slug}`,
+            ),
+          );
+        }
+      });
     }
 
     return programItem;
