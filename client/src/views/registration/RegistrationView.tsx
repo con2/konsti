@@ -4,7 +4,7 @@ import { LoginProvider } from "shared/config/eventConfigTypes";
 import { useAppSelector } from "client/utils/hooks";
 import { KonstiAndKompassiRegistrationPage } from "client/views/registration/components/KonstiAndKompassiRegistrationPage";
 
-export const RegistrationView = (): ReactElement => {
+export const RegistrationView = (): ReactElement | null => {
   const loginProvider = useAppSelector((state) => state.admin.loginProvider);
 
   if (loginProvider == LoginProvider.LOCAL) {

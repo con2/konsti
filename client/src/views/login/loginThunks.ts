@@ -15,7 +15,7 @@ import {
 import { loadGroupMembers, loadUser } from "client/utils/loadData";
 import { submitUpdateGroupCodeAsync } from "client/views/group/groupSlice";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
-import { LoginFormFields } from "client/views/login/components/LoginForm";
+import { LoginFormFields } from "client/views/login/components/LocalLoginForm";
 import { postEventLogItemIsSeen } from "client/services/userServices";
 import { PostEventLogIsSeenRequest } from "shared/types/api/eventLog";
 
