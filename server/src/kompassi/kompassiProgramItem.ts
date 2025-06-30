@@ -25,11 +25,11 @@ export enum KompassiTopic {
 }
 
 export enum KompassiKonstiProgramType {
-  TABLETOP_RPG = "tabletopRPG",
+  TABLETOP_RPG = "tabletoprpg",
   LARP = "larp",
   TOURNAMENT = "tournament",
   WORKSHOP = "workshop",
-  EXPERIENCE_POINT = "experiencePoint",
+  EXPERIENCE_POINT = "experiencepoint",
   OTHER = "other",
   FLEAMARKET = "fleamarket",
   ROUNDTABLE_DISCUSSION = "roundtableDiscussion",
