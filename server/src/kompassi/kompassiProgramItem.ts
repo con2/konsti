@@ -5,17 +5,23 @@ import { partition } from "remeda";
 import { logger } from "server/utils/logger";
 
 export enum KompassiTopic {
-  BOFFERIN = "boffering",
+  BOFFERING = "boffering",
   MINIATURES = "miniatures",
+  FIGURES = "figures",
   THEME = "theme",
   CARDGAMES = "cardgames",
   CRAFTS = "crafts",
   BOARDGAMES = "boardgames",
   PENANDPAPER = "penandpaper",
+  RPG = "rpg",
   DANCE = "dance",
   LARP = "larp",
   MUSIC = "music",
   GOH = "goh",
+  OTHER_GAMES = "othergames",
+  DANCING = "dancing",
+  ESCAPE_ROOM = "escape-room",
+  HANDCRAFTS = "handcrafts",
 }
 
 export enum KompassiKonstiProgramType {

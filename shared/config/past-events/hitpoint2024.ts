@@ -6,7 +6,7 @@ import {
 import { Language, ProgramType, Tag } from "shared/types/models/programItem";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const eventConfig: EventConfig = {
+const eventConfig: Partial<EventConfig> = {
   // Event info
   eventName: EventName.HITPOINT,
   eventYear: "2024",
