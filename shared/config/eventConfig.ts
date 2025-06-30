@@ -53,6 +53,21 @@ export const eventConfig: EventConfig = {
   // These program items are imported to Konsti but don't have Konsti signup
   noKonstiSignupIds: [],
 
+  // Don't import these program items from Kompassi
+  ignoreProgramItemsIds: [
+    "tow-miniatyyri-turnaus",
+    "memories-of-necromunda-narrative-mini-campaign",
+    "indiekulma-indie-corner-turnip28",
+    "indiekulma-indie-corner-necropolis",
+    "indiekulma-indie-corner-gaslands",
+    "nopat-ja-taktiikka-demottaa-battlefleet-gothic-2",
+    "nopat-ja-taktiikka-demottaa-battlefleet-gothic-3",
+    "kill-team-kulma-kill-team-corner-su",
+    "kill-team-kulma-kill-team-corner-la",
+    "figumaalauskisa-cold-north-open-miniature-painting-competition-cold-north-open-la",
+    "figumaalauskisa-cold-north-open-miniature-painting-competition-cold-north-open-3",
+  ],
+
   signupQuestions: [],
 
   tournamentSignupQuestion: null,

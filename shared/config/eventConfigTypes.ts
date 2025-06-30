@@ -60,6 +60,7 @@ export interface EventConfig {
   resultsVisible: boolean;
   addToKonstiOther: string[];
   noKonstiSignupIds: string[];
+  ignoreProgramItemsIds: string[];
   signupQuestions: SignupQuestion[];
   tournamentSignupQuestion: Omit<SignupQuestion, "programItemId"> | null;
   tournamentSignupQuestionExcludeIds: string[];
