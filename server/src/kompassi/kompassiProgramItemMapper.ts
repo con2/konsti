@@ -17,6 +17,8 @@ import {
   KompassiKonstiProgramType,
   KompassiGrouping,
   KompassiAgeGroup,
+  KompassiBoolean,
+  KompassiRegistration,
 } from "server/kompassi/kompassiProgramItem";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import { config } from "shared/config";
@@ -63,9 +65,7 @@ export const kompassiProgramItemMapper = (
         otherAccessibilityInformation:
           programItem.cachedAnnotations["ropecon:accessibilityOther"],
         entryFee: programItem.cachedAnnotations["konsti:workshopFee"],
-        signupType: programItem.cachedAnnotations["konsti:isPlaceholder"]
-          ? SignupType.NONE
-          : SignupType.KONSTI,
+        signupType: mapSignupType(programItem),
       };
     });
   });
@@ -270,6 +270,13 @@ const mapInclusivityValues = (
 const mapRevolvingDoor = (
   kompassiProgramItem: KompassiProgramItem,
 ): boolean => {
+  if (
+    kompassiProgramItem.cachedDimensions.revolvingdoor[0] ===
+    KompassiBoolean.TRUE
+  ) {
+    return true;
+  }
+
   if (kompassiProgramItem.cachedAnnotations["ropecon:isRevolvingDoor"]) {
     return true;
   }
@@ -312,4 +319,20 @@ const mapShortDescription = (
   }
 
   return getShortDescriptionFromDescription(kompassiProgramItem.description);
+};
+
+const mapSignupType = (
+  kompassiProgramItem: KompassiProgramItem,
+): SignupType => {
+  if (kompassiProgramItem.cachedAnnotations["konsti:isPlaceholder"])
+    return SignupType.NONE;
+
+  if (
+    kompassiProgramItem.cachedDimensions.registration[0] ===
+    KompassiRegistration.KONSTI
+  ) {
+    return SignupType.KONSTI;
+  }
+
+  return SignupType.NONE;
 };
