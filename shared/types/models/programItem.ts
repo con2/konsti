@@ -25,14 +25,14 @@ export enum Genre {
   ADVENTURE = "adventure",
 }
 
-export enum Playstyle {
+export enum Gamestyle {
   SERIOUS = "serious",
   LIGHT = "light",
   RULES_HEAVY = "rulesHeavy",
   RULES_LIGHT = "rulesLight",
   STORY_DRIVEN = "storyDriven",
   CHARACTER_DRIVEN = "characterDriven",
-  COMBAT_DRIVEN = "combatDriven",
+  COMBAT_HEAVY = "combatHeavy",
 }
 
 export enum Language {
@@ -43,35 +43,36 @@ export enum Language {
 }
 
 export enum Tag {
-  CHILDREN_FRIENDLY = "childrenFriendly",
   BEGINNER_FRIENDLY = "beginnerFriendly",
+  THEME = "theme",
+  LGBT = "lgbt",
   GUEST_OF_HONOR = "guestOfHonor",
-  AIMED_UNDER_13 = "aimedAtChildrenUnder13",
-  AIMED_BETWEEN_13_17 = "aimedAtChildrenBetween13to17",
-  AIMED_ADULTS = "aimedAtAdultAttendees",
-  FOR_18_PLUS_ONLY = "for18PlusOnly",
-  INTENDED_FOR_EXPERIENCED_PARTICIPANTS = "forExperiencedParticipants",
-  ALL_AGES = "allAges",
-  THEME_MONSTERS = "themeMonsters",
+  EVERYONE = "everyone",
+  ADULTS = "adults",
+  TEENS = "teens",
+  ONLY_ADULTS = "onlyAdults",
+  KIDS = "kids",
+  SMALL_KIDS = "smallKids",
 }
 
-export enum AccessibilityValue {
+export enum InclusivityValue {
+  COLOR_BLINDNESS = "colorBlindness",
+  FINGERS = "fingers",
   LOUD_SOUNDS = "loudSounds",
-  FLASHING_LIGHTS = "flashingLights",
-  STRONG_SMELLS = "strongSmells",
-  IRRITATE_SKIN = "irritateSkin",
   PHYSICAL_CONTACT = "physicalContact",
-  LOW_LIGHTING = "lowLighting",
-  MOVING_AROUND = "movingAround",
-  VIDEO = "video",
-  RECORDING = "recording",
-  COLORBLIND = "colourblind",
-  DURATION_OVER_2H = "durationOver2h",
-  LIMITED_MOVING_OPPORTUNITIES = "limitedMovingOpportunities",
+  LONG_PROGRAM = "longProgram",
+  NOT_AMPLIFIED = "notAmplified",
+  NO_RECORDING_OR_SPOKEN_TEXT = "noRecordingsOrSpokenText",
+  DARK_LIGHTING = "darkLighting",
+  NO_MOVEMENT = "noMovement",
+  NO_TEXT_OF_RECORDING = "noTextOfRecording",
   LONG_TEXTS = "longTexts",
-  TEXTS_WITH_NO_RECORDINGS = "textWithNoRecordings",
-  REQUIRES_DEXTERITY = "requiresDexterity",
-  REQUIRES_QUICK_REACTIONS = "requiresQuickReactions",
+  LOTS_OF_MOVEMENT = "lotsOfMovement",
+  FLASHING_LIGHTS = "flahingLights",
+  QUICK_REACTIONS = "quickReactions",
+  NO_SUBTITLES = "noSubtitles",
+  STRONG_ODOURS = "strongOdours",
+  IRRITATING_CHEMICALS = "irritatingChemicals",
 }
 
 export enum SignupStrategy {
@@ -102,7 +103,7 @@ export const ProgramItemSchema = z.object({
   mins: z.number(),
   tags: z.array(z.nativeEnum(Tag)),
   genres: z.array(z.nativeEnum(Genre)),
-  styles: z.array(z.nativeEnum(Playstyle)),
+  styles: z.array(z.nativeEnum(Gamestyle)),
   languages: z.array(z.nativeEnum(Language)),
   endTime: z.string(),
   people: z.string(),
@@ -115,7 +116,7 @@ export const ProgramItemSchema = z.object({
   programType: z.nativeEnum(ProgramType),
   contentWarnings: z.string(),
   otherAuthor: z.string(),
-  accessibilityValues: z.array(z.nativeEnum(AccessibilityValue)),
+  accessibilityValues: z.array(z.nativeEnum(InclusivityValue)),
   signupStrategy: z.optional(z.nativeEnum(SignupStrategy)),
   otherAccessibilityInformation: z.string(),
   entryFee: z.string(),

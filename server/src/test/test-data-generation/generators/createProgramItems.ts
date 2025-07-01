@@ -7,12 +7,19 @@ import { saveProgramItems } from "server/features/program-item/programItemReposi
 import { config } from "shared/config";
 import {
   KompassiProgramItem,
-  KompassiPlaystyle,
+  KompassiGamestyle,
   KompassiLanguage,
-  KompassiAudience,
-  KompassiAccessibility,
+  KompassiInclusivity,
   KompassiTopic,
   KompassiKonstiProgramType,
+  KompassiForm,
+  KompassiState,
+  KompassiGrouping,
+  KompassiAgeGroup,
+  KompassiScheduled,
+  KompassiRegistration,
+  KompassiBoolean,
+  KompassiType,
 } from "server/kompassi/kompassiProgramItem";
 import { Result } from "shared/utils/result";
 import { MongoDbError } from "shared/types/api/errors";
@@ -53,20 +60,6 @@ const getMaxAttendees = (programType: KompassiKonstiProgramType): number => {
   }
 
   return faker.number.int({ min: 3, max: 4 });
-};
-
-const getTopics = (): KompassiTopic[] => {
-  const topics: KompassiTopic[] = [];
-
-  if (Math.random() < 0.1) {
-    topics.push(KompassiTopic.GOH);
-  }
-
-  if (Math.random() < 0.1) {
-    topics.push(KompassiTopic.THEME);
-  }
-
-  return topics;
 };
 
 const mapKonstiProgramTypeToKompassiProgramType = (
@@ -130,15 +123,19 @@ export const createProgramItems = async (
           description: faker.lorem.sentences(5),
           cachedHosts: faker.internet.username(),
           cachedDimensions: {
-            date: [""],
-            room: [""],
-            type: [""],
-            topic: getTopics(),
+            form: sample(Object.values(KompassiForm), 1),
+            type: sample(Object.values(KompassiType), 1),
+            state: sample(Object.values(KompassiState), 1),
+            topic: sample(Object.values(KompassiTopic), 1),
             konsti: [kompassiProgramType],
-            audience: sample(Object.values(KompassiAudience), 3),
+            grouping: sample(Object.values(KompassiGrouping), 1),
             language: sample(Object.values(KompassiLanguage), 1),
-            accessibility: sample(Object.values(KompassiAccessibility), 3),
-            playstyle: sample(Object.values(KompassiPlaystyle), 2),
+            ["age-group"]: sample(Object.values(KompassiAgeGroup), 1),
+            scheduled: sample(Object.values(KompassiScheduled), 1),
+            ["game-style"]: sample(Object.values(KompassiGamestyle), 2),
+            inclusivity: sample(Object.values(KompassiInclusivity), 3),
+            registration: sample(Object.values(KompassiRegistration), 1),
+            revolvingdoor: sample(Object.values(KompassiBoolean), 1),
           },
           scheduleItems: [
             {

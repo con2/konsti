@@ -2,10 +2,10 @@ import mongoose from "mongoose";
 import { z } from "zod";
 import dayjs from "dayjs";
 import {
-  AccessibilityValue,
+  InclusivityValue,
   Genre,
   Language,
-  Playstyle,
+  Gamestyle,
   Popularity,
   SignupStrategy,
   ProgramType,
@@ -23,7 +23,7 @@ export const ProgramItemSchemaDb = z
     mins: z.number(),
     tags: z.array(z.nativeEnum(Tag)),
     genres: z.array(z.nativeEnum(Genre)),
-    styles: z.array(z.nativeEnum(Playstyle)),
+    styles: z.array(z.nativeEnum(Gamestyle)),
     languages: z.array(z.nativeEnum(Language)),
     endTime: z.date().transform((date) => dayjs(date).toISOString()),
     people: z.string(),
@@ -36,7 +36,7 @@ export const ProgramItemSchemaDb = z
     programType: z.nativeEnum(ProgramType),
     contentWarnings: z.string(),
     otherAuthor: z.string(),
-    accessibilityValues: z.array(z.nativeEnum(AccessibilityValue)),
+    accessibilityValues: z.array(z.nativeEnum(InclusivityValue)),
     signupStrategy: z.optional(z.nativeEnum(SignupStrategy)),
     otherAccessibilityInformation: z.string(),
     entryFee: z.string(),

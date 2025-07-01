@@ -35,10 +35,10 @@ import {
 } from "server/features/direct-signup/directSignupRepository";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import {
-  KompassiPlaystyle,
-  KompassiAudience,
+  KompassiGrouping,
+  KompassiGamestyle,
 } from "server/kompassi/kompassiProgramItem";
-import { Playstyle, ProgramType, Tag } from "shared/types/models/programItem";
+import { Gamestyle, ProgramType, Tag } from "shared/types/models/programItem";
 import { logger } from "server/utils/logger";
 import { SignupQuestionType } from "shared/types/models/settings";
 import { config } from "shared/config";
@@ -383,15 +383,16 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
           cachedDimensions: {
             ...mockKompassiProgramItem.cachedDimensions,
             topic: [],
-            audience: [
-              KompassiAudience.BEGINNERS,
+            ["age-group"]: [],
+            grouping: [
+              KompassiGrouping.BEGINNERS,
               "invalid-tag",
               undefined,
               [1],
               {},
             ],
-            playstyle: [
-              KompassiPlaystyle.CHARACTER_DRIVEN,
+            ["game-style"]: [
+              KompassiGamestyle.CHARACTER_DRIVEN,
               "invalid-style",
               undefined,
               [1],
@@ -412,7 +413,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
 
     expect(programItems.length).toEqual(1);
     expect(programItems[0].tags).toEqual([Tag.BEGINNER_FRIENDLY]);
-    expect(programItems[0].styles).toEqual([Playstyle.CHARACTER_DRIVEN]);
+    expect(programItems[0].styles).toEqual([Gamestyle.CHARACTER_DRIVEN]);
     // @ts-expect-error: Testing value
     expect(programItems[0].foobar).toEqual(undefined);
   });

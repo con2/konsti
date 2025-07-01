@@ -5,23 +5,16 @@ import { partition } from "remeda";
 import { logger } from "server/utils/logger";
 
 export enum KompassiTopic {
-  BOFFERING = "boffering",
-  MINIATURES = "miniatures",
   FIGURES = "figures",
-  THEME = "theme",
   CARDGAMES = "cardgames",
-  CRAFTS = "crafts",
-  BOARDGAMES = "boardgames",
-  PENANDPAPER = "penandpaper",
   RPG = "rpg",
-  DANCE = "dance",
+  BOARDGAMES = "boardgames",
+  OTHER_GAMES = "othergames",
   LARP = "larp",
   MUSIC = "music",
-  GOH = "goh",
-  OTHER_GAMES = "othergames",
+  HANDCRAFTS = "handcrafts",
   DANCING = "dancing",
   ESCAPE_ROOM = "escape-room",
-  HANDCRAFTS = "handcrafts",
 }
 
 export enum KompassiKonstiProgramType {
@@ -35,28 +28,14 @@ export enum KompassiKonstiProgramType {
   ROUNDTABLE_DISCUSSION = "roundtableDiscussion",
 }
 
-export enum KompassiAudience {
-  AIMED_UNDER_13 = "aimed-under-13",
-  BEGINNERS = "beginners",
-  ALL_AGES = "all-ages",
-  AIMED_BETWEEN_13_17 = "aimed-between-13-17",
-  AIMED_ADULTS = "aimed-adults",
-  K_18 = "k-18",
-  UNRESTRICTED = "unrestricted",
-  BEGINNER_FRIENDLY = "beginner-friendly",
-  EXPERIENCED = "experienced",
-  R18 = "r18",
-  CHILD_FRIENDLY = "child-friendly",
-}
-
-export enum KompassiPlaystyle {
-  SERIOUS = "serious",
+export enum KompassiGamestyle {
   LIGHT = "light",
-  RULES_HEAVY = "rules-heavy",
   RULES_LIGHT = "rules-light",
   STORY_DRIVEN = "story-driven",
+  SERIOUS = "serious",
+  COMBAT_HEAVY = "combat-heavy",
+  RULES_HEAVY = "rules-heavy",
   CHARACTER_DRIVEN = "character-driven",
-  COMBAT_DRIVEN = "combat-driven",
 }
 
 export enum KompassiLanguage {
@@ -66,23 +45,85 @@ export enum KompassiLanguage {
   LANGUAGE_FREE = "free",
 }
 
-export enum KompassiAccessibility {
+export enum KompassiInclusivity {
+  COLOR_BLINDNESS = "color-blindness",
+  FINGERS = "fingers",
   LOUD_SOUNDS = "loud-sounds",
   PHYSICAL_CONTACT = "physical-contact",
-  MOVING_AROUND = "moving-around",
-  DURATION_OVER_2H = "duration-over-2h",
-  REQUIRES_DEXTERITY = "requires-dexterity",
-  RECORDING = "recording",
-  REQUIRES_QUICK_REACTIONS = "requires-quick-reactions",
-  COLORBLIND = "colorblind",
-  TEXTS_WITH_NO_RECORDINGS = "texts-with-no-recordings",
-  LIMITED_MOVING_OPPORTUNITIES = "limited-moving-opportunities",
-  FLASHING_LIGHTS = "flashing-lights",
-  LOW_LIGHTING = "low-lighting",
+  LONG_PROGRAM = "long-program",
+  NOT_AMPLIFIED = "not-amplified",
+  NO_RECORDING_OR_SPOKEN_TEXT = "no-recordings-or-spoken-text",
+  DARK_LIGHTING = "dark-lighting",
+  NO_MOVEMENT = "no-movement",
+  NO_TEXT_OF_RECORDING = "no-text-of-recording",
   LONG_TEXTS = "long-texts",
-  IRRITATE_SKIN = "irritate-skin",
-  VIDEO = "video",
-  STRONG_SMELLS = "strong-smells",
+  LOTS_OF_MOVEMENT = "lots-of-movement",
+  FLASHING_LIGHTS = "flahing-lights",
+  QUICK_REACTIONS = "quick-reactions",
+  NO_SUBTITLES = "no-subtitles",
+  STRONG_ODOURS = "strong-odours",
+  IRRITATING_CHEMICALS = "irritating-chemicals",
+}
+
+export enum KompassiForm {
+  OFFER_MINIATURES = "offer-miniatures",
+  OFFER_XP = "offer-xp",
+  OFFER_WORKSHOP = "offer-workshop",
+  OFFER_TOURNAMENT = "offer-tournament",
+  OFFER_LARP = "offer-larp",
+  OFFER_RPG = "offer-rpg",
+  OFFER_OTHER_PROGRAM = "offer-other-program",
+  OFFER_OTHER_GAMEPROGRAM = "offer-other-gameprogram",
+}
+
+export enum KompassiState {
+  ACCEPTED = "accepted",
+  CANCELLED = "cancelled",
+}
+
+export enum KompassiGrouping {
+  BEGINNERS = "beginners",
+  NEW_WORLDS = "new-worlds",
+  LGBT = "lgbt",
+  GOH = "goh-program",
+}
+
+export enum KompassiAgeGroup {
+  EVERYONE = "everyone",
+  ADULTS = "adults",
+  TEENS = "teens",
+  ONLY_ADULTS = "only-adults",
+  KIDS = "kids",
+  SMALL_KIDS = "small-kids",
+}
+
+export enum KompassiScheduled {
+  MULTIPLE = "multiple",
+  ONE_OR_MORE = "one-or-more",
+  ONE = "one",
+  NONE = "none",
+}
+
+export enum KompassiRegistration {
+  OTHER = "other",
+  NOT_REQUIRED = "not-required",
+  KONSTI = "konsti",
+  EXPERIENCE_POINT = "experience-point",
+}
+
+export enum KompassiBoolean {
+  TRUE = "true",
+  FALSE = "false",
+}
+
+export enum KompassiType {
+  OTHER = "other",
+  GAMING = "gaming",
+  WORKSHOP = "workshop",
+  TOURNAMENT = "tournament",
+  PERFORMANCE = "performance",
+  MEET = "meet",
+  PRESENTATION = "presentation",
 }
 
 export const KompassiProgramItemSchema = z.object({
@@ -91,9 +132,21 @@ export const KompassiProgramItemSchema = z.object({
   description: z.string().catch(""),
   cachedHosts: z.string().catch(""),
   cachedDimensions: z.object({
-    date: z.array(z.string()).catch([]),
-    room: z.array(z.string()).catch([]),
-    type: z.array(z.string()).catch([]),
+    form: z.array(z.nativeEnum(KompassiForm)).catch([]),
+    type: z.array(z.nativeEnum(KompassiType)).catch([]),
+    state: z.array(z.nativeEnum(KompassiState)).catch((ctx) => {
+      if (!Array.isArray(ctx.input)) {
+        return [];
+      }
+      const [valid, invalid] = partition(ctx.input, (state) =>
+        Object.values(KompassiState).includes(state),
+      );
+      logger.error(
+        "%s",
+        new Error(`Invalid state: ${JSON.stringify(invalid)}`),
+      );
+      return valid;
+    }),
     topic: z.array(z.nativeEnum(KompassiTopic)).catch((ctx) => {
       if (!Array.isArray(ctx.input)) {
         return [];
@@ -107,17 +160,29 @@ export const KompassiProgramItemSchema = z.object({
       );
       return valid;
     }),
-    konsti: z.array(z.nativeEnum(KompassiKonstiProgramType)),
-    audience: z.array(z.nativeEnum(KompassiAudience)).catch((ctx) => {
+    konsti: z.array(z.nativeEnum(KompassiKonstiProgramType)).catch((ctx) => {
       if (!Array.isArray(ctx.input)) {
         return [];
       }
-      const [valid, invalid] = partition(ctx.input, (audience) =>
-        Object.values(KompassiAudience).includes(audience),
+      const [valid, invalid] = partition(ctx.input, (konstiProgramType) =>
+        Object.values(KompassiKonstiProgramType).includes(konstiProgramType),
       );
       logger.error(
         "%s",
-        new Error(`Invalid audience: ${JSON.stringify(invalid)}`),
+        new Error(`Invalid Konsti program type: ${JSON.stringify(invalid)}`),
+      );
+      return valid;
+    }),
+    grouping: z.array(z.nativeEnum(KompassiGrouping)).catch((ctx) => {
+      if (!Array.isArray(ctx.input)) {
+        return [];
+      }
+      const [valid, invalid] = partition(ctx.input, (grouping) =>
+        Object.values(KompassiGrouping).includes(grouping),
+      );
+      logger.error(
+        "%s",
+        new Error(`Invalid grouping: ${JSON.stringify(invalid)}`),
       );
       return valid;
     }),
@@ -134,45 +199,73 @@ export const KompassiProgramItemSchema = z.object({
       );
       return valid;
     }),
-    accessibility: z.array(z.nativeEnum(KompassiAccessibility)).catch((ctx) => {
+    ["age-group"]: z.array(z.nativeEnum(KompassiAgeGroup)).catch((ctx) => {
       if (!Array.isArray(ctx.input)) {
         return [];
       }
-      const [valid, invalid] = partition(ctx.input, (accessibility) =>
-        Object.values(KompassiAccessibility).includes(accessibility),
+      const [valid, invalid] = partition(ctx.input, (ageGroup) =>
+        Object.values(KompassiAgeGroup).includes(ageGroup),
       );
       logger.error(
         "%s",
-        new Error(`Invalid accessibility: ${JSON.stringify(invalid)}`),
+        new Error(`Invalid age group: ${JSON.stringify(invalid)}`),
       );
       return valid;
     }),
-    playstyle: z.array(z.nativeEnum(KompassiPlaystyle)).catch((ctx) => {
+    scheduled: z.array(z.nativeEnum(KompassiScheduled)).catch([]),
+    ["game-style"]: z.array(z.nativeEnum(KompassiGamestyle)).catch((ctx) => {
       if (!Array.isArray(ctx.input)) {
         return [];
       }
-      const [valid, invalid] = partition(ctx.input, (playstyle) =>
-        Object.values(KompassiPlaystyle).includes(playstyle),
+      const [valid, invalid] = partition(ctx.input, (gamestyle) =>
+        Object.values(KompassiGamestyle).includes(gamestyle),
       );
       logger.error(
         "%s",
-        new Error(`Invalid playstyle: ${JSON.stringify(invalid)}`),
+        new Error(`Invalid gamestyle: ${JSON.stringify(invalid)}`),
+      );
+      return valid;
+    }),
+    inclusivity: z.array(z.nativeEnum(KompassiInclusivity)).catch((ctx) => {
+      if (!Array.isArray(ctx.input)) {
+        return [];
+      }
+      const [valid, invalid] = partition(ctx.input, (inclusivity) =>
+        Object.values(KompassiInclusivity).includes(inclusivity),
+      );
+      logger.error(
+        "%s",
+        new Error(`Invalid inclusivity: ${JSON.stringify(invalid)}`),
+      );
+      return valid;
+    }),
+    registration: z.array(z.nativeEnum(KompassiRegistration)).catch((ctx) => {
+      if (!Array.isArray(ctx.input)) {
+        return [];
+      }
+      const [valid, invalid] = partition(ctx.input, (registration) =>
+        Object.values(KompassiRegistration).includes(registration),
+      );
+      logger.error(
+        "%s",
+        new Error(`Invalid registration: ${JSON.stringify(invalid)}`),
+      );
+      return valid;
+    }),
+    revolvingdoor: z.array(z.nativeEnum(KompassiBoolean)).catch((ctx) => {
+      if (!Array.isArray(ctx.input)) {
+        return [];
+      }
+      const [valid, invalid] = partition(ctx.input, (revolvingDoor) =>
+        Object.values(KompassiBoolean).includes(revolvingDoor),
+      );
+      logger.error(
+        "%s",
+        new Error(`Invalid revolving door: ${JSON.stringify(invalid)}`),
       );
       return valid;
     }),
   }),
-  scheduleItems: z
-    .array(
-      z.object({
-        slug: z.string(),
-        title: z.string().catch(""),
-        startTime: z.string().datetime({ offset: true }),
-        endTime: z.string().datetime({ offset: true }),
-        lengthMinutes: z.number().catch(0),
-        location: z.string().catch(""),
-      }),
-    )
-    .min(1),
   cachedAnnotations: z.object({
     "konsti:rpgSystem": z.string().catch(""),
     "ropecon:otherAuthor": z.string().catch(""),
@@ -194,6 +287,18 @@ export const KompassiProgramItemSchema = z.object({
     "ropecon:gameSlogan": z.string().catch(""),
     "ropecon:isRevolvingDoor": z.boolean().catch(false),
   }),
+  scheduleItems: z
+    .array(
+      z.object({
+        slug: z.string(),
+        title: z.string().catch(""),
+        startTime: z.string().datetime({ offset: true }),
+        endTime: z.string().datetime({ offset: true }),
+        lengthMinutes: z.number().catch(0),
+        location: z.string().catch(""),
+      }),
+    )
+    .min(1),
 });
 
 export type KompassiProgramItem = z.infer<typeof KompassiProgramItemSchema>;

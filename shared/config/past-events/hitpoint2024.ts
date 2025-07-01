@@ -65,63 +65,63 @@ const eventConfig: Partial<EventConfig> = {
   customDetailsProgramItems: {
     // L&L Gorgoniuksen Koodeksi
     "lollo-praedor": {
-      tags: [Tag.FOR_18_PLUS_ONLY, Tag.BEGINNER_FRIENDLY],
+      tags: [Tag.ONLY_ADULTS, Tag.BEGINNER_FRIENDLY],
     },
     // Deathmatch Island
     "deathmatch-island": {
-      tags: [Tag.FOR_18_PLUS_ONLY, Tag.BEGINNER_FRIENDLY],
+      tags: [Tag.ONLY_ADULTS, Tag.BEGINNER_FRIENDLY],
     },
     // City of the Scorpion God
     "city-of-the-scorpion-god": {
-      tags: [Tag.FOR_18_PLUS_ONLY],
+      tags: [Tag.ONLY_ADULTS],
       languages: [Language.FINNISH, Language.ENGLISH],
     },
     // Kirottu Matka
     "kirottu-matka": {
-      tags: [Tag.FOR_18_PLUS_ONLY],
+      tags: [Tag.ONLY_ADULTS],
     },
     // Timantin sävyvirhe
     "timantin-savyvirhe-2": {
-      tags: [Tag.FOR_18_PLUS_ONLY, Tag.BEGINNER_FRIENDLY],
+      tags: [Tag.ONLY_ADULTS, Tag.BEGINNER_FRIENDLY],
     },
     // Offworlders: Kosmoksen karsein keikka
     "offworlders-kosmoksen-karsein-keikka": {
-      tags: [Tag.FOR_18_PLUS_ONLY, Tag.BEGINNER_FRIENDLY],
+      tags: [Tag.ONLY_ADULTS, Tag.BEGINNER_FRIENDLY],
     },
     // Scamatania: Kaunojen kari (WWN)
     "scamatania-kaunojen-kari-wwn": {
-      tags: [Tag.FOR_18_PLUS_ONLY, Tag.BEGINNER_FRIENDLY],
+      tags: [Tag.ONLY_ADULTS, Tag.BEGINNER_FRIENDLY],
     },
     // Kirottu Matka
     "kirottu-matka-2": {
-      tags: [Tag.FOR_18_PLUS_ONLY],
+      tags: [Tag.ONLY_ADULTS],
     },
     // Auld Sanguine - A New Year's Eve Vampire the Masquerade Story
     "auld-sanguine": {
-      tags: [Tag.FOR_18_PLUS_ONLY, Tag.BEGINNER_FRIENDLY],
+      tags: [Tag.ONLY_ADULTS, Tag.BEGINNER_FRIENDLY],
       languages: [Language.ENGLISH],
     },
     // Läpimurto
     lapimurto: {
-      tags: [Tag.FOR_18_PLUS_ONLY],
+      tags: [Tag.ONLY_ADULTS],
     },
     // The Lighthouse
     "the-lighthouse": {
-      tags: [Tag.FOR_18_PLUS_ONLY, Tag.BEGINNER_FRIENDLY],
+      tags: [Tag.ONLY_ADULTS, Tag.BEGINNER_FRIENDLY],
       languages: [Language.ENGLISH],
     },
     // Pelipöytä ry peluuttaa: Ryuutama
     "pelipoyta-ry-peluuttaa-ryuutama": {
-      tags: [Tag.CHILDREN_FRIENDLY, Tag.BEGINNER_FRIENDLY],
+      tags: [Tag.SMALL_KIDS, Tag.BEGINNER_FRIENDLY],
     },
     // Session Zero - Tavernassa tapahtuu
     "session-zero-tavernassa-tapahtuu": {
-      tags: [Tag.CHILDREN_FRIENDLY, Tag.BEGINNER_FRIENDLY],
+      tags: [Tag.SMALL_KIDS, Tag.BEGINNER_FRIENDLY],
       languages: [Language.FINNISH, Language.ENGLISH],
     },
     // Session Zero - Tavernassa tapahtuu
     "session-zero-tavernassa-tapahtuu-2": {
-      tags: [Tag.CHILDREN_FRIENDLY, Tag.BEGINNER_FRIENDLY],
+      tags: [Tag.SMALL_KIDS, Tag.BEGINNER_FRIENDLY],
       languages: [Language.FINNISH, Language.ENGLISH],
     },
     // Mates, Dates and Sleepovers

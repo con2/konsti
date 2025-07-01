@@ -1,8 +1,8 @@
 import dayjs from "dayjs";
 import {
-  AccessibilityValue,
+  InclusivityValue,
   ProgramItem,
-  Playstyle,
+  Gamestyle,
   Language,
   ProgramType,
   Tag,
@@ -11,12 +11,12 @@ import {
 } from "shared/types/models/programItem";
 import {
   KompassiProgramItem,
-  KompassiPlaystyle,
+  KompassiGamestyle,
   KompassiLanguage,
-  KompassiAudience,
-  KompassiAccessibility,
-  KompassiTopic,
+  KompassiInclusivity,
   KompassiKonstiProgramType,
+  KompassiGrouping,
+  KompassiAgeGroup,
 } from "server/kompassi/kompassiProgramItem";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import { config } from "shared/config";
@@ -43,7 +43,7 @@ export const kompassiProgramItemMapper = (
           ),
         tags: mapTags(programItem),
         genres: [],
-        styles: mapPlaystyles(programItem.cachedDimensions.playstyle),
+        styles: mapGamestyles(programItem.cachedDimensions["game-style"]),
         languages: mapLanguages(programItem),
         endTime: dayjs(scheduleItems.endTime).toISOString(),
         people: programItem.cachedHosts,
@@ -56,8 +56,8 @@ export const kompassiProgramItemMapper = (
         contentWarnings:
           programItem.cachedAnnotations["ropecon:contentWarnings"],
         otherAuthor: programItem.cachedAnnotations["ropecon:otherAuthor"],
-        accessibilityValues: mapAccessibilityValues(
-          programItem.cachedDimensions.accessibility,
+        accessibilityValues: mapInclusivityValues(
+          programItem.cachedDimensions.inclusivity,
         ),
         popularity: Popularity.NULL,
         otherAccessibilityInformation:
@@ -112,82 +112,82 @@ const mapTags = (kompassiProgramItem: KompassiProgramItem): Tag[] => {
     return customDetails.tags;
   }
 
-  const audiences = kompassiProgramItem.cachedDimensions.audience;
-  const tags: Tag[] = audiences.flatMap((audience) => {
-    switch (audience) {
-      case KompassiAudience.K_18:
-      case KompassiAudience.R18:
-        return Tag.FOR_18_PLUS_ONLY;
+  const groupings = kompassiProgramItem.cachedDimensions.grouping;
 
-      case KompassiAudience.BEGINNERS:
+  const groupingTags: Tag[] = groupings.flatMap((grouping) => {
+    switch (grouping) {
+      case KompassiGrouping.BEGINNERS:
         return Tag.BEGINNER_FRIENDLY;
 
-      case KompassiAudience.AIMED_UNDER_13:
-        return Tag.AIMED_UNDER_13;
+      case KompassiGrouping.NEW_WORLDS:
+        return Tag.THEME;
 
-      case KompassiAudience.AIMED_BETWEEN_13_17:
-        return Tag.AIMED_BETWEEN_13_17;
+      case KompassiGrouping.LGBT:
+        return Tag.LGBT;
 
-      case KompassiAudience.AIMED_ADULTS:
-        return Tag.AIMED_ADULTS;
-
-      case KompassiAudience.ALL_AGES:
-        return Tag.ALL_AGES;
-
-      case KompassiAudience.BEGINNER_FRIENDLY:
-        return Tag.BEGINNER_FRIENDLY;
-
-      case KompassiAudience.EXPERIENCED:
-        return Tag.INTENDED_FOR_EXPERIENCED_PARTICIPANTS;
-
-      case KompassiAudience.CHILD_FRIENDLY:
-        return Tag.CHILDREN_FRIENDLY;
-
-      case KompassiAudience.UNRESTRICTED:
-        return [];
+      case KompassiGrouping.GOH:
+        return Tag.GUEST_OF_HONOR;
 
       default:
-        return exhaustiveSwitchGuard(audience);
+        return exhaustiveSwitchGuard(grouping);
     }
   });
 
-  const topics = kompassiProgramItem.cachedDimensions.topic;
-  if (topics.includes(KompassiTopic.GOH)) {
-    tags.push(Tag.GUEST_OF_HONOR);
-  }
-  if (topics.includes(KompassiTopic.THEME)) {
-    tags.push(Tag.THEME_MONSTERS);
-  }
+  const ageGroups = kompassiProgramItem.cachedDimensions["age-group"];
 
-  return tags;
+  const ageGroupTags: Tag[] = ageGroups.flatMap((ageGroup) => {
+    switch (ageGroup) {
+      case KompassiAgeGroup.EVERYONE:
+        return Tag.EVERYONE;
+
+      case KompassiAgeGroup.ADULTS:
+        return Tag.ADULTS;
+
+      case KompassiAgeGroup.TEENS:
+        return Tag.TEENS;
+
+      case KompassiAgeGroup.ONLY_ADULTS:
+        return Tag.ONLY_ADULTS;
+
+      case KompassiAgeGroup.KIDS:
+        return Tag.KIDS;
+
+      case KompassiAgeGroup.SMALL_KIDS:
+        return Tag.SMALL_KIDS;
+      default:
+        return exhaustiveSwitchGuard(ageGroup);
+    }
+  });
+
+  return [...groupingTags, ...ageGroupTags];
 };
 
-const mapPlaystyles = (playstyles: KompassiPlaystyle[]): Playstyle[] => {
-  return playstyles.map((playstyle) => {
-    switch (playstyle) {
-      case KompassiPlaystyle.SERIOUS:
-        return Playstyle.SERIOUS;
+const mapGamestyles = (gamestyles: KompassiGamestyle[]): Gamestyle[] => {
+  return gamestyles.map((gamestyle) => {
+    switch (gamestyle) {
+      case KompassiGamestyle.SERIOUS:
+        return Gamestyle.SERIOUS;
 
-      case KompassiPlaystyle.LIGHT:
-        return Playstyle.LIGHT;
+      case KompassiGamestyle.LIGHT:
+        return Gamestyle.LIGHT;
 
-      case KompassiPlaystyle.RULES_HEAVY:
-        return Playstyle.RULES_HEAVY;
+      case KompassiGamestyle.RULES_HEAVY:
+        return Gamestyle.RULES_HEAVY;
 
-      case KompassiPlaystyle.RULES_LIGHT:
-        return Playstyle.RULES_LIGHT;
+      case KompassiGamestyle.RULES_LIGHT:
+        return Gamestyle.RULES_LIGHT;
 
-      case KompassiPlaystyle.STORY_DRIVEN:
-        return Playstyle.STORY_DRIVEN;
+      case KompassiGamestyle.STORY_DRIVEN:
+        return Gamestyle.STORY_DRIVEN;
 
-      case KompassiPlaystyle.CHARACTER_DRIVEN:
-        return Playstyle.CHARACTER_DRIVEN;
+      case KompassiGamestyle.CHARACTER_DRIVEN:
+        return Gamestyle.CHARACTER_DRIVEN;
 
-      case KompassiPlaystyle.COMBAT_DRIVEN:
-        return Playstyle.COMBAT_DRIVEN;
+      case KompassiGamestyle.COMBAT_HEAVY:
+        return Gamestyle.COMBAT_HEAVY;
 
       default:
-        return exhaustiveSwitchGuard(playstyle);
+        return exhaustiveSwitchGuard(gamestyle);
     }
   });
 };
@@ -217,46 +217,49 @@ const mapLanguages = (kompassiProgramItem: KompassiProgramItem): Language[] => {
   return languages;
 };
 
-const mapAccessibilityValues = (
-  kompassiAccessibilityValues: KompassiAccessibility[],
-): AccessibilityValue[] => {
-  const accessibilityValues = kompassiAccessibilityValues.map(
-    (kompassiAccessibilityValue) => {
-      switch (kompassiAccessibilityValue) {
-        case KompassiAccessibility.LOUD_SOUNDS:
-          return AccessibilityValue.LOUD_SOUNDS;
-        case KompassiAccessibility.PHYSICAL_CONTACT:
-          return AccessibilityValue.PHYSICAL_CONTACT;
-        case KompassiAccessibility.MOVING_AROUND:
-          return AccessibilityValue.MOVING_AROUND;
-        case KompassiAccessibility.DURATION_OVER_2H:
-          return AccessibilityValue.DURATION_OVER_2H;
-        case KompassiAccessibility.REQUIRES_DEXTERITY:
-          return AccessibilityValue.REQUIRES_DEXTERITY;
-        case KompassiAccessibility.RECORDING:
-          return AccessibilityValue.RECORDING;
-        case KompassiAccessibility.REQUIRES_QUICK_REACTIONS:
-          return AccessibilityValue.REQUIRES_QUICK_REACTIONS;
-        case KompassiAccessibility.COLORBLIND:
-          return AccessibilityValue.COLORBLIND;
-        case KompassiAccessibility.TEXTS_WITH_NO_RECORDINGS:
-          return AccessibilityValue.TEXTS_WITH_NO_RECORDINGS;
-        case KompassiAccessibility.LIMITED_MOVING_OPPORTUNITIES:
-          return AccessibilityValue.LIMITED_MOVING_OPPORTUNITIES;
-        case KompassiAccessibility.FLASHING_LIGHTS:
-          return AccessibilityValue.FLASHING_LIGHTS;
-        case KompassiAccessibility.LOW_LIGHTING:
-          return AccessibilityValue.LOW_LIGHTING;
-        case KompassiAccessibility.LONG_TEXTS:
-          return AccessibilityValue.LONG_TEXTS;
-        case KompassiAccessibility.IRRITATE_SKIN:
-          return AccessibilityValue.IRRITATE_SKIN;
-        case KompassiAccessibility.VIDEO:
-          return AccessibilityValue.VIDEO;
-        case KompassiAccessibility.STRONG_SMELLS:
-          return AccessibilityValue.STRONG_SMELLS;
+const mapInclusivityValues = (
+  kompassiInclusivityValues: KompassiInclusivity[],
+): InclusivityValue[] => {
+  const accessibilityValues = kompassiInclusivityValues.map(
+    (kompassiInclusivityValue) => {
+      switch (kompassiInclusivityValue) {
+        case KompassiInclusivity.COLOR_BLINDNESS:
+          return InclusivityValue.COLOR_BLINDNESS;
+        case KompassiInclusivity.FINGERS:
+          return InclusivityValue.FINGERS;
+        case KompassiInclusivity.LOUD_SOUNDS:
+          return InclusivityValue.LOUD_SOUNDS;
+        case KompassiInclusivity.PHYSICAL_CONTACT:
+          return InclusivityValue.PHYSICAL_CONTACT;
+        case KompassiInclusivity.LONG_PROGRAM:
+          return InclusivityValue.LONG_PROGRAM;
+        case KompassiInclusivity.NOT_AMPLIFIED:
+          return InclusivityValue.NOT_AMPLIFIED;
+        case KompassiInclusivity.NO_RECORDING_OR_SPOKEN_TEXT:
+          return InclusivityValue.NO_RECORDING_OR_SPOKEN_TEXT;
+        case KompassiInclusivity.DARK_LIGHTING:
+          return InclusivityValue.DARK_LIGHTING;
+        case KompassiInclusivity.NO_MOVEMENT:
+          return InclusivityValue.NO_MOVEMENT;
+        case KompassiInclusivity.NO_TEXT_OF_RECORDING:
+          return InclusivityValue.NO_TEXT_OF_RECORDING;
+        case KompassiInclusivity.LONG_TEXTS:
+          return InclusivityValue.LONG_TEXTS;
+        case KompassiInclusivity.LOTS_OF_MOVEMENT:
+          return InclusivityValue.LOTS_OF_MOVEMENT;
+        case KompassiInclusivity.FLASHING_LIGHTS:
+          return InclusivityValue.FLASHING_LIGHTS;
+        case KompassiInclusivity.QUICK_REACTIONS:
+          return InclusivityValue.QUICK_REACTIONS;
+        case KompassiInclusivity.NO_SUBTITLES:
+          return InclusivityValue.NO_SUBTITLES;
+        case KompassiInclusivity.STRONG_ODOURS:
+          return InclusivityValue.STRONG_ODOURS;
+        case KompassiInclusivity.IRRITATING_CHEMICALS:
+          return InclusivityValue.IRRITATING_CHEMICALS;
+
         default:
-          return exhaustiveSwitchGuard(kompassiAccessibilityValue);
+          return exhaustiveSwitchGuard(kompassiInclusivityValue);
       }
     },
   );
