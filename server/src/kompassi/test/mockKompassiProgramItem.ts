@@ -4,12 +4,19 @@ import {
 } from "shared/tests/testProgramItem";
 import {
   KompassiProgramItem,
-  KompassiPlaystyle,
+  KompassiGamestyle,
   KompassiLanguage,
-  KompassiAudience,
-  KompassiAccessibility,
+  KompassiInclusivity,
   KompassiTopic,
   KompassiKonstiProgramType,
+  KompassiForm,
+  KompassiType,
+  KompassiState,
+  KompassiGrouping,
+  KompassiAgeGroup,
+  KompassiScheduled,
+  KompassiRegistration,
+  KompassiBoolean,
 } from "server/kompassi/kompassiProgramItem";
 
 export const mockKompassiProgramItem: KompassiProgramItem = {
@@ -18,21 +25,25 @@ export const mockKompassiProgramItem: KompassiProgramItem = {
   description: testProgramItem.description,
   cachedHosts: testProgramItem.people,
   cachedDimensions: {
-    date: [""],
-    room: [testProgramItem.location],
-    type: [""],
-    topic: [KompassiTopic.THEME],
+    form: [KompassiForm.OFFER_RPG],
+    type: [KompassiType.GAMING],
+    state: [KompassiState.ACCEPTED],
+    topic: [KompassiTopic.RPG],
     konsti: [KompassiKonstiProgramType.TABLETOP_RPG],
-    audience: [KompassiAudience.BEGINNERS, KompassiAudience.AIMED_UNDER_13],
+    grouping: [KompassiGrouping.BEGINNERS],
     language: [KompassiLanguage.FINNISH],
-    accessibility: [
-      KompassiAccessibility.LONG_TEXTS,
-      KompassiAccessibility.MOVING_AROUND,
+    ["age-group"]: [KompassiAgeGroup.ADULTS],
+    scheduled: [KompassiScheduled.ONE],
+    ["game-style"]: [
+      KompassiGamestyle.CHARACTER_DRIVEN,
+      KompassiGamestyle.RULES_LIGHT,
     ],
-    playstyle: [
-      KompassiPlaystyle.CHARACTER_DRIVEN,
-      KompassiPlaystyle.RULES_LIGHT,
+    inclusivity: [
+      KompassiInclusivity.FLASHING_LIGHTS,
+      KompassiInclusivity.LOUD_SOUNDS,
     ],
+    registration: [KompassiRegistration.KONSTI],
+    revolvingdoor: [KompassiBoolean.FALSE],
   },
   scheduleItems: [
     {
@@ -65,21 +76,25 @@ export const mockKompassiProgramItem2: KompassiProgramItem = {
   description: testProgramItem2.description,
   cachedHosts: testProgramItem2.people,
   cachedDimensions: {
-    date: [""],
-    room: [testProgramItem.location],
-    type: [""],
-    topic: [KompassiTopic.THEME],
+    form: [KompassiForm.OFFER_RPG],
+    type: [KompassiType.GAMING],
+    state: [KompassiState.ACCEPTED],
+    topic: [KompassiTopic.RPG],
     konsti: [KompassiKonstiProgramType.TABLETOP_RPG],
-    audience: [KompassiAudience.BEGINNERS, KompassiAudience.AIMED_UNDER_13],
+    grouping: [KompassiGrouping.BEGINNERS],
     language: [KompassiLanguage.FINNISH],
-    accessibility: [
-      KompassiAccessibility.LONG_TEXTS,
-      KompassiAccessibility.MOVING_AROUND,
+    ["age-group"]: [KompassiAgeGroup.ADULTS],
+    scheduled: [KompassiScheduled.ONE],
+    ["game-style"]: [
+      KompassiGamestyle.CHARACTER_DRIVEN,
+      KompassiGamestyle.RULES_LIGHT,
     ],
-    playstyle: [
-      KompassiPlaystyle.CHARACTER_DRIVEN,
-      KompassiPlaystyle.RULES_LIGHT,
+    inclusivity: [
+      KompassiInclusivity.FLASHING_LIGHTS,
+      KompassiInclusivity.LOUD_SOUNDS,
     ],
+    registration: [KompassiRegistration.KONSTI],
+    revolvingdoor: [KompassiBoolean.FALSE],
   },
   scheduleItems: [
     {

@@ -85,7 +85,7 @@ export const ProgramItemDetails = ({ programItem }: Props): ReactElement => {
 
       {programItem.accessibilityValues.length > 0 && (
         <ResponsiveColumnRow>
-          <DetailTitle>{t("programItemInfo.accessibility")}</DetailTitle>
+          <DetailTitle>{t("programItemInfo.inclusivity")}</DetailTitle>
           <AccessibilityValues>
             {programItem.accessibilityValues.map((a) => (
               <span key={a}>{t(`accessibility.${a}`)}</span>
@@ -119,8 +119,8 @@ export const ProgramItemDetails = ({ programItem }: Props): ReactElement => {
 
       {programItem.styles.length > 0 && (
         <ResponsiveColumnRow>
-          <DetailTitle>{t("programItemInfo.playstyle")}</DetailTitle>
-          {programItem.styles.map((s) => t(`playstyle.${s}`)).join(", ")}
+          <DetailTitle>{t("programItemInfo.gamestyle")}</DetailTitle>
+          {programItem.styles.map((s) => t(`gamestyle.${s}`)).join(", ")}
         </ResponsiveColumnRow>
       )}
     </DetailsContainer>

@@ -90,6 +90,7 @@ export const eventConfig: EventConfig = {
     "alter-egon-lautapeleja-pyynnosta-alter-egos-board-games-on-request-01",
     "alter-egon-lautapeleja-pyynnosta-alter-egos-board-games-on-request-02",
     "alien-seikkailu-uudessa-maailmassa",
+    "the-art-inspirations-and-worldbuilding-of-trench-crusade",
     // These have invalid start time (half past) and should be fixed
     "dnd-tai-vahan-sinnepaindnd-or-something-like-that",
   ],
