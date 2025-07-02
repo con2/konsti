@@ -1,13 +1,15 @@
 import fs from "node:fs";
 import path from "node:path";
 import axios from "axios";
+import dayjs from "dayjs";
 import { z, ZodError } from "zod";
-import { unique } from "remeda";
+import { first, unique } from "remeda";
 import { KompassiError } from "shared/types/api/errors";
 import {
   KompassiKonstiProgramType,
   KompassiProgramItem,
   KompassiProgramItemSchema,
+  KompassiRegistration,
 } from "server/kompassi/kompassiProgramItem";
 import {
   Result,
@@ -21,6 +23,7 @@ import { config } from "shared/config";
 import { EventName } from "shared/config/eventConfigTypes";
 import { getProgramItemsFromFullProgram } from "server/kompassi/getProgramItemsFromFullProgram";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
+import { TIMEZONE } from "shared/utils/initializeDayjs";
 
 export const getProgramItemsFromKompassi = async (
   eventName: EventName,
@@ -232,4 +235,32 @@ export const checkUnknownKeys = (
       ),
     );
   }
+};
+
+export const logInvalidStartTimes = (
+  programItem: KompassiProgramItem,
+  programType: KompassiKonstiProgramType,
+): void => {
+  const startTimes = programItem.scheduleItems.map(
+    (scheduleItem) => scheduleItem.startTime,
+  );
+
+  startTimes.map((startTime) => {
+    const startMinute = dayjs(startTime).minute();
+    if (
+      (programType === KompassiKonstiProgramType.TABLETOP_RPG ||
+        programType === KompassiKonstiProgramType.WORKSHOP) &&
+      startMinute !== 0 &&
+      first(programItem.cachedDimensions.registration) ===
+        KompassiRegistration.KONSTI
+    ) {
+      logger.error(
+        "%s",
+        new Error(
+          // eslint-disable-next-line no-restricted-syntax
+          `Invalid start time: ${dayjs(startTime).tz(TIMEZONE).format("HH:mm")} - ${programItem.slug}`,
+        ),
+      );
+    }
+  });
 };
