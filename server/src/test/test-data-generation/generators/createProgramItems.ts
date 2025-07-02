@@ -23,8 +23,7 @@ import {
 } from "server/kompassi/kompassiProgramItem";
 import { Result } from "shared/utils/result";
 import { MongoDbError } from "shared/types/api/errors";
-import { ProgramType } from "shared/types/models/programItem";
-import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
+import { mapKonstiProgramTypesToKompassiProgramTypes } from "server/kompassi/getProgramItemsFromKompassi";
 
 const PROGRAM_ITEM_ID_MAX = 10000000;
 
@@ -62,47 +61,12 @@ const getMaxAttendees = (programType: KompassiKonstiProgramType): number => {
   return faker.number.int({ min: 3, max: 4 });
 };
 
-const mapKonstiProgramTypeToKompassiProgramType = (
-  programTypes: ProgramType[],
-): KompassiKonstiProgramType[] => {
-  return programTypes.map((programType) => {
-    switch (programType) {
-      case ProgramType.TABLETOP_RPG:
-        return KompassiKonstiProgramType.TABLETOP_RPG;
-
-      case ProgramType.LARP:
-        return KompassiKonstiProgramType.LARP;
-
-      case ProgramType.TOURNAMENT:
-        return KompassiKonstiProgramType.TOURNAMENT;
-
-      case ProgramType.WORKSHOP:
-        return KompassiKonstiProgramType.WORKSHOP;
-
-      case ProgramType.EXPERIENCE_POINT:
-        return KompassiKonstiProgramType.EXPERIENCE_POINT;
-
-      case ProgramType.OTHER:
-        return KompassiKonstiProgramType.OTHER;
-
-      case ProgramType.FLEAMARKET:
-        return KompassiKonstiProgramType.FLEAMARKET;
-
-      case ProgramType.ROUNDTABLE_DISCUSSION:
-        return KompassiKonstiProgramType.ROUNDTABLE_DISCUSSION;
-
-      default:
-        return exhaustiveSwitchGuard(programType);
-    }
-  });
-};
-
 export const createProgramItems = async (
   programItemCount: number,
 ): Promise<Result<void, MongoDbError>> => {
   const kompassiProgramItems: KompassiProgramItem[] = [];
 
-  const kompassiProgramTypes = mapKonstiProgramTypeToKompassiProgramType(
+  const kompassiProgramTypes = mapKonstiProgramTypesToKompassiProgramTypes(
     config.event().activeProgramTypes,
   );
 
