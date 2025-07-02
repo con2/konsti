@@ -24,6 +24,7 @@ import { EventName } from "shared/config/eventConfigTypes";
 import { getProgramItemsFromFullProgram } from "server/kompassi/getProgramItemsFromFullProgram";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import { TIMEZONE } from "shared/utils/initializeDayjs";
+import { ProgramType } from "shared/types/models/programItem";
 
 export const getProgramItemsFromKompassi = async (
   eventName: EventName,
@@ -159,7 +160,7 @@ export const getProgramFromServer = async (): Promise<
 > => {
   logger.info("GET event program from remote server");
 
-  const { eventName, eventYear } = config.event();
+  const { eventName, eventYear, activeProgramTypes } = config.event();
 
   const url = "https://kompassi.eu/graphql";
   const body = {
@@ -189,7 +190,8 @@ export const getProgramFromServer = async (): Promise<
     `,
     variables: {
       event: `${eventNameToKompassiEventName(eventName)}${eventYear}`,
-      programTypes: Object.values(KompassiKonstiProgramType),
+      programTypes:
+        mapKonstiProgramTypesToKompassiProgramTypes(activeProgramTypes),
     },
   };
   const headers = { "Content-Type": "application/json" };
@@ -261,6 +263,41 @@ export const logInvalidStartTimes = (
           `Invalid start time: ${dayjs(startTime).tz(TIMEZONE).format("HH:mm")} - ${programItem.slug}`,
         ),
       );
+    }
+  });
+};
+
+export const mapKonstiProgramTypesToKompassiProgramTypes = (
+  programTypes: ProgramType[],
+): KompassiKonstiProgramType[] => {
+  return programTypes.map((programType) => {
+    switch (programType) {
+      case ProgramType.TABLETOP_RPG:
+        return KompassiKonstiProgramType.TABLETOP_RPG;
+
+      case ProgramType.LARP:
+        return KompassiKonstiProgramType.LARP;
+
+      case ProgramType.TOURNAMENT:
+        return KompassiKonstiProgramType.TOURNAMENT;
+
+      case ProgramType.WORKSHOP:
+        return KompassiKonstiProgramType.WORKSHOP;
+
+      case ProgramType.EXPERIENCE_POINT:
+        return KompassiKonstiProgramType.EXPERIENCE_POINT;
+
+      case ProgramType.OTHER:
+        return KompassiKonstiProgramType.OTHER;
+
+      case ProgramType.FLEAMARKET:
+        return KompassiKonstiProgramType.FLEAMARKET;
+
+      case ProgramType.ROUNDTABLE_DISCUSSION:
+        return KompassiKonstiProgramType.ROUNDTABLE_DISCUSSION;
+
+      default:
+        return exhaustiveSwitchGuard(programType);
     }
   });
 };

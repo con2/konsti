@@ -32,7 +32,6 @@ export const clientConfig: ClientConfig = {
     ProgramType.WORKSHOP,
     ProgramType.TOURNAMENT,
     ProgramType.OTHER,
-    ProgramType.EXPERIENCE_POINT,
   ],
   activeLanguages: [Language.FINNISH, Language.ENGLISH],
 
