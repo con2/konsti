@@ -74,13 +74,6 @@ export const parseProgramItem = (
   programItem: unknown,
   schema: typeof KompassiProgramItemSchema,
 ): KompassiProgramItem | undefined => {
-  if (
-    config
-      .event()
-      .ignoreProgramItemsIds.includes(getProgramItemId(programItem) as string)
-  ) {
-    return;
-  }
   const result = schema.safeParse(programItem);
 
   if (result.success) {
@@ -243,24 +236,25 @@ export const logInvalidStartTimes = (
   programItem: KompassiProgramItem,
   programType: KompassiKonstiProgramType,
 ): void => {
-  const startTimes = programItem.scheduleItems.map(
-    (scheduleItem) => scheduleItem.startTime,
+  const evenHourProgramTypes = mapKonstiProgramTypesToKompassiProgramTypes(
+    config.event().twoPhaseSignupProgramTypes,
   );
+  const usesKonstiRegisration =
+    first(programItem.cachedDimensions.registration) ===
+    KompassiRegistration.KONSTI;
 
-  startTimes.map((startTime) => {
-    const startMinute = dayjs(startTime).minute();
-    if (
-      (programType === KompassiKonstiProgramType.TABLETOP_RPG ||
-        programType === KompassiKonstiProgramType.WORKSHOP) &&
-      startMinute !== 0 &&
-      first(programItem.cachedDimensions.registration) ===
-        KompassiRegistration.KONSTI
-    ) {
+  if (!evenHourProgramTypes.includes(programType) || !usesKonstiRegisration) {
+    return;
+  }
+
+  programItem.scheduleItems.map((scheduleItem) => {
+    const startMinute = dayjs(scheduleItem.startTime).minute();
+    if (startMinute !== 0) {
       logger.error(
         "%s",
         new Error(
           // eslint-disable-next-line no-restricted-syntax
-          `Invalid start time: ${dayjs(startTime).tz(TIMEZONE).format("HH:mm")} - ${programItem.slug}`,
+          `Invalid start time: ${dayjs(scheduleItem.startTime).tz(TIMEZONE).format("HH:mm")} - ${scheduleItem.slug}`,
         ),
       );
     }

@@ -68,7 +68,7 @@ const commonConfig = {
   firstSignupBonus: 20,
   additionalFirstSignupBonus: 5,
   useLocalProgramFile: false,
-  localKompassiFile: "program-tracon-2024.json",
+  localKompassiFile: "program-ropecon-2025.json",
 
   // Statistics
   statsDataDir: "src/features/statistics/datafiles",

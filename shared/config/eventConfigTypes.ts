@@ -60,12 +60,12 @@ export interface EventConfig {
   resultsVisible: boolean;
   addToKonstiOther: string[];
   noKonstiSignupIds: string[];
-  ignoreProgramItemsIds: string[];
   signupQuestions: SignupQuestion[];
   tournamentSignupQuestion: Omit<SignupQuestion, "programItemId"> | null;
   tournamentSignupQuestionExcludeIds: string[];
   addRevolvingDoorIds: string[];
   logInvalidStartTimes: boolean;
+  logMissingScheduleItems: boolean; // If scheduleItems is missing, program item is ignored
   hideParticipantListProgramTypes: ProgramType[];
   fixedLotterySignupTime: string | null;
   entryConditions: {
