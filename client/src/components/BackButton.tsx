@@ -38,6 +38,7 @@ const Container = styled.div`
   color: ${(props) => props.theme.textLink};
   font-size: ${(props) => props.theme.linkFontSize};
   cursor: pointer;
+  width: fit-content;
 `;
 
 const Text = styled.span`
