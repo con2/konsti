@@ -1,7 +1,7 @@
-import dayjs from "dayjs";
 import { first } from "remeda";
 import {
   checkUnknownKeys,
+  logInvalidStartTimes,
   parseProgramItem,
 } from "server/kompassi/getProgramItemsFromKompassi";
 import { logger } from "server/utils/logger";
@@ -11,7 +11,6 @@ import {
   KompassiProgramItem,
   KompassiProgramItemSchema,
 } from "server/kompassi/kompassiProgramItem";
-import { TIMEZONE } from "shared/utils/initializeDayjs";
 
 export const getProgramItemsFromFullProgramTracon = (
   programItems: unknown[],
@@ -49,20 +48,7 @@ export const getProgramItemsFromFullProgramTracon = (
     }
 
     if (config.event().logInvalidStartTimes) {
-      const startTime = programItem.scheduleItems[0].startTime;
-      const startMinute = dayjs(startTime).minute();
-      if (
-        programType === KompassiKonstiProgramType.TABLETOP_RPG &&
-        startMinute !== 0
-      ) {
-        logger.error(
-          "%s",
-          new Error(
-            // eslint-disable-next-line no-restricted-syntax
-            `Invalid RPG start time: ${dayjs(startTime).tz(TIMEZONE).format("HH:mm")} - ${programItem.title}`,
-          ),
-        );
-      }
+      logInvalidStartTimes(programItem, programType);
     }
 
     return programItem;
