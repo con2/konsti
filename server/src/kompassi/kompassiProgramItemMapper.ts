@@ -1,4 +1,5 @@
 import dayjs from "dayjs";
+import { first } from "remeda";
 import {
   InclusivityValue,
   ProgramItem,
@@ -19,10 +20,13 @@ import {
   KompassiAgeGroup,
   KompassiBoolean,
   KompassiRegistration,
+  KompassiScheduleItem,
 } from "server/kompassi/kompassiProgramItem";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import { config } from "shared/config";
 import { getShortDescriptionFromDescription } from "server/utils/getShortDescriptionFromDescription";
+import { mapKonstiProgramTypesToKompassiProgramTypes } from "server/kompassi/getProgramItemsFromKompassi";
+import { logger } from "server/utils/logger";
 
 const { customDetailsProgramItems } = config.event();
 
@@ -30,24 +34,24 @@ export const kompassiProgramItemMapper = (
   programItems: readonly KompassiProgramItem[],
 ): readonly ProgramItem[] => {
   return programItems.flatMap((programItem) => {
-    return programItem.scheduleItems.map((scheduleItems) => {
+    return programItem.scheduleItems.map((scheduleItem) => {
       return {
-        programItemId: scheduleItems.slug,
-        title: scheduleItems.title,
+        programItemId: scheduleItem.slug,
+        title: scheduleItem.title,
         description: programItem.description,
-        location: scheduleItems.location,
-        startTime: dayjs(scheduleItems.startTime).toISOString(),
+        location: scheduleItem.location,
+        startTime: dayjs(scheduleItem.startTime).toISOString(),
         mins:
-          scheduleItems.lengthMinutes ||
-          dayjs(scheduleItems.endTime).diff(
-            dayjs(scheduleItems.startTime),
+          scheduleItem.lengthMinutes ||
+          dayjs(scheduleItem.endTime).diff(
+            dayjs(scheduleItem.startTime),
             "minute",
           ),
         tags: mapTags(programItem),
         genres: [],
         styles: mapGamestyles(programItem.cachedDimensions["game-style"]),
         languages: mapLanguages(programItem),
-        endTime: dayjs(scheduleItems.endTime).toISOString(),
+        endTime: dayjs(scheduleItem.endTime).toISOString(),
         people: programItem.cachedHosts,
         minAttendance: programItem.cachedAnnotations["konsti:minAttendance"],
         maxAttendance: mapMaxAttendance(programItem),
@@ -65,7 +69,7 @@ export const kompassiProgramItemMapper = (
         otherAccessibilityInformation:
           programItem.cachedAnnotations["ropecon:accessibilityOther"],
         entryFee: programItem.cachedAnnotations["konsti:workshopFee"],
-        signupType: mapSignupType(programItem),
+        signupType: mapSignupType(programItem, scheduleItem),
       };
     });
   });
@@ -323,16 +327,56 @@ const mapShortDescription = (
 
 const mapSignupType = (
   kompassiProgramItem: KompassiProgramItem,
+  scheduleItem: KompassiScheduleItem,
 ): SignupType => {
-  if (kompassiProgramItem.cachedAnnotations["konsti:isPlaceholder"])
-    return SignupType.NONE;
+  const usesKonstiRegisration =
+    first(kompassiProgramItem.cachedDimensions.registration) ===
+    KompassiRegistration.KONSTI;
 
+  // If program item using lottery doesn't start at event hour, disable Konsti signup
   if (
-    kompassiProgramItem.cachedDimensions.registration[0] ===
-    KompassiRegistration.KONSTI
+    !startsAtEvenHour(kompassiProgramItem, scheduleItem, usesKonstiRegisration)
   ) {
+    return SignupType.NONE;
+  }
+
+  if (kompassiProgramItem.cachedAnnotations["konsti:isPlaceholder"]) {
+    return SignupType.NONE;
+  }
+
+  if (usesKonstiRegisration) {
     return SignupType.KONSTI;
   }
 
   return SignupType.NONE;
+};
+
+const startsAtEvenHour = (
+  kompassiProgramItem: KompassiProgramItem,
+  scheduleItem: KompassiScheduleItem,
+  usesKonstiRegisration: boolean,
+): boolean => {
+  const programType = first(kompassiProgramItem.cachedDimensions.konsti);
+
+  if (!programType) {
+    return false;
+  }
+
+  const evenHourProgramTypes = mapKonstiProgramTypesToKompassiProgramTypes(
+    config.event().twoPhaseSignupProgramTypes,
+  );
+
+  if (!evenHourProgramTypes.includes(programType) || !usesKonstiRegisration) {
+    return false;
+  }
+
+  const startMinute = dayjs(scheduleItem.startTime).minute();
+  if (startMinute !== 0) {
+    logger.info(
+      `Lottery program item "${scheduleItem.slug}" doesn't start at even hour, disable Konsti signup`,
+    );
+    return false;
+  }
+
+  return true;
 };

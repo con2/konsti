@@ -3,6 +3,7 @@
 import { z } from "zod";
 import { partition } from "remeda";
 import { logger } from "server/utils/logger";
+import { config } from "shared/config";
 
 export enum KompassiTopic {
   FIGURES = "figures",
@@ -109,6 +110,7 @@ export enum KompassiRegistration {
   NOT_REQUIRED = "not-required",
   KONSTI = "konsti",
   EXPERIENCE_POINT = "experience-point",
+  ROPE_LARP_DESK = "ropelarp",
 }
 
 export enum KompassiBoolean {
@@ -125,6 +127,17 @@ export enum KompassiType {
   MEET = "meet",
   PRESENTATION = "presentation",
 }
+
+const ScheduleItemSchema = z.object({
+  slug: z.string(),
+  title: z.string().catch(""),
+  startTime: z.string().datetime({ offset: true }),
+  endTime: z.string().datetime({ offset: true }),
+  lengthMinutes: z.number().catch(0),
+  location: z.string().catch(""),
+});
+
+export type KompassiScheduleItem = z.infer<typeof ScheduleItemSchema>;
 
 export const KompassiProgramItemSchema = z.object({
   slug: z.string(),
@@ -288,17 +301,8 @@ export const KompassiProgramItemSchema = z.object({
     "ropecon:isRevolvingDoor": z.boolean().catch(false),
   }),
   scheduleItems: z
-    .array(
-      z.object({
-        slug: z.string(),
-        title: z.string().catch(""),
-        startTime: z.string().datetime({ offset: true }),
-        endTime: z.string().datetime({ offset: true }),
-        lengthMinutes: z.number().catch(0),
-        location: z.string().catch(""),
-      }),
-    )
-    .min(1),
+    .array(ScheduleItemSchema)
+    .min(config.event().logMissingScheduleItems ? 1 : 0),
 });
 
 export type KompassiProgramItem = z.infer<typeof KompassiProgramItemSchema>;
