@@ -1,9 +1,15 @@
+import dayjs from "dayjs";
 import {
   AssignmentAlgorithm,
   EventName,
   EventConfig,
 } from "shared/config/eventConfigTypes";
 import { ProgramType } from "shared/types/models/programItem";
+
+// Event days
+const friday = "2025-07-25";
+const saturday = "2025-07-26";
+const sunday = "2025-07-27";
 
 export const eventConfig: EventConfig = {
   // Event info
@@ -35,9 +41,49 @@ export const eventConfig: EventConfig = {
 
   eventStartTime: "2025-07-25T12:00:00Z", // Fri 15:00 GMT+3
 
-  directSignupWindows: {},
+  directSignupWindows: {
+    larp: [
+      {
+        signupWindowStart: dayjs(`${friday}T12:00:00Z`), // Fri 15:00 GMT+3
+        signupWindowClose: dayjs(`${friday}T21:00:00Z`), // Fri 24:00 GMT+3
+      },
+      // Saturday morning / day
+      {
+        signupWindowStart: dayjs(`${friday}T15:00:00Z`), // Fri 18:00 GMT+3
+        signupWindowClose: dayjs(`${saturday}T14:00:00Z`), // Sat 17:00 GMT+3
+      },
+      // Saturday evening
+      {
+        signupWindowStart: dayjs(`${saturday}T08:00:00Z`), // Sat 11:00 GMT+3
+        signupWindowClose: dayjs(`${saturday}T21:00:00Z`), // Sat 24:00 GMT+3
+      },
+      // Sunday
+      {
+        signupWindowStart: dayjs(`${saturday}T12:00:00Z`), // Sat 15:00 GMT+3
+        signupWindowClose: dayjs(`${sunday}T21:00:00Z`), // Sun 24:00 GMT+3
+      },
+    ],
 
-  rollingDirectSignupProgramTypes: [],
+    tournament: [
+      // Friday
+      {
+        signupWindowStart: dayjs(`${friday}T12:00:00Z`), // Fri 15:00 GMT+3
+        signupWindowClose: dayjs(`${friday}T21:00:00Z`), // Fri 24:00 GMT+3
+      },
+      // Saturday
+      {
+        signupWindowStart: dayjs(`${friday}T15:00:00Z`), // Fri 18:00 GMT+3
+        signupWindowClose: dayjs(`${saturday}T21:00:00Z`), // Sat 24:00 GMT+3
+      },
+      // Sunday
+      {
+        signupWindowStart: dayjs(`${saturday}T15:00:00Z`), // Sat 18:00 GMT+3
+        signupWindowClose: dayjs(`${sunday}T21:00:00Z`), // Sun 24:00 GMT+3
+      },
+    ],
+  },
+
+  rollingDirectSignupProgramTypes: [ProgramType.OTHER],
   enableRollingDirectSignupPreviousDay: false,
 
   hideParticipantListProgramTypes: [],
