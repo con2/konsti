@@ -3,7 +3,6 @@ import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ProgramItem } from "shared/types/models/programItem";
 import { getTimeNow } from "client/utils/getTimeNow";
-import { isRevolvingDoorWorkshop } from "client/utils/isRevolvingDoorWorkshop";
 import {
   getLotterySignupEndTime,
   getLotterySignupStartTime,
@@ -68,20 +67,10 @@ export const SignupHelpText = ({
     return null;
   }
 
-  if (isRevolvingDoorWorkshop(programItem)) {
-    return (
-      <p>
-        {t("signup.help.doesNotRequireSignup", {
-          PROGRAM_TYPE: t(`programTypeIllative.${programItem.programType}`),
-        })}
-      </p>
-    );
-  }
-
   if (!usesKonstiSignup) {
     return (
       <p>
-        {t("signup.help.noKonstiSignup", {
+        {t(`signup.signupType.${programItem.signupType}`, {
           PROGRAM_TYPE: t(`programTypeIllative.${programItem.programType}`),
         })}
       </p>

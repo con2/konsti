@@ -82,7 +82,11 @@ export enum SignupStrategy {
 
 export enum SignupType {
   KONSTI = "konsti",
-  NONE = "none",
+  OTHER = "other",
+  NOT_REQUIRED = "notRequired",
+  EXPERIENCE_POINT = "experiencePoint",
+  ROPE_LARP_DESK = "ropelarp",
+  GAMEPOINT = "gamepoint",
 }
 
 export enum Popularity {

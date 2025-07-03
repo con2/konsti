@@ -111,6 +111,7 @@ export enum KompassiRegistration {
   KONSTI = "konsti",
   EXPERIENCE_POINT = "experience-point",
   ROPE_LARP_DESK = "ropelarp",
+  GAMEPOINT = "gamepoint",
 }
 
 export enum KompassiBoolean {

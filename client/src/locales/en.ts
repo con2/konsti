@@ -330,10 +330,6 @@ export const translationEN = {
     loginLinkEnding: " to see {{ATTENDEE_TYPE}}.",
     signupQuestionAriaLabel: "Sign-up question",
     help: {
-      doesNotRequireSignup:
-        "This {{PROGRAM_TYPE}} does not require signing up.",
-      noKonstiSignup:
-        "This {{PROGRAM_TYPE}} does not use Konsti for signing up. See the program details for instructions.",
       signupAlwaysOpen:
         " You can sign up to this {{PROGRAM_TYPE}} at any time.",
       signupAlwaysOpenGroupMemberInfo:
@@ -354,6 +350,18 @@ export const translationEN = {
         "I understand that the workshop requires a material fee of {{ENTRY_FEE}}.",
       k16: "The game contains heavy themes and/or violence. By checking this box, I confirm that I am at least 16 years old during the game.",
       k18: "The game includes flirting between characters and possibly other more mature themes. To ensure a safer environment, we only allow adult players in the game. By checking this box, I confirm that I am at least 18 years old during the game.",
+    },
+    signupType: {
+      konsti: "",
+      other:
+        "This {{PROGRAM_TYPE}} does not use Konsti for signing up. See the program details for instructions.",
+      notRequired: "Signup not required for this program item.",
+      experiencePoint:
+        "This {{PROGRAM_TYPE}} does not use Konsti for signing up. Registration at Experience point.",
+      ropelarp:
+        "This {{PROGRAM_TYPE}} does not use Konsti for signing up. Registration at Larp & RPG Desk.",
+      gamepoint:
+        "This {{PROGRAM_TYPE}} does not use Konsti for signing up. Registration at Gaming desk.",
     },
   },
   attendeeType: {
