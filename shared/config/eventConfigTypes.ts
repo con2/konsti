@@ -84,4 +84,5 @@ export interface EventConfig {
       }
     | undefined
   >;
+  enableRevolvingDoor: boolean;
 }

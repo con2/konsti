@@ -9,7 +9,6 @@ export interface ClientConfig {
   enableAxe: boolean;
   enableWhyDidYouRender: boolean;
   dataUpdateInterval: number;
-  enableRevolvingDoor: boolean;
   enableOrganizerFeedback: boolean;
   enableTagDropdown: boolean;
   showAnnouncement: boolean;
@@ -20,7 +19,6 @@ export interface ClientConfig {
 
 export const clientConfig: ClientConfig = {
   // Event settings
-  enableRevolvingDoor: false,
   enableOrganizerFeedback: true,
   enableTagDropdown: true,
   showAboutPageInProgress: true,

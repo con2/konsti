@@ -102,7 +102,7 @@ export const SearchAndFilterCard = ({
         <RadioButtonGroup>
           {Object.entries(StartingTimeOption)
             .filter(([_, val]) =>
-              config.client().enableRevolvingDoor
+              config.event().enableRevolvingDoor
                 ? true
                 : val !== StartingTimeOption.REVOLVING_DOOR,
             )
