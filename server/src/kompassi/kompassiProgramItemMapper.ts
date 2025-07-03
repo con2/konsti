@@ -333,11 +333,18 @@ const mapSignupType = (
     first(kompassiProgramItem.cachedDimensions.registration) ===
     KompassiRegistration.KONSTI;
 
+  const programType = kompassiProgramItem.cachedDimensions.konsti[0];
+
+  const evenHourProgramTypes = mapKonstiProgramTypesToKompassiProgramTypes(
+    config.event().twoPhaseSignupProgramTypes,
+  );
+
   // If program item using lottery doesn't start at event hour, disable Konsti signup
-  if (
-    !startsAtEvenHour(kompassiProgramItem, scheduleItem, usesKonstiRegisration)
-  ) {
-    return SignupType.NONE;
+  if (usesKonstiRegisration && evenHourProgramTypes.includes(programType)) {
+    const startsAtEvenHour = getStartsAtEvenHour(scheduleItem);
+    if (!startsAtEvenHour) {
+      return SignupType.NONE;
+    }
   }
 
   if (kompassiProgramItem.cachedAnnotations["konsti:isPlaceholder"]) {
@@ -351,25 +358,7 @@ const mapSignupType = (
   return SignupType.NONE;
 };
 
-const startsAtEvenHour = (
-  kompassiProgramItem: KompassiProgramItem,
-  scheduleItem: KompassiScheduleItem,
-  usesKonstiRegisration: boolean,
-): boolean => {
-  const programType = first(kompassiProgramItem.cachedDimensions.konsti);
-
-  if (!programType) {
-    return false;
-  }
-
-  const evenHourProgramTypes = mapKonstiProgramTypesToKompassiProgramTypes(
-    config.event().twoPhaseSignupProgramTypes,
-  );
-
-  if (!evenHourProgramTypes.includes(programType) || !usesKonstiRegisration) {
-    return false;
-  }
-
+const getStartsAtEvenHour = (scheduleItem: KompassiScheduleItem): boolean => {
   const startMinute = dayjs(scheduleItem.startTime).minute();
   if (startMinute !== 0) {
     logger.info(
