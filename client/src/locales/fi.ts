@@ -332,9 +332,6 @@ export const translationFI = {
     loginLinkEnding: " nähdäksesi {{ATTENDEE_TYPE}}.",
     signupQuestionAriaLabel: "Lisätietokysymys",
     help: {
-      doesNotRequireSignup: "Tähän {{PROGRAM_TYPE}} ei tarvitse ilmoittautua.",
-      noKonstiSignup:
-        "Tähän {{PROGRAM_TYPE}} ei ilmoittauduta Konstissa. Katso ilmoittautumisohjeet ohjelman lisätiedoista.",
       signupAlwaysOpen:
         "Tähän {{PROGRAM_TYPE}} voi ilmoittautua koko tapahtuman ajan.",
       signupAlwaysOpenGroupMemberInfo:
@@ -356,6 +353,18 @@ export const translationFI = {
         "Ymmärrän, että työpajaan kuuluu materiaalimaksu {{ENTRY_FEE}}.",
       k16: "Peli sisältää raskaita teemoja ja/tai väkivalta. Laittamalla rastin tähän ruutuun vakuutan olevani pelin aikana vähintään 16-vuotias.",
       k18: "Peli sisältää hahmojen välistä flirttailua ja mahdollisesti muitakin aikuisempia teemoja. Turvallisemman tilan periaatteiden noudattamiseksi otamme peliin vain täysi-ikäisiä pelaajia. Laittamalla rastin tähän ruutuun vakuutan olevani pelin aikana vähintään 18-vuotias.",
+    },
+    signupType: {
+      konsti: "",
+      other:
+        "Tähän {{PROGRAM_TYPE}} ei ilmoittauduta Konstissa. Katso ilmoittautumisohjeet ohjelman lisätiedoista.",
+      notRequired: "Tähän {{PROGRAM_TYPE}} ei tarvitse ilmoittautua.",
+      experiencePoint:
+        "Tähän {{PROGRAM_TYPE}} ei ilmoittauduta Konstissa. Ilmoittautuminen Kokemuspisteellä.",
+      ropelarp:
+        "Tähän {{PROGRAM_TYPE}} ei ilmoittauduta Konstissa. Ilmoittautuminen ropelarp-tiskillä.",
+      gamepoint:
+        "Tähän {{PROGRAM_TYPE}} ei ilmoittauduta Konstissa. Ilmoittautuminen pelitiskillä.",
     },
   },
   attendeeType: {

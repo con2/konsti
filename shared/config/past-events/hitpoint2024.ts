@@ -279,7 +279,4 @@ const eventConfig: Partial<EventConfig> = {
 
   // Use fixed time to open all lottery signups for the whole event
   fixedLotterySignupTime: null,
-
-  // If workshop doesn't have max attendees, mark it as a revolving door
-  enableRevolvingDoorWorkshopsIfNoMax: false,
 };

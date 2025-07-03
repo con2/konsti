@@ -18,7 +18,6 @@ import { ProgramItemBody } from "client/views/program-item/body/ProgramItemBody"
 import { ProgramItemSignup } from "client/views/program-item/signup/ProgramItemSignup";
 import { ProgramItemHead } from "client/views/program-item/head/ProgramItemHead";
 import { SignupQuestion } from "shared/types/models/settings";
-import { isRevolvingDoorWorkshop } from "client/utils/isRevolvingDoorWorkshop";
 import { ProgramItemErrors } from "client/views/program-item/ProgramItemErrors";
 import {
   DirectSignupWithProgramItem,
@@ -58,7 +57,7 @@ export const ProgramItemEntry = ({
   const usesKonstiSignup =
     programItem.signupType === SignupType.KONSTI &&
     !noKonstiSignupIds.includes(programItem.programItemId);
-  const signupNotRequired = isRevolvingDoorWorkshop(programItem);
+  const signupNotRequired = programItem.signupType === SignupType.NOT_REQUIRED;
   const signupRequired = usesKonstiSignup && !signupNotRequired;
 
   const signupAlwaysOpen = directSignupAlwaysOpenIds.includes(
@@ -92,13 +91,10 @@ export const ProgramItemEntry = ({
     tags.push(t(`programItemLanguage.${language}`));
   });
 
-  const isValidMinAttendanceValue =
-    isRevolvingDoorWorkshop(programItem) || programItem.minAttendance > 0;
+  const isValidMinAttendanceValue = programItem.minAttendance > 0;
 
   const isValidMaxAttendanceValue =
-    isRevolvingDoorWorkshop(programItem) ||
-    !usesKonstiSignup ||
-    programItem.maxAttendance > 0;
+    !usesKonstiSignup || programItem.maxAttendance > 0;
 
   const allValuesValid = isValidMinAttendanceValue && isValidMaxAttendanceValue;
 

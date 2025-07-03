@@ -285,16 +285,6 @@ const mapRevolvingDoor = (
     return true;
   }
 
-  if (config.event().enableRevolvingDoorWorkshopsIfNoMax) {
-    if (
-      kompassiProgramItem.cachedDimensions.konsti[0] ===
-        KompassiKonstiProgramType.WORKSHOP &&
-      kompassiProgramItem.cachedAnnotations["konsti:maxAttendance"] === 0
-    ) {
-      return true;
-    }
-  }
-
   if (config.event().addRevolvingDoorIds.includes(kompassiProgramItem.slug)) {
     return true;
   }
@@ -343,19 +333,36 @@ const mapSignupType = (
   if (usesKonstiRegisration && evenHourProgramTypes.includes(programType)) {
     const startsAtEvenHour = getStartsAtEvenHour(scheduleItem);
     if (!startsAtEvenHour) {
-      return SignupType.NONE;
+      return SignupType.OTHER;
     }
   }
 
   if (kompassiProgramItem.cachedAnnotations["konsti:isPlaceholder"]) {
-    return SignupType.NONE;
+    return SignupType.OTHER;
   }
 
-  if (usesKonstiRegisration) {
-    return SignupType.KONSTI;
+  const registration = first(kompassiProgramItem.cachedDimensions.registration);
+
+  if (!registration) {
+    return SignupType.OTHER;
   }
 
-  return SignupType.NONE;
+  switch (registration) {
+    case KompassiRegistration.EXPERIENCE_POINT:
+      return SignupType.EXPERIENCE_POINT;
+    case KompassiRegistration.GAMEPOINT:
+      return SignupType.GAMEPOINT;
+    case KompassiRegistration.KONSTI:
+      return SignupType.KONSTI;
+    case KompassiRegistration.NOT_REQUIRED:
+      return SignupType.NOT_REQUIRED;
+    case KompassiRegistration.OTHER:
+      return SignupType.OTHER;
+    case KompassiRegistration.ROPE_LARP_DESK:
+      return SignupType.ROPE_LARP_DESK;
+    default:
+      return exhaustiveSwitchGuard(registration);
+  }
 };
 
 const getStartsAtEvenHour = (scheduleItem: KompassiScheduleItem): boolean => {

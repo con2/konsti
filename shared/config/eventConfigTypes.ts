@@ -75,7 +75,6 @@ export interface EventConfig {
   directSignupOpenToEndProgramTypes: ProgramType[];
   activeProgramTypes: ProgramType[];
   enableRemoveOverlapSignups: boolean;
-  enableRevolvingDoorWorkshopsIfNoMax: boolean;
   customDetailsProgramItems: Record<
     string,
     | {
