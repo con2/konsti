@@ -92,7 +92,15 @@ const commonConfig: Configuration = {
       },
       {
         test: /\.svg$/,
-        use: ["@svgr/webpack"],
+        issuer: /\.[jt]sx?$/,
+        use: [
+          {
+            loader: "@svgr/webpack",
+            options: {
+              svgProps: { role: "img" },
+            },
+          },
+        ],
       },
       {
         test: /\.mdx?$/,

@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { Link } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import KonstiLogo from "client/components/icons/konsti.svg";
 import { LanguageSelector } from "client/components/LanguageSelector";
 import { Navigation } from "./Navigation";
 import { FirstLogin } from "./FirstLogin";
@@ -24,6 +25,7 @@ export const Header = (): ReactElement => {
         <Navigation />
 
         <HeaderTitle>
+          <KonstiIcon aria-label={t("logoAltText")} />
           {t("appDescription", {
             EVENT_NAME: eventName,
             EVENT_YEAR: eventYear,
@@ -35,7 +37,7 @@ export const Header = (): ReactElement => {
             to={AppRoute.ABOUT}
             aria-label={t("iconAltText.aboutKonsti")}
           >
-            <StyledIcon icon="circle-question" aria-hidden="true" />
+            <LinkIcon icon="circle-question" aria-hidden="true" />
           </StyledLink>
           <HeaderLanguageSelector />
         </HeaderRightSideContainer>
@@ -81,7 +83,7 @@ const StyledLink = styled(Link)`
   margin-right: 12px;
 `;
 
-const StyledIcon = styled(FontAwesomeIcon)`
+const LinkIcon = styled(FontAwesomeIcon)`
   cursor: pointer;
   font-size: ${(props) => props.theme.fontSizeLarge};
   vertical-align: middle;
@@ -94,4 +96,11 @@ const HeaderRightSideContainer = styled.div`
   align-items: center;
   white-space: nowrap;
   margin-right: 8px;
+`;
+
+const KonstiIcon = styled(KonstiLogo)`
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+  padding-right: 8px;
 `;
