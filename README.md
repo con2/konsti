@@ -75,3 +75,5 @@ Konsti development supported by
 [![Sovellin logo](/client/assets/sovellin-logo.png)](https://www.sovellin.com)&nbsp;&nbsp;&nbsp;
 [![BrowserStack logo](/client/assets/browserstack-logo.png)](https://www.browserstack.com)
 [![Sentry logo](/client/assets/sentry-logo.png)](https://sentry.io)
+
+Konsti logo created by Ami Koiranen.
