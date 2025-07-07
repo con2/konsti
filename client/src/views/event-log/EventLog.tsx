@@ -66,6 +66,7 @@ export const EventLog = (): ReactElement => {
           <RaisedCard
             isHighlighted={!eventLogItem.isSeen}
             key={eventLogItem.eventLogItemId}
+            data-testid="event-log-item"
           >
             <EventLogEventMessage
               eventLogItem={eventLogItem}

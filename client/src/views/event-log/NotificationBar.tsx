@@ -25,6 +25,7 @@ export const NotificationBar = (): ReactElement | null => {
     return (
       <StyledNotification
         key={`${unseenEvent.action}-${unseenEvent.createdAt}`}
+        data-testid="notification-bar"
       >
         <div>
           <NotificationBarEventMessage
