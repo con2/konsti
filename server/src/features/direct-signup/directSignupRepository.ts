@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import { groupBy, shuffle } from "remeda";
+import { first, groupBy, shuffle } from "remeda";
 import { findProgramItemById } from "server/features/program-item/programItemRepository";
 import {
   DirectSignupsForProgramItem,
@@ -22,6 +22,8 @@ import {
 } from "shared/utils/result";
 import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
 import { ProgramItem } from "shared/types/models/programItem";
+import { addEventLogItems } from "server/features/user/event-log/eventLogRepository";
+import { EventLogAction } from "shared/types/models/eventLog";
 
 export const removeDirectSignups = async (): Promise<
   Result<void, MongoDbError>
@@ -65,33 +67,46 @@ export const findDirectSignups = async (): Promise<
   }
 };
 
-export const findDirectSignupByProgramItemId = async (
-  programItemId: string,
-): Promise<Result<DirectSignupsForProgramItem | null, MongoDbError>> => {
+export const findDirectSignupsByProgramItemIds = async (
+  programItemIds: string[],
+): Promise<Result<DirectSignupsForProgramItem[], MongoDbError>> => {
   try {
-    const response = await SignupModel.findOne({ programItemId }).lean();
+    const responses = await SignupModel.find({
+      programItemId: { $in: programItemIds },
+    }).lean();
 
-    if (!response) {
-      logger.info("MongoDB: Direct signup for program item not found");
-      return makeSuccessResult(null);
-    }
-
-    logger.debug("MongoDB: Direct signup for program item found");
-
-    const result = DirectSignupSchemaDb.safeParse(response);
-    if (!result.success) {
-      logger.error(
-        "%s",
-        new Error(
-          `Error validating findDirectSignupByProgramItemId DB value: programItemId: ${response.programItemId}, ${JSON.stringify(result.error)}`,
-        ),
+    if (responses.length === 0) {
+      logger.info(
+        "MongoDB: No direct signups found for provided program item IDs",
       );
+      return makeSuccessResult([]);
     }
 
-    return makeSuccessResult(result.data);
+    logger.debug(
+      `MongoDB: Found ${responses.length} direct signups for program items`,
+    );
+
+    const validSignups: DirectSignupsForProgramItem[] = [];
+
+    for (const response of responses) {
+      const result = DirectSignupSchemaDb.safeParse(response);
+      if (!result.success) {
+        logger.error(
+          "%s",
+          new Error(
+            `Error validating findDirectSignupsByProgramItemIds DB value: programItemId ${response.programItemId}: ${JSON.stringify(result.error)}`,
+          ),
+        );
+        continue;
+      }
+
+      validSignups.push(result.data);
+    }
+
+    return makeSuccessResult(validSignups);
   } catch (error) {
     logger.error(
-      "MongoDB: Error finding direct signup for program item: %s",
+      "MongoDB: Error finding direct signups for program items: %s",
       error,
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
@@ -230,13 +245,13 @@ export const saveDirectSignup = async (
 
     // No response means that direct signups for program item is either not found of program item is full
     if (!response) {
-      const signupResult = await findDirectSignupByProgramItemId(
+      const signupsResult = await findDirectSignupsByProgramItemIds([
         directSignupProgramItemId,
-      );
-      if (isErrorResult(signupResult)) {
-        return signupResult;
+      ]);
+      if (isErrorResult(signupsResult)) {
+        return signupsResult;
       }
-      const signup = unwrapResult(signupResult);
+      const signup = first(unwrapResult(signupsResult));
 
       if (!signup) {
         logger.warn(
@@ -424,6 +439,29 @@ export const delDirectSignup = async ({
 export const delDirectSignupDocumentsByProgramItemIds = async (
   programItemIds: string[],
 ): Promise<Result<void, MongoDbError>> => {
+  const directSignupsResult =
+    await findDirectSignupsByProgramItemIds(programItemIds);
+  if (isErrorResult(directSignupsResult)) {
+    return directSignupsResult;
+  }
+  const directSignups = unwrapResult(directSignupsResult);
+  const userUpdates = directSignups.flatMap((directSignup) =>
+    directSignup.userSignups.map((userSignup) => ({
+      username: userSignup.username,
+      programItemId: directSignup.programItemId,
+      programItemStartTime: userSignup.signedToStartTime,
+      createdAt: dayjs().toISOString(),
+    })),
+  );
+
+  const addEventLogItemsResult = await addEventLogItems({
+    action: EventLogAction.PROGRAM_ITEM_CANCELED,
+    updates: userUpdates,
+  });
+  if (isErrorResult(addEventLogItemsResult)) {
+    return addEventLogItemsResult;
+  }
+
   try {
     await SignupModel.deleteMany({
       programItemId: { $in: programItemIds },

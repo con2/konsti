@@ -7,9 +7,7 @@ import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { submitUpdateEventLogIsSeen } from "client/views/login/loginThunks";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
 import { RaisedCard } from "client/components/RaisedCard";
-import { EventLogNewAssignment } from "client/views/event-log/EventLogNewAssignment";
-import { EventLogAction } from "shared/types/models/eventLog";
-import { EventLogNoAssignment } from "client/views/event-log/EventLogNoAssignment";
+import { EventLogEventMessage } from "client/views/event-log/EventLogEventMessage";
 
 const getTime = (createdAt: string): string => {
   const timeNow = dayjs();
@@ -69,17 +67,10 @@ export const EventLog = (): ReactElement => {
             isHighlighted={!eventLogItem.isSeen}
             key={eventLogItem.eventLogItemId}
           >
-            {eventLogItem.action === EventLogAction.NEW_ASSIGNMENT && (
-              <EventLogNewAssignment
-                eventLogItem={eventLogItem}
-                programItems={programItems}
-                showDetails={true}
-              />
-            )}
-
-            {eventLogItem.action === EventLogAction.NO_ASSIGNMENT && (
-              <EventLogNoAssignment eventLogItem={eventLogItem} />
-            )}
+            <EventLogEventMessage
+              eventLogItem={eventLogItem}
+              programItems={programItems}
+            />
 
             <MessageCreatedAt>
               <span>{getTime(eventLogItem.createdAt)}</span>

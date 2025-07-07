@@ -13,7 +13,7 @@ import {
   unwrapResult,
 } from "shared/utils/result";
 import { handleCanceledDeletedProgramItems } from "server/features/program-item/programItemUtils";
-import { removeInvalidProgramItemsFromUsers } from "server/features/assignment/utils/removeInvalidProgramItemsFromUsers";
+import { removeCanceledDeletedProgramItemsFromUsers } from "server/features/assignment/utils/removeInvalidProgramItemsFromUsers";
 import { MongoDbError } from "shared/types/api/errors";
 import { createEmptyDirectSignupDocumentForProgramItems } from "server/features/direct-signup/directSignupRepository";
 import { differenceBy } from "shared/utils/remedaExtend";
@@ -57,10 +57,10 @@ export const saveProgramItems = async (
   }
 
   // If program item was canceled or deleted, remove lottery signups and favorite program items
-  const removeInvalidProgramItemsResult =
-    await removeInvalidProgramItemsFromUsers(updatedProgramItems);
-  if (isErrorResult(removeInvalidProgramItemsResult)) {
-    return removeInvalidProgramItemsResult;
+  const removeCanceledDeletedProgramItemsResult =
+    await removeCanceledDeletedProgramItemsFromUsers(updatedProgramItems);
+  if (isErrorResult(removeCanceledDeletedProgramItemsResult)) {
+    return removeCanceledDeletedProgramItemsResult;
   }
 
   const updateMovedProgramItemsResult = await updateMovedProgramItems(

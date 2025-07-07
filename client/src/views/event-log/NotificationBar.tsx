@@ -6,11 +6,9 @@ import { Link, useLocation } from "react-router";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { HEADER_HEIGHT } from "client/components/Header";
 import { submitUpdateEventLogIsSeen } from "client/views/login/loginThunks";
-import { EventLogAction } from "shared/types/models/eventLog";
-import { EventLogNewAssignment } from "client/views/event-log/EventLogNewAssignment";
-import { EventLogNoAssignment } from "client/views/event-log/EventLogNoAssignment";
 import { AboutTab } from "client/app/AppRoutes";
 import { config } from "shared/config";
+import { NotificationBarEventMessage } from "client/views/event-log/NotificationBarEventMessage";
 
 export const NotificationBar = (): ReactElement | null => {
   const { t } = useTranslation();
@@ -29,17 +27,10 @@ export const NotificationBar = (): ReactElement | null => {
         key={`${unseenEvent.action}-${unseenEvent.createdAt}`}
       >
         <div>
-          {unseenEvent.action === EventLogAction.NEW_ASSIGNMENT && (
-            <EventLogNewAssignment
-              eventLogItem={unseenEvent}
-              programItems={programItems}
-              showDetails={false}
-            />
-          )}
-
-          {unseenEvent.action === EventLogAction.NO_ASSIGNMENT && (
-            <EventLogNoAssignment eventLogItem={unseenEvent} />
-          )}
+          <NotificationBarEventMessage
+            eventLogItem={unseenEvent}
+            programItems={programItems}
+          />
           <ShowAllLinkContainer>
             <Link to={"/notifications"}>{t("notificationBar.showAll")}</Link>
           </ShowAllLinkContainer>
