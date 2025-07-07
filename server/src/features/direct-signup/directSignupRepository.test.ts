@@ -16,8 +16,8 @@ import {
 } from "server/test/mock-data/mockUser";
 import {
   delDirectSignup,
-  findDirectSignupByProgramItemId,
   findDirectSignups,
+  findDirectSignupsByProgramItemIds,
   saveDirectSignup,
   saveDirectSignups,
 } from "server/features/direct-signup/directSignupRepository";
@@ -64,11 +64,11 @@ test("should fetch program item signups", async () => {
   await saveDirectSignup(mockPostDirectSignupRequest);
 
   const response = unsafelyUnwrap(
-    await findDirectSignupByProgramItemId(testProgramItem.programItemId),
+    await findDirectSignupsByProgramItemIds([testProgramItem.programItemId]),
   );
 
-  expect(response?.programItemId).toEqual(testProgramItem.programItemId);
-  expect(response?.userSignups[0].username).toEqual(mockUser.username);
+  expect(response[0].programItemId).toEqual(testProgramItem.programItemId);
+  expect(response[0].userSignups[0].username).toEqual(mockUser.username);
 });
 
 test("should limit max attendees if too many passed to saveDirectSignups", async () => {

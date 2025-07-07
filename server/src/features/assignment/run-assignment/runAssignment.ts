@@ -1,6 +1,6 @@
 import { logger } from "server/utils/logger";
 import { runAssignmentAlgorithm } from "server/features/assignment/utils/runAssignmentAlgorithm";
-import { removeInvalidProgramItemsFromUsers } from "server/features/assignment/utils/removeInvalidProgramItemsFromUsers";
+import { removeCanceledDeletedProgramItemsFromUsers } from "server/features/assignment/utils/removeInvalidProgramItemsFromUsers";
 import { AssignmentResult } from "server/types/resultTypes";
 import { findUsers } from "server/features/user/userRepository";
 import { findProgramItems } from "server/features/program-item/programItemRepository";
@@ -64,10 +64,10 @@ export const runAssignment = async ({
   }
   const programItems = unwrapResult(programItemsResult);
 
-  const removeInvalidProgramItemsResult =
-    await removeInvalidProgramItemsFromUsers(programItems);
-  if (isErrorResult(removeInvalidProgramItemsResult)) {
-    return removeInvalidProgramItemsResult;
+  const removeCanceledDeletedProgramItemsResult =
+    await removeCanceledDeletedProgramItemsFromUsers(programItems);
+  if (isErrorResult(removeCanceledDeletedProgramItemsResult)) {
+    return removeCanceledDeletedProgramItemsResult;
   }
 
   const usersResult = await findUsers();

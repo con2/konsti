@@ -7,7 +7,7 @@ import {
   testProgramItem,
   testProgramItem2,
 } from "shared/tests/testProgramItem";
-import { removeInvalidProgramItemsFromUsers } from "server/features/assignment/utils/removeInvalidProgramItemsFromUsers";
+import { removeCanceledDeletedProgramItemsFromUsers } from "server/features/assignment/utils/removeInvalidProgramItemsFromUsers";
 import { findUser, saveUser } from "server/features/user/userRepository";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
@@ -60,7 +60,7 @@ test("should remove lottery signups and favorites for invalid program items from
     testProgramItem2.programItemId,
   );
 
-  await removeInvalidProgramItemsFromUsers(updatedProgramItems);
+  await removeCanceledDeletedProgramItemsFromUsers(updatedProgramItems);
 
   const updatedUser = unsafelyUnwrap(await findUser(mockUser.username));
 

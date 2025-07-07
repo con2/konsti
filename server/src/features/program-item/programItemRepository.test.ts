@@ -27,6 +27,7 @@ import {
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { saveFavorite } from "server/features/user/favorite-program-item/favoriteProgramItemRepository";
 import { State } from "shared/types/models/programItem";
+import { EventLogAction } from "shared/types/models/eventLog";
 
 beforeEach(async () => {
   await mongoose.connect(globalThis.__MONGO_URI__, {
@@ -65,11 +66,9 @@ test("should remove signup document when program item is removed", async () => {
   expect(signups2).toHaveLength(0);
 });
 
-test("should remove lottery signups, direct signups and favorites when program item is deleted or cancelled", async () => {
+test("should remove lottery signups and favorites when program item is deleted or cancelled", async () => {
   await saveProgramItems([testProgramItem, testProgramItem2]);
   await saveUser(mockUser);
-  await saveDirectSignup(mockPostDirectSignupRequest);
-  await saveDirectSignup(mockPostDirectSignupRequest2);
   await saveLotterySignups({
     username: mockUser.username,
     lotterySignups: mockLotterySignups,
@@ -84,26 +83,60 @@ test("should remove lottery signups, direct signups and favorites when program i
 
   await saveProgramItems([
     { ...testProgramItem, state: State.CANCELLED },
-    testProgramItem2,
+    { ...testProgramItem2, state: State.CANCELLED },
   ]);
 
-  // Should have removed favorite and lottery signup
+  // Should have removed favorites and lottery signups
   const user = unsafelyUnwrap(await findUser(mockUser.username));
-  expect(user?.favoriteProgramItemIds).toHaveLength(1);
-  expect(user?.favoriteProgramItemIds[0]).toEqual(
-    testProgramItem2.programItemId,
-  );
-  expect(user?.lotterySignups).toHaveLength(1);
-  expect(user?.lotterySignups[0].programItemId).toEqual(
-    testProgramItem2.programItemId,
-  );
+  expect(user?.favoriteProgramItemIds).toHaveLength(0);
+  expect(user?.lotterySignups).toHaveLength(0);
 
-  // Should have removed direct signup
+  // Should have added new event log items
+  expect(user?.eventLogItems).toHaveLength(2);
+  expect(user?.eventLogItems).toEqual(
+    expect.arrayContaining([
+      expect.objectContaining({
+        programItemId: testProgramItem.programItemId,
+        action: EventLogAction.PROGRAM_ITEM_CANCELED,
+      }),
+      expect.objectContaining({
+        programItemId: testProgramItem2.programItemId,
+        action: EventLogAction.PROGRAM_ITEM_CANCELED,
+      }),
+    ]),
+  );
+});
+
+test("should remove direct signups when program item is deleted or cancelled", async () => {
+  await saveProgramItems([testProgramItem, testProgramItem2]);
+  await saveUser(mockUser);
+  await saveDirectSignup(mockPostDirectSignupRequest);
+  await saveDirectSignup(mockPostDirectSignupRequest2);
+
+  await saveProgramItems([
+    { ...testProgramItem, state: State.CANCELLED },
+    { ...testProgramItem2, state: State.CANCELLED },
+  ]);
+
+  // Should have removed direct signups
   const directSignups = unsafelyUnwrap(
     await findUserDirectSignups(mockUser.username),
   );
-  expect(directSignups).toHaveLength(1);
-  expect(directSignups[0].programItemId).toEqual(
-    testProgramItem2.programItemId,
+  expect(directSignups).toHaveLength(0);
+
+  // Should have added new event log items
+  const user = unsafelyUnwrap(await findUser(mockUser.username));
+  expect(user?.eventLogItems).toHaveLength(2);
+  expect(user?.eventLogItems).toEqual(
+    expect.arrayContaining([
+      expect.objectContaining({
+        programItemId: testProgramItem.programItemId,
+        action: EventLogAction.PROGRAM_ITEM_CANCELED,
+      }),
+      expect.objectContaining({
+        programItemId: testProgramItem2.programItemId,
+        action: EventLogAction.PROGRAM_ITEM_CANCELED,
+      }),
+    ]),
   );
 });
