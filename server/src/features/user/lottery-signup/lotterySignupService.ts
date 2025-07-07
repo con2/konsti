@@ -19,6 +19,7 @@ import {
 } from "shared/utils/signupTimes";
 import { logger } from "server/utils/logger";
 import { findUser } from "server/features/user/userRepository";
+import { State } from "shared/types/models/programItem";
 
 const validPriorities = new Set([1, 2, 3]);
 
@@ -52,6 +53,14 @@ export const storeLotterySignup = async ({
     };
   }
   const programItem = unwrapResult(programItemResult);
+
+  if (programItem.state === State.CANCELLED) {
+    return {
+      message: "Program item is cancelled",
+      status: "error",
+      errorId: "cancelled",
+    };
+  }
 
   const timeNowResult = await getTimeNow();
   if (isErrorResult(timeNowResult)) {

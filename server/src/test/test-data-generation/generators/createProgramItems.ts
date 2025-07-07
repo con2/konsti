@@ -86,11 +86,11 @@ export const createProgramItems = async (
           title,
           description: faker.lorem.sentences(5),
           cachedHosts: faker.internet.username(),
-          isCancelled: Math.random() < 0.1,
+          isCancelled: false,
           cachedDimensions: {
             form: sample(Object.values(KompassiForm), 1),
             type: sample(Object.values(KompassiType), 1),
-            state: sample(Object.values(KompassiState), 1),
+            state: [KompassiState.ACCEPTED],
             topic: sample(Object.values(KompassiTopic), 1),
             konsti: [kompassiProgramType],
             grouping: sample(Object.values(KompassiGrouping), 1),
@@ -110,7 +110,7 @@ export const createProgramItems = async (
               endTime: dayjs(startTime).add(length, "minutes").toISOString(),
               lengthMinutes: length,
               location: "Ropetaverna",
-              isCancelled: Math.random() < 0.1,
+              isCancelled: false,
             },
           ],
           cachedAnnotations: {

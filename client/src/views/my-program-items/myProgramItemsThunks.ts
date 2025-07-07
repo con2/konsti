@@ -93,6 +93,7 @@ export enum PostDirectSignupErrorMessage {
   SIGNUP_ENDED = "signupError.signupEnded",
   SIGNUP_NOT_OPEN_YET = "signupError.signupNotOpenYet",
   NO_KONSTI_SIGNUP = "signupError.noKonstiSignup",
+  PROGRAM_ITEM_CANCELLED = "signupError.programItemCancelled",
 }
 
 export const submitPostDirectSignup = (
@@ -111,6 +112,8 @@ export const submitPostDirectSignup = (
           return PostDirectSignupErrorMessage.SIGNUP_NOT_OPEN_YET;
         case "noKonstiSignup":
           return PostDirectSignupErrorMessage.NO_KONSTI_SIGNUP;
+        case "cancelled":
+          return PostDirectSignupErrorMessage.PROGRAM_ITEM_CANCELLED;
         case "unknown":
           return PostDirectSignupErrorMessage.UNKNOWN;
         default:
@@ -181,6 +184,7 @@ export enum PostLotterySignupErrorMessage {
   SAME_PRIORITY = "signupError.samePriority",
   PROGRAM_ITEM_NOT_FOUND = "signupError.programItemNotFound",
   SIGNUP_NOT_OPEN_YET = "signupError.signupNotOpenYet",
+  PROGRAM_ITEM_CANCELLED = "signupError.programItemCancelled",
   UNKNOWN = "signupError.generic",
 }
 
@@ -204,6 +208,8 @@ export const submitPostLotterySignup = (
           return PostLotterySignupErrorMessage.PROGRAM_ITEM_NOT_FOUND;
         case "signupNotOpenYet":
           return PostLotterySignupErrorMessage.SIGNUP_NOT_OPEN_YET;
+        case "cancelled":
+          return PostLotterySignupErrorMessage.PROGRAM_ITEM_CANCELLED;
         case "unknown":
           return PostLotterySignupErrorMessage.UNKNOWN;
         default:

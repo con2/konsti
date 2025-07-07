@@ -186,6 +186,7 @@ export const translationEN = {
     programItemFull: "This program item is full.",
     noKonstiSignup:
       "This program does not use Konsti for signing up. See the program details for instructions.",
+    programItemCancelled: "Program item is cancelled",
   },
   signupUnsavedChanges: "Unsaved changes",
   closingMessage: "Konsti is closed and will open closer to the next event",

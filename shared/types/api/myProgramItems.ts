@@ -25,7 +25,8 @@ export interface PostLotterySignupError extends ApiError {
     | "samePriority"
     | "invalidPriority"
     | "programItemNotFound"
-    | "signupNotOpenYet";
+    | "signupNotOpenYet"
+    | "cancelled";
 }
 
 // DELETE lottery signup
@@ -65,7 +66,12 @@ export interface PostDirectSignupResponse extends ApiResult {
 }
 
 export interface PostDirectSignupError extends ApiError {
-  errorId: "unknown" | "signupEnded" | "signupNotOpenYet" | "noKonstiSignup";
+  errorId:
+    | "unknown"
+    | "signupEnded"
+    | "signupNotOpenYet"
+    | "noKonstiSignup"
+    | "cancelled";
 }
 
 // DELETE direct signup
