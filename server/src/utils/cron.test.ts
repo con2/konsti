@@ -49,7 +49,7 @@ beforeEach(async () => {
   vi.spyOn(config, "server").mockReturnValue({
     ...config.server(),
     useLocalProgramFile: true,
-    localKompassiFile: "program-hitpoint-2024.json",
+    localKompassiFile: "program-ropecon-2025.json",
   });
   server = await startServer({
     dbConnString: globalThis.__MONGO_URI__,

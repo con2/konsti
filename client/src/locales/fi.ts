@@ -366,6 +366,8 @@ export const translationFI = {
       gamepoint:
         "Tähän {{PROGRAM_TYPE}} ei ilmoittauduta Konstissa. Ilmoittautuminen pelitiskillä.",
     },
+    cancelled: "Tämä {{PROGRAM_TYPE}} on peruttu.",
+    cancelledTitleText: "PERUTTU",
   },
   attendeeType: {
     player: "pelaaja",

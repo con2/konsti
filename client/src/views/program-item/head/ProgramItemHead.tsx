@@ -42,6 +42,7 @@ interface Props {
   signupRequired: boolean;
   isDirectSignupMode: boolean;
   publicSignupQuestion: SignupQuestion | undefined;
+  cancelled: boolean;
 }
 
 export const ProgramItemHead = ({
@@ -54,6 +55,7 @@ export const ProgramItemHead = ({
   signupRequired,
   isDirectSignupMode,
   publicSignupQuestion,
+  cancelled,
 }: Props): ReactElement => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
@@ -96,7 +98,9 @@ export const ProgramItemHead = ({
           <HeaderLink
             to={`${AppRoute.PROGRAM_ITEM}/${programItem.programItemId}`}
           >
-            {programItem.title}
+            {cancelled
+              ? `${t("signup.cancelledTitleText")}: ${programItem.title}`
+              : programItem.title}
           </HeaderLink>
         </H3>
 

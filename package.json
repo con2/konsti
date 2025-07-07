@@ -33,7 +33,7 @@
     "eslint": "eslint .",
     "lint": "yarn eslint && yarn stylelint && yarn prettier:check",
     "populate-db:dummy": "yarn workspace konsti-server generate-data --clean --users --programItems --lotterySignups --eventLog",
-    "populate-db:kompassi": "yarn workspace konsti-server generate-data --clean && yarn workspace konsti-server load-kompassi-data && yarn workspace konsti-server generate-data --users --lotterySignups --eventLog",
+    "populate-db:kompassi": "yarn workspace konsti-server generate-data --clean && yarn workspace konsti-server update-kompassi-data && yarn workspace konsti-server generate-data --users --lotterySignups --eventLog",
     "populate-db:event": "yarn workspace konsti-server generate-data --clean && yarn workspace konsti-server load-past-event-data && yarn workspace konsti-server generate-data --users --lotterySignups --eventLog",
     "postinstall": "husky|| true",
     "prettier:check": "prettier --check \"./**/*.{js,cjs,json,mdx,ts,mts,tsx,yml}\"",

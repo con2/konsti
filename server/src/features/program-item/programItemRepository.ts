@@ -106,6 +106,7 @@ export const saveProgramItems = async (
       otherAccessibilityInformation: programItem.otherAccessibilityInformation,
       entryFee: programItem.entryFee,
       signupType: programItem.signupType,
+      state: programItem.state,
     };
 
     return {

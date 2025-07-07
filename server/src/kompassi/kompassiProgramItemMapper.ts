@@ -9,6 +9,7 @@ import {
   Tag,
   SignupType,
   Popularity,
+  State,
 } from "shared/types/models/programItem";
 import {
   KompassiProgramItem,
@@ -21,6 +22,7 @@ import {
   KompassiBoolean,
   KompassiRegistration,
   KompassiScheduleItem,
+  KompassiState,
 } from "server/kompassi/kompassiProgramItem";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import { config } from "shared/config";
@@ -70,6 +72,7 @@ export const kompassiProgramItemMapper = (
           programItem.cachedAnnotations["ropecon:accessibilityOther"],
         entryFee: programItem.cachedAnnotations["konsti:workshopFee"],
         signupType: mapSignupType(programItem, scheduleItem),
+        state: mapState(programItem),
       };
     });
   });
@@ -375,4 +378,16 @@ const getStartsAtEvenHour = (scheduleItem: KompassiScheduleItem): boolean => {
   }
 
   return true;
+};
+
+const mapState = (kompassiProgramItem: KompassiProgramItem): State => {
+  const kompassiState = kompassiProgramItem.cachedDimensions.state[0];
+  switch (kompassiState) {
+    case KompassiState.ACCEPTED:
+      return State.ACCEPTED;
+    case KompassiState.CANCELLED:
+      return State.CANCELLED;
+    default:
+      return exhaustiveSwitchGuard(kompassiState);
+  }
 };

@@ -5,6 +5,7 @@ import {
   ProgramItem,
   SignupStrategy,
   SignupType,
+  State,
   UserSignup,
 } from "shared/types/models/programItem";
 import { UserGroup } from "shared/types/models/user";
@@ -75,6 +76,8 @@ export const ProgramItemEntry = ({
     lotterySignups,
   );
 
+  const cancelled = programItem.state === State.CANCELLED;
+
   const isProgramItemSigned = isDirectSignupMode
     ? isDirectlySignedCurrentProgramItem
     : isLotterySignedForCurrentProgramItem;
@@ -113,6 +116,7 @@ export const ProgramItemEntry = ({
         signupRequired={signupRequired}
         isDirectSignupMode={isDirectSignupMode}
         publicSignupQuestion={publicSignupQuestion}
+        cancelled={cancelled}
       />
 
       {!allValuesValid && (
@@ -128,7 +132,15 @@ export const ProgramItemEntry = ({
         isAlwaysExpanded={isAlwaysExpanded}
       />
 
-      {allValuesValid && (
+      {cancelled && (
+        <div>
+          {t("signup.cancelled", {
+            PROGRAM_TYPE: t(`programTypeSingular.${programItem.programType}`),
+          })}
+        </div>
+      )}
+
+      {allValuesValid && !cancelled && (
         <ProgramItemSignup
           signupStrategy={signupStrategy}
           lotterySignups={lotterySignups}

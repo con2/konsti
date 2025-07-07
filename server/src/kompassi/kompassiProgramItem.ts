@@ -16,6 +16,7 @@ export enum KompassiTopic {
   HANDCRAFTS = "handcrafts",
   DANCING = "dancing",
   ESCAPE_ROOM = "escape-room",
+  BOFFERING = "boffering",
 }
 
 export enum KompassiKonstiProgramType {
