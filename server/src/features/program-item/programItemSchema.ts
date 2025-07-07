@@ -11,6 +11,7 @@ import {
   ProgramType,
   SignupType,
   Tag,
+  State,
 } from "shared/types/models/programItem";
 
 export const ProgramItemSchemaDb = z
@@ -41,6 +42,7 @@ export const ProgramItemSchemaDb = z
     otherAccessibilityInformation: z.string(),
     entryFee: z.string(),
     signupType: z.nativeEnum(SignupType),
+    state: z.nativeEnum(State),
   })
   .strip();
 
@@ -79,6 +81,7 @@ const programItemSchema = new mongoose.Schema(
     otherAccessibilityInformation: { type: String, required: true },
     entryFee: { type: String, required: true },
     signupType: { type: String, required: true },
+    state: { type: String, required: true },
   },
   { timestamps: true },
 );

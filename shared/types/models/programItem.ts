@@ -98,6 +98,11 @@ export enum Popularity {
   EXTREME = "extreme",
 }
 
+export enum State {
+  ACCEPTED = "accepted",
+  CANCELLED = "cancelled",
+}
+
 export const ProgramItemSchema = z.object({
   programItemId: z.string(),
   title: z.string(),
@@ -125,6 +130,7 @@ export const ProgramItemSchema = z.object({
   otherAccessibilityInformation: z.string(),
   entryFee: z.string(),
   signupType: z.nativeEnum(SignupType),
+  state: z.nativeEnum(State),
 });
 
 export type ProgramItem = z.infer<typeof ProgramItemSchema>;

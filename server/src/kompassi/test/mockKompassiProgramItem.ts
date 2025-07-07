@@ -24,6 +24,7 @@ export const mockKompassiProgramItem: KompassiProgramItem = {
   title: testProgramItem.title,
   description: testProgramItem.description,
   cachedHosts: testProgramItem.people,
+  isCancelled: false,
   cachedDimensions: {
     form: [KompassiForm.OFFER_RPG],
     type: [KompassiType.GAMING],
@@ -53,6 +54,7 @@ export const mockKompassiProgramItem: KompassiProgramItem = {
       endTime: testProgramItem.endTime,
       lengthMinutes: testProgramItem.mins,
       location: testProgramItem.location,
+      isCancelled: false,
     },
   ],
   cachedAnnotations: {
@@ -75,6 +77,7 @@ export const mockKompassiProgramItem2: KompassiProgramItem = {
   title: testProgramItem2.title,
   description: testProgramItem2.description,
   cachedHosts: testProgramItem2.people,
+  isCancelled: false,
   cachedDimensions: {
     form: [KompassiForm.OFFER_RPG],
     type: [KompassiType.GAMING],
@@ -104,6 +107,7 @@ export const mockKompassiProgramItem2: KompassiProgramItem = {
       endTime: testProgramItem2.endTime,
       lengthMinutes: testProgramItem2.mins,
       location: testProgramItem2.location,
+      isCancelled: false,
     },
   ],
   cachedAnnotations: {

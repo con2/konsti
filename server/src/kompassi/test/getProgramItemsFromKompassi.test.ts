@@ -1,4 +1,4 @@
-import { expect, test, vi } from "vitest";
+import { describe, expect, test, vi } from "vitest";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { config } from "shared/config";
 import { EventName } from "shared/config/eventConfigTypes";
@@ -28,20 +28,23 @@ const getMockKompassiProgramItems = (
   }
 };
 
-Object.values(EventName).map((eventName) => {
-  const mockKompassiProgramItems = getMockKompassiProgramItems(eventName);
+describe("should load Kompassi data for all events", () => {
+  // Loop all event names
+  Object.values(EventName).map((eventName) => {
+    const mockKompassiProgramItems = getMockKompassiProgramItems(eventName);
 
-  test(`should parse event ${eventName} program items`, async () => {
-    vi.spyOn(config, "event").mockReturnValue({
-      ...config.event(),
-      eventName,
+    test(`should parse event ${eventName} program items`, async () => {
+      vi.spyOn(config, "event").mockReturnValue({
+        ...config.event(),
+        eventName,
+      });
+
+      vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
+        value: mockKompassiProgramItems,
+      });
+
+      const programItems = unsafelyUnwrap(await getProgramItemsForEvent());
+      expect(programItems.length).toEqual(2);
     });
-
-    vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
-      value: mockKompassiProgramItems,
-    });
-
-    const programItems = unsafelyUnwrap(await getProgramItemsForEvent());
-    expect(programItems.length).toEqual(2);
   });
 });

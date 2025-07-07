@@ -364,6 +364,8 @@ export const translationEN = {
       gamepoint:
         "This {{PROGRAM_TYPE}} does not use Konsti for signing up. Registration at Gaming desk.",
     },
+    cancelled: "This {{PROGRAM_TYPE}} is cancelled.",
+    cancelledTitleText: "CANCELLED",
   },
   attendeeType: {
     player: "player",

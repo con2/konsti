@@ -8,6 +8,7 @@ import {
   Tag,
   SignupType,
   Popularity,
+  State,
 } from "shared/types/models/programItem";
 
 export const testProgramItem: ProgramItem = {
@@ -49,6 +50,7 @@ export const testProgramItem: ProgramItem = {
   otherAccessibilityInformation: "",
   entryFee: "",
   signupType: SignupType.KONSTI,
+  state: State.ACCEPTED,
 };
 
 export const testProgramItem2: ProgramItem = {
@@ -90,4 +92,5 @@ export const testProgramItem2: ProgramItem = {
   otherAccessibilityInformation: "",
   entryFee: "",
   signupType: SignupType.KONSTI,
+  state: State.ACCEPTED,
 };

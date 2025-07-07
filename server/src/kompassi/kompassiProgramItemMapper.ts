@@ -9,6 +9,7 @@ import {
   Tag,
   SignupType,
   Popularity,
+  State,
 } from "shared/types/models/programItem";
 import {
   KompassiProgramItem,
@@ -70,6 +71,7 @@ export const kompassiProgramItemMapper = (
           programItem.cachedAnnotations["ropecon:accessibilityOther"],
         entryFee: programItem.cachedAnnotations["konsti:workshopFee"],
         signupType: mapSignupType(programItem, scheduleItem),
+        state: mapState(programItem, scheduleItem),
       };
     });
   });
@@ -375,4 +377,18 @@ const getStartsAtEvenHour = (scheduleItem: KompassiScheduleItem): boolean => {
   }
 
   return true;
+};
+
+const mapState = (
+  kompassiProgramItem: KompassiProgramItem,
+  scheduleItem: KompassiScheduleItem,
+): State => {
+  const isCancelled =
+    scheduleItem.isCancelled || kompassiProgramItem.isCancelled;
+
+  if (isCancelled) {
+    return State.CANCELLED;
+  }
+
+  return State.ACCEPTED;
 };
