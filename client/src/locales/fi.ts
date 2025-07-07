@@ -186,6 +186,7 @@ export const translationFI = {
     programItemFull: "Ohjelma on täynnä.",
     noKonstiSignup:
       "Tähän ohjelmaan ei ilmoittauduta Konstissa. Katso ilmoittautumisohjeet ohjelman lisätiedoista.",
+    programItemCancelled: "Ohjelmanumero on peruttu",
   },
   signupUnsavedChanges: "Tallentamattomia muutoksia",
   closingMessage:

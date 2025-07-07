@@ -4,7 +4,7 @@ import {
 } from "server/features/user/userRepository";
 import { logger } from "server/utils/logger";
 import { MongoDbError } from "shared/types/api/errors";
-import { ProgramItem } from "shared/types/models/programItem";
+import { ProgramItem, State } from "shared/types/models/programItem";
 import { User } from "shared/types/models/user";
 import {
   Result,
@@ -14,13 +14,9 @@ import {
 } from "shared/utils/result";
 
 export const removeInvalidProgramItemsFromUsers = async (
-  programItems: ProgramItem[],
+  programItems: readonly ProgramItem[],
 ): Promise<Result<void, MongoDbError>> => {
   logger.info("Remove invalid program items from users");
-
-  const programItemIds = programItems.map(
-    (programItem) => programItem.programItemId,
-  );
 
   const usersResult = await findUsers();
   if (isErrorResult(usersResult)) {
@@ -31,10 +27,11 @@ export const removeInvalidProgramItemsFromUsers = async (
 
   const usersToUpdate: User[] = users.flatMap<User>((user) => {
     const validLotterySignups = user.lotterySignups.filter((lotterySignup) => {
-      const foundProgramItem = programItemIds.find(
-        (programItemId) => programItemId === lotterySignup.programItemId,
+      const foundProgramItem = programItems.find(
+        (programItem) =>
+          programItem.programItemId === lotterySignup.programItemId,
       );
-      if (foundProgramItem) {
+      if (foundProgramItem && foundProgramItem.state === State.ACCEPTED) {
         return lotterySignup;
       }
     });
@@ -50,10 +47,10 @@ export const removeInvalidProgramItemsFromUsers = async (
 
     const validFavoriteProgramItemIds = user.favoriteProgramItemIds.filter(
       (favoriteProgramItemId) => {
-        const programItemFound = programItemIds.find(
-          (programItemId) => programItemId === favoriteProgramItemId,
+        const foundProgramItem = programItems.find(
+          (programItem) => programItem.programItemId === favoriteProgramItemId,
         );
-        if (programItemFound) {
+        if (foundProgramItem && foundProgramItem.state === State.ACCEPTED) {
           return favoriteProgramItemId;
         }
       },

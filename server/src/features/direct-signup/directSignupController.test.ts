@@ -33,6 +33,7 @@ import {
 } from "shared/types/api/myProgramItems";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 import { config } from "shared/config";
+import { State } from "shared/types/models/programItem";
 
 let server: Server;
 
@@ -117,6 +118,29 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     expect(body.message).toEqual(
       "Signed program item invalid_program_item_id not found",
     );
+  });
+
+  test("should return error when program item is cancelled", async () => {
+    await saveProgramItems([{ ...testProgramItem, state: State.CANCELLED }]);
+    await saveUser(mockUser);
+
+    const signup: PostDirectSignupRequest = {
+      directSignupProgramItemId: testProgramItem.programItemId,
+      message: "",
+      priority: DIRECT_SIGNUP_PRIORITY,
+    };
+    const response = await request(server)
+      .post(ApiEndpoint.DIRECT_SIGNUP)
+      .send(signup)
+      .set(
+        "Authorization",
+        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
+      );
+    expect(response.status).toEqual(200);
+
+    const body = response.body as PostDirectSignupError;
+    expect(body.status).toEqual("error");
+    expect(body.message).toEqual("Program item is cancelled");
   });
 
   test("should return error when signup is not yet open", async () => {

@@ -6,6 +6,7 @@ import {
   ProgramItemWithUserSignups,
   ProgramType,
   SignupStrategy,
+  State,
   UserSignup,
 } from "shared/types/models/programItem";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
@@ -30,35 +31,84 @@ import { UserGroup } from "shared/types/models/user";
 import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
 import { differenceBy } from "shared/utils/remedaExtend";
 
-export const removeDeletedProgramItems = async (
+const getCanceledProgramItems = (
   updatedProgramItems: readonly ProgramItem[],
   currentProgramItems: readonly ProgramItem[],
-): Promise<Result<readonly ProgramItem[], MongoDbError>> => {
-  logger.info("Remove deleted program items");
+): readonly ProgramItem[] => {
+  const currentProgramItemsMap = new Map(
+    currentProgramItems.map((currentProgramItem) => [
+      currentProgramItem.programItemId,
+      currentProgramItem,
+    ]),
+  );
 
-  const deletedProgramItems = differenceBy(
+  const canceledProgramItems = updatedProgramItems.filter(
+    (updatedProgramItem) => {
+      const currentProgramItem = currentProgramItemsMap.get(
+        updatedProgramItem.programItemId,
+      );
+      return (
+        currentProgramItem &&
+        currentProgramItem.state === State.ACCEPTED &&
+        updatedProgramItem.state === State.CANCELLED
+      );
+    },
+  );
+
+  return canceledProgramItems;
+};
+
+export const handleCanceledDeletedProgramItems = async (
+  updatedProgramItems: readonly ProgramItem[],
+  currentProgramItems: readonly ProgramItem[],
+): Promise<
+  Result<{ cancelled: string[]; deleted: string[] }, MongoDbError>
+> => {
+  const canceledProgramItemIds = getCanceledProgramItems(
+    updatedProgramItems,
+    currentProgramItems,
+  ).map((p) => p.programItemId);
+
+  if (canceledProgramItemIds.length > 0) {
+    logger.info(
+      `Found ${
+        canceledProgramItemIds.length
+      } canceled program items: ${canceledProgramItemIds.join(", ")}`,
+    );
+  }
+
+  const deletedProgramItemIds = differenceBy(
     currentProgramItems,
     updatedProgramItems,
     (programItem) => programItem.programItemId,
-  );
+  ).map((p) => p.programItemId);
 
-  if (deletedProgramItems.length > 0) {
-    const deletedProgramItemIds = deletedProgramItems.map(
-      (deletedProgramItem) => deletedProgramItem.programItemId,
-    );
-
+  if (canceledProgramItemIds.length > 0) {
     logger.info(
       `Found ${
-        deletedProgramItems.length
-      } deleted program items to be removed: ${deletedProgramItemIds.join(", ")}`,
+        canceledProgramItemIds.length
+      } deleted program items: ${canceledProgramItemIds.join(", ")}`,
     );
+  }
 
+  const removeDirectSignupProgramItemIds = [
+    ...canceledProgramItemIds,
+    ...deletedProgramItemIds,
+  ];
+
+  if (removeDirectSignupProgramItemIds.length > 0) {
+    logger.info("Remove direct signups for canceled and deleted program items");
     const delSignupDocumentsResult =
-      await delDirectSignupDocumentsByProgramItemIds(deletedProgramItemIds);
+      await delDirectSignupDocumentsByProgramItemIds(
+        removeDirectSignupProgramItemIds,
+      );
     if (isErrorResult(delSignupDocumentsResult)) {
       return delSignupDocumentsResult;
     }
+  }
 
+  if (deletedProgramItemIds.length > 0) {
+    logger.info("Remove deleted program items");
     const removeProgramItemsResult = await removeProgramItems(
       deletedProgramItemIds,
     );
@@ -67,7 +117,10 @@ export const removeDeletedProgramItems = async (
     }
   }
 
-  return makeSuccessResult(deletedProgramItems);
+  return makeSuccessResult({
+    cancelled: canceledProgramItemIds,
+    deleted: deletedProgramItemIds,
+  });
 };
 
 export const enrichProgramItems = async (

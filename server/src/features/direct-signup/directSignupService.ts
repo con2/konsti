@@ -23,6 +23,7 @@ import { config } from "shared/config";
 import { SignupRepositoryAddSignup } from "server/features/direct-signup/directSignupTypes";
 import { getSignupMessage } from "server/features/program-item/programItemUtils";
 import { findSettings } from "server/features/settings/settingsRepository";
+import { State } from "shared/types/models/programItem";
 
 export const storeDirectSignup = async (
   signupRequest: PostDirectSignupRequest,
@@ -60,6 +61,14 @@ export const storeDirectSignup = async (
     };
   }
   const programItem = unwrapResult(programItemResult);
+
+  if (programItem.state === State.CANCELLED) {
+    return {
+      message: "Program item is cancelled",
+      status: "error",
+      errorId: "cancelled",
+    };
+  }
 
   const directSignupStartTime = getDirectSignupStartTime(programItem);
 
