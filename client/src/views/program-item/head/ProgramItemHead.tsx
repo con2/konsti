@@ -158,7 +158,7 @@ export const ProgramItemHead = ({
         )}
       </div>
 
-      {loggedIn && userGroup === UserGroup.USER && (
+      {loggedIn && userGroup === UserGroup.USER && !cancelled && (
         <FavoriteButtonContainer>
           <FavoriteButton
             isFavorite={isFavorite}
