@@ -86,6 +86,7 @@ export const createProgramItems = async (
           title,
           description: faker.lorem.sentences(5),
           cachedHosts: faker.internet.username(),
+          isCancelled: Math.random() < 0.1,
           cachedDimensions: {
             form: sample(Object.values(KompassiForm), 1),
             type: sample(Object.values(KompassiType), 1),
@@ -109,6 +110,7 @@ export const createProgramItems = async (
               endTime: dayjs(startTime).add(length, "minutes").toISOString(),
               lengthMinutes: length,
               location: "Ropetaverna",
+              isCancelled: Math.random() < 0.1,
             },
           ],
           cachedAnnotations: {

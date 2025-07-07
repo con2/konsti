@@ -168,6 +168,7 @@ export const getProgramFromServer = async (): Promise<
                       cachedHosts
                       cachedDimensions
                       cachedAnnotations
+                      isCancelled
                       scheduleItems {
                           slug
                           title
@@ -175,6 +176,7 @@ export const getProgramFromServer = async (): Promise<
                           endTime
                           lengthMinutes
                           location
+                          isCancelled
                       }
                   }
               }

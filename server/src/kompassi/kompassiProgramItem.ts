@@ -137,6 +137,7 @@ const ScheduleItemSchema = z.object({
   endTime: z.string().datetime({ offset: true }),
   lengthMinutes: z.number().catch(0),
   location: z.string().catch(""),
+  isCancelled: z.boolean().catch(true),
 });
 
 export type KompassiScheduleItem = z.infer<typeof ScheduleItemSchema>;
@@ -146,6 +147,7 @@ export const KompassiProgramItemSchema = z.object({
   title: z.string().catch(""),
   description: z.string().catch(""),
   cachedHosts: z.string().catch(""),
+  isCancelled: z.boolean().catch(true),
   cachedDimensions: z.object({
     form: z.array(z.nativeEnum(KompassiForm)).catch([]),
     type: z.array(z.nativeEnum(KompassiType)).catch([]),
