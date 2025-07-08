@@ -265,10 +265,12 @@ export const joinGroup = async (
     .map((programItem) => programItem.programItemId);
 
   if (upcomingLotterySignupProgramItemIds.length > 0) {
-    const saveLotterySignupsResult = await delLotterySignups({
-      lotterySignupProgramItemIds: upcomingLotterySignupProgramItemIds,
-      username,
-    });
+    const saveLotterySignupsResult = await delLotterySignups([
+      {
+        lotterySignupProgramItemIds: upcomingLotterySignupProgramItemIds,
+        username,
+      },
+    ]);
     if (isErrorResult(saveLotterySignupsResult)) {
       return {
         message: "Error removing upcoming lottery signups",

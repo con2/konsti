@@ -206,10 +206,12 @@ export const removeLotterySignup = async (
     };
   }
 
-  const responseResult = await delLotterySignups({
-    lotterySignupProgramItemIds: [lotterySignupProgramItemId],
-    username,
-  });
+  const responseResult = await delLotterySignups([
+    {
+      lotterySignupProgramItemIds: [lotterySignupProgramItemId],
+      username,
+    },
+  ]);
 
   if (isErrorResult(responseResult)) {
     return {
