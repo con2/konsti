@@ -1,10 +1,7 @@
 import dayjs from "dayjs";
 import { logger } from "server/utils/logger";
 import { ProgramItem } from "shared/types/models/programItem";
-import {
-  findUsers,
-  updateUsersByUsername,
-} from "server/features/user/userRepository";
+import { findUsers } from "server/features/user/userRepository";
 import {
   Result,
   isErrorResult,
@@ -12,7 +9,7 @@ import {
   unwrapResult,
 } from "shared/utils/result";
 import { MongoDbError } from "shared/types/api/errors";
-import { User } from "shared/types/models/user";
+import { delLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 
 export const updateMovedProgramItems = async (
   updatedProgramItems: readonly ProgramItem[],
@@ -56,43 +53,39 @@ const removeMovedLotterySignups = async (
 
   const users = unwrapResult(usersResult);
 
-  const usersToUpdate: User[] = users.flatMap((user) => {
-    const programItemsToBeRemoved: ProgramItem[] = [];
-
-    const lotterySignups = user.lotterySignups.filter((lotterySignup) => {
+  const usersToUpdate = users.flatMap((user) => {
+    const movedLotterySignups = user.lotterySignups.filter((lotterySignup) => {
       const movedFound = movedProgramItems.find((movedProgramItem) => {
         return movedProgramItem.programItemId === lotterySignup.programItemId;
       });
-      if (!movedFound) {
+      if (movedFound) {
         return lotterySignup;
       }
-      programItemsToBeRemoved.push(movedFound);
     });
 
-    if (programItemsToBeRemoved.length > 0) {
-      logger.info(
-        `Remove following moved lotterySignups from user ${
-          user.username
-        }: ${programItemsToBeRemoved
-          .map((deletedProgramItem) => deletedProgramItem.programItemId)
-          .join(", ")}`,
-      );
+    if (movedLotterySignups.length === 0) {
+      return [];
     }
 
-    if (user.lotterySignups.length !== lotterySignups.length) {
-      return {
-        ...user,
-        lotterySignups,
-      };
-    }
+    const lotterySignupProgramItemIds = movedLotterySignups.map(
+      (lotterySignup) => lotterySignup.programItemId,
+    );
 
-    return [];
+    logger.info(
+      `Remove following moved lotterySignups from user ${
+        user.username
+      }: ${lotterySignupProgramItemIds.join(", ")}`,
+    );
+
+    return {
+      username: user.username,
+      lotterySignupProgramItemIds,
+    };
   });
 
-  // TODO: Remove moved program items instead of updating all
-  const updateUsersResult = await updateUsersByUsername(usersToUpdate);
-  if (isErrorResult(updateUsersResult)) {
-    return updateUsersResult;
+  const delLotterySignupsResult = await delLotterySignups(usersToUpdate);
+  if (isErrorResult(delLotterySignupsResult)) {
+    return delLotterySignupsResult;
   }
 
   return makeSuccessResult();

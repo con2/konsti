@@ -111,52 +111,37 @@ interface DeleteLotterySignupsParams {
   username: string;
 }
 
-export const delLotterySignups = async ({
-  lotterySignupProgramItemIds,
-  username,
-}: DeleteLotterySignupsParams): Promise<Result<User, MongoDbError>> => {
+export const delLotterySignups = async (
+  usersToUpdate: DeleteLotterySignupsParams[],
+): Promise<Result<void, MongoDbError>> => {
   try {
-    const response = await UserModel.findOneAndUpdate(
-      { username },
-      {
-        $pull: {
-          lotterySignups: {
-            programItemId: { $in: lotterySignupProgramItemIds },
+    const bulkOps = usersToUpdate.map(
+      ({ username, lotterySignupProgramItemIds }) => ({
+        updateOne: {
+          filter: { username },
+          update: {
+            $pull: {
+              lotterySignups: {
+                programItemId: { $in: lotterySignupProgramItemIds },
+              },
+            },
           },
         },
-      },
-      { new: true },
-    ).lean();
-
-    if (!response) {
-      logger.error(
-        "%s",
-        new Error(
-          `Error deleting lottery signups ${lotterySignupProgramItemIds.join(", ")} from user ${username}, user not found`,
-        ),
-      );
-      return makeErrorResult(MongoDbError.SIGNUP_NOT_FOUND);
-    }
-
-    logger.debug(
-      `MongoDB: Lottery signups ${lotterySignupProgramItemIds.join(", ")} deleted from user ${username}`,
+      }),
     );
 
-    const result = UserSchemaDb.safeParse(response);
-    if (!result.success) {
-      logger.error(
-        "%s",
-        new Error(
-          `Error validating delLotterySignups DB value: ${JSON.stringify(result.error)}`,
-        ),
-      );
-      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
-    }
+    await UserModel.bulkWrite(bulkOps);
 
-    return makeSuccessResult(result.data);
+    usersToUpdate.map((e) => {
+      logger.info(
+        `MongoDB: Deleted lottery signups ${e.lotterySignupProgramItemIds.join(", ")} from users: ${e.username}`,
+      );
+    });
+
+    return makeSuccessResult();
   } catch (error) {
     logger.error(
-      `MongoDB: Error deleting lottery signups ${lotterySignupProgramItemIds.join(", ")} from user ${username}: %s`,
+      "MongoDB: Error deleting lottery signups from multiple users: %s",
       error,
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
