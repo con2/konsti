@@ -277,7 +277,7 @@ const mapRevolvingDoor = (
   kompassiProgramItem: KompassiProgramItem,
 ): boolean => {
   if (
-    kompassiProgramItem.cachedDimensions.revolvingdoor[0] ===
+    first(kompassiProgramItem.cachedDimensions.revolvingdoor) ===
     KompassiBoolean.TRUE
   ) {
     return true;
@@ -295,15 +295,6 @@ const mapRevolvingDoor = (
 };
 
 const mapMaxAttendance = (kompassiProgramItem: KompassiProgramItem): number => {
-  /*
-  if (
-    kompassiProgramItem.cachedDimensions.konsti[0] ===
-    KompassiKonstiProgramType.LARP
-  ) {
-    return kompassiProgramItem.cachedAnnotations["ropecon:numCharacters"];
-  }
-  */
-
   return kompassiProgramItem.cachedAnnotations["konsti:maxAttendance"];
 };
 

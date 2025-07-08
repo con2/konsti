@@ -5,20 +5,6 @@ import { partition } from "remeda";
 import { logger } from "server/utils/logger";
 import { config } from "shared/config";
 
-export enum KompassiTopic {
-  FIGURES = "figures",
-  CARDGAMES = "cardgames",
-  RPG = "rpg",
-  BOARDGAMES = "boardgames",
-  OTHER_GAMES = "othergames",
-  LARP = "larp",
-  MUSIC = "music",
-  HANDCRAFTS = "handcrafts",
-  DANCING = "dancing",
-  ESCAPE_ROOM = "escape-room",
-  BOFFERING = "boffering",
-}
-
 export enum KompassiKonstiProgramType {
   TABLETOP_RPG = "tabletoprpg",
   LARP = "larp",
@@ -67,22 +53,6 @@ export enum KompassiInclusivity {
   IRRITATING_CHEMICALS = "irritating-chemicals",
 }
 
-export enum KompassiForm {
-  OFFER_MINIATURES = "offer-miniatures",
-  OFFER_XP = "offer-xp",
-  OFFER_WORKSHOP = "offer-workshop",
-  OFFER_TOURNAMENT = "offer-tournament",
-  OFFER_LARP = "offer-larp",
-  OFFER_RPG = "offer-rpg",
-  OFFER_OTHER_PROGRAM = "offer-other-program",
-  OFFER_OTHER_GAMEPROGRAM = "offer-other-gameprogram",
-}
-
-export enum KompassiState {
-  ACCEPTED = "accepted",
-  CANCELLED = "cancelled",
-}
-
 export enum KompassiGrouping {
   BEGINNERS = "beginners",
   NEW_WORLDS = "new-worlds",
@@ -99,13 +69,6 @@ export enum KompassiAgeGroup {
   SMALL_KIDS = "small-kids",
 }
 
-export enum KompassiScheduled {
-  MULTIPLE = "multiple",
-  ONE_OR_MORE = "one-or-more",
-  ONE = "one",
-  NONE = "none",
-}
-
 export enum KompassiRegistration {
   OTHER = "other",
   NOT_REQUIRED = "not-required",
@@ -118,16 +81,6 @@ export enum KompassiRegistration {
 export enum KompassiBoolean {
   TRUE = "true",
   FALSE = "false",
-}
-
-export enum KompassiType {
-  OTHER = "other",
-  GAMING = "gaming",
-  WORKSHOP = "workshop",
-  TOURNAMENT = "tournament",
-  PERFORMANCE = "performance",
-  MEET = "meet",
-  PRESENTATION = "presentation",
 }
 
 const ScheduleItemSchema = z.object({
@@ -149,34 +102,6 @@ export const KompassiProgramItemSchema = z.object({
   cachedHosts: z.string().catch(""),
   isCancelled: z.boolean().catch(true),
   cachedDimensions: z.object({
-    form: z.array(z.nativeEnum(KompassiForm)).catch([]),
-    type: z.array(z.nativeEnum(KompassiType)).catch([]),
-    state: z.array(z.nativeEnum(KompassiState)).catch((ctx) => {
-      if (!Array.isArray(ctx.input)) {
-        return [];
-      }
-      const [valid, invalid] = partition(ctx.input, (state) =>
-        Object.values(KompassiState).includes(state),
-      );
-      logger.error(
-        "%s",
-        new Error(`Invalid state: ${JSON.stringify(invalid)}`),
-      );
-      return valid;
-    }),
-    topic: z.array(z.nativeEnum(KompassiTopic)).catch((ctx) => {
-      if (!Array.isArray(ctx.input)) {
-        return [];
-      }
-      const [valid, invalid] = partition(ctx.input, (topic) =>
-        Object.values(KompassiTopic).includes(topic),
-      );
-      logger.error(
-        "%s",
-        new Error(`Invalid topic: ${JSON.stringify(invalid)}`),
-      );
-      return valid;
-    }),
     konsti: z.array(z.nativeEnum(KompassiKonstiProgramType)).catch((ctx) => {
       if (!Array.isArray(ctx.input)) {
         return [];
@@ -229,7 +154,6 @@ export const KompassiProgramItemSchema = z.object({
       );
       return valid;
     }),
-    scheduled: z.array(z.nativeEnum(KompassiScheduled)).catch([]),
     ["game-style"]: z.array(z.nativeEnum(KompassiGamestyle)).catch((ctx) => {
       if (!Array.isArray(ctx.input)) {
         return [];
