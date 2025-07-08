@@ -10,16 +10,11 @@ import {
   KompassiGamestyle,
   KompassiLanguage,
   KompassiInclusivity,
-  KompassiTopic,
   KompassiKonstiProgramType,
-  KompassiForm,
-  KompassiState,
   KompassiGrouping,
   KompassiAgeGroup,
-  KompassiScheduled,
   KompassiRegistration,
   KompassiBoolean,
-  KompassiType,
 } from "server/kompassi/kompassiProgramItem";
 import { Result } from "shared/utils/result";
 import { MongoDbError } from "shared/types/api/errors";
@@ -88,15 +83,10 @@ export const createProgramItems = async (
           cachedHosts: faker.internet.username(),
           isCancelled: false,
           cachedDimensions: {
-            form: sample(Object.values(KompassiForm), 1),
-            type: sample(Object.values(KompassiType), 1),
-            state: [KompassiState.ACCEPTED],
-            topic: sample(Object.values(KompassiTopic), 1),
             konsti: [kompassiProgramType],
             grouping: sample(Object.values(KompassiGrouping), 1),
             language: sample(Object.values(KompassiLanguage), 1),
             ["age-group"]: sample(Object.values(KompassiAgeGroup), 1),
-            scheduled: sample(Object.values(KompassiScheduled), 1),
             ["game-style"]: sample(Object.values(KompassiGamestyle), 2),
             inclusivity: sample(Object.values(KompassiInclusivity), 3),
             registration: sample(Object.values(KompassiRegistration), 1),
