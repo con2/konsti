@@ -23,20 +23,13 @@ import { config } from "shared/config";
 import { SignupRepositoryAddSignup } from "server/features/direct-signup/directSignupTypes";
 import { getSignupMessage } from "server/features/program-item/programItemUtils";
 import { findSettings } from "server/features/settings/settingsRepository";
-import { State } from "shared/types/models/programItem";
+import { SignupType, State } from "shared/types/models/programItem";
 
 export const storeDirectSignup = async (
   signupRequest: PostDirectSignupRequest,
   username: string,
 ): Promise<PostDirectSignupResponse | PostDirectSignupError> => {
   const { directSignupProgramItemId } = signupRequest;
-  if (config.event().noKonstiSignupIds.includes(directSignupProgramItemId)) {
-    return {
-      message: "No Konsti signup for this program item",
-      status: "error",
-      errorId: "noKonstiSignup",
-    };
-  }
 
   const timeNowResult = await getTimeNow();
   if (isErrorResult(timeNowResult)) {
@@ -61,6 +54,17 @@ export const storeDirectSignup = async (
     };
   }
   const programItem = unwrapResult(programItemResult);
+
+  if (
+    programItem.signupType !== SignupType.KONSTI ||
+    config.event().noKonstiSignupIds.includes(directSignupProgramItemId)
+  ) {
+    return {
+      message: "No Konsti signup for this program item",
+      status: "error",
+      errorId: "noKonstiSignup",
+    };
+  }
 
   if (programItem.state === State.CANCELLED) {
     return {

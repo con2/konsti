@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 import { groupBy, sample } from "remeda";
 import { logger } from "server/utils/logger";
 import { updateProgramItemPopularity } from "server/features/program-item-popularity/updateProgramItemPopularity";
-import { ProgramItem } from "shared/types/models/programItem";
+import { ProgramItem, SignupType } from "shared/types/models/programItem";
 import { findUsers } from "server/features/user/userRepository";
 import { findProgramItems } from "server/features/program-item/programItemRepository";
 import { LotterySignup, User } from "shared/types/models/user";
@@ -46,6 +46,7 @@ const getRandomLotterySignup = (
   const { noKonstiSignupIds } = config.event();
 
   const activeProgramItems = programItems
+    .filter((programItem) => programItem.signupType === SignupType.KONSTI)
     .filter((programItem) => isLotterySignupProgramItem(programItem))
     .filter(
       (programItem) => !noKonstiSignupIds.includes(programItem.programItemId),

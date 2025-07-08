@@ -185,6 +185,7 @@ export enum PostLotterySignupErrorMessage {
   PROGRAM_ITEM_NOT_FOUND = "signupError.programItemNotFound",
   SIGNUP_NOT_OPEN_YET = "signupError.signupNotOpenYet",
   PROGRAM_ITEM_CANCELLED = "signupError.programItemCancelled",
+  NO_KONSTI_SIGNUP = "signupError.noKonstiSignup",
   UNKNOWN = "signupError.generic",
 }
 
@@ -210,6 +211,8 @@ export const submitPostLotterySignup = (
           return PostLotterySignupErrorMessage.SIGNUP_NOT_OPEN_YET;
         case "cancelled":
           return PostLotterySignupErrorMessage.PROGRAM_ITEM_CANCELLED;
+        case "noKonstiSignup":
+          return PostLotterySignupErrorMessage.NO_KONSTI_SIGNUP;
         case "unknown":
           return PostLotterySignupErrorMessage.UNKNOWN;
         default:

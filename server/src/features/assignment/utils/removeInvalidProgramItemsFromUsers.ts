@@ -8,7 +8,11 @@ import {
 import { logger } from "server/utils/logger";
 import { MongoDbError } from "shared/types/api/errors";
 import { EventLogAction } from "shared/types/models/eventLog";
-import { ProgramItem, State } from "shared/types/models/programItem";
+import {
+  ProgramItem,
+  SignupType,
+  State,
+} from "shared/types/models/programItem";
 import { FavoriteProgramItemId, LotterySignup } from "shared/types/models/user";
 import {
   Result,
@@ -45,7 +49,10 @@ export const removeCanceledDeletedProgramItemsFromUsers = async (
           (programItem) =>
             programItem.programItemId === lotterySignup.programItemId,
         );
-        return foundProgramItem?.state === State.ACCEPTED;
+        return (
+          foundProgramItem?.state === State.ACCEPTED &&
+          foundProgramItem.signupType === SignupType.KONSTI
+        );
       },
     );
 
@@ -65,7 +72,10 @@ export const removeCanceledDeletedProgramItemsFromUsers = async (
         const foundProgramItem = programItems.find(
           (programItem) => programItem.programItemId === favoriteProgramItemId,
         );
-        return foundProgramItem?.state === State.ACCEPTED;
+        return (
+          foundProgramItem?.state === State.ACCEPTED &&
+          foundProgramItem.signupType === SignupType.KONSTI
+        );
       });
 
     const changedFavoriteProgramItemIdsCount =

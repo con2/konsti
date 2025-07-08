@@ -6,6 +6,7 @@ import {
   ProgramItemWithUserSignups,
   ProgramType,
   SignupStrategy,
+  SignupType,
   State,
   UserSignup,
 } from "shared/types/models/programItem";
@@ -47,11 +48,22 @@ const getCanceledProgramItems = (
       const currentProgramItem = currentProgramItemsMap.get(
         updatedProgramItem.programItemId,
       );
-      return (
-        currentProgramItem &&
+
+      if (!currentProgramItem) {
+        return false;
+      }
+
+      // Program item marked as 'cancelled'
+      const programItemCancelled =
         currentProgramItem.state === State.ACCEPTED &&
-        updatedProgramItem.state === State.CANCELLED
-      );
+        updatedProgramItem.state === State.CANCELLED;
+
+      // Program item no longer using 'konsti' signup type
+      const programItemKonstiSignupRemoved =
+        currentProgramItem.signupType === SignupType.KONSTI &&
+        updatedProgramItem.signupType !== SignupType.KONSTI;
+
+      return programItemCancelled || programItemKonstiSignupRemoved;
     },
   );
 
