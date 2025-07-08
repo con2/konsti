@@ -6,6 +6,7 @@ import { Hitpoint } from "./components/Hitpoint";
 import { Tracon } from "./components/Tracon";
 import { LoginKompassi } from "./components/LoginKompassi";
 import { LoginLocal } from "./components/LoginLocal";
+import { LoginLocalKompassi } from "./components/LoginLocalKompassi";
 import { SignupLottery } from "./components/SignupLottery";
 import { Expand } from "./components/Expand";
 // eslint-disable-next-line @typescript-eslint/no-restricted-imports
@@ -109,19 +110,33 @@ Konsti accounts from previous events have been removed, so you will need to crea
 
 <LoginKompassi>
 <Fi>
-Aikaisemmin luotu Kompassi-tunnuksesi on edelleen olemassa.
-
-Aikaisempien tapahtumien Konsti-nimimerkit eivät ole enää käytössä. Sinun on valittava uusi Konsti-nimimerkki tapahtumalle {props.eventName} {props.eventYear}.
+Kompassi-tunnusta ei poisteta ellet ole erikseen sitä pyytänyt, joten jos olet aiemmin kirjautunut Konstiin Kompassi-tunnuksilla, voit nyt käyttää niitä uudelleen.
 
 </Fi>
 
 <En>
+A Kompassi account is not deleted unless you specifically request it so if you have previously logged in with a Kompassi account, that same account still exists and you can use it again.
 The Kompassi account you previously created still exists.
-
-Konsti usernames from past events are no longer in use. You will need to choose a new Konsti username for the event {props.eventName} {props.eventYear}.
-
 </En>
 </LoginKompassi>
+
+<LoginLocalKompassi>
+
+<Fi>
+Kompassi-tunnusta ei poisteta ellet ole erikseen sitä pyytänyt, joten jos olet aiemmin kirjautunut Konstiin Kompassi-tunnuksilla, voit nyt käyttää niitä uudelleen.
+
+Aikaisempien tapahtumien Konsti-nimimerkit eivät ole enää käytössä. Jos haluat kirjautua sisään Konsti-tunnuksilla, sinun on valittava uusi Konsti-nimimerkki tapahtumalle {props.eventName} {props.eventYear}.
+
+</Fi>
+
+<En>
+A Kompassi account is not deleted unless you specifically request it so if you have previously logged in with a Kompassi account, that same account still exists and you can use it again.
+
+Konsti usernames from past events are no longer in use. If you want to use Konsti login, you will have to choose a new Konsti username for the event {props.eventName} {props.eventYear}.
+
+</En>
+
+</LoginLocalKompassi>
 
 </Expand>
 
@@ -137,19 +152,38 @@ Konsti usernames from past events are no longer in use. You will need to choose 
 <Fi>
 <LoginLocal>
 Uuden käyttäjätilin luomiseen tarvitset rekisteröintikoodin, joita on saatavilla Pelitiskiltä (Halli 3), Larp- ja Roolipelitiskiltä tai Infosta (molemmat pääaulassa, eteläisen sisäänkäynnin luona).
+
+Rekisteröintikoodi kannattaa pitää tallessa siltä varalta, että et pääsekään enää kirjautumaan sisään tunnuksellasi. Sitä tarvitaan salasanan vaihtamiseen. Rekisteröintikoodi näkyy ensimmäisen sisäänkirjautumisen yhteydessä sivuston ylälaidassa, ja sen löytää myöhemmin myös <Link to={ProfileTab.PROFILE}>profiilisivulta</Link>.
+
 </LoginLocal>
 
 <LoginKompassi>
-Konstiin kirjaudutaan Kompassi-tunnuksella. Voit rekisteröidä Kompassi-tunnuksen Konstin  kirjautumisen yhteydessä <Link to={AppRoute.LOGIN}>kirjautumissivulta</Link> tai jo ennen tapahtumaa Kompassin <Link to={"https://kompassi.eu/register"}>rekisteröintisivulla</Link>.
+Konstiin kirjaudutaan Kompassi-tunnuksella. Voit rekisteröidä Kompassi-tunnuksen Konstin kirjautumisen yhteydessä <Link to={AppRoute.LOGIN}>kirjautumissivulta</Link> tai jo ennen tapahtumaa Kompassin <Link to={"https://kompassi.eu/register"}>rekisteröintisivulla</Link>.
 
 Ensimmäisellä kirjautumiskerralla voit valita itsellesi Konsti-nimimerkin. Tämän jälkeen voit ilmoittautua ohjelmanumeroihin.
 
 </LoginKompassi>
+
+<LoginLocalKompassi>
+Voit kirjautua Konstiin joko Konstin omilla tai Kompassi-tunnuksilla.
+
+Uuden Konsti-tunnuksen luomiseen tarvitset rekisteröintikoodin, joita on saatavilla Pelitiskiltä (Halli 3), Larp- ja Roolipelitiskiltä tai Infosta (molemmat pääaulassa, eteläisen sisäänkäynnin luona).
+
+Rekisteröintikoodi kannattaa pitää tallessa siltä varalta, että et pääsekään enää kirjautumaan sisään tunnuksellasi. Sitä tarvitaan salasanan vaihtamiseen. Rekisteröintikoodi näkyy ensimmäisen sisäänkirjautumisen yhteydessä sivuston ylälaidassa, ja sen löytää myöhemmin myös <Link to={ProfileTab.PROFILE}>profiilisivulta</Link>.
+
+Jos haluat käyttää Kompassi-tunnuksia, voit rekisteröidä Kompassi-tunnuksen Konstin kirjautumisen yhteydessä <Link to={AppRoute.LOGIN}>kirjautumissivulta</Link> tai jo ennen tapahtumaa Kompassin <Link to={"https://kompassi.eu/register"}>rekisteröintisivulla</Link>.
+
+Ensimmäisellä kirjautumiskerralla voit valita itsellesi Konsti-nimimerkin. Tämän jälkeen voit ilmoittautua ohjelmanumeroihin.
+
+</LoginLocalKompassi>
 </Fi>
 
 <En>
 <LoginLocal>
 For creating an account, you will need a registration code, which you can get from the Gaming Desk (Hall 3), the Larp & RPG Desk or the Info Desk (both in the southern entrance lobby).
+
+Please save your registration code. You will need it if you log out of Konsti and then need to change your password. The code is visible in Konsti after you first log in. Later, you can see it on the <Link to={ProfileTab.PROFILE}>profile page</Link>.
+
 </LoginLocal>
 
 <LoginKompassi>
@@ -159,19 +193,21 @@ On your first login, you can choose a Konsti username for yourself. Following th
 
 </LoginKompassi>
 
-</En>
+<LoginLocalKompassi>
+You can log in using either a Konsti account or a Kompassi account.
 
-<Fi>
-<Ropecon>
-Rekisteröintikoodi kannattaa pitää tallessa siltä varalta, että et pääsekään enää kirjautumaan sisään tunnuksellasi. Sitä tarvitaan salasanan vaihtamiseen. Rekisteröintikoodi näkyy ensimmäisen sisäänkirjautumisen yhteydessä sivuston ylälaidassa, ja sen löytää myöhemmin myös <Link to={ProfileTab.PROFILE}>profiilisivulta</Link>.
-</Ropecon>
-</Fi>
+For creating a Konsti account, you will need a registration code, which you can get from the Gaming Desk (Hall 3), the Larp & RPG Desk or the Info Desk (both in the southern entrance lobby).
 
-<En>
-<Ropecon>
 Please save your registration code. You will need it if you log out of Konsti and then need to change your password. The code is visible in Konsti after you first log in. Later, you can see it on the <Link to={ProfileTab.PROFILE}>profile page</Link>.
-</Ropecon>
+
+You can register a Kompassi account while logging in to Konsti via the <Link to={AppRoute.REGISTRATION}>login page</Link> or before the convention from the <Link to={"https://kompassi.eu/register"}>Kompassi registration page</Link>.
+
+On your first login, you can choose a Konsti username for yourself. Following this, you can sign up for program items.
+
+</LoginLocalKompassi>
+
 </En>
+
 </Expand>
 
 <Expand>
@@ -206,7 +242,7 @@ On this page, you can also view additional information such as the duration of t
 </Fi>
 
 <En>
-### Signing up to program item
+### Signing up to program items
 </En>
 
 <Ropecon>
