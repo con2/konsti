@@ -15,7 +15,7 @@ import {
   PostUserRequest,
   PostUserResponse,
 } from "shared/types/api/users";
-import { KonstiRegistrationFormFields } from "client/views/registration/components/KonstiRegistrationPage";
+import { KonstiRegistrationFormFields } from "client/views/registration/components/KonstiRegistrationForm";
 import {
   PostEventLogIsSeenError,
   PostEventLogIsSeenRequest,

@@ -21,7 +21,7 @@ import { UncontrolledInput } from "client/components/UncontrolledInput";
 import { Checkbox } from "client/components/Checkbox";
 import { PrivacyPolicy } from "client/components/PrivacyPolicy";
 
-interface KonstiRegistrationFormFields {
+export interface KonstiRegistrationFormFields {
   password: string;
   username: string;
   registerDescription: boolean;

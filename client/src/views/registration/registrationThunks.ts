@@ -1,6 +1,6 @@
 import { postRegistration } from "client/services/userServices";
 import { submitLogin } from "client/views/login/loginThunks";
-import { KonstiRegistrationFormFields } from "client/views/registration/components/KonstiRegistrationPage";
+import { KonstiRegistrationFormFields } from "client/views/registration/components/KonstiRegistrationForm";
 import { AppThunk } from "client/types/reduxTypes";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 
