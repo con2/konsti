@@ -1,6 +1,7 @@
 import { expect, test, afterEach, beforeEach } from "vitest";
 import mongoose from "mongoose";
 import { faker } from "@faker-js/faker";
+import dayjs from "dayjs";
 import {
   findProgramItemById,
   findProgramItems,
@@ -211,6 +212,77 @@ test("should remove direct signups when program item doesn't use Konsti signup a
       expect.objectContaining({
         programItemId: testProgramItem2.programItemId,
         action: EventLogAction.PROGRAM_ITEM_CANCELED,
+      }),
+    ]),
+  );
+});
+
+test("should add event notification if user has lottery signup and program item start time changes", async () => {
+  await saveProgramItems([testProgramItem, testProgramItem2]);
+  await saveUser(mockUser);
+  await saveLotterySignups({
+    username: mockUser.username,
+    lotterySignups: mockLotterySignups,
+  });
+
+  await saveProgramItems([
+    {
+      ...testProgramItem,
+      startTime: dayjs(testProgramItem.startTime).add(1, "hour").toISOString(),
+    },
+    {
+      ...testProgramItem2,
+      startTime: dayjs(testProgramItem2.startTime)
+        .add(2, "hours")
+        .toISOString(),
+    },
+  ]);
+
+  const user = unsafelyUnwrap(await findUser(mockUser.username));
+
+  expect(user?.eventLogItems).toHaveLength(2);
+  expect(user?.eventLogItems).toEqual(
+    expect.arrayContaining([
+      expect.objectContaining({
+        programItemId: testProgramItem.programItemId,
+        action: EventLogAction.PROGRAM_ITEM_MOVED,
+      }),
+      expect.objectContaining({
+        programItemId: testProgramItem2.programItemId,
+        action: EventLogAction.PROGRAM_ITEM_MOVED,
+      }),
+    ]),
+  );
+});
+
+test("should add event notification if user has direct signup and program item start time changes", async () => {
+  await saveProgramItems([testProgramItem, testProgramItem2]);
+  await saveUser(mockUser);
+  await saveDirectSignup(mockPostDirectSignupRequest);
+  await saveDirectSignup(mockPostDirectSignupRequest2);
+
+  await saveProgramItems([
+    {
+      ...testProgramItem,
+      startTime: dayjs(testProgramItem.startTime).add(1, "hour").toISOString(),
+    },
+    {
+      ...testProgramItem2,
+      startTime: dayjs(testProgramItem2.startTime).add(2, "hour").toISOString(),
+    },
+  ]);
+
+  const user = unsafelyUnwrap(await findUser(mockUser.username));
+  expect(user?.eventLogItems).toHaveLength(2);
+  expect(user?.eventLogItems).toEqual(
+    expect.arrayContaining([
+      expect.objectContaining({
+        programItemId: testProgramItem.programItemId,
+        action: EventLogAction.PROGRAM_ITEM_MOVED,
+      }),
+      expect.objectContaining({
+        programItemId: testProgramItem2.programItemId,
+        action: EventLogAction.PROGRAM_ITEM_MOVED,
       }),
     ]),
   );

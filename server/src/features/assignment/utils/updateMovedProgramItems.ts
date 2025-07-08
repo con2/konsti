@@ -9,7 +9,15 @@ import {
   unwrapResult,
 } from "shared/utils/result";
 import { MongoDbError } from "shared/types/api/errors";
-import { delLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
+import {
+  DeleteLotterySignupsParams,
+  delLotterySignups,
+} from "server/features/user/lottery-signup/lotterySignupRepository";
+import { addEventLogItems } from "server/features/user/event-log/eventLogRepository";
+import { EventLogAction } from "shared/types/models/eventLog";
+import { findDirectSignupsByProgramItemIds } from "server/features/direct-signup/directSignupRepository";
+
+type UsersWithMovedLotterySignups = DeleteLotterySignupsParams[];
 
 export const updateMovedProgramItems = async (
   updatedProgramItems: readonly ProgramItem[],
@@ -33,24 +41,34 @@ export const updateMovedProgramItems = async (
 
   // This will remove lottery signups
   const removeMovedLotterySignupsResult =
-    await removeMovedLotterySignups(movedProgramItems);
+    await removeMovedLotterySignupsAndNotify(movedProgramItems);
   if (isErrorResult(removeMovedLotterySignupsResult)) {
     return removeMovedLotterySignupsResult;
+  }
+  const usersWithMovedLotterySignups = unwrapResult(
+    removeMovedLotterySignupsResult,
+  );
+
+  const notifyUsersWithDirectSignupsResult = await notifyUsersWithDirectSignups(
+    movedProgramItems,
+    usersWithMovedLotterySignups,
+  );
+  if (isErrorResult(notifyUsersWithDirectSignupsResult)) {
+    return notifyUsersWithDirectSignupsResult;
   }
 
   return makeSuccessResult();
 };
 
-const removeMovedLotterySignups = async (
+const removeMovedLotterySignupsAndNotify = async (
   movedProgramItems: readonly ProgramItem[],
-): Promise<Result<void, MongoDbError>> => {
+): Promise<Result<UsersWithMovedLotterySignups, MongoDbError>> => {
   logger.info("Remove moved lottery signups from users");
 
   const usersResult = await findUsers();
   if (isErrorResult(usersResult)) {
     return usersResult;
   }
-
   const users = unwrapResult(usersResult);
 
   const usersToUpdate = users.flatMap((user) => {
@@ -86,6 +104,84 @@ const removeMovedLotterySignups = async (
   const delLotterySignupsResult = await delLotterySignups(usersToUpdate);
   if (isErrorResult(delLotterySignupsResult)) {
     return delLotterySignupsResult;
+  }
+
+  // Notify users program item start time has changed
+  const eventUpdates = usersToUpdate.flatMap((user) => {
+    return user.lotterySignupProgramItemIds.flatMap((programItemId) => {
+      const movedProgramItem = movedProgramItems.find(
+        (programItem) => programItem.programItemId === programItemId,
+      );
+      if (!movedProgramItem) {
+        return [];
+      }
+
+      return {
+        username: user.username,
+        programItemId,
+        programItemStartTime: movedProgramItem.startTime,
+        createdAt: dayjs().toISOString(),
+      };
+    });
+  });
+
+  const addEventLogItemsResult = await addEventLogItems({
+    action: EventLogAction.PROGRAM_ITEM_MOVED,
+    updates: eventUpdates,
+  });
+  if (isErrorResult(addEventLogItemsResult)) {
+    return addEventLogItemsResult;
+  }
+
+  return makeSuccessResult(usersToUpdate);
+};
+
+const notifyUsersWithDirectSignups = async (
+  movedProgramItems: ProgramItem[],
+  usersWithMovedLotterySignups: UsersWithMovedLotterySignups,
+): Promise<Result<void, MongoDbError>> => {
+  const movedProgramItemIds = movedProgramItems.map(
+    (programItem) => programItem.programItemId,
+  );
+
+  const directSignupsResult =
+    await findDirectSignupsByProgramItemIds(movedProgramItemIds);
+  if (isErrorResult(directSignupsResult)) {
+    return directSignupsResult;
+  }
+  const directSignups = unwrapResult(directSignupsResult);
+
+  const userUpdates = directSignups.flatMap((directSignup) => {
+    const movedProgramItem = movedProgramItems.find(
+      (programItem) => programItem.programItemId === directSignup.programItemId,
+    );
+    if (!movedProgramItem) {
+      return [];
+    }
+
+    return directSignup.userSignups.flatMap((userSignup) => {
+      // Check if user also had lottery signup and don't notify twice
+      const alreadyNotifiedUser = usersWithMovedLotterySignups.find(
+        (user) => user.username === userSignup.username,
+      );
+      if (alreadyNotifiedUser) {
+        return [];
+      }
+      return {
+        username: userSignup.username,
+        programItemId: directSignup.programItemId,
+        programItemStartTime: movedProgramItem.startTime,
+        createdAt: dayjs().toISOString(),
+      };
+    });
+  });
+
+  const addEventLogItemsResult = await addEventLogItems({
+    action: EventLogAction.PROGRAM_ITEM_MOVED,
+    updates: userUpdates,
+  });
+  if (isErrorResult(addEventLogItemsResult)) {
+    return addEventLogItemsResult;
   }
 
   return makeSuccessResult();

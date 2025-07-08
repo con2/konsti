@@ -11,7 +11,7 @@ import { config } from "shared/config";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { SignupType, State } from "shared/types/models/programItem";
 
-test("Show event log notification when program item with signup is cancelled", async ({
+test("Show event log notification when program item with direct signup is cancelled", async ({
   page,
   request,
 }) => {
@@ -79,7 +79,7 @@ test("Show event log notification when program item with signup is cancelled", a
   );
 });
 
-test("Show event log notification when program item with signup doesn't use Konsti anymore", async ({
+test("Show event log notification when program item with direct signup doesn't use Konsti anymore", async ({
   page,
   request,
 }) => {

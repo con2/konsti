@@ -106,7 +106,7 @@ export const saveLotterySignup = async ({
   }
 };
 
-interface DeleteLotterySignupsParams {
+export interface DeleteLotterySignupsParams {
   lotterySignupProgramItemIds: string[];
   username: string;
 }
@@ -133,7 +133,7 @@ export const delLotterySignups = async (
     await UserModel.bulkWrite(bulkOps);
 
     usersToUpdate.map((e) => {
-      logger.info(
+      logger.debug(
         `MongoDB: Deleted lottery signups ${e.lotterySignupProgramItemIds.join(", ")} from users: ${e.username}`,
       );
     });

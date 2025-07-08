@@ -289,6 +289,7 @@ export const translationEN = {
     noAssignment:
       "Spots for program items at {{START_TIME}} were randomized. Unfortunately, we couldn't fit you into any of your chosen program items.",
     programItemCanceled: "{{PROGRAM_TYPE}} canceled: {{PROGRAM_ITEM_NAME}}.",
+    programItemMoved: "starting time changed: {{NEW_STARTING_TIME}}.",
   },
   notificationBar: {
     showAll: "Show all notifications",
