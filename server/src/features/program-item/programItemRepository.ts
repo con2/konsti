@@ -55,12 +55,17 @@ export const saveProgramItems = async (
   if (isErrorResult(deletedProgramItemsResult)) {
     return deletedProgramItemsResult;
   }
+  const { affectedDirectSignups } = unwrapResult(deletedProgramItemsResult);
 
   // If program item was canceled or deleted, remove lottery signups and favorite program items
-  const removeCanceledDeletedProgramItemsResult =
-    await removeCanceledDeletedProgramItemsFromUsers(updatedProgramItems);
-  if (isErrorResult(removeCanceledDeletedProgramItemsResult)) {
-    return removeCanceledDeletedProgramItemsResult;
+  const removeCanceledDeletedProgramItemsFromUsersResult =
+    await removeCanceledDeletedProgramItemsFromUsers({
+      programItems: updatedProgramItems,
+      notifyAffectedDirectSignups: affectedDirectSignups,
+      notify: true,
+    });
+  if (isErrorResult(removeCanceledDeletedProgramItemsFromUsersResult)) {
+    return removeCanceledDeletedProgramItemsFromUsersResult;
   }
 
   const updateMovedProgramItemsResult = await updateMovedProgramItems(

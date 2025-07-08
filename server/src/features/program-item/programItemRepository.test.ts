@@ -67,7 +67,7 @@ test("should remove signup document when program item is removed", async () => {
   expect(signups2).toHaveLength(0);
 });
 
-test("should remove lottery signups and favorites when program item is deleted or cancelled", async () => {
+test("should remove lottery signups and favorites when program item is deleted or cancelled and add notification", async () => {
   await saveProgramItems([testProgramItem, testProgramItem2]);
   await saveUser(mockUser);
   await saveLotterySignups({
@@ -108,7 +108,7 @@ test("should remove lottery signups and favorites when program item is deleted o
   );
 });
 
-test("should remove direct signups when program item is deleted or cancelled", async () => {
+test("should remove direct signups when program item is deleted or cancelled and add notification", async () => {
   await saveProgramItems([testProgramItem, testProgramItem2]);
   await saveUser(mockUser);
   await saveDirectSignup(mockPostDirectSignupRequest);
@@ -142,7 +142,7 @@ test("should remove direct signups when program item is deleted or cancelled", a
   );
 });
 
-test("should remove lottery signups and favorites when program item doesn't use Konsti signup anymore", async () => {
+test("should remove lottery signups and favorites when program item doesn't use Konsti signup anymore and add notification", async () => {
   await saveProgramItems([testProgramItem, testProgramItem2]);
   await saveUser(mockUser);
   await saveLotterySignups({
@@ -183,7 +183,7 @@ test("should remove lottery signups and favorites when program item doesn't use 
   );
 });
 
-test("should remove direct signups when program item doesn't use Konsti signup anymore", async () => {
+test("should remove direct signups when program item doesn't use Konsti signup anymore and add notification", async () => {
   await saveProgramItems([testProgramItem, testProgramItem2]);
   await saveUser(mockUser);
   await saveDirectSignup(mockPostDirectSignupRequest);
@@ -211,6 +211,33 @@ test("should remove direct signups when program item doesn't use Konsti signup a
       }),
       expect.objectContaining({
         programItemId: testProgramItem2.programItemId,
+        action: EventLogAction.PROGRAM_ITEM_CANCELED,
+      }),
+    ]),
+  );
+});
+
+test("should not add duplicate notification when program item is canceled and user has direct signup, lottery signup and favorite", async () => {
+  await saveProgramItems([testProgramItem]);
+  await saveUser(mockUser);
+  await saveDirectSignup(mockPostDirectSignupRequest);
+  await saveLotterySignups({
+    username: mockUser.username,
+    lotterySignups: [mockLotterySignups[0]],
+  });
+  await saveFavorite({
+    username: mockUser.username,
+    favoriteProgramItemIds: [testProgramItem.programItemId],
+  });
+
+  await saveProgramItems([{ ...testProgramItem, state: State.CANCELLED }]);
+
+  const user = unsafelyUnwrap(await findUser(mockUser.username));
+  expect(user?.eventLogItems).toHaveLength(1);
+  expect(user?.eventLogItems).toEqual(
+    expect.arrayContaining([
+      expect.objectContaining({
+        programItemId: testProgramItem.programItemId,
         action: EventLogAction.PROGRAM_ITEM_CANCELED,
       }),
     ]),

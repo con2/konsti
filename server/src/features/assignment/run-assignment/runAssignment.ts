@@ -65,7 +65,11 @@ export const runAssignment = async ({
   const programItems = unwrapResult(programItemsResult);
 
   const removeCanceledDeletedProgramItemsResult =
-    await removeCanceledDeletedProgramItemsFromUsers(programItems);
+    await removeCanceledDeletedProgramItemsFromUsers({
+      programItems,
+      notifyAffectedDirectSignups: [],
+      notify: false,
+    });
   if (isErrorResult(removeCanceledDeletedProgramItemsResult)) {
     return removeCanceledDeletedProgramItemsResult;
   }

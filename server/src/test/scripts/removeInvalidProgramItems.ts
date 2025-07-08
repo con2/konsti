@@ -20,7 +20,11 @@ const removeInvalidProgramItems = async (): Promise<void> => {
       throw new Error("Finding program items failed");
     }
     const programItems = unwrapResult(programItemsResult);
-    await removeCanceledDeletedProgramItemsFromUsers(programItems);
+    await removeCanceledDeletedProgramItemsFromUsers({
+      programItems,
+      notifyAffectedDirectSignups: [],
+      notify: false,
+    });
   } catch (error) {
     logger.error("Error removing invalid program items: %s", error);
     // eslint-disable-next-line no-restricted-syntax -- Test script

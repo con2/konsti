@@ -1,5 +1,6 @@
 import dayjs from "dayjs";
 import { partition, uniqueBy } from "remeda";
+import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import { addEventLogItems } from "server/features/user/event-log/eventLogRepository";
 import {
   findUsers,
@@ -21,9 +22,25 @@ import {
   unwrapResult,
 } from "shared/utils/result";
 
-export const removeCanceledDeletedProgramItemsFromUsers = async (
-  programItems: readonly ProgramItem[],
-): Promise<Result<void, MongoDbError>> => {
+interface UserToNofify {
+  username: string;
+  invalidLotterySignups: LotterySignup[];
+  invalidFavoriteProgramItemIds: FavoriteProgramItemId[];
+}
+
+interface RemoveCanceledDeletedProgramItemsFromUsersParams {
+  programItems: readonly ProgramItem[];
+  notifyAffectedDirectSignups: DirectSignupsForProgramItem[];
+  notify: boolean;
+}
+
+export const removeCanceledDeletedProgramItemsFromUsers = async ({
+  programItems,
+  notifyAffectedDirectSignups,
+  notify,
+}: RemoveCanceledDeletedProgramItemsFromUsersParams): Promise<
+  Result<void, MongoDbError>
+> => {
   logger.info("Remove invalid program items from users");
 
   const usersResult = await findUsers();
@@ -31,11 +48,7 @@ export const removeCanceledDeletedProgramItemsFromUsers = async (
     return usersResult;
   }
 
-  const usersToNofify: {
-    username: string;
-    invalidLotterySignups: LotterySignup[];
-    invalidFavoriteProgramItemIds: FavoriteProgramItemId[];
-  }[] = [];
+  const usersToNofify: UserToNofify[] = [];
 
   const users = unwrapResult(usersResult);
 
@@ -114,20 +127,62 @@ export const removeCanceledDeletedProgramItemsFromUsers = async (
   }
 
   // Nofify users with canceled or deleted program items
+  if (notify) {
+    const notifyUsersResult = await notifyUsersWithLotterySignupOrFavorite(
+      usersToNofify,
+      notifyAffectedDirectSignups,
+    );
+    if (isErrorResult(notifyUsersResult)) {
+      return notifyUsersResult;
+    }
+  }
+
+  return makeSuccessResult();
+};
+
+const notifyUsersWithLotterySignupOrFavorite = async (
+  usersToNofify: UserToNofify[],
+  affectedDirectSignups: DirectSignupsForProgramItem[],
+): Promise<Result<void, MongoDbError>> => {
   const eventUpdates = usersToNofify.flatMap((user) => {
-    const lotteryUpdates = user.invalidLotterySignups.map((lotterySignup) => ({
-      username: user.username,
-      programItemId: lotterySignup.programItemId,
-      programItemStartTime: lotterySignup.signedToStartTime,
-      createdAt: dayjs().toISOString(),
-    }));
-    const favoriteUpdates = user.invalidFavoriteProgramItemIds.map(
-      (favorite) => ({
-        username: user.username,
-        programItemId: favorite,
-        programItemStartTime: dayjs().toISOString(),
-        createdAt: dayjs().toISOString(),
+    // If user has already been notified of program item cancel/delete because of a direct signup, don't resend
+    const userDirectSignups = new Set(
+      affectedDirectSignups.flatMap((directSignup) => {
+        const found = directSignup.userSignups.find(
+          (userSignup) => userSignup.username === user.username,
+        );
+        if (found) {
+          return directSignup.programItemId;
+        }
+        return [];
       }),
+    );
+
+    const lotteryUpdates = user.invalidLotterySignups.flatMap(
+      (lotterySignup) => {
+        if (userDirectSignups.has(lotterySignup.programItemId)) {
+          return [];
+        }
+        return {
+          username: user.username,
+          programItemId: lotterySignup.programItemId,
+          programItemStartTime: lotterySignup.signedToStartTime,
+          createdAt: dayjs().toISOString(),
+        };
+      },
+    );
+    const favoriteUpdates = user.invalidFavoriteProgramItemIds.flatMap(
+      (favorite) => {
+        if (userDirectSignups.has(favorite)) {
+          return [];
+        }
+        return {
+          username: user.username,
+          programItemId: favorite,
+          programItemStartTime: dayjs().toISOString(),
+          createdAt: dayjs().toISOString(),
+        };
+      },
     );
     return uniqueBy(
       [...lotteryUpdates, ...favoriteUpdates],
