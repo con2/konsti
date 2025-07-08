@@ -49,6 +49,7 @@ import {
   mockKompassiProgramItem2,
 } from "server/kompassi/test/mockKompassiProgramItem";
 import { GetProgramItemsResponse } from "shared/types/api/programItems";
+import { EventLogAction } from "shared/types/models/eventLog";
 
 let server: Server;
 
@@ -181,7 +182,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
 
     const programItems = unsafelyUnwrap(await findProgramItems());
 
-    expect(programItems.length).toEqual(1);
+    expect(programItems).toHaveLength(1);
     expect(programItems[0].title).toEqual(testProgramItem.title);
   });
 
@@ -214,15 +215,15 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
 
     const programItems = unsafelyUnwrap(await findProgramItems());
 
-    expect(programItems.length).toEqual(1);
+    expect(programItems).toHaveLength(1);
     expect(programItems[0].title).toEqual(testProgramItem.title);
 
     const updatedUser = unsafelyUnwrap(await findUser(mockUser.username));
-    expect(updatedUser?.lotterySignups.length).toEqual(1);
+    expect(updatedUser?.lotterySignups).toHaveLength(1);
     expect(updatedUser?.lotterySignups[0].programItemId).toEqual(
       testProgramItem.programItemId,
     );
-    expect(updatedUser?.favoriteProgramItemIds.length).toEqual(1);
+    expect(updatedUser?.favoriteProgramItemIds).toHaveLength(1);
     expect(updatedUser?.favoriteProgramItemIds[0]).toEqual(
       testProgramItem.programItemId,
     );
@@ -230,7 +231,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     const updatedSignups = unsafelyUnwrap(
       await findUserDirectSignups(mockUser.username),
     );
-    expect(updatedSignups.length).toEqual(1);
+    expect(updatedSignups).toHaveLength(1);
     expect(updatedSignups[0].programItemId).toEqual(
       testProgramItem.programItemId,
     );
@@ -250,7 +251,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
 
     const programItems = unsafelyUnwrap(await findProgramItems());
 
-    expect(programItems.length).toEqual(2);
+    expect(programItems).toHaveLength(2);
     const sortedProgramItems = sortBy(
       programItems,
       (programItem) => programItem.title,
@@ -273,7 +274,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
 
     const programItems = unsafelyUnwrap(await findProgramItems());
 
-    expect(programItems.length).toEqual(2);
+    expect(programItems).toHaveLength(2);
     const sortedProgramItems = sortBy(
       programItems,
       (programItem) => programItem.title,
@@ -312,7 +313,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
 
     const programItems = unsafelyUnwrap(await findProgramItems());
 
-    expect(programItems.length).toEqual(1);
+    expect(programItems).toHaveLength(1);
     expect(dayjs(programItems[0].startTime).toISOString()).toEqual(
       newStartTime,
     );
@@ -361,16 +362,20 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     expect(response.status).toEqual(200);
 
     const updatedUser = unsafelyUnwrap(await findUser(mockUser.username));
-    expect(updatedUser?.lotterySignups.length).toEqual(1);
+    expect(updatedUser?.lotterySignups).toHaveLength(1);
     expect(updatedUser?.lotterySignups[0].programItemId).toEqual(
       testProgramItem2.programItemId,
     );
-    expect(updatedUser?.favoriteProgramItemIds.length).toEqual(2);
+    expect(updatedUser?.favoriteProgramItemIds).toHaveLength(2);
+    expect(updatedUser?.eventLogItems).toHaveLength(1);
+    expect(updatedUser?.eventLogItems[0].action).toEqual(
+      EventLogAction.PROGRAM_ITEM_MOVED,
+    );
 
     const signups = unsafelyUnwrap(
       await findUserDirectSignups(mockUser.username),
     );
-    expect(signups.length).toEqual(2);
+    expect(signups).toHaveLength(2);
     expect(signups[0].userSignups[0].username).toEqual(mockUser.username);
     expect(signups[1].userSignups[0].username).toEqual(mockUser.username);
   });
@@ -411,7 +416,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
 
     const programItems = unsafelyUnwrap(await findProgramItems());
 
-    expect(programItems.length).toEqual(1);
+    expect(programItems).toHaveLength(1);
     expect(programItems[0].tags).toEqual([Tag.BEGINNER_FRIENDLY]);
     expect(programItems[0].styles).toEqual([Gamestyle.CHARACTER_DRIVEN]);
     // @ts-expect-error: Testing value
@@ -457,6 +462,6 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
 
     const programItems = unsafelyUnwrap(await findProgramItems());
 
-    expect(programItems.length).toEqual(0);
+    expect(programItems).toHaveLength(0);
   });
 });

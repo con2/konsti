@@ -290,6 +290,7 @@ export const translationFI = {
     noAssignment:
       "Paikat klo {{START_TIME}} alkaviin ohjelmanumeroihin arvottiin. Ikävä kyllä et mahtunut mukaan mihinkään valitsemaasi ohjelmanumeroon.",
     programItemCanceled: "{{PROGRAM_TYPE}} peruttu: {{ PROGRAM_ITEM_NAME }}.",
+    programItemMoved: "aloitusaika on muuttunut: {{NEW_STARTING_TIME}}.",
   },
   notificationBar: {
     showAll: "Näytä kaikki ilmoitukset",
