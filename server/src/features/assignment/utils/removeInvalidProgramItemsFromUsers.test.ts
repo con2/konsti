@@ -60,7 +60,11 @@ test("should remove lottery signups and favorites for invalid program items from
     testProgramItem2.programItemId,
   );
 
-  await removeCanceledDeletedProgramItemsFromUsers(updatedProgramItems);
+  await removeCanceledDeletedProgramItemsFromUsers({
+    programItems: updatedProgramItems,
+    notifyAffectedDirectSignups: [],
+    notify: false,
+  });
 
   const updatedUser = unsafelyUnwrap(await findUser(mockUser.username));
 

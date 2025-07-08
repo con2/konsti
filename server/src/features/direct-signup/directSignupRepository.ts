@@ -22,8 +22,6 @@ import {
 } from "shared/utils/result";
 import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
 import { ProgramItem } from "shared/types/models/programItem";
-import { addEventLogItems } from "server/features/user/event-log/eventLogRepository";
-import { EventLogAction } from "shared/types/models/eventLog";
 
 export const removeDirectSignups = async (): Promise<
   Result<void, MongoDbError>
@@ -439,29 +437,6 @@ export const delDirectSignup = async ({
 export const delDirectSignupDocumentsByProgramItemIds = async (
   programItemIds: string[],
 ): Promise<Result<void, MongoDbError>> => {
-  const directSignupsResult =
-    await findDirectSignupsByProgramItemIds(programItemIds);
-  if (isErrorResult(directSignupsResult)) {
-    return directSignupsResult;
-  }
-  const directSignups = unwrapResult(directSignupsResult);
-  const userUpdates = directSignups.flatMap((directSignup) =>
-    directSignup.userSignups.map((userSignup) => ({
-      username: userSignup.username,
-      programItemId: directSignup.programItemId,
-      programItemStartTime: userSignup.signedToStartTime,
-      createdAt: dayjs().toISOString(),
-    })),
-  );
-
-  const addEventLogItemsResult = await addEventLogItems({
-    action: EventLogAction.PROGRAM_ITEM_CANCELED,
-    updates: userUpdates,
-  });
-  if (isErrorResult(addEventLogItemsResult)) {
-    return addEventLogItemsResult;
-  }
-
   try {
     await SignupModel.deleteMany({
       programItemId: { $in: programItemIds },
