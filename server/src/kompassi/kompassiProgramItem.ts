@@ -1,9 +1,6 @@
-/* eslint-disable unicorn/catch-error-name */
-
 import { z } from "zod";
-import { partition } from "remeda";
-import { logger } from "server/utils/logger";
 import { config } from "shared/config";
+import { safeEnumArray } from "server/utils/zodUtils";
 
 export enum KompassiKonstiProgramType {
   TABLETOP_RPG = "tabletoprpg",
@@ -102,110 +99,16 @@ export const KompassiProgramItemSchema = z.object({
   cachedHosts: z.string().catch(""),
   isCancelled: z.boolean().catch(true),
   cachedDimensions: z.object({
-    konsti: z.array(z.nativeEnum(KompassiKonstiProgramType)).catch((ctx) => {
-      if (!Array.isArray(ctx.input)) {
-        return [];
-      }
-      const [valid, invalid] = partition(ctx.input, (konstiProgramType) =>
-        Object.values(KompassiKonstiProgramType).includes(konstiProgramType),
-      );
-      logger.error(
-        "%s",
-        new Error(`Invalid Konsti program type: ${JSON.stringify(invalid)}`),
-      );
-      return valid;
-    }),
-    grouping: z.array(z.nativeEnum(KompassiGrouping)).catch((ctx) => {
-      if (!Array.isArray(ctx.input)) {
-        return [];
-      }
-      const [valid, invalid] = partition(ctx.input, (grouping) =>
-        Object.values(KompassiGrouping).includes(grouping),
-      );
-      logger.error(
-        "%s",
-        new Error(`Invalid grouping: ${JSON.stringify(invalid)}`),
-      );
-      return valid;
-    }),
-    language: z.array(z.nativeEnum(KompassiLanguage)).catch((ctx) => {
-      if (!Array.isArray(ctx.input)) {
-        return [KompassiLanguage.FINNISH];
-      }
-      const [valid, invalid] = partition(ctx.input, (language) =>
-        Object.values(KompassiLanguage).includes(language),
-      );
-      logger.error(
-        "%s",
-        new Error(`Invalid language: ${JSON.stringify(invalid)}`),
-      );
-      return valid;
-    }),
-    ["age-group"]: z.array(z.nativeEnum(KompassiAgeGroup)).catch((ctx) => {
-      if (!Array.isArray(ctx.input)) {
-        return [];
-      }
-      const [valid, invalid] = partition(ctx.input, (ageGroup) =>
-        Object.values(KompassiAgeGroup).includes(ageGroup),
-      );
-      logger.error(
-        "%s",
-        new Error(`Invalid age group: ${JSON.stringify(invalid)}`),
-      );
-      return valid;
-    }),
-    ["game-style"]: z.array(z.nativeEnum(KompassiGamestyle)).catch((ctx) => {
-      if (!Array.isArray(ctx.input)) {
-        return [];
-      }
-      const [valid, invalid] = partition(ctx.input, (gamestyle) =>
-        Object.values(KompassiGamestyle).includes(gamestyle),
-      );
-      logger.error(
-        "%s",
-        new Error(`Invalid gamestyle: ${JSON.stringify(invalid)}`),
-      );
-      return valid;
-    }),
-    inclusivity: z.array(z.nativeEnum(KompassiInclusivity)).catch((ctx) => {
-      if (!Array.isArray(ctx.input)) {
-        return [];
-      }
-      const [valid, invalid] = partition(ctx.input, (inclusivity) =>
-        Object.values(KompassiInclusivity).includes(inclusivity),
-      );
-      logger.error(
-        "%s",
-        new Error(`Invalid inclusivity: ${JSON.stringify(invalid)}`),
-      );
-      return valid;
-    }),
-    registration: z.array(z.nativeEnum(KompassiRegistration)).catch((ctx) => {
-      if (!Array.isArray(ctx.input)) {
-        return [];
-      }
-      const [valid, invalid] = partition(ctx.input, (registration) =>
-        Object.values(KompassiRegistration).includes(registration),
-      );
-      logger.error(
-        "%s",
-        new Error(`Invalid registration: ${JSON.stringify(invalid)}`),
-      );
-      return valid;
-    }),
-    revolvingdoor: z.array(z.nativeEnum(KompassiBoolean)).catch((ctx) => {
-      if (!Array.isArray(ctx.input)) {
-        return [];
-      }
-      const [valid, invalid] = partition(ctx.input, (revolvingDoor) =>
-        Object.values(KompassiBoolean).includes(revolvingDoor),
-      );
-      logger.error(
-        "%s",
-        new Error(`Invalid revolving door: ${JSON.stringify(invalid)}`),
-      );
-      return valid;
-    }),
+    konsti: safeEnumArray(KompassiKonstiProgramType, "Konsti program type"),
+    grouping: safeEnumArray(KompassiGrouping, "grouping"),
+    language: safeEnumArray(KompassiLanguage, "language", [
+      KompassiLanguage.FINNISH,
+    ]),
+    ["age-group"]: safeEnumArray(KompassiAgeGroup, "age group"),
+    ["game-style"]: safeEnumArray(KompassiGamestyle, "gamestyle"),
+    inclusivity: safeEnumArray(KompassiInclusivity, "inclusivity"),
+    registration: safeEnumArray(KompassiRegistration, "registration"),
+    revolvingdoor: safeEnumArray(KompassiBoolean, "revolving door"),
   }),
   cachedAnnotations: z.object({
     "konsti:rpgSystem": z.string().catch(""),
@@ -234,5 +137,3 @@ export const KompassiProgramItemSchema = z.object({
 });
 
 export type KompassiProgramItem = z.infer<typeof KompassiProgramItemSchema>;
-
-/* eslint-enable unicorn/catch-error-name */
