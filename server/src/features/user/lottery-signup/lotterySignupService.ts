@@ -19,7 +19,7 @@ import {
 } from "shared/utils/signupTimes";
 import { logger } from "server/utils/logger";
 import { findUser } from "server/features/user/userRepository";
-import { State } from "shared/types/models/programItem";
+import { SignupType, State } from "shared/types/models/programItem";
 
 const validPriorities = new Set([1, 2, 3]);
 
@@ -53,6 +53,14 @@ export const storeLotterySignup = async ({
     };
   }
   const programItem = unwrapResult(programItemResult);
+
+  if (programItem.signupType !== SignupType.KONSTI) {
+    return {
+      message: "No Konsti signup for this program item",
+      status: "error",
+      errorId: "noKonstiSignup",
+    };
+  }
 
   if (programItem.state === State.CANCELLED) {
     return {

@@ -26,7 +26,8 @@ export interface PostLotterySignupError extends ApiError {
     | "invalidPriority"
     | "programItemNotFound"
     | "signupNotOpenYet"
-    | "cancelled";
+    | "cancelled"
+    | "noKonstiSignup";
 }
 
 // DELETE lottery signup

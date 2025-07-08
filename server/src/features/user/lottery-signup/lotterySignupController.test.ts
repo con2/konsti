@@ -21,7 +21,7 @@ import {
 import { config } from "shared/config";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
-import { State } from "shared/types/models/programItem";
+import { SignupType, State } from "shared/types/models/programItem";
 
 let server: Server;
 
@@ -157,6 +157,30 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     const body = response.body as PostLotterySignupError;
     expect(body.status).toEqual("error");
     expect(body.message).toEqual("Program item is cancelled");
+  });
+
+  test("should return error when program item doesn't use Konsti signup", async () => {
+    await saveProgramItems([
+      { ...testProgramItem, signupType: SignupType.OTHER },
+    ]);
+    await saveUser(mockUser);
+
+    const signup: PostLotterySignupRequest = {
+      programItemId: testProgramItem.programItemId,
+      priority: 1,
+    };
+    const response = await request(server)
+      .post(ApiEndpoint.LOTTERY_SIGNUP)
+      .send(signup)
+      .set(
+        "Authorization",
+        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
+      );
+    expect(response.status).toEqual(200);
+
+    const body = response.body as PostLotterySignupError;
+    expect(body.status).toEqual("error");
+    expect(body.message).toEqual("No Konsti signup for this program item");
   });
 
   test("should return error when user is not found", async () => {

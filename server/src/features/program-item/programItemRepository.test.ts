@@ -26,7 +26,7 @@ import {
 } from "server/test/mock-data/mockUser";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { saveFavorite } from "server/features/user/favorite-program-item/favoriteProgramItemRepository";
-import { State } from "shared/types/models/programItem";
+import { SignupType, State } from "shared/types/models/programItem";
 import { EventLogAction } from "shared/types/models/eventLog";
 
 beforeEach(async () => {
@@ -116,6 +116,81 @@ test("should remove direct signups when program item is deleted or cancelled", a
   await saveProgramItems([
     { ...testProgramItem, state: State.CANCELLED },
     { ...testProgramItem2, state: State.CANCELLED },
+  ]);
+
+  // Should have removed direct signups
+  const directSignups = unsafelyUnwrap(
+    await findUserDirectSignups(mockUser.username),
+  );
+  expect(directSignups).toHaveLength(0);
+
+  // Should have added new event log items
+  const user = unsafelyUnwrap(await findUser(mockUser.username));
+  expect(user?.eventLogItems).toHaveLength(2);
+  expect(user?.eventLogItems).toEqual(
+    expect.arrayContaining([
+      expect.objectContaining({
+        programItemId: testProgramItem.programItemId,
+        action: EventLogAction.PROGRAM_ITEM_CANCELED,
+      }),
+      expect.objectContaining({
+        programItemId: testProgramItem2.programItemId,
+        action: EventLogAction.PROGRAM_ITEM_CANCELED,
+      }),
+    ]),
+  );
+});
+
+test("should remove lottery signups and favorites when program item doesn't use Konsti signup anymore", async () => {
+  await saveProgramItems([testProgramItem, testProgramItem2]);
+  await saveUser(mockUser);
+  await saveLotterySignups({
+    username: mockUser.username,
+    lotterySignups: mockLotterySignups,
+  });
+  await saveFavorite({
+    username: mockUser.username,
+    favoriteProgramItemIds: [
+      testProgramItem.programItemId,
+      testProgramItem2.programItemId,
+    ],
+  });
+
+  await saveProgramItems([
+    { ...testProgramItem, signupType: SignupType.OTHER },
+    { ...testProgramItem2, signupType: SignupType.OTHER },
+  ]);
+
+  // Should have removed favorites and lottery signups
+  const user = unsafelyUnwrap(await findUser(mockUser.username));
+  expect(user?.favoriteProgramItemIds).toHaveLength(0);
+  expect(user?.lotterySignups).toHaveLength(0);
+
+  // Should have added new event log items
+  expect(user?.eventLogItems).toHaveLength(2);
+  expect(user?.eventLogItems).toEqual(
+    expect.arrayContaining([
+      expect.objectContaining({
+        programItemId: testProgramItem.programItemId,
+        action: EventLogAction.PROGRAM_ITEM_CANCELED,
+      }),
+      expect.objectContaining({
+        programItemId: testProgramItem2.programItemId,
+        action: EventLogAction.PROGRAM_ITEM_CANCELED,
+      }),
+    ]),
+  );
+});
+
+test("should remove direct signups when program item doesn't use Konsti signup anymore", async () => {
+  await saveProgramItems([testProgramItem, testProgramItem2]);
+  await saveUser(mockUser);
+  await saveDirectSignup(mockPostDirectSignupRequest);
+  await saveDirectSignup(mockPostDirectSignupRequest2);
+
+  await saveProgramItems([
+    { ...testProgramItem, signupType: SignupType.OTHER },
+    { ...testProgramItem2, signupType: SignupType.OTHER },
   ]);
 
   // Should have removed direct signups

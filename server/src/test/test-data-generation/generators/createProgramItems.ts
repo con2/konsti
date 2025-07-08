@@ -56,6 +56,13 @@ const getMaxAttendees = (programType: KompassiKonstiProgramType): number => {
   return faker.number.int({ min: 3, max: 4 });
 };
 
+const getRegistration = (): KompassiRegistration[] => {
+  if (Math.random() < 0.1) {
+    sample(Object.values(KompassiRegistration), 1);
+  }
+  return [KompassiRegistration.KONSTI];
+};
+
 export const createProgramItems = async (
   programItemCount: number,
 ): Promise<Result<void, MongoDbError>> => {
@@ -89,7 +96,7 @@ export const createProgramItems = async (
             ["age-group"]: sample(Object.values(KompassiAgeGroup), 1),
             ["game-style"]: sample(Object.values(KompassiGamestyle), 2),
             inclusivity: sample(Object.values(KompassiInclusivity), 3),
-            registration: sample(Object.values(KompassiRegistration), 1),
+            registration: getRegistration(),
             revolvingdoor: sample(Object.values(KompassiBoolean), 1),
           },
           scheduleItems: [
@@ -124,7 +131,9 @@ export const createProgramItems = async (
           },
         };
 
-        logger.info(`Stored program item ${kompassiProgramItemData.title}`);
+        logger.info(
+          `Stored ${kompassiProgramType} program item ${kompassiProgramItemData.title}`,
+        );
         kompassiProgramItems.push(kompassiProgramItemData);
       }
     }

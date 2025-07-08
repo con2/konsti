@@ -33,7 +33,7 @@ import {
 } from "shared/types/api/myProgramItems";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 import { config } from "shared/config";
-import { State } from "shared/types/models/programItem";
+import { SignupType, State } from "shared/types/models/programItem";
 
 let server: Server;
 
@@ -141,6 +141,31 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const body = response.body as PostDirectSignupError;
     expect(body.status).toEqual("error");
     expect(body.message).toEqual("Program item is cancelled");
+  });
+
+  test("should return error if program doesn't use Konsti signup", async () => {
+    await saveProgramItems([
+      { ...testProgramItem, signupType: SignupType.OTHER },
+    ]);
+    await saveUser(mockUser);
+
+    const signup: PostDirectSignupRequest = {
+      directSignupProgramItemId: testProgramItem.programItemId,
+      message: "",
+      priority: DIRECT_SIGNUP_PRIORITY,
+    };
+    const response = await request(server)
+      .post(ApiEndpoint.DIRECT_SIGNUP)
+      .send(signup)
+      .set(
+        "Authorization",
+        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
+      );
+    expect(response.status).toEqual(200);
+
+    const body = response.body as PostDirectSignupError;
+    expect(body.status).toEqual("error");
+    expect(body.message).toEqual("No Konsti signup for this program item");
   });
 
   test("should return error when signup is not yet open", async () => {
