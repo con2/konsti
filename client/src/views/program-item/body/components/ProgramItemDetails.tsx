@@ -5,6 +5,7 @@ import { capitalize } from "remeda";
 import { getTime, getWeekdayAndTime } from "client/utils/timeFormatter";
 import { ProgramItem } from "shared/types/models/programItem";
 import { InfoText, InfoTextVariant } from "client/components/InfoText";
+import { TextWithLinks } from "client/markdown/components/TextWithLinks";
 
 interface Props {
   programItem: ProgramItem;
@@ -22,11 +23,6 @@ export const ProgramItemDetails = ({ programItem }: Props): ReactElement => {
     // Note that the dash should be an en dash
     return `${capitalize(getWeekdayAndTime(programItem.startTime))}–${getTime(programItem.endTime)} (${hours}\u00A0${t("hours")}${minutesDuration})`;
   };
-
-  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-  if (!programItem) {
-    return <div />;
-  }
 
   return (
     <DetailsContainer>
@@ -74,7 +70,9 @@ export const ProgramItemDetails = ({ programItem }: Props): ReactElement => {
         </TwoColumnRow>
       )}
 
-      <p>{programItem.description}</p>
+      <p>
+        <TextWithLinks>{programItem.description}</TextWithLinks>
+      </p>
 
       {programItem.contentWarnings && programItem.contentWarnings !== "-" && (
         <ResponsiveColumnRow>
