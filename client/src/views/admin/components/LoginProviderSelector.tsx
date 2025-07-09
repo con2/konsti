@@ -11,10 +11,10 @@ export const LoginProviderSelector = (): ReactElement => {
   const dispatch = useAppDispatch();
   const [loading, setLoading] = useState<boolean>(false);
 
-  const strategies = [
-    { value: LoginProvider.LOCAL, title: t("loginProvider.local") },
-    { value: LoginProvider.KOMPASSI, title: t("loginProvider.kompassi") },
-  ];
+  const strategies = Object.values(LoginProvider).map((value) => ({
+    value,
+    title: t(`loginProvider.${value}`),
+  }));
 
   return (
     <div>

@@ -529,6 +529,7 @@ export const translationEN = {
   loginProvider: {
     local: "Local",
     kompassi: "Kompassi",
+    ["local+kompassi"]: "Local + Kompassi",
   },
   backendError: {
     apiError: "Error while calling {{method}} {{url}}, reason: {{errorReason}}",

@@ -532,6 +532,7 @@ export const translationFI = {
   loginProvider: {
     local: "Lokaali",
     kompassi: "Kompassi",
+    ["local+kompassi"]: "Lokaali + Kompassi",
   },
   backendError: {
     apiError: "Virhe kutsuessa {{method}} {{url}}: {{errorReason}}",
