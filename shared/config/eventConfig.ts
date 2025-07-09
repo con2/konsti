@@ -28,6 +28,7 @@ export const eventConfig: EventConfig = {
   signupOpen: true,
   resultsVisible: true,
   enableRemoveOverlapSignups: true,
+  programGuideUrl: "https://ropecon.fi/opas",
 
   activeProgramTypes: [
     ProgramType.TABLETOP_RPG,
