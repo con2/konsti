@@ -1,8 +1,10 @@
 import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router";
 import { capitalize } from "remeda";
 import { EventLogItem } from "shared/types/models/eventLog";
 import { useAppSelector } from "client/utils/hooks";
+import { AppRoute } from "client/app/AppRoutes";
 
 interface Props {
   eventLogItem: EventLogItem;
@@ -27,8 +29,14 @@ export const EventLogProgramItemCanceled = ({
           PROGRAM_TYPE: capitalize(
             t(`programTypeSingular.${programItem?.programType ?? "other"}`),
           ),
-          PROGRAM_ITEM_NAME: programItem?.title ?? eventLogItem.programItemId,
-        })}
+        })}{" "}
+        {programItem ? (
+          <Link to={`${AppRoute.PROGRAM_ITEM}/${eventLogItem.programItemId}`}>
+            {programItem.title}
+          </Link>
+        ) : (
+          eventLogItem.programItemId
+        )}
       </span>
     </div>
   );
