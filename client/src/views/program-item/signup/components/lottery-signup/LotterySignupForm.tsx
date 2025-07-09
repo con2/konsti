@@ -19,6 +19,8 @@ import {
 import { LotterySignup } from "shared/types/models/user";
 import { InfoText, InfoTextVariant } from "client/components/InfoText";
 import { startLoading, stopLoading } from "client/state/loading/loadingSlice";
+import { getEntryCondition } from "client/views/program-item/programItemUtils";
+import { Checkbox } from "client/components/Checkbox";
 
 interface Props {
   programItem: ProgramItem;
@@ -60,6 +62,11 @@ export const LotterySignupForm = ({
 
   const [errorMessage, setErrorMessage] =
     useState<PostLotterySignupErrorMessage | null>(null);
+
+  const [agreeEntryCondition, setAgreeEntryCondition] =
+    useState<boolean>(false);
+
+  const entryCondition = getEntryCondition(programItem, t);
 
   const onChange = (event: ChangeEvent<HTMLSelectElement>): void => {
     setPriority(Number.parseInt(event.target.value, 10));
@@ -113,6 +120,16 @@ export const LotterySignupForm = ({
         options={options}
         selectedValue={priority.toString()}
       />
+      {entryCondition && (
+        <Checkbox
+          checked={agreeEntryCondition}
+          onChange={() => {
+            setAgreeEntryCondition(!agreeEntryCondition);
+          }}
+          label={entryCondition.label}
+          id={entryCondition.id}
+        />
+      )}
       {directSignupForSlot && (
         <InfoText variant={InfoTextVariant.WARNING}>
           {t("signup.alreadySignedToProgramItem", {
@@ -138,7 +155,7 @@ export const LotterySignupForm = ({
         <StyledButton
           onClick={handleSignup}
           buttonStyle={ButtonStyle.PRIMARY}
-          disabled={loading}
+          disabled={(entryCondition && !agreeEntryCondition) ?? loading}
         >
           {t("signup.confirm")}
         </StyledButton>
