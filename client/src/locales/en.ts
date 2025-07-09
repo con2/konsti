@@ -288,7 +288,7 @@ export const translationEN = {
       "You were assigned to program item {{PROGRAM_ITEM_ID}} but it was canceled.",
     noAssignment:
       "Spots for program items at {{START_TIME}} were randomized. Unfortunately, we couldn't fit you into any of your chosen program items.",
-    programItemCanceled: "{{PROGRAM_TYPE}} canceled: {{PROGRAM_ITEM_NAME}}.",
+    programItemCanceled: "{{PROGRAM_TYPE}} canceled:",
     programItemMoved: "starting time changed: {{NEW_STARTING_TIME}}.",
   },
   notificationBar: {

@@ -70,12 +70,12 @@ test("Show event log notification when program item with direct signup is cancel
   await page.reload();
 
   await expect(page.getByTestId("notification-bar")).toContainText(
-    "Roleplaying game canceled: Test program item.",
+    "Roleplaying game canceled: Test program item",
   );
 
   await page.getByRole("link", { name: "Show all notifications" }).click();
   await expect(page.getByTestId("event-log-item")).toContainText(
-    "Roleplaying game canceled: Test program item.",
+    "Roleplaying game canceled: Test program item",
   );
 });
 
@@ -138,11 +138,11 @@ test("Show event log notification when program item with direct signup doesn't u
   await page.reload();
 
   await expect(page.getByTestId("notification-bar")).toContainText(
-    "Roleplaying game canceled: Test program item.",
+    "Roleplaying game canceled: Test program item",
   );
 
   await page.getByRole("link", { name: "Show all notifications" }).click();
   await expect(page.getByTestId("event-log-item")).toContainText(
-    "Roleplaying game canceled: Test program item.",
+    "Roleplaying game canceled: Test program item",
   );
 });

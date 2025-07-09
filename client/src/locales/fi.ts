@@ -289,7 +289,7 @@ export const translationFI = {
       "Olet päässyt arvonnassa ohjelmanumeroon {{PROGRAM_ITEM_ID}} mutta se on peruuntunut.",
     noAssignment:
       "Paikat klo {{START_TIME}} alkaviin ohjelmanumeroihin arvottiin. Ikävä kyllä et mahtunut mukaan mihinkään valitsemaasi ohjelmanumeroon.",
-    programItemCanceled: "{{PROGRAM_TYPE}} peruttu: {{ PROGRAM_ITEM_NAME }}.",
+    programItemCanceled: "{{PROGRAM_TYPE}} peruttu:",
     programItemMoved: "aloitusaika on muuttunut: {{NEW_STARTING_TIME}}.",
   },
   notificationBar: {
