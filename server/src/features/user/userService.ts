@@ -294,7 +294,9 @@ export const fetchUserBySerialOrUsername = async (
   searchTerm: string,
 ): Promise<GetUserBySerialResponse | GetUserBySerialError> => {
   // Try to find user first with serial
-  const userBySerialResult = await findUserBySerial(searchTerm);
+  const userBySerialResult = await findUserBySerial(
+    searchTerm.replaceAll("-", ""),
+  );
   if (isErrorResult(userBySerialResult)) {
     return {
       message: "Getting user data failed",

@@ -50,7 +50,11 @@ export const saveSerials = async (
         serial,
       }) as Serial,
     );
-    logger.info(`MongoDB: Created new serial: ${serial}`);
+
+    const addDashesRegex = /(.{3})(?=.)/g;
+    logger.info(
+      `MongoDB: Created new serial: ${serial.replaceAll(addDashesRegex, "$1-")}`,
+    );
   }
 
   try {
