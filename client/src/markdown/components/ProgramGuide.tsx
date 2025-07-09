@@ -2,13 +2,8 @@ import { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router";
 import { config } from "shared/config";
-import { EventName } from "shared/config/eventConfigTypes";
 
-interface Props {
-  children: ReactNode;
-}
-
-export const ProgramGuide = ({ children }: Props): ReactNode => {
+export const ProgramGuide = (): ReactNode => {
   const { i18n } = useTranslation();
   const { programGuideUrl } = config.event();
 

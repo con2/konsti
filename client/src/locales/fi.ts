@@ -201,6 +201,8 @@ export const translationFI = {
     "Piditkö {{PROGRAM_TYPE}}? Lähetä palautetta järjestäjälle! Palautteet toimitetaan tapahtuman jälkeen.",
   noProgramItemsAvailable:
     "Ei näytettäviä {{PROGRAM_TYPE}}, tarkistathan hakuehdot.",
+  checkProgramGuide: "Jos ohjelmanumeroa ei löydy Konstista, tarkista",
+  programGuide: "ohjelmaopas",
   noProgramItemsInDatabase: "Ei ohjelmanumeroita tietokannassa",
   upcoming: "Tulevat",
   all: "Kaikki",

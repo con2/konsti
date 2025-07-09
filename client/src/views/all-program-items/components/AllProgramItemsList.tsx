@@ -1,4 +1,5 @@
 import { ReactElement } from "react";
+import { Link } from "react-router";
 import { useTranslation } from "react-i18next";
 import { sortBy, groupBy } from "remeda";
 import styled from "styled-components";
@@ -15,6 +16,7 @@ import { RaisedCard } from "client/components/RaisedCard";
 import { getIsInGroup } from "client/views/group/groupUtils";
 import { SignupQuestion } from "shared/types/models/settings";
 import { selectGroupMembers } from "client/views/group/groupSlice";
+import { config } from "shared/config";
 
 interface Props {
   programItems: readonly ProgramItem[];
@@ -70,6 +72,8 @@ export const AllProgramItemsList = ({ programItems }: Props): ReactElement => {
     (programItem) => programItem.startTime,
   );
 
+  const { programGuideUrl } = config.event();
+
   const programItemsList = Object.entries(programItemsByStartTime).map(
     ([startTime, programItemsForStartTime]) => {
       return (
@@ -112,13 +116,26 @@ export const AllProgramItemsList = ({ programItems }: Props): ReactElement => {
     <div>
       {programItems.length === 0 && (
         <RaisedCard>
-          <NoProgramItemsText>
-            {t("noProgramItemsAvailable", {
-              PROGRAM_TYPE: t(
-                `programTypePartitivePlural.${activeProgramType}`,
-              ),
-            })}
-          </NoProgramItemsText>
+          <Container>
+            <NoProgramItemsText>
+              {t("noProgramItemsAvailable", {
+                PROGRAM_TYPE: t(
+                  `programTypePartitivePlural.${activeProgramType}`,
+                ),
+              })}
+            </NoProgramItemsText>
+            <SecondNoProgramItemsText>
+              {t("checkProgramGuide")}{" "}
+              {programGuideUrl ? (
+                <Link to={programGuideUrl} target="_blank">
+                  {t("programGuide")}
+                </Link>
+              ) : (
+                t("programGuide")
+              )}
+              .
+            </SecondNoProgramItemsText>
+          </Container>
         </RaisedCard>
       )}
       {programItems.length > 0 && programItemsList}
@@ -126,7 +143,16 @@ export const AllProgramItemsList = ({ programItems }: Props): ReactElement => {
   );
 };
 
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
 const NoProgramItemsText = styled.span`
   color: ${(props) => props.theme.textSecondary};
   font-size: ${(props) => props.theme.fontSizeLarge};
+`;
+
+const SecondNoProgramItemsText = styled(NoProgramItemsText)`
+  padding-top: 8px;
 `;
