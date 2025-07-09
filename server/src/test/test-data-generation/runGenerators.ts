@@ -30,7 +30,7 @@ export const runGenerators = async (
 ): Promise<void> => {
   if (process.env.NODE_ENV === "production") {
     // eslint-disable-next-line no-restricted-syntax -- Data generation script
-    throw new Error("Data creation not allowed in production");
+    throw new Error("Generator: Data creation not allowed in production");
   }
 
   initializeDayjs();
@@ -50,12 +50,13 @@ export const runGenerators = async (
   const newProgramItemsCount = 10; // How many program items are available for each signup time for each program type
 
   if (options.clean) {
-    logger.info("Clean all data");
+    logger.info("* Generator: Clean all data");
     await cleanupDatabase();
+    logger.info("* Generator: Completed clean all data");
   }
 
   if (options.users) {
-    logger.info("Generate users");
+    logger.info("* Generator: Generate users");
 
     // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     !options.clean && (await removeUsers());
@@ -68,14 +69,20 @@ export const runGenerators = async (
       numberOfGroups,
       testUsersCount,
     );
+
+    logger.info("* Generator: Completed generate users");
   }
 
   // Always create admin and helper
+  logger.info("* Generator: Generate admin and helper users");
+
   await createAdminUser();
   await createHelpUser();
 
+  logger.info("* Generator: Completed generate admin and helper users");
+
   if (options.programItems) {
-    logger.info("Generate program items");
+    logger.info("* Generator: Generate program items");
 
     // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     !options.clean && (await removeProgramItems());
@@ -84,10 +91,12 @@ export const runGenerators = async (
 
     await createProgramItems(newProgramItemsCount);
     await createSettings();
+
+    logger.info("* Generator: Completed generate program items");
   }
 
   if (options.lotterySignups) {
-    logger.info("Generate lottery signups");
+    logger.info("* Generator: Generate lottery signups");
 
     // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     !options.clean && (await removeLotterySignups());
@@ -95,10 +104,12 @@ export const runGenerators = async (
     !options.clean && (await removeResults());
 
     await createLotterySignups();
+
+    logger.info("* Generator: Completed generate lottery signups");
   }
 
   if (options.directSignups) {
-    logger.info("Generate direct signups");
+    logger.info("* Generator: Generate direct signups");
 
     // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     !options.clean && (await removeDirectSignups());
@@ -106,12 +117,14 @@ export const runGenerators = async (
     !options.clean && (await removeResults());
 
     await createDirectSignups();
+
+    logger.info("* Generator: Completed generate direct signups");
   }
 
   if (options.eventLog) {
-    logger.info("Generate event log items");
-
+    logger.info("* Generator: Generate event log items");
     await createEventLogItems();
+    logger.info("* Generator: Completed generate event log items");
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-expressions
