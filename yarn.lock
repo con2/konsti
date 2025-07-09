@@ -10185,6 +10185,8 @@ __metadata:
     i18next: "npm:25.2.1"
     i18next-browser-languagedetector: "npm:8.2.0"
     jsdom: "npm:26.1.0"
+    linkify-react: "npm:4.3.1"
+    linkifyjs: "npm:4.3.1"
     postcss: "npm:8.5.6"
     postcss-styled-syntax: "npm:0.7.1"
     postcss-syntax: "npm:0.36.2"
@@ -10345,6 +10347,23 @@ __metadata:
   version: 2.0.4
   resolution: "lines-and-columns@npm:2.0.4"
   checksum: 10c0/4db28bf065cd7ad897c0700f22d3d0d7c5ed6777e138861c601c496d545340df3fc19e18bd04ff8d95a246a245eb55685b82ca2f8c2ca53a008e9c5316250379
+  languageName: node
+  linkType: hard
+
+"linkify-react@npm:4.3.1":
+  version: 4.3.1
+  resolution: "linkify-react@npm:4.3.1"
+  peerDependencies:
+    linkifyjs: ^4.0.0
+    react: ">= 15.0.0"
+  checksum: 10c0/9cd05223a0c9f80325518f3ffdd449dc3030538d35e4a07da0c03936e21346e530e61e7835fa89e36bed876ec61d578f59990910c47e88c4ffaa7fee99772ec5
+  languageName: node
+  linkType: hard
+
+"linkifyjs@npm:4.3.1":
+  version: 4.3.1
+  resolution: "linkifyjs@npm:4.3.1"
+  checksum: 10c0/fcd7d36ce1b03adb19dcc84b3b375f0b9d6e88d8885461bc69e5d5cbf1cd666cd740e175f015ac5ce600154a4f2bc68f4aed3920b1254aa4c6e9b42f49b3de79
   languageName: node
   linkType: hard
 
