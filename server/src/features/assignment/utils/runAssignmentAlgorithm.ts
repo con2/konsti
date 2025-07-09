@@ -27,7 +27,7 @@ export const runAssignmentAlgorithm = (
   lotteryParticipantDirectSignups: readonly DirectSignupsForProgramItem[],
 ): Result<AssignmentResult, AssignmentError> => {
   logger.info(
-    `Received data for ${users.length} users and ${programItems.length} program items`,
+    `Received data for ${users.length} users and ${programItems.length} program items for ${assignmentTime}`,
   );
 
   logger.info(`Assign algorithm: ${assignmentAlgorithm}`);

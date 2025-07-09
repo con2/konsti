@@ -127,7 +127,7 @@ export const removeCanceledDeletedProgramItemsFromUsers = async ({
   }
 
   // Nofify users with canceled or deleted program items
-  if (notify) {
+  if (notify && usersToNofify.length > 0) {
     const notifyUsersResult = await notifyUsersWithLotterySignupOrFavorite(
       usersToNofify,
       notifyAffectedDirectSignups,
