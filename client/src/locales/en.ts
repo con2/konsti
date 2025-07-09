@@ -200,6 +200,8 @@ export const translationEN = {
     "Did you enjoy the {{PROGRAM_TYPE}}? Send feedback to the organizer! They will receive it after the event.",
   noProgramItemsAvailable:
     "No {{PROGRAM_TYPE}} found, please check your search conditions.",
+  checkProgramGuide: "If program item is not found from Konsti, check",
+  programGuide: "program guide",
   noProgramItemsInDatabase: "No program items in database",
   upcoming: "Upcoming",
   all: "All",
