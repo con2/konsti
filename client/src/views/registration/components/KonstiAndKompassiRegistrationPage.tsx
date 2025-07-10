@@ -4,7 +4,7 @@ import styled from "styled-components";
 import KompassiLogo from "client/components/icons/kompassi.svg";
 import KonstiLogo from "client/components/icons/konsti.svg";
 import { RaisedCard } from "client/components/RaisedCard";
-import { KompassiLogin } from "client/views/login/components/KompassiLogin";
+import { KompassiLoginButton } from "client/views/login/components/KompassiLoginButton";
 import { KonstiRegistrationForm } from "client/views/registration/components/KonstiRegistrationForm";
 
 export const KonstiAndKompassiRegistrationPage = (): ReactElement => {
@@ -19,7 +19,9 @@ export const KonstiAndKompassiRegistrationPage = (): ReactElement => {
           <KompassiIcon aria-hidden={true} />
           {t("registrationView.kompassiAccount")}
         </KompassiHeader>
-        <KompassiLogin />
+        <ButtonContainer>
+          <KompassiLoginButton />
+        </ButtonContainer>
       </StyledCard>
       <StyledCard>
         <StyledH3>
@@ -43,7 +45,8 @@ const StyledP = styled.p`
 `;
 
 const StyledH2 = styled.h2`
-  margin-bottom: 0;
+  margin-bottom: 4px;
+  margin-top: 10px;
 `;
 
 const StyledH3 = styled.h3`
@@ -77,4 +80,10 @@ const KonstiIcon = styled(KonstiLogo)`
   height: 24px;
   vertical-align: middle;
   padding-right: 4px;
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;

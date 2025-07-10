@@ -9,7 +9,7 @@ import {
 import { LocalLoginForm } from "client/views/login/components/LocalLoginForm";
 import { useAppSelector } from "client/utils/hooks";
 import { LoginProvider } from "shared/config/eventConfigTypes";
-import { KompassiLogin } from "client/views/login/components/KompassiLogin";
+import { KompassiLoginButton } from "client/views/login/components/KompassiLoginButton";
 import { navigateToPreviousOrRoot } from "client/utils/navigation";
 import { usePreviousLocation } from "client/app/HistoryContext";
 import { AppRoute } from "client/app/AppRoutes";
@@ -54,12 +54,12 @@ export const LoginView = (): ReactElement => {
         </>
       )}
 
-      {loginProvider === LoginProvider.KOMPASSI && (
+      {loginProvider === LoginProvider.KOMPASSI && !isAdminLogin && (
         <>
           {appOpen && (
             <>
               <p>{t("loginView.kompassiLoginHint")}</p>
-              <KompassiLogin />
+              <KompassiLoginButton />
             </>
           )}
           {!appOpen && (
@@ -75,7 +75,7 @@ export const LoginView = (): ReactElement => {
         </>
       )}
 
-      {loginProvider === LoginProvider.LOCAL_KOMPASSI && (
+      {loginProvider === LoginProvider.LOCAL_KOMPASSI && !isAdminLogin && (
         <>
           {appOpen && <KompassiAndLocalLogin />}
           {!appOpen && (

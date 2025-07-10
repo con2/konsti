@@ -5,7 +5,7 @@ import { Link } from "react-router";
 import KompassiLogo from "client/components/icons/kompassi.svg";
 import KonstiLogo from "client/components/icons/konsti.svg";
 import { RaisedCard } from "client/components/RaisedCard";
-import { KompassiLogin } from "client/views/login/components/KompassiLogin";
+import { KompassiLoginButton } from "client/views/login/components/KompassiLoginButton";
 import { LocalLoginForm } from "client/views/login/components/LocalLoginForm";
 
 export const KompassiAndLocalLogin = (): ReactElement => {
@@ -19,7 +19,9 @@ export const KompassiAndLocalLogin = (): ReactElement => {
           <KompassiIcon aria-hidden={true} />
           {t("registrationView.kompassiAccount")}
         </KompassiHeader>
-        <KompassiLogin />
+        <ButtonContainer>
+          <KompassiLoginButton />
+        </ButtonContainer>
       </StyledCard>
       <StyledCard>
         <StyledH3>
@@ -76,4 +78,10 @@ const KonstiIcon = styled(KonstiLogo)`
 
 const StyledP = styled.p`
   margin-bottom: 4px;
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;

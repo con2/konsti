@@ -2,13 +2,12 @@ import { ReactElement, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSearchParams } from "react-router";
 import { z } from "zod";
-import styled from "styled-components";
 import { postKompassiLoginRedirect } from "client/services/loginServices";
 import { LoginErrorMessage } from "client/views/login/loginThunks";
 import { ErrorMessage } from "client/components/ErrorMessage";
 import { Button, ButtonStyle } from "client/components/Button";
 
-export const KompassiLogin = (): ReactElement => {
+export const KompassiLoginButton = (): ReactElement => {
   const { t } = useTranslation();
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -28,7 +27,7 @@ export const KompassiLogin = (): ReactElement => {
   }, [searchParams]);
 
   return (
-    <Container>
+    <>
       <Button
         buttonStyle={ButtonStyle.PRIMARY}
         onClick={async () => {
@@ -46,12 +45,6 @@ export const KompassiLogin = (): ReactElement => {
           }}
         />
       )}
-    </Container>
+    </>
   );
 };
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;

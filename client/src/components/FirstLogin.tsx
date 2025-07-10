@@ -6,7 +6,6 @@ import { useAppSelector } from "client/utils/hooks";
 import { Button, ButtonStyle } from "./Button";
 import { config } from "shared/config";
 import { HighlightStyle, RaisedCard } from "client/components/RaisedCard";
-import { LoginProvider } from "shared/config/eventConfigTypes";
 
 const firstLoginValue = "firstLogin";
 const FirstLoginValueSchema = z.literal(firstLoginValue);
@@ -26,8 +25,8 @@ export const FirstLogin = (): ReactElement | null => {
   const { t } = useTranslation();
   const serial = useAppSelector((state) => state.login.serial);
   const username = useAppSelector((state) => state.login.username);
-  const loginProvider = useAppSelector((state) => state.admin.loginProvider);
-  const isLocalLogin = loginProvider === LoginProvider.LOCAL;
+  const kompassiId = useAppSelector((state) => state.login.kompassiId);
+  const isLocalLogin = !kompassiId;
 
   const [isFirstLogin, setIsFirstLogin] = useState<boolean>(false);
 

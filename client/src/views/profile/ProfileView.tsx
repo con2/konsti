@@ -5,7 +5,6 @@ import { useNavigate } from "react-router";
 import { ChangePasswordForm } from "client/views/helper/components/ChangePasswordForm";
 import { useAppSelector } from "client/utils/hooks";
 import { Button, ButtonStyle } from "client/components/Button";
-import { LoginProvider } from "shared/config/eventConfigTypes";
 import { AppRoute } from "client/app/AppRoutes";
 
 export const ProfileView = (): ReactElement => {
@@ -14,9 +13,9 @@ export const ProfileView = (): ReactElement => {
 
   const username = useAppSelector((state) => state.login.username);
   const serial = useAppSelector((state) => state.login.serial);
-  const loginProvider = useAppSelector((state) => state.admin.loginProvider);
 
-  const isLocalLogin = loginProvider === LoginProvider.LOCAL;
+  const kompassiId = useAppSelector((state) => state.login.kompassiId);
+  const isLocalLogin = !kompassiId;
 
   return (
     <Container>
