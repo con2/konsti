@@ -141,8 +141,8 @@ export const translationEN = {
     smallKids: "Directed at small children (under 7)",
   },
   pageTitle: {
-    login: "Please login",
-    registration: "Create user account",
+    login: "Login",
+    registration: "Create an account",
   },
   user: "User",
   favoriteProgramItems: "Favorites",
@@ -529,6 +529,7 @@ export const translationEN = {
   loginProvider: {
     local: "Local",
     kompassi: "Kompassi",
+    ["local+kompassi"]: "Local + Kompassi",
   },
   backendError: {
     apiError: "Error while calling {{method}} {{url}}, reason: {{errorReason}}",
@@ -584,16 +585,26 @@ export const translationEN = {
     oldAccountsNotWorking:
       "Please note that accounts from older events are not in use anymore.",
     noAccountRegister: "No account? Create one here.",
-    kompassiLoginHint: "Konsti login is done with Kompassi account",
+    kompassiLoginHint: "You can log in to Konsti with a Kompassi account.",
+    kompassiAndLocalLoginHint:
+      "You can log in to Konsti with either a Kompassi account or a Konsti account.",
     kompassiLogin: "Login or create account",
+    notOpenYet: "Logging in to Konsti hasn't been opened yet.",
     createKompassiAccountHint:
-      "Konsti login is not open yet but you can already create Kompassi account which is required for Konsti login.",
-    createKompassiAccount: "Create a Kompassi account",
+      "Konsti is not open yet but you can already create a Kompassi account, which is used to log in to Konsti.",
+    createKompassiLocalAccountHint:
+      "You can log in to Konsti with a Kompassi account or a Konsti account that you can create when Konsti logins open. You can already create a Kompassi account, if you don't have one.",
+    createKompassiAccount: "Create a Kompassi account.",
     chooseKonstiUsername: "Choose a Konsti username",
   },
   registrationView: {
-    nickVisibleHintText: "Your username will be visible to other Konsti users.",
+    kompassiAndKonstiInfo:
+      "You can log in using a Kompassi account or create a Konsti account. Your Konsti account will be removed after this event.",
+    nickVisibleHintText: "Your username will be visible to other users.",
     alreadyHaveAccountLogin: "Do you already have an account? Log in here.",
+    konstiAccount: "Konsti account",
+    kompassiAccount: "Kompassi account",
+    linkToLogin: "Log in or create a Kompassi account.",
   },
   admissionView: {
     noAdmission: "You have not signed up for this program item.",

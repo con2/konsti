@@ -37,7 +37,7 @@ export const translationFI = {
     close: "Sulje",
     scrollToTop: "Palaa sivun yläreunaan",
   },
-  username: "Käyttäjänimi",
+  username: "Nimimerkki",
   password: "Salasana",
   serial: "Rekisteröintikoodi",
   code: "Koodi",
@@ -48,7 +48,7 @@ export const translationFI = {
   hide: "Piilota",
   sortBy: "Järjestys",
   find: "Etsi",
-  findTitleOrUsername: "{{PROGRAM_TYPE}} nimi tai käyttäjänimi",
+  findTitleOrUsername: "{{PROGRAM_TYPE}} nimi tai nimimerkki",
   searchWithTitle: "{{PROGRAM_TYPE}} nimi",
   searchWithTitleOrSystem: "{{PROGRAM_TYPE}} nimi tai järjestelmä",
   hideFullItems: "Piilota täynnä olevat ohjelmanumerot",
@@ -150,9 +150,9 @@ export const translationFI = {
   directSignups: "Ilmoittautumiset",
   hiddenProgramItems: "Piilotetut ohjelmanumerot",
   error: {
-    usernameTaken: "Käyttäjänimi on jo olemassa",
+    usernameTaken: "Nimimerkki on jo olemassa",
     invalidSerial: "Virheellinen rekisteröintikoodi",
-    loginFailed: "Käyttäjänimi ja salasana eivät täsmää",
+    loginFailed: "Nimimerkki ja salasana eivät täsmää",
     loginDisabled: "Kirjautuminen on suljettu",
     invalidUserGroup: "Virheellinen käyttäjäryhmä",
     unknown: "Tuntematon virhe",
@@ -271,7 +271,7 @@ export const translationFI = {
   passwordManagement: {
     helperPasswordManagement: "Vaihda salasana",
     userCode: "Käyttäjän koodi",
-    userCodeOrUsername: "Käyttäjän koodi tai käyttäjänimi",
+    userCodeOrUsername: "Käyttäjän koodi tai nimimerkki",
     changePassword: "Vaihda salasana",
     newPassword: "Uusi salasana",
     userNotFound: "Käyttäjää ei löytynyt",
@@ -532,6 +532,7 @@ export const translationFI = {
   loginProvider: {
     local: "Lokaali",
     kompassi: "Kompassi",
+    ["local+kompassi"]: "Lokaali + Kompassi",
   },
   backendError: {
     apiError: "Virhe kutsuessa {{method}} {{url}}: {{errorReason}}",
@@ -587,17 +588,26 @@ export const translationFI = {
     oldAccountsNotWorking:
       "Huomaathan, että aikaisempien tapahtumien käyttäjätilit eivät ole käytössä.",
     noAccountRegister: "Ei käyttäjätiliä? Luo käyttäjätili täällä.",
-    kompassiLoginHint: "Konstiin kirjaudutaan Kompassi-tunnuksella",
+    kompassiLoginHint: "Konstiin kirjaudutaan Kompassi-tunnuksella.",
+    kompassiAndLocalLoginHint:
+      "Voit kirjautua sisään joko Kompassi- tai Konsti-tunnuksella.",
     kompassiLogin: "Kirjaudu tai luo tunnus",
+    notOpenYet: "Konstiin kirjautuminen ei vielä ole avoinna.",
     createKompassiAccountHint:
-      "Konstiin kirjautuminen ei ole vielä avoinna, mutta voit jo luoda Kompassi-tunnuksen, jonka avulla Konstiin kirjaudutaan.",
-    createKompassiAccount: "Luo Kompassi-tunnus",
+      "Konstiin ei vielä voi kirjautua, mutta voit jo luoda Kompassi-tunnuksen, jolla Konstiin kirjaudutaan.",
+    createKompassiLocalAccountHint:
+      "Voit kirjautua Konstiin joko Kompassi-tunnuksella tai Konsti-tunnuksella, jonka voit luoda kun Konstin kirjautuminen aukeaa. Kompassi-tunnuksen voit luoda jo nyt.",
+    createKompassiAccount: "Luo Kompassi-tunnus.",
     chooseKonstiUsername: "Valitse Konsti-nimimerkki",
   },
   registrationView: {
-    nickVisibleHintText:
-      "Valitsemasi käyttäjänimi näkyy muille Konstin käyttäjille.",
+    kompassiAndKonstiInfo:
+      "Voit kirjautua sisään Kompassi-tunnuksella tai luoda Konsti-tunnuksen, joka on käytössä vain tässä tapahtumassa.",
+    nickVisibleHintText: "Nimimerkkisi näkyy muille käyttäjille.",
     alreadyHaveAccountLogin: "Onko sinulla jo tili? Kirjaudu sisään tästä.",
+    konstiAccount: "Konsti-tunnus",
+    kompassiAccount: "Kompassi-tunnus",
+    linkToLogin: "Kirjaudu sisään tai luo Kompassi-tunnus.",
   },
   admissionView: {
     noAdmission: "Et ole ilmoittautunut tähän ohjelmanumeroon.",

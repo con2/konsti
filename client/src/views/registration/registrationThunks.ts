@@ -1,6 +1,6 @@
 import { postRegistration } from "client/services/userServices";
 import { submitLogin } from "client/views/login/loginThunks";
-import { RegistrationFormFields } from "client/views/registration/components/RegistrationForm";
+import { KonstiRegistrationFormFields } from "client/views/registration/components/KonstiRegistrationForm";
 import { AppThunk } from "client/types/reduxTypes";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 
@@ -11,7 +11,7 @@ export enum RegistrationErrorMessage {
 }
 
 export const submitRegistration = (
-  registrationFormFields: RegistrationFormFields,
+  registrationFormFields: KonstiRegistrationFormFields,
 ): AppThunk<Promise<RegistrationErrorMessage | undefined>> => {
   return async (dispatch): Promise<RegistrationErrorMessage | undefined> => {
     const registrationResponse = await postRegistration(registrationFormFields);

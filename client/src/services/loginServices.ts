@@ -1,5 +1,5 @@
 import { api } from "client/utils/api";
-import { LoginFormFields } from "client/views/login/components/LoginForm";
+import { LoginFormFields } from "client/views/login/components/LocalLoginForm";
 import { ApiEndpoint, AuthEndpoint } from "shared/constants/apiEndpoints";
 import {
   PostKompassiLoginError,
