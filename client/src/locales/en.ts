@@ -514,8 +514,8 @@ export const translationEN = {
     longTexts: "Participation includes reading long texts independently",
     lotsOfMovement:
       "Participation requires a lot of moving with no chance to sit",
-    flahingLights: "Flashing or strong lights",
-    quickReactions: "The tournament requires the ability to react quickly",
+    flashingLights: "Flashing or strong lights",
+    quickReactions: "The program item requires the ability to react quickly",
     noSubtitles:
       "Program contains a video with no subtitles for the hearing impaired",
     strongOdours: "Strong scents",

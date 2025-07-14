@@ -517,7 +517,7 @@ export const translationFI = {
     longTexts: "Osallistuminen vaatii pitkien tekstien itsenäistä lukemista",
     lotsOfMovement:
       "Osallistuminen vaatii paljon liikkumista ilman mahdollisuutta istumiseen",
-    flahingLights: "Välkkyvät tai voimakkaat valot",
+    flashingLights: "Välkkyvät tai voimakkaat valot",
     quickReactions: "Ohjelmaan osallistuminen vaatii nopeaa reaktiokykyä",
     noSubtitles:
       "Ohjelmanumerossa katsotaan video, jossa ei ole tekstitystä kuulorajoitteisille",

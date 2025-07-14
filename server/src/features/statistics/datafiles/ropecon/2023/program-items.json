@@ -26,7 +26,8 @@
     "styles": [],
     "tags": [],
     "title": "Tao oma korusi",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6949",
@@ -55,7 +56,8 @@
     "styles": [],
     "tags": ["suitableForAllAges", "beginnerFriendly", "ropeconTheme"],
     "title": "Wanderhome - Tulevan ja menneen tienristeyksessä (pr/fri)",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6114",
@@ -84,7 +86,8 @@
     "styles": ["light"],
     "tags": ["beginnerFriendly"],
     "title": "Keskiyön nauriit",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6338",
@@ -113,12 +116,13 @@
     "styles": ["light", "rulesLight", "storyDriven"],
     "tags": ["suitableForAllAges", "beginnerFriendly", "ropeconTheme"],
     "title": "Berserkin Pesä: Ajan pyörteissä",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6389",
     "accessibilityValues": [
-      "recording",
+      "noTextOfRecording",
       "programmeDurationOver2Hours",
       "longText"
     ],
@@ -146,7 +150,8 @@
     "styles": ["light", "rulesLight", "storyDriven"],
     "tags": ["suitableForAllAges", "beginnerFriendly"],
     "title": "Seikkailuja Konnussa",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6850",
@@ -175,7 +180,8 @@
     "styles": ["rulesLight", "storyDriven", "characterDriven"],
     "tags": ["suitableForAllAges", "beginnerFriendly"],
     "title": "Muinaishobitit 1: Lammasten laakso",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7032",
@@ -204,7 +210,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Kokeile pelinjohtamista -piste (Pe)",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7030",
@@ -237,9 +244,10 @@
       "storyDriven",
       "characterDriven"
     ],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly"],
+    "tags": ["adults", "beginnerFriendly"],
     "title": "Indiehuone / Indie Room / Indierummet (Pe/Fr/Fri)",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6512",
@@ -265,10 +273,11 @@
     "shortDescription": "Roolipelikampanja Vietnamin sodasta",
     "signupType": "none",
     "startTime": "2023-07-28T13:00:00Z",
-    "styles": ["serious", "rulesHeavy", "combatDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly", "ropeconTheme"],
+    "styles": ["serious", "rulesHeavy", "combatHeavy"],
+    "tags": ["adults", "beginnerFriendly", "ropeconTheme"],
     "title": "Charlie ei surffaa",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6466",
@@ -297,12 +306,13 @@
     "styles": ["light", "rulesLight", "storyDriven", "characterDriven"],
     "tags": [],
     "title": "Red as Rose, Red as Blood",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6737",
     "accessibilityValues": [
-      "colourblind",
+      "colorBlindness",
       "programmeDurationOver2Hours",
       "textNotAvailableAsRecordings"
     ],
@@ -328,9 +338,10 @@
     "signupType": "none",
     "startTime": "2023-07-28T13:00:00Z",
     "styles": ["serious", "storyDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly"],
+    "tags": ["adults", "beginnerFriendly"],
     "title": "Tokyo Noir: Murhamysteeri Shibuyassa",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6994",
@@ -359,15 +370,16 @@
     "styles": [],
     "tags": ["suitableForAllAges", "beginnerFriendly"],
     "title": "Behind the Magic — Who let the wyrm out? 1. Run",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6997",
     "accessibilityValues": [
       "loudSounds",
       "physicalContact",
-      "lowLighting",
-      "recording",
+      "darkLighting",
+      "noTextOfRecording",
       "limitedOpportunitiesToMoveAround",
       "textNotAvailableAsRecordings"
     ],
@@ -393,17 +405,18 @@
     "signupType": "none",
     "startTime": "2023-07-28T13:00:00Z",
     "styles": [],
-    "tags": ["aimedAtAdultAttendees", "for18PlusOnly", "ropeconTheme"],
+    "tags": ["adults", "onlyAdults", "ropeconTheme"],
     "title": "First They Came 1. Run",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6601",
     "accessibilityValues": [
       "loudSounds",
       "physicalContact",
-      "lowLighting",
-      "recording",
+      "darkLighting",
+      "noTextOfRecording",
       "limitedOpportunitiesToMoveAround",
       "textNotAvailableAsRecordings"
     ],
@@ -429,9 +442,10 @@
     "signupType": "none",
     "startTime": "2023-07-28T13:00:00Z",
     "styles": [],
-    "tags": ["aimedAtAdultAttendees", "for18PlusOnly", "ropeconTheme"],
+    "tags": ["adults", "onlyAdults", "ropeconTheme"],
     "title": "First They Came 2. Run",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6275",
@@ -458,9 +472,10 @@
     "signupType": "none",
     "startTime": "2023-07-28T13:00:00Z",
     "styles": ["serious", "storyDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly"],
+    "tags": ["adults", "beginnerFriendly"],
     "title": "EYES - Fear is Fractal",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6349",
@@ -487,13 +502,10 @@
     "signupType": "none",
     "startTime": "2023-07-28T13:00:00Z",
     "styles": ["light", "rulesLight", "characterDriven"],
-    "tags": [
-      "aimedAtChildrenBetween13-17",
-      "aimedAtAdultAttendees",
-      "beginnerFriendly"
-    ],
+    "tags": ["aimedAtChildrenBetween13-17", "adults", "beginnerFriendly"],
     "title": "John goes to ropecon",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6655",
@@ -522,7 +534,8 @@
     "styles": ["light", "rulesLight", "storyDriven"],
     "tags": ["beginnerFriendly"],
     "title": "The Deep Forest",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6615",
@@ -553,15 +566,12 @@
       "rulesHeavy",
       "rulesLight",
       "storyDriven",
-      "combatDriven"
+      "combatHeavy"
     ],
-    "tags": [
-      "aimedAtChildrenBetween13-17",
-      "aimedAtAdultAttendees",
-      "beginnerFriendly"
-    ],
+    "tags": ["aimedAtChildrenBetween13-17", "adults", "beginnerFriendly"],
     "title": "Kidnappaus Kannonkylässä (Pelautus 1)",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6591",
@@ -587,10 +597,11 @@
     "shortDescription": "Lautapeliominaisuuksia omaava fantasia-STALKER",
     "signupType": "none",
     "startTime": "2023-07-28T13:00:00Z",
-    "styles": ["rulesLight", "combatDriven"],
+    "styles": ["rulesLight", "combatHeavy"],
     "tags": ["suitableForAllAges", "beginnerFriendly"],
     "title": "Velhouden autio - wizardly desolation",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6425",
@@ -620,9 +631,10 @@
     "signupType": "none",
     "startTime": "2023-07-28T13:00:00Z",
     "styles": ["serious", "storyDriven"],
-    "tags": ["aimedAtAdultAttendees"],
+    "tags": ["adults"],
     "title": "L&L: Sulkavan sointu (kauhupainottein)",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6354",
@@ -649,9 +661,10 @@
     "signupType": "none",
     "startTime": "2023-07-28T13:00:00Z",
     "styles": ["serious", "rulesHeavy", "characterDriven"],
-    "tags": ["aimedAtAdultAttendees"],
+    "tags": ["adults"],
     "title": "Overlord 2023 näytöspeli",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6777",
@@ -683,7 +696,8 @@
     "styles": ["light", "storyDriven"],
     "tags": ["suitableForAllAges", "beginnerFriendly"],
     "title": "L&L: Sulkavan sointu",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6112",
@@ -712,7 +726,8 @@
     "styles": ["light"],
     "tags": [],
     "title": "The Amazing Adventures of Isanari Senbo",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6604",
@@ -742,13 +757,10 @@
     "signupType": "none",
     "startTime": "2023-07-28T13:00:00Z",
     "styles": ["light", "storyDriven", "characterDriven"],
-    "tags": [
-      "aimedAtChildrenBetween13-17",
-      "aimedAtAdultAttendees",
-      "beginnerFriendly"
-    ],
+    "tags": ["aimedAtChildrenBetween13-17", "adults", "beginnerFriendly"],
     "title": "Eanan Legendat: Ei koskaan ilman lohmuani",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6745",
@@ -777,7 +789,8 @@
     "styles": ["light", "rulesLight", "storyDriven"],
     "tags": ["suitableForAllAges", "beginnerFriendly"],
     "title": "A Conspiracy Most Cracked",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6834",
@@ -804,13 +817,17 @@
     "signupType": "none",
     "startTime": "2023-07-28T13:30:00Z",
     "styles": [],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly", "ropeconTheme"],
+    "tags": ["adults", "beginnerFriendly", "ropeconTheme"],
     "title": "Kirjeitä Pohjolassa",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7228",
-    "accessibilityValues": ["irritateSkin", "participationRequiresDexterity"],
+    "accessibilityValues": [
+      "irritatingChemicals",
+      "participationRequiresDexterity"
+    ],
     "contentWarnings": "",
     "createdAt": "2023-07-27T17:45:57.271Z",
     "description": "Tule konvertoimaan ja oppimaan miniatyyrien muokkaamisesta konvertointityöpajaan. Ota oma figu mukaan tai rakenna saatavilla olevista bitseistä ja sprueista oma luomuksesi. Täällä saat opastusta perusteista kuten leikkaamisesta, pinnaamisesta, kokoamisesta, subassemblyistä, magnetoinnista ja konvertoinnista. Voit myös dumpata bitz boxisi tänne ja saada siitä kiitosta. Tulla ja mennä saa oman aikataulunsa ja vapaiden penkkien mukaan. \r\n\r\n----\r\n\r\nCome and learn how to convert miniatures to your vision. Take your own miniature with you or convert your own from available bitz and sprue pieces. You can get guidance about cutting, pinning, assembling, using subassemblies, magneting and converting. You can also dump your bitz box here and get lauded for it. You can come and go by your own schedule and the availability of seats.",
@@ -835,7 +852,8 @@
     "styles": [],
     "tags": ["suitableForAllAges", "beginnerFriendly"],
     "title": "Miniatyyrien konvertointipiste (Pe) / Miniature conversion point (Fri)",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7225",
@@ -864,11 +882,12 @@
     "styles": [],
     "tags": ["suitableForAllAges", "beginnerFriendly"],
     "title": "Figumaalauspiste / Mini Painting Point",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6639",
-    "accessibilityValues": ["colourblind", "participationRequiresDexterity"],
+    "accessibilityValues": ["colorBlindness", "participationRequiresDexterity"],
     "contentWarnings": "",
     "createdAt": "2023-07-27T17:45:57.271Z",
     "description": "Pikamaalauskisassa tavoitteena on maalata annettu miniatyyri mahdollisimman hyvin annetussa ajassa. Aikaa maalaamiseen on varattu yksi tunti, ja parhaiten maalattu figu voittaa.\r\n\r\nEt tarvitse kisaan omaa figua, vaan saat sen toivomallasi pohjamaalilla juuri ennen suorituksen alkua. Luonnollisesti kisatyön saa ottaa mukaansa tuomaroinnin jälkeen.\r\n\r\nOmia maalausvälineitä (paletit, siveltimet, maalit) saa käyttää, mutta halutessaan voi myös hyödyntää figumaalauspisteen tarjontaa.\r\n\r\nKisan pääsponsorina toimii tänä vuonna The Dragon Trappers Lodge.\r\n\r\n====\r\n\r\nThe goal in the Speed Painting Contest is to paint a given miniature as well as possible in a given time. The contestants have one hour to paint, and the best painted miniature wins.\r\n\r\nBringing your own miniature into the contest is not needed, as you will be provided one right before the beginning. Naturally, participants can take their contest work with them after the judges have finished the evaluation.\r\n\r\nYou can participate in the contest either using your own painting supplies (palettes, brushes, paints), or you can take advantage of the selection at Ropecon's Miniature Painting Station.\r\n\r\nThe main sponsor of this year's contest is The Dragon Trappers Lodge.",
@@ -891,13 +910,10 @@
     "signupType": "konsti",
     "startTime": "2023-07-28T14:00:00Z",
     "styles": [],
-    "tags": [
-      "tournament",
-      "aimedAtChildrenBetween13-17",
-      "aimedAtAdultAttendees"
-    ],
+    "tags": ["tournament", "aimedAtChildrenBetween13-17", "adults"],
     "title": "Pikamaalauskilpailu / Speed Painting Contest 1 (Pe/Fri)",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6579",
@@ -924,9 +940,10 @@
     "signupType": "konsti",
     "startTime": "2023-07-28T14:00:00Z",
     "styles": [],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly", "ropeconTheme"],
+    "tags": ["adults", "beginnerFriendly", "ropeconTheme"],
     "title": "Lautapelataan/Boardgames: T.I.M.E Stories (1: Asylum)",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6098",
@@ -955,12 +972,13 @@
     "styles": [],
     "tags": [
       "aimedAtChildrenBetween13-17",
-      "aimedAtAdultAttendees",
+      "adults",
       "beginnerFriendly",
       "ropeconTheme"
     ],
     "title": "Harry Potter - taistelu Tylypahkasta (Harry Potter Hogwards battle - card game) (pe/fri)",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7212",
@@ -992,9 +1010,10 @@
     "signupType": "konsti",
     "startTime": "2023-07-28T14:00:00Z",
     "styles": [],
-    "tags": ["tournament", "aimedAtAdultAttendees"],
+    "tags": ["tournament", "adults"],
     "title": "Magic the Gathering: Commander/cEDH Swiss Open (hosted by Kallion Hoviseura)",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6542",
@@ -1020,10 +1039,11 @@
     "shortDescription": "Viisi aloittelevaa ritariksi pyrkivää matkalaista ratkovat yhdessä pulman.",
     "signupType": "none",
     "startTime": "2023-07-28T14:00:00Z",
-    "styles": ["serious", "rulesLight", "storyDriven", "combatDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly", "ropeconTheme"],
+    "styles": ["serious", "rulesLight", "storyDriven", "combatHeavy"],
+    "tags": ["adults", "beginnerFriendly", "ropeconTheme"],
     "title": "Scamatania: Vihreän ritarit (WWN)",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6471",
@@ -1052,7 +1072,8 @@
     "styles": ["light", "rulesLight", "storyDriven"],
     "tags": ["beginnerFriendly", "ropeconTheme"],
     "title": "Kaaosta Koloniassa: Kummallisia ongelmia",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7234",
@@ -1080,13 +1101,14 @@
     "startTime": "2023-07-28T14:00:00Z",
     "styles": ["light", "rulesLight", "storyDriven", "characterDriven"],
     "tags": [
-      "aimedAtChildrenUnder13",
+      "kids",
       "aimedAtChildrenBetween13-17",
-      "aimedAtAdultAttendees",
+      "adults",
       "beginnerFriendly"
     ],
     "title": "Lintuparvi (Pe)",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6861",
@@ -1115,7 +1137,8 @@
     "styles": ["light", "rulesHeavy"],
     "tags": ["beginnerFriendly"],
     "title": "Pako Mos Shuutasta",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6673",
@@ -1145,10 +1168,11 @@
     "shortDescription": "A Pathfinder Society multi-table special",
     "signupType": "none",
     "startTime": "2023-07-28T14:00:00Z",
-    "styles": ["light", "rulesHeavy", "combatDriven"],
+    "styles": ["light", "rulesHeavy", "combatHeavy"],
     "tags": ["suitableForAllAges", "beginnerFriendly", "ropeconTheme"],
     "title": "Pathfinder Society #3-98: Expedition into Pallid Peril",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6527",
@@ -1177,12 +1201,13 @@
     "styles": [],
     "tags": [
       "suitableForAllAges",
-      "aimedAtAdultAttendees",
+      "adults",
       "beginnerFriendly",
       "ropeconTheme"
     ],
     "title": "Opi kirjonnan alkeet",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6567",
@@ -1209,9 +1234,10 @@
     "signupType": "none",
     "startTime": "2023-07-28T14:00:00Z",
     "styles": ["light", "rulesLight", "storyDriven", "characterDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly"],
+    "tags": ["adults", "beginnerFriendly"],
     "title": "The Lady Strangford Emeralds",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6611",
@@ -1238,9 +1264,10 @@
     "signupType": "none",
     "startTime": "2023-07-28T14:00:00Z",
     "styles": ["serious", "rulesLight", "storyDriven", "characterDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly", "ropeconTheme"],
+    "tags": ["adults", "beginnerFriendly", "ropeconTheme"],
     "title": "Aurinkovarkaat",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7240",
@@ -1267,9 +1294,10 @@
     "signupType": "none",
     "startTime": "2023-07-28T14:00:00Z",
     "styles": ["rulesLight", "storyDriven"],
-    "tags": ["aimedAtAdultAttendees"],
+    "tags": ["adults"],
     "title": "Tervetuloa Misty Pinesiin / Welcome to Misty Pines",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6833",
@@ -1296,9 +1324,10 @@
     "signupType": "none",
     "startTime": "2023-07-28T14:00:00Z",
     "styles": ["light", "rulesLight", "characterDriven"],
-    "tags": ["aimedAtAdultAttendees", "for18PlusOnly", "beginnerFriendly"],
+    "tags": ["adults", "onlyAdults", "beginnerFriendly"],
     "title": "Teenage monsters with great love",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6252",
@@ -1328,9 +1357,10 @@
     "signupType": "none",
     "startTime": "2023-07-28T14:00:00Z",
     "styles": ["light", "rulesLight"],
-    "tags": ["aimedAtAdultAttendees", "for18PlusOnly", "beginnerFriendly"],
+    "tags": ["adults", "onlyAdults", "beginnerFriendly"],
     "title": "Wizards Against Humanity",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6574",
@@ -1357,9 +1387,10 @@
     "signupType": "none",
     "startTime": "2023-07-28T14:00:00Z",
     "styles": ["rulesLight", "characterDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly", "ropeconTheme"],
+    "tags": ["adults", "beginnerFriendly", "ropeconTheme"],
     "title": "Nälkämaa",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6724",
@@ -1386,9 +1417,10 @@
     "signupType": "none",
     "startTime": "2023-07-28T14:00:00Z",
     "styles": ["rulesLight", "characterDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly", "ropeconTheme"],
+    "tags": ["adults", "beginnerFriendly", "ropeconTheme"],
     "title": "Careers In Chrome",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6975",
@@ -1417,7 +1449,8 @@
     "styles": [],
     "tags": ["suitableForAllAges", "beginnerFriendly"],
     "title": "Tee-se-itse: Märkäpaletti (pe) / DIY: Wet Palette (Fri)",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6973",
@@ -1447,12 +1480,13 @@
     "tags": [
       "tournament",
       "aimedAtChildrenBetween13-17",
-      "aimedAtAdultAttendees",
+      "adults",
       "beginnerFriendly",
       "ropeconTheme"
     ],
     "title": "Solaris VIIn Gladiaattorit - The Gladiators of Solaris VII (Pe/Fri)",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6456",
@@ -1481,10 +1515,11 @@
     "shortDescription": "D&D seikkailu hirviön näkökulmasta",
     "signupType": "none",
     "startTime": "2023-07-28T15:00:00Z",
-    "styles": ["light", "rulesHeavy", "combatDriven"],
-    "tags": ["aimedAtChildrenBetween13-17", "aimedAtAdultAttendees"],
+    "styles": ["light", "rulesHeavy", "combatHeavy"],
+    "tags": ["aimedAtChildrenBetween13-17", "adults"],
     "title": "Hirviöiden kotirintama - Monsters' home security",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6523",
@@ -1511,9 +1546,10 @@
     "signupType": "none",
     "startTime": "2023-07-28T15:00:00Z",
     "styles": ["rulesLight", "storyDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly", "ropeconTheme"],
+    "tags": ["adults", "beginnerFriendly", "ropeconTheme"],
     "title": "Sitä miltä näyttää",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6641",
@@ -1540,9 +1576,10 @@
     "signupType": "none",
     "startTime": "2023-07-28T15:00:00Z",
     "styles": ["rulesHeavy", "storyDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly", "ropeconTheme"],
+    "tags": ["adults", "beginnerFriendly", "ropeconTheme"],
     "title": "Kun kellot soivat",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6301",
@@ -1568,10 +1605,11 @@
     "shortDescription": "Survival and combat challenges on the sea",
     "signupType": "none",
     "startTime": "2023-07-28T15:00:00Z",
-    "styles": ["serious", "combatDriven"],
+    "styles": ["serious", "combatHeavy"],
     "tags": ["beginnerFriendly"],
     "title": "The Island of Storms",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6431",
@@ -1598,9 +1636,10 @@
     "signupType": "none",
     "startTime": "2023-07-28T15:00:00Z",
     "styles": ["light", "rulesLight", "storyDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly", "ropeconTheme"],
+    "tags": ["adults", "beginnerFriendly", "ropeconTheme"],
     "title": "Hurmeen yö (1/2)",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6859",
@@ -1629,7 +1668,8 @@
     "styles": [],
     "tags": ["suitableForAllAges", "beginnerFriendly", "ropeconTheme"],
     "title": "Kerro ropehahmostasi - pikadeitti",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6815",
@@ -1658,13 +1698,14 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Larppitiedotus levällään -ideointityöpaja",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6757",
     "accessibilityValues": [
-      "strongSmells",
-      "irritateSkin",
+      "strongOdours",
+      "irritatingChemicals",
       "participationRequiresDexterity"
     ],
     "contentWarnings": "",
@@ -1691,12 +1732,13 @@
     "styles": [],
     "tags": [
       "aimedAtChildrenBetween13-17",
-      "aimedAtAdultAttendees",
+      "adults",
       "beginnerFriendly",
       "ropeconTheme"
     ],
     "title": "Värttinäkehräyspaja",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6793",
@@ -1723,9 +1765,10 @@
     "signupType": "none",
     "startTime": "2023-07-28T15:00:00Z",
     "styles": ["serious", "storyDriven"],
-    "tags": ["aimedAtAdultAttendees", "ropeconTheme"],
+    "tags": ["adults", "ropeconTheme"],
     "title": "Desperation Arcanum",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6727",
@@ -1752,9 +1795,10 @@
     "signupType": "none",
     "startTime": "2023-07-28T15:00:00Z",
     "styles": ["serious", "rulesLight", "storyDriven", "characterDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly", "ropeconTheme"],
+    "tags": ["adults", "beginnerFriendly", "ropeconTheme"],
     "title": "Murto Avalon-kompleksiin",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6158",
@@ -1784,9 +1828,10 @@
     "signupType": "none",
     "startTime": "2023-07-28T15:00:00Z",
     "styles": ["serious", "rulesLight", "storyDriven", "characterDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly", "ropeconTheme"],
+    "tags": ["adults", "beginnerFriendly", "ropeconTheme"],
     "title": "The Celebration of Baronet von Alzgau",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6607",
@@ -1813,14 +1858,15 @@
     "signupType": "none",
     "startTime": "2023-07-28T15:00:00Z",
     "styles": ["serious", "rulesLight", "storyDriven", "characterDriven"],
-    "tags": ["aimedAtAdultAttendees"],
+    "tags": ["adults"],
     "title": "Eräänä epätoivoisena yönä - [Rusted Veins]",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6320",
     "accessibilityValues": [
-      "colourblind",
+      "colorBlindness",
       "longText",
       "textNotAvailableAsRecordings"
     ],
@@ -1848,13 +1894,14 @@
     "styles": ["rulesLight"],
     "tags": ["beginnerFriendly", "ropeconTheme"],
     "title": "Vetehisten Virsi",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6294",
     "accessibilityValues": [
-      "strongSmells",
-      "irritateSkin",
+      "strongOdours",
+      "irritatingChemicals",
       "participationRequiresDexterity"
     ],
     "contentWarnings": "",
@@ -1881,16 +1928,17 @@
     "styles": [],
     "tags": [
       "aimedAtChildrenBetween13-17",
-      "aimedAtAdultAttendees",
+      "adults",
       "beginnerFriendly",
       "ropeconTheme"
     ],
     "title": "Wasteland Wear & Tear - How to create your own post-apocalyptic outfit",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6514",
-    "accessibilityValues": ["colourblind", "participationRequiresDexterity"],
+    "accessibilityValues": ["colorBlindness", "participationRequiresDexterity"],
     "contentWarnings": "",
     "createdAt": "2023-07-27T17:45:57.271Z",
     "description": "Non-metallic-metal eli NMM on maalaustekniikka, jossa metallipintoja kaikkine heijastuksineen imitoidaan käyttämättä varsinaisia metallimaaleja.\r\n\r\nTässä työpajassa kansainvälisesti palkittu figumaalari ja työkseen opettajana toimiva Erkka 'RaddiCraft' Marttio opastaa osallistujia tekniikan saloihin kädestä pitäen.\r\n\r\nMukaan tarvitset ainoastaan oman siveltimen (kokosuositus 000-2). Työpajasta saat maalattavan figun (Stormcast Eternal), diy-märkäpaletin sekä käytettävät maalit. Omia välineitä ja maalausvaloja saa ottaa mukaan.\r\n\r\nTekniikkaa pidetään usein hieman haasteellisena, joten työpaja soveltuu parhaiten kävijöille, joilla figumaalauksen perusteet ovat jo hallussa.\r\n\r\nKysymyksissä ota yhteyttä suoraan vetäjään sähköpostitse raddicrafts (ät) gmail.com tai esim. Instagramissa @raddicraft.\r\n\r\n--\r\n\r\nNon-metallic metal or NMM is a miniature painting technique, where metallic surfaces are painted by imitating the reflections etc. using paints without actual metallic pigments.\r\n\r\nIn this workshop award-winning miniature painter & teacher Erkka 'RaddiCraft' Marttio will help you understand the theory and practice behind this technique.\r\n\r\nFor the workshop you need your own brush (size recommendation 000-2). You'll get the figure (Stormcast Eternal), a diy-wet palette if needed and the paints from the workshop. You're welcome to bring your own equipment and lighting.\r\n\r\nAs the technique is often considered somewhat advanced, the workshop is best suited for intermediate to advanced miniature painters who already have a grasp of the basics of miniature painting.\r\n\r\nIf you have any questions feel free to be in touch directly with the teacher through email raddicrafts (at) gmail.com or for example through Instagram @raddicraft.",
@@ -1913,9 +1961,10 @@
     "signupType": "none",
     "startTime": "2023-07-28T16:00:00Z",
     "styles": [],
-    "tags": ["aimedAtChildrenBetween13-17", "aimedAtAdultAttendees"],
+    "tags": ["aimedAtChildrenBetween13-17", "adults"],
     "title": "NMM-työpaja / Painting non-metallic metal",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6174",
@@ -1942,9 +1991,10 @@
     "signupType": "konsti",
     "startTime": "2023-07-28T16:00:00Z",
     "styles": [],
-    "tags": ["demo", "aimedAtChildrenBetween13-17", "aimedAtAdultAttendees"],
+    "tags": ["demo", "aimedAtChildrenBetween13-17", "adults"],
     "title": "Agemonia-demotusta ja pelautusta",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6309",
@@ -1974,17 +2024,18 @@
     "tags": [
       "demo",
       "aimedAtChildrenBetween13-17",
-      "aimedAtAdultAttendees",
+      "adults",
       "beginnerFriendly",
       "ropeconTheme"
     ],
     "title": "Colonies of Sol",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6715",
     "accessibilityValues": [
-      "strongSmells",
+      "strongOdours",
       "physicalContact",
       "programmeDurationOver2Hours"
     ],
@@ -2009,10 +2060,11 @@
     "shortDescription": "Karua katujengiläisen elämää Tammerpoliksen synkillä kaduilla.",
     "signupType": "none",
     "startTime": "2023-07-28T16:00:00Z",
-    "styles": ["light", "characterDriven", "combatDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly", "ropeconTheme"],
+    "styles": ["light", "characterDriven", "combatHeavy"],
+    "tags": ["adults", "beginnerFriendly", "ropeconTheme"],
     "title": "Veristä jengibisnestä",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6686",
@@ -2041,7 +2093,8 @@
     "styles": [],
     "tags": ["suitableForAllAges", "beginnerFriendly"],
     "title": "Roolipeliseikkailun luomisen ABC",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6960",
@@ -2068,13 +2121,10 @@
     "signupType": "none",
     "startTime": "2023-07-28T16:00:00Z",
     "styles": [],
-    "tags": [
-      "aimedAtChildrenBetween13-17",
-      "aimedAtAdultAttendees",
-      "beginnerFriendly"
-    ],
+    "tags": ["aimedAtChildrenBetween13-17", "adults", "beginnerFriendly"],
     "title": "Mielikuvituskone: Luovan kirjoittamisen työpaja",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6469",
@@ -2101,9 +2151,10 @@
     "signupType": "none",
     "startTime": "2023-07-28T16:00:00Z",
     "styles": ["light", "rulesLight"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly"],
+    "tags": ["adults", "beginnerFriendly"],
     "title": "Euroviisufiasco",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6753",
@@ -2130,9 +2181,10 @@
     "signupType": "none",
     "startTime": "2023-07-28T16:00:00Z",
     "styles": ["rulesLight", "storyDriven", "characterDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly"],
+    "tags": ["adults", "beginnerFriendly"],
     "title": "Ostarilla fiaskot mielessä",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6657",
@@ -2159,9 +2211,10 @@
     "signupType": "none",
     "startTime": "2023-07-28T16:00:00Z",
     "styles": ["light", "rulesHeavy", "storyDriven", "characterDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly"],
+    "tags": ["adults", "beginnerFriendly"],
     "title": "Kyhmykylän katastrofi",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6651",
@@ -2190,17 +2243,18 @@
     "styles": [],
     "tags": ["suitableForAllAges", "beginnerFriendly", "ropeconTheme"],
     "title": "Savua ja Varjoja (Smoke and Shadows) - Illuminati 2000 1. Pelautus",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7002",
     "accessibilityValues": [
       "loudSounds",
-      "irritateSkin",
+      "irritatingChemicals",
       "physicalContact",
-      "lowLighting",
-      "movingAround",
-      "recording",
+      "darkLighting",
+      "lotsOfMovement",
+      "noTextOfRecording",
       "programmeDurationOver2Hours",
       "participationRequiresDexterity",
       "participationRequiresReactQuickly"
@@ -2227,9 +2281,10 @@
     "signupType": "none",
     "startTime": "2023-07-28T16:30:00Z",
     "styles": [],
-    "tags": ["aimedAtAdultAttendees", "for18PlusOnly"],
+    "tags": ["adults", "onlyAdults"],
     "title": "Superrealism 1. Run",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6584",
@@ -2256,9 +2311,10 @@
     "signupType": "none",
     "startTime": "2023-07-28T16:30:00Z",
     "styles": [],
-    "tags": ["aimedAtAdultAttendees", "ropeconTheme"],
+    "tags": ["adults", "ropeconTheme"],
     "title": "Between Production Lines",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6645",
@@ -2289,13 +2345,10 @@
     "signupType": "konsti",
     "startTime": "2023-07-28T16:30:00Z",
     "styles": [],
-    "tags": [
-      "aimedAtChildrenBetween13-17",
-      "aimedAtAdultAttendees",
-      "beginnerFriendly"
-    ],
+    "tags": ["aimedAtChildrenBetween13-17", "adults", "beginnerFriendly"],
     "title": "Ihmissusipeli (Werewolfes of Millers Hollow)",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6623",
@@ -2332,11 +2385,12 @@
       "rulesLight",
       "storyDriven",
       "characterDriven",
-      "combatDriven"
+      "combatHeavy"
     ],
-    "tags": ["aimedAtAdultAttendees"],
+    "tags": ["adults"],
     "title": "D&D 5e: Written in Blood",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6816",
@@ -2365,7 +2419,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Rajalliset resurssini: proppaamisen ideointityöpaja",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6632",
@@ -2394,12 +2449,13 @@
     "styles": ["light", "characterDriven"],
     "tags": [
       "aimedAtChildrenBetween13-17",
-      "aimedAtAdultAttendees",
+      "adults",
       "beginnerFriendly",
       "ropeconTheme"
     ],
     "title": "Syksy, 1159 Hunajapartio",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6585",
@@ -2426,9 +2482,10 @@
     "signupType": "none",
     "startTime": "2023-07-28T17:00:00Z",
     "styles": [],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly"],
+    "tags": ["adults", "beginnerFriendly"],
     "title": "Improvisaatiota pelaajille",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6563",
@@ -2458,9 +2515,10 @@
     "signupType": "none",
     "startTime": "2023-07-28T17:00:00Z",
     "styles": ["serious", "rulesLight", "storyDriven", "characterDriven"],
-    "tags": ["for18PlusOnly", "beginnerFriendly", "ropeconTheme"],
+    "tags": ["onlyAdults", "beginnerFriendly", "ropeconTheme"],
     "title": "Pompeii: Memento Mori",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6534",
@@ -2492,7 +2550,8 @@
     "styles": ["light", "storyDriven"],
     "tags": ["suitableForAllAges", "beginnerFriendly"],
     "title": "L&L: Sulkavan sointu SIIRRETTY KOKEMUSPISTEELLE",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6742",
@@ -2518,10 +2577,11 @@
     "shortDescription": "Dnd 5e homebrew adventure with a horror twist, Dnd 5e homebrew seikkailua kauhutwistillä",
     "signupType": "none",
     "startTime": "2023-07-28T17:00:00Z",
-    "styles": ["serious", "storyDriven", "characterDriven", "combatDriven"],
-    "tags": ["aimedAtAdultAttendees"],
+    "styles": ["serious", "storyDriven", "characterDriven", "combatHeavy"],
+    "tags": ["adults"],
     "title": "The siege of Doveport (Dnd 5e)",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6115",
@@ -2547,15 +2607,16 @@
     "shortDescription": "Fantasiakääpiöt ryöstämässä haaksirikkoutunutta avaruusalusta",
     "signupType": "none",
     "startTime": "2023-07-28T17:00:00Z",
-    "styles": ["light", "rulesHeavy", "storyDriven", "combatDriven"],
+    "styles": ["light", "rulesHeavy", "storyDriven", "combatHeavy"],
     "tags": [
       "aimedAtChildrenBetween13-17",
-      "aimedAtAdultAttendees",
+      "adults",
       "beginnerFriendly",
       "ropeconTheme"
     ],
     "title": "Tutkimusmatka Estehuipuille",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6847",
@@ -2584,11 +2645,12 @@
     "styles": ["serious", "rulesLight", "storyDriven"],
     "tags": ["beginnerFriendly"],
     "title": "Lasten valtakunta",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7007",
-    "accessibilityValues": ["lowLighting", "limitedOpportunitiesToMoveAround"],
+    "accessibilityValues": ["darkLighting", "limitedOpportunitiesToMoveAround"],
     "contentWarnings": "Hahmojen vääjäämätön kuolema, characters' inevitable death",
     "createdAt": "2023-07-27T17:45:57.271Z",
     "description": "Avaruusalus on palaamassa kotiin pitkältä tutkimusmatkalta, kun jotain menee vikaan ja hyppymoottori ylikuumenee. Keskustietokone ehtii juuri käskeä kolmen hengen miehistön avaruuspukuihin, joten sinkoutuessaan tyhjyyteen he selviävät elossa – vain oivaltaakseen olevansa poikkeavilla lentoradoilla vailla mahdollisuutta vaikuttaa enää mihinkään. Radioyhteys jatkuu vielä 18 minuuttia. Miten hahmot käyttävät aikansa?\r\n\r\nTässä larpissa ei ole sankareita eikä ratsuväki saavu. Pelin metatekniikat ohjaavat hahmot hämmennyksen kautta raivoon ja lopulta hyväksyntään.\r\n\r\nPeli on suunniteltu ja testattu osana Uppsalan yliopiston Transformative Game Design -opintokokonaisuutta.\r\n\r\nSpaceship is returning from a long expedition when something goes awry and the warp core overheats. Central computer barely has time to tell the crew to suit up so that when they are blasted into space they survive – only to realize that they are on differing trajectories with no chance to affect anything. They remain in radio contact for 18 minutes more. How will they use their time?\r\n\r\nIn this larp there are no heroes, the cavalry won't be arriving. The metatechniques of the game guide the players through confusion to rage and finally to acceptance.\r\n\r\nThe game has been designed and tested as a part of the Transformative Game Design curriculum of Uppsala University.",
@@ -2611,9 +2673,10 @@
     "signupType": "none",
     "startTime": "2023-07-28T17:30:00Z",
     "styles": [],
-    "tags": ["aimedAtAdultAttendees"],
+    "tags": ["adults"],
     "title": "Viimeiset 18 minuuttiamme / Our Final 18 Minutes 1. Pelautus / 1. Run",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7083",
@@ -2647,16 +2710,17 @@
     "styles": [],
     "tags": [
       "aimedAtChildrenBetween13-17",
-      "aimedAtAdultAttendees",
+      "adults",
       "beginnerFriendly",
       "ropeconTheme"
     ],
     "title": "Niitit, soljet ja nepparit - puoti ja työpaja",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6978",
-    "accessibilityValues": ["colourblind", "participationRequiresDexterity"],
+    "accessibilityValues": ["colorBlindness", "participationRequiresDexterity"],
     "contentWarnings": "",
     "createdAt": "2023-07-27T17:45:57.271Z",
     "description": "Pikamaalauskisassa tavoitteena on maalata annettu miniatyyri mahdollisimman hyvin annetussa ajassa. Aikaa maalaamiseen on varattu yksi tunti, ja parhaiten maalattu figu voittaa.\r\n\r\nEt tarvitse kisaan omaa figua, vaan saat sen toivomallasi pohjamaalilla juuri ennen suorituksen alkua. Luonnollisesti kisatyön saa ottaa mukaansa tuomaroinnin jälkeen.\r\n\r\nOmia maalausvälineitä (paletit, siveltimet, maalit) saa käyttää, mutta halutessaan voi myös hyödyntää figumaalauspisteen tarjontaa.\r\n\r\nKisan pääsponsorina toimii tänä vuonna The Dragon Trappers Lodge.\r\n\r\n====\r\n\r\nThe goal in the Speed Painting Contest is to paint a given miniature as well as possible in a given time. The contestants have one hour to paint, and the best painted miniature wins.\r\n\r\nBringing your own miniature into the contest is not needed, as you will be provided one right before the beginning. Naturally, participants can take their contest work with them after the judges have finished the evaluation.\r\n\r\nYou can participate in the contest either using your own painting supplies (palettes, brushes, paints), or you can take advantage of the selection at Ropecon's Miniature Painting Station.\r\n\r\nThe main sponsor of this year's contest is The Dragon Trappers Lodge.",
@@ -2679,13 +2743,10 @@
     "signupType": "konsti",
     "startTime": "2023-07-28T18:00:00Z",
     "styles": [],
-    "tags": [
-      "tournament",
-      "aimedAtChildrenBetween13-17",
-      "aimedAtAdultAttendees"
-    ],
+    "tags": ["tournament", "aimedAtChildrenBetween13-17", "adults"],
     "title": "Pikamaalauskilpailu / Speed Painting Contest 2 (Pe/Fri)",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6809",
@@ -2712,9 +2773,10 @@
     "signupType": "none",
     "startTime": "2023-07-28T18:00:00Z",
     "styles": ["rulesLight"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly", "ropeconTheme"],
+    "tags": ["adults", "beginnerFriendly", "ropeconTheme"],
     "title": "The Ghosts of Zoazanna Mountain",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6695",
@@ -2740,10 +2802,11 @@
     "shortDescription": "Post-apocalyptinen seikkailu kaikkia perinteitä kunnioittaen.",
     "signupType": "none",
     "startTime": "2023-07-28T18:00:00Z",
-    "styles": ["light", "rulesLight", "characterDriven", "combatDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly", "ropeconTheme"],
+    "styles": ["light", "rulesLight", "characterDriven", "combatHeavy"],
+    "tags": ["adults", "beginnerFriendly", "ropeconTheme"],
     "title": "Pirtua itärajalla Vol. 1",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6529",
@@ -2770,9 +2833,10 @@
     "signupType": "none",
     "startTime": "2023-07-28T18:00:00Z",
     "styles": [],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly"],
+    "tags": ["adults", "beginnerFriendly"],
     "title": "Virkkaa lohikäärmeenmuna / Crochet a Dragon Egg Dicebag",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6598",
@@ -2802,9 +2866,10 @@
     "signupType": "none",
     "startTime": "2023-07-28T18:00:00Z",
     "styles": ["light", "rulesLight", "storyDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly", "ropeconTheme"],
+    "tags": ["adults", "beginnerFriendly", "ropeconTheme"],
     "title": "Pirate Borg: Luurankokärjen kirous!",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6700",
@@ -2831,9 +2896,10 @@
     "signupType": "none",
     "startTime": "2023-07-28T18:00:00Z",
     "styles": ["serious", "characterDriven"],
-    "tags": ["aimedAtAdultAttendees"],
+    "tags": ["adults"],
     "title": "Pysäyttämätön voima",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6772",
@@ -2860,13 +2926,14 @@
     "signupType": "none",
     "startTime": "2023-07-28T18:00:00Z",
     "styles": ["rulesLight"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly"],
+    "tags": ["adults", "beginnerFriendly"],
     "title": "Kadonnut Nochetissa",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7009",
-    "accessibilityValues": ["lowLighting", "limitedOpportunitiesToMoveAround"],
+    "accessibilityValues": ["darkLighting", "limitedOpportunitiesToMoveAround"],
     "contentWarnings": "Hahmojen vääjäämätön kuolema,  characters' inevitable death",
     "createdAt": "2023-07-27T17:45:57.271Z",
     "description": "Avaruusalus on palaamassa kotiin pitkältä tutkimusmatkalta, kun jotain menee vikaan ja hyppymoottori ylikuumenee. Keskustietokone ehtii juuri käskeä kolmen hengen miehistön avaruuspukuihin, joten sinkoutuessaan tyhjyyteen he selviävät elossa – vain oivaltaakseen olevansa poikkeavilla lentoradoilla vailla mahdollisuutta vaikuttaa enää mihinkään. Radioyhteys jatkuu vielä 18 minuuttia. Miten hahmot käyttävät aikansa?\r\n\r\nTässä larpissa ei ole sankareita eikä ratsuväki saavu. Pelin metatekniikat ohjaavat hahmot hämmennyksen kautta raivoon ja lopulta hyväksyntään.\r\n\r\nPeli on suunniteltu ja testattu osana Uppsalan yliopiston Transformative Game Design -opintokokonaisuutta.\r\n\r\nSpaceship is returning from a long expedition when something goes awry and the warp core overheats. Central computer barely has time to tell the crew to suit up so that when they are blasted into space they survive – only to realize that they are on differing trajectories with no chance to affect anything. They remain in radio contact for 18 minutes more. How will they use their time?\r\n\r\nIn this larp there are no heroes, the cavalry won't be arriving. The metatechniques of the game guide the players through confusion to rage and finally to acceptance.\r\n\r\nThe game has been designed and tested as a part of the Transformative Game Design curriculum of Uppsala University.",
@@ -2889,9 +2956,10 @@
     "signupType": "none",
     "startTime": "2023-07-28T18:30:00Z",
     "styles": [],
-    "tags": ["aimedAtAdultAttendees"],
+    "tags": ["adults"],
     "title": "Viimeiset 18 minuuttiamme / Our Final 18 Minutes 2. Pelautus / 2. Run",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6476",
@@ -2918,9 +2986,10 @@
     "signupType": "none",
     "startTime": "2023-07-28T19:00:00Z",
     "styles": ["light", "rulesLight"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly"],
+    "tags": ["adults", "beginnerFriendly"],
     "title": "The Murkmire Malevolence",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6167",
@@ -2952,15 +3021,16 @@
     "signupType": "none",
     "startTime": "2023-07-28T19:00:00Z",
     "styles": ["light", "rulesLight", "storyDriven", "characterDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly", "ropeconTheme"],
+    "tags": ["adults", "beginnerFriendly", "ropeconTheme"],
     "title": "Kadonnut valo / The Absence of Light",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6240",
     "accessibilityValues": [
       "loudSounds",
-      "lowLighting",
+      "darkLighting",
       "participationRequiresDexterity"
     ],
     "contentWarnings": "ilmapallot, seksi (simuloitu)",
@@ -2985,16 +3055,17 @@
     "signupType": "none",
     "startTime": "2023-07-28T19:00:00Z",
     "styles": [],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly"],
+    "tags": ["adults", "beginnerFriendly"],
     "title": "Pohojosen emäntien työpaja: Seksiä ja väkivaltaa, osa 1",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6334",
     "accessibilityValues": [
       "loudSounds",
       "physicalContact",
-      "colourblind",
+      "colorBlindness",
       "programmeDurationOver2Hours",
       "limitedOpportunitiesToMoveAround",
       "longText",
@@ -3024,9 +3095,10 @@
     "signupType": "none",
     "startTime": "2023-07-28T19:00:00Z",
     "styles": ["light", "rulesLight", "characterDriven"],
-    "tags": ["aimedAtAdultAttendees"],
+    "tags": ["adults"],
     "title": "Viisi Koboldia Trenssitakissa (Pe)",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6713",
@@ -3056,14 +3128,10 @@
     "signupType": "none",
     "startTime": "2023-07-28T19:00:00Z",
     "styles": ["serious", "rulesLight", "storyDriven"],
-    "tags": [
-      "aimedAtAdultAttendees",
-      "for18PlusOnly",
-      "beginnerFriendly",
-      "ropeconTheme"
-    ],
+    "tags": ["adults", "onlyAdults", "beginnerFriendly", "ropeconTheme"],
     "title": "Pimeys Shedsby Coven yllä",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6306",
@@ -3090,15 +3158,16 @@
     "signupType": "none",
     "startTime": "2023-07-28T19:00:00Z",
     "styles": ["rulesLight", "storyDriven", "characterDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly"],
+    "tags": ["adults", "beginnerFriendly"],
     "title": "Soluttautujat",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6760",
     "accessibilityValues": [
-      "lowLighting",
-      "recording",
+      "darkLighting",
+      "noTextOfRecording",
       "programmeDurationOver2Hours",
       "limitedOpportunitiesToMoveAround"
     ],
@@ -3124,14 +3193,15 @@
     "signupType": "none",
     "startTime": "2023-07-28T20:00:00Z",
     "styles": ["serious", "rulesLight", "storyDriven", "characterDriven"],
-    "tags": ["for18PlusOnly", "ropeconTheme"],
+    "tags": ["onlyAdults", "ropeconTheme"],
     "title": "Umbra",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6166",
     "accessibilityValues": [
-      "lowLighting",
+      "darkLighting",
       "programmeDurationOver2Hours",
       "limitedOpportunitiesToMoveAround"
     ],
@@ -3157,13 +3227,14 @@
     "signupType": "none",
     "startTime": "2023-07-28T20:00:00Z",
     "styles": ["serious", "rulesLight", "storyDriven", "characterDriven"],
-    "tags": ["for18PlusOnly", "beginnerFriendly"],
+    "tags": ["onlyAdults", "beginnerFriendly"],
     "title": "Ei voi hengittää / Can't breathe",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6736",
-    "accessibilityValues": ["lowLighting", "cannotUseMic"],
+    "accessibilityValues": ["darkLighting", "cannotUseMic"],
     "contentWarnings": "Concepts of horror, some gore, 1x jump scare",
     "createdAt": "2023-07-27T17:45:57.271Z",
     "description": "Lost for Wine (D&D 5e, level 5)\r\nThe small town of Gartenfraud is a simple town with simple traditions. Most of the common folks that live there all work at the vineyard providing some of the most delicious components for the best wines out there. But the town has been lately experiencing an unusual disappearance of people. Some never get to work, others just gone missing with no trace.\r\n\r\n\u2028\u2028Recently, the residents of Gartenfraud have begun noticing dark things in the streets at night and quiet whispers and moans echoing from the abandoned mansion of Gartencas, the previous mayor’s house. With alarm sweeping through the town, the council has sent out a cry for adventurers brave enough to investigate these happenings and resolve them.\r\n\r\nThe party's goal:\r\nInvestigate the manor and find out what's causing the noise and the disappearance of people.\r\n\r\n\r\nSession's length: ~4-5 hours (2-3x breaks incl.)\r\nLevel: 5\r\nCharacters: pre-made sheets will be provided.\r\nCharacter creation: If you create your character by yourself, use Standard Array or Point Buy. (Optional)",
@@ -3185,10 +3256,11 @@
     "shortDescription": "A ghastly D&D story",
     "signupType": "none",
     "startTime": "2023-07-29T06:00:00Z",
-    "styles": ["serious", "light", "storyDriven", "combatDriven"],
-    "tags": ["aimedAtAdultAttendees", "for18PlusOnly", "beginnerFriendly"],
+    "styles": ["serious", "light", "storyDriven", "combatHeavy"],
+    "tags": ["adults", "onlyAdults", "beginnerFriendly"],
     "title": "Lost for Wine",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7074",
@@ -3217,11 +3289,12 @@
     "styles": [],
     "tags": ["suitableForAllAges", "beginnerFriendly"],
     "title": "Draw Your Character!",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6989",
-    "accessibilityValues": ["colourblind", "participationRequiresDexterity"],
+    "accessibilityValues": ["colorBlindness", "participationRequiresDexterity"],
     "contentWarnings": "",
     "createdAt": "2023-07-27T17:45:57.271Z",
     "description": "Pikamaalauskisassa tavoitteena on maalata annettu miniatyyri mahdollisimman hyvin annetussa ajassa. Aikaa maalaamiseen on varattu yksi tunti, ja parhaiten maalattu figu voittaa.\r\n\r\nEt tarvitse kisaan omaa figua, vaan saat sen toivomallasi pohjamaalilla juuri ennen suorituksen alkua. Luonnollisesti kisatyön saa ottaa mukaansa tuomaroinnin jälkeen.\r\n\r\nOmia maalausvälineitä (paletit, siveltimet, maalit) saa käyttää, mutta halutessaan voi myös hyödyntää figumaalauspisteen tarjontaa.\r\n\r\nKisan pääsponsorina toimii tänä vuonna The Dragon Trappers Lodge.\r\n\r\n====\r\n\r\nThe goal in the Speed Painting Contest is to paint a given miniature as well as possible in a given time. The contestants have one hour to paint, and the best painted miniature wins.\r\n\r\nBringing your own miniature into the contest is not needed, as you will be provided one right before the beginning. Naturally, participants can take their contest work with them after the judges have finished the evaluation.\r\n\r\nYou can participate in the contest either using your own painting supplies (palettes, brushes, paints), or you can take advantage of the selection at Ropecon's Miniature Painting Station.\r\n\r\nThe main sponsor of this year's contest is The Dragon Trappers Lodge.",
@@ -3244,13 +3317,10 @@
     "signupType": "konsti",
     "startTime": "2023-07-29T07:00:00Z",
     "styles": [],
-    "tags": [
-      "tournament",
-      "aimedAtChildrenBetween13-17",
-      "aimedAtAdultAttendees"
-    ],
+    "tags": ["tournament", "aimedAtChildrenBetween13-17", "adults"],
     "title": "Pikamaalauskilpailu / Speed Painting Contest 3 (La/Sat)",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7226",
@@ -3279,11 +3349,15 @@
     "styles": [],
     "tags": ["suitableForAllAges", "beginnerFriendly"],
     "title": "Figumaalauspiste / Mini Painting Point",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6974",
-    "accessibilityValues": ["irritateSkin", "participationRequiresDexterity"],
+    "accessibilityValues": [
+      "irritatingChemicals",
+      "participationRequiresDexterity"
+    ],
     "contentWarnings": "",
     "createdAt": "2023-07-27T17:45:57.271Z",
     "description": "Muinainen rauniokaupunki vai avaruuden yhteysasema? Saniaisten alla oleva salainen mennikäiskoti vai tulevaisuuden teräksenkatkuinen taistelukenttä?  Millainen maasto herättää mielikuvituksen ja palvelee parhjaiten pelaamista? Suunnittele ja tee oma seikkailu- ja pelimaastosi!\r\n\r\nEsittelyssä käydään läpi erilaisia helppoja menetelmiä ja jokapäiväisiä materiaaleja, joista voi luovasti valmistaa itse pienoismittakaavan maastoja roolipeli-, miniatyyripeli- ja dioraamakäyttöön. Työosuudessa suunnitellaan ja aloitetaan rakentamaan omaa maastoa.\r\n\r\nTyöpaja sopii aloittelijoille ja jo pidempään rakentelua harrastaneille.\r\n\r\nFor English speakers: Short presentation in Finnish. Personal guidance in both Finnish and English\r\n\r\n\r\nENGLANNIKSI\r\n\r\nMiniature model terrain workshop\r\n\r\nAn ancient ruined city or a space station? A secret fey home under the ferns or a steely smelling battlefield of the future? What kind of terrain stirs the imagination and works best for gaming purposes? Design and make your own minature adventure locations!\r\n\r\nIn the presentation, we go through various easy methods and everyday materials, from which you can creatively make small-scale terrains yourself for role-playing games, miniature games and dioramas. In the work section, we plan and start building our own terrain.\r\n\r\nThe workshop is suitable for beginners and those who have been building for a long time.",
@@ -3308,11 +3382,12 @@
     "styles": [],
     "tags": ["suitableForAllAges", "beginnerFriendly", "ropeconTheme"],
     "title": "Pienoismallimaaston rakennustyöpaja 1 / Miniature model terrain workshop 1",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6391",
-    "accessibilityValues": ["recording", "programmeDurationOver2Hours"],
+    "accessibilityValues": ["noTextOfRecording", "programmeDurationOver2Hours"],
     "contentWarnings": "",
     "createdAt": "2023-07-27T17:45:57.271Z",
     "description": "Hullu Reppuli on tehnyt sen taas. Hän on koonut joukon seikkalun halusia Repunpäähän ja nimennyt heidän Punaisen kirjan salaliittolaisiksi. Pyrkiessään kerätä muistiinpanoja kirjaansa varten. Hän on pyytänyt näiltä ystäviltä, maksusta ja pientä seikalua vastaan auttamaan häntä vahvistamaan joitakin tärkeitä yksityiskohtia Konnun historiasta ja sen asukaista.",
@@ -3337,7 +3412,8 @@
     "styles": ["serious", "rulesLight", "storyDriven"],
     "tags": ["suitableForAllAges", "beginnerFriendly"],
     "title": "Seikkailuja Konnussa",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7235",
@@ -3365,13 +3441,14 @@
     "startTime": "2023-07-29T07:00:00Z",
     "styles": ["light", "rulesLight", "storyDriven", "characterDriven"],
     "tags": [
-      "aimedAtChildrenUnder13",
+      "kids",
       "aimedAtChildrenBetween13-17",
-      "aimedAtAdultAttendees",
+      "adults",
       "beginnerFriendly"
     ],
     "title": "Lintuparvi (La2)",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6851",
@@ -3397,10 +3474,11 @@
     "shortDescription": "Hobittisankarit ajavat takaa tuntematonta vihollista Vihermetsän uumeniin.",
     "signupType": "none",
     "startTime": "2023-07-29T07:00:00Z",
-    "styles": ["serious", "characterDriven", "combatDriven"],
+    "styles": ["serious", "characterDriven", "combatHeavy"],
     "tags": ["beginnerFriendly"],
     "title": "Muinaishobitit 2: Vihermetsän Varjo",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6794",
@@ -3427,9 +3505,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T07:00:00Z",
     "styles": ["serious", "rulesLight"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly", "ropeconTheme"],
+    "tags": ["adults", "beginnerFriendly", "ropeconTheme"],
     "title": "Ikimetsien varjot 1",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6343",
@@ -3459,9 +3538,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T07:00:00Z",
     "styles": [],
-    "tags": ["suitableForAllAges", "aimedAtAdultAttendees"],
+    "tags": ["suitableForAllAges", "adults"],
     "title": "PbtA-konseptista peliksi",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6931",
@@ -3488,13 +3568,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T07:00:00Z",
     "styles": [],
-    "tags": [
-      "aimedAtChildrenBetween13-17",
-      "aimedAtAdultAttendees",
-      "beginnerFriendly"
-    ],
+    "tags": ["aimedAtChildrenBetween13-17", "adults", "beginnerFriendly"],
     "title": "Lockpicking Workshop for Beginners",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7023",
@@ -3520,10 +3597,11 @@
     "shortDescription": "Roolipelikampanja Vietnamin sodasta",
     "signupType": "none",
     "startTime": "2023-07-29T07:00:00Z",
-    "styles": ["serious", "rulesHeavy", "combatDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly", "ropeconTheme"],
+    "styles": ["serious", "rulesHeavy", "combatHeavy"],
+    "tags": ["adults", "beginnerFriendly", "ropeconTheme"],
     "title": "Charlie ei surffaa",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6765",
@@ -3554,17 +3632,14 @@
     "signupType": "none",
     "startTime": "2023-07-29T07:00:00Z",
     "styles": [],
-    "tags": [
-      "aimedAtChildrenBetween13-17",
-      "aimedAtAdultAttendees",
-      "ropeconTheme"
-    ],
+    "tags": ["aimedAtChildrenBetween13-17", "adults", "ropeconTheme"],
     "title": "Game Master Collaboration",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6359",
-    "accessibilityValues": ["physicalContact", "movingAround"],
+    "accessibilityValues": ["physicalContact", "lotsOfMovement"],
     "contentWarnings": "simuloitu väkivalta ja läheisyys",
     "createdAt": "2023-07-27T17:45:57.271Z",
     "description": "Tule oppimaan, miten kohauttaa yleisöä kaltoinkohtelematta kanssapelaajaa tai -cossaajaa. Työpajan pohjana on teatterissa käytetyt tekniikat. Pajassa niistä taotaan larppeihin ja cosplay-ohjelmiin räätälöidyt työkalut. \r\n\r\nPajan aikana saat keinoja esittää väkivaltaa ja pussailua uskottavan näköisesti ilman, että kenellekään tilanteeseen osallistuvalle koituu haittaa esimerkiksi mustelmien, huuliherpeksen, asun tuhoutumisen tai turvallisuuden tunteen menettämisen myötä.\r\n\r\nTyöpajaan ei ole ennakkoilmoittautumista, mutta osallistujamäärää voidaan rajata, jos tila tulee täyteen.",
@@ -3587,9 +3662,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T07:00:00Z",
     "styles": [],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly"],
+    "tags": ["adults", "beginnerFriendly"],
     "title": "Nyrkin- ja silmäniskuja - väkivalta- ja romantiikkatyöpaja larppaajille ja cossaajille",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6638",
@@ -3616,17 +3692,18 @@
     "signupType": "none",
     "startTime": "2023-07-29T07:00:00Z",
     "styles": [],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly", "ropeconTheme"],
+    "tags": ["adults", "beginnerFriendly", "ropeconTheme"],
     "title": "Kielokoti 1. Pelautus",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6998",
     "accessibilityValues": [
       "loudSounds",
       "physicalContact",
-      "lowLighting",
-      "recording",
+      "darkLighting",
+      "noTextOfRecording",
       "programmeDurationOver2Hours",
       "limitedOpportunitiesToMoveAround",
       "textNotAvailableAsRecordings",
@@ -3654,14 +3731,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T07:00:00Z",
     "styles": [],
-    "tags": [
-      "aimedAtAdultAttendees",
-      "for18PlusOnly",
-      "beginnerFriendly",
-      "ropeconTheme"
-    ],
+    "tags": ["adults", "onlyAdults", "beginnerFriendly", "ropeconTheme"],
     "title": "Hissilarppi 1. Pelautus",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6734",
@@ -3690,12 +3763,13 @@
     "styles": ["characterDriven"],
     "tags": [
       "aimedAtChildrenBetween13-17",
-      "aimedAtAdultAttendees",
+      "adults",
       "beginnerFriendly",
       "ropeconTheme"
     ],
     "title": "Games, vampire games.",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6750",
@@ -3722,9 +3796,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T07:00:00Z",
     "styles": ["rulesLight", "storyDriven", "characterDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly"],
+    "tags": ["adults", "beginnerFriendly"],
     "title": "Kohtaaminen Gloranthassa",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6688",
@@ -3751,9 +3826,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T07:00:00Z",
     "styles": ["serious", "rulesLight", "storyDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly"],
+    "tags": ["adults", "beginnerFriendly"],
     "title": "VAESEN: Noitakissan majatalo (1. peluutus)",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6616",
@@ -3784,15 +3860,12 @@
       "rulesHeavy",
       "rulesLight",
       "storyDriven",
-      "combatDriven"
+      "combatHeavy"
     ],
-    "tags": [
-      "aimedAtChildrenBetween13-17",
-      "aimedAtAdultAttendees",
-      "beginnerFriendly"
-    ],
+    "tags": ["aimedAtChildrenBetween13-17", "adults", "beginnerFriendly"],
     "title": "Kidnappaus Kannonkylässä (Pelautus 2)",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6633",
@@ -3821,12 +3894,13 @@
     "styles": ["light", "characterDriven"],
     "tags": [
       "aimedAtChildrenBetween13-17",
-      "aimedAtAdultAttendees",
+      "adults",
       "beginnerFriendly",
       "ropeconTheme"
     ],
     "title": "Syksy 1159, Hunajapartio",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6653",
@@ -3853,9 +3927,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T07:00:00Z",
     "styles": ["serious", "rulesLight", "characterDriven"],
-    "tags": ["for18PlusOnly", "beginnerFriendly", "ropeconTheme"],
+    "tags": ["onlyAdults", "beginnerFriendly", "ropeconTheme"],
     "title": "Delta Green: Operation DONATION BOX",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6756",
@@ -3882,9 +3957,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T07:00:00Z",
     "styles": ["rulesLight", "storyDriven", "characterDriven"],
-    "tags": ["for18PlusOnly", "beginnerFriendly", "ropeconTheme"],
+    "tags": ["onlyAdults", "beginnerFriendly", "ropeconTheme"],
     "title": "Läpimurto",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6749",
@@ -3911,9 +3987,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T07:00:00Z",
     "styles": ["serious"],
-    "tags": ["aimedAtAdultAttendees", "ropeconTheme"],
+    "tags": ["adults", "ropeconTheme"],
     "title": "Kontakti Omega Drakoniksella",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6508",
@@ -3945,7 +4022,8 @@
     "styles": ["light", "storyDriven"],
     "tags": ["suitableForAllAges", "beginnerFriendly"],
     "title": "L&L: Sulkavan sointu",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6634",
@@ -3972,13 +4050,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T07:00:00Z",
     "styles": ["light", "characterDriven"],
-    "tags": [
-      "aimedAtChildrenBetween13-17",
-      "aimedAtAdultAttendees",
-      "beginnerFriendly"
-    ],
+    "tags": ["aimedAtChildrenBetween13-17", "adults", "beginnerFriendly"],
     "title": "Kesä 1158, Tulikaste",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6782",
@@ -4007,7 +4082,8 @@
     "styles": ["light", "rulesLight", "characterDriven"],
     "tags": ["beginnerFriendly"],
     "title": "Kaer Morhenin Noiturit: Todellisia hirviöitä",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7000",
@@ -4040,15 +4116,16 @@
       "beginnerFriendly"
     ],
     "title": "Kodinkoneiden käräjät 1. Pelautus",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7214",
     "accessibilityValues": [
       "loudSounds",
       "flashingLights",
-      "strongSmells",
-      "irritateSkin"
+      "strongOdours",
+      "irritatingChemicals"
     ],
     "contentWarnings": "",
     "createdAt": "2023-07-27T17:45:57.271Z",
@@ -4073,14 +4150,15 @@
     "startTime": "2023-07-29T08:00:00Z",
     "styles": [],
     "tags": [
-      "aimedAtAdultAttendees",
-      "for18PlusOnly",
+      "adults",
+      "onlyAdults",
       "beginnerFriendly",
       "ropeconTheme",
       "celebratoryYear"
     ],
     "title": "Tao oma korusi",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6776",
@@ -4109,7 +4187,8 @@
     "styles": ["storyDriven"],
     "tags": [],
     "title": "Mythic GME totally improvised game",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6302",
@@ -4138,7 +4217,8 @@
     "styles": ["light", "characterDriven"],
     "tags": ["beginnerFriendly"],
     "title": "Breakfast at the Drowsy Dragon",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6665",
@@ -4171,7 +4251,8 @@
     "styles": ["light", "rulesHeavy"],
     "tags": ["suitableForAllAges", "beginnerFriendly"],
     "title": "Pathfinder Society #2-11 The Pathfinder Trials",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6165",
@@ -4198,9 +4279,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T08:00:00Z",
     "styles": ["light", "rulesLight", "characterDriven"],
-    "tags": ["aimedAtAdultAttendees", "ropeconTheme"],
+    "tags": ["adults", "ropeconTheme"],
     "title": "Habershiressa tapahtuu. That Time in Habershire",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7031",
@@ -4229,7 +4311,8 @@
     "styles": ["light", "rulesLight"],
     "tags": ["suitableForAllAges", "beginnerFriendly"],
     "title": "Kokeile pelinjohtamista -piste (La)",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7029",
@@ -4262,9 +4345,10 @@
       "storyDriven",
       "characterDriven"
     ],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly"],
+    "tags": ["adults", "beginnerFriendly"],
     "title": "Indiehuone / Indie Room / Indierummet (La/Lö/Sat)",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6592",
@@ -4293,7 +4377,8 @@
     "styles": ["light", "rulesLight", "storyDriven", "characterDriven"],
     "tags": ["suitableForAllAges", "beginnerFriendly"],
     "title": "El-Hazard: Delfiini-karhujen vitsaus",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6814",
@@ -4322,7 +4407,8 @@
     "styles": ["light", "rulesLight"],
     "tags": ["beginnerFriendly"],
     "title": "Goblins Need Cake",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6606",
@@ -4349,17 +4435,18 @@
     "signupType": "none",
     "startTime": "2023-07-29T08:00:00Z",
     "styles": [],
-    "tags": [
-      "suitableForAllAges",
-      "aimedAtChildrenUnder13",
-      "beginnerFriendly"
-    ],
+    "tags": ["suitableForAllAges", "kids", "beginnerFriendly"],
     "title": "Nuorten seikkailijoiden salakirjoituspaja - Taso 1",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7111",
-    "accessibilityValues": ["loudSounds", "physicalContact", "recording"],
+    "accessibilityValues": [
+      "loudSounds",
+      "physicalContact",
+      "noTextOfRecording"
+    ],
     "contentWarnings": "Työpajassa voidaan esimerkiksi koskea toiseen (suostumuksella), tulla hyvin lähelle, korottaa ääntä ja rajoittaa hetkellisesti liikkumista. Parisi saattaa olla sinulle tuntematon henkilö. Työpajan tarkoituksena on harjoitella toiseen henkilöön kohdistuvaa painostusta/hallitsevaa asennetta/dominointia/autoritääristä asennetta.",
     "createdAt": "2023-07-27T17:45:57.271Z",
     "description": "Mitä kehonkielesi kertoo ja miten hallita sitä? Miten ottaa tila haltuun? Miten pelata autoritaarisia ja dominoivia hahmoja? Miten korostaa itsevarmuutta? Missä menevät rajat hallinnan ja dominoinnin välillä?\r\n\r\nSuosittu asennetyöpaja tulee taas! Työpajassa käydään läpi harjoituksin ja esimerkein kehonkielen, ilmeiden, eleiden ja äänenkäytön vaikutusta dominoivia tai hallitsevassa asemassa olevia hahmoja pelattaessa, mutta peilataan samojen asioiden vaikutusta myös larppien ulkopuolella.\r\n\r\nTämän vuoden asennetyöpaja on suunnattu täysi-ikäisille, mutta ikäraja ei ole tiukka. Tulee kuitenkin huomioida, että työpajassa voidaan (sopimuksen ja rajojen mukaan tietenkin) koskea toiseen, tulla hyvin lähelle, korottaa ääntä, rajoittaa hetkellisesti liikkumista, määrätä henkilöä asentoihin etc. ja parisi saattaa olla sinulle tuntematon henkilö. Jos siis koet, että nämä asiat voivat olla sinulle haastavia tai ahdistavia harkitsethan osallistumistasi, tai osallistu yhdessä tutun ja turvallisen kaverin kanssa!\r\n\r\nTyöpajan vetää Sadetta Postareff ja häntä avustaa Petri Heinonen.\r\n\r\nTyöpajaan on ennakkoilmoittautuminen Konstissa alkaen perjantaina kello 18.00.",
@@ -4382,9 +4469,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T08:00:00Z",
     "styles": [],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly"],
+    "tags": ["adults", "beginnerFriendly"],
     "title": "Asennetyöpaja - hallitsevat hahmot larpeissa ja kehonkielen vaikutus tosielämässä",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6892",
@@ -4411,13 +4499,14 @@
     "signupType": "none",
     "startTime": "2023-07-29T08:00:00Z",
     "styles": [],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly", "ropeconTheme"],
+    "tags": ["adults", "beginnerFriendly", "ropeconTheme"],
     "title": "Women in Finland",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6299",
-    "accessibilityValues": ["movingAround"],
+    "accessibilityValues": ["lotsOfMovement"],
     "contentWarnings": "Väkijoukot",
     "createdAt": "2023-07-27T17:45:57.271Z",
     "description": "\"Vaeltajalegendat\"- niminen seikkailijaryhmä.on mystisesti teleporttautunut Faerunin Miekkarannikolta Suomen Pasilan Messukeskukseen! VL tarvitsee urheiden seikkailijoiden, varsinkin pienten ja tarkkasilmäisten, apua Tiamatin kätyreiden löytämisessä Ropecon nimisiltä markkinoilta.\r\nPeli on walk-in tyylinen super kevyt hauskuuttelu jossa VL kulkee ympäri aluetta ja heiltä saa tehtäviä joita pitää suorittaa Conin alueella. Tehtävistä sa kokemuspisteitä joilla voi päästä vaikeampiin tehtäviin. \r\nPeli sopii varsinkin lapsiperheille sillä tehtäviä voi hoitaa muun coniskelun ohessa.\r\n\r\nOhjelmanumeroon ilmoittautuminen tapahtuu RopeLarptiskillä.",
@@ -4442,13 +4531,14 @@
     "styles": [],
     "tags": [
       "suitableForAllAges",
-      "aimedAtChildrenUnder13",
+      "kids",
       "aimedAtChildrenBetween13-17",
       "beginnerFriendly",
       "ropeconTheme"
     ],
     "title": "Vaeltajalegendat: Sinustako seikkailija!? 1. Pelautus",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7064",
@@ -4475,9 +4565,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T08:00:00Z",
     "styles": ["serious", "rulesHeavy", "characterDriven"],
-    "tags": ["aimedAtAdultAttendees", "for18PlusOnly"],
+    "tags": ["adults", "onlyAdults"],
     "title": "Overlord 2023 näytöspeli (La)",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6800",
@@ -4507,10 +4598,11 @@
     "shortDescription": "Megadungeon crawl",
     "signupType": "none",
     "startTime": "2023-07-29T08:00:00Z",
-    "styles": ["light", "combatDriven"],
+    "styles": ["light", "combatHeavy"],
     "tags": [],
     "title": "Expedition to Undermountain",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6766",
@@ -4537,9 +4629,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T08:00:00Z",
     "styles": ["light", "characterDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly"],
+    "tags": ["adults", "beginnerFriendly"],
     "title": "A Feast For Kings",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6648",
@@ -4568,7 +4661,8 @@
     "styles": [],
     "tags": ["suitableForAllAges", "beginnerFriendly"],
     "title": "Tee-se-itse: Märkäpaletti (la) / DIY: Wet Palette (Sat)",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6445",
@@ -4597,7 +4691,8 @@
     "styles": [],
     "tags": ["suitableForAllAges", "beginnerFriendly"],
     "title": "Taikasauvapaja - Make Your Own Magic Wand",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7089",
@@ -4626,7 +4721,8 @@
     "styles": [],
     "tags": ["suitableForAllAges", "beginnerFriendly", "ropeconTheme"],
     "title": "Wanderhome - Tulevan ja menneen tienristeyksessä (la/sat)",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6669",
@@ -4659,7 +4755,8 @@
     "styles": ["light", "rulesHeavy"],
     "tags": ["suitableForAllAges", "beginnerFriendly", "ropeconTheme"],
     "title": "Starfinder Society #5-01: Year of Redemption's Rise",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6863",
@@ -4688,7 +4785,8 @@
     "styles": ["light", "rulesHeavy"],
     "tags": ["beginnerFriendly"],
     "title": "Pako Mos Shuutasta",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6640",
@@ -4720,7 +4818,8 @@
     "styles": ["light", "storyDriven"],
     "tags": ["suitableForAllAges", "beginnerFriendly"],
     "title": "L&L: Sulkavan sointu",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6473",
@@ -4746,10 +4845,11 @@
     "shortDescription": "Puolustustaistelu kaukaisessa tulevaisuudessa pienessä koloniassa.",
     "signupType": "none",
     "startTime": "2023-07-29T09:00:00Z",
-    "styles": ["light", "rulesLight", "combatDriven"],
+    "styles": ["light", "rulesLight", "combatHeavy"],
     "tags": ["beginnerFriendly", "ropeconTheme"],
     "title": "Kaaosta Koloniassa: Ongelmia kaikkialla",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6464",
@@ -4776,9 +4876,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T09:00:00Z",
     "styles": ["light", "rulesLight", "storyDriven", "characterDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly"],
+    "tags": ["adults", "beginnerFriendly"],
     "title": "Red as Rose, Red as Blood",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6119",
@@ -4805,13 +4906,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T09:00:00Z",
     "styles": ["serious", "rulesLight"],
-    "tags": [
-      "aimedAtChildrenBetween13-17",
-      "aimedAtAdultAttendees",
-      "beginnerFriendly"
-    ],
+    "tags": ["aimedAtChildrenBetween13-17", "adults", "beginnerFriendly"],
     "title": "PRAEDOR - Kuolemanjoki",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6428",
@@ -4838,9 +4936,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T09:00:00Z",
     "styles": ["light", "rulesLight", "storyDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly"],
+    "tags": ["adults", "beginnerFriendly"],
     "title": "Redshift",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6955",
@@ -4869,7 +4968,8 @@
     "styles": [],
     "tags": ["suitableForAllAges", "beginnerFriendly"],
     "title": "Roolipeliseikkailun luomisen ABC",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6539",
@@ -4896,13 +4996,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T09:00:00Z",
     "styles": [],
-    "tags": [
-      "aimedAtChildrenBetween13-17",
-      "aimedAtAdultAttendees",
-      "beginnerFriendly"
-    ],
+    "tags": ["aimedAtChildrenBetween13-17", "adults", "beginnerFriendly"],
     "title": "Mielikuvituskone: Luovan kirjoittamisen työpaja",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6759",
@@ -4931,10 +5028,11 @@
     "shortDescription": "Rainbow yhtyeen kolmen ensimmäisen levyn pohjalta tehty perinteinen luolastoseikkailu / A traditional dungeon adventure inspired by the first three albums of the band Rainbow",
     "signupType": "none",
     "startTime": "2023-07-29T09:00:00Z",
-    "styles": ["light", "rulesLight", "storyDriven", "combatDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly", "ropeconTheme"],
+    "styles": ["light", "rulesLight", "storyDriven", "combatHeavy"],
+    "tags": ["adults", "beginnerFriendly", "ropeconTheme"],
     "title": "Blackmore Rock'n'Roll Fantasy (ACT I Rainbow, ACT II Rising, ACT III Long live rock'nroll)",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6728",
@@ -4961,9 +5059,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T09:00:00Z",
     "styles": ["serious", "rulesLight", "storyDriven", "characterDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly", "ropeconTheme"],
+    "tags": ["adults", "beginnerFriendly", "ropeconTheme"],
     "title": "Murto Avalon-kompleksiin",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6746",
@@ -4992,7 +5091,8 @@
     "styles": ["light", "rulesLight", "storyDriven"],
     "tags": ["suitableForAllAges", "beginnerFriendly"],
     "title": "Expert Treasure Hunters",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6613",
@@ -5019,9 +5119,10 @@
     "signupType": "none",
     "startTime": "2023-07-30T08:00:00Z",
     "styles": ["serious", "rulesLight"],
-    "tags": ["aimedAtAdultAttendees", "ropeconTheme"],
+    "tags": ["adults", "ropeconTheme"],
     "title": "Sail \"Le Voyager\"",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6681",
@@ -5052,13 +5153,17 @@
     "signupType": "none",
     "startTime": "2023-07-29T09:30:00Z",
     "styles": [],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly", "ropeconTheme"],
+    "tags": ["adults", "beginnerFriendly", "ropeconTheme"],
     "title": "Body by Joy",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6268",
-    "accessibilityValues": ["irritateSkin", "participationRequiresDexterity"],
+    "accessibilityValues": [
+      "irritatingChemicals",
+      "participationRequiresDexterity"
+    ],
     "contentWarnings": "",
     "createdAt": "2023-07-27T17:45:57.271Z",
     "description": "Muinainen rauniokaupunki vai avaruuden yhteysasema? Saniaisten alla oleva salainen mennikäiskoti vai tulevaisuuden teräksenkatkuinen taistelukenttä?  Millainen maasto herättää mielikuvituksen ja palvelee parhjaiten pelaamista? Suunnittele ja tee oma seikkailu- ja pelimaastosi!\r\n\r\nEsittelyssä käydään läpi erilaisia helppoja menetelmiä ja jokapäiväisiä materiaaleja, joista voi luovasti valmistaa itse pienoismittakaavan maastoja roolipeli-, miniatyyripeli- ja dioraamakäyttöön. Työosuudessa suunnitellaan ja aloitetaan rakentamaan omaa maastoa.\r\n\r\nTyöpaja sopii aloittelijoille ja jo pidempään rakentelua harrastaneille.\r\n\r\nFor English speakers: Short presentation in Finnish. Personal guidance in both Finnish and English\r\n\r\n\r\nENGLANNIKSI\r\n\r\nMiniature model terrain workshop\r\n\r\nAn ancient ruined city or a space station? A secret fey home under the ferns or a steely smelling battlefield of the future? What kind of terrain stirs the imagination and works best for gaming purposes? Design and make your own minature adventure locations!\r\n\r\nIn the presentation, we go through various easy methods and everyday materials, from which you can creatively make small-scale terrains yourself for role-playing games, miniature games and dioramas. In the work section, we plan and start building our own terrain.\r\n\r\nThe workshop is suitable for beginners and those who have been building for a long time.",
@@ -5083,11 +5188,12 @@
     "styles": [],
     "tags": ["suitableForAllAges", "beginnerFriendly", "ropeconTheme"],
     "title": "Pienoismallimaaston rakennustyöpaja 2 / Miniature model terrain workshop 2",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6990",
-    "accessibilityValues": ["colourblind", "participationRequiresDexterity"],
+    "accessibilityValues": ["colorBlindness", "participationRequiresDexterity"],
     "contentWarnings": "",
     "createdAt": "2023-07-27T17:45:57.271Z",
     "description": "Pikamaalauskisassa tavoitteena on maalata annettu miniatyyri mahdollisimman hyvin annetussa ajassa. Aikaa maalaamiseen on varattu yksi tunti, ja parhaiten maalattu figu voittaa.\r\n\r\nEt tarvitse kisaan omaa figua, vaan saat sen toivomallasi pohjamaalilla juuri ennen suorituksen alkua. Luonnollisesti kisatyön saa ottaa mukaansa tuomaroinnin jälkeen.\r\n\r\nOmia maalausvälineitä (paletit, siveltimet, maalit) saa käyttää, mutta halutessaan voi myös hyödyntää figumaalauspisteen tarjontaa.\r\n\r\nKisan pääsponsorina toimii tänä vuonna The Dragon Trappers Lodge.\r\n\r\n====\r\n\r\nThe goal in the Speed Painting Contest is to paint a given miniature as well as possible in a given time. The contestants have one hour to paint, and the best painted miniature wins.\r\n\r\nBringing your own miniature into the contest is not needed, as you will be provided one right before the beginning. Naturally, participants can take their contest work with them after the judges have finished the evaluation.\r\n\r\nYou can participate in the contest either using your own painting supplies (palettes, brushes, paints), or you can take advantage of the selection at Ropecon's Miniature Painting Station.\r\n\r\nThe main sponsor of this year's contest is The Dragon Trappers Lodge.",
@@ -5110,13 +5216,10 @@
     "signupType": "konsti",
     "startTime": "2023-07-29T10:00:00Z",
     "styles": [],
-    "tags": [
-      "tournament",
-      "aimedAtChildrenBetween13-17",
-      "aimedAtAdultAttendees"
-    ],
+    "tags": ["tournament", "aimedAtChildrenBetween13-17", "adults"],
     "title": "Pikamaalauskilpailu / Speed Painting Contest 4 (La/Sat)",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6161",
@@ -5145,19 +5248,20 @@
     "styles": [],
     "tags": [
       "aimedAtChildrenBetween13-17",
-      "aimedAtAdultAttendees",
+      "adults",
       "beginnerFriendly",
       "ropeconTheme"
     ],
     "title": "Harry Potter - taistelu Tylypahkasta (Harry Potter Hogwards battle - card game) (la/sat)",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6442",
     "accessibilityValues": [
       "loudSounds",
-      "strongSmells",
-      "movingAround",
+      "strongOdours",
+      "lotsOfMovement",
       "participationRequiresDexterity"
     ],
     "contentWarnings": "Using metal spikes for throwing",
@@ -5182,9 +5286,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T10:00:00Z",
     "styles": [],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly", "ropeconTheme"],
+    "tags": ["adults", "beginnerFriendly", "ropeconTheme"],
     "title": "How to Use Bo-Shuriken",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6957",
@@ -5213,7 +5318,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Rajalliset resurssini: proppaamisen ideointityöpaja",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7033",
@@ -5240,9 +5346,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T10:00:00Z",
     "styles": [],
-    "tags": ["guestOfHonor", "aimedAtAdultAttendees"],
+    "tags": ["guestOfHonor", "adults"],
     "title": "SU&SD: SAD RABBITS?",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7034",
@@ -5271,7 +5378,8 @@
     "styles": ["rulesLight"],
     "tags": ["ropeconTheme"],
     "title": "Vetehisten Virsi",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6829",
@@ -5300,15 +5408,16 @@
     "styles": [],
     "tags": ["suitableForAllAges", "beginnerFriendly"],
     "title": "Behind the Magic — Who let the wyrm out? 2. Run",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7035",
     "accessibilityValues": [
       "loudSounds",
       "physicalContact",
-      "lowLighting",
-      "recording",
+      "darkLighting",
+      "noTextOfRecording",
       "limitedOpportunitiesToMoveAround",
       "textNotAvailableAsRecordings"
     ],
@@ -5334,17 +5443,18 @@
     "signupType": "none",
     "startTime": "2023-07-29T10:30:00Z",
     "styles": [],
-    "tags": ["aimedAtAdultAttendees", "for18PlusOnly", "ropeconTheme"],
+    "tags": ["adults", "onlyAdults", "ropeconTheme"],
     "title": "First They Came 3. Run",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7036",
     "accessibilityValues": [
       "loudSounds",
       "physicalContact",
-      "lowLighting",
-      "recording",
+      "darkLighting",
+      "noTextOfRecording",
       "limitedOpportunitiesToMoveAround",
       "textNotAvailableAsRecordings"
     ],
@@ -5370,9 +5480,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T10:30:00Z",
     "styles": [],
-    "tags": ["aimedAtAdultAttendees", "for18PlusOnly", "ropeconTheme"],
+    "tags": ["adults", "onlyAdults", "ropeconTheme"],
     "title": "First They Came 4. Run",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6667",
@@ -5402,10 +5513,11 @@
     "shortDescription": "A Pathfinder One-Shot adventure",
     "signupType": "none",
     "startTime": "2023-07-29T11:00:00Z",
-    "styles": ["light", "rulesHeavy", "combatDriven"],
+    "styles": ["light", "rulesHeavy", "combatHeavy"],
     "tags": ["suitableForAllAges", "beginnerFriendly"],
     "title": "Pathfinder One-Shot #3: Headshot the Rot",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7236",
@@ -5433,13 +5545,14 @@
     "startTime": "2023-07-29T11:00:00Z",
     "styles": ["light", "rulesLight", "storyDriven", "characterDriven"],
     "tags": [
-      "aimedAtChildrenUnder13",
+      "kids",
       "aimedAtChildrenBetween13-17",
-      "aimedAtAdultAttendees",
+      "adults",
       "beginnerFriendly"
     ],
     "title": "Lintuparvi (La)",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6326",
@@ -5466,9 +5579,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T11:00:00Z",
     "styles": ["light", "rulesLight", "storyDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly"],
+    "tags": ["adults", "beginnerFriendly"],
     "title": "Amnesia [spelet spelas på svenska]",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6739",
@@ -5495,13 +5609,14 @@
     "signupType": "none",
     "startTime": "2023-07-29T11:00:00Z",
     "styles": ["light", "rulesLight", "storyDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly", "ropeconTheme"],
+    "tags": ["adults", "beginnerFriendly", "ropeconTheme"],
     "title": "Hurmeen yö (2/2)",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6497",
-    "accessibilityValues": ["colourblind"],
+    "accessibilityValues": ["colorBlindness"],
     "contentWarnings": "",
     "createdAt": "2023-07-27T17:45:57.271Z",
     "description": "Tavoitteena on tutustuttaa kiinnostuneet sekä The One Ring roolipelisysteemiin että Pelinjohtamattomaan pelaamiseen pienessä porukassa. Käytän vain The One Ringiin julkaistuja materiaaleja (Core book ja Strider Mode)\r\nPelaajille tarjotaan valmishahmot (toki jos systeemi on tuttu saa omankin luoda). Seikkailussa tutustumme pelaajia kiinnostaviin aiheisiin ja seuraamme mitä tarinaksemme kehkeytyy ilman valmistelua saati pelinjohtajaa. Käsittelemme vain sellaisia aiheita, joihin kaikilta pelaajilta on saatu hyväksyntä.\r\n--\r\nOn vuosi 2965 kolmatta aikaa ja Varjo on palaamassa Keski-maahan. Neljännes vuosisata sitten haltioiden, ihmisten ja kääpiöiden liittouma kukisti örkkien ja villien susien lauman viiden armeijan taistelussa jättiläislepakoiden synkistämän taivaan alla ja aloitti uuden vaurauden aikakauden vapaille kansoille.\r\nMutta kaksikymmentä vuotta on pitkä aika rauhan kestää. Monissa pimeissä kolkissa varjo on jälleen pidentymässä. Huhuja oudoista tapahtumista sivistyneiden alueiden rajojen ulkopuolella kuullaan yhä säännöllisemmin, ja vaikka useimmat kohauttavatkin niille olkiaan ja ohittavat ne satuina, saavuttavat ne aina toisinaan sellaisttenkin korvat, jotka tunnistavat niiden kätkemän synkän totuuden.\r\nHe ovat levottomia sotureita, uteliaita oppineita ja vaeltajia, jotka omaavat loputtoman innon etsiä kadonneita aarteita ja tutkia unohdettua. Tavalliset ihmiset kutsuvat heitä seikkailijoiksi, ja kun he voittavat,heitä ylistetään sankareina. Mutta jos he epäonnistuvat, kukaan ei edes muista heidän nimiään.\r\n--\r\nTervetuloa luomaan suunta Keski-maan kohtalolle!",
@@ -5530,9 +5645,10 @@
       "storyDriven",
       "characterDriven"
     ],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly", "ropeconTheme"],
+    "tags": ["adults", "beginnerFriendly", "ropeconTheme"],
     "title": "Ohjattu yhteistyöseikkailu Keski-maassa (The One Ring)",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6631",
@@ -5558,10 +5674,11 @@
     "shortDescription": "Hullunkurinen D&D-luolastoseikkailu pahiskätyrin näkökulmasta",
     "signupType": "none",
     "startTime": "2023-07-29T11:00:00Z",
-    "styles": ["light", "characterDriven", "combatDriven"],
+    "styles": ["light", "characterDriven", "combatHeavy"],
     "tags": ["beginnerFriendly"],
     "title": "Päiväni Peikkolaisena -reverse dungeon",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6780",
@@ -5588,9 +5705,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T11:00:00Z",
     "styles": ["serious", "rulesLight", "storyDriven", "characterDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly", "ropeconTheme"],
+    "tags": ["adults", "beginnerFriendly", "ropeconTheme"],
     "title": "Kalvava nälkä",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6614",
@@ -5617,9 +5735,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T11:00:00Z",
     "styles": ["serious"],
-    "tags": ["aimedAtAdultAttendees", "ropeconTheme"],
+    "tags": ["adults", "ropeconTheme"],
     "title": "Operaatio Harmaahaikara",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6787",
@@ -5648,11 +5767,15 @@
     "styles": [],
     "tags": ["tournament", "suitableForAllAges", "beginnerFriendly"],
     "title": "KPS-turnaus",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6404",
-    "accessibilityValues": ["irritateSkin", "participationRequiresDexterity"],
+    "accessibilityValues": [
+      "irritatingChemicals",
+      "participationRequiresDexterity"
+    ],
     "contentWarnings": "",
     "createdAt": "2023-07-27T17:45:57.271Z",
     "description": "Tule askartelemaan itsellesi oma kukkahiuspinni tai rintaneula! Tsumami zaiku on perinteinen japanilainen käsityötekniikka, jossa neliskanttisista kangaspaloista taitellaan kolmiulotteisia terälehtiä, joista sitten kootaan kokonaisia kukkia. Nykypäivänä tsumami kanzasheja eli tsumami-hiuskoristeita voi nähdä osana maikojen eli geishaoppilaiden asukokonaisuutta. Materiaalimaksun 5 euroa voit maksaa joko käteisellä (mieluusti tasaraha) tai MobilePaylla. Pajaan mahtuu 12 osallistujaa.\r\n\r\nTyöpajaan on ennakkoilmoittautuminen Konstissa perjantaina kello 18.00 alkaen.",
@@ -5675,13 +5798,14 @@
     "signupType": "none",
     "startTime": "2023-07-29T11:00:00Z",
     "styles": [],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly"],
+    "tags": ["adults", "beginnerFriendly"],
     "title": "Tsumami-kukkatyöpaja",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6528",
-    "accessibilityValues": ["lowLighting"],
+    "accessibilityValues": ["darkLighting"],
     "contentWarnings": "Pimeys, väkivalta, veri,  kuolema, klaustrofobia, eristyneisyys",
     "createdAt": "2023-07-27T17:45:57.271Z",
     "description": "Kesällä 2012 Nilsiän metsistä paljastui muinainen laaja luolasto, joka kätkivät sisälleen muinaisjäänteitä vuosisatojen takaa. Luolan romahtanut katto on vanginnut teidät uumeniinsa. Ainoat rippeet toivosta löytyvät syvemmältä tunneleista.\r\n\r\nTen Candles on säännöiltään kevyt roolipeli, joka perustuu pitkälti pelinvetäjän ja pelaajien yhteiseen tarinankerrontaan. Peli pelataan pimeässä kynttilöiden valossa. Pelissä voidaan käsitellä verta, väkivaltaa, kuolemaa, pimeyttä ja muita kauhuun liittyviä teemoja.\r\n\r\nPelikielenä suomi tai tarvittaessa englanti. \r\n\r\n------------------------------------------------------------------------------------------------------------------------------------------------------------------------\r\nA sprawling cavern system was discovered underneath the forests of Nilsiä in the summer of 2012. As you entered to discover the ancient relics from centuries past, the roof of the caverns collapsed, trapping you inside. The only remaining shreds of hope lie deeper within the tunnels.\r\n\r\nTen candles is a rules-light tabletop rpg, that relies on shared storytelling between participants. The game is played in the dark with only candles lighting the table. The game will involve themes related to the horror genre such as death, blood, violence and darkness.\r\n\r\nIf needed the game can be played in English.",
@@ -5704,9 +5828,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T11:00:00Z",
     "styles": ["serious", "rulesLight", "storyDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly", "ropeconTheme"],
+    "tags": ["adults", "beginnerFriendly", "ropeconTheme"],
     "title": "Haudatun historian kauhut - Horros long since buried",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6540",
@@ -5733,9 +5858,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T11:00:00Z",
     "styles": ["rulesLight", "storyDriven"],
-    "tags": ["aimedAtAdultAttendees"],
+    "tags": ["adults"],
     "title": "Tervetuloa Misty Pinesiin / Welcome to Misty Pines",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6823",
@@ -5762,9 +5888,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T11:00:00Z",
     "styles": ["serious", "rulesLight", "storyDriven", "characterDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly"],
+    "tags": ["adults", "beginnerFriendly"],
     "title": "Maailman loppu",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6710",
@@ -5795,11 +5922,12 @@
       "rulesLight",
       "storyDriven",
       "characterDriven",
-      "combatDriven"
+      "combatHeavy"
     ],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly"],
+    "tags": ["adults", "beginnerFriendly"],
     "title": "Verta ja venheitä vedessä, The One Ring  2nd edition seikkailu",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6524",
@@ -5826,14 +5954,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T11:00:00Z",
     "styles": ["rulesLight", "storyDriven"],
-    "tags": [
-      "aimedAtAdultAttendees",
-      "for18PlusOnly",
-      "beginnerFriendly",
-      "ropeconTheme"
-    ],
+    "tags": ["adults", "onlyAdults", "beginnerFriendly", "ropeconTheme"],
     "title": "Timantin sävyvirhe",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6831",
@@ -5860,9 +5984,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T11:00:00Z",
     "styles": ["light", "rulesLight", "characterDriven"],
-    "tags": ["aimedAtAdultAttendees", "for18PlusOnly", "beginnerFriendly"],
+    "tags": ["adults", "onlyAdults", "beginnerFriendly"],
     "title": "Teinihirviöt suurella sydämellä",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6858",
@@ -5889,9 +6014,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T11:00:00Z",
     "styles": ["light", "rulesLight", "storyDriven", "characterDriven"],
-    "tags": ["for18PlusOnly", "beginnerFriendly", "ropeconTheme"],
+    "tags": ["onlyAdults", "beginnerFriendly", "ropeconTheme"],
     "title": "Miami Vice - Siskot ja veljet",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6097",
@@ -5921,9 +6047,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T11:00:00Z",
     "styles": ["serious", "rulesLight", "storyDriven", "characterDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly", "ropeconTheme"],
+    "tags": ["adults", "beginnerFriendly", "ropeconTheme"],
     "title": "The Celebration of Baronet von Alzgau",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6602",
@@ -5953,13 +6080,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T11:00:00Z",
     "styles": ["light", "storyDriven"],
-    "tags": [
-      "aimedAtChildrenBetween13-17",
-      "aimedAtAdultAttendees",
-      "beginnerFriendly"
-    ],
+    "tags": ["aimedAtChildrenBetween13-17", "adults", "beginnerFriendly"],
     "title": "L&L: Sulkavan sointu",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6762",
@@ -5986,13 +6110,14 @@
     "signupType": "none",
     "startTime": "2023-07-29T11:00:00Z",
     "styles": ["light", "rulesLight", "storyDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly", "ropeconTheme"],
+    "tags": ["adults", "beginnerFriendly", "ropeconTheme"],
     "title": "Scales of the End",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6536",
-    "accessibilityValues": ["colourblind", "participationRequiresDexterity"],
+    "accessibilityValues": ["colorBlindness", "participationRequiresDexterity"],
     "contentWarnings": "",
     "createdAt": "2023-07-27T17:45:57.271Z",
     "description": "Figumaalaus on luova harrastus, jossa yhdistyvät mielikuvitus, taide, käsillä tekeminen ja usein myös pelaaminen.\r\n\r\nTässä erityisesti lapsille ja nuorille suunnatussa työpajassa alakoulun luokanopettajana työskentelevä ja kansainvälisestikin palkittu figumaalari Erkka 'RaddiCraft' Marttio opastaa figumaalauksen perusteita tulevaisuuden maalauslupauksille. \r\n\r\nTyöpaja on suunnattu pääasiassa 7-15 -vuotiaille kävijöille. Muuten osallistujan taitotasolla tai iällä ei ole kuitenkaan merkitystä, sillä liikkeelle lähdetään perusasioista osallistujan ikätaso huomioiden. Vetäjä auttaa ja opastaa tarvittaessa myös kokeneempia nuoria maalareita.\r\n\r\nSaat kaikki työpajaan tarvittavat välineet sekä maalattavan figuurin työpajasta. Omia välineitä ja figuja saa totta kai halutessaan tuoda. Figun saat pajan jälkeen omaksesi.\r\n\r\nTyöpajassa tehtyjä töitä voi poikkeuksellisesti myös ilmoittaa pajan päätteeksi Ropeconin figumaalauskilpailun juniorikategoriaan vaikka muuten kisan ilmoittautuminen päättyykin jo klo 15.00.\r\n\r\nHuom! Jokainen osallistuja on työpajassa huoltajansa tai muun mukana olevan aikuisen henkilön vastuulla. Lähistölle on varattu istumapaikkoja, värityskuvia ja muuta pientä puuhaa myös mahdollisten tukijoukkojen odottelua helpottamaan. :)",
@@ -6015,17 +6140,14 @@
     "signupType": "none",
     "startTime": "2023-07-29T12:00:00Z",
     "styles": [],
-    "tags": [
-      "aimedAtChildrenUnder13",
-      "aimedAtChildrenBetween13-17",
-      "beginnerFriendly"
-    ],
+    "tags": ["kids", "aimedAtChildrenBetween13-17", "beginnerFriendly"],
     "title": "Figumaalaustyöpaja lapsille ja nuorille",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6908",
-    "accessibilityValues": ["colourblind", "programmeDurationOver2Hours"],
+    "accessibilityValues": ["colorBlindness", "programmeDurationOver2Hours"],
     "contentWarnings": "",
     "createdAt": "2023-07-27T17:45:57.271Z",
     "description": "16. Kesäkuuta, 1815. Napoleon on julistautunut uudestaan keisariksi ja marssii armeijansa kanssa kohti Alankomaita. Ranskan Marsalkka Ney yrittää vallata Quatre Bras'n strategisesti tärkeän risteyksen Brittiläis-Liittoutuneiden joukkojen komentajalta, Wellingtonin herttualta.\r\n\r\nTule komentamaan kymmeniätuhansia sotilaita tässä (suhteellisen) yksinkertaisessa sotastrategiapelissä. Annatko tykkien jylistä vai komennatko ratsuväen rynnäkköön? Voiton avaimet ovat käsissäsi!\r\n\r\n----\r\n\r\nJune 15th, 1815. Napoleon has declared himself emperor again and is marching his army into the Netherlands. The French Marshal Ney is tasked with taking the strategically important crossroads of Quatre Bras from the Anglo-Allied commander, the Duke of Wellington.\r\n\r\nCome command tens of thousands of troops in this (relatively) simple war strategy game. Will you let the cannons roar or order your cavalry to charge? The keys to victory are in your hand!",
@@ -6050,7 +6172,8 @@
     "styles": [],
     "tags": ["demo", "suitableForAllAges", "beginnerFriendly"],
     "title": "Quatre Bras'n taistelu / Battle of Quatre Bras 1 (La/Sat)",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6838",
@@ -6081,11 +6204,12 @@
       "rulesHeavy",
       "storyDriven",
       "characterDriven",
-      "combatDriven"
+      "combatHeavy"
     ],
-    "tags": ["aimedAtAdultAttendees", "ropeconTheme"],
+    "tags": ["adults", "ropeconTheme"],
     "title": "Riders of the Turning Wheel / Rattaankierron harjalla",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7006",
@@ -6114,13 +6238,14 @@
     "styles": [],
     "tags": [
       "suitableForAllAges",
-      "aimedAtChildrenUnder13",
+      "kids",
       "aimedAtChildrenBetween13-17",
       "beginnerFriendly",
       "ropeconTheme"
     ],
     "title": "Vaeltajalegendat: Sinustako seikkailija!? 2. Pelautus",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7042",
@@ -6151,13 +6276,10 @@
     "signupType": "konsti",
     "startTime": "2023-07-29T12:00:00Z",
     "styles": [],
-    "tags": [
-      "aimedAtChildrenBetween13-17",
-      "aimedAtAdultAttendees",
-      "beginnerFriendly"
-    ],
+    "tags": ["aimedAtChildrenBetween13-17", "adults", "beginnerFriendly"],
     "title": "Ihmissusipeli (Werewolfes of Millers Hollow)",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6842",
@@ -6184,9 +6306,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T12:00:00Z",
     "styles": ["serious", "characterDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly"],
+    "tags": ["adults", "beginnerFriendly"],
     "title": "Vihreän jokisuiston tukikohta - pokeri-ilta",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6420",
@@ -6220,16 +6343,20 @@
     "styles": [],
     "tags": [
       "aimedAtChildrenBetween13-17",
-      "aimedAtAdultAttendees",
+      "adults",
       "beginnerFriendly",
       "ropeconTheme"
     ],
     "title": "Niitit, soljet ja nepparit - puoti ja työpaja",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7206",
-    "accessibilityValues": ["irritateSkin", "participationRequiresDexterity"],
+    "accessibilityValues": [
+      "irritatingChemicals",
+      "participationRequiresDexterity"
+    ],
     "contentWarnings": "",
     "createdAt": "2023-07-27T17:45:57.271Z",
     "description": "Tule konvertoimaan ja oppimaan miniatyyrien muokkaamisesta konvertointityöpajaan. Ota oma figu mukaan tai rakenna saatavilla olevista bitseistä ja sprueista oma luomuksesi. Täällä saat opastusta perusteista kuten leikkaamisesta, pinnaamisesta, kokoamisesta, subassemblyistä, magnetoinnista ja konvertoinnista. Voit myös dumpata bitz boxisi tänne ja saada siitä kiitosta. Tulla ja mennä saa oman aikataulunsa ja vapaiden penkkien mukaan. \r\n\r\n----\r\n\r\nCome and learn how to convert miniatures to your vision. Take your own miniature with you or convert your own from available bitz and sprue pieces. You can get guidance about cutting, pinning, assembling, using subassemblies, magneting and converting. You can also dump your bitz box here and get lauded for it. You can come and go by your own schedule and the availability of seats.",
@@ -6254,7 +6381,8 @@
     "styles": [],
     "tags": ["suitableForAllAges", "beginnerFriendly"],
     "title": "Miniatyyrien konvertointipiste (La) / Miniature conversion point (Sat)",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6840",
@@ -6281,9 +6409,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T13:00:00Z",
     "styles": ["storyDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly", "ropeconTheme"],
+    "tags": ["adults", "beginnerFriendly", "ropeconTheme"],
     "title": "L&L: Valvojien yö",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6544",
@@ -6310,9 +6439,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T13:00:00Z",
     "styles": ["light", "rulesHeavy", "storyDriven", "characterDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly", "ropeconTheme"],
+    "tags": ["adults", "beginnerFriendly", "ropeconTheme"],
     "title": "Scum & Villainy: Palkkiometsästäjien kilta",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6468",
@@ -6341,7 +6471,8 @@
     "styles": [],
     "tags": ["suitableForAllAges", "beginnerFriendly"],
     "title": "Minäkö hahmo",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6241",
@@ -6368,13 +6499,14 @@
     "signupType": "none",
     "startTime": "2023-07-29T13:00:00Z",
     "styles": [],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly"],
+    "tags": ["adults", "beginnerFriendly"],
     "title": "Pohojosen emäntien työpaja: Seksiä ja väkivaltaa, osa 2",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7008",
-    "accessibilityValues": ["lowLighting", "limitedOpportunitiesToMoveAround"],
+    "accessibilityValues": ["darkLighting", "limitedOpportunitiesToMoveAround"],
     "contentWarnings": "Hahmojen vääjäämätön kuolema, characters' inevitable death",
     "createdAt": "2023-07-27T17:45:57.271Z",
     "description": "Avaruusalus on palaamassa kotiin pitkältä tutkimusmatkalta, kun jotain menee vikaan ja hyppymoottori ylikuumenee. Keskustietokone ehtii juuri käskeä kolmen hengen miehistön avaruuspukuihin, joten sinkoutuessaan tyhjyyteen he selviävät elossa – vain oivaltaakseen olevansa poikkeavilla lentoradoilla vailla mahdollisuutta vaikuttaa enää mihinkään. Radioyhteys jatkuu vielä 18 minuuttia. Miten hahmot käyttävät aikansa?\r\n\r\nTässä larpissa ei ole sankareita eikä ratsuväki saavu. Pelin metatekniikat ohjaavat hahmot hämmennyksen kautta raivoon ja lopulta hyväksyntään.\r\n\r\nPeli on suunniteltu ja testattu osana Uppsalan yliopiston Transformative Game Design -opintokokonaisuutta.\r\n\r\nSpaceship is returning from a long expedition when something goes awry and the warp core overheats. Central computer barely has time to tell the crew to suit up so that when they are blasted into space they survive – only to realize that they are on differing trajectories with no chance to affect anything. They remain in radio contact for 18 minutes more. How will they use their time?\r\n\r\nIn this larp there are no heroes, the cavalry won't be arriving. The metatechniques of the game guide the players through confusion to rage and finally to acceptance.\r\n\r\nThe game has been designed and tested as a part of the Transformative Game Design curriculum of Uppsala University.",
@@ -6397,9 +6529,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T13:00:00Z",
     "styles": [],
-    "tags": ["aimedAtAdultAttendees"],
+    "tags": ["adults"],
     "title": "Viimeiset 18 minuuttiamme / Our Final 18 Minutes 3. Pelautus / 3. Run",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6696",
@@ -6426,9 +6559,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T13:00:00Z",
     "styles": ["light", "rulesLight", "characterDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly", "ropeconTheme"],
+    "tags": ["adults", "beginnerFriendly", "ropeconTheme"],
     "title": "Pirtua itärajalla Vol. 2 - Hiekkaa jarrupaloissa.",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6755",
@@ -6455,9 +6589,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T13:00:00Z",
     "styles": ["rulesLight", "storyDriven", "characterDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly"],
+    "tags": ["adults", "beginnerFriendly"],
     "title": "Kurjat kuppilat, fiasko kuumana",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6748",
@@ -6484,9 +6619,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T13:00:00Z",
     "styles": ["serious"],
-    "tags": ["aimedAtAdultAttendees", "ropeconTheme"],
+    "tags": ["adults", "ropeconTheme"],
     "title": "Savotta",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6824",
@@ -6513,9 +6649,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T13:00:00Z",
     "styles": ["light", "rulesLight", "storyDriven"],
-    "tags": ["aimedAtChildrenBetween13-17", "aimedAtAdultAttendees"],
+    "tags": ["aimedAtChildrenBetween13-17", "adults"],
     "title": "Festering 'neath the Magic College (Mancer Demo Game)",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6307",
@@ -6545,12 +6682,13 @@
     "tags": [
       "demo",
       "aimedAtChildrenBetween13-17",
-      "aimedAtAdultAttendees",
+      "adults",
       "beginnerFriendly",
       "ropeconTheme"
     ],
     "title": "Colonies of Sol",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6501",
@@ -6580,9 +6718,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T14:00:00Z",
     "styles": ["light", "rulesLight", "storyDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly"],
+    "tags": ["adults", "beginnerFriendly"],
     "title": "L&L: Sulkavan sointu",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6670",
@@ -6615,7 +6754,8 @@
     "styles": ["light", "rulesHeavy"],
     "tags": ["suitableForAllAges", "beginnerFriendly"],
     "title": "Little Trouble in Big Absalom",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6134",
@@ -6642,9 +6782,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T14:00:00Z",
     "styles": [],
-    "tags": ["suitableForAllAges", "aimedAtAdultAttendees"],
+    "tags": ["suitableForAllAges", "adults"],
     "title": "Työpaja pelinjohtajille / Mustan vyön tekniikoita",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6995",
@@ -6673,11 +6814,12 @@
     "styles": [],
     "tags": ["suitableForAllAges", "beginnerFriendly"],
     "title": "BINGO! 1. Pelautus / 1. Run",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6622",
-    "accessibilityValues": ["lowLighting", "limitedOpportunitiesToMoveAround"],
+    "accessibilityValues": ["darkLighting", "limitedOpportunitiesToMoveAround"],
     "contentWarnings": "Hahmojen vääjäämätön kuolema, characters' inevitable death",
     "createdAt": "2023-07-27T17:45:57.271Z",
     "description": "Avaruusalus on palaamassa kotiin pitkältä tutkimusmatkalta, kun jotain menee vikaan ja hyppymoottori ylikuumenee. Keskustietokone ehtii juuri käskeä kolmen hengen miehistön avaruuspukuihin, joten sinkoutuessaan tyhjyyteen he selviävät elossa – vain oivaltaakseen olevansa poikkeavilla lentoradoilla vailla mahdollisuutta vaikuttaa enää mihinkään. Radioyhteys jatkuu vielä 18 minuuttia. Miten hahmot käyttävät aikansa?\r\n\r\nTässä larpissa ei ole sankareita eikä ratsuväki saavu. Pelin metatekniikat ohjaavat hahmot hämmennyksen kautta raivoon ja lopulta hyväksyntään.\r\n\r\nPeli on suunniteltu ja testattu osana Uppsalan yliopiston Transformative Game Design -opintokokonaisuutta.\r\n\r\nSpaceship is returning from a long expedition when something goes awry and the warp core overheats. Central computer barely has time to tell the crew to suit up so that when they are blasted into space they survive – only to realize that they are on differing trajectories with no chance to affect anything. They remain in radio contact for 18 minutes more. How will they use their time?\r\n\r\nIn this larp there are no heroes, the cavalry won't be arriving. The metatechniques of the game guide the players through confusion to rage and finally to acceptance.\r\n\r\nThe game has been designed and tested as a part of the Transformative Game Design curriculum of Uppsala University.",
@@ -6700,9 +6842,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T14:00:00Z",
     "styles": [],
-    "tags": ["aimedAtAdultAttendees"],
+    "tags": ["adults"],
     "title": "Viimeiset 18 minuuttiamme / Our Final 18 Minutes 4. Pelautus / 4. Run",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6848",
@@ -6732,19 +6875,20 @@
     "signupType": "none",
     "startTime": "2023-07-29T14:00:00Z",
     "styles": [],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly", "ropeconTheme"],
+    "tags": ["adults", "beginnerFriendly", "ropeconTheme"],
     "title": "Johtajakoulutus",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6163",
     "accessibilityValues": [
       "loudSounds",
-      "irritateSkin",
+      "irritatingChemicals",
       "physicalContact",
-      "lowLighting",
-      "movingAround",
-      "recording",
+      "darkLighting",
+      "lotsOfMovement",
+      "noTextOfRecording",
       "programmeDurationOver2Hours",
       "participationRequiresDexterity",
       "participationRequiresReactQuickly"
@@ -6771,9 +6915,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T14:00:00Z",
     "styles": [],
-    "tags": ["aimedAtAdultAttendees", "for18PlusOnly"],
+    "tags": ["adults", "onlyAdults"],
     "title": "Superrealism 2. Run",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6612",
@@ -6800,9 +6945,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T14:00:00Z",
     "styles": ["serious", "rulesLight", "storyDriven", "characterDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly", "ropeconTheme"],
+    "tags": ["adults", "beginnerFriendly", "ropeconTheme"],
     "title": "Aurinkovarkaat",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6725",
@@ -6829,9 +6975,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T14:00:00Z",
     "styles": ["rulesLight", "characterDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly", "ropeconTheme"],
+    "tags": ["adults", "beginnerFriendly", "ropeconTheme"],
     "title": "Careers In Chrome",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6674",
@@ -6858,9 +7005,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T14:00:00Z",
     "styles": ["serious", "rulesLight", "storyDriven", "characterDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly", "ropeconTheme"],
+    "tags": ["adults", "beginnerFriendly", "ropeconTheme"],
     "title": "Hulluuden Oksat",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6474",
@@ -6886,16 +7034,17 @@
     "shortDescription": "Evekuointi kaukaisessa tulevaisuudessa pienessä koloniassa",
     "signupType": "none",
     "startTime": "2023-07-29T15:00:00Z",
-    "styles": ["light", "rulesLight", "combatDriven"],
+    "styles": ["light", "rulesLight", "combatHeavy"],
     "tags": ["beginnerFriendly", "ropeconTheme"],
     "title": "Kaaosta Koloniassa: Evakuointi",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7062",
     "accessibilityValues": [
       "physicalContact",
-      "colourblind",
+      "colorBlindness",
       "cannotUseMic",
       "limitedOpportunitiesToMoveAround"
     ],
@@ -6921,9 +7070,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T15:00:00Z",
     "styles": ["serious", "rulesLight", "storyDriven", "characterDriven"],
-    "tags": ["aimedAtAdultAttendees", "for18PlusOnly", "beginnerFriendly"],
+    "tags": ["adults", "onlyAdults", "beginnerFriendly"],
     "title": "Mustalampi ja punainen taivas",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6103",
@@ -6952,11 +7102,12 @@
     "styles": [],
     "tags": ["suitableForAllAges", "beginnerFriendly", "ropeconTheme"],
     "title": "Pujota viikinkityylinen aarrekaulakoru",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6758",
-    "accessibilityValues": ["lowLighting"],
+    "accessibilityValues": ["darkLighting"],
     "contentWarnings": "Epäkuolleet hahmot",
     "createdAt": "2023-07-27T17:45:57.271Z",
     "description": "Vuodet vierivät. On vain pimeys. On vain hiljaisuus. Suojelet järkkymättömänä sarkofagia vailla ajatusta, vailla hengenvetoa. Nimesi on haihtunut muististasi. Liha on luiltasi pudonnut. Vartioit vain.\r\n\r\nSitten hetkessä on valoa ja liikettä. Nostat aseesi haudanryöstäjää vastaan. Et ole elossa enää, mutta tämän väkivallan ja kaaoksen hetken ajan sinä todella elät. Muistat välähdyksiä siitä, kuka joskus olit, ja voit jälleen maistaa auringon. Mutta hetki kuluu ja jälleen saapuu hiljaisuus. Ja vuodet vierivät.",
@@ -6981,7 +7132,8 @@
     "styles": ["rulesLight"],
     "tags": ["beginnerFriendly", "ropeconTheme"],
     "title": "The Skeletons - Hiljaisuuden ikuiset vartijat",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6792",
@@ -7008,9 +7160,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T15:00:00Z",
     "styles": ["serious", "storyDriven"],
-    "tags": ["aimedAtAdultAttendees", "ropeconTheme"],
+    "tags": ["adults", "ropeconTheme"],
     "title": "Desperation Arcanum",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7043",
@@ -7041,13 +7194,10 @@
     "signupType": "konsti",
     "startTime": "2023-07-29T15:00:00Z",
     "styles": [],
-    "tags": [
-      "aimedAtChildrenBetween13-17",
-      "aimedAtAdultAttendees",
-      "beginnerFriendly"
-    ],
+    "tags": ["aimedAtChildrenBetween13-17", "adults", "beginnerFriendly"],
     "title": "Ihmissusipeli (Werewolfes of Millers Hollow)",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6691",
@@ -7074,9 +7224,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T15:00:00Z",
     "styles": ["serious", "rulesLight", "characterDriven"],
-    "tags": ["for18PlusOnly", "beginnerFriendly", "ropeconTheme"],
+    "tags": ["onlyAdults", "beginnerFriendly", "ropeconTheme"],
     "title": "KULT: Paluu kadotettuun suuruuteen",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6708",
@@ -7103,14 +7254,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T15:00:00Z",
     "styles": ["serious", "rulesLight", "storyDriven", "characterDriven"],
-    "tags": [
-      "aimedAtAdultAttendees",
-      "for18PlusOnly",
-      "beginnerFriendly",
-      "ropeconTheme"
-    ],
+    "tags": ["adults", "onlyAdults", "beginnerFriendly", "ropeconTheme"],
     "title": "A Tale of Two Realms",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6578",
@@ -7139,7 +7286,8 @@
     "styles": [],
     "tags": ["suitableForAllAges", "beginnerFriendly"],
     "title": "BINGO! 2. Pelautus / 2. Run",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7075",
@@ -7168,12 +7316,13 @@
     "styles": [],
     "tags": [
       "aimedAtChildrenBetween13-17",
-      "aimedAtAdultAttendees",
+      "adults",
       "beginnerFriendly",
       "ropeconTheme"
     ],
     "title": "Wasteland Wear & Tear - How to create your own post-apocalyptic outfit",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6617",
@@ -7202,12 +7351,13 @@
     "styles": [],
     "tags": [
       "aimedAtChildrenBetween13-17",
-      "aimedAtAdultAttendees",
+      "adults",
       "beginnerFriendly",
       "ropeconTheme"
     ],
     "title": "Weathering workshop - pienen maailman säistämispaja (la/Sat)",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6679",
@@ -7238,15 +7388,16 @@
     "signupType": "none",
     "startTime": "2023-07-29T16:00:00Z",
     "styles": ["serious", "rulesLight", "storyDriven", "characterDriven"],
-    "tags": ["aimedAtAdultAttendees", "ropeconTheme"],
+    "tags": ["adults", "ropeconTheme"],
     "title": "Eksyin perille/At the crossroads",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6716",
     "accessibilityValues": [
       "loudSounds",
-      "strongSmells",
+      "strongOdours",
       "physicalContact",
       "programmeDurationOver2Hours"
     ],
@@ -7271,10 +7422,11 @@
     "shortDescription": "Karua katujengiläisen elämää Tammerpoliksen synkillä kaduilla.",
     "signupType": "none",
     "startTime": "2023-07-29T16:00:00Z",
-    "styles": ["light", "rulesLight", "characterDriven", "combatDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly", "ropeconTheme"],
+    "styles": ["light", "rulesLight", "characterDriven", "combatHeavy"],
+    "tags": ["adults", "beginnerFriendly", "ropeconTheme"],
     "title": "Veristä jengibisnestä",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6676",
@@ -7301,20 +7453,17 @@
     "signupType": "none",
     "startTime": "2023-07-29T16:00:00Z",
     "styles": [],
-    "tags": [
-      "aimedAtChildrenBetween13-17",
-      "aimedAtAdultAttendees",
-      "beginnerFriendly"
-    ],
+    "tags": ["aimedAtChildrenBetween13-17", "adults", "beginnerFriendly"],
     "title": "Sademetsän alla",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6441",
     "accessibilityValues": [
       "loudSounds",
       "physicalContact",
-      "movingAround",
+      "lotsOfMovement",
       "participationRequiresDexterity"
     ],
     "contentWarnings": "Light sparring",
@@ -7341,19 +7490,20 @@
     "styles": [],
     "tags": [
       "aimedAtChildrenBetween13-17",
-      "aimedAtAdultAttendees",
+      "adults",
       "beginnerFriendly",
       "ropeconTheme"
     ],
     "title": "How to Use the Naginata [MOVED TO SUNDAY 11:00]",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6232",
     "accessibilityValues": [
       "loudSounds",
-      "irritateSkin",
-      "lowLighting",
+      "irritatingChemicals",
+      "darkLighting",
       "programmeDurationOver2Hours",
       "participationRequiresDexterity"
     ],
@@ -7381,12 +7531,13 @@
     "styles": [],
     "tags": [
       "aimedAtChildrenBetween13-17",
-      "aimedAtAdultAttendees",
+      "adults",
       "beginnerFriendly",
       "ropeconTheme"
     ],
     "title": "Leviathan",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6854",
@@ -7412,10 +7563,11 @@
     "shortDescription": "Taisteluvetoinen D&D-peli maagisten otusten torjujista",
     "signupType": "none",
     "startTime": "2023-07-29T16:00:00Z",
-    "styles": ["light", "combatDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly"],
+    "styles": ["light", "combatHeavy"],
+    "tags": ["adults", "beginnerFriendly"],
     "title": "Team Tuholaistorjujat pelastaa päivän!",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6775",
@@ -7442,13 +7594,14 @@
     "signupType": "none",
     "startTime": "2023-07-29T16:00:00Z",
     "styles": ["storyDriven"],
-    "tags": ["aimedAtAdultAttendees"],
+    "tags": ["adults"],
     "title": "Improvisoitu peli Gloranthassa",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7055",
-    "accessibilityValues": ["colourblind", "programmeDurationOver2Hours"],
+    "accessibilityValues": ["colorBlindness", "programmeDurationOver2Hours"],
     "contentWarnings": "",
     "createdAt": "2023-07-27T17:45:57.271Z",
     "description": "16. Kesäkuuta, 1815. Napoleon on julistautunut uudestaan keisariksi ja marssii armeijansa kanssa kohti Alankomaita. Ranskan Marsalkka Ney yrittää vallata Quatre Bras'n strategisesti tärkeän risteyksen Brittiläis-Liittoutuneiden joukkojen komentajalta, Wellingtonin herttualta.\r\n\r\nTule komentamaan kymmeniätuhansia sotilaita tässä (suhteellisen) yksinkertaisessa sotastrategiapelissä. Annatko tykkien jylistä vai komennatko ratsuväen rynnäkköön? Voiton avaimet ovat käsissäsi!\r\n\r\n----\r\n\r\nJune 15th, 1815. Napoleon has declared himself emperor again and is marching his army into the Netherlands. The French Marshal Ney is tasked with taking the strategically important crossroads of Quatre Bras from the Anglo-Allied commander, the Duke of Wellington.\r\n\r\nCome command tens of thousands of troops in this (relatively) simple war strategy game. Will you let the cannons roar or order your cavalry to charge? The keys to victory are in your hand!",
@@ -7473,7 +7626,8 @@
     "styles": [],
     "tags": ["demo", "suitableForAllAges", "beginnerFriendly"],
     "title": "Quatre Bras'n taistelu / Battle of Quatre Bras 2 (La/Sat)",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6671",
@@ -7506,7 +7660,8 @@
     "styles": ["light", "rulesHeavy"],
     "tags": ["suitableForAllAges", "beginnerFriendly"],
     "title": "Pathfinder Quest #14: The Swordlord's Challenge",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6996",
@@ -7535,7 +7690,8 @@
     "styles": [],
     "tags": ["suitableForAllAges", "beginnerFriendly"],
     "title": "BINGO! 3. Pelautus / 3. Run",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6730",
@@ -7562,9 +7718,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T17:00:00Z",
     "styles": ["serious", "rulesLight", "storyDriven", "characterDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly", "ropeconTheme"],
+    "tags": ["adults", "beginnerFriendly", "ropeconTheme"],
     "title": "Murto Avalon-kompleksiin",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6773",
@@ -7591,9 +7748,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T17:00:00Z",
     "styles": ["rulesLight"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly"],
+    "tags": ["adults", "beginnerFriendly"],
     "title": "Kuolema Teshnoksessa",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6637",
@@ -7620,9 +7778,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T17:00:00Z",
     "styles": ["serious", "rulesLight", "storyDriven", "characterDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly", "ropeconTheme"],
+    "tags": ["adults", "beginnerFriendly", "ropeconTheme"],
     "title": "Uusi tuuli",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6596",
@@ -7654,7 +7813,8 @@
     "styles": ["light", "storyDriven"],
     "tags": ["suitableForAllAges", "beginnerFriendly"],
     "title": "L&L: Sulkavan sointu",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6714",
@@ -7681,9 +7841,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T18:00:00Z",
     "styles": ["light", "rulesLight", "storyDriven", "characterDriven"],
-    "tags": ["aimedAtAdultAttendees"],
+    "tags": ["adults"],
     "title": "Portaali Tähtien Alla",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6690",
@@ -7714,9 +7875,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T18:00:00Z",
     "styles": ["serious", "rulesLight", "characterDriven"],
-    "tags": ["for18PlusOnly"],
+    "tags": ["onlyAdults"],
     "title": "Kult: Divided We Run",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6712",
@@ -7746,14 +7908,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T18:00:00Z",
     "styles": ["serious", "rulesLight", "storyDriven"],
-    "tags": [
-      "aimedAtAdultAttendees",
-      "for18PlusOnly",
-      "beginnerFriendly",
-      "ropeconTheme"
-    ],
+    "tags": ["adults", "onlyAdults", "beginnerFriendly", "ropeconTheme"],
     "title": "Unelmien kesä 1927",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6709",
@@ -7780,9 +7938,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T18:00:00Z",
     "styles": ["light", "rulesLight", "characterDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly"],
+    "tags": ["adults", "beginnerFriendly"],
     "title": "L&L: Sulkavan Sointu",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6594",
@@ -7811,15 +7970,16 @@
     "shortDescription": "Return to Chronan, an original steampunk setting that premiered in Ropecon 2022, for a heist to the Clockwork Tower!",
     "signupType": "none",
     "startTime": "2023-07-29T18:00:00Z",
-    "styles": ["light", "rulesLight", "characterDriven", "combatDriven"],
+    "styles": ["light", "rulesLight", "characterDriven", "combatHeavy"],
     "tags": [
       "aimedAtChildrenBetween13-17",
-      "aimedAtAdultAttendees",
+      "adults",
       "beginnerFriendly",
       "ropeconTheme"
     ],
     "title": "Steampunk II",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7028",
@@ -7849,13 +8009,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T18:30:00Z",
     "styles": [],
-    "tags": [
-      "aimedAtChildrenBetween13-17",
-      "aimedAtAdultAttendees",
-      "beginnerFriendly"
-    ],
+    "tags": ["aimedAtChildrenBetween13-17", "adults", "beginnerFriendly"],
     "title": "Play away Patriarchy - Feminism Nano-larps",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6662",
@@ -7882,9 +8039,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T19:00:00Z",
     "styles": ["characterDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly"],
+    "tags": ["adults", "beginnerFriendly"],
     "title": "Space 1889: Pakkolasku Venuksen viidakkoon",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6477",
@@ -7911,16 +8069,17 @@
     "signupType": "none",
     "startTime": "2023-07-29T19:00:00Z",
     "styles": ["light", "rulesLight"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly"],
+    "tags": ["adults", "beginnerFriendly"],
     "title": "Masterpiece Imbroglio",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7039",
     "accessibilityValues": [
       "loudSounds",
       "physicalContact",
-      "colourblind",
+      "colorBlindness",
       "programmeDurationOver2Hours",
       "limitedOpportunitiesToMoveAround",
       "longText",
@@ -7950,15 +8109,16 @@
     "signupType": "none",
     "startTime": "2023-07-29T19:00:00Z",
     "styles": ["light", "rulesLight", "characterDriven"],
-    "tags": ["aimedAtAdultAttendees"],
+    "tags": ["adults"],
     "title": "Viisi Koboldia Trenssitakissa (La)",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6764",
     "accessibilityValues": [
-      "lowLighting",
-      "recording",
+      "darkLighting",
+      "noTextOfRecording",
       "programmeDurationOver2Hours",
       "limitedOpportunitiesToMoveAround"
     ],
@@ -7984,9 +8144,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T20:00:00Z",
     "styles": ["serious", "rulesLight", "storyDriven", "characterDriven"],
-    "tags": ["for18PlusOnly", "ropeconTheme"],
+    "tags": ["onlyAdults", "ropeconTheme"],
     "title": "Umbra (English run)",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6774",
@@ -8020,12 +8181,13 @@
     "styles": ["rulesLight", "storyDriven", "characterDriven"],
     "tags": ["suitableForAllAges", "beginnerFriendly"],
     "title": "Baked in Abyss - Seikkailu hornantuutissa",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6895",
     "accessibilityValues": [
-      "colourblind",
+      "colorBlindness",
       "programmeDurationOver2Hours",
       "limitedOpportunitiesToMoveAround",
       "textNotAvailableAsRecordings"
@@ -8054,12 +8216,13 @@
     "styles": [],
     "tags": ["tournament", "suitableForAllAges"],
     "title": "Digimon Card Game Tournament",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6636",
     "accessibilityValues": [
-      "colourblind",
+      "colorBlindness",
       "programmeDurationOver2Hours",
       "limitedOpportunitiesToMoveAround"
     ],
@@ -8087,12 +8250,13 @@
     "styles": [],
     "tags": ["tournament", "suitableForAllAges"],
     "title": "Carcassonne SM",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6821",
     "accessibilityValues": [
-      "colourblind",
+      "colorBlindness",
       "programmeDurationOver2Hours",
       "participationRequiresDexterity"
     ],
@@ -8120,7 +8284,8 @@
     "styles": [],
     "tags": ["guestOfHonor"],
     "title": "Roman Lappat: Hands on Atmospheric Painting",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7227",
@@ -8149,11 +8314,12 @@
     "styles": [],
     "tags": ["suitableForAllAges", "beginnerFriendly"],
     "title": "Figumaalauspiste / Mini Painting Point",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6494",
-    "accessibilityValues": ["strongSmells"],
+    "accessibilityValues": ["strongOdours"],
     "contentWarnings": "This workshop is about handling leather. Participants should be comfortable in handling skin-based materials (or seeing other people handle them) - after all, they're taken from something that once lived.",
     "createdAt": "2023-07-27T17:45:57.271Z",
     "description": "Come make your own piece of leather armour! This workshop is open for anyone regardless of the previous experience with leatherworking, and step-by-step guidance will be provided to all participants who desire so. In addition to getting to make your wet formed piece of armour, a few demonstrations on fundamental leather hardening techniques such as wax-hardening and boiling and tips for the interested will be provided. Whether you’re a seasoned leatherworker or a complete stranger just interested in the medium, this workshop is for you.\r\n\r\nMaterial free for the workshop is 10 € for one small leather item such as a demigauntlet or a bracer, or 20 € for a pair. You can also participate free of charge and experiment with pieces of scrap leather.\r\n\r\nThe workshop is held by Juhani \"Nahkajuhani\" Salonen, a former professional leather armourer and author of the book \"Hardened leather and related materials - An armourer's guide\" (2023).\r\n\r\nSignup through Konsti starting Saturday at 18.00.",
@@ -8176,13 +8342,10 @@
     "signupType": "none",
     "startTime": "2023-07-30T07:00:00Z",
     "styles": [],
-    "tags": [
-      "aimedAtChildrenBetween13-17",
-      "aimedAtAdultAttendees",
-      "beginnerFriendly"
-    ],
+    "tags": ["aimedAtChildrenBetween13-17", "adults", "beginnerFriendly"],
     "title": "Experimental leather armouring workshop",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6475",
@@ -8208,10 +8371,11 @@
     "shortDescription": "Vastahyökkäys hyökkääjää vastaan kaukaisessa tulevaisuudessa pienessä koloniassa.",
     "signupType": "none",
     "startTime": "2023-07-30T07:00:00Z",
-    "styles": ["rulesLight", "combatDriven"],
+    "styles": ["rulesLight", "combatHeavy"],
     "tags": ["beginnerFriendly", "ropeconTheme"],
     "title": "Kaaosta Koloniassa: vastahyökkäys PERUTTU",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6785",
@@ -8237,19 +8401,16 @@
     "shortDescription": "Kevyttä luolastokolausta länkkäriteemoilla ilottelevassa huonekalukaupassa",
     "signupType": "none",
     "startTime": "2023-07-30T07:00:00Z",
-    "styles": ["light", "storyDriven", "combatDriven"],
-    "tags": [
-      "aimedAtChildrenBetween13-17",
-      "aimedAtAdultAttendees",
-      "beginnerFriendly"
-    ],
+    "styles": ["light", "storyDriven", "combatHeavy"],
+    "tags": ["aimedAtChildrenBetween13-17", "adults", "beginnerFriendly"],
     "title": "Fiendish Furniture - Huonekalut Helvetistä",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6537",
     "accessibilityValues": [
-      "lowLighting",
+      "darkLighting",
       "limitedOpportunitiesToMoveAround",
       "textNotAvailableAsRecordings"
     ],
@@ -8274,14 +8435,11 @@
     "shortDescription": "Hirviönmetsästystä aidossa D&D- hengessä. Taistelua ja ripaus kauhun elementtejä!",
     "signupType": "none",
     "startTime": "2023-07-30T07:00:00Z",
-    "styles": ["light", "rulesLight", "combatDriven"],
-    "tags": [
-      "aimedAtChildrenBetween13-17",
-      "aimedAtAdultAttendees",
-      "beginnerFriendly"
-    ],
+    "styles": ["light", "rulesLight", "combatHeavy"],
+    "tags": ["aimedAtChildrenBetween13-17", "adults", "beginnerFriendly"],
     "title": "D&D 5e. Pelkoa ja kauhua Huurevuoren luostarissa",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6751",
@@ -8310,7 +8468,8 @@
     "styles": ["rulesLight", "storyDriven", "characterDriven"],
     "tags": ["aimedAtChildrenBetween13-17"],
     "title": "Majatalossa tapahtuu",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6457",
@@ -8339,10 +8498,11 @@
     "shortDescription": "D&D seikkailu hirviön näkökulmasta",
     "signupType": "none",
     "startTime": "2023-07-30T07:00:00Z",
-    "styles": ["light", "rulesHeavy", "combatDriven"],
-    "tags": ["aimedAtChildrenBetween13-17", "aimedAtAdultAttendees"],
+    "styles": ["light", "rulesHeavy", "combatHeavy"],
+    "tags": ["aimedAtChildrenBetween13-17", "adults"],
     "title": "Hirviöiden kotirintama - Monsters' home security",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6656",
@@ -8369,9 +8529,10 @@
     "signupType": "none",
     "startTime": "2023-07-30T07:00:00Z",
     "styles": ["serious", "light", "rulesLight", "characterDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly", "ropeconTheme"],
+    "tags": ["adults", "beginnerFriendly", "ropeconTheme"],
     "title": "Delta Green: Operation FISHBONE MEMENTO",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6930",
@@ -8398,13 +8559,10 @@
     "signupType": "none",
     "startTime": "2023-07-30T07:00:00Z",
     "styles": [],
-    "tags": [
-      "aimedAtChildrenBetween13-17",
-      "aimedAtAdultAttendees",
-      "beginnerFriendly"
-    ],
+    "tags": ["aimedAtChildrenBetween13-17", "adults", "beginnerFriendly"],
     "title": "Tiirikointityöpaja aloittelijoille",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7024",
@@ -8430,10 +8588,11 @@
     "shortDescription": "Roolipelikampanja Vietnamin sodasta",
     "signupType": "none",
     "startTime": "2023-07-30T07:00:00Z",
-    "styles": ["serious", "rulesHeavy", "combatDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly", "ropeconTheme"],
+    "styles": ["serious", "rulesHeavy", "combatHeavy"],
+    "tags": ["adults", "beginnerFriendly", "ropeconTheme"],
     "title": "Charlie ei surffaa",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6761",
@@ -8462,7 +8621,8 @@
     "styles": ["light", "characterDriven"],
     "tags": ["celebratoryYear"],
     "title": "Cyberpunk RED: Vuosikymmenen mahdollisuus",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6105",
@@ -8488,10 +8648,11 @@
     "shortDescription": "A Lovecraftian space opera",
     "signupType": "none",
     "startTime": "2023-07-30T07:00:00Z",
-    "styles": ["serious", "storyDriven", "combatDriven"],
-    "tags": ["aimedAtAdultAttendees"],
+    "styles": ["serious", "storyDriven", "combatHeavy"],
+    "tags": ["adults"],
     "title": "SCP: Distress Signal SCP: Hätäkutsu",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7004",
@@ -8518,9 +8679,10 @@
     "signupType": "none",
     "startTime": "2023-07-30T07:00:00Z",
     "styles": [],
-    "tags": ["aimedAtAdultAttendees"],
+    "tags": ["adults"],
     "title": "The Last Spin - 2. Pelautus / 2. Run",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6841",
@@ -8547,9 +8709,10 @@
     "signupType": "none",
     "startTime": "2023-07-30T07:00:00Z",
     "styles": [],
-    "tags": ["aimedAtAdultAttendees"],
+    "tags": ["adults"],
     "title": "The Last Spin - 1. Pelautus / 1. Run",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6822",
@@ -8576,9 +8739,10 @@
     "signupType": "none",
     "startTime": "2023-07-30T07:00:00Z",
     "styles": ["serious", "rulesLight", "storyDriven", "characterDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly"],
+    "tags": ["adults", "beginnerFriendly"],
     "title": "Maailman loppu",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6350",
@@ -8605,13 +8769,10 @@
     "signupType": "none",
     "startTime": "2023-07-30T07:00:00Z",
     "styles": ["light", "rulesLight", "characterDriven"],
-    "tags": [
-      "aimedAtChildrenBetween13-17",
-      "aimedAtAdultAttendees",
-      "beginnerFriendly"
-    ],
+    "tags": ["aimedAtChildrenBetween13-17", "adults", "beginnerFriendly"],
     "title": "John tulee ropeconiin",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6781",
@@ -8640,7 +8801,8 @@
     "styles": ["light", "rulesLight", "characterDriven"],
     "tags": ["beginnerFriendly"],
     "title": "Kaer Morhenin Noiturit: Todellisia hirviöitä",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6635",
@@ -8667,9 +8829,10 @@
     "signupType": "none",
     "startTime": "2023-07-30T07:00:00Z",
     "styles": ["light", "characterDriven"],
-    "tags": ["aimedAtChildrenBetween13-17", "aimedAtAdultAttendees"],
+    "tags": ["aimedAtChildrenBetween13-17", "adults"],
     "title": "Syksy 1159, Hunajapartio",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6698",
@@ -8696,9 +8859,10 @@
     "signupType": "none",
     "startTime": "2023-07-30T07:00:00Z",
     "styles": ["rulesLight", "characterDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly", "ropeconTheme"],
+    "tags": ["adults", "beginnerFriendly", "ropeconTheme"],
     "title": "Trumania 2088",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6689",
@@ -8725,9 +8889,10 @@
     "signupType": "none",
     "startTime": "2023-07-30T07:00:00Z",
     "styles": ["serious", "rulesLight", "storyDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly"],
+    "tags": ["adults", "beginnerFriendly"],
     "title": "VAESEN: Noitakissan majatalo (2. peluutus)",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7027",
@@ -8735,7 +8900,7 @@
       "loudSounds",
       "flashingLights",
       "physicalContact",
-      "lowLighting",
+      "darkLighting",
       "video",
       "textNotAvailableAsRecordings"
     ],
@@ -8761,9 +8926,10 @@
     "signupType": "none",
     "startTime": "2023-07-30T07:30:00Z",
     "styles": [],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly", "ropeconTheme"],
+    "tags": ["adults", "beginnerFriendly", "ropeconTheme"],
     "title": "Shadows of the Forgotten",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7001",
@@ -8792,11 +8958,15 @@
     "styles": [],
     "tags": ["suitableForAllAges", "beginnerFriendly", "ropeconTheme"],
     "title": "Savua ja Varjoja (Smoke and Shadows) - Illuminati 2000 2. Pelautus",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7205",
-    "accessibilityValues": ["irritateSkin", "participationRequiresDexterity"],
+    "accessibilityValues": [
+      "irritatingChemicals",
+      "participationRequiresDexterity"
+    ],
     "contentWarnings": "",
     "createdAt": "2023-07-27T17:45:57.271Z",
     "description": "Tule konvertoimaan ja oppimaan miniatyyrien muokkaamisesta konvertointityöpajaan. Ota oma figu mukaan tai rakenna saatavilla olevista bitseistä ja sprueista oma luomuksesi. Täällä saat opastusta perusteista kuten leikkaamisesta, pinnaamisesta, kokoamisesta, subassemblyistä, magnetoinnista ja konvertoinnista. Voit myös dumpata bitz boxisi tänne ja saada siitä kiitosta. Tulla ja mennä saa oman aikataulunsa ja vapaiden penkkien mukaan. \r\n\r\n----\r\n\r\nCome and learn how to convert miniatures to your vision. Take your own miniature with you or convert your own from available bitz and sprue pieces. You can get guidance about cutting, pinning, assembling, using subassemblies, magneting and converting. You can also dump your bitz box here and get lauded for it. You can come and go by your own schedule and the availability of seats.",
@@ -8821,11 +8991,12 @@
     "styles": [],
     "tags": ["suitableForAllAges", "beginnerFriendly"],
     "title": "Miniatyyrien konvertointipiste (Su) / Miniature conversion point (Sun)",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6807",
-    "accessibilityValues": ["loudSounds", "physicalContact", "movingAround"],
+    "accessibilityValues": ["loudSounds", "physicalContact", "lotsOfMovement"],
     "contentWarnings": "",
     "createdAt": "2023-07-27T17:45:57.271Z",
     "description": "Oletko aina halunnut heiluttaa teräsmiekkaa tai kirvestä, larpeissa tai muuten vaan? Tai kaipaatko hauskaa harrastusta ja uusia ystäviä? Harmaasusien terästaisteluharjoituksissa, tuttavallisemmin mättötreeneissä, perehdytään historiallisten teräsaseiden turvalliseen ja tehokkaaseen hallintaan mukavassa seurassa. Ota mukaan liikunnalliset vaatteet. Osallistujamäärä maksimissaan 20. Ilmoittautuminen ennakkoon Konstissa alkaen lauantaina kello 18.00.\r\n\r\n---\r\n\r\nHave you always wanted to swing a steel sword or an axe, in larps or otherwise? Or do you want a fun hobby and new friends? In the steel combat practice, more familiarly known as mättö trainings, we familiarize ourselves with the safe and effective handling of historical steel weapons in safe environment. Bring sports clothes. The maximum number of participants is 20. Pre-registration through Konsti starting Saturday at 18.00.",
@@ -8850,17 +9021,18 @@
     "styles": [],
     "tags": [
       "aimedAtChildrenBetween13-17",
-      "aimedAtAdultAttendees",
+      "adults",
       "beginnerFriendly",
       "ropeconTheme"
     ],
     "title": "Harmaasusien terästaisteluharjoitukset - Steel combat practice",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6852",
     "accessibilityValues": [
-      "colourblind",
+      "colorBlindness",
       "programmeDurationOver2Hours",
       "limitedOpportunitiesToMoveAround",
       "participationRequiresDexterity"
@@ -8889,7 +9061,8 @@
     "styles": [],
     "tags": ["tournament", "suitableForAllAges", "beginnerFriendly"],
     "title": "Palapeliturnaus (Joukkue) | Jigsaw Puzzle Tournament (Teams)",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7215",
@@ -8918,7 +9091,8 @@
     "styles": [],
     "tags": [],
     "title": "Tao oma korusi",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6845",
@@ -8944,10 +9118,11 @@
     "shortDescription": "Luolaholvausta RuneQuestin säännöillä",
     "signupType": "none",
     "startTime": "2023-07-30T08:00:00Z",
-    "styles": ["rulesHeavy", "combatDriven"],
+    "styles": ["rulesHeavy", "combatHeavy"],
     "tags": ["beginnerFriendly"],
     "title": "Sateenkaarikummut (Rainbow Mounds)",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7237",
@@ -8980,13 +9155,14 @@
     "signupType": "none",
     "startTime": "2023-07-30T08:00:00Z",
     "styles": ["rulesLight", "storyDriven", "characterDriven"],
-    "tags": ["aimedAtAdultAttendees", "for18PlusOnly", "beginnerFriendly"],
+    "tags": ["adults", "onlyAdults", "beginnerFriendly"],
     "title": "Alamo",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6390",
-    "accessibilityValues": ["recording", "programmeDurationOver2Hours"],
+    "accessibilityValues": ["noTextOfRecording", "programmeDurationOver2Hours"],
     "contentWarnings": "",
     "createdAt": "2023-07-27T17:45:57.271Z",
     "description": "Hullu Reppuli on tehnyt sen taas. Hän on koonut joukon sekaulun haluasia Repunpäähän ja nimennyt heidän Punaisen kirjan salaliitolasiksi. Pyrkiessään kerätä muistiinpanoja kirjaansa varten. Hän on pyytänyt näiltä ystäviltä, maksusta ja pientä seikalua vastaan auttamaan häntä vahvistamaan joitakin tärkeitä yksityiskohtia Konnun historiasta ja sen asukaista.",
@@ -9011,7 +9187,8 @@
     "styles": ["light", "rulesLight", "storyDriven"],
     "tags": ["suitableForAllAges", "beginnerFriendly"],
     "title": "Seikkailuja Konnussa",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6795",
@@ -9038,9 +9215,10 @@
     "signupType": "none",
     "startTime": "2023-07-30T08:00:00Z",
     "styles": ["serious", "rulesLight"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly", "ropeconTheme"],
+    "tags": ["adults", "beginnerFriendly", "ropeconTheme"],
     "title": "Ikimetsien varjot 2",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6903",
@@ -9069,11 +9247,15 @@
     "styles": [],
     "tags": ["suitableForAllAges"],
     "title": "Nuorten seikkailijoiden salakirjoituspaja - Taso 2",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6958",
-    "accessibilityValues": ["irritateSkin", "participationRequiresDexterity"],
+    "accessibilityValues": [
+      "irritatingChemicals",
+      "participationRequiresDexterity"
+    ],
     "contentWarnings": "",
     "createdAt": "2023-07-27T17:45:57.271Z",
     "description": "Tule askartelemaan itsellesi oma kukkahiuspinni tai rintaneula! Tsumami zaiku on perinteinen japanilainen käsityötekniikka, jossa neliskanttisista kangaspaloista taitellaan kolmiulotteisia terälehtiä, joista sitten kootaan kokonaisia kukkia. Nykypäivänä tsumami kanzasheja eli tsumami-hiuskoristeita voi nähdä osana maikojen eli geishaoppilaiden asukokonaisuutta. Materiaalimaksun 5 euroa voit maksaa joko käteisellä (mieluusti tasaraha) tai MobilePaylla. Pajaan mahtuu 12 osallistujaa.\r\n\r\nTyöpajaan on ennakkoilmoittautuminen Konstissa lauantaina kello 18.00 alkaen.",
@@ -9096,9 +9278,10 @@
     "signupType": "none",
     "startTime": "2023-07-30T08:00:00Z",
     "styles": [],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly"],
+    "tags": ["adults", "beginnerFriendly"],
     "title": "Tsumami-kukkatyöpaja",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7005",
@@ -9125,9 +9308,10 @@
     "signupType": "none",
     "startTime": "2023-07-30T08:00:00Z",
     "styles": [],
-    "tags": ["aimedAtAdultAttendees"],
+    "tags": ["adults"],
     "title": "The Last Spin - 4. Pelautus / 4. Run",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7003",
@@ -9154,9 +9338,10 @@
     "signupType": "none",
     "startTime": "2023-07-30T08:00:00Z",
     "styles": [],
-    "tags": ["aimedAtAdultAttendees"],
+    "tags": ["adults"],
     "title": "The Last Spin - 3. Pelautus / 3. Run",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6432",
@@ -9183,9 +9368,10 @@
     "signupType": "none",
     "startTime": "2023-07-30T08:00:00Z",
     "styles": ["light", "rulesLight", "characterDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly"],
+    "tags": ["adults", "beginnerFriendly"],
     "title": "Electric Bastionland: Save the Date!",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6754",
@@ -9212,9 +9398,10 @@
     "signupType": "none",
     "startTime": "2023-07-30T08:00:00Z",
     "styles": ["rulesLight", "storyDriven", "characterDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly"],
+    "tags": ["adults", "beginnerFriendly"],
     "title": "Tasokokeista fiaskoihin",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6253",
@@ -9244,9 +9431,10 @@
     "signupType": "none",
     "startTime": "2023-07-30T08:00:00Z",
     "styles": ["light", "rulesLight"],
-    "tags": ["aimedAtAdultAttendees", "for18PlusOnly", "beginnerFriendly"],
+    "tags": ["adults", "onlyAdults", "beginnerFriendly"],
     "title": "Wizards Against Humanity",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6526",
@@ -9273,9 +9461,10 @@
     "signupType": "none",
     "startTime": "2023-07-30T08:00:00Z",
     "styles": ["rulesLight", "storyDriven", "characterDriven"],
-    "tags": ["aimedAtAdultAttendees", "for18PlusOnly", "ropeconTheme"],
+    "tags": ["adults", "onlyAdults", "ropeconTheme"],
     "title": "Jäähyväiset nuoruudelle",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7065",
@@ -9302,9 +9491,10 @@
     "signupType": "none",
     "startTime": "2023-07-30T08:00:00Z",
     "styles": ["serious", "rulesHeavy", "characterDriven"],
-    "tags": ["aimedAtAdultAttendees", "for18PlusOnly"],
+    "tags": ["adults", "onlyAdults"],
     "title": "Overlord 2023 näytöspeli (Su)",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6747",
@@ -9333,12 +9523,13 @@
     "styles": ["light", "rulesLight", "storyDriven"],
     "tags": ["suitableForAllAges", "beginnerFriendly"],
     "title": "Most Excellent Fireworks",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6805",
     "accessibilityValues": [
-      "colourblind",
+      "colorBlindness",
       "longText",
       "textNotAvailableAsRecordings"
     ],
@@ -9366,7 +9557,8 @@
     "styles": ["serious", "rulesHeavy"],
     "tags": ["beginnerFriendly", "ropeconTheme"],
     "title": "Alavilla mailla",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6427",
@@ -9395,12 +9587,13 @@
     "styles": ["light", "rulesLight", "characterDriven"],
     "tags": [
       "aimedAtChildrenBetween13-17",
-      "aimedAtAdultAttendees",
+      "adults",
       "beginnerFriendly",
       "ropeconTheme"
     ],
     "title": "Keijusirkus, menninkäiset ja sateenkaaren velho",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7090",
@@ -9429,7 +9622,8 @@
     "styles": [],
     "tags": ["suitableForAllAges", "beginnerFriendly", "ropeconTheme"],
     "title": "Wanderhome - Tulevan ja menneen tienristeyksessä (su/sun)",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6813",
@@ -9456,9 +9650,10 @@
     "signupType": "konsti",
     "startTime": "2023-07-30T09:00:00Z",
     "styles": [],
-    "tags": ["aimedAtChildrenBetween13-17", "aimedAtAdultAttendees"],
+    "tags": ["aimedAtChildrenBetween13-17", "adults"],
     "title": "Blood on the Clocktower pelautus.",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6580",
@@ -9485,9 +9680,10 @@
     "signupType": "konsti",
     "startTime": "2023-07-30T09:00:00Z",
     "styles": [],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly", "ropeconTheme"],
+    "tags": ["adults", "beginnerFriendly", "ropeconTheme"],
     "title": "Lautapelataan/Boardgames: T.I.M.E Stories (1: Asylum)",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6654",
@@ -9516,7 +9712,8 @@
     "styles": ["light", "rulesLight", "storyDriven"],
     "tags": ["beginnerFriendly"],
     "title": "Hiljainen vuosi maailmanlopun jälkeen",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6668",
@@ -9546,10 +9743,11 @@
     "shortDescription": "A Pathfinder adventure",
     "signupType": "none",
     "startTime": "2023-07-30T09:00:00Z",
-    "styles": ["light", "rulesHeavy", "combatDriven"],
+    "styles": ["light", "rulesHeavy", "combatHeavy"],
     "tags": ["suitableForAllAges", "beginnerFriendly"],
     "title": "Pathfinder Beginner Box",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7238",
@@ -9576,9 +9774,10 @@
     "signupType": "none",
     "startTime": "2023-07-30T09:00:00Z",
     "styles": ["serious", "rulesLight", "characterDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly"],
+    "tags": ["adults", "beginnerFriendly"],
     "title": "Mestarin taakseen jättämät",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6843",
@@ -9607,7 +9806,8 @@
     "styles": ["light", "rulesLight", "storyDriven"],
     "tags": ["beginnerFriendly", "ropeconTheme"],
     "title": "Tähtivakka 6: Muuttuva maailma",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6819",
@@ -9638,9 +9838,10 @@
     "signupType": "none",
     "startTime": "2023-07-30T09:00:00Z",
     "styles": ["serious", "rulesLight", "storyDriven", "characterDriven"],
-    "tags": ["aimedAtAdultAttendees"],
+    "tags": ["adults"],
     "title": "Varjojen valtias",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6956",
@@ -9669,7 +9870,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Larppitiedotus levällään -ideointityöpaja",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6796",
@@ -9696,9 +9898,10 @@
     "signupType": "none",
     "startTime": "2023-07-30T09:00:00Z",
     "styles": ["serious", "storyDriven"],
-    "tags": ["aimedAtAdultAttendees", "ropeconTheme"],
+    "tags": ["adults", "ropeconTheme"],
     "title": "Desperation Arcanum",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6575",
@@ -9725,9 +9928,10 @@
     "signupType": "none",
     "startTime": "2023-07-30T09:00:00Z",
     "styles": ["rulesLight", "characterDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly", "ropeconTheme"],
+    "tags": ["adults", "beginnerFriendly", "ropeconTheme"],
     "title": "Nälkämaa",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6564",
@@ -9757,9 +9961,10 @@
     "signupType": "none",
     "startTime": "2023-07-30T09:00:00Z",
     "styles": ["serious", "storyDriven", "characterDriven"],
-    "tags": ["for18PlusOnly", "beginnerFriendly"],
+    "tags": ["onlyAdults", "beginnerFriendly"],
     "title": "Totuuden tuolla puolen",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6157",
@@ -9789,13 +9994,14 @@
     "signupType": "none",
     "startTime": "2023-07-30T09:00:00Z",
     "styles": ["serious", "rulesLight", "storyDriven", "characterDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly", "ropeconTheme"],
+    "tags": ["adults", "beginnerFriendly", "ropeconTheme"],
     "title": "The Celebration of Baronet von Alzgau",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7058",
-    "accessibilityValues": ["colourblind", "programmeDurationOver2Hours"],
+    "accessibilityValues": ["colorBlindness", "programmeDurationOver2Hours"],
     "contentWarnings": "",
     "createdAt": "2023-07-27T17:45:57.271Z",
     "description": "16. Kesäkuuta, 1815. Napoleon on julistautunut uudestaan keisariksi ja marssii armeijansa kanssa kohti Alankomaita. Ranskan Marsalkka Ney yrittää vallata Quatre Bras'n strategisesti tärkeän risteyksen Brittiläis-Liittoutuneiden joukkojen komentajalta, Wellingtonin herttualta.\r\n\r\nTule komentamaan kymmeniätuhansia sotilaita tässä (suhteellisen) yksinkertaisessa sotastrategiapelissä. Annatko tykkien jylistä vai komennatko ratsuväen rynnäkköön? Voiton avaimet ovat käsissäsi!\r\n\r\n----\r\n\r\nJune 15th, 1815. Napoleon has declared himself emperor again and is marching his army into the Netherlands. The French Marshal Ney is tasked with taking the strategically important crossroads of Quatre Bras from the Anglo-Allied commander, the Duke of Wellington.\r\n\r\nCome command tens of thousands of troops in this (relatively) simple war strategy game. Will you let the cannons roar or order your cavalry to charge? The keys to victory are in your hand!",
@@ -9820,7 +10026,8 @@
     "styles": [],
     "tags": ["demo", "suitableForAllAges", "beginnerFriendly"],
     "title": "Quatre Bras'n taistelu / Battle of Quatre Bras (Su/Sun)",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6127",
@@ -9849,7 +10056,8 @@
     "styles": [],
     "tags": ["suitableForAllAges", "beginnerFriendly"],
     "title": "Draw Your Character!",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6976",
@@ -9878,12 +10086,13 @@
     "styles": [],
     "tags": [
       "aimedAtChildrenBetween13-17",
-      "aimedAtAdultAttendees",
+      "adults",
       "beginnerFriendly",
       "ropeconTheme"
     ],
     "title": "Weathering workshop - pienen maailman säistämispaja (su/Sun)",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6790",
@@ -9912,7 +10121,8 @@
     "styles": [],
     "tags": ["suitableForAllAges", "beginnerFriendly", "ropeconTheme"],
     "title": "Marsin agentit: Aika aikaa kutakin",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6133",
@@ -9942,12 +10152,13 @@
     "tags": [
       "tournament",
       "aimedAtChildrenBetween13-17",
-      "aimedAtAdultAttendees",
+      "adults",
       "beginnerFriendly",
       "ropeconTheme"
     ],
     "title": "Solaris VIIn Gladiaattorit - The Gladiators of Solaris VII (Su/Sun)",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6308",
@@ -9974,9 +10185,10 @@
     "signupType": "none",
     "startTime": "2023-07-30T10:00:00Z",
     "styles": ["rulesLight", "storyDriven", "characterDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly"],
+    "tags": ["adults", "beginnerFriendly"],
     "title": "Infiltrators",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6672",
@@ -10009,13 +10221,14 @@
     "styles": ["light", "rulesHeavy"],
     "tags": ["suitableForAllAges", "beginnerFriendly"],
     "title": "Pathfinder Quest #14: The Swordlord's Challenge",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6101",
     "accessibilityValues": [
       "loudSounds",
-      "movingAround",
+      "lotsOfMovement",
       "participationRequiresDexterity"
     ],
     "contentWarnings": "Ruoskat. (Ohjelma itsessään ei sisällä mitään satuttamiseen tai seksuaalisiin teemoihin liittyvää, mutta saattaa herättää ihmisissä assosiaatioita näihin asioihin.)",
@@ -10040,9 +10253,10 @@
     "signupType": "none",
     "startTime": "2023-07-30T10:00:00Z",
     "styles": [],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly"],
+    "tags": ["adults", "beginnerFriendly"],
     "title": "Ruoskan käyttöä vasta-alkajille / Whip use for complete newbies",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6839",
@@ -10073,11 +10287,12 @@
       "rulesHeavy",
       "storyDriven",
       "characterDriven",
-      "combatDriven"
+      "combatHeavy"
     ],
-    "tags": ["aimedAtAdultAttendees", "ropeconTheme"],
+    "tags": ["adults", "ropeconTheme"],
     "title": "Riders of the Turning Wheel / Rattaankierron harjalla",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6959",
@@ -10106,7 +10321,8 @@
     "styles": [],
     "tags": ["suitableForAllAges", "beginnerFriendly"],
     "title": "Minäkö hahmo",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6907",
@@ -10137,13 +10353,10 @@
     "signupType": "none",
     "startTime": "2023-07-30T10:00:00Z",
     "styles": [],
-    "tags": [
-      "aimedAtChildrenBetween13-17",
-      "aimedAtAdultAttendees",
-      "ropeconTheme"
-    ],
+    "tags": ["aimedAtChildrenBetween13-17", "adults", "ropeconTheme"],
     "title": "Pelinjohtajien yhteistyöpaja",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6169",
@@ -10175,7 +10388,8 @@
     "styles": ["light", "rulesLight", "storyDriven", "characterDriven"],
     "tags": ["beginnerFriendly", "ropeconTheme"],
     "title": "Kuuma keikka Omega 3:ssa / Dicey gig at Omega 3",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6429",
@@ -10202,9 +10416,10 @@
     "signupType": "none",
     "startTime": "2023-07-30T10:00:00Z",
     "styles": ["light", "rulesLight", "storyDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly"],
+    "tags": ["adults", "beginnerFriendly"],
     "title": "Redshift",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6729",
@@ -10231,17 +10446,18 @@
     "signupType": "none",
     "startTime": "2023-07-30T10:00:00Z",
     "styles": ["serious", "rulesLight", "storyDriven", "characterDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly", "ropeconTheme"],
+    "tags": ["adults", "beginnerFriendly", "ropeconTheme"],
     "title": "Murto Avalon-kompleksiin",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6483",
     "accessibilityValues": [
       "loudSounds",
       "physicalContact",
-      "lowLighting",
-      "recording",
+      "darkLighting",
+      "noTextOfRecording",
       "programmeDurationOver2Hours",
       "limitedOpportunitiesToMoveAround",
       "textNotAvailableAsRecordings",
@@ -10269,14 +10485,10 @@
     "signupType": "none",
     "startTime": "2023-07-30T10:30:00Z",
     "styles": [],
-    "tags": [
-      "aimedAtAdultAttendees",
-      "for18PlusOnly",
-      "beginnerFriendly",
-      "ropeconTheme"
-    ],
+    "tags": ["adults", "onlyAdults", "beginnerFriendly", "ropeconTheme"],
     "title": "Hissilarppi 2. Pelautus",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6999",
@@ -10303,9 +10515,10 @@
     "signupType": "none",
     "startTime": "2023-07-30T10:30:00Z",
     "styles": [],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly", "ropeconTheme"],
+    "tags": ["adults", "beginnerFriendly", "ropeconTheme"],
     "title": "Kielokoti 2. Pelautus",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6699",
@@ -10338,12 +10551,13 @@
       "beginnerFriendly"
     ],
     "title": "Kodinkoneiden käräjät 2. Pelautus",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6446",
     "accessibilityValues": [
-      "strongSmells",
+      "strongOdours",
       "textNotAvailableAsRecordings",
       "participationRequiresDexterity"
     ],
@@ -10370,13 +10584,14 @@
     "startTime": "2023-07-30T12:00:00Z",
     "styles": [],
     "tags": [
-      "aimedAtChildrenUnder13",
+      "kids",
       "aimedAtChildrenBetween13-17",
-      "aimedAtAdultAttendees",
+      "adults",
       "beginnerFriendly"
     ],
     "title": "Nahkaranneketyöpaja",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6532",
@@ -10403,9 +10618,10 @@
     "signupType": "none",
     "startTime": "2023-07-30T12:00:00Z",
     "styles": [],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly"],
+    "tags": ["adults", "beginnerFriendly"],
     "title": "Micro-RPG Workshop",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6961",
@@ -10434,7 +10650,8 @@
     "styles": [],
     "tags": ["suitableForAllAges", "beginnerFriendly", "ropeconTheme"],
     "title": "Create a Viking-style Treasure Necklace",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6962",
@@ -10463,12 +10680,13 @@
     "styles": [],
     "tags": [
       "suitableForAllAges",
-      "aimedAtAdultAttendees",
+      "adults",
       "beginnerFriendly",
       "ropeconTheme"
     ],
     "title": "Learn the Basics of Embroidery",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6860",
@@ -10497,7 +10715,8 @@
     "styles": [],
     "tags": ["suitableForAllAges", "beginnerFriendly"],
     "title": "Elw el mia mirte - ilmaisua ilman puhuttua kieltä",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6844",
@@ -10524,9 +10743,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T12:00:00Z",
     "styles": ["serious"],
-    "tags": ["aimedAtAdultAttendees"],
+    "tags": ["adults"],
     "title": "Viimeiset miekat - Kuolleiden linjojen takana",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7247",
@@ -10553,9 +10773,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T11:00:00Z",
     "styles": ["serious", "rulesLight", "characterDriven"],
-    "tags": ["aimedAtAdultAttendees", "beginnerFriendly"],
+    "tags": ["adults", "beginnerFriendly"],
     "title": "Mestarin taakseen jättämät",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6589",
@@ -10582,9 +10803,10 @@
     "signupType": "konsti",
     "startTime": "2023-07-30T08:00:00Z",
     "styles": [],
-    "tags": ["aimedAtChildrenBetween13-17", "aimedAtAdultAttendees"],
+    "tags": ["aimedAtChildrenBetween13-17", "adults"],
     "title": "Demo about a fantasy-RPG: Lands of Forever, Fantasiaroolipelin Lands of Forever demotus",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7253",
@@ -10613,12 +10835,13 @@
     "styles": ["light", "rulesLight"],
     "tags": [
       "aimedAtChildrenBetween13-17",
-      "aimedAtAdultAttendees",
+      "adults",
       "beginnerFriendly",
       "ropeconTheme"
     ],
     "title": "Dystopia",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7254",
@@ -10645,9 +10868,10 @@
     "signupType": "none",
     "startTime": "2023-07-29T18:00:00Z",
     "styles": ["light", "rulesLight"],
-    "tags": ["aimedAtChildrenBetween13-17", "aimedAtAdultAttendees"],
+    "tags": ["aimedAtChildrenBetween13-17", "adults"],
     "title": "Dystopia",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p6500",
@@ -10676,6 +10900,7 @@
     "styles": [],
     "tags": ["suitableForAllAges", "beginnerFriendly"],
     "title": "\"Joo ja...\" -improtunti",
-    "updatedAt": "2023-07-30T16:25:23.482Z"
+    "updatedAt": "2023-07-30T16:25:23.482Z",
+    "state": "accepted"
   }
 ]
