@@ -24,9 +24,10 @@
     "signupType": "konsti",
     "startTime": "2024-11-02T09:00:00Z",
     "styles": [],
-    "tags": ["for18PlusOnly", "beginnerFriendly"],
+    "tags": ["onlyAdults", "beginnerFriendly"],
     "title": "Timantin sävyvirhe",
-    "updatedAt": "2024-11-04T18:25:00.332Z"
+    "updatedAt": "2024-11-04T18:25:00.332Z",
+    "state": "accepted"
   },
   {
     "programItemId": "lollo-praedor",
@@ -53,9 +54,10 @@
     "signupType": "konsti",
     "startTime": "2024-11-02T09:00:00Z",
     "styles": [],
-    "tags": ["for18PlusOnly", "beginnerFriendly"],
+    "tags": ["onlyAdults", "beginnerFriendly"],
     "title": "L&L Gorgoniuksen Koodeksi",
-    "updatedAt": "2024-11-04T18:25:00.332Z"
+    "updatedAt": "2024-11-04T18:25:00.332Z",
+    "state": "accepted"
   },
   {
     "programItemId": "mates-dates-and-sleepovers",
@@ -84,7 +86,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Mates, Dates and Sleepovers",
-    "updatedAt": "2024-11-04T18:25:00.332Z"
+    "updatedAt": "2024-11-04T18:25:00.332Z",
+    "state": "accepted"
   },
   {
     "programItemId": "pelipoyta-ry-peluuttaa-ryuutama",
@@ -113,7 +116,8 @@
     "styles": [],
     "tags": ["childrenFriendly", "beginnerFriendly"],
     "title": "Pelipöytä ry peluuttaa: Ryuutama",
-    "updatedAt": "2024-11-04T18:25:00.332Z"
+    "updatedAt": "2024-11-04T18:25:00.332Z",
+    "state": "accepted"
   },
   {
     "programItemId": "city-of-the-scorpion-god",
@@ -140,9 +144,10 @@
     "signupType": "konsti",
     "startTime": "2024-11-02T17:00:00Z",
     "styles": [],
-    "tags": ["for18PlusOnly"],
+    "tags": ["onlyAdults"],
     "title": "City of the Scorpion God",
-    "updatedAt": "2024-11-04T18:25:00.332Z"
+    "updatedAt": "2024-11-04T18:25:00.332Z",
+    "state": "accepted"
   },
   {
     "programItemId": "duty-unto-death-a-dragon-age-rpg",
@@ -171,7 +176,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Duty Unto Death - A Dragon Age RPG",
-    "updatedAt": "2024-11-04T18:25:00.332Z"
+    "updatedAt": "2024-11-04T18:25:00.332Z",
+    "state": "accepted"
   },
   {
     "programItemId": "kirottu-matka",
@@ -198,9 +204,10 @@
     "signupType": "konsti",
     "startTime": "2024-11-02T09:00:00Z",
     "styles": [],
-    "tags": ["for18PlusOnly"],
+    "tags": ["onlyAdults"],
     "title": "Kirottu Matka",
-    "updatedAt": "2024-11-04T18:25:00.332Z"
+    "updatedAt": "2024-11-04T18:25:00.332Z",
+    "state": "accepted"
   },
   {
     "programItemId": "deathmatch-island",
@@ -227,9 +234,10 @@
     "signupType": "konsti",
     "startTime": "2024-11-02T09:00:00Z",
     "styles": [],
-    "tags": ["for18PlusOnly", "beginnerFriendly"],
+    "tags": ["onlyAdults", "beginnerFriendly"],
     "title": "Deathmatch Island",
-    "updatedAt": "2024-11-04T18:25:00.332Z"
+    "updatedAt": "2024-11-04T18:25:00.332Z",
+    "state": "accepted"
   },
   {
     "programItemId": "hahmotyopaja",
@@ -258,7 +266,8 @@
     "styles": [],
     "tags": [],
     "title": "Hahmotyöpaja",
-    "updatedAt": "2024-11-04T18:25:00.332Z"
+    "updatedAt": "2024-11-04T18:25:00.332Z",
+    "state": "accepted"
   },
   {
     "programItemId": "pelia-pyynnosta-lauantai",
@@ -287,7 +296,8 @@
     "styles": [],
     "tags": [],
     "title": "Peliä pyynnöstä lauantai",
-    "updatedAt": "2024-11-04T18:25:00.332Z"
+    "updatedAt": "2024-11-04T18:25:00.332Z",
+    "state": "accepted"
   },
   {
     "programItemId": "eco-mofos-into-the-antlions-den",
@@ -316,7 +326,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "ECO MOFOS!! INTO THE ANTLION'S DEN",
-    "updatedAt": "2024-11-04T18:25:00.332Z"
+    "updatedAt": "2024-11-04T18:25:00.332Z",
+    "state": "accepted"
   },
   {
     "programItemId": "pathfinder-society-special-3-99-fate-in-the-future",
@@ -345,7 +356,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Pathfinder Society Scenario #6-01: Intro: Year of Immortal Influence",
-    "updatedAt": "2024-11-04T18:25:00.332Z"
+    "updatedAt": "2024-11-04T18:25:00.332Z",
+    "state": "accepted"
   },
   {
     "programItemId": "offworlders-kosmoksen-karsein-keikka",
@@ -372,9 +384,10 @@
     "signupType": "konsti",
     "startTime": "2024-11-02T12:00:00Z",
     "styles": [],
-    "tags": ["for18PlusOnly", "beginnerFriendly"],
+    "tags": ["onlyAdults", "beginnerFriendly"],
     "title": "Offworlders: Kosmoksen karsein keikka",
-    "updatedAt": "2024-11-04T18:25:00.332Z"
+    "updatedAt": "2024-11-04T18:25:00.332Z",
+    "state": "accepted"
   },
   {
     "programItemId": "sakaheitto-livepelautus",
@@ -403,7 +416,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Säkäheitto livepelautus",
-    "updatedAt": "2024-11-04T18:25:00.332Z"
+    "updatedAt": "2024-11-04T18:25:00.332Z",
+    "state": "accepted"
   },
   {
     "programItemId": "kuonojoen-lohikaarme",
@@ -432,7 +446,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Kuonojoen lohikäärme",
-    "updatedAt": "2024-11-04T18:25:00.332Z"
+    "updatedAt": "2024-11-04T18:25:00.332Z",
+    "state": "accepted"
   },
   {
     "programItemId": "larppimiekkailuworkshop",
@@ -461,7 +476,8 @@
     "styles": [],
     "tags": [],
     "title": "Larppimiekkailuworkshop",
-    "updatedAt": "2024-11-04T18:25:00.332Z"
+    "updatedAt": "2024-11-04T18:25:00.332Z",
+    "state": "accepted"
   },
   {
     "programItemId": "ruhtinaan-aika",
@@ -490,7 +506,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Ruhtinaan aika",
-    "updatedAt": "2024-11-04T18:25:00.332Z"
+    "updatedAt": "2024-11-04T18:25:00.332Z",
+    "state": "accepted"
   },
   {
     "programItemId": "tyhjyyden-meren-hirviot",
@@ -519,7 +536,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Tyhjyyden meren hirviöt",
-    "updatedAt": "2024-11-04T18:25:00.332Z"
+    "updatedAt": "2024-11-04T18:25:00.332Z",
+    "state": "accepted"
   },
   {
     "programItemId": "berserkin-pesa-vallat-ja-vaet",
@@ -548,7 +566,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Berserkin Pesä: Vallat ja väet",
-    "updatedAt": "2024-11-04T18:25:00.332Z"
+    "updatedAt": "2024-11-04T18:25:00.332Z",
+    "state": "accepted"
   },
   {
     "programItemId": "space-1889-pakkolasku-venuksen-viidakkoon",
@@ -577,7 +596,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Space 1889: Pakkolasku Venuksen viidakkoon",
-    "updatedAt": "2024-11-04T18:25:00.332Z"
+    "updatedAt": "2024-11-04T18:25:00.332Z",
+    "state": "accepted"
   },
   {
     "programItemId": "toivottavasti-kukaan-ei-huomaa-2",
@@ -606,7 +626,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Toivottavasti kukaan ei huomaa!",
-    "updatedAt": "2024-11-04T18:25:00.332Z"
+    "updatedAt": "2024-11-04T18:25:00.332Z",
+    "state": "accepted"
   },
   {
     "programItemId": "ihmiskarjujen-yo-night-of-the-hogmen",
@@ -635,7 +656,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Ihmiskarjujen yö / Night of the Hogmen",
-    "updatedAt": "2024-11-04T18:25:00.332Z"
+    "updatedAt": "2024-11-04T18:25:00.332Z",
+    "state": "accepted"
   },
   {
     "programItemId": "red-tundra",
@@ -664,7 +686,8 @@
     "styles": [],
     "tags": [],
     "title": "Red Tundra",
-    "updatedAt": "2024-11-04T18:25:00.332Z"
+    "updatedAt": "2024-11-04T18:25:00.332Z",
+    "state": "accepted"
   },
   {
     "programItemId": "mysteerien-maatila",
@@ -693,7 +716,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Mysteerien Maatila",
-    "updatedAt": "2024-11-04T18:25:00.332Z"
+    "updatedAt": "2024-11-04T18:25:00.332Z",
+    "state": "accepted"
   },
   {
     "programItemId": "juokse-juokse-kultaseni",
@@ -722,7 +746,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Juokse, juokse, kultaseni",
-    "updatedAt": "2024-11-04T18:25:00.332Z"
+    "updatedAt": "2024-11-04T18:25:00.332Z",
+    "state": "accepted"
   },
   {
     "programItemId": "alice-is-missing",
@@ -751,7 +776,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Alice is Missing",
-    "updatedAt": "2024-11-04T18:25:00.332Z"
+    "updatedAt": "2024-11-04T18:25:00.332Z",
+    "state": "accepted"
   },
   {
     "programItemId": "praedor-kirotut-kuninkaanvaalit-2",
@@ -780,7 +806,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Praedor: Kirotut kuninkaanvaalit",
-    "updatedAt": "2024-11-04T18:25:00.332Z"
+    "updatedAt": "2024-11-04T18:25:00.332Z",
+    "state": "accepted"
   },
   {
     "programItemId": "frendeja-kundeja-ja-pullonpyoritysta",
@@ -809,7 +836,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Frendejä, kundeja ja pullonpyöritystä",
-    "updatedAt": "2024-11-04T18:25:00.332Z"
+    "updatedAt": "2024-11-04T18:25:00.332Z",
+    "state": "accepted"
   },
   {
     "programItemId": "kirottu-matka-2",
@@ -836,9 +864,10 @@
     "signupType": "konsti",
     "startTime": "2024-11-02T18:00:00Z",
     "styles": [],
-    "tags": ["for18PlusOnly"],
+    "tags": ["onlyAdults"],
     "title": "Kirottu Matka",
-    "updatedAt": "2024-11-04T18:25:00.332Z"
+    "updatedAt": "2024-11-04T18:25:00.332Z",
+    "state": "accepted"
   },
   {
     "programItemId": "alien-uscss-traconis-2",
@@ -867,7 +896,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Alien - USCSS Traconis",
-    "updatedAt": "2024-11-04T18:25:00.332Z"
+    "updatedAt": "2024-11-04T18:25:00.332Z",
+    "state": "accepted"
   },
   {
     "programItemId": "hahmotyopaja-2",
@@ -896,7 +926,8 @@
     "styles": [],
     "tags": [],
     "title": "Hahmotyöpaja",
-    "updatedAt": "2024-11-04T18:25:00.332Z"
+    "updatedAt": "2024-11-04T18:25:00.332Z",
+    "state": "accepted"
   },
   {
     "programItemId": "alavilla-mailla",
@@ -925,7 +956,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Alavilla mailla",
-    "updatedAt": "2024-11-04T18:25:00.332Z"
+    "updatedAt": "2024-11-04T18:25:00.332Z",
+    "state": "accepted"
   },
   {
     "programItemId": "toivottavasti-kukaan-ei-huomaa",
@@ -954,7 +986,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Toivottavasti kukaan ei huomaa!",
-    "updatedAt": "2024-11-04T18:25:00.332Z"
+    "updatedAt": "2024-11-04T18:25:00.332Z",
+    "state": "accepted"
   },
   {
     "programItemId": "praedor-kirotut-kuninkaanvaalit",
@@ -983,7 +1016,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Praedor: Kirotut kuninkaanvaalit",
-    "updatedAt": "2024-11-04T18:25:00.332Z"
+    "updatedAt": "2024-11-04T18:25:00.332Z",
+    "state": "accepted"
   },
   {
     "programItemId": "auld-sanguine",
@@ -1010,9 +1044,10 @@
     "signupType": "konsti",
     "startTime": "2024-11-03T09:00:00Z",
     "styles": [],
-    "tags": ["for18PlusOnly", "beginnerFriendly"],
+    "tags": ["onlyAdults", "beginnerFriendly"],
     "title": "Auld Sanguine - A New Year's Eve Vampire the Masquerade Story",
-    "updatedAt": "2024-11-04T18:25:00.332Z"
+    "updatedAt": "2024-11-04T18:25:00.332Z",
+    "state": "accepted"
   },
   {
     "programItemId": "neuvoston-umpisolmu",
@@ -1041,7 +1076,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Neuvoston umpisolmu",
-    "updatedAt": "2024-11-04T18:25:00.332Z"
+    "updatedAt": "2024-11-04T18:25:00.332Z",
+    "state": "accepted"
   },
   {
     "programItemId": "vaiettu-menneisyys",
@@ -1070,7 +1106,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Vaiettu menneisyys",
-    "updatedAt": "2024-11-04T18:25:00.332Z"
+    "updatedAt": "2024-11-04T18:25:00.332Z",
+    "state": "accepted"
   },
   {
     "programItemId": "the-dalish-curse-a-dragon-age-rpg",
@@ -1099,7 +1136,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "The Dalish Curse - A Dragon Age RPG",
-    "updatedAt": "2024-11-04T18:25:00.332Z"
+    "updatedAt": "2024-11-04T18:25:00.332Z",
+    "state": "accepted"
   },
   {
     "programItemId": "pelia-pyynnosta-sunnuntai",
@@ -1128,7 +1166,8 @@
     "styles": [],
     "tags": [],
     "title": "Peliä pyynnöstä sunnuntai",
-    "updatedAt": "2024-11-04T18:25:00.332Z"
+    "updatedAt": "2024-11-04T18:25:00.332Z",
+    "state": "accepted"
   },
   {
     "programItemId": "elava-pakohuone-12",
@@ -1157,7 +1196,8 @@
     "styles": [],
     "tags": [],
     "title": "Elävä pakohuone",
-    "updatedAt": "2024-11-04T18:25:00.332Z"
+    "updatedAt": "2024-11-04T18:25:00.332Z",
+    "state": "accepted"
   },
   {
     "programItemId": "elava-pakohuone-14",
@@ -1186,7 +1226,8 @@
     "styles": [],
     "tags": [],
     "title": "Elävä pakohuone",
-    "updatedAt": "2024-11-04T18:25:00.332Z"
+    "updatedAt": "2024-11-04T18:25:00.332Z",
+    "state": "accepted"
   },
   {
     "programItemId": "elava-pakohuone-16",
@@ -1215,7 +1256,8 @@
     "styles": [],
     "tags": [],
     "title": "Elävä pakohuone",
-    "updatedAt": "2024-11-04T18:25:00.332Z"
+    "updatedAt": "2024-11-04T18:25:00.332Z",
+    "state": "accepted"
   },
   {
     "programItemId": "the-lighthouse",
@@ -1242,9 +1284,10 @@
     "signupType": "konsti",
     "startTime": "2024-11-03T10:00:00Z",
     "styles": [],
-    "tags": ["for18PlusOnly", "beginnerFriendly"],
+    "tags": ["onlyAdults", "beginnerFriendly"],
     "title": "The Lighthouse",
-    "updatedAt": "2024-11-04T18:25:00.332Z"
+    "updatedAt": "2024-11-04T18:25:00.332Z",
+    "state": "accepted"
   },
   {
     "programItemId": "meripihkalinna",
@@ -1273,7 +1316,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Meripihkalinna",
-    "updatedAt": "2024-11-04T18:25:00.332Z"
+    "updatedAt": "2024-11-04T18:25:00.332Z",
+    "state": "accepted"
   },
   {
     "programItemId": "taivaskone",
@@ -1302,7 +1346,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Taivaskone",
-    "updatedAt": "2024-11-04T18:25:00.332Z"
+    "updatedAt": "2024-11-04T18:25:00.332Z",
+    "state": "accepted"
   },
   {
     "programItemId": "pathfinder-society-scenario-6-01-intro-year-of-immortal-influence",
@@ -1331,7 +1376,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Pathfinder Society Scenario #6-01: Intro: Year of Immortal Influence",
-    "updatedAt": "2024-11-04T18:25:00.332Z"
+    "updatedAt": "2024-11-04T18:25:00.332Z",
+    "state": "accepted"
   },
   {
     "programItemId": "space-1889-pakolasku-venuksen-viidakkoon",
@@ -1360,7 +1406,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Space 1889: Pakkolasku Venuksen viidakkoon",
-    "updatedAt": "2024-11-04T18:25:00.332Z"
+    "updatedAt": "2024-11-04T18:25:00.332Z",
+    "state": "accepted"
   },
   {
     "programItemId": "alien-uscss-traconis",
@@ -1389,7 +1436,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Alien - USCSS Traconis",
-    "updatedAt": "2024-11-04T18:25:00.332Z"
+    "updatedAt": "2024-11-04T18:25:00.332Z",
+    "state": "accepted"
   },
   {
     "programItemId": "miniatyyrien-maalausopetusta-3",
@@ -1418,6 +1466,7 @@
     "styles": [],
     "tags": [],
     "title": "Miniatyyrien maalausopetusta",
-    "updatedAt": "2024-11-04T18:25:00.332Z"
+    "updatedAt": "2024-11-04T18:25:00.332Z",
+    "state": "accepted"
   }
 ]

@@ -4,15 +4,15 @@
     "accessibility": {
       "loudSounds": false,
       "flashingLights": false,
-      "strongSmells": false,
-      "irritateSkin": false,
+      "strongOdours": false,
+      "irritatingChemicals": false,
       "physicalContact": false,
-      "lowLighting": false,
-      "movingAround": false,
+      "darkLighting": false,
+      "lotsOfMovement": false,
       "video": false,
-      "recording": false,
+      "noTextOfRecording": false,
       "text": false,
-      "colourblind": false
+      "colorBlindness": false
     },
     "ageRestricted": false,
     "beginnerFriendly": false,
@@ -44,22 +44,23 @@
       "teema-elementit"
     ],
     "title": "5e: Elementum Battle Royale",
-    "updatedAt": "2021-08-04T11:36:01.096Z"
+    "updatedAt": "2021-08-04T11:36:01.096Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4640",
     "accessibility": {
       "loudSounds": false,
       "flashingLights": false,
-      "strongSmells": false,
-      "irritateSkin": false,
+      "strongOdours": false,
+      "irritatingChemicals": false,
       "physicalContact": false,
-      "lowLighting": false,
-      "movingAround": false,
+      "darkLighting": false,
+      "lotsOfMovement": false,
       "video": false,
-      "recording": false,
+      "noTextOfRecording": false,
       "text": false,
-      "colourblind": false
+      "colorBlindness": false
     },
     "ageRestricted": false,
     "beginnerFriendly": false,
@@ -87,22 +88,23 @@
     "styles": ["light", "rules_light"],
     "tags": ["aloittelijaystavallinen", "sopii-7-12v-", "sopii-yli-12v-"],
     "title": "Mahtavat Mahtisanat",
-    "updatedAt": "2021-08-04T11:36:01.096Z"
+    "updatedAt": "2021-08-04T11:36:01.096Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4652",
     "accessibility": {
       "loudSounds": false,
       "flashingLights": false,
-      "strongSmells": false,
-      "irritateSkin": false,
+      "strongOdours": false,
+      "irritatingChemicals": false,
       "physicalContact": false,
-      "lowLighting": false,
-      "movingAround": false,
+      "darkLighting": false,
+      "lotsOfMovement": false,
       "video": false,
-      "recording": false,
+      "noTextOfRecording": false,
       "text": false,
-      "colourblind": false
+      "colorBlindness": false
     },
     "ageRestricted": false,
     "beginnerFriendly": false,
@@ -130,22 +132,23 @@
     "styles": ["serious", "rules_light", "story_driven", "character_driven"],
     "tags": ["vain-taysi-ikaisille"],
     "title": "Tasapainoton tila",
-    "updatedAt": "2021-08-04T11:36:01.096Z"
+    "updatedAt": "2021-08-04T11:36:01.096Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4653",
     "accessibility": {
       "loudSounds": false,
       "flashingLights": false,
-      "strongSmells": false,
-      "irritateSkin": false,
+      "strongOdours": false,
+      "irritatingChemicals": false,
       "physicalContact": false,
-      "lowLighting": false,
-      "movingAround": false,
+      "darkLighting": false,
+      "lotsOfMovement": false,
       "video": false,
-      "recording": false,
+      "noTextOfRecording": false,
       "text": false,
-      "colourblind": false
+      "colorBlindness": false
     },
     "ageRestricted": false,
     "beginnerFriendly": false,
@@ -173,22 +176,23 @@
     "styles": ["serious", "rules_light", "story_driven", "character_driven"],
     "tags": ["vain-taysi-ikaisille"],
     "title": "Mitä olette tehneet....?",
-    "updatedAt": "2021-08-04T11:36:01.098Z"
+    "updatedAt": "2021-08-04T11:36:01.098Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4729",
     "accessibility": {
       "loudSounds": false,
       "flashingLights": false,
-      "strongSmells": false,
-      "irritateSkin": false,
+      "strongOdours": false,
+      "irritatingChemicals": false,
       "physicalContact": false,
-      "lowLighting": false,
-      "movingAround": false,
+      "darkLighting": false,
+      "lotsOfMovement": false,
       "video": true,
-      "recording": false,
+      "noTextOfRecording": false,
       "text": true,
-      "colourblind": false
+      "colorBlindness": false
     },
     "ageRestricted": false,
     "beginnerFriendly": false,
@@ -216,22 +220,23 @@
     "styles": [],
     "tags": ["aloittelijaystavallinen", "ei-sovellu-alle-15v-"],
     "title": "Alex is missing!",
-    "updatedAt": "2021-08-04T11:36:01.098Z"
+    "updatedAt": "2021-08-04T11:36:01.098Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4740",
     "accessibility": {
       "loudSounds": false,
       "flashingLights": false,
-      "strongSmells": false,
-      "irritateSkin": false,
+      "strongOdours": false,
+      "irritatingChemicals": false,
       "physicalContact": false,
-      "lowLighting": false,
-      "movingAround": false,
+      "darkLighting": false,
+      "lotsOfMovement": false,
       "video": false,
-      "recording": false,
+      "noTextOfRecording": false,
       "text": false,
-      "colourblind": false
+      "colorBlindness": false
     },
     "ageRestricted": false,
     "beginnerFriendly": false,
@@ -259,22 +264,23 @@
     "styles": ["light", "rules_heavy", "combat_driven"],
     "tags": ["in-english"],
     "title": "Pathfinder Society Bounty Gauntlet",
-    "updatedAt": "2021-08-04T11:36:01.096Z"
+    "updatedAt": "2021-08-04T11:36:01.096Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4698",
     "accessibility": {
       "loudSounds": false,
       "flashingLights": false,
-      "strongSmells": false,
-      "irritateSkin": false,
+      "strongOdours": false,
+      "irritatingChemicals": false,
       "physicalContact": false,
-      "lowLighting": false,
-      "movingAround": false,
+      "darkLighting": false,
+      "lotsOfMovement": false,
       "video": false,
-      "recording": false,
+      "noTextOfRecording": false,
       "text": false,
-      "colourblind": false
+      "colorBlindness": false
     },
     "ageRestricted": false,
     "beginnerFriendly": false,
@@ -302,22 +308,23 @@
     "styles": ["light", "combat_driven"],
     "tags": ["aloittelijaystavallinen", "in-english", "sopii-yli-12v-"],
     "title": "Pathfinder Society Quest #6: Archeology in Aspenthar",
-    "updatedAt": "2021-08-04T11:36:01.097Z"
+    "updatedAt": "2021-08-04T11:36:01.097Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4684",
     "accessibility": {
       "loudSounds": false,
       "flashingLights": false,
-      "strongSmells": false,
-      "irritateSkin": false,
+      "strongOdours": false,
+      "irritatingChemicals": false,
       "physicalContact": false,
-      "lowLighting": false,
-      "movingAround": false,
+      "darkLighting": false,
+      "lotsOfMovement": false,
       "video": false,
-      "recording": false,
+      "noTextOfRecording": false,
       "text": false,
-      "colourblind": false
+      "colorBlindness": false
     },
     "ageRestricted": false,
     "beginnerFriendly": false,
@@ -345,22 +352,23 @@
     "styles": ["rules_light"],
     "tags": ["ei-sovellu-alle-15v-"],
     "title": "Fantasiaseikkailu Nochetin metropolissa Gloranthassa",
-    "updatedAt": "2021-08-04T11:36:01.098Z"
+    "updatedAt": "2021-08-04T11:36:01.098Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4685",
     "accessibility": {
       "loudSounds": false,
       "flashingLights": false,
-      "strongSmells": false,
-      "irritateSkin": false,
+      "strongOdours": false,
+      "irritatingChemicals": false,
       "physicalContact": false,
-      "lowLighting": false,
-      "movingAround": false,
+      "darkLighting": false,
+      "lotsOfMovement": false,
       "video": false,
-      "recording": false,
+      "noTextOfRecording": false,
       "text": false,
-      "colourblind": false
+      "colorBlindness": false
     },
     "ageRestricted": false,
     "beginnerFriendly": false,
@@ -394,22 +402,23 @@
       "lastenohjelma"
     ],
     "title": "Omenapiirakan arvoitus",
-    "updatedAt": "2021-08-04T11:36:01.098Z"
+    "updatedAt": "2021-08-04T11:36:01.098Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4691",
     "accessibility": {
       "loudSounds": false,
       "flashingLights": false,
-      "strongSmells": false,
-      "irritateSkin": false,
+      "strongOdours": false,
+      "irritatingChemicals": false,
       "physicalContact": false,
-      "lowLighting": false,
-      "movingAround": false,
+      "darkLighting": false,
+      "lotsOfMovement": false,
       "video": false,
-      "recording": false,
+      "noTextOfRecording": false,
       "text": true,
-      "colourblind": false
+      "colorBlindness": false
     },
     "ageRestricted": false,
     "beginnerFriendly": false,
@@ -437,22 +446,23 @@
     "styles": [],
     "tags": ["aloittelijaystavallinen", "ei-sovellu-alle-15v-"],
     "title": "Kirjeitä Pohjolassa",
-    "updatedAt": "2021-08-04T11:36:01.096Z"
+    "updatedAt": "2021-08-04T11:36:01.096Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4667",
     "accessibility": {
       "loudSounds": false,
       "flashingLights": false,
-      "strongSmells": false,
-      "irritateSkin": false,
+      "strongOdours": false,
+      "irritatingChemicals": false,
       "physicalContact": false,
-      "lowLighting": false,
-      "movingAround": false,
+      "darkLighting": false,
+      "lotsOfMovement": false,
       "video": true,
-      "recording": false,
+      "noTextOfRecording": false,
       "text": true,
-      "colourblind": false
+      "colorBlindness": false
     },
     "ageRestricted": false,
     "beginnerFriendly": false,
@@ -480,22 +490,23 @@
     "styles": [],
     "tags": ["aloittelijaystavallinen", "ei-sovellu-alle-15v-"],
     "title": "Alex is missing!",
-    "updatedAt": "2021-08-04T11:36:01.096Z"
+    "updatedAt": "2021-08-04T11:36:01.096Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4682",
     "accessibility": {
       "loudSounds": false,
       "flashingLights": false,
-      "strongSmells": false,
-      "irritateSkin": false,
+      "strongOdours": false,
+      "irritatingChemicals": false,
       "physicalContact": false,
-      "lowLighting": false,
-      "movingAround": false,
+      "darkLighting": false,
+      "lotsOfMovement": false,
       "video": false,
-      "recording": false,
+      "noTextOfRecording": false,
       "text": false,
-      "colourblind": false
+      "colorBlindness": false
     },
     "ageRestricted": false,
     "beginnerFriendly": false,
@@ -523,22 +534,23 @@
     "styles": ["rules_light"],
     "tags": ["aloittelijaystavallinen", "vain-taysi-ikaisille"],
     "title": "Whitbyn vampyyri",
-    "updatedAt": "2021-08-04T11:36:01.096Z"
+    "updatedAt": "2021-08-04T11:36:01.096Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4603",
     "accessibility": {
       "loudSounds": false,
       "flashingLights": false,
-      "strongSmells": false,
-      "irritateSkin": false,
+      "strongOdours": false,
+      "irritatingChemicals": false,
       "physicalContact": false,
-      "lowLighting": false,
-      "movingAround": false,
+      "darkLighting": false,
+      "lotsOfMovement": false,
       "video": false,
-      "recording": false,
+      "noTextOfRecording": false,
       "text": false,
-      "colourblind": false
+      "colorBlindness": false
     },
     "ageRestricted": false,
     "beginnerFriendly": false,
@@ -566,22 +578,23 @@
     "styles": [],
     "tags": ["aloittelijaystavallinen", "sopii-yli-12v-"],
     "title": "Praedor - Kohtalon Kortit",
-    "updatedAt": "2021-08-04T11:36:01.096Z"
+    "updatedAt": "2021-08-04T11:36:01.096Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4692",
     "accessibility": {
       "loudSounds": true,
       "flashingLights": false,
-      "strongSmells": false,
-      "irritateSkin": false,
+      "strongOdours": false,
+      "irritatingChemicals": false,
       "physicalContact": false,
-      "lowLighting": false,
-      "movingAround": false,
+      "darkLighting": false,
+      "lotsOfMovement": false,
       "video": false,
-      "recording": false,
+      "noTextOfRecording": false,
       "text": false,
-      "colourblind": false
+      "colorBlindness": false
     },
     "ageRestricted": false,
     "beginnerFriendly": false,
@@ -609,22 +622,23 @@
     "styles": [],
     "tags": ["aloittelijaystavallinen", "vain-taysi-ikaisille"],
     "title": "Pohjolan tuho - Verkko",
-    "updatedAt": "2021-08-04T11:36:01.097Z"
+    "updatedAt": "2021-08-04T11:36:01.097Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4645",
     "accessibility": {
       "loudSounds": false,
       "flashingLights": false,
-      "strongSmells": false,
-      "irritateSkin": false,
+      "strongOdours": false,
+      "irritatingChemicals": false,
       "physicalContact": false,
-      "lowLighting": false,
-      "movingAround": false,
+      "darkLighting": false,
+      "lotsOfMovement": false,
       "video": false,
-      "recording": false,
+      "noTextOfRecording": false,
       "text": false,
-      "colourblind": false
+      "colorBlindness": false
     },
     "ageRestricted": false,
     "beginnerFriendly": false,
@@ -656,22 +670,23 @@
       "teema-elementit"
     ],
     "title": "Pako Huoneesta",
-    "updatedAt": "2021-08-04T11:36:01.098Z"
+    "updatedAt": "2021-08-04T11:36:01.098Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4694",
     "accessibility": {
       "loudSounds": false,
       "flashingLights": false,
-      "strongSmells": false,
-      "irritateSkin": false,
+      "strongOdours": false,
+      "irritatingChemicals": false,
       "physicalContact": false,
-      "lowLighting": false,
-      "movingAround": false,
+      "darkLighting": false,
+      "lotsOfMovement": false,
       "video": false,
-      "recording": false,
+      "noTextOfRecording": false,
       "text": false,
-      "colourblind": false
+      "colorBlindness": false
     },
     "ageRestricted": false,
     "beginnerFriendly": false,
@@ -699,22 +714,23 @@
     "styles": ["serious", "story_driven"],
     "tags": ["aloittelijaystavallinen", "vain-taysi-ikaisille"],
     "title": "Nekropoli",
-    "updatedAt": "2021-08-04T11:36:01.098Z"
+    "updatedAt": "2021-08-04T11:36:01.098Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4671",
     "accessibility": {
       "loudSounds": false,
       "flashingLights": false,
-      "strongSmells": false,
-      "irritateSkin": false,
+      "strongOdours": false,
+      "irritatingChemicals": false,
       "physicalContact": false,
-      "lowLighting": false,
-      "movingAround": false,
+      "darkLighting": false,
+      "lotsOfMovement": false,
       "video": false,
-      "recording": false,
+      "noTextOfRecording": false,
       "text": false,
-      "colourblind": false
+      "colorBlindness": false
     },
     "ageRestricted": false,
     "beginnerFriendly": false,
@@ -746,22 +762,23 @@
       "teema-elementit"
     ],
     "title": "Metsänpeitto",
-    "updatedAt": "2021-08-04T11:36:01.097Z"
+    "updatedAt": "2021-08-04T11:36:01.097Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4656",
     "accessibility": {
       "loudSounds": false,
       "flashingLights": false,
-      "strongSmells": false,
-      "irritateSkin": false,
+      "strongOdours": false,
+      "irritatingChemicals": false,
       "physicalContact": false,
-      "lowLighting": false,
-      "movingAround": false,
+      "darkLighting": false,
+      "lotsOfMovement": false,
       "video": false,
-      "recording": true,
+      "noTextOfRecording": true,
       "text": true,
-      "colourblind": true
+      "colorBlindness": true
     },
     "ageRestricted": false,
     "beginnerFriendly": false,
@@ -793,22 +810,23 @@
       "teema-elementit"
     ],
     "title": "Ensimmäinen valo - First light",
-    "updatedAt": "2021-08-04T11:36:01.098Z"
+    "updatedAt": "2021-08-04T11:36:01.098Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4681",
     "accessibility": {
       "loudSounds": false,
       "flashingLights": false,
-      "strongSmells": false,
-      "irritateSkin": false,
+      "strongOdours": false,
+      "irritatingChemicals": false,
       "physicalContact": false,
-      "lowLighting": false,
-      "movingAround": false,
+      "darkLighting": false,
+      "lotsOfMovement": false,
       "video": false,
-      "recording": false,
+      "noTextOfRecording": false,
       "text": false,
-      "colourblind": false
+      "colorBlindness": false
     },
     "ageRestricted": false,
     "beginnerFriendly": false,
@@ -842,22 +860,23 @@
       "lastenohjelma"
     ],
     "title": "Matka tuntemattomaan",
-    "updatedAt": "2021-08-04T11:36:01.096Z"
+    "updatedAt": "2021-08-04T11:36:01.096Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4642",
     "accessibility": {
       "loudSounds": false,
       "flashingLights": false,
-      "strongSmells": false,
-      "irritateSkin": false,
+      "strongOdours": false,
+      "irritatingChemicals": false,
       "physicalContact": false,
-      "lowLighting": false,
-      "movingAround": false,
+      "darkLighting": false,
+      "lotsOfMovement": false,
       "video": false,
-      "recording": false,
+      "noTextOfRecording": false,
       "text": false,
-      "colourblind": false
+      "colorBlindness": false
     },
     "ageRestricted": false,
     "beginnerFriendly": false,
@@ -885,22 +904,23 @@
     "styles": ["light", "character_driven", "combat_driven"],
     "tags": ["aloittelijaystavallinen", "ei-sovellu-alle-15v-"],
     "title": "Kaksoissolan taistelu",
-    "updatedAt": "2021-08-04T11:36:01.096Z"
+    "updatedAt": "2021-08-04T11:36:01.096Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4661",
     "accessibility": {
       "loudSounds": false,
       "flashingLights": false,
-      "strongSmells": false,
-      "irritateSkin": false,
+      "strongOdours": false,
+      "irritatingChemicals": false,
       "physicalContact": false,
-      "lowLighting": false,
-      "movingAround": false,
+      "darkLighting": false,
+      "lotsOfMovement": false,
       "video": false,
-      "recording": false,
+      "noTextOfRecording": false,
       "text": false,
-      "colourblind": true
+      "colorBlindness": true
     },
     "ageRestricted": false,
     "beginnerFriendly": false,
@@ -932,22 +952,23 @@
       "teema-elementit"
     ],
     "title": "Charlie ei surffaa",
-    "updatedAt": "2021-08-04T11:36:01.096Z"
+    "updatedAt": "2021-08-04T11:36:01.096Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4717",
     "accessibility": {
       "loudSounds": false,
       "flashingLights": false,
-      "strongSmells": false,
-      "irritateSkin": false,
+      "strongOdours": false,
+      "irritatingChemicals": false,
       "physicalContact": false,
-      "lowLighting": false,
-      "movingAround": false,
+      "darkLighting": false,
+      "lotsOfMovement": false,
       "video": false,
-      "recording": false,
+      "noTextOfRecording": false,
       "text": true,
-      "colourblind": false
+      "colorBlindness": false
     },
     "ageRestricted": false,
     "beginnerFriendly": false,
@@ -975,22 +996,23 @@
     "styles": [],
     "tags": ["aloittelijaystavallinen", "ei-sovellu-alle-15v-"],
     "title": "Kirjeitä Pohjolassa - loppubriiffi",
-    "updatedAt": "2021-08-04T11:36:01.098Z"
+    "updatedAt": "2021-08-04T11:36:01.098Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4703",
     "accessibility": {
       "loudSounds": false,
       "flashingLights": false,
-      "strongSmells": false,
-      "irritateSkin": false,
+      "strongOdours": false,
+      "irritatingChemicals": false,
       "physicalContact": false,
-      "lowLighting": false,
-      "movingAround": false,
+      "darkLighting": false,
+      "lotsOfMovement": false,
       "video": false,
-      "recording": false,
+      "noTextOfRecording": false,
       "text": false,
-      "colourblind": false
+      "colorBlindness": false
     },
     "ageRestricted": false,
     "beginnerFriendly": false,
@@ -1018,22 +1040,23 @@
     "styles": ["light", "combat_driven"],
     "tags": ["aloittelijaystavallinen", "in-english", "sopii-yli-12v-"],
     "title": "Big Trouble in Little Absalom",
-    "updatedAt": "2021-08-04T11:36:01.098Z"
+    "updatedAt": "2021-08-04T11:36:01.098Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4680",
     "accessibility": {
       "loudSounds": false,
       "flashingLights": false,
-      "strongSmells": false,
-      "irritateSkin": false,
+      "strongOdours": false,
+      "irritatingChemicals": false,
       "physicalContact": false,
-      "lowLighting": false,
-      "movingAround": false,
+      "darkLighting": false,
+      "lotsOfMovement": false,
       "video": false,
-      "recording": false,
+      "noTextOfRecording": false,
       "text": false,
-      "colourblind": false
+      "colorBlindness": false
     },
     "ageRestricted": false,
     "beginnerFriendly": false,
@@ -1061,22 +1084,23 @@
     "styles": [],
     "tags": ["aloittelijaystavallinen", "ei-sovellu-alle-15v-"],
     "title": "Laatikon ulkopuolella",
-    "updatedAt": "2021-08-04T11:36:01.098Z"
+    "updatedAt": "2021-08-04T11:36:01.098Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4601",
     "accessibility": {
       "loudSounds": true,
       "flashingLights": false,
-      "strongSmells": false,
-      "irritateSkin": false,
+      "strongOdours": false,
+      "irritatingChemicals": false,
       "physicalContact": false,
-      "lowLighting": false,
-      "movingAround": false,
+      "darkLighting": false,
+      "lotsOfMovement": false,
       "video": false,
-      "recording": false,
+      "noTextOfRecording": false,
       "text": true,
-      "colourblind": true
+      "colorBlindness": true
     },
     "ageRestricted": false,
     "beginnerFriendly": false,
@@ -1104,22 +1128,23 @@
     "styles": ["light", "rules_heavy", "story_driven"],
     "tags": ["vain-taysi-ikaisille", "teema-elementit"],
     "title": "Icewind Dale: Rime of the Frostmaiden",
-    "updatedAt": "2021-08-04T11:36:01.098Z"
+    "updatedAt": "2021-08-04T11:36:01.098Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4693",
     "accessibility": {
       "loudSounds": false,
       "flashingLights": false,
-      "strongSmells": false,
-      "irritateSkin": false,
+      "strongOdours": false,
+      "irritatingChemicals": false,
       "physicalContact": false,
-      "lowLighting": false,
-      "movingAround": false,
+      "darkLighting": false,
+      "lotsOfMovement": false,
       "video": false,
-      "recording": false,
+      "noTextOfRecording": false,
       "text": false,
-      "colourblind": false
+      "colorBlindness": false
     },
     "ageRestricted": false,
     "beginnerFriendly": false,
@@ -1147,22 +1172,23 @@
     "styles": ["serious", "story_driven"],
     "tags": ["aloittelijaystavallinen", "vain-taysi-ikaisille"],
     "title": "Sielunniittäjä",
-    "updatedAt": "2021-08-04T11:36:01.096Z"
+    "updatedAt": "2021-08-04T11:36:01.096Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4697",
     "accessibility": {
       "loudSounds": false,
       "flashingLights": false,
-      "strongSmells": false,
-      "irritateSkin": false,
+      "strongOdours": false,
+      "irritatingChemicals": false,
       "physicalContact": false,
-      "lowLighting": false,
-      "movingAround": false,
+      "darkLighting": false,
+      "lotsOfMovement": false,
       "video": false,
-      "recording": false,
+      "noTextOfRecording": false,
       "text": false,
-      "colourblind": false
+      "colorBlindness": false
     },
     "ageRestricted": false,
     "beginnerFriendly": false,
@@ -1190,22 +1216,23 @@
     "styles": ["light", "combat_driven"],
     "tags": ["in-english", "sopii-yli-12v-", "teema-elementit"],
     "title": "Pathfinder Society #2-24: Breaking the Storm - Parting Clouds",
-    "updatedAt": "2021-08-04T11:36:01.096Z"
+    "updatedAt": "2021-08-04T11:36:01.096Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4702",
     "accessibility": {
       "loudSounds": false,
       "flashingLights": false,
-      "strongSmells": false,
-      "irritateSkin": false,
+      "strongOdours": false,
+      "irritatingChemicals": false,
       "physicalContact": false,
-      "lowLighting": false,
-      "movingAround": false,
+      "darkLighting": false,
+      "lotsOfMovement": false,
       "video": false,
-      "recording": false,
+      "noTextOfRecording": false,
       "text": false,
-      "colourblind": false
+      "colorBlindness": false
     },
     "ageRestricted": false,
     "beginnerFriendly": false,
@@ -1233,22 +1260,23 @@
     "styles": ["light", "combat_driven"],
     "tags": ["aloittelijaystavallinen", "in-english", "sopii-yli-12v-"],
     "title": "One-Shot #2: Dinner at Lionlodge",
-    "updatedAt": "2021-08-04T11:36:01.098Z"
+    "updatedAt": "2021-08-04T11:36:01.098Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4654",
     "accessibility": {
       "loudSounds": false,
       "flashingLights": false,
-      "strongSmells": false,
-      "irritateSkin": false,
+      "strongOdours": false,
+      "irritatingChemicals": false,
       "physicalContact": false,
-      "lowLighting": false,
-      "movingAround": false,
+      "darkLighting": false,
+      "lotsOfMovement": false,
       "video": false,
-      "recording": false,
+      "noTextOfRecording": false,
       "text": false,
-      "colourblind": false
+      "colorBlindness": false
     },
     "ageRestricted": false,
     "beginnerFriendly": false,
@@ -1276,22 +1304,23 @@
     "styles": ["serious", "rules_light", "story_driven", "character_driven"],
     "tags": ["vain-taysi-ikaisille"],
     "title": "Vampyyrejä vailla valtakuntaa",
-    "updatedAt": "2021-08-04T11:36:01.098Z"
+    "updatedAt": "2021-08-04T11:36:01.098Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4632",
     "accessibility": {
       "loudSounds": false,
       "flashingLights": false,
-      "strongSmells": false,
-      "irritateSkin": false,
+      "strongOdours": false,
+      "irritatingChemicals": false,
       "physicalContact": false,
-      "lowLighting": false,
-      "movingAround": false,
+      "darkLighting": false,
+      "lotsOfMovement": false,
       "video": false,
-      "recording": false,
+      "noTextOfRecording": false,
       "text": false,
-      "colourblind": false
+      "colorBlindness": false
     },
     "ageRestricted": false,
     "beginnerFriendly": false,
@@ -1319,22 +1348,23 @@
     "styles": ["rules_light", "story_driven"],
     "tags": ["aloittelijaystavallinen", "vain-taysi-ikaisille"],
     "title": "Kruunuvuoren huvilat",
-    "updatedAt": "2021-08-04T11:36:01.098Z"
+    "updatedAt": "2021-08-04T11:36:01.098Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4621",
     "accessibility": {
       "loudSounds": false,
       "flashingLights": false,
-      "strongSmells": false,
-      "irritateSkin": false,
+      "strongOdours": false,
+      "irritatingChemicals": false,
       "physicalContact": false,
-      "lowLighting": false,
-      "movingAround": false,
+      "darkLighting": false,
+      "lotsOfMovement": false,
       "video": false,
-      "recording": false,
+      "noTextOfRecording": false,
       "text": false,
-      "colourblind": false
+      "colorBlindness": false
     },
     "ageRestricted": false,
     "beginnerFriendly": false,
@@ -1362,22 +1392,23 @@
     "styles": ["light", "rules_light", "story_driven", "character_driven"],
     "tags": ["aloittelijaystavallinen", "ei-sovellu-alle-15v-"],
     "title": "Maata etsimässä",
-    "updatedAt": "2021-08-04T11:36:01.098Z"
+    "updatedAt": "2021-08-04T11:36:01.098Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4705",
     "accessibility": {
       "loudSounds": false,
       "flashingLights": false,
-      "strongSmells": false,
-      "irritateSkin": false,
+      "strongOdours": false,
+      "irritatingChemicals": false,
       "physicalContact": false,
-      "lowLighting": false,
-      "movingAround": false,
+      "darkLighting": false,
+      "lotsOfMovement": false,
       "video": false,
-      "recording": false,
+      "noTextOfRecording": false,
       "text": false,
-      "colourblind": false
+      "colorBlindness": false
     },
     "ageRestricted": false,
     "beginnerFriendly": false,
@@ -1405,22 +1436,23 @@
     "styles": ["light", "combat_driven"],
     "tags": [],
     "title": "Pathfinder Society #2-01: Citadel of Corruption",
-    "updatedAt": "2021-08-04T11:36:01.099Z"
+    "updatedAt": "2021-08-04T11:36:01.099Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4695",
     "accessibility": {
       "loudSounds": false,
       "flashingLights": false,
-      "strongSmells": false,
-      "irritateSkin": false,
+      "strongOdours": false,
+      "irritatingChemicals": false,
       "physicalContact": false,
-      "lowLighting": false,
-      "movingAround": false,
+      "darkLighting": false,
+      "lotsOfMovement": false,
       "video": false,
-      "recording": false,
+      "noTextOfRecording": false,
       "text": false,
-      "colourblind": false
+      "colorBlindness": false
     },
     "ageRestricted": false,
     "beginnerFriendly": false,
@@ -1448,22 +1480,23 @@
     "styles": ["light", "combat_driven"],
     "tags": ["aloittelijaystavallinen", "in-english", "sopii-yli-12v-"],
     "title": "Pathfinder Society #2-11: The Pathfinder Trials",
-    "updatedAt": "2021-08-04T11:36:01.096Z"
+    "updatedAt": "2021-08-04T11:36:01.096Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4675",
     "accessibility": {
       "loudSounds": false,
       "flashingLights": false,
-      "strongSmells": false,
-      "irritateSkin": false,
+      "strongOdours": false,
+      "irritatingChemicals": false,
       "physicalContact": false,
-      "lowLighting": false,
-      "movingAround": false,
+      "darkLighting": false,
+      "lotsOfMovement": false,
       "video": false,
-      "recording": false,
+      "noTextOfRecording": false,
       "text": false,
-      "colourblind": true
+      "colorBlindness": true
     },
     "ageRestricted": false,
     "beginnerFriendly": false,
@@ -1491,22 +1524,23 @@
     "styles": ["serious", "rules_light", "story_driven"],
     "tags": ["ei-sovellu-alle-15v-"],
     "title": "Hotelli meren rannalla",
-    "updatedAt": "2021-08-04T11:36:01.096Z"
+    "updatedAt": "2021-08-04T11:36:01.096Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4639",
     "accessibility": {
       "loudSounds": false,
       "flashingLights": false,
-      "strongSmells": false,
-      "irritateSkin": false,
+      "strongOdours": false,
+      "irritatingChemicals": false,
       "physicalContact": false,
-      "lowLighting": false,
-      "movingAround": false,
+      "darkLighting": false,
+      "lotsOfMovement": false,
       "video": false,
-      "recording": false,
+      "noTextOfRecording": false,
       "text": false,
-      "colourblind": false
+      "colorBlindness": false
     },
     "ageRestricted": false,
     "beginnerFriendly": false,
@@ -1534,22 +1568,23 @@
     "styles": ["light", "character_driven"],
     "tags": ["aloittelijaystavallinen", "vain-taysi-ikaisille"],
     "title": "Teinihirviöt suurella sydämellä",
-    "updatedAt": "2021-08-04T11:36:01.098Z"
+    "updatedAt": "2021-08-04T11:36:01.098Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4641",
     "accessibility": {
       "loudSounds": false,
       "flashingLights": false,
-      "strongSmells": false,
-      "irritateSkin": false,
+      "strongOdours": false,
+      "irritatingChemicals": false,
       "physicalContact": false,
-      "lowLighting": false,
-      "movingAround": false,
+      "darkLighting": false,
+      "lotsOfMovement": false,
       "video": false,
-      "recording": false,
+      "noTextOfRecording": false,
       "text": false,
-      "colourblind": false
+      "colorBlindness": false
     },
     "ageRestricted": false,
     "beginnerFriendly": false,
@@ -1582,22 +1617,23 @@
       "sopii-yli-12v-"
     ],
     "title": "Sorcerer Supreme",
-    "updatedAt": "2021-08-04T11:36:01.098Z"
+    "updatedAt": "2021-08-04T11:36:01.098Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4701",
     "accessibility": {
       "loudSounds": false,
       "flashingLights": false,
-      "strongSmells": false,
-      "irritateSkin": false,
+      "strongOdours": false,
+      "irritatingChemicals": false,
       "physicalContact": false,
-      "lowLighting": false,
-      "movingAround": false,
+      "darkLighting": false,
+      "lotsOfMovement": false,
       "video": false,
-      "recording": false,
+      "noTextOfRecording": false,
       "text": false,
-      "colourblind": false
+      "colorBlindness": false
     },
     "ageRestricted": false,
     "beginnerFriendly": false,
@@ -1625,22 +1661,23 @@
     "styles": ["light", "combat_driven"],
     "tags": ["aloittelijaystavallinen", "in-english", "sopii-yli-12v-"],
     "title": "One-Shot #1: Band on the Run",
-    "updatedAt": "2021-08-04T11:36:01.098Z"
+    "updatedAt": "2021-08-04T11:36:01.098Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4706",
     "accessibility": {
       "loudSounds": false,
       "flashingLights": false,
-      "strongSmells": false,
-      "irritateSkin": false,
+      "strongOdours": false,
+      "irritatingChemicals": false,
       "physicalContact": false,
-      "lowLighting": false,
-      "movingAround": false,
+      "darkLighting": false,
+      "lotsOfMovement": false,
       "video": false,
-      "recording": false,
+      "noTextOfRecording": false,
       "text": false,
-      "colourblind": false
+      "colorBlindness": false
     },
     "ageRestricted": false,
     "beginnerFriendly": false,
@@ -1668,22 +1705,23 @@
     "styles": ["light", "combat_driven"],
     "tags": [],
     "title": "Starfinder Society #4-04: Mission Not Found",
-    "updatedAt": "2021-08-04T11:36:01.099Z"
+    "updatedAt": "2021-08-04T11:36:01.099Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4709",
     "accessibility": {
       "loudSounds": false,
       "flashingLights": false,
-      "strongSmells": false,
-      "irritateSkin": false,
+      "strongOdours": false,
+      "irritatingChemicals": false,
       "physicalContact": false,
-      "lowLighting": false,
-      "movingAround": false,
+      "darkLighting": false,
+      "lotsOfMovement": false,
       "video": false,
-      "recording": false,
+      "noTextOfRecording": false,
       "text": false,
-      "colourblind": true
+      "colorBlindness": true
     },
     "ageRestricted": false,
     "beginnerFriendly": false,
@@ -1715,22 +1753,23 @@
       "teema-elementit"
     ],
     "title": "Charlie ei surffaa",
-    "updatedAt": "2021-08-04T11:36:01.096Z"
+    "updatedAt": "2021-08-04T11:36:01.096Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4683",
     "accessibility": {
       "loudSounds": false,
       "flashingLights": false,
-      "strongSmells": false,
-      "irritateSkin": false,
+      "strongOdours": false,
+      "irritatingChemicals": false,
       "physicalContact": false,
-      "lowLighting": false,
-      "movingAround": false,
+      "darkLighting": false,
+      "lotsOfMovement": false,
       "video": false,
-      "recording": false,
+      "noTextOfRecording": false,
       "text": false,
-      "colourblind": false
+      "colorBlindness": false
     },
     "ageRestricted": false,
     "beginnerFriendly": false,
@@ -1765,22 +1804,23 @@
       "aihe-poytaroolipelit"
     ],
     "title": "Myrskyn ympäri kahdeksassa päivässä",
-    "updatedAt": "2021-08-04T11:36:01.097Z"
+    "updatedAt": "2021-08-04T11:36:01.097Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4699",
     "accessibility": {
       "loudSounds": false,
       "flashingLights": false,
-      "strongSmells": false,
-      "irritateSkin": false,
+      "strongOdours": false,
+      "irritatingChemicals": false,
       "physicalContact": false,
-      "lowLighting": false,
-      "movingAround": false,
+      "darkLighting": false,
+      "lotsOfMovement": false,
       "video": false,
-      "recording": false,
+      "noTextOfRecording": false,
       "text": false,
-      "colourblind": false
+      "colorBlindness": false
     },
     "ageRestricted": false,
     "beginnerFriendly": false,
@@ -1808,22 +1848,23 @@
     "styles": ["light", "combat_driven"],
     "tags": ["in-english", "sopii-yli-12v-"],
     "title": "Pathfinder Society #10-98: Siege of the Gallowspire",
-    "updatedAt": "2021-08-04T11:36:01.097Z"
+    "updatedAt": "2021-08-04T11:36:01.097Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4700",
     "accessibility": {
       "loudSounds": false,
       "flashingLights": false,
-      "strongSmells": false,
-      "irritateSkin": false,
+      "strongOdours": false,
+      "irritatingChemicals": false,
       "physicalContact": false,
-      "lowLighting": false,
-      "movingAround": false,
+      "darkLighting": false,
+      "lotsOfMovement": false,
       "video": false,
-      "recording": false,
+      "noTextOfRecording": false,
       "text": false,
-      "colourblind": false
+      "colorBlindness": false
     },
     "ageRestricted": false,
     "beginnerFriendly": false,
@@ -1851,22 +1892,23 @@
     "styles": ["light", "combat_driven"],
     "tags": ["aloittelijaystavallinen", "in-english", "sopii-yli-12v-"],
     "title": "One-Shot #1: Band on the Run",
-    "updatedAt": "2021-08-04T11:36:01.098Z"
+    "updatedAt": "2021-08-04T11:36:01.098Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4659",
     "accessibility": {
       "loudSounds": false,
       "flashingLights": false,
-      "strongSmells": false,
-      "irritateSkin": false,
+      "strongOdours": false,
+      "irritatingChemicals": false,
       "physicalContact": false,
-      "lowLighting": false,
-      "movingAround": false,
+      "darkLighting": false,
+      "lotsOfMovement": false,
       "video": false,
-      "recording": false,
+      "noTextOfRecording": false,
       "text": false,
-      "colourblind": false
+      "colorBlindness": false
     },
     "ageRestricted": false,
     "beginnerFriendly": false,
@@ -1894,22 +1936,23 @@
     "styles": ["light", "combat_driven"],
     "tags": ["aloittelijaystavallinen"],
     "title": "SFS #3-13 Silence at Outpost 634",
-    "updatedAt": "2021-08-04T11:36:01.096Z"
+    "updatedAt": "2021-08-04T11:36:01.096Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4649",
     "accessibility": {
       "loudSounds": false,
       "flashingLights": false,
-      "strongSmells": false,
-      "irritateSkin": false,
+      "strongOdours": false,
+      "irritatingChemicals": false,
       "physicalContact": false,
-      "lowLighting": false,
-      "movingAround": false,
+      "darkLighting": false,
+      "lotsOfMovement": false,
       "video": false,
-      "recording": false,
+      "noTextOfRecording": false,
       "text": false,
-      "colourblind": false
+      "colorBlindness": false
     },
     "ageRestricted": false,
     "beginnerFriendly": false,
@@ -1937,22 +1980,23 @@
     "styles": ["serious", "rules_light", "character_driven"],
     "tags": ["aloittelijaystavallinen", "vain-taysi-ikaisille"],
     "title": "Lennä, kultalintu, lennä!",
-    "updatedAt": "2021-08-04T11:36:01.096Z"
+    "updatedAt": "2021-08-04T11:36:01.096Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4704",
     "accessibility": {
       "loudSounds": false,
       "flashingLights": false,
-      "strongSmells": false,
-      "irritateSkin": false,
+      "strongOdours": false,
+      "irritatingChemicals": false,
       "physicalContact": false,
-      "lowLighting": false,
-      "movingAround": false,
+      "darkLighting": false,
+      "lotsOfMovement": false,
       "video": false,
-      "recording": false,
+      "noTextOfRecording": false,
       "text": false,
-      "colourblind": false
+      "colorBlindness": false
     },
     "ageRestricted": false,
     "beginnerFriendly": false,
@@ -1980,22 +2024,23 @@
     "styles": ["light", "combat_driven"],
     "tags": ["aloittelijaystavallinen", "in-english", "sopii-yli-12v-"],
     "title": "Pathfinder Society Quest #11: A Parchment Tree",
-    "updatedAt": "2021-08-04T11:36:01.098Z"
+    "updatedAt": "2021-08-04T11:36:01.098Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4710",
     "accessibility": {
       "loudSounds": false,
       "flashingLights": false,
-      "strongSmells": false,
-      "irritateSkin": false,
+      "strongOdours": false,
+      "irritatingChemicals": false,
       "physicalContact": false,
-      "lowLighting": false,
-      "movingAround": false,
+      "darkLighting": false,
+      "lotsOfMovement": false,
       "video": false,
-      "recording": false,
+      "noTextOfRecording": false,
       "text": false,
-      "colourblind": true
+      "colorBlindness": true
     },
     "ageRestricted": false,
     "beginnerFriendly": false,
@@ -2027,6 +2072,7 @@
       "teema-elementit"
     ],
     "title": "Charlie ei surffaa",
-    "updatedAt": "2021-08-04T11:36:01.098Z"
+    "updatedAt": "2021-08-04T11:36:01.098Z",
+    "state": "accepted"
   }
 ]

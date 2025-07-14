@@ -26,7 +26,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "LARP-Telenovela: Häät",
-    "updatedAt": "2023-11-07T17:10:23.08Z"
+    "updatedAt": "2023-11-07T17:10:23.08Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7284",
@@ -55,7 +56,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Praedor: Kuolemanjoki",
-    "updatedAt": "2023-11-07T17:10:23.08Z"
+    "updatedAt": "2023-11-07T17:10:23.08Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7340",
@@ -84,7 +86,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Introduction to PBTA: Dungeon World",
-    "updatedAt": "2023-11-07T17:10:23.08Z"
+    "updatedAt": "2023-11-07T17:10:23.08Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7334",
@@ -111,9 +114,10 @@
     "signupType": "",
     "startTime": "2023-11-04T09:00:00Z",
     "styles": [],
-    "tags": ["for18PlusOnly", "beginnerFriendly"],
+    "tags": ["onlyAdults", "beginnerFriendly"],
     "title": "Pako liminaalitilasta!",
-    "updatedAt": "2023-11-07T17:10:23.08Z"
+    "updatedAt": "2023-11-07T17:10:23.08Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7359",
@@ -142,7 +146,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Kentinmannun hunajajahti",
-    "updatedAt": "2023-11-07T17:10:23.08Z"
+    "updatedAt": "2023-11-07T17:10:23.08Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7310",
@@ -171,7 +176,8 @@
     "styles": [],
     "tags": ["beginnerFriendly", "childrenFriendly"],
     "title": "Eksyksissä Tähtien Keskellä",
-    "updatedAt": "2023-11-07T17:10:23.08Z"
+    "updatedAt": "2023-11-07T17:10:23.08Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7361",
@@ -200,7 +206,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "L&L: Sulkavan sointu",
-    "updatedAt": "2023-11-07T17:10:23.08Z"
+    "updatedAt": "2023-11-07T17:10:23.08Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7353",
@@ -229,7 +236,8 @@
     "styles": [],
     "tags": ["beginnerFriendly", "childrenFriendly"],
     "title": "Syvällä Vuoren Juuressa",
-    "updatedAt": "2023-11-07T17:10:23.08Z"
+    "updatedAt": "2023-11-07T17:10:23.08Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7300",
@@ -256,9 +264,10 @@
     "signupType": "",
     "startTime": "2023-11-04T09:00:00Z",
     "styles": [],
-    "tags": ["for18PlusOnly", "beginnerFriendly"],
+    "tags": ["onlyAdults", "beginnerFriendly"],
     "title": "In the Crowd",
-    "updatedAt": "2023-11-07T17:10:23.08Z"
+    "updatedAt": "2023-11-07T17:10:23.08Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7347",
@@ -287,7 +296,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Varjoja Routapuron kylässä",
-    "updatedAt": "2023-11-07T17:10:23.08Z"
+    "updatedAt": "2023-11-07T17:10:23.08Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7429",
@@ -316,7 +326,8 @@
     "styles": [],
     "tags": [],
     "title": "Peliä Pyynnöstä",
-    "updatedAt": "2023-11-07T17:10:23.08Z"
+    "updatedAt": "2023-11-07T17:10:23.08Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7343",
@@ -345,7 +356,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "SFS #3-13 Silence at Outpost 634",
-    "updatedAt": "2023-11-07T17:10:23.08Z"
+    "updatedAt": "2023-11-07T17:10:23.08Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7363",
@@ -374,7 +386,8 @@
     "styles": [],
     "tags": [],
     "title": "Pathfinder Society Intro: Year of Unfettered Exploration",
-    "updatedAt": "2023-11-07T17:10:23.08Z"
+    "updatedAt": "2023-11-07T17:10:23.08Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7272",
@@ -403,7 +416,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Indiepelipiste / Indie Game Point",
-    "updatedAt": "2023-11-07T17:10:23.08Z"
+    "updatedAt": "2023-11-07T17:10:23.08Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7426",
@@ -432,7 +446,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "LARP-Telenovela: Häät",
-    "updatedAt": "2023-11-07T17:10:23.08Z"
+    "updatedAt": "2023-11-07T17:10:23.08Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7338",
@@ -461,7 +476,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Adventure League, Essential Kit: Gnomengarde",
-    "updatedAt": "2023-11-07T17:10:23.08Z"
+    "updatedAt": "2023-11-07T17:10:23.08Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7345",
@@ -490,7 +506,8 @@
     "styles": [],
     "tags": ["beginnerFriendly", "childrenFriendly"],
     "title": "Hurmeen yö",
-    "updatedAt": "2023-11-07T17:10:23.08Z"
+    "updatedAt": "2023-11-07T17:10:23.08Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7280",
@@ -519,7 +536,8 @@
     "styles": [],
     "tags": ["beginnerFriendly", "childrenFriendly"],
     "title": "Sankarit ilmalaivoilla",
-    "updatedAt": "2023-11-07T17:10:23.08Z"
+    "updatedAt": "2023-11-07T17:10:23.08Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7274",
@@ -548,7 +566,8 @@
     "styles": [],
     "tags": ["beginnerFriendly", "childrenFriendly"],
     "title": "Syvähiekan hirviö",
-    "updatedAt": "2023-11-07T17:10:23.08Z"
+    "updatedAt": "2023-11-07T17:10:23.08Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7360",
@@ -575,9 +594,10 @@
     "signupType": "",
     "startTime": "2023-11-04T15:00:00Z",
     "styles": [],
-    "tags": ["for18PlusOnly"],
+    "tags": ["onlyAdults"],
     "title": "Sovinnon kellot - eli kosioretki murenevassa maailmassa",
-    "updatedAt": "2023-11-07T17:10:23.08Z"
+    "updatedAt": "2023-11-07T17:10:23.08Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7368",
@@ -606,7 +626,8 @@
     "styles": [],
     "tags": ["beginnerFriendly", "childrenFriendly"],
     "title": "Pathfinder Society #5-04 Equal Exchanges – Necessary Introductions",
-    "updatedAt": "2023-11-07T17:10:23.08Z"
+    "updatedAt": "2023-11-07T17:10:23.08Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7364",
@@ -633,9 +654,10 @@
     "signupType": "",
     "startTime": "2023-11-04T15:00:00Z",
     "styles": [],
-    "tags": ["for18PlusOnly", "beginnerFriendly"],
+    "tags": ["onlyAdults", "beginnerFriendly"],
     "title": "Los Apartamentos de la Amor",
-    "updatedAt": "2023-11-07T17:10:23.08Z"
+    "updatedAt": "2023-11-07T17:10:23.08Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7298",
@@ -664,7 +686,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Kourallinen Kukkasia (PF2e)",
-    "updatedAt": "2023-11-07T17:10:23.08Z"
+    "updatedAt": "2023-11-07T17:10:23.08Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7341",
@@ -693,7 +716,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Scamatania: Noskagua (D&D 5e)",
-    "updatedAt": "2023-11-07T17:10:23.08Z"
+    "updatedAt": "2023-11-07T17:10:23.08Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7335",
@@ -722,7 +746,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Adventure League Essential Kit Dwarven Excavation",
-    "updatedAt": "2023-11-07T17:10:23.08Z"
+    "updatedAt": "2023-11-07T17:10:23.08Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7269",
@@ -751,7 +776,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Alavilla mailla",
-    "updatedAt": "2023-11-07T17:10:23.08Z"
+    "updatedAt": "2023-11-07T17:10:23.08Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7273",
@@ -780,7 +806,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Hopeaprinsessan palatsi",
-    "updatedAt": "2023-11-07T17:10:23.08Z"
+    "updatedAt": "2023-11-07T17:10:23.08Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7279",
@@ -807,9 +834,10 @@
     "signupType": "",
     "startTime": "2023-11-04T17:00:00Z",
     "styles": [],
-    "tags": ["for18PlusOnly"],
+    "tags": ["onlyAdults"],
     "title": "Lihakone",
-    "updatedAt": "2023-11-07T17:10:23.08Z"
+    "updatedAt": "2023-11-07T17:10:23.08Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7373",
@@ -838,7 +866,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Forbidden Lands: The Witching Tower",
-    "updatedAt": "2023-11-07T17:10:23.08Z"
+    "updatedAt": "2023-11-07T17:10:23.08Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7346",
@@ -867,7 +896,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "SS Andrea Dorian viimeinen matka",
-    "updatedAt": "2023-11-07T17:10:23.08Z"
+    "updatedAt": "2023-11-07T17:10:23.08Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7270",
@@ -896,7 +926,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Maan syövereissä",
-    "updatedAt": "2023-11-07T17:10:23.08Z"
+    "updatedAt": "2023-11-07T17:10:23.08Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7339",
@@ -925,7 +956,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Adventure League jatkuu, Essential Kit: Mountain's Toe Gold Mine",
-    "updatedAt": "2023-11-07T17:10:23.08Z"
+    "updatedAt": "2023-11-07T17:10:23.08Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7428",
@@ -954,7 +986,8 @@
     "styles": [],
     "tags": [],
     "title": "Peliä Pyynnöstä",
-    "updatedAt": "2023-11-07T17:10:23.08Z"
+    "updatedAt": "2023-11-07T17:10:23.08Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7431",
@@ -983,7 +1016,8 @@
     "styles": [],
     "tags": [],
     "title": "Indiepelipiste / Indie Game Point",
-    "updatedAt": "2023-11-07T17:10:23.08Z"
+    "updatedAt": "2023-11-07T17:10:23.08Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7358",
@@ -1012,7 +1046,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Bukinpurin hunajajahti",
-    "updatedAt": "2023-11-07T17:10:23.08Z"
+    "updatedAt": "2023-11-07T17:10:23.08Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7285",
@@ -1041,7 +1076,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Praedor: Kuolemanjoki",
-    "updatedAt": "2023-11-07T17:10:23.08Z"
+    "updatedAt": "2023-11-07T17:10:23.08Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7299",
@@ -1070,7 +1106,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Vain Muutaman Terälehden Tähden (PF2e)",
-    "updatedAt": "2023-11-07T17:10:23.08Z"
+    "updatedAt": "2023-11-07T17:10:23.08Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7336",
@@ -1099,7 +1136,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Adventure League jatkuu Essential Kit Butterskull Ranch",
-    "updatedAt": "2023-11-07T17:10:23.08Z"
+    "updatedAt": "2023-11-07T17:10:23.08Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7362",
@@ -1128,7 +1166,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "L&L: Sulkavan sointu",
-    "updatedAt": "2023-11-07T17:10:23.08Z"
+    "updatedAt": "2023-11-07T17:10:23.08Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7367",
@@ -1157,7 +1196,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Root: Karhunpalvelusta tekemässä",
-    "updatedAt": "2023-11-07T17:10:23.08Z"
+    "updatedAt": "2023-11-07T17:10:23.08Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7365",
@@ -1186,7 +1226,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Kauhun kotiljonki / Blood Cotillion",
-    "updatedAt": "2023-11-07T17:10:23.08Z"
+    "updatedAt": "2023-11-07T17:10:23.08Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7369",
@@ -1213,9 +1254,10 @@
     "signupType": "",
     "startTime": "2023-11-05T11:00:00Z",
     "styles": [],
-    "tags": ["for18PlusOnly"],
+    "tags": ["onlyAdults"],
     "title": "ALIEN: Fallout",
-    "updatedAt": "2023-11-07T17:10:23.08Z"
+    "updatedAt": "2023-11-07T17:10:23.08Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7424",
@@ -1244,7 +1286,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Maan syövereissä",
-    "updatedAt": "2023-11-07T17:10:23.08Z"
+    "updatedAt": "2023-11-07T17:10:23.08Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p7344",
@@ -1273,6 +1316,7 @@
     "styles": [],
     "tags": ["beginnerFriendly", "childrenFriendly"],
     "title": "Velhon torni",
-    "updatedAt": "2023-11-07T17:10:23.08Z"
+    "updatedAt": "2023-11-07T17:10:23.08Z",
+    "state": "accepted"
   }
 ]

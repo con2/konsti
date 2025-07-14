@@ -68,7 +68,7 @@ export enum InclusivityValue {
   NO_TEXT_OF_RECORDING = "noTextOfRecording",
   LONG_TEXTS = "longTexts",
   LOTS_OF_MOVEMENT = "lotsOfMovement",
-  FLASHING_LIGHTS = "flahingLights",
+  FLASHING_LIGHTS = "flashingLights",
   QUICK_REACTIONS = "quickReactions",
   NO_SUBTITLES = "noSubtitles",
   STRONG_ODOURS = "strongOdours",

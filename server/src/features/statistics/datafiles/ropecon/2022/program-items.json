@@ -24,7 +24,8 @@
     "styles": [],
     "tags": ["inEnglish", "forAdults", "tournament"],
     "title": "Magic the Gathering: Commander (cEDH) Double Elimination",
-    "updatedAt": "2022-08-02T13:00:04.587Z"
+    "updatedAt": "2022-08-02T13:00:04.587Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5644",
@@ -51,7 +52,8 @@
     "styles": [],
     "tags": ["inEnglish", "tournament"],
     "title": "VTES: Last Chance Qualifier (LCQ)",
-    "updatedAt": "2022-08-02T13:00:04.587Z"
+    "updatedAt": "2022-08-02T13:00:04.587Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5659",
@@ -78,7 +80,8 @@
     "styles": [],
     "tags": ["inEnglish", "beginnerFriendly", "tournament"],
     "title": "VTES: Perjantain aloittelijaturnaus | VTES: Beginner tournament, Friday",
-    "updatedAt": "2022-08-02T13:00:04.586Z"
+    "updatedAt": "2022-08-02T13:00:04.586Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5117",
@@ -102,10 +105,11 @@
     "revolvingDoor": false,
     "shortDescription": "Taistelupainotteinen seikkailu D&Dllä, jossa ystävä etsii ystävänsä hautapaikkaa.",
     "startTime": "2022-07-29T13:00:00Z",
-    "styles": ["light", "rulesHeavy", "characterDriven", "combatDriven"],
-    "tags": ["forAdults", "beginnerFriendly", "themeFriendship"],
+    "styles": ["light", "rulesHeavy", "characterDriven", "combatHeavy"],
+    "tags": ["forAdults", "beginnerFriendly", "theme"],
     "title": "D&D Scamatania Kääpiö jättien maassa",
-    "updatedAt": "2022-08-02T13:00:04.587Z"
+    "updatedAt": "2022-08-02T13:00:04.587Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4867",
@@ -130,9 +134,10 @@
     "shortDescription": "D&D 5E kaupunkipeli yhdellä hahmoluokalla/D&D 5E citygame with only one character class",
     "startTime": "2022-07-29T13:00:00Z",
     "styles": ["light", "rulesLight", "characterDriven"],
-    "tags": ["beginnerFriendly", "themeFriendship"],
+    "tags": ["beginnerFriendly", "theme"],
     "title": "Viisi Koboldia Trenssitakissa/Five Kobolds in a Trench Coat",
-    "updatedAt": "2022-08-02T13:00:04.587Z"
+    "updatedAt": "2022-08-02T13:00:04.587Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5668",
@@ -159,7 +164,8 @@
     "styles": ["light"],
     "tags": ["beginnerFriendly"],
     "title": "Pako Volodorista",
-    "updatedAt": "2022-08-02T13:00:04.588Z"
+    "updatedAt": "2022-08-02T13:00:04.588Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5475",
@@ -183,10 +189,11 @@
     "revolvingDoor": false,
     "shortDescription": "Dark Fantasy adventure with horror themes.",
     "startTime": "2022-07-29T13:00:00Z",
-    "styles": ["serious", "rulesLight", "storyDriven", "combatDriven"],
+    "styles": ["serious", "rulesLight", "storyDriven", "combatHeavy"],
     "tags": ["inEnglish", "ageRestricted", "beginnerFriendly"],
     "title": "Eternal Friendship",
-    "updatedAt": "2022-08-02T13:00:04.588Z"
+    "updatedAt": "2022-08-02T13:00:04.588Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5422",
@@ -210,10 +217,11 @@
     "revolvingDoor": false,
     "shortDescription": "D&D seikkailu käännettynä Legendoja & lohikäärmeisiin.",
     "startTime": "2022-07-29T13:00:00Z",
-    "styles": ["light", "characterDriven", "combatDriven"],
+    "styles": ["light", "characterDriven", "combatHeavy"],
     "tags": ["forMinors", "forAdults", "beginnerFriendly"],
     "title": "Kynttilälinnan mysteerit: Ulottuvuuksien ulkopuoliset ilot",
-    "updatedAt": "2022-08-02T13:00:04.588Z"
+    "updatedAt": "2022-08-02T13:00:04.588Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5468",
@@ -238,9 +246,10 @@
     "shortDescription": "Roolipeli tiiviin ystäväporukan viimeisestä kesästä",
     "startTime": "2022-07-29T13:00:00Z",
     "styles": ["rulesLight", "storyDriven", "characterDriven"],
-    "tags": ["forAdults", "beginnerFriendly", "themeFriendship"],
+    "tags": ["forAdults", "beginnerFriendly", "theme"],
     "title": "Oranssi valo",
-    "updatedAt": "2022-08-02T13:00:04.588Z"
+    "updatedAt": "2022-08-02T13:00:04.588Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5576",
@@ -265,9 +274,10 @@
     "shortDescription": "Legendoja & Lohikäärmeitä aloittelijoille",
     "startTime": "2022-07-29T13:00:00Z",
     "styles": ["characterDriven"],
-    "tags": ["forMinors", "beginnerFriendly", "themeFriendship"],
+    "tags": ["forMinors", "beginnerFriendly", "theme"],
     "title": "Vieraat kaukaa",
-    "updatedAt": "2022-08-02T13:00:04.588Z"
+    "updatedAt": "2022-08-02T13:00:04.588Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5519",
@@ -291,10 +301,11 @@
     "revolvingDoor": true,
     "shortDescription": "OSR-systeemi kohtaa Arkham Horrorin hahmonvalinnan, sekä korttipohjaisen sattumanvaraisen generoinnin. | The OSR system meets the character selection of Arkham Horror and card-based random generation.",
     "startTime": "2022-07-29T13:00:00Z",
-    "styles": ["serious", "rulesLight", "combatDriven"],
+    "styles": ["serious", "rulesLight", "combatHeavy"],
     "tags": ["inEnglish", "beginnerFriendly"],
     "title": "Velhollinen hävitys | A wizardly calamity",
-    "updatedAt": "2022-08-02T13:00:04.588Z"
+    "updatedAt": "2022-08-02T13:00:04.588Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5753",
@@ -318,10 +329,11 @@
     "revolvingDoor": true,
     "shortDescription": "Roolipelikampanja Vietnamin sodasta",
     "startTime": "2022-07-29T13:00:00Z",
-    "styles": ["serious", "light", "rulesHeavy", "combatDriven"],
-    "tags": ["forAdults", "beginnerFriendly", "themeFriendship"],
+    "styles": ["serious", "light", "rulesHeavy", "combatHeavy"],
+    "tags": ["forAdults", "beginnerFriendly", "theme"],
     "title": "Charlie ei surffaa",
-    "updatedAt": "2022-08-02T13:00:04.588Z"
+    "updatedAt": "2022-08-02T13:00:04.588Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5340",
@@ -345,10 +357,11 @@
     "revolvingDoor": false,
     "shortDescription": "A Pathfinder adventure",
     "startTime": "2022-07-29T13:00:00Z",
-    "styles": ["rulesHeavy", "combatDriven"],
+    "styles": ["rulesHeavy", "combatHeavy"],
     "tags": ["beginnerFriendly"],
     "title": "Pathfinder Beginner Box",
-    "updatedAt": "2022-08-02T13:00:04.588Z"
+    "updatedAt": "2022-08-02T13:00:04.588Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5341",
@@ -372,10 +385,11 @@
     "revolvingDoor": false,
     "shortDescription": "A Starfinder One-Shot adventure",
     "startTime": "2022-07-29T13:00:00Z",
-    "styles": ["light", "rulesHeavy", "storyDriven", "combatDriven"],
+    "styles": ["light", "rulesHeavy", "storyDriven", "combatHeavy"],
     "tags": ["inEnglish", "beginnerFriendly"],
     "title": "Starfinder One-Shot #3: System Takedown",
-    "updatedAt": "2022-08-02T13:00:04.588Z"
+    "updatedAt": "2022-08-02T13:00:04.588Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5757",
@@ -402,7 +416,8 @@
     "styles": ["light", "rulesLight"],
     "tags": ["inEnglish", "beginnerFriendly"],
     "title": "Kloonialus | The Clone Ship",
-    "updatedAt": "2022-08-02T13:00:04.588Z"
+    "updatedAt": "2022-08-02T13:00:04.588Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5113",
@@ -429,7 +444,8 @@
     "styles": ["storyDriven", "characterDriven"],
     "tags": ["forAdults", "beginnerFriendly"],
     "title": "Kesä 1158, Tulikaste",
-    "updatedAt": "2022-08-02T13:00:04.587Z"
+    "updatedAt": "2022-08-02T13:00:04.587Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5548",
@@ -456,7 +472,8 @@
     "styles": [],
     "tags": ["inEnglish", "tournament"],
     "title": "Poromagian Limited-Turnaus 1 | Poromagia's MTG Limited Tournament 1",
-    "updatedAt": "2022-08-02T13:00:04.587Z"
+    "updatedAt": "2022-08-02T13:00:04.587Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5662",
@@ -483,7 +500,8 @@
     "styles": ["light", "rulesLight"],
     "tags": ["inEnglish", "forAdults", "beginnerFriendly"],
     "title": "Intergalaktinen Turpakäräjä (peli 1) | The Intergalactic Brawl (game 1)",
-    "updatedAt": "2022-08-02T13:00:04.588Z"
+    "updatedAt": "2022-08-02T13:00:04.588Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5587",
@@ -507,10 +525,11 @@
     "revolvingDoor": false,
     "shortDescription": "Selvitymisseikkailu tuntemattomalla saarella fantasiamaailmassa",
     "startTime": "2022-07-29T14:00:00Z",
-    "styles": ["light", "characterDriven", "combatDriven"],
-    "tags": ["forMinors", "forAdults", "beginnerFriendly", "themeFriendship"],
+    "styles": ["light", "characterDriven", "combatHeavy"],
+    "tags": ["forMinors", "forAdults", "beginnerFriendly", "theme"],
     "title": "Kallosaaren Haaksirikkoiset (pelautus #1)",
-    "updatedAt": "2022-08-02T13:00:04.588Z"
+    "updatedAt": "2022-08-02T13:00:04.588Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5431",
@@ -537,7 +556,8 @@
     "styles": ["light", "rulesLight", "storyDriven"],
     "tags": ["inEnglish", "beginnerFriendly"],
     "title": "A Hobbit walking-party",
-    "updatedAt": "2022-08-02T13:00:04.588Z"
+    "updatedAt": "2022-08-02T13:00:04.588Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5487",
@@ -567,11 +587,12 @@
       "rulesHeavy",
       "rulesLight",
       "storyDriven",
-      "combatDriven"
+      "combatHeavy"
     ],
     "tags": ["beginnerFriendly"],
     "title": "Legendoja & Lohikäärmeitä: Barbaarin aarrekartta",
-    "updatedAt": "2022-08-02T13:00:04.588Z"
+    "updatedAt": "2022-08-02T13:00:04.588Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5190",
@@ -598,7 +619,8 @@
     "styles": ["rulesLight", "storyDriven", "characterDriven"],
     "tags": ["forAdults", "ageRestricted", "beginnerFriendly"],
     "title": "IntelliToys",
-    "updatedAt": "2022-08-02T13:00:04.588Z"
+    "updatedAt": "2022-08-02T13:00:04.588Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4961",
@@ -625,7 +647,8 @@
     "styles": ["rulesLight", "storyDriven", "characterDriven"],
     "tags": ["forAdults"],
     "title": "In moonlight, eternally - Kuutamossa, ikuisesti",
-    "updatedAt": "2022-08-02T13:00:04.588Z"
+    "updatedAt": "2022-08-02T13:00:04.588Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5464",
@@ -652,7 +675,8 @@
     "styles": [],
     "tags": ["inEnglish", "tournament"],
     "title": "Digimon Card Game Constructed Tournament 1 (pe)",
-    "updatedAt": "2022-08-02T13:00:04.588Z"
+    "updatedAt": "2022-08-02T13:00:04.588Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5620",
@@ -677,9 +701,10 @@
     "shortDescription": "Meinneisyyden arvet yhdistävät merenranta-kylän asukkaita, vieden heidän kohtaamaan Leviathanin.",
     "startTime": "2022-07-29T15:00:00Z",
     "styles": ["light", "rulesLight", "storyDriven", "characterDriven"],
-    "tags": ["forAdults", "beginnerFriendly", "themeFriendship"],
+    "tags": ["forAdults", "beginnerFriendly", "theme"],
     "title": "Leukaa Isompi Saalis",
-    "updatedAt": "2022-08-02T13:00:04.588Z"
+    "updatedAt": "2022-08-02T13:00:04.588Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5088",
@@ -706,7 +731,8 @@
     "styles": ["serious", "rulesLight", "storyDriven", "characterDriven"],
     "tags": ["forAdults", "beginnerFriendly"],
     "title": "Trophy Dark: Project Galileo",
-    "updatedAt": "2022-08-02T13:00:04.589Z"
+    "updatedAt": "2022-08-02T13:00:04.589Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5414",
@@ -733,7 +759,8 @@
     "styles": ["rulesLight", "storyDriven"],
     "tags": ["beginnerFriendly"],
     "title": "Unknown Beast",
-    "updatedAt": "2022-08-02T13:00:30.329Z"
+    "updatedAt": "2022-08-02T13:00:30.329Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5664",
@@ -760,7 +787,8 @@
     "styles": ["light", "rulesLight", "storyDriven"],
     "tags": ["forAdults", "beginnerFriendly"],
     "title": "Taikakirjastossa tapahtuu kummia",
-    "updatedAt": "2022-08-02T13:00:30.329Z"
+    "updatedAt": "2022-08-02T13:00:30.329Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5263",
@@ -785,9 +813,10 @@
     "shortDescription": "D&D 5ed muutamin \"talon säännöin\" ja vaikutteita useista D&D-maailmoista",
     "startTime": "2022-07-29T15:00:00Z",
     "styles": ["light", "rulesLight", "storyDriven"],
-    "tags": ["beginnerFriendly", "themeFriendship"],
+    "tags": ["beginnerFriendly", "theme"],
     "title": "Berserkin pesä: Palvelukseen halutaan..",
-    "updatedAt": "2022-08-02T13:00:30.329Z"
+    "updatedAt": "2022-08-02T13:00:30.329Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5510",
@@ -814,15 +843,16 @@
     "styles": ["storyDriven", "characterDriven"],
     "tags": ["beginnerFriendly"],
     "title": "Kesä 1158, Tulikaste",
-    "updatedAt": "2022-08-02T13:00:04.589Z"
+    "updatedAt": "2022-08-02T13:00:04.589Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5762",
     "accessibilityValues": [
       "loudSounds",
       "physicalContact",
-      "lowLighting",
-      "recording",
+      "darkLighting",
+      "noTextOfRecording",
       "remainingOnePlace"
     ],
     "contentWarnings": "Kuolema, sota, pakoilu, syyllisyys, aikaraja päätöksenteossa, vaino (uskonto, poliittinen kanta, sekusaalinen suuntutuminen)",
@@ -847,15 +877,16 @@
     "styles": [],
     "tags": ["inEnglish", "ageRestricted", "beginnerFriendly"],
     "title": "First They Came / 2",
-    "updatedAt": "2022-08-02T13:00:04.589Z"
+    "updatedAt": "2022-08-02T13:00:04.589Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5763",
     "accessibilityValues": [
       "loudSounds",
       "physicalContact",
-      "lowLighting",
-      "recording",
+      "darkLighting",
+      "noTextOfRecording",
       "remainingOnePlace"
     ],
     "contentWarnings": "Kuolema, sota, pakoilu, syyllisyys, aikaraja päätöksenteossa, vaino (uskonto, poliittinen kanta, sekusaalinen suuntutuminen)",
@@ -880,15 +911,16 @@
     "styles": [],
     "tags": ["inEnglish", "forAdults", "ageRestricted", "beginnerFriendly"],
     "title": "First They Came / 3",
-    "updatedAt": "2022-08-02T13:00:04.589Z"
+    "updatedAt": "2022-08-02T13:00:04.589Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5266",
     "accessibilityValues": [
       "loudSounds",
       "physicalContact",
-      "lowLighting",
-      "recording",
+      "darkLighting",
+      "noTextOfRecording",
       "remainingOnePlace"
     ],
     "contentWarnings": "Kuolema, sota, pakoilu, syyllisyys, aikaraja päätöksenteossa, vaino (uskonto, poliittinen kanta, sekusaalinen suuntutuminen)",
@@ -913,7 +945,8 @@
     "styles": [],
     "tags": ["inEnglish", "ageRestricted", "beginnerFriendly"],
     "title": "First They Came",
-    "updatedAt": "2022-08-02T13:00:04.589Z"
+    "updatedAt": "2022-08-02T13:00:04.589Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5535",
@@ -940,7 +973,8 @@
     "styles": ["light", "rulesLight", "storyDriven"],
     "tags": ["forMinors", "forAdults", "beginnerFriendly"],
     "title": "seikkailu b",
-    "updatedAt": "2022-08-02T13:00:04.588Z"
+    "updatedAt": "2022-08-02T13:00:04.588Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5630",
@@ -964,10 +998,11 @@
     "revolvingDoor": false,
     "shortDescription": "Be a gblin, loot a town!",
     "startTime": "2022-07-29T16:00:00Z",
-    "styles": ["light", "combatDriven"],
+    "styles": ["light", "combatHeavy"],
     "tags": ["inEnglish", "beginnerFriendly"],
     "title": "Reverse dungeon 1/3: Raid on the City",
-    "updatedAt": "2022-08-02T13:00:30.329Z"
+    "updatedAt": "2022-08-02T13:00:30.329Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5560",
@@ -994,7 +1029,8 @@
     "styles": ["rulesLight", "storyDriven", "characterDriven"],
     "tags": ["inEnglish", "beginnerFriendly"],
     "title": "Harharetki - Astray",
-    "updatedAt": "2022-08-02T13:00:30.329Z"
+    "updatedAt": "2022-08-02T13:00:30.329Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5672",
@@ -1021,7 +1057,8 @@
     "styles": ["serious", "rulesLight", "characterDriven"],
     "tags": ["inEnglish", "forAdults", "beginnerFriendly"],
     "title": "Haaksirikko Piikkivuorille | Shipwrecked on Thorn mountains",
-    "updatedAt": "2022-08-02T13:00:30.329Z"
+    "updatedAt": "2022-08-02T13:00:30.329Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5635",
@@ -1048,7 +1085,8 @@
     "styles": ["light", "rulesLight"],
     "tags": ["beginnerFriendly"],
     "title": "L&L: Erebuksen 5 holvia",
-    "updatedAt": "2022-08-02T13:00:04.588Z"
+    "updatedAt": "2022-08-02T13:00:04.588Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5609",
@@ -1075,7 +1113,8 @@
     "styles": ["light", "rulesLight", "characterDriven"],
     "tags": ["inEnglish", "forAdults", "beginnerFriendly"],
     "title": "Adventures in Phandalin 1/2 (D&D5e)",
-    "updatedAt": "2022-08-02T13:00:30.329Z"
+    "updatedAt": "2022-08-02T13:00:30.329Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5670",
@@ -1104,15 +1143,16 @@
       "rulesHeavy",
       "storyDriven",
       "characterDriven",
-      "combatDriven"
+      "combatHeavy"
     ],
-    "tags": ["inEnglish", "forAdults", "themeFriendship"],
+    "tags": ["inEnglish", "forAdults", "theme"],
     "title": "The visit",
-    "updatedAt": "2022-08-02T13:00:30.329Z"
+    "updatedAt": "2022-08-02T13:00:30.329Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4872",
-    "accessibilityValues": ["loudSounds", "lowLighting", "recording"],
+    "accessibilityValues": ["loudSounds", "darkLighting", "noTextOfRecording"],
     "contentWarnings": "Kuolema, menetys, itsemurha, uskonnot",
     "createdAt": "2022-07-17T19:54:20.197Z",
     "description": "\"Tämänhetkisen tiedon mukaan Halpamatka Oy:n linja-auton onnettomuudessa on loukkaantunut useita kymmeniä suomalaisia. Ainakin neljä henkilöä on menehtynyt ja useita muita on kriittisessä tilassa. Pelastustyöt onnettomuuspaikalla jatkuvat. Toimittajamme seuraa tilannetta paikan päällä.\" Halpamatka Oy:n turistibussin suistuttua tieltä suomalaiset lukevat turmasta uutisia aamukahvinsa äärellä.\r\n\r\nUusintapelautus! Pakettimatka-larp vie pelaajat pohtimaan elämän päättymistä äkillisesti, kuolemaan liittyviä pelkoja ja valintoja sekä uskontoja ja uskomuksia kuolemanjälkeisestä. Pelisisältö keskittyy raskaiden teemojen fiilistelyyn ja eksistentiaaliseen kriisiin ripauksella absurdia huumoria hieman douglasadamsmaiseen tapaan.\r\n\r\nIkärajallinen larp, K18. Ikä tarkastatetaan ennen peliä, otathan jonkinlaisen henkilöllisyystodistuksen mukaan!\r\nPeliin ilmottaudutaan perjantaina klo 15.00 alkaen KONSTI-SOVELLUKSELLA. Jos peli on täynnä, ilmoittaudu jonoon LARP-TISKILLE, pelissä on pari varapaikkaa.\r\nPeliin lähdetään juoksijan viemänä RopeLarp-tiskiltä perjantaina klo 19.55, olethan ajoissa paikalla. Voit valita ja hakea hahmosi ennen peliä LARP-TISKILTÄ, muutoin hahmot jaetaan pelin alkaessa.",
@@ -1135,7 +1175,8 @@
     "styles": [],
     "tags": ["ageRestricted", "beginnerFriendly"],
     "title": "Pakettimatka",
-    "updatedAt": "2022-08-02T13:00:04.59Z"
+    "updatedAt": "2022-08-02T13:00:04.59Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5549",
@@ -1162,7 +1203,8 @@
     "styles": [],
     "tags": ["inEnglish", "tournament"],
     "title": "Poromagian Limited-Turnaus 2 | Poromagia's MTG Limited Tournament 2",
-    "updatedAt": "2022-08-02T13:00:04.589Z"
+    "updatedAt": "2022-08-02T13:00:04.589Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5538",
@@ -1189,7 +1231,8 @@
     "styles": ["serious", "storyDriven"],
     "tags": ["inEnglish", "forAdults", "beginnerFriendly"],
     "title": "EYES - Fear is Fractal",
-    "updatedAt": "2022-08-02T13:00:30.329Z"
+    "updatedAt": "2022-08-02T13:00:30.329Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5611",
@@ -1222,7 +1265,8 @@
     ],
     "tags": ["forAdults", "beginnerFriendly"],
     "title": "Kymmenen tuntia",
-    "updatedAt": "2022-08-02T13:00:30.329Z"
+    "updatedAt": "2022-08-02T13:00:30.329Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5653",
@@ -1249,11 +1293,12 @@
     "styles": ["rulesLight", "storyDriven", "characterDriven"],
     "tags": ["inEnglish", "forAdults", "beginnerFriendly"],
     "title": "The Affair at Cottingley Manor",
-    "updatedAt": "2022-08-02T13:00:30.329Z"
+    "updatedAt": "2022-08-02T13:00:30.329Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5657",
-    "accessibilityValues": ["movingAround"],
+    "accessibilityValues": ["lotsOfMovement"],
     "contentWarnings": "",
     "createdAt": "2022-07-17T19:54:20.197Z",
     "description": "Istuminen ei ole hyvästä, mutta et malta olla pelaamatta? Tule kokeilemaan Move Actionia, kevyillä säännöillä varustettua ulkoiluroolipeliä! Pelaamme Messukeskuksen ulkopuolella, joten säänmukainen varustautuminen on tarpeen.\r\n\r\nÖisellä taivaalla tuntuu tapahtuvan kummia. Voisitte vannoa, että tähtien takana liikkuu jokin ja tuuli kantaa etäisiä huutoja. Olette löytäneet kaivauksilta merkillisen ennustuksen, josta olette saaneet käännettyä sanat: kun tähdet asettuvat oikeaan asemaan. Mitä muuta ennustuksessa lukeekaan on vielä usvan peitossa, mutta teitä kalvaa tunne, että koko tuntemanne todellisuus tasapainottelee hiuksenhienon langan varassa. Jatkatte tutkimustanne kunnes byrokratia heittääkin kapuloita rattaisiin. Mitä teette?",
@@ -1274,9 +1319,10 @@
     "shortDescription": "Kävellen kosmisen kauhuun.",
     "startTime": "2022-07-29T17:00:00Z",
     "styles": ["rulesLight"],
-    "tags": ["forAdults", "beginnerFriendly", "themeFriendship"],
+    "tags": ["forAdults", "beginnerFriendly", "theme"],
     "title": "Tähtientakainen usva",
-    "updatedAt": "2022-08-02T13:00:30.329Z"
+    "updatedAt": "2022-08-02T13:00:30.329Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5342",
@@ -1300,10 +1346,11 @@
     "revolvingDoor": false,
     "shortDescription": "A Pathfinder Society scenario",
     "startTime": "2022-07-29T17:00:00Z",
-    "styles": ["rulesHeavy", "combatDriven"],
+    "styles": ["rulesHeavy", "combatHeavy"],
     "tags": ["inEnglish"],
     "title": "Pathfinder Society #3-15 Cavern of Sundered Song",
-    "updatedAt": "2022-08-02T13:00:04.589Z"
+    "updatedAt": "2022-08-02T13:00:04.589Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5068",
@@ -1327,16 +1374,17 @@
     "revolvingDoor": false,
     "shortDescription": "Unnecessary jokes and pranks followed by rum.",
     "startTime": "2022-07-29T17:00:00Z",
-    "styles": ["light", "storyDriven", "characterDriven", "combatDriven"],
+    "styles": ["light", "storyDriven", "characterDriven", "combatHeavy"],
     "tags": [
       "inEnglish",
       "forMinors",
       "forAdults",
       "beginnerFriendly",
-      "themeFriendship"
+      "theme"
     ],
     "title": "Merry Go Rum",
-    "updatedAt": "2022-08-02T13:00:30.329Z"
+    "updatedAt": "2022-08-02T13:00:30.329Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5536",
@@ -1363,7 +1411,8 @@
     "styles": ["light", "rulesLight", "storyDriven", "characterDriven"],
     "tags": ["inEnglish", "forAdults"],
     "title": "The Mystery of Whichway",
-    "updatedAt": "2022-08-02T13:00:30.329Z"
+    "updatedAt": "2022-08-02T13:00:30.329Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5265",
@@ -1390,7 +1439,8 @@
     "styles": ["rulesLight", "storyDriven"],
     "tags": ["ageRestricted", "beginnerFriendly"],
     "title": "Nekropolis (Call of Cthulhu)",
-    "updatedAt": "2022-08-02T13:00:30.329Z"
+    "updatedAt": "2022-08-02T13:00:30.329Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5353",
@@ -1414,10 +1464,11 @@
     "revolvingDoor": false,
     "shortDescription": "Avaruuslaivamatka Starfinderin maailmassa",
     "startTime": "2022-07-29T17:00:00Z",
-    "styles": ["rulesHeavy", "combatDriven"],
+    "styles": ["rulesHeavy", "combatHeavy"],
     "tags": ["beginnerFriendly"],
     "title": "Starfinder One-Shot #4: Before the Storm",
-    "updatedAt": "2022-08-02T13:00:30.329Z"
+    "updatedAt": "2022-08-02T13:00:30.329Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5474",
@@ -1444,7 +1495,8 @@
     "styles": ["light", "storyDriven", "characterDriven"],
     "tags": ["inEnglish", "forAdults", "ageRestricted", "beginnerFriendly"],
     "title": "Air & Wind",
-    "updatedAt": "2022-08-02T13:00:30.329Z"
+    "updatedAt": "2022-08-02T13:00:30.329Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5459",
@@ -1471,7 +1523,8 @@
     "styles": ["storyDriven"],
     "tags": ["forAdults", "beginnerFriendly"],
     "title": "Murha Cormyrissä / Muder in Cormyr",
-    "updatedAt": "2022-08-02T13:00:30.329Z"
+    "updatedAt": "2022-08-02T13:00:30.329Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5755",
@@ -1496,9 +1549,10 @@
     "shortDescription": "Wanderhome-peli, jossa kokenut kulkija kaipaa kohti kotia.",
     "startTime": "2022-07-29T17:00:00Z",
     "styles": ["rulesLight", "storyDriven", "characterDriven"],
-    "tags": ["beginnerFriendly", "themeFriendship"],
+    "tags": ["beginnerFriendly", "theme"],
     "title": "Kotia kohti",
-    "updatedAt": "2022-08-02T13:00:30.329Z"
+    "updatedAt": "2022-08-02T13:00:30.329Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5524",
@@ -1523,9 +1577,10 @@
     "shortDescription": "Tule tutustumaan uunituoreeseen Legendoja & Lohikäärmeitä-peliin tässä tarinavetoisessa luolastoon sijoittuvassa seikkailussa!",
     "startTime": "2022-07-29T18:00:00Z",
     "styles": ["light", "storyDriven", "characterDriven"],
-    "tags": ["beginnerFriendly", "themeFriendship"],
+    "tags": ["beginnerFriendly", "theme"],
     "title": "L&L: Erebuksen viisi holvia",
-    "updatedAt": "2022-08-02T13:00:30.329Z"
+    "updatedAt": "2022-08-02T13:00:30.329Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5671",
@@ -1552,7 +1607,8 @@
     "styles": ["serious", "storyDriven"],
     "tags": ["inEnglish", "ageRestricted"],
     "title": "Obsidiaanitornin mysteeri | The Mystery of the Obsidian Tower",
-    "updatedAt": "2022-08-02T13:00:30.329Z"
+    "updatedAt": "2022-08-02T13:00:30.329Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5334",
@@ -1579,7 +1635,8 @@
     "styles": ["light", "rulesLight"],
     "tags": ["forAdults", "ageRestricted", "beginnerFriendly"],
     "title": "Wizards Against Humanity",
-    "updatedAt": "2022-08-02T13:00:30.329Z"
+    "updatedAt": "2022-08-02T13:00:30.329Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5640",
@@ -1606,7 +1663,8 @@
     "styles": ["rulesLight"],
     "tags": ["forAdults", "beginnerFriendly"],
     "title": "Murha Joninkylässä",
-    "updatedAt": "2022-08-02T13:00:30.329Z"
+    "updatedAt": "2022-08-02T13:00:30.329Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5673",
@@ -1633,7 +1691,8 @@
     "styles": ["serious", "rulesLight", "characterDriven"],
     "tags": ["inEnglish", "forAdults"],
     "title": "Fairground of Dark Dreams",
-    "updatedAt": "2022-08-02T13:00:30.329Z"
+    "updatedAt": "2022-08-02T13:00:30.329Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5467",
@@ -1658,9 +1717,10 @@
     "shortDescription": "Roolipeli tiiviin ystäväporukan viimeisestä kesästä",
     "startTime": "2022-07-29T18:00:00Z",
     "styles": ["rulesLight", "storyDriven", "characterDriven"],
-    "tags": ["forAdults", "beginnerFriendly", "themeFriendship"],
+    "tags": ["forAdults", "beginnerFriendly", "theme"],
     "title": "Oranssi valo",
-    "updatedAt": "2022-08-02T13:00:30.329Z"
+    "updatedAt": "2022-08-02T13:00:30.329Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5396",
@@ -1693,7 +1753,8 @@
     ],
     "tags": ["ageRestricted", "beginnerFriendly"],
     "title": "Matti - Master Sorcerer",
-    "updatedAt": "2022-08-02T13:00:30.329Z"
+    "updatedAt": "2022-08-02T13:00:30.329Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4956",
@@ -1720,11 +1781,12 @@
     "styles": ["light"],
     "tags": ["beginnerFriendly"],
     "title": "Sankarten polku: Mielikin kokeet",
-    "updatedAt": "2022-08-02T13:00:30.329Z"
+    "updatedAt": "2022-08-02T13:00:30.329Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5064",
-    "accessibilityValues": ["text", "colourblind"],
+    "accessibilityValues": ["text", "colorBlindness"],
     "contentWarnings": "Uskonto, sota, ilmastonmuutos, merenelävät, taudit, kuolema",
     "createdAt": "2022-07-17T19:54:20.197Z",
     "description": "Meren syvyyksissä ja rantakallioiden luolissa vetehiset heräilevät horroksestaan, unelmoiden herättävänsä kuningaskuntansa kuolleista. Mantereelta ihmisten keisari kurottaa ulapalle tavoitteenaan valloittaa koko maailma. Verenpunaiset revontulet hohkaavat taivaalla ja uskonmiehet saarnaavat maailmanloppua - kenen joukoissa seisot, jos merijäät sulavat ja saariston asukkaat hukkuvat aaltojen alle?",
@@ -1747,7 +1809,8 @@
     "styles": ["rulesLight"],
     "tags": ["beginnerFriendly"],
     "title": "Vetehisten Virsi",
-    "updatedAt": "2022-08-02T13:00:30.329Z"
+    "updatedAt": "2022-08-02T13:00:30.329Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5622",
@@ -1774,7 +1837,8 @@
     "styles": ["serious", "rulesLight"],
     "tags": ["forMinors", "forAdults", "beginnerFriendly"],
     "title": "Jos metsään haluat mennä nyt...",
-    "updatedAt": "2022-08-02T13:00:30.329Z"
+    "updatedAt": "2022-08-02T13:00:30.329Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5438",
@@ -1801,7 +1865,8 @@
     "styles": [],
     "tags": ["forAdults", "tournament"],
     "title": "Warhammer 40K turnaus",
-    "updatedAt": "2022-08-02T13:00:04.591Z"
+    "updatedAt": "2022-08-02T13:00:04.591Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5565",
@@ -1828,7 +1893,8 @@
     "styles": ["light", "rulesLight"],
     "tags": ["beginnerFriendly"],
     "title": "Tehtävä: Postisäkki",
-    "updatedAt": "2022-08-02T13:00:30.329Z"
+    "updatedAt": "2022-08-02T13:00:30.329Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4874",
@@ -1855,7 +1921,8 @@
     "styles": [],
     "tags": ["forMinors", "forAdults", "tournament"],
     "title": "Battle of Middle-Pasila | Middle-Earth Strategy Battle Game",
-    "updatedAt": "2022-08-02T13:00:04.591Z"
+    "updatedAt": "2022-08-02T13:00:04.591Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5646",
@@ -1882,7 +1949,8 @@
     "styles": [],
     "tags": ["inEnglish", "tournament"],
     "title": "VTES: European Championship Day 1",
-    "updatedAt": "2022-08-02T13:00:04.591Z"
+    "updatedAt": "2022-08-02T13:00:04.591Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5220",
@@ -1906,16 +1974,17 @@
     "revolvingDoor": false,
     "shortDescription": "D&D-seikkailu steampunk-teemalla / Steampunk-themed D&D adventure",
     "startTime": "2022-07-30T07:00:00Z",
-    "styles": ["serious", "rulesLight", "storyDriven", "combatDriven"],
+    "styles": ["serious", "rulesLight", "storyDriven", "combatHeavy"],
     "tags": ["forAdults", "beginnerFriendly"],
     "title": "Steampunk RPG",
-    "updatedAt": "2022-08-02T13:00:30.329Z"
+    "updatedAt": "2022-08-02T13:00:30.329Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5352",
     "accessibilityValues": [
       "loudSounds",
-      "movingAround",
+      "lotsOfMovement",
       "text",
       "remainingOnePlace"
     ],
@@ -1941,7 +2010,8 @@
     "styles": [],
     "tags": ["inEnglish", "tournament"],
     "title": "Siege of the Palatium Expositionis | 2000pts Horus Heresy Tournament",
-    "updatedAt": "2022-08-02T13:00:04.591Z"
+    "updatedAt": "2022-08-02T13:00:04.591Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5677",
@@ -1968,7 +2038,8 @@
     "styles": ["light", "rulesLight", "storyDriven", "characterDriven"],
     "tags": ["inEnglish", "forAdults", "beginnerFriendly"],
     "title": "Painajaisia pimeässä - Nightmares in the Dark",
-    "updatedAt": "2022-08-02T13:00:30.329Z"
+    "updatedAt": "2022-08-02T13:00:30.329Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5660",
@@ -1995,7 +2066,8 @@
     "styles": [],
     "tags": ["inEnglish", "beginnerFriendly", "tournament"],
     "title": "VTES: Lauantain aloittelijaturnaus | VTES: Beginner tournament, Saturday",
-    "updatedAt": "2022-08-02T13:00:04.591Z"
+    "updatedAt": "2022-08-02T13:00:04.591Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5567",
@@ -2022,13 +2094,14 @@
     "styles": ["light", "rulesLight", "storyDriven"],
     "tags": ["inEnglish"],
     "title": "To become a...",
-    "updatedAt": "2022-08-02T13:00:30.329Z"
+    "updatedAt": "2022-08-02T13:00:30.329Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5570",
     "accessibilityValues": [
       "physicalContact",
-      "colourblind",
+      "colorBlindness",
       "remainingOnePlace"
     ],
     "contentWarnings": "Kilpailu",
@@ -2053,7 +2126,8 @@
     "styles": [],
     "tags": ["inEnglish", "tournament"],
     "title": "Catan SM-kilpailut",
-    "updatedAt": "2022-08-02T13:00:04.591Z"
+    "updatedAt": "2022-08-02T13:00:04.591Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5171",
@@ -2080,7 +2154,8 @@
     "styles": ["light", "rulesLight", "storyDriven"],
     "tags": ["suitableUnder10", "forMinors", "beginnerFriendly"],
     "title": "L&L: Erebuksen 5 holvia",
-    "updatedAt": "2022-08-02T13:00:30.329Z"
+    "updatedAt": "2022-08-02T13:00:30.329Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5118",
@@ -2105,9 +2180,10 @@
     "shortDescription": "Pulmanratkontaa ja selkäänpuukotusta D&D 5th editionissa, jossa tutkitaan onko ystävyys sukua tärkeämpi.",
     "startTime": "2022-07-30T07:00:00Z",
     "styles": ["light", "rulesLight", "storyDriven", "characterDriven"],
-    "tags": ["forAdults", "beginnerFriendly", "themeFriendship"],
+    "tags": ["forAdults", "beginnerFriendly", "theme"],
     "title": "D&D Scamatania Onko veri vettä sakeampaa?",
-    "updatedAt": "2022-08-02T13:00:30.329Z"
+    "updatedAt": "2022-08-02T13:00:30.329Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4850",
@@ -2132,9 +2208,10 @@
     "shortDescription": "Roolipelaamista Avatar: The Last Airbenderin maailmassa.",
     "startTime": "2022-07-30T07:00:00Z",
     "styles": ["rulesLight", "storyDriven", "characterDriven"],
-    "tags": ["forMinors", "forAdults", "beginnerFriendly", "themeFriendship"],
+    "tags": ["forMinors", "forAdults", "beginnerFriendly", "theme"],
     "title": "Avatar Legends: Kielletty käärö",
-    "updatedAt": "2022-08-02T13:00:30.329Z"
+    "updatedAt": "2022-08-02T13:00:30.329Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4962",
@@ -2161,7 +2238,8 @@
     "styles": ["rulesLight", "storyDriven", "characterDriven"],
     "tags": ["forAdults"],
     "title": "In moonlight, eternally - Kuutamossa, ikuisesti",
-    "updatedAt": "2022-08-02T13:00:04.591Z"
+    "updatedAt": "2022-08-02T13:00:04.591Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5675",
@@ -2186,9 +2264,10 @@
     "shortDescription": "A game of woodland creatures fighting for money, justice, and/or freedom!",
     "startTime": "2022-07-30T07:00:00Z",
     "styles": ["rulesLight", "characterDriven"],
-    "tags": ["inEnglish", "forAdults", "beginnerFriendly", "themeFriendship"],
+    "tags": ["inEnglish", "forAdults", "beginnerFriendly", "theme"],
     "title": "Root: Trouble in Redvale",
-    "updatedAt": "2022-08-02T13:00:30.329Z"
+    "updatedAt": "2022-08-02T13:00:30.329Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5575",
@@ -2213,9 +2292,10 @@
     "shortDescription": "Legendoja & Lohikäärmeitä aloittelijoille.",
     "startTime": "2022-07-30T07:00:00Z",
     "styles": ["characterDriven"],
-    "tags": ["forMinors", "beginnerFriendly", "themeFriendship"],
+    "tags": ["forMinors", "beginnerFriendly", "theme"],
     "title": "Vieraat kaukaa",
-    "updatedAt": "2022-08-02T13:00:30.329Z"
+    "updatedAt": "2022-08-02T13:00:30.329Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5579",
@@ -2242,7 +2322,8 @@
     "styles": ["light", "rulesLight", "characterDriven"],
     "tags": ["inEnglish", "beginnerFriendly"],
     "title": "Guilty as Charged! Sentence: Sewer Patrol / Rikoksesta Rangaistus: Viemäripartio!",
-    "updatedAt": "2022-08-02T13:00:30.329Z"
+    "updatedAt": "2022-08-02T13:00:30.329Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5395",
@@ -2275,7 +2356,8 @@
     ],
     "tags": ["ageRestricted", "beginnerFriendly"],
     "title": "Matti - Master Sorcerer",
-    "updatedAt": "2022-08-02T13:00:30.329Z"
+    "updatedAt": "2022-08-02T13:00:30.329Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5666",
@@ -2302,7 +2384,8 @@
     "styles": ["serious", "storyDriven"],
     "tags": ["ageRestricted", "beginnerFriendly"],
     "title": "AstraNoir",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5580",
@@ -2327,18 +2410,14 @@
     "shortDescription": "Investigative cosmic horror game set in the modern era.",
     "startTime": "2022-07-30T07:00:00Z",
     "styles": ["serious", "rulesLight", "storyDriven"],
-    "tags": [
-      "inEnglish",
-      "ageRestricted",
-      "beginnerFriendly",
-      "themeFriendship"
-    ],
+    "tags": ["inEnglish", "ageRestricted", "beginnerFriendly", "theme"],
     "title": "Delta Green: Operation ELECTRIC WINDFALL",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4842",
-    "accessibilityValues": ["recording"],
+    "accessibilityValues": ["noTextOfRecording"],
     "contentWarnings": "väkivaltaa, sota, sodan mielettömyyttä, hahmoja ja NPC:tä kuolee aika rankalla kädellä.",
     "createdAt": "2022-07-17T19:54:20.198Z",
     "description": ";tl:dr; Peli sisältää runsaasti väkivaltaa ja hahmot tulevat hyvin todennäköisesti kuolemaan\r\n\r\nHaluatko fiilistellä Keisarillisen kaartilaisen elämää upeissa puitteissa? Oletko joskus ihaillut miniatyyri diodraamoja? \r\n\r\nKatalat kerettiläiset ovat ottaneet vallan Acheron V:lla. Ihmiskunnan Keisari on suuressa viisaudessaan päättänyt lähettää Avalonin viidennen kivääri rykmentin pelastamaan paikallisen pastorin nimeltään Plebant.\r\n\r\nInkvisitio on määrännyt planeetan tuhottavaksi sillä vain Keisarin laivaston pyhä tuli voi puhdistaa kerettiläisyyden. Rykmentillä on vain 15 tuntia aikaa pelastaa pastori pyhätöstä jota vartioivat katalat kerettiläislaumat. Tehtävälle on päätetty lähettää aalto toisensa perään Keisarin enemmän tai vähemmän uljaita taistelijoita. \r\n\r\nAvalonin viides kiväärirykmentti on hiljattain keisarinnan imperiumiin liitetyltä feodaaliplaneelta jonka talonpojista kerätyt rykmentit eivät varsinaiseti ole kuuluisia pätevyydestään. Onneksi rykmenttiin on liitetty läjä komissaareja varmistamaan moraalin korkea taso ja auttamaan maajusseja luopumaan hengestään keisarinnan puolesta.\r\n\r\nTule keräämään mitaleja, teurastamaan kerettiläisiä ja levittämään keisarinnan ilosanomaa™ galaksiin!\r\n\r\nKeisarinnan puolesta!\r\n\r\nTässä pelissä hahmot usein eivät usein selviä ensimmäisestä 15:sta vuorostaan! Tule antamaan hahmosi henki keisarinnan vuoksi! Peliin on tehty mahtavat maastot ja miniatyyrit.\r\n\r\nPeli pyörii drop-in tyylisenä noin 12h. Peli on kohtuu kevyillä kotikutoisilla säännöillä varustettua. Peliin on valmishahmoja mutta on mahdollista myös tehdä oma hahmo (johon menee noin 15-20 min aikaa) jos tykkää hahmongeneroinnista (huom. Itse tehdyt hahmot myös kuolevat yhtä helposti)!\r\n\r\nSamma På Engelska \r\n\r\nThis is revolvin door type game of life of an imperial guardsmen who are in the middle of epic battle. Player characters typically don't live to see many turns being random cannon fodder. There is fairly great miniatures and terrain involved. Ideally going through the game takes less than one hour. Game is quite gory and involves war theme happenings for those who are disturbed by these things.",
@@ -2358,10 +2437,11 @@
     "revolvingDoor": true,
     "shortDescription": "Kaartilaisen lyhyt ja tuskainen elämä taistelussa.",
     "startTime": "2022-07-30T07:00:00Z",
-    "styles": ["light", "rulesLight", "storyDriven", "combatDriven"],
+    "styles": ["light", "rulesLight", "storyDriven", "combatHeavy"],
     "tags": ["forAdults", "beginnerFriendly"],
     "title": "Taistelu Acheron 5:stä - Pelastakaa Pastori Plebant",
-    "updatedAt": "2022-08-02T13:00:04.592Z"
+    "updatedAt": "2022-08-02T13:00:04.592Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5754",
@@ -2385,14 +2465,15 @@
     "revolvingDoor": true,
     "shortDescription": "Roolipelikampanja Vietnamin sodasta",
     "startTime": "2022-07-30T07:00:00Z",
-    "styles": ["serious", "light", "rulesHeavy", "combatDriven"],
-    "tags": ["forAdults", "beginnerFriendly", "themeFriendship"],
+    "styles": ["serious", "light", "rulesHeavy", "combatHeavy"],
+    "tags": ["forAdults", "beginnerFriendly", "theme"],
     "title": "Charlie ei surffaa",
-    "updatedAt": "2022-08-02T13:00:04.592Z"
+    "updatedAt": "2022-08-02T13:00:04.592Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5012",
-    "accessibilityValues": ["lowLighting", "text"],
+    "accessibilityValues": ["darkLighting", "text"],
     "contentWarnings": "Hahmot tai niiden taustat saattavat sisältää tai käsitellä mm. kuolemaa ja sen pelkoa, sairautta, (mielen)terveyttä, väkivaltaa, menetyksiä, seksuaalisuutta, valtaa ja sen (väärin)käyttöä sekä päihteitä ja päihdekäyttöä.",
     "createdAt": "2022-07-17T19:54:20.199Z",
     "description": "Jatkoa aiemmin pelautetuille Bolwardin kohtalolle ja Bolwardin nousulle! \r\n\r\nOn kulunut 10 kuukautta siitä, kun suuriruhtinas kutsui kaupungin merkkihenkilöitä juhlimaan avioliittoaan ja Bolwardin nousua suuriruhtinatar Alicia Stanburryn kanssa. Salaperäisen illan aikana profeetta Hopper suoritti puhdistavan rituaalin, jonka jälkeen kaikilla siihen osallistuneilla on tuntunut olevan onnea ja valoa elämässään. Suuriruhtinas ja ruhtinatar alkoivat odottaa lasta ja lapsi syntyi vain muutama viikko sitten. Kukaan ei vielä tiedä sen sukupuolta, joten oletettavaa on että pariskunta paljastaa sen juhlissa.\r\n\r\nTällä kertaa pariskunta on kutsunut ihmisiä juhlimaan lapsensa syntymää ja nimeä. Paikalle saapuu henkilöitä, joiden kanssa ruhtinaspari toivoo voivansa rakentaa uuden, paremman Bolwardin. Huhuja on myös, että profeetta Hopper suorittaisi rituaalin lapsen kunniaksi.\r\n\r\nTule mukaan juhlistamaan uutta elämää ja ystävyyttä viktoriaanisen Englannin kaltaisessa Bolwardin kaupunkivaltiossa steampunkin henkeen. Hahmot voivat sisältää rankkoja teemoja.\r\n\r\nHahmot tai niiden taustat saattavat sisältää tai käsitellä mm. kuolemaa ja sen pelkoa, sairautta, (mielen)terveyttä, väkivaltaa, menetyksiä, seksuaalisuutta, valtaa ja sen (väärin)käyttöä sekä päihteitä ja päihdekäyttöä.\r\n\r\nPeliin ilmottaudutaan perjantaina klo 18.00 alkaen ROPELARP-TISKILLÄ. \r\nPeliin kuuluu ennakkomateriaalia. \r\nPeliin lähdetään juoksijan viemänä RopeLarp-tiskiltä lauantaina klo 9.55, olethan ajoissa paikalla.",
@@ -2415,7 +2496,8 @@
     "styles": [],
     "tags": ["forAdults"],
     "title": "Bolwardin uusi aika",
-    "updatedAt": "2022-08-02T13:00:04.592Z"
+    "updatedAt": "2022-08-02T13:00:04.592Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5158",
@@ -2440,9 +2522,10 @@
     "shortDescription": "",
     "startTime": "2022-07-30T07:00:00Z",
     "styles": [],
-    "tags": ["inEnglish", "forAdults", "beginnerFriendly", "themeFriendship"],
+    "tags": ["inEnglish", "forAdults", "beginnerFriendly", "theme"],
     "title": "RASOS Call Center",
-    "updatedAt": "2022-08-02T13:00:04.592Z"
+    "updatedAt": "2022-08-02T13:00:04.592Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4878",
@@ -2467,9 +2550,10 @@
     "shortDescription": "",
     "startTime": "2022-07-30T07:00:00Z",
     "styles": [],
-    "tags": ["forAdults", "themeFriendship"],
+    "tags": ["forAdults", "theme"],
     "title": "PJ-kokous",
-    "updatedAt": "2022-08-02T13:00:04.592Z"
+    "updatedAt": "2022-08-02T13:00:04.592Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5749",
@@ -2494,9 +2578,10 @@
     "shortDescription": "DnD-mysteeri keijukaisten maailmassa varastettujen muistojen palauttamiseksi. | A D&D mystery in faerie world to return stolen memories.",
     "startTime": "2022-07-30T07:00:00Z",
     "styles": ["serious", "storyDriven", "characterDriven"],
-    "tags": ["inEnglish", "forAdults", "beginnerFriendly", "themeFriendship"],
+    "tags": ["inEnglish", "forAdults", "beginnerFriendly", "theme"],
     "title": "Yksinäisyyden varjo | The Shadow of Loneliness",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5477",
@@ -2523,7 +2608,8 @@
     "styles": ["storyDriven"],
     "tags": ["forAdults", "beginnerFriendly"],
     "title": "Pimeys Shedsby Coven yllä",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5727",
@@ -2550,7 +2636,8 @@
     "styles": ["light", "rulesLight", "storyDriven", "characterDriven"],
     "tags": ["inEnglish", "beginnerFriendly"],
     "title": "Jumalat | The Gods",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5047",
@@ -2577,7 +2664,8 @@
     "styles": ["serious", "rulesLight", "characterDriven"],
     "tags": ["forAdults", "ageRestricted", "beginnerFriendly"],
     "title": "Turning Point - Dream Job tai Baby Blues",
-    "updatedAt": "2022-08-02T13:00:04.59Z"
+    "updatedAt": "2022-08-02T13:00:04.59Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5550",
@@ -2604,7 +2692,8 @@
     "styles": [],
     "tags": ["inEnglish", "tournament"],
     "title": "Poromagian Limited-Turnaus 3 | Poromagia's MTG Limited Tournament 3",
-    "updatedAt": "2022-08-02T13:00:04.592Z"
+    "updatedAt": "2022-08-02T13:00:04.592Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5629",
@@ -2631,7 +2720,8 @@
     "styles": ["serious", "storyDriven", "characterDriven"],
     "tags": ["forAdults", "beginnerFriendly"],
     "title": "Tunkiot ja lohikäärmeet",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5608",
@@ -2658,7 +2748,8 @@
     "styles": ["characterDriven"],
     "tags": ["forAdults", "beginnerFriendly"],
     "title": "Cyberpunk Red",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4847",
@@ -2685,7 +2776,8 @@
     "styles": ["serious"],
     "tags": ["forAdults", "beginnerFriendly"],
     "title": "PRAEDOR - Vihreä Veri",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5288",
@@ -2710,9 +2802,10 @@
     "shortDescription": "Mystery and adventure in an early age of sail fantasy",
     "startTime": "2022-07-30T08:00:00Z",
     "styles": ["light", "storyDriven"],
-    "tags": ["inEnglish", "forAdults", "beginnerFriendly", "themeFriendship"],
+    "tags": ["inEnglish", "forAdults", "beginnerFriendly", "theme"],
     "title": "The Mermaid's Tears",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5415",
@@ -2739,7 +2832,8 @@
     "styles": ["rulesLight", "storyDriven"],
     "tags": ["beginnerFriendly"],
     "title": "Unknown Beast",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5551",
@@ -2766,7 +2860,8 @@
     "styles": ["light", "rulesLight"],
     "tags": ["inEnglish", "beginnerFriendly"],
     "title": "Tulevaisuuden Nopeudella - At The Speed Of Future",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5207",
@@ -2793,7 +2888,8 @@
     "styles": [],
     "tags": ["inEnglish", "beginnerFriendly", "tournament"],
     "title": "Munchkin Finnish Championship",
-    "updatedAt": "2022-08-02T13:00:04.592Z"
+    "updatedAt": "2022-08-02T13:00:04.592Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5588",
@@ -2817,10 +2913,11 @@
     "revolvingDoor": false,
     "shortDescription": "Selvitymisseikkailu tuntemattomalla saarella fantasiamaailmassa",
     "startTime": "2022-07-30T09:00:00Z",
-    "styles": ["light", "characterDriven", "combatDriven"],
-    "tags": ["forMinors", "forAdults", "beginnerFriendly", "themeFriendship"],
+    "styles": ["light", "characterDriven", "combatHeavy"],
+    "tags": ["forMinors", "forAdults", "beginnerFriendly", "theme"],
     "title": "Kallosaaren Haaksirikkoiset (pelautus #2)",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5391",
@@ -2847,7 +2944,8 @@
     "styles": [],
     "tags": ["inEnglish", "forAdults", "beginnerFriendly"],
     "title": "The Ancient Artefact",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5429",
@@ -2874,7 +2972,8 @@
     "styles": ["light", "rulesLight", "storyDriven"],
     "tags": ["beginnerFriendly"],
     "title": "Hobittien huviretki",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5192",
@@ -2901,7 +3000,8 @@
     "styles": ["rulesLight", "storyDriven"],
     "tags": ["forAdults", "ageRestricted", "beginnerFriendly"],
     "title": "Sitä miltä näyttää",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5231",
@@ -2928,7 +3028,8 @@
     "styles": ["serious", "light", "rulesLight"],
     "tags": ["forAdults", "ageRestricted", "beginnerFriendly"],
     "title": "The Ghosts of Zoazanna Mountain",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5344",
@@ -2952,10 +3053,11 @@
     "revolvingDoor": false,
     "shortDescription": "A Pathfinder Society multi-table special",
     "startTime": "2022-07-30T09:00:00Z",
-    "styles": ["rulesHeavy", "combatDriven"],
-    "tags": ["inEnglish", "beginnerFriendly", "themeFriendship"],
+    "styles": ["rulesHeavy", "combatHeavy"],
+    "tags": ["inEnglish", "beginnerFriendly", "theme"],
     "title": "Pathfinder Society #3-99 Fate in the Future",
-    "updatedAt": "2022-08-02T13:00:04.592Z"
+    "updatedAt": "2022-08-02T13:00:04.592Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5624",
@@ -2980,9 +3082,10 @@
     "shortDescription": "Koboldit yrittävät karkuun taistelun tieltä.",
     "startTime": "2022-07-30T10:00:00Z",
     "styles": ["light", "rulesLight"],
-    "tags": ["forMinors", "forAdults", "beginnerFriendly", "themeFriendship"],
+    "tags": ["forMinors", "forAdults", "beginnerFriendly", "theme"],
     "title": "Koboldz",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5552",
@@ -3009,11 +3112,12 @@
     "styles": [],
     "tags": ["inEnglish", "tournament"],
     "title": "Poromagian Limited-Turnaus 4 | Poromagia's MTG Limited Tournament 4",
-    "updatedAt": "2022-08-02T13:00:04.593Z"
+    "updatedAt": "2022-08-02T13:00:04.593Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5652",
-    "accessibilityValues": ["movingAround"],
+    "accessibilityValues": ["lotsOfMovement"],
     "contentWarnings": "Sota, hyökkäys.",
     "createdAt": "2022-07-17T19:54:20.2Z",
     "description": "Pitkä paikallaan istuminen ei ole hyvästä, mutta et malta olla pelaamasta? Nyt pääset kokeilemaan Move Actionia, kevyillä säännöillä varustettua ulkoiluroolipeliä! Liikumme jalan Messukeskuksen ulkopuolella, joten säänmukainen varustautuminen on tarpeen!\r\n\r\nLaiva on ankkuroitumassa, ja sankarimme ovat juuri kuulleet, että Punaiset munkit ovat leiriytyneet sankarien kotimaan rajoille levittäen propagandaansa. Punaiset munkit haluavat taivuttaa valtakunnan toisensa jälkeen julmien lakiensa alle. Sankarimme ovat vannoneet puolustavansa kotimaatansa, uljasta Phonakin valtakuntaa. Nyt teidän on tullut aika lunastaa Valanne. Mitä teette?",
@@ -3036,7 +3140,8 @@
     "styles": ["light", "rulesLight"],
     "tags": ["forAdults", "beginnerFriendly"],
     "title": "Phonakin puolesta",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5574",
@@ -3063,7 +3168,8 @@
     "styles": ["light", "rulesLight", "storyDriven"],
     "tags": ["forMinors", "forAdults", "beginnerFriendly"],
     "title": "seikkailu f",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5486",
@@ -3088,9 +3194,10 @@
     "shortDescription": "Huijaritarina teollisfantasisessa kaupungissa",
     "startTime": "2022-07-30T10:00:00Z",
     "styles": ["light", "rulesLight", "storyDriven", "characterDriven"],
-    "tags": ["forMinors", "forAdults", "beginnerFriendly", "themeFriendship"],
+    "tags": ["forMinors", "forAdults", "beginnerFriendly", "theme"],
     "title": "Nuoren Strangfordin vedätys",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5723",
@@ -3117,7 +3224,8 @@
     "styles": ["serious", "rulesLight", "characterDriven"],
     "tags": ["inEnglish", "forAdults", "beginnerFriendly"],
     "title": "Haaksirikko Piikkivuorille | Shipwrecked on Thorn mountains",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5598",
@@ -3142,9 +3250,10 @@
     "shortDescription": "Mysteerien selvittelyä Stranger Thingsin hengessä / Solving mysteries in the vein of Stranger Things",
     "startTime": "2022-07-30T10:00:00Z",
     "styles": ["light", "rulesLight", "characterDriven"],
-    "tags": ["inEnglish", "beginnerFriendly", "themeFriendship"],
+    "tags": ["inEnglish", "beginnerFriendly", "theme"],
     "title": "Lennokas kesäloma / Summer on a wing",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5530",
@@ -3169,9 +3278,10 @@
     "shortDescription": "\"Humoristinen D&D-luolastoseikkailu\" | \"Humorous D&D dungeon crawl\"",
     "startTime": "2022-07-30T11:00:00Z",
     "styles": ["light", "rulesLight", "characterDriven"],
-    "tags": ["inEnglish", "beginnerFriendly", "themeFriendship"],
+    "tags": ["inEnglish", "beginnerFriendly", "theme"],
     "title": "\"Ystävyyden Makeus\" | \"The Sweetness of Friendship\"",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5627",
@@ -3198,7 +3308,8 @@
     "styles": ["serious"],
     "tags": ["forAdults"],
     "title": "Kontakti Omega Drakoniksella",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5181",
@@ -3227,11 +3338,12 @@
       "rulesLight",
       "storyDriven",
       "characterDriven",
-      "combatDriven"
+      "combatHeavy"
     ],
     "tags": ["forAdults", "beginnerFriendly"],
     "title": "Pro Junta",
-    "updatedAt": "2022-08-02T13:00:04.593Z"
+    "updatedAt": "2022-08-02T13:00:04.593Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5451",
@@ -3256,9 +3368,10 @@
     "shortDescription": "Mysteeri tapahtuma 80- luvun Ruotsissa",
     "startTime": "2022-07-30T11:00:00Z",
     "styles": ["light", "rulesLight", "characterDriven"],
-    "tags": ["forMinors", "themeFriendship"],
+    "tags": ["forMinors", "theme"],
     "title": "Tales from the Loop",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5531",
@@ -3285,7 +3398,8 @@
     "styles": ["serious", "rulesLight", "characterDriven"],
     "tags": ["forAdults", "beginnerFriendly"],
     "title": "R3-Team (Research, Repair & Rescue)",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5546",
@@ -3310,9 +3424,10 @@
     "shortDescription": "Kyberpunk-trilleri film noirin hengessä 3-5 aikuiselle, kaikki hahmot kadonneen tyypin eksiä tai nyksiä.",
     "startTime": "2022-07-30T11:00:00Z",
     "styles": ["serious", "rulesLight", "storyDriven", "characterDriven"],
-    "tags": ["ageRestricted", "beginnerFriendly", "themeFriendship"],
+    "tags": ["ageRestricted", "beginnerFriendly", "theme"],
     "title": "Missä olet, tohtori Valentine?",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5114",
@@ -3339,7 +3454,8 @@
     "styles": ["storyDriven", "characterDriven"],
     "tags": ["forAdults", "beginnerFriendly"],
     "title": "Kesä 1158, Tulikaste",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5561",
@@ -3364,18 +3480,18 @@
     "shortDescription": "",
     "startTime": "2022-07-30T11:30:00Z",
     "styles": [],
-    "tags": [
-      "suitableUnder10",
-      "forMinors",
-      "beginnerFriendly",
-      "themeFriendship"
-    ],
+    "tags": ["suitableUnder10", "forMinors", "beginnerFriendly", "theme"],
     "title": "Velhokoulu",
-    "updatedAt": "2022-08-02T13:00:04.593Z"
+    "updatedAt": "2022-08-02T13:00:04.593Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5354",
-    "accessibilityValues": ["flashingLights", "physicalContact", "lowLighting"],
+    "accessibilityValues": [
+      "flashingLights",
+      "physicalContact",
+      "darkLighting"
+    ],
     "contentWarnings": "Explicit sexual content.",
     "createdAt": "2022-07-17T19:54:20.2Z",
     "description": "Omni Club is an erotic larp set in a 70ties disco club. We will portray a real club with the same name, the club the two writers of the book \"Ethical Slut\" frequented in their hippie years. \r\n\r\nOmni Club is a place for both gays, dykes, hetero-hippies, and trannies - but most of the regulars have a genderfuck dresscode so it is impossible to know what gender you hit on. All activities at Omni are not entierly legal, so the change of a Police razzia is haunting The Summer of Love.\r\n\r\nThe larp Omni Club offers dancing to 70-ties music, but you can hang around watching and flirting as well. You will have plenty of opportunities for touching and intimacy, but we are larping so no real sex nor nudity. All of us will engage in scenes with x-rated content, even orgies, so you better be up for that (age limit 18+). We will play in English.\r\n\r\nYou will play in one of these social groups: Hippie festival goers, political activists (often dressed in black leather), flamboyant drag-queen or kings (just for tonight or forever), loud but poor artists or someone from the straight-acting business-crowd. Feel free to come all dressed up for your preferred group, but no requirement.\r\n\r\nThe larp Omni Club is a pilot in many ways; firstly because it is the first run of the larp, and it might have unfinished edges, secondly because it will be a pilot for my PhD-research method of facilitated role-play. The name of my PhD is \"Role-play and Sexual Arousal\" and I am affiliated with Centre of Excellency of Game Culture Studies at Tampere University. So I will test out workshop methods, being a researcher at an erotic larp and even ask if someone want to do a test-interview with me afterwards, but that is totally voluntairily.  I hope at least some of you will stay to discuss erotic larp with me afterwards.\r\n\r\nAge-restricted larp: you need to bee over 18, age is checked before larp, take some kind if ID with you!\r\nSign up time starts at Friday 18.00 in KONSTI-SOVELLUS. On Saturday we will gather at RopeLarp-desk 13.55 and after ID check off we go to game-rooms with our guide (juoksija).",
@@ -3398,7 +3514,8 @@
     "styles": [],
     "tags": ["inEnglish", "ageRestricted"],
     "title": "Omni Club",
-    "updatedAt": "2022-08-02T13:00:04.593Z"
+    "updatedAt": "2022-08-02T13:00:04.593Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5553",
@@ -3425,7 +3542,8 @@
     "styles": [],
     "tags": ["inEnglish", "tournament"],
     "title": "Poromagian Limited-Turnaus 5 | Poromagia's MTG Limited Tournament 5",
-    "updatedAt": "2022-08-02T13:00:04.593Z"
+    "updatedAt": "2022-08-02T13:00:04.593Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5045",
@@ -3449,10 +3567,11 @@
     "revolvingDoor": false,
     "shortDescription": "Luolaseikkailua uusilla RuneQuest-säännöillä",
     "startTime": "2022-07-30T12:00:00Z",
-    "styles": ["rulesHeavy", "characterDriven", "combatDriven"],
+    "styles": ["rulesHeavy", "characterDriven", "combatHeavy"],
     "tags": ["forAdults"],
     "title": "Sateenkaarikummut (Rainbow Mounds)",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5634",
@@ -3479,7 +3598,8 @@
     "styles": ["rulesLight"],
     "tags": ["forAdults", "beginnerFriendly"],
     "title": "Them Deeper Bones: Vanha Karhun talo",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5607",
@@ -3509,10 +3629,11 @@
       "suitableUnder10",
       "forMinors",
       "beginnerFriendly",
-      "themeFriendship"
+      "theme"
     ],
     "title": "Dinosaurusprinsessat: Mehukkaita metkuja / Dinosaur Princesses: Going Pear-Shaped!",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5631",
@@ -3536,10 +3657,11 @@
     "revolvingDoor": false,
     "shortDescription": "Be a gblin, defend the tribe!",
     "startTime": "2022-07-30T12:00:00Z",
-    "styles": ["light", "combatDriven"],
+    "styles": ["light", "combatHeavy"],
     "tags": ["inEnglish", "beginnerFriendly"],
     "title": "Reverse dungeon: Defend the cave 2/3",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4957",
@@ -3564,9 +3686,10 @@
     "shortDescription": "Hong Kongin katujen kaverukset haukkaavat ison palan",
     "startTime": "2022-07-30T12:00:00Z",
     "styles": ["serious", "characterDriven"],
-    "tags": ["themeFriendship"],
+    "tags": ["theme"],
     "title": "Ystävykset",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5643",
@@ -3593,7 +3716,8 @@
     "styles": [],
     "tags": ["forAdults"],
     "title": "Elämän Jatkoajalla",
-    "updatedAt": "2022-08-02T13:00:04.594Z"
+    "updatedAt": "2022-08-02T13:00:04.594Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5267",
@@ -3620,7 +3744,8 @@
     "styles": ["rulesLight", "storyDriven"],
     "tags": ["forMinors", "beginnerFriendly"],
     "title": "Seikkailijoiden salaliitto",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5541",
@@ -3647,7 +3772,8 @@
     "styles": ["rulesLight", "storyDriven", "characterDriven"],
     "tags": ["inEnglish", "forAdults", "beginnerFriendly"],
     "title": "The Affair at Cottingley Manor",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5566",
@@ -3674,7 +3800,8 @@
     "styles": ["light", "rulesLight"],
     "tags": ["beginnerFriendly"],
     "title": "Arkkivelhon saatto",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5724",
@@ -3698,14 +3825,15 @@
     "revolvingDoor": false,
     "shortDescription": "D&D-seikkailu steampunk-teemalla / Steampunk-themed D&D adventure",
     "startTime": "2022-07-30T13:00:00Z",
-    "styles": ["rulesLight", "storyDriven", "combatDriven"],
+    "styles": ["rulesLight", "storyDriven", "combatHeavy"],
     "tags": ["inEnglish", "forAdults", "beginnerFriendly"],
     "title": "Steampunk RPG",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5600",
-    "accessibilityValues": ["lowLighting"],
+    "accessibilityValues": ["darkLighting"],
     "contentWarnings": "Pimeys, väkivalta, veri,  kuolema, hukkuminen, eristyneisyys",
     "createdAt": "2022-07-17T19:54:20.201Z",
     "description": "Vuosi on 1958. Olet liittynyt Rahtilaiva s/s Warjon miehistöön. Nyt laiva ajelehtii pimeänä keskellä merta, ja jokin tuntematon liikkuu hämärässä. Vain halu selivytyä pitää sinut liikkeessä. \r\nTen Candles on säännöiltään kevyt roolipeli, joka perustuu pitkälti pelinvetäjän ja pelaajien yhteiseen tarinankerrontaan. Peli pelataan pimeässä kynttilöiden valossa. Pelissä käsitellään väkivaltaa, kuolemaa, pimeyttä ja muita kauhuun liittyviä teemoja.\r\n\r\nPelikielenä suomi tai tarvittaessa englanti. \r\n\r\n---\r\n\r\nIt's 1958 and you have enlisted on the crew of the cargo ship s/s Warjo. The vessel is now drifting on the waves with it's power off.  Only the will  to survive keeps you moving. \r\n\r\nTen candles is a rules-light tabletop rpg, that relies on shared storytelling between participants. The game is played in the dark with only candles lighting the table. The game will involve themes related to the horror genre such as death, violence and darkness.\r\n\r\nIf needed the game can be played in English.",
@@ -3728,7 +3856,8 @@
     "styles": ["serious", "rulesLight", "storyDriven"],
     "tags": ["inEnglish", "forAdults", "beginnerFriendly"],
     "title": "Ten Candles - Warjo Itämeren aalloilla/ Shadows over the Baltic sea",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5554",
@@ -3755,7 +3884,8 @@
     "styles": [],
     "tags": ["inEnglish", "tournament"],
     "title": "Poromagian Limited-Turnaus 6 | Poromagia's MTG Limited Tournament 6",
-    "updatedAt": "2022-08-02T13:00:04.598Z"
+    "updatedAt": "2022-08-02T13:00:04.598Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5180",
@@ -3782,7 +3912,8 @@
     "styles": [],
     "tags": ["forMinors", "forAdults", "tournament"],
     "title": "Warmachine/Hordes-turnaus",
-    "updatedAt": "2022-08-02T13:00:04.592Z"
+    "updatedAt": "2022-08-02T13:00:04.592Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5470",
@@ -3809,11 +3940,12 @@
     "styles": ["light", "rulesLight"],
     "tags": ["beginnerFriendly"],
     "title": "Kloonialus | The Clone Ship la klo 10",
-    "updatedAt": "2022-08-02T13:00:04.592Z"
+    "updatedAt": "2022-08-02T13:00:04.592Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5063",
-    "accessibilityValues": ["text", "colourblind"],
+    "accessibilityValues": ["text", "colorBlindness"],
     "contentWarnings": "Uskonto, sota, ilmastonmuutos, merenelävät, taudit, kuolema",
     "createdAt": "2022-07-17T19:54:20.201Z",
     "description": "Meren syvyyksissä ja rantakallioiden luolissa vetehiset heräilevät horroksestaan, unelmoiden herättävänsä kuningaskuntansa kuolleista. Mantereelta ihmisten keisari kurottaa ulapalle tavoitteenaan valloittaa koko maailma. Verenpunaiset revontulet hohkaavat taivaalla ja uskonmiehet saarnaavat maailmanloppua - kenen joukoissa seisot, jos merijäät sulavat ja saariston asukkaat hukkuvat aaltojen alle?",
@@ -3836,7 +3968,8 @@
     "styles": ["rulesLight"],
     "tags": ["beginnerFriendly"],
     "title": "Vetehisten Virsi",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5508",
@@ -3863,7 +3996,8 @@
     "styles": ["light", "rulesLight", "storyDriven"],
     "tags": ["inEnglish", "beginnerFriendly"],
     "title": "Tummalammen Tyranni - The Despot of the Dark Pond",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5465",
@@ -3890,7 +4024,8 @@
     "styles": [],
     "tags": ["inEnglish", "tournament"],
     "title": "Digimon Card Game Constructed Tournament 2 (la)",
-    "updatedAt": "2022-08-02T13:00:04.598Z"
+    "updatedAt": "2022-08-02T13:00:04.598Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5398",
@@ -3923,11 +4058,12 @@
     ],
     "tags": ["ageRestricted", "beginnerFriendly"],
     "title": "Matti - Master Sorcerer",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5667",
-    "accessibilityValues": ["colourblind"],
+    "accessibilityValues": ["colorBlindness"],
     "contentWarnings": "Violence, use and effects of drugs and alcohol, sexual themes (nothing explicit)",
     "createdAt": "2022-07-17T19:54:20.202Z",
     "description": "Time to chip in choomba, because we’re in Night City, the year is 2021 and the night is beautiful out here. Bar Crawl in Night City is a Cyberpunk RED adventure for 3-5 chromeheads ready to take on a more roleplay-focused trip around the many bars of Night City. This could technically be called a detective-style adventure, where the players are tasked with finding the unpredictable, trigger-happy, and not to mention very drunk rockerboy, Johnny Silverhand, who has apparently disappeared right before a gig with his band.\r\n\r\nThe game can be played in English or Finnish.",
@@ -3948,9 +4084,10 @@
     "shortDescription": "Manhunt around the many bars of Night City.",
     "startTime": "2022-07-30T15:00:00Z",
     "styles": ["light", "storyDriven"],
-    "tags": ["inEnglish", "forAdults", "beginnerFriendly", "themeFriendship"],
+    "tags": ["inEnglish", "forAdults", "beginnerFriendly", "theme"],
     "title": "Bar Crawl in Night City",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5473",
@@ -3977,7 +4114,8 @@
     "styles": ["light", "storyDriven", "characterDriven"],
     "tags": ["inEnglish", "forAdults", "ageRestricted", "beginnerFriendly"],
     "title": "Ash & Steel",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5599",
@@ -4004,7 +4142,8 @@
     "styles": ["serious", "light", "rulesLight", "characterDriven"],
     "tags": ["inEnglish", "ageRestricted", "beginnerFriendly"],
     "title": "The Escape from the Vampire's Cursed Sex Toy Mansion",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5615",
@@ -4037,11 +4176,12 @@
     ],
     "tags": ["forAdults", "beginnerFriendly"],
     "title": "Kymmenen tuntia",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5752",
-    "accessibilityValues": ["lowLighting"],
+    "accessibilityValues": ["darkLighting"],
     "contentWarnings": "",
     "createdAt": "2022-07-17T19:54:20.202Z",
     "description": "Vuodet vierivät. On vain pimeys. On vain hiljaisuus. Suojelet järkkymättömänä sarkofagia vailla ajatusta, vailla hengenvetoa. Nimesi on haihtunut muististasi. Liha on luiltasi pudonnut. Vartioit vain.\r\n\r\nSitten hetkessä on valoa ja liikettä. Nostat aseesi haudanryöstäjää vastaan. Et ole elossa enää, mutta tämän väkivallan ja kaaoksen hetken ajan sinä todella elät. Muistat välähdyksiä siitä, kuka joskus olit, ja voit jälleen maistaa auringon. Mutta hetki kuluu ja jälleen saapuu hiljaisuus. Ja vuodet vierivät.\r\n\r\nSkeletons on meditatiivinen free-form -roolipeli. Vuosien vieriessä pelissä istutaan välillä ihan hiljaa.",
@@ -4064,7 +4204,8 @@
     "styles": ["serious", "rulesLight", "storyDriven"],
     "tags": ["beginnerFriendly"],
     "title": "The Skeletons - Hiljaisuuden ikuiset vartijat",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5604",
@@ -4091,7 +4232,8 @@
     "styles": ["light", "rulesHeavy"],
     "tags": ["inEnglish"],
     "title": "Judge Dredd - Parkkisakko / Parking ticket",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5346",
@@ -4115,10 +4257,11 @@
     "revolvingDoor": false,
     "shortDescription": "Soluttautuminen valloittajan tukikohtaan Starfinder-seikkailussa",
     "startTime": "2022-07-30T16:00:00Z",
-    "styles": ["rulesHeavy", "combatDriven"],
+    "styles": ["rulesHeavy", "combatHeavy"],
     "tags": ["beginnerFriendly"],
     "title": "Starfinder One-Shot #3: System Takedown",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5417",
@@ -4145,7 +4288,8 @@
     "styles": ["rulesLight", "storyDriven"],
     "tags": ["beginnerFriendly"],
     "title": "Unknown Beast",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5610",
@@ -4172,7 +4316,8 @@
     "styles": ["light", "rulesLight", "characterDriven"],
     "tags": ["inEnglish", "forAdults", "beginnerFriendly"],
     "title": "Adventures in Phandalin 2/2 (D&D5e)",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5556",
@@ -4199,7 +4344,8 @@
     "styles": [],
     "tags": ["inEnglish", "tournament"],
     "title": "Poromagian Limited-Turnaus 7 | Poromagia's MTG Limited Tournament 7",
-    "updatedAt": "2022-08-02T13:00:04.598Z"
+    "updatedAt": "2022-08-02T13:00:04.598Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5533",
@@ -4226,7 +4372,8 @@
     "styles": ["rulesLight", "characterDriven"],
     "tags": ["beginnerFriendly"],
     "title": "Erebuksen viisi holvia",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5760",
@@ -4253,7 +4400,8 @@
     "styles": ["light", "rulesLight"],
     "tags": ["inEnglish", "beginnerFriendly"],
     "title": "Kloonialus | The Clone Ship la klo 18.00",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5085",
@@ -4280,7 +4428,8 @@
     "styles": ["light", "characterDriven"],
     "tags": ["beginnerFriendly"],
     "title": "D&D 5E: Saxhamin salaisuus",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5348",
@@ -4304,10 +4453,11 @@
     "revolvingDoor": false,
     "shortDescription": "A Starfinder Society scenario",
     "startTime": "2022-07-30T16:00:00Z",
-    "styles": ["rulesHeavy", "combatDriven"],
+    "styles": ["rulesHeavy", "combatHeavy"],
     "tags": ["inEnglish"],
     "title": "Starfinder Society #5-04: Fragment of the 4th",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5345",
@@ -4331,10 +4481,11 @@
     "revolvingDoor": false,
     "shortDescription": "A Pathfinder adventure",
     "startTime": "2022-07-30T16:00:00Z",
-    "styles": ["rulesHeavy", "combatDriven"],
+    "styles": ["rulesHeavy", "combatHeavy"],
     "tags": ["beginnerFriendly"],
     "title": "Pathfinder Beginner Box",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5347",
@@ -4358,10 +4509,11 @@
     "revolvingDoor": false,
     "shortDescription": "Ruudinkäryistä zombienlahtausta spagettiwestern-tyyliin",
     "startTime": "2022-07-30T16:00:00Z",
-    "styles": ["rulesHeavy", "combatDriven"],
+    "styles": ["rulesHeavy", "combatHeavy"],
     "tags": ["beginnerFriendly"],
     "title": "Pathfinder One-Shot #3: Headshot the Rot",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5641",
@@ -4388,7 +4540,8 @@
     "styles": ["rulesLight"],
     "tags": ["forAdults", "beginnerFriendly"],
     "title": "Itämainen arvoitus",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5590",
@@ -4415,7 +4568,8 @@
     "styles": ["rulesLight", "storyDriven", "characterDriven"],
     "tags": ["beginnerFriendly"],
     "title": "Kun rastaat vaikenevat",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5559",
@@ -4440,9 +4594,10 @@
     "shortDescription": "Psykologista jännitystä menetetystä viattomuudesta. Psychological thriller of lost innocence.",
     "startTime": "2022-07-30T17:00:00Z",
     "styles": ["serious", "rulesLight", "storyDriven", "characterDriven"],
-    "tags": ["inEnglish", "forAdults", "beginnerFriendly", "themeFriendship"],
+    "tags": ["inEnglish", "forAdults", "beginnerFriendly", "theme"],
     "title": "Jälleennäkeminen vailla paluuta - Reunion Of No Return",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5476",
@@ -4471,11 +4626,12 @@
       "rulesLight",
       "storyDriven",
       "characterDriven",
-      "combatDriven"
+      "combatHeavy"
     ],
     "tags": ["inEnglish", "forAdults", "beginnerFriendly"],
     "title": "Until the Bitter End",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5460",
@@ -4500,9 +4656,10 @@
     "shortDescription": "Iskee kuin miljoona volttia!",
     "startTime": "2022-07-30T17:00:00Z",
     "styles": ["light", "rulesLight", "characterDriven"],
-    "tags": ["forAdults", "beginnerFriendly", "themeFriendship"],
+    "tags": ["forAdults", "beginnerFriendly", "theme"],
     "title": "Korkeajännitys - Akateemikon tulikaste!",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5193",
@@ -4526,10 +4683,11 @@
     "revolvingDoor": false,
     "shortDescription": "Sotilasoperaatio transhumanistisella twistillä.",
     "startTime": "2022-07-30T17:00:00Z",
-    "styles": ["rulesLight", "storyDriven", "combatDriven"],
+    "styles": ["rulesLight", "storyDriven", "combatHeavy"],
     "tags": ["forAdults", "ageRestricted", "beginnerFriendly"],
     "title": "Soluttautuja",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5568",
@@ -4553,10 +4711,11 @@
     "revolvingDoor": false,
     "shortDescription": "A deal is a deal",
     "startTime": "2022-07-30T17:00:00Z",
-    "styles": ["light", "rulesLight", "storyDriven", "combatDriven"],
+    "styles": ["light", "rulesLight", "storyDriven", "combatHeavy"],
     "tags": ["inEnglish", "forMinors", "forAdults", "ageRestricted"],
     "title": "A Bargain with a Hag",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5623",
@@ -4581,9 +4740,10 @@
     "shortDescription": "Jännitysseikkailu Eclipse Phasen maailmassa.",
     "startTime": "2022-07-30T18:00:00Z",
     "styles": ["serious", "rulesLight", "storyDriven"],
-    "tags": ["forAdults", "beginnerFriendly", "themeFriendship"],
+    "tags": ["forAdults", "beginnerFriendly", "theme"],
     "title": "Rappeutuva kiertorata",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5721",
@@ -4608,9 +4768,10 @@
     "shortDescription": "D&D 5E kaupunkipeli yhdellä hahmoluokalla / D&D 5E citygame with only one character class",
     "startTime": "2022-07-30T18:00:00Z",
     "styles": ["light", "rulesLight", "characterDriven"],
-    "tags": ["inEnglish", "beginnerFriendly", "themeFriendship"],
+    "tags": ["inEnglish", "beginnerFriendly", "theme"],
     "title": "Viisi Koboldia Trenssitakissa/Five Kobolds in a Trench Coat",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5621",
@@ -4635,9 +4796,10 @@
     "shortDescription": "You are called from your own universe to solve a murder in alternate-Helsinki",
     "startTime": "2022-07-30T18:00:00Z",
     "styles": ["light", "rulesLight", "storyDriven", "characterDriven"],
-    "tags": ["inEnglish", "forAdults", "beginnerFriendly", "themeFriendship"],
+    "tags": ["inEnglish", "forAdults", "beginnerFriendly", "theme"],
     "title": "Murder in an Adjacent Helsinki",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5537",
@@ -4664,11 +4826,12 @@
     "styles": ["serious"],
     "tags": ["inEnglish", "forAdults", "beginnerFriendly"],
     "title": "EYES - Fear is Fractal",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5691",
-    "accessibilityValues": ["lowLighting", "remainingOnePlace"],
+    "accessibilityValues": ["darkLighting", "remainingOnePlace"],
     "contentWarnings": "Peli käsittelee valtasukujen välistä konfliktia / The game is about the conflict between the great houses.",
     "createdAt": "2022-07-17T19:54:20.203Z",
     "description": "Pitoaika la 30.7.2022 22.00 --> kunnes loppu häämöttää\r\nMoninpeli: Käytössä ”Prelude to Dune” lisäosa\r\nPakan saa lainaan, jos ei itse omista. (Pakan minimikoko 45 korttia)\r\n\r\nDune ccg on vanha, mutta edelleen toimiva monen hengen kilpapeli Dyyni kirjojen maisemissa. Ota oma pakka mukaan, tai tule messiin ja saat pakan lainaan. Jos peli on uusi, kannattaa siihen käydä tutustumassa etukäteen. 3-5 hengen pelipöydät.\r\n\r\nDyyni-korttipeli vaatii viekkaan mielen, diplomatiaa ja tarkkaa ajoitusta. Kyseessä on keräilykorttipeli Frank Herbertin Dyyni kirjoihin pohjautuen. Pelaaja edustaa jotain isoista taloista, kuten Atreidesia, Harkonneita, Padishah keisaria, Killan navigaattoreita tai salaperäisiä Bene Gesserit noitia. Sopii kokemuksen mukaan erityisesti Vampiren ja Games of Thronesin pelaajille.\r\n\r\n- In english\r\n- Tournament start sat 30.7.2022 at 22.00 and ends when it ends. Most likely the last from 2 to 4 hours.\r\n- This is multiplayer game with 3-5 players in one table.\r\n- We use \"Prelude to Dune\" expansion\r\n- You can borrow a playing deck for the tournament\r\n\r\nDune ccg is old and very thematic card game that requires good timing and clever play! Player present one of the minor houses that is sponsored by one of the Great houses of the Dune universe: Harkonnen, Atreides, Padishah Emperor, Bene Gesserit sisterhood and so on.\r\nThe game is suitable to a persons who are familiar with other complex card games like Vampire or Games of Thrones.",
@@ -4691,7 +4854,8 @@
     "styles": [],
     "tags": ["inEnglish", "forAdults", "beginnerFriendly", "tournament"],
     "title": "Dune CCG: Arrakis,  Aavikkoplaneetta / Arrakis, The Desert Planet",
-    "updatedAt": "2022-08-02T13:00:04.599Z"
+    "updatedAt": "2022-08-02T13:00:04.599Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5471",
@@ -4718,7 +4882,8 @@
     "styles": ["light", "rulesLight", "storyDriven", "characterDriven"],
     "tags": ["beginnerFriendly"],
     "title": "Jumalat | The Gods",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5397",
@@ -4751,7 +4916,8 @@
     ],
     "tags": ["ageRestricted", "beginnerFriendly"],
     "title": "Matti - Master Sorcerer",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5648",
@@ -4778,7 +4944,8 @@
     "styles": [],
     "tags": ["inEnglish", "tournament"],
     "title": "VTES: European Championship Day 2",
-    "updatedAt": "2022-08-02T13:00:04.599Z"
+    "updatedAt": "2022-08-02T13:00:04.599Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5087",
@@ -4805,7 +4972,8 @@
     "styles": [],
     "tags": ["forMinors", "forAdults", "tournament"],
     "title": "Kings of War -turnaus",
-    "updatedAt": "2022-08-02T13:00:04.599Z"
+    "updatedAt": "2022-08-02T13:00:04.599Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5735",
@@ -4832,7 +5000,8 @@
     "styles": [],
     "tags": ["forAdults", "tournament"],
     "title": "Warhammer 40K turnaus",
-    "updatedAt": "2022-08-02T13:00:04.599Z"
+    "updatedAt": "2022-08-02T13:00:04.599Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5650",
@@ -4859,7 +5028,8 @@
     "styles": [],
     "tags": ["inEnglish", "tournament"],
     "title": "VTES: Best of the Rest",
-    "updatedAt": "2022-08-02T13:00:04.599Z"
+    "updatedAt": "2022-08-02T13:00:04.599Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5661",
@@ -4886,7 +5056,8 @@
     "styles": [],
     "tags": ["inEnglish", "beginnerFriendly", "tournament"],
     "title": "VTES: Sunnuntain aloittelijaturnaus | VTES: Beginner tournament, Sunday",
-    "updatedAt": "2022-08-02T13:00:04.599Z"
+    "updatedAt": "2022-08-02T13:00:04.599Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5557",
@@ -4913,11 +5084,12 @@
     "styles": [],
     "tags": ["inEnglish", "tournament"],
     "title": "Poromagian Limited-Turnaus 8  | Poromagia's MTG Limited Tournament 8",
-    "updatedAt": "2022-08-02T13:00:04.599Z"
+    "updatedAt": "2022-08-02T13:00:04.599Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5571",
-    "accessibilityValues": ["colourblind", "remainingOnePlace"],
+    "accessibilityValues": ["colorBlindness", "remainingOnePlace"],
     "contentWarnings": "Kilpailu",
     "createdAt": "2022-07-17T19:54:20.203Z",
     "description": "Mikäli ennakkoilmoittautuneiden määrä ylittää 16, saatamme harkita osallistujamäärän kasvattamista tilojen ja pelien määrän niin salliessa. \r\n\r\nPelataan Carcassonnen Suomen mestaruudesta kaksinpeleinä, kelloin, peruspelillä sellaisena kuin Lautapelif.fi on sen aikoinaan julkaissut. Pelaajamäärästä riippuva määrä karsintakierroksia, semifinaalit ja finaalit. \r\n\r\nEnnakkoilmoittautuminen kilpailut@lautapeliseura.fi. Lisätietoja tulee lautapeliseuran foorumille: https://lautapeliseura.fi/foorumi/viewtopic.php?f=2&t=20336\r\n\r\nIlmoittautuminen Ropeconin aikana myös Konstissa.",
@@ -4940,7 +5112,8 @@
     "styles": [],
     "tags": ["inEnglish", "tournament"],
     "title": "Carcassonne SM",
-    "updatedAt": "2022-08-02T13:00:04.599Z"
+    "updatedAt": "2022-08-02T13:00:04.599Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5333",
@@ -4964,10 +5137,11 @@
     "revolvingDoor": false,
     "shortDescription": "Huumoripitoista seikkailua hahmojen taitojen huonontuessa koko ajan.",
     "startTime": "2022-07-31T07:00:00Z",
-    "styles": ["light", "rulesLight", "combatDriven"],
+    "styles": ["light", "rulesLight", "combatHeavy"],
     "tags": ["beginnerFriendly"],
     "title": "Nerf Hammer",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5625",
@@ -4994,7 +5168,8 @@
     "styles": ["serious"],
     "tags": ["forAdults"],
     "title": "Chariot of the Gods",
-    "updatedAt": "2022-08-02T13:00:30.33Z"
+    "updatedAt": "2022-08-02T13:00:30.33Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5597",
@@ -5019,9 +5194,10 @@
     "shortDescription": "Mysteerien selvittelyä Stranger Thingsin hengessä / Solving mysteries in the vein of Stranger Things",
     "startTime": "2022-07-31T07:00:00Z",
     "styles": ["light", "rulesLight", "characterDriven"],
-    "tags": ["inEnglish", "beginnerFriendly", "themeFriendship"],
+    "tags": ["inEnglish", "beginnerFriendly", "theme"],
     "title": "Lennokas kesäloma / Summer on a wing",
-    "updatedAt": "2022-08-02T13:00:30.331Z"
+    "updatedAt": "2022-08-02T13:00:30.331Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p4955",
@@ -5048,7 +5224,8 @@
     "styles": ["light", "rulesLight", "storyDriven"],
     "tags": ["beginnerFriendly"],
     "title": "Ahdin runokemut",
-    "updatedAt": "2022-08-02T13:00:30.331Z"
+    "updatedAt": "2022-08-02T13:00:30.331Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5665",
@@ -5075,7 +5252,8 @@
     "styles": ["light", "rulesLight", "characterDriven"],
     "tags": ["forAdults"],
     "title": "3001 Avaruussekoilu",
-    "updatedAt": "2022-08-02T13:00:30.331Z"
+    "updatedAt": "2022-08-02T13:00:30.331Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5619",
@@ -5100,9 +5278,10 @@
     "shortDescription": "Lasten silmistä peliä pseudo 1980 luvun nurinkuris maassa, terroristi-kuninkaan alla.",
     "startTime": "2022-07-31T07:00:00Z",
     "styles": ["light", "rulesLight", "storyDriven", "characterDriven"],
-    "tags": ["beginnerFriendly", "themeFriendship"],
+    "tags": ["beginnerFriendly", "theme"],
     "title": "Tollojen Maassa",
-    "updatedAt": "2022-08-02T13:00:04.6Z"
+    "updatedAt": "2022-08-02T13:00:04.6Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5679",
@@ -5127,9 +5306,10 @@
     "shortDescription": "Wanderhome-peli, jossa kokenut kulkija kaipaa kotia kohti.",
     "startTime": "2022-07-31T07:00:00Z",
     "styles": ["rulesLight", "storyDriven", "characterDriven"],
-    "tags": ["beginnerFriendly", "themeFriendship"],
+    "tags": ["beginnerFriendly", "theme"],
     "title": "Kotia kohti",
-    "updatedAt": "2022-08-02T13:00:30.331Z"
+    "updatedAt": "2022-08-02T13:00:30.331Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5413",
@@ -5156,7 +5336,8 @@
     "styles": ["rulesLight", "storyDriven"],
     "tags": ["beginnerFriendly"],
     "title": "Unknown Beast",
-    "updatedAt": "2022-08-02T13:00:30.331Z"
+    "updatedAt": "2022-08-02T13:00:30.331Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5669",
@@ -5189,7 +5370,8 @@
     ],
     "tags": ["ageRestricted", "beginnerFriendly"],
     "title": "Alamo",
-    "updatedAt": "2022-08-02T13:00:04.6Z"
+    "updatedAt": "2022-08-02T13:00:04.6Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5676",
@@ -5214,9 +5396,10 @@
     "shortDescription": "A game of woodland creatures fighting for money, justice, and/or freedom!",
     "startTime": "2022-07-31T07:00:00Z",
     "styles": ["rulesLight", "characterDriven"],
-    "tags": ["inEnglish", "forAdults", "beginnerFriendly", "themeFriendship"],
+    "tags": ["inEnglish", "forAdults", "beginnerFriendly", "theme"],
     "title": "Root: Trouble in Redvale",
-    "updatedAt": "2022-08-02T13:00:30.331Z"
+    "updatedAt": "2022-08-02T13:00:30.331Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5115",
@@ -5243,7 +5426,8 @@
     "styles": ["storyDriven", "characterDriven"],
     "tags": ["beginnerFriendly"],
     "title": "Syksy 1156, Hyytävä seikkailu rajalla",
-    "updatedAt": "2022-08-02T13:00:30.331Z"
+    "updatedAt": "2022-08-02T13:00:30.331Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5751",
@@ -5270,11 +5454,12 @@
     "styles": ["serious", "rulesLight", "storyDriven"],
     "tags": ["inEnglish", "forAdults", "beginnerFriendly"],
     "title": "Ten Candles - Warjo Itämeren aalloilla/ Shadows over the Baltic sea",
-    "updatedAt": "2022-08-02T13:00:30.331Z"
+    "updatedAt": "2022-08-02T13:00:30.331Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5636",
-    "accessibilityValues": ["lowLighting"],
+    "accessibilityValues": ["darkLighting"],
     "contentWarnings": "Epäkuolema ja väkivalta",
     "createdAt": "2022-07-17T19:54:20.204Z",
     "description": "Vuodet vierivät. On vain pimeys. On vain hiljaisuus. Suojelet järkkymättömänä sarkofagia vailla ajatusta, vailla hengenvetoa. Nimesi on haihtunut muististasi. Liha on luiltasi pudonnut. Vartioit vain.\r\n\r\nSitten hetkessä on valoa ja liikettä. Nostat aseesi haudanryöstäjää vastaan. Et ole elossa enää, mutta tämän väkivallan ja kaaoksen hetken ajan sinä todella elät. Muistat välähdyksiä siitä, kuka joskus olit, ja voit jälleen maistaa auringon. Mutta hetki kuluu ja jälleen saapuu hiljaisuus. Ja vuodet vierivät.\r\n\r\nSkeletons on meditatiivinen free-form -roolipeli. Vuosien vieriessä pelissä istutaan välillä ihan hiljaa.",
@@ -5297,7 +5482,8 @@
     "styles": ["serious", "storyDriven"],
     "tags": ["beginnerFriendly"],
     "title": "The Skeletons - Hiljaisuuden ikuiset vartijat",
-    "updatedAt": "2022-08-02T13:00:30.331Z"
+    "updatedAt": "2022-08-02T13:00:30.331Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5539",
@@ -5321,10 +5507,11 @@
     "revolvingDoor": true,
     "shortDescription": "Roolipelikampanja Vietnamin sodasta",
     "startTime": "2022-07-31T07:00:00Z",
-    "styles": ["serious", "light", "rulesHeavy", "combatDriven"],
-    "tags": ["forAdults", "beginnerFriendly", "themeFriendship"],
+    "styles": ["serious", "light", "rulesHeavy", "combatHeavy"],
+    "tags": ["forAdults", "beginnerFriendly", "theme"],
     "title": "Charlie ei surffaa",
-    "updatedAt": "2022-08-02T13:00:04.6Z"
+    "updatedAt": "2022-08-02T13:00:04.6Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5349",
@@ -5348,10 +5535,11 @@
     "revolvingDoor": false,
     "shortDescription": "A Pathfinder adventure",
     "startTime": "2022-07-31T07:00:00Z",
-    "styles": ["rulesHeavy", "combatDriven"],
+    "styles": ["rulesHeavy", "combatHeavy"],
     "tags": ["inEnglish"],
     "title": "March of the Dead",
-    "updatedAt": "2022-08-02T13:00:30.331Z"
+    "updatedAt": "2022-08-02T13:00:30.331Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5759",
@@ -5378,11 +5566,12 @@
     "styles": ["light", "rulesLight"],
     "tags": ["inEnglish", "beginnerFriendly"],
     "title": "Kloonialus | The Clone Ship su klo 10",
-    "updatedAt": "2022-08-02T13:00:30.331Z"
+    "updatedAt": "2022-08-02T13:00:30.331Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5335",
-    "accessibilityValues": ["colourblind", "remainingOnePlace"],
+    "accessibilityValues": ["colorBlindness", "remainingOnePlace"],
     "contentWarnings": "",
     "createdAt": "2022-07-17T19:54:20.204Z",
     "description": "Kokoa 2-4 hengen joukkue ja ota osaa palapeliturnaukseen! Joukkueilla on maksimissaan 4 tuntia aikaa koota 1000 palan palapeli (kansikuvaa saa käyttää apuna). Se joukkue, joka saa palapelin koottua ensimmäisenä loppuun tai on saanut paikalleen eniten paloja aikarajaan mennessä voittaa!\r\n\r\nMukaan mahtuu 10 joukkuetta, ilmoittautuminen etukäteen tapahtuman aikana Konstin kautta (yksi tiimin jäsen voi ilmoittaa koko joukkueen). Ei ikärajaa. Turnauksessa käytettävät palapelit tarjoaa Lautapelit.fi.\r\n\r\n---\r\n\r\nGather a team of 2 to 4 people and take part in a jigsaw puzzle tournament! Teams have up to 4 hours to solve a jigsaw puzzle with 1000 pieces (using the picture on the box as reference is allowed). The team that finishes the puzzle first or has most pieces in place when the time runs out wins!\r\n\r\nSign your team up beforehand via the Konsti app (one member can sign up the whole team), max of 10 teams. No age limit. Jigsaw puzzles used in the tournament are provided by Lautapelit.fi.",
@@ -5405,7 +5594,8 @@
     "styles": [],
     "tags": ["inEnglish", "beginnerFriendly", "tournament"],
     "title": "Palapeliturnaus (Joukkue) | Jigsaw Puzzle Tournament (Teams)",
-    "updatedAt": "2022-08-02T13:00:04.6Z"
+    "updatedAt": "2022-08-02T13:00:04.6Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5632",
@@ -5429,10 +5619,11 @@
     "revolvingDoor": false,
     "shortDescription": "Be a gblin, take the tribe to safety!",
     "startTime": "2022-07-31T08:00:00Z",
-    "styles": ["light", "combatDriven"],
+    "styles": ["light", "combatHeavy"],
     "tags": ["inEnglish", "beginnerFriendly"],
     "title": "Reverse dungeon 3/3: Flee from destruction",
-    "updatedAt": "2022-08-02T13:00:30.331Z"
+    "updatedAt": "2022-08-02T13:00:30.331Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5461",
@@ -5457,9 +5648,10 @@
     "shortDescription": "Söpöt tytöt tekemässä söpöjä asioita anime-roolipeli osa 22",
     "startTime": "2022-07-31T08:00:00Z",
     "styles": ["light", "rulesLight", "characterDriven"],
-    "tags": ["beginnerFriendly", "themeFriendship"],
+    "tags": ["beginnerFriendly", "theme"],
     "title": "Koi no Ai 22 - Tsundere ei surffaa",
-    "updatedAt": "2022-08-02T13:00:04.6Z"
+    "updatedAt": "2022-08-02T13:00:04.6Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5596",
@@ -5492,7 +5684,8 @@
       "beginnerFriendly"
     ],
     "title": "Metsänväki vs Pelikansa / Fair Folk vs Gaming Folk",
-    "updatedAt": "2022-08-02T13:00:30.331Z"
+    "updatedAt": "2022-08-02T13:00:30.331Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5046",
@@ -5519,15 +5712,16 @@
     "styles": ["rulesLight", "storyDriven", "characterDriven"],
     "tags": ["forAdults", "beginnerFriendly"],
     "title": "Vaarna",
-    "updatedAt": "2022-08-02T13:00:30.331Z"
+    "updatedAt": "2022-08-02T13:00:30.331Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5764",
     "accessibilityValues": [
       "loudSounds",
       "physicalContact",
-      "lowLighting",
-      "recording",
+      "darkLighting",
+      "noTextOfRecording",
       "remainingOnePlace"
     ],
     "contentWarnings": "Kuolema, sota, pakoilu, syyllisyys, aikaraja päätöksenteossa, vaino (uskonto, poliittinen kanta, sekusaalinen suuntutuminen)",
@@ -5552,7 +5746,8 @@
     "styles": [],
     "tags": ["inEnglish", "ageRestricted", "beginnerFriendly"],
     "title": "First They Came / 4",
-    "updatedAt": "2022-08-02T13:00:04.6Z"
+    "updatedAt": "2022-08-02T13:00:04.6Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5170",
@@ -5579,15 +5774,16 @@
     "styles": [],
     "tags": ["forAdults", "beginnerFriendly"],
     "title": "Valtojen valssi",
-    "updatedAt": "2022-08-02T13:00:04.6Z"
+    "updatedAt": "2022-08-02T13:00:04.6Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5765",
     "accessibilityValues": [
       "loudSounds",
       "physicalContact",
-      "lowLighting",
-      "recording",
+      "darkLighting",
+      "noTextOfRecording",
       "remainingOnePlace"
     ],
     "contentWarnings": "Kuolema, sota, pakoilu, syyllisyys, aikaraja päätöksenteossa, vaino (uskonto, poliittinen kanta, sekusaalinen suuntutuminen)",
@@ -5612,7 +5808,8 @@
     "styles": [],
     "tags": ["inEnglish", "forAdults", "ageRestricted", "beginnerFriendly"],
     "title": "First They Came / 5",
-    "updatedAt": "2022-08-02T13:00:04.6Z"
+    "updatedAt": "2022-08-02T13:00:04.6Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5720",
@@ -5637,9 +5834,10 @@
     "shortDescription": "",
     "startTime": "2022-07-31T08:30:00Z",
     "styles": [],
-    "tags": ["forAdults", "themeFriendship"],
+    "tags": ["forAdults", "theme"],
     "title": "PJ-kokous 2",
-    "updatedAt": "2022-08-02T13:00:04.6Z"
+    "updatedAt": "2022-08-02T13:00:04.6Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5106",
@@ -5664,9 +5862,10 @@
     "shortDescription": "",
     "startTime": "2022-07-31T08:30:00Z",
     "styles": [],
-    "tags": ["beginnerFriendly", "themeFriendship"],
+    "tags": ["beginnerFriendly", "theme"],
     "title": "Sign: peli ymmärretyksi tulemisesta",
-    "updatedAt": "2022-08-02T13:00:04.6Z"
+    "updatedAt": "2022-08-02T13:00:04.6Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5534",
@@ -5693,7 +5892,8 @@
     "styles": ["light", "rulesLight", "storyDriven"],
     "tags": ["forMinors", "forAdults", "beginnerFriendly"],
     "title": "seikkailu g",
-    "updatedAt": "2022-08-02T13:00:30.331Z"
+    "updatedAt": "2022-08-02T13:00:30.331Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5725",
@@ -5720,7 +5920,8 @@
     "styles": [],
     "tags": ["forMinors", "forAdults", "tournament"],
     "title": "Battle of Middle-Pasila | Middle-Earth Strategy Battle Game",
-    "updatedAt": "2022-08-02T13:00:04.6Z"
+    "updatedAt": "2022-08-02T13:00:04.6Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5432",
@@ -5747,7 +5948,8 @@
     "styles": [],
     "tags": ["inEnglish", "beginnerFriendly", "guestOfHonor"],
     "title": "Dream Askew with Avery Alder",
-    "updatedAt": "2022-08-02T13:00:30.331Z"
+    "updatedAt": "2022-08-02T13:00:30.331Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5589",
@@ -5771,10 +5973,11 @@
     "revolvingDoor": false,
     "shortDescription": "Selvitymisseikkailu tuntemattomalla saarella fantasiamaailmassa",
     "startTime": "2022-07-31T09:00:00Z",
-    "styles": ["light", "characterDriven", "combatDriven"],
-    "tags": ["forMinors", "forAdults", "beginnerFriendly", "themeFriendship"],
+    "styles": ["light", "characterDriven", "combatHeavy"],
+    "tags": ["forMinors", "forAdults", "beginnerFriendly", "theme"],
     "title": "Kallosaaren Haaksirikkoiset (pelautus #3)",
-    "updatedAt": "2022-08-02T13:00:30.331Z"
+    "updatedAt": "2022-08-02T13:00:30.331Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5484",
@@ -5799,9 +6002,10 @@
     "shortDescription": "Satumainen keijusirkuspeli (PbtA)",
     "startTime": "2022-07-31T09:00:00Z",
     "styles": ["light", "rulesLight", "storyDriven", "characterDriven"],
-    "tags": ["forMinors", "forAdults", "beginnerFriendly", "themeFriendship"],
+    "tags": ["forMinors", "forAdults", "beginnerFriendly", "theme"],
     "title": "Keijusirkus, menninkäiset ja sateenkaaren velho",
-    "updatedAt": "2022-08-02T13:00:30.331Z"
+    "updatedAt": "2022-08-02T13:00:30.331Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5545",
@@ -5828,7 +6032,8 @@
     "styles": ["serious", "rulesLight", "storyDriven", "characterDriven"],
     "tags": ["ageRestricted", "beginnerFriendly"],
     "title": "Pahan säkeet",
-    "updatedAt": "2022-08-02T13:00:30.331Z"
+    "updatedAt": "2022-08-02T13:00:30.331Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5543",
@@ -5853,9 +6058,10 @@
     "shortDescription": "Kotimainen indie peli PbtA-mekaniikalla | A Finnish indie RPG with PbtA mechanics",
     "startTime": "2022-07-31T09:00:00Z",
     "styles": ["light", "rulesLight", "characterDriven"],
-    "tags": ["inEnglish", "beginnerFriendly", "themeFriendship"],
+    "tags": ["inEnglish", "beginnerFriendly", "theme"],
     "title": "Sirkus saapuu kaupunkiin! | Circus is in Town!",
-    "updatedAt": "2022-08-02T13:00:30.331Z"
+    "updatedAt": "2022-08-02T13:00:30.331Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5758",
@@ -5880,14 +6086,10 @@
     "shortDescription": "",
     "startTime": "2022-07-31T09:30:00Z",
     "styles": [],
-    "tags": [
-      "suitableUnder10",
-      "forMinors",
-      "beginnerFriendly",
-      "themeFriendship"
-    ],
+    "tags": ["suitableUnder10", "forMinors", "beginnerFriendly", "theme"],
     "title": "Velhokoulu 2",
-    "updatedAt": "2022-08-02T13:00:04.601Z"
+    "updatedAt": "2022-08-02T13:00:04.601Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5351",
@@ -5911,10 +6113,11 @@
     "revolvingDoor": false,
     "shortDescription": "A Pathfinder One-Shot adventure",
     "startTime": "2022-07-31T10:00:00Z",
-    "styles": ["rulesHeavy", "combatDriven"],
+    "styles": ["rulesHeavy", "combatHeavy"],
     "tags": ["beginnerFriendly"],
     "title": "Pathfinder One-Shot #4: Mark of the Mantis",
-    "updatedAt": "2022-08-02T13:00:30.331Z"
+    "updatedAt": "2022-08-02T13:00:30.331Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5350",
@@ -5938,10 +6141,11 @@
     "revolvingDoor": false,
     "shortDescription": "A Starfinder One-Shot adventure",
     "startTime": "2022-07-31T09:00:00Z",
-    "styles": ["rulesHeavy", "combatDriven"],
+    "styles": ["rulesHeavy", "combatHeavy"],
     "tags": ["beginnerFriendly"],
     "title": "Starfinder One-Shot #4: Before the Storm",
-    "updatedAt": "2022-08-02T13:00:30.331Z"
+    "updatedAt": "2022-08-02T13:00:30.331Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5616",
@@ -5974,7 +6178,8 @@
     ],
     "tags": ["forAdults", "beginnerFriendly"],
     "title": "Kymmenen tuntia",
-    "updatedAt": "2022-08-02T13:00:30.331Z"
+    "updatedAt": "2022-08-02T13:00:30.331Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5581",
@@ -6001,7 +6206,8 @@
     "styles": ["light", "rulesLight", "storyDriven"],
     "tags": ["inEnglish", "forAdults", "beginnerFriendly"],
     "title": "Delta Green: Operation DUSK CHAIR",
-    "updatedAt": "2022-08-02T13:00:30.331Z"
+    "updatedAt": "2022-08-02T13:00:30.331Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5722",
@@ -6026,9 +6232,10 @@
     "shortDescription": "D&D 5E kaupunkipeli yhdellä hahmoluokalla / D&D 5E citygame with only one character class",
     "startTime": "2022-07-31T10:00:00Z",
     "styles": ["light", "rulesLight", "characterDriven"],
-    "tags": ["inEnglish", "beginnerFriendly", "themeFriendship"],
+    "tags": ["inEnglish", "beginnerFriendly", "theme"],
     "title": "Viisi Koboldia Trenssitakissa/Five Kobolds in a Trench Coat",
-    "updatedAt": "2022-08-02T13:00:30.331Z"
+    "updatedAt": "2022-08-02T13:00:30.331Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5558",
@@ -6055,7 +6262,8 @@
     "styles": [],
     "tags": ["inEnglish", "tournament"],
     "title": "Poromagian Limited-Turnaus 9 | Poromagia's MTG Limited Tournament 9",
-    "updatedAt": "2022-08-02T13:00:04.601Z"
+    "updatedAt": "2022-08-02T13:00:04.601Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5191",
@@ -6082,7 +6290,8 @@
     "styles": ["rulesLight", "storyDriven"],
     "tags": ["forAdults", "ageRestricted", "beginnerFriendly"],
     "title": "Timantin sävyvirhe",
-    "updatedAt": "2022-08-02T13:00:30.331Z"
+    "updatedAt": "2022-08-02T13:00:30.331Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5726",
@@ -6106,7 +6315,7 @@
     "revolvingDoor": false,
     "shortDescription": "A deal is a deal",
     "startTime": "2022-07-31T10:00:00Z",
-    "styles": ["light", "rulesLight", "storyDriven", "combatDriven"],
+    "styles": ["light", "rulesLight", "storyDriven", "combatHeavy"],
     "tags": [
       "inEnglish",
       "forMinors",
@@ -6115,7 +6324,8 @@
       "beginnerFriendly"
     ],
     "title": "A Bargain with a Hag",
-    "updatedAt": "2022-08-02T13:00:30.331Z"
+    "updatedAt": "2022-08-02T13:00:30.331Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5658",
@@ -6142,7 +6352,8 @@
     "styles": ["light"],
     "tags": ["beginnerFriendly"],
     "title": "Erebuksen viisi holvia",
-    "updatedAt": "2022-08-02T13:00:30.331Z"
+    "updatedAt": "2022-08-02T13:00:30.331Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5663",
@@ -6169,7 +6380,8 @@
     "styles": ["light", "rulesLight"],
     "tags": ["inEnglish", "forAdults", "beginnerFriendly"],
     "title": "Intergalaktinen Turpakäräjä (peli 2) | The Intergalactic Brawl (game 2)",
-    "updatedAt": "2022-08-02T13:00:30.331Z"
+    "updatedAt": "2022-08-02T13:00:30.331Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5540",
@@ -6194,9 +6406,10 @@
     "shortDescription": "Traditional light-hearted D&D adventure",
     "startTime": "2022-07-31T07:00:00Z",
     "styles": ["light", "rulesLight", "storyDriven", "characterDriven"],
-    "tags": ["inEnglish", "beginnerFriendly", "themeFriendship"],
+    "tags": ["inEnglish", "beginnerFriendly", "theme"],
     "title": "The Two Kobolds of Veronia",
-    "updatedAt": "2022-08-02T13:00:30.331Z"
+    "updatedAt": "2022-08-02T13:00:30.331Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5594",
@@ -6223,7 +6436,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Soihdunsiirto",
-    "updatedAt": "2022-08-02T13:00:04.599Z"
+    "updatedAt": "2022-08-02T13:00:04.599Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5810",
@@ -6250,11 +6464,12 @@
     "styles": [],
     "tags": ["beginnerFriendly", "tournament"],
     "title": "Jätinkirkko -korttipeliturnaus",
-    "updatedAt": "2022-08-02T13:00:04.588Z"
+    "updatedAt": "2022-08-02T13:00:04.588Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5825",
-    "accessibilityValues": ["colourblind", "remainingOnePlace"],
+    "accessibilityValues": ["colorBlindness", "remainingOnePlace"],
     "contentWarnings": "",
     "createdAt": "2022-07-25T20:52:03.073Z",
     "description": "Taistele itsesi korkeimmaille paikalle armottomassa korporaatiohierarkiassa! Kyberpunk-henkinen peli tulevaisuuden suuryritysten johtoryhmistä, jossa vain yksi pelaaja voittaa. \r\n\r\nPelaajat ovat kuuden yhtiön johtoryhmien jäseniä, joilla on kaikilla yksi tavoite – olla pelin päättyessä arvokkaimman yhtiön CEO. Mutta 2070-luvun korporaatiomaailma on armoton, ja pelaajien on oltava ovelia, häikäilemättömiä sekä luovia menestyäkseen.\r\n\r\nTule osallistumaan ainutlaatuiseen pelikokemukseen!\r\n\r\nPeliin ilmottaudutaan perjantaina klo 15.00 alkaen KONSTI-SOVELLUKSELLA. \r\nPeliin lähdetään juoksijan viemänä RopeLarp-tiskiltä lauantaina klo 13.55, olethan ajoissa paikalla. \r\nSäännöt ja pelikomponentit ovat englanniksi, mutta ne ovat hyvin yksinkertaiset\r\n\r\nEN: \r\nA cyberpunk-themed fusion of boardgames, social games, diplomacy and technology where the players compete to be the CEO of the highest values corporation. Join the unique experience!",
@@ -6277,7 +6492,8 @@
     "styles": ["serious"],
     "tags": ["forAdults", "beginnerFriendly"],
     "title": "Corporations 2.0",
-    "updatedAt": "2022-08-02T13:00:04.593Z"
+    "updatedAt": "2022-08-02T13:00:04.593Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5835",
@@ -6302,18 +6518,14 @@
     "shortDescription": "",
     "startTime": "2022-07-29T15:00:00Z",
     "styles": [],
-    "tags": [
-      "suitableUnder10",
-      "forMinors",
-      "beginnerFriendly",
-      "themeFriendship"
-    ],
+    "tags": ["suitableUnder10", "forMinors", "beginnerFriendly", "theme"],
     "title": "Velhokoulu - perjantain peli",
-    "updatedAt": "2022-08-02T13:00:04.589Z"
+    "updatedAt": "2022-08-02T13:00:04.589Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5645",
-    "accessibilityValues": ["video", "recording"],
+    "accessibilityValues": ["video", "noTextOfRecording"],
     "contentWarnings": "Vampires",
     "createdAt": "2022-07-29T08:37:55.27Z",
     "description": "STREAMED PROGRAMME at 18.45 – 20.45 \r\nFinals for Friday's tournament.\r\n\r\nStandard Constructed, no proxies allowed.\r\nDeck lists will be required for all attendants.",
@@ -6336,11 +6548,12 @@
     "styles": [],
     "tags": ["inEnglish", "tournament"],
     "title": "VTES: Last Chance Qualifier (LCQ) Finals STREAM",
-    "updatedAt": "2022-08-02T13:00:04.589Z"
+    "updatedAt": "2022-08-02T13:00:04.589Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5647",
-    "accessibilityValues": ["video", "recording"],
+    "accessibilityValues": ["video", "noTextOfRecording"],
     "contentWarnings": "Vampires",
     "createdAt": "2022-07-29T08:37:55.277Z",
     "description": "STREAMED PROGRAMME at 17.30 – 19.30\r\nFinals European Championship Day 1\r\n\r\nSaturday’s EC Day 1 tournament is one of the main events of European Championship as the best way to qualify for Day 2, where the European champion will be decided. Good performance will be rewarded, as players, counting top-down from final standings, will qualify for Day 2 to fill 50 players. Who will be the ones that make it to Saturday's Finals and which one of them will be the winner of Day 1? \r\n\r\nStandard Constructed, no proxies allowed.\r\nDeck lists will be required for all attendants.",
@@ -6363,11 +6576,12 @@
     "styles": [],
     "tags": ["inEnglish", "tournament"],
     "title": "VTES: European Championship Day 1 Finals STREAM",
-    "updatedAt": "2022-08-02T13:00:04.598Z"
+    "updatedAt": "2022-08-02T13:00:04.598Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5651",
-    "accessibilityValues": ["video", "recording"],
+    "accessibilityValues": ["video", "noTextOfRecording"],
     "contentWarnings": "Vampires",
     "createdAt": "2022-07-29T08:37:55.278Z",
     "description": "STREAMED PROGRAMME at 19.30 – 21.30\r\nFinals of the Grand Prix Tour 2022\r\n\r\nAfter five Grand Prix tournaments during the current plague ridden season that started already in December 2019 and took place all over Europe (Italy, Spain, Finland, France and Sweden) we finally will be able to decide who is the winner of the Grand Prix Tour 2022. \r\n\r\nStandard Constructed, no proxies allowed.\r\nDeck lists will be required for all attendants.",
@@ -6390,11 +6604,12 @@
     "styles": [],
     "tags": ["inEnglish", "tournament"],
     "title": "VTES: Grand Prix Tour 2022 Finals STREAM",
-    "updatedAt": "2022-08-02T13:00:04.599Z"
+    "updatedAt": "2022-08-02T13:00:04.599Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5649",
-    "accessibilityValues": ["video", "recording"],
+    "accessibilityValues": ["video", "noTextOfRecording"],
     "contentWarnings": "Vampires",
     "createdAt": "2022-07-29T08:37:55.283Z",
     "description": "STREAMED PROGRAMME at 16:00 – 18:00\r\nFinals European Championship Day 2\r\n\r\nThe titular event of VtES European Championship 2022, EC Day 2, will allow 50 pre-qualified players to compete for the title of champion. Bring your best decks, best strategies, best attitude, and a hint of salt and humility, as only one can be the winner after three rounds of ruthless VtES, and a final round, that will undoubtedly be a nailbiter!\r\n\r\nStandard Constructed, no proxies allowed.\r\nDeck lists will be required for all attendants.",
@@ -6417,7 +6632,8 @@
     "styles": [],
     "tags": ["inEnglish", "tournament"],
     "title": "VTES: European Championship Day 2 Finals STREAM",
-    "updatedAt": "2022-08-02T13:00:04.601Z"
+    "updatedAt": "2022-08-02T13:00:04.601Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5618",
@@ -6442,9 +6658,10 @@
     "shortDescription": "Aikainen lintu madon nappaa!",
     "startTime": "2022-07-29T15:00:00Z",
     "styles": ["light", "rulesLight", "storyDriven", "characterDriven"],
-    "tags": ["forMinors", "forAdults", "beginnerFriendly", "themeFriendship"],
+    "tags": ["forMinors", "forAdults", "beginnerFriendly", "theme"],
     "title": "Lintuparvi",
-    "updatedAt": "2022-08-02T13:00:04.589Z"
+    "updatedAt": "2022-08-02T13:00:04.589Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5626",
@@ -6469,9 +6686,10 @@
     "shortDescription": "Aikainen lintu madon nappaa!",
     "startTime": "2022-07-30T07:00:00Z",
     "styles": ["light", "rulesLight", "storyDriven", "characterDriven"],
-    "tags": ["forMinors", "forAdults", "beginnerFriendly", "themeFriendship"],
+    "tags": ["forMinors", "forAdults", "beginnerFriendly", "theme"],
     "title": "Lintuparvi",
-    "updatedAt": "2022-08-02T13:00:30.331Z"
+    "updatedAt": "2022-08-02T13:00:30.331Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5842",
@@ -6498,7 +6716,8 @@
     "styles": ["light", "rulesLight"],
     "tags": ["inEnglish", "beginnerFriendly"],
     "title": "Kloonialus | The Clone Ship",
-    "updatedAt": "2022-08-02T13:00:04.589Z"
+    "updatedAt": "2022-08-02T13:00:04.589Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5843",
@@ -6525,7 +6744,8 @@
     "styles": ["light", "rulesLight"],
     "tags": ["inEnglish", "beginnerFriendly"],
     "title": "Kloonialus | The Clone Ship",
-    "updatedAt": "2022-08-02T13:00:04.59Z"
+    "updatedAt": "2022-08-02T13:00:04.59Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5844",
@@ -6552,7 +6772,8 @@
     "styles": ["light", "rulesLight"],
     "tags": ["inEnglish", "beginnerFriendly"],
     "title": "Kloonialus | The Clone Ship pe 22.00",
-    "updatedAt": "2022-08-02T13:00:30.331Z"
+    "updatedAt": "2022-08-02T13:00:30.331Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5845",
@@ -6579,7 +6800,8 @@
     "styles": ["light", "rulesLight"],
     "tags": ["forAdults"],
     "title": "Kloonialus",
-    "updatedAt": "2022-08-02T13:00:04.59Z"
+    "updatedAt": "2022-08-02T13:00:04.59Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5847",
@@ -6606,7 +6828,8 @@
     "styles": ["light", "rulesLight"],
     "tags": ["inEnglish", "beginnerFriendly"],
     "title": "Kloonialus | The Clone Ship La 30.7 klo 14",
-    "updatedAt": "2022-08-02T13:00:30.331Z"
+    "updatedAt": "2022-08-02T13:00:30.331Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5848",
@@ -6633,7 +6856,8 @@
     "styles": ["light", "rulesLight"],
     "tags": ["inEnglish", "beginnerFriendly"],
     "title": "Kloonialus | The Clone Ship La 30.7 klo 20",
-    "updatedAt": "2022-08-02T13:00:30.331Z"
+    "updatedAt": "2022-08-02T13:00:30.331Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5852",
@@ -6660,7 +6884,8 @@
     "styles": [],
     "tags": ["inEnglish", "beginnerFriendly"],
     "title": "Kloonialus | The Clone Ship su 31.7 klo 12",
-    "updatedAt": "2022-08-02T13:00:30.331Z"
+    "updatedAt": "2022-08-02T13:00:30.331Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5851",
@@ -6687,7 +6912,8 @@
     "styles": ["light", "rulesLight"],
     "tags": ["inEnglish", "beginnerFriendly"],
     "title": "Kloonialus | The Clone Ship la 30.7 klo 22.00",
-    "updatedAt": "2022-08-02T13:00:30.331Z"
+    "updatedAt": "2022-08-02T13:00:30.331Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5853",
@@ -6714,7 +6940,8 @@
     "styles": ["light", "rulesLight"],
     "tags": ["inEnglish", "beginnerFriendly"],
     "title": "Kloonialus | The Clone Ship la 30.7 klo 12",
-    "updatedAt": "2022-08-02T13:00:30.331Z"
+    "updatedAt": "2022-08-02T13:00:30.331Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5628",
@@ -6739,9 +6966,10 @@
     "shortDescription": "Aikainen lintu madon nappaa!",
     "startTime": "2022-07-30T15:00:00Z",
     "styles": ["light", "rulesLight", "storyDriven"],
-    "tags": ["forMinors", "forAdults", "beginnerFriendly", "themeFriendship"],
+    "tags": ["forMinors", "forAdults", "beginnerFriendly", "theme"],
     "title": "Lintuparvi",
-    "updatedAt": "2022-08-02T13:00:30.331Z"
+    "updatedAt": "2022-08-02T13:00:30.331Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5678",
@@ -6766,9 +6994,10 @@
     "shortDescription": "Jännittävää toiminnantäyteistä tieteisseikkailua!",
     "startTime": "2022-07-31T07:00:00Z",
     "styles": ["rulesLight", "storyDriven", "characterDriven"],
-    "tags": ["forAdults", "beginnerFriendly", "themeFriendship"],
+    "tags": ["forAdults", "beginnerFriendly", "theme"],
     "title": "Läpimurto",
-    "updatedAt": "2022-08-02T13:00:30.331Z"
+    "updatedAt": "2022-08-02T13:00:30.331Z",
+    "state": "accepted"
   },
   {
     "programItemId": "p5858",
@@ -6795,6 +7024,7 @@
     "styles": ["rulesLight"],
     "tags": ["beginnerFriendly"],
     "title": "Dungeon World",
-    "updatedAt": "2022-08-02T13:00:30.331Z"
+    "updatedAt": "2022-08-02T13:00:30.331Z",
+    "state": "accepted"
   }
 ]
