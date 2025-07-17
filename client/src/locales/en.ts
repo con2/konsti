@@ -1,6 +1,6 @@
 export const translationEN = {
   appTitle: "Konsti",
-  appDescription: "Konsti – {{EVENT_NAME}} {{EVENT_YEAR}}",
+  appDescription: "{{EVENT_NAME}} {{EVENT_YEAR}}",
   logoAltText: "Konsti",
   announcement: "Sign-up has ended. Results will be released soon.",
   button: {
@@ -60,7 +60,7 @@ export const translationEN = {
   },
   validation: {
     required: "Required",
-    tooLong: "Too long, max {{length}} characters",
+    tooLong: "Too long, at most {{length}} characters allowed",
     tooShort: "Too short, at least {{length}} characters required",
   },
   pages: {
@@ -104,8 +104,8 @@ export const translationEN = {
     light: "Light",
     rulesHeavy: "Rules heavy",
     rulesLight: "Rules light",
-    storyDriven: "Story driven",
-    characterDriven: "Character driven",
+    storyDriven: "Story-driven",
+    characterDriven: "Character-driven",
     combatHeavy: "Combat heavy",
   },
   genre: {
@@ -126,19 +126,19 @@ export const translationEN = {
     finnish: "In Finnish",
     swedish: "In Swedish",
     finnishOrEnglish: "In Finnish or in English",
-    languageFree: "Language free",
+    languageFree: "Language-free",
   },
   tags: {
-    beginnerFriendly: "Beginner friendly",
-    guestOfHonor: "GoH-program",
-    theme: "Vuositeema Uudet maailmat",
+    beginnerFriendly: "Beginner-friendly",
+    guestOfHonor: "Guest of honor program",
+    theme: "Yearly theme: New Worlds",
     lgbt: "LGBTIA+",
     everyone: "Fits all ages",
     adults: "Directed at adults",
     teens: "Directed at youth (13–15)",
     onlyAdults: "Adults only (K-18)",
-    kids: "Directed at childen (7–12)",
-    smallKids: "Directed at small children (under 7)",
+    kids: "Directed at children aged 7–12",
+    smallKids: "Directed at children under 7",
   },
   pageTitle: {
     login: "Login",
@@ -189,19 +189,20 @@ export const translationEN = {
     programItemCancelled: "Program item is cancelled",
   },
   signupUnsavedChanges: "Unsaved changes",
-  closingMessage: "Konsti is closed and will open closer to the next event",
+  closingMessage: "Konsti is closed and will open closer to the next event.",
   details: "details",
   noLotterySignupResult:
     "Unfortunately, you didn't get a spot in any program item in the lottery.",
   invalidProgramItemId:
-    "Program item {{PROGRAM_ITEM_ID}} not found. Either program item does not use Konsti for signups or the identifier is incorrect.",
+    "Program item {{PROGRAM_ITEM_ID}} not found. Either the program item does not use Konsti for signups or the identifier is incorrect.",
   feedbackTitle: "Feedback",
   feedbackInstruction:
     "Did you enjoy the {{PROGRAM_TYPE}}? Send feedback to the organizer! They will receive it after the event.",
   noProgramItemsAvailable:
     "No {{PROGRAM_TYPE}} found, please check your search conditions.",
-  checkProgramGuide: "If program item is not found from Konsti, check",
-  programGuide: "program guide",
+  checkProgramGuide:
+    "Konsti only shows program items with electronic sign-up. For all program, please check",
+  programGuide: "the program guide",
   noProgramItemsInDatabase: "No program items in database",
   upcoming: "Upcoming",
   all: "All",
@@ -221,7 +222,7 @@ export const translationEN = {
       cannotUseOwnSerial: "You cannot use your own serial to join a group.",
       groupExists: "Group already exists.",
       removeUpcomingLotterySignupsFailed:
-        "Error deleting active lottery sign-ups, try again.",
+        "Error deleting active lottery sign-ups, please try again.",
       onlyCreatorCanCloseGroup: "Only the group creator can close a group.",
       memberUpcomingDirectSignups:
         "You already have sign-ups. You will have to cancel those before joining a group.",
@@ -291,7 +292,7 @@ export const translationEN = {
     noAssignment:
       "Spots for program items at {{START_TIME}} were randomized. Unfortunately, we couldn't fit you into any of your chosen program items.",
     programItemCanceled: "{{PROGRAM_TYPE}} canceled:",
-    programItemMoved: "starting time changed: {{NEW_STARTING_TIME}}.",
+    programItemMoved: "starting time has changed to {{NEW_STARTING_TIME}}.",
   },
   notificationBar: {
     showAll: "Show all notifications",
@@ -302,7 +303,7 @@ export const translationEN = {
     directSignup: "Sign up",
     lotterySignup: "Lottery sign-up",
     cannotLotterySignupMoreProgramItems:
-      "You can select up to three lottery signups for the time slot.",
+      "You can select up to three items for the time slot.",
     programItemPriority: "{{PROGRAM_TYPE}} priority for me is",
     confirm: "Confirm",
     cancel: "Cancel",
@@ -321,7 +322,7 @@ export const translationEN = {
     loginToSignup: "Log in to sign up",
     signupAlwaysOpen: "Sign-up always open",
     inGroupWarning:
-      "If you sign up to a {{PROGRAM_TYPE}}, you will be removed from your current group. (Groups can only be used in lottery signups.)",
+      "If you sign up to a {{PROGRAM_TYPE}}, you will be removed from your current group. Groups can only be used in lottery signups.",
     groupCreatorWarning:
       "If you sign up to a {{PROGRAM_TYPE}}, the group you created will be deleted. Groups can only be used in lottery signups.",
     groupSignupInfo: "Please note that you are signing up your whole group.",
@@ -369,7 +370,7 @@ export const translationEN = {
       gamepoint:
         "This {{PROGRAM_TYPE}} does not use Konsti for signing up. Registration at Gaming desk.",
     },
-    cancelled: "This {{PROGRAM_TYPE}} is cancelled.",
+    cancelled: "This {{PROGRAM_TYPE}} has been cancelled.",
     cancelledTitleText: "CANCELLED",
   },
   attendeeType: {
@@ -545,7 +546,7 @@ export const translationEN = {
     showMore: "Show more",
     showLess: "Show less",
     inProgress:
-      "Not all information on the instruction page is up to date yet and the content will be updated",
+      "Not all information on the instruction page is up to date yet and the content will be updated.",
   },
   profileView: {
     profileTab: "Profile",
@@ -570,7 +571,7 @@ export const translationEN = {
   },
   signupQuestionType: {
     text: "Text",
-    select: "Select",
+    select: "Multiple choice",
   },
   private: "Private",
   privateOnlyVisibleToOrganizers: "Only visible to organizers",

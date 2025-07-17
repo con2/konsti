@@ -131,7 +131,7 @@ export const translationFI = {
   tags: {
     beginnerFriendly: "Aloittelijaystävällinen",
     guestOfHonor: "Kunniavierasohjelma",
-    theme: "Yearly theme New Worlds",
+    theme: "Vuositeema: Uudet maailmat",
     lgbt: "HLBTIQA+",
     everyone: "Suunnattu kaiken ikäisille",
     adults: "Suunnattu aikuisille",
@@ -190,7 +190,7 @@ export const translationFI = {
   },
   signupUnsavedChanges: "Tallentamattomia muutoksia",
   closingMessage:
-    "Konsti on suljettu ja avautuu lähempänä seuraavaa tapahtumaa",
+    "Konsti on suljettu ja avautuu lähempänä seuraavaa tapahtumaa.",
   details: "lisätietoja",
   noLotterySignupResult:
     "Valitettavasti et mahtunut mihinkään ohjelmanumeroon arvonnassa.",
@@ -201,8 +201,9 @@ export const translationFI = {
     "Piditkö {{PROGRAM_TYPE}}? Lähetä palautetta järjestäjälle! Palautteet toimitetaan tapahtuman jälkeen.",
   noProgramItemsAvailable:
     "Ei näytettäviä {{PROGRAM_TYPE}}, tarkistathan hakuehdot.",
-  checkProgramGuide: "Jos ohjelmanumeroa ei löydy Konstista, tarkista",
-  programGuide: "ohjelmaopas",
+  checkProgramGuide:
+    "Konstissa näytetään vain ohjelma, johon ilmoittaudutaan sähköisesti. Kaiken ohjelman löydät",
+  programGuide: "ohjelmaoppaasta",
   noProgramItemsInDatabase: "Ei ohjelmanumeroita tietokannassa",
   upcoming: "Tulevat",
   all: "Kaikki",
@@ -218,8 +219,8 @@ export const translationFI = {
     "Ei käynnissä olevia pyöröovi{{PROGRAM_TYPE}}",
   group: {
     error: {
-      cannotUseOwnSerial: "Et voi käyttää omaa koodia ryhmään liittymisessä",
-      groupExists: "Ryhmä on jo olemassa",
+      cannotUseOwnSerial: "Et voi käyttää omaa koodiasi ryhmään liittymiseen.",
+      groupExists: "Ryhmä on jo olemassa.",
       removeUpcomingLotterySignupsFailed:
         "Virhe aktiivisia arvontailmoittautumisia poistaessa, yritä uudelleen.",
       onlyCreatorCanCloseGroup: "Vain ryhmän perustaja voi sulkea ryhmän.",
@@ -322,7 +323,7 @@ export const translationFI = {
     loginToSignup: "Kirjaudu sisään ilmoittautumista varten",
     signupAlwaysOpen: "Ilmoittautuminen aina auki",
     inGroupWarning:
-      "Jos ilmoittaudut {{PROGRAM_TYPE}}, sinut poistetaan ryhmästäsi. (Ryhmää voi käyttää ainoastaan arvontailmoittautumisissa.)",
+      "Jos ilmoittaudut {{PROGRAM_TYPE}}, sinut poistetaan ryhmästäsi. Ryhmää voi käyttää ainoastaan arvontailmoittautumisissa.",
     groupCreatorWarning:
       "Jos ilmoittaudut {{PROGRAM_TYPE}}, perustamasi ryhmä poistetaan. Ryhmää voi käyttää ainoastaan arvontailmoittautumisissa.",
     groupSignupInfo:
