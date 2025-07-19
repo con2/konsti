@@ -8,6 +8,7 @@ export enum SessionStorageValue {
   ALL_PROGRAM_ITEMS_TAG = "allProgramItemsTag",
   ALL_PROGRAM_ITEMS_SELECTED_VIEW = "allProgramItemsSelectedView",
   ALL_PROGRAM_ITEMS_STARTING_TIME = "allProgramItemsStartingTime",
+  ALL_PROGRAM_ITEMS_HIDE_FULL = "allProgramItemsHideFull",
   MY_PROGRAM_ITEMS_SHOW_ALL_PROGRAM_ITEMS = "myProgramItemsShowAllProgramItems",
 }
 
@@ -43,6 +44,26 @@ export const getSavedTag = (): Tag | Language | "" => {
   }
 
   return result.data;
+};
+
+const SavedHideFullSchema = z.preprocess((val) => {
+  if (val === "true") return true;
+  if (val === "false") return false;
+  return;
+}, z.boolean().nullable());
+
+export const getSavedHideFull = (): boolean => {
+  const serializedValue = sessionStorage.getItem(
+    SessionStorageValue.ALL_PROGRAM_ITEMS_HIDE_FULL,
+  );
+
+  const result = SavedHideFullSchema.safeParse(serializedValue);
+  if (!result.success) {
+    sessionStorage.removeItem(SessionStorageValue.ALL_PROGRAM_ITEMS_HIDE_FULL);
+    return false;
+  }
+
+  return result.data ?? false;
 };
 
 const SavedStartingTimeSchema = z.nativeEnum(StartingTimeOption);

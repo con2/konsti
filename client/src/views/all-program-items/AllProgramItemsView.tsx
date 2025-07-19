@@ -18,6 +18,7 @@ import {
 } from "client/views/admin/adminSlice";
 import {
   SessionStorageValue,
+  getSavedHideFull,
   getSavedSearchTerm,
   getSavedStartingTime,
   getSavedTag,
@@ -52,7 +53,8 @@ export const AllProgramItemsView = (): ReactElement => {
   );
   const [loading, setLoading] = useState<boolean>(true);
   const [searchTerm, setSearchTerm] = useState<string>(getSavedSearchTerm());
-  const [hideFullItems, setHideFullItems] = useState<boolean>(false);
+  const [hideFullItems, setHideFullItems] =
+    useState<boolean>(getSavedHideFull());
   const [filteredProgramItems, setFilteredProgramItems] = useState<
     readonly ProgramItemWithFullness[]
   >([]);

@@ -151,7 +151,14 @@ export const SearchAndFilterCard = ({
       <InputContainer>
         <Checkbox
           checked={hideFullItems}
-          onChange={() => setHideFullItems(!hideFullItems)}
+          onChange={() => {
+            const nextValue = !hideFullItems;
+            setHideFullItems(nextValue);
+            sessionStorage.setItem(
+              SessionStorageValue.ALL_PROGRAM_ITEMS_HIDE_FULL,
+              JSON.stringify(nextValue),
+            );
+          }}
           id="hide-full-items"
           label={t("hideFullItems")}
         />
