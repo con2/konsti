@@ -1,10 +1,23 @@
-import { ReactElement } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useTranslation } from "react-i18next";
 
-export const ScrollToTopButton = (): ReactElement => {
+export const ScrollToTopButton = (): ReactElement | null => {
   const { t } = useTranslation();
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const onScroll = (): void => {
+      setVisible(window.scrollY > 0);
+    };
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  if (!visible) {
+    return null;
+  }
 
   return (
     <FloatingButton
@@ -28,17 +41,14 @@ const FloatingButton = styled.button`
   box-shadow: ${(props) => props.theme.shadowHigher};
 
   @media (max-width: ${(props) => props.theme.breakpointPhone}) {
-    position: sticky;
-    display: block;
-    margin-top: calc(100vh + 48px);
-    margin-left: auto;
     width: 36px;
     height: 36px;
     bottom: 12px;
-    margin-right: 12px;
+    right: 12px;
   }
 
   background: ${(props) => props.theme.buttonPrimaryBackground};
+  z-index: 2;
 
   &:hover,
   &:focus-visible {
