@@ -59,9 +59,7 @@ export const AllProgramItemsView = (): ReactElement => {
   const [selectedStartingTime, setSelectedStartingTime] =
     useState<StartingTimeOption>(getSavedStartingTime());
 
-  const [debouncedSearchTerm] = useDebounce(searchTerm, 300, {
-    leading: true,
-  });
+  const [debouncedSearchTerm] = useDebounce(searchTerm, 300);
 
   const activeVisibleProgramItems: ProgramItemWithFullness[] = useMemo(
     () =>
