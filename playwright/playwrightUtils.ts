@@ -166,3 +166,19 @@ export const testPostDirectSignup = async (
   });
   expect(response.status()).toBe(200);
 };
+
+export const postAssignment = async (
+  request: APIRequestContext,
+  assignmentTime: string,
+): Promise<void> => {
+  const loginResponse = await postLogin(request, {
+    username: "admin",
+    password: "test",
+  });
+  const url = `${baseUrl}${ApiEndpoint.ASSIGNMENT}`;
+  const response = await request.post(url, {
+    data: { assignmentTime },
+    headers: { Authorization: `Bearer ${loginResponse.jwt}` },
+  });
+  expect(response.status()).toBe(200);
+};

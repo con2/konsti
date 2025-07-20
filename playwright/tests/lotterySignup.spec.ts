@@ -6,6 +6,8 @@ import {
   login,
   addProgramItems,
   populateDb,
+  addUser,
+  postAssignment,
 } from "playwright/playwrightUtils";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import { config } from "shared/config";
@@ -66,4 +68,116 @@ test("Add lottery signup", async ({ page, request }) => {
     .textContent();
 
   expect(programItemTitle?.trim()).toContain(lotterySignupProgramItemTitle);
+});
+
+test("Receive spot in lottery signup", async ({ page, request }) => {
+  const startTime = dayjs(config.event().eventStartTime)
+    .add(4, "hour")
+    .startOf("hour")
+    .toISOString();
+
+  await populateDb(request, {
+    clean: true,
+    admin: true,
+  });
+  await addUser(request, "test1");
+  await addProgramItems(request, [
+    {
+      startTime,
+      // Adjust min/max so user will get the seat
+      minAttendance: 1,
+      maxAttendance: 1,
+    },
+  ]);
+
+  await postSettings(request, {
+    signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
+  });
+
+  await postTestSettings(request, {
+    testTime: config.event().eventStartTime,
+  });
+
+  await login(page, request, { username: "test1", password: "test" });
+  await page.goto("/");
+
+  await page.click("data-testid=program-list-tab");
+  const firstProgramItem = page.locator(
+    "data-testid=program-item-container >> nth=0",
+  );
+
+  await firstProgramItem
+    .getByRole("button", { name: /lottery sign-up/i })
+    .click();
+  await firstProgramItem.getByRole("button", { name: /confirm/i }).click();
+
+  // Do assignment on background
+  await postAssignment(request, startTime);
+  await page.reload();
+
+  // Check new assigment message
+  await expect(page.getByTestId("notification-bar")).toContainText(
+    "You were assigned to the roleplaying game Test program item.",
+  );
+
+  await page.getByRole("link", { name: "Show all notifications" }).click();
+  await expect(page.getByTestId("event-log-item")).toContainText(
+    "You were assigned to the roleplaying game Test program item.",
+  );
+});
+
+test("Did not receive spot in lottery signup", async ({ page, request }) => {
+  const startTime = dayjs(config.event().eventStartTime)
+    .add(4, "hour")
+    .startOf("hour")
+    .toISOString();
+
+  await populateDb(request, {
+    clean: true,
+    admin: true,
+  });
+  await addUser(request, "test1");
+  await addProgramItems(request, [
+    {
+      startTime,
+      // Adjust min/max so user cannot get the seat
+      minAttendance: 2,
+      maxAttendance: 2,
+    },
+  ]);
+
+  await postSettings(request, {
+    signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
+  });
+
+  await postTestSettings(request, {
+    testTime: config.event().eventStartTime,
+  });
+
+  await login(page, request, { username: "test1", password: "test" });
+  await page.goto("/");
+
+  await page.click("data-testid=program-list-tab");
+  const firstProgramItem = page.locator(
+    "data-testid=program-item-container >> nth=0",
+  );
+
+  await firstProgramItem
+    .getByRole("button", { name: /lottery sign-up/i })
+    .click();
+  await firstProgramItem.getByRole("button", { name: /confirm/i }).click();
+
+  // Do assignment on background
+  await postAssignment(request, startTime);
+  await page.reload();
+
+  // Check new assigment message
+  await expect(page.getByTestId("notification-bar")).toContainText(
+    "Spots for program items at 19:00 were randomized. Unfortunately, we couldn't fit you into any of your chosen program items.",
+  );
+
+  await page.getByRole("link", { name: "Show all notifications" }).click();
+  await expect(page.getByTestId("event-log-item")).toContainText(
+    "Spots for program items at 19:00 were randomized. Unfortunately, we couldn't fit you into any of your chosen program items.",
+  );
 });
