@@ -11,17 +11,19 @@ import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import { config } from "shared/config";
 
 test("Add lottery signup", async ({ page, request }) => {
-  await populateDb(request, { clean: true, users: true });
+  await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
     {
       startTime: dayjs(config.event().eventStartTime)
-        .add(2, "hour")
+        .add(3, "hour")
         .startOf("hour")
         .toISOString(),
     },
   ]);
 
-  await postSettings(request, { signupStrategy: EventSignupStrategy.LOTTERY });
+  await postSettings(request, {
+    signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
+  });
   await postTestSettings(request, {
     testTime: config.event().eventStartTime,
   });

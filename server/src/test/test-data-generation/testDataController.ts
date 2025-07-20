@@ -36,6 +36,7 @@ export const postPopulateDb = async (
   const {
     clean,
     users,
+    admin,
     programItems,
     lotterySignups,
     directSignups,
@@ -46,6 +47,7 @@ export const postPopulateDb = async (
     {
       clean,
       users,
+      admin,
       programItems,
       lotterySignups,
       directSignups,

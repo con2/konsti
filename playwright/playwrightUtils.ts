@@ -10,18 +10,9 @@ import { Settings } from "shared/types/models/settings";
 
 const baseUrl = process.env.PLAYWRIGHT_BASEURL ?? "http://localhost:5000";
 
-const defaultPopulateDbOptions = {
-  clean: true,
-  users: true,
-  programItems: true,
-  lotterySignups: false,
-  directSignups: false,
-  eventLog: false,
-};
-
 export const populateDb = async (
   request: APIRequestContext,
-  populateDbOptions: PopulateDbOptions = defaultPopulateDbOptions,
+  populateDbOptions: PopulateDbOptions,
 ): Promise<void> => {
   const url = `${baseUrl}${ApiDevEndpoint.POPULATE_DB}`;
   const response = await request.post(url, {

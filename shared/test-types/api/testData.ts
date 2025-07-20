@@ -3,6 +3,7 @@ import { z } from "zod";
 export const PopulateDbOptionsSchema = z.object({
   clean: z.boolean().optional(),
   users: z.boolean().optional(),
+  admin: z.boolean().optional(),
   programItems: z.boolean().optional(),
   lotterySignups: z.boolean().optional(),
   directSignups: z.boolean().optional(),

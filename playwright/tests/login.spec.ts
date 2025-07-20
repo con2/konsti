@@ -8,7 +8,7 @@ import { testProgramItem } from "shared/tests/testProgramItem";
 import { ProgramType } from "shared/types/models/programItem";
 
 test("Admin login", async ({ page, request }) => {
-  await populateDb(request, { clean: true, users: true });
+  await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request);
   await postTestSettings(request, {
     testTime: testProgramItem.startTime,
