@@ -18,13 +18,19 @@ import {
 import { ProgramType } from "shared/types/models/programItem";
 
 test("Add lottery signup", async ({ page, request }) => {
+  const startTime = dayjs(config.event().eventStartTime)
+    .add(3, "hour")
+    .startOf("hour")
+    .toISOString();
+  const endTime = dayjs(startTime)
+    .add(testProgramItem.mins, "minutes")
+    .toISOString();
+
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
     {
-      startTime: dayjs(config.event().eventStartTime)
-        .add(3, "hour")
-        .startOf("hour")
-        .toISOString(),
+      startTime,
+      endTime,
     },
   ]);
 
@@ -80,6 +86,9 @@ test("Receive spot in lottery signup", async ({ page, request }) => {
     .add(4, "hour")
     .startOf("hour")
     .toISOString();
+  const endTime = dayjs(startTime)
+    .add(testProgramItem.mins, "minutes")
+    .toISOString();
 
   await populateDb(request, {
     clean: true,
@@ -89,6 +98,7 @@ test("Receive spot in lottery signup", async ({ page, request }) => {
   await addProgramItems(request, [
     {
       startTime,
+      endTime,
       // Adjust min/max so user will get the seat
       minAttendance: 1,
       maxAttendance: 1,
@@ -129,12 +139,23 @@ test("Receive spot in lottery signup", async ({ page, request }) => {
   await expect(page.getByTestId("event-log-item")).toContainText(
     "You were assigned to the roleplaying game Test program item.",
   );
+
+  // Check lottery signup is still present
+  await page.getByTestId("navigation-icon").click();
+  await page.getByRole("link", { name: "Program", exact: true }).click();
+  const lotterySignups = page.getByTestId("lottery-signup-program-items-list");
+  await expect(lotterySignups.getByTestId("program-item-title")).toContainText(
+    "1) Test program item",
+  );
 });
 
 test("Did not receive spot in lottery signup", async ({ page, request }) => {
   const startTime = dayjs(config.event().eventStartTime)
     .add(4, "hour")
     .startOf("hour")
+    .toISOString();
+  const endTime = dayjs(startTime)
+    .add(testProgramItem.mins, "minutes")
     .toISOString();
 
   await populateDb(request, {
@@ -145,6 +166,7 @@ test("Did not receive spot in lottery signup", async ({ page, request }) => {
   await addProgramItems(request, [
     {
       startTime,
+      endTime,
       // Adjust min/max so user cannot get the seat
       minAttendance: 2,
       maxAttendance: 2,
@@ -185,6 +207,14 @@ test("Did not receive spot in lottery signup", async ({ page, request }) => {
   await expect(page.getByTestId("event-log-item")).toContainText(
     "Spots for program items at 19:00 were randomized. Unfortunately, we couldn't fit you into any of your chosen program items.",
   );
+
+  // Check lottery signup is still present
+  await page.getByTestId("navigation-icon").click();
+  await page.getByRole("link", { name: "Program", exact: true }).click();
+  const lotterySignups = page.getByTestId("lottery-signup-program-items-list");
+  await expect(lotterySignups.getByTestId("program-item-title")).toContainText(
+    "1) Test program item",
+  );
 });
 
 test("Receive spot in lottery signup, with multiple lottery program types", async ({
@@ -195,6 +225,10 @@ test("Receive spot in lottery signup, with multiple lottery program types", asyn
     .add(4, "hour")
     .startOf("hour")
     .toISOString();
+  const endTime = dayjs(startTime)
+    .add(testProgramItem.mins, "minutes")
+    .toISOString();
+
   const workshopTitle = "test workshop";
   const rpgTitle = "test rpg";
 
@@ -209,6 +243,7 @@ test("Receive spot in lottery signup, with multiple lottery program types", asyn
       programType: ProgramType.WORKSHOP,
       title: workshopTitle,
       startTime,
+      endTime,
       // Adjust min/max so user can get the seat
       minAttendance: 1,
       maxAttendance: 1,
