@@ -25,17 +25,24 @@ export const saveResults = async ({
   users,
   programItems,
 }: SaveResultsParams): Promise<Result<void, MongoDbError>> => {
-  logger.info(
-    `Save all signup results to separate collection for assignment time ${assignmentTime}`,
-  );
-  const saveResultResult = await saveResult(
-    results,
-    assignmentTime,
-    algorithm,
-    message,
-  );
-  if (isErrorResult(saveResultResult)) {
-    return saveResultResult;
+  if (results.length > 0) {
+    logger.info(
+      `Save all signup results to separate collection for assignment time ${assignmentTime}`,
+    );
+
+    const saveResultResult = await saveResult(
+      results,
+      assignmentTime,
+      algorithm,
+      message,
+    );
+    if (isErrorResult(saveResultResult)) {
+      return saveResultResult;
+    }
+  } else {
+    logger.info(
+      `No results, skip saving signup results to separate collection for assignment time ${assignmentTime}`,
+    );
   }
 
   logger.info(`Save user signup results for assignment time ${assignmentTime}`);

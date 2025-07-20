@@ -104,15 +104,6 @@ export const runAssignment = async ({
   }
   const assignResults = unwrapResult(assignResultsResult);
 
-  if (assignResults.results.length === 0) {
-    logger.warn(
-      `No assign results for start time ${resolvedAssignmentTime}: ${JSON.stringify(
-        assignResults,
-      )}`,
-    );
-    return makeSuccessResult(assignResults);
-  }
-
   const saveResultsResult = await saveResults({
     results: assignResults.results,
     assignmentTime: resolvedAssignmentTime,
@@ -125,7 +116,10 @@ export const runAssignment = async ({
     return saveResultsResult;
   }
 
-  if (config.event().enableRemoveOverlapSignups) {
+  if (
+    assignResults.results.length > 0 &&
+    config.event().enableRemoveOverlapSignups
+  ) {
     logger.info("Remove overlapping signups");
     const removeOverlapSignupsResult = await removeOverlapLotterySignups(
       assignResults.results,
