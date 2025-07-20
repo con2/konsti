@@ -1,13 +1,14 @@
 import dayjs from "dayjs";
 import { logger } from "server/utils/logger";
-import { UserLotterySignups } from "server/types/resultTypes";
 import { findUsers } from "server/features/user/userRepository";
 import { UserAssignmentResult } from "shared/types/models/result";
-import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
+import {
+  DeleteLotterySignupsParams,
+  delLotterySignups,
+} from "server/features/user/lottery-signup/lotterySignupRepository";
 import {
   Result,
   isErrorResult,
-  makeErrorResult,
   makeSuccessResult,
   unwrapResult,
 } from "shared/utils/result";
@@ -19,7 +20,7 @@ export const removeOverlapLotterySignups = async (
   programItems: readonly ProgramItem[],
 ): Promise<Result<void, MongoDbError>> => {
   logger.debug("Find overlapping lottery signups");
-  const signupData: UserLotterySignups[] = [];
+  const usersToUpdate: DeleteLotterySignupsParams[] = [];
 
   const usersResult = await findUsers();
   if (isErrorResult(usersResult)) {
@@ -55,7 +56,7 @@ export const removeOverlapLotterySignups = async (
     }
 
     // Cancel all lottery signups that start during the lottery direct signup
-    const newLotterySignups = signedUser.lotterySignups.filter(
+    const overlappingLotterySignups = signedUser.lotterySignups.filter(
       (lotterySignup) => {
         const foundProgramItem = programItems.find(
           (programItem) =>
@@ -64,36 +65,28 @@ export const removeOverlapLotterySignups = async (
         if (!foundProgramItem) {
           return false;
         }
-        return !dayjs(foundProgramItem.startTime).isBetween(
+        const startsDuring = dayjs(foundProgramItem.startTime).isBetween(
           dayjs(assignmentSignupProgramItem.startTime).add(1, "minutes"),
           dayjs(assignmentSignupProgramItem.endTime),
         );
+        return startsDuring;
       },
     );
 
-    // Only update users whose lottery signups changed
-    if (signedUser.lotterySignups.length !== newLotterySignups.length) {
-      signupData.push({
+    // Only update users with overlapping signups
+    if (overlappingLotterySignups.length > 0) {
+      usersToUpdate.push({
         username: signedUser.username,
-        lotterySignups: newLotterySignups,
+        lotterySignupProgramItemIds: overlappingLotterySignups.map(
+          (signup) => signup.programItemId,
+        ),
       });
     }
   });
 
-  const promises = signupData.map(async (signup) => {
-    const saveLotterySignupsResult = await saveLotterySignups(signup);
-    if (isErrorResult(saveLotterySignupsResult)) {
-      return saveLotterySignupsResult;
-    }
-    return makeSuccessResult();
-  });
-
-  const saveResults = await Promise.all(promises);
-  const someResultFailed = saveResults.some((saveResult) =>
-    isErrorResult(saveResult),
-  );
-  if (someResultFailed) {
-    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+  const delLotterySignupsResult = await delLotterySignups(usersToUpdate);
+  if (isErrorResult(delLotterySignupsResult)) {
+    return delLotterySignupsResult;
   }
 
   return makeSuccessResult();
