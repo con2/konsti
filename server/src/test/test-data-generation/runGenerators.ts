@@ -73,13 +73,14 @@ export const runGenerators = async (
     logger.info("* Generator: Completed generate users");
   }
 
-  // Always create admin and helper
-  logger.info("* Generator: Generate admin and helper users");
+  if (options.admin) {
+    logger.info("* Generator: Generate admin and helper users");
 
-  await createAdminUser();
-  await createHelpUser();
+    await createAdminUser();
+    await createHelpUser();
 
-  logger.info("* Generator: Completed generate admin and helper users");
+    logger.info("* Generator: Completed generate admin and helper users");
+  }
 
   if (options.programItems) {
     logger.info("* Generator: Generate program items");

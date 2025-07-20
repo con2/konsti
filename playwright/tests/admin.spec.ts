@@ -1,10 +1,29 @@
 import { test, expect } from "@playwright/test";
-import { populateDb, login } from "playwright/playwrightUtils";
+import dayjs from "dayjs";
+import {
+  populateDb,
+  login,
+  addProgramItems,
+  postTestSettings,
+} from "playwright/playwrightUtils";
+import { config } from "shared/config";
 
 test("Hide program item", async ({ page, request }) => {
-  await populateDb(request, { clean: true, users: true, programItems: true });
-  await login(page, request, { username: "admin", password: "test" });
+  await populateDb(request, {
+    clean: true,
+    users: true,
+    admin: true,
+  });
+  await addProgramItems(request, [
+    {
+      startTime: dayjs(config.event().eventStartTime).toISOString(),
+    },
+  ]);
+  await postTestSettings(request, {
+    testTime: config.event().eventStartTime,
+  });
 
+  await login(page, request, { username: "admin", password: "test" });
   await page.goto("/");
 
   // Hide first program item
@@ -16,33 +35,25 @@ test("Hide program item", async ({ page, request }) => {
   const hiddenProgramItemTitle = await firstProgramItem
     .locator("data-testid=program-item-title")
     .textContent();
+  if (!hiddenProgramItemTitle) {
+    // eslint-disable-next-line no-restricted-syntax
+    throw new Error("Program item title was null");
+  }
 
   await firstProgramItem.locator("data-testid=program-item-title").click();
 
   await page.getByRole("button", { name: /hide program item/i }).click();
 
-  // Go back to program list to verify first item has changed
-  await page.getByRole("link", { name: /back/i }).click();
-
-  const firstProgramItemAfterHide = page.locator(
-    "data-testid=program-item-container >> nth=0",
+  // Go back to program list to verify program list is empty
+  await page.getByRole("link", { name: "Back" }).click();
+  await expect(page.locator("#main")).toContainText(
+    "No program items found, please check your search conditions.",
   );
 
-  const visibleFirstProgramItemTitle = await firstProgramItemAfterHide
-    .locator("data-testid=program-item-title")
-    .textContent();
-
-  expect(visibleFirstProgramItemTitle).not.toEqual(hiddenProgramItemTitle);
-
-  // Reload page and verify first item is changed
-  await page.reload();
-
-  const visibleFirstProgramItemTitleAfterReload =
-    await firstProgramItemAfterHide
-      .locator("data-testid=program-item-title")
-      .textContent();
-
-  expect(visibleFirstProgramItemTitleAfterReload).not.toEqual(
-    hiddenProgramItemTitle,
-  );
+  // Go to admin page and verify hidden program item is listed
+  await page.getByTestId("navigation-icon").click();
+  await page.getByRole("link", { name: "Admin" }).click();
+  await expect(
+    page.getByRole("link", { name: hiddenProgramItemTitle }),
+  ).toBeVisible();
 });

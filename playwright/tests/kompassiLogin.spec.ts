@@ -3,7 +3,7 @@ import { populateDb, postSettings } from "playwright/playwrightUtils";
 import { LoginProvider } from "shared/config/eventConfigTypes";
 
 test("Kompassi login", async ({ page, request }) => {
-  await populateDb(request, { clean: true, users: true });
+  await populateDb(request, { clean: true, users: true, admin: true });
   await postSettings(request, { loginProvider: LoginProvider.KOMPASSI });
 
   await page.goto("/");

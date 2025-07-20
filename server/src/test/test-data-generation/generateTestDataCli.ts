@@ -8,6 +8,7 @@ const generateTestDataCli = async (): Promise<void> => {
 
   commander
     .option("-u, --users", "Generate users")
+    .option("-a, --admin", "Generate admin and helper users")
     .option("-l, --lotterySignups", "Generate lottery signups")
     .option("-d, --directSignups", "Generate direct signups")
     .option("-p, --programItems", "Generate program items")
