@@ -99,7 +99,7 @@ test("Receive spot in lottery signup", async ({ page, request }) => {
     {
       startTime,
       endTime,
-      // Adjust min/max so user will get the seat
+      // Adjust min/max so user will get the spot
       minAttendance: 1,
       maxAttendance: 1,
     },
@@ -167,7 +167,7 @@ test("Did not receive spot in lottery signup", async ({ page, request }) => {
     {
       startTime,
       endTime,
-      // Adjust min/max so user cannot get the seat
+      // Adjust min/max so user cannot get the spot
       minAttendance: 2,
       maxAttendance: 2,
     },
@@ -244,7 +244,7 @@ test("Receive spot in lottery signup, with multiple lottery program types", asyn
       title: workshopTitle,
       startTime,
       endTime,
-      // Adjust min/max so user can get the seat
+      // Adjust min/max so user can get the spot
       minAttendance: 1,
       maxAttendance: 1,
     },
@@ -253,7 +253,7 @@ test("Receive spot in lottery signup, with multiple lottery program types", asyn
       programType: ProgramType.TABLETOP_RPG,
       title: rpgTitle,
       startTime,
-      // Adjust min/max so user can get the seat
+      // Adjust min/max so user can get the spot
       minAttendance: 1,
       maxAttendance: 1,
     },
