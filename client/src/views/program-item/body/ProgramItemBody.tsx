@@ -9,6 +9,7 @@ import { UserGroup } from "shared/types/models/user";
 import { AdminActionCard } from "client/views/program-item/body/components/AdminActionCard";
 import { useAppSelector } from "client/utils/hooks";
 import { ExpandButton } from "client/components/ExpandButton";
+import { TextWithLinks } from "client/markdown/components/TextWithLinks";
 
 interface Props {
   programItem: ProgramItem;
@@ -30,7 +31,9 @@ export const ProgramItemBody = ({
 
   return (
     <div>
-      <ShortDescription>{programItem.shortDescription}</ShortDescription>
+      <ShortDescription>
+        <TextWithLinks>{programItem.shortDescription}</TextWithLinks>
+      </ShortDescription>
       {!isAlwaysExpanded && (
         <ExpandButton
           isExpanded={isExpanded}
