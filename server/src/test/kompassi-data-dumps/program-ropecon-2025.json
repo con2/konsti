@@ -26,6 +26,7 @@
       "registration": ["konsti"]
     },
     "cachedAnnotations": {
+      "konsti:maxAttendance": 16,
       "konsti:minAttendance": 4,
       "ropecon:accessibilityOther": "Pelissä vuorotellaan istumista ja liikkeellä oloa. Peliä ohjataan äänillä. Lyhyt (alle A4) hahmoteksti luetaan joko paperilta tai omalta laitteelta.",
       "ropecon:contentWarnings": "Kovat äänet, pimeys, menetys, kuolema"
@@ -67,7 +68,8 @@
       "konsti:minAttendance": 4,
       "konsti:rpgSystem": "Call of Cthulhu",
       "ropecon:accessibilityOther": "No strong scents please. The game plans are adaptable, if breaks are needed we can take a break",
-      "ropecon:contentWarnings": "Light gore, cosmic horror, violence, possible character death, possibility of human remains, vermin, possibility of hypothermia"
+      "ropecon:contentWarnings": "Light gore, cosmic horror, violence, possible character death, possibility of human remains, vermin, possibility of hypothermia",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -114,7 +116,8 @@
     "cachedAnnotations": {
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
-      "konsti:rpgSystem": "Omatekoinen konisysteemi"
+      "konsti:rpgSystem": "Omatekoinen konisysteemi",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -189,7 +192,8 @@
     "cachedAnnotations": {
       "konsti:maxAttendance": 30,
       "konsti:minAttendance": 20,
-      "konsti:rpgSystem": "Warhammer Age of Sigmar"
+      "konsti:rpgSystem": "Warhammer Age of Sigmar",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -236,7 +240,8 @@
       "konsti:maxAttendance": 6,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Vaesen",
-      "ropecon:contentWarnings": "Ruumiillinen kauhu, hautaamattomat ruumiit. Aikamatkustus ja siihen liittyvä stressi.\r\nMaaseutu voi olla ahdistava."
+      "ropecon:contentWarnings": "Ruumiillinen kauhu, hautaamattomat ruumiit. Aikamatkustus ja siihen liittyvä stressi.\r\nMaaseutu voi olla ahdistava.",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -275,7 +280,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "CPR+PNK, kertasessioon sovitettu Forged in the Dark -systeemi",
-      "ropecon:contentWarnings": "väkivalta, kuolemanvaara, sivulliset uhrit liikkuvassa junassa"
+      "ropecon:contentWarnings": "väkivalta, kuolemanvaara, sivulliset uhrit liikkuvassa junassa",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -319,7 +325,8 @@
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Alien rpg",
       "ropecon:accessibilityOther": "Ohjelmassa pääosin suomea mutta hieman englannin kieltä myös.\r\n",
-      "ropecon:contentWarnings": "Body horror ja kauhua, alieneita ja tarttuvia loisia. Voimattomuuden tunnetta mahdollisesti riippuen hahmon tuurista."
+      "ropecon:contentWarnings": "Body horror ja kauhua, alieneita ja tarttuvia loisia. Voimattomuuden tunnetta mahdollisesti riippuen hahmon tuurista.",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -358,7 +365,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Legendoja ja Lohikäärmeitä",
-      "ropecon:contentWarnings": "TW-lista: sisältää väkivaltaa, epäkuolleita, kuolemaa, kuolleita eläimiä, ötököitä, tuntemattomia asioita, maan alle menemistä.\r\n"
+      "ropecon:contentWarnings": "TW-lista: sisältää väkivaltaa, epäkuolleita, kuolemaa, kuolleita eläimiä, ötököitä, tuntemattomia asioita, maan alle menemistä.\r\n",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -396,7 +404,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Legendoja & lohikäärmeitä",
-      "ropecon:contentWarnings": "Peli sisältää väkivaltaa, epäkuolleita, kuolemaa, kuolleita eläimiä, ötököitä, tuntemattomia asioita, maan alle menemistä. "
+      "ropecon:contentWarnings": "Peli sisältää väkivaltaa, epäkuolleita, kuolemaa, kuolleita eläimiä, ötököitä, tuntemattomia asioita, maan alle menemistä. ",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -435,7 +444,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "L&L: Suuri Seikkailu",
-      "ropecon:contentWarnings": "Sisältää väkivaltaa, epäkuolleita, kuolemaa, kuolleita eläimiä, ötököitä, tuntemattomia asioita, maan alle menemistä."
+      "ropecon:contentWarnings": "Sisältää väkivaltaa, epäkuolleita, kuolemaa, kuolleita eläimiä, ötököitä, tuntemattomia asioita, maan alle menemistä.",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -478,7 +488,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Legendoja & Lohikäärmeitä",
-      "ropecon:contentWarnings": "Sisältää väkivaltaa, epäkuolleita, kuolemaa, kuolleita eläimiä, ötököitä, tuntemattomia asioita, maan alle menemistä."
+      "ropecon:contentWarnings": "Sisältää väkivaltaa, epäkuolleita, kuolemaa, kuolleita eläimiä, ötököitä, tuntemattomia asioita, maan alle menemistä.",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -517,7 +528,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Legendoja & lohikäärmeitä",
-      "ropecon:contentWarnings": "epäkuolleet, kuolema, kuolleet eläimet, maanalainen sijainti, vierauden tuntu, väkivalta, ötökät"
+      "ropecon:contentWarnings": "epäkuolleet, kuolema, kuolleet eläimet, maanalainen sijainti, vierauden tuntu, väkivalta, ötökät",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -556,7 +568,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Fail Forward",
-      "ropecon:contentWarnings": "Orjuus, epätasa-arvo, väkivalta, muinaiset uskonnot, musta huumori, viittauksia roomalaisen misogyniaan, uhkapelit ja vedonlyönti, järjestäytynyt rikollisuus, kelvoton isä, oudot perhesuhteet, hahmojen välinen kinastelu. "
+      "ropecon:contentWarnings": "Orjuus, epätasa-arvo, väkivalta, muinaiset uskonnot, musta huumori, viittauksia roomalaisen misogyniaan, uhkapelit ja vedonlyönti, järjestäytynyt rikollisuus, kelvoton isä, oudot perhesuhteet, hahmojen välinen kinastelu. ",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -600,7 +613,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Savage Worlds Adventure Edition (SWADE)",
-      "ropecon:contentWarnings": "Väkivalta, nälkiintyminen, janokuolema, taudit ja tartunnat"
+      "ropecon:contentWarnings": "Väkivalta, nälkiintyminen, janokuolema, taudit ja tartunnat",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -676,7 +690,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Astraterra",
-      "ropecon:contentWarnings": "Käärmeet"
+      "ropecon:contentWarnings": "Käärmeet",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -767,7 +782,8 @@
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Aude RPG",
       "ropecon:accessibilityOther": "I cannot speak Finnish and can only explain the rules in English or Spanish.",
-      "ropecon:contentWarnings": "Descriptions of light combat against animals and humans"
+      "ropecon:contentWarnings": "Descriptions of light combat against animals and humans",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -918,7 +934,10 @@
       "registration": ["ropelarp"],
       "revolvingdoor": ["false"]
     },
-    "cachedAnnotations": { "konsti:minAttendance": 5 },
+    "cachedAnnotations": {
+      "konsti:maxAttendance": 7,
+      "konsti:minAttendance": 5
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -953,7 +972,8 @@
     "cachedAnnotations": {
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 4,
-      "konsti:rpgSystem": "Old-School Essentials"
+      "konsti:rpgSystem": "Old-School Essentials",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -999,7 +1019,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Dungeons & Dragons 5th edition (2024)",
-      "ropecon:contentWarnings": "Family problems, customer service"
+      "ropecon:contentWarnings": "Family problems, customer service",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -1039,7 +1060,8 @@
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Mist Engine",
       "ropecon:accessibilityOther": "Vaikka peli voidaan vetää muutoin suomeksi, edellyttää osallistuminen ainakin kohtuullista lueteun englannin ymmärtämistä hahmolomakkeisiin sisältyvän informaation omaksumiseksi.",
-      "ropecon:contentWarnings": "Käärmeet ja hämähäkit, mahdollisesti myös epäkuolleet sekä lapseen kohdistuva kaltoinkohtelu tai väkivalta"
+      "ropecon:contentWarnings": "Käärmeet ja hämähäkit, mahdollisesti myös epäkuolleet sekä lapseen kohdistuva kaltoinkohtelu tai väkivalta",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -1092,7 +1114,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Call of Cthulhu (Modern)",
-      "ropecon:contentWarnings": "Kauhupeli, eli sisältää kauhuun liittyviä elementtejä. Mahdollista väkivaltaa, hirviöitä, kehokauhua, lonkeroita ja toimimattomia kännyköitä. Millään näistä ei kuitenkaan mässäillä. Käytössä on X-kortit."
+      "ropecon:contentWarnings": "Kauhupeli, eli sisältää kauhuun liittyviä elementtejä. Mahdollista väkivaltaa, hirviöitä, kehokauhua, lonkeroita ja toimimattomia kännyköitä. Millään näistä ei kuitenkaan mässäillä. Käytössä on X-kortit.",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -1139,7 +1162,8 @@
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Centauri Chronicle",
       "ropecon:accessibilityOther": "Can be played in Finnish if all players agree. English spoken and written language. Pen and paper. Dice rolling. ",
-      "ropecon:contentWarnings": "Violence, robbery, kidnapping, death"
+      "ropecon:contentWarnings": "Violence, robbery, kidnapping, death",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -1302,7 +1326,8 @@
     "cachedAnnotations": {
       "konsti:maxAttendance": 4,
       "konsti:minAttendance": 2,
-      "konsti:rpgSystem": "Lovecraftesque 2nd edition"
+      "konsti:rpgSystem": "Lovecraftesque 2nd edition",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -1339,7 +1364,8 @@
       "konsti:maxAttendance": 6,
       "konsti:minAttendance": 4,
       "konsti:rpgSystem": "D&D 5e",
-      "ropecon:contentWarnings": "Graphic Horror & Violence – Descriptions of blood, death, ritualistic murder, and dismemberment.\r\nPsychological Tension – Themes of paranoia, betrayal, and loss of agency.\r\nCannibalism / Ritual Consumption – Guests are intended to be killed and consumed in a blood feast.\r\nSupernatural Horror – Vampirism, necromantic rites, cursed nobility, and disturbing magical effects.\r\nMature Themes – Moral ambiguity, power dynamics, and manipulation.\r\nBody Horror – Potential transformation or mutilation of characters.\r\nClaustrophobia / Confinement – The feeling of being trapped within the estate with no way out.\r\nOptional: Alcohol / Drug Use Depictions – Thematic use of intoxicating “wines” that are blood or magical substances.\r\n\r\n"
+      "ropecon:contentWarnings": "Graphic Horror & Violence – Descriptions of blood, death, ritualistic murder, and dismemberment.\r\nPsychological Tension – Themes of paranoia, betrayal, and loss of agency.\r\nCannibalism / Ritual Consumption – Guests are intended to be killed and consumed in a blood feast.\r\nSupernatural Horror – Vampirism, necromantic rites, cursed nobility, and disturbing magical effects.\r\nMature Themes – Moral ambiguity, power dynamics, and manipulation.\r\nBody Horror – Potential transformation or mutilation of characters.\r\nClaustrophobia / Confinement – The feeling of being trapped within the estate with no way out.\r\nOptional: Alcohol / Drug Use Depictions – Thematic use of intoxicating “wines” that are blood or magical substances.\r\n\r\n",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -1454,7 +1480,8 @@
       "konsti:maxAttendance": 4,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Triangle Agency",
-      "ropecon:contentWarnings": "body horror, freezing, violence"
+      "ropecon:contentWarnings": "body horror, freezing, violence",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -1501,7 +1528,8 @@
       "konsti:maxAttendance": 4,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "CY_BORG",
-      "ropecon:contentWarnings": "Väkivalta, huumeet, okkultismi, taudit, velka"
+      "ropecon:contentWarnings": "Väkivalta, huumeet, okkultismi, taudit, velka",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -1548,7 +1576,8 @@
       "konsti:maxAttendance": 6,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Cyberpunk RED",
-      "ropecon:contentWarnings": "Väkivalta"
+      "ropecon:contentWarnings": "Väkivalta",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -1621,7 +1650,8 @@
     "cachedAnnotations": {
       "konsti:maxAttendance": 6,
       "konsti:minAttendance": 3,
-      "konsti:rpgSystem": "Daggerheart"
+      "konsti:rpgSystem": "Daggerheart",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -1659,7 +1689,8 @@
       "konsti:maxAttendance": 4,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Parhaaseen katseluaikaan",
-      "ropecon:contentWarnings": "Henkinen ja fyysinen väkivalta, mielisairaudet, ihmissuhteet."
+      "ropecon:contentWarnings": "Henkinen ja fyysinen väkivalta, mielisairaudet, ihmissuhteet.",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -1705,7 +1736,8 @@
       "konsti:maxAttendance": 6,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Own System",
-      "ropecon:contentWarnings": "Violence, body horror, medical procedures, terminal illness, excessive body modification, addiction, enclosed spaces"
+      "ropecon:contentWarnings": "Violence, body horror, medical procedures, terminal illness, excessive body modification, addiction, enclosed spaces",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -1752,7 +1784,8 @@
       "konsti:minAttendance": 1,
       "konsti:rpgSystem": "Modified Year Zero Engine",
       "ropecon:accessibilityOther": "The game requires a lot of talking with shorter breaks (10 minutes) in between.",
-      "ropecon:contentWarnings": "Game has mentions of sexual interactions, violence, death, blood and gore without graphic depiction and detailed descriptions."
+      "ropecon:contentWarnings": "Game has mentions of sexual interactions, violence, death, blood and gore without graphic depiction and detailed descriptions.",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -1857,7 +1890,8 @@
       "konsti:maxAttendance": 6,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Call of Cthulhu (Delta Green)",
-      "ropecon:contentWarnings": "Massaskaalan \"luonnon\"katastrofi\r\nIlkka-remes tason kansainvälinen juonittelu\r\nKosminen kauhu"
+      "ropecon:contentWarnings": "Massaskaalan \"luonnon\"katastrofi\r\nIlkka-remes tason kansainvälinen juonittelu\r\nKosminen kauhu",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -1895,7 +1929,8 @@
       "konsti:maxAttendance": 6,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Call of Cthulhu (Delta Green)",
-      "ropecon:contentWarnings": "Peli sijoittuu pohjois-amerikkaan, ja sisältää groteskia kauhua."
+      "ropecon:contentWarnings": "Peli sijoittuu pohjois-amerikkaan, ja sisältää groteskia kauhua.",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -1933,7 +1968,8 @@
       "konsti:maxAttendance": 4,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Delta Green (Call of Cthulhu -muunnelma)",
-      "ropecon:contentWarnings": "Cthulhu-mythos, kehokauhu, psykologinen kauhu, yliluonnollinen, jne. Viranomaisvaltuuksien väärinkäyttö."
+      "ropecon:contentWarnings": "Cthulhu-mythos, kehokauhu, psykologinen kauhu, yliluonnollinen, jne. Viranomaisvaltuuksien väärinkäyttö.",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -1999,7 +2035,8 @@
     "cachedAnnotations": {
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
-      "konsti:rpgSystem": "Dialect "
+      "konsti:rpgSystem": "Dialect ",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -2128,7 +2165,8 @@
     "cachedAnnotations": {
       "konsti:maxAttendance": 4,
       "konsti:minAttendance": 2,
-      "konsti:rpgSystem": "Totem"
+      "konsti:rpgSystem": "Totem",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -2199,6 +2237,7 @@
       "revolvingdoor": ["false"]
     },
     "cachedAnnotations": {
+      "konsti:maxAttendance": 8,
       "konsti:minAttendance": 6,
       "ropecon:accessibilityOther": "Ohjelmassa on hieman liikkumista, mutta välillä pääsee istumaan. Ohjelmassa voi olla kevyttä kosketusta. Ohjelmassa esiinnytään yleisön edessä.",
       "ropecon:contentWarnings": "Veren juominen.",
@@ -2244,7 +2283,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Ten Candles",
-      "ropecon:contentWarnings": "Fear of death, death, violence, loss, horror elements"
+      "ropecon:contentWarnings": "Fear of death, death, violence, loss, horror elements",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -2287,7 +2327,8 @@
       "konsti:maxAttendance": 4,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "custom",
-      "ropecon:contentWarnings": "Natural disasters, end-of-world scenarios, climate change, monsters, (non-graphic) violence"
+      "ropecon:contentWarnings": "Natural disasters, end-of-world scenarios, climate change, monsters, (non-graphic) violence",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -2330,7 +2371,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Custom rules-light system",
-      "ropecon:contentWarnings": "Nothing beyond potential undead monsters, and potential spiders. The game features little actual combat, beyond nipping and scratching the bad guys while running away."
+      "ropecon:contentWarnings": "Nothing beyond potential undead monsters, and potential spiders. The game features little actual combat, beyond nipping and scratching the bad guys while running away.",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -2409,7 +2451,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 4,
       "konsti:rpgSystem": "Phoenix RPS - an own system in development since 1992",
-      "ropecon:contentWarnings": "Fear, horror, death, mass extinction"
+      "ropecon:contentWarnings": "Fear, horror, death, mass extinction",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -2465,7 +2508,8 @@
       "konsti:maxAttendance": 4,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Fiasco (boxed ed.)",
-      "ropecon:contentWarnings": "The content of this game depends completely on what the players bring to the table.\r\nThe \"Let's Not\" mechanism is used to avoid specific situations.\r\nIf you have specific triggers, please let us discuss them before we start so everyone can have a good time!"
+      "ropecon:contentWarnings": "The content of this game depends completely on what the players bring to the table.\r\nThe \"Let's Not\" mechanism is used to avoid specific situations.\r\nIf you have specific triggers, please let us discuss them before we start so everyone can have a good time!",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -2541,7 +2585,8 @@
     "cachedAnnotations": {
       "konsti:maxAttendance": 6,
       "konsti:minAttendance": 3,
-      "konsti:rpgSystem": "Dungeons & Dragons 5e 2014"
+      "konsti:rpgSystem": "Dungeons & Dragons 5e 2014",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -2601,7 +2646,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Cyberpunk RED + additional mods + some house rules",
-      "ropecon:contentWarnings": "Violence against civilians, gang violence, drug use, disregard for human life, body modification with technology, strong language and heavy alcohol use."
+      "ropecon:contentWarnings": "Violence against civilians, gang violence, drug use, disregard for human life, body modification with technology, strong language and heavy alcohol use.",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -2772,7 +2818,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Kult: Divinity Lost",
-      "ropecon:contentWarnings": "väkivalta, pimeys, body horror, hallusinaatiot, itsensä vahingoittaminen"
+      "ropecon:contentWarnings": "väkivalta, pimeys, body horror, hallusinaatiot, itsensä vahingoittaminen",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -2811,7 +2858,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "WH40k: Imperium Maledictum",
-      "ropecon:contentWarnings": "väkivalta, orjuus, fasismi, body horror\r\n--\r\nviolence, slavery, facism, body horror\r\n"
+      "ropecon:contentWarnings": "väkivalta, orjuus, fasismi, body horror\r\n--\r\nviolence, slavery, facism, body horror\r\n",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -2856,7 +2904,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Heart: City Beneath",
-      "ropecon:contentWarnings": "Kehollinen kauhu (body horror), veri ja sillä mässäily (gore), niveljalkaiset ja hämähäkkieläimet, matelijat ja käärmeet, päihteet."
+      "ropecon:contentWarnings": "Kehollinen kauhu (body horror), veri ja sillä mässäily (gore), niveljalkaiset ja hämähäkkieläimet, matelijat ja käärmeet, päihteet.",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -2903,7 +2952,8 @@
       "konsti:maxAttendance": 6,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Legendoja & Lohikäärmeitä",
-      "ropecon:contentWarnings": "Väkivalta, kuolema, aaveet."
+      "ropecon:contentWarnings": "Väkivalta, kuolema, aaveet.",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -2963,6 +3013,7 @@
       "revolvingdoor": ["false"]
     },
     "cachedAnnotations": {
+      "konsti:maxAttendance": 4,
       "konsti:minAttendance": 5,
       "ropecon:accessibilityOther": "Pelissä liikutaan paljon. Kohtauksia ohjataan äänillä. Pelaajat lukevat lyhyen (alle A4) hahmotekstin paperilla. Pelissä käytetään paperinukkeja.",
       "ropecon:contentWarnings": "Kipu, kuolema, kovat äänet, kirkas valo, neutraali kosketus, sormilla maalaaminen, vesiliukoinen maali iholla."
@@ -3004,6 +3055,7 @@
       "revolvingdoor": ["false"]
     },
     "cachedAnnotations": {
+      "konsti:workshopFee": "2 €",
       "ropecon:contentWarnings": "Kuumaliima, pikaliima, metallit jotka saattavat sisältää mm. nikkeliä"
     },
     "isCancelled": false,
@@ -3100,7 +3152,8 @@
       "konsti:maxAttendance": 4,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Black Sword Hack",
-      "ropecon:contentWarnings": "violence, body horror, desperate situations, possibility of player character death"
+      "ropecon:contentWarnings": "violence, body horror, desperate situations, possibility of player character death",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -3173,7 +3226,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 1,
       "konsti:rpgSystem": "Seikkailuja! Seikkailuja!",
-      "ropecon:contentWarnings": "Sormien amputoiminen ilman puudutusta. Sen verran mekaniikka sisältää yhteenlaskua, että suositusikäraja 13+ "
+      "ropecon:contentWarnings": "Sormien amputoiminen ilman puudutusta. Sen verran mekaniikka sisältää yhteenlaskua, että suositusikäraja 13+ ",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -3212,7 +3266,8 @@
       "konsti:maxAttendance": 4,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "kevennetty Mouse Guard rpg",
-      "ropecon:contentWarnings": "veden varaan joutuminen, hahmon fyysinen vahingoittuminen, hahmon omaisuuden vahingoittuminen"
+      "ropecon:contentWarnings": "veden varaan joutuminen, hahmon fyysinen vahingoittuminen, hahmon omaisuuden vahingoittuminen",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -3258,7 +3313,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "One Ring 2. laitos",
-      "ropecon:contentWarnings": "Moraalisesti arveluttavien asioiden teko."
+      "ropecon:contentWarnings": "Moraalisesti arveluttavien asioiden teko.",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -3304,7 +3360,8 @@
     "cachedAnnotations": {
       "konsti:maxAttendance": 4,
       "konsti:minAttendance": 2,
-      "konsti:rpgSystem": "The Quiet Year"
+      "konsti:rpgSystem": "The Quiet Year",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -3342,7 +3399,8 @@
       "konsti:maxAttendance": 4,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Call of Cthulhu 7th ed.",
-      "ropecon:contentWarnings": "väkivaltaa, kauhuroolipeli"
+      "ropecon:contentWarnings": "väkivaltaa, kauhuroolipeli",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -3420,7 +3478,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Call of Cthulhu",
-      "ropecon:contentWarnings": "Saattaa tulla masennukseen liittyen keskustelua, joka saattaa triggeröidä. "
+      "ropecon:contentWarnings": "Saattaa tulla masennukseen liittyen keskustelua, joka saattaa triggeröidä. ",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -3496,28 +3555,31 @@
       "state": ["accepted"],
       "topic": ["larp"],
       "konsti": ["larp"],
-      "grouping": ["new-worlds", "beginners"],
+      "grouping": ["beginners", "new-worlds"],
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
       "inclusivity": [
-        "long-program",
         "long-texts",
         "dark-lighting",
+        "long-program",
         "physical-contact"
       ],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
-    "cachedAnnotations": { "konsti:minAttendance": 4 },
+    "cachedAnnotations": {
+      "konsti:maxAttendance": 6,
+      "konsti:minAttendance": 4
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
         "slug": "hurmos-tuleva-muisti-tyonimi",
         "title": "Hurmos - Tuleva muisti",
         "startTime": "2025-07-26T20:00:00+03:00",
-        "endTime": "2025-07-26T23:00:00+03:00",
-        "lengthMinutes": 180,
+        "endTime": "2025-07-27T00:00:00+03:00",
+        "lengthMinutes": 240,
         "location": "Room 215",
         "isCancelled": false
       }
@@ -3556,7 +3618,8 @@
       "konsti:maxAttendance": 4,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Kevyt, tbd",
-      "ropecon:contentWarnings": "Henkinen ja fyysinen väkivalta. "
+      "ropecon:contentWarnings": "Henkinen ja fyysinen väkivalta. ",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -3603,7 +3666,8 @@
     "cachedAnnotations": {
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 2,
-      "konsti:rpgSystem": "Death in Space"
+      "konsti:rpgSystem": "Death in Space",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -3642,7 +3706,8 @@
       "konsti:maxAttendance": 4,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Mothership Sci-fi Horror RPG",
-      "ropecon:contentWarnings": "Panic, violence, claustrofobia, stress, animal cruelty"
+      "ropecon:contentWarnings": "Panic, violence, claustrofobia, stress, animal cruelty",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -3750,8 +3815,8 @@
       "revolvingdoor": ["false"]
     },
     "cachedAnnotations": {
-      "konsti:maxAttendance": 14,
-      "ropecon:accessibilityOther": "Improvisaatioteatterissa yllättäviä aiheita voi nousta esiin. Jos kukaan haluaa, niistä keskustellaan. \r\nIn improv, surprising topics may rise. We will discuss about those, if anyone wishes."
+      "konsti:maxAttendance": 8,
+      "ropecon:accessibilityOther": "Improvisaatioteatterissa yllättäviä aiheita voi nousta esiin. Jos kukaan haluaa, niistä keskustellaan. In improv, surprising topics may rise. We will discuss about those, if anyone wishes."
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -3820,7 +3885,8 @@
       "konsti:maxAttendance": 4,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Fate",
-      "ropecon:contentWarnings": "death, killing, demons, desperation"
+      "ropecon:contentWarnings": "death, killing, demons, desperation",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -3921,7 +3987,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Inkarnaatio",
-      "ropecon:contentWarnings": "Hengenvaara\r\n\r\nVastenmieliset hirviöt"
+      "ropecon:contentWarnings": "Hengenvaara\r\n\r\nVastenmieliset hirviöt",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -3959,7 +4026,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Inkarnaatio",
-      "ropecon:contentWarnings": "Ihmisuhraus, hengenvaara, vastenmielisiä hirviöitä"
+      "ropecon:contentWarnings": "Ihmisuhraus, hengenvaara, vastenmielisiä hirviöitä",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -3995,9 +4063,11 @@
       "revolvingdoor": ["false"]
     },
     "cachedAnnotations": {
+      "konsti:maxAttendance": 0,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Tarinoita tietoisuuden ajalta",
-      "ropecon:contentWarnings": "Itsemurha, seksuaaliset perversiot, pelaajien päätökset vaikuttavat sivuhahmon päätökseen itsemurhasta, transhumanismin varjopuolet, sivuhahmon raiskaus, peli voi olla psykologisesti painostava, avoin seksuaalisuus"
+      "ropecon:contentWarnings": "Itsemurha, seksuaaliset perversiot, pelaajien päätökset vaikuttavat sivuhahmon päätökseen itsemurhasta, transhumanismin varjopuolet, sivuhahmon raiskaus, peli voi olla psykologisesti painostava, avoin seksuaalisuus",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -4122,7 +4192,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "HeroQuest-roolipelin suomenkielinen laitos",
-      "ropecon:contentWarnings": "väkivalta, lapsen katoaminen"
+      "ropecon:contentWarnings": "väkivalta, lapsen katoaminen",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -4161,7 +4232,8 @@
       "konsti:maxAttendance": 4,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Tarinoita tietoisuuden ajalta",
-      "ropecon:contentWarnings": "Itsemurha, terrorismi, prostituutio, pelaaja vs. pelaaja asetelma, huumeet, aivopesu, pelaajahahmon kuolema, hahmojen välinen seksi, ajatusten luku"
+      "ropecon:contentWarnings": "Itsemurha, terrorismi, prostituutio, pelaaja vs. pelaaja asetelma, huumeet, aivopesu, pelaajahahmon kuolema, hahmojen välinen seksi, ajatusten luku",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -4244,7 +4316,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Mothership 1E",
-      "ropecon:contentWarnings": "hyönteiset ja hämähäkit, body horror, mielenhallinta, väkivalta, ahtaat paikat, stressi, paniikki\r\n--\r\narachnophobia, body horror, mind control, violence, claustrophobia, stress, panic\r\n"
+      "ropecon:contentWarnings": "hyönteiset ja hämähäkit, body horror, mielenhallinta, väkivalta, ahtaat paikat, stressi, paniikki\r\n--\r\narachnophobia, body horror, mind control, violence, claustrophobia, stress, panic\r\n",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -4293,7 +4366,8 @@
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Hunter: the Reckoning",
       "ropecon:accessibilityOther": "Hahmolomakkeet ja osa materiaalista on englannin kielellä.",
-      "ropecon:contentWarnings": "väkivalta, kauhu, häirintä, ahdistavat tilat"
+      "ropecon:contentWarnings": "väkivalta, kauhu, häirintä, ahdistavat tilat",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -4376,7 +4450,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Dread",
-      "ropecon:contentWarnings": "Elävältä syödyksi tuleminen, korkeat paikat, armeija, stressaavat tilanteet, petturuus"
+      "ropecon:contentWarnings": "Elävältä syödyksi tuleminen, korkeat paikat, armeija, stressaavat tilanteet, petturuus",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -4419,7 +4494,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Lazers and feelings (bare bones)",
-      "ropecon:contentWarnings": "Mahdollisesti väkivallan tai bodyhorrorin kuvailua menemättä mässäilyyn"
+      "ropecon:contentWarnings": "Mahdollisesti väkivallan tai bodyhorrorin kuvailua menemättä mässäilyyn",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -4467,7 +4543,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Pirate Borg",
-      "ropecon:contentWarnings": "Päihdeaineet, epäkuolleet, väkivalta, kevyt gore"
+      "ropecon:contentWarnings": "Päihdeaineet, epäkuolleet, väkivalta, kevyt gore",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -4504,7 +4581,8 @@
       "konsti:maxAttendance": 4,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Brindlewood Bay ",
-      "ropecon:contentWarnings": "As a murder mystery the game might not be suitable for very young children. "
+      "ropecon:contentWarnings": "As a murder mystery the game might not be suitable for very young children. ",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -4551,7 +4629,8 @@
     "cachedAnnotations": {
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 2,
-      "konsti:rpgSystem": "Astraterra"
+      "konsti:rpgSystem": "Astraterra",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -4600,7 +4679,8 @@
       "konsti:maxAttendance": 6,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "10 candles",
-      "ropecon:contentWarnings": "Pimeys, tuntematon, hahmokuolema, hirviöt, kuoleman kuvailu, epätoivo, hahmojen huononeva tilanne, kauhuelementit"
+      "ropecon:contentWarnings": "Pimeys, tuntematon, hahmokuolema, hirviöt, kuoleman kuvailu, epätoivo, hahmojen huononeva tilanne, kauhuelementit",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -4649,7 +4729,8 @@
       "konsti:maxAttendance": 6,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "10 candles",
-      "ropecon:contentWarnings": "Pimeys, tuntematon, hahmokuolema, hirviöt, kuoleman kuvailu, epätoivo, hahmojen huononeva tilanne, kauhuelementit"
+      "ropecon:contentWarnings": "Pimeys, tuntematon, hahmokuolema, hirviöt, kuoleman kuvailu, epätoivo, hahmojen huononeva tilanne, kauhuelementit",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -4684,6 +4765,7 @@
       "revolvingdoor": ["false"]
     },
     "cachedAnnotations": {
+      "konsti:maxAttendance": 10,
       "konsti:minAttendance": 8,
       "ropecon:contentWarnings": "Mahdollinen mallinnettu väkivalta, konflikti, tappaminen lähimenneisyydessä"
     },
@@ -4724,7 +4806,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Teeth RPG, kertasessioon sovitettu Forged in the Dark -systeemi",
-      "ropecon:contentWarnings": "väkivalta, okkultismi, hahmojen kuoleman riski, hahmojen vietteleminen tai muut kyseenalaiset romanttiset viritykset"
+      "ropecon:contentWarnings": "väkivalta, okkultismi, hahmojen kuoleman riski, hahmojen vietteleminen tai muut kyseenalaiset romanttiset viritykset",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -4809,7 +4892,8 @@
     "cachedAnnotations": {
       "konsti:maxAttendance": 4,
       "konsti:minAttendance": 3,
-      "konsti:rpgSystem": "Mouse Guard RPG"
+      "konsti:rpgSystem": "Mouse Guard RPG",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -4854,7 +4938,8 @@
     "cachedAnnotations": {
       "konsti:maxAttendance": 4,
       "konsti:minAttendance": 3,
-      "konsti:rpgSystem": "Mouse Guard RPG"
+      "konsti:rpgSystem": "Mouse Guard RPG",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -4888,7 +4973,8 @@
     },
     "cachedAnnotations": {
       "konsti:maxAttendance": 16,
-      "konsti:minAttendance": 4
+      "konsti:minAttendance": 4,
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -4927,6 +5013,7 @@
       "revolvingdoor": ["false"]
     },
     "cachedAnnotations": {
+      "konsti:maxAttendance": 10,
       "konsti:minAttendance": 8,
       "ropecon:accessibilityOther": "alku- ja loppubriiffi pidetään englanniksi\r\npeli on suunnattu pääasiassa aikuisille, mutta pelaajien tulee olla vähintään 15-vuotiaita",
       "ropecon:contentWarnings": "karikatyyriset hahmot (sisältävät stereotypioita)\r\nkiusalliset lomastereotypiat\r\nflirttailu\r\nihastukset\r\nromantiikka\r\nvaikeat perhedynamiikat"
@@ -4975,7 +5062,8 @@
     "cachedAnnotations": {
       "konsti:maxAttendance": 7,
       "konsti:minAttendance": 3,
-      "konsti:rpgSystem": "Free form"
+      "konsti:rpgSystem": "Free form",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -5021,7 +5109,8 @@
       "konsti:maxAttendance": 24,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Kill Team 3rd ed",
-      "ropecon:contentWarnings": "sota/war"
+      "ropecon:contentWarnings": "sota/war",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": []
@@ -5048,7 +5137,8 @@
       "konsti:maxAttendance": 24,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Kill Team 3rd ed",
-      "ropecon:contentWarnings": "sota/war"
+      "ropecon:contentWarnings": "sota/war",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": []
@@ -5120,7 +5210,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Yksinkertaistettu D&D 5 / L&L",
-      "ropecon:contentWarnings": "Väkivalta, ympäristökatastrofi, jännitys- / kauhuelementtejä"
+      "ropecon:contentWarnings": "Väkivalta, ympäristökatastrofi, jännitys- / kauhuelementtejä",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -5211,7 +5302,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Cubicle 7 Laundry files",
-      "ropecon:contentWarnings": "Byrokratia, yliluonnolliset elementit, hirviöt"
+      "ropecon:contentWarnings": "Byrokratia, yliluonnolliset elementit, hirviöt",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -5300,7 +5392,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Vaesen",
-      "ropecon:contentWarnings": "Väkivalta ja väkivallan uhka, sairastuminen, alkoholin käyttö, taikuus ja kansanperinteen hirviöt"
+      "ropecon:contentWarnings": "Väkivalta ja väkivallan uhka, sairastuminen, alkoholin käyttö, taikuus ja kansanperinteen hirviöt",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -5574,7 +5667,8 @@
       "konsti:maxAttendance": 4,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "GURPS 3 laitos",
-      "ropecon:contentWarnings": "väkivalta"
+      "ropecon:contentWarnings": "väkivalta",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -5611,7 +5705,8 @@
     "cachedAnnotations": {
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 4,
-      "konsti:rpgSystem": "Oma versio Year Zero-systeemistä"
+      "konsti:rpgSystem": "Oma versio Year Zero-systeemistä",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -5657,7 +5752,8 @@
       "konsti:maxAttendance": 4,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Kult Divinity Lost",
-      "ropecon:contentWarnings": "Kauhu, kehokauhu, yliluonnollisuus, (seksuaalinen) väkivalta, mahdollinen PvP, erinäiset fobiat."
+      "ropecon:contentWarnings": "Kauhu, kehokauhu, yliluonnollisuus, (seksuaalinen) väkivalta, mahdollinen PvP, erinäiset fobiat.",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -5695,7 +5791,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Homebrew",
-      "ropecon:contentWarnings": "Hämähäkit, väkivalta, veri, pimeys, "
+      "ropecon:contentWarnings": "Hämähäkit, väkivalta, veri, pimeys, ",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -5740,7 +5837,8 @@
       "konsti:maxAttendance": 4,
       "konsti:minAttendance": 1,
       "konsti:rpgSystem": "Pendragon (6. laitos)",
-      "ropecon:contentWarnings": "Pelimaailma mukailee keskiaikaisia arvoja ja asenteita, sekä pelissä kohdataan väkivaltaa."
+      "ropecon:contentWarnings": "Pelimaailma mukailee keskiaikaisia arvoja ja asenteita, sekä pelissä kohdataan väkivaltaa.",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -5776,7 +5874,8 @@
       "konsti:maxAttendance": 4,
       "konsti:minAttendance": 1,
       "konsti:rpgSystem": "Pendragon (6. laitos)",
-      "ropecon:contentWarnings": "Pelimaailma mukailee keskiaikaisia arvoja ja asenteita, sekä pelissä kohdataan väkivaltaa."
+      "ropecon:contentWarnings": "Pelimaailma mukailee keskiaikaisia arvoja ja asenteita, sekä pelissä kohdataan väkivaltaa.",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -5819,7 +5918,8 @@
       "konsti:maxAttendance": 6,
       "konsti:minAttendance": 6,
       "konsti:rpgSystem": "Itse keksitty, yhdistää Cluedo-lautapelin pohjaa, itse keksittyjä lautapeli mekaniikkoja sekä kevyitä larppi profiileita",
-      "ropecon:contentWarnings": "Kuolema ja sen käsittely, kiristys, murha ja sen suunnittelu, väkivalta, aikapaine"
+      "ropecon:contentWarnings": "Kuolema ja sen käsittely, kiristys, murha ja sen suunnittelu, väkivalta, aikapaine",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -5857,7 +5957,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Mothership",
-      "ropecon:contentWarnings": "Kauhu, gore, kuolema, eldritch horror"
+      "ropecon:contentWarnings": "Kauhu, gore, kuolema, eldritch horror",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -5894,7 +5995,8 @@
     "cachedAnnotations": {
       "konsti:maxAttendance": 7,
       "konsti:minAttendance": 3,
-      "konsti:rpgSystem": "DnD e5"
+      "konsti:rpgSystem": "DnD e5",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -5954,6 +6056,7 @@
       "revolvingdoor": ["false"]
     },
     "cachedAnnotations": {
+      "konsti:maxAttendance": 6,
       "konsti:minAttendance": 6,
       "ropecon:accessibilityOther": "Peli vaatii kevyttä liikkumista (kävely)",
       "ropecon:contentWarnings": "Jonkin asteinen julkinen esillä olo, julkinen larppaaminen",
@@ -6001,7 +6104,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Call of Cthulhu 7 ed.",
-      "ropecon:contentWarnings": "Kauhu, kehollinen kauhu, väkivallan kuvaukset"
+      "ropecon:contentWarnings": "Kauhu, kehollinen kauhu, väkivallan kuvaukset",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -6039,7 +6143,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Legendoja & lohikäärmeitä",
-      "ropecon:contentWarnings": "Lievästä kohtalaiseen kauhukuvastoa, etenkin ruumiiden epämuodostumiin liittyen."
+      "ropecon:contentWarnings": "Lievästä kohtalaiseen kauhukuvastoa, etenkin ruumiiden epämuodostumiin liittyen.",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -6087,7 +6192,8 @@
       "konsti:maxAttendance": 4,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Cthulhu Dark Ages (CoC 7th)",
-      "ropecon:contentWarnings": "viittauksia väkivaltaisin tapahtumiin, kauhuroolipeli"
+      "ropecon:contentWarnings": "viittauksia väkivaltaisin tapahtumiin, kauhuroolipeli",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -6129,7 +6235,8 @@
     "cachedAnnotations": {
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 4,
-      "konsti:rpgSystem": "Oma mekaniikka"
+      "konsti:rpgSystem": "Oma mekaniikka",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -6164,6 +6271,7 @@
       "revolvingdoor": ["false"]
     },
     "cachedAnnotations": {
+      "konsti:maxAttendance": 14,
       "konsti:minAttendance": 6,
       "ropecon:accessibilityOther": "Peli nojaa pitkälti näköaistiin.",
       "ropecon:contentWarnings": "Kaikenlaiset pahat asiat, joita lapsille voi tapahtua. Sote-säästöt. Kauhugenrelle tyypilliset teemat.",
@@ -6288,7 +6396,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Legendoja ja lohikäärmeitä",
-      "ropecon:contentWarnings": "Epämuodostumat, myrkylliset eläimet, kehokauhu"
+      "ropecon:contentWarnings": "Epämuodostumat, myrkylliset eläimet, kehokauhu",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -6331,7 +6440,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Legendoja & Lohikäärmeitä",
-      "ropecon:contentWarnings": "Henkinen ja fyysinen väkivalta, ahtaat paikat, hirviöt, vangiksi jääminen."
+      "ropecon:contentWarnings": "Henkinen ja fyysinen väkivalta, ahtaat paikat, hirviöt, vangiksi jääminen.",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -6425,7 +6535,8 @@
       "konsti:maxAttendance": 4,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Kult - Divinity Lost (Powered by the Apocalypse)",
-      "ropecon:contentWarnings": "Mielenterveysongelmat: masennus, ahdistus, traumakokemukset\r\nItsetuhoisuus ja itsemurha-aiheet\r\nKatoamiset ja kuolema (erityisesti nuoren henkilön)\r\nPerhesuhteiden konfliktit\r\nPsykologinen väkivalta ja hylätyksi tulemisen teemat\r\nRiippuvuudet (alkoholi, huumeet, lääkkeet)\r\nViranomaisten kyvyttömyys tai välinpitämättömyys\r\n\r\nHahmojen todellisuudentajun horjuminen / disassosiaatio\r\n\r\nUskonnolliset tai okkulttiset viittaukset"
+      "ropecon:contentWarnings": "Mielenterveysongelmat: masennus, ahdistus, traumakokemukset\r\nItsetuhoisuus ja itsemurha-aiheet\r\nKatoamiset ja kuolema (erityisesti nuoren henkilön)\r\nPerhesuhteiden konfliktit\r\nPsykologinen väkivalta ja hylätyksi tulemisen teemat\r\nRiippuvuudet (alkoholi, huumeet, lääkkeet)\r\nViranomaisten kyvyttömyys tai välinpitämättömyys\r\n\r\nHahmojen todellisuudentajun horjuminen / disassosiaatio\r\n\r\nUskonnolliset tai okkulttiset viittaukset",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -6464,7 +6575,8 @@
       "konsti:maxAttendance": 6,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Paranoia",
-      "ropecon:contentWarnings": "Hahmot saattavat asettua toisiaan vastaan, huumorin varjolla tarjoiltua väkivaltaa, ahdistavaa dystopiaa, pelinjohtaja huijaa nopanheitoissa, pehmonalle jolta on revitty pää irti"
+      "ropecon:contentWarnings": "Hahmot saattavat asettua toisiaan vastaan, huumorin varjolla tarjoiltua väkivaltaa, ahdistavaa dystopiaa, pelinjohtaja huijaa nopanheitoissa, pehmonalle jolta on revitty pää irti",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -6544,7 +6656,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Own light-weight system",
-      "ropecon:contentWarnings": "luonnon saastuminen, luonnon lainalaisuudet, saalistajaeläimet"
+      "ropecon:contentWarnings": "luonnon saastuminen, luonnon lainalaisuudet, saalistajaeläimet",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -6600,7 +6713,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Legendoja ja Lohikäärmeitä",
-      "ropecon:contentWarnings": "Väkivalta\r\nEpäkuolleet\r\nKuolema\r\nKuolleet eläimet\r\nÖtökät\r\nTuntemattomat asiat\r\nMaan alle meneminen"
+      "ropecon:contentWarnings": "Väkivalta\r\nEpäkuolleet\r\nKuolema\r\nKuolleet eläimet\r\nÖtökät\r\nTuntemattomat asiat\r\nMaan alle meneminen",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -6638,7 +6752,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Legendoja ja lohikäärmeitä",
-      "ropecon:contentWarnings": "Väkivaltaa, epäkuolleita, kuolemaa, kuolleita eläimiä, ötököitä, tuntemattomia asioita, maan alle menemistä"
+      "ropecon:contentWarnings": "Väkivaltaa, epäkuolleita, kuolemaa, kuolleita eläimiä, ötököitä, tuntemattomia asioita, maan alle menemistä",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -6677,7 +6792,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Legendoja ja Lohikäärmeitä",
-      "ropecon:contentWarnings": "Sisältää väkivaltaa, epäkuolleita, kuolemaa, kuolleita eläimiä, ötököitä, tuntemattomia asioita ja maan alle menemistä."
+      "ropecon:contentWarnings": "Sisältää väkivaltaa, epäkuolleita, kuolemaa, kuolleita eläimiä, ötököitä, tuntemattomia asioita ja maan alle menemistä.",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -6719,7 +6835,8 @@
       "konsti:maxAttendance": 6,
       "konsti:minAttendance": 4,
       "konsti:rpgSystem": "L&L: Eevenkoto",
-      "ropecon:contentWarnings": "Väkivaltaa, varkaita, murha, demoneja, ihmisuhreja"
+      "ropecon:contentWarnings": "Väkivaltaa, varkaita, murha, demoneja, ihmisuhreja",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -6767,7 +6884,8 @@
       "konsti:maxAttendance": 4,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "L&L Suuri seikkailu",
-      "ropecon:contentWarnings": "Taistelu ja vankeus."
+      "ropecon:contentWarnings": "Taistelu ja vankeus.",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -6860,7 +6978,8 @@
       "konsti:maxAttendance": 4,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Fail Forward",
-      "ropecon:contentWarnings": "dystopia, maailmanloppu, transhumanismi, telepatia"
+      "ropecon:contentWarnings": "dystopia, maailmanloppu, transhumanismi, telepatia",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -6896,7 +7015,8 @@
     "cachedAnnotations": {
       "konsti:maxAttendance": 4,
       "konsti:minAttendance": 2,
-      "konsti:rpgSystem": "QuestWorlds Glorantha"
+      "konsti:rpgSystem": "QuestWorlds Glorantha",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -6973,7 +7093,8 @@
       "konsti:maxAttendance": 24,
       "konsti:minAttendance": 10,
       "konsti:rpgSystem": "Lautapeli",
-      "ropecon:accessibilityOther": "Kuulohäiriöt voivat vaikeuttaa pelin keskustelun seuraamista."
+      "ropecon:accessibilityOther": "Kuulohäiriöt voivat vaikeuttaa pelin keskustelun seuraamista.",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -7020,7 +7141,8 @@
     "cachedAnnotations": {
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
-      "konsti:rpgSystem": "Yksisarvisten maailma"
+      "konsti:rpgSystem": "Yksisarvisten maailma",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -7058,7 +7180,8 @@
       "konsti:maxAttendance": 3,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Apocalypse World (1ed)",
-      "ropecon:contentWarnings": "Maailmanloppu, väkivalta, mielenhallinta, uskonnot, päihteet, seksuaalisuus, taudit, nälänhätä, vallankäyttö"
+      "ropecon:contentWarnings": "Maailmanloppu, väkivalta, mielenhallinta, uskonnot, päihteet, seksuaalisuus, taudit, nälänhätä, vallankäyttö",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -7101,7 +7224,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Wanderhome",
-      "ropecon:accessibilityOther": "Pelisysteemin kirjan julkaisukieli on englanti, mutta englannin kielen lukutaito ei ole välttämätöntä ohjelmaan osallistumiseen. "
+      "ropecon:accessibilityOther": "Pelisysteemin kirjan julkaisukieli on englanti, mutta englannin kielen lukutaito ei ole välttämätöntä ohjelmaan osallistumiseen. ",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -7138,7 +7262,8 @@
     "cachedAnnotations": {
       "konsti:maxAttendance": 3,
       "konsti:minAttendance": 2,
-      "konsti:rpgSystem": "Microscope (sovellettuna)"
+      "konsti:rpgSystem": "Microscope (sovellettuna)",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -7173,6 +7298,7 @@
       "revolvingdoor": ["false"]
     },
     "cachedAnnotations": {
+      "konsti:maxAttendance": 16,
       "konsti:minAttendance": 12,
       "ropecon:accessibilityOther": "Peli ei vaadi erityistä fyysistä rasitusta pelaajilta. Pelin ensimmäisen ja toisen vaiheen välissä on pieni tauko, tai ainakin siinä on sille mahdollisuus. Pelin lopun ja debrieffin välissä on myös pieni tauko, tai ainakin se on mahdollista pitää.\r\nPelissä mallinnetaan itse gladiaattoritaistelu Areena 5 - freeware-peliä käyttämällä. Pelissä olevat taistelun kuvaukset selostetaan, emme valitettavasti voi järjestää viittomakielen tulkkia. Tarkoituksena kuitenkin olisi, että peli näkyisi projektorilta, niin pelaajat kykenevät lukemaan taistelun kuvaukset tarvittaessa itse.\r\nAinoa väkivaltaa mallintava metatekniikka on läpsiminen fyysisen kontaktin välttämiseksi.\r\n",
       "ropecon:contentWarnings": "rotu-sana (fantasiakontekstissa), väkivalta, mallinnettu väkivalta, romanttiset kontaktit, alkoholi, humalatilan mallintaminen, uhkapeli, urheilu, oman lapsen (ei pelaajahahmo) loukkaantuminen, kumppanin (ei pelaajahahmo) loukkaantuminen"
@@ -7261,7 +7387,8 @@
     "cachedAnnotations": {
       "konsti:maxAttendance": 11,
       "konsti:minAttendance": 6,
-      "konsti:rpgSystem": "Malifaux 4th Edition Beta"
+      "konsti:rpgSystem": "Malifaux 4th Edition Beta",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -7329,6 +7456,7 @@
       "revolvingdoor": ["false"]
     },
     "cachedAnnotations": {
+      "konsti:maxAttendance": 15,
       "konsti:minAttendance": 10,
       "ropecon:accessibilityOther": "Peli pelataan yhdessä huoneessa. Pelaaja voi halutessaan istua koko ajan. ",
       "ropecon:contentWarnings": "Avaruusmatkailu, kilpailu, sosiaaliset paineet, onnistumispakko, paineensietokyky, väkivaltainen historia hahmolla, erilaiset traumat, parisuhdeongelmat, ",
@@ -7375,7 +7503,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Oma kevyt pelisysteemi",
-      "ropecon:accessibilityOther": "Pelissä on apuna kartta, jota voidaan kuvailla näkövammaiselle pelaajalle. Pelissä on tarkoitus keksiä riimiloitsuja yhdessä, mikä saattaa jännittää jotakuta. "
+      "ropecon:accessibilityOther": "Pelissä on apuna kartta, jota voidaan kuvailla näkövammaiselle pelaajalle. Pelissä on tarkoitus keksiä riimiloitsuja yhdessä, mikä saattaa jännittää jotakuta. ",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -7449,7 +7578,8 @@
       "konsti:maxAttendance": 6,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Homebrew/modattu Fate",
-      "ropecon:contentWarnings": "Pimeys, ahtaat paikat"
+      "ropecon:contentWarnings": "Pimeys, ahtaat paikat",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -7495,7 +7625,8 @@
       "konsti:maxAttendance": 4,
       "konsti:minAttendance": 4,
       "konsti:rpgSystem": "Oma",
-      "ropecon:contentWarnings": "death and mutilation"
+      "ropecon:contentWarnings": "death and mutilation",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -7544,7 +7675,8 @@
     "cachedAnnotations": {
       "konsti:maxAttendance": 8,
       "konsti:minAttendance": 6,
-      "konsti:rpgSystem": "Necromunda"
+      "konsti:rpgSystem": "Necromunda",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": true,
     "scheduleItems": []
@@ -7665,6 +7797,7 @@
       "revolvingdoor": ["false"]
     },
     "cachedAnnotations": {
+      "konsti:maxAttendance": 12,
       "konsti:minAttendance": 8,
       "ropecon:contentWarnings": "Sota, ilmastokatastrofi, konflikti, aikaraja päätöksenteossa, läheisen kuolema // War, climate disaster, conflict, deadline in decision making, death of a loved one"
     },
@@ -7724,7 +7857,8 @@
       "konsti:maxAttendance": 4,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "SWADE (Savage Worlds Adventure Edition)",
-      "ropecon:contentWarnings": "Sisältövaroitus: huumeet, kuolema, murhatutkimus, väkivaltaa."
+      "ropecon:contentWarnings": "Sisältövaroitus: huumeet, kuolema, murhatutkimus, väkivaltaa.",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -7778,7 +7912,8 @@
     "cachedAnnotations": {
       "konsti:maxAttendance": 4,
       "konsti:minAttendance": 3,
-      "konsti:rpgSystem": "Microscope"
+      "konsti:rpgSystem": "Microscope",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -7823,7 +7958,8 @@
     "cachedAnnotations": {
       "konsti:maxAttendance": 4,
       "konsti:minAttendance": 3,
-      "konsti:rpgSystem": "Microscope"
+      "konsti:rpgSystem": "Microscope",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -7849,7 +7985,7 @@
       "state": ["accepted"],
       "topic": ["figures"],
       "konsti": ["tournament"],
-      "language": ["en", "fi"],
+      "language": ["fi", "en"],
       "age-group": ["everyone"],
       "scheduled": ["one", "one-or-more"],
       "inclusivity": ["long-program"],
@@ -7859,7 +7995,8 @@
     "cachedAnnotations": {
       "konsti:maxAttendance": 30,
       "konsti:minAttendance": 20,
-      "konsti:rpgSystem": "Middle-Earth Strategy Battle game -new edition"
+      "konsti:rpgSystem": "Middle-Earth Strategy Battle game -new edition",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -7976,7 +8113,8 @@
       "konsti:maxAttendance": 7,
       "konsti:minAttendance": 5,
       "konsti:rpgSystem": "Milleniums's End",
-      "ropecon:contentWarnings": "Violence and Combat-Related Triggers\r\nPsychological and Ethical Themes\r\nEspionage and Crime Themes\r\nEnvironmental and Cultural Themes\r\n\r\nVäkivaltaan ja taisteluun liittyvät aiheet\r\nPsykologiset ja eettiset teemat\r\nVakoilu ja rikollisuus\r\nYmpäristöön ja kulttuuriin liittyvät teemat"
+      "ropecon:contentWarnings": "Violence and Combat-Related Triggers\r\nPsychological and Ethical Themes\r\nEspionage and Crime Themes\r\nEnvironmental and Cultural Themes\r\n\r\nVäkivaltaan ja taisteluun liittyvät aiheet\r\nPsykologiset ja eettiset teemat\r\nVakoilu ja rikollisuus\r\nYmpäristöön ja kulttuuriin liittyvät teemat",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -8064,7 +8202,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "GUMSHOE / The Fall of Delta Green",
-      "ropecon:contentWarnings": "Eksplisiittinen fyysinen väkivalta, implisiittinen henkinen väkivalta, yksinäisyys"
+      "ropecon:contentWarnings": "Eksplisiittinen fyysinen väkivalta, implisiittinen henkinen väkivalta, yksinäisyys",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -8103,7 +8242,8 @@
       "konsti:maxAttendance": 4,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Unknown Beast",
-      "ropecon:contentWarnings": "Peli on käsikirjoittamaton ja voi tästä syystä sisältää mitä tahansa kauhu elementtejä, joita pelaajat tuovat peliin. Ennen peliä anonyymisti kerätään aiheet mitä pelaajat eivät halua käsitellä ja ne rajataan automaattisesti pelin ulkopuolella. Pelissä on myös käytössä STOP-kortti millä minkä tahansa aiheen käsittelyn voi välittömästi lopettaa."
+      "ropecon:contentWarnings": "Peli on käsikirjoittamaton ja voi tästä syystä sisältää mitä tahansa kauhu elementtejä, joita pelaajat tuovat peliin. Ennen peliä anonyymisti kerätään aiheet mitä pelaajat eivät halua käsitellä ja ne rajataan automaattisesti pelin ulkopuolella. Pelissä on myös käytössä STOP-kortti millä minkä tahansa aiheen käsittelyn voi välittömästi lopettaa.",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -8147,6 +8287,7 @@
       "revolvingdoor": ["false"]
     },
     "cachedAnnotations": {
+      "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "ropecon:accessibilityOther": "Osallistuminen edellyttää lukutaitoa ja kykyä lukea lainauksia paperilapuilta.",
       "ropecon:contentWarnings": "improvisaatio, lukeminen",
@@ -8184,6 +8325,7 @@
       "registration": ["konsti"]
     },
     "cachedAnnotations": {
+      "konsti:maxAttendance": 5,
       "konsti:minAttendance": 4,
       "ropecon:accessibilityOther": "Pelissä alkuun luettavat hahmotekstit ovat englanniksi, mutta mikäli se tuottaa hankaluuksia, pelin järjestäjä voi auttaa niiden kääntämisessä/lukemisessa.",
       "ropecon:contentWarnings": "Homo- ja transfobia historiallisessa ympäristössä.",
@@ -8224,7 +8366,8 @@
     "cachedAnnotations": {
       "konsti:maxAttendance": 8,
       "konsti:minAttendance": 4,
-      "konsti:rpgSystem": "Moonstone"
+      "konsti:rpgSystem": "Moonstone",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -8262,7 +8405,8 @@
       "konsti:maxAttendance": 6,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Mörk Borg",
-      "ropecon:contentWarnings": "Väkivaltaa, kuolemaa, suolenpätkiä, verta, eritteitä ja ruumiinosia, sortoa, kidutusta, kannibalismia, ruumiita, maailmanloppu. "
+      "ropecon:contentWarnings": "Väkivaltaa, kuolemaa, suolenpätkiä, verta, eritteitä ja ruumiinosia, sortoa, kidutusta, kannibalismia, ruumiita, maailmanloppu. ",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -8300,7 +8444,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Mörk Borg",
-      "ropecon:contentWarnings": "Väkivalta, kannibalismi, kuolema, maailmanloppu, madot ja muut hyönteiset."
+      "ropecon:contentWarnings": "Väkivalta, kannibalismi, kuolema, maailmanloppu, madot ja muut hyönteiset.",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -8339,6 +8484,7 @@
       "revolvingdoor": ["false"]
     },
     "cachedAnnotations": {
+      "konsti:maxAttendance": 9,
       "konsti:minAttendance": 6,
       "ropecon:contentWarnings": "petturuus, väkivalta, mielenterveysongelmat, rikollisuus"
     },
@@ -8393,7 +8539,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Praedor 2. laitos",
-      "ropecon:contentWarnings": "Väkivalta"
+      "ropecon:contentWarnings": "Väkivalta",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -8427,6 +8574,7 @@
       "revolvingdoor": ["false"]
     },
     "cachedAnnotations": {
+      "konsti:maxAttendance": 5,
       "konsti:minAttendance": 5,
       "ropecon:contentWarnings": "Tense family relations, physical and mental traumas possibly discussed by characters"
     },
@@ -8467,7 +8615,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "D&D 5e",
-      "ropecon:contentWarnings": "väkivalta, ihmissyönti, ruumiit ja irtonaiset ruumiinosat, hulluksi tuleminen, eläinten vahingoittaminen"
+      "ropecon:contentWarnings": "väkivalta, ihmissyönti, ruumiit ja irtonaiset ruumiinosat, hulluksi tuleminen, eläinten vahingoittaminen",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -8511,7 +8660,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "2d6 modifioituna",
-      "ropecon:contentWarnings": "Fyysinen väkivalta, henkinen väkivalta, body horror, ahdistavat kuvaukset ihmiskohtaloista."
+      "ropecon:contentWarnings": "Fyysinen väkivalta, henkinen väkivalta, body horror, ahdistavat kuvaukset ihmiskohtaloista.",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -8786,7 +8936,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Oma, PbtA",
-      "ropecon:contentWarnings": "Väkivalta (huumorihenkinen), ihmissyönti (taustalla maailman tosiseikkana että ogret syövät myös ihmisiä, ei millään tavalla keskiössä), pelataan tyhmiä hahmoja jotka valitsevat tyhmästi"
+      "ropecon:contentWarnings": "Väkivalta (huumorihenkinen), ihmissyönti (taustalla maailman tosiseikkana että ogret syövät myös ihmisiä, ei millään tavalla keskiössä), pelataan tyhmiä hahmoja jotka valitsevat tyhmästi",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -8874,7 +9025,8 @@
     "cachedAnnotations": {
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 2,
-      "konsti:rpgSystem": "HeroQuest-roolipelin suomenkielinen laitos"
+      "konsti:rpgSystem": "HeroQuest-roolipelin suomenkielinen laitos",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -8911,7 +9063,8 @@
     "cachedAnnotations": {
       "konsti:maxAttendance": 8,
       "konsti:minAttendance": 4,
-      "konsti:rpgSystem": "Erittäin yksinkertainen onnistumisien laskeminen."
+      "konsti:rpgSystem": "Erittäin yksinkertainen onnistumisien laskeminen.",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -8949,7 +9102,8 @@
       "konsti:maxAttendance": 8,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Erittäin yksinkertainen onnistumisien laskeminen.",
-      "ropecon:contentWarnings": "Paranoia on peli ideana erilainen kuin perinteiset pelit koska se on kaikki kaikkia vastaan ja selkäänpuukotus on yleistä. Tämä voi aiheuttaa tunteen että tulee kiusatuksi jos ei osaa erottaa hahmoa ja itseä."
+      "ropecon:contentWarnings": "Paranoia on peli ideana erilainen kuin perinteiset pelit koska se on kaikki kaikkia vastaan ja selkäänpuukotus on yleistä. Tämä voi aiheuttaa tunteen että tulee kiusatuksi jos ei osaa erottaa hahmoa ja itseä.",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -8992,7 +9146,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "GUMSHOE / The Fall of Delta Green",
-      "ropecon:contentWarnings": "Väkivalta (fyysinen ja henkinen), vanhusten kaltoinkohtelu, huumausaineet"
+      "ropecon:contentWarnings": "Väkivalta (fyysinen ja henkinen), vanhusten kaltoinkohtelu, huumausaineet",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -9030,7 +9185,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 1,
       "konsti:rpgSystem": "Seikkailuja! Seikkailuja!",
-      "ropecon:contentWarnings": "Seikkailu sijoittuu yhteiskuntaan, jossa käydään orjakauppaa ja ihmisen orjuuttaminen on sosiaalisesti hyväksyttävää. Seikkailussa saattaa esiintyä käärme."
+      "ropecon:contentWarnings": "Seikkailu sijoittuu yhteiskuntaan, jossa käydään orjakauppaa ja ihmisen orjuuttaminen on sosiaalisesti hyväksyttävää. Seikkailussa saattaa esiintyä käärme.",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -9068,7 +9224,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "The One Ring 2E",
-      "ropecon:contentWarnings": "Non-graphic violence, kidnapping"
+      "ropecon:contentWarnings": "Non-graphic violence, kidnapping",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -9169,7 +9326,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "DnD 5e",
-      "ropecon:contentWarnings": "väkivalta, kuolema"
+      "ropecon:contentWarnings": "väkivalta, kuolema",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -9208,7 +9366,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "DnD 5e",
-      "ropecon:contentWarnings": "Väkivalta, kuolema, helvetti, pirut, demonit"
+      "ropecon:contentWarnings": "Väkivalta, kuolema, helvetti, pirut, demonit",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -9298,7 +9457,8 @@
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Pathfinder 2nd Edition",
       "ropecon:accessibilityOther": "I cannot speak Finnish and can only explain the rules in English or Spanish.",
-      "ropecon:contentWarnings": "Memory loss, time loops, violence, oceans/deep water, distress"
+      "ropecon:contentWarnings": "Memory loss, time loops, violence, oceans/deep water, distress",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -9342,7 +9502,8 @@
     "cachedAnnotations": {
       "konsti:maxAttendance": 4,
       "konsti:minAttendance": 2,
-      "konsti:rpgSystem": "Pathfinder 2nd Edition"
+      "konsti:rpgSystem": "Pathfinder 2nd Edition",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -9416,7 +9577,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Call of Cthulhu 7e",
-      "ropecon:contentWarnings": "Lapsen katoaminen, okkultismi, päihteiden tai lääkkeiden väärinkäyttö, väkivalta"
+      "ropecon:contentWarnings": "Lapsen katoaminen, okkultismi, päihteiden tai lääkkeiden väärinkäyttö, väkivalta",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -9454,7 +9616,8 @@
       "konsti:maxAttendance": 4,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Iron Rain (oma)",
-      "ropecon:contentWarnings": "Fallout-maailman tematiikka."
+      "ropecon:contentWarnings": "Fallout-maailman tematiikka.",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -9507,7 +9670,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Vaesen",
-      "ropecon:contentWarnings": "Ihmisiin ja eläimiin kohdistuva väkivalta, ruokaan ja syömiseen liittyvät kauhuelementit, alkoholin käyttö, taikuus ja kansanperinteen hirviöt."
+      "ropecon:contentWarnings": "Ihmisiin ja eläimiin kohdistuva väkivalta, ruokaan ja syömiseen liittyvät kauhuelementit, alkoholin käyttö, taikuus ja kansanperinteen hirviöt.",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -9545,7 +9709,8 @@
       "konsti:maxAttendance": 4,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "D&D 5e",
-      "ropecon:contentWarnings": "Eksistentiaalinen uhka maailmalle\r\nFantasiaväkivalta"
+      "ropecon:contentWarnings": "Eksistentiaalinen uhka maailmalle\r\nFantasiaväkivalta",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -9583,7 +9748,8 @@
       "konsti:maxAttendance": 6,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Praedor V2",
-      "ropecon:contentWarnings": "Raaka väkivalta, uskonto, keholliset muodonmuutokset, hirviöt"
+      "ropecon:contentWarnings": "Raaka väkivalta, uskonto, keholliset muodonmuutokset, hirviöt",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -9621,7 +9787,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Praedor",
-      "ropecon:contentWarnings": "Väkivaltaa, hirviöitä ja epäkuolleita, aikuisten miekkaa ja magiaa"
+      "ropecon:contentWarnings": "Väkivaltaa, hirviöitä ja epäkuolleita, aikuisten miekkaa ja magiaa",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -9674,7 +9841,8 @@
       "konsti:maxAttendance": 3,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Praedor 2. Laitos",
-      "ropecon:contentWarnings": "Kuolema, Väkivalta, Rauniot, Kiroukset, Hirviöt"
+      "ropecon:contentWarnings": "Kuolema, Väkivalta, Rauniot, Kiroukset, Hirviöt",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -9718,7 +9886,8 @@
       "konsti:maxAttendance": 8,
       "konsti:minAttendance": 4,
       "konsti:rpgSystem": "oma",
-      "ropecon:contentWarnings": "Diktaturismi, salamurhat, rasismi, väkivalta (parodia). "
+      "ropecon:contentWarnings": "Diktaturismi, salamurhat, rasismi, väkivalta (parodia). ",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -9789,7 +9958,8 @@
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Oma viritys",
       "ropecon:accessibilityOther": "Pelin alussa luodaan pelaajahahmot nopealla systeemillä. Analyysiparalyysiin taipuvaiset saattavat kokea tämän haastavaksi.\r\nPelimaailmassa relativistinen tähtien välinen matkustus ja aikadilaatio on keskeinen elementti. On hyvä, jos pelaaja etukäteen tietää, mitä tämä suunnilleen tarkoittaa.",
-      "ropecon:contentWarnings": "kosminen tyhjyys, aikadilaatio, mielenterveyden ongelmat, joukkotuho"
+      "ropecon:contentWarnings": "kosminen tyhjyys, aikadilaatio, mielenterveyden ongelmat, joukkotuho",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -9865,7 +10035,8 @@
       "konsti:maxAttendance": 4,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Mongoose Traveller 2e",
-      "ropecon:contentWarnings": "Vieraan ja tuntemattoman kohtaaminen, oudot eliöt ja kasvit."
+      "ropecon:contentWarnings": "Vieraan ja tuntemattoman kohtaaminen, oudot eliöt ja kasvit.",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -9960,7 +10131,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Cyberpunk RED + mahdolliset lisämoodit + kotisäännöt",
-      "ropecon:contentWarnings": "Väkivalta siviilejä kohtaan, jengiväkivalta, huumeiden käyttö, piittaamattomuus ihmishenkiä kohtaan, Keholliset muokkaukset teknologialla, raju kielenkäyttö, vahva alkoholin käyttö.\r\n"
+      "ropecon:contentWarnings": "Väkivalta siviilejä kohtaan, jengiväkivalta, huumeiden käyttö, piittaamattomuus ihmishenkiä kohtaan, Keholliset muokkaukset teknologialla, raju kielenkäyttö, vahva alkoholin käyttö.\r\n",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -9998,7 +10170,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Savage Worlds",
-      "ropecon:contentWarnings": "Väkivaltaa, mahdollinen kehon hallinnan menettäminen, epäkuolleita, nääntymiskuoleman riski."
+      "ropecon:contentWarnings": "Väkivaltaa, mahdollinen kehon hallinnan menettäminen, epäkuolleita, nääntymiskuoleman riski.",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -10051,7 +10224,8 @@
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Oma systeemi",
       "ropecon:accessibilityOther": "Pelaajat joutuvat käyttämään paperia ja kynää. Piirustustaito voi lisätä pelinautintoa. ",
-      "ropecon:contentWarnings": "Tarinassa saattaa olla epämukavia tilanteita, kuten seksiä, ahdistelua, väkivaltaa, ryöstöjä tai muita pelottavia tilanteita. Välttämättä mitään näistä ei tapahdu tarinassa. "
+      "ropecon:contentWarnings": "Tarinassa saattaa olla epämukavia tilanteita, kuten seksiä, ahdistelua, väkivaltaa, ryöstöjä tai muita pelottavia tilanteita. Välttämättä mitään näistä ei tapahdu tarinassa. ",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -10291,7 +10465,8 @@
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "RuneQuest Roleplaying in Glorantha",
       "ropecon:accessibilityOther": "x",
-      "ropecon:contentWarnings": "Kuolema, epäkuolleet, ihmisuhrit, taistelu, uskonnot"
+      "ropecon:contentWarnings": "Kuolema, epäkuolleet, ihmisuhrit, taistelu, uskonnot",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -10330,7 +10505,8 @@
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "RuneQuest Roleplaying in Glorantha",
       "ropecon:accessibilityOther": "x",
-      "ropecon:contentWarnings": "Hyönteiset, väkivalta, uskontojen käsittely"
+      "ropecon:contentWarnings": "Hyönteiset, väkivalta, uskontojen käsittely",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -10374,7 +10550,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Shadowdark",
-      "ropecon:contentWarnings": "Ansoja, hämähäkkejä, kuolemaa, muodonmuutosta, mielenhallintaa, väkivaltaa."
+      "ropecon:contentWarnings": "Ansoja, hämähäkkejä, kuolemaa, muodonmuutosta, mielenhallintaa, väkivaltaa.",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -10413,7 +10590,8 @@
       "konsti:maxAttendance": 4,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Blades in the Dark",
-      "ropecon:contentWarnings": "Väkivalta, manipulaatio"
+      "ropecon:contentWarnings": "Väkivalta, manipulaatio",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -10465,7 +10643,8 @@
       "konsti:maxAttendance": 6,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Legendoja & Lohikäärmeitä",
-      "ropecon:contentWarnings": "Väkivalta, uskonto, hirviöt (hämähäkit yms.)"
+      "ropecon:contentWarnings": "Väkivalta, uskonto, hirviöt (hämähäkit yms.)",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -10504,7 +10683,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 1,
       "konsti:rpgSystem": "Dungeons & Dragons BXCMI",
-      "ropecon:contentWarnings": "Todennäköisyys väkivaltaisille kohtauksislle on suuri, mutta väkivalta on aika abstraktia. Yhdellä päähenkilöistä on vkava keuhkotauti. Pelinjohtaja saattaa heittää huonolla japanilla jotain noloja fraaseja. Laitoin että suunnattu kaiken ikäisille koska en halunnut rajata pelistä alle 18-vuotiaita pois, mutta suositusalaikärja 13 vuotta, josta voi huoltajan harkinnalla poiketa alaspäin."
+      "ropecon:contentWarnings": "Todennäköisyys väkivaltaisille kohtauksislle on suuri, mutta väkivalta on aika abstraktia. Yhdellä päähenkilöistä on vkava keuhkotauti. Pelinjohtaja saattaa heittää huonolla japanilla jotain noloja fraaseja. Laitoin että suunnattu kaiken ikäisille koska en halunnut rajata pelistä alle 18-vuotiaita pois, mutta suositusalaikärja 13 vuotta, josta voi huoltajan harkinnalla poiketa alaspäin.",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -10543,7 +10723,8 @@
       "konsti:maxAttendance": 3,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "GURPS 3 laitos",
-      "ropecon:contentWarnings": "väkivalta, oudot olennot"
+      "ropecon:contentWarnings": "väkivalta, oudot olennot",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -10618,7 +10799,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Arius: the Ashen Age",
-      "ropecon:contentWarnings": "Post-apo, totalitarismi, dystopia, ääriuskovaisuus, osa hahmoista totalitarismin agentteja, kaksi hahmoa alussa vankeina, mahdollinen PvP, kauhufiilistely, mysteeri, pelaajahahmojen välinen epäluulo, kehokauhu, mahdollisesti väkivaltaa, painostava tunnelma.  "
+      "ropecon:contentWarnings": "Post-apo, totalitarismi, dystopia, ääriuskovaisuus, osa hahmoista totalitarismin agentteja, kaksi hahmoa alussa vankeina, mahdollinen PvP, kauhufiilistely, mysteeri, pelaajahahmojen välinen epäluulo, kehokauhu, mahdollisesti väkivaltaa, painostava tunnelma.  ",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -10657,7 +10839,8 @@
       "konsti:maxAttendance": 6,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Dolmenwood",
-      "ropecon:contentWarnings": "Väkivalta, kauhistuttavia keijuja, epäkuolema, päihteet"
+      "ropecon:contentWarnings": "Väkivalta, kauhistuttavia keijuja, epäkuolema, päihteet",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -10696,7 +10879,8 @@
       "konsti:maxAttendance": 6,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Worlds Without Number",
-      "ropecon:contentWarnings": "Väkivalta, kehomodifikaatiot, zombiet."
+      "ropecon:contentWarnings": "Väkivalta, kehomodifikaatiot, zombiet.",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -10764,6 +10948,7 @@
       "revolvingdoor": ["false"]
     },
     "cachedAnnotations": {
+      "konsti:maxAttendance": 5,
       "konsti:minAttendance": 5,
       "ropecon:contentWarnings": "kireät perhesuhteet, fyysiset ja henkiset traumat mahdollisena puheenaiheena"
     },
@@ -10856,6 +11041,7 @@
       "revolvingdoor": ["false"]
     },
     "cachedAnnotations": {
+      "konsti:maxAttendance": 7,
       "konsti:minAttendance": 4,
       "ropecon:contentWarnings": "Spelet innehåller korta karaktärskort och instruktionskort skrivna på engelska.\r\n\r\nThe game contains short character cards and instructions written in English.",
       "ropecon:otherAuthor": "Thorny Games - Kathryn Hymes & Hakan Seyalıoğlu"
@@ -10991,7 +11177,8 @@
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Fail Forward",
       "ropecon:accessibilityOther": "Turvallisuusmekanismina käytössä X-kortti, jonka käyttö ohjeistetaan pelin alussa.",
-      "ropecon:contentWarnings": "Köyhyys, sortavat sosiaalijärjestelmät, väkivalta, työttömyys, päihteet"
+      "ropecon:contentWarnings": "Köyhyys, sortavat sosiaalijärjestelmät, väkivalta, työttömyys, päihteet",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -11037,7 +11224,8 @@
     "cachedAnnotations": {
       "konsti:maxAttendance": 3,
       "konsti:minAttendance": 2,
-      "konsti:rpgSystem": "Dialect - A Game about Language and How it Dies?"
+      "konsti:rpgSystem": "Dialect - A Game about Language and How it Dies?",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -11075,7 +11263,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Fail Forward sanity mekaniikalla",
-      "ropecon:contentWarnings": "Dangerous situations and possible violence, Players may choose to be from Only Fans"
+      "ropecon:contentWarnings": "Dangerous situations and possible violence, Players may choose to be from Only Fans",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -11122,7 +11311,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Daggerheart",
-      "ropecon:contentWarnings": "Violence in combat against clearly distinguishable enemies, some of which might be predator animals. Slight body horror without too much detail.\r\nVäkivaltaa taistelukohtauksissa, mahdollisesti petoeläimiä vastaan. Kevyttä body horroria ilman syvää kuvausta."
+      "ropecon:contentWarnings": "Violence in combat against clearly distinguishable enemies, some of which might be predator animals. Slight body horror without too much detail.\r\nVäkivaltaa taistelukohtauksissa, mahdollisesti petoeläimiä vastaan. Kevyttä body horroria ilman syvää kuvausta.",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -11160,7 +11350,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Daggerheart",
-      "ropecon:contentWarnings": "Violence in combat against clearly distinguishable enemies, some of which might be predator animals. Slight body horror without too much detail.\r\nVäkivaltaa taistelukohtauksissa, mahdollisesti petoeläimiä vastaan. Kevyttä body horroria ilman syvää kuvausta."
+      "ropecon:contentWarnings": "Violence in combat against clearly distinguishable enemies, some of which might be predator animals. Slight body horror without too much detail.\r\nVäkivaltaa taistelukohtauksissa, mahdollisesti petoeläimiä vastaan. Kevyttä body horroria ilman syvää kuvausta.",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -11203,7 +11394,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Spore Borg / Mörk Borg",
-      "ropecon:contentWarnings": "Violence (non-sexual)\r\nPost-apocalyptic world (poverty, scarcity, despair)\r\nBody horror (zombie style -> loss of autonomy through infection)\r\n"
+      "ropecon:contentWarnings": "Violence (non-sexual)\r\nPost-apocalyptic world (poverty, scarcity, despair)\r\nBody horror (zombie style -> loss of autonomy through infection)\r\n",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -11255,7 +11447,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Star Trek Adventures 2e (2D20)",
-      "ropecon:contentWarnings": "Kuolema, väkivalta"
+      "ropecon:contentWarnings": "Kuolema, väkivalta",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -11294,7 +11487,8 @@
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Starfinder 2nd Edition",
       "ropecon:accessibilityOther": "I cannot speak Finnish and can only explain the rules in English or Spanish.",
-      "ropecon:contentWarnings": "Planetary disaster"
+      "ropecon:contentWarnings": "Planetary disaster",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -11328,6 +11522,7 @@
       "revolvingdoor": ["false"]
     },
     "cachedAnnotations": {
+      "konsti:maxAttendance": 20,
       "konsti:minAttendance": 10,
       "ropecon:accessibilityOther": "Tarvitsisimme pelille rauhallisen, riittävän suuren huoneen. Pelin jälkeen keräisin mieluusti yksinkertaisella lomakkeella palautetta pelautuksesta.",
       "ropecon:contentWarnings": "Peli tulee sisältämään toimistonsisäistä juonittelua, minkä osa pelaajista voi kokea painostavana. Tarvittavasta pelimateriaalista tulee tarjolle tallenne. Kuten mikä tahansa nykypäiväinen kokous, peliin tarvitaan esteetön riittävän suuri huone. Vettä ja kenties myös esimerkiksi keksejä olisi hyvä olla tarjolla. Keskellä peliä on pieni tauko, jotta pelaajat voivat hengähtää, tarvittaessa vaihtaa sanasen ja esimerkiksi nauttia virvokkeita. Muuten peli on esteetön.\r\n\r\nToivoisin, ettei peliin tultaisi humalassa, sillä vieraat humalaiset ihmiset aiheuttavat usein minulle paniikkikohtauksen.\r\n\r\n--\r\n\r\nhe game includes intra-office scheming and light-hearted backstabbing, which some players may find intense. A recording of essential in-game materials will be made available by yours truly for reference in advance.\r\n\r\nAs with any modern meeting, the game requires a reasonably large, accessible room to accommodate all participants comfortably. Access to water — and perhaps some cookies, for morale — is highly recommended.\r\n\r\nThere will be a short break in the middle of the game to allow participants to breathe, chat if needed, and enjoy refreshments. Other than that, the game is fully accessible."
@@ -11367,7 +11562,8 @@
     "cachedAnnotations": {
       "konsti:maxAttendance": 4,
       "konsti:minAttendance": 1,
-      "konsti:rpgSystem": "Astraterra"
+      "konsti:rpgSystem": "Astraterra",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -11410,6 +11606,7 @@
       "registration": ["konsti"]
     },
     "cachedAnnotations": {
+      "konsti:maxAttendance": 6,
       "konsti:minAttendance": 6,
       "ropecon:contentWarnings": "Hirviöt, kauhu, maailmanloppu, väkivalta, ahtauden tuntu, stressitilanne",
       "ropecon:otherAuthor": "Inari Aaltonen, Ilo Ruotsalainen, Elmu Luhtala, Essi Iisakka, Jiro Turunen"
@@ -11441,7 +11638,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Suuri Seikkailu",
-      "ropecon:contentWarnings": "Sisältövaroituksina: väkivaltaa, epäkuolleita, kuolemaa, kuolleita eläimiä, ötököitä, tuntemattomia asioita, maan alle menemistä."
+      "ropecon:contentWarnings": "Sisältövaroituksina: väkivaltaa, epäkuolleita, kuolemaa, kuolleita eläimiä, ötököitä, tuntemattomia asioita, maan alle menemistä.",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -11478,7 +11676,8 @@
       "konsti:maxAttendance": 6,
       "konsti:minAttendance": 4,
       "konsti:rpgSystem": "Fail Forward",
-      "ropecon:contentWarnings": "Sisältövaroituksia: Puhetta väkivallasta, puhetta kannibalismista, kaikkea makaaberia, jotkin hahmot saattavat olla ajatusmaailmaltaan ikäviä, musta huumori, mahdollinen PVP(kaikilla vältettävissä jos ei halua osallistua), voi sisältää hämähäkkejä, paholaisia, peikkoja ja ties mitä muita otuksia."
+      "ropecon:contentWarnings": "Sisältövaroituksia: Puhetta väkivallasta, puhetta kannibalismista, kaikkea makaaberia, jotkin hahmot saattavat olla ajatusmaailmaltaan ikäviä, musta huumori, mahdollinen PVP(kaikilla vältettävissä jos ei halua osallistua), voi sisältää hämähäkkejä, paholaisia, peikkoja ja ties mitä muita otuksia.",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -11516,7 +11715,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Shadowdark",
-      "ropecon:contentWarnings": "The adventure will feature violence, underground, dark places, rats, bugs, insects, cults, insanity, demons and body horror"
+      "ropecon:contentWarnings": "The adventure will feature violence, underground, dark places, rats, bugs, insects, cults, insanity, demons and body horror",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -11554,7 +11754,8 @@
       "konsti:maxAttendance": 4,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Twist and Turn (yksinkertaistettuna)",
-      "ropecon:contentWarnings": "Yliluonnollinen, toinen ulottuvuus (ns. sankarimatka) ja Kaaoksen olennot."
+      "ropecon:contentWarnings": "Yliluonnollinen, toinen ulottuvuus (ns. sankarimatka) ja Kaaoksen olennot.",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -11597,7 +11798,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Own light-weight system",
-      "ropecon:contentWarnings": "maailman tuho, elämästä ja kuolemasta päättäminen, vallan väärinkäyttö, väkivalta, juonittelu, selkäänpuukotus"
+      "ropecon:contentWarnings": "maailman tuho, elämästä ja kuolemasta päättäminen, vallan väärinkäyttö, väkivalta, juonittelu, selkäänpuukotus",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -11648,7 +11850,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "HeroQuest-roolipelin suomenkielinen laitos",
-      "ropecon:contentWarnings": "kulttuurien yhteentörmäys, konservatiivinen kulttuuri, julmuudet"
+      "ropecon:contentWarnings": "kulttuurien yhteentörmäys, konservatiivinen kulttuuri, julmuudet",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -11685,7 +11888,8 @@
     "cachedAnnotations": {
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 2,
-      "konsti:rpgSystem": "Oma d6 noppa pooli"
+      "konsti:rpgSystem": "Oma d6 noppa pooli",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -11746,7 +11950,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Tales from the Loop",
-      "ropecon:contentWarnings": "Lapsihahmot (joille voi käydä pahasti)"
+      "ropecon:contentWarnings": "Lapsihahmot (joille voi käydä pahasti)",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -11783,7 +11988,8 @@
       "konsti:maxAttendance": 4,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Cairn 2e",
-      "ropecon:contentWarnings": "Undead, young people in trouble"
+      "ropecon:contentWarnings": "Undead, young people in trouble",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -11871,7 +12077,8 @@
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Vampire the Masquerade",
       "ropecon:accessibilityOther": "The game can be played entirely using online tools, and characters will be premade. Rule-heavy mechanics are easily simplified in VTM and we will make use of a veil system to ensure player safety. We will also make use of a break every 1 1/2 hours to allow players to unwind and socialize!",
-      "ropecon:contentWarnings": "Death,\r\nAssault allegories, \r\nAbuse, \r\nDrugs, \r\nSex, \r\nViolence,\r\nbody horror\r\n"
+      "ropecon:contentWarnings": "Death,\r\nAssault allegories, \r\nAbuse, \r\nDrugs, \r\nSex, \r\nViolence,\r\nbody horror\r\n",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -12012,7 +12219,8 @@
       "konsti:maxAttendance": 4,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Monsterhearts  2",
-      "ropecon:contentWarnings": "The game contains themes of teenage sexuality. We will discuss what other themes the players want to rule out of the game, and we will have an X-card that lets us skip a scene if someone finds it uncomfortable."
+      "ropecon:contentWarnings": "The game contains themes of teenage sexuality. We will discuss what other themes the players want to rule out of the game, and we will have an X-card that lets us skip a scene if someone finds it uncomfortable.",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -12050,7 +12258,8 @@
       "konsti:maxAttendance": 4,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Monsterhearts  2",
-      "ropecon:contentWarnings": "Pelissä käsittellään teinien seksuaalisuutta. Pelisession alussa keskustellaan halutaanko jokin teema rajata pelin ulkopuolelle ja pelin aikana käytetään X-korttia jonka avulla epätoivottuja tunteita aiheuttavat kohtaukset voidaan lopettaa kesken."
+      "ropecon:contentWarnings": "Pelissä käsittellään teinien seksuaalisuutta. Pelisession alussa keskustellaan halutaanko jokin teema rajata pelin ulkopuolelle ja pelin aikana käytetään X-korttia jonka avulla epätoivottuja tunteita aiheuttavat kohtaukset voidaan lopettaa kesken.",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -12095,7 +12304,8 @@
       "konsti:maxAttendance": 4,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Mörk Borg",
-      "ropecon:contentWarnings": "Yksityiskohtainen taistelu\r\nGore\r\nEpäkuolleet\r\nPelaajahahmojen kuolema"
+      "ropecon:contentWarnings": "Yksityiskohtainen taistelu\r\nGore\r\nEpäkuolleet\r\nPelaajahahmojen kuolema",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -12191,7 +12401,8 @@
     "cachedAnnotations": {
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 4,
-      "konsti:rpgSystem": "Rules light homebrew"
+      "konsti:rpgSystem": "Rules light homebrew",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -12237,7 +12448,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Kids on Brooms",
-      "ropecon:contentWarnings": "Triggering topics: Discussions about fascistic policies and politics, magical racism, potential mild bodyhorror"
+      "ropecon:contentWarnings": "Triggering topics: Discussions about fascistic policies and politics, magical racism, potential mild bodyhorror",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -12275,7 +12487,8 @@
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Homebrew system",
       "ropecon:accessibilityOther": "Materials will be provided in a dyslexia friendly font and all written material will have an audio alternative.",
-      "ropecon:contentWarnings": "Cultural differences,  potential claustrophobia, brief and respectful discussion of death and grieving "
+      "ropecon:contentWarnings": "Cultural differences,  potential claustrophobia, brief and respectful discussion of death and grieving ",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -12321,7 +12534,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Dungeons & Dragons 5th edition (2024)",
-      "ropecon:contentWarnings": "Family problems, involuntary transformation"
+      "ropecon:contentWarnings": "Family problems, involuntary transformation",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -12355,6 +12569,7 @@
       "registration": ["konsti"]
     },
     "cachedAnnotations": {
+      "konsti:maxAttendance": 14,
       "konsti:minAttendance": 6,
       "ropecon:accessibilityOther": "The game leans almost completely on ability to see.",
       "ropecon:contentWarnings": "All kinds of nasty things that can happen to children. Social and health service cuts. Horror movie tropes.",
@@ -12392,6 +12607,7 @@
       "revolvingdoor": ["false"]
     },
     "cachedAnnotations": {
+      "konsti:maxAttendance": 8,
       "konsti:minAttendance": 1,
       "ropecon:contentWarnings": "Hahmot pelaavat pelissä Venäläistä Rulettia ja väkivaltainen kuolema tai sen riski on vältämättömästi läsnä pelin tapahtumissa sekä historiassa. Hahmoilla saattaa olla tausta rikoksien tekijänä tai uhrina ja heillä voi olla vihamielinen suhde toisiinsa. Pelaajilla on kuitenkin mahdollista sulkea pelistä pois sellaiset teemat, joita eivät halua pelissä kohdata."
     },
@@ -12458,6 +12674,7 @@
       "revolvingdoor": ["false"]
     },
     "cachedAnnotations": {
+      "konsti:maxAttendance": 9,
       "konsti:minAttendance": 3,
       "ropecon:accessibilityOther": "People can choose to participate more or choose to be more passive throughout the game. There is no requirement to interact all the time.",
       "ropecon:contentWarnings": "We do not know what kind of backstories  characters will come with but we expect cultural differences both from this world or others, we invite everyone to be open minded and accepting of each others cultures in a pluralistic mindset.\r\n",
@@ -12513,7 +12730,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Custom rules-lite system",
-      "ropecon:contentWarnings": "Some scary monsters, and cats talking about eating mice. Little to no combat beyond the occasional nipping and scratching. "
+      "ropecon:contentWarnings": "Some scary monsters, and cats talking about eating mice. Little to no combat beyond the occasional nipping and scratching. ",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -12549,7 +12767,8 @@
       "konsti:maxAttendance": 3,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Powered by the Apocalypse (PbtA)",
-      "ropecon:contentWarnings": "Religious horror, human sacrifice, graphic violence, body horror, cults, implied harm to children and animals, family trauma and mental illness, government oppression and police violence, war, and natural disasters."
+      "ropecon:contentWarnings": "Religious horror, human sacrifice, graphic violence, body horror, cults, implied harm to children and animals, family trauma and mental illness, government oppression and police violence, war, and natural disasters.",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -12595,7 +12814,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "The Troubleshooters",
-      "ropecon:contentWarnings": "Korkeat paikat"
+      "ropecon:contentWarnings": "Korkeat paikat",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -12633,7 +12853,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Buffy the Vampire Slayer Revised",
-      "ropecon:contentWarnings": "Body horror, gore, sexually explicit descriptions, use of illicit substances (drugs, alcohol), descriptions of dead bodies."
+      "ropecon:contentWarnings": "Body horror, gore, sexually explicit descriptions, use of illicit substances (drugs, alcohol), descriptions of dead bodies.",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -12671,7 +12892,8 @@
     "cachedAnnotations": {
       "konsti:maxAttendance": 6,
       "konsti:minAttendance": 3,
-      "konsti:rpgSystem": "Thirsty Sword Lesbians "
+      "konsti:rpgSystem": "Thirsty Sword Lesbians ",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -12745,7 +12967,8 @@
     "cachedAnnotations": {
       "konsti:maxAttendance": 4,
       "konsti:minAttendance": 2,
-      "konsti:rpgSystem": "Tarinoita tietoisuuden ajalta"
+      "konsti:rpgSystem": "Tarinoita tietoisuuden ajalta",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -12783,7 +13006,8 @@
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Oma, online",
       "ropecon:accessibilityOther": "Pelaajilla tulee olla puhelin, jolla pääsee internettiin",
-      "ropecon:contentWarnings": "Sota ja kaikki siihen kuuluva tuska."
+      "ropecon:contentWarnings": "Sota ja kaikki siihen kuuluva tuska.",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -12828,7 +13052,8 @@
     "cachedAnnotations": {
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 2,
-      "konsti:rpgSystem": "L&L Suuri Seikkailu"
+      "konsti:rpgSystem": "L&L Suuri Seikkailu",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -12875,7 +13100,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "L&L Suuri seikkailu",
-      "ropecon:contentWarnings": "Pelissä mennään maan alle ja pelissä on hirviöitä ja taistelua."
+      "ropecon:contentWarnings": "Pelissä mennään maan alle ja pelissä on hirviöitä ja taistelua.",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -12922,7 +13148,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Mythic GME / QuestWorlds",
-      "ropecon:contentWarnings": "The content of the game is improvised, so there is no knowing what will come. X-card and other safety tools apply."
+      "ropecon:contentWarnings": "The content of the game is improvised, so there is no knowing what will come. X-card and other safety tools apply.",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -13013,7 +13240,8 @@
     "cachedAnnotations": {
       "konsti:maxAttendance": 24,
       "konsti:minAttendance": 12,
-      "konsti:rpgSystem": "The old world"
+      "konsti:rpgSystem": "The old world",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": []
@@ -13042,7 +13270,8 @@
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Troika!",
       "ropecon:accessibilityOther": "Ei erityistä",
-      "ropecon:contentWarnings": "Pyrin välttämään aiheita, jotka tavallisesti voivat olla epämiellyttäviä."
+      "ropecon:contentWarnings": "Pyrin välttämään aiheita, jotka tavallisesti voivat olla epämiellyttäviä.",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -13127,7 +13356,8 @@
       "konsti:maxAttendance": 4,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Wrath & Glory (yksinkertaistettu)",
-      "ropecon:contentWarnings": "Sisältövaroitukset: fyysinen väkivalta, kehokauhu, vainajat."
+      "ropecon:contentWarnings": "Sisältövaroitukset: fyysinen väkivalta, kehokauhu, vainajat.",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -13165,7 +13395,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Savage Worlds",
-      "ropecon:contentWarnings": "Skenaario sisältää fyysistä väkivaltaa, orjuutta ja orjuutuksen uhkaa."
+      "ropecon:contentWarnings": "Skenaario sisältää fyysistä väkivaltaa, orjuutta ja orjuutuksen uhkaa.",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -13255,7 +13486,8 @@
     "cachedAnnotations": {
       "konsti:maxAttendance": 6,
       "konsti:minAttendance": 3,
-      "konsti:rpgSystem": "RuneQuest: Roleplaying in Glorantha, suomennettu"
+      "konsti:rpgSystem": "RuneQuest: Roleplaying in Glorantha, suomennettu",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -13296,6 +13528,7 @@
       "revolvingdoor": ["true"]
     },
     "cachedAnnotations": {
+      "konsti:maxAttendance": 12,
       "konsti:minAttendance": 5,
       "ropecon:contentWarnings": "Tunkeutujan ulkomuoto voi olla ikävä joillekin pelaajille."
     },
@@ -13341,7 +13574,8 @@
       "konsti:maxAttendance": 4,
       "konsti:minAttendance": 1,
       "konsti:rpgSystem": "Blades in the Dark hack",
-      "ropecon:contentWarnings": "väkivalta (yksityiskohtaisuustaso säädettävissä), haamut, demonit"
+      "ropecon:contentWarnings": "väkivalta (yksityiskohtaisuustaso säädettävissä), haamut, demonit",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -13379,7 +13613,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Call of Cthulhu 7e",
-      "ropecon:contentWarnings": "Väkivalta, psyykkiset sairaudet"
+      "ropecon:contentWarnings": "Väkivalta, psyykkiset sairaudet",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -13418,7 +13653,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Vaesen",
-      "ropecon:contentWarnings": "väkivalta, perheväkivalta, kuolema, itsemurha, mielen kontrollointi, ajankohdalle tyypillinen epätasa-arvo ja sitä heijastava puhe"
+      "ropecon:contentWarnings": "väkivalta, perheväkivalta, kuolema, itsemurha, mielen kontrollointi, ajankohdalle tyypillinen epätasa-arvo ja sitä heijastava puhe",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -13485,6 +13721,7 @@
       "revolvingdoor": ["false"]
     },
     "cachedAnnotations": {
+      "konsti:maxAttendance": 6,
       "konsti:minAttendance": 6,
       "ropecon:accessibilityOther": "Larpissa on paljon puhumista jokaisen hahmon osalta. Larpissa on todennäköisesti päällepuhuntaa. ",
       "ropecon:contentWarnings": "Mahdollisia puheenaiheita pelissä: politiikka, seksismi, rasismi, seksi, uskonto. Hahmot väittelevät keskenään ja peliin saattaa sisältyä sanallista konfliktia. \r\n",
@@ -13540,7 +13777,8 @@
       "konsti:maxAttendance": 4,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "oma",
-      "ropecon:contentWarnings": "Luonnonkatastrofit, ilmastonmuutoksen seuraukset, maailmanlopun skenaariot, hirviöt, väkivalta"
+      "ropecon:contentWarnings": "Luonnonkatastrofit, ilmastonmuutoksen seuraukset, maailmanlopun skenaariot, hirviöt, väkivalta",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -13577,7 +13815,8 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Vaesen (Free league)",
-      "ropecon:contentWarnings": "Kauhukuvasto\r\nPäihteet ja tajunnan hämärtyminen\r\nVenäläinen kieli ja kulttuuri\r\nKuolema \r\nBody horror\r\nÖtökät, puunjuuret ja lonkerot\r\nTuntemattomat asiat\r\nSairaudet ja oireet"
+      "ropecon:contentWarnings": "Kauhukuvasto\r\nPäihteet ja tajunnan hämärtyminen\r\nVenäläinen kieli ja kulttuuri\r\nKuolema \r\nBody horror\r\nÖtökät, puunjuuret ja lonkerot\r\nTuntemattomat asiat\r\nSairaudet ja oireet",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -13611,6 +13850,7 @@
       "revolvingdoor": ["false"]
     },
     "cachedAnnotations": {
+      "konsti:maxAttendance": 6,
       "konsti:minAttendance": 6,
       "ropecon:contentWarnings": "Raskaita teemoja kuten sota, kuolema, juonittelu, pyrkyröinti, salamurha, ystävän menettäminen, järjestetty avioliitto, kiristäminen, alkoholismi ja vakoilu.\r\n\r\nPelissä on luultavasti henkisesti painostava ilmapiiri."
     },
@@ -13741,7 +13981,8 @@
       "konsti:maxAttendance": 4,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Coc/Vaesen-inspiroima Homebrew-systeemi",
-      "ropecon:contentWarnings": "väkivalta, kosminen kauhu"
+      "ropecon:contentWarnings": "väkivalta, kosminen kauhu",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -13895,7 +14136,8 @@
       "konsti:maxAttendance": 6,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Call of Cthulhu (Delta Green)",
-      "ropecon:contentWarnings": "Sisältää varuskunta-elämää - pelaaja-hahmot ovat Suomen puolustusvoimien palveluksessa olevia varusmiehiä (tai naisia).\r\nVälivallan mahdollisuus on korkea."
+      "ropecon:contentWarnings": "Sisältää varuskunta-elämää - pelaaja-hahmot ovat Suomen puolustusvoimien palveluksessa olevia varusmiehiä (tai naisia).\r\nVälivallan mahdollisuus on korkea.",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -13939,7 +14181,8 @@
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Kult: Divinity Lost",
       "ropecon:accessibilityOther": "Pelaajilla on käytössään ”X-kortti”, ja tätä tulee käyttää hetimmiten mikäli pelitilanne vie liikaa itselleen sopimatonta aihealuetta kohti! Peliturvallisuudesta puhutaan myös vielä ennen session alkua.",
-      "ropecon:contentWarnings": "Vangitsemista, väkivaltaa, uskonnollisia teemoja, seksuaalista sisältöä, päihteiden käyttöä, kehokauhua, yliluonnollisia voimia ja olentoja."
+      "ropecon:contentWarnings": "Vangitsemista, väkivaltaa, uskonnollisia teemoja, seksuaalista sisältöä, päihteiden käyttöä, kehokauhua, yliluonnollisia voimia ja olentoja.",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -13978,7 +14221,8 @@
       "konsti:maxAttendance": 4,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Yksinkertaistettu Call of Cthulhu 7th edition",
-      "ropecon:contentWarnings": "Väkivalta\r\nKuolema\r\nMielisairaudet\r\nBodyhorror\r\nKauhuelementit\r\n"
+      "ropecon:contentWarnings": "Väkivalta\r\nKuolema\r\nMielisairaudet\r\nBodyhorror\r\nKauhuelementit\r\n",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -14024,7 +14268,8 @@
     "cachedAnnotations": {
       "konsti:maxAttendance": 4,
       "konsti:minAttendance": 2,
-      "konsti:rpgSystem": "Oma"
+      "konsti:rpgSystem": "Oma",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -14220,7 +14465,8 @@
     "cachedAnnotations": {
       "konsti:maxAttendance": 30,
       "konsti:minAttendance": 4,
-      "konsti:rpgSystem": "Warhammer Fantasy Battle 6th edition"
+      "konsti:rpgSystem": "Warhammer Fantasy Battle 6th edition",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -14402,7 +14648,8 @@
       "konsti:maxAttendance": 4,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Oma järjestelmä (Wizards Versus Cards)",
-      "ropecon:contentWarnings": "Cards Against Humanity -kortit saattavat sisältää vaihtelevassa määrin epämiellyttäviä aiheita."
+      "ropecon:contentWarnings": "Cards Against Humanity -kortit saattavat sisältää vaihtelevassa määrin epämiellyttäviä aiheita.",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -14481,7 +14728,8 @@
       "konsti:maxAttendance": 4,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Dungeons and Dragons 2024",
-      "ropecon:contentWarnings": "Dark fantasy elements, war themes, possibility of some gore and character death"
+      "ropecon:contentWarnings": "Dark fantasy elements, war themes, possibility of some gore and character death",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -14528,7 +14776,8 @@
     "cachedAnnotations": {
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 4,
-      "konsti:rpgSystem": "Savage Worlds (SWADE)"
+      "konsti:rpgSystem": "Savage Worlds (SWADE)",
+      "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
