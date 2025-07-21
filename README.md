@@ -67,6 +67,11 @@ In this case, access the frontend at `localhost:5000`.
   - styled-components
   - stylelint
 
+## Blog posts
+
+- 2025: [Analyysi Konstin pöytäroolipelitilastoista Ropeconeissa 2022-2024](https://blog.ropecon.fi/analyysi-konstin-poytaroolipelitilastoista-ropeconeissa-2022-2024/)
+- 2023: [Analyysi Konstin pöytäroolipelitilastoista Ropeconissa 2022](https://blog.ropecon.fi/analyysi-konstin-poytaroolipelitilastoista-ropeconissa-2022/)
+
 ## Supporters
 
 Konsti development supported by
