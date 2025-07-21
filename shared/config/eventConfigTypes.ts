@@ -65,8 +65,6 @@ export interface EventConfig {
   tournamentSignupQuestion: Omit<SignupQuestion, "programItemId"> | null;
   tournamentSignupQuestionExcludeIds: string[];
   addRevolvingDoorIds: string[];
-  logInvalidStartTimes: boolean;
-  logMissingScheduleItems: boolean; // If scheduleItems is missing, program item is ignored
   hideParticipantListProgramTypes: ProgramType[];
   fixedLotterySignupTime: string | null;
   entryConditions: {

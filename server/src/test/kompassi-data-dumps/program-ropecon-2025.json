@@ -173,51 +173,6 @@
     ]
   },
   {
-    "slug": "age-of-ropecon-gt-2025-satsun",
-    "title": "Age of Ropecon GT 2025 (SAT/SUN)",
-    "description": "Annual Age of Sigmar GT at Ropecon\r\n\r\nTimetable\r\n\r\nSATURDAY\r\n09:00 - 09:30 Checkin\r\n09:30 - 12:30 Game 1\r\n12:30 - 13:30 Lunch break\r\n13:30 - 16:30 Game 2\r\n16:45 - 19:45 Game 3\r\n\r\nSUNDAY\r\n09:00 - 09:30 Checkin\r\n09:30 - 12:30 Game 4\r\n12:30 - 13:30 Lunch break\r\n13:30 - 16:30 Game 5\r\n\r\nRulespack and registration can be found here\r\nhttps://www.bestcoastpairings.com/event/EWKnRIGSZ7En",
-    "cachedHosts": "<redacted>",
-    "cachedDimensions": {
-      "form": ["offer-miniatures"],
-      "type": ["tournament"],
-      "state": ["accepted"],
-      "topic": ["figures"],
-      "konsti": ["tournament"],
-      "language": ["en"],
-      "age-group": ["teens"],
-      "scheduled": ["multiple", "one-or-more"],
-      "registration": ["other"],
-      "revolvingdoor": ["false"]
-    },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 30,
-      "konsti:minAttendance": 20,
-      "konsti:rpgSystem": "Warhammer Age of Sigmar",
-      "ropecon:isRevolvingDoor": false
-    },
-    "isCancelled": false,
-    "scheduleItems": [
-      {
-        "slug": "age-of-ropecon-gt-2025-satsun",
-        "title": "Age of Ropecon GT 2025 (SAT/SUN)",
-        "startTime": "2025-07-26T09:00:00+03:00",
-        "endTime": "2025-07-26T20:00:00+03:00",
-        "lengthMinutes": 660,
-        "location": "Hall 3 Miniature Wargame Area (Lohko C)",
-        "isCancelled": false
-      },
-      {
-        "slug": "age-of-ropecon-gt-2025-satsun-2",
-        "title": "Age of Ropecon GT 2025 (SAT/SUN)",
-        "startTime": "2025-07-27T09:00:00+03:00",
-        "endTime": "2025-07-27T16:30:00+03:00",
-        "lengthMinutes": 450,
-        "location": "Hall 3 Miniature Wargame Area (Lohko C)",
-        "isCancelled": false
-      }
-    ]
-  },
-  {
     "slug": "aikaportti",
     "title": "Aikaportti",
     "description": "Mikä olikaan vierain maa?\r\n\r\nEhkä se on Helsingin ja Lahden välillä maaseutukunnassa sijaitseva Oppelsmannin kummitustalo?\r\n\r\nOmasta halustaan anonyymeinä säilyvät kunnallisalan toimijat haluavat, että kyseisen murheenkryynin asia hoidetaan - hiljaa ja vaivattomasti. Nykyajalla kaikki paranormaali ja luonnottomuus herättävät aivan saastaisesti huomiota - joten mitään influenssereita, kummitustenjahtaajia tai muita lehtikasan potkijoita ei hommiin kaivata. Tehtävänne on vain selvittää, mikä asuntoa vaivaa. Se on kuitenkin aivan hyvä, melkein heti sodan jälkeen rakennettu asuntokokonaisuus. Autotalli. Sauna. Ehjät ikkunat vusoikymmentenkin jälkeen. Ja silti asukkaat tuppaavat katoamaan kuin tyhjään ilmaan.\r\n\r\nTe pelaajat tulette olemaan influenssereita, kummitusjahtaajia tai muita vapaavalintaisia lehtikasan potkijoita. Tai sitten salaukseen erikoistuneita, tuppisuisia asiantuntijoita. Vaesenin systeemillä on helppo tehdä nopeastikin mukiinmeneviä hahmoja, mutta myös valmiita hahmolomakkeita tulee olemaan saatavilla kiireisimmille.",
@@ -3169,41 +3124,6 @@
     ]
   },
   {
-    "slug": "heroclixin-sm-kilpailut-heroclix-finnish-championships",
-    "title": "Heroclixin SM-kilpailut // Heroclix Finnish Championships",
-    "description": "Pelataan Heroclixin Suomen Mestaruudet, turnausformaattina 300 pistettä Modernia, 3 kierrosta, tuo oma joukkueesi, virallisilla Wizkidsin turnaussäännöillä mukaanlukien kiellettyjen hahmojen listan.\r\n-------\r\nWe are playing the Heroclix Finnish Championship tournament, 300 points of Modern age, 3 rounds, bring your own team, using official Wizkids tournament rules including format specific ban-lists.",
-    "cachedHosts": "<redacted>",
-    "cachedDimensions": {
-      "form": ["offer-tournament"],
-      "type": ["tournament"],
-      "state": ["accepted"],
-      "topic": ["figures"],
-      "konsti": ["tournament"],
-      "language": ["en", "fi"],
-      "age-group": ["everyone"],
-      "scheduled": ["one", "one-or-more"],
-      "registration": ["not-required"],
-      "revolvingdoor": ["false"]
-    },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 12,
-      "konsti:minAttendance": 5,
-      "konsti:rpgSystem": "Heroclix"
-    },
-    "isCancelled": false,
-    "scheduleItems": [
-      {
-        "slug": "heroclixin-sm-kilpailut-heroclix-finnish-championships",
-        "title": "Heroclixin SM-kilpailut // Heroclix Finnish Championships",
-        "startTime": "2025-07-27T11:00:00+03:00",
-        "endTime": "2025-07-27T15:00:00+03:00",
-        "lengthMinutes": 240,
-        "location": "Hall 3 Miniature Wargame Area (Lohko F)",
-        "isCancelled": false
-      }
-    ]
-  },
-  {
     "slug": "hiidenlinna-hiljaiseksi",
     "title": "Hiidenlinna hiljaiseksi",
     "description": "Kalevalaista fantasiaa kokeneen pelinjohtajan käsissä: Kokemajoen suussa sijaitseva Hiidenlinna on piikki Teljän ja Hämeen Turun kauppiaiden lihassa. Nyt joukko urhoja on houkuteltu ratkaisemaan Hiidenlinnan ongelma ja muuttamaan kaupparannat turvallisiksi. Kevythenkinen sukellus salaperäiseen hiisimetsään ja sen asukkaiden kanssa riitelemiseen. Seikkailu on yksi Satakunta seikkailua -kirjan peleistä. ",
@@ -4063,7 +3983,7 @@
       "revolvingdoor": ["false"]
     },
     "cachedAnnotations": {
-      "konsti:maxAttendance": 0,
+      "konsti:maxAttendance": 4,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Tarinoita tietoisuuden ajalta",
       "ropecon:contentWarnings": "Itsemurha, seksuaaliset perversiot, pelaajien päätökset vaikuttavat sivuhahmon päätökseen itsemurhasta, transhumanismin varjopuolet, sivuhahmon raiskaus, peli voi olla psykologisesti painostava, avoin seksuaalisuus",
@@ -7367,43 +7287,6 @@
     ]
   },
   {
-    "slug": "malifaux-cons-at-the-end-of-a-rope-2",
-    "title": "Malifaux: Cons at the end of a Rope 2",
-    "description": "Malifaux 4th Edition is right around the corner and we will be using the Latest Open Beta rules at the tournament. Because of this the missionpack will not be published more than a day before the convention so that everything will be the latest update.\r\n\r\nThe tournament will consist of 3 rounds of 2h 15 min and a short break between each round.\r\n\r\nSignup through Longshanks: https://www.longshanks.org/event/26836/\r\n\r\nEverything published by Wyrd Games for the Open Beta up until the tournament will be allowed, but newest iterations only.",
-    "cachedHosts": "<redacted>",
-    "cachedDimensions": {
-      "form": ["offer-miniatures"],
-      "type": ["tournament"],
-      "state": ["accepted"],
-      "topic": ["figures"],
-      "konsti": ["tournament"],
-      "language": ["en"],
-      "age-group": ["adults"],
-      "scheduled": ["one", "one-or-more"],
-      "inclusivity": ["long-program"],
-      "registration": ["other"],
-      "revolvingdoor": ["false"]
-    },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 11,
-      "konsti:minAttendance": 6,
-      "konsti:rpgSystem": "Malifaux 4th Edition Beta",
-      "ropecon:isRevolvingDoor": false
-    },
-    "isCancelled": false,
-    "scheduleItems": [
-      {
-        "slug": "malifaux-cons-at-the-end-of-a-rope-2",
-        "title": "Malifaux: Cons at the end of a Rope 2",
-        "startTime": "2025-07-26T09:00:00+03:00",
-        "endTime": "2025-07-26T16:00:00+03:00",
-        "lengthMinutes": 420,
-        "location": "Hall 3 Miniature Wargame Area (Lohko G)",
-        "isCancelled": false
-      }
-    ]
-  },
-  {
     "slug": "mansions-of-madness-2nd-edition",
     "title": "Mansions of Madness 2nd Edition",
     "description": "H. P. Lovecraftin mythokseen ja tarinoin pohjautuva co-op lautapeli, jonka 2nd editionissa appi/tekoäly, jota vastaan pelataan (parasta ison TV kanssa). \r\nYhden skenarion pituus vaihtelee kahdesta tunnista kuuteen, pelaajamäärä 2-5. Itse peli ja appi ovat englanniksi, mutta suomenkielinen selostus onnistuu tarvittaessa.\r\n---------------------------------------------------------------------------------------------\r\nA co-op boardgame inspired by the works of H.P. Lovecraft, that is played against an AI/App (works best with a large TV)\r\nThe length of the scenarios varies from 2 to 6 hours, number of players per scenario 2-5. The game is in english.\r\n\r\nmore info: https://boardgamegeek.com/boardgame/205059/mansions-of-madness-second-edition",
@@ -7515,42 +7398,6 @@
         "endTime": "2025-07-26T22:00:00+03:00",
         "lengthMinutes": 180,
         "location": "Kajo (Pöytä 23)",
-        "isCancelled": false
-      }
-    ]
-  },
-  {
-    "slug": "marvel-crisis-protocol-ropecon-rumble-turnaustournament",
-    "title": "Marvel: Crisis Protocol - Ropecon Rumble [turnaus/tournament]",
-    "description": "Marvel: Crisis Protocol is a tactical skirmish game set in the Marvel Universe. In this two-player miniature game, you assemble a team of iconic Marvel superheroes or villains and battle it out on a custom-built battlefield. The game features dynamic objectives and allows players to recreate epic clashes in settings like a New York City block or Wakanda. It's a blend of strategy, creativity, and action, making it a favorite among Marvel fans and tabletop gamers alike.\r\n\r\nParticipants will need to create a roster of 10 characters, and will need to bring all the necessary tools to play themselves(dice, measuring tools, cards). Table mats and terrain will be provided.\r\n\r\nIf you're interested in the game, you can reach out for demo game and discussion here: https://discord.gg/CgJSkxqjHz\r\n\r\nOsallistujien on luotava 10 hahmon lista, ja heidän on tuotava mukanaan kaikki tarvittavat välineet pelaamiseen (nopat, mitat, tarvittavat kortit). Pöytien matot ja maastot tuodaan järjestäjän toimesta.\r\n\r\nJos olet kiinnostunut pelistä, voit kysyä demopeliä ja osallistua keskusteluun täällä: https://discord.gg/CgJSkxqjHz",
-    "cachedHosts": "<redacted>",
-    "cachedDimensions": {
-      "form": ["offer-tournament"],
-      "type": ["tournament"],
-      "state": ["accepted"],
-      "topic": ["figures"],
-      "konsti": ["tournament"],
-      "grouping": ["beginners", "lgbt"],
-      "language": ["en", "fi"],
-      "age-group": ["adults"],
-      "scheduled": ["one", "one-or-more"],
-      "registration": ["other"],
-      "revolvingdoor": ["false"]
-    },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 30,
-      "konsti:minAttendance": 10,
-      "konsti:rpgSystem": "Marvel: Crisis Protocol"
-    },
-    "isCancelled": false,
-    "scheduleItems": [
-      {
-        "slug": "marvel-crisis-protocol-ropecon-rumble-turnaustournament",
-        "title": "Marvel: Crisis Protocol - Ropecon Rumble [turnaus/tournament]",
-        "startTime": "2025-07-26T11:00:00+03:00",
-        "endTime": "2025-07-26T21:00:00+03:00",
-        "lengthMinutes": 600,
-        "location": "Hall 3 Miniature Wargame Area (Lohko F)",
         "isCancelled": false
       }
     ]
@@ -7975,43 +7822,6 @@
     ]
   },
   {
-    "slug": "middle-earth-strategy-battle-game-turnaus",
-    "title": "Middle-Earth Strategy Battle game -turnaus",
-    "description": "Middle-Earth Strategy Battle game on Games_worksopin luoma strateginen miniatyyripeli. Strategiapeli pohjautuu J.R.R Tolkienin ikoniseen Taru Sormusten herrasta -maailmaan, jonka elokuvaohjaaja Peter Jackson herätti henkiin kirjoihin perustuvalla elokuvasarjalla. Pelissä hyvän ja pahan joukot taistelevat ottaakseen selvää, kuka on Keski-Maan herra. Pelin pelimekaniikka on yksi miniatyyripelien parhaimmista ja on isoista sääntökirjoista huolimatta helposti omaksuttava. Turnaus on kilpailullinen, mutta turnauksen jälkeen on mahdollista kokeilemaan peliä demotuksen merkeissä!\r\n\r\nMiddle-Earth Strategy Battle Game is a strategic miniatures game created by Games Workshop. The game is based on J.R.R. Tolkien's iconic world from The Lord of the Rings, brought to life by filmmaker Peter Jackson in his film trilogy based on the books. In the game, the forces of good and evil battle to determine who will be the ruler of Middle-earth. The game's mechanics are some of the best in the miniatures game genre and, despite the large rulebooks, are easy to grasp. The tournament is competitive, but after the tournament, there's an opportunity to try the game in a demo session!",
-    "cachedHosts": "<redacted>",
-    "cachedDimensions": {
-      "form": ["offer-miniatures"],
-      "type": ["tournament"],
-      "state": ["accepted"],
-      "topic": ["figures"],
-      "konsti": ["tournament"],
-      "language": ["fi", "en"],
-      "age-group": ["everyone"],
-      "scheduled": ["one", "one-or-more"],
-      "inclusivity": ["long-program"],
-      "registration": ["other"],
-      "revolvingdoor": ["false"]
-    },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 30,
-      "konsti:minAttendance": 20,
-      "konsti:rpgSystem": "Middle-Earth Strategy Battle game -new edition",
-      "ropecon:isRevolvingDoor": false
-    },
-    "isCancelled": false,
-    "scheduleItems": [
-      {
-        "slug": "middle-earth-strategy-battle-game-turnaus",
-        "title": "Middle-Earth Strategy Battle game -turnaus",
-        "startTime": "2025-07-26T09:00:00+03:00",
-        "endTime": "2025-07-26T21:00:00+03:00",
-        "lengthMinutes": 720,
-        "location": "Hall 3 Miniature Wargame Area (Lohko B)",
-        "isCancelled": false
-      }
-    ]
-  },
-  {
     "slug": "mielenteatteri-luurankolabyrintti",
     "title": "Mielenteatteri: Luurankolabyrintti",
     "description": "Roolipelisarja Mielenteatteri saa erityisen interaktiivisen jakson Ropeconia varten!\r\n\r\nPimeyden valtiatar Mordara Mustan synkässä päämajassa, Kalmialassa kuhisee: huhu kertoo, että Pimeyden valtakuntien ikuisuusprojekti, raja-alueiden julma Luurankolabyrintti on valmistumassa päivänä minä hyvänsä. Labyrintin rakennustyö on kestänyt vuosikausia ja siihen on upotettu valtava määrä kultadraakkeja. Pahuuden alan rakennusfirmat ovat vaihtuneet kesken kaiken ja projektin vastuuhenkilöt ovat puukottaneet toisiaan säälimättömästi selkään. Nyt projekti on kuitenkin viimeistä askelta vaille valmis: sen ansoitteet testataan suuntaamalla linnaketta päin osasto säälimättömiä sotilaita!\r\n\r\nTe, arvon pelaajat, olette 10-50 luurankoa, jotka joukkovoimalla yritätte päästä Luurankolabyrintin lävitse ja samalla todentaa linnakkeen puolustuksen toimivuutta. Teitä taisteluun johtavat valtiatar Mordaran uskolliset luutnantit. Yksin olette luusereita, mutta yhdessä kauhistuttavia luurankoja!\r\n\r\nLuurankolabyrintti on kokeellinen roolipeli, jossa pelinjohtaja ja pimeyden luutnantteja esittävät esitaistelijat pelaavat yhdessä yleisön kanssa muutaman tunnin joukkoroolipelin, jossa yleisö ohjastaa pientä armeijaa luurankoja kohti voittoa tai turmiota. Peli käyttää Legendoja & Lohikäärmeitä -pelin yksinkertaistettua versiota, ja kokemus vastaa roolipelin ja standup-komedian yhteensulautumaa. Varaudu siis hersyvään huumoriin, heittäytymiseen ja vapaaseen huuteluun yleisöstä. Seikkailu sijoittuu Mielenteatteri-sarjan Lurjusliigan maailmaan, mutta pelaajan ei tarvitse olla sarjan katsoja ymmärtääkseen juonta. Tervetuloa kalisevien luurankojen, synkkien linnakkeiden ja luovien ansojen maailmaan!",
@@ -8022,17 +7832,16 @@
       "state": ["accepted"],
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
-      "grouping": ["new-worlds", "beginners", "lgbt"],
+      "grouping": ["beginners", "lgbt", "new-worlds"],
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
       "game-style": [
-        "story-driven",
         "character-driven",
-        "rules-light",
-        "light"
+        "light",
+        "story-driven",
+        "rules-light"
       ],
-      "inclusivity": ["no-recordings-or-spoken-text", "no-subtitles"],
       "registration": ["konsti"],
       "revolvingdoor": ["true"]
     },
@@ -9898,37 +9707,6 @@
         "endTime": "2025-07-25T21:00:00+03:00",
         "lengthMinutes": 240,
         "location": "Room 101 D (pöytä 3)",
-        "isCancelled": false
-      }
-    ]
-  },
-  {
-    "slug": "pukushow",
-    "title": "Pukushow",
-    "description": "Pukushow on rento ja kaikille avoin pukunäytös, jossa conikävijät pääsevät esittelemään asujaan lavalla – oli kyseessä sitten oma larppihahmo, pelihahmo tai muu luomus!\r\n\r\nIlmoittautuminen tapahtuu paikan päällä Lasigalleriassa kuvauspisteen lähellä olevalla tiskillä. Pukushown ilmoittautuminen on auki perjantaina 25.7.2025 klo 16:00 - 19:00 ja lauantaina 26.7.2025 klo 11:00–14:00. Osallistua voi yksin tai porukalla, ja yleisö pääsee äänestämään suosikkejaan eri kategorioissa. Tule mukaan näyttäytymään!\r\n\r\n",
-    "cachedHosts": "<redacted>",
-    "cachedDimensions": {
-      "form": ["offer-other-program"],
-      "type": ["other"],
-      "state": ["accepted"],
-      "konsti": ["other"],
-      "grouping": ["beginners"],
-      "language": ["fi"],
-      "age-group": ["everyone"],
-      "scheduled": ["one-or-more", "one"],
-      "inclusivity": ["loud-sounds", "no-text-of-recording", "flahing-lights"],
-      "registration": ["other"]
-    },
-    "cachedAnnotations": { "konsti:maxAttendance": 400 },
-    "isCancelled": false,
-    "scheduleItems": [
-      {
-        "slug": "pukushow",
-        "title": "Pukushow",
-        "startTime": "2025-07-26T15:00:00+03:00",
-        "endTime": "2025-07-26T16:00:00+03:00",
-        "lengthMinutes": 60,
-        "location": "Room 101 A",
         "isCancelled": false
       }
     ]
@@ -12366,7 +12144,7 @@
       "grouping": ["beginners"],
       "language": ["fi"],
       "age-group": ["adults"],
-      "scheduled": ["none"],
+      "scheduled": ["multiple", "one-or-more"],
       "registration": ["konsti"],
       "revolvingdoor": ["true"]
     },
@@ -12378,7 +12156,26 @@
       "ropecon:isRevolvingDoor": true
     },
     "isCancelled": false,
-    "scheduleItems": []
+    "scheduleItems": [
+      {
+        "slug": "tervetuloa-vartiostoon",
+        "title": "Tervetuloa Vartiostoon!",
+        "startTime": "2025-07-26T10:00:00+03:00",
+        "endTime": "2025-07-26T14:00:00+03:00",
+        "lengthMinutes": 240,
+        "location": "Room 311",
+        "isCancelled": false
+      },
+      {
+        "slug": "tervetuloa-vartiostoon-2",
+        "title": "Tervetuloa Vartiostoon!",
+        "startTime": "2025-07-27T10:00:00+03:00",
+        "endTime": "2025-07-27T14:00:00+03:00",
+        "lengthMinutes": 240,
+        "location": "Room 311",
+        "isCancelled": false
+      }
+    ]
   },
   {
     "slug": "the-court-of-eternal-hearts",
@@ -14341,214 +14138,6 @@
         "endTime": "2025-07-27T12:45:00+03:00",
         "lengthMinutes": 45,
         "location": "Hall 1B Workshop Area",
-        "isCancelled": false
-      }
-    ]
-  },
-  {
-    "slug": "wall-of-tripla",
-    "title": "Wall of Tripla",
-    "description": "Nefer ja Sinuhe tanssiryhmien luoma uudenlainen esityksellinen seikkailupeli, jossa DnD:n inspiroimana seikkaillaan fantasiamaailmassa neljän seikkailijan johdolla. Lisämausteena upean eeppiset tanssilliset kohtaukset ja elävät pelihahmot. Tule pelaamaan viihdyttävää tarinaa, jossa sinä, noppa ja pelinjohtaja päätätte tarinan kulun.\r\nNefer and Sinuhe dance groups have created an innovative performance adventure game created, inspired by DnD, where you explore a fantasy world led by four adventurers. Adding a unique twist, the game features amazingly epic dance scenes and live characters. Come play an entertaining story where you, the dice, and the dungeon master determine the course of the tale.\r\n",
-    "cachedHosts": "<redacted>",
-    "cachedDimensions": {
-      "form": ["offer-other-gameprogram"],
-      "type": ["other"],
-      "state": ["accepted"],
-      "topic": ["dancing", "rpg"],
-      "konsti": ["other"],
-      "grouping": ["new-worlds", "beginners"],
-      "language": ["en", "fi"],
-      "age-group": ["everyone"],
-      "scheduled": ["one-or-more", "multiple"],
-      "inclusivity": ["dark-lighting", "no-movement"],
-      "registration": ["not-required"],
-      "revolvingdoor": ["false"]
-    },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 40,
-      "konsti:minAttendance": 4
-    },
-    "isCancelled": false,
-    "scheduleItems": [
-      {
-        "slug": "wall-of-tripla",
-        "title": "Wall of Tripla – suomenkielinen",
-        "startTime": "2025-07-26T15:00:00+03:00",
-        "endTime": "2025-07-26T15:45:00+03:00",
-        "lengthMinutes": 45,
-        "location": "Room 102",
-        "isCancelled": false
-      },
-      {
-        "slug": "wall-of-tripla-2",
-        "title": "Wall of Tripla – in English",
-        "startTime": "2025-07-26T17:00:00+03:00",
-        "endTime": "2025-07-26T17:45:00+03:00",
-        "lengthMinutes": 45,
-        "location": "Room 102",
-        "isCancelled": false
-      }
-    ]
-  },
-  {
-    "slug": "warhammer-40k-ropecon-gt",
-    "title": "Warhammer 40 000 Ropecon GT",
-    "description": "Warhammer 40 000 Grand Tournament kokoluokan turnaus. Kesän suurin Warhammer 40 000 turnaus Suomessa. Turnaus pelataan käyttäen uusinta Warhammer 40 000 Grand Tournament sääntöpakettia, jonka Games Workshop on julkaissut edeltävään lauantaihin mennessä. Turnauspaketti julkistetaan myöhemmin.",
-    "cachedHosts": "<redacted>",
-    "cachedDimensions": {
-      "form": ["offer-tournament"],
-      "type": ["tournament"],
-      "state": ["accepted"],
-      "topic": ["figures"],
-      "konsti": ["tournament"],
-      "grouping": ["beginners"],
-      "language": ["en", "fi"],
-      "age-group": ["everyone"],
-      "scheduled": ["multiple", "one-or-more"],
-      "inclusivity": ["long-program"],
-      "registration": ["other"],
-      "revolvingdoor": ["false"]
-    },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 70,
-      "konsti:minAttendance": 60,
-      "konsti:rpgSystem": "Warhammer 40 000"
-    },
-    "isCancelled": false,
-    "scheduleItems": [
-      {
-        "slug": "warhammer-40k-ropecon-gt",
-        "title": "Warhammer 40 000 Ropecon GT",
-        "startTime": "2025-07-25T16:00:00+03:00",
-        "endTime": "2025-07-26T00:00:00+03:00",
-        "lengthMinutes": 480,
-        "location": "Hall 3 Miniature Wargame Area (Lohko A)",
-        "isCancelled": false
-      },
-      {
-        "slug": "warhammer-40k-ropecon-gt-2",
-        "title": "Warhammer 40 000 Ropecon GT",
-        "startTime": "2025-07-26T09:00:00+03:00",
-        "endTime": "2025-07-26T21:00:00+03:00",
-        "lengthMinutes": 720,
-        "location": "Hall 3 Miniature Wargame Area (Lohko A)",
-        "isCancelled": false
-      },
-      {
-        "slug": "warhammer-40k-ropecon-gt-3",
-        "title": "Warhammer 40 000 Ropecon GT",
-        "startTime": "2025-07-27T09:00:00+03:00",
-        "endTime": "2025-07-27T15:00:00+03:00",
-        "lengthMinutes": 360,
-        "location": "Hall 3 Miniature Wargame Area (Lohko A)",
-        "isCancelled": false
-      }
-    ]
-  },
-  {
-    "slug": "warhammer-fantasy-battle-6th-editio-turnaus",
-    "title": "Warhammer Fantasy Battle 6th editio turnaus",
-    "description": "Nopat & Taktiikka järjestää lauantaina 26.7. Warhammer Fantasy Battle 6-edikan turnauksen. Turnauksessa pelataan kolme kappaletta 2000 pisteen pelejä. Tarkemmat tiedot Sotavasaran threadista, linkki alla. Huomaa, että tämä turnaus ei liity mitenkään edellisen päivän Border Patrol-turnaukseen. Turnaukset ovat täysin erillisiä ja voit vapaasti osallistua molempiin tai vain yhteen.\r\n\r\nhttps://www.sotavasara.net/keskustelu/viewtopic.php?t=127952\r\n\r\nNopat & Taktiikka is organizing a Warhammer Fantasy Battle 6th edition tournament on Saturday, July 26th. The tournament will feature three 2000 point games. More information can be found on the Warhammer thread, link above. Please note that this tournament is in no way related to the Border Patrol tournament from the previous day. The tournaments are completely separate and you are free to participate in both or just one. If you do not speak Finnish, you can contact the organizer directly for any tournament-related matters.",
-    "cachedHosts": "<redacted>",
-    "cachedDimensions": {
-      "form": ["offer-miniatures"],
-      "type": ["tournament"],
-      "state": ["accepted"],
-      "topic": ["figures"],
-      "konsti": ["tournament"],
-      "language": ["en", "fi"],
-      "age-group": ["everyone"],
-      "scheduled": ["one-or-more", "one"],
-      "registration": ["other"],
-      "revolvingdoor": ["false"]
-    },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 30,
-      "konsti:minAttendance": 4,
-      "konsti:rpgSystem": "Warhammer Fantasy Battle 6th edition",
-      "ropecon:isRevolvingDoor": false
-    },
-    "isCancelled": false,
-    "scheduleItems": [
-      {
-        "slug": "warhammer-fantasy-battle-6th-editio-turnaus",
-        "title": "Warhammer Fantasy Battle 6th editio turnaus",
-        "startTime": "2025-07-26T09:00:00+03:00",
-        "endTime": "2025-07-26T21:00:00+03:00",
-        "lengthMinutes": 720,
-        "location": "Hall 3 Miniature Wargame Area",
-        "isCancelled": false
-      }
-    ]
-  },
-  {
-    "slug": "warmachine-steamroller-lauantai-warmachine-steamroller-saturday",
-    "title": "Warmachine Steamroller lauantai / Warmachine Steamroller Saturday",
-    "description": "Steamroller 100 pts. Yksilöturnaus. Oma armeija, mitat ja tokenit mukaan.\r\n\r\nIlmoittaudu osoitteessa Longshanks.org\r\n\r\n\r\nSteamroller 100 pts. Solo tournament. Bring your own army, measuring devices and tokens with you.\r\n\r\nSign up at Longshanks.org",
-    "cachedHosts": "<redacted>",
-    "cachedDimensions": {
-      "form": ["offer-tournament"],
-      "type": ["tournament"],
-      "state": ["accepted"],
-      "topic": ["figures"],
-      "konsti": ["tournament"],
-      "language": ["en", "fi"],
-      "age-group": ["everyone"],
-      "scheduled": ["one-or-more", "one"],
-      "inclusivity": ["no-movement"],
-      "registration": ["other"],
-      "revolvingdoor": ["false"]
-    },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 16,
-      "konsti:minAttendance": 8,
-      "konsti:rpgSystem": "Warmachine mk4"
-    },
-    "isCancelled": false,
-    "scheduleItems": [
-      {
-        "slug": "warmachine-steamroller-lauantai-warmachine-steamroller-saturday",
-        "title": "Warmachine Steamroller lauantai / Warmachine Steamroller Saturday",
-        "startTime": "2025-07-26T09:00:00+03:00",
-        "endTime": "2025-07-26T22:00:00+03:00",
-        "lengthMinutes": 780,
-        "location": "Hall 3 Miniature Wargame Area (Lohko E)",
-        "isCancelled": false
-      }
-    ]
-  },
-  {
-    "slug": "warmachine-tiimiturnaus-sunnunta-warmachine-team-tournament-sunday",
-    "title": "Warmachine tiimiturnaus sunnuntai / Warmachine Team Tournament Sunday",
-    "description": "Steamroller 100 pts. Joukkueturnaus. Oma armeija, mitat ja tokenit mukaan.\r\n\r\nIlmoittaudu osoitteessa Longshanks.org\r\n\r\n\r\nSteamroller 100 pts. Team tournament. Bring your own army, measuring devices and tokens with you.\r\n\r\nSign up at Longshanks.org",
-    "cachedHosts": "<redacted>",
-    "cachedDimensions": {
-      "form": ["offer-tournament"],
-      "type": ["tournament"],
-      "state": ["accepted"],
-      "topic": ["figures"],
-      "konsti": ["tournament"],
-      "language": ["en", "fi"],
-      "age-group": ["everyone"],
-      "scheduled": ["one-or-more", "one"],
-      "inclusivity": ["no-movement"],
-      "registration": ["other"],
-      "revolvingdoor": ["false"]
-    },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 16,
-      "konsti:minAttendance": 12,
-      "konsti:rpgSystem": "Warmachine mk4"
-    },
-    "isCancelled": false,
-    "scheduleItems": [
-      {
-        "slug": "warmachine-tiimiturnaus-sunnunta-warmachine-team-tournament-sunday",
-        "title": "Warmachine tiimiturnaus sunnuntai / Warmachine Team Tournament Sunday",
-        "startTime": "2025-07-27T09:00:00+03:00",
-        "endTime": "2025-07-27T15:00:00+03:00",
-        "lengthMinutes": 360,
-        "location": "Hall 3 Miniature Wargame Area (Lohko E)",
         "isCancelled": false
       }
     ]

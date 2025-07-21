@@ -47,7 +47,7 @@ export const getProgramItemsFromFullProgramTracon = (
       return [];
     }
 
-    if (config.event().logInvalidStartTimes) {
+    if (config.server().logInvalidStartTimes) {
       logInvalidStartTimes(programItem, programType);
     }
 

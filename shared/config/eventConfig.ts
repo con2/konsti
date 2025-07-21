@@ -16,10 +16,6 @@ export const eventConfig: EventConfig = {
   eventName: EventName.ROPECON,
   eventYear: "2025",
 
-  // Data checks
-  logInvalidStartTimes: false,
-  logMissingScheduleItems: false,
-
   // Event settings
   enableRevolvingDoor: true,
   requireRegistrationCode: true,
@@ -85,7 +81,7 @@ export const eventConfig: EventConfig = {
   },
 
   rollingDirectSignupProgramTypes: [ProgramType.OTHER],
-  enableRollingDirectSignupPreviousDay: false,
+  enableRollingDirectSignupPreviousDay: true,
 
   hideParticipantListProgramTypes: [],
 

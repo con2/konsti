@@ -70,6 +70,14 @@ const getProgramItemId = (programItem: unknown): unknown => {
     : "<unknown>";
 };
 
+const getProgramItemIsCancelled = (programItem: unknown): unknown => {
+  return !!programItem &&
+    typeof programItem === "object" &&
+    "isCancelled" in programItem
+    ? programItem.isCancelled
+    : "<unknown>";
+};
+
 export const parseProgramItem = (
   programItem: unknown,
   schema: typeof KompassiProgramItemSchema,
@@ -90,10 +98,17 @@ export const parseProgramItem = (
 
   if (result.error instanceof ZodError) {
     result.error.issues.map((issue) => {
+      // Don't log missing scheduleItems error if program item is cancelled
+      if (String(issue.path) === "scheduleItems") {
+        const isCancelled = getProgramItemIsCancelled(programItem);
+        if (isCancelled) {
+          return;
+        }
+      }
       logger.error(
         "%s",
         new Error(
-          `Invalid program item ${String(getProgramItemId(programItem))} at path ${String(issue.path)}: ${issue.message}`,
+          `Invalid program item ${String(getProgramItemId(programItem))} at path ${issue.path.join(".")}: ${issue.message}`,
         ),
       );
     });

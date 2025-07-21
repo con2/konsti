@@ -23,7 +23,6 @@ const eventConfig: Partial<EventConfig> = {
   enableGroups: true,
   signupOpen: true,
   resultsVisible: true,
-  logInvalidStartTimes: false,
   enableRemoveOverlapSignups: false,
 
   activeProgramTypes: [

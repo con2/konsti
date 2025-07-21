@@ -47,7 +47,7 @@ export const getProgramItemsFromFullProgramRopecon = (
       return [];
     }
 
-    if (config.event().logInvalidStartTimes) {
+    if (config.server().logInvalidStartTimes) {
       logInvalidStartTimes(programItem, programType);
     }
 

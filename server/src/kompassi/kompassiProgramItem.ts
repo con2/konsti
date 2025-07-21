@@ -133,7 +133,7 @@ export const KompassiProgramItemSchema = z.object({
   }),
   scheduleItems: z
     .array(ScheduleItemSchema)
-    .min(config.event().logMissingScheduleItems ? 1 : 0),
+    .min(config.server().logMissingScheduleItems ? 1 : 0),
 });
 
 export type KompassiProgramItem = z.infer<typeof KompassiProgramItemSchema>;
