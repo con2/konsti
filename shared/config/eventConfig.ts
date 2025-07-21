@@ -104,6 +104,13 @@ export const eventConfig: EventConfig = {
   // These program items are imported to Konsti but don't have Konsti signup
   noKonstiSignupIds: [],
 
+  // Don't import these program items from Kompassi - this is program item id, not schedule item
+  ignoreProgramItemsIds: [
+    "designkilpailu",
+    "kielomatkat-fuengirola-kielo-tours-fuengirola",
+    "nerdic-open-mic-kolmas-kerta-toden-sanoo",
+  ],
+
   signupQuestions: [],
 
   tournamentSignupQuestion: null,

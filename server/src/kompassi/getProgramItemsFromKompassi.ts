@@ -74,6 +74,14 @@ export const parseProgramItem = (
   programItem: unknown,
   schema: typeof KompassiProgramItemSchema,
 ): KompassiProgramItem | undefined => {
+  if (
+    config
+      .event()
+      .ignoreProgramItemsIds.includes(getProgramItemId(programItem) as string)
+  ) {
+    return;
+  }
+
   const result = schema.safeParse(programItem);
 
   if (result.success) {
