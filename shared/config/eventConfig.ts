@@ -81,7 +81,7 @@ export const eventConfig: EventConfig = {
   },
 
   rollingDirectSignupProgramTypes: [ProgramType.OTHER],
-  enableRollingDirectSignupPreviousDay: false,
+  enableRollingDirectSignupPreviousDay: true,
 
   hideParticipantListProgramTypes: [],
 
