@@ -24,7 +24,6 @@ const eventConfig: Partial<EventConfig> = {
   enableGroups: true,
   signupOpen: true,
   resultsVisible: true,
-  logInvalidStartTimes: false,
 
   twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
 

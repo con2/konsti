@@ -33,6 +33,8 @@ export interface ServerConfig {
   onlyCronjobs: boolean;
   defaultSignupStrategy: EventSignupStrategy;
   defaultLoginProvider: LoginProvider;
+  logInvalidStartTimes: boolean;
+  logMissingScheduleItems: boolean; // If scheduleItems is missing, program item is ignored
 }
 
 const getAllowedCorsOrigins = (localOrigins: string[] = []): string[] => {
@@ -75,6 +77,10 @@ const commonConfig = {
 
   // Tests
   enableLoggingInTests: false,
+
+  // Data checks
+  logInvalidStartTimes: false,
+  logMissingScheduleItems: false,
 };
 
 const prodConfig = {
