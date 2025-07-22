@@ -259,8 +259,7 @@ export const translationFI = {
     groupCodeInfo: "Muut voivat liittyä tähän ryhmään koodilla ",
     joiningGroupWillCancelUpcomingLotterySignups:
       "Ryhmään liittyminen peruu kaikki aktiiviset arvonta-ilmoittautumisesi.",
-    groupLotterySignupGuide:
-      "Ryhmä voi ilmoittautua samoihin peleihin arvontaa varten.",
+    groupLotterySignupGuide: "Voit ilmoittautua arvontaan ryhmänä.",
     groupLotterySignupProgramTypes: "Arvontaa käyttää",
     invalidGroupCode: "Virheellinen koodi",
     groupNotExist: "Ryhmää ei ole olemassa",
