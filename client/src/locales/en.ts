@@ -334,6 +334,8 @@ export const translationEN = {
     entryFee: "Material fee {{ENTRY_FEE}}",
     minAttendanceMissing: "Missing info: minimum number of {{ATTENDEE_TYPE}}",
     maxAttendanceMissing: "Missing info: maximum number of {{ATTENDEE_TYPE}}",
+    minAttendanceBiggerThanMax:
+      "Missing info: minimum number of {{ATTENDEE_TYPE}} is larger than maximum number",
     showAttendees: "Show {{ATTENDEE_TYPE}}",
     hideAttendees: "Hide {{ATTENDEE_TYPE}}",
     noAttendees: "No {{ATTENDEE_TYPE}}",

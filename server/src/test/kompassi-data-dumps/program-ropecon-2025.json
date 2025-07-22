@@ -2,7 +2,7 @@
   {
     "slug": "24-tunti",
     "title": "24. tunti",
-    "description": "Kaukaisen planeetan kiertorata-asemalla työskennellään maankaltaistamisen parissa. Työntekijöillä on pelkoja, haaveita ja ristiriitojakin, mutta heitä yhdistää avaruuden ja planeetan vihamielinen ympäristö. Kun planeettahabitaatissa tapahtuu onnettomuus, neljän hengen tiimi pakenee planeetan ja kiertorata-aseman välillä kulkevaan sukkulaan. He huomaavat pian, että sukkulan ohjaus ja radioyhteys asemalle ovat epäkunnossa. Sukkula ajelehtii kohti syvää avaruutta, ja toivo alkaa hiipua. Lopulta jäljellä on enää viimeinen tunti sukkulassa, lähellä istuvat ihmiset ja loputon pimeys.\r\n\r\nKohtausrakenteisessa pelissä pelataan neljän hengen ryhmissä vuorotellen hetkiä ahtaassa sukkulassa ja arjen sattumuksia kiertorata-asemalla edeltävän vuoden aikana. Kohtauksia ohjaillaan äänimaisemilla. Peli sopii pelaajille, jotka pitävät synkistä teemoista, ihmissuhteista ja nuhjuisesta scifistä. Inspiraationa on toiminut mm. Martha Wellsin Murderbot Diaries -kirjasarja ja suomalainen scifi-larppi Chronos.\r\n\r\nSisältövaroitukset: kovat äänet, pimeys, menetys, kuolema\r\n",
+    "description": "Kaukaisen planeetan kiertorata-asemalla työskennellään maankaltaistamisen parissa. Työntekijöillä on pelkoja, haaveita ja ristiriitojakin, mutta heitä yhdistää avaruuden ja planeetan vihamielinen ympäristö. Kun planeettahabitaatissa tapahtuu onnettomuus, neljän hengen tiimi pakenee planeetan ja kiertorata-aseman välillä kulkevaan sukkulaan. He huomaavat pian, että sukkulan ohjaus ja radioyhteys asemalle ovat epäkunnossa. Sukkula ajelehtii kohti syvää avaruutta, ja toivo alkaa hiipua. Lopulta jäljellä on enää viimeinen tunti sukkulassa, lähellä istuvat ihmiset ja loputon pimeys.\r\n\r\nKohtausrakenteisessa pelissä pelataan neljän hengen ryhmissä vuorotellen hetkiä ahtaassa sukkulassa ja arjen sattumuksia kiertorata-asemalla edeltävän vuoden aikana. Kohtauksia ohjaillaan äänimaisemilla. Peli sopii pelaajille, jotka pitävät synkistä teemoista, ihmissuhteista ja nuhjuisesta scifistä. Inspiraationa on toiminut mm. Martha Wellsin Murderbot Diaries -kirjasarja ja suomalainen scifi-larppi Chronos.\r\n\r\nPeli ei vaadi ennakkovalmistautumista. Päälle mukavat vaatteet, oma vesipullo voi olla hyvä olla.\r\n\r\nSisältövaroitukset: kovat äänet, pimeys, menetys, kuolema\r\n\r\nHUOM: Peli vaatii neljällä jaollisen pelaajamäärän (4, 8, 12 tai 16 pelaajaa).",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "form": ["offer-larp"],
@@ -642,7 +642,7 @@
       "revolvingdoor": ["false"]
     },
     "cachedAnnotations": {
-      "konsti:maxAttendance": 5,
+      "konsti:maxAttendance": 1,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Astraterra",
       "ropecon:contentWarnings": "Käärmeet",
@@ -2147,11 +2147,11 @@
       "state": ["accepted"],
       "topic": ["escape-room"],
       "konsti": ["other"],
-      "grouping": ["beginners", "new-worlds"],
+      "grouping": ["new-worlds", "beginners"],
       "language": ["fi"],
       "age-group": ["everyone"],
-      "scheduled": ["one-or-more", "one"],
-      "inclusivity": ["physical-contact", "dark-lighting", "no-movement"],
+      "scheduled": ["one-or-more", "multiple"],
+      "inclusivity": ["physical-contact", "no-movement", "dark-lighting"],
       "registration": ["ropelarp"],
       "revolvingdoor": ["false"]
     },
@@ -2164,10 +2164,28 @@
     "scheduleItems": [
       {
         "slug": "elava-pakohuone-velhon-kirous",
-        "title": "Elävä pakohuone: Velhon kirous",
-        "startTime": "2025-07-26T10:30:00+03:00",
+        "title": "Elävä pakohuone: Velhon kirous – 1. pelautus",
+        "startTime": "2025-07-26T11:00:00+03:00",
+        "endTime": "2025-07-26T12:00:00+03:00",
+        "lengthMinutes": 60,
+        "location": "Room 218",
+        "isCancelled": false
+      },
+      {
+        "slug": "elava-pakohuone-velhon-kirous-2",
+        "title": "Elävä pakohuone: Velhon kirous – 2. pelautus",
+        "startTime": "2025-07-26T12:15:00+03:00",
+        "endTime": "2025-07-26T13:15:00+03:00",
+        "lengthMinutes": 60,
+        "location": "Room 218",
+        "isCancelled": false
+      },
+      {
+        "slug": "elava-pakohuone-velhon-kirous-3",
+        "title": "Elävä pakohuone: Velhon kirous – 3. pelautus",
+        "startTime": "2025-07-26T13:30:00+03:00",
         "endTime": "2025-07-26T14:30:00+03:00",
-        "lengthMinutes": 240,
+        "lengthMinutes": 60,
         "location": "Room 218",
         "isCancelled": false
       }
@@ -2968,10 +2986,10 @@
       "revolvingdoor": ["false"]
     },
     "cachedAnnotations": {
-      "konsti:maxAttendance": 4,
+      "konsti:maxAttendance": 10,
       "konsti:minAttendance": 5,
       "ropecon:accessibilityOther": "Pelissä liikutaan paljon. Kohtauksia ohjataan äänillä. Pelaajat lukevat lyhyen (alle A4) hahmotekstin paperilla. Pelissä käytetään paperinukkeja.",
-      "ropecon:contentWarnings": "Kipu, kuolema, kovat äänet, kirkas valo, neutraali kosketus, sormilla maalaaminen, vesiliukoinen maali iholla."
+      "ropecon:contentWarnings": "Kipu, kuolema, kovat äänet, kirkas valo, neutraali kosketus, sormilla maalaaminen, vesiliukoinen maali iholla, misogynia"
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -12550,7 +12568,10 @@
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:maxAttendance": 4,
+      "konsti:minAttendance": 1
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
