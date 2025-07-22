@@ -85,10 +85,7 @@ export const removeCanceledDeletedProgramItemsFromUsers = async ({
         const foundProgramItem = programItems.find(
           (programItem) => programItem.programItemId === favoriteProgramItemId,
         );
-        return (
-          foundProgramItem?.state === State.ACCEPTED &&
-          foundProgramItem.signupType === SignupType.KONSTI
-        );
+        return foundProgramItem?.state === State.ACCEPTED;
       });
 
     const changedFavoriteProgramItemIdsCount =

@@ -142,7 +142,7 @@ test("should remove direct signups when program item is deleted or cancelled and
   );
 });
 
-test("should remove lottery signups and favorites when program item doesn't use Konsti signup anymore and add notification", async () => {
+test("should remove lottery signups but not favorites when program item doesn't use Konsti signup anymore and add notification", async () => {
   await saveProgramItems([testProgramItem, testProgramItem2]);
   await saveUser(mockUser);
   await saveLotterySignups({
@@ -162,9 +162,10 @@ test("should remove lottery signups and favorites when program item doesn't use 
     { ...testProgramItem2, signupType: SignupType.OTHER },
   ]);
 
-  // Should have removed favorites and lottery signups
   const user = unsafelyUnwrap(await findUser(mockUser.username));
-  expect(user?.favoriteProgramItemIds).toHaveLength(0);
+  // Should have kept favorites
+  expect(user?.favoriteProgramItemIds).toHaveLength(2);
+  // Should have removed lottery signups
   expect(user?.lotterySignups).toHaveLength(0);
 
   // Should have added new event log items
