@@ -280,6 +280,9 @@ export const translationFI = {
     changingPasswordError: "Virhe salasanaa vaihtaessa.",
     changingPasswordSuccess: "Salasanasi on nyt vaihdettu.",
     userCreatedAt: "Käyttäjätili rekisteröity",
+    kompassiLocalInfo:
+      "Jos Konstiin on kirjauduttu Kompassi-tunnuksella, salasanan voi vaihtaa ",
+    kompassiPasswordReset: "Kompassin Salasanan nollaus -sivulla",
   },
   eventLog: {
     title: "Ilmoitukset",

@@ -279,6 +279,9 @@ export const translationEN = {
     changingPasswordError: "Error changing password.",
     changingPasswordSuccess: "Password changed succesfully.",
     userCreatedAt: "User account created",
+    kompassiLocalInfo:
+      "If Konsti has been logged in with a Kompassi account, the password can be changed on the",
+    kompassiPasswordReset: "Kompassi Password Reset page",
   },
   eventLog: {
     title: "Notifications",

@@ -38,7 +38,8 @@ export const HelperView = (): ReactElement => {
   return (
     <div>
       <ButtonGroup>
-        {loginProvider === LoginProvider.LOCAL && (
+        {(loginProvider === LoginProvider.LOCAL ||
+          loginProvider === LoginProvider.LOCAL_KOMPASSI) && (
           <Button
             disabled={selectedTool === HelperTool.PASSWORD_MANAGEMENT}
             buttonStyle={ButtonStyle.SECONDARY}

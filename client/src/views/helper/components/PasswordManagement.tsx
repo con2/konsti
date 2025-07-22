@@ -1,6 +1,7 @@
 import { ReactElement, ChangeEvent, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled, { css } from "styled-components";
+import { Link } from "react-router";
 import { getUserBySerialOrUsername } from "client/services/userServices";
 import { Button, ButtonStyle } from "client/components/Button";
 import { ChangePasswordForm } from "client/views/helper/components/ChangePasswordForm";
@@ -51,6 +52,13 @@ export const PasswordManagement = (): ReactElement => {
   return (
     <div>
       <h3>{t("passwordManagement.helperPasswordManagement")}</h3>
+      <p>
+        {t("passwordManagement.kompassiLocalInfo")}{" "}
+        <Link to={"https://kompassi.eu/profile/password/reset"} target="_blank">
+          {t("passwordManagement.kompassiPasswordReset")}
+        </Link>
+        .
+      </p>
       <p>{t("passwordManagement.userCodeOrUsername")}</p>
 
       <ControlledInput
