@@ -2758,12 +2758,12 @@
       "grouping": ["new-worlds"],
       "language": ["fi", "en"],
       "age-group": ["adults"],
-      "scheduled": ["one", "one-or-more"],
+      "scheduled": ["one-or-more", "one"],
       "game-style": [
-        "character-driven",
-        "rules-light",
+        "story-driven",
         "serious",
-        "story-driven"
+        "rules-light",
+        "character-driven"
       ],
       "inclusivity": ["no-recordings-or-spoken-text"],
       "registration": ["konsti"],
@@ -2784,7 +2784,7 @@
         "startTime": "2025-07-25T18:00:00+03:00",
         "endTime": "2025-07-25T22:00:00+03:00",
         "lengthMinutes": 240,
-        "location": "Säde (Pöytä 12)",
+        "location": "Valo (Pöytä 12)",
         "isCancelled": false
       }
     ]
@@ -3574,11 +3574,11 @@
       "state": ["accepted"],
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
-      "grouping": ["new-worlds", "beginners"],
+      "grouping": ["beginners", "new-worlds"],
       "language": ["fi"],
       "age-group": ["adults"],
-      "scheduled": ["one", "one-or-more"],
-      "game-style": ["rules-light", "story-driven"],
+      "scheduled": ["one-or-more", "one"],
+      "game-style": ["story-driven", "rules-light"],
       "inclusivity": ["no-recordings-or-spoken-text"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -3597,7 +3597,7 @@
         "startTime": "2025-07-26T14:00:00+03:00",
         "endTime": "2025-07-26T18:00:00+03:00",
         "lengthMinutes": 240,
-        "location": "Säde (Pöytä 13)",
+        "location": "Room 213",
         "isCancelled": false
       }
     ]
@@ -4275,9 +4275,9 @@
       "grouping": ["beginners"],
       "language": ["fi"],
       "age-group": ["adults"],
-      "scheduled": ["one", "one-or-more"],
-      "game-style": ["rules-light", "story-driven"],
-      "inclusivity": ["long-program", "no-movement"],
+      "scheduled": ["one-or-more", "one"],
+      "game-style": ["story-driven", "rules-light"],
+      "inclusivity": ["no-movement", "long-program"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -4297,7 +4297,7 @@
         "startTime": "2025-07-26T10:00:00+03:00",
         "endTime": "2025-07-26T13:30:00+03:00",
         "lengthMinutes": 210,
-        "location": "Säde (Pöytä 12)",
+        "location": "Valo (Pöytä 12)",
         "isCancelled": false
       }
     ]
@@ -7625,6 +7625,54 @@
     ]
   },
   {
+    "slug": "mestarin-taakseen-jattamat",
+    "title": "Mestarin taakseen jättämät",
+    "description": "Me, Mestarin uskolliset seuraajat, olemme lähteneet kotoamme syvältä maan alta Hänen seurassaan ja Häntä suojellakseen lähelle pintamaailmaa. Suoritimme tehtävämme, mutta löydettyään etsimänsä Mestari kuoli! Ja nyt… nyt olemme hämmentyneitä. Kun katsomme Mestarin maassa olevaa ruumista, ja Hänen taivaallisia mustekalankasvojaan meidät valtaa oudot tuntemukset. Välähdyksiä toisista paikoista, kodista ennen kotiamme maan alla, tunne kun mieli ei olekaan enää muihin yhteydessä, minuuden käsite joka on aivan uusi…vai onko sittenkään? Ja kaiken tämän lisäksi pitäisi vielä jotenkin päästä täältä luolaston pohjalta pois.\r\n\r\nMestarin taakseen jättämät on ensimmäisen tason roolipeliseikkailu itse luomassani fantasiamaailmassa. Peli on tarkoitettu ensisijaisesti uusille ja suhteellisen uusille roolipelaajille, mutta kyllä konkarillekin riittää pelissä tekemistä ja kokemista. Hahmot peliin on tehty valmiiksi, mutta mahdolliset...muistiaukot pelaajat saavat täyttää itse pelin edetessä. Sessio on noin neljän tunnin mittainen, mutta se on mahdollista pelata nopeamminkin. Välissä pidetään taukoja tarpeen mukaan, mutta muuten sitouduthan paikallaoloon.\r\n\r\nPelissä ei ole mitään yleisesti häiritseviä teemoja orjuutta lukuun ottamatta, mutta otathan puheeksi vaikka kahden kesken jos jokin aihe ahdistaa. Peli on myös mahdollista vetää englanniksi.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "form": ["offer-rpg"],
+      "type": ["gaming"],
+      "state": ["accepted"],
+      "topic": ["rpg"],
+      "konsti": ["tabletoprpg"],
+      "grouping": ["beginners"],
+      "language": ["en", "fi"],
+      "age-group": ["adults"],
+      "scheduled": ["one-or-more", "multiple"],
+      "game-style": ["serious", "character-driven", "rules-light"],
+      "inclusivity": ["no-recordings-or-spoken-text"],
+      "registration": ["konsti"],
+      "revolvingdoor": ["false"]
+    },
+    "cachedAnnotations": {
+      "konsti:maxAttendance": 5,
+      "konsti:minAttendance": 3,
+      "konsti:rpgSystem": "DnD 5e",
+      "ropecon:isRevolvingDoor": false
+    },
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "mestarin-taakseen-jattamat",
+        "title": "Mestarin taakseen jättämät",
+        "startTime": "2025-07-26T17:00:00+03:00",
+        "endTime": "2025-07-26T21:00:00+03:00",
+        "lengthMinutes": 240,
+        "location": "Room 304",
+        "isCancelled": false
+      },
+      {
+        "slug": "mestarin-taakseen-jattamat-2",
+        "title": "Mestarin taakseen jättämät",
+        "startTime": "2025-07-27T11:00:00+03:00",
+        "endTime": "2025-07-27T15:00:00+03:00",
+        "lengthMinutes": 240,
+        "location": "Room 310 (pöytä 1)",
+        "isCancelled": false
+      }
+    ]
+  },
+  {
     "slug": "metsien-viimeinen-huuto-the-last-cry-of-the-forest",
     "title": "Metsien viimeinen huuto / The last cry of the forest",
     "description": "“Taas pitää muuttaa syvemmälle metsään…Sentään meidän mailta löytyvää ihmisten teknologiaromua voi yhdistää meidän taikaan, mutta onko sitä pakko tuottaa niin valtavasti ja sen lisäksi heittää luontoon!? Eikö riitä, että meitä jatkuvasti ajetaan ahtaammalle…Sota on jatkunut jo liian pitkään, ja ihmisten istuttamat uudet, taiattomat metsät ovat laiha lohtu kaiken menettämämme edessä.”\r\n\r\nPeli sijoittuu meidän maailmamme rinnakkaistodellisuuteen, jossa keijujen ja ihmisten välinen sodankäynti on jatkunut jo teollisesta vallankumouksesta asti. Nyt sodassa ollaan saavutettu kiehumispiste, eikä ihmisten kanssa yhteiselo ole enää vaihtoehto.\r\nKesän ja Talven hovit kohtaavat toimistorakennuksessa tekemään tärkeitä päätöksiä sodan kulusta - hyökätäkkö vaiko perääntyä?\r\n\r\nPelissä keskipisteessä ovat neuvottelu ja tiukan tilanteen kärjistämä ihmiskeijusuhdedraama. Tarkoitus ei kuitenkaan ole keskittyä sotataktiikoihin/löytämään “oikeaa” ratkaisua siihen miten sota voitetaan, vaan tilanteen draamaan ja siihen, että päädytään yhdessä johonkin ratkaisuun.\r\n\r\nPeli pelautettiin ensimmäisen kerran Ropeconissa 2024.\r\n\r\nTeemoja: sota, ilmastokatastrofi, ihmissuhdedraama, neuvottelu/konflikti, yhteisöllisyys, ystävyys, underdog meininki\r\n\r\n“Again, we are forced to move deeper into the forest… At least we can combine all this human technological debris with our magic, but is it really necessary to make so much of it and toss it out into nature on top of everything!? Isn’t it enough that we are constantly being pushed into a corner… The war has been going on for too long, and all the new forest that the humans have planted is devoid of magic, so it’s a cold comfort in the face of all that we have lost.”\r\n\r\nThe game is set in a parallel reality of our world, where the ongoing conflict between fairies and humans has persisted since the industrial revolution. Now, the war has reached a boiling point, and coexistence with humans is no longer an option. \r\nThe Summer and Winter courts convene in an office building to make crucial decisions about the war - whether to attack or to retreat?\r\n\r\nThe focus of the game lies in negotiation and interpersonal drama heightened by the tense situation. \r\nThe goal is not to concentrate on war tactics/finding the “right” solution to winning the war, but rather on the drama of the situation and on coming to a resolution together.\r\n\r\nThe larp had its first two runs at Ropecon 2024.\r\n\r\nThemes: war, climate disaster, negotiation/conflict, community, friendship, underdog vibes",
@@ -7832,14 +7880,14 @@
       "state": ["accepted"],
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
-      "grouping": ["beginners", "lgbt", "new-worlds"],
+      "grouping": ["new-worlds", "lgbt", "beginners"],
       "language": ["fi"],
-      "age-group": ["adults"],
-      "scheduled": ["one", "one-or-more"],
+      "age-group": ["everyone"],
+      "scheduled": ["one-or-more", "one"],
       "game-style": [
-        "character-driven",
-        "light",
         "story-driven",
+        "light",
+        "character-driven",
         "rules-light"
       ],
       "registration": ["konsti"],
@@ -7876,7 +7924,7 @@
       "type": ["workshop"],
       "state": ["accepted"],
       "topic": ["figures"],
-      "konsti": ["workshop"],
+      "konsti": ["other"],
       "grouping": ["new-worlds"],
       "language": ["fi"],
       "age-group": ["teens"],
@@ -7884,7 +7932,10 @@
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:maxAttendance": 24,
+      "konsti:minAttendance": 1
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -9364,6 +9415,67 @@
     ]
   },
   {
+    "slug": "pikamaalauskilpailu-speed-painting-contest",
+    "title": "Pikamaalauskilpailu / Speed Painting Contest",
+    "description": "Pikamaalauskisassa tavoitteena on maalata annettu miniatyyri mahdollisimman hyvin annetussa ajassa. Aikaa maalaamiseen on varattu yksi tunti, ja parhaiten maalattu figu voittaa.\r\n\r\nEt tarvitse kisaan omaa figua, vaan saat sen toivomallasi pohjamaalilla juuri ennen suorituksen alkua. Luonnollisesti kisatyön saa ottaa mukaansa tuomaroinnin jälkeen.\r\n\r\nOmia maalausvälineitä (paletit, siveltimet, maalit) saa käyttää, mutta halutessaan voi myös hyödyntää figumaalauspisteen tarjontaa.\r\n\r\n====\r\n\r\nThe goal in the Speed Painting Contest is to paint a given miniature as well as possible in a given time. The contestants have one hour to paint, and the best painted miniature wins.\r\n\r\nBringing your own miniature into the contest is not needed, as you will be provided one right before the beginning. Naturally, participants can take their contest work with them after the judges have finished the evaluation.\r\n\r\nYou can participate in the contest either using your own painting supplies (palettes, brushes, paints), or you can take advantage of the selection at Ropecon’s Miniature Painting Point.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "type": ["other"],
+      "topic": ["figures"],
+      "konsti": ["tournament"],
+      "grouping": ["beginners", "new-worlds"],
+      "language": ["fi", "en"],
+      "age-group": ["everyone"],
+      "scheduled": ["one-or-more", "multiple"],
+      "inclusivity": ["physical-contact"],
+      "registration": ["konsti"],
+      "revolvingdoor": ["false"]
+    },
+    "cachedAnnotations": {
+      "konsti:maxAttendance": 20,
+      "konsti:minAttendance": 1
+    },
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "pikamaalauskilpailu-speed-painting-contest",
+        "title": "Pikamaalauskilpailu / Speed Painting Contest",
+        "startTime": "2025-07-25T17:00:00+03:00",
+        "endTime": "2025-07-25T18:00:00+03:00",
+        "lengthMinutes": 60,
+        "location": "Hall 5B Miniature Figure Painting Station",
+        "isCancelled": false
+      },
+      {
+        "slug": "pikamaalauskilpailu-speed-painting-contest-2",
+        "title": "Pikamaalauskilpailu / Speed Painting Contest",
+        "startTime": "2025-07-26T11:00:00+03:00",
+        "endTime": "2025-07-26T12:00:00+03:00",
+        "lengthMinutes": 60,
+        "location": "Hall 5B Miniature Figure Painting Station",
+        "isCancelled": false
+      },
+      {
+        "slug": "pikamaalauskilpailu-speed-painting-contest-3",
+        "title": "Pikamaalauskilpailu / Speed Painting Contest",
+        "startTime": "2025-07-26T14:00:00+03:00",
+        "endTime": "2025-07-26T15:00:00+03:00",
+        "lengthMinutes": 60,
+        "location": "Hall 5B Miniature Figure Painting Station",
+        "isCancelled": false
+      },
+      {
+        "slug": "pikamaalauskilpailu-speed-painting-contest-4",
+        "title": "Pikamaalauskilpailu / Speed Painting Contest",
+        "startTime": "2025-07-26T17:00:00+03:00",
+        "endTime": "2025-07-26T18:00:00+03:00",
+        "lengthMinutes": 60,
+        "location": "Hall 5B Miniature Figure Painting Station",
+        "isCancelled": false
+      }
+    ]
+  },
+  {
     "slug": "pimeys-shedsby-coven-ylla",
     "title": "Pimeys Shedsby Coven yllä",
     "description": "Shedsby, Norfolk, Englanti, 1924. \r\n\r\nEdesmenneen historioitsija Thomas Heneghanin taloon kokoontuneet vieraat kokevat järkytyksen kun Heneghanin teini-ikäinen tyttärentytär ei palaa päivälliseen mennessä kotiin, ja yöstä on tulossa kylmä ja myrskyinen. Uhkaavatko talon väkeä katkeroituneet perinnön tavoittelijat vai jokin pimeämpi, tuntemattomampi ja vaarallisempi? \r\n\r\nCall of Cthulhu -oneshot, kauhupeli. Peli käsittelee ahdistavia aiheita, kuten lapsen katoaminen, mielenterveysongelmat, päihteet, okkultismi. \r\n\r\n",
@@ -9801,11 +9913,11 @@
       "state": ["accepted"],
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
-      "grouping": ["new-worlds", "beginners"],
+      "grouping": ["beginners", "new-worlds"],
       "language": ["fi"],
       "age-group": ["adults"],
-      "scheduled": ["one", "one-or-more"],
-      "game-style": ["light", "character-driven", "story-driven"],
+      "scheduled": ["one-or-more", "one"],
+      "game-style": ["character-driven", "story-driven", "light"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -9824,7 +9936,7 @@
         "startTime": "2025-07-27T11:00:00+03:00",
         "endTime": "2025-07-27T14:00:00+03:00",
         "lengthMinutes": 180,
-        "location": "Säde (Pöytä 12)",
+        "location": "Valo (Pöytä 12)",
         "isCancelled": false
       }
     ]
@@ -13440,8 +13552,8 @@
       "grouping": ["lgbt", "beginners"],
       "language": ["fi"],
       "age-group": ["adults"],
-      "scheduled": ["one", "one-or-more"],
-      "game-style": ["rules-light", "serious", "story-driven"],
+      "scheduled": ["one-or-more", "one"],
+      "game-style": ["story-driven", "rules-light", "serious"],
       "inclusivity": ["no-movement"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -13461,7 +13573,7 @@
         "startTime": "2025-07-25T20:00:00+03:00",
         "endTime": "2025-07-26T00:00:00+03:00",
         "lengthMinutes": 240,
-        "location": "Säde (Pöytä 13)",
+        "location": "Kajo (Pöytä 1)",
         "isCancelled": false
       }
     ]
@@ -14008,8 +14120,8 @@
       "grouping": ["beginners"],
       "language": ["fi"],
       "age-group": ["adults"],
-      "scheduled": ["multiple", "one-or-more"],
-      "game-style": ["rules-light", "character-driven", "story-driven"],
+      "scheduled": ["one-or-more", "multiple"],
+      "game-style": ["story-driven", "rules-light", "character-driven"],
       "inclusivity": ["long-program"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -14029,7 +14141,7 @@
         "startTime": "2025-07-26T18:00:00+03:00",
         "endTime": "2025-07-26T21:00:00+03:00",
         "lengthMinutes": 180,
-        "location": "Säde (Pöytä 12)",
+        "location": "Valo (Pöytä 12)",
         "isCancelled": false
       },
       {

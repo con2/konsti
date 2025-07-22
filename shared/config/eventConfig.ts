@@ -5,6 +5,7 @@ import {
   EventConfig,
 } from "shared/config/eventConfigTypes";
 import { ProgramType } from "shared/types/models/programItem";
+import { SignupQuestionType } from "shared/types/models/settings";
 
 // Event days
 const friday = "2025-07-25";
@@ -107,7 +108,52 @@ export const eventConfig: EventConfig = {
     "nerdic-open-mic-kolmas-kerta-toden-sanoo",
   ],
 
-  signupQuestions: [],
+  signupQuestions: [
+    {
+      programItemId: "pikamaalauskilpailu-speed-painting-contest",
+      questionFi: "Haluan, että maalattavan figuni pohjaväri on",
+      questionEn: "I want my miniature to be primed",
+      private: false,
+      type: SignupQuestionType.SELECT,
+      selectOptions: [
+        { optionFi: "Musta", optionEn: "Black" },
+        { optionFi: "Valkoinen", optionEn: "White" },
+      ],
+    },
+    {
+      programItemId: "pikamaalauskilpailu-speed-painting-contest-2",
+      questionFi: "Haluan, että maalattavan figuni pohjaväri on",
+      questionEn: "I want my miniature to be primed",
+      private: false,
+      type: SignupQuestionType.SELECT,
+      selectOptions: [
+        { optionFi: "Musta", optionEn: "Black" },
+        { optionFi: "Valkoinen", optionEn: "White" },
+      ],
+    },
+    {
+      programItemId: "pikamaalauskilpailu-speed-painting-contest-3",
+      questionFi: "Haluan, että maalattavan figuni pohjaväri on",
+      questionEn: "I want my miniature to be primed",
+      private: false,
+      type: SignupQuestionType.SELECT,
+      selectOptions: [
+        { optionFi: "Musta", optionEn: "Black" },
+        { optionFi: "Valkoinen", optionEn: "White" },
+      ],
+    },
+    {
+      programItemId: "pikamaalauskilpailu-speed-painting-contest-4",
+      questionFi: "Haluan, että maalattavan figuni pohjaväri on",
+      questionEn: "I want my miniature to be primed",
+      private: false,
+      type: SignupQuestionType.SELECT,
+      selectOptions: [
+        { optionFi: "Musta", optionEn: "Black" },
+        { optionFi: "Valkoinen", optionEn: "White" },
+      ],
+    },
+  ],
 
   tournamentSignupQuestion: null,
 
