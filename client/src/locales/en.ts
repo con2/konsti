@@ -282,6 +282,7 @@ export const translationEN = {
     kompassiLocalInfo:
       "If Konsti has been logged in with a Kompassi account, the password can be changed on the",
     kompassiPasswordReset: "Kompassi Password Reset page",
+    kompassiUserError: "User logged with a Kompassi account",
   },
   eventLog: {
     title: "Notifications",

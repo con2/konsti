@@ -7,6 +7,7 @@ import { Button, ButtonStyle } from "client/components/Button";
 import { ChangePasswordForm } from "client/views/helper/components/ChangePasswordForm";
 import { ControlledInput } from "client/components/ControlledInput";
 import { getDateAndTime } from "client/utils/timeFormatter";
+import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 
 export const PasswordManagement = (): ReactElement => {
   const { t } = useTranslation();
@@ -27,11 +28,26 @@ export const PasswordManagement = (): ReactElement => {
     const response = await getUserBySerialOrUsername(userSerialInput);
 
     if (response.status === "error") {
-      setUserFoundMessage(
-        <Message error={true}>{t("passwordManagement.userNotFound")}</Message>,
-      );
-      setChangePasswordInputVisible(false);
-      return;
+      switch (response.errorId) {
+        case "kompassiLogin":
+          setUserFoundMessage(
+            <Message error={true}>
+              {t("passwordManagement.kompassiUserError")}
+            </Message>,
+          );
+          setChangePasswordInputVisible(false);
+          return;
+        case "unknown":
+          setUserFoundMessage(
+            <Message error={true}>
+              {t("passwordManagement.userNotFound")}
+            </Message>,
+          );
+          setChangePasswordInputVisible(false);
+          return;
+        default:
+          return exhaustiveSwitchGuard(response.errorId);
+      }
     }
 
     setUserFoundMessage(

@@ -337,6 +337,14 @@ export const fetchUserBySerialOrUsername = async (
     };
   }
 
+  if (user.kompassiId) {
+    return {
+      message: "User logged in with Kompassi account",
+      status: "error",
+      errorId: "kompassiLogin",
+    };
+  }
+
   return {
     message: "Getting user data success",
     status: "success",
