@@ -91,7 +91,11 @@ export const startServer = async ({
   // Set static path
   const staticPath = path.join(__dirname, "../../", "front");
 
-  if (!config.server().onlyCronjobs) {
+  const serveIndexAndApi =
+    !config.server().onlyCronjobs ||
+    config.server().cronjobsAndBackendSameInstance;
+
+  if (serveIndexAndApi) {
     // Set compression
     if (config.server().bundleCompression) {
       app.use(
@@ -112,7 +116,7 @@ export const startServer = async ({
     if (req.originalUrl.includes("/api/")) {
       res.sendStatus(404);
     } else {
-      if (!config.server().onlyCronjobs) {
+      if (serveIndexAndApi) {
         res.sendFile(path.join(staticPath, "index.html"));
       }
     }
@@ -164,7 +168,12 @@ export const closeServer = async (
   signal?: string,
 ): Promise<void> => {
   logger.info(`Received signal to terminate${signal ? `: ${signal}` : ""}`);
-  if (config.server().onlyCronjobs) {
+
+  const enableCronjobs =
+    config.server().onlyCronjobs ||
+    config.server().cronjobsAndBackendSameInstance;
+
+  if (enableCronjobs) {
     stopCronJobs();
   }
   server.close();
