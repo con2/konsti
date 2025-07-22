@@ -99,7 +99,14 @@ export const ProgramItemEntry = ({
   const isValidMaxAttendanceValue =
     !usesKonstiSignup || programItem.maxAttendance > 0;
 
-  const allValuesValid = isValidMinAttendanceValue && isValidMaxAttendanceValue;
+  const minAttendanceBiggerThanMax =
+    programItem.minAttendance > programItem.maxAttendance &&
+    programItem.maxAttendance > 0;
+
+  const allValuesValid =
+    isValidMinAttendanceValue &&
+    isValidMaxAttendanceValue &&
+    !minAttendanceBiggerThanMax;
 
   return (
     <StyledCard
@@ -123,6 +130,7 @@ export const ProgramItemEntry = ({
         <ProgramItemErrors
           isValidMinAttendanceValue={isValidMinAttendanceValue}
           isValidMaxAttendanceValue={isValidMaxAttendanceValue}
+          minAttendanceBiggerThanMax={minAttendanceBiggerThanMax}
           programType={programItem.programType}
         />
       )}

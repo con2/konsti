@@ -335,6 +335,8 @@ export const translationFI = {
     entryFee: "Materiaalimaksu {{ENTRY_FEE}}",
     minAttendanceMissing: "Puuttuva tieto: vähimmäismäärä {{ATTENDEE_TYPE}}",
     maxAttendanceMissing: "Puuttuva tieto: maksimimäärä {{ATTENDEE_TYPE}}",
+    minAttendanceBiggerThanMax:
+      "Puuttuva tieto: minimimäärä {{ATTENDEE_TYPE}} on suurempi kuin maksimimäärä",
     showAttendees: "Näytä {{ATTENDEE_TYPE}}",
     hideAttendees: "Piilota {{ATTENDEE_TYPE}}",
     noAttendees: "Ei {{ATTENDEE_TYPE}}",

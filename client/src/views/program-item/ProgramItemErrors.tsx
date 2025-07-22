@@ -8,12 +8,14 @@ import { ErrorMessage } from "client/components/ErrorMessage";
 interface Props {
   isValidMinAttendanceValue: boolean;
   isValidMaxAttendanceValue: boolean;
+  minAttendanceBiggerThanMax: boolean;
   programType: ProgramType;
 }
 
 export const ProgramItemErrors = ({
   isValidMinAttendanceValue,
   isValidMaxAttendanceValue,
+  minAttendanceBiggerThanMax,
   programType,
 }: Props): ReactElement => {
   const { t } = useTranslation();
@@ -33,6 +35,16 @@ export const ProgramItemErrors = ({
       {!isValidMaxAttendanceValue && (
         <ErrorMessage
           message={t("signup.maxAttendanceMissing", {
+            ATTENDEE_TYPE: t(
+              `attendeeTypePlural.${getAttendeeType(programType)}`,
+            ),
+          })}
+        />
+      )}
+
+      {minAttendanceBiggerThanMax && (
+        <ErrorMessage
+          message={t("signup.minAttendanceBiggerThanMax", {
             ATTENDEE_TYPE: t(
               `attendeeTypePlural.${getAttendeeType(programType)}`,
             ),
