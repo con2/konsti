@@ -20,7 +20,11 @@ const startApp = async (): Promise<void> => {
     return;
   }
 
-  if (config.server().onlyCronjobs) {
+  const enableCronjobs =
+    config.server().onlyCronjobs ||
+    config.server().cronjobsAndBackendSameInstance;
+
+  if (enableCronjobs) {
     logger.info("Start enabled cronjobs");
     try {
       await startCronJobs();
@@ -28,7 +32,7 @@ const startApp = async (): Promise<void> => {
       logger.error("Error starting cronjobs: %s", error);
     }
   }
-  if (!config.server().onlyCronjobs) {
+  if (!enableCronjobs) {
     logger.info("Cronjobs not started, set ONLY_CRONJOBS to enable cronjobs");
   }
 

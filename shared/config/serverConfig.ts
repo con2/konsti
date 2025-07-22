@@ -31,6 +31,7 @@ export interface ServerConfig {
   consoleLogFormatJson: boolean;
   enableLoggingInTests: boolean;
   onlyCronjobs: boolean;
+  cronjobsAndBackendSameInstance: boolean;
   defaultSignupStrategy: EventSignupStrategy;
   defaultLoginProvider: LoginProvider;
   logInvalidStartTimes: boolean;
@@ -53,6 +54,7 @@ const commonConfig = {
       ? Number.parseInt(process.env.PORT, 10)
       : 5000,
   onlyCronjobs: process.env.ONLY_CRONJOBS === "true" ? true : false,
+  cronjobsAndBackendSameInstance: false, // Set this to run cronjobs and http/api server on same instance
 
   // Logging
   enableAccessLog: false,
