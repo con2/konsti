@@ -144,7 +144,9 @@ export const saveSignupQuestion = async (
     if (!settings) {
       return makeErrorResult(MongoDbError.SETTINGS_NOT_FOUND);
     }
-    logger.info("MongoDB: Signup question updated");
+    logger.info(
+      `MongoDB: Signup question updated: ${JSON.stringify(signupQuestionData)}`,
+    );
 
     const result = SettingsSchemaDb.safeParse(settings);
     if (!result.success) {
