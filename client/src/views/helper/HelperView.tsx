@@ -17,8 +17,6 @@ export const HelperView = (): ReactElement => {
   const { t } = useTranslation();
 
   const loginProvider = useAppSelector((state) => state.admin.loginProvider);
-  const kompassiId = useAppSelector((state) => state.login.kompassiId);
-  const isLocalLogin = !kompassiId;
 
   const [selectedTool, setSelectedTool] = useState<HelperTool>(
     loginProvider === LoginProvider.KOMPASSI
@@ -40,7 +38,8 @@ export const HelperView = (): ReactElement => {
   return (
     <div>
       <ButtonGroup>
-        {isLocalLogin && (
+        {(loginProvider === LoginProvider.LOCAL ||
+          loginProvider === LoginProvider.LOCAL_KOMPASSI) && (
           <Button
             disabled={selectedTool === HelperTool.PASSWORD_MANAGEMENT}
             buttonStyle={ButtonStyle.SECONDARY}
