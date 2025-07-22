@@ -75,13 +75,13 @@ export const findDirectSignupsByProgramItemIds = async (
 
     if (responses.length === 0) {
       logger.info(
-        "MongoDB: No direct signups found for provided program item IDs",
+        `MongoDB: No direct signups found for program item IDs: ${programItemIds.join(", ")}`,
       );
       return makeSuccessResult([]);
     }
 
     logger.debug(
-      `MongoDB: Found ${responses.length} direct signups for program items`,
+      `MongoDB: Found ${responses.length} direct signups for program item IDs: ${programItemIds.join(", ")}`,
     );
 
     const validSignups: DirectSignupsForProgramItem[] = [];
@@ -104,7 +104,7 @@ export const findDirectSignupsByProgramItemIds = async (
     return makeSuccessResult(validSignups);
   } catch (error) {
     logger.error(
-      "MongoDB: Error finding direct signups for program items: %s",
+      `MongoDB: Error finding direct signups for program items ${programItemIds.join(", ")}: %s`,
       error,
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);

@@ -13,14 +13,14 @@
       "grouping": ["beginners"],
       "language": ["fi"],
       "age-group": ["adults"],
-      "scheduled": ["one", "one-or-more"],
+      "scheduled": ["one-or-more", "one"],
       "inclusivity": [
-        "long-program",
-        "no-text-of-recording",
-        "dark-lighting",
-        "no-movement",
-        "loud-sounds",
         "no-recordings-or-spoken-text",
+        "long-program",
+        "no-movement",
+        "dark-lighting",
+        "loud-sounds",
+        "no-text-of-recording",
         "physical-contact"
       ],
       "registration": ["konsti"]
@@ -642,7 +642,7 @@
       "revolvingdoor": ["false"]
     },
     "cachedAnnotations": {
-      "konsti:maxAttendance": 1,
+      "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Astraterra",
       "ropecon:contentWarnings": "Käärmeet",
@@ -885,7 +885,7 @@
       "grouping": ["new-worlds", "beginners"],
       "language": ["en"],
       "age-group": ["adults"],
-      "scheduled": ["one", "one-or-more"],
+      "scheduled": ["one-or-more", "one"],
       "registration": ["ropelarp"],
       "revolvingdoor": ["false"]
     },
@@ -2204,7 +2204,7 @@
       "konsti": ["larp"],
       "language": ["fi"],
       "age-group": ["adults"],
-      "scheduled": ["one", "one-or-more"],
+      "scheduled": ["one-or-more", "one"],
       "inclusivity": ["physical-contact"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -2973,14 +2973,14 @@
       "grouping": ["beginners"],
       "language": ["fi"],
       "age-group": ["adults"],
-      "scheduled": ["one", "one-or-more"],
+      "scheduled": ["one-or-more", "one"],
       "inclusivity": [
-        "no-text-of-recording",
-        "dark-lighting",
         "flahing-lights",
-        "loud-sounds",
+        "physical-contact",
         "no-recordings-or-spoken-text",
-        "physical-contact"
+        "loud-sounds",
+        "no-text-of-recording",
+        "dark-lighting"
       ],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -3493,15 +3493,15 @@
       "state": ["accepted"],
       "topic": ["larp"],
       "konsti": ["larp"],
-      "grouping": ["beginners", "new-worlds"],
+      "grouping": ["new-worlds", "beginners"],
       "language": ["fi"],
       "age-group": ["adults"],
-      "scheduled": ["one", "one-or-more"],
+      "scheduled": ["one-or-more", "one"],
       "inclusivity": [
-        "long-texts",
+        "physical-contact",
         "dark-lighting",
         "long-program",
-        "physical-contact"
+        "long-texts"
       ],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -4694,11 +4694,11 @@
       "state": ["accepted"],
       "topic": ["larp"],
       "konsti": ["larp"],
-      "grouping": ["new-worlds", "lgbt", "beginners"],
+      "grouping": ["new-worlds", "beginners", "lgbt"],
       "language": ["fi"],
       "age-group": ["adults"],
-      "scheduled": ["one", "one-or-more"],
-      "inclusivity": ["long-program", "long-texts", "physical-contact"],
+      "scheduled": ["one-or-more", "one"],
+      "inclusivity": ["physical-contact", "long-program", "long-texts"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -5982,13 +5982,13 @@
       "age-group": ["adults"],
       "scheduled": ["one-or-more", "one"],
       "inclusivity": [
-        "long-texts",
-        "lots-of-movement",
-        "quick-reactions",
         "fingers",
         "long-program",
+        "quick-reactions",
+        "lots-of-movement",
         "physical-contact",
-        "no-recordings-or-spoken-text"
+        "no-recordings-or-spoken-text",
+        "long-texts"
       ],
       "registration": ["ropelarp"],
       "revolvingdoor": ["false"]
@@ -7348,7 +7348,7 @@
       "state": ["accepted"],
       "topic": ["larp"],
       "konsti": ["larp"],
-      "grouping": ["beginners", "new-worlds"],
+      "grouping": ["new-worlds", "beginners"],
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["one-or-more", "one"],
@@ -7560,13 +7560,13 @@
       "grouping": ["beginners"],
       "language": ["fi"],
       "age-group": ["teens"],
-      "scheduled": ["multiple", "one-or-more"],
+      "scheduled": ["one-or-more", "multiple"],
       "inclusivity": [
-        "no-recordings-or-spoken-text",
-        "long-texts",
         "fingers",
+        "dark-lighting",
         "physical-contact",
-        "dark-lighting"
+        "no-recordings-or-spoken-text",
+        "long-texts"
       ],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -7702,10 +7702,10 @@
       "topic": ["larp"],
       "konsti": ["larp"],
       "grouping": ["beginners"],
-      "language": ["fi", "en"],
+      "language": ["en", "fi"],
       "age-group": ["adults"],
       "scheduled": ["one-or-more", "multiple"],
-      "inclusivity": ["no-recordings-or-spoken-text", "long-program"],
+      "inclusivity": ["long-program", "no-recordings-or-spoken-text"],
       "registration": ["ropelarp"],
       "revolvingdoor": ["false"]
     },
@@ -8159,7 +8159,7 @@
       "grouping": ["beginners"],
       "language": ["fi"],
       "age-group": ["adults"],
-      "scheduled": ["one", "one-or-more"],
+      "scheduled": ["one-or-more", "one"],
       "inclusivity": ["no-recordings-or-spoken-text"],
       "registration": ["ropelarp"],
       "revolvingdoor": ["false"]
@@ -8198,8 +8198,8 @@
       "grouping": ["lgbt"],
       "language": ["fi"],
       "age-group": ["only-adults"],
-      "scheduled": ["one", "one-or-more"],
-      "inclusivity": ["no-movement", "long-texts", "physical-contact"],
+      "scheduled": ["one-or-more", "one"],
+      "inclusivity": ["long-texts", "no-movement", "physical-contact"],
       "registration": ["konsti"]
     },
     "cachedAnnotations": {
@@ -8349,14 +8349,14 @@
       "state": ["accepted"],
       "topic": ["larp"],
       "konsti": ["larp"],
-      "grouping": ["beginners", "new-worlds"],
+      "grouping": ["new-worlds", "beginners"],
       "language": ["fi"],
       "age-group": ["teens"],
       "scheduled": ["multiple", "one-or-more"],
       "inclusivity": [
         "long-texts",
-        "no-recordings-or-spoken-text",
-        "dark-lighting"
+        "dark-lighting",
+        "no-recordings-or-spoken-text"
       ],
       "registration": ["ropelarp"],
       "revolvingdoor": ["false"]
@@ -10851,7 +10851,7 @@
       "grouping": ["new-worlds", "lgbt", "beginners"],
       "language": ["fi"],
       "age-group": ["adults"],
-      "scheduled": ["one", "one-or-more"],
+      "scheduled": ["one-or-more", "one"],
       "registration": ["ropelarp"],
       "revolvingdoor": ["false"]
     },
@@ -11422,10 +11422,10 @@
       "state": ["accepted"],
       "topic": ["larp"],
       "konsti": ["larp"],
-      "grouping": ["lgbt", "new-worlds"],
+      "grouping": ["new-worlds", "lgbt"],
       "language": ["en"],
       "age-group": ["adults"],
-      "scheduled": ["one", "one-or-more"],
+      "scheduled": ["one-or-more", "one"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -12491,8 +12491,8 @@
       "grouping": ["beginners"],
       "language": ["en"],
       "age-group": ["only-adults"],
-      "scheduled": ["one", "one-or-more"],
-      "inclusivity": ["long-program", "no-movement", "dark-lighting"],
+      "scheduled": ["one-or-more", "one"],
+      "inclusivity": ["no-movement", "dark-lighting", "long-program"],
       "registration": ["konsti"]
     },
     "cachedAnnotations": {
@@ -12534,7 +12534,7 @@
       "revolvingdoor": ["false"]
     },
     "cachedAnnotations": {
-      "konsti:maxAttendance": 8,
+      "konsti:maxAttendance": 4,
       "konsti:minAttendance": 1,
       "ropecon:contentWarnings": "Hahmot pelaavat pelissä Venäläistä Rulettia ja väkivaltainen kuolema tai sen riski on vältämättömästi läsnä pelin tapahtumissa sekä historiassa. Hahmoilla saattaa olla tausta rikoksien tekijänä tai uhrina ja heillä voi olla vihamielinen suhde toisiinsa. Pelaajilla on kuitenkin mahdollista sulkea pelistä pois sellaiset teemat, joita eivät halua pelissä kohdata."
     },
@@ -12596,7 +12596,7 @@
       "state": ["accepted"],
       "topic": ["larp"],
       "konsti": ["larp"],
-      "grouping": ["new-worlds", "beginners", "lgbt"],
+      "grouping": ["new-worlds", "lgbt", "beginners"],
       "language": ["sv", "en", "fi"],
       "age-group": ["everyone"],
       "scheduled": ["multiple", "one-or-more"],
@@ -13443,16 +13443,16 @@
       "state": ["accepted"],
       "topic": ["larp"],
       "konsti": ["larp"],
-      "grouping": ["new-worlds", "beginners", "lgbt"],
+      "grouping": ["beginners", "lgbt", "new-worlds"],
       "language": ["fi"],
       "age-group": ["everyone"],
       "scheduled": ["one-or-more", "one"],
       "inclusivity": [
-        "long-texts",
         "long-program",
         "color-blindness",
+        "no-subtitles",
         "no-text-of-recording",
-        "no-subtitles"
+        "long-texts"
       ],
       "registration": ["ropelarp"],
       "revolvingdoor": ["true"]
@@ -13645,8 +13645,8 @@
       "grouping": ["new-worlds", "beginners"],
       "language": ["fi"],
       "age-group": ["only-adults"],
-      "scheduled": ["multiple", "one-or-more"],
-      "inclusivity": ["long-program", "loud-sounds"],
+      "scheduled": ["one-or-more", "multiple"],
+      "inclusivity": ["loud-sounds", "long-program"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -13774,7 +13774,7 @@
       "konsti": ["larp"],
       "language": ["fi"],
       "age-group": ["adults"],
-      "scheduled": ["multiple", "one-or-more"],
+      "scheduled": ["one-or-more", "multiple"],
       "inclusivity": ["no-recordings-or-spoken-text"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
