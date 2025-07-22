@@ -91,7 +91,7 @@ export interface GetUserBySerialResponse extends ApiResult {
 }
 
 export interface GetUserBySerialError extends ApiError {
-  errorId: "unknown";
+  errorId: "unknown" | "kompassiLogin";
 }
 
 // GET signup messages

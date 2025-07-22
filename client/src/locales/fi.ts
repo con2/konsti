@@ -282,6 +282,7 @@ export const translationFI = {
     kompassiLocalInfo:
       "Jos Konstiin on kirjauduttu Kompassi-tunnuksella, salasanan voi vaihtaa ",
     kompassiPasswordReset: "Kompassin Salasanan nollaus -sivulla",
+    kompassiUserError: "Käyttäjä kirjautunut Kompassi-tunnuksella",
   },
   eventLog: {
     title: "Ilmoitukset",
