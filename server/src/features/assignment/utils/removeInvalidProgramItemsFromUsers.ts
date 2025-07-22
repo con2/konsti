@@ -190,12 +190,14 @@ const notifyUsersWithLotterySignupOrFavorite = async (
     );
   });
 
-  const addEventLogItemsResult = await addEventLogItems({
-    action: EventLogAction.PROGRAM_ITEM_CANCELED,
-    updates: eventUpdates,
-  });
-  if (isErrorResult(addEventLogItemsResult)) {
-    return addEventLogItemsResult;
+  if (eventUpdates.length > 0) {
+    const addEventLogItemsResult = await addEventLogItems({
+      action: EventLogAction.PROGRAM_ITEM_CANCELED,
+      updates: eventUpdates,
+    });
+    if (isErrorResult(addEventLogItemsResult)) {
+      return addEventLogItemsResult;
+    }
   }
 
   return makeSuccessResult();

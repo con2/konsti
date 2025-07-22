@@ -96,11 +96,11 @@ const getCanceledAndDeletedProgramItems = (
     (programItem) => programItem.programItemId,
   ).map((p) => p.programItemId);
 
-  if (canceledProgramItemIds.length > 0) {
+  if (deletedProgramItemIds.length > 0) {
     logger.info(
       `Found ${
-        canceledProgramItemIds.length
-      } deleted program items: ${canceledProgramItemIds.join(", ")}`,
+        deletedProgramItemIds.length
+      } deleted program items: ${deletedProgramItemIds.join(", ")}`,
     );
   }
 
@@ -319,12 +319,14 @@ const notifyUsersWithDirectSignups = async (
     })),
   );
 
-  const addEventLogItemsResult = await addEventLogItems({
-    action: EventLogAction.PROGRAM_ITEM_CANCELED,
-    updates: userUpdates,
-  });
-  if (isErrorResult(addEventLogItemsResult)) {
-    return addEventLogItemsResult;
+  if (userUpdates.length > 0) {
+    const addEventLogItemsResult = await addEventLogItems({
+      action: EventLogAction.PROGRAM_ITEM_CANCELED,
+      updates: userUpdates,
+    });
+    if (isErrorResult(addEventLogItemsResult)) {
+      return addEventLogItemsResult;
+    }
   }
 
   return makeSuccessResult(directSignups);
