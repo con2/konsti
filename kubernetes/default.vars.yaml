@@ -32,7 +32,7 @@ ingress_letsencrypt_cluster_issuer: letsencrypt-prod
 ingress_class_name: nginx
 
 mongodb_managed: true
-mongodb_image: mongo:8.0.10-noble
+mongodb_image: mongo:8.0.11-noble
 mongodb_connection_string: mongodb://mongodb:27017/konsti
 
 smtp_hostname: ""
