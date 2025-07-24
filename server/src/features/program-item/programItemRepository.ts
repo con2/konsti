@@ -15,7 +15,10 @@ import {
 import { handleCanceledDeletedProgramItems } from "server/features/program-item/programItemUtils";
 import { removeCanceledDeletedProgramItemsFromUsers } from "server/features/assignment/utils/removeInvalidProgramItemsFromUsers";
 import { MongoDbError } from "shared/types/api/errors";
-import { createEmptyDirectSignupDocumentForProgramItems } from "server/features/direct-signup/directSignupRepository";
+import {
+  createEmptyDirectSignupDocumentForProgramItems,
+  findDirectSignups,
+} from "server/features/direct-signup/directSignupRepository";
 import { differenceBy } from "shared/utils/remedaExtend";
 
 export const removeProgramItems = async (
@@ -134,13 +137,31 @@ export const saveProgramItems = async (
 
   logger.info(`MongoDB: Found ${newProgramItems.length} new program items`);
 
-  // Create signup document for new program items
-  if (newProgramItems.length > 0) {
-    const newProgramItemIds = newProgramItems.map(
-      (newProgramItem) => newProgramItem.programItemId,
-    );
+  // Create signup document for all program items missing signup document
+  const directSignupsResult = await findDirectSignups();
+  if (isErrorResult(directSignupsResult)) {
+    return directSignupsResult;
+  }
+  const directSignups = unwrapResult(directSignupsResult);
+
+  const directSignupDocMissingProgramItemIds = updatedProgramItems.flatMap(
+    (updatedProgramItem) => {
+      const found = directSignups.find(
+        (directSignup) =>
+          directSignup.programItemId === updatedProgramItem.programItemId,
+      );
+      if (!found) {
+        return updatedProgramItem.programItemId;
+      }
+      return [];
+    },
+  );
+
+  if (directSignupDocMissingProgramItemIds.length > 0) {
     const createEmptySignupResult =
-      await createEmptyDirectSignupDocumentForProgramItems(newProgramItemIds);
+      await createEmptyDirectSignupDocumentForProgramItems(
+        directSignupDocMissingProgramItemIds,
+      );
     if (isErrorResult(createEmptySignupResult)) {
       return createEmptySignupResult;
     }

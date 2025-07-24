@@ -531,7 +531,7 @@ export const createEmptyDirectSignupDocumentForProgramItems = async (
   try {
     await SignupModel.create(signupDocs);
     logger.info(
-      `MongoDB: Signup collection created for ${programItemIds.length} program items `,
+      `MongoDB: Signup collection created for ${programItemIds.length} program items: ${programItemIds.join(", ")}`,
     );
     return makeSuccessResult();
   } catch (error) {
