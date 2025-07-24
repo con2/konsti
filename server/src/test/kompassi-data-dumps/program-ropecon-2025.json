@@ -13,17 +13,17 @@
       "grouping": ["beginners"],
       "language": ["fi"],
       "age-group": ["adults"],
-      "scheduled": ["one-or-more", "one"],
+      "scheduled": ["one", "one-or-more"],
       "inclusivity": [
-        "no-recordings-or-spoken-text",
         "long-program",
         "no-movement",
-        "dark-lighting",
         "loud-sounds",
         "no-text-of-recording",
-        "physical-contact"
+        "dark-lighting",
+        "physical-contact",
+        "no-recordings-or-spoken-text"
       ],
-      "registration": ["konsti"]
+      "registration": ["ropelarp"]
     },
     "cachedAnnotations": {
       "konsti:maxAttendance": 16,
@@ -56,7 +56,7 @@
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["beginners"],
-      "language": ["sv", "en"],
+      "language": ["en", "sv"],
       "age-group": ["adults"],
       "scheduled": ["multiple", "one-or-more"],
       "inclusivity": ["long-program"],
@@ -108,8 +108,8 @@
       "language": ["fi"],
       "age-group": ["everyone"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["light", "rules-light", "character-driven"],
-      "inclusivity": ["not-amplified", "no-movement"],
+      "game-style": ["character-driven", "light", "rules-light"],
+      "inclusivity": ["no-movement", "not-amplified"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -144,11 +144,11 @@
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["beginners"],
-      "language": ["fi", "en"],
+      "language": ["en", "fi"],
       "age-group": ["everyone"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["light", "rules-light", "combat-heavy"],
-      "inclusivity": ["fingers", "quick-reactions"],
+      "game-style": ["light", "combat-heavy", "rules-light"],
+      "inclusivity": ["quick-reactions", "fingers"],
       "registration": ["not-required"],
       "revolvingdoor": ["true"]
     },
@@ -184,10 +184,10 @@
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["new-worlds", "beginners"],
-      "language": ["fi", "en"],
+      "language": ["en", "fi"],
       "age-group": ["everyone"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["rules-light", "serious", "story-driven"],
+      "game-style": ["story-driven", "serious", "rules-light"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -226,8 +226,8 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["light", "rules-light", "combat-heavy", "story-driven"],
-      "inclusivity": ["no-movement", "no-recordings-or-spoken-text"],
+      "game-style": ["story-driven", "light", "combat-heavy", "rules-light"],
+      "inclusivity": ["no-recordings-or-spoken-text", "no-movement"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -263,14 +263,14 @@
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["new-worlds", "beginners"],
-      "language": ["fi", "en"],
+      "language": ["en", "fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["rules-light", "character-driven", "story-driven"],
+      "game-style": ["character-driven", "story-driven", "rules-light"],
       "inclusivity": [
-        "flahing-lights",
+        "no-recordings-or-spoken-text",
         "loud-sounds",
-        "no-recordings-or-spoken-text"
+        "flahing-lights"
       ],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -351,7 +351,7 @@
       "language": ["fi"],
       "age-group": ["everyone"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["light", "rules-heavy"],
+      "game-style": ["rules-heavy", "light"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -386,11 +386,11 @@
       "state": ["accepted"],
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
-      "grouping": ["beginners", "new-worlds"],
+      "grouping": ["new-worlds", "beginners"],
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["light", "rules-light", "story-driven"],
+      "game-style": ["story-driven", "light", "rules-light"],
       "inclusivity": ["no-recordings-or-spoken-text", "no-movement"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -427,14 +427,14 @@
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["new-worlds"],
-      "language": ["fi", "en"],
+      "language": ["en", "fi"],
       "age-group": ["everyone"],
       "scheduled": ["one", "one-or-more"],
       "game-style": ["light", "combat-heavy"],
       "inclusivity": [
         "long-program",
-        "no-movement",
-        "no-recordings-or-spoken-text"
+        "no-recordings-or-spoken-text",
+        "no-movement"
       ],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -474,8 +474,8 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["serious", "story-driven"],
-      "inclusivity": ["no-movement", "no-recordings-or-spoken-text"],
+      "game-style": ["story-driven", "serious"],
+      "inclusivity": ["no-recordings-or-spoken-text", "no-movement"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -514,8 +514,8 @@
       "language": ["fi"],
       "age-group": ["only-adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["light", "rules-light", "story-driven"],
-      "inclusivity": ["no-movement", "no-recordings-or-spoken-text"],
+      "game-style": ["story-driven", "light", "rules-light"],
+      "inclusivity": ["no-recordings-or-spoken-text", "no-movement"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -551,14 +551,14 @@
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["new-worlds"],
-      "language": ["fi", "en"],
+      "language": ["en", "fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
       "game-style": [
-        "light",
-        "rules-light",
         "character-driven",
-        "story-driven"
+        "story-driven",
+        "light",
+        "rules-light"
       ],
       "inclusivity": ["long-program", "no-movement"],
       "registration": ["konsti"],
@@ -587,7 +587,7 @@
   {
     "slug": "asennetyopaja",
     "title": "Asennetyöpaja",
-    "description": "Suosittu asennetyöpaja on täällä taas. Tule mukaan saamaan vinkkejä ja ajatuksia harjoitusten ja esimerkkien muodossa. Miten pelata voimakkaita hahmoja larpeissa, tai vaikka muokata käytöstä tosielämän tilanteissa?  Mitä viestit olemuksellasi ja eleilläsi? Mitä kehonkieli ja eleet kertovat? Asenne on kaiken A ja O, kun halutaan osoittaa dominanssia ja ylivaltaa tilanteessa, mutta se ei ole aina niin helppoa. \r\n\r\nTyöpajassa harjoitellaan myös mitä huomioida otettaessa fyysistä kontaktia turvallisesti työpajan aiheisiin liittyvissä tilanteissa. Vetäjänä jälleen Sadetta Postareff ja taattuna apuna Petri Heinonen. \r\n\r\nIkäraja ei ole ehdoton.\r\n\r\nTyöpajaan on ennakkoilmoittautuminen Konstissa perjantaina klo 18 alkaen.",
+    "description": "Suosittu asennetyöpaja on täällä taas. Tule mukaan saamaan vinkkejä ja ajatuksia harjoitusten ja esimerkkien muodossa. Miten pelata voimakkaita hahmoja larpeissa, tai vaikka muokata käytöstä tosielämän tilanteissa?  Mitä viestit olemuksellasi ja eleilläsi? Mitä kehonkieli ja eleet kertovat? Asenne on kaiken A ja O, kun halutaan osoittaa dominanssia ja ylivaltaa tilanteessa, mutta se ei ole aina niin helppoa. \r\n\r\nTyöpajassa harjoitellaan myös mitä huomioida otettaessa fyysistä kontaktia turvallisesti työpajan aiheisiin liittyvissä tilanteissa. Vetäjänä jälleen Sadetta Postareff ja taattuna apuna Petri Heinonen. \r\n\r\nIkäraja ei ole ehdoton.\r\n\r\nTyöpajaan on ennakkoilmoittautuminen Konstissa lauantaina klo 7 alkaen.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "form": ["offer-workshop"],
@@ -599,7 +599,7 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
-      "inclusivity": ["not-amplified", "physical-contact"],
+      "inclusivity": ["physical-contact", "not-amplified"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -636,8 +636,8 @@
       "language": ["fi"],
       "age-group": ["kids"],
       "scheduled": ["multiple", "one-or-more"],
-      "game-style": ["rules-light", "story-driven"],
-      "inclusivity": ["no-movement", "no-recordings-or-spoken-text"],
+      "game-style": ["story-driven", "rules-light"],
+      "inclusivity": ["no-recordings-or-spoken-text", "no-movement"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -693,7 +693,7 @@
       "language": ["fi"],
       "age-group": ["teens"],
       "scheduled": ["one", "one-or-more"],
-      "inclusivity": ["lots-of-movement", "loud-sounds"],
+      "inclusivity": ["loud-sounds", "lots-of-movement"],
       "registration": ["konsti"]
     },
     "cachedAnnotations": {
@@ -756,7 +756,7 @@
   {
     "slug": "baroque-burlesque",
     "title": "Baroque Burlesque",
-    "description": "Työpajassa tutustutaan sekä barokkitanssin että klassisen burleskin liikekieliin ja hyödynnetään niitä koreografisessa harjoitteessa. Erilaiset näyttämötanssin perinteet ja historian jaksot sulautetaan ja vanhoista maailmoista tulee uusi remix. Vähän kvääri ja hyvin omituinen. Fierce, funny, sexy?\r\n\r\nTyöpaja ei edellytä ennakkotietoja, mutta osallistujien tulee voida liikkua aktiivisesti. Työpaja ei sisällä striptease-elementtejä.\r\n\r\nTyöpajaan on ennakkoilmoittautuminen Konstissa lauantaina klo 18 alkaen.",
+    "description": "Työpajassa tutustutaan sekä barokkitanssin että klassisen burleskin liikekieliin ja hyödynnetään niitä koreografisessa harjoitteessa. Erilaiset näyttämötanssin perinteet ja historian jaksot sulautetaan ja vanhoista maailmoista tulee uusi remix. Vähän kvääri ja hyvin omituinen. Fierce, funny, sexy?\r\n\r\nTyöpaja ei edellytä ennakkotietoja, mutta osallistujien tulee voida liikkua aktiivisesti. Työpaja ei sisällä striptease-elementtejä.\r\n\r\nTyöpajaan on ennakkoilmoittautuminen Konstissa sunnuntaina klo 22 alkaen.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "form": ["offer-workshop"],
@@ -834,11 +834,11 @@
       "state": ["accepted"],
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
-      "grouping": ["new-worlds", "lgbt", "beginners"],
-      "language": ["fi", "en"],
+      "grouping": ["lgbt", "new-worlds", "beginners"],
+      "language": ["en", "fi"],
       "age-group": ["everyone"],
       "scheduled": ["multiple", "one-or-more"],
-      "game-style": ["light", "rules-light", "story-driven"],
+      "game-style": ["story-driven", "light", "rules-light"],
       "registration": ["konsti"],
       "revolvingdoor": ["true"]
     },
@@ -885,12 +885,12 @@
       "grouping": ["new-worlds", "beginners"],
       "language": ["en"],
       "age-group": ["adults"],
-      "scheduled": ["one-or-more", "one"],
-      "registration": ["ropelarp"],
+      "scheduled": ["one", "one-or-more"],
+      "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
     "cachedAnnotations": {
-      "konsti:maxAttendance": 7,
+      "konsti:maxAttendance": 8,
       "konsti:minAttendance": 5
     },
     "isCancelled": false,
@@ -920,7 +920,7 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["multiple", "one-or-more"],
-      "game-style": ["light", "rules-light", "story-driven"],
+      "game-style": ["story-driven", "light", "rules-light"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -1002,10 +1002,10 @@
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["new-worlds", "beginners"],
-      "language": ["fi", "en"],
+      "language": ["en", "fi"],
       "age-group": ["adults"],
       "scheduled": ["multiple", "one-or-more"],
-      "game-style": ["rules-light", "character-driven", "story-driven"],
+      "game-style": ["character-driven", "story-driven", "rules-light"],
       "inclusivity": ["no-recordings-or-spoken-text"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -1056,10 +1056,10 @@
       "age-group": ["adults"],
       "scheduled": ["multiple", "one-or-more"],
       "game-style": [
-        "light",
-        "rules-light",
         "character-driven",
-        "story-driven"
+        "story-driven",
+        "light",
+        "rules-light"
       ],
       "inclusivity": ["long-program"],
       "registration": ["konsti"],
@@ -1095,6 +1095,41 @@
     ]
   },
   {
+    "slug": "catan-sm-turnaus",
+    "title": "Catan SM-turnaus",
+    "description": "Jälleen kerran tarjolla Suomen mestaruus ja mainetta sekä kunniaa. Pelataan Catania kolme kierrosta, nelinpelejä ja pelaajamäärästä riippuen tarvittaessa semifinaalit ennen finaalia. Välissä pidetään ruokatauko ja tarvittaessa pukunäytöksen mittainen tauko, mikäli sellainen järjestetään, osuu turnauksen kanssa päällekäin ja joku pelaajista osallistuu pukunäytökseen.\r\n\r\nSäännöt ja tarkemmat tiedot tulevat lautapeliseuran foorumille: https://www.lautapeliseura.fi/foorumi/viewtopic.php?t=21481",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "form": ["offer-tournament"],
+      "type": ["tournament"],
+      "state": ["accepted"],
+      "topic": ["boardgames"],
+      "konsti": ["tournament"],
+      "language": ["fi"],
+      "age-group": ["adults"],
+      "scheduled": ["one", "one-or-more"],
+      "inclusivity": ["long-program", "color-blindness", "no-movement"],
+      "registration": ["konsti"]
+    },
+    "cachedAnnotations": {
+      "konsti:maxAttendance": 28,
+      "konsti:minAttendance": 8,
+      "konsti:rpgSystem": "Catan, Swiss"
+    },
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "catan-sm-turnaus",
+        "title": "Catan SM-turnaus",
+        "startTime": "2025-07-26T12:00:00+03:00",
+        "endTime": "2025-07-26T20:00:00+03:00",
+        "lengthMinutes": 480,
+        "location": "Hall 3 Tournament Area",
+        "isCancelled": false
+      }
+    ]
+  },
+  {
     "slug": "centauri-chronicle-pirate-hunt-at-whitmans-wedding",
     "title": "Centauri Chronicle - Pirate Hunt at Whitman's Wedding",
     "description": "A long standing feud between two major Clans in the Shelter Valley region, the Whitmans and the Bolognas, is seemingly coming to an end as two young heirs of major estates are set to be wed. However, a number of raids have recently taken place along their land claims' border, with cattle rustling, robbery and even murder, acts that could tarnish a Clan's reputation or lead to being declared as Pirates.\r\n\r\nYoungsters from the neighboring Carrolls Clan, facing a threat from their other neighbors, are depending on Whitmans and Bolognas to stay strong - can they serve as a neutral party, broker a peace and investigate these Pirates in time for the wedding, or is the whole Shelter Valley swallowed in a feud flashpoint?\r\n\r\nThe game is \"Centauri Chronicle\" based on Looking Glass' \"Terra Nova\" game from 1996.\r\nScience Fiction colonization setting in Alpha Centauri, with diverse societies, intrigue, subterfuge, and power armoured combat.",
@@ -1106,7 +1141,7 @@
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["new-worlds"],
-      "language": ["fi", "en"],
+      "language": ["en", "fi"],
       "age-group": ["adults"],
       "scheduled": ["multiple", "one-or-more"],
       "registration": ["konsti"],
@@ -1157,7 +1192,7 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["combat-heavy", "serious", "rules-heavy"],
+      "game-style": ["rules-heavy", "serious", "combat-heavy"],
       "registration": ["other"],
       "revolvingdoor": ["true"]
     },
@@ -1196,7 +1231,7 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["combat-heavy", "serious", "rules-heavy"],
+      "game-style": ["rules-heavy", "serious", "combat-heavy"],
       "registration": ["other"],
       "revolvingdoor": ["true"]
     },
@@ -1235,7 +1270,7 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["combat-heavy", "serious", "rules-heavy"],
+      "game-style": ["rules-heavy", "serious", "combat-heavy"],
       "registration": ["other"],
       "revolvingdoor": ["true"]
     },
@@ -1274,7 +1309,7 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["rules-light", "character-driven", "story-driven"],
+      "game-style": ["character-driven", "story-driven", "rules-light"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -1308,7 +1343,7 @@
       "state": ["accepted"],
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
-      "language": ["fi", "en"],
+      "language": ["en", "fi"],
       "age-group": ["only-adults"],
       "scheduled": ["multiple", "one-or-more"],
       "inclusivity": ["dark-lighting"],
@@ -1423,10 +1458,10 @@
       "age-group": ["adults"],
       "scheduled": ["multiple", "one-or-more"],
       "game-style": [
-        "light",
-        "rules-light",
         "character-driven",
-        "story-driven"
+        "story-driven",
+        "light",
+        "rules-light"
       ],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -1446,7 +1481,7 @@
         "startTime": "2025-07-26T09:00:00+03:00",
         "endTime": "2025-07-26T13:00:00+03:00",
         "lengthMinutes": 240,
-        "location": "Kajo (Pöytä 23)",
+        "location": "Room 310 (Pöytä 2)",
         "isCancelled": false
       },
       {
@@ -1455,7 +1490,7 @@
         "startTime": "2025-07-27T09:00:00+03:00",
         "endTime": "2025-07-27T13:00:00+03:00",
         "lengthMinutes": 240,
-        "location": "Kajo (Pöytä 23)",
+        "location": "Room 310 (Pöytä 2)",
         "isCancelled": false
       }
     ]
@@ -1475,7 +1510,7 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["multiple", "one-or-more"],
-      "game-style": ["light", "rules-light", "combat-heavy", "story-driven"],
+      "game-style": ["story-driven", "light", "combat-heavy", "rules-light"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -1523,7 +1558,7 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["light", "rules-light", "character-driven"],
+      "game-style": ["character-driven", "light", "rules-light"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -1559,7 +1594,7 @@
       "topic": ["othergames"],
       "konsti": ["tournament"],
       "grouping": ["beginners"],
-      "language": ["fi", "en"],
+      "language": ["en", "fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
       "registration": ["konsti"]
@@ -1594,7 +1629,7 @@
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["new-worlds", "beginners"],
-      "language": ["fi", "en"],
+      "language": ["en", "fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
       "game-style": ["character-driven"],
@@ -1636,7 +1671,7 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["multiple", "one-or-more"],
-      "game-style": ["character-driven", "rules-light", "serious"],
+      "game-style": ["character-driven", "serious", "rules-light"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -1680,8 +1715,8 @@
       "state": ["accepted"],
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
-      "grouping": ["new-worlds", "lgbt", "beginners"],
-      "language": ["fi", "en"],
+      "grouping": ["lgbt", "new-worlds", "beginners"],
+      "language": ["en", "fi"],
       "age-group": ["adults"],
       "scheduled": ["multiple", "one-or-more"],
       "registration": ["konsti"],
@@ -1727,7 +1762,7 @@
       "state": ["accepted"],
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
-      "grouping": ["new-worlds", "lgbt", "beginners"],
+      "grouping": ["lgbt", "new-worlds", "beginners"],
       "language": ["en"],
       "age-group": ["adults"],
       "scheduled": ["multiple", "one-or-more"],
@@ -1791,11 +1826,11 @@
       "game-style": [
         "light",
         "serious",
-        "rules-heavy",
         "story-driven",
+        "character-driven",
         "combat-heavy",
-        "rules-light",
-        "character-driven"
+        "rules-heavy",
+        "rules-light"
       ],
       "inclusivity": ["fingers"],
       "registration": ["konsti"],
@@ -1834,10 +1869,10 @@
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["beginners"],
-      "language": ["fi", "en"],
+      "language": ["en", "fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["rules-light", "serious", "story-driven"],
+      "game-style": ["story-driven", "serious", "rules-light"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -1873,10 +1908,10 @@
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["beginners"],
-      "language": ["fi", "en"],
+      "language": ["en", "fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["character-driven", "rules-light", "serious"],
+      "game-style": ["character-driven", "serious", "rules-light"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -1952,7 +1987,7 @@
       "grouping": ["beginners"],
       "language": ["fi"],
       "scheduled": ["one", "one-or-more"],
-      "inclusivity": ["flahing-lights", "loud-sounds", "no-text-of-recording"],
+      "inclusivity": ["loud-sounds", "no-text-of-recording", "flahing-lights"],
       "registration": ["not-required"]
     },
     "cachedAnnotations": { "konsti:maxAttendance": 399 },
@@ -1981,7 +2016,7 @@
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["beginners"],
-      "language": ["fi", "en"],
+      "language": ["en", "fi"],
       "age-group": ["everyone"],
       "scheduled": ["multiple", "one-or-more"],
       "registration": ["konsti"],
@@ -2018,7 +2053,7 @@
   {
     "slug": "dragon-puppet-tyopaja",
     "title": "Dragon Puppet -työpaja",
-    "description": "Tule tekemään paperilohikäärme-käsinukke ohjauksella. Pajassa tehdään värikkäistä papereista oma lohikäärmeen pää, joka kiinnitetään ohjaajien etukäteen tekemään pohjaan. Sopii kaikenikäisille, mutta nuorimmilla on hyvä olla avustaja mukana (mm. saksilla leikkaaminen). Pajasta voi lähteä omaan tahtiin, kun työ on valmis.\r\n\r\nTyöpajaan on ennakkoilmoittautuminen Konstissa perjantaina klo 18 ja lauantaina klo 18 alkaen.",
+    "description": "Tule tekemään paperilohikäärme-käsinukke ohjauksella. Pajassa tehdään värikkäistä papereista oma lohikäärmeen pää, joka kiinnitetään ohjaajien etukäteen tekemään pohjaan. Sopii kaikenikäisille, mutta nuorimmilla on hyvä olla avustaja mukana (mm. saksilla leikkaaminen). Pajasta voi lähteä omaan tahtiin, kun työ on valmis.\r\n\r\nTyöpajaan on ennakkoilmoittautuminen Konstissa perjantaina klo 22 ja lauantaina klo 22 alkaen.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "form": ["offer-workshop"],
@@ -2071,11 +2106,11 @@
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["beginners"],
-      "language": ["fi", "en"],
+      "language": ["en", "fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["rules-light", "story-driven"],
-      "inclusivity": ["fingers", "dark-lighting"],
+      "game-style": ["story-driven", "rules-light"],
+      "inclusivity": ["dark-lighting", "fingers"],
       "registration": ["konsti"],
       "revolvingdoor": ["true"]
     },
@@ -2150,8 +2185,8 @@
       "grouping": ["new-worlds", "beginners"],
       "language": ["fi"],
       "age-group": ["everyone"],
-      "scheduled": ["one-or-more", "multiple"],
-      "inclusivity": ["physical-contact", "no-movement", "dark-lighting"],
+      "scheduled": ["multiple", "one-or-more"],
+      "inclusivity": ["dark-lighting", "physical-contact", "no-movement"],
       "registration": ["ropelarp"],
       "revolvingdoor": ["false"]
     },
@@ -2204,7 +2239,7 @@
       "konsti": ["larp"],
       "language": ["fi"],
       "age-group": ["adults"],
-      "scheduled": ["one-or-more", "one"],
+      "scheduled": ["one", "one-or-more"],
       "inclusivity": ["physical-contact"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -2245,9 +2280,9 @@
       "scheduled": ["one", "one-or-more"],
       "game-style": [
         "character-driven",
-        "rules-light",
+        "story-driven",
         "serious",
-        "story-driven"
+        "rules-light"
       ],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -2289,9 +2324,9 @@
       "scheduled": ["one", "one-or-more"],
       "game-style": [
         "character-driven",
-        "rules-light",
+        "story-driven",
         "serious",
-        "story-driven"
+        "rules-light"
       ],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -2332,10 +2367,10 @@
       "age-group": ["everyone"],
       "scheduled": ["one", "one-or-more"],
       "game-style": [
-        "light",
-        "rules-light",
         "character-driven",
-        "story-driven"
+        "story-driven",
+        "light",
+        "rules-light"
       ],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -2363,7 +2398,7 @@
   {
     "slug": "fantasiaimproa",
     "title": "Fantasiaimproa",
-    "description": "Tuttuja ja uusia teatteri-improharjoitteita sekä kohtaustyöskentelyä fantasiateemalla jo improa kokeilleille. Työpajassa harjoitellaan eri tapoja luoda yhdessä uusia maailmoja tyhjästä sekä luomaan erilaisiin maailmoihin sopivia kohtauksia ja tarinoita. Pääpaino on kohtausimprossa ja tarinankerronnassa ja kerronnan rikastamisessa. Osallistujien lähtötaso huomioidaan harjoituksissa. Kohtaustyöskentelyä lähestytään draamallisen pitkän impron näkökulmasta.\r\n\r\nTyöpajassa ei lähtökohtaisesti paneuduta teatteri-impron perusteisiin (hyväksyminen ym.), vaan niiden toivotaan olevan jo tiedossa työpajaan osallistuvilla.  \r\n\r\nTyöpajaan on ennakkoilmoittautuminen Konstissa lauantaina klo 18 alkaen.",
+    "description": "Tuttuja ja uusia teatteri-improharjoitteita sekä kohtaustyöskentelyä fantasiateemalla jo improa kokeilleille. Työpajassa harjoitellaan eri tapoja luoda yhdessä uusia maailmoja tyhjästä sekä luomaan erilaisiin maailmoihin sopivia kohtauksia ja tarinoita. Pääpaino on kohtausimprossa ja tarinankerronnassa ja kerronnan rikastamisessa. Osallistujien lähtötaso huomioidaan harjoituksissa. Kohtaustyöskentelyä lähestytään draamallisen pitkän impron näkökulmasta.\r\n\r\nTyöpajassa ei lähtökohtaisesti paneuduta teatteri-impron perusteisiin (hyväksyminen ym.), vaan niiden toivotaan olevan jo tiedossa työpajaan osallistuvilla.  \r\n\r\nTyöpajaan on ennakkoilmoittautuminen Konstissa sunnuntaina klo 7 alkaen.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "form": ["offer-workshop"],
@@ -2407,15 +2442,15 @@
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["beginners"],
-      "language": ["fi", "en"],
+      "language": ["en", "fi"],
       "age-group": ["adults"],
       "scheduled": ["multiple", "one-or-more"],
       "game-style": [
         "light",
         "serious",
         "story-driven",
-        "rules-light",
-        "character-driven"
+        "character-driven",
+        "rules-light"
       ],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -2470,7 +2505,7 @@
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["beginners"],
-      "language": ["sv", "fi", "en"],
+      "language": ["en", "sv", "fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
       "inclusivity": ["no-text-of-recording"],
@@ -2513,7 +2548,7 @@
       "age-group": ["everyone"],
       "scheduled": ["one", "one-or-more"],
       "inclusivity": ["loud-sounds"],
-      "registration": ["konsti"],
+      "registration": ["not-required"],
       "revolvingdoor": ["false"]
     },
     "cachedAnnotations": {},
@@ -2542,21 +2577,21 @@
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["new-worlds", "beginners"],
-      "language": ["fi", "en"],
+      "language": ["en", "fi"],
       "age-group": ["adults"],
       "scheduled": ["multiple", "one-or-more"],
       "game-style": [
-        "light",
-        "rules-light",
         "character-driven",
-        "story-driven"
+        "story-driven",
+        "light",
+        "rules-light"
       ],
       "inclusivity": ["no-recordings-or-spoken-text"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
     "cachedAnnotations": {
-      "konsti:maxAttendance": 6,
+      "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Dungeons & Dragons 5e 2014",
       "ropecon:isRevolvingDoor": false
@@ -2602,15 +2637,15 @@
         "light",
         "serious",
         "story-driven",
+        "character-driven",
         "combat-heavy",
-        "rules-light",
-        "character-driven"
+        "rules-light"
       ],
       "inclusivity": [
-        "not-amplified",
         "color-blindness",
         "loud-sounds",
-        "physical-contact"
+        "physical-contact",
+        "not-amplified"
       ],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -2707,12 +2742,12 @@
       "form": ["offer-workshop"],
       "type": ["workshop"],
       "state": ["accepted"],
-      "topic": ["handcrafts", "rpg"],
+      "topic": ["rpg", "handcrafts"],
       "konsti": ["workshop"],
       "grouping": ["new-worlds", "beginners"],
       "language": ["fi"],
       "age-group": ["everyone"],
-      "scheduled": ["one-or-more", "one"],
+      "scheduled": ["one", "one-or-more"],
       "registration": ["not-required"],
       "revolvingdoor": ["false"]
     },
@@ -2739,12 +2774,12 @@
       "form": ["offer-workshop"],
       "type": ["workshop"],
       "state": ["accepted"],
-      "topic": ["handcrafts", "rpg"],
+      "topic": ["rpg", "handcrafts"],
       "konsti": ["workshop"],
       "grouping": ["new-worlds", "beginners"],
       "language": ["fi"],
       "age-group": ["everyone"],
-      "scheduled": ["one-or-more", "one"],
+      "scheduled": ["one", "one-or-more"],
       "registration": ["not-required"],
       "revolvingdoor": ["false"]
     },
@@ -2774,14 +2809,14 @@
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["new-worlds"],
-      "language": ["fi", "en"],
+      "language": ["en", "fi"],
       "age-group": ["adults"],
-      "scheduled": ["one-or-more", "one"],
+      "scheduled": ["one", "one-or-more"],
       "game-style": [
+        "character-driven",
         "story-driven",
         "serious",
-        "rules-light",
-        "character-driven"
+        "rules-light"
       ],
       "inclusivity": ["no-recordings-or-spoken-text"],
       "registration": ["konsti"],
@@ -2819,10 +2854,10 @@
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["new-worlds", "beginners"],
-      "language": ["fi", "en"],
+      "language": ["en", "fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["light", "rules-light", "serious", "story-driven"],
+      "game-style": ["story-driven", "light", "serious", "rules-light"],
       "inclusivity": ["long-program"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -2862,13 +2897,13 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["multiple", "one-or-more"],
-      "game-style": ["rules-light", "serious", "story-driven"],
+      "game-style": ["story-driven", "serious", "rules-light"],
       "inclusivity": [
-        "fingers",
         "long-texts",
         "no-movement",
         "not-amplified",
-        "no-recordings-or-spoken-text"
+        "no-recordings-or-spoken-text",
+        "fingers"
       ],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -2917,7 +2952,7 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["multiple", "one-or-more"],
-      "game-style": ["light", "character-driven"],
+      "game-style": ["character-driven", "light"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -2973,14 +3008,14 @@
       "grouping": ["beginners"],
       "language": ["fi"],
       "age-group": ["adults"],
-      "scheduled": ["one-or-more", "one"],
+      "scheduled": ["one", "one-or-more"],
       "inclusivity": [
         "flahing-lights",
-        "physical-contact",
-        "no-recordings-or-spoken-text",
         "loud-sounds",
         "no-text-of-recording",
-        "dark-lighting"
+        "dark-lighting",
+        "physical-contact",
+        "no-recordings-or-spoken-text"
       ],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -3067,7 +3102,7 @@
       "grouping": ["beginners"],
       "language": ["fi"],
       "age-group": ["adults"],
-      "scheduled": ["one-or-more", "multiple"],
+      "scheduled": ["multiple", "one-or-more"],
       "game-style": ["rules-light"],
       "inclusivity": ["long-program"],
       "registration": ["konsti"],
@@ -3114,7 +3149,7 @@
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["new-worlds", "beginners"],
-      "language": ["fi", "en"],
+      "language": ["en", "fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
       "inclusivity": ["not-amplified"],
@@ -3195,8 +3230,8 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["multiple", "one-or-more"],
-      "game-style": ["light", "rules-light", "story-driven"],
-      "inclusivity": ["no-movement", "physical-contact"],
+      "game-style": ["story-driven", "light", "rules-light"],
+      "inclusivity": ["physical-contact", "no-movement"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -3243,7 +3278,7 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["multiple", "one-or-more"],
-      "game-style": ["character-driven", "combat-heavy", "serious"],
+      "game-style": ["character-driven", "serious", "combat-heavy"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -3291,7 +3326,7 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["light", "rules-light", "story-driven"],
+      "game-style": ["story-driven", "light", "rules-light"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -3328,7 +3363,7 @@
       "language": ["fi"],
       "age-group": ["only-adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["rules-light", "serious", "story-driven"],
+      "game-style": ["story-driven", "serious", "rules-light"],
       "inclusivity": ["long-program"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -3368,7 +3403,7 @@
       "language": ["fi"],
       "age-group": ["everyone"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["combat-heavy", "serious", "rules-heavy"],
+      "game-style": ["rules-heavy", "serious", "combat-heavy"],
       "inclusivity": ["color-blindness"],
       "registration": ["konsti"],
       "revolvingdoor": ["true"]
@@ -3408,7 +3443,7 @@
       "language": ["fi"],
       "age-group": ["teens"],
       "scheduled": ["multiple", "one-or-more"],
-      "game-style": ["rules-light", "character-driven", "story-driven"],
+      "game-style": ["character-driven", "story-driven", "rules-light"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -3444,7 +3479,7 @@
   {
     "slug": "how-to-use-japanese-rope-and-chain-weapons-kusari-kama-and-kyoketsu-shoge",
     "title": "How to Use Japanese Rope and Chain Weapons: Kusari Kama and Kyoketsu Shoge",
-    "description": "Join us for training with Japanese rope weapons. We will do solo and slow partner training with plastic, wood and rope training equipment. Togakure ryu teaches the use of Kyoketsu Shoge, a tool to help move in mountainous terrain which can be used as a weapon if needed. It has a dagger-like head (kunai) sporting a hook halfway down its length. A rope made of human or horse hair with a metal ring as weight at the end.\r\nWe also utilise kusari kama or chain sickles in Bujinkan. The kusari kama sickle is specifically designed for warfare rather than agricultural purposes. \r\n\r\nSign-up for this workshop is in Konsti. Sign-up begins on Saturday 26th 12PM.\r\n\r\nTule harjoittelemaan naruaseiden käyttöä. Teemme soolo- ja rauhallisia pariharjoitteita muovi-, puu- ja naruharjoitusvälineillä. Togakure ryu opettaa Kyoketsu Shogen käyttöä, joka on vuoristoisessa maastossa liikkumiseen tarkoitettu väline, jota voidaan käyttää hätätilanteessa aseena. Siinä on tikarimainen pää (kunai), jonka puolessa välissä on koukku. Siihen kiinnittyy hiuksista tai hevosen jouhista tehty köysi, jonka toisessa päässä on metallirengas painona. Bujinkanissa käytämme myös Kusari kamaa eli sirppiketjua. Kusari kaman sirppi on erityisesti sodankäyntiin suunniteltu eikä maataloustyökalu.\r\n\r\nTyöpajaan on ennakkoilmoittautuminen Konstissa lauantaina 26.7. klo 11 alkaen.",
+    "description": "Join us for training with Japanese rope weapons. We will do solo and slow partner training with plastic, wood and rope training equipment. Togakure ryu teaches the use of Kyoketsu Shoge, a tool to help move in mountainous terrain which can be used as a weapon if needed. It has a dagger-like head (kunai) sporting a hook halfway down its length. A rope made of human or horse hair with a metal ring as weight at the end.\r\nWe also utilise kusari kama or chain sickles in Bujinkan. The kusari kama sickle is specifically designed for warfare rather than agricultural purposes. \r\n\r\nSign-up for this workshop is in Konsti. Sign-up begins on Saturday 26th 11AM.\r\n\r\nTule harjoittelemaan naruaseiden käyttöä. Teemme soolo- ja rauhallisia pariharjoitteita muovi-, puu- ja naruharjoitusvälineillä. Togakure ryu opettaa Kyoketsu Shogen käyttöä, joka on vuoristoisessa maastossa liikkumiseen tarkoitettu väline, jota voidaan käyttää hätätilanteessa aseena. Siinä on tikarimainen pää (kunai), jonka puolessa välissä on koukku. Siihen kiinnittyy hiuksista tai hevosen jouhista tehty köysi, jonka toisessa päässä on metallirengas painona. Bujinkanissa käytämme myös Kusari kamaa eli sirppiketjua. Kusari kaman sirppi on erityisesti sodankäyntiin suunniteltu eikä maataloustyökalu.\r\n\r\nTyöpajaan on ennakkoilmoittautuminen Konstissa lauantaina 26.7. klo 11 alkaen.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "form": ["offer-workshop"],
@@ -3456,10 +3491,10 @@
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
       "inclusivity": [
-        "not-amplified",
-        "physical-contact",
         "lots-of-movement",
-        "loud-sounds"
+        "loud-sounds",
+        "physical-contact",
+        "not-amplified"
       ],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -3496,12 +3531,12 @@
       "grouping": ["new-worlds", "beginners"],
       "language": ["fi"],
       "age-group": ["adults"],
-      "scheduled": ["one-or-more", "one"],
+      "scheduled": ["one", "one-or-more"],
       "inclusivity": [
-        "physical-contact",
         "dark-lighting",
+        "long-texts",
         "long-program",
-        "long-texts"
+        "physical-contact"
       ],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -3541,13 +3576,13 @@
         "light",
         "serious",
         "story-driven",
-        "rules-light",
-        "character-driven"
+        "character-driven",
+        "rules-light"
       ],
       "inclusivity": [
         "loud-sounds",
-        "no-recordings-or-spoken-text",
-        "no-text-of-recording"
+        "no-text-of-recording",
+        "no-recordings-or-spoken-text"
       ],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -3592,10 +3627,10 @@
       "state": ["accepted"],
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
-      "grouping": ["beginners", "new-worlds"],
+      "grouping": ["new-worlds", "beginners"],
       "language": ["fi"],
       "age-group": ["adults"],
-      "scheduled": ["one-or-more", "one"],
+      "scheduled": ["one", "one-or-more"],
       "game-style": ["story-driven", "rules-light"],
       "inclusivity": ["no-recordings-or-spoken-text"],
       "registration": ["konsti"],
@@ -3635,7 +3670,7 @@
       "language": ["en"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["light", "rules-light", "story-driven"],
+      "game-style": ["story-driven", "light", "rules-light"],
       "inclusivity": ["long-program"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -3675,7 +3710,7 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["multiple", "one-or-more"],
-      "registration": ["konsti"],
+      "registration": ["not-required"],
       "revolvingdoor": ["false"]
     },
     "cachedAnnotations": {},
@@ -3704,7 +3739,7 @@
   {
     "slug": "improlaulu-aanimaisemia",
     "title": "Improlaulu-äänimaisemia",
-    "description": "Työpajassa luodaan improvisoidun äänen ja laulun kautta yhdessä erilaisia ympäristöjä sekä kuoromaisia teoksia esimerkiksi larpeissa tai teatteri-improssa hyödynnettäväksi. Miltä kuulostaa tavernassa, entä kirotussa luolassa tai lumotussa metsässä? Miltä voisi kuulostaa loitsurituaali?\r\n\r\nOsallistujilta toivotaan uskallusta käyttää omaa ääntään sekä mieluiten laulamista ennemmin nuotin kohdalta kuin vierestä. Aiempaa kokemusta improlaulusta ei tarvita.\r\n\r\nTyöpajassa ei ole livesäestystä. Omia mahdollisesti mukana olevia soittimia voi halutessaan ottaa mukaan. \r\n\r\nTyöpajaan on ennakkoilmoittautuminen Konstissa perjantaina klo 18 alkaen.",
+    "description": "Työpajassa luodaan improvisoidun äänen ja laulun kautta yhdessä erilaisia ympäristöjä sekä kuoromaisia teoksia esimerkiksi larpeissa tai teatteri-improssa hyödynnettäväksi. Miltä kuulostaa tavernassa, entä kirotussa luolassa tai lumotussa metsässä? Miltä voisi kuulostaa loitsurituaali?\r\n\r\nOsallistujilta toivotaan uskallusta käyttää omaa ääntään sekä mieluiten laulamista ennemmin nuotin kohdalta kuin vierestä. Aiempaa kokemusta improlaulusta ei tarvita.\r\n\r\nTyöpajassa ei ole livesäestystä. Omia mahdollisesti mukana olevia soittimia voi halutessaan ottaa mukaan. \r\n\r\nTyöpajaan on ennakkoilmoittautuminen Konstissa perjantaina klo 22 alkaen.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "form": ["offer-workshop"],
@@ -3716,7 +3751,7 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
-      "inclusivity": ["loud-sounds", "dark-lighting"],
+      "inclusivity": ["dark-lighting", "loud-sounds"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -3748,7 +3783,7 @@
       "language": ["fi"],
       "age-group": ["everyone"],
       "scheduled": ["one", "one-or-more"],
-      "inclusivity": ["physical-contact", "loud-sounds"],
+      "inclusivity": ["loud-sounds", "physical-contact"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -3778,7 +3813,7 @@
       "form": ["offer-workshop"],
       "type": ["workshop"],
       "state": ["accepted"],
-      "topic": ["larp", "rpg"],
+      "topic": ["rpg", "larp"],
       "konsti": ["workshop"],
       "grouping": ["beginners"],
       "language": ["fi"],
@@ -3813,7 +3848,7 @@
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["new-worlds", "beginners"],
-      "language": ["fi", "en"],
+      "language": ["en", "fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
       "registration": ["konsti"],
@@ -3850,16 +3885,16 @@
       "state": ["accepted"],
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
-      "grouping": ["new-worlds", "lgbt", "beginners"],
-      "language": ["sv", "fi", "en"],
+      "grouping": ["lgbt", "new-worlds", "beginners"],
+      "language": ["en", "sv", "fi"],
       "age-group": ["adults"],
       "scheduled": ["multiple", "one-or-more"],
       "game-style": [
         "light",
         "serious",
         "story-driven",
-        "rules-light",
-        "character-driven"
+        "character-driven",
+        "rules-light"
       ],
       "registration": ["not-required"],
       "revolvingdoor": ["true"]
@@ -3995,7 +4030,7 @@
       "language": ["fi"],
       "age-group": ["only-adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["rules-light", "character-driven", "story-driven"],
+      "game-style": ["character-driven", "story-driven", "rules-light"],
       "inclusivity": ["long-program"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -4032,7 +4067,7 @@
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["new-worlds", "beginners"],
-      "language": ["fi", "en"],
+      "language": ["en", "fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
       "inclusivity": ["long-texts", "no-recordings-or-spoken-text"],
@@ -4063,7 +4098,7 @@
   {
     "slug": "introducing-tabletop-role-playing-games-to-new-players-a-tutorial",
     "title": "Introducing Tabletop Role Playing Games to new players: A Tutorial",
-    "description": "This is an immersive workshop aiming for a minimum viable tabletop RPG experience - with plenty of space for reflection and Q&A. We will explore the fundamentals of tabletop roleplaying games that are common to most if not all different game systems including things like theater of the mind, being a character, unneccesary obstacles, random chance and collaborative storytelling.\r\n\r\nWe will use a simple framework for introducing TTRPGs to new players, your grandmother or strangers on the street (remember consent). In addition to new players, it is also suitable game masters and not-yet-gamemasters who are looking for tools for their Session 0, want to get back to basics or want to introduce the fundamentals without needing people to commit to a longer session.\r\n\r\nSign-up for this workshop is in Konsti. Sign-up begins on Saturday at 11AM and 6PM.",
+    "description": "This is an immersive workshop aiming for a minimum viable tabletop RPG experience - with plenty of space for reflection and Q&A. We will explore the fundamentals of tabletop roleplaying games that are common to most if not all different game systems including things like theater of the mind, being a character, unneccesary obstacles, random chance and collaborative storytelling.\r\n\r\nWe will use a simple framework for introducing TTRPGs to new players, your grandmother or strangers on the street (remember consent). In addition to new players, it is also suitable game masters and not-yet-gamemasters who are looking for tools for their Session 0, want to get back to basics or want to introduce the fundamentals without needing people to commit to a longer session.\r\n\r\nSign-up for this workshop is in Konsti. Sign-up begins on Saturday at 11AM and 10PM.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "form": ["offer-workshop"],
@@ -4120,8 +4155,8 @@
       "game-style": ["rules-light"],
       "inclusivity": [
         "long-program",
-        "no-movement",
-        "no-recordings-or-spoken-text"
+        "no-recordings-or-spoken-text",
+        "no-movement"
       ],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -4161,7 +4196,7 @@
       "language": ["fi"],
       "age-group": ["only-adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["rules-light", "story-driven"],
+      "game-style": ["story-driven", "rules-light"],
       "inclusivity": ["long-program"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -4242,10 +4277,10 @@
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["new-worlds", "beginners"],
-      "language": ["fi", "en"],
+      "language": ["en", "fi"],
       "age-group": ["adults"],
       "scheduled": ["multiple", "one-or-more"],
-      "game-style": ["light", "character-driven", "rules-light", "serious"],
+      "game-style": ["character-driven", "light", "serious", "rules-light"],
       "inclusivity": ["long-program"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -4293,9 +4328,9 @@
       "grouping": ["beginners"],
       "language": ["fi"],
       "age-group": ["adults"],
-      "scheduled": ["one-or-more", "one"],
+      "scheduled": ["one", "one-or-more"],
       "game-style": ["story-driven", "rules-light"],
-      "inclusivity": ["no-movement", "long-program"],
+      "inclusivity": ["long-program", "no-movement"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -4373,13 +4408,13 @@
       "language": ["fi"],
       "age-group": ["everyone"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["rules-light", "character-driven", "story-driven"],
+      "game-style": ["character-driven", "story-driven", "rules-light"],
       "inclusivity": [
         "long-program",
-        "fingers",
         "no-movement",
+        "physical-contact",
         "no-recordings-or-spoken-text",
-        "physical-contact"
+        "fingers"
       ],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -4420,10 +4455,10 @@
       "age-group": ["adults"],
       "scheduled": ["multiple", "one-or-more"],
       "game-style": [
-        "light",
-        "rules-light",
         "character-driven",
-        "story-driven"
+        "story-driven",
+        "light",
+        "rules-light"
       ],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -4472,7 +4507,7 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["light", "character-driven", "rules-light", "serious"],
+      "game-style": ["character-driven", "light", "serious", "rules-light"],
       "inclusivity": ["no-recordings-or-spoken-text"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -4505,13 +4540,13 @@
     "cachedDimensions": {
       "form": ["offer-rpg"],
       "type": ["gaming"],
-      "state": ["accepted"],
+      "state": ["cancelled"],
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["beginners"],
-      "language": ["fi", "en"],
+      "language": ["en", "fi"],
       "age-group": ["everyone"],
-      "scheduled": ["multiple", "one-or-more"],
+      "scheduled": ["none"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -4522,27 +4557,8 @@
       "ropecon:contentWarnings": "As a murder mystery the game might not be suitable for very young children. ",
       "ropecon:isRevolvingDoor": false
     },
-    "isCancelled": false,
-    "scheduleItems": [
-      {
-        "slug": "juovametsan-klaanin-murhat-brindlewood-clan-slayings-1",
-        "title": "Juovametsän klaanin murhat / Brindlewood Clan Slayings",
-        "startTime": "2025-07-25T16:00:00+03:00",
-        "endTime": "2025-07-25T20:00:00+03:00",
-        "lengthMinutes": 240,
-        "location": "Säde (Pöytä 2)",
-        "isCancelled": false
-      },
-      {
-        "slug": "juovametsan-klaanin-murhat-brindlewood-clan-slayings-2",
-        "title": "Juovametsän klaanin murhat / Brindlewood Clan Slayings",
-        "startTime": "2025-07-26T16:00:00+03:00",
-        "endTime": "2025-07-26T20:00:00+03:00",
-        "lengthMinutes": 240,
-        "location": "Säde (Pöytä 2)",
-        "isCancelled": false
-      }
-    ]
+    "isCancelled": true,
+    "scheduleItems": []
   },
   {
     "slug": "kadonnut-taikamalja",
@@ -4560,7 +4576,7 @@
       "age-group": ["everyone"],
       "scheduled": ["one", "one-or-more"],
       "game-style": ["rules-light"],
-      "inclusivity": ["no-movement", "no-recordings-or-spoken-text"],
+      "inclusivity": ["no-recordings-or-spoken-text", "no-movement"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -4595,20 +4611,20 @@
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["lgbt", "beginners"],
-      "language": ["fi", "en"],
+      "language": ["en", "fi"],
       "age-group": ["only-adults"],
       "scheduled": ["one", "one-or-more"],
       "game-style": [
         "character-driven",
-        "rules-light",
+        "story-driven",
         "serious",
-        "story-driven"
+        "rules-light"
       ],
       "inclusivity": [
-        "long-program",
-        "no-movement",
         "dark-lighting",
-        "physical-contact"
+        "long-program",
+        "physical-contact",
+        "no-movement"
       ],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -4645,20 +4661,20 @@
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["lgbt", "beginners"],
-      "language": ["fi", "en"],
+      "language": ["en", "fi"],
       "age-group": ["only-adults"],
       "scheduled": ["one", "one-or-more"],
       "game-style": [
         "character-driven",
-        "rules-light",
+        "story-driven",
         "serious",
-        "story-driven"
+        "rules-light"
       ],
       "inclusivity": [
-        "long-program",
-        "no-movement",
         "dark-lighting",
-        "physical-contact"
+        "long-program",
+        "physical-contact",
+        "no-movement"
       ],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -4694,11 +4710,11 @@
       "state": ["accepted"],
       "topic": ["larp"],
       "konsti": ["larp"],
-      "grouping": ["new-worlds", "beginners", "lgbt"],
+      "grouping": ["lgbt", "new-worlds", "beginners"],
       "language": ["fi"],
       "age-group": ["adults"],
-      "scheduled": ["one-or-more", "one"],
-      "inclusivity": ["physical-contact", "long-program", "long-texts"],
+      "scheduled": ["one", "one-or-more"],
+      "inclusivity": ["long-program", "long-texts", "physical-contact"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -4735,8 +4751,8 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["light", "rules-light", "story-driven"],
-      "inclusivity": ["no-movement", "no-recordings-or-spoken-text"],
+      "game-style": ["story-driven", "light", "rules-light"],
+      "inclusivity": ["no-recordings-or-spoken-text", "no-movement"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -4944,8 +4960,8 @@
       "scheduled": ["multiple", "one-or-more"],
       "inclusivity": [
         "long-texts",
-        "no-recordings-or-spoken-text",
-        "physical-contact"
+        "physical-contact",
+        "no-recordings-or-spoken-text"
       ],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -4992,7 +5008,7 @@
       "grouping": ["new-worlds", "beginners"],
       "language": ["fi"],
       "age-group": ["kids"],
-      "scheduled": ["one-or-more", "multiple"],
+      "scheduled": ["multiple", "one-or-more"],
       "game-style": ["story-driven"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -5036,10 +5052,10 @@
       "state": ["accepted"],
       "topic": ["figures"],
       "konsti": ["other"],
-      "language": ["fi", "en"],
+      "language": ["en", "fi"],
       "age-group": ["adults"],
       "scheduled": ["none"],
-      "inclusivity": ["not-amplified", "physical-contact"],
+      "inclusivity": ["physical-contact", "not-amplified"],
       "registration": ["not-required"],
       "revolvingdoor": ["false"]
     },
@@ -5064,10 +5080,10 @@
       "state": ["accepted"],
       "topic": ["figures"],
       "konsti": ["other"],
-      "language": ["fi", "en"],
+      "language": ["en", "fi"],
       "age-group": ["adults"],
       "scheduled": ["none"],
-      "inclusivity": ["not-amplified", "physical-contact"],
+      "inclusivity": ["physical-contact", "not-amplified"],
       "registration": ["not-required"],
       "revolvingdoor": ["false"]
     },
@@ -5139,7 +5155,7 @@
       "language": ["fi"],
       "age-group": ["teens"],
       "scheduled": ["multiple", "one-or-more"],
-      "game-style": ["rules-light", "serious"],
+      "game-style": ["serious", "rules-light"],
       "inclusivity": ["long-program"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -5231,7 +5247,7 @@
       "grouping": ["beginners"],
       "age-group": ["everyone"],
       "scheduled": ["multiple", "one-or-more"],
-      "game-style": ["light", "story-driven"],
+      "game-style": ["story-driven", "light"],
       "inclusivity": ["long-program", "no-movement"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -5316,12 +5332,12 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["rules-light", "story-driven"],
+      "game-style": ["story-driven", "rules-light"],
       "inclusivity": [
-        "no-movement",
-        "not-amplified",
         "long-program",
-        "no-recordings-or-spoken-text"
+        "no-movement",
+        "no-recordings-or-spoken-text",
+        "not-amplified"
       ],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -5396,7 +5412,7 @@
       "grouping": ["beginners"],
       "language": ["fi"],
       "age-group": ["everyone"],
-      "scheduled": ["one-or-more", "one"],
+      "scheduled": ["one", "one-or-more"],
       "registration": ["not-required"],
       "revolvingdoor": ["true"]
     },
@@ -5432,7 +5448,7 @@
       "grouping": ["beginners"],
       "language": ["fi"],
       "age-group": ["everyone"],
-      "scheduled": ["one-or-more", "one"],
+      "scheduled": ["one", "one-or-more"],
       "registration": ["not-required"],
       "revolvingdoor": ["true"]
     },
@@ -5463,10 +5479,10 @@
       "form": ["offer-other-gameprogram"],
       "type": ["gaming"],
       "state": ["accepted"],
-      "topic": ["cardgames", "rpg", "boardgames"],
+      "topic": ["boardgames", "rpg", "cardgames"],
       "konsti": ["other"],
       "grouping": ["beginners"],
-      "language": ["fi", "en"],
+      "language": ["en", "fi"],
       "age-group": ["everyone"],
       "scheduled": ["multiple", "one-or-more"],
       "registration": ["not-required"],
@@ -5519,10 +5535,10 @@
       "topic": ["othergames"],
       "konsti": ["tournament"],
       "grouping": ["beginners"],
-      "language": ["fi", "en"],
+      "language": ["en", "fi"],
       "age-group": ["everyone"],
       "scheduled": ["one", "one-or-more"],
-      "inclusivity": ["fingers", "loud-sounds", "physical-contact"],
+      "inclusivity": ["loud-sounds", "physical-contact", "fingers"],
       "registration": ["konsti"]
     },
     "cachedAnnotations": {
@@ -5556,7 +5572,7 @@
       "grouping": ["beginners"],
       "language": ["fi"],
       "age-group": ["adults"],
-      "scheduled": ["one-or-more", "multiple"],
+      "scheduled": ["multiple", "one-or-more"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -5597,7 +5613,7 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["light", "character-driven"],
+      "game-style": ["character-driven", "light"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -5636,7 +5652,7 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["multiple", "one-or-more"],
-      "game-style": ["rules-light", "character-driven"],
+      "game-style": ["character-driven", "rules-light"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -5682,7 +5698,7 @@
       "language": ["fi"],
       "age-group": ["only-adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["serious", "story-driven"],
+      "game-style": ["story-driven", "serious"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -5718,10 +5734,10 @@
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["beginners"],
-      "language": ["fi", "en"],
+      "language": ["en", "fi"],
       "age-group": ["everyone"],
       "scheduled": ["multiple", "one-or-more"],
-      "game-style": ["light", "rules-light", "character-driven"],
+      "game-style": ["character-driven", "light", "rules-light"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -5887,7 +5903,7 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["rules-light", "serious", "story-driven"],
+      "game-style": ["story-driven", "serious", "rules-light"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -5980,15 +5996,15 @@
       "konsti": ["larp"],
       "language": ["fi"],
       "age-group": ["adults"],
-      "scheduled": ["one-or-more", "one"],
+      "scheduled": ["one", "one-or-more"],
       "inclusivity": [
-        "fingers",
         "long-program",
-        "quick-reactions",
+        "long-texts",
         "lots-of-movement",
+        "quick-reactions",
         "physical-contact",
         "no-recordings-or-spoken-text",
-        "long-texts"
+        "fingers"
       ],
       "registration": ["ropelarp"],
       "revolvingdoor": ["false"]
@@ -6030,9 +6046,9 @@
       "scheduled": ["one", "one-or-more"],
       "game-style": [
         "character-driven",
-        "rules-light",
+        "story-driven",
         "serious",
-        "story-driven"
+        "rules-light"
       ],
       "inclusivity": ["long-program", "no-recordings-or-spoken-text"],
       "registration": ["konsti"],
@@ -6042,7 +6058,7 @@
       "konsti:maxAttendance": 5,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "Call of Cthulhu 7 ed.",
-      "ropecon:contentWarnings": "Kauhu, kehollinen kauhu, väkivallan kuvaukset",
+      "ropecon:contentWarnings": "Kauhu, kehollinen kauhu, väkivallan kuvaukset, mielenterveyden häiriöt",
       "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
@@ -6121,7 +6137,7 @@
       "language": ["fi"],
       "age-group": ["only-adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["rules-light", "serious", "story-driven"],
+      "game-style": ["story-driven", "serious", "rules-light"],
       "inclusivity": ["long-program"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -6162,10 +6178,10 @@
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
       "game-style": [
-        "light",
-        "rules-light",
         "character-driven",
-        "story-driven"
+        "story-driven",
+        "light",
+        "rules-light"
       ],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -6204,7 +6220,7 @@
       "language": ["fi"],
       "age-group": ["only-adults"],
       "scheduled": ["one", "one-or-more"],
-      "inclusivity": ["long-program", "no-movement", "dark-lighting"],
+      "inclusivity": ["dark-lighting", "long-program", "no-movement"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -6239,11 +6255,11 @@
       "state": ["accepted"],
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
-      "grouping": ["beginners", "new-worlds"],
+      "grouping": ["new-worlds", "beginners"],
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["rules-light", "story-driven"],
+      "game-style": ["story-driven", "rules-light"],
       "inclusivity": ["long-program"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -6278,11 +6294,11 @@
       "state": ["accepted"],
       "topic": ["boardgames"],
       "konsti": ["workshop"],
-      "grouping": ["beginners", "new-worlds"],
+      "grouping": ["new-worlds", "beginners"],
       "language": ["fi"],
       "age-group": ["everyone"],
-      "scheduled": ["one-or-more", "one"],
-      "inclusivity": ["color-blindness", "long-program"],
+      "scheduled": ["one", "one-or-more"],
+      "inclusivity": ["long-program", "color-blindness"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -6315,16 +6331,16 @@
       "state": ["accepted"],
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
-      "grouping": ["new-worlds", "beginners", "lgbt"],
+      "grouping": ["lgbt", "new-worlds", "beginners"],
       "language": ["fi"],
       "age-group": ["teens"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["story-driven", "rules-light", "light"],
+      "game-style": ["story-driven", "light", "rules-light"],
       "inclusivity": [
-        "no-recordings-or-spoken-text",
         "long-program",
         "no-movement",
         "not-amplified",
+        "no-recordings-or-spoken-text",
         "fingers"
       ],
       "registration": ["konsti"],
@@ -6361,15 +6377,15 @@
       "state": ["accepted"],
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
-      "grouping": ["new-worlds", "lgbt", "beginners"],
-      "language": ["fi", "en"],
+      "grouping": ["lgbt", "new-worlds", "beginners"],
+      "language": ["en", "fi"],
       "age-group": ["teens"],
       "scheduled": ["multiple", "one-or-more"],
-      "game-style": ["rules-light", "serious", "story-driven"],
+      "game-style": ["story-driven", "serious", "rules-light"],
       "inclusivity": [
         "long-program",
-        "no-movement",
-        "no-recordings-or-spoken-text"
+        "no-recordings-or-spoken-text",
+        "no-movement"
       ],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -6462,9 +6478,9 @@
       "scheduled": ["one", "one-or-more"],
       "game-style": [
         "character-driven",
-        "rules-light",
+        "story-driven",
         "serious",
-        "story-driven"
+        "rules-light"
       ],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -6504,7 +6520,7 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["light", "rules-light", "story-driven"],
+      "game-style": ["story-driven", "light", "rules-light"],
       "inclusivity": ["long-program", "loud-sounds"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -6546,9 +6562,9 @@
       "scheduled": ["one", "one-or-more"],
       "inclusivity": [
         "no-text-of-recording",
-        "lots-of-movement",
         "loud-sounds",
-        "physical-contact"
+        "physical-contact",
+        "lots-of-movement"
       ],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -6682,7 +6698,7 @@
       "language": ["fi"],
       "age-group": ["everyone"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["light", "story-driven"],
+      "game-style": ["story-driven", "light"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -6721,7 +6737,7 @@
       "language": ["fi"],
       "age-group": ["everyone"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["serious", "story-driven"],
+      "game-style": ["story-driven", "serious"],
       "inclusivity": ["no-recordings-or-spoken-text"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -6813,8 +6829,8 @@
       "language": ["fi"],
       "age-group": ["kids"],
       "scheduled": ["multiple", "one-or-more"],
-      "game-style": ["light", "rules-light", "story-driven"],
-      "inclusivity": ["no-movement", "no-recordings-or-spoken-text"],
+      "game-style": ["story-driven", "light", "rules-light"],
+      "inclusivity": ["no-recordings-or-spoken-text", "no-movement"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -6869,7 +6885,7 @@
       "konsti": ["workshop"],
       "grouping": ["beginners"],
       "language": ["en"],
-      "age-group": ["teens", "adults"],
+      "age-group": ["adults", "teens"],
       "scheduled": ["one", "one-or-more"],
       "inclusivity": ["physical-contact"],
       "registration": ["konsti"],
@@ -6907,7 +6923,7 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["rules-light", "character-driven", "story-driven"],
+      "game-style": ["character-driven", "story-driven", "rules-light"],
       "inclusivity": ["no-recordings-or-spoken-text"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -6946,7 +6962,7 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["light", "rules-light", "story-driven"],
+      "game-style": ["story-driven", "light", "rules-light"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -7024,8 +7040,8 @@
       "language": ["en", "fi"],
       "age-group": ["adults"],
       "scheduled": ["multiple", "one-or-more"],
-      "inclusivity": ["physical-contact", "no-movement", "loud-sounds"],
-      "registration": ["konsti"]
+      "inclusivity": ["loud-sounds", "physical-contact", "no-movement"],
+      "registration": ["not-required"]
     },
     "cachedAnnotations": {
       "konsti:maxAttendance": 24,
@@ -7071,8 +7087,8 @@
       "language": ["fi"],
       "age-group": ["everyone"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["light", "rules-light", "story-driven"],
-      "inclusivity": ["not-amplified", "long-program", "no-movement"],
+      "game-style": ["story-driven", "light", "rules-light"],
+      "inclusivity": ["long-program", "no-movement", "not-amplified"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -7103,14 +7119,14 @@
     "cachedDimensions": {
       "form": ["offer-rpg"],
       "type": ["gaming"],
-      "state": ["accepted"],
+      "state": ["cancelled"],
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["new-worlds", "beginners"],
       "language": ["fi"],
       "age-group": ["only-adults"],
-      "scheduled": ["multiple", "one-or-more"],
-      "game-style": ["character-driven", "rules-light", "serious"],
+      "scheduled": ["one", "one-or-more"],
+      "game-style": ["character-driven", "serious", "rules-light"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -7121,7 +7137,7 @@
       "ropecon:contentWarnings": "Maailmanloppu, väkivalta, mielenhallinta, uskonnot, päihteet, seksuaalisuus, taudit, nälänhätä, vallankäyttö",
       "ropecon:isRevolvingDoor": false
     },
-    "isCancelled": false,
+    "isCancelled": true,
     "scheduleItems": [
       {
         "slug": "maailma-myrskyn-jalkeen-2",
@@ -7146,14 +7162,14 @@
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["lgbt", "beginners"],
-      "language": ["fi", "en"],
+      "language": ["en", "fi"],
       "age-group": ["everyone"],
       "scheduled": ["one", "one-or-more"],
       "game-style": [
-        "light",
-        "rules-light",
         "character-driven",
-        "story-driven"
+        "story-driven",
+        "light",
+        "rules-light"
       ],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -7193,7 +7209,7 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["rules-light", "story-driven"],
+      "game-style": ["story-driven", "rules-light"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -7315,15 +7331,15 @@
       "state": ["cancelled"],
       "topic": ["figures"],
       "konsti": ["other"],
-      "grouping": ["new-worlds", "lgbt", "beginners"],
-      "language": ["fi", "en"],
+      "grouping": ["lgbt", "new-worlds", "beginners"],
+      "language": ["en", "fi"],
       "age-group": ["adults"],
-      "scheduled": ["multiple", "one-or-more"],
+      "scheduled": ["none"],
       "inclusivity": [
         "long-program",
         "color-blindness",
-        "no-text-of-recording",
-        "no-recordings-or-spoken-text"
+        "no-recordings-or-spoken-text",
+        "no-text-of-recording"
       ],
       "registration": ["not-required"],
       "revolvingdoor": ["true"]
@@ -7351,7 +7367,7 @@
       "grouping": ["new-worlds", "beginners"],
       "language": ["fi"],
       "age-group": ["adults"],
-      "scheduled": ["one-or-more", "one"],
+      "scheduled": ["one", "one-or-more"],
       "inclusivity": ["dark-lighting", "loud-sounds", "flahing-lights"],
       "registration": ["ropelarp"],
       "revolvingdoor": ["false"]
@@ -7392,10 +7408,10 @@
       "age-group": ["everyone"],
       "scheduled": ["one", "one-or-more"],
       "game-style": [
-        "light",
-        "rules-light",
         "character-driven",
-        "story-driven"
+        "story-driven",
+        "light",
+        "rules-light"
       ],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -7435,7 +7451,7 @@
       "language": ["fi"],
       "age-group": ["everyone"],
       "scheduled": ["multiple", "one-or-more"],
-      "game-style": ["rules-light", "character-driven"],
+      "game-style": ["character-driven", "rules-light"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -7480,7 +7496,7 @@
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["beginners"],
-      "language": ["fi", "en"],
+      "language": ["en", "fi"],
       "age-group": ["adults"],
       "scheduled": ["multiple", "one-or-more"],
       "registration": ["konsti"],
@@ -7560,13 +7576,13 @@
       "grouping": ["beginners"],
       "language": ["fi"],
       "age-group": ["teens"],
-      "scheduled": ["one-or-more", "multiple"],
+      "scheduled": ["multiple", "one-or-more"],
       "inclusivity": [
-        "fingers",
+        "long-texts",
         "dark-lighting",
         "physical-contact",
         "no-recordings-or-spoken-text",
-        "long-texts"
+        "fingers"
       ],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -7656,8 +7672,8 @@
       "grouping": ["beginners"],
       "language": ["en", "fi"],
       "age-group": ["adults"],
-      "scheduled": ["one-or-more", "multiple"],
-      "game-style": ["serious", "character-driven", "rules-light"],
+      "scheduled": ["multiple", "one-or-more"],
+      "game-style": ["character-driven", "serious", "rules-light"],
       "inclusivity": ["no-recordings-or-spoken-text"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -7704,7 +7720,7 @@
       "grouping": ["beginners"],
       "language": ["en", "fi"],
       "age-group": ["adults"],
-      "scheduled": ["one-or-more", "multiple"],
+      "scheduled": ["multiple", "one-or-more"],
       "inclusivity": ["long-program", "no-recordings-or-spoken-text"],
       "registration": ["ropelarp"],
       "revolvingdoor": ["false"]
@@ -7752,14 +7768,14 @@
       "age-group": ["adults"],
       "scheduled": ["multiple", "one-or-more"],
       "game-style": [
-        "light",
-        "rules-light",
         "character-driven",
-        "story-driven"
+        "story-driven",
+        "light",
+        "rules-light"
       ],
       "inclusivity": [
-        "no-movement",
         "long-program",
+        "no-movement",
         "long-texts",
         "no-recordings-or-spoken-text"
       ],
@@ -7810,14 +7826,14 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["rules-light", "story-driven"],
+      "game-style": ["story-driven", "rules-light"],
       "inclusivity": [
         "long-program",
-        "long-texts",
         "color-blindness",
+        "long-texts",
         "no-movement",
-        "no-recordings-or-spoken-text",
-        "physical-contact"
+        "physical-contact",
+        "no-recordings-or-spoken-text"
       ],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -7856,14 +7872,14 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["rules-light", "story-driven"],
+      "game-style": ["story-driven", "rules-light"],
       "inclusivity": [
         "long-program",
-        "long-texts",
         "color-blindness",
+        "long-texts",
         "no-movement",
-        "no-recordings-or-spoken-text",
-        "physical-contact"
+        "physical-contact",
+        "no-recordings-or-spoken-text"
       ],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -7898,14 +7914,14 @@
       "state": ["accepted"],
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
-      "grouping": ["new-worlds", "lgbt", "beginners"],
+      "grouping": ["lgbt", "new-worlds", "beginners"],
       "language": ["fi"],
       "age-group": ["everyone"],
-      "scheduled": ["one-or-more", "one"],
+      "scheduled": ["one", "one-or-more"],
       "game-style": [
+        "character-driven",
         "story-driven",
         "light",
-        "character-driven",
         "rules-light"
       ],
       "registration": ["konsti"],
@@ -7946,7 +7962,7 @@
       "grouping": ["new-worlds"],
       "language": ["fi"],
       "age-group": ["teens"],
-      "scheduled": ["one-or-more", "one"],
+      "scheduled": ["one", "one-or-more"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -7979,10 +7995,10 @@
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["new-worlds", "beginners"],
-      "language": ["fi", "en"],
+      "language": ["en", "fi"],
       "age-group": ["adults"],
       "scheduled": ["multiple", "one-or-more"],
-      "game-style": ["light", "combat-heavy", "rules-heavy", "story-driven"],
+      "game-style": ["rules-heavy", "story-driven", "light", "combat-heavy"],
       "inclusivity": ["long-program", "no-recordings-or-spoken-text"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -8027,7 +8043,7 @@
       "state": ["accepted"],
       "topic": ["figures"],
       "konsti": ["workshop"],
-      "grouping": ["new-worlds", "lgbt", "beginners"],
+      "grouping": ["lgbt", "new-worlds", "beginners"],
       "language": ["fi"],
       "age-group": ["everyone"],
       "scheduled": ["one", "one-or-more"],
@@ -8066,12 +8082,12 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["rules-light", "serious", "story-driven"],
+      "game-style": ["story-driven", "serious", "rules-light"],
       "inclusivity": [
         "long-program",
-        "no-movement",
         "no-recordings-or-spoken-text",
-        "physical-contact"
+        "physical-contact",
+        "no-movement"
       ],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -8111,7 +8127,7 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["multiple", "one-or-more"],
-      "game-style": ["light", "story-driven"],
+      "game-style": ["story-driven", "light"],
       "inclusivity": ["long-program"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -8159,7 +8175,7 @@
       "grouping": ["beginners"],
       "language": ["fi"],
       "age-group": ["adults"],
-      "scheduled": ["one-or-more", "one"],
+      "scheduled": ["one", "one-or-more"],
       "inclusivity": ["no-recordings-or-spoken-text"],
       "registration": ["ropelarp"],
       "revolvingdoor": ["false"]
@@ -8198,8 +8214,8 @@
       "grouping": ["lgbt"],
       "language": ["fi"],
       "age-group": ["only-adults"],
-      "scheduled": ["one-or-more", "one"],
-      "inclusivity": ["long-texts", "no-movement", "physical-contact"],
+      "scheduled": ["one", "one-or-more"],
+      "inclusivity": ["long-texts", "physical-contact", "no-movement"],
       "registration": ["konsti"]
     },
     "cachedAnnotations": {
@@ -8275,7 +8291,7 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["light", "rules-light", "serious", "story-driven"],
+      "game-style": ["story-driven", "light", "serious", "rules-light"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -8311,7 +8327,7 @@
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["beginners"],
-      "language": ["fi", "en"],
+      "language": ["en", "fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
       "game-style": ["light", "rules-light"],
@@ -8354,8 +8370,8 @@
       "age-group": ["teens"],
       "scheduled": ["multiple", "one-or-more"],
       "inclusivity": [
-        "long-texts",
         "dark-lighting",
+        "long-texts",
         "no-recordings-or-spoken-text"
       ],
       "registration": ["ropelarp"],
@@ -8444,10 +8460,10 @@
       "state": ["accepted"],
       "topic": ["larp"],
       "konsti": ["larp"],
-      "grouping": ["beginners", "lgbt", "new-worlds"],
+      "grouping": ["lgbt", "new-worlds", "beginners"],
       "language": ["en"],
       "age-group": ["adults"],
-      "scheduled": ["one-or-more", "one"],
+      "scheduled": ["one", "one-or-more"],
       "registration": ["ropelarp"],
       "revolvingdoor": ["false"]
     },
@@ -8484,7 +8500,7 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["serious", "story-driven"],
+      "game-style": ["story-driven", "serious"],
       "inclusivity": ["no-movement"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -8528,8 +8544,8 @@
         "light",
         "serious",
         "story-driven",
-        "rules-light",
-        "character-driven"
+        "character-driven",
+        "rules-light"
       ],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -8595,20 +8611,20 @@
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["new-worlds", "beginners"],
-      "language": ["fi", "en"],
+      "language": ["en", "fi"],
       "age-group": ["teens"],
       "scheduled": ["multiple", "one-or-more"],
       "game-style": [
-        "light",
-        "rules-light",
         "character-driven",
-        "story-driven"
+        "story-driven",
+        "light",
+        "rules-light"
       ],
       "inclusivity": [
         "long-program",
-        "fingers",
+        "quick-reactions",
         "no-recordings-or-spoken-text",
-        "quick-reactions"
+        "fingers"
       ],
       "registration": ["konsti"],
       "revolvingdoor": ["true"]
@@ -8646,7 +8662,7 @@
   {
     "slug": "noppapussityopaja",
     "title": "Noppapussityöpaja",
-    "description": "Ompele itsellesi noppapussi askarteluhuovasta. Tarjolla useampi valmiskaava ja kuvalliset ohjeet erilaisten pistojen tekoon. Valittavana useita värejä, ideoita ja aiheita. Saa toki myös keksiä ihan omasta päästään. Neulan olisi hyvä pysyä jotenkin kädessä, mutta askarteluhuovan ompelu on helppoa ja onnistuu hyvin niin lapsilta kuin aikuisiltakin. Lapsilla olisi hyvä olla kuitenkin oma aikuinen mukana. \r\n\r\nTyöpajaan on ennakkoilmoittautuminen Konstissa lauantaina klo 8 ja klo 18 alkaen.",
+    "description": "Ompele itsellesi noppapussi askarteluhuovasta. Tarjolla useampi valmiskaava ja kuvalliset ohjeet erilaisten pistojen tekoon. Valittavana useita värejä, ideoita ja aiheita. Saa toki myös keksiä ihan omasta päästään. Neulan olisi hyvä pysyä jotenkin kädessä, mutta askarteluhuovan ompelu on helppoa ja onnistuu hyvin niin lapsilta kuin aikuisiltakin. Lapsilla olisi hyvä olla kuitenkin oma aikuinen mukana. \r\n\r\nTyöpajaan on ennakkoilmoittautuminen Konstissa lauantaina klo 8 ja sunnuntaina klo 7 alkaen.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "form": ["offer-workshop"],
@@ -8660,7 +8676,10 @@
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
-    "cachedAnnotations": { "konsti:maxAttendance": 15 },
+    "cachedAnnotations": {
+      "konsti:maxAttendance": 15,
+      "konsti:workshopFee": "4 €"
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -8727,7 +8746,7 @@
   {
     "slug": "nuorten-seikkailijoiden-salakirjoituspaja-1-kirjainten-vaihto",
     "title": "Nuorten seikkailijoiden salakirjoituspaja 1 - kirjainten vaihto",
-    "description": "Salakirjoitusten tekeminen ja lukeminen on arvokas työkalu uusien maailmojen tutkijoille. Työpajassa opetellaan käyttämään muutamaa helppoa salakirjoitusta (Atbash, Caesar ja Pigpen) ja mietitään hiukan niiden hyviä ja huonoja puolia. \r\n\r\nSeikkailijat saavat pajasta käärön, jonka salakirjoitukset ratkaisemalla he saavat tietoja vieraista maailmoista.\r\n\r\nPaja sopii kaikille salakielistä kiinnostuneille, mutta pääasiallinen kohdeyleisö on kouluikäiset. Alle 10-vuotialle tulee olla 1 saattaja per 2 lasta. Voit tulla paikalle myös ilmoittautumatta, mutta ylimääräisiä tehtäviä on vain ilmoittautuneille.\r\n\r\nTyöpajaan on ennakkoilmoittautuminen Konstissa perjantaina klo 18 alkaen.",
+    "description": "Salakirjoitusten tekeminen ja lukeminen on arvokas työkalu uusien maailmojen tutkijoille. Työpajassa opetellaan käyttämään muutamaa helppoa salakirjoitusta (Atbash, Caesar ja Pigpen) ja mietitään hiukan niiden hyviä ja huonoja puolia. \r\n\r\nSeikkailijat saavat pajasta käärön, jonka salakirjoitukset ratkaisemalla he saavat tietoja vieraista maailmoista.\r\n\r\nPaja sopii kaikille salakielistä kiinnostuneille, mutta pääasiallinen kohdeyleisö on kouluikäiset. Alle 10-vuotialle tulee olla 1 saattaja per 2 lasta. Voit tulla paikalle myös ilmoittautumatta, mutta ylimääräisiä tehtäviä on vain ilmoittautuneille.\r\n\r\nTyöpajaan on ennakkoilmoittautuminen Konstissa perjantaina klo 22 alkaen.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "form": ["offer-workshop"],
@@ -8758,7 +8777,7 @@
   {
     "slug": "nuorten-seikkailijoiden-salakirjoituspaja-2-jarjestyksen-vaihto",
     "title": "Nuorten seikkailijoiden salakirjoituspaja 2 - järjestyksen vaihto",
-    "description": "Salakirjoitusten tekeminen ja lukeminen on arvokas työkalu tutkittaessa uusia, outoja maailmoita. Työpajassa opetellaan käyttämään muutamaa helppoa salakirjoitusta  jotka perustuvat kirjainten järjestyksen vaihtamiseen ja mietitään hiukan niiden hyviä ja huonoja puolia.\r\n\r\nSeikkailijat saavat pajasta käärön, jonka salakirjoitukset ratkaisemalla he saavat tietoa tavoista matkustaa maailmojen välillä.\r\n\r\nPaja sopii kaikille salakielistä kiinnostuneille, mutta pääasiallinen kohdeyleisö on kouluikäiset. Alle 10-vuotialle tulee olla 1 saattaja per 2 lasta. Voit tulla paikalle myös ilmoittautumatta, mutta ylimääräisiä tehtäviä on vain ilmoittautuneille.\r\n\r\nTyöpajaan on ennakkoilmoittautuminen Konstissa perjantaina klo 18 alkaen.",
+    "description": "Salakirjoitusten tekeminen ja lukeminen on arvokas työkalu tutkittaessa uusia, outoja maailmoita. Työpajassa opetellaan käyttämään muutamaa helppoa salakirjoitusta  jotka perustuvat kirjainten järjestyksen vaihtamiseen ja mietitään hiukan niiden hyviä ja huonoja puolia.\r\n\r\nSeikkailijat saavat pajasta käärön, jonka salakirjoitukset ratkaisemalla he saavat tietoa tavoista matkustaa maailmojen välillä.\r\n\r\nPaja sopii kaikille salakielistä kiinnostuneille, mutta pääasiallinen kohdeyleisö on kouluikäiset. Alle 10-vuotialle tulee olla 1 saattaja per 2 lasta. Voit tulla paikalle myös ilmoittautumatta, mutta ylimääräisiä tehtäviä on vain ilmoittautuneille.\r\n\r\nTyöpajaan on ennakkoilmoittautuminen Konstissa lauantaina klo 7 alkaen.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "form": ["offer-workshop"],
@@ -8805,7 +8824,7 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["multiple", "one-or-more"],
-      "game-style": ["light", "rules-light", "story-driven"],
+      "game-style": ["story-driven", "light", "rules-light"],
       "inclusivity": ["no-recordings-or-spoken-text"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -8896,7 +8915,7 @@
       "age-group": ["everyone"],
       "scheduled": ["one", "one-or-more"],
       "game-style": ["rules-light"],
-      "inclusivity": ["no-movement", "no-recordings-or-spoken-text"],
+      "inclusivity": ["no-recordings-or-spoken-text", "no-movement"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -8933,7 +8952,7 @@
       "language": ["fi"],
       "age-group": ["everyone"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["light", "rules-light", "character-driven"],
+      "game-style": ["character-driven", "light", "rules-light"],
       "inclusivity": ["long-program"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -8971,7 +8990,7 @@
       "language": ["fi"],
       "age-group": ["everyone"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["light", "rules-light", "character-driven"],
+      "game-style": ["character-driven", "light", "rules-light"],
       "inclusivity": ["long-program"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -9011,11 +9030,11 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["rules-light", "serious", "story-driven"],
+      "game-style": ["story-driven", "serious", "rules-light"],
       "inclusivity": [
-        "no-movement",
         "no-recordings-or-spoken-text",
-        "physical-contact"
+        "physical-contact",
+        "no-movement"
       ],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -9055,7 +9074,7 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["light", "character-driven", "story-driven"],
+      "game-style": ["character-driven", "story-driven", "light"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -9134,10 +9153,10 @@
       "age-group": ["adults"],
       "scheduled": ["multiple", "one-or-more"],
       "game-style": [
-        "light",
-        "rules-light",
         "character-driven",
-        "story-driven"
+        "story-driven",
+        "light",
+        "rules-light"
       ],
       "inclusivity": ["long-program", "loud-sounds"],
       "registration": ["konsti"],
@@ -9196,7 +9215,7 @@
       "language": ["fi"],
       "age-group": ["everyone"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["combat-heavy", "rules-light", "character-driven"],
+      "game-style": ["character-driven", "combat-heavy", "rules-light"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -9232,10 +9251,10 @@
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["new-worlds", "beginners"],
-      "language": ["fi", "en"],
+      "language": ["en", "fi"],
       "age-group": ["adults"],
       "scheduled": ["multiple", "one-or-more"],
-      "game-style": ["light", "rules-light", "story-driven"],
+      "game-style": ["story-driven", "light", "rules-light"],
       "inclusivity": ["long-program"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -9272,7 +9291,7 @@
   {
     "slug": "pakokauhusta-bardiksi-miten-rikkoa-esiintymisjannitys-larpeissa",
     "title": "Pakokauhusta bardiksi - miten rikkoa esiintymisjännitys larpeissa",
-    "description": "Oletko aina halunnut olla larpissa esiintyvä hahmo, mutta jännitys liimaa kurkun kiinni ja haave haipuu, kuin se yksinäinen nuotti, jonka uskalsit laulaa jossain sivummalla? Ei hätää, et ole yksin. Työpajassa opetellaan yhdessä musisoiden muutamia peruskikkoja, joilla särkeä esiintymisjännityksen jää jatkossa. Nappaa soittimesi mukaan, avaa äänesi ja vapauta sisäinen bardisi! Aika ottaa uusi maailma haltuun, antaa runojen kuplia ja laulun raikaa. Soittimia on rajallinen määrä, joten mikäli omistat oman, ota se ihmeessä mukaan.\r\nTyöpajaan on ennakkoilmoittautuminen Konstissa perjantaina klo 18 alkaen ja sunnuntaina klo 10 alkaen.",
+    "description": "Oletko aina halunnut olla larpissa esiintyvä hahmo, mutta jännitys liimaa kurkun kiinni ja haave haipuu, kuin se yksinäinen nuotti, jonka uskalsit laulaa jossain sivummalla? Ei hätää, et ole yksin. Työpajassa opetellaan yhdessä musisoiden muutamia peruskikkoja, joilla särkeä esiintymisjännityksen jää jatkossa. Nappaa soittimesi mukaan, avaa äänesi ja vapauta sisäinen bardisi! Aika ottaa uusi maailma haltuun, antaa runojen kuplia ja laulun raikaa. Soittimia on rajallinen määrä, joten mikäli omistat oman, ota se ihmeessä mukaan.\r\nTyöpajaan on ennakkoilmoittautuminen Konstissa perjantaina klo 22 alkaen ja sunnuntaina klo 10 alkaen.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "form": ["offer-workshop"],
@@ -9363,15 +9382,15 @@
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["beginners"],
-      "language": ["fi", "en"],
+      "language": ["en", "fi"],
       "age-group": ["everyone"],
       "scheduled": ["one", "one-or-more"],
       "game-style": [
         "serious",
-        "rules-heavy",
         "story-driven",
+        "character-driven",
         "combat-heavy",
-        "character-driven"
+        "rules-heavy"
       ],
       "inclusivity": ["long-program", "no-movement"],
       "registration": ["konsti"],
@@ -9399,7 +9418,7 @@
   {
     "slug": "perinpohjainen-pirtanauhapaja",
     "title": "Perinpohjainen pirtanauhapaja",
-    "description": "Kiinnostaako sinua syventyä pirtanauhan saloihin syvällisemmin? Työpajassa käymme läpi pirtanauhan valmistamiseen liittyvät vaiheet kuvion suunnittelusta ja loimen luonnista lähtien. Jokainen osallistuja saa suunnitella ja valmistaa oman nauhansa haluamillaan väreillä. Työpajassa on myös mahdollisuus kokeilla poimitun kuvion kutomista. Osallistuakseen ei tarvitse aiempaa kokemusta pirtanauhoista, mutta nauhan tekeminen edellyttää kohtalaista sorminäppäryyttä.\r\n\r\nTyöpajaan on ennakkoilmoittautuminen Konstissa lauantaina klo 11 alkaen.",
+    "description": "Kiinnostaako sinua syventyä pirtanauhan saloihin syvällisemmin? Työpajassa käymme läpi pirtanauhan valmistamiseen liittyvät vaiheet kuvion suunnittelusta ja loimen luonnista lähtien. Jokainen osallistuja saa suunnitella ja valmistaa oman nauhansa haluamillaan väreillä. Työpajassa on myös mahdollisuus kokeilla poimitun kuvion kutomista. Osallistuakseen ei tarvitse aiempaa kokemusta pirtanauhoista, mutta nauhan tekeminen edellyttää kohtalaista sorminäppäryyttä.\r\n\r\nTyöpajaan on ennakkoilmoittautuminen Konstissa lauantaina klo 9 alkaen.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "form": ["offer-workshop"],
@@ -9417,7 +9436,8 @@
     },
     "cachedAnnotations": {
       "konsti:maxAttendance": 10,
-      "ropecon:accessibilityOther": "Työpajassa käytetään villasekoitelankoja, jotka voivat aiheuttaa ärsytystä allergisille/herkille.\r\n"
+      "konsti:workshopFee": "2 €",
+      "ropecon:accessibilityOther": "Työpajassa käytetään villasekoitelankoja, jotka voivat aiheuttaa ärsytystä allergisille/herkille."
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -9439,12 +9459,13 @@
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "type": ["other"],
+      "state": ["accepted"],
       "topic": ["figures"],
       "konsti": ["tournament"],
-      "grouping": ["beginners", "new-worlds"],
-      "language": ["fi", "en"],
+      "grouping": ["new-worlds", "beginners"],
+      "language": ["en", "fi"],
       "age-group": ["everyone"],
-      "scheduled": ["one-or-more", "multiple"],
+      "scheduled": ["multiple", "one-or-more"],
       "inclusivity": ["physical-contact"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -9508,7 +9529,7 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["rules-light", "serious", "story-driven"],
+      "game-style": ["story-driven", "serious", "rules-light"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -9547,7 +9568,7 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["multiple", "one-or-more"],
-      "game-style": ["light", "character-driven"],
+      "game-style": ["character-driven", "light"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -9595,12 +9616,12 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["rules-light", "story-driven"],
+      "game-style": ["story-driven", "rules-light"],
       "inclusivity": [
-        "no-movement",
-        "not-amplified",
         "long-program",
-        "no-recordings-or-spoken-text"
+        "no-movement",
+        "no-recordings-or-spoken-text",
+        "not-amplified"
       ],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -9628,7 +9649,7 @@
   {
     "slug": "portaalin-viemaa",
     "title": "Portaalin viemää",
-    "description": "Seikkailujen jälkeen sankarit ovat asettuneet viettämään hiljaista elämää pieneen kylään. Vain kylän velhon maagiset kokeet tuovat pieniä yllätyksiä maalaisarkeen. Eräänä päivänä koko kylä kuitenkin havahtuu siihen, että jotain on pielessä. Velhoa ei löydy mistään, mutta hänen kammiostaan löytyy portaali, josta näkyy tuntematon maailma. Uskaltaako portaalin läpi astua? Mitä toiselta puolelta löytyy?\r\n\r\nKevyehkö D&D-seikkailu high fantasy-maailmassa.  Yhden päivän seikkailu (ei long restejä).  Hahmot ovat level 8. Valmiit hahmot.",
+    "description": "Seikkailujen jälkeen sankarit ovat asettuneet viettämään hiljaista elämää pieneen kylään. Vain kylän velhon maagiset kokeet tuovat pieniä yllätyksiä maalaisarkeen. Eräänä päivänä koko kylä kuitenkin havahtuu siihen, että jotain on pielessä. Velhoa ei löydy mistään, mutta hänen tornistaan löytyy portaali, josta näkyy tuntematon maailma. Uskaltaako portaalin läpi astua? Mitä toiselta puolelta löytyy? Ja mikä on uusien maailmojen luomisen hinta?\r\n\r\nKevyehkö D&D-seikkailu high fantasy-maailmassa. Yhden päivän seikkailu (ei restejä). Valmiit level 8 hahmot.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "form": ["offer-rpg"],
@@ -9678,8 +9699,8 @@
       "language": ["fi"],
       "age-group": ["teens"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["character-driven", "serious", "rules-heavy"],
-      "inclusivity": ["long-texts", "color-blindness"],
+      "game-style": ["rules-heavy", "serious", "character-driven"],
+      "inclusivity": ["color-blindness", "long-texts"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -9718,7 +9739,7 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["multiple", "one-or-more"],
-      "game-style": ["combat-heavy", "rules-light", "serious", "story-driven"],
+      "game-style": ["story-driven", "combat-heavy", "serious", "rules-light"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -9770,8 +9791,8 @@
         "long-program",
         "long-texts",
         "no-movement",
-        "no-recordings-or-spoken-text",
-        "physical-contact"
+        "physical-contact",
+        "no-recordings-or-spoken-text"
       ],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -9812,10 +9833,10 @@
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
       "game-style": [
-        "light",
-        "rules-light",
+        "character-driven",
         "story-driven",
-        "character-driven"
+        "light",
+        "rules-light"
       ],
       "inclusivity": ["loud-sounds"],
       "registration": ["konsti"],
@@ -9855,7 +9876,7 @@
       "grouping": ["new-worlds"],
       "language": ["fi"],
       "age-group": ["adults"],
-      "scheduled": ["one-or-more", "one"],
+      "scheduled": ["one", "one-or-more"],
       "game-style": ["story-driven", "serious"],
       "inclusivity": ["long-texts", "no-recordings-or-spoken-text"],
       "registration": ["konsti"],
@@ -9931,10 +9952,10 @@
       "state": ["accepted"],
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
-      "grouping": ["beginners", "new-worlds"],
+      "grouping": ["new-worlds", "beginners"],
       "language": ["fi"],
       "age-group": ["adults"],
-      "scheduled": ["one-or-more", "one"],
+      "scheduled": ["one", "one-or-more"],
       "game-style": ["character-driven", "story-driven", "light"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -9979,6 +10000,7 @@
     },
     "cachedAnnotations": {
       "konsti:maxAttendance": 10,
+      "konsti:workshopFee": "10 €",
       "ropecon:accessibilityOther": "Edellyttää osallistujalta normaalia voimaa ja koordinaatiota käsissä. ~12v+"
     },
     "isCancelled": false,
@@ -10022,15 +10044,15 @@
         "light",
         "serious",
         "story-driven",
+        "character-driven",
         "combat-heavy",
-        "rules-light",
-        "character-driven"
+        "rules-light"
       ],
       "inclusivity": [
-        "not-amplified",
         "color-blindness",
         "loud-sounds",
-        "physical-contact"
+        "physical-contact",
+        "not-amplified"
       ],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -10070,7 +10092,7 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["multiple", "one-or-more"],
-      "game-style": ["combat-heavy", "serious", "story-driven"],
+      "game-style": ["story-driven", "serious", "combat-heavy"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -10119,10 +10141,10 @@
       "age-group": ["adults"],
       "scheduled": ["multiple", "one-or-more"],
       "game-style": [
-        "light",
-        "rules-light",
         "character-driven",
-        "story-driven"
+        "story-driven",
+        "light",
+        "rules-light"
       ],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -10200,10 +10222,10 @@
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["new-worlds", "beginners"],
-      "language": ["fi", "en"],
+      "language": ["en", "fi"],
       "age-group": ["adults"],
       "scheduled": ["multiple", "one-or-more"],
-      "game-style": ["rules-light", "serious"],
+      "game-style": ["serious", "rules-light"],
       "registration": ["not-required"],
       "revolvingdoor": ["true"]
     },
@@ -10284,10 +10306,10 @@
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["new-worlds", "beginners"],
-      "language": ["fi", "en"],
+      "language": ["en", "fi"],
       "age-group": ["adults"],
       "scheduled": ["multiple", "one-or-more"],
-      "game-style": ["character-driven", "rules-light", "serious"],
+      "game-style": ["character-driven", "serious", "rules-light"],
       "inclusivity": ["no-recordings-or-spoken-text"],
       "registration": ["not-required"],
       "revolvingdoor": ["true"]
@@ -10363,7 +10385,7 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["combat-heavy", "story-driven"],
+      "game-style": ["story-driven", "combat-heavy"],
       "inclusivity": ["long-program", "no-recordings-or-spoken-text"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -10403,7 +10425,7 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["light", "combat-heavy", "character-driven"],
+      "game-style": ["character-driven", "light", "combat-heavy"],
       "inclusivity": ["long-program", "no-recordings-or-spoken-text"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -10447,8 +10469,8 @@
       "game-style": [
         "character-driven",
         "combat-heavy",
-        "rules-light",
-        "serious"
+        "serious",
+        "rules-light"
       ],
       "inclusivity": ["long-program", "no-movement"],
       "registration": ["konsti"],
@@ -10486,7 +10508,7 @@
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["beginners"],
-      "language": ["fi", "en"],
+      "language": ["en", "fi"],
       "age-group": ["adults"],
       "scheduled": ["multiple", "one-or-more"],
       "game-style": ["light", "rules-light"],
@@ -10538,10 +10560,10 @@
       "language": ["fi"],
       "age-group": ["teens"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["character-driven", "serious", "rules-heavy"],
+      "game-style": ["rules-heavy", "serious", "character-driven"],
       "inclusivity": [
-        "long-texts",
         "color-blindness",
+        "long-texts",
         "no-recordings-or-spoken-text"
       ],
       "registration": ["konsti"],
@@ -10582,7 +10604,7 @@
       "language": ["fi"],
       "age-group": ["everyone"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["light", "combat-heavy", "character-driven"],
+      "game-style": ["character-driven", "light", "combat-heavy"],
       "inclusivity": ["long-program"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -10622,7 +10644,7 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["serious", "story-driven"],
+      "game-style": ["story-driven", "serious"],
       "inclusivity": ["no-recordings-or-spoken-text"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -10668,7 +10690,8 @@
     },
     "cachedAnnotations": {
       "konsti:maxAttendance": 10,
-      "ropecon:accessibilityOther": "Työpajassa tarvitaan kohtalaista sorminäppäryyttä.\r\nTyöpajassa käytetään villasekoitelankaa, joka voi aiheuttaa ärsytystä allergisille/herkille."
+      "konsti:workshopFee": "2 €",
+      "ropecon:accessibilityOther": "Työpajassa tarvitaan kohtalaista sorminäppäryyttä.Työpajassa käytetään villasekoitelankaa, joka voi aiheuttaa ärsytystä allergisille/herkille."
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -10698,8 +10721,8 @@
       "language": ["fi"],
       "age-group": ["only-adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["rules-light", "serious", "story-driven"],
-      "inclusivity": ["no-movement", "no-recordings-or-spoken-text"],
+      "game-style": ["story-driven", "serious", "rules-light"],
+      "inclusivity": ["no-recordings-or-spoken-text", "no-movement"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -10738,7 +10761,7 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["rules-light", "serious", "story-driven"],
+      "game-style": ["story-driven", "serious", "rules-light"],
       "inclusivity": ["no-recordings-or-spoken-text"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -10778,7 +10801,7 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["light", "rules-light", "combat-heavy", "story-driven"],
+      "game-style": ["story-driven", "light", "combat-heavy", "rules-light"],
       "inclusivity": ["no-recordings-or-spoken-text"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -10848,10 +10871,10 @@
       "state": ["accepted"],
       "topic": ["larp"],
       "konsti": ["larp"],
-      "grouping": ["new-worlds", "lgbt", "beginners"],
+      "grouping": ["lgbt", "new-worlds", "beginners"],
       "language": ["fi"],
       "age-group": ["adults"],
-      "scheduled": ["one-or-more", "one"],
+      "scheduled": ["one", "one-or-more"],
       "registration": ["ropelarp"],
       "revolvingdoor": ["false"]
     },
@@ -10888,7 +10911,7 @@
       "language": ["fi"],
       "age-group": ["everyone"],
       "scheduled": ["multiple", "one-or-more"],
-      "game-style": ["light", "rules-light", "story-driven"],
+      "game-style": ["story-driven", "light", "rules-light"],
       "inclusivity": ["no-movement"],
       "registration": ["konsti"],
       "revolvingdoor": ["true"]
@@ -10991,7 +11014,7 @@
       "language": ["fi"],
       "age-group": ["only-adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["rules-light", "story-driven"],
+      "game-style": ["story-driven", "rules-light"],
       "inclusivity": ["long-program"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -11036,6 +11059,7 @@
     },
     "cachedAnnotations": {
       "konsti:maxAttendance": 20,
+      "konsti:workshopFee": "5 €",
       "ropecon:accessibilityOther": "Ohjelma sisältää skräppäykseen liittyvän kevyen teoriaosion, jossa ei juuri tekstiä. Tilassa teräviä esineitä. Sopii parhaiten aikuisille, nuorille ja lapsille, jotka jaksavat kuunnella alun ja keskittyä askarteluun tavoitteellisesti. Työpajasta voi lähteä aikaisemmin. Alle kouluikäisille lapsille aikuinen mukaan. "
     },
     "isCancelled": false,
@@ -11207,11 +11231,11 @@
       "state": ["accepted"],
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
-      "grouping": ["new-worlds", "beginners", "lgbt"],
+      "grouping": ["lgbt", "new-worlds", "beginners"],
       "language": ["en"],
       "age-group": ["everyone"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["rules-light", "light", "story-driven"],
+      "game-style": ["story-driven", "light", "rules-light"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -11249,8 +11273,8 @@
       "grouping": ["lgbt", "new-worlds", "beginners"],
       "language": ["fi"],
       "age-group": ["everyone"],
-      "scheduled": ["one-or-more", "one"],
-      "game-style": ["rules-light", "light", "story-driven"],
+      "scheduled": ["one", "one-or-more"],
+      "game-style": ["story-driven", "light", "rules-light"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -11291,9 +11315,9 @@
       "scheduled": ["multiple", "one-or-more"],
       "game-style": [
         "character-driven",
-        "rules-light",
+        "story-driven",
         "serious",
-        "story-driven"
+        "rules-light"
       ],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -11343,10 +11367,10 @@
       "age-group": ["everyone"],
       "scheduled": ["one", "one-or-more"],
       "game-style": [
-        "light",
-        "rules-light",
         "character-driven",
-        "story-driven"
+        "story-driven",
+        "light",
+        "rules-light"
       ],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -11422,10 +11446,10 @@
       "state": ["accepted"],
       "topic": ["larp"],
       "konsti": ["larp"],
-      "grouping": ["new-worlds", "lgbt"],
+      "grouping": ["lgbt", "new-worlds"],
       "language": ["en"],
       "age-group": ["adults"],
-      "scheduled": ["one-or-more", "one"],
+      "scheduled": ["one", "one-or-more"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -11459,10 +11483,10 @@
       "state": ["accepted"],
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
-      "grouping": ["beginners", "new-worlds"],
+      "grouping": ["new-worlds", "beginners"],
       "language": ["fi"],
       "age-group": ["everyone"],
-      "scheduled": ["one-or-more", "multiple"],
+      "scheduled": ["multiple", "one-or-more"],
       "game-style": ["light", "rules-light"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -11507,10 +11531,10 @@
       "topic": ["larp"],
       "konsti": ["larp"],
       "grouping": ["new-worlds"],
-      "language": ["fi", "en"],
+      "language": ["en", "fi"],
       "age-group": ["adults"],
       "scheduled": ["none"],
-      "inclusivity": ["no-movement", "loud-sounds", "dark-lighting"],
+      "inclusivity": ["dark-lighting", "loud-sounds", "no-movement"],
       "registration": ["konsti"]
     },
     "cachedAnnotations": {
@@ -11533,12 +11557,12 @@
       "state": ["accepted"],
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
-      "grouping": ["new-worlds", "lgbt", "beginners"],
-      "language": ["fi", "en"],
+      "grouping": ["lgbt", "new-worlds", "beginners"],
+      "language": ["en", "fi"],
       "age-group": ["everyone"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["light", "rules-light", "combat-heavy", "story-driven"],
-      "inclusivity": ["long-program", "no-movement", "lots-of-movement"],
+      "game-style": ["story-driven", "light", "combat-heavy", "rules-light"],
+      "inclusivity": ["long-program", "lots-of-movement", "no-movement"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -11611,8 +11635,8 @@
       "state": ["accepted"],
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
-      "grouping": ["new-worlds", "lgbt", "beginners"],
-      "language": ["fi", "en"],
+      "grouping": ["lgbt", "new-worlds", "beginners"],
+      "language": ["en", "fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
       "inclusivity": ["long-program"],
@@ -11654,7 +11678,7 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["rules-light", "character-driven", "story-driven"],
+      "game-style": ["character-driven", "story-driven", "rules-light"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -11748,8 +11772,8 @@
       "game-style": ["rules-light"],
       "inclusivity": [
         "long-program",
-        "no-movement",
-        "no-recordings-or-spoken-text"
+        "no-recordings-or-spoken-text",
+        "no-movement"
       ],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -11788,7 +11812,7 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["multiple", "one-or-more"],
-      "game-style": ["light", "rules-light", "character-driven"],
+      "game-style": ["character-driven", "light", "rules-light"],
       "inclusivity": ["no-recordings-or-spoken-text"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -11846,10 +11870,10 @@
       "age-group": ["everyone"],
       "scheduled": ["one", "one-or-more"],
       "game-style": [
-        "light",
-        "rules-light",
         "character-driven",
-        "story-driven"
+        "story-driven",
+        "light",
+        "rules-light"
       ],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -11886,7 +11910,7 @@
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["beginners"],
-      "language": ["fi", "en"],
+      "language": ["en", "fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
       "registration": ["konsti"],
@@ -11929,7 +11953,7 @@
       "registration": ["other"],
       "revolvingdoor": ["false"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": { "konsti:workshopFee": "30 - 40 €" },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -11972,11 +11996,11 @@
       "state": ["accepted"],
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
-      "grouping": ["new-worlds", "lgbt", "beginners"],
+      "grouping": ["lgbt", "new-worlds", "beginners"],
       "language": ["en"],
       "age-group": ["only-adults"],
       "scheduled": ["multiple", "one-or-more"],
-      "inclusivity": ["long-program", "dark-lighting"],
+      "inclusivity": ["dark-lighting", "long-program"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -12013,7 +12037,7 @@
   {
     "slug": "tee-oma-bofferimiekka-rakennuspaja",
     "title": "Tee oma bofferimiekka -rakennuspaja",
-    "description": "Tule tekemään oma bofferi!\r\nKiinnostaako tehdä oma bofferimiekka? Autamme sinua rakentamaan sellaisen. Miekan rakentamiseen menee 1-2 tuntia. Nuoremmilla kannattaa olla oma aikuinen mukana auttamassa.\r\nTyöpajaan on ennakkoilmoittautuminen Konstissa perjantaina klo 15 ja 18 sekä lauantaina klo 12 ja klo 18 alkaen.",
+    "description": "Tule tekemään oma bofferi!\r\nKiinnostaako tehdä oma bofferimiekka? Autamme sinua rakentamaan sellaisen. Miekan rakentamiseen menee 1-2 tuntia. Nuoremmilla kannattaa olla oma aikuinen mukana auttamassa.\r\nTyöpajaan on ennakkoilmoittautuminen Konstissa perjantaina klo 15 ja 22 sekä lauantaina klo 12 ja klo 22 alkaen.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "form": ["offer-workshop"],
@@ -12086,11 +12110,14 @@
       "grouping": ["new-worlds", "beginners"],
       "language": ["free"],
       "age-group": ["everyone"],
-      "scheduled": ["multiple", "one-or-more"],
+      "scheduled": ["one", "one-or-more"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
-    "cachedAnnotations": { "konsti:maxAttendance": 12 },
+    "cachedAnnotations": {
+      "konsti:maxAttendance": 12,
+      "konsti:workshopFee": "5 €"
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -12119,7 +12146,7 @@
       "language": ["en"],
       "age-group": ["only-adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["light", "rules-light", "character-driven"],
+      "game-style": ["character-driven", "light", "rules-light"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -12158,7 +12185,7 @@
       "language": ["fi"],
       "age-group": ["only-adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["light", "rules-light", "character-driven"],
+      "game-style": ["character-driven", "light", "rules-light"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -12242,7 +12269,7 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
-      "inclusivity": ["lots-of-movement", "loud-sounds", "physical-contact"],
+      "inclusivity": ["loud-sounds", "physical-contact", "lots-of-movement"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -12274,7 +12301,7 @@
       "grouping": ["beginners"],
       "language": ["fi"],
       "age-group": ["adults"],
-      "scheduled": ["multiple", "one-or-more"],
+      "scheduled": ["one", "one-or-more"],
       "registration": ["konsti"],
       "revolvingdoor": ["true"]
     },
@@ -12295,15 +12322,6 @@
         "lengthMinutes": 240,
         "location": "Room 311",
         "isCancelled": false
-      },
-      {
-        "slug": "tervetuloa-vartiostoon-2",
-        "title": "Tervetuloa Vartiostoon!",
-        "startTime": "2025-07-27T10:00:00+03:00",
-        "endTime": "2025-07-27T14:00:00+03:00",
-        "lengthMinutes": 240,
-        "location": "Room 311",
-        "isCancelled": false
       }
     ]
   },
@@ -12319,7 +12337,7 @@
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["new-worlds", "beginners"],
-      "language": ["fi", "en"],
+      "language": ["en", "fi"],
       "age-group": ["only-adults"],
       "scheduled": ["multiple", "one-or-more"],
       "registration": ["konsti"],
@@ -12402,7 +12420,7 @@
       "state": ["accepted"],
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
-      "grouping": ["new-worlds", "lgbt", "beginners"],
+      "grouping": ["lgbt", "new-worlds", "beginners"],
       "language": ["en"],
       "age-group": ["everyone"],
       "scheduled": ["multiple", "one-or-more"],
@@ -12491,8 +12509,8 @@
       "grouping": ["beginners"],
       "language": ["en"],
       "age-group": ["only-adults"],
-      "scheduled": ["one-or-more", "one"],
-      "inclusivity": ["no-movement", "dark-lighting", "long-program"],
+      "scheduled": ["one", "one-or-more"],
+      "inclusivity": ["dark-lighting", "long-program", "no-movement"],
       "registration": ["konsti"]
     },
     "cachedAnnotations": {
@@ -12528,7 +12546,7 @@
       "konsti": ["larp"],
       "language": ["fi"],
       "age-group": ["adults"],
-      "scheduled": ["one-or-more", "one"],
+      "scheduled": ["one", "one-or-more"],
       "inclusivity": ["no-recordings-or-spoken-text"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -12596,8 +12614,8 @@
       "state": ["accepted"],
       "topic": ["larp"],
       "konsti": ["larp"],
-      "grouping": ["new-worlds", "lgbt", "beginners"],
-      "language": ["sv", "en", "fi"],
+      "grouping": ["lgbt", "new-worlds", "beginners"],
+      "language": ["en", "sv", "fi"],
       "age-group": ["everyone"],
       "scheduled": ["multiple", "one-or-more"],
       "registration": ["konsti"],
@@ -12648,10 +12666,10 @@
       "age-group": ["everyone"],
       "scheduled": ["one", "one-or-more"],
       "game-style": [
-        "light",
-        "rules-light",
         "character-driven",
-        "story-driven"
+        "story-driven",
+        "light",
+        "rules-light"
       ],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -12689,7 +12707,7 @@
       "konsti": ["tabletoprpg"],
       "language": ["en"],
       "age-group": ["adults"],
-      "scheduled": ["one-or-more", "multiple"],
+      "scheduled": ["multiple", "one-or-more"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -12733,10 +12751,10 @@
       "state": ["accepted"],
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
-      "language": ["fi", "en"],
+      "language": ["en", "fi"],
       "age-group": ["everyone"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["light", "story-driven"],
+      "game-style": ["story-driven", "light"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -12810,11 +12828,11 @@
       "state": ["accepted"],
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
-      "grouping": ["new-worlds", "lgbt", "beginners"],
-      "language": ["fi", "en"],
+      "grouping": ["lgbt", "new-worlds", "beginners"],
+      "language": ["en", "fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["rules-light", "character-driven", "story-driven"],
+      "game-style": ["character-driven", "story-driven", "rules-light"],
       "inclusivity": ["long-program"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -12851,7 +12869,7 @@
       "konsti": ["workshop"],
       "grouping": ["beginners"],
       "language": ["fi"],
-      "age-group": ["teens", "adults"],
+      "age-group": ["adults", "teens"],
       "scheduled": ["one", "one-or-more"],
       "inclusivity": ["physical-contact"],
       "registration": ["konsti"],
@@ -12889,7 +12907,7 @@
       "language": ["fi"],
       "age-group": ["only-adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["rules-light", "story-driven"],
+      "game-style": ["story-driven", "rules-light"],
       "inclusivity": ["long-program"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -12898,6 +12916,7 @@
       "konsti:maxAttendance": 4,
       "konsti:minAttendance": 2,
       "konsti:rpgSystem": "Tarinoita tietoisuuden ajalta",
+      "ropecon:contentWarnings": "kannibalismi, itsemurha, seksin havainnointi, seksuaalinen väkivalta, prostituutio, lihavuus",
       "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
@@ -13067,10 +13086,10 @@
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["new-worlds"],
-      "language": ["fi", "en"],
+      "language": ["en", "fi"],
       "age-group": ["adults"],
       "scheduled": ["multiple", "one-or-more"],
-      "game-style": ["rules-light", "story-driven"],
+      "game-style": ["story-driven", "rules-light"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -13113,7 +13132,7 @@
       "type": ["other"],
       "state": ["accepted"],
       "konsti": ["other"],
-      "grouping": ["beginners", "lgbt"],
+      "grouping": ["lgbt", "beginners"],
       "language": ["fi"],
       "age-group": ["everyone"],
       "scheduled": ["multiple", "one-or-more"],
@@ -13144,39 +13163,6 @@
     ]
   },
   {
-    "slug": "tow-miniatyyri-turnaus",
-    "title": "Tow miniatyyri turnaus ",
-    "description": "Tarkoituksena järjestää Tow turnaus sunnuntaille samoille pöydille kuin Vesa järjestää lauantaina 6 edition turnauksen. ",
-    "cachedHosts": "<redacted>",
-    "cachedDimensions": {
-      "form": ["offer-miniatures"],
-      "type": ["tournament"],
-      "state": ["accepted"],
-      "topic": ["figures"],
-      "konsti": ["tournament"],
-      "language": ["fi"],
-      "age-group": ["adults"],
-      "scheduled": ["none"],
-      "inclusivity": [
-        "long-program",
-        "fingers",
-        "no-subtitles",
-        "no-recordings-or-spoken-text",
-        "quick-reactions"
-      ],
-      "registration": ["other"],
-      "revolvingdoor": ["false"]
-    },
-    "cachedAnnotations": {
-      "konsti:maxAttendance": 24,
-      "konsti:minAttendance": 12,
-      "konsti:rpgSystem": "The old world",
-      "ropecon:isRevolvingDoor": false
-    },
-    "isCancelled": false,
-    "scheduleItems": []
-  },
-  {
     "slug": "troika",
     "title": "Troika!",
     "description": "Tervetuloa poimuisen taivaan alle Troikan kaupunkiin, jossa ihme ja kumma hämmästyttävät suurempaakin kulkijaa! Old School Revival -liikehdintään jokseenkin liitettävissä oleva peli vie pelaajat yhteiselle matkalle kosmisen fantasian ja scifin värittämässä maailmassa, jossa värejä ei todellakaan ole säästelty! Tunnelmareferenssinä voisi käyttää esim. Jodorowskyn Dyyniä, happopäisen Hergén Tinttiä tai vaikkapa mestarillista Circlen Henki -albumia.\r\n\r\nPelaamme valmisseikkailun arvotuilla valmishahmoilla. Säännöstö on varsin kevyt eikä vaadi ennakkovalmistautumista. Mukaan tarvitset 2kpl d6 -noppaa, muistiinpanovälineet ja arkihuolista ja maallisista rajoituksista vapaan heittäytyvän peliotteen. Peli on ennen kaikkea narratiivista lähestymistapaa korostava ja \"rule of cool\" pyritään pitämään mahdollisimman usein käytössä. Voi olla, että taisteluja käydään, mutta voi yhtä hyvin olla, ettei.",
@@ -13191,7 +13177,7 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["light", "rules-light", "story-driven"],
+      "game-style": ["story-driven", "light", "rules-light"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -13228,10 +13214,10 @@
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["new-worlds", "beginners"],
-      "language": ["fi", "en"],
+      "language": ["en", "fi"],
       "age-group": ["adults"],
       "scheduled": ["multiple", "one-or-more"],
-      "game-style": ["light", "character-driven", "rules-light", "serious"],
+      "game-style": ["character-driven", "light", "serious", "rules-light"],
       "registration": ["not-required"],
       "revolvingdoor": ["true"]
     },
@@ -13278,7 +13264,7 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["rules-light", "serious"],
+      "game-style": ["serious", "rules-light"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -13317,7 +13303,7 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["multiple", "one-or-more"],
-      "game-style": ["combat-heavy", "serious", "story-driven"],
+      "game-style": ["story-driven", "serious", "combat-heavy"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -13359,7 +13345,7 @@
       "form": ["offer-workshop"],
       "type": ["workshop"],
       "state": ["accepted"],
-      "topic": ["dancing", "larp"],
+      "topic": ["larp", "dancing"],
       "konsti": ["workshop"],
       "grouping": ["new-worlds", "beginners"],
       "language": ["fi"],
@@ -13408,7 +13394,7 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["story-driven", "serious", "rules-heavy"],
+      "game-style": ["rules-heavy", "story-driven", "serious"],
       "inclusivity": ["no-recordings-or-spoken-text"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -13443,16 +13429,16 @@
       "state": ["accepted"],
       "topic": ["larp"],
       "konsti": ["larp"],
-      "grouping": ["beginners", "lgbt", "new-worlds"],
+      "grouping": ["lgbt", "new-worlds", "beginners"],
       "language": ["fi"],
       "age-group": ["everyone"],
-      "scheduled": ["one-or-more", "one"],
+      "scheduled": ["one", "one-or-more"],
       "inclusivity": [
         "long-program",
         "color-blindness",
-        "no-subtitles",
+        "long-texts",
         "no-text-of-recording",
-        "long-texts"
+        "no-subtitles"
       ],
       "registration": ["ropelarp"],
       "revolvingdoor": ["true"]
@@ -13491,10 +13477,10 @@
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
       "game-style": [
-        "light",
-        "rules-light",
         "character-driven",
-        "story-driven"
+        "story-driven",
+        "light",
+        "rules-light"
       ],
       "inclusivity": ["no-recordings-or-spoken-text"],
       "registration": ["konsti"],
@@ -13535,7 +13521,7 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["rules-light", "serious", "story-driven"],
+      "game-style": ["story-driven", "serious", "rules-light"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -13573,8 +13559,8 @@
       "grouping": ["lgbt", "beginners"],
       "language": ["fi"],
       "age-group": ["adults"],
-      "scheduled": ["one-or-more", "one"],
-      "game-style": ["story-driven", "rules-light", "serious"],
+      "scheduled": ["one", "one-or-more"],
+      "game-style": ["story-driven", "serious", "rules-light"],
       "inclusivity": ["no-movement"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -13645,8 +13631,8 @@
       "grouping": ["new-worlds", "beginners"],
       "language": ["fi"],
       "age-group": ["only-adults"],
-      "scheduled": ["one-or-more", "multiple"],
-      "inclusivity": ["loud-sounds", "long-program"],
+      "scheduled": ["multiple", "one-or-more"],
+      "inclusivity": ["long-program", "loud-sounds"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -13696,9 +13682,9 @@
       "scheduled": ["one", "one-or-more"],
       "game-style": [
         "character-driven",
-        "rules-light",
+        "story-driven",
         "serious",
-        "story-driven"
+        "rules-light"
       ],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -13737,7 +13723,7 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["rules-light", "character-driven", "story-driven"],
+      "game-style": ["character-driven", "story-driven", "rules-light"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -13774,7 +13760,7 @@
       "konsti": ["larp"],
       "language": ["fi"],
       "age-group": ["adults"],
-      "scheduled": ["one-or-more", "multiple"],
+      "scheduled": ["multiple", "one-or-more"],
       "inclusivity": ["no-recordings-or-spoken-text"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -13818,7 +13804,7 @@
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["new-worlds", "beginners"],
-      "language": ["fi", "en"],
+      "language": ["en", "fi"],
       "age-group": ["everyone"],
       "scheduled": ["multiple", "one-or-more"],
       "registration": ["not-required"],
@@ -13865,8 +13851,8 @@
       "grouping": ["beginners"],
       "language": ["fi"],
       "age-group": ["adults"],
-      "scheduled": ["one-or-more", "one"],
-      "inclusivity": ["physical-contact", "lots-of-movement"],
+      "scheduled": ["one", "one-or-more"],
+      "inclusivity": ["lots-of-movement", "physical-contact"],
       "registration": ["konsti"]
     },
     "cachedAnnotations": { "konsti:maxAttendance": 20 },
@@ -13898,11 +13884,11 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["rules-light", "story-driven"],
+      "game-style": ["story-driven", "rules-light"],
       "inclusivity": [
         "long-program",
-        "no-movement",
-        "no-recordings-or-spoken-text"
+        "no-recordings-or-spoken-text",
+        "no-movement"
       ],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -13942,7 +13928,7 @@
       "language": ["fi"],
       "age-group": ["everyone"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["light", "rules-light", "character-driven"],
+      "game-style": ["character-driven", "light", "rules-light"],
       "registration": ["konsti"],
       "revolvingdoor": ["true"]
     },
@@ -14054,10 +14040,10 @@
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["new-worlds", "beginners"],
-      "language": ["fi", "en"],
+      "language": ["en", "fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
-      "game-style": ["light", "rules-light", "character-driven"],
+      "game-style": ["character-driven", "light", "rules-light"],
       "inclusivity": ["long-program"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -14090,7 +14076,7 @@
     "cachedDimensions": {
       "form": ["offer-rpg"],
       "type": ["gaming"],
-      "state": ["accepted"],
+      "state": ["cancelled"],
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["beginners"],
@@ -14099,9 +14085,9 @@
       "scheduled": ["one", "one-or-more"],
       "game-style": [
         "character-driven",
-        "rules-light",
+        "story-driven",
         "serious",
-        "story-driven"
+        "rules-light"
       ],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -14114,7 +14100,7 @@
       "ropecon:contentWarnings": "Vangitsemista, väkivaltaa, uskonnollisia teemoja, seksuaalista sisältöä, päihteiden käyttöä, kehokauhua, yliluonnollisia voimia ja olentoja.",
       "ropecon:isRevolvingDoor": false
     },
-    "isCancelled": false,
+    "isCancelled": true,
     "scheduleItems": [
       {
         "slug": "viikon-hirvio-1",
@@ -14141,8 +14127,8 @@
       "grouping": ["beginners"],
       "language": ["fi"],
       "age-group": ["adults"],
-      "scheduled": ["one-or-more", "multiple"],
-      "game-style": ["story-driven", "rules-light", "character-driven"],
+      "scheduled": ["multiple", "one-or-more"],
+      "game-style": ["character-driven", "story-driven", "rules-light"],
       "inclusivity": ["long-program"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -14190,8 +14176,8 @@
       "grouping": ["lgbt", "new-worlds", "beginners"],
       "language": ["fi"],
       "age-group": ["adults"],
-      "scheduled": ["one-or-more", "multiple"],
-      "game-style": ["rules-light", "story-driven", "character-driven"],
+      "scheduled": ["multiple", "one-or-more"],
+      "game-style": ["character-driven", "story-driven", "rules-light"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -14284,9 +14270,9 @@
       "form": ["offer-workshop"],
       "type": ["workshop"],
       "state": ["accepted"],
-      "topic": ["larp", "handcrafts"],
+      "topic": ["handcrafts", "larp"],
       "konsti": ["workshop"],
-      "grouping": ["beginners", "new-worlds"],
+      "grouping": ["new-worlds", "beginners"],
       "language": ["free"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
@@ -14295,7 +14281,8 @@
       "revolvingdoor": ["false"]
     },
     "cachedAnnotations": {
-      "ropecon:accessibilityOther": "Emme käytä mikkejä (tila tuskin toimisi niiden kanssa muutenkaan), mutta pyrimme auttamaan ihmisiä mahdollisimman paljon henkilökohtaisesti tai pienissä ryhmissä. \r\n\r\nOsallistujille jaetaan ohjelehtiset, joista löytyy tietoa aiheesta, ohjeita paikan päällä toteutettaviin tekniikoihin sekä myös tekniikoihin, joiden käyttö ei sovellu tiloihin (esim kankaan värjääminen kloorilla). Ohjelehtisten käyttö on vapaaehtoista ja tarkoitettu lähinnä paikan päällä annettavan ohjauksen tueksi, sekä myöhempää käyttöä varten.\r\n\r\nKovia ääniä saattaa tulla esim. kun vasaroidaan nauloja. \r\n\r\n",
+      "konsti:maxAttendance": 34,
+      "ropecon:accessibilityOther": "Emme käytä mikkejä (tila tuskin toimisi niiden kanssa muutenkaan), mutta pyrimme auttamaan ihmisiä mahdollisimman paljon henkilökohtaisesti tai pienissä ryhmissä. Osallistujille jaetaan ohjelehtiset, joista löytyy tietoa aiheesta, ohjeita paikan päällä toteutettaviin tekniikoihin sekä myös tekniikoihin, joiden käyttö ei sovellu tiloihin (esim kankaan värjääminen kloorilla). Ohjelehtisten käyttö on vapaaehtoista ja tarkoitettu lähinnä paikan päällä annettavan ohjauksen tueksi, sekä myöhempää käyttöä varten.Kovia ääniä saattaa tulla esim. kun vasaroidaan nauloja. ",
       "ropecon:contentWarnings": "Emme keksineet mitään."
     },
     "isCancelled": false,
@@ -14359,7 +14346,7 @@
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["beginners"],
-      "language": ["fi", "en"],
+      "language": ["en", "fi"],
       "age-group": ["only-adults"],
       "scheduled": ["multiple", "one-or-more"],
       "game-style": ["light", "rules-light"],
@@ -14398,13 +14385,13 @@
   {
     "slug": "workshop-i-att-skapa-och-utveckla-sin-rollspelsvarld",
     "title": "Workshop i att skapa och utveckla sin rollspelsvärld",
-    "description": "Under workshoppen kommer deltagarna att få komma med såväl helt nya idéer för en rollspelsvärld samt halffärdiga koncept som man får komma för att utveckla under workshoppens gång, såväl tillsamman med andra samt på egen hand.\r\n\r\nFörhandsanmälan till workshopen är på Konsti på fredag ​​från kl. 18.00.",
+    "description": "Under workshoppen kommer deltagarna att få komma med såväl helt nya idéer för en rollspelsvärld samt halffärdiga koncept som man får komma för att utveckla under workshoppens gång, såväl tillsamman med andra samt på egen hand.\r\n\r\nFörhandsanmälan till workshopen är på Konsti på lördag ​​från kl. 7.00.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "form": ["offer-workshop"],
       "type": ["workshop"],
       "state": ["accepted"],
-      "topic": ["larp", "rpg"],
+      "topic": ["rpg", "larp"],
       "konsti": ["workshop"],
       "grouping": ["new-worlds", "beginners"],
       "language": ["sv"],
@@ -14490,7 +14477,7 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["multiple", "one-or-more"],
-      "game-style": ["light", "story-driven"],
+      "game-style": ["story-driven", "light"],
       "inclusivity": ["long-program", "long-texts", "no-movement"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]

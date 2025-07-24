@@ -19,6 +19,7 @@ import {
   delDirectSignupDocumentsByProgramItemIds,
   findDirectSignups,
   findDirectSignupsByProgramItemIds,
+  resetDirectSignupsByProgramItemIds,
 } from "server/features/direct-signup/directSignupRepository";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import {
@@ -120,13 +121,8 @@ export const handleCanceledDeletedProgramItems = async (
   const { canceledProgramItemIds, deletedProgramItemIds } =
     getCanceledAndDeletedProgramItems(updatedProgramItems, currentProgramItems);
 
-  const removeDirectSignupProgramItemIds = [
-    ...canceledProgramItemIds,
-    ...deletedProgramItemIds,
-  ];
-
   const notifyUsersWithDirectSignupsResult = await notifyUsersWithDirectSignups(
-    removeDirectSignupProgramItemIds,
+    [...canceledProgramItemIds, ...deletedProgramItemIds],
   );
   if (isErrorResult(notifyUsersWithDirectSignupsResult)) {
     return notifyUsersWithDirectSignupsResult;
@@ -135,18 +131,26 @@ export const handleCanceledDeletedProgramItems = async (
     notifyUsersWithDirectSignupsResult,
   );
 
-  if (removeDirectSignupProgramItemIds.length > 0) {
-    logger.info("Remove direct signups for canceled and deleted program items");
-    const delSignupDocumentsResult =
-      await delDirectSignupDocumentsByProgramItemIds(
-        removeDirectSignupProgramItemIds,
-      );
-    if (isErrorResult(delSignupDocumentsResult)) {
-      return delSignupDocumentsResult;
+  if (canceledProgramItemIds.length > 0) {
+    logger.info("Remove direct signups for canceled program items");
+    const resetSignupDocumentsResult = await resetDirectSignupsByProgramItemIds(
+      canceledProgramItemIds,
+    );
+    if (isErrorResult(resetSignupDocumentsResult)) {
+      return resetSignupDocumentsResult;
     }
   }
 
   if (deletedProgramItemIds.length > 0) {
+    logger.info(
+      "Remove direct signups and signup document for deleted program items",
+    );
+    const delSignupDocumentsResult =
+      await delDirectSignupDocumentsByProgramItemIds(deletedProgramItemIds);
+    if (isErrorResult(delSignupDocumentsResult)) {
+      return delSignupDocumentsResult;
+    }
+
     logger.info("Remove deleted program items");
     const removeProgramItemsResult = await removeProgramItems(
       deletedProgramItemIds,

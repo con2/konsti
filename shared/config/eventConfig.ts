@@ -106,6 +106,8 @@ export const eventConfig: EventConfig = {
     "designkilpailu",
     "kielomatkat-fuengirola-kielo-tours-fuengirola",
     "nerdic-open-mic-kolmas-kerta-toden-sanoo",
+    "viikon-hirvio",
+    "maailma-myrskyn-jalkeen",
   ],
 
   signupQuestions: [
