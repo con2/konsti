@@ -1,0 +1,70 @@
+[
+  {
+    "hiddenProgramItemIds": [],
+    "appOpen": false,
+    "signupStrategy": "lottery+direct",
+    "loginProvider": "local+kompassi",
+    "signupQuestions": [
+      {
+        "programItemId": "pikamaalauskilpailu-speed-painting-contest-4",
+        "questionFi": "Haluan, että maalattavan figuni pohjaväri on",
+        "questionEn": "I want my miniature to be primed",
+        "private": false,
+        "type": "select",
+        "selectOptions": [
+          { "optionFi": "Musta", "optionEn": "Black" },
+          { "optionFi": "Valkoinen", "optionEn": "White" }
+        ]
+      },
+      {
+        "programItemId": "pikamaalauskilpailu-speed-painting-contest",
+        "questionFi": "Haluan, että maalattavan figuni pohjaväri on",
+        "questionEn": "I want my miniature to be primed",
+        "private": false,
+        "type": "select",
+        "selectOptions": [
+          { "optionFi": "Musta", "optionEn": "Black" },
+          { "optionFi": "Valkoinen", "optionEn": "White" }
+        ]
+      },
+      {
+        "programItemId": "pikamaalauskilpailu-speed-painting-contest-2",
+        "questionFi": "Haluan, että maalattavan figuni pohjaväri on",
+        "questionEn": "I want my miniature to be primed",
+        "private": false,
+        "type": "select",
+        "selectOptions": [
+          { "optionFi": "Musta", "optionEn": "Black" },
+          { "optionFi": "Valkoinen", "optionEn": "White" }
+        ]
+      },
+      {
+        "programItemId": "pikamaalauskilpailu-speed-painting-contest-3",
+        "questionFi": "Haluan, että maalattavan figuni pohjaväri on",
+        "questionEn": "I want my miniature to be primed",
+        "private": false,
+        "type": "select",
+        "selectOptions": [
+          { "optionFi": "Musta", "optionEn": "Black" },
+          { "optionFi": "Valkoinen", "optionEn": "White" }
+        ]
+      },
+      {
+        "programItemId": "pikamaalauskilpailu-speed-painting-contest-5",
+        "questionFi": "Haluan, että maalattavan figuni pohjaväri on",
+        "questionEn": "I want my miniature to be primed",
+        "private": false,
+        "type": "select",
+        "selectOptions": [
+          { "optionFi": "Musta", "optionEn": "Black" },
+          { "optionFi": "Valkoinen", "optionEn": "White" }
+        ]
+      }
+    ],
+    "programUpdateLastRun": "2025-07-29T09:55:00.016Z",
+    "assignmentLastRun": "2025-07-29T10:00:00.021Z",
+    "latestServerStartTime": "2025-07-24T18:24:12.258Z",
+    "createdAt": "2025-07-23T06:45:04.097Z",
+    "updatedAt": "2025-07-29T10:00:00.021Z"
+  }
+]
