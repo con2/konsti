@@ -6,6 +6,7 @@ import { ResultsCollectionEntry } from "server/types/resultTypes";
 import { writeJson } from "server/features/statistics/statsUtil";
 import { config } from "shared/config";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
+import { ProgramItem } from "shared/types/models/programItem";
 
 export const anonymizeData = async (
   year: number,
@@ -31,6 +32,14 @@ export const anonymizeData = async (
   const directSignups: DirectSignupsForProgramItem[] = JSON.parse(
     fs.readFileSync(
       `${config.server().statsDataDir}/${event}/${year}/direct-signups.json`,
+      "utf8",
+    ),
+  );
+
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  const programItems: ProgramItem[] = JSON.parse(
+    fs.readFileSync(
+      `${config.server().statsDataDir}/${event}/${year}/program-items.json`,
       "utf8",
     ),
   );
@@ -62,7 +71,7 @@ export const anonymizeData = async (
     user.username = randomUsername;
     user.password = "<redacted>";
     // @ts-expect-error -- Use invalid type for clarity
-    user.kompassiId = "<redacted>";
+    user.kompassiId = user.kompassiId === 0 ? 0 : "<redacted>";
   }
 
   // Remove signup message answers
@@ -74,7 +83,12 @@ export const anonymizeData = async (
     }
   }
 
+  for (const programItem of programItems) {
+    programItem.people = "<redacted>";
+  }
+
   await writeJson(year, event, "users", users);
   await writeJson(year, event, "results", results);
   await writeJson(year, event, "direct-signups", directSignups);
+  await writeJson(year, event, "program-items", programItems);
 };

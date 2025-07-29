@@ -28,16 +28,12 @@ export const writeJson = async (
   datatype: string,
   data: unknown[],
 ): Promise<void> => {
-  if (
-    !fs.existsSync(`${config.server().statsDataDir}/${event}/${year}/temp/`)
-  ) {
-    fs.mkdirSync(`${config.server().statsDataDir}/${event}/${year}/temp/`);
+  if (!fs.existsSync(`${config.server().statsDataDir}/${event}/${year}`)) {
+    fs.mkdirSync(`${config.server().statsDataDir}/${event}/${year}`);
   }
 
   fs.writeFileSync(
-    `${
-      config.server().statsDataDir
-    }/${event}/${year}/temp/${datatype}-fixed.json`,
+    `${config.server().statsDataDir}/${event}/${year}/${datatype}.json`,
     // eslint-disable-next-line no-restricted-syntax -- TODO: Fix, format() ban should only apply to dayjs().format()
     await prettier.format(JSON.stringify(data), { parser: "json" }),
     "utf8",
@@ -46,7 +42,7 @@ export const writeJson = async (
   logger.info(
     `Saved ${getDataLength(data)} ${datatype} to file ${
       config.server().statsDataDir
-    }/${event}/${year}/temp/${datatype}-fixed.json`,
+    }/${event}/${year}/${datatype}.json`,
   );
 };
 
@@ -64,10 +60,8 @@ export const writeFeedback = (
   datatype: string,
   data: Record<string, Message[]>,
 ): void => {
-  if (
-    !fs.existsSync(`${config.server().statsDataDir}/${event}/${year}/temp/`)
-  ) {
-    fs.mkdirSync(`${config.server().statsDataDir}/${event}/${year}/temp/`);
+  if (!fs.existsSync(`${config.server().statsDataDir}/${event}/${year}`)) {
+    fs.mkdirSync(`${config.server().statsDataDir}/${event}/${year}`);
   }
 
   Object.entries(data).map(([host, messages], index) => {
@@ -83,9 +77,7 @@ export const writeFeedback = (
 
     if (index === 0) {
       fs.writeFileSync(
-        `${
-          config.server().statsDataDir
-        }/${event}/${year}/temp/${datatype}-fixed.txt`,
+        `${config.server().statsDataDir}/${event}/${year}/${datatype}.txt`,
         `**********\n\n${formattedFeedback}`,
         "utf8",
       );
@@ -93,9 +85,7 @@ export const writeFeedback = (
     }
 
     fs.appendFileSync(
-      `${
-        config.server().statsDataDir
-      }/${event}/${year}/temp/${datatype}-fixed.txt`,
+      `${config.server().statsDataDir}/${event}/${year}/${datatype}.txt`,
       formattedFeedback,
       "utf8",
     );
@@ -104,7 +94,7 @@ export const writeFeedback = (
   logger.info(
     `Saved ${getDataLength(data)} ${datatype} to file ${
       config.server().statsDataDir
-    }/${event}/${year}/temp/${datatype}-fixed.txt`,
+    }/${event}/${year}/${datatype}.txt`,
   );
 };
 

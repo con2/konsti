@@ -99,14 +99,14 @@ const prodConfig = {
   useTestTime: false,
 
   // Program update cron
-  autoUpdateProgramEnabled: true,
+  autoUpdateProgramEnabled: false,
   programUpdateInterval: "5,10,15,20,25,30,35,40,45,50,55 * * * *",
 
   // Program update
   updateProgramItemPopularityEnabled: true,
 
   // Attendee assign cron
-  autoAssignAttendeesEnabled: true,
+  autoAssignAttendeesEnabled: false,
   autoAssignInterval: "0 * * * *",
   autoAssignDelay: 1000 * 5,
 };
