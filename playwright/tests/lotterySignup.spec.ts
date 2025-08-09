@@ -15,7 +15,6 @@ import {
   testProgramItem,
   testProgramItem2,
 } from "shared/tests/testProgramItem";
-import { ProgramType } from "shared/types/models/programItem";
 
 test("Add lottery signup", async ({ page, request }) => {
   const startTime = dayjs(config.event().eventStartTime)
