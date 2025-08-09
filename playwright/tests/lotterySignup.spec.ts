@@ -15,7 +15,6 @@ import {
   testProgramItem,
   testProgramItem2,
 } from "shared/tests/testProgramItem";
-import { ProgramType } from "shared/types/models/programItem";
 
 test("Add lottery signup", async ({ page, request }) => {
   const startTime = dayjs(config.event().eventStartTime)
@@ -29,6 +28,7 @@ test("Add lottery signup", async ({ page, request }) => {
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
     {
+      programType: config.event().twoPhaseSignupProgramTypes[0],
       startTime,
       endTime,
     },
@@ -44,13 +44,8 @@ test("Add lottery signup", async ({ page, request }) => {
 
   await page.goto("/");
 
-  // Navigate to program list tab and select RPG program type
+  // Navigate to program list tab
   await page.click("data-testid=program-list-tab");
-  await page
-    .getByRole("combobox", {
-      name: /program type/i,
-    })
-    .selectOption("Tabletop RPG");
 
   // Lottery signup to first program item
   await page.waitForSelector("data-testid=program-item-container");
@@ -97,6 +92,7 @@ test("Receive spot in lottery signup", async ({ page, request }) => {
   await addUser(request, "test1");
   await addProgramItems(request, [
     {
+      programType: config.event().twoPhaseSignupProgramTypes[0],
       startTime,
       endTime,
       // Adjust min/max so user will get the spot
@@ -132,12 +128,12 @@ test("Receive spot in lottery signup", async ({ page, request }) => {
 
   // Check new assigment message
   await expect(page.getByTestId("notification-bar")).toContainText(
-    "You were assigned to the roleplaying game Test program item.",
+    /You were assigned to the .* Test program item./,
   );
 
   await page.getByRole("link", { name: "Show all notifications" }).click();
   await expect(page.getByTestId("event-log-item")).toContainText(
-    "You were assigned to the roleplaying game Test program item.",
+    /You were assigned to the .* Test program item./,
   );
 
   // Check lottery signup is still present
@@ -165,6 +161,7 @@ test("Did not receive spot in lottery signup", async ({ page, request }) => {
   await addUser(request, "test1");
   await addProgramItems(request, [
     {
+      programType: config.event().twoPhaseSignupProgramTypes[0],
       startTime,
       endTime,
       // Adjust min/max so user cannot get the spot
@@ -200,12 +197,12 @@ test("Did not receive spot in lottery signup", async ({ page, request }) => {
 
   // Check new assigment message
   await expect(page.getByTestId("notification-bar")).toContainText(
-    "Spots for program items at 19:00 were randomized. Unfortunately, we couldn't fit you into any of your chosen program items.",
+    /Spots for program items at .* were randomized. Unfortunately, we couldn't fit you into any of your chosen program items./,
   );
 
   await page.getByRole("link", { name: "Show all notifications" }).click();
   await expect(page.getByTestId("event-log-item")).toContainText(
-    "Spots for program items at 19:00 were randomized. Unfortunately, we couldn't fit you into any of your chosen program items.",
+    /Spots for program items at .* were randomized. Unfortunately, we couldn't fit you into any of your chosen program items./,
   );
 
   // Check lottery signup is still present
@@ -229,8 +226,14 @@ test("Receive spot in lottery signup, with multiple lottery program types", asyn
     .add(testProgramItem.mins, "minutes")
     .toISOString();
 
-  const workshopTitle = "test workshop";
-  const rpgTitle = "test rpg";
+  const firstProgramItemTitle = "first program item";
+  const secondProgramItemTitle = "second program item";
+
+  const twoPhaseSignupProgramTypes = config.event().twoPhaseSignupProgramTypes;
+  const twoProgramTypes =
+    twoPhaseSignupProgramTypes.length === 1
+      ? [twoPhaseSignupProgramTypes[0], twoPhaseSignupProgramTypes[0]]
+      : [twoPhaseSignupProgramTypes[0], twoPhaseSignupProgramTypes[1]];
 
   await populateDb(request, {
     clean: true,
@@ -240,8 +243,8 @@ test("Receive spot in lottery signup, with multiple lottery program types", asyn
   await addProgramItems(request, [
     {
       programItemId: testProgramItem.programItemId,
-      programType: ProgramType.WORKSHOP,
-      title: workshopTitle,
+      programType: twoProgramTypes[0],
+      title: firstProgramItemTitle,
       startTime,
       endTime,
       // Adjust min/max so user can get the spot
@@ -250,9 +253,10 @@ test("Receive spot in lottery signup, with multiple lottery program types", asyn
     },
     {
       programItemId: testProgramItem2.programItemId,
-      programType: ProgramType.TABLETOP_RPG,
-      title: rpgTitle,
+      programType: twoProgramTypes[1],
+      title: secondProgramItemTitle,
       startTime,
+      endTime,
       // Adjust min/max so user can get the spot
       minAttendance: 1,
       maxAttendance: 1,
@@ -272,27 +276,27 @@ test("Receive spot in lottery signup, with multiple lottery program types", asyn
 
   await page.click("data-testid=program-list-tab");
 
-  const workshopProgramItem = page
+  const firstProgramItem = page
     .locator('[data-testid="program-item-container"]')
     .filter({
       has: page.getByTestId("program-item-title"),
-      hasText: workshopTitle,
+      hasText: firstProgramItemTitle,
     });
-  await workshopProgramItem
+  await firstProgramItem
     .getByRole("button", { name: /lottery sign-up/i })
     .click();
-  await workshopProgramItem.getByRole("button", { name: /confirm/i }).click();
+  await firstProgramItem.getByRole("button", { name: /confirm/i }).click();
 
-  const rpgProgramItem = page
+  const secondProgramItem = page
     .locator('[data-testid="program-item-container"]')
     .filter({
       has: page.getByTestId("program-item-title"),
-      hasText: rpgTitle,
+      hasText: secondProgramItemTitle,
     });
-  await rpgProgramItem
+  await secondProgramItem
     .getByRole("button", { name: /lottery sign-up/i })
     .click();
-  await rpgProgramItem.getByRole("button", { name: /confirm/i }).click();
+  await secondProgramItem.getByRole("button", { name: /confirm/i }).click();
 
   // Do assignment on background
   await postAssignment(request, startTime);
@@ -300,11 +304,11 @@ test("Receive spot in lottery signup, with multiple lottery program types", asyn
 
   // Check new assigment message
   await expect(page.getByTestId("notification-bar")).toContainText(
-    `You were assigned to the workshop ${workshopTitle}.`,
+    new RegExp(`You were assigned to the .* ${firstProgramItemTitle}\\.`),
   );
 
   await page.getByRole("link", { name: "Show all notifications" }).click();
   await expect(page.getByTestId("event-log-item")).toContainText(
-    `You were assigned to the workshop ${workshopTitle}.`,
+    new RegExp(`You were assigned to the .* ${firstProgramItemTitle}\\.`),
   );
 });

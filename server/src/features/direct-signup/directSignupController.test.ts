@@ -33,7 +33,11 @@ import {
 } from "shared/types/api/myProgramItems";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 import { config } from "shared/config";
-import { SignupType, State } from "shared/types/models/programItem";
+import {
+  ProgramType,
+  SignupType,
+  State,
+} from "shared/types/models/programItem";
 
 let server: Server;
 
@@ -44,6 +48,7 @@ beforeEach(async () => {
     eventStartTime: dayjs(testProgramItem.startTime)
       .subtract(config.event().preSignupStart, "minutes")
       .toISOString(),
+    twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
   });
   server = await startServer({
     dbConnString: globalThis.__MONGO_URI__,

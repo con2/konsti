@@ -13,13 +13,13 @@ import { initializeDayjs } from "shared/utils/initializeDayjs";
 const updatePastEventProgramItems = async (): Promise<void> => {
   const { eventStartTime } = config.event();
 
-  // Ropecon 2024 start time
-  const oldStartTime = "2024-07-19T12:00:00Z";
+  // Tracon 2024 start time
+  const oldStartTime = "2024-09-06T05:00:00Z";
 
   const rawData = fs.readFileSync(
     path.join(
       __dirname,
-      "../../features/statistics/datafiles/ropecon/2024/program-items.json",
+      "../../features/statistics/datafiles/tracon/2024/program-items.json",
     ),
     "utf8",
   );

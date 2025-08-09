@@ -22,6 +22,7 @@ export const getLotterySignupStartTime = (startTime: string): Dayjs => {
   if (startTimeIsTooEarly) {
     return timezoneStartTime.subtract(1, "day").hour(22);
   }
+
   return timezoneStartTime;
 };
 

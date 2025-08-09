@@ -83,6 +83,7 @@ export const storeLotterySignup = async ({
   const lotterySignupStartTime = getLotterySignupStartTime(
     programItem.startTime,
   );
+
   if (timeNow.isBefore(lotterySignupStartTime)) {
     const message = `Signup for program item ${programItemId} not open yet, opens ${lotterySignupStartTime.toISOString()}`;
     logger.warn(message);

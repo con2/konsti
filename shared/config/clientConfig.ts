@@ -25,11 +25,9 @@ export const clientConfig: ClientConfig = {
   showAnnouncement: false,
   programTypeSelectOptions: [
     "all",
+    ProgramType.FLEAMARKET,
     ProgramType.TABLETOP_RPG,
     ProgramType.LARP,
-    ProgramType.WORKSHOP,
-    ProgramType.TOURNAMENT,
-    ProgramType.OTHER,
   ],
   activeLanguages: [Language.FINNISH, Language.ENGLISH],
 

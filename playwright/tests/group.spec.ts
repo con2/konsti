@@ -27,6 +27,7 @@ test("Can create and join a group and receive a shared lottery result", async ({
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
     {
+      programType: config.event().twoPhaseSignupProgramTypes[0],
       startTime,
       endTime,
       // Adjust min/max so group will get the spot
@@ -113,7 +114,7 @@ test("Can create and join a group and receive a shared lottery result", async ({
 
   // Check new assigment message
   await expect(page.getByTestId("notification-bar")).toContainText(
-    "You were assigned to the roleplaying game Test program item.",
+    /You were assigned to the .* Test program item./,
   );
 
   // Logout and login with group creator user
@@ -124,6 +125,6 @@ test("Can create and join a group and receive a shared lottery result", async ({
 
   // Check new assigment message
   await expect(page.getByTestId("notification-bar")).toContainText(
-    "You were assigned to the roleplaying game Test program item.",
+    /You were assigned to the .* Test program item./,
   );
 });

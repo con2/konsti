@@ -26,7 +26,8 @@
     "styles": [],
     "tags": [],
     "title": "Kirpputorin ajanvaraus PERJANTAI – Saapuminen kello 15:00–15:30",
-    "updatedAt": "2024-09-09T17:10:00.457Z"
+    "updatedAt": "2024-09-09T17:10:00.457Z",
+    "state": "accepted"
   },
   {
     "programItemId": "kirpputorin-ajanvaraus-perjantai-1530",
@@ -55,7 +56,8 @@
     "styles": [],
     "tags": [],
     "title": "Kirpputorin ajanvaraus PERJANTAI – Saapuminen kello 15:30–16:00",
-    "updatedAt": "2024-09-09T17:10:00.457Z"
+    "updatedAt": "2024-09-09T17:10:00.457Z",
+    "state": "accepted"
   },
   {
     "programItemId": "kirpputorin-ajanvaraus-perjantai-1600",
@@ -84,7 +86,8 @@
     "styles": [],
     "tags": [],
     "title": "Kirpputorin ajanvaraus PERJANTAI – Saapuminen kello 16:00–16:30",
-    "updatedAt": "2024-09-09T17:10:00.457Z"
+    "updatedAt": "2024-09-09T17:10:00.457Z",
+    "state": "accepted"
   },
   {
     "programItemId": "kirpputorin-ajanvaraus-perjantai-1630",
@@ -113,7 +116,8 @@
     "styles": [],
     "tags": [],
     "title": "Kirpputorin ajanvaraus PERJANTAI – Saapuminen kello 16:30–17:00",
-    "updatedAt": "2024-09-09T17:10:00.457Z"
+    "updatedAt": "2024-09-09T17:10:00.457Z",
+    "state": "accepted"
   },
   {
     "programItemId": "kirpputorin-ajanvaraus-perjantai-1700",
@@ -142,7 +146,8 @@
     "styles": [],
     "tags": [],
     "title": "Kirpputorin ajanvaraus PERJANTAI – Saapuminen kello 17:00–17:30",
-    "updatedAt": "2024-09-09T17:10:00.457Z"
+    "updatedAt": "2024-09-09T17:10:00.457Z",
+    "state": "accepted"
   },
   {
     "programItemId": "kirpputorin-ajanvaraus-perjantai-1730",
@@ -171,7 +176,8 @@
     "styles": [],
     "tags": [],
     "title": "Kirpputorin ajanvaraus PERJANTAI – Saapuminen kello 17:30–18:00",
-    "updatedAt": "2024-09-09T17:10:00.457Z"
+    "updatedAt": "2024-09-09T17:10:00.457Z",
+    "state": "accepted"
   },
   {
     "programItemId": "kirpputorin-ajanvaraus-perjantai-1800",
@@ -200,7 +206,8 @@
     "styles": [],
     "tags": [],
     "title": "Kirpputorin ajanvaraus PERJANTAI – Saapuminen kello 18:00–18:30",
-    "updatedAt": "2024-09-09T17:10:00.457Z"
+    "updatedAt": "2024-09-09T17:10:00.457Z",
+    "state": "accepted"
   },
   {
     "programItemId": "kirpputorin-ajanvaraus-perjantai-1830",
@@ -229,7 +236,8 @@
     "styles": [],
     "tags": [],
     "title": "Kirpputorin ajanvaraus PERJANTAI – Saapuminen kello 18:30–19:00",
-    "updatedAt": "2024-09-09T17:10:00.457Z"
+    "updatedAt": "2024-09-09T17:10:00.457Z",
+    "state": "accepted"
   },
   {
     "programItemId": "kirpputorin-ajanvaraus-perjantai-1900",
@@ -258,7 +266,8 @@
     "styles": [],
     "tags": [],
     "title": "Kirpputorin ajanvaraus PERJANTAI – Saapuminen kello 19:00–19:30",
-    "updatedAt": "2024-09-09T17:10:00.457Z"
+    "updatedAt": "2024-09-09T17:10:00.457Z",
+    "state": "accepted"
   },
   {
     "programItemId": "kirpputorin-ajanvaraus-perjantai-1930",
@@ -287,7 +296,8 @@
     "styles": [],
     "tags": [],
     "title": "Kirpputorin ajanvaraus PERJANTAI – Saapuminen kello 19:30–20:00",
-    "updatedAt": "2024-09-09T17:10:00.457Z"
+    "updatedAt": "2024-09-09T17:10:00.457Z",
+    "state": "accepted"
   },
   {
     "programItemId": "kirpputorin-ajanvaraus-perjantai-2000",
@@ -316,7 +326,8 @@
     "styles": [],
     "tags": [],
     "title": "Kirpputorin ajanvaraus PERJANTAI – Saapuminen kello 20:00–20:30",
-    "updatedAt": "2024-09-09T17:10:00.457Z"
+    "updatedAt": "2024-09-09T17:10:00.457Z",
+    "state": "accepted"
   },
   {
     "programItemId": "kirpputorin-ajanvaraus-perjantai-2030",
@@ -345,7 +356,8 @@
     "styles": [],
     "tags": [],
     "title": "Kirpputorin ajanvaraus PERJANTAI – Saapuminen kello 20:30–21:00",
-    "updatedAt": "2024-09-09T17:10:00.457Z"
+    "updatedAt": "2024-09-09T17:10:00.457Z",
+    "state": "accepted"
   },
   {
     "programItemId": "kirpputorin-ajanvaraus-perjantai-2100",
@@ -374,7 +386,8 @@
     "styles": [],
     "tags": [],
     "title": "Kirpputorin ajanvaraus PERJANTAI – Saapuminen kello 21:00–21:30",
-    "updatedAt": "2024-09-09T17:10:00.457Z"
+    "updatedAt": "2024-09-09T17:10:00.457Z",
+    "state": "accepted"
   },
   {
     "programItemId": "olipa-kerran-sumuinen-yo",
@@ -403,7 +416,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Olipa kerran sumuinen yö",
-    "updatedAt": "2024-09-09T17:10:00.457Z"
+    "updatedAt": "2024-09-09T17:10:00.457Z",
+    "state": "accepted"
   },
   {
     "programItemId": "meidan-loistava-turmio",
@@ -432,7 +446,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Meidän loistava turmiomme",
-    "updatedAt": "2024-09-09T17:10:00.457Z"
+    "updatedAt": "2024-09-09T17:10:00.457Z",
+    "state": "accepted"
   },
   {
     "programItemId": "alavilla-mailla",
@@ -461,7 +476,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Alavilla mailla",
-    "updatedAt": "2024-09-09T17:10:00.457Z"
+    "updatedAt": "2024-09-09T17:10:00.457Z",
+    "state": "accepted"
   },
   {
     "programItemId": "alien-fallout",
@@ -490,7 +506,8 @@
     "styles": [],
     "tags": [],
     "title": "ALIEN: Fallout",
-    "updatedAt": "2024-09-09T17:10:00.457Z"
+    "updatedAt": "2024-09-09T17:10:00.457Z",
+    "state": "accepted"
   },
   {
     "programItemId": "viimeinen-liekki-the-flame-endling",
@@ -519,7 +536,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Viimeinen Liekki - The Flame Endling",
-    "updatedAt": "2024-09-09T17:10:00.457Z"
+    "updatedAt": "2024-09-09T17:10:00.457Z",
+    "state": "accepted"
   },
   {
     "programItemId": "lantern-for-shadow-subconscious-tajunnan-varjojen-lyhty",
@@ -548,7 +566,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Lantern For Shadow Subconscious - Tajunnan Varjojen Lyhty",
-    "updatedAt": "2024-09-09T17:10:00.457Z"
+    "updatedAt": "2024-09-09T17:10:00.457Z",
+    "state": "accepted"
   },
   {
     "programItemId": "kriisitunturi",
@@ -577,7 +596,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Kriisitunturi",
-    "updatedAt": "2024-09-09T17:10:00.457Z"
+    "updatedAt": "2024-09-09T17:10:00.457Z",
+    "state": "accepted"
   },
   {
     "programItemId": "v",
@@ -604,9 +624,10 @@
     "signupType": "konsti",
     "startTime": "2024-09-06T17:30:00Z",
     "styles": [],
-    "tags": ["childrenFriendly", "beginnerFriendly"],
+    "tags": ["smallKids", "beginnerFriendly"],
     "title": "Valon Terhon Etsijät - peluutus 1.",
-    "updatedAt": "2024-09-09T17:10:00.457Z"
+    "updatedAt": "2024-09-09T17:10:00.457Z",
+    "state": "accepted"
   },
   {
     "programItemId": "alien-evac",
@@ -635,7 +656,8 @@
     "styles": [],
     "tags": [],
     "title": "ALIEN: EVAC",
-    "updatedAt": "2024-09-09T17:10:00.457Z"
+    "updatedAt": "2024-09-09T17:10:00.457Z",
+    "state": "accepted"
   },
   {
     "programItemId": "kirpputorin-ajanvaraus-lauantai-0930",
@@ -664,7 +686,8 @@
     "styles": [],
     "tags": [],
     "title": "Kirpputorin ajanvaraus LAUANTAI – Saapuminen kello 09:30–10:00",
-    "updatedAt": "2024-09-09T17:10:00.457Z"
+    "updatedAt": "2024-09-09T17:10:00.457Z",
+    "state": "accepted"
   },
   {
     "programItemId": "kirpputorin-ajanvaraus-lauantai-1000",
@@ -693,7 +716,8 @@
     "styles": [],
     "tags": [],
     "title": "Kirpputorin ajanvaraus LAUANTAI – Saapuminen kello 10:00–10:30",
-    "updatedAt": "2024-09-09T17:10:00.457Z"
+    "updatedAt": "2024-09-09T17:10:00.457Z",
+    "state": "accepted"
   },
   {
     "programItemId": "kirpputorin-ajanvaraus-lauantai-1030",
@@ -722,7 +746,8 @@
     "styles": [],
     "tags": [],
     "title": "Kirpputorin ajanvaraus LAUANTAI – Saapuminen kello 10:30–11:00",
-    "updatedAt": "2024-09-09T17:10:00.457Z"
+    "updatedAt": "2024-09-09T17:10:00.457Z",
+    "state": "accepted"
   },
   {
     "programItemId": "kirpputorin-ajanvaraus-lauantai-1100",
@@ -751,7 +776,8 @@
     "styles": [],
     "tags": [],
     "title": "Kirpputorin ajanvaraus LAUANTAI – Saapuminen kello 11:00–11:30",
-    "updatedAt": "2024-09-09T17:10:00.457Z"
+    "updatedAt": "2024-09-09T17:10:00.457Z",
+    "state": "accepted"
   },
   {
     "programItemId": "kirpputorin-ajanvaraus-lauantai-1130",
@@ -780,7 +806,8 @@
     "styles": [],
     "tags": [],
     "title": "Kirpputorin ajanvaraus LAUANTAI – Saapuminen kello 11:30–12:00",
-    "updatedAt": "2024-09-09T17:10:00.457Z"
+    "updatedAt": "2024-09-09T17:10:00.457Z",
+    "state": "accepted"
   },
   {
     "programItemId": "kirpputorin-ajanvaraus-lauantai-1200",
@@ -809,7 +836,8 @@
     "styles": [],
     "tags": [],
     "title": "Kirpputorin ajanvaraus LAUANTAI – Saapuminen kello 12:00–12:30",
-    "updatedAt": "2024-09-09T17:10:00.457Z"
+    "updatedAt": "2024-09-09T17:10:00.457Z",
+    "state": "accepted"
   },
   {
     "programItemId": "kirpputorin-ajanvaraus-lauantai-1230",
@@ -838,7 +866,8 @@
     "styles": [],
     "tags": [],
     "title": "Kirpputorin ajanvaraus LAUANTAI – Saapuminen kello 12:30–13:00",
-    "updatedAt": "2024-09-09T17:10:00.457Z"
+    "updatedAt": "2024-09-09T17:10:00.457Z",
+    "state": "accepted"
   },
   {
     "programItemId": "kirpputorin-ajanvaraus-lauantai-1300",
@@ -867,7 +896,8 @@
     "styles": [],
     "tags": [],
     "title": "Kirpputorin ajanvaraus LAUANTAI – Saapuminen kello 13:00–13:30",
-    "updatedAt": "2024-09-09T17:10:00.457Z"
+    "updatedAt": "2024-09-09T17:10:00.457Z",
+    "state": "accepted"
   },
   {
     "programItemId": "apua-metsanpeittoon",
@@ -896,7 +926,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Apua Metsänpeittoon - RootRPG",
-    "updatedAt": "2024-09-09T17:10:00.457Z"
+    "updatedAt": "2024-09-09T17:10:00.457Z",
+    "state": "accepted"
   },
   {
     "programItemId": "toiveet-ja-salaisuudet-dreams-and-secrets",
@@ -925,7 +956,8 @@
     "styles": [],
     "tags": [],
     "title": "Toiveet ja salaisuudet - Dreams and Secrets",
-    "updatedAt": "2024-09-09T17:10:00.457Z"
+    "updatedAt": "2024-09-09T17:10:00.457Z",
+    "state": "accepted"
   },
   {
     "programItemId": "spire-sammuttakaa-aurinko",
@@ -954,7 +986,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Spire - Sammuttakaa Aurinko",
-    "updatedAt": "2024-09-09T17:10:00.457Z"
+    "updatedAt": "2024-09-09T17:10:00.457Z",
+    "state": "accepted"
   },
   {
     "programItemId": "ja-rohan-vastaa-kutsuun",
@@ -983,7 +1016,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Ja Rohan vastaa kutsuun",
-    "updatedAt": "2024-09-09T17:10:00.457Z"
+    "updatedAt": "2024-09-09T17:10:00.457Z",
+    "state": "accepted"
   },
   {
     "programItemId": "murheen-valama-vankila",
@@ -1010,9 +1044,10 @@
     "signupType": "konsti",
     "startTime": "2024-09-07T08:30:00Z",
     "styles": [],
-    "tags": ["forExperiencedParticipants"],
+    "tags": [],
     "title": "Murheen valama vankila",
-    "updatedAt": "2024-09-09T17:10:00.457Z"
+    "updatedAt": "2024-09-09T17:10:00.457Z",
+    "state": "accepted"
   },
   {
     "programItemId": "valon-terhon-etsijat",
@@ -1039,9 +1074,10 @@
     "signupType": "konsti",
     "startTime": "2024-09-07T09:30:00Z",
     "styles": [],
-    "tags": ["childrenFriendly", "beginnerFriendly"],
+    "tags": ["smallKids", "beginnerFriendly"],
     "title": "Valon Terhon Etsijät - peluutus 2.",
-    "updatedAt": "2024-09-09T17:10:00.457Z"
+    "updatedAt": "2024-09-09T17:10:00.457Z",
+    "state": "accepted"
   },
   {
     "programItemId": "arsenic-lies",
@@ -1070,7 +1106,8 @@
     "styles": [],
     "tags": [],
     "title": "Arsenic & Lies",
-    "updatedAt": "2024-09-09T17:10:00.457Z"
+    "updatedAt": "2024-09-09T17:10:00.457Z",
+    "state": "accepted"
   },
   {
     "programItemId": "mita-kellarista-loytyy",
@@ -1099,7 +1136,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Mitä kellarista löytyy?",
-    "updatedAt": "2024-09-09T17:10:00.457Z"
+    "updatedAt": "2024-09-09T17:10:00.457Z",
+    "state": "accepted"
   },
   {
     "programItemId": "the-beast-of-angmar",
@@ -1128,7 +1166,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "The Beast of Angmar",
-    "updatedAt": "2024-09-09T17:10:00.457Z"
+    "updatedAt": "2024-09-09T17:10:00.457Z",
+    "state": "accepted"
   },
   {
     "programItemId": "tyhjyyden-meren-hirviot",
@@ -1157,7 +1196,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Tyhjyyden meren hirviöt",
-    "updatedAt": "2024-09-09T17:10:00.457Z"
+    "updatedAt": "2024-09-09T17:10:00.457Z",
+    "state": "accepted"
   },
   {
     "programItemId": "signal-",
@@ -1184,9 +1224,10 @@
     "signupType": "konsti",
     "startTime": "2024-09-07T13:30:00Z",
     "styles": [],
-    "tags": ["forExperiencedParticipants"],
+    "tags": [],
     "title": "Signal: ¿?¿?¿?¿?¿?¿",
-    "updatedAt": "2024-09-09T17:10:00.457Z"
+    "updatedAt": "2024-09-09T17:10:00.457Z",
+    "state": "accepted"
   },
   {
     "programItemId": "tokyo-noir-murhamysteeri-shinjukussa",
@@ -1215,7 +1256,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Tokyo Noir: Sikarinkatkuista",
-    "updatedAt": "2024-09-09T17:10:00.457Z"
+    "updatedAt": "2024-09-09T17:10:00.457Z",
+    "state": "accepted"
   },
   {
     "programItemId": "kusinen-homma",
@@ -1244,7 +1286,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Kusinen Homma",
-    "updatedAt": "2024-09-09T17:10:00.457Z"
+    "updatedAt": "2024-09-09T17:10:00.457Z",
+    "state": "accepted"
   },
   {
     "programItemId": "ristipisto",
@@ -1273,7 +1316,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Ristipisto",
-    "updatedAt": "2024-09-09T17:10:00.457Z"
+    "updatedAt": "2024-09-09T17:10:00.457Z",
+    "state": "accepted"
   },
   {
     "programItemId": "larp-telenovela-haat",
@@ -1297,12 +1341,13 @@
     "programType": "larp",
     "revolvingDoor": false,
     "shortDescription": "Tule toteuttamaan elämäsi draamalaamaisimpaa hääjuhlaa, jossa jokainen osallistuja on oman elämänsä äänekäs päähenkilö. Oletko aina halunnut kokeilla LARPpaamista, mutta ilmoittautuminen on pelottavaa, ihmisiä on paljon ja se voi olla kallistakin? ",
-    "signupType": "none",
+    "signupType": "notRequired",
     "startTime": "2024-09-07T16:00:00Z",
     "styles": [],
     "tags": [],
     "title": "LARP Telenovela: Häät",
-    "updatedAt": "2024-09-09T17:10:00.457Z"
+    "updatedAt": "2024-09-09T17:10:00.457Z",
+    "state": "accepted"
   },
   {
     "programItemId": "circumstances-zombie-apocalypse-co-op",
@@ -1331,7 +1376,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Circumstances – Zombie Apocalypse (co-op)",
-    "updatedAt": "2024-09-09T17:10:00.457Z"
+    "updatedAt": "2024-09-09T17:10:00.457Z",
+    "state": "accepted"
   },
   {
     "programItemId": "lapimurto",
@@ -1360,7 +1406,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Läpimurto",
-    "updatedAt": "2024-09-09T17:10:00.457Z"
+    "updatedAt": "2024-09-09T17:10:00.457Z",
+    "state": "accepted"
   },
   {
     "programItemId": "velho-eevertin-omenapiirakka",
@@ -1387,9 +1434,10 @@
     "signupType": "konsti",
     "startTime": "2024-09-08T08:00:00Z",
     "styles": [],
-    "tags": ["childrenFriendly", "beginnerFriendly"],
+    "tags": ["smallKids", "beginnerFriendly"],
     "title": "Velho Eevertin omenapiirakka",
-    "updatedAt": "2024-09-09T17:10:00.457Z"
+    "updatedAt": "2024-09-09T17:10:00.457Z",
+    "state": "accepted"
   },
   {
     "programItemId": "ryuutama-luvattomuuksia-lingmeilissa",
@@ -1418,7 +1466,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Ryuutama - Luvattomuuksia Lingmeilissä",
-    "updatedAt": "2024-09-09T17:10:00.457Z"
+    "updatedAt": "2024-09-09T17:10:00.457Z",
+    "state": "accepted"
   },
   {
     "programItemId": "seestunturin-salaisuus",
@@ -1445,9 +1494,10 @@
     "signupType": "konsti",
     "startTime": "2024-09-08T08:30:00Z",
     "styles": [],
-    "tags": ["forExperiencedParticipants"],
+    "tags": [],
     "title": "Seestunturin salaisuus",
-    "updatedAt": "2024-09-09T17:10:00.457Z"
+    "updatedAt": "2024-09-09T17:10:00.457Z",
+    "state": "accepted"
   },
   {
     "programItemId": "pathfinder-society-scenario-6-02-rain-falls-on-the-mountain-of-sea-and-sky",
@@ -1476,7 +1526,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Pathfinder Society Scenario #6-02: Rain Falls on the Mountain of Sea and Sky",
-    "updatedAt": "2024-09-09T17:10:00.457Z"
+    "updatedAt": "2024-09-09T17:10:00.457Z",
+    "state": "accepted"
   },
   {
     "programItemId": "circumstances-zombie-apocalypse-pahispelautus",
@@ -1505,7 +1556,8 @@
     "styles": [],
     "tags": ["beginnerFriendly"],
     "title": "Circumstances – Zombie Apocalypse (pahispelautus)",
-    "updatedAt": "2024-09-09T17:10:00.457Z"
+    "updatedAt": "2024-09-09T17:10:00.457Z",
+    "state": "accepted"
   },
   {
     "programItemId": "muistojen-tanssi-larppi",
@@ -1534,6 +1586,7 @@
     "styles": [],
     "tags": [],
     "title": "Muistojen tanssi -larppi",
-    "updatedAt": "2024-09-09T17:10:00.457Z"
+    "updatedAt": "2024-09-09T17:10:00.457Z",
+    "state": "accepted"
   }
 ]
