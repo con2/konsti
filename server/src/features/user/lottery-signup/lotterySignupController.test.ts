@@ -32,6 +32,7 @@ beforeEach(async () => {
     eventStartTime: dayjs(testProgramItem.startTime)
       .subtract(config.event().preSignupStart, "minutes")
       .toISOString(),
+    fixedLotterySignupTime: null,
   });
   server = await startServer({
     dbConnString: globalThis.__MONGO_URI__,

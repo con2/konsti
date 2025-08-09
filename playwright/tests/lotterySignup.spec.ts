@@ -29,6 +29,7 @@ test("Add lottery signup", async ({ page, request }) => {
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
     {
+      programType: config.event().twoPhaseSignupProgramTypes[0],
       startTime,
       endTime,
     },
@@ -44,13 +45,8 @@ test("Add lottery signup", async ({ page, request }) => {
 
   await page.goto("/");
 
-  // Navigate to program list tab and select RPG program type
+  // Navigate to program list tab
   await page.click("data-testid=program-list-tab");
-  await page
-    .getByRole("combobox", {
-      name: /program type/i,
-    })
-    .selectOption("Tabletop RPG");
 
   // Lottery signup to first program item
   await page.waitForSelector("data-testid=program-item-container");
@@ -97,6 +93,7 @@ test("Receive spot in lottery signup", async ({ page, request }) => {
   await addUser(request, "test1");
   await addProgramItems(request, [
     {
+      programType: config.event().twoPhaseSignupProgramTypes[0],
       startTime,
       endTime,
       // Adjust min/max so user will get the spot
@@ -132,12 +129,12 @@ test("Receive spot in lottery signup", async ({ page, request }) => {
 
   // Check new assigment message
   await expect(page.getByTestId("notification-bar")).toContainText(
-    "You were assigned to the roleplaying game Test program item.",
+    /You were assigned to the .* Test program item./,
   );
 
   await page.getByRole("link", { name: "Show all notifications" }).click();
   await expect(page.getByTestId("event-log-item")).toContainText(
-    "You were assigned to the roleplaying game Test program item.",
+    /You were assigned to the .* Test program item./,
   );
 
   // Check lottery signup is still present
@@ -165,6 +162,7 @@ test("Did not receive spot in lottery signup", async ({ page, request }) => {
   await addUser(request, "test1");
   await addProgramItems(request, [
     {
+      programType: config.event().twoPhaseSignupProgramTypes[0],
       startTime,
       endTime,
       // Adjust min/max so user cannot get the spot
@@ -200,12 +198,12 @@ test("Did not receive spot in lottery signup", async ({ page, request }) => {
 
   // Check new assigment message
   await expect(page.getByTestId("notification-bar")).toContainText(
-    "Spots for program items at 19:00 were randomized. Unfortunately, we couldn't fit you into any of your chosen program items.",
+    /Spots for program items at .* were randomized. Unfortunately, we couldn't fit you into any of your chosen program items./,
   );
 
   await page.getByRole("link", { name: "Show all notifications" }).click();
   await expect(page.getByTestId("event-log-item")).toContainText(
-    "Spots for program items at 19:00 were randomized. Unfortunately, we couldn't fit you into any of your chosen program items.",
+    /Spots for program items at .* were randomized. Unfortunately, we couldn't fit you into any of your chosen program items./,
   );
 
   // Check lottery signup is still present
@@ -218,6 +216,7 @@ test("Did not receive spot in lottery signup", async ({ page, request }) => {
 });
 
 // TODO: Enable this - requires figuring how different configs are passed for playwright tests
+// TODO: Test assumes rpg and workshop use lottery but this might not me the case in cofing
 test.skip("Receive spot in lottery signup, with multiple lottery program types", async ({
   page,
   request,
