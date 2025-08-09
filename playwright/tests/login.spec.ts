@@ -2,14 +2,17 @@ import { test, expect } from "@playwright/test";
 import {
   addProgramItems,
   populateDb,
+  postSettings,
   postTestSettings,
 } from "playwright/playwrightUtils";
+import { LoginProvider } from "shared/config/eventConfigTypes";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { ProgramType } from "shared/types/models/programItem";
 
 test("Admin login", async ({ page, request }) => {
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request);
+  await postSettings(request, { loginProvider: LoginProvider.LOCAL });
   await postTestSettings(request, {
     testTime: testProgramItem.startTime,
   });
@@ -38,8 +41,9 @@ test("Admin login", async ({ page, request }) => {
 });
 
 test("User login", async ({ page, request }) => {
-  await populateDb(request, { clean: true, users: true });
+  await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request);
+  await postSettings(request, { loginProvider: LoginProvider.LOCAL });
   await postTestSettings(request, {
     testTime: testProgramItem.startTime,
   });
@@ -68,12 +72,13 @@ test("User login", async ({ page, request }) => {
 });
 
 test("Login redirect back to program item", async ({ page, request }) => {
-  await populateDb(request, { clean: true, users: true });
+  await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
     {
       programType: ProgramType.TABLETOP_RPG,
     },
   ]);
+  await postSettings(request, { loginProvider: LoginProvider.LOCAL });
   await postTestSettings(request, {
     testTime: testProgramItem.startTime,
   });
