@@ -215,9 +215,7 @@ test("Did not receive spot in lottery signup", async ({ page, request }) => {
   );
 });
 
-// TODO: Enable this - requires figuring how different configs are passed for playwright tests
-// TODO: Test assumes rpg and workshop use lottery but this might not me the case in cofing
-test.skip("Receive spot in lottery signup, with multiple lottery program types", async ({
+test("Receive spot in lottery signup, with multiple lottery program types", async ({
   page,
   request,
 }) => {
@@ -229,8 +227,14 @@ test.skip("Receive spot in lottery signup, with multiple lottery program types",
     .add(testProgramItem.mins, "minutes")
     .toISOString();
 
-  const workshopTitle = "test workshop";
-  const rpgTitle = "test rpg";
+  const firstProgramItemTitle = "first program item";
+  const secondProgramItemTitle = "second program item";
+
+  const twoPhaseSignupProgramTypes = config.event().twoPhaseSignupProgramTypes;
+  const twoProgramTypes =
+    twoPhaseSignupProgramTypes.length === 1
+      ? [twoPhaseSignupProgramTypes[0], twoPhaseSignupProgramTypes[0]]
+      : [twoPhaseSignupProgramTypes[0], twoPhaseSignupProgramTypes[1]];
 
   await populateDb(request, {
     clean: true,
@@ -240,8 +244,8 @@ test.skip("Receive spot in lottery signup, with multiple lottery program types",
   await addProgramItems(request, [
     {
       programItemId: testProgramItem.programItemId,
-      programType: ProgramType.WORKSHOP,
-      title: workshopTitle,
+      programType: twoProgramTypes[0],
+      title: firstProgramItemTitle,
       startTime,
       endTime,
       // Adjust min/max so user can get the spot
@@ -250,9 +254,10 @@ test.skip("Receive spot in lottery signup, with multiple lottery program types",
     },
     {
       programItemId: testProgramItem2.programItemId,
-      programType: ProgramType.TABLETOP_RPG,
-      title: rpgTitle,
+      programType: twoProgramTypes[1],
+      title: secondProgramItemTitle,
       startTime,
+      endTime,
       // Adjust min/max so user can get the spot
       minAttendance: 1,
       maxAttendance: 1,
@@ -272,27 +277,27 @@ test.skip("Receive spot in lottery signup, with multiple lottery program types",
 
   await page.click("data-testid=program-list-tab");
 
-  const workshopProgramItem = page
+  const firstProgramItem = page
     .locator('[data-testid="program-item-container"]')
     .filter({
       has: page.getByTestId("program-item-title"),
-      hasText: workshopTitle,
+      hasText: firstProgramItemTitle,
     });
-  await workshopProgramItem
+  await firstProgramItem
     .getByRole("button", { name: /lottery sign-up/i })
     .click();
-  await workshopProgramItem.getByRole("button", { name: /confirm/i }).click();
+  await firstProgramItem.getByRole("button", { name: /confirm/i }).click();
 
-  const rpgProgramItem = page
+  const secondProgramItem = page
     .locator('[data-testid="program-item-container"]')
     .filter({
       has: page.getByTestId("program-item-title"),
-      hasText: rpgTitle,
+      hasText: secondProgramItemTitle,
     });
-  await rpgProgramItem
+  await secondProgramItem
     .getByRole("button", { name: /lottery sign-up/i })
     .click();
-  await rpgProgramItem.getByRole("button", { name: /confirm/i }).click();
+  await secondProgramItem.getByRole("button", { name: /confirm/i }).click();
 
   // Do assignment on background
   await postAssignment(request, startTime);
@@ -300,11 +305,11 @@ test.skip("Receive spot in lottery signup, with multiple lottery program types",
 
   // Check new assigment message
   await expect(page.getByTestId("notification-bar")).toContainText(
-    `You were assigned to the workshop ${workshopTitle}.`,
+    new RegExp(`You were assigned to the .* ${firstProgramItemTitle}\\.`),
   );
 
   await page.getByRole("link", { name: "Show all notifications" }).click();
   await expect(page.getByTestId("event-log-item")).toContainText(
-    `You were assigned to the workshop ${workshopTitle}.`,
+    new RegExp(`You were assigned to the .* ${firstProgramItemTitle}\\.`),
   );
 });
