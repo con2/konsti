@@ -2,6 +2,7 @@ import {
   LoginProvider,
   EventSignupStrategy,
 } from "shared/config/eventConfigTypes";
+import { EmailNotificationTrigger } from "shared/types/emailNotification";
 
 export interface ServerConfig {
   port: number;
@@ -37,6 +38,7 @@ export interface ServerConfig {
   logInvalidStartTimes: boolean;
   logMissingScheduleItems: boolean; // If scheduleItems is missing, program item is ignored
   emailNotificationQueueWorkerCount: number;
+  emailNotificationTrigger: EmailNotificationTrigger,
   mailgunURL: string
   mailgunUsername: string
   mailgunAPIKey: string
@@ -88,6 +90,7 @@ const commonConfig = {
   logInvalidStartTimes: false,
   logMissingScheduleItems: false,
   // Email notifications
+  emailNotificationTrigger: EmailNotificationTrigger.BOTH,
   emailNotificationQueueWorkerCount: 1,
   mailgunURL: process.env.MAILGUN_URL ?? "https://api.mailgun.net",
   mailgunUsername: process.env.MAILGUN_USERNAME ?? "",

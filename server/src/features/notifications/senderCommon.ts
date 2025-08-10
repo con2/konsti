@@ -1,5 +1,4 @@
-import { NotificationTask, NotificationTaskType } from "server/utils/notificationQueue"
-import { ProgramItem } from "shared/types/models/programItem"
+import { NotificationTask } from "server/utils/notificationQueue"
 
 export type EmailSendResponse = {
     id?: string,

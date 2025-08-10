@@ -7,6 +7,7 @@ import { config } from "shared/config";
 import { initializeDayjs } from "shared/utils/initializeDayjs";
 import { setupEmailNotificationQueue } from "./utils/notificationQueue";
 import { MailgunSender } from "server/features/notifications/mailgunSender";
+import { EmailNotificationTrigger } from "shared/types/emailNotification";
 
 const startApp = async (): Promise<void> => {
   initializeDayjs();
@@ -38,11 +39,13 @@ const startApp = async (): Promise<void> => {
     logger.info("Cronjobs not started, set ONLY_CRONJOBS to enable cronjobs");
   }
 
-  try {
-    const sender = new MailgunSender()
-    setupEmailNotificationQueue(sender, config.server().emailNotificationQueueWorkerCount);
-  } catch (error) {
-    logger.error("%s", `Failed to initialize notification queue! ${error}`);
+  if (config.server().emailNotificationTrigger !== EmailNotificationTrigger.NONE) {
+    try {
+      const sender = new MailgunSender()
+      setupEmailNotificationQueue(sender, config.server().emailNotificationQueueWorkerCount);
+    } catch (error) {
+      logger.error("%s", `Failed to initialize notification queue! ${error}`);
+    }
   }
 
   process.once("SIGINT", (signal: string) => {
