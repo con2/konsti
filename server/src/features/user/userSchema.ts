@@ -34,6 +34,7 @@ export const UserSchemaDb = z
     lotterySignups: z.array(LotterySignupSchemaDb),
     createdAt: z.date().transform((date) => dayjs(date).toISOString()),
     eventLogItems: z.array(EventLogItemSchemaDb),
+    email: z.string(),
   })
   .strip();
 
@@ -83,6 +84,7 @@ const userSchema = new mongoose.Schema(
     favoriteProgramItemIds: { type: [String], required: true },
     lotterySignups: { type: [lotterySignupSchema], required: true },
     eventLogItems: { type: [eventLogItemSchema], required: true },
+    email: { type: String, required: true },
     createdAt: {
       type: Date,
       get: (value: Date) => new Date(value),

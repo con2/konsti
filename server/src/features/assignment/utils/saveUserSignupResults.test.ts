@@ -191,16 +191,16 @@ test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items for 'startTime
   await queue.drained();
   const messages = sender.getMessages();
   const expectedAcceptedBody = `Hei ${mockUser.username}!
-Olet ollut onnekas ja paasit peliin Test program item
-Pelin alkaa 2019-07-26T14:00:00.000Z.
+Olet ollut onnekas ja paasit ohjelmaan Test program item
+Ohjelma alkaa 2019-07-26T14:00:00.000Z.
 
 Terveisin Konsti.`;
-  const expectedAcceptedSubject = "Sinut on hyvaksytty peliin Test program item";
+  const expectedAcceptedSubject = "Sinut on hyvaksytty ohjelmaan Test program item";
   const expectedRejectedBody = `Hei ${mockUser2.username}!
-Et paassyt peliin 2019-07-26T14:00:00.000Z arvonnassa
+Et paassyt arvonnassa yhteenkaan ohjelmaan johon ilmoittauduit.
 
 Terveisin Konsti.`;
-  const expectedRejectedSubject = "Et paassyt arvonnassa yhteenkaan peliin";
+  const expectedRejectedSubject = "Et paassyt arvonnassa yhteenkaan ohjelmaan";
 
   expect(messages[0].body).toEqual(expectedAcceptedBody)
   expect(messages[0].subject).toEqual(expectedAcceptedSubject)
