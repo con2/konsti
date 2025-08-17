@@ -10,24 +10,24 @@ const getStatistics = (): void => {
   const commander = new Command();
 
   commander
-    .command("users <year> <event>")
+    .command("users <event> <year>")
     .description("Get user statisticss")
-    .action((year: number, event: string) => {
-      getUserStats(year, event);
+    .action((event: string, year: number) => {
+      getUserStats(event, year);
     });
 
   commander
     .command("program-items <year> <event>")
     .description("Get program item statistics")
-    .action((year: number, event: string) => {
-      getProgramItemStats(year, event);
+    .action((event: string, year: number) => {
+      getProgramItemStats(event, year);
     });
 
   commander
     .command("results <year> <event>")
     .description("Get result statistics")
-    .action((year: number, event: string) => {
-      getResultsStats(year, event);
+    .action((event: string, year: number) => {
+      getResultsStats(event, year);
     });
 
   if (process.argv.length < 4) {
