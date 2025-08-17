@@ -9,7 +9,7 @@ import { logger } from "server/utils/logger";
 import { config } from "shared/config";
 import { User } from "shared/types/models/user";
 
-export const getUserStats = (year: number, event: string): void => {
+export const getUserStats = (event: string, year: number): void => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const users: User[] = JSON.parse(
     fs.readFileSync(

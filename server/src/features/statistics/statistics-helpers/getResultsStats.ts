@@ -9,7 +9,7 @@ import { config } from "shared/config";
 import { ResultsCollectionEntry } from "server/types/resultTypes";
 import { ProgramItem } from "shared/types/models/programItem";
 
-export const getResultsStats = (year: number, event: string): void => {
+export const getResultsStats = (event: string, year: number): void => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const results: ResultsCollectionEntry[] = JSON.parse(
     fs.readFileSync(

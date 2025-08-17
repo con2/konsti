@@ -2,29 +2,32 @@ import { Command } from "commander";
 import { getUserStats } from "./statistics-helpers/getUserStats";
 import { getProgramItemStats } from "./statistics-helpers/getProgramItemStats";
 import { getResultsStats } from "./statistics-helpers/getResultsStats";
+import { initializeDayjs } from "shared/utils/initializeDayjs";
 
-const fixData = (): void => {
+const getStatistics = (): void => {
+  initializeDayjs();
+
   const commander = new Command();
 
   commander
-    .command("users <year> <event>")
+    .command("users <event> <year>")
     .description("Get user statisticss")
-    .action((year: number, event: string) => {
-      getUserStats(year, event);
+    .action((event: string, year: number) => {
+      getUserStats(event, year);
     });
 
   commander
     .command("program-items <year> <event>")
     .description("Get program item statistics")
-    .action((year: number, event: string) => {
-      getProgramItemStats(year, event);
+    .action((event: string, year: number) => {
+      getProgramItemStats(event, year);
     });
 
   commander
     .command("results <year> <event>")
     .description("Get result statistics")
-    .action((year: number, event: string) => {
-      getResultsStats(year, event);
+    .action((event: string, year: number) => {
+      getResultsStats(event, year);
     });
 
   if (process.argv.length < 4) {
@@ -34,4 +37,4 @@ const fixData = (): void => {
   commander.parse(process.argv);
 };
 
-fixData();
+getStatistics();

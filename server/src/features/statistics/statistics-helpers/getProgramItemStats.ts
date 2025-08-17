@@ -10,7 +10,7 @@ import { config } from "shared/config";
 import { ProgramItem } from "shared/types/models/programItem";
 import { User } from "shared/types/models/user";
 
-export const getProgramItemStats = (year: number, event: string): void => {
+export const getProgramItemStats = (event: string, year: number): void => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const programItems: ProgramItem[] = JSON.parse(
     fs.readFileSync(
