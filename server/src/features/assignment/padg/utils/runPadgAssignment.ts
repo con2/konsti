@@ -1,5 +1,5 @@
 import eventassigner from "eventassigner-js";
-import { clone, sortBy } from "remeda";
+import { clone, groupBy, shuffle } from "remeda";
 import { getGroups } from "server/features/assignment/utils/getGroups";
 import { getList } from "server/features/assignment/utils/getList";
 import { getEvents } from "server/features/assignment/utils/getEvents";
@@ -28,9 +28,17 @@ import { calculateHappiness } from "server/features/assignment/padg/utils/calcul
 const sortList = (list: ListItem[], i: number): ListItem[] => {
   switch (i) {
     case 0:
-      return sortBy(list, (item) => item.gain);
+      // Sort by gain, randomize between same gain values
+      return Object.values(groupBy(list, (item) => item.gain)) // Group by gain
+        .map((group) => shuffle(group)) // Shuffle each group
+        .sort((a, b) => a[0].gain - b[0].gain) // Sort groups by gain, ascending
+        .flat();
     case 1:
-      return sortBy(list, (item) => item.size);
+      // Sort by group size, randomize between groups of same size
+      return Object.values(groupBy(list, (item) => item.size)) // Group by size
+        .map((group) => shuffle(group)) // Shuffle each group
+        .sort((a, b) => a[0].size - b[0].size) // Sort groups by size, ascending
+        .flat();
     default:
       return list.sort((_a, _b) => 0.5 - Math.random());
   }
