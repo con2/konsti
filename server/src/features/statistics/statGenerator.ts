@@ -2,8 +2,11 @@ import { Command } from "commander";
 import { getUserStats } from "./statistics-helpers/getUserStats";
 import { getProgramItemStats } from "./statistics-helpers/getProgramItemStats";
 import { getResultsStats } from "./statistics-helpers/getResultsStats";
+import { initializeDayjs } from "shared/utils/initializeDayjs";
 
-const fixData = (): void => {
+const getStatistics = (): void => {
+  initializeDayjs();
+
   const commander = new Command();
 
   commander
@@ -34,4 +37,4 @@ const fixData = (): void => {
   commander.parse(process.argv);
 };
 
-fixData();
+getStatistics();
