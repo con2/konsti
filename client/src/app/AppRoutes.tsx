@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { Route, Routes, Navigate } from "react-router";
+import { Navigate, Route, Routes } from "react-router";
 import { useTranslation } from "react-i18next";
 import { IconName } from "@fortawesome/free-solid-svg-icons";
 import { AllProgramItemsView } from "client/views/all-program-items/AllProgramItemsView";
@@ -26,6 +26,7 @@ import { KompassiLoginUsernameForm } from "client/views/login/components/Kompass
 import { KompassiLogoutCallback } from "client/components/KompassiLogoutCallback";
 import { AuthEndpoint } from "shared/constants/apiEndpoints";
 import { AdmissionTicketView } from "client/views/admission-ticket/AdmissionTicketView";
+import { FinalizeRegistration } from "client/views/login/components/FinalizeRegistration";
 
 export enum AppRoute {
   ROOT = "/",
@@ -70,6 +71,9 @@ export const AppRoutes = (): ReactElement => {
   const kompassiId = useAppSelector((state) => state.login.kompassiId);
   const kompassiUsernameAccepted = useAppSelector(
     (state) => state.login.kompassiUsernameAccepted,
+  );
+  const emailNotificationPermitAsked = useAppSelector(
+    (state) => state.login.emailNotificationPermitAsked,
   );
 
   const programTabs = [
@@ -165,17 +169,41 @@ export const AppRoutes = (): ReactElement => {
   }
 
   if (loggedIn) {
-    if (kompassiId !== 0 && !kompassiUsernameAccepted) {
-      return (
-        <Routes>
-          <Route path={AppRoute.LOGOUT} element={<LogoutView />} />
-          <Route path={AppRoute.ANY} element={<KompassiLoginUsernameForm />} />
-          <Route
-            path={AppRoute.KOMPASSI_LOGOUT_CALLBACK}
-            element={<KompassiLogoutCallback />}
-          />
-        </Routes>
-      );
+    if (!isAdminOrHelp(userGroup)) {
+      if (kompassiId !== 0 && !kompassiUsernameAccepted) {
+        return (
+          <Routes>
+            <Route path={AppRoute.LOGOUT} element={<LogoutView />} />
+            <Route
+              path={AppRoute.ANY}
+              element={<KompassiLoginUsernameForm />}
+            />
+            <Route
+              path={AppRoute.KOMPASSI_LOGOUT_CALLBACK}
+              element={<KompassiLogoutCallback />}
+            />
+          </Routes>
+        );
+      } else if (!emailNotificationPermitAsked) {
+        return (
+          <Routes>
+            <Route path={AppRoute.LOGOUT} element={<LogoutView />} />
+            <Route
+              path={AppRoute.ANY}
+              element={
+                <FinalizeRegistration
+                  kompassiUsernameAccepted={kompassiUsernameAccepted}
+                  emailNotificationPermitAsked={emailNotificationPermitAsked}
+                />
+              }
+            />
+            <Route
+              path={AppRoute.KOMPASSI_LOGOUT_CALLBACK}
+              element={<KompassiLogoutCallback />}
+            />
+          </Routes>
+        );
+      }
     }
 
     return (

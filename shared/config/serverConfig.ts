@@ -70,7 +70,7 @@ const commonConfig = {
 
   // Default DB values
   defaultSignupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
-  defaultLoginProvider: LoginProvider.KOMPASSI,
+  defaultLoginProvider: LoginProvider.LOCAL_KOMPASSI,
 
   // Event settings
   padgAssignmentRounds: 5,

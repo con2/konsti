@@ -2,7 +2,7 @@ import express from "express";
 import {
   postKompassiLoginCallback,
   postKompassiLoginRedirect,
-  postKompassiLogoutRedirect,
+  postKompassiLogoutRedirect, postUpdateUserEmailAddress,
   postVerifyKompassiLogin,
 } from "server/features/kompassi-login/kompassiLoginController";
 import { postFeedback } from "server/features/feedback/feedbackController";
@@ -93,6 +93,10 @@ apiRoutes.post(ApiEndpoint.SETTINGS, postSettings);
 apiRoutes.post(ApiEndpoint.DIRECT_SIGNUP, postDirectSignup);
 apiRoutes.post(ApiEndpoint.EVENT_LOG_IS_SEEN, postEventLogItemIsSeen);
 apiRoutes.post(ApiEndpoint.VERIFY_KOMPASSI_LOGIN, postVerifyKompassiLogin);
+apiRoutes.post(
+  ApiEndpoint.UPDATE_USER_EMAIL_ADDRESS,
+  postUpdateUserEmailAddress,
+);
 
 /* GET routes */
 

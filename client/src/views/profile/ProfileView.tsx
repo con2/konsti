@@ -13,6 +13,7 @@ export const ProfileView = (): ReactElement => {
 
   const username = useAppSelector((state) => state.login.username);
   const serial = useAppSelector((state) => state.login.serial);
+  const email = useAppSelector((state) => state.login.email);
 
   const kompassiId = useAppSelector((state) => state.login.kompassiId);
   const isLocalLogin = !kompassiId;
@@ -35,7 +36,7 @@ export const ProfileView = (): ReactElement => {
           {t("button.logout")}
         </StyledButton>
       </UserInfoContainer>
-      {isLocalLogin && <ChangePasswordForm usernameToUpdate={username} />}
+      <ChangePasswordForm isLocalLogin={isLocalLogin} email={email} usernameToUpdate={username} />
     </Container>
   );
 };

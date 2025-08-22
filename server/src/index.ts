@@ -39,10 +39,15 @@ const startApp = async (): Promise<void> => {
     logger.info("Cronjobs not started, set ONLY_CRONJOBS to enable cronjobs");
   }
 
-  if (config.server().emailNotificationTrigger !== EmailNotificationTrigger.NONE) {
+  if (
+    config.server().emailNotificationTrigger !== EmailNotificationTrigger.NONE
+  ) {
     try {
-      const sender = new MailgunSender()
-      setupEmailNotificationQueue(sender, config.server().emailNotificationQueueWorkerCount);
+      const sender = new MailgunSender();
+      setupEmailNotificationQueue(
+        sender,
+        config.server().emailNotificationQueueWorkerCount,
+      );
     } catch (error) {
       logger.error("%s", `Failed to initialize notification queue! ${error}`);
     }

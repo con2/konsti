@@ -4,10 +4,12 @@ import {
   postVerifyKompassiLogin,
   postLogin,
   postSessionRecovery,
+  postUpdateUserEmailAddress,
 } from "client/services/loginServices";
 import { saveSession, clearSession } from "client/utils/localStorage";
 import { AppThunk } from "client/types/reduxTypes";
 import {
+  submitFinalizeLoginAsync,
   submitLoginAsync,
   submitUpdateEventLogItemsAsync,
   submitVerifyKompassiLoginAsync,
@@ -59,6 +61,9 @@ export const submitLogin = (
         eventLogItems: loginResponse.eventLogItems,
         kompassiUsernameAccepted: loginResponse.kompassiUsernameAccepted,
         kompassiId: loginResponse.kompassiId,
+        email: loginResponse.email,
+        emailNotificationPermitAsked:
+          loginResponse.emailNotificationPermitAsked,
       }),
     );
 
@@ -121,6 +126,8 @@ export const submitSessionRecovery = (
       eventLogItems: loginResponse.eventLogItems,
       kompassiUsernameAccepted: loginResponse.kompassiUsernameAccepted,
       kompassiId: loginResponse.kompassiId,
+      email: loginResponse.email,
+      emailNotificationPermitAsked: loginResponse.emailNotificationPermitAsked,
     };
 
     if (!isDeepEqual(state.login, updatedLogin)) {
@@ -192,6 +199,9 @@ export const submitKompassiLogin = (
         eventLogItems: loginResponse.eventLogItems,
         kompassiUsernameAccepted: loginResponse.kompassiUsernameAccepted,
         kompassiId: loginResponse.kompassiId,
+        email: loginResponse.email,
+        emailNotificationPermitAsked:
+          loginResponse.emailNotificationPermitAsked,
       }),
     );
 
@@ -210,6 +220,10 @@ export const submitKompassiLogin = (
 
 export enum KompassiVerifyErrorMessage {
   USERNAME_TAKEN = "error.usernameTaken",
+  UNKNOWN = "error.unknown",
+}
+
+export enum UpdateUserEmailAddressErrorMessage {
   UNKNOWN = "error.unknown",
 }
 
@@ -239,5 +253,64 @@ export const submitVerifyKompassiLogin = (
     );
 
     await dispatch(submitSessionRecovery(response.jwt));
+  };
+};
+
+export const submitFinalizeLogin = (
+  email: string,
+): AppThunk<Promise<UpdateUserEmailAddressErrorMessage | undefined>> => {
+  return async (
+    dispatch,
+  ): Promise<UpdateUserEmailAddressErrorMessage | undefined> => {
+    const updateEmailResponse = await postUpdateUserEmailAddress(email);
+
+    if (updateEmailResponse.status === "error") {
+      switch (updateEmailResponse.errorId) {
+        case "unknown":
+          return UpdateUserEmailAddressErrorMessage.UNKNOWN;
+        default:
+          return exhaustiveSwitchGuard(updateEmailResponse.errorId);
+      }
+    }
+
+    dispatch(
+      submitFinalizeLoginAsync({
+        email: updateEmailResponse.email,
+        emailNotificationPermitAsked:
+          updateEmailResponse.emailNotificationPermitAsked,
+        jwt: updateEmailResponse.jwt,
+      }),
+    );
+
+    await dispatch(submitSessionRecovery(updateEmailResponse.jwt));
+  };
+};
+
+export const submitUpdateUserEmailAddress = (
+  email: string,
+): AppThunk<Promise<UpdateUserEmailAddressErrorMessage | null>> => {
+  return async (dispatch): Promise<UpdateUserEmailAddressErrorMessage | null> => {
+    const updateEmailResponse = await postUpdateUserEmailAddress(email);
+
+    if (updateEmailResponse.status === "error") {
+      switch (updateEmailResponse.errorId) {
+        case "unknown":
+          return UpdateUserEmailAddressErrorMessage.UNKNOWN;
+        default:
+          return exhaustiveSwitchGuard(updateEmailResponse.errorId);
+      }
+    }
+
+    dispatch(
+      submitFinalizeLoginAsync({
+        email: updateEmailResponse.email,
+        emailNotificationPermitAsked:
+          updateEmailResponse.emailNotificationPermitAsked,
+        jwt: updateEmailResponse.jwt,
+      }),
+    );
+
+    await dispatch(submitSessionRecovery(updateEmailResponse.jwt));
+    return null;
   };
 };

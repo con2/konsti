@@ -641,4 +641,15 @@ export const translationEN = {
     signupStrategy: "Signup strategy",
     loginProvider: "Login provider",
   },
+  email: {
+    notifications: {
+      accepted: "Allowed",
+      rejected: "Not allowed",
+      changeEmail: "Change email address",
+      description:
+        "Update your email address for notifications and account management.",
+      changingEmailError: "Error updating email address",
+      changingEmailSuccess: "Email address updated successfully",
+    },
+  },
 } as const;

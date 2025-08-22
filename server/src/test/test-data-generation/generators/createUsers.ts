@@ -20,6 +20,7 @@ export const createAdminUser = async (password?: string): Promise<void> => {
     passwordHash,
     userGroup: UserGroup.ADMIN,
     serial: faker.number.int(10000000).toString(),
+    email: "admin@example.local",
   };
 
   await saveUser(registrationData);
@@ -36,6 +37,7 @@ export const createHelpUser = async (password?: string): Promise<void> => {
     passwordHash,
     userGroup: UserGroup.HELP,
     serial: faker.number.int(10000000).toString(),
+    email: "helper@example.local",
   };
 
   await saveUser(registrationData);
@@ -58,6 +60,7 @@ const createTestUser = async ({
     passwordHash,
     userGroup: UserGroup.USER,
     serial: faker.number.int(10000000).toString(),
+    email: `test${userNumber}@example.local`,
   };
 
   await saveUser(registrationData);
@@ -93,14 +96,16 @@ const createUser = async ({
     ? unsafelyUnwrap(await hashPassword("test"))
     : "testPass"; // Skip hashing to save time
 
+  const username = faker.internet.username();
   const registrationData: NewUser = {
     kompassiId: 0,
-    username: testUsers ? `group${userNumber}` : faker.internet.username(),
+    username: testUsers ? `group${userNumber}` : username,
     passwordHash,
     userGroup: UserGroup.USER,
     serial: faker.number.int(SERIAL_MAX).toString(),
     groupCode,
     groupCreatorCode,
+    email: `${username}@example.local`,
   };
 
   await saveUser(registrationData);

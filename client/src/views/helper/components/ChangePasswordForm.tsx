@@ -4,29 +4,52 @@ import styled, { css } from "styled-components";
 import { useTranslation } from "react-i18next";
 import { Button, ButtonStyle } from "client/components/Button";
 import { updateUserPassword } from "client/services/userServices";
-import { ControlledInput } from "client/components/ControlledInput";
+import { EmailSubscriptionForm } from "client/components/EmailSubscriptionForm";
+import { useAppDispatch } from "client/utils/hooks";
+import {
+  submitUpdateUserEmailAddress,
+  UpdateUserEmailAddressErrorMessage,
+} from "client/views/login/loginThunks";
 import {
   PASSWORD_LENGTH_MAX,
   PASSWORD_LENGTH_MIN,
 } from "shared/constants/validation";
+import { ControlledInput } from "client/components/ControlledInput";
 
 interface Props {
   usernameToUpdate: string;
+  isLocalLogin: boolean;
+  email: string;
 }
 
 export const ChangePasswordForm = ({
   usernameToUpdate,
+  isLocalLogin,
+  email,
 }: Props): ReactElement => {
   const { t } = useTranslation();
+  const dispatch = useAppDispatch();
 
   const [changePasswordInput, setChangePasswordInput] = useState<string>("");
   const [passwordChangeMessage, setPasswordChangeMessage] =
     useState<ReactElement>(<Message />);
   const [passwordFieldType, setPasswordFieldType] =
     useState<string>("password");
+  const [changeEmailInput, setChangeEmailInput] = useState<string>(email);
+  const [emailChangeMessage, setEmailChangeMessage] = useState<ReactElement>(
+    <Message />,
+  );
+  const [emailNotificationsEnabled, setEmailNotificationsEnabled] =
+    useState<boolean>(email.length > 0);
+  const [serverError, setServerError] =
+    useState<UpdateUserEmailAddressErrorMessage | null>(null);
 
   const handlePasswordChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setChangePasswordInput(event.target.value);
+  };
+
+  const handleEmailChange = (event: ChangeEvent<HTMLInputElement>): void => {
+    setChangeEmailInput(event.target.value);
   };
 
   const passwordLength = (value: string): string | null => {
@@ -67,6 +90,33 @@ export const ChangePasswordForm = ({
     }
   };
 
+  const submitUpdateEmail = async (): Promise<void> => {
+    if (emailNotificationsEnabled && !changeEmailInput.trim()) {
+      setEmailChangeMessage(
+        <Message error={true}>{t("validation.required")}</Message>,
+      );
+      return;
+    }
+
+    const emailToSend = emailNotificationsEnabled ? changeEmailInput : "";
+    const emailErrorMessage = await dispatch(
+      submitUpdateUserEmailAddress(emailToSend),
+    );
+    if (emailErrorMessage) {
+      setServerError(emailErrorMessage);
+      setEmailChangeMessage(
+        <Message error={true}>
+          {t("email.notifications.changingEmailError")}
+        </Message>,
+      );
+    } else {
+      setServerError(null);
+      setEmailChangeMessage(
+        <Message>{t("email.notifications.changingEmailSuccess")}</Message>,
+      );
+    }
+  };
+
   const togglePasswordVisibility = (): void => {
     if (passwordFieldType === "password") {
       setPasswordFieldType("text");
@@ -75,38 +125,62 @@ export const ChangePasswordForm = ({
     }
   };
 
+  const handleEmailNotificationChange = (enabled: boolean): void => {
+    setEmailNotificationsEnabled(enabled);
+  };
+
   return (
     <>
-      <StyledLabel>{t("passwordManagement.changePassword")}</StyledLabel>
-      <InputContainer>
-        <ControlledInput
-          type={passwordFieldType}
-          key="new-password"
-          placeholder={t("passwordManagement.newPassword")}
-          value={changePasswordInput}
-          onChange={handlePasswordChange}
+      <>
+        <StyledLabel>{t("email.notifications.changeEmail")}</StyledLabel>
+        <EmailSubscriptionForm
+          emailValue={changeEmailInput}
+          emailNotificationsEnabled={emailNotificationsEnabled}
+          onEmailChange={handleEmailChange}
+          onNotificationChange={handleEmailNotificationChange}
         />
+        <ButtonWithMargin
+          onClick={submitUpdateEmail}
+          buttonStyle={ButtonStyle.PRIMARY}
+        >
+          {t("button.save")}
+        </ButtonWithMargin>
+        {emailChangeMessage}
+        <p>{t("email.notifications.description")}</p>
+      </>
+      {isLocalLogin ? (
+        <>
+          <StyledLabel>{t("passwordManagement.changePassword")}</StyledLabel>
+          <InputContainer>
+            <ControlledInput
+              type={passwordFieldType}
+              key="new-password"
+              placeholder={t("passwordManagement.newPassword")}
+              value={changePasswordInput}
+              onChange={handlePasswordChange}
+            />
 
-        <FormFieldIcon>
-          <FontAwesomeIcon
-            icon={passwordFieldType === "password" ? "eye" : "eye-slash"}
-            onClick={togglePasswordVisibility}
-            aria-label={
-              passwordFieldType === "password"
-                ? t("iconAltText.showPassword")
-                : t("iconAltText.hidePassword")
-            }
-          />
-        </FormFieldIcon>
-      </InputContainer>
-      <ButtonWithMargin
-        onClick={submitUpdatePassword}
-        buttonStyle={ButtonStyle.PRIMARY}
-      >
-        {t("button.save")}
-      </ButtonWithMargin>
-
-      {passwordChangeMessage}
+            <FormFieldIcon>
+              <FontAwesomeIcon
+                icon={passwordFieldType === "password" ? "eye" : "eye-slash"}
+                onClick={togglePasswordVisibility}
+                aria-label={
+                  passwordFieldType === "password"
+                    ? t("iconAltText.showPassword")
+                    : t("iconAltText.hidePassword")
+                }
+              />
+            </FormFieldIcon>
+          </InputContainer>
+          <ButtonWithMargin
+            onClick={submitUpdatePassword}
+            buttonStyle={ButtonStyle.PRIMARY}
+          >
+            {t("button.save")}
+          </ButtonWithMargin>
+          {passwordChangeMessage}
+        </>
+      ) : null}
     </>
   );
 };

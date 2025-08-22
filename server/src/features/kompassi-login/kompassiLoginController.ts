@@ -4,15 +4,18 @@ import {
   getBaseUrl,
   doKompassiLogin,
   verifyKompassiLogin,
+  verifyUpdateUserEmailAddress,
 } from "server/features/kompassi-login/kompassiLoginService";
 import { ApiEndpoint, AuthEndpoint } from "shared/constants/apiEndpoints";
 import {
   PostKompassiLoginRequestSchema,
+  PostUpdateUserEmailAddressRequestSchema,
   PostVerifyKompassiLoginRequestSchema,
 } from "shared/types/api/login";
 import { getAuthUrl } from "server/features/kompassi-login/kompassiLoginUtils";
 import { getAuthorizedUsername } from "server/utils/authHeader";
 import { UserGroup } from "shared/types/models/user";
+import { updateUserEmailAddress } from "server/features/user/userRepository";
 
 export const postKompassiLoginRedirect = (
   req: Request,
@@ -82,6 +85,36 @@ export const postVerifyKompassiLogin = async (
 
   const { username } = result.data;
   const response = await verifyKompassiLogin(jwtUsername, username);
+  return res.json(response);
+};
+
+export const postUpdateUserEmailAddress = async (
+  req: Request,
+  res: Response,
+): Promise<Response> => {
+  logger.info(`API call: POST ${ApiEndpoint.UPDATE_USER_EMAIL_ADDRESS}`);
+
+  const jwtUsername = getAuthorizedUsername(
+    req.headers.authorization,
+    UserGroup.USER,
+  );
+  if (!jwtUsername) {
+    return res.sendStatus(401);
+  }
+
+  const result = PostUpdateUserEmailAddressRequestSchema.safeParse(req.body);
+  if (!result.success) {
+    logger.error(
+      "%s",
+      new Error(
+        `Error validating postUpdateUserEmailAddress body: ${JSON.stringify(result.error)}`,
+      ),
+    );
+    return res.sendStatus(422);
+  }
+
+  const { email } = result.data;
+  const response = await verifyUpdateUserEmailAddress(jwtUsername, email);
   return res.json(response);
 };
 

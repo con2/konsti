@@ -35,7 +35,8 @@ export interface User {
   lotterySignups: readonly LotterySignup[];
   createdAt: string;
   eventLogItems: EventLogItem[];
-  email?: string;
+  email: string;
+  emailNotificationPermitAsked: boolean;
 }
 
 export interface UserProgramItems {

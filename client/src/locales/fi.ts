@@ -643,4 +643,15 @@ export const translationFI = {
     signupStrategy: "Ilmoittautumisstapa",
     loginProvider: "Kirjautumistapa",
   },
+  email: {
+    notifications: {
+      accepted: "Hyvaksytty",
+      rejected: "Ei laheteta",
+      changeEmail: "Vaihda sähköpostiosoite",
+      description:
+        "Päivitä sähköpostiosoitteesi ilmoituksia ja tilin hallintaa varten.",
+      changingEmailError: "Virhe sähköpostiosoitteen päivittämisessä",
+      changingEmailSuccess: "Sähköpostiosoite päivitetty onnistuneesti",
+    },
+  },
 } as const;
