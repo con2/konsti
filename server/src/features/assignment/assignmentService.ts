@@ -1,4 +1,3 @@
-import { Request, Response } from "express";
 import { runAssignment } from "server/features/assignment/run-assignment/runAssignment";
 import {
   PostAssignmentError,

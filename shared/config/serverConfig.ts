@@ -40,6 +40,7 @@ export interface ServerConfig {
   emailNotificationQueueWorkerCount: number;
   emailNotificationTrigger: EmailNotificationTrigger;
   emailSendFromAddress: string;
+  emailSender: string;
   mailgunURL: string;
   mailgunUsername: string;
   mailgunApiKey: string;
@@ -97,6 +98,7 @@ const commonConfig = {
   emailNotificationQueueWorkerCount: 1,
   emailSendFromAddress:
     "Mailgun Sandbox <postmaster@sandbox87d156be6f1947fc968496d5ae717ab6.mailgun.org>",
+  emailSender: "mailgun",
   mailgunURL: process.env.MAILGUN_URL ?? "https://api.mailgun.net",
   mailgunUsername: process.env.MAILGUN_USERNAME ?? "",
   mailgunApiKey: process.env.MAILGUN_API_KEY ?? "",

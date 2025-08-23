@@ -3,7 +3,7 @@ import { saveUserSignupResults } from "server/features/assignment/utils/saveUser
 import { UserAssignmentResult } from "shared/types/models/result";
 import { saveResult } from "server/features/results/resultsRepository";
 import { Result, isErrorResult, makeSuccessResult } from "shared/utils/result";
-import { MongoDbError } from "shared/types/api/errors";
+import { MongoDbError, QueueError } from "shared/types/api/errors";
 import { User } from "shared/types/models/user";
 import { ProgramItem } from "shared/types/models/programItem";
 import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
@@ -24,7 +24,7 @@ export const saveResults = async ({
   message,
   users,
   programItems,
-}: SaveResultsParams): Promise<Result<void, MongoDbError>> => {
+}: SaveResultsParams): Promise<Result<void, MongoDbError | QueueError>> => {
   if (results.length > 0) {
     logger.info(
       `Save all signup results to separate collection for assignment time ${assignmentTime}`,

@@ -1,12 +1,14 @@
 import "server/utils/instrument";
 import { Server } from "node:http";
-import { webextensions } from "globals";
 import { startServer, closeServer } from "server/utils/server";
 import { logger } from "server/utils/logger";
 import { startCronJobs } from "server/utils/cron";
 import { config } from "shared/config";
 import { initializeDayjs } from "shared/utils/initializeDayjs";
-import { setupEmailNotificationQueue } from "./utils/notificationQueue";
+import {
+  createNotificationQueueService,
+  setGlobalNotificationQueueService,
+} from "./utils/notificationQueue";
 import { MailgunSender } from "server/features/notifications/mailgunSender";
 import { EmailNotificationTrigger } from "shared/types/emailNotification";
 
@@ -51,10 +53,12 @@ const startApp = async (): Promise<void> => {
         fromAddress: config.server().emailSendFromAddress,
         apiDomain: config.server().mailgunApiDomain,
       });
-      setupEmailNotificationQueue(
+
+      const notificationQueueService = createNotificationQueueService(
         sender,
         config.server().emailNotificationQueueWorkerCount,
       );
+      setGlobalNotificationQueueService(notificationQueueService);
     } catch (error) {
       logger.error("Failed to initialize notification queue! %s", error);
     }

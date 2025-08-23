@@ -1,5 +1,4 @@
-import { promise as queuePromise } from "fastq";
-import type { queueAsPromised } from "fastq";
+import { promise as queuePromise, queueAsPromised } from "fastq";
 import { QueueError } from "shared/types/api/errors";
 import {
   makeErrorResult,
@@ -8,7 +7,6 @@ import {
 } from "shared/utils/result";
 import { EmailSender } from "server/features/notifications/senderCommon";
 import { emailNotificationWorker } from "server/features/notifications/emailNotificationWorker";
-import { logger } from "server/utils/logger";
 
 export enum NotificationTaskType {
   SEND_EMAIL_ACCEPTED,
@@ -22,59 +20,89 @@ export interface NotificationTask {
   programItemStartTime: string;
 }
 
-let queue: queueAsPromised<NotificationTask> | null = null;
-
-export async function addNotificationsBulk(
-  notifications: NotificationTask[],
-): Promise<Result<boolean, QueueError>> {
-  if (queue === null) {
-    logger.error("Queue not initialized!");
-    return makeErrorResult(QueueError.QUEUE_NOT_INITIALIZED);
-  }
-
-  if (notifications.length === 0) {
-    return makeSuccessResult(true);
-  }
-
-  try {
-    const promises: Promise<Result<boolean, QueueError>>[] = [];
-    for (const notification of notifications) {
-      promises.push(addNotification(notification));
-    }
-    await Promise.allSettled(promises);
-    return makeSuccessResult(true);
-  } catch {
-    return makeErrorResult(QueueError.FAILED_TO_PUSH);
-  }
+export interface NotificationQueueService {
+  addNotificationsBulk(
+    notifications: NotificationTask[],
+  ): Result<boolean, QueueError>;
+  drain(): Promise<void>;
+  kill(): Promise<void>;
+  getItems(): NotificationTask[];
+  getSender(): EmailSender;
+  getQueue(): queueAsPromised<NotificationTask>;
 }
 
-async function addNotification(
-  notification: NotificationTask,
-): Promise<Result<boolean, QueueError>> {
-  if (queue === null) {
-    return makeErrorResult(QueueError.QUEUE_NOT_INITIALIZED);
-  }
-
-  try {
-    await queue.push(notification);
-    return makeSuccessResult(true);
-  } catch {
-    return makeErrorResult(QueueError.FAILED_TO_PUSH);
-  }
-}
-
-export function setupEmailNotificationQueue(
+export function createNotificationQueueService(
   sender: EmailSender,
   workerCount = 1,
-): queueAsPromised<NotificationTask> | null {
-  try {
-    queue = queuePromise(
-      (notification) => emailNotificationWorker(notification, sender),
-      workerCount,
-    );
-    return queue;
-  } catch {
-    logger.error("Failed to setup email notification queue");
+  stopOnStart = false,
+): NotificationQueueService {
+  const queue: queueAsPromised<NotificationTask> = queuePromise(
+    (notification: NotificationTask) =>
+      emailNotificationWorker(notification, sender),
+    workerCount,
+  );
+
+  if (stopOnStart) {
+    queue.pause();
   }
-  return null;
+
+  function addNotificationsBulk(
+    notifications: NotificationTask[],
+  ): Result<boolean, QueueError> {
+    if (notifications.length === 0) {
+      return makeSuccessResult(true);
+    }
+
+    try {
+      for (const notification of notifications) {
+        addNotification(notification);
+      }
+      return makeSuccessResult(true);
+    } catch {
+      return makeErrorResult(QueueError.FAILED_TO_PUSH);
+    }
+  }
+
+  function addNotification(
+    notification: NotificationTask,
+  ): Result<boolean, QueueError> {
+    try {
+      // Promise returned by push is fullfilled after task is completed.
+      void queue.push(notification);
+      return makeSuccessResult(true);
+    } catch {
+      return makeErrorResult(QueueError.FAILED_TO_PUSH);
+    }
+  }
+
+  return {
+    addNotificationsBulk,
+    drain: async () => {
+      await queue.drain();
+    },
+    kill: async () => {
+      await queue.kill();
+    },
+    getItems(): NotificationTask[] {
+      return queue.getQueue();
+    },
+    getSender(): EmailSender {
+      return sender;
+    },
+    getQueue(): queueAsPromised<NotificationTask> {
+      return queue;
+    },
+  };
+}
+
+let globalNotificationQueueService: NotificationQueueService | null = null;
+
+export function setGlobalNotificationQueueService(
+  service: NotificationQueueService | null,
+): void {
+  globalNotificationQueueService = service;
+}
+
+export function getGlobalNotificationQueueService(): NotificationQueueService | null {
+  return globalNotificationQueueService;
 }

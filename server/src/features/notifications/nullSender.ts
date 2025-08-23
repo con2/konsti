@@ -7,6 +7,10 @@ export class NullSender implements EmailSender {
     return this.out;
   }
 
+  reset(): void {
+    this.out = [];
+  }
+
   getFromAddress(): string {
     return "";
   }

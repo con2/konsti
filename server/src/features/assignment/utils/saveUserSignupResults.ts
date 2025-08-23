@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 import { unique } from "remeda";
 import {
-  addNotificationsBulk,
+  getGlobalNotificationQueueService,
   NotificationTaskType,
 } from "server/utils/notificationQueue";
 import { UserAssignmentResult } from "shared/types/models/result";
@@ -50,6 +50,7 @@ export const saveUserSignupResults = async ({
 }: SaveUserSignupResultsParams): Promise<
   Result<void, MongoDbError | QueueError>
 > => {
+  const queueService = getGlobalNotificationQueueService();
   // Remove previous lottery result for the same start time
   // This does not remove non-lottery signups or previous signups from moved program items
   const delAssignmentSignupsByStartTimeResult =
@@ -162,14 +163,18 @@ export const saveUserSignupResults = async ({
       EmailNotificationTrigger.ACCEPTED ||
     serverConfig.emailNotificationTrigger === EmailNotificationTrigger.BOTH
   ) {
-    const newAssingmentEmailNotificationsResult = await addNotificationsBulk(
-      finalResults.map((result) => ({
-        type: NotificationTaskType.SEND_EMAIL_ACCEPTED,
-        username: result.username,
-        programItemId: result.assignmentSignup.programItemId,
-        programItemStartTime: result.assignmentSignup.signedToStartTime,
-      })),
-    );
+    if (queueService === null) {
+      return makeErrorResult(QueueError.QUEUE_NOT_INITIALIZED);
+    }
+    const newAssingmentEmailNotificationsResult =
+      queueService.addNotificationsBulk(
+        finalResults.map((result) => ({
+          type: NotificationTaskType.SEND_EMAIL_ACCEPTED,
+          username: result.username,
+          programItemId: result.assignmentSignup.programItemId,
+          programItemStartTime: result.assignmentSignup.signedToStartTime,
+        })),
+      );
 
     if (isErrorResult(newAssingmentEmailNotificationsResult)) {
       return newAssingmentEmailNotificationsResult;
@@ -244,16 +249,20 @@ export const saveUserSignupResults = async ({
         EmailNotificationTrigger.REJECTED ||
       serverConfig.emailNotificationTrigger === EmailNotificationTrigger.BOTH
     ) {
-      const noAssingmentEmailNotificationsResult = await addNotificationsBulk(
-        noAssignmentLotterySignupUsernames.map(
-          (noAssignmentLotterySignupUsername) => ({
-            type: NotificationTaskType.SEND_EMAIL_REJECTED,
-            username: noAssignmentLotterySignupUsername,
-            programItemId: "",
-            programItemStartTime: assignmentTime,
-          }),
-        ),
-      );
+      if (queueService === null) {
+        return makeErrorResult(QueueError.QUEUE_NOT_INITIALIZED);
+      }
+      const noAssingmentEmailNotificationsResult =
+        queueService.addNotificationsBulk(
+          noAssignmentLotterySignupUsernames.map(
+            (noAssignmentLotterySignupUsername) => ({
+              type: NotificationTaskType.SEND_EMAIL_REJECTED,
+              username: noAssignmentLotterySignupUsername,
+              programItemId: "",
+              programItemStartTime: assignmentTime,
+            }),
+          ),
+        );
 
       if (isErrorResult(noAssingmentEmailNotificationsResult)) {
         return noAssingmentEmailNotificationsResult;

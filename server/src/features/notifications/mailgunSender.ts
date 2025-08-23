@@ -1,9 +1,8 @@
 import Mailgun from "mailgun.js";
 import FormData from "form-data";
-import { config } from "shared/config";
 import { EmailMessage, EmailSender, EmailSendResponse } from "./senderCommon";
 
-export interface MailgunSenderParams {
+interface MailgunSenderParams {
   username: string;
   key: string;
   url: string;
@@ -22,7 +21,7 @@ export class MailgunSender implements EmailSender {
     const key = params.key;
     const url = params.url;
     this.fromAddress = params.fromAddress;
-    this.apiDomain = params.domain;
+    this.apiDomain = params.apiDomain;
 
     if (!username || !key || !url) {
       // eslint-disable-next-line no-restricted-syntax
