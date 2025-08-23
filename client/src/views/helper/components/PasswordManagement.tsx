@@ -4,7 +4,7 @@ import styled, { css } from "styled-components";
 import { Link } from "react-router";
 import { getUserBySerialOrUsername } from "client/services/userServices";
 import { Button, ButtonStyle } from "client/components/Button";
-import { ChangePasswordForm } from "client/views/helper/components/ChangePasswordForm";
+import { ChangeUserSettingsForm } from "client/views/helper/components/ChangeUserSettingsForm";
 import { ControlledInput } from "client/components/ControlledInput";
 import { getDateAndTime } from "client/utils/timeFormatter";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
@@ -94,7 +94,7 @@ export const PasswordManagement = (): ReactElement => {
       {userFoundMessage}
 
       {changePasswordInputVisible && (
-        <ChangePasswordForm usernameToUpdate={usernameToUpdate} />
+        <ChangeUserSettingsForm usernameToUpdate={usernameToUpdate} />
       )}
     </div>
   );

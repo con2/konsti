@@ -88,36 +88,6 @@ export const postVerifyKompassiLogin = async (
   return res.json(response);
 };
 
-export const postUpdateUserEmailAddress = async (
-  req: Request,
-  res: Response,
-): Promise<Response> => {
-  logger.info(`API call: POST ${ApiEndpoint.UPDATE_USER_EMAIL_ADDRESS}`);
-
-  const jwtUsername = getAuthorizedUsername(
-    req.headers.authorization,
-    UserGroup.USER,
-  );
-  if (!jwtUsername) {
-    return res.sendStatus(401);
-  }
-
-  const result = PostUpdateUserEmailAddressRequestSchema.safeParse(req.body);
-  if (!result.success) {
-    logger.error(
-      "%s",
-      new Error(
-        `Error validating postUpdateUserEmailAddress body: ${JSON.stringify(result.error)}`,
-      ),
-    );
-    return res.sendStatus(422);
-  }
-
-  const { email } = result.data;
-  const response = await verifyUpdateUserEmailAddress(jwtUsername, email);
-  return res.json(response);
-};
-
 export const postKompassiLogoutRedirect = (
   req: Request,
   res: Response,

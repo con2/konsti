@@ -34,6 +34,7 @@ export async function emailNotificationWorker(
       logger.error(
         `Trying to send email notification for unknown user ${notification.username}.`,
       );
+      return;
     }
 
     if (!user.email) {
@@ -55,12 +56,11 @@ export async function emailNotificationWorker(
             notification,
             sender.getFromAddress(),
           );
-
-    await sender.send(message);
+    if (message !== null) {
+      await sender.send(message);
+    }
   } catch (error) {
-    logger.error(
-      `Unexpected error in sending email notification: ${error.message}`,
-    );
+    logger.error("Unexpected error in sending email notification: %s", error);
   }
   return;
 }
@@ -69,7 +69,7 @@ async function generateAcceptedEmail(
   email: string,
   notification: NotificationTask,
   fromAddress: string,
-): Promise<EmailMessage> {
+): Promise<EmailMessage | null> {
   const programItemResult = await findProgramItemById(
     notification.programItemId,
   );
@@ -77,7 +77,7 @@ async function generateAcceptedEmail(
     logger.error(
       `Failed to found program for programItemId ${notification.programItemId}`,
     );
-    return;
+    return null;
   }
   const program = unwrapResult(programItemResult);
 

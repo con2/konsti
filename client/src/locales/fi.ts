@@ -62,6 +62,7 @@ export const translationFI = {
     required: "Vaadittu kenttä",
     tooLong: "Liian pitkä, käytä enintään {{length}} merkkiä",
     tooShort: "Liian lyhyt, käytä vähintään {{length}} merkkiä",
+    invalidEmail: "Virheellinen sähköpostin muoto",
   },
   pages: {
     myProgram: "Oma ohjelmani",
@@ -645,11 +646,10 @@ export const translationFI = {
   },
   email: {
     notifications: {
-      accepted: "Hyvaksytty",
-      rejected: "Ei laheteta",
-      changeEmail: "Vaihda sähköpostiosoite",
-      description:
-        "Päivitä sähköpostiosoitteesi ilmoituksia ja tilin hallintaa varten.",
+      accepted: "Haluan Konstin ilmoitukset sähköpostiini",
+      rejected: "En halua ilmoituksia sähköpostiini",
+      registrationDescription:
+        "Voit muuttaa ilmoitusasetuksia Profiili-näkymässä",
       changingEmailError: "Virhe sähköpostiosoitteen päivittämisessä",
       changingEmailSuccess: "Sähköpostiosoite päivitetty onnistuneesti",
     },

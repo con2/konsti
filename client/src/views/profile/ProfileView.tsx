@@ -2,7 +2,7 @@ import { ReactElement } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router";
-import { ChangePasswordForm } from "client/views/helper/components/ChangePasswordForm";
+import { ChangeUserSettingsForm } from "client/views/helper/components/ChangeUserSettingsForm";
 import { useAppSelector } from "client/utils/hooks";
 import { Button, ButtonStyle } from "client/components/Button";
 import { AppRoute } from "client/app/AppRoutes";
@@ -36,7 +36,7 @@ export const ProfileView = (): ReactElement => {
           {t("button.logout")}
         </StyledButton>
       </UserInfoContainer>
-      <ChangePasswordForm
+      <ChangeUserSettingsForm
         isLocalLogin={isLocalLogin}
         email={email}
         usernameToUpdate={username}

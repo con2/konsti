@@ -34,7 +34,17 @@ export const UserSchemaDb = z
     lotterySignups: z.array(LotterySignupSchemaDb),
     createdAt: z.date().transform((date) => dayjs(date).toISOString()),
     eventLogItems: z.array(EventLogItemSchemaDb),
-    email: z.string(),
+    email: z.string().refine(
+      (email) => {
+        // Allow empty string (for unsubscribe)
+        if (email === "") return true;
+        // Validate email format if not empty
+        return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
+      },
+      {
+        message: "Invalid email format",
+      },
+    ),
     emailNotificationPermitAsked: z.boolean(),
   })
   .strip();

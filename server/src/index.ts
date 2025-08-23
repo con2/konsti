@@ -1,5 +1,6 @@
 import "server/utils/instrument";
 import { Server } from "node:http";
+import { webextensions } from "globals";
 import { startServer, closeServer } from "server/utils/server";
 import { logger } from "server/utils/logger";
 import { startCronJobs } from "server/utils/cron";
@@ -55,10 +56,7 @@ const startApp = async (): Promise<void> => {
         config.server().emailNotificationQueueWorkerCount,
       );
     } catch (error) {
-      logger.error(
-        "%s",
-        `Failed to initialize notification queue! ${error.message}`,
-      );
+      logger.error("Failed to initialize notification queue! %s", error);
     }
   }
 

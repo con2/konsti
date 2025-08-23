@@ -20,7 +20,8 @@ import {
 import { navigateToPreviousOrRoot } from "client/utils/navigation";
 import { PrivacyPolicy } from "client/components/PrivacyPolicy";
 import { Checkbox } from "client/components/Checkbox";
-import { EmailSubscriptionForm } from "client/components/EmailSubscriptionForm";
+import { RadioButtonGroup } from "client/components/RadioButtonGroup";
+import { RadioButton } from "client/components/RadioButton";
 
 interface FinalizeRegistrationFormFields {
   username: string;
@@ -129,34 +130,49 @@ export const FinalizeRegistration = (
       {props.emailNotificationPermitAsked ? null : (
         <InputContainer>
           <FormRow>
-            <EmailSubscriptionForm
-              emailValue={email}
-              emailNotificationsEnabled={emailNotificationsEnabled}
-              onEmailChange={() => setServerError(null)}
-              onNotificationChange={handleEmailNotificationChange}
-              register={(fieldName: string) =>
-                register(fieldName, {
-                  required: emailNotificationsEnabled
-                    ? t("validation.required")
-                    : false,
-                  minLength: {
-                    value: USERNAME_LENGTH_MIN,
-                    message: t("validation.tooShort", {
-                      length: USERNAME_LENGTH_MIN,
-                    }),
-                  },
-                  maxLength: {
-                    value: USERNAME_LENGTH_MAX,
-                    message: t("validation.tooLong", {
-                      length: USERNAME_LENGTH_MAX,
-                    }),
-                  },
-                  onChange: () => {
-                    setServerError(null);
-                  },
-                })
-              }
-            />
+            <RadioButtonGroup>
+              <RadioButton
+                checked={emailNotificationsEnabled}
+                id={"email-notifications-enabled"}
+                label={t("email.notifications.accepted")}
+                name={"emailNotifications"}
+                onChange={() => handleEmailNotificationChange(true)}
+              />
+              <InputContainer>
+                <StyledEmailInput
+                  id="email"
+                  {...register("email", {
+                    required: emailNotificationsEnabled
+                      ? t("validation.required")
+                      : false,
+                    pattern: {
+                      value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                      message: t("validation.invalidEmail"),
+                    },
+                    onChange: () => {
+                      setServerError(null);
+                    },
+                  })}
+                  defaultValue={email}
+                  type={"email"}
+                  disabled={!emailNotificationsEnabled}
+                />
+              </InputContainer>
+              {errors.email && (
+                <FormFieldError>{errors.email.message}</FormFieldError>
+              )}
+
+              <RadioButton
+                checked={!emailNotificationsEnabled}
+                id={"email-notifications-disabled"}
+                label={t("email.notifications.rejected")}
+                name={"emailNotifications"}
+                onChange={() => handleEmailNotificationChange(false)}
+              />
+            </RadioButtonGroup>
+          </FormRow>
+          <FormRow>
+            <p>{t("email.notifications.registrationDescription")}</p>
           </FormRow>
         </InputContainer>
       )}
@@ -211,6 +227,17 @@ const FormFieldError = styled.div`
 
 const StyledInput = styled(UncontrolledInput)`
   width: min(250px, 100%);
+`;
+
+const StyledEmailInput = styled(UncontrolledInput)`
+  width: min(250px, 100%);
+  ${(props) =>
+    props.disabled &&
+    `
+      background-color: ${props.theme.backgroundDisabled || "#f5f5f5"};
+      cursor: not-allowed;
+      opacity: 0.6;
+    `};
 `;
 
 const FormRow = styled.div`

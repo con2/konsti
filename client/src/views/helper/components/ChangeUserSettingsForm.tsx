@@ -4,12 +4,11 @@ import styled, { css } from "styled-components";
 import { useTranslation } from "react-i18next";
 import { Button, ButtonStyle } from "client/components/Button";
 import { updateUserPassword } from "client/services/userServices";
-import { EmailSubscriptionForm } from "client/components/EmailSubscriptionForm";
+import { RadioButtonGroup } from "client/components/RadioButtonGroup";
+import { RadioButton } from "client/components/RadioButton";
+import { UncontrolledInput } from "client/components/UncontrolledInput";
 import { useAppDispatch } from "client/utils/hooks";
-import {
-  submitUpdateUserEmailAddress,
-  UpdateUserEmailAddressErrorMessage,
-} from "client/views/login/loginThunks";
+import { submitUpdateUserEmailAddress } from "client/views/login/loginThunks";
 import {
   PASSWORD_LENGTH_MAX,
   PASSWORD_LENGTH_MIN,
@@ -22,7 +21,7 @@ interface Props {
   email: string;
 }
 
-export const ChangePasswordForm = ({
+export const ChangeUserSettingsForm = ({
   usernameToUpdate,
   isLocalLogin,
   email,
@@ -41,8 +40,7 @@ export const ChangePasswordForm = ({
   );
   const [emailNotificationsEnabled, setEmailNotificationsEnabled] =
     useState<boolean>(email.length > 0);
-  const [serverError, setServerError] =
-    useState<UpdateUserEmailAddressErrorMessage | null>(null);
+  const [emailValidationError, setEmailValidationError] = useState<string>("");
 
   const handlePasswordChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setChangePasswordInput(event.target.value);
@@ -98,19 +96,27 @@ export const ChangePasswordForm = ({
       return;
     }
 
-    const emailToSend = emailNotificationsEnabled ? changeEmailInput : "";
+    const emailToSend = emailNotificationsEnabled
+      ? changeEmailInput.trim()
+      : "";
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (emailNotificationsEnabled && !emailRegex.test(emailToSend)) {
+      setEmailChangeMessage(
+        <Message error={true}>{t("validation.invalidEmail")}</Message>,
+      );
+      return;
+    }
+
     const emailErrorMessage = await dispatch(
       submitUpdateUserEmailAddress(emailToSend),
     );
     if (emailErrorMessage) {
-      setServerError(emailErrorMessage);
       setEmailChangeMessage(
         <Message error={true}>
           {t("email.notifications.changingEmailError")}
         </Message>,
       );
     } else {
-      setServerError(null);
       setEmailChangeMessage(
         <Message>{t("email.notifications.changingEmailSuccess")}</Message>,
       );
@@ -127,18 +133,42 @@ export const ChangePasswordForm = ({
 
   const handleEmailNotificationChange = (enabled: boolean): void => {
     setEmailNotificationsEnabled(enabled);
+    if (!enabled) {
+      setEmailValidationError("");
+    }
   };
 
   return (
     <>
       <>
-        <StyledLabel>{t("email.notifications.changeEmail")}</StyledLabel>
-        <EmailSubscriptionForm
-          emailValue={changeEmailInput}
-          emailNotificationsEnabled={emailNotificationsEnabled}
-          onEmailChange={handleEmailChange}
-          onNotificationChange={handleEmailNotificationChange}
-        />
+        <RadioButtonGroup>
+          <RadioButton
+            checked={emailNotificationsEnabled}
+            id={"email-notifications-enabled"}
+            label={t("email.notifications.accepted")}
+            name={"emailNotifications"}
+            onChange={() => handleEmailNotificationChange(true)}
+          />
+          <InputContainer>
+            <StyledEmailInput
+              id="email"
+              value={changeEmailInput}
+              type={"email"}
+              disabled={!emailNotificationsEnabled}
+              onChange={handleEmailChange}
+            />
+          </InputContainer>
+          {emailValidationError && (
+            <ErrorMessage>{emailValidationError}</ErrorMessage>
+          )}
+          <RadioButton
+            checked={!emailNotificationsEnabled}
+            id={"email-notifications-disabled"}
+            label={t("email.notifications.rejected")}
+            name={"emailNotifications"}
+            onChange={() => handleEmailNotificationChange(false)}
+          />
+        </RadioButtonGroup>
         <ButtonWithMargin
           onClick={submitUpdateEmail}
           buttonStyle={ButtonStyle.PRIMARY}
@@ -146,7 +176,6 @@ export const ChangePasswordForm = ({
           {t("button.save")}
         </ButtonWithMargin>
         {emailChangeMessage}
-        <p>{t("email.notifications.description")}</p>
       </>
       {isLocalLogin ? (
         <>
@@ -213,4 +242,29 @@ const ButtonWithMargin = styled(Button)`
 const StyledLabel = styled.label`
   padding: 0 0 2px 4px;
   font-size: ${(props) => props.theme.fontSizeSmall};
+`;
+
+const StyledEmailInput = styled(UncontrolledInput)`
+  width: min(250px, 100%);
+  ${(props) =>
+    props.disabled &&
+    `
+      background-color: ${props.theme.backgroundDisabled || "#f5f5f5"};
+      cursor: not-allowed;
+      opacity: 0.6;
+    `};
+`;
+
+const ErrorMessage = styled.div`
+  display: flex;
+  background: ${(props) => props.theme.backgroundHighlight};
+  color: ${(props) => props.theme.textError};
+  width: 50%;
+  padding: 0 10px;
+  margin-top: -8px;
+  font-size: ${(props) => props.theme.fontSizeSmall};
+
+  @media (max-width: ${(props) => props.theme.breakpointPhone}) {
+    width: 100%;
+  }
 `;

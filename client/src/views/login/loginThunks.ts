@@ -225,6 +225,7 @@ export enum KompassiVerifyErrorMessage {
 
 export enum UpdateUserEmailAddressErrorMessage {
   UNKNOWN = "error.unknown",
+  INVALID_EMAIL = "validation.invalidEmail",
 }
 
 export const submitVerifyKompassiLogin = (
@@ -268,6 +269,8 @@ export const submitFinalizeLogin = (
       switch (updateEmailResponse.errorId) {
         case "unknown":
           return UpdateUserEmailAddressErrorMessage.UNKNOWN;
+        case "invalidEmail":
+          return UpdateUserEmailAddressErrorMessage.INVALID_EMAIL;
         default:
           return exhaustiveSwitchGuard(updateEmailResponse.errorId);
       }
@@ -298,6 +301,8 @@ export const submitUpdateUserEmailAddress = (
       switch (updateEmailResponse.errorId) {
         case "unknown":
           return UpdateUserEmailAddressErrorMessage.UNKNOWN;
+        case "invalidEmail":
+          return UpdateUserEmailAddressErrorMessage.INVALID_EMAIL;
         default:
           return exhaustiveSwitchGuard(updateEmailResponse.errorId);
       }
