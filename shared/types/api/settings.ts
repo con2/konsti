@@ -3,6 +3,7 @@ import {
   LoginProvider,
   EventSignupStrategy,
 } from "shared/config/eventConfigTypes";
+import { EmailNotificationTrigger } from "shared/types/emailNotification";
 import {
   Settings,
   SettingsSchema,
@@ -35,6 +36,7 @@ export interface SettingsPayload {
   signupQuestions: readonly SignupQuestion[];
   signupStrategy: EventSignupStrategy;
   loginProvider: LoginProvider;
+  emailNotificationTrigger: EmailNotificationTrigger;
 }
 
 export type GetSettingsResponse = SettingsPayload & ApiResult;

@@ -44,6 +44,7 @@ export const fetchSettings = async (): Promise<
     signupQuestions: settings.signupQuestions,
     signupStrategy: settings.signupStrategy,
     loginProvider: settings.loginProvider,
+    emailNotificationTrigger: settings.emailNotificationTrigger,
   };
 };
 

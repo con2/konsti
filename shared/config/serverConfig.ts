@@ -187,6 +187,9 @@ const devConfig = {
   autoAssignAttendeesEnabled: true,
   autoAssignInterval: "0 * * * *",
   autoAssignDelay: 1000 * 1,
+
+  // Email notifications
+  emailSender: "null",
 };
 
 const combineConfig = (): ServerConfig => {

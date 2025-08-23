@@ -15,9 +15,9 @@ export class NullSender implements EmailSender {
     return "";
   }
 
-  async send(message: EmailMessage): Promise<EmailSendResponse> {
+  send(message: EmailMessage): Promise<EmailSendResponse> {
     this.out.push(message);
-    return new Promise({
+    return Promise.resolve({
       id: "1",
       message: "",
       details: "",

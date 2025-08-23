@@ -10,7 +10,14 @@ import {
   setGlobalNotificationQueueService,
 } from "./utils/notificationQueue";
 import { MailgunSender } from "server/features/notifications/mailgunSender";
+import { NullSender } from "server/features/notifications/nullSender";
 import { EmailNotificationTrigger } from "shared/types/emailNotification";
+import { findSettings } from "server/features/settings/settingsRepository";
+import {
+  isErrorResult,
+  isSuccessResult,
+  unwrapResult,
+} from "shared/utils/result";
 
 const startApp = async (): Promise<void> => {
   initializeDayjs();
@@ -42,26 +49,32 @@ const startApp = async (): Promise<void> => {
     logger.info("Cronjobs not started, set ONLY_CRONJOBS to enable cronjobs");
   }
 
-  if (
-    config.server().emailNotificationTrigger !== EmailNotificationTrigger.NONE
-  ) {
-    try {
-      const sender = new MailgunSender({
-        username: config.server().mailgunUsername,
-        key: config.server().mailgunApiKey,
-        url: config.server().mailgunURL,
-        fromAddress: config.server().emailSendFromAddress,
-        apiDomain: config.server().mailgunApiDomain,
-      });
+  // Initialize notification queue
+  try {
+    const settingsResult = await findSettings();
+    if (isSuccessResult(settingsResult)) {
+      const sender =
+        config.server().emailSender === "null"
+          ? new NullSender()
+          : new MailgunSender({
+              username: config.server().mailgunUsername,
+              key: config.server().mailgunApiKey,
+              url: config.server().mailgunURL,
+              fromAddress: config.server().emailSendFromAddress,
+              apiDomain: config.server().mailgunApiDomain,
+            });
 
       const notificationQueueService = createNotificationQueueService(
         sender,
         config.server().emailNotificationQueueWorkerCount,
       );
       setGlobalNotificationQueueService(notificationQueueService);
-    } catch (error) {
-      logger.error("Failed to initialize notification queue! %s", error);
+      logger.info("Email notification queue initialized.");
+    } else {
+      logger.error("Failed to fetch setting!");
     }
+  } catch (error) {
+    logger.error("Failed to initialize notification queue! %s", error);
   }
 
   process.once("SIGINT", (signal: string) => {

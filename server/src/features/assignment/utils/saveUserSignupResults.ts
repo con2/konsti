@@ -34,6 +34,7 @@ import { SignupRepositoryAddSignup } from "server/features/direct-signup/directS
 import { isStartTimeMatch } from "server/utils/isStartTimeMatch";
 import { serverConfig } from "shared/config/serverConfig";
 import { EmailNotificationTrigger } from "shared/types/emailNotification";
+import { findSettings } from "server/features/settings/settingsRepository";
 
 interface SaveUserSignupResultsParams {
   assignmentTime: string;
@@ -51,6 +52,12 @@ export const saveUserSignupResults = async ({
   Result<void, MongoDbError | QueueError>
 > => {
   const queueService = getGlobalNotificationQueueService();
+
+  const settingsResult = await findSettings();
+  if (isErrorResult(settingsResult)) {
+    return settingsResult;
+  }
+  const settings = unwrapResult(settingsResult);
   // Remove previous lottery result for the same start time
   // This does not remove non-lottery signups or previous signups from moved program items
   const delAssignmentSignupsByStartTimeResult =
@@ -159,9 +166,8 @@ export const saveUserSignupResults = async ({
 
   // Add SEND_EMAIL_ACCEPTED to notification queue
   if (
-    serverConfig.emailNotificationTrigger ===
-      EmailNotificationTrigger.ACCEPTED ||
-    serverConfig.emailNotificationTrigger === EmailNotificationTrigger.BOTH
+    settings.emailNotificationTrigger === EmailNotificationTrigger.ACCEPTED ||
+    settings.emailNotificationTrigger === EmailNotificationTrigger.BOTH
   ) {
     if (queueService === null) {
       return makeErrorResult(QueueError.QUEUE_NOT_INITIALIZED);
@@ -245,9 +251,8 @@ export const saveUserSignupResults = async ({
 
     // Add SEND_EMAIL_REJECTED to notification queue
     if (
-      serverConfig.emailNotificationTrigger ===
-        EmailNotificationTrigger.REJECTED ||
-      serverConfig.emailNotificationTrigger === EmailNotificationTrigger.BOTH
+      settings.emailNotificationTrigger === EmailNotificationTrigger.REJECTED ||
+      settings.emailNotificationTrigger === EmailNotificationTrigger.BOTH
     ) {
       if (queueService === null) {
         return makeErrorResult(QueueError.QUEUE_NOT_INITIALIZED);

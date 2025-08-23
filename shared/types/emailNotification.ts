@@ -1,6 +1,6 @@
 export enum EmailNotificationTrigger {
-  NONE,
-  ACCEPTED,
-  REJECTED,
-  BOTH,
+  NONE = "none",
+  ACCEPTED = "accepted",
+  REJECTED = "rejected",
+  BOTH = "both",
 }
