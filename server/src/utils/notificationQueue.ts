@@ -1,4 +1,4 @@
-import * as fastq from "fastq";
+import { promise as queuePromise } from "fastq";
 import type { queueAsPromised } from "fastq";
 import { QueueError } from "shared/types/api/errors";
 import {
@@ -8,40 +8,50 @@ import {
 } from "shared/utils/result";
 import { EmailSender } from "server/features/notifications/senderCommon";
 import { emailNotificationWorker } from "server/features/notifications/emailNotificationWorker";
+import { logger } from "server/utils/logger";
 
 export enum NotificationTaskType {
   SEND_EMAIL_ACCEPTED,
   SEND_EMAIL_REJECTED,
 }
 
-export type NotificationTask = {
+export interface NotificationTask {
   type: NotificationTaskType;
   username: string;
   programItemId: string;
   programItemStartTime: string;
-};
+}
 
-let queue: queueAsPromised<NotificationTask>;
+let queue: queueAsPromised<NotificationTask> | null = null;
 
 export async function addNotificationsBulk(
   notifications: NotificationTask[],
 ): Promise<Result<boolean, QueueError>> {
-  if (notifications.length == 0) {
+  if (queue === null) {
+    logger.error("Queue not initialized!");
+    return makeErrorResult(QueueError.QUEUE_NOT_INITIALIZED);
+  }
+
+  if (notifications.length === 0) {
     return makeSuccessResult(true);
   }
 
   try {
-    notifications.forEach(addNotification);
+    const promises: Promise<Result<boolean, QueueError>>[] = [];
+    for (const notification of notifications) {
+      promises.push(addNotification(notification));
+    }
+    await Promise.allSettled(promises);
     return makeSuccessResult(true);
   } catch {
     return makeErrorResult(QueueError.FAILED_TO_PUSH);
   }
 }
 
-export async function addNotification(
+async function addNotification(
   notification: NotificationTask,
 ): Promise<Result<boolean, QueueError>> {
-  if (!queue) {
+  if (queue === null) {
     return makeErrorResult(QueueError.QUEUE_NOT_INITIALIZED);
   }
 
@@ -55,15 +65,16 @@ export async function addNotification(
 
 export function setupEmailNotificationQueue(
   sender: EmailSender,
-  workerCount: number = 1,
-): queueAsPromised<NotificationTask> {
-  queue = fastq.promise(
-    (notification) => emailNotificationWorker(notification, sender),
-    workerCount,
-  );
-  return queue;
-}
-
-export function getQueue(): queueAsPromised<NotificationTask> {
-  return queue;
+  workerCount = 1,
+): queueAsPromised<NotificationTask> | null {
+  try {
+    queue = queuePromise(
+      (notification) => emailNotificationWorker(notification, sender),
+      workerCount,
+    );
+    return queue;
+  } catch {
+    logger.error("Failed to setup email notification queue");
+  }
+  return null;
 }

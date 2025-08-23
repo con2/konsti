@@ -43,13 +43,22 @@ const startApp = async (): Promise<void> => {
     config.server().emailNotificationTrigger !== EmailNotificationTrigger.NONE
   ) {
     try {
-      const sender = new MailgunSender();
+      const sender = new MailgunSender({
+        username: config.server().mailgunUsername,
+        key: config.server().mailgunApiKey,
+        url: config.server().mailgunURL,
+        fromAddress: config.server().emailSendFromAddress,
+        apiDomain: config.server().mailgunApiDomain,
+      });
       setupEmailNotificationQueue(
         sender,
         config.server().emailNotificationQueueWorkerCount,
       );
     } catch (error) {
-      logger.error("%s", `Failed to initialize notification queue! ${error}`);
+      logger.error(
+        "%s",
+        `Failed to initialize notification queue! ${error.message}`,
+      );
     }
   }
 

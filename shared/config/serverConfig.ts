@@ -39,9 +39,11 @@ export interface ServerConfig {
   logMissingScheduleItems: boolean; // If scheduleItems is missing, program item is ignored
   emailNotificationQueueWorkerCount: number;
   emailNotificationTrigger: EmailNotificationTrigger;
+  emailSendFromAddress: string;
   mailgunURL: string;
   mailgunUsername: string;
-  mailgunAPIKey: string;
+  mailgunApiKey: string;
+  mailgunApiDomain: string;
 }
 
 const getAllowedCorsOrigins = (localOrigins: string[] = []): string[] => {
@@ -89,12 +91,16 @@ const commonConfig = {
   // Data checks
   logInvalidStartTimes: false,
   logMissingScheduleItems: false,
+
   // Email notifications
   emailNotificationTrigger: EmailNotificationTrigger.BOTH,
   emailNotificationQueueWorkerCount: 1,
+  emailSendFromAddress:
+    "Mailgun Sandbox <postmaster@sandbox87d156be6f1947fc968496d5ae717ab6.mailgun.org>",
   mailgunURL: process.env.MAILGUN_URL ?? "https://api.mailgun.net",
   mailgunUsername: process.env.MAILGUN_USERNAME ?? "",
-  mailgunAPIKey: process.env.MAILGUN_API_KEY ?? "",
+  mailgunApiKey: process.env.MAILGUN_API_KEY ?? "",
+  mailgunApiDomain: "sandbox87d156be6f1947fc968496d5ae717ab6.mailgun.org",
 };
 
 const prodConfig = {

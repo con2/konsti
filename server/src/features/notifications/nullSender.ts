@@ -7,13 +7,17 @@ export class NullSender implements EmailSender {
     return this.out;
   }
 
+  getFromAddress(): string {
+    return "";
+  }
+
   async send(message: EmailMessage): Promise<EmailSendResponse> {
     this.out.push(message);
-    return {
+    return new Promise({
       id: "1",
       message: "",
       details: "",
       status: 200,
-    };
+    });
   }
 }

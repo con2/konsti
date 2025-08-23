@@ -1,21 +1,22 @@
 import { NotificationTask } from "server/utils/notificationQueue";
 
-export type EmailSendResponse = {
+export interface EmailSendResponse {
   id?: string;
   message?: string;
   status?: number;
   details?: string;
-};
+}
 
-export type EmailMessage = {
+export interface EmailMessage {
   from: string;
   to: string[];
   subject: string;
   body: string;
-};
+}
 
 export interface EmailSender {
   send: (message: EmailMessage) => Promise<EmailSendResponse>;
+  getFromAddress: () => string;
 }
 
 export function getEmailSubjectRejected(): string {

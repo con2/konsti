@@ -3,16 +3,29 @@ import FormData from "form-data";
 import { config } from "shared/config";
 import { EmailMessage, EmailSender, EmailSendResponse } from "./senderCommon";
 
+export interface MailgunSenderParams {
+  username: string;
+  key: string;
+  url: string;
+  fromAddress: string;
+  apiDomain: string;
+}
+
 export class MailgunSender implements EmailSender {
   private mailgun: Mailgun;
   private client;
+  private fromAddress: string;
+  private apiDomain: string;
 
-  constructor() {
-    const username = config.server().mailgunUsername;
-    const key = config.server().mailgunAPIKey;
-    const url = config.server().mailgunURL;
+  constructor(params: MailgunSenderParams) {
+    const username = params.username;
+    const key = params.key;
+    const url = params.url;
+    this.fromAddress = params.fromAddress;
+    this.apiDomain = params.domain;
 
     if (!username || !key || !url) {
+      // eslint-disable-next-line no-restricted-syntax
       throw new Error("No username, key or url set for mailgun!");
     }
 
@@ -20,11 +33,15 @@ export class MailgunSender implements EmailSender {
     this.client = this.mailgun.client({ username, key, url });
   }
 
+  getFromAddress(): string {
+    return this.fromAddress;
+  }
+
   async send(message: EmailMessage): Promise<EmailSendResponse> {
-    const data = await this.client.messages.create(
-      "sandbox87d156be6f1947fc968496d5ae717ab6.mailgun.org",
-      { ...message, text: message.body },
-    );
+    const data = await this.client.messages.create(this.apiDomain, {
+      ...message,
+      text: message.body,
+    });
     return data;
   }
 }
