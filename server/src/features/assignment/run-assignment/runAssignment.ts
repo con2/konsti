@@ -14,7 +14,6 @@ import { findDirectSignups } from "server/features/direct-signup/directSignupRep
 import {
   Result,
   isErrorResult,
-  makeErrorResult,
   makeSuccessResult,
   unwrapResult,
 } from "shared/utils/result";
@@ -23,30 +22,25 @@ import { prepareAssignmentParams } from "server/features/assignment/utils/prepar
 
 interface RunAssignmentParams {
   assignmentAlgorithm: AssignmentAlgorithm;
-  assignmentTime?: string;
-  useDynamicStartTime?: boolean;
+  assignmentTime: string | null;
   assignmentDelay?: number;
 }
 
 export const runAssignment = async ({
   assignmentAlgorithm,
   assignmentTime,
-  useDynamicStartTime = false,
   assignmentDelay = 0,
 }: RunAssignmentParams): Promise<
   Result<AssignmentResult, MongoDbError | AssignmentError>
 > => {
-  const assignmentTimeResult = useDynamicStartTime
-    ? await getDynamicStartTime()
-    : makeSuccessResult(assignmentTime);
+  // If assignmentTime is null, use dynamic time
+  const assignmentTimeResult = assignmentTime
+    ? makeSuccessResult(assignmentTime)
+    : await getDynamicStartTime();
   if (isErrorResult(assignmentTimeResult)) {
     return assignmentTimeResult;
   }
   const resolvedAssignmentTime = unwrapResult(assignmentTimeResult);
-
-  if (!resolvedAssignmentTime) {
-    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
-  }
 
   if (assignmentDelay) {
     logger.info(`Wait ${assignmentDelay / 1000}s for final requests`);

@@ -3,9 +3,19 @@ import { config } from "shared/config";
 import { ProgramItem } from "shared/types/models/programItem";
 import { TIMEZONE } from "shared/utils/initializeDayjs";
 
-export const getLotterySignupStartTime = (startTime: string): Dayjs => {
+const getProgramItemStartTime = (programItem: ProgramItem): string => {
+  const { startTimesByParentIds } = config.event();
+
+  const parentStartTime = startTimesByParentIds.get(programItem.parentId);
+
+  return parentStartTime ?? programItem.startTime;
+};
+
+export const getLotterySignupStartTime = (programItem: ProgramItem): Dayjs => {
   const { eventStartTime, preSignupStart, fixedLotterySignupTime } =
     config.event();
+
+  const startTime = getProgramItemStartTime(programItem);
 
   // Set timezone because hour comparison and setting hour value
   const timezoneStartTime = fixedLotterySignupTime
@@ -26,8 +36,9 @@ export const getLotterySignupStartTime = (startTime: string): Dayjs => {
   return timezoneStartTime;
 };
 
-export const getLotterySignupEndTime = (startTime: string): Dayjs => {
+export const getLotterySignupEndTime = (programItem: ProgramItem): Dayjs => {
   const { directSignupPhaseStart } = config.event();
+  const startTime = getProgramItemStartTime(programItem);
   return dayjs(startTime).subtract(directSignupPhaseStart, "minutes");
 };
 
@@ -56,7 +67,8 @@ export const getDirectSignupStartTime = (programItem: ProgramItem): Dayjs => {
 
   // 'twoPhaseSignupProgramTypes' signup times are configured with 'directSignupPhaseStart'
   if (twoPhaseSignupProgramTypes.includes(programItem.programType)) {
-    const directSignupStart = dayjs(programItem.startTime).subtract(
+    const startTime = getProgramItemStartTime(programItem);
+    const directSignupStart = dayjs(startTime).subtract(
       directSignupPhaseStart,
       "minutes",
     );
@@ -144,19 +156,19 @@ export const getDirectSignupEndTime = (programItem: ProgramItem): Dayjs => {
 };
 
 export const getLotterySignupNotStarted = (
-  startTime: string,
+  programItem: ProgramItem,
   timeNow: Dayjs,
 ): boolean => {
-  const lotterySignupStartTime = getLotterySignupStartTime(startTime);
+  const lotterySignupStartTime = getLotterySignupStartTime(programItem);
   return timeNow.isBefore(lotterySignupStartTime);
 };
 
 export const getLotterySignupInProgress = (
-  startTime: string,
+  programItem: ProgramItem,
   timeNow: Dayjs,
 ): boolean => {
-  const lotterySignupStartTime = getLotterySignupStartTime(startTime);
-  const lotterySignupEndTime = getLotterySignupEndTime(startTime);
+  const lotterySignupStartTime = getLotterySignupStartTime(programItem);
+  const lotterySignupEndTime = getLotterySignupEndTime(programItem);
   return (
     timeNow.isSameOrAfter(lotterySignupStartTime) &&
     timeNow.isSameOrBefore(lotterySignupEndTime)

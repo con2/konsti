@@ -38,6 +38,7 @@ export const kompassiProgramItemMapper = (
     return programItem.scheduleItems.map((scheduleItem) => {
       return {
         programItemId: scheduleItem.slug,
+        parentId: programItem.slug,
         title: scheduleItem.title,
         description: programItem.description,
         location: scheduleItem.location,

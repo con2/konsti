@@ -105,6 +105,7 @@ export enum State {
 
 export const ProgramItemSchema = z.object({
   programItemId: z.string(),
+  parentId: z.string(),
   title: z.string(),
   description: z.string(),
   location: z.string(),

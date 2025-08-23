@@ -1,11 +1,11 @@
 import { first } from "remeda";
-import dayjs from "dayjs";
 import { ListItem } from "server/types/assignmentTypes";
 import { getAssignmentBonus } from "server/features/assignment/utils/getAssignmentBonus";
 import { LotterySignup, User } from "shared/types/models/user";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import { logger } from "server/utils/logger";
 import { ProgramItem } from "shared/types/models/programItem";
+import { isStartTimeMatch } from "server/utils/isStartTimeMatch";
 
 interface GetListParams {
   attendeeGroups: readonly User[][];
@@ -31,11 +31,18 @@ export const getList = ({
     }
 
     const list = firstMember.lotterySignups
-      .filter(
-        (lotterySignup) =>
-          dayjs(lotterySignup.signedToStartTime).toISOString() ===
-          dayjs(assignmentTime).toISOString(),
-      )
+      .filter((lotterySignup) => {
+        const programItem = lotterySignupProgramItems.find(
+          (lotterySignupProgramItem) =>
+            lotterySignupProgramItem.programItemId ===
+            lotterySignup.programItemId,
+        );
+        return isStartTimeMatch(
+          lotterySignup.signedToStartTime,
+          assignmentTime,
+          programItem?.parentId,
+        );
+      })
       .map((lotterySignup) => {
         return {
           id:

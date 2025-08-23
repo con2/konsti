@@ -84,4 +84,5 @@ export interface EventConfig {
   >;
   enableRevolvingDoor: boolean;
   programGuideUrl: string;
+  startTimesByParentIds: Map<string, string>;
 }

@@ -69,7 +69,7 @@ export const ProgramItemHead = ({
   const timeNow = getTimeNow();
 
   const lotterySignupInProgress = getLotterySignupInProgress(
-    programItem.startTime,
+    programItem,
     timeNow,
   );
 

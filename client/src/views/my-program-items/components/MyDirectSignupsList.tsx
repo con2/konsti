@@ -2,42 +2,29 @@ import { ReactElement, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { sortBy, unique } from "remeda";
 import { DirectSignupsByStartTimes } from "./DirectSignupsByStartTimes";
-import { getMissedSignups } from "client/views/my-program-items/utils/getMissedSignups";
 import { config } from "shared/config";
 import { RaisedCard } from "client/components/RaisedCard";
 import {
   MyProgramHeader,
   MyProgramSecondaryText,
 } from "client/views/my-program-items/components/shared";
-import {
-  DirectSignupWithProgramItem,
-  LotterySignupWithProgramItem,
-} from "client/views/my-program-items/myProgramItemsSlice";
+import { DirectSignupWithProgramItem } from "client/views/my-program-items/myProgramItemsSlice";
 
 interface Props {
   directSignups: readonly DirectSignupWithProgramItem[];
-  lotterySignups: readonly LotterySignupWithProgramItem[];
 }
 
-export const MyDirectSignupsList = ({
-  directSignups,
-  lotterySignups,
-}: Props): ReactElement => {
+export const MyDirectSignupsList = ({ directSignups }: Props): ReactElement => {
   const { t } = useTranslation();
 
-  const [missedSignups, setMissedSignups] = useState<string[]>([]);
   const [startTimes, setStartTimes] = useState<string[]>([]);
-
-  useEffect(() => {
-    setMissedSignups(getMissedSignups(lotterySignups, directSignups));
-  }, [lotterySignups, directSignups]);
 
   useEffect(() => {
     const directSignupStartTimes = directSignups.map(
       (directSignup) => directSignup.programItem.startTime,
     );
-    setStartTimes([...directSignupStartTimes, ...missedSignups]);
-  }, [missedSignups, directSignups]);
+    setStartTimes(directSignupStartTimes);
+  }, [directSignups]);
 
   return (
     <RaisedCard data-testid="direct-signup-program-items-list">
@@ -53,7 +40,6 @@ export const MyDirectSignupsList = ({
             (directSignup) => directSignup.signedToStartTime,
           )}
           startTimes={unique(startTimes).sort()}
-          missedSignups={missedSignups}
         />
       )}
     </RaisedCard>

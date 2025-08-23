@@ -1,12 +1,14 @@
-import dayjs from "dayjs";
-import { first, sortBy } from "remeda";
+import { first, groupBy, shuffle } from "remeda";
 import { Group } from "server/types/assignmentTypes";
+import { isStartTimeMatch } from "server/utils/isStartTimeMatch";
 import { logger } from "server/utils/logger";
+import { ProgramItem } from "shared/types/models/programItem";
 import { User } from "shared/types/models/user";
 
 export const getGroups = (
   attendeeGroups: readonly User[][],
   assignmentTime: string,
+  lotterySignupProgramItems: readonly ProgramItem[],
 ): Group[] => {
   const results = attendeeGroups.flatMap((attendeeGroup) => {
     const firstMember = first(attendeeGroup);
@@ -19,15 +21,28 @@ export const getGroups = (
     }
 
     const lotterySignupsForStartTime = firstMember.lotterySignups.filter(
-      (lotterySignup) =>
-        dayjs(lotterySignup.signedToStartTime).toISOString() ===
-        dayjs(assignmentTime).toISOString(),
+      (lotterySignup) => {
+        const programItem = lotterySignupProgramItems.find(
+          (lotterySignupProgramItem) =>
+            lotterySignupProgramItem.programItemId ===
+            lotterySignup.programItemId,
+        );
+
+        return isStartTimeMatch(
+          lotterySignup.signedToStartTime,
+          assignmentTime,
+          programItem?.parentId,
+        );
+      },
     );
 
-    const sortedLotterySignups = sortBy(
-      lotterySignupsForStartTime,
-      (lotterySignup) => lotterySignup.priority,
-    );
+    // Sort by priority, randomize between same priority values
+    const sortedLotterySignups = Object.values(
+      groupBy(lotterySignupsForStartTime, (item) => item.priority),
+    ) // Group by priority
+      .map((group) => shuffle(group)) // Shuffle each group
+      .sort((a, b) => a[0].priority - b[0].priority) // Sort groups by priority, ascending
+      .flat();
 
     return {
       id:

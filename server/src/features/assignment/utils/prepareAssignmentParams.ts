@@ -57,19 +57,18 @@ export const prepareAssignmentParams = (
   programItems: ProgramItem[],
   directSignups: DirectSignupsForProgramItem[],
 ): AssignmentParams => {
-  // Remove invalid lottery signups from users
-  // Only include "twoPhaseSignupProgramTypes" and don't include "directSignupAlwaysOpen" program items
+  // Take lottery signups with "twoPhaseSignupProgramTypes" which are not in "directSignupAlwaysOpenIds"
   const validLotterySignupsUsers = getValidLotterySignupsUsers(
     users,
     programItems,
   );
 
-  // Only include "twoPhaseSignupProgramTypes" and don't include "directSignupAlwaysOpen" program items
+  // Take program items with "twoPhaseSignupProgramTypes" which are not in "directSignupAlwaysOpenIds"
   const validLotterySignupProgramItems = programItems.filter((programItem) =>
     isLotterySignupProgramItem(programItem),
   );
 
-  // Take program items with "twoPhaseSignupProgramTypes" which are not in "directSignupAlwaysOpenIds"
+  // Take direct signups with "twoPhaseSignupProgramTypes" which are not in "directSignupAlwaysOpenIds"
   const lotteryParticipantDirectSignups = getLotteryParticipantDirectSignups(
     directSignups,
     programItems,

@@ -200,7 +200,7 @@ export const autoAssignAttendees = async (): Promise<void> => {
 
   const runAssignmentResult = await runAssignment({
     assignmentAlgorithm: config.event().assignmentAlgorithm,
-    useDynamicStartTime: true,
+    assignmentTime: null,
     assignmentDelay: autoAssignDelay,
   });
   if (isErrorResult(runAssignmentResult)) {

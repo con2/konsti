@@ -1,4 +1,4 @@
-import { expect, test, afterEach, beforeEach } from "vitest";
+import { expect, test, afterEach, beforeEach, vi } from "vitest";
 import mongoose from "mongoose";
 import dayjs from "dayjs";
 import { faker } from "@faker-js/faker";
@@ -14,7 +14,7 @@ import { AssignmentResultStatus } from "server/types/resultTypes";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { saveProgramItems } from "server/features/program-item/programItemRepository";
-import { saveUser } from "server/features/user/userRepository";
+import { findUser, saveUser } from "server/features/user/userRepository";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import {
   mockPostDirectSignupRequest,
@@ -28,6 +28,8 @@ import {
   findDirectSignups,
   saveDirectSignup,
 } from "server/features/direct-signup/directSignupRepository";
+import { ProgramType } from "shared/types/models/programItem";
+import { EventLogAction } from "shared/types/models/eventLog";
 
 // This needs to be adjusted if test data is changed
 const expectedResultsCount = 20;
@@ -193,37 +195,6 @@ test("Should adjust attendee limits if there are previous signups from moved pro
   ]);
 });
 
-test("Assignment with no program items should return error with padg algorithm", async () => {
-  const newUsersCount = 1;
-  const groupSize = 0;
-  const numberOfGroups = 0;
-  const newProgramItemsCount = 0;
-  const testUsersCount = 0;
-
-  await generateTestData(
-    newUsersCount,
-    newProgramItemsCount,
-    groupSize,
-    numberOfGroups,
-    testUsersCount,
-  );
-
-  const { eventStartTime } = config.event();
-  const assignmentAlgorithm = AssignmentAlgorithm.PADG;
-  const assignmentTime = dayjs(eventStartTime).add(2, "hours").toISOString();
-
-  const assignResults = unsafelyUnwrap(
-    await runAssignment({
-      assignmentAlgorithm,
-      assignmentTime,
-    }),
-  );
-
-  expect(assignResults.status).toEqual(
-    AssignmentResultStatus.NO_STARTING_PROGRAM_ITEMS,
-  );
-});
-
 test("Assignment with no attendees should return error with padg algorithm", async () => {
   const newUsersCount = 0;
   const groupSize = 0;
@@ -252,5 +223,126 @@ test("Assignment with no attendees should return error with padg algorithm", asy
 
   expect(assignResults.status).toEqual(
     AssignmentResultStatus.NO_LOTTERY_SIGNUPS,
+  );
+});
+
+test("Should assign user with 'startTimesByParentIds' program item", async () => {
+  const parentStartTime = dayjs(testProgramItem.startTime)
+    .add(30, "minutes")
+    .toISOString();
+
+  vi.spyOn(config, "event").mockReturnValue({
+    ...config.event(),
+    twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
+    startTimesByParentIds: new Map([
+      [testProgramItem.parentId, parentStartTime],
+    ]),
+  });
+
+  await saveProgramItems([
+    { ...testProgramItem, minAttendance: 1, maxAttendance: 1 },
+  ]);
+  await saveUser(mockUser);
+  await saveLotterySignups({
+    username: mockUser.username,
+    lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
+  });
+
+  const assignmentAlgorithm = AssignmentAlgorithm.PADG;
+
+  const assignResults = unsafelyUnwrap(
+    await runAssignment({
+      assignmentAlgorithm,
+      assignmentTime: parentStartTime,
+    }),
+  );
+
+  expect(assignResults.status).toEqual(AssignmentResultStatus.SUCCESS);
+  expect(assignResults.results).toHaveLength(1);
+  expect(assignResults.results[0]).toMatchObject({
+    username: mockUser.username,
+    assignmentSignup: {
+      programItemId: testProgramItem.programItemId,
+      priority: 1,
+      signedToStartTime: testProgramItem.startTime,
+    },
+  });
+
+  const userAfterSave = unsafelyUnwrap(await findUser(mockUser.username));
+  expect(userAfterSave?.eventLogItems).toHaveLength(1);
+  expect(userAfterSave?.eventLogItems[0].action).toEqual(
+    EventLogAction.NEW_ASSIGNMENT,
+  );
+});
+
+test("Should assign group with 'startTimesByParentIds' program item", async () => {
+  const parentStartTime = dayjs(testProgramItem.startTime)
+    .add(30, "minutes")
+    .toISOString();
+
+  vi.spyOn(config, "event").mockReturnValue({
+    ...config.event(),
+    twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
+    startTimesByParentIds: new Map([
+      [testProgramItem.parentId, parentStartTime],
+    ]),
+  });
+
+  await saveProgramItems([
+    { ...testProgramItem, minAttendance: 2, maxAttendance: 2 },
+  ]);
+
+  const groupCode = "123-234-345";
+
+  await saveProgramItems([testProgramItem]);
+  await saveUser({ ...mockUser, groupCode, groupCreatorCode: groupCode });
+  await saveUser({ ...mockUser2, groupCode });
+
+  await saveUser(mockUser);
+  await saveLotterySignups({
+    username: mockUser.username,
+    lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
+  });
+
+  const assignmentAlgorithm = AssignmentAlgorithm.PADG;
+
+  const assignResults = unsafelyUnwrap(
+    await runAssignment({
+      assignmentAlgorithm,
+      assignmentTime: parentStartTime,
+    }),
+  );
+
+  expect(assignResults.status).toEqual(AssignmentResultStatus.SUCCESS);
+  expect(assignResults.results).toHaveLength(2);
+  expect(assignResults.results).toMatchObject([
+    {
+      username: mockUser.username,
+      assignmentSignup: {
+        programItemId: testProgramItem.programItemId,
+        priority: 1,
+        signedToStartTime: testProgramItem.startTime,
+      },
+    },
+    {
+      username: mockUser2.username,
+      assignmentSignup: {
+        programItemId: testProgramItem.programItemId,
+        priority: 1,
+        signedToStartTime: testProgramItem.startTime,
+      },
+    },
+  ]);
+
+  const user1AfterSave = unsafelyUnwrap(await findUser(mockUser.username));
+  expect(user1AfterSave?.eventLogItems).toHaveLength(1);
+  expect(user1AfterSave?.eventLogItems[0].action).toEqual(
+    EventLogAction.NEW_ASSIGNMENT,
+  );
+
+  const user2AfterSave = unsafelyUnwrap(await findUser(mockUser2.username));
+  expect(user2AfterSave?.eventLogItems).toHaveLength(1);
+  expect(user2AfterSave?.eventLogItems[0].action).toEqual(
+    EventLogAction.NEW_ASSIGNMENT,
   );
 });

@@ -1,6 +1,5 @@
 import { unique } from "remeda";
 import { logger } from "server/utils/logger";
-import { getStartingProgramItems } from "server/features/assignment/utils/getStartingProgramItems";
 import { runRandomAssignment } from "server/features/assignment/random/utils/runRandomAssignment";
 import { User } from "shared/types/models/user";
 import { ProgramItem } from "shared/types/models/programItem";
@@ -21,25 +20,11 @@ import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
 
 export const randomAssignment = (
   users: readonly User[],
-  programItems: readonly ProgramItem[],
+  startingProgramItems: readonly ProgramItem[],
   assignmentTime: string,
   lotteryParticipantDirectSignups: readonly DirectSignupsForProgramItem[],
 ): Result<AssignmentResult, AssignmentError> => {
   logger.debug(`***** Run Random Assignment for ${assignmentTime}`);
-  const startingProgramItems = getStartingProgramItems(
-    programItems,
-    assignmentTime,
-  );
-
-  if (startingProgramItems.length === 0) {
-    logger.debug("No starting program items, stop!");
-    return makeSuccessResult({
-      results: [],
-      message: "Random Assignment Result - No starting program items",
-      algorithm: AssignmentAlgorithm.RANDOM,
-      status: AssignmentResultStatus.NO_STARTING_PROGRAM_ITEMS,
-    });
-  }
 
   const {
     lotterySignupProgramItems,

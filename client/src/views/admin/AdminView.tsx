@@ -57,6 +57,7 @@ export const AdminView = (): ReactElement => {
 
   const getDropdownOptions = (): Option[] => {
     const visibleProgramItems = getVisibleProgramItems();
+    // TODO: Add logic for 'startTimesByParentIds' config
     const startTimes = visibleProgramItems.map(
       (programItem) => programItem.startTime,
     );

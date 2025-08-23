@@ -17,6 +17,7 @@ import {
 export const ProgramItemSchemaDb = z
   .object({
     programItemId: z.string(),
+    parentId: z.string(),
     title: z.string(),
     description: z.string(),
     location: z.string(),
@@ -49,6 +50,7 @@ export const ProgramItemSchemaDb = z
 const programItemSchema = new mongoose.Schema(
   {
     programItemId: { type: String, required: true },
+    parentId: { type: String, required: true },
     title: { type: String, required: true },
     description: { type: String, required: true },
     location: { type: String, required: true },

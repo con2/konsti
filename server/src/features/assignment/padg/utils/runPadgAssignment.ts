@@ -52,7 +52,11 @@ export const runPadgAssignment = (
   assignmentTime: string,
   lotteryParticipantDirectSignups: readonly DirectSignupsForProgramItem[],
 ): Result<AssignmentAlgorithmResult, AssignmentError> => {
-  const groups = getGroups(attendeeGroups, assignmentTime);
+  const groups = getGroups(
+    attendeeGroups,
+    assignmentTime,
+    lotterySignupProgramItems,
+  );
   const events = getEvents(
     lotterySignupProgramItems,
     lotteryParticipantDirectSignups,

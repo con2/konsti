@@ -1,4 +1,4 @@
-import dayjs from "dayjs";
+import { isStartTimeMatch } from "server/utils/isStartTimeMatch";
 import { logger } from "server/utils/logger";
 import { ProgramItem } from "shared/types/models/programItem";
 
@@ -7,16 +7,14 @@ export const getStartingProgramItems = (
   startTime: string,
 ): readonly ProgramItem[] => {
   logger.debug("Get starting program items");
-  const startingProgramItems: ProgramItem[] = [];
-  const selectedStartTime = dayjs(startTime);
 
-  // Get program items that start at defined time
-  for (const programItem of programItems) {
-    const programItemStartTime = dayjs(programItem.startTime);
-    if (programItemStartTime.isSame(selectedStartTime, "minute")) {
-      startingProgramItems.push(programItem);
-    }
-  }
+  const startingProgramItems = programItems.filter((programItem) => {
+    return isStartTimeMatch(
+      programItem.startTime,
+      startTime,
+      programItem.parentId,
+    );
+  });
 
   logger.debug(
     `Found ${startingProgramItems.length} program items for this start time`,

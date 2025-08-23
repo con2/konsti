@@ -34,6 +34,7 @@ import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 import { ProgramItemModel } from "server/features/program-item/programItemSchema";
 import { addEventLogItems } from "server/features/user/event-log/eventLogRepository";
 import { EventLogAction } from "shared/types/models/eventLog";
+import { AssignmentResultStatus } from "server/types/resultTypes";
 
 // This needs to be adjusted if test data is changed
 const expectedResultsCount = 18;
@@ -792,4 +793,72 @@ describe("Assignment with first time bonus", () => {
       priority: 3,
     });
   });
+});
+
+test("Assignment with no program items should return error", async () => {
+  const newUsersCount = 1;
+  const groupSize = 0;
+  const numberOfGroups = 0;
+  const newProgramItemsCount = 0;
+  const testUsersCount = 0;
+
+  await generateTestData(
+    newUsersCount,
+    newProgramItemsCount,
+    groupSize,
+    numberOfGroups,
+    testUsersCount,
+  );
+
+  const { eventStartTime } = config.event();
+  const assignmentAlgorithm = AssignmentAlgorithm.PADG;
+  const assignmentTime = dayjs(eventStartTime).add(2, "hours").toISOString();
+
+  const assignResults = unsafelyUnwrap(
+    await runAssignment({
+      assignmentAlgorithm,
+      assignmentTime,
+    }),
+  );
+
+  expect(assignResults.status).toEqual(
+    AssignmentResultStatus.NO_STARTING_PROGRAM_ITEMS,
+  );
+});
+
+test("Program item with parent startTime from 'startTimesByParentIds' should not be picked for assignment on program item's own start time", async () => {
+  const parentStartTime = dayjs(testProgramItem.startTime)
+    .add(30, "minutes")
+    .toISOString();
+
+  vi.spyOn(config, "event").mockReturnValue({
+    ...config.event(),
+    twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
+    startTimesByParentIds: new Map([
+      [testProgramItem.parentId, parentStartTime],
+    ]),
+  });
+
+  await saveProgramItems([
+    { ...testProgramItem, minAttendance: 1, maxAttendance: 1 },
+  ]);
+  await saveUser(mockUser);
+  await saveLotterySignups({
+    username: mockUser.username,
+    lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
+  });
+
+  const assignmentAlgorithm = AssignmentAlgorithm.RANDOM;
+
+  const assignResults = unsafelyUnwrap(
+    await runAssignment({
+      assignmentAlgorithm,
+      // testProgramItem should be ignored since startup time is determined via parent
+      assignmentTime: testProgramItem.startTime,
+    }),
+  );
+
+  expect(assignResults.status).toEqual(
+    AssignmentResultStatus.NO_STARTING_PROGRAM_ITEMS,
+  );
 });

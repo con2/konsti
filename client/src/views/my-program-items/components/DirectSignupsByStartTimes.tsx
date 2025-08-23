@@ -1,6 +1,4 @@
 import { ReactElement } from "react";
-import styled from "styled-components";
-import { useTranslation } from "react-i18next";
 import { capitalize } from "remeda";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
 import { DirectSignupItem } from "client/views/my-program-items/components/DirectSignupItem";
@@ -13,16 +11,12 @@ import { DirectSignupWithProgramItem } from "client/views/my-program-items/myPro
 interface Props {
   directSignups: readonly DirectSignupWithProgramItem[];
   startTimes: readonly string[];
-  missedSignups: readonly string[];
 }
 
 export const DirectSignupsByStartTimes = ({
   directSignups,
   startTimes,
-  missedSignups,
 }: Props): ReactElement => {
-  const { t } = useTranslation();
-
   return (
     <>
       {startTimes.map((startTime) => {
@@ -42,16 +36,6 @@ export const DirectSignupsByStartTimes = ({
                   />
                 );
               })}
-
-              {missedSignups.map((missedSignup) => {
-                if (missedSignup === startTime) {
-                  return (
-                    <NoSignupText key={missedSignup}>
-                      {t("noLotterySignupResult")}
-                    </NoSignupText>
-                  );
-                }
-              })}
             </MyProgramList>
           </div>
         );
@@ -59,7 +43,3 @@ export const DirectSignupsByStartTimes = ({
     </>
   );
 };
-
-const NoSignupText = styled.p`
-  color: ${(props) => props.theme.textSecondary};
-`;
