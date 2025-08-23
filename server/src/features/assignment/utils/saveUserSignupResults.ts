@@ -4,6 +4,7 @@ import {
   getGlobalNotificationQueueService,
   NotificationTaskType,
 } from "server/utils/notificationQueue";
+import { logger } from "@sentry/node";
 import { UserAssignmentResult } from "shared/types/models/result";
 import {
   delDirectSignup,
@@ -35,6 +36,7 @@ import { isStartTimeMatch } from "server/utils/isStartTimeMatch";
 import { serverConfig } from "shared/config/serverConfig";
 import { EmailNotificationTrigger } from "shared/types/emailNotification";
 import { findSettings } from "server/features/settings/settingsRepository";
+import { Settings } from "shared/types/models/settings";
 
 interface SaveUserSignupResultsParams {
   assignmentTime: string;
@@ -54,10 +56,14 @@ export const saveUserSignupResults = async ({
   const queueService = getGlobalNotificationQueueService();
 
   const settingsResult = await findSettings();
+  let settings: Settings | null = null;
   if (isErrorResult(settingsResult)) {
-    return settingsResult;
+    logger.error(
+      "Failed to find settings. Do not queue notification for this assingment.",
+    );
+  } else {
+    settings = unwrapResult(settingsResult);
   }
-  const settings = unwrapResult(settingsResult);
   // Remove previous lottery result for the same start time
   // This does not remove non-lottery signups or previous signups from moved program items
   const delAssignmentSignupsByStartTimeResult =
@@ -166,8 +172,9 @@ export const saveUserSignupResults = async ({
 
   // Add SEND_EMAIL_ACCEPTED to notification queue
   if (
-    settings.emailNotificationTrigger === EmailNotificationTrigger.ACCEPTED ||
-    settings.emailNotificationTrigger === EmailNotificationTrigger.BOTH
+    settings !== null &&
+    (settings.emailNotificationTrigger === EmailNotificationTrigger.ACCEPTED ||
+      settings.emailNotificationTrigger === EmailNotificationTrigger.BOTH)
   ) {
     if (queueService === null) {
       return makeErrorResult(QueueError.QUEUE_NOT_INITIALIZED);
@@ -251,8 +258,10 @@ export const saveUserSignupResults = async ({
 
     // Add SEND_EMAIL_REJECTED to notification queue
     if (
-      settings.emailNotificationTrigger === EmailNotificationTrigger.REJECTED ||
-      settings.emailNotificationTrigger === EmailNotificationTrigger.BOTH
+      settings !== null &&
+      (settings.emailNotificationTrigger ===
+        EmailNotificationTrigger.REJECTED ||
+        settings.emailNotificationTrigger === EmailNotificationTrigger.BOTH)
     ) {
       if (queueService === null) {
         return makeErrorResult(QueueError.QUEUE_NOT_INITIALIZED);
