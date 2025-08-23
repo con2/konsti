@@ -38,10 +38,10 @@ export interface ServerConfig {
   logInvalidStartTimes: boolean;
   logMissingScheduleItems: boolean; // If scheduleItems is missing, program item is ignored
   emailNotificationQueueWorkerCount: number;
-  emailNotificationTrigger: EmailNotificationTrigger,
-  mailgunURL: string
-  mailgunUsername: string
-  mailgunAPIKey: string
+  emailNotificationTrigger: EmailNotificationTrigger;
+  mailgunURL: string;
+  mailgunUsername: string;
+  mailgunAPIKey: string;
 }
 
 const getAllowedCorsOrigins = (localOrigins: string[] = []): string[] => {

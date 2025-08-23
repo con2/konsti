@@ -289,7 +289,9 @@ export const submitFinalizeLogin = (
 export const submitUpdateUserEmailAddress = (
   email: string,
 ): AppThunk<Promise<UpdateUserEmailAddressErrorMessage | null>> => {
-  return async (dispatch): Promise<UpdateUserEmailAddressErrorMessage | null> => {
+  return async (
+    dispatch,
+  ): Promise<UpdateUserEmailAddressErrorMessage | null> => {
     const updateEmailResponse = await postUpdateUserEmailAddress(email);
 
     if (updateEmailResponse.status === "error") {

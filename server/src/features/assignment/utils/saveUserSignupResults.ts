@@ -157,15 +157,19 @@ export const saveUserSignupResults = async ({
   }
 
   // Add SEND_EMAIL_ACCEPTED to notification queue
-  if (serverConfig.emailNotificationTrigger === EmailNotificationTrigger.ACCEPTED
-    || serverConfig.emailNotificationTrigger === EmailNotificationTrigger.BOTH
+  if (
+    serverConfig.emailNotificationTrigger ===
+      EmailNotificationTrigger.ACCEPTED ||
+    serverConfig.emailNotificationTrigger === EmailNotificationTrigger.BOTH
   ) {
-    const newAssingmentEmailNotificationsResult = await addNotificationsBulk(finalResults.map((result) => ({
-      type: NotificationTaskType.SEND_EMAIL_ACCEPTED,
-      username: result.username,
-      programItemId: result.assignmentSignup.programItemId,
-      programItemStartTime: result.assignmentSignup.signedToStartTime
-    })));
+    const newAssingmentEmailNotificationsResult = await addNotificationsBulk(
+      finalResults.map((result) => ({
+        type: NotificationTaskType.SEND_EMAIL_ACCEPTED,
+        username: result.username,
+        programItemId: result.assignmentSignup.programItemId,
+        programItemStartTime: result.assignmentSignup.signedToStartTime,
+      })),
+    );
 
     if (isErrorResult(newAssingmentEmailNotificationsResult)) {
       return newAssingmentEmailNotificationsResult;
@@ -235,15 +239,20 @@ export const saveUserSignupResults = async ({
     }
 
     // Add SEND_EMAIL_REJECTED to notification queue
-    if (serverConfig.emailNotificationTrigger === EmailNotificationTrigger.REJECTED
-      || serverConfig.emailNotificationTrigger === EmailNotificationTrigger.BOTH) {
+    if (
+      serverConfig.emailNotificationTrigger ===
+        EmailNotificationTrigger.REJECTED ||
+      serverConfig.emailNotificationTrigger === EmailNotificationTrigger.BOTH
+    ) {
       const noAssingmentEmailNotificationsResult = await addNotificationsBulk(
-          noAssignmentLotterySignupUsernames.map((noAssignmentLotterySignupUsername) => ({
-          type: NotificationTaskType.SEND_EMAIL_REJECTED,
-          username: noAssignmentLotterySignupUsername,
-          programItemId: "",
-          programItemStartTime: assignmentTime
-        }))
+        noAssignmentLotterySignupUsernames.map(
+          (noAssignmentLotterySignupUsername) => ({
+            type: NotificationTaskType.SEND_EMAIL_REJECTED,
+            username: noAssignmentLotterySignupUsername,
+            programItemId: "",
+            programItemStartTime: assignmentTime,
+          }),
+        ),
       );
 
       if (isErrorResult(noAssingmentEmailNotificationsResult)) {

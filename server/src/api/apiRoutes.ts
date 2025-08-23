@@ -2,7 +2,8 @@ import express from "express";
 import {
   postKompassiLoginCallback,
   postKompassiLoginRedirect,
-  postKompassiLogoutRedirect, postUpdateUserEmailAddress,
+  postKompassiLogoutRedirect,
+  postUpdateUserEmailAddress,
   postVerifyKompassiLogin,
 } from "server/features/kompassi-login/kompassiLoginController";
 import { postFeedback } from "server/features/feedback/feedbackController";

@@ -41,7 +41,8 @@ const loginSlice = createSlice({
         kompassiUsernameAccepted: action.payload.kompassiUsernameAccepted,
         kompassiId: action.payload.kompassiId,
         email: action.payload.email,
-        emailNotificationPermitAsked: action.payload.emailNotificationPermitAsked,
+        emailNotificationPermitAsked:
+          action.payload.emailNotificationPermitAsked,
       };
     },
 
@@ -75,7 +76,8 @@ const loginSlice = createSlice({
         username: action.payload.username,
         kompassiUsernameAccepted: action.payload.kompassiUsernameAccepted,
         email: action.payload.email,
-        emailNotificationPermitAsked: action.payload.emailNotificationPermitAsked,
+        emailNotificationPermitAsked:
+          action.payload.emailNotificationPermitAsked,
         jwt: action.payload.jwt,
       };
     },

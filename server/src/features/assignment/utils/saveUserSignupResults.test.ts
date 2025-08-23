@@ -33,15 +33,15 @@ import { EventLogAction } from "shared/types/models/eventLog";
 import { config } from "shared/config";
 import { NullSender } from "server/features/notifications/nullSender";
 
-let queue: queueAsPromised<NotificationTask>
-const sender = new NullSender()
+let queue: queueAsPromised<NotificationTask>;
+const sender = new NullSender();
 
 beforeEach(async () => {
   await mongoose.connect(globalThis.__MONGO_URI__, {
     dbName: faker.string.alphanumeric(10),
   });
   if (!queue) {
-    queue = setupEmailNotificationQueue(sender, 1)
+    queue = setupEmailNotificationQueue(sender, 1);
   }
   queue.pause();
 });
@@ -183,9 +183,13 @@ test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items for 'startTime
   const queueAfterUserSignup = queue.getQueue();
   expect(queueAfterUserSignup).toHaveLength(2);
   expect(queueAfterUserSignup[0].username).toEqual(mockUser.username);
-  expect(queueAfterUserSignup[0].type).toEqual(NotificationTaskType.SEND_EMAIL_ACCEPTED);
+  expect(queueAfterUserSignup[0].type).toEqual(
+    NotificationTaskType.SEND_EMAIL_ACCEPTED,
+  );
   expect(queueAfterUserSignup[1].username).toEqual(mockUser2.username);
-  expect(queueAfterUserSignup[1].type).toEqual(NotificationTaskType.SEND_EMAIL_REJECTED);
+  expect(queueAfterUserSignup[1].type).toEqual(
+    NotificationTaskType.SEND_EMAIL_REJECTED,
+  );
 
   queue.resume();
   await queue.drained();
@@ -195,19 +199,20 @@ Olet ollut onnekas ja paasit ohjelmaan Test program item
 Ohjelma alkaa 2019-07-26T14:00:00.000Z.
 
 Terveisin Konsti.`;
-  const expectedAcceptedSubject = "Sinut on hyvaksytty ohjelmaan Test program item";
+  const expectedAcceptedSubject =
+    "Sinut on hyvaksytty ohjelmaan Test program item";
   const expectedRejectedBody = `Hei ${mockUser2.username}!
 Et paassyt arvonnassa yhteenkaan ohjelmaan johon ilmoittauduit.
 
 Terveisin Konsti.`;
   const expectedRejectedSubject = "Et paassyt arvonnassa yhteenkaan ohjelmaan";
 
-  expect(messages[0].body).toEqual(expectedAcceptedBody)
-  expect(messages[0].subject).toEqual(expectedAcceptedSubject)
-  expect(messages[0].to).toEqual(["user@example.com"])
-  expect(messages[1].body).toEqual(expectedRejectedBody)
-  expect(messages[1].subject).toEqual(expectedRejectedSubject)
-  expect(messages[1].to).toEqual(["user@example.com"])
+  expect(messages[0].body).toEqual(expectedAcceptedBody);
+  expect(messages[0].subject).toEqual(expectedAcceptedSubject);
+  expect(messages[0].to).toEqual(["user@example.com"]);
+  expect(messages[1].body).toEqual(expectedRejectedBody);
+  expect(messages[1].subject).toEqual(expectedRejectedSubject);
+  expect(messages[1].to).toEqual(["user@example.com"]);
 
   const queueAfterUserSignup = queue.getQueue();
   expect(queueAfterUserSignup).toHaveLength(2);

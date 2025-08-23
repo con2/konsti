@@ -134,26 +134,28 @@ export const FinalizeRegistration = (
               emailNotificationsEnabled={emailNotificationsEnabled}
               onEmailChange={() => setServerError(null)}
               onNotificationChange={handleEmailNotificationChange}
-              register={(fieldName: string) => register(fieldName, {
-                required: emailNotificationsEnabled
-                  ? t("validation.required")
-                  : false,
-                minLength: {
-                  value: USERNAME_LENGTH_MIN,
-                  message: t("validation.tooShort", {
-                    length: USERNAME_LENGTH_MIN,
-                  }),
-                },
-                maxLength: {
-                  value: USERNAME_LENGTH_MAX,
-                  message: t("validation.tooLong", {
-                    length: USERNAME_LENGTH_MAX,
-                  }),
-                },
-                onChange: () => {
-                  setServerError(null);
-                },
-              })}
+              register={(fieldName: string) =>
+                register(fieldName, {
+                  required: emailNotificationsEnabled
+                    ? t("validation.required")
+                    : false,
+                  minLength: {
+                    value: USERNAME_LENGTH_MIN,
+                    message: t("validation.tooShort", {
+                      length: USERNAME_LENGTH_MIN,
+                    }),
+                  },
+                  maxLength: {
+                    value: USERNAME_LENGTH_MAX,
+                    message: t("validation.tooLong", {
+                      length: USERNAME_LENGTH_MAX,
+                    }),
+                  },
+                  onChange: () => {
+                    setServerError(null);
+                  },
+                })
+              }
             />
           </FormRow>
         </InputContainer>
@@ -210,7 +212,6 @@ const FormFieldError = styled.div`
 const StyledInput = styled(UncontrolledInput)`
   width: min(250px, 100%);
 `;
-
 
 const FormRow = styled.div`
   align-items: center;

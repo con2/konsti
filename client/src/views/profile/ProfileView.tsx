@@ -36,7 +36,11 @@ export const ProfileView = (): ReactElement => {
           {t("button.logout")}
         </StyledButton>
       </UserInfoContainer>
-      <ChangePasswordForm isLocalLogin={isLocalLogin} email={email} usernameToUpdate={username} />
+      <ChangePasswordForm
+        isLocalLogin={isLocalLogin}
+        email={email}
+        usernameToUpdate={username}
+      />
     </Container>
   );
 };
