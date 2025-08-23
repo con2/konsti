@@ -21,7 +21,6 @@ export const MyFavoritesList = ({
 
   const sortedProgramItems: readonly ProgramItem[] = sortBy(
     favoriteProgramItems,
-
     (favoriteProgramItem) => favoriteProgramItem.startTime,
     (favoriteProgramItem) => favoriteProgramItem.title.toLowerCase(),
   );
