@@ -11,13 +11,6 @@ import {
 } from "./utils/notificationQueue";
 import { MailgunSender } from "server/features/notifications/mailgunSender";
 import { NullSender } from "server/features/notifications/nullSender";
-import { EmailNotificationTrigger } from "shared/types/emailNotification";
-import { findSettings } from "server/features/settings/settingsRepository";
-import {
-  isErrorResult,
-  isSuccessResult,
-  unwrapResult,
-} from "shared/utils/result";
 
 const startApp = async (): Promise<void> => {
   initializeDayjs();
@@ -51,28 +44,23 @@ const startApp = async (): Promise<void> => {
 
   // Initialize notification queue
   try {
-    const settingsResult = await findSettings();
-    if (isSuccessResult(settingsResult)) {
-      const sender =
-        config.server().emailSender === "null"
-          ? new NullSender()
-          : new MailgunSender({
-              username: config.server().mailgunUsername,
-              key: config.server().mailgunApiKey,
-              url: config.server().mailgunURL,
-              fromAddress: config.server().emailSendFromAddress,
-              apiDomain: config.server().mailgunApiDomain,
-            });
+    const sender =
+      config.server().emailSender === "null"
+        ? new NullSender()
+        : new MailgunSender({
+            username: config.server().mailgunUsername,
+            key: config.server().mailgunApiKey,
+            url: config.server().mailgunURL,
+            fromAddress: config.server().emailSendFromAddress,
+            apiDomain: config.server().mailgunApiDomain,
+          });
 
-      const notificationQueueService = createNotificationQueueService(
-        sender,
-        config.server().emailNotificationQueueWorkerCount,
-      );
-      setGlobalNotificationQueueService(notificationQueueService);
-      logger.info("Email notification queue initialized.");
-    } else {
-      logger.error("Failed to fetch setting!");
-    }
+    const notificationQueueService = createNotificationQueueService(
+      sender,
+      config.server().emailNotificationQueueWorkerCount,
+    );
+    setGlobalNotificationQueueService(notificationQueueService);
+    logger.info("Email notification queue initialized.");
   } catch (error) {
     logger.error("Failed to initialize notification queue! %s", error);
   }
