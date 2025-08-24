@@ -40,7 +40,6 @@ export const ChangeUserSettingsForm = ({
   );
   const [emailNotificationsEnabled, setEmailNotificationsEnabled] =
     useState<boolean>(email.length > 0);
-  const [emailValidationError, setEmailValidationError] = useState<string>("");
 
   const handlePasswordChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setChangePasswordInput(event.target.value);
@@ -133,9 +132,6 @@ export const ChangeUserSettingsForm = ({
 
   const handleEmailNotificationChange = (enabled: boolean): void => {
     setEmailNotificationsEnabled(enabled);
-    if (!enabled) {
-      setEmailValidationError("");
-    }
   };
 
   return (
@@ -158,9 +154,6 @@ export const ChangeUserSettingsForm = ({
               onChange={handleEmailChange}
             />
           </InputContainer>
-          {emailValidationError && (
-            <ErrorMessage>{emailValidationError}</ErrorMessage>
-          )}
           <RadioButton
             checked={!emailNotificationsEnabled}
             id={"email-notifications-disabled"}
@@ -253,18 +246,4 @@ const StyledEmailInput = styled(UncontrolledInput)`
       cursor: not-allowed;
       opacity: 0.6;
     `};
-`;
-
-const ErrorMessage = styled.div`
-  display: flex;
-  background: ${(props) => props.theme.backgroundHighlight};
-  color: ${(props) => props.theme.textError};
-  width: 50%;
-  padding: 0 10px;
-  margin-top: -8px;
-  font-size: ${(props) => props.theme.fontSizeSmall};
-
-  @media (max-width: ${(props) => props.theme.breakpointPhone}) {
-    width: 100%;
-  }
 `;
