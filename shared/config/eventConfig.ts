@@ -7,6 +7,7 @@ import { ProgramType } from "shared/types/models/programItem";
 
 // Event days
 const friday = "2025-09-05";
+const saturday = "2025-09-06";
 
 export const eventConfig: EventConfig = {
   // Event info
@@ -42,7 +43,7 @@ export const eventConfig: EventConfig = {
   hideParticipantListProgramTypes: [ProgramType.FLEAMARKET],
 
   // Direct signup open till program item endTime instead of startTime
-  directSignupOpenToEndProgramTypes: [ProgramType.FLEAMARKET],
+  directSignupOpenToEndProgramTypes: [], // TODO: Remove config
 
   // These program items have their signup always open even if signup mode is set to lottery
   directSignupAlwaysOpenIds: [],
@@ -77,4 +78,16 @@ export const eventConfig: EventConfig = {
 
   // Use fixed time to open all lottery signups for the whole event
   fixedLotterySignupTime: `${friday}T05:00:00Z`, // Fri 08:00 GMT+3
+
+  // Program items with parentId use startTime configured here
+  startTimesByParentIds: new Map([
+    [
+      "kirpputorin-ajanvaraus-perjantai",
+      `${friday}T12:00:00Z`, // Fri 15:00 GMT+3
+    ],
+    [
+      "kirpputorin-ajanvaraus-lauantai",
+      `${saturday}T06:30:00Z`, // Sat 09:30 GMT+3
+    ],
+  ]),
 };

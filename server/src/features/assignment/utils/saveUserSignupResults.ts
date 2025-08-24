@@ -27,6 +27,7 @@ import { getGroupMembersWithCreatorLotterySignups } from "server/features/assign
 import { getStartingProgramItems } from "server/features/assignment/utils/getStartingProgramItems";
 import { ProgramItem } from "shared/types/models/programItem";
 import { SignupRepositoryAddSignup } from "server/features/direct-signup/directSignupTypes";
+import { isStartTimeMatch } from "server/utils/isStartTimeMatch";
 
 interface SaveUserSignupResultsParams {
   assignmentTime: string;
@@ -69,6 +70,7 @@ export const saveUserSignupResults = async ({
     );
 
     if (existingSignup) {
+      // TODO: Add delDirectSignups to delete multiple
       const delSignupResult = await delDirectSignup({
         username: existingSignup.username,
         directSignupProgramItemId: existingSignup.programItemId,
@@ -159,8 +161,18 @@ export const saveUserSignupResults = async ({
   const allAttendees = [...groupCreators, ...groupMembers];
   const lotterySignups = getLotterySignups(allAttendees);
 
-  const lotterySignupsForStartingTime = lotterySignups.filter((lotterySignup) =>
-    dayjs(lotterySignup.signedToStartTime).isSame(dayjs(assignmentTime)),
+  const lotterySignupsForStartingTime = lotterySignups.filter(
+    (lotterySignup) => {
+      const programItem = startingProgramItems.find(
+        (startingProgramItem) =>
+          startingProgramItem.programItemId === lotterySignup.programItemId,
+      );
+      return isStartTimeMatch(
+        lotterySignup.signedToStartTime,
+        assignmentTime,
+        programItem?.parentId,
+      );
+    },
   );
 
   const lotterySignupUsernames = unique(

@@ -80,9 +80,7 @@ export const storeLotterySignup = async ({
   }
   const timeNow = unwrapResult(timeNowResult);
 
-  const lotterySignupStartTime = getLotterySignupStartTime(
-    programItem.startTime,
-  );
+  const lotterySignupStartTime = getLotterySignupStartTime(programItem);
 
   if (timeNow.isBefore(lotterySignupStartTime)) {
     const message = `Signup for program item ${programItemId} not open yet, opens ${lotterySignupStartTime.toISOString()}`;
@@ -94,7 +92,7 @@ export const storeLotterySignup = async ({
     };
   }
 
-  const lotterySignupEndTime = getLotterySignupEndTime(programItem.startTime);
+  const lotterySignupEndTime = getLotterySignupEndTime(programItem);
   const signupEnded = hasSignupEnded({
     signupEndTime: lotterySignupEndTime,
     timeNow,
@@ -193,7 +191,7 @@ export const removeLotterySignup = async (
   }
   const timeNow = unwrapResult(timeNowResult);
 
-  const lotterySignupEndTime = getLotterySignupEndTime(programItem.startTime);
+  const lotterySignupEndTime = getLotterySignupEndTime(programItem);
 
   const signupEnded = hasSignupEnded({
     signupEndTime: lotterySignupEndTime,

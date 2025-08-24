@@ -93,13 +93,6 @@ export const MyProgramItemsView = (): ReactElement => {
             ? directSignups
             : getUpcomingDirectSignups(directSignups)
         }
-        lotterySignups={getLotterySignups({
-          lotterySignups,
-          isGroupCreator,
-          getAllProgramItems: showAllProgramItems,
-          isInGroup,
-          groupMembers,
-        })}
       />
       {signupStrategy !== EventSignupStrategy.DIRECT && (
         <MyLotterySignupsList

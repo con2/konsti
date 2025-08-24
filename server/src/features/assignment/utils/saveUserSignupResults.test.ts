@@ -1,6 +1,7 @@
-import { expect, test, afterEach, beforeEach } from "vitest";
+import { expect, test, afterEach, beforeEach, vi } from "vitest";
 import mongoose from "mongoose";
 import { faker } from "@faker-js/faker";
+import dayjs from "dayjs";
 import { findUsers, saveUser } from "server/features/user/userRepository";
 import {
   testProgramItem,
@@ -23,6 +24,7 @@ import { saveUserSignupResults } from "server/features/assignment/utils/saveUser
 import { UserAssignmentResult } from "shared/types/models/result";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { EventLogAction } from "shared/types/models/eventLog";
+import { config } from "shared/config";
 
 beforeEach(async () => {
   await mongoose.connect(globalThis.__MONGO_URI__, {
@@ -31,6 +33,7 @@ beforeEach(async () => {
 });
 
 afterEach(async () => {
+  vi.resetAllMocks();
   await mongoose.disconnect();
 });
 
@@ -67,6 +70,76 @@ test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items", async () => 
 
   await saveUserSignupResults({
     assignmentTime: testProgramItem.startTime,
+    results,
+    users,
+    programItems,
+  });
+
+  const usersAfterSave = unsafelyUnwrap(await findUsers());
+
+  const usersWithAssignEventLogItem = usersAfterSave.filter((user) => {
+    return user.eventLogItems.find(
+      (eventLogItem) => eventLogItem.action === EventLogAction.NEW_ASSIGNMENT,
+    );
+  });
+
+  expect(usersWithAssignEventLogItem).toHaveLength(1);
+  expect(usersWithAssignEventLogItem[0].username).toEqual(mockUser.username);
+
+  const usersWithNoAssignEventLogItem = usersAfterSave.filter((user) => {
+    return user.eventLogItems.find(
+      (eventLogItem) => eventLogItem.action === EventLogAction.NO_ASSIGNMENT,
+    );
+  });
+
+  expect(usersWithNoAssignEventLogItem).toHaveLength(1);
+  expect(usersWithNoAssignEventLogItem[0].username).toEqual(mockUser2.username);
+});
+
+test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items for 'startTimesByParentIds' program item", async () => {
+  const parentStartTime = dayjs(testProgramItem.startTime)
+    .add(30, "minutes")
+    .toISOString();
+
+  vi.spyOn(config, "event").mockReturnValue({
+    ...config.event(),
+    startTimesByParentIds: new Map([
+      [testProgramItem.parentId, parentStartTime],
+    ]),
+  });
+
+  await saveUser(mockUser);
+  await saveUser(mockUser2);
+
+  await saveProgramItems([
+    { ...testProgramItem, minAttendance: 1, maxAttendance: 1 },
+  ]);
+
+  await saveLotterySignups({
+    username: mockUser.username,
+    lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
+  });
+  await saveLotterySignups({
+    username: mockUser2.username,
+    lotterySignups: [{ ...mockLotterySignups[0], priority: 2 }],
+  });
+
+  const results: UserAssignmentResult[] = [
+    {
+      username: mockUser.username,
+      assignmentSignup: {
+        programItemId: testProgramItem.programItemId,
+        priority: 1,
+        signedToStartTime: testProgramItem.startTime,
+      },
+    },
+  ];
+
+  const users = unsafelyUnwrap(await findUsers());
+  const programItems = unsafelyUnwrap(await findProgramItems());
+
+  await saveUserSignupResults({
+    assignmentTime: parentStartTime,
     results,
     users,
     programItems,

@@ -7,6 +7,7 @@ import { User } from "shared/types/models/user";
 import { ProgramItem } from "shared/types/models/programItem";
 import { RunRandomAndPadgInput } from "server/types/resultTypes";
 
+// TODO: When using PADG+random, this is called twice - lift higher
 export const getRandomAndPadgInput = (
   users: readonly User[],
   startingProgramItems: readonly ProgramItem[],

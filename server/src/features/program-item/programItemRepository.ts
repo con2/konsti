@@ -82,6 +82,7 @@ export const saveProgramItems = async (
   const bulkOps = updatedProgramItems.map((programItem) => {
     const newProgramItem: Omit<ProgramItem, "popularity"> = {
       programItemId: programItem.programItemId,
+      parentId: programItem.parentId,
       title: programItem.title,
       description: programItem.description,
       location: programItem.location,

@@ -191,8 +191,6 @@ export const translationEN = {
   signupUnsavedChanges: "Unsaved changes",
   closingMessage: "Konsti is closed and will open closer to the next event.",
   details: "details",
-  noLotterySignupResult:
-    "Unfortunately, you didn't get a spot in any program item in the lottery.",
   invalidProgramItemId:
     "Program item {{PROGRAM_ITEM_ID}} not found. Either the program item does not use Konsti for signups or the identifier is incorrect.",
   feedbackTitle: "Feedback",

@@ -5,7 +5,6 @@ import {
   AssignmentResultStatus,
   AssignmentResult,
 } from "server/types/resultTypes";
-import { getStartingProgramItems } from "server/features/assignment/utils/getStartingProgramItems";
 import { getRandomAndPadgInput } from "server/features/assignment/utils/getRandomAndPadgInput";
 import { runPadgAssignment } from "server/features/assignment/padg/utils/runPadgAssignment";
 import { logger } from "server/utils/logger";
@@ -21,25 +20,11 @@ import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
 
 export const padgAssignment = (
   users: readonly User[],
-  programItems: readonly ProgramItem[],
+  startingProgramItems: readonly ProgramItem[],
   assignmentTime: string,
   lotteryParticipantDirectSignups: readonly DirectSignupsForProgramItem[],
 ): Result<AssignmentResult, AssignmentError> => {
   logger.debug(`***** Run Padg Assignment for ${assignmentTime}`);
-  const startingProgramItems = getStartingProgramItems(
-    programItems,
-    assignmentTime,
-  );
-
-  if (startingProgramItems.length === 0) {
-    logger.debug("No starting program items, stop!");
-    return makeSuccessResult({
-      results: [],
-      message: "Padg Assignment Result - No starting program items",
-      algorithm: AssignmentAlgorithm.PADG,
-      status: AssignmentResultStatus.NO_STARTING_PROGRAM_ITEMS,
-    });
-  }
 
   const {
     lotterySignupProgramItems,

@@ -13,6 +13,7 @@ import {
 
 export const testProgramItem: ProgramItem = {
   programItemId: "test-program-item",
+  parentId: "test-program-item",
   title: "Test program item",
   description: "Test program item description",
   location: "Test location",
@@ -55,6 +56,7 @@ export const testProgramItem: ProgramItem = {
 
 export const testProgramItem2: ProgramItem = {
   programItemId: "test-program-item-2",
+  parentId: "test-program-item-2",
   title: "Test program item 2",
   description: "Test program item description",
   location: "Test location",

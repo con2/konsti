@@ -93,9 +93,7 @@ export const ProgramItemLotterySignup = ({
     lotterySignups,
   );
 
-  const lotterySignupStartTime = getLotterySignupStartTime(
-    programItem.startTime,
-  );
+  const lotterySignupStartTime = getLotterySignupStartTime(programItem);
 
   const timeNow = getTimeNow();
   const lotterySignupOpen = timeNow.isSameOrAfter(lotterySignupStartTime);

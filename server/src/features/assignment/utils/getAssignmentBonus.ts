@@ -13,6 +13,7 @@ export const getAssignmentBonus = (
   /** First time bonus */
 
   // Get group members with direct signups or NEW_ASSIGNMENT event log items
+  // TODO: Should filter out directSignups and eventLogItems with current assignmentTime so possible re-assignment is not affected
   const [groupMembersWithDirectSignups, groupMembersWithoutDirectSignups] =
     partition(attendeeGroup, (groupMember) => {
       const previousDirectSignup = lotteryParticipantDirectSignups.find(

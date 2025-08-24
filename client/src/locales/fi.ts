@@ -192,8 +192,6 @@ export const translationFI = {
   closingMessage:
     "Konsti on suljettu ja avautuu lähempänä seuraavaa tapahtumaa.",
   details: "lisätietoja",
-  noLotterySignupResult:
-    "Valitettavasti et mahtunut mihinkään ohjelmanumeroon arvonnassa.",
   invalidProgramItemId:
     "Ohjelmanumeroa {{PROGRAM_ITEM_ID}} ei löydy. Joko ohjelmanumeroon ei ilmoittauduta Konstin avulla tai tunniste on virheellinen.",
   feedbackTitle: "Palaute",
@@ -363,7 +361,7 @@ export const translationFI = {
     signupCondition: {
       entryFeeInfo:
         "Ymmärrän, että työpajaan kuuluu materiaalimaksu {{ENTRY_FEE}}.",
-      k16: "Peli sisältää raskaita teemoja ja/tai väkivalta. Laittamalla rastin tähän ruutuun vakuutan olevani pelin aikana vähintään 16-vuotias.",
+      k16: "Peli sisältää raskaita teemoja ja/tai väkivaltaa. Laittamalla rastin tähän ruutuun vakuutan olevani pelin aikana vähintään 16-vuotias.",
       k18: "Peli sisältää hahmojen välistä flirttailua ja mahdollisesti muitakin aikuisempia teemoja. Turvallisemman tilan periaatteiden noudattamiseksi otamme peliin vain täysi-ikäisiä pelaajia. Laittamalla rastin tähän ruutuun vakuutan olevani pelin aikana vähintään 18-vuotias.",
     },
     signupType: {

@@ -42,16 +42,14 @@ export const SignupHelpText = ({
 
   const timeNow = getTimeNow();
 
-  const lotterySignupStartTime = getLotterySignupStartTime(
-    programItem.startTime,
-  );
-  const lotterySignupEndTime = getLotterySignupEndTime(programItem.startTime);
+  const lotterySignupStartTime = getLotterySignupStartTime(programItem);
+  const lotterySignupEndTime = getLotterySignupEndTime(programItem);
   const lotterySignupNotStarted = getLotterySignupNotStarted(
-    programItem.startTime,
+    programItem,
     timeNow,
   );
   const lotterySignupInProgress = getLotterySignupInProgress(
-    programItem.startTime,
+    programItem,
     timeNow,
   );
 

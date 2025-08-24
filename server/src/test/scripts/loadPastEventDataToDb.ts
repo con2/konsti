@@ -43,6 +43,7 @@ const updatePastEventProgramItems = async (): Promise<void> => {
           .add(timeDifference, "hours")
           .add(programItem.mins, "minutes")
           .toISOString(),
+        parentId: programItem.parentId || programItem.programItemId,
       };
     }),
   );

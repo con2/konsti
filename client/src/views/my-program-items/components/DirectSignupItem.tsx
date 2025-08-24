@@ -21,6 +21,7 @@ import { ErrorMessage } from "client/components/ErrorMessage";
 import { InfoText, InfoTextVariant } from "client/components/InfoText";
 import { AppRoute } from "client/app/AppRoutes";
 import { DirectSignupWithProgramItem } from "client/views/my-program-items/myProgramItemsSlice";
+import { isStartTimeChanged } from "shared/utils/isStartTimeChanged";
 
 interface Props {
   signup: DirectSignupWithProgramItem;
@@ -89,7 +90,11 @@ export const DirectSignupItem = ({
         </SignupQuestion>
       )}
 
-      {signup.signedToStartTime !== signup.programItem.startTime && (
+      {isStartTimeChanged(
+        signup.signedToStartTime,
+        signup.programItem.startTime,
+        signup.programItem.parentId,
+      ) && (
         <StyledInfoText variant={InfoTextVariant.WARNING}>
           {t("myProgramView.startingTimeChanged")}{" "}
           {getShortWeekdayAndTime(signup.signedToStartTime)}{" "}
