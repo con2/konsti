@@ -257,7 +257,7 @@ export const submitVerifyKompassiLogin = (
   };
 };
 
-export const submitFinalizeLogin = (
+export const submitUpdateUserEmailAddress = (
   email: string,
 ): AppThunk<Promise<UpdateUserEmailAddressErrorMessage | undefined>> => {
   return async (
@@ -286,38 +286,5 @@ export const submitFinalizeLogin = (
     );
 
     await dispatch(submitSessionRecovery(updateEmailResponse.jwt));
-  };
-};
-
-export const submitUpdateUserEmailAddress = (
-  email: string,
-): AppThunk<Promise<UpdateUserEmailAddressErrorMessage | null>> => {
-  return async (
-    dispatch,
-  ): Promise<UpdateUserEmailAddressErrorMessage | null> => {
-    const updateEmailResponse = await postUpdateUserEmailAddress(email);
-
-    if (updateEmailResponse.status === "error") {
-      switch (updateEmailResponse.errorId) {
-        case "unknown":
-          return UpdateUserEmailAddressErrorMessage.UNKNOWN;
-        case "invalidEmail":
-          return UpdateUserEmailAddressErrorMessage.INVALID_EMAIL;
-        default:
-          return exhaustiveSwitchGuard(updateEmailResponse.errorId);
-      }
-    }
-
-    dispatch(
-      submitFinalizeLoginAsync({
-        email: updateEmailResponse.email,
-        emailNotificationPermitAsked:
-          updateEmailResponse.emailNotificationPermitAsked,
-        jwt: updateEmailResponse.jwt,
-      }),
-    );
-
-    await dispatch(submitSessionRecovery(updateEmailResponse.jwt));
-    return null;
   };
 };

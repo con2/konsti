@@ -206,6 +206,7 @@ export const doKompassiLogin = async (
       ? `${profile.username}-${profile.id}`
       : profile.username,
     serial,
+    email: profile.email,
     passwordHash: "",
     userGroup: UserGroup.USER,
     groupCode: "0",

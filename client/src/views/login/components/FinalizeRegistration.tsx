@@ -7,7 +7,7 @@ import { Button, ButtonStyle } from "client/components/Button";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import {
   KompassiVerifyErrorMessage,
-  submitFinalizeLogin,
+  submitUpdateUserEmailAddress,
   submitVerifyKompassiLogin,
   UpdateUserEmailAddressErrorMessage,
 } from "client/views/login/loginThunks";
@@ -76,7 +76,9 @@ export const FinalizeRegistration = (
     }
 
     const emailToSend = emailNotificationsEnabled ? loginFormFields.email : "";
-    const emailErrorMessage = await dispatch(submitFinalizeLogin(emailToSend));
+    const emailErrorMessage = await dispatch(
+      submitUpdateUserEmailAddress(emailToSend),
+    );
     if (emailErrorMessage) {
       setServerError(emailErrorMessage);
       return;

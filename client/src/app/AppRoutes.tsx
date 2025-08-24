@@ -176,7 +176,12 @@ export const AppRoutes = (): ReactElement => {
             <Route path={AppRoute.LOGOUT} element={<LogoutView />} />
             <Route
               path={AppRoute.ANY}
-              element={<KompassiLoginUsernameForm />}
+              element={
+                <FinalizeRegistration
+                  kompassiUsernameAccepted={kompassiUsernameAccepted}
+                  emailNotificationPermitAsked={emailNotificationPermitAsked}
+                />
+              }
             />
             <Route
               path={AppRoute.KOMPASSI_LOGOUT_CALLBACK}
