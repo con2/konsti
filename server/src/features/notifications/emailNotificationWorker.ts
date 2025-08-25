@@ -4,7 +4,6 @@ import {
 } from "server/utils/notificationQueue";
 import {
   EmailMessage,
-  EmailSender,
   getEmailBodyAccepted,
   getEmailBodyRejected,
   getEmailSubjectAccepted,
@@ -14,10 +13,12 @@ import { isErrorResult, unwrapResult } from "shared/utils/result";
 import { logger } from "server/utils/logger";
 import { findUser } from "server/features/user/userRepository";
 import { findProgramItemById } from "server/features/program-item/programItemRepository";
+import { config } from "shared/config";
+import { EmailSender } from "server/features/notifications/email";
 
 export async function emailNotificationWorker(
-  notification: NotificationTask,
   sender: EmailSender,
+  notification: NotificationTask,
 ): Promise<void> {
   try {
     const userResult = await findUser(notification.username);
@@ -37,7 +38,10 @@ export async function emailNotificationWorker(
       return;
     }
 
-    if (!user.email) {
+    if (
+      !user.email ||
+      !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(user.email)
+    ) {
       logger.error(
         `Trying to send email notifiction to user ${notification.username} without email address.`,
       );
@@ -49,15 +53,15 @@ export async function emailNotificationWorker(
         ? await generateAcceptedEmail(
             user.email,
             notification,
-            sender.getFromAddress(),
+            config.server().emailSendFromAddress,
           )
         : generateRejectedEmail(
             user.email,
             notification,
-            sender.getFromAddress(),
+            config.server().emailSendFromAddress,
           );
     if (message !== null) {
-      await sender.send(message);
+      await sender.sendEmail(message);
     }
   } catch (error) {
     logger.error("Unexpected error in sending email notification: %s", error);
@@ -85,9 +89,10 @@ async function generateAcceptedEmail(
   const body = getEmailBodyAccepted(program.title, notification);
   return {
     from: fromAddress,
-    to: [email],
+    to: email,
     subject,
-    body,
+    text: body,
+    html: body,
   };
 }
 
@@ -100,8 +105,9 @@ function generateRejectedEmail(
   const body = getEmailBodyRejected(notification);
   return {
     from: fromAddress,
-    to: [email],
+    to: email,
     subject,
-    body,
+    text: body,
+    html: body,
   };
 }

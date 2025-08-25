@@ -9,8 +9,7 @@ import {
   createNotificationQueueService,
   setGlobalNotificationQueueService,
 } from "./utils/notificationQueue";
-import { MailgunSender } from "server/features/notifications/mailgunSender";
-import { NullSender } from "server/features/notifications/nullSender";
+import { EmailSender } from "server/features/notifications/email";
 
 const startApp = async (): Promise<void> => {
   initializeDayjs();
@@ -44,19 +43,8 @@ const startApp = async (): Promise<void> => {
 
   // Initialize notification queue
   try {
-    const sender =
-      config.server().emailSender === "null"
-        ? new NullSender()
-        : new MailgunSender({
-            username: config.server().mailgunUsername,
-            key: config.server().mailgunApiKey,
-            url: config.server().mailgunURL,
-            fromAddress: config.server().emailSendFromAddress,
-            apiDomain: config.server().mailgunApiDomain,
-          });
-
     const notificationQueueService = createNotificationQueueService(
-      sender,
+      new EmailSender(),
       config.server().emailNotificationQueueWorkerCount,
     );
     setGlobalNotificationQueueService(notificationQueueService);

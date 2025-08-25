@@ -53,11 +53,11 @@
     "generate-serial-number": "0.0.3",
     "helmet": "8.1.0",
     "jsonwebtoken": "9.0.2",
-    "mailgun.js": "12.0.1",
     "mongoose": "8.16.1",
     "mongoose-lean-getters": "2.2.2",
     "mongoose-lean-virtuals": "2.0.0",
     "morgan": "1.10.0",
+    "nodemailer": "7.0.5",
     "tsx": "4.20.3",
     "winston": "3.17.0",
     "winston-transport-sentry-node": "3.0.0"
@@ -66,6 +66,7 @@
     "@types/jsonwebtoken": "9.0.10",
     "@types/morgan": "1.9.10",
     "@types/node": "22.15.34",
+    "@types/nodemailer": "7.0.1",
     "@types/supertest": "6.0.3",
     "mongodb-memory-server": "10.1.4",
     "supertest": "7.1.1"

@@ -35,7 +35,7 @@ import { ProgramItemModel } from "server/features/program-item/programItemSchema
 import { addEventLogItems } from "server/features/user/event-log/eventLogRepository";
 import { EventLogAction } from "shared/types/models/eventLog";
 import { createNotificationQueueService } from "server/utils/notificationQueue";
-import { NullSender } from "server/features/notifications/nullSender";
+import { EmailSender } from "server/features/notifications/email";
 import { AssignmentResultStatus } from "server/types/resultTypes";
 
 // This needs to be adjusted if test data is changed
@@ -54,7 +54,7 @@ beforeEach(async () => {
       return {
         ...actual,
         getGlobalNotificationQueueService: vi.fn(() => {
-          return createNotificationQueueService(new NullSender(), 2, true);
+          return createNotificationQueueService(new EmailSender(), 1, true);
         }),
       };
     },

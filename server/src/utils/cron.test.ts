@@ -30,7 +30,7 @@ import {
   createNotificationQueueService,
   getGlobalNotificationQueueService,
 } from "server/utils/notificationQueue";
-import { NullSender } from "server/features/notifications/nullSender";
+import { EmailSender } from "server/features/notifications/email";
 
 let server: Server;
 
@@ -68,7 +68,7 @@ beforeEach(async () => {
     localKompassiFile: "program-ropecon-2025.json",
   });
   const queueService = createNotificationQueueService(
-    new NullSender(),
+    new EmailSender(),
     1,
     true,
   );

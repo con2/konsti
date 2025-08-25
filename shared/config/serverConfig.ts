@@ -40,11 +40,10 @@ export interface ServerConfig {
   emailNotificationQueueWorkerCount: number;
   emailNotificationTrigger: EmailNotificationTrigger;
   emailSendFromAddress: string;
-  emailSender: string;
-  mailgunURL: string;
-  mailgunUsername: string;
-  mailgunApiKey: string;
-  mailgunApiDomain: string;
+  emailSMTPHost: string;
+  emailSMTPPort: number;
+  emailSMTPUsername: string;
+  emailSMTPPassword: string;
 }
 
 const getAllowedCorsOrigins = (localOrigins: string[] = []): string[] => {
@@ -96,13 +95,11 @@ const commonConfig = {
   // Email notifications
   emailNotificationTrigger: EmailNotificationTrigger.BOTH,
   emailNotificationQueueWorkerCount: 1,
-  emailSendFromAddress:
-    "Mailgun Sandbox <postmaster@sandbox87d156be6f1947fc968496d5ae717ab6.mailgun.org>",
-  emailSender: "mailgun",
-  mailgunURL: process.env.MAILGUN_URL ?? "https://api.mailgun.net",
-  mailgunUsername: process.env.MAILGUN_USERNAME ?? "",
-  mailgunApiKey: process.env.MAILGUN_API_KEY ?? "",
-  mailgunApiDomain: "sandbox87d156be6f1947fc968496d5ae717ab6.mailgun.org",
+  emailSendFromAddress: "Ropekonsti <konsti@ropekonsti.fi>",
+  emailSMTPHost: "",
+  emailSMTPPort: 587,
+  emailSMTPUsername: "",
+  emailSMTPPassword: "",
 };
 
 const prodConfig = {
@@ -187,9 +184,6 @@ const devConfig = {
   autoAssignAttendeesEnabled: true,
   autoAssignInterval: "0 * * * *",
   autoAssignDelay: 1000 * 1,
-
-  // Email notifications
-  emailSender: "null",
 };
 
 const combineConfig = (): ServerConfig => {

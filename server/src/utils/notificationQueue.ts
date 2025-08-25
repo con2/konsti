@@ -5,8 +5,8 @@ import {
   makeSuccessResult,
   Result,
 } from "shared/utils/result";
-import { EmailSender } from "server/features/notifications/senderCommon";
 import { emailNotificationWorker } from "server/features/notifications/emailNotificationWorker";
+import { EmailSender } from "server/features/notifications/email";
 
 export enum NotificationTaskType {
   SEND_EMAIL_ACCEPTED,
@@ -27,8 +27,8 @@ export interface NotificationQueueService {
   drain(): Promise<void>;
   kill(): Promise<void>;
   getItems(): NotificationTask[];
-  getSender(): EmailSender;
   getQueue(): queueAsPromised<NotificationTask>;
+  getSender(): EmailSender;
 }
 
 export function createNotificationQueueService(
@@ -38,7 +38,7 @@ export function createNotificationQueueService(
 ): NotificationQueueService {
   const queue: queueAsPromised<NotificationTask> = queuePromise(
     (notification: NotificationTask) =>
-      emailNotificationWorker(notification, sender),
+      emailNotificationWorker(sender, notification),
     workerCount,
   );
 
@@ -86,11 +86,11 @@ export function createNotificationQueueService(
     getItems(): NotificationTask[] {
       return queue.getQueue();
     },
-    getSender(): EmailSender {
-      return sender;
-    },
     getQueue(): queueAsPromised<NotificationTask> {
       return queue;
+    },
+    getSender(): EmailSender {
+      return sender;
     },
   };
 }

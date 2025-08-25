@@ -26,7 +26,7 @@ import {
   createNotificationQueueService,
   getGlobalNotificationQueueService,
 } from "server/utils/notificationQueue";
-import { NullSender } from "server/features/notifications/nullSender";
+import { EmailSender } from "server/features/notifications/email";
 
 // This needs to be adjusted if test data is changed
 const expectedResultsCount = 20;
@@ -50,7 +50,7 @@ beforeEach(async () => {
     dbName: faker.string.alphanumeric(10),
   });
   vi.mocked(getGlobalNotificationQueueService).mockReturnValue(
-    createNotificationQueueService(new NullSender(), 2, true),
+    createNotificationQueueService(new EmailSender(), 1, true),
   );
 });
 

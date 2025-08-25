@@ -29,8 +29,13 @@ import { saveUserSignupResults } from "server/features/assignment/utils/saveUser
 import { UserAssignmentResult } from "shared/types/models/result";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { EventLogAction } from "shared/types/models/eventLog";
+import {
+  NotificationTaskType,
+  createNotificationQueueService,
+  getGlobalNotificationQueueService,
+} from "server/utils/notificationQueue";
+import { EmailSender } from "server/features/notifications/email";
 import { config } from "shared/config";
-import { NullSender } from "server/features/notifications/nullSender";
 
 vi.mock<object>(
   import("server/utils/notificationQueue"),
@@ -49,7 +54,7 @@ beforeEach(async () => {
   });
 
   const queueService = createNotificationQueueService(
-    new NullSender(),
+    new EmailSender(),
     1,
     true,
   );
@@ -205,9 +210,7 @@ test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items for 'startTime
 
   notificationQueueService.getQueue().resume();
   await notificationQueueService.getQueue().drained();
-  const messages = (
-    notificationQueueService.getSender() as NullSender
-  ).getMessages();
+  const messages = notificationQueueService.getSender().getSentEmails();
   const expectedAcceptedBody = `Hei ${mockUser.username}!
 Olet ollut onnekas ja paasit ohjelmaan Test program item
 Ohjelma alkaa 2019-07-26T14:00:00.000Z.
@@ -221,12 +224,12 @@ Et paassyt arvonnassa yhteenkaan ohjelmaan johon ilmoittauduit.
 Terveisin Konsti.`;
   const expectedRejectedSubject = "Et paassyt arvonnassa yhteenkaan ohjelmaan";
 
-  expect(messages[0].body).toEqual(expectedAcceptedBody);
+  expect(messages[0].text).toEqual(expectedAcceptedBody);
   expect(messages[0].subject).toEqual(expectedAcceptedSubject);
-  expect(messages[0].to).toEqual(["user@example.com"]);
-  expect(messages[1].body).toEqual(expectedRejectedBody);
+  expect(messages[0].to).toEqual("user@example.com");
+  expect(messages[1].text).toEqual(expectedRejectedBody);
   expect(messages[1].subject).toEqual(expectedRejectedSubject);
-  expect(messages[1].to).toEqual(["user@example.com"]);
+  expect(messages[1].to).toEqual("user@example.com");
 });
 
 test("should add NO_ASSIGNMENT event log item to group members", async () => {
@@ -467,5 +470,228 @@ test("should not add event log items after assigment if signup is dropped due to
   expect(queueAfterUserSignup[2].username).toEqual(mockUser4.username);
   expect(queueAfterUserSignup[2].type).toEqual(
     NotificationTaskType.SEND_EMAIL_ACCEPTED,
+  );
+});
+
+test("should not send notifications to users without email addresses but still create event log items", async () => {
+  const userWithoutEmail = { ...mockUser, email: "" };
+  const userWithEmail = mockUser2;
+
+  await saveUser(userWithoutEmail);
+  await saveUser(userWithEmail);
+
+  await saveProgramItems([
+    { ...testProgramItem, minAttendance: 1, maxAttendance: 1 },
+  ]);
+
+  await saveLotterySignups({
+    username: userWithoutEmail.username,
+    lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
+  });
+  await saveLotterySignups({
+    username: userWithEmail.username,
+    lotterySignups: [{ ...mockLotterySignups[0], priority: 2 }],
+  });
+
+  const results: UserAssignmentResult[] = [
+    {
+      username: userWithoutEmail.username,
+      assignmentSignup: {
+        programItemId: testProgramItem.programItemId,
+        priority: 1,
+        signedToStartTime: testProgramItem.startTime,
+      },
+    },
+  ];
+
+  const users = unsafelyUnwrap(await findUsers());
+  const programItems = unsafelyUnwrap(await findProgramItems());
+
+  await saveUserSignupResults({
+    assignmentTime: testProgramItem.startTime,
+    results,
+    users,
+    programItems,
+  });
+
+  const usersAfterSave = unsafelyUnwrap(await findUsers());
+
+  const usersWithAssignEventLogItem = usersAfterSave.filter((user) => {
+    return user.eventLogItems.find(
+      (eventLogItem) => eventLogItem.action === EventLogAction.NEW_ASSIGNMENT,
+    );
+  });
+  const usersWithNoAssignEventLogItem = usersAfterSave.filter((user) => {
+    return user.eventLogItems.find(
+      (eventLogItem) => eventLogItem.action === EventLogAction.NO_ASSIGNMENT,
+    );
+  });
+
+  expect(usersWithAssignEventLogItem).toHaveLength(1);
+  expect(usersWithAssignEventLogItem[0].username).toEqual(
+    userWithoutEmail.username,
+  );
+  expect(usersWithNoAssignEventLogItem).toHaveLength(1);
+  expect(usersWithNoAssignEventLogItem[0].username).toEqual(
+    userWithEmail.username,
+  );
+
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const notificationQueueService = getGlobalNotificationQueueService()!;
+  const queueAfterUserSignup = notificationQueueService.getItems();
+
+  expect(queueAfterUserSignup).toHaveLength(2);
+  expect(queueAfterUserSignup[0].username).toEqual(userWithoutEmail.username);
+  expect(queueAfterUserSignup[0].type).toEqual(
+    NotificationTaskType.SEND_EMAIL_ACCEPTED,
+  );
+  expect(queueAfterUserSignup[1].username).toEqual(userWithEmail.username);
+  expect(queueAfterUserSignup[1].type).toEqual(
+    NotificationTaskType.SEND_EMAIL_REJECTED,
+  );
+
+  notificationQueueService.getQueue().resume();
+  await notificationQueueService.getQueue().drained();
+
+  const messages = notificationQueueService.getSender().getSentEmails();
+  expect(messages).toHaveLength(1);
+  expect(messages[0].to).toEqual(userWithEmail.email);
+});
+
+test("should respect email notification permissions based on email field", async () => {
+  const userWithEmail = {
+    ...mockUser,
+    emailNotificationPermitAsked: true,
+    email: "user@example.com",
+  };
+  const userWithoutEmail = {
+    ...mockUser2,
+    emailNotificationPermitAsked: true,
+    email: "",
+  };
+
+  await saveUser(userWithEmail);
+  await saveUser(userWithoutEmail);
+
+  await saveProgramItems([
+    { ...testProgramItem, minAttendance: 1, maxAttendance: 1 },
+  ]);
+
+  await saveLotterySignups({
+    username: userWithEmail.username,
+    lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
+  });
+  await saveLotterySignups({
+    username: userWithoutEmail.username,
+    lotterySignups: [{ ...mockLotterySignups[0], priority: 2 }],
+  });
+
+  const results: UserAssignmentResult[] = [
+    {
+      username: userWithEmail.username,
+      assignmentSignup: {
+        programItemId: testProgramItem.programItemId,
+        priority: 1,
+        signedToStartTime: testProgramItem.startTime,
+      },
+    },
+  ];
+
+  const users = unsafelyUnwrap(await findUsers());
+  const programItems = unsafelyUnwrap(await findProgramItems());
+
+  await saveUserSignupResults({
+    assignmentTime: testProgramItem.startTime,
+    results,
+    users,
+    programItems,
+  });
+
+  const usersAfterSave = unsafelyUnwrap(await findUsers());
+  const usersWithEventLogItems = usersAfterSave.filter(
+    (user) => user.eventLogItems.length > 0,
+  );
+  expect(usersWithEventLogItems).toHaveLength(2);
+
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const notificationQueueService = getGlobalNotificationQueueService()!;
+  const queueAfterUserSignup = notificationQueueService.getItems();
+  expect(queueAfterUserSignup).toHaveLength(2);
+
+  notificationQueueService.getQueue().resume();
+  await notificationQueueService.getQueue().drained();
+
+  const messages = notificationQueueService.getSender().getSentEmails();
+  expect(messages).toHaveLength(1);
+  expect(messages[0].to).toEqual(userWithEmail.email);
+  expect(messages[0].subject).toEqual(
+    "Sinut on hyvaksytty ohjelmaan Test program item",
+  );
+});
+
+test("should handle mixed email permissions in groups", async () => {
+  const groupCode = "abc-dfg-hij";
+  const userWithEmail = {
+    ...mockUser,
+    groupCode,
+    groupCreatorCode: groupCode,
+    emailNotificationPermitAsked: true,
+    email: "user1@example.com",
+  };
+  const userWithoutEmail = {
+    ...mockUser2,
+    groupCode,
+    emailNotificationPermitAsked: true,
+    email: "",
+  };
+
+  await saveUser(userWithEmail);
+  await saveUser(userWithoutEmail);
+
+  await saveProgramItems([
+    { ...testProgramItem, minAttendance: 1, maxAttendance: 1 },
+  ]);
+
+  await saveLotterySignups({
+    username: userWithEmail.username,
+    lotterySignups: [{ ...mockLotterySignups[0] }],
+  });
+
+  const results: UserAssignmentResult[] = [];
+
+  const users = unsafelyUnwrap(await findUsers());
+  const programItems = unsafelyUnwrap(await findProgramItems());
+
+  await saveUserSignupResults({
+    assignmentTime: testProgramItem.startTime,
+    results,
+    users,
+    programItems,
+  });
+
+  const usersAfterSave = unsafelyUnwrap(await findUsers());
+  const usersWithEventLogItem = usersAfterSave.filter(
+    (user) => user.eventLogItems.length > 0,
+  );
+  expect(usersWithEventLogItem).toHaveLength(2);
+
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const notificationQueueService = getGlobalNotificationQueueService()!;
+  const queueAfterUserSignup = notificationQueueService.getItems();
+  expect(queueAfterUserSignup).toHaveLength(2);
+  expect(
+    queueAfterUserSignup.every(
+      (item) => item.type === NotificationTaskType.SEND_EMAIL_REJECTED,
+    ),
+  ).toBe(true);
+
+  notificationQueueService.getQueue().resume();
+  await notificationQueueService.getQueue().drained();
+
+  const messages = notificationQueueService.getSender().getSentEmails();
+  expect(messages).toHaveLength(1);
+  expect(messages[0].to).toEqual(userWithEmail.email);
+  expect(messages[0].subject).toEqual(
+    "Et paassyt arvonnassa yhteenkaan ohjelmaan",
   );
 });
