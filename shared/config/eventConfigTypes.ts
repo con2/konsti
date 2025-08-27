@@ -85,4 +85,6 @@ export interface EventConfig {
   enableRevolvingDoor: boolean;
   programGuideUrl: string;
   startTimesByParentIds: Map<string, string>;
+  enableOrganizerFeedback: boolean;
+  enableTagDropdown: boolean;
 }

@@ -15,13 +15,17 @@ export const eventConfig: EventConfig = {
   eventYear: "2025",
 
   // Event settings
-  enableRevolvingDoor: true,
+  enableRevolvingDoor: false,
+  enableOrganizerFeedback: true,
+  enableTagDropdown: false,
+
   requireRegistrationCode: true,
   assignmentAlgorithm: AssignmentAlgorithm.RANDOM_PADG,
   enableGroups: true,
   signupOpen: true, // TODO: Remove this
   resultsVisible: true, // TODO: Remove this
   enableRemoveOverlapSignups: false,
+
   programGuideUrl: "https://2025.tracon.fi/opas",
 
   activeProgramTypes: [

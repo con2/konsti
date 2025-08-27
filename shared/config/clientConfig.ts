@@ -9,8 +9,6 @@ export interface ClientConfig {
   enableAxe: boolean;
   enableWhyDidYouRender: boolean;
   dataUpdateInterval: number;
-  enableOrganizerFeedback: boolean;
-  enableTagDropdown: boolean;
   showAnnouncement: boolean;
   programTypeSelectOptions: ActiveProgramType[];
   activeLanguages: Language[];
@@ -19,15 +17,12 @@ export interface ClientConfig {
 
 export const clientConfig: ClientConfig = {
   // Event settings
-  enableOrganizerFeedback: true,
-  enableTagDropdown: true,
   showAboutPageInProgress: false,
   showAnnouncement: false,
   programTypeSelectOptions: [
     "all",
     ProgramType.FLEAMARKET,
     ProgramType.TABLETOP_RPG,
-    ProgramType.LARP,
   ],
   activeLanguages: [Language.FINNISH, Language.ENGLISH],
 
