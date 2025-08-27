@@ -48,7 +48,7 @@ export const ProgramItemBody = ({
       {isExpanded && (
         <ExpandedDescriptionContainer id={id}>
           <ProgramItemDetails programItem={programItem} />
-          {loggedIn && config.client().enableOrganizerFeedback && (
+          {loggedIn && config.event().enableOrganizerFeedback && (
             <FeedbackForm programItem={programItem} />
           )}
           {loggedIn && userGroup === UserGroup.ADMIN && (

@@ -78,7 +78,7 @@ export const SearchAndFilterCard = ({
         <ProgramTypeSelection id="programTypeSelection" />
       </InputContainer>
 
-      {config.client().enableTagDropdown && (
+      {config.event().enableTagDropdown && (
         <InputContainer>
           <StyledLabel htmlFor="tagSelection">{t("chooseTag")}</StyledLabel>
           <Dropdown
