@@ -21,7 +21,7 @@ export const clientConfig: ClientConfig = {
   // Event settings
   enableOrganizerFeedback: true,
   enableTagDropdown: true,
-  showAboutPageInProgress: true,
+  showAboutPageInProgress: false,
   showAnnouncement: false,
   programTypeSelectOptions: [
     "all",
