@@ -88,6 +88,9 @@ const ScheduleItemSchema = z.object({
   lengthMinutes: z.number().catch(0),
   location: z.string().catch(""),
   isCancelled: z.boolean().catch(true),
+  cachedAnnotations: z.object({
+    "konsti:maxAttendance": z.number().catch(0),
+  }),
 });
 
 export type KompassiScheduleItem = z.infer<typeof ScheduleItemSchema>;
@@ -114,7 +117,6 @@ export const KompassiProgramItemSchema = z.object({
     "konsti:rpgSystem": z.string().catch(""),
     "ropecon:otherAuthor": z.string().catch(""),
     "konsti:minAttendance": z.number().catch(1),
-    "konsti:maxAttendance": z.number().catch(0),
     "konsti:isPlaceholder": z.boolean().catch(false),
     "ropecon:numCharacters": z.number().catch(0),
     "konsti:workshopFee": z

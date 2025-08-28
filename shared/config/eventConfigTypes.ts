@@ -1,5 +1,10 @@
 import { Dayjs } from "dayjs";
-import { Language, ProgramType, Tag } from "shared/types/models/programItem";
+import {
+  Language,
+  ProgramType,
+  SignupType,
+  Tag,
+} from "shared/types/models/programItem";
 import { SignupQuestion } from "shared/types/models/settings";
 
 export enum EventSignupStrategy {
@@ -85,6 +90,7 @@ export interface EventConfig {
   enableRevolvingDoor: boolean;
   programGuideUrl: string;
   startTimesByParentIds: Map<string, string>;
+  defaultSignupType: SignupType;
   enableOrganizerFeedback: boolean;
   enableTagDropdown: boolean;
 }

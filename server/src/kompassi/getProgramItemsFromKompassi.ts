@@ -200,6 +200,7 @@ export const getProgramFromServer = async (): Promise<
                           lengthMinutes
                           location
                           isCancelled
+                          cachedAnnotations
                       }
                   }
               }

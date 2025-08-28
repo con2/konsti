@@ -108,6 +108,9 @@ export const createProgramItems = async (
               lengthMinutes: length,
               location: "Ropetaverna",
               isCancelled: false,
+              cachedAnnotations: {
+                "konsti:maxAttendance": getMaxAttendees(kompassiProgramType),
+              },
             },
           ],
           cachedAnnotations: {
@@ -117,7 +120,6 @@ export const createProgramItems = async (
                 : "",
             "ropecon:otherAuthor": "Other author",
             "konsti:minAttendance": getMinAttendees(kompassiProgramType),
-            "konsti:maxAttendance": getMaxAttendees(kompassiProgramType),
             "ropecon:numCharacters": 6,
             "konsti:workshopFee":
               kompassiProgramType === KompassiKonstiProgramType.WORKSHOP
