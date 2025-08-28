@@ -22,6 +22,11 @@ import { testProgramItem } from "shared/tests/testProgramItem";
 import { saveUser } from "server/features/user/userRepository";
 import { mockLotterySignups, mockUser } from "server/test/mock-data/mockUser";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
+import {
+  createNotificationQueueService,
+  getGlobalNotificationQueueService,
+} from "server/utils/notificationQueue";
+import { EmailSender } from "server/features/notifications/email";
 
 // This needs to be adjusted if test data is changed
 const expectedResultsCount = 20;
@@ -29,10 +34,24 @@ const groupTestUsers = ["group1", "group2", "group3"];
 
 const { eventStartTime } = config.event();
 
+vi.mock<object>(
+  import("server/utils/notificationQueue"),
+  async (originalImport) => {
+    const actual = await originalImport();
+    return {
+      ...actual,
+      getGlobalNotificationQueueService: vi.fn(),
+    };
+  },
+);
+
 beforeEach(async () => {
   await mongoose.connect(globalThis.__MONGO_URI__, {
     dbName: faker.string.alphanumeric(10),
   });
+  vi.mocked(getGlobalNotificationQueueService).mockReturnValue(
+    createNotificationQueueService(new EmailSender(), 1, true),
+  );
 });
 
 afterEach(async () => {

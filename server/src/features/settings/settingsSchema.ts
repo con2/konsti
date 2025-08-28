@@ -7,6 +7,7 @@ import {
   EventSignupStrategy,
   LoginProvider,
 } from "shared/config/eventConfigTypes";
+import { EmailNotificationTrigger } from "shared/types/emailNotification";
 
 export const SettingsSchemaDb = z
   .object({
@@ -22,6 +23,7 @@ export const SettingsSchemaDb = z
       .date()
       .transform((date) => dayjs(date).toISOString()),
     loginProvider: z.nativeEnum(LoginProvider),
+    emailNotificationTrigger: z.nativeEnum(EmailNotificationTrigger),
   })
   .strip();
 
@@ -66,6 +68,10 @@ const settingsSchema = new mongoose.Schema(
     loginProvider: {
       type: String,
       default: config.server().defaultLoginProvider,
+    },
+    emailNotificationTrigger: {
+      type: String,
+      default: config.server().emailNotificationTrigger,
     },
   },
   { timestamps: true },

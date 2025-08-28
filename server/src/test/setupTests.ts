@@ -1,3 +1,4 @@
+import { EventEmitter } from "node:events";
 import { vi } from "vitest";
 import { initializeDayjs } from "shared/utils/initializeDayjs";
 import { config } from "shared/config";
@@ -5,6 +6,9 @@ import { ProgramType } from "shared/types/models/programItem";
 import { mongoDbPort } from "server/test/globalSetup";
 
 initializeDayjs();
+
+// Increase the max listeners limit to prevent MongoDB connection warnings during tests
+EventEmitter.defaultMaxListeners = 20;
 
 if (!config.server().enableLoggingInTests) {
   // Don't show logging in tests

@@ -17,7 +17,11 @@ import {
   makeSuccessResult,
   unwrapResult,
 } from "shared/utils/result";
-import { AssignmentError, MongoDbError } from "shared/types/api/errors";
+import {
+  AssignmentError,
+  MongoDbError,
+  QueueError,
+} from "shared/types/api/errors";
 import { prepareAssignmentParams } from "server/features/assignment/utils/prepareAssignmentParams";
 
 interface RunAssignmentParams {
@@ -31,7 +35,7 @@ export const runAssignment = async ({
   assignmentTime,
   assignmentDelay = 0,
 }: RunAssignmentParams): Promise<
-  Result<AssignmentResult, MongoDbError | AssignmentError>
+  Result<AssignmentResult, MongoDbError | AssignmentError | QueueError>
 > => {
   // If assignmentTime is null, use dynamic time
   const assignmentTimeResult = assignmentTime

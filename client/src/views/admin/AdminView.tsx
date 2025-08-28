@@ -7,6 +7,7 @@ import {
   submitGetSentryTest,
   submitAssignment,
   submitToggleAppOpen,
+  submitEmailTest,
 } from "client/views/admin/adminThunks";
 import { submitUpdateProgramItems } from "client/views/all-program-items/allProgramItemsThunks";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
@@ -19,6 +20,7 @@ import { SignupStrategySelector } from "client/views/admin/components/SignupStra
 import { ButtonGroup } from "client/components/ButtonGroup";
 import { LoginProviderSelector } from "client/views/admin/components/LoginProviderSelector";
 import { selectHiddenProgramItems } from "client/views/admin/adminSlice";
+import { EmailNotificationTrigger } from "shared/types/emailNotification";
 
 export const AdminView = (): ReactElement => {
   const programItems = useAppSelector(
@@ -76,6 +78,8 @@ export const AdminView = (): ReactElement => {
   const [selectedAssignmentTime, setSelectedAssignmentTime] = useState<string>(
     assignmentTimeDropdownValues[0]?.value ?? "",
   );
+  const [testEmail, setTestEmail] = useState<string>("");
+  const [testProgramId, setTestProgramId] = useState<string>("");
 
   const showMessage = ({
     value,
@@ -128,6 +132,46 @@ export const AdminView = (): ReactElement => {
       showMessage({
         value: errorMessage,
         style: "error",
+      });
+    }
+
+    setSubmitting(false);
+  };
+
+  const sendTestEmail = async (
+    notificationType: EmailNotificationTrigger,
+  ): Promise<void> => {
+    if (!testEmail) {
+      showMessage({
+        value: "Please enter an email address",
+        style: "error",
+      });
+      return;
+    }
+
+    if (!testProgramId) {
+      showMessage({
+        value: "Please enter a program ID",
+        style: "error",
+      });
+      return;
+    }
+
+    setSubmitting(true);
+
+    const errorMessage = await dispatch(
+      submitEmailTest(testEmail, notificationType, testProgramId),
+    );
+
+    if (errorMessage) {
+      showMessage({
+        value: errorMessage,
+        style: "error",
+      });
+    } else {
+      showMessage({
+        value: `Test ${notificationType} email sent to ${testEmail}`,
+        style: "success",
       });
     }
 
@@ -229,6 +273,46 @@ export const AdminView = (): ReactElement => {
           {t("admin.sentryBackendTest")}
         </Button>
       </ButtonGroup>
+
+      <h3>Email Notification Testing</h3>
+      <EmailTestForm>
+        <input
+          type="email"
+          placeholder="Enter email address"
+          value={testEmail}
+          onChange={(e) => setTestEmail(e.target.value)}
+          disabled={submitting}
+        />
+        <input
+          type="text"
+          placeholder="Enter program ID"
+          value={testProgramId}
+          onChange={(e) => setTestProgramId(e.target.value)}
+          disabled={submitting}
+        />
+        <ButtonGroup>
+          <Button
+            disabled={submitting || !testEmail || !testProgramId}
+            buttonStyle={ButtonStyle.PRIMARY}
+            onClick={() => {
+              // eslint-disable-next-line @typescript-eslint/no-floating-promises
+              sendTestEmail(EmailNotificationTrigger.ACCEPTED);
+            }}
+          >
+            Send ACCEPTED Test
+          </Button>
+          <Button
+            disabled={submitting || !testEmail || !testProgramId}
+            buttonStyle={ButtonStyle.PRIMARY}
+            onClick={() => {
+              // eslint-disable-next-line @typescript-eslint/no-floating-promises
+              sendTestEmail(EmailNotificationTrigger.REJECTED);
+            }}
+          >
+            Send REJECTED Test
+          </Button>
+        </ButtonGroup>
+      </EmailTestForm>
     </div>
   );
 };
@@ -249,4 +333,19 @@ const StatusMessage = styled.p<{ $messageStyle: string }>`
 
 const AssignmentResponseMessage = styled.p`
   color: ${(props) => props.theme.textSecondary};
+`;
+
+const EmailTestForm = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+
+  input {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    max-width: 300px;
+  }
 `;

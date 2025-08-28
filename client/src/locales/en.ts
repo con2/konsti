@@ -62,6 +62,7 @@ export const translationEN = {
     required: "Required",
     tooLong: "Too long, at most {{length}} characters allowed",
     tooShort: "Too short, at least {{length}} characters required",
+    invalidEmail: "Invalid email format",
   },
   pages: {
     myProgram: "My Program",
@@ -640,5 +641,15 @@ export const translationEN = {
     sentryBackendTest: "Backend test",
     signupStrategy: "Signup strategy",
     loginProvider: "Login provider",
+  },
+  email: {
+    notifications: {
+      accepted: "I would like to get notifications from Konsti to my email",
+      rejected: "I do not want get notifications from Konsti",
+      registrationDescription:
+        "You can change notification settings from Profile page",
+      changingEmailError: "Error updating email address",
+      changingEmailSuccess: "Email address updated successfully",
+    },
   },
 } as const;

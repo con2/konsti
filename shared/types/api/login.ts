@@ -22,6 +22,8 @@ export interface PostLoginResponse extends ApiResult {
   eventLogItems: EventLogItem[];
   kompassiUsernameAccepted: boolean;
   kompassiId: number;
+  email: string;
+  emailNotificationPermitAsked: boolean;
 }
 
 export interface PostLoginError extends ApiError {
@@ -74,3 +76,43 @@ export type PostVerifyKompassiLoginResponse = PostVerifyKompassiLoginPayload &
 export interface PostVerifyKompassiLoginError extends ApiError {
   errorId: "unknown" | "usernameNotFree";
 }
+
+// POST Update user email address
+
+export const PostUpdateUserEmailAddressRequestSchema = z.object({
+  email: z
+    .string()
+    .trim()
+    .refine(
+      (email) => {
+        // Allow empty string (for unsubscribe)
+        if (email === "") return true;
+        // Validate email format if not empty
+        return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
+      },
+      {
+        message: "Invalid email format",
+      },
+    ),
+});
+
+export type PostUpdateUserEmailAddressRequest = z.infer<
+  typeof PostUpdateUserEmailAddressRequestSchema
+>;
+
+interface PostUpdateUserEmailAddressPayload {
+  email: string;
+  emailNotificationPermitAsked: boolean;
+  jwt: string;
+}
+
+export type PostUpdateUserEmailAddressResponse =
+  PostUpdateUserEmailAddressPayload & ApiResult;
+
+export interface PostUpdateUserEmailAddressError extends ApiError {
+  errorId: "unknown" | "invalidEmail";
+}
+
+// Finalize login
+
+export type PostFinalizeLogin = PostUpdateUserEmailAddressPayload;

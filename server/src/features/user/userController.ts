@@ -14,6 +14,8 @@ import {
   PostUpdateUserPasswordRequestSchema,
   PostUserRequestSchema,
 } from "shared/types/api/users";
+import { PostUpdateUserEmailAddressRequestSchema } from "shared/types/api/login";
+import { verifyUpdateUserEmailAddress } from "server/features/kompassi-login/kompassiLoginService";
 
 export const postUser = async (
   req: Request,
@@ -130,5 +132,39 @@ export const getUserBySerialOrUsername = async (
 
   const response = await fetchUserBySerialOrUsername(searchTerm);
 
+  return res.json(response);
+};
+
+export const postUpdateUserEmailAddress = async (
+  req: Request,
+  res: Response,
+): Promise<Response> => {
+  logger.info(`API call: POST ${ApiEndpoint.UPDATE_USER_EMAIL_ADDRESS}`);
+
+  const jwtUsername = getAuthorizedUsername(
+    req.headers.authorization,
+    UserGroup.USER,
+  );
+  if (!jwtUsername) {
+    return res.sendStatus(401);
+  }
+
+  const result = PostUpdateUserEmailAddressRequestSchema.safeParse(req.body);
+  if (!result.success) {
+    logger.error(
+      "%s",
+      new Error(
+        `Error validating postUpdateUserEmailAddress body: ${JSON.stringify(result.error)}`,
+      ),
+    );
+    return res.status(422).json({
+      message: "Invalid email format",
+      status: "error",
+      errorId: "invalidEmail",
+    });
+  }
+
+  const { email } = result.data;
+  const response = await verifyUpdateUserEmailAddress(jwtUsername, email);
   return res.json(response);
 };

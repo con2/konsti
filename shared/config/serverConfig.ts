@@ -2,6 +2,7 @@ import {
   LoginProvider,
   EventSignupStrategy,
 } from "shared/config/eventConfigTypes";
+import { EmailNotificationTrigger } from "shared/types/emailNotification";
 
 export interface ServerConfig {
   port: number;
@@ -36,6 +37,13 @@ export interface ServerConfig {
   defaultLoginProvider: LoginProvider;
   logInvalidStartTimes: boolean;
   logMissingScheduleItems: boolean; // If scheduleItems is missing, program item is ignored
+  emailNotificationQueueWorkerCount: number;
+  emailNotificationTrigger: EmailNotificationTrigger;
+  emailSendFromAddress: string;
+  emailSMTPHost: string;
+  emailSMTPPort: number;
+  emailSMTPUsername: string;
+  emailSMTPPassword: string;
 }
 
 const getAllowedCorsOrigins = (localOrigins: string[] = []): string[] => {
@@ -83,6 +91,15 @@ const commonConfig = {
   // Data checks
   logInvalidStartTimes: false,
   logMissingScheduleItems: false,
+
+  // Email notifications
+  emailNotificationTrigger: EmailNotificationTrigger.BOTH,
+  emailNotificationQueueWorkerCount: 1,
+  emailSendFromAddress: "Konsti <konsti@kompassi.eu>",
+  emailSMTPHost: "smtp.ethereal.email",
+  emailSMTPPort: 587,
+  emailSMTPUsername: "",
+  emailSMTPPassword: "",
 };
 
 const prodConfig = {
@@ -109,6 +126,9 @@ const prodConfig = {
   autoAssignAttendeesEnabled: true,
   autoAssignInterval: "0 * * * *",
   autoAssignDelay: 1000 * 5,
+  emailSendFromAddress: "Konsti <konsti@kompassi.eu>",
+  emailSMTPHost: "sr1.pahaip.fi",
+  emailSMTPPort: 25,
 };
 
 const stagingConfig = {

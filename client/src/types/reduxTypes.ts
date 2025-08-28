@@ -45,6 +45,8 @@ export interface LoginState {
   eventLogItems: EventLogItem[];
   kompassiUsernameAccepted: boolean;
   kompassiId: number;
+  email: string;
+  emailNotificationPermitAsked: boolean;
 }
 
 export interface GroupState {

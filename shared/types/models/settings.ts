@@ -3,6 +3,7 @@ import {
   LoginProvider,
   EventSignupStrategy,
 } from "shared/config/eventConfigTypes";
+import { EmailNotificationTrigger } from "shared/types/emailNotification";
 
 export enum SignupQuestionType {
   TEXT = "text",
@@ -38,6 +39,7 @@ export const SettingsSchema = z.object({
   assignmentLastRun: z.string(),
   latestServerStartTime: z.string(),
   loginProvider: z.nativeEnum(LoginProvider),
+  emailNotificationTrigger: z.nativeEnum(EmailNotificationTrigger),
 });
 
 export type Settings = z.infer<typeof SettingsSchema>;

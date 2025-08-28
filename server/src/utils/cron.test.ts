@@ -26,6 +26,11 @@ import { logger } from "server/utils/logger";
 import { saveTestSettings } from "server/test/test-settings/testSettingsRepository";
 import { config } from "shared/config";
 import { EventName } from "shared/config/eventConfigTypes";
+import {
+  createNotificationQueueService,
+  getGlobalNotificationQueueService,
+} from "server/utils/notificationQueue";
+import { EmailSender } from "server/features/notifications/email";
 
 let server: Server;
 
@@ -35,6 +40,17 @@ const previousJobFinished = 31; // Seconds since last run
 
 const infoLoggerSpy = vi.spyOn(logger, "info");
 const errorLoggerSpy = vi.spyOn(logger, "error");
+
+vi.mock<object>(
+  import("server/utils/notificationQueue"),
+  async (originalImport) => {
+    const actual = await originalImport();
+    return {
+      ...actual,
+      getGlobalNotificationQueueService: vi.fn(),
+    };
+  },
+);
 
 beforeAll(() => {
   vi.setSystemTime(timeNow);
@@ -51,6 +67,13 @@ beforeEach(async () => {
     useLocalProgramFile: true,
     localKompassiFile: "program-ropecon-2025.json",
   });
+  const queueService = createNotificationQueueService(
+    new EmailSender(),
+    1,
+    true,
+  );
+  vi.mocked(getGlobalNotificationQueueService).mockReturnValue(queueService);
+
   server = await startServer({
     dbConnString: globalThis.__MONGO_URI__,
     dbName: faker.string.alphanumeric(10),

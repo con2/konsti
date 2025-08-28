@@ -40,6 +40,8 @@ export const saveUser = async (
     favoriteProgramItemIds: [],
     lotterySignups: [],
     eventLogItems: [],
+    email: newUserData.email ?? "",
+    emailNotificationPermitAsked: !!newUserData.email,
   };
 
   const user = new UserModel(newUser);
@@ -334,6 +336,50 @@ export const updateUserKompassiLoginStatus = async (
   } catch (error) {
     logger.error(
       `MongoDB: Error updating Kompassi login status for user ${oldUsername}: %s`,
+      error,
+    );
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+  }
+};
+
+export const updateUserEmailAddress = async (
+  username: string,
+  email: string,
+): Promise<Result<User, MongoDbError>> => {
+  try {
+    const response = await UserModel.findOneAndUpdate(
+      { username },
+      {
+        email,
+        emailNotificationPermitAsked: true,
+      },
+      { new: true },
+    ).lean();
+
+    if (!response) {
+      logger.error(
+        "%s",
+        new Error(
+          `MongoDB: Error updating email address for user ${username}, user not found`,
+        ),
+      );
+      return makeErrorResult(MongoDbError.USER_NOT_FOUND);
+    }
+
+    const result = UserSchemaDb.safeParse(response);
+    if (!result.success) {
+      logger.error(
+        "%s",
+        new Error(
+          `Error validating updateUserEmailAddress DB value: ${JSON.stringify(result.error)}`,
+        ),
+      );
+      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+    }
+    return makeSuccessResult(result.data);
+  } catch (error) {
+    logger.error(
+      `MongoDB: Error updating email address for user ${username}: %s`,
       error,
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);

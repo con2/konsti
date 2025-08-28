@@ -1,5 +1,10 @@
 import dayjs from "dayjs";
 import { unique } from "remeda";
+import { logger } from "@sentry/node";
+import {
+  getGlobalNotificationQueueService,
+  NotificationTaskType,
+} from "server/utils/notificationQueue";
 import { UserAssignmentResult } from "shared/types/models/result";
 import {
   delDirectSignup,
@@ -14,7 +19,7 @@ import {
   makeSuccessResult,
   unwrapResult,
 } from "shared/utils/result";
-import { MongoDbError } from "shared/types/api/errors";
+import { MongoDbError, QueueError } from "shared/types/api/errors";
 import {
   addEventLogItems,
   deleteEventLogItemsByStartTime,
@@ -28,6 +33,9 @@ import { getStartingProgramItems } from "server/features/assignment/utils/getSta
 import { ProgramItem } from "shared/types/models/programItem";
 import { SignupRepositoryAddSignup } from "server/features/direct-signup/directSignupTypes";
 import { isStartTimeMatch } from "server/utils/isStartTimeMatch";
+import { EmailNotificationTrigger } from "shared/types/emailNotification";
+import { findSettings } from "server/features/settings/settingsRepository";
+import { Settings } from "shared/types/models/settings";
 
 interface SaveUserSignupResultsParams {
   assignmentTime: string;
@@ -41,7 +49,20 @@ export const saveUserSignupResults = async ({
   results,
   users,
   programItems,
-}: SaveUserSignupResultsParams): Promise<Result<void, MongoDbError>> => {
+}: SaveUserSignupResultsParams): Promise<
+  Result<void, MongoDbError | QueueError>
+> => {
+  const queueService = getGlobalNotificationQueueService();
+
+  const settingsResult = await findSettings();
+  let settings: Settings | null = null;
+  if (isErrorResult(settingsResult)) {
+    logger.error(
+      "Failed to find settings. Do not queue notification for this assignment.",
+    );
+  } else {
+    settings = unwrapResult(settingsResult);
+  }
   // Remove previous lottery result for the same start time
   // This does not remove non-lottery signups or previous signups from moved program items
   const delAssignmentSignupsByStartTimeResult =
@@ -148,6 +169,30 @@ export const saveUserSignupResults = async ({
     return newAssignmentEventLogItemsResult;
   }
 
+  // Add SEND_EMAIL_ACCEPTED to notification queue
+  if (
+    settings !== null &&
+    (settings.emailNotificationTrigger === EmailNotificationTrigger.ACCEPTED ||
+      settings.emailNotificationTrigger === EmailNotificationTrigger.BOTH)
+  ) {
+    if (queueService === null) {
+      return makeErrorResult(QueueError.QUEUE_NOT_INITIALIZED);
+    }
+    const newAssignmentEmailNotificationsResult =
+      queueService.addNotificationsBulk(
+        finalResults.map((result) => ({
+          type: NotificationTaskType.SEND_EMAIL_ACCEPTED,
+          username: result.username,
+          programItemId: result.assignmentSignup.programItemId,
+          programItemStartTime: result.assignmentSignup.signedToStartTime,
+        })),
+      );
+
+    if (isErrorResult(newAssignmentEmailNotificationsResult)) {
+      return newAssignmentEmailNotificationsResult;
+    }
+  }
+
   // Get users who didn't get a seat in lottery
   const startingProgramItems = getStartingProgramItems(
     programItems,
@@ -208,6 +253,33 @@ export const saveUserSignupResults = async ({
     });
     if (isErrorResult(noAssignmentEventLogItemsResult)) {
       return noAssignmentEventLogItemsResult;
+    }
+
+    // Add SEND_EMAIL_REJECTED to notification queue
+    if (
+      settings !== null &&
+      (settings.emailNotificationTrigger ===
+        EmailNotificationTrigger.REJECTED ||
+        settings.emailNotificationTrigger === EmailNotificationTrigger.BOTH)
+    ) {
+      if (queueService === null) {
+        return makeErrorResult(QueueError.QUEUE_NOT_INITIALIZED);
+      }
+      const noAssignmentEmailNotificationsResult =
+        queueService.addNotificationsBulk(
+          noAssignmentLotterySignupUsernames.map(
+            (noAssignmentLotterySignupUsername) => ({
+              type: NotificationTaskType.SEND_EMAIL_REJECTED,
+              username: noAssignmentLotterySignupUsername,
+              programItemId: "",
+              programItemStartTime: assignmentTime,
+            }),
+          ),
+        );
+
+      if (isErrorResult(noAssignmentEmailNotificationsResult)) {
+        return noAssignmentEmailNotificationsResult;
+      }
     }
   }
 

@@ -5,7 +5,7 @@ import {
   login,
   addProgramItems,
   clearDb,
-  addUser,
+  populateDb,
 } from "playwright/playwrightUtils";
 import { config } from "shared/config";
 import { testProgramItem } from "shared/tests/testProgramItem";
@@ -16,7 +16,11 @@ test("Show event log notification when program item with direct signup is cancel
   request,
 }) => {
   await clearDb(request);
-  await addUser(request, "test1");
+  await populateDb(request, {
+    clean: true,
+    users: true,
+    admin: true,
+  });
   await addProgramItems(request, [
     {
       programItemId: testProgramItem.programItemId,
@@ -84,7 +88,11 @@ test("Show event log notification when program item with direct signup doesn't u
   request,
 }) => {
   await clearDb(request);
-  await addUser(request, "test1");
+  await populateDb(request, {
+    clean: true,
+    users: true,
+    admin: true,
+  });
   await addProgramItems(request, [
     {
       programItemId: testProgramItem.programItemId,

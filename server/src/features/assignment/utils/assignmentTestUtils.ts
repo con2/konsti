@@ -104,6 +104,8 @@ export const getUsers = ({
       groupCode: groupCreatorGroupCode,
       favoriteProgramItemIds: [],
       createdAt: dayjs(assignmentTime).subtract(4, "hours").toISOString(),
+      email: "",
+      emailNotificationPermitAsked: false,
     };
 
     if (i === 0) {

@@ -34,6 +34,18 @@ export const UserSchemaDb = z
     lotterySignups: z.array(LotterySignupSchemaDb),
     createdAt: z.date().transform((date) => dayjs(date).toISOString()),
     eventLogItems: z.array(EventLogItemSchemaDb),
+    email: z.string().refine(
+      (email) => {
+        // Allow empty string (for unsubscribe)
+        if (email === "") return true;
+        // Validate email format if not empty
+        return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
+      },
+      {
+        message: "Invalid email format",
+      },
+    ),
+    emailNotificationPermitAsked: z.boolean(),
   })
   .strip();
 
@@ -83,6 +95,8 @@ const userSchema = new mongoose.Schema(
     favoriteProgramItemIds: { type: [String], required: true },
     lotterySignups: { type: [lotterySignupSchema], required: true },
     eventLogItems: { type: [eventLogItemSchema], required: true },
+    email: { type: String, required: false },
+    emailNotificationPermitAsked: { type: Boolean, requires: true },
     createdAt: {
       type: Date,
       get: (value: Date) => new Date(value),

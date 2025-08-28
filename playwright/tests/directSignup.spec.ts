@@ -5,16 +5,19 @@ import {
   login,
   addProgramItems,
   clearDb,
-  addUser,
   testPostDirectSignup,
+  populateDb,
 } from "playwright/playwrightUtils";
 import { config } from "shared/config";
 import { testProgramItem } from "shared/tests/testProgramItem";
 
 test("Add and cancel direct signup", async ({ page, request }) => {
   await clearDb(request);
-  await addUser(request, "test1");
-  await addUser(request, "test2");
+  await populateDb(request, {
+    clean: true,
+    users: true,
+    admin: true,
+  });
   await addProgramItems(request, [
     {
       startTime: dayjs(config.event().eventStartTime)
@@ -121,8 +124,11 @@ test("Show error when program item full and update participant list", async ({
   request,
 }) => {
   await clearDb(request);
-  await addUser(request, "test1");
-  await addUser(request, "test2");
+  await populateDb(request, {
+    clean: true,
+    users: true,
+    admin: true,
+  });
   await addProgramItems(request, [
     {
       startTime: dayjs(config.event().eventStartTime)

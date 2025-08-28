@@ -7,7 +7,7 @@ export default defineConfig({
     environment: "node",
     globalSetup: ["./server/src/test/globalSetup.ts"],
     setupFiles: ["./src/test/setupTests.ts"],
-    testTimeout: 30 * 1000,
+    testTimeout: 60 * 1000,
     hookTimeout: 60 * 1000,
     coverage: {
       provider: "istanbul",

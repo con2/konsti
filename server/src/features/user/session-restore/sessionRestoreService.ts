@@ -88,6 +88,8 @@ export const loginWithJwt = async (
       eventLogItems: user.eventLogItems,
       kompassiUsernameAccepted: user.kompassiUsernameAccepted,
       kompassiId: user.kompassiId,
+      email: user.email,
+      emailNotificationPermitAsked: user.emailNotificationPermitAsked,
     };
   }
 

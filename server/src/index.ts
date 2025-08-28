@@ -5,6 +5,11 @@ import { logger } from "server/utils/logger";
 import { startCronJobs } from "server/utils/cron";
 import { config } from "shared/config";
 import { initializeDayjs } from "shared/utils/initializeDayjs";
+import {
+  createNotificationQueueService,
+  setGlobalNotificationQueueService,
+} from "./utils/notificationQueue";
+import { EmailSender } from "server/features/notifications/email";
 
 const startApp = async (): Promise<void> => {
   initializeDayjs();
@@ -34,6 +39,18 @@ const startApp = async (): Promise<void> => {
   }
   if (!enableCronjobs) {
     logger.info("Cronjobs not started, set ONLY_CRONJOBS to enable cronjobs");
+  }
+
+  // Initialize notification queue
+  try {
+    const notificationQueueService = createNotificationQueueService(
+      new EmailSender(),
+      config.server().emailNotificationQueueWorkerCount,
+    );
+    setGlobalNotificationQueueService(notificationQueueService);
+    logger.info("Email notification queue initialized.");
+  } catch (error) {
+    logger.error("Failed to initialize notification queue! %s", error);
   }
 
   process.once("SIGINT", (signal: string) => {
