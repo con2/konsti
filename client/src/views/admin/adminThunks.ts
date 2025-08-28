@@ -67,6 +67,7 @@ export const submitGetSettings = (): AppThunk => {
       signupQuestions: settingsResponse.signupQuestions,
       signupStrategy: settingsResponse.signupStrategy,
       loginProvider: settingsResponse.loginProvider,
+      emailNotificationTrigger: settingsResponse.emailNotificationTrigger,
     };
 
     if (!isDeepEqual(currentSettings, updatedSettings)) {
