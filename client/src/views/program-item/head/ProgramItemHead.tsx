@@ -20,6 +20,7 @@ import {
   getDirectSignupEnded,
   getDirectSignupInProgress,
   getLotterySignupInProgress,
+  getPhaseGapInProgress,
 } from "shared/utils/signupTimes";
 import { getTimeNow } from "client/utils/getTimeNow";
 
@@ -73,12 +74,15 @@ export const ProgramItemHead = ({
     timeNow,
   );
 
+  const lotteryPhaseGapInProgress = getPhaseGapInProgress(programItem, timeNow);
+
   const directSignupInProgress = getDirectSignupInProgress(
     programItem,
     timeNow,
   );
   const directSignupEnded = getDirectSignupEnded(programItem, timeNow);
-  const afterLottery = directSignupInProgress || directSignupEnded;
+  const afterLottery =
+    lotteryPhaseGapInProgress || directSignupInProgress || directSignupEnded;
 
   const tags = [];
   if (config.client().programTypeSelectOptions.length > 1) {
