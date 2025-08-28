@@ -3,7 +3,7 @@ import {
   EventName,
   EventConfig,
 } from "shared/config/eventConfigTypes";
-import { ProgramType } from "shared/types/models/programItem";
+import { ProgramType, SignupType } from "shared/types/models/programItem";
 
 // Event days
 const friday = "2025-09-05";
@@ -28,11 +28,7 @@ export const eventConfig: EventConfig = {
 
   programGuideUrl: "https://2025.tracon.fi/opas",
 
-  activeProgramTypes: [
-    ProgramType.TABLETOP_RPG,
-    ProgramType.LARP,
-    ProgramType.FLEAMARKET,
-  ],
+  activeProgramTypes: [ProgramType.TABLETOP_RPG, ProgramType.FLEAMARKET],
 
   twoPhaseSignupProgramTypes: [ProgramType.FLEAMARKET],
 
@@ -41,7 +37,7 @@ export const eventConfig: EventConfig = {
 
   directSignupWindows: {},
 
-  rollingDirectSignupProgramTypes: [ProgramType.TABLETOP_RPG, ProgramType.LARP],
+  rollingDirectSignupProgramTypes: [ProgramType.TABLETOP_RPG],
   enableRollingDirectSignupPreviousDay: true,
 
   hideParticipantListProgramTypes: [ProgramType.FLEAMARKET],
@@ -86,12 +82,18 @@ export const eventConfig: EventConfig = {
   // Program items with parentId use startTime configured here
   startTimesByParentIds: new Map([
     [
-      "kirpputorin-ajanvaraus-perjantai",
-      `${friday}T12:00:00Z`, // Fri 15:00 GMT+3
+      "kirpputori-perjantai-alkuilta",
+      `${friday}T13:00:00Z`, // Fri 16:00 GMT+3
     ],
     [
-      "kirpputorin-ajanvaraus-lauantai",
+      "kirpputori-perjantai-loppuilta",
+      `${friday}T16:00:00Z`, // Fri 19:00 GMT+3
+    ],
+    [
+      "kirpputori-lauantai",
       `${saturday}T06:30:00Z`, // Sat 09:30 GMT+3
     ],
   ]),
+
+  defaultSignupType: SignupType.KONSTI,
 };

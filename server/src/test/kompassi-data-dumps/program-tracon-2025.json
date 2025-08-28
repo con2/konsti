@@ -1,0 +1,323 @@
+[
+  {
+    "slug": "kirpputori-lauantai",
+    "title": "Kirpputorin ajanvaraus: Lauantai klo 9:30–14",
+    "description": "Traconin kirpputorille pääsee ostoksille pe klo 16–22 ja la klo 9:30–14 ainoastaan ajanvarauksella. Muina aikoina kirpputori palvelee asiakkaita jonosta. Ajanvaraus tapahtuu käyttäen Konstia, johon kirjaudutaan Kompassi-tunnuksilla. Molempien päivien ajanvarausajoille voi ilmoittautua alkaen pe klo 08:00. Koska halukkaita voi olla enemmän kuin kirpputorin ajanvarausaikoihin mahtuu, ajat arvotaan. Arvonnat tapahtuvat perjantaina kello 14:00 ja 17:00 sekä lauantaina kello 7:30. Kunkin arvonnan jälkeen niille ajanvarausajoille, joille on vielä tilaa, voi ilmoittautua Konstissa suoraan.\n\nIlmoittaudu enintään kolmeen sinulle sopivaan aikaan per arvontablokki. Jos sinua onnistaa arvonnassa, saat yhden puolen tunnin mittaisen saapumisajan jonka kuluessa voit saapua jonoon koska tahansa. Saapuessasi kirpputorille avaa lippu älypuhelimeesi ja näytä se järjestyksenvalvojalle. Lipun avaaminen onnistuu kätevimmin avaamalla älypuhelimessa osoite kirpputori.tracon.fi ja valitsemalla avautuvasta näkymästä kirpputorin ajanvarauksen kohdalta ”Avaa pääsylippu”. Huomaathan että voittamasi aika takaa pääsyn kirpputorijonoon, mutta saatat silti joutua jonottamaan kirpputorille pääsyä.\n\nJos haluat varata kirpputoriajan ryhmänä, teidän on ensin muodostettava ryhmä Konstin Ryhmä-näkymässä. Yksi jäsen luo ryhmän ja saa liittymiskoodin, jonka avulla muut jäsenet liittyvät ryhmään. Tämän jälkeen ryhmän perustaja ilmoittautuu arvontaan tai varaa ajan koko ryhmän puolesta. Tarkemmat ohjeet löytyvät Konstin ohjeista.\n\n🚨 HUOM! Arvonnassa arvotaan 30 min ajanvarauksia. Voit kaikissa kolmessa arvonnassa ilmoittautua kolmeen sinulle sopivaan aikaikkunaan, ja jokaisessa arvonnassa voit päästä niistä yhteen.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2025-09-06"],
+      "room": ["sopraano"],
+      "konsti": ["fleamarket"],
+      "scheduled": ["multiple", "one-or-more"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "kirpputori-lauantai-0930",
+        "title": "Kirpputorin ajanvaraus: Lauantai klo 9:30–14 – Saapuminen klo 09:30–10:00",
+        "startTime": "2025-09-06T09:30:00+03:00",
+        "endTime": "2025-09-06T10:00:00+03:00",
+        "lengthMinutes": 30,
+        "location": "",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:maxAttendance": 130,
+          "internal:subtitle": "Saapuminen klo 09:30–10:00"
+        }
+      },
+      {
+        "slug": "kirpputori-lauantai-1000",
+        "title": "Kirpputorin ajanvaraus: Lauantai klo 9:30–14 – Saapuminen klo 10:00–10:30",
+        "startTime": "2025-09-06T10:00:00+03:00",
+        "endTime": "2025-09-06T10:30:00+03:00",
+        "lengthMinutes": 30,
+        "location": "",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:maxAttendance": 130,
+          "internal:subtitle": "Saapuminen klo 10:00–10:30"
+        }
+      },
+      {
+        "slug": "kirpputori-lauantai-1030",
+        "title": "Kirpputorin ajanvaraus: Lauantai klo 9:30–14 – Saapuminen klo 10:30–11:00",
+        "startTime": "2025-09-06T10:30:00+03:00",
+        "endTime": "2025-09-06T11:00:00+03:00",
+        "lengthMinutes": 30,
+        "location": "",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:maxAttendance": 130,
+          "internal:subtitle": "Saapuminen klo 10:30–11:00"
+        }
+      },
+      {
+        "slug": "kirpputori-lauantai-1100",
+        "title": "Kirpputorin ajanvaraus: Lauantai klo 9:30–14 – Saapuminen klo 11:00–11:30",
+        "startTime": "2025-09-06T11:00:00+03:00",
+        "endTime": "2025-09-06T11:30:00+03:00",
+        "lengthMinutes": 30,
+        "location": "",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:maxAttendance": 130,
+          "internal:subtitle": "Saapuminen klo 11:00–11:30"
+        }
+      },
+      {
+        "slug": "kirpputori-lauantai-1130",
+        "title": "Kirpputorin ajanvaraus: Lauantai klo 9:30–14 – Saapuminen klo 11:30–12:00",
+        "startTime": "2025-09-06T11:30:00+03:00",
+        "endTime": "2025-09-06T12:00:00+03:00",
+        "lengthMinutes": 30,
+        "location": "",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:maxAttendance": 130,
+          "internal:subtitle": "Saapuminen klo 11:30–12:00"
+        }
+      },
+      {
+        "slug": "kirpputori-lauantai-1200",
+        "title": "Kirpputorin ajanvaraus: Lauantai klo 9:30–14 – Saapuminen klo 12:00–12:30",
+        "startTime": "2025-09-06T12:00:00+03:00",
+        "endTime": "2025-09-06T12:30:00+03:00",
+        "lengthMinutes": 30,
+        "location": "",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:maxAttendance": 130,
+          "internal:subtitle": "Saapuminen klo 12:00–12:30"
+        }
+      },
+      {
+        "slug": "kirpputori-lauantai-1230",
+        "title": "Kirpputorin ajanvaraus: Lauantai klo 9:30–14 – Saapuminen klo 12:30–13:00",
+        "startTime": "2025-09-06T12:30:00+03:00",
+        "endTime": "2025-09-06T13:00:00+03:00",
+        "lengthMinutes": 30,
+        "location": "",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:maxAttendance": 130,
+          "internal:subtitle": "Saapuminen klo 12:30–13:00"
+        }
+      },
+      {
+        "slug": "kirpputori-lauantai-1300",
+        "title": "Kirpputorin ajanvaraus: Lauantai klo 9:30–14 – Saapuminen klo 13:00–13:30",
+        "startTime": "2025-09-06T13:00:00+03:00",
+        "endTime": "2025-09-06T13:30:00+03:00",
+        "lengthMinutes": 30,
+        "location": "",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:maxAttendance": 130,
+          "internal:subtitle": "Saapuminen klo 13:00–13:30"
+        }
+      },
+      {
+        "slug": "kirpputori-lauantai-1330",
+        "title": "Kirpputorin ajanvaraus: Lauantai klo 9:30–14 – Saapuminen klo 13:30–14:00",
+        "startTime": "2025-09-06T13:30:00+03:00",
+        "endTime": "2025-09-06T14:00:00+03:00",
+        "lengthMinutes": 30,
+        "location": "",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:maxAttendance": 130,
+          "internal:subtitle": "Saapuminen klo 13:30–14:00"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "kirpputori-perjantai-alkuilta",
+    "title": "Kirpputorin ajanvaraus: Perjantai klo 16–19",
+    "description": "Traconin kirpputorille pääsee ostoksille pe klo 16–22 ja la klo 9:30–14 ainoastaan ajanvarauksella. Muina aikoina kirpputori palvelee asiakkaita jonosta. Ajanvaraus tapahtuu käyttäen Konstia, johon kirjaudutaan Kompassi-tunnuksilla. Molempien päivien ajanvarausajoille voi ilmoittautua alkaen pe klo 08:00. Koska halukkaita voi olla enemmän kuin kirpputorin ajanvarausaikoihin mahtuu, ajat arvotaan. Arvonnat tapahtuvat perjantaina kello 14:00 ja 17:00 sekä lauantaina kello 7:30. Kunkin arvonnan jälkeen niille ajanvarausajoille, joille on vielä tilaa, voi ilmoittautua Konstissa suoraan.\n\nIlmoittaudu enintään kolmeen sinulle sopivaan aikaan per arvontablokki. Jos sinua onnistaa arvonnassa, saat yhden puolen tunnin mittaisen saapumisajan jonka kuluessa voit saapua jonoon koska tahansa. Saapuessasi kirpputorille avaa lippu älypuhelimeesi ja näytä se järjestyksenvalvojalle. Lipun avaaminen onnistuu kätevimmin avaamalla älypuhelimessa osoite kirpputori.tracon.fi ja valitsemalla avautuvasta näkymästä kirpputorin ajanvarauksen kohdalta ”Avaa pääsylippu”. Huomaathan että voittamasi aika takaa pääsyn kirpputorijonoon, mutta saatat silti joutua jonottamaan kirpputorille pääsyä.\n\nJos haluat varata kirpputoriajan ryhmänä, teidän on ensin muodostettava ryhmä Konstin Ryhmä-näkymässä. Yksi jäsen luo ryhmän ja saa liittymiskoodin, jonka avulla muut jäsenet liittyvät ryhmään. Tämän jälkeen ryhmän perustaja ilmoittautuu arvontaan tai varaa ajan koko ryhmän puolesta. Tarkemmat ohjeet löytyvät Konstin ohjeista.\n\n🚨 HUOM! Arvonnassa arvotaan 30 min ajanvarauksia. Voit kaikissa kolmessa arvonnassa ilmoittautua kolmeen sinulle sopivaan aikaikkunaan, ja jokaisessa arvonnassa voit päästä niistä yhteen.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2025-09-05"],
+      "room": ["sopraano"],
+      "konsti": ["fleamarket"],
+      "scheduled": ["multiple", "one-or-more"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "kirpputori-perjantai-alkuilta-1600",
+        "title": "Kirpputorin ajanvaraus: Perjantai klo 16–19 – Saapuminen klo 16:00–16:30",
+        "startTime": "2025-09-05T16:00:00+03:00",
+        "endTime": "2025-09-05T16:30:00+03:00",
+        "lengthMinutes": 30,
+        "location": "",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:maxAttendance": 100,
+          "internal:subtitle": "Saapuminen klo 16:00–16:30"
+        }
+      },
+      {
+        "slug": "kirpputori-perjantai-alkuilta-1630",
+        "title": "Kirpputorin ajanvaraus: Perjantai klo 16–19 – Saapuminen klo 16:30–17:00",
+        "startTime": "2025-09-05T16:30:00+03:00",
+        "endTime": "2025-09-05T17:00:00+03:00",
+        "lengthMinutes": 30,
+        "location": "",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:maxAttendance": 100,
+          "internal:subtitle": "Saapuminen klo 16:30–17:00"
+        }
+      },
+      {
+        "slug": "kirpputori-perjantai-alkuilta-1700",
+        "title": "Kirpputorin ajanvaraus: Perjantai klo 16–19 – Saapuminen klo 17:00–17:30",
+        "startTime": "2025-09-05T17:00:00+03:00",
+        "endTime": "2025-09-05T17:30:00+03:00",
+        "lengthMinutes": 30,
+        "location": "",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:maxAttendance": 100,
+          "internal:subtitle": "Saapuminen klo 17:00–17:30"
+        }
+      },
+      {
+        "slug": "kirpputori-perjantai-alkuilta-1730",
+        "title": "Kirpputorin ajanvaraus: Perjantai klo 16–19 – Saapuminen klo 17:30–18:00",
+        "startTime": "2025-09-05T17:30:00+03:00",
+        "endTime": "2025-09-05T18:00:00+03:00",
+        "lengthMinutes": 30,
+        "location": "",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:maxAttendance": 100,
+          "internal:subtitle": "Saapuminen klo 17:30–18:00"
+        }
+      },
+      {
+        "slug": "kirpputori-perjantai-alkuilta-1800",
+        "title": "Kirpputorin ajanvaraus: Perjantai klo 16–19 – Saapuminen klo 18:00–18:30",
+        "startTime": "2025-09-05T18:00:00+03:00",
+        "endTime": "2025-09-05T18:30:00+03:00",
+        "lengthMinutes": 30,
+        "location": "",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:maxAttendance": 100,
+          "internal:subtitle": "Saapuminen klo 18:00–18:30"
+        }
+      },
+      {
+        "slug": "kirpputori-perjantai-alkuilta-1830",
+        "title": "Kirpputorin ajanvaraus: Perjantai klo 16–19 – Saapuminen klo 18:30–19:00",
+        "startTime": "2025-09-05T18:30:00+03:00",
+        "endTime": "2025-09-05T19:00:00+03:00",
+        "lengthMinutes": 30,
+        "location": "",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:maxAttendance": 100,
+          "internal:subtitle": "Saapuminen klo 18:30–19:00"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "kirpputori-perjantai-loppuilta",
+    "title": "Kirpputorin ajanvaraus: Perjantai klo 19–22",
+    "description": "Traconin kirpputorille pääsee ostoksille pe klo 16–22 ja la klo 9:30–14 ainoastaan ajanvarauksella. Muina aikoina kirpputori palvelee asiakkaita jonosta. Ajanvaraus tapahtuu käyttäen Konstia, johon kirjaudutaan Kompassi-tunnuksilla. Molempien päivien ajanvarausajoille voi ilmoittautua alkaen pe klo 08:00. Koska halukkaita voi olla enemmän kuin kirpputorin ajanvarausaikoihin mahtuu, ajat arvotaan. Arvonnat tapahtuvat perjantaina kello 14:00 ja 17:00 sekä lauantaina kello 7:30. Kunkin arvonnan jälkeen niille ajanvarausajoille, joille on vielä tilaa, voi ilmoittautua Konstissa suoraan.\n\nIlmoittaudu enintään kolmeen sinulle sopivaan aikaan per arvontablokki. Jos sinua onnistaa arvonnassa, saat yhden puolen tunnin mittaisen saapumisajan jonka kuluessa voit saapua jonoon koska tahansa. Saapuessasi kirpputorille avaa lippu älypuhelimeesi ja näytä se järjestyksenvalvojalle. Lipun avaaminen onnistuu kätevimmin avaamalla älypuhelimessa osoite kirpputori.tracon.fi ja valitsemalla avautuvasta näkymästä kirpputorin ajanvarauksen kohdalta ”Avaa pääsylippu”. Huomaathan että voittamasi aika takaa pääsyn kirpputorijonoon, mutta saatat silti joutua jonottamaan kirpputorille pääsyä.\n\nJos haluat varata kirpputoriajan ryhmänä, teidän on ensin muodostettava ryhmä Konstin Ryhmä-näkymässä. Yksi jäsen luo ryhmän ja saa liittymiskoodin, jonka avulla muut jäsenet liittyvät ryhmään. Tämän jälkeen ryhmän perustaja ilmoittautuu arvontaan tai varaa ajan koko ryhmän puolesta. Tarkemmat ohjeet löytyvät Konstin ohjeista.\n\n🚨 HUOM! Arvonnassa arvotaan 30 min ajanvarauksia. Voit kaikissa kolmessa arvonnassa ilmoittautua kolmeen sinulle sopivaan aikaikkunaan, ja jokaisessa arvonnassa voit päästä niistä yhteen.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2025-09-05"],
+      "room": ["sopraano"],
+      "konsti": ["fleamarket"],
+      "scheduled": ["multiple", "one-or-more"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "kirpputori-perjantai-loppuilta-1900",
+        "title": "Kirpputorin ajanvaraus: Perjantai klo 19–22 – Saapuminen klo 19:00–19:30",
+        "startTime": "2025-09-05T19:00:00+03:00",
+        "endTime": "2025-09-05T19:30:00+03:00",
+        "lengthMinutes": 30,
+        "location": "",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:maxAttendance": 130,
+          "internal:subtitle": "Saapuminen klo 19:00–19:30"
+        }
+      },
+      {
+        "slug": "kirpputori-perjantai-loppuilta-1930",
+        "title": "Kirpputorin ajanvaraus: Perjantai klo 19–22 – Saapuminen klo 19:30–20:00",
+        "startTime": "2025-09-05T19:30:00+03:00",
+        "endTime": "2025-09-05T20:00:00+03:00",
+        "lengthMinutes": 30,
+        "location": "",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:maxAttendance": 130,
+          "internal:subtitle": "Saapuminen klo 19:30–20:00"
+        }
+      },
+      {
+        "slug": "kirpputori-perjantai-loppuilta-2000",
+        "title": "Kirpputorin ajanvaraus: Perjantai klo 19–22 – Saapuminen klo 20:00–20:30",
+        "startTime": "2025-09-05T20:00:00+03:00",
+        "endTime": "2025-09-05T20:30:00+03:00",
+        "lengthMinutes": 30,
+        "location": "",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:maxAttendance": 130,
+          "internal:subtitle": "Saapuminen klo 20:00–20:30"
+        }
+      },
+      {
+        "slug": "kirpputori-perjantai-loppuilta-2030",
+        "title": "Kirpputorin ajanvaraus: Perjantai klo 19–22 – Saapuminen klo 20:30–21:00",
+        "startTime": "2025-09-05T20:30:00+03:00",
+        "endTime": "2025-09-05T21:00:00+03:00",
+        "lengthMinutes": 30,
+        "location": "",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:maxAttendance": 130,
+          "internal:subtitle": "Saapuminen klo 20:30–21:00"
+        }
+      },
+      {
+        "slug": "kirpputori-perjantai-loppuilta-2100",
+        "title": "Kirpputorin ajanvaraus: Perjantai klo 19–22 – Saapuminen klo 21:00–21:30",
+        "startTime": "2025-09-05T21:00:00+03:00",
+        "endTime": "2025-09-05T21:30:00+03:00",
+        "lengthMinutes": 30,
+        "location": "",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:maxAttendance": 130,
+          "internal:subtitle": "Saapuminen klo 21:00–21:30"
+        }
+      },
+      {
+        "slug": "kirpputori-perjantai-loppuilta-2130",
+        "title": "Kirpputorin ajanvaraus: Perjantai klo 19–22 – Saapuminen klo 21:30–22:00",
+        "startTime": "2025-09-05T21:30:00+03:00",
+        "endTime": "2025-09-05T22:00:00+03:00",
+        "lengthMinutes": 30,
+        "location": "",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:maxAttendance": 50,
+          "internal:subtitle": "Saapuminen klo 21:30–22:00"
+        }
+      }
+    ]
+  }
+]

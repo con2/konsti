@@ -56,7 +56,7 @@ export const kompassiProgramItemMapper = (
         endTime: dayjs(scheduleItem.endTime).toISOString(),
         people: programItem.cachedHosts,
         minAttendance: programItem.cachedAnnotations["konsti:minAttendance"],
-        maxAttendance: mapMaxAttendance(programItem),
+        maxAttendance: scheduleItem.cachedAnnotations["konsti:maxAttendance"],
         gameSystem: programItem.cachedAnnotations["konsti:rpgSystem"],
         shortDescription: mapShortDescription(programItem),
         revolvingDoor: mapRevolvingDoor(programItem),
@@ -295,10 +295,6 @@ const mapRevolvingDoor = (
   return false;
 };
 
-const mapMaxAttendance = (kompassiProgramItem: KompassiProgramItem): number => {
-  return kompassiProgramItem.cachedAnnotations["konsti:maxAttendance"];
-};
-
 const mapShortDescription = (
   kompassiProgramItem: KompassiProgramItem,
 ): string => {
@@ -313,12 +309,18 @@ const mapSignupType = (
   kompassiProgramItem: KompassiProgramItem,
   scheduleItem: KompassiScheduleItem,
 ): SignupType => {
-  const usesKonstiRegisration =
-    first(kompassiProgramItem.cachedDimensions.registration) ===
-    KompassiRegistration.KONSTI;
+  const registration = first(kompassiProgramItem.cachedDimensions.registration);
 
+  if (!registration) {
+    return config.event().defaultSignupType;
+  }
+
+  if (kompassiProgramItem.cachedAnnotations["konsti:isPlaceholder"]) {
+    return SignupType.OTHER;
+  }
+
+  const usesKonstiRegisration = registration === KompassiRegistration.KONSTI;
   const programType = kompassiProgramItem.cachedDimensions.konsti[0];
-
   const evenHourProgramTypes = mapKonstiProgramTypesToKompassiProgramTypes(
     config.event().twoPhaseSignupProgramTypes,
   );
@@ -329,16 +331,6 @@ const mapSignupType = (
     if (!startsAtEvenHour) {
       return SignupType.OTHER;
     }
-  }
-
-  if (kompassiProgramItem.cachedAnnotations["konsti:isPlaceholder"]) {
-    return SignupType.OTHER;
-  }
-
-  const registration = first(kompassiProgramItem.cachedDimensions.registration);
-
-  if (!registration) {
-    return SignupType.OTHER;
   }
 
   switch (registration) {
