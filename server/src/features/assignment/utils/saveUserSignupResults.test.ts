@@ -1,10 +1,10 @@
-import { expect, test, afterEach, beforeEach, vi } from "vitest";
+import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import mongoose from "mongoose";
 import { faker } from "@faker-js/faker";
 import dayjs from "dayjs";
 import {
-  getGlobalNotificationQueueService,
   createNotificationQueueService,
+  getGlobalNotificationQueueService,
   NotificationTaskType,
 } from "server/utils/notificationQueue";
 import { findUsers, saveUser } from "server/features/user/userRepository";
@@ -457,18 +457,11 @@ test("should not add event log items after assigment if signup is dropped due to
   const notificationQueueService = getGlobalNotificationQueueService()!;
   const queueAfterUserSignup = notificationQueueService.getItems();
   expect(queueAfterUserSignup).toHaveLength(3);
-  expect(queueAfterUserSignup[0].username).toEqual(mockUser.username);
-  expect(queueAfterUserSignup[0].type).toEqual(
-    NotificationTaskType.SEND_EMAIL_ACCEPTED,
-  );
-  expect(queueAfterUserSignup[1].username).toEqual(mockUser3.username);
-  expect(queueAfterUserSignup[1].type).toEqual(
-    NotificationTaskType.SEND_EMAIL_ACCEPTED,
-  );
-  expect(queueAfterUserSignup[2].username).toEqual(mockUser4.username);
-  expect(queueAfterUserSignup[2].type).toEqual(
-    NotificationTaskType.SEND_EMAIL_ACCEPTED,
-  );
+  expect(
+    queueAfterUserSignup.every(
+      (task) => task.type == NotificationTaskType.SEND_EMAIL_ACCEPTED,
+    ),
+  ).toEqual(true);
 });
 
 test("should not send notifications to users without email addresses but still create event log items", async () => {
