@@ -168,30 +168,28 @@ export const AppRoutes = (): ReactElement => {
   }
 
   if (loggedIn) {
-    if (!isAdminOrHelp(userGroup)) {
-      if (
-        (kompassiId !== 0 && !kompassiUsernameAccepted) ||
-        !emailNotificationPermitAsked
-      ) {
-        return (
-          <Routes>
-            <Route path={AppRoute.LOGOUT} element={<LogoutView />} />
-            <Route
-              path={AppRoute.ANY}
-              element={
-                <FinalizeRegistration
-                  kompassiUsernameAccepted={kompassiUsernameAccepted}
-                  emailNotificationPermitAsked={emailNotificationPermitAsked}
-                />
-              }
-            />
-            <Route
-              path={AppRoute.KOMPASSI_LOGOUT_CALLBACK}
-              element={<KompassiLogoutCallback />}
-            />
-          </Routes>
-        );
-      }
+    if (
+      (kompassiId !== 0 && !kompassiUsernameAccepted) ||
+      !emailNotificationPermitAsked
+    ) {
+      return (
+        <Routes>
+          <Route path={AppRoute.LOGOUT} element={<LogoutView />} />
+          <Route
+            path={AppRoute.ANY}
+            element={
+              <FinalizeRegistration
+                kompassiUsernameAccepted={kompassiUsernameAccepted}
+                emailNotificationPermitAsked={emailNotificationPermitAsked}
+              />
+            }
+          />
+          <Route
+            path={AppRoute.KOMPASSI_LOGOUT_CALLBACK}
+            element={<KompassiLogoutCallback />}
+          />
+        </Routes>
+      );
     }
 
     return (
