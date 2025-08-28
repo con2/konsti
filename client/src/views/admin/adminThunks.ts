@@ -23,8 +23,9 @@ import {
   EventSignupStrategy,
 } from "shared/config/eventConfigTypes";
 import { getSignupMessages } from "client/services/userServices";
-import { getSentryTest } from "client/views/admin/adminService";
+import { getSentryTest, postEmailTest } from "client/views/admin/adminService";
 import { postAssignment } from "client/services/assignmentServices";
+import { EmailNotificationTrigger } from "shared/types/emailNotification";
 
 export const submitUpdateHidden = (
   hiddenProgramItemIds: readonly string[],
@@ -182,5 +183,19 @@ export const submitSetLoginProvider = (
     }
 
     dispatch(submitSetLoginProviderAsync(response.settings.loginProvider));
+  };
+};
+
+export const submitEmailTest = (
+  email: string,
+  notificationType: EmailNotificationTrigger,
+  programId: string,
+): AppThunk<Promise<string | undefined>> => {
+  return async (): Promise<string | undefined> => {
+    const response = await postEmailTest(email, notificationType, programId);
+
+    if (response.status === "error") {
+      return response.message;
+    }
   };
 };

@@ -12,6 +12,7 @@ import {
 } from "server/features/program-item/programItemController";
 import { getHealthStatus } from "server/features/health/healthController";
 import { getSentryTest } from "server/features/sentry-tunnel/sentryTunnelController";
+import { postEmailTest } from "server/features/admin/emailTestController";
 import {
   deleteSignupQuestion,
   getSettings,
@@ -98,6 +99,7 @@ apiRoutes.post(
   ApiEndpoint.UPDATE_USER_EMAIL_ADDRESS,
   postUpdateUserEmailAddress,
 );
+apiRoutes.post(ApiEndpoint.EMAIL_TEST, postEmailTest);
 
 /* GET routes */
 
