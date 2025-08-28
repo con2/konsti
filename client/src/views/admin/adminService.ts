@@ -19,6 +19,9 @@ export const postEmailTest = async (
     });
     return { status: "success", message: "Test email sent successfully" };
   } catch (error) {
-    return { status: "error", message: `Failed to send test email: ${error}` };
+    return {
+      status: "error",
+      message: `Failed to send test email: ${String(error)}`,
+    };
   }
 };

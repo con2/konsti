@@ -1,10 +1,10 @@
 import dayjs from "dayjs";
 import { unique } from "remeda";
+import { logger } from "@sentry/node";
 import {
   getGlobalNotificationQueueService,
   NotificationTaskType,
 } from "server/utils/notificationQueue";
-import { logger } from "@sentry/node";
 import { UserAssignmentResult } from "shared/types/models/result";
 import {
   delDirectSignup,
@@ -33,7 +33,6 @@ import { getStartingProgramItems } from "server/features/assignment/utils/getSta
 import { ProgramItem } from "shared/types/models/programItem";
 import { SignupRepositoryAddSignup } from "server/features/direct-signup/directSignupTypes";
 import { isStartTimeMatch } from "server/utils/isStartTimeMatch";
-import { serverConfig } from "shared/config/serverConfig";
 import { EmailNotificationTrigger } from "shared/types/emailNotification";
 import { findSettings } from "server/features/settings/settingsRepository";
 import { Settings } from "shared/types/models/settings";
@@ -59,7 +58,7 @@ export const saveUserSignupResults = async ({
   let settings: Settings | null = null;
   if (isErrorResult(settingsResult)) {
     logger.error(
-      "Failed to find settings. Do not queue notification for this assingment.",
+      "Failed to find settings. Do not queue notification for this assignment.",
     );
   } else {
     settings = unwrapResult(settingsResult);
@@ -179,7 +178,7 @@ export const saveUserSignupResults = async ({
     if (queueService === null) {
       return makeErrorResult(QueueError.QUEUE_NOT_INITIALIZED);
     }
-    const newAssingmentEmailNotificationsResult =
+    const newAssignmentEmailNotificationsResult =
       queueService.addNotificationsBulk(
         finalResults.map((result) => ({
           type: NotificationTaskType.SEND_EMAIL_ACCEPTED,
@@ -189,8 +188,8 @@ export const saveUserSignupResults = async ({
         })),
       );
 
-    if (isErrorResult(newAssingmentEmailNotificationsResult)) {
-      return newAssingmentEmailNotificationsResult;
+    if (isErrorResult(newAssignmentEmailNotificationsResult)) {
+      return newAssignmentEmailNotificationsResult;
     }
   }
 
@@ -266,7 +265,7 @@ export const saveUserSignupResults = async ({
       if (queueService === null) {
         return makeErrorResult(QueueError.QUEUE_NOT_INITIALIZED);
       }
-      const noAssingmentEmailNotificationsResult =
+      const noAssignmentEmailNotificationsResult =
         queueService.addNotificationsBulk(
           noAssignmentLotterySignupUsernames.map(
             (noAssignmentLotterySignupUsername) => ({
@@ -278,8 +277,8 @@ export const saveUserSignupResults = async ({
           ),
         );
 
-      if (isErrorResult(noAssingmentEmailNotificationsResult)) {
-        return noAssingmentEmailNotificationsResult;
+      if (isErrorResult(noAssignmentEmailNotificationsResult)) {
+        return noAssignmentEmailNotificationsResult;
       }
     }
   }
