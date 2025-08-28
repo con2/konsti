@@ -41,7 +41,7 @@ export const saveUser = async (
     lotterySignups: [],
     eventLogItems: [],
     email: newUserData.email ?? "",
-    emailNotificationPermitAsked: false,
+    emailNotificationPermitAsked: !!newUserData.email,
   };
 
   const user = new UserModel(newUser);

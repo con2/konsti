@@ -4,7 +4,6 @@ import { PopulateDbOptions } from "shared/test-types/api/testData";
 import { TestSettings } from "shared/test-types/models/testSettings";
 import { PostLoginRequest, PostLoginResponse } from "shared/types/api/login";
 import { PostDirectSignupRequest } from "shared/types/api/myProgramItems";
-import { PostUserRequest } from "shared/types/api/users";
 import { ProgramItem } from "shared/types/models/programItem";
 import { Settings } from "shared/types/models/settings";
 
@@ -36,42 +35,6 @@ export const addProgramItems = async (
     data: programItems,
   });
   expect(response.status()).toBe(200);
-};
-
-const postUser = async (
-  request: APIRequestContext,
-  user: PostUserRequest,
-): Promise<void> => {
-  const url = `${baseUrl}${ApiEndpoint.USERS}`;
-  const response = await request.post(url, {
-    data: user,
-  });
-  expect(response.status()).toBe(200);
-};
-
-const addSerials = async (
-  request: APIRequestContext,
-  count: number,
-): Promise<string[]> => {
-  const url = `${baseUrl}${ApiDevEndpoint.ADD_SERIALS}`;
-  const response = await request.post(url, {
-    data: { count },
-  });
-  expect(response.status()).toBe(200);
-  return response.json() as unknown as string[];
-};
-
-export const addUser = async (
-  request: APIRequestContext,
-  username: string,
-): Promise<void> => {
-  const testUser: PostUserRequest = {
-    username,
-    password: "test",
-  };
-
-  const serials = await addSerials(request, 1);
-  await postUser(request, { ...testUser, serial: serials[0] });
 };
 
 const postLogin = async (
