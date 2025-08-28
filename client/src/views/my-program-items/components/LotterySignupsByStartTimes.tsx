@@ -1,7 +1,7 @@
 import { Fragment, ReactElement } from "react";
 import { useNavigate } from "react-router";
 import styled from "styled-components";
-import { capitalize } from "remeda";
+import { capitalize, groupBy } from "remeda";
 import { useTranslation } from "react-i18next";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
 import { PopularityInfo } from "client/components/PopularityInfo";
@@ -15,62 +15,65 @@ import {
 import { TertiaryButton } from "client/components/TertiaryButton";
 import { AppRoute } from "client/app/AppRoutes";
 import { LotterySignupWithProgramItem } from "client/views/my-program-items/myProgramItemsSlice";
+import { config } from "shared/config";
 
 interface Props {
   lotterySignups: LotterySignupWithProgramItem[];
-  startTimes: readonly string[];
 }
 
 export const LotterySignupsByStartTimes = ({
   lotterySignups,
-  startTimes,
 }: Props): ReactElement => {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
+  const groupedLotterySignups = groupBy(lotterySignups, (lotterySignup) => {
+    const parentStartTime = config
+      .event()
+      .startTimesByParentIds.get(lotterySignup.programItem.parentId);
+    return parentStartTime ?? lotterySignup.signedToStartTime;
+  });
+
   return (
     <>
-      {startTimes.map((startTime) => {
-        return (
-          <Fragment key={startTime}>
-            <MyProgramTime>
-              {capitalize(getWeekdayAndTime(startTime))}
-            </MyProgramTime>
-            <MyProgramList>
-              {lotterySignups.map((signup) => {
-                if (signup.signedToStartTime === startTime) {
-                  return (
-                    <MyProgramListItem key={signup.programItemId}>
-                      <Grid>
-                        <StyledTitle data-testid="program-item-title">
-                          {`${signup.priority}) ${signup.programItem.title}`}
-                        </StyledTitle>
-                        <StyledPopularityInfo
-                          popularity={signup.programItem.popularity}
-                          includeMsg={false}
-                          programType={signup.programItem.programType}
-                        />
-                        <StyledButtons>
-                          <TertiaryButton
-                            icon="circle-arrow-right"
-                            onClick={async () => {
-                              await navigate(
-                                `${AppRoute.PROGRAM_ITEM}/${signup.programItemId}`,
-                              );
-                            }}
-                          >
-                            {t("button.showInfo")}
-                          </TertiaryButton>
-                        </StyledButtons>
-                      </Grid>
-                    </MyProgramListItem>
-                  );
-                }
-              })}
-            </MyProgramList>
-          </Fragment>
-        );
-      })}
+      {Object.entries(groupedLotterySignups).map(([startTime, signups]) => (
+        <Fragment key={startTime}>
+          <MyProgramTime>
+            {capitalize(getWeekdayAndTime(startTime))}
+          </MyProgramTime>
+
+          <MyProgramList>
+            {signups.map((signup) => (
+              <MyProgramListItem key={signup.programItemId}>
+                <Grid>
+                  <StyledTitle data-testid="program-item-title">
+                    {`${signup.priority}) ${signup.programItem.title}`}
+                  </StyledTitle>
+
+                  <StyledPopularityInfo
+                    popularity={signup.programItem.popularity}
+                    includeMsg={false}
+                    programType={signup.programItem.programType}
+                  />
+
+                  <StyledButtons>
+                    <TertiaryButton
+                      icon="circle-arrow-right"
+                      onClick={async () => {
+                        await navigate(
+                          `${AppRoute.PROGRAM_ITEM}/${signup.programItemId}`,
+                        );
+                      }}
+                    >
+                      {t("button.showInfo")}
+                    </TertiaryButton>
+                  </StyledButtons>
+                </Grid>
+              </MyProgramListItem>
+            ))}
+          </MyProgramList>
+        </Fragment>
+      ))}
     </>
   );
 };

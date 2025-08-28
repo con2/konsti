@@ -1,7 +1,6 @@
 import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import { sortBy } from "remeda";
-import { getStartTimes } from "client/utils/getStartTimes";
 import { FavoritesByStartTimes } from "./FavoritesByStartTimes";
 import { ProgramItem } from "shared/types/models/programItem";
 import { RaisedCard } from "client/components/RaisedCard";
@@ -19,13 +18,11 @@ export const MyFavoritesList = ({
 }: Props): ReactElement => {
   const { t } = useTranslation();
 
-  const sortedProgramItems: readonly ProgramItem[] = sortBy(
+  const sortedFavoriteProgramItems: readonly ProgramItem[] = sortBy(
     favoriteProgramItems,
     (favoriteProgramItem) => favoriteProgramItem.startTime,
     (favoriteProgramItem) => favoriteProgramItem.title.toLowerCase(),
   );
-
-  const startTimes = getStartTimes(favoriteProgramItems);
 
   return (
     <RaisedCard data-testid="favorite-program-items-list">
@@ -38,8 +35,7 @@ export const MyFavoritesList = ({
         )}
         {favoriteProgramItems.length > 0 && (
           <FavoritesByStartTimes
-            programItems={sortedProgramItems}
-            startTimes={startTimes}
+            favoriteProgramItems={sortedFavoriteProgramItems}
           />
         )}
       </div>

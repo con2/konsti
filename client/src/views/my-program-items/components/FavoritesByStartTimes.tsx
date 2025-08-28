@@ -1,12 +1,11 @@
 import { Fragment, ReactElement } from "react";
 import { useNavigate } from "react-router";
 import { useTranslation } from "react-i18next";
-import { capitalize } from "remeda";
+import { capitalize, groupBy } from "remeda";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
 import { ProgramItem } from "shared/types/models/programItem";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { updateFavorite } from "client/utils/favorite";
-import { selectFavoriteProgramItems } from "client/views/my-program-items/myProgramItemsSlice";
 import { TertiaryButton } from "client/components/TertiaryButton";
 import {
   MyProgramButtonContainer,
@@ -16,22 +15,30 @@ import {
   MyProgramTime,
 } from "client/views/my-program-items/components/shared";
 import { AppRoute } from "client/app/AppRoutes";
+import { config } from "shared/config";
 
 interface Props {
-  programItems: readonly ProgramItem[];
-  startTimes: readonly string[];
+  favoriteProgramItems: readonly ProgramItem[];
 }
 
 export const FavoritesByStartTimes = ({
-  programItems,
-  startTimes,
+  favoriteProgramItems,
 }: Props): ReactElement => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const username = useAppSelector((state) => state.login.username);
-  const favoriteProgramItems = useAppSelector(selectFavoriteProgramItems);
+
+  const groupedFavoriteProgramItems = groupBy(
+    favoriteProgramItems,
+    (favoriteProgramItem) => {
+      const parentStartTime = config
+        .event()
+        .startTimesByParentIds.get(favoriteProgramItem.parentId);
+      return parentStartTime ?? favoriteProgramItem.startTime;
+    },
+  );
 
   const removeFavorite = async (programItem: ProgramItem): Promise<void> => {
     await updateFavorite({
@@ -45,49 +52,47 @@ export const FavoritesByStartTimes = ({
 
   return (
     <>
-      {startTimes.map((startTime) => {
-        return (
+      {Object.entries(groupedFavoriteProgramItems).map(
+        ([startTime, programItems]) => (
           <Fragment key={startTime}>
             <MyProgramTime>
               {capitalize(getWeekdayAndTime(startTime))}
             </MyProgramTime>
 
             <MyProgramList>
-              {programItems.map((programItem) => {
-                if (programItem.startTime === startTime) {
-                  return (
-                    <MyProgramListItem key={programItem.programItemId}>
-                      <MyProgramGameTitle data-testid="program-item-title">
-                        {programItem.title}
-                      </MyProgramGameTitle>
-                      <MyProgramButtonContainer>
-                        <TertiaryButton
-                          icon="circle-arrow-right"
-                          onClick={async () => {
-                            await navigate(
-                              `${AppRoute.PROGRAM_ITEM}/${programItem.programItemId}`,
-                            );
-                          }}
-                        >
-                          {t("button.showInfo")}
-                        </TertiaryButton>
-                        <TertiaryButton
-                          onClick={async () => {
-                            await removeFavorite(programItem);
-                          }}
-                          icon={["far", "heart"]}
-                        >
-                          {t("button.unfavorite")}
-                        </TertiaryButton>
-                      </MyProgramButtonContainer>
-                    </MyProgramListItem>
-                  );
-                }
-              })}
+              {programItems.map((programItem) => (
+                <MyProgramListItem key={programItem.programItemId}>
+                  <MyProgramGameTitle data-testid="program-item-title">
+                    {programItem.title}
+                  </MyProgramGameTitle>
+
+                  <MyProgramButtonContainer>
+                    <TertiaryButton
+                      icon="circle-arrow-right"
+                      onClick={async () => {
+                        await navigate(
+                          `${AppRoute.PROGRAM_ITEM}/${programItem.programItemId}`,
+                        );
+                      }}
+                    >
+                      {t("button.showInfo")}
+                    </TertiaryButton>
+
+                    <TertiaryButton
+                      onClick={async () => {
+                        await removeFavorite(programItem);
+                      }}
+                      icon={["far", "heart"]}
+                    >
+                      {t("button.unfavorite")}
+                    </TertiaryButton>
+                  </MyProgramButtonContainer>
+                </MyProgramListItem>
+              ))}
             </MyProgramList>
           </Fragment>
-        );
-      })}
+        ),
+      )}
     </>
   );
 };

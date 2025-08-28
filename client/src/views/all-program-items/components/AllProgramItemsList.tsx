@@ -58,7 +58,7 @@ export const AllProgramItemsList = ({ programItems }: Props): ReactElement => {
     isGroupCreator,
     groupMembers,
     isInGroup,
-    getAllProgramItems: true,
+    showAllProgramItems: true,
   });
 
   const sortedProgramItems = sortBy(

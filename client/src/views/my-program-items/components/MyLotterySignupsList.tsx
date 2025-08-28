@@ -1,7 +1,6 @@
 import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import { sortBy } from "remeda";
-import { getStartTimes } from "client/utils/getStartTimes";
 import { LotterySignupsByStartTimes } from "./LotterySignupsByStartTimes";
 import { RaisedCard } from "client/components/RaisedCard";
 import { useAppSelector } from "client/utils/hooks";
@@ -33,10 +32,6 @@ export const MyLotterySignupsList = ({
     (lotterySignup) => lotterySignup.priority,
   );
 
-  const startTimes = getStartTimes(
-    lotterySignups.map((lotterySignup) => lotterySignup.programItem),
-  );
-
   return (
     <RaisedCard data-testid="lottery-signup-program-items-list">
       <MyProgramHeader>{t("lotterySignups")}</MyProgramHeader>
@@ -51,10 +46,7 @@ export const MyLotterySignupsList = ({
         <MyProgramSecondaryText>{t("noLotterySignups")}</MyProgramSecondaryText>
       )}
       {lotterySignups.length > 0 && (
-        <LotterySignupsByStartTimes
-          lotterySignups={sortedLotterySignups}
-          startTimes={startTimes}
-        />
+        <LotterySignupsByStartTimes lotterySignups={sortedLotterySignups} />
       )}
     </RaisedCard>
   );
