@@ -4,18 +4,15 @@ import {
   getBaseUrl,
   doKompassiLogin,
   verifyKompassiLogin,
-  verifyUpdateUserEmailAddress,
 } from "server/features/kompassi-login/kompassiLoginService";
 import { ApiEndpoint, AuthEndpoint } from "shared/constants/apiEndpoints";
 import {
   PostKompassiLoginRequestSchema,
-  PostUpdateUserEmailAddressRequestSchema,
   PostVerifyKompassiLoginRequestSchema,
 } from "shared/types/api/login";
 import { getAuthUrl } from "server/features/kompassi-login/kompassiLoginUtils";
 import { getAuthorizedUsername } from "server/utils/authHeader";
 import { UserGroup } from "shared/types/models/user";
-import { updateUserEmailAddress } from "server/features/user/userRepository";
 
 export const postKompassiLoginRedirect = (
   req: Request,

@@ -73,8 +73,6 @@ const loginSlice = createSlice({
     ): LoginState {
       return {
         ...state,
-        username: action.payload.username,
-        kompassiUsernameAccepted: action.payload.kompassiUsernameAccepted,
         email: action.payload.email,
         emailNotificationPermitAsked:
           action.payload.emailNotificationPermitAsked,

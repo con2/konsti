@@ -3,9 +3,9 @@ import mongoose from "mongoose";
 import { faker } from "@faker-js/faker";
 import dayjs from "dayjs";
 import {
-  NotificationTaskType,
-  createNotificationQueueService,
   getGlobalNotificationQueueService,
+  createNotificationQueueService,
+  NotificationTaskType,
 } from "server/utils/notificationQueue";
 import { findUsers, saveUser } from "server/features/user/userRepository";
 import {
@@ -29,13 +29,9 @@ import { saveUserSignupResults } from "server/features/assignment/utils/saveUser
 import { UserAssignmentResult } from "shared/types/models/result";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { EventLogAction } from "shared/types/models/eventLog";
-import {
-  NotificationTaskType,
-  createNotificationQueueService,
-  getGlobalNotificationQueueService,
-} from "server/utils/notificationQueue";
 import { EmailSender } from "server/features/notifications/email";
 import { config } from "shared/config";
+import { EmailMessage } from "server/features/notifications/senderCommon";
 
 vi.mock<object>(
   import("server/utils/notificationQueue"),
@@ -210,7 +206,9 @@ test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items for 'startTime
 
   notificationQueueService.getQueue().resume();
   await notificationQueueService.getQueue().drained();
-  const messages = notificationQueueService.getSender().getSentEmails();
+  const messages: EmailMessage[] = notificationQueueService
+    .getSender()
+    .getSentEmails();
   const expectedAcceptedBody = `Hei ${mockUser.username}!
 Olet ollut onnekas ja paasit ohjelmaan Test program item
 Ohjelma alkaa 2019-07-26T14:00:00.000Z.
