@@ -175,6 +175,27 @@ export const getLotterySignupInProgress = (
   );
 };
 
+export const getPhaseGapInProgress = (
+  programItem: ProgramItem,
+  timeNow: Dayjs,
+): boolean => {
+  const { phaseGap } = config.event();
+  const directSignupStartTime = getDirectSignupStartTime(programItem);
+
+  // Delay showing lottery results immediately since lottery is still running
+  const DELAY_SHOW_AFTER_LOTTERY = 1;
+
+  const phaseGapStart = directSignupStartTime.subtract(
+    phaseGap - DELAY_SHOW_AFTER_LOTTERY,
+    "minutes",
+  );
+
+  return (
+    timeNow.isSameOrAfter(phaseGapStart) &&
+    timeNow.isBefore(directSignupStartTime)
+  );
+};
+
 export const getDirectSignupInProgress = (
   programItem: ProgramItem,
   timeNow: Dayjs,

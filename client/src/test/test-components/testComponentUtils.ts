@@ -32,6 +32,7 @@ export const testTimes = [
   dayjs(eventStartTime).add(3, "hours").toISOString(),
   dayjs(eventStartTime).add(5, "hours").toISOString(),
   dayjs(eventStartTime).add(6, "hours").toISOString(),
+  dayjs(eventStartTime).add(6, "hours").add(3, "minute").toISOString(),
   dayjs(eventStartTime).add(8, "hours").toISOString(),
 
   // Saturday
