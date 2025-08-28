@@ -95,8 +95,8 @@ const commonConfig = {
   // Email notifications
   emailNotificationTrigger: EmailNotificationTrigger.BOTH,
   emailNotificationQueueWorkerCount: 1,
-  emailSendFromAddress: "Ropekonsti <konsti@ropekonsti.fi>",
-  emailSMTPHost: "",
+  emailSendFromAddress: "Konsti <konsti@kompassi.eu>",
+  emailSMTPHost: "smtp.ethereal.email",
   emailSMTPPort: 587,
   emailSMTPUsername: "",
   emailSMTPPassword: "",
@@ -126,6 +126,9 @@ const prodConfig = {
   autoAssignAttendeesEnabled: false,
   autoAssignInterval: "0 * * * *",
   autoAssignDelay: 1000 * 5,
+  emailSendFromAddress: "Konsti <konsti@kompassi.eu>",
+  emailSMTPHost: "sr1.pahaip.fi",
+  emailSMTPPort: 25,
 };
 
 const stagingConfig = {

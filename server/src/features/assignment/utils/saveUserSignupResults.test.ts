@@ -222,6 +222,7 @@ Et paassyt arvonnassa yhteenkaan ohjelmaan johon ilmoittauduit.
 Terveisin Konsti.`;
   const expectedRejectedSubject = "Et paassyt arvonnassa yhteenkaan ohjelmaan";
 
+  expect(messages).toHaveLength(2);
   expect(messages[0].text).toEqual(expectedAcceptedBody);
   expect(messages[0].subject).toEqual(expectedAcceptedSubject);
   expect(messages[0].to).toEqual("user@example.com");

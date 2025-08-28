@@ -22,16 +22,12 @@ export class EmailSender {
       this.transport = createTransport({
         host: config.server().emailSMTPHost,
         port: config.server().emailSMTPPort,
-        auth: {
-          user: config.server().emailSMTPUsername,
-          pass: config.server().emailSMTPPassword,
-        },
       });
     } else {
       const account = await createTestAccount();
       this.transport = createTransport({
-        host: "smtp.ethereal.email",
-        port: 587,
+        host: config.server().emailSMTPHost,
+        port: config.server().emailSMTPPort,
         auth: {
           user: account.user,
           pass: account.pass,
