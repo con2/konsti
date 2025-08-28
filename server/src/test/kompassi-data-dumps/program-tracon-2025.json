@@ -1,8 +1,339 @@
 [
   {
+    "slug": "agentin-takaa-ajo",
+    "title": "Agentin takaa-ajo",
+    "description": "Juna-asemalla nopealiikkeinen agentti nousee raskastekoisiin vankkureihin. Lurjusten sponsori lähettää heidät pysäyttämään vankkureiden matkan hinnalla millä hyvänsä. Agentti ei saa päästä perille saarelle, jolla seisoo ankaran aatelissuvun muinainen linna.\r\n\r\nLuvassa on kevyttä toimintaseikkailua valmishahmoilla Dishonored- ja Thief-pelisarjojen tyyliin. Aloittelijoille sopiva peli perustuu Blades in the Darkin sääntöihin ja maailmaan.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2025-09-07"],
+      "form": ["offer-program-rpg"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["tabletoprpg"],
+      "scheduled": ["one", "one-or-more"],
+      "program-type": ["rpg-game"],
+      "guidegrouping": ["rpg"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "agentin-takaa-ajo",
+        "title": "Agentin takaa-ajo",
+        "startTime": "2025-09-07T11:00:00+03:00",
+        "endTime": "2025-09-07T13:00:00+03:00",
+        "lengthMinutes": 120,
+        "location": "Duetto 1 (Roolipelipöytä 2)",
+        "isCancelled": false,
+        "cachedAnnotations": {}
+      }
+    ]
+  },
+  {
+    "slug": "akkia-takaisin-laivaan",
+    "title": "Äkkiä takaisin laivaan!",
+    "description": "\"Saarella vallitsee seesteinen tunnelma. Papukaijat papattavat ja lempeä tuuli havisuttaa puita. Ah, miten täydellinen päivä. Saaren pohjoispuolelta kuuluu sammakoiden rauhallista kurnutusta ja… askelia? Huutoa ja juoksuaskelia!\r\n\r\nTe, joukko merirosvoja, kömmähtelette kiireen vilkkaa ulos pohjoisen saaren hautakammiosta mittavan aarteen kanssa jaguaarisoturit kintereillänne. Merellä, aivan saaren lähettyvillä, seilaa verivihollistenne merirosvolaiva. Pääkallolippu korkealla se lipuu tuhoisat aikeet mielessään kohti lahtea, johon teidän uljas laivanne on ankkuroitu. \r\n\r\nTeidän on kiirehdittävä ja päästävä äkkiä takaisin laivaan!\"\r\n\r\nPeli on aloittelijaystävällinen ja säännöiltään kevyt.\r\nPelissä on kuvauksia väkivallasta.\r\nTarjolla valmishahmot.\r\nPelipöytäni on turvallinen tila!",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2025-09-06"],
+      "form": ["offer-program-rpg"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["tabletoprpg"],
+      "scheduled": ["one", "one-or-more"],
+      "program-type": ["rpg-game"],
+      "guidegrouping": ["rpg"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "akkia-takaisin-laivaan",
+        "title": "Äkkiä takaisin laivaan!",
+        "startTime": "2025-09-06T16:00:00+03:00",
+        "endTime": "2025-09-06T20:00:00+03:00",
+        "lengthMinutes": 240,
+        "location": "Duetto 1 (Roolipelipöytä 2)",
+        "isCancelled": false,
+        "cachedAnnotations": {}
+      }
+    ]
+  },
+  {
+    "slug": "alavilla-mailla",
+    "title": "Alavilla mailla",
+    "description": "Harva on nähnyt taivasta tai muuta kuolemanjälkeistä palkintoa. Helvetti, sen sijaan? Sen nähdäkseen tarvitse vain ylittää Suden autiomaa. Tai näin eräs vanha praedor sinulle kertoi. Nyt on aika astua sen rajan ylitse ja nähdä omin silmin, lunastavatko Borvarian rauniot kaikki niistä annetut lupaukset. Mainetta ja kunniaa, vai nopea tie kuolemaan? Se on sinun käsissäsi... onhan?\r\n\r\nKäytettävissä on aikaisempien praedorien muistiinpanoja ja karttoja. Kenties sinunkin raapustuksesi vielä johdattavat jonkun pelastukseen... tai varmaan kuolemaan.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2025-09-06"],
+      "form": ["offer-program-rpg"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["tabletoprpg"],
+      "scheduled": ["one", "one-or-more"],
+      "program-type": ["rpg-game"],
+      "guidegrouping": ["rpg"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "alavilla-mailla",
+        "title": "Alavilla mailla",
+        "startTime": "2025-09-06T11:00:00+03:00",
+        "endTime": "2025-09-06T15:00:00+03:00",
+        "lengthMinutes": 240,
+        "location": "Duetto 1 (Roolipelipöytä 1)",
+        "isCancelled": false,
+        "cachedAnnotations": {}
+      }
+    ]
+  },
+  {
+    "slug": "carroburgin-varjot",
+    "title": "Carroburgin Varjot",
+    "description": "Aikoinaan Carroburgin kaupungissa kerrottiin tarinoita suuresta sankarista Karad von Carronista, joka kukisti kaupunkia uhkaavat kaaoksen sotajoukot ja ajoi heidät takaisin pohjoiseen. Nykyään kaupungin majataloissa ja kujilla Karadin nimi mainitaan enää kuiskaten, sillä huhut kertovat sankarin ruumiin nousevan haudastaan vaanimaan asukkaita yön pimeydessä. \r\n\r\nNoidanmetsästäjien ja lopunaikojen saarnamiesten täyttäessä kadut, alkavat myös aateliset huolestumaan tilanteesta. Kaupungin airuet kuuluttavatkin nyt lupauksia maineesta ja mammonasta niille, jotka ovat tarpeeksi urheita selvittääkseen ratkaisun tähän mysteeriin…\r\n\r\nCarroburgin Varjot on kaikentasoisille pelaajille sopiva kauhuseikkailu Warhammer Fantasyn maailmassa.\r\n",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2025-09-06"],
+      "form": ["offer-program-rpg"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["tabletoprpg"],
+      "scheduled": ["one", "one-or-more"],
+      "program-type": ["rpg-game"],
+      "guidegrouping": ["rpg"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "carroburgin-varjot",
+        "title": "Carroburgin Varjot",
+        "startTime": "2025-09-06T11:30:00+03:00",
+        "endTime": "2025-09-06T15:30:00+03:00",
+        "lengthMinutes": 240,
+        "location": "Duetto 1 (Roolipelipöytä 3)",
+        "isCancelled": false,
+        "cachedAnnotations": {}
+      }
+    ]
+  },
+  {
+    "slug": "cy-borg-terasta-teknoa-ja-tauteja",
+    "title": "CY_BORG: Terästä, teknoa ja tauteja 1. pelautus",
+    "description": "Syberiä pakkiin! Pelataan CY_BORG:ia! Maailma on cyberpunk, ja kaikki on kurjaa: On velkaa, on tauteja, on isoja pahoja korporaatioita ja nyt tätä pääsee taas myös roolipelaamaan. Sä ja sun kaverit tarviitte rahaa. Sitähän saa, tarvitsee vain tehdä pari palvelusta.\r\n\r\nPelataan CY_BORG oneshotteja. Seikkailut ovat variaatioita Magenta Pagesin skenaarioista. Pelataan yksi tai useampi. Hahmojen henki voi olla halpaa, mutta pöydän meininki kevyehkö. Valmiit/satunnaiset hahmot.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2025-09-05"],
+      "form": ["offer-program-rpg"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["tabletoprpg"],
+      "scheduled": ["one", "one-or-more"],
+      "program-type": ["rpg-game"],
+      "guidegrouping": ["rpg"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "cy-borg-terasta-teknoa-ja-tauteja",
+        "title": "CY_BORG: Terästä, teknoa ja tauteja 1. pelautus",
+        "startTime": "2025-09-05T19:30:00+03:00",
+        "endTime": "2025-09-05T22:00:00+03:00",
+        "lengthMinutes": 150,
+        "location": "Duetto 1 (Roolipelipöytä 2)",
+        "isCancelled": false,
+        "cachedAnnotations": {}
+      }
+    ]
+  },
+  {
+    "slug": "cy-borg-terasta-teknoa-ja-tauteja-1",
+    "title": "CY_BORG: Terästä, teknoa ja tauteja 2. pelautus",
+    "description": "Syberiä pakkiin! Pelataan CY_BORG:ia! Maailma on cyberpunk, ja kaikki on kurjaa: On velkaa, on tauteja, on isoja pahoja korporaatioita ja nyt tätä pääsee taas myös roolipelaamaan. Sä ja sun kaverit tarviitte rahaa. Sitähän saa, tarvitsee vain tehdä pari palvelusta.\r\n\r\nPelataan CY_BORG oneshotteja. Seikkailut ovat variaatioita Magenta Pagesin skenaarioista. Pelataan yksi tai useampi. Hahmojen henki voi olla halpaa, mutta pöydän meininki kevyehkö. Valmiit/satunnaiset hahmot.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2025-09-06"],
+      "form": ["offer-program-rpg"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["tabletoprpg"],
+      "scheduled": ["one", "one-or-more"],
+      "program-type": ["rpg-game"],
+      "guidegrouping": ["rpg"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "cy-borg-terasta-teknoa-ja-tauteja-1",
+        "title": "CY_BORG: Terästä, teknoa ja tauteja 2. pelautus",
+        "startTime": "2025-09-06T19:00:00+03:00",
+        "endTime": "2025-09-06T21:30:00+03:00",
+        "lengthMinutes": 150,
+        "location": "Duetto 1 (Roolipelipöytä 4)",
+        "isCancelled": false,
+        "cachedAnnotations": {}
+      }
+    ]
+  },
+  {
+    "slug": "for-the-dancing-and-romancing",
+    "title": "For the Dancing and Romancing",
+    "description": "What is a story without romance? What is a good romance without some drama and condemning looks from the gossipping fellow ball enjoyers? \r\nCome write your own book about the lives of the \"better folk\" of the regency period in the manner of Pride and Prejudice or Sense and Sensibility. Make the elders blush with your uncouth braveness or sneakily wrap the poor love interest around your fingers. Just remember, all is fair in love.\r\n\r\nGood Society is a collaborative regency rpg that seeks to capture the heart, and the countenance, of Jane Austen’s work.\r\nIt is a game of balls, estates, sly glances, and turns about the garden. At least on the surface. Underneath this, just as in Austen’s own novels, it is a game of social ambition, family obligation and breathtaking, heart-stopping longing.\r\n\r\nThe system uses no dice and is highly reliant on players own active participation on the role playing action.\r\n",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2025-09-06"],
+      "form": ["offer-program-rpg"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["tabletoprpg"],
+      "scheduled": ["one", "one-or-more"],
+      "guide-tags": ["lang-eng"],
+      "program-type": ["rpg-game"],
+      "guidegrouping": ["rpg"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "for-the-dancing-and-romancing",
+        "title": "For the Dancing and Romancing",
+        "startTime": "2025-09-06T13:30:00+03:00",
+        "endTime": "2025-09-06T18:30:00+03:00",
+        "lengthMinutes": 300,
+        "location": "Duetto 1 (Roolipelipöytä 4)",
+        "isCancelled": false,
+        "cachedAnnotations": {}
+      }
+    ]
+  },
+  {
+    "slug": "hirmujen-yot-rattus-res-navis",
+    "title": "Hirmujen Yöt - Rattus Res Navis",
+    "description": "Herran vuonna 1876\r\nSavusumuinen New Whitmore siintää rankkasateen tahkomien ikkunoiden takaa.\r\nTe olette kaupunkia riivaavien yöllisten petojen irvikuvia vastaan noussut ryysyinen vapaaehtoisryhmä.\r\nTyhmänrohkeaa, totta vie, mutta kaupungin rauha, kotinne turva on riekaleina. Kaltaisianne on surullisen useita.\r\n\r\nPalkkaajanne rauhaisan toimiston tyyneys raukeaa ja ikkunat alkavat helistä, maa jyristä. \r\nOlette toki kuulleet ihmissusista ja kalmankarjuista, mutta tämä kaupunginlaajuinen hyökyaalto kuulostaa jokseenkin... vipeltävältä.\r\n\r\nOnko sinusta astuaksesi hirmujen öihin?\r\n\r\nPelissä käsitellään melko raskaita teemoja. Pelaajien on siis hyvä varautua kohtauksiin kauhuteemoista, kehokauhusta ja väkivallasta (Mitään ei viedä mauttomuuksiin) Muistetaan pitää pelipöytä turvallisena kaikille!",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2025-09-05"],
+      "form": ["offer-program-rpg"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["tabletoprpg"],
+      "scheduled": ["one", "one-or-more"],
+      "program-type": ["rpg-game"],
+      "guidegrouping": ["rpg"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "hirmujen-yot-rattus-res-navis",
+        "title": "Hirmujen Yöt - Rattus Res Navis",
+        "startTime": "2025-09-05T18:00:00+03:00",
+        "endTime": "2025-09-05T22:00:00+03:00",
+        "lengthMinutes": 240,
+        "location": "Duetto 1 (Roolipelipöytä 1)",
+        "isCancelled": false,
+        "cachedAnnotations": {}
+      }
+    ]
+  },
+  {
+    "slug": "jumissa-tropiikissa",
+    "title": "Jumissa tropiikissa",
+    "description": "Espanjan inkvisitio on äskettäin palkannut sluuppi Laiturirotan tuoreen merirosvomiehistön saattamaan konkistadoria ja nunnaa Ankeriassaarelle. Kaksikon toiveissa on löytää kuunaripriki Vaiteliaan Enkelin hylky aarteineen. Olette rantautuneet Ankeriassaaren hiekalle, nyt on enää löydettävä hylky kuuman kostean viidakon uumenista...\r\n\r\nPirate Borg on Mörk Borg-pohjainen peli grogia ryystävistä merirosvoista, epäkuolleista kaljuunoista, mystisistä aarteista muinaisissa temppeleissä ja ennen kaikkea seikkailuista avomerillä. Astu laivaan!\r\n\r\nPelissä hahmot tutkivat viidakkosaarta, ja selvittävät mitä on tapahtunut haaksirikkoutuneelle laivalle. Mahdollisia sisältövaroituksia: päihteiden käyttö, epäkuolleet, matelijat, eldritch horror. Aikaisempi sääntökokemus ei vaadittua! Synkkä roolipeli camp-huumorilla höystettynä.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2025-09-07"],
+      "form": ["offer-program-rpg"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["tabletoprpg"],
+      "scheduled": ["one", "one-or-more"],
+      "program-type": ["rpg-game"],
+      "guidegrouping": ["rpg"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "jumissa-tropiikissa",
+        "title": "Jumissa tropiikissa",
+        "startTime": "2025-09-07T11:00:00+03:00",
+        "endTime": "2025-09-07T15:00:00+03:00",
+        "lengthMinutes": 240,
+        "location": "Duetto 1 (Roolipelipöytä 6)",
+        "isCancelled": false,
+        "cachedAnnotations": {}
+      }
+    ]
+  },
+  {
+    "slug": "juurikruunu",
+    "title": "Juurikruunu",
+    "description": "Juurikruunun kylässä juhlitaan yltäkylläisten pitopöytien äärellä. Joka kevät suurdruidi Heilimö laskeutuu kuoleman viidenteen holviin hakemaan pyhää juurikruunua, taikaesinettä, jolla siunata kylän pellot ja metsät. Ennen lähtöään Heilimö arpoo väen joukosta pitojen suojelijat. Nimitys on arvostettu, mutta täysin seremoniallinen, eihän juhlissa ole ollut mitään hämminkiä melkein kahteensataan vuoteen\r\n\r\nIlta alkaa kuitenkin laskeutua, eikä Heilimöä näy. Pahoitellen kestimestari keskeyttää suojelijoiden aterioinnin ja pyytää näitä menemään holveille katsomaan, mikä tätä viivyttää. Hän varoittaa kuitenkin, ettei toista holvia pidemmälle sovi mennä - etenkään, kun kukaan muu kuin suurdruidi itse ei tiedä vastausta syvempien luolien ansoihin ja arvoituksiin.\r\n\r\n\"Juurikruunu\" on tunnelmaltaan kepeä hyvänmielen seikkailu, joka sopii hyvin aloitteleville roolipelaajille. Tarkoituksena ei ole käsitellä erityisen vaikeita teemoja, mutta kansojen välinen, historiallinen vihanpito mainitaan. Pääpainopiste pelissä on tutkimisella, arvoitusten ratkaisemisella ja roolipelillisillä elementeillä, mutta taisteluakin päästään kokeilemaan. Pohjana seikkailun rungolle on Legendoja ja Lohikäärmeitä -kertapeli Erebuksen viisi holvia.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2025-09-06"],
+      "form": ["offer-program-rpg"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["tabletoprpg"],
+      "scheduled": ["one", "one-or-more"],
+      "program-type": ["rpg-game"],
+      "guidegrouping": ["rpg"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "juurikruunu",
+        "title": "Juurikruunu",
+        "startTime": "2025-09-06T12:00:00+03:00",
+        "endTime": "2025-09-06T17:00:00+03:00",
+        "lengthMinutes": 300,
+        "location": "Duetto 1 (Roolipelipöytä 5)",
+        "isCancelled": false,
+        "cachedAnnotations": {}
+      }
+    ]
+  },
+  {
+    "slug": "kadonnut-aurinko",
+    "title": "Kadonnut aurinko",
+    "description": "\"Aurinko on varastettu!\" julistaa merettömän maan hallitsija, kun pimeyttä on kestänyt toista viikkoa. Avuksi on kutsuttu ympäröivien valtakuntien parhaat seikkailijat, joiden tehtävänä on seurata johtolankoja itään, missä aurinko viimeksi nähtiin; itään, karkoitettujen pimeyden kansojen maille. Kuka ryösti auringon, ja miksi? Kykenevätkö sankarimme palauttamaan maailmaan valon ja lämmön, vai onko se iäksi tuomittu vaaralliseen, kylmään pimeyteen?\r\n\r\nTervetuloa lapsuuden iltasatujen inspiroimaan seikkailuun! Tämä peli pelataan 5-tason hahmoilla, joten D&D5e.n sääntöjen perustuntemus on suotavaa: kaikkea ei tarvitse kuitenkaan osata tai muistaa, pelinvetäjä auttaa tarvittaessa. Lisäksi saatavilla on helpompiakin valmishahmoja.\r\nPelissä tulee todennäköisesti olemaan ainakin hiukan taistelua, mutta konflikteja on myös mahdollista ratkaista puhumalla, ja lisäksi vetäjä kannustaa kokeilemaan luovia ja niitä muka-tyhmiäkin ideoita! Vaikka lähtötasoisesti peli on ns. vakavamielinen, huumori on sallittua, eikä pelissä tulla mässäilemään väkivallalla, vaan pyritään pysyttelemään satujen tunnelmissa.\r\nVetäjä itse on varustettu noin kahdeksan vuoden vetokokemuksella, ja vahvuuksiin kuuluvat tarinalliset pelit, improvisaatio sekä eläytyminen.\r\n\r\n(eng)\r\n\"The sun has been stolen!\" declares the ruler of the sealess kingdom after the darkness has lasted for nearly a fortnight. The best adventurers of the surrounding kingdoms have been called to help, and they are to set forth to east where the sun was last seen; east, the land of the banished races of the dark. Who stole the sun, and why? Can our heroes bring back light and warmth, or is the world forever doomed into dangerous, cold darkness?\r\n\r\nWelcome to an adventure inspired by childhood fairytales! This one-shot is played with 5th level characters, so knowledge of the basic rules of D&D5e is recommended: you don't need to know nor remember everything, however, the DM will help out if needed. There are also easier to play characters available.\r\nThere will likely be some combat, but conflicts can be resolved with other skills, and the DM does encourage trying out creative and so-called stupid ideas! Though the game is meant to be more serious in mood, humour is most welcome, and there will be no gore as the idea is to stay in the fairytale setting.\r\nThe DM themselves has some eight years of experience, with strengths in storytelling, improvisation and getting into character.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2025-09-05"],
+      "form": ["offer-program-rpg"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["tabletoprpg"],
+      "scheduled": ["one", "one-or-more"],
+      "program-type": ["rpg-game"],
+      "guidegrouping": ["rpg"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "kadonnut-aurinko",
+        "title": "Kadonnut aurinko",
+        "startTime": "2025-09-05T17:30:00+03:00",
+        "endTime": "2025-09-05T21:30:00+03:00",
+        "lengthMinutes": 240,
+        "location": "Duetto 1 (Roolipelipöytä 5)",
+        "isCancelled": false,
+        "cachedAnnotations": {}
+      }
+    ]
+  },
+  {
     "slug": "kirpputori-lauantai",
     "title": "Kirpputorin ajanvaraus: Lauantai klo 9:30–14",
-    "description": "Traconin kirpputorille pääsee ostoksille pe klo 16–22 ja la klo 9:30–14 ainoastaan ajanvarauksella. Muina aikoina kirpputori palvelee asiakkaita jonosta. Ajanvaraus tapahtuu käyttäen Konstia, johon kirjaudutaan Kompassi-tunnuksilla. Molempien päivien ajanvarausajoille voi ilmoittautua alkaen pe klo 08:00. Koska halukkaita voi olla enemmän kuin kirpputorin ajanvarausaikoihin mahtuu, ajat arvotaan. Arvonnat tapahtuvat perjantaina kello 14:00 ja 17:00 sekä lauantaina kello 7:30. Kunkin arvonnan jälkeen niille ajanvarausajoille, joille on vielä tilaa, voi ilmoittautua Konstissa suoraan.\n\nIlmoittaudu enintään kolmeen sinulle sopivaan aikaan per arvontablokki. Jos sinua onnistaa arvonnassa, saat yhden puolen tunnin mittaisen saapumisajan jonka kuluessa voit saapua jonoon koska tahansa. Saapuessasi kirpputorille avaa lippu älypuhelimeesi ja näytä se järjestyksenvalvojalle. Lipun avaaminen onnistuu kätevimmin avaamalla älypuhelimessa osoite kirpputori.tracon.fi ja valitsemalla avautuvasta näkymästä kirpputorin ajanvarauksen kohdalta ”Avaa pääsylippu”. Huomaathan että voittamasi aika takaa pääsyn kirpputorijonoon, mutta saatat silti joutua jonottamaan kirpputorille pääsyä.\n\nJos haluat varata kirpputoriajan ryhmänä, teidän on ensin muodostettava ryhmä Konstin Ryhmä-näkymässä. Yksi jäsen luo ryhmän ja saa liittymiskoodin, jonka avulla muut jäsenet liittyvät ryhmään. Tämän jälkeen ryhmän perustaja ilmoittautuu arvontaan tai varaa ajan koko ryhmän puolesta. Tarkemmat ohjeet löytyvät Konstin ohjeista.\n\n🚨 HUOM! Arvonnassa arvotaan 30 min ajanvarauksia. Voit kaikissa kolmessa arvonnassa ilmoittautua kolmeen sinulle sopivaan aikaikkunaan, ja jokaisessa arvonnassa voit päästä niistä yhteen.",
+    "description": "Traconin kirpputorille pääsee ostoksille pe klo 16–22 ja la klo 9:30–14 ainoastaan ajanvarauksella. Muina aikoina kirpputori palvelee asiakkaita jonosta. Ajanvaraus tapahtuu käyttäen Konstia, johon kirjaudutaan Kompassi-tunnuksilla. Molempien päivien ajanvarausajoille voi ilmoittautua alkaen pe klo 08:00. Koska halukkaita voi olla enemmän kuin kirpputorin ajanvarausaikoihin mahtuu, ajat arvotaan. Arvonnat tapahtuvat perjantaina kello 14:00 ja 17:00 sekä lauantaina kello 7:30. Kunkin arvonnan jälkeen niille ajanvarausajoille, joille on vielä tilaa, voi ilmoittautua Konstissa suoraan.\n\nJos sinua onnistaa arvonnassa, saat yhden puolen tunnin mittaisen saapumisajan, jonka kuluessa voit tulla jonoon koska tahansa. Saapuessasi kirpputorille avaa lippu älypuhelimeesi ja näytä se jonon valvojalle. Lipun avaaminen onnistuu kätevimmin avaamalla älypuhelimessa osoite kirpputori.tracon.fi ja valitsemalla avautuvasta näkymästä kirpputorin ajanvarauksen kohdalta ”Avaa pääsylippu”. Huomaathan että voittamasi aika takaa pääsyn kirpputorijonoon, mutta saatat silti joutua jonottamaan kirpputorille pääsyä.\n\nJos haluat osallistua arvontaan ryhmänä, teidän on ensin muodostettava ryhmä Konstin Ryhmä-näkymässä. Yksi jäsenistä luo ryhmän ja saa liittymiskoodin, jonka avulla muut liittyvät ryhmään. Tämän jälkeen ryhmän perustaja ilmoittautuu arvontaan. Vapaille ajoille ilmoittautuessa ryhmä hajoaa. Tarkemmat ohjeet löytyvät Konstin ohjeista.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2025-09-06"],
@@ -135,7 +466,7 @@
   {
     "slug": "kirpputori-perjantai-alkuilta",
     "title": "Kirpputorin ajanvaraus: Perjantai klo 16–19",
-    "description": "Traconin kirpputorille pääsee ostoksille pe klo 16–22 ja la klo 9:30–14 ainoastaan ajanvarauksella. Muina aikoina kirpputori palvelee asiakkaita jonosta. Ajanvaraus tapahtuu käyttäen Konstia, johon kirjaudutaan Kompassi-tunnuksilla. Molempien päivien ajanvarausajoille voi ilmoittautua alkaen pe klo 08:00. Koska halukkaita voi olla enemmän kuin kirpputorin ajanvarausaikoihin mahtuu, ajat arvotaan. Arvonnat tapahtuvat perjantaina kello 14:00 ja 17:00 sekä lauantaina kello 7:30. Kunkin arvonnan jälkeen niille ajanvarausajoille, joille on vielä tilaa, voi ilmoittautua Konstissa suoraan.\n\nIlmoittaudu enintään kolmeen sinulle sopivaan aikaan per arvontablokki. Jos sinua onnistaa arvonnassa, saat yhden puolen tunnin mittaisen saapumisajan jonka kuluessa voit saapua jonoon koska tahansa. Saapuessasi kirpputorille avaa lippu älypuhelimeesi ja näytä se järjestyksenvalvojalle. Lipun avaaminen onnistuu kätevimmin avaamalla älypuhelimessa osoite kirpputori.tracon.fi ja valitsemalla avautuvasta näkymästä kirpputorin ajanvarauksen kohdalta ”Avaa pääsylippu”. Huomaathan että voittamasi aika takaa pääsyn kirpputorijonoon, mutta saatat silti joutua jonottamaan kirpputorille pääsyä.\n\nJos haluat varata kirpputoriajan ryhmänä, teidän on ensin muodostettava ryhmä Konstin Ryhmä-näkymässä. Yksi jäsen luo ryhmän ja saa liittymiskoodin, jonka avulla muut jäsenet liittyvät ryhmään. Tämän jälkeen ryhmän perustaja ilmoittautuu arvontaan tai varaa ajan koko ryhmän puolesta. Tarkemmat ohjeet löytyvät Konstin ohjeista.\n\n🚨 HUOM! Arvonnassa arvotaan 30 min ajanvarauksia. Voit kaikissa kolmessa arvonnassa ilmoittautua kolmeen sinulle sopivaan aikaikkunaan, ja jokaisessa arvonnassa voit päästä niistä yhteen.",
+    "description": "Traconin kirpputorille pääsee ostoksille pe klo 16–22 ja la klo 9:30–14 ainoastaan ajanvarauksella. Muina aikoina kirpputori palvelee asiakkaita jonosta. Ajanvaraus tapahtuu käyttäen Konstia, johon kirjaudutaan Kompassi-tunnuksilla. Molempien päivien ajanvarausajoille voi ilmoittautua alkaen pe klo 08:00. Koska halukkaita voi olla enemmän kuin kirpputorin ajanvarausaikoihin mahtuu, ajat arvotaan. Arvonnat tapahtuvat perjantaina kello 14:00 ja 17:00 sekä lauantaina kello 7:30. Kunkin arvonnan jälkeen niille ajanvarausajoille, joille on vielä tilaa, voi ilmoittautua Konstissa suoraan.\n\nJos sinua onnistaa arvonnassa, saat yhden puolen tunnin mittaisen saapumisajan, jonka kuluessa voit tulla jonoon koska tahansa. Saapuessasi kirpputorille avaa lippu älypuhelimeesi ja näytä se jonon valvojalle. Lipun avaaminen onnistuu kätevimmin avaamalla älypuhelimessa osoite kirpputori.tracon.fi ja valitsemalla avautuvasta näkymästä kirpputorin ajanvarauksen kohdalta ”Avaa pääsylippu”. Huomaathan että voittamasi aika takaa pääsyn kirpputorijonoon, mutta saatat silti joutua jonottamaan kirpputorille pääsyä.\n\nJos haluat osallistua arvontaan ryhmänä, teidän on ensin muodostettava ryhmä Konstin Ryhmä-näkymässä. Yksi jäsenistä luo ryhmän ja saa liittymiskoodin, jonka avulla muut liittyvät ryhmään. Tämän jälkeen ryhmän perustaja ilmoittautuu arvontaan. Vapaille ajoille ilmoittautuessa ryhmä hajoaa. Tarkemmat ohjeet löytyvät Konstin ohjeista.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2025-09-05"],
@@ -229,7 +560,7 @@
   {
     "slug": "kirpputori-perjantai-loppuilta",
     "title": "Kirpputorin ajanvaraus: Perjantai klo 19–22",
-    "description": "Traconin kirpputorille pääsee ostoksille pe klo 16–22 ja la klo 9:30–14 ainoastaan ajanvarauksella. Muina aikoina kirpputori palvelee asiakkaita jonosta. Ajanvaraus tapahtuu käyttäen Konstia, johon kirjaudutaan Kompassi-tunnuksilla. Molempien päivien ajanvarausajoille voi ilmoittautua alkaen pe klo 08:00. Koska halukkaita voi olla enemmän kuin kirpputorin ajanvarausaikoihin mahtuu, ajat arvotaan. Arvonnat tapahtuvat perjantaina kello 14:00 ja 17:00 sekä lauantaina kello 7:30. Kunkin arvonnan jälkeen niille ajanvarausajoille, joille on vielä tilaa, voi ilmoittautua Konstissa suoraan.\n\nIlmoittaudu enintään kolmeen sinulle sopivaan aikaan per arvontablokki. Jos sinua onnistaa arvonnassa, saat yhden puolen tunnin mittaisen saapumisajan jonka kuluessa voit saapua jonoon koska tahansa. Saapuessasi kirpputorille avaa lippu älypuhelimeesi ja näytä se järjestyksenvalvojalle. Lipun avaaminen onnistuu kätevimmin avaamalla älypuhelimessa osoite kirpputori.tracon.fi ja valitsemalla avautuvasta näkymästä kirpputorin ajanvarauksen kohdalta ”Avaa pääsylippu”. Huomaathan että voittamasi aika takaa pääsyn kirpputorijonoon, mutta saatat silti joutua jonottamaan kirpputorille pääsyä.\n\nJos haluat varata kirpputoriajan ryhmänä, teidän on ensin muodostettava ryhmä Konstin Ryhmä-näkymässä. Yksi jäsen luo ryhmän ja saa liittymiskoodin, jonka avulla muut jäsenet liittyvät ryhmään. Tämän jälkeen ryhmän perustaja ilmoittautuu arvontaan tai varaa ajan koko ryhmän puolesta. Tarkemmat ohjeet löytyvät Konstin ohjeista.\n\n🚨 HUOM! Arvonnassa arvotaan 30 min ajanvarauksia. Voit kaikissa kolmessa arvonnassa ilmoittautua kolmeen sinulle sopivaan aikaikkunaan, ja jokaisessa arvonnassa voit päästä niistä yhteen.",
+    "description": "Traconin kirpputorille pääsee ostoksille pe klo 16–22 ja la klo 9:30–14 ainoastaan ajanvarauksella. Muina aikoina kirpputori palvelee asiakkaita jonosta. Ajanvaraus tapahtuu käyttäen Konstia, johon kirjaudutaan Kompassi-tunnuksilla. Molempien päivien ajanvarausajoille voi ilmoittautua alkaen pe klo 08:00. Koska halukkaita voi olla enemmän kuin kirpputorin ajanvarausaikoihin mahtuu, ajat arvotaan. Arvonnat tapahtuvat perjantaina kello 14:00 ja 17:00 sekä lauantaina kello 7:30. Kunkin arvonnan jälkeen niille ajanvarausajoille, joille on vielä tilaa, voi ilmoittautua Konstissa suoraan.\n\nJos sinua onnistaa arvonnassa, saat yhden puolen tunnin mittaisen saapumisajan, jonka kuluessa voit tulla jonoon koska tahansa. Saapuessasi kirpputorille avaa lippu älypuhelimeesi ja näytä se jonon valvojalle. Lipun avaaminen onnistuu kätevimmin avaamalla älypuhelimessa osoite kirpputori.tracon.fi ja valitsemalla avautuvasta näkymästä kirpputorin ajanvarauksen kohdalta ”Avaa pääsylippu”. Huomaathan että voittamasi aika takaa pääsyn kirpputorijonoon, mutta saatat silti joutua jonottamaan kirpputorille pääsyä.\n\nJos haluat osallistua arvontaan ryhmänä, teidän on ensin muodostettava ryhmä Konstin Ryhmä-näkymässä. Yksi jäsenistä luo ryhmän ja saa liittymiskoodin, jonka avulla muut liittyvät ryhmään. Tämän jälkeen ryhmän perustaja ilmoittautuu arvontaan. Vapaille ajoille ilmoittautuessa ryhmä hajoaa. Tarkemmat ohjeet löytyvät Konstin ohjeista.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2025-09-05"],
@@ -317,6 +648,516 @@
           "konsti:maxAttendance": 50,
           "internal:subtitle": "Saapuminen klo 21:30–22:00"
         }
+      }
+    ]
+  },
+  {
+    "slug": "kohina-arkistojen-syovereissa-peluutus-1",
+    "title": "Kohina arkistojen syövereissä - peluutus 1.",
+    "description": "Koillisen pääkaupungin arvostettu emerituskeräilijä Darius on kauhun vallassa—hänen kirjastonsa pimeissä syvyyksissä tapahtuu jotakin selittämätöntä. Kellarissa, jonne on vuosien varrella säilötty arkistojen hylkäämiä asiakirjoja, on kadonnut hänen viimeisin työntekijänsä. Yksikään sielu, joka on uskaltautunut etsimään häntä, ei ole palannut kertomaan näkemästään. Nyt Darius kääntyy seikkailijoiden puoleen. Olette ehkä jo kokeneet seikkailijaurallanne yhtä sun toista: etsikää vastaukset kadonneista työntekijöistä, mutta muistakaa, ettei kirjoista voi oppia ihan kaikkea…\r\n\r\nSeikkailu on aloittelijaystävällinen pöytäroolipeliseikkailu noin neljälle pelaajalle. Seikkailu käyttää virtaviivaistettua Dungeons & Dragons 5e pelisysteemiä. Pelihahmot tulevat valmiina, ja jokainen hahmo on erilainen toisistaan. Pelihahmoja on enemmän kuin tarkoitettuja pelaajia, antaen valinnanvapautta. Saat kaiken pelaamiseen tarvittavan pelin ajaksi, joten et tarvitse omasta takaa mitään. Pelin on tarkoitus kestää alustavasti kaksi ja puoli tuntia mutta pöytäroolipelien kesto voi olla ailahtelevaa: päättymisajan tarkkuudesta voidaan keskustella ennen pelin aloittamista. Tarvittaessa pidämme pienen 10 minuutin tauon jossain välissä. \r\n\r\nEt tarvitse mitään edellistä pöytäroolipelikokemusta: onko sinulla rohkeutta astua seikkailuun ja selvittää arvoitus joka odottaa unohtuneiden opusten välissä?",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2025-09-05"],
+      "form": ["offer-program-rpg"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["tabletoprpg"],
+      "scheduled": ["one", "one-or-more"],
+      "program-type": ["rpg-game"],
+      "guidegrouping": ["rpg"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "kohina-arkistojen-syovereissa-peluutus-1",
+        "title": "Kohina arkistojen syövereissä - peluutus 1.",
+        "startTime": "2025-09-05T17:00:00+03:00",
+        "endTime": "2025-09-05T19:30:00+03:00",
+        "lengthMinutes": 150,
+        "location": "Duetto 1 (Roolipelipöytä 3)",
+        "isCancelled": false,
+        "cachedAnnotations": {}
+      }
+    ]
+  },
+  {
+    "slug": "kohina-arkistojen-syovereissa-peluutus-2",
+    "title": "Kohina arkistojen syövereissä - peluutus 2.",
+    "description": "Koillisen pääkaupungin arvostettu emerituskeräilijä Darius on kauhun vallassa—hänen kirjastonsa pimeissä syvyyksissä tapahtuu jotakin selittämätöntä. Kellarissa, jonne on vuosien varrella säilötty arkistojen hylkäämiä asiakirjoja, on kadonnut hänen viimeisin työntekijänsä. Yksikään sielu, joka on uskaltautunut etsimään häntä, ei ole palannut kertomaan näkemästään. Nyt Darius kääntyy seikkailijoiden puoleen. Olette ehkä jo kokeneet seikkailijaurallanne yhtä sun toista: etsikää vastaukset kadonneista työntekijöistä, mutta muistakaa, ettei kirjoista voi oppia ihan kaikkea…\r\n\r\nSeikkailu on aloittelijaystävällinen pöytäroolipeliseikkailu noin neljälle pelaajalle. Seikkailu käyttää virtaviivaistettua Dungeons & Dragons 5e pelisysteemiä. Pelihahmot tulevat valmiina, ja jokainen hahmo on erilainen toisistaan. Pelihahmoja on enemmän kuin tarkoitettuja pelaajia, antaen valinnanvapautta. Saat kaiken pelaamiseen tarvittavan pelin ajaksi, joten et tarvitse omasta takaa mitään. Pelin on tarkoitus kestää alustavasti kaksi ja puoli tuntia mutta pöytäroolipelien kesto voi olla ailahtelevaa: päättymisajan tarkkuudesta voidaan keskustella ennen pelin aloittamista. Tarvittaessa pidämme pienen 10 minuutin tauon jossain välissä. \r\n\r\nEt tarvitse mitään edellistä pöytäroolipelikokemusta: onko sinulla rohkeutta astua seikkailuun ja selvittää arvoitus joka odottaa unohtuneiden opusten välissä?",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2025-09-07"],
+      "form": ["offer-program-rpg"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["tabletoprpg"],
+      "scheduled": ["one", "one-or-more"],
+      "program-type": ["rpg-game"],
+      "guidegrouping": ["rpg"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "kohina-arkistojen-syovereissa-peluutus-2",
+        "title": "Kohina arkistojen syövereissä - peluutus 2.",
+        "startTime": "2025-09-07T13:45:00+03:00",
+        "endTime": "2025-09-07T16:15:00+03:00",
+        "lengthMinutes": 150,
+        "location": "Duetto 1 (Roolipelipöytä 2)",
+        "isCancelled": false,
+        "cachedAnnotations": {}
+      }
+    ]
+  },
+  {
+    "slug": "laiva-nimelta-seikkailu",
+    "title": "Laiva nimeltä Seikkailu",
+    "description": "Joukko seikkailevia kenttejä tekee paluuta kotiinsa Kentinmantuun, mutta hylätyn laivan löytäminen kääntää seikkailijoiden suunnan kohti merta. Mitä kaikkea jännittävää ja vaarallista merillä voikaan kohdata?\r\n\r\nKevyttunnelmainen meriseikkailu, jossa kantavina teemoina ovat vaellushalu ja ihmetys uusien asioiden edessä. Aiempaa kokemusta systeemistä tai Dragonlancen maailmasta ei vaadita. Systeemi on helppo oppia, mutta pelaajan niin halutessa jättää tilaa tiukemmallekin taktikoinnille.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2025-09-05"],
+      "form": ["offer-program-rpg"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["tabletoprpg"],
+      "scheduled": ["one", "one-or-more"],
+      "program-type": ["rpg-game"],
+      "guidegrouping": ["rpg"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "laiva-nimelta-seikkailu",
+        "title": "Laiva nimeltä Seikkailu",
+        "startTime": "2025-09-05T18:00:00+03:00",
+        "endTime": "2025-09-05T22:00:00+03:00",
+        "lengthMinutes": 240,
+        "location": "Duetto 1 (Roolipelipöytä 4)",
+        "isCancelled": false,
+        "cachedAnnotations": {}
+      }
+    ]
+  },
+  {
+    "slug": "lapimurto",
+    "title": "Läpimurto",
+    "description": "Suuri koe ihmismielen ja koneen yhdistämiseksi on alkamassa MindArean tutkimuslaitoksessa! Henkilökunnan on oltava tänään hereillä ja läsnä tänä kriittisenä hetkenä ihmiskunnan historiassa! Pääset valitsemaan roolisi yhdeksän ammattilaisen joukosta, tule rohkeasti mukaan tekemään historiaa!",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2025-09-07"],
+      "form": ["offer-program-rpg"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["tabletoprpg"],
+      "scheduled": ["one", "one-or-more"],
+      "program-type": ["rpg-game"],
+      "guidegrouping": ["rpg"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "lapimurto",
+        "title": "Läpimurto",
+        "startTime": "2025-09-07T11:00:00+03:00",
+        "endTime": "2025-09-07T15:00:00+03:00",
+        "lengthMinutes": 240,
+        "location": "Duetto 1 (Roolipelipöytä 4)",
+        "isCancelled": false,
+        "cachedAnnotations": {}
+      }
+    ]
+  },
+  {
+    "slug": "ll-legenda-kaksijalkaisesta-kalasta",
+    "title": "L&L: Legenda Kaksijalkaisesta Kalasta 1. pelautus",
+    "description": "Legenda Kaksijalkaisesta Kalasta: Legendoja Ja Lohikäärmeitä-Seikkailu.\r\nAarnivalkaman satamakaupungin kapeilla kaduilla kulkee huhu suomujen peittämästä kiduksien kautta hengittävästä olennosta joka pakenee virkavallan kouraa joka käänteessä.. Tämä saattaa kuulostaa kalatarinalta, mutta tällä kalalla on mitä ilmeisimmin kaksi jalkaa! \r\nSatamakaupungin kulkijoille kaskut kaksijalkaisesta kalasta on hyvä tapa saada turisteilta hykertelyt, nuuskijat lopettamaan tonkimisensa väärissä paikoissa tai sitten Oikealta Ja Hyvältä Väeltä hiljaista hyväksyntää.\r\nKoska hämärien kulmien tarinat tuuppaavat olemaan vain taikauskoa tai juopuneiden juoruilua, Aarnivalkaman virkavalta on kääntynyt Seikkailijoiden Killan puoleen: Kilta tarjoaa ratkaisevista vihjeistä tai jopa tämän olennon kiinniotosta mittavan palkkion.\r\nLegenda Kaksijalkaisesta Kalasta on Legendoja Ja Lohikäärmeitä-roolipelin sääntöihin perustuva seikkailu neljännen tason hahmoille, jossa pelaajat on pestattu selvittämään kaupunkia askarruttavan olennon alkuperä tai jopa sitä, onko se oikeasti olemassa. \r\nAarnivalkaman satamakaupungin kiireiseistä kortteleista löytyy monenlaista kulkijaa ja käyskentelijää, joilta saatavilla johtolangoilla voi päästä tämän suorastaan legendaarisen kaksijalkaisen kalan jäljille. Mutta mikä on totuus? Vain seikkailijat voivat sen selvittää. \r\nSeikkailu on tarkoitettu neljälle pelaajalle joita varten pelinjohtajalla on viisi valmishahmoa. Korkeamman aloitustason hahmojen vuoksi, olisi suositeltavaa että peliin ei liittyisi aivan ensikertalaisia. Olisi hyvä olla muutama pelikerta alla ennen peliin ilmoittautumista varten. Pelinjohtaja tuo tarvittavat välineet kuten nopat ja muistiinpanovälineet peliä varten. Mikäli sinulla on omat noppasi, olet enemmän kuin tervetullut käyttämään niitä.\r\nPeli sisältää jännittäviä tilanteita, fantastisia olentoja  ja ympäristöjä, joten se ei olisi aivan perheen pienimmille, mutta väkivallan kuvauksia voidaan lieventää myös tarpeen mukaan slapstick-komedian keinoin.\r\nMikäli kaksijalkaisen kalan legenda kutkuttaa, tervetuloa mukaan!",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2025-09-05"],
+      "form": ["offer-program-rpg"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["tabletoprpg"],
+      "scheduled": ["one", "one-or-more"],
+      "program-type": ["rpg-game"],
+      "guidegrouping": ["rpg"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "ll-legenda-kaksijalkaisesta-kalasta",
+        "title": "L&L: Legenda Kaksijalkaisesta Kalasta 1. pelautus",
+        "startTime": "2025-09-05T17:30:00+03:00",
+        "endTime": "2025-09-05T20:00:00+03:00",
+        "lengthMinutes": 150,
+        "location": "Duetto 1 (Roolipelipöytä 6)",
+        "isCancelled": false,
+        "cachedAnnotations": {}
+      }
+    ]
+  },
+  {
+    "slug": "ll-legenda-kaksijalkaisesta-kalasta-1",
+    "title": "L&L: Legenda Kaksijalkaisesta Kalasta 2. pelautus",
+    "description": "Legenda Kaksijalkaisesta Kalasta: Legendoja Ja Lohikäärmeitä-Seikkailu.\r\nAarnivalkaman satamakaupungin kapeilla kaduilla kulkee huhu suomujen peittämästä kiduksien kautta hengittävästä olennosta joka pakenee virkavallan kouraa joka käänteessä.. Tämä saattaa kuulostaa kalatarinalta, mutta tällä kalalla on mitä ilmeisimmin kaksi jalkaa! \r\nSatamakaupungin kulkijoille kaskut kaksijalkaisesta kalasta on hyvä tapa saada turisteilta hykertelyt, nuuskijat lopettamaan tonkimisensa väärissä paikoissa tai sitten Oikealta Ja Hyvältä Väeltä hiljaista hyväksyntää.\r\nKoska hämärien kulmien tarinat tuuppaavat olemaan vain taikauskoa tai juopuneiden juoruilua, Aarnivalkaman virkavalta on kääntynyt Seikkailijoiden Killan puoleen: Kilta tarjoaa ratkaisevista vihjeistä tai jopa tämän olennon kiinniotosta mittavan palkkion.\r\nLegenda Kaksijalkaisesta Kalasta on Legendoja Ja Lohikäärmeitä-roolipelin sääntöihin perustuva seikkailu neljännen tason hahmoille, jossa pelaajat on pestattu selvittämään kaupunkia askarruttavan olennon alkuperä tai jopa sitä, onko se oikeasti olemassa. \r\nAarnivalkaman satamakaupungin kiireiseistä kortteleista löytyy monenlaista kulkijaa ja käyskentelijää, joilta saatavilla johtolangoilla voi päästä tämän suorastaan legendaarisen kaksijalkaisen kalan jäljille. Mutta mikä on totuus? Vain seikkailijat voivat sen selvittää. \r\nSeikkailu on tarkoitettu neljälle pelaajalle joita varten pelinjohtajalla on viisi valmishahmoa. Korkeamman aloitustason hahmojen vuoksi, olisi suositeltavaa että peliin ei liittyisi aivan ensikertalaisia. Olisi hyvä olla muutama pelikerta alla ennen peliin ilmoittautumista varten. Pelinjohtaja tuo tarvittavat välineet kuten nopat ja muistiinpanovälineet peliä varten. Mikäli sinulla on omat noppasi, olet enemmän kuin tervetullut käyttämään niitä.\r\nPeli sisältää jännittäviä tilanteita, fantastisia olentoja  ja ympäristöjä, joten se ei olisi aivan perheen pienimmille, mutta väkivallan kuvauksia voidaan lieventää myös tarpeen mukaan slapstick-komedian keinoin.\r\nMikäli kaksijalkaisen kalan legenda kutkuttaa, tervetuloa mukaan!",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2025-09-07"],
+      "form": ["offer-program-rpg"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["tabletoprpg"],
+      "scheduled": ["one", "one-or-more"],
+      "program-type": ["rpg-game"],
+      "guidegrouping": ["rpg"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "ll-legenda-kaksijalkaisesta-kalasta-1",
+        "title": "L&L: Legenda Kaksijalkaisesta Kalasta 2. pelautus",
+        "startTime": "2025-09-07T12:00:00+03:00",
+        "endTime": "2025-09-07T14:30:00+03:00",
+        "lengthMinutes": 150,
+        "location": "Duetto 1 (Roolipelipöytä 5)",
+        "isCancelled": false,
+        "cachedAnnotations": {}
+      }
+    ]
+  },
+  {
+    "slug": "lopun-ajat-ares-athenalla",
+    "title": "Lopun ajat Ares Athenalla",
+    "description": "Post-apokalyptinen dystopia / hopepunk -mysteeri vieraalla planeetalla.\r\n\r\nTapahtumapaikkana Ares Athena, entinen tutkimuskeskus, maailmanlopun jälkeisen ihmiskunnan uusi kehto. Jota uhkaa uusi katastrofi.\r\n\r\n90 vuotta sitten Ares-planeetta kohtasi katastrofi, joka tuhosi lähes koko planeetan. Ja jonka seurauksena Athena-tutkimuskeskus joutui eristyksiin. Tutkimuskeskuksen johtajan Sofian ja muiden vanhimpien johdolla 120 Athenan kyläläistä selviytyivät katastrofista. Ja alkoivat jälleenrakennuksen. Sitten sattuu uusi katastrofi. Selviävätkö Ares Athenan uudisasukkaat, ja ihmiskunnan toivo, siitä?\r\n\r\nPelaajat ottavat Ares Athenan uudisasukkaiden roolit - kahden kyläläisen ja kahden vanhimman, jotka ovat ainoita vielä elossa olevia ihmisiä ajalta ennen maailmanloppua.\r\n\r\nLopun ajat Ares Athenalla on konseptivetoinen mysteeri-scifi-oneshot ihmiskunnan tulevaisuudesta kevyin säännöin. Pelaamme saadaksemme selville, onko pelin kantava teema dystopia vai hopepunk.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2025-09-06"],
+      "form": ["offer-program-rpg"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["tabletoprpg"],
+      "scheduled": ["one", "one-or-more"],
+      "program-type": ["rpg-game"],
+      "guidegrouping": ["rpg"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "lopun-ajat-ares-athenalla",
+        "title": "Lopun ajat Ares Athenalla",
+        "startTime": "2025-09-06T16:30:00+03:00",
+        "endTime": "2025-09-06T20:30:00+03:00",
+        "lengthMinutes": 240,
+        "location": "Duetto 1 (Roolipelipöytä 3)",
+        "isCancelled": false,
+        "cachedAnnotations": {}
+      }
+    ]
+  },
+  {
+    "slug": "miami-vice-siskot-ja-veljet",
+    "title": "Miami Vice - Siskot ja veljet",
+    "description": "80-luvun TV-sarja Miami Vice palaa ruutuun! Tässä oneshotissa pelataan tyylikkäitä ja ikonisia poliisietsiviä Crockett, Gina, Trudy ja Tubbs. Miamin aurinko, pastellisävyt ja art deco arkkitehtuuri ovat jälleen rekvisiittana, kun kvartetti huristelee urheiluautoilla ja taistelee Calderonen huumekartellia vastaan. Jakson nimi on Siskot ja veljet, ja panoksena on ei enempää eikä vähempää kuin etsivien koko Organized Crime Bureau -osaston tulevaisuus. Kiperä keisi on selvitettävä!\r\n\r\nValmishahmot. Erittäin kevyt sääntösysteemi. Itse tarina sopii aloittelijoille, mutta fiilistelypelinä tämä soveltuu myös kokeneemmille roolipelaajille.\r\n\r\nSisältövaroitus: huumeet, kuolema, murhatutkimus, väkivaltaa.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2025-09-06"],
+      "form": ["offer-program-rpg"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["tabletoprpg"],
+      "scheduled": ["one", "one-or-more"],
+      "program-type": ["rpg-game"],
+      "guidegrouping": ["rpg"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "miami-vice-siskot-ja-veljet",
+        "title": "Miami Vice - Siskot ja veljet",
+        "startTime": "2025-09-06T11:30:00+03:00",
+        "endTime": "2025-09-06T15:30:00+03:00",
+        "lengthMinutes": 240,
+        "location": "Duetto 1 (Roolipelipöytä 2)",
+        "isCancelled": false,
+        "cachedAnnotations": {}
+      }
+    ]
+  },
+  {
+    "slug": "murtokeikka-kummaan-kotiin",
+    "title": "Murtokeikka kummaan kotiin",
+    "description": "Taiteen ja salatieteiden ystävänä tunnettu lordi lähtee viettämään klubi-iltaa toiselle puolelle kaupunkia. Lurjusten sponsori lähettää heidät murtokeikalle lordin tummanpuhuvaan kotiin, jonka huhutaan olevan sisäpuolelta hyvin kummallinen.\r\n\r\nLuvassa on kevyttä toimintaseikkailua valmishahmoilla Dishonored- ja Thief-pelisarjojen tyyliin. Aloittelijoille sopiva peli perustuu Blades in the Darkin sääntöihin ja maailmaan.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2025-09-06"],
+      "form": ["offer-program-rpg"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["tabletoprpg"],
+      "scheduled": ["one", "one-or-more"],
+      "program-type": ["rpg-game"],
+      "guidegrouping": ["rpg"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "murtokeikka-kummaan-kotiin",
+        "title": "Murtokeikka kummaan kotiin",
+        "startTime": "2025-09-06T17:15:00+03:00",
+        "endTime": "2025-09-06T21:15:00+03:00",
+        "lengthMinutes": 240,
+        "location": "Duetto 1 (Roolipelipöytä 5)",
+        "isCancelled": false,
+        "cachedAnnotations": {}
+      }
+    ]
+  },
+  {
+    "slug": "sormuksentekijan-kellari-osr",
+    "title": "Sormuksentekijän kellari (OSR)",
+    "description": "Nyt on tarjolla vanhan koulukunnan roolipelaamista! Sinut on lähetetty muutaman muun aloittelevan seikkailijan kanssa tutkimaan salaperäisen, kadonneen taikasormuksistaan tunnetun velhon laboratoriota. Tehtävä on siivota se vaaroista, ja palkkiona saatte pitää kaiken löytämänne. Ette ole juuri tavallista kyläläistä vahvempia, mutta sitäkin neuvokkaampia ja ovelampia (toivottavasti). Tämä peli tarjoilee Dungeons & Dragonsin alkuperäistä laitosta mukailevan kokemuksen vuosikymmenten takaisella fiiliksellä. Peli sopii niin aloitteleville kuin kokeneillekin roolipelaajille.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2025-09-06"],
+      "form": ["offer-program-rpg"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["tabletoprpg"],
+      "scheduled": ["one", "one-or-more"],
+      "program-type": ["rpg-game"],
+      "guidegrouping": ["rpg"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "sormuksentekijan-kellari-osr",
+        "title": "Sormuksentekijän kellari (OSR)",
+        "startTime": "2025-09-06T15:30:00+03:00",
+        "endTime": "2025-09-06T20:00:00+03:00",
+        "lengthMinutes": 270,
+        "location": "Duetto 1 (Roolipelipöytä 1)",
+        "isCancelled": false,
+        "cachedAnnotations": {}
+      }
+    ]
+  },
+  {
+    "slug": "taivaspiraatit-myrkytetty-maailma-1-pelikerta",
+    "title": "Taivaspiraatit: Myrkytetty maailma. 1. pelikerta",
+    "description": "Maanpinta on täynnä myrkyllistä usvaa ja vaarallisia petoja joten jäljelle jääneet ihmiset ovat vetäytyneet vuorille ja kallioille. Vähäisen sivistyksen ulkopuolella selviytyminen vaatii usein ryhtymistä taivaspiraatiksi, pieneksi joukoksi, joka ryövää kaupparuhtinaiden aluksia, etsii muinaisen maailman automaattisia tehtaita, pakenee Puhdasoppisten taistelualuksia tai yrittävät etsiä liittolaisia ja kauppakumppaneita.\r\n\r\nPeli keskittyy melko vapaaseen hexojen tutkimiseen ja piraateille tyypillisiin kohtaamisiin.\r\n\r\nPelisysteemi on oma ja vielä varhaisessa kehitysvaiheessa. Pelimateriaali on vain suomeksi. Peliin on tarjolla valmiit hahmot, mutta myös oman hahmon voi tehdä peli alussa.\r\n",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2025-09-05"],
+      "form": ["offer-program-rpg"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["tabletoprpg"],
+      "scheduled": ["one", "one-or-more"],
+      "program-type": ["rpg-game"],
+      "guidegrouping": ["rpg"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "taivaspiraatit-myrkytetty-maailma-1-pelikerta",
+        "title": "Taivaspiraatit: Myrkytetty maailma. 1. pelikerta",
+        "startTime": "2025-09-05T17:00:00+03:00",
+        "endTime": "2025-09-05T19:00:00+03:00",
+        "lengthMinutes": 120,
+        "location": "Duetto 1 (Roolipelipöytä 2)",
+        "isCancelled": false,
+        "cachedAnnotations": {}
+      }
+    ]
+  },
+  {
+    "slug": "taivaspiraatit-myrkytetty-maailma-2-pelikerta",
+    "title": "Taivaspiraatit: Myrkytetty maailma - 2. pelikerta",
+    "description": "Maanpinta on täynnä myrkyllistä usvaa ja vaarallisia petoja joten jäljelle jääneet ihmiset ovat vetäytyneet vuorille ja kallioille. Vähäisen sivistyksen ulkopuolella selviytyminen vaatii usein ryhtymistä taivaspiraatiksi, pieneksi joukoksi, joka ryövää kaupparuhtinaiden aluksia, etsii muinaisen maailman automaattisia tehtaita, pakenee Puhdasoppisten taistelualuksia tai yrittävät etsiä liittolaisia ja kauppakumppaneita.\r\n\r\nPeli keskittyy melko vapaaseen hexojen tutkimiseen ja piraateille tyypillisiin kohtaamisiin.\r\n\r\nPelisysteemi on oma ja vielä varhaisessa kehitysvaiheessa. Pelimateriaali on vain suomeksi. Peliin on tarjolla valmiit hahmot, mutta myös oman hahmon voi tehdä peli alussa.\r\n",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2025-09-07"],
+      "form": ["offer-program-rpg"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["tabletoprpg"],
+      "scheduled": ["one", "one-or-more"],
+      "program-type": ["rpg-game"],
+      "guidegrouping": ["rpg"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "taivaspiraatit-myrkytetty-maailma-2-pelikerta",
+        "title": "Taivaspiraatit: Myrkytetty maailma - 2. pelikerta",
+        "startTime": "2025-09-07T11:00:00+03:00",
+        "endTime": "2025-09-07T13:00:00+03:00",
+        "lengthMinutes": 120,
+        "location": "Duetto 1 (Roolipelipöytä 1)",
+        "isCancelled": false,
+        "cachedAnnotations": {}
+      }
+    ]
+  },
+  {
+    "slug": "tietokone-on-ystavasi-hauskuus-on-pakollista",
+    "title": "Tietokone on ystäväsi. Hauskuus on pakollista 1. peluutus",
+    "description": "On vuosi 2397, 300 vuotta hetken ’Oho’ jälkeen, jolloin sivilisaatio tuhoutui. Asut Alfakompleksissa jota hallitsee pelinvetäjän pelaama keinoäly, nimeltään Tietokone.\r\n\r\nOlet Tietokoneen uskollinen palvelija, klooni, yksi kuudesta sixpäkissä, Tietokoneen löytämien historiankirjojen pohjalta huolellisesti valmistama entinen maailman johtaja, Anime-ja Manga-valtioista Keski-maassa.\r\n\r\nJa juuri sen takia on Sinut valittu löytämään petturit, olet Pulmanpoistaja, turvaluokka punainen. Etsi pulman aihettaja ja poista se huipputeknisellä aseella jonka Tietokone on valinnut juuri Sinulle. Muista kuitenkin, että jokainen laukaus on tappava joten muista kertoa ammutun petturuudesta.\r\n\r\nPetturi voi olla mutantti, kulttilainen, salaseuralainen, häkkeri, [POISTETTU] tai terroristi.\r\n\r\nAiniin, sinäkin olet sellainen. Et vain muistanut mainita siitä  kenellekään. Eikä ehkä kannatakaan mainita siitä ettei itsestäsi tule pulmaa, ethän petä saamaasi luottamusta ? Ehkäpä saisit syytökset kiinnitettyä toiseen, vaihtoehtoinen totuus taitavasti kerrottuna ja petturin poisto ennenkuin siitä tulee ongelma, on sankariteko.\r\n\r\nSitäpaitsi huhutaan myös että keinoäly on seonnut ja vainoharhainen johtuen yliohjelmoijista, kyberiskuista ja bugeista. Joten tuskinpa se mitään huomaa.\r\n\r\nPidä kuitenkin selitys valmiina ja muista hymyillä, petturit eivät hymyile.\r\n\r\nSISÄLTÖVAROITUKSET. Mustaa huumoria,  arveluttavia moraalisia valintoja. [POISTETTU]. Salaseuroja, mutantteja, epäjohdonmukaisia tehtäviä, peite-identiteettejä, vainoharhaisuutta, [POISTETTU]. Vaihtoehtoisia totuuksia. Huijaamista. Pettämistä. Holtitonta aseiden käyttöä. [POISTETTU] teknologiaa.\r\n\r\nPelimekanismi perustuu Paranoia-roolipeliin kasarilta ja sitä on yksinkertaistettu ja muokattu Traconiin sopivaksi. Taustaa: https://fi.m.wikipedia.org/wiki/Paranoia_(roolipeli)\r\n\r\nPeliä ei suositella alle 14-vuotiaille.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2025-09-05"],
+      "form": ["offer-program-rpg"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["tabletoprpg"],
+      "scheduled": ["one", "one-or-more"],
+      "program-type": ["rpg-game"],
+      "guidegrouping": ["rpg"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "tietokone-on-ystavasi-hauskuus-on-pakollista",
+        "title": "Tietokone on ystäväsi. Hauskuus on pakollista 1. peluutus",
+        "startTime": "2025-09-05T20:00:00+03:00",
+        "endTime": "2025-09-05T22:00:00+03:00",
+        "lengthMinutes": 120,
+        "location": "Duetto 1 (Roolipelipöytä 3)",
+        "isCancelled": false,
+        "cachedAnnotations": {}
+      }
+    ]
+  },
+  {
+    "slug": "tietokone-on-ystavasi-hauskuus-on-pakollista-2",
+    "title": "Tietokone on ystäväsi. Hauskuus on pakollista 2. peluutus",
+    "description": "On vuosi 2397, 300 vuotta hetken ’Oho’ jälkeen, jolloin sivilisaatio tuhoutui. Asut Alfakompleksissa jota hallitsee pelinvetäjän pelaama keinoäly, nimeltään Tietokone.\r\n\r\nOlet Tietokoneen uskollinen palvelija, klooni, yksi kuudesta sixpäkissä, Tietokoneen löytämien historiankirjojen pohjalta huolellisesti valmistama entinen maailman johtaja, Anime-ja Manga-valtioista Keski-maassa.\r\n\r\nJa juuri sen takia on Sinut valittu löytämään petturit, olet Pulmanpoistaja, turvaluokka punainen. Etsi pulman aihettaja ja poista se huipputeknisellä aseella jonka Tietokone on valinnut juuri Sinulle. Muista kuitenkin, että jokainen laukaus on tappava joten muista kertoa ammutun petturuudesta.\r\n\r\nPetturi voi olla mutantti, kulttilainen, salaseuralainen, häkkeri, [POISTETTU] tai terroristi.\r\n\r\nAiniin, sinäkin olet sellainen. Et vain muistanut mainita siitä  kenellekään. Eikä ehkä kannatakaan mainita siitä ettei itsestäsi tule pulmaa, ethän petä saamaasi luottamusta ? Ehkäpä saisit syytökset kiinnitettyä toiseen, vaihtoehtoinen totuus taitavasti kerrottuna ja petturin poisto ennenkuin siitä tulee ongelma, on sankariteko.\r\n\r\nSitäpaitsi huhutaan myös että keinoäly on seonnut ja vainoharhainen johtuen yliohjelmoijista, kyberiskuista ja bugeista. Joten tuskinpa se mitään huomaa.\r\n\r\nPidä kuitenkin selitys valmiina ja muista hymyillä, petturit eivät hymyile.\r\n\r\nSISÄLTÖVAROITUKSET. Mustaa huumoria,  arveluttavia moraalisia valintoja. [POISTETTU]. Salaseuroja, mutantteja, epäjohdonmukaisia tehtäviä, peite-identiteettejä, vainoharhaisuutta, [POISTETTU]. Vaihtoehtoisia totuuksia. Huijaamista. Pettämistä. Holtitonta aseiden käyttöä. [POISTETTU] teknologiaa.\r\n\r\nPelimekanismi perustuu Paranoia-roolipeliin kasarilta ja sitä on yksinkertaistettu ja muokattu Traconiin sopivaksi. Taustaa: https://fi.m.wikipedia.org/wiki/Paranoia_(roolipeli)\r\n\r\nPeliä ei suositella alle 14-vuotiaille.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2025-09-07"],
+      "form": ["offer-program-rpg"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["tabletoprpg"],
+      "scheduled": ["one", "one-or-more"],
+      "program-type": ["rpg-game"],
+      "guidegrouping": ["rpg"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "tietokone-on-ystavasi-hauskuus-on-pakollista-2",
+        "title": "Tietokone on ystäväsi. Hauskuus on pakollista 2. peluutus",
+        "startTime": "2025-09-07T13:30:00+03:00",
+        "endTime": "2025-09-07T15:30:00+03:00",
+        "lengthMinutes": 120,
+        "location": "Duetto 1 (Roolipelipöytä 1)",
+        "isCancelled": false,
+        "cachedAnnotations": {}
+      }
+    ]
+  },
+  {
+    "slug": "tokyo-noir-raindrops-rakugo",
+    "title": "Tokyo Noir: Raindrops & Rakugo",
+    "description": "Shinjukun perinteisessä viihdeteatterissa tapahtuu murha, joka saa poliisin ymmälleen. Onneksi heillä on kontakteja etsivätoimistoon, jonka jäsenet ovat tulleet tunnetuiksi erityisen kiperien pulmien ratkomisesta ympäri Tokiota. Tule ratkaisemaan mysteeriä, joka kietoutuu perinteisen japanilaisen tarinankerronnan, rakugon, ympärille ja missä kenenkään sanaan ei voi kunnolla luottaa...\r\n\r\nTokyo Noir on kehitysvaiheessa oleva roolipeli, jossa ratkotaan film noir-henkisiä salapoliisimysteereitä nykypäivän Japanissa. Peli pyörii virtaviivaisella systeemillä, joka on yhdistelmä dice pooleja ja resurssienhallintaa. On aika ottaa esiin muistiinpanovälineet ja pistää aivot työskentelemään!\r\n\r\nPeli voidaan pelata pelaajien niin toivoessa myös englanniksi.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2025-09-06"],
+      "form": ["offer-program-rpg"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["tabletoprpg"],
+      "scheduled": ["one", "one-or-more"],
+      "program-type": ["rpg-game"],
+      "guidegrouping": ["rpg"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "tokyo-noir-raindrops-rakugo",
+        "title": "Tokyo Noir: Raindrops & Rakugo",
+        "startTime": "2025-09-06T16:00:00+03:00",
+        "endTime": "2025-09-06T21:00:00+03:00",
+        "lengthMinutes": 300,
+        "location": "Duetto 1 (Roolipelipöytä 6)",
+        "isCancelled": false,
+        "cachedAnnotations": {}
+      }
+    ]
+  },
+  {
+    "slug": "valtaistuimen-varjoissa",
+    "title": "Daggerheart: Valtaistuimen varjoissa",
+    "description": "Kun hallitsija haluaa rajoittaa miltä kaupungin pitäisi näyttää, miltä musiikin kuulostaa, miten asukkaiden tulisi pukeutua ja mitä toinen saa tuntea, on menty liian pitkälle. Hallitsijan valtavat syntymäpäiväjuhlat ovat tulossa ja se on täydellinen paikka soluttautua sisään ja ottaa selvää, mitä hovissa oikeasti tapahtuu. Teidän ryhmänne on osa salaista vastarintaliikettä, joka haluaa palauttaa vapauden kaupunkiin tavalla tai toisella ja olette saaneet tiedon, että näissä juhlissa tulee tapahtumaan jotain suurta. Joten juhlavimmat vaatteet esiin, etiketti haltuun, valssin askeleet tutuksi ja valmiina taistelemaan vapauden puolesta!\r\nTervetuloa Aloraan, maailmaan, joka on täynnä fantasiaa, taikuutta ja mitä mielikuvituksellisimpia olentoja, taistelua ja juonittelua.\r\n\r\nPelin säännöt ja hahmolomakkeet ovat englanniksi, mutta pelaaminen tapahtu suomeksi. Pelataan Daggerheart-systeemillä, tason 1 valmishahmoilla.\r\nPeli sisältää politiikkaa, taistelua, väkivaltaa, hirviöitä.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2025-09-07"],
+      "form": ["offer-program-rpg"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["tabletoprpg"],
+      "scheduled": ["one", "one-or-more"],
+      "program-type": ["rpg-game"],
+      "guidegrouping": ["rpg"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "valtaistuimen-varjoissa",
+        "title": "Daggerheart: Valtaistuimen varjoissa",
+        "startTime": "2025-09-07T12:00:00+03:00",
+        "endTime": "2025-09-07T16:00:00+03:00",
+        "lengthMinutes": 240,
+        "location": "Duetto 1 (Roolipelipöytä 3)",
+        "isCancelled": false,
+        "cachedAnnotations": {}
+      }
+    ]
+  },
+  {
+    "slug": "yo-shelterwoodin-majatalossa",
+    "title": "Yö Shelterwoodin majatalossa",
+    "description": "”Päivä alkaa taittua illaksi, kun News Channel 17 -kanavan uutistiimi suuntaa kohti seuraavaa skuuppia. Ajomatka halki syksyisen metsän saa yllättävän käänteen, ja pian tiimi huomaa seisovansa tienvarressa keskellä vierasta maisemaa.\r\n\r\nOnneksi kodikas ja lämpimästi valaistu Shelterwoodin majatalo ei ole kaukana. Vuosikymmeniä vanha motelli tunnetaan edullisista huoneistaan ja runsaasta aamiaisestaan.\r\n\r\nIllan edetessä käy kuitenkin ilmi, että edes tummapaahtoinen kahvi ei pysty peittämään talon rakenteista nousevaa homeen löyhkää.”\r\n\r\nKevyeen Liminal Horror -roolipeliin pohjaava One Night at the Shelterwood Inn on kauhulla höystetty kertapeli, jossa homeongelmat eivät ole pelkkä rakennustekninen haaste.\r\n\r\nPelin tunnelma on ajoittain painostava, ja tarina sisältää verisiä kuvauksia sekä mahdollisesti kehokauhua.\r\n\r\nSääntökevyt järjestelmä sopii erinomaisesti uusille pelaajille. Ennen pelin alkua sovimme yhdessä käsiteltävistä teemoista ja käymme läpi turvallisen pelaamisen käytännöt",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2025-09-06"],
+      "form": ["offer-program-rpg"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["tabletoprpg"],
+      "scheduled": ["one", "one-or-more"],
+      "program-type": ["rpg-game"],
+      "guidegrouping": ["rpg"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "yo-shelterwoodin-majatalossa",
+        "title": "Yö Shelterwoodin majatalossa",
+        "startTime": "2025-09-06T11:30:00+03:00",
+        "endTime": "2025-09-06T15:30:00+03:00",
+        "lengthMinutes": 240,
+        "location": "Duetto 1 (Roolipelipöytä 6)",
+        "isCancelled": false,
+        "cachedAnnotations": {}
       }
     ]
   }
