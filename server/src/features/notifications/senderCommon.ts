@@ -1,28 +1,47 @@
+import dayjs from "dayjs";
 import { NotificationTask } from "server/utils/notificationQueue";
+import { TIMEZONE } from "shared/utils/initializeDayjs";
 
 export interface EmailMessage {
   from: string;
   to: string;
   subject: string;
   text: string;
-  html: string;
+  html?: string;
 }
+
+const dateAndTimeFormat = "ddd D.M.YYYY HH:mm";
 
 export function getEmailSubjectRejected(): string {
-  return "Et paassyt arvonnassa yhteenkaan ohjelmaan";
+  return "Konstiarvonnan tulos / Results for Konsti lottery signup";
 }
 
-export function getEmailSubjectAccepted(programItemTitle: string): string {
-  return `Sinut on hyvaksytty ohjelmaan ${programItemTitle}`;
+export function getEmailSubjectAccepted(): string {
+  return "Konstiarvonnan tulos / Results for Konsti lottery signup";
 }
 
 export function getEmailBodyRejected(notification: NotificationTask): string {
-  return `Hei ${notification.username}!\nEt paassyt arvonnassa yhteenkaan ohjelmaan johon ilmoittauduit.\n\nTerveisin Konsti.`;
+  const bodyFi = `Hei ${notification.username}!
+Et valitettavasti päässyt arvonnassa yhteenkaan ohjelmaan johon ilmoittauduit.`;
+  const bodyEn = `Hi ${notification.username}!
+Unfortunately you did not get spot on lottery signup.`;
+  return `${bodyFi}\n\n${bodyEn}\n\nTerveisin / Sincerely Konsti`;
 }
 
 export function getEmailBodyAccepted(
   programItemTitle: string,
   notification: NotificationTask,
 ): string {
-  return `Hei ${notification.username}!\nOlet ollut onnekas ja paasit ohjelmaan ${programItemTitle}\nOhjelma alkaa ${notification.programItemStartTime}.\n\nTerveisin Konsti.`;
+  // TODO: Should timeFormatter.ts be shared?
+  // eslint-disable-next-line no-restricted-syntax
+  const programStarttime = dayjs(notification.programItemStartTime)
+    .tz(TIMEZONE)
+    .format(dateAndTimeFormat);
+  const bodyFi = `Hei ${notification.username}!
+Olet ollut onnekas ja pääsit ohjelmaan ${programItemTitle}.
+Ohjelma alkaa ${programStarttime}.`;
+  const bodyEn = `Hi ${notification.username}!
+You got spot on program ${programItemTitle}.
+Program will start at ${programStarttime}.`;
+  return `${bodyFi}\n\n${bodyEn}\n\nTerveisin / Sincerely Konsti`;
 }

@@ -85,14 +85,13 @@ async function generateAcceptedEmail(
   }
   const program = unwrapResult(programItemResult);
 
-  const subject = getEmailSubjectAccepted(program.title);
+  const subject = getEmailSubjectAccepted();
   const body = getEmailBodyAccepted(program.title, notification);
   return {
     from: fromAddress,
     to: email,
     subject,
     text: body,
-    html: body,
   };
 }
 
@@ -108,6 +107,5 @@ function generateRejectedEmail(
     to: email,
     subject,
     text: body,
-    html: body,
   };
 }

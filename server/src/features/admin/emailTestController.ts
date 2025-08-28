@@ -65,7 +65,7 @@ export const postEmailTest = async (
       message = {
         from: config.server().emailSendFromAddress,
         to: email,
-        subject: getEmailSubjectAccepted("Test Program Item"),
+        subject: getEmailSubjectAccepted(),
         text: getEmailBodyAccepted("Test Program Item", mockNotification),
         html: getEmailBodyAccepted("Test Program Item", mockNotification),
       };

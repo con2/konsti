@@ -210,17 +210,25 @@ test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items for 'startTime
     .getSender()
     .getSentEmails();
   const expectedAcceptedBody = `Hei ${mockUser.username}!
-Olet ollut onnekas ja paasit ohjelmaan Test program item
-Ohjelma alkaa 2019-07-26T14:00:00.000Z.
+Olet ollut onnekas ja pääsit ohjelmaan Test program item.
+Ohjelma alkaa Fri 26.7.2019 17:00.
 
-Terveisin Konsti.`;
+Hi Test User!
+You got spot on program Test program item.
+Program will start at Fri 26.7.2019 17:00.
+
+Terveisin / Sincerely Konsti`;
   const expectedAcceptedSubject =
-    "Sinut on hyvaksytty ohjelmaan Test program item";
+    "Konstiarvonnan tulos / Results for Konsti lottery signup";
   const expectedRejectedBody = `Hei ${mockUser2.username}!
-Et paassyt arvonnassa yhteenkaan ohjelmaan johon ilmoittauduit.
+Et valitettavasti päässyt arvonnassa yhteenkaan ohjelmaan johon ilmoittauduit.
 
-Terveisin Konsti.`;
-  const expectedRejectedSubject = "Et paassyt arvonnassa yhteenkaan ohjelmaan";
+Hi Test User 2!
+Unfortunately you did not get spot on lottery signup.
+
+Terveisin / Sincerely Konsti`;
+  const expectedRejectedSubject =
+    "Konstiarvonnan tulos / Results for Konsti lottery signup";
 
   expect(messages).toHaveLength(2);
   expect(messages[0].text).toEqual(expectedAcceptedBody);
@@ -617,7 +625,7 @@ test("should respect email notification permissions based on email field", async
   expect(messages).toHaveLength(1);
   expect(messages[0].to).toEqual(userWithEmail.email);
   expect(messages[0].subject).toEqual(
-    "Sinut on hyvaksytty ohjelmaan Test program item",
+    "Konstiarvonnan tulos / Results for Konsti lottery signup",
   );
 });
 
@@ -684,6 +692,6 @@ test("should handle mixed email permissions in groups", async () => {
   expect(messages).toHaveLength(1);
   expect(messages[0].to).toEqual(userWithEmail.email);
   expect(messages[0].subject).toEqual(
-    "Et paassyt arvonnassa yhteenkaan ohjelmaan",
+    "Konstiarvonnan tulos / Results for Konsti lottery signup",
   );
 });
