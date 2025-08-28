@@ -99,7 +99,7 @@ export const MyProgramItemsView = (): ReactElement => {
           lotterySignups={getLotterySignups({
             lotterySignups,
             isGroupCreator,
-            getAllProgramItems: showAllProgramItems,
+            showAllProgramItems,
             isInGroup,
             groupMembers,
           })}

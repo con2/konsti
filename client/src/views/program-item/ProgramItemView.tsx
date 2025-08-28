@@ -42,7 +42,7 @@ export const ProgramItemView = (): ReactElement => {
     isGroupCreator,
     groupMembers,
     isInGroup,
-    getAllProgramItems: true,
+    showAllProgramItems: true,
   });
 
   const [loading, setLoading] = useState<boolean>(true);

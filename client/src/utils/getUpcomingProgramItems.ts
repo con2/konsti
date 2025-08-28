@@ -7,6 +7,7 @@ import {
   LotterySignupWithProgramItem,
 } from "client/views/my-program-items/myProgramItemsSlice";
 import { GroupMemberWithLotteryProgramItem } from "client/views/group/groupSlice";
+import { config } from "shared/config";
 
 export const getUpcomingProgramItems = (
   programItems: readonly ProgramItem[],
@@ -26,8 +27,14 @@ const getUpcomingLotterySignups = (
 ): readonly LotterySignupWithProgramItem[] => {
   const timeNow = getTimeNow();
 
+  const { startTimesByParentIds } = config.event();
+
   const upcomingLotterySignups = lotterySignups.filter((lotterySignup) => {
-    return dayjs(lotterySignup.programItem.startTime)
+    const parentStartTime = startTimesByParentIds.get(
+      lotterySignup.programItem.parentId,
+    );
+
+    return dayjs(parentStartTime ?? lotterySignup.programItem.startTime)
       .add(1, "hours")
       .isAfter(timeNow);
   });
@@ -52,7 +59,7 @@ interface GetLotterySignupsParams {
   isGroupCreator: boolean;
   groupMembers: readonly GroupMemberWithLotteryProgramItem[];
   isInGroup: boolean;
-  getAllProgramItems: boolean;
+  showAllProgramItems: boolean;
 }
 
 export const getLotterySignups = ({
@@ -60,27 +67,24 @@ export const getLotterySignups = ({
   isGroupCreator,
   groupMembers,
   isInGroup,
-  getAllProgramItems,
+  showAllProgramItems,
 }: GetLotterySignupsParams): readonly LotterySignupWithProgramItem[] => {
+  // Show own lottery signups if group creator or not in group
   if (isGroupCreator || !isInGroup) {
-    return getAllProgramItems
+    return showAllProgramItems
       ? lotterySignups
       : getUpcomingLotterySignups(lotterySignups);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-  if (!isGroupCreator) {
-    const groupCreator = getGroupCreator(groupMembers);
-    if (!groupCreator) {
-      return [];
-    }
-
-    return getAllProgramItems
-      ? groupCreator.lotterySignups
-      : getUpcomingLotterySignups(groupCreator.lotterySignups);
+  // Show group creator lottery signups if in group and not group creator
+  const groupCreator = getGroupCreator(groupMembers);
+  if (!groupCreator) {
+    return [];
   }
 
-  return lotterySignups;
+  return showAllProgramItems
+    ? groupCreator.lotterySignups
+    : getUpcomingLotterySignups(groupCreator.lotterySignups);
 };
 
 export const getUpcomingDirectSignups = (
@@ -100,9 +104,18 @@ export const getUpcomingFavorites = (
 ): readonly ProgramItem[] => {
   const timeNow = getTimeNow();
 
+  const { startTimesByParentIds } = config.event();
+
   const upcomingProgramItems = favoriteProgramItems.filter(
-    (favoriteProgramItem) =>
-      dayjs(favoriteProgramItem.startTime).add(1, "hours").isAfter(timeNow),
+    (favoriteProgramItem) => {
+      const parentStartTime = startTimesByParentIds.get(
+        favoriteProgramItem.parentId,
+      );
+
+      return dayjs(parentStartTime ?? favoriteProgramItem.startTime)
+        .add(1, "hours")
+        .isAfter(timeNow);
+    },
   );
 
   return upcomingProgramItems;
