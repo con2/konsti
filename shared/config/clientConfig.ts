@@ -24,7 +24,7 @@ export const clientConfig: ClientConfig = {
     ProgramType.FLEAMARKET,
     ProgramType.TABLETOP_RPG,
   ],
-  activeLanguages: [Language.FINNISH, Language.ENGLISH],
+  activeLanguages: [Language.FINNISH],
 
   // Dev
   enableReduxTrace: false,
