@@ -22,7 +22,7 @@ test("Kompassi login", async ({ page, request }) => {
   const editedUsername = "nickname_edited";
   await page.getByTestId("login-form-input-username").fill(editedUsername);
 
-  const editedEmail = "firstname.surname.edited@gmail.com";
+  const editedEmail = "firstname.lastname.edited@example.com";
   await page.locator("#email").fill(editedEmail);
 
   await page.getByRole("checkbox", { name: /privacy policy/i }).check();

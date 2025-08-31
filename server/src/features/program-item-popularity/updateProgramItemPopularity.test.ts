@@ -16,7 +16,8 @@ import {
 } from "server/features/program-item/programItemRepository";
 import { updateProgramItemPopularity } from "server/features/program-item-popularity/updateProgramItemPopularity";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
-import { Popularity } from "shared/types/models/programItem";
+import { Popularity, ProgramType } from "shared/types/models/programItem";
+import { config } from "shared/config";
 
 let server: Server;
 
@@ -28,6 +29,7 @@ beforeEach(async () => {
 });
 
 afterEach(async () => {
+  vi.resetAllMocks();
   await closeServer(server);
 });
 
@@ -92,6 +94,11 @@ test("Should update program item popularity", async () => {
 });
 
 test("Should only update program item popularity of upcoming program items", async () => {
+  vi.spyOn(config, "event").mockReturnValue({
+    ...config.event(),
+    twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
+  });
+
   const timeNow = dayjs(testProgramItem.startTime)
     .add(1, "hours")
     .toISOString();
@@ -162,6 +169,124 @@ test("Should only update program item popularity of upcoming program items", asy
       expect.objectContaining({
         programItemId: testProgramItem2.programItemId,
         popularity: Popularity.MEDIUM,
+      }),
+    ]),
+  );
+});
+
+test("Should update popularity of upcoming program item with parent", async () => {
+  const timeNow = dayjs(testProgramItem.startTime)
+    .add(1, "hours")
+    .toISOString();
+  const parentStartTime = dayjs(timeNow).add(1, "hour").toISOString();
+  const upcomingStartTime = dayjs(timeNow).add(2, "hours").toISOString();
+
+  vi.setSystemTime(timeNow);
+  vi.spyOn(config, "event").mockReturnValue({
+    ...config.event(),
+    twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
+    startTimesByParentIds: new Map([
+      [testProgramItem.parentId, parentStartTime],
+    ]),
+  });
+
+  await saveUser(mockUser);
+
+  // Upcoming program item with parent
+  await saveProgramItems([
+    { ...testProgramItem, minAttendance: 1, startTime: upcomingStartTime },
+  ]);
+
+  await saveLotterySignups({
+    lotterySignups: [
+      {
+        programItemId: testProgramItem.programItemId,
+        priority: 1,
+        signedToStartTime: upcomingStartTime,
+      },
+    ],
+    username: mockUser.username,
+  });
+
+  const programItems = unsafelyUnwrap(await findProgramItems());
+
+  expect(programItems).toEqual(
+    expect.arrayContaining([
+      expect.objectContaining({
+        programItemId: testProgramItem.programItemId,
+        popularity: Popularity.NULL,
+      }),
+    ]),
+  );
+
+  await updateProgramItemPopularity();
+
+  const updatedProgramItems = unsafelyUnwrap(await findProgramItems());
+
+  expect(updatedProgramItems).toEqual(
+    expect.arrayContaining([
+      expect.objectContaining({
+        programItemId: testProgramItem.programItemId,
+        popularity: Popularity.MEDIUM,
+      }),
+    ]),
+  );
+});
+
+test("Should not update upcoming program item popularity if parent starTime in past", async () => {
+  const timeNow = dayjs(testProgramItem.startTime)
+    .add(1, "hours")
+    .toISOString();
+  const parentStartTime = dayjs(timeNow).subtract(30, "minutes").toISOString();
+  const upcomingStartTime = dayjs(timeNow).add(2, "hours").toISOString();
+
+  vi.setSystemTime(timeNow);
+  vi.spyOn(config, "event").mockReturnValue({
+    ...config.event(),
+    twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
+    startTimesByParentIds: new Map([
+      [testProgramItem.parentId, parentStartTime],
+    ]),
+  });
+
+  await saveUser(mockUser);
+
+  // Upcoming program item with parent in past
+  await saveProgramItems([
+    { ...testProgramItem, minAttendance: 1, startTime: upcomingStartTime },
+  ]);
+
+  await saveLotterySignups({
+    lotterySignups: [
+      {
+        programItemId: testProgramItem.programItemId,
+        priority: 1,
+        signedToStartTime: upcomingStartTime,
+      },
+    ],
+    username: mockUser.username,
+  });
+
+  const programItems = unsafelyUnwrap(await findProgramItems());
+
+  expect(programItems).toEqual(
+    expect.arrayContaining([
+      expect.objectContaining({
+        programItemId: testProgramItem.programItemId,
+        popularity: Popularity.NULL,
+      }),
+    ]),
+  );
+
+  await updateProgramItemPopularity();
+
+  const updatedProgramItems = unsafelyUnwrap(await findProgramItems());
+
+  expect(updatedProgramItems).toEqual(
+    expect.arrayContaining([
+      expect.objectContaining({
+        programItemId: testProgramItem.programItemId,
+        popularity: Popularity.NULL,
       }),
     ]),
   );

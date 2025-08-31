@@ -83,7 +83,7 @@ export const getKompassiLoginMockProfile = (
     full_name: 'Firstname "Nickname" Surname',
     display_name: 'Firstname "Nickname" Surname',
     preferred_name_display_style: "firstname_nick_surname",
-    email: "firstname.surname@gmail.com",
+    email: "firstname.lastname@example.com",
     birth_date: "2000-01-01",
     phone: "+358 50 1234567",
     username: "nickname",
