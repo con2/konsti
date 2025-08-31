@@ -96,7 +96,7 @@ const userSchema = new mongoose.Schema(
     lotterySignups: { type: [lotterySignupSchema], required: true },
     eventLogItems: { type: [eventLogItemSchema], required: true },
     email: { type: String, required: false },
-    emailNotificationPermitAsked: { type: Boolean, requires: true },
+    emailNotificationPermitAsked: { type: Boolean, required: true },
     createdAt: {
       type: Date,
       get: (value: Date) => new Date(value),
