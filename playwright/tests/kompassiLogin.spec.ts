@@ -22,13 +22,15 @@ test("Kompassi login", async ({ page, request }) => {
   await page.getByRole("checkbox", { name: /privacy policy/i }).check();
   await page.getByRole("button", { name: /save/i }).click();
 
-  // Check if login was completed
+  // Check if login was completed and email saved
   await page.click("data-testid=navigation-icon");
-
-  const profileLink = page.locator("data-testid=link-profile");
-  await expect(profileLink).toBeVisible();
+  await page.getByTestId("link-profile").click();
+  await expect(page.locator("#email")).toHaveValue(
+    "firstname.surname@gmail.com",
+  );
 
   // Logout
+  await page.click("data-testid=navigation-icon");
   await page.getByRole("link", { name: /logout/i }).click();
 
   // Check if logout was completed

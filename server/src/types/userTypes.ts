@@ -9,6 +9,7 @@ export interface NewUser {
   groupCode?: string;
   groupCreatorCode?: string;
   email?: string;
+  emailNotificationPermitAsked?: boolean;
 }
 
 export interface AssignmentLotterySignup {
