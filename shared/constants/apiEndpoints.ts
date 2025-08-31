@@ -20,9 +20,11 @@ export enum ApiEndpoint {
   DIRECT_SIGNUP = "/api/direct-signup",
   SENTRY_TUNNEL = "/api/sentry",
   SENTRY_TEST = "/api/sentry-test",
+  EMAIL_TEST = "/api/email-test",
   EVENT_LOG_IS_SEEN = "/api/event-log-is-seen",
   HEALTH = "/api/health",
   VERIFY_KOMPASSI_LOGIN = "/api/verify-kompassi-login",
+  UPDATE_USER_EMAIL_ADDRESS = "/api/update-user-email-address",
 }
 
 export enum ApiDevEndpoint {

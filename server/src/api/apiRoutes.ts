@@ -12,6 +12,7 @@ import {
 } from "server/features/program-item/programItemController";
 import { getHealthStatus } from "server/features/health/healthController";
 import { getSentryTest } from "server/features/sentry-tunnel/sentryTunnelController";
+import { postEmailTest } from "server/features/admin/emailTestController";
 import {
   deleteSignupQuestion,
   getSettings,
@@ -44,6 +45,7 @@ import {
   postUser,
   getUserBySerialOrUsername,
   postUserPassword,
+  postUpdateUserEmailAddress,
 } from "server/features/user/userController";
 import {
   postClearDb,
@@ -93,6 +95,11 @@ apiRoutes.post(ApiEndpoint.SETTINGS, postSettings);
 apiRoutes.post(ApiEndpoint.DIRECT_SIGNUP, postDirectSignup);
 apiRoutes.post(ApiEndpoint.EVENT_LOG_IS_SEEN, postEventLogItemIsSeen);
 apiRoutes.post(ApiEndpoint.VERIFY_KOMPASSI_LOGIN, postVerifyKompassiLogin);
+apiRoutes.post(
+  ApiEndpoint.UPDATE_USER_EMAIL_ADDRESS,
+  postUpdateUserEmailAddress,
+);
+apiRoutes.post(ApiEndpoint.EMAIL_TEST, postEmailTest);
 
 /* GET routes */
 

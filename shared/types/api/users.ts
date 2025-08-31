@@ -20,6 +20,7 @@ export interface GetUserResponse extends ApiResult {
   groupCreatorCode: string;
   username: string;
   eventLogItems: EventLogItem[];
+  email: string;
 }
 
 export interface GetUserError extends ApiError {

@@ -62,6 +62,7 @@ export const translationFI = {
     required: "Vaadittu kenttä",
     tooLong: "Liian pitkä, käytä enintään {{length}} merkkiä",
     tooShort: "Liian lyhyt, käytä vähintään {{length}} merkkiä",
+    invalidEmail: "Virheellinen sähköpostin muoto",
   },
   pages: {
     myProgram: "Oma ohjelmani",
@@ -642,5 +643,15 @@ export const translationFI = {
     sentryBackendTest: "Backend-testi",
     signupStrategy: "Ilmoittautumisstapa",
     loginProvider: "Kirjautumistapa",
+  },
+  email: {
+    notifications: {
+      accepted: "Haluan Konstin ilmoitukset sähköpostiini",
+      rejected: "En halua ilmoituksia sähköpostiini",
+      registrationDescription:
+        "Voit muuttaa ilmoitusasetuksia Profiili-näkymässä",
+      changingEmailError: "Virhe sähköpostiosoitteen päivittämisessä",
+      changingEmailSuccess: "Sähköpostiosoite päivitetty onnistuneesti",
+    },
   },
 } as const;

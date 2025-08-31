@@ -1,9 +1,13 @@
 import { test, expect } from "@playwright/test";
-import { addUser, clearDb, login } from "playwright/playwrightUtils";
+import { clearDb, login, populateDb } from "playwright/playwrightUtils";
 
 test("About page views content logged", async ({ page, request }) => {
   await clearDb(request);
-  await addUser(request, "test1");
+  await populateDb(request, {
+    clean: true,
+    users: true,
+    admin: true,
+  });
   await login(page, request, { username: "test1", password: "test" });
 
   await page.goto("/");

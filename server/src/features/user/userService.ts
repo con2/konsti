@@ -287,6 +287,7 @@ export const fetchUserByUsername = async (
     groupCode: user.groupCode,
     groupCreatorCode: user.groupCreatorCode,
     eventLogItems: user.eventLogItems,
+    email: user.email || "",
   };
 };
 

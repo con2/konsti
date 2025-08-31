@@ -10,6 +10,9 @@ import {
   PostLoginResponse,
   PostSessionRecoveryRequest,
   PostSessionRecoveryResponse,
+  PostUpdateUserEmailAddressError,
+  PostUpdateUserEmailAddressRequest,
+  PostUpdateUserEmailAddressResponse,
   PostVerifyKompassiLoginError,
   PostVerifyKompassiLoginRequest,
   PostVerifyKompassiLoginResponse,
@@ -70,6 +73,20 @@ export const postVerifyKompassiLogin = async (
     PostVerifyKompassiLoginRequest
   >(ApiEndpoint.VERIFY_KOMPASSI_LOGIN, {
     username,
+  });
+  return response.data;
+};
+
+export const postUpdateUserEmailAddress = async (
+  email: string,
+): Promise<
+  PostUpdateUserEmailAddressResponse | PostUpdateUserEmailAddressError
+> => {
+  const response = await api.post<
+    PostUpdateUserEmailAddressResponse,
+    PostUpdateUserEmailAddressRequest
+  >(ApiEndpoint.UPDATE_USER_EMAIL_ADDRESS, {
+    email,
   });
   return response.data;
 };

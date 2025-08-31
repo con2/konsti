@@ -6,7 +6,6 @@ import {
   login,
   addProgramItems,
   populateDb,
-  addUser,
   postAssignment,
 } from "playwright/playwrightUtils";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
@@ -88,8 +87,8 @@ test("Receive spot in lottery signup", async ({ page, request }) => {
   await populateDb(request, {
     clean: true,
     admin: true,
+    users: true,
   });
-  await addUser(request, "test1");
   await addProgramItems(request, [
     {
       programType: config.event().twoPhaseSignupProgramTypes[0],
@@ -157,8 +156,8 @@ test("Did not receive spot in lottery signup", async ({ page, request }) => {
   await populateDb(request, {
     clean: true,
     admin: true,
+    users: true,
   });
-  await addUser(request, "test1");
   await addProgramItems(request, [
     {
       programType: config.event().twoPhaseSignupProgramTypes[0],
@@ -238,8 +237,8 @@ test("Receive spot in lottery signup, with multiple lottery program types", asyn
   await populateDb(request, {
     clean: true,
     admin: true,
+    users: true,
   });
-  await addUser(request, "test1");
   await addProgramItems(request, [
     {
       programItemId: testProgramItem.programItemId,

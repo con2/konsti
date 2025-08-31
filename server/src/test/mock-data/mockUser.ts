@@ -14,6 +14,7 @@ export const mockUser: NewUser = {
   userGroup: UserGroup.USER,
   serial: "1234ABCD",
   groupCode: "0",
+  email: "user@example.com",
 };
 
 export const mockUser2: NewUser = {
@@ -23,6 +24,7 @@ export const mockUser2: NewUser = {
   userGroup: UserGroup.USER,
   serial: "5678IDJL",
   groupCode: "0",
+  email: "user@example.com",
 };
 
 export const mockUser3: NewUser = {
@@ -32,6 +34,7 @@ export const mockUser3: NewUser = {
   userGroup: UserGroup.USER,
   serial: "jhertyee",
   groupCode: "0",
+  email: "user@example.com",
 };
 
 export const mockUser4: NewUser = {
@@ -41,6 +44,7 @@ export const mockUser4: NewUser = {
   userGroup: UserGroup.USER,
   serial: "urtyjjjtyy",
   groupCode: "0",
+  email: "user@example.com",
 };
 
 export const mockUser5: NewUser = {

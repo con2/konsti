@@ -3,6 +3,7 @@ import {
   findUser,
   findUserByKompassiId,
   saveUser,
+  updateUserEmailAddress,
   updateUserKompassiLoginStatus,
 } from "server/features/user/userRepository";
 import { createSerial } from "server/features/user/userUtils";
@@ -15,6 +16,8 @@ import {
   PostKompassiLoginError,
   PostVerifyKompassiLoginError,
   PostVerifyKompassiLoginResponse,
+  PostUpdateUserEmailAddressResponse,
+  PostUpdateUserEmailAddressError,
 } from "shared/types/api/login";
 import { UserGroup } from "shared/types/models/user";
 import {
@@ -169,6 +172,8 @@ export const doKompassiLogin = async (
       eventLogItems: existingUser.eventLogItems,
       kompassiUsernameAccepted: existingUser.kompassiUsernameAccepted,
       kompassiId: existingUser.kompassiId,
+      email: existingUser.email || "",
+      emailNotificationPermitAsked: existingUser.emailNotificationPermitAsked,
     };
   }
 
@@ -201,6 +206,7 @@ export const doKompassiLogin = async (
       ? `${profile.username}-${profile.id}`
       : profile.username,
     serial,
+    email: profile.email,
     passwordHash: "",
     userGroup: UserGroup.USER,
     groupCode: "0",
@@ -228,6 +234,8 @@ export const doKompassiLogin = async (
     eventLogItems: saveUserResponse.eventLogItems,
     kompassiUsernameAccepted: saveUserResponse.kompassiUsernameAccepted,
     kompassiId: saveUserResponse.kompassiId,
+    email: saveUserResponse.email || "",
+    emailNotificationPermitAsked: saveUserResponse.emailNotificationPermitAsked,
   };
 };
 
@@ -283,6 +291,32 @@ export const verifyKompassiLogin = async (
     status: "success",
     username: user.username,
     kompassiUsernameAccepted: user.kompassiUsernameAccepted,
+    jwt: getJWT(user.userGroup, user.username),
+  };
+};
+
+export const verifyUpdateUserEmailAddress = async (
+  username: string,
+  email: string,
+): Promise<
+  PostUpdateUserEmailAddressResponse | PostUpdateUserEmailAddressError
+> => {
+  const userResult = await updateUserEmailAddress(username, email);
+  if (isErrorResult(userResult)) {
+    return {
+      message: "Updating user email address failed",
+      status: "error",
+      errorId: "unknown",
+    };
+  }
+
+  const user = unwrapResult(userResult);
+
+  return {
+    message: "Email address updated successfully",
+    status: "success",
+    email: user.email,
+    emailNotificationPermitAsked: user.emailNotificationPermitAsked,
     jwt: getJWT(user.userGroup, user.username),
   };
 };

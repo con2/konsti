@@ -1,4 +1,4 @@
-import { expect, test, afterEach, beforeEach, describe, vi } from "vitest";
+import { vi, expect, test, afterEach, beforeEach, describe } from "vitest";
 import mongoose from "mongoose";
 import dayjs from "dayjs";
 import { faker } from "@faker-js/faker";
@@ -34,6 +34,8 @@ import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 import { ProgramItemModel } from "server/features/program-item/programItemSchema";
 import { addEventLogItems } from "server/features/user/event-log/eventLogRepository";
 import { EventLogAction } from "shared/types/models/eventLog";
+import { createNotificationQueueService } from "server/utils/notificationQueue";
+import { EmailSender } from "server/features/notifications/email";
 import { AssignmentResultStatus } from "server/types/resultTypes";
 
 // This needs to be adjusted if test data is changed
@@ -44,6 +46,19 @@ beforeEach(async () => {
   await mongoose.connect(globalThis.__MONGO_URI__, {
     dbName: faker.string.alphanumeric(10),
   });
+
+  vi.mock<object>(
+    import("server/utils/notificationQueue"),
+    async (originalImport) => {
+      const actual = await originalImport();
+      return {
+        ...actual,
+        getGlobalNotificationQueueService: vi.fn(() => {
+          return createNotificationQueueService(new EmailSender(), 1, true);
+        }),
+      };
+    },
+  );
 });
 
 afterEach(async () => {

@@ -28,17 +28,36 @@ import {
   findDirectSignups,
   saveDirectSignup,
 } from "server/features/direct-signup/directSignupRepository";
+import {
+  createNotificationQueueService,
+  getGlobalNotificationQueueService,
+} from "server/utils/notificationQueue";
 import { ProgramType } from "shared/types/models/programItem";
 import { EventLogAction } from "shared/types/models/eventLog";
+import { EmailSender } from "server/features/notifications/email";
 
 // This needs to be adjusted if test data is changed
 const expectedResultsCount = 20;
 const groupTestUsers = ["group1", "group2", "group3"];
 
+vi.mock<object>(
+  import("server/utils/notificationQueue"),
+  async (originalImport) => {
+    const actual = await originalImport();
+    return {
+      ...actual,
+      getGlobalNotificationQueueService: vi.fn(),
+    };
+  },
+);
+
 beforeEach(async () => {
   await mongoose.connect(globalThis.__MONGO_URI__, {
     dbName: faker.string.alphanumeric(10),
   });
+  vi.mocked(getGlobalNotificationQueueService).mockReturnValue(
+    createNotificationQueueService(new EmailSender(), 1, true),
+  );
 });
 
 afterEach(async () => {

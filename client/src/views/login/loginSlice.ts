@@ -3,7 +3,10 @@ import { LoginState } from "client/types/reduxTypes";
 import { UserGroup } from "shared/types/models/user";
 import { loadSession } from "client/utils/localStorage";
 import { EventLogItem } from "shared/types/models/eventLog";
-import { PostVerifyKompassiLoginPayload } from "shared/types/api/login";
+import {
+  PostFinalizeLogin,
+  PostVerifyKompassiLoginPayload,
+} from "shared/types/api/login";
 
 const initialState = (): LoginState => {
   const persistedState = loadSession();
@@ -17,6 +20,8 @@ const initialState = (): LoginState => {
     eventLogItems: [],
     kompassiUsernameAccepted: false,
     kompassiId: 0,
+    email: "",
+    emailNotificationPermitAsked: false,
   };
 };
 
@@ -35,6 +40,9 @@ const loginSlice = createSlice({
         eventLogItems: action.payload.eventLogItems,
         kompassiUsernameAccepted: action.payload.kompassiUsernameAccepted,
         kompassiId: action.payload.kompassiId,
+        email: action.payload.email,
+        emailNotificationPermitAsked:
+          action.payload.emailNotificationPermitAsked,
       };
     },
 
@@ -59,6 +67,18 @@ const loginSlice = createSlice({
         jwt: action.payload.jwt,
       };
     },
+    submitFinalizeLoginAsync(
+      state,
+      action: PayloadAction<PostFinalizeLogin>,
+    ): LoginState {
+      return {
+        ...state,
+        email: action.payload.email,
+        emailNotificationPermitAsked:
+          action.payload.emailNotificationPermitAsked,
+        jwt: action.payload.jwt,
+      };
+    },
   },
 });
 
@@ -66,6 +86,7 @@ export const {
   submitLoginAsync,
   submitUpdateEventLogItemsAsync,
   submitVerifyKompassiLoginAsync,
+  submitFinalizeLoginAsync,
 } = loginSlice.actions;
 
 export const loginReducer = loginSlice.reducer;
