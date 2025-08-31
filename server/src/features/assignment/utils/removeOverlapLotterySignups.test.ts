@@ -1,4 +1,4 @@
-import { expect, test, afterEach, beforeEach } from "vitest";
+import { expect, test, afterEach, beforeEach, vi } from "vitest";
 import mongoose from "mongoose";
 import { faker } from "@faker-js/faker";
 import dayjs from "dayjs";
@@ -9,7 +9,10 @@ import {
   mockUser2,
   mockUser3,
 } from "server/test/mock-data/mockUser";
-import { testProgramItem } from "shared/tests/testProgramItem";
+import {
+  testProgramItem,
+  testProgramItem2,
+} from "shared/tests/testProgramItem";
 import { findUser, saveUser } from "server/features/user/userRepository";
 import {
   findProgramItems,
@@ -18,6 +21,7 @@ import {
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { UserAssignmentResult } from "shared/types/models/result";
+import { config } from "shared/config";
 
 beforeEach(async () => {
   await mongoose.connect(globalThis.__MONGO_URI__, {
@@ -26,10 +30,17 @@ beforeEach(async () => {
 });
 
 afterEach(async () => {
+  vi.resetAllMocks();
   await mongoose.disconnect();
 });
 
 test("should remove overlapping lottery signups from user", async () => {
+  vi.spyOn(config, "event").mockReturnValue({
+    ...config.event(),
+    enableRemoveOverlapSignups: true,
+    enableRemoveAllUpcomingSignups: false,
+  });
+
   const programItemRemovedId = "program-item-removed-id";
   const startTimeRemoved = dayjs(testProgramItem.startTime)
     .add(testProgramItem.mins - 1, "minutes")
@@ -120,7 +131,11 @@ test("should remove overlapping lottery signups from user", async () => {
   const results: UserAssignmentResult[] = [user1Result, user2Result];
   const programItems = unsafelyUnwrap(await findProgramItems());
 
-  await removeOverlapLotterySignups(results, programItems);
+  await removeOverlapLotterySignups(
+    results,
+    programItems,
+    testProgramItem.startTime,
+  );
 
   // User 1: One overlapping signup removed
   const updatedUser = unsafelyUnwrap(await findUser(mockUser.username));
@@ -161,6 +176,194 @@ test("should remove overlapping lottery signups from user", async () => {
     {
       programItemId: programItemNotRemovedId,
       signedToStartTime: startTimeNotRemoved,
+    },
+  ]);
+});
+
+test("should remove all upcoming lottery signups from user", async () => {
+  const timeNow = dayjs(testProgramItem.startTime).toISOString();
+
+  vi.spyOn(config, "event").mockReturnValue({
+    ...config.event(),
+    enableRemoveOverlapSignups: false,
+    enableRemoveAllUpcomingSignups: true,
+  });
+
+  const resultProgramItemId = "result-program-item-id";
+  const resultProgramItemStartTime = dayjs(timeNow).toISOString();
+
+  const pastProgramItemId = "past-program-item-id";
+  const pastProgramItemStartTime = dayjs(timeNow)
+    .subtract(1, "minute")
+    .toISOString();
+
+  const upcomingProgramItemId = "upcoming-program-item-id";
+  const upcomingStartTime = dayjs(timeNow).add(1, "minute").toISOString();
+
+  const upcomingProgramItemId2 = "upcoming-program-item-id-2";
+  const upcomingStartTime2 = dayjs(timeNow).add(10, "hours").toISOString();
+
+  await saveProgramItems([
+    {
+      ...testProgramItem,
+      programItemId: resultProgramItemId,
+      startTime: resultProgramItemStartTime,
+    },
+    {
+      ...testProgramItem,
+      programItemId: pastProgramItemId,
+      startTime: pastProgramItemStartTime,
+    },
+    {
+      ...testProgramItem,
+      programItemId: upcomingProgramItemId,
+      startTime: upcomingStartTime,
+    },
+    {
+      ...testProgramItem,
+      programItemId: upcomingProgramItemId2,
+      startTime: upcomingStartTime2,
+    },
+  ]);
+
+  // User received a direct signup and has one past and two upcoming lottery signups
+  await saveUser(mockUser);
+  await saveLotterySignups({
+    username: mockUser.username,
+    lotterySignups: [
+      {
+        programItemId: resultProgramItemId,
+        priority: 1,
+        signedToStartTime: resultProgramItemStartTime,
+      },
+      {
+        programItemId: pastProgramItemId,
+        priority: 1,
+        signedToStartTime: pastProgramItemStartTime,
+      },
+      {
+        programItemId: upcomingProgramItemId,
+        priority: 1,
+        signedToStartTime: upcomingStartTime,
+      },
+      {
+        programItemId: upcomingProgramItemId2,
+        priority: 1,
+        signedToStartTime: upcomingStartTime2,
+      },
+    ],
+  });
+  const userResult: UserAssignmentResult = {
+    username: mockUser.username,
+    assignmentSignup: {
+      programItemId: resultProgramItemId,
+      priority: 1,
+      signedToStartTime: resultProgramItemStartTime,
+    },
+  };
+
+  const results: UserAssignmentResult[] = [userResult];
+  const programItems = unsafelyUnwrap(await findProgramItems());
+
+  await removeOverlapLotterySignups(
+    results,
+    programItems,
+    resultProgramItemStartTime,
+  );
+
+  // Upcoming signups removed
+  const updatedUser = unsafelyUnwrap(await findUser(mockUser.username));
+  expect(updatedUser?.lotterySignups.length).toEqual(2);
+  expect(updatedUser?.lotterySignups).toMatchObject([
+    {
+      programItemId: resultProgramItemId,
+      signedToStartTime: resultProgramItemStartTime,
+    },
+    {
+      programItemId: pastProgramItemId,
+      signedToStartTime: pastProgramItemStartTime,
+    },
+  ]);
+});
+
+test("should not remove upcoming lottery signup with past parent startTime", async () => {
+  const timeNow = dayjs(testProgramItem.startTime).toISOString();
+  const parentStartTime = dayjs(timeNow).subtract(30, "minutes").toISOString();
+
+  vi.spyOn(config, "event").mockReturnValue({
+    ...config.event(),
+    enableRemoveOverlapSignups: false,
+    enableRemoveAllUpcomingSignups: true,
+    startTimesByParentIds: new Map([
+      [testProgramItem.parentId, parentStartTime],
+    ]),
+  });
+
+  const resultProgramItemId = "lottery-result-program-item-id";
+  const resultProgramItemStartTime = dayjs(timeNow).toISOString();
+
+  const upcomingProgramItemId = "upcoming-program-item-id";
+  const upcomingStartTime = dayjs(timeNow).add(1, "minute").toISOString();
+
+  await saveProgramItems([
+    {
+      ...testProgramItem2,
+      programItemId: resultProgramItemId,
+      startTime: resultProgramItemStartTime,
+    },
+    {
+      ...testProgramItem,
+      programItemId: upcomingProgramItemId,
+      startTime: upcomingStartTime,
+    },
+  ]);
+
+  // User received a direct signup and has one upcoming lottery signup with parent in past
+  await saveUser(mockUser);
+  await saveLotterySignups({
+    username: mockUser.username,
+    lotterySignups: [
+      {
+        programItemId: resultProgramItemId,
+        priority: 1,
+        signedToStartTime: resultProgramItemStartTime,
+      },
+      {
+        programItemId: upcomingProgramItemId,
+        priority: 1,
+        signedToStartTime: upcomingStartTime,
+      },
+    ],
+  });
+  const userResult: UserAssignmentResult = {
+    username: mockUser.username,
+    assignmentSignup: {
+      programItemId: resultProgramItemId,
+      priority: 1,
+      signedToStartTime: resultProgramItemStartTime,
+    },
+  };
+
+  const results: UserAssignmentResult[] = [userResult];
+  const programItems = unsafelyUnwrap(await findProgramItems());
+
+  await removeOverlapLotterySignups(
+    results,
+    programItems,
+    resultProgramItemStartTime,
+  );
+
+  // No signups removed
+  const updatedUser = unsafelyUnwrap(await findUser(mockUser.username));
+  expect(updatedUser?.lotterySignups.length).toEqual(2);
+  expect(updatedUser?.lotterySignups).toMatchObject([
+    {
+      programItemId: resultProgramItemId,
+      signedToStartTime: resultProgramItemStartTime,
+    },
+    {
+      programItemId: upcomingProgramItemId,
+      signedToStartTime: upcomingStartTime,
     },
   ]);
 });

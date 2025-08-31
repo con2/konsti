@@ -14,10 +14,13 @@ import {
 } from "shared/utils/result";
 import { MongoDbError } from "shared/types/api/errors";
 import { ProgramItem } from "shared/types/models/programItem";
+import { getUpcomingLotterySignupProgramItemIds } from "server/features/assignment/utils/getUpcomingLotterySignups";
+import { config } from "shared/config";
 
 export const removeOverlapLotterySignups = async (
   results: readonly UserAssignmentResult[],
   programItems: readonly ProgramItem[],
+  assignmentTime: string,
 ): Promise<Result<void, MongoDbError>> => {
   logger.debug("Find overlapping lottery signups");
   const usersToUpdate: DeleteLotterySignupsParams[] = [];
@@ -56,37 +59,59 @@ export const removeOverlapLotterySignups = async (
     }
 
     // Cancel all lottery signups that start during the lottery direct signup
-    const overlappingLotterySignups = signedUser.lotterySignups.filter(
-      (lotterySignup) => {
-        const foundProgramItem = programItems.find(
-          (programItem) =>
-            programItem.programItemId === lotterySignup.programItemId,
-        );
-        if (!foundProgramItem) {
-          return false;
-        }
-        const startsDuring = dayjs(foundProgramItem.startTime).isBetween(
-          dayjs(assignmentSignupProgramItem.startTime).add(1, "minutes"),
-          dayjs(assignmentSignupProgramItem.endTime),
-        );
-        return startsDuring;
-      },
-    );
+    if (config.event().enableRemoveOverlapSignups) {
+      const overlappingLotterySignups = signedUser.lotterySignups.filter(
+        (lotterySignup) => {
+          const foundProgramItem = programItems.find(
+            (programItem) =>
+              programItem.programItemId === lotterySignup.programItemId,
+          );
+          if (!foundProgramItem) {
+            return false;
+          }
+          const startsDuring = dayjs(foundProgramItem.startTime).isBetween(
+            dayjs(assignmentSignupProgramItem.startTime).add(1, "minutes"),
+            dayjs(assignmentSignupProgramItem.endTime),
+          );
+          return startsDuring;
+        },
+      );
 
-    // Only update users with overlapping signups
-    if (overlappingLotterySignups.length > 0) {
-      usersToUpdate.push({
-        username: signedUser.username,
-        lotterySignupProgramItemIds: overlappingLotterySignups.map(
-          (signup) => signup.programItemId,
-        ),
-      });
+      // Only update users with overlapping lottery signups
+      if (overlappingLotterySignups.length > 0) {
+        usersToUpdate.push({
+          username: signedUser.username,
+          lotterySignupProgramItemIds: overlappingLotterySignups.map(
+            (signup) => signup.programItemId,
+          ),
+        });
+      }
+    }
+
+    // Cancel all upcoming lottery signups
+    if (config.event().enableRemoveAllUpcomingSignups) {
+      const upcomingLotterySignupProgramItemIds =
+        getUpcomingLotterySignupProgramItemIds(
+          signedUser.lotterySignups,
+          programItems,
+          dayjs(assignmentTime),
+        );
+
+      // Only update users with upcoming lottery signups
+      if (upcomingLotterySignupProgramItemIds.length > 0) {
+        usersToUpdate.push({
+          username: signedUser.username,
+          lotterySignupProgramItemIds: upcomingLotterySignupProgramItemIds,
+        });
+      }
     }
   });
 
-  const delLotterySignupsResult = await delLotterySignups(usersToUpdate);
-  if (isErrorResult(delLotterySignupsResult)) {
-    return delLotterySignupsResult;
+  if (usersToUpdate.length > 0) {
+    const delLotterySignupsResult = await delLotterySignups(usersToUpdate);
+    if (isErrorResult(delLotterySignupsResult)) {
+      return delLotterySignupsResult;
+    }
   }
 
   return makeSuccessResult();

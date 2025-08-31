@@ -79,6 +79,7 @@ export interface EventConfig {
   directSignupOpenToEndProgramTypes: ProgramType[];
   activeProgramTypes: ProgramType[];
   enableRemoveOverlapSignups: boolean;
+  enableRemoveAllUpcomingSignups: boolean;
   customDetailsProgramItems: Record<
     string,
     | {
