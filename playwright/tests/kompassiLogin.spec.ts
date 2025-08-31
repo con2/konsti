@@ -19,15 +19,20 @@ test("Kompassi login", async ({ page, request }) => {
     .click();
   await page.waitForURL("/");
 
+  const editedUsername = "nickname_edited";
+  await page.getByTestId("login-form-input-username").fill(editedUsername);
+
+  const editedEmail = "firstname.surname.edited@gmail.com";
+  await page.locator("#email").fill(editedEmail);
+
   await page.getByRole("checkbox", { name: /privacy policy/i }).check();
   await page.getByRole("button", { name: /save/i }).click();
 
-  // Check if login was completed and email saved
+  // Check if login was completed and modified username and email saved
   await page.click("data-testid=navigation-icon");
   await page.getByTestId("link-profile").click();
-  await expect(page.locator("#email")).toHaveValue(
-    "firstname.surname@gmail.com",
-  );
+  await expect(page.locator("#main")).toContainText(`User: ${editedUsername}`);
+  await expect(page.locator("#email")).toHaveValue(editedEmail);
 
   // Logout
   await page.click("data-testid=navigation-icon");
