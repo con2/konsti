@@ -1,5 +1,5 @@
 import { Server } from "node:http";
-import { expect, test, afterEach, beforeEach, describe } from "vitest";
+import { expect, test, afterEach, beforeEach, describe, vi } from "vitest";
 import request from "supertest";
 import { faker } from "@faker-js/faker";
 import dayjs from "dayjs";
@@ -29,6 +29,8 @@ import { closeServer, startServer } from "server/utils/server";
 import { saveDirectSignup } from "server/features/direct-signup/directSignupRepository";
 import { saveTestSettings } from "server/test/test-settings/testSettingsRepository";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
+import { config } from "shared/config";
+import { ProgramType } from "shared/types/models/programItem";
 
 let server: Server;
 
@@ -40,6 +42,7 @@ beforeEach(async () => {
 });
 
 afterEach(async () => {
+  vi.resetAllMocks();
   await closeServer(server);
 });
 
@@ -61,7 +64,11 @@ describe(`GET ${ApiEndpoint.GROUP}`, () => {
 
   test("should return group members", async () => {
     await saveProgramItems([testProgramItem]);
-    await saveUser({ ...mockUser, groupCode: mockUser.serial });
+    await saveUser({
+      ...mockUser,
+      groupCode: mockUser.serial,
+      groupCreatorCode: mockUser.serial,
+    });
     await saveUser({ ...mockUser2, groupCode: mockUser.serial });
     await saveDirectSignup({
       ...mockPostDirectSignupRequest,
@@ -133,24 +140,36 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
   });
 
   test("should join group and remove upcoming lottery signups", async () => {
-    const timeNow = dayjs(testProgramItem.startTime);
+    const timeNow = dayjs(testProgramItem.startTime).toISOString();
+    const pastStartTime = timeNow;
+    const upcomingStartTime = dayjs(testProgramItem.startTime)
+      .add(1, "minute")
+      .toISOString();
+
     await saveTestSettings({
-      testTime: timeNow.toISOString(),
+      testTime: timeNow,
     });
 
     const groupCode = "123-234-345";
 
-    await saveProgramItems([testProgramItem, testProgramItem2]);
+    // Upcoming lottery signup is determined from program item start time, not signup time
+    await saveProgramItems([
+      { ...testProgramItem, startTime: pastStartTime },
+      {
+        ...testProgramItem2,
+        startTime: upcomingStartTime,
+      },
+    ]);
     await saveUser({ ...mockUser, groupCode, groupCreatorCode: groupCode });
     await saveUser(mockUser2);
 
     const pastLotterySignup = {
       ...mockLotterySignups[0],
-      signedToStartTime: timeNow.toISOString(),
+      signedToStartTime: pastStartTime,
     };
     const upcomingLotterySignup = {
       ...mockLotterySignups[1],
-      signedToStartTime: timeNow.add(1, "minute").toISOString(),
+      signedToStartTime: upcomingStartTime,
     };
     const user = unsafelyUnwrap(
       await saveLotterySignups({
@@ -181,7 +200,68 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
     );
   });
 
+  test("should join group and not remove upcoming lottery signup with parent startTime in past", async () => {
+    const timeNow = dayjs(testProgramItem.startTime).toISOString();
+    const parentStartTime = dayjs(timeNow)
+      .subtract(30, "minutes")
+      .toISOString();
+    const upcomingStartTime = dayjs(timeNow).add(1, "minute").toISOString();
+
+    vi.spyOn(config, "event").mockReturnValue({
+      ...config.event(),
+      startTimesByParentIds: new Map([
+        [testProgramItem.parentId, parentStartTime],
+      ]),
+    });
+
+    await saveTestSettings({
+      testTime: timeNow,
+    });
+
+    const groupCode = "123-234-345";
+
+    await saveProgramItems([
+      { ...testProgramItem, startTime: upcomingStartTime },
+    ]);
+    await saveUser({ ...mockUser, groupCode, groupCreatorCode: groupCode });
+    await saveUser(mockUser2);
+
+    const upcomingLotterySignup = {
+      ...mockLotterySignups[0],
+      signedToStartTime: upcomingStartTime,
+    };
+    await saveLotterySignups({
+      lotterySignups: [upcomingLotterySignup],
+      username: mockUser2.username,
+    });
+
+    const groupRequest: PostJoinGroupRequest = {
+      groupCode,
+    };
+
+    const response = await request(server)
+      .post(ApiEndpoint.JOIN_GROUP)
+      .send(groupRequest)
+      .set(
+        "Authorization",
+        `Bearer ${getJWT(UserGroup.USER, mockUser2.username)}`,
+      );
+    expect(response.status).toEqual(200);
+
+    const updatedUser = unsafelyUnwrap(await findUser(mockUser2.username));
+    expect(updatedUser?.groupCode).toEqual(groupCode);
+    expect(updatedUser?.lotterySignups.length).toEqual(1);
+    expect(updatedUser?.lotterySignups[0].programItemId).toEqual(
+      upcomingLotterySignup.programItemId,
+    );
+  });
+
   test("should return error if existing upcoming direct signups", async () => {
+    vi.spyOn(config, "event").mockReturnValue({
+      ...config.event(),
+      twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
+    });
+
     await saveTestSettings({
       testTime: dayjs(testProgramItem.startTime)
         .subtract(2, "hours")
@@ -189,7 +269,11 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
     });
 
     await saveProgramItems([testProgramItem]);
-    await saveUser({ ...mockUser, groupCode: mockUser.serial });
+    await saveUser({
+      ...mockUser,
+      groupCode: mockUser.serial,
+      groupCreatorCode: mockUser.serial,
+    });
     await saveUser(mockUser2);
     await saveDirectSignup({
       ...mockPostDirectSignupRequest,
@@ -223,7 +307,11 @@ describe(`POST ${ApiEndpoint.LEAVE_GROUP}`, () => {
   });
 
   test("should leave group", async () => {
-    await saveUser({ ...mockUser, groupCode: mockUser.serial });
+    await saveUser({
+      ...mockUser,
+      groupCode: mockUser.serial,
+      groupCreatorCode: mockUser.serial,
+    });
     await saveUser({ ...mockUser2, groupCode: mockUser.serial });
 
     const response = await request(server)

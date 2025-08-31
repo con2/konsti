@@ -32,6 +32,7 @@ import {
 import { findProgramItems } from "server/features/program-item/programItemRepository";
 import { getLotteryParticipantDirectSignups } from "server/features/assignment/utils/prepareAssignmentParams";
 import { ProgramItem } from "shared/types/models/programItem";
+import { config } from "shared/config";
 
 export const generateGroupCode = (): string => {
   const baseCode = randomBytes(5).toString("hex").slice(0, 9);
@@ -261,7 +262,14 @@ export const joinGroup = async (
   });
 
   const upcomingLotterySignupProgramItemIds = lotterySignupProgramItems
-    .filter((programItem) => timeNow.isBefore(dayjs(programItem.startTime)))
+    .filter((lotterySignupProgramItem) => {
+      const parentStartTime = config
+        .event()
+        .startTimesByParentIds.get(lotterySignupProgramItem.parentId);
+      return timeNow.isBefore(
+        dayjs(parentStartTime ?? lotterySignupProgramItem.startTime),
+      );
+    })
     .map((programItem) => programItem.programItemId);
 
   if (upcomingLotterySignupProgramItemIds.length > 0) {
