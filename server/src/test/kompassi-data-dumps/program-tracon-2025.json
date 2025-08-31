@@ -14,7 +14,11 @@
       "program-type": ["rpg-game"],
       "guidegrouping": ["rpg"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Blades in the Dark",
+      "konsti:minAttendance": 2,
+      "konsti:maxAttendance": 4
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -25,7 +29,12 @@
         "lengthMinutes": 120,
         "location": "Duetto 1 (Roolipelipöytä 2)",
         "isCancelled": false,
-        "cachedAnnotations": {}
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Blades in the Dark",
+          "konsti:minAttendance": 2,
+          "konsti:maxAttendance": 4,
+          "internal:freeformLocation": "Roolipelipöytä 2"
+        }
       }
     ]
   },
@@ -44,7 +53,11 @@
       "program-type": ["rpg-game"],
       "guidegrouping": ["rpg"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Pirate Borg",
+      "konsti:minAttendance": 3,
+      "konsti:maxAttendance": 5
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -55,7 +68,12 @@
         "lengthMinutes": 240,
         "location": "Duetto 1 (Roolipelipöytä 2)",
         "isCancelled": false,
-        "cachedAnnotations": {}
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Pirate Borg",
+          "konsti:minAttendance": 3,
+          "konsti:maxAttendance": 5,
+          "internal:freeformLocation": "Roolipelipöytä 2"
+        }
       }
     ]
   },
@@ -74,7 +92,11 @@
       "program-type": ["rpg-game"],
       "guidegrouping": ["rpg"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Praedor V2",
+      "konsti:minAttendance": 2,
+      "konsti:maxAttendance": 6
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -85,7 +107,12 @@
         "lengthMinutes": 240,
         "location": "Duetto 1 (Roolipelipöytä 1)",
         "isCancelled": false,
-        "cachedAnnotations": {}
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Praedor V2",
+          "konsti:minAttendance": 2,
+          "konsti:maxAttendance": 6,
+          "internal:freeformLocation": "Roolipelipöytä 1"
+        }
       }
     ]
   },
@@ -104,7 +131,11 @@
       "program-type": ["rpg-game"],
       "guidegrouping": ["rpg"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Warhammer Fantasy Roleplay",
+      "konsti:minAttendance": 3,
+      "konsti:maxAttendance": 6
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -115,7 +146,12 @@
         "lengthMinutes": 240,
         "location": "Duetto 1 (Roolipelipöytä 3)",
         "isCancelled": false,
-        "cachedAnnotations": {}
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Warhammer Fantasy Roleplay",
+          "konsti:minAttendance": 3,
+          "konsti:maxAttendance": 6,
+          "internal:freeformLocation": "Roolipelipöytä 3"
+        }
       }
     ]
   },
@@ -134,7 +170,11 @@
       "program-type": ["rpg-game"],
       "guidegrouping": ["rpg"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "CY_BORG",
+      "konsti:minAttendance": 3,
+      "konsti:maxAttendance": 4
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -145,7 +185,12 @@
         "lengthMinutes": 150,
         "location": "Duetto 1 (Roolipelipöytä 2)",
         "isCancelled": false,
-        "cachedAnnotations": {}
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "CY_BORG",
+          "konsti:minAttendance": 3,
+          "konsti:maxAttendance": 4,
+          "internal:freeformLocation": "Roolipelipöytä 2"
+        }
       }
     ]
   },
@@ -164,7 +209,11 @@
       "program-type": ["rpg-game"],
       "guidegrouping": ["rpg"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "CY_BORG",
+      "konsti:minAttendance": 3,
+      "konsti:maxAttendance": 4
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -175,7 +224,12 @@
         "lengthMinutes": 150,
         "location": "Duetto 1 (Roolipelipöytä 4)",
         "isCancelled": false,
-        "cachedAnnotations": {}
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "CY_BORG",
+          "konsti:minAttendance": 3,
+          "konsti:maxAttendance": 4,
+          "internal:freeformLocation": "Roolipelipöytä 4"
+        }
       }
     ]
   },
@@ -195,7 +249,11 @@
       "program-type": ["rpg-game"],
       "guidegrouping": ["rpg"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Good Society, the Jane Austen roleplaying game",
+      "konsti:minAttendance": 3,
+      "konsti:maxAttendance": 5
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -206,7 +264,12 @@
         "lengthMinutes": 300,
         "location": "Duetto 1 (Roolipelipöytä 4)",
         "isCancelled": false,
-        "cachedAnnotations": {}
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Good Society, the Jane Austen roleplaying game",
+          "konsti:minAttendance": 3,
+          "konsti:maxAttendance": 5,
+          "internal:freeformLocation": "Roolipelipöytä 4"
+        }
       }
     ]
   },
@@ -225,7 +288,11 @@
       "program-type": ["rpg-game"],
       "guidegrouping": ["rpg"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Mörk Borg-Pohjainen OSR",
+      "konsti:minAttendance": 4,
+      "konsti:maxAttendance": 5
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -236,7 +303,12 @@
         "lengthMinutes": 240,
         "location": "Duetto 1 (Roolipelipöytä 1)",
         "isCancelled": false,
-        "cachedAnnotations": {}
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Mörk Borg-Pohjainen OSR",
+          "konsti:minAttendance": 4,
+          "konsti:maxAttendance": 5,
+          "internal:freeformLocation": "Roolipelipöytä 1"
+        }
       }
     ]
   },
@@ -255,7 +327,11 @@
       "program-type": ["rpg-game"],
       "guidegrouping": ["rpg"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Pirate Borg",
+      "konsti:minAttendance": 2,
+      "konsti:maxAttendance": 5
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -266,7 +342,12 @@
         "lengthMinutes": 240,
         "location": "Duetto 1 (Roolipelipöytä 6)",
         "isCancelled": false,
-        "cachedAnnotations": {}
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Pirate Borg",
+          "konsti:minAttendance": 2,
+          "konsti:maxAttendance": 5,
+          "internal:freeformLocation": "Roolipelipöytä 6"
+        }
       }
     ]
   },
@@ -285,7 +366,11 @@
       "program-type": ["rpg-game"],
       "guidegrouping": ["rpg"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Legendoja ja lohikäärmeitä",
+      "konsti:minAttendance": 3,
+      "konsti:maxAttendance": 5
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -296,7 +381,12 @@
         "lengthMinutes": 300,
         "location": "Duetto 1 (Roolipelipöytä 5)",
         "isCancelled": false,
-        "cachedAnnotations": {}
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Legendoja ja lohikäärmeitä",
+          "konsti:minAttendance": 3,
+          "konsti:maxAttendance": 5,
+          "internal:freeformLocation": "Roolipelipöytä 5"
+        }
       }
     ]
   },
@@ -315,7 +405,11 @@
       "program-type": ["rpg-game"],
       "guidegrouping": ["rpg"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Dungeons and Dragons 5e (2014)",
+      "konsti:minAttendance": 2,
+      "konsti:maxAttendance": 6
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -326,7 +420,12 @@
         "lengthMinutes": 240,
         "location": "Duetto 1 (Roolipelipöytä 5)",
         "isCancelled": false,
-        "cachedAnnotations": {}
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Dungeons and Dragons 5e (2014)",
+          "konsti:minAttendance": 2,
+          "konsti:maxAttendance": 6,
+          "internal:freeformLocation": "Roolipelipöytä 5"
+        }
       }
     ]
   },
@@ -353,8 +452,8 @@
         "location": "",
         "isCancelled": false,
         "cachedAnnotations": {
-          "konsti:maxAttendance": 130,
-          "internal:subtitle": "Saapuminen klo 09:30–10:00"
+          "internal:subtitle": "Saapuminen klo 09:30–10:00",
+          "konsti:maxAttendance": 130
         }
       },
       {
@@ -366,8 +465,8 @@
         "location": "",
         "isCancelled": false,
         "cachedAnnotations": {
-          "konsti:maxAttendance": 130,
-          "internal:subtitle": "Saapuminen klo 10:00–10:30"
+          "internal:subtitle": "Saapuminen klo 10:00–10:30",
+          "konsti:maxAttendance": 130
         }
       },
       {
@@ -379,8 +478,8 @@
         "location": "",
         "isCancelled": false,
         "cachedAnnotations": {
-          "konsti:maxAttendance": 130,
-          "internal:subtitle": "Saapuminen klo 10:30–11:00"
+          "internal:subtitle": "Saapuminen klo 10:30–11:00",
+          "konsti:maxAttendance": 130
         }
       },
       {
@@ -392,8 +491,8 @@
         "location": "",
         "isCancelled": false,
         "cachedAnnotations": {
-          "konsti:maxAttendance": 130,
-          "internal:subtitle": "Saapuminen klo 11:00–11:30"
+          "internal:subtitle": "Saapuminen klo 11:00–11:30",
+          "konsti:maxAttendance": 130
         }
       },
       {
@@ -405,8 +504,8 @@
         "location": "",
         "isCancelled": false,
         "cachedAnnotations": {
-          "konsti:maxAttendance": 130,
-          "internal:subtitle": "Saapuminen klo 11:30–12:00"
+          "internal:subtitle": "Saapuminen klo 11:30–12:00",
+          "konsti:maxAttendance": 130
         }
       },
       {
@@ -418,8 +517,8 @@
         "location": "",
         "isCancelled": false,
         "cachedAnnotations": {
-          "konsti:maxAttendance": 130,
-          "internal:subtitle": "Saapuminen klo 12:00–12:30"
+          "internal:subtitle": "Saapuminen klo 12:00–12:30",
+          "konsti:maxAttendance": 130
         }
       },
       {
@@ -431,8 +530,8 @@
         "location": "",
         "isCancelled": false,
         "cachedAnnotations": {
-          "konsti:maxAttendance": 130,
-          "internal:subtitle": "Saapuminen klo 12:30–13:00"
+          "internal:subtitle": "Saapuminen klo 12:30–13:00",
+          "konsti:maxAttendance": 130
         }
       },
       {
@@ -444,8 +543,8 @@
         "location": "",
         "isCancelled": false,
         "cachedAnnotations": {
-          "konsti:maxAttendance": 130,
-          "internal:subtitle": "Saapuminen klo 13:00–13:30"
+          "internal:subtitle": "Saapuminen klo 13:00–13:30",
+          "konsti:maxAttendance": 130
         }
       },
       {
@@ -457,8 +556,8 @@
         "location": "",
         "isCancelled": false,
         "cachedAnnotations": {
-          "konsti:maxAttendance": 130,
-          "internal:subtitle": "Saapuminen klo 13:30–14:00"
+          "internal:subtitle": "Saapuminen klo 13:30–14:00",
+          "konsti:maxAttendance": 130
         }
       }
     ]
@@ -486,8 +585,8 @@
         "location": "",
         "isCancelled": false,
         "cachedAnnotations": {
-          "konsti:maxAttendance": 100,
-          "internal:subtitle": "Saapuminen klo 16:00–16:30"
+          "internal:subtitle": "Saapuminen klo 16:00–16:30",
+          "konsti:maxAttendance": 100
         }
       },
       {
@@ -499,8 +598,8 @@
         "location": "",
         "isCancelled": false,
         "cachedAnnotations": {
-          "konsti:maxAttendance": 100,
-          "internal:subtitle": "Saapuminen klo 16:30–17:00"
+          "internal:subtitle": "Saapuminen klo 16:30–17:00",
+          "konsti:maxAttendance": 100
         }
       },
       {
@@ -512,8 +611,8 @@
         "location": "",
         "isCancelled": false,
         "cachedAnnotations": {
-          "konsti:maxAttendance": 100,
-          "internal:subtitle": "Saapuminen klo 17:00–17:30"
+          "internal:subtitle": "Saapuminen klo 17:00–17:30",
+          "konsti:maxAttendance": 100
         }
       },
       {
@@ -525,8 +624,8 @@
         "location": "",
         "isCancelled": false,
         "cachedAnnotations": {
-          "konsti:maxAttendance": 100,
-          "internal:subtitle": "Saapuminen klo 17:30–18:00"
+          "internal:subtitle": "Saapuminen klo 17:30–18:00",
+          "konsti:maxAttendance": 100
         }
       },
       {
@@ -538,8 +637,8 @@
         "location": "",
         "isCancelled": false,
         "cachedAnnotations": {
-          "konsti:maxAttendance": 100,
-          "internal:subtitle": "Saapuminen klo 18:00–18:30"
+          "internal:subtitle": "Saapuminen klo 18:00–18:30",
+          "konsti:maxAttendance": 100
         }
       },
       {
@@ -551,8 +650,8 @@
         "location": "",
         "isCancelled": false,
         "cachedAnnotations": {
-          "konsti:maxAttendance": 100,
-          "internal:subtitle": "Saapuminen klo 18:30–19:00"
+          "internal:subtitle": "Saapuminen klo 18:30–19:00",
+          "konsti:maxAttendance": 100
         }
       }
     ]
@@ -580,8 +679,8 @@
         "location": "",
         "isCancelled": false,
         "cachedAnnotations": {
-          "konsti:maxAttendance": 130,
-          "internal:subtitle": "Saapuminen klo 19:00–19:30"
+          "internal:subtitle": "Saapuminen klo 19:00–19:30",
+          "konsti:maxAttendance": 130
         }
       },
       {
@@ -593,8 +692,8 @@
         "location": "",
         "isCancelled": false,
         "cachedAnnotations": {
-          "konsti:maxAttendance": 130,
-          "internal:subtitle": "Saapuminen klo 19:30–20:00"
+          "internal:subtitle": "Saapuminen klo 19:30–20:00",
+          "konsti:maxAttendance": 130
         }
       },
       {
@@ -606,8 +705,8 @@
         "location": "",
         "isCancelled": false,
         "cachedAnnotations": {
-          "konsti:maxAttendance": 130,
-          "internal:subtitle": "Saapuminen klo 20:00–20:30"
+          "internal:subtitle": "Saapuminen klo 20:00–20:30",
+          "konsti:maxAttendance": 130
         }
       },
       {
@@ -619,8 +718,8 @@
         "location": "",
         "isCancelled": false,
         "cachedAnnotations": {
-          "konsti:maxAttendance": 130,
-          "internal:subtitle": "Saapuminen klo 20:30–21:00"
+          "internal:subtitle": "Saapuminen klo 20:30–21:00",
+          "konsti:maxAttendance": 130
         }
       },
       {
@@ -632,8 +731,8 @@
         "location": "",
         "isCancelled": false,
         "cachedAnnotations": {
-          "konsti:maxAttendance": 130,
-          "internal:subtitle": "Saapuminen klo 21:00–21:30"
+          "internal:subtitle": "Saapuminen klo 21:00–21:30",
+          "konsti:maxAttendance": 130
         }
       },
       {
@@ -645,8 +744,8 @@
         "location": "",
         "isCancelled": false,
         "cachedAnnotations": {
-          "konsti:maxAttendance": 50,
-          "internal:subtitle": "Saapuminen klo 21:30–22:00"
+          "internal:subtitle": "Saapuminen klo 21:30–22:00",
+          "konsti:maxAttendance": 50
         }
       }
     ]
@@ -666,7 +765,11 @@
       "program-type": ["rpg-game"],
       "guidegrouping": ["rpg"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Dungeons & Dragons 5e",
+      "konsti:minAttendance": 1,
+      "konsti:maxAttendance": 4
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -677,7 +780,12 @@
         "lengthMinutes": 150,
         "location": "Duetto 1 (Roolipelipöytä 3)",
         "isCancelled": false,
-        "cachedAnnotations": {}
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Dungeons & Dragons 5e",
+          "konsti:minAttendance": 1,
+          "konsti:maxAttendance": 4,
+          "internal:freeformLocation": "Roolipelipöytä 3"
+        }
       }
     ]
   },
@@ -696,7 +804,11 @@
       "program-type": ["rpg-game"],
       "guidegrouping": ["rpg"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Dungeons & Dragons 5e",
+      "konsti:minAttendance": 1,
+      "konsti:maxAttendance": 4
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -707,7 +819,12 @@
         "lengthMinutes": 150,
         "location": "Duetto 1 (Roolipelipöytä 2)",
         "isCancelled": false,
-        "cachedAnnotations": {}
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Dungeons & Dragons 5e",
+          "konsti:minAttendance": 1,
+          "konsti:maxAttendance": 4,
+          "internal:freeformLocation": "Roolipelipöytä 2"
+        }
       }
     ]
   },
@@ -726,7 +843,11 @@
       "program-type": ["rpg-game"],
       "guidegrouping": ["rpg"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Savage Worlds (SWADE)",
+      "konsti:minAttendance": 2,
+      "konsti:maxAttendance": 5
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -737,7 +858,12 @@
         "lengthMinutes": 240,
         "location": "Duetto 1 (Roolipelipöytä 4)",
         "isCancelled": false,
-        "cachedAnnotations": {}
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Savage Worlds (SWADE)",
+          "konsti:minAttendance": 2,
+          "konsti:maxAttendance": 5,
+          "internal:freeformLocation": "Roolipelipöytä 4"
+        }
       }
     ]
   },
@@ -756,7 +882,11 @@
       "program-type": ["rpg-game"],
       "guidegrouping": ["rpg"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Oma mekaniikka",
+      "konsti:minAttendance": 4,
+      "konsti:maxAttendance": 6
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -767,7 +897,12 @@
         "lengthMinutes": 240,
         "location": "Duetto 1 (Roolipelipöytä 4)",
         "isCancelled": false,
-        "cachedAnnotations": {}
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Oma mekaniikka",
+          "konsti:minAttendance": 4,
+          "konsti:maxAttendance": 6,
+          "internal:freeformLocation": "Roolipelipöytä 4"
+        }
       }
     ]
   },
@@ -786,7 +921,11 @@
       "program-type": ["rpg-game"],
       "guidegrouping": ["rpg"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Legendoja Ja Lohikäärmeitä",
+      "konsti:minAttendance": 4,
+      "konsti:maxAttendance": 4
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -797,7 +936,12 @@
         "lengthMinutes": 150,
         "location": "Duetto 1 (Roolipelipöytä 6)",
         "isCancelled": false,
-        "cachedAnnotations": {}
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Legendoja Ja Lohikäärmeitä",
+          "konsti:minAttendance": 4,
+          "konsti:maxAttendance": 4,
+          "internal:freeformLocation": "Roolipelipöytä 6"
+        }
       }
     ]
   },
@@ -816,7 +960,11 @@
       "program-type": ["rpg-game"],
       "guidegrouping": ["rpg"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Legendoja Ja Lohikäärmeitä",
+      "konsti:minAttendance": 4,
+      "konsti:maxAttendance": 4
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -827,7 +975,12 @@
         "lengthMinutes": 150,
         "location": "Duetto 1 (Roolipelipöytä 5)",
         "isCancelled": false,
-        "cachedAnnotations": {}
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Legendoja Ja Lohikäärmeitä",
+          "konsti:minAttendance": 4,
+          "konsti:maxAttendance": 4,
+          "internal:freeformLocation": "Roolipelipöytä 5"
+        }
       }
     ]
   },
@@ -846,7 +999,11 @@
       "program-type": ["rpg-game"],
       "guidegrouping": ["rpg"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Fail Forward",
+      "konsti:minAttendance": 3,
+      "konsti:maxAttendance": 4
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -857,7 +1014,12 @@
         "lengthMinutes": 240,
         "location": "Duetto 1 (Roolipelipöytä 3)",
         "isCancelled": false,
-        "cachedAnnotations": {}
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Fail Forward",
+          "konsti:minAttendance": 3,
+          "konsti:maxAttendance": 4,
+          "internal:freeformLocation": "Roolipelipöytä 3"
+        }
       }
     ]
   },
@@ -876,7 +1038,11 @@
       "program-type": ["rpg-game"],
       "guidegrouping": ["rpg"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "SWADE (Savage Worlds Adventure Edition)",
+      "konsti:minAttendance": 3,
+      "konsti:maxAttendance": 4
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -887,7 +1053,12 @@
         "lengthMinutes": 240,
         "location": "Duetto 1 (Roolipelipöytä 2)",
         "isCancelled": false,
-        "cachedAnnotations": {}
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "SWADE (Savage Worlds Adventure Edition)",
+          "konsti:minAttendance": 3,
+          "konsti:maxAttendance": 4,
+          "internal:freeformLocation": "Roolipelipöytä 2"
+        }
       }
     ]
   },
@@ -906,7 +1077,11 @@
       "program-type": ["rpg-game"],
       "guidegrouping": ["rpg"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Blades in the Dark",
+      "konsti:minAttendance": 2,
+      "konsti:maxAttendance": 4
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -917,7 +1092,12 @@
         "lengthMinutes": 240,
         "location": "Duetto 1 (Roolipelipöytä 5)",
         "isCancelled": false,
-        "cachedAnnotations": {}
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Blades in the Dark",
+          "konsti:minAttendance": 2,
+          "konsti:maxAttendance": 4,
+          "internal:freeformLocation": "Roolipelipöytä 5"
+        }
       }
     ]
   },
@@ -936,7 +1116,11 @@
       "program-type": ["rpg-game"],
       "guidegrouping": ["rpg"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Old School Essentials",
+      "konsti:minAttendance": 4,
+      "konsti:maxAttendance": 6
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -947,7 +1131,12 @@
         "lengthMinutes": 270,
         "location": "Duetto 1 (Roolipelipöytä 1)",
         "isCancelled": false,
-        "cachedAnnotations": {}
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Old School Essentials",
+          "konsti:minAttendance": 4,
+          "konsti:maxAttendance": 6,
+          "internal:freeformLocation": "Roolipelipöytä 1"
+        }
       }
     ]
   },
@@ -966,7 +1155,11 @@
       "program-type": ["rpg-game"],
       "guidegrouping": ["rpg"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Oma",
+      "konsti:minAttendance": 2,
+      "konsti:maxAttendance": 5
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -977,7 +1170,12 @@
         "lengthMinutes": 120,
         "location": "Duetto 1 (Roolipelipöytä 2)",
         "isCancelled": false,
-        "cachedAnnotations": {}
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Oma",
+          "konsti:minAttendance": 2,
+          "konsti:maxAttendance": 5,
+          "internal:freeformLocation": "Roolipelipöytä 2"
+        }
       }
     ]
   },
@@ -996,7 +1194,11 @@
       "program-type": ["rpg-game"],
       "guidegrouping": ["rpg"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Oma",
+      "konsti:minAttendance": 2,
+      "konsti:maxAttendance": 5
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -1007,7 +1209,12 @@
         "lengthMinutes": 120,
         "location": "Duetto 1 (Roolipelipöytä 1)",
         "isCancelled": false,
-        "cachedAnnotations": {}
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Oma",
+          "konsti:minAttendance": 2,
+          "konsti:maxAttendance": 5,
+          "internal:freeformLocation": "Roolipelipöytä 1"
+        }
       }
     ]
   },
@@ -1026,7 +1233,11 @@
       "program-type": ["rpg-game"],
       "guidegrouping": ["rpg"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Paranoia. Tekijä Mongoose Publishing",
+      "konsti:minAttendance": 2,
+      "konsti:maxAttendance": 6
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -1037,7 +1248,12 @@
         "lengthMinutes": 120,
         "location": "Duetto 1 (Roolipelipöytä 3)",
         "isCancelled": false,
-        "cachedAnnotations": {}
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Paranoia. Tekijä Mongoose Publishing",
+          "konsti:minAttendance": 2,
+          "konsti:maxAttendance": 6,
+          "internal:freeformLocation": "Roolipelipöytä 3"
+        }
       }
     ]
   },
@@ -1056,7 +1272,11 @@
       "program-type": ["rpg-game"],
       "guidegrouping": ["rpg"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Paranoia. Tekijä Mongoose Publishing",
+      "konsti:minAttendance": 2,
+      "konsti:maxAttendance": 6
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -1067,7 +1287,12 @@
         "lengthMinutes": 120,
         "location": "Duetto 1 (Roolipelipöytä 1)",
         "isCancelled": false,
-        "cachedAnnotations": {}
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Paranoia. Tekijä Mongoose Publishing",
+          "konsti:minAttendance": 2,
+          "konsti:maxAttendance": 6,
+          "internal:freeformLocation": "Roolipelipöytä 1"
+        }
       }
     ]
   },
@@ -1086,7 +1311,11 @@
       "program-type": ["rpg-game"],
       "guidegrouping": ["rpg"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Tokyo Noir",
+      "konsti:minAttendance": 3,
+      "konsti:maxAttendance": 5
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -1097,7 +1326,12 @@
         "lengthMinutes": 300,
         "location": "Duetto 1 (Roolipelipöytä 6)",
         "isCancelled": false,
-        "cachedAnnotations": {}
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Tokyo Noir",
+          "konsti:minAttendance": 3,
+          "konsti:maxAttendance": 5,
+          "internal:freeformLocation": "Roolipelipöytä 6"
+        }
       }
     ]
   },
@@ -1116,7 +1350,11 @@
       "program-type": ["rpg-game"],
       "guidegrouping": ["rpg"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Daggerheart",
+      "konsti:minAttendance": 2,
+      "konsti:maxAttendance": 5
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -1127,7 +1365,12 @@
         "lengthMinutes": 240,
         "location": "Duetto 1 (Roolipelipöytä 3)",
         "isCancelled": false,
-        "cachedAnnotations": {}
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Daggerheart",
+          "konsti:minAttendance": 2,
+          "konsti:maxAttendance": 5,
+          "internal:freeformLocation": "Roolipelipöytä 3"
+        }
       }
     ]
   },
@@ -1146,7 +1389,11 @@
       "program-type": ["rpg-game"],
       "guidegrouping": ["rpg"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Liminal Horror",
+      "konsti:minAttendance": 3,
+      "konsti:maxAttendance": 4
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -1157,7 +1404,12 @@
         "lengthMinutes": 240,
         "location": "Duetto 1 (Roolipelipöytä 6)",
         "isCancelled": false,
-        "cachedAnnotations": {}
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Liminal Horror",
+          "konsti:minAttendance": 3,
+          "konsti:maxAttendance": 4,
+          "internal:freeformLocation": "Roolipelipöytä 6"
+        }
       }
     ]
   }

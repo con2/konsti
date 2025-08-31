@@ -91,9 +91,11 @@ export const ProgramItemHead = ({
   if (programItem.gameSystem) {
     tags.push(programItem.gameSystem);
   }
-  programItem.languages.map((language) => {
-    tags.push(t(`programItemLanguage.${language}`));
-  });
+  if (config.client().activeLanguages.length > 1) {
+    programItem.languages.map((language) => {
+      tags.push(t(`programItemLanguage.${language}`));
+    });
+  }
 
   return (
     <Container>
