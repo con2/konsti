@@ -32,7 +32,7 @@ import {
 import { findProgramItems } from "server/features/program-item/programItemRepository";
 import { getLotteryParticipantDirectSignups } from "server/features/assignment/utils/prepareAssignmentParams";
 import { ProgramItem } from "shared/types/models/programItem";
-import { config } from "shared/config";
+import { getUpcomingLotterySignupProgramItemIds } from "server/features/assignment/utils/getUpcomingLotterySignups";
 
 export const generateGroupCode = (): string => {
   const baseCode = randomBytes(5).toString("hex").slice(0, 9);
@@ -251,26 +251,12 @@ export const joinGroup = async (
   }
 
   // Clean upcoming lottery signups
-  const lotterySignupProgramItems = user.lotterySignups.flatMap((signup) => {
-    const found = programItems.find(
-      (programItem) => programItem.programItemId === signup.programItemId,
+  const upcomingLotterySignupProgramItemIds =
+    getUpcomingLotterySignupProgramItemIds(
+      user.lotterySignups,
+      programItems,
+      timeNow,
     );
-    if (!found) {
-      return [];
-    }
-    return found;
-  });
-
-  const upcomingLotterySignupProgramItemIds = lotterySignupProgramItems
-    .filter((lotterySignupProgramItem) => {
-      const parentStartTime = config
-        .event()
-        .startTimesByParentIds.get(lotterySignupProgramItem.parentId);
-      return timeNow.isBefore(
-        dayjs(parentStartTime ?? lotterySignupProgramItem.startTime),
-      );
-    })
-    .map((programItem) => programItem.programItemId);
 
   if (upcomingLotterySignupProgramItemIds.length > 0) {
     const saveLotterySignupsResult = await delLotterySignups([

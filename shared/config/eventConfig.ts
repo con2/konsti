@@ -24,7 +24,11 @@ export const eventConfig: EventConfig = {
   enableGroups: true,
   signupOpen: true, // TODO: Remove this
   resultsVisible: true, // TODO: Remove this
+
+  // Remove overlapping lottery signups...
   enableRemoveOverlapSignups: false,
+  // ... or remove all upcoming lottery signups
+  enableRemoveAllUpcomingSignups: true,
 
   programGuideUrl: "https://2025.tracon.fi/opas",
 

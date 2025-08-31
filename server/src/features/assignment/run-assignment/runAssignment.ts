@@ -116,12 +116,14 @@ export const runAssignment = async ({
 
   if (
     assignResults.results.length > 0 &&
-    config.event().enableRemoveOverlapSignups
+    (config.event().enableRemoveOverlapSignups ||
+      config.event().enableRemoveAllUpcomingSignups)
   ) {
     logger.info("Remove overlapping signups");
     const removeOverlapSignupsResult = await removeOverlapLotterySignups(
       assignResults.results,
       validLotterySignupProgramItems,
+      resolvedAssignmentTime,
     );
     if (isErrorResult(removeOverlapSignupsResult)) {
       return removeOverlapSignupsResult;
