@@ -61,6 +61,7 @@ const createTestUser = async ({
     userGroup: UserGroup.USER,
     serial: faker.number.int(10000000).toString(),
     email: `test${userNumber}@example.local`,
+    emailNotificationPermitAsked: true,
   };
 
   await saveUser(registrationData);
