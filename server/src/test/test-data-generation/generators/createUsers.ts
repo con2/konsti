@@ -21,6 +21,7 @@ export const createAdminUser = async (password?: string): Promise<void> => {
     userGroup: UserGroup.ADMIN,
     serial: faker.number.int(10000000).toString(),
     email: "admin@example.local",
+    emailNotificationPermitAsked: true,
   };
 
   await saveUser(registrationData);
@@ -38,6 +39,7 @@ export const createHelpUser = async (password?: string): Promise<void> => {
     userGroup: UserGroup.HELP,
     serial: faker.number.int(10000000).toString(),
     email: "helper@example.local",
+    emailNotificationPermitAsked: true,
   };
 
   await saveUser(registrationData);
