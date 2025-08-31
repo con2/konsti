@@ -52,7 +52,12 @@ export const updateProgramItemPopularity = async (): Promise<
 
   const programItemsByStartTimes = groupBy(
     validLotterySignupProgramItems,
-    (programItem) => dayjs(programItem.startTime).toISOString(),
+    (programItem) => {
+      const parentStartTime = config
+        .event()
+        .startTimesByParentIds.get(programItem.parentId);
+      return dayjs(parentStartTime ?? programItem.startTime).toISOString();
+    },
   );
 
   const timeNowResult = await getTimeNow();
