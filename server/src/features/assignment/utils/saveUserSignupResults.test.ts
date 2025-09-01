@@ -221,7 +221,7 @@ Terveisin / Sincerely Konsti`;
   const expectedAcceptedSubject =
     "Konstiarvonnan tulos / Results for Konsti lottery signup";
   const expectedRejectedBody = `Hei ${mockUser2.username}!
-Et valitettavasti päässyt arvonnassa yhteenkaan ohjelmaan johon ilmoittauduit.
+Et valitettavasti päässyt arvonnassa yhteenkään ohjelmaan johon ilmoittauduit.
 
 Hi Test User 2!
 Unfortunately you did not get spot on lottery signup.

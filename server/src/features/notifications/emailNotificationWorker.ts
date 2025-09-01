@@ -87,11 +87,13 @@ async function generateAcceptedEmail(
 
   const subject = getEmailSubjectAccepted();
   const body = getEmailBodyAccepted(program.title, notification);
+  const htmlBody = body.replaceAll("\n", "<br />");
   return {
     from: fromAddress,
     to: email,
     subject,
     text: body,
+    html: `<p>${htmlBody}</p>`,
   };
 }
 
@@ -102,10 +104,12 @@ function generateRejectedEmail(
 ): EmailMessage {
   const subject = getEmailSubjectRejected();
   const body = getEmailBodyRejected(notification);
+  const htmlBody = body.replaceAll("\n", "<br />");
   return {
     from: fromAddress,
     to: email,
     subject,
     text: body,
+    html: `<p>${htmlBody}</p>`,
   };
 }

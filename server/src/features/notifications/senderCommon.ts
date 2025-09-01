@@ -22,7 +22,7 @@ export function getEmailSubjectAccepted(): string {
 
 export function getEmailBodyRejected(notification: NotificationTask): string {
   const bodyFi = `Hei ${notification.username}!
-Et valitettavasti päässyt arvonnassa yhteenkaan ohjelmaan johon ilmoittauduit.`;
+Et valitettavasti päässyt arvonnassa yhteenkään ohjelmaan johon ilmoittauduit.`;
   const bodyEn = `Hi ${notification.username}!
 Unfortunately you did not get spot on lottery signup.`;
   return `${bodyFi}\n\n${bodyEn}\n\nTerveisin / Sincerely Konsti`;
