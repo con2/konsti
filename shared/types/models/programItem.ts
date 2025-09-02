@@ -53,6 +53,7 @@ export enum Tag {
   ONLY_ADULTS = "onlyAdults",
   KIDS = "kids",
   SMALL_KIDS = "smallKids",
+  K16 = "k16",
 }
 
 export enum InclusivityValue {

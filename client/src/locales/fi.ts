@@ -140,6 +140,7 @@ export const translationFI = {
     onlyAdults: "Vain täysi-ikäisille (K-18)",
     kids: "Suunnattu alakouluikäisille",
     smallKids: "Suunnattu alle kouluikäisille",
+    k16: "Ikäraja K16",
   },
   pageTitle: {
     login: "Kirjaudu sisään",

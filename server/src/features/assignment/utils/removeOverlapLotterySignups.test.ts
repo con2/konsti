@@ -262,6 +262,24 @@ test("should remove all upcoming lottery signups from user", async () => {
     },
   };
 
+  // User 2 didn't receive a direct signup so lottery signups are not modified
+  await saveUser(mockUser2);
+  await saveLotterySignups({
+    username: mockUser2.username,
+    lotterySignups: [
+      {
+        programItemId: pastProgramItemId,
+        priority: 1,
+        signedToStartTime: pastProgramItemStartTime,
+      },
+      {
+        programItemId: upcomingProgramItemId,
+        priority: 1,
+        signedToStartTime: upcomingStartTime,
+      },
+    ],
+  });
+
   const results: UserAssignmentResult[] = [userResult];
   const programItems = unsafelyUnwrap(await findProgramItems());
 
@@ -282,6 +300,20 @@ test("should remove all upcoming lottery signups from user", async () => {
     {
       programItemId: pastProgramItemId,
       signedToStartTime: pastProgramItemStartTime,
+    },
+  ]);
+
+  // All signups remaining
+  const updatedUser2 = unsafelyUnwrap(await findUser(mockUser2.username));
+  expect(updatedUser2?.lotterySignups.length).toEqual(2);
+  expect(updatedUser2?.lotterySignups).toMatchObject([
+    {
+      programItemId: pastProgramItemId,
+      signedToStartTime: pastProgramItemStartTime,
+    },
+    {
+      programItemId: upcomingProgramItemId,
+      signedToStartTime: upcomingStartTime,
     },
   ]);
 });

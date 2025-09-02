@@ -140,6 +140,7 @@ export const translationEN = {
     onlyAdults: "Adults only (K-18)",
     kids: "Directed at children aged 7–12",
     smallKids: "Directed at children under 7",
+    k16: "Age limit 16+",
   },
   pageTitle: {
     login: "Login",

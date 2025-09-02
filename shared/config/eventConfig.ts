@@ -2,7 +2,6 @@ import {
   AssignmentAlgorithm,
   EventName,
   EventConfig,
-  EntryConditionText,
 } from "shared/config/eventConfigTypes";
 import { ProgramType, SignupType } from "shared/types/models/programItem";
 
@@ -74,25 +73,7 @@ export const eventConfig: EventConfig = {
   customDetailsProgramItems: {},
 
   // Require checkbox to be checked before signing up
-  entryConditions: [
-    {
-      conditionText: EntryConditionText.K16,
-      programItemIds: [
-        "yo-shelterwoodin-majatalossa", // Yö Shelterwoodin majatalossa
-        "valtaistuimen-varjoissa", // Valtaistuimen varjoissa
-        "cy-borg-terasta-teknoa-ja-tauteja", // CY_BORG: Terästä, teknoa ja tauteja
-        "tokyo-noir-raindrops-rakugo", // Tokyo Noir: Raindrops & Rakugo
-        "carroburgin-varjot", // Carroburgin Varjot
-        "agentin-takaa-ajo", // Agentin takaa-ajo
-        "murtokeikka-kummaan-kotiin", // Murtokeikka kummaan kotiin
-        "lopun-ajat-ares-athenalla", // Lopun ajat Ares Athenalla
-        "akkia-takaisin-laivaan", // Äkkiä takaisin laivaan!
-        "miami-vice-siskot-ja-veljet", // Miami Vice - Siskot ja veljet
-        "alavilla-mailla", // Alavilla mailla
-        "hirmujen-yot-rattus-res-navis", // Hirmujen Yöt - Rattus Res Navis
-      ],
-    },
-  ],
+  entryConditions: [],
 
   // Two phase signup settings
   preSignupStart: 60 * 4, // minutes
