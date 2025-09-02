@@ -98,6 +98,7 @@ export const createProgramItems = async (
             inclusivity: sample(Object.values(KompassiInclusivity), 3),
             registration: getRegistration(),
             revolvingdoor: sample(Object.values(KompassiBoolean), 1),
+            room: ["Ropetaverna"],
           },
           scheduleItems: [
             {
