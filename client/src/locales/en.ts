@@ -287,7 +287,9 @@ export const translationEN = {
   eventLog: {
     title: "Notifications",
     noNotifications: "No notifications",
-    programItemDetails: "Starting time {{START_TIME}} at {{LOCATION}}",
+    programItemDetails: "Starting time {{START_TIME}} at {{LOCATION}}.",
+    upcomingLotterySignupsRemoved: "All upcoming lottery signups were removed.",
+    overlapLotterySignupsRemoved: "Overlapping lottery signups were removed.",
   },
   eventLogActions: {
     newAssignment: "You were assigned to the {{PROGRAM_TYPE}}",
