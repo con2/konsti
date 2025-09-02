@@ -6,6 +6,7 @@ import { getWeekdayAndTime } from "client/utils/timeFormatter";
 import { AppRoute } from "client/app/AppRoutes";
 import { ProgramItem } from "shared/types/models/programItem";
 import { EventLogItem } from "shared/types/models/eventLog";
+import { config } from "shared/config";
 
 interface Props {
   eventLogItem: EventLogItem;
@@ -50,12 +51,20 @@ export const EventLogNewAssignment = ({
           </span>
 
           {showDetails && (
-            <StartTime>
-              {t("eventLog.programItemDetails", {
-                START_TIME: getWeekdayAndTime(foundProgramItem.startTime),
-                LOCATION: foundProgramItem.location,
-              })}
-            </StartTime>
+            <>
+              <TextRow>
+                {t("eventLog.programItemDetails", {
+                  START_TIME: getWeekdayAndTime(foundProgramItem.startTime),
+                  LOCATION: foundProgramItem.location,
+                })}
+              </TextRow>
+              {config.event().enableRemoveOverlapSignups && (
+                <TextRow>{t("eventLog.overlapLotterySignupsRemoved")}</TextRow>
+              )}
+              {config.event().enableRemoveAllUpcomingSignups && (
+                <TextRow>{t("eventLog.upcomingLotterySignupsRemoved")}</TextRow>
+              )}
+            </>
           )}
         </>
       )}
@@ -63,7 +72,7 @@ export const EventLogNewAssignment = ({
   );
 };
 
-const StartTime = styled.div`
+const TextRow = styled.div`
   margin: 8px 0 0 0;
 `;
 

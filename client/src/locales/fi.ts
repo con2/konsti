@@ -287,7 +287,11 @@ export const translationFI = {
   eventLog: {
     title: "Ilmoitukset",
     noNotifications: "Ei ilmoituksia",
-    programItemDetails: "Aloitusaika {{START_TIME}} huoneessa {{LOCATION}}",
+    programItemDetails: "Aloitusaika {{START_TIME}} huoneessa {{LOCATION}}.",
+    upcomingLotterySignupsRemoved:
+      "Kaikki tulevien arvontojen ilmoittautumiset on peruttu.",
+    overlapLotterySignupsRemoved:
+      "Kaikki päällekkäin arvontojen ilmoittautumiset on peruttu.",
   },
   eventLogActions: {
     newAssignment: "Olet päässyt arvonnassa {{PROGRAM_TYPE}}",
