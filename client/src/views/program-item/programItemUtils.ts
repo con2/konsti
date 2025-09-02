@@ -1,6 +1,6 @@
 import { Dayjs } from "dayjs";
 import { TFunction } from "i18next";
-import { ProgramItem } from "shared/types/models/programItem";
+import { ProgramItem, Tag } from "shared/types/models/programItem";
 import { DirectSignup, LotterySignup } from "shared/types/models/user";
 import {
   getDateAndTime,
@@ -72,6 +72,13 @@ export const getEntryCondition = (
   if (foundCondition) {
     return {
       label: t(`signup.signupCondition.${foundCondition.conditionText}`),
+      id: "signup-condition-agree-checkbox",
+    };
+  }
+
+  if (programItem.tags.includes(Tag.K16)) {
+    return {
+      label: t("signup.signupCondition.k16"),
       id: "signup-condition-agree-checkbox",
     };
   }

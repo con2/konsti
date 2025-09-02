@@ -166,7 +166,13 @@ const mapTags = (kompassiProgramItem: KompassiProgramItem): Tag[] => {
     }
   });
 
-  return [...groupingTags, ...ageGroupTags];
+  const otherTags: Tag[] = [];
+
+  if (kompassiProgramItem.cachedAnnotations["konsti:entryConditionK16"]) {
+    otherTags.push(Tag.K16);
+  }
+
+  return [...groupingTags, ...ageGroupTags, ...otherTags];
 };
 
 const mapGamestyles = (gamestyles: KompassiGamestyle[]): Gamestyle[] => {

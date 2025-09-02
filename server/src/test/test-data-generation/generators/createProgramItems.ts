@@ -125,6 +125,7 @@ export const createProgramItems = async (
               kompassiProgramType === KompassiKonstiProgramType.WORKSHOP
                 ? "5€"
                 : "",
+            "konsti:entryConditionK16": false,
             "ropecon:contentWarnings": "Content warning",
             "ropecon:accessibilityOther": "Other accessibility information",
             "ropecon:gameSlogan": faker.lorem.sentence(),

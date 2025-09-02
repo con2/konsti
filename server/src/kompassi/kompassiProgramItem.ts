@@ -128,6 +128,7 @@ export const KompassiProgramItemSchema = z.object({
         return val;
       })
       .catch(""),
+    "konsti:entryConditionK16": z.boolean().catch(false),
     "ropecon:contentWarnings": z.string().catch(""),
     "ropecon:accessibilityOther": z.string().catch(""),
     "ropecon:gameSlogan": z.string().catch(""),

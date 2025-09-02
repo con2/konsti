@@ -17,6 +17,7 @@
     "cachedAnnotations": {
       "konsti:rpgSystem": "Blades in the Dark",
       "konsti:minAttendance": 2,
+      "konsti:entryConditionK16": true,
       "konsti:maxAttendance": 4
     },
     "isCancelled": false,
@@ -32,6 +33,7 @@
         "cachedAnnotations": {
           "konsti:rpgSystem": "Blades in the Dark",
           "konsti:minAttendance": 2,
+          "konsti:entryConditionK16": true,
           "konsti:maxAttendance": 4,
           "internal:freeformLocation": "Roolipelipöytä 2"
         }
@@ -56,6 +58,7 @@
     "cachedAnnotations": {
       "konsti:rpgSystem": "Pirate Borg",
       "konsti:minAttendance": 3,
+      "konsti:entryConditionK16": true,
       "konsti:maxAttendance": 5
     },
     "isCancelled": false,
@@ -71,6 +74,7 @@
         "cachedAnnotations": {
           "konsti:rpgSystem": "Pirate Borg",
           "konsti:minAttendance": 3,
+          "konsti:entryConditionK16": true,
           "konsti:maxAttendance": 5,
           "internal:freeformLocation": "Roolipelipöytä 2"
         }
@@ -95,6 +99,7 @@
     "cachedAnnotations": {
       "konsti:rpgSystem": "Praedor V2",
       "konsti:minAttendance": 2,
+      "konsti:entryConditionK16": true,
       "konsti:maxAttendance": 6
     },
     "isCancelled": false,
@@ -110,6 +115,7 @@
         "cachedAnnotations": {
           "konsti:rpgSystem": "Praedor V2",
           "konsti:minAttendance": 2,
+          "konsti:entryConditionK16": true,
           "konsti:maxAttendance": 6,
           "internal:freeformLocation": "Roolipelipöytä 1"
         }
@@ -134,6 +140,7 @@
     "cachedAnnotations": {
       "konsti:rpgSystem": "Warhammer Fantasy Roleplay",
       "konsti:minAttendance": 3,
+      "konsti:entryConditionK16": true,
       "konsti:maxAttendance": 6
     },
     "isCancelled": false,
@@ -149,6 +156,7 @@
         "cachedAnnotations": {
           "konsti:rpgSystem": "Warhammer Fantasy Roleplay",
           "konsti:minAttendance": 3,
+          "konsti:entryConditionK16": true,
           "konsti:maxAttendance": 6,
           "internal:freeformLocation": "Roolipelipöytä 3"
         }
@@ -173,6 +181,7 @@
     "cachedAnnotations": {
       "konsti:rpgSystem": "CY_BORG",
       "konsti:minAttendance": 3,
+      "konsti:entryConditionK16": true,
       "konsti:maxAttendance": 4
     },
     "isCancelled": false,
@@ -188,6 +197,7 @@
         "cachedAnnotations": {
           "konsti:rpgSystem": "CY_BORG",
           "konsti:minAttendance": 3,
+          "konsti:entryConditionK16": true,
           "konsti:maxAttendance": 4,
           "internal:freeformLocation": "Roolipelipöytä 2"
         }
@@ -291,6 +301,7 @@
     "cachedAnnotations": {
       "konsti:rpgSystem": "Mörk Borg-Pohjainen OSR",
       "konsti:minAttendance": 4,
+      "konsti:entryConditionK16": true,
       "konsti:maxAttendance": 5
     },
     "isCancelled": false,
@@ -306,6 +317,7 @@
         "cachedAnnotations": {
           "konsti:rpgSystem": "Mörk Borg-Pohjainen OSR",
           "konsti:minAttendance": 4,
+          "konsti:entryConditionK16": true,
           "konsti:maxAttendance": 5,
           "internal:freeformLocation": "Roolipelipöytä 1"
         }
@@ -1002,6 +1014,7 @@
     "cachedAnnotations": {
       "konsti:rpgSystem": "Fail Forward",
       "konsti:minAttendance": 3,
+      "konsti:entryConditionK16": true,
       "konsti:maxAttendance": 4
     },
     "isCancelled": false,
@@ -1017,6 +1030,7 @@
         "cachedAnnotations": {
           "konsti:rpgSystem": "Fail Forward",
           "konsti:minAttendance": 3,
+          "konsti:entryConditionK16": true,
           "konsti:maxAttendance": 4,
           "internal:freeformLocation": "Roolipelipöytä 3"
         }
@@ -1041,6 +1055,7 @@
     "cachedAnnotations": {
       "konsti:rpgSystem": "SWADE (Savage Worlds Adventure Edition)",
       "konsti:minAttendance": 3,
+      "konsti:entryConditionK16": true,
       "konsti:maxAttendance": 4
     },
     "isCancelled": false,
@@ -1056,6 +1071,7 @@
         "cachedAnnotations": {
           "konsti:rpgSystem": "SWADE (Savage Worlds Adventure Edition)",
           "konsti:minAttendance": 3,
+          "konsti:entryConditionK16": true,
           "konsti:maxAttendance": 4,
           "internal:freeformLocation": "Roolipelipöytä 2"
         }
@@ -1080,6 +1096,7 @@
     "cachedAnnotations": {
       "konsti:rpgSystem": "Blades in the Dark",
       "konsti:minAttendance": 2,
+      "konsti:entryConditionK16": true,
       "konsti:maxAttendance": 4
     },
     "isCancelled": false,
@@ -1095,6 +1112,7 @@
         "cachedAnnotations": {
           "konsti:rpgSystem": "Blades in the Dark",
           "konsti:minAttendance": 2,
+          "konsti:entryConditionK16": true,
           "konsti:maxAttendance": 4,
           "internal:freeformLocation": "Roolipelipöytä 5"
         }
@@ -1314,6 +1332,7 @@
     "cachedAnnotations": {
       "konsti:rpgSystem": "Tokyo Noir",
       "konsti:minAttendance": 3,
+      "konsti:entryConditionK16": true,
       "konsti:maxAttendance": 5
     },
     "isCancelled": false,
@@ -1329,6 +1348,7 @@
         "cachedAnnotations": {
           "konsti:rpgSystem": "Tokyo Noir",
           "konsti:minAttendance": 3,
+          "konsti:entryConditionK16": true,
           "konsti:maxAttendance": 5,
           "internal:freeformLocation": "Roolipelipöytä 6"
         }
@@ -1353,6 +1373,7 @@
     "cachedAnnotations": {
       "konsti:rpgSystem": "Daggerheart",
       "konsti:minAttendance": 2,
+      "konsti:entryConditionK16": true,
       "konsti:maxAttendance": 5
     },
     "isCancelled": false,
@@ -1368,6 +1389,7 @@
         "cachedAnnotations": {
           "konsti:rpgSystem": "Daggerheart",
           "konsti:minAttendance": 2,
+          "konsti:entryConditionK16": true,
           "konsti:maxAttendance": 5,
           "internal:freeformLocation": "Roolipelipöytä 3"
         }
@@ -1392,6 +1414,7 @@
     "cachedAnnotations": {
       "konsti:rpgSystem": "Liminal Horror",
       "konsti:minAttendance": 3,
+      "konsti:entryConditionK16": true,
       "konsti:maxAttendance": 4
     },
     "isCancelled": false,
@@ -1407,6 +1430,7 @@
         "cachedAnnotations": {
           "konsti:rpgSystem": "Liminal Horror",
           "konsti:minAttendance": 3,
+          "konsti:entryConditionK16": true,
           "konsti:maxAttendance": 4,
           "internal:freeformLocation": "Roolipelipöytä 6"
         }
