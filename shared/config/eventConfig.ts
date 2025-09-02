@@ -20,7 +20,7 @@ export const eventConfig: EventConfig = {
   enableTagDropdown: false,
 
   requireRegistrationCode: true,
-  assignmentAlgorithm: AssignmentAlgorithm.RANDOM_PADG,
+  assignmentAlgorithm: AssignmentAlgorithm.RANDOM,
   enableGroups: true,
   signupOpen: true, // TODO: Remove this
   resultsVisible: true, // TODO: Remove this
