@@ -35,6 +35,7 @@ export const mockKompassiProgramItem: KompassiProgramItem = {
     ],
     registration: [KompassiRegistration.KONSTI],
     revolvingdoor: [KompassiBoolean.FALSE],
+    room: [testProgramItem.location],
   },
   scheduleItems: [
     {
@@ -86,6 +87,7 @@ export const mockKompassiProgramItem2: KompassiProgramItem = {
     ],
     registration: [KompassiRegistration.KONSTI],
     revolvingdoor: [KompassiBoolean.FALSE],
+    room: [testProgramItem2.location],
   },
   scheduleItems: [
     {

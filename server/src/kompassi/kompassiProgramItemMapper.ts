@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import { first } from "remeda";
+import { capitalize, first } from "remeda";
 import {
   InclusivityValue,
   ProgramItem,
@@ -41,7 +41,10 @@ export const kompassiProgramItemMapper = (
         parentId: programItem.slug,
         title: scheduleItem.title,
         description: programItem.description,
-        location: scheduleItem.location,
+        location:
+          scheduleItem.location ||
+          capitalize(programItem.cachedDimensions.room[0]) ||
+          "",
         startTime: dayjs(scheduleItem.startTime).toISOString(),
         mins:
           scheduleItem.lengthMinutes ||

@@ -112,6 +112,7 @@ export const KompassiProgramItemSchema = z.object({
     inclusivity: safeEnumArray(KompassiInclusivity, "inclusivity"),
     registration: safeEnumArray(KompassiRegistration, "registration"),
     revolvingdoor: safeEnumArray(KompassiBoolean, "revolving door"),
+    room: z.array(z.string()).catch([]),
   }),
   cachedAnnotations: z.object({
     "konsti:rpgSystem": z.string().catch(""),
