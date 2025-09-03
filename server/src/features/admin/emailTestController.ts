@@ -62,12 +62,14 @@ export const postEmailTest = async (
         programItemId: programId,
         programItemStartTime: new Date().toISOString(),
       };
+      const body = getEmailBodyAccepted("Test Program Item", mockNotification);
+      const htmlBody = body.replaceAll("\n", "<br />");
       message = {
         from: config.server().emailSendFromAddress,
         to: email,
         subject: getEmailSubjectAccepted(),
-        text: getEmailBodyAccepted("Test Program Item", mockNotification),
-        html: getEmailBodyAccepted("Test Program Item", mockNotification),
+        text: body,
+        html: htmlBody,
       };
     } else if (notificationType === EmailNotificationTrigger.REJECTED) {
       const mockNotification: NotificationTask = {
@@ -76,12 +78,14 @@ export const postEmailTest = async (
         programItemId: programId,
         programItemStartTime: new Date().toISOString(),
       };
+      const body = getEmailBodyRejected(mockNotification);
+      const htmlBody = body.replaceAll("\n", "<br />");
       message = {
         from: config.server().emailSendFromAddress,
         to: email,
         subject: getEmailSubjectRejected(),
-        text: getEmailBodyRejected(mockNotification),
-        html: getEmailBodyRejected(mockNotification),
+        text: body,
+        html: htmlBody,
       };
     } else {
       return res.status(400).json({ message: "Invalid notification type" });
