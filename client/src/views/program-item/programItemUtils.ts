@@ -6,7 +6,7 @@ import {
   getDateAndTime,
   getTime,
   getWeekdayAndTime,
-} from "client/utils/timeFormatter";
+} from "shared/utils/timeFormatter";
 import { config } from "shared/config";
 
 export const isAlreadyLotterySigned = (

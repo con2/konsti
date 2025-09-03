@@ -1,6 +1,5 @@
-import dayjs from "dayjs";
 import { NotificationTask } from "server/utils/notificationQueue";
-import { TIMEZONE } from "shared/utils/initializeDayjs";
+import { getDateAndTimeWithLocale } from "shared/utils/timeFormatter";
 
 export interface EmailMessage {
   from: string;
@@ -9,8 +8,6 @@ export interface EmailMessage {
   text: string;
   html?: string;
 }
-
-const dateAndTimeFormat = "ddd D.M.YYYY HH:mm";
 
 export function getEmailSubjectRejected(): string {
   return "Konstiarvonnan tulos / Results for Konsti lottery signup";
@@ -32,16 +29,20 @@ export function getEmailBodyAccepted(
   programItemTitle: string,
   notification: NotificationTask,
 ): string {
-  // TODO: Should timeFormatter.ts be shared?
-  // eslint-disable-next-line no-restricted-syntax
-  const programStarttime = dayjs(notification.programItemStartTime)
-    .tz(TIMEZONE)
-    .format(dateAndTimeFormat);
+  const programStartTimeFi = getDateAndTimeWithLocale(
+    notification.programItemStartTime,
+    "fi",
+  );
+  const programStartTimeEn = getDateAndTimeWithLocale(
+    notification.programItemStartTime,
+    "en",
+  );
+
   const bodyFi = `Hei ${notification.username}!
 Olet ollut onnekas ja pääsit ohjelmaan ${programItemTitle}.
-Ohjelma alkaa ${programStarttime}.`;
+Ohjelma alkaa ${programStartTimeFi}.`;
   const bodyEn = `Hi ${notification.username}!
 You got spot on program ${programItemTitle}.
-Program will start at ${programStarttime}.`;
+Program will start at ${programStartTimeEn}.`;
   return `${bodyFi}\n\n${bodyEn}\n\nTerveisin / Sincerely Konsti`;
 }

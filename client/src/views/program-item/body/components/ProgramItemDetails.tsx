@@ -2,7 +2,7 @@ import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { capitalize } from "remeda";
-import { getTime, getWeekdayAndTime } from "client/utils/timeFormatter";
+import { getTime, getWeekdayAndTime } from "shared/utils/timeFormatter";
 import { ProgramItem } from "shared/types/models/programItem";
 import { InfoText, InfoTextVariant } from "client/components/InfoText";
 import { TextWithLinks } from "client/markdown/components/TextWithLinks";

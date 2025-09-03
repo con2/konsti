@@ -6,7 +6,7 @@ import { ProgramItem, UserSignup } from "shared/types/models/programItem";
 import { UserGroup } from "shared/types/models/user";
 import { FavoriteButton } from "client/components/FavoriteButton";
 import { Tags } from "client/components/Tags";
-import { formatProgramItemDuration } from "client/utils/timeFormatter";
+import { formatProgramItemDuration } from "shared/utils/timeFormatter";
 import { getAttendeeType } from "client/utils/getAttendeeType";
 import { PopularityInfo } from "client/components/PopularityInfo";
 import { updateFavorite, UpdateFavoriteOpts } from "client/utils/favorite";

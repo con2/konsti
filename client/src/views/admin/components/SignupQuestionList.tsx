@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { sortBy } from "remeda";
 import { ProgramItem } from "shared/types/models/programItem";
 import { SignupQuestion } from "shared/types/models/settings";
-import { getWeekdayAndTime } from "client/utils/timeFormatter";
+import { getWeekdayAndTime } from "shared/utils/timeFormatter";
 import { AppRoute } from "client/app/AppRoutes";
 
 interface Props {

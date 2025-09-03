@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import { EventLogItem } from "shared/types/models/eventLog";
-import { getTime } from "client/utils/timeFormatter";
+import { getTime } from "shared/utils/timeFormatter";
 
 interface Props {
   eventLogItem: EventLogItem;

@@ -44,6 +44,14 @@ export const getDateAndTime = (time: string): string => {
   return dayjs(time).tz(TIMEZONE).format(timeFormat);
 };
 
+export const getDateAndTimeWithLocale = (
+  time: string,
+  locale: "fi" | "en",
+): string => {
+  const timeFormat = dateAndTimeFormat;
+  return dayjs(time).tz(TIMEZONE).locale(locale).format(timeFormat);
+};
+
 export const formatProgramItemDuration = (mins: number): string => {
   const hours = Math.floor(mins / 60);
   const minutes = mins % 60;

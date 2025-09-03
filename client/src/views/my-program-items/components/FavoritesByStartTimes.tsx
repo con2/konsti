@@ -2,7 +2,7 @@ import { Fragment, ReactElement } from "react";
 import { useNavigate } from "react-router";
 import { useTranslation } from "react-i18next";
 import { capitalize, groupBy } from "remeda";
-import { getWeekdayAndTime } from "client/utils/timeFormatter";
+import { getWeekdayAndTime } from "shared/utils/timeFormatter";
 import { ProgramItem } from "shared/types/models/programItem";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { updateFavorite } from "client/utils/favorite";

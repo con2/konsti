@@ -6,7 +6,7 @@ import { getUserBySerialOrUsername } from "client/services/userServices";
 import { Button, ButtonStyle } from "client/components/Button";
 import { ChangeUserSettingsForm } from "client/views/helper/components/ChangeUserSettingsForm";
 import { ControlledInput } from "client/components/ControlledInput";
-import { getDateAndTime } from "client/utils/timeFormatter";
+import { getDateAndTime } from "shared/utils/timeFormatter";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import { useAppSelector } from "client/utils/hooks";
 

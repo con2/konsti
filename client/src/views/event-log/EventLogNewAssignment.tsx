@@ -2,7 +2,7 @@ import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { Link } from "react-router";
-import { getWeekdayAndTime } from "client/utils/timeFormatter";
+import { getWeekdayAndTime } from "shared/utils/timeFormatter";
 import { AppRoute } from "client/app/AppRoutes";
 import { ProgramItem } from "shared/types/models/programItem";
 import { EventLogItem } from "shared/types/models/eventLog";

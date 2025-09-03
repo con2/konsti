@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 import styled from "styled-components";
 import { capitalize, groupBy } from "remeda";
 import { useTranslation } from "react-i18next";
-import { getWeekdayAndTime } from "client/utils/timeFormatter";
+import { getWeekdayAndTime } from "shared/utils/timeFormatter";
 import { PopularityInfo } from "client/components/PopularityInfo";
 import {
   MyProgramButtonContainer,
