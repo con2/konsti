@@ -117,14 +117,14 @@ const prodConfig = {
 
   // Program update cron
   autoUpdateProgramEnabled: true,
-  programUpdateInterval: "5,10,15,20,25,30,35,40,45,50,55 * * * *",
+  programUpdateInterval: "5,10,15,20,25,35,40,45,50,55 * * * *",
 
   // Program update
   updateProgramItemPopularityEnabled: true,
 
   // Attendee assign cron
   autoAssignAttendeesEnabled: true,
-  autoAssignInterval: "0 * * * *",
+  autoAssignInterval: "0,30 * * * *",
   autoAssignDelay: 1000 * 5,
   emailSendFromAddress: "Konsti <konsti@kompassi.eu>",
   emailSMTPHost: "sr1.pahaip.fi",
@@ -146,14 +146,14 @@ const stagingConfig = {
 
   // Program update cron
   autoUpdateProgramEnabled: true,
-  programUpdateInterval: "5,10,15,20,25,30,35,40,45,50,55 * * * *",
+  programUpdateInterval: "5,10,15,20,25,35,40,45,50,55 * * * *",
 
   // Program update
   updateProgramItemPopularityEnabled: true,
 
   // Attendee assign cron
   autoAssignAttendeesEnabled: true,
-  autoAssignInterval: "0 * * * *",
+  autoAssignInterval: "0,30 * * * *",
   autoAssignDelay: 1000 * 5,
 };
 
@@ -178,14 +178,14 @@ const devConfig = {
 
   // Program update cron
   autoUpdateProgramEnabled: true,
-  programUpdateInterval: "5,10,15,20,25,30,35,40,45,50,55 * * * *",
+  programUpdateInterval: "5,10,15,20,25,35,40,45,50,55 * * * *",
 
   // Program update
   updateProgramItemPopularityEnabled: true,
 
   // Attendee assign cron
   autoAssignAttendeesEnabled: true,
-  autoAssignInterval: "0 * * * *",
+  autoAssignInterval: "0,30 * * * *",
   autoAssignDelay: 1000 * 1,
 };
 
