@@ -211,7 +211,7 @@ test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items for 'startTime
     .getSentEmails();
   const expectedAcceptedBody = `Hei ${mockUser.username}!
 Olet ollut onnekas ja pääsit ohjelmaan Test program item.
-Ohjelma alkaa Fri 26.7.2019 17:00.
+Ohjelma alkaa pe 26.7.2019 17:00.
 
 Hi Test User!
 You got spot on program Test program item.
