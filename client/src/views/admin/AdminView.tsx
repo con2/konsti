@@ -11,7 +11,7 @@ import {
 } from "client/views/admin/adminThunks";
 import { submitUpdateProgramItems } from "client/views/all-program-items/allProgramItemsThunks";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
-import { ProgramItem } from "shared/types/models/programItem";
+import { ProgramItem, SignupType } from "shared/types/models/programItem";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { Button, ButtonStyle } from "client/components/Button";
 import { SignupQuestionList } from "client/views/admin/components/SignupQuestionList";
@@ -21,6 +21,8 @@ import { ButtonGroup } from "client/components/ButtonGroup";
 import { LoginProviderSelector } from "client/views/admin/components/LoginProviderSelector";
 import { selectHiddenProgramItems } from "client/views/admin/adminSlice";
 import { EmailNotificationTrigger } from "shared/types/emailNotification";
+import { config } from "shared/config";
+import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
 
 export const AdminView = (): ReactElement => {
   const programItems = useAppSelector(
@@ -38,10 +40,18 @@ export const AdminView = (): ReactElement => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
 
+  const lotteryProgramItems = programItems
+    .filter((programItem) => programItem.signupType === SignupType.KONSTI)
+    .filter((programItem) => isLotterySignupProgramItem(programItem))
+    .filter(
+      (programItem) =>
+        !config.event().noKonstiSignupIds.includes(programItem.programItemId),
+    );
+
   const getVisibleProgramItems = (): readonly ProgramItem[] => {
     const visibleProgramItems: ProgramItem[] = [];
 
-    for (const programItem of programItems) {
+    for (const programItem of lotteryProgramItems) {
       let match = false;
 
       for (const hiddenProgramItem of hiddenProgramItems) {
@@ -59,10 +69,12 @@ export const AdminView = (): ReactElement => {
 
   const getDropdownOptions = (): Option[] => {
     const visibleProgramItems = getVisibleProgramItems();
-    // TODO: Add logic for 'startTimesByParentIds' config
-    const startTimes = visibleProgramItems.map(
-      (programItem) => programItem.startTime,
-    );
+    const startTimes = visibleProgramItems.map((programItem) => {
+      const parentStartTime = config
+        .event()
+        .startTimesByParentIds.get(programItem.parentId);
+      return parentStartTime ?? programItem.startTime;
+    });
     const times = [...new Set(startTimes)].sort();
 
     return times.map((time) => {
