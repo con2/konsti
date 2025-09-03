@@ -11,7 +11,7 @@ import {
   getShortDate,
   getShortWeekdayAndTime,
   getTime,
-} from "client/utils/timeFormatter";
+} from "shared/utils/timeFormatter";
 import { Dropdown } from "client/components/Dropdown";
 
 export const TestTime = (): ReactElement => {

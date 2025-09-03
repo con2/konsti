@@ -7,7 +7,7 @@ import {
   formattedCurrentTime,
   getTime,
   getWeekdayAndTime,
-} from "client/utils/timeFormatter";
+} from "shared/utils/timeFormatter";
 import { config } from "shared/config";
 import { ProgramItem } from "shared/types/models/programItem";
 import { RaisedCard } from "client/components/RaisedCard";

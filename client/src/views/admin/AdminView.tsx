@@ -10,7 +10,7 @@ import {
   submitEmailTest,
 } from "client/views/admin/adminThunks";
 import { submitUpdateProgramItems } from "client/views/all-program-items/allProgramItemsThunks";
-import { getWeekdayAndTime } from "client/utils/timeFormatter";
+import { getWeekdayAndTime } from "shared/utils/timeFormatter";
 import { ProgramItem, SignupType } from "shared/types/models/programItem";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { Button, ButtonStyle } from "client/components/Button";

@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router";
 import { EventLogItem } from "shared/types/models/eventLog";
 import { useAppSelector } from "client/utils/hooks";
-import { getShortWeekdayAndTime } from "client/utils/timeFormatter";
+import { getShortWeekdayAndTime } from "shared/utils/timeFormatter";
 import { AppRoute } from "client/app/AppRoutes";
 
 interface Props {

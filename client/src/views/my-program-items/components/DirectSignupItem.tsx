@@ -10,7 +10,7 @@ import {
 } from "client/views/my-program-items/myProgramItemsThunks";
 import { CancelSignupForm } from "client/views/program-item/signup/components/CancelSignupForm";
 import { config } from "shared/config";
-import { getShortWeekdayAndTime } from "client/utils/timeFormatter";
+import { getShortWeekdayAndTime } from "shared/utils/timeFormatter";
 import { TertiaryButton } from "client/components/TertiaryButton";
 import {
   MyProgramButtonContainer,

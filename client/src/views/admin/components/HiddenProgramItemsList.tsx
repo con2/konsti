@@ -2,7 +2,7 @@ import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router";
 import { sortBy } from "remeda";
-import { getWeekdayAndTime } from "client/utils/timeFormatter";
+import { getWeekdayAndTime } from "shared/utils/timeFormatter";
 import { ProgramItem } from "shared/types/models/programItem";
 import { AppRoute } from "client/app/AppRoutes";
 

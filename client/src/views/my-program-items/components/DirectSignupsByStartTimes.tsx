@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import { capitalize } from "remeda";
-import { getWeekdayAndTime } from "client/utils/timeFormatter";
+import { getWeekdayAndTime } from "shared/utils/timeFormatter";
 import { DirectSignupItem } from "client/views/my-program-items/components/DirectSignupItem";
 import {
   MyProgramList,
