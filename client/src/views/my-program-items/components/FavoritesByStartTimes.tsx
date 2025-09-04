@@ -15,7 +15,6 @@ import {
   MyProgramTime,
 } from "client/views/my-program-items/components/shared";
 import { AppRoute } from "client/app/AppRoutes";
-import { config } from "shared/config";
 
 interface Props {
   favoriteProgramItems: readonly ProgramItem[];
@@ -32,12 +31,7 @@ export const FavoritesByStartTimes = ({
 
   const groupedFavoriteProgramItems = groupBy(
     favoriteProgramItems,
-    (favoriteProgramItem) => {
-      const parentStartTime = config
-        .event()
-        .startTimesByParentIds.get(favoriteProgramItem.parentId);
-      return parentStartTime ?? favoriteProgramItem.startTime;
-    },
+    (favoriteProgramItem) => favoriteProgramItem.startTime,
   );
 
   const removeFavorite = async (programItem: ProgramItem): Promise<void> => {

@@ -333,7 +333,7 @@
       "date": ["2025-09-07"],
       "form": ["offer-program-rpg"],
       "room": ["duetto1"],
-      "state": ["accepted"],
+      "state": ["cancelled"],
       "konsti": ["tabletoprpg"],
       "scheduled": ["one", "one-or-more"],
       "program-type": ["rpg-game"],
@@ -344,7 +344,7 @@
       "konsti:minAttendance": 2,
       "konsti:maxAttendance": 5
     },
-    "isCancelled": false,
+    "isCancelled": true,
     "scheduleItems": [
       {
         "slug": "jumissa-tropiikissa",
@@ -353,7 +353,7 @@
         "endTime": "2025-09-07T15:00:00+03:00",
         "lengthMinutes": 240,
         "location": "Duetto 1 (Roolipelipöytä 6)",
-        "isCancelled": false,
+        "isCancelled": true,
         "cachedAnnotations": {
           "konsti:rpgSystem": "Pirate Borg",
           "konsti:minAttendance": 2,
@@ -449,6 +449,7 @@
     "cachedDimensions": {
       "date": ["2025-09-06"],
       "room": ["sopraano"],
+      "state": ["accepted"],
       "konsti": ["fleamarket"],
       "scheduled": ["multiple", "one-or-more"]
     },
@@ -582,6 +583,7 @@
     "cachedDimensions": {
       "date": ["2025-09-05"],
       "room": ["sopraano"],
+      "state": ["accepted"],
       "konsti": ["fleamarket"],
       "scheduled": ["multiple", "one-or-more"]
     },
@@ -676,6 +678,7 @@
     "cachedDimensions": {
       "date": ["2025-09-05"],
       "room": ["sopraano"],
+      "state": ["accepted"],
       "konsti": ["fleamarket"],
       "scheduled": ["multiple", "one-or-more"]
     },
