@@ -100,10 +100,14 @@ export const storeDirectSignup = async (
     };
   }
 
+  const parentStartTime = config
+    .event()
+    .startTimesByParentIds.get(programItem.parentId);
+
   const newDirectSignup: SignupRepositoryAddSignup = {
     ...signupRequest,
     username,
-    signedToStartTime: programItem.startTime,
+    signedToStartTime: parentStartTime ?? programItem.startTime,
   };
 
   const signupResult = await saveDirectSignup(newDirectSignup);
