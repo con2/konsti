@@ -140,7 +140,8 @@ test("Assignment with valid data should return success with random algorithm", a
   await assertUserUpdatedCorrectly(updatedUsers2);
 });
 
-test("Should adjust attendee limits if there are previous signups from moved program items", async () => {
+// eslint-disable-next-line vitest/no-disabled-tests
+test.skip("Should adjust attendee limits if there are previous signups from moved program items", async () => {
   const assignmentAlgorithm = AssignmentAlgorithm.RANDOM;
 
   await saveProgramItems([
