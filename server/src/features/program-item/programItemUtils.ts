@@ -220,7 +220,11 @@ const getSignupStrategyForProgramItem = (
   settings: Settings,
   currentTime: Dayjs,
 ): SignupStrategy => {
-  const start = dayjs(programItem.startTime);
+  const parentStartTime = config
+    .event()
+    .startTimesByParentIds.get(programItem.parentId);
+
+  const start = dayjs(parentStartTime ?? programItem.startTime);
   const { directSignupPhaseStart } = config.event();
 
   // lottery
