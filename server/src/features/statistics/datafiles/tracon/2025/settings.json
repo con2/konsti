@@ -1,0 +1,15 @@
+[
+  {
+    "hiddenProgramItemIds": [],
+    "appOpen": false,
+    "signupStrategy": "lottery+direct",
+    "loginProvider": "kompassi",
+    "emailNotificationTrigger": "both",
+    "signupQuestions": [],
+    "programUpdateLastRun": "2025-09-09T18:45:00.018Z",
+    "assignmentLastRun": "2025-09-09T18:30:00.148Z",
+    "latestServerStartTime": "2025-09-05T15:17:10.625Z",
+    "createdAt": "2025-09-04T14:53:52.366Z",
+    "updatedAt": "2025-09-09T18:45:00.018Z"
+  }
+]

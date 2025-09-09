@@ -244,6 +244,45 @@
     ]
   },
   {
+    "slug": "cy-borg-terasta-teknoa-ja-tauteja-2",
+    "title": "CY_BORG: Terästä, teknoa ja tauteja 3. pelautus",
+    "description": "Syberiä pakkiin! Pelataan CY_BORG:ia! Maailma on cyberpunk, ja kaikki on kurjaa: On velkaa, on tauteja, on isoja pahoja korporaatioita ja nyt tätä pääsee taas myös roolipelaamaan. Sä ja sun kaverit tarviitte rahaa. Sitähän saa, tarvitsee vain tehdä pari palvelusta.\r\n\r\nPelataan CY_BORG oneshotteja. Seikkailut ovat variaatioita Magenta Pagesin skenaarioista. Pelataan yksi tai useampi. Hahmojen henki voi olla halpaa, mutta pöydän meininki kevyehkö. Valmiit/satunnaiset hahmot. ",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2025-09-07"],
+      "form": ["offer-program-rpg"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["tabletoprpg"],
+      "scheduled": ["one", "one-or-more"],
+      "guide-tags": ["konsti-adv-reg"],
+      "program-type": ["rpg-game"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "CY_BORG",
+      "konsti:minAttendance": 3,
+      "konsti:maxAttendance": 4
+    },
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "cy-borg-terasta-teknoa-ja-tauteja-2",
+        "title": "CY_BORG: Terästä, teknoa ja tauteja 3. pelautus",
+        "startTime": "2025-09-07T11:30:00+03:00",
+        "endTime": "2025-09-07T14:00:00+03:00",
+        "lengthMinutes": 150,
+        "location": "Duetto 1 (Roolipelipöytä 6)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "CY_BORG",
+          "konsti:minAttendance": 3,
+          "konsti:maxAttendance": 4,
+          "internal:freeformLocation": "Roolipelipöytä 6"
+        }
+      }
+    ]
+  },
+  {
     "slug": "for-the-dancing-and-romancing",
     "title": "For the Dancing and Romancing",
     "description": "What is a story without romance? What is a good romance without some drama and condemning looks from the gossipping fellow ball enjoyers? \r\nCome write your own book about the lives of the \"better folk\" of the regency period in the manner of Pride and Prejudice or Sense and Sensibility. Make the elders blush with your uncouth braveness or sneakily wrap the poor love interest around your fingers. Just remember, all is fair in love.\r\n\r\nGood Society is a collaborative regency rpg that seeks to capture the heart, and the countenance, of Jane Austen’s work.\r\nIt is a game of balls, estates, sly glances, and turns about the garden. At least on the surface. Underneath this, just as in Austen’s own novels, it is a game of social ambition, family obligation and breathtaking, heart-stopping longing.\r\n\r\nThe system uses no dice and is highly reliant on players own active participation on the role playing action.\r\n",
