@@ -50,7 +50,7 @@ export const formatJson = async (
     ),
   );
 
-  logger.info(`Loaded ${programItems.length} program items`);
+  logger.info(`Loaded ${programItems.length} direct signups`);
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const settings: Settings[] = JSON.parse(
@@ -60,7 +60,7 @@ export const formatJson = async (
     ),
   );
 
-  logger.info(`Loaded ${settings.length} program items`);
+  logger.info(`Loaded ${settings.length} settings`);
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const serials: Serial[] = JSON.parse(
@@ -70,7 +70,7 @@ export const formatJson = async (
     ),
   );
 
-  logger.info(`Loaded ${serials.length} program items`);
+  logger.info(`Loaded ${serials.length} serials`);
 
   await writeJson(year, event, "users", users);
   await writeJson(year, event, "results", results);

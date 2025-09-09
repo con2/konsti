@@ -72,6 +72,7 @@ export const anonymizeData = async (
     user.password = "<redacted>";
     // @ts-expect-error -- Use invalid type for clarity
     user.kompassiId = user.kompassiId === 0 ? 0 : "<redacted>";
+    user.email = user.email === "" ? "" : "<redacted>";
   }
 
   // Remove signup message answers

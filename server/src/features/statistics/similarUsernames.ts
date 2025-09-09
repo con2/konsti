@@ -9,7 +9,7 @@ export const getSimilarUsernames = (year: number, event: string): void => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const users: User[] = JSON.parse(
     fs.readFileSync(
-      `${config.server().statsDataDir}/${event}/${year}/secret/users.json`,
+      `${config.server().statsDataDir}/${event}/${year}/users.json`,
       "utf8",
     ),
   );
