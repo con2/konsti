@@ -10,13 +10,12 @@ import { ResultsCollectionEntry } from "server/types/resultTypes";
 import { ProgramItem } from "shared/types/models/programItem";
 
 export const getResultsStats = (event: string, year: number): void => {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-  const results: ResultsCollectionEntry[] = JSON.parse(
+  const results = JSON.parse(
     fs.readFileSync(
       `${config.server().statsDataDir}/${event}/${year}/results.json`,
       "utf8",
     ),
-  );
+  ) as ResultsCollectionEntry[];
 
   logger.info(`Loaded ${results.length} results`);
 

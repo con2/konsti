@@ -10,13 +10,12 @@ import { config } from "shared/config";
 import { User } from "shared/types/models/user";
 
 export const getUserStats = (event: string, year: number): void => {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-  const users: User[] = JSON.parse(
+  const users = JSON.parse(
     fs.readFileSync(
       `${config.server().statsDataDir}/${event}/${year}/users.json`,
       "utf8",
     ),
-  );
+  ) as User[];
 
   logger.info(`Loaded ${users.length} users`);
 

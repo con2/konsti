@@ -42,6 +42,31 @@ export const getLotterySignupEndTime = (programItem: ProgramItem): Dayjs => {
   return dayjs(startTime).subtract(directSignupPhaseStart, "minutes");
 };
 
+export const getRollingDirectSignupStartTime = (
+  programItem: ProgramItem,
+  eventStartTime: string,
+): Dayjs => {
+  // Signup starts 4 hours before program item start time
+  const rollingStartTime = dayjs(programItem.startTime).subtract(4, "hours");
+
+  // Earliest start time is event start time
+  if (rollingStartTime.isBefore(dayjs(eventStartTime))) {
+    return dayjs(eventStartTime);
+  }
+
+  // If program item starts before 12:00, signup starts 18:00 previous day
+  if (config.event().enableRollingDirectSignupPreviousDay) {
+    // Set timezone because hour comparison and setting hour value
+    const timezoneStartTime = dayjs(programItem.startTime).tz(TIMEZONE);
+    const startTimeIsTooEarly = timezoneStartTime.hour() < 12;
+    if (startTimeIsTooEarly) {
+      return timezoneStartTime.subtract(1, "day").hour(18);
+    }
+  }
+
+  return rollingStartTime;
+};
+
 export const getDirectSignupStartTime = (programItem: ProgramItem): Dayjs => {
   const {
     eventStartTime,
@@ -49,7 +74,6 @@ export const getDirectSignupStartTime = (programItem: ProgramItem): Dayjs => {
     phaseGap,
     directSignupWindows,
     rollingDirectSignupProgramTypes,
-    enableRollingDirectSignupPreviousDay,
     directSignupAlwaysOpenIds,
     twoPhaseSignupProgramTypes,
   } = config.event();
@@ -98,25 +122,7 @@ export const getDirectSignupStartTime = (programItem: ProgramItem): Dayjs => {
   // ** ROLLING DIRECT SIGNUP **
 
   if (rollingDirectSignupProgramTypes.includes(programItem.programType)) {
-    // Signup starts 4 hours before program item start time
-    const rollingStartTime = dayjs(programItem.startTime).subtract(4, "hours");
-
-    // Earliest start time is event start time
-    if (rollingStartTime.isBefore(dayjs(eventStartTime))) {
-      return dayjs(eventStartTime);
-    }
-
-    // If program item starts before 12:00, signup starts 18:00 previous day
-    if (enableRollingDirectSignupPreviousDay) {
-      // Set timezone because hour comparison and setting hour value
-      const timezoneStartTime = dayjs(programItem.startTime).tz(TIMEZONE);
-      const startTimeIsTooEarly = timezoneStartTime.hour() < 12;
-      if (startTimeIsTooEarly) {
-        return timezoneStartTime.subtract(1, "day").hour(18);
-      }
-    }
-
-    return rollingStartTime;
+    return getRollingDirectSignupStartTime(programItem, eventStartTime);
   }
 
   // ** DIRECT SIGNUP WINDOWS **
