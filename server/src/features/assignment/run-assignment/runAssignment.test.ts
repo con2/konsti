@@ -150,8 +150,7 @@ describe("Assignment with valid data", () => {
 });
 
 describe("Assignment with multiple program types and directSignupAlwaysOpen", () => {
-  // eslint-disable-next-line vitest/no-disabled-tests
-  test.skip("should update previous non-lottery signup if user has updated result", async () => {
+  test("should update previous non-lottery signup if user has updated result", async () => {
     vi.spyOn(config, "event").mockReturnValue({
       ...config.event(),
       twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
@@ -298,8 +297,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     );
   });
 
-  // eslint-disable-next-line vitest/no-disabled-tests
-  test.skip("should update 'directSignupAlwaysOpen' signup with assignment signup if user has updated result", async () => {
+  test("should update 'directSignupAlwaysOpen' signup with assignment signup if user has updated result", async () => {
     const directSignupAlwaysOpenId = "1234";
     vi.spyOn(config, "event").mockReturnValue({
       ...config.event(),
@@ -466,8 +464,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     );
   });
 
-  // eslint-disable-next-line vitest/no-disabled-tests
-  test.skip("should update previous signup from moved program item with assignment signup if user has updated result", async () => {
+  test("should update previous signup from moved program item with assignment signup if user has updated result", async () => {
     // ProgramItem1: 14:00 direct signup -> program item moved 15:00
     // ProgramItem2: 15:00 lottery signup -> replaces ProgramItem1
     const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;

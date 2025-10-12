@@ -7,9 +7,9 @@ import {
 } from "server/utils/notificationQueue";
 import { UserAssignmentResult } from "shared/types/models/result";
 import {
-  // delDirectSignup,
-  // delAssignmentDirectSignupsByStartTime,
-  // findDirectSignupsByStartTime,
+  delDirectSignup,
+  delAssignmentDirectSignupsByStartTime,
+  findDirectSignupsByStartTime,
   saveDirectSignups,
 } from "server/features/direct-signup/directSignupRepository";
 import {
@@ -65,7 +65,6 @@ export const saveUserSignupResults = async ({
   }
   // Remove previous lottery result for the same start time
   // This does not remove non-lottery signups or previous signups from moved program items
-  /*
   const delAssignmentSignupsByStartTimeResult =
     await delAssignmentDirectSignupsByStartTime(assignmentTime, programItems);
   if (isErrorResult(delAssignmentSignupsByStartTimeResult)) {
@@ -111,7 +110,6 @@ export const saveUserSignupResults = async ({
   if (someDeleteFailed) {
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
-  */
 
   // Save new assignment results
   const newSignups: SignupRepositoryAddSignup[] = results.map((result) => {

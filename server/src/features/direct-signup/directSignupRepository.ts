@@ -115,7 +115,6 @@ interface FindDirectSignupsByStartTimeResponse extends UserDirectSignup {
   programItemId: string;
 }
 
-// eslint-disable-next-line import/no-unused-modules
 export const findDirectSignupsByStartTime = async (
   startTime: string,
   programItems: ProgramItem[],
@@ -472,7 +471,6 @@ export const resetDirectSignupsByProgramItemIds = async (
   }
 };
 
-// eslint-disable-next-line import/no-unused-modules
 export const delAssignmentDirectSignupsByStartTime = async (
   assignmentTime: string,
   programItems: ProgramItem[],
