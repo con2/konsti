@@ -11,13 +11,12 @@ import { ProgramItem } from "shared/types/models/programItem";
 import { User } from "shared/types/models/user";
 
 export const getProgramItemStats = (event: string, year: number): void => {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-  const programItems: ProgramItem[] = JSON.parse(
+  const programItems = JSON.parse(
     fs.readFileSync(
       `${config.server().statsDataDir}/${event}/${year}/program-items.json`,
       "utf8",
     ),
-  );
+  ) as ProgramItem[];
 
   logger.info(`Loaded ${programItems.length} program items`);
 

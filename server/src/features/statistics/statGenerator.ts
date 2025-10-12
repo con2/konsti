@@ -3,6 +3,7 @@ import { getUserStats } from "./statistics-helpers/getUserStats";
 import { getProgramItemStats } from "./statistics-helpers/getProgramItemStats";
 import { getResultsStats } from "./statistics-helpers/getResultsStats";
 import { initializeDayjs } from "shared/utils/initializeDayjs";
+import { getDirectSignupStats } from "server/features/statistics/statistics-helpers/getDirectSignupStats";
 
 const getStatistics = (): void => {
   initializeDayjs();
@@ -14,6 +15,13 @@ const getStatistics = (): void => {
     .description("Get user statisticss")
     .action((event: string, year: number) => {
       getUserStats(event, year);
+    });
+
+  commander
+    .command("direct-signups <year> <event>")
+    .description("Get direct signup statistics")
+    .action((event: string, year: number) => {
+      getDirectSignupStats(event, year);
     });
 
   commander
