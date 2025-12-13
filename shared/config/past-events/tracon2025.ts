@@ -6,49 +6,46 @@ import {
 import { ProgramType, SignupType } from "shared/types/models/programItem";
 
 // Event days
-const friday = "2026-07-24";
+const friday = "2025-09-05";
+const saturday = "2025-09-06";
 
-export const eventConfig: EventConfig = {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const eventConfig: Partial<EventConfig> = {
   // Event info
-  eventName: EventName.ROPECON,
-  eventYear: "2026",
+  eventName: EventName.TRACON,
+  eventYear: "2025",
 
   // Event settings
-  enableRevolvingDoor: true,
+  enableRevolvingDoor: false,
   enableOrganizerFeedback: true,
-  enableTagDropdown: true,
+  enableTagDropdown: false,
 
   requireRegistrationCode: true,
-  assignmentAlgorithm: AssignmentAlgorithm.RANDOM_PADG,
+  assignmentAlgorithm: AssignmentAlgorithm.RANDOM,
   enableGroups: true,
-  signupOpen: true, // TODO: Remove this
-  resultsVisible: true, // TODO: Remove this
+  signupOpen: true,
+  resultsVisible: true,
 
   // Remove overlapping lottery signups...
   enableRemoveOverlapSignups: false,
   // ... or remove all upcoming lottery signups
   enableRemoveAllUpcomingSignups: true,
 
-  programGuideUrl: "https://2025.ropecon.fi/opas",
+  programGuideUrl: "https://2025.tracon.fi/opas",
 
-  activeProgramTypes: [
-    ProgramType.TABLETOP_RPG,
-    ProgramType.LARP,
-    ProgramType.TOURNAMENT,
-    ProgramType.WORKSHOP,
-    ProgramType.OTHER,
-  ],
+  activeProgramTypes: [ProgramType.TABLETOP_RPG, ProgramType.FLEAMARKET],
 
-  twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG, ProgramType.WORKSHOP],
+  twoPhaseSignupProgramTypes: [ProgramType.FLEAMARKET],
 
-  eventStartTime: `${friday}T12:00:00Z`, // Fri 15:00 GMT+3
+  // Event start at 15:00 GMT+3 but lottery signups start at 08:00 GMT+3
+  eventStartTime: `${friday}T05:00:00Z`, // Fri 08:00 GMT+3
 
   directSignupWindows: {},
 
-  rollingDirectSignupProgramTypes: [],
+  rollingDirectSignupProgramTypes: [ProgramType.TABLETOP_RPG],
   enableRollingDirectSignupPreviousDay: true,
 
-  hideParticipantListProgramTypes: [],
+  hideParticipantListProgramTypes: [ProgramType.FLEAMARKET],
 
   // Direct signup open till program item endTime instead of startTime
   directSignupOpenToEndProgramTypes: [], // TODO: Remove config
@@ -85,10 +82,23 @@ export const eventConfig: EventConfig = {
   phaseGap: 15, // minutes
 
   // Use fixed time to open all lottery signups for the whole event
-  fixedLotterySignupTime: null,
+  fixedLotterySignupTime: `${friday}T05:00:00Z`, // Fri 08:00 GMT+3
 
   // Program items with parentId use startTime configured here
-  startTimesByParentIds: new Map([]),
+  startTimesByParentIds: new Map([
+    [
+      "kirpputori-perjantai-alkuilta",
+      `${friday}T13:00:00Z`, // Fri 16:00 GMT+3
+    ],
+    [
+      "kirpputori-perjantai-loppuilta",
+      `${friday}T16:00:00Z`, // Fri 19:00 GMT+3
+    ],
+    [
+      "kirpputori-lauantai",
+      `${saturday}T06:30:00Z`, // Sat 09:30 GMT+3
+    ],
+  ]),
 
   defaultSignupType: SignupType.KONSTI,
 };
