@@ -116,14 +116,14 @@ const prodConfig = {
   useTestTime: false,
 
   // Program update cron
-  autoUpdateProgramEnabled: true,
+  autoUpdateProgramEnabled: false,
   programUpdateInterval: "5,10,15,20,25,35,40,45,50,55 * * * *",
 
   // Program update
   updateProgramItemPopularityEnabled: true,
 
   // Attendee assign cron
-  autoAssignAttendeesEnabled: true,
+  autoAssignAttendeesEnabled: false,
   autoAssignInterval: "0,30 * * * *",
   autoAssignDelay: 1000 * 5,
   emailSendFromAddress: "Konsti <konsti@kompassi.eu>",
@@ -145,14 +145,14 @@ const stagingConfig = {
   useTestTime: true,
 
   // Program update cron
-  autoUpdateProgramEnabled: true,
+  autoUpdateProgramEnabled: false,
   programUpdateInterval: "5,10,15,20,25,35,40,45,50,55 * * * *",
 
   // Program update
   updateProgramItemPopularityEnabled: true,
 
   // Attendee assign cron
-  autoAssignAttendeesEnabled: true,
+  autoAssignAttendeesEnabled: false,
   autoAssignInterval: "0,30 * * * *",
   autoAssignDelay: 1000 * 5,
 };
@@ -177,14 +177,14 @@ const devConfig = {
   useTestTime: true,
 
   // Program update cron
-  autoUpdateProgramEnabled: true,
+  autoUpdateProgramEnabled: false,
   programUpdateInterval: "5,10,15,20,25,35,40,45,50,55 * * * *",
 
   // Program update
   updateProgramItemPopularityEnabled: true,
 
   // Attendee assign cron
-  autoAssignAttendeesEnabled: true,
+  autoAssignAttendeesEnabled: false,
   autoAssignInterval: "0,30 * * * *",
   autoAssignDelay: 1000 * 1,
 };
