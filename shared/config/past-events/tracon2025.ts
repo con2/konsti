@@ -9,7 +9,8 @@ import { ProgramType, SignupType } from "shared/types/models/programItem";
 const friday = "2025-09-05";
 const saturday = "2025-09-06";
 
-export const eventConfig: Partial<EventConfig> = {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const eventConfig: Partial<EventConfig> = {
   // Event info
   eventName: EventName.TRACON,
   eventYear: "2025",
