@@ -23,8 +23,12 @@ export const clientConfig: ClientConfig = {
     "all",
     ProgramType.FLEAMARKET,
     ProgramType.TABLETOP_RPG,
+    ProgramType.LARP,
+    ProgramType.TOURNAMENT,
+    ProgramType.WORKSHOP,
+    ProgramType.OTHER,
   ],
-  activeLanguages: [Language.FINNISH],
+  activeLanguages: [Language.FINNISH, Language.ENGLISH, Language.SWEDISH],
 
   // Dev
   enableReduxTrace: false,
