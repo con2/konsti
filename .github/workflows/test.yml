@@ -31,7 +31,7 @@ jobs:
         shell: bash
 
       - name: Run actionlint
-        uses: docker://rhysd/actionlint:1.7.9
+        uses: docker://rhysd/actionlint:1.7.11
         with:
           args: -color
 

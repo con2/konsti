@@ -53,14 +53,17 @@ jobs:
           curl -Lo bin/kubectl https://dl.k8s.io/release/v1.22.0/bin/linux/amd64/kubectl
           chmod +x bin/skaffold bin/kubectl
       - name: Add skaffold and kubectl to PATH
-        run: echo "$PWD/bin" >> "$GITHUB_PATH"
+        run: |
+          echo "$PWD/bin" >> "$GITHUB_PATH"
+          skaffold config set --global collect-metrics false
       - name: Deploy with skaffold
         run: |
           python3 -m pip install setuptools emskaffolden
           emskaffolden -E staging -- deploy -n konsti-staging --images "konsti=ghcr.io/con2/konsti:${{ github.sha }}"
 
   sentry-release:
-    runs-on: ubuntu-22.04
+    needs: deploy
+    runs-on: ubuntu-24.04
 
     env:
       CI: true
