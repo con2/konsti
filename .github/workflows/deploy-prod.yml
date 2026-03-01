@@ -28,7 +28,7 @@ jobs:
           push: true
           tags: ghcr.io/con2/konsti:${{ github.sha }}
           build-args: |
-            env=production
+            env=prod
 
   deploy:
     needs: build
