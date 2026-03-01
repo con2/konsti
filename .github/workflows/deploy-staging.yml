@@ -54,7 +54,7 @@ jobs:
       - name: Deploy with skaffold
         run: |
           python3 -m pip install setuptools emskaffolden
-          emskaffolden -E staging -- deploy -n konsti-staging --images konsti=ghcr.io/con2/konsti:${GITHUB_SHA}
+          emskaffolden -E staging -- deploy -n konsti-staging --images "konsti=ghcr.io/con2/konsti:${GITHUB_SHA}"
 
   sentry-release:
     runs-on: ubuntu-22.04

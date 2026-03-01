@@ -53,7 +53,7 @@ jobs:
       - name: Deploy with skaffold
         run: |
           python3 -m pip install setuptools emskaffolden
-          emskaffolden -E production -- deploy -n konsti-production --images konsti=ghcr.io/con2/konsti:${GITHUB_SHA}
+          emskaffolden -E production -- deploy -n konsti-production --images "konsti=ghcr.io/con2/konsti:${GITHUB_SHA}"
 
   sentry-release:
     if: github.ref == 'refs/heads/main'
