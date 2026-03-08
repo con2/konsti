@@ -48,7 +48,7 @@
     "use-debounce": "10.0.5"
   },
   "devDependencies": {
-    "@axe-core/react": "4.10.2",
+    "@axe-core/react": "4.11.1",
     "@babel/cli": "7.28.6",
     "@babel/core": "7.29.0",
     "@babel/node": "7.29.0",

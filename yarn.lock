@@ -28,13 +28,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@axe-core/react@npm:4.10.2":
-  version: 4.10.2
-  resolution: "@axe-core/react@npm:4.10.2"
+"@axe-core/react@npm:4.11.1":
+  version: 4.11.1
+  resolution: "@axe-core/react@npm:4.11.1"
   dependencies:
-    axe-core: "npm:~4.10.3"
+    axe-core: "npm:~4.11.1"
     requestidlecallback: "npm:^0.3.0"
-  checksum: 10c0/ca7f946f26a16789c374097867a03aa987cde6762a48cc434223c64e1c19f82342f365f17adb4fee5a40ad32b0df82fb4a44df503bb35df9b6778f9ea7eeabd2
+  checksum: 10c0/3eb0e09ec72055914d4250a65d13467afa607a626b34c558c5aab53de4f414b0c7ff2c6d00bf9031f002725563690b9890a029fd51ac54e962aeeaa12d78bfc5
   languageName: node
   linkType: hard
 
@@ -6043,10 +6043,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axe-core@npm:^4.10.0, axe-core@npm:~4.10.3":
+"axe-core@npm:^4.10.0":
   version: 4.10.3
   resolution: "axe-core@npm:4.10.3"
   checksum: 10c0/1b1c24f435b2ffe89d76eca0001cbfff42dbf012ad9bd37398b70b11f0d614281a38a28bc3069e8972e3c90ec929a8937994bd24b0ebcbaab87b8d1e241ab0c7
+  languageName: node
+  linkType: hard
+
+"axe-core@npm:~4.11.1":
+  version: 4.11.1
+  resolution: "axe-core@npm:4.11.1"
+  checksum: 10c0/1e6997454b61c7c9a4d740f395952835dcf87f2c04fd81577217d68634d197d602c224f9e8f17b22815db4c117a2519980cfc8911fc0027c54a6d8ebca47c6a7
   languageName: node
   linkType: hard
 
@@ -11191,7 +11198,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "konsti-client@workspace:client"
   dependencies:
-    "@axe-core/react": "npm:4.10.2"
+    "@axe-core/react": "npm:4.11.1"
     "@babel/cli": "npm:7.28.6"
     "@babel/core": "npm:7.29.0"
     "@babel/node": "npm:7.29.0"
