@@ -2,7 +2,6 @@ import { fileURLToPath } from "node:url";
 import eslint from "@eslint/js";
 import { defineConfig, globalIgnores } from "eslint/config";
 import globals from "globals";
-// @ts-expect-error: Missing types
 import eslintPluginCommentsConfigs from "@eslint-community/eslint-plugin-eslint-comments/configs";
 import eslintPluginCompat from "eslint-plugin-compat";
 import eslintPluginImport from "eslint-plugin-import";
@@ -34,7 +33,6 @@ export default defineConfig([
   eslint.configs.recommended,
   typescriptEslint.configs.strictTypeChecked,
   typescriptEslint.configs.stylisticTypeChecked,
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
   eslintPluginCommentsConfigs.recommended,
   // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
   eslintPluginPromise.configs["flat/recommended"],
