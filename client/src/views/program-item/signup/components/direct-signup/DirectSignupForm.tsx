@@ -1,4 +1,4 @@
-import { FormEvent, ReactElement, useState } from "react";
+import { SyntheticEvent, ReactElement, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { ProgramItem } from "shared/types/models/programItem";
@@ -75,7 +75,7 @@ export const DirectSignupForm = ({
     onCancelSignup();
   };
 
-  const handleSignup = async (event: FormEvent): Promise<void> => {
+  const handleSignup = async (event: SyntheticEvent): Promise<void> => {
     event.preventDefault();
     dispatch(startLoading());
 
