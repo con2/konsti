@@ -67,9 +67,9 @@
     "@types/morgan": "1.9.10",
     "@types/node": "22.15.34",
     "@types/nodemailer": "7.0.11",
-    "@types/supertest": "6.0.3",
+    "@types/supertest": "7.2.0",
     "mongodb-memory-server": "10.1.4",
-    "supertest": "7.1.1"
+    "supertest": "7.2.2"
   },
   "engines": {
     "node": ">=22.11.0"
