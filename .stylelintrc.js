@@ -20,6 +20,7 @@ module.exports = {
   rules: {
     // stylelint
     "media-query-no-invalid": null, // Doesn't work with styled-components
+    "nesting-selector-no-missing-scoping-root": null, // Doesn't work with styled-components
     "shorthand-property-no-redundant-values": null, // Don't want this
     "at-rule-empty-line-before": null, // Don't want this
     "rule-empty-line-before": null, // Don't want this

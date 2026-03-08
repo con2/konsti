@@ -68,3 +68,6 @@ eslint.config.bundled*
 
 #dotenv
 .env.development
+
+# claude
+settings.local.json

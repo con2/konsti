@@ -94,7 +94,7 @@ export const AdminActionCard = ({ programItem }: Props): ReactElement => {
 
     if (error) {
       // eslint-disable-next-line no-console
-      console.log(`submitUpdateHidden error: ${String(error)}`);
+      console.log(`submitUpdateHidden error: ${error}`);
     } else {
       setHidden(newHidden);
     }
@@ -111,7 +111,7 @@ export const AdminActionCard = ({ programItem }: Props): ReactElement => {
 
     if (error) {
       // eslint-disable-next-line no-console
-      console.log(`deleteSignupQuestion error: ${String(error)}`);
+      console.log(`deleteSignupQuestion error: ${error}`);
     } else {
       setHasSignupQuestion(false);
     }
@@ -135,7 +135,7 @@ export const AdminActionCard = ({ programItem }: Props): ReactElement => {
 
     if (error) {
       // eslint-disable-next-line no-console
-      console.log(`addSignupQuestion error: ${String(error)}`);
+      console.log(`addSignupQuestion error: ${error}`);
     } else {
       setHasSignupQuestion(true);
     }

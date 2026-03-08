@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, ReactElement, useState } from "react";
+import { ChangeEvent, SyntheticEvent, ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { capitalize } from "remeda";
@@ -76,7 +76,7 @@ export const LotterySignupForm = ({
     closeSignupForm();
   };
 
-  const handleSignup = async (event: FormEvent): Promise<void> => {
+  const handleSignup = async (event: SyntheticEvent): Promise<void> => {
     event.preventDefault();
     dispatch(startLoading());
     if (!priority) {

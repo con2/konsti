@@ -43,6 +43,6 @@ export const updateFavorite = async (
 
   if (error) {
     // eslint-disable-next-line no-restricted-syntax -- TODO: Remove throw
-    throw new Error(`submitUpdateFavorites error: ${String(error)}`);
+    throw new Error(`submitUpdateFavorites error: ${error}`);
   }
 };
