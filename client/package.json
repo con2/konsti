@@ -44,7 +44,7 @@
     "react-redux": "9.2.0",
     "react-router": "7.6.3",
     "regenerator-runtime": "0.14.1",
-    "styled-components": "6.1.19",
+    "styled-components": "6.3.11",
     "use-debounce": "10.0.5"
   },
   "devDependencies": {
