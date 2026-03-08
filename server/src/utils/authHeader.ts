@@ -8,7 +8,7 @@ export const getAuthorizedUsername = (
 ): string | null => {
   logger.debug(`Auth: Require jwt for user group ${String(requiredUserGroup)}`);
 
-  if (!authHeader || authHeader.split(" ")[0] !== "Bearer") {
+  if (authHeader?.split(" ")[0] !== "Bearer") {
     logger.info("Auth: No auth header");
     return null;
   }
@@ -34,7 +34,7 @@ export const getAuthorizedUserGroup = (
 ): UserGroup | null => {
   logger.debug("Auth: Get userGroup for user");
 
-  if (!authHeader || authHeader.split(" ")[0] !== "Bearer") {
+  if (authHeader?.split(" ")[0] !== "Bearer") {
     return null;
   }
 

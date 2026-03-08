@@ -53,7 +53,7 @@ export const runAssignment = async ({
   }
 
   logger.info(
-    `Assigning users for program items starting at ${resolvedAssignmentTime.toString()}`,
+    `Assigning users for program items starting at ${resolvedAssignmentTime}`,
   );
 
   const programItemsResult = await findProgramItems();
