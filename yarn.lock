@@ -12204,7 +12204,7 @@ __metadata:
     mongoose-lean-getters: "npm:2.3.1"
     mongoose-lean-virtuals: "npm:2.1.0"
     morgan: "npm:1.10.1"
-    nodemailer: "npm:7.0.13"
+    nodemailer: "npm:8.0.3"
     supertest: "npm:7.2.2"
     tsx: "npm:4.21.0"
     winston: "npm:3.19.0"
@@ -13784,10 +13784,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nodemailer@npm:7.0.13":
-  version: 7.0.13
-  resolution: "nodemailer@npm:7.0.13"
-  checksum: 10c0/b26aa5b9fa4a033bbc1e1c16ef75ee2a9c8641fd290c00a8361d6a251b3c1b8bad545a23efa627f59cb266340a448891ea8aa49d8a9307c767b8505219d95079
+"nodemailer@npm:8.0.3":
+  version: 8.0.3
+  resolution: "nodemailer@npm:8.0.3"
+  checksum: 10c0/57edb30171b78c71ea6e766258004cc10f30869876b2ea7b9c8aa121ca3e7832213a15c902bb94f66bbd8db7bd2aef8d2d85ad73871bdc5ce84371dc05677bb6
   languageName: node
   linkType: hard
 
