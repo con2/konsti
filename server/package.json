@@ -36,7 +36,7 @@
     "docker:db": "tsx src/test/scripts/dockerDb.ts"
   },
   "dependencies": {
-    "@faker-js/faker": "9.9.0",
+    "@faker-js/faker": "10.3.0",
     "@sentry/node": "9.47.1",
     "@vercel/ncc": "0.38.4",
     "bcryptjs": "3.0.3",
@@ -65,7 +65,7 @@
   "devDependencies": {
     "@types/jsonwebtoken": "9.0.10",
     "@types/morgan": "1.9.10",
-    "@types/node": "22.19.15",
+    "@types/node": "25.5.0",
     "@types/nodemailer": "7.0.11",
     "@types/supertest": "7.2.0",
     "mongodb-memory-server": "11.0.1",
