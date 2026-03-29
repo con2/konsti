@@ -96,7 +96,7 @@ export const saveTestSettings = async (
       {},
       settings,
       {
-        new: true,
+        returnDocument: "after",
         upsert: true,
       },
     ).lean();

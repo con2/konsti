@@ -17,7 +17,7 @@ export const KompassiLoginButton = (): ReactElement => {
 
   useEffect(() => {
     const error = searchParams.get("error");
-    const result = z.nativeEnum(LoginErrorMessage).safeParse(error);
+    const result = z.enum(LoginErrorMessage).safeParse(error);
     if (!result.success) {
       return;
     }

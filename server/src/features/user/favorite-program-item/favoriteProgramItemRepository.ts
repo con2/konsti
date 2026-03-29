@@ -19,7 +19,7 @@ export const saveFavorite = async (
       {
         favoriteProgramItemIds,
       },
-      { new: true },
+      { returnDocument: "after" },
     ).lean();
 
     if (!response) {

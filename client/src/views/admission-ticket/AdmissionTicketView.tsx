@@ -9,7 +9,7 @@ import { selectDirectSignups } from "client/views/my-program-items/myProgramItem
 export const AdmissionTicketView = (): ReactElement => {
   const { t } = useTranslation();
 
-  const { programItemId } = useParams();
+  const { programItemId } = useParams() as { programItemId: string };
 
   const [loading, setLoading] = useState<boolean>(true);
 

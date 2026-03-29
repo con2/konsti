@@ -6,7 +6,7 @@ mongoose.plugin((schema: Schema) => {
     // toJSON() removes _id and __v
     transform(_document, returnedObject) {
       delete returnedObject._id;
-      delete returnedObject.__v;
+      delete (returnedObject as Record<string, unknown>).__v;
     },
   });
 });

@@ -148,7 +148,7 @@ export const ProgramItemLotterySignup = ({
           <InfoText>
             {t("signup.alreadyLotterySigned", {
               PROGRAM_TYPE: t(`programTypeSingular.${programItem.programType}`),
-              CURRENT_PRIORITY: currentPriority,
+              CURRENT_PRIORITY: String(currentPriority),
             })}
           </InfoText>
 

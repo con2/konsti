@@ -42,23 +42,23 @@ import { AssignmentResultStatus } from "server/types/resultTypes";
 const expectedResultsCount = 18;
 const groupTestUsers = ["group1", "group2", "group3"];
 
+vi.mock<object>(
+  import("server/utils/notificationQueue"),
+  async (originalImport) => {
+    const actual = await originalImport();
+    return {
+      ...actual,
+      getGlobalNotificationQueueService: vi.fn(() => {
+        return createNotificationQueueService(new EmailSender(), 1, true);
+      }),
+    };
+  },
+);
+
 beforeEach(async () => {
   await mongoose.connect(globalThis.__MONGO_URI__, {
     dbName: faker.string.alphanumeric(10),
   });
-
-  vi.mock<object>(
-    import("server/utils/notificationQueue"),
-    async (originalImport) => {
-      const actual = await originalImport();
-      return {
-        ...actual,
-        getGlobalNotificationQueueService: vi.fn(() => {
-          return createNotificationQueueService(new EmailSender(), 1, true);
-        }),
-      };
-    },
-  );
 });
 
 afterEach(async () => {

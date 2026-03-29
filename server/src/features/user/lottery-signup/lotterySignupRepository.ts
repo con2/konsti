@@ -20,7 +20,7 @@ export const saveLotterySignups = async (
       {
         lotterySignups,
       },
-      { new: true },
+      { returnDocument: "after" },
     ).lean();
     if (!response) {
       logger.error("%s", new Error("Error saving lottery signups"));
@@ -70,7 +70,7 @@ export const saveLotterySignup = async ({
           },
         },
       },
-      { new: true },
+      { returnDocument: "after" },
     ).lean();
     if (!response) {
       logger.error(

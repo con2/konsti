@@ -17,7 +17,7 @@ import { selectGroupMembers } from "client/views/group/groupSlice";
 export const ProgramItemView = (): ReactElement => {
   const { t } = useTranslation();
 
-  const { programItemId } = useParams();
+  const { programItemId } = useParams() as { programItemId: string };
 
   const programItems = useAppSelector(
     (state) => state.allProgramItems.programItems,

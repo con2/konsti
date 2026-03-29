@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import { unique } from "remeda";
-import { logger } from "@sentry/node";
+import { logger } from "server/utils/logger";
 import {
   getGlobalNotificationQueueService,
   NotificationTaskType,

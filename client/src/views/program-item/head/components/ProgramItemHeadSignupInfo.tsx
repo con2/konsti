@@ -57,14 +57,14 @@ export const ProgramItemHeadSignupInfo = ({
     <SignupsInfoContainer>
       <div>
         {t("signup.signupCount", {
-          ATTENDEE_COUNT: signups.length,
-          MAX_ATTENDANCE: programItem.maxAttendance,
+          ATTENDEE_COUNT: String(signups.length),
+          MAX_ATTENDANCE: String(programItem.maxAttendance),
         })}
 
         {signups.length < programItem.minAttendance && isDirectSignupMode && (
           <AttendeesNeeded>
             {t("signup.attendeesNeeded", {
-              COUNT: programItem.minAttendance - signups.length,
+              COUNT: String(programItem.minAttendance - signups.length),
             })}
           </AttendeesNeeded>
         )}

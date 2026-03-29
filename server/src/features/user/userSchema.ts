@@ -13,7 +13,7 @@ const LotterySignupSchemaDb = z.object({
 
 const EventLogItemSchemaDb = z.object({
   eventLogItemId: z.custom<ObjectId>().transform(String),
-  action: z.nativeEnum(EventLogAction),
+  action: z.enum(EventLogAction),
   isSeen: z.boolean(),
   programItemId: z.string(),
   programItemStartTime: z.date().transform((date) => dayjs(date).toISOString()),
@@ -26,7 +26,7 @@ export const UserSchemaDb = z
     kompassiUsernameAccepted: z.boolean(),
     username: z.string(),
     password: z.string(),
-    userGroup: z.nativeEnum(UserGroup),
+    userGroup: z.enum(UserGroup),
     serial: z.string(),
     groupCode: z.string(),
     groupCreatorCode: z.string(),

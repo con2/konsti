@@ -65,7 +65,7 @@ export const saveGroupCreatorCode = async (
     const response = await UserModel.findOneAndUpdate(
       { username },
       { groupCode: groupCreatorCode, groupCreatorCode },
-      { new: true },
+      { returnDocument: "after" },
     ).lean();
 
     if (!response) {
@@ -104,7 +104,7 @@ export const saveGroupCode = async (
     const response = await UserModel.findOneAndUpdate(
       { username },
       { groupCode },
-      { new: true },
+      { returnDocument: "after" },
     ).lean();
 
     if (!response) {

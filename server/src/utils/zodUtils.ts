@@ -6,13 +6,13 @@ export const safeEnumArray = <T extends Record<string, string>>(
   enumType: T,
   label: string,
   fallback: T[keyof T][] = [],
-): z.ZodCatch<z.ZodArray<z.ZodNativeEnum<T>>> => {
+): z.ZodCatch<z.ZodArray<z.ZodEnum<T>>> => {
   // eslint-disable-next-line unicorn/catch-error-name
-  return z.array(z.nativeEnum(enumType)).catch((ctx) => {
-    if (!Array.isArray(ctx.input)) {
+  return z.array(z.enum(enumType)).catch((ctx) => {
+    if (!Array.isArray(ctx.value)) {
       return fallback;
     }
-    const [valid, invalid] = partition(ctx.input, (val) =>
+    const [valid, invalid] = partition(ctx.value as string[], (val) =>
       Object.values(enumType).includes(val),
     );
     if (invalid.length > 0) {
@@ -21,6 +21,6 @@ export const safeEnumArray = <T extends Record<string, string>>(
         new Error(`Invalid ${label}: ${JSON.stringify(invalid)}`),
       );
     }
-    return valid;
+    return valid as T[keyof T][];
   });
 };

@@ -1,4 +1,5 @@
 import dayjs from "dayjs";
+import { AnyBulkWriteOperation } from "mongoose";
 import { first, groupBy, shuffle } from "remeda";
 import { findProgramItemById } from "server/features/program-item/programItemRepository";
 import {
@@ -237,7 +238,7 @@ export const saveDirectSignup = async (
         $inc: { count: 1 },
       },
       {
-        new: true,
+        returnDocument: "after",
       },
     ).lean();
 
@@ -297,50 +298,50 @@ export const saveDirectSignups = async (
 
   const droppedSignups: SignupRepositoryAddSignup[] = [];
 
-  const bulkOps = Object.entries(signupsByProgramItems).flatMap(
-    ([programItemId, directSignups]) => {
-      const programItem = programItems.find(
-        (p) => p.programItemId === programItemId,
+  const bulkOps: AnyBulkWriteOperation[] = Object.entries(
+    signupsByProgramItems,
+  ).flatMap(([programItemId, directSignups]) => {
+    const programItem = programItems.find(
+      (p) => p.programItemId === programItemId,
+    );
+    if (!programItem) {
+      return [];
+    }
+
+    let finalSignups: SignupRepositoryAddSignup[] = directSignups;
+    if (directSignups.length > programItem.maxAttendance) {
+      logger.error(
+        "%s",
+        new Error(
+          `Too many signups passed to saveSignups for program item ${programItem.programItemId} - maxAttendance: ${programItem.maxAttendance}, direct signups: ${directSignups.length}`,
+        ),
       );
-      if (!programItem) {
-        return [];
-      }
+      const shuffledSignups = shuffle(directSignups);
+      finalSignups = shuffledSignups.slice(0, programItem.maxAttendance);
+      droppedSignups.push(...shuffledSignups.slice(programItem.maxAttendance));
+    }
 
-      let finalSignups: SignupRepositoryAddSignup[] = directSignups;
-      if (directSignups.length > programItem.maxAttendance) {
-        logger.error(
-          "%s",
-          new Error(
-            `Too many signups passed to saveSignups for program item ${programItem.programItemId} - maxAttendance: ${programItem.maxAttendance}, direct signups: ${directSignups.length}`,
-          ),
-        );
-        const shuffledSignups = shuffle(directSignups);
-        finalSignups = shuffledSignups.slice(0, programItem.maxAttendance);
-        droppedSignups.push(
-          ...shuffledSignups.slice(programItem.maxAttendance),
-        );
-      }
-
-      return {
-        updateOne: {
-          filter: {
-            programItemId: programItem.programItemId,
-          },
-          update: {
-            $addToSet: {
-              userSignups: finalSignups.map((signup) => ({
+    return {
+      updateOne: {
+        filter: {
+          programItemId: programItem.programItemId,
+        },
+        update: {
+          $addToSet: {
+            userSignups: {
+              $each: finalSignups.map((signup) => ({
                 username: signup.username,
                 priority: signup.priority,
-                signedToStartTime: signup.signedToStartTime,
+                signedToStartTime: new Date(signup.signedToStartTime),
                 message: signup.message,
               })),
             },
-            count: finalSignups.length,
           },
+          $set: { count: finalSignups.length },
         },
-      };
-    },
-  );
+      },
+    };
+  });
 
   try {
     const response = await SignupModel.bulkWrite(bulkOps);
@@ -380,7 +381,7 @@ export const delDirectSignup = async ({
         },
         $inc: { count: -1 },
       },
-      { new: true },
+      { returnDocument: "after" },
     ).lean();
 
     if (!signup) {
@@ -506,6 +507,7 @@ export const delAssignmentDirectSignupsByStartTime = async (
           $set: { count: { $size: "$userSignups" } },
         },
       ],
+      { updatePipeline: true },
     );
     logger.info(
       `MongoDB: Deleted old signups for assignmentTime: ${assignmentTime}`,

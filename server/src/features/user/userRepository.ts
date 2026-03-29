@@ -114,7 +114,7 @@ export const updateUserPassword = async (
       {
         password,
       },
-      { new: true },
+      { returnDocument: "after" },
     ).lean();
     logger.debug(`MongoDB: Password for user ${username} updated`);
     if (!response) {
@@ -310,7 +310,7 @@ export const updateUserKompassiLoginStatus = async (
         username: newUsername,
         kompassiUsernameAccepted: true,
       },
-      { new: true },
+      { returnDocument: "after" },
     ).lean();
 
     if (!response) {
@@ -354,7 +354,7 @@ export const updateUserEmailAddress = async (
         email,
         emailNotificationPermitAsked: true,
       },
-      { new: true },
+      { returnDocument: "after" },
     ).lean();
 
     if (!response) {

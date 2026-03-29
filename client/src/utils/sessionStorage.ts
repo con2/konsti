@@ -30,7 +30,7 @@ export const getSavedSearchTerm = (): string => {
   return result.data;
 };
 
-const SavedTagSchema = z.nativeEnum(Tag).or(z.nativeEnum(Language));
+const SavedTagSchema = z.enum(Tag).or(z.enum(Language));
 
 export const getSavedTag = (): Tag | Language | "" => {
   const serializedValue = sessionStorage.getItem(
@@ -66,7 +66,7 @@ export const getSavedHideFull = (): boolean => {
   return result.data ?? false;
 };
 
-const SavedStartingTimeSchema = z.nativeEnum(StartingTimeOption);
+const SavedStartingTimeSchema = z.enum(StartingTimeOption);
 
 export const getSavedStartingTime = (): StartingTimeOption => {
   const serializedValue = sessionStorage.getItem(
