@@ -83,8 +83,8 @@ export enum KompassiBoolean {
 const ScheduleItemSchema = z.object({
   slug: z.string(),
   title: z.string().catch(""),
-  startTime: z.string().datetime({ offset: true }),
-  endTime: z.string().datetime({ offset: true }),
+  startTime: z.iso.datetime({ offset: true }),
+  endTime: z.iso.datetime({ offset: true }),
   lengthMinutes: z.number().catch(0),
   location: z.string().catch(""),
   isCancelled: z.boolean().catch(true),
