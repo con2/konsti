@@ -63,7 +63,7 @@ export const clearSession = (): void => {
 
 // Locale uses same 'languageKey' as i18next but i18next has separate logic for handling localStorage
 const languageKey = "i18nextLng";
-const LanguageValueSchema = z.nativeEnum(Locale);
+const LanguageValueSchema = z.enum(Locale);
 
 export const getLocalStorageLocale = (): string => {
   const serializedValue = localStorage.getItem(languageKey);

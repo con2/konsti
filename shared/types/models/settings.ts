@@ -24,7 +24,7 @@ export const SignupQuestionSchema = z.object({
   questionFi: z.string(),
   questionEn: z.string(),
   private: z.boolean(),
-  type: z.nativeEnum(SignupQuestionType),
+  type: z.enum(SignupQuestionType),
   selectOptions: z.array(SignupQuestionSelectOptionSchema),
 });
 
@@ -34,12 +34,12 @@ export const SettingsSchema = z.object({
   hiddenProgramItemIds: z.array(z.string()),
   appOpen: z.boolean(),
   signupQuestions: z.array(SignupQuestionSchema),
-  signupStrategy: z.nativeEnum(EventSignupStrategy),
+  signupStrategy: z.enum(EventSignupStrategy),
   programUpdateLastRun: z.string(),
   assignmentLastRun: z.string(),
   latestServerStartTime: z.string(),
-  loginProvider: z.nativeEnum(LoginProvider),
-  emailNotificationTrigger: z.nativeEnum(EmailNotificationTrigger),
+  loginProvider: z.enum(LoginProvider),
+  emailNotificationTrigger: z.enum(EmailNotificationTrigger),
 });
 
 export type Settings = z.infer<typeof SettingsSchema>;

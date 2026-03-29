@@ -21,7 +21,7 @@ import {
 
 const PostEmailTestSchema = z.object({
   email: z.string().email(),
-  notificationType: z.nativeEnum(EmailNotificationTrigger),
+  notificationType: z.enum(EmailNotificationTrigger),
   programId: z.string().min(1, "Program ID is required"),
 });
 

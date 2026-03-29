@@ -14,7 +14,7 @@ export const SettingsSchemaDb = z
     hiddenProgramItemIds: z.array(z.string()),
     appOpen: z.boolean(),
     signupQuestions: z.array(SignupQuestionSchema),
-    signupStrategy: z.nativeEnum(EventSignupStrategy),
+    signupStrategy: z.enum(EventSignupStrategy),
     programUpdateLastRun: z
       .date()
       .transform((date) => dayjs(date).toISOString()),
@@ -22,8 +22,8 @@ export const SettingsSchemaDb = z
     latestServerStartTime: z
       .date()
       .transform((date) => dayjs(date).toISOString()),
-    loginProvider: z.nativeEnum(LoginProvider),
-    emailNotificationTrigger: z.nativeEnum(EmailNotificationTrigger),
+    loginProvider: z.enum(LoginProvider),
+    emailNotificationTrigger: z.enum(EmailNotificationTrigger),
   })
   .strip();
 
