@@ -48,7 +48,7 @@ export default defineConfig([
     "**/front/**",
     "**/build/**",
     "client/babel.config.js",
-    "client/babel.config.js",
+    "yarn.config.cjs",
   ]),
 
   // ** Default **
@@ -58,7 +58,6 @@ export default defineConfig([
     languageOptions: {
       parserOptions: {
         projectService: {
-          allowDefaultProject: ["yarn.config.cjs"],
           defaultProject: "./tsconfig.json",
         },
         // @ts-expect-error: import.met not allowed

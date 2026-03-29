@@ -18,7 +18,7 @@ const SessionSchema = z
     admin: z
       .object({
         activeProgramType: z
-          .nativeEnum(ProgramType)
+          .enum(ProgramType)
           .or(z.literal("all"))
           .refine(isActive),
       })
