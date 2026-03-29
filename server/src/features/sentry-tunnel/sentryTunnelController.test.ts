@@ -50,7 +50,7 @@ describe(`POST ${ApiEndpoint.SENTRY_TUNNEL}`, () => {
         `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
       );
     expect(response.status).toEqual(200);
-    expect(errorLoggerSpy).not.toBeCalled();
+    expect(errorLoggerSpy).not.toHaveBeenCalled();
   });
 
   test("should return 200 with errors with invalid envelope data", async () => {
@@ -65,7 +65,7 @@ describe(`POST ${ApiEndpoint.SENTRY_TUNNEL}`, () => {
         `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
       );
     expect(response.status).toEqual(200);
-    expect(errorLoggerSpy).toBeCalled();
+    expect(errorLoggerSpy).toHaveBeenCalled();
   });
 });
 
