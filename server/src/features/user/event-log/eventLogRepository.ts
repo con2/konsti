@@ -1,3 +1,4 @@
+import { AnyBulkWriteOperation } from "mongoose";
 import { unique } from "remeda";
 import { MongoDbError } from "shared/types/api/errors";
 import {
@@ -18,7 +19,7 @@ export const addEventLogItems = async (
 ): Promise<Result<void, MongoDbError>> => {
   const { updates, action } = eventLogRequest;
 
-  const bulkOps = updates.map((update) => {
+  const bulkOps: AnyBulkWriteOperation[] = updates.map((update) => {
     return {
       updateOne: {
         filter: {
@@ -29,9 +30,9 @@ export const addEventLogItems = async (
             eventLogItems: {
               action,
               programItemId: update.programItemId,
-              programItemStartTime: update.programItemStartTime,
+              programItemStartTime: new Date(update.programItemStartTime),
               isSeen: false,
-              createdAt: update.createdAt,
+              createdAt: new Date(update.createdAt),
             },
           },
         },
@@ -69,7 +70,7 @@ export const updateEventLogItemIsSeen = async (
       },
       {
         arrayFilters: [{ "logItem._id": eventLogItemId }],
-        new: true,
+        returnDocument: "after",
       },
     ).lean();
 

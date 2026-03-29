@@ -99,7 +99,7 @@ export const saveHidden = async (
         hiddenProgramItemIds,
       },
       {
-        new: true,
+        returnDocument: "after",
         upsert: true,
       },
     ).lean();
@@ -138,7 +138,7 @@ export const saveSignupQuestion = async (
         $addToSet: { signupQuestions: signupQuestionData },
       },
       {
-        new: true,
+        returnDocument: "after",
       },
     ).lean();
     if (!settings) {
@@ -179,7 +179,7 @@ export const delSignupQuestion = async (
         $pull: { signupQuestions: { programItemId } },
       },
       {
-        new: true,
+        returnDocument: "after",
       },
     ).lean();
     if (!settings) {
@@ -214,7 +214,7 @@ export const saveSettings = async (
 ): Promise<Result<Settings, MongoDbError>> => {
   try {
     const updatedSettings = await SettingsModel.findOneAndUpdate({}, settings, {
-      new: true,
+      returnDocument: "after",
       upsert: true,
     }).lean();
     logger.info("MongoDB: App settings updated");
@@ -244,7 +244,7 @@ export const setProgramUpdateLastRun = async (
     const response = await SettingsModel.findOneAndUpdate(
       {
         programUpdateLastRun: {
-          $lt: dayjs(programUpdateNextRun).subtract(30, "seconds"),
+          $lt: dayjs(programUpdateNextRun).subtract(30, "seconds").toDate(),
         },
       },
       {
@@ -271,7 +271,7 @@ export const setAssignmentLastRun = async (
     const response = await SettingsModel.findOneAndUpdate(
       {
         assignmentLastRun: {
-          $lt: dayjs(assignmentNextRun).subtract(30, "seconds"),
+          $lt: dayjs(assignmentNextRun).subtract(30, "seconds").toDate(),
         },
       },
       {
