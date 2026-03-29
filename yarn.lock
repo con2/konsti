@@ -2088,7 +2088,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.28.4":
+"@babel/runtime@npm:^7.29.2":
   version: 7.29.2
   resolution: "@babel/runtime@npm:7.29.2"
   checksum: 10c0/30b80a0140d16467792e1bbeb06f655b0dab70407da38dfac7fedae9c859f9ae9d846ef14ad77bd3814c064295fe9b1bc551f1541ea14646ae9f22b71a8bc17a
@@ -11026,17 +11026,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"i18next@npm:25.8.13":
-  version: 25.8.13
-  resolution: "i18next@npm:25.8.13"
+"i18next@npm:25.10.4":
+  version: 25.10.4
+  resolution: "i18next@npm:25.10.4"
   dependencies:
-    "@babel/runtime": "npm:^7.28.4"
+    "@babel/runtime": "npm:^7.29.2"
   peerDependencies:
     typescript: ^5
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 10c0/12c661c2b58fe70445f8491b72f937eef28a5f9413f76bd178bbca92d4378d8436003c3bea1d5d760b8a69f809cbcef2ce389beffd9bc0434651134c6b37fecc
+  checksum: 10c0/3e28c7a77eece9cb220ba366d0a6be9ee1ee0d83b51e52438bba008af8b52afe646457513d3e981b13ef96f28a1d07e3979f0c2a5618f6c94a9384121d0251b1
   languageName: node
   linkType: hard
 
@@ -12111,7 +12111,7 @@ __metadata:
     dotenv-webpack: "npm:8.1.1"
     file-loader: "npm:6.2.0"
     html-webpack-plugin: "npm:5.6.6"
-    i18next: "npm:25.8.13"
+    i18next: "npm:25.10.4"
     i18next-browser-languagedetector: "npm:8.2.1"
     jsdom: "npm:26.1.0"
     linkify-react: "npm:4.3.2"

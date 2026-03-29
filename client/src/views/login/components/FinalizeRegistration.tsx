@@ -105,13 +105,13 @@ export const FinalizeRegistration = (
                 minLength: {
                   value: USERNAME_LENGTH_MIN,
                   message: t("validation.tooShort", {
-                    length: USERNAME_LENGTH_MIN,
+                    length: String(USERNAME_LENGTH_MIN),
                   }),
                 },
                 maxLength: {
                   value: USERNAME_LENGTH_MAX,
                   message: t("validation.tooLong", {
-                    length: USERNAME_LENGTH_MAX,
+                    length: String(USERNAME_LENGTH_MAX),
                   }),
                 },
                 onChange: () => {

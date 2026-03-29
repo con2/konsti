@@ -51,10 +51,10 @@ export const ChangeUserSettingsForm = ({
 
   const passwordLength = (value: string): string | null => {
     if (value.length < PASSWORD_LENGTH_MIN) {
-      return t("validation.tooShort", { length: PASSWORD_LENGTH_MIN });
+      return t("validation.tooShort", { length: String(PASSWORD_LENGTH_MIN) });
     }
     if (value.length > PASSWORD_LENGTH_MAX) {
-      return t("validation.tooLong", { length: PASSWORD_LENGTH_MAX });
+      return t("validation.tooLong", { length: String(PASSWORD_LENGTH_MAX) });
     }
     return null;
   };
