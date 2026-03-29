@@ -3521,15 +3521,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mongodb-js/saslprep@npm:^1.1.9":
-  version: 1.3.0
-  resolution: "@mongodb-js/saslprep@npm:1.3.0"
-  dependencies:
-    sparse-bitfield: "npm:^3.0.3"
-  checksum: 10c0/d51bbeaf04bbd9c019bbd9178c035ae3e3f0d64f6cfc85bc5e745aefdcedc0b4fa1b8dc139a7fe07804943bd36043bfc5a6f1a72c5e547a689078af1f7d0f168
-  languageName: node
-  linkType: hard
-
 "@mongodb-js/saslprep@npm:^1.3.0":
   version: 1.4.6
   resolution: "@mongodb-js/saslprep@npm:1.4.6"
@@ -5421,15 +5412,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/whatwg-url@npm:^11.0.2":
-  version: 11.0.5
-  resolution: "@types/whatwg-url@npm:11.0.5"
-  dependencies:
-    "@types/webidl-conversions": "npm:*"
-  checksum: 10c0/7a9b9252dee98df6db1ad62337daca7f59ae50d7a3406d14ac6b57168d406004359994f3371155e24f3cf12002c4cb8bbb0883bd4cefb9d7ee8e2b510bdd7f5e
-  languageName: node
-  linkType: hard
-
 "@types/whatwg-url@npm:^13.0.0":
   version: 13.0.0
   resolution: "@types/whatwg-url@npm:13.0.0"
@@ -7000,13 +6982,6 @@ __metadata:
   bin:
     browserslist: cli.js
   checksum: 10c0/acba5f0bdbd5e72dafae1e6ec79235b7bad305ed104e082ed07c34c38c7cb8ea1bc0f6be1496958c40482e40166084458fc3aee15111f15faa79212ad9081b2a
-  languageName: node
-  linkType: hard
-
-"bson@npm:^6.10.4":
-  version: 6.10.4
-  resolution: "bson@npm:6.10.4"
-  checksum: 10c0/6c6819ce642516901349f42c5d9d131d5a4e84352a3859c814d4abf6b2b9249e3685b57fc4cf7b5737fb5c71252f65900a41826c1429815a93e43f0f5bb3c173
   languageName: node
   linkType: hard
 
@@ -12199,7 +12174,7 @@ __metadata:
     generate-serial-number: "npm:0.0.3"
     helmet: "npm:8.1.0"
     jsonwebtoken: "npm:9.0.3"
-    mongodb-memory-server: "npm:10.4.3"
+    mongodb-memory-server: "npm:11.0.1"
     mongoose: "npm:9.3.1"
     mongoose-lean-getters: "npm:2.3.1"
     mongoose-lean-virtuals: "npm:2.1.0"
@@ -13419,16 +13394,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mongodb-connection-string-url@npm:^3.0.0":
-  version: 3.0.2
-  resolution: "mongodb-connection-string-url@npm:3.0.2"
-  dependencies:
-    "@types/whatwg-url": "npm:^11.0.2"
-    whatwg-url: "npm:^14.1.0 || ^13.0.0"
-  checksum: 10c0/8b7ac99634f167dbe690e90fa10528e3ffc029faf2feabf36efb84299a04831130b3dba114dbe132f05a8a38022976904b625976996a4534bca4368e8fa5ba33
-  languageName: node
-  linkType: hard
-
 "mongodb-connection-string-url@npm:^7.0.0":
   version: 7.0.1
   resolution: "mongodb-connection-string-url@npm:7.0.1"
@@ -13439,9 +13404,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mongodb-memory-server-core@npm:10.4.3":
-  version: 10.4.3
-  resolution: "mongodb-memory-server-core@npm:10.4.3"
+"mongodb-memory-server-core@npm:11.0.1":
+  version: 11.0.1
+  resolution: "mongodb-memory-server-core@npm:11.0.1"
   dependencies:
     async-mutex: "npm:^0.5.0"
     camelcase: "npm:^6.3.0"
@@ -13449,61 +13414,27 @@ __metadata:
     find-cache-dir: "npm:^3.3.2"
     follow-redirects: "npm:^1.15.11"
     https-proxy-agent: "npm:^7.0.6"
-    mongodb: "npm:^6.9.0"
+    mongodb: "npm:^7.0.0"
     new-find-package-json: "npm:^2.0.0"
     semver: "npm:^7.7.3"
     tar-stream: "npm:^3.1.7"
     tslib: "npm:^2.8.1"
     yauzl: "npm:^3.2.0"
-  checksum: 10c0/02496082bef40c6cdc148b472b8dd37e0081c92d937f346e3429d734b2d198d4974fe88f264aa9dd383203fb9dab5ddb9ed887d23da2c4da6ec17b50995deabe
+  checksum: 10c0/9680c11df4b6e1d8439adc7c19fd9abad6f728f4b2840bcb06bf5276ef9333f73b6377e034b7886bbb7dc8eed9537c59cea8cc9b9068beb810b8a51b8b873398
   languageName: node
   linkType: hard
 
-"mongodb-memory-server@npm:10.4.3":
-  version: 10.4.3
-  resolution: "mongodb-memory-server@npm:10.4.3"
+"mongodb-memory-server@npm:11.0.1":
+  version: 11.0.1
+  resolution: "mongodb-memory-server@npm:11.0.1"
   dependencies:
-    mongodb-memory-server-core: "npm:10.4.3"
+    mongodb-memory-server-core: "npm:11.0.1"
     tslib: "npm:^2.8.1"
-  checksum: 10c0/61794598b821f7e011c19fe5e15b895994d61951fad2171cb7502c70e9609073e625f0df9d44874737cf1420a28115e08159c8ce8ba4df9458bf04e51a6a748e
+  checksum: 10c0/0f2967b4285552829481344b6d36dab6b1164cea1f877640439d11a066d4d3ebe3ea9e4470db3bf5d07b1f3a8cd979e4f46cfaecd55fd79434019c9db6179e32
   languageName: node
   linkType: hard
 
-"mongodb@npm:^6.9.0":
-  version: 6.17.0
-  resolution: "mongodb@npm:6.17.0"
-  dependencies:
-    "@mongodb-js/saslprep": "npm:^1.1.9"
-    bson: "npm:^6.10.4"
-    mongodb-connection-string-url: "npm:^3.0.0"
-  peerDependencies:
-    "@aws-sdk/credential-providers": ^3.188.0
-    "@mongodb-js/zstd": ^1.1.0 || ^2.0.0
-    gcp-metadata: ^5.2.0
-    kerberos: ^2.0.1
-    mongodb-client-encryption: ">=6.0.0 <7"
-    snappy: ^7.2.2
-    socks: ^2.7.1
-  peerDependenciesMeta:
-    "@aws-sdk/credential-providers":
-      optional: true
-    "@mongodb-js/zstd":
-      optional: true
-    gcp-metadata:
-      optional: true
-    kerberos:
-      optional: true
-    mongodb-client-encryption:
-      optional: true
-    snappy:
-      optional: true
-    socks:
-      optional: true
-  checksum: 10c0/97630cbb12a7615230f4846220acd68b82d8ae5e12eb83beb239a48c88604766a7cf2b114a20e774ada7be35175c02e23d66b05f3d180c667620a1ba8b1a52b5
-  languageName: node
-  linkType: hard
-
-"mongodb@npm:~7.1":
+"mongodb@npm:^7.0.0, mongodb@npm:~7.1":
   version: 7.1.0
   resolution: "mongodb@npm:7.1.0"
   dependencies:
@@ -18336,7 +18267,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"whatwg-url@npm:^14.1.0, whatwg-url@npm:^14.1.0 || ^13.0.0":
+"whatwg-url@npm:^14.1.0":
   version: 14.2.0
   resolution: "whatwg-url@npm:14.2.0"
   dependencies:
