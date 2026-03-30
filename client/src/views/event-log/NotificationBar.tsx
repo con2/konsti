@@ -76,7 +76,7 @@ const StyledNotification = styled.div`
   background-color: ${(props) => props.theme.backgroundBody};
   color: ${(props) => props.theme.textMain};
   border-radius: 4px;
-  margin: 4px 2px;
+  margin: 4px 0;
   border: 1px solid ${(props) => props.theme.borderCardHighlight};
   border-left: 5px solid ${(props) => props.theme.borderCardHighlight};
   box-shadow: ${(props) => props.theme.shadowHigher};
@@ -86,6 +86,7 @@ const NotificationContainer = styled.div`
   position: sticky;
   top: ${HEADER_HEIGHT}px;
   z-index: 10;
+  margin: 0 8px 0 8px;
 `;
 
 const ShowAllLinkContainer = styled.div`

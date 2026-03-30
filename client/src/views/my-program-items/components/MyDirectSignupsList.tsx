@@ -23,6 +23,7 @@ export const MyDirectSignupsList = ({ directSignups }: Props): ReactElement => {
     const directSignupStartTimes = directSignups.map(
       (directSignup) => directSignup.programItem.startTime,
     );
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setStartTimes(directSignupStartTimes);
   }, [directSignups]);
 

@@ -65,6 +65,7 @@ export const ProgramItemView = (): ReactElement => {
   );
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setLoading(false);
   }, [/* effect dep */ foundProgramItem]);
 

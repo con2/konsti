@@ -89,6 +89,7 @@ export const AllProgramItemsView = (): ReactElement => {
   );
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setLoading(false);
   }, [
     /* effect dep */ activeProgramItems,
@@ -103,6 +104,7 @@ export const AllProgramItemsView = (): ReactElement => {
     );
 
     if (debouncedSearchTerm.length === 0) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setFilteredProgramItems(activeVisibleProgramItems);
       setLoading(false);
       return;

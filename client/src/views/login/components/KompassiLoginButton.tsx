@@ -22,6 +22,7 @@ export const KompassiLoginButton = (): ReactElement => {
       return;
     }
     if (error) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setServerError(result.data);
     }
   }, [searchParams]);

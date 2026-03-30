@@ -1,7 +1,7 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useTranslation } from "react-i18next";
-import { ReactElement, useState, useEffect } from "react";
+import { ReactElement } from "react";
 import styled from "styled-components";
 import { theme } from "client/theme";
 import { getAttendeeType } from "client/utils/getAttendeeType";
@@ -31,44 +31,7 @@ export const PopularityInfo = ({
 }: Props): ReactElement => {
   const { t } = useTranslation();
 
-  const [msg, setMsg] = useState<PopularityLevel>(PopularityLevel.LOW);
-  const [color, setColor] = useState<string>(theme.popularityLow);
-  const [icon, setIcon] = useState<IconProp>("thermometer-0");
-
-  useEffect(() => {
-    switch (popularity) {
-      case Popularity.NULL:
-      case Popularity.LOW: {
-        break;
-      }
-      case Popularity.MEDIUM: {
-        setMsg(PopularityLevel.MEDIUM);
-        setColor(theme.popularityMedium);
-        setIcon("thermometer-1");
-        break;
-      }
-      case Popularity.HIGH: {
-        setMsg(PopularityLevel.HIGH);
-        setColor(theme.popularityHigh);
-        setIcon("thermometer-2");
-        break;
-      }
-      case Popularity.VERY_HIGH: {
-        setMsg(PopularityLevel.VERY_HIGH);
-        setColor(theme.popularityVeryHigh);
-        setIcon("thermometer-3");
-        break;
-      }
-      case Popularity.EXTREME: {
-        setMsg(PopularityLevel.EXTREME);
-        setColor(theme.popularityExtreme);
-        setIcon("thermometer-4");
-        break;
-      }
-      default:
-        return exhaustiveSwitchGuard(popularity);
-    }
-  }, [popularity]);
+  const { msg, color, icon } = getPopularity(popularity);
 
   return (
     <ProgramItemPopularityContainer className={className}>
@@ -102,6 +65,50 @@ export const PopularityInfo = ({
       )}
     </ProgramItemPopularityContainer>
   );
+};
+
+const getPopularity = (
+  popularity: Popularity,
+): {
+  msg: PopularityLevel;
+  color: string;
+  icon: IconProp;
+} => {
+  switch (popularity) {
+    case Popularity.NULL:
+    case Popularity.LOW:
+      return {
+        msg: PopularityLevel.LOW,
+        color: theme.popularityLow,
+        icon: "thermometer-0",
+      };
+    case Popularity.MEDIUM:
+      return {
+        msg: PopularityLevel.MEDIUM,
+        color: theme.popularityMedium,
+        icon: "thermometer-1",
+      };
+    case Popularity.HIGH:
+      return {
+        msg: PopularityLevel.HIGH,
+        color: theme.popularityHigh,
+        icon: "thermometer-2",
+      };
+    case Popularity.VERY_HIGH:
+      return {
+        msg: PopularityLevel.VERY_HIGH,
+        color: theme.popularityVeryHigh,
+        icon: "thermometer-3",
+      };
+    case Popularity.EXTREME:
+      return {
+        msg: PopularityLevel.EXTREME,
+        color: theme.popularityExtreme,
+        icon: "thermometer-4",
+      };
+    default:
+      return exhaustiveSwitchGuard(popularity);
+  }
 };
 
 const ProgramItemPopularityContainer = styled.div`

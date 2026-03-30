@@ -53,11 +53,11 @@ export const EventLog = (): ReactElement => {
   return (
     <div>
       <Title>{t("eventLog.title")}</Title>
-
+      {/* eslint-disable-next-line react-hooks/refs */}
       {localEventLogItems.current.length === 0 && (
         <RaisedCard>{t("eventLog.noNotifications")}</RaisedCard>
       )}
-
+      {/* eslint-disable-next-line react-hooks/refs */}
       {sortBy(localEventLogItems.current, [
         (item) => item.createdAt,
         "desc",

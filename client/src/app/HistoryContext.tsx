@@ -23,6 +23,7 @@ export const HistoryProvider = ({ children }: Props): ReactElement => {
   }, [location]);
 
   return (
+    // eslint-disable-next-line react-hooks/refs
     <HistoryContext.Provider value={previousLocation.current}>
       {children}
     </HistoryContext.Provider>

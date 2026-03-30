@@ -272,9 +272,6 @@ export default defineConfig([
       // eslint-plugin-react-hooks
       ...eslintPluginReactHooks.configs.recommended.rules,
       "react-hooks/exhaustive-deps": "error",
-      "react-hooks/set-state-in-effect": "off", // TODO: enable
-      "react-hooks/refs": "off", // TODO: enable
-      "react-hooks/immutability": "off", // TODO: enable
 
       // eslint-plugin-react-hooks-addons
       "react-hooks-addons/no-unused-deps": "error",

@@ -41,6 +41,7 @@ export const FirstLogin = (): ReactElement | null => {
     const firstLogin = getFirstLoginState(firstLoginKey);
 
     if (firstLogin === null) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setIsFirstLogin(true);
       localStorage.setItem(firstLoginKey, firstLoginValue);
     } else {

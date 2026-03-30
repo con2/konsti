@@ -232,6 +232,7 @@ export const AdminActionCard = ({ programItem }: Props): ReactElement => {
                 <UncontrolledInput
                   onChange={(event) => {
                     const newState = selectOptions;
+                    // eslint-disable-next-line react-hooks/immutability
                     newState[0] = {
                       ...newState[0],
                       optionFi: event.target.value,
@@ -242,6 +243,7 @@ export const AdminActionCard = ({ programItem }: Props): ReactElement => {
                 <UncontrolledInput
                   onChange={(event) => {
                     const newState = selectOptions;
+                    // eslint-disable-next-line react-hooks/immutability
                     newState[1] = {
                       ...newState[1],
                       optionFi: event.target.value,
@@ -252,6 +254,7 @@ export const AdminActionCard = ({ programItem }: Props): ReactElement => {
                 <UncontrolledInput
                   onChange={(event) => {
                     const newState = selectOptions;
+                    // eslint-disable-next-line react-hooks/immutability
                     newState[2] = {
                       ...newState[2],
                       optionFi: event.target.value,
@@ -262,6 +265,7 @@ export const AdminActionCard = ({ programItem }: Props): ReactElement => {
                 <UncontrolledInput
                   onChange={(event) => {
                     const newState = selectOptions;
+                    // eslint-disable-next-line react-hooks/immutability
                     newState[3] = {
                       ...newState[3],
                       optionFi: event.target.value,
@@ -275,6 +279,7 @@ export const AdminActionCard = ({ programItem }: Props): ReactElement => {
                 <UncontrolledInput
                   onChange={(event) => {
                     const newState = selectOptions;
+                    // eslint-disable-next-line react-hooks/immutability
                     newState[0] = {
                       ...newState[0],
                       optionEn: event.target.value,
@@ -285,6 +290,7 @@ export const AdminActionCard = ({ programItem }: Props): ReactElement => {
                 <UncontrolledInput
                   onChange={(event) => {
                     const newState = selectOptions;
+                    // eslint-disable-next-line react-hooks/immutability
                     newState[1] = {
                       ...newState[1],
                       optionEn: event.target.value,
@@ -295,6 +301,7 @@ export const AdminActionCard = ({ programItem }: Props): ReactElement => {
                 <UncontrolledInput
                   onChange={(event) => {
                     const newState = selectOptions;
+                    // eslint-disable-next-line react-hooks/immutability
                     newState[2] = {
                       ...newState[2],
                       optionEn: event.target.value,
@@ -305,6 +312,7 @@ export const AdminActionCard = ({ programItem }: Props): ReactElement => {
                 <UncontrolledInput
                   onChange={(event) => {
                     const newState = selectOptions;
+                    // eslint-disable-next-line react-hooks/immutability
                     newState[3] = {
                       ...newState[3],
                       optionEn: event.target.value,
