@@ -303,11 +303,15 @@ test("Receive spot in lottery signup, with multiple lottery program types", asyn
 
   // Check new assigment message
   await expect(page.getByTestId("notification-bar")).toContainText(
-    new RegExp(`You were assigned to the .* ${firstProgramItemTitle}\\.`),
+    new RegExp(
+      String.raw`You were assigned to the .* ${firstProgramItemTitle}\.`,
+    ),
   );
 
   await page.getByRole("link", { name: "Show all notifications" }).click();
   await expect(page.getByTestId("event-log-item")).toContainText(
-    new RegExp(`You were assigned to the .* ${firstProgramItemTitle}\\.`),
+    new RegExp(
+      String.raw`You were assigned to the .* ${firstProgramItemTitle}\.`,
+    ),
   );
 });

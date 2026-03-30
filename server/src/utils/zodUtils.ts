@@ -7,7 +7,6 @@ export const safeEnumArray = <T extends Record<string, string>>(
   label: string,
   fallback: T[keyof T][] = [],
 ): z.ZodCatch<z.ZodArray<z.ZodEnum<T>>> => {
-  // eslint-disable-next-line unicorn/catch-error-name
   return z.array(z.enum(enumType)).catch((ctx) => {
     if (!Array.isArray(ctx.value)) {
       return fallback;

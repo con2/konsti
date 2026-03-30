@@ -1,7 +1,6 @@
 import path from "node:path";
 import { coverageConfigDefaults, defineConfig } from "vitest/config";
 
-// eslint-disable-next-line import-x/no-unused-modules
 export default defineConfig({
   test: {
     environment: "node",

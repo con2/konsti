@@ -112,7 +112,6 @@ export const store = configureStore({
           traceLimit: 25,
         },
   enhancers: (getDefaultEnhancers) => {
-    // eslint-disable-next-line unicorn/prefer-spread
     return getDefaultEnhancers().concat(sentryReduxEnhancer);
   },
 });

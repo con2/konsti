@@ -20,7 +20,11 @@ import eslintPluginOnlyError from "eslint-plugin-only-error";
 // eslint-disable-next-line import-x/no-namespace
 import * as eslintPluginMdx from "eslint-plugin-mdx";
 import typescriptEslint from "typescript-eslint";
-import { includeIgnoreFile } from "@eslint/compat";
+import {
+  includeIgnoreFile,
+  fixupPluginRules,
+  fixupConfigRules,
+} from "@eslint/compat";
 import { noUselessTemplateLiteral } from "./eslint-rules/noUselessTemplateLiteral";
 
 const filetypesGlob = "**/*.{ts,tsx,cts,mts,js,cjs,mjs}";
@@ -28,7 +32,6 @@ const filetypesGlob = "**/*.{ts,tsx,cts,mts,js,cjs,mjs}";
 // @ts-expect-error: import.met not allowed
 const gitignorePath = fileURLToPath(new URL(".gitignore", import.meta.url));
 
-// eslint-disable-next-line import-x/no-unused-modules
 export default defineConfig([
   eslint.configs.recommended,
   typescriptEslint.configs.strictTypeChecked,
@@ -38,7 +41,7 @@ export default defineConfig([
   eslintPluginPromise.configs["flat/recommended"],
   eslintPluginImport.flatConfigs.recommended,
   eslintPluginImport.flatConfigs.typescript,
-  eslintPluginUnicorn.configs.recommended,
+  eslintPluginUnicorn.configs.unopinionated,
 
   includeIgnoreFile(gitignorePath),
 
@@ -60,7 +63,7 @@ export default defineConfig([
         projectService: {
           defaultProject: "./tsconfig.json",
         },
-        // @ts-expect-error: import.met not allowed
+        // @ts-expect-error: import.meta not allowed
         tsconfigRootDir: import.meta.dirname,
       },
       globals: {
@@ -131,7 +134,6 @@ export default defineConfig([
       "no-implicit-coercion": ["error", { boolean: false }],
 
       // eslint-plugin-import-x
-      "import-x/no-unused-modules": ["error", { unusedExports: true }],
       "import-x/order": ["error", { groups: ["builtin", "external"] }],
       "import-x/no-namespace": [
         "error",
@@ -164,13 +166,9 @@ export default defineConfig([
       // eslint-plugin-unicorn
       "unicorn/prefer-top-level-await": "off", // Top-level await not supported
       "unicorn/prefer-module": "off", // import.meta not supported
-      "unicorn/no-array-reduce": "off", // Don't want this
       "unicorn/numeric-separators-style": "off", // Don't want this
-      "unicorn/switch-case-braces": "off", // Don't want this
       "unicorn/no-lonely-if": "off", // Don't want this
-      "unicorn/no-null": "off", // Don't want this
-      "unicorn/prevent-abbreviations": "off", // Don't want this
-      "unicorn/filename-case": "off", // Don't want this
+      "unicorn/no-array-sort": "off", // Wait till toSorted is more widely supported
 
       // @typescript-eslint
       "@typescript-eslint/explicit-module-boundary-types": "error",
@@ -230,16 +228,16 @@ export default defineConfig([
 
     extends: [
       // 'recommended' configuration is not recommended anymore, use 'all' and disable some rules
-      eslintPluginReact.configs.flat.all,
+      ...fixupConfigRules([eslintPluginReact.configs.flat.all]),
       // Disable some rules conflicting with new JSX transform from React 17
-      eslintPluginReact.configs.flat["jsx-runtime"],
+      ...fixupConfigRules([eslintPluginReact.configs.flat["jsx-runtime"]]),
       eslintPluginReactHooksAddon.configs.recommended,
-      eslintPluginJsxA11y.flatConfigs.recommended,
+      ...fixupConfigRules(eslintPluginJsxA11y.flatConfigs.recommended),
       eslintPluginCompat.configs["flat/recommended"],
     ],
 
     plugins: {
-      react: eslintPluginReact,
+      react: fixupPluginRules(eslintPluginReact),
       "react-hooks": eslintPluginReactHooks,
     },
 
@@ -274,6 +272,9 @@ export default defineConfig([
       // eslint-plugin-react-hooks
       ...eslintPluginReactHooks.configs.recommended.rules,
       "react-hooks/exhaustive-deps": "error",
+      "react-hooks/set-state-in-effect": "off", // TODO: enable
+      "react-hooks/refs": "off", // TODO: enable
+      "react-hooks/immutability": "off", // TODO: enable
 
       // eslint-plugin-react-hooks-addons
       "react-hooks-addons/no-unused-deps": "error",
@@ -317,8 +318,8 @@ export default defineConfig([
     ...eslintPluginMdx.flat,
 
     extends: [
-      eslintPluginReact.configs.flat.all,
-      eslintPluginReact.configs.flat["jsx-runtime"],
+      ...fixupConfigRules([eslintPluginReact.configs.flat.all]),
+      ...fixupConfigRules([eslintPluginReact.configs.flat["jsx-runtime"]]),
       typescriptEslint.configs.disableTypeChecked,
     ],
 

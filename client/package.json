@@ -6,7 +6,7 @@
   "author": {
     "name": "Arttu Hanska"
   },
-  "main": "index.tsx",
+  "main": "src/index.tsx",
   "type": "commonjs",
   "scripts": {
     "build:ci": "yarn clean && webpack-cli",

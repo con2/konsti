@@ -35,7 +35,7 @@ export const PostUserRequestSchema = z.object({
   serial: z
     .string()
     .optional()
-    .transform((val) => val?.replace(/-/g, "")) // remove dashes
+    .transform((val) => val?.replaceAll("-", "")) // remove dashes
     .refine((input) => {
       if (config.event().requireRegistrationCode) {
         if (!input || input.trim().length === 0) {
