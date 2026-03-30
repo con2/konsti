@@ -88,7 +88,7 @@ export const eventConfig: EventConfig = {
   fixedLotterySignupTime: null,
 
   // Program items with parentId use startTime configured here
-  startTimesByParentIds: new Map([]),
+  startTimesByParentIds: new Map(),
 
   defaultSignupType: SignupType.KONSTI,
 };

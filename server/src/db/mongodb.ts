@@ -16,7 +16,7 @@ const connectToDb = async (
     await mongoose.connect(dbConnString, options);
   } catch (error) {
     // eslint-disable-next-line no-restricted-syntax -- Server startup
-    throw new Error(`MongoDB: Error connecting to DB: ${String(error)}`);
+    throw new Error("MongoDB: Error connecting to DB", { cause: error });
   }
 
   logger.info("MongoDB: Connection successful");
@@ -31,9 +31,9 @@ const gracefulExit = async (): Promise<void> => {
     await mongoose.connection.close();
   } catch (error) {
     // eslint-disable-next-line no-restricted-syntax -- Server startup
-    throw new Error(
-      `MongoDB: Error shutting down db connection: ${String(error)}`,
-    );
+    throw new Error("MongoDB: Error shutting down db connection", {
+      cause: error,
+    });
   }
 
   logger.info("MongoDB connection closed");

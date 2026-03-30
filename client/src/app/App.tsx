@@ -18,7 +18,7 @@ import { HistoryProvider } from "client/app/HistoryContext";
 const { loadedSettings, showTestValues, showAnnouncement, dataUpdateInterval } =
   config.client();
 
-export const App = (): ReactElement => {
+const App = (): ReactElement => {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {

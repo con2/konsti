@@ -6,7 +6,7 @@
   "author": {
     "name": "Arttu Hanska"
   },
-  "main": "index.ts",
+  "main": "src/index.ts",
   "type": "commonjs",
   "scripts": {
     "eslint": "yarn run -T eslint --no-warn-ignored .",
