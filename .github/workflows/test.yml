@@ -23,7 +23,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Set actionlint Problem Matchers
         run: |
@@ -36,7 +36,7 @@ jobs:
           args: -color
 
       - name: Use Node.js 24.14.1
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: 24.14.1
           cache: "yarn"
@@ -70,7 +70,7 @@ jobs:
           yarn type-check
 
       - name: Cache MongoDB binary
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ~/.cache/mongodb-binaries
           key: mongodb-8.0.11
@@ -84,7 +84,7 @@ jobs:
           yarn docker-compose:test
 
       - name: Upload test results if Playwright tests failed
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         if: failure()
         with:
           name: playwright-videos
