@@ -1,4 +1,4 @@
-name: deploy-staging
+name: deploy
 
 permissions:
   contents: read
@@ -8,12 +8,24 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Environment to deploy"
+        type: choice
+        options:
+          - staging
+          - prod
+        default: prod
 
 env:
   SKAFFOLD_DEFAULT_REPO: ghcr.io/con2
+  # Push to main auto-deploys staging, workflow_dispatch uses selected environment
+  DEPLOY_ENV: ${{ github.event_name == 'push' && 'staging' || inputs.environment }}
 
 jobs:
   build:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
@@ -29,10 +41,11 @@ jobs:
           push: true
           tags: ghcr.io/con2/konsti:${{ github.sha }}
           build-args: |
-            env=staging
+            env=${{ env.DEPLOY_ENV }}
 
   deploy:
     needs: build
+    if: github.ref == 'refs/heads/main'
     runs-on: qb-arc-runners
     steps:
       - uses: actions/checkout@v4
@@ -68,12 +81,18 @@ jobs:
       - name: Disable skaffold telemetry
         run: skaffold config set --global collect-metrics false
       - name: Deploy with skaffold
+        env:
+          SKAFFOLD_ENV: ${{ env.DEPLOY_ENV == 'prod' && 'production' || env.DEPLOY_ENV }}
         run: |
           python3 -m pip install setuptools emskaffolden
-          emskaffolden -E staging -- deploy -n konsti-staging --images "konsti=ghcr.io/con2/konsti:${{ github.sha }}"
+          emskaffolden -E "$SKAFFOLD_ENV" \
+            -- deploy -n "konsti-$SKAFFOLD_ENV" \
+            --images "konsti=ghcr.io/con2/konsti:${{ github.sha }}"
 
   sentry-release:
     needs: deploy
+    if: github.ref == 'refs/heads/main'
+
     runs-on: ubuntu-24.04
 
     env:
@@ -96,27 +115,27 @@ jobs:
         run: |
           yarn --immutable
 
-      - name: Build staging frontend
+      - name: Build frontend
         run: |
-          yarn build-front:staging
+          yarn build-front:${{ env.DEPLOY_ENV }}
 
-      - name: Create staging frontend Sentry release
+      - name: Create frontend Sentry release
         uses: getsentry/action-release@v1
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
           SENTRY_ORG: konsti
-          SENTRY_PROJECT: konsti-frontend-staging
+          SENTRY_PROJECT: konsti-frontend-${{ env.DEPLOY_ENV }}
         with:
           sourcemaps: "./client/build"
           ignore_missing: true
           ignore_empty: true
 
-      - name: Create staging backend Sentry release
+      - name: Create backend Sentry release
         uses: getsentry/action-release@v1
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
           SENTRY_ORG: konsti
-          SENTRY_PROJECT: konsti-backend-staging
+          SENTRY_PROJECT: konsti-backend-${{ env.DEPLOY_ENV }}
         with:
           ignore_missing: true
           ignore_empty: true
