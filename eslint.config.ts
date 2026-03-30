@@ -4,7 +4,7 @@ import { defineConfig, globalIgnores } from "eslint/config";
 import globals from "globals";
 import eslintPluginCommentsConfigs from "@eslint-community/eslint-plugin-eslint-comments/configs";
 import eslintPluginCompat from "eslint-plugin-compat";
-import eslintPluginImport from "eslint-plugin-import";
+import eslintPluginImport from "eslint-plugin-import-x";
 import eslintPluginJsxA11y from "eslint-plugin-jsx-a11y";
 import eslintPluginN from "eslint-plugin-n";
 import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
@@ -17,7 +17,7 @@ import eslintPluginUnicorn from "eslint-plugin-unicorn";
 import eslintPluginVitest from "@vitest/eslint-plugin";
 // @ts-expect-error: Missing types
 import eslintPluginOnlyError from "eslint-plugin-only-error";
-// eslint-disable-next-line import/no-namespace
+// eslint-disable-next-line import-x/no-namespace
 import * as eslintPluginMdx from "eslint-plugin-mdx";
 import typescriptEslint from "typescript-eslint";
 import { includeIgnoreFile } from "@eslint/compat";
@@ -28,7 +28,7 @@ const filetypesGlob = "**/*.{ts,tsx,cts,mts,js,cjs,mjs}";
 // @ts-expect-error: import.met not allowed
 const gitignorePath = fileURLToPath(new URL(".gitignore", import.meta.url));
 
-// eslint-disable-next-line import/no-unused-modules
+// eslint-disable-next-line import-x/no-unused-modules
 export default defineConfig([
   eslint.configs.recommended,
   typescriptEslint.configs.strictTypeChecked,
@@ -82,12 +82,12 @@ export default defineConfig([
     },
 
     settings: {
-      "import/resolver": {
+      "import-x/resolver": {
         typescript: true,
       },
       // Regex for packages that should be treated as internal
-      "import/internal-regex": "shared",
-      "import/parsers": {
+      "import-x/internal-regex": "shared",
+      "import-x/parsers": {
         "eslint-mdx": [".mdx"],
       },
     },
@@ -130,10 +130,10 @@ export default defineConfig([
       curly: "error",
       "no-implicit-coercion": ["error", { boolean: false }],
 
-      // eslint-plugin-import
-      "import/no-unused-modules": ["error", { unusedExports: true }],
-      "import/order": ["error", { groups: ["builtin", "external"] }],
-      "import/no-namespace": [
+      // eslint-plugin-import-x
+      "import-x/no-unused-modules": ["error", { unusedExports: true }],
+      "import-x/order": ["error", { groups: ["builtin", "external"] }],
+      "import-x/no-namespace": [
         "error",
         {
           ignore: [
@@ -143,15 +143,15 @@ export default defineConfig([
           ],
         },
       ], // Don't want to use namespace imports
-      "import/no-unresolved": [
+      "import-x/no-unresolved": [
         "error",
         { ignore: [String.raw`.gif$`, String.raw`.svg$`] },
       ],
 
-      "import/namespace": "off", // Don't want to use namespace imports
-      "import/no-named-as-default": "off", // Doesn't work with styled-components
-      "import/no-named-as-default-member": "off", // Doesn't work with i18next.use()
-      "import/default": "off", // Doesn't work with prettier default import
+      "import-x/namespace": "off", // Don't want to use namespace imports
+      "import-x/no-named-as-default": "off", // Doesn't work with styled-components
+      "import-x/no-named-as-default-member": "off", // Doesn't work with i18next.use()
+      "import-x/default": "off", // Doesn't work with prettier default import
 
       // @vitest/eslint-plugin
       "vitest/no-disabled-tests": "error",

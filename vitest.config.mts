@@ -1,6 +1,6 @@
 import { defineConfig } from "vitest/config";
 
-// eslint-disable-next-line import/no-unused-modules
+// eslint-disable-next-line import-x/no-unused-modules
 export default defineConfig({
   test: {
     projects: [

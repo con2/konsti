@@ -201,5 +201,5 @@ const getWebpackConfig = (): Configuration | undefined => {
 
 const webpackConfig = getWebpackConfig();
 
-// eslint-disable-next-line import/no-unused-modules
+// eslint-disable-next-line import-x/no-unused-modules
 export default webpackConfig;
