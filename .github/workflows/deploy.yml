@@ -81,9 +81,13 @@ jobs:
       - name: Disable skaffold telemetry
         run: skaffold config set --global collect-metrics false
       - name: Deploy with skaffold
+        env:
+          SKAFFOLD_ENV: ${{ env.DEPLOY_ENV == 'prod' && 'production' || env.DEPLOY_ENV }}
         run: |
           python3 -m pip install setuptools emskaffolden
-          emskaffolden -E ${{ env.DEPLOY_ENV == 'prod' && 'production' || env.DEPLOY_ENV }} -- deploy -n konsti-${{ env.DEPLOY_ENV == 'prod' && 'production' || env.DEPLOY_ENV }} --images "konsti=ghcr.io/con2/konsti:${{ github.sha }}"
+          emskaffolden -E "$SKAFFOLD_ENV" \
+            -- deploy -n "konsti-$SKAFFOLD_ENV" \
+            --images "konsti=ghcr.io/con2/konsti:${{ github.sha }}"
 
   sentry-release:
     needs: deploy
