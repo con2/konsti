@@ -16,7 +16,7 @@ Konsti is used by conventions like [Ropecon](https://ropecon.fi), [Tracon](https
 ## Quick Start
 
 - Requirements
-  - Node.js 22.11.0
+  - Node.js 24.14.1
   - Docker
   - Yarn
 
