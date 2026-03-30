@@ -39,19 +39,30 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.x"
-      - name: Check if skaffold and kubectl found from cache
-        id: cache-bin
+      - name: Cache skaffold
+        id: cache-skaffold
         uses: actions/cache@v4
         with:
-          path: bin
-          key: ${{ runner.os }}-bin
-      - name: Download skaffold and kubectl
-        if: steps.cache-bin.outputs.cache-hit != 'true'
+          path: bin/skaffold
+          key: ${{ runner.os }}-skaffold-v2.18.2
+      - name: Download skaffold
+        if: steps.cache-skaffold.outputs.cache-hit != 'true'
         run: |
-          mkdir bin
-          curl -Lo bin/skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64
+          mkdir -p bin
+          curl -Lo bin/skaffold https://storage.googleapis.com/skaffold/releases/v2.18.2/skaffold-linux-amd64
+          chmod +x bin/skaffold
+      - name: Cache kubectl
+        id: cache-kubectl
+        uses: actions/cache@v4
+        with:
+          path: bin/kubectl
+          key: ${{ runner.os }}-kubectl-v1.22.0
+      - name: Download kubectl
+        if: steps.cache-kubectl.outputs.cache-hit != 'true'
+        run: |
+          mkdir -p bin
           curl -Lo bin/kubectl https://dl.k8s.io/release/v1.22.0/bin/linux/amd64/kubectl
-          chmod +x bin/skaffold bin/kubectl
+          chmod +x bin/kubectl
       - name: Add skaffold and kubectl to PATH
         run: echo "$PWD/bin" >> "$GITHUB_PATH"
       - name: Disable skaffold telemetry
