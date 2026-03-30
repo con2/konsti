@@ -30,6 +30,7 @@ export const AdmissionTicketView = (): ReactElement => {
   const username = useAppSelector((state) => state.login.username);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setLoading(false);
   }, [/* effect dep */ foundProgramItem, /* effect dep */ isSignedUp]);
 

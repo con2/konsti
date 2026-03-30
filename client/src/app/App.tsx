@@ -22,7 +22,6 @@ const App = (): ReactElement => {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    setLoading(true);
     const fetchData = async (): Promise<void> => {
       await loadData();
       setLoading(false);
