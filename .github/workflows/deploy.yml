@@ -1,5 +1,5 @@
 name: deploy
-run-name: deploy ${{ github.event_name == 'push' && 'staging' || inputs.environment }}
+run-name: deploy-${{ github.event_name == 'push' && 'staging' || inputs.environment }}
 
 permissions:
   contents: read
