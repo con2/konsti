@@ -1,0 +1,32 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node -e \"console.log('Reminder: use yarn, not npm.')\""
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "npx tsx .claude/hooks/prettier.ts"
+          },
+          {
+            "type": "command",
+            "command": "npx tsx .claude/hooks/typecheck-if-ts.ts",
+            "timeout": 120,
+            "statusMessage": "Type-checking..."
+          }
+        ]
+      }
+    ]
+  }
+}
