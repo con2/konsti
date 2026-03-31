@@ -19,10 +19,10 @@ export const resendSentryRequest = async (
     const header = JSON.parse(piece.toString());
 
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    const { host, pathname } = new url.URL(header.dsn as string);
+    const { hostname, pathname } = new url.URL(header.dsn as string);
 
-    if (!host.includes(sentryHost)) {
-      logger.error("%s", new Error(`invalid host: ${host}`));
+    if (hostname.toLowerCase() !== sentryHost) {
+      logger.error("%s", new Error(`invalid host: ${hostname}`));
       return {
         message: "Sentry tunnel: Invalid host",
         status: "error",
