@@ -46,7 +46,7 @@
     "stylelint": "yarn workspace konsti-client stylelint",
     "test-assign": "yarn workspace konsti-server test-assign",
     "test:watch": "yarn vitest watch",
-    "knip": "NODE_OPTIONS='--experimental-require-module' knip",
+    "knip": "knip",
     "test": "yarn vitest run",
     "type-check": "tsc --noEmit",
     "update-yarn": "yarn set version stable"
