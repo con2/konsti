@@ -28,6 +28,7 @@ const config: KnipConfig = {
     "server/src/test/scripts/removeInvalidProgramItems.ts",
     "server/src/types/declarations/eventassigner-js.ts",
     "server/src/test/globalSetup.ts",
+    ".claude/hooks/*.ts",
   ],
 
   rules: {
