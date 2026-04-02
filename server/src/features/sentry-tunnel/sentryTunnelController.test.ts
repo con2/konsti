@@ -30,7 +30,7 @@ describe(`POST ${ApiEndpoint.SENTRY_TUNNEL}`, () => {
     const envelope = [
       JSON.stringify({
         event_id: "abc123",
-        dsn: "https://public@sentry.io/6579203",
+        dsn: "https://public@o123.ingest.sentry.io/6579203",
       }),
       JSON.stringify({
         type: "event",
