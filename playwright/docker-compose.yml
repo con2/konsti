@@ -3,6 +3,8 @@ services:
     build:
       context: ../ # In relation to root level docker-compose.yml file
       dockerfile: ./playwright/Dockerfile
+      args:
+        PLAYWRIGHT_VERSION: ${PLAYWRIGHT_VERSION}
     environment:
       - PLAYWRIGHT_BASEURL=http://server:5000
       - CI=true
