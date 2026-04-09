@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
     "target": "es2019",
     "module": "commonjs",
     "lib": ["es2017", "esnext", "dom"],
@@ -8,17 +7,19 @@
     "skipLibCheck": true,
     "strict": true,
     "noImplicitAny": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "allowUnreachableCode": false,
     "noErrorTruncation": true,
+    "types": ["node", "mdx"],
     "libReplacement": false,
     "paths": {
-      "client/*": ["client/src/*"],
-      "server/*": ["server/src/*"],
-      "shared/*": ["shared/*"]
+      "client/*": ["./client/src/*"],
+      "server/*": ["./server/src/*"],
+      "shared/*": ["./shared/*"],
+      "playwright/*": ["./playwright/*"]
     }
   }
 }
