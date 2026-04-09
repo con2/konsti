@@ -36,13 +36,13 @@
     "docker:db": "tsx src/test/scripts/dockerDb.ts"
   },
   "dependencies": {
-    "@faker-js/faker": "10.3.0",
-    "@sentry/node": "10.45.0",
+    "@faker-js/faker": "10.4.0",
+    "@sentry/node": "10.47.0",
     "@vercel/ncc": "0.38.4",
     "bcryptjs": "3.0.3",
     "commander": "14.0.3",
     "croner": "10.0.1",
-    "dotenv": "17.3.1",
+    "dotenv": "17.4.0",
     "eventassigner-js": "0.1.6",
     "eventassigner-random": "0.3.2",
     "express": "5.2.1",
