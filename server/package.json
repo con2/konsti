@@ -53,11 +53,11 @@
     "generate-serial-number": "0.0.3",
     "helmet": "8.1.0",
     "jsonwebtoken": "9.0.3",
-    "mongoose": "9.3.1",
+    "mongoose": "9.3.3",
     "mongoose-lean-getters": "2.3.1",
     "mongoose-lean-virtuals": "2.1.0",
     "morgan": "1.10.1",
-    "nodemailer": "8.0.3",
+    "nodemailer": "8.0.4",
     "tsx": "4.21.0",
     "winston": "3.19.0",
     "winston-transport-sentry-node": "3.0.0"
