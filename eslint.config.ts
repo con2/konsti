@@ -171,6 +171,7 @@ export default defineConfig([
       "unicorn/no-array-sort": "off", // Wait till toSorted is more widely supported
 
       // @typescript-eslint
+      "@typescript-eslint/no-unnecessary-type-arguments": "off", // Doesn't work with API types <Response,Request>
       "@typescript-eslint/explicit-module-boundary-types": "error",
       "@typescript-eslint/explicit-function-return-type": [
         "error",
