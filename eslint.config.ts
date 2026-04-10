@@ -51,6 +51,7 @@ export default defineConfig([
     "**/front/**",
     "**/build/**",
     "client/babel.config.js",
+    "client/vite.config.ts",
     "yarn.config.cjs",
   ]),
 

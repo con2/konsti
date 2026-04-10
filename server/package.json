@@ -63,6 +63,7 @@
     "winston-transport-sentry-node": "3.0.0"
   },
   "devDependencies": {
+    "@types/express": "5.0.6",
     "@types/jsonwebtoken": "9.0.10",
     "@types/morgan": "1.9.10",
     "@types/node": "25.5.0",

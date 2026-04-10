@@ -72,8 +72,6 @@ import { postAssignment } from "server/features/assignment/assignmentController"
 
 export const apiRoutes = express.Router();
 
-/* eslint-disable @typescript-eslint/no-misused-promises */
-
 /* POST routes */
 
 apiRoutes.post(ApiEndpoint.PROGRAM_ITEMS, postUpdateProgramItems);
@@ -145,5 +143,3 @@ if (process.env.NODE_ENV === "development") {
   apiRoutes.get("/api/v2/people/me", getKompassiLoginMockProfile);
   apiRoutes.get("/logout", getKompassiLoginMockLogout);
 }
-
-/* eslint-enable @typescript-eslint/no-misused-promises */
