@@ -8,13 +8,13 @@ Konsti is an event signup tool for conventions (Ropecon, Tracon, etc.). Users br
 
 ## Monorepo Structure
 
-- **client/** — React 19 frontend (Webpack, Redux Toolkit, styled-components, i18next for fi/en)
+- **client/** — React 19 frontend (Vite, Redux Toolkit, styled-components, i18next for fi/en)
 - **server/** — Express 5 backend (MongoDB/Mongoose, JWT auth, lottery assignment algorithms)
 - **shared/** — Types, constants, configs, and utilities imported by client and server (not a Yarn workspace, used as a TypeScript path)
 - **playwright/** — E2E tests
 - **eslint-rules/** — Custom ESLint rules
 
-Yarn 4 workspaces. Node >= 24.14.1. Use yarn, not npm. All code and scripts must be OS agnostic (Linux, Mac, Windows).
+Yarn 4 workspaces. Node >= 24.14.1. Use yarn, not npm. All code and scripts must be OS agnostic (Linux, Mac, Windows). Use exact dependency versions (e.g., `"vite": "7.3.1"`, not `"~7.3.1"` or `"^7.3.1"`).
 
 ## Common Commands
 

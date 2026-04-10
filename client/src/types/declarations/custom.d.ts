@@ -1,9 +1,10 @@
 declare module "*.gif" {
-  const content: string;
-  export = content;
+  const src: string;
+  export default src;
 }
 
 declare module "*.svg" {
-  const src: string;
-  export = src;
+  import type { FC, SVGProps } from "react";
+  const ReactComponent: FC<SVGProps<SVGSVGElement>>;
+  export default ReactComponent;
 }

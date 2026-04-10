@@ -1,4 +1,3 @@
-import "regenerator-runtime/runtime";
 import i18next from "i18next";
 import { initReactI18next } from "react-i18next";
 import { getIconLibrary } from "client/utils/icons";
