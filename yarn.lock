@@ -8274,13 +8274,14 @@ __metadata:
     react-i18next: "npm:17.0.2"
     react-redux: "npm:9.2.0"
     react-router: "npm:7.13.2"
+    rollup: "npm:4.60.1"
     styled-components: "npm:6.3.12"
     stylelint: "npm:17.6.0"
     stylelint-config-standard: "npm:40.0.0"
     stylelint-no-unsupported-browser-features: "npm:8.1.1"
     use-debounce: "npm:10.1.1"
     vite: "npm:7.3.1"
-    vite-plugin-compression2: "npm:1.4.0"
+    vite-plugin-compression2: "npm:2.5.3"
     vite-plugin-static-copy: "npm:3.4.0"
     vite-plugin-svgr: "npm:4.5.0"
     vite-tsconfig-paths: "npm:5.1.4"
@@ -11283,7 +11284,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rollup@npm:^4.43.0":
+"rollup@npm:4.60.1, rollup@npm:^4.43.0":
   version: 4.60.1
   resolution: "rollup@npm:4.60.1"
   dependencies:
@@ -13046,15 +13047,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite-plugin-compression2@npm:1.4.0":
-  version: 1.4.0
-  resolution: "vite-plugin-compression2@npm:1.4.0"
+"vite-plugin-compression2@npm:2.5.3":
+  version: 2.5.3
+  resolution: "vite-plugin-compression2@npm:2.5.3"
   dependencies:
     "@rollup/pluginutils": "npm:^5.1.0"
     tar-mini: "npm:^0.2.0"
-  peerDependencies:
-    vite: ^2.0.0||^3.0.0||^4.0.0||^5.0.0 ||^6.0.0
-  checksum: 10c0/9857b48e0c0a386e562599254ef24a405d068793021bfe000aabe0a754d19c1a2dd4845fd0b976e72cd7ed2686c1eff6bd20d1f22fba55b72c3a20d9048bdc19
+  checksum: 10c0/c5311b8040e156adb6ae0c7aabb0ef90e55a76292dcf70ac53af34611daf6c47c0a1a443f6ada0e717a8f104f30f8073d2f3b3b7832a2edbd7af68085c6dffaf
   languageName: node
   linkType: hard
 

@@ -56,11 +56,12 @@
     "postcss": "8.5.8",
     "postcss-styled-syntax": "0.7.1",
     "postcss-syntax": "0.36.2",
+    "rollup": "4.60.1",
     "stylelint": "17.6.0",
     "stylelint-config-standard": "40.0.0",
     "stylelint-no-unsupported-browser-features": "8.1.1",
     "vite": "7.3.1",
-    "vite-plugin-compression2": "1.4.0",
+    "vite-plugin-compression2": "2.5.3",
     "vite-plugin-static-copy": "3.4.0",
     "vite-plugin-svgr": "4.5.0",
     "vite-tsconfig-paths": "5.1.4"

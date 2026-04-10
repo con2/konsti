@@ -37,12 +37,7 @@ export default defineConfig(({ mode }) => {
         ],
       }),
       compression({
-        algorithm: "gzip",
-        include: /\.(js|html|svg)$/,
-        threshold: 10240,
-      }),
-      compression({
-        algorithm: "brotliCompress",
+        algorithms: ["gzip", "brotliCompress"],
         include: /\.(js|html|svg)$/,
         threshold: 10240,
       }),
