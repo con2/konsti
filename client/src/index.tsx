@@ -1,6 +1,3 @@
-// eslint-disable-next-line unicorn/no-unnecessary-polyfills
-import "core-js/stable";
-import "regenerator-runtime/runtime";
 import { createRoot } from "react-dom/client";
 // eslint-disable-next-line @typescript-eslint/no-restricted-imports
 import React, { Suspense } from "react";
@@ -26,9 +23,7 @@ initializeDayjs();
 setLocale(getLocalStorageLocale());
 
 // Root component
-const App = lazyWithRetry(
-  async () => await import(/* webpackChunkName: "app" */ "client/app/App"),
-);
+const App = lazyWithRetry(async () => await import("client/app/App"));
 
 const { enableAxe, enableWhyDidYouRender } = config.client();
 
