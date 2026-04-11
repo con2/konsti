@@ -3,7 +3,6 @@ import { defineConfig, loadEnv } from "vite";
 import react from "@vitejs/plugin-react";
 import svgr from "vite-plugin-svgr";
 import mdx from "@mdx-js/rollup";
-import tsconfigPaths from "vite-tsconfig-paths";
 import { compression } from "vite-plugin-compression2";
 import { viteStaticCopy } from "vite-plugin-static-copy";
 
@@ -19,7 +18,6 @@ export default defineConfig(({ mode }) => {
     },
 
     plugins: [
-      tsconfigPaths({ root: path.resolve(__dirname, "..") }),
       mdx(),
       svgr({
         include: "**/*.svg",
@@ -44,6 +42,7 @@ export default defineConfig(({ mode }) => {
     ],
 
     resolve: {
+      tsconfigPaths: true,
       alias: {
         assets: path.resolve(__dirname, "assets"),
       },
