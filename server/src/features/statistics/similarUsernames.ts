@@ -19,15 +19,16 @@ export const getSimilarUsernames = (year: number, event: string): void => {
   const results = usernames.flatMap((username, index) => {
     const lowercaseUsername = username.toLowerCase();
 
-    const usernamesWithoutCurrent = usernames
-      .toSpliced(index, 1)
-      .filter((comparedUsername) => {
-        // Don't include usernames where two first letters are same
-        return (
-          comparedUsername.startsWith(lowercaseUsername[0]) &&
-          comparedUsername[1] === lowercaseUsername[1]
-        );
-      });
+    const usernamesWithoutCurrent = [
+      ...usernames.slice(0, index),
+      ...usernames.slice(index + 1),
+    ].filter((comparedUsername) => {
+      // Don't include usernames where two first letters are same
+      return (
+        comparedUsername.startsWith(lowercaseUsername[0]) &&
+        comparedUsername[1] === lowercaseUsername[1]
+      );
+    });
 
     const closestSimilarUsername = closest(username, usernamesWithoutCurrent);
     if (!closestSimilarUsername) {
