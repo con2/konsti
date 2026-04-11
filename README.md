@@ -63,7 +63,7 @@ In this case, access the frontend at `localhost:5000`.
 - Frontend
   - React
   - Redux & Redux Toolkit
-  - Webpack
+  - Vite
   - styled-components
   - stylelint
 
