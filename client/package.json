@@ -50,21 +50,19 @@
     "@types/mdx": "2.0.13",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
-    "@vitejs/plugin-react": "4.7.0",
+    "@vitejs/plugin-react": "6.0.1",
     "@welldone-software/why-did-you-render": "10.0.1",
     "jsdom": "29.0.1",
     "postcss": "8.5.8",
     "postcss-styled-syntax": "0.7.1",
     "postcss-syntax": "0.36.2",
-    "rollup": "4.60.1",
     "stylelint": "17.6.0",
     "stylelint-config-standard": "40.0.0",
     "stylelint-no-unsupported-browser-features": "8.1.1",
-    "vite": "7.3.1",
+    "vite": "8.0.3",
     "vite-plugin-compression2": "2.5.3",
-    "vite-plugin-static-copy": "3.4.0",
-    "vite-plugin-svgr": "4.5.0",
-    "vite-tsconfig-paths": "5.1.4"
+    "vite-plugin-static-copy": "4.0.1",
+    "vite-plugin-svgr": "5.2.0"
   },
   "engines": {
     "node": ">=24.14.1"
