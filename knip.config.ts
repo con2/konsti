@@ -4,7 +4,6 @@ const config: KnipConfig = {
   ignoreBinaries: ["husky"],
   ignoreDependencies: [
     "browserslist",
-    "form-data",
     "@svgr/webpack",
     "@babel/cli",
     "@babel/node",
