@@ -40,7 +40,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/con2/konsti:${{ github.sha }}
+          tags: ghcr.io/con2/konsti:${{ github.sha }}-${{ env.DEPLOY_ENV }}
           build-args: |
             env=${{ env.DEPLOY_ENV }}
 
@@ -88,7 +88,7 @@ jobs:
           python3 -m pip install setuptools emskaffolden
           emskaffolden -E "$SKAFFOLD_ENV" \
             -- deploy -n "konsti-$SKAFFOLD_ENV" \
-            --images "konsti=ghcr.io/con2/konsti:${{ github.sha }}"
+            --images "konsti=ghcr.io/con2/konsti:${{ github.sha }}-${{ env.DEPLOY_ENV }}"
 
   sentry-release:
     needs: deploy
