@@ -2,11 +2,10 @@
   "compilerOptions": {
     "target": "es2022",
     "module": "commonjs",
-    "lib": ["es2017", "esnext", "dom"],
+    "lib": ["es2022", "dom"],
     "jsx": "react-jsx",
     "skipLibCheck": true,
     "strict": true,
-    "noImplicitAny": true,
     "moduleResolution": "bundler",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
