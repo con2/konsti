@@ -1,5 +1,4 @@
 import url from "node:url";
-import axios from "axios";
 import { logger } from "server/utils/logger";
 import { ApiError } from "shared/types/api/errors";
 
@@ -42,8 +41,10 @@ export const resendSentryRequest = async (
     }
 
     const sentryUrl = `https://${sentryHost}/api/${projectId}/envelope/`;
-    await axios.post<unknown>(sentryUrl, envelope, {
+    await fetch(sentryUrl, {
+      method: "POST",
       headers: { "Content-Type": "application/x-sentry-envelope" },
+      body: new Uint8Array(envelope),
     });
 
     return null;

@@ -1,6 +1,5 @@
 import fs from "node:fs";
 import path from "node:path";
-import axios from "axios";
 import dayjs from "dayjs";
 import { z, ZodError } from "zod";
 import { first, unique } from "remeda";
@@ -216,8 +215,13 @@ export const getProgramFromServer = async (): Promise<
   const headers = { "Content-Type": "application/json" };
 
   try {
-    const response = await axios.post<unknown>(url, body, { headers });
-    const result = KompassiResponseFormSchema.safeParse(response.data);
+    const response = await fetch(url, {
+      method: "POST",
+      headers,
+      body: JSON.stringify(body),
+    });
+    const responseData = await response.json();
+    const result = KompassiResponseFormSchema.safeParse(responseData);
     if (!result.success) {
       logger.error(
         "Error downloading program items from Kompassi: %s",
