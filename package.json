@@ -48,7 +48,7 @@
     "test:watch": "yarn vitest watch",
     "knip": "knip",
     "test": "yarn vitest run",
-    "type-check": "tsc --noEmit",
+    "type-check": "tsc -p client --noEmit && tsc -p server --noEmit",
     "update-yarn": "yarn set version stable"
   },
   "dependencies": {

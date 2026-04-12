@@ -2,5 +2,13 @@
 # https://github.com/browserslist/browserslist
 # https://browsersl.ist
 
-defaults
-not OperaMini all
+chrome >= 90       # Chrome
+edge >= 90         # Edge
+firefox >= 88      # Firefox
+safari >= 14.1     # Safari
+ios_saf >= 14.5    # iOS Safari
+and_chr >= 90      # Chrome for Android
+and_ff >= 88       # Firefox for Android
+samsung >= 15      # Samsung Internet
+op_mob >= 80       # Opera Mobile
+not OperaMini all  # Exclude Opera Mini

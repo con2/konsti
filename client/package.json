@@ -52,6 +52,7 @@
     "@types/react-dom": "19.2.3",
     "@vitejs/plugin-react": "6.0.1",
     "@welldone-software/why-did-you-render": "10.0.1",
+    "browserslist-to-esbuild": "2.1.1",
     "jsdom": "29.0.1",
     "postcss": "8.5.8",
     "postcss-styled-syntax": "0.7.1",

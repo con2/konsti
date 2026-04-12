@@ -55,15 +55,20 @@ const apiFetch = async <T>(
     headers.Authorization = `Bearer ${authToken}`;
   }
 
+  // Change to AbortSignal.timeout() at some point when browsers mature more
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 60000);
+
   let response: Response;
   try {
     response = await fetch(`${baseURL}${url}`, {
       method,
       headers,
       body: body === undefined ? undefined : JSON.stringify(body),
-      signal: AbortSignal.timeout(60000),
+      signal: controller.signal,
     });
   } catch {
+    clearTimeout(timeoutId);
     store.dispatch(addError(t(BackendErrorType.NETWORK_ERROR)));
 
     const error: ApiError = {
@@ -73,6 +78,8 @@ const apiFetch = async <T>(
     };
     return { data: error as T };
   }
+
+  clearTimeout(timeoutId);
 
   // Handle redirect responses (301/302 with JSON body containing location)
   if ([301, 302].includes(response.status)) {

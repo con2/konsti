@@ -29,6 +29,7 @@ stats.json
 front
 build
 lib
+*.tsbuildinfo
 
 # Zip files
 *.zip

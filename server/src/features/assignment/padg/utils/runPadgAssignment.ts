@@ -18,7 +18,6 @@ import { logger } from "server/utils/logger";
 import {
   PadgInput,
   ListItem,
-  Event,
   PadgRandomAssignResult,
   PadgError,
 } from "server/types/assignmentTypes";
