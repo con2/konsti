@@ -3,16 +3,19 @@ import { defineConfig } from "vitest/config";
 
 export default defineConfig({
   test: {
-    environment: "node",
-    setupFiles: ["./setupTests.ts"],
+    environment: "jsdom",
+    setupFiles: ["./src/test/setupTests.ts"],
+    exclude: ["playwright"],
     coverage: {
       provider: "istanbul",
+      include: ["src"],
       reporter: ["text", "html", "lcov"],
     },
   },
   resolve: {
     alias: {
-      shared: path.resolve(__dirname, "./"),
+      client: path.resolve(import.meta.dirname, "./src"),
+      shared: path.resolve(import.meta.dirname, "../shared"),
     },
   },
 });

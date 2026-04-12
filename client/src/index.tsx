@@ -28,20 +28,20 @@ const App = lazyWithRetry(async () => await import("client/app/App"));
 const { enableAxe, enableWhyDidYouRender } = config.client();
 
 if (enableWhyDidYouRender && process.env.NODE_ENV === "development") {
-  // eslint-disable-next-line @typescript-eslint/no-require-imports, @typescript-eslint/no-unsafe-assignment
-  const whyDidYouRender = require("@welldone-software/why-did-you-render");
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-  whyDidYouRender(React, {
-    include: [/(.*?)/],
-    exclude: [/^FontAwesomeIcon$/, /^Link$/, /^Button$/],
-  });
+  void import("@welldone-software/why-did-you-render").then(
+    ({ default: whyDidYouRender }) => {
+      return whyDidYouRender(React, {
+        include: [/(.*?)/],
+        exclude: [/^FontAwesomeIcon$/, /^Link$/, /^Button$/],
+      });
+    },
+  );
 }
 
 if (enableAxe && process.env.NODE_ENV === "development") {
-  // eslint-disable-next-line @typescript-eslint/no-require-imports, @typescript-eslint/no-unsafe-assignment
-  const axe = require("@axe-core/react");
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-  axe(React, ReactDOM, 1000);
+  void import("@axe-core/react").then(({ default: axe }) => {
+    return axe(React, ReactDOM, 1000);
+  });
 }
 
 const getDsn = (): string | undefined => {

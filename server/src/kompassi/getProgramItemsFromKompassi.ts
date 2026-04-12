@@ -142,7 +142,10 @@ const getProgramFromLocalFile = (): Result<unknown, KompassiError> => {
   const { localKompassiFile } = config.server();
 
   const rawData = fs.readFileSync(
-    path.join(__dirname, `../test/kompassi-data-dumps/${localKompassiFile}`),
+    path.join(
+      import.meta.dirname,
+      `../test/kompassi-data-dumps/${localKompassiFile}`,
+    ),
     "utf8",
   );
 
