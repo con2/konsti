@@ -3,8 +3,6 @@ import { config } from "shared/config";
 import {
   PostUpdateProgramItemsResponse,
   GetProgramItemsResponse,
-  PostUpdateProgramItemsError,
-  GetProgramItemsError,
 } from "shared/types/api/programItems";
 import {
   findProgramItems,
@@ -37,62 +35,61 @@ export const getProgramItemsForEvent = async (): Promise<
   return makeSuccessResult(kompassiProgramItemMapper(kompassiProgramItems));
 };
 
-export const updateProgramItems = async (): Promise<
-  PostUpdateProgramItemsResponse | PostUpdateProgramItemsError
-> => {
-  const programItemsResult = await getProgramItemsForEvent();
-  if (isErrorResult(programItemsResult)) {
-    return {
-      message: "Loading program items from Kompassi failed",
-      status: "error",
-      errorId: "kompassiError",
-    };
-  }
-
-  const programItems = unwrapResult(programItemsResult);
-  const saveProgramItemsResult = await saveProgramItems(programItems);
-  if (isErrorResult(saveProgramItemsResult)) {
-    return {
-      message: "Program items db update failed: Saving program items failed",
-      status: "error",
-      errorId: "unknown",
-    };
-  }
-
-  if (config.server().updateProgramItemPopularityEnabled) {
-    const updateProgramItemPopularityResult =
-      await updateProgramItemPopularity();
-    if (isErrorResult(updateProgramItemPopularityResult)) {
+export const updateProgramItems =
+  async (): Promise<PostUpdateProgramItemsResponse> => {
+    const programItemsResult = await getProgramItemsForEvent();
+    if (isErrorResult(programItemsResult)) {
       return {
-        message: "Program item popularity update failed",
+        message: "Loading program items from Kompassi failed",
+        status: "error",
+        errorId: "kompassiError",
+      };
+    }
+
+    const programItems = unwrapResult(programItemsResult);
+    const saveProgramItemsResult = await saveProgramItems(programItems);
+    if (isErrorResult(saveProgramItemsResult)) {
+      return {
+        message: "Program items db update failed: Saving program items failed",
         status: "error",
         errorId: "unknown",
       };
     }
-  }
 
-  const updatedProgramItemsResult = await findProgramItems();
-  if (isErrorResult(updatedProgramItemsResult)) {
+    if (config.server().updateProgramItemPopularityEnabled) {
+      const updateProgramItemPopularityResult =
+        await updateProgramItemPopularity();
+      if (isErrorResult(updateProgramItemPopularityResult)) {
+        return {
+          message: "Program item popularity update failed",
+          status: "error",
+          errorId: "unknown",
+        };
+      }
+    }
+
+    const updatedProgramItemsResult = await findProgramItems();
+    if (isErrorResult(updatedProgramItemsResult)) {
+      return {
+        message:
+          "Program items db update failed: Error loading updated program items",
+        status: "error",
+        errorId: "unknown",
+      };
+    }
+
+    const updatedProgramItems = unwrapResult(updatedProgramItemsResult);
+
     return {
-      message:
-        "Program items db update failed: Error loading updated program items",
-      status: "error",
-      errorId: "unknown",
+      message: "Program items db updated",
+      status: "success",
+      programItems: updatedProgramItems,
     };
-  }
-
-  const updatedProgramItems = unwrapResult(updatedProgramItemsResult);
-
-  return {
-    message: "Program items db updated",
-    status: "success",
-    programItems: updatedProgramItems,
   };
-};
 
 export const fetchProgramItems = async (
   userGroup: UserGroup | null,
-): Promise<GetProgramItemsResponse | GetProgramItemsError> => {
+): Promise<GetProgramItemsResponse> => {
   const programItemsResult = await findProgramItems();
   if (isErrorResult(programItemsResult)) {
     return {

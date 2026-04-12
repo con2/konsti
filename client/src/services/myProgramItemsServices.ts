@@ -1,23 +1,19 @@
 import { api } from "client/utils/api";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
-  DeleteDirectSignupError,
   DeleteDirectSignupRequest,
   DeleteDirectSignupResponse,
-  PostDirectSignupError,
   PostDirectSignupRequest,
   PostDirectSignupResponse,
-  PostLotterySignupError,
   PostLotterySignupRequest,
   PostLotterySignupResponse,
   DeleteLotterySignupRequest,
   DeleteLotterySignupResponse,
-  DeleteLotterySignupError,
 } from "shared/types/api/myProgramItems";
 
 export const postLotterySignup = async (
   requestData: PostLotterySignupRequest,
-): Promise<PostLotterySignupResponse | PostLotterySignupError> => {
+): Promise<PostLotterySignupResponse> => {
   const response = await api.post<
     PostLotterySignupResponse,
     PostLotterySignupRequest
@@ -27,7 +23,7 @@ export const postLotterySignup = async (
 
 export const deleteLotterySignup = async (
   requestData: DeleteLotterySignupRequest,
-): Promise<DeleteLotterySignupResponse | DeleteLotterySignupError> => {
+): Promise<DeleteLotterySignupResponse> => {
   const response = await api.delete<
     DeleteLotterySignupResponse,
     DeleteLotterySignupRequest
@@ -37,7 +33,7 @@ export const deleteLotterySignup = async (
 
 export const postDirectSignup = async (
   requestData: PostDirectSignupRequest,
-): Promise<PostDirectSignupResponse | PostDirectSignupError> => {
+): Promise<PostDirectSignupResponse> => {
   const response = await api.post<
     PostDirectSignupResponse,
     PostDirectSignupRequest
@@ -47,7 +43,7 @@ export const postDirectSignup = async (
 
 export const deleteDirectSignup = async (
   requestData: DeleteDirectSignupRequest,
-): Promise<DeleteDirectSignupResponse | DeleteDirectSignupError> => {
+): Promise<DeleteDirectSignupResponse> => {
   const response = await api.delete<
     DeleteDirectSignupResponse,
     DeleteDirectSignupRequest

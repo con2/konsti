@@ -12,7 +12,7 @@ import { saveProgramItems } from "server/features/program-item/programItemReposi
 import { findUser, saveUser } from "server/features/user/userRepository";
 import { mockLotterySignups, mockUser } from "server/test/mock-data/mockUser";
 import {
-  PostLotterySignupResponse,
+  PostLotterySignupResult,
   PostLotterySignupError,
   PostLotterySignupRequest,
   DeleteLotterySignupRequest,
@@ -292,7 +292,7 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
       );
     expect(response.status).toEqual(200);
 
-    const body = response.body as PostLotterySignupResponse;
+    const body = response.body as PostLotterySignupResult;
     expect(body.message).toEqual("Lottery signup success");
     expect(body.status).toEqual("success");
 
@@ -404,7 +404,7 @@ describe(`DELETE ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
       );
     expect(response.status).toEqual(200);
 
-    const body = response.body as PostLotterySignupResponse;
+    const body = response.body as PostLotterySignupResult;
     expect(body.message).toEqual("Lottery signup remove success");
     expect(body.status).toEqual("success");
 

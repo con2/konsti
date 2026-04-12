@@ -1,14 +1,11 @@
 import { Feedback } from "shared/types/models/feedback";
 import { saveFeedback } from "server/features/feedback/feedbackRepository";
-import {
-  PostFeedbackError,
-  PostFeedbackResponse,
-} from "shared/types/api/feedback";
+import { PostFeedbackResponse } from "shared/types/api/feedback";
 import { isSuccessResult } from "shared/utils/result";
 
 export const storeFeedback = async (
   feedbackData: Feedback,
-): Promise<PostFeedbackResponse | PostFeedbackError> => {
+): Promise<PostFeedbackResponse> => {
   const feedbackResult = await saveFeedback(feedbackData);
 
   if (isSuccessResult(feedbackResult)) {

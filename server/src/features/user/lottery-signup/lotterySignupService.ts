@@ -1,9 +1,7 @@
 import dayjs from "dayjs";
 import {
-  PostLotterySignupError,
   PostLotterySignupResponse,
   DeleteLotterySignupResponse,
-  DeleteLotterySignupError,
 } from "shared/types/api/myProgramItems";
 import {
   delLotterySignups,
@@ -33,9 +31,7 @@ export const storeLotterySignup = async ({
   programItemId,
   priority,
   username,
-}: StoreLotterySignupParams): Promise<
-  PostLotterySignupResponse | PostLotterySignupError
-> => {
+}: StoreLotterySignupParams): Promise<PostLotterySignupResponse> => {
   if (!validPriorities.has(priority)) {
     return {
       errorId: "invalidPriority",
@@ -168,7 +164,7 @@ export const storeLotterySignup = async ({
 export const removeLotterySignup = async (
   lotterySignupProgramItemId: string,
   username: string,
-): Promise<DeleteLotterySignupResponse | DeleteLotterySignupError> => {
+): Promise<DeleteLotterySignupResponse> => {
   const programItemResult = await findProgramItemById(
     lotterySignupProgramItemId,
   );

@@ -20,13 +20,15 @@ export const PostHiddenRequestSchema = z.object({
 
 export type PostHiddenRequest = z.infer<typeof PostHiddenRequestSchema>;
 
-export interface PostHiddenResponse extends ApiResult {
+export interface PostHiddenResult extends ApiResult {
   hiddenProgramItemIds: readonly string[];
 }
 
 export interface PostHiddenError extends ApiError {
   errorId: "unknown";
 }
+
+export type PostHiddenResponse = PostHiddenResult | PostHiddenError;
 
 // GET settings
 
@@ -39,11 +41,13 @@ export interface SettingsPayload {
   emailNotificationTrigger: EmailNotificationTrigger;
 }
 
-export type GetSettingsResponse = SettingsPayload & ApiResult;
+export type GetSettingsResult = SettingsPayload & ApiResult;
 
 export interface GetSettingsError extends ApiError {
   errorId: "unknown";
 }
+
+export type GetSettingsResponse = GetSettingsResult | GetSettingsError;
 
 // POST signup question
 
@@ -55,13 +59,17 @@ export type PostSignupQuestionRequest = z.infer<
   typeof PostSignupQuestionRequestSchema
 >;
 
-export interface PostSignupQuestionResponse extends ApiResult {
+export interface PostSignupQuestionResult extends ApiResult {
   signupQuestions: readonly SignupQuestion[];
 }
 
 export interface PostSignupQuestionError extends ApiError {
   errorId: "unknown";
 }
+
+export type PostSignupQuestionResponse =
+  | PostSignupQuestionResult
+  | PostSignupQuestionError;
 
 // DELETE signup question
 
@@ -73,11 +81,15 @@ export type DeleteSignupQuestionRequest = z.infer<
   typeof DeleteSignupQuestionRequestSchema
 >;
 
-export type DeleteSignupQuestionResponse = PostSignupQuestionResponse;
+export type DeleteSignupQuestionResult = PostSignupQuestionResult;
 
 export interface DeleteSignupQuestionError extends ApiError {
   errorId: "unknown";
 }
+
+export type DeleteSignupQuestionResponse =
+  | DeleteSignupQuestionResult
+  | DeleteSignupQuestionError;
 
 // POST settings
 
@@ -85,10 +97,12 @@ export const PostSettingsRequestSchema = SettingsSchema.partial();
 
 export type PostSettingsRequest = z.infer<typeof PostSettingsRequestSchema>;
 
-export interface PostSettingsResponse extends ApiResult {
+export interface PostSettingsResult extends ApiResult {
   settings: Settings;
 }
 
 export interface PostSettingsError extends ApiError {
   errorId: "unknown";
 }
+
+export type PostSettingsResponse = PostSettingsResult | PostSettingsError;

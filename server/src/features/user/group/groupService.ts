@@ -14,14 +14,11 @@ import { MongoDbError } from "shared/types/api/errors";
 import {
   PostCloseGroupResponse,
   PostCreateGroupResponse,
-  GetGroupError,
   GetGroupResponse,
   PostJoinGroupResponse,
   PostLeaveGroupResponse,
-  PostCloseGroupError,
   PostCreateGroupError,
   PostJoinGroupError,
-  PostLeaveGroupError,
 } from "shared/types/api/groups";
 import {
   isErrorResult,
@@ -91,7 +88,7 @@ const checkUpcomingDirectSignups = async (
 
 export const createGroup = async (
   username: string,
-): Promise<PostCreateGroupResponse | PostCreateGroupError> => {
+): Promise<PostCreateGroupResponse> => {
   const timeNowResult = await getTimeNow();
   if (isErrorResult(timeNowResult)) {
     return {
@@ -176,7 +173,7 @@ export const createGroup = async (
 export const joinGroup = async (
   username: string,
   groupCode: string,
-): Promise<PostJoinGroupResponse | PostJoinGroupError> => {
+): Promise<PostJoinGroupResponse> => {
   const timeNowResult = await getTimeNow();
   if (isErrorResult(timeNowResult)) {
     return {
@@ -295,7 +292,7 @@ export const joinGroup = async (
 
 export const leaveGroup = async (
   username: string,
-): Promise<PostLeaveGroupResponse | PostLeaveGroupError> => {
+): Promise<PostLeaveGroupResponse> => {
   const saveGroupResponseResult = await saveGroupCode("0", username);
   if (isErrorResult(saveGroupResponseResult)) {
     return {
@@ -317,7 +314,7 @@ export const leaveGroup = async (
 export const closeGroup = async (
   groupCode: string,
   username: string,
-): Promise<PostCloseGroupResponse | PostCloseGroupError> => {
+): Promise<PostCloseGroupResponse> => {
   const groupMembersResult = await findGroupMembers(groupCode);
   if (isErrorResult(groupMembersResult)) {
     return {
@@ -383,7 +380,7 @@ export const closeGroup = async (
 
 export const fetchGroup = async (
   groupCode: string,
-): Promise<GetGroupResponse | GetGroupError> => {
+): Promise<GetGroupResponse> => {
   const findGroupResultsResult = await findGroupMembers(groupCode);
   if (isErrorResult(findGroupResultsResult)) {
     return {

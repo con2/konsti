@@ -10,7 +10,7 @@ export const PostAssignmentRequestSchema = z.object({
 
 export type PostAssignmentRequest = z.infer<typeof PostAssignmentRequestSchema>;
 
-export interface PostAssignmentResponse extends ApiResult {
+export interface PostAssignmentResult extends ApiResult {
   resultMessage: string;
   results: readonly UserAssignmentResult[];
   assignmentTime: string;
@@ -19,3 +19,5 @@ export interface PostAssignmentResponse extends ApiResult {
 export interface PostAssignmentError extends ApiError {
   errorId: "unknown";
 }
+
+export type PostAssignmentResponse = PostAssignmentResult | PostAssignmentError;

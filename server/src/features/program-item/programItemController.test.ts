@@ -48,7 +48,7 @@ import {
   mockKompassiProgramItem,
   mockKompassiProgramItem2,
 } from "server/kompassi/test/mockKompassiProgramItem";
-import { GetProgramItemsResponse } from "shared/types/api/programItems";
+import { GetProgramItemsResult } from "shared/types/api/programItems";
 import { EventLogAction } from "shared/types/models/eventLog";
 
 let server: Server;
@@ -105,7 +105,7 @@ describe(`GET ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     const response = await request(server).get(ApiEndpoint.PROGRAM_ITEMS);
     expect(response.status).toEqual(200);
 
-    const { programItems } = response.body as GetProgramItemsResponse;
+    const { programItems } = response.body as GetProgramItemsResult;
 
     const sortedProgramItems = sortBy(
       programItems,
@@ -134,7 +134,7 @@ describe(`GET ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     const response = await request(server).get(ApiEndpoint.PROGRAM_ITEMS);
     expect(response.status).toEqual(200);
 
-    const expectedResponse: GetProgramItemsResponse = {
+    const expectedResponse: GetProgramItemsResult = {
       message: "Program items downloaded",
       status: "success",
       programItems: [

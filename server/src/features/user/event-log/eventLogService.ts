@@ -1,6 +1,5 @@
 import { updateEventLogItemIsSeen } from "server/features/user/event-log/eventLogRepository";
 import {
-  PostEventLogIsSeenError,
   PostEventLogIsSeenRequest,
   PostEventLogIsSeenResponse,
 } from "shared/types/api/eventLog";
@@ -9,7 +8,7 @@ import { isErrorResult, unwrapResult } from "shared/utils/result";
 export const storeEventLogItemIsSeen = async (
   request: PostEventLogIsSeenRequest,
   username: string,
-): Promise<PostEventLogIsSeenResponse | PostEventLogIsSeenError> => {
+): Promise<PostEventLogIsSeenResponse> => {
   const updateEventLogItemResult = await updateEventLogItemIsSeen(
     request,
     username,

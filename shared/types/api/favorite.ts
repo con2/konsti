@@ -10,10 +10,12 @@ export const PostFavoriteRequestSchema = z.object({
 
 export type PostFavoriteRequest = z.infer<typeof PostFavoriteRequestSchema>;
 
-export interface PostFavoriteResponse extends ApiResult {
+export interface PostFavoriteResult extends ApiResult {
   favoriteProgramItemIds: readonly FavoriteProgramItemId[];
 }
 
 export interface PostFavoriteError extends ApiError {
   errorId: "unknown";
 }
+
+export type PostFavoriteResponse = PostFavoriteResult | PostFavoriteError;

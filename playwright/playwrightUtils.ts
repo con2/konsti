@@ -2,7 +2,7 @@ import { expect, APIRequestContext, Page } from "@playwright/test";
 import { ApiDevEndpoint, ApiEndpoint } from "shared/constants/apiEndpoints";
 import { PopulateDbOptions } from "shared/test-types/api/testData";
 import { TestSettings } from "shared/test-types/models/testSettings";
-import { PostLoginRequest, PostLoginResponse } from "shared/types/api/login";
+import { PostLoginRequest, PostLoginResult } from "shared/types/api/login";
 import { PostDirectSignupRequest } from "shared/types/api/myProgramItems";
 import { ProgramItem } from "shared/types/models/programItem";
 import { Settings } from "shared/types/models/settings";
@@ -40,7 +40,7 @@ export const addProgramItems = async (
 const postLogin = async (
   request: APIRequestContext,
   loginRequest: PostLoginRequest,
-): Promise<PostLoginResponse> => {
+): Promise<PostLoginResult> => {
   const url = `${baseUrl}${ApiEndpoint.LOGIN}`;
   const response = await request.post(url, {
     data: loginRequest,

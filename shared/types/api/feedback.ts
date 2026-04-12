@@ -10,8 +10,10 @@ export const PostFeedbackRequestSchema = z.object({
 
 export type PostFeedbackRequest = z.infer<typeof PostFeedbackRequestSchema>;
 
-export type PostFeedbackResponse = ApiResult;
+export type PostFeedbackResult = ApiResult;
 
 export interface PostFeedbackError extends ApiError {
   errorId: "unknown";
 }
+
+export type PostFeedbackResponse = PostFeedbackResult | PostFeedbackError;

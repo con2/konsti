@@ -4,7 +4,7 @@ import { GroupMember } from "shared/types/models/groups";
 
 // POST: Create group
 
-export interface PostCreateGroupResponse extends ApiResult {
+export interface PostCreateGroupResult extends ApiResult {
   groupCode: string;
 }
 
@@ -16,6 +16,10 @@ export interface PostCreateGroupError extends ApiError {
     | "errorFindingUser";
 }
 
+export type PostCreateGroupResponse =
+  | PostCreateGroupResult
+  | PostCreateGroupError;
+
 // POST: Join group
 
 export const PostJoinGroupRequestSchema = z.object({
@@ -24,7 +28,7 @@ export const PostJoinGroupRequestSchema = z.object({
 
 export type PostJoinGroupRequest = z.infer<typeof PostJoinGroupRequestSchema>;
 
-export type PostJoinGroupResponse = PostCreateGroupResponse;
+export type PostJoinGroupResult = PostCreateGroupResult;
 
 export interface PostJoinGroupError extends ApiError {
   errorId:
@@ -37,13 +41,17 @@ export interface PostJoinGroupError extends ApiError {
     | "errorFindingUser";
 }
 
+export type PostJoinGroupResponse = PostJoinGroupResult | PostJoinGroupError;
+
 // POST: Leave group
 
-export type PostLeaveGroupResponse = PostCreateGroupResponse;
+export type PostLeaveGroupResult = PostCreateGroupResult;
 
 export interface PostLeaveGroupError extends ApiError {
   errorId: "unknown" | "failedToLeave";
 }
+
+export type PostLeaveGroupResponse = PostLeaveGroupResult | PostLeaveGroupError;
 
 // POST: Close group
 
@@ -53,11 +61,13 @@ export const PostCloseGroupRequestSchema = z.object({
 
 export type PostCloseGroupRequest = z.infer<typeof PostCloseGroupRequestSchema>;
 
-export type PostCloseGroupResponse = PostCreateGroupResponse;
+export type PostCloseGroupResult = PostCreateGroupResult;
 
 export interface PostCloseGroupError extends ApiError {
   errorId: "unknown" | "onlyCreatorCanCloseGroup";
 }
+
+export type PostCloseGroupResponse = PostCloseGroupResult | PostCloseGroupError;
 
 // GET group
 
@@ -67,10 +77,12 @@ export const GetGroupRequestSchema = z.object({
 
 export type GetGroupRequest = z.infer<typeof GetGroupRequestSchema>;
 
-export interface GetGroupResponse extends ApiResult {
+export interface GetGroupResult extends ApiResult {
   results: GroupMember[];
 }
 
 export interface GetGroupError extends ApiError {
   errorId: "unknown";
 }
+
+export type GetGroupResponse = GetGroupResult | GetGroupError;

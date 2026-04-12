@@ -2,10 +2,8 @@ import { findProgramItemById } from "server/features/program-item/programItemRep
 import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
 import { hasSignupEnded } from "server/features/user/userUtils";
 import {
-  DeleteDirectSignupError,
   DeleteDirectSignupRequest,
   DeleteDirectSignupResponse,
-  PostDirectSignupError,
   PostDirectSignupRequest,
   PostDirectSignupResponse,
 } from "shared/types/api/myProgramItems";
@@ -28,7 +26,7 @@ import { SignupType, State } from "shared/types/models/programItem";
 export const storeDirectSignup = async (
   signupRequest: PostDirectSignupRequest,
   username: string,
-): Promise<PostDirectSignupResponse | PostDirectSignupError> => {
+): Promise<PostDirectSignupResponse> => {
   const { directSignupProgramItemId } = signupRequest;
 
   const timeNowResult = await getTimeNow();
@@ -171,7 +169,7 @@ export const storeDirectSignup = async (
 export const removeDirectSignup = async (
   signupRequest: DeleteDirectSignupRequest,
   username: string,
-): Promise<DeleteDirectSignupResponse | DeleteDirectSignupError> => {
+): Promise<DeleteDirectSignupResponse> => {
   const { directSignupProgramItemId } = signupRequest;
 
   const timeNowResult = await getTimeNow();

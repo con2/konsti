@@ -12,11 +12,8 @@ import { AuthEndpoint } from "shared/constants/apiEndpoints";
 import { KompassiLoginError } from "shared/types/api/errors";
 import {
   PostKompassiLoginResponse,
-  PostKompassiLoginError,
-  PostVerifyKompassiLoginError,
   PostVerifyKompassiLoginResponse,
   PostUpdateUserEmailAddressResponse,
-  PostUpdateUserEmailAddressError,
 } from "shared/types/api/login";
 import { UserGroup } from "shared/types/models/user";
 import {
@@ -117,7 +114,7 @@ const getKompassiProfile = async (
 export const doKompassiLogin = async (
   code: string,
   origin: string,
-): Promise<PostKompassiLoginResponse | PostKompassiLoginError> => {
+): Promise<PostKompassiLoginResponse> => {
   const tokensResult = await getKompassiTokens(code, origin);
   if (isErrorResult(tokensResult)) {
     return {
@@ -243,7 +240,7 @@ export const doKompassiLogin = async (
 export const verifyKompassiLogin = async (
   oldUsername: string,
   newUsername: string,
-): Promise<PostVerifyKompassiLoginResponse | PostVerifyKompassiLoginError> => {
+): Promise<PostVerifyKompassiLoginResponse> => {
   if (oldUsername !== newUsername) {
     // Check if username already taken
     const findUserResult = await findUser(newUsername);
@@ -299,9 +296,7 @@ export const verifyKompassiLogin = async (
 export const verifyUpdateUserEmailAddress = async (
   username: string,
   email: string,
-): Promise<
-  PostUpdateUserEmailAddressResponse | PostUpdateUserEmailAddressError
-> => {
+): Promise<PostUpdateUserEmailAddressResponse> => {
   const userResult = await updateUserEmailAddress(username, email);
   if (isErrorResult(userResult)) {
     return {

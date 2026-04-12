@@ -2,25 +2,21 @@ import { api } from "client/utils/api";
 import { LoginFormFields } from "client/views/login/components/LocalLoginForm";
 import { ApiEndpoint, AuthEndpoint } from "shared/constants/apiEndpoints";
 import {
-  PostKompassiLoginError,
   PostKompassiLoginRequest,
   PostKompassiLoginResponse,
-  PostLoginError,
   PostLoginRequest,
   PostLoginResponse,
   PostSessionRecoveryRequest,
   PostSessionRecoveryResponse,
-  PostUpdateUserEmailAddressError,
   PostUpdateUserEmailAddressRequest,
   PostUpdateUserEmailAddressResponse,
-  PostVerifyKompassiLoginError,
   PostVerifyKompassiLoginRequest,
   PostVerifyKompassiLoginResponse,
 } from "shared/types/api/login";
 
 export const postLogin = async (
   loginFormFields: LoginFormFields,
-): Promise<PostLoginResponse | PostLoginError> => {
+): Promise<PostLoginResponse> => {
   const { username, password } = loginFormFields;
 
   const response = await api.post<PostLoginResponse, PostLoginRequest>(
@@ -35,7 +31,7 @@ export const postLogin = async (
 
 export const postSessionRecovery = async (
   jwt: string,
-): Promise<PostLoginResponse | PostLoginError> => {
+): Promise<PostSessionRecoveryResponse> => {
   const response = await api.post<
     PostSessionRecoveryResponse,
     PostSessionRecoveryRequest
@@ -55,7 +51,7 @@ export const postKompassiLogoutRedirect = async (): Promise<void> => {
 
 export const postKompassiLoginCallback = async (
   code: string,
-): Promise<PostKompassiLoginResponse | PostKompassiLoginError> => {
+): Promise<PostKompassiLoginResponse> => {
   const response = await api.post<
     PostKompassiLoginResponse,
     PostKompassiLoginRequest
@@ -67,7 +63,7 @@ export const postKompassiLoginCallback = async (
 
 export const postVerifyKompassiLogin = async (
   username: string,
-): Promise<PostVerifyKompassiLoginResponse | PostVerifyKompassiLoginError> => {
+): Promise<PostVerifyKompassiLoginResponse> => {
   const response = await api.post<
     PostVerifyKompassiLoginResponse,
     PostVerifyKompassiLoginRequest
@@ -79,9 +75,7 @@ export const postVerifyKompassiLogin = async (
 
 export const postUpdateUserEmailAddress = async (
   email: string,
-): Promise<
-  PostUpdateUserEmailAddressResponse | PostUpdateUserEmailAddressError
-> => {
+): Promise<PostUpdateUserEmailAddressResponse> => {
   const response = await api.post<
     PostUpdateUserEmailAddressResponse,
     PostUpdateUserEmailAddressRequest

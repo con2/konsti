@@ -13,7 +13,7 @@ import { findUser, saveUser } from "server/features/user/userRepository";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import {
   PostEventLogIsSeenRequest,
-  PostEventLogIsSeenResponse,
+  PostEventLogIsSeenResult,
 } from "shared/types/api/eventLog";
 import { addEventLogItems } from "server/features/user/event-log/eventLogRepository";
 import { EventLogAction } from "shared/types/models/eventLog";
@@ -67,7 +67,7 @@ describe(`POST ${ApiEndpoint.EVENT_LOG_IS_SEEN}`, () => {
       );
     expect(response.status).toEqual(200);
 
-    const body = response.body as PostEventLogIsSeenResponse;
+    const body = response.body as PostEventLogIsSeenResult;
     expect(body.status).toEqual("error");
     expect(body.message).toEqual("Unable to update event log item isSeen");
   });
@@ -89,7 +89,7 @@ describe(`POST ${ApiEndpoint.EVENT_LOG_IS_SEEN}`, () => {
         `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
       );
 
-    const body = response.body as PostEventLogIsSeenResponse;
+    const body = response.body as PostEventLogIsSeenResult;
     expect(body.status).toEqual("error");
     expect(body.message).toEqual("Unable to update event log item isSeen");
   });
@@ -123,7 +123,7 @@ describe(`POST ${ApiEndpoint.EVENT_LOG_IS_SEEN}`, () => {
         `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
       );
 
-    const body = response.body as PostEventLogIsSeenResponse;
+    const body = response.body as PostEventLogIsSeenResult;
     expect(body.status).toEqual("success");
     expect(body.message).toEqual("Event saved");
 

@@ -1,5 +1,5 @@
 import { validateLogin } from "server/utils/bcrypt";
-import { PostLoginError, PostLoginResponse } from "shared/types/api/login";
+import { PostLoginResponse } from "shared/types/api/login";
 import { getJWT } from "server/utils/jwt";
 import { findSettings } from "server/features/settings/settingsRepository";
 import { findUser } from "server/features/user/userRepository";
@@ -10,7 +10,7 @@ import { UserGroup } from "shared/types/models/user";
 export const login = async (
   username: string,
   password: string,
-): Promise<PostLoginResponse | PostLoginError> => {
+): Promise<PostLoginResponse> => {
   const userResult = await findUser(username);
   if (isErrorResult(userResult)) {
     return {

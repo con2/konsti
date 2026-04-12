@@ -1,30 +1,24 @@
 import { api } from "client/utils/api";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
-  GetSignupMessagesError,
   GetSignupMessagesResponse,
-  GetUserBySerialError,
   GetUserBySerialRequest,
   GetUserBySerialResponse,
-  GetUserError,
   GetUserResponse,
-  PostUpdateUserPasswordError,
   PostUpdateUserPasswordRequest,
   PostUpdateUserPasswordResponse,
-  PostUserError,
   PostUserRequest,
   PostUserResponse,
 } from "shared/types/api/users";
 import { KonstiRegistrationFormFields } from "client/views/registration/components/KonstiRegistrationForm";
 import {
-  PostEventLogIsSeenError,
   PostEventLogIsSeenRequest,
   PostEventLogIsSeenResponse,
 } from "shared/types/api/eventLog";
 
 export const postRegistration = async (
   registrationFormFields: KonstiRegistrationFormFields,
-): Promise<PostUserResponse | PostUserError> => {
+): Promise<PostUserResponse> => {
   const { username, password, serial } = registrationFormFields;
 
   const response = await api.post<PostUserResponse, PostUserRequest>(
@@ -42,9 +36,7 @@ interface GetUserParams {
   username: string;
 }
 
-export const getUser = async (
-  username: string,
-): Promise<GetUserResponse | GetUserError> => {
+export const getUser = async (username: string): Promise<GetUserResponse> => {
   const response = await api.get<GetUserResponse, GetUserParams>(
     ApiEndpoint.USERS,
     {
@@ -58,7 +50,7 @@ export const getUser = async (
 
 export const getUserBySerialOrUsername = async (
   searchTerm: string,
-): Promise<GetUserBySerialResponse | GetUserBySerialError> => {
+): Promise<GetUserBySerialResponse> => {
   const response = await api.get<
     GetUserBySerialResponse,
     GetUserBySerialRequest
@@ -73,7 +65,7 @@ export const getUserBySerialOrUsername = async (
 export const updateUserPassword = async (
   usernameToUpdate: string,
   password: string,
-): Promise<PostUpdateUserPasswordResponse | PostUpdateUserPasswordError> => {
+): Promise<PostUpdateUserPasswordResponse> => {
   const response = await api.post<
     PostUpdateUserPasswordResponse,
     PostUpdateUserPasswordRequest
@@ -84,18 +76,17 @@ export const updateUserPassword = async (
   return response.data;
 };
 
-export const getSignupMessages = async (): Promise<
-  GetSignupMessagesResponse | GetSignupMessagesError
-> => {
-  const response = await api.get<GetSignupMessagesResponse>(
-    ApiEndpoint.SIGNUP_MESSAGE,
-  );
-  return response.data;
-};
+export const getSignupMessages =
+  async (): Promise<GetSignupMessagesResponse> => {
+    const response = await api.get<GetSignupMessagesResponse>(
+      ApiEndpoint.SIGNUP_MESSAGE,
+    );
+    return response.data;
+  };
 
 export const postEventLogItemIsSeen = async (
   request: PostEventLogIsSeenRequest,
-): Promise<PostEventLogIsSeenResponse | PostEventLogIsSeenError> => {
+): Promise<PostEventLogIsSeenResponse> => {
   const response = await api.post<
     PostEventLogIsSeenResponse,
     PostEventLogIsSeenRequest

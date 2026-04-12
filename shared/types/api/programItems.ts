@@ -6,7 +6,7 @@ import {
 
 // POST update program items
 
-export interface PostUpdateProgramItemsResponse extends ApiResult {
+export interface PostUpdateProgramItemsResult extends ApiResult {
   programItems: ProgramItem[];
 }
 
@@ -14,12 +14,20 @@ export interface PostUpdateProgramItemsError extends ApiError {
   errorId: "unknown" | "kompassiError";
 }
 
+export type PostUpdateProgramItemsResponse =
+  | PostUpdateProgramItemsResult
+  | PostUpdateProgramItemsError;
+
 // GET program items
 
-export interface GetProgramItemsResponse extends ApiResult {
+export interface GetProgramItemsResult extends ApiResult {
   programItems: ProgramItemWithUserSignups[];
 }
 
 export interface GetProgramItemsError extends ApiError {
   errorId: "unknown" | "databaseError";
 }
+
+export type GetProgramItemsResponse =
+  | GetProgramItemsResult
+  | GetProgramItemsError;

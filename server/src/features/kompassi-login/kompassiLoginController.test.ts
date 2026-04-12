@@ -9,7 +9,7 @@ import { getJWT } from "server/utils/jwt";
 import {
   PostVerifyKompassiLoginError,
   PostVerifyKompassiLoginRequest,
-  PostVerifyKompassiLoginResponse,
+  PostVerifyKompassiLoginResult,
 } from "shared/types/api/login";
 import { findUser, saveUser } from "server/features/user/userRepository";
 import { mockUser, mockUser2 } from "server/test/mock-data/mockUser";
@@ -70,7 +70,7 @@ describe(`POST ${ApiEndpoint.VERIFY_KOMPASSI_LOGIN}`, () => {
         `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
       );
     expect(response.status).toEqual(200);
-    const body = response.body as PostVerifyKompassiLoginResponse;
+    const body = response.body as PostVerifyKompassiLoginResult;
     expect(body.status).toEqual("success");
 
     const user = unsafelyUnwrap(await findUser("new_username"));
@@ -117,7 +117,7 @@ describe(`POST ${ApiEndpoint.VERIFY_KOMPASSI_LOGIN}`, () => {
       );
 
     expect(response.status).toEqual(200);
-    const body = response.body as PostVerifyKompassiLoginResponse;
+    const body = response.body as PostVerifyKompassiLoginResult;
     expect(body.status).toEqual("success");
 
     const user = unsafelyUnwrap(await findUser(mockUser.username));
