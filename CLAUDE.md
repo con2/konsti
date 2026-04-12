@@ -26,7 +26,7 @@ yarn install
 yarn start:dev              # Starts server + client with hot reload
 
 # Seed database
-yarn workspace konsti-server docker:db  # Start MongoDB container (port 27017, done automatically by start:dev)
+yarn workspace server docker:db  # Start MongoDB container (port 27017, done automatically by start:dev)
 yarn populate-db:dummy      # Load test data (admin:test, test1:test, helper:test, etc.)
 
 # Testing

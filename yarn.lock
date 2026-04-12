@@ -4219,6 +4219,52 @@ __metadata:
   languageName: node
   linkType: hard
 
+"client@workspace:client":
+  version: 0.0.0-use.local
+  resolution: "client@workspace:client"
+  dependencies:
+    "@axe-core/react": "npm:4.11.1"
+    "@double-great/stylelint-a11y": "npm:3.4.9"
+    "@fortawesome/fontawesome-svg-core": "npm:7.2.0"
+    "@fortawesome/free-regular-svg-icons": "npm:7.2.0"
+    "@fortawesome/free-solid-svg-icons": "npm:7.2.0"
+    "@fortawesome/react-fontawesome": "npm:3.3.0"
+    "@mdx-js/rollup": "npm:3.1.1"
+    "@reduxjs/toolkit": "npm:2.11.2"
+    "@sentry/react": "npm:10.47.0"
+    "@types/mdx": "npm:2.0.13"
+    "@types/react": "npm:19.2.14"
+    "@types/react-dom": "npm:19.2.3"
+    "@vitejs/plugin-react": "npm:6.0.1"
+    "@welldone-software/why-did-you-render": "npm:10.0.1"
+    browserslist: "npm:4.28.2"
+    browserslist-to-esbuild: "npm:2.1.1"
+    i18next: "npm:26.0.3"
+    i18next-browser-languagedetector: "npm:8.2.1"
+    jsdom: "npm:29.0.1"
+    linkify-react: "npm:4.3.2"
+    linkifyjs: "npm:4.3.2"
+    postcss: "npm:8.5.8"
+    postcss-styled-syntax: "npm:0.7.1"
+    postcss-syntax: "npm:0.36.2"
+    react: "npm:19.2.4"
+    react-dom: "npm:19.2.4"
+    react-hook-form: "npm:7.72.1"
+    react-i18next: "npm:17.0.2"
+    react-redux: "npm:9.2.0"
+    react-router: "npm:7.14.0"
+    styled-components: "npm:6.3.12"
+    stylelint: "npm:17.6.0"
+    stylelint-config-standard: "npm:40.0.0"
+    stylelint-no-unsupported-browser-features: "npm:8.1.1"
+    use-debounce: "npm:10.1.1"
+    vite: "npm:8.0.3"
+    vite-plugin-compression2: "npm:2.5.3"
+    vite-plugin-static-copy: "npm:4.0.1"
+    vite-plugin-svgr: "npm:5.2.0"
+  languageName: unknown
+  linkType: soft
+
 "cliui@npm:^8.0.1":
   version: 8.0.1
   resolution: "cliui@npm:8.0.1"
@@ -7659,52 +7705,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"konsti-client@workspace:client":
-  version: 0.0.0-use.local
-  resolution: "konsti-client@workspace:client"
-  dependencies:
-    "@axe-core/react": "npm:4.11.1"
-    "@double-great/stylelint-a11y": "npm:3.4.9"
-    "@fortawesome/fontawesome-svg-core": "npm:7.2.0"
-    "@fortawesome/free-regular-svg-icons": "npm:7.2.0"
-    "@fortawesome/free-solid-svg-icons": "npm:7.2.0"
-    "@fortawesome/react-fontawesome": "npm:3.3.0"
-    "@mdx-js/rollup": "npm:3.1.1"
-    "@reduxjs/toolkit": "npm:2.11.2"
-    "@sentry/react": "npm:10.47.0"
-    "@types/mdx": "npm:2.0.13"
-    "@types/react": "npm:19.2.14"
-    "@types/react-dom": "npm:19.2.3"
-    "@vitejs/plugin-react": "npm:6.0.1"
-    "@welldone-software/why-did-you-render": "npm:10.0.1"
-    browserslist: "npm:4.28.2"
-    browserslist-to-esbuild: "npm:2.1.1"
-    i18next: "npm:26.0.3"
-    i18next-browser-languagedetector: "npm:8.2.1"
-    jsdom: "npm:29.0.1"
-    linkify-react: "npm:4.3.2"
-    linkifyjs: "npm:4.3.2"
-    postcss: "npm:8.5.8"
-    postcss-styled-syntax: "npm:0.7.1"
-    postcss-syntax: "npm:0.36.2"
-    react: "npm:19.2.4"
-    react-dom: "npm:19.2.4"
-    react-hook-form: "npm:7.72.1"
-    react-i18next: "npm:17.0.2"
-    react-redux: "npm:9.2.0"
-    react-router: "npm:7.14.0"
-    styled-components: "npm:6.3.12"
-    stylelint: "npm:17.6.0"
-    stylelint-config-standard: "npm:40.0.0"
-    stylelint-no-unsupported-browser-features: "npm:8.1.1"
-    use-debounce: "npm:10.1.1"
-    vite: "npm:8.0.3"
-    vite-plugin-compression2: "npm:2.5.3"
-    vite-plugin-static-copy: "npm:4.0.1"
-    vite-plugin-svgr: "npm:5.2.0"
-  languageName: unknown
-  linkType: soft
-
 "konsti-monorepo@workspace:.":
   version: 0.0.0-use.local
   resolution: "konsti-monorepo@workspace:."
@@ -7747,44 +7747,6 @@ __metadata:
     typescript-eslint: "npm:8.58.0"
     vitest: "npm:4.1.2"
     zod: "npm:4.3.6"
-  languageName: unknown
-  linkType: soft
-
-"konsti-server@workspace:server":
-  version: 0.0.0-use.local
-  resolution: "konsti-server@workspace:server"
-  dependencies:
-    "@faker-js/faker": "npm:10.4.0"
-    "@sentry/node": "npm:10.47.0"
-    "@types/express": "npm:5.0.6"
-    "@types/jsonwebtoken": "npm:9.0.10"
-    "@types/morgan": "npm:1.9.10"
-    "@types/node": "npm:25.5.2"
-    "@types/nodemailer": "npm:7.0.11"
-    "@types/supertest": "npm:7.2.0"
-    bcryptjs: "npm:3.0.3"
-    commander: "npm:14.0.3"
-    croner: "npm:10.0.1"
-    dotenv: "npm:17.4.0"
-    eventassigner-js: "npm:0.1.6"
-    eventassigner-random: "npm:0.3.2"
-    express: "npm:5.2.1"
-    express-static-gzip: "npm:3.0.0"
-    fastest-levenshtein: "npm:1.0.16"
-    fastq: "npm:1.20.1"
-    generate-serial-number: "npm:0.0.3"
-    helmet: "npm:8.1.0"
-    jsonwebtoken: "npm:9.0.3"
-    mongodb-memory-server: "npm:11.0.1"
-    mongoose: "npm:9.4.1"
-    mongoose-lean-getters: "npm:2.3.1"
-    mongoose-lean-virtuals: "npm:2.1.0"
-    morgan: "npm:1.10.1"
-    nodemailer: "npm:8.0.4"
-    supertest: "npm:7.2.2"
-    tsx: "npm:4.21.0"
-    winston: "npm:3.19.0"
-    winston-transport-sentry-node: "npm:3.0.0"
   languageName: unknown
   linkType: soft
 
@@ -10811,6 +10773,44 @@ __metadata:
   checksum: 10c0/37986096e8572e2dfaad35a3925fa8da0c0969f8814fd7788e84d4d388bc068cf0c06d1658509788e55bed942a6b6d040a8a267fa92bb9ffb1179f8bacde5fd7
   languageName: node
   linkType: hard
+
+"server@workspace:server":
+  version: 0.0.0-use.local
+  resolution: "server@workspace:server"
+  dependencies:
+    "@faker-js/faker": "npm:10.4.0"
+    "@sentry/node": "npm:10.47.0"
+    "@types/express": "npm:5.0.6"
+    "@types/jsonwebtoken": "npm:9.0.10"
+    "@types/morgan": "npm:1.9.10"
+    "@types/node": "npm:25.5.2"
+    "@types/nodemailer": "npm:7.0.11"
+    "@types/supertest": "npm:7.2.0"
+    bcryptjs: "npm:3.0.3"
+    commander: "npm:14.0.3"
+    croner: "npm:10.0.1"
+    dotenv: "npm:17.4.0"
+    eventassigner-js: "npm:0.1.6"
+    eventassigner-random: "npm:0.3.2"
+    express: "npm:5.2.1"
+    express-static-gzip: "npm:3.0.0"
+    fastest-levenshtein: "npm:1.0.16"
+    fastq: "npm:1.20.1"
+    generate-serial-number: "npm:0.0.3"
+    helmet: "npm:8.1.0"
+    jsonwebtoken: "npm:9.0.3"
+    mongodb-memory-server: "npm:11.0.1"
+    mongoose: "npm:9.4.1"
+    mongoose-lean-getters: "npm:2.3.1"
+    mongoose-lean-virtuals: "npm:2.1.0"
+    morgan: "npm:1.10.1"
+    nodemailer: "npm:8.0.4"
+    supertest: "npm:7.2.2"
+    tsx: "npm:4.21.0"
+    winston: "npm:3.19.0"
+    winston-transport-sentry-node: "npm:3.0.0"
+  languageName: unknown
+  linkType: soft
 
 "set-cookie-parser@npm:^2.6.0":
   version: 2.7.2
