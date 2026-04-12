@@ -42,7 +42,6 @@ yarn prettier:write         # Auto-format
 
 # Building
 yarn build-front:prod       # Build client → client/build → copied to server/front
-yarn build-server           # Bundle server with @vercel/ncc → dist/server
 
 # E2E
 yarn playwright             # Start DB + server + client + Playwright UI

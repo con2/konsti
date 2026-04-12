@@ -16,8 +16,6 @@
     "generate-serials": "tsx src/utils/generateSerials.ts",
     "lint": "yarn eslint && yarn prettier:check",
     "remove-invalid-games": "NODE_ENV=development tsx src/test/scripts/removeInvalidGames.ts",
-    "build": "yarn run -T rimraf dist/server && ncc build src/index.ts -o dist/server",
-    "start-ncc": "node dist/server/index.js",
     "start": "tsx src/index.ts",
     "start:dev": "NODE_ENV=development SETTINGS=development tsx watch --clear-screen=false -r dotenv/config src/index.ts dotenv_config_path=.env.development",
     "start:test": "NODE_ENV=development SETTINGS=development tsx watch --clear-screen=false -r dotenv/config src/index.ts dotenv_config_path=.env.test",
@@ -38,7 +36,6 @@
   "dependencies": {
     "@faker-js/faker": "10.4.0",
     "@sentry/node": "10.47.0",
-    "@vercel/ncc": "0.38.4",
     "bcryptjs": "3.0.3",
     "commander": "14.0.3",
     "croner": "10.0.1",
