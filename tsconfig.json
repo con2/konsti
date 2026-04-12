@@ -1,9 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es2022",
     "module": "commonjs",
-    "lib": ["es2022", "dom"],
-    "jsx": "react-jsx",
     "skipLibCheck": true,
     "strict": true,
     "moduleResolution": "bundler",
@@ -12,7 +9,7 @@
     "resolveJsonModule": true,
     "allowUnreachableCode": false,
     "noErrorTruncation": true,
-    "types": ["node", "mdx"],
+    "types": [],
     "libReplacement": false,
     "paths": {
       "client/*": ["./client/src/*"],
