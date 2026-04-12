@@ -6,7 +6,7 @@ import dayjs from "dayjs";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
   GetGroupError,
-  GetGroupResponse,
+  GetGroupResult,
   PostCloseGroupRequest,
   PostJoinGroupRequest,
 } from "shared/types/api/groups";
@@ -88,7 +88,7 @@ describe(`GET ${ApiEndpoint.GROUP}`, () => {
 
     expect(response.status).toEqual(200);
 
-    const body = response.body as GetGroupResponse;
+    const body = response.body as GetGroupResult;
     expect(body.status).toEqual("success");
     expect(body.results.length).toEqual(2);
   });

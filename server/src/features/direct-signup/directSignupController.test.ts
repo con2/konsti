@@ -29,7 +29,7 @@ import {
   DeleteDirectSignupRequest,
   PostDirectSignupError,
   PostDirectSignupRequest,
-  PostDirectSignupResponse,
+  PostDirectSignupResult,
 } from "shared/types/api/myProgramItems";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 import { config } from "shared/config";
@@ -256,7 +256,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
 
     expect(response.status).toEqual(200);
 
-    const body = response.body as PostDirectSignupResponse;
+    const body = response.body as PostDirectSignupResult;
     expect(body.message).toEqual("Store signup success");
     expect(body.status).toEqual("success");
 
@@ -445,7 +445,7 @@ describe(`DELETE ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
 
     expect(response.status).toEqual(200);
 
-    const body = response.body as PostDirectSignupResponse;
+    const body = response.body as PostDirectSignupResult;
     expect(body.message).toEqual("Delete signup success");
     expect(body.status).toEqual("success");
 

@@ -1,16 +1,12 @@
 import { api } from "client/utils/api";
 import { ApiDevEndpoint } from "shared/constants/apiEndpoints";
 import {
-  GetTestSettingsError,
   GetTestSettingsResponse,
-  PostTestSettingsError,
   PostTestSettingsRequest,
   PostTestSettingsResponse,
 } from "shared/test-types/api/testSettings";
 
-export const getTestSettings = async (): Promise<
-  GetTestSettingsResponse | GetTestSettingsError
-> => {
+export const getTestSettings = async (): Promise<GetTestSettingsResponse> => {
   const response = await api.get<GetTestSettingsResponse>(
     ApiDevEndpoint.TEST_SETTINGS,
   );
@@ -21,7 +17,7 @@ export const postTestSettings = async ({
   testTime,
 }: {
   testTime: string;
-}): Promise<PostTestSettingsResponse | PostTestSettingsError> => {
+}): Promise<PostTestSettingsResponse> => {
   const response = await api.post<
     PostTestSettingsResponse,
     PostTestSettingsRequest

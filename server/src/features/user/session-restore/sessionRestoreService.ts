@@ -1,13 +1,11 @@
 import { findSettings } from "server/features/settings/settingsRepository";
 import { findUser } from "server/features/user/userRepository";
 import { decodeJWT, getJWT, verifyJWT } from "server/utils/jwt";
-import { PostLoginError, PostLoginResponse } from "shared/types/api/login";
+import { PostLoginResponse } from "shared/types/api/login";
 import { UserGroup } from "shared/types/models/user";
 import { isErrorResult, unwrapResult } from "shared/utils/result";
 
-export const loginWithJwt = async (
-  jwt: string,
-): Promise<PostLoginResponse | PostLoginError> => {
+export const loginWithJwt = async (jwt: string): Promise<PostLoginResponse> => {
   // Restore session
   const jwtData = decodeJWT(jwt);
 

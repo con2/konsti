@@ -11,7 +11,7 @@ import { closeServer, startServer } from "server/utils/server";
 import {
   PostUpdateUserPasswordError,
   PostUpdateUserPasswordRequest,
-  PostUpdateUserPasswordResponse,
+  PostUpdateUserPasswordResult,
 } from "shared/types/api/users";
 
 let server: Server;
@@ -59,7 +59,7 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
         `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
       );
     expect(response.status).toEqual(200);
-    const body = response.body as PostUpdateUserPasswordResponse;
+    const body = response.body as PostUpdateUserPasswordResult;
     expect(body.status).toEqual("success");
   });
 
@@ -89,7 +89,7 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
       .send(requestData)
       .set("Authorization", `Bearer ${getJWT(UserGroup.HELP, "helper")}`);
     expect(response.status).toEqual(200);
-    const body = response.body as PostUpdateUserPasswordResponse;
+    const body = response.body as PostUpdateUserPasswordResult;
     expect(body.status).toEqual("success");
   });
 
@@ -140,7 +140,7 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
     expect(response.status).toEqual(200);
 
-    const body = response.body as PostUpdateUserPasswordResponse;
+    const body = response.body as PostUpdateUserPasswordResult;
     expect(body.status).toEqual("success");
 
     const helperRequestData: PostUpdateUserPasswordRequest = {
@@ -154,7 +154,7 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
     expect(response2.status).toEqual(200);
 
-    const body2 = response2.body as PostUpdateUserPasswordResponse;
+    const body2 = response2.body as PostUpdateUserPasswordResult;
     expect(body2.status).toEqual("success");
   });
 

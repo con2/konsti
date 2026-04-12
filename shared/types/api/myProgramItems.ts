@@ -14,7 +14,7 @@ export type PostLotterySignupRequest = z.infer<
   typeof PostLotterySignupRequestSchema
 >;
 
-export interface PostLotterySignupResponse extends ApiResult {
+export interface PostLotterySignupResult extends ApiResult {
   lotterySignups: readonly LotterySignup[];
 }
 
@@ -30,6 +30,10 @@ export interface PostLotterySignupError extends ApiError {
     | "noKonstiSignup";
 }
 
+export type PostLotterySignupResponse =
+  | PostLotterySignupResult
+  | PostLotterySignupError;
+
 // DELETE lottery signup
 
 export const DeleteLotterySignupRequestSchema = z.object({
@@ -40,11 +44,15 @@ export type DeleteLotterySignupRequest = z.infer<
   typeof DeleteLotterySignupRequestSchema
 >;
 
-export type DeleteLotterySignupResponse = ApiResult;
+export type DeleteLotterySignupResult = ApiResult;
 
 export interface DeleteLotterySignupError extends ApiError {
   errorId: "unknown" | "signupEnded" | "programItemNotFound";
 }
+
+export type DeleteLotterySignupResponse =
+  | DeleteLotterySignupResult
+  | DeleteLotterySignupError;
 
 // POST direct signup
 
@@ -58,7 +66,7 @@ export type PostDirectSignupRequest = z.infer<
   typeof PostDirectSignupRequestSchema
 >;
 
-export interface PostDirectSignupResponse extends ApiResult {
+export interface PostDirectSignupResult extends ApiResult {
   allSignups: {
     programItemId: string;
     userSignups: { username: string; message: string }[];
@@ -75,6 +83,10 @@ export interface PostDirectSignupError extends ApiError {
     | "cancelled";
 }
 
+export type PostDirectSignupResponse =
+  | PostDirectSignupResult
+  | PostDirectSignupError;
+
 // DELETE direct signup
 
 export const DeleteDirectSignupRequestSchema = z.object({
@@ -85,7 +97,7 @@ export type DeleteDirectSignupRequest = z.infer<
   typeof DeleteDirectSignupRequestSchema
 >;
 
-export interface DeleteDirectSignupResponse extends ApiResult {
+export interface DeleteDirectSignupResult extends ApiResult {
   allSignups: {
     programItemId: string;
     userSignups: { username: string; message: string }[];
@@ -95,3 +107,7 @@ export interface DeleteDirectSignupResponse extends ApiResult {
 export interface DeleteDirectSignupError extends ApiError {
   errorId: "unknown" | "signupEnded";
 }
+
+export type DeleteDirectSignupResponse =
+  | DeleteDirectSignupResult
+  | DeleteDirectSignupError;

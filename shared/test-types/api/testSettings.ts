@@ -13,7 +13,7 @@ export type PostTestSettingsRequest = z.infer<
   typeof PostTestSettingsRequestSchema
 >;
 
-export interface PostTestSettingsResponse extends ApiResult {
+export interface PostTestSettingsResult extends ApiResult {
   testSettings: TestSettings;
 }
 
@@ -21,12 +21,20 @@ export interface PostTestSettingsError extends ApiError {
   errorId: "unknown";
 }
 
+export type PostTestSettingsResponse =
+  | PostTestSettingsResult
+  | PostTestSettingsError;
+
 // GET test settings
 
-export interface GetTestSettingsResponse extends ApiResult {
+export interface GetTestSettingsResult extends ApiResult {
   testSettings: TestSettings;
 }
 
 export interface GetTestSettingsError extends ApiError {
   errorId: "unknown";
 }
+
+export type GetTestSettingsResponse =
+  | GetTestSettingsResult
+  | GetTestSettingsError;

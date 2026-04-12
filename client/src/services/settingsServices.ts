@@ -4,27 +4,21 @@ import {
   DeleteSignupQuestionRequest,
   DeleteSignupQuestionResponse,
   GetSettingsResponse,
-  DeleteSignupQuestionError,
   PostSettingsRequest,
   PostSettingsResponse,
-  PostSignupQuestionError,
   PostSignupQuestionRequest,
   PostSignupQuestionResponse,
-  PostSettingsError,
-  GetSettingsError,
 } from "shared/types/api/settings";
 import { SignupQuestion } from "shared/types/models/settings";
 
-export const getSettings = async (): Promise<
-  GetSettingsResponse | GetSettingsError
-> => {
+export const getSettings = async (): Promise<GetSettingsResponse> => {
   const response = await api.get<GetSettingsResponse>(ApiEndpoint.SETTINGS);
   return response.data;
 };
 
 export const postSettings = async (
   settings: PostSettingsRequest,
-): Promise<PostSettingsResponse | PostSettingsError> => {
+): Promise<PostSettingsResponse> => {
   const response = await api.post<PostSettingsResponse, PostSettingsRequest>(
     ApiEndpoint.SETTINGS,
     settings,
@@ -34,7 +28,7 @@ export const postSettings = async (
 
 export const postSignupQuestion = async (
   signupQuestion: SignupQuestion,
-): Promise<PostSignupQuestionResponse | PostSignupQuestionError> => {
+): Promise<PostSignupQuestionResponse> => {
   const response = await api.post<
     PostSignupQuestionResponse,
     PostSignupQuestionRequest
@@ -46,7 +40,7 @@ export const postSignupQuestion = async (
 
 export const deleteSignupQuestion = async (
   programItemId: string,
-): Promise<DeleteSignupQuestionResponse | DeleteSignupQuestionError> => {
+): Promise<DeleteSignupQuestionResponse> => {
   const response = await api.delete<
     DeleteSignupQuestionResponse,
     DeleteSignupQuestionRequest

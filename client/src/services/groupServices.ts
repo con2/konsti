@@ -1,14 +1,9 @@
 import { api } from "client/utils/api";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
-  GetGroupError,
   GetGroupResponse,
-  PostCreateGroupError,
   PostJoinGroupRequest,
   PostCloseGroupRequest,
-  PostJoinGroupError,
-  PostLeaveGroupError,
-  PostCloseGroupError,
   PostCreateGroupResponse,
   PostJoinGroupResponse,
   PostLeaveGroupResponse,
@@ -16,16 +11,14 @@ import {
   GetGroupRequest,
 } from "shared/types/api/groups";
 
-export const postCreateGroup = async (): Promise<
-  PostCreateGroupResponse | PostCreateGroupError
-> => {
+export const postCreateGroup = async (): Promise<PostCreateGroupResponse> => {
   const response = await api.post<PostCreateGroupResponse>(ApiEndpoint.GROUP);
   return response.data;
 };
 
 export const postJoinGroup = async (
   groupRequest: PostJoinGroupRequest,
-): Promise<PostJoinGroupResponse | PostJoinGroupError> => {
+): Promise<PostJoinGroupResponse> => {
   const response = await api.post<PostJoinGroupResponse, PostJoinGroupRequest>(
     ApiEndpoint.JOIN_GROUP,
     groupRequest,
@@ -33,9 +26,7 @@ export const postJoinGroup = async (
   return response.data;
 };
 
-export const postLeaveGroup = async (): Promise<
-  PostLeaveGroupResponse | PostLeaveGroupError
-> => {
+export const postLeaveGroup = async (): Promise<PostLeaveGroupResponse> => {
   const response = await api.post<PostLeaveGroupResponse>(
     ApiEndpoint.LEAVE_GROUP,
   );
@@ -44,7 +35,7 @@ export const postLeaveGroup = async (): Promise<
 
 export const postCloseGroup = async (
   groupRequest: PostCloseGroupRequest,
-): Promise<PostCloseGroupResponse | PostCloseGroupError> => {
+): Promise<PostCloseGroupResponse> => {
   const response = await api.post<
     PostCloseGroupResponse,
     PostCloseGroupRequest
@@ -54,7 +45,7 @@ export const postCloseGroup = async (
 
 export const getGroup = async (
   groupCode: string,
-): Promise<GetGroupResponse | GetGroupError> => {
+): Promise<GetGroupResponse> => {
   const response = await api.get<GetGroupResponse, GetGroupRequest>(
     ApiEndpoint.GROUP,
     {

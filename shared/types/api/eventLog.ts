@@ -27,10 +27,14 @@ export type PostEventLogIsSeenRequest = z.infer<
   typeof PostEventLogIsSeenRequestSchema
 >;
 
-export interface PostEventLogIsSeenResponse extends ApiResult {
+export interface PostEventLogIsSeenResult extends ApiResult {
   eventLogItems: EventLogItem[];
 }
 
 export interface PostEventLogIsSeenError extends ApiError {
   errorId: "unknown";
 }
+
+export type PostEventLogIsSeenResponse =
+  | PostEventLogIsSeenResult
+  | PostEventLogIsSeenError;

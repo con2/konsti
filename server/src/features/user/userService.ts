@@ -9,13 +9,9 @@ import {
   saveUser,
 } from "server/features/user/userRepository";
 import {
-  GetUserBySerialError,
   GetUserBySerialResponse,
-  GetUserError,
   GetUserResponse,
-  PostUpdateUserPasswordError,
   PostUpdateUserPasswordResponse,
-  PostUserError,
   PostUserResponse,
 } from "shared/types/api/users";
 import { findUserDirectSignups } from "server/features/direct-signup/directSignupRepository";
@@ -28,7 +24,7 @@ export const storeUser = async (
   username: string,
   password: string,
   maybeSerial: string | undefined,
-): Promise<PostUserResponse | PostUserError> => {
+): Promise<PostUserResponse> => {
   let serial;
   if (config.event().requireRegistrationCode) {
     serial = maybeSerial;
@@ -186,7 +182,7 @@ export const storeUserPassword = async (
   username: string,
   password: string,
   requester: string,
-): Promise<PostUpdateUserPasswordResponse | PostUpdateUserPasswordError> => {
+): Promise<PostUpdateUserPasswordResponse> => {
   if (requester === "helper" && PASSWORD_CHANGE_NOT_ALLOWED.has(username)) {
     return {
       message: "Password change not allowed",
@@ -229,7 +225,7 @@ export const storeUserPassword = async (
 
 export const fetchUserByUsername = async (
   username: string,
-): Promise<GetUserResponse | GetUserError> => {
+): Promise<GetUserResponse> => {
   const userResult = await findUser(username);
   if (isErrorResult(userResult)) {
     return {
@@ -293,7 +289,7 @@ export const fetchUserByUsername = async (
 
 export const fetchUserBySerialOrUsername = async (
   searchTerm: string,
-): Promise<GetUserBySerialResponse | GetUserBySerialError> => {
+): Promise<GetUserBySerialResponse> => {
   // Try to find user first with serial
   const userBySerialResult = await findUserBySerial(
     searchTerm.replaceAll("-", ""),

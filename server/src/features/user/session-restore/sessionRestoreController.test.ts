@@ -7,7 +7,7 @@ import { mockUser } from "server/test/mock-data/mockUser";
 import { saveUser } from "server/features/user/userRepository";
 import { closeServer, startServer } from "server/utils/server";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
-import { PostLoginError, PostLoginResponse } from "shared/types/api/login";
+import { PostLoginError, PostLoginResult } from "shared/types/api/login";
 
 let server: Server;
 
@@ -48,7 +48,7 @@ describe(`POST ${ApiEndpoint.SESSION_RESTORE}`, () => {
 
     expect(loginResponse.status).toEqual(200);
 
-    const loginBody = loginResponse.body as PostLoginResponse;
+    const loginBody = loginResponse.body as PostLoginResult;
     expect(loginBody.message).toEqual("User login success");
 
     const sessionRestoreResponse = await request(server)
@@ -57,7 +57,7 @@ describe(`POST ${ApiEndpoint.SESSION_RESTORE}`, () => {
 
     expect(sessionRestoreResponse.status).toEqual(200);
 
-    const sessionRestoreBody = sessionRestoreResponse.body as PostLoginResponse;
+    const sessionRestoreBody = sessionRestoreResponse.body as PostLoginResult;
     expect(sessionRestoreBody.message).toEqual("Session restore success");
   });
 });

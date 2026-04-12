@@ -13,7 +13,7 @@ import { EventLogItem } from "shared/types/models/eventLog";
 
 // GET user
 
-export interface GetUserResponse extends ApiResult {
+export interface GetUserResult extends ApiResult {
   programItems: UserProgramItems;
   serial: string;
   groupCode: string;
@@ -26,6 +26,8 @@ export interface GetUserResponse extends ApiResult {
 export interface GetUserError extends ApiError {
   errorId: "unknown";
 }
+
+export type GetUserResponse = GetUserResult | GetUserError;
 
 // POST user
 
@@ -48,13 +50,15 @@ export const PostUserRequestSchema = z.object({
 
 export type PostUserRequest = z.infer<typeof PostUserRequestSchema>;
 
-export interface PostUserResponse extends ApiResult {
+export interface PostUserResult extends ApiResult {
   username: string;
 }
 
 export interface PostUserError extends ApiError {
   errorId: "unknown" | "invalidSerial" | "usernameNotFree";
 }
+
+export type PostUserResponse = PostUserResult | PostUserError;
 
 // POST update user password
 
@@ -67,13 +71,17 @@ export type PostUpdateUserPasswordRequest = z.infer<
   typeof PostUpdateUserPasswordRequestSchema
 >;
 
-export interface PostUpdateUserPasswordResponse extends ApiResult {
+export interface PostUpdateUserPasswordResult extends ApiResult {
   username: string;
 }
 
 export interface PostUpdateUserPasswordError extends ApiError {
   errorId: "unknown" | "notAllowed";
 }
+
+export type PostUpdateUserPasswordResponse =
+  | PostUpdateUserPasswordResult
+  | PostUpdateUserPasswordError;
 
 // GET user by serial
 
@@ -85,7 +93,7 @@ export type GetUserBySerialRequest = z.infer<
   typeof GetUserBySerialRequestSchema
 >;
 
-export interface GetUserBySerialResponse extends ApiResult {
+export interface GetUserBySerialResult extends ApiResult {
   serial: string;
   username: string;
   createdAt: string;
@@ -95,12 +103,20 @@ export interface GetUserBySerialError extends ApiError {
   errorId: "unknown" | "kompassiLogin";
 }
 
+export type GetUserBySerialResponse =
+  | GetUserBySerialResult
+  | GetUserBySerialError;
+
 // GET signup messages
 
-export interface GetSignupMessagesResponse extends ApiResult {
+export interface GetSignupMessagesResult extends ApiResult {
   signupMessages: SignupMessage[];
 }
 
 export interface GetSignupMessagesError extends ApiError {
   errorId: "unknown";
 }
+
+export type GetSignupMessagesResponse =
+  | GetSignupMessagesResult
+  | GetSignupMessagesError;

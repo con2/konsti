@@ -12,7 +12,7 @@ export const PostLoginRequestSchema = z.object({
 
 export type PostLoginRequest = z.infer<typeof PostLoginRequestSchema>;
 
-export interface PostLoginResponse extends ApiResult {
+export interface PostLoginResult extends ApiResult {
   groupCode: string;
   groupCreatorCode: string;
   jwt: string;
@@ -29,6 +29,8 @@ export interface PostLoginResponse extends ApiResult {
 export interface PostLoginError extends ApiError {
   errorId: "unknown" | "loginFailed" | "loginDisabled";
 }
+
+export type PostLoginResponse = PostLoginResult | PostLoginError;
 
 // POST session recovery
 
@@ -48,11 +50,15 @@ export type PostKompassiLoginRequest = z.infer<
   typeof PostKompassiLoginRequestSchema
 >;
 
-export type PostKompassiLoginResponse = PostLoginResponse;
+export type PostKompassiLoginResult = PostLoginResult;
 
 export interface PostKompassiLoginError extends ApiError {
   errorId: "unknown" | "loginFailed" | "loginDisabled" | "invalidUserGroup";
 }
+
+export type PostKompassiLoginResponse =
+  | PostKompassiLoginResult
+  | PostKompassiLoginError;
 
 // POST Verify Kompassi login
 
@@ -70,12 +76,16 @@ export interface PostVerifyKompassiLoginPayload {
   jwt: string;
 }
 
-export type PostVerifyKompassiLoginResponse = PostVerifyKompassiLoginPayload &
+export type PostVerifyKompassiLoginResult = PostVerifyKompassiLoginPayload &
   ApiResult;
 
 export interface PostVerifyKompassiLoginError extends ApiError {
   errorId: "unknown" | "usernameNotFree";
 }
+
+export type PostVerifyKompassiLoginResponse =
+  | PostVerifyKompassiLoginResult
+  | PostVerifyKompassiLoginError;
 
 // POST Update user email address
 
@@ -106,12 +116,16 @@ interface PostUpdateUserEmailAddressPayload {
   jwt: string;
 }
 
-export type PostUpdateUserEmailAddressResponse =
+export type PostUpdateUserEmailAddressResult =
   PostUpdateUserEmailAddressPayload & ApiResult;
 
 export interface PostUpdateUserEmailAddressError extends ApiError {
   errorId: "unknown" | "invalidEmail";
 }
+
+export type PostUpdateUserEmailAddressResponse =
+  | PostUpdateUserEmailAddressResult
+  | PostUpdateUserEmailAddressError;
 
 // Finalize login
 

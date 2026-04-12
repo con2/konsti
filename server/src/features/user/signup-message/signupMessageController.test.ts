@@ -26,7 +26,7 @@ import {
   saveSignupQuestion,
 } from "server/features/settings/settingsRepository";
 import { saveDirectSignup } from "server/features/direct-signup/directSignupRepository";
-import { GetSignupMessagesResponse } from "shared/types/api/users";
+import { GetSignupMessagesResult } from "shared/types/api/users";
 
 let server: Server;
 
@@ -100,7 +100,7 @@ describe(`GET ${ApiEndpoint.SIGNUP_MESSAGE}`, () => {
 
     expect(response.status).toEqual(200);
 
-    const body = response.body as GetSignupMessagesResponse;
+    const body = response.body as GetSignupMessagesResult;
     expect(body.signupMessages.length).toEqual(2);
   });
 });
