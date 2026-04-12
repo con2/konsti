@@ -14,7 +14,7 @@ COPY --chown=node:node shared ./shared/
 
 # Install dependencies and build client
 RUN yarn \
-  && yarn workspace konsti-client build:$env
+  && yarn workspace client build:$env
 
 ### BUILD APP IMAGE
 FROM node:24.14.1-alpine3.23 AS runner
