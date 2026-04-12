@@ -3721,17 +3721,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:1.14.0":
-  version: 1.14.0
-  resolution: "axios@npm:1.14.0"
-  dependencies:
-    follow-redirects: "npm:^1.15.11"
-    form-data: "npm:^4.0.5"
-    proxy-from-env: "npm:^2.1.0"
-  checksum: 10c0/2541f4aa215a7d1842429dad006fc682d82bc0e74bd14500823f7d8cce3bbae0e0a8c328c8538946718f366ab8ce5a4c12e9ad40e5a0f3482ff8bff0cd115d45
-  languageName: node
-  linkType: hard
-
 "axobject-query@npm:^4.1.0":
   version: 4.1.0
   resolution: "axobject-query@npm:4.1.0"
@@ -7727,7 +7716,6 @@ __metadata:
     "@vitest/coverage-istanbul": "npm:4.1.2"
     "@vitest/eslint-plugin": "npm:1.6.14"
     "@yarnpkg/types": "npm:4.0.1"
-    axios: "npm:1.14.0"
     dayjs: "npm:1.11.20"
     eslint: "npm:10.2.0"
     eslint-config-prettier: "npm:10.1.8"
@@ -10096,13 +10084,6 @@ __metadata:
     forwarded: "npm:0.2.0"
     ipaddr.js: "npm:1.9.1"
   checksum: 10c0/c3eed999781a35f7fd935f398b6d8920b6fb00bbc14287bc6de78128ccc1a02c89b95b56742bf7cf0362cc333c61d138532049c7dedc7a328ef13343eff81210
-  languageName: node
-  linkType: hard
-
-"proxy-from-env@npm:^2.1.0":
-  version: 2.1.0
-  resolution: "proxy-from-env@npm:2.1.0"
-  checksum: 10c0/ed01729fd4d094eab619cd7e17ce3698b3413b31eb102c4904f9875e677cd207392795d5b4adee9cec359dfd31c44d5ad7595a3a3ad51c40250e141512281c58
   languageName: node
   linkType: hard
 

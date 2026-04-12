@@ -1,4 +1,3 @@
-import axios from "axios";
 import {
   findUser,
   findUserByKompassiId,
@@ -64,8 +63,9 @@ const getKompassiTokens = async (
   };
 
   try {
-    const response = await axios.post<unknown>(url, body, { headers });
-    const result = KompassiTokensSchema.safeParse(response.data);
+    const response = await fetch(url, { method: "POST", headers, body });
+    const responseData = await response.json();
+    const result = KompassiTokensSchema.safeParse(responseData);
     if (!result.success) {
       logger.error(
         "%s",
@@ -92,8 +92,9 @@ const getKompassiProfile = async (
   const headers = { authorization: `Bearer ${accessToken}` };
 
   try {
-    const response = await axios.get<unknown>(url, { headers });
-    const result = KompassiProfileSchema.safeParse(response.data);
+    const response = await fetch(url, { headers });
+    const responseData = await response.json();
+    const result = KompassiProfileSchema.safeParse(responseData);
     if (!result.success) {
       logger.error(
         "%s",

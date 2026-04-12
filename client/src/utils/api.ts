@@ -1,14 +1,12 @@
-import axios, {
-  AxiosError,
-  AxiosInstance,
-  AxiosRequestConfig,
-  AxiosResponse,
-} from "axios";
 import { t } from "i18next";
 import { config } from "shared/config";
 import { getJWT } from "client/utils/getJWT";
 import { addError } from "client/views/admin/adminSlice";
-import { ApiEndpoint } from "shared/constants/apiEndpoints";
+import {
+  ApiDevEndpoint,
+  ApiEndpoint,
+  AuthEndpoint,
+} from "shared/constants/apiEndpoints";
 import { ApiError } from "shared/types/api/errors";
 import { store } from "client/utils/store";
 
@@ -26,94 +24,11 @@ enum HttpMethod {
   DELETE = "DELETE",
 }
 
-const axiosInstance: AxiosInstance = axios.create({
-  baseURL: config.client().apiServerUrl,
-  timeout: 60000, // 60s
-  headers: {
-    "Content-Type": "application/json",
-  },
-});
+interface ApiResponse<T> {
+  data: T;
+}
 
-// Auth interceptor
-axiosInstance.interceptors.request.use((requestConfig) => {
-  const authToken = getJWT();
-  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-  if (authToken && requestConfig.headers) {
-    requestConfig.headers.Authorization = `Bearer ${authToken}`;
-  }
-  return requestConfig;
-});
-
-// Redirect interceptor
-axiosInstance.interceptors.response.use(
-  (response) => response,
-  (error: AxiosError) => {
-    if (error.response && [301, 302].includes(error.response.status)) {
-      // @ts-expect-error: TODO: Type this
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-      const redirectUrl = error.response.data.location;
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-      globalThis.location.href = redirectUrl;
-      return;
-    }
-
-    // Continue to error interceptor
-    return Promise.reject(error);
-  },
-);
-
-// Error interceptor
-axiosInstance.interceptors.response.use(
-  (response) => response,
-  (error): { data: ApiError } => {
-    if (
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-      error.code === "ERR_NETWORK" ||
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-      !error.response ||
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-      error.response.status === 0
-    ) {
-      store.dispatch(addError(t(BackendErrorType.NETWORK_ERROR)));
-
-      return {
-        data: {
-          errorId: "unknown",
-          message: "Network error",
-          status: "error",
-        },
-      };
-    }
-
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
-    const response = error.response;
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
-    const method: HttpMethod = response.config.method.toUpperCase();
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
-    const url: ApiEndpoint = response.config.url;
-
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    const errorReason = getErrorReason(Number(response.status) || 0);
-
-    store.dispatch(
-      addError(
-        t(BackendErrorType.API_ERROR, {
-          method,
-          url,
-          errorReason: t(errorReason),
-        }),
-      ),
-    );
-
-    return {
-      data: {
-        errorId: "unknown",
-        message: "Invalid API response",
-        status: "error",
-      },
-    };
-  },
-);
+const baseURL = config.client().apiServerUrl;
 
 const getErrorReason = (status: number): BackendErrorType => {
   switch (status) {
@@ -126,30 +41,104 @@ const getErrorReason = (status: number): BackendErrorType => {
   }
 };
 
-interface AxiosRequestConfigGet<REQ> extends AxiosRequestConfig<REQ> {
-  params?: REQ;
-}
+const apiFetch = async <T>(
+  url: string,
+  method: HttpMethod,
+  body?: unknown,
+): Promise<ApiResponse<T>> => {
+  const headers: Record<string, string> = {
+    "Content-Type": "application/json",
+  };
+
+  const authToken = getJWT();
+  if (authToken) {
+    headers.Authorization = `Bearer ${authToken}`;
+  }
+
+  let response: Response;
+  try {
+    response = await fetch(`${baseURL}${url}`, {
+      method,
+      headers,
+      body: body === undefined ? undefined : JSON.stringify(body),
+      signal: AbortSignal.timeout(60000),
+    });
+  } catch {
+    store.dispatch(addError(t(BackendErrorType.NETWORK_ERROR)));
+
+    const error: ApiError = {
+      errorId: "unknown",
+      message: "Network error",
+      status: "error",
+    };
+    return { data: error as T };
+  }
+
+  // Handle redirect responses (301/302 with JSON body containing location)
+  if ([301, 302].includes(response.status)) {
+    const data = (await response.json()) as { location: string };
+    globalThis.location.href = data.location;
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    return new Promise<ApiResponse<T>>(() => {});
+  }
+
+  // Handle errors
+  if (!response.ok) {
+    const errorReason = getErrorReason(response.status);
+
+    store.dispatch(
+      addError(
+        t(BackendErrorType.API_ERROR, {
+          method,
+          url,
+          errorReason: t(errorReason),
+        }),
+      ),
+    );
+
+    const error: ApiError = {
+      errorId: "unknown",
+      message: "Invalid API response",
+      status: "error",
+    };
+    return { data: error as T };
+  }
+
+  const data = (await response.json()) as T;
+  return { data };
+};
+
+type Endpoint = ApiEndpoint | ApiDevEndpoint | AuthEndpoint;
 
 export const api = {
-  post: async <RES = never, REQ = never, R = AxiosResponse<RES>>(
-    url: string,
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters
+  post: async <RES = never, REQ = never>(
+    url: Endpoint,
     data?: REQ,
-    axiosRequestConfig?: AxiosRequestConfig<REQ>,
-  ): Promise<R> => {
-    return await axiosInstance.post(url, data, axiosRequestConfig);
+  ): Promise<ApiResponse<RES>> => {
+    return await apiFetch<RES>(url, HttpMethod.POST, data);
   },
 
-  get: async <RES = never, REQ = never, R = AxiosResponse<RES>>(
-    url: string,
-    axiosRequestConfig?: AxiosRequestConfigGet<REQ>,
-  ): Promise<R> => {
-    return await axiosInstance.get(url, axiosRequestConfig);
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters
+  get: async <RES = never, REQ = never>(
+    url: Endpoint,
+    options?: { params?: REQ },
+  ): Promise<ApiResponse<RES>> => {
+    let fetchUrl: string = url;
+    if (options?.params) {
+      const searchParams = new URLSearchParams(
+        options.params as Record<string, string>,
+      );
+      fetchUrl = `${url}?${searchParams.toString()}`;
+    }
+    return await apiFetch<RES>(fetchUrl, HttpMethod.GET);
   },
 
-  delete: async <RES = never, REQ = never, R = AxiosResponse<RES>>(
-    url: string,
-    axiosRequestConfig?: AxiosRequestConfig<REQ>,
-  ): Promise<R> => {
-    return await axiosInstance.delete(url, axiosRequestConfig);
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters
+  delete: async <RES = never, REQ = never>(
+    url: Endpoint,
+    options?: { data?: REQ },
+  ): Promise<ApiResponse<RES>> => {
+    return await apiFetch<RES>(url, HttpMethod.DELETE, options?.data);
   },
 };
