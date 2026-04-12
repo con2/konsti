@@ -3,6 +3,7 @@ import { defineConfig, loadEnv } from "vite";
 import react from "@vitejs/plugin-react";
 import svgr from "vite-plugin-svgr";
 import mdx from "@mdx-js/rollup";
+import browserslistToEsbuild from "browserslist-to-esbuild";
 import { compression } from "vite-plugin-compression2";
 import { viteStaticCopy } from "vite-plugin-static-copy";
 
@@ -15,6 +16,8 @@ export default defineConfig(({ mode }) => {
     build: {
       outDir: "build",
       sourcemap: true,
+      // Vite 8 uses Oxc which uses same target format as esbuild
+      target: browserslistToEsbuild(),
     },
 
     plugins: [
