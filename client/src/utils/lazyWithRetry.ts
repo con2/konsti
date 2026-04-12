@@ -1,32 +1,14 @@
 import { ComponentType, LazyExoticComponent, lazy } from "react";
-import { z } from "zod";
-import { StringToJsonSchema } from "client/utils/zodUtils";
 
 const pageForceRefreshedKey = "page-has-been-force-refreshed";
-const PageForceRefreshedValueSchema = z.boolean();
-
-const getPageForceRefreshedState = (): boolean => {
-  const serializedValue = localStorage.getItem(pageForceRefreshedKey);
-
-  const parseJsonResult = StringToJsonSchema.safeParse(serializedValue);
-  if (!parseJsonResult.success) {
-    return false;
-  }
-
-  const result = PageForceRefreshedValueSchema.safeParse(parseJsonResult.data);
-  if (!result.success) {
-    return false;
-  }
-
-  return result.data;
-};
 
 // https://raphael-leger.medium.com/react-webpack-chunkloaderror-loading-chunk-x-failed-ac385bd110e0
 export const lazyWithRetry = (
   importComponent: () => Promise<{ default: ComponentType }>,
 ): LazyExoticComponent<ComponentType> =>
   lazy(async () => {
-    const pageForceRefreshed = getPageForceRefreshedState();
+    const pageForceRefreshed =
+      localStorage.getItem(pageForceRefreshedKey) === "true";
 
     try {
       const component = await importComponent();
@@ -36,6 +18,10 @@ export const lazyWithRetry = (
       if (!pageForceRefreshed) {
         localStorage.setItem(pageForceRefreshedKey, "true");
         location.reload();
+        // Return a never-resolving promise to prevent the error from
+        // reaching Sentry while the page reloads
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        return new Promise(() => {});
       }
 
       // eslint-disable-next-line no-restricted-syntax -- Okay to throw if module loading fails after page reload
