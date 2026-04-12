@@ -1,4 +1,6 @@
-import jsonwebtoken, { SignOptions, TokenExpiredError } from "jsonwebtoken";
+import jsonwebtoken from "jsonwebtoken";
+const { TokenExpiredError } = jsonwebtoken;
+type SignOptions = jsonwebtoken.SignOptions;
 import { config } from "shared/config";
 import { JWTBody, JWTBodySchema, JWTResponse } from "server/types/jwtTypes";
 import { UserGroup } from "shared/types/models/user";

@@ -27,9 +27,8 @@ import {
 } from "@eslint/compat";
 import { noUselessTemplateLiteral } from "./eslint-rules/noUselessTemplateLiteral";
 
-const filetypesGlob = "**/*.{ts,tsx,cts,mts,js,cjs,mjs}";
+const filetypesGlob = "**/*.{ts,tsx}";
 
-// @ts-expect-error: import.met not allowed
 const gitignorePath = fileURLToPath(new URL(".gitignore", import.meta.url));
 
 export default defineConfig([
@@ -50,9 +49,7 @@ export default defineConfig([
     "**/coverage/**",
     "**/front/**",
     "**/build/**",
-    "client/babel.config.js",
     "client/vite.config.ts",
-    "yarn.config.cjs",
   ]),
 
   // ** Default **
@@ -64,7 +61,6 @@ export default defineConfig([
         projectService: {
           defaultProject: "./tsconfig.json",
         },
-        // @ts-expect-error: import.meta not allowed
         tsconfigRootDir: import.meta.dirname,
       },
       globals: {
@@ -165,8 +161,7 @@ export default defineConfig([
       ],
 
       // eslint-plugin-unicorn
-      "unicorn/prefer-top-level-await": "off", // Top-level await not supported
-      "unicorn/prefer-module": "off", // import.meta not supported
+      "unicorn/prefer-top-level-await": "off", // Don't enforce top-level await style
       "unicorn/numeric-separators-style": "off", // Don't want this
       "unicorn/no-lonely-if": "off", // Don't want this
       "unicorn/no-array-sort": "off", // Wait till toSorted is more widely supported

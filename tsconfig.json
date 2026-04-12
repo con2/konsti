@@ -1,12 +1,9 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
+    "module": "preserve",
     "skipLibCheck": true,
     "strict": true,
     "moduleResolution": "bundler",
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
     "allowUnreachableCode": false,
     "noErrorTruncation": true,
     "types": [],

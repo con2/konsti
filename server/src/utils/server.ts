@@ -89,7 +89,7 @@ export const startServer = async ({
   app.use(apiRoutes);
 
   // Set static path
-  const staticPath = path.join(__dirname, "../../", "front");
+  const staticPath = path.join(import.meta.dirname, "../../", "front");
 
   const serveIndexAndApi =
     !config.server().onlyCronjobs ||

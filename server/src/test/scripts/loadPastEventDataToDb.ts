@@ -18,7 +18,7 @@ const updatePastEventProgramItems = async (): Promise<void> => {
 
   const rawData = fs.readFileSync(
     path.join(
-      __dirname,
+      import.meta.dirname,
       "../../features/statistics/datafiles/ropecon/2025/program-items.json",
     ),
     "utf8",

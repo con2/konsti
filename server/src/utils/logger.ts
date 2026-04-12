@@ -1,5 +1,7 @@
 import { createLogger, format, Logger, transports } from "winston";
-import Sentry from "winston-transport-sentry-node";
+import _Sentry from "winston-transport-sentry-node";
+// Node.js ESM CJS interop: package uses exports.default, so the class is wrapped as { default: Class }
+const Sentry = (_Sentry as unknown as { default: typeof _Sentry }).default;
 import { config } from "shared/config";
 import { getDsn } from "server/utils/instrument";
 

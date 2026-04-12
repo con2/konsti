@@ -21,8 +21,8 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      server: path.resolve(__dirname, "./src"),
-      shared: path.resolve(__dirname, "../shared"),
+      server: path.resolve(import.meta.dirname, "./src"),
+      shared: path.resolve(import.meta.dirname, "../shared"),
     },
   },
 });

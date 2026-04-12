@@ -14,7 +14,7 @@ Konsti is an event signup tool for conventions (Ropecon, Tracon, etc.). Users br
 - **playwright/** — E2E tests
 - **eslint-rules/** — Custom ESLint rules
 
-Yarn 4 workspaces. Node >= 24.14.1. Use yarn, not npm. All code and scripts must be OS agnostic (Linux, Mac, Windows). Use exact dependency versions (e.g., `"vite": "7.3.1"`, not `"~7.3.1"` or `"^7.3.1"`).
+Yarn 4 workspaces. Node >= 24.14.1. Use yarn, not npm. All code and scripts must be OS agnostic (Linux, Mac, Windows). Use exact dependency versions (e.g., `"vite": "7.3.1"`, not `"~7.3.1"` or `"^7.3.1"`). Client must support browsers released within the last 5 years.
 
 ## Common Commands
 

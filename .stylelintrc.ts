@@ -1,4 +1,6 @@
-module.exports = {
+import type { Config } from "stylelint";
+
+const config: Config = {
   plugins: [
     "stylelint-no-unsupported-browser-features",
     "@double-great/stylelint-a11y",
@@ -47,3 +49,5 @@ module.exports = {
     ],
   },
 };
+
+export default config;

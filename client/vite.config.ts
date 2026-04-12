@@ -8,10 +8,10 @@ import { compression } from "vite-plugin-compression2";
 import { viteStaticCopy } from "vite-plugin-static-copy";
 
 export default defineConfig(({ mode }) => {
-  const env = loadEnv(mode, __dirname, "");
+  const env = loadEnv(mode, import.meta.dirname, "");
 
   return {
-    root: __dirname,
+    root: import.meta.dirname,
 
     build: {
       outDir: "build",
@@ -47,7 +47,7 @@ export default defineConfig(({ mode }) => {
     resolve: {
       tsconfigPaths: true,
       alias: {
-        assets: path.resolve(__dirname, "assets"),
+        assets: path.resolve(import.meta.dirname, "assets"),
       },
     },
 
@@ -65,7 +65,7 @@ export default defineConfig(({ mode }) => {
       host: "127.0.0.1",
       port: 8000,
       fs: {
-        allow: [path.resolve(__dirname, "..")],
+        allow: [path.resolve(import.meta.dirname, "..")],
       },
     },
   };
