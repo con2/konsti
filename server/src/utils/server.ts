@@ -71,17 +71,13 @@ export const startServer = async ({
   // Parse body and populate req.body - only accepts JSON
   app.use(express.json({ limit: "1000kb", type: "*/*" })); // limit: 1MB
 
-  app.use(
-    "/",
-    (err: Error, _req: Request, res: Response, next: NextFunction) => {
-      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-      if (err) {
-        logger.warn(`Invalid request: ${JSON.stringify(err)}`);
-        return res.sendStatus(400);
-      }
-      next();
-    },
-  );
+  app.use((err: Error, _req: Request, res: Response, next: NextFunction) => {
+    if ("status" in err && err.status === 400) {
+      logger.warn(`Invalid request: ${err.message}`);
+      return res.sendStatus(400);
+    }
+    next(err);
+  });
 
   app.use(allowCORS);
   app.use(wwwRedirect);
@@ -122,6 +118,9 @@ export const startServer = async ({
     }
   });
 
+  // Sentry setup: add this after all routes and before other error-handling middlewares
+  setupExpressErrorHandler(app);
+
   // Error handler
   app.use((err: Error, _req: Request, res: Response, next: NextFunction) => {
     // Delegate to the default Express error handler, when the headers have already been sent to the client
@@ -129,15 +128,13 @@ export const startServer = async ({
     // Express default error handler closes the connection and fails the request
     // https://expressjs.com/en/guide/error-handling.html
     if (res.headersSent) {
+      logger.error("Error after headers sent: %s", err);
       next(err);
       return;
     }
     logger.error("%s", err);
     return res.sendStatus(500);
   });
-
-  // Sentry setup: add this after all routes and other middlewares are defined
-  setupExpressErrorHandler(app);
 
   const server = http.createServer(app);
 
