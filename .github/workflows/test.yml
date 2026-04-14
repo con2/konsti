@@ -12,14 +12,14 @@ on:
       - main
 
 jobs:
-  test-and-lint:
+  lint:
     runs-on: ubuntu-24.04
 
     env:
       CI: true
       HUSKY: 0
 
-    timeout-minutes: 30
+    timeout-minutes: 15
 
     steps:
       - name: Checkout code
@@ -45,9 +45,15 @@ jobs:
         run: |
           YARN_ENABLE_HARDENED_MODE=1 yarn --immutable
 
-      - name: Build front-end
-        run: |
-          yarn build-front:prod
+      - name: Restore ESLint cache
+        uses: actions/cache@v5
+        with:
+          path: |
+            client/.eslintcache
+            server/.eslintcache
+          key: eslint-${{ runner.os }}-${{ hashFiles('eslint.config.ts', 'yarn.lock') }}-${{ github.sha }}
+          restore-keys: |
+            eslint-${{ runner.os }}-${{ hashFiles('eslint.config.ts', 'yarn.lock') }}-
 
       - name: Run Prettier
         run: |
@@ -65,9 +71,69 @@ jobs:
         run: |
           yarn stylelint
 
+  type-check:
+    runs-on: ubuntu-24.04
+
+    env:
+      CI: true
+      HUSKY: 0
+
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Use Node.js 24.14.1
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24.14.1
+          cache: "yarn"
+
+      - name: Yarn install
+        run: |
+          YARN_ENABLE_HARDENED_MODE=1 yarn --immutable
+
+      - name: Restore TypeScript build info cache
+        uses: actions/cache@v5
+        with:
+          path: |
+            client/node_modules/.cache/tsbuildinfo
+            server/node_modules/.cache/tsbuildinfo
+          key: tsbuildinfo-${{ runner.os }}-${{ hashFiles('tsconfig.json', 'client/tsconfig.json', 'server/tsconfig.json', 'yarn.lock') }}-${{ github.sha }}
+          restore-keys: |
+            tsbuildinfo-${{ runner.os }}-${{ hashFiles('tsconfig.json', 'client/tsconfig.json', 'server/tsconfig.json', 'yarn.lock') }}-
+
       - name: TS type check
         run: |
           yarn type-check
+
+  build-and-test:
+    runs-on: ubuntu-24.04
+
+    env:
+      CI: true
+      HUSKY: 0
+
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Use Node.js 24.14.1
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24.14.1
+          cache: "yarn"
+
+      - name: Yarn install
+        run: |
+          YARN_ENABLE_HARDENED_MODE=1 yarn --immutable
+
+      - name: Build front-end
+        run: |
+          yarn build-front:prod
 
       - name: Cache MongoDB binary
         uses: actions/cache@v5
@@ -78,6 +144,29 @@ jobs:
       - name: Run Vitest tests
         run: |
           yarn test
+
+  e2e:
+    runs-on: ubuntu-24.04
+
+    env:
+      CI: true
+      HUSKY: 0
+
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Use Node.js 24.14.1
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24.14.1
+          cache: "yarn"
+
+      - name: Yarn install
+        run: |
+          YARN_ENABLE_HARDENED_MODE=1 yarn --immutable
 
       - name: Run Playwright tests
         run: |
