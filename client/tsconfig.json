@@ -4,7 +4,9 @@
     "target": "es2021",
     "lib": ["es2021", "dom"],
     "jsx": "react-jsx",
-    "types": ["mdx"]
+    "types": ["mdx"],
+    "incremental": true,
+    "tsBuildInfoFile": "./node_modules/.cache/tsbuildinfo"
   },
   "include": ["src/**/*", "../shared/**/*"]
 }

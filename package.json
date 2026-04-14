@@ -47,7 +47,10 @@
     "test:watch": "yarn vitest watch",
     "knip": "knip",
     "test": "yarn vitest run",
-    "type-check": "tsc -p client --noEmit && tsc -p server --noEmit && tsc -p .claude/hooks --noEmit",
+    "type-check": "npm-run-all --parallel type-check:client type-check:server type-check:hooks",
+    "type-check:client": "tsc -p client --noEmit",
+    "type-check:server": "tsc -p server --noEmit",
+    "type-check:hooks": "tsc -p .claude/hooks --noEmit",
     "update-yarn": "yarn set version stable"
   },
   "dependencies": {
