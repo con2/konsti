@@ -9,7 +9,7 @@
   "main": "src/index.ts",
   "type": "module",
   "scripts": {
-    "eslint": "yarn run -T eslint --no-warn-ignored .",
+    "eslint": "yarn run -TB eslint --cache --no-warn-ignored .",
     "fixer": "tsx src/features/statistics/dataFixer.ts --",
     "generate-data": "tsx src/test/test-data-generation/generateTestDataCli.ts",
     "initialize-db": "tsx src/utils/initializeDatabase.ts",

@@ -29,7 +29,7 @@
     "eslint-timings": "TIMING=1 yarn eslint",
     "eslint:client": "yarn workspace client eslint",
     "eslint:server": "yarn workspace server eslint",
-    "eslint": "eslint --no-warn-ignored .",
+    "eslint": "npm-run-all --parallel eslint:client eslint:server",
     "lint": "yarn eslint && yarn stylelint && yarn prettier:check && yarn knip",
     "populate-db:dummy": "yarn workspace server generate-data --clean --users --admin --programItems --lotterySignups --eventLog",
     "populate-db:kompassi": "yarn workspace server generate-data --clean && yarn workspace server update-kompassi-data && yarn workspace server generate-data --users --admin --lotterySignups --eventLog",
