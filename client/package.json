@@ -14,7 +14,7 @@
     "build:kube-dev": "vite build --mode kube-dev",
     "build:prod": "vite build --mode production",
     "build:staging": "vite build --mode staging",
-    "eslint": "yarn run -T eslint --no-warn-ignored .",
+    "eslint": "yarn run -TB eslint --cache --no-warn-ignored .",
     "start": "vite --clearScreen false",
     "stylelint": "stylelint \"./**/*.{tsx,ts}\"",
     "test": "yarn run -T vitest run",
