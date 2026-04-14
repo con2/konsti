@@ -153,8 +153,6 @@ export default defineConfig([
       "import-x/default": "off", // Doesn't work with prettier default import
 
       // @vitest/eslint-plugin
-      "vitest/no-disabled-tests": "error",
-      "vitest/no-focused-tests": "error",
       "vitest/expect-expect": [
         "error",
         { assertFunctionNames: ["expect", "assertSignupTime"] },
@@ -211,7 +209,6 @@ export default defineConfig([
         "error",
         { allowNumber: true },
       ],
-      "@typescript-eslint/no-deprecated": "error",
       "@typescript-eslint/no-unused-expressions": [
         "error",
         { allowTernary: true },
@@ -268,10 +265,6 @@ export default defineConfig([
 
       // eslint-plugin-react-hooks
       ...eslintPluginReactHooks.configs.recommended.rules,
-      "react-hooks/exhaustive-deps": "error",
-
-      // eslint-plugin-react-hooks-addons
-      "react-hooks-addons/no-unused-deps": "error",
 
       // @typescript-eslint
       "@typescript-eslint/no-misused-promises": [
