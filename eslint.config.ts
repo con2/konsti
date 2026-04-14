@@ -7,7 +7,7 @@ import eslintPluginCompat from "eslint-plugin-compat";
 import eslintPluginImport from "eslint-plugin-import-x";
 import eslintPluginJsxA11y from "eslint-plugin-jsx-a11y";
 import eslintPluginN from "eslint-plugin-n";
-import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
+import eslintConfigPrettier from "eslint-config-prettier";
 // @ts-expect-error: Missing types
 import eslintPluginPromise from "eslint-plugin-promise";
 import eslintPluginReact from "eslint-plugin-react";
@@ -293,6 +293,7 @@ export default defineConfig([
     rules: {
       // eslint-plugin-n
       "n/no-missing-import": "off", // Handled by tsc
+      "n/no-unpublished-import": "off", // Slow and handled by tsc
       "n/no-extraneous-import": "off", // Doesn't work with Yarn workspace dependencies
       "n/no-process-exit": "off", // eslint-plugin-unicorn has extended version
     },
@@ -331,5 +332,5 @@ export default defineConfig([
   },
 
   // ** eslint-config-prettier **
-  eslintPluginPrettierRecommended,
+  eslintConfigPrettier,
 ]);
