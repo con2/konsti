@@ -67,6 +67,10 @@ In this case, access the frontend at `localhost:5000`.
   - styled-components
   - stylelint
 
+## Documentation
+
+See [docs](docs/index.md) for additional documentation, including event deployment guides, datafile documentation, and style guide.
+
 ## Blog posts
 
 - 2025: [Analyysi Konstin pöytäroolipelitilastoista Ropeconeissa 2022-2024](https://blog.ropecon.fi/analyysi-konstin-poytaroolipelitilastoista-ropeconeissa-2022-2024/)
