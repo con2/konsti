@@ -43,8 +43,6 @@ jobs:
           tags: ghcr.io/con2/konsti:${{ github.sha }}-${{ env.DEPLOY_ENV }}
           build-args: |
             env=${{ env.DEPLOY_ENV }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
 
   deploy:
     needs: build
