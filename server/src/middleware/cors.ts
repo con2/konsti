@@ -18,8 +18,8 @@ export const allowCORS = (
 
   // Origin not allowed
   if (!allowedOrigins.includes(origin)) {
-    logger.error("%s", new Error(`CORS: Request blocked from ${origin}`));
-    next();
+    logger.warn("%s", new Error(`CORS: Request blocked from ${origin}`));
+    res.sendStatus(403);
     return;
   }
 
