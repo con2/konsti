@@ -1,6 +1,6 @@
 # Konsti-koulutus
 
-## Huomiotavaa
+## Huomioitavaa
 
 - Muista pyytää tapahtumaa mainostamaan koulutusta vapaaehtoisille ja varmista, että näin on tehty
 

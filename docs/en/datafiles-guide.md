@@ -2,6 +2,8 @@
 
 This directory contains sanitized database dumps from Konsti events. The data can be used for calculating statistics about signups, lottery results, and user behavior.
 
+Data files are located in [`server/src/features/statistics/datafiles/`](../../server/src/features/statistics/datafiles/).
+
 ## Directory Structure
 
 ```

@@ -1,3 +1,5 @@
+# Style Guide
+
 ## Logos and banners
 
 Konsti logo created by Ami Koiranen.
