@@ -16,7 +16,7 @@
     "build:staging": "vite build --mode staging",
     "eslint": "yarn run -TB eslint --cache --no-warn-ignored .",
     "start": "vite --clearScreen false",
-    "stylelint": "stylelint \"./**/*.{tsx,ts}\"",
+    "stylelint": "stylelint --cache \"./**/*.{tsx,ts}\"",
     "test": "yarn run -T vitest run",
     "test:coverage": "yarn run -T vitest run --coverage",
     "test:watch": "yarn run -T vitest watch",
