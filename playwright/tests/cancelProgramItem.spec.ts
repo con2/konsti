@@ -360,7 +360,7 @@ test("Show event log notification when program item with direct signup is comple
   await page.reload();
 
   await expect(page.getByTestId("notification-bar")).toContainText(
-    "Roleplaying game canceled: Test program item",
+    "Program item canceled: test-program-item",
   );
 });
 
@@ -424,6 +424,6 @@ test("Show event log notification and remove lottery signup when program item is
 
   // Deletion bypasses the preservation rule — notification still appears
   await expect(page.getByTestId("notification-bar")).toContainText(
-    "Roleplaying game canceled: Test program item",
+    "Program item canceled: test-program-item",
   );
 });
