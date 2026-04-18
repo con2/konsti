@@ -1,37 +1,48 @@
 import { execSync } from "node:child_process";
+import { setTimeout as sleep } from "node:timers/promises";
 import { logger } from "server/utils/logger";
 
-const mongoDbVersion = "8.0.11";
+const mongoDbVersion = "8.0.20";
 const containerName = `konsti-mongodb-${mongoDbVersion}`;
+const stabilityCheckMs = 3000;
 
-const isMongoContainerRunning = (): boolean => {
+const inspect = (format: string): string | null => {
   try {
-    const output = execSync(
-      `docker inspect -f "{{.State.Running}}" ${containerName}`,
-      {
-        stdio: "pipe",
-      },
-    )
+    return execSync(`docker inspect -f "${format}" ${containerName}`, {
+      stdio: "pipe",
+    })
       .toString()
       .trim();
-    return output === "true";
   } catch {
-    return false;
+    return null;
   }
 };
 
-const doesMongoContainerExist = (): boolean => {
+const isMongoContainerRunning = (): boolean =>
+  inspect("{{.State.Running}}") === "true";
+
+const doesMongoContainerExist = (): boolean =>
+  inspect("{{.State.Status}}") !== null;
+
+const assertContainerStillRunning = async (): Promise<void> => {
+  await sleep(stabilityCheckMs);
+  if (isMongoContainerRunning()) {
+    return;
+  }
+  const exitCode = inspect("{{.State.ExitCode}}") ?? "unknown";
+  logger.error(
+    `MongoDB container ${containerName} exited shortly after start (exit code ${exitCode}). Last logs:`,
+  );
   try {
-    execSync(`docker inspect ${containerName}`, {
-      stdio: "pipe",
-    });
-    return true;
+    execSync(`docker logs --tail 20 ${containerName}`, { stdio: "inherit" });
   } catch {
-    return false;
+    // logs unavailable — already reported the exit
   }
+  // eslint-disable-next-line unicorn/no-process-exit
+  process.exit(1);
 };
 
-try {
+const main = async (): Promise<void> => {
   logger.info(`Start new container ${containerName} or connect to existing`);
   if (isMongoContainerRunning()) {
     logger.info("MongoDB container is already running, connecting...");
@@ -47,8 +58,11 @@ try {
       },
     );
   }
-} catch (error) {
+  await assertContainerStillRunning();
+};
+
+main().catch((error: unknown) => {
   logger.error("Failed to start MongoDB container: %s", error);
   // eslint-disable-next-line unicorn/no-process-exit
   process.exit(1);
-}
+});

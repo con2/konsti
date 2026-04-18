@@ -21,7 +21,7 @@ const startApp = async (): Promise<void> => {
       port: config.server().port,
     });
   } catch (error) {
-    logger.error("%s", new Error(`Starting server failed: ${String(error)}`));
+    logger.error("Starting server failed: %s", error);
     return;
   }
 
