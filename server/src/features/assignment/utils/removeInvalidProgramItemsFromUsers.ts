@@ -21,6 +21,9 @@ import {
   makeSuccessResult,
   unwrapResult,
 } from "shared/utils/result";
+import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
+import { getLotterySignupEndTime } from "shared/utils/signupTimes";
+import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
 
 interface UserToNofify {
   username: string;
@@ -43,6 +46,12 @@ export const removeCanceledDeletedProgramItemsFromUsers = async ({
 > => {
   logger.info("Remove invalid program items from users");
 
+  const timeNowResult = await getTimeNow();
+  if (isErrorResult(timeNowResult)) {
+    return timeNowResult;
+  }
+  const timeNow = unwrapResult(timeNowResult);
+
   const usersResult = await findUsers();
   if (isErrorResult(usersResult)) {
     return usersResult;
@@ -55,22 +64,40 @@ export const removeCanceledDeletedProgramItemsFromUsers = async ({
   const usersToUpdate = users.flatMap((user) => {
     // LOTTERY SIGNUPS
 
-    const [validLotterySignups, invalidLotterySignups] = partition(
+    const [keepLotterySignups, removeLotterySignups] = partition(
       user.lotterySignups,
       (lotterySignup) => {
         const foundProgramItem = programItems.find(
           (programItem) =>
             programItem.programItemId === lotterySignup.programItemId,
         );
-        return (
+
+        const isValid =
           foundProgramItem?.state === State.ACCEPTED &&
-          foundProgramItem.signupType === SignupType.KONSTI
-        );
+          foundProgramItem.signupType === SignupType.KONSTI &&
+          isLotterySignupProgramItem(foundProgramItem);
+
+        if (isValid) {
+          return true;
+        }
+
+        // Preserve already-run lottery signups when the item still exists (cancelled or signupType changed)
+        // Deleted items (not in programItems) are always removed
+        if (foundProgramItem) {
+          const lotteryHasRun = !timeNow.isBefore(
+            getLotterySignupEndTime(foundProgramItem),
+          );
+          if (lotteryHasRun) {
+            return true;
+          }
+        }
+
+        return false;
       },
     );
 
     const changedLotterySignupsCount =
-      user.lotterySignups.length - validLotterySignups.length;
+      user.lotterySignups.length - keepLotterySignups.length;
 
     if (changedLotterySignupsCount > 0) {
       logger.info(
@@ -78,14 +105,14 @@ export const removeCanceledDeletedProgramItemsFromUsers = async ({
       );
     }
 
-    // FAVORITES
+    // FAVORITES — removed only when the program item is deleted from DB
 
     const [validFavoriteProgramItemIds, invalidFavoriteProgramItemIds] =
       partition(user.favoriteProgramItemIds, (favoriteProgramItemId) => {
         const foundProgramItem = programItems.find(
           (programItem) => programItem.programItemId === favoriteProgramItemId,
         );
-        return foundProgramItem?.state === State.ACCEPTED;
+        return foundProgramItem !== undefined;
       });
 
     const changedFavoriteProgramItemIdsCount =
@@ -104,13 +131,13 @@ export const removeCanceledDeletedProgramItemsFromUsers = async ({
     ) {
       usersToNofify.push({
         username: user.username,
-        invalidLotterySignups,
+        invalidLotterySignups: removeLotterySignups,
         invalidFavoriteProgramItemIds,
       });
 
       return {
         ...user,
-        lotterySignups: validLotterySignups,
+        lotterySignups: keepLotterySignups,
         favoriteProgramItemIds: validFavoriteProgramItemIds,
       };
     }

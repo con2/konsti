@@ -24,9 +24,11 @@ if (
 }
 
 try {
-  execFileSync("yarn", ["eslint", "--no-warn-ignored", filePath], {
-    stdio: "inherit",
-  });
+  execFileSync(
+    "yarn",
+    ["run", "-TB", "eslint", "--cache", "--no-warn-ignored", filePath],
+    { stdio: "inherit" },
+  );
 } catch {
-  process.exit(1);
+  process.exit(2);
 }

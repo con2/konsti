@@ -16,6 +16,10 @@ Konsti is an event signup tool for conventions (Ropecon, Tracon, etc.). Users br
 
 Yarn 4 workspaces. Node >= 24.14.1. Use yarn, not npm. All code and scripts must be OS agnostic (Linux, Mac, Windows). Use exact dependency versions (e.g., `"vite": "7.3.1"`, not `"~7.3.1"` or `"^7.3.1"`). Client must support browsers released within the last 5 years.
 
+## Code Style
+
+- Don't end code comments with a period: write `// This is a comment`, not `// This is a comment.`
+
 ## Common Commands
 
 ```bash
@@ -69,6 +73,22 @@ Local login (bcryptjs) and Kompassi OAuth. JWT tokens stored in localStorage. Us
 ### Event Configuration
 
 Current event config in `shared/config/eventConfig.ts`, past events in `shared/config/past-events/` (e.g., `ropecon2025.ts`). Controls signup windows, program item types, assignment rules.
+
+### Program Item Cancellation Types
+
+A program item can effectively "go away" in four distinct ways; each has different data-cleanup semantics:
+
+1. **Cancelled** — `state: "cancelled"` in DB. Item stays visible (so users know it was cancelled).
+2. **Deleted** — the program item document is removed from the DB entirely. All related records (lottery signups, favorites, direct signups, etc.) should also be removed.
+3. **Signup type changed** — item stays in DB with `state: "accepted"`, but `signupType` is no longer `KONSTI` (e.g. moved to `OTHER`). No new Konsti signups possible.
+4. **Program type changed to non-lottery** — item stays in DB with `state: "accepted"` and `signupType: "konsti"`, but `programType` is no longer in `twoPhaseSignupProgramTypes` (e.g. changed from `TABLETOP_RPG` to `OTHER`). Lottery is no longer meaningful for this item; use `isLotterySignupProgramItem` to detect this state.
+
+Cleanup rules in `removeCanceledDeletedProgramItemsFromUsers` (`server/src/features/assignment/utils/removeInvalidProgramItemsFromUsers.ts`), admin-import path (`notify: true`):
+
+- **Cancelled / signup-type-changed / program-type-changed** (item still in DB): if the lottery has already run for the item (`timeNow >= getLotterySignupEndTime(programItem)`), the user's lottery signup is preserved as history and no `PROGRAM_ITEM_CANCELED` event log is added. Otherwise the signup is removed and the user gets a `PROGRAM_ITEM_CANCELED` notification. Users with a direct signup for the cancelled item are notified through the direct-signup cancellation path instead, so there's no double notification. **Favorites are kept** for all three of these — the item still exists, so the favorite still points to something real.
+- **Deleted** (item not in the `programItems` array): the user's lottery signup **and** favorite are always removed.
+
+Pre-assignment cleanup (`runAssignment.ts` → `notify: false`) calls the same function with the same preservation semantics; the `notify: false` flag only suppresses the `PROGRAM_ITEM_CANCELED` event-log notifications. This path is a safety net — invalid signups should already have been handled when the program items were updated.
 
 ### Program Item Parent Start Times
 

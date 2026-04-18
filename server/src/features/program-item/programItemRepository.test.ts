@@ -26,8 +26,14 @@ import {
 } from "server/test/mock-data/mockUser";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { saveFavorite } from "server/features/user/favorite-program-item/favoriteProgramItemRepository";
-import { SignupType, State } from "shared/types/models/programItem";
+import {
+  ProgramType,
+  SignupType,
+  State,
+} from "shared/types/models/programItem";
 import { EventLogAction } from "shared/types/models/eventLog";
+import { saveTestSettings } from "server/test/test-settings/testSettingsRepository";
+import { config } from "shared/config";
 
 beforeEach(async () => {
   await mongoose.connect(globalThis.__MONGO_URI__, {
@@ -140,7 +146,12 @@ test("should remove direct signups when program item is deleted and add notifica
   );
 });
 
-test("should remove lottery signups and favorites when program item is cancelled and add notification", async () => {
+test("should remove lottery signups but keep favorites when program item is cancelled before lottery and add notification", async () => {
+  await saveTestSettings({
+    testTime: dayjs(testProgramItem.startTime)
+      .subtract(config.event().directSignupPhaseStart + 1, "minutes")
+      .toISOString(),
+  });
   await saveProgramItems([testProgramItem, testProgramItem2]);
   await saveUser(mockUser);
   await saveLotterySignups({
@@ -160,9 +171,10 @@ test("should remove lottery signups and favorites when program item is cancelled
     { ...testProgramItem2, state: State.CANCELLED },
   ]);
 
-  // Should have removed favorites and lottery signups
+  // Favorites are kept because the item still exists in DB
+  // Lottery signups are removed (lottery hasn't run yet)
   const user = unsafelyUnwrap(await findUser(mockUser.username));
-  expect(user?.favoriteProgramItemIds).toHaveLength(0);
+  expect(user?.favoriteProgramItemIds).toHaveLength(2);
   expect(user?.lotterySignups).toHaveLength(0);
 
   // Should have added new event log items
@@ -219,7 +231,12 @@ test("should remove direct signups when program item is cancelled and add notifi
   );
 });
 
-test("should remove lottery signups but not favorites when program item doesn't use Konsti signup anymore and add notification", async () => {
+test("should remove lottery signups but not favorites when program item doesn't use Konsti signup anymore before lottery and add notification", async () => {
+  await saveTestSettings({
+    testTime: dayjs(testProgramItem.startTime)
+      .subtract(config.event().directSignupPhaseStart + 1, "minutes")
+      .toISOString(),
+  });
   await saveProgramItems([testProgramItem, testProgramItem2]);
   await saveUser(mockUser);
   await saveLotterySignups({
@@ -320,6 +337,116 @@ test("should not add duplicate notification when program item is canceled and us
       }),
     ]),
   );
+});
+
+test("should preserve lottery signup when program item is cancelled after its lottery has run and not add notification", async () => {
+  await saveTestSettings({
+    testTime: dayjs(testProgramItem.startTime)
+      .subtract(config.event().directSignupPhaseStart - 1, "minutes")
+      .toISOString(),
+  });
+  await saveProgramItems([testProgramItem, testProgramItem2]);
+  await saveUser(mockUser);
+  await saveLotterySignups({
+    username: mockUser.username,
+    lotterySignups: mockLotterySignups,
+  });
+
+  await saveProgramItems([
+    { ...testProgramItem, state: State.CANCELLED },
+    testProgramItem2,
+  ]);
+
+  const user = unsafelyUnwrap(await findUser(mockUser.username));
+  expect(user?.lotterySignups).toHaveLength(2);
+  const cancelEvents = user?.eventLogItems.filter(
+    (e) => e.action === EventLogAction.PROGRAM_ITEM_CANCELED,
+  );
+  expect(cancelEvents).toHaveLength(0);
+});
+
+test("should preserve lottery signup when signupType is changed away from Konsti after its lottery has run and not add notification", async () => {
+  await saveTestSettings({
+    testTime: dayjs(testProgramItem.startTime)
+      .subtract(config.event().directSignupPhaseStart - 1, "minutes")
+      .toISOString(),
+  });
+  await saveProgramItems([testProgramItem, testProgramItem2]);
+  await saveUser(mockUser);
+  await saveLotterySignups({
+    username: mockUser.username,
+    lotterySignups: mockLotterySignups,
+  });
+
+  await saveProgramItems([
+    { ...testProgramItem, signupType: SignupType.OTHER },
+    testProgramItem2,
+  ]);
+
+  const user = unsafelyUnwrap(await findUser(mockUser.username));
+  expect(user?.lotterySignups).toHaveLength(2);
+  const cancelEvents = user?.eventLogItems.filter(
+    (e) => e.action === EventLogAction.PROGRAM_ITEM_CANCELED,
+  );
+  expect(cancelEvents).toHaveLength(0);
+});
+
+test("should remove lottery signup when programType is changed to non-lottery type before its lottery has run and add notification", async () => {
+  await saveTestSettings({
+    testTime: dayjs(testProgramItem.startTime)
+      .subtract(config.event().directSignupPhaseStart + 1, "minutes")
+      .toISOString(),
+  });
+  await saveProgramItems([testProgramItem, testProgramItem2]);
+  await saveUser(mockUser);
+  await saveLotterySignups({
+    username: mockUser.username,
+    lotterySignups: mockLotterySignups,
+  });
+
+  await saveProgramItems([
+    { ...testProgramItem, programType: ProgramType.OTHER },
+    testProgramItem2,
+  ]);
+
+  const user = unsafelyUnwrap(await findUser(mockUser.username));
+  expect(user?.lotterySignups).toHaveLength(1);
+  expect(user?.lotterySignups[0].programItemId).toEqual(
+    testProgramItem2.programItemId,
+  );
+  expect(user?.eventLogItems).toHaveLength(1);
+  expect(user?.eventLogItems[0].programItemId).toEqual(
+    testProgramItem.programItemId,
+  );
+  expect(user?.eventLogItems[0].action).toEqual(
+    EventLogAction.PROGRAM_ITEM_CANCELED,
+  );
+});
+
+test("should preserve lottery signup when programType is changed to non-lottery type after its lottery has run and not add notification", async () => {
+  await saveTestSettings({
+    testTime: dayjs(testProgramItem.startTime)
+      .subtract(config.event().directSignupPhaseStart - 1, "minutes")
+      .toISOString(),
+  });
+  await saveProgramItems([testProgramItem, testProgramItem2]);
+  await saveUser(mockUser);
+  await saveLotterySignups({
+    username: mockUser.username,
+    lotterySignups: mockLotterySignups,
+  });
+
+  await saveProgramItems([
+    { ...testProgramItem, programType: ProgramType.OTHER },
+    testProgramItem2,
+  ]);
+
+  const user = unsafelyUnwrap(await findUser(mockUser.username));
+  expect(user?.lotterySignups).toHaveLength(2);
+  const cancelEvents = user?.eventLogItems.filter(
+    (e) => e.action === EventLogAction.PROGRAM_ITEM_CANCELED,
+  );
+  expect(cancelEvents).toHaveLength(0);
 });
 
 test("should add event notification if user has lottery signup and program item start time changes", async () => {
