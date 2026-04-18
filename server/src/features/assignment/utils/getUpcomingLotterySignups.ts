@@ -2,13 +2,13 @@ import dayjs, { Dayjs } from "dayjs";
 import { config } from "shared/config";
 import { ProgramItem } from "shared/types/models/programItem";
 import { LotterySignup } from "shared/types/models/user";
+import { getLotterySignupEndTime } from "shared/utils/signupTimes";
 
-export const getUpcomingLotterySignupProgramItemIds = (
+const getLotterySignupProgramItems = (
   lotterySignups: readonly LotterySignup[],
   programItems: readonly ProgramItem[],
-  timeNow: Dayjs,
-): string[] => {
-  const lotterySignupProgramItems = lotterySignups.flatMap((signup) => {
+): ProgramItem[] =>
+  lotterySignups.flatMap((signup) => {
     const found = programItems.find(
       (programItem) => programItem.programItemId === signup.programItemId,
     );
@@ -18,7 +18,17 @@ export const getUpcomingLotterySignupProgramItemIds = (
     return found;
   });
 
-  const upcomingLotterySignupProgramItemIds = lotterySignupProgramItems
+export const getUpcomingLotterySignupProgramItemIds = (
+  lotterySignups: readonly LotterySignup[],
+  programItems: readonly ProgramItem[],
+  timeNow: Dayjs,
+): string[] => {
+  const lotterySignupProgramItems = getLotterySignupProgramItems(
+    lotterySignups,
+    programItems,
+  );
+
+  return lotterySignupProgramItems
     .filter((lotterySignupProgramItem) => {
       const parentStartTime = config
         .event()
@@ -28,6 +38,24 @@ export const getUpcomingLotterySignupProgramItemIds = (
       );
     })
     .map((programItem) => programItem.programItemId);
+};
 
-  return upcomingLotterySignupProgramItemIds;
+export const getLotteryNotYetRunProgramItemIds = (
+  lotterySignups: readonly LotterySignup[],
+  programItems: readonly ProgramItem[],
+  timeNow: Dayjs,
+): string[] => {
+  const lotterySignupProgramItems = getLotterySignupProgramItems(
+    lotterySignups,
+    programItems,
+  );
+
+  return lotterySignupProgramItems
+    .filter((lotterySignupProgramItem) => {
+      const lotterySignupEndTime = getLotterySignupEndTime(
+        lotterySignupProgramItem,
+      );
+      return timeNow.isBefore(lotterySignupEndTime);
+    })
+    .map((programItem) => programItem.programItemId);
 };

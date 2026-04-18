@@ -136,6 +136,7 @@ export const storeLotterySignup = async ({
   const lotterySignup = {
     programItemId,
     priority,
+    // Lottery signups always store the item's own startTime; parent override is only used for lottery batching
     signedToStartTime: programItem.startTime,
   };
 
