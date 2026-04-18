@@ -27,6 +27,7 @@ test("Can create and join a group and receive a shared lottery result", async ({
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
     {
+      ...testProgramItem,
       programType: config.event().twoPhaseSignupProgramTypes[0],
       startTime,
       endTime,

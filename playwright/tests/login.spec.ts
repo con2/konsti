@@ -11,7 +11,7 @@ import { ProgramType } from "shared/types/models/programItem";
 
 test("Admin login", async ({ page, request }) => {
   await populateDb(request, { clean: true, users: true, admin: true });
-  await addProgramItems(request);
+  await addProgramItems(request, [testProgramItem]);
   await postSettings(request, { loginProvider: LoginProvider.LOCAL });
   await postTestSettings(request, {
     testTime: testProgramItem.startTime,
@@ -42,7 +42,7 @@ test("Admin login", async ({ page, request }) => {
 
 test("User login", async ({ page, request }) => {
   await populateDb(request, { clean: true, users: true, admin: true });
-  await addProgramItems(request);
+  await addProgramItems(request, [testProgramItem]);
   await postSettings(request, { loginProvider: LoginProvider.LOCAL });
   await postTestSettings(request, {
     testTime: testProgramItem.startTime,
@@ -75,6 +75,7 @@ test("Login redirect back to program item", async ({ page, request }) => {
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
     {
+      ...testProgramItem,
       programType: ProgramType.TABLETOP_RPG,
     },
   ]);

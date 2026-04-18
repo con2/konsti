@@ -28,7 +28,7 @@ export const clearDb = async (request: APIRequestContext): Promise<void> => {
 
 export const addProgramItems = async (
   request: APIRequestContext,
-  programItems: Partial<ProgramItem>[] = [],
+  programItems: ProgramItem[] = [],
 ): Promise<void> => {
   const url = `${baseUrl}${ApiDevEndpoint.ADD_PROGRAM_ITEMS}`;
   const response = await request.post(url, {

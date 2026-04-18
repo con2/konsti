@@ -22,7 +22,7 @@ test("Show event log notification when program item with direct signup is moved"
   });
   await addProgramItems(request, [
     {
-      programItemId: testProgramItem.programItemId,
+      ...testProgramItem,
       startTime: dayjs(config.event().eventStartTime)
         .add(1, "hour")
         .startOf("hour")
@@ -61,7 +61,7 @@ test("Show event log notification when program item with direct signup is moved"
   // Change program item state on background
   await addProgramItems(request, [
     {
-      programItemId: testProgramItem.programItemId,
+      ...testProgramItem,
       startTime: dayjs(config.event().eventStartTime)
         .add(2, "hours")
         .startOf("hour")

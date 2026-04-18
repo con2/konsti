@@ -7,6 +7,7 @@ import {
   postTestSettings,
 } from "playwright/playwrightUtils";
 import { config } from "shared/config";
+import { testProgramItem } from "shared/tests/testProgramItem";
 
 test("Hide program item", async ({ page, request }) => {
   await populateDb(request, {
@@ -16,6 +17,7 @@ test("Hide program item", async ({ page, request }) => {
   });
   await addProgramItems(request, [
     {
+      ...testProgramItem,
       startTime: dayjs(config.event().eventStartTime).toISOString(),
     },
   ]);
