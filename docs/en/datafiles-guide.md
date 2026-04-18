@@ -144,6 +144,8 @@ All users with sanitized data. Usernames are anonymized numeric IDs, passwords a
 ]
 ```
 
+**Caveat: `lotterySignups` can be incomplete.** Lottery signups may be removed after the lottery has run (e.g. the user joins a group), but `eventLogItems` are never modified. This means some users have `newAssignment` or `noAssignment` entries for program items or time slots that no longer appear in their `lotterySignups`. To reconstruct what users originally wanted, treat `eventLogItems` as authoritative evidence of past lottery participation and combine it with the remaining `lotterySignups`.
+
 Older events (2017-2019) have a slightly different schema:
 
 - `directSignups` array (confirmed signups are embedded in users, no separate `direct-signups.json`)

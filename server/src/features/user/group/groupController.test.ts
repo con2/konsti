@@ -139,20 +139,19 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
     expect(response.status).toEqual(422);
   });
 
-  test("should join group and remove upcoming lottery signups", async () => {
-    const timeNow = dayjs(testProgramItem.startTime).toISOString();
-    const pastStartTime = timeNow;
+  test("should join group and remove lottery signups whose lottery has not yet run", async () => {
+    const pastStartTime = dayjs(testProgramItem.startTime).toISOString();
     const upcomingStartTime = dayjs(testProgramItem.startTime)
-      .add(1, "minute")
+      .add(config.event().directSignupPhaseStart + 1, "minute")
       .toISOString();
 
     await saveTestSettings({
-      testTime: timeNow,
+      testTime: pastStartTime,
     });
 
     const groupCode = "123-234-345";
 
-    // Upcoming lottery signup is determined from program item start time, not signup time
+    // Lottery-not-yet-run is determined from program item start time, not signup time
     await saveProgramItems([
       { ...testProgramItem, startTime: pastStartTime },
       {
@@ -198,6 +197,105 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
     expect(updatedUser?.lotterySignups[0].programItemId).toEqual(
       pastLotterySignup.programItemId,
     );
+  });
+
+  test("should join group and keep upcoming lottery signup whose lottery has already run", async () => {
+    const pastStartTime = testProgramItem.startTime;
+
+    await saveTestSettings({
+      testTime: pastStartTime,
+    });
+
+    const groupCode = "123-234-345";
+
+    await saveProgramItems([{ ...testProgramItem, startTime: pastStartTime }]);
+    await saveUser({ ...mockUser, groupCode, groupCreatorCode: groupCode });
+    await saveUser(mockUser2);
+
+    const pastLotterySignup = {
+      ...mockLotterySignups[0],
+      signedToStartTime: pastStartTime,
+    };
+    await saveLotterySignups({
+      lotterySignups: [pastLotterySignup],
+      username: mockUser2.username,
+    });
+
+    const groupRequest: PostJoinGroupRequest = {
+      groupCode,
+    };
+
+    const response = await request(server)
+      .post(ApiEndpoint.JOIN_GROUP)
+      .send(groupRequest)
+      .set(
+        "Authorization",
+        `Bearer ${getJWT(UserGroup.USER, mockUser2.username)}`,
+      );
+    expect(response.status).toEqual(200);
+
+    const updatedUser = unsafelyUnwrap(await findUser(mockUser2.username));
+    expect(updatedUser?.groupCode).toEqual(groupCode);
+    expect(updatedUser?.lotterySignups.length).toEqual(1);
+    expect(updatedUser?.lotterySignups[0].programItemId).toEqual(
+      pastLotterySignup.programItemId,
+    );
+  });
+
+  test("should join group and remove lottery signup when parent startTime indicates lottery has not yet run", async () => {
+    const { directSignupPhaseStart } = config.event();
+
+    // 'parentStartTime' is before lottery, 'ownStartTime' in after lottery
+    const timeNow = dayjs(testProgramItem.startTime).toISOString();
+    const parentStartTime = dayjs(testProgramItem.startTime)
+      .add(directSignupPhaseStart + 1, "minute")
+      .toISOString();
+    const ownStartTime = dayjs(testProgramItem.startTime)
+      .add(directSignupPhaseStart - 1, "minute")
+      .toISOString();
+
+    vi.spyOn(config, "event").mockReturnValue({
+      ...config.event(),
+      startTimesByParentIds: new Map([
+        [testProgramItem.parentId, parentStartTime],
+      ]),
+    });
+
+    await saveTestSettings({
+      testTime: timeNow,
+    });
+
+    const groupCode = "123-234-345";
+
+    await saveProgramItems([{ ...testProgramItem, startTime: ownStartTime }]);
+    await saveUser({ ...mockUser, groupCode, groupCreatorCode: groupCode });
+    await saveUser(mockUser2);
+
+    const lotterySignup = {
+      ...mockLotterySignups[0],
+      signedToStartTime: ownStartTime,
+    };
+    await saveLotterySignups({
+      lotterySignups: [lotterySignup],
+      username: mockUser2.username,
+    });
+
+    const groupRequest: PostJoinGroupRequest = {
+      groupCode,
+    };
+
+    const response = await request(server)
+      .post(ApiEndpoint.JOIN_GROUP)
+      .send(groupRequest)
+      .set(
+        "Authorization",
+        `Bearer ${getJWT(UserGroup.USER, mockUser2.username)}`,
+      );
+    expect(response.status).toEqual(200);
+
+    const updatedUser = unsafelyUnwrap(await findUser(mockUser2.username));
+    expect(updatedUser?.groupCode).toEqual(groupCode);
+    expect(updatedUser?.lotterySignups.length).toEqual(0);
   });
 
   test("should join group and not remove upcoming lottery signup with parent startTime in past", async () => {

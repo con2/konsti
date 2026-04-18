@@ -70,6 +70,17 @@ Local login (bcryptjs) and Kompassi OAuth. JWT tokens stored in localStorage. Us
 
 Current event config in `shared/config/eventConfig.ts`, past events in `shared/config/past-events/` (e.g., `ropecon2025.ts`). Controls signup windows, program item types, assignment rules.
 
+### Program Item Parent Start Times
+
+A program item can have a `parentId` linking it to a parent (e.g. sub-sessions of a longer program). The event config `startTimesByParentIds: Map<parentId, startTime>` can override the effective start time for lottery/signup-window calculations. The parent override exists to batch multiple own start times into a single lottery run. The resolution pattern is `startTimesByParentIds.get(parentId) ?? programItem.startTime`; the shared helper is `getProgramItemStartTime` in `shared/utils/signupTimes.ts` (file-scoped), and downstream helpers like `getLotterySignupEndTime`, `getLotterySignupStartTime`, and `getDirectSignupStartTime` already apply it — prefer reusing them over reimplementing the override inline.
+
+**`signedToStartTime` invariant:**
+
+- **Lottery signups** store the program item's **own** `startTime` in `signedToStartTime` (what time the item actually happens for the user).
+- **Direct signups** store the **parent-resolved** start time (`parentStartTime ?? programItem.startTime`) in `signedToStartTime`. This is required so that when the lottery is re-run for a batch, the old direct signups for that batch can be cleaned up by matching the shared parent time.
+
+When adding new code that writes `signedToStartTime`, follow this split. When adding time comparisons, use the parent-resolved time for lottery-window logic and own `startTime` for per-item semantics (e.g. "has this program item started for the user").
+
 ### Database
 
 MongoDB with Mongoose. Tests use `mongodb-memory-server` for in-memory DB. Docker Compose config in `docker/`.

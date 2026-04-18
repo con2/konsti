@@ -105,6 +105,7 @@ export const storeDirectSignup = async (
   const newDirectSignup: SignupRepositoryAddSignup = {
     ...signupRequest,
     username,
+    // signedToStartTime can be parent-resolved; direct signups store parent time for lottery re-run cleanup
     signedToStartTime: parentStartTime ?? programItem.startTime,
   };
 

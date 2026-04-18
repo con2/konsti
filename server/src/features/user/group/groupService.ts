@@ -29,7 +29,7 @@ import {
 import { findProgramItems } from "server/features/program-item/programItemRepository";
 import { getLotteryParticipantDirectSignups } from "server/features/assignment/utils/prepareAssignmentParams";
 import { ProgramItem } from "shared/types/models/programItem";
-import { getUpcomingLotterySignupProgramItemIds } from "server/features/assignment/utils/getUpcomingLotterySignups";
+import { getLotteryNotYetRunProgramItemIds } from "server/features/assignment/utils/getUpcomingLotterySignups";
 
 export const generateGroupCode = (): string => {
   const baseCode = randomBytes(5).toString("hex").slice(0, 9);
@@ -247,18 +247,17 @@ export const joinGroup = async (
     };
   }
 
-  // Clean upcoming lottery signups
-  const upcomingLotterySignupProgramItemIds =
-    getUpcomingLotterySignupProgramItemIds(
-      user.lotterySignups,
-      programItems,
-      timeNow,
-    );
+  // Clean lottery signups whose lottery has not yet run
+  const lotteryNotYetRunProgramItemIds = getLotteryNotYetRunProgramItemIds(
+    user.lotterySignups,
+    programItems,
+    timeNow,
+  );
 
-  if (upcomingLotterySignupProgramItemIds.length > 0) {
+  if (lotteryNotYetRunProgramItemIds.length > 0) {
     const saveLotterySignupsResult = await delLotterySignups([
       {
-        lotterySignupProgramItemIds: upcomingLotterySignupProgramItemIds,
+        lotterySignupProgramItemIds: lotteryNotYetRunProgramItemIds,
         username,
       },
     ]);
