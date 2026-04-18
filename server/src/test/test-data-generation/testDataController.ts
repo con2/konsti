@@ -9,7 +9,6 @@ import { ProgramItemSchema } from "shared/types/models/programItem";
 import { saveSerials } from "server/features/serial/serialRepository";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { saveProgramItems } from "server/features/program-item/programItemRepository";
-import { testProgramItem } from "shared/tests/testProgramItem";
 
 export const postPopulateDb = async (
   req: Request,
@@ -84,7 +83,7 @@ export const postAddProgramItems = async (
 
   logger.info(`API call: POST ${ApiDevEndpoint.ADD_PROGRAM_ITEMS}`);
 
-  const result = z.array(ProgramItemSchema.partial()).safeParse(req.body);
+  const result = z.array(ProgramItemSchema).safeParse(req.body);
   if (!result.success) {
     logger.error(
       "%s",
@@ -95,14 +94,7 @@ export const postAddProgramItems = async (
     return res.sendStatus(422);
   }
 
-  result.data.length === 0
-    ? await saveProgramItems([testProgramItem])
-    : await saveProgramItems(
-        result.data.map((programItem) => ({
-          ...testProgramItem,
-          ...programItem,
-        })),
-      );
+  await saveProgramItems(result.data);
 
   return res.sendStatus(200);
 };

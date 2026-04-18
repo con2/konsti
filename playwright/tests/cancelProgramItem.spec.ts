@@ -25,7 +25,7 @@ test("Show event log notification when program item with direct signup is cancel
   });
   await addProgramItems(request, [
     {
-      programItemId: testProgramItem.programItemId,
+      ...testProgramItem,
       startTime: dayjs(config.event().eventStartTime)
         .add(1, "hour")
         .startOf("hour")
@@ -64,7 +64,7 @@ test("Show event log notification when program item with direct signup is cancel
   // Change program item state on background
   await addProgramItems(request, [
     {
-      programItemId: testProgramItem.programItemId,
+      ...testProgramItem,
       startTime: dayjs(config.event().eventStartTime)
         .add(1, "hour")
         .startOf("hour")
@@ -105,6 +105,7 @@ test("Show event log notification when program item with lottery signup is cance
   });
   await addProgramItems(request, [
     {
+      ...testProgramItem,
       programType: config.event().twoPhaseSignupProgramTypes[0],
       startTime,
       endTime,
@@ -136,6 +137,7 @@ test("Show event log notification when program item with lottery signup is cance
   // Cancel program item on background before lottery has run
   await addProgramItems(request, [
     {
+      ...testProgramItem,
       programType: config.event().twoPhaseSignupProgramTypes[0],
       startTime,
       endTime,
@@ -175,6 +177,7 @@ test("Don't show event log notification when program item with lottery signup is
   });
   await addProgramItems(request, [
     {
+      ...testProgramItem,
       programType: config.event().twoPhaseSignupProgramTypes[0],
       startTime,
       endTime,
@@ -211,6 +214,7 @@ test("Don't show event log notification when program item with lottery signup is
   // Cancel program item on background after lottery has run
   await addProgramItems(request, [
     {
+      ...testProgramItem,
       programType: config.event().twoPhaseSignupProgramTypes[0],
       startTime,
       endTime,
@@ -245,7 +249,7 @@ test("Show event log notification when program item with direct signup doesn't u
   });
   await addProgramItems(request, [
     {
-      programItemId: testProgramItem.programItemId,
+      ...testProgramItem,
       startTime: dayjs(config.event().eventStartTime)
         .add(1, "hour")
         .startOf("hour")
@@ -284,7 +288,7 @@ test("Show event log notification when program item with direct signup doesn't u
   // Change program item signup type on background
   await addProgramItems(request, [
     {
-      programItemId: testProgramItem.programItemId,
+      ...testProgramItem,
       startTime: dayjs(config.event().eventStartTime)
         .add(1, "hour")
         .startOf("hour")
@@ -317,7 +321,7 @@ test("Show event log notification when program item with direct signup is comple
   });
   await addProgramItems(request, [
     {
-      programItemId: testProgramItem.programItemId,
+      ...testProgramItem,
       startTime: dayjs(config.event().eventStartTime)
         .add(1, "hour")
         .startOf("hour")
@@ -380,6 +384,7 @@ test("Show event log notification and remove lottery signup when program item is
   });
   await addProgramItems(request, [
     {
+      ...testProgramItem,
       programType: config.event().twoPhaseSignupProgramTypes[0],
       startTime,
       endTime,

@@ -20,6 +20,7 @@ test("Add and cancel direct signup", async ({ page, request }) => {
   });
   await addProgramItems(request, [
     {
+      ...testProgramItem,
       startTime: dayjs(config.event().eventStartTime)
         .add(1, "hour")
         .startOf("hour")
@@ -131,6 +132,7 @@ test("Show error when program item full and update participant list", async ({
   });
   await addProgramItems(request, [
     {
+      ...testProgramItem,
       startTime: dayjs(config.event().eventStartTime)
         .add(1, "hour")
         .startOf("hour")

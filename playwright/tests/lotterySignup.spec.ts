@@ -27,6 +27,7 @@ test("Add lottery signup", async ({ page, request }) => {
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
     {
+      ...testProgramItem,
       programType: config.event().twoPhaseSignupProgramTypes[0],
       startTime,
       endTime,
@@ -91,6 +92,7 @@ test("Receive spot in lottery signup", async ({ page, request }) => {
   });
   await addProgramItems(request, [
     {
+      ...testProgramItem,
       programType: config.event().twoPhaseSignupProgramTypes[0],
       startTime,
       endTime,
@@ -160,6 +162,7 @@ test("Did not receive spot in lottery signup", async ({ page, request }) => {
   });
   await addProgramItems(request, [
     {
+      ...testProgramItem,
       programType: config.event().twoPhaseSignupProgramTypes[0],
       startTime,
       endTime,
@@ -241,7 +244,7 @@ test("Receive spot in lottery signup, with multiple lottery program types", asyn
   });
   await addProgramItems(request, [
     {
-      programItemId: testProgramItem.programItemId,
+      ...testProgramItem,
       programType: twoProgramTypes[0],
       title: firstProgramItemTitle,
       startTime,
@@ -251,7 +254,7 @@ test("Receive spot in lottery signup, with multiple lottery program types", asyn
       maxAttendance: 1,
     },
     {
-      programItemId: testProgramItem2.programItemId,
+      ...testProgramItem2,
       programType: twoProgramTypes[1],
       title: secondProgramItemTitle,
       startTime,
