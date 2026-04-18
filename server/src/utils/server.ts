@@ -26,11 +26,7 @@ export const startServer = async ({
   port,
   dbName,
 }: StartServerParams): Promise<Server> => {
-  try {
-    await db.connectToDb(dbConnString, dbName);
-  } catch (error) {
-    logger.error("%s", error);
-  }
+  await db.connectToDb(dbConnString, dbName);
 
   const app = express();
 
