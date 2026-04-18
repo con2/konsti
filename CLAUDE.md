@@ -83,10 +83,16 @@ A program item can effectively "go away" in four distinct ways; each has differe
 3. **Signup type changed** — item stays in DB with `state: "accepted"`, but `signupType` is no longer `KONSTI` (e.g. moved to `OTHER`). No new Konsti signups possible.
 4. **Program type changed to non-lottery** — item stays in DB with `state: "accepted"` and `signupType: "konsti"`, but `programType` is no longer in `twoPhaseSignupProgramTypes` (e.g. changed from `TABLETOP_RPG` to `OTHER`). Lottery is no longer meaningful for this item; use `isLotterySignupProgramItem` to detect this state.
 
-Cleanup rules in `removeCanceledDeletedProgramItemsFromUsers` (`server/src/features/assignment/utils/removeInvalidProgramItemsFromUsers.ts`), admin-import path (`notify: true`):
+Cleanup rules (admin-import path, `notify: true`):
 
-- **Cancelled / signup-type-changed / program-type-changed** (item still in DB): if the lottery has already run for the item (`timeNow >= getLotterySignupEndTime(programItem)`), the user's lottery signup is preserved as history and no `PROGRAM_ITEM_CANCELED` event log is added. Otherwise the signup is removed and the user gets a `PROGRAM_ITEM_CANCELED` notification. Users with a direct signup for the cancelled item are notified through the direct-signup cancellation path instead, so there's no double notification. **Favorites are kept** for all three of these — the item still exists, so the favorite still points to something real.
-- **Deleted** (item not in the `programItems` array): the user's lottery signup **and** favorite are always removed.
+| Case               | Lottery signup                                             | Direct signup    | Favorite |
+| ------------------ | ---------------------------------------------------------- | ---------------- | -------- |
+| Cancelled          | Preserve if lottery already ran, otherwise remove + notify | Remove + notify  | Keep     |
+| Deleted            | Remove + notify                                            | Remove + notify  | Remove   |
+| SignupType change  | Preserve if lottery already ran, otherwise remove + notify | Remove + notify  | Keep     |
+| ProgramType change | Preserve if lottery already ran, otherwise remove + notify | Keep (no notify) | Keep     |
+
+Lottery signup cleanup lives in `removeCanceledDeletedProgramItemsFromUsers` (`server/src/features/assignment/utils/removeInvalidProgramItemsFromUsers.ts`); preservation is gated on `timeNow >= getLotterySignupEndTime(programItem)`. Direct signup cleanup lives in `handleCanceledDeletedProgramItems` (`server/src/features/program-item/programItemUtils.ts`); it does not touch direct signups for programType-only changes because the item still exists and still uses Konsti signup (direct signup remains valid whether the lottery has run or not). The lottery-signup path deduplicates event log entries when a user has both a lottery and a direct signup for the same item, so there's no double notification.
 
 Pre-assignment cleanup (`runAssignment.ts` → `notify: false`) calls the same function with the same preservation semantics; the `notify: false` flag only suppresses the `PROGRAM_ITEM_CANCELED` event-log notifications. This path is a safety net — invalid signups should already have been handled when the program items were updated.
 

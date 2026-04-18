@@ -278,6 +278,29 @@ test("should remove lottery signups but not favorites when program item doesn't 
   );
 });
 
+test("should keep direct signup when program item programType is changed to non-lottery type and don't add notification", async () => {
+  await saveProgramItems([testProgramItem]);
+  await saveUser(mockUser);
+  await saveDirectSignup(mockPostDirectSignupRequest);
+
+  await saveProgramItems([
+    { ...testProgramItem, programType: ProgramType.OTHER },
+  ]);
+
+  // Direct signup remains valid — the item still exists and still uses Konsti signup
+  const directSignups = unsafelyUnwrap(
+    await findUserDirectSignups(mockUser.username),
+  );
+  expect(directSignups).toHaveLength(1);
+
+  // No cancellation event log should be added
+  const user = unsafelyUnwrap(await findUser(mockUser.username));
+  const cancelEvents = user?.eventLogItems.filter(
+    (e) => e.action === EventLogAction.PROGRAM_ITEM_CANCELED,
+  );
+  expect(cancelEvents).toHaveLength(0);
+});
+
 test("should remove direct signups when program item doesn't use Konsti signup anymore and add notification", async () => {
   await saveProgramItems([testProgramItem, testProgramItem2]);
   await saveUser(mockUser);
