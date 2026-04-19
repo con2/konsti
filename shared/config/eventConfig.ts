@@ -15,7 +15,6 @@ export const eventConfig: EventConfig = {
 
   // Event settings
   enableRevolvingDoor: true,
-  enableOrganizerFeedback: true,
   enableTagDropdown: true,
 
   requireRegistrationCode: true,

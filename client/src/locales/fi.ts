@@ -19,8 +19,6 @@ export const translationFI = {
     hideProgramItem: "Piilota ohjelmanumero",
     showProgramItem: "Poista piilotus",
     saveTime: "Tallenna aktiivinen aika",
-    sendFeedback: "Lähetä palautetta",
-    feedbackSent: "Palaute lähetetty",
     createGroup: "Luo ryhmä",
     joinGroup: "Liity ryhmään",
     createGroupConfirmation: "Luo",
@@ -196,9 +194,6 @@ export const translationFI = {
   details: "lisätietoja",
   invalidProgramItemId:
     "Ohjelmanumeroa {{PROGRAM_ITEM_ID}} ei löydy. Joko ohjelmanumeroon ei ilmoittauduta Konstin avulla tai tunniste on virheellinen.",
-  feedbackTitle: "Palaute",
-  feedbackInstruction:
-    "Piditkö {{PROGRAM_TYPE}}? Lähetä palautetta järjestäjälle! Palautteet toimitetaan tapahtuman jälkeen.",
   noProgramItemsAvailable:
     "Ei näytettäviä {{PROGRAM_TYPE}}, tarkistathan hakuehdot.",
   checkProgramGuide:

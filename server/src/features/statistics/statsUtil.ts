@@ -40,71 +40,12 @@ export const writeJson = async (
   );
 
   logger.info(
-    `Saved ${getDataLength(data)} ${datatype} to file ${
+    `Saved ${data.length} ${datatype} to file ${
       config.server().statsDataDir
     }/${event}/${year}/${datatype}.json`,
   );
 };
 
-export interface Message {
-  feedback: string;
-  programItem: string;
-  organizer: string;
-  startTime: string;
-  programType: string;
-}
-
-export const writeFeedback = (
-  year: number,
-  event: string,
-  datatype: string,
-  data: Record<string, Message[]>,
-): void => {
-  if (!fs.existsSync(`${config.server().statsDataDir}/${event}/${year}`)) {
-    fs.mkdirSync(`${config.server().statsDataDir}/${event}/${year}`);
-  }
-
-  Object.entries(data).map(([host, messages], index) => {
-    const descriptions = messages.map((message, i) => {
-      return `${i + 1}) ${message.programItem} (${message.startTime})\n\n${
-        message.feedback
-      }\n\n`;
-    });
-
-    const formattedFeedback = `${host}\n\n${descriptions.join(
-      "",
-    )}**********\n\n`;
-
-    if (index === 0) {
-      fs.writeFileSync(
-        `${config.server().statsDataDir}/${event}/${year}/${datatype}.txt`,
-        `**********\n\n${formattedFeedback}`,
-        "utf8",
-      );
-      return;
-    }
-
-    fs.appendFileSync(
-      `${config.server().statsDataDir}/${event}/${year}/${datatype}.txt`,
-      formattedFeedback,
-      "utf8",
-    );
-  });
-
-  logger.info(
-    `Saved ${getDataLength(data)} ${datatype} to file ${
-      config.server().statsDataDir
-    }/${event}/${year}/${datatype}.txt`,
-  );
-};
-
 export const toPercent = (num: number): number => {
   return Math.round(num * 100);
-};
-
-const getDataLength = (data: unknown[] | Record<string, Message[]>): number => {
-  if (Array.isArray(data)) {
-    return data.length;
-  }
-  return Object.keys(data).length;
 };

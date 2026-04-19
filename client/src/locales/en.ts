@@ -19,8 +19,6 @@ export const translationEN = {
     hideProgramItem: "Hide program item",
     showProgramItem: "Unhide program item",
     saveTime: "Save active time",
-    sendFeedback: "Send feedback",
-    feedbackSent: "Feedback sent",
     createGroup: "Create group",
     joinGroup: "Join group",
     createGroupConfirmation: "Create",
@@ -195,9 +193,6 @@ export const translationEN = {
   details: "details",
   invalidProgramItemId:
     "Program item {{PROGRAM_ITEM_ID}} not found. Either the program item does not use Konsti for signups or the identifier is incorrect.",
-  feedbackTitle: "Feedback",
-  feedbackInstruction:
-    "Did you enjoy the {{PROGRAM_TYPE}}? Send feedback to the organizer! They will receive it after the event.",
   noProgramItemsAvailable:
     "No {{PROGRAM_TYPE}} found, please check your search conditions.",
   checkProgramGuide:

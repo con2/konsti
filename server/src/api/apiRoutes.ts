@@ -5,7 +5,6 @@ import {
   postKompassiLogoutRedirect,
   postVerifyKompassiLogin,
 } from "server/features/kompassi-login/kompassiLoginController";
-import { postFeedback } from "server/features/feedback/feedbackController";
 import {
   getProgramItems,
   postUpdateProgramItems,
@@ -81,7 +80,6 @@ apiRoutes.post(ApiEndpoint.ASSIGNMENT, postAssignment);
 apiRoutes.post(ApiEndpoint.LOTTERY_SIGNUP, postLotterySignup);
 apiRoutes.post(ApiEndpoint.FAVORITE, postFavorite);
 apiRoutes.post(ApiEndpoint.HIDDEN, postHidden);
-apiRoutes.post(ApiEndpoint.FEEDBACK, postFeedback);
 apiRoutes.post(ApiEndpoint.GROUP, postCreateGroup);
 apiRoutes.post(ApiEndpoint.JOIN_GROUP, postJoinGroup);
 apiRoutes.post(ApiEndpoint.LEAVE_GROUP, postLeaveGroup);
