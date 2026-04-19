@@ -1,4 +1,4 @@
-import { execFileSync } from "node:child_process";
+import { runYarn } from "./runYarn";
 
 interface HookInput {
   tool_input?: { file_path?: string };
@@ -24,7 +24,9 @@ if (
 }
 
 try {
-  execFileSync("yarn", ["knip"], { stdio: "inherit" });
+  // Route knip output to our stderr (fd 2) so Claude Code surfaces findings
+  // as the block reason (exit 2 only shows stderr)
+  runYarn(["knip"], ["ignore", 2, 2]);
 } catch {
-  // Don't block on knip findings
+  process.exit(2);
 }
