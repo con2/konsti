@@ -17,7 +17,6 @@ const eventConfig: Partial<EventConfig> = {
 
   // Event settings
   enableRevolvingDoor: false,
-  enableOrganizerFeedback: true,
   enableTagDropdown: false,
 
   requireRegistrationCode: true,

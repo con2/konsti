@@ -3,8 +3,6 @@ import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { ProgramItem } from "shared/types/models/programItem";
 import { ProgramItemDetails } from "client/views/program-item/body/components/ProgramItemDetails";
-import { config } from "shared/config";
-import { FeedbackForm } from "client/views/program-item/body/components/FeedbackForm";
 import { UserGroup } from "shared/types/models/user";
 import { AdminActionCard } from "client/views/program-item/body/components/AdminActionCard";
 import { useAppSelector } from "client/utils/hooks";
@@ -48,9 +46,6 @@ export const ProgramItemBody = ({
       {isExpanded && (
         <ExpandedDescriptionContainer id={id}>
           <ProgramItemDetails programItem={programItem} />
-          {loggedIn && config.event().enableOrganizerFeedback && (
-            <FeedbackForm programItem={programItem} />
-          )}
           {loggedIn && userGroup === UserGroup.ADMIN && (
             <AdminActionCard programItem={programItem} />
           )}

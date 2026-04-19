@@ -92,6 +92,5 @@ export interface EventConfig {
   programGuideUrl: string;
   startTimesByParentIds: Map<string, string>;
   defaultSignupType: SignupType;
-  enableOrganizerFeedback: boolean;
   enableTagDropdown: boolean;
 }

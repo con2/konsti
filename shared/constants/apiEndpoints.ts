@@ -7,7 +7,6 @@ export enum ApiEndpoint {
   LOTTERY_SIGNUP = "/api/lottery-signup",
   FAVORITE = "/api/favorite",
   HIDDEN = "/api/hidden",
-  FEEDBACK = "/api/feedback",
   GROUP = "/api/group",
   JOIN_GROUP = "/api/join-group",
   LEAVE_GROUP = "/api/leave-group",

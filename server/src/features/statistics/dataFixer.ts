@@ -2,7 +2,6 @@ import { Command } from "commander";
 import { anonymizeData } from "./fixer-helpers/dataAnonymizer";
 import { wildFix } from "./fixer-helpers/wildFix";
 import { formatJson } from "./fixer-helpers/formatJson";
-import { formatFeedbacks } from "./fixer-helpers/formatFeedbacks";
 import { initializeDayjs } from "shared/utils/initializeDayjs";
 import { getSimilarUsernames } from "server/features/statistics/similarUsernames";
 
@@ -16,13 +15,6 @@ const fixData = (): void => {
     .description("Format json files with prettier")
     .action(async (year: number, event: string) => {
       await formatJson(year, event);
-    });
-
-  commander
-    .command("feedback-format <year> <event>")
-    .description("Format feedbacks")
-    .action((year: number, event: string) => {
-      formatFeedbacks(year, event);
     });
 
   commander
