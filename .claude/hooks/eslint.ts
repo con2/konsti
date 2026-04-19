@@ -1,4 +1,4 @@
-import { execFileSync } from "node:child_process";
+import { runYarn } from "./runYarn";
 
 interface HookInput {
   tool_input?: { file_path?: string };
@@ -24,10 +24,11 @@ if (
 }
 
 try {
-  execFileSync(
-    "yarn",
+  // Route eslint's stdout to our stderr (fd 2) so Claude Code's hook runner
+  // surfaces lint findings as the block reason (exit 2 only shows stderr)
+  runYarn(
     ["run", "-TB", "eslint", "--cache", "--no-warn-ignored", filePath],
-    { stdio: "inherit" },
+    ["ignore", 2, 2],
   );
 } catch {
   process.exit(2);

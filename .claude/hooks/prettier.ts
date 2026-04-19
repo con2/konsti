@@ -1,4 +1,4 @@
-import { execFileSync } from "node:child_process";
+import { runYarn } from "./runYarn";
 
 interface HookInput {
   tool_input?: { file_path?: string };
@@ -13,7 +13,9 @@ const input: HookInput = JSON.parse(Buffer.concat(chunks).toString());
 const filePath = input.tool_input?.file_path || "";
 
 if (filePath) {
-  execFileSync("yarn", ["prettier", "--write", filePath], {
-    stdio: "inherit",
-  });
+  try {
+    runYarn(["prettier", "--write", "--ignore-unknown", filePath]);
+  } catch {
+    // Don't block — eslint surfaces real syntax/style issues
+  }
 }

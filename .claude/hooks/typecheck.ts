@@ -1,4 +1,4 @@
-import { execFileSync } from "node:child_process";
+import { runYarn } from "./runYarn";
 
 interface HookInput {
   tool_input?: { file_path?: string };
@@ -19,7 +19,9 @@ if (!filePath.endsWith(".ts") && !filePath.endsWith(".tsx")) {
 }
 
 try {
-  execFileSync("yarn", ["type-check"], { stdio: "inherit" });
+  // Route tsc output to our stderr (fd 2) so Claude Code surfaces type errors
+  // as the block reason (exit 2 only shows stderr)
+  runYarn(["type-check"], ["ignore", 2, 2]);
 } catch {
-  // Don't block on type errors
+  process.exit(2);
 }
