@@ -38,6 +38,35 @@
             "statusMessage": "Running knip..."
           }
         ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "npx tsx .claude/hooks/prettier.ts",
+            "timeout": 60,
+            "statusMessage": "Running Prettier..."
+          },
+          {
+            "type": "command",
+            "command": "npx tsx .claude/hooks/eslint.ts",
+            "timeout": 60,
+            "statusMessage": "Running ESLint..."
+          },
+          {
+            "type": "command",
+            "command": "npx tsx .claude/hooks/typecheck.ts",
+            "timeout": 120,
+            "statusMessage": "Type-checking..."
+          },
+          {
+            "type": "command",
+            "command": "npx tsx .claude/hooks/knip.ts",
+            "timeout": 120,
+            "statusMessage": "Running knip..."
+          }
+        ]
       }
     ]
   }
