@@ -11,7 +11,7 @@ The "signup" and "lottery/assignment" areas are the most overloaded — see [Con
 | **User**             | Registered account. Holds credentials, serial, group codes, signups, favorites, event log, and email preferences                                                                                                                           | `shared/types/models/user.ts`         |
 | **UserGroup**        | Role enum: `USER`, `ADMIN`, `HELP`. Controls access to admin/helper views                                                                                                                                                                  | `user.ts`                             |
 | **Admin**            | Full-privilege operator. Runs assignment, hides program items, edits settings                                                                                                                                                              | `server/src/features/admin/`          |
-| **Helper**           | Limited operator (`UserGroup.HELP`). Looks up users by serial and resets passwords. UI always says "Helper", never "Help"                                                                                                                  | `client/src/views/helper/`            |
+| **Helper**           | Limited operator (`UserGroup.HELPER`). Looks up users by registration code and resets passwords                                                                                                                                            | `client/src/views/helper/`            |
 | **Serial**           | Unique short code attached to a user. Used at registration (when `requireRegistrationCode` is on) and for helper lookups. UI surfaces this as **"Registration code"** or **"User code"** — all three refer to the same `User.serial` field | `server/src/features/serial/`         |
 | **JWT**              | Auth token stored in localStorage. Separate secrets per role (user/admin/helper)                                                                                                                                                           | `serverConfig.ts`                     |
 | **Kompassi account** | External identity from Kompassi OAuth. Linked via `kompassiId`; `kompassiUsernameAccepted` tracks the username-claim flow                                                                                                                  | `server/src/features/kompassi-login/` |
@@ -46,7 +46,7 @@ The "signup" and "lottery/assignment" areas are the most overloaded — see [Con
 
 The word "signup" is overloaded — see [Conflicts and footguns](#conflicts-and-footguns). Five distinct meanings to keep straight:
 
-1. **SignupStrategy** (per-item enum): `DIRECT` or `LOTTERY`. Field on `ProgramItem`; optional — falls back to event-level `EventSignupStrategy`.
+1. **ProgramItemSignupStrategy** (per-item enum): `DIRECT` or `LOTTERY`. Field on `ProgramItem`; optional — falls back to event-level `EventSignupStrategy`.
 2. **EventSignupStrategy** (event-wide enum): `DIRECT`, `LOTTERY`, or `LOTTERY_AND_DIRECT`. Lives in `Settings`.
 3. **SignupType** (where signup happens): `KONSTI`, `OTHER`, `NOT_REQUIRED`, `EXPERIENCE_POINT`, `ROPE_LARP_DESK`, `GAMEPOINT`. Only `KONSTI` means Konsti handles it.
 4. **Signup (noun)** — the user-side object the user has submitted. Two shapes: `LotterySignup` and `DirectSignup`.
@@ -163,7 +163,7 @@ Helpers in `shared/utils/signupTimes.ts`. Always prefer these over inlining pare
 These pairs or groups of terms are easy to conflate. Read carefully before naming new fields or writing docs.
 
 1. **Three "signup" enums** on the same codebase:
-   - `SignupStrategy` (per-item: `DIRECT | LOTTERY`)
+   - `ProgramItemSignupStrategy` (per-item: `DIRECT | LOTTERY`)
    - `EventSignupStrategy` (event-wide: `DIRECT | LOTTERY | LOTTERY_AND_DIRECT`)
    - `SignupType` (where signup happens: `KONSTI | OTHER | NOT_REQUIRED | EXPERIENCE_POINT | ROPE_LARP_DESK | GAMEPOINT`)
 
@@ -189,10 +189,8 @@ These pairs or groups of terms are easy to conflate. Read carefully before namin
 
 11. **Test time / active time / timeNow**. One frozen-clock mechanism under three labels: `serverConfig.useTestTime` (the switch), "Active time" (admin UI label), `getTimeNow()` (the reader).
 
-12. **UserGroup.HELP vs "Helper"**. Enum value is `HELP`; the role is always called "Helper" in UI and docs. Do not rename to match.
+12. **Attendee vs player vs participant**. Same role; i18n picks "player" for RPG/LARP and "participant" for everything else. Prefer "attendee" in code and general docs.
 
-13. **Attendee vs player vs participant**. Same role; i18n picks "player" for RPG/LARP and "participant" for everything else. Prefer "attendee" in code and general docs.
+13. **Lottery signup vs two-phase signup**. Same concept. CLAUDE.md prefers "two-phase signup" for the _flow_; code uses `lotterySignup*` for the _submission_ and `isLotterySignupProgramItem` for the predicate. Both are fine; "two-phase" is clearer when describing flow.
 
-14. **Lottery signup vs two-phase signup**. Same concept. CLAUDE.md prefers "two-phase signup" for the _flow_; code uses `lotterySignup*` for the _submission_ and `isLotterySignupProgramItem` for the predicate. Both are fine; "two-phase" is clearer when describing flow.
-
-15. **`SignupStrategy` is optional on `ProgramItem`**. If undefined, the effective strategy falls back to the event-wide `EventSignupStrategy`.
+14. **`ProgramItemSignupStrategy` is optional on `ProgramItem`**. If undefined, the effective strategy falls back to the event-wide `EventSignupStrategy`.

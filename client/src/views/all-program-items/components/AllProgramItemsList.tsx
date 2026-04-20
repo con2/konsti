@@ -5,7 +5,10 @@ import { sortBy, groupBy } from "remeda";
 import styled from "styled-components";
 import { ProgramItemEntry } from "client/views/program-item/ProgramItemEntry";
 import { useAppSelector } from "client/utils/hooks";
-import { ProgramItem, SignupStrategy } from "shared/types/models/programItem";
+import {
+  ProgramItem,
+  ProgramItemSignupStrategy,
+} from "shared/types/models/programItem";
 import { ProgramItemListTitle } from "client/views/all-program-items/components/ProgramItemListTitle";
 import { getLotterySignups } from "client/utils/getUpcomingProgramItems";
 import {
@@ -93,7 +96,7 @@ export const AllProgramItemsList = ({ programItems }: Props): ReactElement => {
                 programItem={programItem}
                 signups={programItemSignups?.users ?? []}
                 signupStrategy={
-                  programItem.signupStrategy ?? SignupStrategy.DIRECT
+                  programItem.signupStrategy ?? ProgramItemSignupStrategy.DIRECT
                 }
                 lotterySignups={ownOrGroupCreatorLotterySignups}
                 directSignups={directSignups}

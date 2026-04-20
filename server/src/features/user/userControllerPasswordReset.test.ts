@@ -87,7 +87,7 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.USERS_PASSWORD)
       .send(requestData)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.HELP, "helper")}`);
+      .set("Authorization", `Bearer ${getJWT(UserGroup.HELPER, "helper")}`);
     expect(response.status).toEqual(200);
     const body = response.body as PostUpdateUserPasswordResult;
     expect(body.status).toEqual("success");
@@ -102,7 +102,7 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.USERS_PASSWORD)
       .send(adminRequestData)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.HELP, "helper")}`);
+      .set("Authorization", `Bearer ${getJWT(UserGroup.HELPER, "helper")}`);
     expect(response.status).toEqual(200);
 
     const body = response.body as PostUpdateUserPasswordError;
@@ -117,7 +117,7 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
     const response2 = await request(server)
       .post(ApiEndpoint.USERS_PASSWORD)
       .send(helperRequestData)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.HELP, "helper")}`);
+      .set("Authorization", `Bearer ${getJWT(UserGroup.HELPER, "helper")}`);
     expect(response2.status).toEqual(200);
 
     const body2 = response2.body as PostUpdateUserPasswordError;

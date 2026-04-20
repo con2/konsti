@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import {
   ProgramItem,
-  SignupStrategy,
+  ProgramItemSignupStrategy,
   SignupType,
   State,
   UserSignup,
@@ -28,7 +28,7 @@ import {
 interface Props {
   programItem: ProgramItem;
   signups: UserSignup[];
-  signupStrategy: SignupStrategy;
+  signupStrategy: ProgramItemSignupStrategy;
   lotterySignups: readonly LotterySignupWithProgramItem[];
   directSignups: readonly DirectSignupWithProgramItem[];
   isAlwaysExpanded: boolean;
@@ -65,7 +65,7 @@ export const ProgramItemEntry = ({
     programItem.programItemId,
   );
   const isDirectSignupMode =
-    signupStrategy === SignupStrategy.DIRECT || signupAlwaysOpen;
+    signupStrategy === ProgramItemSignupStrategy.DIRECT || signupAlwaysOpen;
 
   const isDirectlySignedCurrentProgramItem = isAlreadyDirectySigned(
     programItem,

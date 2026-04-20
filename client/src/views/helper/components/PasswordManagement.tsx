@@ -77,11 +77,11 @@ export const PasswordManagement = (): ReactElement => {
         </Link>
         .
       </p>
-      <p>{t("passwordManagement.userCodeOrUsername")}</p>
+      <p>{t("passwordManagement.registrationCodeOrUsername")}</p>
 
       <ControlledInput
         key="user-serial"
-        placeholder={t("passwordManagement.userCodeOrUsername")}
+        placeholder={t("passwordManagement.registrationCodeOrUsername")}
         value={userSerialInput}
         onChange={handleSerialChange}
       />

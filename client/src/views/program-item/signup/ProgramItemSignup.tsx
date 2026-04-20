@@ -1,6 +1,9 @@
 import { ReactElement } from "react";
 import styled from "styled-components";
-import { ProgramItem, SignupStrategy } from "shared/types/models/programItem";
+import {
+  ProgramItem,
+  ProgramItemSignupStrategy,
+} from "shared/types/models/programItem";
 import { ProgramItemDirectSignup } from "client/views/program-item/signup/components/direct-signup/ProgramItemDirectSignup";
 import { ProgramItemLotterySignup } from "client/views/program-item/signup/components/lottery-signup/ProgramItemLotterySignup";
 import { config } from "shared/config";
@@ -15,7 +18,7 @@ import {
 } from "client/views/my-program-items/myProgramItemsSlice";
 
 interface Props {
-  signupStrategy: SignupStrategy;
+  signupStrategy: ProgramItemSignupStrategy;
   lotterySignups: readonly LotterySignupWithProgramItem[];
   directSignups: readonly DirectSignupWithProgramItem[];
   programItem: ProgramItem;
@@ -40,7 +43,7 @@ export const ProgramItemSignup = ({
     .directSignupAlwaysOpenIds.includes(programItem.programItemId);
 
   const isDirectSignupMode =
-    signupStrategy === SignupStrategy.DIRECT || signupAlwaysOpen;
+    signupStrategy === ProgramItemSignupStrategy.DIRECT || signupAlwaysOpen;
 
   const directSignupEndTime = getDirectSignupEndTime(programItem);
   const isDirectSignupOver = getTimeNow().isAfter(directSignupEndTime);

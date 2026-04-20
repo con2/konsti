@@ -8,6 +8,6 @@ export const isAdmin = (userGroup: UserGroup): boolean => {
   return userGroup === UserGroup.ADMIN;
 };
 
-export const isAdminOrHelp = (userGroup: UserGroup): boolean => {
-  return userGroup === UserGroup.ADMIN || userGroup === UserGroup.HELP;
+export const isAdminOrHelper = (userGroup: UserGroup): boolean => {
+  return userGroup === UserGroup.ADMIN || userGroup === UserGroup.HELPER;
 };

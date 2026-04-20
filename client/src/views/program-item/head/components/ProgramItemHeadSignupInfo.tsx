@@ -48,7 +48,7 @@ export const ProgramItemHeadSignupInfo = ({
   const ariaId = `participants-for-${programItem.programItemId}`;
 
   const hideParticipantList =
-    !(useGroup === UserGroup.ADMIN || useGroup === UserGroup.HELP) &&
+    !(useGroup === UserGroup.ADMIN || useGroup === UserGroup.HELPER) &&
     config
       .event()
       .hideParticipantListProgramTypes.includes(programItem.programType);

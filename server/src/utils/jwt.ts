@@ -69,7 +69,7 @@ const getSecret = (userGroup: UserGroup): string => {
     case UserGroup.USER: {
       return config.server().jwtSecretKey;
     }
-    case UserGroup.HELP: {
+    case UserGroup.HELPER: {
       return config.server().jwtSecretKeyHelp;
     }
     default:

@@ -16,7 +16,7 @@ Events: `ropecon`, `tracon`, `tracon-hitpoint`, `solmukohta`
 
 ### direct-signups.json
 
-Confirmed signups (both lottery-assigned and first-come-first-served).
+Confirmed signups (both lottery-assigned and direct signups).
 
 ```jsonc
 [
@@ -37,7 +37,7 @@ Confirmed signups (both lottery-assigned and first-come-first-served).
 
 **Priority values:**
 
-- `0` — Signed up via first-come-first-served
+- `0` — Signed up via direct signup (first-come-first-served)
 - `1` — Got their 1st lottery choice
 - `2` — Got their 2nd lottery choice
 - `3` — Got their 3rd lottery choice

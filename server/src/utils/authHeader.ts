@@ -44,7 +44,7 @@ export const getAuthorizedUserGroup = (
   // Any userGroup is fine, we want to know what the group is
   const jwtResponse = getJwtResponse(jwt, [
     UserGroup.ADMIN,
-    UserGroup.HELP,
+    UserGroup.HELPER,
     UserGroup.USER,
   ]);
 

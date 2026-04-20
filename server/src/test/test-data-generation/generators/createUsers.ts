@@ -36,7 +36,7 @@ export const createHelpUser = async (password?: string): Promise<void> => {
     kompassiId: 0,
     username: "helper",
     passwordHash,
-    userGroup: UserGroup.HELP,
+    userGroup: UserGroup.HELPER,
     serial: faker.number.int(10000000).toString(),
     email: "helper@example.local",
     emailNotificationPermitAsked: true,

@@ -39,7 +39,7 @@ describe(`GET ${ApiEndpoint.USERS_BY_SERIAL_OR_USERNAME}`, () => {
   test("should return 422 without valid body", async () => {
     const response = await request(server)
       .get(ApiEndpoint.USERS_BY_SERIAL_OR_USERNAME)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.HELP, "helper")}`);
+      .set("Authorization", `Bearer ${getJWT(UserGroup.HELPER, "helper")}`);
     expect(response.status).toEqual(422);
   });
 });

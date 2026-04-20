@@ -8,7 +8,7 @@ import {
   selectDirectSignups,
   selectLotterySignups,
 } from "client/views/my-program-items/myProgramItemsSlice";
-import { SignupStrategy } from "shared/types/models/programItem";
+import { ProgramItemSignupStrategy } from "shared/types/models/programItem";
 import { getLotterySignups } from "client/utils/getUpcomingProgramItems";
 import { BackButton } from "client/components/BackButton";
 import { getIsInGroup } from "client/views/group/groupUtils";
@@ -79,7 +79,7 @@ export const ProgramItemView = (): ReactElement => {
           programItem={foundProgramItem}
           signups={programSignups}
           signupStrategy={
-            foundProgramItem.signupStrategy ?? SignupStrategy.DIRECT
+            foundProgramItem.signupStrategy ?? ProgramItemSignupStrategy.DIRECT
           }
           lotterySignups={ownOrGroupCreatorLotterySignups}
           directSignups={directSignups}

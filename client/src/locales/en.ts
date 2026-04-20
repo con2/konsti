@@ -265,8 +265,7 @@ export const translationEN = {
   helperResults: "Results",
   passwordManagement: {
     helperPasswordManagement: "Change password",
-    userCode: "User code",
-    userCodeOrUsername: "User code or username",
+    registrationCodeOrUsername: "Registration code or username",
     changePassword: "Change password",
     newPassword: "New password",
     userNotFound: "User not found",

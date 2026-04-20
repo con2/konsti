@@ -96,7 +96,7 @@ describe(`GET ${ApiEndpoint.SIGNUP_MESSAGE}`, () => {
 
     const response = await request(server)
       .get(ApiEndpoint.SIGNUP_MESSAGE)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.HELP, "helper")}`);
+      .set("Authorization", `Bearer ${getJWT(UserGroup.HELPER, "helper")}`);
 
     expect(response.status).toEqual(200);
 

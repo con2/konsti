@@ -13,7 +13,7 @@ import { GroupView } from "client/views/group/GroupView";
 import { HelperView } from "client/views/helper/HelperView";
 import { useAppSelector } from "client/utils/hooks";
 import { config } from "shared/config";
-import { isAdmin, isAdminOrHelp } from "client/utils/checkUserGroup";
+import { isAdmin, isAdminOrHelper } from "client/utils/checkUserGroup";
 import { AboutView } from "client/views/about/AboutView";
 import { FaqView } from "client/views/about/FaqView";
 import { Tabs } from "client/components/Tabs";
@@ -134,7 +134,7 @@ export const AppRoutes = (): ReactElement => {
         {isAdmin(userGroup) && (
           <Route path={AppRoute.ADMIN} element={<AdminView />} />
         )}
-        {isAdminOrHelp(userGroup) && (
+        {isAdminOrHelper(userGroup) && (
           <>
             <Route path={AppRoute.HELPER} element={<HelperView />} />
             <Route
@@ -194,7 +194,7 @@ export const AppRoutes = (): ReactElement => {
 
     return (
       <Routes>
-        {isAdminOrHelp(userGroup) ? (
+        {isAdminOrHelper(userGroup) ? (
           <Route
             path={ProgramTab.PROGRAM_LIST}
             element={<AllProgramItemsView />}
@@ -210,7 +210,7 @@ export const AppRoutes = (): ReactElement => {
           element={<ProgramItemView />}
         />
         <Route path={AppRoute.NOTIFICATIONS} element={<EventLog />} />
-        {!isAdminOrHelp(userGroup) && config.event().enableGroups ? (
+        {!isAdminOrHelper(userGroup) && config.event().enableGroups ? (
           <Route
             path={`${AppRoute.PROFILE}/*`}
             element={<Tabs tabContents={profileTabs} />}
@@ -218,7 +218,7 @@ export const AppRoutes = (): ReactElement => {
         ) : (
           <Route path={AppRoute.PROFILE} element={<ProfileView />} />
         )}
-        {isAdminOrHelp(userGroup) && (
+        {isAdminOrHelper(userGroup) && (
           <Route path={AppRoute.PROFILE} element={<ProfileView />} />
         )}
         {isAdmin(userGroup) && (
@@ -232,14 +232,14 @@ export const AppRoutes = (): ReactElement => {
         {/* Login path is required for after login redirect to work */}
         <Route path={AppRoute.LOGIN} element={<LoginView />} />
         <Route path={AppRoute.ADMIN_LOGIN} element={<LoginView />} />
-        {isAdminOrHelp(userGroup) && (
+        {isAdminOrHelper(userGroup) && (
           <Route path={AppRoute.HELPER} element={<HelperView />} />
         )}
         <Route
           path={`${AppRoute.ABOUT}/*`}
           element={<Tabs tabContents={aboutTabs} />}
         />
-        {isAdminOrHelp(userGroup) ? (
+        {isAdminOrHelper(userGroup) ? (
           <Route
             path={AppRoute.ROOT}
             element={<Navigate to={ProgramTab.PROGRAM_LIST} />}
