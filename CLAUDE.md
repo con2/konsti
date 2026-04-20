@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Konsti is an event signup tool for conventions (Ropecon, Tracon, etc.). Users browse program items and sign up via lottery or direct signup (first-come-first-served). Supports group signups, Kompassi OAuth integration, and admin assignment management.
 
-See [docs/terminology.md](docs/terminology.md) for the canonical glossary, especially the overloaded "signup" terms (`SignupStrategy` vs `EventSignupStrategy` vs `SignupType`) and the lottery/assignment/PADG distinction.
+See [docs/terminology.md](docs/terminology.md) for the canonical glossary, especially the overloaded "signup" terms (`ProgramItemSignupStrategy` vs `EventSignupStrategy` vs `SignupType`) and the lottery/assignment/PADG distinction.
 
 ## Monorepo Structure
 
@@ -112,6 +112,8 @@ When adding new code that writes `signedToStartTime`, follow this split. When ad
 ### Database
 
 MongoDB with Mongoose. Tests use `mongodb-memory-server` for in-memory DB. Docker Compose config in `docker/`.
+
+**Lifecycle:** each convention runs its own instance for the duration of the event only. After the event the DB is dumped to `server/src/features/statistics/datafiles/` and the instance is torn down. Because there is no long-lived production DB and no cross-event continuity, schema or enum-value changes don't need migration files — just change the code and let the next event start with a fresh DB. Do not add migration scripts, startup migration hooks, or backwards-compatibility shims.
 
 ### State Management
 

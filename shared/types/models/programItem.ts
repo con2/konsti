@@ -76,7 +76,7 @@ export enum InclusivityValue {
   IRRITATING_CHEMICALS = "irritatingChemicals",
 }
 
-export enum SignupStrategy {
+export enum ProgramItemSignupStrategy {
   DIRECT = "direct",
   LOTTERY = "lottery",
 }
@@ -128,7 +128,7 @@ export const ProgramItemSchema = z.object({
   contentWarnings: z.string(),
   otherAuthor: z.string(),
   accessibilityValues: z.array(z.enum(InclusivityValue)),
-  signupStrategy: z.optional(z.enum(SignupStrategy)),
+  signupStrategy: z.optional(z.enum(ProgramItemSignupStrategy)),
   otherAccessibilityInformation: z.string(),
   entryFee: z.string(),
   signupType: z.enum(SignupType),

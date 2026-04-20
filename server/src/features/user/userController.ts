@@ -47,7 +47,7 @@ export const postUserPassword = async (
 
   const requesterUsername = getAuthorizedUsername(req.headers.authorization, [
     UserGroup.USER,
-    UserGroup.HELP,
+    UserGroup.HELPER,
     UserGroup.ADMIN,
   ]);
   if (!requesterUsername) {
@@ -108,7 +108,7 @@ export const getUserBySerialOrUsername = async (
   logger.info(`API call: GET ${ApiEndpoint.USERS_BY_SERIAL_OR_USERNAME}`);
 
   const username = getAuthorizedUsername(req.headers.authorization, [
-    UserGroup.HELP,
+    UserGroup.HELPER,
     UserGroup.ADMIN,
   ]);
   if (!username) {

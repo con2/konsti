@@ -13,7 +13,7 @@ export const getSignupMessages = async (
 
   const username = getAuthorizedUsername(
     req.headers.authorization,
-    UserGroup.HELP,
+    UserGroup.HELPER,
   );
   if (!username) {
     return res.sendStatus(401);

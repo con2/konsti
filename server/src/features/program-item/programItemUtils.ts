@@ -5,7 +5,7 @@ import {
   ProgramItem,
   ProgramItemWithUserSignups,
   ProgramType,
-  SignupStrategy,
+  ProgramItemSignupStrategy,
   SignupType,
   State,
   UserSignup,
@@ -219,7 +219,7 @@ const getSignupStrategyForProgramItem = (
   programItem: ProgramItem,
   settings: Settings,
   currentTime: Dayjs,
-): SignupStrategy => {
+): ProgramItemSignupStrategy => {
   const parentStartTime = config
     .event()
     .startTimesByParentIds.get(programItem.parentId);
@@ -230,33 +230,33 @@ const getSignupStrategyForProgramItem = (
   // lottery
 
   if (settings.signupStrategy === EventSignupStrategy.LOTTERY) {
-    return SignupStrategy.LOTTERY;
+    return ProgramItemSignupStrategy.LOTTERY;
   }
 
   // direct
 
   if (settings.signupStrategy === EventSignupStrategy.DIRECT) {
-    return SignupStrategy.DIRECT;
+    return ProgramItemSignupStrategy.DIRECT;
   }
 
   // lottery+direct
 
   if (!isLotterySignupProgramItem(programItem)) {
-    return SignupStrategy.DIRECT;
+    return ProgramItemSignupStrategy.DIRECT;
   }
 
   if (tooEarlyForLotterySignup(programItem.startTime)) {
-    return SignupStrategy.DIRECT;
+    return ProgramItemSignupStrategy.DIRECT;
   }
 
   const isAfterDirectSignupStarted = currentTime.isAfter(
     start.subtract(directSignupPhaseStart, "minutes"),
   );
   if (isAfterDirectSignupStarted) {
-    return SignupStrategy.DIRECT;
+    return ProgramItemSignupStrategy.DIRECT;
   }
 
-  return SignupStrategy.LOTTERY;
+  return ProgramItemSignupStrategy.LOTTERY;
 };
 
 const getDirectSignupsForProgramItem = (
@@ -277,7 +277,7 @@ const getDirectSignupsForProgramItem = (
       return directSignupForProgramItem.userSignups.map((userSignups) => {
         if (
           hideParticipantListProgramTypes.includes(programType) &&
-          !(userGroup === UserGroup.ADMIN || userGroup === UserGroup.HELP)
+          !(userGroup === UserGroup.ADMIN || userGroup === UserGroup.HELPER)
         ) {
           return {
             username: "redacted",

@@ -224,7 +224,7 @@ describe(`POST ${ApiEndpoint.SIGNUP_QUESTION}`, () => {
   test("should return 401 with helper authorization", async () => {
     const response = await request(server)
       .post(ApiEndpoint.SIGNUP_QUESTION)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.HELP, "helper")}`);
+      .set("Authorization", `Bearer ${getJWT(UserGroup.HELPER, "helper")}`);
     expect(response.status).toEqual(401);
   });
 
@@ -322,7 +322,7 @@ describe(`DELETE ${ApiEndpoint.SIGNUP_QUESTION}`, () => {
   test("should return 401 with helper authorization", async () => {
     const response = await request(server)
       .delete(ApiEndpoint.SIGNUP_QUESTION)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.HELP, "helper")}`);
+      .set("Authorization", `Bearer ${getJWT(UserGroup.HELPER, "helper")}`);
     expect(response.status).toEqual(401);
   });
 

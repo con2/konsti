@@ -265,8 +265,7 @@ export const translationFI = {
   helperResults: "Tulokset",
   passwordManagement: {
     helperPasswordManagement: "Vaihda salasana",
-    userCode: "Käyttäjän koodi",
-    userCodeOrUsername: "Käyttäjän koodi tai nimimerkki",
+    registrationCodeOrUsername: "Rekisteröintikoodi tai nimimerkki",
     changePassword: "Vaihda salasana",
     newPassword: "Uusi salasana",
     userNotFound: "Käyttäjää ei löytynyt",

@@ -16,7 +16,7 @@ export interface DirectSignup {
 export enum UserGroup {
   USER = "user",
   ADMIN = "admin",
-  HELP = "help",
+  HELPER = "helper",
 }
 
 // TODO: Is this useful?

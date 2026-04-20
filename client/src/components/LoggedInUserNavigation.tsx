@@ -5,7 +5,7 @@ import { NavLink } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useAppSelector } from "client/utils/hooks";
 import { config } from "shared/config";
-import { isAdmin, isAdminOrHelp, isUser } from "client/utils/checkUserGroup";
+import { isAdmin, isAdminOrHelper, isUser } from "client/utils/checkUserGroup";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import { AppRoute } from "client/app/AppRoutes";
 
@@ -62,7 +62,7 @@ export const LoggedInUserNavigation = (props: {
         </RouterLink>
       )}
 
-      {isAdminOrHelp(userGroup) && (
+      {isAdminOrHelper(userGroup) && (
         <>
           <RouterLink onClick={props.onSelect} to={AppRoute.HELPER}>
             {t("button.helper")}
