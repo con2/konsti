@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Konsti is an event signup tool for conventions (Ropecon, Tracon, etc.). Users browse program items and sign up via lottery or direct signup (first-come-first-served). Supports group signups, Kompassi OAuth integration, and admin assignment management.
 
-See [docs/terminology.md](docs/terminology.md) for the canonical glossary, especially the overloaded "signup" terms (`ProgramItemSignupStrategy` vs `EventSignupStrategy` vs `SignupType`) and the lottery/assignment/PADG distinction.
+See [docs/terminology.md](docs/terminology.md) for the glossary of domain terms.
 
 ## Monorepo Structure
 
@@ -66,7 +66,7 @@ REST API over axios. All endpoints prefixed with `/api`. Endpoint constants defi
 
 ### Assignment System
 
-Two lottery algorithms: PADG (preference-based via `eventassigner-js`) and random (`eventassigner-random`). Admin triggers assignment runs. Users submit weighted preferences during signup windows defined per-event in `shared/config/`.
+Two lottery algorithms: PADG (preference-based via `eventassigner-js`) and random (`eventassigner-random`). Assignment runs automatically on a cron schedule; admins can trigger manual runs as a backup. Users submit weighted preferences during signup windows defined per-event in `shared/config/`.
 
 ### Authentication
 
