@@ -2,6 +2,7 @@
 
 ## English
 
+- [Terminology](terminology.md) — Canonical glossary of domain terms
 - [Datafiles Guide](en/datafiles-guide.md) — How to read and use the database dump files for statistics
 - [Adding New Domains](en/adding-new-domains.md) — Steps for adding a new konsti.example.com domain
 - [Style Guide](en/style-guide.md) — Logos, banners, and color palette

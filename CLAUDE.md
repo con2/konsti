@@ -4,7 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Konsti is an event signup tool for conventions (Ropecon, Tracon, etc.). Users browse program items and sign up via lottery or first-come-first-served. Supports group signups, Kompassi OAuth integration, and admin assignment management.
+Konsti is an event signup tool for conventions (Ropecon, Tracon, etc.). Users browse program items and sign up via lottery or direct signup (first-come-first-served). Supports group signups, Kompassi OAuth integration, and admin assignment management.
+
+See [docs/terminology.md](docs/terminology.md) for the canonical glossary, especially the overloaded "signup" terms (`SignupStrategy` vs `EventSignupStrategy` vs `SignupType`) and the lottery/assignment/PADG distinction.
 
 ## Monorepo Structure
 

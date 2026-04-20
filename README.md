@@ -2,16 +2,16 @@
 
 [![Build](https://github.com/con2/konsti/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/con2/konsti/actions/workflows/test.yml)
 
-Event signup application Konsti. Support first-come signup and lottery signup.
+Event signup application Konsti. Supports direct signup (first-come-first-served) and lottery signup.
 
 Konsti is used by conventions like [Ropecon](https://ropecon.fi), [Tracon](https://tracon.fi), [Tracon Hitpoint](https://hitpoint.tracon.fi), and [Solmukohta](https://solmukohta.eu). Konsti has been in use since Ropecon 2017 and is used by thousands of users. Event data is fetched from [Kompassi Event Management System](https://kompassi.eu/).
 
 ## Features
 
-- First-come signups
-- Lottery signup using [eventassigner-js](https://github.com/Altesmi/eventassigner-js) and [eventassigner-random](https://github.com/Altesmi/eventassigner-random).
+- Direct signup (first-come-first-served)
+- Lottery signup using [eventassigner-js](https://github.com/Altesmi/eventassigner-js) and [eventassigner-random](https://github.com/Altesmi/eventassigner-random)
   - Users can choose weighted preferences
-  - Users can form groups to be assigned into the same event
+  - Users can form groups to be assigned to the same program item
 
 ## Quick Start
 
@@ -69,7 +69,7 @@ In this case, access the frontend at `localhost:5000`.
 
 ## Documentation
 
-See [docs](docs/index.md) for additional documentation, including event deployment guides, datafile documentation, and style guide.
+See [docs](docs/index.md) for additional documentation, including the domain [terminology glossary](docs/terminology.md), event deployment guides, datafile documentation, and style guide.
 
 ## Blog posts
 
