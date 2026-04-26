@@ -69,7 +69,7 @@ In this case, access the frontend at `localhost:5000`.
 
 ## Documentation
 
-See [docs](docs/index.md) for additional documentation, including the domain [terminology glossary](docs/terminology.md), event deployment guides, datafile documentation, and style guide.
+See [docs](docs/index.md) for additional documentation, including the domain [terminology glossary](docs/terminology.md), event deployment guides, the [datafiles guide](docs/en/datafiles-guide.md) and [aggregated statistics](docs/statistics.md) derived from past-event dumps, and style guide.
 
 ## Blog posts
 
