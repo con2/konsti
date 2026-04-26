@@ -1,0 +1,4984 @@
+[
+  {
+    "programItemId": "8304",
+    "userSignups": [
+      {
+        "username": "705274",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "84842",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "425689",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "904107",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 4,
+    "createdAt": "2017-07-28T17:00:00.000Z",
+    "updatedAt": "2017-07-28T17:00:00.000Z"
+  },
+  {
+    "programItemId": "8454",
+    "userSignups": [
+      {
+        "username": "678717",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "71859",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "202803",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "96583",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "624921",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "870662",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 6,
+    "createdAt": "2017-07-28T17:00:00.000Z",
+    "updatedAt": "2017-07-28T17:00:00.000Z"
+  },
+  {
+    "programItemId": "8447",
+    "userSignups": [
+      {
+        "username": "678717",
+        "priority": 2,
+        "signedToStartTime": "2017-07-29T08:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "647978",
+        "priority": 2,
+        "signedToStartTime": "2017-07-29T08:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "707613",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T08:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "509222",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T08:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "451292",
+        "priority": 3,
+        "signedToStartTime": "2017-07-29T08:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "28081",
+        "priority": 3,
+        "signedToStartTime": "2017-07-29T08:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 6,
+    "createdAt": "2017-07-29T08:00:00.000Z",
+    "updatedAt": "2017-07-29T08:00:00.000Z"
+  },
+  {
+    "programItemId": "8372",
+    "userSignups": [
+      {
+        "username": "678717",
+        "priority": 2,
+        "signedToStartTime": "2017-07-29T10:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "136801",
+        "priority": 3,
+        "signedToStartTime": "2017-07-29T10:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "84463",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T10:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 3,
+    "createdAt": "2017-07-29T10:00:00.000Z",
+    "updatedAt": "2017-07-29T10:00:00.000Z"
+  },
+  {
+    "programItemId": "8457",
+    "userSignups": [
+      {
+        "username": "678717",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T14:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "568609",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T14:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "929122",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T14:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "647978",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T14:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "79206",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T14:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "371916",
+        "priority": 2,
+        "signedToStartTime": "2017-07-29T14:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "102872",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T14:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 7,
+    "createdAt": "2017-07-29T14:00:00.000Z",
+    "updatedAt": "2017-07-29T14:00:00.000Z"
+  },
+  {
+    "programItemId": "8440",
+    "userSignups": [
+      {
+        "username": "678717",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T08:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "683409",
+        "priority": 2,
+        "signedToStartTime": "2017-07-30T08:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "810076",
+        "priority": 2,
+        "signedToStartTime": "2017-07-30T08:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "282697",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T08:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 4,
+    "createdAt": "2017-07-30T08:00:00.000Z",
+    "updatedAt": "2017-07-30T08:00:00.000Z"
+  },
+  {
+    "programItemId": "8306",
+    "userSignups": [
+      {
+        "username": "715378",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "762393",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "767879",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 3,
+    "createdAt": "2017-07-28T17:00:00.000Z",
+    "updatedAt": "2017-07-28T17:00:00.000Z"
+  },
+  {
+    "programItemId": "8310",
+    "userSignups": [
+      {
+        "username": "715378",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "338703",
+        "priority": 2,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "980464",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "532337",
+        "priority": 2,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "767879",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "436624",
+        "priority": 3,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 6,
+    "createdAt": "2017-07-29T16:00:00.000Z",
+    "updatedAt": "2017-07-29T16:00:00.000Z"
+  },
+  {
+    "programItemId": "8413",
+    "userSignups": [
+      {
+        "username": "535230",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "775236",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "466924",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "474964",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T07:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 4,
+    "createdAt": "2017-07-30T07:00:00.000Z",
+    "updatedAt": "2017-07-30T07:00:00.000Z"
+  },
+  {
+    "programItemId": "8458",
+    "userSignups": [
+      {
+        "username": "136801",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T13:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "176292",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T13:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "403133",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T13:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 3,
+    "createdAt": "2017-07-28T13:00:00.000Z",
+    "updatedAt": "2017-07-28T13:00:00.000Z"
+  },
+  {
+    "programItemId": "8461",
+    "userSignups": [
+      {
+        "username": "136801",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "950858",
+        "priority": 2,
+        "signedToStartTime": "2017-07-30T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "602265",
+        "priority": 3,
+        "signedToStartTime": "2017-07-30T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "830810",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "912146",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T07:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 5,
+    "createdAt": "2017-07-30T07:00:00.000Z",
+    "updatedAt": "2017-07-30T07:00:00.000Z"
+  },
+  {
+    "programItemId": "8359",
+    "userSignups": [
+      {
+        "username": "71859",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T13:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "937874",
+        "priority": 2,
+        "signedToStartTime": "2017-07-28T13:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "461959",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T13:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "568609",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T13:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "929122",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T13:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 5,
+    "createdAt": "2017-07-28T13:00:00.000Z",
+    "updatedAt": "2017-07-28T13:00:00.000Z"
+  },
+  {
+    "programItemId": "8354",
+    "userSignups": [
+      {
+        "username": "71859",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T08:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "202803",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T08:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "475375",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T08:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "916096",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T08:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 4,
+    "createdAt": "2017-07-30T08:00:00.000Z",
+    "updatedAt": "2017-07-30T08:00:00.000Z"
+  },
+  {
+    "programItemId": "8303",
+    "userSignups": [
+      {
+        "username": "577962",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T13:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "222883",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T13:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "142553",
+        "priority": 2,
+        "signedToStartTime": "2017-07-28T13:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "762393",
+        "priority": 2,
+        "signedToStartTime": "2017-07-28T13:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 4,
+    "createdAt": "2017-07-28T13:00:00.000Z",
+    "updatedAt": "2017-07-28T13:00:00.000Z"
+  },
+  {
+    "programItemId": "8313",
+    "userSignups": [
+      {
+        "username": "577962",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "84842",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "980464",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "425689",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "532337",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "89017",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T09:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 6,
+    "createdAt": "2017-07-30T09:00:00.000Z",
+    "updatedAt": "2017-07-30T09:00:00.000Z"
+  },
+  {
+    "programItemId": "8305",
+    "userSignups": [
+      {
+        "username": "789587",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "338703",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "142553",
+        "priority": 2,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "293909",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 4,
+    "createdAt": "2017-07-28T17:00:00.000Z",
+    "updatedAt": "2017-07-28T17:00:00.000Z"
+  },
+  {
+    "programItemId": "8453",
+    "userSignups": [
+      {
+        "username": "434853",
+        "priority": 2,
+        "signedToStartTime": "2017-07-28T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "689838",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "905388",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T16:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 3,
+    "createdAt": "2017-07-28T16:00:00.000Z",
+    "updatedAt": "2017-07-28T16:00:00.000Z"
+  },
+  {
+    "programItemId": "8465",
+    "userSignups": [
+      {
+        "username": "491948",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T13:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "171619",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T13:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "58904",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T13:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "224520",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T13:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "188019",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T13:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 5,
+    "createdAt": "2017-07-28T13:00:00.000Z",
+    "updatedAt": "2017-07-28T13:00:00.000Z"
+  },
+  {
+    "programItemId": "8364",
+    "userSignups": [
+      {
+        "username": "491948",
+        "priority": 3,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "81398",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "124784",
+        "priority": 2,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "865825",
+        "priority": 2,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "404855",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "671039",
+        "priority": 2,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 6,
+    "createdAt": "2017-07-28T17:00:00.000Z",
+    "updatedAt": "2017-07-28T17:00:00.000Z"
+  },
+  {
+    "programItemId": "8363",
+    "userSignups": [
+      {
+        "username": "896984",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T13:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "661183",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T13:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "141399",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T13:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "420650",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T13:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "82198",
+        "priority": 2,
+        "signedToStartTime": "2017-07-28T13:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "601249",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T13:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 6,
+    "createdAt": "2017-07-28T13:00:00.000Z",
+    "updatedAt": "2017-07-28T13:00:00.000Z"
+  },
+  {
+    "programItemId": "8423",
+    "userSignups": [
+      {
+        "username": "407208",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T14:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "378632",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T14:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "950858",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T14:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "953936",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T14:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "525678",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T14:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 5,
+    "createdAt": "2017-07-28T14:00:00.000Z",
+    "updatedAt": "2017-07-28T14:00:00.000Z"
+  },
+  {
+    "programItemId": "8369",
+    "userSignups": [
+      {
+        "username": "407208",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T12:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "789183",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T12:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "348786",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T12:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "96583",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T12:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "770603",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T12:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "836372",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T12:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 6,
+    "createdAt": "2017-07-29T12:00:00.000Z",
+    "updatedAt": "2017-07-29T12:00:00.000Z"
+  },
+  {
+    "programItemId": "8301",
+    "userSignups": [
+      {
+        "username": "84842",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T13:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "338703",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T13:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "114240",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T13:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "202803",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T13:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 4,
+    "createdAt": "2017-07-28T13:00:00.000Z",
+    "updatedAt": "2017-07-28T13:00:00.000Z"
+  },
+  {
+    "programItemId": "8309",
+    "userSignups": [
+      {
+        "username": "84842",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "142553",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "689838",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "884453",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "620291",
+        "priority": 2,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "117866",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 6,
+    "createdAt": "2017-07-29T16:00:00.000Z",
+    "updatedAt": "2017-07-29T16:00:00.000Z"
+  },
+  {
+    "programItemId": "8418",
+    "userSignups": [
+      {
+        "username": "661183",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T11:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "564848",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T11:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "102327",
+        "priority": 2,
+        "signedToStartTime": "2017-07-29T11:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "70853",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T11:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 4,
+    "createdAt": "2017-07-29T11:00:00.000Z",
+    "updatedAt": "2017-07-29T11:00:00.000Z"
+  },
+  {
+    "programItemId": "8334",
+    "userSignups": [
+      {
+        "username": "58904",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "224520",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "188019",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "746",
+        "priority": 2,
+        "signedToStartTime": "2017-07-28T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "811708",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T16:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 5,
+    "createdAt": "2017-07-28T16:00:00.000Z",
+    "updatedAt": "2017-07-28T16:00:00.000Z"
+  },
+  {
+    "programItemId": "8427",
+    "userSignups": [
+      {
+        "username": "58904",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "224520",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "141399",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "188019",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "818836",
+        "priority": 3,
+        "signedToStartTime": "2017-07-30T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "617336",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "444602",
+        "priority": 3,
+        "signedToStartTime": "2017-07-30T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "66745",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T07:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 8,
+    "createdAt": "2017-07-30T07:00:00.000Z",
+    "updatedAt": "2017-07-30T07:00:00.000Z"
+  },
+  {
+    "programItemId": "8432",
+    "userSignups": [
+      {
+        "username": "224520",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "188019",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "434769",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "115259",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "762480",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "527034",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T07:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 6,
+    "createdAt": "2017-07-29T07:00:00.000Z",
+    "updatedAt": "2017-07-29T07:00:00.000Z"
+  },
+  {
+    "programItemId": "8320",
+    "userSignups": [
+      {
+        "username": "757859",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T15:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "222882",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T15:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "487830",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T15:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "709863",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T15:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "672192",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T15:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 5,
+    "createdAt": "2017-07-28T15:00:00.000Z",
+    "updatedAt": "2017-07-28T15:00:00.000Z"
+  },
+  {
+    "programItemId": "8406",
+    "userSignups": [
+      {
+        "username": "757859",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T08:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "709863",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T08:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "672192",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T08:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "446139",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T08:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "126673",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T08:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 5,
+    "createdAt": "2017-07-29T08:00:00.000Z",
+    "updatedAt": "2017-07-29T08:00:00.000Z"
+  },
+  {
+    "programItemId": "8419",
+    "userSignups": [
+      {
+        "username": "757859",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T15:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "500200",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T15:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "39095",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T15:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "418386",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T15:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "514008",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T15:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 5,
+    "createdAt": "2017-07-29T15:00:00.000Z",
+    "updatedAt": "2017-07-29T15:00:00.000Z"
+  },
+  {
+    "programItemId": "8468",
+    "userSignups": [
+      {
+        "username": "202803",
+        "priority": 3,
+        "signedToStartTime": "2017-07-29T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "602265",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "473497",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "307768",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "41946",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "232907",
+        "priority": 2,
+        "signedToStartTime": "2017-07-29T07:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 6,
+    "createdAt": "2017-07-29T07:00:00.000Z",
+    "updatedAt": "2017-07-29T07:00:00.000Z"
+  },
+  {
+    "programItemId": "8308",
+    "userSignups": [
+      {
+        "username": "202803",
+        "priority": 2,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "293909",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "425689",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "535554",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "328164",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "478877",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 6,
+    "createdAt": "2017-07-29T16:00:00.000Z",
+    "updatedAt": "2017-07-29T16:00:00.000Z"
+  },
+  {
+    "programItemId": "8378",
+    "userSignups": [
+      {
+        "username": "278902",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "564848",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "390599",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "688895",
+        "priority": 2,
+        "signedToStartTime": "2017-07-29T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "39095",
+        "priority": 2,
+        "signedToStartTime": "2017-07-29T07:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 5,
+    "createdAt": "2017-07-29T07:00:00.000Z",
+    "updatedAt": "2017-07-29T07:00:00.000Z"
+  },
+  {
+    "programItemId": "8345",
+    "userSignups": [
+      {
+        "username": "141399",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T11:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "732508",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T11:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "342597",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T11:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "579962",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T11:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "23602",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T11:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 5,
+    "createdAt": "2017-07-29T11:00:00.000Z",
+    "updatedAt": "2017-07-29T11:00:00.000Z"
+  },
+  {
+    "programItemId": "8367",
+    "userSignups": [
+      {
+        "username": "1487",
+        "priority": 2,
+        "signedToStartTime": "2017-07-28T14:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "896070",
+        "priority": 2,
+        "signedToStartTime": "2017-07-28T14:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "434769",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T14:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "349033",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T14:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "495397",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T14:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 5,
+    "createdAt": "2017-07-28T14:00:00.000Z",
+    "updatedAt": "2017-07-28T14:00:00.000Z"
+  },
+  {
+    "programItemId": "8326",
+    "userSignups": [
+      {
+        "username": "564848",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "602265",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "709981",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "86371",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "27105",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 5,
+    "createdAt": "2017-07-28T17:00:00.000Z",
+    "updatedAt": "2017-07-28T17:00:00.000Z"
+  },
+  {
+    "programItemId": "8466",
+    "userSignups": [
+      {
+        "username": "564848",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "606037",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "736093",
+        "priority": 2,
+        "signedToStartTime": "2017-07-30T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "703878",
+        "priority": 2,
+        "signedToStartTime": "2017-07-30T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "961115",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T07:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 5,
+    "createdAt": "2017-07-30T07:00:00.000Z",
+    "updatedAt": "2017-07-30T07:00:00.000Z"
+  },
+  {
+    "programItemId": "8296",
+    "userSignups": [
+      {
+        "username": "564848",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T08:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "330003",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T08:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "422454",
+        "priority": 2,
+        "signedToStartTime": "2017-07-30T08:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "17964",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T08:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 4,
+    "createdAt": "2017-07-30T08:00:00.000Z",
+    "updatedAt": "2017-07-30T08:00:00.000Z"
+  },
+  {
+    "programItemId": "8399",
+    "userSignups": [
+      {
+        "username": "987228",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T14:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "823890",
+        "priority": 2,
+        "signedToStartTime": "2017-07-28T14:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "325005",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T14:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "357793",
+        "priority": 3,
+        "signedToStartTime": "2017-07-28T14:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 4,
+    "createdAt": "2017-07-28T14:00:00.000Z",
+    "updatedAt": "2017-07-28T14:00:00.000Z"
+  },
+  {
+    "programItemId": "8318",
+    "userSignups": [
+      {
+        "username": "420650",
+        "priority": 3,
+        "signedToStartTime": "2017-07-28T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "82198",
+        "priority": 3,
+        "signedToStartTime": "2017-07-28T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "828370",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T16:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 3,
+    "createdAt": "2017-07-28T16:00:00.000Z",
+    "updatedAt": "2017-07-28T16:00:00.000Z"
+  },
+  {
+    "programItemId": "8463",
+    "userSignups": [
+      {
+        "username": "420650",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "188019",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "709546",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "754171",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "217040",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T17:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 5,
+    "createdAt": "2017-07-29T17:00:00.000Z",
+    "updatedAt": "2017-07-29T17:00:00.000Z"
+  },
+  {
+    "programItemId": "8387",
+    "userSignups": [
+      {
+        "username": "390599",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T13:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "606037",
+        "priority": 2,
+        "signedToStartTime": "2017-07-29T13:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "184396",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T13:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "155419",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T13:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "307817",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T13:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 5,
+    "createdAt": "2017-07-29T13:00:00.000Z",
+    "updatedAt": "2017-07-29T13:00:00.000Z"
+  },
+  {
+    "programItemId": "8431",
+    "userSignups": [
+      {
+        "username": "222883",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T08:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "697728",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T08:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "677903",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T08:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "466924",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T08:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "79986",
+        "priority": 2,
+        "signedToStartTime": "2017-07-29T08:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "552632",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T08:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 6,
+    "createdAt": "2017-07-29T08:00:00.000Z",
+    "updatedAt": "2017-07-29T08:00:00.000Z"
+  },
+  {
+    "programItemId": "8347",
+    "userSignups": [
+      {
+        "username": "937874",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T11:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "291435",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T11:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "86371",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T11:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "712625",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T11:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "899998",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T11:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 5,
+    "createdAt": "2017-07-29T11:00:00.000Z",
+    "updatedAt": "2017-07-29T11:00:00.000Z"
+  },
+  {
+    "programItemId": "8393",
+    "userSignups": [
+      {
+        "username": "937874",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "606037",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "683409",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "954836",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "904136",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T09:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 5,
+    "createdAt": "2017-07-30T09:00:00.000Z",
+    "updatedAt": "2017-07-30T09:00:00.000Z"
+  },
+  {
+    "programItemId": "8420",
+    "userSignups": [
+      {
+        "username": "697728",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T15:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "677903",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T15:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "91702",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T15:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "51116",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T15:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "801388",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T15:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "552632",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T15:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "799528",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T15:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "307681",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T15:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 8,
+    "createdAt": "2017-07-28T15:00:00.000Z",
+    "updatedAt": "2017-07-28T15:00:00.000Z"
+  },
+  {
+    "programItemId": "8332",
+    "userSignups": [
+      {
+        "username": "571464",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "82135",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "31419",
+        "priority": 2,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 3,
+    "createdAt": "2017-07-28T17:00:00.000Z",
+    "updatedAt": "2017-07-28T17:00:00.000Z"
+  },
+  {
+    "programItemId": "8325",
+    "userSignups": [
+      {
+        "username": "807858",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T13:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "973465",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T13:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "190718",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T13:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 3,
+    "createdAt": "2017-07-28T13:00:00.000Z",
+    "updatedAt": "2017-07-28T13:00:00.000Z"
+  },
+  {
+    "programItemId": "8344",
+    "userSignups": [
+      {
+        "username": "807858",
+        "priority": 3,
+        "signedToStartTime": "2017-07-29T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "973465",
+        "priority": 3,
+        "signedToStartTime": "2017-07-29T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "461959",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "865825",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "607670",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T07:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 5,
+    "createdAt": "2017-07-29T07:00:00.000Z",
+    "updatedAt": "2017-07-29T07:00:00.000Z"
+  },
+  {
+    "programItemId": "8408",
+    "userSignups": [
+      {
+        "username": "807858",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T11:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "973465",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T11:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "400494",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T11:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "789585",
+        "priority": 2,
+        "signedToStartTime": "2017-07-29T11:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 4,
+    "createdAt": "2017-07-29T11:00:00.000Z",
+    "updatedAt": "2017-07-29T11:00:00.000Z"
+  },
+  {
+    "programItemId": "8394",
+    "userSignups": [
+      {
+        "username": "807858",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "973465",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "51585",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "10610",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "859285",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T07:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 5,
+    "createdAt": "2017-07-30T07:00:00.000Z",
+    "updatedAt": "2017-07-30T07:00:00.000Z"
+  },
+  {
+    "programItemId": "8315",
+    "userSignups": [
+      {
+        "username": "221570",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "293909",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "767879",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "957268",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "478877",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "653852",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T09:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 6,
+    "createdAt": "2017-07-30T09:00:00.000Z",
+    "updatedAt": "2017-07-30T09:00:00.000Z"
+  },
+  {
+    "programItemId": "8331",
+    "userSignups": [
+      {
+        "username": "461959",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "403133",
+        "priority": 3,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "586801",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "701010",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "96640",
+        "priority": 2,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "390588",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 6,
+    "createdAt": "2017-07-28T17:00:00.000Z",
+    "updatedAt": "2017-07-28T17:00:00.000Z"
+  },
+  {
+    "programItemId": "8402",
+    "userSignups": [
+      {
+        "username": "461959",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T12:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "683409",
+        "priority": 2,
+        "signedToStartTime": "2017-07-29T12:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "359934",
+        "priority": 2,
+        "signedToStartTime": "2017-07-29T12:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "473497",
+        "priority": 2,
+        "signedToStartTime": "2017-07-29T12:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "985491",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T12:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 5,
+    "createdAt": "2017-07-29T12:00:00.000Z",
+    "updatedAt": "2017-07-29T12:00:00.000Z"
+  },
+  {
+    "programItemId": "8377",
+    "userSignups": [
+      {
+        "username": "461959",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "291435",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "797485",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "915758",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T17:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 4,
+    "createdAt": "2017-07-29T17:00:00.000Z",
+    "updatedAt": "2017-07-29T17:00:00.000Z"
+  },
+  {
+    "programItemId": "8444",
+    "userSignups": [
+      {
+        "username": "461959",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "904107",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "857245",
+        "priority": 3,
+        "signedToStartTime": "2017-07-30T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "352328",
+        "priority": 2,
+        "signedToStartTime": "2017-07-30T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "370185",
+        "priority": 2,
+        "signedToStartTime": "2017-07-30T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "429618",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T09:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 6,
+    "createdAt": "2017-07-30T09:00:00.000Z",
+    "updatedAt": "2017-07-30T09:00:00.000Z"
+  },
+  {
+    "programItemId": "8435",
+    "userSignups": [
+      {
+        "username": "82198",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T13:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "602265",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T13:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "746",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T13:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "496490",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T13:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 4,
+    "createdAt": "2017-07-29T13:00:00.000Z",
+    "updatedAt": "2017-07-29T13:00:00.000Z"
+  },
+  {
+    "programItemId": "8384",
+    "userSignups": [
+      {
+        "username": "200394",
+        "priority": 2,
+        "signedToStartTime": "2017-07-29T08:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "372680",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T08:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "645282",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T08:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "812077",
+        "priority": 3,
+        "signedToStartTime": "2017-07-29T08:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "258215",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T08:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 5,
+    "createdAt": "2017-07-29T08:00:00.000Z",
+    "updatedAt": "2017-07-29T08:00:00.000Z"
+  },
+  {
+    "programItemId": "8382",
+    "userSignups": [
+      {
+        "username": "200394",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T10:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "645282",
+        "priority": 2,
+        "signedToStartTime": "2017-07-29T10:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "812077",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T10:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 3,
+    "createdAt": "2017-07-29T10:00:00.000Z",
+    "updatedAt": "2017-07-29T10:00:00.000Z"
+  },
+  {
+    "programItemId": "8476",
+    "userSignups": [
+      {
+        "username": "200394",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "102872",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T07:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 2,
+    "createdAt": "2017-07-30T07:00:00.000Z",
+    "updatedAt": "2017-07-30T07:00:00.000Z"
+  },
+  {
+    "programItemId": "8474",
+    "userSignups": [
+      {
+        "username": "81398",
+        "priority": 2,
+        "signedToStartTime": "2017-07-28T15:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "978820",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T15:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "675454",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T15:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "770603",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T15:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "782158",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T15:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "37933",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T15:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 6,
+    "createdAt": "2017-07-28T15:00:00.000Z",
+    "updatedAt": "2017-07-28T15:00:00.000Z"
+  },
+  {
+    "programItemId": "8374",
+    "userSignups": [
+      {
+        "username": "190718",
+        "priority": 3,
+        "signedToStartTime": "2017-07-29T10:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "950858",
+        "priority": 2,
+        "signedToStartTime": "2017-07-29T10:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 2,
+    "createdAt": "2017-07-29T10:00:00.000Z",
+    "updatedAt": "2017-07-29T10:00:00.000Z"
+  },
+  {
+    "programItemId": "8415",
+    "userSignups": [
+      {
+        "username": "190718",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "278521",
+        "priority": 2,
+        "signedToStartTime": "2017-07-30T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "771176",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "888388",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T07:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 4,
+    "createdAt": "2017-07-30T07:00:00.000Z",
+    "updatedAt": "2017-07-30T07:00:00.000Z"
+  },
+  {
+    "programItemId": "8460",
+    "userSignups": [
+      {
+        "username": "403133",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "357793",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "586801",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "422454",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "773239",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "631850",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "444602",
+        "priority": 2,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "669549",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 8,
+    "createdAt": "2017-07-29T16:00:00.000Z",
+    "updatedAt": "2017-07-29T16:00:00.000Z"
+  },
+  {
+    "programItemId": "8385",
+    "userSignups": [
+      {
+        "username": "858317",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T14:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "810076",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T14:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "817251",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T14:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "352719",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T14:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 4,
+    "createdAt": "2017-07-29T14:00:00.000Z",
+    "updatedAt": "2017-07-29T14:00:00.000Z"
+  },
+  {
+    "programItemId": "8386",
+    "userSignups": [
+      {
+        "username": "973454",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "856073",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "183384",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "278700",
+        "priority": 2,
+        "signedToStartTime": "2017-07-29T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "826224",
+        "priority": 2,
+        "signedToStartTime": "2017-07-29T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "665397",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T09:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 6,
+    "createdAt": "2017-07-29T09:00:00.000Z",
+    "updatedAt": "2017-07-29T09:00:00.000Z"
+  },
+  {
+    "programItemId": "8459",
+    "userSignups": [
+      {
+        "username": "973454",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "801388",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "183384",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "894275",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "689790",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 5,
+    "createdAt": "2017-07-29T16:00:00.000Z",
+    "updatedAt": "2017-07-29T16:00:00.000Z"
+  },
+  {
+    "programItemId": "8398",
+    "userSignups": [
+      {
+        "username": "500200",
+        "priority": 3,
+        "signedToStartTime": "2017-07-28T14:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "732508",
+        "priority": 3,
+        "signedToStartTime": "2017-07-28T14:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "114324",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T14:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "707921",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T14:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "647978",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T14:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 5,
+    "createdAt": "2017-07-28T14:00:00.000Z",
+    "updatedAt": "2017-07-28T14:00:00.000Z"
+  },
+  {
+    "programItemId": "8371",
+    "userSignups": [
+      {
+        "username": "500200",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "858561",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "782344",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "523621",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T07:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 4,
+    "createdAt": "2017-07-29T07:00:00.000Z",
+    "updatedAt": "2017-07-29T07:00:00.000Z"
+  },
+  {
+    "programItemId": "8400",
+    "userSignups": [
+      {
+        "username": "347318",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T15:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "709546",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T15:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "683409",
+        "priority": 2,
+        "signedToStartTime": "2017-07-28T15:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "359934",
+        "priority": 2,
+        "signedToStartTime": "2017-07-28T15:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "640106",
+        "priority": 2,
+        "signedToStartTime": "2017-07-28T15:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "958916",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T15:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "425259",
+        "priority": 3,
+        "signedToStartTime": "2017-07-28T15:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 7,
+    "createdAt": "2017-07-28T15:00:00.000Z",
+    "updatedAt": "2017-07-28T15:00:00.000Z"
+  },
+  {
+    "programItemId": "8317",
+    "userSignups": [
+      {
+        "username": "205898",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T15:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "363615",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T15:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "766167",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T15:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "348786",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T15:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "587418",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T15:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "692629",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T15:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 6,
+    "createdAt": "2017-07-28T15:00:00.000Z",
+    "updatedAt": "2017-07-28T15:00:00.000Z"
+  },
+  {
+    "programItemId": "8451",
+    "userSignups": [
+      {
+        "username": "363615",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "434769",
+        "priority": 2,
+        "signedToStartTime": "2017-07-29T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "588277",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "425259",
+        "priority": 2,
+        "signedToStartTime": "2017-07-29T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "100749",
+        "priority": 2,
+        "signedToStartTime": "2017-07-29T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "161349",
+        "priority": 2,
+        "signedToStartTime": "2017-07-29T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "278521",
+        "priority": 2,
+        "signedToStartTime": "2017-07-29T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "844706",
+        "priority": 2,
+        "signedToStartTime": "2017-07-29T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "975406",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "994532",
+        "priority": 2,
+        "signedToStartTime": "2017-07-29T17:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 10,
+    "createdAt": "2017-07-29T17:00:00.000Z",
+    "updatedAt": "2017-07-29T17:00:00.000Z"
+  },
+  {
+    "programItemId": "8425",
+    "userSignups": [
+      {
+        "username": "372680",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "950858",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "607670",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "428813",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "251285",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "365645",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 6,
+    "createdAt": "2017-07-29T16:00:00.000Z",
+    "updatedAt": "2017-07-29T16:00:00.000Z"
+  },
+  {
+    "programItemId": "8414",
+    "userSignups": [
+      {
+        "username": "372680",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "775670",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "958916",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "865825",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "723927",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "677739",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T07:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 6,
+    "createdAt": "2017-07-30T07:00:00.000Z",
+    "updatedAt": "2017-07-30T07:00:00.000Z"
+  },
+  {
+    "programItemId": "8319",
+    "userSignups": [
+      {
+        "username": "252424",
+        "priority": 3,
+        "signedToStartTime": "2017-07-28T14:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "798825",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T14:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "904107",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T14:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 3,
+    "createdAt": "2017-07-28T14:00:00.000Z",
+    "updatedAt": "2017-07-28T14:00:00.000Z"
+  },
+  {
+    "programItemId": "8346",
+    "userSignups": [
+      {
+        "username": "707921",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T11:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "904107",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T11:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "782344",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T11:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "100749",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T11:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "301263",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T11:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "274707",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T11:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 6,
+    "createdAt": "2017-07-29T11:00:00.000Z",
+    "updatedAt": "2017-07-29T11:00:00.000Z"
+  },
+  {
+    "programItemId": "8416",
+    "userSignups": [
+      {
+        "username": "434769",
+        "priority": 2,
+        "signedToStartTime": "2017-07-28T15:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "238132",
+        "priority": 2,
+        "signedToStartTime": "2017-07-28T15:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "854769",
+        "priority": 2,
+        "signedToStartTime": "2017-07-28T15:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 3,
+    "createdAt": "2017-07-28T15:00:00.000Z",
+    "updatedAt": "2017-07-28T15:00:00.000Z"
+  },
+  {
+    "programItemId": "8376",
+    "userSignups": [
+      {
+        "username": "238132",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T11:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "457214",
+        "priority": 2,
+        "signedToStartTime": "2017-07-29T11:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "436648",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T11:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "17964",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T11:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "383241",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T11:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 5,
+    "createdAt": "2017-07-29T11:00:00.000Z",
+    "updatedAt": "2017-07-29T11:00:00.000Z"
+  },
+  {
+    "programItemId": "8339",
+    "userSignups": [
+      {
+        "username": "222882",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "746",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "689790",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T17:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 3,
+    "createdAt": "2017-07-29T17:00:00.000Z",
+    "updatedAt": "2017-07-29T17:00:00.000Z"
+  },
+  {
+    "programItemId": "8333",
+    "userSignups": [
+      {
+        "username": "331018",
+        "priority": 2,
+        "signedToStartTime": "2017-07-28T15:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "14739",
+        "priority": 2,
+        "signedToStartTime": "2017-07-28T15:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "404001",
+        "priority": 2,
+        "signedToStartTime": "2017-07-28T15:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "201874",
+        "priority": 3,
+        "signedToStartTime": "2017-07-28T15:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "810076",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T15:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 5,
+    "createdAt": "2017-07-28T15:00:00.000Z",
+    "updatedAt": "2017-07-28T15:00:00.000Z"
+  },
+  {
+    "programItemId": "8365",
+    "userSignups": [
+      {
+        "username": "466924",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T15:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "135866",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T15:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "645282",
+        "priority": 3,
+        "signedToStartTime": "2017-07-28T15:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "475375",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T15:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 4,
+    "createdAt": "2017-07-28T15:00:00.000Z",
+    "updatedAt": "2017-07-28T15:00:00.000Z"
+  },
+  {
+    "programItemId": "8449",
+    "userSignups": [
+      {
+        "username": "647978",
+        "priority": 2,
+        "signedToStartTime": "2017-07-29T10:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "422454",
+        "priority": 3,
+        "signedToStartTime": "2017-07-29T10:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "811026",
+        "priority": 2,
+        "signedToStartTime": "2017-07-29T10:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "509222",
+        "priority": 3,
+        "signedToStartTime": "2017-07-29T10:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "961115",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T10:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "358953",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T10:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "189711",
+        "priority": 3,
+        "signedToStartTime": "2017-07-29T10:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "14100",
+        "priority": 3,
+        "signedToStartTime": "2017-07-29T10:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 8,
+    "createdAt": "2017-07-29T10:00:00.000Z",
+    "updatedAt": "2017-07-29T10:00:00.000Z"
+  },
+  {
+    "programItemId": "8349",
+    "userSignups": [
+      {
+        "username": "647978",
+        "priority": 3,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "869560",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "788883",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "572774",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "258215",
+        "priority": 2,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "577003",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "271214",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "901937",
+        "priority": 3,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "378047",
+        "priority": 2,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "477602",
+        "priority": 2,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 10,
+    "createdAt": "2017-07-29T16:00:00.000Z",
+    "updatedAt": "2017-07-29T16:00:00.000Z"
+  },
+  {
+    "programItemId": "8314",
+    "userSignups": [
+      {
+        "username": "647978",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "971520",
+        "priority": 2,
+        "signedToStartTime": "2017-07-30T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "294185",
+        "priority": 2,
+        "signedToStartTime": "2017-07-30T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "434548",
+        "priority": 2,
+        "signedToStartTime": "2017-07-30T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "807258",
+        "priority": 2,
+        "signedToStartTime": "2017-07-30T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "625451",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T09:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 6,
+    "createdAt": "2017-07-30T09:00:00.000Z",
+    "updatedAt": "2017-07-30T09:00:00.000Z"
+  },
+  {
+    "programItemId": "8410",
+    "userSignups": [
+      {
+        "username": "953936",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T12:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "248767",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T12:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "301263",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T12:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "189711",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T12:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "14100",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T12:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "334099",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T12:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "579962",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T12:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "579962",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T12:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 8,
+    "createdAt": "2017-07-29T12:00:00.000Z",
+    "updatedAt": "2017-07-29T12:00:00.000Z"
+  },
+  {
+    "programItemId": "8343",
+    "userSignups": [
+      {
+        "username": "135866",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "905388",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "579962",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "912146",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "951399",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "740687",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T17:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 6,
+    "createdAt": "2017-07-29T17:00:00.000Z",
+    "updatedAt": "2017-07-29T17:00:00.000Z"
+  },
+  {
+    "programItemId": "8452",
+    "userSignups": [
+      {
+        "username": "590057",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T14:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "216673",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T14:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "457214",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T14:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "291435",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T14:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "473497",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T14:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "521649",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T14:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 6,
+    "createdAt": "2017-07-28T14:00:00.000Z",
+    "updatedAt": "2017-07-28T14:00:00.000Z"
+  },
+  {
+    "programItemId": "8341",
+    "userSignups": [
+      {
+        "username": "216673",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T15:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "232165",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T15:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "163380",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T15:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "31419",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T15:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "691146",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T15:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 5,
+    "createdAt": "2017-07-29T15:00:00.000Z",
+    "updatedAt": "2017-07-29T15:00:00.000Z"
+  },
+  {
+    "programItemId": "8401",
+    "userSignups": [
+      {
+        "username": "606037",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "322266",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "121827",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "710936",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T09:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 4,
+    "createdAt": "2017-07-29T09:00:00.000Z",
+    "updatedAt": "2017-07-29T09:00:00.000Z"
+  },
+  {
+    "programItemId": "8442",
+    "userSignups": [
+      {
+        "username": "253147",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "507234",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "135184",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "278521",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "739390",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "538741",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "95820",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "8285",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 8,
+    "createdAt": "2017-07-28T17:00:00.000Z",
+    "updatedAt": "2017-07-28T17:00:00.000Z"
+  },
+  {
+    "programItemId": "8445",
+    "userSignups": [
+      {
+        "username": "321019",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "502897",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "646355",
+        "priority": 2,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "252610",
+        "priority": 2,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "102327",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "274415",
+        "priority": 2,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "134679",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "572774",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 8,
+    "createdAt": "2017-07-28T17:00:00.000Z",
+    "updatedAt": "2017-07-28T17:00:00.000Z"
+  },
+  {
+    "programItemId": "8437",
+    "userSignups": [
+      {
+        "username": "602265",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "864261",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "462902",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "260352",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "188516",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T17:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 5,
+    "createdAt": "2017-07-29T17:00:00.000Z",
+    "updatedAt": "2017-07-29T17:00:00.000Z"
+  },
+  {
+    "programItemId": "8389",
+    "userSignups": [
+      {
+        "username": "457214",
+        "priority": 2,
+        "signedToStartTime": "2017-07-29T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "102327",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "370185",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "712625",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "334099",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "19843",
+        "priority": 2,
+        "signedToStartTime": "2017-07-29T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "200581",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "917283",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "647984",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "481419",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T17:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 10,
+    "createdAt": "2017-07-29T17:00:00.000Z",
+    "updatedAt": "2017-07-29T17:00:00.000Z"
+  },
+  {
+    "programItemId": "8426",
+    "userSignups": [
+      {
+        "username": "291435",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "798825",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "248767",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "160931",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "114615",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "616791",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T09:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 6,
+    "createdAt": "2017-07-30T09:00:00.000Z",
+    "updatedAt": "2017-07-30T09:00:00.000Z"
+  },
+  {
+    "programItemId": "8462",
+    "userSignups": [
+      {
+        "username": "357793",
+        "priority": 2,
+        "signedToStartTime": "2017-07-30T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "486902",
+        "priority": 2,
+        "signedToStartTime": "2017-07-30T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "811026",
+        "priority": 2,
+        "signedToStartTime": "2017-07-30T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "772756",
+        "priority": 3,
+        "signedToStartTime": "2017-07-30T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "39095",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "418386",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T09:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 6,
+    "createdAt": "2017-07-30T09:00:00.000Z",
+    "updatedAt": "2017-07-30T09:00:00.000Z"
+  },
+  {
+    "programItemId": "8340",
+    "userSignups": [
+      {
+        "username": "904107",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T10:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "775670",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T10:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "539800",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T10:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "349378",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T10:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 4,
+    "createdAt": "2017-07-29T10:00:00.000Z",
+    "updatedAt": "2017-07-29T10:00:00.000Z"
+  },
+  {
+    "programItemId": "8388",
+    "userSignups": [
+      {
+        "username": "693070",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "723927",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "571504",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "677739",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "703878",
+        "priority": 2,
+        "signedToStartTime": "2017-07-29T07:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 5,
+    "createdAt": "2017-07-29T07:00:00.000Z",
+    "updatedAt": "2017-07-29T07:00:00.000Z"
+  },
+  {
+    "programItemId": "8352",
+    "userSignups": [
+      {
+        "username": "521649",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "83710",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "442262",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "485888",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T07:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 4,
+    "createdAt": "2017-07-30T07:00:00.000Z",
+    "updatedAt": "2017-07-30T07:00:00.000Z"
+  },
+  {
+    "programItemId": "8295",
+    "userSignups": [
+      {
+        "username": "708079",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T10:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "358638",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T10:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "671039",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T10:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "671084",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T10:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "970868",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T10:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 5,
+    "createdAt": "2017-07-29T10:00:00.000Z",
+    "updatedAt": "2017-07-29T10:00:00.000Z"
+  },
+  {
+    "programItemId": "8337",
+    "userSignups": [
+      {
+        "username": "857245",
+        "priority": 2,
+        "signedToStartTime": "2017-07-29T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "733260",
+        "priority": 2,
+        "signedToStartTime": "2017-07-29T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "136292",
+        "priority": 2,
+        "signedToStartTime": "2017-07-29T07:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 3,
+    "createdAt": "2017-07-29T07:00:00.000Z",
+    "updatedAt": "2017-07-29T07:00:00.000Z"
+  },
+  {
+    "programItemId": "8330",
+    "userSignups": [
+      {
+        "username": "857245",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T12:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "733260",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T12:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "830810",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T12:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "444594",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T12:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "577974",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T12:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 5,
+    "createdAt": "2017-07-29T12:00:00.000Z",
+    "updatedAt": "2017-07-29T12:00:00.000Z"
+  },
+  {
+    "programItemId": "8409",
+    "userSignups": [
+      {
+        "username": "635618",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "775675",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "415745",
+        "priority": 2,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "494824",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "373194",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 5,
+    "createdAt": "2017-07-29T16:00:00.000Z",
+    "updatedAt": "2017-07-29T16:00:00.000Z"
+  },
+  {
+    "programItemId": "8342",
+    "userSignups": [
+      {
+        "username": "404001",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "601755",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "935360",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "773239",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "631850",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "496490",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T09:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 6,
+    "createdAt": "2017-07-29T09:00:00.000Z",
+    "updatedAt": "2017-07-29T09:00:00.000Z"
+  },
+  {
+    "programItemId": "8311",
+    "userSignups": [
+      {
+        "username": "404001",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "404855",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "948604",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "501070",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "286139",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "532922",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T16:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 6,
+    "createdAt": "2017-07-29T16:00:00.000Z",
+    "updatedAt": "2017-07-29T16:00:00.000Z"
+  },
+  {
+    "programItemId": "8381",
+    "userSignups": [
+      {
+        "username": "709863",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T14:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "672192",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T14:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "248767",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T14:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "689583",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T14:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "970366",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T14:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 5,
+    "createdAt": "2017-07-29T14:00:00.000Z",
+    "updatedAt": "2017-07-29T14:00:00.000Z"
+  },
+  {
+    "programItemId": "8356",
+    "userSignups": [
+      {
+        "username": "363252",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "601755",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "428528",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "422641",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T16:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 4,
+    "createdAt": "2017-07-28T16:00:00.000Z",
+    "updatedAt": "2017-07-28T16:00:00.000Z"
+  },
+  {
+    "programItemId": "8422",
+    "userSignups": [
+      {
+        "username": "429102",
+        "priority": 2,
+        "signedToStartTime": "2017-07-29T14:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "826224",
+        "priority": 2,
+        "signedToStartTime": "2017-07-29T14:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "455250",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T14:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 3,
+    "createdAt": "2017-07-29T14:00:00.000Z",
+    "updatedAt": "2017-07-29T14:00:00.000Z"
+  },
+  {
+    "programItemId": "8379",
+    "userSignups": [
+      {
+        "username": "388012",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T12:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "22069",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T12:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "691146",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T12:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "883126",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T12:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "436303",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T12:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "551573",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T12:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 6,
+    "createdAt": "2017-07-29T12:00:00.000Z",
+    "updatedAt": "2017-07-29T12:00:00.000Z"
+  },
+  {
+    "programItemId": "8338",
+    "userSignups": [
+      {
+        "username": "388012",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T13:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "665397",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T13:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "818981",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T13:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "564573",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T13:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "944109",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T13:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "551573",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T13:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 6,
+    "createdAt": "2017-07-29T13:00:00.000Z",
+    "updatedAt": "2017-07-29T13:00:00.000Z"
+  },
+  {
+    "programItemId": "8375",
+    "userSignups": [
+      {
+        "username": "854769",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T15:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "83710",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T15:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "442262",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T15:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "232907",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T15:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "31374",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T15:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "60308",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T15:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 6,
+    "createdAt": "2017-07-29T15:00:00.000Z",
+    "updatedAt": "2017-07-29T15:00:00.000Z"
+  },
+  {
+    "programItemId": "8428",
+    "userSignups": [
+      {
+        "username": "278573",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "422454",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "232092",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "115259",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "248767",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 5,
+    "createdAt": "2017-07-28T17:00:00.000Z",
+    "updatedAt": "2017-07-28T17:00:00.000Z"
+  },
+  {
+    "programItemId": "8424",
+    "userSignups": [
+      {
+        "username": "67599",
+        "priority": 2,
+        "signedToStartTime": "2017-07-29T10:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "278700",
+        "priority": 2,
+        "signedToStartTime": "2017-07-29T10:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "119591",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T10:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "865601",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T10:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "334099",
+        "priority": 3,
+        "signedToStartTime": "2017-07-29T10:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 5,
+    "createdAt": "2017-07-29T10:00:00.000Z",
+    "updatedAt": "2017-07-29T10:00:00.000Z"
+  },
+  {
+    "programItemId": "8475",
+    "userSignups": [
+      {
+        "username": "770603",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T13:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "782158",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T13:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "278521",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T13:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "279994",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T13:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "738304",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T13:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "809516",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T13:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 6,
+    "createdAt": "2017-07-29T13:00:00.000Z",
+    "updatedAt": "2017-07-29T13:00:00.000Z"
+  },
+  {
+    "programItemId": "8480",
+    "userSignups": [
+      {
+        "username": "601755",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "226320",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "115789",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "791020",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "97638",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T09:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 5,
+    "createdAt": "2017-07-30T09:00:00.000Z",
+    "updatedAt": "2017-07-30T09:00:00.000Z"
+  },
+  {
+    "programItemId": "8395",
+    "userSignups": [
+      {
+        "username": "773239",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T08:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "631850",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T08:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 2,
+    "createdAt": "2017-07-30T08:00:00.000Z",
+    "updatedAt": "2017-07-30T08:00:00.000Z"
+  },
+  {
+    "programItemId": "8360",
+    "userSignups": [
+      {
+        "username": "626187",
+        "priority": 3,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "879103",
+        "priority": 3,
+        "signedToStartTime": "2017-07-28T17:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 2,
+    "createdAt": "2017-07-28T17:00:00.000Z",
+    "updatedAt": "2017-07-28T17:00:00.000Z"
+  },
+  {
+    "programItemId": "8383",
+    "userSignups": [
+      {
+        "username": "428528",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T12:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "422641",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T12:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "137793",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T12:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "170412",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T12:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 4,
+    "createdAt": "2017-07-29T12:00:00.000Z",
+    "updatedAt": "2017-07-29T12:00:00.000Z"
+  },
+  {
+    "programItemId": "8336",
+    "userSignups": [
+      {
+        "username": "539800",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T16:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "91230",
+        "priority": 1,
+        "signedToStartTime": "2017-07-28T16:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 2,
+    "createdAt": "2017-07-28T16:00:00.000Z",
+    "updatedAt": "2017-07-28T16:00:00.000Z"
+  },
+  {
+    "programItemId": "8417",
+    "userSignups": [
+      {
+        "username": "828370",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T12:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "912146",
+        "priority": 2,
+        "signedToStartTime": "2017-07-29T12:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "48677",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T12:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 3,
+    "createdAt": "2017-07-29T12:00:00.000Z",
+    "updatedAt": "2017-07-29T12:00:00.000Z"
+  },
+  {
+    "programItemId": "8373",
+    "userSignups": [
+      {
+        "username": "671039",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T15:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "160931",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T15:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "943703",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T15:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 3,
+    "createdAt": "2017-07-29T15:00:00.000Z",
+    "updatedAt": "2017-07-29T15:00:00.000Z"
+  },
+  {
+    "programItemId": "8324",
+    "userSignups": [
+      {
+        "username": "968951",
+        "priority": 2,
+        "signedToStartTime": "2017-07-30T09:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 1,
+    "createdAt": "2017-07-30T09:00:00.000Z",
+    "updatedAt": "2017-07-30T09:00:00.000Z"
+  },
+  {
+    "programItemId": "8412",
+    "userSignups": [
+      {
+        "username": "772756",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T15:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "431158",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T15:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "413902",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T15:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 3,
+    "createdAt": "2017-07-29T15:00:00.000Z",
+    "updatedAt": "2017-07-29T15:00:00.000Z"
+  },
+  {
+    "programItemId": "8392",
+    "userSignups": [
+      {
+        "username": "607670",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T08:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "341520",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T08:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "335885",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T08:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 3,
+    "createdAt": "2017-07-30T08:00:00.000Z",
+    "updatedAt": "2017-07-30T08:00:00.000Z"
+  },
+  {
+    "programItemId": "8456",
+    "userSignups": [
+      {
+        "username": "137793",
+        "priority": 2,
+        "signedToStartTime": "2017-07-29T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "89017",
+        "priority": 2,
+        "signedToStartTime": "2017-07-29T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "720445",
+        "priority": 2,
+        "signedToStartTime": "2017-07-29T07:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 3,
+    "createdAt": "2017-07-29T07:00:00.000Z",
+    "updatedAt": "2017-07-29T07:00:00.000Z"
+  },
+  {
+    "programItemId": "8433",
+    "userSignups": [
+      {
+        "username": "89017",
+        "priority": 2,
+        "signedToStartTime": "2017-07-29T13:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 1,
+    "createdAt": "2017-07-29T13:00:00.000Z",
+    "updatedAt": "2017-07-29T13:00:00.000Z"
+  },
+  {
+    "programItemId": "8312",
+    "userSignups": [
+      {
+        "username": "286139",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "620291",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "532922",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "86088",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "417680",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "64414",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T09:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 6,
+    "createdAt": "2017-07-30T09:00:00.000Z",
+    "updatedAt": "2017-07-30T09:00:00.000Z"
+  },
+  {
+    "programItemId": "8411",
+    "userSignups": [
+      {
+        "username": "647478",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T10:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "176031",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T10:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "790024",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T10:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "292693",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T10:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 4,
+    "createdAt": "2017-07-29T10:00:00.000Z",
+    "updatedAt": "2017-07-29T10:00:00.000Z"
+  },
+  {
+    "programItemId": "8405",
+    "userSignups": [
+      {
+        "username": "647478",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "176031",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "626398",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T07:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "709669",
+        "priority": 1,
+        "signedToStartTime": "2017-07-30T07:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 4,
+    "createdAt": "2017-07-30T07:00:00.000Z",
+    "updatedAt": "2017-07-30T07:00:00.000Z"
+  },
+  {
+    "programItemId": "8448",
+    "userSignups": [
+      {
+        "username": "798979",
+        "priority": 3,
+        "signedToStartTime": "2017-07-29T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "854852",
+        "priority": 3,
+        "signedToStartTime": "2017-07-29T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "466237",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "964034",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T09:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "555074",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T09:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 5,
+    "createdAt": "2017-07-29T09:00:00.000Z",
+    "updatedAt": "2017-07-29T09:00:00.000Z"
+  },
+  {
+    "programItemId": "8370",
+    "userSignups": [
+      {
+        "username": "979076",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T14:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "370980",
+        "priority": 2,
+        "signedToStartTime": "2017-07-29T14:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "471622",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T14:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "839656",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T14:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "182053",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T14:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 5,
+    "createdAt": "2017-07-29T14:00:00.000Z",
+    "updatedAt": "2017-07-29T14:00:00.000Z"
+  },
+  {
+    "programItemId": "8450",
+    "userSignups": [
+      {
+        "username": "807258",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T13:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "226320",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T13:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "487309",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T13:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "869080",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T13:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 4,
+    "createdAt": "2017-07-29T13:00:00.000Z",
+    "updatedAt": "2017-07-29T13:00:00.000Z"
+  },
+  {
+    "programItemId": "8357",
+    "userSignups": [
+      {
+        "username": "68460",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T12:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "292007",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T12:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "781204",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T12:00:00.000Z",
+        "message": ""
+      },
+      {
+        "username": "717371",
+        "priority": 1,
+        "signedToStartTime": "2017-07-29T12:00:00.000Z",
+        "message": ""
+      }
+    ],
+    "count": 4,
+    "createdAt": "2017-07-29T12:00:00.000Z",
+    "updatedAt": "2017-07-29T12:00:00.000Z"
+  }
+]

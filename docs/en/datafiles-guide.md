@@ -42,7 +42,7 @@ Confirmed signups (both lottery-assigned and direct signups).
 - `2` — Got their 2nd lottery choice
 - `3` — Got their 3rd lottery choice
 
-Not available for older events (2017-2021). For those years, confirmed signups are in `users.json` under `directSignups`.
+For older events (2017–2021) this file was reconstructed from `users.json` `directSignups` during a normalization pass. Entries from 2017–2019 use `priority: 1`, `2`, or `3` matching the lottery preference that won (Konsti was lottery-only then, so every confirmed signup was a lottery win). For 2017–2018 the priority was not stored on the original `directSignups` entries and was looked up from `results.json`; for 2019 it was already present. Ropecon 2021 was a remote / COVID-era convention that ran direct signup only (no lottery), so its entries use `priority: 0`.
 
 ### program-items.json
 
@@ -106,7 +106,7 @@ Lottery assignment run results. Each entry represents one assignment run (the lo
 
 The same assignment data is also reflected in `direct-signups.json` (with priority > 0). This file provides the additional context of which algorithm was used and the assignment run metadata.
 
-Older events (2017-2019) include an additional `lotterySignups` array per result entry showing all the user's preferences for that time slot.
+Ropecon 2021 has no `results.json` because no lottery was run that year (remote / COVID convention, direct signup only).
 
 ### users.json
 
@@ -127,7 +127,6 @@ All users with sanitized data. Usernames are anonymized numeric IDs, passwords a
         "programItemId": "example-program",
         "priority": 1, // User's preference order (1 = first choice)
         "signedToStartTime": "2024-07-19T15:00:00Z",
-        "message": "",
       },
     ],
     "eventLogItems": [
@@ -144,12 +143,13 @@ All users with sanitized data. Usernames are anonymized numeric IDs, passwords a
 ]
 ```
 
-**Caveat: `lotterySignups` can be incomplete.** Lottery signups may be removed after the lottery has run (e.g. the user joins a group), but `eventLogItems` are never modified. This means some users have `newAssignment` or `noAssignment` entries for program items or time slots that no longer appear in their `lotterySignups`. To reconstruct what users originally wanted, treat `eventLogItems` as authoritative evidence of past lottery participation and combine it with the remaining `lotterySignups`.
+**Caveat: `lotterySignups` can be incomplete.** Lottery signups may be removed after the lottery has run (e.g. the user joins a group), but `eventLogItems` are never modified. This means some users have `newAssignment` or `noAssignment` entries for program items or time slots that no longer appear in their `lotterySignups`. To reconstruct what users originally wanted, treat `eventLogItems` as authoritative evidence of past lottery participation and combine it with the remaining `lotterySignups`. For 2017–2018, signups that were wiped from `users.json` were restored during normalization from a per-result snapshot that older `results.json` files used to carry.
 
-Older events (2017-2019) have a slightly different schema:
+Older events have been normalized into the schema above. Notable details:
 
-- `directSignups` array (confirmed signups are embedded in users, no separate `direct-signups.json`)
-- `favoriteProgramItemIds` is an array of objects `{programItemId}` instead of plain strings
+- 2017–2019 (Ropecon, Tracon Hitpoint 2019): `directSignups` were moved out into a generated `direct-signups.json`; `favoriteProgramItemIds` was flattened from `[{programItemId}]` to `[string]`; old descriptive boolean flags (`englishOk`, `childrenFriendly`, `ageRestricted`, `beginnerFriendly`, `intendedForExperiencedParticipants`) were mapped to entries in `tags` and removed; 2017's `attributes` array was split into `genres` and `styles` and removed; 2017's `notes` field (which contained the game system) was renamed to `gameSystem`.
+- 2017: `mins` was string-typed and is now numeric; lottery signup priorities were string-typed and are now numeric; `signedToStartTime` was backfilled from each program's `startTime`.
+- 2021 Ropecon: a remote / COVID-era convention with direct signup only — no lottery was run. `lotterySignups` is empty by design and `results.json` is absent. Confirmed signups are in `direct-signups.json` with `priority: 0`.
 
 ### serials.json
 
@@ -158,6 +158,14 @@ Generated registration codes. Not required for statistics.
 ### settings.json
 
 Application settings dump. Not required for statistics.
+
+## Conventions to know
+
+- **Group creator identification**: a user is the group creator iff `user.groupCreatorCode === user.groupCode` (both non-`"0"`). Regular members have `groupCreatorCode: "0"`. In 2018–2023 dumps the `groupCode` equals the creator's `serial`; from 2024 onward it's an unrelated UUID-style string.
+- **`kompassiId` types**: `0` (number) means the user signed up with a registration code; `"<redacted>"` (string) means they used Kompassi OAuth. Both forms only co-exist in events whose `settings.json` has `loginProvider: "local+kompassi"` (Ropecon 2025 onward). Earlier events have a single value across all rows depending on the active login method.
+- **Popularity scale history**: Ropecon 2025 introduced the 5-bucket enum (`notSet`/`low`/`medium`/`high`/`veryHigh`/`extreme`). Pre-2025 dumps used a numeric scale that encoded only 3 buckets (`low` = under min attendance, `medium` = between min and max, `high` = at max), so normalized older dumps never carry `veryHigh` or `extreme`.
+- **Algorithm naming history**: `results.json` `algorithm` field is canonicalized to current names. `Opa` (in older `message` strings) was the older name for `padg`; `Group` was the older name for `random`. 2017 used `hungarian` (no longer in the codebase enum), and 2018 used `random`.
+- **Past-event configs**: [`shared/config/past-events/`](../../shared/config/past-events/) holds a `Partial<EventConfig>` per event. Files for 2017–2022 (Ropecon) and 2019 (Tracon Hitpoint) were reconstructed from the data files (not preserved from the live event) and carry a notice header.
 
 ## Tips for Analysis
 
