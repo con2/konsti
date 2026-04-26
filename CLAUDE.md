@@ -115,6 +115,19 @@ MongoDB with Mongoose. Tests use `mongodb-memory-server` for in-memory DB. Docke
 
 **Lifecycle:** each convention runs its own instance for the duration of the event only. After the event the DB is dumped to `server/src/features/statistics/datafiles/` and the instance is torn down. Because there is no long-lived production DB and no cross-event continuity, schema or enum-value changes don't need migration files — just change the code and let the next event start with a fresh DB. Do not add migration scripts, startup migration hooks, or backwards-compatibility shims.
 
+### Past-event Datafiles
+
+Sanitized DB dumps from every event live under `server/src/features/statistics/datafiles/{event}/{year}/`. They've been normalized so all years share one schema (Ropecon 2025 is the canonical reference). Full schema in [`docs/en/datafiles-guide.md`](docs/en/datafiles-guide.md). Aggregated stats live under [`docs/statistics/`](docs/statistics/). Past-event config files in [`shared/config/past-events/`](shared/config/past-events/) are typed `Partial<EventConfig>`; configs for 2017–2022 + Hitpoint 2019 were reconstructed from the dumps and carry a notice header.
+
+Non-obvious invariants when analysing the dumps:
+
+- **Signup priority semantics** (`direct-signups.json` `userSignups[].priority`, `results.json` `assignmentSignup.priority`): `0` = first-come-first-served direct signup; `1`/`2`/`3` = lottery win at that preference. 2017–2019 events have only `1`/`2`/`3` (lottery-only era); 2021 Ropecon has only `0` (remote / COVID, direct signup only); 2022+ events mix both.
+- **Group creator identification**: a user is the group creator iff `user.groupCreatorCode === user.groupCode` (both non-`"0"`). Regular members have `groupCreatorCode: "0"`. In 2018–2023 dumps the `groupCode` happens to equal the creator's `serial`; from 2024 onward it's a UUID-style string.
+- **`kompassiId` types**: `0` (number) means registration-code user, `"<redacted>"` (string) means Kompassi-OAuth user. The split only exists in events with `loginProvider: "local+kompassi"` (Ropecon 2025+); single-method events have one value across all rows.
+- **`popularity` scale history**: Ropecon 2025 introduced the 5-bucket enum (`notSet`/`low`/`medium`/`high`/`veryHigh`/`extreme`). Earlier dumps used a numeric scale that only encoded 3 buckets (`low` = under min attendance, `medium` = between, `high` = at max), so older normalized dumps never have `veryHigh` or `extreme`.
+- **`lotterySignups[]` schema** (in `users.json`): `{programItemId, priority, signedToStartTime}` — no `message` field. Direct-signup `userSignups[]` does include `message`.
+- **Algorithm naming history**: `algorithm` field is canonicalized — `Opa` was the older name for `padg`, `Group` was the older name for `random`. 2017 used `hungarian` (no longer in the codebase enum).
+
 ### State Management
 
 Client uses Redux Toolkit. Store in `client/src/state/`. API calls in `client/src/services/`.

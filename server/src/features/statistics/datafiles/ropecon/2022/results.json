@@ -69,8 +69,8 @@
     "assignmentTime": "2022-07-29T15:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assign Result - Players: 8/12 (67%), Games: 3/5 (60%)",
-    "updatedAt": "2022-07-29T13:00:10.946Z",
-    "createdAt": "2022-07-29T13:00:10.946Z"
+    "createdAt": "2022-07-29T13:00:10.946Z",
+    "updatedAt": "2022-07-29T13:00:10.946Z"
   },
   {
     "results": [
@@ -356,10 +356,10 @@
       }
     ],
     "assignmentTime": "2022-07-29T16:00:00Z",
-    "algorithm": "Random",
+    "algorithm": "random",
     "message": "Random Assign Result - Players: 35/37 (95%), Games: 8/8 (100%)",
-    "updatedAt": "2022-07-29T14:00:11.09Z",
-    "createdAt": "2022-07-29T14:00:11.09Z"
+    "createdAt": "2022-07-29T14:00:11.09Z",
+    "updatedAt": "2022-07-29T14:00:11.09Z"
   },
   {
     "results": [
@@ -687,8 +687,8 @@
     "assignmentTime": "2022-07-29T17:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assign Result - Players: 40/61 (66%), Games: 9/9 (100%)",
-    "updatedAt": "2022-07-29T15:00:11.939Z",
-    "createdAt": "2022-07-29T15:00:11.939Z"
+    "createdAt": "2022-07-29T15:00:11.939Z",
+    "updatedAt": "2022-07-29T15:00:11.939Z"
   },
   {
     "results": [
@@ -944,8 +944,8 @@
     "assignmentTime": "2022-07-29T18:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assign Result - Players: 31/79 (39%), Games: 7/7 (100%)",
-    "updatedAt": "2022-07-29T16:00:11.76Z",
-    "createdAt": "2022-07-29T16:00:11.76Z"
+    "createdAt": "2022-07-29T16:00:11.76Z",
+    "updatedAt": "2022-07-29T16:00:11.76Z"
   },
   {
     "results": [
@@ -1169,8 +1169,8 @@
     "assignmentTime": "2022-07-29T19:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assign Result - Players: 27/43 (63%), Games: 6/7 (86%)",
-    "updatedAt": "2022-07-29T17:00:11.231Z",
-    "createdAt": "2022-07-29T17:00:11.231Z"
+    "createdAt": "2022-07-29T17:00:11.231Z",
+    "updatedAt": "2022-07-29T17:00:11.231Z"
   },
   {
     "results": [
@@ -1242,8 +1242,8 @@
     "assignmentTime": "2022-07-29T21:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assign Result - Players: 8/22 (36%), Games: 1/1 (100%)",
-    "updatedAt": "2022-07-29T19:00:10.969Z",
-    "createdAt": "2022-07-29T19:00:10.969Z"
+    "createdAt": "2022-07-29T19:00:10.969Z",
+    "updatedAt": "2022-07-29T19:00:10.969Z"
   },
   {
     "results": [
@@ -1801,10 +1801,10 @@
       }
     ],
     "assignmentTime": "2022-07-30T07:00:00Z",
-    "algorithm": "Random",
+    "algorithm": "random",
     "message": "Random Assign Result - Players: 69/101 (68%), Games: 15/17 (88%)",
-    "updatedAt": "2022-07-30T05:00:14.912Z",
-    "createdAt": "2022-07-30T05:00:14.912Z"
+    "createdAt": "2022-07-30T05:00:14.912Z",
+    "updatedAt": "2022-07-30T05:00:14.912Z"
   },
   {
     "results": [
@@ -2036,8 +2036,8 @@
     "assignmentTime": "2022-07-30T08:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assign Result - Players: 28/55 (51%), Games: 6/6 (100%)",
-    "updatedAt": "2022-07-30T06:00:12.788Z",
-    "createdAt": "2022-07-30T06:00:12.788Z"
+    "createdAt": "2022-07-30T06:00:12.788Z",
+    "updatedAt": "2022-07-30T06:00:12.788Z"
   },
   {
     "results": [
@@ -2269,8 +2269,8 @@
     "assignmentTime": "2022-07-30T09:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assign Result - Players: 28/56 (50%), Games: 6/6 (100%)",
-    "updatedAt": "2022-07-30T07:00:12.643Z",
-    "createdAt": "2022-07-30T07:00:12.643Z"
+    "createdAt": "2022-07-30T07:00:12.643Z",
+    "updatedAt": "2022-07-30T07:00:12.643Z"
   },
   {
     "results": [
@@ -2532,10 +2532,10 @@
       }
     ],
     "assignmentTime": "2022-07-30T10:00:00Z",
-    "algorithm": "Random",
+    "algorithm": "random",
     "message": "Random Assign Result - Players: 32/68 (47%), Games: 6/6 (100%)",
-    "updatedAt": "2022-07-30T08:00:14.422Z",
-    "createdAt": "2022-07-30T08:00:14.422Z"
+    "createdAt": "2022-07-30T08:00:14.422Z",
+    "updatedAt": "2022-07-30T08:00:14.422Z"
   },
   {
     "results": [
@@ -2815,8 +2815,8 @@
     "assignmentTime": "2022-07-30T11:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assign Result - Players: 34/81 (42%), Games: 7/8 (88%)",
-    "updatedAt": "2022-07-30T09:00:16.428Z",
-    "createdAt": "2022-07-30T09:00:16.428Z"
+    "createdAt": "2022-07-30T09:00:16.428Z",
+    "updatedAt": "2022-07-30T09:00:16.428Z"
   },
   {
     "results": [
@@ -3040,8 +3040,8 @@
     "assignmentTime": "2022-07-30T12:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assign Result - Players: 27/60 (45%), Games: 5/5 (100%)",
-    "updatedAt": "2022-07-30T10:00:15.951Z",
-    "createdAt": "2022-07-30T10:00:15.951Z"
+    "createdAt": "2022-07-30T10:00:15.951Z",
+    "updatedAt": "2022-07-30T10:00:15.951Z"
   },
   {
     "results": [
@@ -3265,8 +3265,8 @@
     "assignmentTime": "2022-07-30T13:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assign Result - Players: 27/139 (19%), Games: 5/5 (100%)",
-    "updatedAt": "2022-07-30T11:00:20.182Z",
-    "createdAt": "2022-07-30T11:00:20.182Z"
+    "createdAt": "2022-07-30T11:00:20.182Z",
+    "updatedAt": "2022-07-30T11:00:20.182Z"
   },
   {
     "results": [
@@ -3394,8 +3394,8 @@
     "assignmentTime": "2022-07-30T14:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assign Result - Players: 15/62 (24%), Games: 3/3 (100%)",
-    "updatedAt": "2022-07-30T12:00:21.482Z",
-    "createdAt": "2022-07-30T12:00:21.482Z"
+    "createdAt": "2022-07-30T12:00:21.482Z",
+    "updatedAt": "2022-07-30T12:00:21.482Z"
   },
   {
     "results": [
@@ -3795,8 +3795,8 @@
     "assignmentTime": "2022-07-30T15:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assign Result - Players: 49/183 (27%), Games: 10/10 (100%)",
-    "updatedAt": "2022-07-30T13:00:26.278Z",
-    "createdAt": "2022-07-30T13:00:26.278Z"
+    "createdAt": "2022-07-30T13:00:26.278Z",
+    "updatedAt": "2022-07-30T13:00:26.278Z"
   },
   {
     "results": [
@@ -4052,8 +4052,8 @@
     "assignmentTime": "2022-07-30T16:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assign Result - Players: 31/110 (28%), Games: 7/7 (100%)",
-    "updatedAt": "2022-07-30T14:00:26.085Z",
-    "createdAt": "2022-07-30T14:00:26.085Z"
+    "createdAt": "2022-07-30T14:00:26.085Z",
+    "updatedAt": "2022-07-30T14:00:26.085Z"
   },
   {
     "results": [
@@ -4389,8 +4389,8 @@
     "assignmentTime": "2022-07-30T17:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assign Result - Players: 41/136 (30%), Games: 8/8 (100%)",
-    "updatedAt": "2022-07-30T15:00:27.218Z",
-    "createdAt": "2022-07-30T15:00:27.218Z"
+    "createdAt": "2022-07-30T15:00:27.218Z",
+    "updatedAt": "2022-07-30T15:00:27.218Z"
   },
   {
     "results": [
@@ -4558,8 +4558,8 @@
     "assignmentTime": "2022-07-30T18:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assign Result - Players: 20/128 (16%), Games: 4/4 (100%)",
-    "updatedAt": "2022-07-30T16:00:29.023Z",
-    "createdAt": "2022-07-30T16:00:29.023Z"
+    "createdAt": "2022-07-30T16:00:29.023Z",
+    "updatedAt": "2022-07-30T16:00:29.023Z"
   },
   {
     "results": [
@@ -4671,8 +4671,8 @@
     "assignmentTime": "2022-07-30T19:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assign Result - Players: 13/59 (22%), Games: 3/3 (100%)",
-    "updatedAt": "2022-07-30T17:00:26.973Z",
-    "createdAt": "2022-07-30T17:00:26.973Z"
+    "createdAt": "2022-07-30T17:00:26.973Z",
+    "updatedAt": "2022-07-30T17:00:26.973Z"
   },
   {
     "results": [
@@ -4744,8 +4744,8 @@
     "assignmentTime": "2022-07-30T21:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assign Result - Players: 8/12 (67%), Games: 1/1 (100%)",
-    "updatedAt": "2022-07-30T19:00:23.916Z",
-    "createdAt": "2022-07-30T19:00:23.916Z"
+    "createdAt": "2022-07-30T19:00:23.916Z",
+    "updatedAt": "2022-07-30T19:00:23.916Z"
   },
   {
     "results": [
@@ -5351,10 +5351,10 @@
       }
     ],
     "assignmentTime": "2022-07-31T07:00:00Z",
-    "algorithm": "Random",
+    "algorithm": "random",
     "message": "Random Assign Result - Players: 75/127 (59%), Games: 16/16 (100%)",
-    "updatedAt": "2022-07-31T05:00:35.228Z",
-    "createdAt": "2022-07-31T05:00:35.228Z"
+    "createdAt": "2022-07-31T05:00:35.228Z",
+    "updatedAt": "2022-07-31T05:00:35.228Z"
   },
   {
     "results": [
@@ -5466,8 +5466,8 @@
     "assignmentTime": "2022-07-31T08:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assign Result - Players: 13/17 (76%), Games: 3/4 (75%)",
-    "updatedAt": "2022-07-31T06:00:30.772Z",
-    "createdAt": "2022-07-31T06:00:30.772Z"
+    "createdAt": "2022-07-31T06:00:30.772Z",
+    "updatedAt": "2022-07-31T06:00:30.772Z"
   },
   {
     "results": [
@@ -5803,8 +5803,8 @@
     "assignmentTime": "2022-07-31T09:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assign Result - Players: 41/88 (47%), Games: 8/8 (100%)",
-    "updatedAt": "2022-07-31T07:00:32.263Z",
-    "createdAt": "2022-07-31T07:00:32.263Z"
+    "createdAt": "2022-07-31T07:00:32.263Z",
+    "updatedAt": "2022-07-31T07:00:32.263Z"
   },
   {
     "results": [
@@ -6068,7 +6068,7 @@
     "assignmentTime": "2022-07-31T10:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assign Result - Players: 32/113 (28%), Games: 7/7 (100%)",
-    "updatedAt": "2022-07-31T08:00:33.591Z",
-    "createdAt": "2022-07-31T08:00:33.591Z"
+    "createdAt": "2022-07-31T08:00:33.591Z",
+    "updatedAt": "2022-07-31T08:00:33.591Z"
   }
 ]

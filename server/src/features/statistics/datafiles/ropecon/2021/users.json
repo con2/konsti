@@ -1,369 +1,223 @@
 [
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "324507",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "7998537893",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4661",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T13:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4709",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T07:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4710",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T07:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-25T21:45:26.6Z",
     "updatedAt": "2021-07-25T21:47:37.254Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "268498",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "8440980848",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4709",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T07:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-25T21:55:02.889Z",
     "updatedAt": "2021-07-25T21:55:21.642Z"
   },
   {
-    "favoriteProgramItemIds": ["p4661", "p4709"],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "269097",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "2968378972",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": ["p4661", "p4709"],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4661",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T13:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4709",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T07:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4710",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T07:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-25T22:20:59.584Z",
     "updatedAt": "2021-07-25T22:28:01.62Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "734580",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "3375696923",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4661",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T13:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4709",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T07:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4710",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T07:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-25T22:27:52.964Z",
     "updatedAt": "2021-07-25T22:29:08.822Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "366390",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "2140266954",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4661",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T13:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4709",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T07:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4710",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T07:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-25T23:03:22.196Z",
     "updatedAt": "2021-07-25T23:03:56.534Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "427591",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "3542764034",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4661",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T13:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4709",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T07:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4710",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T07:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-26T05:56:22.668Z",
     "updatedAt": "2021-07-26T05:57:26.761Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "982746",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "7997950253",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4661",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T13:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4709",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T07:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4710",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T07:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-26T06:18:34.68Z",
     "updatedAt": "2021-07-26T06:22:33.647Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "967769",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "2780308769",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4642",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T17:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-26T06:20:34.68Z",
     "updatedAt": "2021-07-29T10:21:15.237Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "9685",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "5743610916",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4740",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T07:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4697",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T16:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4699",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T12:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4704",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T08:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-26T06:25:34.079Z",
     "updatedAt": "2021-07-31T20:07:11.046Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "272676",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "4831108933",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4661",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T13:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4709",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T07:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4710",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T07:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-26T07:06:12.801Z",
     "updatedAt": "2021-07-26T07:07:30.235Z"
   },
   {
-    "favoriteProgramItemIds": ["p4642"],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "902143",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "2337736355",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": ["p4642"],
     "lotterySignups": [],
-    "directSignups": [],
+    "eventLogItems": [],
     "createdAt": "2021-07-26T08:13:06.835Z",
     "updatedAt": "2021-07-26T15:30:46.57Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "686325",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "4515837294",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4698",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T08:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4697",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T16:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4704",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T08:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-26T08:15:12.113Z",
     "updatedAt": "2021-07-29T16:43:38.394Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "256952",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "4701690044",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4661",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T13:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4709",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T07:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4710",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T07:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-26T08:36:59.479Z",
     "updatedAt": "2021-07-26T08:37:30.07Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "213800",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "9188742895",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [],
+    "eventLogItems": [],
     "createdAt": "2021-07-26T08:37:09.265Z",
     "updatedAt": "2021-07-29T06:05:55.195Z"
   },
   {
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
+    "username": "382838",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "4934282106",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
     "favoriteProgramItemIds": [
       "p4640",
       "p4653",
@@ -374,101 +228,50 @@
       "p4683",
       "p4649"
     ],
-    "username": "382838",
-    "userGroup": "user",
-    "serial": "4934282106",
-    "groupCode": "0",
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4653",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T17:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4685",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T09:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4621",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T12:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4706",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T17:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4683",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T09:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4649",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T17:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-26T11:09:29.647Z",
     "updatedAt": "2021-08-01T08:04:24.935Z"
   },
   {
-    "favoriteProgramItemIds": ["p4601"],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "144226",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "3130034287",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": ["p4601"],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4601",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T17:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-26T11:41:04.717Z",
     "updatedAt": "2021-07-26T11:43:26.107Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "925433",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "1528287871",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4661",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T13:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4709",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T07:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4710",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T07:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-26T13:09:29.379Z",
     "updatedAt": "2021-07-26T13:11:42.231Z"
   },
   {
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
+    "username": "317056",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "2238786418",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
     "favoriteProgramItemIds": [
       "p4694",
       "p4661",
@@ -478,122 +281,95 @@
       "p4709",
       "p4710"
     ],
-    "username": "317056",
-    "userGroup": "user",
-    "serial": "2238786418",
-    "groupCode": "0",
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4661",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T13:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4632",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T12:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4709",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T07:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4710",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T07:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-26T13:40:29.797Z",
     "updatedAt": "2021-07-28T20:13:26.928Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "913536",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "9387609960",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4661",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T13:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4709",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T07:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4710",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T07:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-26T13:48:01.055Z",
     "updatedAt": "2021-07-26T13:49:08.57Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "123333",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "6136641906",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [],
+    "eventLogItems": [],
     "createdAt": "2021-07-26T14:29:52.975Z",
     "updatedAt": "2021-07-30T09:47:43.584Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "693920",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "8743105804",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [],
+    "eventLogItems": [],
     "createdAt": "2021-07-26T14:51:23.23Z",
     "updatedAt": "2021-07-26T16:22:45.343Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "300718",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "6504131548",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [],
+    "eventLogItems": [],
     "createdAt": "2021-07-26T15:01:23.92Z",
     "updatedAt": "2021-07-31T15:07:42.434Z"
   },
   {
-    "favoriteProgramItemIds": ["p4601"],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "126846",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "2243897523",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": ["p4601"],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4601",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T17:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-26T15:10:03.909Z",
     "updatedAt": "2021-07-26T15:11:48.667Z"
   },
   {
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
+    "username": "590995",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "5524683785",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
     "favoriteProgramItemIds": [
       "p4684",
       "p4682",
@@ -602,454 +378,350 @@
       "p4683",
       "p4649"
     ],
-    "username": "590995",
-    "userGroup": "user",
-    "serial": "5524683785",
-    "groupCode": "0",
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4649",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T17:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-26T15:24:53.535Z",
     "updatedAt": "2021-07-26T15:36:59.807Z"
   },
   {
-    "favoriteProgramItemIds": ["p4699"],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "207237",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "2994638431",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": ["p4699"],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4699",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T12:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-26T15:25:01.735Z",
     "updatedAt": "2021-07-26T15:25:56.987Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "427967",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "0082058215",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [],
+    "eventLogItems": [],
     "createdAt": "2021-07-26T15:26:10.803Z",
     "updatedAt": "2021-07-26T17:21:35.604Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "260224",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "5690480982",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4667",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T15:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-26T15:29:34.172Z",
     "updatedAt": "2021-07-26T15:30:09.181Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "782727",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "9729215922",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4654",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T12:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-26T15:56:56.918Z",
     "updatedAt": "2021-07-26T16:21:29.282Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "918030",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "9281770876",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4601",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T17:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4699",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T12:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-26T16:05:45.179Z",
     "updatedAt": "2021-07-29T21:30:03.974Z"
   },
   {
-    "favoriteProgramItemIds": ["p4697", "p4705", "p4695"],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "62182",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "1472320983",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": ["p4697", "p4705", "p4695"],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4697",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T16:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-26T16:08:33.928Z",
     "updatedAt": "2021-07-26T19:06:04.403Z"
   },
   {
-    "favoriteProgramItemIds": ["p4601"],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "462921",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "1956225898",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": ["p4601"],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4601",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T17:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-26T16:24:10.59Z",
     "updatedAt": "2021-07-26T16:26:21.022Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "698857",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "7472575542",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4729",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T07:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4645",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T17:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-26T16:27:36.207Z",
     "updatedAt": "2021-07-26T17:04:03.389Z"
   },
   {
-    "favoriteProgramItemIds": ["p4740", "p4702", "p4701", "p4699"],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "397516",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "0254133739",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": ["p4740", "p4702", "p4701", "p4699"],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4698",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T08:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4705",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T17:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4699",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T12:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4704",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T08:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-26T16:27:55.302Z",
     "updatedAt": "2021-07-30T14:04:01.355Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "512194",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "1055896136",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4656",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T17:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4621",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T12:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4675",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T17:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-26T16:28:48.037Z",
     "updatedAt": "2021-07-29T09:57:19.593Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "28277",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "6932021147",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [],
+    "eventLogItems": [],
     "createdAt": "2021-07-26T17:00:27.896Z",
     "updatedAt": "2021-07-27T07:51:57.678Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "731740",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "4061702314",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4698",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T08:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4706",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T17:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4700",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T17:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-26T17:21:53.506Z",
     "updatedAt": "2021-07-29T03:58:03.426Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "678067",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "7016260841",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4603",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T17:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4656",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T17:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4654",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T12:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-26T17:26:13.282Z",
     "updatedAt": "2021-07-26T17:34:02.549Z"
   },
   {
-    "favoriteProgramItemIds": ["p4684", "p4685", "p4694", "p4621", "p4683"],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "244811",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "2299850020",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": ["p4684", "p4685", "p4694", "p4621", "p4683"],
     "lotterySignups": [],
-    "directSignups": [],
+    "eventLogItems": [],
     "createdAt": "2021-07-26T18:02:15.196Z",
     "updatedAt": "2021-07-26T22:21:46.467Z"
   },
   {
-    "favoriteProgramItemIds": ["p4641"],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "381569",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "1510345778",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": ["p4641"],
     "lotterySignups": [],
-    "directSignups": [],
+    "eventLogItems": [],
     "createdAt": "2021-07-26T18:04:33.275Z",
     "updatedAt": "2021-07-26T19:38:57.519Z"
   },
   {
-    "favoriteProgramItemIds": ["p4653", "p4684", "p4682", "p4675"],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "65249",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "7929139504",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": ["p4653", "p4684", "p4682", "p4675"],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4684",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T15:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4682",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T16:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-26T18:58:03.894Z",
     "updatedAt": "2021-07-27T08:31:21.614Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "46053",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "4411498233",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [],
+    "eventLogItems": [],
     "createdAt": "2021-07-26T19:06:49.712Z",
     "updatedAt": "2021-07-26T19:06:49.712Z"
   },
   {
-    "favoriteProgramItemIds": ["p4703", "p4697", "p4705", "p4704"],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "13452",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "8946915694",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": ["p4703", "p4697", "p4705", "p4704"],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4697",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T16:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4705",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T17:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4704",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T08:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-26T19:25:35.625Z",
     "updatedAt": "2021-07-31T09:18:56.413Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "625517",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "4496212590",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4699",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T12:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-26T19:36:06.95Z",
     "updatedAt": "2021-07-29T14:25:37.404Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "933884",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "6245526873",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [],
+    "eventLogItems": [],
     "createdAt": "2021-07-26T20:06:04.042Z",
     "updatedAt": "2021-07-26T20:06:04.042Z"
   },
   {
-    "favoriteProgramItemIds": ["p4699"],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "159778",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "5812648193",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": ["p4699"],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4706",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T17:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-26T20:26:38.352Z",
     "updatedAt": "2021-07-29T15:07:54.382Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "233043",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "1339737379",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [],
+    "eventLogItems": [],
     "createdAt": "2021-07-26T20:27:07.301Z",
     "updatedAt": "2021-07-26T20:27:07.301Z"
   },
   {
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
+    "username": "372776",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "0474624673",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
     "favoriteProgramItemIds": [
       "p4674",
       "p4652",
@@ -1062,432 +734,290 @@
       "p4641",
       "p4649"
     ],
-    "username": "372776",
-    "userGroup": "user",
-    "serial": "0474624673",
-    "groupCode": "0",
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4667",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T15:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4681",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T12:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4654",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T12:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4639",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T12:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-26T20:29:29.079Z",
     "updatedAt": "2021-07-30T11:29:11.4Z"
   },
   {
-    "favoriteProgramItemIds": ["p4642", "p4601", "p4632"],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "713392",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "4187532934",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": ["p4642", "p4601", "p4632"],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4681",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T12:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4642",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T17:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4632",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T12:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-26T21:13:30.394Z",
     "updatedAt": "2021-07-30T11:54:37.187Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "515641",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "5106074247",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4640",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T13:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-26T21:30:17.533Z",
     "updatedAt": "2021-07-26T21:57:05.933Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "799114",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "8473943028",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [],
+    "eventLogItems": [],
     "createdAt": "2021-07-26T21:31:20.889Z",
     "updatedAt": "2021-07-29T14:42:48.253Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "214767",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "2528990951",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4656",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T17:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4661",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T13:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-26T21:36:28.178Z",
     "updatedAt": "2021-07-28T11:34:10.608Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "436370",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "9229328357",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4702",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T17:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4621",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T12:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4695",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T12:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4706",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T17:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4699",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T12:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-26T22:17:03.506Z",
     "updatedAt": "2021-07-29T09:47:56.724Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "152321",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "7662102024",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [],
+    "eventLogItems": [],
     "createdAt": "2021-07-27T06:32:14.309Z",
     "updatedAt": "2021-07-27T06:32:14.309Z"
   },
   {
-    "favoriteProgramItemIds": ["p4703", "p4706", "p4699", "p4700"],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "110962",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "0697825172",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": ["p4703", "p4706", "p4699", "p4700"],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4703",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T12:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4706",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T17:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4699",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T12:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-27T06:45:37.574Z",
     "updatedAt": "2021-07-31T16:45:04.34Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "503601",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "1354289447",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4694",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T13:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-27T07:37:11.767Z",
     "updatedAt": "2021-07-27T07:39:22.444Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "207890",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "0837281229",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [],
+    "eventLogItems": [],
     "createdAt": "2021-07-27T07:43:26.672Z",
     "updatedAt": "2021-07-27T07:43:26.672Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "11183",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "4037693829",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4740",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T07:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4702",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T17:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4695",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T12:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4699",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T12:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-27T08:06:38.914Z",
     "updatedAt": "2021-07-29T15:06:51.426Z"
   },
   {
-    "favoriteProgramItemIds": ["p4729", "p4691"],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "94793",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "4161048576",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": ["p4729", "p4691"],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4680",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T08:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-27T08:39:27.223Z",
     "updatedAt": "2021-07-28T09:36:47.246Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "345535",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "7901573209",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [],
+    "eventLogItems": [],
     "createdAt": "2021-07-27T08:41:22.843Z",
     "updatedAt": "2021-07-31T21:11:50.874Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "141765",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "3520357934",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [],
+    "eventLogItems": [],
     "createdAt": "2021-07-27T08:42:36.091Z",
     "updatedAt": "2021-07-27T10:01:23.956Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "69106",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "1314833771",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4675",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T17:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-27T10:28:39.325Z",
     "updatedAt": "2021-07-31T07:55:52.346Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "441234",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "5390936796",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4675",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T17:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-27T10:30:50.66Z",
     "updatedAt": "2021-07-28T14:32:55.37Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "241312",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "3366549628",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4632",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T12:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-27T10:33:44.102Z",
     "updatedAt": "2021-07-27T10:35:22.08Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "756483",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "0911343796",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4681",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T12:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4642",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T17:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4701",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T12:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4683",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T09:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-27T14:55:40.627Z",
     "updatedAt": "2021-07-31T13:27:31.199Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "596297",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "5533143862",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4685",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T09:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4681",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T12:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4683",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T09:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-27T15:48:03.913Z",
     "updatedAt": "2021-07-27T16:39:59.991Z"
   },
   {
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
+    "username": "959819",
+    "password": "<redacted>",
+    "userGroup": "user",
+    "serial": "3406042840",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
     "favoriteProgramItemIds": [
       "p4640",
       "p4652",
@@ -1501,1488 +1031,1253 @@
       "p4639",
       "p4649"
     ],
-    "username": "959819",
-    "userGroup": "user",
-    "serial": "3406042840",
-    "groupCode": "0",
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4729",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T07:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4691",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T13:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-27T17:35:16.321Z",
     "updatedAt": "2021-07-29T14:59:48.777Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "528080",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "2551641950",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [],
+    "eventLogItems": [],
     "createdAt": "2021-07-27T20:20:25.991Z",
     "updatedAt": "2021-07-27T20:20:25.991Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "262038",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "1174658094",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [],
+    "eventLogItems": [],
     "createdAt": "2021-07-27T21:02:01.924Z",
     "updatedAt": "2021-07-27T21:02:01.924Z"
   },
   {
-    "favoriteProgramItemIds": ["p4684", "p4685", "p4682", "p4681", "p4683"],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "96057",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "4841180401",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": ["p4684", "p4685", "p4682", "p4681", "p4683"],
     "lotterySignups": [],
-    "directSignups": [],
+    "eventLogItems": [],
     "createdAt": "2021-07-27T22:10:07.733Z",
     "updatedAt": "2021-07-27T22:16:55.465Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "267525",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "0047746664",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4667",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T15:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-28T00:01:31.723Z",
     "updatedAt": "2021-07-28T00:02:12.626Z"
   },
   {
-    "favoriteProgramItemIds": ["p4603", "p4694", "p4656", "p4654"],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "495695",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "2076444286",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": ["p4603", "p4694", "p4656", "p4654"],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4603",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T17:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4656",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T17:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-28T03:05:16.09Z",
     "updatedAt": "2021-08-01T08:45:44.256Z"
   },
   {
-    "favoriteProgramItemIds": ["p4603"],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "238798",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "2012565707",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": ["p4603"],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4603",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T17:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-28T04:53:21.485Z",
     "updatedAt": "2021-07-28T04:53:50.166Z"
   },
   {
-    "favoriteProgramItemIds": ["p4603", "p4656", "p4681", "p4693", "p4675"],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "255965",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "2423162144",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": ["p4603", "p4656", "p4681", "p4693", "p4675"],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4675",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T17:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-28T07:58:14.478Z",
     "updatedAt": "2021-07-31T13:17:00.082Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "361193",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "4309269084",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [],
+    "eventLogItems": [],
     "createdAt": "2021-07-28T09:56:25.136Z",
     "updatedAt": "2021-07-28T09:56:25.136Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "282954",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "0435921788",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [],
+    "eventLogItems": [],
     "createdAt": "2021-07-28T12:22:06.022Z",
     "updatedAt": "2021-07-31T14:15:19.402Z"
   },
   {
-    "favoriteProgramItemIds": ["p4699"],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "934836",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "2839655772",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": ["p4699"],
     "lotterySignups": [],
-    "directSignups": [],
+    "eventLogItems": [],
     "createdAt": "2021-07-28T12:29:51.662Z",
     "updatedAt": "2021-07-29T11:57:12.356Z"
   },
   {
-    "favoriteProgramItemIds": ["p4703", "p4699"],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "359808",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "3472643778",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": ["p4703", "p4699"],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4740",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T07:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4695",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T12:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4700",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T17:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4704",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T08:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-28T12:30:16.137Z",
     "updatedAt": "2021-07-31T13:36:26.344Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "753992",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "4273041006",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4740",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T07:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4698",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T08:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4703",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T12:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4695",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T12:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4700",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T17:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-28T12:34:50.658Z",
     "updatedAt": "2021-07-28T12:53:13.535Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "309608",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "9756876687",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4703",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T12:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-28T13:09:41.784Z",
     "updatedAt": "2021-07-28T13:12:04.071Z"
   },
   {
-    "favoriteProgramItemIds": ["p4701", "p4706", "p4699"],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "319502",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "2015105303",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": ["p4701", "p4706", "p4699"],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4701",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T12:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4706",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T17:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4699",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T12:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-28T14:15:02.855Z",
     "updatedAt": "2021-07-31T22:34:16.935Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "181397",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "4912532647",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4645",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T17:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-28T18:17:47.849Z",
     "updatedAt": "2021-07-28T18:19:34.814Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "329438",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "6573719892",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4740",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T07:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4695",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T12:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-28T18:42:21.755Z",
     "updatedAt": "2021-07-28T18:42:56.408Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "328826",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "5220362932",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [],
+    "eventLogItems": [],
     "createdAt": "2021-07-28T19:12:03.02Z",
     "updatedAt": "2021-07-28T19:12:03.02Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "914040",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "2553083417",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4729",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T07:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4694",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T13:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-28T20:23:28.841Z",
     "updatedAt": "2021-07-28T20:45:48.674Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "813563",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "8319781673",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [],
+    "eventLogItems": [],
     "createdAt": "2021-07-28T20:26:46.251Z",
     "updatedAt": "2021-07-28T20:26:46.251Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "228038",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "1701016659",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [],
+    "eventLogItems": [],
     "createdAt": "2021-07-29T03:55:49.083Z",
     "updatedAt": "2021-07-29T19:34:00.982Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "384480",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "5767300840",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4698",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T08:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4603",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T17:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-29T05:55:16.602Z",
     "updatedAt": "2021-07-31T06:16:19.986Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "687136",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "5369685994",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [],
+    "eventLogItems": [],
     "createdAt": "2021-07-29T05:55:22.246Z",
     "updatedAt": "2021-07-29T05:55:22.246Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "249443",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "8123606298",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4684",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T15:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4710",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T07:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-29T07:07:57.253Z",
     "updatedAt": "2021-07-29T07:14:40.746Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "727232",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "7349373923",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [],
+    "eventLogItems": [],
     "createdAt": "2021-07-29T07:30:55.553Z",
     "updatedAt": "2021-07-29T07:30:55.553Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "847071",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "9596366345",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4682",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T16:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-29T07:50:45.231Z",
     "updatedAt": "2021-07-30T15:03:56.614Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "916885",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "0077029254",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4691",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T13:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-29T08:42:33.794Z",
     "updatedAt": "2021-07-29T08:43:53.266Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "414416",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "4852045097",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4684",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T15:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4705",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T17:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-29T10:12:20.847Z",
     "updatedAt": "2021-07-29T10:32:09.258Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "531004",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "4409914985",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4684",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T15:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-29T10:30:52.833Z",
     "updatedAt": "2021-07-29T10:31:17.867Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "149811",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "1844408847",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4729",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T07:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-29T10:35:51.584Z",
     "updatedAt": "2021-07-29T10:36:09.439Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "606064",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "9758318639",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4684",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T15:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-29T10:40:17.167Z",
     "updatedAt": "2021-07-29T10:44:53.025Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "590124",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "7092992846",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [],
+    "eventLogItems": [],
     "createdAt": "2021-07-29T11:14:04.28Z",
     "updatedAt": "2021-07-29T11:14:04.28Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "49522",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "6339076165",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4653",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T17:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4694",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T13:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4639",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T12:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4683",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T09:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-29T11:16:27.339Z",
     "updatedAt": "2021-07-31T15:10:27.052Z"
   },
   {
-    "favoriteProgramItemIds": ["p4694"],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "364623",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "9240567041",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": ["p4694"],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4601",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T17:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-29T12:09:08.783Z",
     "updatedAt": "2021-07-29T12:18:27.326Z"
   },
   {
-    "favoriteProgramItemIds": ["p4703", "p4699"],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "537034",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "7382347750",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": ["p4703", "p4699"],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4699",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T12:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-29T13:29:05.171Z",
     "updatedAt": "2021-07-31T11:45:01.888Z"
   },
   {
-    "favoriteProgramItemIds": ["p4698", "p4704"],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "925214",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "3939052258",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": ["p4698", "p4704"],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4704",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T08:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-29T13:43:41.613Z",
     "updatedAt": "2021-07-31T07:51:42.939Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "571721",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "4327196749",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4652",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T17:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-29T14:08:47.027Z",
     "updatedAt": "2021-07-29T15:58:39.909Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "577113",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "6353344788",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4702",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T17:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-29T14:11:44.423Z",
     "updatedAt": "2021-07-31T16:31:39.18Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "392916",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "5251826565",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [],
+    "eventLogItems": [],
     "createdAt": "2021-07-29T15:13:13.287Z",
     "updatedAt": "2021-07-29T15:13:13.287Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "444321",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "1635536368",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4682",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T16:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4694",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T13:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4601",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T17:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4693",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T12:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-29T15:15:22.077Z",
     "updatedAt": "2021-07-30T14:43:18.244Z"
   },
   {
-    "favoriteProgramItemIds": ["p4680"],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "512572",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "7505161005",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": ["p4680"],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4680",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T08:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-29T19:22:26.912Z",
     "updatedAt": "2021-07-30T12:01:34.733Z"
   },
   {
-    "favoriteProgramItemIds": ["p4639"],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "399758",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "2910965272",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": ["p4639"],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4639",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T12:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-29T20:21:41.259Z",
     "updatedAt": "2021-07-31T11:59:16.667Z"
   },
   {
-    "favoriteProgramItemIds": ["p4694", "p4693"],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "461672",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "0795409044",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": ["p4694", "p4693"],
     "lotterySignups": [],
-    "directSignups": [],
+    "eventLogItems": [],
     "createdAt": "2021-07-29T20:29:47.045Z",
     "updatedAt": "2021-07-30T15:49:37.274Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "602130",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "2885899381",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [],
+    "eventLogItems": [],
     "createdAt": "2021-07-29T20:46:49.946Z",
     "updatedAt": "2021-07-29T20:46:49.946Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "698428",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "2691745208",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4640",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T13:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4685",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T09:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4667",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T15:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4645",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T17:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4621",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T12:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4639",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T12:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4639",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T12:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-30T04:28:31.287Z",
     "updatedAt": "2021-07-31T09:11:31.775Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "703497",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "1200795175",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [],
+    "eventLogItems": [],
     "createdAt": "2021-07-30T05:04:20.694Z",
     "updatedAt": "2021-07-30T05:04:20.694Z"
   },
   {
-    "favoriteProgramItemIds": ["p4652", "p4693", "p4701"],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "744894",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "9670730986",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": ["p4652", "p4693", "p4701"],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4649",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T17:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-30T09:53:15.929Z",
     "updatedAt": "2021-07-31T15:14:17.834Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "661825",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "8023642518",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [],
+    "eventLogItems": [],
     "createdAt": "2021-07-30T10:03:20.484Z",
     "updatedAt": "2021-07-30T10:03:20.484Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "500952",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "3159396856",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4667",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T15:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-30T10:16:14.396Z",
     "updatedAt": "2021-07-30T10:16:44.319Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "574942",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "8621003774",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4674",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T12:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4640",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T13:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4698",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T08:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4680",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T08:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-30T10:22:59.619Z",
     "updatedAt": "2021-07-30T15:48:32.384Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "433219",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "3269817833",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4682",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T16:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4693",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T12:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-30T10:24:12.681Z",
     "updatedAt": "2021-07-30T11:07:46.295Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "232378",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "0334525045",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [],
+    "eventLogItems": [],
     "createdAt": "2021-07-30T10:32:00.644Z",
     "updatedAt": "2021-07-30T10:32:00.644Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "79289",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "7730830929",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4674",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T12:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4683",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T09:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-30T10:58:42.04Z",
     "updatedAt": "2021-07-30T11:06:14.349Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "698383",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "2004023814",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4680",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T08:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4695",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T12:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4649",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T17:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-30T11:03:23.316Z",
     "updatedAt": "2021-07-30T11:16:45.831Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "883380",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "8049267506",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [],
+    "eventLogItems": [],
     "createdAt": "2021-07-30T11:28:14.83Z",
     "updatedAt": "2021-07-30T11:28:14.83Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "307",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "3277551614",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [],
+    "eventLogItems": [],
     "createdAt": "2021-07-30T11:46:13.87Z",
     "updatedAt": "2021-07-30T11:46:13.87Z"
   },
   {
-    "favoriteProgramItemIds": ["p4653", "p4680", "p4641"],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "956133",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "6238998956",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": ["p4653", "p4680", "p4641"],
     "lotterySignups": [],
-    "directSignups": [],
+    "eventLogItems": [],
     "createdAt": "2021-07-30T11:54:35.522Z",
     "updatedAt": "2021-07-30T11:58:22.852Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "759760",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "4858205935",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4682",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T16:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-30T12:42:52.58Z",
     "updatedAt": "2021-07-30T12:55:09.722Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "195008",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "7458259558",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4642",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T17:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-30T12:44:41.171Z",
     "updatedAt": "2021-07-30T16:50:10.268Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "294898",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "5607872404",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [],
+    "eventLogItems": [],
     "createdAt": "2021-07-30T13:02:38.347Z",
     "updatedAt": "2021-07-30T13:02:38.347Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "277289",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "5496155192",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4697",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T16:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4702",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T17:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4699",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T12:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-30T13:14:58.54Z",
     "updatedAt": "2021-08-01T12:03:01.096Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "537911",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "9526288999",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [],
+    "eventLogItems": [],
     "createdAt": "2021-07-30T13:27:44.139Z",
     "updatedAt": "2021-07-30T13:27:44.139Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "838593",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "3879938474",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [],
+    "eventLogItems": [],
     "createdAt": "2021-07-30T13:28:18.495Z",
     "updatedAt": "2021-07-30T13:28:18.495Z"
   },
   {
-    "favoriteProgramItemIds": ["p4729", "p4694", "p4632", "p4621"],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "104437",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "0152905816",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": ["p4729", "p4694", "p4632", "p4621"],
     "lotterySignups": [],
-    "directSignups": [],
+    "eventLogItems": [],
     "createdAt": "2021-07-30T13:59:34.38Z",
     "updatedAt": "2021-07-30T14:05:47.676Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "157635",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "2074675345",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [],
+    "eventLogItems": [],
     "createdAt": "2021-07-30T14:25:26.326Z",
     "updatedAt": "2021-07-30T14:25:26.326Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "424252",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "5920353645",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4603",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T17:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-30T14:25:32.004Z",
     "updatedAt": "2021-07-30T14:25:58.995Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "790616",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "1644635953",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4680",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T08:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-30T14:34:53.39Z",
     "updatedAt": "2021-07-30T14:35:31.888Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "66044",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "4209928052",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [],
+    "eventLogItems": [],
     "createdAt": "2021-07-30T14:38:08.581Z",
     "updatedAt": "2021-07-30T14:38:08.581Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "456970",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "2014236067",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [],
+    "eventLogItems": [],
     "createdAt": "2021-07-30T14:44:37.322Z",
     "updatedAt": "2021-07-30T14:44:37.322Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "564003",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "9416106822",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [],
+    "eventLogItems": [],
     "createdAt": "2021-07-30T14:44:57.008Z",
     "updatedAt": "2021-07-31T08:55:45.502Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "520582",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "4250368810",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [],
+    "eventLogItems": [],
     "createdAt": "2021-07-30T15:06:23.507Z",
     "updatedAt": "2021-07-30T15:06:23.507Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "904372",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "2341760367",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [],
+    "eventLogItems": [],
     "createdAt": "2021-07-30T15:34:22.164Z",
     "updatedAt": "2021-07-30T15:34:22.164Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "599853",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "2207555356",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4632",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T12:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4699",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T12:00:00Z",
-        "message": ""
-      },
-      {
-        "programItemId": "p4649",
-        "priority": 1,
-        "signedToStartTime": "2021-07-30T17:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-30T15:37:45.722Z",
     "updatedAt": "2021-08-01T11:29:26.264Z"
   },
   {
-    "favoriteProgramItemIds": ["p4703"],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "574585",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "1793265784",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": ["p4703"],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4703",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T12:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-30T16:00:30.553Z",
     "updatedAt": "2021-07-30T16:51:00.566Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "834968",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "8351663441",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [],
+    "eventLogItems": [],
     "createdAt": "2021-07-30T16:16:52.621Z",
     "updatedAt": "2021-07-30T16:16:52.621Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "353088",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "3992041263",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4699",
-        "priority": 1,
-        "signedToStartTime": "2021-07-31T12:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-30T17:01:09.755Z",
     "updatedAt": "2021-07-30T17:02:23.37Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "416347",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "8030451283",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [],
+    "eventLogItems": [],
     "createdAt": "2021-07-30T19:05:53.825Z",
     "updatedAt": "2021-07-31T14:58:24.037Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "813982",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "5946517629",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4701",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T12:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-30T21:33:12.926Z",
     "updatedAt": "2021-07-31T07:59:27.746Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "507241",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "7530707871",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [],
+    "eventLogItems": [],
     "createdAt": "2021-07-31T08:11:34.08Z",
     "updatedAt": "2021-07-31T08:11:34.08Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "368365",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "9227166031",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [],
+    "eventLogItems": [],
     "createdAt": "2021-07-31T17:02:34.015Z",
     "updatedAt": "2021-07-31T17:02:34.015Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "175305",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "1495242396",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4621",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T12:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-31T17:15:24.061Z",
     "updatedAt": "2021-07-31T17:19:14.038Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "827990",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "2276622806",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [
-      {
-        "programItemId": "p4703",
-        "priority": 1,
-        "signedToStartTime": "2021-08-01T12:00:00Z",
-        "message": ""
-      }
-    ],
+    "eventLogItems": [],
     "createdAt": "2021-07-31T18:39:57.437Z",
     "updatedAt": "2021-07-31T18:40:23.597Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "808318",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "5108964270",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [],
+    "eventLogItems": [],
     "createdAt": "2021-07-31T18:46:47.576Z",
     "updatedAt": "2021-08-01T07:39:14.473Z"
   },
   {
-    "favoriteProgramItemIds": [],
+    "kompassiId": 0,
+    "kompassiUsernameAccepted": false,
     "username": "207179",
+    "password": "<redacted>",
     "userGroup": "user",
     "serial": "5578314758",
+    "groupCreatorCode": "0",
     "groupCode": "0",
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
-    "directSignups": [],
+    "eventLogItems": [],
     "createdAt": "2021-08-01T08:27:07.763Z",
     "updatedAt": "2021-08-01T08:27:07.763Z"
   }

@@ -1,9 +1,6 @@
 [
   {
     "programItemId": "p5344",
-    "count": 28,
-    "createdAt": "2022-07-28T17:50:57.929Z",
-    "updatedAt": "2022-07-30T08:50:55.253Z",
     "userSignups": [
       {
         "username": "815795",
@@ -173,13 +170,13 @@
         "signedToStartTime": "2022-07-30T09:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 28,
+    "createdAt": "2022-07-28T17:50:57.929Z",
+    "updatedAt": "2022-07-30T08:50:55.253Z"
   },
   {
     "programItemId": "p5340",
-    "count": 4,
-    "createdAt": "2022-07-29T12:00:47.343Z",
-    "updatedAt": "2022-07-29T20:00:27.189Z",
     "userSignups": [
       {
         "username": "74166",
@@ -205,13 +202,13 @@
         "signedToStartTime": "2022-07-29T13:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 4,
+    "createdAt": "2022-07-29T12:00:47.343Z",
+    "updatedAt": "2022-07-29T20:00:27.189Z"
   },
   {
     "programItemId": "p5422",
-    "count": 3,
-    "createdAt": "2022-07-29T12:01:41.859Z",
-    "updatedAt": "2022-07-29T20:00:27.189Z",
     "userSignups": [
       {
         "username": "31527",
@@ -243,13 +240,13 @@
         "signedToStartTime": "2022-07-29T13:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 3,
+    "createdAt": "2022-07-29T12:01:41.859Z",
+    "updatedAt": "2022-07-29T20:00:27.189Z"
   },
   {
     "programItemId": "p5266",
-    "count": 5,
-    "createdAt": "2022-07-29T12:01:46.023Z",
-    "updatedAt": "2022-07-29T20:00:27.19Z",
     "userSignups": [
       {
         "username": "614684",
@@ -281,13 +278,13 @@
         "signedToStartTime": "2022-07-29T15:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T12:01:46.023Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z"
   },
   {
     "programItemId": "p4867",
-    "count": 5,
-    "createdAt": "2022-07-29T12:01:57.453Z",
-    "updatedAt": "2022-07-29T20:00:27.189Z",
     "userSignups": [
       {
         "username": "110736",
@@ -319,13 +316,13 @@
         "signedToStartTime": "2022-07-29T13:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T12:01:57.453Z",
+    "updatedAt": "2022-07-29T20:00:27.189Z"
   },
   {
     "programItemId": "p5117",
-    "count": 6,
-    "createdAt": "2022-07-29T12:02:12.545Z",
-    "updatedAt": "2022-07-29T20:00:27.189Z",
     "userSignups": [
       {
         "username": "481131",
@@ -363,13 +360,13 @@
         "signedToStartTime": "2022-07-29T13:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 6,
+    "createdAt": "2022-07-29T12:02:12.545Z",
+    "updatedAt": "2022-07-29T20:00:27.189Z"
   },
   {
     "programItemId": "p5113",
-    "count": 3,
-    "createdAt": "2022-07-29T12:02:13.867Z",
-    "updatedAt": "2022-07-29T20:00:27.189Z",
     "userSignups": [
       {
         "username": "487218",
@@ -389,13 +386,13 @@
         "signedToStartTime": "2022-07-29T13:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 3,
+    "createdAt": "2022-07-29T12:02:13.867Z",
+    "updatedAt": "2022-07-29T20:00:27.189Z"
   },
   {
     "programItemId": "p5576",
-    "count": 3,
-    "createdAt": "2022-07-29T12:02:58.942Z",
-    "updatedAt": "2022-07-29T20:00:27.189Z",
     "userSignups": [
       {
         "username": "853239",
@@ -415,13 +412,13 @@
         "signedToStartTime": "2022-07-29T13:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 3,
+    "createdAt": "2022-07-29T12:02:58.942Z",
+    "updatedAt": "2022-07-29T20:00:27.189Z"
   },
   {
     "programItemId": "p4872",
-    "count": 10,
-    "createdAt": "2022-07-29T12:04:02.074Z",
-    "updatedAt": "2022-07-29T20:00:27.19Z",
     "userSignups": [
       {
         "username": "803532",
@@ -483,13 +480,13 @@
         "signedToStartTime": "2022-07-29T17:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 10,
+    "createdAt": "2022-07-29T12:04:02.074Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z"
   },
   {
     "programItemId": "p5691",
-    "count": 2,
-    "createdAt": "2022-07-29T12:04:23.737Z",
-    "updatedAt": "2022-07-30T06:28:39.548Z",
     "userSignups": [
       {
         "username": "899439",
@@ -503,13 +500,13 @@
         "signedToStartTime": "2022-07-30T19:00:00Z",
         "message": "<redacted>"
       }
-    ]
+    ],
+    "count": 2,
+    "createdAt": "2022-07-29T12:04:23.737Z",
+    "updatedAt": "2022-07-30T06:28:39.548Z"
   },
   {
     "programItemId": "p5468",
-    "count": 4,
-    "createdAt": "2022-07-29T12:04:24.041Z",
-    "updatedAt": "2022-07-29T20:00:27.189Z",
     "userSignups": [
       {
         "username": "803532",
@@ -535,13 +532,13 @@
         "signedToStartTime": "2022-07-29T13:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 4,
+    "createdAt": "2022-07-29T12:04:24.041Z",
+    "updatedAt": "2022-07-29T20:00:27.189Z"
   },
   {
     "programItemId": "p5081",
-    "count": 9,
-    "createdAt": "2022-07-29T12:04:26.887Z",
-    "updatedAt": "2022-07-29T20:00:27.188Z",
     "userSignups": [
       {
         "username": "894122",
@@ -597,13 +594,13 @@
         "signedToStartTime": "2022-07-29T13:00:00Z",
         "message": "<redacted>"
       }
-    ]
+    ],
+    "count": 9,
+    "createdAt": "2022-07-29T12:04:26.887Z",
+    "updatedAt": "2022-07-29T20:00:27.188Z"
   },
   {
     "programItemId": "p5519",
-    "count": 6,
-    "createdAt": "2022-07-29T12:05:08.712Z",
-    "updatedAt": "2022-07-29T20:00:27.189Z",
     "userSignups": [
       {
         "username": "178863",
@@ -641,13 +638,13 @@
         "signedToStartTime": "2022-07-29T13:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 6,
+    "createdAt": "2022-07-29T12:05:08.712Z",
+    "updatedAt": "2022-07-29T20:00:27.189Z"
   },
   {
     "programItemId": "p5762",
-    "count": 5,
-    "createdAt": "2022-07-29T12:06:22.32Z",
-    "updatedAt": "2022-07-29T20:00:27.19Z",
     "userSignups": [
       {
         "username": "678277",
@@ -679,13 +676,13 @@
         "signedToStartTime": "2022-07-29T15:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T12:06:22.32Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z"
   },
   {
     "programItemId": "p5668",
-    "count": 7,
-    "createdAt": "2022-07-29T12:06:40.09Z",
-    "updatedAt": "2022-07-29T20:00:27.189Z",
     "userSignups": [
       {
         "username": "685501",
@@ -729,13 +726,13 @@
         "signedToStartTime": "2022-07-29T13:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 7,
+    "createdAt": "2022-07-29T12:06:40.09Z",
+    "updatedAt": "2022-07-29T20:00:27.189Z"
   },
   {
     "programItemId": "p5757",
-    "count": 4,
-    "createdAt": "2022-07-29T12:06:58.482Z",
-    "updatedAt": "2022-07-29T20:00:27.189Z",
     "userSignups": [
       {
         "username": "632831",
@@ -761,13 +758,13 @@
         "signedToStartTime": "2022-07-29T13:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 4,
+    "createdAt": "2022-07-29T12:06:58.482Z",
+    "updatedAt": "2022-07-29T20:00:27.189Z"
   },
   {
     "programItemId": "p5475",
-    "count": 5,
-    "createdAt": "2022-07-29T12:07:44.073Z",
-    "updatedAt": "2022-07-29T20:00:27.189Z",
     "userSignups": [
       {
         "username": "694616",
@@ -799,13 +796,13 @@
         "signedToStartTime": "2022-07-29T13:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T12:07:44.073Z",
+    "updatedAt": "2022-07-29T20:00:27.189Z"
   },
   {
     "programItemId": "p5763",
-    "count": 5,
-    "createdAt": "2022-07-29T12:08:06.608Z",
-    "updatedAt": "2022-07-29T20:00:27.19Z",
     "userSignups": [
       {
         "username": "227127",
@@ -837,13 +834,13 @@
         "signedToStartTime": "2022-07-29T15:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T12:08:06.608Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z"
   },
   {
     "programItemId": "p5662",
-    "count": 5,
-    "createdAt": "2022-07-29T12:15:15.143Z",
-    "updatedAt": "2022-07-29T20:00:27.189Z",
     "userSignups": [
       {
         "username": "614861",
@@ -875,13 +872,13 @@
         "signedToStartTime": "2022-07-29T14:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T12:15:15.143Z",
+    "updatedAt": "2022-07-29T20:00:27.189Z"
   },
   {
     "programItemId": "p5431",
-    "count": 5,
-    "createdAt": "2022-07-29T12:15:18.686Z",
-    "updatedAt": "2022-07-29T20:00:27.189Z",
     "userSignups": [
       {
         "username": "553492",
@@ -913,13 +910,13 @@
         "signedToStartTime": "2022-07-29T14:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T12:15:18.686Z",
+    "updatedAt": "2022-07-29T20:00:27.189Z"
   },
   {
     "programItemId": "p5487",
-    "count": 4,
-    "createdAt": "2022-07-29T12:15:21.804Z",
-    "updatedAt": "2022-07-29T20:00:27.189Z",
     "userSignups": [
       {
         "username": "447167",
@@ -945,13 +942,13 @@
         "signedToStartTime": "2022-07-29T14:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 4,
+    "createdAt": "2022-07-29T12:15:21.804Z",
+    "updatedAt": "2022-07-29T20:00:27.189Z"
   },
   {
     "programItemId": "p5635",
-    "count": 5,
-    "createdAt": "2022-07-29T12:15:24.933Z",
-    "updatedAt": "2022-07-29T20:00:27.19Z",
     "userSignups": [
       {
         "username": "67298",
@@ -983,13 +980,13 @@
         "signedToStartTime": "2022-07-29T14:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T12:15:24.933Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z"
   },
   {
     "programItemId": "p5190",
-    "count": 5,
-    "createdAt": "2022-07-29T12:15:42.18Z",
-    "updatedAt": "2022-07-29T20:00:27.189Z",
     "userSignups": [
       {
         "username": "492558",
@@ -1021,13 +1018,13 @@
         "signedToStartTime": "2022-07-29T14:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T12:15:42.18Z",
+    "updatedAt": "2022-07-29T20:00:27.189Z"
   },
   {
     "programItemId": "p4961",
-    "count": 2,
-    "createdAt": "2022-07-29T12:16:21.726Z",
-    "updatedAt": "2022-07-29T20:00:27.189Z",
     "userSignups": [
       {
         "username": "623335",
@@ -1041,13 +1038,13 @@
         "signedToStartTime": "2022-07-29T14:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 2,
+    "createdAt": "2022-07-29T12:16:21.726Z",
+    "updatedAt": "2022-07-29T20:00:27.189Z"
   },
   {
     "programItemId": "p5587",
-    "count": 4,
-    "createdAt": "2022-07-29T12:21:00.207Z",
-    "updatedAt": "2022-07-29T20:00:27.189Z",
     "userSignups": [
       {
         "username": "62531",
@@ -1073,20 +1070,20 @@
         "signedToStartTime": "2022-07-29T14:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 4,
+    "createdAt": "2022-07-29T12:21:00.207Z",
+    "updatedAt": "2022-07-29T20:00:27.189Z"
   },
   {
     "programItemId": "p5341",
+    "userSignups": [],
     "count": 0,
     "createdAt": "2022-07-29T12:30:21.178Z",
-    "updatedAt": "2022-07-29T20:00:27.189Z",
-    "userSignups": []
+    "updatedAt": "2022-07-29T20:00:27.189Z"
   },
   {
     "programItemId": "p5618",
-    "count": 5,
-    "createdAt": "2022-07-29T12:35:23.245Z",
-    "updatedAt": "2022-07-29T20:00:27.193Z",
     "userSignups": [
       {
         "username": "261587",
@@ -1118,13 +1115,13 @@
         "signedToStartTime": "2022-07-29T14:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T12:35:23.245Z",
+    "updatedAt": "2022-07-29T20:00:27.193Z"
   },
   {
     "programItemId": "p5535",
-    "count": 5,
-    "createdAt": "2022-07-29T12:48:14.223Z",
-    "updatedAt": "2022-07-29T20:00:27.19Z",
     "userSignups": [
       {
         "username": "257154",
@@ -1156,27 +1153,27 @@
         "signedToStartTime": "2022-07-29T14:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T12:48:14.223Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z"
   },
   {
     "programItemId": "p5810",
+    "userSignups": [],
     "count": 0,
     "createdAt": "2022-07-29T12:48:51.817Z",
-    "updatedAt": "2022-07-29T20:00:27.193Z",
-    "userSignups": []
+    "updatedAt": "2022-07-29T20:00:27.193Z"
   },
   {
     "programItemId": "p5464",
+    "userSignups": [],
     "count": 0,
     "createdAt": "2022-07-29T12:48:56.733Z",
-    "updatedAt": "2022-07-29T20:00:27.189Z",
-    "userSignups": []
+    "updatedAt": "2022-07-29T20:00:27.189Z"
   },
   {
     "programItemId": "p5570",
-    "count": 2,
-    "createdAt": "2022-07-29T12:49:00.848Z",
-    "updatedAt": "2022-07-29T23:07:16.666Z",
     "userSignups": [
       {
         "username": "3720",
@@ -1190,13 +1187,13 @@
         "signedToStartTime": "2022-07-30T07:00:00Z",
         "message": "<redacted>"
       }
-    ]
+    ],
+    "count": 2,
+    "createdAt": "2022-07-29T12:49:00.848Z",
+    "updatedAt": "2022-07-29T23:07:16.666Z"
   },
   {
     "programItemId": "p5207",
-    "count": 5,
-    "createdAt": "2022-07-29T12:49:05.626Z",
-    "updatedAt": "2022-07-30T08:41:49.206Z",
     "userSignups": [
       {
         "username": "71725",
@@ -1228,13 +1225,13 @@
         "signedToStartTime": "2022-07-30T09:00:00Z",
         "message": "<redacted>"
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T12:49:05.626Z",
+    "updatedAt": "2022-07-30T08:41:49.206Z"
   },
   {
     "programItemId": "p5465",
-    "count": 7,
-    "createdAt": "2022-07-29T12:49:09.908Z",
-    "updatedAt": "2022-07-30T14:37:23.07Z",
     "userSignups": [
       {
         "username": "681766",
@@ -1278,13 +1275,13 @@
         "signedToStartTime": "2022-07-30T15:00:00Z",
         "message": "<redacted>"
       }
-    ]
+    ],
+    "count": 7,
+    "createdAt": "2022-07-29T12:49:09.908Z",
+    "updatedAt": "2022-07-30T14:37:23.07Z"
   },
   {
     "programItemId": "p5571",
-    "count": 4,
-    "createdAt": "2022-07-29T12:49:17.966Z",
-    "updatedAt": "2022-07-29T23:08:09.307Z",
     "userSignups": [
       {
         "username": "929542",
@@ -1310,13 +1307,13 @@
         "signedToStartTime": "2022-07-31T07:00:00Z",
         "message": "<redacted>"
       }
-    ]
+    ],
+    "count": 4,
+    "createdAt": "2022-07-29T12:49:17.966Z",
+    "updatedAt": "2022-07-29T23:08:09.307Z"
   },
   {
     "programItemId": "p5335",
-    "count": 9,
-    "createdAt": "2022-07-29T12:49:23.43Z",
-    "updatedAt": "2022-07-31T07:51:12.794Z",
     "userSignups": [
       {
         "username": "608036",
@@ -1372,13 +1369,13 @@
         "signedToStartTime": "2022-07-31T08:00:00Z",
         "message": "<redacted>"
       }
-    ]
+    ],
+    "count": 9,
+    "createdAt": "2022-07-29T12:49:23.43Z",
+    "updatedAt": "2022-07-31T07:51:12.794Z"
   },
   {
     "programItemId": "p5825",
-    "count": 30,
-    "createdAt": "2022-07-29T12:50:27.328Z",
-    "updatedAt": "2022-07-30T10:54:46.364Z",
     "userSignups": [
       {
         "username": "24434",
@@ -1560,13 +1557,13 @@
         "signedToStartTime": "2022-07-30T11:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 30,
+    "createdAt": "2022-07-29T12:50:27.328Z",
+    "updatedAt": "2022-07-30T10:54:46.364Z"
   },
   {
     "programItemId": "p5664",
-    "count": 4,
-    "createdAt": "2022-07-29T13:00:11.302Z",
-    "updatedAt": "2022-07-29T20:00:27.19Z",
     "userSignups": [
       {
         "username": "99090",
@@ -1592,13 +1589,13 @@
         "signedToStartTime": "2022-07-29T15:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 4,
+    "createdAt": "2022-07-29T13:00:11.302Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z"
   },
   {
     "programItemId": "p5263",
-    "count": 5,
-    "createdAt": "2022-07-29T13:00:11.309Z",
-    "updatedAt": "2022-07-29T20:00:27.19Z",
     "userSignups": [
       {
         "username": "451394",
@@ -1630,13 +1627,13 @@
         "signedToStartTime": "2022-07-29T15:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T13:00:11.309Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z"
   },
   {
     "programItemId": "p5414",
-    "count": 4,
-    "createdAt": "2022-07-29T13:00:11.312Z",
-    "updatedAt": "2022-07-29T20:00:27.19Z",
     "userSignups": [
       {
         "username": "254323",
@@ -1662,13 +1659,13 @@
         "signedToStartTime": "2022-07-29T15:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 4,
+    "createdAt": "2022-07-29T13:00:11.312Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z"
   },
   {
     "programItemId": "p5620",
-    "count": 5,
-    "createdAt": "2022-07-29T13:15:17.744Z",
-    "updatedAt": "2022-07-29T20:00:27.19Z",
     "userSignups": [
       {
         "username": "296478",
@@ -1700,13 +1697,13 @@
         "signedToStartTime": "2022-07-29T15:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T13:15:17.744Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z"
   },
   {
     "programItemId": "p5088",
-    "count": 4,
-    "createdAt": "2022-07-29T13:15:38.896Z",
-    "updatedAt": "2022-07-29T20:00:27.19Z",
     "userSignups": [
       {
         "username": "418708",
@@ -1732,13 +1729,13 @@
         "signedToStartTime": "2022-07-29T15:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 4,
+    "createdAt": "2022-07-29T13:15:38.896Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z"
   },
   {
     "programItemId": "p5510",
-    "count": 4,
-    "createdAt": "2022-07-29T13:15:56.652Z",
-    "updatedAt": "2022-07-29T20:00:27.19Z",
     "userSignups": [
       {
         "username": "279332",
@@ -1764,13 +1761,13 @@
         "signedToStartTime": "2022-07-29T15:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 4,
+    "createdAt": "2022-07-29T13:15:56.652Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z"
   },
   {
     "programItemId": "p5565",
-    "count": 6,
-    "createdAt": "2022-07-29T14:00:11.428Z",
-    "updatedAt": "2022-07-29T20:00:27.19Z",
     "userSignups": [
       {
         "username": "693202",
@@ -1808,13 +1805,13 @@
         "signedToStartTime": "2022-07-29T16:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 6,
+    "createdAt": "2022-07-29T14:00:11.428Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z"
   },
   {
     "programItemId": "p5630",
-    "count": 8,
-    "createdAt": "2022-07-29T14:00:11.432Z",
-    "updatedAt": "2022-07-29T20:00:27.19Z",
     "userSignups": [
       {
         "username": "849979",
@@ -1864,13 +1861,13 @@
         "signedToStartTime": "2022-07-29T16:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 8,
+    "createdAt": "2022-07-29T14:00:11.432Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z"
   },
   {
     "programItemId": "p5538",
-    "count": 5,
-    "createdAt": "2022-07-29T14:00:11.434Z",
-    "updatedAt": "2022-07-29T20:00:27.19Z",
     "userSignups": [
       {
         "username": "258303",
@@ -1902,13 +1899,13 @@
         "signedToStartTime": "2022-07-29T16:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T14:00:11.434Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z"
   },
   {
     "programItemId": "p5653",
-    "count": 5,
-    "createdAt": "2022-07-29T14:00:11.439Z",
-    "updatedAt": "2022-07-29T20:00:27.19Z",
     "userSignups": [
       {
         "username": "541311",
@@ -1940,13 +1937,13 @@
         "signedToStartTime": "2022-07-29T16:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T14:00:11.439Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z"
   },
   {
     "programItemId": "p5670",
-    "count": 5,
-    "createdAt": "2022-07-29T14:00:11.44Z",
-    "updatedAt": "2022-07-29T20:00:27.19Z",
     "userSignups": [
       {
         "username": "889552",
@@ -1978,13 +1975,13 @@
         "signedToStartTime": "2022-07-29T16:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T14:00:11.44Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z"
   },
   {
     "programItemId": "p5560",
-    "count": 5,
-    "createdAt": "2022-07-29T14:00:11.451Z",
-    "updatedAt": "2022-07-29T20:00:27.19Z",
     "userSignups": [
       {
         "username": "812729",
@@ -2016,13 +2013,13 @@
         "signedToStartTime": "2022-07-29T16:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T14:00:11.451Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z"
   },
   {
     "programItemId": "p5611",
-    "count": 4,
-    "createdAt": "2022-07-29T14:00:11.453Z",
-    "updatedAt": "2022-07-29T20:00:27.19Z",
     "userSignups": [
       {
         "username": "174035",
@@ -2048,13 +2045,13 @@
         "signedToStartTime": "2022-07-29T16:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 4,
+    "createdAt": "2022-07-29T14:00:11.453Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z"
   },
   {
     "programItemId": "p5672",
-    "count": 5,
-    "createdAt": "2022-07-29T14:00:11.46Z",
-    "updatedAt": "2022-07-29T20:00:27.19Z",
     "userSignups": [
       {
         "username": "242785",
@@ -2086,13 +2083,13 @@
         "signedToStartTime": "2022-07-29T16:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T14:00:11.46Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z"
   },
   {
     "programItemId": "p5068",
-    "count": 5,
-    "createdAt": "2022-07-29T15:00:12.526Z",
-    "updatedAt": "2022-07-29T20:00:27.19Z",
     "userSignups": [
       {
         "username": "318047",
@@ -2124,13 +2121,13 @@
         "signedToStartTime": "2022-07-29T17:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T15:00:12.526Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z"
   },
   {
     "programItemId": "p5265",
-    "count": 5,
-    "createdAt": "2022-07-29T15:00:12.531Z",
-    "updatedAt": "2022-07-29T20:00:27.19Z",
     "userSignups": [
       {
         "username": "310202",
@@ -2162,13 +2159,13 @@
         "signedToStartTime": "2022-07-29T17:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T15:00:12.531Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z"
   },
   {
     "programItemId": "p5353",
-    "count": 4,
-    "createdAt": "2022-07-29T15:00:12.54Z",
-    "updatedAt": "2022-07-29T20:00:27.19Z",
     "userSignups": [
       {
         "username": "716711",
@@ -2194,13 +2191,13 @@
         "signedToStartTime": "2022-07-29T17:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 4,
+    "createdAt": "2022-07-29T15:00:12.54Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z"
   },
   {
     "programItemId": "p5536",
-    "count": 5,
-    "createdAt": "2022-07-29T15:00:12.542Z",
-    "updatedAt": "2022-07-29T20:00:27.19Z",
     "userSignups": [
       {
         "username": "810395",
@@ -2232,13 +2229,13 @@
         "signedToStartTime": "2022-07-29T17:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T15:00:12.542Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z"
   },
   {
     "programItemId": "p5474",
-    "count": 5,
-    "createdAt": "2022-07-29T15:00:12.545Z",
-    "updatedAt": "2022-07-29T20:00:27.19Z",
     "userSignups": [
       {
         "username": "530101",
@@ -2270,13 +2267,13 @@
         "signedToStartTime": "2022-07-29T17:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T15:00:12.545Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z"
   },
   {
     "programItemId": "p5755",
-    "count": 5,
-    "createdAt": "2022-07-29T15:00:12.551Z",
-    "updatedAt": "2022-07-29T20:00:27.19Z",
     "userSignups": [
       {
         "username": "935278",
@@ -2308,13 +2305,13 @@
         "signedToStartTime": "2022-07-29T17:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T15:00:12.551Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z"
   },
   {
     "programItemId": "p5459",
-    "count": 5,
-    "createdAt": "2022-07-29T15:00:12.557Z",
-    "updatedAt": "2022-07-29T20:00:27.19Z",
     "userSignups": [
       {
         "username": "454383",
@@ -2346,20 +2343,20 @@
         "signedToStartTime": "2022-07-29T17:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T15:00:12.557Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z"
   },
   {
     "programItemId": "p5342",
+    "userSignups": [],
     "count": 0,
     "createdAt": "2022-07-29T15:00:12.562Z",
-    "updatedAt": "2022-07-29T20:00:27.19Z",
-    "userSignups": []
+    "updatedAt": "2022-07-29T20:00:27.19Z"
   },
   {
     "programItemId": "p5657",
-    "count": 5,
-    "createdAt": "2022-07-29T15:00:12.569Z",
-    "updatedAt": "2022-07-29T20:00:27.19Z",
     "userSignups": [
       {
         "username": "226189",
@@ -2391,13 +2388,13 @@
         "signedToStartTime": "2022-07-29T17:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T15:00:12.569Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z"
   },
   {
     "programItemId": "p5643",
-    "count": 8,
-    "createdAt": "2022-07-29T15:00:14.728Z",
-    "updatedAt": "2022-07-30T10:25:27.669Z",
     "userSignups": [
       {
         "username": "964196",
@@ -2447,13 +2444,13 @@
         "signedToStartTime": "2022-07-30T12:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 8,
+    "createdAt": "2022-07-29T15:00:14.728Z",
+    "updatedAt": "2022-07-30T10:25:27.669Z"
   },
   {
     "programItemId": "p5354",
-    "count": 26,
-    "createdAt": "2022-07-29T15:00:15.901Z",
-    "updatedAt": "2022-07-30T10:53:54.094Z",
     "userSignups": [
       {
         "username": "227127",
@@ -2611,13 +2608,13 @@
         "signedToStartTime": "2022-07-30T11:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 26,
+    "createdAt": "2022-07-29T15:00:15.901Z",
+    "updatedAt": "2022-07-30T10:53:54.094Z"
   },
   {
     "programItemId": "p5158",
-    "count": 7,
-    "createdAt": "2022-07-29T15:00:36.055Z",
-    "updatedAt": "2022-07-30T06:53:21.868Z",
     "userSignups": [
       {
         "username": "660728",
@@ -2661,13 +2658,13 @@
         "signedToStartTime": "2022-07-30T07:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 7,
+    "createdAt": "2022-07-29T15:00:36.055Z",
+    "updatedAt": "2022-07-30T06:53:21.868Z"
   },
   {
     "programItemId": "p4878",
-    "count": 3,
-    "createdAt": "2022-07-29T15:18:42.198Z",
-    "updatedAt": "2022-07-30T06:56:29.228Z",
     "userSignups": [
       {
         "username": "711547",
@@ -2687,13 +2684,13 @@
         "signedToStartTime": "2022-07-30T07:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 3,
+    "createdAt": "2022-07-29T15:18:42.198Z",
+    "updatedAt": "2022-07-30T06:56:29.228Z"
   },
   {
     "programItemId": "p5843",
-    "count": 4,
-    "createdAt": "2022-07-29T15:55:43.286Z",
-    "updatedAt": "2022-07-29T20:00:27.193Z",
     "userSignups": [
       {
         "username": "548268",
@@ -2719,13 +2716,13 @@
         "signedToStartTime": "2022-07-29T17:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 4,
+    "createdAt": "2022-07-29T15:55:43.286Z",
+    "updatedAt": "2022-07-29T20:00:27.193Z"
   },
   {
     "programItemId": "p5665",
-    "count": 3,
-    "createdAt": "2022-07-29T16:00:12.108Z",
-    "updatedAt": "2022-07-29T20:00:27.192Z",
     "userSignups": [
       {
         "username": "345148",
@@ -2745,13 +2742,13 @@
         "signedToStartTime": "2022-07-29T18:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 3,
+    "createdAt": "2022-07-29T16:00:12.108Z",
+    "updatedAt": "2022-07-29T20:00:27.192Z"
   },
   {
     "programItemId": "p5640",
-    "count": 5,
-    "createdAt": "2022-07-29T16:00:12.118Z",
-    "updatedAt": "2022-07-29T20:00:27.19Z",
     "userSignups": [
       {
         "username": "722229",
@@ -2783,13 +2780,13 @@
         "signedToStartTime": "2022-07-29T18:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T16:00:12.118Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z"
   },
   {
     "programItemId": "p5467",
-    "count": 5,
-    "createdAt": "2022-07-29T16:00:12.119Z",
-    "updatedAt": "2022-07-29T20:00:27.19Z",
     "userSignups": [
       {
         "username": "558898",
@@ -2821,13 +2818,13 @@
         "signedToStartTime": "2022-07-29T18:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T16:00:12.119Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z"
   },
   {
     "programItemId": "p5334",
-    "count": 4,
-    "createdAt": "2022-07-29T16:00:12.121Z",
-    "updatedAt": "2022-07-29T20:00:27.19Z",
     "userSignups": [
       {
         "username": "660141",
@@ -2853,13 +2850,13 @@
         "signedToStartTime": "2022-07-29T18:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 4,
+    "createdAt": "2022-07-29T16:00:12.121Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z"
   },
   {
     "programItemId": "p5673",
-    "count": 4,
-    "createdAt": "2022-07-29T16:00:12.122Z",
-    "updatedAt": "2022-07-29T20:00:27.19Z",
     "userSignups": [
       {
         "username": "621110",
@@ -2885,13 +2882,13 @@
         "signedToStartTime": "2022-07-29T18:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 4,
+    "createdAt": "2022-07-29T16:00:12.122Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z"
   },
   {
     "programItemId": "p5524",
-    "count": 4,
-    "createdAt": "2022-07-29T16:00:12.123Z",
-    "updatedAt": "2022-07-29T20:00:27.19Z",
     "userSignups": [
       {
         "username": "336070",
@@ -2917,13 +2914,13 @@
         "signedToStartTime": "2022-07-29T18:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 4,
+    "createdAt": "2022-07-29T16:00:12.123Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z"
   },
   {
     "programItemId": "p5609",
-    "count": 5,
-    "createdAt": "2022-07-29T16:00:12.124Z",
-    "updatedAt": "2022-07-29T20:00:27.19Z",
     "userSignups": [
       {
         "username": "691237",
@@ -2955,13 +2952,13 @@
         "signedToStartTime": "2022-07-29T18:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T16:00:12.124Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z"
   },
   {
     "programItemId": "p5845",
-    "count": 4,
-    "createdAt": "2022-07-29T16:20:14.171Z",
-    "updatedAt": "2022-07-29T20:00:27.193Z",
     "userSignups": [
       {
         "username": "960198",
@@ -2987,13 +2984,13 @@
         "signedToStartTime": "2022-07-29T17:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 4,
+    "createdAt": "2022-07-29T16:20:14.171Z",
+    "updatedAt": "2022-07-29T20:00:27.193Z"
   },
   {
     "programItemId": "p5622",
-    "count": 5,
-    "createdAt": "2022-07-29T17:00:11.716Z",
-    "updatedAt": "2022-07-29T20:00:27.19Z",
     "userSignups": [
       {
         "username": "178863",
@@ -3025,13 +3022,13 @@
         "signedToStartTime": "2022-07-29T19:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T17:00:11.716Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z"
   },
   {
     "programItemId": "p5396",
-    "count": 4,
-    "createdAt": "2022-07-29T17:00:11.756Z",
-    "updatedAt": "2022-07-29T20:00:27.19Z",
     "userSignups": [
       {
         "username": "808095",
@@ -3057,13 +3054,13 @@
         "signedToStartTime": "2022-07-29T19:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 4,
+    "createdAt": "2022-07-29T17:00:11.756Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z"
   },
   {
     "programItemId": "p5064",
-    "count": 6,
-    "createdAt": "2022-07-29T17:00:11.759Z",
-    "updatedAt": "2022-07-29T20:00:27.19Z",
     "userSignups": [
       {
         "username": "861953",
@@ -3101,13 +3098,13 @@
         "signedToStartTime": "2022-07-29T19:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 6,
+    "createdAt": "2022-07-29T17:00:11.759Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z"
   },
   {
     "programItemId": "p5844",
-    "count": 4,
-    "createdAt": "2022-07-29T17:00:11.76Z",
-    "updatedAt": "2022-07-29T20:00:27.193Z",
     "userSignups": [
       {
         "username": "397388",
@@ -3133,13 +3130,13 @@
         "signedToStartTime": "2022-07-29T19:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 4,
+    "createdAt": "2022-07-29T17:00:11.76Z",
+    "updatedAt": "2022-07-29T20:00:27.193Z"
   },
   {
     "programItemId": "p5047",
-    "count": 5,
-    "createdAt": "2022-07-29T17:00:11.761Z",
-    "updatedAt": "2022-07-29T20:00:27.191Z",
     "userSignups": [
       {
         "username": "616310",
@@ -3171,13 +3168,13 @@
         "signedToStartTime": "2022-07-29T19:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T17:00:11.761Z",
+    "updatedAt": "2022-07-29T20:00:27.191Z"
   },
   {
     "programItemId": "p4956",
-    "count": 5,
-    "createdAt": "2022-07-29T17:00:11.765Z",
-    "updatedAt": "2022-07-29T20:00:27.19Z",
     "userSignups": [
       {
         "username": "268489",
@@ -3209,13 +3206,13 @@
         "signedToStartTime": "2022-07-29T19:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T17:00:11.765Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z"
   },
   {
     "programItemId": "p5727",
-    "count": 8,
-    "createdAt": "2022-07-29T19:00:11.249Z",
-    "updatedAt": "2022-07-29T20:11:45.635Z",
     "userSignups": [
       {
         "username": "553492",
@@ -3265,48 +3262,48 @@
         "signedToStartTime": "2022-07-29T21:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 8,
+    "createdAt": "2022-07-29T19:00:11.249Z",
+    "updatedAt": "2022-07-29T20:11:45.635Z"
   },
   {
     "programItemId": "p5659",
+    "userSignups": [],
     "count": 0,
     "createdAt": "2022-07-29T20:00:27.189Z",
-    "updatedAt": "2022-07-29T20:00:27.189Z",
-    "userSignups": []
+    "updatedAt": "2022-07-29T20:00:27.189Z"
   },
   {
     "programItemId": "p5644",
+    "userSignups": [],
     "count": 0,
     "createdAt": "2022-07-29T20:00:27.189Z",
-    "updatedAt": "2022-07-29T20:00:27.189Z",
-    "userSignups": []
+    "updatedAt": "2022-07-29T20:00:27.189Z"
   },
   {
     "programItemId": "p5753",
+    "userSignups": [],
     "count": 0,
     "createdAt": "2022-07-29T20:00:27.189Z",
-    "updatedAt": "2022-07-29T20:00:27.189Z",
-    "userSignups": []
+    "updatedAt": "2022-07-29T20:00:27.189Z"
   },
   {
     "programItemId": "p5548",
+    "userSignups": [],
     "count": 0,
     "createdAt": "2022-07-29T20:00:27.189Z",
-    "updatedAt": "2022-07-29T20:00:27.189Z",
-    "userSignups": []
+    "updatedAt": "2022-07-29T20:00:27.189Z"
   },
   {
     "programItemId": "p5549",
+    "userSignups": [],
     "count": 0,
     "createdAt": "2022-07-29T20:00:27.19Z",
-    "updatedAt": "2022-07-29T20:00:27.19Z",
-    "userSignups": []
+    "updatedAt": "2022-07-29T20:00:27.19Z"
   },
   {
     "programItemId": "p5671",
-    "count": 4,
-    "createdAt": "2022-07-29T20:00:27.19Z",
-    "updatedAt": "2022-07-30T12:00:23.593Z",
     "userSignups": [
       {
         "username": "396128",
@@ -3332,20 +3329,20 @@
         "signedToStartTime": "2022-07-30T14:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.19Z",
+    "updatedAt": "2022-07-30T12:00:23.593Z"
   },
   {
     "programItemId": "p4874",
+    "userSignups": [],
     "count": 0,
     "createdAt": "2022-07-29T20:00:27.19Z",
-    "updatedAt": "2022-07-29T20:00:27.19Z",
-    "userSignups": []
+    "updatedAt": "2022-07-29T20:00:27.19Z"
   },
   {
     "programItemId": "p5220",
-    "count": 6,
-    "createdAt": "2022-07-29T20:00:27.19Z",
-    "updatedAt": "2022-07-30T05:00:15.708Z",
     "userSignups": [
       {
         "username": "378051",
@@ -3383,34 +3380,34 @@
         "signedToStartTime": "2022-07-30T07:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 6,
+    "createdAt": "2022-07-29T20:00:27.19Z",
+    "updatedAt": "2022-07-30T05:00:15.708Z"
   },
   {
     "programItemId": "p5646",
+    "userSignups": [],
     "count": 0,
     "createdAt": "2022-07-29T20:00:27.19Z",
-    "updatedAt": "2022-07-29T20:00:27.19Z",
-    "userSignups": []
+    "updatedAt": "2022-07-29T20:00:27.19Z"
   },
   {
     "programItemId": "p5438",
+    "userSignups": [],
     "count": 0,
     "createdAt": "2022-07-29T20:00:27.19Z",
-    "updatedAt": "2022-07-29T20:00:27.19Z",
-    "userSignups": []
+    "updatedAt": "2022-07-29T20:00:27.19Z"
   },
   {
     "programItemId": "p5352",
+    "userSignups": [],
     "count": 0,
     "createdAt": "2022-07-29T20:00:27.19Z",
-    "updatedAt": "2022-07-29T20:00:27.19Z",
-    "userSignups": []
+    "updatedAt": "2022-07-29T20:00:27.19Z"
   },
   {
     "programItemId": "p5677",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.19Z",
-    "updatedAt": "2022-07-30T06:14:18.189Z",
     "userSignups": [
       {
         "username": "485147",
@@ -3442,20 +3439,20 @@
         "signedToStartTime": "2022-07-30T07:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.19Z",
+    "updatedAt": "2022-07-30T06:14:18.189Z"
   },
   {
     "programItemId": "p5660",
+    "userSignups": [],
     "count": 0,
     "createdAt": "2022-07-29T20:00:27.19Z",
-    "updatedAt": "2022-07-29T20:00:27.19Z",
-    "userSignups": []
+    "updatedAt": "2022-07-29T20:00:27.19Z"
   },
   {
     "programItemId": "p5118",
-    "count": 6,
-    "createdAt": "2022-07-29T20:00:27.19Z",
-    "updatedAt": "2022-07-30T05:00:15.728Z",
     "userSignups": [
       {
         "username": "708333",
@@ -3493,13 +3490,13 @@
         "signedToStartTime": "2022-07-30T07:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 6,
+    "createdAt": "2022-07-29T20:00:27.19Z",
+    "updatedAt": "2022-07-30T05:00:15.728Z"
   },
   {
     "programItemId": "p5567",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.19Z",
-    "updatedAt": "2022-07-30T05:00:15.683Z",
     "userSignups": [
       {
         "username": "288827",
@@ -3531,13 +3528,13 @@
         "signedToStartTime": "2022-07-30T07:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.19Z",
+    "updatedAt": "2022-07-30T05:00:15.683Z"
   },
   {
     "programItemId": "p5171",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.19Z",
-    "updatedAt": "2022-07-30T05:00:15.721Z",
     "userSignups": [
       {
         "username": "74166",
@@ -3569,13 +3566,13 @@
         "signedToStartTime": "2022-07-30T07:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.19Z",
+    "updatedAt": "2022-07-30T05:00:15.721Z"
   },
   {
     "programItemId": "p4850",
-    "count": 4,
-    "createdAt": "2022-07-29T20:00:27.19Z",
-    "updatedAt": "2022-07-30T06:03:37.777Z",
     "userSignups": [
       {
         "username": "212089",
@@ -3607,13 +3604,13 @@
         "signedToStartTime": "2022-07-30T07:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.19Z",
+    "updatedAt": "2022-07-30T06:03:37.777Z"
   },
   {
     "programItemId": "p4962",
-    "count": 4,
-    "createdAt": "2022-07-29T20:00:27.19Z",
-    "updatedAt": "2022-07-30T06:56:46.064Z",
     "userSignups": [
       {
         "username": "553492",
@@ -3639,13 +3636,13 @@
         "signedToStartTime": "2022-07-30T07:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.19Z",
+    "updatedAt": "2022-07-30T06:56:46.064Z"
   },
   {
     "programItemId": "p5675",
-    "count": 4,
-    "createdAt": "2022-07-29T20:00:27.19Z",
-    "updatedAt": "2022-07-30T05:00:15.726Z",
     "userSignups": [
       {
         "username": "528877",
@@ -3671,13 +3668,13 @@
         "signedToStartTime": "2022-07-30T07:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.19Z",
+    "updatedAt": "2022-07-30T05:00:15.726Z"
   },
   {
     "programItemId": "p5575",
-    "count": 4,
-    "createdAt": "2022-07-29T20:00:27.19Z",
-    "updatedAt": "2022-07-30T05:46:06.921Z",
     "userSignups": [
       {
         "username": "264714",
@@ -3703,13 +3700,13 @@
         "signedToStartTime": "2022-07-30T07:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.19Z",
+    "updatedAt": "2022-07-30T05:46:06.921Z"
   },
   {
     "programItemId": "p5395",
-    "count": 3,
-    "createdAt": "2022-07-29T20:00:27.19Z",
-    "updatedAt": "2022-07-30T05:56:11.123Z",
     "userSignups": [
       {
         "username": "552980",
@@ -3729,13 +3726,13 @@
         "signedToStartTime": "2022-07-30T07:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 3,
+    "createdAt": "2022-07-29T20:00:27.19Z",
+    "updatedAt": "2022-07-30T05:56:11.123Z"
   },
   {
     "programItemId": "p5579",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.19Z",
-    "updatedAt": "2022-07-30T05:00:15.705Z",
     "userSignups": [
       {
         "username": "269997",
@@ -3767,13 +3764,13 @@
         "signedToStartTime": "2022-07-30T07:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.19Z",
+    "updatedAt": "2022-07-30T05:00:15.705Z"
   },
   {
     "programItemId": "p5580",
-    "count": 4,
-    "createdAt": "2022-07-29T20:00:27.191Z",
-    "updatedAt": "2022-07-30T05:32:15.864Z",
     "userSignups": [
       {
         "username": "230368",
@@ -3799,13 +3796,13 @@
         "signedToStartTime": "2022-07-30T07:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T05:32:15.864Z"
   },
   {
     "programItemId": "p5666",
-    "count": 4,
-    "createdAt": "2022-07-29T20:00:27.19Z",
-    "updatedAt": "2022-07-30T05:00:15.711Z",
     "userSignups": [
       {
         "username": "280564",
@@ -3831,20 +3828,20 @@
         "signedToStartTime": "2022-07-30T07:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.19Z",
+    "updatedAt": "2022-07-30T05:00:15.711Z"
   },
   {
     "programItemId": "p5754",
+    "userSignups": [],
     "count": 0,
     "createdAt": "2022-07-29T20:00:27.191Z",
-    "updatedAt": "2022-07-29T20:00:27.191Z",
-    "userSignups": []
+    "updatedAt": "2022-07-29T20:00:27.191Z"
   },
   {
     "programItemId": "p5749",
-    "count": 6,
-    "createdAt": "2022-07-29T20:00:27.191Z",
-    "updatedAt": "2022-07-30T06:53:20.677Z",
     "userSignups": [
       {
         "username": "715305",
@@ -3882,13 +3879,13 @@
         "signedToStartTime": "2022-07-30T07:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 6,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T06:53:20.677Z"
   },
   {
     "programItemId": "p5477",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.191Z",
-    "updatedAt": "2022-07-30T05:00:15.72Z",
     "userSignups": [
       {
         "username": "908989",
@@ -3920,20 +3917,20 @@
         "signedToStartTime": "2022-07-30T07:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T05:00:15.72Z"
   },
   {
     "programItemId": "p5550",
+    "userSignups": [],
     "count": 0,
     "createdAt": "2022-07-29T20:00:27.191Z",
-    "updatedAt": "2022-07-29T20:00:27.191Z",
-    "userSignups": []
+    "updatedAt": "2022-07-29T20:00:27.191Z"
   },
   {
     "programItemId": "p5629",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.191Z",
-    "updatedAt": "2022-07-30T06:18:37.429Z",
     "userSignups": [
       {
         "username": "22255",
@@ -3965,13 +3962,13 @@
         "signedToStartTime": "2022-07-30T08:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T06:18:37.429Z"
   },
   {
     "programItemId": "p5608",
-    "count": 7,
-    "createdAt": "2022-07-29T20:00:27.191Z",
-    "updatedAt": "2022-07-30T06:51:43.908Z",
     "userSignups": [
       {
         "username": "394278",
@@ -4015,13 +4012,13 @@
         "signedToStartTime": "2022-07-30T08:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 7,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T06:51:43.908Z"
   },
   {
     "programItemId": "p5288",
-    "count": 3,
-    "createdAt": "2022-07-29T20:00:27.191Z",
-    "updatedAt": "2022-07-30T07:55:16.589Z",
     "userSignups": [
       {
         "username": "716711",
@@ -4041,13 +4038,13 @@
         "signedToStartTime": "2022-07-30T08:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 3,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T07:55:16.589Z"
   },
   {
     "programItemId": "p4847",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.191Z",
-    "updatedAt": "2022-07-30T06:00:13.394Z",
     "userSignups": [
       {
         "username": "474050",
@@ -4079,13 +4076,13 @@
         "signedToStartTime": "2022-07-30T08:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T06:00:13.394Z"
   },
   {
     "programItemId": "p5588",
-    "count": 4,
-    "createdAt": "2022-07-29T20:00:27.191Z",
-    "updatedAt": "2022-07-30T08:57:12.88Z",
     "userSignups": [
       {
         "username": "18808",
@@ -4111,13 +4108,13 @@
         "signedToStartTime": "2022-07-30T09:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T08:57:12.88Z"
   },
   {
     "programItemId": "p5551",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.191Z",
-    "updatedAt": "2022-07-30T07:50:05.163Z",
     "userSignups": [
       {
         "username": "745132",
@@ -4149,13 +4146,13 @@
         "signedToStartTime": "2022-07-30T08:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T07:50:05.163Z"
   },
   {
     "programItemId": "p5415",
-    "count": 4,
-    "createdAt": "2022-07-29T20:00:27.191Z",
-    "updatedAt": "2022-07-30T07:05:19.805Z",
     "userSignups": [
       {
         "username": "523433",
@@ -4181,13 +4178,13 @@
         "signedToStartTime": "2022-07-30T08:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T07:05:19.805Z"
   },
   {
     "programItemId": "p5391",
-    "count": 4,
-    "createdAt": "2022-07-29T20:00:27.191Z",
-    "updatedAt": "2022-07-30T07:15:25.091Z",
     "userSignups": [
       {
         "username": "543710",
@@ -4213,13 +4210,13 @@
         "signedToStartTime": "2022-07-30T09:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T07:15:25.091Z"
   },
   {
     "programItemId": "p5429",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.191Z",
-    "updatedAt": "2022-07-30T07:00:13.812Z",
     "userSignups": [
       {
         "username": "545873",
@@ -4251,13 +4248,13 @@
         "signedToStartTime": "2022-07-30T09:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T07:00:13.812Z"
   },
   {
     "programItemId": "p5192",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.191Z",
-    "updatedAt": "2022-07-30T07:00:13.822Z",
     "userSignups": [
       {
         "username": "860318",
@@ -4289,13 +4286,13 @@
         "signedToStartTime": "2022-07-30T09:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T07:00:13.822Z"
   },
   {
     "programItemId": "p5231",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.191Z",
-    "updatedAt": "2022-07-30T08:11:32.055Z",
     "userSignups": [
       {
         "username": "968308",
@@ -4327,13 +4324,13 @@
         "signedToStartTime": "2022-07-30T09:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T08:11:32.055Z"
   },
   {
     "programItemId": "p5624",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.191Z",
-    "updatedAt": "2022-07-30T08:15:17.258Z",
     "userSignups": [
       {
         "username": "364796",
@@ -4365,13 +4362,13 @@
         "signedToStartTime": "2022-07-30T10:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T08:15:17.258Z"
   },
   {
     "programItemId": "p5652",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.191Z",
-    "updatedAt": "2022-07-30T08:00:15.595Z",
     "userSignups": [
       {
         "username": "442271",
@@ -4403,20 +4400,20 @@
         "signedToStartTime": "2022-07-30T10:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T08:00:15.595Z"
   },
   {
     "programItemId": "p5552",
+    "userSignups": [],
     "count": 0,
     "createdAt": "2022-07-29T20:00:27.191Z",
-    "updatedAt": "2022-07-29T20:00:27.191Z",
-    "userSignups": []
+    "updatedAt": "2022-07-29T20:00:27.191Z"
   },
   {
     "programItemId": "p5486",
-    "count": 4,
-    "createdAt": "2022-07-29T20:00:27.191Z",
-    "updatedAt": "2022-07-30T08:00:15.586Z",
     "userSignups": [
       {
         "username": "451394",
@@ -4442,13 +4439,13 @@
         "signedToStartTime": "2022-07-30T10:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T08:00:15.586Z"
   },
   {
     "programItemId": "p5574",
-    "count": 8,
-    "createdAt": "2022-07-29T20:00:27.191Z",
-    "updatedAt": "2022-07-30T08:00:15.587Z",
     "userSignups": [
       {
         "username": "797904",
@@ -4498,13 +4495,13 @@
         "signedToStartTime": "2022-07-30T10:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 8,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T08:00:15.587Z"
   },
   {
     "programItemId": "p5723",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.191Z",
-    "updatedAt": "2022-07-30T09:48:03.404Z",
     "userSignups": [
       {
         "username": "369551",
@@ -4536,13 +4533,13 @@
         "signedToStartTime": "2022-07-30T10:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T09:48:03.404Z"
   },
   {
     "programItemId": "p5598",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.191Z",
-    "updatedAt": "2022-07-30T08:00:15.59Z",
     "userSignups": [
       {
         "username": "529456",
@@ -4574,13 +4571,13 @@
         "signedToStartTime": "2022-07-30T10:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T08:00:15.59Z"
   },
   {
     "programItemId": "p5530",
-    "count": 6,
-    "createdAt": "2022-07-29T20:00:27.191Z",
-    "updatedAt": "2022-07-30T09:00:17.302Z",
     "userSignups": [
       {
         "username": "323506",
@@ -4618,13 +4615,13 @@
         "signedToStartTime": "2022-07-30T11:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 6,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T09:00:17.302Z"
   },
   {
     "programItemId": "p5181",
-    "count": 1,
-    "createdAt": "2022-07-29T20:00:27.191Z",
-    "updatedAt": "2022-07-30T10:59:14.557Z",
     "userSignups": [
       {
         "username": "57295",
@@ -4632,13 +4629,13 @@
         "signedToStartTime": "2022-07-30T11:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 1,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T10:59:14.557Z"
   },
   {
     "programItemId": "p5627",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.191Z",
-    "updatedAt": "2022-07-30T09:35:59.603Z",
     "userSignups": [
       {
         "username": "538587",
@@ -4670,13 +4667,13 @@
         "signedToStartTime": "2022-07-30T11:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T09:35:59.603Z"
   },
   {
     "programItemId": "p5451",
-    "count": 3,
-    "createdAt": "2022-07-29T20:00:27.191Z",
-    "updatedAt": "2022-07-30T10:43:27.985Z",
     "userSignups": [
       {
         "username": "492558",
@@ -4696,13 +4693,13 @@
         "signedToStartTime": "2022-07-30T11:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 3,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T10:43:27.985Z"
   },
   {
     "programItemId": "p5531",
-    "count": 6,
-    "createdAt": "2022-07-29T20:00:27.191Z",
-    "updatedAt": "2022-07-30T10:43:56.477Z",
     "userSignups": [
       {
         "username": "963935",
@@ -4740,13 +4737,13 @@
         "signedToStartTime": "2022-07-30T11:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 6,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T10:43:56.477Z"
   },
   {
     "programItemId": "p5546",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.191Z",
-    "updatedAt": "2022-07-30T09:00:17.3Z",
     "userSignups": [
       {
         "username": "910499",
@@ -4778,13 +4775,13 @@
         "signedToStartTime": "2022-07-30T11:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T09:00:17.3Z"
   },
   {
     "programItemId": "p5114",
-    "count": 4,
-    "createdAt": "2022-07-29T20:00:27.191Z",
-    "updatedAt": "2022-07-30T10:27:38.438Z",
     "userSignups": [
       {
         "username": "657703",
@@ -4810,27 +4807,27 @@
         "signedToStartTime": "2022-07-30T11:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T10:27:38.438Z"
   },
   {
     "programItemId": "p5561",
+    "userSignups": [],
     "count": 0,
     "createdAt": "2022-07-29T20:00:27.191Z",
-    "updatedAt": "2022-07-29T20:00:27.191Z",
-    "userSignups": []
+    "updatedAt": "2022-07-29T20:00:27.191Z"
   },
   {
     "programItemId": "p5553",
+    "userSignups": [],
     "count": 0,
     "createdAt": "2022-07-29T20:00:27.191Z",
-    "updatedAt": "2022-07-29T20:00:27.191Z",
-    "userSignups": []
+    "updatedAt": "2022-07-29T20:00:27.191Z"
   },
   {
     "programItemId": "p5045",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.191Z",
-    "updatedAt": "2022-07-30T10:00:17.095Z",
     "userSignups": [
       {
         "username": "178863",
@@ -4862,13 +4859,13 @@
         "signedToStartTime": "2022-07-30T12:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T10:00:17.095Z"
   },
   {
     "programItemId": "p5607",
-    "count": 4,
-    "createdAt": "2022-07-29T20:00:27.191Z",
-    "updatedAt": "2022-07-30T10:00:17.096Z",
     "userSignups": [
       {
         "username": "625220",
@@ -4894,13 +4891,13 @@
         "signedToStartTime": "2022-07-30T12:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T10:00:17.096Z"
   },
   {
     "programItemId": "p5634",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.191Z",
-    "updatedAt": "2022-07-30T10:17:14.156Z",
     "userSignups": [
       {
         "username": "685501",
@@ -4932,13 +4929,13 @@
         "signedToStartTime": "2022-07-30T12:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T10:17:14.156Z"
   },
   {
     "programItemId": "p5631",
-    "count": 8,
-    "createdAt": "2022-07-29T20:00:27.191Z",
-    "updatedAt": "2022-07-30T10:00:17.102Z",
     "userSignups": [
       {
         "username": "378051",
@@ -4988,13 +4985,13 @@
         "signedToStartTime": "2022-07-30T12:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 8,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T10:00:17.102Z"
   },
   {
     "programItemId": "p5267",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.191Z",
-    "updatedAt": "2022-07-30T11:41:31.739Z",
     "userSignups": [
       {
         "username": "935173",
@@ -5026,13 +5023,13 @@
         "signedToStartTime": "2022-07-30T13:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T11:41:31.739Z"
   },
   {
     "programItemId": "p4957",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.191Z",
-    "updatedAt": "2022-07-30T11:54:04.909Z",
     "userSignups": [
       {
         "username": "955006",
@@ -5064,13 +5061,13 @@
         "signedToStartTime": "2022-07-30T12:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T11:54:04.909Z"
   },
   {
     "programItemId": "p5541",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.191Z",
-    "updatedAt": "2022-07-30T11:00:22.749Z",
     "userSignups": [
       {
         "username": "852449",
@@ -5102,13 +5099,13 @@
         "signedToStartTime": "2022-07-30T13:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T11:00:22.749Z"
   },
   {
     "programItemId": "p5566",
-    "count": 6,
-    "createdAt": "2022-07-29T20:00:27.191Z",
-    "updatedAt": "2022-07-30T12:43:42.903Z",
     "userSignups": [
       {
         "username": "956939",
@@ -5146,13 +5143,13 @@
         "signedToStartTime": "2022-07-30T13:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 6,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T12:43:42.903Z"
   },
   {
     "programItemId": "p5724",
-    "count": 6,
-    "createdAt": "2022-07-29T20:00:27.191Z",
-    "updatedAt": "2022-07-30T11:15:35.163Z",
     "userSignups": [
       {
         "username": "504641",
@@ -5190,13 +5187,13 @@
         "signedToStartTime": "2022-07-30T13:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 6,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T11:15:35.163Z"
   },
   {
     "programItemId": "p5600",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.191Z",
-    "updatedAt": "2022-07-30T11:00:22.758Z",
     "userSignups": [
       {
         "username": "144564",
@@ -5228,34 +5225,34 @@
         "signedToStartTime": "2022-07-30T13:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T11:00:22.758Z"
   },
   {
     "programItemId": "p5554",
+    "userSignups": [],
     "count": 0,
     "createdAt": "2022-07-29T20:00:27.191Z",
-    "updatedAt": "2022-07-29T20:00:27.191Z",
-    "userSignups": []
+    "updatedAt": "2022-07-29T20:00:27.191Z"
   },
   {
     "programItemId": "p4842",
+    "userSignups": [],
     "count": 0,
     "createdAt": "2022-07-29T20:00:27.191Z",
-    "updatedAt": "2022-07-29T20:00:27.191Z",
-    "userSignups": []
+    "updatedAt": "2022-07-29T20:00:27.191Z"
   },
   {
     "programItemId": "p5180",
+    "userSignups": [],
     "count": 0,
     "createdAt": "2022-07-29T20:00:27.191Z",
-    "updatedAt": "2022-07-29T20:00:27.191Z",
-    "userSignups": []
+    "updatedAt": "2022-07-29T20:00:27.191Z"
   },
   {
     "programItemId": "p5508",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.191Z",
-    "updatedAt": "2022-07-30T12:51:20.822Z",
     "userSignups": [
       {
         "username": "901890",
@@ -5287,13 +5284,13 @@
         "signedToStartTime": "2022-07-30T14:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T12:51:20.822Z"
   },
   {
     "programItemId": "p5063",
-    "count": 6,
-    "createdAt": "2022-07-29T20:00:27.191Z",
-    "updatedAt": "2022-07-30T12:00:23.59Z",
     "userSignups": [
       {
         "username": "508232",
@@ -5331,20 +5328,20 @@
         "signedToStartTime": "2022-07-30T14:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 6,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T12:00:23.59Z"
   },
   {
     "programItemId": "p5012",
+    "userSignups": [],
     "count": 0,
     "createdAt": "2022-07-29T20:00:27.191Z",
-    "updatedAt": "2022-07-29T20:00:27.191Z",
-    "userSignups": []
+    "updatedAt": "2022-07-29T20:00:27.191Z"
   },
   {
     "programItemId": "p5667",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.191Z",
-    "updatedAt": "2022-07-30T14:28:20.861Z",
     "userSignups": [
       {
         "username": "784540",
@@ -5376,13 +5373,13 @@
         "signedToStartTime": "2022-07-30T15:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T14:28:20.861Z"
   },
   {
     "programItemId": "p5473",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.191Z",
-    "updatedAt": "2022-07-30T13:00:28.362Z",
     "userSignups": [
       {
         "username": "553492",
@@ -5414,13 +5411,13 @@
         "signedToStartTime": "2022-07-30T15:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T13:00:28.362Z"
   },
   {
     "programItemId": "p5599",
-    "count": 6,
-    "createdAt": "2022-07-29T20:00:27.192Z",
-    "updatedAt": "2022-07-30T13:15:13.582Z",
     "userSignups": [
       {
         "username": "254323",
@@ -5458,13 +5455,13 @@
         "signedToStartTime": "2022-07-30T15:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 6,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-30T13:15:13.582Z"
   },
   {
     "programItemId": "p5615",
-    "count": 4,
-    "createdAt": "2022-07-29T20:00:27.192Z",
-    "updatedAt": "2022-07-30T14:00:28.321Z",
     "userSignups": [
       {
         "username": "587991",
@@ -5490,13 +5487,13 @@
         "signedToStartTime": "2022-07-30T16:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-30T14:00:28.321Z"
   },
   {
     "programItemId": "p5752",
-    "count": 6,
-    "createdAt": "2022-07-29T20:00:27.192Z",
-    "updatedAt": "2022-07-30T13:15:21.062Z",
     "userSignups": [
       {
         "username": "314827",
@@ -5534,13 +5531,13 @@
         "signedToStartTime": "2022-07-30T15:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 6,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-30T13:15:21.062Z"
   },
   {
     "programItemId": "p5346",
-    "count": 4,
-    "createdAt": "2022-07-29T20:00:27.192Z",
-    "updatedAt": "2022-07-30T14:00:28.3Z",
     "userSignups": [
       {
         "username": "614861",
@@ -5566,13 +5563,13 @@
         "signedToStartTime": "2022-07-30T16:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-30T14:00:28.3Z"
   },
   {
     "programItemId": "p5604",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.192Z",
-    "updatedAt": "2022-07-30T13:00:28.398Z",
     "userSignups": [
       {
         "username": "709028",
@@ -5604,13 +5601,13 @@
         "signedToStartTime": "2022-07-30T15:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-30T13:00:28.398Z"
   },
   {
     "programItemId": "p5417",
-    "count": 4,
-    "createdAt": "2022-07-29T20:00:27.192Z",
-    "updatedAt": "2022-07-30T13:00:28.393Z",
     "userSignups": [
       {
         "username": "474050",
@@ -5636,13 +5633,13 @@
         "signedToStartTime": "2022-07-30T15:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-30T13:00:28.393Z"
   },
   {
     "programItemId": "p5610",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.192Z",
-    "updatedAt": "2022-07-30T14:15:10.124Z",
     "userSignups": [
       {
         "username": "96157",
@@ -5674,20 +5671,20 @@
         "signedToStartTime": "2022-07-30T16:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-30T14:15:10.124Z"
   },
   {
     "programItemId": "p5556",
+    "userSignups": [],
     "count": 0,
     "createdAt": "2022-07-29T20:00:27.192Z",
-    "updatedAt": "2022-07-29T20:00:27.192Z",
-    "userSignups": []
+    "updatedAt": "2022-07-29T20:00:27.192Z"
   },
   {
     "programItemId": "p5533",
-    "count": 4,
-    "createdAt": "2022-07-29T20:00:27.192Z",
-    "updatedAt": "2022-07-30T14:00:28.311Z",
     "userSignups": [
       {
         "username": "378051",
@@ -5713,13 +5710,13 @@
         "signedToStartTime": "2022-07-30T16:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-30T14:00:28.311Z"
   },
   {
     "programItemId": "p5760",
-    "count": 4,
-    "createdAt": "2022-07-29T20:00:27.192Z",
-    "updatedAt": "2022-07-30T13:00:28.388Z",
     "userSignups": [
       {
         "username": "999471",
@@ -5745,13 +5742,13 @@
         "signedToStartTime": "2022-07-30T15:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-30T13:00:28.388Z"
   },
   {
     "programItemId": "p5345",
-    "count": 4,
-    "createdAt": "2022-07-29T20:00:27.192Z",
-    "updatedAt": "2022-07-30T14:00:28.317Z",
     "userSignups": [
       {
         "username": "622536",
@@ -5777,13 +5774,13 @@
         "signedToStartTime": "2022-07-30T16:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-30T14:00:28.317Z"
   },
   {
     "programItemId": "p5348",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.192Z",
-    "updatedAt": "2022-07-30T15:49:07.747Z",
     "userSignups": [
       {
         "username": "511576",
@@ -5815,13 +5812,13 @@
         "signedToStartTime": "2022-07-30T16:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-30T15:49:07.747Z"
   },
   {
     "programItemId": "p5085",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.192Z",
-    "updatedAt": "2022-07-30T13:00:28.38Z",
     "userSignups": [
       {
         "username": "258303",
@@ -5853,13 +5850,13 @@
         "signedToStartTime": "2022-07-30T15:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-30T13:00:28.38Z"
   },
   {
     "programItemId": "p5347",
-    "count": 4,
-    "createdAt": "2022-07-29T20:00:27.192Z",
-    "updatedAt": "2022-07-30T14:00:28.31Z",
     "userSignups": [
       {
         "username": "815795",
@@ -5885,13 +5882,13 @@
         "signedToStartTime": "2022-07-30T16:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-30T14:00:28.31Z"
   },
   {
     "programItemId": "p5559",
-    "count": 6,
-    "createdAt": "2022-07-29T20:00:27.192Z",
-    "updatedAt": "2022-07-30T16:19:28.667Z",
     "userSignups": [
       {
         "username": "445685",
@@ -5929,13 +5926,13 @@
         "signedToStartTime": "2022-07-30T17:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 6,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-30T16:19:28.667Z"
   },
   {
     "programItemId": "p5590",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.192Z",
-    "updatedAt": "2022-07-30T15:39:14.619Z",
     "userSignups": [
       {
         "username": "769301",
@@ -5967,13 +5964,13 @@
         "signedToStartTime": "2022-07-30T17:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-30T15:39:14.619Z"
   },
   {
     "programItemId": "p5641",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.192Z",
-    "updatedAt": "2022-07-30T15:00:29.832Z",
     "userSignups": [
       {
         "username": "648054",
@@ -6005,13 +6002,13 @@
         "signedToStartTime": "2022-07-30T17:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-30T15:00:29.832Z"
   },
   {
     "programItemId": "p5476",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.192Z",
-    "updatedAt": "2022-07-30T15:58:53.246Z",
     "userSignups": [
       {
         "username": "145374",
@@ -6043,13 +6040,13 @@
         "signedToStartTime": "2022-07-30T17:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-30T15:58:53.246Z"
   },
   {
     "programItemId": "p5460",
-    "count": 6,
-    "createdAt": "2022-07-29T20:00:27.192Z",
-    "updatedAt": "2022-07-30T16:29:05.216Z",
     "userSignups": [
       {
         "username": "15204",
@@ -6087,13 +6084,13 @@
         "signedToStartTime": "2022-07-30T17:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 6,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-30T16:29:05.216Z"
   },
   {
     "programItemId": "p5193",
-    "count": 3,
-    "createdAt": "2022-07-29T20:00:27.192Z",
-    "updatedAt": "2022-07-30T16:53:30.075Z",
     "userSignups": [
       {
         "username": "345030",
@@ -6113,13 +6110,13 @@
         "signedToStartTime": "2022-07-30T17:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 3,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-30T16:53:30.075Z"
   },
   {
     "programItemId": "p5568",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.192Z",
-    "updatedAt": "2022-07-30T16:47:02.941Z",
     "userSignups": [
       {
         "username": "703904",
@@ -6151,13 +6148,13 @@
         "signedToStartTime": "2022-07-30T17:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-30T16:47:02.941Z"
   },
   {
     "programItemId": "p5623",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.192Z",
-    "updatedAt": "2022-07-30T16:38:07.922Z",
     "userSignups": [
       {
         "username": "895701",
@@ -6189,13 +6186,13 @@
         "signedToStartTime": "2022-07-30T18:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-30T16:38:07.922Z"
   },
   {
     "programItemId": "p5621",
-    "count": 4,
-    "createdAt": "2022-07-29T20:00:27.192Z",
-    "updatedAt": "2022-07-30T17:22:28.213Z",
     "userSignups": [
       {
         "username": "428045",
@@ -6227,13 +6224,13 @@
         "signedToStartTime": "2022-07-30T18:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-30T17:22:28.213Z"
   },
   {
     "programItemId": "p5721",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.192Z",
-    "updatedAt": "2022-07-30T16:18:09.518Z",
     "userSignups": [
       {
         "username": "424481",
@@ -6265,13 +6262,13 @@
         "signedToStartTime": "2022-07-30T18:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-30T16:18:09.518Z"
   },
   {
     "programItemId": "p5397",
-    "count": 4,
-    "createdAt": "2022-07-29T20:00:27.192Z",
-    "updatedAt": "2022-07-30T17:00:29.331Z",
     "userSignups": [
       {
         "username": "150210",
@@ -6297,13 +6294,13 @@
         "signedToStartTime": "2022-07-30T19:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-30T17:00:29.331Z"
   },
   {
     "programItemId": "p5537",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.192Z",
-    "updatedAt": "2022-07-30T17:52:42.718Z",
     "userSignups": [
       {
         "username": "817113",
@@ -6335,13 +6332,13 @@
         "signedToStartTime": "2022-07-30T18:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-30T17:52:42.718Z"
   },
   {
     "programItemId": "p5471",
-    "count": 2,
-    "createdAt": "2022-07-29T20:00:27.192Z",
-    "updatedAt": "2022-07-30T20:01:35.771Z",
     "userSignups": [
       {
         "username": "998990",
@@ -6391,55 +6388,55 @@
         "signedToStartTime": "2022-07-30T21:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 2,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-30T20:01:35.771Z"
   },
   {
     "programItemId": "p5648",
+    "userSignups": [],
     "count": 0,
     "createdAt": "2022-07-29T20:00:27.192Z",
-    "updatedAt": "2022-07-29T20:00:27.192Z",
-    "userSignups": []
+    "updatedAt": "2022-07-29T20:00:27.192Z"
   },
   {
     "programItemId": "p5650",
+    "userSignups": [],
     "count": 0,
     "createdAt": "2022-07-29T20:00:27.192Z",
-    "updatedAt": "2022-07-29T20:00:27.192Z",
-    "userSignups": []
+    "updatedAt": "2022-07-29T20:00:27.192Z"
   },
   {
     "programItemId": "p5735",
+    "userSignups": [],
     "count": 0,
     "createdAt": "2022-07-29T20:00:27.192Z",
-    "updatedAt": "2022-07-29T20:00:27.192Z",
-    "userSignups": []
+    "updatedAt": "2022-07-29T20:00:27.192Z"
   },
   {
     "programItemId": "p5087",
+    "userSignups": [],
     "count": 0,
     "createdAt": "2022-07-29T20:00:27.192Z",
-    "updatedAt": "2022-07-29T20:00:27.192Z",
-    "userSignups": []
+    "updatedAt": "2022-07-29T20:00:27.192Z"
   },
   {
     "programItemId": "p5661",
+    "userSignups": [],
     "count": 0,
     "createdAt": "2022-07-29T20:00:27.192Z",
-    "updatedAt": "2022-07-29T20:00:27.192Z",
-    "userSignups": []
+    "updatedAt": "2022-07-29T20:00:27.192Z"
   },
   {
     "programItemId": "p5557",
+    "userSignups": [],
     "count": 0,
     "createdAt": "2022-07-29T20:00:27.192Z",
-    "updatedAt": "2022-07-29T20:00:27.192Z",
-    "userSignups": []
+    "updatedAt": "2022-07-29T20:00:27.192Z"
   },
   {
     "programItemId": "p5625",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.192Z",
-    "updatedAt": "2022-07-31T05:00:38.048Z",
     "userSignups": [
       {
         "username": "212089",
@@ -6471,13 +6468,13 @@
         "signedToStartTime": "2022-07-31T07:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-31T05:00:38.048Z"
   },
   {
     "programItemId": "p5333",
-    "count": 4,
-    "createdAt": "2022-07-29T20:00:27.192Z",
-    "updatedAt": "2022-07-31T06:31:33.62Z",
     "userSignups": [
       {
         "username": "152787",
@@ -6503,13 +6500,13 @@
         "signedToStartTime": "2022-07-31T07:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-31T06:31:33.62Z"
   },
   {
     "programItemId": "p5597",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.192Z",
-    "updatedAt": "2022-07-31T05:00:38.046Z",
     "userSignups": [
       {
         "username": "342053",
@@ -6541,13 +6538,13 @@
         "signedToStartTime": "2022-07-31T07:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-31T05:00:38.046Z"
   },
   {
     "programItemId": "p4955",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.192Z",
-    "updatedAt": "2022-07-31T05:00:38.044Z",
     "userSignups": [
       {
         "username": "937690",
@@ -6579,20 +6576,20 @@
         "signedToStartTime": "2022-07-31T07:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-31T05:00:38.044Z"
   },
   {
     "programItemId": "p5619",
+    "userSignups": [],
     "count": 0,
     "createdAt": "2022-07-29T20:00:27.192Z",
-    "updatedAt": "2022-07-31T06:26:01.532Z",
-    "userSignups": []
+    "updatedAt": "2022-07-31T06:26:01.532Z"
   },
   {
     "programItemId": "p5679",
-    "count": 4,
-    "createdAt": "2022-07-29T20:00:27.192Z",
-    "updatedAt": "2022-07-31T05:15:10.725Z",
     "userSignups": [
       {
         "username": "952272",
@@ -6624,13 +6621,13 @@
         "signedToStartTime": "2022-07-31T07:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-31T05:15:10.725Z"
   },
   {
     "programItemId": "p5413",
-    "count": 4,
-    "createdAt": "2022-07-29T20:00:27.192Z",
-    "updatedAt": "2022-07-31T05:00:38.037Z",
     "userSignups": [
       {
         "username": "612168",
@@ -6656,13 +6653,13 @@
         "signedToStartTime": "2022-07-31T07:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-31T05:00:38.037Z"
   },
   {
     "programItemId": "p5669",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.192Z",
-    "updatedAt": "2022-07-31T06:15:48.461Z",
     "userSignups": [
       {
         "username": "674811",
@@ -6694,13 +6691,13 @@
         "signedToStartTime": "2022-07-31T07:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-31T06:15:48.461Z"
   },
   {
     "programItemId": "p5676",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.192Z",
-    "updatedAt": "2022-07-31T05:18:55.417Z",
     "userSignups": [
       {
         "username": "504641",
@@ -6732,13 +6729,13 @@
         "signedToStartTime": "2022-07-31T07:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-31T05:18:55.417Z"
   },
   {
     "programItemId": "p5115",
-    "count": 4,
-    "createdAt": "2022-07-29T20:00:27.192Z",
-    "updatedAt": "2022-07-31T05:15:04.644Z",
     "userSignups": [
       {
         "username": "538587",
@@ -6764,13 +6761,13 @@
         "signedToStartTime": "2022-07-31T07:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-31T05:15:04.644Z"
   },
   {
     "programItemId": "p5751",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.192Z",
-    "updatedAt": "2022-07-31T05:00:38.039Z",
     "userSignups": [
       {
         "username": "302826",
@@ -6802,13 +6799,13 @@
         "signedToStartTime": "2022-07-31T07:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-31T05:00:38.039Z"
   },
   {
     "programItemId": "p5636",
-    "count": 6,
-    "createdAt": "2022-07-29T20:00:27.192Z",
-    "updatedAt": "2022-07-31T05:00:38.051Z",
     "userSignups": [
       {
         "username": "377113",
@@ -6846,13 +6843,13 @@
         "signedToStartTime": "2022-07-31T07:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 6,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-31T05:00:38.051Z"
   },
   {
     "programItemId": "p5349",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.192Z",
-    "updatedAt": "2022-07-31T05:15:18.615Z",
     "userSignups": [
       {
         "username": "598995",
@@ -6884,20 +6881,20 @@
         "signedToStartTime": "2022-07-31T07:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-31T05:15:18.615Z"
   },
   {
     "programItemId": "p5539",
+    "userSignups": [],
     "count": 0,
     "createdAt": "2022-07-29T20:00:27.192Z",
-    "updatedAt": "2022-07-29T20:00:27.192Z",
-    "userSignups": []
+    "updatedAt": "2022-07-29T20:00:27.192Z"
   },
   {
     "programItemId": "p5759",
-    "count": 4,
-    "createdAt": "2022-07-29T20:00:27.192Z",
-    "updatedAt": "2022-07-31T05:00:38.009Z",
     "userSignups": [
       {
         "username": "804595",
@@ -6923,13 +6920,13 @@
         "signedToStartTime": "2022-07-31T07:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-31T05:00:38.009Z"
   },
   {
     "programItemId": "p5632",
-    "count": 7,
-    "createdAt": "2022-07-29T20:00:27.192Z",
-    "updatedAt": "2022-07-31T07:22:04.26Z",
     "userSignups": [
       {
         "username": "221846",
@@ -6973,13 +6970,13 @@
         "signedToStartTime": "2022-07-31T08:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 7,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-31T07:22:04.26Z"
   },
   {
     "programItemId": "p5461",
-    "count": 1,
-    "createdAt": "2022-07-29T20:00:27.192Z",
-    "updatedAt": "2022-07-31T06:15:40.796Z",
     "userSignups": [
       {
         "username": "710972",
@@ -6987,13 +6984,13 @@
         "signedToStartTime": "2022-07-31T08:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 1,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-31T06:15:40.796Z"
   },
   {
     "programItemId": "p5596",
-    "count": 6,
-    "createdAt": "2022-07-29T20:00:27.192Z",
-    "updatedAt": "2022-07-31T07:04:34.806Z",
     "userSignups": [
       {
         "username": "349986",
@@ -7031,13 +7028,13 @@
         "signedToStartTime": "2022-07-31T08:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 6,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-31T07:04:34.806Z"
   },
   {
     "programItemId": "p5046",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.192Z",
-    "updatedAt": "2022-07-31T07:53:30.387Z",
     "userSignups": [
       {
         "username": "746713",
@@ -7069,20 +7066,20 @@
         "signedToStartTime": "2022-07-31T08:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-31T07:53:30.387Z"
   },
   {
     "programItemId": "p5170",
+    "userSignups": [],
     "count": 0,
     "createdAt": "2022-07-29T20:00:27.192Z",
-    "updatedAt": "2022-07-29T20:00:27.192Z",
-    "userSignups": []
+    "updatedAt": "2022-07-29T20:00:27.192Z"
   },
   {
     "programItemId": "p5470",
-    "count": 4,
-    "createdAt": "2022-07-29T20:00:27.191Z",
-    "updatedAt": "2022-07-30T05:00:15.724Z",
     "userSignups": [
       {
         "username": "118014",
@@ -7108,13 +7105,13 @@
         "signedToStartTime": "2022-07-30T07:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T05:00:15.724Z"
   },
   {
     "programItemId": "p5765",
-    "count": 4,
-    "createdAt": "2022-07-29T20:00:27.192Z",
-    "updatedAt": "2022-07-31T07:08:56.912Z",
     "userSignups": [
       {
         "username": "543707",
@@ -7140,13 +7137,13 @@
         "signedToStartTime": "2022-07-31T08:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-31T07:08:56.912Z"
   },
   {
     "programItemId": "p5720",
-    "count": 7,
-    "createdAt": "2022-07-29T20:00:27.193Z",
-    "updatedAt": "2022-07-31T08:18:16.079Z",
     "userSignups": [
       {
         "username": "264185",
@@ -7190,13 +7187,13 @@
         "signedToStartTime": "2022-07-31T08:30:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 7,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-31T08:18:16.079Z"
   },
   {
     "programItemId": "p5106",
-    "count": 6,
-    "createdAt": "2022-07-29T20:00:27.193Z",
-    "updatedAt": "2022-07-30T13:58:32.054Z",
     "userSignups": [
       {
         "username": "53693",
@@ -7234,13 +7231,13 @@
         "signedToStartTime": "2022-07-31T08:30:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 6,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-30T13:58:32.054Z"
   },
   {
     "programItemId": "p5534",
-    "count": 8,
-    "createdAt": "2022-07-29T20:00:27.193Z",
-    "updatedAt": "2022-07-31T07:25:24.17Z",
     "userSignups": [
       {
         "username": "968308",
@@ -7290,13 +7287,13 @@
         "signedToStartTime": "2022-07-31T09:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 8,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-31T07:25:24.17Z"
   },
   {
     "programItemId": "p5398",
-    "count": 4,
-    "createdAt": "2022-07-29T20:00:27.191Z",
-    "updatedAt": "2022-07-30T13:00:28.387Z",
     "userSignups": [
       {
         "username": "45210",
@@ -7322,13 +7319,13 @@
         "signedToStartTime": "2022-07-30T15:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T13:00:28.387Z"
   },
   {
     "programItemId": "p5432",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.193Z",
-    "updatedAt": "2022-07-31T07:00:33.266Z",
     "userSignups": [
       {
         "username": "683833",
@@ -7360,13 +7357,13 @@
         "signedToStartTime": "2022-07-31T09:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-31T07:00:33.266Z"
   },
   {
     "programItemId": "p5589",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.193Z",
-    "updatedAt": "2022-07-31T07:00:33.268Z",
     "userSignups": [
       {
         "username": "606267",
@@ -7398,13 +7395,13 @@
         "signedToStartTime": "2022-07-31T09:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-31T07:00:33.268Z"
   },
   {
     "programItemId": "p5484",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.193Z",
-    "updatedAt": "2022-07-31T07:00:33.267Z",
     "userSignups": [
       {
         "username": "18808",
@@ -7436,13 +7433,13 @@
         "signedToStartTime": "2022-07-31T09:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-31T07:00:33.267Z"
   },
   {
     "programItemId": "p5545",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.193Z",
-    "updatedAt": "2022-07-31T07:00:33.245Z",
     "userSignups": [
       {
         "username": "418445",
@@ -7474,13 +7471,13 @@
         "signedToStartTime": "2022-07-31T09:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-31T07:00:33.245Z"
   },
   {
     "programItemId": "p5351",
-    "count": 0,
-    "createdAt": "2022-07-29T20:00:27.193Z",
-    "updatedAt": "2022-07-31T09:53:43.164Z",
     "userSignups": [
       {
         "username": "794300",
@@ -7488,13 +7485,13 @@
         "signedToStartTime": "2022-07-31T10:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 0,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-31T09:53:43.164Z"
   },
   {
     "programItemId": "p5350",
-    "count": 4,
-    "createdAt": "2022-07-29T20:00:27.193Z",
-    "updatedAt": "2022-07-31T07:15:45.052Z",
     "userSignups": [
       {
         "username": "361096",
@@ -7520,20 +7517,20 @@
         "signedToStartTime": "2022-07-31T09:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-31T07:15:45.052Z"
   },
   {
     "programItemId": "p5758",
+    "userSignups": [],
     "count": 0,
     "createdAt": "2022-07-29T20:00:27.193Z",
-    "updatedAt": "2022-07-29T20:00:27.193Z",
-    "userSignups": []
+    "updatedAt": "2022-07-29T20:00:27.193Z"
   },
   {
     "programItemId": "p5543",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.193Z",
-    "updatedAt": "2022-07-31T07:00:33.264Z",
     "userSignups": [
       {
         "username": "666660",
@@ -7565,13 +7562,13 @@
         "signedToStartTime": "2022-07-31T09:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-31T07:00:33.264Z"
   },
   {
     "programItemId": "p5616",
-    "count": 4,
-    "createdAt": "2022-07-29T20:00:27.193Z",
-    "updatedAt": "2022-07-31T08:00:34.588Z",
     "userSignups": [
       {
         "username": "425468",
@@ -7597,13 +7594,13 @@
         "signedToStartTime": "2022-07-31T10:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-31T08:00:34.588Z"
   },
   {
     "programItemId": "p5722",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.193Z",
-    "updatedAt": "2022-07-31T08:00:34.581Z",
     "userSignups": [
       {
         "username": "589801",
@@ -7635,13 +7632,13 @@
         "signedToStartTime": "2022-07-31T10:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-31T08:00:34.581Z"
   },
   {
     "programItemId": "p5191",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.193Z",
-    "updatedAt": "2022-07-31T09:45:53.423Z",
     "userSignups": [
       {
         "username": "754211",
@@ -7673,20 +7670,20 @@
         "signedToStartTime": "2022-07-31T10:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-31T09:45:53.423Z"
   },
   {
     "programItemId": "p5558",
+    "userSignups": [],
     "count": 0,
     "createdAt": "2022-07-29T20:00:27.193Z",
-    "updatedAt": "2022-07-29T20:00:27.193Z",
-    "userSignups": []
+    "updatedAt": "2022-07-29T20:00:27.193Z"
   },
   {
     "programItemId": "p5726",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.193Z",
-    "updatedAt": "2022-07-31T08:00:34.565Z",
     "userSignups": [
       {
         "username": "908989",
@@ -7718,13 +7715,13 @@
         "signedToStartTime": "2022-07-31T10:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-31T08:00:34.565Z"
   },
   {
     "programItemId": "p5581",
-    "count": 4,
-    "createdAt": "2022-07-29T20:00:27.193Z",
-    "updatedAt": "2022-07-31T09:04:34.25Z",
     "userSignups": [
       {
         "username": "181031",
@@ -7750,13 +7747,13 @@
         "signedToStartTime": "2022-07-31T10:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-31T09:04:34.25Z"
   },
   {
     "programItemId": "p5658",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.193Z",
-    "updatedAt": "2022-07-31T08:00:34.595Z",
     "userSignups": [
       {
         "username": "566861",
@@ -7788,13 +7785,13 @@
         "signedToStartTime": "2022-07-31T10:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-31T08:00:34.595Z"
   },
   {
     "programItemId": "p5663",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.193Z",
-    "updatedAt": "2022-07-31T05:00:38.047Z",
     "userSignups": [
       {
         "username": "914746",
@@ -7826,13 +7823,13 @@
         "signedToStartTime": "2022-07-31T07:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-31T05:00:38.047Z"
   },
   {
     "programItemId": "p5540",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.193Z",
-    "updatedAt": "2022-07-31T05:00:38.052Z",
     "userSignups": [
       {
         "username": "872623",
@@ -7864,13 +7861,13 @@
         "signedToStartTime": "2022-07-31T07:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-31T05:00:38.052Z"
   },
   {
     "programItemId": "p5594",
-    "count": 16,
-    "createdAt": "2022-07-29T20:00:27.193Z",
-    "updatedAt": "2022-07-30T15:57:07.942Z",
     "userSignups": [
       {
         "username": "475577",
@@ -7968,48 +7965,48 @@
         "signedToStartTime": "2022-07-30T16:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 16,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-30T15:57:07.942Z"
   },
   {
     "programItemId": "p5647",
+    "userSignups": [],
     "count": 0,
     "createdAt": "2022-07-29T20:00:27.193Z",
-    "updatedAt": "2022-07-29T20:00:27.193Z",
-    "userSignups": []
+    "updatedAt": "2022-07-29T20:00:27.193Z"
   },
   {
     "programItemId": "p5835",
+    "userSignups": [],
     "count": 0,
     "createdAt": "2022-07-29T20:00:27.193Z",
-    "updatedAt": "2022-07-29T20:00:27.193Z",
-    "userSignups": []
+    "updatedAt": "2022-07-29T20:00:27.193Z"
   },
   {
     "programItemId": "p5645",
+    "userSignups": [],
     "count": 0,
     "createdAt": "2022-07-29T20:00:27.193Z",
-    "updatedAt": "2022-07-29T20:00:27.193Z",
-    "userSignups": []
+    "updatedAt": "2022-07-29T20:00:27.193Z"
   },
   {
     "programItemId": "p5651",
+    "userSignups": [],
     "count": 0,
     "createdAt": "2022-07-29T20:00:27.193Z",
-    "updatedAt": "2022-07-29T20:00:27.193Z",
-    "userSignups": []
+    "updatedAt": "2022-07-29T20:00:27.193Z"
   },
   {
     "programItemId": "p5649",
+    "userSignups": [],
     "count": 0,
     "createdAt": "2022-07-29T20:00:27.193Z",
-    "updatedAt": "2022-07-29T20:00:27.193Z",
-    "userSignups": []
+    "updatedAt": "2022-07-29T20:00:27.193Z"
   },
   {
     "programItemId": "p5626",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.193Z",
-    "updatedAt": "2022-07-30T06:48:10.97Z",
     "userSignups": [
       {
         "username": "968308",
@@ -8041,20 +8038,20 @@
         "signedToStartTime": "2022-07-30T07:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-30T06:48:10.97Z"
   },
   {
     "programItemId": "p5842",
+    "userSignups": [],
     "count": 0,
     "createdAt": "2022-07-29T20:00:27.193Z",
-    "updatedAt": "2022-07-29T20:00:27.193Z",
-    "userSignups": []
+    "updatedAt": "2022-07-29T20:00:27.193Z"
   },
   {
     "programItemId": "p5847",
-    "count": 4,
-    "createdAt": "2022-07-29T20:00:27.193Z",
-    "updatedAt": "2022-07-30T09:00:17.312Z",
     "userSignups": [
       {
         "username": "397514",
@@ -8080,13 +8077,13 @@
         "signedToStartTime": "2022-07-30T11:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-30T09:00:17.312Z"
   },
   {
     "programItemId": "p5848",
-    "count": 2,
-    "createdAt": "2022-07-29T20:00:27.193Z",
-    "updatedAt": "2022-07-30T16:29:17.126Z",
     "userSignups": [
       {
         "username": "745468",
@@ -8112,13 +8109,13 @@
         "signedToStartTime": "2022-07-30T17:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 2,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-30T16:29:17.126Z"
   },
   {
     "programItemId": "p5851",
-    "count": 4,
-    "createdAt": "2022-07-29T20:00:27.193Z",
-    "updatedAt": "2022-07-30T17:34:48.535Z",
     "userSignups": [
       {
         "username": "699450",
@@ -8144,13 +8141,13 @@
         "signedToStartTime": "2022-07-30T19:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-30T17:34:48.535Z"
   },
   {
     "programItemId": "p5853",
-    "count": 4,
-    "createdAt": "2022-07-29T20:00:27.193Z",
-    "updatedAt": "2022-07-30T07:00:13.817Z",
     "userSignups": [
       {
         "username": "913250",
@@ -8176,13 +8173,13 @@
         "signedToStartTime": "2022-07-30T09:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-30T07:00:13.817Z"
   },
   {
     "programItemId": "p5852",
-    "count": 4,
-    "createdAt": "2022-07-29T20:00:27.193Z",
-    "updatedAt": "2022-07-31T07:00:33.263Z",
     "userSignups": [
       {
         "username": "21639",
@@ -8208,20 +8205,20 @@
         "signedToStartTime": "2022-07-31T09:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-31T07:00:33.263Z"
   },
   {
     "programItemId": "p5725",
+    "userSignups": [],
     "count": 0,
     "createdAt": "2022-07-29T20:00:27.193Z",
-    "updatedAt": "2022-07-29T20:00:27.193Z",
-    "userSignups": []
+    "updatedAt": "2022-07-29T20:00:27.193Z"
   },
   {
     "programItemId": "p5764",
-    "count": 5,
-    "createdAt": "2022-07-29T20:00:27.192Z",
-    "updatedAt": "2022-07-31T06:39:57.777Z",
     "userSignups": [
       {
         "username": "964196",
@@ -8253,13 +8250,13 @@
         "signedToStartTime": "2022-07-31T08:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-31T06:39:57.777Z"
   },
   {
     "programItemId": "p5628",
-    "count": 5,
-    "createdAt": "2022-07-30T13:00:28.372Z",
-    "updatedAt": "2022-07-30T13:00:28.391Z",
     "userSignups": [
       {
         "username": "641320",
@@ -8291,13 +8288,13 @@
         "signedToStartTime": "2022-07-30T15:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-30T13:00:28.372Z",
+    "updatedAt": "2022-07-30T13:00:28.391Z"
   },
   {
     "programItemId": "p5858",
-    "count": 5,
-    "createdAt": "2022-07-30T17:00:29.32Z",
-    "updatedAt": "2022-07-30T17:00:29.332Z",
     "userSignups": [
       {
         "username": "264756",
@@ -8329,13 +8326,13 @@
         "signedToStartTime": "2022-07-30T19:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-30T17:00:29.32Z",
+    "updatedAt": "2022-07-30T17:00:29.332Z"
   },
   {
     "programItemId": "p5678",
-    "count": 5,
-    "createdAt": "2022-07-31T05:00:37.962Z",
-    "updatedAt": "2022-07-31T05:34:23.75Z",
     "userSignups": [
       {
         "username": "899439",
@@ -8367,6 +8364,9 @@
         "signedToStartTime": "2022-07-31T07:00:00Z",
         "message": ""
       }
-    ]
+    ],
+    "count": 5,
+    "createdAt": "2022-07-31T05:00:37.962Z",
+    "updatedAt": "2022-07-31T05:34:23.75Z"
   }
 ]

@@ -1,6 +1,5 @@
 [
   {
-    "assignmentTime": "2019-07-26T14:00:00.000Z",
     "results": [
       {
         "username": "651558",
@@ -134,38 +133,6 @@
         "username": "766919",
         "assignmentSignup": {
           "programItemId": "p3727",
-          "priority": 1,
-          "signedToStartTime": "2019-07-26T14:00:00.000Z"
-        }
-      },
-      {
-        "username": "159057",
-        "assignmentSignup": {
-          "programItem": "5d377eb3fabc761cd7213f15",
-          "priority": 1,
-          "signedToStartTime": "2019-07-26T14:00:00.000Z"
-        }
-      },
-      {
-        "username": "256292",
-        "assignmentSignup": {
-          "programItem": "5d377eb3fabc761cd7213f15",
-          "priority": 2,
-          "signedToStartTime": "2019-07-26T14:00:00.000Z"
-        }
-      },
-      {
-        "username": "289445",
-        "assignmentSignup": {
-          "programItem": "5d377eb3fabc761cd7213f15",
-          "priority": 1,
-          "signedToStartTime": "2019-07-26T14:00:00.000Z"
-        }
-      },
-      {
-        "username": "429537",
-        "assignmentSignup": {
-          "programItem": "5d377eb3fabc761cd7213f15",
           "priority": 1,
           "signedToStartTime": "2019-07-26T14:00:00.000Z"
         }
@@ -371,11 +338,13 @@
         }
       }
     ],
-    "algorithm": "group",
-    "message": "Group Assign Result - Players: 46/70 (66%), Games: 10/10 (100%)"
+    "assignmentTime": "2019-07-26T14:00:00.000Z",
+    "algorithm": "random",
+    "message": "Group Assign Result - Players: 46/70 (66%), Games: 10/10 (100%)",
+    "createdAt": "2019-07-26T14:00:00.000Z",
+    "updatedAt": "2019-07-26T14:00:00.000Z"
   },
   {
-    "assignmentTime": "2019-07-26T15:00:00.000Z",
     "results": [
       {
         "username": "503158",
@@ -826,11 +795,13 @@
         }
       }
     ],
-    "algorithm": "group",
-    "message": "Group Assign Result - Players: 56/81 (69%), Games: 11/11 (100%)"
+    "assignmentTime": "2019-07-26T15:00:00.000Z",
+    "algorithm": "random",
+    "message": "Group Assign Result - Players: 56/81 (69%), Games: 11/11 (100%)",
+    "createdAt": "2019-07-26T15:00:00.000Z",
+    "updatedAt": "2019-07-26T15:00:00.000Z"
   },
   {
-    "assignmentTime": "2019-07-26T16:00:00.000Z",
     "results": [
       {
         "username": "737909",
@@ -1329,11 +1300,13 @@
         }
       }
     ],
-    "algorithm": "group",
-    "message": "Group Assign Result - Players: 62/92 (67%), Games: 11/11 (100%)"
+    "assignmentTime": "2019-07-26T16:00:00.000Z",
+    "algorithm": "random",
+    "message": "Group Assign Result - Players: 62/92 (67%), Games: 11/11 (100%)",
+    "createdAt": "2019-07-26T16:00:00.000Z",
+    "updatedAt": "2019-07-26T16:00:00.000Z"
   },
   {
-    "assignmentTime": "2019-07-26T17:00:00.000Z",
     "results": [
       {
         "username": "575965",
@@ -1664,11 +1637,13 @@
         }
       }
     ],
-    "algorithm": "opa",
-    "message": "Opa Assign Result - Players: 41/67 (61%), Games: 9/9 (100%)"
+    "assignmentTime": "2019-07-26T17:00:00.000Z",
+    "algorithm": "padg",
+    "message": "Opa Assign Result - Players: 41/67 (61%), Games: 9/9 (100%)",
+    "createdAt": "2019-07-26T17:00:00.000Z",
+    "updatedAt": "2019-07-26T17:00:00.000Z"
   },
   {
-    "assignmentTime": "2019-07-26T18:00:00.000Z",
     "results": [
       {
         "username": "711970",
@@ -2103,11 +2078,13 @@
         }
       }
     ],
-    "algorithm": "group",
-    "message": "Group Assign Result - Players: 54/78 (69%), Games: 11/11 (100%)"
+    "assignmentTime": "2019-07-26T18:00:00.000Z",
+    "algorithm": "random",
+    "message": "Group Assign Result - Players: 54/78 (69%), Games: 11/11 (100%)",
+    "createdAt": "2019-07-26T18:00:00.000Z",
+    "updatedAt": "2019-07-26T18:00:00.000Z"
   },
   {
-    "assignmentTime": "2019-07-26T19:00:00.000Z",
     "results": [
       {
         "username": "57066",
@@ -2310,11 +2287,13 @@
         }
       }
     ],
-    "algorithm": "group",
-    "message": "Group Assign Result - Players: 25/37 (68%), Games: 5/5 (100%)"
+    "assignmentTime": "2019-07-26T19:00:00.000Z",
+    "algorithm": "random",
+    "message": "Group Assign Result - Players: 25/37 (68%), Games: 5/5 (100%)",
+    "createdAt": "2019-07-26T19:00:00.000Z",
+    "updatedAt": "2019-07-26T19:00:00.000Z"
   },
   {
-    "assignmentTime": "2019-07-27T07:00:00.000Z",
     "results": [
       {
         "username": "141602",
@@ -2405,11 +2384,13 @@
         }
       }
     ],
-    "algorithm": "opa",
-    "message": "Opa Assign Result - Players: 11/19 (58%), Games: 3/5 (60%)"
+    "assignmentTime": "2019-07-27T07:00:00.000Z",
+    "algorithm": "padg",
+    "message": "Opa Assign Result - Players: 11/19 (58%), Games: 3/5 (60%)",
+    "createdAt": "2019-07-27T07:00:00.000Z",
+    "updatedAt": "2019-07-27T07:00:00.000Z"
   },
   {
-    "assignmentTime": "2019-07-27T08:00:00.000Z",
     "results": [
       {
         "username": "124293",
@@ -2660,11 +2641,13 @@
         }
       }
     ],
-    "algorithm": "opa",
-    "message": "Opa Assign Result - Players: 31/49 (63%), Games: 6/6 (100%)"
+    "assignmentTime": "2019-07-27T08:00:00.000Z",
+    "algorithm": "padg",
+    "message": "Opa Assign Result - Players: 31/49 (63%), Games: 6/6 (100%)",
+    "createdAt": "2019-07-27T08:00:00.000Z",
+    "updatedAt": "2019-07-27T08:00:00.000Z"
   },
   {
-    "assignmentTime": "2019-07-27T09:00:00.000Z",
     "results": [
       {
         "username": "714110",
@@ -2955,11 +2938,13 @@
         }
       }
     ],
-    "algorithm": "opa",
-    "message": "Opa Assign Result - Players: 36/39 (92%), Games: 7/7 (100%)"
+    "assignmentTime": "2019-07-27T09:00:00.000Z",
+    "algorithm": "padg",
+    "message": "Opa Assign Result - Players: 36/39 (92%), Games: 7/7 (100%)",
+    "createdAt": "2019-07-27T09:00:00.000Z",
+    "updatedAt": "2019-07-27T09:00:00.000Z"
   },
   {
-    "assignmentTime": "2019-07-27T10:00:00.000Z",
     "results": [
       {
         "username": "92279",
@@ -3378,11 +3363,13 @@
         }
       }
     ],
-    "algorithm": "group",
-    "message": "Group Assign Result - Players: 52/80 (65%), Games: 10/10 (100%)"
+    "assignmentTime": "2019-07-27T10:00:00.000Z",
+    "algorithm": "random",
+    "message": "Group Assign Result - Players: 52/80 (65%), Games: 10/10 (100%)",
+    "createdAt": "2019-07-27T10:00:00.000Z",
+    "updatedAt": "2019-07-27T10:00:00.000Z"
   },
   {
-    "assignmentTime": "2019-07-27T11:00:00.000Z",
     "results": [
       {
         "username": "675441",
@@ -3857,11 +3844,13 @@
         }
       }
     ],
-    "algorithm": "opa",
-    "message": "Opa Assign Result - Players: 59/105 (56%), Games: 10/10 (100%)"
+    "assignmentTime": "2019-07-27T11:00:00.000Z",
+    "algorithm": "padg",
+    "message": "Opa Assign Result - Players: 59/105 (56%), Games: 10/10 (100%)",
+    "createdAt": "2019-07-27T11:00:00.000Z",
+    "updatedAt": "2019-07-27T11:00:00.000Z"
   },
   {
-    "assignmentTime": "2019-07-27T12:00:00.000Z",
     "results": [
       {
         "username": "124293",
@@ -4224,11 +4213,13 @@
         }
       }
     ],
-    "algorithm": "opa",
-    "message": "Opa Assign Result - Players: 45/81 (56%), Games: 9/9 (100%)"
+    "assignmentTime": "2019-07-27T12:00:00.000Z",
+    "algorithm": "padg",
+    "message": "Opa Assign Result - Players: 45/81 (56%), Games: 9/9 (100%)",
+    "createdAt": "2019-07-27T12:00:00.000Z",
+    "updatedAt": "2019-07-27T12:00:00.000Z"
   },
   {
-    "assignmentTime": "2019-07-27T13:00:00.000Z",
     "results": [
       {
         "username": "141602",
@@ -4567,11 +4558,13 @@
         }
       }
     ],
-    "algorithm": "opa",
-    "message": "Opa Assign Result - Players: 42/100 (42%), Games: 9/9 (100%)"
+    "assignmentTime": "2019-07-27T13:00:00.000Z",
+    "algorithm": "padg",
+    "message": "Opa Assign Result - Players: 42/100 (42%), Games: 9/9 (100%)",
+    "createdAt": "2019-07-27T13:00:00.000Z",
+    "updatedAt": "2019-07-27T13:00:00.000Z"
   },
   {
-    "assignmentTime": "2019-07-27T14:00:00.000Z",
     "results": [
       {
         "username": "651558",
@@ -4814,11 +4807,13 @@
         }
       }
     ],
-    "algorithm": "opa",
-    "message": "Opa Assign Result - Players: 30/70 (43%), Games: 7/7 (100%)"
+    "assignmentTime": "2019-07-27T14:00:00.000Z",
+    "algorithm": "padg",
+    "message": "Opa Assign Result - Players: 30/70 (43%), Games: 7/7 (100%)",
+    "createdAt": "2019-07-27T14:00:00.000Z",
+    "updatedAt": "2019-07-27T14:00:00.000Z"
   },
   {
-    "assignmentTime": "2019-07-27T15:00:00.000Z",
     "results": [
       {
         "username": "157305",
@@ -5221,11 +5216,13 @@
         }
       }
     ],
-    "algorithm": "opa",
-    "message": "Opa Assign Result - Players: 50/79 (63%), Games: 9/9 (100%)"
+    "assignmentTime": "2019-07-27T15:00:00.000Z",
+    "algorithm": "padg",
+    "message": "Opa Assign Result - Players: 50/79 (63%), Games: 9/9 (100%)",
+    "createdAt": "2019-07-27T15:00:00.000Z",
+    "updatedAt": "2019-07-27T15:00:00.000Z"
   },
   {
-    "assignmentTime": "2019-07-27T16:00:00.000Z",
     "results": [
       {
         "username": "83265",
@@ -5588,11 +5585,13 @@
         }
       }
     ],
-    "algorithm": "group",
-    "message": "Group Assign Result - Players: 45/112 (40%), Games: 9/9 (100%)"
+    "assignmentTime": "2019-07-27T16:00:00.000Z",
+    "algorithm": "random",
+    "message": "Group Assign Result - Players: 45/112 (40%), Games: 9/9 (100%)",
+    "createdAt": "2019-07-27T16:00:00.000Z",
+    "updatedAt": "2019-07-27T16:00:00.000Z"
   },
   {
-    "assignmentTime": "2019-07-27T17:00:00.000Z",
     "results": [
       {
         "username": "752613",
@@ -5939,11 +5938,13 @@
         }
       }
     ],
-    "algorithm": "opa",
-    "message": "Opa Assign Result - Players: 43/117 (37%), Games: 8/8 (100%)"
+    "assignmentTime": "2019-07-27T17:00:00.000Z",
+    "algorithm": "padg",
+    "message": "Opa Assign Result - Players: 43/117 (37%), Games: 8/8 (100%)",
+    "createdAt": "2019-07-27T17:00:00.000Z",
+    "updatedAt": "2019-07-27T17:00:00.000Z"
   },
   {
-    "assignmentTime": "2019-07-27T18:00:00.000Z",
     "results": [
       {
         "username": "651558",
@@ -6242,11 +6243,13 @@
         }
       }
     ],
-    "algorithm": "opa",
-    "message": "Opa Assign Result - Players: 37/94 (39%), Games: 7/7 (100%)"
+    "assignmentTime": "2019-07-27T18:00:00.000Z",
+    "algorithm": "padg",
+    "message": "Opa Assign Result - Players: 37/94 (39%), Games: 7/7 (100%)",
+    "createdAt": "2019-07-27T18:00:00.000Z",
+    "updatedAt": "2019-07-27T18:00:00.000Z"
   },
   {
-    "assignmentTime": "2019-07-27T19:00:00.000Z",
     "results": [
       {
         "username": "375659",
@@ -6473,11 +6476,13 @@
         }
       }
     ],
-    "algorithm": "opa",
-    "message": "Opa Assign Result - Players: 28/60 (47%), Games: 6/6 (100%)"
+    "assignmentTime": "2019-07-27T19:00:00.000Z",
+    "algorithm": "padg",
+    "message": "Opa Assign Result - Players: 28/60 (47%), Games: 6/6 (100%)",
+    "createdAt": "2019-07-27T19:00:00.000Z",
+    "updatedAt": "2019-07-27T19:00:00.000Z"
   },
   {
-    "assignmentTime": "2019-07-28T07:00:00.000Z",
     "results": [
       {
         "username": "10458",
@@ -6992,11 +6997,13 @@
         }
       }
     ],
-    "algorithm": "group",
-    "message": "Group Assign Result - Players: 64/95 (67%), Games: 12/12 (100%)"
+    "assignmentTime": "2019-07-28T07:00:00.000Z",
+    "algorithm": "random",
+    "message": "Group Assign Result - Players: 64/95 (67%), Games: 12/12 (100%)",
+    "createdAt": "2019-07-28T07:00:00.000Z",
+    "updatedAt": "2019-07-28T07:00:00.000Z"
   },
   {
-    "assignmentTime": "2019-07-28T08:00:00.000Z",
     "results": [
       {
         "username": "141602",
@@ -7423,11 +7430,13 @@
         }
       }
     ],
-    "algorithm": "opa",
-    "message": "Opa Assign Result - Players: 53/94 (56%), Games: 10/10 (100%)"
+    "assignmentTime": "2019-07-28T08:00:00.000Z",
+    "algorithm": "padg",
+    "message": "Opa Assign Result - Players: 53/94 (56%), Games: 10/10 (100%)",
+    "createdAt": "2019-07-28T08:00:00.000Z",
+    "updatedAt": "2019-07-28T08:00:00.000Z"
   },
   {
-    "assignmentTime": "2019-07-28T09:00:00.000Z",
     "results": [
       {
         "username": "994270",
@@ -7846,11 +7855,13 @@
         }
       }
     ],
-    "algorithm": "group",
-    "message": "Group Assign Result - Players: 52/69 (75%), Games: 9/9 (100%)"
+    "assignmentTime": "2019-07-28T09:00:00.000Z",
+    "algorithm": "random",
+    "message": "Group Assign Result - Players: 52/69 (75%), Games: 9/9 (100%)",
+    "createdAt": "2019-07-28T09:00:00.000Z",
+    "updatedAt": "2019-07-28T09:00:00.000Z"
   },
   {
-    "assignmentTime": "2019-07-28T10:00:00.000Z",
     "results": [
       {
         "username": "576096",
@@ -8141,7 +8152,10 @@
         }
       }
     ],
-    "algorithm": "opa",
-    "message": "Opa Assign Result - Players: 36/80 (45%), Games: 6/6 (100%)"
+    "assignmentTime": "2019-07-28T10:00:00.000Z",
+    "algorithm": "padg",
+    "message": "Opa Assign Result - Players: 36/80 (45%), Games: 6/6 (100%)",
+    "createdAt": "2019-07-28T10:00:00.000Z",
+    "updatedAt": "2019-07-28T10:00:00.000Z"
   }
 ]
