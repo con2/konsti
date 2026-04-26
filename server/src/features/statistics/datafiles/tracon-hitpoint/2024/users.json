@@ -729,7 +729,13 @@
     "groupCreatorCode": "0",
     "groupCode": "1bd-5c7-5ff",
     "favoriteProgramItemIds": [],
-    "lotterySignups": [],
+    "lotterySignups": [
+      {
+        "programItemId": "kirottu-matka-2",
+        "priority": 1,
+        "signedToStartTime": "2024-11-02T18:00:00Z"
+      }
+    ],
     "eventLogItems": [
       {
         "action": "noAssignment",
@@ -1334,6 +1340,11 @@
     ],
     "lotterySignups": [
       {
+        "programItemId": "<canceled>",
+        "priority": 1,
+        "signedToStartTime": "2024-11-02T13:00:00Z"
+      },
+      {
         "programItemId": "elava-pakohuone-12",
         "priority": 1,
         "signedToStartTime": "2024-11-03T10:00:00Z"
@@ -1518,13 +1529,13 @@
     ],
     "lotterySignups": [
       {
-        "programItemId": "ihmiskarjujen-yo-night-of-the-hogmen",
-        "priority": 2,
+        "programItemId": "red-tundra",
+        "priority": 1,
         "signedToStartTime": "2024-11-02T15:00:00Z"
       },
       {
-        "programItemId": "red-tundra",
-        "priority": 1,
+        "programItemId": "ihmiskarjujen-yo-night-of-the-hogmen",
+        "priority": 2,
         "signedToStartTime": "2024-11-02T15:00:00Z"
       },
       {
@@ -1615,7 +1626,18 @@
     "groupCreatorCode": "0",
     "groupCode": "c3a-eed-f1b",
     "favoriteProgramItemIds": [],
-    "lotterySignups": [],
+    "lotterySignups": [
+      {
+        "programItemId": "larppimiekkailuworkshop",
+        "priority": 3,
+        "signedToStartTime": "2024-11-02T13:00:00Z"
+      },
+      {
+        "programItemId": "alien-uscss-traconis",
+        "priority": 1,
+        "signedToStartTime": "2024-11-03T12:00:00Z"
+      }
+    ],
     "eventLogItems": [
       {
         "action": "newAssignment",
@@ -1786,7 +1808,18 @@
     "groupCreatorCode": "0",
     "groupCode": "c3a-eed-f1b",
     "favoriteProgramItemIds": [],
-    "lotterySignups": [],
+    "lotterySignups": [
+      {
+        "programItemId": "larppimiekkailuworkshop",
+        "priority": 3,
+        "signedToStartTime": "2024-11-02T13:00:00Z"
+      },
+      {
+        "programItemId": "alien-uscss-traconis",
+        "priority": 1,
+        "signedToStartTime": "2024-11-03T12:00:00Z"
+      }
+    ],
     "eventLogItems": [
       {
         "action": "newAssignment",
@@ -2301,7 +2334,18 @@
     "groupCreatorCode": "0",
     "groupCode": "886-ecd-a0b",
     "favoriteProgramItemIds": [],
-    "lotterySignups": [],
+    "lotterySignups": [
+      {
+        "programItemId": "alice-is-missing",
+        "priority": 1,
+        "signedToStartTime": "2024-11-02T17:00:00Z"
+      },
+      {
+        "programItemId": "the-dalish-curse-a-dragon-age-rpg",
+        "priority": 1,
+        "signedToStartTime": "2024-11-03T09:00:00Z"
+      }
+    ],
     "eventLogItems": [
       {
         "action": "noAssignment",
@@ -2503,7 +2547,18 @@
     "groupCreatorCode": "0",
     "groupCode": "c3a-eed-f1b",
     "favoriteProgramItemIds": [],
-    "lotterySignups": [],
+    "lotterySignups": [
+      {
+        "programItemId": "larppimiekkailuworkshop",
+        "priority": 3,
+        "signedToStartTime": "2024-11-02T13:00:00Z"
+      },
+      {
+        "programItemId": "alien-uscss-traconis",
+        "priority": 1,
+        "signedToStartTime": "2024-11-03T12:00:00Z"
+      }
+    ],
     "eventLogItems": [
       {
         "action": "newAssignment",
@@ -2717,7 +2772,13 @@
       "ihmiskarjujen-yo-night-of-the-hogmen",
       "ruhtinaan-aika"
     ],
-    "lotterySignups": [],
+    "lotterySignups": [
+      {
+        "programItemId": "tyhjyyden-meren-hirviot",
+        "priority": 2,
+        "signedToStartTime": "2024-11-02T14:00:00Z"
+      }
+    ],
     "eventLogItems": [
       {
         "action": "noAssignment",
@@ -2919,7 +2980,23 @@
     "groupCreatorCode": "0",
     "groupCode": "50a-f7c-e94",
     "favoriteProgramItemIds": [],
-    "lotterySignups": [],
+    "lotterySignups": [
+      {
+        "programItemId": "space-1889-pakkolasku-venuksen-viidakkoon",
+        "priority": 1,
+        "signedToStartTime": "2024-11-02T14:00:00Z"
+      },
+      {
+        "programItemId": "alien-uscss-traconis-2",
+        "priority": 1,
+        "signedToStartTime": "2024-11-02T18:00:00Z"
+      },
+      {
+        "programItemId": "pathfinder-society-scenario-6-01-intro-year-of-immortal-influence",
+        "priority": 2,
+        "signedToStartTime": "2024-11-03T10:00:00Z"
+      }
+    ],
     "eventLogItems": [
       {
         "action": "newAssignment",
@@ -2970,7 +3047,23 @@
     "groupCreatorCode": "0",
     "groupCode": "50a-f7c-e94",
     "favoriteProgramItemIds": [],
-    "lotterySignups": [],
+    "lotterySignups": [
+      {
+        "programItemId": "space-1889-pakkolasku-venuksen-viidakkoon",
+        "priority": 1,
+        "signedToStartTime": "2024-11-02T14:00:00Z"
+      },
+      {
+        "programItemId": "alien-uscss-traconis-2",
+        "priority": 1,
+        "signedToStartTime": "2024-11-02T18:00:00Z"
+      },
+      {
+        "programItemId": "pathfinder-society-scenario-6-01-intro-year-of-immortal-influence",
+        "priority": 2,
+        "signedToStartTime": "2024-11-03T10:00:00Z"
+      }
+    ],
     "eventLogItems": [
       {
         "action": "newAssignment",
@@ -3037,6 +3130,11 @@
     "groupCode": "0",
     "favoriteProgramItemIds": ["mysteerien-maatila", "meripihkalinna"],
     "lotterySignups": [
+      {
+        "programItemId": "<canceled>",
+        "priority": 1,
+        "signedToStartTime": "2024-11-02T13:00:00Z"
+      },
       {
         "programItemId": "red-tundra",
         "priority": 1,
@@ -3847,7 +3945,18 @@
     "groupCreatorCode": "0",
     "groupCode": "c3a-eed-f1b",
     "favoriteProgramItemIds": [],
-    "lotterySignups": [],
+    "lotterySignups": [
+      {
+        "programItemId": "larppimiekkailuworkshop",
+        "priority": 3,
+        "signedToStartTime": "2024-11-02T13:00:00Z"
+      },
+      {
+        "programItemId": "alien-uscss-traconis",
+        "priority": 1,
+        "signedToStartTime": "2024-11-03T12:00:00Z"
+      }
+    ],
     "eventLogItems": [
       {
         "action": "newAssignment",
@@ -4039,7 +4148,13 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoriteProgramItemIds": [],
-    "lotterySignups": [],
+    "lotterySignups": [
+      {
+        "programItemId": "<canceled>",
+        "priority": 1,
+        "signedToStartTime": "2024-11-02T13:00:00Z"
+      }
+    ],
     "eventLogItems": [
       {
         "action": "newAssignment",
@@ -4062,7 +4177,13 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoriteProgramItemIds": [],
-    "lotterySignups": [],
+    "lotterySignups": [
+      {
+        "programItemId": "<canceled>",
+        "priority": 1,
+        "signedToStartTime": "2024-11-02T13:00:00Z"
+      }
+    ],
     "eventLogItems": [
       {
         "action": "newAssignment",
@@ -4085,7 +4206,13 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoriteProgramItemIds": [],
-    "lotterySignups": [],
+    "lotterySignups": [
+      {
+        "programItemId": "<canceled>",
+        "priority": 1,
+        "signedToStartTime": "2024-11-02T13:00:00Z"
+      }
+    ],
     "eventLogItems": [
       {
         "action": "newAssignment",
@@ -4327,6 +4454,11 @@
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
+      {
+        "programItemId": "<canceled>",
+        "priority": 1,
+        "signedToStartTime": "2024-11-02T13:00:00Z"
+      },
       {
         "programItemId": "elava-pakohuone-12",
         "priority": 1,
@@ -4724,7 +4856,13 @@
     "groupCreatorCode": "0",
     "groupCode": "853-a3b-def",
     "favoriteProgramItemIds": [],
-    "lotterySignups": [],
+    "lotterySignups": [
+      {
+        "programItemId": "juokse-juokse-kultaseni",
+        "priority": 1,
+        "signedToStartTime": "2024-11-02T16:00:00Z"
+      }
+    ],
     "eventLogItems": [
       {
         "action": "newAssignment",
@@ -4895,13 +5033,13 @@
     "favoriteProgramItemIds": [],
     "lotterySignups": [
       {
-        "programItemId": "praedor-kirotut-kuninkaanvaalit",
-        "priority": 2,
+        "programItemId": "vaiettu-menneisyys",
+        "priority": 1,
         "signedToStartTime": "2024-11-03T09:00:00Z"
       },
       {
-        "programItemId": "vaiettu-menneisyys",
-        "priority": 1,
+        "programItemId": "praedor-kirotut-kuninkaanvaalit",
+        "priority": 2,
         "signedToStartTime": "2024-11-03T09:00:00Z"
       }
     ],
@@ -5116,7 +5254,13 @@
     "groupCreatorCode": "0",
     "groupCode": "8e0-d36-55e",
     "favoriteProgramItemIds": [],
-    "lotterySignups": [],
+    "lotterySignups": [
+      {
+        "programItemId": "alavilla-mailla",
+        "priority": 2,
+        "signedToStartTime": "2024-11-03T09:00:00Z"
+      }
+    ],
     "eventLogItems": [
       {
         "action": "newAssignment",
@@ -5168,7 +5312,13 @@
     "groupCreatorCode": "0",
     "groupCode": "403-7dc-267",
     "favoriteProgramItemIds": [],
-    "lotterySignups": [],
+    "lotterySignups": [
+      {
+        "programItemId": "praedor-kirotut-kuninkaanvaalit",
+        "priority": 1,
+        "signedToStartTime": "2024-11-03T09:00:00Z"
+      }
+    ],
     "eventLogItems": [
       {
         "action": "newAssignment",
