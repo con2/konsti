@@ -445,7 +445,4 @@ No tabletop RPGs at this event.
 
 ## Notes
 
-- For 2017–2019 Ropecon, `programType` was backfilled to `tabletopRPG` during normalization (Konsti was RPG-only then), so the filter still applies uniformly.
-- Wiped _winning_ lottery signups have been restored from `results.json` for every event, so winners always appear among participants. Wiped _non-winning_ preferences are unrecoverable for newer events; for 2017–2018 the older per-result snapshot let us restore those too.
-- Hours reflect each program item's `startTime` converted from UTC to Europe/Helsinki, so DST is applied correctly per event.
-- A user counts at most once per hour even if they submitted multiple priorities or won via a different lottery run.
+- A user counts at most once per hour even if they submitted multiple priorities.
