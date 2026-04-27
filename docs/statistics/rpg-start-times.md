@@ -122,7 +122,7 @@ Legend: each `█` = 1 RPG. Hours with zero count are omitted.
 13:00 │ ██████ 6
 ```
 
-### 2021 (39 total, Covid remote only)
+### 2021 (39 total)
 
 ```
 2021-07-30 (Fri, 15 total)
@@ -483,4 +483,5 @@ No tabletop RPGs in this event (different program types only).
 
 ## Notes
 
-- Cancelled items (`state: "cancelled"`) excluded.
+- Cancelled items (`state: 'cancelled'`) excluded.
+- Ropecon 2021 was a remote / COVID-era convention with smaller number of program items.

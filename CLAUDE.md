@@ -22,6 +22,10 @@ Yarn 4 workspaces. Node >= 24.14.1. Use yarn, not npm. All code and scripts must
 
 - Don't end code comments with a period: write `// This is a comment`, not `// This is a comment.`
 
+## Terminology
+
+- Don't use "FCFS" as shorthand for "first-come-first-served" — write it out in full.
+
 ## Common Commands
 
 ```bash
