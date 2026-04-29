@@ -1,39 +1,22 @@
 import { Request, Response } from "express";
-import { logger } from "server/utils/logger";
-import { ApiDevEndpoint } from "shared/constants/apiEndpoints";
 import {
   fetchTestSettings,
   updateTestSettings,
 } from "server/test/test-settings/testSettingsService";
-import { PostTestSettingsRequestSchema } from "shared/test-types/api/testSettings";
+import { PostTestSettingsRequest } from "shared/test-types/api/testSettings";
 
 export const getTestSettings = async (
   _req: Request,
   res: Response,
 ): Promise<Response> => {
-  logger.info(`API call: GET ${ApiDevEndpoint.TEST_SETTINGS}`);
-
   const response = await fetchTestSettings();
   return res.json(response);
 };
 
 export const postTestSettings = async (
-  req: Request,
+  req: Request<unknown, unknown, PostTestSettingsRequest>,
   res: Response,
 ): Promise<Response> => {
-  logger.info(`API call: POST ${ApiDevEndpoint.TEST_SETTINGS}`);
-
-  const result = PostTestSettingsRequestSchema.safeParse(req.body);
-  if (!result.success) {
-    logger.error(
-      "%s",
-      new Error(
-        `Error validating postTestSettings body: ${JSON.stringify(result.error)}`,
-      ),
-    );
-    return res.sendStatus(422);
-  }
-
-  const response = await updateTestSettings(result.data);
+  const response = await updateTestSettings(req.body);
   return res.json(response);
 };

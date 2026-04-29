@@ -1,9 +1,5 @@
 import { Request, Response } from "express";
-import { z } from "zod";
 import { logger } from "server/utils/logger";
-import { ApiEndpoint } from "shared/constants/apiEndpoints";
-import { UserGroup } from "shared/types/models/user";
-import { getAuthorizedUsername } from "server/utils/authHeader";
 import { EmailNotificationTrigger } from "shared/types/emailNotification";
 import {
   EmailMessage,
@@ -18,37 +14,13 @@ import {
   NotificationTask,
   NotificationTaskType,
 } from "server/utils/notificationQueue";
-
-const PostEmailTestSchema = z.object({
-  email: z.email(),
-  notificationType: z.enum(EmailNotificationTrigger),
-  programId: z.string().min(1, "Program ID is required"),
-});
+import { PostEmailTestRequest } from "shared/test-types/api/testData";
 
 export const postEmailTest = async (
-  req: Request,
+  req: Request<unknown, unknown, PostEmailTestRequest>,
   res: Response,
 ): Promise<Response> => {
-  logger.info(`API call: POST ${ApiEndpoint.EMAIL_TEST}`);
-
-  const username = getAuthorizedUsername(
-    req.headers.authorization,
-    UserGroup.ADMIN,
-  );
-  if (!username) {
-    return res.sendStatus(401);
-  }
-
-  const result = PostEmailTestSchema.safeParse(req.body);
-  if (!result.success) {
-    logger.error(
-      "Error validating postEmailTest body: %s",
-      JSON.stringify(result.error),
-    );
-    return res.sendStatus(422);
-  }
-
-  const { email, notificationType, programId } = result.data;
+  const { email, notificationType, programId } = req.body;
 
   try {
     const emailSender = new EmailSender();

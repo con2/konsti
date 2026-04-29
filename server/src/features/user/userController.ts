@@ -5,67 +5,31 @@ import {
   fetchUserBySerialOrUsername,
   storeUserPassword,
 } from "server/features/user/userService";
-import { UserGroup } from "shared/types/models/user";
-import { getAuthorizedUsername } from "server/utils/authHeader";
+import { getAuthUsername } from "server/middleware/requireAuth";
 import { logger } from "server/utils/logger";
-import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
-  GetUserBySerialRequestSchema,
-  PostUpdateUserPasswordRequestSchema,
-  PostUserRequestSchema,
+  GetUserBySerialRequest,
+  PostUpdateUserPasswordRequest,
+  PostUserRequest,
 } from "shared/types/api/users";
 import { PostUpdateUserEmailAddressRequestSchema } from "shared/types/api/login";
 import { verifyUpdateUserEmailAddress } from "server/features/kompassi-login/kompassiLoginService";
 
 export const postUser = async (
-  req: Request,
+  req: Request<unknown, unknown, PostUserRequest>,
   res: Response,
 ): Promise<Response> => {
-  logger.info(`API call: POST ${ApiEndpoint.USERS}`);
-
-  const result = PostUserRequestSchema.safeParse(req.body);
-  if (!result.success) {
-    logger.error(
-      "%s",
-      new Error(
-        `Error validating postUser body: ${JSON.stringify(result.error)}`,
-      ),
-    );
-    return res.sendStatus(422);
-  }
-
-  const { username, password, serial } = result.data;
+  const { username, password, serial } = req.body;
   const response = await storeUser(username, password, serial);
   return res.json(response);
 };
 
 export const postUserPassword = async (
-  req: Request,
+  req: Request<unknown, unknown, PostUpdateUserPasswordRequest>,
   res: Response,
 ): Promise<Response> => {
-  logger.info(`API call: POST ${ApiEndpoint.USERS_PASSWORD}`);
-
-  const requesterUsername = getAuthorizedUsername(req.headers.authorization, [
-    UserGroup.USER,
-    UserGroup.HELPER,
-    UserGroup.ADMIN,
-  ]);
-  if (!requesterUsername) {
-    return res.sendStatus(401);
-  }
-
-  const result = PostUpdateUserPasswordRequestSchema.safeParse(req.body);
-  if (!result.success) {
-    logger.error(
-      "%s",
-      new Error(
-        `Error validating postUserPassword body: ${JSON.stringify(result.error)}`,
-      ),
-    );
-    return res.sendStatus(422);
-  }
-
-  const { usernameToUpdate, password } = result.data;
+  const requesterUsername = getAuthUsername(req);
+  const { usernameToUpdate, password } = req.body;
 
   if (
     requesterUsername !== usernameToUpdate &&
@@ -87,44 +51,15 @@ export const getUser = async (
   req: Request,
   res: Response,
 ): Promise<Response> => {
-  logger.info(`API call: GET ${ApiEndpoint.USERS}`);
-
-  const username = getAuthorizedUsername(
-    req.headers.authorization,
-    UserGroup.USER,
-  );
-  if (!username) {
-    return res.sendStatus(401);
-  }
-
-  const response = await fetchUserByUsername(username);
+  const response = await fetchUserByUsername(getAuthUsername(req));
   return res.json(response);
 };
 
 export const getUserBySerialOrUsername = async (
-  req: Request,
+  req: Request<unknown, unknown, unknown, GetUserBySerialRequest>,
   res: Response,
 ): Promise<Response> => {
-  logger.info(`API call: GET ${ApiEndpoint.USERS_BY_SERIAL_OR_USERNAME}`);
-
-  const username = getAuthorizedUsername(req.headers.authorization, [
-    UserGroup.HELPER,
-    UserGroup.ADMIN,
-  ]);
-  if (!username) {
-    return res.sendStatus(401);
-  }
-
-  const result = GetUserBySerialRequestSchema.safeParse(req.query);
-  if (!result.success) {
-    logger.error(
-      "Error validating getUserBySerialOrUsername params: %s",
-      result.error,
-    );
-    return res.sendStatus(422);
-  }
-
-  const { searchTerm } = result.data;
+  const { searchTerm } = req.query;
 
   if (!searchTerm) {
     return res.sendStatus(422);
@@ -139,16 +74,6 @@ export const postUpdateUserEmailAddress = async (
   req: Request,
   res: Response,
 ): Promise<Response> => {
-  logger.info(`API call: POST ${ApiEndpoint.UPDATE_USER_EMAIL_ADDRESS}`);
-
-  const jwtUsername = getAuthorizedUsername(
-    req.headers.authorization,
-    UserGroup.USER,
-  );
-  if (!jwtUsername) {
-    return res.sendStatus(401);
-  }
-
   const result = PostUpdateUserEmailAddressRequestSchema.safeParse(req.body);
   if (!result.success) {
     logger.error(
@@ -165,6 +90,9 @@ export const postUpdateUserEmailAddress = async (
   }
 
   const { email } = result.data;
-  const response = await verifyUpdateUserEmailAddress(jwtUsername, email);
+  const response = await verifyUpdateUserEmailAddress(
+    getAuthUsername(req),
+    email,
+  );
   return res.json(response);
 };

@@ -65,7 +65,7 @@ const commonConfig = {
   cronjobsAndBackendSameInstance: false, // Set this to run cronjobs and http/api server on same instance
 
   // Logging
-  enableAccessLog: false,
+  enableAccessLog: true,
 
   // App settings
   bundleCompression: true,
