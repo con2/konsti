@@ -4,10 +4,9 @@ import { once } from "node:events";
 import express, { Request, Response, NextFunction } from "express";
 import { setupExpressErrorHandler } from "@sentry/node";
 import helmet from "helmet";
-import morgan from "morgan";
 import expressStaticGzip from "express-static-gzip";
 import { config } from "shared/config";
-import { logger, accessLogStream } from "server/utils/logger";
+import { logger } from "server/utils/logger";
 import { allowCORS } from "server/middleware/cors";
 import "server/db/mongoosePlugins"; // Must be imported before apiRoutes which loads models
 import { apiRoutes } from "server/api/apiRoutes";
@@ -49,12 +48,6 @@ export const startServer = async ({
       },
     }),
   );
-
-  if (config.server().enableAccessLog) {
-    // Set logger
-    logger.info("Express: Overriding 'Express' logger");
-    app.use(morgan("dev", { stream: accessLogStream }));
-  }
 
   if (process.env.NODE_ENV === "development") {
     // Kompassi mock service requires content type application/x-www-form-urlencoded

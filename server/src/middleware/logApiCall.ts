@@ -3,9 +3,15 @@ import { logger } from "server/utils/logger";
 
 export const logApiCall = (
   req: Request,
-  _res: Response,
+  res: Response,
   next: NextFunction,
 ): void => {
-  logger.info(`API call: ${req.method} ${req.path}`);
+  const start = Date.now();
+  res.on("finish", () => {
+    const ms = Date.now() - start;
+    logger.info(
+      `API call: ${req.method} ${req.path} ${res.statusCode} ${ms}ms`,
+    );
+  });
   next();
 };
