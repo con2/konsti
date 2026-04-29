@@ -1,79 +1,34 @@
 import { Request, Response } from "express";
-import { logger } from "server/utils/logger";
-import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
-  DeleteLotterySignupRequestSchema,
-  PostLotterySignupRequestSchema,
+  DeleteLotterySignupRequest,
+  PostLotterySignupRequest,
 } from "shared/types/api/myProgramItems";
-import { getAuthorizedUsername } from "server/utils/authHeader";
-import { UserGroup } from "shared/types/models/user";
+import { getAuthUsername } from "server/middleware/requireAuth";
 import {
   removeLotterySignup,
   storeLotterySignup,
 } from "server/features/user/lottery-signup/lotterySignupService";
 
 export const postLotterySignup = async (
-  req: Request,
+  req: Request<unknown, unknown, PostLotterySignupRequest>,
   res: Response,
 ): Promise<Response> => {
-  logger.info(`API call: POST ${ApiEndpoint.LOTTERY_SIGNUP}`);
-
-  const username = getAuthorizedUsername(
-    req.headers.authorization,
-    UserGroup.USER,
-  );
-  if (!username) {
-    return res.sendStatus(401);
-  }
-
-  const result = PostLotterySignupRequestSchema.safeParse(req.body);
-  if (!result.success) {
-    logger.error(
-      "%s",
-      new Error(
-        `Error validating postLotterySignup body: ${JSON.stringify(result.error)}`,
-      ),
-    );
-    return res.sendStatus(422);
-  }
-
   const response = await storeLotterySignup({
-    programItemId: result.data.programItemId,
-    priority: result.data.priority,
-    username,
+    programItemId: req.body.programItemId,
+    priority: req.body.priority,
+    username: getAuthUsername(req),
   });
 
   return res.json(response);
 };
 
 export const deleteLotterySignup = async (
-  req: Request,
+  req: Request<unknown, unknown, DeleteLotterySignupRequest>,
   res: Response,
 ): Promise<Response> => {
-  logger.info(`API call: DELETE ${ApiEndpoint.LOTTERY_SIGNUP}`);
-
-  const username = getAuthorizedUsername(
-    req.headers.authorization,
-    UserGroup.USER,
-  );
-  if (!username) {
-    return res.sendStatus(401);
-  }
-
-  const result = DeleteLotterySignupRequestSchema.safeParse(req.body);
-  if (!result.success) {
-    logger.error(
-      "%s",
-      new Error(
-        `Error validating deleteLotterySignup body: ${JSON.stringify(result.error)}`,
-      ),
-    );
-    return res.sendStatus(422);
-  }
-
   const response = await removeLotterySignup(
-    result.data.lotterySignupProgramItemId,
-    username,
+    req.body.lotterySignupProgramItemId,
+    getAuthUsername(req),
   );
   return res.json(response);
 };

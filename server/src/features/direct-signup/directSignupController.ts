@@ -1,71 +1,26 @@
 import { Request, Response } from "express";
-import { getAuthorizedUsername } from "server/utils/authHeader";
-import { logger } from "server/utils/logger";
-import { ApiEndpoint } from "shared/constants/apiEndpoints";
+import { getAuthUsername } from "server/middleware/requireAuth";
 import {
-  DeleteDirectSignupRequestSchema,
-  PostDirectSignupRequestSchema,
+  DeleteDirectSignupRequest,
+  PostDirectSignupRequest,
 } from "shared/types/api/myProgramItems";
-import { UserGroup } from "shared/types/models/user";
 import {
   removeDirectSignup,
   storeDirectSignup,
 } from "server/features/direct-signup/directSignupService";
 
 export const postDirectSignup = async (
-  req: Request,
+  req: Request<unknown, unknown, PostDirectSignupRequest>,
   res: Response,
 ): Promise<Response> => {
-  logger.info(`API call: POST ${ApiEndpoint.DIRECT_SIGNUP}`);
-
-  const username = getAuthorizedUsername(
-    req.headers.authorization,
-    UserGroup.USER,
-  );
-  if (!username) {
-    return res.sendStatus(401);
-  }
-
-  const result = PostDirectSignupRequestSchema.safeParse(req.body);
-  if (!result.success) {
-    logger.error(
-      "%s",
-      new Error(
-        `Error validating postDirectSignup body: ${JSON.stringify(result.error)}`,
-      ),
-    );
-    return res.sendStatus(422);
-  }
-
-  const response = await storeDirectSignup(result.data, username);
+  const response = await storeDirectSignup(req.body, getAuthUsername(req));
   return res.json(response);
 };
 
 export const deleteDirectSignup = async (
-  req: Request,
+  req: Request<unknown, unknown, DeleteDirectSignupRequest>,
   res: Response,
 ): Promise<Response> => {
-  logger.info(`API call: DELETE ${ApiEndpoint.DIRECT_SIGNUP}`);
-
-  const username = getAuthorizedUsername(
-    req.headers.authorization,
-    UserGroup.USER,
-  );
-  if (!username) {
-    return res.sendStatus(401);
-  }
-
-  const result = DeleteDirectSignupRequestSchema.safeParse(req.body);
-  if (!result.success) {
-    logger.error(
-      "%s",
-      new Error(
-        `Error validating deleteDirectSignup body: ${JSON.stringify(result.error)}`,
-      ),
-    );
-    return res.sendStatus(422);
-  }
-
-  const response = await removeDirectSignup(result.data, username);
+  const response = await removeDirectSignup(req.body, getAuthUsername(req));
   return res.json(response);
 };

@@ -1,13 +1,10 @@
 import { Request, Response } from "express";
-import { logger } from "server/utils/logger";
-import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
-  GetGroupRequestSchema,
-  PostCloseGroupRequestSchema,
-  PostJoinGroupRequestSchema,
+  GetGroupRequest,
+  PostCloseGroupRequest,
+  PostJoinGroupRequest,
 } from "shared/types/api/groups";
-import { getAuthorizedUsername } from "server/utils/authHeader";
-import { UserGroup } from "shared/types/models/user";
+import { getAuthUsername } from "server/middleware/requireAuth";
 import {
   closeGroup,
   createGroup,
@@ -20,47 +17,16 @@ export const postCreateGroup = async (
   req: Request,
   res: Response,
 ): Promise<Response> => {
-  logger.info(`API call: POST ${ApiEndpoint.GROUP}`);
-
-  const username = getAuthorizedUsername(
-    req.headers.authorization,
-    UserGroup.USER,
-  );
-  if (!username) {
-    return res.sendStatus(401);
-  }
-
-  const response = await createGroup(username);
+  const response = await createGroup(getAuthUsername(req));
   return res.json(response);
 };
 
 export const postJoinGroup = async (
-  req: Request,
+  req: Request<unknown, unknown, PostJoinGroupRequest>,
   res: Response,
 ): Promise<Response> => {
-  logger.info(`API call: POST ${ApiEndpoint.JOIN_GROUP}`);
-
-  const username = getAuthorizedUsername(
-    req.headers.authorization,
-    UserGroup.USER,
-  );
-  if (!username) {
-    return res.sendStatus(401);
-  }
-
-  const result = PostJoinGroupRequestSchema.safeParse(req.body);
-  if (!result.success) {
-    logger.error(
-      "%s",
-      new Error(
-        `Error validating postJoinGroup body: ${JSON.stringify(result.error)}`,
-      ),
-    );
-    return res.sendStatus(422);
-  }
-
-  const { groupCode } = result.data;
-  const response = await joinGroup(username, groupCode);
+  const { groupCode } = req.body;
+  const response = await joinGroup(getAuthUsername(req), groupCode);
   return res.json(response);
 };
 
@@ -68,76 +34,24 @@ export const postLeaveGroup = async (
   req: Request,
   res: Response,
 ): Promise<Response> => {
-  logger.info(`API call: POST ${ApiEndpoint.LEAVE_GROUP}`);
-
-  const username = getAuthorizedUsername(
-    req.headers.authorization,
-    UserGroup.USER,
-  );
-  if (!username) {
-    return res.sendStatus(401);
-  }
-
-  const response = await leaveGroup(username);
+  const response = await leaveGroup(getAuthUsername(req));
   return res.json(response);
 };
 
 export const postCloseGroup = async (
-  req: Request,
+  req: Request<unknown, unknown, PostCloseGroupRequest>,
   res: Response,
 ): Promise<Response> => {
-  logger.info(`API call: POST ${ApiEndpoint.CLOSE_GROUP}`);
-
-  const username = getAuthorizedUsername(
-    req.headers.authorization,
-    UserGroup.USER,
-  );
-  if (!username) {
-    return res.sendStatus(401);
-  }
-
-  const result = PostCloseGroupRequestSchema.safeParse(req.body);
-  if (!result.success) {
-    logger.error(
-      "%s",
-      new Error(
-        `Error validating postCloseGroup body: ${JSON.stringify(result.error)}`,
-      ),
-    );
-    return res.sendStatus(422);
-  }
-
-  const { groupCode } = result.data;
-  const response = await closeGroup(groupCode, username);
+  const { groupCode } = req.body;
+  const response = await closeGroup(groupCode, getAuthUsername(req));
   return res.json(response);
 };
 
 export const getGroup = async (
-  req: Request,
+  req: Request<unknown, unknown, unknown, GetGroupRequest>,
   res: Response,
 ): Promise<Response> => {
-  logger.info(`API call: GET ${ApiEndpoint.GROUP}`);
-
-  const username = getAuthorizedUsername(
-    req.headers.authorization,
-    UserGroup.USER,
-  );
-  if (!username) {
-    return res.sendStatus(401);
-  }
-
-  const result = GetGroupRequestSchema.safeParse(req.query);
-  if (!result.success) {
-    logger.error(
-      "%s",
-      new Error(
-        `Error validating getGroup params: ${JSON.stringify(result.error)}`,
-      ),
-    );
-    return res.sendStatus(422);
-  }
-
-  const { groupCode } = result.data;
+  const { groupCode } = req.query;
   const response = await fetchGroup(groupCode);
   return res.json(response);
 };

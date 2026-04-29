@@ -68,70 +68,250 @@ import {
   getKompassiLoginMockToken,
 } from "server/test/kompassi-mock-service/kompassiMockService";
 import { postAssignment } from "server/features/assignment/assignmentController";
+import { validateBody, validateQuery } from "server/middleware/validateRequest";
+import { requireAuth } from "server/middleware/requireAuth";
+import { logApiCall } from "server/middleware/logApiCall";
+import { UserGroup } from "shared/types/models/user";
+import {
+  PostKompassiLoginRequestSchema,
+  PostLoginRequestSchema,
+  PostSessionRecoveryRequestSchema,
+  PostVerifyKompassiLoginRequestSchema,
+} from "shared/types/api/login";
+import {
+  GetUserBySerialRequestSchema,
+  PostUpdateUserPasswordRequestSchema,
+  PostUserRequestSchema,
+} from "shared/types/api/users";
+import { PostAssignmentRequestSchema } from "shared/types/api/assignment";
+import {
+  DeleteDirectSignupRequestSchema,
+  DeleteLotterySignupRequestSchema,
+  PostDirectSignupRequestSchema,
+  PostLotterySignupRequestSchema,
+} from "shared/types/api/myProgramItems";
+import { PostFavoriteRequestSchema } from "shared/types/api/favorite";
+import {
+  DeleteSignupQuestionRequestSchema,
+  PostHiddenRequestSchema,
+  PostSettingsRequestSchema,
+  PostSignupQuestionRequestSchema,
+} from "shared/types/api/settings";
+import {
+  GetGroupRequestSchema,
+  PostCloseGroupRequestSchema,
+  PostJoinGroupRequestSchema,
+} from "shared/types/api/groups";
+import { PostEventLogIsSeenRequestSchema } from "shared/types/api/eventLog";
+import {
+  PopulateDbOptionsSchema,
+  PostAddProgramItemsRequestSchema,
+  PostAddSerialsRequestSchema,
+  PostEmailTestRequestSchema,
+} from "shared/test-types/api/testData";
+import { PostTestSettingsRequestSchema } from "shared/test-types/api/testSettings";
 
 export const apiRoutes = express.Router();
 
+apiRoutes.use(logApiCall);
+
 /* POST routes */
 
-apiRoutes.post(ApiEndpoint.PROGRAM_ITEMS, postUpdateProgramItems);
-apiRoutes.post(ApiEndpoint.USERS, postUser);
-apiRoutes.post(ApiEndpoint.LOGIN, postLogin);
-apiRoutes.post(ApiEndpoint.ASSIGNMENT, postAssignment);
-apiRoutes.post(ApiEndpoint.LOTTERY_SIGNUP, postLotterySignup);
-apiRoutes.post(ApiEndpoint.FAVORITE, postFavorite);
-apiRoutes.post(ApiEndpoint.HIDDEN, postHidden);
-apiRoutes.post(ApiEndpoint.GROUP, postCreateGroup);
-apiRoutes.post(ApiEndpoint.JOIN_GROUP, postJoinGroup);
-apiRoutes.post(ApiEndpoint.LEAVE_GROUP, postLeaveGroup);
-apiRoutes.post(ApiEndpoint.CLOSE_GROUP, postCloseGroup);
-apiRoutes.post(ApiEndpoint.SIGNUP_QUESTION, postSignupQuestion);
-apiRoutes.post(ApiEndpoint.SESSION_RESTORE, postSessionRestore);
-apiRoutes.post(ApiEndpoint.USERS_PASSWORD, postUserPassword);
-apiRoutes.post(ApiEndpoint.SETTINGS, postSettings);
-apiRoutes.post(ApiEndpoint.DIRECT_SIGNUP, postDirectSignup);
-apiRoutes.post(ApiEndpoint.EVENT_LOG_IS_SEEN, postEventLogItemIsSeen);
-apiRoutes.post(ApiEndpoint.VERIFY_KOMPASSI_LOGIN, postVerifyKompassiLogin);
+apiRoutes.post(
+  ApiEndpoint.PROGRAM_ITEMS,
+  requireAuth(UserGroup.ADMIN),
+  postUpdateProgramItems,
+);
+apiRoutes.post(
+  ApiEndpoint.USERS,
+  validateBody(PostUserRequestSchema),
+  postUser,
+);
+apiRoutes.post(
+  ApiEndpoint.LOGIN,
+  validateBody(PostLoginRequestSchema),
+  postLogin,
+);
+apiRoutes.post(
+  ApiEndpoint.ASSIGNMENT,
+  requireAuth(UserGroup.ADMIN),
+  validateBody(PostAssignmentRequestSchema),
+  postAssignment,
+);
+apiRoutes.post(
+  ApiEndpoint.LOTTERY_SIGNUP,
+  requireAuth(UserGroup.USER),
+  validateBody(PostLotterySignupRequestSchema),
+  postLotterySignup,
+);
+apiRoutes.post(
+  ApiEndpoint.FAVORITE,
+  requireAuth(UserGroup.USER),
+  validateBody(PostFavoriteRequestSchema),
+  postFavorite,
+);
+apiRoutes.post(
+  ApiEndpoint.HIDDEN,
+  requireAuth(UserGroup.ADMIN),
+  validateBody(PostHiddenRequestSchema),
+  postHidden,
+);
+apiRoutes.post(ApiEndpoint.GROUP, requireAuth(UserGroup.USER), postCreateGroup);
+apiRoutes.post(
+  ApiEndpoint.JOIN_GROUP,
+  requireAuth(UserGroup.USER),
+  validateBody(PostJoinGroupRequestSchema),
+  postJoinGroup,
+);
+apiRoutes.post(
+  ApiEndpoint.LEAVE_GROUP,
+  requireAuth(UserGroup.USER),
+  postLeaveGroup,
+);
+apiRoutes.post(
+  ApiEndpoint.CLOSE_GROUP,
+  requireAuth(UserGroup.USER),
+  validateBody(PostCloseGroupRequestSchema),
+  postCloseGroup,
+);
+apiRoutes.post(
+  ApiEndpoint.SIGNUP_QUESTION,
+  requireAuth(UserGroup.ADMIN),
+  validateBody(PostSignupQuestionRequestSchema),
+  postSignupQuestion,
+);
+apiRoutes.post(
+  ApiEndpoint.SESSION_RESTORE,
+  validateBody(PostSessionRecoveryRequestSchema),
+  postSessionRestore,
+);
+apiRoutes.post(
+  ApiEndpoint.USERS_PASSWORD,
+  requireAuth([UserGroup.USER, UserGroup.HELPER, UserGroup.ADMIN]),
+  validateBody(PostUpdateUserPasswordRequestSchema),
+  postUserPassword,
+);
+apiRoutes.post(
+  ApiEndpoint.SETTINGS,
+  requireAuth(UserGroup.ADMIN),
+  validateBody(PostSettingsRequestSchema),
+  postSettings,
+);
+apiRoutes.post(
+  ApiEndpoint.DIRECT_SIGNUP,
+  requireAuth(UserGroup.USER),
+  validateBody(PostDirectSignupRequestSchema),
+  postDirectSignup,
+);
+apiRoutes.post(
+  ApiEndpoint.EVENT_LOG_IS_SEEN,
+  requireAuth(UserGroup.USER),
+  validateBody(PostEventLogIsSeenRequestSchema),
+  postEventLogItemIsSeen,
+);
+apiRoutes.post(
+  ApiEndpoint.VERIFY_KOMPASSI_LOGIN,
+  requireAuth(UserGroup.USER),
+  validateBody(PostVerifyKompassiLoginRequestSchema),
+  postVerifyKompassiLogin,
+);
 apiRoutes.post(
   ApiEndpoint.UPDATE_USER_EMAIL_ADDRESS,
+  requireAuth(UserGroup.USER),
   postUpdateUserEmailAddress,
 );
-apiRoutes.post(ApiEndpoint.EMAIL_TEST, postEmailTest);
+apiRoutes.post(
+  ApiEndpoint.EMAIL_TEST,
+  requireAuth(UserGroup.ADMIN),
+  validateBody(PostEmailTestRequestSchema),
+  postEmailTest,
+);
 
 /* GET routes */
 
 apiRoutes.get(ApiEndpoint.PROGRAM_ITEMS, getProgramItems);
-apiRoutes.get(ApiEndpoint.USERS, getUser);
+apiRoutes.get(ApiEndpoint.USERS, requireAuth(UserGroup.USER), getUser);
 apiRoutes.get(
   ApiEndpoint.USERS_BY_SERIAL_OR_USERNAME,
+  requireAuth([UserGroup.HELPER, UserGroup.ADMIN]),
+  validateQuery(GetUserBySerialRequestSchema),
   getUserBySerialOrUsername,
 );
 apiRoutes.get(ApiEndpoint.SETTINGS, getSettings);
-apiRoutes.get(ApiEndpoint.GROUP, getGroup);
-apiRoutes.get(ApiEndpoint.SIGNUP_MESSAGE, getSignupMessages);
-apiRoutes.get(ApiEndpoint.SENTRY_TEST, getSentryTest);
+apiRoutes.get(
+  ApiEndpoint.GROUP,
+  requireAuth(UserGroup.USER),
+  validateQuery(GetGroupRequestSchema),
+  getGroup,
+);
+apiRoutes.get(
+  ApiEndpoint.SIGNUP_MESSAGE,
+  requireAuth(UserGroup.HELPER),
+  getSignupMessages,
+);
+apiRoutes.get(
+  ApiEndpoint.SENTRY_TEST,
+  requireAuth(UserGroup.ADMIN),
+  getSentryTest,
+);
 apiRoutes.get(ApiEndpoint.HEALTH, getHealthStatus);
 
 /* DELETE routes */
 
-apiRoutes.delete(ApiEndpoint.SIGNUP_QUESTION, deleteSignupQuestion);
-apiRoutes.delete(ApiEndpoint.DIRECT_SIGNUP, deleteDirectSignup);
-apiRoutes.delete(ApiEndpoint.LOTTERY_SIGNUP, deleteLotterySignup);
+apiRoutes.delete(
+  ApiEndpoint.SIGNUP_QUESTION,
+  requireAuth(UserGroup.ADMIN),
+  validateBody(DeleteSignupQuestionRequestSchema),
+  deleteSignupQuestion,
+);
+apiRoutes.delete(
+  ApiEndpoint.DIRECT_SIGNUP,
+  requireAuth(UserGroup.USER),
+  validateBody(DeleteDirectSignupRequestSchema),
+  deleteDirectSignup,
+);
+apiRoutes.delete(
+  ApiEndpoint.LOTTERY_SIGNUP,
+  requireAuth(UserGroup.USER),
+  validateBody(DeleteLotterySignupRequestSchema),
+  deleteLotterySignup,
+);
 
 /* DEV routes */
 
 if (process.env.SETTINGS !== "production") {
-  apiRoutes.post(ApiDevEndpoint.TEST_SETTINGS, postTestSettings);
+  apiRoutes.post(
+    ApiDevEndpoint.TEST_SETTINGS,
+    validateBody(PostTestSettingsRequestSchema),
+    postTestSettings,
+  );
   apiRoutes.get(ApiDevEndpoint.TEST_SETTINGS, getTestSettings);
-  apiRoutes.post(ApiDevEndpoint.POPULATE_DB, postPopulateDb);
+  apiRoutes.post(
+    ApiDevEndpoint.POPULATE_DB,
+    validateBody(PopulateDbOptionsSchema),
+    postPopulateDb,
+  );
   apiRoutes.post(ApiDevEndpoint.CLEAR_DB, postClearDb);
-  apiRoutes.post(ApiDevEndpoint.ADD_PROGRAM_ITEMS, postAddProgramItems);
-  apiRoutes.post(ApiDevEndpoint.ADD_SERIALS, postAddSerials);
+  apiRoutes.post(
+    ApiDevEndpoint.ADD_PROGRAM_ITEMS,
+    validateBody(PostAddProgramItemsRequestSchema),
+    postAddProgramItems,
+  );
+  apiRoutes.post(
+    ApiDevEndpoint.ADD_SERIALS,
+    validateBody(PostAddSerialsRequestSchema),
+    postAddSerials,
+  );
 }
 
 /* Kompassi login routes */
 // TODO: Disable login endpoints if provider not set
 apiRoutes.post(AuthEndpoint.KOMPASSI_LOGIN, postKompassiLoginRedirect);
-apiRoutes.post(AuthEndpoint.KOMPASSI_LOGIN_CALLBACK, postKompassiLoginCallback);
+apiRoutes.post(
+  AuthEndpoint.KOMPASSI_LOGIN_CALLBACK,
+  validateBody(PostKompassiLoginRequestSchema),
+  postKompassiLoginCallback,
+);
 apiRoutes.post(AuthEndpoint.KOMPASSI_LOGOUT, postKompassiLogoutRedirect);
 
 if (process.env.NODE_ENV === "development") {

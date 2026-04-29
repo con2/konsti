@@ -1,25 +1,20 @@
 import { Request, Response } from "express";
-import { logger } from "server/utils/logger";
 import {
   getBaseUrl,
   doKompassiLogin,
   verifyKompassiLogin,
 } from "server/features/kompassi-login/kompassiLoginService";
-import { ApiEndpoint, AuthEndpoint } from "shared/constants/apiEndpoints";
 import {
-  PostKompassiLoginRequestSchema,
-  PostVerifyKompassiLoginRequestSchema,
+  PostKompassiLoginRequest,
+  PostVerifyKompassiLoginRequest,
 } from "shared/types/api/login";
 import { getAuthUrl } from "server/features/kompassi-login/kompassiLoginUtils";
-import { getAuthorizedUsername } from "server/utils/authHeader";
-import { UserGroup } from "shared/types/models/user";
+import { getAuthUsername } from "server/middleware/requireAuth";
 
 export const postKompassiLoginRedirect = (
   req: Request,
   res: Response,
 ): Response => {
-  logger.info(`API call: POST ${AuthEndpoint.KOMPASSI_LOGIN}`);
-
   if (!req.headers.origin) {
     return res.sendStatus(422);
   }
@@ -30,58 +25,25 @@ export const postKompassiLoginRedirect = (
 };
 
 export const postKompassiLoginCallback = async (
-  req: Request,
+  req: Request<unknown, unknown, PostKompassiLoginRequest>,
   res: Response,
 ): Promise<Response> => {
-  logger.info(`API call: POST ${AuthEndpoint.KOMPASSI_LOGIN_CALLBACK}`);
-
   if (!req.headers.origin) {
     return res.sendStatus(422);
   }
 
-  const result = PostKompassiLoginRequestSchema.safeParse(req.body);
-  if (!result.success) {
-    logger.error(
-      "%s",
-      new Error(
-        `Error validating postKompassiLoginCallback body: ${JSON.stringify(result.error)}`,
-      ),
-    );
-    return res.sendStatus(422);
-  }
-  const { code } = result.data;
+  const { code } = req.body;
 
   const response = await doKompassiLogin(code, req.headers.origin);
   return res.json(response);
 };
 
 export const postVerifyKompassiLogin = async (
-  req: Request,
+  req: Request<unknown, unknown, PostVerifyKompassiLoginRequest>,
   res: Response,
 ): Promise<Response> => {
-  logger.info(`API call: POST ${ApiEndpoint.VERIFY_KOMPASSI_LOGIN}`);
-
-  const jwtUsername = getAuthorizedUsername(
-    req.headers.authorization,
-    UserGroup.USER,
-  );
-  if (!jwtUsername) {
-    return res.sendStatus(401);
-  }
-
-  const result = PostVerifyKompassiLoginRequestSchema.safeParse(req.body);
-  if (!result.success) {
-    logger.error(
-      "%s",
-      new Error(
-        `Error validating postVerifyKompassiLogin body: ${JSON.stringify(result.error)}`,
-      ),
-    );
-    return res.sendStatus(422);
-  }
-
-  const { username } = result.data;
-  const response = await verifyKompassiLogin(jwtUsername, username);
+  const { username } = req.body;
+  const response = await verifyKompassiLogin(getAuthUsername(req), username);
   return res.json(response);
 };
 
@@ -89,8 +51,6 @@ export const postKompassiLogoutRedirect = (
   req: Request,
   res: Response,
 ): Response => {
-  logger.info(`API call: POST ${AuthEndpoint.KOMPASSI_LOGOUT}`);
-
   if (!req.headers.origin) {
     return res.sendStatus(422);
   }
