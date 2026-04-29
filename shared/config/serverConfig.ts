@@ -7,7 +7,6 @@ import { EmailNotificationTrigger } from "shared/types/emailNotification";
 export interface ServerConfig {
   port: number;
   debug: boolean;
-  enableAccessLog: boolean;
   dbConnString: string;
   dbName: string;
   jwtSecretKey: string;
@@ -63,9 +62,6 @@ const commonConfig = {
       : 5000,
   onlyCronjobs: process.env.ONLY_CRONJOBS === "true" ? true : false,
   cronjobsAndBackendSameInstance: false, // Set this to run cronjobs and http/api server on same instance
-
-  // Logging
-  enableAccessLog: true,
 
   // App settings
   bundleCompression: true,

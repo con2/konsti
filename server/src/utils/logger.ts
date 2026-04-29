@@ -1,4 +1,4 @@
-import { createLogger, format, Logger, transports } from "winston";
+import { createLogger, format, transports } from "winston";
 import _WinstonTransport from "winston-transport-sentry-node";
 // Node.js ESM CJS interop: package uses exports.default, so the class is wrapped as { default: Class }
 const WinstonTransport = (
@@ -57,7 +57,3 @@ export const logger = createLogger({
     }),
   ],
 });
-
-export const accessLogStream = {
-  write: (message: string): Logger => logger.info(message.slice(0, -1)), // Slice to remove line break
-};
