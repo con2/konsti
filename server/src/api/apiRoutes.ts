@@ -279,13 +279,24 @@ apiRoutes.delete(
 
 /* DEV routes */
 
-if (process.env.SETTINGS === "development" || process.env.SETTINGS === "ci") {
+// test-settings is also exposed in staging because the staging client uses it
+// to override "now" for time-dependent flows (loadData calls it before login)
+if (
+  process.env.SETTINGS === "development" ||
+  process.env.SETTINGS === "ci" ||
+  process.env.SETTINGS === "staging"
+) {
   apiRoutes.post(
     ApiDevEndpoint.TEST_SETTINGS,
     validateBody(PostTestSettingsRequestSchema),
     postTestSettings,
   );
   apiRoutes.get(ApiDevEndpoint.TEST_SETTINGS, getTestSettings);
+}
+
+// Destructive dev tools (DB wipe/repopulate, fixture generation) stay out of
+// staging where they could be reached by anyone
+if (process.env.SETTINGS === "development" || process.env.SETTINGS === "ci") {
   apiRoutes.post(
     ApiDevEndpoint.POPULATE_DB,
     validateBody(PopulateDbOptionsSchema),

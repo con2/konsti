@@ -105,7 +105,12 @@ Intentional divergences from the standard chain:
 - **`getProgramItems`** uses `getAuthorizedUserGroup` instead of `requireAuth` because it intentionally allows unauthenticated callers and varies its response by role.
 - **Kompassi mock service** (`server/src/test/kompassi-mock-service/`) routes are registered only when `NODE_ENV === "development"` and `throw` on validation failure rather than 422 — they're test fixtures, not user-facing endpoints.
 
-Dev-only test endpoints (`postPopulateDb`, `postClearDb`, `postAddProgramItems`, `postAddSerials`, `postTestSettings`, `getTestSettings`) are gated by `SETTINGS === "development" || SETTINGS === "ci"` — never registered in staging or production. Controllers also have an `if (NODE_ENV === "production") throw` belt-and-braces guard.
+Dev-only test endpoints are gated in two tiers:
+
+- **`postTestSettings` / `getTestSettings`** — registered in `development`, `ci`, **and `staging`** because the staging client calls `GET /api/test-settings` on app load (before login) to read the time-mocking override. Removing it from staging breaks the SPA bootstrap.
+- **`postPopulateDb`, `postClearDb`, `postAddProgramItems`, `postAddSerials`** — registered only in `development` and `ci`. These are destructive (DB wipe/repopulate, fixture generation) and have no use in staging.
+
+Both tiers stay out of `production` and have an `if (NODE_ENV === "production") throw` belt-and-braces guard inside the handler.
 
 Express 5 quirks to watch for:
 
