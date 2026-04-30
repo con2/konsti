@@ -279,7 +279,7 @@ apiRoutes.delete(
 
 /* DEV routes */
 
-if (process.env.SETTINGS !== "production") {
+if (process.env.SETTINGS === "development" || process.env.SETTINGS === "ci") {
   apiRoutes.post(
     ApiDevEndpoint.TEST_SETTINGS,
     validateBody(PostTestSettingsRequestSchema),

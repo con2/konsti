@@ -76,6 +76,42 @@ Two lottery algorithms: PADG (preference-based via `eventassigner-js`) and rando
 
 Local login (bcryptjs) and Kompassi OAuth. JWT tokens stored in localStorage. User roles: admin, helper, regular user.
 
+### Server Route & Middleware Conventions
+
+Routes in `server/src/api/apiRoutes.ts` follow a fixed middleware chain:
+
+```ts
+apiRoutes.post(
+  ApiEndpoint.X,
+  requireAuth(UserGroup.X), // 401 if not authenticated / wrong role
+  validateBody(SomeRequestSchema), // 422 if zod parse fails
+  handler,
+);
+```
+
+For GETs with query strings, use `validateQuery(...)` instead of (or in addition to) `validateBody(...)`. Schemas live in `shared/types/api/...` (or `shared/test-types/api/...` for dev/test); routes import the schema, controllers import the inferred type only and read parsed data straight off `req.body` / `req.query` — don't re-parse in the controller.
+
+Handler signature: `req: Request<unknown, unknown, RequestBody, RequestQuery>`. Handlers needing the authenticated user call `getAuthUsername(req)` from `server/middleware/requireAuth` — the middleware sets `req.auth = { username }` and the helper enforces presence at runtime (throws if `requireAuth` wasn't wired).
+
+Other middlewares:
+
+- `logApiCall` (mounted on `apiRoutes` only, not `sentryRoutes`) writes one access line per request via winston on response finish: `API call: METHOD /path STATUS Xms user=X ip=Y size=Z`. Skips OPTIONS preflights and strips `::ffff:` from IPv4-mapped IPs. Replaces morgan, which has been removed.
+- `app.set("trust proxy", 1)` is unconditional (safe in dev because the server only binds to localhost; production reads `X-Forwarded-For` from k8s ingress).
+
+Intentional divergences from the standard chain:
+
+- **`postUpdateUserEmailAddress`** keeps inline `safeParse` because its 422 response is a custom JSON body (`{message, status, errorId: "invalidEmail"}`), which `validateBody`'s plain `sendStatus(422)` can't produce.
+- **`postSentryTunnel`** lives in `server/src/api/sentryRoutes.ts` (separate router, mounted before `express.json()`) because it accepts raw `Buffer` envelopes from Sentry's client SDK rather than JSON. It does its own inline `logger.info(...)` since `logApiCall` isn't mounted on that router.
+- **`getProgramItems`** uses `getAuthorizedUserGroup` instead of `requireAuth` because it intentionally allows unauthenticated callers and varies its response by role.
+- **Kompassi mock service** (`server/src/test/kompassi-mock-service/`) routes are registered only when `NODE_ENV === "development"` and `throw` on validation failure rather than 422 — they're test fixtures, not user-facing endpoints.
+
+Dev-only test endpoints (`postPopulateDb`, `postClearDb`, `postAddProgramItems`, `postAddSerials`, `postTestSettings`, `getTestSettings`) are gated by `SETTINGS === "development" || SETTINGS === "ci"` — never registered in staging or production. Controllers also have an `if (NODE_ENV === "production") throw` belt-and-braces guard.
+
+Express 5 quirks to watch for:
+
+- `req.query` is a getter; `validateQuery` uses `Object.defineProperty` to overwrite it with the parsed value (direct assignment is unsafe).
+- Async errors from handlers propagate to the error middleware natively — no `asyncHandler` wrapper needed.
+
 ### Event Configuration
 
 Current event config in `shared/config/eventConfig.ts`, past events in `shared/config/past-events/` (e.g., `ropecon2025.ts`). Controls signup windows, program item types, assignment rules.
