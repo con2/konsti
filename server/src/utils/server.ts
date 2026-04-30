@@ -29,6 +29,10 @@ export const startServer = async ({
 
   const app = express();
 
+  // Trust one hop of reverse proxy (k8s ingress / load balancer) so req.ip reads
+  // X-Forwarded-For instead of the proxy's address. Harmless in dev.
+  app.set("trust proxy", 1);
+
   const cspConnectSrc = [
     "'self'",
     "*.sentry.io",
