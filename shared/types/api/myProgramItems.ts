@@ -44,7 +44,7 @@ export type DeleteLotterySignupRequest = z.infer<
   typeof DeleteLotterySignupRequestSchema
 >;
 
-export type DeleteLotterySignupResult = ApiResult;
+type DeleteLotterySignupResult = ApiResult;
 
 export interface DeleteLotterySignupError extends ApiError {
   errorId: "unknown" | "signupEnded" | "programItemNotFound";
@@ -97,14 +97,14 @@ export type DeleteDirectSignupRequest = z.infer<
   typeof DeleteDirectSignupRequestSchema
 >;
 
-export interface DeleteDirectSignupResult extends ApiResult {
+interface DeleteDirectSignupResult extends ApiResult {
   allSignups: {
     programItemId: string;
     userSignups: { username: string; message: string }[];
   };
 }
 
-export interface DeleteDirectSignupError extends ApiError {
+interface DeleteDirectSignupError extends ApiError {
   errorId: "unknown" | "signupEnded";
 }
 

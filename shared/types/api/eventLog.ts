@@ -31,7 +31,7 @@ export interface PostEventLogIsSeenResult extends ApiResult {
   eventLogItems: EventLogItem[];
 }
 
-export interface PostEventLogIsSeenError extends ApiError {
+interface PostEventLogIsSeenError extends ApiError {
   errorId: "unknown";
 }
 

@@ -12,7 +12,6 @@ const config: KnipConfig = {
   ],
   ignore: [
     ".stylelintrc.ts",
-    "shared/config/past-events/*.ts",
     "playwright/playwright.config.ts",
     "client/src/markdown/prettier.config.ts",
     "server/src/test/scripts/removeInvalidProgramItems.ts",
@@ -28,7 +27,12 @@ const config: KnipConfig = {
 
   workspaces: {
     ".": {
-      entry: ["eslint-rules/*.ts", "shared/setupTests.ts", "yarn.config.ts"],
+      entry: [
+        "eslint-rules/*.ts",
+        "shared/config/past-events/*.ts",
+        "shared/setupTests.ts",
+        "yarn.config.ts",
+      ],
     },
     "client/": {
       entry: ["src/index.tsx"],
