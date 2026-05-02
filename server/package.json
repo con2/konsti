@@ -40,7 +40,7 @@
     "bcryptjs": "3.0.3",
     "commander": "14.0.3",
     "croner": "10.0.1",
-    "dotenv": "17.4.0",
+    "dotenv": "17.4.2",
     "eventassigner-js": "0.1.6",
     "eventassigner-random": "0.3.2",
     "express": "5.2.1",
@@ -53,7 +53,7 @@
     "mongoose": "9.4.1",
     "mongoose-lean-getters": "2.3.1",
     "mongoose-lean-virtuals": "2.1.0",
-    "nodemailer": "8.0.4",
+    "nodemailer": "8.0.6",
     "tsx": "4.21.0",
     "winston": "3.19.0",
     "winston-transport-sentry-node": "3.0.0"
