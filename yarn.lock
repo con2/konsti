@@ -2851,12 +2851,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/nodemailer@npm:7.0.11":
-  version: 7.0.11
-  resolution: "@types/nodemailer@npm:7.0.11"
+"@types/nodemailer@npm:8.0.0":
+  version: 8.0.0
+  resolution: "@types/nodemailer@npm:8.0.0"
   dependencies:
     "@types/node": "npm:*"
-  checksum: 10c0/dc6472c26600e763c38721b0691fc3014eb868d20b97eb48cfbc4fe9a7a09f66c0ccd8d647033a4be91051cc3c7bdca73c006db2f7a9e8bdd1ce65bb5ec2599c
+  checksum: 10c0/e5031df5d6557f4cdb9a0dbe1a96f3f54dc59c23d47477103fd42b5c9bc925ea1b4e51be560af5620b4d0c66fcfb015ce5ca8f914ed2f3a3086be6149d5932da
   languageName: node
   linkType: hard
 
@@ -10975,7 +10975,7 @@ __metadata:
     "@types/express": "npm:5.0.6"
     "@types/jsonwebtoken": "npm:9.0.10"
     "@types/node": "npm:25.6.0"
-    "@types/nodemailer": "npm:7.0.11"
+    "@types/nodemailer": "npm:8.0.0"
     "@types/supertest": "npm:7.2.0"
     bcryptjs: "npm:3.0.3"
     commander: "npm:14.0.3"
