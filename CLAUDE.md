@@ -206,6 +206,19 @@ Non-obvious invariants when analysing the dumps:
 
 Client uses Redux Toolkit. Store in `client/src/state/`. API calls in `client/src/services/`.
 
+### Internationalization
+
+i18next, English + Finnish. Locale files: `client/src/locales/{en,fi}.ts` (deeply nested `as const` objects). `client/src/utils/i18n.ts` has an `expectLocalesToMatch` type-level check — if EN and FI don't have identical key shapes, type-check fails. The same `NestedKeyOf` machinery makes `t("...")` calls type-checked at the call site (missing keys are TS errors).
+
+**Translation keys are client-only.** Server/shared/playwright code must never reference translation keys (the i18next instance only exists in client). The unused-keys detector (below) only scans `client/src` and treats any apparent reference outside as a bug to investigate, not a use.
+
+**Dynamic key patterns to know about:**
+
+- Template-built keys: `t(\`programType.${type}\`)`, `t(\`attendeeTypePlural.${getAttendeeType(programType)}\`)`. The detector tracks these as wildcard skeletons (`programType.\*`).
+- Keys held as TS enum values: `enum PostLotterySignupErrorMessage { UNKNOWN = "signupError.generic", ... }`. Easy to miss with a naive grep for `t("…")`. The detector handles this by matching any string literal against the known key set.
+
+`yarn find-unused-translation-keys` reports unused keys (exits 1 if any). Wired into `yarn lint` and the CI lint job.
+
 ## Test Data Credentials
 
 - Admin: `admin:test`
