@@ -1,5 +1,4 @@
 export const translationFI = {
-  appTitle: "Konsti",
   appDescription: "{{EVENT_NAME}} {{EVENT_YEAR}}",
   logoAltText: "Konsti",
   announcement: "Ilmoittautuminen on päättynyt. Tulokset julkaistaan piakkoin.",
@@ -9,16 +8,13 @@ export const translationFI = {
     register: "Luo tili",
     updateDb: "Päivitä ohjelmatietokanta",
     assignAttendees: "Sijoita ilmoittautuneet",
-    signup: "Tallenna",
     cancelSignup: "Peru ilmoittautuminen",
     showAdmissionTicket: "Näytä pääsylippu",
     showInfo: "Näytä tiedot",
     back: "Takaisin",
-    favorite: "Lisää suosikkeihin",
     unfavorite: "Poista suosikeista",
     hideProgramItem: "Piilota ohjelmanumero",
     showProgramItem: "Poista piilotus",
-    saveTime: "Tallenna aktiivinen aika",
     createGroup: "Luo ryhmä",
     joinGroup: "Liity ryhmään",
     createGroupConfirmation: "Luo",
@@ -42,18 +38,13 @@ export const translationFI = {
   loading: "Ladataan...",
   hours: "tuntia",
   minutes: "minuuttia",
-  show: "Näytä",
-  hide: "Piilota",
-  sortBy: "Järjestys",
   find: "Etsi",
   findTitleOrUsername: "{{PROGRAM_TYPE}} nimi tai nimimerkki",
   searchWithTitle: "{{PROGRAM_TYPE}} nimi",
   searchWithTitleOrSystem: "{{PROGRAM_TYPE}} nimi tai järjestelmä",
   hideFullItems: "Piilota täynnä olevat ohjelmanumerot",
   language: {
-    english: "Englanti",
     englishShort: "EN",
-    finnish: "Suomi",
     finnishShort: "FI",
   },
   validation: {
@@ -67,7 +58,6 @@ export const translationFI = {
     programList: "Kaikki ohjelma",
     program: "Ohjelma",
     admin: "Ylläpito",
-    group: "Ryhmä",
     notifications: "Ilmoitukset",
     profileAndGroup: "Profiili & ryhmä",
     profile: "Profiili",
@@ -76,18 +66,13 @@ export const translationFI = {
   programItemInfo: {
     gamestyle: "Pelityyli",
     runTime: "Aika",
-    description: "Kuvaus",
     location: "Sijainti",
-    duration: "kesto",
     tags: "Tagit",
-    time: "Aloitusaika",
     gameSystem: "Pelijärjestelmä",
     genres: "Genret",
     organiser: "Järjestäjä",
-    shortDescription: "Lyhyt kuvaus",
     revolvingDoor:
       "Tämä on pyöröovi{{PROGRAM_TYPE}}, johon voi liittyä koska tahansa, jos {{PROGRAM_TYPE2}} on tilaa.",
-    programType: "Ohjelmatyyppi",
     showMore: "Näytä lisää",
     showMoreAriaLabel: "Näytä lisää ohjelmanumerosta",
     showLess: "Näytä vähemmän",
@@ -171,16 +156,11 @@ export const translationFI = {
   noHiddenProgramItems: "Ei piilotettuja ohjelmanumeroita",
   noSignupQuestions: "Ei ilmoittautumisten lisätietokysymystä",
   signupQuestions: "Ilmoittautumisen lisätietokysymykset",
-  noOpenSignups: "Ei avoimia ilmoittautumisia",
-  signupOpen: "Ilmoittautuminen auki seuraaville alkamisajoille",
-  lotterySignupOpenBetween: "arvontaan ilmoittautuminen",
-  signupSaved: "Ilmoittautuminen tallennettu",
   signupError: {
     generic: "Ilmoittautuminen epäonnistui",
     cancelFailed: "Virhe ilmoittautumista peruessa",
     signupEnded: "Ilmoittautuminen päättynyt",
     samePriority: "Prioriteetti on jo valittu",
-    invalidPriority: "Virheellinen prioriteetti",
     signupNotOpenYet: "Ilmoittautuminen ei ole vielä auki",
     programItemNotFound: "Ohjelmanumeroa ei löytynyt",
     programItemFull: "Ohjelma on täynnä.",
@@ -188,10 +168,8 @@ export const translationFI = {
       "Tähän ohjelmaan ei ilmoittauduta Konstissa. Katso ilmoittautumisohjeet ohjelman lisätiedoista.",
     programItemCancelled: "Ohjelmanumero on peruttu",
   },
-  signupUnsavedChanges: "Tallentamattomia muutoksia",
   closingMessage:
     "Konsti on suljettu ja avautuu lähempänä seuraavaa tapahtumaa.",
-  details: "lisätietoja",
   invalidProgramItemId:
     "Ohjelmanumeroa {{PROGRAM_ITEM_ID}} ei löydy. Joko ohjelmanumeroon ei ilmoittauduta Konstin avulla tai tunniste on virheellinen.",
   noProgramItemsAvailable:
@@ -240,7 +218,6 @@ export const translationFI = {
     generalLeaveGroupError: "Virhe ryhmästä poistuessa",
     groupTooBigWarning:
       "Ryhmä on suurempi kuin suurin sallittu osallistujamäärä",
-    enterGroupMemberCode: "Käyttäjän koodi",
     enterGroupCreatorCode: "Ryhmän perustajan koodi",
     createGroupConfirmationMessage: "Halutko luoda ryhmän?",
     youAreGroupCreator: "Olet ryhmän perustaja",
@@ -259,10 +236,7 @@ export const translationFI = {
     invalidGroupCode: "Virheellinen koodi",
     groupNotExist: "Ryhmää ei ole olemassa",
     generalGroupError: "Virhe ryhmää päivittäessä",
-    generalJoinGroupError: "Virhe ryhmään liittyessä",
   },
-  signupResults: "Ilmoittautumisen tulokset",
-  helperResults: "Tulokset",
   passwordManagement: {
     helperPasswordManagement: "Vaihda salasana",
     registrationCodeOrUsername: "Rekisteröintikoodi tai nimimerkki",
@@ -320,9 +294,7 @@ export const translationFI = {
     confirmCancellation: "Peruuta ilmoittautuminen",
     staySignedUp: "Pysy ilmoittautuneena",
     expectedDuration: "Kesto {{EXPECTED_DURATION}}",
-    directSignupOpenNow: "Ilmoittautuminen on avoinna",
     loginToSignup: "Kirjaudu sisään ilmoittautumista varten",
-    signupAlwaysOpen: "Ilmoittautuminen aina auki",
     inGroupWarning:
       "Jos ilmoittaudut {{PROGRAM_TYPE}}, sinut poistetaan ryhmästäsi. Ryhmää voi käyttää ainoastaan arvontailmoittautumisissa.",
     groupCreatorWarning:
@@ -378,10 +350,6 @@ export const translationFI = {
     },
     cancelled: "Tämä {{PROGRAM_TYPE}} on peruttu.",
     cancelledTitleText: "PERUTTU",
-  },
-  attendeeType: {
-    player: "pelaaja",
-    participant: "osallistuja",
   },
   attendeeTypePlural: {
     player: "pelaajia",
@@ -450,17 +418,6 @@ export const translationFI = {
     roundtableDiscussion: "Keskustelupiirin",
     fleaMarket: "Kirpputoriajan",
   },
-  programTypeElative: {
-    all: "ohjelmanumerosta",
-    tabletopRPG: "roolipelistä",
-    larp: "larpista",
-    tournament: "turnauksesta",
-    workshop: "työpajasta",
-    experiencePoint: "pelistä",
-    other: "ohjelmanumerosta",
-    roundtableDiscussion: "keskustelupiiristä",
-    fleaMarket: "kirpputoriajasta",
-  },
   programTypePartitivePlural: {
     all: "ohjelmanumeroita",
     tabletopRPG: "roolipelejä",
@@ -500,7 +457,6 @@ export const translationFI = {
   },
   myProgramView: {
     yourAnswer: "Vastauksesi kysymykseen",
-    changePassword: "Vaihda salasana",
     startingTimeChanged: "Aloitusaika muuttunut",
   },
   accessibility: {
@@ -566,8 +522,6 @@ export const translationFI = {
     extreme: "Tosi paljon enemmän kiinnostuneita kuin paikkoja",
   },
   selectedProgramType: "Ohjelmatyyppi",
-  yes: "Kyllä",
-  no: "Ei",
   signupQuestion: {
     privateQuestion: "Yksityinen kysymys",
     questionType: "Tyyppi",
@@ -599,8 +553,6 @@ export const translationFI = {
     notOpenYet: "Konstiin kirjautuminen ei vielä ole avoinna.",
     createKompassiAccountHint:
       "Konstiin ei vielä voi kirjautua, mutta voit jo luoda Kompassi-tunnuksen, jolla Konstiin kirjaudutaan.",
-    createKompassiLocalAccountHint:
-      "Voit kirjautua Konstiin joko Kompassi-tunnuksella tai Konsti-tunnuksella, jonka voit luoda kun Konstin kirjautuminen aukeaa. Kompassi-tunnuksen voit luoda jo nyt.",
     createKompassiAccount: "Luo Kompassi-tunnus.",
     chooseKonstiUsername: "Valitse Konsti-nimimerkki",
   },
@@ -611,7 +563,6 @@ export const translationFI = {
     alreadyHaveAccountLogin: "Onko sinulla jo tili? Kirjaudu sisään tästä.",
     konstiAccount: "Konsti-tunnus",
     kompassiAccount: "Kompassi-tunnus",
-    linkToLogin: "Kirjaudu sisään tai luo Kompassi-tunnus.",
   },
   admissionView: {
     noAdmission: "Et ole ilmoittautunut tähän ohjelmanumeroon.",
@@ -628,10 +579,6 @@ export const translationFI = {
     closeNavigation: "Sulje navigaatiovalikko",
     addFavorite: "Lisää suosikki",
     deleteFavorite: "Poista suosikki",
-    openChangePassword: "Avaa salasanan vaihto",
-    closeChangePassword: "Sulje salasanan vaihto",
-    openAttendeeList: "Avaa {{ATTENDEE_TYPE}}lista",
-    closeAttendeeList: "Sulje {{ATTENDEE_TYPE}}lista",
     showPassword: "Näytä salasana",
     hidePassword: "Piilota salasana",
     newNotifications: "Uusia ilmoituksia",

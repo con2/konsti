@@ -1,5 +1,4 @@
 export const translationEN = {
-  appTitle: "Konsti",
   appDescription: "{{EVENT_NAME}} {{EVENT_YEAR}}",
   logoAltText: "Konsti",
   announcement: "Sign-up has ended. Results will be released soon.",
@@ -9,16 +8,13 @@ export const translationEN = {
     register: "Create account",
     updateDb: "Update program database",
     assignAttendees: "Assign attendees",
-    signup: "Save",
     cancelSignup: "Cancel sign-up",
     showAdmissionTicket: "Show admission ticket",
     showInfo: "Show info",
     back: "Back",
-    favorite: "Favorite",
     unfavorite: "Remove from favorites",
     hideProgramItem: "Hide program item",
     showProgramItem: "Unhide program item",
-    saveTime: "Save active time",
     createGroup: "Create group",
     joinGroup: "Join group",
     createGroupConfirmation: "Create",
@@ -42,18 +38,13 @@ export const translationEN = {
   loading: "Loading...",
   hours: "hours",
   minutes: "minutes",
-  show: "Show",
-  hide: "Hide",
-  sortBy: "Sort by",
   find: "Find",
   findTitleOrUsername: "{{PROGRAM_TYPE}} title or username",
   searchWithTitle: "{{PROGRAM_TYPE}} title",
   searchWithTitleOrSystem: "{{PROGRAM_TYPE}} title or system",
   hideFullItems: "Hide fully booked program items",
   language: {
-    english: "English",
     englishShort: "EN",
-    finnish: "Finnish",
     finnishShort: "FI",
   },
   validation: {
@@ -67,7 +58,6 @@ export const translationEN = {
     programList: "All Program",
     program: "Program",
     admin: "Admin",
-    group: "Group",
     notifications: "Notifications",
     profileAndGroup: "Profile & Group",
     profile: "Profile",
@@ -76,18 +66,13 @@ export const translationEN = {
   programItemInfo: {
     gamestyle: "Game style",
     runTime: "Time",
-    description: "Description",
     location: "Location",
-    duration: "length",
     tags: "Tags",
-    time: "Starting time",
     gameSystem: "Game system",
     genres: "Genres",
     organiser: "Organiser",
-    shortDescription: "Short description",
     revolvingDoor:
       "This is a revolving door {{PROGRAM_TYPE}}. You can join it at any time if there is free space.",
-    programType: "Program type",
     showMore: "Show more",
     showMoreAriaLabel: "Show more of the program item",
     showLess: "Show less",
@@ -171,16 +156,11 @@ export const translationEN = {
   noHiddenProgramItems: "No hidden program items",
   noSignupQuestions: "No sign-up questions",
   signupQuestions: "Sign-up questions",
-  noOpenSignups: "No open sign-ups",
-  signupOpen: "Sign-up open for the following times",
-  lotterySignupOpenBetween: "lottery sign-up open",
-  signupSaved: "Sign-up saved",
   signupError: {
     generic: "Sign-up failed",
     cancelFailed: "Error canceling sign-up",
     signupEnded: "Sign-up ended",
     samePriority: "Priority already selected",
-    invalidPriority: "Invalid priority",
     signupNotOpenYet: "Sign-up not open yet",
     programItemNotFound: "Program item not found",
     programItemFull: "This program item is full.",
@@ -188,9 +168,7 @@ export const translationEN = {
       "This program does not use Konsti for signing up. See the program details for instructions.",
     programItemCancelled: "Program item is cancelled",
   },
-  signupUnsavedChanges: "Unsaved changes",
   closingMessage: "Konsti is closed and will open closer to the next event.",
-  details: "details",
   invalidProgramItemId:
     "Program item {{PROGRAM_ITEM_ID}} not found. Either the program item does not use Konsti for signups or the identifier is incorrect.",
   noProgramItemsAvailable:
@@ -240,7 +218,6 @@ export const translationEN = {
     generalLeaveGroupError: "Error leaving group",
     groupTooBigWarning:
       "The group is bigger than the maximum number of attendees",
-    enterGroupMemberCode: "User's code",
     enterGroupCreatorCode: "Group creator's code",
     createGroupConfirmationMessage: "Do you want to create a group?",
     youAreGroupCreator: "You are the group creator",
@@ -259,10 +236,7 @@ export const translationEN = {
     invalidGroupCode: "Invalid code",
     groupNotExist: "Group does not exist",
     generalGroupError: "Error updating group",
-    generalJoinGroupError: "Error joining group",
   },
-  signupResults: "Sign-up results",
-  helperResults: "Results",
   passwordManagement: {
     helperPasswordManagement: "Change password",
     registrationCodeOrUsername: "Registration code or username",
@@ -318,9 +292,7 @@ export const translationEN = {
     confirmCancellation: "Cancel your sign-up",
     staySignedUp: "Stay signed up",
     expectedDuration: "Duration {{EXPECTED_DURATION}}",
-    directSignupOpenNow: "Sign-up is open",
     loginToSignup: "Log in to sign up",
-    signupAlwaysOpen: "Sign-up always open",
     inGroupWarning:
       "If you sign up to a {{PROGRAM_TYPE}}, you will be removed from your current group. Groups can only be used in lottery signups.",
     groupCreatorWarning:
@@ -374,10 +346,6 @@ export const translationEN = {
     },
     cancelled: "This {{PROGRAM_TYPE}} has been cancelled.",
     cancelledTitleText: "CANCELLED",
-  },
-  attendeeType: {
-    player: "player",
-    participant: "participant",
   },
   attendeeTypePlural: {
     player: "players",
@@ -446,17 +414,6 @@ export const translationEN = {
     roundtableDiscussion: "Roundtable discussion",
     fleaMarket: "Flea market time",
   },
-  programTypeElative: {
-    all: "program item",
-    tabletopRPG: "roleplaying game",
-    larp: "larp",
-    tournament: "tournament",
-    workshop: "workshops",
-    experiencePoint: "program",
-    other: "program item",
-    roundtableDiscussion: "roundtable discussion",
-    fleaMarket: "flea market time",
-  },
   programTypePartitivePlural: {
     all: "program items",
     tabletopRPG: "roleplaying games",
@@ -496,7 +453,6 @@ export const translationEN = {
   },
   myProgramView: {
     yourAnswer: "Your answer to the question",
-    changePassword: "Change password",
     startingTimeChanged: "Starting time changed",
   },
   accessibility: {
@@ -562,8 +518,6 @@ export const translationEN = {
     extreme: "Much, much more interested {{ATTENDEE_TYPE}} than seats",
   },
   selectedProgramType: "Program type",
-  yes: "Yes",
-  no: "No",
   signupQuestion: {
     privateQuestion: "Private question",
     questionType: "Type",
@@ -595,8 +549,6 @@ export const translationEN = {
     notOpenYet: "Logging in to Konsti hasn't been opened yet.",
     createKompassiAccountHint:
       "Konsti is not open yet but you can already create a Kompassi account, which is used to log in to Konsti.",
-    createKompassiLocalAccountHint:
-      "You can log in to Konsti with a Kompassi account or a Konsti account that you can create when Konsti logins open. You can already create a Kompassi account, if you don't have one.",
     createKompassiAccount: "Create a Kompassi account.",
     chooseKonstiUsername: "Choose a Konsti username",
   },
@@ -607,7 +559,6 @@ export const translationEN = {
     alreadyHaveAccountLogin: "Do you already have an account? Log in here.",
     konstiAccount: "Konsti account",
     kompassiAccount: "Kompassi account",
-    linkToLogin: "Log in or create a Kompassi account.",
   },
   admissionView: {
     noAdmission: "You have not signed up for this program item.",
@@ -624,10 +575,6 @@ export const translationEN = {
     closeNavigation: "Close navigation menu",
     addFavorite: "Add favorite",
     deleteFavorite: "Delete favorite",
-    openChangePassword: "Open change password",
-    closeChangePassword: "Close change password",
-    openAttendeeList: "Open {{ATTENDEE_TYPE}} list",
-    closeAttendeeList: "Close {{ATTENDEE_TYPE}} list",
     showPassword: "Show password",
     hidePassword: "Hide password",
     newNotifications: "New notifications",
