@@ -726,9 +726,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eslint/config-inspector@npm:1.5.0":
-  version: 1.5.0
-  resolution: "@eslint/config-inspector@npm:1.5.0"
+"@eslint/config-inspector@npm:2.0.0":
+  version: 2.0.0
+  resolution: "@eslint/config-inspector@npm:2.0.0"
   dependencies:
     ansis: "npm:^4.2.0"
     bundle-require: "npm:^5.1.0"
@@ -743,7 +743,7 @@ __metadata:
   bin:
     config-inspector: bin.mjs
     eslint-config-inspector: bin.mjs
-  checksum: 10c0/3db32207b7cd20d6f615e2a9fd3e7b77a9d281299ac84e8990fa1ff19b803c5a5fb3178e1fd8d2f21fabc46b88fee880004914cfa908caad458d89edbd350f90
+  checksum: 10c0/a2307af51110608767ba3cd1be2ef096aec60f211fe3af460bf09f9277dc2f9506d8d47b79243b60ae5b0b21ce8c2f39c09003264b4a8405be2971f176c6401f
   languageName: node
   linkType: hard
 
@@ -7884,7 +7884,7 @@ __metadata:
   dependencies:
     "@eslint-community/eslint-plugin-eslint-comments": "npm:4.7.1"
     "@eslint/compat": "npm:2.0.5"
-    "@eslint/config-inspector": "npm:1.5.0"
+    "@eslint/config-inspector": "npm:2.0.0"
     "@eslint/js": "npm:10.0.1"
     "@playwright/test": "npm:1.59.1"
     "@types/eslint-plugin-jsx-a11y": "npm:6.10.1"
