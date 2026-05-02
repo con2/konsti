@@ -133,9 +133,7 @@ export const api = {
   ): Promise<ApiResponse<RES>> => {
     let fetchUrl: string = url;
     if (options?.params) {
-      const searchParams = new URLSearchParams(
-        options.params as Record<string, string>,
-      );
+      const searchParams = new URLSearchParams(options.params);
       fetchUrl = `${url}?${searchParams.toString()}`;
     }
     return await apiFetch<RES>(fetchUrl, HttpMethod.GET);
