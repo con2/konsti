@@ -18,10 +18,8 @@ import {
 import { UserGroup } from "shared/types/models/user";
 import {
   Result,
-  isErrorResult,
   makeErrorResult,
   makeSuccessResult,
-  unwrapResult,
 } from "shared/utils/result";
 import {
   KompassiProfile,
@@ -116,24 +114,24 @@ export const doKompassiLogin = async (
   origin: string,
 ): Promise<PostKompassiLoginResponse> => {
   const tokensResult = await getKompassiTokens(code, origin);
-  if (isErrorResult(tokensResult)) {
+  if (!tokensResult.ok) {
     return {
       message: "Error getting tokens from Komapssi",
       status: "error",
       errorId: "unknown",
     };
   }
-  const tokens = unwrapResult(tokensResult);
+  const tokens = tokensResult.value;
 
   const profileResult = await getKompassiProfile(tokens.access_token);
-  if (isErrorResult(profileResult)) {
+  if (!profileResult.ok) {
     return {
       message: "Error getting user profile from Komapssi",
       status: "error",
       errorId: "unknown",
     };
   }
-  const profile = unwrapResult(profileResult);
+  const profile = profileResult.value;
 
   const groupNames = profile.groups.filter((groupName) =>
     accessGroups.has(groupName),
@@ -148,14 +146,14 @@ export const doKompassiLogin = async (
   }
 
   const existingUserResult = await findUserByKompassiId(profile.id);
-  if (isErrorResult(existingUserResult)) {
+  if (!existingUserResult.ok) {
     return {
       message: "Error finding existing user",
       status: "error",
       errorId: "loginFailed",
     };
   }
-  const existingUser = unwrapResult(existingUserResult);
+  const existingUser = existingUserResult.value;
 
   if (existingUser) {
     return {
@@ -176,26 +174,26 @@ export const doKompassiLogin = async (
   }
 
   const serialDocResult = await createSerial();
-  if (isErrorResult(serialDocResult)) {
+  if (!serialDocResult.ok) {
     return {
       message: "Error creating serial for new user",
       status: "error",
       errorId: "loginFailed",
     };
   }
-  const serialDoc = unwrapResult(serialDocResult);
+  const serialDoc = serialDocResult.value;
   const serial = serialDoc[0].serial;
 
   // Check if username already taken
   const findUserResult = await findUser(profile.username);
-  if (isErrorResult(findUserResult)) {
+  if (!findUserResult.ok) {
     return {
       errorId: "unknown",
       message: "Finding user failed",
       status: "error",
     };
   }
-  const userWithSameUsername = unwrapResult(findUserResult);
+  const userWithSameUsername = findUserResult.value;
 
   const saveUserResult = await saveUser({
     kompassiId: profile.id,
@@ -209,14 +207,14 @@ export const doKompassiLogin = async (
     userGroup: UserGroup.USER,
     groupCode: "0",
   });
-  if (isErrorResult(saveUserResult)) {
+  if (!saveUserResult.ok) {
     return {
       message: "Saving user failed",
       status: "error",
       errorId: "loginFailed",
     };
   }
-  const saveUserResponse = unwrapResult(saveUserResult);
+  const saveUserResponse = saveUserResult.value;
 
   logger.info(`Kompassi login: Saved new user ${saveUserResponse.username}`);
 
@@ -244,7 +242,7 @@ export const verifyKompassiLogin = async (
   if (oldUsername !== newUsername) {
     // Check if username already taken
     const findUserResult = await findUser(newUsername);
-    if (isErrorResult(findUserResult)) {
+    if (!findUserResult.ok) {
       return {
         errorId: "unknown",
         message: "Finding user failed",
@@ -252,7 +250,7 @@ export const verifyKompassiLogin = async (
       };
     }
 
-    const existingUser = unwrapResult(findUserResult);
+    const existingUser = findUserResult.value;
 
     if (existingUser) {
       logger.info(
@@ -270,7 +268,7 @@ export const verifyKompassiLogin = async (
     oldUsername,
     newUsername,
   );
-  if (isErrorResult(userResult)) {
+  if (!userResult.ok) {
     return {
       message: "Updating Kompassi login status failed",
       status: "error",
@@ -278,7 +276,7 @@ export const verifyKompassiLogin = async (
     };
   }
 
-  const user = unwrapResult(userResult);
+  const user = userResult.value;
 
   logger.info(
     `Kompassi login: username ${oldUsername} changed to ${newUsername}`,
@@ -298,7 +296,7 @@ export const verifyUpdateUserEmailAddress = async (
   email: string,
 ): Promise<PostUpdateUserEmailAddressResponse> => {
   const userResult = await updateUserEmailAddress(username, email);
-  if (isErrorResult(userResult)) {
+  if (!userResult.ok) {
     return {
       message: "Updating user email address failed",
       status: "error",
@@ -306,7 +304,7 @@ export const verifyUpdateUserEmailAddress = async (
     };
   }
 
-  const user = unwrapResult(userResult);
+  const user = userResult.value;
 
   return {
     message: "Email address updated successfully",

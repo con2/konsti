@@ -1,12 +1,7 @@
 import { config } from "shared/config";
 import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
 import { logger } from "server/utils/logger";
-import {
-  Result,
-  isErrorResult,
-  makeSuccessResult,
-  unwrapResult,
-} from "shared/utils/result";
+import { Result, makeSuccessResult } from "shared/utils/result";
 import { MongoDbError } from "shared/types/api/errors";
 
 export const getDynamicStartTime = async (): Promise<
@@ -15,11 +10,11 @@ export const getDynamicStartTime = async (): Promise<
   const { directSignupPhaseStart } = config.event();
 
   const timeNowResult = await getTimeNow();
-  if (isErrorResult(timeNowResult)) {
+  if (!timeNowResult.ok) {
     return timeNowResult;
   }
 
-  const timeNow = unwrapResult(timeNowResult);
+  const timeNow = timeNowResult.value;
 
   const dynamicStartTime = timeNow
     .startOf("minute")

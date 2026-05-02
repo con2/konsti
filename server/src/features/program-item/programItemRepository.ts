@@ -9,8 +9,6 @@ import {
   makeSuccessResult,
   Result,
   makeErrorResult,
-  isErrorResult,
-  unwrapResult,
 } from "shared/utils/result";
 import { handleCanceledDeletedProgramItems } from "server/features/program-item/programItemUtils";
 import { removeCanceledDeletedProgramItemsFromUsers } from "server/features/assignment/utils/removeInvalidProgramItemsFromUsers";
@@ -45,20 +43,20 @@ export const saveProgramItems = async (
   logger.info("MongoDB: Store program items to DB");
 
   const currentProgramItemsResult = await findProgramItems();
-  if (isErrorResult(currentProgramItemsResult)) {
+  if (!currentProgramItemsResult.ok) {
     return currentProgramItemsResult;
   }
-  const currentProgramItems = unwrapResult(currentProgramItemsResult);
+  const currentProgramItems = currentProgramItemsResult.value;
 
   // If program item was canceled or deleted, remove program item and direct signups
   const deletedProgramItemsResult = await handleCanceledDeletedProgramItems(
     updatedProgramItems,
     currentProgramItems,
   );
-  if (isErrorResult(deletedProgramItemsResult)) {
+  if (!deletedProgramItemsResult.ok) {
     return deletedProgramItemsResult;
   }
-  const { affectedDirectSignups } = unwrapResult(deletedProgramItemsResult);
+  const { affectedDirectSignups } = deletedProgramItemsResult.value;
 
   // If program item was canceled or deleted, remove lottery signups and favorite program items
   const removeCanceledDeletedProgramItemsFromUsersResult =
@@ -67,7 +65,7 @@ export const saveProgramItems = async (
       notifyAffectedDirectSignups: affectedDirectSignups,
       notify: true,
     });
-  if (isErrorResult(removeCanceledDeletedProgramItemsFromUsersResult)) {
+  if (!removeCanceledDeletedProgramItemsFromUsersResult.ok) {
     return removeCanceledDeletedProgramItemsFromUsersResult;
   }
 
@@ -75,7 +73,7 @@ export const saveProgramItems = async (
     updatedProgramItems,
     currentProgramItems,
   );
-  if (isErrorResult(updateMovedProgramItemsResult)) {
+  if (!updateMovedProgramItemsResult.ok) {
     return updateMovedProgramItemsResult;
   }
 
@@ -140,10 +138,10 @@ export const saveProgramItems = async (
 
   // Create signup document for all program items missing signup document
   const directSignupsResult = await findDirectSignups();
-  if (isErrorResult(directSignupsResult)) {
+  if (!directSignupsResult.ok) {
     return directSignupsResult;
   }
-  const directSignups = unwrapResult(directSignupsResult);
+  const directSignups = directSignupsResult.value;
 
   const directSignupDocMissingProgramItemIds = updatedProgramItems.flatMap(
     (updatedProgramItem) => {
@@ -163,7 +161,7 @@ export const saveProgramItems = async (
       await createEmptyDirectSignupDocumentForProgramItems(
         directSignupDocMissingProgramItemIds,
       );
-    if (isErrorResult(createEmptySignupResult)) {
+    if (!createEmptySignupResult.ok) {
       return createEmptySignupResult;
     }
   }

@@ -3,7 +3,6 @@ import { saveSignupQuestion } from "server/features/settings/settingsRepository"
 import { logger } from "server/utils/logger";
 import { config } from "shared/config";
 import { ProgramType } from "shared/types/models/programItem";
-import { isErrorResult, unwrapResult } from "shared/utils/result";
 
 export const addSignupQuestions = async (): Promise<void> => {
   const {
@@ -23,16 +22,14 @@ export const addSignupQuestions = async (): Promise<void> => {
   }
 
   const programItemsResult = await findProgramItems();
-  if (isErrorResult(programItemsResult)) {
+  if (!programItemsResult.ok) {
     logger.error(
       "%s",
-      new Error(
-        `Error finding program items: ${unwrapResult(programItemsResult)}`,
-      ),
+      new Error(`Error finding program items: ${programItemsResult.error}`),
     );
     return;
   }
-  const programItems = unwrapResult(programItemsResult);
+  const programItems = programItemsResult.value;
 
   const tournaments = programItems
     .filter((programItem) => programItem.programType === ProgramType.TOURNAMENT)

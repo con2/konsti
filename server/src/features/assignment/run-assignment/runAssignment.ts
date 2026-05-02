@@ -11,12 +11,7 @@ import { saveResults } from "server/features/assignment/utils/saveResults";
 import { getDynamicStartTime } from "server/features/assignment/utils/getDynamicStartTime";
 import { sleep } from "server/utils/sleep";
 import { findDirectSignups } from "server/features/direct-signup/directSignupRepository";
-import {
-  Result,
-  isErrorResult,
-  makeSuccessResult,
-  unwrapResult,
-} from "shared/utils/result";
+import { Result, makeSuccessResult } from "shared/utils/result";
 import {
   AssignmentError,
   MongoDbError,
@@ -41,10 +36,10 @@ export const runAssignment = async ({
   const assignmentTimeResult = assignmentTime
     ? makeSuccessResult(assignmentTime)
     : await getDynamicStartTime();
-  if (isErrorResult(assignmentTimeResult)) {
+  if (!assignmentTimeResult.ok) {
     return assignmentTimeResult;
   }
-  const resolvedAssignmentTime = unwrapResult(assignmentTimeResult);
+  const resolvedAssignmentTime = assignmentTimeResult.value;
 
   if (assignmentDelay) {
     logger.info(`Wait ${assignmentDelay / 1000}s for final requests`);
@@ -57,10 +52,10 @@ export const runAssignment = async ({
   );
 
   const programItemsResult = await findProgramItems();
-  if (isErrorResult(programItemsResult)) {
+  if (!programItemsResult.ok) {
     return programItemsResult;
   }
-  const programItems = unwrapResult(programItemsResult);
+  const programItems = programItemsResult.value;
 
   const removeCanceledDeletedProgramItemsResult =
     await removeCanceledDeletedProgramItemsFromUsers({
@@ -68,21 +63,21 @@ export const runAssignment = async ({
       notifyAffectedDirectSignups: [],
       notify: false,
     });
-  if (isErrorResult(removeCanceledDeletedProgramItemsResult)) {
+  if (!removeCanceledDeletedProgramItemsResult.ok) {
     return removeCanceledDeletedProgramItemsResult;
   }
 
   const usersResult = await findUsers();
-  if (isErrorResult(usersResult)) {
+  if (!usersResult.ok) {
     return usersResult;
   }
-  const users = unwrapResult(usersResult);
+  const users = usersResult.value;
 
   const directSignupsResult = await findDirectSignups();
-  if (isErrorResult(directSignupsResult)) {
+  if (!directSignupsResult.ok) {
     return directSignupsResult;
   }
-  const directSignups = unwrapResult(directSignupsResult);
+  const directSignups = directSignupsResult.value;
 
   const {
     validLotterySignupsUsers,
@@ -97,10 +92,10 @@ export const runAssignment = async ({
     resolvedAssignmentTime,
     lotteryParticipantDirectSignups,
   );
-  if (isErrorResult(assignResultsResult)) {
+  if (!assignResultsResult.ok) {
     return assignResultsResult;
   }
-  const assignResults = unwrapResult(assignResultsResult);
+  const assignResults = assignResultsResult.value;
 
   const saveResultsResult = await saveResults({
     results: assignResults.results,
@@ -110,7 +105,7 @@ export const runAssignment = async ({
     users: validLotterySignupsUsers,
     programItems,
   });
-  if (isErrorResult(saveResultsResult)) {
+  if (!saveResultsResult.ok) {
     return saveResultsResult;
   }
 
@@ -125,7 +120,7 @@ export const runAssignment = async ({
       validLotterySignupProgramItems,
       resolvedAssignmentTime,
     );
-    if (isErrorResult(removeOverlapSignupsResult)) {
+    if (!removeOverlapSignupsResult.ok) {
       return removeOverlapSignupsResult;
     }
   }

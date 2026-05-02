@@ -3,8 +3,6 @@ import { findUser } from "server/features/user/userRepository";
 import { decodeJWT, getJWT, verifyJWT } from "server/utils/jwt";
 import { PostLoginResponse } from "shared/types/api/login";
 import { UserGroup } from "shared/types/models/user";
-import { isErrorResult, unwrapResult } from "shared/utils/result";
-
 export const loginWithJwt = async (jwt: string): Promise<PostLoginResponse> => {
   // Restore session
   const jwtData = decodeJWT(jwt);
@@ -37,7 +35,7 @@ export const loginWithJwt = async (jwt: string): Promise<PostLoginResponse> => {
 
   if (typeof jwtResponse.body.username === "string") {
     const userResult = await findUser(jwtResponse.body.username);
-    if (isErrorResult(userResult)) {
+    if (!userResult.ok) {
       return {
         message: "Session restore error",
         status: "error",
@@ -45,7 +43,7 @@ export const loginWithJwt = async (jwt: string): Promise<PostLoginResponse> => {
       };
     }
 
-    const user = unwrapResult(userResult);
+    const user = userResult.value;
 
     if (!user) {
       return {
@@ -56,7 +54,7 @@ export const loginWithJwt = async (jwt: string): Promise<PostLoginResponse> => {
     }
 
     const findSettingsResult = await findSettings();
-    if (isErrorResult(findSettingsResult)) {
+    if (!findSettingsResult.ok) {
       return {
         message: "User login error",
         status: "error",
@@ -64,7 +62,7 @@ export const loginWithJwt = async (jwt: string): Promise<PostLoginResponse> => {
       };
     }
 
-    const settings = unwrapResult(findSettingsResult);
+    const settings = findSettingsResult.value;
 
     if (!settings.appOpen && user.userGroup === UserGroup.USER) {
       return {

@@ -2,7 +2,7 @@ import { logger } from "server/utils/logger";
 import { saveUserSignupResults } from "server/features/assignment/utils/saveUserSignupResults";
 import { UserAssignmentResult } from "shared/types/models/result";
 import { saveResult } from "server/features/results/resultsRepository";
-import { Result, isErrorResult, makeSuccessResult } from "shared/utils/result";
+import { Result, makeSuccessResult } from "shared/utils/result";
 import { MongoDbError, QueueError } from "shared/types/api/errors";
 import { User } from "shared/types/models/user";
 import { ProgramItem } from "shared/types/models/programItem";
@@ -36,7 +36,7 @@ export const saveResults = async ({
       algorithm,
       message,
     );
-    if (isErrorResult(saveResultResult)) {
+    if (!saveResultResult.ok) {
       return saveResultResult;
     }
   } else {
@@ -52,7 +52,7 @@ export const saveResults = async ({
     users,
     programItems,
   });
-  if (isErrorResult(saveUserSignupResultsResult)) {
+  if (!saveUserSignupResultsResult.ok) {
     return saveUserSignupResultsResult;
   }
 

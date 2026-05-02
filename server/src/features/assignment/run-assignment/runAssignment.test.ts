@@ -126,7 +126,7 @@ describe("Assignment with valid data", () => {
       assignmentAlgorithm,
       assignmentTime: startTime2,
     });
-    expect(assignResults2Result.error).toBeUndefined();
+    expect(assignResults2Result.ok).toBe(true);
     const assignResults2 = unsafelyUnwrap(assignResults2Result);
 
     // Second assignment has less available attendees -> less results

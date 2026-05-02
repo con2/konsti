@@ -20,12 +20,7 @@ import {
   PostCreateGroupError,
   PostJoinGroupError,
 } from "shared/types/api/groups";
-import {
-  isErrorResult,
-  makeErrorResult,
-  makeSuccessResult,
-  unwrapResult,
-} from "shared/utils/result";
+import { makeErrorResult, makeSuccessResult } from "shared/utils/result";
 import { findProgramItems } from "server/features/program-item/programItemRepository";
 import { getLotteryParticipantDirectSignups } from "server/features/assignment/utils/prepareAssignmentParams";
 import { ProgramItem } from "shared/types/models/programItem";
@@ -46,14 +41,14 @@ const checkUpcomingDirectSignups = async (
   timeNow: Dayjs,
 ): Promise<PostCreateGroupError | PostJoinGroupError | null> => {
   const userDirectSignupsResult = await findUserDirectSignups(username);
-  if (isErrorResult(userDirectSignupsResult)) {
+  if (!userDirectSignupsResult.ok) {
     return {
       message: "Error finding signups",
       status: "error",
       errorId: "unknown",
     };
   }
-  const userDirectSignups = unwrapResult(userDirectSignupsResult);
+  const userDirectSignups = userDirectSignupsResult.value;
 
   const lotteryParticipantDirectSignups = getLotteryParticipantDirectSignups(
     userDirectSignups,
@@ -90,24 +85,24 @@ export const createGroup = async (
   username: string,
 ): Promise<PostCreateGroupResponse> => {
   const timeNowResult = await getTimeNow();
-  if (isErrorResult(timeNowResult)) {
+  if (!timeNowResult.ok) {
     return {
       message: "Unable to get current time",
       status: "error",
       errorId: "unknown",
     };
   }
-  const timeNow = unwrapResult(timeNowResult);
+  const timeNow = timeNowResult.value;
 
   const programItemsResult = await findProgramItems();
-  if (isErrorResult(programItemsResult)) {
+  if (!programItemsResult.ok) {
     return {
       message: "Error finding program items",
       status: "error",
       errorId: "unknown",
     };
   }
-  const programItems = unwrapResult(programItemsResult);
+  const programItems = programItemsResult.value;
 
   // User cannot have direct signups in future when joining a group
   const hasUpcomingDirectSignups = await checkUpcomingDirectSignups(
@@ -121,7 +116,7 @@ export const createGroup = async (
 
   // Check if group exists or user is already in a group
   const userResult = await findUser(username);
-  if (isErrorResult(userResult)) {
+  if (!userResult.ok) {
     return {
       message: "Error finding user when checking if a group exists",
       status: "error",
@@ -129,7 +124,7 @@ export const createGroup = async (
     };
   }
 
-  const userResponse = unwrapResult(userResult);
+  const userResponse = userResult.value;
   if (!userResponse) {
     return {
       message: "No matching user found",
@@ -153,7 +148,7 @@ export const createGroup = async (
     newGroupCreatorCode,
     username,
   );
-  if (isErrorResult(saveGroupResponseResult)) {
+  if (!saveGroupResponseResult.ok) {
     return {
       message: "Save group failure",
       status: "error",
@@ -161,7 +156,7 @@ export const createGroup = async (
     };
   }
 
-  const saveGroupResponse = unwrapResult(saveGroupResponseResult);
+  const saveGroupResponse = saveGroupResponseResult.value;
 
   return {
     message: "Create group success",
@@ -175,24 +170,24 @@ export const joinGroup = async (
   groupCode: string,
 ): Promise<PostJoinGroupResponse> => {
   const timeNowResult = await getTimeNow();
-  if (isErrorResult(timeNowResult)) {
+  if (!timeNowResult.ok) {
     return {
       message: "Unable to get current time",
       status: "error",
       errorId: "unknown",
     };
   }
-  const timeNow = unwrapResult(timeNowResult);
+  const timeNow = timeNowResult.value;
 
   const programItemsResult = await findProgramItems();
-  if (isErrorResult(programItemsResult)) {
+  if (!programItemsResult.ok) {
     return {
       message: "Error finding program items",
       status: "error",
       errorId: "unknown",
     };
   }
-  const programItems = unwrapResult(programItemsResult);
+  const programItems = programItemsResult.value;
 
   // User cannot have direct signups in future when joining a group
   const hasUpcomingDirectSignups = await checkUpcomingDirectSignups(
@@ -206,14 +201,14 @@ export const joinGroup = async (
 
   // Check if user is already in a group (or has created a group)
   const userResult = await findUser(username);
-  if (isErrorResult(userResult)) {
+  if (!userResult.ok) {
     return {
       message: "Error finding user",
       status: "error",
       errorId: "errorFindingUser",
     };
   }
-  const user = unwrapResult(userResult);
+  const user = userResult.value;
   if (!user) {
     return {
       message: "User not found",
@@ -231,14 +226,14 @@ export const joinGroup = async (
 
   // Check if given group exists
   const groupExistsResult = await checkGroupExists(groupCode);
-  if (isErrorResult(groupExistsResult)) {
+  if (!groupExistsResult.ok) {
     return {
       message: "Error finding group",
       status: "error",
       errorId: "unknown",
     };
   }
-  const groupExistsResponse = unwrapResult(groupExistsResult);
+  const groupExistsResponse = groupExistsResult.value;
   if (!groupExistsResponse) {
     return {
       message: "Group does not exist",
@@ -261,7 +256,7 @@ export const joinGroup = async (
         username,
       },
     ]);
-    if (isErrorResult(saveLotterySignupsResult)) {
+    if (!saveLotterySignupsResult.ok) {
       return {
         message: "Error removing upcoming lottery signups",
         status: "error",
@@ -272,7 +267,7 @@ export const joinGroup = async (
 
   // Group exists, join
   const saveGroupResponseResult = await saveGroupCode(groupCode, username);
-  if (isErrorResult(saveGroupResponseResult)) {
+  if (!saveGroupResponseResult.ok) {
     return {
       message: "Error saving group",
       status: "error",
@@ -280,7 +275,7 @@ export const joinGroup = async (
     };
   }
 
-  const saveGroupResponse = unwrapResult(saveGroupResponseResult);
+  const saveGroupResponse = saveGroupResponseResult.value;
 
   return {
     message: "Joined to group success",
@@ -293,7 +288,7 @@ export const leaveGroup = async (
   username: string,
 ): Promise<PostLeaveGroupResponse> => {
   const saveGroupResponseResult = await saveGroupCode("0", username);
-  if (isErrorResult(saveGroupResponseResult)) {
+  if (!saveGroupResponseResult.ok) {
     return {
       message: "Failed to leave group",
       status: "error",
@@ -301,7 +296,7 @@ export const leaveGroup = async (
     };
   }
 
-  const saveGroupResponse = unwrapResult(saveGroupResponseResult);
+  const saveGroupResponse = saveGroupResponseResult.value;
 
   return {
     message: "Leave group success",
@@ -315,7 +310,7 @@ export const closeGroup = async (
   username: string,
 ): Promise<PostCloseGroupResponse> => {
   const groupMembersResult = await findGroupMembers(groupCode);
-  if (isErrorResult(groupMembersResult)) {
+  if (!groupMembersResult.ok) {
     return {
       message: "Unknown error",
       status: "error",
@@ -323,7 +318,7 @@ export const closeGroup = async (
     };
   }
 
-  const groupMembers = unwrapResult(groupMembersResult);
+  const groupMembers = groupMembersResult.value;
 
   // Check if group creator, only creator can close group
   const groupCreator = groupMembers.find(
@@ -340,7 +335,7 @@ export const closeGroup = async (
 
   const leaveGroupPromises = groupMembers.map(async (groupMember) => {
     const saveGroupCodeResult = await saveGroupCode("0", groupMember.username);
-    if (isErrorResult(saveGroupCodeResult)) {
+    if (!saveGroupCodeResult.ok) {
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
     return makeSuccessResult();
@@ -348,7 +343,7 @@ export const closeGroup = async (
 
   const results = await Promise.all(leaveGroupPromises);
 
-  const someUpdateFailed = results.some((result) => isErrorResult(result));
+  const someUpdateFailed = results.some((result) => !result.ok);
   if (someUpdateFailed) {
     return {
       message: "Unknown error",
@@ -362,7 +357,7 @@ export const closeGroup = async (
     groupCreator.username,
   );
 
-  if (isErrorResult(removeGroupCreationCodeResult)) {
+  if (!removeGroupCreationCodeResult.ok) {
     return {
       message: "Error deleting group creation code",
       status: "error",
@@ -381,7 +376,7 @@ export const fetchGroup = async (
   groupCode: string,
 ): Promise<GetGroupResponse> => {
   const findGroupResultsResult = await findGroupMembers(groupCode);
-  if (isErrorResult(findGroupResultsResult)) {
+  if (!findGroupResultsResult.ok) {
     return {
       message: "Getting group members failed",
       status: "error",
@@ -389,7 +384,7 @@ export const fetchGroup = async (
     };
   }
 
-  const findGroupResults = unwrapResult(findGroupResultsResult);
+  const findGroupResults = findGroupResultsResult.value;
 
   const returnData = findGroupResults.map((result) => ({
     groupCode: result.groupCode,

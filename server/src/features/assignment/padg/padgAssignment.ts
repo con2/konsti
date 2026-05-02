@@ -9,12 +9,7 @@ import { getRandomAndPadgInput } from "server/features/assignment/utils/getRando
 import { runPadgAssignment } from "server/features/assignment/padg/utils/runPadgAssignment";
 import { logger } from "server/utils/logger";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
-import {
-  Result,
-  isErrorResult,
-  makeSuccessResult,
-  unwrapResult,
-} from "shared/utils/result";
+import { Result, makeSuccessResult } from "shared/utils/result";
 import { AssignmentError } from "shared/types/api/errors";
 import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
 
@@ -57,11 +52,11 @@ export const padgAssignment = (
     assignmentTime,
     lotteryParticipantDirectSignups,
   );
-  if (isErrorResult(assignmentResultResult)) {
+  if (!assignmentResultResult.ok) {
     return assignmentResultResult;
   }
 
-  const assignmentResult = unwrapResult(assignmentResultResult);
+  const assignmentResult = assignmentResultResult.value;
 
   const selectedUniqueProgramItems = unique(
     assignmentResult.results.map(

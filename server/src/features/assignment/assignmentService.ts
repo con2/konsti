@@ -1,8 +1,6 @@
 import { runAssignment } from "server/features/assignment/run-assignment/runAssignment";
 import { PostAssignmentResponse } from "shared/types/api/assignment";
 import { config } from "shared/config";
-import { isSuccessResult, unwrapResult } from "shared/utils/result";
-
 export const storeAssignment = async (
   assignmentTime: string,
 ): Promise<PostAssignmentResponse> => {
@@ -11,8 +9,8 @@ export const storeAssignment = async (
     assignmentTime,
   });
 
-  if (isSuccessResult(assignResultsResult)) {
-    const assignResults = unwrapResult(assignResultsResult);
+  if (assignResultsResult.ok) {
+    const assignResults = assignResultsResult.value;
 
     return {
       message: "Assignment success",

@@ -16,7 +16,6 @@ import {
   delDirectSignup,
   saveDirectSignup,
 } from "server/features/direct-signup/directSignupRepository";
-import { isErrorResult, unwrapResult } from "shared/utils/result";
 import { config } from "shared/config";
 import { SignupRepositoryAddSignup } from "server/features/direct-signup/directSignupTypes";
 import { getSignupMessage } from "server/features/program-item/programItemUtils";
@@ -30,19 +29,19 @@ export const storeDirectSignup = async (
   const { directSignupProgramItemId } = signupRequest;
 
   const timeNowResult = await getTimeNow();
-  if (isErrorResult(timeNowResult)) {
+  if (!timeNowResult.ok) {
     return {
       message: "Unable to get current time",
       status: "error",
       errorId: "unknown",
     };
   }
-  const timeNow = unwrapResult(timeNowResult);
+  const timeNow = timeNowResult.value;
 
   const programItemResult = await findProgramItemById(
     directSignupProgramItemId,
   );
-  if (isErrorResult(programItemResult)) {
+  if (!programItemResult.ok) {
     const message = `Signed program item ${directSignupProgramItemId} not found`;
     logger.warn(message);
     return {
@@ -51,7 +50,7 @@ export const storeDirectSignup = async (
       errorId: "unknown",
     };
   }
-  const programItem = unwrapResult(programItemResult);
+  const programItem = programItemResult.value;
 
   if (
     programItem.signupType !== SignupType.KONSTI ||
@@ -110,24 +109,24 @@ export const storeDirectSignup = async (
   };
 
   const signupResult = await saveDirectSignup(newDirectSignup);
-  if (isErrorResult(signupResult)) {
+  if (!signupResult.ok) {
     return {
       message: "Store signup failure",
       status: "error",
       errorId: "unknown",
     };
   }
-  const signup = unwrapResult(signupResult);
+  const signup = signupResult.value;
 
   const settingsResult = await findSettings();
-  if (isErrorResult(settingsResult)) {
+  if (!settingsResult.ok) {
     return {
       message: "Error loading settings",
       status: "error",
       errorId: "unknown",
     };
   }
-  const settings = unwrapResult(settingsResult);
+  const settings = settingsResult.value;
   const signupQuestion = settings.signupQuestions.find(
     (message) => message.programItemId === programItem.programItemId,
   );
@@ -174,7 +173,7 @@ export const removeDirectSignup = async (
   const { directSignupProgramItemId } = signupRequest;
 
   const timeNowResult = await getTimeNow();
-  if (isErrorResult(timeNowResult)) {
+  if (!timeNowResult.ok) {
     return {
       message: "Unable to get current time",
       status: "error",
@@ -182,12 +181,12 @@ export const removeDirectSignup = async (
     };
   }
 
-  const timeNow = unwrapResult(timeNowResult);
+  const timeNow = timeNowResult.value;
 
   const programItemResult = await findProgramItemById(
     directSignupProgramItemId,
   );
-  if (isErrorResult(programItemResult)) {
+  if (!programItemResult.ok) {
     const message = `Signed program item ${directSignupProgramItemId} not found`;
     logger.warn(message);
     return {
@@ -196,7 +195,7 @@ export const removeDirectSignup = async (
       errorId: "unknown",
     };
   }
-  const programItem = unwrapResult(programItemResult);
+  const programItem = programItemResult.value;
 
   const directSignupEndTime = getDirectSignupEndTime(programItem);
   const signupEnded = hasSignupEnded({
@@ -216,24 +215,24 @@ export const removeDirectSignup = async (
     directSignupProgramItemId: signupRequest.directSignupProgramItemId,
     username,
   });
-  if (isErrorResult(signupResult)) {
+  if (!signupResult.ok) {
     return {
       message: "Delete signup failure",
       status: "error",
       errorId: "unknown",
     };
   }
-  const signup = unwrapResult(signupResult);
+  const signup = signupResult.value;
 
   const settingsResult = await findSettings();
-  if (isErrorResult(settingsResult)) {
+  if (!settingsResult.ok) {
     return {
       message: "Error loading settings",
       status: "error",
       errorId: "unknown",
     };
   }
-  const settings = unwrapResult(settingsResult);
+  const settings = settingsResult.value;
   const signupQuestion = settings.signupQuestions.find(
     (message) => message.programItemId === programItem.programItemId,
   );

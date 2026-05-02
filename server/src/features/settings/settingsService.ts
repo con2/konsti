@@ -15,11 +15,9 @@ import {
 } from "shared/types/api/settings";
 import { removeHiddenProgramItemsFromUsers } from "server/features/settings/utils/removeHiddenProgramItemsFromUsers";
 import { SignupQuestion } from "shared/types/models/settings";
-import { isErrorResult, unwrapResult } from "shared/utils/result";
-
 export const fetchSettings = async (): Promise<GetSettingsResponse> => {
   const findSettingsResult = await findSettings();
-  if (isErrorResult(findSettingsResult)) {
+  if (!findSettingsResult.ok) {
     return {
       message: "Getting settings failed",
       status: "error",
@@ -27,7 +25,7 @@ export const fetchSettings = async (): Promise<GetSettingsResponse> => {
     };
   }
 
-  const settings = unwrapResult(findSettingsResult);
+  const settings = findSettingsResult.value;
 
   return {
     message: "Getting settings success",
@@ -45,7 +43,7 @@ export const storeHidden = async (
   hiddenProgramItemIds: readonly string[],
 ): Promise<PostHiddenResponse> => {
   const settingsResult = await saveHidden(hiddenProgramItemIds);
-  if (isErrorResult(settingsResult)) {
+  if (!settingsResult.ok) {
     return {
       message: "Update hidden failure",
       status: "error",
@@ -53,11 +51,11 @@ export const storeHidden = async (
     };
   }
 
-  const settings = unwrapResult(settingsResult);
+  const settings = settingsResult.value;
 
   const removeHiddenProgramItemsFromUsersResult =
     await removeHiddenProgramItemsFromUsers(settings.hiddenProgramItemIds);
-  if (isErrorResult(removeHiddenProgramItemsFromUsersResult)) {
+  if (!removeHiddenProgramItemsFromUsersResult.ok) {
     return {
       message: "Update hidden failure",
       status: "error",
@@ -76,7 +74,7 @@ export const storeSignupQuestion = async (
   signupQuestionData: SignupQuestion,
 ): Promise<PostSignupQuestionResponse> => {
   const saveSignupQuestionResult = await saveSignupQuestion(signupQuestionData);
-  if (isErrorResult(saveSignupQuestionResult)) {
+  if (!saveSignupQuestionResult.ok) {
     return {
       message: "saveSignupQuestion failure",
       status: "error",
@@ -84,7 +82,7 @@ export const storeSignupQuestion = async (
     };
   }
 
-  const settings = unwrapResult(saveSignupQuestionResult);
+  const settings = saveSignupQuestionResult.value;
 
   return {
     message: "saveSignupQuestion success",
@@ -97,7 +95,7 @@ export const removeSignupQuestion = async (
   programItemId: string,
 ): Promise<DeleteSignupQuestionResponse> => {
   const delSignupQuestionResult = await delSignupQuestion(programItemId);
-  if (isErrorResult(delSignupQuestionResult)) {
+  if (!delSignupQuestionResult.ok) {
     return {
       message: "delSignupQuestion failure",
       status: "error",
@@ -105,7 +103,7 @@ export const removeSignupQuestion = async (
     };
   }
 
-  const settings = unwrapResult(delSignupQuestionResult);
+  const settings = delSignupQuestionResult.value;
 
   return {
     message: "delSignupQuestion success",
@@ -118,7 +116,7 @@ export const updateSettings = async (
   settings: PostSettingsRequest,
 ): Promise<PostSettingsResponse> => {
   const saveSettingsResult = await saveSettings(settings);
-  if (isErrorResult(saveSettingsResult)) {
+  if (!saveSettingsResult.ok) {
     return {
       message: "Update settings failure",
       status: "error",
@@ -126,7 +124,7 @@ export const updateSettings = async (
     };
   }
 
-  const response = unwrapResult(saveSettingsResult);
+  const response = saveSettingsResult.value;
 
   return {
     message: "Update settings success",

@@ -1,7 +1,6 @@
 import { logger } from "server/utils/logger";
 import { removeCanceledDeletedProgramItemsFromUsers } from "server/features/assignment/utils/removeInvalidProgramItemsFromUsers";
 import { db } from "server/db/mongodb";
-import { isErrorResult, unwrapResult } from "shared/utils/result";
 import { findProgramItems } from "server/features/program-item/programItemRepository";
 
 const removeInvalidProgramItems = async (): Promise<void> => {
@@ -15,11 +14,11 @@ const removeInvalidProgramItems = async (): Promise<void> => {
 
   try {
     const programItemsResult = await findProgramItems();
-    if (isErrorResult(programItemsResult)) {
+    if (!programItemsResult.ok) {
       // eslint-disable-next-line no-restricted-syntax -- Test script
       throw new Error("Finding program items failed");
     }
-    const programItems = unwrapResult(programItemsResult);
+    const programItems = programItemsResult.value;
     await removeCanceledDeletedProgramItemsFromUsers({
       programItems,
       notifyAffectedDirectSignups: [],

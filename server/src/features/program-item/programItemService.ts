@@ -9,12 +9,7 @@ import {
   saveProgramItems,
 } from "server/features/program-item/programItemRepository";
 import { enrichProgramItems } from "./programItemUtils";
-import {
-  Result,
-  isErrorResult,
-  makeSuccessResult,
-  unwrapResult,
-} from "shared/utils/result";
+import { Result, makeSuccessResult } from "shared/utils/result";
 import { KompassiError } from "shared/types/api/errors";
 import { ProgramItem } from "shared/types/models/programItem";
 import { getProgramItemsFromKompassi } from "server/kompassi/getProgramItemsFromKompassi";
@@ -27,18 +22,18 @@ export const getProgramItemsForEvent = async (): Promise<
   const eventName = config.event().eventName;
   const kompassiProgramItemsResult =
     await getProgramItemsFromKompassi(eventName);
-  if (isErrorResult(kompassiProgramItemsResult)) {
+  if (!kompassiProgramItemsResult.ok) {
     return kompassiProgramItemsResult;
   }
 
-  const kompassiProgramItems = unwrapResult(kompassiProgramItemsResult);
+  const kompassiProgramItems = kompassiProgramItemsResult.value;
   return makeSuccessResult(kompassiProgramItemMapper(kompassiProgramItems));
 };
 
 export const updateProgramItems =
   async (): Promise<PostUpdateProgramItemsResponse> => {
     const programItemsResult = await getProgramItemsForEvent();
-    if (isErrorResult(programItemsResult)) {
+    if (!programItemsResult.ok) {
       return {
         message: "Loading program items from Kompassi failed",
         status: "error",
@@ -46,9 +41,9 @@ export const updateProgramItems =
       };
     }
 
-    const programItems = unwrapResult(programItemsResult);
+    const programItems = programItemsResult.value;
     const saveProgramItemsResult = await saveProgramItems(programItems);
-    if (isErrorResult(saveProgramItemsResult)) {
+    if (!saveProgramItemsResult.ok) {
       return {
         message: "Program items db update failed: Saving program items failed",
         status: "error",
@@ -59,7 +54,7 @@ export const updateProgramItems =
     if (config.server().updateProgramItemPopularityEnabled) {
       const updateProgramItemPopularityResult =
         await updateProgramItemPopularity();
-      if (isErrorResult(updateProgramItemPopularityResult)) {
+      if (!updateProgramItemPopularityResult.ok) {
         return {
           message: "Program item popularity update failed",
           status: "error",
@@ -69,7 +64,7 @@ export const updateProgramItems =
     }
 
     const updatedProgramItemsResult = await findProgramItems();
-    if (isErrorResult(updatedProgramItemsResult)) {
+    if (!updatedProgramItemsResult.ok) {
       return {
         message:
           "Program items db update failed: Error loading updated program items",
@@ -78,7 +73,7 @@ export const updateProgramItems =
       };
     }
 
-    const updatedProgramItems = unwrapResult(updatedProgramItemsResult);
+    const updatedProgramItems = updatedProgramItemsResult.value;
 
     return {
       message: "Program items db updated",
@@ -91,29 +86,27 @@ export const fetchProgramItems = async (
   userGroup: UserGroup | null,
 ): Promise<GetProgramItemsResponse> => {
   const programItemsResult = await findProgramItems();
-  if (isErrorResult(programItemsResult)) {
+  if (!programItemsResult.ok) {
     return {
       message: "Downloading program items failed",
       status: "error",
       errorId: "databaseError",
     };
   }
-  const programItems = unwrapResult(programItemsResult);
+  const programItems = programItemsResult.value;
 
   const programItemsWithAttendeesResult = await enrichProgramItems(
     programItems,
     userGroup,
   );
-  if (isErrorResult(programItemsWithAttendeesResult)) {
+  if (!programItemsWithAttendeesResult.ok) {
     return {
       message: "Enriching program items failed",
       status: "error",
       errorId: "unknown",
     };
   }
-  const programItemsWithAttendees = unwrapResult(
-    programItemsWithAttendeesResult,
-  );
+  const programItemsWithAttendees = programItemsWithAttendeesResult.value;
 
   return {
     message: "Program items downloaded",

@@ -2,12 +2,7 @@ import dayjs from "dayjs";
 import { logger } from "server/utils/logger";
 import { ProgramItem } from "shared/types/models/programItem";
 import { findUsers } from "server/features/user/userRepository";
-import {
-  Result,
-  isErrorResult,
-  makeSuccessResult,
-  unwrapResult,
-} from "shared/utils/result";
+import { Result, makeSuccessResult } from "shared/utils/result";
 import { MongoDbError } from "shared/types/api/errors";
 import {
   DeleteLotterySignupsParams,
@@ -42,18 +37,16 @@ export const updateMovedProgramItems = async (
   // This will remove lottery signups
   const removeMovedLotterySignupsResult =
     await removeMovedLotterySignupsAndNotify(movedProgramItems);
-  if (isErrorResult(removeMovedLotterySignupsResult)) {
+  if (!removeMovedLotterySignupsResult.ok) {
     return removeMovedLotterySignupsResult;
   }
-  const usersWithMovedLotterySignups = unwrapResult(
-    removeMovedLotterySignupsResult,
-  );
+  const usersWithMovedLotterySignups = removeMovedLotterySignupsResult.value;
 
   const notifyUsersWithDirectSignupsResult = await notifyUsersWithDirectSignups(
     movedProgramItems,
     usersWithMovedLotterySignups,
   );
-  if (isErrorResult(notifyUsersWithDirectSignupsResult)) {
+  if (!notifyUsersWithDirectSignupsResult.ok) {
     return notifyUsersWithDirectSignupsResult;
   }
 
@@ -66,10 +59,10 @@ const removeMovedLotterySignupsAndNotify = async (
   logger.info("Remove moved lottery signups from users");
 
   const usersResult = await findUsers();
-  if (isErrorResult(usersResult)) {
+  if (!usersResult.ok) {
     return usersResult;
   }
-  const users = unwrapResult(usersResult);
+  const users = usersResult.value;
 
   const usersToUpdate = users.flatMap((user) => {
     const movedLotterySignups = user.lotterySignups.filter((lotterySignup) => {
@@ -102,7 +95,7 @@ const removeMovedLotterySignupsAndNotify = async (
   });
 
   const delLotterySignupsResult = await delLotterySignups(usersToUpdate);
-  if (isErrorResult(delLotterySignupsResult)) {
+  if (!delLotterySignupsResult.ok) {
     return delLotterySignupsResult;
   }
 
@@ -129,7 +122,7 @@ const removeMovedLotterySignupsAndNotify = async (
     action: EventLogAction.PROGRAM_ITEM_MOVED,
     updates: eventUpdates,
   });
-  if (isErrorResult(addEventLogItemsResult)) {
+  if (!addEventLogItemsResult.ok) {
     return addEventLogItemsResult;
   }
 
@@ -146,10 +139,10 @@ const notifyUsersWithDirectSignups = async (
 
   const directSignupsResult =
     await findDirectSignupsByProgramItemIds(movedProgramItemIds);
-  if (isErrorResult(directSignupsResult)) {
+  if (!directSignupsResult.ok) {
     return directSignupsResult;
   }
-  const directSignups = unwrapResult(directSignupsResult);
+  const directSignups = directSignupsResult.value;
 
   const userUpdates = directSignups.flatMap((directSignup) => {
     const movedProgramItem = movedProgramItems.find(
@@ -180,7 +173,7 @@ const notifyUsersWithDirectSignups = async (
     action: EventLogAction.PROGRAM_ITEM_MOVED,
     updates: userUpdates,
   });
-  if (isErrorResult(addEventLogItemsResult)) {
+  if (!addEventLogItemsResult.ok) {
     return addEventLogItemsResult;
   }
 

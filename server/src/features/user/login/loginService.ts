@@ -4,7 +4,6 @@ import { getJWT } from "server/utils/jwt";
 import { findSettings } from "server/features/settings/settingsRepository";
 import { findUser } from "server/features/user/userRepository";
 import { logger } from "server/utils/logger";
-import { isErrorResult, unwrapResult } from "shared/utils/result";
 import { UserGroup } from "shared/types/models/user";
 
 export const login = async (
@@ -12,7 +11,7 @@ export const login = async (
   password: string,
 ): Promise<PostLoginResponse> => {
   const userResult = await findUser(username);
-  if (isErrorResult(userResult)) {
+  if (!userResult.ok) {
     return {
       message: "User login error",
       status: "error",
@@ -20,7 +19,7 @@ export const login = async (
     };
   }
 
-  const user = unwrapResult(userResult);
+  const user = userResult.value;
 
   if (!user) {
     logger.info(`Login: User ${username} not found`);
@@ -32,7 +31,7 @@ export const login = async (
   }
 
   const findSettingsResult = await findSettings();
-  if (isErrorResult(findSettingsResult)) {
+  if (!findSettingsResult.ok) {
     return {
       message: "User login error",
       status: "error",
@@ -40,7 +39,7 @@ export const login = async (
     };
   }
 
-  const settings = unwrapResult(findSettingsResult);
+  const settings = findSettingsResult.value;
 
   if (!settings.appOpen && user.userGroup === UserGroup.USER) {
     return {
@@ -53,7 +52,7 @@ export const login = async (
   // User exists
 
   const validLoginResult = await validateLogin(password, user.password);
-  if (isErrorResult(validLoginResult)) {
+  if (!validLoginResult.ok) {
     return {
       errorId: "loginFailed",
       message: "User login error",
@@ -61,7 +60,7 @@ export const login = async (
     };
   }
 
-  const validLogin = unwrapResult(validLoginResult);
+  const validLogin = validLoginResult.value;
 
   logger.info(`Login: User ${user.username} with ${user.userGroup} user group`);
 

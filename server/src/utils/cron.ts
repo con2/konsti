@@ -3,7 +3,7 @@ import dayjs from "dayjs";
 import { logger } from "server/utils/logger";
 import { config } from "shared/config";
 import { runAssignment } from "server/features/assignment/run-assignment/runAssignment";
-import { Result, isErrorResult, makeSuccessResult } from "shared/utils/result";
+import { Result, makeSuccessResult } from "shared/utils/result";
 import { updateProgramItems } from "server/features/program-item/programItemService";
 import {
   isLatestStartedServerInstance,
@@ -24,7 +24,7 @@ export const setLatestServerStartTime = async (): Promise<
 
   logger.info(`Set latestServerStartTime ${latestServerStartTime}`);
   const settingsResult = await saveSettings({ latestServerStartTime });
-  if (isErrorResult(settingsResult)) {
+  if (!settingsResult.ok) {
     return settingsResult;
   }
 
@@ -41,7 +41,7 @@ export const startCronJobs = async (): Promise<void> => {
 
   // Save latest server instance start time to limit running cronjobs to latest started instance
   const latestServerStartResult = await setLatestServerStartTime();
-  if (isErrorResult(latestServerStartResult)) {
+  if (!latestServerStartResult.ok) {
     // eslint-disable-next-line no-restricted-syntax -- Server startup
     throw new Error(
       `Error setting latestServerStartTime at server start: ${latestServerStartResult.error}`,
@@ -96,7 +96,7 @@ export const autoUpdateProgramItems = async (): Promise<void> => {
   const latestServerResult = await isLatestStartedServerInstance(
     latestServerStartTime,
   );
-  if (isErrorResult(latestServerResult)) {
+  if (!latestServerResult.ok) {
     if (latestServerResult.error === MongoDbError.SETTINGS_NOT_FOUND) {
       logger.error(
         "%s",
@@ -117,7 +117,7 @@ export const autoUpdateProgramItems = async (): Promise<void> => {
   const programUpdateLastRunResult = await setProgramUpdateLastRun(
     dayjs().toISOString(),
   );
-  if (isErrorResult(programUpdateLastRunResult)) {
+  if (!programUpdateLastRunResult.ok) {
     if (programUpdateLastRunResult.error === MongoDbError.SETTINGS_NOT_FOUND) {
       logger.error(
         "%s",
@@ -161,7 +161,7 @@ export const autoAssignAttendees = async (): Promise<void> => {
   const latestServerResult = await isLatestStartedServerInstance(
     latestServerStartTime,
   );
-  if (isErrorResult(latestServerResult)) {
+  if (!latestServerResult.ok) {
     if (latestServerResult.error === MongoDbError.SETTINGS_NOT_FOUND) {
       logger.error(
         "%s",
@@ -182,7 +182,7 @@ export const autoAssignAttendees = async (): Promise<void> => {
   const assignmentLastRunResult = await setAssignmentLastRun(
     dayjs().toISOString(),
   );
-  if (isErrorResult(assignmentLastRunResult)) {
+  if (!assignmentLastRunResult.ok) {
     if (assignmentLastRunResult.error === MongoDbError.SETTINGS_NOT_FOUND) {
       logger.error("%s", new Error("Auto assignment already running, stop"));
       return;
@@ -203,7 +203,7 @@ export const autoAssignAttendees = async (): Promise<void> => {
     assignmentTime: null,
     assignmentDelay: autoAssignDelay,
   });
-  if (isErrorResult(runAssignmentResult)) {
+  if (!runAssignmentResult.ok) {
     logger.error("%s", new Error("***** Auto assignment failed"));
     return;
   }

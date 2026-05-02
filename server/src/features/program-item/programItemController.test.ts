@@ -172,7 +172,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
   test("should return 200 with valid authorization and add program items to DB", async () => {
     const spy = vi
       .spyOn(testHelperWrapper, "getEventProgramItems")
-      .mockResolvedValue({ value: [mockKompassiProgramItem] });
+      .mockResolvedValue({ ok: true, value: [mockKompassiProgramItem] });
 
     const response = await request(server)
       .post(ApiEndpoint.PROGRAM_ITEMS)
@@ -189,6 +189,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
   test("should remove program items, lottery signups, direct signups, and favorite program items that are not in the server response", async () => {
     // Kompassi only returns one program items when there are two in DB
     vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
+      ok: true,
       value: [mockKompassiProgramItem],
     });
 
@@ -239,6 +240,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
 
   test("should not modify anything if server response is invalid", async () => {
     vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
+      ok: true,
       value: "broken response",
     });
 
@@ -262,6 +264,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
 
   test("should not modify anything if server response is empty array", async () => {
     vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
+      ok: true,
       value: [],
     });
 
@@ -290,6 +293,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
       .toISOString();
 
     vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
+      ok: true,
       value: [
         {
           ...mockKompassiProgramItem,
@@ -326,6 +330,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
       .toISOString();
 
     vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
+      ok: true,
       value: [
         {
           ...mockKompassiProgramItem,
@@ -382,6 +387,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
 
   test("should add program item even if program item contains unknown fields or enum values", async () => {
     vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
+      ok: true,
       value: [
         {
           ...mockKompassiProgramItem,
@@ -425,6 +431,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
 
   test("should log invalid fields and not add program item", async () => {
     vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
+      ok: true,
       value: [
         {
           ...mockKompassiProgramItem,

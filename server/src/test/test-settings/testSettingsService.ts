@@ -7,11 +7,9 @@ import {
   PostTestSettingsRequest,
   PostTestSettingsResponse,
 } from "shared/test-types/api/testSettings";
-import { isErrorResult, unwrapResult } from "shared/utils/result";
-
 export const fetchTestSettings = async (): Promise<GetTestSettingsResponse> => {
   const responseResult = await findTestSettings();
-  if (isErrorResult(responseResult)) {
+  if (!responseResult.ok) {
     return {
       message: "Getting test settings failed",
       status: "error",
@@ -19,7 +17,7 @@ export const fetchTestSettings = async (): Promise<GetTestSettingsResponse> => {
     };
   }
 
-  const response = unwrapResult(responseResult);
+  const response = responseResult.value;
 
   return {
     message: "Getting test settings success",
@@ -32,7 +30,7 @@ export const updateTestSettings = async (
   settings: PostTestSettingsRequest,
 ): Promise<PostTestSettingsResponse> => {
   const responseResult = await saveTestSettings(settings);
-  if (isErrorResult(responseResult)) {
+  if (!responseResult.ok) {
     return {
       message: "Update test settings failure",
       status: "error",
@@ -40,7 +38,7 @@ export const updateTestSettings = async (
     };
   }
 
-  const response = unwrapResult(responseResult);
+  const response = responseResult.value;
 
   return {
     message: "Update test settings success",

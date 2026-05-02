@@ -15,12 +15,7 @@ import {
   State,
 } from "shared/types/models/programItem";
 import { FavoriteProgramItemId, LotterySignup } from "shared/types/models/user";
-import {
-  Result,
-  isErrorResult,
-  makeSuccessResult,
-  unwrapResult,
-} from "shared/utils/result";
+import { Result, makeSuccessResult } from "shared/utils/result";
 import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
 import { getLotterySignupEndTime } from "shared/utils/signupTimes";
 import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
@@ -47,19 +42,19 @@ export const removeCanceledDeletedProgramItemsFromUsers = async ({
   logger.info("Remove invalid program items from users");
 
   const timeNowResult = await getTimeNow();
-  if (isErrorResult(timeNowResult)) {
+  if (!timeNowResult.ok) {
     return timeNowResult;
   }
-  const timeNow = unwrapResult(timeNowResult);
+  const timeNow = timeNowResult.value;
 
   const usersResult = await findUsers();
-  if (isErrorResult(usersResult)) {
+  if (!usersResult.ok) {
     return usersResult;
   }
 
   const usersToNofify: UserToNofify[] = [];
 
-  const users = unwrapResult(usersResult);
+  const users = usersResult.value;
 
   const usersToUpdate = users.flatMap((user) => {
     // LOTTERY SIGNUPS
@@ -146,7 +141,7 @@ export const removeCanceledDeletedProgramItemsFromUsers = async ({
   });
 
   const updateUsersResult = await updateUsersByUsername(usersToUpdate);
-  if (isErrorResult(updateUsersResult)) {
+  if (!updateUsersResult.ok) {
     return updateUsersResult;
   }
 
@@ -156,7 +151,7 @@ export const removeCanceledDeletedProgramItemsFromUsers = async ({
       usersToNofify,
       notifyAffectedDirectSignups,
     );
-    if (isErrorResult(notifyUsersResult)) {
+    if (!notifyUsersResult.ok) {
       return notifyUsersResult;
     }
   }
@@ -219,7 +214,7 @@ const notifyUsersWithLotterySignupOrFavorite = async (
       action: EventLogAction.PROGRAM_ITEM_CANCELED,
       updates: eventUpdates,
     });
-    if (isErrorResult(addEventLogItemsResult)) {
+    if (!addEventLogItemsResult.ok) {
       return addEventLogItemsResult;
     }
   }

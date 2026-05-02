@@ -22,12 +22,7 @@ import {
   resetDirectSignupsByProgramItemIds,
 } from "server/features/direct-signup/directSignupRepository";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
-import {
-  Result,
-  isErrorResult,
-  makeSuccessResult,
-  unwrapResult,
-} from "shared/utils/result";
+import { Result, makeSuccessResult } from "shared/utils/result";
 import { MongoDbError } from "shared/types/api/errors";
 import { tooEarlyForLotterySignup } from "shared/utils/tooEarlyForLotterySignup";
 import { UserGroup } from "shared/types/models/user";
@@ -124,19 +119,17 @@ export const handleCanceledDeletedProgramItems = async (
   const notifyUsersWithDirectSignupsResult = await notifyUsersWithDirectSignups(
     [...canceledProgramItemIds, ...deletedProgramItemIds],
   );
-  if (isErrorResult(notifyUsersWithDirectSignupsResult)) {
+  if (!notifyUsersWithDirectSignupsResult.ok) {
     return notifyUsersWithDirectSignupsResult;
   }
-  const affectedDirectSignups = unwrapResult(
-    notifyUsersWithDirectSignupsResult,
-  );
+  const affectedDirectSignups = notifyUsersWithDirectSignupsResult.value;
 
   if (canceledProgramItemIds.length > 0) {
     logger.info("Remove direct signups for canceled program items");
     const resetSignupDocumentsResult = await resetDirectSignupsByProgramItemIds(
       canceledProgramItemIds,
     );
-    if (isErrorResult(resetSignupDocumentsResult)) {
+    if (!resetSignupDocumentsResult.ok) {
       return resetSignupDocumentsResult;
     }
   }
@@ -147,7 +140,7 @@ export const handleCanceledDeletedProgramItems = async (
     );
     const delSignupDocumentsResult =
       await delDirectSignupDocumentsByProgramItemIds(deletedProgramItemIds);
-    if (isErrorResult(delSignupDocumentsResult)) {
+    if (!delSignupDocumentsResult.ok) {
       return delSignupDocumentsResult;
     }
 
@@ -155,7 +148,7 @@ export const handleCanceledDeletedProgramItems = async (
     const removeProgramItemsResult = await removeProgramItems(
       deletedProgramItemIds,
     );
-    if (isErrorResult(removeProgramItemsResult)) {
+    if (!removeProgramItemsResult.ok) {
       return removeProgramItemsResult;
     }
   }
@@ -172,22 +165,22 @@ export const enrichProgramItems = async (
   userGroup: UserGroup | null,
 ): Promise<Result<ProgramItemWithUserSignups[], MongoDbError>> => {
   const settingsResult = await findSettings();
-  if (isErrorResult(settingsResult)) {
+  if (!settingsResult.ok) {
     return settingsResult;
   }
-  const settings = unwrapResult(settingsResult);
+  const settings = settingsResult.value;
 
   const signupsResult = await findDirectSignups();
-  if (isErrorResult(signupsResult)) {
+  if (!signupsResult.ok) {
     return signupsResult;
   }
-  const signups = unwrapResult(signupsResult);
+  const signups = signupsResult.value;
 
   const currentTimeResult = await getTimeNow();
-  if (isErrorResult(currentTimeResult)) {
+  if (!currentTimeResult.ok) {
     return currentTimeResult;
   }
-  const currentTime = unwrapResult(currentTimeResult);
+  const currentTime = currentTimeResult.value;
 
   const enrichedProgramItems = programItems.map((programItem) => {
     const signupQuestion = settings.signupQuestions.find(
@@ -313,10 +306,10 @@ const notifyUsersWithDirectSignups = async (
   }
   const directSignupsResult =
     await findDirectSignupsByProgramItemIds(programItemIds);
-  if (isErrorResult(directSignupsResult)) {
+  if (!directSignupsResult.ok) {
     return directSignupsResult;
   }
-  const directSignups = unwrapResult(directSignupsResult);
+  const directSignups = directSignupsResult.value;
 
   const userUpdates = directSignups.flatMap((directSignup) =>
     directSignup.userSignups.map((userSignup) => ({
@@ -332,7 +325,7 @@ const notifyUsersWithDirectSignups = async (
       action: EventLogAction.PROGRAM_ITEM_CANCELED,
       updates: userUpdates,
     });
-    if (isErrorResult(addEventLogItemsResult)) {
+    if (!addEventLogItemsResult.ok) {
       return addEventLogItemsResult;
     }
   }

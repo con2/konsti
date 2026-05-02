@@ -16,10 +16,8 @@ import { logger } from "server/utils/logger";
 import { MongoDbError } from "shared/types/api/errors";
 import {
   Result,
-  isErrorResult,
   makeErrorResult,
   makeSuccessResult,
-  unwrapResult,
 } from "shared/utils/result";
 import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
 import { ProgramItem } from "shared/types/models/programItem";
@@ -214,10 +212,10 @@ export const saveDirectSignup = async (
   const programItemResult = await findProgramItemById(
     directSignupProgramItemId,
   );
-  if (isErrorResult(programItemResult)) {
+  if (!programItemResult.ok) {
     return programItemResult;
   }
-  const programItem = unwrapResult(programItemResult);
+  const programItem = programItemResult.value;
 
   try {
     const response = await SignupModel.findOneAndUpdate(
@@ -247,10 +245,10 @@ export const saveDirectSignup = async (
       const signupsResult = await findDirectSignupsByProgramItemIds([
         directSignupProgramItemId,
       ]);
-      if (isErrorResult(signupsResult)) {
+      if (!signupsResult.ok) {
         return signupsResult;
       }
-      const signup = first(unwrapResult(signupsResult));
+      const signup = first(signupsResult.value);
 
       if (!signup) {
         logger.warn(

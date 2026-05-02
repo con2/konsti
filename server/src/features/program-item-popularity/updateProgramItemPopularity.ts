@@ -6,10 +6,8 @@ import {
 } from "server/features/program-item/programItemRepository";
 import {
   Result,
-  isErrorResult,
   makeErrorResult,
   makeSuccessResult,
-  unwrapResult,
 } from "shared/utils/result";
 import { MongoDbError } from "shared/types/api/errors";
 import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
@@ -27,22 +25,22 @@ export const updateProgramItemPopularity = async (): Promise<
   logger.info("Calculate program item popularity");
 
   const usersResult = await findUsers();
-  if (isErrorResult(usersResult)) {
+  if (!usersResult.ok) {
     return usersResult;
   }
-  const users = unwrapResult(usersResult);
+  const users = usersResult.value;
 
   const programItemsResult = await findProgramItems();
-  if (isErrorResult(programItemsResult)) {
+  if (!programItemsResult.ok) {
     return programItemsResult;
   }
-  const programItems = unwrapResult(programItemsResult);
+  const programItems = programItemsResult.value;
 
   const directSignupsResult = await findDirectSignups();
-  if (isErrorResult(directSignupsResult)) {
+  if (!directSignupsResult.ok) {
     return directSignupsResult;
   }
-  const directSignups = unwrapResult(directSignupsResult);
+  const directSignups = directSignupsResult.value;
 
   const {
     validLotterySignupsUsers,
@@ -61,10 +59,10 @@ export const updateProgramItemPopularity = async (): Promise<
   );
 
   const timeNowResult = await getTimeNow();
-  if (isErrorResult(timeNowResult)) {
+  if (!timeNowResult.ok) {
     return timeNowResult;
   }
-  const timeNow = unwrapResult(timeNowResult);
+  const timeNow = timeNowResult.value;
 
   const futureStartTimes = Object.keys(programItemsByStartTimes).filter(
     (startTime) => dayjs(startTime).isSameOrAfter(timeNow),
@@ -83,7 +81,7 @@ export const updateProgramItemPopularity = async (): Promise<
   });
 
   const successResults = assignmentResults.flatMap((assignmentResult) => {
-    if (isErrorResult(assignmentResult.result)) {
+    if (!assignmentResult.result.ok) {
       logger.error(
         "%s",
         new Error(
@@ -92,7 +90,7 @@ export const updateProgramItemPopularity = async (): Promise<
       );
       return [];
     }
-    return unwrapResult(assignmentResult.result);
+    return assignmentResult.result.value;
   });
 
   const userAssignmentProgramIds = successResults
@@ -135,7 +133,7 @@ export const updateProgramItemPopularity = async (): Promise<
   const saveProgramItemPopularityResult = await saveProgramItemPopularity(
     programItemPopularityUpdates,
   );
-  if (isErrorResult(saveProgramItemPopularityResult)) {
+  if (!saveProgramItemPopularityResult.ok) {
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 

@@ -7,10 +7,8 @@ import {
 import { PostTestSettingsRequest } from "shared/test-types/api/testSettings";
 import {
   Result,
-  isErrorResult,
   makeErrorResult,
   makeSuccessResult,
-  unwrapResult,
 } from "shared/utils/result";
 import { MongoDbError } from "shared/types/api/errors";
 
@@ -62,10 +60,10 @@ export const findTestSettings = async (): Promise<
     const testSettings = await TestSettingsModel.findOne({}).lean();
     if (!testSettings) {
       const createTestSettingsResult = await createTestSettings();
-      if (isErrorResult(createTestSettingsResult)) {
+      if (!createTestSettingsResult.ok) {
         return createTestSettingsResult;
       }
-      const defaultTestSettings = unwrapResult(createTestSettingsResult);
+      const defaultTestSettings = createTestSettingsResult.value;
       return makeSuccessResult(defaultTestSettings);
     }
     logger.debug("MongoDB: Test settings data found");

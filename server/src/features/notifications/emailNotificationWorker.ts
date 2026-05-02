@@ -9,7 +9,6 @@ import {
   getEmailSubjectAccepted,
   getEmailSubjectRejected,
 } from "./senderCommon";
-import { isErrorResult, unwrapResult } from "shared/utils/result";
 import { logger } from "server/utils/logger";
 import { findUser } from "server/features/user/userRepository";
 import { findProgramItemById } from "server/features/program-item/programItemRepository";
@@ -22,14 +21,14 @@ export async function emailNotificationWorker(
 ): Promise<void> {
   try {
     const userResult = await findUser(notification.username);
-    if (isErrorResult(userResult)) {
+    if (!userResult.ok) {
       logger.error(
         `Failed to fetch user to send email notification ${notification.username}.`,
       );
       return;
     }
 
-    const user = unwrapResult(userResult);
+    const user = userResult.value;
 
     if (!user) {
       logger.error(
@@ -77,13 +76,13 @@ async function generateAcceptedEmail(
   const programItemResult = await findProgramItemById(
     notification.programItemId,
   );
-  if (isErrorResult(programItemResult)) {
+  if (!programItemResult.ok) {
     logger.error(
       `Failed to found program for programItemId ${notification.programItemId}`,
     );
     return null;
   }
-  const program = unwrapResult(programItemResult);
+  const program = programItemResult.value;
 
   const subject = getEmailSubjectAccepted();
   const body = getEmailBodyAccepted(program.title, notification);
