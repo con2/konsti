@@ -45,8 +45,6 @@ export const removeCanceledDeletedProgramItemsFromUsers = async ({
   if (!timeNowResult.ok) {
     return timeNowResult;
   }
-  const timeNow = timeNowResult.value;
-
   const usersResult = await findUsers();
   if (!usersResult.ok) {
     return usersResult;
@@ -54,9 +52,7 @@ export const removeCanceledDeletedProgramItemsFromUsers = async ({
 
   const usersToNofify: UserToNofify[] = [];
 
-  const users = usersResult.value;
-
-  const usersToUpdate = users.flatMap((user) => {
+  const usersToUpdate = usersResult.value.flatMap((user) => {
     // LOTTERY SIGNUPS
 
     const [keepLotterySignups, removeLotterySignups] = partition(
@@ -79,7 +75,7 @@ export const removeCanceledDeletedProgramItemsFromUsers = async ({
         // Preserve already-run lottery signups when the item still exists (cancelled or signupType changed)
         // Deleted items (not in programItems) are always removed
         if (foundProgramItem) {
-          const lotteryHasRun = !timeNow.isBefore(
+          const lotteryHasRun = !timeNowResult.value.isBefore(
             getLotterySignupEndTime(foundProgramItem),
           );
           if (lotteryHasRun) {

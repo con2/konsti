@@ -126,8 +126,7 @@ export const storeDirectSignup = async (
       errorId: "unknown",
     };
   }
-  const settings = settingsResult.value;
-  const signupQuestion = settings.signupQuestions.find(
+  const signupQuestion = settingsResult.value.signupQuestions.find(
     (message) => message.programItemId === programItem.programItemId,
   );
 
@@ -181,8 +180,6 @@ export const removeDirectSignup = async (
     };
   }
 
-  const timeNow = timeNowResult.value;
-
   const programItemResult = await findProgramItemById(
     directSignupProgramItemId,
   );
@@ -200,7 +197,7 @@ export const removeDirectSignup = async (
   const directSignupEndTime = getDirectSignupEndTime(programItem);
   const signupEnded = hasSignupEnded({
     signupEndTime: directSignupEndTime,
-    timeNow,
+    timeNow: timeNowResult.value,
   });
 
   if (signupEnded) {
@@ -232,8 +229,7 @@ export const removeDirectSignup = async (
       errorId: "unknown",
     };
   }
-  const settings = settingsResult.value;
-  const signupQuestion = settings.signupQuestions.find(
+  const signupQuestion = settingsResult.value.signupQuestions.find(
     (message) => message.programItemId === programItem.programItemId,
   );
 

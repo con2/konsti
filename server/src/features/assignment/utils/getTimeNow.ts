@@ -10,8 +10,9 @@ export const getTimeNow = async (): Promise<Result<Dayjs, MongoDbError>> => {
     if (!findTestSettingsResult.ok) {
       return findTestSettingsResult;
     }
-    const testSettings = findTestSettingsResult.value;
-    return makeSuccessResult(dayjs(testSettings.testTime ?? dayjs()));
+    return makeSuccessResult(
+      dayjs(findTestSettingsResult.value.testTime ?? dayjs()),
+    );
   }
 
   return makeSuccessResult(dayjs());

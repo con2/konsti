@@ -82,12 +82,10 @@ export const storeSignupQuestion = async (
     };
   }
 
-  const settings = saveSignupQuestionResult.value;
-
   return {
     message: "saveSignupQuestion success",
     status: "success",
-    signupQuestions: settings.signupQuestions,
+    signupQuestions: saveSignupQuestionResult.value.signupQuestions,
   };
 };
 
@@ -103,12 +101,10 @@ export const removeSignupQuestion = async (
     };
   }
 
-  const settings = delSignupQuestionResult.value;
-
   return {
     message: "delSignupQuestion success",
     status: "success",
-    signupQuestions: settings.signupQuestions,
+    signupQuestions: delSignupQuestionResult.value.signupQuestions,
   };
 };
 
@@ -124,11 +120,9 @@ export const updateSettings = async (
     };
   }
 
-  const response = saveSettingsResult.value;
-
   return {
     message: "Update settings success",
     status: "success",
-    settings: response,
+    settings: saveSettingsResult.value,
   };
 };

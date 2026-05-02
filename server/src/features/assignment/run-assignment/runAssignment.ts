@@ -71,19 +71,21 @@ export const runAssignment = async ({
   if (!usersResult.ok) {
     return usersResult;
   }
-  const users = usersResult.value;
 
   const directSignupsResult = await findDirectSignups();
   if (!directSignupsResult.ok) {
     return directSignupsResult;
   }
-  const directSignups = directSignupsResult.value;
 
   const {
     validLotterySignupsUsers,
     validLotterySignupProgramItems,
     lotteryParticipantDirectSignups,
-  } = prepareAssignmentParams(users, programItems, directSignups);
+  } = prepareAssignmentParams(
+    usersResult.value,
+    programItems,
+    directSignupsResult.value,
+  );
 
   const assignResultsResult = runAssignmentAlgorithm(
     assignmentAlgorithm,

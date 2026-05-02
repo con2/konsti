@@ -48,10 +48,8 @@ const checkUpcomingDirectSignups = async (
       errorId: "unknown",
     };
   }
-  const userDirectSignups = userDirectSignupsResult.value;
-
   const lotteryParticipantDirectSignups = getLotteryParticipantDirectSignups(
-    userDirectSignups,
+    userDirectSignupsResult.value,
     programItems,
   );
 
@@ -92,8 +90,6 @@ export const createGroup = async (
       errorId: "unknown",
     };
   }
-  const timeNow = timeNowResult.value;
-
   const programItemsResult = await findProgramItems();
   if (!programItemsResult.ok) {
     return {
@@ -102,13 +98,12 @@ export const createGroup = async (
       errorId: "unknown",
     };
   }
-  const programItems = programItemsResult.value;
 
   // User cannot have direct signups in future when joining a group
   const hasUpcomingDirectSignups = await checkUpcomingDirectSignups(
     username,
-    programItems,
-    timeNow,
+    programItemsResult.value,
+    timeNowResult.value,
   );
   if (hasUpcomingDirectSignups) {
     return hasUpcomingDirectSignups as PostCreateGroupError;
@@ -156,12 +151,10 @@ export const createGroup = async (
     };
   }
 
-  const saveGroupResponse = saveGroupResponseResult.value;
-
   return {
     message: "Create group success",
     status: "success",
-    groupCode: saveGroupResponse.groupCode,
+    groupCode: saveGroupResponseResult.value.groupCode,
   };
 };
 
@@ -233,8 +226,7 @@ export const joinGroup = async (
       errorId: "unknown",
     };
   }
-  const groupExistsResponse = groupExistsResult.value;
-  if (!groupExistsResponse) {
+  if (!groupExistsResult.value) {
     return {
       message: "Group does not exist",
       status: "error",
@@ -275,12 +267,10 @@ export const joinGroup = async (
     };
   }
 
-  const saveGroupResponse = saveGroupResponseResult.value;
-
   return {
     message: "Joined to group success",
     status: "success",
-    groupCode: saveGroupResponse.groupCode,
+    groupCode: saveGroupResponseResult.value.groupCode,
   };
 };
 
@@ -296,12 +286,10 @@ export const leaveGroup = async (
     };
   }
 
-  const saveGroupResponse = saveGroupResponseResult.value;
-
   return {
     message: "Leave group success",
     status: "success",
-    groupCode: saveGroupResponse.groupCode,
+    groupCode: saveGroupResponseResult.value.groupCode,
   };
 };
 
@@ -384,9 +372,7 @@ export const fetchGroup = async (
     };
   }
 
-  const findGroupResults = findGroupResultsResult.value;
-
-  const returnData = findGroupResults.map((result) => ({
+  const returnData = findGroupResultsResult.value.map((result) => ({
     groupCode: result.groupCode,
     groupCreatorCode: result.groupCreatorCode,
     lotterySignups: result.lotterySignups,

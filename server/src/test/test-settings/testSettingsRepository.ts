@@ -63,8 +63,7 @@ export const findTestSettings = async (): Promise<
       if (!createTestSettingsResult.ok) {
         return createTestSettingsResult;
       }
-      const defaultTestSettings = createTestSettingsResult.value;
-      return makeSuccessResult(defaultTestSettings);
+      return makeSuccessResult(createTestSettingsResult.value);
     }
     logger.debug("MongoDB: Test settings data found");
 

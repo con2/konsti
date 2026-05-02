@@ -121,9 +121,9 @@ export const doKompassiLogin = async (
       errorId: "unknown",
     };
   }
-  const tokens = tokensResult.value;
-
-  const profileResult = await getKompassiProfile(tokens.access_token);
+  const profileResult = await getKompassiProfile(
+    tokensResult.value.access_token,
+  );
   if (!profileResult.ok) {
     return {
       message: "Error getting user profile from Komapssi",
@@ -181,8 +181,7 @@ export const doKompassiLogin = async (
       errorId: "loginFailed",
     };
   }
-  const serialDoc = serialDocResult.value;
-  const serial = serialDoc[0].serial;
+  const serial = serialDocResult.value[0].serial;
 
   // Check if username already taken
   const findUserResult = await findUser(profile.username);

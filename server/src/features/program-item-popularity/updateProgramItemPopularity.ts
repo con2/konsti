@@ -28,25 +28,26 @@ export const updateProgramItemPopularity = async (): Promise<
   if (!usersResult.ok) {
     return usersResult;
   }
-  const users = usersResult.value;
 
   const programItemsResult = await findProgramItems();
   if (!programItemsResult.ok) {
     return programItemsResult;
   }
-  const programItems = programItemsResult.value;
 
   const directSignupsResult = await findDirectSignups();
   if (!directSignupsResult.ok) {
     return directSignupsResult;
   }
-  const directSignups = directSignupsResult.value;
 
   const {
     validLotterySignupsUsers,
     validLotterySignupProgramItems,
     lotteryParticipantDirectSignups,
-  } = prepareAssignmentParams(users, programItems, directSignups);
+  } = prepareAssignmentParams(
+    usersResult.value,
+    programItemsResult.value,
+    directSignupsResult.value,
+  );
 
   const programItemsByStartTimes = groupBy(
     validLotterySignupProgramItems,
@@ -62,10 +63,8 @@ export const updateProgramItemPopularity = async (): Promise<
   if (!timeNowResult.ok) {
     return timeNowResult;
   }
-  const timeNow = timeNowResult.value;
-
   const futureStartTimes = Object.keys(programItemsByStartTimes).filter(
-    (startTime) => dayjs(startTime).isSameOrAfter(timeNow),
+    (startTime) => dayjs(startTime).isSameOrAfter(timeNowResult.value),
   );
 
   // TODO: Only update popularity for startTimes where lottery signup is open

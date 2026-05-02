@@ -63,8 +63,7 @@ export const findSettings = async (): Promise<
       if (!createSettingsResult.ok) {
         return createSettingsResult;
       }
-      const defaultSettings = createSettingsResult.value;
-      return makeSuccessResult(defaultSettings);
+      return makeSuccessResult(createSettingsResult.value);
     }
 
     logger.debug("MongoDB: Settings data found");

@@ -122,8 +122,6 @@ export const handleCanceledDeletedProgramItems = async (
   if (!notifyUsersWithDirectSignupsResult.ok) {
     return notifyUsersWithDirectSignupsResult;
   }
-  const affectedDirectSignups = notifyUsersWithDirectSignupsResult.value;
-
   if (canceledProgramItemIds.length > 0) {
     logger.info("Remove direct signups for canceled program items");
     const resetSignupDocumentsResult = await resetDirectSignupsByProgramItemIds(
@@ -156,7 +154,7 @@ export const handleCanceledDeletedProgramItems = async (
   return makeSuccessResult({
     cancelled: canceledProgramItemIds,
     deleted: deletedProgramItemIds,
-    affectedDirectSignups,
+    affectedDirectSignups: notifyUsersWithDirectSignupsResult.value,
   });
 };
 
@@ -174,8 +172,6 @@ export const enrichProgramItems = async (
   if (!signupsResult.ok) {
     return signupsResult;
   }
-  const signups = signupsResult.value;
-
   const currentTimeResult = await getTimeNow();
   if (!currentTimeResult.ok) {
     return currentTimeResult;
@@ -196,7 +192,7 @@ export const enrichProgramItems = async (
         ),
       },
       users: getDirectSignupsForProgramItem(
-        signups,
+        signupsResult.value,
         programItem.programItemId,
         programItem.programType,
         userGroup,

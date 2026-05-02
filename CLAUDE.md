@@ -124,6 +124,28 @@ Express 5 quirks to watch for:
 - `req.query` is a getter; `validateQuery` uses `Object.defineProperty` to overwrite it with the parsed value (direct assignment is unsafe).
 - Async errors from handlers propagate to the error middleware natively — no `asyncHandler` wrapper needed.
 
+### Result Type
+
+Server code returns errors as values via `Result<T, E>` from `shared/utils/result.ts`, a tagged union:
+
+```ts
+type Result<T, E> = { ok: true; value: T } | { ok: false; error: E };
+```
+
+Construct with `makeSuccessResult(value)` / `makeErrorResult(error)`. Read by narrowing on `.ok` directly — there are no `isErrorResult` / `isSuccessResult` / `unwrapResult` helpers (they existed historically and were removed; don't reintroduce them).
+
+Standard idiom:
+
+```ts
+const usersResult = await findUsers();
+if (!usersResult.ok) {
+  return { message: "...", status: "error", errorId: "unknown" };
+}
+// use usersResult.value
+```
+
+When the unwrapped value is used **once**, inline `usersResult.value` at the use site rather than extracting a `const users = usersResult.value;` line. When it's used **multiple times**, extract to a `const` with the noun name (`user`, `settings`, etc.) and keep the `Result` suffix on the wrapper.
+
 ### Event Configuration
 
 Current event config in `shared/config/eventConfig.ts`, past events in `shared/config/past-events/` (e.g., `ropecon2025.ts`). Controls signup windows, program item types, assignment rules.

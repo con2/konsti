@@ -37,9 +37,7 @@ export const saveSerials = async (
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
 
-    const existingSerial = findSerialResult.value;
-
-    if (existingSerial || rawSerials.includes(serial)) {
+    if (findSerialResult.value || rawSerials.includes(serial)) {
       i -= 1;
       continue;
     }

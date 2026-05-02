@@ -43,9 +43,7 @@ export const validateLogin = async (
     return hashResponseResult;
   }
 
-  const hashResponse = hashResponseResult.value;
-
-  if (hashResponse) {
+  if (hashResponseResult.value) {
     return makeSuccessResult(true);
   }
 

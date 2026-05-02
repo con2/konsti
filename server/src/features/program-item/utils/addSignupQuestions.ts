@@ -29,9 +29,7 @@ export const addSignupQuestions = async (): Promise<void> => {
     );
     return;
   }
-  const programItems = programItemsResult.value;
-
-  const tournaments = programItems
+  const tournaments = programItemsResult.value
     .filter((programItem) => programItem.programType === ProgramType.TOURNAMENT)
     .filter(
       (programItem) =>

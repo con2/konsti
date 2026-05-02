@@ -77,14 +77,12 @@ export const saveUserSignupResults = async ({
   if (!directSignupsByStartTimeResult.ok) {
     return directSignupsByStartTimeResult;
   }
-  const directSignupsByStartTime = directSignupsByStartTimeResult.value;
-
   // Resolve conflicting existing direct signups
   // If user has existing signups...
   // ... and new assignment result -> remove existing
   // ... and no new assignment result -> keep existing
   const deletePromises = results.map(async (result) => {
-    const existingSignup = directSignupsByStartTime.find(
+    const existingSignup = directSignupsByStartTimeResult.value.find(
       (signup) => signup.username === result.username,
     );
 

@@ -62,9 +62,10 @@ export const loginWithJwt = async (jwt: string): Promise<PostLoginResponse> => {
       };
     }
 
-    const settings = findSettingsResult.value;
-
-    if (!settings.appOpen && user.userGroup === UserGroup.USER) {
+    if (
+      !findSettingsResult.value.appOpen &&
+      user.userGroup === UserGroup.USER
+    ) {
       return {
         errorId: "loginDisabled",
         message: "User login disabled",

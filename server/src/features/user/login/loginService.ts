@@ -39,9 +39,7 @@ export const login = async (
     };
   }
 
-  const settings = findSettingsResult.value;
-
-  if (!settings.appOpen && user.userGroup === UserGroup.USER) {
+  if (!findSettingsResult.value.appOpen && user.userGroup === UserGroup.USER) {
     return {
       errorId: "loginDisabled",
       message: "User login disabled",
@@ -60,11 +58,9 @@ export const login = async (
     };
   }
 
-  const validLogin = validLoginResult.value;
-
   logger.info(`Login: User ${user.username} with ${user.userGroup} user group`);
 
-  if (validLogin) {
+  if (validLoginResult.value) {
     logger.info(`Login: Password for user ${username} matches`);
     return {
       message: "User login success",

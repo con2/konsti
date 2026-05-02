@@ -152,12 +152,10 @@ export const storeLotterySignup = async ({
     };
   }
 
-  const response = responseResult.value;
-
   return {
     message: "Lottery signup success",
     status: "success",
-    lotterySignups: response.lotterySignups,
+    lotterySignups: responseResult.value.lotterySignups,
   };
 };
 
@@ -175,8 +173,6 @@ export const removeLotterySignup = async (
       errorId: "programItemNotFound",
     };
   }
-  const programItem = programItemResult.value;
-
   const timeNowResult = await getTimeNow();
   if (!timeNowResult.ok) {
     return {
@@ -185,13 +181,12 @@ export const removeLotterySignup = async (
       errorId: "unknown",
     };
   }
-  const timeNow = timeNowResult.value;
 
-  const lotterySignupEndTime = getLotterySignupEndTime(programItem);
+  const lotterySignupEndTime = getLotterySignupEndTime(programItemResult.value);
 
   const signupEnded = hasSignupEnded({
     signupEndTime: lotterySignupEndTime,
-    timeNow,
+    timeNow: timeNowResult.value,
   });
   if (signupEnded) {
     return {

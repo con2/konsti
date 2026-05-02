@@ -48,8 +48,7 @@ const initializeDatabase = async (): Promise<void> => {
       // eslint-disable-next-line no-restricted-syntax -- Data generation script
       throw new Error("Unable to load Kompassi program items");
     }
-    const kompassiProgramItems = programItemsResult.value;
-    await saveProgramItems(kompassiProgramItems);
+    await saveProgramItems(programItemsResult.value);
   }
 
   // This will create default settings
