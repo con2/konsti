@@ -8,8 +8,6 @@ import { Settings, SignupQuestion } from "shared/types/models/settings";
 import { PostSettingsRequest } from "shared/types/api/settings";
 import {
   Result,
-  isErrorResult,
-  unwrapResult,
   makeSuccessResult,
   makeErrorResult,
 } from "shared/utils/result";
@@ -62,10 +60,10 @@ export const findSettings = async (): Promise<
 
     if (!settings) {
       const createSettingsResult = await createSettings();
-      if (isErrorResult(createSettingsResult)) {
+      if (!createSettingsResult.ok) {
         return createSettingsResult;
       }
-      const defaultSettings = unwrapResult(createSettingsResult);
+      const defaultSettings = createSettingsResult.value;
       return makeSuccessResult(defaultSettings);
     }
 

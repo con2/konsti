@@ -40,6 +40,7 @@ describe("should load Kompassi data for all events", () => {
       });
 
       vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
+        ok: true,
         value: mockKompassiProgramItems,
       });
 

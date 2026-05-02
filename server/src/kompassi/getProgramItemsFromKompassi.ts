@@ -12,10 +12,8 @@ import {
 } from "server/kompassi/kompassiProgramItem";
 import {
   Result,
-  isErrorResult,
   makeErrorResult,
   makeSuccessResult,
-  unwrapResult,
 } from "shared/utils/result";
 import { logger } from "server/utils/logger";
 import { config } from "shared/config";
@@ -30,11 +28,11 @@ export const getProgramItemsFromKompassi = async (
 ): Promise<Result<KompassiProgramItem[], KompassiError>> => {
   const eventProgramItemsResult =
     await testHelperWrapper.getEventProgramItems();
-  if (isErrorResult(eventProgramItemsResult)) {
+  if (!eventProgramItemsResult.ok) {
     return eventProgramItemsResult;
   }
 
-  const eventProgramItems = unwrapResult(eventProgramItemsResult);
+  const eventProgramItems = eventProgramItemsResult.value;
 
   if (!Array.isArray(eventProgramItems)) {
     logger.error(

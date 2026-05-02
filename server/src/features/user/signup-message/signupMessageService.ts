@@ -1,12 +1,10 @@
 import { findSettings } from "server/features/settings/settingsRepository";
 import { findDirectSignups } from "server/features/direct-signup/directSignupRepository";
 import { GetSignupMessagesResponse } from "shared/types/api/users";
-import { isErrorResult, unwrapResult } from "shared/utils/result";
-
 export const fetchSignupMessages =
   async (): Promise<GetSignupMessagesResponse> => {
     const findSettingsResult = await findSettings();
-    if (isErrorResult(findSettingsResult)) {
+    if (!findSettingsResult.ok) {
       return {
         message: "Error loading data from DB",
         status: "error",
@@ -14,10 +12,10 @@ export const fetchSignupMessages =
       };
     }
 
-    const settings = unwrapResult(findSettingsResult);
+    const settings = findSettingsResult.value;
 
     const signupsResult = await findDirectSignups();
-    if (isErrorResult(signupsResult)) {
+    if (!signupsResult.ok) {
       return {
         message: "Error loading data from DB",
         status: "error",
@@ -25,7 +23,7 @@ export const fetchSignupMessages =
       };
     }
 
-    const signups = unwrapResult(signupsResult);
+    const signups = signupsResult.value;
 
     const signupMessages = signups.flatMap((signup) => {
       return signup.userSignups.flatMap((userSignup) => {

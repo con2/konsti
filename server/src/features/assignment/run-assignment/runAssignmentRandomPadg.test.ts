@@ -257,5 +257,8 @@ test("If both assignments fail, should return error result", async () => {
     assignmentTime: testProgramItem.startTime,
   });
 
-  expect(assignResultsResult.error).toEqual(AssignmentError.UNKNOWN_ERROR);
+  expect(assignResultsResult).toEqual({
+    ok: false,
+    error: AssignmentError.UNKNOWN_ERROR,
+  });
 });

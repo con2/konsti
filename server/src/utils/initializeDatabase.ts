@@ -6,7 +6,6 @@ import {
   createHelpUser,
   createTestUsers,
 } from "server/test/test-data-generation/generators/createUsers";
-import { isErrorResult, unwrapResult } from "shared/utils/result";
 import { cleanupDatabase } from "server/utils/cleanupDatabse";
 import { addSignupQuestions } from "server/features/program-item/utils/addSignupQuestions";
 import { findSettings } from "server/features/settings/settingsRepository";
@@ -45,11 +44,11 @@ const initializeDatabase = async (): Promise<void> => {
     logger.info("Download program items from Kompassi");
 
     const programItemsResult = await getProgramItemsForEvent();
-    if (isErrorResult(programItemsResult)) {
+    if (!programItemsResult.ok) {
       // eslint-disable-next-line no-restricted-syntax -- Data generation script
       throw new Error("Unable to load Kompassi program items");
     }
-    const kompassiProgramItems = unwrapResult(programItemsResult);
+    const kompassiProgramItems = programItemsResult.value;
     await saveProgramItems(kompassiProgramItems);
   }
 

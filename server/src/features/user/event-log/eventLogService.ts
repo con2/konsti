@@ -3,8 +3,6 @@ import {
   PostEventLogIsSeenRequest,
   PostEventLogIsSeenResponse,
 } from "shared/types/api/eventLog";
-import { isErrorResult, unwrapResult } from "shared/utils/result";
-
 export const storeEventLogItemIsSeen = async (
   request: PostEventLogIsSeenRequest,
   username: string,
@@ -13,7 +11,7 @@ export const storeEventLogItemIsSeen = async (
     request,
     username,
   );
-  if (isErrorResult(updateEventLogItemResult)) {
+  if (!updateEventLogItemResult.ok) {
     return {
       message: "Unable to update event log item isSeen",
       status: "error",
@@ -21,7 +19,7 @@ export const storeEventLogItemIsSeen = async (
     };
   }
 
-  const eventLogItems = unwrapResult(updateEventLogItemResult);
+  const eventLogItems = updateEventLogItemResult.value;
 
   return {
     status: "success",

@@ -9,7 +9,6 @@ import {
 } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
 import { hasSignupEnded } from "server/features/user/userUtils";
-import { isErrorResult, unwrapResult } from "shared/utils/result";
 import { findProgramItemById } from "server/features/program-item/programItemRepository";
 import {
   getLotterySignupEndTime,
@@ -41,14 +40,14 @@ export const storeLotterySignup = async ({
   }
 
   const programItemResult = await findProgramItemById(programItemId);
-  if (isErrorResult(programItemResult)) {
+  if (!programItemResult.ok) {
     return {
       message: `Program item not found: ${programItemId}`,
       status: "error",
       errorId: "programItemNotFound",
     };
   }
-  const programItem = unwrapResult(programItemResult);
+  const programItem = programItemResult.value;
 
   if (programItem.signupType !== SignupType.KONSTI) {
     return {
@@ -67,14 +66,14 @@ export const storeLotterySignup = async ({
   }
 
   const timeNowResult = await getTimeNow();
-  if (isErrorResult(timeNowResult)) {
+  if (!timeNowResult.ok) {
     return {
       message: "Unable to get current time",
       status: "error",
       errorId: "unknown",
     };
   }
-  const timeNow = unwrapResult(timeNowResult);
+  const timeNow = timeNowResult.value;
 
   const lotterySignupStartTime = getLotterySignupStartTime(programItem);
 
@@ -102,14 +101,14 @@ export const storeLotterySignup = async ({
   }
 
   const userResult = await findUser(username);
-  if (isErrorResult(userResult)) {
+  if (!userResult.ok) {
     return {
       message: "Error finding user",
       status: "error",
       errorId: "unknown",
     };
   }
-  const user = unwrapResult(userResult);
+  const user = userResult.value;
   if (!user) {
     return {
       message: "Error finding user",
@@ -145,7 +144,7 @@ export const storeLotterySignup = async ({
     username,
   });
 
-  if (isErrorResult(responseResult)) {
+  if (!responseResult.ok) {
     return {
       message: "Signup failure",
       status: "error",
@@ -153,7 +152,7 @@ export const storeLotterySignup = async ({
     };
   }
 
-  const response = unwrapResult(responseResult);
+  const response = responseResult.value;
 
   return {
     message: "Lottery signup success",
@@ -169,24 +168,24 @@ export const removeLotterySignup = async (
   const programItemResult = await findProgramItemById(
     lotterySignupProgramItemId,
   );
-  if (isErrorResult(programItemResult)) {
+  if (!programItemResult.ok) {
     return {
       message: `Program item not found: ${lotterySignupProgramItemId}`,
       status: "error",
       errorId: "programItemNotFound",
     };
   }
-  const programItem = unwrapResult(programItemResult);
+  const programItem = programItemResult.value;
 
   const timeNowResult = await getTimeNow();
-  if (isErrorResult(timeNowResult)) {
+  if (!timeNowResult.ok) {
     return {
       message: "Unable to get current time",
       status: "error",
       errorId: "unknown",
     };
   }
-  const timeNow = unwrapResult(timeNowResult);
+  const timeNow = timeNowResult.value;
 
   const lotterySignupEndTime = getLotterySignupEndTime(programItem);
 
@@ -209,7 +208,7 @@ export const removeLotterySignup = async (
     },
   ]);
 
-  if (isErrorResult(responseResult)) {
+  if (!responseResult.ok) {
     return {
       message: "Removing lottery signup failed",
       status: "error",

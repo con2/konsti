@@ -8,10 +8,8 @@ import { findUsers } from "server/features/user/userRepository";
 import { findDirectSignups } from "server/features/direct-signup/directSignupRepository";
 import {
   Result,
-  isErrorResult,
   makeErrorResult,
   makeSuccessResult,
-  unwrapResult,
 } from "shared/utils/result";
 import { MongoDbError } from "shared/types/api/errors";
 import { findProgramItems } from "server/features/program-item/programItemRepository";
@@ -54,22 +52,22 @@ export const verifyUserSignups = async (): Promise<
   logger.info("Verify lottery signups and signups match for users");
 
   const usersResult = await findUsers();
-  if (isErrorResult(usersResult)) {
+  if (!usersResult.ok) {
     return usersResult;
   }
-  const users = unwrapResult(usersResult);
+  const users = usersResult.value;
 
   const signupsResult = await findDirectSignups();
-  if (isErrorResult(signupsResult)) {
+  if (!signupsResult.ok) {
     return signupsResult;
   }
-  const signups = unwrapResult(signupsResult);
+  const signups = signupsResult.value;
 
   const programItemsResult = await findProgramItems();
-  if (isErrorResult(programItemsResult)) {
+  if (!programItemsResult.ok) {
     return programItemsResult;
   }
-  const programItems = unwrapResult(programItemsResult);
+  const programItems = programItemsResult.value;
 
   const lotteryParticipantDirectSignups = getLotteryParticipantDirectSignups(
     signups,
@@ -94,11 +92,11 @@ export const verifyUserSignups = async (): Promise<
       }
 
       const groupCreatorResult = getGroupCreator(users, matchingUser);
-      if (isErrorResult(groupCreatorResult)) {
+      if (!groupCreatorResult.ok) {
         return groupCreatorResult;
       }
 
-      const groupCreator = unwrapResult(groupCreatorResult);
+      const groupCreator = groupCreatorResult.value;
 
       const matchingCreatorLotterySignup = groupCreator.lotterySignups.find(
         (creatorLotterySignup) =>

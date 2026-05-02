@@ -6,12 +6,7 @@ import {
   DeleteLotterySignupsParams,
   delLotterySignups,
 } from "server/features/user/lottery-signup/lotterySignupRepository";
-import {
-  Result,
-  isErrorResult,
-  makeSuccessResult,
-  unwrapResult,
-} from "shared/utils/result";
+import { Result, makeSuccessResult } from "shared/utils/result";
 import { MongoDbError } from "shared/types/api/errors";
 import { ProgramItem } from "shared/types/models/programItem";
 import { getUpcomingLotterySignupProgramItemIds } from "server/features/assignment/utils/getUpcomingLotterySignups";
@@ -26,10 +21,10 @@ export const removeOverlapLotterySignups = async (
   const usersToUpdate: DeleteLotterySignupsParams[] = [];
 
   const usersResult = await findUsers();
-  if (isErrorResult(usersResult)) {
+  if (!usersResult.ok) {
     return usersResult;
   }
-  const users = unwrapResult(usersResult);
+  const users = usersResult.value;
 
   results.flatMap((result) => {
     const assignmentSignupProgramItem = programItems.find(
@@ -109,7 +104,7 @@ export const removeOverlapLotterySignups = async (
 
   if (usersToUpdate.length > 0) {
     const delLotterySignupsResult = await delLotterySignups(usersToUpdate);
-    if (isErrorResult(delLotterySignupsResult)) {
+    if (!delLotterySignupsResult.ok) {
       return delLotterySignupsResult;
     }
   }

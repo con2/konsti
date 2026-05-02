@@ -8,10 +8,8 @@ import { MongoDbError } from "shared/types/api/errors";
 import { User } from "shared/types/models/user";
 import {
   Result,
-  isErrorResult,
   makeErrorResult,
   makeSuccessResult,
-  unwrapResult,
 } from "shared/utils/result";
 
 export const removeHiddenProgramItemsFromUsers = async (
@@ -26,11 +24,11 @@ export const removeHiddenProgramItemsFromUsers = async (
   logger.info(`Found ${hiddenProgramItemIds.length} hidden program items`);
 
   const usersResult = await findUsers();
-  if (isErrorResult(usersResult)) {
+  if (!usersResult.ok) {
     return usersResult;
   }
 
-  const users = unwrapResult(usersResult);
+  const users = usersResult.value;
 
   const usersToUpdate: User[] = users.flatMap<User>((user) => {
     // Lottery signups to remove
@@ -69,13 +67,13 @@ export const removeHiddenProgramItemsFromUsers = async (
   });
 
   const updateUsersResult = await updateUsersByUsername(usersToUpdate);
-  if (isErrorResult(updateUsersResult)) {
+  if (!updateUsersResult.ok) {
     return updateUsersResult;
   }
 
   const resetSignupsByProgramItemIdsResult =
     await resetDirectSignupsByProgramItemIds(hiddenProgramItemIds);
-  if (isErrorResult(resetSignupsByProgramItemIdsResult)) {
+  if (!resetSignupsByProgramItemIdsResult.ok) {
     return resetSignupsByProgramItemIdsResult;
   }
 

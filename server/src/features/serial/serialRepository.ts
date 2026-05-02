@@ -7,10 +7,8 @@ import {
 import { Serial } from "server/types/serialTypes";
 import {
   Result,
-  isErrorResult,
   makeErrorResult,
   makeSuccessResult,
-  unwrapResult,
 } from "shared/utils/result";
 import { MongoDbError } from "shared/types/api/errors";
 
@@ -35,11 +33,11 @@ export const saveSerials = async (
     const rawSerials = serials.map((s) => s.serial);
 
     const findSerialResult = await findSerial(serial);
-    if (isErrorResult(findSerialResult)) {
+    if (!findSerialResult.ok) {
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
 
-    const existingSerial = unwrapResult(findSerialResult);
+    const existingSerial = findSerialResult.value;
 
     if (existingSerial || rawSerials.includes(serial)) {
       i -= 1;

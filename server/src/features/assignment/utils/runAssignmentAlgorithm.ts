@@ -12,10 +12,8 @@ import { DirectSignupsForProgramItem } from "server/features/direct-signup/direc
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import {
   Result,
-  isErrorResult,
   makeErrorResult,
   makeSuccessResult,
-  unwrapResult,
 } from "shared/utils/result";
 import { AssignmentError } from "shared/types/api/errors";
 import { getStartingProgramItems } from "server/features/assignment/utils/getStartingProgramItems";
@@ -91,10 +89,10 @@ const runPadgAlgorithm = (
     assignmentTime,
     lotteryParticipantDirectSignups,
   );
-  if (isErrorResult(padgResultResult)) {
+  if (!padgResultResult.ok) {
     return padgResultResult;
   }
-  const padgResult = unwrapResult(padgResultResult);
+  const padgResult = padgResultResult.value;
   return makeSuccessResult(padgResult);
 };
 
@@ -110,10 +108,10 @@ const runRandomAlgorithm = (
     assignmentTime,
     lotteryParticipantDirectSignups,
   );
-  if (isErrorResult(randomResultResult)) {
+  if (!randomResultResult.ok) {
     return randomResultResult;
   }
-  const randomResult = unwrapResult(randomResultResult);
+  const randomResult = randomResultResult.value;
   return makeSuccessResult(randomResult);
 };
 
@@ -129,20 +127,20 @@ const runRandomPadgAlgorithm = (
     assignmentTime,
     lotteryParticipantDirectSignups,
   );
-  if (isErrorResult(randomResultResult)) {
+  if (!randomResultResult.ok) {
     logger.error(
       "%s",
       new Error(`Random assignment failed: ${randomResultResult.error}`),
     );
   }
-  const randomResult = isErrorResult(randomResultResult)
-    ? {
+  const randomResult = randomResultResult.ok
+    ? randomResultResult.value
+    : {
         results: [],
         message: `Random assignment failed: ${randomResultResult.error}`,
         algorithm: AssignmentAlgorithm.RANDOM,
         status: AssignmentResultStatus.ERROR,
-      }
-    : unwrapResult(randomResultResult);
+      };
 
   const padgResultResult = padgAssignment(
     users,
@@ -150,22 +148,22 @@ const runRandomPadgAlgorithm = (
     assignmentTime,
     lotteryParticipantDirectSignups,
   );
-  if (isErrorResult(padgResultResult)) {
+  if (!padgResultResult.ok) {
     logger.error(
       "%s",
       new Error(`PADG assignment failed: ${padgResultResult.error}`),
     );
   }
-  const padgResult = isErrorResult(padgResultResult)
-    ? {
+  const padgResult = padgResultResult.ok
+    ? padgResultResult.value
+    : {
         results: [],
         message: `PADG assignment failed: ${padgResultResult.error}`,
         algorithm: AssignmentAlgorithm.PADG,
         status: AssignmentResultStatus.ERROR,
-      }
-    : unwrapResult(padgResultResult);
+      };
 
-  if (isErrorResult(randomResultResult) && isErrorResult(padgResultResult)) {
+  if (!randomResultResult.ok && !padgResultResult.ok) {
     logger.error(
       "%s",
       new Error("Both random and PADG assignments failed, stop assignment"),

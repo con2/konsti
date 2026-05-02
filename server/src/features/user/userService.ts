@@ -16,7 +16,6 @@ import {
 } from "shared/types/api/users";
 import { findUserDirectSignups } from "server/features/direct-signup/directSignupRepository";
 import { DirectSignup } from "shared/types/models/user";
-import { isErrorResult, unwrapResult } from "shared/utils/result";
 import { config } from "shared/config";
 import { createSerial } from "server/features/user/userUtils";
 
@@ -30,14 +29,14 @@ export const storeUser = async (
     serial = maybeSerial;
   } else {
     const serialDocResult = await createSerial();
-    if (isErrorResult(serialDocResult)) {
+    if (!serialDocResult.ok) {
       return {
         message: "Error creating serial for new user",
         status: "error",
         errorId: "unknown",
       };
     }
-    const serialDoc = unwrapResult(serialDocResult);
+    const serialDoc = serialDocResult.value;
     serial = serialDoc[0].serial;
   }
 
@@ -50,7 +49,7 @@ export const storeUser = async (
   }
 
   const serialFoundResult = await findSerial(serial);
-  if (isErrorResult(serialFoundResult)) {
+  if (!serialFoundResult.ok) {
     return {
       errorId: "unknown",
       message: "Finding serial failed",
@@ -58,7 +57,7 @@ export const storeUser = async (
     };
   }
 
-  const serialFound = unwrapResult(serialFoundResult);
+  const serialFound = serialFoundResult.value;
 
   // Check for valid serial
   if (!serialFound) {
@@ -76,7 +75,7 @@ export const storeUser = async (
 
   // Check if user already exists
   const userResult = await findUser(username);
-  if (isErrorResult(userResult)) {
+  if (!userResult.ok) {
     return {
       errorId: "unknown",
       message: "Finding user failed",
@@ -84,7 +83,7 @@ export const storeUser = async (
     };
   }
 
-  const user = unwrapResult(userResult);
+  const user = userResult.value;
 
   if (user) {
     logger.info(`User: Username ${username} is already registered`);
@@ -100,7 +99,7 @@ export const storeUser = async (
   if (!user) {
     // Check if serial is used
     const serialResponseResult = await findUserSerial({ serial });
-    if (isErrorResult(serialResponseResult)) {
+    if (!serialResponseResult.ok) {
       return {
         errorId: "unknown",
         message: "Finding serial failed",
@@ -108,7 +107,7 @@ export const storeUser = async (
       };
     }
 
-    const serialResponse = unwrapResult(serialResponseResult);
+    const serialResponse = serialResponseResult.value;
 
     // Serial used
     if (serialResponse) {
@@ -124,7 +123,7 @@ export const storeUser = async (
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (!serialResponse) {
       const passwordHashResult = await hashPassword(password);
-      if (isErrorResult(passwordHashResult)) {
+      if (!passwordHashResult.ok) {
         return {
           errorId: "unknown",
           message: "Hashing password failed",
@@ -132,7 +131,7 @@ export const storeUser = async (
         };
       }
 
-      const passwordHash = unwrapResult(passwordHashResult);
+      const passwordHash = passwordHashResult.value;
 
       if (!passwordHash) {
         logger.info("User: Serial used");
@@ -150,7 +149,7 @@ export const storeUser = async (
           passwordHash,
           serial,
         });
-        if (isErrorResult(saveUserResponseResult)) {
+        if (!saveUserResponseResult.ok) {
           return {
             errorId: "unknown",
             message: "User registration failed",
@@ -158,7 +157,7 @@ export const storeUser = async (
           };
         }
 
-        const saveUserResponse = unwrapResult(saveUserResponseResult);
+        const saveUserResponse = saveUserResponseResult.value;
 
         return {
           message: "User registration success",
@@ -192,7 +191,7 @@ export const storeUserPassword = async (
   }
 
   const passwordHashResult = await hashPassword(password);
-  if (isErrorResult(passwordHashResult)) {
+  if (!passwordHashResult.ok) {
     return {
       message: "Password change error",
       status: "error",
@@ -200,21 +199,21 @@ export const storeUserPassword = async (
     };
   }
 
-  const passwordHash = unwrapResult(passwordHashResult);
+  const passwordHash = passwordHashResult.value;
 
   const updateUserPasswordResult = await updateUserPassword(
     username,
     passwordHash,
   );
 
-  if (isErrorResult(updateUserPasswordResult)) {
+  if (!updateUserPasswordResult.ok) {
     return {
       message: "Password change error",
       status: "error",
       errorId: "unknown",
     };
   }
-  const user = unwrapResult(updateUserPasswordResult);
+  const user = updateUserPasswordResult.value;
 
   return {
     message: "Password changed",
@@ -227,7 +226,7 @@ export const fetchUserByUsername = async (
   username: string,
 ): Promise<GetUserResponse> => {
   const userResult = await findUser(username);
-  if (isErrorResult(userResult)) {
+  if (!userResult.ok) {
     return {
       message: "Getting user data failed",
       status: "error",
@@ -235,7 +234,7 @@ export const fetchUserByUsername = async (
     };
   }
 
-  const user = unwrapResult(userResult);
+  const user = userResult.value;
   if (!user) {
     return {
       message: `User ${username} not found`,
@@ -245,7 +244,7 @@ export const fetchUserByUsername = async (
   }
 
   const signupsResult = await findUserDirectSignups(username);
-  if (isErrorResult(signupsResult)) {
+  if (!signupsResult.ok) {
     return {
       message: "Getting user data failed",
       status: "error",
@@ -253,7 +252,7 @@ export const fetchUserByUsername = async (
     };
   }
 
-  const signups = unwrapResult(signupsResult);
+  const signups = signupsResult.value;
 
   const directSignups: DirectSignup[] = signups.flatMap((signup) => {
     const signupForUser = signup.userSignups.find(
@@ -294,7 +293,7 @@ export const fetchUserBySerialOrUsername = async (
   const userBySerialResult = await findUserBySerial(
     searchTerm.replaceAll("-", ""),
   );
-  if (isErrorResult(userBySerialResult)) {
+  if (!userBySerialResult.ok) {
     return {
       message: "Getting user data failed",
       status: "error",
@@ -302,7 +301,7 @@ export const fetchUserBySerialOrUsername = async (
     };
   }
 
-  const userBySerial = unwrapResult(userBySerialResult);
+  const userBySerial = userBySerialResult.value;
 
   if (userBySerial) {
     return {
@@ -316,7 +315,7 @@ export const fetchUserBySerialOrUsername = async (
 
   // If serial find fails, use username
   const userResult = await findUser(searchTerm);
-  if (isErrorResult(userResult)) {
+  if (!userResult.ok) {
     return {
       message: "Getting user data failed",
       status: "error",
@@ -324,7 +323,7 @@ export const fetchUserBySerialOrUsername = async (
     };
   }
 
-  const user = unwrapResult(userResult);
+  const user = userResult.value;
 
   if (!user) {
     return {

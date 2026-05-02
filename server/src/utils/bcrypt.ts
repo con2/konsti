@@ -3,10 +3,8 @@ import { logger } from "server/utils/logger";
 import { BcryptError } from "shared/types/api/errors";
 import {
   Result,
-  isErrorResult,
   makeErrorResult,
   makeSuccessResult,
-  unwrapResult,
 } from "shared/utils/result";
 
 const saltLength = 10;
@@ -41,11 +39,11 @@ export const validateLogin = async (
   hash: string,
 ): Promise<Result<boolean, BcryptError>> => {
   const hashResponseResult = await comparePasswordHash(password, hash);
-  if (isErrorResult(hashResponseResult)) {
+  if (!hashResponseResult.ok) {
     return hashResponseResult;
   }
 
-  const hashResponse = unwrapResult(hashResponseResult);
+  const hashResponse = hashResponseResult.value;
 
   if (hashResponse) {
     return makeSuccessResult(true);

@@ -14,10 +14,8 @@ import {
 } from "server/features/direct-signup/directSignupRepository";
 import {
   Result,
-  isErrorResult,
   makeErrorResult,
   makeSuccessResult,
-  unwrapResult,
 } from "shared/utils/result";
 import { MongoDbError, QueueError } from "shared/types/api/errors";
 import {
@@ -56,18 +54,18 @@ export const saveUserSignupResults = async ({
 
   const settingsResult = await findSettings();
   let settings: Settings | null = null;
-  if (isErrorResult(settingsResult)) {
+  if (settingsResult.ok) {
+    settings = settingsResult.value;
+  } else {
     logger.error(
       "Failed to find settings. Do not queue notification for this assignment.",
     );
-  } else {
-    settings = unwrapResult(settingsResult);
   }
   // Remove previous lottery result for the same start time
   // This does not remove non-lottery signups or previous signups from moved program items
   const delAssignmentSignupsByStartTimeResult =
     await delAssignmentDirectSignupsByStartTime(assignmentTime, programItems);
-  if (isErrorResult(delAssignmentSignupsByStartTimeResult)) {
+  if (!delAssignmentSignupsByStartTimeResult.ok) {
     return delAssignmentSignupsByStartTimeResult;
   }
 
@@ -76,10 +74,10 @@ export const saveUserSignupResults = async ({
     assignmentTime,
     programItems,
   );
-  if (isErrorResult(directSignupsByStartTimeResult)) {
+  if (!directSignupsByStartTimeResult.ok) {
     return directSignupsByStartTimeResult;
   }
-  const directSignupsByStartTime = unwrapResult(directSignupsByStartTimeResult);
+  const directSignupsByStartTime = directSignupsByStartTimeResult.value;
 
   // Resolve conflicting existing direct signups
   // If user has existing signups...
@@ -96,7 +94,7 @@ export const saveUserSignupResults = async ({
         username: existingSignup.username,
         directSignupProgramItemId: existingSignup.programItemId,
       });
-      if (isErrorResult(delSignupResult)) {
+      if (!delSignupResult.ok) {
         return delSignupResult;
       }
     }
@@ -104,8 +102,8 @@ export const saveUserSignupResults = async ({
   });
 
   const deleteResults = await Promise.all(deletePromises);
-  const someDeleteFailed = deleteResults.some((deleteResult) =>
-    isErrorResult(deleteResult),
+  const someDeleteFailed = deleteResults.some(
+    (deleteResult) => !deleteResult.ok,
   );
   if (someDeleteFailed) {
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
@@ -126,10 +124,10 @@ export const saveUserSignupResults = async ({
 
   // This might drop some signups if by some error too many signups are passed for a program item
   const saveSignupsResult = await saveDirectSignups(newSignups, programItems);
-  if (isErrorResult(saveSignupsResult)) {
+  if (!saveSignupsResult.ok) {
     return saveSignupsResult;
   }
-  const { droppedSignups } = unwrapResult(saveSignupsResult);
+  const { droppedSignups } = saveSignupsResult.value;
 
   // Remove eventLog items from same start time
   const deleteEventLogItemsByStartTimeResult =
@@ -137,7 +135,7 @@ export const saveUserSignupResults = async ({
       EventLogAction.NEW_ASSIGNMENT,
       EventLogAction.NO_ASSIGNMENT,
     ]);
-  if (isErrorResult(deleteEventLogItemsByStartTimeResult)) {
+  if (!deleteEventLogItemsByStartTimeResult.ok) {
     return deleteEventLogItemsByStartTimeResult;
   }
 
@@ -166,7 +164,7 @@ export const saveUserSignupResults = async ({
     })),
     action: EventLogAction.NEW_ASSIGNMENT,
   });
-  if (isErrorResult(newAssignmentEventLogItemsResult)) {
+  if (!newAssignmentEventLogItemsResult.ok) {
     return newAssignmentEventLogItemsResult;
   }
 
@@ -189,7 +187,7 @@ export const saveUserSignupResults = async ({
         })),
       );
 
-    if (isErrorResult(newAssignmentEmailNotificationsResult)) {
+    if (!newAssignmentEmailNotificationsResult.ok) {
       return newAssignmentEmailNotificationsResult;
     }
   }
@@ -252,7 +250,7 @@ export const saveUserSignupResults = async ({
       ),
       action: EventLogAction.NO_ASSIGNMENT,
     });
-    if (isErrorResult(noAssignmentEventLogItemsResult)) {
+    if (!noAssignmentEventLogItemsResult.ok) {
       return noAssignmentEventLogItemsResult;
     }
 
@@ -278,7 +276,7 @@ export const saveUserSignupResults = async ({
           ),
         );
 
-      if (isErrorResult(noAssignmentEmailNotificationsResult)) {
+      if (!noAssignmentEmailNotificationsResult.ok) {
         return noAssignmentEmailNotificationsResult;
       }
     }

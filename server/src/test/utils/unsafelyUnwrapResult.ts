@@ -1,11 +1,10 @@
-import { Result, isErrorResult } from "shared/utils/result";
+import { Result } from "shared/utils/result";
 
 // Use for tests and test data generation only!
 export function unsafelyUnwrap<T, Err>(result: Result<T, Err>): T | never {
-  if (isErrorResult(result)) {
+  if (!result.ok) {
     // eslint-disable-next-line no-restricted-syntax -- Test helper
     throw new Error("Result did not contain a value!");
-  } else {
-    return result.value;
   }
+  return result.value;
 }
