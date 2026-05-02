@@ -50,9 +50,9 @@ export type PostKompassiLoginRequest = z.infer<
   typeof PostKompassiLoginRequestSchema
 >;
 
-export type PostKompassiLoginResult = PostLoginResult;
+type PostKompassiLoginResult = PostLoginResult;
 
-export interface PostKompassiLoginError extends ApiError {
+interface PostKompassiLoginError extends ApiError {
   errorId: "unknown" | "loginFailed" | "loginDisabled" | "invalidUserGroup";
 }
 
@@ -116,10 +116,10 @@ interface PostUpdateUserEmailAddressPayload {
   jwt: string;
 }
 
-export type PostUpdateUserEmailAddressResult =
-  PostUpdateUserEmailAddressPayload & ApiResult;
+type PostUpdateUserEmailAddressResult = PostUpdateUserEmailAddressPayload &
+  ApiResult;
 
-export interface PostUpdateUserEmailAddressError extends ApiError {
+interface PostUpdateUserEmailAddressError extends ApiError {
   errorId: "unknown" | "invalidEmail";
 }
 

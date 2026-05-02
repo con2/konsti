@@ -76,6 +76,13 @@ Two lottery algorithms: PADG (preference-based via `eventassigner-js`) and rando
 
 Local login (bcryptjs) and Kompassi OAuth. JWT tokens stored in localStorage. User roles: admin, helper, regular user.
 
+### Rate Limiting
+
+There is **no application-level rate limiting**. This is intentional:
+
+- Convention attendees connect via venue-shared NAT'd WiFi (hundreds of users behind one public IP). Per-IP rate limiting either throttles legitimate users or is set so high it does nothing against attackers.
+- Per-username throttling on `/login` was rejected because it lets one attendee lock out another by spamming wrong passwords for that account.
+
 ### Server Route & Middleware Conventions
 
 Routes in `server/src/api/apiRoutes.ts` follow a fixed middleware chain:

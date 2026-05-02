@@ -13,7 +13,7 @@ import { EventLogItem } from "shared/types/models/eventLog";
 
 // GET user
 
-export interface GetUserResult extends ApiResult {
+interface GetUserResult extends ApiResult {
   programItems: UserProgramItems;
   serial: string;
   groupCode: string;
@@ -23,7 +23,7 @@ export interface GetUserResult extends ApiResult {
   email: string;
 }
 
-export interface GetUserError extends ApiError {
+interface GetUserError extends ApiError {
   errorId: "unknown";
 }
 
@@ -50,11 +50,11 @@ export const PostUserRequestSchema = z.object({
 
 export type PostUserRequest = z.infer<typeof PostUserRequestSchema>;
 
-export interface PostUserResult extends ApiResult {
+interface PostUserResult extends ApiResult {
   username: string;
 }
 
-export interface PostUserError extends ApiError {
+interface PostUserError extends ApiError {
   errorId: "unknown" | "invalidSerial" | "usernameNotFree";
 }
 
@@ -93,13 +93,13 @@ export type GetUserBySerialRequest = z.infer<
   typeof GetUserBySerialRequestSchema
 >;
 
-export interface GetUserBySerialResult extends ApiResult {
+interface GetUserBySerialResult extends ApiResult {
   serial: string;
   username: string;
   createdAt: string;
 }
 
-export interface GetUserBySerialError extends ApiError {
+interface GetUserBySerialError extends ApiError {
   errorId: "unknown" | "kompassiLogin";
 }
 
@@ -113,7 +113,7 @@ export interface GetSignupMessagesResult extends ApiResult {
   signupMessages: SignupMessage[];
 }
 
-export interface GetSignupMessagesError extends ApiError {
+interface GetSignupMessagesError extends ApiError {
   errorId: "unknown";
 }
 

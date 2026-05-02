@@ -45,11 +45,7 @@ export const saveSerials = async (
       i -= 1;
       continue;
     }
-    serials.push(
-      new SerialModel({
-        serial,
-      }) as Serial,
-    );
+    serials.push(new SerialModel({ serial }));
 
     const addDashesRegex = /(.{3})(?=.)/g;
     logger.info(

@@ -25,7 +25,7 @@ export const SignupStrategySelector = (): ReactElement => {
       <span>{t("admin.signupStrategy")}</span>{" "}
       <Dropdown
         options={strategies}
-        selectedValue={signupStrategy as string}
+        selectedValue={signupStrategy}
         onChange={async (event: ChangeEvent<HTMLSelectElement>) => {
           setLoading(true);
           await dispatch(

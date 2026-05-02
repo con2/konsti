@@ -4,12 +4,7 @@ import { useSearchParams } from "react-router";
 import { AllProgramItemsList } from "client/views/all-program-items/components/AllProgramItemsList";
 import { getUpcomingProgramItems } from "client/utils/getUpcomingProgramItems";
 import { Loading } from "client/components/Loading";
-import {
-  ProgramItem,
-  Language,
-  ProgramType,
-  Tag,
-} from "shared/types/models/programItem";
+import { ProgramItem, Language, Tag } from "shared/types/models/programItem";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import {
   selectActiveProgramItems,
@@ -214,7 +209,7 @@ const getTagFilteredProgramItems = (
     return programItems;
   }
   return programItems.filter((programItem) => {
-    if (programItem.programType.includes(selectedTag as ProgramType)) {
+    if (programItem.programType.includes(selectedTag)) {
       return programItem;
     }
     if (programItem.tags.includes(selectedTag as Tag)) {

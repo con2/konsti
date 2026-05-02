@@ -21,7 +21,7 @@ export const LoginProviderSelector = (): ReactElement => {
       <span>{t("admin.loginProvider")}</span>{" "}
       <Dropdown
         options={strategies}
-        selectedValue={loginProvider as string}
+        selectedValue={loginProvider}
         onChange={async (event: ChangeEvent<HTMLSelectElement>) => {
           setLoading(true);
           await dispatch(

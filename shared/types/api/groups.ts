@@ -4,7 +4,7 @@ import { GroupMember } from "shared/types/models/groups";
 
 // POST: Create group
 
-export interface PostCreateGroupResult extends ApiResult {
+interface PostCreateGroupResult extends ApiResult {
   groupCode: string;
 }
 
@@ -28,7 +28,7 @@ export const PostJoinGroupRequestSchema = z.object({
 
 export type PostJoinGroupRequest = z.infer<typeof PostJoinGroupRequestSchema>;
 
-export type PostJoinGroupResult = PostCreateGroupResult;
+type PostJoinGroupResult = PostCreateGroupResult;
 
 export interface PostJoinGroupError extends ApiError {
   errorId:
@@ -45,9 +45,9 @@ export type PostJoinGroupResponse = PostJoinGroupResult | PostJoinGroupError;
 
 // POST: Leave group
 
-export type PostLeaveGroupResult = PostCreateGroupResult;
+type PostLeaveGroupResult = PostCreateGroupResult;
 
-export interface PostLeaveGroupError extends ApiError {
+interface PostLeaveGroupError extends ApiError {
   errorId: "unknown" | "failedToLeave";
 }
 
@@ -61,9 +61,9 @@ export const PostCloseGroupRequestSchema = z.object({
 
 export type PostCloseGroupRequest = z.infer<typeof PostCloseGroupRequestSchema>;
 
-export type PostCloseGroupResult = PostCreateGroupResult;
+type PostCloseGroupResult = PostCreateGroupResult;
 
-export interface PostCloseGroupError extends ApiError {
+interface PostCloseGroupError extends ApiError {
   errorId: "unknown" | "onlyCreatorCanCloseGroup";
 }
 
