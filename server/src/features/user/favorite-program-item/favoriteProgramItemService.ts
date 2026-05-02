@@ -14,11 +14,9 @@ export const storeFavorite = async (
     };
   }
 
-  const favoriteProgramItemIds = saveFavoriteResult.value;
-
   return {
     message: "Update favorite success",
     status: "success",
-    favoriteProgramItemIds,
+    favoriteProgramItemIds: saveFavoriteResult.value,
   };
 };

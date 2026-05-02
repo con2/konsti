@@ -12,8 +12,6 @@ export const fetchSignupMessages =
       };
     }
 
-    const settings = findSettingsResult.value;
-
     const signupsResult = await findDirectSignups();
     if (!signupsResult.ok) {
       return {
@@ -23,12 +21,10 @@ export const fetchSignupMessages =
       };
     }
 
-    const signups = signupsResult.value;
-
-    const signupMessages = signups.flatMap((signup) => {
+    const signupMessages = signupsResult.value.flatMap((signup) => {
       return signup.userSignups.flatMap((userSignup) => {
         if (userSignup.message) {
-          const signupQuestion = settings.signupQuestions.find(
+          const signupQuestion = findSettingsResult.value.signupQuestions.find(
             (question) => question.programItemId === signup.programItemId,
           );
           if (!signupQuestion) {

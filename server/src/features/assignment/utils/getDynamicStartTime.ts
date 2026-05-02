@@ -14,9 +14,7 @@ export const getDynamicStartTime = async (): Promise<
     return timeNowResult;
   }
 
-  const timeNow = timeNowResult.value;
-
-  const dynamicStartTime = timeNow
+  const dynamicStartTime = timeNowResult.value
     .startOf("minute")
     .add(directSignupPhaseStart, "minutes")
     .toISOString();

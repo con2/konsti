@@ -215,13 +215,11 @@ export const saveDirectSignup = async (
   if (!programItemResult.ok) {
     return programItemResult;
   }
-  const programItem = programItemResult.value;
-
   try {
     const response = await SignupModel.findOneAndUpdate(
       {
         programItemId: directSignupProgramItemId,
-        count: { $lt: programItem.maxAttendance },
+        count: { $lt: programItemResult.value.maxAttendance },
         "userSignups.username": { $ne: username },
       },
       {

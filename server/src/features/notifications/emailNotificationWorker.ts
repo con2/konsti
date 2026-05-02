@@ -82,10 +82,11 @@ async function generateAcceptedEmail(
     );
     return null;
   }
-  const program = programItemResult.value;
-
   const subject = getEmailSubjectAccepted();
-  const body = getEmailBodyAccepted(program.title, notification);
+  const body = getEmailBodyAccepted(
+    programItemResult.value.title,
+    notification,
+  );
   const htmlBody = body.replaceAll("\n", "<br />");
   return {
     from: fromAddress,

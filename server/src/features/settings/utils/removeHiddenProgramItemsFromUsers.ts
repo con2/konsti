@@ -28,9 +28,7 @@ export const removeHiddenProgramItemsFromUsers = async (
     return usersResult;
   }
 
-  const users = usersResult.value;
-
-  const usersToUpdate: User[] = users.flatMap<User>((user) => {
+  const usersToUpdate: User[] = usersResult.value.flatMap<User>((user) => {
     // Lottery signups to remove
     const lotterySignups = user.lotterySignups.filter((lotterySignup) => {
       const hiddenFound = hiddenProgramItemIds.find((hiddenProgramItemId) => {

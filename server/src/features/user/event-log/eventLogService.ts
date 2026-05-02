@@ -19,11 +19,9 @@ export const storeEventLogItemIsSeen = async (
     };
   }
 
-  const eventLogItems = updateEventLogItemResult.value;
-
   return {
     status: "success",
     message: "Event saved",
-    eventLogItems,
+    eventLogItems: updateEventLogItemResult.value,
   };
 };

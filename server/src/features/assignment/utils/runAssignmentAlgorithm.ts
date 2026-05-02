@@ -92,8 +92,7 @@ const runPadgAlgorithm = (
   if (!padgResultResult.ok) {
     return padgResultResult;
   }
-  const padgResult = padgResultResult.value;
-  return makeSuccessResult(padgResult);
+  return makeSuccessResult(padgResultResult.value);
 };
 
 const runRandomAlgorithm = (
@@ -111,8 +110,7 @@ const runRandomAlgorithm = (
   if (!randomResultResult.ok) {
     return randomResultResult;
   }
-  const randomResult = randomResultResult.value;
-  return makeSuccessResult(randomResult);
+  return makeSuccessResult(randomResultResult.value);
 };
 
 const runRandomPadgAlgorithm = (

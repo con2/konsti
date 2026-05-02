@@ -17,12 +17,10 @@ export const fetchTestSettings = async (): Promise<GetTestSettingsResponse> => {
     };
   }
 
-  const response = responseResult.value;
-
   return {
     message: "Getting test settings success",
     status: "success",
-    testSettings: { testTime: response.testTime },
+    testSettings: { testTime: responseResult.value.testTime },
   };
 };
 
@@ -38,11 +36,9 @@ export const updateTestSettings = async (
     };
   }
 
-  const response = responseResult.value;
-
   return {
     message: "Update test settings success",
     status: "success",
-    testSettings: response,
+    testSettings: responseResult.value,
   };
 };

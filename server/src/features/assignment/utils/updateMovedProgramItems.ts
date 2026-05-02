@@ -40,11 +40,9 @@ export const updateMovedProgramItems = async (
   if (!removeMovedLotterySignupsResult.ok) {
     return removeMovedLotterySignupsResult;
   }
-  const usersWithMovedLotterySignups = removeMovedLotterySignupsResult.value;
-
   const notifyUsersWithDirectSignupsResult = await notifyUsersWithDirectSignups(
     movedProgramItems,
-    usersWithMovedLotterySignups,
+    removeMovedLotterySignupsResult.value,
   );
   if (!notifyUsersWithDirectSignupsResult.ok) {
     return notifyUsersWithDirectSignupsResult;
@@ -62,9 +60,7 @@ const removeMovedLotterySignupsAndNotify = async (
   if (!usersResult.ok) {
     return usersResult;
   }
-  const users = usersResult.value;
-
-  const usersToUpdate = users.flatMap((user) => {
+  const usersToUpdate = usersResult.value.flatMap((user) => {
     const movedLotterySignups = user.lotterySignups.filter((lotterySignup) => {
       const movedFound = movedProgramItems.find((movedProgramItem) => {
         return movedProgramItem.programItemId === lotterySignup.programItemId;
@@ -142,9 +138,7 @@ const notifyUsersWithDirectSignups = async (
   if (!directSignupsResult.ok) {
     return directSignupsResult;
   }
-  const directSignups = directSignupsResult.value;
-
-  const userUpdates = directSignups.flatMap((directSignup) => {
+  const userUpdates = directSignupsResult.value.flatMap((directSignup) => {
     const movedProgramItem = movedProgramItems.find(
       (programItem) => programItem.programItemId === directSignup.programItemId,
     );

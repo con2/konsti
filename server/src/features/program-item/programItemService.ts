@@ -26,8 +26,9 @@ export const getProgramItemsForEvent = async (): Promise<
     return kompassiProgramItemsResult;
   }
 
-  const kompassiProgramItems = kompassiProgramItemsResult.value;
-  return makeSuccessResult(kompassiProgramItemMapper(kompassiProgramItems));
+  return makeSuccessResult(
+    kompassiProgramItemMapper(kompassiProgramItemsResult.value),
+  );
 };
 
 export const updateProgramItems =
@@ -41,8 +42,9 @@ export const updateProgramItems =
       };
     }
 
-    const programItems = programItemsResult.value;
-    const saveProgramItemsResult = await saveProgramItems(programItems);
+    const saveProgramItemsResult = await saveProgramItems(
+      programItemsResult.value,
+    );
     if (!saveProgramItemsResult.ok) {
       return {
         message: "Program items db update failed: Saving program items failed",
@@ -73,12 +75,10 @@ export const updateProgramItems =
       };
     }
 
-    const updatedProgramItems = updatedProgramItemsResult.value;
-
     return {
       message: "Program items db updated",
       status: "success",
-      programItems: updatedProgramItems,
+      programItems: updatedProgramItemsResult.value,
     };
   };
 
@@ -93,10 +93,8 @@ export const fetchProgramItems = async (
       errorId: "databaseError",
     };
   }
-  const programItems = programItemsResult.value;
-
   const programItemsWithAttendeesResult = await enrichProgramItems(
-    programItems,
+    programItemsResult.value,
     userGroup,
   );
   if (!programItemsWithAttendeesResult.ok) {
@@ -106,11 +104,9 @@ export const fetchProgramItems = async (
       errorId: "unknown",
     };
   }
-  const programItemsWithAttendees = programItemsWithAttendeesResult.value;
-
   return {
     message: "Program items downloaded",
     status: "success",
-    programItems: programItemsWithAttendees,
+    programItems: programItemsWithAttendeesResult.value,
   };
 };

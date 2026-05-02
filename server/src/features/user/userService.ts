@@ -36,8 +36,7 @@ export const storeUser = async (
         errorId: "unknown",
       };
     }
-    const serialDoc = serialDocResult.value;
-    serial = serialDoc[0].serial;
+    serial = serialDocResult.value[0].serial;
   }
 
   if (serial === undefined) {
@@ -57,10 +56,8 @@ export const storeUser = async (
     };
   }
 
-  const serialFound = serialFoundResult.value;
-
   // Check for valid serial
-  if (!serialFound) {
+  if (!serialFoundResult.value) {
     logger.info("User: Serial is not valid");
     return {
       errorId: "invalidSerial",
@@ -157,12 +154,10 @@ export const storeUser = async (
           };
         }
 
-        const saveUserResponse = saveUserResponseResult.value;
-
         return {
           message: "User registration success",
           status: "success",
-          username: saveUserResponse.username,
+          username: saveUserResponseResult.value.username,
         };
       }
     }
@@ -199,11 +194,9 @@ export const storeUserPassword = async (
     };
   }
 
-  const passwordHash = passwordHashResult.value;
-
   const updateUserPasswordResult = await updateUserPassword(
     username,
-    passwordHash,
+    passwordHashResult.value,
   );
 
   if (!updateUserPasswordResult.ok) {
@@ -213,12 +206,10 @@ export const storeUserPassword = async (
       errorId: "unknown",
     };
   }
-  const user = updateUserPasswordResult.value;
-
   return {
     message: "Password changed",
     status: "success",
-    username: user.username,
+    username: updateUserPasswordResult.value.username,
   };
 };
 
@@ -252,22 +243,22 @@ export const fetchUserByUsername = async (
     };
   }
 
-  const signups = signupsResult.value;
-
-  const directSignups: DirectSignup[] = signups.flatMap((signup) => {
-    const signupForUser = signup.userSignups.find(
-      (userSignup) => userSignup.username === username,
-    );
-    if (!signupForUser) {
-      return [];
-    }
-    return {
-      programItemId: signup.programItemId,
-      priority: signupForUser.priority,
-      signedToStartTime: signupForUser.signedToStartTime,
-      message: signupForUser.message,
-    };
-  });
+  const directSignups: DirectSignup[] = signupsResult.value.flatMap(
+    (signup) => {
+      const signupForUser = signup.userSignups.find(
+        (userSignup) => userSignup.username === username,
+      );
+      if (!signupForUser) {
+        return [];
+      }
+      return {
+        programItemId: signup.programItemId,
+        priority: signupForUser.priority,
+        signedToStartTime: signupForUser.signedToStartTime,
+        message: signupForUser.message,
+      };
+    },
+  );
 
   return {
     message: "Getting user data success",

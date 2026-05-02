@@ -24,8 +24,6 @@ export const removeOverlapLotterySignups = async (
   if (!usersResult.ok) {
     return usersResult;
   }
-  const users = usersResult.value;
-
   results.flatMap((result) => {
     const assignmentSignupProgramItem = programItems.find(
       (programItem) =>
@@ -42,7 +40,9 @@ export const removeOverlapLotterySignups = async (
       return [];
     }
 
-    const signedUser = users.find((user) => user.username === result.username);
+    const signedUser = usersResult.value.find(
+      (user) => user.username === result.username,
+    );
     if (!signedUser) {
       logger.error(
         "%s",
