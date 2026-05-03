@@ -1,11 +1,10 @@
-import dayjs from "dayjs";
 import { countBy } from "remeda";
 import { logger } from "server/utils/logger";
 import { ProgramItem, ProgramType } from "shared/types/models/programItem";
 import { User } from "shared/types/models/user";
 import { getMaximumNumberOfAttendeesByTime } from "./resultDataHelpers";
 import { toPercent } from "server/features/statistics/statsUtil";
-import { TIMEZONE } from "shared/utils/initializeDayjs";
+import { getDateAndTime } from "shared/utils/timeFormatter";
 
 export const getProgramItemsByStartTime = (
   programItems: readonly ProgramItem[],
@@ -70,8 +69,7 @@ export const getDemandByTime = (
 
   for (const startTime in maximumNumberOfAttendeesByTime) {
     logger.info(
-      // eslint-disable-next-line no-restricted-syntax -- We want to call format here
-      `Demand for ${dayjs(startTime).tz(TIMEZONE).format("DD.M.YYYY HH:mm")}: ${
+      `Demand for ${getDateAndTime(startTime)}: ${
         signupsByTime[startTime]
       }/${maximumNumberOfAttendeesByTime[startTime]} (${toPercent(
         signupsByTime[startTime] / maximumNumberOfAttendeesByTime[startTime],
@@ -155,8 +153,7 @@ export const getDemandByProgramItem = (
     total: t.total,
     programType: t.programType,
     gameSystem: t.gameSystem,
-    // eslint-disable-next-line no-restricted-syntax
-    startTime: dayjs(t.startTime).format("ddd D.M.YYYY HH:mm"),
+    startTime: getDateAndTime(t.startTime),
     maxAttendance: t.maxAttendance,
     percentAttended: `${((t.maxAttendance / t.total) * 100).toFixed(2)}%`,
     priority1: t.byPriority[1],
