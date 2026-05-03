@@ -114,7 +114,8 @@ export default defineConfig([
           message: "Return Result<T,Err> instead of throwing errors",
         },
         {
-          selector: "MemberExpression[property.name='format']",
+          selector:
+            "MemberExpression[property.name='format'][object.type='CallExpression']",
           message: "Import from timeFormatter.ts or use dayjs().toISOString",
         },
         {

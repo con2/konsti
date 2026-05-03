@@ -37,7 +37,7 @@ export const printRpgDirectSignupFullTimes = (
 
     const directSignupStartTime = getRollingDirectSignupStartTime(
       programItem,
-      config.event().eventStartTime, // TODO: Read this from event config file
+      config.event().eventStartTime,
     );
 
     const programItemFullTime = dayjs(rpgDirectSignup.updatedAt);
