@@ -14,7 +14,6 @@ import { Button, ButtonStyle } from "client/components/Button";
 import { ErrorMessage } from "client/components/ErrorMessage";
 import { CancelSignupForm } from "client/views/program-item/signup/components/CancelSignupForm";
 import { getTimeNow } from "client/utils/getTimeNow";
-import { config } from "shared/config";
 import { getLotterySignupStartTime } from "shared/utils/signupTimes";
 import { getIsInGroup } from "client/views/group/groupUtils";
 import { InfoText } from "client/components/InfoText";
@@ -110,39 +109,37 @@ export const ProgramItemLotterySignup = ({
 
   return (
     <>
-      {config.event().signupOpen && isInGroup && !isGroupCreator && (
+      {isInGroup && !isGroupCreator && (
         <p>{t("group.signupDisabledNotCreator")}</p>
       )}
 
-      {config.event().signupOpen &&
-        !alreadySignedToProgramItem &&
-        canSignToProgramItems && (
-          <>
-            {lotterySignupsForTimeslot.length >= 3 && (
-              <p>{t("signup.cannotLotterySignupMoreProgramItems")}</p>
-            )}
+      {!alreadySignedToProgramItem && canSignToProgramItems && (
+        <>
+          {lotterySignupsForTimeslot.length >= 3 && (
+            <p>{t("signup.cannotLotterySignupMoreProgramItems")}</p>
+          )}
 
-            {lotterySignupOpen &&
-              lotterySignupsForTimeslot.length < 3 &&
-              !signupFormOpen && (
-                <ButtonContainer>
-                  <StyledButton
-                    onClick={() => {
-                      if (groupMembers.length > programItem.maxAttendance) {
-                        setErrorMessage(ClientError.GROUP_TOO_BIG);
-                      } else {
-                        setSignupFormOpen(true);
-                      }
-                    }}
-                    buttonStyle={ButtonStyle.PRIMARY}
-                    disabled={loading}
-                  >
-                    {t("signup.lotterySignup")}
-                  </StyledButton>
-                </ButtonContainer>
-              )}
-          </>
-        )}
+          {lotterySignupOpen &&
+            lotterySignupsForTimeslot.length < 3 &&
+            !signupFormOpen && (
+              <ButtonContainer>
+                <StyledButton
+                  onClick={() => {
+                    if (groupMembers.length > programItem.maxAttendance) {
+                      setErrorMessage(ClientError.GROUP_TOO_BIG);
+                    } else {
+                      setSignupFormOpen(true);
+                    }
+                  }}
+                  buttonStyle={ButtonStyle.PRIMARY}
+                  disabled={loading}
+                >
+                  {t("signup.lotterySignup")}
+                </StyledButton>
+              </ButtonContainer>
+            )}
+        </>
+      )}
       {alreadySignedToProgramItem && (
         <>
           <InfoText>
@@ -152,31 +149,25 @@ export const ProgramItemLotterySignup = ({
             })}
           </InfoText>
 
-          {config.event().signupOpen && (
-            <>
-              {canSignToProgramItems && !cancelSignupFormOpen && (
-                <ButtonContainer>
-                  <StyledButton
-                    onClick={() => setCancelSignupFormOpen(true)}
-                    buttonStyle={ButtonStyle.SECONDARY}
-                  >
-                    {t("button.cancelSignup")}
-                  </StyledButton>
-                </ButtonContainer>
-              )}
+          {canSignToProgramItems && !cancelSignupFormOpen && (
+            <ButtonContainer>
+              <StyledButton
+                onClick={() => setCancelSignupFormOpen(true)}
+                buttonStyle={ButtonStyle.SECONDARY}
+              >
+                {t("button.cancelSignup")}
+              </StyledButton>
+            </ButtonContainer>
+          )}
 
-              {cancelSignupFormOpen && (
-                <CancelSignupForm
-                  onCancelForm={() => {
-                    setCancelSignupFormOpen(false);
-                  }}
-                  onConfirmForm={async () =>
-                    await removeLotterySignup(programItem)
-                  }
-                  loading={loading}
-                />
-              )}
-            </>
+          {cancelSignupFormOpen && (
+            <CancelSignupForm
+              onCancelForm={() => {
+                setCancelSignupFormOpen(false);
+              }}
+              onConfirmForm={async () => await removeLotterySignup(programItem)}
+              loading={loading}
+            />
           )}
         </>
       )}

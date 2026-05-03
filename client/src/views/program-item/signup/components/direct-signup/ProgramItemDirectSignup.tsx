@@ -16,7 +16,6 @@ import { ErrorMessage } from "client/components/ErrorMessage";
 import { selectDirectSignups } from "client/views/my-program-items/myProgramItemsSlice";
 import { getTimeNow } from "client/utils/getTimeNow";
 import { getDirectSignupStartTime } from "shared/utils/signupTimes";
-import { config } from "shared/config";
 import { InfoText } from "client/components/InfoText";
 import { AdmissionTicketLink } from "client/views/program-item/signup/components/AdmissionTicketLink";
 import { startLoading, stopLoading } from "client/state/loading/loadingSlice";
@@ -32,7 +31,6 @@ export const ProgramItemDirectSignup = ({
 }: Props): ReactElement | null => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
-  const { signupOpen } = config.event();
 
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
   const directSignups = useAppSelector(selectDirectSignups);
@@ -86,7 +84,7 @@ export const ProgramItemDirectSignup = ({
 
   return (
     <Container>
-      {signupOpen && programItemIsFull && (
+      {programItemIsFull && (
         <ProgramItemFullText data-testid="program-item-full">
           {t("signup.programItemFull", {
             PROGRAM_TYPE: t(`programTypeSingular.${programItem.programType}`),
@@ -94,7 +92,7 @@ export const ProgramItemDirectSignup = ({
         </ProgramItemFullText>
       )}
 
-      {signupOpen && !alreadySignedToProgramItem && !programItemIsFull && (
+      {!alreadySignedToProgramItem && !programItemIsFull && (
         <>
           {directSignupForTimeslot && (
             <InfoText>
@@ -149,32 +147,26 @@ export const ProgramItemDirectSignup = ({
             })}
           </InfoText>
 
-          {signupOpen && (
-            <>
-              {!cancelSignupFormOpen && (
-                <ButtonContainer>
-                  <AdmissionTicketLink
-                    programItemId={programItem.programItemId}
-                  />
-                  <StyledButton
-                    onClick={() => setCancelSignupFormOpen(true)}
-                    buttonStyle={ButtonStyle.SECONDARY}
-                  >
-                    {t("button.cancelSignup")}
-                  </StyledButton>
-                </ButtonContainer>
-              )}
+          {!cancelSignupFormOpen && (
+            <ButtonContainer>
+              <AdmissionTicketLink programItemId={programItem.programItemId} />
+              <StyledButton
+                onClick={() => setCancelSignupFormOpen(true)}
+                buttonStyle={ButtonStyle.SECONDARY}
+              >
+                {t("button.cancelSignup")}
+              </StyledButton>
+            </ButtonContainer>
+          )}
 
-              {cancelSignupFormOpen && (
-                <CancelSignupForm
-                  onCancelForm={() => {
-                    setCancelSignupFormOpen(false);
-                  }}
-                  onConfirmForm={async () => await removeSignup()}
-                  loading={loading}
-                />
-              )}
-            </>
+          {cancelSignupFormOpen && (
+            <CancelSignupForm
+              onCancelForm={() => {
+                setCancelSignupFormOpen(false);
+              }}
+              onConfirmForm={async () => await removeSignup()}
+              loading={loading}
+            />
           )}
         </>
       )}

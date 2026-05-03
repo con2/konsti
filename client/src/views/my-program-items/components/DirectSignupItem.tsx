@@ -9,7 +9,6 @@ import {
   submitDeleteDirectSignup,
 } from "client/views/my-program-items/myProgramItemsThunks";
 import { CancelSignupForm } from "client/views/program-item/signup/components/CancelSignupForm";
-import { config } from "shared/config";
 import { getShortWeekdayAndTime } from "shared/utils/timeFormatter";
 import { TertiaryButton } from "client/components/TertiaryButton";
 import {
@@ -132,18 +131,16 @@ export const DirectSignupItem = ({
           >
             {t("button.showAdmissionTicket")}
           </TertiaryButton>
-          {config.event().signupOpen && (
-            <TertiaryButton
-              icon="calendar-xmark"
-              onClick={() => setCancelSignupFormOpen(true)}
-            >
-              {t("button.cancelSignup")}
-            </TertiaryButton>
-          )}
+          <TertiaryButton
+            icon="calendar-xmark"
+            onClick={() => setCancelSignupFormOpen(true)}
+          >
+            {t("button.cancelSignup")}
+          </TertiaryButton>
         </StyledButtonContainer>
       )}
 
-      {config.event().signupOpen && cancelSignupFormOpen && (
+      {cancelSignupFormOpen && (
         <CancelSignupFormContainer>
           <CancelSignupForm
             onCancelForm={() => {

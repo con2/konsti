@@ -61,8 +61,6 @@ export interface EventConfig {
   directSignupAlwaysOpenIds: string[];
   requireRegistrationCode: boolean;
   twoPhaseSignupProgramTypes: ProgramType[];
-  signupOpen: boolean;
-  resultsVisible: boolean;
   addToKonstiOther: string[];
   noKonstiSignupIds: string[];
   ignoreProgramItemsIds: string[];
@@ -76,7 +74,6 @@ export interface EventConfig {
     conditionText: EntryConditionText;
     programItemIds: string[];
   }[];
-  directSignupOpenToEndProgramTypes: ProgramType[];
   activeProgramTypes: ProgramType[];
   enableRemoveOverlapSignups: boolean;
   enableRemoveAllUpcomingSignups: boolean;

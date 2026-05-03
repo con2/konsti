@@ -22,8 +22,6 @@ const eventConfig: Partial<EventConfig> = {
   requireRegistrationCode: true,
   assignmentAlgorithm: AssignmentAlgorithm.RANDOM,
   enableGroups: true,
-  signupOpen: true,
-  resultsVisible: true,
 
   // Remove overlapping lottery signups...
   enableRemoveOverlapSignups: false,
@@ -45,9 +43,6 @@ const eventConfig: Partial<EventConfig> = {
   enableRollingDirectSignupPreviousDay: true,
 
   hideParticipantListProgramTypes: [ProgramType.FLEAMARKET],
-
-  // Direct signup open till program item endTime instead of startTime
-  directSignupOpenToEndProgramTypes: [], // TODO: Remove config
 
   // These program items have their signup always open even if signup mode is set to lottery
   directSignupAlwaysOpenIds: [],

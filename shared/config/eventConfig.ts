@@ -20,8 +20,6 @@ export const eventConfig: EventConfig = {
   requireRegistrationCode: true,
   assignmentAlgorithm: AssignmentAlgorithm.RANDOM_PADG,
   enableGroups: true,
-  signupOpen: true, // TODO: Remove this
-  resultsVisible: true, // TODO: Remove this
 
   // Remove overlapping lottery signups...
   enableRemoveOverlapSignups: false,
@@ -48,9 +46,6 @@ export const eventConfig: EventConfig = {
   enableRollingDirectSignupPreviousDay: true,
 
   hideParticipantListProgramTypes: [],
-
-  // Direct signup open till program item endTime instead of startTime
-  directSignupOpenToEndProgramTypes: [], // TODO: Remove config
 
   // These program items have their signup always open even if signup mode is set to lottery
   directSignupAlwaysOpenIds: [],

@@ -22,8 +22,6 @@ const eventConfig: Partial<EventConfig> = {
   requireRegistrationCode: false,
   assignmentAlgorithm: AssignmentAlgorithm.PADG,
   enableGroups: true,
-  signupOpen: false,
-  resultsVisible: true,
 
   activeProgramTypes: [ProgramType.TABLETOP_RPG, ProgramType.LARP],
 

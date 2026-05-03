@@ -150,15 +150,7 @@ export const getDirectSignupStartTime = (programItem: ProgramItem): Dayjs => {
 };
 
 export const getDirectSignupEndTime = (programItem: ProgramItem): Dayjs => {
-  const { directSignupOpenToEndProgramTypes } = config.event();
-
-  const directSignupOpenToEnd = directSignupOpenToEndProgramTypes.includes(
-    programItem.programType,
-  );
-
-  return directSignupOpenToEnd
-    ? dayjs(programItem.endTime)
-    : dayjs(programItem.startTime);
+  return dayjs(programItem.startTime);
 };
 
 export const getLotterySignupNotStarted = (
