@@ -99,7 +99,7 @@ export const translationFI = {
     modern: "Moderni",
     war: "Sota",
     horror: "Kauhu",
-    exploration: "Seikkailu",
+    exploration: "Tutkiminen",
     mystery: "Mysteeri",
     drama: "Draama",
     humor: "Huumori",
@@ -587,7 +587,7 @@ export const translationFI = {
     sentryTesting: "Sentryn testaus",
     sentryClientTest: "Client-testi",
     sentryBackendTest: "Backend-testi",
-    signupStrategy: "Ilmoittautumisstapa",
+    signupStrategy: "Ilmoittautumistapa",
     loginProvider: "Kirjautumistapa",
   },
   email: {

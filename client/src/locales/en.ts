@@ -245,7 +245,7 @@ export const translationEN = {
     userNotFound: "User not found",
     foundUser: "Found user",
     changingPasswordError: "Error changing password.",
-    changingPasswordSuccess: "Password changed succesfully.",
+    changingPasswordSuccess: "Password changed successfully.",
     userCreatedAt: "User account created",
     kompassiLocalInfo:
       "If Konsti has been logged in with a Kompassi account, the password can be changed on the",
@@ -589,7 +589,7 @@ export const translationEN = {
   email: {
     notifications: {
       accepted: "I would like to get notifications from Konsti to my email",
-      rejected: "I do not want get notifications from Konsti",
+      rejected: "I do not want to get notifications from Konsti",
       registrationDescription:
         "You can change notification settings from Profile page",
       changingEmailError: "Error updating email address",
