@@ -1,6 +1,6 @@
 import { logger } from "server/utils/logger";
 import { runAssignmentAlgorithm } from "server/features/assignment/utils/runAssignmentAlgorithm";
-import { removeCanceledDeletedProgramItemsFromUsers } from "server/features/assignment/utils/removeInvalidProgramItemsFromUsers";
+import { removeCancelledDeletedProgramItemsFromUsers } from "server/features/assignment/utils/removeInvalidProgramItemsFromUsers";
 import { AssignmentResult } from "server/types/resultTypes";
 import { findUsers } from "server/features/user/userRepository";
 import { findProgramItems } from "server/features/program-item/programItemRepository";
@@ -57,14 +57,14 @@ export const runAssignment = async ({
   }
   const programItems = programItemsResult.value;
 
-  const removeCanceledDeletedProgramItemsResult =
-    await removeCanceledDeletedProgramItemsFromUsers({
+  const removeCancelledDeletedProgramItemsResult =
+    await removeCancelledDeletedProgramItemsFromUsers({
       programItems,
       notifyAffectedDirectSignups: [],
       notify: false,
     });
-  if (!removeCanceledDeletedProgramItemsResult.ok) {
-    return removeCanceledDeletedProgramItemsResult;
+  if (!removeCancelledDeletedProgramItemsResult.ok) {
+    return removeCancelledDeletedProgramItemsResult;
   }
 
   const usersResult = await findUsers();

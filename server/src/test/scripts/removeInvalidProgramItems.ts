@@ -1,5 +1,5 @@
 import { logger } from "server/utils/logger";
-import { removeCanceledDeletedProgramItemsFromUsers } from "server/features/assignment/utils/removeInvalidProgramItemsFromUsers";
+import { removeCancelledDeletedProgramItemsFromUsers } from "server/features/assignment/utils/removeInvalidProgramItemsFromUsers";
 import { db } from "server/db/mongodb";
 import { findProgramItems } from "server/features/program-item/programItemRepository";
 
@@ -19,7 +19,7 @@ const removeInvalidProgramItems = async (): Promise<void> => {
       throw new Error("Finding program items failed");
     }
     const programItems = programItemsResult.value;
-    await removeCanceledDeletedProgramItemsFromUsers({
+    await removeCancelledDeletedProgramItemsFromUsers({
       programItems,
       notifyAffectedDirectSignups: [],
       notify: false,

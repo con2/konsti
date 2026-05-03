@@ -148,7 +148,7 @@ describe("should give first time bonus", () => {
     ]);
   });
 
-  test("for single user with NEW_ASSIGNMENT event if program item canceled", () => {
+  test("for single user with NEW_ASSIGNMENT event if program item cancelled", () => {
     const users = getUsers({
       count: 1,
       pastLotterySignupUsers: 1,
@@ -159,7 +159,7 @@ describe("should give first time bonus", () => {
       attendeeGroups,
       assignmentTime,
       lotteryParticipantDirectSignups: [],
-      lotterySignupProgramItems: [], // Empty array = canceled
+      lotterySignupProgramItems: [], // Empty array = cancelled
     });
 
     expect(list).toEqual([
@@ -268,7 +268,7 @@ describe("should give first time bonus", () => {
     ]);
   });
 
-  test("for group with NEW_ASSIGNMENT events if program item canceled", () => {
+  test("for group with NEW_ASSIGNMENT events if program item cancelled", () => {
     const users = getUsers({
       count: 4,
       pastLotterySignupUsers: 3,

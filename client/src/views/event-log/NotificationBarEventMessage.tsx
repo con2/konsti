@@ -4,7 +4,7 @@ import { EventLogNoAssignment } from "client/views/event-log/EventLogNoAssignmen
 import { EventLogAction, EventLogItem } from "shared/types/models/eventLog";
 import { ProgramItem } from "shared/types/models/programItem";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
-import { EventLogProgramItemCanceled } from "client/views/event-log/EventLogProgramItemCanceled";
+import { EventLogProgramItemCancelled } from "client/views/event-log/EventLogProgramItemCancelled";
 import { EventLogProgramItemMoved } from "client/views/event-log/EventLogProgramItemMoved";
 
 interface Props {
@@ -27,8 +27,8 @@ export const NotificationBarEventMessage = ({
       );
     case EventLogAction.NO_ASSIGNMENT:
       return <EventLogNoAssignment eventLogItem={eventLogItem} />;
-    case EventLogAction.PROGRAM_ITEM_CANCELED:
-      return <EventLogProgramItemCanceled eventLogItem={eventLogItem} />;
+    case EventLogAction.PROGRAM_ITEM_CANCELLED:
+      return <EventLogProgramItemCancelled eventLogItem={eventLogItem} />;
     case EventLogAction.PROGRAM_ITEM_MOVED:
       return <EventLogProgramItemMoved eventLogItem={eventLogItem} />;
     default:

@@ -1340,7 +1340,7 @@
     ],
     "lotterySignups": [
       {
-        "programItemId": "<canceled>",
+        "programItemId": "<cancelled>",
         "priority": 1,
         "signedToStartTime": "2024-11-02T13:00:00Z"
       },
@@ -3131,7 +3131,7 @@
     "favoriteProgramItemIds": ["mysteerien-maatila", "meripihkalinna"],
     "lotterySignups": [
       {
-        "programItemId": "<canceled>",
+        "programItemId": "<cancelled>",
         "priority": 1,
         "signedToStartTime": "2024-11-02T13:00:00Z"
       },
@@ -4150,7 +4150,7 @@
     "favoriteProgramItemIds": [],
     "lotterySignups": [
       {
-        "programItemId": "<canceled>",
+        "programItemId": "<cancelled>",
         "priority": 1,
         "signedToStartTime": "2024-11-02T13:00:00Z"
       }
@@ -4179,7 +4179,7 @@
     "favoriteProgramItemIds": [],
     "lotterySignups": [
       {
-        "programItemId": "<canceled>",
+        "programItemId": "<cancelled>",
         "priority": 1,
         "signedToStartTime": "2024-11-02T13:00:00Z"
       }
@@ -4208,7 +4208,7 @@
     "favoriteProgramItemIds": [],
     "lotterySignups": [
       {
-        "programItemId": "<canceled>",
+        "programItemId": "<cancelled>",
         "priority": 1,
         "signedToStartTime": "2024-11-02T13:00:00Z"
       }
@@ -4455,7 +4455,7 @@
     "favoriteProgramItemIds": [],
     "lotterySignups": [
       {
-        "programItemId": "<canceled>",
+        "programItemId": "<cancelled>",
         "priority": 1,
         "signedToStartTime": "2024-11-02T13:00:00Z"
       },

@@ -115,9 +115,9 @@
       "p7300",
       "p7353",
       "p7345",
-      "<canceled>",
+      "<cancelled>",
       "p7339",
-      "<canceled>"
+      "<cancelled>"
     ],
     "lotterySignups": [],
     "eventLogItems": [],
@@ -177,13 +177,13 @@
       "p7300",
       "p7284",
       "p7280",
-      "<canceled>",
+      "<cancelled>",
       "p7367",
       "p7285",
       "p7365",
       "p7358",
-      "<canceled>",
-      "<canceled>"
+      "<cancelled>",
+      "<cancelled>"
     ],
     "lotterySignups": [
       {
@@ -231,7 +231,7 @@
         "signedToStartTime": "2023-11-04T16:00:00Z"
       },
       {
-        "programItemId": "<canceled>",
+        "programItemId": "<cancelled>",
         "priority": 1,
         "signedToStartTime": "2023-11-05T09:00:00Z"
       }
@@ -541,7 +541,7 @@
         "signedToStartTime": "2023-11-04T13:00:00Z"
       },
       {
-        "programItemId": "<canceled>",
+        "programItemId": "<cancelled>",
         "priority": 1,
         "signedToStartTime": "2023-11-04T15:00:00Z"
       },
@@ -697,7 +697,7 @@
     "serial": "9698242907",
     "groupCreatorCode": "0",
     "groupCode": "0",
-    "favoriteProgramItemIds": ["p7298", "p7368", "<canceled>", "p7341"],
+    "favoriteProgramItemIds": ["p7298", "p7368", "<cancelled>", "p7341"],
     "lotterySignups": [
       {
         "programItemId": "p7368",
@@ -1299,7 +1299,7 @@
       "p7284",
       "p7338",
       "p7274",
-      "<canceled>",
+      "<cancelled>",
       "p7364"
     ],
     "lotterySignups": [],
@@ -1323,7 +1323,7 @@
       "p7361",
       "p7360",
       "p7273",
-      "<canceled>"
+      "<cancelled>"
     ],
     "lotterySignups": [],
     "eventLogItems": [],
@@ -1451,7 +1451,7 @@
     ],
     "lotterySignups": [
       {
-        "programItemId": "<canceled>",
+        "programItemId": "<cancelled>",
         "priority": 1,
         "signedToStartTime": "2023-11-04T15:00:00Z"
       },
@@ -1710,7 +1710,7 @@
     "favoriteProgramItemIds": ["p7353", "p7284", "p7361"],
     "lotterySignups": [
       {
-        "programItemId": "<canceled>",
+        "programItemId": "<cancelled>",
         "priority": 1,
         "signedToStartTime": "2023-11-04T15:00:00Z"
       },
@@ -1781,9 +1781,9 @@
     "favoriteProgramItemIds": [
       "p7359",
       "p7347",
-      "<canceled>",
+      "<cancelled>",
       "p7346",
-      "<canceled>"
+      "<cancelled>"
     ],
     "lotterySignups": [
       {
@@ -2410,7 +2410,7 @@
         "signedToStartTime": "2023-11-04T16:00:00Z"
       },
       {
-        "programItemId": "<canceled>",
+        "programItemId": "<cancelled>",
         "priority": 1,
         "signedToStartTime": "2023-11-05T09:00:00Z"
       },
@@ -2451,7 +2451,7 @@
     "favoriteProgramItemIds": [],
     "lotterySignups": [
       {
-        "programItemId": "<canceled>",
+        "programItemId": "<cancelled>",
         "priority": 1,
         "signedToStartTime": "2023-11-05T09:00:00Z"
       }
@@ -3546,7 +3546,7 @@
     "favoriteProgramItemIds": [],
     "lotterySignups": [
       {
-        "programItemId": "<canceled>",
+        "programItemId": "<cancelled>",
         "priority": 2,
         "signedToStartTime": "2023-11-04T15:00:00Z"
       },
@@ -3615,13 +3615,13 @@
       "p7279",
       "p7373",
       "p7270",
-      "<canceled>",
+      "<cancelled>",
       "p7362",
       "p7367"
     ],
     "lotterySignups": [
       {
-        "programItemId": "<canceled>",
+        "programItemId": "<cancelled>",
         "priority": 1,
         "signedToStartTime": "2023-11-04T15:00:00Z"
       },
@@ -4165,7 +4165,7 @@
     ],
     "lotterySignups": [
       {
-        "programItemId": "<canceled>",
+        "programItemId": "<cancelled>",
         "priority": 1,
         "signedToStartTime": "2023-11-05T09:00:00Z"
       },

@@ -31,7 +31,7 @@ import { differenceBy } from "shared/utils/remedaExtend";
 import { addEventLogItems } from "server/features/user/event-log/eventLogRepository";
 import { EventLogAction } from "shared/types/models/eventLog";
 
-const getCanceledProgramItems = (
+const getCancelledProgramItems = (
   updatedProgramItems: readonly ProgramItem[],
   currentProgramItems: readonly ProgramItem[],
 ): readonly ProgramItem[] => {
@@ -42,7 +42,7 @@ const getCanceledProgramItems = (
     ]),
   );
 
-  const canceledProgramItems = updatedProgramItems.filter(
+  const cancelledProgramItems = updatedProgramItems.filter(
     (updatedProgramItem) => {
       const currentProgramItem = currentProgramItemsMap.get(
         updatedProgramItem.programItemId,
@@ -66,23 +66,23 @@ const getCanceledProgramItems = (
     },
   );
 
-  return canceledProgramItems;
+  return cancelledProgramItems;
 };
 
-const getCanceledAndDeletedProgramItems = (
+const getCancelledAndDeletedProgramItems = (
   updatedProgramItems: readonly ProgramItem[],
   currentProgramItems: readonly ProgramItem[],
-): { canceledProgramItemIds: string[]; deletedProgramItemIds: string[] } => {
-  const canceledProgramItemIds = getCanceledProgramItems(
+): { cancelledProgramItemIds: string[]; deletedProgramItemIds: string[] } => {
+  const cancelledProgramItemIds = getCancelledProgramItems(
     updatedProgramItems,
     currentProgramItems,
   ).map((p) => p.programItemId);
 
-  if (canceledProgramItemIds.length > 0) {
+  if (cancelledProgramItemIds.length > 0) {
     logger.info(
       `Found ${
-        canceledProgramItemIds.length
-      } canceled program items: ${canceledProgramItemIds.join(", ")}`,
+        cancelledProgramItemIds.length
+      } cancelled program items: ${cancelledProgramItemIds.join(", ")}`,
     );
   }
 
@@ -100,32 +100,37 @@ const getCanceledAndDeletedProgramItems = (
     );
   }
 
-  return { canceledProgramItemIds, deletedProgramItemIds };
+  return { cancelledProgramItemIds, deletedProgramItemIds };
 };
 
-interface HandleCanceledDeletedProgramItemsResponse {
+interface HandleCancelledDeletedProgramItemsResponse {
   cancelled: string[];
   deleted: string[];
   affectedDirectSignups: DirectSignupsForProgramItem[];
 }
 
-export const handleCanceledDeletedProgramItems = async (
+export const handleCancelledDeletedProgramItems = async (
   updatedProgramItems: readonly ProgramItem[],
   currentProgramItems: readonly ProgramItem[],
-): Promise<Result<HandleCanceledDeletedProgramItemsResponse, MongoDbError>> => {
-  const { canceledProgramItemIds, deletedProgramItemIds } =
-    getCanceledAndDeletedProgramItems(updatedProgramItems, currentProgramItems);
+): Promise<
+  Result<HandleCancelledDeletedProgramItemsResponse, MongoDbError>
+> => {
+  const { cancelledProgramItemIds, deletedProgramItemIds } =
+    getCancelledAndDeletedProgramItems(
+      updatedProgramItems,
+      currentProgramItems,
+    );
 
   const notifyUsersWithDirectSignupsResult = await notifyUsersWithDirectSignups(
-    [...canceledProgramItemIds, ...deletedProgramItemIds],
+    [...cancelledProgramItemIds, ...deletedProgramItemIds],
   );
   if (!notifyUsersWithDirectSignupsResult.ok) {
     return notifyUsersWithDirectSignupsResult;
   }
-  if (canceledProgramItemIds.length > 0) {
-    logger.info("Remove direct signups for canceled program items");
+  if (cancelledProgramItemIds.length > 0) {
+    logger.info("Remove direct signups for cancelled program items");
     const resetSignupDocumentsResult = await resetDirectSignupsByProgramItemIds(
-      canceledProgramItemIds,
+      cancelledProgramItemIds,
     );
     if (!resetSignupDocumentsResult.ok) {
       return resetSignupDocumentsResult;
@@ -152,7 +157,7 @@ export const handleCanceledDeletedProgramItems = async (
   }
 
   return makeSuccessResult({
-    cancelled: canceledProgramItemIds,
+    cancelled: cancelledProgramItemIds,
     deleted: deletedProgramItemIds,
     affectedDirectSignups: notifyUsersWithDirectSignupsResult.value,
   });
@@ -318,7 +323,7 @@ const notifyUsersWithDirectSignups = async (
 
   if (userUpdates.length > 0) {
     const addEventLogItemsResult = await addEventLogItems({
-      action: EventLogAction.PROGRAM_ITEM_CANCELED,
+      action: EventLogAction.PROGRAM_ITEM_CANCELLED,
       updates: userUpdates,
     });
     if (!addEventLogItemsResult.ok) {

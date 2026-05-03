@@ -26,17 +26,17 @@ interface UserToNofify {
   invalidFavoriteProgramItemIds: FavoriteProgramItemId[];
 }
 
-interface RemoveCanceledDeletedProgramItemsFromUsersParams {
+interface RemoveCancelledDeletedProgramItemsFromUsersParams {
   programItems: readonly ProgramItem[];
   notifyAffectedDirectSignups: DirectSignupsForProgramItem[];
   notify: boolean;
 }
 
-export const removeCanceledDeletedProgramItemsFromUsers = async ({
+export const removeCancelledDeletedProgramItemsFromUsers = async ({
   programItems,
   notifyAffectedDirectSignups,
   notify,
-}: RemoveCanceledDeletedProgramItemsFromUsersParams): Promise<
+}: RemoveCancelledDeletedProgramItemsFromUsersParams): Promise<
   Result<void, MongoDbError>
 > => {
   logger.info("Remove invalid program items from users");
@@ -92,7 +92,7 @@ export const removeCanceledDeletedProgramItemsFromUsers = async ({
 
     if (changedLotterySignupsCount > 0) {
       logger.info(
-        `Remove ${changedLotterySignupsCount} canceled/removed lotterySignups from user ${user.username}`,
+        `Remove ${changedLotterySignupsCount} cancelled/removed lotterySignups from user ${user.username}`,
       );
     }
 
@@ -111,7 +111,7 @@ export const removeCanceledDeletedProgramItemsFromUsers = async ({
 
     if (changedFavoriteProgramItemIdsCount > 0) {
       logger.info(
-        `Remove ${changedFavoriteProgramItemIdsCount} canceled/removed favorite program items from user ${user.username}`,
+        `Remove ${changedFavoriteProgramItemIdsCount} cancelled/removed favorite program items from user ${user.username}`,
       );
     }
 
@@ -141,7 +141,7 @@ export const removeCanceledDeletedProgramItemsFromUsers = async ({
     return updateUsersResult;
   }
 
-  // Nofify users with canceled or deleted program items
+  // Nofify users with cancelled or deleted program items
   if (notify && usersToNofify.length > 0) {
     const notifyUsersResult = await notifyUsersWithLotterySignupOrFavorite(
       usersToNofify,
@@ -207,7 +207,7 @@ const notifyUsersWithLotterySignupOrFavorite = async (
 
   if (eventUpdates.length > 0) {
     const addEventLogItemsResult = await addEventLogItems({
-      action: EventLogAction.PROGRAM_ITEM_CANCELED,
+      action: EventLogAction.PROGRAM_ITEM_CANCELLED,
       updates: eventUpdates,
     });
     if (!addEventLogItemsResult.ok) {
