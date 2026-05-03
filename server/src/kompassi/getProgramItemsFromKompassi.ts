@@ -20,7 +20,7 @@ import { config } from "shared/config";
 import { EventName } from "shared/config/eventConfigTypes";
 import { getProgramItemsFromFullProgram } from "server/kompassi/getProgramItemsFromFullProgram";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
-import { TIMEZONE } from "shared/utils/initializeDayjs";
+import { getTime } from "shared/utils/timeFormatter";
 import { ProgramType } from "shared/types/models/programItem";
 
 export const getProgramItemsFromKompassi = async (
@@ -284,8 +284,7 @@ export const logInvalidStartTimes = (
       logger.error(
         "%s",
         new Error(
-          // eslint-disable-next-line no-restricted-syntax
-          `Invalid start time: ${dayjs(scheduleItem.startTime).tz(TIMEZONE).format("HH:mm")} - ${scheduleItem.slug}`,
+          `Invalid start time: ${getTime(scheduleItem.startTime)} - ${scheduleItem.slug}`,
         ),
       );
     }

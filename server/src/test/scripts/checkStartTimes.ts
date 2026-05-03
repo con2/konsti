@@ -4,7 +4,8 @@ import { findProgramItems } from "server/features/program-item/programItemReposi
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { logger } from "server/utils/logger";
 import { ProgramType } from "shared/types/models/programItem";
-import { initializeDayjs, TIMEZONE } from "shared/utils/initializeDayjs";
+import { initializeDayjs } from "shared/utils/initializeDayjs";
+import { getTime } from "shared/utils/timeFormatter";
 
 const checkStartTimes = async (): Promise<void> => {
   initializeDayjs();
@@ -18,10 +19,7 @@ const checkStartTimes = async (): Promise<void> => {
   rpgs.map((rpg) => {
     const startMinute = dayjs(rpg.startTime).minute();
     if (startMinute !== 0) {
-      logger.info(
-        // eslint-disable-next-line no-restricted-syntax
-        `${dayjs(rpg.startTime).tz(TIMEZONE).format("HH:mm")} - ${rpg.title}`,
-      );
+      logger.info(`${getTime(rpg.startTime)} - ${rpg.title}`);
     }
   });
 
