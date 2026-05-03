@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 import { countBy } from "remeda";
 import { logger } from "server/utils/logger";
 import { ProgramItem, ProgramType } from "shared/types/models/programItem";
-import { DirectSignup, User } from "shared/types/models/user";
+import { User } from "shared/types/models/user";
 import { getMaximumNumberOfAttendeesByTime } from "./resultDataHelpers";
 import { toPercent } from "server/features/statistics/statsUtil";
 import { TIMEZONE } from "shared/utils/initializeDayjs";
@@ -20,42 +20,6 @@ export const getProgramItemsByStartTime = (
     programItemsByTime,
   );
   return programItemsByTime;
-};
-
-const getUsersByProgramItems = (
-  _users: readonly User[],
-): Record<string, number> => {
-  // TODO: Update to use signup collection
-  // const directSignups = users.flatMap((user) => user.directSignups);
-  const directSignups: DirectSignup[] = [];
-  const usersByProgramItems = countBy(
-    directSignups,
-    (directSignup) => directSignup.programItemId,
-  );
-  return usersByProgramItems;
-};
-
-export const getNumberOfFullProgramItems = (
-  programItems: readonly ProgramItem[],
-  users: readonly User[],
-): void => {
-  const usersByProgramItems = getUsersByProgramItems(users);
-
-  let counter = 0;
-  for (const programItem of programItems) {
-    if (
-      programItem.maxAttendance ===
-      usersByProgramItems[programItem.programItemId]
-    ) {
-      counter++;
-    }
-  }
-
-  logger.info(
-    `Program items with maximum number of attendees: ${counter}/${
-      programItems.length
-    } (${toPercent(counter / programItems.length)}%)`,
-  );
 };
 
 const getSignupsByStartTime = (

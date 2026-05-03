@@ -1,7 +1,6 @@
 import fs from "node:fs";
 import {
   getProgramItemsByStartTime,
-  getNumberOfFullProgramItems,
   getDemandByTime,
   getDemandByProgramItem,
 } from "./programItemDataHelpers";
@@ -31,7 +30,6 @@ export const getProgramItemStats = (event: string, year: number): void => {
   logger.info(`Loaded ${programItems.length} users`);
 
   getProgramItemsByStartTime(programItems);
-  getNumberOfFullProgramItems(programItems, users);
   getDemandByTime(programItems, users);
   getDemandByProgramItem(programItems, users);
 };
