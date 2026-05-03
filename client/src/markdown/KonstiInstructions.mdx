@@ -9,6 +9,7 @@ import { LoginLocal } from "./components/LoginLocal";
 import { LoginLocalKompassi } from "./components/LoginLocalKompassi";
 import { SignupLottery } from "./components/SignupLottery";
 import { Expand } from "./components/Expand";
+import { HelpDesks } from "./components/HelpDesks";
 // eslint-disable-next-line @typescript-eslint/no-restricted-imports
 import { AppRoute, ProgramTab, ProfileTab } from "../app/AppRoutes";
 
@@ -40,32 +41,20 @@ Konsti is a web application that can be accessed through any web browser on your
 <Ropecon>
 <Fi>
 Konstin kautta voi ilmoittautua pöytäroolipeleihin, larppeihin, turnauksiin, työpajoihin ja joihinkin muihin ohjelmanumeroihin.
-
-Konstin käytössä auttavat Pelitiski (Halli 3) ja Larp- ja Roolipelitiski (eteläisen sisäänkäynnin aula). Tiskeillä on myös tietokoneita, joilla Konstia voi käyttää.
-
 </Fi>
 
 <En>
 Konsti is used to sign up for role-playing games, LARPs, tournaments, workshops and some other program items.
-
-The Gaming Desk (Hall 3) and the Larp & RPG Desk (southern entrance lobby) will help you with using Konsti. The desks also have shared computers for using Konsti.
-
 </En>
 </Ropecon>
 
 <Hitpoint>
 <Fi>
 Konstin kautta voi ilmoittautua pöytäroolipeleihin, larppeihin ja työpajoihin.
-
-Konstin käytössä auttaa Roolipelitiski. Tiskillä on myös tietokoneita, joilla Konstia voi käyttää.
-
 </Fi>
 
 <En>
 Konsti is used to sign up for tabletop role-playing games, LARPs and workshops.
-
-The RPG Desk will help you with using Konsti. The desks also have shared computers for using Konsti.
-
 </En>
 </Hitpoint>
 
@@ -78,6 +67,16 @@ Konstin kautta voi ilmoittautua pöytäroolipeleihin ja kirpputorille.
 Konsti is used to sign up for tabletop role-playing games and flea market.
 </En>
 </Tracon>
+
+<Fi>
+Konstin käytössä auttavat tapahtuman vapaaehtoiset seuraavilla tiskeillä:
+</Fi>
+
+<En>
+Help with using Konsti is available from convention volunteers at these desks:
+</En>
+
+<HelpDesks />
 
 <Fi>
 Voit selata <Link to={ProgramTab.PROGRAM_LIST}>ohjelmalistaa</Link> kirjautumatta sisään, mutta ohjelmaan ilmoittautumiseen vaaditaan käyttäjätili.
@@ -151,17 +150,21 @@ Konsti usernames from past events are no longer in use. If you want to use Konst
 
 <LoginLocal>
 <Fi>
-Uuden käyttäjätilin luomiseen tarvitset rekisteröintikoodin, joita on saatavilla Pelitiskiltä (Halli 3), Larp- ja Roolipelitiskiltä tai Infosta (molemmat pääaulassa, eteläisen sisäänkäynnin luona).
-
-Rekisteröintikoodi kannattaa pitää tallessa siltä varalta, että et pääsekään enää kirjautumaan sisään tunnuksellasi. Sitä tarvitaan salasanan vaihtamiseen. Rekisteröintikoodi näkyy ensimmäisen sisäänkirjautumisen yhteydessä sivuston ylälaidassa, ja sen löytää myöhemmin myös <Link to={ProfileTab.PROFILE}>profiilisivulta</Link>.
-
+Uuden käyttäjätilin luomiseen tarvitset rekisteröintikoodin, jonka saat seuraavilta tiskeiltä:
 </Fi>
 
 <En>
-For creating an account, you will need a registration code, which you can get from the Gaming Desk (Hall 3), the Larp & RPG Desk or the Info Desk (both in the southern entrance lobby).
+For creating an account, you will need a registration code, which you can get from these desks:
+</En>
 
+<HelpDesks />
+
+<Fi>
+Rekisteröintikoodi kannattaa pitää tallessa siltä varalta, että et pääsekään enää kirjautumaan sisään tunnuksellasi. Sitä tarvitaan salasanan vaihtamiseen. Rekisteröintikoodi näkyy ensimmäisen sisäänkirjautumisen yhteydessä sivuston ylälaidassa, ja sen löytää myöhemmin myös <Link to={ProfileTab.PROFILE}>profiilisivulta</Link>.
+</Fi>
+
+<En>
 Please save your registration code. You will need it if you log out of Konsti and then need to change your password. The code is visible in Konsti after you first log in. Later, you can see it on the <Link to={ProfileTab.PROFILE}>profile page</Link>.
-
 </En>
 </LoginLocal>
 
@@ -185,8 +188,20 @@ On your first login, you can choose a Konsti username for yourself. Following th
 <Fi>
 Voit kirjautua Konstiin joko Konstin omilla tai Kompassi-tunnuksilla.
 
-Uuden Konsti-tunnuksen luomiseen tarvitset rekisteröintikoodin, joita on saatavilla Pelitiskiltä (Halli 3), Larp- ja Roolipelitiskiltä tai Infosta (molemmat pääaulassa, eteläisen sisäänkäynnin luona).
+Uuden Konsti-tunnuksen luomiseen tarvitset rekisteröintikoodin, jonka saat seuraavilta tiskeiltä:
 
+</Fi>
+
+<En>
+You can log in using either a Konsti account or a Kompassi account.
+
+For creating a Konsti account, you will need a registration code, which you can get from these desks:
+
+</En>
+
+<HelpDesks />
+
+<Fi>
 Rekisteröintikoodi kannattaa pitää tallessa siltä varalta, että et pääsekään enää kirjautumaan sisään tunnuksellasi. Sitä tarvitaan salasanan vaihtamiseen. Rekisteröintikoodi näkyy ensimmäisen sisäänkirjautumisen yhteydessä sivuston ylälaidassa, ja sen löytää myöhemmin myös <Link to={ProfileTab.PROFILE}>profiilisivulta</Link>.
 
 Jos haluat käyttää Kompassi-tunnuksia, voit rekisteröidä Kompassi-tunnuksen Konstin kirjautumisen yhteydessä <Link to={AppRoute.LOGIN}>kirjautumissivulta</Link> tai jo ennen tapahtumaa Kompassin <Link to={"https://kompassi.eu/register"}>rekisteröintisivulla</Link>.
@@ -196,10 +211,6 @@ Ensimmäisellä kirjautumiskerralla voit valita itsellesi Konsti-nimimerkin. Tä
 </Fi>
 
 <En>
-You can log in using either a Konsti account or a Kompassi account.
-
-For creating a Konsti account, you will need a registration code, which you can get from the Gaming Desk (Hall 3), the Larp & RPG Desk or the Info Desk (both in the southern entrance lobby).
-
 Please save your registration code. You will need it if you log out of Konsti and then need to change your password. The code is visible in Konsti after you first log in. Later, you can see it on the <Link to={ProfileTab.PROFILE}>profile page</Link>.
 
 You can register a Kompassi account while logging in to Konsti via the <Link to={AppRoute.REGISTRATION}>login page</Link> or before the convention from the <Link to={"https://kompassi.eu/register"}>Kompassi registration page</Link>.
@@ -549,11 +560,11 @@ On Saturday, larps starting between 10:00 and 12:00 use direct signup, as there 
 </En>
 
 <Fi>
-Kaikkiin tänä vuonna Ropeconin ohjelmassa oleviin larppeihin ei ilmoittauduta Konstin kautta. Joihinkin larppeihin ilmoittaudutaan Larp- ja Roolipelitiskin kautta, sillä ilmoittautumisen yhteydessä pelaajat valitsevat oman hahmonsa ja heille jaetaan lisämateriaalia.
+Kaikkiin tänä vuonna Ropeconin ohjelmassa oleviin larppeihin ei ilmoittauduta Konstin kautta. Joihinkin larppeihin ilmoittaudutaan paikan päällä tapahtumassa, sillä ilmoittautumisen yhteydessä pelaajat valitsevat oman hahmonsa ja heille jaetaan lisämateriaalia.
 </Fi>
 
 <En>
-  Some LARPs do not use Konsti for signing-up. You must sign up to these larps at the Larp & RPG Desk, because the players may have to, for example, select a character during sign-up.
+Some LARPs do not use Konsti for signing-up. You must sign up to these larps in person at the convention, because the players may have to, for example, select a character during sign-up.
 </En>
 
 <Fi>
@@ -592,11 +603,11 @@ Kaikkiin tänä vuonna Ropeconin ohjelmassa oleviin larppeihin ei ilmoittauduta 
 </En>
 
 <Fi>
-Turnauksiin ilmoittaudutaan suoraan eli paikat täytetään ilmoittautumisjärjestyksessä. Kaikkien turnausten ilmoittautuminen ei tapahdu Konstin kautta. Jos etsimääsi turnausta ei löydy Konstista etkä tiedä, miten ilmoittautua siihen, voit kysyä neuvoa Pelitiskiltä.
+Turnauksiin ilmoittaudutaan suoraan eli paikat täytetään ilmoittautumisjärjestyksessä. Kaikkien turnausten ilmoittautuminen ei tapahdu Konstin kautta. Jos etsimääsi turnausta ei löydy Konstista etkä tiedä, miten ilmoittautua siihen, voit kysyä neuvoa tapahtuman vapaaehtoisilta.
 </Fi>
 
 <En>
-Tournaments use direct signup meaning that seats are reserved in signup order. Some tournaments do not use Konsti for signing up. If you can't find a tournament in Konsti and don't know how to sign up, you can ask for help at the game desk.
+Tournaments use direct signup meaning that seats are reserved in signup order. Some tournaments do not use Konsti for signing up. If you can't find a tournament in Konsti and don't know how to sign up, you can ask the convention's volunteers for help.
 </En>
 
 <Fi>

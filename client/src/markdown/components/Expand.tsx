@@ -21,7 +21,7 @@ export const Expand = ({ children }: Props): ReactElement | null => {
 
   const [headers, elements] = partition(children, (child) =>
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    headerElements.has(child.props.children.type as string),
+    headerElements.has(child.props.children?.type as string),
   );
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
