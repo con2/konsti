@@ -17,6 +17,7 @@ import { LotteryThermometerValues } from "./components/LotteryThermometerValues"
 // eslint-disable-next-line @typescript-eslint/no-restricted-imports
 import { ProfileTab } from "../app/AppRoutes";
 import { ProgramGuide } from "./components/ProgramGuide";
+import { HelpDesks } from "./components/HelpDesks";
 
 <Fi>
 ## Osallistujille
@@ -35,49 +36,23 @@ import { ProgramGuide } from "./components/ProgramGuide";
 ### I need help with the Konsti app, who can I ask?
 </En>
 
-<Ropecon>
 <Fi>
-Vapaaehtoisemme Pelitiskillä sekä Larp- ja Roolipelitiskillä auttavat Konstin käytössä ja ohjelmanumeroihin ilmoittautumisessa.
+Vapaaehtoisemme auttavat Konstin käytössä ja ohjelmanumeroihin ilmoittautumisessa seuraavilla tiskeillä:
 </Fi>
 
 <En>
-Our volunteers at both the Gaming Desk and the Larp & RPG Desk will help you to sign up for program.
+Our volunteers will help you with using Konsti and signing up for program at these desks:
 </En>
-</Ropecon>
 
-<Hitpoint>
-<Fi>
-Vapaaehtoisemme Roolipelitiskillä auttavat Konstin käytössä ja peleihin ilmoittautumisessa.
-</Fi>
-
-<En>
-Our volunteers at the RPG Desk will help you to sign up for program.
-</En>
-</Hitpoint>
-
-<Solmukohta>
-<Fi>
-Vapaaehtoisemme ohjelmatiskillä auttavat Konstin käytössä ja peleihin ilmoittautumisessa.
-</Fi>
-
-<En>
-Our volunteers at the Programme Desk help you to sign up for program.
-</En>
-</Solmukohta>
+<HelpDesks />
 
 <Tracon>
 <Fi>
-Roolipelien kohdalla vapaaehtoisemme Roolipelitiskillä auttavat Konstin käytössä.
-
 Kirpputorin ilmoittautumisten kanssa auttavat kirpputorin vapaaehtoiset.
-
 </Fi>
 
 <En>
-For role-playing games, our volunteers at the RPG Desk will help you with using Konsti.
-
 For flea market signups, the flea market volunteers can help you.
-
 </En>
 </Tracon>
 </Expand>
@@ -170,12 +145,14 @@ You can change the password to your Konsti account in the <Link to={ProfileTab.P
 
 <Ropecon>
 <Fi>
-Jos Konsti-tunnuksesi salasana on hukkunut etkä pääse kirjautumaan Konstiin, voit vaihtaa sen rekisteröintikoodisi avulla Pelitiskillä tai Larp- ja Roolipelitiskillä. Jos olet hukannut rekisteröintikoodisi, kannattaa silti kysyä apua tiskiltä.
+Jos Konsti-tunnuksesi salasana on hukkunut etkä pääse kirjautumaan Konstiin, voit vaihtaa sen rekisteröintikoodisi avulla tapahtuman tiskillä. Jos olet hukannut rekisteröintikoodisi, kannattaa silti kysyä apua tiskiltä.
 </Fi>
 
 <En>
-If you have lost the password to your Konsti account, you can request it to be changed either at the Gaming Desk or at the Larp & RPG Desk, if you still have your registration code. If you don't have your registration code, please ask for help from the desks.
+If you have lost the password to your Konsti account, you can request it to be changed at the convention's help desk, if you still have your registration code. If you don't have your registration code, please ask for help at the desk.
 </En>
+
+<HelpDesks />
 
 <Fi>
 Jos et ollut ehtinyt vielä ilmoittautua yhteenkään ohjelmanumeroon, voit huoletta hakea itsellesi tiskiltä myös toisen rekisteröintikoodin ja luoda uuden käyttäjätilin. Käytäthän kuitenkin vain yhtä käyttäjätunnusta kerrallaan!
@@ -196,49 +173,23 @@ If you lost your password before signing up to any program items, you can just p
 ### I do not have a mobile device, how do I use Konsti during the event?
 </En>
 
-<Ropecon>
 <Fi>
-Pelitiskillä ja Larp- ja Roolipelitiskillä on tietokoneita, joilla Konstia voi käyttää. Muistathan kirjautua ulos Konstista, kun lopetat käytön!
+Konstia voi käyttää myös tapahtuman tiskeillä olevilla yhteiskäyttöisillä tietokoneilla. Muistathan kirjautua ulos Konstista, kun lopetat käytön!
 </Fi>
 
 <En>
-There are shared computers at both the Gaming Desk and the Larp & RPG Desk that you can use Konsti with. Just remember to log out when you are done!
+You can also use Konsti on the shared computers at the convention's help desks. Just remember to log out when you are done!
 </En>
-</Ropecon>
 
-<Hitpoint>
-<Fi>
-Roolipelitiskillä on tietokone, joilla Konstia voi käyttää. Muistathan kirjautua ulos Konstista, kun lopetat käytön!
-</Fi>
-
-<En>
-There is a shared computer on the RPG Desk that you can use Konsti with. Just remember to log out when you are done!
-</En>
-</Hitpoint>
-
-<Solmukohta>
-<Fi>
-Ohjelmatiskillä on tietokoneita, joilla Konstia voi käyttää. Muistathan kirjautua ulos Konstista kun lopetat käytön!
-</Fi>
-
-<En>
-There are shared computers on the Programme Desk that you can use Konsti with. Just remember to log out when you are done!
-</En>
-</Solmukohta>
+<HelpDesks />
 
 <Tracon>
 <Fi>
-Roolipelitiskillä on tietokone, jolla Konstia voi käyttää roolipeleihin ilmoittautumiseen. Muistathan kirjautua ulos Konstista, kun lopetat käytön!
-
 Kirpputorille ilmoittautuminen vaatii oman mobiililaitteen, koska sinun tulee esittää laitteeltasi pääsylippu.
-
 </Fi>
 
 <En>
-At the RPG Desk, there is a computer available for using Konsti to sign up for role-playing games. Please remember to log out of Konsti when you finish!
-
 Signing up for the flea market requires your own mobile device, as you will need to present your ticket from it.
-
 </En>
 </Tracon>
 </Expand>
@@ -316,25 +267,6 @@ Have you checked which tag is selected, as they can filter the list of program i
 </En>
 </Tracon>
 
-<Ropecon>
-<Fi>
-Voi myös olla, ettei kyseiseen ohjelmaan ilmoittauduta Konstin kautta. Voit tarvittaessa kysyä apua Pelitiskiltä, Larp- ja Roolipelitiskiltä tai Infosta.
-</Fi>
-
-<En>
-If you still cannot find the program item you are looking for, it is possible that the sign-up process for that particular program does not use Konsti. If you are unsure, you can always ask for help at the Gaming Desk, the Larp & RPG Desk or the Info desk.
-</En>
-</Ropecon>
-
-<Hitpoint>
-<Fi>
-Voi myös olla, ettei kyseiseen ohjelmaan ilmoittauduta Konstin kautta. Voit tarvittaessa kysyä apua Roolipelitiskiltä.
-</Fi>
-
-<En>
-If you still cannot find the program item you are looking for, it is possible that the sign-up process for that particular program item does not use Konsti. If you are unsure, you can always ask for help at the RPG Desk.
-</En>
-</Hitpoint>
 </Expand>
 
 <Expand>
@@ -490,39 +422,25 @@ If the program item uses lottery signup, the list of participants will appear af
 ### What should I do if the time of my program item changes or the description needs to be updated?
 </En>
 
-<Ropecon>
 <Fi>
-Vapaaehtoiset Pelitiskillä tai Larp- ja Roolipelitiskillä auttavat ohjelmanumeron tietojen päivittämisessä.
-
-Jos ajankohta muuttuu, aikaisemmat suorat ilmoittautumiset ohjelmanumeroon säilyvät ennallaan. Jos ohjelmanumeroon on käynnissä arvontaan ilmoittautuminen, jo tehdyt arvontailmoittautumiset perutaan.
-
+Tapahtuman vapaaehtoiset auttavat ohjelmanumeron tietojen päivittämisessä.
 </Fi>
 
 <En>
-Volunteers at the Gaming Desk or the Larp & RPG Desk will assist in updating program information.
-
-Previous direct signups for the program items will remain unchanged. If a lottery sign-up is ongoing for the program item, any previously submitted lottery sign-ups will be cancelled.
-
+The convention's volunteers will assist in updating program information.
 </En>
-</Ropecon>
 
-<Tracon>
-<Fi>
-Vapaaehtoiset Roolipelitiskillä auttavat ohjelmanumeron tietojen päivittämisessä.
-</Fi>
-
-<En>
-Volunteers at the RPG Desk will assist in updating program information.
-</En>
-</Tracon>
+<HelpDesks />
 
 <Fi>
 Jos ajankohta muuttuu, aikaisemmat suorat ilmoittautumiset ohjelmanumeroon säilyvät ennallaan. Jos ohjelmanumeroon on käynnissä arvontaan ilmoittautuminen, jo tehdyt arvontailmoittautumiset perutaan.
+
 </Fi>
 
 <En>
 Previous direct sign-ups for the program items will remain unchanged. If a lottery sign-up is ongoing for the program item, any previously submitted lottery sign-ups will be cancelled.
 </En>
+
 </Expand>
 
 <Expand>
@@ -534,37 +452,13 @@ Previous direct sign-ups for the program items will remain unchanged. If a lotte
 ### What should I do if all signed up participants don't show up?
 </En>
 
-<Ropecon>
 <Fi>
-Aluksi on hyvä odottaa hetki, jos osallistuvat ovat myöhässä. Jos he eivät kuitenkaan tule paikalle, voit pyytää Pelitiskin tai Larp- ja Roolipelitiskin vapaaehtoisia auttamaan lisäosallistujien etsimisessä. Voit myös itse täyttää puuttuvat paikat haluamallasi tavalla tai vain järjestää ohjelmanumeron paikalle saapuneella osallistujamäärällä.
+Aluksi on hyvä odottaa hetki, jos osallistuvat ovat myöhässä. Jos he eivät kuitenkaan tule paikalle, voit täyttää puuttuvat paikat haluamallasi tavalla tai vain järjestää ohjelmanumeron paikalle saapuneella osallistujamäärällä.
 </Fi>
 
 <En>
-Initially, it is good to wait for a moment in case participants are running late. If they still do not show up, you can ask the volunteers at the Gaming Desk or the Larp & RPG Desk to help find additional participants. You can also fill the missing spots yourself as you see fit or proceed with the program item with participants who have arrived.
-
+Initially, it is good to wait for a moment in case participants are running late. If they still do not show up, you can fill the missing spots yourself as you see fit or proceed with the program item with participants who have arrived.
 </En>
-</Ropecon>
-
-<Hitpoint>
-<Fi>
-  Aluksi on hyvä odottaa hetki, jos osallistuvat ovat myöhässä. Jos he eivät kuitenkaan tule paikalle, voit pyytää Roolipelitiskin vapaaehtoisia auttamaan lisäosallistujien etsimisessä. Voit myös itse täyttää puuttuvat paikat haluamallasi tavalla tai vain järjestää ohjelmanumeron paikalle saapuneella osallistujamäärällä.
-</Fi>
-
-<En>
-  Initially, it is good to wait for a moment in case participants are running late. If they still do not show up, you can ask the volunteers at the RPG Desk to help find additional participants. You can also fill the missing spots yourself as you see fit or proceed with the program item with participants who have arrived.
-</En>
-</Hitpoint>
-
-<Tracon>
-<Fi>
-  Aluksi on hyvä odottaa hetki, jos osallistuvat ovat myöhässä. Jos he eivät kuitenkaan tule paikalle, voit pyytää Roolipelitiskin vapaaehtoisia auttamaan lisäosallistujien etsimisessä. Voit myös itse täyttää puuttuvat paikat haluamallasi tavalla tai vain järjestää ohjelmanumeron paikalle saapuneella osallistujamäärällä.
-</Fi>
-
-<En>
-  Initially, it is good to wait for a moment in case participants are running late. If they still do not show up, you can ask the volunteers at the RPG Desk to help find additional participants. You can also fill the missing spots yourself as you see fit or proceed with the program item with participants who have arrived.
-
-</En>
-</Tracon>
 
 </Expand>
 
@@ -590,7 +484,7 @@ Lisätietokysymyksiä on kahdenlaisia: **julkisia ja yksityisiä.**
 </Fi>
 
 <En>
- A program item can have a sign-up question, that needs to be answered when a participant signs up. They are set up before the convention.
+A program item can have a sign-up question, that needs to be answered when a participant signs up. They are set up before the convention.
 
 There are two types of sign-up questions: **public and private**.
 
