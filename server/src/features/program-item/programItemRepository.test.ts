@@ -106,11 +106,11 @@ test("should remove lottery signups and favorites when program item is deleted a
     expect.arrayContaining([
       expect.objectContaining({
         programItemId: testProgramItem.programItemId,
-        action: EventLogAction.PROGRAM_ITEM_CANCELED,
+        action: EventLogAction.PROGRAM_ITEM_CANCELLED,
       }),
       expect.objectContaining({
         programItemId: testProgramItem2.programItemId,
-        action: EventLogAction.PROGRAM_ITEM_CANCELED,
+        action: EventLogAction.PROGRAM_ITEM_CANCELLED,
       }),
     ]),
   );
@@ -136,11 +136,11 @@ test("should remove direct signups when program item is deleted and add notifica
     expect.arrayContaining([
       expect.objectContaining({
         programItemId: testProgramItem.programItemId,
-        action: EventLogAction.PROGRAM_ITEM_CANCELED,
+        action: EventLogAction.PROGRAM_ITEM_CANCELLED,
       }),
       expect.objectContaining({
         programItemId: testProgramItem2.programItemId,
-        action: EventLogAction.PROGRAM_ITEM_CANCELED,
+        action: EventLogAction.PROGRAM_ITEM_CANCELLED,
       }),
     ]),
   );
@@ -183,11 +183,11 @@ test("should remove lottery signups but keep favorites when program item is canc
     expect.arrayContaining([
       expect.objectContaining({
         programItemId: testProgramItem.programItemId,
-        action: EventLogAction.PROGRAM_ITEM_CANCELED,
+        action: EventLogAction.PROGRAM_ITEM_CANCELLED,
       }),
       expect.objectContaining({
         programItemId: testProgramItem2.programItemId,
-        action: EventLogAction.PROGRAM_ITEM_CANCELED,
+        action: EventLogAction.PROGRAM_ITEM_CANCELLED,
       }),
     ]),
   );
@@ -221,11 +221,11 @@ test("should remove direct signups when program item is cancelled and add notifi
     expect.arrayContaining([
       expect.objectContaining({
         programItemId: testProgramItem.programItemId,
-        action: EventLogAction.PROGRAM_ITEM_CANCELED,
+        action: EventLogAction.PROGRAM_ITEM_CANCELLED,
       }),
       expect.objectContaining({
         programItemId: testProgramItem2.programItemId,
-        action: EventLogAction.PROGRAM_ITEM_CANCELED,
+        action: EventLogAction.PROGRAM_ITEM_CANCELLED,
       }),
     ]),
   );
@@ -268,11 +268,11 @@ test("should remove lottery signups but not favorites when program item doesn't 
     expect.arrayContaining([
       expect.objectContaining({
         programItemId: testProgramItem.programItemId,
-        action: EventLogAction.PROGRAM_ITEM_CANCELED,
+        action: EventLogAction.PROGRAM_ITEM_CANCELLED,
       }),
       expect.objectContaining({
         programItemId: testProgramItem2.programItemId,
-        action: EventLogAction.PROGRAM_ITEM_CANCELED,
+        action: EventLogAction.PROGRAM_ITEM_CANCELLED,
       }),
     ]),
   );
@@ -296,7 +296,7 @@ test("should keep direct signup when program item programType is changed to non-
   // No cancellation event log should be added
   const user = unsafelyUnwrap(await findUser(mockUser.username));
   const cancelEvents = user?.eventLogItems.filter(
-    (e) => e.action === EventLogAction.PROGRAM_ITEM_CANCELED,
+    (e) => e.action === EventLogAction.PROGRAM_ITEM_CANCELLED,
   );
   expect(cancelEvents).toHaveLength(0);
 });
@@ -325,17 +325,17 @@ test("should remove direct signups when program item doesn't use Konsti signup a
     expect.arrayContaining([
       expect.objectContaining({
         programItemId: testProgramItem.programItemId,
-        action: EventLogAction.PROGRAM_ITEM_CANCELED,
+        action: EventLogAction.PROGRAM_ITEM_CANCELLED,
       }),
       expect.objectContaining({
         programItemId: testProgramItem2.programItemId,
-        action: EventLogAction.PROGRAM_ITEM_CANCELED,
+        action: EventLogAction.PROGRAM_ITEM_CANCELLED,
       }),
     ]),
   );
 });
 
-test("should not add duplicate notification when program item is canceled and user has direct signup, lottery signup and favorite", async () => {
+test("should not add duplicate notification when program item is cancelled and user has direct signup, lottery signup and favorite", async () => {
   await saveProgramItems([testProgramItem]);
   await saveUser(mockUser);
   await saveDirectSignup(mockPostDirectSignupRequest);
@@ -356,7 +356,7 @@ test("should not add duplicate notification when program item is canceled and us
     expect.arrayContaining([
       expect.objectContaining({
         programItemId: testProgramItem.programItemId,
-        action: EventLogAction.PROGRAM_ITEM_CANCELED,
+        action: EventLogAction.PROGRAM_ITEM_CANCELLED,
       }),
     ]),
   );
@@ -383,7 +383,7 @@ test("should preserve lottery signup when program item is cancelled after its lo
   const user = unsafelyUnwrap(await findUser(mockUser.username));
   expect(user?.lotterySignups).toHaveLength(2);
   const cancelEvents = user?.eventLogItems.filter(
-    (e) => e.action === EventLogAction.PROGRAM_ITEM_CANCELED,
+    (e) => e.action === EventLogAction.PROGRAM_ITEM_CANCELLED,
   );
   expect(cancelEvents).toHaveLength(0);
 });
@@ -409,7 +409,7 @@ test("should preserve lottery signup when signupType is changed away from Konsti
   const user = unsafelyUnwrap(await findUser(mockUser.username));
   expect(user?.lotterySignups).toHaveLength(2);
   const cancelEvents = user?.eventLogItems.filter(
-    (e) => e.action === EventLogAction.PROGRAM_ITEM_CANCELED,
+    (e) => e.action === EventLogAction.PROGRAM_ITEM_CANCELLED,
   );
   expect(cancelEvents).toHaveLength(0);
 });
@@ -442,7 +442,7 @@ test("should remove lottery signup when programType is changed to non-lottery ty
     testProgramItem.programItemId,
   );
   expect(user?.eventLogItems[0].action).toEqual(
-    EventLogAction.PROGRAM_ITEM_CANCELED,
+    EventLogAction.PROGRAM_ITEM_CANCELLED,
   );
 });
 
@@ -467,7 +467,7 @@ test("should preserve lottery signup when programType is changed to non-lottery 
   const user = unsafelyUnwrap(await findUser(mockUser.username));
   expect(user?.lotterySignups).toHaveLength(2);
   const cancelEvents = user?.eventLogItems.filter(
-    (e) => e.action === EventLogAction.PROGRAM_ITEM_CANCELED,
+    (e) => e.action === EventLogAction.PROGRAM_ITEM_CANCELLED,
   );
   expect(cancelEvents).toHaveLength(0);
 });

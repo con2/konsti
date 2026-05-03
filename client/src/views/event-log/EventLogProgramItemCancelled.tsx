@@ -9,7 +9,8 @@ import { AppRoute } from "client/app/AppRoutes";
 interface Props {
   eventLogItem: EventLogItem;
 }
-export const EventLogProgramItemCanceled = ({
+
+export const EventLogProgramItemCancelled = ({
   eventLogItem,
 }: Props): ReactElement => {
   const { t } = useTranslation();
@@ -25,7 +26,7 @@ export const EventLogProgramItemCanceled = ({
   return (
     <div>
       <span>
-        {t("eventLogActions.programItemCanceled", {
+        {t("eventLogActions.programItemCancelled", {
           PROGRAM_TYPE: capitalize(
             t(`programTypeSingular.${programItem?.programType ?? "other"}`),
           ),

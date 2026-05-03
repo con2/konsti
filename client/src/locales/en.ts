@@ -262,10 +262,10 @@ export const translationEN = {
   eventLogActions: {
     newAssignment: "You were assigned to the {{PROGRAM_TYPE}}",
     newAssignmentProgramItemMissing:
-      "You were assigned to program item {{PROGRAM_ITEM_ID}} but it was canceled.",
+      "You were assigned to program item {{PROGRAM_ITEM_ID}} but it was cancelled.",
     noAssignment:
       "Spots for program items at {{START_TIME}} were randomized. Unfortunately, we couldn't fit you into any of your chosen program items.",
-    programItemCanceled: "{{PROGRAM_TYPE}} canceled:",
+    programItemCancelled: "{{PROGRAM_TYPE}} cancelled:",
     programItemMoved: "starting time has changed to {{NEW_STARTING_TIME}}.",
   },
   notificationBar: {
@@ -285,7 +285,7 @@ export const translationEN = {
     cannotSignupMoreThanOneProgramItem:
       "You cannot sign up to another program item starting at the same time.",
     signupWillBeRemoved:
-      "If you get a spot to this {{PROGRAM_TYPE_THIS}} in the lottery, your sign-up to the {{PROGRAM_TYPE_OTHER}} {{OTHER_PROGRAM_NAME}} will be canceled.",
+      "If you get a spot to this {{PROGRAM_TYPE_THIS}} in the lottery, your sign-up to the {{PROGRAM_TYPE_OTHER}} {{OTHER_PROGRAM_NAME}} will be cancelled.",
     signupCount: "{{ATTENDEE_COUNT}}/{{MAX_ATTENDANCE}} sign-ups",
     attendeesNeeded: "Need {{COUNT}} more",
     programItemFull: "This {{PROGRAM_TYPE}} is full.",

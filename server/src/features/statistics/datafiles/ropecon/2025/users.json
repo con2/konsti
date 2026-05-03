@@ -87,7 +87,7 @@
     ],
     "eventLogItems": [
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "tervetuloa-vartiostoon-2",
         "programItemStartTime": "2025-07-24T10:55:01.17Z",
         "isSeen": true,
@@ -108,7 +108,7 @@
         "createdAt": "2025-07-26T14:00:06.78Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "kuningas-arthurin-legenda-vuosi-513-1",
         "programItemStartTime": "2025-07-26T14:20:01.375Z",
         "isSeen": true,
@@ -590,14 +590,14 @@
     ],
     "eventLogItems": [
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "juovametsan-klaanin-murhat-brindlewood-clan-slayings-1",
         "programItemStartTime": "2025-07-24T12:35:01.606Z",
         "isSeen": true,
         "createdAt": "2025-07-24T12:35:01.606Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "juovametsan-klaanin-murhat-brindlewood-clan-slayings-2",
         "programItemStartTime": "2025-07-24T12:35:01.606Z",
         "isSeen": true,
@@ -831,7 +831,7 @@
         "createdAt": "2025-07-25T13:00:06.781Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-2",
         "programItemStartTime": "2025-07-26T14:10:01.904Z",
         "isSeen": true,
@@ -1386,7 +1386,7 @@
     ],
     "eventLogItems": [
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "juovametsan-klaanin-murhat-brindlewood-clan-slayings-2",
         "programItemStartTime": "2025-07-24T12:35:01.607Z",
         "isSeen": true,
@@ -1550,7 +1550,7 @@
     ],
     "eventLogItems": [
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "fear-and-loathing-in-paradise-1",
         "programItemStartTime": "2025-07-25T13:40:01.659Z",
         "isSeen": true,
@@ -1578,21 +1578,21 @@
         "createdAt": "2025-07-26T13:00:06.909Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-1",
         "programItemStartTime": "2025-07-26T14:00:00Z",
         "isSeen": true,
         "createdAt": "2025-07-26T14:10:01.905Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-2",
         "programItemStartTime": "2025-07-26T14:10:01.905Z",
         "isSeen": true,
         "createdAt": "2025-07-26T14:10:01.905Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "kuningas-arthurin-legenda-vuosi-513-1",
         "programItemStartTime": "2025-07-26T14:20:01.375Z",
         "isSeen": true,
@@ -1863,14 +1863,14 @@
     ],
     "eventLogItems": [
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "juovametsan-klaanin-murhat-brindlewood-clan-slayings-1",
         "programItemStartTime": "2025-07-24T12:35:01.607Z",
         "isSeen": true,
         "createdAt": "2025-07-24T12:35:01.607Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "juovametsan-klaanin-murhat-brindlewood-clan-slayings-2",
         "programItemStartTime": "2025-07-24T12:35:01.607Z",
         "isSeen": true,
@@ -2023,7 +2023,7 @@
     ],
     "eventLogItems": [
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "tervetuloa-vartiostoon-2",
         "programItemStartTime": "2025-07-24T10:55:01.17Z",
         "isSeen": true,
@@ -2294,14 +2294,14 @@
     ],
     "eventLogItems": [
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "tervetuloa-vartiostoon-2",
         "programItemStartTime": "2025-07-24T10:55:01.17Z",
         "isSeen": true,
         "createdAt": "2025-07-24T10:55:01.17Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "juovametsan-klaanin-murhat-brindlewood-clan-slayings-2",
         "programItemStartTime": "2025-07-24T12:35:01.607Z",
         "isSeen": true,
@@ -2561,14 +2561,14 @@
     ],
     "eventLogItems": [
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "maailma-myrskyn-jalkeen-2",
         "programItemStartTime": "2025-07-23T20:15:01.602Z",
         "isSeen": true,
         "createdAt": "2025-07-23T20:15:01.602Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "tervetuloa-vartiostoon-2",
         "programItemStartTime": "2025-07-24T10:55:01.17Z",
         "isSeen": true,
@@ -2617,7 +2617,7 @@
         "createdAt": "2025-07-26T14:00:06.78Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "kuningas-arthurin-legenda-vuosi-513-1",
         "programItemStartTime": "2025-07-26T14:20:01.375Z",
         "isSeen": true,
@@ -3123,14 +3123,14 @@
     ],
     "eventLogItems": [
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "juovametsan-klaanin-murhat-brindlewood-clan-slayings-1",
         "programItemStartTime": "2025-07-24T12:35:01.607Z",
         "isSeen": true,
         "createdAt": "2025-07-24T12:35:01.607Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "juovametsan-klaanin-murhat-brindlewood-clan-slayings-2",
         "programItemStartTime": "2025-07-24T12:35:01.607Z",
         "isSeen": true,
@@ -3352,7 +3352,7 @@
     ],
     "eventLogItems": [
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "gm-workshop-mustan-vyon-tekniikoita-pelinjohtajille",
         "programItemStartTime": "2025-07-25T19:20:01.526Z",
         "isSeen": true,
@@ -3487,14 +3487,14 @@
         "createdAt": "2025-07-26T14:00:06.78Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-1",
         "programItemStartTime": "2025-07-26T14:00:00Z",
         "isSeen": true,
         "createdAt": "2025-07-26T14:10:01.905Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-2",
         "programItemStartTime": "2025-07-26T14:10:01.905Z",
         "isSeen": true,
@@ -4304,7 +4304,7 @@
         "createdAt": "2025-07-25T13:00:06.781Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "gm-workshop-mustan-vyon-tekniikoita-pelinjohtajille",
         "programItemStartTime": "2025-07-25T19:20:01.526Z",
         "isSeen": true,
@@ -4552,14 +4552,14 @@
     ],
     "eventLogItems": [
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "juovametsan-klaanin-murhat-brindlewood-clan-slayings-1",
         "programItemStartTime": "2025-07-24T12:35:01.607Z",
         "isSeen": true,
         "createdAt": "2025-07-24T12:35:01.607Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "fear-and-loathing-in-paradise-1",
         "programItemStartTime": "2025-07-25T13:40:01.659Z",
         "isSeen": true,
@@ -5474,7 +5474,7 @@
     ],
     "eventLogItems": [
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "gm-workshop-mustan-vyon-tekniikoita-pelinjohtajille",
         "programItemStartTime": "2025-07-25T19:20:01.526Z",
         "isSeen": true,
@@ -5645,14 +5645,14 @@
         "createdAt": "2025-07-26T14:00:06.78Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-1",
         "programItemStartTime": "2025-07-26T14:10:01.905Z",
         "isSeen": true,
         "createdAt": "2025-07-26T14:10:01.905Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-2",
         "programItemStartTime": "2025-07-26T14:10:01.905Z",
         "isSeen": true,
@@ -5952,14 +5952,14 @@
     ],
     "eventLogItems": [
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "juovametsan-klaanin-murhat-brindlewood-clan-slayings-1",
         "programItemStartTime": "2025-07-24T12:35:01.607Z",
         "isSeen": true,
         "createdAt": "2025-07-24T12:35:01.607Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "juovametsan-klaanin-murhat-brindlewood-clan-slayings-2",
         "programItemStartTime": "2025-07-24T12:35:01.607Z",
         "isSeen": true,
@@ -6327,7 +6327,7 @@
         "createdAt": "2025-07-25T13:00:06.781Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "gm-workshop-mustan-vyon-tekniikoita-pelinjohtajille",
         "programItemStartTime": "2025-07-25T19:20:01.526Z",
         "isSeen": true,
@@ -6865,14 +6865,14 @@
     ],
     "eventLogItems": [
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "juovametsan-klaanin-murhat-brindlewood-clan-slayings-1",
         "programItemStartTime": "2025-07-24T12:35:01.607Z",
         "isSeen": true,
         "createdAt": "2025-07-24T12:35:01.607Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "juovametsan-klaanin-murhat-brindlewood-clan-slayings-2",
         "programItemStartTime": "2025-07-24T12:35:01.607Z",
         "isSeen": true,
@@ -8035,7 +8035,7 @@
     "lotterySignups": [],
     "eventLogItems": [
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "juovametsan-klaanin-murhat-brindlewood-clan-slayings-1",
         "programItemStartTime": "2025-07-24T12:35:01.607Z",
         "isSeen": true,
@@ -8330,7 +8330,7 @@
         "createdAt": "2025-07-25T15:00:05.733Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "trumania-2",
         "programItemStartTime": "2025-07-25T15:25:01.545Z",
         "isSeen": true,
@@ -8479,7 +8479,7 @@
         "createdAt": "2025-07-25T16:00:05.936Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "gm-workshop-mustan-vyon-tekniikoita-pelinjohtajille",
         "programItemStartTime": "2025-07-25T19:20:01.526Z",
         "isSeen": true,
@@ -8886,7 +8886,7 @@
         "createdAt": "2025-07-26T15:00:06.787Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "taikatutkimus-1",
         "programItemStartTime": "2025-07-26T15:05:01.519Z",
         "isSeen": true,
@@ -9591,7 +9591,7 @@
         "createdAt": "2025-07-25T13:00:06.781Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "fear-and-loathing-in-paradise-1",
         "programItemStartTime": "2025-07-25T15:00:00Z",
         "isSeen": true,
@@ -11097,7 +11097,7 @@
     "lotterySignups": [],
     "eventLogItems": [
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "fear-and-loathing-in-paradise-3",
         "programItemStartTime": "2025-07-25T13:40:01.659Z",
         "isSeen": true,
@@ -11525,7 +11525,7 @@
     ],
     "eventLogItems": [
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "gm-workshop-mustan-vyon-tekniikoita-pelinjohtajille",
         "programItemStartTime": "2025-07-25T19:20:01.526Z",
         "isSeen": true,
@@ -12235,7 +12235,7 @@
         "createdAt": "2025-07-25T18:00:05.78Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "gm-workshop-mustan-vyon-tekniikoita-pelinjohtajille",
         "programItemStartTime": "2025-07-25T19:20:01.526Z",
         "isSeen": true,
@@ -12839,7 +12839,7 @@
         "createdAt": "2025-07-26T15:00:06.787Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "taikatutkimus-1",
         "programItemStartTime": "2025-07-26T18:00:00Z",
         "isSeen": true,
@@ -13455,14 +13455,14 @@
         "createdAt": "2025-07-26T08:00:06.716Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-1",
         "programItemStartTime": "2025-07-26T14:10:01.905Z",
         "isSeen": false,
         "createdAt": "2025-07-26T14:10:01.905Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-2",
         "programItemStartTime": "2025-07-26T14:10:01.905Z",
         "isSeen": false,
@@ -14603,7 +14603,7 @@
         "createdAt": "2025-07-26T15:00:06.787Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "taikatutkimus-1",
         "programItemStartTime": "2025-07-26T15:05:01.52Z",
         "isSeen": true,
@@ -15052,7 +15052,7 @@
         "createdAt": "2025-07-26T14:00:06.78Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "kuningas-arthurin-legenda-vuosi-513-1",
         "programItemStartTime": "2025-07-26T14:20:01.375Z",
         "isSeen": true,
@@ -15264,7 +15264,7 @@
         "createdAt": "2025-07-25T14:00:05.774Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "gm-workshop-mustan-vyon-tekniikoita-pelinjohtajille",
         "programItemStartTime": "2025-07-25T19:20:01.526Z",
         "isSeen": true,
@@ -17949,7 +17949,7 @@
         "createdAt": "2025-07-26T15:00:06.787Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "taikatutkimus-1",
         "programItemStartTime": "2025-07-26T18:00:00Z",
         "isSeen": true,
@@ -18287,7 +18287,7 @@
     ],
     "eventLogItems": [
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "fear-and-loathing-in-paradise-2",
         "programItemStartTime": "2025-07-25T13:40:01.659Z",
         "isSeen": true,
@@ -19518,14 +19518,14 @@
         "createdAt": "2025-07-26T06:00:06.565Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-1",
         "programItemStartTime": "2025-07-26T14:10:01.905Z",
         "isSeen": true,
         "createdAt": "2025-07-26T14:10:01.905Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-2",
         "programItemStartTime": "2025-07-26T14:10:01.905Z",
         "isSeen": true,
@@ -20201,7 +20201,7 @@
         "createdAt": "2025-07-26T06:00:06.565Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-2",
         "programItemStartTime": "2025-07-26T14:10:01.905Z",
         "isSeen": true,
@@ -20424,7 +20424,7 @@
         "createdAt": "2025-07-26T15:00:06.787Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "taikatutkimus-1",
         "programItemStartTime": "2025-07-26T15:05:01.52Z",
         "isSeen": true,
@@ -21685,14 +21685,14 @@
         "createdAt": "2025-07-26T12:00:07.165Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-1",
         "programItemStartTime": "2025-07-26T14:00:00Z",
         "isSeen": true,
         "createdAt": "2025-07-26T14:10:01.905Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-2",
         "programItemStartTime": "2025-07-26T14:10:01.905Z",
         "isSeen": true,
@@ -22108,7 +22108,7 @@
         "createdAt": "2025-07-25T13:00:06.586Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "gm-workshop-mustan-vyon-tekniikoita-pelinjohtajille",
         "programItemStartTime": "2025-07-25T19:20:01.526Z",
         "isSeen": true,
@@ -23841,7 +23841,7 @@
         "createdAt": "2025-07-26T14:00:06.78Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "taikatutkimus-1",
         "programItemStartTime": "2025-07-26T15:05:01.52Z",
         "isSeen": true,
@@ -25029,7 +25029,7 @@
         "createdAt": "2025-07-26T09:00:06.356Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "kuningas-arthurin-legenda-vuosi-513-1",
         "programItemStartTime": "2025-07-26T14:20:01.375Z",
         "isSeen": true,
@@ -25806,7 +25806,7 @@
     ],
     "eventLogItems": [
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "fear-and-loathing-in-paradise-1",
         "programItemStartTime": "2025-07-25T13:40:01.659Z",
         "isSeen": true,
@@ -26050,7 +26050,7 @@
         "createdAt": "2025-07-26T12:00:07.165Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-1",
         "programItemStartTime": "2025-07-26T14:10:01.905Z",
         "isSeen": true,
@@ -26980,7 +26980,7 @@
         "createdAt": "2025-07-26T10:00:06.209Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-1",
         "programItemStartTime": "2025-07-26T14:10:01.905Z",
         "isSeen": true,
@@ -27945,7 +27945,7 @@
         "createdAt": "2025-07-26T06:00:06.565Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-2",
         "programItemStartTime": "2025-07-26T14:10:01.905Z",
         "isSeen": true,
@@ -28283,7 +28283,7 @@
     ],
     "eventLogItems": [
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "gm-workshop-mustan-vyon-tekniikoita-pelinjohtajille",
         "programItemStartTime": "2025-07-25T19:20:01.526Z",
         "isSeen": true,
@@ -28767,14 +28767,14 @@
         "createdAt": "2025-07-26T12:00:07.165Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-1",
         "programItemStartTime": "2025-07-26T14:00:00Z",
         "isSeen": true,
         "createdAt": "2025-07-26T14:10:01.905Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-2",
         "programItemStartTime": "2025-07-26T14:10:01.905Z",
         "isSeen": true,
@@ -29469,7 +29469,7 @@
         "createdAt": "2025-07-25T14:00:05.867Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "trumania-2",
         "programItemStartTime": "2025-07-25T15:25:01.545Z",
         "isSeen": true,
@@ -31038,7 +31038,7 @@
     ],
     "eventLogItems": [
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "fear-and-loathing-in-paradise-1",
         "programItemStartTime": "2025-07-25T13:40:01.659Z",
         "isSeen": true,
@@ -31149,7 +31149,7 @@
     ],
     "eventLogItems": [
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "gm-workshop-mustan-vyon-tekniikoita-pelinjohtajille",
         "programItemStartTime": "2025-07-25T19:20:01.526Z",
         "isSeen": true,
@@ -34196,7 +34196,7 @@
     ],
     "eventLogItems": [
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "fear-and-loathing-in-paradise-1",
         "programItemStartTime": "2025-07-25T13:40:01.659Z",
         "isSeen": true,
@@ -34877,7 +34877,7 @@
         "createdAt": "2025-07-26T14:00:06.78Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "kuningas-arthurin-legenda-vuosi-513-1",
         "programItemStartTime": "2025-07-26T14:20:01.375Z",
         "isSeen": true,
@@ -35823,7 +35823,7 @@
         "createdAt": "2025-07-26T14:00:06.78Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "kuningas-arthurin-legenda-vuosi-513-1",
         "programItemStartTime": "2025-07-26T14:20:01.375Z",
         "isSeen": true,
@@ -36259,7 +36259,7 @@
         "createdAt": "2025-07-25T16:00:05.936Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "gm-workshop-mustan-vyon-tekniikoita-pelinjohtajille",
         "programItemStartTime": "2025-07-25T19:20:01.526Z",
         "isSeen": true,
@@ -36802,7 +36802,7 @@
         "createdAt": "2025-07-25T16:00:05.936Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "gm-workshop-mustan-vyon-tekniikoita-pelinjohtajille",
         "programItemStartTime": "2025-07-25T19:20:01.526Z",
         "isSeen": true,
@@ -38073,7 +38073,7 @@
         "createdAt": "2025-07-26T08:00:06.716Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-1",
         "programItemStartTime": "2025-07-26T14:10:01.905Z",
         "isSeen": true,
@@ -39431,7 +39431,7 @@
         "createdAt": "2025-07-26T12:00:07.165Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "kuningas-arthurin-legenda-vuosi-513-1",
         "programItemStartTime": "2025-07-26T14:20:01.375Z",
         "isSeen": false,
@@ -40242,7 +40242,7 @@
         "createdAt": "2025-07-26T14:00:06.78Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "kuningas-arthurin-legenda-vuosi-513-1",
         "programItemStartTime": "2025-07-26T14:20:01.375Z",
         "isSeen": true,
@@ -40612,7 +40612,7 @@
         "createdAt": "2025-07-25T13:00:06.586Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "trumania-2",
         "programItemStartTime": "2025-07-25T15:25:01.545Z",
         "isSeen": true,
@@ -42304,7 +42304,7 @@
         "createdAt": "2025-07-26T15:00:06.787Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "taikatutkimus-1",
         "programItemStartTime": "2025-07-26T18:00:00Z",
         "isSeen": true,
@@ -42450,14 +42450,14 @@
         "createdAt": "2025-07-26T12:00:07.165Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-1",
         "programItemStartTime": "2025-07-26T14:00:00Z",
         "isSeen": true,
         "createdAt": "2025-07-26T14:10:01.905Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-2",
         "programItemStartTime": "2025-07-26T14:10:01.905Z",
         "isSeen": true,
@@ -43177,7 +43177,7 @@
         "createdAt": "2025-07-26T12:00:06.904Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-1",
         "programItemStartTime": "2025-07-26T14:00:00Z",
         "isSeen": true,
@@ -44973,7 +44973,7 @@
         "createdAt": "2025-07-26T15:00:06.575Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "taikatutkimus-1",
         "programItemStartTime": "2025-07-26T15:05:01.52Z",
         "isSeen": true,
@@ -45262,7 +45262,7 @@
         "createdAt": "2025-07-26T14:00:06.78Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-1",
         "programItemStartTime": "2025-07-26T14:10:01.905Z",
         "isSeen": true,
@@ -46380,7 +46380,7 @@
     ],
     "eventLogItems": [
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-2",
         "programItemStartTime": "2025-07-26T14:10:01.905Z",
         "isSeen": true,
@@ -46941,7 +46941,7 @@
     "lotterySignups": [],
     "eventLogItems": [
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-2",
         "programItemStartTime": "2025-07-26T14:10:01.905Z",
         "isSeen": false,
@@ -51634,7 +51634,7 @@
         "createdAt": "2025-07-26T15:00:06.787Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "taikatutkimus-1",
         "programItemStartTime": "2025-07-26T18:00:00Z",
         "isSeen": true,
@@ -51775,7 +51775,7 @@
         "createdAt": "2025-07-26T12:00:07.165Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-1",
         "programItemStartTime": "2025-07-26T14:00:00Z",
         "isSeen": true,
@@ -52704,7 +52704,7 @@
     ],
     "eventLogItems": [
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "gm-workshop-mustan-vyon-tekniikoita-pelinjohtajille",
         "programItemStartTime": "2025-07-25T19:20:01.526Z",
         "isSeen": true,
@@ -53560,7 +53560,7 @@
         "createdAt": "2025-07-26T14:00:06.78Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-1",
         "programItemStartTime": "2025-07-26T14:00:00Z",
         "isSeen": true,
@@ -57947,7 +57947,7 @@
     ],
     "eventLogItems": [
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "gm-workshop-mustan-vyon-tekniikoita-pelinjohtajille",
         "programItemStartTime": "2025-07-25T19:20:01.526Z",
         "isSeen": true,
@@ -58909,7 +58909,7 @@
         "createdAt": "2025-07-26T14:00:06.78Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "kuningas-arthurin-legenda-vuosi-513-1",
         "programItemStartTime": "2025-07-26T14:20:01.375Z",
         "isSeen": true,
@@ -59220,7 +59220,7 @@
         "createdAt": "2025-07-26T15:00:06.787Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "taikatutkimus-1",
         "programItemStartTime": "2025-07-26T18:00:00Z",
         "isSeen": true,
@@ -59371,7 +59371,7 @@
         "createdAt": "2025-07-26T12:00:06.904Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-1",
         "programItemStartTime": "2025-07-26T14:00:00Z",
         "isSeen": true,
@@ -60225,7 +60225,7 @@
         "createdAt": "2025-07-26T13:00:06.909Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "kuningas-arthurin-legenda-vuosi-513-1",
         "programItemStartTime": "2025-07-26T14:20:01.375Z",
         "isSeen": true,
@@ -60239,7 +60239,7 @@
         "createdAt": "2025-07-26T15:00:06.787Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "taikatutkimus-1",
         "programItemStartTime": "2025-07-26T18:00:00Z",
         "isSeen": true,
@@ -60880,7 +60880,7 @@
         "createdAt": "2025-07-26T14:00:06.78Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-1",
         "programItemStartTime": "2025-07-26T14:00:00Z",
         "isSeen": true,
@@ -61068,7 +61068,7 @@
         "createdAt": "2025-07-26T14:00:06.78Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-1",
         "programItemStartTime": "2025-07-26T14:00:00Z",
         "isSeen": true,
@@ -61917,7 +61917,7 @@
         "createdAt": "2025-07-26T15:00:06.787Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "taikatutkimus-1",
         "programItemStartTime": "2025-07-26T18:00:00Z",
         "isSeen": true,
@@ -62623,14 +62623,14 @@
         "createdAt": "2025-07-26T13:00:06.681Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "kuningas-arthurin-legenda-vuosi-513-1",
         "programItemStartTime": "2025-07-26T14:20:01.375Z",
         "isSeen": true,
         "createdAt": "2025-07-26T14:20:01.375Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "kuningas-arthurin-legenda-vuosi-513-1",
         "programItemStartTime": "2025-07-26T14:25:01.793Z",
         "isSeen": true,
@@ -64001,7 +64001,7 @@
     ],
     "eventLogItems": [
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "gm-workshop-mustan-vyon-tekniikoita-pelinjohtajille",
         "programItemStartTime": "2025-07-25T19:20:01.526Z",
         "isSeen": true,
@@ -64022,14 +64022,14 @@
         "createdAt": "2025-07-26T12:00:06.904Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-1",
         "programItemStartTime": "2025-07-26T14:10:01.905Z",
         "isSeen": true,
         "createdAt": "2025-07-26T14:10:01.905Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "kuningas-arthurin-legenda-vuosi-513-1",
         "programItemStartTime": "2025-07-26T14:20:01.375Z",
         "isSeen": true,
@@ -65109,14 +65109,14 @@
     "lotterySignups": [],
     "eventLogItems": [
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-1",
         "programItemStartTime": "2025-07-26T14:10:01.905Z",
         "isSeen": true,
         "createdAt": "2025-07-26T14:10:01.905Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-2",
         "programItemStartTime": "2025-07-26T14:10:01.905Z",
         "isSeen": true,
@@ -66347,7 +66347,7 @@
         "createdAt": "2025-07-26T13:00:06.681Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "taikatutkimus-1",
         "programItemStartTime": "2025-07-26T15:10:01.542Z",
         "isSeen": true,
@@ -69000,7 +69000,7 @@
     ],
     "eventLogItems": [
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-1",
         "programItemStartTime": "2025-07-26T14:10:01.905Z",
         "isSeen": true,
@@ -69632,7 +69632,7 @@
         "createdAt": "2025-07-25T13:00:06.781Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "fear-and-loathing-in-paradise-1",
         "programItemStartTime": "2025-07-25T15:00:00Z",
         "isSeen": true,
@@ -70560,7 +70560,7 @@
         "createdAt": "2025-07-26T13:00:06.909Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "kuningas-arthurin-legenda-vuosi-513-1",
         "programItemStartTime": "2025-07-26T14:20:01.375Z",
         "isSeen": true,
@@ -70812,7 +70812,7 @@
         "createdAt": "2025-07-25T14:00:05.774Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "gm-workshop-mustan-vyon-tekniikoita-pelinjohtajille",
         "programItemStartTime": "2025-07-25T19:20:01.526Z",
         "isSeen": true,
@@ -71292,7 +71292,7 @@
         "createdAt": "2025-07-25T13:00:06.586Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "fear-and-loathing-in-paradise-1",
         "programItemStartTime": "2025-07-25T15:00:00Z",
         "isSeen": true,
@@ -72377,7 +72377,7 @@
         "createdAt": "2025-07-26T15:00:06.788Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "taikatutkimus-1",
         "programItemStartTime": "2025-07-26T15:05:01.52Z",
         "isSeen": true,
@@ -74431,7 +74431,7 @@
         "createdAt": "2025-07-26T15:00:06.788Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "taikatutkimus-1",
         "programItemStartTime": "2025-07-26T18:00:00Z",
         "isSeen": true,
@@ -77126,7 +77126,7 @@
     "lotterySignups": [],
     "eventLogItems": [
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-2",
         "programItemStartTime": "2025-07-26T14:10:01.905Z",
         "isSeen": false,
@@ -78640,7 +78640,7 @@
         "createdAt": "2025-07-25T14:00:05.774Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "kuningas-arthurin-legenda-vuosi-513-1",
         "programItemStartTime": "2025-07-26T14:20:01.375Z",
         "isSeen": true,
@@ -78654,7 +78654,7 @@
         "createdAt": "2025-07-26T15:00:06.788Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "taikatutkimus-1",
         "programItemStartTime": "2025-07-26T15:05:01.52Z",
         "isSeen": true,
@@ -80347,14 +80347,14 @@
     ],
     "eventLogItems": [
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "fear-and-loathing-in-paradise-3",
         "programItemStartTime": "2025-07-25T13:40:01.659Z",
         "isSeen": true,
         "createdAt": "2025-07-25T13:40:01.659Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "fear-and-loathing-in-paradise-2",
         "programItemStartTime": "2025-07-25T13:40:01.659Z",
         "isSeen": true,
@@ -80489,7 +80489,7 @@
         "createdAt": "2025-07-26T12:00:06.904Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-1",
         "programItemStartTime": "2025-07-26T14:00:00Z",
         "isSeen": false,
@@ -81248,14 +81248,14 @@
         "createdAt": "2025-07-26T12:00:06.904Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-1",
         "programItemStartTime": "2025-07-26T14:00:00Z",
         "isSeen": false,
         "createdAt": "2025-07-26T14:10:01.441Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-2",
         "programItemStartTime": "2025-07-26T14:10:01.905Z",
         "isSeen": false,
@@ -82395,7 +82395,7 @@
     ],
     "eventLogItems": [
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "fear-and-loathing-in-paradise-1",
         "programItemStartTime": "2025-07-25T15:00:00Z",
         "isSeen": true,
@@ -82682,7 +82682,7 @@
     ],
     "eventLogItems": [
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "fear-and-loathing-in-paradise-1",
         "programItemStartTime": "2025-07-25T15:00:00Z",
         "isSeen": true,
@@ -82752,7 +82752,7 @@
     ],
     "eventLogItems": [
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "fear-and-loathing-in-paradise-1",
         "programItemStartTime": "2025-07-25T15:00:00Z",
         "isSeen": true,
@@ -82830,7 +82830,7 @@
     "lotterySignups": [],
     "eventLogItems": [
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "fear-and-loathing-in-paradise-1",
         "programItemStartTime": "2025-07-25T15:00:00Z",
         "isSeen": false,
@@ -84907,7 +84907,7 @@
         "createdAt": "2025-07-26T08:00:06.517Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "kuningas-arthurin-legenda-vuosi-513-1",
         "programItemStartTime": "2025-07-26T14:20:01.375Z",
         "isSeen": true,
@@ -85390,7 +85390,7 @@
         "createdAt": "2025-07-26T15:00:06.788Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "taikatutkimus-1",
         "programItemStartTime": "2025-07-26T18:00:00Z",
         "isSeen": true,
@@ -85529,14 +85529,14 @@
         "createdAt": "2025-07-26T14:00:06.78Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-1",
         "programItemStartTime": "2025-07-26T14:00:00Z",
         "isSeen": true,
         "createdAt": "2025-07-26T14:10:01.905Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-2",
         "programItemStartTime": "2025-07-26T14:10:01.905Z",
         "isSeen": true,
@@ -86140,7 +86140,7 @@
         "createdAt": "2025-07-26T10:00:06.209Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-2",
         "programItemStartTime": "2025-07-26T14:10:01.905Z",
         "isSeen": true,
@@ -87727,7 +87727,7 @@
         "createdAt": "2025-07-26T13:00:06.909Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-1",
         "programItemStartTime": "2025-07-26T14:10:01.905Z",
         "isSeen": true,
@@ -88048,7 +88048,7 @@
         "createdAt": "2025-07-26T04:00:06.227Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "taikatutkimus-1",
         "programItemStartTime": "2025-07-26T15:05:01.52Z",
         "isSeen": true,
@@ -89706,7 +89706,7 @@
         "createdAt": "2025-07-26T14:00:06.78Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "taikatutkimus-1",
         "programItemStartTime": "2025-07-26T18:00:00Z",
         "isSeen": true,
@@ -89832,7 +89832,7 @@
         "createdAt": "2025-07-26T12:00:07.165Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-1",
         "programItemStartTime": "2025-07-26T14:00:00Z",
         "isSeen": true,
@@ -91576,7 +91576,7 @@
         "createdAt": "2025-07-26T08:00:06.716Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-2",
         "programItemStartTime": "2025-07-26T14:10:01.905Z",
         "isSeen": false,
@@ -92923,7 +92923,7 @@
         "createdAt": "2025-07-26T15:00:06.575Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "taikatutkimus-1",
         "programItemStartTime": "2025-07-26T15:05:01.52Z",
         "isSeen": true,
@@ -93762,7 +93762,7 @@
         "createdAt": "2025-07-26T11:00:06.332Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-1",
         "programItemStartTime": "2025-07-26T14:10:01.905Z",
         "isSeen": true,
@@ -94118,7 +94118,7 @@
         "createdAt": "2025-07-26T14:00:06.78Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "kuningas-arthurin-legenda-vuosi-513-1",
         "programItemStartTime": "2025-07-26T14:20:01.375Z",
         "isSeen": true,
@@ -94937,7 +94937,7 @@
     ],
     "eventLogItems": [
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "trumania-2",
         "programItemStartTime": "2025-07-25T15:25:01.545Z",
         "isSeen": true,
@@ -95794,14 +95794,14 @@
         "createdAt": "2025-07-26T13:00:06.681Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-1",
         "programItemStartTime": "2025-07-26T14:10:01.905Z",
         "isSeen": true,
         "createdAt": "2025-07-26T14:10:01.905Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-2",
         "programItemStartTime": "2025-07-26T14:10:01.905Z",
         "isSeen": true,
@@ -96487,14 +96487,14 @@
     "lotterySignups": [],
     "eventLogItems": [
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-1",
         "programItemStartTime": "2025-07-26T14:10:01.905Z",
         "isSeen": true,
         "createdAt": "2025-07-26T14:10:01.905Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-2",
         "programItemStartTime": "2025-07-26T14:10:01.905Z",
         "isSeen": true,
@@ -103278,7 +103278,7 @@
     "lotterySignups": [],
     "eventLogItems": [
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-1",
         "programItemStartTime": "2025-07-26T14:10:01.905Z",
         "isSeen": false,
@@ -103416,14 +103416,14 @@
         "createdAt": "2025-07-26T14:00:06.605Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-1",
         "programItemStartTime": "2025-07-26T14:10:01.905Z",
         "isSeen": true,
         "createdAt": "2025-07-26T14:10:01.905Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-2",
         "programItemStartTime": "2025-07-26T14:10:01.905Z",
         "isSeen": true,
@@ -103583,7 +103583,7 @@
         "createdAt": "2025-07-26T11:00:06.44Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-1",
         "programItemStartTime": "2025-07-26T14:10:01.905Z",
         "isSeen": true,
@@ -105731,7 +105731,7 @@
         "createdAt": "2025-07-26T12:00:07.165Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "kuningas-arthurin-legenda-vuosi-513-1",
         "programItemStartTime": "2025-07-26T14:20:01.375Z",
         "isSeen": true,
@@ -108802,7 +108802,7 @@
     "lotterySignups": [],
     "eventLogItems": [
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "kuningas-arthurin-legenda-vuosi-513-1",
         "programItemStartTime": "2025-07-26T14:20:01.376Z",
         "isSeen": true,
@@ -110195,7 +110195,7 @@
     "lotterySignups": [],
     "eventLogItems": [
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "taikatutkimus-1",
         "programItemStartTime": "2025-07-26T15:05:01.52Z",
         "isSeen": true,
@@ -110523,7 +110523,7 @@
         "createdAt": "2025-07-26T12:00:07.165Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-1",
         "programItemStartTime": "2025-07-26T14:10:01.905Z",
         "isSeen": true,
@@ -122961,7 +122961,7 @@
     ],
     "eventLogItems": [
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "kuningas-arthurin-legenda-vuosi-513-1",
         "programItemStartTime": "2025-07-26T14:20:01.376Z",
         "isSeen": true,
@@ -123124,7 +123124,7 @@
         "createdAt": "2025-07-26T12:00:06.904Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-1",
         "programItemStartTime": "2025-07-26T14:00:00Z",
         "isSeen": true,
@@ -123932,7 +123932,7 @@
         "createdAt": "2025-07-26T12:00:06.904Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "make-your-own-micro-game-1",
         "programItemStartTime": "2025-07-26T14:00:00Z",
         "isSeen": false,
@@ -128057,7 +128057,7 @@
         "createdAt": "2025-07-26T15:00:06.788Z"
       },
       {
-        "action": "programItemCanceled",
+        "action": "programItemCancelled",
         "programItemId": "taikatutkimus-1",
         "programItemStartTime": "2025-07-26T18:00:00Z",
         "isSeen": true,

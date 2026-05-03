@@ -10,8 +10,8 @@ import {
   Result,
   makeErrorResult,
 } from "shared/utils/result";
-import { handleCanceledDeletedProgramItems } from "server/features/program-item/programItemUtils";
-import { removeCanceledDeletedProgramItemsFromUsers } from "server/features/assignment/utils/removeInvalidProgramItemsFromUsers";
+import { handleCancelledDeletedProgramItems } from "server/features/program-item/programItemUtils";
+import { removeCancelledDeletedProgramItemsFromUsers } from "server/features/assignment/utils/removeInvalidProgramItemsFromUsers";
 import { MongoDbError } from "shared/types/api/errors";
 import {
   createEmptyDirectSignupDocumentForProgramItems,
@@ -48,8 +48,8 @@ export const saveProgramItems = async (
   }
   const currentProgramItems = currentProgramItemsResult.value;
 
-  // If program item was canceled or deleted, remove program item and direct signups
-  const deletedProgramItemsResult = await handleCanceledDeletedProgramItems(
+  // If program item was cancelled or deleted, remove program item and direct signups
+  const deletedProgramItemsResult = await handleCancelledDeletedProgramItems(
     updatedProgramItems,
     currentProgramItems,
   );
@@ -58,15 +58,15 @@ export const saveProgramItems = async (
   }
   const { affectedDirectSignups } = deletedProgramItemsResult.value;
 
-  // If program item was canceled or deleted, remove lottery signups and favorite program items
-  const removeCanceledDeletedProgramItemsFromUsersResult =
-    await removeCanceledDeletedProgramItemsFromUsers({
+  // If program item was cancelled or deleted, remove lottery signups and favorite program items
+  const removeCancelledDeletedProgramItemsFromUsersResult =
+    await removeCancelledDeletedProgramItemsFromUsers({
       programItems: updatedProgramItems,
       notifyAffectedDirectSignups: affectedDirectSignups,
       notify: true,
     });
-  if (!removeCanceledDeletedProgramItemsFromUsersResult.ok) {
-    return removeCanceledDeletedProgramItemsFromUsersResult;
+  if (!removeCancelledDeletedProgramItemsFromUsersResult.ok) {
+    return removeCancelledDeletedProgramItemsFromUsersResult;
   }
 
   const updateMovedProgramItemsResult = await updateMovedProgramItems(
