@@ -2,7 +2,6 @@ import { ReactElement, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { sortBy, unique } from "remeda";
 import { DirectSignupsByStartTimes } from "./DirectSignupsByStartTimes";
-import { config } from "shared/config";
 import { RaisedCard } from "client/components/RaisedCard";
 import {
   MyProgramHeader,
@@ -30,11 +29,11 @@ export const MyDirectSignupsList = ({ directSignups }: Props): ReactElement => {
   return (
     <RaisedCard data-testid="direct-signup-program-items-list">
       <MyProgramHeader>{t("directSignups")}</MyProgramHeader>
-      {(!config.event().resultsVisible || startTimes.length === 0) && (
+      {startTimes.length === 0 && (
         <MyProgramSecondaryText>{t("noDirectSignups")}</MyProgramSecondaryText>
       )}
 
-      {config.event().resultsVisible && startTimes.length > 0 && (
+      {startTimes.length > 0 && (
         <DirectSignupsByStartTimes
           directSignups={sortBy(
             directSignups,

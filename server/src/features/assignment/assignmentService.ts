@@ -1,6 +1,7 @@
 import { runAssignment } from "server/features/assignment/run-assignment/runAssignment";
 import { PostAssignmentResponse } from "shared/types/api/assignment";
 import { config } from "shared/config";
+
 export const storeAssignment = async (
   assignmentTime: string,
 ): Promise<PostAssignmentResponse> => {

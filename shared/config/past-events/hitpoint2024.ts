@@ -15,8 +15,6 @@ const eventConfig: Partial<EventConfig> = {
   requireRegistrationCode: true,
   assignmentAlgorithm: AssignmentAlgorithm.RANDOM_PADG,
   enableGroups: true,
-  signupOpen: true,
-  resultsVisible: true,
   enableRemoveOverlapSignups: true,
 
   activeProgramTypes: [
@@ -39,9 +37,6 @@ const eventConfig: Partial<EventConfig> = {
   enableRollingDirectSignupPreviousDay: false,
 
   hideParticipantListProgramTypes: [],
-
-  // Direct signup open till program item endTime instead of startTime
-  directSignupOpenToEndProgramTypes: [],
 
   // These program items have their signup always open even if signup mode is set to lottery
   directSignupAlwaysOpenIds: [],
