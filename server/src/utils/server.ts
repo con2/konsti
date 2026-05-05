@@ -73,6 +73,7 @@ export const startServer = async ({
   });
 
   app.use("/api", allowCORS);
+  app.use("/auth", allowCORS);
   app.use(wwwRedirect);
 
   app.use(apiRoutes);
