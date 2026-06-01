@@ -4,9 +4,6 @@ import styled, { css } from "styled-components";
 import { useTranslation } from "react-i18next";
 import { Button, ButtonStyle } from "client/components/Button";
 import { updateUserPassword } from "client/services/userServices";
-import { RadioButtonGroup } from "client/components/RadioButtonGroup";
-import { RadioButton } from "client/components/RadioButton";
-import { UncontrolledInput } from "client/components/UncontrolledInput";
 import { useAppDispatch } from "client/utils/hooks";
 import { submitUpdateUserEmailAddress } from "client/views/login/loginThunks";
 import {
@@ -14,6 +11,11 @@ import {
   PASSWORD_LENGTH_MIN,
 } from "shared/constants/validation";
 import { ControlledInput } from "client/components/ControlledInput";
+import {
+  EMAIL_REGEX,
+  EmailNotificationField,
+  StyledEmailInput,
+} from "client/components/EmailNotificationField";
 
 interface Props {
   usernameToUpdate: string;
@@ -98,8 +100,7 @@ export const ChangeUserSettingsForm = ({
     const emailToSend = emailNotificationsEnabled
       ? changeEmailInput.trim()
       : "";
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    if (emailNotificationsEnabled && !emailRegex.test(emailToSend)) {
+    if (emailNotificationsEnabled && !EMAIL_REGEX.test(emailToSend)) {
       setEmailChangeMessage(
         <Message error={true}>{t("validation.invalidEmail")}</Message>,
       );
@@ -137,31 +138,18 @@ export const ChangeUserSettingsForm = ({
   return (
     <>
       <>
-        <RadioButtonGroup>
-          <RadioButton
-            checked={emailNotificationsEnabled}
-            id={"email-notifications-enabled"}
-            label={t("email.notifications.accepted")}
-            name={"emailNotifications"}
-            onChange={() => handleEmailNotificationChange(true)}
+        <EmailNotificationField
+          enabled={emailNotificationsEnabled}
+          onEnabledChange={handleEmailNotificationChange}
+        >
+          <StyledEmailInput
+            id="email"
+            value={changeEmailInput}
+            type={"email"}
+            disabled={!emailNotificationsEnabled}
+            onChange={handleEmailChange}
           />
-          <InputContainer>
-            <StyledEmailInput
-              id="email"
-              value={changeEmailInput}
-              type={"email"}
-              disabled={!emailNotificationsEnabled}
-              onChange={handleEmailChange}
-            />
-          </InputContainer>
-          <RadioButton
-            checked={!emailNotificationsEnabled}
-            id={"email-notifications-disabled"}
-            label={t("email.notifications.rejected")}
-            name={"emailNotifications"}
-            onChange={() => handleEmailNotificationChange(false)}
-          />
-        </RadioButtonGroup>
+        </EmailNotificationField>
         <ButtonWithMargin
           onClick={submitUpdateEmail}
           buttonStyle={ButtonStyle.PRIMARY}
@@ -235,15 +223,4 @@ const ButtonWithMargin = styled(Button)`
 const StyledLabel = styled.label`
   padding: 0 0 2px 4px;
   font-size: ${(props) => props.theme.fontSizeSmall};
-`;
-
-const StyledEmailInput = styled(UncontrolledInput)`
-  width: min(250px, 100%);
-  ${(props) =>
-    props.disabled &&
-    `
-      background-color: ${props.theme.backgroundDisabled || "#f5f5f5"};
-      cursor: not-allowed;
-      opacity: 0.6;
-    `};
 `;
