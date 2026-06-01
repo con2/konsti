@@ -41,9 +41,6 @@ export async function emailNotificationWorker(
       !user.email ||
       !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(user.email)
     ) {
-      logger.error(
-        `Trying to send email notifiction to user ${notification.username} without email address.`,
-      );
       return;
     }
 
