@@ -2,11 +2,10 @@ import { Request, Response } from "express";
 import { logger } from "server/utils/logger";
 import { EmailNotificationTrigger } from "shared/types/emailNotification";
 import {
+  buildEmail,
   EmailMessage,
-  getEmailBodyAccepted,
-  getEmailBodyRejected,
-  getEmailSubjectAccepted,
-  getEmailSubjectRejected,
+  getAcceptedEmailTemplate,
+  getRejectedEmailTemplate,
 } from "server/features/notifications/senderCommon";
 import { EmailSender } from "server/features/notifications/email";
 import { config } from "shared/config";
@@ -27,6 +26,7 @@ export const postEmailTest = async (
 
     let message: EmailMessage;
 
+    const fromAddress = config.server().emailSendFromAddress;
     if (notificationType === EmailNotificationTrigger.ACCEPTED) {
       const mockNotification: NotificationTask = {
         type: NotificationTaskType.SEND_EMAIL_ACCEPTED,
@@ -34,15 +34,11 @@ export const postEmailTest = async (
         programItemId: programId,
         programItemStartTime: new Date().toISOString(),
       };
-      const body = getEmailBodyAccepted("Test Program Item", mockNotification);
-      const htmlBody = body.replaceAll("\n", "<br />");
-      message = {
-        from: config.server().emailSendFromAddress,
-        to: email,
-        subject: getEmailSubjectAccepted(),
-        text: body,
-        html: htmlBody,
-      };
+      message = buildEmail(
+        getAcceptedEmailTemplate("Test Program Item", mockNotification),
+        email,
+        fromAddress,
+      );
     } else if (notificationType === EmailNotificationTrigger.REJECTED) {
       const mockNotification: NotificationTask = {
         type: NotificationTaskType.SEND_EMAIL_REJECTED,
@@ -50,15 +46,11 @@ export const postEmailTest = async (
         programItemId: programId,
         programItemStartTime: new Date().toISOString(),
       };
-      const body = getEmailBodyRejected(mockNotification);
-      const htmlBody = body.replaceAll("\n", "<br />");
-      message = {
-        from: config.server().emailSendFromAddress,
-        to: email,
-        subject: getEmailSubjectRejected(),
-        text: body,
-        html: htmlBody,
-      };
+      message = buildEmail(
+        getRejectedEmailTemplate(mockNotification),
+        email,
+        fromAddress,
+      );
     } else {
       return res.status(400).json({ message: "Invalid notification type" });
     }

@@ -9,26 +9,31 @@ export interface EmailMessage {
   html?: string;
 }
 
-export function getEmailSubjectRejected(): string {
-  return "Konstiarvonnan tulos / Results for Konsti lottery signup";
+interface EmailTemplate {
+  subject: string;
+  text: string;
 }
 
-export function getEmailSubjectAccepted(): string {
-  return "Konstiarvonnan tulos / Results for Konsti lottery signup";
-}
+const SUBJECT = "Konstiarvonnan tulos / Results for Konsti lottery signup";
+const SIGNATURE = "Terveisin / Sincerely Konsti";
 
-export function getEmailBodyRejected(notification: NotificationTask): string {
+export function getRejectedEmailTemplate(
+  notification: NotificationTask,
+): EmailTemplate {
   const bodyFi = `Hei ${notification.username}!
 Et valitettavasti päässyt arvonnassa yhteenkään ohjelmaan johon ilmoittauduit.`;
   const bodyEn = `Hi ${notification.username}!
 Unfortunately you did not get spot on lottery signup.`;
-  return `${bodyFi}\n\n${bodyEn}\n\nTerveisin / Sincerely Konsti`;
+  return {
+    subject: SUBJECT,
+    text: `${bodyFi}\n\n${bodyEn}\n\n${SIGNATURE}`,
+  };
 }
 
-export function getEmailBodyAccepted(
+export function getAcceptedEmailTemplate(
   programItemTitle: string,
   notification: NotificationTask,
-): string {
+): EmailTemplate {
   const programStartTimeFi = getDateAndTimeWithLocale(
     notification.programItemStartTime,
     "fi",
@@ -44,5 +49,22 @@ Ohjelma alkaa ${programStartTimeFi}.`;
   const bodyEn = `Hi ${notification.username}!
 You got spot on program ${programItemTitle}.
 Program will start at ${programStartTimeEn}.`;
-  return `${bodyFi}\n\n${bodyEn}\n\nTerveisin / Sincerely Konsti`;
+  return {
+    subject: SUBJECT,
+    text: `${bodyFi}\n\n${bodyEn}\n\n${SIGNATURE}`,
+  };
+}
+
+export function buildEmail(
+  template: EmailTemplate,
+  to: string,
+  from: string,
+): EmailMessage {
+  return {
+    from,
+    to,
+    subject: template.subject,
+    text: template.text,
+    html: `<p>${template.text.replaceAll("\n", "<br />")}</p>`,
+  };
 }
