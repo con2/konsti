@@ -150,9 +150,12 @@ export const translationFI = {
   noLotterySignups:
     "Ei valittuja ohjelmanumeroita. Voit ilmoittautua Kaikki ohjelma -näkymässä.",
   noFavoriteProgramItems:
-    "Ei suosikkeja. Voit tallettaa suosikkiohjelmaa Kaikki ohjelma -näkymässä.",
+    "Ei suosikkeja. Voit tallettaa suosikkeja Kaikki ohjelma -näkymässä.",
+  noFutureFavoriteProgramItems:
+    "Ei tulevia suosikkeja. Voit tallettaa suosikkeja Kaikki ohjelma -näkymässä.",
   noDirectSignups:
     "Ei ilmoittautumisia. Voit ilmoittautua ohjelmaan Kaikki ohjelma -näkymässä.",
+  showAllProgramItems: "Näytä myös mennyt ohjelma",
   noHiddenProgramItems: "Ei piilotettuja ohjelmanumeroita",
   noSignupQuestions: "Ei ilmoittautumisten lisätietokysymystä",
   signupQuestions: "Ilmoittautumisen lisätietokysymykset",

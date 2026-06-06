@@ -86,6 +86,9 @@ export const MyProgramItemsView = (): ReactElement => {
             ? favoriteProgramItems
             : getUpcomingFavorites(favoriteProgramItems)
         }
+        showAllProgramItems={showAllProgramItems}
+        setShowAllProgramItems={setShowAllProgramItems}
+
       />
       <MyDirectSignupsList
         directSignups={
