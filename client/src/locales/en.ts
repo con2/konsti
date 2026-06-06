@@ -155,6 +155,8 @@ export const translationEN = {
     "No favorites in the future. You can add program items here in the All Program view.",
   noDirectSignups:
     "No sign-ups. You can sign up to program in the All Program view.",
+  noFutureDirectSignups:
+    "No sign-ups in the future. You can sign up to program in the All Program view.",
   showAllProgramItems: "Also show past program items",
   noHiddenProgramItems: "No hidden program items",
   noSignupQuestions: "No sign-up questions",

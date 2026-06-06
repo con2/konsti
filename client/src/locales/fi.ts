@@ -155,6 +155,8 @@ export const translationFI = {
     "Ei tulevia suosikkeja. Voit tallettaa suosikkeja Kaikki ohjelma -näkymässä.",
   noDirectSignups:
     "Ei ilmoittautumisia. Voit ilmoittautua ohjelmaan Kaikki ohjelma -näkymässä.",
+  noFutureDirectSignups:
+    "Ei tulevia ilmoittautumisia. Voit ilmoittautua ohjelmaan Kaikki ohjelma -näkymässä.",
   showAllProgramItems: "Näytä myös mennyt ohjelma",
   noHiddenProgramItems: "Ei piilotettuja ohjelmanumeroita",
   noSignupQuestions: "Ei ilmoittautumisten lisätietokysymystä",

@@ -88,7 +88,6 @@ export const MyProgramItemsView = (): ReactElement => {
         }
         showAllProgramItems={showAllProgramItems}
         setShowAllProgramItems={setShowAllProgramItems}
-
       />
       <MyDirectSignupsList
         directSignups={
@@ -96,6 +95,8 @@ export const MyProgramItemsView = (): ReactElement => {
             ? directSignups
             : getUpcomingDirectSignups(directSignups)
         }
+        showAllProgramItems={showAllProgramItems}
+        setShowAllProgramItems={setShowAllProgramItems}
       />
       {signupStrategy !== EventSignupStrategy.DIRECT && (
         <MyLotterySignupsList
