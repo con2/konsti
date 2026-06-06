@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { TertiaryButton } from "client/components/TertiaryButton";
 
 export const MyProgramListItem = styled.li`
   align-items: center;
@@ -41,4 +42,14 @@ export const MyProgramHeader = styled.h1`
 export const MyProgramSecondaryText = styled.p`
   color: ${(props) => props.theme.textSecondary};
   margin-bottom: 0;
+`;
+
+export const ShowAllButton = styled(TertiaryButton)`
+  width: max-content;
+`;
+
+export const EmptyContentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
 `;

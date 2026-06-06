@@ -4,16 +4,24 @@ import { sortBy, unique } from "remeda";
 import { DirectSignupsByStartTimes } from "./DirectSignupsByStartTimes";
 import { RaisedCard } from "client/components/RaisedCard";
 import {
+  EmptyContentContainer,
   MyProgramHeader,
   MyProgramSecondaryText,
+  ShowAllButton,
 } from "client/views/my-program-items/components/shared";
 import { DirectSignupWithProgramItem } from "client/views/my-program-items/myProgramItemsSlice";
 
 interface Props {
   directSignups: readonly DirectSignupWithProgramItem[];
+  showAllProgramItems: boolean;
+  setShowAllProgramItems: (showAllProgramItems: boolean) => void;
 }
 
-export const MyDirectSignupsList = ({ directSignups }: Props): ReactElement => {
+export const MyDirectSignupsList = ({
+  directSignups,
+  showAllProgramItems,
+  setShowAllProgramItems,
+}: Props): ReactElement => {
   const { t } = useTranslation();
 
   const [startTimes, setStartTimes] = useState<string[]>([]);
@@ -30,7 +38,20 @@ export const MyDirectSignupsList = ({ directSignups }: Props): ReactElement => {
     <RaisedCard data-testid="direct-signup-program-items-list">
       <MyProgramHeader>{t("directSignups")}</MyProgramHeader>
       {startTimes.length === 0 && (
-        <MyProgramSecondaryText>{t("noDirectSignups")}</MyProgramSecondaryText>
+        <EmptyContentContainer>
+          <MyProgramSecondaryText>
+            {showAllProgramItems
+              ? t("noDirectSignups")
+              : t("noFutureDirectSignups")}
+          </MyProgramSecondaryText>
+          {!showAllProgramItems && (
+            <ShowAllButton
+              onClick={() => setShowAllProgramItems(!showAllProgramItems)}
+            >
+              {t("showAllProgramItems")}
+            </ShowAllButton>
+          )}
+        </EmptyContentContainer>
       )}
 
       {startTimes.length > 0 && (

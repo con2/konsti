@@ -86,6 +86,8 @@ export const MyProgramItemsView = (): ReactElement => {
             ? favoriteProgramItems
             : getUpcomingFavorites(favoriteProgramItems)
         }
+        showAllProgramItems={showAllProgramItems}
+        setShowAllProgramItems={setShowAllProgramItems}
       />
       <MyDirectSignupsList
         directSignups={
@@ -93,6 +95,8 @@ export const MyProgramItemsView = (): ReactElement => {
             ? directSignups
             : getUpcomingDirectSignups(directSignups)
         }
+        showAllProgramItems={showAllProgramItems}
+        setShowAllProgramItems={setShowAllProgramItems}
       />
       {signupStrategy !== EventSignupStrategy.DIRECT && (
         <MyLotterySignupsList
@@ -105,6 +109,8 @@ export const MyProgramItemsView = (): ReactElement => {
           })}
           isGroupCreator={isGroupCreator}
           isGroupMember={isGroupMember}
+          showAllProgramItems={showAllProgramItems}
+          setShowAllProgramItems={setShowAllProgramItems}
         />
       )}
       <ScrollToTopButton />

@@ -5,8 +5,10 @@ import { LotterySignupsByStartTimes } from "./LotterySignupsByStartTimes";
 import { RaisedCard } from "client/components/RaisedCard";
 import { useAppSelector } from "client/utils/hooks";
 import {
+  EmptyContentContainer,
   MyProgramHeader,
   MyProgramSecondaryText,
+  ShowAllButton,
 } from "client/views/my-program-items/components/shared";
 import { selectGroupMembers } from "client/views/group/groupSlice";
 import { LotterySignupWithProgramItem } from "client/views/my-program-items/myProgramItemsSlice";
@@ -15,12 +17,16 @@ interface Props {
   lotterySignups: readonly LotterySignupWithProgramItem[];
   isGroupCreator: boolean;
   isGroupMember: boolean;
+  showAllProgramItems: boolean;
+  setShowAllProgramItems: (showAllProgramItems: boolean) => void;
 }
 
 export const MyLotterySignupsList = ({
   lotterySignups,
   isGroupCreator,
   isGroupMember,
+  showAllProgramItems,
+  setShowAllProgramItems,
 }: Props): ReactElement => {
   const { t } = useTranslation();
 
@@ -43,7 +49,20 @@ export const MyLotterySignupsList = ({
       )}
 
       {lotterySignups.length === 0 && (
-        <MyProgramSecondaryText>{t("noLotterySignups")}</MyProgramSecondaryText>
+        <EmptyContentContainer>
+          <MyProgramSecondaryText>
+            {showAllProgramItems
+              ? t("noLotterySignups")
+              : t("noFutureLotterySignups")}
+          </MyProgramSecondaryText>
+          {!showAllProgramItems && (
+            <ShowAllButton
+              onClick={() => setShowAllProgramItems(!showAllProgramItems)}
+            >
+              {t("showAllProgramItems")}
+            </ShowAllButton>
+          )}
+        </EmptyContentContainer>
       )}
       {lotterySignups.length > 0 && (
         <LotterySignupsByStartTimes lotterySignups={sortedLotterySignups} />
