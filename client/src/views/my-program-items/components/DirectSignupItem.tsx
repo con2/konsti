@@ -21,6 +21,7 @@ import { InfoText, InfoTextVariant } from "client/components/InfoText";
 import { AppRoute } from "client/app/AppRoutes";
 import { DirectSignupWithProgramItem } from "client/views/my-program-items/myProgramItemsSlice";
 import { isStartTimeChanged } from "shared/utils/isStartTimeChanged";
+import { SignupQuestionAnswer } from "client/components/SignUpQuestionAnswer";
 
 interface Props {
   signup: DirectSignupWithProgramItem;
@@ -33,7 +34,7 @@ export const DirectSignupItem = ({
 }: Props): ReactElement | null => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const signupQuestions = useAppSelector(
     (state) => state.admin.signupQuestions,
@@ -75,18 +76,10 @@ export const DirectSignupItem = ({
       </MyProgramGameTitle>
 
       {!!signupQuestion && (
-        <SignupQuestion>
-          <FontAwesomeIcon icon={["far", "comment"]} aria-hidden="true" />
-          {` ${t("myProgramView.yourAnswer")} "${
-            i18n.language === "fi"
-              ? signupQuestion.questionFi
-              : signupQuestion.questionEn
-          }"${
-            signupQuestion.private
-              ? ` (${t("privateOnlyVisibleToOrganizers")})`
-              : ""
-          }: ${signup.message}`}
-        </SignupQuestion>
+        <SignupQuestionAnswer
+          signupQuestion={signupQuestion}
+          signupMessage={signup.message}
+        />
       )}
 
       {isStartTimeChanged(
@@ -162,12 +155,6 @@ const StyledInfoText = styled(InfoText)`
 
 const StyledErrorMessage = styled(ErrorMessage)`
   margin: 4px 0 8px 0;
-`;
-
-const SignupQuestion = styled.p`
-  padding: 0;
-  margin: 8px 0 4px 0;
-  color: ${(props) => props.theme.textSecondary};
 `;
 
 const CancelSignupFormContainer = styled.div`
