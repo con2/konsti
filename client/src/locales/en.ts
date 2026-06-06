@@ -148,15 +148,16 @@ export const translationEN = {
   registrationSerialHelp:
     "You can get a registration code from the Larp & RPG Desk, the Gaming Desk or the Info.",
   noLotterySignups:
-    "No selected program items. You can sign up in the All Program view.",
+    "No no lottery sign-ups. You can sign up in the All Program view.",
+  noFutureLotterySignups:
+    "No no lottery sign-ups to future program. You can sign up in the All Program view.",
   noFavoriteProgramItems:
     "No favorites. You can add program items here in the All Program view.",
   noFutureFavoriteProgramItems:
     "No favorites in the future. You can add program items here in the All Program view.",
-  noDirectSignups:
-    "No sign-ups. You can sign up to program in the All Program view.",
+  noDirectSignups: "No sign-ups. You can sign up in the All Program view.",
   noFutureDirectSignups:
-    "No sign-ups in the future. You can sign up to program in the All Program view.",
+    "No sign-ups to future program. You can sign up in the All Program view.",
   showAllProgramItems: "Also show past program items",
   noHiddenProgramItems: "No hidden program items",
   noSignupQuestions: "No sign-up questions",

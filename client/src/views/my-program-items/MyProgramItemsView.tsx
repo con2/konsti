@@ -109,6 +109,8 @@ export const MyProgramItemsView = (): ReactElement => {
           })}
           isGroupCreator={isGroupCreator}
           isGroupMember={isGroupMember}
+          showAllProgramItems={showAllProgramItems}
+          setShowAllProgramItems={setShowAllProgramItems}
         />
       )}
       <ScrollToTopButton />

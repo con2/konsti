@@ -148,15 +148,17 @@ export const translationFI = {
   registrationSerialHelp:
     "Nouda rekisteröintikoodi Larp- ja Roolipelitiskiltä, Pelitiskiltä tai Infosta.",
   noLotterySignups:
-    "Ei valittuja ohjelmanumeroita. Voit ilmoittautua Kaikki ohjelma -näkymässä.",
+    "Ei arvontailmoittautumisia. Voit ilmoittautua Kaikki ohjelma -näkymässä.",
+  noFutureLotterySignups:
+    "Ei arvontailmoittautumisia tulevaan ohjelmaan. Voit ilmoittautua Kaikki ohjelma -näkymässä.",
   noFavoriteProgramItems:
     "Ei suosikkeja. Voit tallettaa suosikkeja Kaikki ohjelma -näkymässä.",
   noFutureFavoriteProgramItems:
     "Ei tulevia suosikkeja. Voit tallettaa suosikkeja Kaikki ohjelma -näkymässä.",
   noDirectSignups:
-    "Ei ilmoittautumisia. Voit ilmoittautua ohjelmaan Kaikki ohjelma -näkymässä.",
+    "Ei ilmoittautumisia. Voit ilmoittautua Kaikki ohjelma -näkymässä.",
   noFutureDirectSignups:
-    "Ei tulevia ilmoittautumisia. Voit ilmoittautua ohjelmaan Kaikki ohjelma -näkymässä.",
+    "Ei ilmoittautumisia tulevaan ohjelmaan. Voit ilmoittautua Kaikki ohjelma -näkymässä.",
   showAllProgramItems: "Näytä myös mennyt ohjelma",
   noHiddenProgramItems: "Ei piilotettuja ohjelmanumeroita",
   noSignupQuestions: "Ei ilmoittautumisten lisätietokysymystä",
