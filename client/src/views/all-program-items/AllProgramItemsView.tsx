@@ -107,15 +107,18 @@ export const AllProgramItemsView = (): ReactElement => {
 
     const programItemsFilteredBySearchTerm = activeVisibleProgramItems.filter(
       (activeProgramItem) => {
+        const cleanedSearchTerm = debouncedSearchTerm
+          .toLocaleLowerCase()
+          .trim();
         return (
           activeProgramItem.title
             .replaceAll(MULTIPLE_WHITESPACES_REGEX, " ")
             .toLocaleLowerCase()
-            .includes(debouncedSearchTerm.toLocaleLowerCase()) ||
+            .includes(cleanedSearchTerm) ||
           activeProgramItem.gameSystem
             .replaceAll(MULTIPLE_WHITESPACES_REGEX, " ")
             .toLocaleLowerCase()
-            .includes(debouncedSearchTerm.toLocaleLowerCase())
+            .includes(cleanedSearchTerm)
         );
       },
     );
