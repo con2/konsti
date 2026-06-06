@@ -19,6 +19,7 @@ import { getDirectSignupStartTime } from "shared/utils/signupTimes";
 import { InfoText } from "client/components/InfoText";
 import { AdmissionTicketLink } from "client/views/program-item/signup/components/AdmissionTicketLink";
 import { startLoading, stopLoading } from "client/state/loading/loadingSlice";
+import { SignupQuestionAnswer } from "client/components/SignUpQuestionAnswer";
 
 interface Props {
   programItem: ProgramItem;
@@ -46,6 +47,10 @@ export const ProgramItemDirectSignup = ({
 
   const directSignupForTimeslot = directSignups.find(
     (signup) => signup.programItem.startTime === programItem.startTime,
+  );
+
+  const signupQuestion = signupQuestions.find(
+    (question) => question.programItemId === programItem.programItemId,
   );
 
   const alreadySignedToProgramItem = isAlreadyDirectySigned(
@@ -147,6 +152,13 @@ export const ProgramItemDirectSignup = ({
             })}
           </InfoText>
 
+          {!!signupQuestion && (
+            <SignupQuestionAnswer
+              signupQuestion={signupQuestion}
+              signupMessage={directSignupForTimeslot?.message ?? ""}
+            />
+          )}
+
           {!cancelSignupFormOpen && (
             <ButtonContainer>
               <AdmissionTicketLink programItemId={programItem.programItemId} />
@@ -195,6 +207,7 @@ const ProgramItemFullText = styled.span`
 `;
 
 const ButtonContainer = styled.div`
+  padding-top: 8px;
   margin: 8px 0;
   display: flex;
   gap: 8px;
