@@ -8,49 +8,56 @@ import {
 } from "shared/utils/result";
 import {
   PostEventLogIsSeenRequest,
-  NewEventLogItems,
+  NewEventLogItem,
 } from "shared/types/api/eventLog";
 import { UserModel, UserSchemaDb } from "server/features/user/userSchema";
 import { logger } from "server/utils/logger";
 import { EventLogAction, EventLogItem } from "shared/types/models/eventLog";
 
 export const addEventLogItems = async (
-  eventLogRequest: NewEventLogItems,
+  newEventLogItems: NewEventLogItem[],
 ): Promise<Result<void, MongoDbError>> => {
-  const { updates, action } = eventLogRequest;
-
-  const bulkOps: AnyBulkWriteOperation[] = updates.map((update) => {
-    return {
-      updateOne: {
-        filter: {
-          username: update.username,
-        },
-        update: {
-          $addToSet: {
-            eventLogItems: {
-              action,
-              programItemId: update.programItemId,
-              programItemStartTime: new Date(update.programItemStartTime),
-              isSeen: false,
-              createdAt: new Date(update.createdAt),
+  const bulkOps: AnyBulkWriteOperation[] = newEventLogItems.map(
+    (newEventLogItem) => {
+      return {
+        updateOne: {
+          filter: {
+            username: newEventLogItem.username,
+          },
+          update: {
+            $addToSet: {
+              eventLogItems: {
+                action: newEventLogItem.action,
+                programItemId: newEventLogItem.programItemId,
+                programItemStartTime: new Date(
+                  newEventLogItem.programItemStartTime,
+                ),
+                isSeen: false,
+                createdAt: new Date(newEventLogItem.createdAt),
+              },
             },
           },
         },
-      },
-    };
-  });
+      };
+    },
+  );
 
-  const usernames = updates.map((update) => update.username);
+  const usernames = unique(
+    newEventLogItems.map((newEventLogItem) => newEventLogItem.username),
+  );
+  const actions = unique(
+    newEventLogItems.map((newEventLogItem) => newEventLogItem.action),
+  );
 
   try {
     await UserModel.bulkWrite(bulkOps);
     logger.info(
-      `MongoDB: Action log item ${action} added for ${unique(usernames).length} users: ${String(unique(usernames))}`,
+      `MongoDB: Added ${newEventLogItems.length} event log items (${String(actions)}) for ${usernames.length} users: ${String(usernames)}`,
     );
     return makeSuccessResult();
   } catch (error) {
     logger.error(
-      `MongoDB: Error adding event log item ${action} for ${unique(usernames).length} users ${String(unique(usernames))}: %s`,
+      `MongoDB: Error adding ${newEventLogItems.length} event log items (${String(actions)}) for ${usernames.length} users ${String(usernames)}: %s`,
       error,
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);

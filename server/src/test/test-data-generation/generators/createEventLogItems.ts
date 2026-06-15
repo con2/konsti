@@ -27,13 +27,11 @@ export const createEventLogItems = async (): Promise<void> => {
       programItemId: randomProgramItem.programItemId,
       programItemStartTime: randomProgramItem.startTime,
       createdAt: createdAtTimes[index].toISOString(),
+      action: EventLogAction.NEW_ASSIGNMENT,
     }));
   });
 
-  await addEventLogItems({
-    updates: newAssignmentEventLogUpdates,
-    action: EventLogAction.NEW_ASSIGNMENT,
-  });
+  await addEventLogItems(newAssignmentEventLogUpdates);
 
   const noAssignmentEventLogUpdates = users.flatMap((user) => {
     const randomProgramItems = sample(twoPhaseSignups, 2);
@@ -43,13 +41,11 @@ export const createEventLogItems = async (): Promise<void> => {
       programItemId: "",
       programItemStartTime: randomProgramItem.startTime,
       createdAt: createdAtTimes[index].toISOString(),
+      action: EventLogAction.NO_ASSIGNMENT,
     }));
   });
 
-  await addEventLogItems({
-    updates: noAssignmentEventLogUpdates,
-    action: EventLogAction.NO_ASSIGNMENT,
-  });
+  await addEventLogItems(noAssignmentEventLogUpdates);
 };
 
 const createdAtTimes = [

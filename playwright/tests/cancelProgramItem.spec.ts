@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test, expect, APIRequestContext } from "@playwright/test";
 import dayjs from "dayjs";
 import {
   postSettings,
@@ -10,32 +10,30 @@ import {
 } from "playwright/playwrightUtils";
 import { config } from "shared/config";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
+import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { testProgramItem } from "shared/tests/testProgramItem";
-import { SignupType, State } from "shared/types/models/programItem";
+import {
+  ProgramType,
+  SignupType,
+  State,
+} from "shared/types/models/programItem";
 
 test("Show event log notification when program item with direct signup is cancelled", async ({
   page,
   request,
 }) => {
-  await clearDb(request);
-  await populateDb(request, {
-    clean: true,
-    users: true,
-    admin: true,
-  });
+  await initDb(request);
+  const startTime = getStartTime("direct");
+  const endTime = getEndTime(startTime);
+
   await addProgramItems(request, [
     {
       ...testProgramItem,
-      startTime: dayjs(config.event().eventStartTime)
-        .add(1, "hour")
-        .startOf("hour")
-        .toISOString(),
+      startTime,
+      endTime,
     },
   ]);
 
-  await postTestSettings(request, {
-    testTime: config.event().eventStartTime,
-  });
   await login(page, request, { username: "test1", password: "test" });
 
   await page.goto("/");
@@ -65,11 +63,9 @@ test("Show event log notification when program item with direct signup is cancel
   await addProgramItems(request, [
     {
       ...testProgramItem,
-      startTime: dayjs(config.event().eventStartTime)
-        .add(1, "hour")
-        .startOf("hour")
-        .toISOString(),
       state: State.CANCELLED,
+      startTime,
+      endTime,
     },
   ]);
 
@@ -89,20 +85,10 @@ test("Show event log notification when program item with lottery signup is cance
   page,
   request,
 }) => {
-  const startTime = dayjs(config.event().eventStartTime)
-    .add(3, "hour")
-    .startOf("hour")
-    .toISOString();
-  const endTime = dayjs(startTime)
-    .add(testProgramItem.mins, "minutes")
-    .toISOString();
+  await initDb(request);
+  const startTime = getStartTime("lottery");
+  const endTime = getEndTime(startTime);
 
-  await clearDb(request);
-  await populateDb(request, {
-    clean: true,
-    users: true,
-    admin: true,
-  });
   await addProgramItems(request, [
     {
       ...testProgramItem,
@@ -114,9 +100,6 @@ test("Show event log notification when program item with lottery signup is cance
 
   await postSettings(request, {
     signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
-  });
-  await postTestSettings(request, {
-    testTime: config.event().eventStartTime,
   });
   await login(page, request, { username: "test1", password: "test" });
 
@@ -138,10 +121,10 @@ test("Show event log notification when program item with lottery signup is cance
   await addProgramItems(request, [
     {
       ...testProgramItem,
+      state: State.CANCELLED,
       programType: config.event().twoPhaseSignupProgramTypes[0],
       startTime,
       endTime,
-      state: State.CANCELLED,
     },
   ]);
 
@@ -157,109 +140,22 @@ test("Show event log notification when program item with lottery signup is cance
   );
 });
 
-test("Don't show event log notification when program item with lottery signup is cancelled after its lottery has run", async ({
-  page,
-  request,
-}) => {
-  const startTime = dayjs(config.event().eventStartTime)
-    .add(3, "hour")
-    .startOf("hour")
-    .toISOString();
-  const endTime = dayjs(startTime)
-    .add(testProgramItem.mins, "minutes")
-    .toISOString();
-
-  await clearDb(request);
-  await populateDb(request, {
-    clean: true,
-    users: true,
-    admin: true,
-  });
-  await addProgramItems(request, [
-    {
-      ...testProgramItem,
-      programType: config.event().twoPhaseSignupProgramTypes[0],
-      startTime,
-      endTime,
-    },
-  ]);
-
-  await postSettings(request, {
-    signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
-  });
-  await postTestSettings(request, {
-    testTime: config.event().eventStartTime,
-  });
-  await login(page, request, { username: "test1", password: "test" });
-
-  await page.goto("/");
-  await page.click("data-testid=program-list-tab");
-
-  // Lottery signup to first program item
-  await page.waitForSelector("data-testid=program-item-container");
-  const firstProgramItem = page.locator(
-    "data-testid=program-item-container >> nth=0",
-  );
-
-  await firstProgramItem
-    .getByRole("button", { name: /lottery sign-up/i })
-    .click();
-  await firstProgramItem.getByRole("button", { name: /confirm/i }).click();
-
-  // Advance time past lottery signup end so lottery is considered "run"
-  await postTestSettings(request, {
-    testTime: dayjs(startTime).subtract(1, "hour").toISOString(),
-  });
-
-  // Cancel program item on background after lottery has run
-  await addProgramItems(request, [
-    {
-      ...testProgramItem,
-      programType: config.event().twoPhaseSignupProgramTypes[0],
-      startTime,
-      endTime,
-      state: State.CANCELLED,
-    },
-  ]);
-
-  await page.reload();
-
-  // No cancellation notification should appear
-  await expect(page.getByTestId("notification-bar")).toHaveCount(0);
-
-  // Lottery signup is preserved as history in My Program
-  await page.click("data-testid=my-program-tab");
-  const lotterySignupProgramItems = page.locator(
-    "data-testid=lottery-signup-program-items-list",
-  );
-  await expect(
-    lotterySignupProgramItems.getByTestId("program-item-title"),
-  ).toContainText("Test program item");
-});
-
 test("Show event log notification when program item with direct signup doesn't use Konsti anymore", async ({
   page,
   request,
 }) => {
-  await clearDb(request);
-  await populateDb(request, {
-    clean: true,
-    users: true,
-    admin: true,
-  });
+  await initDb(request);
+  const startTime = getStartTime("direct");
+  const endTime = getEndTime(startTime);
+
   await addProgramItems(request, [
     {
       ...testProgramItem,
-      startTime: dayjs(config.event().eventStartTime)
-        .add(1, "hour")
-        .startOf("hour")
-        .toISOString(),
+      startTime,
+      endTime,
     },
   ]);
 
-  await postTestSettings(request, {
-    testTime: config.event().eventStartTime,
-  });
   await login(page, request, { username: "test1", password: "test" });
 
   await page.goto("/");
@@ -289,23 +185,80 @@ test("Show event log notification when program item with direct signup doesn't u
   await addProgramItems(request, [
     {
       ...testProgramItem,
-      startTime: dayjs(config.event().eventStartTime)
-        .add(1, "hour")
-        .startOf("hour")
-        .toISOString(),
       signupType: SignupType.OTHER,
+      startTime,
+      endTime,
     },
   ]);
 
   await page.reload();
 
   await expect(page.getByTestId("notification-bar")).toContainText(
-    "Roleplaying game cancelled: Test program item",
+    "Roleplaying game signup is no longer in Konsti: Test program item",
   );
 
   await page.getByRole("link", { name: "Show all notifications" }).click();
   await expect(page.getByTestId("event-log-item")).toContainText(
-    "Roleplaying game cancelled: Test program item",
+    "Roleplaying game signup is no longer in Konsti: Test program item",
+  );
+});
+
+test("Show event log notification when program item with lottery signup doesn't use Konsti anymore before its lottery has run", async ({
+  page,
+  request,
+}) => {
+  await initDb(request);
+  const startTime = getStartTime("lottery");
+  const endTime = getEndTime(startTime);
+
+  await addProgramItems(request, [
+    {
+      ...testProgramItem,
+      programType: config.event().twoPhaseSignupProgramTypes[0],
+      startTime,
+      endTime,
+    },
+  ]);
+
+  await postSettings(request, {
+    signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
+  });
+  await login(page, request, { username: "test1", password: "test" });
+
+  await page.goto("/");
+  await page.click("data-testid=program-list-tab");
+
+  // Lottery signup to first program item
+  await page.waitForSelector("data-testid=program-item-container");
+  const firstProgramItem = page.locator(
+    "data-testid=program-item-container >> nth=0",
+  );
+
+  await firstProgramItem
+    .getByRole("button", { name: /lottery sign-up/i })
+    .click();
+  await firstProgramItem.getByRole("button", { name: /confirm/i }).click();
+
+  // Change signup type away from Konsti on background before lottery has run
+  await addProgramItems(request, [
+    {
+      ...testProgramItem,
+      signupType: SignupType.OTHER,
+      programType: config.event().twoPhaseSignupProgramTypes[0],
+      startTime,
+      endTime,
+    },
+  ]);
+
+  await page.reload();
+
+  await expect(page.getByTestId("notification-bar")).toContainText(
+    "Roleplaying game signup is no longer in Konsti: Test program item",
+  );
+
+  await page.getByRole("link", { name: "Show all notifications" }).click();
+  await expect(page.getByTestId("event-log-item")).toContainText(
+    "Roleplaying game signup is no longer in Konsti: Test program item",
   );
 });
 
@@ -313,25 +266,18 @@ test("Show event log notification when program item with direct signup is comple
   page,
   request,
 }) => {
-  await clearDb(request);
-  await populateDb(request, {
-    clean: true,
-    users: true,
-    admin: true,
-  });
+  await initDb(request);
+  const startTime = getStartTime("direct");
+  const endTime = getEndTime(startTime);
+
   await addProgramItems(request, [
     {
       ...testProgramItem,
-      startTime: dayjs(config.event().eventStartTime)
-        .add(1, "hour")
-        .startOf("hour")
-        .toISOString(),
+      startTime,
+      endTime,
     },
   ]);
 
-  await postTestSettings(request, {
-    testTime: config.event().eventStartTime,
-  });
   await login(page, request, { username: "test1", password: "test" });
 
   await page.goto("/");
@@ -362,26 +308,21 @@ test("Show event log notification when program item with direct signup is comple
   await expect(page.getByTestId("notification-bar")).toContainText(
     "Program item cancelled: test-program-item",
   );
+
+  await page.getByRole("link", { name: "Show all notifications" }).click();
+  await expect(page.getByTestId("event-log-item")).toContainText(
+    "Program item cancelled: test-program-item",
+  );
 });
 
-test("Show event log notification and remove lottery signup when program item is completely deleted after its lottery has run", async ({
+test("Show event log notification when program item with lottery signup is completely deleted before its lottery has run", async ({
   page,
   request,
 }) => {
-  const startTime = dayjs(config.event().eventStartTime)
-    .add(3, "hour")
-    .startOf("hour")
-    .toISOString();
-  const endTime = dayjs(startTime)
-    .add(testProgramItem.mins, "minutes")
-    .toISOString();
+  await initDb(request);
+  const startTime = getStartTime("lottery");
+  const endTime = getEndTime(startTime);
 
-  await clearDb(request);
-  await populateDb(request, {
-    clean: true,
-    users: true,
-    admin: true,
-  });
   await addProgramItems(request, [
     {
       ...testProgramItem,
@@ -394,8 +335,55 @@ test("Show event log notification and remove lottery signup when program item is
   await postSettings(request, {
     signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
   });
-  await postTestSettings(request, {
-    testTime: config.event().eventStartTime,
+  await login(page, request, { username: "test1", password: "test" });
+
+  await page.goto("/");
+  await page.click("data-testid=program-list-tab");
+
+  await page.waitForSelector("data-testid=program-item-container");
+  const firstProgramItem = page.locator(
+    "data-testid=program-item-container >> nth=0",
+  );
+
+  await firstProgramItem
+    .getByRole("button", { name: /lottery sign-up/i })
+    .click();
+  await firstProgramItem.getByRole("button", { name: /confirm/i }).click();
+
+  // Delete program item on background (empty import removes it from DB)
+  await addProgramItems(request, []);
+
+  await page.reload();
+
+  await expect(page.getByTestId("notification-bar")).toContainText(
+    "Program item cancelled: test-program-item",
+  );
+
+  await page.getByRole("link", { name: "Show all notifications" }).click();
+  await expect(page.getByTestId("event-log-item")).toContainText(
+    "Program item cancelled: test-program-item",
+  );
+});
+
+test("Show event log notification when program item with lottery signup is completely deleted after its lottery has run", async ({
+  page,
+  request,
+}) => {
+  await initDb(request);
+  const startTime = getStartTime("lottery");
+  const endTime = getEndTime(startTime);
+
+  await addProgramItems(request, [
+    {
+      ...testProgramItem,
+      programType: config.event().twoPhaseSignupProgramTypes[0],
+      startTime,
+      endTime,
+    },
+  ]);
+
+  await postSettings(request, {
+    signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
   });
   await login(page, request, { username: "test1", password: "test" });
 
@@ -422,8 +410,150 @@ test("Show event log notification and remove lottery signup when program item is
 
   await page.reload();
 
-  // Deletion bypasses the preservation rule — notification still appears
   await expect(page.getByTestId("notification-bar")).toContainText(
     "Program item cancelled: test-program-item",
   );
+
+  await page.getByRole("link", { name: "Show all notifications" }).click();
+  await expect(page.getByTestId("event-log-item")).toContainText(
+    "Program item cancelled: test-program-item",
+  );
 });
+
+test("Show event log notification when program item with lottery signup changes to a non-lottery program type before its lottery has run", async ({
+  page,
+  request,
+}) => {
+  await initDb(request);
+  const startTime = getStartTime("lottery");
+  const endTime = getEndTime(startTime);
+
+  await addProgramItems(request, [
+    {
+      ...testProgramItem,
+      programType: config.event().twoPhaseSignupProgramTypes[0],
+      startTime,
+      endTime,
+    },
+  ]);
+
+  await postSettings(request, {
+    signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
+  });
+  await login(page, request, { username: "test1", password: "test" });
+
+  await page.goto("/");
+  await page.click("data-testid=program-list-tab");
+
+  // Lottery signup to first program item
+  await page.waitForSelector("data-testid=program-item-container");
+  const firstProgramItem = page.locator(
+    "data-testid=program-item-container >> nth=0",
+  );
+
+  await firstProgramItem
+    .getByRole("button", { name: /lottery sign-up/i })
+    .click();
+  await firstProgramItem.getByRole("button", { name: /confirm/i }).click();
+
+  // Change program type to a non-lottery type on background before lottery has run
+  await addProgramItems(request, [
+    {
+      ...testProgramItem,
+      programType: ProgramType.OTHER,
+      startTime,
+      endTime,
+    },
+  ]);
+
+  await page.reload();
+
+  await expect(page.getByTestId("notification-bar")).toContainText(
+    "Program item no longer uses lottery signup: Test program item",
+  );
+
+  await page.getByRole("link", { name: "Show all notifications" }).click();
+  await expect(page.getByTestId("event-log-item")).toContainText(
+    "Program item no longer uses lottery signup: Test program item",
+  );
+});
+
+test("Show event log notification when a favorited program item is completely deleted", async ({
+  page,
+  request,
+}) => {
+  await initDb(request);
+  const startTime = getStartTime("direct");
+  const endTime = getEndTime(startTime);
+
+  await addProgramItems(request, [
+    {
+      ...testProgramItem,
+      startTime,
+      endTime,
+    },
+  ]);
+
+  await login(page, request, { username: "test1", password: "test" });
+
+  await page.goto("/");
+
+  // Navigate to program list tab and select RPG program type
+  await page.click("data-testid=program-list-tab");
+  await page
+    .getByRole("combobox", {
+      name: /program type/i,
+    })
+    .selectOption("Tabletop RPG");
+
+  // Favorite first program item (no signup) and wait for it to persist
+  await page.waitForSelector("data-testid=program-item-container");
+  const firstProgramItem = page.locator(
+    "data-testid=program-item-container >> nth=0",
+  );
+
+  const favoriteResponse = page.waitForResponse(
+    (response) =>
+      response.url().includes(ApiEndpoint.FAVORITE) &&
+      response.request().method() === "POST",
+  );
+  await firstProgramItem.locator("data-testid=add-favorite-button").click();
+  await favoriteResponse;
+
+  // Delete program item on background (empty import removes it from DB)
+  await addProgramItems(request, []);
+
+  await page.reload();
+
+  await expect(page.getByTestId("notification-bar")).toContainText(
+    "Program item cancelled: test-program-item",
+  );
+
+  await page.getByRole("link", { name: "Show all notifications" }).click();
+  await expect(page.getByTestId("event-log-item")).toContainText(
+    "Program item cancelled: test-program-item",
+  );
+});
+
+const initDb = async (request: APIRequestContext): Promise<void> => {
+  await clearDb(request);
+  await populateDb(request, {
+    clean: true,
+    users: true,
+    admin: true,
+  });
+  await postTestSettings(request, {
+    testTime: config.event().eventStartTime,
+  });
+};
+
+const getStartTime = (type: "lottery" | "direct"): string => {
+  return dayjs(config.event().eventStartTime)
+    .add(type === "direct" ? 1 : 3, "hour") // -> direct signup
+    .startOf("hour")
+    .toISOString();
+};
+
+const getEndTime = (startTime: string): string => {
+  return dayjs(startTime).add(testProgramItem.mins, "minutes").toISOString();
+};

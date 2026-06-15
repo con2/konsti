@@ -31,7 +31,7 @@ const assertContainerStillRunning = async (): Promise<void> => {
   }
   const exitCode = inspect("{{.State.ExitCode}}") ?? "unknown";
   logger.error(
-    `MongoDB container ${containerName} exited shortly after start (exit code ${exitCode}). Last logs:`,
+    `Docker: MongoDB container ${containerName} exited shortly after start (exit code ${exitCode}). Last logs:`,
   );
   try {
     execSync(`docker logs --tail 20 ${containerName}`, { stdio: "inherit" });
@@ -43,14 +43,16 @@ const assertContainerStillRunning = async (): Promise<void> => {
 };
 
 const main = async (): Promise<void> => {
-  logger.info(`Start new container ${containerName} or connect to existing`);
+  logger.info(
+    `Docker: Start new container ${containerName} or connect to existing`,
+  );
   if (isMongoContainerRunning()) {
-    logger.info("MongoDB container is already running, connecting...");
+    logger.info("Docker: MongoDB container is already running, connecting...");
   } else if (doesMongoContainerExist()) {
-    logger.info("Starting existing MongoDB container...");
+    logger.info("Docker: Starting existing MongoDB container...");
     execSync(`docker start ${containerName}`, { stdio: "inherit" });
   } else {
-    logger.info("Running new MongoDB container...");
+    logger.info("Docker: Running new MongoDB container...");
     execSync(
       `docker run -p 27017:27017 -d --name ${containerName} mongo:${mongoDbVersion}-noble`,
       {
@@ -62,7 +64,7 @@ const main = async (): Promise<void> => {
 };
 
 main().catch((error: unknown) => {
-  logger.error("Failed to start MongoDB container: %s", error);
+  logger.error("Docker: Failed to start MongoDB container: %s", error);
   // eslint-disable-next-line unicorn/no-process-exit
   process.exit(1);
 });

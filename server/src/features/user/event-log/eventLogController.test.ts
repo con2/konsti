@@ -96,17 +96,15 @@ describe(`POST ${ApiEndpoint.EVENT_LOG_IS_SEEN}`, () => {
 
   test("should return success when event log marked as seen", async () => {
     await saveUser(mockUser);
-    await addEventLogItems({
-      updates: [
-        {
-          username: mockUser.username,
-          programItemId: "123",
-          programItemStartTime: dayjs().toISOString(),
-          createdAt: dayjs().toISOString(),
-        },
-      ],
-      action: EventLogAction.NEW_ASSIGNMENT,
-    });
+    await addEventLogItems([
+      {
+        username: mockUser.username,
+        programItemId: "123",
+        programItemStartTime: dayjs().toISOString(),
+        createdAt: dayjs().toISOString(),
+        action: EventLogAction.NEW_ASSIGNMENT,
+      },
+    ]);
 
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- Fine in test
     const user = unsafelyUnwrap(await findUser(mockUser.username))!;

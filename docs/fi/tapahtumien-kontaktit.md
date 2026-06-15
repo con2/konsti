@@ -12,7 +12,7 @@
   - Pöytäroolipeliconiitti (ohjelmanumerot, larp-ropetiskin vapaaehtoisten Konsti-koulutukset)
   - Larp-coniitti (ohjelmanumerot, larp-ropetiskin vapaaehtoisten Konsti-koulutukset)
   - Turnausconiitti (ohjelmanumerot)
-  - Figupeliconiitti (ohjelmanumerot)
+  - Figuconiitti (ohjelmanumerot)
   - Kokemuspiste-coniitti (ohjelmanumerot)
 - Puheohjelma
   - Puheohjelmaconiitti (puheohjelman iso kuva)

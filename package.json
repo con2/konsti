@@ -14,8 +14,8 @@
     "build-front:staging": "yarn workspace client build:staging && yarn copy-front",
     "client": "yarn workspace client start",
     "copy-front": "rimraf server/front && ncp client/build server/front",
-    "playwright": "yarn docker:db && npm-run-all --parallel server:test client playwright:install",
-    "playwright:install": "npx playwright install && npx playwright test --ui --config ./playwright/",
+    "playwright": "yarn docker:db && npm-run-all --parallel server:test client playwright:start",
+    "playwright:start": "npx playwright install && npx playwright test --ui --config ./playwright/",
     "playwright:trace": "npx playwright show-trace trace.zip",
     "playwright:debug": "PWDEBUG=1 npx playwright test --config ./playwright/",
     "docker-compose:start": "APP_SETTINGS=dev docker buildx build . --file Dockerfile --build-arg env=dev --tag server --load && APP_SETTINGS=dev docker compose -f ./docker/docker-compose.yml up --detach --remove-orphans",
@@ -50,10 +50,11 @@
     "test:watch": "yarn vitest watch",
     "knip": "knip --cache",
     "test": "yarn vitest run",
-    "type-check": "npm-run-all --parallel type-check:client type-check:server type-check:hooks",
+    "type-check": "npm-run-all --parallel type-check:client type-check:server type-check:hooks type-check:playwright",
     "type-check:client": "tsc -p client --noEmit",
     "type-check:server": "tsc -p server --noEmit",
     "type-check:hooks": "tsc -p .claude/hooks --noEmit",
+    "type-check:playwright": "tsc -p playwright --noEmit",
     "update-yarn": "yarn set version stable"
   },
   "dependencies": {

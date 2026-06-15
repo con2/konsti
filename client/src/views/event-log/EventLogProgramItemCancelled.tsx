@@ -2,7 +2,7 @@ import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router";
 import { capitalize } from "remeda";
-import { EventLogItem } from "shared/types/models/eventLog";
+import { EventLogAction, EventLogItem } from "shared/types/models/eventLog";
 import { useAppSelector } from "client/utils/hooks";
 import { AppRoute } from "client/app/AppRoutes";
 
@@ -23,14 +23,33 @@ export const EventLogProgramItemCancelled = ({
     (p) => p.programItemId === eventLogItem.programItemId,
   );
 
+  const programType = programItem?.programType ?? "other";
+  const programTypeSingular = capitalize(
+    t(`programTypeSingular.${programType}`),
+  );
+  const programTypeGenetive = capitalize(
+    t(`programTypeGenetive.${programType}`),
+  );
+
+  const messageByAction: Partial<Record<EventLogAction, string>> = {
+    [EventLogAction.PROGRAM_ITEM_CANCELLED]: t(
+      "eventLogActions.programItemCancelled",
+      { PROGRAM_TYPE: programTypeSingular },
+    ),
+    [EventLogAction.PROGRAM_ITEM_NO_KONSTI_SIGNUP_ANYMORE]: t(
+      "eventLogActions.programItemNoKonstiSignupAnymore",
+      { PROGRAM_TYPE: programTypeGenetive },
+    ),
+    [EventLogAction.PROGRAM_ITEM_NO_LOTTERY_ANYMORE]: t(
+      "eventLogActions.programItemNoLotteryAnymore",
+      { PROGRAM_TYPE: programTypeSingular },
+    ),
+  };
+
   return (
     <div>
       <span>
-        {t("eventLogActions.programItemCancelled", {
-          PROGRAM_TYPE: capitalize(
-            t(`programTypeSingular.${programItem?.programType ?? "other"}`),
-          ),
-        })}{" "}
+        {messageByAction[eventLogItem.action]}{" "}
         {programItem ? (
           <Link to={`${AppRoute.PROGRAM_ITEM}/${eventLogItem.programItemId}`}>
             {programItem.title}

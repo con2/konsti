@@ -153,15 +153,15 @@ export const saveUserSignupResults = async ({
       : results;
 
   // Add NEW_ASSIGNMENT to user event logs
-  const newAssignmentEventLogItemsResult = await addEventLogItems({
-    updates: finalResults.map((result) => ({
+  const newAssignmentEventLogItemsResult = await addEventLogItems(
+    finalResults.map((result) => ({
       username: result.username,
       programItemId: result.assignmentSignup.programItemId,
       programItemStartTime: assignmentTime,
       createdAt: dayjs().toISOString(),
+      action: EventLogAction.NEW_ASSIGNMENT,
     })),
-    action: EventLogAction.NEW_ASSIGNMENT,
-  });
+  );
   if (!newAssignmentEventLogItemsResult.ok) {
     return newAssignmentEventLogItemsResult;
   }
@@ -237,17 +237,17 @@ export const saveUserSignupResults = async ({
 
   // Add NO_ASSIGNMENT to user event logs
   if (noAssignmentLotterySignupUsernames.length > 0) {
-    const noAssignmentEventLogItemsResult = await addEventLogItems({
-      updates: noAssignmentLotterySignupUsernames.map(
+    const noAssignmentEventLogItemsResult = await addEventLogItems(
+      noAssignmentLotterySignupUsernames.map(
         (noAssignmentLotterySignupUsername) => ({
           username: noAssignmentLotterySignupUsername,
           programItemId: "",
           programItemStartTime: assignmentTime,
           createdAt: dayjs().toISOString(),
+          action: EventLogAction.NO_ASSIGNMENT,
         }),
       ),
-      action: EventLogAction.NO_ASSIGNMENT,
-    });
+    );
     if (!noAssignmentEventLogItemsResult.ok) {
       return noAssignmentEventLogItemsResult;
     }

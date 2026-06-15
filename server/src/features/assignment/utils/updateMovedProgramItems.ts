@@ -110,14 +110,12 @@ const removeMovedLotterySignupsAndNotify = async (
         programItemId,
         programItemStartTime: movedProgramItem.startTime,
         createdAt: dayjs().toISOString(),
+        action: EventLogAction.PROGRAM_ITEM_MOVED,
       };
     });
   });
 
-  const addEventLogItemsResult = await addEventLogItems({
-    action: EventLogAction.PROGRAM_ITEM_MOVED,
-    updates: eventUpdates,
-  });
+  const addEventLogItemsResult = await addEventLogItems(eventUpdates);
   if (!addEventLogItemsResult.ok) {
     return addEventLogItemsResult;
   }
@@ -159,14 +157,12 @@ const notifyUsersWithDirectSignups = async (
         programItemId: directSignup.programItemId,
         programItemStartTime: movedProgramItem.startTime,
         createdAt: dayjs().toISOString(),
+        action: EventLogAction.PROGRAM_ITEM_MOVED,
       };
     });
   });
 
-  const addEventLogItemsResult = await addEventLogItems({
-    action: EventLogAction.PROGRAM_ITEM_MOVED,
-    updates: userUpdates,
-  });
+  const addEventLogItemsResult = await addEventLogItems(userUpdates);
   if (!addEventLogItemsResult.ok) {
     return addEventLogItemsResult;
   }
