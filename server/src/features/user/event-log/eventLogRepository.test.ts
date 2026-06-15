@@ -32,41 +32,39 @@ test("should insert new event log items to user", async () => {
   await saveUser(mockUser2);
   await saveUser(mockUser3);
 
-  await addEventLogItems({
-    updates: [
-      {
-        username: mockUser.username,
-        programItemId: testProgramItem.programItemId,
-        programItemStartTime: testProgramItem.startTime,
-        createdAt: "2019-07-26T17:00:00.000Z",
-      },
-      {
-        username: mockUser2.username,
-        programItemId: testProgramItem.programItemId,
-        programItemStartTime: testProgramItem.startTime,
-        createdAt: "2020-07-26T17:00:00.000Z",
-      },
-    ],
-    action: EventLogAction.NEW_ASSIGNMENT,
-  });
+  await addEventLogItems([
+    {
+      username: mockUser.username,
+      programItemId: testProgramItem.programItemId,
+      programItemStartTime: testProgramItem.startTime,
+      createdAt: "2019-07-26T17:00:00.000Z",
+      action: EventLogAction.NEW_ASSIGNMENT,
+    },
+    {
+      username: mockUser2.username,
+      programItemId: testProgramItem.programItemId,
+      programItemStartTime: testProgramItem.startTime,
+      createdAt: "2020-07-26T17:00:00.000Z",
+      action: EventLogAction.NEW_ASSIGNMENT,
+    },
+  ]);
 
-  await addEventLogItems({
-    updates: [
-      {
-        username: mockUser.username,
-        programItemId: "",
-        programItemStartTime: testProgramItem.startTime,
-        createdAt: "2019-07-26T17:00:00.000Z",
-      },
-      {
-        username: mockUser2.username,
-        programItemId: "",
-        programItemStartTime: testProgramItem.startTime,
-        createdAt: "2020-07-26T17:00:00.000Z",
-      },
-    ],
-    action: EventLogAction.NO_ASSIGNMENT,
-  });
+  await addEventLogItems([
+    {
+      username: mockUser.username,
+      programItemId: "",
+      programItemStartTime: testProgramItem.startTime,
+      createdAt: "2019-07-26T17:00:00.000Z",
+      action: EventLogAction.NO_ASSIGNMENT,
+    },
+    {
+      username: mockUser2.username,
+      programItemId: "",
+      programItemStartTime: testProgramItem.startTime,
+      createdAt: "2020-07-26T17:00:00.000Z",
+      action: EventLogAction.NO_ASSIGNMENT,
+    },
+  ]);
 
   const updatedUser = unsafelyUnwrap(await findUser(mockUser.username));
 
@@ -122,41 +120,39 @@ test("should delete event log items for start time", async () => {
   await saveProgramItems([testProgramItem, testProgramItem2]);
   await saveUser(mockUser);
 
-  await addEventLogItems({
-    updates: [
-      {
-        username: mockUser.username,
-        programItemId: testProgramItem.programItemId,
-        programItemStartTime: testProgramItem.startTime,
-        createdAt: "2019-07-26T17:00:00.000Z",
-      },
-      {
-        username: mockUser.username,
-        programItemId: testProgramItem2.programItemId,
-        programItemStartTime: testProgramItem2.startTime,
-        createdAt: "2020-07-26T17:00:00.000Z",
-      },
-    ],
-    action: EventLogAction.NEW_ASSIGNMENT,
-  });
+  await addEventLogItems([
+    {
+      username: mockUser.username,
+      programItemId: testProgramItem.programItemId,
+      programItemStartTime: testProgramItem.startTime,
+      createdAt: "2019-07-26T17:00:00.000Z",
+      action: EventLogAction.NEW_ASSIGNMENT,
+    },
+    {
+      username: mockUser.username,
+      programItemId: testProgramItem2.programItemId,
+      programItemStartTime: testProgramItem2.startTime,
+      createdAt: "2020-07-26T17:00:00.000Z",
+      action: EventLogAction.NEW_ASSIGNMENT,
+    },
+  ]);
 
-  await addEventLogItems({
-    updates: [
-      {
-        username: mockUser.username,
-        programItemId: "",
-        programItemStartTime: testProgramItem.startTime,
-        createdAt: "2019-07-26T17:00:00.000Z",
-      },
-      {
-        username: mockUser.username,
-        programItemId: "",
-        programItemStartTime: testProgramItem2.startTime,
-        createdAt: "2020-07-26T17:00:00.000Z",
-      },
-    ],
-    action: EventLogAction.NO_ASSIGNMENT,
-  });
+  await addEventLogItems([
+    {
+      username: mockUser.username,
+      programItemId: "",
+      programItemStartTime: testProgramItem.startTime,
+      createdAt: "2019-07-26T17:00:00.000Z",
+      action: EventLogAction.NO_ASSIGNMENT,
+    },
+    {
+      username: mockUser.username,
+      programItemId: "",
+      programItemStartTime: testProgramItem2.startTime,
+      createdAt: "2020-07-26T17:00:00.000Z",
+      action: EventLogAction.NO_ASSIGNMENT,
+    },
+  ]);
 
   await deleteEventLogItemsByStartTime(testProgramItem.startTime, [
     EventLogAction.NEW_ASSIGNMENT,

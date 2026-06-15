@@ -4,15 +4,11 @@ import { ApiError, ApiResult } from "shared/types/api/errors";
 
 // New event log items
 
-interface NewEventLogItem {
+export interface NewEventLogItem {
   username: string;
   programItemId: string;
   programItemStartTime: string;
   createdAt: string;
-}
-
-export interface NewEventLogItems {
-  updates: NewEventLogItem[];
   action: EventLogAction;
 }
 

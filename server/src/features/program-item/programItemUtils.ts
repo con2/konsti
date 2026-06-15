@@ -34,7 +34,10 @@ import { EventLogAction } from "shared/types/models/eventLog";
 const getCancelledProgramItems = (
   updatedProgramItems: readonly ProgramItem[],
   currentProgramItems: readonly ProgramItem[],
-): readonly ProgramItem[] => {
+): {
+  cancelledProgramItemIds: string[];
+  signupTypeChangedProgramItemIds: string[];
+} => {
   const currentProgramItemsMap = new Map(
     currentProgramItems.map((currentProgramItem) => [
       currentProgramItem.programItemId,
@@ -42,47 +45,66 @@ const getCancelledProgramItems = (
     ]),
   );
 
-  const cancelledProgramItems = updatedProgramItems.filter(
-    (updatedProgramItem) => {
-      const currentProgramItem = currentProgramItemsMap.get(
-        updatedProgramItem.programItemId,
-      );
+  const cancelledProgramItemIds: string[] = [];
+  const signupTypeChangedProgramItemIds: string[] = [];
 
-      if (!currentProgramItem) {
-        return false;
-      }
+  for (const updatedProgramItem of updatedProgramItems) {
+    const currentProgramItem = currentProgramItemsMap.get(
+      updatedProgramItem.programItemId,
+    );
 
-      // Program item marked as 'cancelled'
-      const programItemCancelled =
-        currentProgramItem.state === State.ACCEPTED &&
-        updatedProgramItem.state === State.CANCELLED;
+    // Newly added program item not yet in DB
+    if (!currentProgramItem) {
+      continue;
+    }
 
-      // Program item no longer using 'konsti' signup type
-      const programItemKonstiSignupRemoved =
-        currentProgramItem.signupType === SignupType.KONSTI &&
-        updatedProgramItem.signupType !== SignupType.KONSTI;
+    // Program item marked as 'cancelled'
+    const programItemCancelled =
+      currentProgramItem.state === State.ACCEPTED &&
+      updatedProgramItem.state === State.CANCELLED;
 
-      return programItemCancelled || programItemKonstiSignupRemoved;
-    },
-  );
+    // Program item no longer using 'konsti' signup type
+    const programItemKonstiSignupRemoved =
+      currentProgramItem.signupType === SignupType.KONSTI &&
+      updatedProgramItem.signupType !== SignupType.KONSTI;
 
-  return cancelledProgramItems;
+    // Cancellation takes precedence when both changed in the same update
+    if (programItemCancelled) {
+      cancelledProgramItemIds.push(updatedProgramItem.programItemId);
+    } else if (programItemKonstiSignupRemoved) {
+      signupTypeChangedProgramItemIds.push(updatedProgramItem.programItemId);
+    }
+  }
+
+  return { cancelledProgramItemIds, signupTypeChangedProgramItemIds };
 };
 
 const getCancelledAndDeletedProgramItems = (
   updatedProgramItems: readonly ProgramItem[],
   currentProgramItems: readonly ProgramItem[],
-): { cancelledProgramItemIds: string[]; deletedProgramItemIds: string[] } => {
-  const cancelledProgramItemIds = getCancelledProgramItems(
-    updatedProgramItems,
-    currentProgramItems,
-  ).map((p) => p.programItemId);
+): {
+  cancelledProgramItemIds: string[];
+  signupTypeChangedProgramItemIds: string[];
+  deletedProgramItemIds: string[];
+} => {
+  const { cancelledProgramItemIds, signupTypeChangedProgramItemIds } =
+    getCancelledProgramItems(updatedProgramItems, currentProgramItems);
 
   if (cancelledProgramItemIds.length > 0) {
     logger.info(
       `Found ${
         cancelledProgramItemIds.length
       } cancelled program items: ${cancelledProgramItemIds.join(", ")}`,
+    );
+  }
+
+  if (signupTypeChangedProgramItemIds.length > 0) {
+    logger.info(
+      `Found ${
+        signupTypeChangedProgramItemIds.length
+      } program items no longer using Konsti signup: ${signupTypeChangedProgramItemIds.join(
+        ", ",
+      )}`,
     );
   }
 
@@ -100,37 +122,57 @@ const getCancelledAndDeletedProgramItems = (
     );
   }
 
-  return { cancelledProgramItemIds, deletedProgramItemIds };
+  return {
+    cancelledProgramItemIds,
+    signupTypeChangedProgramItemIds,
+    deletedProgramItemIds,
+  };
 };
-
-interface HandleCancelledDeletedProgramItemsResponse {
-  cancelled: string[];
-  deleted: string[];
-  affectedDirectSignups: DirectSignupsForProgramItem[];
-}
 
 export const handleCancelledDeletedProgramItems = async (
   updatedProgramItems: readonly ProgramItem[],
   currentProgramItems: readonly ProgramItem[],
-): Promise<
-  Result<HandleCancelledDeletedProgramItemsResponse, MongoDbError>
-> => {
-  const { cancelledProgramItemIds, deletedProgramItemIds } =
-    getCancelledAndDeletedProgramItems(
-      updatedProgramItems,
-      currentProgramItems,
-    );
+): Promise<Result<DirectSignupsForProgramItem[], MongoDbError>> => {
+  const {
+    cancelledProgramItemIds,
+    signupTypeChangedProgramItemIds,
+    deletedProgramItemIds,
+  } = getCancelledAndDeletedProgramItems(
+    updatedProgramItems,
+    currentProgramItems,
+  );
 
   const notifyUsersWithDirectSignupsResult = await notifyUsersWithDirectSignups(
-    [...cancelledProgramItemIds, ...deletedProgramItemIds],
+    [
+      ...cancelledProgramItemIds.map((programItemId) => ({
+        programItemId,
+        action: EventLogAction.PROGRAM_ITEM_CANCELLED,
+      })),
+      ...signupTypeChangedProgramItemIds.map((programItemId) => ({
+        programItemId,
+        action: EventLogAction.PROGRAM_ITEM_NO_KONSTI_SIGNUP_ANYMORE,
+      })),
+      ...deletedProgramItemIds.map((programItemId) => ({
+        programItemId,
+        action: EventLogAction.PROGRAM_ITEM_CANCELLED,
+      })),
+    ],
   );
   if (!notifyUsersWithDirectSignupsResult.ok) {
     return notifyUsersWithDirectSignupsResult;
   }
-  if (cancelledProgramItemIds.length > 0) {
-    logger.info("Remove direct signups for cancelled program items");
+  const affectedDirectSignups = notifyUsersWithDirectSignupsResult.value;
+
+  const removeDirectSignupsProgramItemIds = [
+    ...cancelledProgramItemIds,
+    ...signupTypeChangedProgramItemIds,
+  ];
+  if (removeDirectSignupsProgramItemIds.length > 0) {
+    logger.info(
+      "Remove direct signups if program item is cancelled or not using Konsti signup anymore",
+    );
     const resetSignupDocumentsResult = await resetDirectSignupsByProgramItemIds(
-      cancelledProgramItemIds,
+      removeDirectSignupsProgramItemIds,
     );
     if (!resetSignupDocumentsResult.ok) {
       return resetSignupDocumentsResult;
@@ -156,11 +198,7 @@ export const handleCancelledDeletedProgramItems = async (
     }
   }
 
-  return makeSuccessResult({
-    cancelled: cancelledProgramItemIds,
-    deleted: deletedProgramItemIds,
-    affectedDirectSignups: notifyUsersWithDirectSignupsResult.value,
-  });
+  return makeSuccessResult(affectedDirectSignups);
 };
 
 export const enrichProgramItems = async (
@@ -300,32 +338,41 @@ export const getSignupMessage = (
 };
 
 const notifyUsersWithDirectSignups = async (
-  programItemIds: string[],
+  programItemActions: { programItemId: string; action: EventLogAction }[],
 ): Promise<Result<DirectSignupsForProgramItem[], MongoDbError>> => {
-  if (programItemIds.length === 0) {
+  if (programItemActions.length === 0) {
     return makeSuccessResult([]);
   }
-  const directSignupsResult =
-    await findDirectSignupsByProgramItemIds(programItemIds);
+  const directSignupsResult = await findDirectSignupsByProgramItemIds(
+    programItemActions.map(
+      (programItemAction) => programItemAction.programItemId,
+    ),
+  );
   if (!directSignupsResult.ok) {
     return directSignupsResult;
   }
   const directSignups = directSignupsResult.value;
 
-  const userUpdates = directSignups.flatMap((directSignup) =>
-    directSignup.userSignups.map((userSignup) => ({
-      username: userSignup.username,
-      programItemId: directSignup.programItemId,
-      programItemStartTime: userSignup.signedToStartTime,
-      createdAt: dayjs().toISOString(),
-    })),
+  const userUpdates = programItemActions.flatMap(
+    ({ programItemId, action }) => {
+      const directSignup = directSignups.find(
+        (signup) => signup.programItemId === programItemId,
+      );
+      if (!directSignup) {
+        return [];
+      }
+      return directSignup.userSignups.map((userSignup) => ({
+        username: userSignup.username,
+        programItemId,
+        programItemStartTime: userSignup.signedToStartTime,
+        createdAt: dayjs().toISOString(),
+        action,
+      }));
+    },
   );
 
   if (userUpdates.length > 0) {
-    const addEventLogItemsResult = await addEventLogItems({
-      action: EventLogAction.PROGRAM_ITEM_CANCELLED,
-      updates: userUpdates,
-    });
+    const addEventLogItemsResult = await addEventLogItems(userUpdates);
     if (!addEventLogItemsResult.ok) {
       return addEventLogItemsResult;
     }

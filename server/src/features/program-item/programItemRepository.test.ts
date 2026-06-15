@@ -268,11 +268,11 @@ test("should remove lottery signups but not favorites when program item doesn't 
     expect.arrayContaining([
       expect.objectContaining({
         programItemId: testProgramItem.programItemId,
-        action: EventLogAction.PROGRAM_ITEM_CANCELLED,
+        action: EventLogAction.PROGRAM_ITEM_NO_KONSTI_SIGNUP_ANYMORE,
       }),
       expect.objectContaining({
         programItemId: testProgramItem2.programItemId,
-        action: EventLogAction.PROGRAM_ITEM_CANCELLED,
+        action: EventLogAction.PROGRAM_ITEM_NO_KONSTI_SIGNUP_ANYMORE,
       }),
     ]),
   );
@@ -293,12 +293,12 @@ test("should keep direct signup when program item programType is changed to non-
   );
   expect(directSignups).toHaveLength(1);
 
-  // No cancellation event log should be added
+  // No notification should be added — direct signups stay valid on a program type change
   const user = unsafelyUnwrap(await findUser(mockUser.username));
-  const cancelEvents = user?.eventLogItems.filter(
-    (e) => e.action === EventLogAction.PROGRAM_ITEM_CANCELLED,
+  const noLotteryAnymoreEvents = user?.eventLogItems.filter(
+    (e) => e.action === EventLogAction.PROGRAM_ITEM_NO_LOTTERY_ANYMORE,
   );
-  expect(cancelEvents).toHaveLength(0);
+  expect(noLotteryAnymoreEvents).toHaveLength(0);
 });
 
 test("should remove direct signups when program item doesn't use Konsti signup anymore and add notification", async () => {
@@ -325,11 +325,11 @@ test("should remove direct signups when program item doesn't use Konsti signup a
     expect.arrayContaining([
       expect.objectContaining({
         programItemId: testProgramItem.programItemId,
-        action: EventLogAction.PROGRAM_ITEM_CANCELLED,
+        action: EventLogAction.PROGRAM_ITEM_NO_KONSTI_SIGNUP_ANYMORE,
       }),
       expect.objectContaining({
         programItemId: testProgramItem2.programItemId,
-        action: EventLogAction.PROGRAM_ITEM_CANCELLED,
+        action: EventLogAction.PROGRAM_ITEM_NO_KONSTI_SIGNUP_ANYMORE,
       }),
     ]),
   );
@@ -362,7 +362,57 @@ test("should not add duplicate notification when program item is cancelled and u
   );
 });
 
-test("should preserve lottery signup when program item is cancelled after its lottery has run and not add notification", async () => {
+test("should not add duplicate notification when signupType is changed away from Konsti and user has direct signup, lottery signup and favorite", async () => {
+  await saveProgramItems([testProgramItem]);
+  await saveUser(mockUser);
+  await saveDirectSignup(mockPostDirectSignupRequest);
+  await saveLotterySignups({
+    username: mockUser.username,
+    lotterySignups: [mockLotterySignups[0]],
+  });
+  await saveFavorite({
+    username: mockUser.username,
+    favoriteProgramItemIds: [testProgramItem.programItemId],
+  });
+
+  await saveProgramItems([
+    { ...testProgramItem, signupType: SignupType.OTHER },
+  ]);
+
+  const user = unsafelyUnwrap(await findUser(mockUser.username));
+  expect(user?.eventLogItems).toHaveLength(1);
+  expect(user?.eventLogItems).toEqual(
+    expect.arrayContaining([
+      expect.objectContaining({
+        programItemId: testProgramItem.programItemId,
+        action: EventLogAction.PROGRAM_ITEM_NO_KONSTI_SIGNUP_ANYMORE,
+      }),
+    ]),
+  );
+});
+
+test("should not add any notification when programType is changed to non-lottery type and user has direct signup, lottery signup and favorite", async () => {
+  await saveProgramItems([testProgramItem]);
+  await saveUser(mockUser);
+  await saveDirectSignup(mockPostDirectSignupRequest);
+  await saveLotterySignups({
+    username: mockUser.username,
+    lotterySignups: [mockLotterySignups[0]],
+  });
+  await saveFavorite({
+    username: mockUser.username,
+    favoriteProgramItemIds: [testProgramItem.programItemId],
+  });
+
+  await saveProgramItems([
+    { ...testProgramItem, programType: ProgramType.OTHER },
+  ]);
+
+  const user = unsafelyUnwrap(await findUser(mockUser.username));
+  expect(user?.eventLogItems).toHaveLength(0);
+});
+
+test("should preserve lottery signup when program item is cancelled after its lottery has run but not add notification because the user didn't get a spot", async () => {
   await saveTestSettings({
     testTime: dayjs(testProgramItem.startTime)
       .subtract(config.event().directSignupPhaseStart - 1, "minutes")
@@ -388,7 +438,7 @@ test("should preserve lottery signup when program item is cancelled after its lo
   expect(cancelEvents).toHaveLength(0);
 });
 
-test("should preserve lottery signup when signupType is changed away from Konsti after its lottery has run and not add notification", async () => {
+test("should preserve lottery signup when signupType is changed away from Konsti after its lottery has run but not add notification because the user didn't get a spot", async () => {
   await saveTestSettings({
     testTime: dayjs(testProgramItem.startTime)
       .subtract(config.event().directSignupPhaseStart - 1, "minutes")
@@ -408,13 +458,13 @@ test("should preserve lottery signup when signupType is changed away from Konsti
 
   const user = unsafelyUnwrap(await findUser(mockUser.username));
   expect(user?.lotterySignups).toHaveLength(2);
-  const cancelEvents = user?.eventLogItems.filter(
-    (e) => e.action === EventLogAction.PROGRAM_ITEM_CANCELLED,
+  const signupTypeChangedEvents = user?.eventLogItems.filter(
+    (e) => e.action === EventLogAction.PROGRAM_ITEM_NO_KONSTI_SIGNUP_ANYMORE,
   );
-  expect(cancelEvents).toHaveLength(0);
+  expect(signupTypeChangedEvents).toHaveLength(0);
 });
 
-test("should remove lottery signup when programType is changed to non-lottery type before its lottery has run and add notification", async () => {
+test("should remove lottery signup but keep favorites when programType is changed to non-lottery type before its lottery has run and add notification", async () => {
   await saveTestSettings({
     testTime: dayjs(testProgramItem.startTime)
       .subtract(config.event().directSignupPhaseStart + 1, "minutes")
@@ -426,6 +476,13 @@ test("should remove lottery signup when programType is changed to non-lottery ty
     username: mockUser.username,
     lotterySignups: mockLotterySignups,
   });
+  await saveFavorite({
+    username: mockUser.username,
+    favoriteProgramItemIds: [
+      testProgramItem.programItemId,
+      testProgramItem2.programItemId,
+    ],
+  });
 
   await saveProgramItems([
     { ...testProgramItem, programType: ProgramType.OTHER },
@@ -433,6 +490,7 @@ test("should remove lottery signup when programType is changed to non-lottery ty
   ]);
 
   const user = unsafelyUnwrap(await findUser(mockUser.username));
+  expect(user?.favoriteProgramItemIds).toHaveLength(2);
   expect(user?.lotterySignups).toHaveLength(1);
   expect(user?.lotterySignups[0].programItemId).toEqual(
     testProgramItem2.programItemId,
@@ -442,7 +500,7 @@ test("should remove lottery signup when programType is changed to non-lottery ty
     testProgramItem.programItemId,
   );
   expect(user?.eventLogItems[0].action).toEqual(
-    EventLogAction.PROGRAM_ITEM_CANCELLED,
+    EventLogAction.PROGRAM_ITEM_NO_LOTTERY_ANYMORE,
   );
 });
 
@@ -466,10 +524,10 @@ test("should preserve lottery signup when programType is changed to non-lottery 
 
   const user = unsafelyUnwrap(await findUser(mockUser.username));
   expect(user?.lotterySignups).toHaveLength(2);
-  const cancelEvents = user?.eventLogItems.filter(
-    (e) => e.action === EventLogAction.PROGRAM_ITEM_CANCELLED,
+  const noLotteryAnymoreEvents = user?.eventLogItems.filter(
+    (e) => e.action === EventLogAction.PROGRAM_ITEM_NO_LOTTERY_ANYMORE,
   );
-  expect(cancelEvents).toHaveLength(0);
+  expect(noLotteryAnymoreEvents).toHaveLength(0);
 });
 
 test("should add event notification if user has lottery signup and program item start time changes", async () => {

@@ -20,9 +20,14 @@ import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
 import { getLotterySignupEndTime } from "shared/utils/signupTimes";
 import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
 
+interface InvalidLotterySignup {
+  lotterySignup: LotterySignup;
+  action: EventLogAction;
+}
+
 interface UserToNofify {
   username: string;
-  invalidLotterySignups: LotterySignup[];
+  invalidLotterySignups: InvalidLotterySignup[];
   invalidFavoriteProgramItemIds: FavoriteProgramItemId[];
 }
 
@@ -55,36 +60,41 @@ export const removeCancelledDeletedProgramItemsFromUsers = async ({
   const usersToUpdate = usersResult.value.flatMap((user) => {
     // LOTTERY SIGNUPS
 
-    const [keepLotterySignups, removeLotterySignups] = partition(
-      user.lotterySignups,
+    const classifiedLotterySignups = user.lotterySignups.map(
       (lotterySignup) => {
         const foundProgramItem = programItems.find(
           (programItem) =>
             programItem.programItemId === lotterySignup.programItemId,
         );
+        const cancellationAction = getCancellationAction(foundProgramItem);
 
-        const isValid =
-          foundProgramItem?.state === State.ACCEPTED &&
-          foundProgramItem.signupType === SignupType.KONSTI &&
-          isLotterySignupProgramItem(foundProgramItem);
+        // Valid signups are kept. Invalid ones are preserved only if the item still
+        // exists and its lottery has already run; deleted items are always removed
+        const keep =
+          cancellationAction === undefined ||
+          (foundProgramItem !== undefined &&
+            !timeNowResult.value.isBefore(
+              getLotterySignupEndTime(foundProgramItem),
+            ));
 
-        if (isValid) {
-          return true;
-        }
-
-        // Preserve already-run lottery signups when the item still exists (cancelled or signupType changed)
-        // Deleted items (not in programItems) are always removed
-        if (foundProgramItem) {
-          const lotteryHasRun = !timeNowResult.value.isBefore(
-            getLotterySignupEndTime(foundProgramItem),
-          );
-          if (lotteryHasRun) {
-            return true;
-          }
-        }
-
-        return false;
+        return { lotterySignup, keep, cancellationAction };
       },
+    );
+
+    const keepLotterySignups = classifiedLotterySignups
+      .filter((classified) => classified.keep)
+      .map((classified) => classified.lotterySignup);
+
+    const removeLotterySignups = classifiedLotterySignups.flatMap(
+      (classified) =>
+        !classified.keep && classified.cancellationAction !== undefined
+          ? [
+              {
+                lotterySignup: classified.lotterySignup,
+                action: classified.cancellationAction,
+              },
+            ]
+          : [],
     );
 
     const changedLotterySignupsCount =
@@ -155,6 +165,22 @@ export const removeCancelledDeletedProgramItemsFromUsers = async ({
   return makeSuccessResult();
 };
 
+// Classifies why a lottery signup program item is invalid, or undefined when it is still valid
+const getCancellationAction = (
+  programItem: ProgramItem | undefined,
+): EventLogAction | undefined => {
+  if (programItem?.state !== State.ACCEPTED) {
+    return EventLogAction.PROGRAM_ITEM_CANCELLED;
+  }
+  if (programItem.signupType !== SignupType.KONSTI) {
+    return EventLogAction.PROGRAM_ITEM_NO_KONSTI_SIGNUP_ANYMORE;
+  }
+  if (!isLotterySignupProgramItem(programItem)) {
+    return EventLogAction.PROGRAM_ITEM_NO_LOTTERY_ANYMORE;
+  }
+  return undefined;
+};
+
 const notifyUsersWithLotterySignupOrFavorite = async (
   usersToNofify: UserToNofify[],
   affectedDirectSignups: DirectSignupsForProgramItem[],
@@ -174,7 +200,7 @@ const notifyUsersWithLotterySignupOrFavorite = async (
     );
 
     const lotteryUpdates = user.invalidLotterySignups.flatMap(
-      (lotterySignup) => {
+      ({ lotterySignup, action }) => {
         if (userDirectSignups.has(lotterySignup.programItemId)) {
           return [];
         }
@@ -183,6 +209,7 @@ const notifyUsersWithLotterySignupOrFavorite = async (
           programItemId: lotterySignup.programItemId,
           programItemStartTime: lotterySignup.signedToStartTime,
           createdAt: dayjs().toISOString(),
+          action,
         };
       },
     );
@@ -191,11 +218,13 @@ const notifyUsersWithLotterySignupOrFavorite = async (
         if (userDirectSignups.has(favorite)) {
           return [];
         }
+        // Favorites are removed only when the program item is deleted
         return {
           username: user.username,
           programItemId: favorite,
           programItemStartTime: dayjs().toISOString(),
           createdAt: dayjs().toISOString(),
+          action: EventLogAction.PROGRAM_ITEM_CANCELLED,
         };
       },
     );
@@ -206,10 +235,7 @@ const notifyUsersWithLotterySignupOrFavorite = async (
   });
 
   if (eventUpdates.length > 0) {
-    const addEventLogItemsResult = await addEventLogItems({
-      action: EventLogAction.PROGRAM_ITEM_CANCELLED,
-      updates: eventUpdates,
-    });
+    const addEventLogItemsResult = await addEventLogItems(eventUpdates);
     if (!addEventLogItemsResult.ok) {
       return addEventLogItemsResult;
     }

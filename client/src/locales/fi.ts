@@ -275,6 +275,9 @@ export const translationFI = {
     noAssignment:
       "Paikat klo {{START_TIME}} alkaviin ohjelmanumeroihin arvottiin. Ikävä kyllä et mahtunut mukaan mihinkään valitsemaasi ohjelmanumeroon.",
     programItemCancelled: "{{PROGRAM_TYPE}} peruttu:",
+    programItemNoKonstiSignupAnymore:
+      "{{PROGRAM_TYPE}} ilmoittautuminen ei ole enää Konstissa:",
+    programItemNoLotteryAnymore: "{{PROGRAM_TYPE}} ei käytä enää arvontaa:",
     programItemMoved: "aloitusaika on muuttunut: {{NEW_STARTING_TIME}}.",
   },
   notificationBar: {

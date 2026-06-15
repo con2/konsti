@@ -272,6 +272,10 @@ export const translationEN = {
     noAssignment:
       "Spots for program items at {{START_TIME}} were randomized. Unfortunately, we couldn't fit you into any of your chosen program items.",
     programItemCancelled: "{{PROGRAM_TYPE}} cancelled:",
+    programItemNoKonstiSignupAnymore:
+      "{{PROGRAM_TYPE}} signup is no longer in Konsti:",
+    programItemNoLotteryAnymore:
+      "{{PROGRAM_TYPE}} no longer uses lottery signup:",
     programItemMoved: "starting time has changed to {{NEW_STARTING_TIME}}.",
   },
   notificationBar: {

@@ -766,17 +766,15 @@ describe("Assignment with first time bonus", () => {
     await saveUser(mockUser);
     await saveUser(mockUser2);
 
-    await addEventLogItems({
-      updates: [
-        {
-          username: mockUser2.username,
-          programItemId: testProgramItem.programItemId,
-          programItemStartTime: testProgramItem.startTime,
-          createdAt: dayjs().toISOString(),
-        },
-      ],
-      action: EventLogAction.NO_ASSIGNMENT,
-    });
+    await addEventLogItems([
+      {
+        username: mockUser2.username,
+        programItemId: testProgramItem.programItemId,
+        programItemStartTime: testProgramItem.startTime,
+        createdAt: dayjs().toISOString(),
+        action: EventLogAction.NO_ASSIGNMENT,
+      },
+    ]);
 
     // First user has higher priority but second user has additional first time bonus
     await saveLotterySignups({
