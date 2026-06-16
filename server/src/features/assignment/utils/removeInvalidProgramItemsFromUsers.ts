@@ -169,7 +169,10 @@ export const removeCancelledDeletedProgramItemsFromUsers = async ({
 const getCancellationAction = (
   programItem: ProgramItem | undefined,
 ): EventLogAction | undefined => {
-  if (programItem?.state !== State.ACCEPTED) {
+  if (!programItem) {
+    return EventLogAction.PROGRAM_ITEM_DELETED;
+  }
+  if (programItem.state !== State.ACCEPTED) {
     return EventLogAction.PROGRAM_ITEM_CANCELLED;
   }
   if (programItem.signupType !== SignupType.KONSTI) {
@@ -224,7 +227,7 @@ const notifyUsersWithLotterySignupOrFavorite = async (
           programItemId: favorite,
           programItemStartTime: dayjs().toISOString(),
           createdAt: dayjs().toISOString(),
-          action: EventLogAction.PROGRAM_ITEM_CANCELLED,
+          action: EventLogAction.PROGRAM_ITEM_DELETED,
         };
       },
     );

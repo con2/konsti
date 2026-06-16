@@ -154,7 +154,7 @@ export const handleCancelledDeletedProgramItems = async (
       })),
       ...deletedProgramItemIds.map((programItemId) => ({
         programItemId,
-        action: EventLogAction.PROGRAM_ITEM_CANCELLED,
+        action: EventLogAction.PROGRAM_ITEM_DELETED,
       })),
     ],
   );

@@ -28,6 +28,7 @@ export const NotificationBarEventMessage = ({
     case EventLogAction.NO_ASSIGNMENT:
       return <EventLogNoAssignment eventLogItem={eventLogItem} />;
     case EventLogAction.PROGRAM_ITEM_CANCELLED:
+    case EventLogAction.PROGRAM_ITEM_DELETED:
     case EventLogAction.PROGRAM_ITEM_NO_KONSTI_SIGNUP_ANYMORE:
     case EventLogAction.PROGRAM_ITEM_NO_LOTTERY_ANYMORE:
       return <EventLogProgramItemCancelled eventLogItem={eventLogItem} />;
