@@ -8,7 +8,7 @@ import { HEADER_HEIGHT } from "client/components/Header";
 import { submitUpdateEventLogIsSeen } from "client/views/login/loginThunks";
 import { AboutTab } from "client/app/AppRoutes";
 import { config } from "shared/config";
-import { NotificationBarEventMessage } from "client/views/event-log/NotificationBarEventMessage";
+import { EventLogEventMessage } from "client/views/event-log/EventLogEventMessage";
 
 export const NotificationBar = (): ReactElement | null => {
   const { t } = useTranslation();
@@ -28,9 +28,10 @@ export const NotificationBar = (): ReactElement | null => {
         data-testid="notification-bar"
       >
         <div>
-          <NotificationBarEventMessage
+          <EventLogEventMessage
             eventLogItem={unseenEvent}
             programItems={programItems}
+            showDetails={false}
           />
           <ShowAllLinkContainer>
             <Link to={"/notifications"}>{t("notificationBar.showAll")}</Link>
