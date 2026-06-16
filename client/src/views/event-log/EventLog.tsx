@@ -71,6 +71,7 @@ export const EventLog = (): ReactElement => {
             <EventLogEventMessage
               eventLogItem={eventLogItem}
               programItems={programItems}
+              showDetails={true}
             />
 
             <MessageCreatedAt>

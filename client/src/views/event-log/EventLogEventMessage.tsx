@@ -10,11 +10,13 @@ import { EventLogProgramItemMoved } from "client/views/event-log/EventLogProgram
 interface Props {
   eventLogItem: EventLogItem;
   programItems: readonly ProgramItem[];
+  showDetails: boolean;
 }
 
 export const EventLogEventMessage = ({
   eventLogItem,
   programItems,
+  showDetails,
 }: Props): ReactElement => {
   switch (eventLogItem.action) {
     case EventLogAction.NEW_ASSIGNMENT:
@@ -22,7 +24,7 @@ export const EventLogEventMessage = ({
         <EventLogNewAssignment
           eventLogItem={eventLogItem}
           programItems={programItems}
-          showDetails={true}
+          showDetails={showDetails}
         />
       );
     case EventLogAction.NO_ASSIGNMENT:
