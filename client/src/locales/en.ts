@@ -271,12 +271,14 @@ export const translationEN = {
       "You were assigned to program item {{PROGRAM_ITEM_ID}} but it was cancelled.",
     noAssignment:
       "Spots for program items at {{START_TIME}} were randomized. Unfortunately, we couldn't fit you into any of your chosen program items.",
-    programItemCancelled: "{{PROGRAM_TYPE}} cancelled:",
-    programItemDeleted: "{{PROGRAM_TYPE}} deleted:",
+    programItemCancelled:
+      "{{PROGRAM_TYPE}} was cancelled and your signup was removed:",
+    programItemDeleted:
+      "{{PROGRAM_TYPE}} was deleted and removed from your program:",
     programItemNoKonstiSignupAnymore:
-      "{{PROGRAM_TYPE}} signup is no longer in Konsti:",
+      "{{PROGRAM_TYPE}} no longer uses Konsti signup and your signup was removed:",
     programItemNoLotteryAnymore:
-      "{{PROGRAM_TYPE}} no longer uses lottery signup:",
+      "{{PROGRAM_TYPE}} no longer uses lottery signup and your lottery signup was removed:",
     programItemMoved: "starting time has changed to {{NEW_STARTING_TIME}}.",
   },
   notificationBar: {
