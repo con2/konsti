@@ -106,11 +106,11 @@ test("should remove lottery signups and favorites when program item is deleted a
     expect.arrayContaining([
       expect.objectContaining({
         programItemId: testProgramItem.programItemId,
-        action: EventLogAction.PROGRAM_ITEM_CANCELLED,
+        action: EventLogAction.PROGRAM_ITEM_DELETED,
       }),
       expect.objectContaining({
         programItemId: testProgramItem2.programItemId,
-        action: EventLogAction.PROGRAM_ITEM_CANCELLED,
+        action: EventLogAction.PROGRAM_ITEM_DELETED,
       }),
     ]),
   );
@@ -136,11 +136,11 @@ test("should remove direct signups when program item is deleted and add notifica
     expect.arrayContaining([
       expect.objectContaining({
         programItemId: testProgramItem.programItemId,
-        action: EventLogAction.PROGRAM_ITEM_CANCELLED,
+        action: EventLogAction.PROGRAM_ITEM_DELETED,
       }),
       expect.objectContaining({
         programItemId: testProgramItem2.programItemId,
-        action: EventLogAction.PROGRAM_ITEM_CANCELLED,
+        action: EventLogAction.PROGRAM_ITEM_DELETED,
       }),
     ]),
   );

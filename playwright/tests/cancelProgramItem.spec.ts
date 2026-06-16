@@ -262,7 +262,7 @@ test("Show event log notification when program item with lottery signup doesn't 
   );
 });
 
-test("Show event log notification when program item with direct signup is completely deleted", async ({
+test("Show event log notification when program item with direct signup is deleted", async ({
   page,
   request,
 }) => {
@@ -306,16 +306,16 @@ test("Show event log notification when program item with direct signup is comple
   await page.reload();
 
   await expect(page.getByTestId("notification-bar")).toContainText(
-    "Program item cancelled: test-program-item",
+    "Program item deleted: test-program-item",
   );
 
   await page.getByRole("link", { name: "Show all notifications" }).click();
   await expect(page.getByTestId("event-log-item")).toContainText(
-    "Program item cancelled: test-program-item",
+    "Program item deleted: test-program-item",
   );
 });
 
-test("Show event log notification when program item with lottery signup is completely deleted before its lottery has run", async ({
+test("Show event log notification when program item with lottery signup is deleted before its lottery has run", async ({
   page,
   request,
 }) => {
@@ -356,16 +356,16 @@ test("Show event log notification when program item with lottery signup is compl
   await page.reload();
 
   await expect(page.getByTestId("notification-bar")).toContainText(
-    "Program item cancelled: test-program-item",
+    "Program item deleted: test-program-item",
   );
 
   await page.getByRole("link", { name: "Show all notifications" }).click();
   await expect(page.getByTestId("event-log-item")).toContainText(
-    "Program item cancelled: test-program-item",
+    "Program item deleted: test-program-item",
   );
 });
 
-test("Show event log notification when program item with lottery signup is completely deleted after its lottery has run", async ({
+test("Show event log notification when program item with lottery signup is deleted after its lottery has run", async ({
   page,
   request,
 }) => {
@@ -411,12 +411,12 @@ test("Show event log notification when program item with lottery signup is compl
   await page.reload();
 
   await expect(page.getByTestId("notification-bar")).toContainText(
-    "Program item cancelled: test-program-item",
+    "Program item deleted: test-program-item",
   );
 
   await page.getByRole("link", { name: "Show all notifications" }).click();
   await expect(page.getByTestId("event-log-item")).toContainText(
-    "Program item cancelled: test-program-item",
+    "Program item deleted: test-program-item",
   );
 });
 
@@ -478,7 +478,7 @@ test("Show event log notification when program item with lottery signup changes 
   );
 });
 
-test("Show event log notification when a favorited program item is completely deleted", async ({
+test("Show event log notification when a favorited program item is deleted", async ({
   page,
   request,
 }) => {
@@ -526,12 +526,12 @@ test("Show event log notification when a favorited program item is completely de
   await page.reload();
 
   await expect(page.getByTestId("notification-bar")).toContainText(
-    "Program item cancelled: test-program-item",
+    "Program item deleted: test-program-item",
   );
 
   await page.getByRole("link", { name: "Show all notifications" }).click();
   await expect(page.getByTestId("event-log-item")).toContainText(
-    "Program item cancelled: test-program-item",
+    "Program item deleted: test-program-item",
   );
 });
 

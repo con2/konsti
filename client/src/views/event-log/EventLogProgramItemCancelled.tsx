@@ -36,6 +36,10 @@ export const EventLogProgramItemCancelled = ({
       "eventLogActions.programItemCancelled",
       { PROGRAM_TYPE: programTypeSingular },
     ),
+    [EventLogAction.PROGRAM_ITEM_DELETED]: t(
+      "eventLogActions.programItemDeleted",
+      { PROGRAM_TYPE: programTypeSingular },
+    ),
     [EventLogAction.PROGRAM_ITEM_NO_KONSTI_SIGNUP_ANYMORE]: t(
       "eventLogActions.programItemNoKonstiSignupAnymore",
       { PROGRAM_TYPE: programTypeGenetive },
