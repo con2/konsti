@@ -274,11 +274,13 @@ export const translationFI = {
       "Olet päässyt arvonnassa ohjelmanumeroon {{PROGRAM_ITEM_ID}} mutta se on peruuntunut.",
     noAssignment:
       "Paikat klo {{START_TIME}} alkaviin ohjelmanumeroihin arvottiin. Ikävä kyllä et mahtunut mukaan mihinkään valitsemaasi ohjelmanumeroon.",
-    programItemCancelled: "{{PROGRAM_TYPE}} peruttu:",
-    programItemDeleted: "{{PROGRAM_TYPE}} poistettu:",
+    programItemCancelled:
+      "{{PROGRAM_TYPE}} peruttiin ja ilmoittautumisesi poistettiin:",
+    programItemDeleted: "{{PROGRAM_TYPE}} poistettiin ja poistui ohjelmastasi:",
     programItemNoKonstiSignupAnymore:
-      "{{PROGRAM_TYPE}} ilmoittautuminen ei ole enää Konstissa:",
-    programItemNoLotteryAnymore: "{{PROGRAM_TYPE}} ei käytä enää arvontaa:",
+      "{{PROGRAM_TYPE}} ei käytä enää Konsti-ilmoittautumista ja ilmoittautumisesi poistettiin:",
+    programItemNoLotteryAnymore:
+      "{{PROGRAM_TYPE}} ei käytä enää arvontaa ja arvontailmoittautumisesi poistettiin:",
     programItemMoved: "aloitusaika on muuttunut: {{NEW_STARTING_TIME}}.",
   },
   notificationBar: {
