@@ -1,6 +1,6 @@
 import { fileURLToPath } from "node:url";
 import eslint from "@eslint/js";
-import { defineConfig, globalIgnores } from "eslint/config";
+import { defineConfig, globalIgnores, includeIgnoreFile } from "eslint/config";
 import globals from "globals";
 import eslintPluginCommentsConfigs from "@eslint-community/eslint-plugin-eslint-comments/configs";
 import eslintPluginCompat from "eslint-plugin-compat";
@@ -20,12 +20,7 @@ import eslintPluginOnlyError from "eslint-plugin-only-error";
 // eslint-disable-next-line import-x/no-namespace
 import * as eslintPluginMdx from "eslint-plugin-mdx";
 import typescriptEslint from "typescript-eslint";
-import {
-  includeIgnoreFile,
-  fixupPluginRules,
-  fixupConfigRules,
-} from "@eslint/compat";
-import { noUselessTemplateLiteral } from "./eslint-rules/noUselessTemplateLiteral";
+import { fixupPluginRules, fixupConfigRules } from "@eslint/compat";
 
 const filetypesGlob = "**/*.{ts,tsx}";
 
@@ -76,11 +71,6 @@ export default defineConfig([
       vitest: eslintPluginVitest,
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       onlyError: eslintPluginOnlyError,
-      custom: {
-        rules: {
-          "no-useless-template-literal": noUselessTemplateLiteral,
-        },
-      },
     },
 
     settings: {
@@ -101,9 +91,6 @@ export default defineConfig([
 
     rules: {
       ...eslintPluginVitest.configs.recommended.rules,
-
-      // Custom rules in eslint-rules directory
-      "custom/no-useless-template-literal": "error",
 
       // eslint
       "no-param-reassign": "error",
@@ -145,10 +132,7 @@ export default defineConfig([
           ],
         },
       ], // Don't want to use namespace imports
-      "import-x/no-unresolved": [
-        "error",
-        { ignore: [String.raw`.gif$`, String.raw`.svg$`] },
-      ],
+      "import-x/no-unresolved": ["error", { ignore: [".gif$", ".svg$"] }],
 
       "import-x/namespace": "off", // Don't want to use namespace imports
       "import-x/no-named-as-default": "off", // Doesn't work with styled-components
@@ -166,6 +150,23 @@ export default defineConfig([
       "unicorn/numeric-separators-style": "off", // Don't want this
       "unicorn/no-lonely-if": "off", // Don't want this
       "unicorn/no-array-sort": "off", // Wait till toSorted is more widely supported
+      "unicorn/prefer-minimal-ternary": "off", // TODO
+      "unicorn/no-declarations-before-early-exit": "off", // TODO
+      "unicorn/prefer-number-coercion": "off", // TODO
+      "unicorn/prefer-early-return": "off", // TODO
+      "unicorn/prefer-await": "off", // TODO
+      "unicorn/no-unused-array-method-return": "off", // TODO
+      "unicorn/prefer-split-limit": "off", // TODO
+      "unicorn/no-global-object-property-assignment": "off", // TODO
+      "unicorn/no-top-level-side-effects": "off", // TODO
+      "unicorn/prefer-ternary": "off", // TODO
+      "unicorn/prefer-at": "off", // TODO
+      "unicorn/require-array-sort-compare": "off", // TODO
+      "unicorn/prefer-direct-iteration": "off", // TODO
+      "unicorn/no-subtraction-comparison": "off", // TODO
+      "unicorn/prefer-array-from-map": "off", // TODO
+      "unicorn/no-negated-array-predicate": "off", // TODO
+      "unicorn/prefer-array-some": "off", // TODO
 
       // @typescript-eslint
       "@typescript-eslint/no-unnecessary-type-arguments": "off", // Doesn't work with API types <Response,Request>
@@ -317,9 +318,11 @@ export default defineConfig([
 
   // ** MDX support **
   {
-    files: ["**/*.mdx"],
-
     ...eslintPluginMdx.flat,
+
+    // Must come after the spread: eslintPluginMdx.flat sets files to **/*.{md,mdx},
+    // which would otherwise lint plain .md files (CLAUDE.md, docs/**) too
+    files: ["**/*.mdx"],
 
     extends: [
       ...fixupConfigRules([eslintPluginReact.configs.flat.all]),

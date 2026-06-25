@@ -112,6 +112,6 @@ const render = (): void => {
   );
 };
 
-globalThis.addEventListener("load", () => {
+addEventListener("load", () => {
   render();
 });

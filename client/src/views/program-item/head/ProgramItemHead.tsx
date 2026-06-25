@@ -123,9 +123,9 @@ export const ProgramItemHead = ({
             programItem.maxAttendance > 0 && (
               <span>
                 {programItem.minAttendance === programItem.maxAttendance
-                  ? `${programItem.maxAttendance}`
+                  ? programItem.maxAttendance
                   : `${programItem.minAttendance}–${programItem.maxAttendance}`}
-                {"\u00A0"}
+                {"\u{A0}"}
                 {t(
                   `attendeeTypePartitive.${getAttendeeType(programItem.programType)}`,
                 )}

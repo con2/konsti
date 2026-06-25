@@ -17,10 +17,5 @@
       "playwright/*": ["./playwright/*"]
     }
   },
-  "include": [
-    "*.ts",
-    "eslint-rules/**/*.ts",
-    "playwright/**/*.ts",
-    ".claude/hooks/**/*.ts"
-  ]
+  "include": ["*.ts", "playwright/**/*.ts", ".claude/hooks/**/*.ts"]
 }

@@ -40,7 +40,7 @@ import { AssignmentResultStatus } from "server/types/resultTypes";
 
 // This needs to be adjusted if test data is changed
 const expectedResultsCount = 18;
-const groupTestUsers = ["group1", "group2", "group3"];
+const groupTestUsers = new Set(["group1", "group2", "group3"]);
 
 vi.mock<object>(
   import("server/utils/notificationQueue"),
@@ -104,12 +104,12 @@ describe("Assignment with valid data", () => {
     );
 
     const groupResults = assignResults.results.filter((result) =>
-      groupTestUsers.includes(result.username),
+      groupTestUsers.has(result.username),
     );
 
     if (groupResults.length > 0) {
       // eslint-disable-next-line vitest/no-conditional-expect
-      expect(groupResults.length).toEqual(groupTestUsers.length);
+      expect(groupResults.length).toEqual(groupTestUsers.size);
     } else {
       // eslint-disable-next-line vitest/no-conditional-expect
       expect(groupResults.length).toEqual(0);
@@ -135,12 +135,12 @@ describe("Assignment with valid data", () => {
     );
 
     const groupResults2 = assignResults2.results.filter((result) =>
-      groupTestUsers.includes(result.username),
+      groupTestUsers.has(result.username),
     );
 
     if (groupResults2.length > 0) {
       // eslint-disable-next-line vitest/no-conditional-expect
-      expect(groupResults2.length).toEqual(groupTestUsers.length);
+      expect(groupResults2.length).toEqual(groupTestUsers.size);
     } else {
       // eslint-disable-next-line vitest/no-conditional-expect
       expect(groupResults2.length).toEqual(0);

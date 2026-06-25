@@ -1,10 +1,10 @@
 import { ReactElement, InputHTMLAttributes } from "react";
 import styled from "styled-components";
 
-type Props = {
+type Props = InputHTMLAttributes<HTMLInputElement> & {
   label: string;
   id: string;
-} & InputHTMLAttributes<HTMLInputElement>;
+};
 
 export const Checkbox = (props: Props): ReactElement => {
   return (
