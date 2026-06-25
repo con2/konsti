@@ -15,7 +15,7 @@ See [docs/terminology.md](docs/terminology.md) for the glossary of domain terms.
 - **shared/** — Types, constants, configs, and utilities imported by client and server (not a Yarn workspace, used as a TypeScript path)
 - **playwright/** — E2E tests
 
-Yarn 4 workspaces. Node >= 24.14.1. Use yarn, not npm. All code and scripts must be OS agnostic (Linux, Mac, Windows). Use exact dependency versions (e.g., `"vite": "7.3.1"`, not `"~7.3.1"` or `"^7.3.1"`). Client must support browsers released within the last 5 years.
+Yarn 4 workspaces. Node >= 24.18.0. Use yarn, not npm. All code and scripts must be OS agnostic (Linux, Mac, Windows). Use exact dependency versions (e.g., `"vite": "7.3.1"`, not `"~7.3.1"` or `"^7.3.1"`). Client must support browsers released within the last 5 years.
 
 ## Code Style
 
