@@ -39,7 +39,7 @@
     "@faker-js/faker": "10.5.0",
     "@sentry/node": "10.58.0",
     "bcryptjs": "3.0.3",
-    "commander": "14.0.3",
+    "commander": "15.0.0",
     "croner": "10.0.1",
     "dotenv": "17.4.2",
     "eventassigner-js": "0.1.6",
