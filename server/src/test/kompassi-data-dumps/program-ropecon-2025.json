@@ -282,7 +282,7 @@
       "scheduled": ["one", "one-or-more"],
       "game-style": ["character-driven", "rules-light", "story-driven"],
       "inclusivity": [
-        "flahing-lights",
+        "flashing-lights",
         "loud-sounds",
         "no-recordings-or-spoken-text"
       ],
@@ -2083,7 +2083,7 @@
       "grouping": ["beginners"],
       "language": ["fi"],
       "scheduled": ["one", "one-or-more"],
-      "inclusivity": ["flahing-lights", "loud-sounds", "no-text-of-recording"],
+      "inclusivity": ["flashing-lights", "loud-sounds", "no-text-of-recording"],
       "registration": ["not-required"]
     },
     "cachedAnnotations": { "konsti:maxAttendance": 399 },
@@ -3155,7 +3155,7 @@
       "scheduled": ["one", "one-or-more"],
       "inclusivity": [
         "dark-lighting",
-        "flahing-lights",
+        "flashing-lights",
         "loud-sounds",
         "no-recordings-or-spoken-text",
         "no-text-of-recording",
@@ -7744,7 +7744,7 @@
       "language": ["fi"],
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
-      "inclusivity": ["dark-lighting", "flahing-lights", "loud-sounds"],
+      "inclusivity": ["dark-lighting", "flashing-lights", "loud-sounds"],
       "registration": ["ropelarp"],
       "revolvingdoor": ["false"]
     },

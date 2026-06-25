@@ -280,7 +280,6 @@ const mapInclusivityValues = (
         case KompassiInclusivity.LOTS_OF_MOVEMENT:
           return InclusivityValue.LOTS_OF_MOVEMENT;
         case KompassiInclusivity.FLASHING_LIGHTS:
-        case KompassiInclusivity.FLASHING_LIGHTS2:
           return InclusivityValue.FLASHING_LIGHTS;
         case KompassiInclusivity.QUICK_REACTIONS:
           return InclusivityValue.QUICK_REACTIONS;
