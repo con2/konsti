@@ -3,11 +3,10 @@ import {
   NotificationTaskType,
 } from "server/utils/notificationQueue";
 import {
+  buildEmail,
   EmailMessage,
-  getEmailBodyAccepted,
-  getEmailBodyRejected,
-  getEmailSubjectAccepted,
-  getEmailSubjectRejected,
+  getAcceptedEmailTemplate,
+  getRejectedEmailTemplate,
 } from "./senderCommon";
 import { logger } from "server/utils/logger";
 import { findUser } from "server/features/user/userRepository";
@@ -41,24 +40,10 @@ export async function emailNotificationWorker(
       !user.email ||
       !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(user.email)
     ) {
-      logger.error(
-        `Trying to send email notifiction to user ${notification.username} without email address.`,
-      );
       return;
     }
 
-    const message =
-      notification.type === NotificationTaskType.SEND_EMAIL_ACCEPTED
-        ? await generateAcceptedEmail(
-            user.email,
-            notification,
-            config.server().emailSendFromAddress,
-          )
-        : generateRejectedEmail(
-            user.email,
-            notification,
-            config.server().emailSendFromAddress,
-          );
+    const message = await generateEmail(user.email, notification);
     if (message !== null) {
       await sender.sendEmail(message);
     }
@@ -68,48 +53,29 @@ export async function emailNotificationWorker(
   return;
 }
 
-async function generateAcceptedEmail(
+async function generateEmail(
   email: string,
   notification: NotificationTask,
-  fromAddress: string,
 ): Promise<EmailMessage | null> {
-  const programItemResult = await findProgramItemById(
-    notification.programItemId,
-  );
-  if (!programItemResult.ok) {
-    logger.error(
-      `Failed to found program for programItemId ${notification.programItemId}`,
-    );
-    return null;
-  }
-  const subject = getEmailSubjectAccepted();
-  const body = getEmailBodyAccepted(
-    programItemResult.value.title,
-    notification,
-  );
-  const htmlBody = body.replaceAll("\n", "<br />");
-  return {
-    from: fromAddress,
-    to: email,
-    subject,
-    text: body,
-    html: `<p>${htmlBody}</p>`,
-  };
-}
+  const fromAddress = config.server().emailSendFromAddress;
 
-function generateRejectedEmail(
-  email: string,
-  notification: NotificationTask,
-  fromAddress: string,
-): EmailMessage {
-  const subject = getEmailSubjectRejected();
-  const body = getEmailBodyRejected(notification);
-  const htmlBody = body.replaceAll("\n", "<br />");
-  return {
-    from: fromAddress,
-    to: email,
-    subject,
-    text: body,
-    html: `<p>${htmlBody}</p>`,
-  };
+  if (notification.type === NotificationTaskType.SEND_EMAIL_ACCEPTED) {
+    const programItemResult = await findProgramItemById(
+      notification.programItemId,
+    );
+    if (!programItemResult.ok) {
+      logger.error(
+        `Failed to found program for programItemId ${notification.programItemId}`,
+      );
+      return null;
+    }
+    const template = getAcceptedEmailTemplate(
+      programItemResult.value.title,
+      notification,
+    );
+    return buildEmail(template, email, fromAddress);
+  }
+
+  const template = getRejectedEmailTemplate(notification);
+  return buildEmail(template, email, fromAddress);
 }
