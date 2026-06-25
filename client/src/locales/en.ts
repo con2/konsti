@@ -115,7 +115,7 @@ export const translationEN = {
   tags: {
     beginnerFriendly: "Beginner-friendly",
     guestOfHonor: "Guest of honor program",
-    theme: "Yearly theme: New Worlds",
+    theme: "Theme: Dreams",
     lgbt: "LGBTIA+",
     everyone: "Fits all ages",
     adults: "Directed at adults",
@@ -124,6 +124,9 @@ export const translationEN = {
     kids: "Directed at children aged 7–12",
     smallKids: "Directed at children under 7",
     k16: "Age limit 16+",
+    adultsAndYouth: "Directed at adults, youth welcome",
+    youngAdults: "Directed at young adults",
+    families: "Directed at families",
   },
   pageTitle: {
     login: "Login",

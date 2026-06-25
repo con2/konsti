@@ -115,7 +115,7 @@ export const translationFI = {
   tags: {
     beginnerFriendly: "Aloittelijaystävällinen",
     guestOfHonor: "Kunniavierasohjelma",
-    theme: "Vuositeema: Uudet maailmat",
+    theme: "Vuositeema: Unet",
     lgbt: "HLBTIQA+",
     everyone: "Suunnattu kaiken ikäisille",
     adults: "Suunnattu aikuisille",
@@ -124,6 +124,9 @@ export const translationFI = {
     kids: "Suunnattu alakouluikäisille",
     smallKids: "Suunnattu alle kouluikäisille",
     k16: "Ikäraja K16",
+    adultsAndYouth: "Suunnattu aikuisille, nuoret tervetulleita",
+    youngAdults: "Suunnattu nuorisolle",
+    families: "Suunnattu perheille",
   },
   pageTitle: {
     login: "Kirjaudu sisään",
