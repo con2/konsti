@@ -26,7 +26,7 @@ export const eventConfig: EventConfig = {
   // ... or remove all upcoming lottery signups
   enableRemoveAllUpcomingSignups: true,
 
-  programGuideUrl: "https://2025.ropecon.fi/opas",
+  programGuideUrl: "https://ropecon.fi/opas",
 
   activeProgramTypes: [
     ProgramType.TABLETOP_RPG,
