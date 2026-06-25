@@ -54,7 +54,7 @@
     "mongoose": "9.7.1",
     "mongoose-lean-getters": "2.3.1",
     "mongoose-lean-virtuals": "2.1.0",
-    "nodemailer": "8.0.11",
+    "nodemailer": "9.0.1",
     "tsx": "4.22.4",
     "winston": "3.19.0",
     "winston-transport-sentry-node": "3.0.0"
