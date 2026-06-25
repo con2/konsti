@@ -129,7 +129,7 @@ const mapTags = (kompassiProgramItem: KompassiProgramItem): Tag[] => {
       case KompassiGrouping.BEGINNERS:
         return Tag.BEGINNER_FRIENDLY;
 
-      case KompassiGrouping.NEW_WORLDS:
+      case KompassiGrouping.THEME:
         return Tag.THEME;
 
       case KompassiGrouping.LGBT:
@@ -164,6 +164,16 @@ const mapTags = (kompassiProgramItem: KompassiProgramItem): Tag[] => {
 
       case KompassiAgeGroup.SMALL_KIDS:
         return Tag.SMALL_KIDS;
+
+      case KompassiAgeGroup.ADULTS_AND_YOUTH:
+        return Tag.ADULTS_AND_YOUTH;
+
+      case KompassiAgeGroup.YOUNG_ADULTS:
+        return Tag.YOUNG_ADULTS;
+
+      case KompassiAgeGroup.FAMILIES:
+        return Tag.FAMILIES;
+
       default:
         return exhaustiveSwitchGuard(ageGroup);
     }
@@ -215,22 +225,28 @@ const mapLanguages = (kompassiProgramItem: KompassiProgramItem): Language[] => {
   }
 
   const kompassiLanguages = kompassiProgramItem.cachedDimensions.language;
-  const languages: Language[] = [];
 
-  if (kompassiLanguages.includes(KompassiLanguage.FINNISH)) {
-    languages.push(Language.FINNISH);
-  }
-  if (kompassiLanguages.includes(KompassiLanguage.ENGLISH)) {
-    languages.push(Language.ENGLISH);
-  }
-  if (kompassiLanguages.includes(KompassiLanguage.SWEDISH)) {
-    languages.push(Language.SWEDISH);
-  }
-  if (kompassiLanguages.includes(KompassiLanguage.LANGUAGE_FREE)) {
-    languages.push(Language.LANGUAGE_FREE);
-  }
+  const languages = kompassiLanguages.map((kompassiLanguage) => {
+    switch (kompassiLanguage) {
+      case KompassiLanguage.FINNISH:
+        return Language.FINNISH;
 
-  return languages;
+      case KompassiLanguage.ENGLISH:
+        return Language.ENGLISH;
+
+      case KompassiLanguage.SWEDISH:
+        return Language.SWEDISH;
+
+      case KompassiLanguage.LANGUAGE_FREE:
+      case KompassiLanguage.LANG_FREE:
+        return Language.LANGUAGE_FREE;
+
+      default:
+        return exhaustiveSwitchGuard(kompassiLanguage);
+    }
+  });
+
+  return [...new Set(languages)];
 };
 
 const mapInclusivityValues = (
@@ -264,6 +280,7 @@ const mapInclusivityValues = (
         case KompassiInclusivity.LOTS_OF_MOVEMENT:
           return InclusivityValue.LOTS_OF_MOVEMENT;
         case KompassiInclusivity.FLASHING_LIGHTS:
+        case KompassiInclusivity.FLASHING_LIGHTS2:
           return InclusivityValue.FLASHING_LIGHTS;
         case KompassiInclusivity.QUICK_REACTIONS:
           return InclusivityValue.QUICK_REACTIONS;

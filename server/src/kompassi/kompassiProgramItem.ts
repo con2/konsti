@@ -28,6 +28,7 @@ export enum KompassiLanguage {
   ENGLISH = "en",
   SWEDISH = "sv",
   LANGUAGE_FREE = "free",
+  LANG_FREE = "lang-free",
 }
 
 export enum KompassiInclusivity {
@@ -44,6 +45,7 @@ export enum KompassiInclusivity {
   LONG_TEXTS = "long-texts",
   LOTS_OF_MOVEMENT = "lots-of-movement",
   FLASHING_LIGHTS = "flahing-lights",
+  FLASHING_LIGHTS2 = "flashing-lights",
   QUICK_REACTIONS = "quick-reactions",
   NO_SUBTITLES = "no-subtitles",
   STRONG_ODOURS = "strong-odours",
@@ -52,9 +54,9 @@ export enum KompassiInclusivity {
 
 export enum KompassiGrouping {
   BEGINNERS = "beginners",
-  NEW_WORLDS = "new-worlds",
   LGBT = "lgbt",
   GOH = "goh-program",
+  THEME = "dreams",
 }
 
 export enum KompassiAgeGroup {
@@ -64,6 +66,9 @@ export enum KompassiAgeGroup {
   ONLY_ADULTS = "only-adults",
   KIDS = "kids",
   SMALL_KIDS = "small-kids",
+  ADULTS_AND_YOUTH = "adultsnyouth",
+  YOUNG_ADULTS = "youngadults",
+  FAMILIES = "families",
 }
 
 export enum KompassiRegistration {
