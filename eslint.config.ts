@@ -46,6 +46,8 @@ export default defineConfig([
 
   globalIgnores([
     "**/.*", // Ignore dotfiles
+    "!.claude", // un-prune .claude so the project hooks can be linted
+    "!.claude/hooks/**",
     "**/coverage/**",
     "**/front/**",
     "**/build/**",
@@ -297,6 +299,19 @@ export default defineConfig([
       "n/no-unpublished-import": "off", // Slow and handled by tsc
       "n/no-extraneous-import": "off", // Doesn't work with Yarn workspace dependencies
       "n/no-process-exit": "off", // eslint-plugin-unicorn has extended version
+    },
+  },
+
+  // ** Hooks (.claude/hooks) **
+  {
+    files: [".claude/hooks/**/*.ts"],
+
+    rules: {
+      // Node CLI scripts: they signal via exit codes and parse untyped JSON from stdin
+      "unicorn/no-process-exit": "off",
+      "@typescript-eslint/no-unsafe-assignment": "off",
+      "@typescript-eslint/no-unsafe-argument": "off",
+      "@typescript-eslint/prefer-nullish-coalescing": "off",
     },
   },
 
