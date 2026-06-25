@@ -8969,10 +8969,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nodemailer@npm:8.0.11":
-  version: 8.0.11
-  resolution: "nodemailer@npm:8.0.11"
-  checksum: 10c0/19229216c63a32eae59d7b39f3dffeba20be317f2335d08d86fb70bd01845a1bf108fecd019c0e90ef186e3d9177cf478192b333cf38620ad0f8c7a6e1e5ae05
+"nodemailer@npm:9.0.1":
+  version: 9.0.1
+  resolution: "nodemailer@npm:9.0.1"
+  checksum: 10c0/4213f01aa211127c1ce33243c5e45e7f831601a933d03fa864cd827b1bd5ea2782cb4b43722bee7028cbc193733d9802dad1120fe67181448eb0b7de52218a37
   languageName: node
   linkType: hard
 
@@ -10644,7 +10644,7 @@ __metadata:
     mongoose: "npm:9.7.1"
     mongoose-lean-getters: "npm:2.3.1"
     mongoose-lean-virtuals: "npm:2.1.0"
-    nodemailer: "npm:8.0.11"
+    nodemailer: "npm:9.0.1"
     supertest: "npm:7.2.2"
     tsx: "npm:4.22.4"
     winston: "npm:3.19.0"
