@@ -74,11 +74,14 @@ export const verifyUserSignups = async (): Promise<
     programItems,
   );
 
-  lotteryParticipantDirectSignups.map(({ programItemId, userSignups }) => {
+  for (const {
+    programItemId,
+    userSignups,
+  } of lotteryParticipantDirectSignups) {
     // Verify group member signups match with group creators lotterySignups
     // If not in group -> user is group creator
 
-    userSignups.map((userSignup) => {
+    for (const userSignup of userSignups) {
       const matchingUser = users.find(
         (user) => user.username === userSignup.username,
       );
@@ -88,17 +91,17 @@ export const verifyUserSignups = async (): Promise<
           "%s",
           new Error(`No matcing user: ${userSignup.username}`),
         );
-        return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+        continue;
       }
 
       const groupCreatorResult = getGroupCreator(users, matchingUser);
       if (!groupCreatorResult.ok) {
-        return groupCreatorResult;
+        continue;
       }
 
       const groupCreator = groupCreatorResult.value;
 
-      const matchingCreatorLotterySignup = groupCreator.lotterySignups.find(
+      const matchingCreatorLotterySignup = groupCreator.lotterySignups.some(
         (creatorLotterySignup) =>
           creatorLotterySignup.programItemId === programItemId &&
           dayjs(creatorLotterySignup.signedToStartTime).isSame(
@@ -113,10 +116,9 @@ export const verifyUserSignups = async (): Promise<
             `No matching signed program item found from group creator: ${userSignup.username} - ${programItemId}`,
           ),
         );
-        return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
       }
-    });
-  });
+    }
+  }
 
   return makeSuccessResult();
 };
@@ -126,12 +128,12 @@ export const assertUserUpdatedCorrectly = async (
 ): Promise<void> => {
   const users = unsafelyUnwrap(await findUsers(usernames));
 
-  users.map((user) => {
+  for (const user of users) {
     const newAssignmentEventLogItems = user.eventLogItems.filter(
       (eventLogItem) => eventLogItem.action === EventLogAction.NEW_ASSIGNMENT,
     );
     expect(newAssignmentEventLogItems).toHaveLength(1);
-  });
+  }
 
   await verifyUserSignups();
 };

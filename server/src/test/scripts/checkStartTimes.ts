@@ -16,16 +16,18 @@ const checkStartTimes = async (): Promise<void> => {
     (programItem) => programItem.programType === ProgramType.TABLETOP_RPG,
   );
 
-  rpgs.map((rpg) => {
+  for (const rpg of rpgs) {
     const startMinute = dayjs(rpg.startTime).minute();
     if (startMinute !== 0) {
       logger.info(`${getTime(rpg.startTime)} - ${rpg.title}`);
     }
-  });
+  }
 
   await db.gracefulExit();
 };
 
-checkStartTimes().catch((error: unknown) => {
+try {
+  await checkStartTimes();
+} catch (error: unknown) {
   logger.error("%s", error);
-});
+}

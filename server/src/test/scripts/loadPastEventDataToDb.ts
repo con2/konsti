@@ -61,6 +61,8 @@ const loadPastEventDataToDb = async (): Promise<void> => {
   await db.gracefulExit();
 };
 
-loadPastEventDataToDb().catch((error: unknown) => {
+try {
+  await loadPastEventDataToDb();
+} catch (error: unknown) {
   logger.error("%s", error);
-});
+}

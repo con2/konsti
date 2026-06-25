@@ -62,7 +62,7 @@ const removeMovedLotterySignupsAndNotify = async (
   }
   const usersToUpdate = usersResult.value.flatMap((user) => {
     const movedLotterySignups = user.lotterySignups.filter((lotterySignup) => {
-      const movedFound = movedProgramItems.find((movedProgramItem) => {
+      const movedFound = movedProgramItems.some((movedProgramItem) => {
         return movedProgramItem.programItemId === lotterySignup.programItemId;
       });
       if (movedFound) {
@@ -146,7 +146,7 @@ const notifyUsersWithDirectSignups = async (
 
     return directSignup.userSignups.flatMap((userSignup) => {
       // Check if user also had lottery signup and don't notify twice
-      const alreadyNotifiedUser = usersWithMovedLotterySignups.find(
+      const alreadyNotifiedUser = usersWithMovedLotterySignups.some(
         (user) => user.username === userSignup.username,
       );
       if (alreadyNotifiedUser) {

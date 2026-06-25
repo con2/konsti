@@ -25,8 +25,8 @@ export const getSimilarUsernames = (year: number, event: string): void => {
     ].filter((comparedUsername) => {
       // Don't include usernames where two first letters are same
       return (
-        comparedUsername.startsWith(lowercaseUsername[0]) &&
-        comparedUsername[1] === lowercaseUsername[1]
+        comparedUsername.startsWith(lowercaseUsername.at(0) ?? "") &&
+        comparedUsername.at(1) === lowercaseUsername.at(1)
       );
     });
 
@@ -50,7 +50,9 @@ export const getSimilarUsernames = (year: number, event: string): void => {
 
   for (const pair of similarUsernames) {
     // Normalize the pair by sorting the usernames alphabetically
-    const normalizedPair = [pair.username, pair.closest].sort().join(",");
+    const normalizedPair = [pair.username, pair.closest]
+      .toSorted((a, b) => a.localeCompare(b))
+      .join(",");
 
     // If the pair is not in the set, add it to the set and include the item in the filtered results
     if (!pairSet.has(normalizedPair)) {

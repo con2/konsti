@@ -72,7 +72,7 @@ export const createProgramItems = async (
     config.event().activeProgramTypes,
   );
 
-  kompassiProgramTypes.map((kompassiProgramType) => {
+  for (const kompassiProgramType of kompassiProgramTypes) {
     logger.info(
       `Generate data for ${programItemCount} programs of type ${kompassiProgramType} for ${startTimes.length} start times`,
     );
@@ -141,7 +141,7 @@ export const createProgramItems = async (
         kompassiProgramItems.push(kompassiProgramItemData);
       }
     }
-  });
+  }
 
   return await saveProgramItems(
     kompassiProgramItemMapper(kompassiProgramItems),

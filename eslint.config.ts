@@ -149,27 +149,13 @@ export default defineConfig([
       "unicorn/prefer-top-level-await": "off", // Don't enforce top-level await style
       "unicorn/numeric-separators-style": "off", // Don't want this
       "unicorn/no-lonely-if": "off", // Don't want this
-      "unicorn/no-array-sort": "off", // Wait till toSorted is more widely supported
+      "unicorn/no-top-level-side-effects": "off", // Express route registration, Mongoose schema setup and i18next init are top-level side effects by design
       "unicorn/prefer-minimal-ternary": "off", // TODO
       "unicorn/no-declarations-before-early-exit": "off", // TODO
       "unicorn/prefer-number-coercion": "off", // TODO
       "unicorn/prefer-early-return": "off", // TODO
-      "unicorn/prefer-await": "off", // TODO
-      "unicorn/no-unused-array-method-return": "off", // TODO
-      "unicorn/prefer-split-limit": "off", // TODO
-      "unicorn/no-global-object-property-assignment": "off", // TODO
-      "unicorn/no-top-level-side-effects": "off", // TODO
-      "unicorn/prefer-ternary": "off", // TODO
-      "unicorn/prefer-at": "off", // TODO
-      "unicorn/require-array-sort-compare": "off", // TODO
-      "unicorn/prefer-direct-iteration": "off", // TODO
-      "unicorn/no-subtraction-comparison": "off", // TODO
-      "unicorn/prefer-array-from-map": "off", // TODO
-      "unicorn/no-negated-array-predicate": "off", // TODO
-      "unicorn/prefer-array-some": "off", // TODO
 
       // @typescript-eslint
-      "@typescript-eslint/no-unnecessary-type-arguments": "off", // Doesn't work with API types <Response,Request>
       "@typescript-eslint/explicit-module-boundary-types": "error",
       "@typescript-eslint/explicit-function-return-type": [
         "error",
@@ -285,6 +271,9 @@ export default defineConfig([
           ignoreArrowShorthand: true,
         },
       ],
+
+      // eslint-plugin-unicorn
+      "unicorn/no-array-sort": "off", // Wait till toSorted is more widely supported
     },
   },
 
@@ -300,6 +289,9 @@ export default defineConfig([
       "n/no-unpublished-import": "off", // Slow and handled by tsc
       "n/no-extraneous-import": "off", // Doesn't work with Yarn workspace dependencies
       "n/no-process-exit": "off", // eslint-plugin-unicorn has extended version
+
+      // @typescript-eslint
+      "@typescript-eslint/no-unnecessary-type-arguments": "off", // Doesn't work with API types <Response,Request>
     },
   },
 

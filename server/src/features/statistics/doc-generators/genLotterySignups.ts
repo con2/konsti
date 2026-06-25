@@ -182,7 +182,7 @@ const renderYearSection = (event: string, year: string): string[] => {
     ...participantsByDayHour.keys(),
     ...winnersByDayHour.keys(),
   ]);
-  for (const day of [...allDays].sort()) {
+  for (const day of [...allDays].toSorted((a, b) => a.localeCompare(b))) {
     const pHours = participantsByDayHour.get(day) ?? new Map();
     const wHours = winnersByDayHour.get(day) ?? new Map();
     const allHours = new Set([
@@ -221,7 +221,7 @@ const renderYearSection = (event: string, year: string): string[] => {
     }
     block.push(dayHeader, "");
 
-    for (const hour of [...allHours].sort((a, b) => a - b)) {
+    for (const hour of [...allHours].toSorted((a, b) => a - b)) {
       const p = (pHours as Map<number, Set<string>>).get(hour)?.size ?? 0;
       const w = (wHours as Map<number, Set<string>>).get(hour)?.size ?? 0;
       const pBars = Math.round(p / scale);
@@ -245,10 +245,9 @@ const renderYearSection = (event: string, year: string): string[] => {
 export const genLotterySignups = (): void => {
   const eventSummaries = new Map<string, YearSummary[]>();
   for (const event of EVENT_ORDER) {
-    const summaries: YearSummary[] = [];
-    for (const year of eventYears(event)) {
-      summaries.push(collectSummary(event, year));
-    }
+    const summaries: YearSummary[] = Array.from(eventYears(event), (year) =>
+      collectSummary(event, year),
+    );
     eventSummaries.set(event, summaries);
   }
 

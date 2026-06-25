@@ -142,7 +142,7 @@ export const saveProgramItems = async (
   }
   const directSignupDocMissingProgramItemIds = updatedProgramItems.flatMap(
     (updatedProgramItem) => {
-      const found = directSignupsResult.value.find(
+      const found = directSignupsResult.value.some(
         (directSignup) =>
           directSignup.programItemId === updatedProgramItem.programItemId,
       );

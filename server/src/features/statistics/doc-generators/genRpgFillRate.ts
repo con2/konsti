@@ -112,7 +112,7 @@ export const genRpgFillRate = (): void => {
     out.push(...block);
   }
 
-  if (!rows.some((r) => r.event === "solmukohta")) {
+  if (rows.every((r) => r.event !== "solmukohta")) {
     out.push("## Solmukohta", "", "No tabletop RPGs at this event.", "");
   }
 

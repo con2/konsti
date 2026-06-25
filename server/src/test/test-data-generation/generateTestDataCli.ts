@@ -28,6 +28,8 @@ const generateTestDataCli = async (): Promise<void> => {
   await runGenerators(options, { closeDb: true });
 };
 
-generateTestDataCli().catch((error: unknown) => {
+try {
+  await generateTestDataCli();
+} catch (error: unknown) {
   logger.error("%s", error);
-});
+}

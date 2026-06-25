@@ -30,25 +30,15 @@ export const removeHiddenProgramItemsFromUsers = async (
 
   const usersToUpdate: User[] = usersResult.value.flatMap<User>((user) => {
     // Lottery signups to remove
-    const lotterySignups = user.lotterySignups.filter((lotterySignup) => {
-      const hiddenFound = hiddenProgramItemIds.find((hiddenProgramItemId) => {
-        return hiddenProgramItemId === lotterySignup.programItemId;
-      });
-      if (!hiddenFound) {
-        return lotterySignup;
-      }
-    });
+    const lotterySignups = user.lotterySignups.filter(
+      (lotterySignup) =>
+        !hiddenProgramItemIds.includes(lotterySignup.programItemId),
+    );
 
     // Favorite program items to remove
     const favoriteProgramItemIds = user.favoriteProgramItemIds.filter(
-      (favoriteProgramItemId) => {
-        const hiddenFound = hiddenProgramItemIds.find((hiddenProgramItemId) => {
-          return hiddenProgramItemId === favoriteProgramItemId;
-        });
-        if (!hiddenFound) {
-          return favoriteProgramItemId;
-        }
-      },
+      (favoriteProgramItemId) =>
+        !hiddenProgramItemIds.includes(favoriteProgramItemId),
     );
 
     if (

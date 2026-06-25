@@ -43,6 +43,8 @@ const init = async (): Promise<void> => {
   await db.gracefulExit();
 };
 
-init().catch((error: unknown) => {
+try {
+  await init();
+} catch (error: unknown) {
   logger.error("%s", error);
-});
+}

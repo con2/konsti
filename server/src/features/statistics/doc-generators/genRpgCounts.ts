@@ -67,7 +67,7 @@ export const genRpgCounts = (): void => {
       const bar = "█".repeat(bars);
       const delta =
         prev !== null && prev > 0
-          ? ` (${r.rpgs - prev >= 0 ? "+" : ""}${r.rpgs - prev} vs prev)`
+          ? ` (${r.rpgs >= prev ? "+" : ""}${r.rpgs - prev} vs prev)`
           : "";
       eventBlock.push(`${r.year} ${bar} ${r.rpgs}${delta}`);
       prev = r.rpgs;

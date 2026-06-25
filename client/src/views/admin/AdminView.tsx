@@ -75,7 +75,7 @@ export const AdminView = (): ReactElement => {
         .startTimesByParentIds.get(programItem.parentId);
       return parentStartTime ?? programItem.startTime;
     });
-    const times = [...new Set(startTimes)].sort();
+    const times = [...new Set(startTimes)].sort((a, b) => a.localeCompare(b));
 
     return times.map((time) => {
       const formattedDate = capitalize(getWeekdayAndTime(time));

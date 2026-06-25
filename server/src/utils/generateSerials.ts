@@ -32,6 +32,8 @@ const generateSerials = async (): Promise<void> => {
   }
 };
 
-generateSerials().catch((error: unknown) => {
+try {
+  await generateSerials();
+} catch (error: unknown) {
   logger.error("%s", error);
-});
+}

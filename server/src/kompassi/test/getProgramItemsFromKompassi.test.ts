@@ -30,7 +30,7 @@ const getMockKompassiProgramItems = (
 
 describe("should load Kompassi data for all events", () => {
   // Loop all event names
-  Object.values(EventName).map((eventName) => {
+  for (const eventName of Object.values(EventName)) {
     const mockKompassiProgramItems = getMockKompassiProgramItems(eventName);
 
     test(`should parse event ${eventName} program items`, async () => {
@@ -47,5 +47,5 @@ describe("should load Kompassi data for all events", () => {
       const programItems = unsafelyUnwrap(await getProgramItemsForEvent());
       expect(programItems.length).toEqual(2);
     });
-  });
+  }
 });

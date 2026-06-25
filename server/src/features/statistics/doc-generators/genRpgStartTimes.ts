@@ -62,7 +62,7 @@ export const genRpgStartTimes = (): void => {
 
       out.push(`### ${year} (${rpgs.length} total)`, "");
 
-      const days = [...byDayHour.keys()].sort();
+      const days = [...byDayHour.keys()].toSorted((a, b) => a.localeCompare(b));
       for (const day of days) {
         const hours = byDayHour.get(day);
         if (!hours) continue;
@@ -72,7 +72,7 @@ export const genRpgStartTimes = (): void => {
           `${day} (${dayOfWeek(day)}, ${total} total)`,
           "",
         ];
-        const sortedHours = [...hours.entries()].sort((a, b) => a[0] - b[0]);
+        const sortedHours = [...hours].toSorted((a, b) => a[0] - b[0]);
         for (const [h, c] of sortedHours) {
           const label = `${String(h).padStart(2, "0")}:00`;
           const bar = "█".repeat(c);

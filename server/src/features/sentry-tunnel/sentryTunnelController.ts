@@ -9,9 +9,14 @@ export const postSentryTunnel = (
 ): Response => {
   logger.info(`API call: POST ${ApiEndpoint.SENTRY_TUNNEL}`);
 
-  resendSentryRequest(req.body).catch((error: unknown) => {
-    logger.error("resendSentryRequest failed: %s", error);
-  });
+  // Fire-and-forget: respond to the Sentry client immediately without awaiting the resend
+  void (async () => {
+    try {
+      await resendSentryRequest(req.body);
+    } catch (error: unknown) {
+      logger.error("resendSentryRequest failed: %s", error);
+    }
+  })();
 
   return res.sendStatus(200);
 };

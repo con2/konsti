@@ -8,13 +8,13 @@ export const getAuthorizedUsername = (
 ): string | null => {
   logger.debug(`Auth: Require jwt for user group ${String(requiredUserGroup)}`);
 
-  if (authHeader?.split(" ")[0] !== "Bearer") {
+  if (authHeader?.split(" ", 1)[0] !== "Bearer") {
     logger.info("Auth: No auth header");
     return null;
   }
 
   // Strip 'bearer' from authHeader
-  const jwt = authHeader.split("Bearer ")[1];
+  const jwt = authHeader.split("Bearer ", 2)[1];
 
   const jwtResponse = getJwtResponse(jwt, requiredUserGroup);
 
@@ -34,12 +34,12 @@ export const getAuthorizedUserGroup = (
 ): UserGroup | null => {
   logger.debug("Auth: Get userGroup for user");
 
-  if (authHeader?.split(" ")[0] !== "Bearer") {
+  if (authHeader?.split(" ", 1)[0] !== "Bearer") {
     return null;
   }
 
   // Strip 'bearer' from authHeader
-  const jwt = authHeader.split("Bearer ")[1];
+  const jwt = authHeader.split("Bearer ", 2)[1];
 
   // Any userGroup is fine, we want to know what the group is
   const jwtResponse = getJwtResponse(jwt, [

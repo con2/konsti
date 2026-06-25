@@ -60,7 +60,7 @@ export const MyDirectSignupsList = ({
             directSignups,
             (directSignup) => directSignup.signedToStartTime,
           )}
-          startTimes={unique(startTimes).sort()}
+          startTimes={unique(startTimes).sort((a, b) => a.localeCompare(b))}
         />
       )}
     </RaisedCard>

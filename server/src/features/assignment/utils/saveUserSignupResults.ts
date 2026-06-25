@@ -225,7 +225,7 @@ export const saveUserSignupResults = async ({
 
   const noAssignmentLotterySignupUsernames = lotterySignupUsernames.flatMap(
     (lotterySignupUsername) => {
-      const userWithLotterySignup = results.find(
+      const userWithLotterySignup = results.some(
         (result) => result.username === lotterySignupUsername,
       );
       if (!userWithLotterySignup) {

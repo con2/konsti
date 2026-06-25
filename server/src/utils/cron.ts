@@ -80,9 +80,9 @@ export const startCronJobs = async (): Promise<void> => {
 };
 
 export const stopCronJobs = (): void => {
-  cronJobs.map((job) => {
+  for (const job of cronJobs) {
     job.stop();
-  });
+  }
 
   logger.info("CronJobs stopped");
 };
