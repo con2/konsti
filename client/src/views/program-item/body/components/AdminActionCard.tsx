@@ -52,20 +52,25 @@ export const AdminActionCard = ({ programItem }: Props): ReactElement => {
 
   useEffect(() => {
     // Check if hidden
-    hiddenProgramItems.find((hiddenProgramItem) => {
-      if (hiddenProgramItem.programItemId === programItem.programItemId) {
-        setHidden(true);
-        return true;
-      }
-    });
+    if (
+      hiddenProgramItems.some(
+        (hiddenProgramItem) =>
+          hiddenProgramItem.programItemId === programItem.programItemId,
+      )
+    ) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setHidden(true);
+    }
 
     // Check if signup question exists
-    signupQuestions.find((signupQuestion) => {
-      if (signupQuestion.programItemId === programItem.programItemId) {
-        setHasSignupQuestion(true);
-        return true;
-      }
-    });
+    if (
+      signupQuestions.some(
+        (signupQuestion) =>
+          signupQuestion.programItemId === programItem.programItemId,
+      )
+    ) {
+      setHasSignupQuestion(true);
+    }
   }, [programItem.programItemId, hiddenProgramItems, signupQuestions]);
 
   const updateHidden = async (): Promise<void> => {

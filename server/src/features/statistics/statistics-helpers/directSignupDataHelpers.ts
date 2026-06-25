@@ -27,12 +27,12 @@ export const printRpgDirectSignupFullTimes = (
     `Loaded direct signups for ${rpgDirectSignups.length} RPG program items`,
   );
 
-  rpgDirectSignups.flatMap((rpgDirectSignup) => {
+  for (const rpgDirectSignup of rpgDirectSignups) {
     const programItem = programItems.find(
       (p) => p.programItemId === rpgDirectSignup.programItemId,
     );
     if (!programItem || programItem.state === State.CANCELLED) {
-      return [];
+      continue;
     }
 
     const directSignupStartTime = getRollingDirectSignupStartTime(
@@ -55,7 +55,7 @@ export const printRpgDirectSignupFullTimes = (
         "seconds",
       );
       logger.info(`${seconds}s (${attendance}) - ${programItem.title}`);
-      return;
+      continue;
     }
 
     const hours = Math.floor(totalMinutes / 60);
@@ -68,7 +68,7 @@ export const printRpgDirectSignupFullTimes = (
     } else {
       logger.info(`${minutes}min (${attendance}) - ${programItem.title}`);
     }
-  });
+  }
 };
 
 export const printProgramItemSignups = (
@@ -88,7 +88,7 @@ export const printProgramItemSignups = (
     (signup) => signup.programItemId,
   );
 
-  sorted.map((directSignup) => {
+  for (const directSignup of sorted) {
     const lotterySignups = directSignup.userSignups.filter(
       (userSignup) => userSignup.priority !== 0,
     );
@@ -101,11 +101,11 @@ export const printProgramItemSignups = (
     );
 
     if (!programItem) {
-      return;
+      continue;
     }
 
     logger.info(
       `${getShortWeekdayAndTime(programItem.startTime)} - max: ${programItem.maxAttendance} - lottery: ${lotterySignups.length} - direct: ${signupsAfterLottery.length}`,
     );
-  });
+  }
 };

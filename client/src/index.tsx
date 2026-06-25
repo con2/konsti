@@ -28,20 +28,21 @@ const App = lazyWithRetry(async () => await import("client/app/App"));
 const { enableAxe, enableWhyDidYouRender } = config.client();
 
 if (enableWhyDidYouRender && process.env.NODE_ENV === "development") {
-  void import("@welldone-software/why-did-you-render").then(
-    ({ default: whyDidYouRender }) => {
-      return whyDidYouRender(React, {
-        include: [/(.*?)/],
-        exclude: [/^FontAwesomeIcon$/, /^Link$/, /^Button$/],
-      });
-    },
-  );
+  void (async () => {
+    const { default: whyDidYouRender } =
+      await import("@welldone-software/why-did-you-render");
+    whyDidYouRender(React, {
+      include: [/(.*?)/],
+      exclude: [/^FontAwesomeIcon$/, /^Link$/, /^Button$/],
+    });
+  })();
 }
 
 if (enableAxe && process.env.NODE_ENV === "development") {
-  void import("@axe-core/react").then(({ default: axe }) => {
-    return axe(React, ReactDOM, 1000);
-  });
+  void (async () => {
+    const { default: axe } = await import("@axe-core/react");
+    await axe(React, ReactDOM, 1000);
+  })();
 }
 
 const getDsn = (): string | undefined => {

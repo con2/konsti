@@ -85,7 +85,7 @@ export const readDataFile = (
 export const eventYears = (event: string): string[] => {
   const dir = path.join(config.server().statsDataDir, event);
   if (!fs.existsSync(dir)) return [];
-  return fs.readdirSync(dir).sort();
+  return fs.readdirSync(dir).toSorted((a, b) => a.localeCompare(b));
 };
 
 export const writeDoc = (relPath: string, content: string): void => {

@@ -32,9 +32,9 @@ export const EventLog = (): ReactElement => {
   const localEventLogItems = useRef(eventLogItems);
 
   const setEventsSeen = useCallback((): void => {
-    eventLogItems.map(({ eventLogItemId, isSeen }) => {
+    for (const { eventLogItemId, isSeen } of eventLogItems) {
       if (isSeen) {
-        return;
+        continue;
       }
       // eslint-disable-next-line @typescript-eslint/no-floating-promises
       dispatch(
@@ -43,7 +43,7 @@ export const EventLog = (): ReactElement => {
           isSeen: true,
         }),
       );
-    });
+    }
   }, [dispatch, eventLogItems]);
 
   useEffect(() => {

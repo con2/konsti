@@ -31,13 +31,11 @@ const getSignupsByStartTime = (
   );
 
   for (const user of users) {
-    let groupSize = 1;
-
-    if (user.groupCode !== "0" && user.groupCode === user.serial) {
-      groupSize = users.filter(
-        (groupUser) => groupUser.groupCode === user.serial,
-      ).length;
-    }
+    const groupSize =
+      user.groupCode !== "0" && user.groupCode === user.serial
+        ? users.filter((groupUser) => groupUser.groupCode === user.serial)
+            .length
+        : 1;
 
     const lotterySignups = user.lotterySignups.reduce<Record<string, number>>(
       (acc, lotterySignup) => {
@@ -127,7 +125,7 @@ const getTopProgramItems = (
     }
   }
 
-  const results = [...tally.values()].sort((a, b) => {
+  const results = [...tally.values()].toSorted((a, b) => {
     if (b.total !== a.total) return b.total - a.total; // primary: total
     if (b.byPriority[1] !== a.byPriority[1])
       return b.byPriority[1] - a.byPriority[1]; // tie: more priority1

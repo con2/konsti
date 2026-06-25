@@ -39,6 +39,8 @@ const removeInvalidProgramItems = async (): Promise<void> => {
   }
 };
 
-removeInvalidProgramItems().catch((error: unknown) => {
+try {
+  await removeInvalidProgramItems();
+} catch (error: unknown) {
   logger.error("%s", error);
-});
+}

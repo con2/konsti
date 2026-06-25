@@ -54,18 +54,25 @@ const startApp = async (): Promise<void> => {
   }
 
   process.once("SIGINT", (signal: string) => {
-    closeServer(server, signal).catch((error: unknown) => {
-      logger.error("%s", error);
-    });
+    void handleShutdown(server, signal);
   });
   process.once("SIGTERM", (signal: string) => {
-    closeServer(server, signal).catch((error: unknown) => {
-      logger.error("%s", error);
-    });
+    void handleShutdown(server, signal);
   });
 };
 
-const init = (): void => {
+const handleShutdown = async (
+  server: Server,
+  signal: string,
+): Promise<void> => {
+  try {
+    await closeServer(server, signal);
+  } catch (error: unknown) {
+    logger.error("%s", error);
+  }
+};
+
+const init = async (): Promise<void> => {
   if (typeof process.env.NODE_ENV === "string") {
     logger.info(`Node environment: ${process.env.NODE_ENV}`);
   } else {
@@ -73,9 +80,11 @@ const init = (): void => {
     throw new TypeError("Node environment NODE_ENV missing");
   }
 
-  startApp().catch((error: unknown) => {
+  try {
+    await startApp();
+  } catch (error: unknown) {
     logger.error("%s", error);
-  });
+  }
 };
 
-init();
+await init();

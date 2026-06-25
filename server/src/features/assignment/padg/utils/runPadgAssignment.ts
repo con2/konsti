@@ -30,16 +30,16 @@ const sortList = (list: ListItem[], i: number): ListItem[] => {
       // Sort by gain, randomize between same gain values
       return Object.values(groupBy(list, (item) => item.gain)) // Group by gain
         .map((group) => shuffle(group)) // Shuffle each group
-        .sort((a, b) => a[0].gain - b[0].gain) // Sort groups by gain, ascending
+        .toSorted((a, b) => a[0].gain - b[0].gain) // Sort groups by gain, ascending
         .flat();
     case 1:
       // Sort by group size, randomize between groups of same size
       return Object.values(groupBy(list, (item) => item.size)) // Group by size
         .map((group) => shuffle(group)) // Shuffle each group
-        .sort((a, b) => a[0].size - b[0].size) // Sort groups by size, ascending
+        .toSorted((a, b) => a[0].size - b[0].size) // Sort groups by size, ascending
         .flat();
     default:
-      return list.sort((_a, _b) => 0.5 - Math.random());
+      return list.toSorted((_a, _b) => 0.5 - Math.random());
   }
 };
 

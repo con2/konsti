@@ -41,7 +41,7 @@ export const getGroups = (
       groupBy(lotterySignupsForStartTime, (item) => item.priority),
     ) // Group by priority
       .map((group) => shuffle(group)) // Shuffle each group
-      .sort((a, b) => a[0].priority - b[0].priority) // Sort groups by priority, ascending
+      .toSorted((a, b) => a[0].priority - b[0].priority) // Sort groups by priority, ascending
       .flat();
 
     return {

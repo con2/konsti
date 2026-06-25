@@ -25,7 +25,11 @@ if (!config.server().enableLoggingInTests) {
 }
 
 // Defined in globalSetup.ts
-globalThis.__MONGO_URI__ = `mongodb://127.0.0.1:${mongoDbPort}/`;
+Object.defineProperty(globalThis, "__MONGO_URI__", {
+  value: `mongodb://127.0.0.1:${mongoDbPort}/`,
+  writable: true,
+  configurable: true,
+});
 
 vi.spyOn(config, "event").mockReturnValue({
   ...config.event(),

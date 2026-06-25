@@ -63,8 +63,10 @@ const main = async (): Promise<void> => {
   await assertContainerStillRunning();
 };
 
-main().catch((error: unknown) => {
+try {
+  await main();
+} catch (error: unknown) {
   logger.error("Docker: Failed to start MongoDB container: %s", error);
   // eslint-disable-next-line unicorn/no-process-exit
   process.exit(1);
-});
+}

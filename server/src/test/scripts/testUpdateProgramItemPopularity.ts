@@ -25,6 +25,8 @@ const testUpdateProgramItemPopularity = async (): Promise<void> => {
   }
 };
 
-testUpdateProgramItemPopularity().catch((error: unknown) => {
+try {
+  await testUpdateProgramItemPopularity();
+} catch (error: unknown) {
   logger.error("%s", error);
-});
+}

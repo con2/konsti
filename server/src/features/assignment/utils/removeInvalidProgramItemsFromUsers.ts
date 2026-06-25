@@ -192,7 +192,7 @@ const notifyUsersWithLotterySignupOrFavorite = async (
     // If user has already been notified of program item cancel/delete because of a direct signup, don't resend
     const userDirectSignups = new Set(
       affectedDirectSignups.flatMap((directSignup) => {
-        const found = directSignup.userSignups.find(
+        const found = directSignup.userSignups.some(
           (userSignup) => userSignup.username === user.username,
         );
         if (found) {
