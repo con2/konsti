@@ -58,7 +58,8 @@ export const kompassiProgramItemMapper = (
         languages: mapLanguages(programItem),
         endTime: dayjs(scheduleItem.endTime).toISOString(),
         people: programItem.cachedHosts,
-        minAttendance: programItem.cachedAnnotations["konsti:minAttendance"],
+        minAttendance:
+          programItem.cachedAnnotations["konsti:minAttendance"] || 1,
         maxAttendance: scheduleItem.cachedAnnotations["konsti:maxAttendance"],
         gameSystem: programItem.cachedAnnotations["konsti:rpgSystem"],
         shortDescription: mapShortDescription(programItem),
