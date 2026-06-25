@@ -6,7 +6,9 @@
     "moduleResolution": "bundler",
     "allowUnreachableCode": false,
     "noErrorTruncation": true,
-    "types": [],
+    "target": "es2025",
+    "lib": ["es2025", "dom"],
+    "types": ["node"],
     "libReplacement": false,
     "paths": {
       "client/*": ["./client/src/*"],
@@ -14,5 +16,11 @@
       "shared/*": ["./shared/*"],
       "playwright/*": ["./playwright/*"]
     }
-  }
+  },
+  "include": [
+    "*.ts",
+    "eslint-rules/**/*.ts",
+    "playwright/**/*.ts",
+    ".claude/hooks/**/*.ts"
+  ]
 }
