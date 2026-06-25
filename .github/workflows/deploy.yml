@@ -29,7 +29,7 @@ jobs:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: docker/login-action@v4
         with:
           registry: ghcr.io
@@ -49,13 +49,13 @@ jobs:
     if: github.ref == 'refs/heads/main'
     runs-on: qb-arc-runners
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: actions/setup-python@v6
         with:
           python-version: "3.x"
       - name: Cache skaffold
         id: cache-skaffold
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         with:
           path: bin/skaffold
           key: ${{ runner.os }}-skaffold-v2.18.2
@@ -67,7 +67,7 @@ jobs:
           chmod +x bin/skaffold
       - name: Cache kubectl
         id: cache-kubectl
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         with:
           path: bin/kubectl
           key: ${{ runner.os }}-kubectl-v1.22.0
@@ -104,7 +104,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Use Node.js
         uses: actions/setup-node@v6
