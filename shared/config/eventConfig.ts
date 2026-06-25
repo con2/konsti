@@ -33,6 +33,7 @@ export const eventConfig: EventConfig = {
     ProgramType.LARP,
     ProgramType.TOURNAMENT,
     ProgramType.WORKSHOP,
+    ProgramType.OTHER_GAMING,
     ProgramType.OTHER,
   ],
 
@@ -40,6 +41,7 @@ export const eventConfig: EventConfig = {
     ProgramType.TABLETOP_RPG,
     ProgramType.LARP,
     ProgramType.WORKSHOP,
+    ProgramType.OTHER_GAMING,
   ],
 
   eventStartTime: `${friday}T12:00:00Z`, // Fri 15:00 GMT+3

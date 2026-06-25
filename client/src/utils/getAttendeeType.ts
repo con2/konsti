@@ -14,6 +14,7 @@ export const getAttendeeType = (
     case ProgramType.TABLETOP_RPG:
     case ProgramType.LARP:
     case ProgramType.EXPERIENCE_POINT:
+    case ProgramType.OTHER_GAMING:
     case "all":
       return AttendeeType.Player;
 

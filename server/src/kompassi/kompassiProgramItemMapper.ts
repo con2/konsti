@@ -112,6 +112,9 @@ const mapProgramType = (
     case KompassiKonstiProgramType.ROUNDTABLE_DISCUSSION:
       return ProgramType.ROUNDTABLE_DISCUSSION;
 
+    case KompassiKonstiProgramType.OTHER_GAMING:
+      return ProgramType.OTHER_GAMING;
+
     default:
       return exhaustiveSwitchGuard(programType);
   }

@@ -11,6 +11,7 @@ export enum KompassiKonstiProgramType {
   OTHER = "other",
   FLEAMARKET = "fleamarket",
   ROUNDTABLE_DISCUSSION = "roundtableDiscussion",
+  OTHER_GAMING = "othergaming",
 }
 
 export enum KompassiGamestyle {
