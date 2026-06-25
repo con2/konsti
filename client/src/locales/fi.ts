@@ -389,6 +389,7 @@ export const translationFI = {
     other: "Muu ohjelma",
     roundtableDiscussion: "Keskustelupiiri",
     fleaMarket: "Kirpputori",
+    otherGaming: "Muu pelaaminen",
   },
   programTypeSelection: {
     all: "Kaikki ohjelmatyypit",
@@ -400,6 +401,7 @@ export const translationFI = {
     other: "Muu ohjelma",
     roundtableDiscussion: "Keskustelupiirit",
     fleaMarket: "Kirpputoriajat",
+    otherGaming: "Muu pelaaminen",
   },
   programTypeSingular: {
     all: "ohjelmanumero",
@@ -411,6 +413,7 @@ export const translationFI = {
     other: "ohjelmanumero",
     roundtableDiscussion: "keskustelupiiri",
     fleaMarket: "kirpputoriaika",
+    otherGaming: "peli",
   },
   programTypePlural: {
     all: "ohjelmanumerot",
@@ -422,6 +425,7 @@ export const translationFI = {
     other: "ohjelmanumerot",
     roundtableDiscussion: "keskustelupiirit",
     fleaMarket: "kirpputoriajat",
+    otherGaming: "pelit",
   },
   programTypeGenetive: {
     all: "Ohjelmanumeron",
@@ -433,6 +437,7 @@ export const translationFI = {
     other: "Ohjelmanumeron",
     roundtableDiscussion: "Keskustelupiirin",
     fleaMarket: "Kirpputoriajan",
+    otherGaming: "Pelin",
   },
   programTypePartitivePlural: {
     all: "ohjelmanumeroita",
@@ -444,6 +449,7 @@ export const translationFI = {
     other: "ohjelmanumeroita",
     roundtableDiscussion: "keskustelupiirejä",
     fleaMarket: "kirpputoriaikoja",
+    otherGaming: "pelejä",
   },
   programTypeInessive: {
     all: "ohjelmanumerossa",
@@ -455,6 +461,7 @@ export const translationFI = {
     other: "ohjelmanumerossa",
     roundtableDiscussion: "keskustelupiirissä",
     fleaMarket: "kirpputoriajassa",
+    otherGaming: "pelissä",
   },
   programTypeIllative: {
     all: "ohjelmanumeroon",
@@ -466,6 +473,7 @@ export const translationFI = {
     other: "ohjelmanumeroon",
     roundtableDiscussion: "keskustelupiiriin",
     fleaMarket: "kirpputoriaikaan",
+    otherGaming: "peliin",
   },
   firstLogin: {
     serial: "Ota koodi talteen salasanan palauttamista varten:",

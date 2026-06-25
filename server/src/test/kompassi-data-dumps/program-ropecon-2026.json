@@ -227,6 +227,50 @@
     ]
   },
   {
+    "slug": "aggressive-reunification-battletech-alpha-strike",
+    "title": "Aggressive Reunification - Battletech Alpha Strike",
+    "description": "\"The Star League proclaims that it is bringing order back to a fractured humanity. Terra speaks of unity, stability, and the restoration of a lost golden age. In the courts of the Inner Sphere, this war is presented as a necessary undertaking, almost a moral duty. In the Periphery, those same words sound very different. To the Taurian Concordat, this is not reunification. The Star League does not want partners, but subjects. This is the Star League’s War of Aggression.\r\n\r\nKeuterville is one of those worlds where these two visions collide in laser fire, war machines, and steel. As the months drag on, the war becomes exactly what the Star League did not want: long, brutal, and expensive. Thousands of men fall. BattleMechs and tanks are left as smoking wrecks across the fields of Keuterville. What was meant to be a swift occupation turns into a grinding nightmare. And now the decisive moment is at hand. This is a war of attrition on the frontier, where every mistake carries a price, every withdrawal feels like defeat, and every battle may decide the fate of the planet.\r\n\r\nOn Keuterville, they are not fighting merely over possession of a single planet. They are fighting over who has the right to decide the fate of free worlds.\"\r\n\r\n--\r\n\r\nBattletech Alpha Strike narrative scenario. Players are encouraged to bring their own miniatures and dice.\r\n\r\nForces are 300 PV per player, either on the Star League or Periphery sides. All units must be available prior to 2578 on Master Unit List (http://masterunitlist.info/). Faction Availability (Star League+Federated Suns+Capellan Confederation+Lyran Commonwealth+Draconis Combine+Inner Sphere General OR Taurian Concordat+Magistracy of Canopus+Outworlds Alliance+Rim Worlds Republic+Periphery General) should be respected as a guideline, but does not need to be strictly uphelp.\r\n\r\nAll mechs need to have a MUL printed unit card. A tablet/laptop with Jeff's Alpha Strike Tools IIC or Mekbay is accepted also.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-07-26"],
+      "form": ["offer-miniatures"],
+      "room": ["halli5figupelaaminen"],
+      "type": ["gaming"],
+      "state": ["accepted"],
+      "topic": ["figures"],
+      "konsti": ["othergaming"],
+      "language": ["en"],
+      "age-group": ["adultsnyouth"],
+      "scheduled": ["one", "one-or-more"],
+      "inclusivity": ["long-program", "no-movement"],
+      "registration": ["konsti"],
+      "revolvingdoor": ["true"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Mukautettu Alpha Strike",
+      "konsti:maxAttendance": 5,
+      "ropecon:isRevolvingDoor": false
+    },
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "aggressive-reunification-battletech-alpha-strike",
+        "title": "Aggressive Reunification - Battletech Alpha Strike",
+        "startTime": "2026-07-26T10:00:00+03:00",
+        "endTime": "2026-07-26T16:00:00+03:00",
+        "lengthMinutes": 360,
+        "location": "Hall 5 Miniature Gaming (C5)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Mukautettu Alpha Strike",
+          "konsti:maxAttendance": 5,
+          "ropecon:isRevolvingDoor": false,
+          "internal:freeformLocation": "C5"
+        }
+      }
+    ]
+  },
+  {
     "slug": "aika-avaruuden-apina-agentit",
     "title": "Aika-avaruuden apina-agentit",
     "description": "Kaukana tulevaisuudessa, aikajanojen kätköissä sijaitsee älykkäiden apinoiden utopia, missä banaanit jaetaan tasan ja nokosille löytyy aina aikaa. Tämän uskomattoman epätodennäköisen historiallisen lopputuleman takaaminen vaatii jatkuvaa menneisyyden tarkkailua ja muokkaamista. Simpansseista nokkelimmat, gorilloista vahvimmat ja orangeista kätevimmät lähetetään menneeseen turvaamaan apinainen tulevaisuus. Nämä kaikkien kädellisten sankarit tunnetaan aika-avaruuden apina-agentteina!\r\n\r\nApina-agenttien seuraava tehtävä on varmistaa makoisien banaanien saatavuus läpi historian. Agentuurin aikajanojen tarkkailijat ovat löytäneet erinomaisen mahdollisuuden Seitsenvuotisen sodan melskeistä. Vuonna 1757 ranskalainen agronomi Antoine-Augustin Parmentier viruu preussilaisessa Petersbergin linnoituksen vankityrmässä, missä hänelle syötetään perunoita. Vastoin vangitsijoidensa odotuksia Parmentier ihastuu juureksiin ja esittelee ne vapauduttuaan Ranskan kuninkaalle, mikä johtaa perunan leviämiseen ja kasvattamiseen ympäri maailmaa.\r\n\r\nAgentit! Tehtävänne on tunkeutua Petersbergin linnoitukseen, löytää Parmentierin tyrmä ja varmistaa, että hänelle tarjoillaan paljon paremmin perusruoaksi kelpaavaa kasvista: banaaneja!\r\n\r\nAika-avaruuden apina-agentit yhdistää Mustanaamion ja Taika-Jimin päättömyyden agenttijännäreiden tiiviiseen tunnelmaan. Peli pyörii yksinkertaistetulla Blades in the Dark -systeemillä. Pelaajilta odotetaan apinamaista eläytymistä. Pelisysteemin tai primatologian aikaisempaa tuntemusta ei tarvita. Peli sopii aloittelijoille.",
@@ -531,6 +575,181 @@
         "location": "Peace Station Ballroom",
         "isCancelled": false,
         "cachedAnnotations": { "konsti:maxAttendance": 20 }
+      }
+    ]
+  },
+  {
+    "slug": "battletech-alpha-strike-aces-demo",
+    "title": "BattleTech Alpha Strike Aces demo",
+    "description": "Tule opettelemaan Alpha Striken säännöt pelaamalla yhdessä korttipakalla ohjattua tekoälyvihollista vastaan.\r\n\r\nAlpha Strike on nopeatempoisempi versio klassisesta BattleTechistä, jossa taistellaan talojen korkuisilla jättiläisroboteilla! Alpha Strikea voi pelata sekä figupelityyliin tuumamitoilla, sekä pienempään tilaan mahtuvana paperikartalla lautapelien tapaan. Tämä peli pelataan tuumilla ja 3D-maastoilla.\r\n\r\nPeliin voi liittyä ja siitä lähteä joka vuoron alussa. Ilmoittautuminen on ensimmäiselle kierrokselle, jonka jälkeen peliin pääsee mukaan heti kun tilaa tulee.\r\n\r\n--\r\n\r\nCome learn how to play Alpha Strike together against an enemy directed by an card driven AI enemy.\r\n\r\nAlpha Strike is a faster derivative of classic BattleTech, the game of giant fighting robots. Alpha Strike can be played like a miniature game with tape measures or like a board game with a paper hex map. This game is played with inches and 3D-terrain.\r\n\r\nYou can join or leave the game at the beginning of each turn. The enrollment is for the first turn, after which you can join as soon as there is space.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-07-24"],
+      "form": ["offer-miniatures"],
+      "room": ["halli5figupelaaminen"],
+      "type": ["gaming"],
+      "state": ["accepted"],
+      "topic": ["figures"],
+      "konsti": ["othergaming"],
+      "grouping": ["beginners"],
+      "language": ["en", "fi"],
+      "age-group": ["everyone"],
+      "scheduled": ["one", "one-or-more"],
+      "registration": ["konsti"],
+      "revolvingdoor": ["true"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "BattleTech Alpha Strike",
+      "konsti:maxAttendance": 8,
+      "ropecon:isRevolvingDoor": true
+    },
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "battletech-alpha-strike-aces-demo",
+        "title": "BattleTech Alpha Strike Aces demo",
+        "startTime": "2026-07-24T16:00:00+03:00",
+        "endTime": "2026-07-24T19:00:00+03:00",
+        "lengthMinutes": 180,
+        "location": "Hall 5 Miniature Gaming (C5)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "BattleTech Alpha Strike",
+          "konsti:maxAttendance": 8,
+          "ropecon:isRevolvingDoor": true,
+          "internal:freeformLocation": "C5"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "battletech-demopeleja-battletech-introductory-games",
+    "title": "BattleTech demopelejä / BattleTech introductory games",
+    "description": "Tule opettelemaan jättiläisrobottien taistelupelin, BattleTechin, perussäännöt. Demopelin jälkeen olet valmis kokeilemaan useamman yksikön pelejä conissa olevien harrastajien kanssa, tai vaikka osallistumaan grinder-mittelöön! Peli toimii kaikille, jotka osaavat laskea kahden nopan silmälukua yhteen ja jaksavat keskittyä pelin keston ajan. Lapsilta lapselle -opastukseen oma ilmoittautuminen!\r\n\r\nPaikkavaraukset ovat ohjelman alkuun, mutta alun jälkeen demoihin pääsee mukaan pyöröovimaisesti heti edellisen loputtua. Demon kestää aikaisemmasta kokemuksesta ja luonteen vauhdikkuudesta riippuen tunnista puoleentoista tuntiin. Jos et ehdi tai mahdu ohjelmaan, kannattaa myös kysäistä vapaamuotoista opastusta muilta pelaajilta.\r\n\r\n--\r\n\r\nCome learn the basics of the game of giant fighting robots, BattleTech. After the introduction you are ready to try a multi unit game with BattleTech enthusiasts at the con, or join the grand melee of the Grinder! The game is suitable for everyone who can count two dice together and can focus for the duration. Child to child demo has a separate event/enrollment!\r\n\r\nThe reserved spots are for the first round. After that you can join for a demo game as soon as previous has finished. The estimated time for a demo is 1–1.5 hours depending on gaming experience and tendency to make snap or analyzed decisions. If you cannot fit in the scheduled demos or the time doesn't work for you, ask for an unofficial demo from other players.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-07-25"],
+      "form": ["offer-miniatures"],
+      "room": ["halli5figupelaaminen"],
+      "type": ["gaming"],
+      "state": ["accepted"],
+      "topic": ["figures"],
+      "konsti": ["othergaming"],
+      "grouping": ["beginners"],
+      "language": ["en", "fi"],
+      "age-group": ["everyone"],
+      "scheduled": ["one", "one-or-more"],
+      "registration": ["konsti"],
+      "revolvingdoor": ["true"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "BattleTech",
+      "konsti:maxAttendance": 10,
+      "ropecon:isRevolvingDoor": true
+    },
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "battletech-demopeleja-battletech-introductory-games",
+        "title": "BattleTech demopelejä / BattleTech introductory games",
+        "startTime": "2026-07-25T13:00:00+03:00",
+        "endTime": "2026-07-25T16:00:00+03:00",
+        "lengthMinutes": 180,
+        "location": "Hall 5 Miniature Gaming (C5)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "BattleTech",
+          "konsti:maxAttendance": 10,
+          "ropecon:isRevolvingDoor": true,
+          "internal:freeformLocation": "C5"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "battletech-demopeleja-lapsille-battletech-introductory-games-for-kids",
+    "title": "BattleTech demopelejä lapsille / BattleTech introductory games for kids",
+    "description": "Tule opettelemaan jättiläisrobottien taistelupelin, BattleTechin, perussäännöt. Demopelin jälkeen olet valmis kokeilemaan useamman yksikön pelejä conissa olevien harrastajien kanssa, tai vaikka osallistumaan grinder-mittelöön! Peli toimii kaikille, jotka osaavat laskea kahden nopan silmälukua yhteen ja jaksavat keskittyä pelin keston ajan. Tämä ohjelma on suunnattu lapsille, ja opettajana toimii 10v pelaaja. Kaikenikäisille myös samaan aikaan aikuisten vetämiä demoja.\r\n\r\nPaikkavaraukset ovat ohjelman alkuun, mutta alun jälkeen demoihin pääsee mukaan pyöröovimaisesti heti edellisen loputtua. Demon kestää aikaisemmasta kokemuksesta ja luonteen vauhdikkuudesta riippuen tunnista puoleentoista tuntiin. Jos et ehdi tai mahdu ohjelmaan, kannattaa myös kysäistä vapaamuotoista opastusta muilta pelaajilta.\r\n\r\n--\r\n\r\nCome learn the basics of the game of giant fighting robots, BattleTech. After the introduction you are ready to try a multi unit game with BattleTech enthusiasts at the con, or join the grand melee of the Grinder! The game is suitable for everyone who can count two dice together and can focus for the duration. These demos are meant for children and is taught by a ten year old gamer. There are also demos for everyone taught by adults.\r\n\r\nThe reserved spots are for the first round. After that you can join for a demo game as soon as previous has finished. The estimated time for a demo is 1–1.5 hours depending on gaming experience and tendency to make snap or analyzed decisions. If you cannot fit in the scheduled demos or the time doesn't work for you, ask for an unofficial demo from other players.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-07-25"],
+      "form": ["offer-miniatures"],
+      "room": ["halli5figupelaaminen"],
+      "type": ["gaming"],
+      "state": ["accepted"],
+      "topic": ["figures"],
+      "konsti": ["othergaming"],
+      "grouping": ["beginners"],
+      "language": ["en", "fi"],
+      "age-group": ["kids"],
+      "scheduled": ["one", "one-or-more"],
+      "registration": ["konsti"],
+      "revolvingdoor": ["true"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "BattleTech",
+      "konsti:maxAttendance": 2,
+      "ropecon:isRevolvingDoor": true
+    },
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "battletech-demopeleja-lapsille-battletech-introductory-games-for-kids",
+        "title": "BattleTech demopelejä lapsille / BattleTech introductory games for kids",
+        "startTime": "2026-07-25T13:00:00+03:00",
+        "endTime": "2026-07-25T16:00:00+03:00",
+        "lengthMinutes": 180,
+        "location": "Hall 5 Miniature Gaming (C5)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "BattleTech",
+          "konsti:maxAttendance": 2,
+          "ropecon:isRevolvingDoor": true,
+          "internal:freeformLocation": "C5"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "battletech-grinder-grand-mlee",
+    "title": "BattleTech Grinder grand mêlée",
+    "description": "Grinder on jo BattleTechin perussäännöt osaaville (esimerkiksi erillisenä ohjelmana olleen demopelin pelanneelle), mutta taktista taitoa ei vielä vaadita. Tässä pelissä jokaisella on vain yksi jättiläisrobotti, ja kun tuhoudut, saat isomman tilalle! Peliin voi liittyä ja siitä voi lähteä joka vuoron alussa. Ilmoittautuminen on ensimmäiselle vuorolle, sen jälkeen peliin pääsee pyöröovena heti kun tilaa tulee. Mekit löydät pelipaikalta lainaan, mutta jos haluat pelata omalla figulla, katso CGL:n Grinder Small listan yksiköistä mitkä ovat mahdollisia vaihtoehtoja arvonnassa.\r\n\r\n--\r\n\r\nGrinder is meant for players who already know the rules (for example having played the introductory games offered as separate program), but tactical experience is not needed. In this game everyone fights with just one giant robot, and when you get destroyed, you get a bigger one! You can join and leave the game at the beginning of each turn. Enrollment is for the first turn, after that you can join in as soon as there is space. There are miniatures to play with, but if you want to bring your own, you can check the CGL Grinder Small list for possible randomized choices.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-07-26"],
+      "form": ["offer-miniatures"],
+      "room": ["halli5figupelaaminen"],
+      "type": ["gaming"],
+      "state": ["accepted"],
+      "topic": ["figures"],
+      "konsti": ["othergaming"],
+      "language": ["en", "fi"],
+      "age-group": ["everyone"],
+      "scheduled": ["one", "one-or-more"],
+      "registration": ["konsti"],
+      "revolvingdoor": ["true"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "BattleTech",
+      "konsti:maxAttendance": 8,
+      "ropecon:isRevolvingDoor": true
+    },
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "battletech-grinder-grand-mlee",
+        "title": "BattleTech Grinder grand mêlée",
+        "startTime": "2026-07-26T10:00:00+03:00",
+        "endTime": "2026-07-26T13:00:00+03:00",
+        "lengthMinutes": 180,
+        "location": "Hall 5 Miniature Gaming (C5)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "BattleTech",
+          "konsti:maxAttendance": 8,
+          "ropecon:isRevolvingDoor": true,
+          "internal:freeformLocation": "C5"
+        }
       }
     ]
   },
@@ -1662,7 +1881,7 @@
       "scheduled": ["one", "one-or-more"],
       "registration": ["konsti"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": { "konsti:maxAttendance": 15 },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -1673,7 +1892,7 @@
         "lengthMinutes": 105,
         "location": "Room 214",
         "isCancelled": false,
-        "cachedAnnotations": {}
+        "cachedAnnotations": { "konsti:maxAttendance": 15 }
       }
     ]
   },
@@ -12877,6 +13096,53 @@
     ]
   },
   {
+    "slug": "pohjola-kampanja",
+    "title": "Pohjola kampanja - Siepataksesi Unisiepparin / Pohjola campaign - To Catch a Dreamcatcher",
+    "description": "Unet ja unelmat kuuluvat kaikille. Mutta kun unensieppaaja vie unesi, on ne hankittava takaisin oli se kuinka vaarallista tahansa.\r\n\r\nOsallistu Pohjolan tarinavetoiseen kolmen pelin lyhyt-kampanjaan, jossa taistelujoukkosi kamppailevat toisten pelaaien joukkoja vastaan ja yrittävät ensimmäisenä saada takaisin ryöstetyt unensa. Seuraa joukkojesi kehittymistä pelien välissä ja palkkaa uusia sotureita voittaaksesi. Voit tuoda omat miniatyyrisi tai lainata ne pelinjärjestäjiltä.\r\n\r\nLisätietoja pelistä löytyy pelin verkkosivuilta https://pohjolagame.com/. Voit myös liittyä pelin Discord serverille, jossa vastaamme aktiivisesti kysymyksiin. \r\n\r\n--\r\n\r\nDreams belong to all. But when yours are stolen by a dreamcatcher, you have to get them back no matter how dangerous it could be.\r\n\r\nParticipate in a story-driven Pohjola short-campaign in which your warband battles against others and try to be the first to get their stolen dreams. Follow as your troops level up in between games and hire new warriors to win. You can either bring your own miniatures or borrow them from the organizers.\r\n\r\nMore info can be found from our website https://pohjolagame.com/. You can also join our Discord server where we frequently answer questions.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-07-25"],
+      "form": ["offer-miniatures"],
+      "room": ["halli5figupelaaminen"],
+      "type": ["gaming"],
+      "state": ["accepted"],
+      "topic": ["figures"],
+      "konsti": ["othergaming"],
+      "grouping": ["beginners", "dreams"],
+      "language": ["en", "fi"],
+      "age-group": ["adultsnyouth"],
+      "scheduled": ["one", "one-or-more"],
+      "inclusivity": ["no-recordings-or-spoken-text"],
+      "registration": ["konsti"],
+      "revolvingdoor": ["false"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Pohjola, https://pohjolagame.com/",
+      "konsti:minAttendance": 1,
+      "konsti:maxAttendance": 8,
+      "ropecon:isRevolvingDoor": false
+    },
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "pohjola-kampanja",
+        "title": "Pohjola kampanja - Siepataksesi Unisiepparin / Pohjola campaign - To Catch a Dreamcatcher",
+        "startTime": "2026-07-25T13:00:00+03:00",
+        "endTime": "2026-07-25T18:00:00+03:00",
+        "lengthMinutes": 300,
+        "location": "Hall 5 Miniature Gaming (C8)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Pohjola, https://pohjolagame.com/",
+          "konsti:minAttendance": 1,
+          "konsti:maxAttendance": 8,
+          "ropecon:isRevolvingDoor": false,
+          "internal:freeformLocation": "C8"
+        }
+      }
+    ]
+  },
+  {
     "slug": "poikkeamia-pohjoisella-taivaalla",
     "title": "Poikkeamia Pohjoisella Taivaalla",
     "description": "Kreikkalaisessa mytologiassa tähtikuviot perustuvat sankareihin ja muihin myyttisiin olentoihin. Vuosituhansien hiljaiselon jälkeen jumaluudet ovat päättäneet nostaa tähtien joukkoon kaksi uutta hahmoa: Laikan ja Félicetten. Mutta voi! Jotain tapahtui heidän nostatuksessaan ja eläimet ovat päätyneet eri puolille taivaankantta. Laika ja Félicette on saatettava yhteen ja tähän tarvitaan pelaajien apua!",
@@ -16783,6 +17049,63 @@
     ]
   },
   {
+    "slug": "tonks",
+    "title": "Tonks",
+    "description": "Rakenna itsellesi panssarivaunu, ja ota mittaa muista Ropeconin tonkkikomentajista. Voittaja palkitaan maineen ja kunnian lisäksi upealla, kukistettujen vastustajien tankeista kootulla pokaalilla.\r\n\r\nOhjelmanumero alkaa tankkien rakentamisella ja maalaamisella, jonka jälkeen taistelu voi alkaa. Mukaan mahtuu kahdeksan pelaajaa. Viimeinen tankki pelikentällä voittaa.\r\n\r\n\r\nBuild your own tank, and join the Ropecon Tonk Deathmatch. In addition to glory and fame, winner gets a trophy built from the scrapped tanks of their opponents.\r\n\r\nBefore the battle begins, each participant assembles and paints their own miniature tank. Eight players can join the game. Last tank on the battlefield wins.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-07-26"],
+      "form": ["offer-miniatures"],
+      "room": ["halli5figupelaaminen"],
+      "type": ["gaming"],
+      "state": ["accepted"],
+      "topic": ["figures", "handcrafts"],
+      "konsti": ["othergaming"],
+      "grouping": ["beginners"],
+      "language": ["en", "fi"],
+      "age-group": ["everyone"],
+      "scheduled": ["one", "one-or-more"],
+      "inclusivity": [
+        "fingers",
+        "irritating-chemicals",
+        "long-program",
+        "no-movement",
+        "no-recordings-or-spoken-text",
+        "not-amplified",
+        "physical-contact"
+      ],
+      "registration": ["konsti"],
+      "revolvingdoor": ["false"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Tonks",
+      "konsti:maxAttendance": 8,
+      "ropecon:contentWarnings": "Sota, panssarivaunut",
+      "ropecon:accessibilityOther": "Ohjelmassa käsitellään maaleja ja kuumaliimaa\r\n",
+      "ropecon:isRevolvingDoor": false
+    },
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "tonks",
+        "title": "Tonks",
+        "startTime": "2026-07-26T10:00:00+03:00",
+        "endTime": "2026-07-26T13:00:00+03:00",
+        "lengthMinutes": 180,
+        "location": "Hall 5 Miniature Gaming (C3)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Tonks",
+          "konsti:maxAttendance": 8,
+          "ropecon:contentWarnings": "Sota, panssarivaunut",
+          "ropecon:accessibilityOther": "Ohjelmassa käsitellään maaleja ja kuumaliimaa\r\n",
+          "ropecon:isRevolvingDoor": false,
+          "internal:freeformLocation": "C3"
+        }
+      }
+    ]
+  },
+  {
     "slug": "torahampaat-talviyossa-vaesen",
     "title": "Torahampaat talviyössä (Vaesen)",
     "description": "Kuulutte 1800-luvun Ruotsissa toimivaan salaseuraan, jonka tarkoituksena on tutkia ja tarvittaessa tuhota yliluonnollisia olentoja, jotka ovat usein kansantaruista tuttuja mutta muille kuin teidän kaltaisillenne poikkeusyksilöille näkymättömiä. Tällä kertaa apuanne kaivataan pienessä kalastajakylässä, jossa keskitalven pimeydessä väijyy salaperäinen peto. Paikallisen merenrantahotellin omistaja on kadonnut, ja hänen vieraansa eivät uskalla poistua hotellin suojista. Mutta mikä tämä peto oikein on, mistä se on ilmestynyt ja miksi se vainoaa hotellin asukkaita? \r\n\r\nPelissä pelataan Vaesen-pelisysteemillä suomeksi valmismysteeri kirjasta \"A Wicked Secret And Other Mysteries\". Peli on tyyliltään yhdistelmä kauhua ja salapoliisimaista tutkimista. Pelissä on valmishahmot, eikä siihen osallistuminen vaadi aiempaa kokemusta Vaesenista tai pöytäroolipeleistä ylipäätään. Peli voi sisältää seuraavia ahdistavia aiheita: väkivalta, kuolema, gore, mielenhallinta, uskonnolliset elementit sekä ajankohdalle tyypillinen epätasa-arvo ja sitä heijasteleva puhe. Turvamekaniikkana on käytössä X-kortti. Peli on sisältönsä vuoksi tarkoitettu vain aikuisille pelaajille. Pelaajien toivotaan kykenevän vakavaan pelityyliin ja tekevän hahmojensa kautta yhteistyötä mysteerin ratkaisemiseksi.",
@@ -17525,7 +17848,8 @@
       "registration": ["konsti"]
     },
     "cachedAnnotations": {
-      "ropecon:contentWarnings": "Ensimmäisessä osassa voi tulla tunteita, ettei osaa tehdä presistä, mutta kannustetaan kokeilemaan ja korostetaan, ettei presistä ole pakko näyttää, jos ei tahdo, yksi dia riittää.\r\nOhjelman kakkos-osassa on puhe-esiintymistä kun pitchataan (ryhmät voivat päättää kuka esittelee, ja pitchaukseen voi vaikka nauhoittaa äänen päälle, jos ei halua puhua itse mikrofoniin)",
+      "konsti:maxAttendance": 32,
+      "ropecon:contentWarnings": "Ensimmäisessä osassa voi tulla tunteita, ettei osaa tehdä presistä, mutta kannustetaan kokeilemaan ja korostetaan, ettei presistä ole pakko näyttää, jos ei tahdo, yksi dia riittää.Ohjelman kakkos-osassa on puhe-esiintymistä kun pitchataan (ryhmät voivat päättää kuka esittelee, ja pitchaukseen voi vaikka nauhoittaa äänen päälle, jos ei halua puhua itse mikrofoniin)",
       "ropecon:accessibilityOther": "Oma läppäri tai tabletti olis hyvä olla, mutta ei pakollinen. "
     },
     "isCancelled": false,
@@ -17539,7 +17863,8 @@
         "location": "Room 210",
         "isCancelled": false,
         "cachedAnnotations": {
-          "ropecon:contentWarnings": "Ensimmäisessä osassa voi tulla tunteita, ettei osaa tehdä presistä, mutta kannustetaan kokeilemaan ja korostetaan, ettei presistä ole pakko näyttää, jos ei tahdo, yksi dia riittää.\r\nOhjelman kakkos-osassa on puhe-esiintymistä kun pitchataan (ryhmät voivat päättää kuka esittelee, ja pitchaukseen voi vaikka nauhoittaa äänen päälle, jos ei halua puhua itse mikrofoniin)",
+          "konsti:maxAttendance": 32,
+          "ropecon:contentWarnings": "Ensimmäisessä osassa voi tulla tunteita, ettei osaa tehdä presistä, mutta kannustetaan kokeilemaan ja korostetaan, ettei presistä ole pakko näyttää, jos ei tahdo, yksi dia riittää.Ohjelman kakkos-osassa on puhe-esiintymistä kun pitchataan (ryhmät voivat päättää kuka esittelee, ja pitchaukseen voi vaikka nauhoittaa äänen päälle, jos ei halua puhua itse mikrofoniin)",
           "ropecon:accessibilityOther": "Oma läppäri tai tabletti olis hyvä olla, mutta ei pakollinen. "
         }
       },
@@ -17552,7 +17877,8 @@
         "location": "Room 210",
         "isCancelled": false,
         "cachedAnnotations": {
-          "ropecon:contentWarnings": "Ensimmäisessä osassa voi tulla tunteita, ettei osaa tehdä presistä, mutta kannustetaan kokeilemaan ja korostetaan, ettei presistä ole pakko näyttää, jos ei tahdo, yksi dia riittää.\r\nOhjelman kakkos-osassa on puhe-esiintymistä kun pitchataan (ryhmät voivat päättää kuka esittelee, ja pitchaukseen voi vaikka nauhoittaa äänen päälle, jos ei halua puhua itse mikrofoniin)",
+          "konsti:maxAttendance": 32,
+          "ropecon:contentWarnings": "Ensimmäisessä osassa voi tulla tunteita, ettei osaa tehdä presistä, mutta kannustetaan kokeilemaan ja korostetaan, ettei presistä ole pakko näyttää, jos ei tahdo, yksi dia riittää.Ohjelman kakkos-osassa on puhe-esiintymistä kun pitchataan (ryhmät voivat päättää kuka esittelee, ja pitchaukseen voi vaikka nauhoittaa äänen päälle, jos ei halua puhua itse mikrofoniin)",
           "ropecon:accessibilityOther": "Oma läppäri tai tabletti olis hyvä olla, mutta ei pakollinen. "
         }
       }

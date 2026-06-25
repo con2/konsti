@@ -25,6 +25,7 @@ export const clientConfig: ClientConfig = {
     ProgramType.LARP,
     ProgramType.TOURNAMENT,
     ProgramType.WORKSHOP,
+    ProgramType.OTHER_GAMING,
     ProgramType.OTHER,
   ],
   activeLanguages: [Language.FINNISH, Language.ENGLISH, Language.SWEDISH],

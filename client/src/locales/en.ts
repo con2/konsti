@@ -385,6 +385,7 @@ export const translationEN = {
     other: "Other program",
     roundtableDiscussion: "Roundtable discussion",
     fleaMarket: "Flea market",
+    otherGaming: "Other gaming",
   },
   programTypeSelection: {
     all: "All program types",
@@ -396,6 +397,7 @@ export const translationEN = {
     other: "Other program",
     roundtableDiscussion: "Roundtable discussion",
     fleaMarket: "Flea market",
+    otherGaming: "Other gaming",
   },
   programTypeSingular: {
     all: "program item",
@@ -407,6 +409,7 @@ export const translationEN = {
     other: "program item",
     roundtableDiscussion: "roundtable discussion",
     fleaMarket: "flea market time",
+    otherGaming: "game",
   },
   programTypePlural: {
     all: "program items",
@@ -414,10 +417,11 @@ export const translationEN = {
     larp: "larps",
     tournament: "tournaments",
     workshop: "workshops",
-    experiencePoint: "programs",
+    experiencePoint: "games",
     other: "program items",
     roundtableDiscussion: "roundtable discussions",
     fleaMarket: "flea market times",
+    otherGaming: "games",
   },
   programTypeGenetive: {
     all: "Program item",
@@ -425,10 +429,11 @@ export const translationEN = {
     larp: "Larp",
     tournament: "Tournament",
     workshop: "Workshop",
-    experiencePoint: "Program",
+    experiencePoint: "Game",
     other: "Program item",
     roundtableDiscussion: "Roundtable discussion",
     fleaMarket: "Flea market time",
+    otherGaming: "Game",
   },
   programTypePartitivePlural: {
     all: "program items",
@@ -440,6 +445,7 @@ export const translationEN = {
     other: "program items",
     roundtableDiscussion: "roundtable discussions",
     fleaMarket: "flea market times",
+    otherGaming: "games",
   },
   programTypeInessive: {
     all: "program item",
@@ -451,6 +457,7 @@ export const translationEN = {
     other: "program item",
     roundtableDiscussion: "roundtable discussion",
     fleaMarket: "flea market time",
+    otherGaming: "game",
   },
   programTypeIllative: {
     all: "program item",
@@ -458,10 +465,11 @@ export const translationEN = {
     larp: "larp",
     tournament: "tournament",
     workshop: "workshop",
-    experiencePoint: "program",
+    experiencePoint: "game",
     other: "program item",
     roundtableDiscussion: "roundtable discussion",
     fleaMarket: "flea market time",
+    otherGaming: "game",
   },
   firstLogin: {
     serial: "Save this code for recovering your password:",

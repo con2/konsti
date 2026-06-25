@@ -320,6 +320,9 @@ export const mapKonstiProgramTypesToKompassiProgramTypes = (
       case ProgramType.ROUNDTABLE_DISCUSSION:
         return KompassiKonstiProgramType.ROUNDTABLE_DISCUSSION;
 
+      case ProgramType.OTHER_GAMING:
+        return KompassiKonstiProgramType.OTHER_GAMING;
+
       default:
         return exhaustiveSwitchGuard(programType);
     }
