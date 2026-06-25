@@ -147,13 +147,10 @@ export default defineConfig([
 
       // eslint-plugin-unicorn
       "unicorn/prefer-top-level-await": "off", // Don't enforce top-level await style
+      "unicorn/no-top-level-side-effects": "off", // Express route registration, Mongoose schema setup and i18next init are top-level side effects by design
       "unicorn/numeric-separators-style": "off", // Don't want this
       "unicorn/no-lonely-if": "off", // Don't want this
-      "unicorn/no-top-level-side-effects": "off", // Express route registration, Mongoose schema setup and i18next init are top-level side effects by design
-      "unicorn/prefer-minimal-ternary": "off", // TODO
-      "unicorn/no-declarations-before-early-exit": "off", // TODO
-      "unicorn/prefer-number-coercion": "off", // TODO
-      "unicorn/prefer-early-return": "off", // TODO
+      "unicorn/no-declarations-before-early-exit": "off", // Don't want this - makes grouping similar kinds of things harder
 
       // @typescript-eslint
       "@typescript-eslint/explicit-module-boundary-types": "error",

@@ -34,11 +34,9 @@ export const Accordion = ({
       <AccordionToggle
         onClick={() => onClick()}
         buttonStyle={buttonStyle}
-        aria-label={
-          open
-            ? t("iconAltText.closeAccordion")
-            : t("iconAltText.openAccordion")
-        }
+        aria-label={t(
+          open ? "iconAltText.closeAccordion" : "iconAltText.openAccordion",
+        )}
       >
         <AccordionIcon
           icon={open ? "angle-up" : "angle-down"}

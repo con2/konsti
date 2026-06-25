@@ -56,10 +56,7 @@ const getAllowedCorsOrigins = (localOrigins: string[] = []): string[] => {
 
 const commonConfig = {
   // Server settings
-  port:
-    typeof process.env.PORT === "string"
-      ? Number.parseInt(process.env.PORT, 10)
-      : 5000,
+  port: typeof process.env.PORT === "string" ? Number(process.env.PORT) : 5000,
   onlyCronjobs: process.env.ONLY_CRONJOBS === "true" ? true : false,
   cronjobsAndBackendSameInstance: false, // Set this to run cronjobs and http/api server on same instance
 

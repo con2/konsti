@@ -134,15 +134,14 @@ export const SearchAndFilterCard = ({
           onChange={(event) => {
             setSearchTerm(event.target.value);
           }}
-          placeholder={
+          placeholder={t(
             activeProgramType === ProgramType.TABLETOP_RPG
-              ? t("searchWithTitleOrSystem", {
-                  PROGRAM_TYPE: t(`programTypeGenetive.${activeProgramType}`),
-                })
-              : t("searchWithTitle", {
-                  PROGRAM_TYPE: t(`programTypeGenetive.${activeProgramType}`),
-                })
-          }
+              ? "searchWithTitleOrSystem"
+              : "searchWithTitle",
+            {
+              PROGRAM_TYPE: t(`programTypeGenetive.${activeProgramType}`),
+            },
+          )}
           resetValue={() => {
             setSearchTerm("");
           }}

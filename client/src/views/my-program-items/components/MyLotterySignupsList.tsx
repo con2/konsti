@@ -51,9 +51,11 @@ export const MyLotterySignupsList = ({
       {lotterySignups.length === 0 && (
         <EmptyContentContainer>
           <MyProgramSecondaryText>
-            {showAllProgramItems
-              ? t("noLotterySignups")
-              : t("noFutureLotterySignups")}
+            {t(
+              showAllProgramItems
+                ? "noLotterySignups"
+                : "noFutureLotterySignups",
+            )}
           </MyProgramSecondaryText>
           {!showAllProgramItems && (
             <ShowAllButton

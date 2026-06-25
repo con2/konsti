@@ -174,11 +174,11 @@ export const ChangeUserSettingsForm = ({
               <FontAwesomeIcon
                 icon={passwordFieldType === "password" ? "eye" : "eye-slash"}
                 onClick={togglePasswordVisibility}
-                aria-label={
+                aria-label={t(
                   passwordFieldType === "password"
-                    ? t("iconAltText.showPassword")
-                    : t("iconAltText.hidePassword")
-                }
+                    ? "iconAltText.showPassword"
+                    : "iconAltText.hidePassword",
+                )}
               />
             </FormFieldIcon>
           </InputContainer>

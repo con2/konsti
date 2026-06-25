@@ -86,11 +86,11 @@ export const LocalLoginForm = (): ReactElement => {
             <FontAwesomeIcon
               icon={passwordVisible ? "eye-slash" : "eye"}
               onClick={() => setPasswordVisible(!passwordVisible)}
-              aria-label={
+              aria-label={t(
                 passwordVisible
-                  ? t("iconAltText.hidePassword")
-                  : t("iconAltText.showPassword")
-              }
+                  ? "iconAltText.hidePassword"
+                  : "iconAltText.showPassword",
+              )}
             />
           </FormFieldIcon>
         </FormRow>

@@ -212,7 +212,7 @@ export const AdminView = (): ReactElement => {
             toggleAppOpen();
           }}
         >
-          {appOpen ? t("button.closeApp") : t("button.openApp")}
+          {t(appOpen ? "button.closeApp" : "button.openApp")}
         </Button>
       </ButtonGroup>
 
