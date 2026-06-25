@@ -28,7 +28,6 @@ const config: KnipConfig = {
   workspaces: {
     ".": {
       entry: [
-        "eslint-rules/*.ts",
         "shared/config/past-events/*.ts",
         "shared/setupTests.ts",
         "yarn.config.ts",

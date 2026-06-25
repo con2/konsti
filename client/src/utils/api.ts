@@ -84,7 +84,7 @@ const apiFetch = async <T>(
   // Handle redirect responses (301/302 with JSON body containing location)
   if ([301, 302].includes(response.status)) {
     const data = (await response.json()) as { location: string };
-    globalThis.location.href = data.location;
+    location.href = data.location;
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     return new Promise<ApiResponse<T>>(() => {});
   }

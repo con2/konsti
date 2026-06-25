@@ -3,7 +3,8 @@ import { defineConfig } from "@yarnpkg/types";
 // https://yarnpkg.com/features/constraints
 
 export default defineConfig({
-  constraints: ({ Yarn }) => {
+  // eslint-disable-next-line @typescript-eslint/require-await -- Yarn's constraints type requires an async signature
+  constraints: async ({ Yarn }) => {
     // Enforce that the engines.node field is properly set in all workspaces
     for (const workspace of Yarn.workspaces()) {
       workspace.set("engines.node", ">=24.14.1");
