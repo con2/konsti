@@ -66,6 +66,6 @@
     "vite-plugin-svgr": "5.2.0"
   },
   "engines": {
-    "node": ">=24.14.1"
+    "node": ">=24.18.0"
   }
 }

@@ -7,7 +7,7 @@ export default defineConfig({
   constraints: async ({ Yarn }) => {
     // Enforce that the engines.node field is properly set in all workspaces
     for (const workspace of Yarn.workspaces()) {
-      workspace.set("engines.node", ">=24.14.1");
+      workspace.set("engines.node", ">=24.18.0");
     }
 
     // Enforce that workspaces depend on the same version of a dependency
