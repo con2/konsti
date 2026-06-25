@@ -36,7 +36,11 @@ export const eventConfig: EventConfig = {
     ProgramType.OTHER,
   ],
 
-  twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG, ProgramType.WORKSHOP],
+  twoPhaseSignupProgramTypes: [
+    ProgramType.TABLETOP_RPG,
+    ProgramType.LARP,
+    ProgramType.WORKSHOP,
+  ],
 
   eventStartTime: `${friday}T12:00:00Z`, // Fri 15:00 GMT+3
 
