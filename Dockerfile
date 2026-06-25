@@ -23,7 +23,7 @@ RUN yarn workspace client build:$env
 FROM ${NODE_IMAGE} AS runner
 
 # Install init process tool to avoid Node running PID 1
-RUN apk --no-cache add dumb-init=1.2.5-r3
+RUN apk --no-cache add dumb-init=1.2.5-r4
 
 # Create app directory
 WORKDIR /usr/src/app

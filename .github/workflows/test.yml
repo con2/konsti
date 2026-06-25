@@ -23,7 +23,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Set actionlint Problem Matchers
         run: |
@@ -46,7 +46,7 @@ jobs:
           YARN_ENABLE_HARDENED_MODE=1 yarn --immutable
 
       - name: Restore lint caches
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         with:
           path: |
             client/.eslintcache
@@ -89,7 +89,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Use Node.js
         uses: actions/setup-node@v6
@@ -102,7 +102,7 @@ jobs:
           YARN_ENABLE_HARDENED_MODE=1 yarn --immutable
 
       - name: Restore TypeScript build info cache
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         with:
           path: |
             client/node_modules/.cache/tsbuildinfo
@@ -126,7 +126,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Use Node.js
         uses: actions/setup-node@v6
@@ -143,7 +143,7 @@ jobs:
           yarn build-front:prod
 
       - name: Cache MongoDB binary
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         with:
           path: ~/.cache/mongodb-binaries
           key: mongodb-8.0.20
@@ -163,7 +163,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Use Node.js
         uses: actions/setup-node@v6
