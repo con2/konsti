@@ -35,10 +35,10 @@ jobs:
         with:
           args: -color
 
-      - name: Use Node.js 24.18.0
+      - name: Use Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: 24.18.0
+          node-version-file: ".node-version"
           cache: "yarn"
 
       - name: Yarn install
@@ -91,10 +91,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v6
 
-      - name: Use Node.js 24.18.0
+      - name: Use Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: 24.18.0
+          node-version-file: ".node-version"
           cache: "yarn"
 
       - name: Yarn install
@@ -128,10 +128,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v6
 
-      - name: Use Node.js 24.18.0
+      - name: Use Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: 24.18.0
+          node-version-file: ".node-version"
           cache: "yarn"
 
       - name: Yarn install
@@ -165,10 +165,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v6
 
-      - name: Use Node.js 24.18.0
+      - name: Use Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: 24.18.0
+          node-version-file: ".node-version"
           cache: "yarn"
 
       - name: Yarn install
