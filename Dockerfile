@@ -1,5 +1,7 @@
 ### BUILD CLIENT
-FROM node:24.18.0-alpine3.24 AS client-builder
+ARG NODE_IMAGE=node:24.18.0-alpine3.24
+
+FROM ${NODE_IMAGE} AS client-builder
 
 ARG env
 
@@ -18,7 +20,7 @@ COPY --chown=node:node shared ./shared/
 RUN yarn workspace client build:$env
 
 ### BUILD APP IMAGE
-FROM node:24.18.0-alpine3.24 AS runner
+FROM ${NODE_IMAGE} AS runner
 
 # Install init process tool to avoid Node running PID 1
 RUN apk --no-cache add dumb-init=1.2.5-r3
