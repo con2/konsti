@@ -37,9 +37,11 @@ export const MyFavoritesList = ({
         {favoriteProgramItems.length === 0 && (
           <EmptyContentContainer>
             <MyProgramSecondaryText>
-              {showAllProgramItems
-                ? t("noFavoriteProgramItems")
-                : t("noFutureFavoriteProgramItems")}
+              {t(
+                showAllProgramItems
+                  ? "noFavoriteProgramItems"
+                  : "noFutureFavoriteProgramItems",
+              )}
             </MyProgramSecondaryText>
             {!showAllProgramItems && (
               <ShowAllButton

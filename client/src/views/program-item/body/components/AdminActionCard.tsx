@@ -169,7 +169,7 @@ export const AdminActionCard = ({ programItem }: Props): ReactElement => {
           buttonStyle={ButtonStyle.PRIMARY}
           onClick={async () => await updateHidden()}
         >
-          {hidden ? t("button.showProgramItem") : t("button.hideProgramItem")}
+          {t(hidden ? "button.showProgramItem" : "button.hideProgramItem")}
         </Button>
         {hasSignupQuestion && (
           <Button

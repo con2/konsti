@@ -40,9 +40,9 @@ export const MyDirectSignupsList = ({
       {startTimes.length === 0 && (
         <EmptyContentContainer>
           <MyProgramSecondaryText>
-            {showAllProgramItems
-              ? t("noDirectSignups")
-              : t("noFutureDirectSignups")}
+            {t(
+              showAllProgramItems ? "noDirectSignups" : "noFutureDirectSignups",
+            )}
           </MyProgramSecondaryText>
           {!showAllProgramItems && (
             <ShowAllButton

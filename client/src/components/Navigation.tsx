@@ -23,11 +23,11 @@ export const Navigation = (): ReactElement => {
         <NavigationIcon
           icon={icon}
           onClick={() => setIsOpen(!isOpen)}
-          aria-label={
+          aria-label={t(
             isOpen
-              ? t("iconAltText.closeNavigation")
-              : t("iconAltText.openNavigation")
-          }
+              ? "iconAltText.closeNavigation"
+              : "iconAltText.openNavigation",
+          )}
           data-testid="navigation-icon"
         />
         {!isOpen && unseenEvents.length > 0 && (

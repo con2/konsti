@@ -69,7 +69,7 @@ export const LotterySignupForm = ({
   const entryCondition = getEntryCondition(programItem, t);
 
   const onChange = (event: ChangeEvent<HTMLSelectElement>): void => {
-    setPriority(Number.parseInt(event.target.value, 10));
+    setPriority(Number(event.target.value));
   };
 
   const handleCancel = (): void => {

@@ -30,14 +30,16 @@ export const LoginView = (): ReactElement => {
   const isAdminLogin = location.pathname === "/admin/login";
 
   useEffect(() => {
-    if (loggedIn) {
-      if (prevLocation?.pathname === "/program/list") {
-        // eslint-disable-next-line @typescript-eslint/no-floating-promises
-        navigate(AppRoute.ROOT);
-      }
-      // eslint-disable-next-line @typescript-eslint/no-floating-promises
-      navigateToPreviousOrRoot(navigationType, navigate);
+    if (!loggedIn) {
+      return;
     }
+
+    if (prevLocation?.pathname === "/program/list") {
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
+      navigate(AppRoute.ROOT);
+    }
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
+    navigateToPreviousOrRoot(navigationType, navigate);
   }, [loggedIn, navigate, navigationType, prevLocation]);
 
   return (
