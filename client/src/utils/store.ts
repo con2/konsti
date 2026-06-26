@@ -70,20 +70,25 @@ const sentryReduxEnhancer = createReduxEnhancer({
   },
 
   stateTransformer: (state: RootState) => {
-    // Transform the state to remove unnecessary data
+    // Reduce state that is too large, private or unnecessary to send
 
     /* eslint-disable @typescript-eslint/no-unnecessary-condition -- No idea what state the app state is in */
     const transformedState = {
       ...state,
       allProgramItems: {
         ...state?.allProgramItems,
+        // Whole program items, too large to send
         programItems: `Program items count: ${state?.allProgramItems?.programItems?.length}`,
+        // Whole program items, too large to send
         directSignups: `Direct signups count: ${state?.allProgramItems?.directSignups?.length}`,
       },
       admin: {
         ...state?.admin,
+        // Config data - not interesting
         hiddenProgramItemIds: `Hidden program items count: ${state?.admin?.hiddenProgramItemIds?.length}`,
+        // Config data - not interesting
         signupQuestions: `Signup questions count: ${state?.admin?.signupQuestions?.length}`,
+        // Contains user signup messages - helper user only
         signupMessages: `Signup messages count: ${state?.admin?.signupMessages?.length}`,
       },
       myProgramItems: {
@@ -91,6 +96,7 @@ const sentryReduxEnhancer = createReduxEnhancer({
         directSignups: state?.myProgramItems?.directSignups?.map(
           (directSignup) => ({
             ...directSignup,
+            // Remove signup question answers
             message: "<Message hidden>",
           }),
         ),

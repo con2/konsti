@@ -1,5 +1,6 @@
 import { init } from "@sentry/node";
 import { config } from "shared/config";
+import { scrubIpAddress } from "server/utils/scrubIpAddress";
 
 const getDsn = (): string | undefined => {
   switch (process.env.SETTINGS) {
@@ -21,4 +22,5 @@ init({
   tracesSampleRate: config.sentry().tracesSampleRate,
   environment: process.env.SETTINGS,
   maxValueLength: config.sentry().maxValueLength,
+  beforeSend: scrubIpAddress,
 });
