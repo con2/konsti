@@ -2,6 +2,7 @@ import { beforeEach, describe, expect, test, vi } from "vitest";
 import dayjs from "dayjs";
 import {
   getLotterySignupStartTime,
+  getLotterySignupEndTime,
   getDirectSignupStartTime,
   getLotterySignupNotStarted,
   getLotterySignupInProgress,
@@ -200,6 +201,56 @@ describe("Two phase direct signup", () => {
     expect(dayjs(signupStartTime).toISOString()).toEqual(
       `${friday}T15:15:00.000Z`,
     );
+  });
+});
+
+describe("Parent start time override via 'startTimesByParentIds'", () => {
+  // Own start time is later than the parent start time, so signup times computed
+  // from the parent start time differ from the ones computed from the own start time
+  const ownStartTime = `${saturday}T15:00:00.000Z`; // Sat 18:00 GMT+3
+  const parentStartTime = `${saturday}T12:00:00.000Z`; // Sat 15:00 GMT+3
+
+  beforeEach(() => {
+    vi.spyOn(config, "event").mockReturnValue({
+      ...config.event(),
+      startTimesByParentIds: new Map([
+        [testProgramItem.parentId, parentStartTime],
+      ]),
+    });
+  });
+
+  test("getLotterySignupStartTime uses parent start time", () => {
+    const programItem = { ...testProgramItem, startTime: ownStartTime };
+    const signupStartTime = getLotterySignupStartTime(programItem);
+    // preSignupStart (4h) before parent start time, not own start time
+    expect(signupStartTime.toISOString()).toEqual(`${saturday}T08:00:00.000Z`);
+  });
+
+  test("getLotterySignupEndTime uses parent start time", () => {
+    const programItem = { ...testProgramItem, startTime: ownStartTime };
+    const signupEndTime = getLotterySignupEndTime(programItem);
+    // directSignupPhaseStart (2h) before parent start time, not own start time
+    expect(signupEndTime.toISOString()).toEqual(`${saturday}T10:00:00.000Z`);
+  });
+
+  test("getDirectSignupStartTime uses parent start time", () => {
+    const programItem = { ...testProgramItem, startTime: ownStartTime };
+    const signupStartTime = getDirectSignupStartTime(programItem);
+    // directSignupPhaseStart (2h) before parent start time, plus phaseGap (15min)
+    expect(dayjs(signupStartTime).toISOString()).toEqual(
+      `${saturday}T10:15:00.000Z`,
+    );
+  });
+
+  test("falls back to own start time when parentId has no override", () => {
+    vi.spyOn(config, "event").mockReturnValue({
+      ...config.event(),
+      startTimesByParentIds: new Map(),
+    });
+    const programItem = { ...testProgramItem, startTime: ownStartTime };
+    const signupEndTime = getLotterySignupEndTime(programItem);
+    // directSignupPhaseStart (2h) before own start time
+    expect(signupEndTime.toISOString()).toEqual(`${saturday}T13:00:00.000Z`);
   });
 });
 

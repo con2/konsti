@@ -9,7 +9,8 @@ export const isStartTimeChanged = (
   const { startTimesByParentIds } = config.event();
 
   const startTimeChanged = !dayjs(signedToStartTime).isSame(
-    dayjs(programItemStartTime, "minute"),
+    dayjs(programItemStartTime),
+    "minute",
   );
 
   const parentIdMatch = startTimesByParentIds.has(parentId);
