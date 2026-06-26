@@ -2,7 +2,7 @@ import { Server } from "node:http";
 import { expect, test, afterEach, describe, beforeEach } from "vitest";
 import request from "supertest";
 import { faker } from "@faker-js/faker";
-import { ApiEndpoint } from "shared/constants/apiEndpoints";
+import { ApiEndpoint, AuthEndpoint } from "shared/constants/apiEndpoints";
 import { closeServer, startServer } from "server/utils/server";
 import { UserGroup } from "shared/types/models/user";
 import { getJWT } from "server/utils/jwt";
@@ -123,5 +123,58 @@ describe(`POST ${ApiEndpoint.VERIFY_KOMPASSI_LOGIN}`, () => {
     const user = unsafelyUnwrap(await findUser(mockUser.username));
     expect(user?.kompassiId).toEqual(10);
     expect(user?.kompassiUsernameAccepted).toEqual(true);
+  });
+});
+
+describe(`POST ${AuthEndpoint.KOMPASSI_LOGIN}`, () => {
+  test("should return 422 without origin header", async () => {
+    const response = await request(server).post(AuthEndpoint.KOMPASSI_LOGIN);
+    expect(response.status).toEqual(422);
+  });
+
+  test("should return 302 with the authorize redirect location", async () => {
+    const response = await request(server)
+      .post(AuthEndpoint.KOMPASSI_LOGIN)
+      .set("Origin", "http://localhost:8000");
+
+    expect(response.status).toEqual(302);
+    const body = response.body as { location: string };
+    expect(body.location).toContain("/oauth2/authorize");
+    expect(body.location).toContain("response_type=code");
+  });
+});
+
+describe(`POST ${AuthEndpoint.KOMPASSI_LOGIN_CALLBACK}`, () => {
+  test("should return 422 with invalid body", async () => {
+    const response = await request(server)
+      .post(AuthEndpoint.KOMPASSI_LOGIN_CALLBACK)
+      .set("Origin", "http://localhost:8000")
+      .send({});
+    expect(response.status).toEqual(422);
+  });
+
+  test("should return 422 without origin header", async () => {
+    const response = await request(server)
+      .post(AuthEndpoint.KOMPASSI_LOGIN_CALLBACK)
+      .send({ code: "test-code" });
+    expect(response.status).toEqual(422);
+  });
+});
+
+describe(`POST ${AuthEndpoint.KOMPASSI_LOGOUT}`, () => {
+  test("should return 422 without origin header", async () => {
+    const response = await request(server).post(AuthEndpoint.KOMPASSI_LOGOUT);
+    expect(response.status).toEqual(422);
+  });
+
+  test("should return 302 with the logout redirect location", async () => {
+    const response = await request(server)
+      .post(AuthEndpoint.KOMPASSI_LOGOUT)
+      .set("Origin", "http://localhost:8000");
+
+    expect(response.status).toEqual(302);
+    const body = response.body as { location: string };
+    expect(body.location).toContain("/logout?next=");
+    expect(body.location).toContain("kompassi-logout-callback");
   });
 });
