@@ -68,6 +68,18 @@
           }
         ]
       }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "npx tsx .claude/hooks/claudeMd.ts",
+            "timeout": 30,
+            "statusMessage": "Checking CLAUDE.md docs..."
+          }
+        ]
+      }
     ]
   }
 }
