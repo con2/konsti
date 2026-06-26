@@ -2,7 +2,7 @@ import { execSync } from "node:child_process";
 import { setTimeout as sleep } from "node:timers/promises";
 import { logger } from "server/utils/logger";
 
-const mongoDbVersion = "8.0.20";
+const mongoDbVersion = "8.0.26";
 const containerName = `konsti-mongodb-${mongoDbVersion}`;
 const stabilityCheckMs = 3000;
 

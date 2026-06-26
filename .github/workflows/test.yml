@@ -146,7 +146,7 @@ jobs:
         uses: actions/cache@v6
         with:
           path: ~/.cache/mongodb-binaries
-          key: mongodb-8.0.20
+          key: mongodb-8.0.26
 
       - name: Run Vitest tests
         run: |
