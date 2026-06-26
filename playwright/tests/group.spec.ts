@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test, expect, Page } from "@playwright/test";
 import dayjs from "dayjs";
 import {
   postSettings,
@@ -46,25 +46,9 @@ test("Can create and join a group and receive a shared lottery result", async ({
   await login(page, request, { username: "test1", password: "test" });
   await page.goto("/");
 
-  // Go to group page
-  await page.getByTestId("navigation-icon").click();
-  await page.getByTestId("link-profile").click();
-  await page.getByRole("link", { name: "Group" }).click();
-
   // Create group
-  await page.getByRole("button", { name: "Create group" }).click();
-  await page.getByRole("button", { name: "Create", exact: true }).click();
-  await expect(page.locator("#main")).toContainText(
-    "You are the group creator",
-  );
+  const groupCode = await createGroup(page);
   await expect(page.locator("#main")).toContainText("1) test1 (group creator)");
-
-  // Get group code
-  const groupCode = await page.locator("data-testid=group-code").textContent();
-  if (!groupCode) {
-    // eslint-disable-next-line no-restricted-syntax
-    throw new Error("Group code was null");
-  }
 
   // Lottery signup to program item
   await page.getByTestId("navigation-icon").click();
@@ -84,12 +68,8 @@ test("Can create and join a group and receive a shared lottery result", async ({
   await login(page, request, { username: "test2", password: "test" });
   await page.goto("/");
 
-  // Go to group page
-  await page.getByTestId("navigation-icon").click();
-  await page.getByTestId("link-profile").click();
-  await page.getByRole("link", { name: "Group" }).click();
-
   // Join group
+  await gotoGroupTab(page);
   await page.getByRole("button", { name: "Join group" }).click();
   await page
     .getByRole("textbox", { name: "Group creator's code" })
@@ -129,3 +109,78 @@ test("Can create and join a group and receive a shared lottery result", async ({
     /You were assigned to the .* Test program item./,
   );
 });
+
+test("Group member can leave the group", async ({ page, request }) => {
+  await populateDb(request, { clean: true, users: true, admin: true });
+  await postSettings(request, {
+    signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
+  });
+  await postTestSettings(request, { testTime: config.event().eventStartTime });
+
+  // Creator creates the group
+  await login(page, request, { username: "test1", password: "test" });
+  await page.goto("/");
+  const groupCode = await createGroup(page);
+
+  // Member joins the group
+  await page.getByTestId("navigation-icon").click();
+  await page.getByRole("link", { name: "Logout" }).click();
+  await login(page, request, { username: "test2", password: "test" });
+  await page.goto("/");
+  await gotoGroupTab(page);
+  await page.getByRole("button", { name: "Join group" }).click();
+  await page
+    .getByRole("textbox", { name: "Group creator's code" })
+    .fill(groupCode);
+  await page.getByRole("button", { name: "Join group" }).nth(1).click();
+  await expect(page.locator("#main")).toContainText("You are in a group");
+
+  // Member leaves the group
+  await page.getByRole("button", { name: "Leave group" }).click();
+  await expect(
+    page.getByRole("button", { name: "Create group" }),
+  ).toBeVisible();
+});
+
+test("Group creator can close the group", async ({ page, request }) => {
+  await populateDb(request, { clean: true, users: true, admin: true });
+  await postSettings(request, {
+    signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
+  });
+  await postTestSettings(request, { testTime: config.event().eventStartTime });
+
+  await login(page, request, { username: "test1", password: "test" });
+  await page.goto("/");
+  await createGroup(page);
+
+  // Closing asks for confirmation, then disbands the group
+  await page.getByRole("button", { name: "Close group" }).click();
+  await expect(page.locator("#main")).toContainText(
+    "Are you sure you want to close the group",
+  );
+  await page.getByRole("button", { name: "Close group" }).nth(1).click();
+  await expect(
+    page.getByRole("button", { name: "Create group" }),
+  ).toBeVisible();
+});
+
+const gotoGroupTab = async (page: Page): Promise<void> => {
+  await page.getByTestId("navigation-icon").click();
+  await page.getByTestId("link-profile").click();
+  await page.getByRole("link", { name: "Group" }).click();
+};
+
+const createGroup = async (page: Page): Promise<string> => {
+  await gotoGroupTab(page);
+  await page.getByRole("button", { name: "Create group" }).click();
+  await page.getByRole("button", { name: "Create", exact: true }).click();
+  await expect(page.locator("#main")).toContainText(
+    "You are the group creator",
+  );
+  const groupCode = await page.getByTestId("group-code").textContent();
+  if (!groupCode) {
+    // eslint-disable-next-line no-restricted-syntax
+    throw new Error("Group code was null");
+  }
+  return groupCode;
+};
