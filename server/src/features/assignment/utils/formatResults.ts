@@ -28,6 +28,7 @@ const getAssignmentSignup = (
     programItemId: foundSignup.programItemId,
     priority: foundSignup.priority,
     signedToStartTime: foundSignup.signedToStartTime,
+    groupCode: foundSignup.groupCode,
   };
 };
 

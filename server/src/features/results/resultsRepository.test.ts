@@ -29,6 +29,7 @@ test("should insert new result into collection", async () => {
         programItemId: testProgramItem.programItemId,
         priority: 1,
         signedToStartTime: testProgramItem.startTime,
+        groupCode: "0",
       },
     },
     {
@@ -37,6 +38,7 @@ test("should insert new result into collection", async () => {
         programItemId: testProgramItem.programItemId,
         priority: 1,
         signedToStartTime: testProgramItem.startTime,
+        groupCode: "0",
       },
     },
   ];

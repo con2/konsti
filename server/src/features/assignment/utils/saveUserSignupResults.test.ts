@@ -86,6 +86,7 @@ test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items and email noti
         programItemId: testProgramItem.programItemId,
         priority: 1,
         signedToStartTime: testProgramItem.startTime,
+        groupCode: "0",
       },
     },
   ];
@@ -156,6 +157,7 @@ test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items for 'startTime
         programItemId: testProgramItem.programItemId,
         priority: 1,
         signedToStartTime: testProgramItem.startTime,
+        groupCode: "0",
       },
     },
   ];
@@ -340,6 +342,7 @@ test("should only add one event log item with multiple lottery signups", async (
         programItemId: testProgramItem.programItemId,
         priority: 1,
         signedToStartTime: testProgramItem.startTime,
+        groupCode: "0",
       },
     },
   ];
@@ -409,6 +412,7 @@ test("should not add event log items after assigment if signup is dropped due to
         programItemId: testProgramItem.programItemId,
         priority: 1,
         signedToStartTime: testProgramItem.startTime,
+        groupCode: "0",
       },
     },
     {
@@ -417,6 +421,7 @@ test("should not add event log items after assigment if signup is dropped due to
         programItemId: testProgramItem.programItemId,
         priority: 1,
         signedToStartTime: testProgramItem.startTime,
+        groupCode: "0",
       },
     },
     {
@@ -425,6 +430,7 @@ test("should not add event log items after assigment if signup is dropped due to
         programItemId: testProgramItem.programItemId,
         priority: 1,
         signedToStartTime: testProgramItem.startTime,
+        groupCode: "0",
       },
     },
     {
@@ -433,6 +439,7 @@ test("should not add event log items after assigment if signup is dropped due to
         programItemId: testProgramItem.programItemId,
         priority: 1,
         signedToStartTime: testProgramItem.startTime,
+        groupCode: "0",
       },
     },
   ];
@@ -500,6 +507,7 @@ test("should not send notifications to users without email addresses but still c
         programItemId: testProgramItem.programItemId,
         priority: 1,
         signedToStartTime: testProgramItem.startTime,
+        groupCode: "0",
       },
     },
   ];
@@ -593,6 +601,7 @@ test("should respect email notification permissions based on email field", async
         programItemId: testProgramItem.programItemId,
         priority: 1,
         signedToStartTime: testProgramItem.startTime,
+        groupCode: "0",
       },
     },
   ];

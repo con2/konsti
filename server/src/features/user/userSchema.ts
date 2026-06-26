@@ -9,6 +9,7 @@ const LotterySignupSchemaDb = z.object({
   programItemId: z.string(),
   priority: z.number(),
   signedToStartTime: z.date().transform((date) => dayjs(date).toISOString()),
+  groupCode: z.string(),
 });
 
 const EventLogItemSchemaDb = z.object({
@@ -57,6 +58,7 @@ const lotterySignupSchema = new mongoose.Schema({
     get: (value: Date) => new Date(value),
     required: true,
   },
+  groupCode: { type: String, required: true },
 });
 
 const eventLogItemSchema = new mongoose.Schema(

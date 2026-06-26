@@ -16,7 +16,7 @@ import {
   DirectSignupWithProgramItem,
   selectLotterySignups,
 } from "client/views/my-program-items/myProgramItemsSlice";
-import { LotterySignup } from "shared/types/models/user";
+import { PostLotterySignupRequest } from "shared/types/api/myProgramItems";
 import { InfoText, InfoTextVariant } from "client/components/InfoText";
 import { startLoading, stopLoading } from "client/state/loading/loadingSlice";
 import { getEntryCondition } from "client/views/program-item/programItemUtils";
@@ -83,12 +83,11 @@ export const LotterySignupForm = ({
       return;
     }
 
-    const newProgramItem: LotterySignup = {
+    const newSignupRequest: PostLotterySignupRequest = {
       programItemId: programItem.programItemId,
       priority,
-      signedToStartTime: programItem.startTime,
     };
-    const error = await dispatch(submitPostLotterySignup(newProgramItem));
+    const error = await dispatch(submitPostLotterySignup(newSignupRequest));
 
     if (error) {
       setErrorMessage(error);
