@@ -214,21 +214,21 @@ Olet ollut onnekas ja pääsit ohjelmaan Test program item.
 Ohjelma alkaa pe 26.7.2019 17:00.
 
 Hi Test User!
-You got spot on program Test program item.
-Program will start at Fri 26.7.2019 17:00.
+You got a spot in the program Test program item.
+The program will start at Fri 26.7.2019 17:00.
 
 Terveisin / Sincerely Konsti`;
   const expectedAcceptedSubject =
-    "Konstiarvonnan tulos / Results for Konsti lottery signup";
+    "Konsti-arvonnan tulos / Results for Konsti lottery sign-up";
   const expectedRejectedBody = `Hei ${mockUser2.username}!
 Et valitettavasti päässyt arvonnassa yhteenkään ohjelmaan johon ilmoittauduit.
 
 Hi Test User 2!
-Unfortunately you did not get spot on lottery signup.
+Unfortunately you did not get spot in the lottery sign-up.
 
 Terveisin / Sincerely Konsti`;
   const expectedRejectedSubject =
-    "Konstiarvonnan tulos / Results for Konsti lottery signup";
+    "Konsti-arvonnan tulos / Results for Konsti lottery sign-up";
 
   expect(messages).toHaveLength(2);
   expect(messages[0].text).toEqual(expectedAcceptedBody);
@@ -625,7 +625,7 @@ test("should respect email notification permissions based on email field", async
   expect(messages).toHaveLength(1);
   expect(messages[0].to).toEqual(userWithEmail.email);
   expect(messages[0].subject).toEqual(
-    "Konstiarvonnan tulos / Results for Konsti lottery signup",
+    "Konsti-arvonnan tulos / Results for Konsti lottery sign-up",
   );
 });
 
@@ -692,6 +692,6 @@ test("should handle mixed email permissions in groups", async () => {
   expect(messages).toHaveLength(1);
   expect(messages[0].to).toEqual(userWithEmail.email);
   expect(messages[0].subject).toEqual(
-    "Konstiarvonnan tulos / Results for Konsti lottery signup",
+    "Konsti-arvonnan tulos / Results for Konsti lottery sign-up",
   );
 });

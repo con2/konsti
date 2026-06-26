@@ -72,16 +72,16 @@ test("Show event log notification when program item with direct signup is cancel
   await page.reload();
 
   await expect(page.getByTestId("notification-bar")).toContainText(
-    "Roleplaying game was cancelled and your signup was removed: Test program item",
+    "Roleplaying game was cancelled and your sign-up was removed: Test program item",
   );
 
   await page.getByRole("link", { name: "Show all notifications" }).click();
   await expect(page.getByTestId("event-log-item")).toContainText(
-    "Roleplaying game was cancelled and your signup was removed: Test program item",
+    "Roleplaying game was cancelled and your sign-up was removed: Test program item",
   );
 });
 
-test("Show event log notification when program item with lottery signup is cancelled before its lottery has run", async ({
+test("Show event log notification when program item with lottery sign-up is cancelled before its lottery has run", async ({
   page,
   request,
 }) => {
@@ -131,16 +131,16 @@ test("Show event log notification when program item with lottery signup is cance
   await page.reload();
 
   await expect(page.getByTestId("notification-bar")).toContainText(
-    "Roleplaying game was cancelled and your signup was removed: Test program item",
+    "Roleplaying game was cancelled and your sign-up was removed: Test program item",
   );
 
   await page.getByRole("link", { name: "Show all notifications" }).click();
   await expect(page.getByTestId("event-log-item")).toContainText(
-    "Roleplaying game was cancelled and your signup was removed: Test program item",
+    "Roleplaying game was cancelled and your sign-up was removed: Test program item",
   );
 });
 
-test("Show event log notification when program item with direct signup doesn't use Konsti anymore", async ({
+test("Show event log notification when program item with direct sign-up doesn't use Konsti anymore", async ({
   page,
   request,
 }) => {
@@ -194,16 +194,16 @@ test("Show event log notification when program item with direct signup doesn't u
   await page.reload();
 
   await expect(page.getByTestId("notification-bar")).toContainText(
-    "Roleplaying game no longer uses Konsti signup and your signup was removed: Test program item",
+    "Roleplaying game no longer uses Konsti sign-up and your sign-up was removed: Test program item",
   );
 
   await page.getByRole("link", { name: "Show all notifications" }).click();
   await expect(page.getByTestId("event-log-item")).toContainText(
-    "Roleplaying game no longer uses Konsti signup and your signup was removed: Test program item",
+    "Roleplaying game no longer uses Konsti sign-up and your sign-up was removed: Test program item",
   );
 });
 
-test("Show event log notification when program item with lottery signup doesn't use Konsti anymore before its lottery has run", async ({
+test("Show event log notification when program item with lottery sign-up doesn't use Konsti anymore before its lottery has run", async ({
   page,
   request,
 }) => {
@@ -253,16 +253,16 @@ test("Show event log notification when program item with lottery signup doesn't 
   await page.reload();
 
   await expect(page.getByTestId("notification-bar")).toContainText(
-    "Roleplaying game no longer uses Konsti signup and your signup was removed: Test program item",
+    "Roleplaying game no longer uses Konsti sign-up and your sign-up was removed: Test program item",
   );
 
   await page.getByRole("link", { name: "Show all notifications" }).click();
   await expect(page.getByTestId("event-log-item")).toContainText(
-    "Roleplaying game no longer uses Konsti signup and your signup was removed: Test program item",
+    "Roleplaying game no longer uses Konsti sign-up and your sign-up was removed: Test program item",
   );
 });
 
-test("Show event log notification when program item with direct signup is deleted", async ({
+test("Show event log notification when program item with direct sign-up is deleted", async ({
   page,
   request,
 }) => {
@@ -315,7 +315,7 @@ test("Show event log notification when program item with direct signup is delete
   );
 });
 
-test("Show event log notification when program item with lottery signup is deleted before its lottery has run", async ({
+test("Show event log notification when program item with lottery sign-up is deleted before its lottery has run", async ({
   page,
   request,
 }) => {
@@ -365,7 +365,7 @@ test("Show event log notification when program item with lottery signup is delet
   );
 });
 
-test("Show event log notification when program item with lottery signup is deleted after its lottery has run", async ({
+test("Show event log notification when program item with lottery sign-up is deleted after its lottery has run", async ({
   page,
   request,
 }) => {
@@ -420,7 +420,7 @@ test("Show event log notification when program item with lottery signup is delet
   );
 });
 
-test("Show event log notification when program item with lottery signup changes to a non-lottery program type before its lottery has run", async ({
+test("Show event log notification when program item with lottery sign-up changes to a non-lottery program type before its lottery has run", async ({
   page,
   request,
 }) => {
@@ -469,12 +469,12 @@ test("Show event log notification when program item with lottery signup changes 
   await page.reload();
 
   await expect(page.getByTestId("notification-bar")).toContainText(
-    "Program item no longer uses lottery signup and your lottery signup was removed: Test program item",
+    "Program item no longer uses lottery sign-up and your lottery sign-up was removed: Test program item",
   );
 
   await page.getByRole("link", { name: "Show all notifications" }).click();
   await expect(page.getByTestId("event-log-item")).toContainText(
-    "Program item no longer uses lottery signup and your lottery signup was removed: Test program item",
+    "Program item no longer uses lottery sign-up and your lottery sign-up was removed: Test program item",
   );
 });
 

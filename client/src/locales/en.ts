@@ -120,7 +120,7 @@ export const translationEN = {
     everyone: "Fits all ages",
     adults: "Directed at adults",
     teens: "Directed at youth (13–15)",
-    onlyAdults: "Adults only (K-18)",
+    onlyAdults: "Adults only (18+)",
     kids: "Directed at children aged 7–12",
     smallKids: "Directed at children under 7",
     k16: "Age limit 16+",
@@ -153,14 +153,14 @@ export const translationEN = {
   noLotterySignups:
     "No no lottery sign-ups. You can sign up in the All Program view.",
   noFutureLotterySignups:
-    "No no lottery sign-ups to future program. You can sign up in the All Program view.",
+    "No no lottery sign-ups to upcoming program. You can sign up in the All Program view.",
   noFavoriteProgramItems:
     "No favorites. You can add program items here in the All Program view.",
   noFutureFavoriteProgramItems:
-    "No favorites in the future. You can add program items here in the All Program view.",
+    "No upcoming favorites. You can add program items here in the All Program view.",
   noDirectSignups: "No sign-ups. You can sign up in the All Program view.",
   noFutureDirectSignups:
-    "No sign-ups to future program. You can sign up in the All Program view.",
+    "No sign-ups to upcoming program. You can sign up in the All Program view.",
   showAllProgramItems: "Also show past program items",
   noHiddenProgramItems: "No hidden program items",
   noSignupQuestions: "No sign-up questions",
@@ -179,7 +179,7 @@ export const translationEN = {
   },
   closingMessage: "Konsti is closed and will open closer to the next event.",
   invalidProgramItemId:
-    "Program item {{PROGRAM_ITEM_ID}} not found. Either the program item does not use Konsti for signups or the identifier is incorrect.",
+    "Program item {{PROGRAM_ITEM_ID}} not found. Either the program item does not use Konsti for sign-ups or the identifier is incorrect.",
   noProgramItemsAvailable:
     "No {{PROGRAM_TYPE}} found, please check your search conditions.",
   checkProgramGuide:
@@ -239,7 +239,7 @@ export const translationEN = {
       "You can sign up your group to the lottery. Please make sure that the group is not too big for the selected program items. The group creator cannot leave the group, but can close it. This will remove all members from the group.",
     groupCodeInfo: "Others can join this group with the code ",
     joiningGroupWillCancelUpcomingLotterySignups:
-      "Joining a group will cancel all your active lottery signups.",
+      "Joining a group will cancel all your active lottery sign-ups.",
     groupLotterySignupGuide: "You can enter a lottery sign-up as a group.",
     groupLotterySignupProgramTypes: "Lottery sign-up is used by",
     invalidGroupCode: "Invalid code",
@@ -265,8 +265,9 @@ export const translationEN = {
     title: "Notifications",
     noNotifications: "No notifications",
     programItemDetails: "Starting time {{START_TIME}} at {{LOCATION}}.",
-    upcomingLotterySignupsRemoved: "All upcoming lottery signups were removed.",
-    overlapLotterySignupsRemoved: "Overlapping lottery signups were removed.",
+    upcomingLotterySignupsRemoved:
+      "All upcoming lottery sign-ups were removed.",
+    overlapLotterySignupsRemoved: "Overlapping lottery sign-ups were removed.",
   },
   eventLogActions: {
     newAssignment: "You were assigned to the {{PROGRAM_TYPE}}",
@@ -275,13 +276,13 @@ export const translationEN = {
     noAssignment:
       "Spots for program items at {{START_TIME}} were randomized. Unfortunately, we couldn't fit you into any of your chosen program items.",
     programItemCancelled:
-      "{{PROGRAM_TYPE}} was cancelled and your signup was removed:",
+      "{{PROGRAM_TYPE}} was cancelled and your sign-up was removed:",
     programItemDeleted:
       "{{PROGRAM_TYPE}} was deleted and removed from your program:",
     programItemNoKonstiSignupAnymore:
-      "{{PROGRAM_TYPE}} no longer uses Konsti signup and your signup was removed:",
+      "{{PROGRAM_TYPE}} no longer uses Konsti sign-up and your sign-up was removed:",
     programItemNoLotteryAnymore:
-      "{{PROGRAM_TYPE}} no longer uses lottery signup and your lottery signup was removed:",
+      "{{PROGRAM_TYPE}} no longer uses lottery sign-up and your lottery sign-up was removed:",
     programItemMoved: "starting time has changed to {{NEW_STARTING_TIME}}.",
   },
   notificationBar: {
@@ -289,7 +290,7 @@ export const translationEN = {
   },
   signup: {
     alreadyLotterySigned:
-      "This {{PROGRAM_TYPE}} is priority {{CURRENT_PRIORITY}} on your lottery signups.",
+      "This {{PROGRAM_TYPE}} is priority {{CURRENT_PRIORITY}} on your lottery sign-ups.",
     directSignup: "Sign up",
     lotterySignup: "Lottery sign-up",
     cannotLotterySignupMoreProgramItems:
@@ -310,9 +311,9 @@ export const translationEN = {
     expectedDuration: "Duration {{EXPECTED_DURATION}}",
     loginToSignup: "Log in to sign up",
     inGroupWarning:
-      "If you sign up to a {{PROGRAM_TYPE}}, you will be removed from your current group. Groups can only be used in lottery signups.",
+      "If you sign up to a {{PROGRAM_TYPE}}, you will be removed from your current group. Groups can only be used in lottery sign-ups.",
     groupCreatorWarning:
-      "If you sign up to a {{PROGRAM_TYPE}}, the group you created will be deleted. Groups can only be used in lottery signups.",
+      "If you sign up to a {{PROGRAM_TYPE}}, the group you created will be deleted. Groups can only be used in lottery sign-ups.",
     groupSignupInfo: "Please note that you are signing up your whole group.",
     currentSignup: "You have signed up to this {{PROGRAM_TYPE}}.",
     entryFee: "Material fee {{ENTRY_FEE}}",
@@ -378,7 +379,7 @@ export const translationEN = {
   programType: {
     all: "All program",
     tabletopRPG: "Tabletop RPG",
-    larp: "LARP",
+    larp: "Larp",
     tournament: "Tournament",
     workshop: "Workshop",
     experiencePoint: "Experience Point",
@@ -390,7 +391,7 @@ export const translationEN = {
   programTypeSelection: {
     all: "All program types",
     tabletopRPG: "Tabletop RPG",
-    larp: "LARP",
+    larp: "Larp",
     tournament: "Tournaments",
     workshop: "Workshops",
     experiencePoint: "Experience Point",
@@ -402,7 +403,7 @@ export const translationEN = {
   programTypeSingular: {
     all: "program item",
     tabletopRPG: "roleplaying game",
-    larp: "LARP",
+    larp: "Larp",
     tournament: "tournament",
     workshop: "workshop",
     experiencePoint: "game",
@@ -607,7 +608,7 @@ export const translationEN = {
     sentryTesting: "Sentry testing",
     sentryClientTest: "Client test",
     sentryBackendTest: "Backend test",
-    signupStrategy: "Signup strategy",
+    signupStrategy: "Sign-up strategy",
     loginProvider: "Login provider",
   },
   email: {

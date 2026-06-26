@@ -14,7 +14,7 @@ interface EmailTemplate {
   text: string;
 }
 
-const SUBJECT = "Konstiarvonnan tulos / Results for Konsti lottery signup";
+const SUBJECT = "Konsti-arvonnan tulos / Results for Konsti lottery sign-up";
 const SIGNATURE = "Terveisin / Sincerely Konsti";
 
 export function getRejectedEmailTemplate(
@@ -23,7 +23,7 @@ export function getRejectedEmailTemplate(
   const bodyFi = `Hei ${notification.username}!
 Et valitettavasti päässyt arvonnassa yhteenkään ohjelmaan johon ilmoittauduit.`;
   const bodyEn = `Hi ${notification.username}!
-Unfortunately you did not get spot on lottery signup.`;
+Unfortunately you did not get spot in the lottery sign-up.`;
   return {
     subject: SUBJECT,
     text: `${bodyFi}\n\n${bodyEn}\n\n${SIGNATURE}`,
@@ -47,8 +47,8 @@ export function getAcceptedEmailTemplate(
 Olet ollut onnekas ja pääsit ohjelmaan ${programItemTitle}.
 Ohjelma alkaa ${programStartTimeFi}.`;
   const bodyEn = `Hi ${notification.username}!
-You got spot on program ${programItemTitle}.
-Program will start at ${programStartTimeEn}.`;
+You got a spot in the program ${programItemTitle}.
+The program will start at ${programStartTimeEn}.`;
   return {
     subject: SUBJECT,
     text: `${bodyFi}\n\n${bodyEn}\n\n${SIGNATURE}`,
