@@ -382,7 +382,7 @@ export const translationFI = {
   programType: {
     all: "Kaikki",
     tabletopRPG: "Pöytäroolipeli",
-    larp: "LARP",
+    larp: "Larpit",
     tournament: "Turnaus",
     workshop: "Työpaja",
     experiencePoint: "Kokemuspiste",
@@ -394,7 +394,7 @@ export const translationFI = {
   programTypeSelection: {
     all: "Kaikki ohjelmatyypit",
     tabletopRPG: "Pöytäroolipelit",
-    larp: "LARP",
+    larp: "Larpit",
     tournament: "Turnaukset",
     workshop: "Työpajat",
     experiencePoint: "Kokemuspiste",
@@ -406,7 +406,7 @@ export const translationFI = {
   programTypeSingular: {
     all: "ohjelmanumero",
     tabletopRPG: "roolipeli",
-    larp: "LARP",
+    larp: "larppi",
     tournament: "turnaus",
     workshop: "työpaja",
     experiencePoint: "peli",
