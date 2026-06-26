@@ -143,11 +143,11 @@ export const ProgramItemEntry = ({
       />
 
       {cancelled && (
-        <div>
+        <CanceledMessage>
           {t("signup.cancelled", {
             PROGRAM_TYPE: t(`programTypeSingular.${programItem.programType}`),
           })}
-        </div>
+        </CanceledMessage>
       )}
 
       {allValuesValid && !cancelled && (
@@ -171,4 +171,8 @@ const StyledCard = styled(RaisedCard)`
   flex-direction: column;
   gap: 16px;
   color: ${(props) => props.theme.textLighter};
+`;
+
+const CanceledMessage = styled.div`
+  font-weight: 600;
 `;
