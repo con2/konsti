@@ -1,5 +1,4 @@
-import { ActiveProgramType } from "shared/config/clientConfigTypes";
-import { Language, ProgramType } from "shared/types/models/programItem";
+import { Language } from "shared/types/models/programItem";
 
 export interface ClientConfig {
   apiServerUrl: string;
@@ -10,7 +9,6 @@ export interface ClientConfig {
   enableWhyDidYouRender: boolean;
   dataUpdateInterval: number;
   showAnnouncement: boolean;
-  programTypeSelectOptions: ActiveProgramType[];
   activeLanguages: Language[];
   showAboutPageInProgress: boolean;
 }
@@ -19,15 +17,6 @@ export const clientConfig: ClientConfig = {
   // Event settings
   showAboutPageInProgress: false,
   showAnnouncement: false,
-  programTypeSelectOptions: [
-    "all",
-    ProgramType.TABLETOP_RPG,
-    ProgramType.LARP,
-    ProgramType.TOURNAMENT,
-    ProgramType.WORKSHOP,
-    ProgramType.OTHER_GAMING,
-    ProgramType.OTHER,
-  ],
   activeLanguages: [Language.FINNISH, Language.ENGLISH, Language.SWEDISH],
 
   // Dev

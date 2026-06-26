@@ -5,7 +5,7 @@ import { ProgramType } from "shared/types/models/programItem";
 import { setActiveProgramType } from "client/views/admin/adminSlice";
 import { Dropdown } from "client/components/Dropdown";
 import { saveSession } from "client/utils/localStorage";
-import { config } from "shared/config";
+import { getProgramTypeSelectOptions } from "client/utils/getProgramTypeSelectOptions";
 
 interface Props {
   id: string;
@@ -19,7 +19,7 @@ export const ProgramTypeSelection = ({ id }: Props): ReactElement => {
     (state) => state.admin.activeProgramType,
   );
 
-  const programTypes = config.client().programTypeSelectOptions;
+  const programTypes = getProgramTypeSelectOptions();
 
   const dropdownItems = programTypes.map((programType) => ({
     value: programType,

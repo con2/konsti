@@ -10,12 +10,12 @@ import { ProgramItem } from "shared/types/models/programItem";
 import { SignupQuestion } from "shared/types/models/settings";
 import { SignupMessage } from "shared/types/models/signupMessage";
 import { loadSession } from "client/utils/localStorage";
-import { config } from "shared/config";
 import { ActiveProgramType } from "shared/config/clientConfigTypes";
+import { getProgramTypeSelectOptions } from "client/utils/getProgramTypeSelectOptions";
 
 const getInitialActiveProgramType = (): ActiveProgramType => {
   const persistedState = loadSession();
-  const { programTypeSelectOptions } = config.client();
+  const programTypeSelectOptions = getProgramTypeSelectOptions();
 
   if (programTypeSelectOptions.length === 1) {
     return programTypeSelectOptions[0];

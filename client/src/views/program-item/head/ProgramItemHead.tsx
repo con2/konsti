@@ -12,6 +12,7 @@ import { PopularityInfo } from "client/components/PopularityInfo";
 import { updateFavorite, UpdateFavoriteOpts } from "client/utils/favorite";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { config } from "shared/config";
+import { getProgramTypeSelectOptions } from "client/utils/getProgramTypeSelectOptions";
 import { ProgramItemHeadSignupInfo } from "client/views/program-item/head/components/ProgramItemHeadSignupInfo";
 import { AppRoute } from "client/app/AppRoutes";
 import { SignupQuestion } from "shared/types/models/settings";
@@ -85,7 +86,7 @@ export const ProgramItemHead = ({
     lotteryPhaseGapInProgress || directSignupInProgress || directSignupEnded;
 
   const tags = [];
-  if (config.client().programTypeSelectOptions.length > 1) {
+  if (getProgramTypeSelectOptions().length > 1) {
     tags.push(t(`programType.${programItem.programType}`));
   }
   if (programItem.gameSystem) {

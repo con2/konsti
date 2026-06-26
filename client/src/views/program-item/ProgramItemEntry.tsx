@@ -15,6 +15,7 @@ import {
   isAlreadyLotterySigned,
 } from "client/views/program-item/programItemUtils";
 import { config } from "shared/config";
+import { getProgramTypeSelectOptions } from "client/utils/getProgramTypeSelectOptions";
 import { ProgramItemBody } from "client/views/program-item/body/ProgramItemBody";
 import { ProgramItemSignup } from "client/views/program-item/signup/ProgramItemSignup";
 import { ProgramItemHead } from "client/views/program-item/head/ProgramItemHead";
@@ -83,7 +84,7 @@ export const ProgramItemEntry = ({
     : isLotterySignedForCurrentProgramItem;
 
   const tags = [];
-  if (config.client().programTypeSelectOptions.length > 1) {
+  if (getProgramTypeSelectOptions().length > 1) {
     tags.push(t(`programType.${programItem.programType}`));
   }
   if (programItem.gameSystem) {

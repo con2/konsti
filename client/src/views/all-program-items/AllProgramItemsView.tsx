@@ -22,7 +22,7 @@ import {
   SearchAndFilterCard,
   StartingTimeOption,
 } from "client/views/all-program-items/components/SearchAndFilterCard";
-import { config } from "shared/config";
+import { getProgramTypeSelectOptions } from "client/utils/getProgramTypeSelectOptions";
 import { ScrollToTopButton } from "client/components/ScrollToTopButton";
 
 export const MULTIPLE_WHITESPACES_REGEX = /\s\s+/g;
@@ -127,12 +127,10 @@ export const AllProgramItemsView = (): ReactElement => {
     setLoading(false);
   }, [debouncedSearchTerm, activeVisibleProgramItems]);
 
-  const programTypePairs = config
-    .client()
-    .programTypeSelectOptions.map((type) => ({
-      lowerCase: type.toLocaleLowerCase(),
-      originalValue: type,
-    }));
+  const programTypePairs = getProgramTypeSelectOptions().map((type) => ({
+    lowerCase: type.toLocaleLowerCase(),
+    originalValue: type,
+  }));
 
   useEffect(() => {
     if (!programTypeQueryParamValue) {
