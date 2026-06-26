@@ -97,6 +97,7 @@ Lottery assignment run results. Each entry represents one assignment run (the lo
           "programItemId": "example-program",
           "priority": 2, // Which preference (1st, 2nd, 3rd) was assigned
           "signedToStartTime": "2024-07-19T15:00:00Z",
+          "groupCode": "0", // Group the signup was made in; "0" = not in a group
         },
       },
     ],
@@ -127,6 +128,7 @@ All users with sanitized data. Usernames are anonymized numeric IDs, passwords a
         "programItemId": "example-program",
         "priority": 1, // User's preference order (1 = first choice)
         "signedToStartTime": "2024-07-19T15:00:00Z",
+        "groupCode": "0", // Group the signup was made in; "0" = not in a group
       },
     ],
     "eventLogItems": [
@@ -150,6 +152,7 @@ Older events have been normalized into the schema above. Notable details:
 - 2017–2019 (Ropecon, Tracon Hitpoint 2019): `directSignups` were moved out into a generated `direct-signups.json`; `favoriteProgramItemIds` was flattened from `[{programItemId}]` to `[string]`; old descriptive boolean flags (`englishOk`, `childrenFriendly`, `ageRestricted`, `beginnerFriendly`, `intendedForExperiencedParticipants`) were mapped to entries in `tags` and removed; 2017's `attributes` array was split into `genres` and `styles` and removed; 2017's `notes` field (which contained the game system) was renamed to `gameSystem`.
 - 2017: `mins` was string-typed and is now numeric; lottery signup priorities were string-typed and are now numeric; `signedToStartTime` was backfilled from each program's `startTime`.
 - 2021 Ropecon: a remote / COVID-era convention with direct signup only — no lottery was run. `lotterySignups` is empty by design and `results.json` is absent. Confirmed signups are in `direct-signups.json` with `priority: 0`.
+- `groupCode` on `users.json` `lotterySignups[]` and `results.json` `assignmentSignup` records which group a signup was made in (`"0"` = not in a group). It was added after these events ran, so every past-event datafile is backfilled to `"0"` — the original group context at signup time is not recoverable.
 
 ### serials.json
 

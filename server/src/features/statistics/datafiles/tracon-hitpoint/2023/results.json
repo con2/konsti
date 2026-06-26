@@ -6,7 +6,8 @@
         "assignmentSignup": {
           "programItemId": "p7338",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T11:00:00Z"
+          "signedToStartTime": "2023-11-04T11:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -14,7 +15,8 @@
         "assignmentSignup": {
           "programItemId": "p7338",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T11:00:00Z"
+          "signedToStartTime": "2023-11-04T11:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -22,7 +24,8 @@
         "assignmentSignup": {
           "programItemId": "p7338",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T11:00:00Z"
+          "signedToStartTime": "2023-11-04T11:00:00Z",
+          "groupCode": "0"
         }
       }
     ],
@@ -39,7 +42,8 @@
         "assignmentSignup": {
           "programItemId": "p7280",
           "priority": 2,
-          "signedToStartTime": "2023-11-04T13:00:00Z"
+          "signedToStartTime": "2023-11-04T13:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -47,7 +51,8 @@
         "assignmentSignup": {
           "programItemId": "p7345",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T13:00:00Z"
+          "signedToStartTime": "2023-11-04T13:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -55,7 +60,8 @@
         "assignmentSignup": {
           "programItemId": "p7345",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T13:00:00Z"
+          "signedToStartTime": "2023-11-04T13:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -63,7 +69,8 @@
         "assignmentSignup": {
           "programItemId": "p7345",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T13:00:00Z"
+          "signedToStartTime": "2023-11-04T13:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -71,7 +78,8 @@
         "assignmentSignup": {
           "programItemId": "p7345",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T13:00:00Z"
+          "signedToStartTime": "2023-11-04T13:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -79,7 +87,8 @@
         "assignmentSignup": {
           "programItemId": "p7280",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T13:00:00Z"
+          "signedToStartTime": "2023-11-04T13:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -87,7 +96,8 @@
         "assignmentSignup": {
           "programItemId": "p7345",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T13:00:00Z"
+          "signedToStartTime": "2023-11-04T13:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -95,7 +105,8 @@
         "assignmentSignup": {
           "programItemId": "p7280",
           "priority": 2,
-          "signedToStartTime": "2023-11-04T13:00:00Z"
+          "signedToStartTime": "2023-11-04T13:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -103,7 +114,8 @@
         "assignmentSignup": {
           "programItemId": "p7280",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T13:00:00Z"
+          "signedToStartTime": "2023-11-04T13:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -111,7 +123,8 @@
         "assignmentSignup": {
           "programItemId": "p7280",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T13:00:00Z"
+          "signedToStartTime": "2023-11-04T13:00:00Z",
+          "groupCode": "0"
         }
       }
     ],
@@ -128,7 +141,8 @@
         "assignmentSignup": {
           "programItemId": "p7274",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T14:00:00Z"
+          "signedToStartTime": "2023-11-04T14:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -136,7 +150,8 @@
         "assignmentSignup": {
           "programItemId": "p7274",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T14:00:00Z"
+          "signedToStartTime": "2023-11-04T14:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -144,7 +159,8 @@
         "assignmentSignup": {
           "programItemId": "p7274",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T14:00:00Z"
+          "signedToStartTime": "2023-11-04T14:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -152,7 +168,8 @@
         "assignmentSignup": {
           "programItemId": "p7274",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T14:00:00Z"
+          "signedToStartTime": "2023-11-04T14:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -160,7 +177,8 @@
         "assignmentSignup": {
           "programItemId": "p7274",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T14:00:00Z"
+          "signedToStartTime": "2023-11-04T14:00:00Z",
+          "groupCode": "0"
         }
       }
     ],
@@ -177,7 +195,8 @@
         "assignmentSignup": {
           "programItemId": "<cancelled>",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T15:00:00Z"
+          "signedToStartTime": "2023-11-04T15:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -185,7 +204,8 @@
         "assignmentSignup": {
           "programItemId": "p7360",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T15:00:00Z"
+          "signedToStartTime": "2023-11-04T15:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -193,7 +213,8 @@
         "assignmentSignup": {
           "programItemId": "p7368",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T15:00:00Z"
+          "signedToStartTime": "2023-11-04T15:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -201,7 +222,8 @@
         "assignmentSignup": {
           "programItemId": "p7368",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T15:00:00Z"
+          "signedToStartTime": "2023-11-04T15:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -209,7 +231,8 @@
         "assignmentSignup": {
           "programItemId": "p7368",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T15:00:00Z"
+          "signedToStartTime": "2023-11-04T15:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -217,7 +240,8 @@
         "assignmentSignup": {
           "programItemId": "<cancelled>",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T15:00:00Z"
+          "signedToStartTime": "2023-11-04T15:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -225,7 +249,8 @@
         "assignmentSignup": {
           "programItemId": "<cancelled>",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T15:00:00Z"
+          "signedToStartTime": "2023-11-04T15:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -233,7 +258,8 @@
         "assignmentSignup": {
           "programItemId": "p7360",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T15:00:00Z"
+          "signedToStartTime": "2023-11-04T15:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -241,7 +267,8 @@
         "assignmentSignup": {
           "programItemId": "p7364",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T15:00:00Z"
+          "signedToStartTime": "2023-11-04T15:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -249,7 +276,8 @@
         "assignmentSignup": {
           "programItemId": "p7364",
           "priority": 2,
-          "signedToStartTime": "2023-11-04T15:00:00Z"
+          "signedToStartTime": "2023-11-04T15:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -257,7 +285,8 @@
         "assignmentSignup": {
           "programItemId": "p7364",
           "priority": 2,
-          "signedToStartTime": "2023-11-04T15:00:00Z"
+          "signedToStartTime": "2023-11-04T15:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -265,7 +294,8 @@
         "assignmentSignup": {
           "programItemId": "p7360",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T15:00:00Z"
+          "signedToStartTime": "2023-11-04T15:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -273,7 +303,8 @@
         "assignmentSignup": {
           "programItemId": "<cancelled>",
           "priority": 2,
-          "signedToStartTime": "2023-11-04T15:00:00Z"
+          "signedToStartTime": "2023-11-04T15:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -281,7 +312,8 @@
         "assignmentSignup": {
           "programItemId": "<cancelled>",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T15:00:00Z"
+          "signedToStartTime": "2023-11-04T15:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -289,7 +321,8 @@
         "assignmentSignup": {
           "programItemId": "p7364",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T15:00:00Z"
+          "signedToStartTime": "2023-11-04T15:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -297,7 +330,8 @@
         "assignmentSignup": {
           "programItemId": "p7360",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T15:00:00Z"
+          "signedToStartTime": "2023-11-04T15:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -305,7 +339,8 @@
         "assignmentSignup": {
           "programItemId": "p7360",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T15:00:00Z"
+          "signedToStartTime": "2023-11-04T15:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -313,7 +348,8 @@
         "assignmentSignup": {
           "programItemId": "p7368",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T15:00:00Z"
+          "signedToStartTime": "2023-11-04T15:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -321,7 +357,8 @@
         "assignmentSignup": {
           "programItemId": "p7368",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T15:00:00Z"
+          "signedToStartTime": "2023-11-04T15:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -329,7 +366,8 @@
         "assignmentSignup": {
           "programItemId": "p7368",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T15:00:00Z"
+          "signedToStartTime": "2023-11-04T15:00:00Z",
+          "groupCode": "0"
         }
       }
     ],
@@ -346,7 +384,8 @@
         "assignmentSignup": {
           "programItemId": "p7341",
           "priority": 2,
-          "signedToStartTime": "2023-11-04T16:00:00Z"
+          "signedToStartTime": "2023-11-04T16:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -354,7 +393,8 @@
         "assignmentSignup": {
           "programItemId": "p7341",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T16:00:00Z"
+          "signedToStartTime": "2023-11-04T16:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -362,7 +402,8 @@
         "assignmentSignup": {
           "programItemId": "p7298",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T16:00:00Z"
+          "signedToStartTime": "2023-11-04T16:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -370,7 +411,8 @@
         "assignmentSignup": {
           "programItemId": "p7298",
           "priority": 2,
-          "signedToStartTime": "2023-11-04T16:00:00Z"
+          "signedToStartTime": "2023-11-04T16:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -378,7 +420,8 @@
         "assignmentSignup": {
           "programItemId": "p7298",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T16:00:00Z"
+          "signedToStartTime": "2023-11-04T16:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -386,7 +429,8 @@
         "assignmentSignup": {
           "programItemId": "p7341",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T16:00:00Z"
+          "signedToStartTime": "2023-11-04T16:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -394,7 +438,8 @@
         "assignmentSignup": {
           "programItemId": "p7335",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T16:00:00Z"
+          "signedToStartTime": "2023-11-04T16:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -402,7 +447,8 @@
         "assignmentSignup": {
           "programItemId": "p7298",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T16:00:00Z"
+          "signedToStartTime": "2023-11-04T16:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -410,7 +456,8 @@
         "assignmentSignup": {
           "programItemId": "p7341",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T16:00:00Z"
+          "signedToStartTime": "2023-11-04T16:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -418,7 +465,8 @@
         "assignmentSignup": {
           "programItemId": "p7341",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T16:00:00Z"
+          "signedToStartTime": "2023-11-04T16:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -426,7 +474,8 @@
         "assignmentSignup": {
           "programItemId": "p7335",
           "priority": 2,
-          "signedToStartTime": "2023-11-04T16:00:00Z"
+          "signedToStartTime": "2023-11-04T16:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -434,7 +483,8 @@
         "assignmentSignup": {
           "programItemId": "p7341",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T16:00:00Z"
+          "signedToStartTime": "2023-11-04T16:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -442,7 +492,8 @@
         "assignmentSignup": {
           "programItemId": "p7335",
           "priority": 2,
-          "signedToStartTime": "2023-11-04T16:00:00Z"
+          "signedToStartTime": "2023-11-04T16:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -450,7 +501,8 @@
         "assignmentSignup": {
           "programItemId": "p7335",
           "priority": 2,
-          "signedToStartTime": "2023-11-04T16:00:00Z"
+          "signedToStartTime": "2023-11-04T16:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -458,7 +510,8 @@
         "assignmentSignup": {
           "programItemId": "p7335",
           "priority": 2,
-          "signedToStartTime": "2023-11-04T16:00:00Z"
+          "signedToStartTime": "2023-11-04T16:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -466,7 +519,8 @@
         "assignmentSignup": {
           "programItemId": "p7335",
           "priority": 2,
-          "signedToStartTime": "2023-11-04T16:00:00Z"
+          "signedToStartTime": "2023-11-04T16:00:00Z",
+          "groupCode": "0"
         }
       }
     ],
@@ -483,7 +537,8 @@
         "assignmentSignup": {
           "programItemId": "p7279",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T17:00:00Z"
+          "signedToStartTime": "2023-11-04T17:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -491,7 +546,8 @@
         "assignmentSignup": {
           "programItemId": "p7279",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T17:00:00Z"
+          "signedToStartTime": "2023-11-04T17:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -499,7 +555,8 @@
         "assignmentSignup": {
           "programItemId": "p7269",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T17:00:00Z"
+          "signedToStartTime": "2023-11-04T17:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -507,7 +564,8 @@
         "assignmentSignup": {
           "programItemId": "p7269",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T17:00:00Z"
+          "signedToStartTime": "2023-11-04T17:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -515,7 +573,8 @@
         "assignmentSignup": {
           "programItemId": "p7269",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T17:00:00Z"
+          "signedToStartTime": "2023-11-04T17:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -523,7 +582,8 @@
         "assignmentSignup": {
           "programItemId": "p7279",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T17:00:00Z"
+          "signedToStartTime": "2023-11-04T17:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -531,7 +591,8 @@
         "assignmentSignup": {
           "programItemId": "p7279",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T17:00:00Z"
+          "signedToStartTime": "2023-11-04T17:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -539,7 +600,8 @@
         "assignmentSignup": {
           "programItemId": "p7273",
           "priority": 2,
-          "signedToStartTime": "2023-11-04T17:00:00Z"
+          "signedToStartTime": "2023-11-04T17:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -547,7 +609,8 @@
         "assignmentSignup": {
           "programItemId": "p7273",
           "priority": 2,
-          "signedToStartTime": "2023-11-04T17:00:00Z"
+          "signedToStartTime": "2023-11-04T17:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -555,7 +618,8 @@
         "assignmentSignup": {
           "programItemId": "p7273",
           "priority": 2,
-          "signedToStartTime": "2023-11-04T17:00:00Z"
+          "signedToStartTime": "2023-11-04T17:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -563,7 +627,8 @@
         "assignmentSignup": {
           "programItemId": "p7273",
           "priority": 2,
-          "signedToStartTime": "2023-11-04T17:00:00Z"
+          "signedToStartTime": "2023-11-04T17:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -571,7 +636,8 @@
         "assignmentSignup": {
           "programItemId": "p7273",
           "priority": 2,
-          "signedToStartTime": "2023-11-04T17:00:00Z"
+          "signedToStartTime": "2023-11-04T17:00:00Z",
+          "groupCode": "0"
         }
       }
     ],
@@ -588,7 +654,8 @@
         "assignmentSignup": {
           "programItemId": "p7373",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T18:00:00Z"
+          "signedToStartTime": "2023-11-04T18:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -596,7 +663,8 @@
         "assignmentSignup": {
           "programItemId": "p7373",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T18:00:00Z"
+          "signedToStartTime": "2023-11-04T18:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -604,7 +672,8 @@
         "assignmentSignup": {
           "programItemId": "p7346",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T18:00:00Z"
+          "signedToStartTime": "2023-11-04T18:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -612,7 +681,8 @@
         "assignmentSignup": {
           "programItemId": "p7346",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T18:00:00Z"
+          "signedToStartTime": "2023-11-04T18:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -620,7 +690,8 @@
         "assignmentSignup": {
           "programItemId": "p7346",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T18:00:00Z"
+          "signedToStartTime": "2023-11-04T18:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -628,7 +699,8 @@
         "assignmentSignup": {
           "programItemId": "p7373",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T18:00:00Z"
+          "signedToStartTime": "2023-11-04T18:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -636,7 +708,8 @@
         "assignmentSignup": {
           "programItemId": "p7373",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T18:00:00Z"
+          "signedToStartTime": "2023-11-04T18:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -644,7 +717,8 @@
         "assignmentSignup": {
           "programItemId": "p7346",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T18:00:00Z"
+          "signedToStartTime": "2023-11-04T18:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -652,7 +726,8 @@
         "assignmentSignup": {
           "programItemId": "p7346",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T18:00:00Z"
+          "signedToStartTime": "2023-11-04T18:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -660,7 +735,8 @@
         "assignmentSignup": {
           "programItemId": "p7346",
           "priority": 1,
-          "signedToStartTime": "2023-11-04T18:00:00Z"
+          "signedToStartTime": "2023-11-04T18:00:00Z",
+          "groupCode": "0"
         }
       }
     ],
@@ -677,7 +753,8 @@
         "assignmentSignup": {
           "programItemId": "<cancelled>",
           "priority": 1,
-          "signedToStartTime": "2023-11-05T09:00:00Z"
+          "signedToStartTime": "2023-11-05T09:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -685,7 +762,8 @@
         "assignmentSignup": {
           "programItemId": "p7270",
           "priority": 1,
-          "signedToStartTime": "2023-11-05T09:00:00Z"
+          "signedToStartTime": "2023-11-05T09:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -693,7 +771,8 @@
         "assignmentSignup": {
           "programItemId": "<cancelled>",
           "priority": 1,
-          "signedToStartTime": "2023-11-05T09:00:00Z"
+          "signedToStartTime": "2023-11-05T09:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -701,7 +780,8 @@
         "assignmentSignup": {
           "programItemId": "<cancelled>",
           "priority": 1,
-          "signedToStartTime": "2023-11-05T09:00:00Z"
+          "signedToStartTime": "2023-11-05T09:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -709,7 +789,8 @@
         "assignmentSignup": {
           "programItemId": "<cancelled>",
           "priority": 1,
-          "signedToStartTime": "2023-11-05T09:00:00Z"
+          "signedToStartTime": "2023-11-05T09:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -717,7 +798,8 @@
         "assignmentSignup": {
           "programItemId": "p7270",
           "priority": 1,
-          "signedToStartTime": "2023-11-05T09:00:00Z"
+          "signedToStartTime": "2023-11-05T09:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -725,7 +807,8 @@
         "assignmentSignup": {
           "programItemId": "p7270",
           "priority": 1,
-          "signedToStartTime": "2023-11-05T09:00:00Z"
+          "signedToStartTime": "2023-11-05T09:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -733,7 +816,8 @@
         "assignmentSignup": {
           "programItemId": "p7270",
           "priority": 1,
-          "signedToStartTime": "2023-11-05T09:00:00Z"
+          "signedToStartTime": "2023-11-05T09:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -741,7 +825,8 @@
         "assignmentSignup": {
           "programItemId": "p7270",
           "priority": 1,
-          "signedToStartTime": "2023-11-05T09:00:00Z"
+          "signedToStartTime": "2023-11-05T09:00:00Z",
+          "groupCode": "0"
         }
       }
     ],
@@ -758,7 +843,8 @@
         "assignmentSignup": {
           "programItemId": "p7358",
           "priority": 1,
-          "signedToStartTime": "2023-11-05T10:00:00Z"
+          "signedToStartTime": "2023-11-05T10:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -766,7 +852,8 @@
         "assignmentSignup": {
           "programItemId": "p7367",
           "priority": 1,
-          "signedToStartTime": "2023-11-05T10:00:00Z"
+          "signedToStartTime": "2023-11-05T10:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -774,7 +861,8 @@
         "assignmentSignup": {
           "programItemId": "p7299",
           "priority": 1,
-          "signedToStartTime": "2023-11-05T10:00:00Z"
+          "signedToStartTime": "2023-11-05T10:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -782,7 +870,8 @@
         "assignmentSignup": {
           "programItemId": "p7365",
           "priority": 1,
-          "signedToStartTime": "2023-11-05T10:00:00Z"
+          "signedToStartTime": "2023-11-05T10:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -790,7 +879,8 @@
         "assignmentSignup": {
           "programItemId": "p7367",
           "priority": 1,
-          "signedToStartTime": "2023-11-05T10:00:00Z"
+          "signedToStartTime": "2023-11-05T10:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -798,7 +888,8 @@
         "assignmentSignup": {
           "programItemId": "p7367",
           "priority": 2,
-          "signedToStartTime": "2023-11-05T10:00:00Z"
+          "signedToStartTime": "2023-11-05T10:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -806,7 +897,8 @@
         "assignmentSignup": {
           "programItemId": "p7365",
           "priority": 1,
-          "signedToStartTime": "2023-11-05T10:00:00Z"
+          "signedToStartTime": "2023-11-05T10:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -814,7 +906,8 @@
         "assignmentSignup": {
           "programItemId": "p7285",
           "priority": 1,
-          "signedToStartTime": "2023-11-05T10:00:00Z"
+          "signedToStartTime": "2023-11-05T10:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -822,7 +915,8 @@
         "assignmentSignup": {
           "programItemId": "p7285",
           "priority": 1,
-          "signedToStartTime": "2023-11-05T10:00:00Z"
+          "signedToStartTime": "2023-11-05T10:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -830,7 +924,8 @@
         "assignmentSignup": {
           "programItemId": "p7367",
           "priority": 1,
-          "signedToStartTime": "2023-11-05T10:00:00Z"
+          "signedToStartTime": "2023-11-05T10:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -838,7 +933,8 @@
         "assignmentSignup": {
           "programItemId": "p7358",
           "priority": 1,
-          "signedToStartTime": "2023-11-05T10:00:00Z"
+          "signedToStartTime": "2023-11-05T10:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -846,7 +942,8 @@
         "assignmentSignup": {
           "programItemId": "p7285",
           "priority": 1,
-          "signedToStartTime": "2023-11-05T10:00:00Z"
+          "signedToStartTime": "2023-11-05T10:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -854,7 +951,8 @@
         "assignmentSignup": {
           "programItemId": "p7285",
           "priority": 1,
-          "signedToStartTime": "2023-11-05T10:00:00Z"
+          "signedToStartTime": "2023-11-05T10:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -862,7 +960,8 @@
         "assignmentSignup": {
           "programItemId": "p7285",
           "priority": 1,
-          "signedToStartTime": "2023-11-05T10:00:00Z"
+          "signedToStartTime": "2023-11-05T10:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -870,7 +969,8 @@
         "assignmentSignup": {
           "programItemId": "p7358",
           "priority": 1,
-          "signedToStartTime": "2023-11-05T10:00:00Z"
+          "signedToStartTime": "2023-11-05T10:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -878,7 +978,8 @@
         "assignmentSignup": {
           "programItemId": "p7365",
           "priority": 1,
-          "signedToStartTime": "2023-11-05T10:00:00Z"
+          "signedToStartTime": "2023-11-05T10:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -886,7 +987,8 @@
         "assignmentSignup": {
           "programItemId": "p7365",
           "priority": 1,
-          "signedToStartTime": "2023-11-05T10:00:00Z"
+          "signedToStartTime": "2023-11-05T10:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -894,7 +996,8 @@
         "assignmentSignup": {
           "programItemId": "p7362",
           "priority": 1,
-          "signedToStartTime": "2023-11-05T10:00:00Z"
+          "signedToStartTime": "2023-11-05T10:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -902,7 +1005,8 @@
         "assignmentSignup": {
           "programItemId": "p7362",
           "priority": 1,
-          "signedToStartTime": "2023-11-05T10:00:00Z"
+          "signedToStartTime": "2023-11-05T10:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -910,7 +1014,8 @@
         "assignmentSignup": {
           "programItemId": "p7285",
           "priority": 1,
-          "signedToStartTime": "2023-11-05T10:00:00Z"
+          "signedToStartTime": "2023-11-05T10:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -918,7 +1023,8 @@
         "assignmentSignup": {
           "programItemId": "p7365",
           "priority": 1,
-          "signedToStartTime": "2023-11-05T10:00:00Z"
+          "signedToStartTime": "2023-11-05T10:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -926,7 +1032,8 @@
         "assignmentSignup": {
           "programItemId": "p7362",
           "priority": 1,
-          "signedToStartTime": "2023-11-05T10:00:00Z"
+          "signedToStartTime": "2023-11-05T10:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -934,7 +1041,8 @@
         "assignmentSignup": {
           "programItemId": "p7299",
           "priority": 2,
-          "signedToStartTime": "2023-11-05T10:00:00Z"
+          "signedToStartTime": "2023-11-05T10:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -942,7 +1050,8 @@
         "assignmentSignup": {
           "programItemId": "p7299",
           "priority": 2,
-          "signedToStartTime": "2023-11-05T10:00:00Z"
+          "signedToStartTime": "2023-11-05T10:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -950,7 +1059,8 @@
         "assignmentSignup": {
           "programItemId": "p7358",
           "priority": 1,
-          "signedToStartTime": "2023-11-05T10:00:00Z"
+          "signedToStartTime": "2023-11-05T10:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -958,7 +1068,8 @@
         "assignmentSignup": {
           "programItemId": "p7358",
           "priority": 1,
-          "signedToStartTime": "2023-11-05T10:00:00Z"
+          "signedToStartTime": "2023-11-05T10:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -966,7 +1077,8 @@
         "assignmentSignup": {
           "programItemId": "p7362",
           "priority": 2,
-          "signedToStartTime": "2023-11-05T10:00:00Z"
+          "signedToStartTime": "2023-11-05T10:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -974,7 +1086,8 @@
         "assignmentSignup": {
           "programItemId": "p7362",
           "priority": 2,
-          "signedToStartTime": "2023-11-05T10:00:00Z"
+          "signedToStartTime": "2023-11-05T10:00:00Z",
+          "groupCode": "0"
         }
       }
     ],
@@ -991,7 +1104,8 @@
         "assignmentSignup": {
           "programItemId": "p7369",
           "priority": 1,
-          "signedToStartTime": "2023-11-05T11:00:00Z"
+          "signedToStartTime": "2023-11-05T11:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -999,7 +1113,8 @@
         "assignmentSignup": {
           "programItemId": "p7369",
           "priority": 1,
-          "signedToStartTime": "2023-11-05T11:00:00Z"
+          "signedToStartTime": "2023-11-05T11:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -1007,7 +1122,8 @@
         "assignmentSignup": {
           "programItemId": "p7369",
           "priority": 2,
-          "signedToStartTime": "2023-11-05T11:00:00Z"
+          "signedToStartTime": "2023-11-05T11:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -1015,7 +1131,8 @@
         "assignmentSignup": {
           "programItemId": "p7369",
           "priority": 1,
-          "signedToStartTime": "2023-11-05T11:00:00Z"
+          "signedToStartTime": "2023-11-05T11:00:00Z",
+          "groupCode": "0"
         }
       }
     ],
@@ -1032,7 +1149,8 @@
         "assignmentSignup": {
           "programItemId": "p7424",
           "priority": 1,
-          "signedToStartTime": "2023-11-05T12:00:00Z"
+          "signedToStartTime": "2023-11-05T12:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -1040,7 +1158,8 @@
         "assignmentSignup": {
           "programItemId": "p7424",
           "priority": 1,
-          "signedToStartTime": "2023-11-05T12:00:00Z"
+          "signedToStartTime": "2023-11-05T12:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -1048,7 +1167,8 @@
         "assignmentSignup": {
           "programItemId": "p7424",
           "priority": 1,
-          "signedToStartTime": "2023-11-05T12:00:00Z"
+          "signedToStartTime": "2023-11-05T12:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -1056,7 +1176,8 @@
         "assignmentSignup": {
           "programItemId": "p7344",
           "priority": 1,
-          "signedToStartTime": "2023-11-05T12:00:00Z"
+          "signedToStartTime": "2023-11-05T12:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -1064,7 +1185,8 @@
         "assignmentSignup": {
           "programItemId": "p7344",
           "priority": 1,
-          "signedToStartTime": "2023-11-05T12:00:00Z"
+          "signedToStartTime": "2023-11-05T12:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -1072,7 +1194,8 @@
         "assignmentSignup": {
           "programItemId": "p7424",
           "priority": 1,
-          "signedToStartTime": "2023-11-05T12:00:00Z"
+          "signedToStartTime": "2023-11-05T12:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -1080,7 +1203,8 @@
         "assignmentSignup": {
           "programItemId": "p7344",
           "priority": 1,
-          "signedToStartTime": "2023-11-05T12:00:00Z"
+          "signedToStartTime": "2023-11-05T12:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -1088,7 +1212,8 @@
         "assignmentSignup": {
           "programItemId": "p7424",
           "priority": 1,
-          "signedToStartTime": "2023-11-05T12:00:00Z"
+          "signedToStartTime": "2023-11-05T12:00:00Z",
+          "groupCode": "0"
         }
       },
       {
@@ -1096,7 +1221,8 @@
         "assignmentSignup": {
           "programItemId": "p7424",
           "priority": 1,
-          "signedToStartTime": "2023-11-05T12:00:00Z"
+          "signedToStartTime": "2023-11-05T12:00:00Z",
+          "groupCode": "0"
         }
       }
     ],
