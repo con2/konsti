@@ -48,7 +48,7 @@ const settingsSchema = new mongoose.Schema(
     signupQuestions: { type: [signupQuestionSchema], default: [] },
     signupStrategy: {
       type: String,
-      default: config.server().defaultSignupStrategy,
+      default: config.event().defaultSignupStrategy,
     },
     programUpdateLastRun: {
       type: Date,
@@ -67,7 +67,7 @@ const settingsSchema = new mongoose.Schema(
     },
     loginProvider: {
       type: String,
-      default: config.server().defaultLoginProvider,
+      default: config.event().defaultLoginProvider,
     },
     emailNotificationTrigger: {
       type: String,

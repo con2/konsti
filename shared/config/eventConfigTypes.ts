@@ -89,4 +89,6 @@ export interface EventConfig {
   startTimesByParentIds: Map<string, string>;
   defaultSignupType: SignupType;
   enableTagDropdown: boolean;
+  defaultSignupStrategy: EventSignupStrategy;
+  defaultLoginProvider: LoginProvider;
 }

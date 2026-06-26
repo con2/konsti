@@ -6,6 +6,8 @@ import {
   AssignmentAlgorithm,
   EventName,
   EventConfig,
+  EventSignupStrategy,
+  LoginProvider,
 } from "shared/config/eventConfigTypes";
 import { ProgramType } from "shared/types/models/programItem";
 
@@ -34,4 +36,8 @@ const eventConfig: Partial<EventConfig> = {
   signupQuestions: [],
   tournamentSignupQuestion: null,
   tournamentSignupQuestionExcludeIds: [],
+
+  // Default DB values
+  defaultSignupStrategy: EventSignupStrategy.LOTTERY,
+  defaultLoginProvider: LoginProvider.LOCAL,
 };

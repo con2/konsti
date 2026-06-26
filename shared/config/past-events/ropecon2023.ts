@@ -3,6 +3,8 @@ import {
   AssignmentAlgorithm,
   EventName,
   EventConfig,
+  EventSignupStrategy,
+  LoginProvider,
 } from "shared/config/eventConfigTypes";
 import { ProgramType } from "shared/types/models/programItem";
 import { SignupQuestionType } from "shared/types/models/settings";
@@ -239,4 +241,8 @@ const eventConfig: Partial<EventConfig> = {
   preSignupStart: 60 * 4, // minutes
   directSignupPhaseStart: 60 * 2, // minutes
   phaseGap: 15, // minutes
+
+  // Default DB values
+  defaultSignupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
+  defaultLoginProvider: LoginProvider.LOCAL,
 };

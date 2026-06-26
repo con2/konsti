@@ -3,6 +3,8 @@ import {
   AssignmentAlgorithm,
   EventName,
   EventConfig,
+  EventSignupStrategy,
+  LoginProvider,
 } from "shared/config/eventConfigTypes";
 import { ProgramType } from "shared/types/models/programItem";
 import { SignupQuestionType } from "shared/types/models/settings";
@@ -168,4 +170,8 @@ const eventConfig: Partial<EventConfig> = {
 
   // Use fixed time to open all lottery signups for the whole event
   fixedLotterySignupTime: null,
+
+  // Default DB values
+  defaultSignupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
+  defaultLoginProvider: LoginProvider.LOCAL_KOMPASSI,
 };
