@@ -270,6 +270,60 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     expect(modifiedSignups[0].userSignups[0].message).toEqual("Test message");
   });
 
+  test("should store parent start time as signedToStartTime when program item has parent start time override", async () => {
+    // Direct signups store the parent-resolved start time so lottery re-runs can
+    // clean them up by matching the shared parent time
+    const parentStartTime = dayjs(testProgramItem.startTime)
+      .add(1, "hour")
+      .toISOString();
+
+    vi.spyOn(config, "event").mockReturnValue({
+      ...config.event(),
+      eventStartTime: dayjs(testProgramItem.startTime)
+        .subtract(config.event().preSignupStart, "minutes")
+        .toISOString(),
+      twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
+      startTimesByParentIds: new Map([
+        [testProgramItem.parentId, parentStartTime],
+      ]),
+    });
+
+    // Signup is open: after the parent-derived direct signup start, before own end time
+    vi.setSystemTime(
+      dayjs(testProgramItem.startTime).subtract(30, "minutes").toISOString(),
+    );
+
+    await saveProgramItems([testProgramItem]);
+    await saveUser(mockUser);
+
+    const signup: PostDirectSignupRequest = {
+      directSignupProgramItemId: testProgramItem.programItemId,
+      message: "Test message",
+      priority: DIRECT_SIGNUP_PRIORITY,
+    };
+    const response = await request(server)
+      .post(ApiEndpoint.DIRECT_SIGNUP)
+      .send(signup)
+      .set(
+        "Authorization",
+        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
+      );
+
+    expect(response.status).toEqual(200);
+
+    const body = response.body as PostDirectSignupResult;
+    expect(body.status).toEqual("success");
+
+    const modifiedSignups = unsafelyUnwrap(
+      await findUserDirectSignups(mockUser.username),
+    );
+
+    // signedToStartTime is the parent start time, not the program item own start time
+    expect(
+      dayjs(modifiedSignups[0].userSignups[0].signedToStartTime).toISOString(),
+    ).toEqual(parentStartTime);
+  });
+
   test("should not sign too many attendees to program item", async () => {
     vi.setSystemTime(testProgramItem.startTime);
 

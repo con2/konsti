@@ -34,11 +34,17 @@ import {
   saveDirectSignup,
 } from "server/features/direct-signup/directSignupRepository";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
+import { saveTestSettings } from "server/test/test-settings/testSettingsRepository";
 import {
   KompassiGrouping,
   KompassiGamestyle,
 } from "server/kompassi/kompassiProgramItem";
-import { Gamestyle, ProgramType, Tag } from "shared/types/models/programItem";
+import {
+  Gamestyle,
+  ProgramItemSignupStrategy,
+  ProgramType,
+  Tag,
+} from "shared/types/models/programItem";
 import { logger } from "server/utils/logger";
 import { SignupQuestionType } from "shared/types/models/settings";
 import { config } from "shared/config";
@@ -153,6 +159,62 @@ describe(`GET ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     };
 
     expect(response.body).toMatchObject(expectedResponse);
+  });
+
+  test("should resolve signup strategy from program item own start time when no parent start time override", async () => {
+    const { eventStartTime, directSignupPhaseStart } = config.event();
+
+    // Own start time is after the lottery cutoff (event start + 3h) so lottery applies
+    const ownStartTime = dayjs(eventStartTime).add(8, "hours").toISOString();
+    // Now is before the direct signup phase starts for the own start time
+    const timeNow = dayjs(ownStartTime)
+      .subtract(directSignupPhaseStart + 60, "minutes")
+      .toISOString();
+
+    await saveTestSettings({ testTime: timeNow });
+    await createSettings();
+    await saveProgramItems([{ ...testProgramItem, startTime: ownStartTime }]);
+
+    const response = await request(server).get(ApiEndpoint.PROGRAM_ITEMS);
+    expect(response.status).toEqual(200);
+
+    const { programItems } = response.body as GetProgramItemsResult;
+    expect(programItems[0].programItem.signupStrategy).toEqual(
+      ProgramItemSignupStrategy.LOTTERY,
+    );
+  });
+
+  test("should resolve signup strategy from parent start time override", async () => {
+    const { eventStartTime, directSignupPhaseStart } = config.event();
+
+    const ownStartTime = dayjs(eventStartTime).add(8, "hours").toISOString();
+    // Parent start time is earlier than own start time so its direct signup phase has started
+    const parentStartTime = dayjs(eventStartTime).add(5, "hours").toISOString();
+
+    vi.spyOn(config, "event").mockReturnValue({
+      ...config.event(),
+      startTimesByParentIds: new Map([
+        [testProgramItem.parentId, parentStartTime],
+      ]),
+    });
+
+    // Now is before the own direct signup phase start, but after the parent-derived one
+    const timeNow = dayjs(parentStartTime)
+      .subtract(directSignupPhaseStart - 60, "minutes")
+      .toISOString();
+
+    await saveTestSettings({ testTime: timeNow });
+    await createSettings();
+    await saveProgramItems([{ ...testProgramItem, startTime: ownStartTime }]);
+
+    const response = await request(server).get(ApiEndpoint.PROGRAM_ITEMS);
+    expect(response.status).toEqual(200);
+
+    const { programItems } = response.body as GetProgramItemsResult;
+    // Without the parent override the own start time would resolve to LOTTERY
+    expect(programItems[0].programItem.signupStrategy).toEqual(
+      ProgramItemSignupStrategy.DIRECT,
+    );
   });
 });
 
