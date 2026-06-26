@@ -37,6 +37,19 @@ export const addProgramItems = async (
   expect(response.status()).toBe(200);
 };
 
+export const addSerials = async (
+  request: APIRequestContext,
+  count: number,
+): Promise<string[]> => {
+  const url = `${baseUrl}${ApiDevEndpoint.ADD_SERIALS}`;
+  const response = await request.post(url, {
+    data: { count },
+  });
+  expect(response.status()).toBe(200);
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+  return response.json();
+};
+
 const postLogin = async (
   request: APIRequestContext,
   loginRequest: PostLoginRequest,
