@@ -73,6 +73,7 @@ export const mockPostDirectSignupRequest: SignupRepositoryAddSignup = {
   username: mockUser.username,
   directSignupProgramItemId: testProgramItem.programItemId,
   signedToStartTime: testProgramItem.startTime,
+  signupTime: testProgramItem.startTime,
   message: "",
   priority: DIRECT_SIGNUP_PRIORITY,
 };
@@ -81,6 +82,7 @@ export const mockPostDirectSignupRequest2: SignupRepositoryAddSignup = {
   username: mockUser.username,
   directSignupProgramItemId: testProgramItem2.programItemId,
   signedToStartTime: testProgramItem2.startTime,
+  signupTime: testProgramItem2.startTime,
   message: "",
   priority: DIRECT_SIGNUP_PRIORITY,
 };

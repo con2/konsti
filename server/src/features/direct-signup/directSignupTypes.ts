@@ -2,6 +2,7 @@ export interface UserDirectSignup {
   username: string;
   priority: number;
   signedToStartTime: string;
+  signupTime: string;
   message: string;
 }
 
@@ -17,6 +18,7 @@ export interface SignupRepositoryAddSignup {
   message: string;
   priority: number;
   signedToStartTime: string;
+  signupTime: string;
 }
 
 export interface SignupRepositoryAddSignupResponse {

@@ -24,6 +24,7 @@ export const getPreviousDirectSignup = ({
         signedToStartTime: dayjs(parentStartTime ?? assignmentTime)
           .subtract(1, "hours")
           .toISOString(),
+        signupTime: assignmentTime,
         message: "",
       },
     ],

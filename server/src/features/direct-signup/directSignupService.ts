@@ -106,6 +106,7 @@ export const storeDirectSignup = async (
     username,
     // signedToStartTime can be parent-resolved; direct signups store parent time for lottery re-run cleanup
     signedToStartTime: parentStartTime ?? programItem.startTime,
+    signupTime: timeNow.toISOString(),
   };
 
   const signupResult = await saveDirectSignup(newDirectSignup);
