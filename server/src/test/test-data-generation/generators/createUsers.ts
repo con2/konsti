@@ -99,16 +99,17 @@ const createUser = async ({
     ? unsafelyUnwrap(await hashPassword("test"))
     : "testPass"; // Skip hashing to save time
 
-  const username = faker.internet.username();
+  const username = testUsers ? `group${userNumber}` : faker.internet.username();
   const registrationData: NewUser = {
     kompassiId: 0,
-    username: testUsers ? `group${userNumber}` : username,
+    username,
     passwordHash,
     userGroup: UserGroup.USER,
     serial: faker.number.int(SERIAL_MAX).toString(),
     groupCode,
     isGroupCreator,
     email: `${username}@example.local`,
+    emailNotificationPermitAsked: true,
   };
 
   await saveUser(registrationData);
