@@ -403,7 +403,7 @@ export const translationEN = {
   programTypeSingular: {
     all: "program item",
     tabletopRPG: "roleplaying game",
-    larp: "Larp",
+    larp: "larp",
     tournament: "tournament",
     workshop: "workshop",
     experiencePoint: "game",
