@@ -8,7 +8,6 @@ import {
   USERNAME_LENGTH_MAX,
   USERNAME_LENGTH_MIN,
 } from "shared/constants/validation";
-import { config } from "shared/config";
 import { EventLogItem } from "shared/types/models/eventLog";
 
 // GET user
@@ -34,18 +33,11 @@ export type GetUserResponse = GetUserResult | GetUserError;
 export const PostUserRequestSchema = z.object({
   username: z.string().trim().min(USERNAME_LENGTH_MIN).max(USERNAME_LENGTH_MAX),
   password: z.string().trim().min(PASSWORD_LENGTH_MIN).max(PASSWORD_LENGTH_MAX),
+  // Local account creation always requires a registration code
   serial: z
     .string()
-    .optional()
-    .transform((val) => val?.replaceAll("-", "")) // remove dashes
-    .refine((input) => {
-      if (config.event().requireRegistrationCode) {
-        if (!input || input.trim().length === 0) {
-          return false;
-        }
-      }
-      return true;
-    }),
+    .min(1)
+    .transform((val) => val.replaceAll("-", "")), // remove dashes
 });
 
 export type PostUserRequest = z.infer<typeof PostUserRequestSchema>;

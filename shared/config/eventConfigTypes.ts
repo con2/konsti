@@ -59,7 +59,6 @@ export interface EventConfig {
   rollingDirectSignupProgramTypes: ProgramType[];
   enableRollingDirectSignupPreviousDay: boolean;
   directSignupAlwaysOpenIds: string[];
-  requireRegistrationCode: boolean;
   twoPhaseSignupProgramTypes: ProgramType[];
   addToKonstiOther: string[];
   noKonstiSignupIds: string[];

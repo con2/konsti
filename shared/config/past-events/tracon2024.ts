@@ -18,7 +18,6 @@ const eventConfig: Partial<EventConfig> = {
   eventYear: "2024",
 
   // Event settings
-  requireRegistrationCode: true,
   assignmentAlgorithm: AssignmentAlgorithm.RANDOM,
   enableGroups: true,
   enableRemoveOverlapSignups: false,

@@ -16,8 +16,6 @@ export const eventConfig: EventConfig = {
   // Event settings
   enableRevolvingDoor: true,
   enableTagDropdown: true,
-
-  requireRegistrationCode: true,
   assignmentAlgorithm: AssignmentAlgorithm.RANDOM_PADG,
   enableGroups: true,
 
