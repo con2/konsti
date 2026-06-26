@@ -6,6 +6,27 @@ const WinstonTransport = (
 ).default;
 import { config } from "shared/config";
 
+const SPLAT = Symbol.for("splat");
+
+// winston's `%s` formatting collapses an Error's `cause` to `[Error]`; expand the
+// whole chain so the underlying error stays visible in logs
+const expandErrorCauses = format((info) => {
+  const args = (info as Record<symbol, unknown>)[SPLAT];
+  if (Array.isArray(args)) {
+    (info as Record<symbol, unknown>)[SPLAT] = args.map((arg: unknown) => {
+      if (!(arg instanceof Error)) {
+        return arg;
+      }
+      let text = arg.stack ?? String(arg);
+      for (let cause = arg.cause; cause instanceof Error; cause = cause.cause) {
+        text += `\nCaused by: ${cause.stack ?? String(cause)}`;
+      }
+      return text;
+    });
+  }
+  return info;
+});
+
 const consoleOutputFormat = config.server().consoleLogFormatJson
   ? format.combine(
       format.timestamp(),
@@ -32,6 +53,7 @@ const consoleOutputFormat = config.server().consoleLogFormatJson
 export const logger = createLogger({
   handleExceptions: true,
   handleRejections: true,
+  format: expandErrorCauses(),
 
   transports: [
     new transports.Console({
