@@ -120,7 +120,7 @@ All users with sanitized data. Usernames are anonymized numeric IDs, passwords a
     "userGroup": "user", // Always "user" in dumps (admins excluded)
     "serial": "1001408788", // Registration code used to create the account
     "groupCode": "0", // "0" = not in a group, otherwise a group code
-    "groupCreatorCode": "0", // "0" = not a group creator
+    "isGroupCreator": false, // true if the user created the group
     "favoriteProgramItemIds": ["program-id-1", "program-id-2"],
     "lotterySignups": [
       // What the user submitted to the lottery
@@ -164,7 +164,7 @@ Application settings dump. Not required for statistics.
 
 ## Conventions to know
 
-- **Group creator identification**: a user is the group creator iff `user.groupCreatorCode === user.groupCode` (both non-`"0"`). Regular members have `groupCreatorCode: "0"`. In 2018–2023 dumps the `groupCode` equals the creator's `serial`; from 2024 onward it's an unrelated UUID-style string.
+- **Group creator identification**: a user is the group creator iff `user.isGroupCreator === true` (a creator's `groupCode` is the group's own code). Regular members have `isGroupCreator: false`. In 2018–2023 dumps the `groupCode` equals the creator's `serial`; from 2024 onward it's an unrelated UUID-style string.
 - **`kompassiId` types**: `0` (number) means the user signed up with a registration code; `"<redacted>"` (string) means they used Kompassi OAuth. Both forms only co-exist in events whose `settings.json` has `loginProvider: "local+kompassi"` (Ropecon 2025 onward). Earlier events have a single value across all rows depending on the active login method.
 - **Popularity scale history**: Ropecon 2025 introduced the 5-bucket enum (`notSet`/`low`/`medium`/`high`/`veryHigh`/`extreme`). Pre-2025 dumps used a numeric scale that encoded only 3 buckets (`low` = under min attendance, `medium` = between min and max, `high` = at max), so normalized older dumps never carry `veryHigh` or `extreme`.
 - **Algorithm naming history**: `results.json` `algorithm` field is canonicalized to current names. `Opa` (in older `message` strings) was the older name for `padg`; `Group` was the older name for `random`. 2017 used `hungarian` (no longer in the codebase enum), and 2018 used `random`.

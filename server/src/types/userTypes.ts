@@ -7,7 +7,7 @@ export interface NewUser {
   passwordHash: string;
   userGroup?: UserGroup;
   groupCode?: string;
-  groupCreatorCode?: string;
+  isGroupCreator?: boolean;
   email?: string;
   emailNotificationPermitAsked?: boolean;
 }

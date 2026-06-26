@@ -16,7 +16,7 @@ interface GetUserResult extends ApiResult {
   programItems: UserProgramItems;
   serial: string;
   groupCode: string;
-  groupCreatorCode: string;
+  isGroupCreator: boolean;
   username: string;
   eventLogItems: EventLogItem[];
   email: string;

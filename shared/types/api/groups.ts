@@ -47,8 +47,8 @@ export type PostJoinGroupResponse = PostJoinGroupResult | PostJoinGroupError;
 
 type PostLeaveGroupResult = PostCreateGroupResult;
 
-interface PostLeaveGroupError extends ApiError {
-  errorId: "unknown" | "failedToLeave";
+export interface PostLeaveGroupError extends ApiError {
+  errorId: "unknown" | "failedToLeave" | "creatorCannotLeave";
 }
 
 export type PostLeaveGroupResponse = PostLeaveGroupResult | PostLeaveGroupError;

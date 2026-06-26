@@ -9,6 +9,7 @@ import {
   GetGroupResult,
   PostCloseGroupRequest,
   PostJoinGroupRequest,
+  PostLeaveGroupError,
 } from "shared/types/api/groups";
 import { UserGroup } from "shared/types/models/user";
 import { getJWT } from "server/utils/jwt";
@@ -67,7 +68,7 @@ describe(`GET ${ApiEndpoint.GROUP}`, () => {
     await saveUser({
       ...mockUser,
       groupCode: mockUser.serial,
-      groupCreatorCode: mockUser.serial,
+      isGroupCreator: true,
     });
     await saveUser({ ...mockUser2, groupCode: mockUser.serial });
     await saveDirectSignup({
@@ -85,7 +86,6 @@ describe(`GET ${ApiEndpoint.GROUP}`, () => {
         "Authorization",
         `Bearer ${getJWT(UserGroup.USER, mockUser2.username)}`,
       );
-
     expect(response.status).toEqual(200);
 
     const body = response.body as GetGroupResult;
@@ -111,10 +111,10 @@ describe(`POST ${ApiEndpoint.GROUP}`, () => {
         "Authorization",
         `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
       );
-
     expect(response.status).toEqual(200);
+
     const updatedUser = unsafelyUnwrap(await findUser(mockUser.username));
-    expect(updatedUser?.groupCode).toEqual(updatedUser?.groupCreatorCode);
+    expect(updatedUser?.isGroupCreator).toEqual(true);
 
     const groupCodeMatcher = new RegExp(
       "^[a-zA-Z0-9]{3}-[a-zA-Z0-9]{3}-[a-zA-Z0-9]{3}$",
@@ -159,7 +159,7 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
         startTime: upcomingStartTime,
       },
     ]);
-    await saveUser({ ...mockUser, groupCode, groupCreatorCode: groupCode });
+    await saveUser({ ...mockUser, groupCode, isGroupCreator: true });
     await saveUser(mockUser2);
 
     const pastLotterySignup = {
@@ -209,7 +209,7 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
     const groupCode = "123-234-345";
 
     await saveProgramItems([{ ...testProgramItem, startTime: pastStartTime }]);
-    await saveUser({ ...mockUser, groupCode, groupCreatorCode: groupCode });
+    await saveUser({ ...mockUser, groupCode, isGroupCreator: true });
     await saveUser(mockUser2);
 
     const pastLotterySignup = {
@@ -268,7 +268,7 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
     const groupCode = "123-234-345";
 
     await saveProgramItems([{ ...testProgramItem, startTime: ownStartTime }]);
-    await saveUser({ ...mockUser, groupCode, groupCreatorCode: groupCode });
+    await saveUser({ ...mockUser, groupCode, isGroupCreator: true });
     await saveUser(mockUser2);
 
     const lotterySignup = {
@@ -321,7 +321,7 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
     await saveProgramItems([
       { ...testProgramItem, startTime: upcomingStartTime },
     ]);
-    await saveUser({ ...mockUser, groupCode, groupCreatorCode: groupCode });
+    await saveUser({ ...mockUser, groupCode, isGroupCreator: true });
     await saveUser(mockUser2);
 
     const upcomingLotterySignup = {
@@ -370,7 +370,7 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
     await saveUser({
       ...mockUser,
       groupCode: mockUser.serial,
-      groupCreatorCode: mockUser.serial,
+      isGroupCreator: true,
     });
     await saveUser(mockUser2);
     await saveDirectSignup({
@@ -389,7 +389,6 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
         "Authorization",
         `Bearer ${getJWT(UserGroup.USER, mockUser2.username)}`,
       );
-
     expect(response.status).toEqual(200);
 
     const body = response.body as GetGroupError;
@@ -408,7 +407,7 @@ describe(`POST ${ApiEndpoint.LEAVE_GROUP}`, () => {
     await saveUser({
       ...mockUser,
       groupCode: mockUser.serial,
-      groupCreatorCode: mockUser.serial,
+      isGroupCreator: true,
     });
     await saveUser({ ...mockUser2, groupCode: mockUser.serial });
 
@@ -418,10 +417,35 @@ describe(`POST ${ApiEndpoint.LEAVE_GROUP}`, () => {
         "Authorization",
         `Bearer ${getJWT(UserGroup.USER, mockUser2.username)}`,
       );
-
     expect(response.status).toEqual(200);
+
     const updatedUser = unsafelyUnwrap(await findUser(mockUser2.username));
     expect(updatedUser?.groupCode).toEqual("0");
+  });
+
+  test("should not let group creator leave group", async () => {
+    await saveUser({
+      ...mockUser,
+      groupCode: mockUser.serial,
+      isGroupCreator: true,
+    });
+
+    const response = await request(server)
+      .post(ApiEndpoint.LEAVE_GROUP)
+      .set(
+        "Authorization",
+        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
+      );
+    expect(response.status).toEqual(200);
+
+    const body = response.body as PostLeaveGroupError;
+    expect(body.status).toEqual("error");
+    expect(body.errorId).toEqual("creatorCannotLeave");
+
+    // Creator stays in their group
+    const updatedUser = unsafelyUnwrap(await findUser(mockUser.username));
+    expect(updatedUser?.groupCode).toEqual(mockUser.serial);
+    expect(updatedUser?.isGroupCreator).toEqual(true);
   });
 });
 
@@ -444,7 +468,7 @@ describe(`POST ${ApiEndpoint.CLOSE_GROUP}`, () => {
   test("should close group and remove all group members", async () => {
     const groupCode = "abc-dfg-hij";
 
-    await saveUser({ ...mockUser, groupCode, groupCreatorCode: groupCode });
+    await saveUser({ ...mockUser, groupCode, isGroupCreator: true });
     await saveUser({ ...mockUser2, groupCode });
 
     const groupRequest: PostCloseGroupRequest = {
@@ -458,8 +482,8 @@ describe(`POST ${ApiEndpoint.CLOSE_GROUP}`, () => {
         "Authorization",
         `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
       );
-
     expect(response.status).toEqual(200);
+
     const updatedUser = unsafelyUnwrap(await findUser(mockUser2.username));
     expect(updatedUser?.groupCode).toEqual("0");
     const updatedUser2 = unsafelyUnwrap(await findUser(mockUser2.username));

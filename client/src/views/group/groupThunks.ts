@@ -105,6 +105,7 @@ export const submitJoinGroup = (
 export enum PostLeaveGroupErrorMessage {
   UNKNOWN = "group.generalGroupError",
   FAILED_TO_LEAVE = "group.generalLeaveGroupError",
+  CREATOR_CANNOT_LEAVE = "group.error.creatorCannotLeave",
 }
 
 export const submitLeaveGroup = (): AppThunk<
@@ -117,6 +118,8 @@ export const submitLeaveGroup = (): AppThunk<
       switch (leaveGroupResponse.errorId) {
         case "failedToLeave":
           return PostLeaveGroupErrorMessage.FAILED_TO_LEAVE;
+        case "creatorCannotLeave":
+          return PostLeaveGroupErrorMessage.CREATOR_CANNOT_LEAVE;
         case "unknown":
           return PostLeaveGroupErrorMessage.UNKNOWN;
         default:

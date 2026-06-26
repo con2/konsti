@@ -318,7 +318,7 @@ test("Should assign group with 'startTimesByParentIds' program item", async () =
   const groupCode = "123-234-345";
 
   await saveProgramItems([testProgramItem]);
-  await saveUser({ ...mockUser, groupCode, groupCreatorCode: groupCode });
+  await saveUser({ ...mockUser, groupCode, isGroupCreator: true });
   await saveUser({ ...mockUser2, groupCode });
 
   await saveUser(mockUser);

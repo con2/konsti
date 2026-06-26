@@ -244,7 +244,7 @@ Terveisin / Sincerely Konsti`;
 test("should add NO_ASSIGNMENT event log item to group members", async () => {
   const groupCode = "abc-dfg-hij";
 
-  await saveUser({ ...mockUser, groupCode, groupCreatorCode: groupCode });
+  await saveUser({ ...mockUser, groupCode, isGroupCreator: true });
   await saveUser({ ...mockUser2, groupCode });
 
   await saveProgramItems([
@@ -643,7 +643,7 @@ test("should handle mixed email permissions in groups", async () => {
   const userWithEmail = {
     ...mockUser,
     groupCode,
-    groupCreatorCode: groupCode,
+    isGroupCreator: true,
     emailNotificationPermitAsked: true,
     email: "user1@example.com",
   };

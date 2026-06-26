@@ -16,7 +16,7 @@ export const GroupMembersList = ({ groupMembers }: Props): ReactElement => {
   }
 
   const membersList = groupMembers.map((member, index) => {
-    const isGroupCreator = member.groupCreatorCode !== "0";
+    const isGroupCreator = member.isGroupCreator;
     return (
       <p key={member.username}>
         {index + 1}

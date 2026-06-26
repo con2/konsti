@@ -206,6 +206,8 @@ export const translationEN = {
       removeUpcomingLotterySignupsFailed:
         "Error deleting active lottery sign-ups, please try again.",
       onlyCreatorCanCloseGroup: "Only the group creator can close a group.",
+      creatorCannotLeave:
+        "As the group creator, you have to close the group instead of leaving it.",
       memberUpcomingDirectSignups:
         "You already have sign-ups. You will have to cancel those before joining a group.",
       creatorUpcomingDirectSignups:

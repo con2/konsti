@@ -70,7 +70,7 @@ export const submitLogin = (
     dispatch(
       submitUpdateGroupCodeAsync({
         groupCode: loginResponse.groupCode,
-        isGroupCreator: loginResponse.groupCreatorCode !== "0",
+        isGroupCreator: loginResponse.isGroupCreator,
       }),
     );
 
@@ -141,7 +141,7 @@ export const submitSessionRecovery = (
 
     const updatedGroup = {
       groupCode: loginResponse.groupCode,
-      isGroupCreator: loginResponse.groupCreatorCode !== "0",
+      isGroupCreator: loginResponse.isGroupCreator,
     };
 
     if (!isDeepEqual(currentGroup, updatedGroup)) {
@@ -208,7 +208,7 @@ export const submitKompassiLogin = (
     dispatch(
       submitUpdateGroupCodeAsync({
         groupCode: loginResponse.groupCode,
-        isGroupCreator: loginResponse.groupCreatorCode !== "0",
+        isGroupCreator: loginResponse.isGroupCreator,
       }),
     );
 

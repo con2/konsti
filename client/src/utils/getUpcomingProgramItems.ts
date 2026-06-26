@@ -45,9 +45,7 @@ const getUpcomingLotterySignups = (
 const getGroupCreator = (
   groupMembers: readonly GroupMemberWithLotteryProgramItem[],
 ): GroupMemberWithLotteryProgramItem | null => {
-  const groupCreator = groupMembers.find(
-    (member) => member.groupCreatorCode === member.groupCode,
-  );
+  const groupCreator = groupMembers.find((member) => member.isGroupCreator);
   if (!groupCreator) {
     return null;
   }

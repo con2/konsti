@@ -113,7 +113,7 @@ export const getUsers = ({
       users.push({
         ...defaultUserValues,
         username: "group-creator-with-lottery-signup",
-        groupCreatorCode: groupCreatorGroupCode,
+        isGroupCreator: true,
         lotterySignups: noLotterySignups ? [] : getLotterySignups(),
         eventLogItems:
           pastLotterySignupUsersCounter > 0
@@ -127,7 +127,7 @@ export const getUsers = ({
       users.push({
         ...defaultUserValues,
         username: `group-member-${i}`,
-        groupCreatorCode: "0",
+        isGroupCreator: false,
         lotterySignups: [],
         eventLogItems:
           pastLotterySignupUsersCounter > 0

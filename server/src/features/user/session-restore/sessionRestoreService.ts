@@ -80,7 +80,7 @@ export const loginWithJwt = async (jwt: string): Promise<PostLoginResponse> => {
       userGroup: user.userGroup,
       serial: user.serial,
       groupCode: user.groupCode,
-      groupCreatorCode: user.groupCreatorCode,
+      isGroupCreator: user.isGroupCreator,
       jwt: getJWT(user.userGroup, user.username),
       eventLogItems: user.eventLogItems,
       kompassiUsernameAccepted: user.kompassiUsernameAccepted,

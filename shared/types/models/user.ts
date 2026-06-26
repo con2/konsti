@@ -32,7 +32,7 @@ export interface User {
   userGroup: UserGroup;
   serial: string;
   groupCode: string;
-  groupCreatorCode: string;
+  isGroupCreator: boolean;
   favoriteProgramItemIds: readonly FavoriteProgramItemId[];
   lotterySignups: readonly LotterySignup[];
   createdAt: string;

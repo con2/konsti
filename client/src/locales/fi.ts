@@ -207,6 +207,8 @@ export const translationFI = {
       removeUpcomingLotterySignupsFailed:
         "Virhe aktiivisia arvontailmoittautumisia poistaessa, yritä uudelleen.",
       onlyCreatorCanCloseGroup: "Vain ryhmän perustaja voi sulkea ryhmän.",
+      creatorCannotLeave:
+        "Ryhmän perustajana sinun täytyy sulkea ryhmä sen sijaan, että poistuisit siitä.",
       memberUpcomingDirectSignups:
         "Sinulla on jo ilmoittautumisia peleihin. Poista ilmoittautumiset ennen kuin liityt ryhmään.",
       creatorUpcomingDirectSignups:
