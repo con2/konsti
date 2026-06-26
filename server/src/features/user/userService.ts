@@ -246,7 +246,7 @@ export const fetchUserByUsername = async (
     username: user.username,
     serial: user.serial,
     groupCode: user.groupCode,
-    groupCreatorCode: user.groupCreatorCode,
+    isGroupCreator: user.isGroupCreator,
     eventLogItems: user.eventLogItems,
     email: user.email || "",
   };

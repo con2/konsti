@@ -62,7 +62,7 @@ export const submitGetUser = (username: string): AppThunk => {
 
     const updatedGroup = {
       groupCode: getUserResponse.groupCode,
-      isGroupCreator: getUserResponse.groupCreatorCode !== "0",
+      isGroupCreator: getUserResponse.isGroupCreator,
     };
 
     if (!isDeepEqual(currentGroup, updatedGroup)) {

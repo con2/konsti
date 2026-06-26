@@ -6,7 +6,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0026538173",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8301"],
     "lotterySignups": [
@@ -34,7 +34,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0245685045",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -374,7 +374,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0236888434",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -450,7 +450,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7606820129",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8359", "8332", "8347", "8377"],
     "lotterySignups": [
@@ -472,7 +472,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "8795920332",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -500,7 +500,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "3459091041",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -515,7 +515,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2785633039",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8463"],
     "lotterySignups": [
@@ -537,7 +537,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "8333385550",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8319", "8337", "8392", "8463"],
     "lotterySignups": [
@@ -559,7 +559,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9711044660",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -713,7 +713,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "5620187848",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8403", "8450"],
     "lotterySignups": [],
@@ -728,7 +728,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0198150591",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [
       "8359",
@@ -812,7 +812,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2085143077",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -852,7 +852,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2054805797",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8343"],
     "lotterySignups": [],
@@ -867,7 +867,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "8482195669",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -882,7 +882,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0839387610",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8401", "8352"],
     "lotterySignups": [],
@@ -897,7 +897,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0712035203",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -937,7 +937,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "8554450034",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8450", "8453", "8403"],
     "lotterySignups": [
@@ -971,7 +971,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0625381892",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -986,7 +986,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "4306662208",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -1038,7 +1038,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9986509579",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -1060,7 +1060,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "1045774989",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8432"],
     "lotterySignups": [
@@ -1088,7 +1088,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9213320857",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -1152,7 +1152,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7583677153",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -1348,7 +1348,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0501617278",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -1436,7 +1436,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7071290303",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -1572,7 +1572,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2492674995",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -1660,7 +1660,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0401886817",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -1675,7 +1675,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9573094902",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -1697,7 +1697,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "6264951440",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -1743,7 +1743,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2517106361",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -1843,7 +1843,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "1291440269",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8452"],
     "lotterySignups": [
@@ -1865,7 +1865,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "6014327263",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -1935,7 +1935,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "5407264935",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -2221,7 +2221,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7847721003",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8409"],
     "lotterySignups": [
@@ -2243,7 +2243,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2818027506",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8437"],
     "lotterySignups": [
@@ -2265,7 +2265,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "1188186611",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -2293,7 +2293,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2528334853",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -2441,7 +2441,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "1219158365",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -2456,7 +2456,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "3586951885",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -2490,7 +2490,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "6371972057",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [
       "8378",
@@ -2769,7 +2769,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "6778694155",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -2803,7 +2803,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2425862923",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -2818,7 +2818,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7627583599",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -2894,7 +2894,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0026611681",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -2940,7 +2940,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0530703685",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -2955,7 +2955,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0679810051",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8313"],
     "lotterySignups": [
@@ -3007,7 +3007,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "5152511084",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -3095,7 +3095,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7662911192",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -3110,7 +3110,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "5821479903",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8300"],
     "lotterySignups": [
@@ -3216,7 +3216,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "1219131099",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8413"],
     "lotterySignups": [
@@ -3238,7 +3238,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "8900105316",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -3272,7 +3272,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "3917856605",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -3306,7 +3306,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "4555936782",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -3340,7 +3340,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "5178163506",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -3398,7 +3398,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "6913192230",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -3413,7 +3413,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7236607409",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -3428,7 +3428,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "1453493981",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -3462,7 +3462,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9504853467",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -3610,7 +3610,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "8965300430",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -3734,7 +3734,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "6040144666",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8303"],
     "lotterySignups": [
@@ -3774,7 +3774,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0824211874",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -3922,7 +3922,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0224030049",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8359", "8331", "8344", "8402", "8377"],
     "lotterySignups": [
@@ -4166,7 +4166,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "5079377536",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -4230,7 +4230,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "3580026155",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -4245,7 +4245,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "8796135666",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -4339,7 +4339,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7324078000",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -4391,7 +4391,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "5338371106",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8317", "8356"],
     "lotterySignups": [
@@ -4443,7 +4443,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "1799560873",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -4495,7 +4495,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2285132763",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -4607,7 +4607,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9455700261",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -4635,7 +4635,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0259533115",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -4795,7 +4795,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0950175950",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -4823,7 +4823,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9068472514",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [
       "8336",
@@ -4874,7 +4874,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "8149960133",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -4889,7 +4889,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9063587662",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8442", "8383"],
     "lotterySignups": [
@@ -4923,7 +4923,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0585531189",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -4969,7 +4969,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "5932891624",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -5063,7 +5063,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "8026801616",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -5091,7 +5091,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7299485271",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8426", "8375", "8381", "8415", "8419"],
     "lotterySignups": [
@@ -5185,7 +5185,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "1816972093",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -5200,7 +5200,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "6065142678",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8358"],
     "lotterySignups": [
@@ -5228,7 +5228,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2794119962",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8400", "8424", "8349"],
     "lotterySignups": [
@@ -5250,7 +5250,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0169135779",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8420"],
     "lotterySignups": [
@@ -5278,7 +5278,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "6605447256",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -5300,7 +5300,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "3367032897",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -5334,7 +5334,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "8928026700",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -5392,7 +5392,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9745770462",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8411", "8410", "8295", "8345", "8347"],
     "lotterySignups": [
@@ -5504,7 +5504,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7594333473",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -5700,7 +5700,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "1145731889",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8330"],
     "lotterySignups": [
@@ -5782,7 +5782,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0738021120",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8384", "8425"],
     "lotterySignups": [
@@ -5888,7 +5888,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "1641081912",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8398"],
     "lotterySignups": [
@@ -5940,7 +5940,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "3497585798",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8452"],
     "lotterySignups": [
@@ -5986,7 +5986,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "4681565810",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -6020,7 +6020,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0876745936",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -6102,7 +6102,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "5463540392",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8361", "8419"],
     "lotterySignups": [],
@@ -6117,7 +6117,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "8421038434",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8423", "8404"],
     "lotterySignups": [
@@ -6253,7 +6253,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9363420291",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -6359,7 +6359,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "6795395554",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -6374,7 +6374,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "6961104897",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8452"],
     "lotterySignups": [
@@ -6426,7 +6426,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0006688006",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -6466,7 +6466,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9117183591",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8365", "8333", "8420"],
     "lotterySignups": [
@@ -6506,7 +6506,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7910796957",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -6588,7 +6588,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "5190097062",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8365", "8333", "8420"],
     "lotterySignups": [
@@ -6628,7 +6628,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7176425838",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -6968,7 +6968,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7936909717",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8363", "8368", "8338"],
     "lotterySignups": [
@@ -7002,7 +7002,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "1350726392",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8363", "8331"],
     "lotterySignups": [],
@@ -7017,7 +7017,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7283238850",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -7032,7 +7032,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "4231929243",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -7072,7 +7072,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2533903668",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8423"],
     "lotterySignups": [
@@ -7094,7 +7094,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "5766281660",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -7116,7 +7116,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9649572634",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8295", "8330", "8343"],
     "lotterySignups": [
@@ -7162,7 +7162,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0533938379",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -7184,7 +7184,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7012490871",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -7230,7 +7230,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0083024174",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [
       "8427",
@@ -7318,7 +7318,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0411133853",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -7340,7 +7340,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "1573549233",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [
       "8382",
@@ -7421,7 +7421,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "3929254070",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -7443,7 +7443,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0914279914",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -7471,7 +7471,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7178825225",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -7499,7 +7499,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9838903988",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8459", "8343", "8463"],
     "lotterySignups": [
@@ -7557,7 +7557,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9045949386",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -7572,7 +7572,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0026902924",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -7587,7 +7587,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "6280214286",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -7602,7 +7602,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "6423341160",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8341"],
     "lotterySignups": [
@@ -7624,7 +7624,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "8684656591",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8362", "8402"],
     "lotterySignups": [],
@@ -7639,7 +7639,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "5979800884",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -7889,7 +7889,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7726867844",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -7929,7 +7929,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "3220574606",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -7963,7 +7963,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2254846740",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -7997,7 +7997,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "4216643165",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -8061,7 +8061,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "6827308757",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -8101,7 +8101,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "6335946932",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8362", "8317"],
     "lotterySignups": [
@@ -8279,7 +8279,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "3675422996",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -8294,7 +8294,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "3670957301",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8356", "8340"],
     "lotterySignups": [],
@@ -8309,7 +8309,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0248356636",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8426"],
     "lotterySignups": [
@@ -8433,7 +8433,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "5021103824",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8317"],
     "lotterySignups": [
@@ -8497,7 +8497,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0776587818",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8426"],
     "lotterySignups": [
@@ -8669,7 +8669,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2342126725",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -8823,7 +8823,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "8157424527",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -8857,7 +8857,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9935381302",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -8872,7 +8872,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2325661938",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -8906,7 +8906,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9261149836",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -8928,7 +8928,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "6558633266",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -8968,7 +8968,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7717748151",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -8990,7 +8990,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "4001109612",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -9005,7 +9005,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "6024550607",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -9051,7 +9051,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "3098374626",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8415"],
     "lotterySignups": [
@@ -9073,7 +9073,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "5799976575",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8474"],
     "lotterySignups": [
@@ -9095,7 +9095,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "4783296223",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -9110,7 +9110,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "3442920033",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -9144,7 +9144,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9201317774",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8317", "8384", "8475", "8373", "8476"],
     "lotterySignups": [],
@@ -9159,7 +9159,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "8283777061",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8366", "8412"],
     "lotterySignups": [],
@@ -9174,7 +9174,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "5619884256",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -9220,7 +9220,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9635339832",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -9272,7 +9272,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "1194040976",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -9294,7 +9294,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "3263590063",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -9316,7 +9316,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0800871352",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -9614,7 +9614,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0466172772",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -9629,7 +9629,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "4443415445",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8428", "8326"],
     "lotterySignups": [
@@ -9657,7 +9657,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7945559644",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8388", "8371", "8411", "8427", "8466", "8414"],
     "lotterySignups": [
@@ -9685,7 +9685,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "8091266638",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -9773,7 +9773,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7475025842",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -9843,7 +9843,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "3948322551",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -9889,7 +9889,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "1825516303",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -9904,7 +9904,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "8847995423",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8411"],
     "lotterySignups": [
@@ -9926,7 +9926,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9114049274",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8411"],
     "lotterySignups": [
@@ -9948,7 +9948,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "8671978818",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8320"],
     "lotterySignups": [
@@ -9970,7 +9970,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "3631677816",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [
       "8295",
@@ -10004,7 +10004,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "6438107978",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -10170,7 +10170,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "4990607873",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -10198,7 +10198,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7155533354",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -10220,7 +10220,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2896714595",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -10235,7 +10235,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "6468163644",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -10311,7 +10311,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7711140801",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8445"],
     "lotterySignups": [],
@@ -10326,7 +10326,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2768615102",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8365"],
     "lotterySignups": [
@@ -10432,7 +10432,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "4222628192",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -10454,7 +10454,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "6081652882",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8365"],
     "lotterySignups": [
@@ -10518,7 +10518,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7794070883",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -10570,7 +10570,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2238381632",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8346"],
     "lotterySignups": [
@@ -10604,7 +10604,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "3908233020",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -10644,7 +10644,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "8503818620",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -10672,7 +10672,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "3194794412",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -10687,7 +10687,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2365812938",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -10709,7 +10709,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "5150724572",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -10743,7 +10743,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "4049544879",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -10795,7 +10795,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7043771109",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -10810,7 +10810,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9885920596",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -10844,7 +10844,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9018634890",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -10878,7 +10878,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9354709447",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -10893,7 +10893,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "1245758576",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -10963,7 +10963,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "5562913219",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -11009,7 +11009,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0934443482",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8418", "8296"],
     "lotterySignups": [
@@ -11031,7 +11031,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "6820404603",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8403", "8379", "8312"],
     "lotterySignups": [
@@ -11083,7 +11083,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9912222826",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8403", "8379"],
     "lotterySignups": [
@@ -11111,7 +11111,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "1744098144",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8400"],
     "lotterySignups": [
@@ -11163,7 +11163,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "4488506041",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8318", "8403", "8379"],
     "lotterySignups": [
@@ -11191,7 +11191,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "6886500450",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8320", "8361", "8406", "8370"],
     "lotterySignups": [
@@ -11213,7 +11213,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9369019212",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8454", "8377", "8432"],
     "lotterySignups": [
@@ -11235,7 +11235,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2494833912",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -11317,7 +11317,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "8650370417",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8336", "8357", "8413"],
     "lotterySignups": [],
@@ -11332,7 +11332,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0668788490",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -11366,7 +11366,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "1508975347",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -11381,7 +11381,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "8277408632",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -11403,7 +11403,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "8212849312",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [
       "8424",
@@ -11441,7 +11441,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "4269674141",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -11565,7 +11565,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "3816876746",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -11611,7 +11611,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9827020554",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -11626,7 +11626,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "5469976996",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8426", "8410"],
     "lotterySignups": [
@@ -11648,7 +11648,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "5428505639",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -11663,7 +11663,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2752412219",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8364"],
     "lotterySignups": [
@@ -11709,7 +11709,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "8998763034",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -11833,7 +11833,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "8287411543",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8371", "8405", "8410", "8375"],
     "lotterySignups": [
@@ -11867,7 +11867,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "5330633404",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -11882,7 +11882,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "6059747193",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -11897,7 +11897,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2428213421",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -11943,7 +11943,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9394744800",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -11965,7 +11965,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2942661436",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -12011,7 +12011,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7105684224",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -12057,7 +12057,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "6245385239",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -12085,7 +12085,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7920731812",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -12100,7 +12100,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0968209379",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -12140,7 +12140,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9097759865",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -12210,7 +12210,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "6754557897",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -12244,7 +12244,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "5656740122",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8428"],
     "lotterySignups": [
@@ -12440,7 +12440,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "1980173577",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -12455,7 +12455,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2040763647",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -12470,7 +12470,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9146267472",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -12540,7 +12540,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7948006668",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -12555,7 +12555,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "3920221904",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8426", "8393"],
     "lotterySignups": [
@@ -12577,7 +12577,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0029613726",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -12605,7 +12605,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "1397019462",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -12687,7 +12687,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9920889541",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -12775,7 +12775,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9782365622",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -12845,7 +12845,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "4905659530",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -12891,7 +12891,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "8993073710",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -12925,7 +12925,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "3482461310",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -12940,7 +12940,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2133569653",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -12955,7 +12955,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "5885436021",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -12970,7 +12970,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2873436642",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -13004,7 +13004,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "3688740665",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -13044,7 +13044,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2210888406",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -13059,7 +13059,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0553489485",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -13099,7 +13099,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "1646092690",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -13169,7 +13169,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0270917677",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -13239,7 +13239,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0831792874",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -13273,7 +13273,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "5907501760",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [
       "8366",
@@ -13329,7 +13329,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7936359673",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -13441,7 +13441,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "4751748478",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -13463,7 +13463,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "8459186048",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -13497,7 +13497,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2687204566",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -13512,7 +13512,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "4800722789",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -13546,7 +13546,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0534870035",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -13568,7 +13568,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "8653832074",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -13590,7 +13590,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "4432805564",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -13624,7 +13624,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "4001999939",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -13670,7 +13670,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "4812897413",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -13692,7 +13692,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0718634447",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -13726,7 +13726,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "1777428762",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -13741,7 +13741,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "6491905144",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -13775,7 +13775,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "8015636130",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -13815,7 +13815,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0511730715",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8358"],
     "lotterySignups": [],
@@ -13830,7 +13830,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2582097974",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -13864,7 +13864,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7974126471",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -13886,7 +13886,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2081143949",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8295"],
     "lotterySignups": [
@@ -13908,7 +13908,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "3770511966",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8430"],
     "lotterySignups": [],
@@ -13923,7 +13923,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "6573556153",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -13957,7 +13957,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "3050696982",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -13972,7 +13972,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "3515003451",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -13994,7 +13994,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "5125155852",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -14028,7 +14028,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "3962264481",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8442", "8332"],
     "lotterySignups": [
@@ -14092,7 +14092,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7719214202",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [
       "8351",
@@ -14152,7 +14152,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7259037146",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -14186,7 +14186,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9890280010",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -14201,7 +14201,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "8924624771",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -14216,7 +14216,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "5361878738",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -14231,7 +14231,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "3672342346",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -14253,7 +14253,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2411254929",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -14353,7 +14353,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0510794183",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -14375,7 +14375,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7045821100",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -14511,7 +14511,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "6759260604",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -14533,7 +14533,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0990430688",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -14555,7 +14555,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0669880452",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [
       "8340",
@@ -14585,7 +14585,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "8901542608",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -14607,7 +14607,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0578832586",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -14629,7 +14629,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2984586418",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -14651,7 +14651,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "1421007707",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -14685,7 +14685,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0987850278",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8331"],
     "lotterySignups": [
@@ -14707,7 +14707,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0277152575",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8371", "8405", "8375"],
     "lotterySignups": [
@@ -14759,7 +14759,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7345348416",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8372", "8353"],
     "lotterySignups": [
@@ -14793,7 +14793,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "4798560555",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [
       "8403",
@@ -14914,7 +14914,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0513306464",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -15002,7 +15002,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "4374560458",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8396", "8385"],
     "lotterySignups": [
@@ -15036,7 +15036,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "1240634947",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -15051,7 +15051,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "8810795321",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -15085,7 +15085,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "3003662289",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -15149,7 +15149,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "3287357549",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -15303,7 +15303,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "5862270542",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -15325,7 +15325,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "8001746109",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8400", "8349"],
     "lotterySignups": [
@@ -15395,7 +15395,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "5078729620",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -15489,7 +15489,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7621546345",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -15504,7 +15504,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9060954931",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -15519,7 +15519,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9974372865",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -15595,7 +15595,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2246732156",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8410", "8340", "8346"],
     "lotterySignups": [
@@ -15653,7 +15653,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "4919329138",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8411", "8365"],
     "lotterySignups": [],
@@ -15668,7 +15668,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2445516913",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8411"],
     "lotterySignups": [],
@@ -15683,7 +15683,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "1359371927",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8311", "8309", "8409"],
     "lotterySignups": [
@@ -15717,7 +15717,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0968634717",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8411"],
     "lotterySignups": [
@@ -15739,7 +15739,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "4471450900",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -15797,7 +15797,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7495863107",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -15812,7 +15812,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7431882815",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -15827,7 +15827,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "6163493387",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -15873,7 +15873,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0501443147",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -15955,7 +15955,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "6928172045",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8357", "8296", "8426", "8413", "8373"],
     "lotterySignups": [
@@ -16007,7 +16007,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9655164839",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -16035,7 +16035,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "1281466027",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -16050,7 +16050,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2476150749",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8411", "8405"],
     "lotterySignups": [
@@ -16072,7 +16072,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9911915305",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -16130,7 +16130,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9241856054",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -16194,7 +16194,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9216220963",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -16228,7 +16228,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "1131354936",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8401"],
     "lotterySignups": [
@@ -16250,7 +16250,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7820806193",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -16284,7 +16284,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9185795268",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -16312,7 +16312,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "3897246785",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8417", "8386", "8383", "8330"],
     "lotterySignups": [
@@ -16346,7 +16346,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7077402076",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -16368,7 +16368,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "5324274587",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -16390,7 +16390,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "5818907700",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8434"],
     "lotterySignups": [
@@ -16514,7 +16514,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "4171381371",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -16542,7 +16542,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2722238603",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -16570,7 +16570,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2243735038",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -16628,7 +16628,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "8752924087",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -16656,7 +16656,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "5982303777",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -16678,7 +16678,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "8422162399",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8369"],
     "lotterySignups": [
@@ -16712,7 +16712,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "6876384790",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -16734,7 +16734,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "6091083854",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8340", "8346", "8309", "8312", "8313"],
     "lotterySignups": [
@@ -16804,7 +16804,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "8532626820",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -16819,7 +16819,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "1291696662",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8371"],
     "lotterySignups": [
@@ -16907,7 +16907,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0823998653",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -16941,7 +16941,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9116041774",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -16963,7 +16963,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "1588549921",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -17051,7 +17051,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "6072750653",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -17066,7 +17066,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "6115986330",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -17136,7 +17136,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0895670529",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -17151,7 +17151,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2451062521",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -17166,7 +17166,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "6874717256",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -17181,7 +17181,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "1081042374",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -17221,7 +17221,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0704227792",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -17243,7 +17243,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0620351551",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -17265,7 +17265,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "4838160622",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -17280,7 +17280,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "8145088848",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -17302,7 +17302,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2415296595",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -17324,7 +17324,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7652173092",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -17376,7 +17376,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "4847138387",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8411"],
     "lotterySignups": [
@@ -17398,7 +17398,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7314528097",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -17474,7 +17474,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "8029905257",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -17520,7 +17520,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "5219393468",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8411", "8405", "8375"],
     "lotterySignups": [
@@ -17554,7 +17554,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "6141418134",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -17576,7 +17576,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "8432736182",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -17591,7 +17591,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2206080075",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -17625,7 +17625,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "4112455045",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -17653,7 +17653,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "6094237648",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -17693,7 +17693,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "1705043717",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -17727,7 +17727,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9095325933",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -17761,7 +17761,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9255089519",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -17783,7 +17783,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "8633844975",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -17798,7 +17798,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "8936138703",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -17813,7 +17813,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "3829337538",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -17907,7 +17907,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "1408017539",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -17941,7 +17941,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "5375920112",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -17975,7 +17975,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "5945598760",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -18009,7 +18009,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7556477953",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -18085,7 +18085,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0802111948",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -18100,7 +18100,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "8623426759",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -18134,7 +18134,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "3859701702",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -18168,7 +18168,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "8221732459",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -18202,7 +18202,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "8879194499",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -18224,7 +18224,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "8695125727",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -18252,7 +18252,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9134951889",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -18274,7 +18274,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "4217149196",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -18374,7 +18374,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "4297974745",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -18402,7 +18402,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9650222327",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -18436,7 +18436,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "3176105793",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -18451,7 +18451,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "5878796159",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -18479,7 +18479,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "4760627978",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -18494,7 +18494,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "1466708292",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8359", "8386", "8433", "8338"],
     "lotterySignups": [
@@ -18564,7 +18564,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "4145838688",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -18592,7 +18592,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9134355073",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8411"],
     "lotterySignups": [
@@ -18614,7 +18614,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "6118955803",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -18660,7 +18660,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0117151167",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -18682,7 +18682,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "5775839508",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -18697,7 +18697,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2755654361",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8340", "8295"],
     "lotterySignups": [
@@ -18743,7 +18743,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2855141822",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -18758,7 +18758,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7115345618",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -18780,7 +18780,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7154390467",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -18802,7 +18802,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9887376904",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -18824,7 +18824,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9932801187",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -18846,7 +18846,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2375386642",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -18868,7 +18868,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "8180962477",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -18890,7 +18890,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0928618479",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -18912,7 +18912,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "1811234424",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8425"],
     "lotterySignups": [
@@ -18946,7 +18946,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "4759402789",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -18974,7 +18974,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "4440222901",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8347"],
     "lotterySignups": [
@@ -19002,7 +19002,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "5802847201",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -19030,7 +19030,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "6481550751",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -19058,7 +19058,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "5071216732",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8425"],
     "lotterySignups": [
@@ -19080,7 +19080,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2036815013",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -19102,7 +19102,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "3358166910",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -19124,7 +19124,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7640862723",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -19164,7 +19164,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "3357948854",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -19210,7 +19210,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0185983509",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -19232,7 +19232,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7826769429",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -19302,7 +19302,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9363125346",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8340"],
     "lotterySignups": [
@@ -19360,7 +19360,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2563321823",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -19375,7 +19375,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2870281256",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -19481,7 +19481,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "8188763000",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -19515,7 +19515,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9248350226",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8405"],
     "lotterySignups": [
@@ -19543,7 +19543,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "6797878136",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [
       "8379",
@@ -19651,7 +19651,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "5809006405",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -19673,7 +19673,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "3410596443",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8373", "8463"],
     "lotterySignups": [],
@@ -19688,7 +19688,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "1575363013",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -19716,7 +19716,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "6033743094",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -19738,7 +19738,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9517054160",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -19760,7 +19760,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "5605401925",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -19782,7 +19782,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "3085716615",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8338"],
     "lotterySignups": [
@@ -19804,7 +19804,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0581801479",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -19826,7 +19826,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9901690298",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -19848,7 +19848,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2701931616",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -19876,7 +19876,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9965261689",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -19891,7 +19891,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7261307248",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -19906,7 +19906,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9758210661",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -19928,7 +19928,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0371458076",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8439", "8440", "8426"],
     "lotterySignups": [
@@ -19956,7 +19956,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "8228891845 ",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -19978,7 +19978,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "4652956873",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -19993,7 +19993,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "4763142116",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -20027,7 +20027,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "8367565986",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -20061,7 +20061,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "4373583766",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -20076,7 +20076,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "5145835160",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -20110,7 +20110,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7688837884",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -20132,7 +20132,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "5249945584",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8376"],
     "lotterySignups": [
@@ -20154,7 +20154,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0723292686",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -20176,7 +20176,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9644285950",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -20198,7 +20198,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "19772211017",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -20220,7 +20220,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2302374380",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -20248,7 +20248,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9005994786",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -20270,7 +20270,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "4924058177",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -20292,7 +20292,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "1245597032",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -20314,7 +20314,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "3612156541",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -20348,7 +20348,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2920547086",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -20436,7 +20436,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7827683322",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -20458,7 +20458,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "8985312233",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -20492,7 +20492,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "6424940184",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -20507,7 +20507,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2558484925",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -20529,7 +20529,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "3715093732",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -20569,7 +20569,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "8328058741",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8357"],
     "lotterySignups": [
@@ -20591,7 +20591,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "6338510917",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -20606,7 +20606,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "6374345046",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -20628,7 +20628,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0111518106",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -20643,7 +20643,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "4640080950",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -20665,7 +20665,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9775248959",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -20687,7 +20687,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "1473192936",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -20709,7 +20709,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2139552257",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -20724,7 +20724,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7864788588",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -20746,7 +20746,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "5447265918",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8375"],
     "lotterySignups": [
@@ -20768,7 +20768,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2097340802",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8338", "8381"],
     "lotterySignups": [
@@ -20808,7 +20808,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "5873588049",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -20823,7 +20823,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0256437757",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8463", "8377"],
     "lotterySignups": [
@@ -20851,7 +20851,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9863867934",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -20866,7 +20866,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "4938690403",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -20881,7 +20881,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "1124855915",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -20903,7 +20903,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9896041465",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -20925,7 +20925,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "3749144212",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -20971,7 +20971,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0743813180",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8476"],
     "lotterySignups": [
@@ -20993,7 +20993,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9421979031",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -21015,7 +21015,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "6774195637",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8463"],
     "lotterySignups": [
@@ -21049,7 +21049,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "6607839047",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -21077,7 +21077,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "1599931290",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -21099,7 +21099,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9814467321",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -21114,7 +21114,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "8009972806",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -21148,7 +21148,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "4152803195",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -21170,7 +21170,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2589921481",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8370"],
     "lotterySignups": [
@@ -21192,7 +21192,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "3817412269",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -21214,7 +21214,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2547022075",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -21236,7 +21236,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9015342950",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -21251,7 +21251,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2574016412",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -21279,7 +21279,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7529367356",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -21349,7 +21349,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "6249498616",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -21364,7 +21364,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "6974443399",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -21386,7 +21386,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "8221147286",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -21401,7 +21401,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "1633421522",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -21423,7 +21423,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "3389821020",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -21445,7 +21445,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7390768260",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8460"],
     "lotterySignups": [
@@ -21497,7 +21497,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9002025055",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -21531,7 +21531,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7879288871",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8327"],
     "lotterySignups": [
@@ -21559,7 +21559,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0772818985",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -21587,7 +21587,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "6416964143",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -21602,7 +21602,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "4071640041",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -21617,7 +21617,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "3014689214",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -21651,7 +21651,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "5561089573",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -21666,7 +21666,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "5952779568",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -21700,7 +21700,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "4585993233",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -21722,7 +21722,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "3906966803",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -21774,7 +21774,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0199282211",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -21789,7 +21789,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2039576976",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -21841,7 +21841,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2546191087",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -21893,7 +21893,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "6476286684",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -21921,7 +21921,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "3820765109",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -21949,7 +21949,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "3538914817",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -21971,7 +21971,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9026726084",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -21993,7 +21993,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "3992690200",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -22021,7 +22021,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "8152696806",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -22036,7 +22036,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0121055057",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -22058,7 +22058,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "1393086416",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -22092,7 +22092,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7182452057",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -22126,7 +22126,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0628040669",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -22160,7 +22160,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "5281219310",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8308", "8311"],
     "lotterySignups": [
@@ -22230,7 +22230,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7170030378",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -22245,7 +22245,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "3161613041",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -22279,7 +22279,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "6226848940",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -22307,7 +22307,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "3296322898",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -22335,7 +22335,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "6976985272",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -22357,7 +22357,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "1716164098",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -22379,7 +22379,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7566048349",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -22425,7 +22425,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7267695786",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -22440,7 +22440,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "5012158985",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -22468,7 +22468,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2507088793",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -22496,7 +22496,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "3081630398",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -22530,7 +22530,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "6036436878",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": ["8437", "8339"],
     "lotterySignups": [
@@ -22564,7 +22564,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0689700292",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -22586,7 +22586,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7469971555",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -22608,7 +22608,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "3642630150",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -22630,7 +22630,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "5168627122",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -22664,7 +22664,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9487018054",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -22698,7 +22698,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9290289702",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -22720,7 +22720,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "1306093251",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -22742,7 +22742,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "8076284259",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -22776,7 +22776,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0237107073",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -22810,7 +22810,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "8520520647",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -22838,7 +22838,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0767508757",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -22860,7 +22860,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9745591876",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -22888,7 +22888,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "8266830598",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [],
@@ -22903,7 +22903,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "6802897881",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -22925,7 +22925,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7039518035",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -22953,7 +22953,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2862872559",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -22975,7 +22975,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "3929383390",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -22997,7 +22997,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "4769804396",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -23019,7 +23019,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2792527729",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -23047,7 +23047,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "1084812690",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -23081,7 +23081,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "8306843320",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -23109,7 +23109,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "7423906606",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -23137,7 +23137,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "3893585152",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -23171,7 +23171,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "4570384430",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -23193,7 +23193,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2188062851",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -23215,7 +23215,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "2564739601",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -23237,7 +23237,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "0494182942",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
@@ -23259,7 +23259,7 @@
     "password": "<redacted>",
     "userGroup": "user",
     "serial": "9650203749",
-    "groupCreatorCode": "0",
+    "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [

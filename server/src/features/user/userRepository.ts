@@ -33,10 +33,7 @@ export const saveUser = async (
     serial: newUserData.serial,
     groupCode:
       typeof newUserData.groupCode === "string" ? newUserData.groupCode : "0",
-    groupCreatorCode:
-      typeof newUserData.groupCreatorCode === "string"
-        ? newUserData.groupCreatorCode
-        : "0",
+    isGroupCreator: newUserData.isGroupCreator ?? false,
     favoriteProgramItemIds: [],
     lotterySignups: [],
     eventLogItems: [],

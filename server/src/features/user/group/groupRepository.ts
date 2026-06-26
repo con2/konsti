@@ -46,7 +46,10 @@ export const checkGroupExists = async (
   groupCode: string,
 ): Promise<Result<boolean, MongoDbError>> => {
   try {
-    const response = await UserModel.exists({ groupCreatorCode: groupCode });
+    const response = await UserModel.exists({
+      groupCode,
+      isGroupCreator: true,
+    });
     return makeSuccessResult(!!response);
   } catch (error) {
     logger.error(
@@ -57,24 +60,25 @@ export const checkGroupExists = async (
   }
 };
 
-export const saveGroupCreatorCode = async (
-  groupCreatorCode: string,
+export const saveGroupCreator = async (
+  groupCode: string,
+  isGroupCreator: boolean,
   username: string,
 ): Promise<Result<User, MongoDbError>> => {
   try {
     const response = await UserModel.findOneAndUpdate(
       { username },
-      { groupCode: groupCreatorCode, groupCreatorCode },
+      { groupCode, isGroupCreator },
       { returnDocument: "after" },
     ).lean();
 
     if (!response) {
-      logger.info(`MongoDB: saveGroupCreatorCode user ${username} not found`);
+      logger.info(`MongoDB: saveGroupCreator user ${username} not found`);
       return makeErrorResult(MongoDbError.USER_NOT_FOUND);
     }
 
     logger.info(
-      `MongoDB: Saved group creator code ${groupCreatorCode} for user ${username}`,
+      `MongoDB: Saved group creator status ${isGroupCreator} for user ${username} with groupCode ${groupCode}`,
     );
 
     const result = UserSchemaDb.safeParse(response);
@@ -82,7 +86,7 @@ export const saveGroupCreatorCode = async (
       logger.error(
         "%s",
         new Error(
-          `Error validating saveGroupCreatorCode DB value: ${JSON.stringify(result.error)}`,
+          `Error validating saveGroupCreator DB value: ${JSON.stringify(result.error)}`,
         ),
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
@@ -90,7 +94,7 @@ export const saveGroupCreatorCode = async (
     return makeSuccessResult(result.data);
   } catch {
     logger.error(
-      `MongoDB: Error saving group creator code ${groupCreatorCode} for user ${username}`,
+      `MongoDB: Error saving group creator status for user ${username}`,
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }

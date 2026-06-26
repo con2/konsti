@@ -24,26 +24,26 @@ const getGroupCreator = (
   users: User[],
   user: User,
 ): Result<User, MongoDbError> => {
-  // User is group member, not group creators -> find group creator
-  if (user.groupCode !== "0" && user.groupCode !== user.serial) {
-    const groupCreator = users.find(
-      (creator) => creator.groupCreatorCode === user.groupCode,
-    );
-
-    if (groupCreator) {
-      return makeSuccessResult(groupCreator);
-    }
-
-    logger.error(
-      "%s",
-      new Error(`Group creator not found for user ${user.username}`),
-    );
-
-    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+  // Group creator (or not in a group) -> user is their own creator
+  if (user.isGroupCreator || user.groupCode === "0") {
+    return makeSuccessResult(user);
   }
 
-  // User is group creator
-  return makeSuccessResult(user);
+  // Group member -> find the group's creator
+  const groupCreator = users.find(
+    (creator) => creator.isGroupCreator && creator.groupCode === user.groupCode,
+  );
+
+  if (groupCreator) {
+    return makeSuccessResult(groupCreator);
+  }
+
+  logger.error(
+    "%s",
+    new Error(`Group creator not found for user ${user.username}`),
+  );
+
+  return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
 };
 
 export const verifyUserSignups = async (): Promise<

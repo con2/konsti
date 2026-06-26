@@ -84,14 +84,14 @@ export const createTestUsers = async ({
 
 interface CreateUserParams {
   groupCode: string;
-  groupCreatorCode: string;
+  isGroupCreator: boolean;
   testUsers?: boolean;
   userNumber?: number;
 }
 
 const createUser = async ({
   groupCode,
-  groupCreatorCode,
+  isGroupCreator,
   testUsers = false,
   userNumber = 0,
 }: CreateUserParams): Promise<void> => {
@@ -107,7 +107,7 @@ const createUser = async ({
     userGroup: UserGroup.USER,
     serial: faker.number.int(SERIAL_MAX).toString(),
     groupCode,
-    groupCreatorCode,
+    isGroupCreator,
     email: `${username}@example.local`,
   };
 
@@ -136,7 +136,7 @@ export const createUsersInGroup = async ({
     promises.push(
       createUser({
         groupCode,
-        groupCreatorCode: groupMemberCount === 0 ? groupCode : "0",
+        isGroupCreator: groupMemberCount === 0,
         testUsers,
         userNumber: groupMemberCount + 1,
       }),
@@ -154,7 +154,7 @@ export const createIndividualUsers = async (count: number): Promise<void> => {
     promises.push(
       createUser({
         groupCode: "0",
-        groupCreatorCode: "0",
+        isGroupCreator: false,
       }),
     );
   }

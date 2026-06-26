@@ -6,7 +6,7 @@ import {
   checkGroupExists,
   findGroupMembers,
   saveGroupCode,
-  saveGroupCreatorCode,
+  saveGroupCreator,
 } from "server/features/user/group/groupRepository";
 import { delLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { findUser } from "server/features/user/userRepository";
@@ -128,19 +128,20 @@ export const createGroup = async (
     };
   }
 
-  if (userResponse.groupCode !== "0" || userResponse.groupCreatorCode !== "0") {
+  if (userResponse.groupCode !== "0" || userResponse.isGroupCreator) {
     return {
-      message: "User has a group or is a member of a group",
+      message: "User is a creator or a member of a group",
       status: "error",
       errorId: "groupExists",
     };
   }
 
   // No existing group, create
-  const newGroupCreatorCode = generateGroupCode();
+  const newGroupCode = generateGroupCode();
 
-  const saveGroupResponseResult = await saveGroupCreatorCode(
-    newGroupCreatorCode,
+  const saveGroupResponseResult = await saveGroupCreator(
+    newGroupCode,
+    true,
     username,
   );
   if (!saveGroupResponseResult.ok) {
@@ -209,9 +210,9 @@ export const joinGroup = async (
       errorId: "unknown",
     };
   }
-  if (user.groupCode !== "0" || user.groupCreatorCode !== "0") {
+  if (user.groupCode !== "0" || user.isGroupCreator) {
     return {
-      message: "User has a group or is a member of a group",
+      message: "User is a creator or a member of a group",
       status: "error",
       errorId: "alreadyInGroup",
     };
@@ -277,6 +278,32 @@ export const joinGroup = async (
 export const leaveGroup = async (
   username: string,
 ): Promise<PostLeaveGroupResponse> => {
+  const userResult = await findUser(username);
+  if (!userResult.ok) {
+    return {
+      message: "Error finding user",
+      status: "error",
+      errorId: "unknown",
+    };
+  }
+  const user = userResult.value;
+  if (!user) {
+    return {
+      message: "User not found",
+      status: "error",
+      errorId: "unknown",
+    };
+  }
+
+  // Group creators must close the group, not leave it (leaving would orphan it)
+  if (user.isGroupCreator) {
+    return {
+      message: "Group creator cannot leave group, close it instead",
+      status: "error",
+      errorId: "creatorCannotLeave",
+    };
+  }
+
   const saveGroupResponseResult = await saveGroupCode("0", username);
   if (!saveGroupResponseResult.ok) {
     return {
@@ -313,7 +340,7 @@ export const closeGroup = async (
     (groupMember) => groupMember.username === username,
   );
 
-  if (groupCreator?.groupCreatorCode !== groupCode) {
+  if (!groupCreator?.isGroupCreator) {
     return {
       message: "Only group creator can close group",
       status: "error",
@@ -340,14 +367,15 @@ export const closeGroup = async (
     };
   }
 
-  const removeGroupCreationCodeResult = await saveGroupCreatorCode(
+  const removeGroupCreatorResult = await saveGroupCreator(
     "0",
+    false,
     groupCreator.username,
   );
 
-  if (!removeGroupCreationCodeResult.ok) {
+  if (!removeGroupCreatorResult.ok) {
     return {
-      message: "Error deleting group creation code",
+      message: "Error removing group creator status",
       status: "error",
       errorId: "unknown",
     };
@@ -374,7 +402,7 @@ export const fetchGroup = async (
 
   const returnData = findGroupResultsResult.value.map((result) => ({
     groupCode: result.groupCode,
-    groupCreatorCode: result.groupCreatorCode,
+    isGroupCreator: result.isGroupCreator,
     lotterySignups: result.lotterySignups,
     serial: result.serial,
     username: result.username,

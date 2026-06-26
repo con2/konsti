@@ -31,11 +31,12 @@ const getSignupsByStartTime = (
   );
 
   for (const user of users) {
-    const groupSize =
-      user.groupCode !== "0" && user.groupCode === user.serial
-        ? users.filter((groupUser) => groupUser.groupCode === user.serial)
-            .length
-        : 1;
+    // Group members' lotterySignups are deleted on join, so only the creator's
+    // signups represent the whole group; count the group size for creators
+    const groupSize = user.isGroupCreator
+      ? users.filter((groupUser) => groupUser.groupCode === user.groupCode)
+          .length
+      : 1;
 
     const lotterySignups = user.lotterySignups.reduce<Record<string, number>>(
       (acc, lotterySignup) => {
