@@ -204,6 +204,7 @@ export const saveDirectSignup = async (
     username,
     directSignupProgramItemId,
     signedToStartTime,
+    signupTime,
     message,
     priority,
   } = signupsRequest;
@@ -228,6 +229,7 @@ export const saveDirectSignup = async (
             username,
             priority,
             signedToStartTime,
+            signupTime,
             message,
           },
         },
@@ -329,6 +331,7 @@ export const saveDirectSignups = async (
                 username: signup.username,
                 priority: signup.priority,
                 signedToStartTime: new Date(signup.signedToStartTime),
+                signupTime: new Date(signup.signupTime),
                 message: signup.message,
               })),
             },

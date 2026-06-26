@@ -677,6 +677,7 @@ describe("Assignment with first time bonus", () => {
       signedToStartTime: dayjs(testProgramItem.startTime)
         .subtract(1, "hours")
         .toISOString(),
+      signupTime: testProgramItem.startTime,
       message: "",
       priority: DIRECT_SIGNUP_PRIORITY,
     });
@@ -688,6 +689,7 @@ describe("Assignment with first time bonus", () => {
       signedToStartTime: dayjs(testProgramItem.startTime)
         .subtract(2, "hours")
         .toISOString(),
+      signupTime: testProgramItem.startTime,
       message: "",
       priority: DIRECT_SIGNUP_PRIORITY,
     });

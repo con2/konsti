@@ -177,7 +177,7 @@ Non-obvious invariants when analysing the dumps:
 
 ## Testing
 
-Vitest with `mongodb-memory-server`. `src/test/globalSetup.ts` spins up the in-memory Mongo (port `57233`); `src/test/setupTests.ts` initializes dayjs, mocks the logger, stubs the event config to a fixed test time, and exposes the connection string as `globalThis.__MONGO_URI__`. Mock fixtures live in `src/test/mock-data/`; shared fixtures like `testProgramItem` come from `shared/tests/`.
+Vitest with `mongodb-memory-server`. `src/test/globalSetup.ts` spins up the in-memory Mongo (port `47233`); `src/test/setupTests.ts` initializes dayjs, mocks the logger, stubs the event config to a fixed test time, and exposes the connection string as `globalThis.__MONGO_URI__`. Mock fixtures live in `src/test/mock-data/`; shared fixtures like `testProgramItem` come from `shared/tests/`.
 
 **Controller (integration) tests** drive the real Express app with `supertest`. The standard shape:
 

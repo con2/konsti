@@ -6,6 +6,7 @@ const UserSignupsSchema = z.object({
   username: z.string(),
   priority: z.number(),
   signedToStartTime: z.date().transform((date) => dayjs(date).toISOString()),
+  signupTime: z.date().transform((date) => dayjs(date).toISOString()),
   message: z.string(),
 });
 
@@ -21,6 +22,12 @@ const userSignupSchema = new mongoose.Schema({
   username: { type: String, required: true },
   priority: { type: Number, required: true },
   signedToStartTime: {
+    type: Date,
+    get: (value: Date) => new Date(value),
+    required: true,
+  },
+  // Timestamp recording when the user signed up
+  signupTime: {
     type: Date,
     get: (value: Date) => new Date(value),
     required: true,

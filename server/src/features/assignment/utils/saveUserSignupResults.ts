@@ -114,6 +114,7 @@ export const saveUserSignupResults = async ({
       directSignupProgramItemId: result.assignmentSignup.programItemId,
       // assignmentTime can be parent-resolved; direct signups store parent time for lottery re-run cleanup
       signedToStartTime: assignmentTime,
+      signupTime: dayjs().toISOString(),
       // Signups received from assignment don't have signup messages
       message: "",
       priority: result.assignmentSignup.priority,

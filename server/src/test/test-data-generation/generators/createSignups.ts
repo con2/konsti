@@ -55,6 +55,7 @@ export const createDirectSignups = async (): Promise<void> => {
             username: user.username,
             directSignupProgramItemId: randomProgramItem.programItemId,
             signedToStartTime: randomProgramItem.startTime,
+            signupTime: randomProgramItem.startTime,
             message: foundSignupQuestion?.questionFi
               ? faker.lorem.words(4)
               : "",
