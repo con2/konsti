@@ -3,6 +3,8 @@ import {
   EventName,
   EventConfig,
   EntryConditionText,
+  EventSignupStrategy,
+  LoginProvider,
 } from "shared/config/eventConfigTypes";
 import { ProgramType } from "shared/types/models/programItem";
 
@@ -85,4 +87,8 @@ const eventConfig: Partial<EventConfig> = {
   directSignupPhaseStart: 60 * 2, // minutes
   phaseGap: 15, // minutes
   fixedLotterySignupTime: `${friday}T05:00:00Z`, // Fri 08:00 GMT+3
+
+  // Default DB values
+  defaultSignupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
+  defaultLoginProvider: LoginProvider.KOMPASSI,
 };

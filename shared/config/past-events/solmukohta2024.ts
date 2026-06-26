@@ -3,6 +3,8 @@ import {
   AssignmentAlgorithm,
   EventName,
   EventConfig,
+  EventSignupStrategy,
+  LoginProvider,
 } from "shared/config/eventConfigTypes";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -62,4 +64,8 @@ const eventConfig: Partial<EventConfig> = {
   preSignupStart: 60 * 4, // minutes
   directSignupPhaseStart: 60 * 2, // minutes
   phaseGap: 15, // minutes
+
+  // Default DB values
+  defaultSignupStrategy: EventSignupStrategy.DIRECT,
+  defaultLoginProvider: LoginProvider.KOMPASSI,
 };

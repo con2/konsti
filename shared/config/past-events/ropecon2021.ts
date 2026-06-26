@@ -9,6 +9,8 @@ import {
   AssignmentAlgorithm,
   EventName,
   EventConfig,
+  EventSignupStrategy,
+  LoginProvider,
 } from "shared/config/eventConfigTypes";
 import { ProgramType } from "shared/types/models/programItem";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -37,4 +39,9 @@ const eventConfig: Partial<EventConfig> = {
   signupQuestions: [],
   tournamentSignupQuestion: null,
   tournamentSignupQuestionExcludeIds: [],
+
+  // Default DB values
+  // Remote / COVID-era convention with direct signup only (no lottery)
+  defaultSignupStrategy: EventSignupStrategy.DIRECT,
+  defaultLoginProvider: LoginProvider.LOCAL,
 };

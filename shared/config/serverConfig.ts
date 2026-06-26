@@ -1,7 +1,3 @@
-import {
-  LoginProvider,
-  EventSignupStrategy,
-} from "shared/config/eventConfigTypes";
 import { EmailNotificationTrigger } from "shared/types/emailNotification";
 
 export interface ServerConfig {
@@ -32,8 +28,6 @@ export interface ServerConfig {
   enableLoggingInTests: boolean;
   onlyCronjobs: boolean;
   cronjobsAndBackendSameInstance: boolean;
-  defaultSignupStrategy: EventSignupStrategy;
-  defaultLoginProvider: LoginProvider;
   logInvalidStartTimes: boolean;
   logMissingScheduleItems: boolean; // If scheduleItems is missing, program item is ignored
   emailNotificationQueueWorkerCount: number;
@@ -62,10 +56,6 @@ const commonConfig = {
 
   // App settings
   bundleCompression: true,
-
-  // Default DB values
-  defaultSignupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
-  defaultLoginProvider: LoginProvider.LOCAL_KOMPASSI,
 
   // Event settings
   padgAssignmentRounds: 5,

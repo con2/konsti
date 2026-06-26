@@ -2,6 +2,8 @@ import {
   AssignmentAlgorithm,
   EventName,
   EventConfig,
+  EventSignupStrategy,
+  LoginProvider,
 } from "shared/config/eventConfigTypes";
 import { ProgramType, SignupType } from "shared/types/models/programItem";
 
@@ -94,4 +96,8 @@ const eventConfig: Partial<EventConfig> = {
   ]),
 
   defaultSignupType: SignupType.KONSTI,
+
+  // Default DB values
+  defaultSignupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
+  defaultLoginProvider: LoginProvider.KOMPASSI,
 };
