@@ -3,14 +3,14 @@ import { z } from "zod";
 import { LocalStorageState } from "client/types/reduxTypes";
 import { ProgramType } from "shared/types/models/programItem";
 import { StringToJsonSchema } from "client/utils/zodUtils";
-import { config } from "shared/config";
 import { ActiveProgramType } from "shared/config/clientConfigTypes";
+import { getProgramTypeSelectOptions } from "client/utils/getProgramTypeSelectOptions";
 import { Locale } from "shared/types/locale";
 
 const localStorageStateKey = "state";
 
 const isActive = (programType: ActiveProgramType): boolean =>
-  config.client().programTypeSelectOptions.includes(programType);
+  getProgramTypeSelectOptions().includes(programType);
 
 const SessionSchema = z
   .object({
