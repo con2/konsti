@@ -13,6 +13,7 @@ export const ResultsSchemaDb = z
           signedToStartTime: z
             .date()
             .transform((date) => dayjs(date).toISOString()),
+          groupCode: z.string(),
         }),
       }),
     ),
@@ -30,6 +31,7 @@ const assignmentSignupSchema = new mongoose.Schema({
     get: (value: Date) => new Date(value),
     required: true,
   },
+  groupCode: { type: String, required: true },
 });
 
 const resultsArraySchema = new mongoose.Schema({

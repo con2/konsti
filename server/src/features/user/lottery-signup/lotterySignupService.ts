@@ -137,6 +137,8 @@ export const storeLotterySignup = async ({
     priority,
     // Lottery signups always store the item's own startTime; parent override is only used for lottery batching
     signedToStartTime: programItem.startTime,
+    // Record the group the user belonged to when signing up ("0" if not in a group)
+    groupCode: user.groupCode,
   };
 
   const responseResult = await saveLotterySignup({
