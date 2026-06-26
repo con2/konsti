@@ -1,12 +1,13 @@
 import { Server } from "node:http";
-import { expect, test, vi, afterEach, describe, beforeEach } from "vitest";
+import { expect, test, afterEach, describe, beforeEach } from "vitest";
 import request from "supertest";
 import { faker } from "@faker-js/faker";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { UserGroup } from "shared/types/models/user";
 import { getJWT } from "server/utils/jwt";
 import { closeServer, startServer } from "server/utils/server";
-import { config } from "shared/config";
+import { saveSerials } from "server/features/serial/serialRepository";
+import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 
 let server: Server;
 
@@ -61,12 +62,7 @@ describe(`POST ${ApiEndpoint.USERS}`, () => {
     expect(response.status).toEqual(422);
   });
 
-  test("should return 422 without serial if code is required", async () => {
-    vi.spyOn(config, "event").mockReturnValue({
-      ...config.event(),
-      requireRegistrationCode: true,
-    });
-
+  test("should return 422 without serial", async () => {
     const response = await request(server).post(ApiEndpoint.USERS).send({
       username: "testuser",
       password: "testpass",
@@ -74,15 +70,13 @@ describe(`POST ${ApiEndpoint.USERS}`, () => {
     expect(response.status).toEqual(422);
   });
 
-  test("should return 200 without serial if code is not required", async () => {
-    vi.spyOn(config, "event").mockReturnValue({
-      ...config.event(),
-      requireRegistrationCode: false,
-    });
+  test("should return 200 with a valid serial", async () => {
+    const serials = unsafelyUnwrap(await saveSerials(1));
 
     const response = await request(server).post(ApiEndpoint.USERS).send({
       username: "testuser",
       password: "testpass",
+      serial: serials[0].serial,
     });
     expect(response.status).toEqual(200);
   });

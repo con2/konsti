@@ -19,7 +19,6 @@ const eventConfig: Partial<EventConfig> = {
 
   // Event settings
   // No way to distribute registration codes for the remote convention
-  requireRegistrationCode: false,
   assignmentAlgorithm: AssignmentAlgorithm.PADG,
   enableGroups: true,
 

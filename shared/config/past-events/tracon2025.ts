@@ -19,7 +19,6 @@ const eventConfig: Partial<EventConfig> = {
   enableRevolvingDoor: false,
   enableTagDropdown: false,
 
-  requireRegistrationCode: true,
   assignmentAlgorithm: AssignmentAlgorithm.RANDOM,
   enableGroups: true,
 

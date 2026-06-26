@@ -16,7 +16,6 @@ const eventConfig: Partial<EventConfig> = {
   eventYear: "2022",
 
   // Event settings
-  requireRegistrationCode: true,
   assignmentAlgorithm: AssignmentAlgorithm.RANDOM_PADG,
   enableGroups: true,
 

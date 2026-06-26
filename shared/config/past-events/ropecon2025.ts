@@ -20,7 +20,6 @@ const eventConfig: Partial<EventConfig> = {
 
   // Event settings
   enableRevolvingDoor: true,
-  requireRegistrationCode: true,
   assignmentAlgorithm: AssignmentAlgorithm.RANDOM_PADG,
   enableGroups: true,
   enableRemoveOverlapSignups: true,

@@ -16,37 +16,12 @@ import {
 } from "shared/types/api/users";
 import { findUserDirectSignups } from "server/features/direct-signup/directSignupRepository";
 import { DirectSignup } from "shared/types/models/user";
-import { config } from "shared/config";
-import { createSerial } from "server/features/user/userUtils";
 
 export const storeUser = async (
   username: string,
   password: string,
-  maybeSerial: string | undefined,
+  serial: string,
 ): Promise<PostUserResponse> => {
-  let serial;
-  if (config.event().requireRegistrationCode) {
-    serial = maybeSerial;
-  } else {
-    const serialDocResult = await createSerial();
-    if (!serialDocResult.ok) {
-      return {
-        message: "Error creating serial for new user",
-        status: "error",
-        errorId: "unknown",
-      };
-    }
-    serial = serialDocResult.value[0].serial;
-  }
-
-  if (serial === undefined) {
-    return {
-      message: "Invalid serial",
-      status: "error",
-      errorId: "invalidSerial",
-    };
-  }
-
   const serialFoundResult = await findSerial(serial);
   if (!serialFoundResult.ok) {
     return {

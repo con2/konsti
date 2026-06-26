@@ -44,7 +44,7 @@ Tests drive app state through the server's **dev/test API** (not the UI) for set
 - **`populateDb(request, options)`** — `POST /api/populate-db` to seed users/admin/program-items/signups/event-log (the dev-only endpoint; see [server/CLAUDE.md](../server/CLAUDE.md)).
 - **`clearDb(request)`** — `POST /api/clear-db`.
 - **`addProgramItems(request, items)`** — `POST /api/add-program-items` to add/modify items mid-test (commonly a spread of `testProgramItem` from `shared/tests/` with tweaked `startTime`/`programType`/attendance/`state`).
-- **`addSerials(request, count)`** — `POST /api/add-serial`; returns the created registration codes (`string[]`). Use it to register a new account when the event has `requireRegistrationCode` enabled.
+- **`addSerials(request, count)`** — `POST /api/add-serial`; returns the created registration codes (`string[]`). Local account creation always requires a valid code, so a registration spec must mint one with this helper.
 - **`login(page, request, { username, password })`** — logs in via the API, navigates to `/`, then writes the JWT into `localStorage` under `state.login.jwt`. This **bypasses the login form** — use it for setup; test the form itself in `login.spec.ts`. The JWT is written **after** that navigation, so **call `await page.goto("/")` again after `login()`** or the app stays anonymous.
 - **`postSettings(request, settings)`** / **`postTestSettings(request, settings)`** — admin-authenticated `POST /api/settings` and `POST /api/test-settings`. `postTestSettings({ testTime })` **mocks server time**, which governs signup windows and whether the lottery has "run".
 - **`testPostDirectSignup(request, username, req)`** — direct-signup as another user (e.g. to fill a slot before the user under test).

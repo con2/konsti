@@ -3,7 +3,6 @@ import { SubmitHandler, useForm, useFormState } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import styled, { css } from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { config } from "shared/config";
 import { Button, ButtonStyle } from "client/components/Button";
 import { useAppDispatch } from "client/utils/hooks";
 import {
@@ -25,7 +24,7 @@ export interface KonstiRegistrationFormFields {
   password: string;
   username: string;
   registerDescription: boolean;
-  serial?: string;
+  serial: string;
 }
 
 export const KonstiRegistrationForm = (): ReactElement => {
@@ -138,31 +137,25 @@ export const KonstiRegistrationForm = (): ReactElement => {
           <FormFieldError>{errors.password.message}</FormFieldError>
         )}
 
-        {config.event().requireRegistrationCode && (
-          <>
-            <InputContainer>
-              <StyledLabel htmlFor="serial">{t("serial")}</StyledLabel>
-              <StyledInput
-                id="serial"
-                {...register("serial", {
-                  required: t("validation.required"),
-                  onChange: () => {
-                    setServerError(null);
-                  },
-                })}
-                type={"text"}
-              />
-            </InputContainer>
+        <InputContainer>
+          <StyledLabel htmlFor="serial">{t("serial")}</StyledLabel>
+          <StyledInput
+            id="serial"
+            {...register("serial", {
+              required: t("validation.required"),
+              onChange: () => {
+                setServerError(null);
+              },
+            })}
+            type={"text"}
+          />
+        </InputContainer>
 
-            {errors.serial && (
-              <FormFieldError>{errors.serial.message}</FormFieldError>
-            )}
-
-            <SmallLabel htmlFor="serial">
-              {t("registrationSerialHelp")}
-            </SmallLabel>
-          </>
+        {errors.serial && (
+          <FormFieldError>{errors.serial.message}</FormFieldError>
         )}
+
+        <SmallLabel htmlFor="serial">{t("registrationSerialHelp")}</SmallLabel>
 
         <FormRow>
           <Checkbox
