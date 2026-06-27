@@ -20,6 +20,7 @@ test("should snapshot the group and its members that took part in the lottery", 
   expect(groups).toEqual([
     {
       groupCode: groupCreatorGroupCode,
+      groupCreator: "group-creator-with-lottery-signup",
       groupMembers: [
         "group-creator-with-lottery-signup",
         "group-member-1",
@@ -48,6 +49,7 @@ test("should exclude individual users not in a group", () => {
   expect(groups).toEqual([
     {
       groupCode: groupCreatorGroupCode,
+      groupCreator: "group-creator-with-lottery-signup",
       groupMembers: ["group-creator-with-lottery-signup", "group-member-1"],
     },
   ]);

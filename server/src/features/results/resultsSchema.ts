@@ -20,6 +20,7 @@ export const ResultsSchemaDb = z
     groups: z.array(
       z.object({
         groupCode: z.string(),
+        groupCreator: z.string(),
         groupMembers: z.array(z.string()),
       }),
     ),
@@ -46,6 +47,7 @@ const resultsArraySchema = new mongoose.Schema({
 
 const groupSchema = new mongoose.Schema({
   groupCode: { type: String, required: true },
+  groupCreator: { type: String, required: true },
   groupMembers: { type: [String], required: true },
 });
 

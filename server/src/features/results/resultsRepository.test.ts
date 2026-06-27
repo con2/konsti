@@ -46,6 +46,7 @@ test("should insert new result into collection", async () => {
   const groups: AssignmentResultGroup[] = [
     {
       groupCode: "123-234-345",
+      groupCreator: mockUser.username,
       groupMembers: [mockUser.username, mockUser2.username],
     },
   ];

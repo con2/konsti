@@ -879,6 +879,7 @@ test("Should write a snapshot of the lottery groups to the results collection", 
   expect(savedResults[0].groups).toEqual([
     {
       groupCode,
+      groupCreator: mockUser.username,
       groupMembers: [mockUser.username, mockUser2.username],
     },
   ]);

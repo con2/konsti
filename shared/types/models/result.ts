@@ -10,5 +10,6 @@ export interface UserAssignmentResult {
 // Snapshot of a group that took part in the lottery, as it was when the assignment ran
 export interface AssignmentResultGroup {
   groupCode: string;
+  groupCreator: string;
   groupMembers: string[];
 }
