@@ -24,9 +24,13 @@ import {
 } from "client/views/all-program-items/components/SearchAndFilterCard";
 import { getProgramTypeSelectOptions } from "client/utils/getProgramTypeSelectOptions";
 import { ScrollToTopButton } from "client/components/ScrollToTopButton";
+import { getProgramItemValidity } from "client/views/program-item/programItemUtils";
 
 export const MULTIPLE_WHITESPACES_REGEX = /\s\s+/g;
+// Query param that selects a program type
 const programTypeQueryParam = "programType";
+// Query param that lists program items missing required info, like attendance limits
+const invalidQueryParam = "invalid";
 
 type ProgramItemWithFullness = ProgramItem & {
   isFull: boolean;
@@ -35,6 +39,7 @@ type ProgramItemWithFullness = ProgramItem & {
 export const AllProgramItemsView = (): ReactElement => {
   const [searchParams, setSearchParams] = useSearchParams();
   const programTypeQueryParamValue = searchParams.get(programTypeQueryParam);
+  const showOnlyInvalidProgramItems = searchParams.has(invalidQueryParam);
   const dispatch = useAppDispatch();
 
   const activeProgramItems = useAppSelector(selectActiveProgramItems);
@@ -142,21 +147,33 @@ export const AllProgramItemsView = (): ReactElement => {
     if (programTypePair) {
       dispatch(setActiveProgramType(programTypePair.originalValue));
     }
-    setSearchParams("");
+    // Drop the handled programType param but keep other params, like invalid
+    setSearchParams((prev) => {
+      prev.delete(programTypeQueryParam);
+      return prev;
+    });
   }, [programTypePairs, dispatch, programTypeQueryParamValue, setSearchParams]);
 
   const memoizedProgramItems = useMemo(() => {
-    return (
-      <AllProgramItemsList
-        programItems={getVisibleProgramItems(
-          filteredProgramItems,
-          selectedStartingTime,
-          selectedTag,
-          hideFullItems,
-        )}
-      />
+    const visibleProgramItems = getVisibleProgramItems(
+      filteredProgramItems,
+      selectedStartingTime,
+      selectedTag,
+      hideFullItems,
     );
-  }, [filteredProgramItems, hideFullItems, selectedStartingTime, selectedTag]);
+    const programItemsToShow = showOnlyInvalidProgramItems
+      ? visibleProgramItems.filter(
+          (programItem) => !getProgramItemValidity(programItem).allValuesValid,
+        )
+      : visibleProgramItems;
+    return <AllProgramItemsList programItems={programItemsToShow} />;
+  }, [
+    filteredProgramItems,
+    hideFullItems,
+    selectedStartingTime,
+    selectedTag,
+    showOnlyInvalidProgramItems,
+  ]);
 
   return (
     <>
