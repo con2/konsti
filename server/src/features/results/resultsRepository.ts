@@ -19,7 +19,9 @@ export const removeResults = async (): Promise<Result<void, MongoDbError>> => {
     await ResultsModel.deleteMany({});
     return makeSuccessResult();
   } catch (error) {
-    logger.error("MongoDB: Error removing ALL results: %s", error);
+    logger.error(
+      new Error("MongoDB: Error removing ALL results", { cause: error }),
+    );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
@@ -42,8 +44,10 @@ export const saveResult = async (
     return makeSuccessResult();
   } catch (error) {
     logger.error(
-      `MongoDB: Error storing signup results for assignment time ${assignmentTime} to separate collection: %s`,
-      error,
+      new Error(
+        `MongoDB: Error storing signup results for assignment time ${assignmentTime} to separate collection`,
+        { cause: error },
+      ),
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
@@ -67,7 +71,6 @@ export const findResults = async (): Promise<
       const result = ResultsSchemaDb.safeParse(assignmentResult);
       if (!result.success) {
         logger.error(
-          "%s",
           new Error(
             `Error validating findResults DB value: assignmentTime: ${dayjs(assignmentResult.assignmentTime).toISOString()}, ${JSON.stringify(result.error)}`,
           ),
@@ -79,7 +82,9 @@ export const findResults = async (): Promise<
 
     return makeSuccessResult(results);
   } catch (error) {
-    logger.error("MongoDB: Error fetching results: %s", error);
+    logger.error(
+      new Error("MongoDB: Error fetching results", { cause: error }),
+    );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };

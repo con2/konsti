@@ -36,14 +36,13 @@ export const getProgramItemsFromKompassi = async (
 
   if (!Array.isArray(eventProgramItems)) {
     logger.error(
-      "%s",
       new Error("Invalid Kompassi response format, should be array"),
     );
     return makeErrorResult(KompassiError.INVALID_RESPONSE);
   }
 
   if (eventProgramItems.length === 0) {
-    logger.error("%s", new Error("No program items found"));
+    logger.error(new Error("No program items found"));
     return makeErrorResult(KompassiError.NO_PROGRAM_ITEMS);
   }
 
@@ -103,7 +102,6 @@ export const parseProgramItem = (
         }
       }
       logger.error(
-        "%s",
         new Error(
           `Invalid program item ${String(getProgramItemId(programItem))} at path ${issue.path.join(".")}: ${issue.message}`,
         ),
@@ -113,8 +111,10 @@ export const parseProgramItem = (
   }
 
   logger.error(
-    `Unknown error while parsing program item ${String(getProgramItemId(programItem))}: %s`,
-    result.error,
+    new Error(
+      `Unknown error while parsing program item ${String(getProgramItemId(programItem))}`,
+      { cause: result.error },
+    ),
   );
 };
 
@@ -225,15 +225,20 @@ export const getProgramFromServer = async (): Promise<
     const result = KompassiResponseFormSchema.safeParse(responseData);
     if (!result.success) {
       logger.error(
-        "Error downloading program items from Kompassi: %s",
-        new Error("Invalid return value format"),
+        new Error(
+          "Error downloading program items from Kompassi: Invalid return value format",
+        ),
       );
       return makeErrorResult(KompassiError.UNKNOWN_ERROR);
     }
     const programItems = result.data.data.event.program.programs;
     return makeSuccessResult(programItems);
   } catch (error) {
-    logger.error("Error downloading program items from Kompassi: %s", error);
+    logger.error(
+      new Error("Error downloading program items from Kompassi", {
+        cause: error,
+      }),
+    );
     return makeErrorResult(KompassiError.UNKNOWN_ERROR);
   }
 };
@@ -255,7 +260,6 @@ export const checkUnknownKeys = (
 
   if (unknownKeys.length > 0) {
     logger.error(
-      "%s",
       new Error(
         `Found unknown keys for program items: ${unique(unknownKeys).join(" ")}`,
       ),
@@ -282,7 +286,6 @@ export const logInvalidStartTimes = (
     const startMinute = dayjs(scheduleItem.startTime).minute();
     if (startMinute !== 0) {
       logger.error(
-        "%s",
         new Error(
           `Invalid start time: ${getTime(scheduleItem.startTime)} - ${scheduleItem.slug}`,
         ),

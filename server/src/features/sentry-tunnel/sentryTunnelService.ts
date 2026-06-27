@@ -21,7 +21,7 @@ export const resendSentryRequest = async (
     const { hostname, pathname } = new url.URL(header.dsn as string);
 
     if (!hostname.endsWith(`.${sentryHost}`)) {
-      logger.error("%s", new Error(`invalid host: ${hostname}`));
+      logger.error(new Error(`invalid host: ${hostname}`));
       return {
         message: "Sentry tunnel: Invalid host",
         status: "error",
@@ -32,7 +32,7 @@ export const resendSentryRequest = async (
     const projectId = pathname.endsWith("/") ? pathname.slice(0, -1) : pathname;
 
     if (!knownProjectIds.has(projectId)) {
-      logger.error("%s", new Error(`invalid project id: ${projectId}`));
+      logger.error(new Error(`invalid project id: ${projectId}`));
       return {
         message: "Sentry tunnel: Invalid project",
         status: "error",
@@ -49,7 +49,7 @@ export const resendSentryRequest = async (
 
     return null;
   } catch (error) {
-    logger.error("Sentry tunnel error: %s", error);
+    logger.error(new Error("Sentry tunnel error", { cause: error }));
     return {
       message: "Sentry tunnel: Unknown error",
       status: "error",

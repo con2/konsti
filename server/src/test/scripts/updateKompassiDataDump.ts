@@ -66,5 +66,5 @@ const updateKompassiDataDump = async (): Promise<void> => {
 try {
   await updateKompassiDataDump();
 } catch (error: unknown) {
-  logger.error("%s", error);
+  logger.error(error);
 }

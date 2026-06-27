@@ -118,7 +118,6 @@ describe("Progam update cronjob", () => {
     await autoUpdateProgramItems();
 
     expect(errorLoggerSpy).toHaveBeenCalledWith(
-      "%s",
       new Error("Program auto update already running, stop"),
     );
     expect(infoLoggerSpy).not.toHaveBeenCalledWith(
@@ -141,7 +140,6 @@ describe("Progam update cronjob", () => {
       "Auto update not running, continue",
     );
     expect(errorLoggerSpy).toHaveBeenCalledWith(
-      "%s",
       new Error("Program auto update already running, stop"),
     );
     expect(infoLoggerSpy).toHaveBeenCalledWith(
@@ -159,7 +157,6 @@ describe("Progam update cronjob", () => {
     await autoUpdateProgramItems();
 
     expect(errorLoggerSpy).toHaveBeenCalledWith(
-      "%s",
       new Error("Cronjobs: Newer server instance running, stop"),
     );
 
@@ -197,7 +194,6 @@ describe("Assignment cronjob", () => {
     await autoAssignAttendees();
 
     expect(errorLoggerSpy).toHaveBeenCalledWith(
-      "%s",
       new Error("Auto assignment already running, stop"),
     );
     expect(infoLoggerSpy).not.toHaveBeenCalledWith(
@@ -220,7 +216,6 @@ describe("Assignment cronjob", () => {
       "Auto assignment not running, continue",
     );
     expect(errorLoggerSpy).toHaveBeenCalledWith(
-      "%s",
       new Error("Auto assignment already running, stop"),
     );
     expect(infoLoggerSpy).toHaveBeenCalledWith(
@@ -238,7 +233,6 @@ describe("Assignment cronjob", () => {
     await autoAssignAttendees();
 
     expect(errorLoggerSpy).toHaveBeenCalledWith(
-      "%s",
       new Error("Cronjobs: Newer server instance running, stop"),
     );
 

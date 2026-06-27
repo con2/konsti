@@ -48,7 +48,11 @@ export async function emailNotificationWorker(
       await sender.sendEmail(message);
     }
   } catch (error) {
-    logger.error("Unexpected error in sending email notification: %s", error);
+    logger.error(
+      new Error("Unexpected error in sending email notification", {
+        cause: error,
+      }),
+    );
   }
   return;
 }

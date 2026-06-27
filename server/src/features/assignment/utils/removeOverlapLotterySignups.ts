@@ -32,7 +32,6 @@ export const removeOverlapLotterySignups = async (
 
     if (!assignmentSignupProgramItem) {
       logger.error(
-        "%s",
         new Error(
           `removeOverlapLotterySignups: Error finding assignment signup: ${result.assignmentSignup.programItemId}`,
         ),
@@ -45,7 +44,6 @@ export const removeOverlapLotterySignups = async (
     );
     if (!signedUser) {
       logger.error(
-        "%s",
         new Error(
           `removeOverlapLotterySignups: Error finding signed user: ${result.username}`,
         ),

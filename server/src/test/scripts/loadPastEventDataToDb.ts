@@ -64,5 +64,5 @@ const loadPastEventDataToDb = async (): Promise<void> => {
 try {
   await loadPastEventDataToDb();
 } catch (error: unknown) {
-  logger.error("%s", error);
+  logger.error(error);
 }

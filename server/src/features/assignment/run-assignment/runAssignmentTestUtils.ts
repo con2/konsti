@@ -38,10 +38,7 @@ const getGroupCreator = (
     return makeSuccessResult(groupCreator);
   }
 
-  logger.error(
-    "%s",
-    new Error(`Group creator not found for user ${user.username}`),
-  );
+  logger.error(new Error(`Group creator not found for user ${user.username}`));
 
   return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
 };
@@ -87,10 +84,7 @@ export const verifyUserSignups = async (): Promise<
       );
 
       if (!matchingUser) {
-        logger.error(
-          "%s",
-          new Error(`No matcing user: ${userSignup.username}`),
-        );
+        logger.error(new Error(`No matcing user: ${userSignup.username}`));
         continue;
       }
 
@@ -111,7 +105,6 @@ export const verifyUserSignups = async (): Promise<
 
       if (!matchingCreatorLotterySignup) {
         logger.error(
-          "%s",
           new Error(
             `No matching signed program item found from group creator: ${userSignup.username} - ${programItemId}`,
           ),

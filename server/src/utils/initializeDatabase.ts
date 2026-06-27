@@ -61,5 +61,5 @@ const initializeDatabase = async (): Promise<void> => {
 try {
   await initializeDatabase();
 } catch (error: unknown) {
-  logger.error("Script initializeDatabase failed: %s", error);
+  logger.error(new Error("Script initializeDatabase failed", { cause: error }));
 }

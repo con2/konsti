@@ -24,7 +24,6 @@ export const addSignupQuestions = async (): Promise<void> => {
   const programItemsResult = await findProgramItems();
   if (!programItemsResult.ok) {
     logger.error(
-      "%s",
       new Error(`Error finding program items: ${programItemsResult.error}`),
     );
     return;

@@ -14,7 +14,6 @@ export const getGroups = (
     const firstMember = first(attendeeGroup);
     if (!firstMember) {
       logger.error(
-        "%s",
         new Error("Assignment getGroups: error getting first member"),
       );
       return [];

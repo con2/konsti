@@ -127,7 +127,6 @@ const runRandomPadgAlgorithm = (
   );
   if (!randomResultResult.ok) {
     logger.error(
-      "%s",
       new Error(`Random assignment failed: ${randomResultResult.error}`),
     );
   }
@@ -148,7 +147,6 @@ const runRandomPadgAlgorithm = (
   );
   if (!padgResultResult.ok) {
     logger.error(
-      "%s",
       new Error(`PADG assignment failed: ${padgResultResult.error}`),
     );
   }
@@ -163,7 +161,6 @@ const runRandomPadgAlgorithm = (
 
   if (!randomResultResult.ok && !padgResultResult.ok) {
     logger.error(
-      "%s",
       new Error("Both random and PADG assignments failed, stop assignment"),
     );
     return makeErrorResult(AssignmentError.UNKNOWN_ERROR);

@@ -15,10 +15,7 @@ export const safeEnumArray = <T extends Record<string, string>>(
       Object.values(enumType).includes(val),
     );
     if (invalid.length > 0) {
-      logger.error(
-        "%s",
-        new Error(`Invalid ${label}: ${JSON.stringify(invalid)}`),
-      );
+      logger.error(new Error(`Invalid ${label}: ${JSON.stringify(invalid)}`));
     }
     return valid as T[keyof T][];
   });

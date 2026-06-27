@@ -77,7 +77,6 @@ export const postUpdateUserEmailAddress = async (
   const result = PostUpdateUserEmailAddressRequestSchema.safeParse(req.body);
   if (!result.success) {
     logger.error(
-      "%s",
       new Error(
         `Error validating postUpdateUserEmailAddress body: ${JSON.stringify(result.error)}`,
       ),

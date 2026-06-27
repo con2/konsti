@@ -30,7 +30,9 @@ export const removeDirectSignups = async (): Promise<
     await SignupModel.deleteMany({});
     return makeSuccessResult();
   } catch (error) {
-    logger.error("MongoDB: Error removing direct signups: %s", error);
+    logger.error(
+      new Error("MongoDB: Error removing direct signups", { cause: error }),
+    );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
@@ -47,7 +49,6 @@ export const findDirectSignups = async (): Promise<
       const result = DirectSignupSchemaDb.safeParse(signup);
       if (!result.success) {
         logger.error(
-          "%s",
           new Error(
             `Error validating findDirectSignups DB value: programItemId: ${signup.programItemId}, ${JSON.stringify(result.error)}`,
           ),
@@ -59,7 +60,9 @@ export const findDirectSignups = async (): Promise<
 
     return makeSuccessResult(signups);
   } catch (error) {
-    logger.error("MongoDB: Error finding direct signups: %s", error);
+    logger.error(
+      new Error("MongoDB: Error finding direct signups", { cause: error }),
+    );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
@@ -89,7 +92,6 @@ export const findDirectSignupsByProgramItemIds = async (
       const result = DirectSignupSchemaDb.safeParse(response);
       if (!result.success) {
         logger.error(
-          "%s",
           new Error(
             `Error validating findDirectSignupsByProgramItemIds DB value: programItemId ${response.programItemId}: ${JSON.stringify(result.error)}`,
           ),
@@ -103,8 +105,10 @@ export const findDirectSignupsByProgramItemIds = async (
     return makeSuccessResult(validSignups);
   } catch (error) {
     logger.error(
-      `MongoDB: Error finding direct signups for program items ${programItemIds.join(", ")}: %s`,
-      error,
+      new Error(
+        `MongoDB: Error finding direct signups for program items ${programItemIds.join(", ")}`,
+        { cause: error },
+      ),
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
@@ -135,7 +139,6 @@ export const findDirectSignupsByStartTime = async (
       const result = DirectSignupSchemaDb.safeParse(signup);
       if (!result.success) {
         logger.error(
-          "%s",
           new Error(
             `Error validating findDirectSignupsByStartTime DB value: programItemId: ${signup.programItemId}, ${JSON.stringify(result.error)}`,
           ),
@@ -156,8 +159,9 @@ export const findDirectSignupsByStartTime = async (
     return makeSuccessResult(formattedResponse);
   } catch (error) {
     logger.error(
-      `MongoDB: Error finding signups for time ${startTime}: %s`,
-      error,
+      new Error(`MongoDB: Error finding signups for time ${startTime}`, {
+        cause: error,
+      }),
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
@@ -177,7 +181,6 @@ export const findUserDirectSignups = async (
       const result = DirectSignupSchemaDb.safeParse(signup);
       if (!result.success) {
         logger.error(
-          "%s",
           new Error(
             `Error validating findUserDirectSignups DB value: programItemId: ${signup.programItemId}, ${JSON.stringify(result.error)}`,
           ),
@@ -190,8 +193,9 @@ export const findUserDirectSignups = async (
     return makeSuccessResult(signups);
   } catch (error) {
     logger.error(
-      `MongoDB: Error finding signups for user ${username}: %s`,
-      error,
+      new Error(`MongoDB: Error finding signups for user ${username}`, {
+        cause: error,
+      }),
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
@@ -267,7 +271,6 @@ export const saveDirectSignup = async (
     const result = DirectSignupSchemaDb.safeParse(response);
     if (!result.success) {
       logger.error(
-        "%s",
         new Error(
           `Error validating saveDirectSignup DB value: ${JSON.stringify(result.error)}`,
         ),
@@ -278,8 +281,9 @@ export const saveDirectSignup = async (
     return makeSuccessResult(result.data);
   } catch (error) {
     logger.error(
-      `MongoDB: Error saving direct signup for user '${username}': %s`,
-      error,
+      new Error(`MongoDB: Error saving direct signup for user '${username}'`, {
+        cause: error,
+      }),
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
@@ -309,7 +313,6 @@ export const saveDirectSignups = async (
     let finalSignups: SignupRepositoryAddSignup[] = directSignups;
     if (directSignups.length > programItem.maxAttendance) {
       logger.error(
-        "%s",
         new Error(
           `Too many signups passed to saveSignups for program item ${programItem.programItemId} - maxAttendance: ${programItem.maxAttendance}, direct signups: ${directSignups.length}`,
         ),
@@ -350,7 +353,9 @@ export const saveDirectSignups = async (
       droppedSignups,
     });
   } catch (error) {
-    logger.error("MongoDB: Error saving direct signups: %s", error);
+    logger.error(
+      new Error("MongoDB: Error saving direct signups", { cause: error }),
+    );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
@@ -385,7 +390,6 @@ export const delDirectSignup = async ({
 
     if (!signup) {
       logger.error(
-        "%s",
         new Error(
           `Signups to program item ${directSignupProgramItemId} for user ${username} not found`,
         ),
@@ -399,7 +403,6 @@ export const delDirectSignup = async ({
 
     if (signupStillRemaining) {
       logger.error(
-        "%s",
         new Error(
           `Error removing signup to program item ${directSignupProgramItemId} from user ${username}`,
         ),
@@ -416,7 +419,6 @@ export const delDirectSignup = async ({
     const result = DirectSignupSchemaDb.safeParse(signup);
     if (!result.success) {
       logger.error(
-        "%s",
         new Error(
           `Error validating delDirectSignup DB value: ${JSON.stringify(result.error)}`,
         ),
@@ -427,8 +429,10 @@ export const delDirectSignup = async ({
     return makeSuccessResult(result.data);
   } catch (error) {
     logger.error(
-      `MongoDB: Error deleting signup to program item ${directSignupProgramItemId} from user ${username}: %s`,
-      error,
+      new Error(
+        `MongoDB: Error deleting signup to program item ${directSignupProgramItemId} from user ${username}`,
+        { cause: error },
+      ),
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
@@ -444,8 +448,12 @@ export const delDirectSignupDocumentsByProgramItemIds = async (
     return makeSuccessResult();
   } catch (error) {
     logger.error(
-      "MongoDB: Error removing signup documents for program item IDs: %s",
-      error,
+      new Error(
+        "MongoDB: Error removing signup documents for program item IDs",
+        {
+          cause: error,
+        },
+      ),
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
@@ -464,8 +472,9 @@ export const resetDirectSignupsByProgramItemIds = async (
     return makeSuccessResult();
   } catch (error) {
     logger.error(
-      "MongoDB: Error removing signups for program item IDs: %s",
-      error,
+      new Error("MongoDB: Error removing signups for program item IDs", {
+        cause: error,
+      }),
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
@@ -513,7 +522,9 @@ export const delAssignmentDirectSignupsByStartTime = async (
     );
     return makeSuccessResult();
   } catch (error) {
-    logger.error("MongoDB: Error removing invalid signup: %s", error);
+    logger.error(
+      new Error("MongoDB: Error removing invalid signup", { cause: error }),
+    );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
@@ -537,8 +548,10 @@ export const createEmptyDirectSignupDocumentForProgramItems = async (
     return makeSuccessResult();
   } catch (error) {
     logger.error(
-      `MongoDB: Creating signup collection for ${programItemIds.length} program items failed: %s`,
-      error,
+      new Error(
+        `MongoDB: Creating signup collection for ${programItemIds.length} program items failed`,
+        { cause: error },
+      ),
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }

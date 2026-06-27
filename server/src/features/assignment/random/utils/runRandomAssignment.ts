@@ -63,7 +63,6 @@ export const runRandomAssignment = (
     logger.debug("Run random algorithm: finished");
   } catch (error) {
     logger.error(
-      "%s",
       new Error(
         `Random assignment failed: ${String(error)}. Assignment time: ${assignmentTime}, Input: ${JSON.stringify(input)}`,
       ),
@@ -74,7 +73,6 @@ export const runRandomAssignment = (
   // CheckResult = invalid result
   if (isCheckResult(assignResults)) {
     logger.error(
-      "%s",
       new Error(
         `Random assignment failed: ${
           assignResults.msg

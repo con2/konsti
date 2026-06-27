@@ -16,7 +16,7 @@ export const removeUsers = async (): Promise<Result<void, MongoDbError>> => {
     await UserModel.deleteMany({});
     return makeSuccessResult();
   } catch (error) {
-    logger.error("MongoDB: Error removing users: %s", error);
+    logger.error(new Error("MongoDB: Error removing users", { cause: error }));
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
@@ -51,7 +51,6 @@ export const saveUser = async (
     const result = UserSchemaDb.safeParse(response.toObject());
     if (!result.success) {
       logger.error(
-        "%s",
         new Error(
           `Error validating saveUser DB value: ${JSON.stringify(result.error)}`,
         ),
@@ -61,8 +60,9 @@ export const saveUser = async (
     return makeSuccessResult(result.data);
   } catch (error) {
     logger.error(
-      `MongoDB: Error creating new user ${newUserData.username}: %s`,
-      error,
+      new Error(`MongoDB: Error creating new user ${newUserData.username}`, {
+        cause: error,
+      }),
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
@@ -93,8 +93,10 @@ export const updateUsersByUsername = async (
     return makeSuccessResult();
   } catch (error) {
     logger.error(
-      `MongoDB: Error updating users ${String(users.map((user) => user.username))}: %s`,
-      error,
+      new Error(
+        `MongoDB: Error updating users ${String(users.map((user) => user.username))}`,
+        { cause: error },
+      ),
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
@@ -121,7 +123,6 @@ export const updateUserPassword = async (
     const result = UserSchemaDb.safeParse(response);
     if (!result.success) {
       logger.error(
-        "%s",
         new Error(
           `Error validating updateUserPassword DB value: ${JSON.stringify(result.error)}`,
         ),
@@ -131,8 +132,9 @@ export const updateUserPassword = async (
     return makeSuccessResult(result.data);
   } catch (error) {
     logger.error(
-      `MongoDB: Error updating password for user ${username}: %s`,
-      error,
+      new Error(`MongoDB: Error updating password for user ${username}`, {
+        cause: error,
+      }),
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
@@ -152,7 +154,6 @@ export const findUser = async (
     const result = UserSchemaDb.safeParse(response);
     if (!result.success) {
       logger.error(
-        "%s",
         new Error(
           `Error validating findUser DB value: ${JSON.stringify(result.error)}`,
         ),
@@ -162,7 +163,9 @@ export const findUser = async (
 
     return makeSuccessResult(result.data);
   } catch (error) {
-    logger.error(`MongoDB: Error finding user ${username}: %s`, error);
+    logger.error(
+      new Error(`MongoDB: Error finding user ${username}`, { cause: error }),
+    );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
@@ -183,7 +186,6 @@ export const findUserBySerial = async (
     const result = UserSchemaDb.safeParse(response);
     if (!result.success) {
       logger.error(
-        "%s",
         new Error(
           `Error validating findUserBySerial DB value: ${JSON.stringify(result.error)}`,
         ),
@@ -193,8 +195,9 @@ export const findUserBySerial = async (
     return makeSuccessResult(result.data);
   } catch (error) {
     logger.error(
-      `MongoDB: Error finding user with serial ${serial}: %s`,
-      error,
+      new Error(`MongoDB: Error finding user with serial ${serial}`, {
+        cause: error,
+      }),
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
@@ -216,7 +219,6 @@ export const findUserByKompassiId = async (
     const result = UserSchemaDb.safeParse(response);
     if (!result.success) {
       logger.error(
-        "%s",
         new Error(
           `Error validating findUserByKompassiId DB value: ${JSON.stringify(result.error)}`,
         ),
@@ -226,8 +228,9 @@ export const findUserByKompassiId = async (
     return makeSuccessResult(result.data);
   } catch (error) {
     logger.error(
-      `MongoDB: Error finding user with Kompassi id ${kompassiId}: %s`,
-      error,
+      new Error(`MongoDB: Error finding user with Kompassi id ${kompassiId}`, {
+        cause: error,
+      }),
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
@@ -251,7 +254,6 @@ export const findUserSerial = async (
     const result = UserSchemaDb.safeParse(response);
     if (!result.success) {
       logger.error(
-        "%s",
         new Error(
           `Error validating findUserSerial DB value: ${JSON.stringify(result.error)}`,
         ),
@@ -260,7 +262,9 @@ export const findUserSerial = async (
     }
     return makeSuccessResult(result.data);
   } catch (error) {
-    logger.error(`MongoDB: Error finding Serial ${serial}: %s`, error);
+    logger.error(
+      new Error(`MongoDB: Error finding Serial ${serial}`, { cause: error }),
+    );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
@@ -279,7 +283,6 @@ export const findUsers = async (
       const result = UserSchemaDb.safeParse(user);
       if (!result.success) {
         logger.error(
-          "%s",
           new Error(
             `Error validating findUsers DB value: username: ${user.username}, ${JSON.stringify(result.error)}`,
           ),
@@ -291,7 +294,7 @@ export const findUsers = async (
 
     return makeSuccessResult(results);
   } catch (error) {
-    logger.error("MongoDB: Error fetching users: %s", error);
+    logger.error(new Error("MongoDB: Error fetching users", { cause: error }));
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
@@ -312,7 +315,6 @@ export const updateUserKompassiLoginStatus = async (
 
     if (!response) {
       logger.error(
-        "%s",
         new Error(
           `MongoDB: Error updating Kompassi login status for user ${oldUsername}, user not found`,
         ),
@@ -323,7 +325,6 @@ export const updateUserKompassiLoginStatus = async (
     const result = UserSchemaDb.safeParse(response);
     if (!result.success) {
       logger.error(
-        "%s",
         new Error(
           `Error validating updateUserKompassiLoginStatus DB value: ${JSON.stringify(result.error)}`,
         ),
@@ -333,8 +334,10 @@ export const updateUserKompassiLoginStatus = async (
     return makeSuccessResult(result.data);
   } catch (error) {
     logger.error(
-      `MongoDB: Error updating Kompassi login status for user ${oldUsername}: %s`,
-      error,
+      new Error(
+        `MongoDB: Error updating Kompassi login status for user ${oldUsername}`,
+        { cause: error },
+      ),
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
@@ -356,7 +359,6 @@ export const updateUserEmailAddress = async (
 
     if (!response) {
       logger.error(
-        "%s",
         new Error(
           `MongoDB: Error updating email address for user ${username}, user not found`,
         ),
@@ -367,7 +369,6 @@ export const updateUserEmailAddress = async (
     const result = UserSchemaDb.safeParse(response);
     if (!result.success) {
       logger.error(
-        "%s",
         new Error(
           `Error validating updateUserEmailAddress DB value: ${JSON.stringify(result.error)}`,
         ),
@@ -377,8 +378,9 @@ export const updateUserEmailAddress = async (
     return makeSuccessResult(result.data);
   } catch (error) {
     logger.error(
-      `MongoDB: Error updating email address for user ${username}: %s`,
-      error,
+      new Error(`MongoDB: Error updating email address for user ${username}`, {
+        cause: error,
+      }),
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }

@@ -8,7 +8,6 @@ export const validateBody =
     const result = schema.safeParse(req.body);
     if (!result.success) {
       logger.error(
-        "%s",
         new Error(
           `Error validating ${req.method} ${req.path} body: ${JSON.stringify(result.error)}`,
         ),
@@ -26,7 +25,6 @@ export const validateQuery =
     const result = schema.safeParse(req.query);
     if (!result.success) {
       logger.error(
-        "%s",
         new Error(
           `Error validating ${req.method} ${req.path} query: ${JSON.stringify(result.error)}`,
         ),

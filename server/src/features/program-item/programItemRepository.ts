@@ -32,7 +32,9 @@ export const removeProgramItems = async (
     );
     return makeSuccessResult();
   } catch (error) {
-    logger.error("MongoDB: Error removing program items: %s", error);
+    logger.error(
+      new Error("MongoDB: Error removing program items", { cause: error }),
+    );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
@@ -123,7 +125,9 @@ export const saveProgramItems = async (
     await ProgramItemModel.bulkWrite(bulkOps);
     logger.debug("MongoDB: Program items saved to DB successfully");
   } catch (error) {
-    logger.error("Error saving program items to DB: %s", error);
+    logger.error(
+      new Error("Error saving program items to DB", { cause: error }),
+    );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 
@@ -177,7 +181,6 @@ export const findProgramItems = async (): Promise<
       const result = ProgramItemSchemaDb.safeParse(programItem);
       if (!result.success) {
         logger.error(
-          "%s",
           new Error(
             `Error validating findProgramItems DB value: programItemId: ${programItem.programItemId}, ${JSON.stringify(result.error)}`,
           ),
@@ -189,7 +192,9 @@ export const findProgramItems = async (): Promise<
 
     return makeSuccessResult(programItems);
   } catch (error) {
-    logger.error("MongoDB: Error fetching program items: %s", error);
+    logger.error(
+      new Error("MongoDB: Error fetching program items", { cause: error }),
+    );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
@@ -209,7 +214,6 @@ export const findProgramItemById = async (
     const result = ProgramItemSchemaDb.safeParse(response);
     if (!result.success) {
       logger.error(
-        "%s",
         new Error(
           `Error validating findProgramItemById DB value: ${JSON.stringify(result.error)}`,
         ),
@@ -218,7 +222,9 @@ export const findProgramItemById = async (
     }
     return makeSuccessResult(result.data);
   } catch (error) {
-    logger.error("MongoDB: Error fetching programItemId: %s", error);
+    logger.error(
+      new Error("MongoDB: Error fetching programItemId", { cause: error }),
+    );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
@@ -251,7 +257,9 @@ export const saveProgramItemPopularity = async (
     );
     return makeSuccessResult();
   } catch (error) {
-    logger.error("Error updating program item popularity: %s", error);
+    logger.error(
+      new Error("Error updating program item popularity", { cause: error }),
+    );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };

@@ -19,7 +19,9 @@ export const removeSettings = async (): Promise<Result<void, MongoDbError>> => {
     await SettingsModel.deleteMany({});
     return makeSuccessResult();
   } catch (error) {
-    logger.error("MongoDB: Error removing settings: %s", error);
+    logger.error(
+      new Error("MongoDB: Error removing settings", { cause: error }),
+    );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
@@ -35,7 +37,6 @@ export const createSettings = async (): Promise<
     const result = SettingsSchemaDb.safeParse(settings.toObject());
     if (!result.success) {
       logger.error(
-        "%s",
         new Error(
           `Error validating createSettings DB value: ${JSON.stringify(result.error)}`,
         ),
@@ -47,7 +48,9 @@ export const createSettings = async (): Promise<
 
     return makeSuccessResult(result.data);
   } catch (error) {
-    logger.error("MongoDB: Add default settings error: %s", error);
+    logger.error(
+      new Error("MongoDB: Add default settings error", { cause: error }),
+    );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
@@ -71,7 +74,6 @@ export const findSettings = async (): Promise<
     const result = SettingsSchemaDb.safeParse(settings);
     if (!result.success) {
       logger.error(
-        "%s",
         new Error(
           `Error validating findSettings DB value: ${JSON.stringify(result.error)}`,
         ),
@@ -81,7 +83,9 @@ export const findSettings = async (): Promise<
 
     return makeSuccessResult(result.data);
   } catch (error) {
-    logger.error("MongoDB: Error finding settings data: %s", error);
+    logger.error(
+      new Error("MongoDB: Error finding settings data", { cause: error }),
+    );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
@@ -106,7 +110,6 @@ export const saveHidden = async (
     const result = SettingsSchemaDb.safeParse(settings);
     if (!result.success) {
       logger.error(
-        "%s",
         new Error(
           `Error validating saveHidden DB value: ${JSON.stringify(result.error)}`,
         ),
@@ -116,7 +119,11 @@ export const saveHidden = async (
 
     return makeSuccessResult(result.data);
   } catch (error) {
-    logger.error("MongoDB: Error updating hidden program items: %s", error);
+    logger.error(
+      new Error("MongoDB: Error updating hidden program items", {
+        cause: error,
+      }),
+    );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
@@ -148,7 +155,6 @@ export const saveSignupQuestion = async (
     const result = SettingsSchemaDb.safeParse(settings);
     if (!result.success) {
       logger.error(
-        "%s",
         new Error(
           `Error validating saveSignupQuestion DB value: ${JSON.stringify(result.error)}`,
         ),
@@ -159,8 +165,9 @@ export const saveSignupQuestion = async (
     return makeSuccessResult(result.data);
   } catch (error) {
     logger.error(
-      "MongoDB: Error updating program item signup question: %s",
-      error,
+      new Error("MongoDB: Error updating program item signup question", {
+        cause: error,
+      }),
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
@@ -180,7 +187,7 @@ export const delSignupQuestion = async (
       },
     ).lean();
     if (!settings) {
-      logger.error("%s", new Error("MongoDB: Signup question not found"));
+      logger.error(new Error("MongoDB: Signup question not found"));
       return makeErrorResult(MongoDbError.SIGNUP_QUESTION_NOT_FOUND);
     }
     logger.info("MongoDB: Signup info deleted");
@@ -188,7 +195,6 @@ export const delSignupQuestion = async (
     const result = SettingsSchemaDb.safeParse(settings);
     if (!result.success) {
       logger.error(
-        "%s",
         new Error(
           `Error validating delSignupQuestion DB value: ${JSON.stringify(result.error)}`,
         ),
@@ -199,8 +205,9 @@ export const delSignupQuestion = async (
     return makeSuccessResult(result.data);
   } catch (error) {
     logger.error(
-      "MongoDB: Error deleting program item signup question: %s",
-      error,
+      new Error("MongoDB: Error deleting program item signup question", {
+        cause: error,
+      }),
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
@@ -219,7 +226,6 @@ export const saveSettings = async (
     const result = SettingsSchemaDb.safeParse(updatedSettings);
     if (!result.success) {
       logger.error(
-        "%s",
         new Error(
           `Error validating saveSettings DB value: ${JSON.stringify(result.error)}`,
         ),
@@ -229,7 +235,9 @@ export const saveSettings = async (
 
     return makeSuccessResult(result.data);
   } catch (error) {
-    logger.error("MongoDB: Error updating app settings: %s", error);
+    logger.error(
+      new Error("MongoDB: Error updating app settings", { cause: error }),
+    );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
@@ -256,7 +264,11 @@ export const setProgramUpdateLastRun = async (
     );
     return makeSuccessResult();
   } catch (error) {
-    logger.error("MongoDB: Error updating program update last run: %s", error);
+    logger.error(
+      new Error("MongoDB: Error updating program update last run", {
+        cause: error,
+      }),
+    );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
@@ -281,7 +293,11 @@ export const setAssignmentLastRun = async (
     logger.info(`MongoDB: Assignment last run set: ${assignmentNextRun}`);
     return makeSuccessResult();
   } catch (error) {
-    logger.error("MongoDB: Error updating assignment last run: %s", error);
+    logger.error(
+      new Error("MongoDB: Error updating assignment last run", {
+        cause: error,
+      }),
+    );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
@@ -301,7 +317,11 @@ export const isLatestStartedServerInstance = async (
     logger.info("MongoDB: Latest server start time found, is latest");
     return makeSuccessResult();
   } catch (error) {
-    logger.error("MongoDB: Error getting latest server start time: %s", error);
+    logger.error(
+      new Error("MongoDB: Error getting latest server start time", {
+        cause: error,
+      }),
+    );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };

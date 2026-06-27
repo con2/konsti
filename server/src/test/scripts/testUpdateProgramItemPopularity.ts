@@ -9,24 +9,26 @@ const testUpdateProgramItemPopularity = async (): Promise<void> => {
   try {
     await db.connectToDb();
   } catch (error) {
-    logger.error("%s", error);
+    logger.error(error);
   }
 
   try {
     await updateProgramItemPopularity();
   } catch (error) {
-    logger.error("updateProgramItemPopularity error: %s", error);
+    logger.error(
+      new Error("updateProgramItemPopularity error", { cause: error }),
+    );
   }
 
   try {
     await db.gracefulExit();
   } catch (error) {
-    logger.error("%s", error);
+    logger.error(error);
   }
 };
 
 try {
   await testUpdateProgramItemPopularity();
 } catch (error: unknown) {
-  logger.error("%s", error);
+  logger.error(error);
 }

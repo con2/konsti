@@ -57,8 +57,10 @@ export const addEventLogItems = async (
     return makeSuccessResult();
   } catch (error) {
     logger.error(
-      `MongoDB: Error adding ${newEventLogItems.length} event log items (${String(actions)}) for ${usernames.length} users ${String(usernames)}: %s`,
-      error,
+      new Error(
+        `MongoDB: Error adding ${newEventLogItems.length} event log items (${String(actions)}) for ${usernames.length} users ${String(usernames)}`,
+        { cause: error },
+      ),
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
@@ -91,7 +93,6 @@ export const updateEventLogItemIsSeen = async (
     const result = UserSchemaDb.safeParse(response);
     if (!result.success) {
       logger.error(
-        "%s",
         new Error(
           `Error validating updateEventLogItemIsSeen DB value: ${JSON.stringify(result.error)}`,
         ),
@@ -102,8 +103,9 @@ export const updateEventLogItemIsSeen = async (
     return makeSuccessResult(result.data.eventLogItems);
   } catch (error) {
     logger.error(
-      `MongoDB: Error updating event log item for user ${username}: %s`,
-      error,
+      new Error(`MongoDB: Error updating event log item for user ${username}`, {
+        cause: error,
+      }),
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
@@ -128,8 +130,9 @@ export const deleteEventLogItemsByStartTime = async (
     return makeSuccessResult();
   } catch (error) {
     logger.error(
-      `Deleting event log items for startTime ${startTime} failed: %s`,
-      error,
+      new Error(`Deleting event log items for startTime ${startTime} failed`, {
+        cause: error,
+      }),
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }

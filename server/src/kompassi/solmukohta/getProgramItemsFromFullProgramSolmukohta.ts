@@ -51,10 +51,7 @@ export const getProgramItemsFromFullProgramSolmukohta = (
   });
 
   if (matchingProgramItems.length === 0) {
-    logger.error(
-      "%s",
-      new Error("No program items with known categories found"),
-    );
+    logger.error(new Error("No program items with known categories found"));
     return [];
   }
 

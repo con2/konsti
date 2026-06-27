@@ -82,7 +82,6 @@ export const updateProgramItemPopularity = async (): Promise<
   const successResults = assignmentResults.flatMap((assignmentResult) => {
     if (!assignmentResult.result.ok) {
       logger.error(
-        "%s",
         new Error(
           `Popularity update: assignment for start time ${assignmentResult.startTime} failed: ${assignmentResult.result.error}`,
         ),

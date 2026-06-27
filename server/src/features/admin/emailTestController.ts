@@ -62,7 +62,7 @@ export const postEmailTest = async (
     );
     return res.status(200).json({ message: "Test email sent successfully" });
   } catch (error) {
-    logger.error("Failed to send test email: %s", error);
+    logger.error(new Error("Failed to send test email", { cause: error }));
     return res.status(500).json({ message: "Failed to send test email" });
   }
 };
