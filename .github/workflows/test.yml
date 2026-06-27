@@ -179,10 +179,6 @@ jobs:
           node-version-file: ".node-version"
           cache: "yarn"
 
-      - name: Yarn install
-        run: |
-          YARN_ENABLE_HARDENED_MODE=1 yarn --immutable
-
       - name: Run Playwright tests
         run: |
           yarn docker-compose:test
