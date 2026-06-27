@@ -155,9 +155,17 @@ jobs:
   e2e:
     runs-on: ubuntu-24.04
 
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2]
+
     env:
       CI: true
       HUSKY: 0
+      # Each shard runs an isolated docker-compose stack (own server + Mongo), so the
+      # shared-DB serial constraint holds within a shard while the suite parallelizes across runners
+      PLAYWRIGHT_SHARD: ${{ matrix.shard }}/${{ strategy.job-total }}
 
     timeout-minutes: 30
 
@@ -183,5 +191,5 @@ jobs:
         uses: actions/upload-artifact@v7
         if: failure()
         with:
-          name: playwright-videos
+          name: playwright-videos-${{ matrix.shard }}
           path: playwright/test-results/

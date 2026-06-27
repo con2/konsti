@@ -13,6 +13,12 @@ Guidance for the `playwright/` end-to-end tests. See the [root CLAUDE.md](../CLA
 | `yarn playwright:trace`    | Opens a saved `trace.zip` in the trace viewer                                                                                                                                                                                   |
 | `yarn docker-compose:test` | Full containerized CI run: builds the server image (`APP_SETTINGS=ci`) and runs `docker/docker-compose.yml` + `playwright/docker-compose.yml` together, exiting with Playwright's exit code                                     |
 
+### Sharding
+
+CI splits the suite across runners with [Playwright sharding](https://playwright.dev/docs/test-sharding). The `e2e` job in `.github/workflows/test.yml` is a matrix over `shard: [1, 2, 3, 4]`, and passes `PLAYWRIGHT_SHARD=<index>/<total>` (e.g. `2/4`). `playwright/docker-compose.yml` reads `PLAYWRIGHT_SHARD` and appends `--shard=$PLAYWRIGHT_SHARD` only when it's set; unset (the local default) runs the whole suite.
+
+Each shard is a separate runner spinning up its **own** docker-compose stack (own server + Mongo), so the shared-DB constraint that forces `workers: 1` still holds **within** a shard — sharding parallelizes across machines, not within one DB. To change the shard count, edit the matrix list **and** keep using `strategy.job-total` for the denominator. To shard a local run: `PLAYWRIGHT_SHARD=1/4 yarn docker-compose:test`.
+
 Local prerequisites: Docker running, and ports **5000** (server), **8000** (client), **27017** (Mongo), and the Playwright UI port free.
 
 To run one or more specs **headlessly against an already-running app** (handy while iterating), invoke Playwright directly instead of the `--ui` script:
