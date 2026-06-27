@@ -127,7 +127,7 @@ test("Receive spot in lottery signup", async ({ page, request }) => {
   await postAssignment(request, startTime);
   await page.reload();
 
-  // Check new assigment message
+  // Check new assignment message
   await expect(page.getByTestId("notification-bar")).toContainText(
     /You were assigned to the .* Test program item./,
   );
@@ -197,7 +197,7 @@ test("Did not receive spot in lottery signup", async ({ page, request }) => {
   await postAssignment(request, startTime);
   await page.reload();
 
-  // Check new assigment message
+  // Check new assignment message
   await expect(page.getByTestId("notification-bar")).toContainText(
     /Spots for program items at .* were randomized. Unfortunately, we couldn't fit you into any of your chosen program items./,
   );
@@ -304,7 +304,7 @@ test("Receive spot in lottery signup, with multiple lottery program types", asyn
   await postAssignment(request, startTime);
   await page.reload();
 
-  // Check new assigment message
+  // Check new assignment message
   await expect(page.getByTestId("notification-bar")).toContainText(
     new RegExp(
       String.raw`You were assigned to the .* ${firstProgramItemTitle}\.`,

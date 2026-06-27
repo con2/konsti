@@ -6,7 +6,7 @@ import {
   createHelpUser,
   createTestUsers,
 } from "server/test/test-data-generation/generators/createUsers";
-import { cleanupDatabase } from "server/utils/cleanupDatabse";
+import { cleanupDatabase } from "server/utils/cleanupDatabase";
 import { addSignupQuestions } from "server/features/program-item/utils/addSignupQuestions";
 import { findSettings } from "server/features/settings/settingsRepository";
 import { getProgramItemsForEvent } from "server/features/program-item/programItemService";
