@@ -56,6 +56,9 @@ const config: PlaywrightTestConfig = {
   projects,
   retries: process.env.CI ? 1 : 0,
   outputDir: "./test-results",
+  // In CI emit a blob report (one per shard) alongside the console list, so the shards can be
+  // merged into a single HTML report. The blob dir is volume-mounted out of the Docker container
+  reporter: process.env.CI ? [["list"], ["blob"]] : [["list"]],
   workers: 1,
   use: {
     baseURL: process.env.PLAYWRIGHT_BASEURL ?? "http://localhost:8000",

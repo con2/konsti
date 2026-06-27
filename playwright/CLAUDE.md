@@ -23,6 +23,8 @@ Each shard is a separate runner spinning up its **own** docker-compose stack (ow
 
 **Image build caching:** in CI the shards don't run `docker-compose:test`'s build step; instead the `server` image is built once per shard via `docker/build-push-action` with a shared GitHub Actions layer cache (`type=gha`, scope `e2e-server`). Builds run in parallel across shards but hit the warm cache after the first run, so they're near-instant. Only shard 1 writes the cache to avoid redundant concurrent exports. The shards then run `docker-compose:run-e2e` (compose up, reusing the built image). Local runs are unaffected and still use `docker-compose:test`.
 
+**Merged HTML report:** in CI (`process.env.CI`) the config adds a `blob` reporter alongside the console `list`. Each shard writes `blob-report/report-<shard>.zip`, which `playwright/docker-compose.yml` volume-mounts out of the container; the shard then uploads it as the `blob-report-<shard>` artifact. The separate `merge-reports` job (`needs: e2e`, runs even if a shard failed) downloads all of them and runs `npx playwright merge-reports --reporter html` to produce the single `playwright-html-report` artifact. Locally the reporter stays the default `list`. The merged blob data also gives Playwright per-test timing it uses to balance future shards.
+
 Local prerequisites: Docker running, and ports **5000** (server), **8000** (client), **27017** (Mongo), and the Playwright UI port free.
 
 To run one or more specs **headlessly against an already-running app** (handy while iterating), invoke Playwright directly instead of the `--ui` script:

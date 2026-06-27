@@ -205,9 +205,62 @@ jobs:
         run: |
           yarn docker-compose:run-e2e
 
+      - name: Upload blob report
+        uses: actions/upload-artifact@v7
+        if: ${{ !cancelled() }}
+        with:
+          name: blob-report-${{ matrix.shard }}
+          path: playwright/blob-report/
+          retention-days: 1
+
       - name: Upload test results if Playwright tests failed
         uses: actions/upload-artifact@v7
         if: failure()
         with:
           name: playwright-videos-${{ matrix.shard }}
           path: playwright/test-results/
+
+  merge-reports:
+    # Merge the per-shard blob reports into one HTML report. Runs even if a shard failed,
+    # so a failing run still produces a browsable report
+    needs: e2e
+    if: ${{ !cancelled() }}
+    runs-on: ubuntu-24.04
+
+    env:
+      CI: true
+      HUSKY: 0
+
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+
+      - name: Use Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: ".node-version"
+          cache: "yarn"
+
+      - name: Yarn install
+        run: |
+          YARN_ENABLE_HARDENED_MODE=1 yarn --immutable
+
+      - name: Download blob reports
+        uses: actions/download-artifact@v7
+        with:
+          path: all-blob-reports
+          pattern: blob-report-*
+          merge-multiple: true
+
+      - name: Merge into HTML report
+        run: |
+          npx playwright merge-reports --reporter html ./all-blob-reports
+
+      - name: Upload HTML report
+        uses: actions/upload-artifact@v7
+        with:
+          name: playwright-html-report
+          path: playwright-report/
+          retention-days: 7
