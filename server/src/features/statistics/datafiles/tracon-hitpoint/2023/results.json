@@ -26,6 +26,13 @@
         }
       }
     ],
+    "groups": [
+      {
+        "groupCode": "84d-95c-a2f",
+        "groupCreator": "956919",
+        "groupMembers": ["956919", "799122"]
+      }
+    ],
     "assignmentTime": "2023-11-04T11:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assign Result - Players: 3/3 (100%), Games: 1/1 (100%)",
@@ -115,6 +122,13 @@
         }
       }
     ],
+    "groups": [
+      {
+        "groupCode": "54e-32f-c47",
+        "groupCreator": "614924",
+        "groupMembers": ["614924", "79888"]
+      }
+    ],
     "assignmentTime": "2023-11-04T13:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assign Result - Players: 10/12 (83%), Games: 2/2 (100%)",
@@ -162,6 +176,18 @@
           "priority": 1,
           "signedToStartTime": "2023-11-04T14:00:00Z"
         }
+      }
+    ],
+    "groups": [
+      {
+        "groupCode": "871-7c7-463",
+        "groupCreator": "253287",
+        "groupMembers": ["253287", "96808", "223931", "686327"]
+      },
+      {
+        "groupCode": "737-a8e-019",
+        "groupCreator": "133879",
+        "groupMembers": ["133879", "263055", "471057", "454671"]
       }
     ],
     "assignmentTime": "2023-11-04T14:00:00Z",
@@ -333,6 +359,28 @@
         }
       }
     ],
+    "groups": [
+      {
+        "groupCode": "871-7c7-463",
+        "groupCreator": "253287",
+        "groupMembers": ["253287", "96808", "223931", "686327"]
+      },
+      {
+        "groupCode": "809-cd5-b1a",
+        "groupCreator": "976069",
+        "groupMembers": ["976069", "787207"]
+      },
+      {
+        "groupCode": "a55-454-c6c",
+        "groupCreator": "898935",
+        "groupMembers": ["898935", "510442"]
+      },
+      {
+        "groupCode": "737-a8e-019",
+        "groupCreator": "133879",
+        "groupMembers": ["133879", "263055", "471057", "454671"]
+      }
+    ],
     "assignmentTime": "2023-11-04T15:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assign Result - Players: 20/33 (61%), Games: 4/4 (100%)",
@@ -470,6 +518,18 @@
         }
       }
     ],
+    "groups": [
+      {
+        "groupCode": "871-7c7-463",
+        "groupCreator": "253287",
+        "groupMembers": ["253287", "96808", "223931", "686327"]
+      },
+      {
+        "groupCode": "673-35d-13d",
+        "groupCreator": "786772",
+        "groupMembers": ["786772", "952181"]
+      }
+    ],
     "assignmentTime": "2023-11-04T16:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assign Result - Players: 16/19 (84%), Games: 3/3 (100%)",
@@ -575,6 +635,18 @@
         }
       }
     ],
+    "groups": [
+      {
+        "groupCode": "54e-32f-c47",
+        "groupCreator": "614924",
+        "groupMembers": ["614924", "79888"]
+      },
+      {
+        "groupCode": "03a-74c-a5a",
+        "groupCreator": "267331",
+        "groupMembers": ["267331", "847579", "754356"]
+      }
+    ],
     "assignmentTime": "2023-11-04T17:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assign Result - Players: 12/12 (100%), Games: 3/3 (100%)",
@@ -664,6 +736,7 @@
         }
       }
     ],
+    "groups": [],
     "assignmentTime": "2023-11-04T18:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assign Result - Players: 10/11 (91%), Games: 2/2 (100%)",
@@ -743,6 +816,13 @@
           "priority": 1,
           "signedToStartTime": "2023-11-05T09:00:00Z"
         }
+      }
+    ],
+    "groups": [
+      {
+        "groupCode": "737-a8e-019",
+        "groupCreator": "133879",
+        "groupMembers": ["133879", "263055", "471057", "454671"]
       }
     ],
     "assignmentTime": "2023-11-05T09:00:00Z",
@@ -978,6 +1058,28 @@
         }
       }
     ],
+    "groups": [
+      {
+        "groupCode": "673-35d-13d",
+        "groupCreator": "786772",
+        "groupMembers": ["786772", "952181"]
+      },
+      {
+        "groupCode": "809-cd5-b1a",
+        "groupCreator": "976069",
+        "groupMembers": ["976069", "787207"]
+      },
+      {
+        "groupCode": "54e-32f-c47",
+        "groupCreator": "614924",
+        "groupMembers": ["614924", "79888"]
+      },
+      {
+        "groupCode": "a55-454-c6c",
+        "groupCreator": "898935",
+        "groupMembers": ["898935", "510442"]
+      }
+    ],
     "assignmentTime": "2023-11-05T10:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assign Result - Players: 28/38 (74%), Games: 6/7 (86%)",
@@ -1017,6 +1119,13 @@
           "priority": 1,
           "signedToStartTime": "2023-11-05T11:00:00Z"
         }
+      }
+    ],
+    "groups": [
+      {
+        "groupCode": "737-a8e-019",
+        "groupCreator": "133879",
+        "groupMembers": ["133879", "263055", "471057", "454671"]
       }
     ],
     "assignmentTime": "2023-11-05T11:00:00Z",
@@ -1098,6 +1207,13 @@
           "priority": 1,
           "signedToStartTime": "2023-11-05T12:00:00Z"
         }
+      }
+    ],
+    "groups": [
+      {
+        "groupCode": "03a-74c-a5a",
+        "groupCreator": "267331",
+        "groupMembers": ["267331", "847579", "754356"]
       }
     ],
     "assignmentTime": "2023-11-05T12:00:00Z",

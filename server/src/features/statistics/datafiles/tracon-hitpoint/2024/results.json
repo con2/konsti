@@ -34,6 +34,7 @@
         }
       }
     ],
+    "groups": [],
     "assignmentTime": "2024-11-02T12:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assignment Result - Attendees: 4/8 (50%), Program items: 1/1 (100%)",
@@ -185,6 +186,13 @@
           "priority": 3,
           "signedToStartTime": "2024-11-02T13:00:00Z"
         }
+      }
+    ],
+    "groups": [
+      {
+        "groupCode": "c3a-eed-f1b",
+        "groupCreator": "508384",
+        "groupMembers": ["508384", "106163", "613300", "322086", "599344"]
       }
     ],
     "assignmentTime": "2024-11-02T13:00:00Z",
@@ -348,6 +356,13 @@
         }
       }
     ],
+    "groups": [
+      {
+        "groupCode": "50a-f7c-e94",
+        "groupCreator": "752423",
+        "groupMembers": ["752423", "819385", "916303"]
+      }
+    ],
     "assignmentTime": "2024-11-02T14:00:00Z",
     "algorithm": "random",
     "message": "Random Assignment Result - Attendees: 19/20 (95%), Program items: 5/5 (100%)",
@@ -437,6 +452,13 @@
         }
       }
     ],
+    "groups": [
+      {
+        "groupCode": "1bd-5c7-5ff",
+        "groupCreator": "751445",
+        "groupMembers": ["751445", "623696"]
+      }
+    ],
     "assignmentTime": "2024-11-02T15:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assignment Result - Attendees: 10/15 (67%), Program items: 2/4 (50%)",
@@ -484,6 +506,23 @@
           "priority": 1,
           "signedToStartTime": "2024-11-02T16:00:00Z"
         }
+      }
+    ],
+    "groups": [
+      {
+        "groupCode": "1bd-5c7-5ff",
+        "groupCreator": "751445",
+        "groupMembers": ["751445", "623696"]
+      },
+      {
+        "groupCode": "886-ecd-a0b",
+        "groupCreator": "646848",
+        "groupMembers": ["646848", "35578"]
+      },
+      {
+        "groupCode": "853-a3b-def",
+        "groupCreator": "706083",
+        "groupMembers": ["706083", "982821"]
       }
     ],
     "assignmentTime": "2024-11-02T16:00:00Z",
@@ -615,6 +654,18 @@
         }
       }
     ],
+    "groups": [
+      {
+        "groupCode": "886-ecd-a0b",
+        "groupCreator": "646848",
+        "groupMembers": ["646848", "35578"]
+      },
+      {
+        "groupCode": "50a-f7c-e94",
+        "groupCreator": "752423",
+        "groupMembers": ["752423", "819385", "916303"]
+      }
+    ],
     "assignmentTime": "2024-11-02T17:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assignment Result - Attendees: 15/19 (79%), Program items: 3/3 (100%)",
@@ -718,6 +769,28 @@
           "priority": 1,
           "signedToStartTime": "2024-11-02T18:00:00Z"
         }
+      }
+    ],
+    "groups": [
+      {
+        "groupCode": "1bd-5c7-5ff",
+        "groupCreator": "751445",
+        "groupMembers": ["751445", "623696"]
+      },
+      {
+        "groupCode": "c3a-eed-f1b",
+        "groupCreator": "508384",
+        "groupMembers": ["508384", "106163", "613300", "322086", "599344"]
+      },
+      {
+        "groupCode": "50a-f7c-e94",
+        "groupCreator": "752423",
+        "groupMembers": ["752423", "819385", "916303"]
+      },
+      {
+        "groupCode": "234-f3c-b33",
+        "groupCreator": "334443",
+        "groupMembers": ["334443", "19393", "40649"]
       }
     ],
     "assignmentTime": "2024-11-02T18:00:00Z",
@@ -937,6 +1010,28 @@
         }
       }
     ],
+    "groups": [
+      {
+        "groupCode": "8e0-d36-55e",
+        "groupCreator": "96725",
+        "groupMembers": ["96725", "299876"]
+      },
+      {
+        "groupCode": "886-ecd-a0b",
+        "groupCreator": "646848",
+        "groupMembers": ["646848", "35578"]
+      },
+      {
+        "groupCode": "50a-f7c-e94",
+        "groupCreator": "752423",
+        "groupMembers": ["752423", "819385", "916303"]
+      },
+      {
+        "groupCode": "403-7dc-267",
+        "groupCreator": "148452",
+        "groupMembers": ["148452", "997190"]
+      }
+    ],
     "assignmentTime": "2024-11-03T09:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assignment Result - Attendees: 26/32 (81%), Program items: 6/7 (86%)",
@@ -1130,6 +1225,23 @@
         }
       }
     ],
+    "groups": [
+      {
+        "groupCode": "14b-32c-404",
+        "groupCreator": "879999",
+        "groupMembers": ["879999", "804539"]
+      },
+      {
+        "groupCode": "acd-389-61e",
+        "groupCreator": "111164",
+        "groupMembers": ["111164", "611013"]
+      },
+      {
+        "groupCode": "50a-f7c-e94",
+        "groupCreator": "752423",
+        "groupMembers": ["752423", "819385", "916303"]
+      }
+    ],
     "assignmentTime": "2024-11-03T10:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assignment Result - Attendees: 23/34 (68%), Program items: 5/5 (100%)",
@@ -1243,6 +1355,28 @@
         }
       }
     ],
+    "groups": [
+      {
+        "groupCode": "c3a-eed-f1b",
+        "groupCreator": "508384",
+        "groupMembers": ["508384", "106163", "613300", "322086", "599344"]
+      },
+      {
+        "groupCode": "acd-389-61e",
+        "groupCreator": "111164",
+        "groupMembers": ["111164", "611013"]
+      },
+      {
+        "groupCode": "d64-989-311",
+        "groupCreator": "406316",
+        "groupMembers": ["406316", "695024"]
+      },
+      {
+        "groupCode": "e79-e66-459",
+        "groupCreator": "880646",
+        "groupMembers": ["880646", "964490", "825854", "854667"]
+      }
+    ],
     "assignmentTime": "2024-11-03T12:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assignment Result - Attendees: 13/26 (50%), Program items: 3/3 (100%)",
@@ -1282,6 +1416,18 @@
           "priority": 1,
           "signedToStartTime": "2024-11-03T14:00:00Z"
         }
+      }
+    ],
+    "groups": [
+      {
+        "groupCode": "acd-389-61e",
+        "groupCreator": "111164",
+        "groupMembers": ["111164", "611013"]
+      },
+      {
+        "groupCode": "d64-989-311",
+        "groupCreator": "406316",
+        "groupMembers": ["406316", "695024"]
       }
     ],
     "assignmentTime": "2024-11-03T14:00:00Z",
