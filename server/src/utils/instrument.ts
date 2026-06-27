@@ -21,6 +21,9 @@ init({
   dsn: getDsn(),
   tracesSampleRate: config.sentry().tracesSampleRate,
   environment: process.env.SETTINGS,
+  // Set in the runner image to the git SHA, matching the release created in
+  // deploy.yml so backend events are associated with it (undefined locally)
+  release: process.env.SENTRY_RELEASE,
   maxValueLength: config.sentry().maxValueLength,
   beforeSend: scrubIpAddress,
 });

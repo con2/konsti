@@ -43,6 +43,9 @@ jobs:
           tags: ghcr.io/con2/konsti:${{ github.sha }}-${{ env.DEPLOY_ENV }}
           build-args: |
             env=${{ env.DEPLOY_ENV }}
+            SENTRY_RELEASE=${{ github.sha }}
+          secrets: |
+            SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}
 
   deploy:
     needs: build
@@ -90,46 +93,21 @@ jobs:
             -- deploy -n "konsti-$SKAFFOLD_ENV" \
             --images "konsti=ghcr.io/con2/konsti:${{ github.sha }}-${{ env.DEPLOY_ENV }}"
 
-  sentry-release:
+  # Frontend source maps are injected with debug IDs and uploaded by the Sentry
+  # Vite plugin during the Docker image build (see Dockerfile / client/vite.config.ts),
+  # so the deployed bundle matches the uploaded maps. This job only marks the
+  # backend release for deploy tracking
+  backend-sentry-release:
     needs: deploy
     if: github.ref == 'refs/heads/main'
 
     runs-on: ubuntu-24.04
-
-    env:
-      CI: true
-      HUSKY: 0
 
     timeout-minutes: 30
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v7
-
-      - name: Use Node.js
-        uses: actions/setup-node@v6
-        with:
-          node-version-file: ".node-version"
-          cache: "yarn"
-
-      - name: Yarn install
-        run: |
-          yarn --immutable
-
-      - name: Build frontend
-        run: |
-          yarn build-front:${{ env.DEPLOY_ENV }}
-
-      - name: Create frontend Sentry release
-        uses: getsentry/action-release@v3
-        env:
-          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-          SENTRY_ORG: konsti
-          SENTRY_PROJECT: konsti-frontend-${{ env.DEPLOY_ENV }}
-        with:
-          sourcemaps: "./client/build"
-          ignore_missing: true
-          ignore_empty: true
 
       - name: Create backend Sentry release
         uses: getsentry/action-release@v3
@@ -138,5 +116,6 @@ jobs:
           SENTRY_ORG: konsti
           SENTRY_PROJECT: konsti-backend-${{ env.DEPLOY_ENV }}
         with:
+          release: ${{ github.sha }}
           ignore_missing: true
           ignore_empty: true
