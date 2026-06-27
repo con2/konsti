@@ -15,6 +15,7 @@ import {
   KompassiAgeGroup,
   KompassiRegistration,
   KompassiBoolean,
+  KompassiYesNo,
 } from "server/kompassi/kompassiProgramItem";
 import { Result } from "shared/utils/result";
 import { MongoDbError } from "shared/types/api/errors";
@@ -99,6 +100,7 @@ export const createProgramItems = async (
             registration: getRegistration(),
             revolvingdoor: sample(Object.values(KompassiBoolean), 1),
             room: ["Ropetaverna"],
+            ["is-pre-convention-week"]: [KompassiYesNo.NO],
           },
           scheduleItems: [
             {

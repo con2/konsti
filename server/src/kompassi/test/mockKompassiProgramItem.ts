@@ -12,6 +12,7 @@ import {
   KompassiAgeGroup,
   KompassiRegistration,
   KompassiBoolean,
+  KompassiYesNo,
 } from "server/kompassi/kompassiProgramItem";
 
 export const mockKompassiProgramItem: KompassiProgramItem = {
@@ -36,6 +37,7 @@ export const mockKompassiProgramItem: KompassiProgramItem = {
     registration: [KompassiRegistration.KONSTI],
     revolvingdoor: [KompassiBoolean.FALSE],
     room: [testProgramItem.location],
+    ["is-pre-convention-week"]: [KompassiYesNo.NO],
   },
   scheduleItems: [
     {
@@ -88,6 +90,7 @@ export const mockKompassiProgramItem2: KompassiProgramItem = {
     registration: [KompassiRegistration.KONSTI],
     revolvingdoor: [KompassiBoolean.FALSE],
     room: [testProgramItem2.location],
+    ["is-pre-convention-week"]: [KompassiYesNo.NO],
   },
   scheduleItems: [
     {

@@ -58,6 +58,7 @@ export enum Tag {
   ADULTS_AND_YOUTH = "adultsAndYouth",
   YOUNG_ADULTS = "youngAdults",
   FAMILIES = "families",
+  PRE_CONVENTION_WEEK = "preConventionWeek",
 }
 
 export enum InclusivityValue {

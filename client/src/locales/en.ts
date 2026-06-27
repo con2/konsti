@@ -127,6 +127,7 @@ export const translationEN = {
     adultsAndYouth: "Directed at adults, youth welcome",
     youngAdults: "Directed at young adults",
     families: "Directed at families",
+    preConventionWeek: "Pre-convention week",
   },
   pageTitle: {
     login: "Login",

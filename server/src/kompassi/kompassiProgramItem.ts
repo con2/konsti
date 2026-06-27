@@ -85,6 +85,11 @@ export enum KompassiBoolean {
   FALSE = "false",
 }
 
+export enum KompassiYesNo {
+  YES = "yes",
+  NO = "no",
+}
+
 const ScheduleItemSchema = z.object({
   slug: z.string(),
   title: z.string().catch(""),
@@ -118,6 +123,10 @@ export const KompassiProgramItemSchema = z.object({
     registration: safeEnumArray(KompassiRegistration, "registration"),
     revolvingdoor: safeEnumArray(KompassiBoolean, "revolving door"),
     room: z.array(z.string()).catch([]),
+    ["is-pre-convention-week"]: safeEnumArray(
+      KompassiYesNo,
+      "is-pre-convention-week",
+    ),
   }),
   cachedAnnotations: z.object({
     "konsti:rpgSystem": z.string().catch(""),
