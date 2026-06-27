@@ -330,7 +330,6 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
           programItemId: directSignupAlwaysOpenId,
           priority: 1,
           signedToStartTime: testProgramItem.startTime,
-          groupCode: "0",
         },
       ],
     });
@@ -343,7 +342,6 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
           programItemId: directSignupAlwaysOpenId,
           priority: 1,
           signedToStartTime: testProgramItem.startTime,
-          groupCode: "0",
         },
       ],
     });
@@ -419,7 +417,6 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
           programItemId: directSignupAlwaysOpenId,
           priority: 1,
           signedToStartTime: testProgramItem.startTime,
-          groupCode: "0",
         },
       ],
     });

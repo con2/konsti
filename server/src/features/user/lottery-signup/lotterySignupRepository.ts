@@ -67,7 +67,6 @@ export const saveLotterySignup = async ({
             programItemId: lotterySignup.programItemId,
             priority: lotterySignup.priority,
             signedToStartTime: lotterySignup.signedToStartTime,
-            groupCode: lotterySignup.groupCode,
           },
         },
       },

@@ -32,17 +32,15 @@ test("Should return HIGH popularity with max participants", () => {
   expect(popularity).toEqual(Popularity.HIGH);
 });
 
-const priority1 = [
-  { priority: 1, programItemId: "", signedToStartTime: "", groupCode: "0" },
-];
+const priority1 = [{ priority: 1, programItemId: "", signedToStartTime: "" }];
 const priority2 = [
-  { priority: 2, programItemId: "", signedToStartTime: "", groupCode: "0" },
-  { priority: 2, programItemId: "", signedToStartTime: "", groupCode: "0" },
+  { priority: 2, programItemId: "", signedToStartTime: "" },
+  { priority: 2, programItemId: "", signedToStartTime: "" },
 ];
 const priority3 = [
-  { priority: 3, programItemId: "", signedToStartTime: "", groupCode: "0" },
-  { priority: 3, programItemId: "", signedToStartTime: "", groupCode: "0" },
-  { priority: 3, programItemId: "", signedToStartTime: "", groupCode: "0" },
+  { priority: 3, programItemId: "", signedToStartTime: "" },
+  { priority: 3, programItemId: "", signedToStartTime: "" },
+  { priority: 3, programItemId: "", signedToStartTime: "" },
 ];
 
 test("Should return VERY HIGH popularity with max participants + VERY_HIGH_MODIFIER_LIMIT", () => {
