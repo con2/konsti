@@ -13,6 +13,20 @@ Guidance for the `playwright/` end-to-end tests. See the [root CLAUDE.md](../CLA
 | `yarn playwright:trace`    | Opens a saved `trace.zip` in the trace viewer                                                                                                                                                                                   |
 | `yarn docker-compose:test` | Full containerized CI run: builds the server image (`APP_SETTINGS=ci`) and runs `docker/docker-compose.yml` + `playwright/docker-compose.yml` together, exiting with Playwright's exit code                                     |
 
+### Sharding
+
+CI splits the suite across runners with [Playwright sharding](https://playwright.dev/docs/test-sharding). The `e2e` job in `.github/workflows/test.yml` is a matrix over `shard: [1, 2, 3]`, and passes `PLAYWRIGHT_SHARD=<index>/<total>` (e.g. `2/3`). `playwright/docker-compose.yml` reads `PLAYWRIGHT_SHARD` and appends `--shard=$PLAYWRIGHT_SHARD` only when it's set; unset (the local default) runs the whole suite.
+
+Each shard is a separate runner spinning up its **own** docker-compose stack (own server + Mongo), so the shared-DB constraint that forces `workers: 1` still holds **within** a shard — sharding parallelizes across machines, not within one DB. To change the shard count, edit the matrix list **and** keep using `strategy.job-total` for the denominator. To shard a local run: `PLAYWRIGHT_SHARD=1/3 yarn docker-compose:test`.
+
+**Why 3 and not more:** each shard re-pays a fixed per-runner overhead (image build, Mongo/server startup), which sets a wall-clock floor that more shards can't beat. Measured: no-shard ≈ 4m34s, 2 shards ≈ 3m38s, 3 shards ≈ 3m08s, 4 shards ≈ 3m18s (4 regressed — overhead swamped the extra split).
+
+**Keep the `yarn install` step in the `e2e` job** even though `docker-compose:test` builds the app inside Docker — Yarn 4 here refuses to run _any_ script without the `node_modules` install-state file (`Couldn't find the node_modules state file`), so removing it fails every shard in ~15s.
+
+**No image-build caching:** each shard builds the `server` image itself via `docker-compose:test` (the default Docker driver, straight into the daemon). This was measured against a `docker/build-push-action` + GitHub Actions layer cache (`type=gha`) setup, which turned out **slower** (~300s vs ~190s per shard): the `docker-container` driver's image export/load round-trip and the `type=gha` cache transfer cost more than rebuilding, and `cache-to,mode=max` penalized the writer shard. The per-shard build is already fast and parallel, so there's nothing to cache-win here — don't re-add buildx/gha caching.
+
+**Merged HTML report:** in CI (`process.env.CI`) the config adds a `blob` reporter alongside the console `list`. Each shard writes `blob-report/report-<shard>.zip`, which `playwright/docker-compose.yml` volume-mounts out of the container; the shard then uploads it as the `blob-report-<shard>` artifact. The separate `merge-reports` job (`needs: e2e`, runs even if a shard failed) downloads all of them and runs `npx playwright merge-reports --reporter html` to produce the single `playwright-html-report` artifact. Locally the reporter stays the default `list`. The merged blob data also gives Playwright per-test timing it uses to balance future shards.
+
 Local prerequisites: Docker running, and ports **5000** (server), **8000** (client), **27017** (Mongo), and the Playwright UI port free.
 
 To run one or more specs **headlessly against an already-running app** (handy while iterating), invoke Playwright directly instead of the `--ui` script:

@@ -57,6 +57,9 @@ secret
 
 # Playwright
 test-results
+blob-report
+playwright-report
+all-blob-reports
 
 # ESlint
 .eslintcache
