@@ -31,20 +31,17 @@
       {
         "programItemId": "elava-pakohuone-12",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T10:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T10:00:00Z"
       },
       {
         "programItemId": "elava-pakohuone-14",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T12:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T12:00:00Z"
       },
       {
         "programItemId": "elava-pakohuone-16",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T14:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T14:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -102,14 +99,12 @@
       {
         "programItemId": "praedor-kirotut-kuninkaanvaalit",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T09:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T09:00:00Z"
       },
       {
         "programItemId": "alavilla-mailla",
         "priority": 2,
-        "signedToStartTime": "2024-11-03T09:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T09:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -150,14 +145,12 @@
       {
         "programItemId": "space-1889-pakkolasku-venuksen-viidakkoon",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T14:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T14:00:00Z"
       },
       {
         "programItemId": "tyhjyyden-meren-hirviot",
         "priority": 2,
-        "signedToStartTime": "2024-11-02T14:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T14:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -186,26 +179,22 @@
       {
         "programItemId": "kirottu-matka-2",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T18:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T18:00:00Z"
       },
       {
         "programItemId": "alien-uscss-traconis-2",
         "priority": 2,
-        "signedToStartTime": "2024-11-02T18:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T18:00:00Z"
       },
       {
         "programItemId": "taivaskone",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T10:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T10:00:00Z"
       },
       {
         "programItemId": "the-lighthouse",
         "priority": 2,
-        "signedToStartTime": "2024-11-03T10:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T10:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -245,14 +234,12 @@
       {
         "programItemId": "praedor-kirotut-kuninkaanvaalit-2",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T17:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T17:00:00Z"
       },
       {
         "programItemId": "city-of-the-scorpion-god",
         "priority": 2,
-        "signedToStartTime": "2024-11-02T17:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T17:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -309,32 +296,27 @@
       {
         "programItemId": "space-1889-pakkolasku-venuksen-viidakkoon",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T14:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T14:00:00Z"
       },
       {
         "programItemId": "tyhjyyden-meren-hirviot",
         "priority": 2,
-        "signedToStartTime": "2024-11-02T14:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T14:00:00Z"
       },
       {
         "programItemId": "ruhtinaan-aika",
         "priority": 3,
-        "signedToStartTime": "2024-11-02T14:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T14:00:00Z"
       },
       {
         "programItemId": "juokse-juokse-kultaseni",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T16:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T16:00:00Z"
       },
       {
         "programItemId": "elava-pakohuone-12",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T10:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T10:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -385,8 +367,7 @@
       {
         "programItemId": "berserkin-pesa-vallat-ja-vaet",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T14:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T14:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -415,14 +396,12 @@
       {
         "programItemId": "kuonojoen-lohikaarme",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T13:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T13:00:00Z"
       },
       {
         "programItemId": "space-1889-pakolasku-venuksen-viidakkoon",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T12:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T12:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -503,8 +482,7 @@
       {
         "programItemId": "kuonojoen-lohikaarme",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T13:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T13:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -537,20 +515,17 @@
       {
         "programItemId": "toivottavasti-kukaan-ei-huomaa-2",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T14:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T14:00:00Z"
       },
       {
         "programItemId": "alien-uscss-traconis-2",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T18:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T18:00:00Z"
       },
       {
         "programItemId": "taivaskone",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T10:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T10:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -640,8 +615,7 @@
       {
         "programItemId": "elava-pakohuone-12",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T10:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T10:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -670,8 +644,7 @@
       {
         "programItemId": "elava-pakohuone-14",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T12:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T12:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -714,20 +687,17 @@
       {
         "programItemId": "ihmiskarjujen-yo-night-of-the-hogmen",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T15:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T15:00:00Z"
       },
       {
         "programItemId": "the-lighthouse",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T10:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T10:00:00Z"
       },
       {
         "programItemId": "taivaskone",
         "priority": 2,
-        "signedToStartTime": "2024-11-03T10:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T10:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -763,8 +733,7 @@
       {
         "programItemId": "kirottu-matka-2",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T18:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T18:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -833,20 +802,17 @@
       {
         "programItemId": "ihmiskarjujen-yo-night-of-the-hogmen",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T15:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T15:00:00Z"
       },
       {
         "programItemId": "juokse-juokse-kultaseni",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T16:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T16:00:00Z"
       },
       {
         "programItemId": "kirottu-matka-2",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T18:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T18:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -910,32 +876,27 @@
       {
         "programItemId": "juokse-juokse-kultaseni",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T16:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T16:00:00Z"
       },
       {
         "programItemId": "alice-is-missing",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T17:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T17:00:00Z"
       },
       {
         "programItemId": "the-dalish-curse-a-dragon-age-rpg",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T09:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T09:00:00Z"
       },
       {
         "programItemId": "praedor-kirotut-kuninkaanvaalit",
         "priority": 2,
-        "signedToStartTime": "2024-11-03T09:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T09:00:00Z"
       },
       {
         "programItemId": "alavilla-mailla",
         "priority": 3,
-        "signedToStartTime": "2024-11-03T09:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T09:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -983,14 +944,12 @@
       {
         "programItemId": "toivottavasti-kukaan-ei-huomaa",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T09:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T09:00:00Z"
       },
       {
         "programItemId": "elava-pakohuone-16",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T14:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T14:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -1038,14 +997,12 @@
       {
         "programItemId": "berserkin-pesa-vallat-ja-vaet",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T14:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T14:00:00Z"
       },
       {
         "programItemId": "juokse-juokse-kultaseni",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T16:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T16:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -1099,8 +1056,7 @@
       {
         "programItemId": "tyhjyyden-meren-hirviot",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T14:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T14:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -1155,26 +1111,22 @@
       {
         "programItemId": "space-1889-pakkolasku-venuksen-viidakkoon",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T14:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T14:00:00Z"
       },
       {
         "programItemId": "ruhtinaan-aika",
         "priority": 2,
-        "signedToStartTime": "2024-11-02T14:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T14:00:00Z"
       },
       {
         "programItemId": "praedor-kirotut-kuninkaanvaalit-2",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T17:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T17:00:00Z"
       },
       {
         "programItemId": "auld-sanguine",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T09:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T09:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -1239,8 +1191,7 @@
       {
         "programItemId": "praedor-kirotut-kuninkaanvaalit-2",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T17:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T17:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -1276,20 +1227,17 @@
       {
         "programItemId": "offworlders-kosmoksen-karsein-keikka",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T12:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T12:00:00Z"
       },
       {
         "programItemId": "auld-sanguine",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T09:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T09:00:00Z"
       },
       {
         "programItemId": "the-lighthouse",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T10:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T10:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -1340,8 +1288,7 @@
       {
         "programItemId": "auld-sanguine",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T09:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T09:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -1395,14 +1342,12 @@
       {
         "programItemId": "<cancelled>",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T13:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T13:00:00Z"
       },
       {
         "programItemId": "elava-pakohuone-12",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T10:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T10:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -1442,8 +1387,7 @@
       {
         "programItemId": "praedor-kirotut-kuninkaanvaalit-2",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T17:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T17:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -1477,38 +1421,32 @@
       {
         "programItemId": "offworlders-kosmoksen-karsein-keikka",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T12:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T12:00:00Z"
       },
       {
         "programItemId": "auld-sanguine",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T09:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T09:00:00Z"
       },
       {
         "programItemId": "toivottavasti-kukaan-ei-huomaa",
         "priority": 2,
-        "signedToStartTime": "2024-11-03T09:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T09:00:00Z"
       },
       {
         "programItemId": "neuvoston-umpisolmu",
         "priority": 3,
-        "signedToStartTime": "2024-11-03T09:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T09:00:00Z"
       },
       {
         "programItemId": "the-lighthouse",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T10:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T10:00:00Z"
       },
       {
         "programItemId": "elava-pakohuone-16",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T14:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T14:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -1593,20 +1531,17 @@
       {
         "programItemId": "red-tundra",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T15:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T15:00:00Z"
       },
       {
         "programItemId": "ihmiskarjujen-yo-night-of-the-hogmen",
         "priority": 2,
-        "signedToStartTime": "2024-11-02T15:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T15:00:00Z"
       },
       {
         "programItemId": "the-lighthouse",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T10:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T10:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -1642,20 +1577,17 @@
       {
         "programItemId": "larppimiekkailuworkshop",
         "priority": 3,
-        "signedToStartTime": "2024-11-02T13:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T13:00:00Z"
       },
       {
         "programItemId": "kirottu-matka-2",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T18:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T18:00:00Z"
       },
       {
         "programItemId": "alien-uscss-traconis",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T12:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T12:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -1698,14 +1630,12 @@
       {
         "programItemId": "larppimiekkailuworkshop",
         "priority": 3,
-        "signedToStartTime": "2024-11-02T13:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T13:00:00Z"
       },
       {
         "programItemId": "alien-uscss-traconis",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T12:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T12:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -1758,26 +1688,22 @@
       {
         "programItemId": "offworlders-kosmoksen-karsein-keikka",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T12:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T12:00:00Z"
       },
       {
         "programItemId": "ruhtinaan-aika",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T14:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T14:00:00Z"
       },
       {
         "programItemId": "space-1889-pakkolasku-venuksen-viidakkoon",
         "priority": 2,
-        "signedToStartTime": "2024-11-02T14:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T14:00:00Z"
       },
       {
         "programItemId": "taivaskone",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T10:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T10:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -1830,14 +1756,12 @@
       {
         "programItemId": "offworlders-kosmoksen-karsein-keikka",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T12:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T12:00:00Z"
       },
       {
         "programItemId": "space-1889-pakolasku-venuksen-viidakkoon",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T12:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T12:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -1888,14 +1812,12 @@
       {
         "programItemId": "larppimiekkailuworkshop",
         "priority": 3,
-        "signedToStartTime": "2024-11-02T13:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T13:00:00Z"
       },
       {
         "programItemId": "alien-uscss-traconis",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T12:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T12:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -1964,14 +1886,12 @@
       {
         "programItemId": "the-lighthouse",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T10:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T10:00:00Z"
       },
       {
         "programItemId": "taivaskone",
         "priority": 2,
-        "signedToStartTime": "2024-11-03T10:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T10:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -2005,14 +1925,12 @@
       {
         "programItemId": "space-1889-pakkolasku-venuksen-viidakkoon",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T14:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T14:00:00Z"
       },
       {
         "programItemId": "ruhtinaan-aika",
         "priority": 2,
-        "signedToStartTime": "2024-11-02T14:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T14:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -2055,38 +1973,32 @@
       {
         "programItemId": "offworlders-kosmoksen-karsein-keikka",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T12:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T12:00:00Z"
       },
       {
         "programItemId": "space-1889-pakkolasku-venuksen-viidakkoon",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T14:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T14:00:00Z"
       },
       {
         "programItemId": "tyhjyyden-meren-hirviot",
         "priority": 2,
-        "signedToStartTime": "2024-11-02T14:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T14:00:00Z"
       },
       {
         "programItemId": "auld-sanguine",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T09:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T09:00:00Z"
       },
       {
         "programItemId": "vaiettu-menneisyys",
         "priority": 2,
-        "signedToStartTime": "2024-11-03T09:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T09:00:00Z"
       },
       {
         "programItemId": "alavilla-mailla",
         "priority": 3,
-        "signedToStartTime": "2024-11-03T09:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T09:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -2129,32 +2041,27 @@
       {
         "programItemId": "city-of-the-scorpion-god",
         "priority": 2,
-        "signedToStartTime": "2024-11-02T17:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T17:00:00Z"
       },
       {
         "programItemId": "praedor-kirotut-kuninkaanvaalit-2",
         "priority": 3,
-        "signedToStartTime": "2024-11-02T17:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T17:00:00Z"
       },
       {
         "programItemId": "the-dalish-curse-a-dragon-age-rpg",
         "priority": 2,
-        "signedToStartTime": "2024-11-03T09:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T09:00:00Z"
       },
       {
         "programItemId": "vaiettu-menneisyys",
         "priority": 3,
-        "signedToStartTime": "2024-11-03T09:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T09:00:00Z"
       },
       {
         "programItemId": "the-lighthouse",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T10:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T10:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -2219,8 +2126,7 @@
       {
         "programItemId": "larppimiekkailuworkshop",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T13:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T13:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -2249,8 +2155,7 @@
       {
         "programItemId": "red-tundra",
         "priority": 2,
-        "signedToStartTime": "2024-11-02T15:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T15:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -2316,8 +2221,7 @@
       {
         "programItemId": "juokse-juokse-kultaseni",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T16:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T16:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -2369,26 +2273,22 @@
       {
         "programItemId": "offworlders-kosmoksen-karsein-keikka",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T12:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T12:00:00Z"
       },
       {
         "programItemId": "kuonojoen-lohikaarme",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T13:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T13:00:00Z"
       },
       {
         "programItemId": "auld-sanguine",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T09:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T09:00:00Z"
       },
       {
         "programItemId": "taivaskone",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T10:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T10:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -2438,14 +2338,12 @@
       {
         "programItemId": "alice-is-missing",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T17:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T17:00:00Z"
       },
       {
         "programItemId": "the-dalish-curse-a-dragon-age-rpg",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T09:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T09:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -2488,20 +2386,17 @@
       {
         "programItemId": "city-of-the-scorpion-god",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T17:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T17:00:00Z"
       },
       {
         "programItemId": "praedor-kirotut-kuninkaanvaalit-2",
         "priority": 2,
-        "signedToStartTime": "2024-11-02T17:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T17:00:00Z"
       },
       {
         "programItemId": "alice-is-missing",
         "priority": 3,
-        "signedToStartTime": "2024-11-02T17:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T17:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -2581,20 +2476,17 @@
       {
         "programItemId": "red-tundra",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T15:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T15:00:00Z"
       },
       {
         "programItemId": "auld-sanguine",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T09:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T09:00:00Z"
       },
       {
         "programItemId": "the-dalish-curse-a-dragon-age-rpg",
         "priority": 2,
-        "signedToStartTime": "2024-11-03T09:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T09:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -2630,8 +2522,7 @@
       {
         "programItemId": "auld-sanguine",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T09:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T09:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -2660,14 +2551,12 @@
       {
         "programItemId": "larppimiekkailuworkshop",
         "priority": 3,
-        "signedToStartTime": "2024-11-02T13:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T13:00:00Z"
       },
       {
         "programItemId": "alien-uscss-traconis",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T12:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T12:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -2710,14 +2599,12 @@
       {
         "programItemId": "tyhjyyden-meren-hirviot",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T14:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T14:00:00Z"
       },
       {
         "programItemId": "space-1889-pakkolasku-venuksen-viidakkoon",
         "priority": 2,
-        "signedToStartTime": "2024-11-02T14:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T14:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -2755,38 +2642,32 @@
       {
         "programItemId": "space-1889-pakkolasku-venuksen-viidakkoon",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T14:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T14:00:00Z"
       },
       {
         "programItemId": "tyhjyyden-meren-hirviot",
         "priority": 2,
-        "signedToStartTime": "2024-11-02T14:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T14:00:00Z"
       },
       {
         "programItemId": "city-of-the-scorpion-god",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T17:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T17:00:00Z"
       },
       {
         "programItemId": "kirottu-matka-2",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T18:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T18:00:00Z"
       },
       {
         "programItemId": "taivaskone",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T10:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T10:00:00Z"
       },
       {
         "programItemId": "the-lighthouse",
         "priority": 2,
-        "signedToStartTime": "2024-11-03T10:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T10:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -2841,8 +2722,7 @@
       {
         "programItemId": "praedor-kirotut-kuninkaanvaalit",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T09:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T09:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -2896,8 +2776,7 @@
       {
         "programItemId": "tyhjyyden-meren-hirviot",
         "priority": 2,
-        "signedToStartTime": "2024-11-02T14:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T14:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -2933,20 +2812,17 @@
       {
         "programItemId": "elava-pakohuone-12",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T10:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T10:00:00Z"
       },
       {
         "programItemId": "elava-pakohuone-14",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T12:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T12:00:00Z"
       },
       {
         "programItemId": "elava-pakohuone-16",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T14:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T14:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -2989,56 +2865,47 @@
       {
         "programItemId": "space-1889-pakkolasku-venuksen-viidakkoon",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T14:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T14:00:00Z"
       },
       {
         "programItemId": "city-of-the-scorpion-god",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T17:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T17:00:00Z"
       },
       {
         "programItemId": "alice-is-missing",
         "priority": 2,
-        "signedToStartTime": "2024-11-02T17:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T17:00:00Z"
       },
       {
         "programItemId": "alien-uscss-traconis-2",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T18:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T18:00:00Z"
       },
       {
         "programItemId": "the-dalish-curse-a-dragon-age-rpg",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T09:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T09:00:00Z"
       },
       {
         "programItemId": "auld-sanguine",
         "priority": 2,
-        "signedToStartTime": "2024-11-03T09:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T09:00:00Z"
       },
       {
         "programItemId": "the-lighthouse",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T10:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T10:00:00Z"
       },
       {
         "programItemId": "pathfinder-society-scenario-6-01-intro-year-of-immortal-influence",
         "priority": 2,
-        "signedToStartTime": "2024-11-03T10:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T10:00:00Z"
       },
       {
         "programItemId": "meripihkalinna",
         "priority": 3,
-        "signedToStartTime": "2024-11-03T10:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T10:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -3117,20 +2984,17 @@
       {
         "programItemId": "space-1889-pakkolasku-venuksen-viidakkoon",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T14:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T14:00:00Z"
       },
       {
         "programItemId": "alien-uscss-traconis-2",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T18:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T18:00:00Z"
       },
       {
         "programItemId": "pathfinder-society-scenario-6-01-intro-year-of-immortal-influence",
         "priority": 2,
-        "signedToStartTime": "2024-11-03T10:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T10:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -3187,20 +3051,17 @@
       {
         "programItemId": "space-1889-pakkolasku-venuksen-viidakkoon",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T14:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T14:00:00Z"
       },
       {
         "programItemId": "alien-uscss-traconis-2",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T18:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T18:00:00Z"
       },
       {
         "programItemId": "pathfinder-society-scenario-6-01-intro-year-of-immortal-influence",
         "priority": 2,
-        "signedToStartTime": "2024-11-03T10:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T10:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -3272,20 +3133,17 @@
       {
         "programItemId": "<cancelled>",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T13:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T13:00:00Z"
       },
       {
         "programItemId": "red-tundra",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T15:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T15:00:00Z"
       },
       {
         "programItemId": "meripihkalinna",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T10:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T10:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -3328,14 +3186,12 @@
       {
         "programItemId": "city-of-the-scorpion-god",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T17:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T17:00:00Z"
       },
       {
         "programItemId": "praedor-kirotut-kuninkaanvaalit-2",
         "priority": 2,
-        "signedToStartTime": "2024-11-02T17:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T17:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -3364,8 +3220,7 @@
       {
         "programItemId": "alice-is-missing",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T17:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T17:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -3394,20 +3249,17 @@
       {
         "programItemId": "ruhtinaan-aika",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T14:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T14:00:00Z"
       },
       {
         "programItemId": "pathfinder-society-scenario-6-01-intro-year-of-immortal-influence",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T10:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T10:00:00Z"
       },
       {
         "programItemId": "the-lighthouse",
         "priority": 2,
-        "signedToStartTime": "2024-11-03T10:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T10:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -3476,14 +3328,12 @@
       {
         "programItemId": "red-tundra",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T15:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T15:00:00Z"
       },
       {
         "programItemId": "ihmiskarjujen-yo-night-of-the-hogmen",
         "priority": 2,
-        "signedToStartTime": "2024-11-02T15:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T15:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -3527,8 +3377,7 @@
       {
         "programItemId": "city-of-the-scorpion-god",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T17:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T17:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -3561,8 +3410,7 @@
       {
         "programItemId": "tyhjyyden-meren-hirviot",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T14:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T14:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -3657,8 +3505,7 @@
       {
         "programItemId": "ihmiskarjujen-yo-night-of-the-hogmen",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T15:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T15:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -3687,44 +3534,37 @@
       {
         "programItemId": "berserkin-pesa-vallat-ja-vaet",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T14:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T14:00:00Z"
       },
       {
         "programItemId": "alien-uscss-traconis-2",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T18:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T18:00:00Z"
       },
       {
         "programItemId": "auld-sanguine",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T09:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T09:00:00Z"
       },
       {
         "programItemId": "meripihkalinna",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T10:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T10:00:00Z"
       },
       {
         "programItemId": "the-lighthouse",
         "priority": 2,
-        "signedToStartTime": "2024-11-03T10:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T10:00:00Z"
       },
       {
         "programItemId": "alien-uscss-traconis",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T12:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T12:00:00Z"
       },
       {
         "programItemId": "space-1889-pakolasku-venuksen-viidakkoon",
         "priority": 2,
-        "signedToStartTime": "2024-11-03T12:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T12:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -3781,8 +3621,7 @@
       {
         "programItemId": "frendeja-kundeja-ja-pullonpyoritysta",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T18:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T18:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -3815,14 +3654,12 @@
       {
         "programItemId": "auld-sanguine",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T09:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T09:00:00Z"
       },
       {
         "programItemId": "praedor-kirotut-kuninkaanvaalit",
         "priority": 2,
-        "signedToStartTime": "2024-11-03T09:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T09:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -3851,8 +3688,7 @@
       {
         "programItemId": "alien-uscss-traconis-2",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T18:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T18:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -3881,8 +3717,7 @@
       {
         "programItemId": "city-of-the-scorpion-god",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T17:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T17:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -3952,20 +3787,17 @@
       {
         "programItemId": "the-lighthouse",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T10:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T10:00:00Z"
       },
       {
         "programItemId": "taivaskone",
         "priority": 2,
-        "signedToStartTime": "2024-11-03T10:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T10:00:00Z"
       },
       {
         "programItemId": "meripihkalinna",
         "priority": 3,
-        "signedToStartTime": "2024-11-03T10:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T10:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -4009,8 +3841,7 @@
       {
         "programItemId": "meripihkalinna",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T10:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T10:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -4062,14 +3893,12 @@
       {
         "programItemId": "offworlders-kosmoksen-karsein-keikka",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T12:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T12:00:00Z"
       },
       {
         "programItemId": "praedor-kirotut-kuninkaanvaalit-2",
         "priority": 2,
-        "signedToStartTime": "2024-11-02T17:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T17:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -4120,14 +3949,12 @@
       {
         "programItemId": "larppimiekkailuworkshop",
         "priority": 3,
-        "signedToStartTime": "2024-11-02T13:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T13:00:00Z"
       },
       {
         "programItemId": "alien-uscss-traconis",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T12:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T12:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -4196,8 +4023,7 @@
       {
         "programItemId": "the-dalish-curse-a-dragon-age-rpg",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T09:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T09:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -4226,8 +4052,7 @@
       {
         "programItemId": "ihmiskarjujen-yo-night-of-the-hogmen",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T15:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T15:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -4286,14 +4111,12 @@
       {
         "programItemId": "kuonojoen-lohikaarme",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T13:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T13:00:00Z"
       },
       {
         "programItemId": "meripihkalinna",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T10:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T10:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -4329,8 +4152,7 @@
       {
         "programItemId": "<cancelled>",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T13:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T13:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -4359,8 +4181,7 @@
       {
         "programItemId": "<cancelled>",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T13:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T13:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -4389,8 +4210,7 @@
       {
         "programItemId": "<cancelled>",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T13:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T13:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -4422,8 +4242,7 @@
       {
         "programItemId": "alien-uscss-traconis-2",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T18:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T18:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -4458,8 +4277,7 @@
       {
         "programItemId": "elava-pakohuone-12",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T10:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T10:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -4488,8 +4306,7 @@
       {
         "programItemId": "ihmiskarjujen-yo-night-of-the-hogmen",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T15:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T15:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -4518,8 +4335,7 @@
       {
         "programItemId": "kuonojoen-lohikaarme",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T13:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T13:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -4548,8 +4364,7 @@
       {
         "programItemId": "kuonojoen-lohikaarme",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T13:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T13:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -4578,8 +4393,7 @@
       {
         "programItemId": "kuonojoen-lohikaarme",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T13:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T13:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -4614,8 +4428,7 @@
       {
         "programItemId": "red-tundra",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T15:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T15:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -4644,14 +4457,12 @@
       {
         "programItemId": "<cancelled>",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T13:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T13:00:00Z"
       },
       {
         "programItemId": "elava-pakohuone-12",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T10:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T10:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -4691,8 +4502,7 @@
       {
         "programItemId": "frendeja-kundeja-ja-pullonpyoritysta",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T18:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T18:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -4721,8 +4531,7 @@
       {
         "programItemId": "praedor-kirotut-kuninkaanvaalit-2",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T17:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T17:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -4797,26 +4606,22 @@
       {
         "programItemId": "space-1889-pakkolasku-venuksen-viidakkoon",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T14:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T14:00:00Z"
       },
       {
         "programItemId": "toivottavasti-kukaan-ei-huomaa-2",
         "priority": 2,
-        "signedToStartTime": "2024-11-02T14:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T14:00:00Z"
       },
       {
         "programItemId": "tyhjyyden-meren-hirviot",
         "priority": 3,
-        "signedToStartTime": "2024-11-02T14:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T14:00:00Z"
       },
       {
         "programItemId": "elava-pakohuone-14",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T12:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T12:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -4890,20 +4695,17 @@
       {
         "programItemId": "vaiettu-menneisyys",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T09:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T09:00:00Z"
       },
       {
         "programItemId": "auld-sanguine",
         "priority": 2,
-        "signedToStartTime": "2024-11-03T09:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T09:00:00Z"
       },
       {
         "programItemId": "alien-uscss-traconis",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T12:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T12:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -4958,14 +4760,12 @@
       {
         "programItemId": "elava-pakohuone-14",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T12:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T12:00:00Z"
       },
       {
         "programItemId": "elava-pakohuone-16",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T14:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T14:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -5001,8 +4801,7 @@
       {
         "programItemId": "mysteerien-maatila",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T15:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T15:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -5061,8 +4860,7 @@
       {
         "programItemId": "juokse-juokse-kultaseni",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T16:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T16:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -5093,14 +4891,12 @@
       {
         "programItemId": "juokse-juokse-kultaseni",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T16:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T16:00:00Z"
       },
       {
         "programItemId": "pathfinder-society-scenario-6-01-intro-year-of-immortal-influence",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T10:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T10:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -5136,8 +4932,7 @@
       {
         "programItemId": "elava-pakohuone-14",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T12:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T12:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -5196,8 +4991,7 @@
       {
         "programItemId": "alice-is-missing",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T17:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T17:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -5241,14 +5035,12 @@
       {
         "programItemId": "vaiettu-menneisyys",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T09:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T09:00:00Z"
       },
       {
         "programItemId": "praedor-kirotut-kuninkaanvaalit",
         "priority": 2,
-        "signedToStartTime": "2024-11-03T09:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T09:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -5300,20 +5092,17 @@
       {
         "programItemId": "kirottu-matka-2",
         "priority": 1,
-        "signedToStartTime": "2024-11-02T18:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T18:00:00Z"
       },
       {
         "programItemId": "alien-uscss-traconis-2",
         "priority": 2,
-        "signedToStartTime": "2024-11-02T18:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-02T18:00:00Z"
       },
       {
         "programItemId": "auld-sanguine",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T09:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T09:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -5394,14 +5183,12 @@
       {
         "programItemId": "alavilla-mailla",
         "priority": 2,
-        "signedToStartTime": "2024-11-03T09:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T09:00:00Z"
       },
       {
         "programItemId": "meripihkalinna",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T10:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T10:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -5430,14 +5217,12 @@
       {
         "programItemId": "auld-sanguine",
         "priority": 2,
-        "signedToStartTime": "2024-11-03T09:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T09:00:00Z"
       },
       {
         "programItemId": "meripihkalinna",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T10:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T10:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -5473,8 +5258,7 @@
       {
         "programItemId": "alavilla-mailla",
         "priority": 2,
-        "signedToStartTime": "2024-11-03T09:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T09:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -5503,8 +5287,7 @@
       {
         "programItemId": "praedor-kirotut-kuninkaanvaalit",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T09:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T09:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -5533,8 +5316,7 @@
       {
         "programItemId": "praedor-kirotut-kuninkaanvaalit",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T09:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T09:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -5563,8 +5345,7 @@
       {
         "programItemId": "alavilla-mailla",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T09:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T09:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -5593,14 +5374,12 @@
       {
         "programItemId": "the-dalish-curse-a-dragon-age-rpg",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T09:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T09:00:00Z"
       },
       {
         "programItemId": "elava-pakohuone-16",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T14:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T14:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -5639,8 +5418,7 @@
       {
         "programItemId": "toivottavasti-kukaan-ei-huomaa",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T09:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T09:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -5669,14 +5447,12 @@
       {
         "programItemId": "the-dalish-curse-a-dragon-age-rpg",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T09:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T09:00:00Z"
       },
       {
         "programItemId": "elava-pakohuone-16",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T14:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T14:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -5712,14 +5488,12 @@
       {
         "programItemId": "elava-pakohuone-12",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T10:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T10:00:00Z"
       },
       {
         "programItemId": "elava-pakohuone-14",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T12:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T12:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -5927,8 +5701,7 @@
       {
         "programItemId": "elava-pakohuone-14",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T12:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T12:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -5972,8 +5745,7 @@
       {
         "programItemId": "elava-pakohuone-14",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T12:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T12:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -6086,14 +5858,12 @@
       {
         "programItemId": "space-1889-pakolasku-venuksen-viidakkoon",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T12:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T12:00:00Z"
       },
       {
         "programItemId": "alien-uscss-traconis",
         "priority": 2,
-        "signedToStartTime": "2024-11-03T12:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T12:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -6137,8 +5907,7 @@
       {
         "programItemId": "elava-pakohuone-16",
         "priority": 1,
-        "signedToStartTime": "2024-11-03T14:00:00Z",
-        "groupCode": "0"
+        "signedToStartTime": "2024-11-03T14:00:00Z"
       }
     ],
     "eventLogItems": [
