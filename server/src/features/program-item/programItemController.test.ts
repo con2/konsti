@@ -517,13 +517,11 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     expect(response.status).toEqual(200);
 
     expect(errorLoggerSpy).toHaveBeenCalledWith(
-      "%s",
       new Error(
         "Invalid program item test-program-item at path scheduleItems.0.endTime: Invalid input: expected string, received null",
       ),
     );
     expect(errorLoggerSpy).toHaveBeenCalledWith(
-      "%s",
       new Error(
         "Invalid program item test-program-item at path scheduleItems.0.startTime: Invalid input: expected string, received null",
       ),

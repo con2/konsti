@@ -98,14 +98,10 @@ export const autoUpdateProgramItems = async (): Promise<void> => {
   );
   if (!latestServerResult.ok) {
     if (latestServerResult.error === MongoDbError.SETTINGS_NOT_FOUND) {
-      logger.error(
-        "%s",
-        new Error("Cronjobs: Newer server instance running, stop"),
-      );
+      logger.error(new Error("Cronjobs: Newer server instance running, stop"));
       return;
     }
     logger.error(
-      "%s",
       new Error(
         `***** Program items auto update failed trying to check latest server start time: ${latestServerResult.error}`,
       ),
@@ -119,14 +115,10 @@ export const autoUpdateProgramItems = async (): Promise<void> => {
   );
   if (!programUpdateLastRunResult.ok) {
     if (programUpdateLastRunResult.error === MongoDbError.SETTINGS_NOT_FOUND) {
-      logger.error(
-        "%s",
-        new Error("Program auto update already running, stop"),
-      );
+      logger.error(new Error("Program auto update already running, stop"));
       return;
     }
     logger.error(
-      "%s",
       new Error(
         `***** Program items auto update failed trying to set last run time: ${programUpdateLastRunResult.error}`,
       ),
@@ -139,7 +131,6 @@ export const autoUpdateProgramItems = async (): Promise<void> => {
   const updateProgramItemsResult = await updateProgramItems();
   if (updateProgramItemsResult.status === "error") {
     logger.error(
-      "%s",
       new Error(
         `***** Program items auto update failed: ${updateProgramItemsResult.message}`,
       ),
@@ -163,14 +154,10 @@ export const autoAssignAttendees = async (): Promise<void> => {
   );
   if (!latestServerResult.ok) {
     if (latestServerResult.error === MongoDbError.SETTINGS_NOT_FOUND) {
-      logger.error(
-        "%s",
-        new Error("Cronjobs: Newer server instance running, stop"),
-      );
+      logger.error(new Error("Cronjobs: Newer server instance running, stop"));
       return;
     }
     logger.error(
-      "%s",
       new Error(
         `***** Auto assignment failed trying to check latest server start time: ${latestServerResult.error}`,
       ),
@@ -184,11 +171,10 @@ export const autoAssignAttendees = async (): Promise<void> => {
   );
   if (!assignmentLastRunResult.ok) {
     if (assignmentLastRunResult.error === MongoDbError.SETTINGS_NOT_FOUND) {
-      logger.error("%s", new Error("Auto assignment already running, stop"));
+      logger.error(new Error("Auto assignment already running, stop"));
       return;
     }
     logger.error(
-      "%s",
       new Error(
         `***** Auto assignment failed trying to set last run time: ${assignmentLastRunResult.error}`,
       ),
@@ -204,7 +190,7 @@ export const autoAssignAttendees = async (): Promise<void> => {
     assignmentDelay: autoAssignDelay,
   });
   if (!runAssignmentResult.ok) {
-    logger.error("%s", new Error("***** Auto assignment failed"));
+    logger.error(new Error("***** Auto assignment failed"));
     return;
   }
 
@@ -215,7 +201,6 @@ const protectCallback = (job: Cron): void => {
   const timeNow = dayjs().toISOString();
   const startTime = dayjs(job.currentRun()).toISOString();
   logger.error(
-    "%s",
     new Error(
       `Cronjob ${job.name} at ${timeNow} was blocked by call started at ${startTime}`,
     ),
@@ -223,5 +208,7 @@ const protectCallback = (job: Cron): void => {
 };
 
 const errorHandler = (error: unknown, job: Cron): void => {
-  logger.error(`Error while running cronJob ${job.name}: %s`, error);
+  logger.error(
+    new Error(`Error while running cronJob ${job.name}`, { cause: error }),
+  );
 };

@@ -63,7 +63,6 @@ const getKompassiTokens = async (
     const result = KompassiTokensSchema.safeParse(responseData);
     if (!result.success) {
       logger.error(
-        "%s",
         new Error(
           `Error validating getKompassiTokens response: ${JSON.stringify(result.error)}`,
         ),
@@ -73,8 +72,9 @@ const getKompassiTokens = async (
     return makeSuccessResult(result.data);
   } catch (error) {
     logger.error(
-      "Kompassi login: Error fetching token from Kompassi: %s",
-      error,
+      new Error("Kompassi login: Error fetching token from Kompassi", {
+        cause: error,
+      }),
     );
     return makeErrorResult(KompassiLoginError.UNKNOWN_ERROR);
   }
@@ -92,7 +92,6 @@ const getKompassiProfile = async (
     const result = KompassiProfileSchema.safeParse(responseData);
     if (!result.success) {
       logger.error(
-        "%s",
         new Error(
           `Error validating getKompassiProfile response: ${JSON.stringify(result.error)}`,
         ),
@@ -102,8 +101,9 @@ const getKompassiProfile = async (
     return makeSuccessResult(result.data);
   } catch (error) {
     logger.error(
-      "Kompassi login: Error fetching profile from Kompassi: %s",
-      error,
+      new Error("Kompassi login: Error fetching profile from Kompassi", {
+        cause: error,
+      }),
     );
     return makeErrorResult(KompassiLoginError.UNKNOWN_ERROR);
   }

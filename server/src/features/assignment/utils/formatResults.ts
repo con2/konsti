@@ -42,7 +42,6 @@ export const formatResults = (
 
       if (!firstMember) {
         logger.error(
-          "%s",
           new Error("Assignment formatResults: error getting first member"),
         );
         return false;

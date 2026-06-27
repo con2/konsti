@@ -22,7 +22,7 @@ const connectToDb = async (
   logger.info("MongoDB: Connection successful");
 
   mongoose.connection.on("error", (error) => {
-    logger.error("MongoDB: Connection error: %s", error);
+    logger.error(new Error("MongoDB: Connection error", { cause: error }));
   });
 };
 

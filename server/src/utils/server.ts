@@ -122,11 +122,11 @@ export const startServer = async ({
     // Express default error handler closes the connection and fails the request
     // https://expressjs.com/en/guide/error-handling.html
     if (res.headersSent) {
-      logger.error("Error after headers sent: %s", err);
+      logger.error(new Error("Error after headers sent", { cause: err }));
       next(err);
       return;
     }
-    logger.error("%s", err);
+    logger.error(err);
     return res.sendStatus(500);
   });
 
@@ -173,7 +173,7 @@ export const closeServer = async (
   try {
     await db.gracefulExit();
   } catch (error) {
-    logger.error("%s", error);
+    logger.error(error);
   }
 
   logger.info("Shutdown completed, bye");

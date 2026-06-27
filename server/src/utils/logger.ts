@@ -1,4 +1,5 @@
 import { createLogger, format, transports } from "winston";
+import type { TransformableInfo } from "logform";
 import _WinstonTransport from "winston-transport-sentry-node";
 // Node.js ESM CJS interop: package uses exports.default, so the class is wrapped as { default: Class }
 const WinstonTransport = (
@@ -7,25 +8,60 @@ const WinstonTransport = (
 import { config } from "shared/config";
 
 const SPLAT = Symbol.for("splat");
+const LEVEL = Symbol.for("level");
 
-// winston's `%s` formatting collapses an Error's `cause` to `[Error]`; expand the
-// whole chain so the underlying error stays visible in logs
-const expandErrorCauses = format((info) => {
+// Log errors by passing the Error directly: `logger.error(new Error("..."))`, or wrap an
+// underlying error as the cause: `logger.error(new Error("context", { cause: err }))`. No
+// `%s` needed.
+//
+// This works around two winston quirks. winston-transport-sentry-node only captures a real
+// exception when it finds an Error among `info`'s enumerable values, and winston-transport's
+// `Object.assign({}, info)` copy drops an Error's non-enumerable `message`/`stack`. Surfacing
+// the Error onto an enumerable `error` key lets the Sentry transport capture the actual Error
+// (correct type, single `Error:` prefix, real stack and cause chain) and lets renderMessage
+// build the human-readable console/file output
+const surfaceError = format((info) => {
+  if (info instanceof Error) {
+    // sole-arg Error: winston makes `info` the Error itself. Return a fresh info so we don't
+    // mutate the caller's Error or create a circular self-reference through `error`
+    const next: TransformableInfo = {
+      level: info.level,
+      message: info.message,
+      error: info,
+    };
+    (next as Record<symbol, unknown>)[LEVEL] = (
+      info as Record<symbol, unknown>
+    )[LEVEL];
+    return next;
+  }
   const args = (info as Record<symbol, unknown>)[SPLAT];
   if (Array.isArray(args)) {
-    (info as Record<symbol, unknown>)[SPLAT] = args.map((arg: unknown) => {
-      if (!(arg instanceof Error)) {
-        return arg;
-      }
-      let text = arg.stack ?? String(arg);
-      for (let cause = arg.cause; cause instanceof Error; cause = cause.cause) {
-        text += `\nCaused by: ${cause.stack ?? String(cause)}`;
-      }
-      return text;
-    });
+    const error = args.find((arg: unknown) => arg instanceof Error);
+    if (error) {
+      info.error = error;
+    }
   }
   return info;
 });
+
+// Build the human-readable message for console/file logs: the full stack plus the whole
+// `cause` chain when the log carries an Error (Sentry instead gets the raw Error object via
+// the transport, so this is only for the text logs)
+const renderMessage = (info: TransformableInfo): string => {
+  const error = info.error;
+  if (error instanceof Error) {
+    let text = error.stack ?? String(error);
+    for (let cause = error.cause; cause instanceof Error; cause = cause.cause) {
+      text += `\nCaused by: ${cause.stack ?? String(cause)}`;
+    }
+    return text;
+  }
+  const { message } = info;
+  if (typeof message === "string") {
+    return message;
+  }
+  return message == null ? "" : JSON.stringify(message);
+};
 
 const consoleOutputFormat = config.server().consoleLogFormatJson
   ? format.combine(
@@ -35,7 +71,7 @@ const consoleOutputFormat = config.server().consoleLogFormatJson
         return JSON.stringify({
           timestamp: info.timestamp,
           level: info.level,
-          message: info.message,
+          message: renderMessage(info),
         });
       }),
     )
@@ -46,14 +82,14 @@ const consoleOutputFormat = config.server().consoleLogFormatJson
       }),
       format.splat(),
       format.printf((info) => {
-        return `${String(info.timestamp)} ${info.level}: ${String(info.message)}`;
+        return `${String(info.timestamp)} ${info.level}: ${renderMessage(info)}`;
       }),
     );
 
 export const logger = createLogger({
   handleExceptions: true,
   handleRejections: true,
-  format: expandErrorCauses(),
+  format: surfaceError(),
 
   transports: [
     new transports.Console({
@@ -72,7 +108,7 @@ export const logger = createLogger({
           return JSON.stringify({
             timestamp: info.timestamp,
             level: info.level,
-            message: info.message,
+            message: renderMessage(info),
           });
         }),
       ),

@@ -148,7 +148,7 @@ When writing `signedToStartTime` for signups, follow the lottery-vs-direct split
 
 ## Cross-Cutting Server Patterns
 
-- **Logging:** winston logger in `server/src/utils/logger.ts` — human-readable in dev, JSON in production; error-level logs are also forwarded to Sentry (`winston-transport-sentry-node`). Logging is mocked off in tests unless explicitly enabled in config.
+- **Logging:** winston logger in `server/src/utils/logger.ts` — human-readable in dev, JSON in production; error-level logs are also forwarded to Sentry (`winston-transport-sentry-node`). Logging is mocked off in tests unless explicitly enabled in config. Log errors by passing the `Error` directly — `logger.error(new Error("context"))`, or wrap an underlying error as the cause — `logger.error(new Error("context", { cause: err }))`. **Do not use the old `logger.error("%s", new Error(...))` idiom**: the `%s` is unnecessary (the logger surfaces the Error to Sentry and renders the stack/cause itself) and stringifying the Error into the message produced a doubled `Error: Error:` prefix in Sentry.
 - **Error handling:** the final Express error middleware (in `utils/server.ts`) logs and responds 500; a JSON body-parse guard handles malformed bodies as 400; `@sentry/node`'s express error handler captures exceptions. Prefer returning `Result` errors from services over throwing.
 - **Sentry:** initialized in `utils/instrument.ts` (imported first in `index.ts`); DSN/sample rate from `config.sentry()`.
 - **Cron jobs:** scheduled in `utils/cron.ts` using `croner` (e.g. auto-updating program items from Kompassi and auto-running assignment), toggled per-environment via server config; guards prevent a stale server instance from running a job.

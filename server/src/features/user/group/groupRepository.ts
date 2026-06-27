@@ -25,7 +25,6 @@ export const findGroupMembers = async (
       const result = UserSchemaDb.safeParse(user);
       if (!result.success) {
         logger.error(
-          "%s",
           new Error(
             `Error validating findGroupMembers DB value: username: ${user.username}, ${JSON.stringify(result.error)}`,
           ),
@@ -37,7 +36,9 @@ export const findGroupMembers = async (
 
     return makeSuccessResult(results);
   } catch (error) {
-    logger.error(`MongoDB: Error finding group ${groupCode}: %s`, error);
+    logger.error(
+      new Error(`MongoDB: Error finding group ${groupCode}`, { cause: error }),
+    );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
@@ -53,8 +54,9 @@ export const checkGroupExists = async (
     return makeSuccessResult(!!response);
   } catch (error) {
     logger.error(
-      `MongoDB: Error checking if group ${groupCode} exists: %s`,
-      error,
+      new Error(`MongoDB: Error checking if group ${groupCode} exists`, {
+        cause: error,
+      }),
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
@@ -84,7 +86,6 @@ export const saveGroupCreator = async (
     const result = UserSchemaDb.safeParse(response);
     if (!result.success) {
       logger.error(
-        "%s",
         new Error(
           `Error validating saveGroupCreator DB value: ${JSON.stringify(result.error)}`,
         ),
@@ -124,7 +125,6 @@ export const saveGroupCode = async (
     const result = UserSchemaDb.safeParse(response);
     if (!result.success) {
       logger.error(
-        "%s",
         new Error(
           `Error validating saveGroupCode DB value: ${JSON.stringify(result.error)}`,
         ),
@@ -134,8 +134,10 @@ export const saveGroupCode = async (
     return makeSuccessResult(result.data);
   } catch (error) {
     logger.error(
-      `MongoDB: Error storing group ${groupCode} stored for user ${username}: %s`,
-      error,
+      new Error(
+        `MongoDB: Error storing group ${groupCode} stored for user ${username}`,
+        { cause: error },
+      ),
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }

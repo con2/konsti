@@ -18,7 +18,9 @@ export const removeSerials = async (): Promise<Result<void, MongoDbError>> => {
     await SerialModel.deleteMany({});
     return makeSuccessResult();
   } catch (error) {
-    logger.error("MongoDB: Error removing serials: %s", error);
+    logger.error(
+      new Error("MongoDB: Error removing serials", { cause: error }),
+    );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
@@ -59,7 +61,6 @@ export const saveSerials = async (
       const result = SerialSchemaDb.safeParse(serial);
       if (!result.success) {
         logger.error(
-          "%s",
           new Error(
             `Error validating saveSerials DB value: ${JSON.stringify(result.error)}`,
           ),
@@ -71,7 +72,9 @@ export const saveSerials = async (
 
     return makeSuccessResult(results);
   } catch (error) {
-    logger.error("MongoDB: Error saving serials data: %s", error);
+    logger.error(
+      new Error("MongoDB: Error saving serials data", { cause: error }),
+    );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
@@ -83,7 +86,9 @@ export const findSerial = async (
   try {
     response = await SerialModel.findOne({ serial }).lean();
   } catch (error) {
-    logger.error(`MongoDB: Error finding serial ${serial}: %s`, error);
+    logger.error(
+      new Error(`MongoDB: Error finding serial ${serial}`, { cause: error }),
+    );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 

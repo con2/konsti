@@ -94,7 +94,6 @@ export const runPadgAssignment = (
       logger.debug("Run PADG algorithm: finished");
     } catch (error) {
       logger.error(
-        "%s",
         new Error(
           `Padg assignment round failed: ${String(error)}. Input: ${JSON.stringify(input)}`,
         ),
@@ -121,7 +120,6 @@ export const runPadgAssignment = (
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (!finalAssignResults) {
     logger.error(
-      "%s",
       new Error(
         `Padg assignment for start time ${assignmentTime} failed with input: groups: ${JSON.stringify(
           groups,

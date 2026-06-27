@@ -66,7 +66,9 @@ const main = async (): Promise<void> => {
 try {
   await main();
 } catch (error: unknown) {
-  logger.error("Docker: Failed to start MongoDB container: %s", error);
+  logger.error(
+    new Error("Docker: Failed to start MongoDB container", { cause: error }),
+  );
   // eslint-disable-next-line unicorn/no-process-exit
   process.exit(1);
 }

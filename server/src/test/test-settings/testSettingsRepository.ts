@@ -20,7 +20,9 @@ export const removeTestSettings = async (): Promise<
     await TestSettingsModel.deleteMany({});
     return makeSuccessResult();
   } catch (error) {
-    logger.error("MongoDB: Error removing test settings: %s", error);
+    logger.error(
+      new Error("MongoDB: Error removing test settings", { cause: error }),
+    );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
@@ -38,7 +40,6 @@ const createTestSettings = async (): Promise<
     const result = TestSettingsSchemaDb.safeParse(testSettings.toObject());
     if (!result.success) {
       logger.error(
-        "%s",
         new Error(
           `Error validating createTestSettings DB value: ${JSON.stringify(result.error)}`,
         ),
@@ -48,7 +49,9 @@ const createTestSettings = async (): Promise<
 
     return makeSuccessResult(result.data);
   } catch (error) {
-    logger.error("MongoDB: Add default test settings error: %s", error);
+    logger.error(
+      new Error("MongoDB: Add default test settings error", { cause: error }),
+    );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
@@ -70,7 +73,6 @@ export const findTestSettings = async (): Promise<
     const result = TestSettingsSchemaDb.safeParse(testSettings);
     if (!result.success) {
       logger.error(
-        "%s",
         new Error(
           `Error validating findTestSettings DB value: ${JSON.stringify(result.error)}`,
         ),
@@ -80,7 +82,9 @@ export const findTestSettings = async (): Promise<
 
     return makeSuccessResult(result.data);
   } catch (error) {
-    logger.error("MongoDB: Error finding test settings data: %s", error);
+    logger.error(
+      new Error("MongoDB: Error finding test settings data", { cause: error }),
+    );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
@@ -102,7 +106,6 @@ export const saveTestSettings = async (
     const result = TestSettingsSchemaDb.safeParse(updatedTestSettings);
     if (!result.success) {
       logger.error(
-        "%s",
         new Error(
           `Error validating saveTestSettings DB value: ${JSON.stringify(result.error)}`,
         ),
@@ -112,7 +115,9 @@ export const saveTestSettings = async (
 
     return makeSuccessResult(result.data);
   } catch (error) {
-    logger.error("MongoDB: Error updating test settings: %s", error);
+    logger.error(
+      new Error("MongoDB: Error updating test settings", { cause: error }),
+    );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };

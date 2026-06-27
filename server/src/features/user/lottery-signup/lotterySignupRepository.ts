@@ -23,7 +23,7 @@ export const saveLotterySignups = async (
       { returnDocument: "after" },
     ).lean();
     if (!response) {
-      logger.error("%s", new Error("Error saving lottery signups"));
+      logger.error(new Error("Error saving lottery signups"));
       return makeErrorResult(MongoDbError.SIGNUP_NOT_FOUND);
     }
     logger.debug(`MongoDB: Signup data stored for user ${username}`);
@@ -31,7 +31,6 @@ export const saveLotterySignups = async (
     const result = UserSchemaDb.safeParse(response);
     if (!result.success) {
       logger.error(
-        "%s",
         new Error(
           `Error validating saveLotterySignups DB value: ${JSON.stringify(result.error)}`,
         ),
@@ -42,8 +41,9 @@ export const saveLotterySignups = async (
     return makeSuccessResult(result.data);
   } catch (error) {
     logger.error(
-      `MongoDB: Error storing signup data for user ${username}: %s`,
-      error,
+      new Error(`MongoDB: Error storing signup data for user ${username}`, {
+        cause: error,
+      }),
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
@@ -75,7 +75,6 @@ export const saveLotterySignup = async ({
     ).lean();
     if (!response) {
       logger.error(
-        "%s",
         new Error(
           `Error saving lottery signup ${lotterySignup.programItemId} for user ${username}, user not found`,
         ),
@@ -89,7 +88,6 @@ export const saveLotterySignup = async ({
     const result = UserSchemaDb.safeParse(response);
     if (!result.success) {
       logger.error(
-        "%s",
         new Error(
           `Error validating saveLotterySignup DB value: ${JSON.stringify(result.error)}`,
         ),
@@ -100,8 +98,10 @@ export const saveLotterySignup = async ({
     return makeSuccessResult(result.data);
   } catch (error) {
     logger.error(
-      `MongoDB: Error saving lottery signup ${lotterySignup.programItemId} for user ${username}: %s`,
-      error,
+      new Error(
+        `MongoDB: Error saving lottery signup ${lotterySignup.programItemId} for user ${username}`,
+        { cause: error },
+      ),
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
@@ -142,8 +142,9 @@ export const delLotterySignups = async (
     return makeSuccessResult();
   } catch (error) {
     logger.error(
-      "MongoDB: Error deleting lottery signups from multiple users: %s",
-      error,
+      new Error("MongoDB: Error deleting lottery signups from multiple users", {
+        cause: error,
+      }),
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
@@ -157,7 +158,9 @@ export const removeLotterySignups = async (): Promise<
     await UserModel.updateMany({}, { lotterySignups: [] });
     return makeSuccessResult();
   } catch (error) {
-    logger.error("MongoDB: Error removing lottery signups: %s", error);
+    logger.error(
+      new Error("MongoDB: Error removing lottery signups", { cause: error }),
+    );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };

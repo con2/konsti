@@ -21,7 +21,7 @@ const startApp = async (): Promise<void> => {
       port: config.server().port,
     });
   } catch (error) {
-    logger.error("Starting server failed: %s", error);
+    logger.error(new Error("Starting server failed", { cause: error }));
     return;
   }
 
@@ -34,7 +34,7 @@ const startApp = async (): Promise<void> => {
     try {
       await startCronJobs();
     } catch (error) {
-      logger.error("Error starting cronjobs: %s", error);
+      logger.error(new Error("Error starting cronjobs", { cause: error }));
     }
   }
   if (!enableCronjobs) {
@@ -50,7 +50,9 @@ const startApp = async (): Promise<void> => {
     setGlobalNotificationQueueService(notificationQueueService);
     logger.info("Email notification queue initialized.");
   } catch (error) {
-    logger.error("Failed to initialize notification queue! %s", error);
+    logger.error(
+      new Error("Failed to initialize notification queue!", { cause: error }),
+    );
   }
 
   process.once("SIGINT", (signal: string) => {
@@ -68,7 +70,7 @@ const handleShutdown = async (
   try {
     await closeServer(server, signal);
   } catch (error: unknown) {
-    logger.error("%s", error);
+    logger.error(error);
   }
 };
 
@@ -83,7 +85,7 @@ const init = async (): Promise<void> => {
   try {
     await startApp();
   } catch (error: unknown) {
-    logger.error("%s", error);
+    logger.error(error);
   }
 };
 

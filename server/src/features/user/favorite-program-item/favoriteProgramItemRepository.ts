@@ -23,7 +23,7 @@ export const saveFavorite = async (
     ).lean();
 
     if (!response) {
-      logger.error("%s", new Error(`MongoDB: User ${username} not found`));
+      logger.error(new Error(`MongoDB: User ${username} not found`));
       return makeErrorResult(MongoDbError.USER_NOT_FOUND);
     }
 
@@ -34,7 +34,6 @@ export const saveFavorite = async (
     const result = UserSchemaDb.safeParse(response);
     if (!result.success) {
       logger.error(
-        "%s",
         new Error(
           `Error validating saveFavorite DB value: ${JSON.stringify(result.error)}`,
         ),
@@ -45,8 +44,10 @@ export const saveFavorite = async (
     return makeSuccessResult(result.data.favoriteProgramItemIds);
   } catch (error) {
     logger.error(
-      `MongoDB: Error storing favorite data for user ${newFavorite.username}: %s`,
-      error,
+      new Error(
+        `MongoDB: Error storing favorite data for user ${newFavorite.username}`,
+        { cause: error },
+      ),
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }

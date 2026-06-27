@@ -23,10 +23,7 @@ export const getList = ({
   const results = attendeeGroups.flatMap((attendeeGroup) => {
     const firstMember = first(attendeeGroup);
     if (!firstMember) {
-      logger.error(
-        "%s",
-        new Error("Assignment getList: error getting first member"),
-      );
+      logger.error(new Error("Assignment getList: error getting first member"));
       return [];
     }
 
