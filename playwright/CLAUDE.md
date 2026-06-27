@@ -15,9 +15,13 @@ Guidance for the `playwright/` end-to-end tests. See the [root CLAUDE.md](../CLA
 
 ### Sharding
 
-CI splits the suite across runners with [Playwright sharding](https://playwright.dev/docs/test-sharding). The `e2e` job in `.github/workflows/test.yml` is a matrix over `shard: [1, 2, 3, 4]`, and passes `PLAYWRIGHT_SHARD=<index>/<total>` (e.g. `2/4`). `playwright/docker-compose.yml` reads `PLAYWRIGHT_SHARD` and appends `--shard=$PLAYWRIGHT_SHARD` only when it's set; unset (the local default) runs the whole suite.
+CI splits the suite across runners with [Playwright sharding](https://playwright.dev/docs/test-sharding). The `e2e` job in `.github/workflows/test.yml` is a matrix over `shard: [1, 2, 3]`, and passes `PLAYWRIGHT_SHARD=<index>/<total>` (e.g. `2/3`). `playwright/docker-compose.yml` reads `PLAYWRIGHT_SHARD` and appends `--shard=$PLAYWRIGHT_SHARD` only when it's set; unset (the local default) runs the whole suite.
 
-Each shard is a separate runner spinning up its **own** docker-compose stack (own server + Mongo), so the shared-DB constraint that forces `workers: 1` still holds **within** a shard — sharding parallelizes across machines, not within one DB. To change the shard count, edit the matrix list **and** keep using `strategy.job-total` for the denominator. To shard a local run: `PLAYWRIGHT_SHARD=1/4 yarn docker-compose:test`.
+Each shard is a separate runner spinning up its **own** docker-compose stack (own server + Mongo), so the shared-DB constraint that forces `workers: 1` still holds **within** a shard — sharding parallelizes across machines, not within one DB. To change the shard count, edit the matrix list **and** keep using `strategy.job-total` for the denominator. To shard a local run: `PLAYWRIGHT_SHARD=1/3 yarn docker-compose:test`.
+
+**Why 3 and not more:** each shard re-pays a fixed per-runner overhead (image build, Mongo/server startup), which sets a wall-clock floor that more shards can't beat. Measured: no-shard ≈ 4m34s, 2 shards ≈ 3m38s, 3 shards ≈ 3m08s, 4 shards ≈ 3m18s (4 regressed — overhead swamped the extra split).
+
+**Image build caching:** in CI the shards don't run `docker-compose:test`'s build step; instead the `server` image is built once per shard via `docker/build-push-action` with a shared GitHub Actions layer cache (`type=gha`, scope `e2e-server`). Builds run in parallel across shards but hit the warm cache after the first run, so they're near-instant. Only shard 1 writes the cache to avoid redundant concurrent exports. The shards then run `docker-compose:run-e2e` (compose up, reusing the built image). Local runs are unaffected and still use `docker-compose:test`.
 
 Local prerequisites: Docker running, and ports **5000** (server), **8000** (client), **27017** (Mongo), and the Playwright UI port free.
 
