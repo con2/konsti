@@ -330,6 +330,38 @@
         }
       }
     ],
+    "groups": [
+      {
+        "groupCode": "29e-bdb-1c9",
+        "groupCreator": "413382",
+        "groupMembers": ["413382", "493794"]
+      },
+      {
+        "groupCode": "eec-2ef-f72",
+        "groupCreator": "388118",
+        "groupMembers": ["388118", "976519", "115563", "371338"]
+      },
+      {
+        "groupCode": "2dd-0cf-5ca",
+        "groupCreator": "384419",
+        "groupMembers": ["384419", "65481"]
+      },
+      {
+        "groupCode": "3ca-bba-817",
+        "groupCreator": "976948",
+        "groupMembers": ["976948", "303087"]
+      },
+      {
+        "groupCode": "5ef-bce-54c",
+        "groupCreator": "841179",
+        "groupMembers": ["841179", "309325"]
+      },
+      {
+        "groupCode": "046-e28-ae1",
+        "groupCreator": "480534",
+        "groupMembers": ["480534", "252539"]
+      }
+    ],
     "assignmentTime": "2024-07-19T15:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assignment Result - Attendees: 41/85 (48%), Program items: 9/9 (100%)",
@@ -683,6 +715,38 @@
         }
       }
     ],
+    "groups": [
+      {
+        "groupCode": "29e-bdb-1c9",
+        "groupCreator": "413382",
+        "groupMembers": ["413382", "493794"]
+      },
+      {
+        "groupCode": "2dd-0cf-5ca",
+        "groupCreator": "384419",
+        "groupMembers": ["384419", "65481"]
+      },
+      {
+        "groupCode": "00c-8e1-3ac",
+        "groupCreator": "449782",
+        "groupMembers": ["449782", "28964", "364904"]
+      },
+      {
+        "groupCode": "d18-aea-1ab",
+        "groupCreator": "135593",
+        "groupMembers": ["135593", "298891"]
+      },
+      {
+        "groupCode": "98d-01b-37d",
+        "groupCreator": "317394",
+        "groupMembers": ["317394", "297254"]
+      },
+      {
+        "groupCode": "193-b0d-1c3",
+        "groupCreator": "143479",
+        "groupMembers": ["143479", "78922"]
+      }
+    ],
     "assignmentTime": "2024-07-19T16:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assignment Result - Attendees: 43/130 (33%), Program items: 10/10 (100%)",
@@ -906,6 +970,48 @@
           "priority": 1,
           "signedToStartTime": "2024-07-19T17:00:00Z"
         }
+      }
+    ],
+    "groups": [
+      {
+        "groupCode": "afb-f73-9b5",
+        "groupCreator": "28601",
+        "groupMembers": ["28601", "105909"]
+      },
+      {
+        "groupCode": "eec-2ef-f72",
+        "groupCreator": "388118",
+        "groupMembers": ["388118", "976519", "115563", "371338"]
+      },
+      {
+        "groupCode": "d18-aea-1ab",
+        "groupCreator": "135593",
+        "groupMembers": ["135593", "298891"]
+      },
+      {
+        "groupCode": "687-67e-909",
+        "groupCreator": "22276",
+        "groupMembers": ["22276", "777775"]
+      },
+      {
+        "groupCode": "aa3-878-118",
+        "groupCreator": "890404",
+        "groupMembers": ["890404", "844160", "455509"]
+      },
+      {
+        "groupCode": "147-b11-25f",
+        "groupCreator": "282797",
+        "groupMembers": ["282797", "754958"]
+      },
+      {
+        "groupCode": "def-47d-ebe",
+        "groupCreator": "699724",
+        "groupMembers": ["699724", "131581"]
+      },
+      {
+        "groupCode": "fde-9e6-e50",
+        "groupCreator": "429021",
+        "groupMembers": ["429021", "185121"]
       }
     ],
     "assignmentTime": "2024-07-19T17:00:00Z",
@@ -1309,6 +1415,58 @@
         }
       }
     ],
+    "groups": [
+      {
+        "groupCode": "afb-f73-9b5",
+        "groupCreator": "28601",
+        "groupMembers": ["28601", "105909"]
+      },
+      {
+        "groupCode": "eec-2ef-f72",
+        "groupCreator": "388118",
+        "groupMembers": ["388118", "976519", "115563", "371338"]
+      },
+      {
+        "groupCode": "00c-8e1-3ac",
+        "groupCreator": "449782",
+        "groupMembers": ["449782", "28964", "364904"]
+      },
+      {
+        "groupCode": "d18-aea-1ab",
+        "groupCreator": "135593",
+        "groupMembers": ["135593", "298891"]
+      },
+      {
+        "groupCode": "a31-634-7fc",
+        "groupCreator": "117376",
+        "groupMembers": ["117376", "966238", "580972", "37060"]
+      },
+      {
+        "groupCode": "def-47d-ebe",
+        "groupCreator": "699724",
+        "groupMembers": ["699724", "131581"]
+      },
+      {
+        "groupCode": "193-b0d-1c3",
+        "groupCreator": "143479",
+        "groupMembers": ["143479", "78922"]
+      },
+      {
+        "groupCode": "fde-9e6-e50",
+        "groupCreator": "429021",
+        "groupMembers": ["429021", "185121"]
+      },
+      {
+        "groupCode": "769-2b0-68f",
+        "groupCreator": "47776",
+        "groupMembers": ["47776", "206177"]
+      },
+      {
+        "groupCode": "774-f4a-5b7",
+        "groupCreator": "832688",
+        "groupMembers": ["832688", "420083", "974616"]
+      }
+    ],
     "assignmentTime": "2024-07-19T18:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assignment Result - Attendees: 49/182 (27%), Program items: 10/10 (100%)",
@@ -1678,6 +1836,43 @@
         }
       }
     ],
+    "groups": [
+      {
+        "groupCode": "d83-bb0-f51",
+        "groupCreator": "404450",
+        "groupMembers": ["404450"]
+      },
+      {
+        "groupCode": "00c-8e1-3ac",
+        "groupCreator": "449782",
+        "groupMembers": ["449782", "28964", "364904"]
+      },
+      {
+        "groupCode": "d18-aea-1ab",
+        "groupCreator": "135593",
+        "groupMembers": ["135593", "298891"]
+      },
+      {
+        "groupCode": "a31-634-7fc",
+        "groupCreator": "117376",
+        "groupMembers": ["117376", "966238", "580972", "37060"]
+      },
+      {
+        "groupCode": "def-47d-ebe",
+        "groupCreator": "699724",
+        "groupMembers": ["699724", "131581"]
+      },
+      {
+        "groupCode": "769-2b0-68f",
+        "groupCreator": "47776",
+        "groupMembers": ["47776", "206177"]
+      },
+      {
+        "groupCode": "774-f4a-5b7",
+        "groupCreator": "832688",
+        "groupMembers": ["832688", "420083", "974616"]
+      }
+    ],
     "assignmentTime": "2024-07-19T19:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assignment Result - Attendees: 45/101 (45%), Program items: 9/9 (100%)",
@@ -1799,6 +1994,23 @@
         }
       }
     ],
+    "groups": [
+      {
+        "groupCode": "29e-bdb-1c9",
+        "groupCreator": "413382",
+        "groupMembers": ["413382", "493794"]
+      },
+      {
+        "groupCode": "a31-634-7fc",
+        "groupCreator": "117376",
+        "groupMembers": ["117376", "966238", "580972", "37060"]
+      },
+      {
+        "groupCode": "774-f4a-5b7",
+        "groupCreator": "832688",
+        "groupMembers": ["832688", "420083", "974616"]
+      }
+    ],
     "assignmentTime": "2024-07-19T20:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assignment Result - Attendees: 14/37 (38%), Program items: 2/2 (100%)",
@@ -1848,6 +2060,7 @@
         }
       }
     ],
+    "groups": [],
     "assignmentTime": "2024-07-20T06:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assignment Result - Attendees: 5/26 (19%), Program items: 1/1 (100%)",
@@ -2745,6 +2958,78 @@
         }
       }
     ],
+    "groups": [
+      {
+        "groupCode": "298-221-407",
+        "groupCreator": "13492",
+        "groupMembers": ["13492", "314797"]
+      },
+      {
+        "groupCode": "29e-bdb-1c9",
+        "groupCreator": "413382",
+        "groupMembers": ["413382", "493794"]
+      },
+      {
+        "groupCode": "515-6c9-558",
+        "groupCreator": "280157",
+        "groupMembers": ["280157", "901460"]
+      },
+      {
+        "groupCode": "eec-2ef-f72",
+        "groupCreator": "388118",
+        "groupMembers": ["388118", "976519", "115563", "371338"]
+      },
+      {
+        "groupCode": "d18-aea-1ab",
+        "groupCreator": "135593",
+        "groupMembers": ["135593", "298891"]
+      },
+      {
+        "groupCode": "98d-01b-37d",
+        "groupCreator": "317394",
+        "groupMembers": ["317394", "297254"]
+      },
+      {
+        "groupCode": "5ef-bce-54c",
+        "groupCreator": "841179",
+        "groupMembers": ["841179", "309325"]
+      },
+      {
+        "groupCode": "aa3-878-118",
+        "groupCreator": "890404",
+        "groupMembers": ["890404", "844160", "455509"]
+      },
+      {
+        "groupCode": "75b-8ba-743",
+        "groupCreator": "707742",
+        "groupMembers": ["707742", "398170"]
+      },
+      {
+        "groupCode": "def-47d-ebe",
+        "groupCreator": "699724",
+        "groupMembers": ["699724", "131581"]
+      },
+      {
+        "groupCode": "193-b0d-1c3",
+        "groupCreator": "143479",
+        "groupMembers": ["143479", "78922"]
+      },
+      {
+        "groupCode": "3b3-1c0-280",
+        "groupCreator": "643016",
+        "groupMembers": ["643016", "985651"]
+      },
+      {
+        "groupCode": "0e4-297-fc5",
+        "groupCreator": "682519",
+        "groupMembers": ["682519"]
+      },
+      {
+        "groupCode": "931-edf-9d5",
+        "groupCreator": "466210",
+        "groupMembers": ["466210", "430727", "822061"]
+      }
+    ],
     "assignmentTime": "2024-07-20T07:00:00Z",
     "algorithm": "random",
     "message": "Random Assignment Result - Attendees: 111/260 (43%), Program items: 23/23 (100%)",
@@ -3234,6 +3519,78 @@
         }
       }
     ],
+    "groups": [
+      {
+        "groupCode": "515-6c9-558",
+        "groupCreator": "280157",
+        "groupMembers": ["280157", "901460"]
+      },
+      {
+        "groupCode": "eec-2ef-f72",
+        "groupCreator": "388118",
+        "groupMembers": ["388118", "976519", "115563", "371338"]
+      },
+      {
+        "groupCode": "c0a-890-c17",
+        "groupCreator": "4587",
+        "groupMembers": ["4587", "178148"]
+      },
+      {
+        "groupCode": "d18-aea-1ab",
+        "groupCreator": "135593",
+        "groupMembers": ["135593", "298891"]
+      },
+      {
+        "groupCode": "98d-01b-37d",
+        "groupCreator": "317394",
+        "groupMembers": ["317394", "297254"]
+      },
+      {
+        "groupCode": "2c3-199-455",
+        "groupCreator": "931331",
+        "groupMembers": ["931331", "743241"]
+      },
+      {
+        "groupCode": "687-67e-909",
+        "groupCreator": "22276",
+        "groupMembers": ["22276", "777775"]
+      },
+      {
+        "groupCode": "75b-8ba-743",
+        "groupCreator": "707742",
+        "groupMembers": ["707742", "398170"]
+      },
+      {
+        "groupCode": "def-47d-ebe",
+        "groupCreator": "699724",
+        "groupMembers": ["699724", "131581"]
+      },
+      {
+        "groupCode": "769-2b0-68f",
+        "groupCreator": "47776",
+        "groupMembers": ["47776", "206177"]
+      },
+      {
+        "groupCode": "0b2-f1d-00a",
+        "groupCreator": "621719",
+        "groupMembers": ["621719", "621436"]
+      },
+      {
+        "groupCode": "51b-86e-cc4",
+        "groupCreator": "387930",
+        "groupMembers": ["387930", "522670"]
+      },
+      {
+        "groupCode": "76b-c63-a82",
+        "groupCreator": "799410",
+        "groupMembers": ["799410", "785617", "968919"]
+      },
+      {
+        "groupCode": "30f-24c-4bf",
+        "groupCreator": "662088",
+        "groupMembers": ["662088", "583732"]
+      }
+    ],
     "assignmentTime": "2024-07-20T08:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assignment Result - Attendees: 60/172 (35%), Program items: 12/12 (100%)",
@@ -3611,6 +3968,103 @@
         }
       }
     ],
+    "groups": [
+      {
+        "groupCode": "fbd-b1f-253",
+        "groupCreator": "984227",
+        "groupMembers": ["984227", "641560"]
+      },
+      {
+        "groupCode": "eec-2ef-f72",
+        "groupCreator": "388118",
+        "groupMembers": ["388118", "976519", "115563", "371338"]
+      },
+      {
+        "groupCode": "fbc-2f5-6e0",
+        "groupCreator": "109595",
+        "groupMembers": ["109595", "469197"]
+      },
+      {
+        "groupCode": "d18-aea-1ab",
+        "groupCreator": "135593",
+        "groupMembers": ["135593", "298891"]
+      },
+      {
+        "groupCode": "3ca-bba-817",
+        "groupCreator": "976948",
+        "groupMembers": ["976948", "303087"]
+      },
+      {
+        "groupCode": "687-67e-909",
+        "groupCreator": "22276",
+        "groupMembers": ["22276", "777775"]
+      },
+      {
+        "groupCode": "aa3-878-118",
+        "groupCreator": "890404",
+        "groupMembers": ["890404", "844160", "455509"]
+      },
+      {
+        "groupCode": "b64-a6d-e13",
+        "groupCreator": "696311",
+        "groupMembers": ["696311", "266077", "201967", "519701"]
+      },
+      {
+        "groupCode": "80d-723-7a5",
+        "groupCreator": "828486",
+        "groupMembers": ["828486", "278300", "576362", "324080"]
+      },
+      {
+        "groupCode": "75b-8ba-743",
+        "groupCreator": "707742",
+        "groupMembers": ["707742", "398170"]
+      },
+      {
+        "groupCode": "def-47d-ebe",
+        "groupCreator": "699724",
+        "groupMembers": ["699724", "131581"]
+      },
+      {
+        "groupCode": "6d2-ef1-c1a",
+        "groupCreator": "369404",
+        "groupMembers": ["369404", "359918"]
+      },
+      {
+        "groupCode": "769-2b0-68f",
+        "groupCreator": "47776",
+        "groupMembers": ["47776", "206177"]
+      },
+      {
+        "groupCode": "817-adc-b34",
+        "groupCreator": "229362",
+        "groupMembers": ["229362", "622099", "572977"]
+      },
+      {
+        "groupCode": "28c-b3c-561",
+        "groupCreator": "407015",
+        "groupMembers": ["407015", "791678"]
+      },
+      {
+        "groupCode": "0e4-297-fc5",
+        "groupCreator": "682519",
+        "groupMembers": ["682519"]
+      },
+      {
+        "groupCode": "76b-c63-a82",
+        "groupCreator": "799410",
+        "groupMembers": ["799410", "785617", "968919"]
+      },
+      {
+        "groupCode": "30f-24c-4bf",
+        "groupCreator": "662088",
+        "groupMembers": ["662088", "583732"]
+      },
+      {
+        "groupCode": "76d-a31-def",
+        "groupCreator": "471146",
+        "groupMembers": ["471146", "898172", "453428", "687346"]
+      }
+    ],
     "assignmentTime": "2024-07-20T09:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assignment Result - Attendees: 46/169 (27%), Program items: 9/9 (100%)",
@@ -3986,6 +4440,48 @@
           "priority": 1,
           "signedToStartTime": "2024-07-20T10:00:00Z"
         }
+      }
+    ],
+    "groups": [
+      {
+        "groupCode": "fbd-b1f-253",
+        "groupCreator": "984227",
+        "groupMembers": ["984227", "641560"]
+      },
+      {
+        "groupCode": "962-850-f34",
+        "groupCreator": "793421",
+        "groupMembers": ["793421", "976018", "902961"]
+      },
+      {
+        "groupCode": "515-6c9-558",
+        "groupCreator": "280157",
+        "groupMembers": ["280157", "901460"]
+      },
+      {
+        "groupCode": "eec-2ef-f72",
+        "groupCreator": "388118",
+        "groupMembers": ["388118", "976519", "115563", "371338"]
+      },
+      {
+        "groupCode": "2c3-199-455",
+        "groupCreator": "931331",
+        "groupMembers": ["931331", "743241"]
+      },
+      {
+        "groupCode": "def-47d-ebe",
+        "groupCreator": "699724",
+        "groupMembers": ["699724", "131581"]
+      },
+      {
+        "groupCode": "6d2-ef1-c1a",
+        "groupCreator": "369404",
+        "groupMembers": ["369404", "359918"]
+      },
+      {
+        "groupCode": "30f-24c-4bf",
+        "groupCreator": "662088",
+        "groupMembers": ["662088", "583732"]
       }
     ],
     "assignmentTime": "2024-07-20T10:00:00Z",
@@ -4453,6 +4949,123 @@
         }
       }
     ],
+    "groups": [
+      {
+        "groupCode": "fbd-b1f-253",
+        "groupCreator": "984227",
+        "groupMembers": ["984227", "641560"]
+      },
+      {
+        "groupCode": "962-850-f34",
+        "groupCreator": "793421",
+        "groupMembers": ["793421", "976018", "902961"]
+      },
+      {
+        "groupCode": "eec-2ef-f72",
+        "groupCreator": "388118",
+        "groupMembers": ["388118", "976519", "115563", "371338"]
+      },
+      {
+        "groupCode": "d83-bb0-f51",
+        "groupCreator": "404450",
+        "groupMembers": ["404450"]
+      },
+      {
+        "groupCode": "00c-8e1-3ac",
+        "groupCreator": "449782",
+        "groupMembers": ["449782", "28964", "364904"]
+      },
+      {
+        "groupCode": "fbc-2f5-6e0",
+        "groupCreator": "109595",
+        "groupMembers": ["109595", "469197"]
+      },
+      {
+        "groupCode": "d18-aea-1ab",
+        "groupCreator": "135593",
+        "groupMembers": ["135593", "298891"]
+      },
+      {
+        "groupCode": "d1c-a15-a71",
+        "groupCreator": "923096",
+        "groupMembers": ["923096", "708128"]
+      },
+      {
+        "groupCode": "3ca-bba-817",
+        "groupCreator": "976948",
+        "groupMembers": ["976948", "303087"]
+      },
+      {
+        "groupCode": "2c3-199-455",
+        "groupCreator": "931331",
+        "groupMembers": ["931331", "743241"]
+      },
+      {
+        "groupCode": "687-67e-909",
+        "groupCreator": "22276",
+        "groupMembers": ["22276", "777775"]
+      },
+      {
+        "groupCode": "a31-634-7fc",
+        "groupCreator": "117376",
+        "groupMembers": ["117376", "966238", "580972", "37060"]
+      },
+      {
+        "groupCode": "aa3-878-118",
+        "groupCreator": "890404",
+        "groupMembers": ["890404", "844160", "455509"]
+      },
+      {
+        "groupCode": "b64-a6d-e13",
+        "groupCreator": "696311",
+        "groupMembers": ["696311", "266077", "201967", "519701"]
+      },
+      {
+        "groupCode": "def-47d-ebe",
+        "groupCreator": "699724",
+        "groupMembers": ["699724", "131581"]
+      },
+      {
+        "groupCode": "6d2-ef1-c1a",
+        "groupCreator": "369404",
+        "groupMembers": ["369404", "359918"]
+      },
+      {
+        "groupCode": "193-b0d-1c3",
+        "groupCreator": "143479",
+        "groupMembers": ["143479", "78922"]
+      },
+      {
+        "groupCode": "e5e-b71-7c3",
+        "groupCreator": "639090",
+        "groupMembers": ["639090", "910595"]
+      },
+      {
+        "groupCode": "4f6-721-ed7",
+        "groupCreator": "315663",
+        "groupMembers": ["315663", "521548"]
+      },
+      {
+        "groupCode": "769-2b0-68f",
+        "groupCreator": "47776",
+        "groupMembers": ["47776", "206177"]
+      },
+      {
+        "groupCode": "28c-b3c-561",
+        "groupCreator": "407015",
+        "groupMembers": ["407015", "791678"]
+      },
+      {
+        "groupCode": "0e4-297-fc5",
+        "groupCreator": "682519",
+        "groupMembers": ["682519"]
+      },
+      {
+        "groupCode": "76b-c63-a82",
+        "groupCreator": "799410",
+        "groupMembers": ["799410", "785617", "968919"]
+      }
+    ],
     "assignmentTime": "2024-07-20T11:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assignment Result - Attendees: 57/250 (23%), Program items: 12/12 (100%)",
@@ -4772,6 +5385,88 @@
           "priority": 1,
           "signedToStartTime": "2024-07-20T12:00:00Z"
         }
+      }
+    ],
+    "groups": [
+      {
+        "groupCode": "962-850-f34",
+        "groupCreator": "793421",
+        "groupMembers": ["793421", "976018", "902961"]
+      },
+      {
+        "groupCode": "29e-bdb-1c9",
+        "groupCreator": "413382",
+        "groupMembers": ["413382", "493794"]
+      },
+      {
+        "groupCode": "fbc-2f5-6e0",
+        "groupCreator": "109595",
+        "groupMembers": ["109595", "469197"]
+      },
+      {
+        "groupCode": "d18-aea-1ab",
+        "groupCreator": "135593",
+        "groupMembers": ["135593", "298891"]
+      },
+      {
+        "groupCode": "3ca-bba-817",
+        "groupCreator": "976948",
+        "groupMembers": ["976948", "303087"]
+      },
+      {
+        "groupCode": "687-67e-909",
+        "groupCreator": "22276",
+        "groupMembers": ["22276", "777775"]
+      },
+      {
+        "groupCode": "a31-634-7fc",
+        "groupCreator": "117376",
+        "groupMembers": ["117376", "966238", "580972", "37060"]
+      },
+      {
+        "groupCode": "aa3-878-118",
+        "groupCreator": "890404",
+        "groupMembers": ["890404", "844160", "455509"]
+      },
+      {
+        "groupCode": "def-47d-ebe",
+        "groupCreator": "699724",
+        "groupMembers": ["699724", "131581"]
+      },
+      {
+        "groupCode": "6d2-ef1-c1a",
+        "groupCreator": "369404",
+        "groupMembers": ["369404", "359918"]
+      },
+      {
+        "groupCode": "769-2b0-68f",
+        "groupCreator": "47776",
+        "groupMembers": ["47776", "206177"]
+      },
+      {
+        "groupCode": "806-170-e58",
+        "groupCreator": "318121",
+        "groupMembers": ["318121", "140893", "764861", "932854", "885618"]
+      },
+      {
+        "groupCode": "28c-b3c-561",
+        "groupCreator": "407015",
+        "groupMembers": ["407015", "791678"]
+      },
+      {
+        "groupCode": "3b3-1c0-280",
+        "groupCreator": "643016",
+        "groupMembers": ["643016", "985651"]
+      },
+      {
+        "groupCode": "931-edf-9d5",
+        "groupCreator": "466210",
+        "groupMembers": ["466210", "430727", "822061"]
+      },
+      {
+        "groupCode": "76b-c63-a82",
+        "groupCreator": "799410",
+        "groupMembers": ["799410", "785617", "968919"]
       }
     ],
     "assignmentTime": "2024-07-20T12:00:00Z",
@@ -5311,6 +6006,103 @@
         }
       }
     ],
+    "groups": [
+      {
+        "groupCode": "298-221-407",
+        "groupCreator": "13492",
+        "groupMembers": ["13492", "314797"]
+      },
+      {
+        "groupCode": "29e-bdb-1c9",
+        "groupCreator": "413382",
+        "groupMembers": ["413382", "493794"]
+      },
+      {
+        "groupCode": "959-df0-eea",
+        "groupCreator": "613928",
+        "groupMembers": ["613928", "318778"]
+      },
+      {
+        "groupCode": "2dd-0cf-5ca",
+        "groupCreator": "384419",
+        "groupMembers": ["384419", "65481"]
+      },
+      {
+        "groupCode": "c0a-890-c17",
+        "groupCreator": "4587",
+        "groupMembers": ["4587", "178148"]
+      },
+      {
+        "groupCode": "d18-aea-1ab",
+        "groupCreator": "135593",
+        "groupMembers": ["135593", "298891"]
+      },
+      {
+        "groupCode": "2c3-199-455",
+        "groupCreator": "931331",
+        "groupMembers": ["931331", "743241"]
+      },
+      {
+        "groupCode": "687-67e-909",
+        "groupCreator": "22276",
+        "groupMembers": ["22276", "777775"]
+      },
+      {
+        "groupCode": "a31-634-7fc",
+        "groupCreator": "117376",
+        "groupMembers": ["117376", "966238", "580972", "37060"]
+      },
+      {
+        "groupCode": "80d-723-7a5",
+        "groupCreator": "828486",
+        "groupMembers": ["828486", "278300", "576362", "324080"]
+      },
+      {
+        "groupCode": "def-47d-ebe",
+        "groupCreator": "699724",
+        "groupMembers": ["699724", "131581"]
+      },
+      {
+        "groupCode": "193-b0d-1c3",
+        "groupCreator": "143479",
+        "groupMembers": ["143479", "78922"]
+      },
+      {
+        "groupCode": "fba-d7b-f2e",
+        "groupCreator": "444260",
+        "groupMembers": ["444260", "36369"]
+      },
+      {
+        "groupCode": "806-170-e58",
+        "groupCreator": "318121",
+        "groupMembers": ["318121", "140893", "764861", "932854", "885618"]
+      },
+      {
+        "groupCode": "28c-b3c-561",
+        "groupCreator": "407015",
+        "groupMembers": ["407015", "791678"]
+      },
+      {
+        "groupCode": "3b3-1c0-280",
+        "groupCreator": "643016",
+        "groupMembers": ["643016", "985651"]
+      },
+      {
+        "groupCode": "931-edf-9d5",
+        "groupCreator": "466210",
+        "groupMembers": ["466210", "430727", "822061"]
+      },
+      {
+        "groupCode": "76b-c63-a82",
+        "groupCreator": "799410",
+        "groupMembers": ["799410", "785617", "968919"]
+      },
+      {
+        "groupCode": "348-52b-c7e",
+        "groupCreator": "405044",
+        "groupMembers": ["405044", "290310", "828872"]
+      }
+    ],
     "assignmentTime": "2024-07-20T13:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assignment Result - Attendees: 66/230 (29%), Program items: 14/14 (100%)",
@@ -5712,6 +6504,73 @@
         }
       }
     ],
+    "groups": [
+      {
+        "groupCode": "29e-bdb-1c9",
+        "groupCreator": "413382",
+        "groupMembers": ["413382", "493794"]
+      },
+      {
+        "groupCode": "afb-f73-9b5",
+        "groupCreator": "28601",
+        "groupMembers": ["28601", "105909"]
+      },
+      {
+        "groupCode": "00c-8e1-3ac",
+        "groupCreator": "449782",
+        "groupMembers": ["449782", "28964", "364904"]
+      },
+      {
+        "groupCode": "c0a-890-c17",
+        "groupCreator": "4587",
+        "groupMembers": ["4587", "178148"]
+      },
+      {
+        "groupCode": "5ef-bce-54c",
+        "groupCreator": "841179",
+        "groupMembers": ["841179", "309325"]
+      },
+      {
+        "groupCode": "a31-634-7fc",
+        "groupCreator": "117376",
+        "groupMembers": ["117376", "966238", "580972", "37060"]
+      },
+      {
+        "groupCode": "aa3-878-118",
+        "groupCreator": "890404",
+        "groupMembers": ["890404", "844160", "455509"]
+      },
+      {
+        "groupCode": "def-47d-ebe",
+        "groupCreator": "699724",
+        "groupMembers": ["699724", "131581"]
+      },
+      {
+        "groupCode": "fba-d7b-f2e",
+        "groupCreator": "444260",
+        "groupMembers": ["444260", "36369"]
+      },
+      {
+        "groupCode": "806-170-e58",
+        "groupCreator": "318121",
+        "groupMembers": ["318121", "140893", "764861", "932854", "885618"]
+      },
+      {
+        "groupCode": "931-edf-9d5",
+        "groupCreator": "466210",
+        "groupMembers": ["466210", "430727", "822061"]
+      },
+      {
+        "groupCode": "76b-c63-a82",
+        "groupCreator": "799410",
+        "groupMembers": ["799410", "785617", "968919"]
+      },
+      {
+        "groupCode": "681-627-027",
+        "groupCreator": "333822",
+        "groupMembers": ["333822", "888361"]
+      }
+    ],
     "assignmentTime": "2024-07-20T14:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assignment Result - Attendees: 49/212 (23%), Program items: 10/10 (100%)",
@@ -6047,6 +6906,108 @@
           "priority": 2,
           "signedToStartTime": "2024-07-20T15:00:00Z"
         }
+      }
+    ],
+    "groups": [
+      {
+        "groupCode": "9d7-340-522",
+        "groupCreator": "880",
+        "groupMembers": ["880"]
+      },
+      {
+        "groupCode": "fbd-b1f-253",
+        "groupCreator": "984227",
+        "groupMembers": ["984227", "641560"]
+      },
+      {
+        "groupCode": "959-df0-eea",
+        "groupCreator": "613928",
+        "groupMembers": ["613928", "318778"]
+      },
+      {
+        "groupCode": "fbc-2f5-6e0",
+        "groupCreator": "109595",
+        "groupMembers": ["109595", "469197"]
+      },
+      {
+        "groupCode": "d1c-a15-a71",
+        "groupCreator": "923096",
+        "groupMembers": ["923096", "708128"]
+      },
+      {
+        "groupCode": "98d-01b-37d",
+        "groupCreator": "317394",
+        "groupMembers": ["317394", "297254"]
+      },
+      {
+        "groupCode": "a31-634-7fc",
+        "groupCreator": "117376",
+        "groupMembers": ["117376", "966238", "580972", "37060"]
+      },
+      {
+        "groupCode": "aa3-878-118",
+        "groupCreator": "890404",
+        "groupMembers": ["890404", "844160", "455509"]
+      },
+      {
+        "groupCode": "b64-a6d-e13",
+        "groupCreator": "696311",
+        "groupMembers": ["696311", "266077", "201967", "519701"]
+      },
+      {
+        "groupCode": "147-b11-25f",
+        "groupCreator": "282797",
+        "groupMembers": ["282797", "754958"]
+      },
+      {
+        "groupCode": "def-47d-ebe",
+        "groupCreator": "699724",
+        "groupMembers": ["699724", "131581"]
+      },
+      {
+        "groupCode": "6d2-ef1-c1a",
+        "groupCreator": "369404",
+        "groupMembers": ["369404", "359918"]
+      },
+      {
+        "groupCode": "e5e-b71-7c3",
+        "groupCreator": "639090",
+        "groupMembers": ["639090", "910595"]
+      },
+      {
+        "groupCode": "806-170-e58",
+        "groupCreator": "318121",
+        "groupMembers": ["318121", "140893", "764861", "932854", "885618"]
+      },
+      {
+        "groupCode": "76b-c63-a82",
+        "groupCreator": "799410",
+        "groupMembers": ["799410", "785617", "968919"]
+      },
+      {
+        "groupCode": "76d-a31-def",
+        "groupCreator": "471146",
+        "groupMembers": ["471146", "898172", "453428", "687346"]
+      },
+      {
+        "groupCode": "58f-a54-55c",
+        "groupCreator": "509681",
+        "groupMembers": ["509681", "876911", "398372"]
+      },
+      {
+        "groupCode": "348-52b-c7e",
+        "groupCreator": "405044",
+        "groupMembers": ["405044", "290310", "828872"]
+      },
+      {
+        "groupCode": "681-627-027",
+        "groupCreator": "333822",
+        "groupMembers": ["333822", "888361"]
+      },
+      {
+        "groupCode": "598-4f6-658",
+        "groupCreator": "867523",
+        "groupMembers": ["867523", "684405", "844678"]
       }
     ],
     "assignmentTime": "2024-07-20T15:00:00Z",
@@ -6418,6 +7379,93 @@
         }
       }
     ],
+    "groups": [
+      {
+        "groupCode": "eec-2ef-f72",
+        "groupCreator": "388118",
+        "groupMembers": ["388118", "976519", "115563", "371338"]
+      },
+      {
+        "groupCode": "fd5-a42-7ac",
+        "groupCreator": "634200",
+        "groupMembers": ["634200", "781391"]
+      },
+      {
+        "groupCode": "959-df0-eea",
+        "groupCreator": "613928",
+        "groupMembers": ["613928", "318778"]
+      },
+      {
+        "groupCode": "d1c-a15-a71",
+        "groupCreator": "923096",
+        "groupMembers": ["923096", "708128"]
+      },
+      {
+        "groupCode": "98d-01b-37d",
+        "groupCreator": "317394",
+        "groupMembers": ["317394", "297254"]
+      },
+      {
+        "groupCode": "2c3-199-455",
+        "groupCreator": "931331",
+        "groupMembers": ["931331", "743241"]
+      },
+      {
+        "groupCode": "5ef-bce-54c",
+        "groupCreator": "841179",
+        "groupMembers": ["841179", "309325"]
+      },
+      {
+        "groupCode": "a31-634-7fc",
+        "groupCreator": "117376",
+        "groupMembers": ["117376", "966238", "580972", "37060"]
+      },
+      {
+        "groupCode": "aa3-878-118",
+        "groupCreator": "890404",
+        "groupMembers": ["890404", "844160", "455509"]
+      },
+      {
+        "groupCode": "6d2-ef1-c1a",
+        "groupCreator": "369404",
+        "groupMembers": ["369404", "359918"]
+      },
+      {
+        "groupCode": "e5e-b71-7c3",
+        "groupCreator": "639090",
+        "groupMembers": ["639090", "910595"]
+      },
+      {
+        "groupCode": "94a-b1b-94a",
+        "groupCreator": "603512",
+        "groupMembers": ["603512", "146947"]
+      },
+      {
+        "groupCode": "1cc-dda-66d",
+        "groupCreator": "47574",
+        "groupMembers": ["47574", "402800", "353851"]
+      },
+      {
+        "groupCode": "806-170-e58",
+        "groupCreator": "318121",
+        "groupMembers": ["318121", "140893", "764861", "932854", "885618"]
+      },
+      {
+        "groupCode": "76b-c63-a82",
+        "groupCreator": "799410",
+        "groupMembers": ["799410", "785617", "968919"]
+      },
+      {
+        "groupCode": "681-627-027",
+        "groupCreator": "333822",
+        "groupMembers": ["333822", "888361"]
+      },
+      {
+        "groupCode": "598-4f6-658",
+        "groupCreator": "867523",
+        "groupMembers": ["867523", "684405", "844678"]
+      }
+    ],
     "assignmentTime": "2024-07-20T16:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assignment Result - Attendees: 45/256 (18%), Program items: 9/9 (100%)",
@@ -6665,6 +7713,63 @@
           "priority": 2,
           "signedToStartTime": "2024-07-20T17:00:00Z"
         }
+      }
+    ],
+    "groups": [
+      {
+        "groupCode": "eec-2ef-f72",
+        "groupCreator": "388118",
+        "groupMembers": ["388118", "976519", "115563", "371338"]
+      },
+      {
+        "groupCode": "d18-aea-1ab",
+        "groupCreator": "135593",
+        "groupMembers": ["135593", "298891"]
+      },
+      {
+        "groupCode": "2c3-199-455",
+        "groupCreator": "931331",
+        "groupMembers": ["931331", "743241"]
+      },
+      {
+        "groupCode": "687-67e-909",
+        "groupCreator": "22276",
+        "groupMembers": ["22276", "777775"]
+      },
+      {
+        "groupCode": "aa3-878-118",
+        "groupCreator": "890404",
+        "groupMembers": ["890404", "844160", "455509"]
+      },
+      {
+        "groupCode": "def-47d-ebe",
+        "groupCreator": "699724",
+        "groupMembers": ["699724", "131581"]
+      },
+      {
+        "groupCode": "6d2-ef1-c1a",
+        "groupCreator": "369404",
+        "groupMembers": ["369404", "359918"]
+      },
+      {
+        "groupCode": "94a-b1b-94a",
+        "groupCreator": "603512",
+        "groupMembers": ["603512", "146947"]
+      },
+      {
+        "groupCode": "76b-c63-a82",
+        "groupCreator": "799410",
+        "groupMembers": ["799410", "785617", "968919"]
+      },
+      {
+        "groupCode": "681-627-027",
+        "groupCreator": "333822",
+        "groupMembers": ["333822", "888361"]
+      },
+      {
+        "groupCode": "598-4f6-658",
+        "groupCreator": "867523",
+        "groupMembers": ["867523", "684405", "844678"]
       }
     ],
     "assignmentTime": "2024-07-20T17:00:00Z",
@@ -6940,6 +8045,73 @@
         }
       }
     ],
+    "groups": [
+      {
+        "groupCode": "298-221-407",
+        "groupCreator": "13492",
+        "groupMembers": ["13492", "314797"]
+      },
+      {
+        "groupCode": "afb-f73-9b5",
+        "groupCreator": "28601",
+        "groupMembers": ["28601", "105909"]
+      },
+      {
+        "groupCode": "fd5-a42-7ac",
+        "groupCreator": "634200",
+        "groupMembers": ["634200", "781391"]
+      },
+      {
+        "groupCode": "2c3-199-455",
+        "groupCreator": "931331",
+        "groupMembers": ["931331", "743241"]
+      },
+      {
+        "groupCode": "147-b11-25f",
+        "groupCreator": "282797",
+        "groupMembers": ["282797", "754958"]
+      },
+      {
+        "groupCode": "def-47d-ebe",
+        "groupCreator": "699724",
+        "groupMembers": ["699724", "131581"]
+      },
+      {
+        "groupCode": "6d2-ef1-c1a",
+        "groupCreator": "369404",
+        "groupMembers": ["369404", "359918"]
+      },
+      {
+        "groupCode": "193-b0d-1c3",
+        "groupCreator": "143479",
+        "groupMembers": ["143479", "78922"]
+      },
+      {
+        "groupCode": "e5e-b71-7c3",
+        "groupCreator": "639090",
+        "groupMembers": ["639090", "910595"]
+      },
+      {
+        "groupCode": "94a-b1b-94a",
+        "groupCreator": "603512",
+        "groupMembers": ["603512", "146947"]
+      },
+      {
+        "groupCode": "4f6-721-ed7",
+        "groupCreator": "315663",
+        "groupMembers": ["315663", "521548"]
+      },
+      {
+        "groupCode": "28c-b3c-561",
+        "groupCreator": "407015",
+        "groupMembers": ["407015", "791678"]
+      },
+      {
+        "groupCode": "598-4f6-658",
+        "groupCreator": "867523",
+        "groupMembers": ["867523", "684405", "844678"]
+      }
+    ],
     "assignmentTime": "2024-07-20T18:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assignment Result - Attendees: 33/144 (23%), Program items: 7/7 (100%)",
@@ -7093,6 +8265,38 @@
         }
       }
     ],
+    "groups": [
+      {
+        "groupCode": "298-221-407",
+        "groupCreator": "13492",
+        "groupMembers": ["13492", "314797"]
+      },
+      {
+        "groupCode": "147-b11-25f",
+        "groupCreator": "282797",
+        "groupMembers": ["282797", "754958"]
+      },
+      {
+        "groupCode": "def-47d-ebe",
+        "groupCreator": "699724",
+        "groupMembers": ["699724", "131581"]
+      },
+      {
+        "groupCode": "94a-b1b-94a",
+        "groupCreator": "603512",
+        "groupMembers": ["603512", "146947"]
+      },
+      {
+        "groupCode": "1cc-dda-66d",
+        "groupCreator": "47574",
+        "groupMembers": ["47574", "402800", "353851"]
+      },
+      {
+        "groupCode": "774-f4a-5b7",
+        "groupCreator": "832688",
+        "groupMembers": ["832688", "420083", "974616"]
+      }
+    ],
     "assignmentTime": "2024-07-20T19:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assignment Result - Attendees: 18/102 (18%), Program items: 4/4 (100%)",
@@ -7174,6 +8378,28 @@
         }
       }
     ],
+    "groups": [
+      {
+        "groupCode": "147-b11-25f",
+        "groupCreator": "282797",
+        "groupMembers": ["282797", "754958"]
+      },
+      {
+        "groupCode": "4f6-721-ed7",
+        "groupCreator": "315663",
+        "groupMembers": ["315663", "521548"]
+      },
+      {
+        "groupCode": "774-f4a-5b7",
+        "groupCreator": "832688",
+        "groupMembers": ["832688", "420083", "974616"]
+      },
+      {
+        "groupCode": "51b-86e-cc4",
+        "groupCreator": "387930",
+        "groupMembers": ["387930", "522670"]
+      }
+    ],
     "assignmentTime": "2024-07-20T20:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assignment Result - Attendees: 9/45 (20%), Program items: 2/2 (100%)",
@@ -7231,6 +8457,7 @@
         }
       }
     ],
+    "groups": [],
     "assignmentTime": "2024-07-20T23:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assignment Result - Attendees: 6/11 (55%), Program items: 1/1 (100%)",
@@ -7318,6 +8545,18 @@
           "priority": 1,
           "signedToStartTime": "2024-07-21T06:00:00Z"
         }
+      }
+    ],
+    "groups": [
+      {
+        "groupCode": "5ef-bce-54c",
+        "groupCreator": "841179",
+        "groupMembers": ["841179", "309325"]
+      },
+      {
+        "groupCode": "0e4-297-fc5",
+        "groupCreator": "682519",
+        "groupMembers": ["682519"]
       }
     ],
     "assignmentTime": "2024-07-21T06:00:00Z",
@@ -7751,6 +8990,88 @@
           "priority": 2,
           "signedToStartTime": "2024-07-21T07:00:00Z"
         }
+      }
+    ],
+    "groups": [
+      {
+        "groupCode": "fbd-b1f-253",
+        "groupCreator": "984227",
+        "groupMembers": ["984227", "641560"]
+      },
+      {
+        "groupCode": "298-221-407",
+        "groupCreator": "13492",
+        "groupMembers": ["13492", "314797"]
+      },
+      {
+        "groupCode": "d83-bb0-f51",
+        "groupCreator": "404450",
+        "groupMembers": ["404450"]
+      },
+      {
+        "groupCode": "00c-8e1-3ac",
+        "groupCreator": "449782",
+        "groupMembers": ["449782", "28964", "364904"]
+      },
+      {
+        "groupCode": "d18-aea-1ab",
+        "groupCreator": "135593",
+        "groupMembers": ["135593", "298891"]
+      },
+      {
+        "groupCode": "2c3-199-455",
+        "groupCreator": "931331",
+        "groupMembers": ["931331", "743241"]
+      },
+      {
+        "groupCode": "5ef-bce-54c",
+        "groupCreator": "841179",
+        "groupMembers": ["841179", "309325"]
+      },
+      {
+        "groupCode": "046-e28-ae1",
+        "groupCreator": "480534",
+        "groupMembers": ["480534", "252539"]
+      },
+      {
+        "groupCode": "687-67e-909",
+        "groupCreator": "22276",
+        "groupMembers": ["22276", "777775"]
+      },
+      {
+        "groupCode": "a31-634-7fc",
+        "groupCreator": "117376",
+        "groupMembers": ["117376", "966238", "580972", "37060"]
+      },
+      {
+        "groupCode": "80d-723-7a5",
+        "groupCreator": "828486",
+        "groupMembers": ["828486", "278300", "576362", "324080"]
+      },
+      {
+        "groupCode": "6d2-ef1-c1a",
+        "groupCreator": "369404",
+        "groupMembers": ["369404", "359918"]
+      },
+      {
+        "groupCode": "94a-b1b-94a",
+        "groupCreator": "603512",
+        "groupMembers": ["603512", "146947"]
+      },
+      {
+        "groupCode": "3b3-1c0-280",
+        "groupCreator": "643016",
+        "groupMembers": ["643016", "985651"]
+      },
+      {
+        "groupCode": "0e4-297-fc5",
+        "groupCreator": "682519",
+        "groupMembers": ["682519"]
+      },
+      {
+        "groupCode": "598-4f6-658",
+        "groupCreator": "867523",
+        "groupMembers": ["867523", "684405", "844678"]
       }
     ],
     "assignmentTime": "2024-07-21T07:00:00Z",
@@ -8274,6 +9595,78 @@
         }
       }
     ],
+    "groups": [
+      {
+        "groupCode": "fbd-b1f-253",
+        "groupCreator": "984227",
+        "groupMembers": ["984227", "641560"]
+      },
+      {
+        "groupCode": "298-221-407",
+        "groupCreator": "13492",
+        "groupMembers": ["13492", "314797"]
+      },
+      {
+        "groupCode": "eec-2ef-f72",
+        "groupCreator": "388118",
+        "groupMembers": ["388118", "976519", "115563", "371338"]
+      },
+      {
+        "groupCode": "fd5-a42-7ac",
+        "groupCreator": "634200",
+        "groupMembers": ["634200", "781391"]
+      },
+      {
+        "groupCode": "00c-8e1-3ac",
+        "groupCreator": "449782",
+        "groupMembers": ["449782", "28964", "364904"]
+      },
+      {
+        "groupCode": "d18-aea-1ab",
+        "groupCreator": "135593",
+        "groupMembers": ["135593", "298891"]
+      },
+      {
+        "groupCode": "2c3-199-455",
+        "groupCreator": "931331",
+        "groupMembers": ["931331", "743241"]
+      },
+      {
+        "groupCode": "687-67e-909",
+        "groupCreator": "22276",
+        "groupMembers": ["22276", "777775"]
+      },
+      {
+        "groupCode": "aa3-878-118",
+        "groupCreator": "890404",
+        "groupMembers": ["890404", "844160", "455509"]
+      },
+      {
+        "groupCode": "80d-723-7a5",
+        "groupCreator": "828486",
+        "groupMembers": ["828486", "278300", "576362", "324080"]
+      },
+      {
+        "groupCode": "6d2-ef1-c1a",
+        "groupCreator": "369404",
+        "groupMembers": ["369404", "359918"]
+      },
+      {
+        "groupCode": "94a-b1b-94a",
+        "groupCreator": "603512",
+        "groupMembers": ["603512", "146947"]
+      },
+      {
+        "groupCode": "30f-24c-4bf",
+        "groupCreator": "662088",
+        "groupMembers": ["662088", "583732"]
+      },
+      {
+        "groupCode": "598-4f6-658",
+        "groupCreator": "867523",
+        "groupMembers": ["867523", "684405", "844678"]
+      }
+    ],
     "assignmentTime": "2024-07-21T08:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assignment Result - Attendees: 64/174 (37%), Program items: 14/14 (100%)",
@@ -8755,6 +10148,68 @@
         }
       }
     ],
+    "groups": [
+      {
+        "groupCode": "fbd-b1f-253",
+        "groupCreator": "984227",
+        "groupMembers": ["984227", "641560"]
+      },
+      {
+        "groupCode": "eec-2ef-f72",
+        "groupCreator": "388118",
+        "groupMembers": ["388118", "976519", "115563", "371338"]
+      },
+      {
+        "groupCode": "fd5-a42-7ac",
+        "groupCreator": "634200",
+        "groupMembers": ["634200", "781391"]
+      },
+      {
+        "groupCode": "98d-01b-37d",
+        "groupCreator": "317394",
+        "groupMembers": ["317394", "297254"]
+      },
+      {
+        "groupCode": "687-67e-909",
+        "groupCreator": "22276",
+        "groupMembers": ["22276", "777775"]
+      },
+      {
+        "groupCode": "aa3-878-118",
+        "groupCreator": "890404",
+        "groupMembers": ["890404", "844160", "455509"]
+      },
+      {
+        "groupCode": "80d-723-7a5",
+        "groupCreator": "828486",
+        "groupMembers": ["828486", "278300", "576362", "324080"]
+      },
+      {
+        "groupCode": "def-47d-ebe",
+        "groupCreator": "699724",
+        "groupMembers": ["699724", "131581"]
+      },
+      {
+        "groupCode": "94a-b1b-94a",
+        "groupCreator": "603512",
+        "groupMembers": ["603512", "146947"]
+      },
+      {
+        "groupCode": "774-f4a-5b7",
+        "groupCreator": "832688",
+        "groupMembers": ["832688", "420083", "974616"]
+      },
+      {
+        "groupCode": "348-52b-c7e",
+        "groupCreator": "405044",
+        "groupMembers": ["405044", "290310", "828872"]
+      },
+      {
+        "groupCode": "598-4f6-658",
+        "groupCreator": "867523",
+        "groupMembers": ["867523", "684405", "844678"]
+      }
+    ],
     "assignmentTime": "2024-07-21T09:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assignment Result - Attendees: 59/145 (41%), Program items: 11/11 (100%)",
@@ -9116,6 +10571,48 @@
         }
       }
     ],
+    "groups": [
+      {
+        "groupCode": "fbd-b1f-253",
+        "groupCreator": "984227",
+        "groupMembers": ["984227", "641560"]
+      },
+      {
+        "groupCode": "afb-f73-9b5",
+        "groupCreator": "28601",
+        "groupMembers": ["28601", "105909"]
+      },
+      {
+        "groupCode": "eec-2ef-f72",
+        "groupCreator": "388118",
+        "groupMembers": ["388118", "976519", "115563", "371338"]
+      },
+      {
+        "groupCode": "aa3-878-118",
+        "groupCreator": "890404",
+        "groupMembers": ["890404", "844160", "455509"]
+      },
+      {
+        "groupCode": "b64-a6d-e13",
+        "groupCreator": "696311",
+        "groupMembers": ["696311", "266077", "201967", "519701"]
+      },
+      {
+        "groupCode": "fba-d7b-f2e",
+        "groupCreator": "444260",
+        "groupMembers": ["444260", "36369"]
+      },
+      {
+        "groupCode": "0b2-f1d-00a",
+        "groupCreator": "621719",
+        "groupMembers": ["621719", "621436"]
+      },
+      {
+        "groupCode": "51b-86e-cc4",
+        "groupCreator": "387930",
+        "groupMembers": ["387930", "522670"]
+      }
+    ],
     "assignmentTime": "2024-07-21T10:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assignment Result - Attendees: 44/129 (34%), Program items: 9/9 (100%)",
@@ -9277,6 +10774,38 @@
         }
       }
     ],
+    "groups": [
+      {
+        "groupCode": "fbd-b1f-253",
+        "groupCreator": "984227",
+        "groupMembers": ["984227", "641560"]
+      },
+      {
+        "groupCode": "afb-f73-9b5",
+        "groupCreator": "28601",
+        "groupMembers": ["28601", "105909"]
+      },
+      {
+        "groupCode": "98d-01b-37d",
+        "groupCreator": "317394",
+        "groupMembers": ["317394", "297254"]
+      },
+      {
+        "groupCode": "b64-a6d-e13",
+        "groupCreator": "696311",
+        "groupMembers": ["696311", "266077", "201967", "519701"]
+      },
+      {
+        "groupCode": "80d-723-7a5",
+        "groupCreator": "828486",
+        "groupMembers": ["828486", "278300", "576362", "324080"]
+      },
+      {
+        "groupCode": "fba-d7b-f2e",
+        "groupCreator": "444260",
+        "groupMembers": ["444260", "36369"]
+      }
+    ],
     "assignmentTime": "2024-07-21T11:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assignment Result - Attendees: 19/74 (26%), Program items: 4/4 (100%)",
@@ -9324,6 +10853,23 @@
           "priority": 1,
           "signedToStartTime": "2024-07-21T12:00:00Z"
         }
+      }
+    ],
+    "groups": [
+      {
+        "groupCode": "afb-f73-9b5",
+        "groupCreator": "28601",
+        "groupMembers": ["28601", "105909"]
+      },
+      {
+        "groupCode": "687-67e-909",
+        "groupCreator": "22276",
+        "groupMembers": ["22276", "777775"]
+      },
+      {
+        "groupCode": "a6f-559-964",
+        "groupCreator": "936434",
+        "groupMembers": ["936434", "993137"]
       }
     ],
     "assignmentTime": "2024-07-21T12:00:00Z",

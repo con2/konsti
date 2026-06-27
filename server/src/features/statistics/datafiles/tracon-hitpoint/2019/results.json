@@ -258,6 +258,38 @@
         }
       }
     ],
+    "groups": [
+      {
+        "groupCode": "9050391540",
+        "groupCreator": "795913",
+        "groupMembers": ["795913", "922246"]
+      },
+      {
+        "groupCode": "7131608155",
+        "groupCreator": "248050",
+        "groupMembers": ["248050", "912525", "261992"]
+      },
+      {
+        "groupCode": "7493269596",
+        "groupCreator": "60212",
+        "groupMembers": ["60212", "7111"]
+      },
+      {
+        "groupCode": "9325036227",
+        "groupCreator": "659117",
+        "groupMembers": ["659117", "228215"]
+      },
+      {
+        "groupCode": "0785198748",
+        "groupCreator": "846747",
+        "groupMembers": ["846747", "716482"]
+      },
+      {
+        "groupCode": "5376017348",
+        "groupCreator": "853614",
+        "groupMembers": ["853614", "160466", "479680"]
+      }
+    ],
     "assignmentTime": "2019-11-23T10:00:00.000Z",
     "algorithm": "padg",
     "message": "Opa Assign Result - Players: 32/50 (64%, Games: 7/7 (100%)",
@@ -451,6 +483,35 @@
         }
       }
     ],
+    "groups": [
+      {
+        "groupCode": "5376017348",
+        "groupCreator": "853614",
+        "groupMembers": ["853614", "160466", "479680"]
+      },
+      {
+        "groupCode": "5478494544",
+        "groupCreator": "175872",
+        "groupMembers": ["175872", "810673"]
+      },
+      {
+        "groupCode": "0099566986",
+        "groupCreator": "915840",
+        "groupMembers": [
+          "915840",
+          "807733",
+          "437989",
+          "87449",
+          "504178",
+          "934897"
+        ]
+      },
+      {
+        "groupCode": "4356076549",
+        "groupCreator": "967510",
+        "groupMembers": ["967510", "935201"]
+      }
+    ],
     "assignmentTime": "2019-11-23T11:00:00.000Z",
     "algorithm": "padg",
     "message": "Opa Assign Result - Players: 23/37 (62%, Games: 4/4 (100%)",
@@ -594,6 +655,40 @@
           "priority": 1,
           "signedToStartTime": "2019-11-23T13:00:00.000Z"
         }
+      }
+    ],
+    "groups": [
+      {
+        "groupCode": "7493269596",
+        "groupCreator": "60212",
+        "groupMembers": ["60212", "7111"]
+      },
+      {
+        "groupCode": "5376017348",
+        "groupCreator": "853614",
+        "groupMembers": ["853614", "160466", "479680"]
+      },
+      {
+        "groupCode": "0099566986",
+        "groupCreator": "915840",
+        "groupMembers": [
+          "915840",
+          "807733",
+          "437989",
+          "87449",
+          "504178",
+          "934897"
+        ]
+      },
+      {
+        "groupCode": "4356076549",
+        "groupCreator": "967510",
+        "groupMembers": ["967510", "935201"]
+      },
+      {
+        "groupCode": "2447190097",
+        "groupCreator": "913097",
+        "groupMembers": ["913097", "89746"]
       }
     ],
     "assignmentTime": "2019-11-23T13:00:00.000Z",
@@ -821,6 +916,53 @@
         }
       }
     ],
+    "groups": [
+      {
+        "groupCode": "7493269596",
+        "groupCreator": "60212",
+        "groupMembers": ["60212", "7111"]
+      },
+      {
+        "groupCode": "9325036227",
+        "groupCreator": "659117",
+        "groupMembers": ["659117", "228215"]
+      },
+      {
+        "groupCode": "0785198748",
+        "groupCreator": "846747",
+        "groupMembers": ["846747", "716482"]
+      },
+      {
+        "groupCode": "5376017348",
+        "groupCreator": "853614",
+        "groupMembers": ["853614", "160466", "479680"]
+      },
+      {
+        "groupCode": "7707487588",
+        "groupCreator": "942120",
+        "groupMembers": ["942120", "870780"]
+      },
+      {
+        "groupCode": "4356076549",
+        "groupCreator": "967510",
+        "groupMembers": ["967510", "935201"]
+      },
+      {
+        "groupCode": "2447190097",
+        "groupCreator": "913097",
+        "groupMembers": ["913097", "89746"]
+      },
+      {
+        "groupCode": "9418906617",
+        "groupCreator": "267806",
+        "groupMembers": ["267806", "116365"]
+      },
+      {
+        "groupCode": "6303242181",
+        "groupCreator": "795536",
+        "groupMembers": ["795536", "714443"]
+      }
+    ],
     "assignmentTime": "2019-11-23T15:00:00.000Z",
     "algorithm": "padg",
     "message": "Opa Assign Result - Players: 27/44 (61%, Games: 5/5 (100%)",
@@ -998,6 +1140,38 @@
         }
       }
     ],
+    "groups": [
+      {
+        "groupCode": "5376017348",
+        "groupCreator": "853614",
+        "groupMembers": ["853614", "160466", "479680"]
+      },
+      {
+        "groupCode": "7707487588",
+        "groupCreator": "942120",
+        "groupMembers": ["942120", "870780"]
+      },
+      {
+        "groupCode": "4356076549",
+        "groupCreator": "967510",
+        "groupMembers": ["967510", "935201"]
+      },
+      {
+        "groupCode": "2447190097",
+        "groupCreator": "913097",
+        "groupMembers": ["913097", "89746"]
+      },
+      {
+        "groupCode": "0787862358",
+        "groupCreator": "204871",
+        "groupMembers": ["204871", "891283"]
+      },
+      {
+        "groupCode": "6303242181",
+        "groupCreator": "795536",
+        "groupMembers": ["795536", "714443"]
+      }
+    ],
     "assignmentTime": "2019-11-23T16:00:00.000Z",
     "algorithm": "padg",
     "message": "Opa Assign Result - Players: 21/32 (66%, Games: 4/4 (100%)",
@@ -1045,6 +1219,13 @@
           "priority": 3,
           "signedToStartTime": "2019-11-23T17:00:00.000Z"
         }
+      }
+    ],
+    "groups": [
+      {
+        "groupCode": "5376017348",
+        "groupCreator": "853614",
+        "groupMembers": ["853614", "160466", "479680"]
       }
     ],
     "assignmentTime": "2019-11-23T17:00:00.000Z",
@@ -1166,6 +1347,23 @@
           "priority": 1,
           "signedToStartTime": "2019-11-24T09:00:00.000Z"
         }
+      }
+    ],
+    "groups": [
+      {
+        "groupCode": "5376017348",
+        "groupCreator": "853614",
+        "groupMembers": ["853614", "160466", "479680"]
+      },
+      {
+        "groupCode": "1031070509",
+        "groupCreator": "429617",
+        "groupMembers": ["429617", "746036"]
+      },
+      {
+        "groupCode": "7707487588",
+        "groupCreator": "942120",
+        "groupMembers": ["942120", "870780"]
       }
     ],
     "assignmentTime": "2019-11-24T09:00:00.000Z",
@@ -1431,6 +1629,58 @@
           "priority": 1,
           "signedToStartTime": "2019-11-24T10:00:00.000Z"
         }
+      }
+    ],
+    "groups": [
+      {
+        "groupCode": "7131608155",
+        "groupCreator": "248050",
+        "groupMembers": ["248050", "912525", "261992"]
+      },
+      {
+        "groupCode": "7493269596",
+        "groupCreator": "60212",
+        "groupMembers": ["60212", "7111"]
+      },
+      {
+        "groupCode": "9325036227",
+        "groupCreator": "659117",
+        "groupMembers": ["659117", "228215"]
+      },
+      {
+        "groupCode": "0785198748",
+        "groupCreator": "846747",
+        "groupMembers": ["846747", "716482"]
+      },
+      {
+        "groupCode": "5376017348",
+        "groupCreator": "853614",
+        "groupMembers": ["853614", "160466", "479680"]
+      },
+      {
+        "groupCode": "1031070509",
+        "groupCreator": "429617",
+        "groupMembers": ["429617", "746036"]
+      },
+      {
+        "groupCode": "7707487588",
+        "groupCreator": "942120",
+        "groupMembers": ["942120", "870780"]
+      },
+      {
+        "groupCode": "2447190097",
+        "groupCreator": "913097",
+        "groupMembers": ["913097", "89746"]
+      },
+      {
+        "groupCode": "2494082726",
+        "groupCreator": "406688",
+        "groupMembers": ["406688", "761262"]
+      },
+      {
+        "groupCode": "5409558573",
+        "groupCreator": "307275",
+        "groupMembers": ["307275", "551140"]
       }
     ],
     "assignmentTime": "2019-11-24T10:00:00.000Z",

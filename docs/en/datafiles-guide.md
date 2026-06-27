@@ -100,11 +100,21 @@ Lottery assignment run results. Each entry represents one assignment run (the lo
         },
       },
     ],
+    "groups": [
+      // Snapshot of the groups that took part in this lottery run
+      {
+        "groupCode": "abc-def-ghi",
+        "groupCreator": "123456", // Username of the group creator
+        "groupMembers": ["123456", "654321"], // All members, creator included
+      },
+    ],
   },
 ]
 ```
 
 The same assignment data is also reflected in `direct-signups.json` (with priority > 0). This file provides the additional context of which algorithm was used and the assignment run metadata.
+
+`groups` was added after these events ran, so it is backfilled per run from each event's final `users.json` state: a group is included when its creator had a lottery signup for the run's start time or one of its members won in that run. Group membership reflects the dump's final state, which may differ from the moment the lottery actually ran.
 
 Ropecon 2021 has no `results.json` because no lottery was run that year (remote / COVID convention, direct signup only).
 

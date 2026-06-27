@@ -306,6 +306,38 @@
         }
       }
     ],
+    "groups": [
+      {
+        "groupCode": "0947255055",
+        "groupCreator": "781777",
+        "groupMembers": ["781777", "871097"]
+      },
+      {
+        "groupCode": "5848549829",
+        "groupCreator": "775710",
+        "groupMembers": ["775710", "981960"]
+      },
+      {
+        "groupCode": "8409615278",
+        "groupCreator": "925788",
+        "groupMembers": ["925788", "801596"]
+      },
+      {
+        "groupCode": "6828108354",
+        "groupCreator": "679608",
+        "groupMembers": ["679608", "155435", "24371", "632882"]
+      },
+      {
+        "groupCode": "0885381574",
+        "groupCreator": "84881",
+        "groupMembers": ["84881", "441127"]
+      },
+      {
+        "groupCode": "7550368109",
+        "groupCreator": "630366",
+        "groupMembers": ["630366", "803572", "733219"]
+      }
+    ],
     "assignmentTime": "2023-07-28T15:00:00Z",
     "algorithm": "random",
     "message": "Random Assign Result - Players: 38/44 (86%), Games: 8/9 (89%)",
@@ -457,6 +489,23 @@
           "priority": 1,
           "signedToStartTime": "2023-07-28T16:00:00Z"
         }
+      }
+    ],
+    "groups": [
+      {
+        "groupCode": "0088346085",
+        "groupCreator": "131896",
+        "groupMembers": ["131896", "464636"]
+      },
+      {
+        "groupCode": "9297268360",
+        "groupCreator": "789628",
+        "groupMembers": ["789628", "858851"]
+      },
+      {
+        "groupCode": "4391426394",
+        "groupCreator": "13344",
+        "groupMembers": ["13344", "246551"]
       }
     ],
     "assignmentTime": "2023-07-28T16:00:00Z",
@@ -708,6 +757,28 @@
         }
       }
     ],
+    "groups": [
+      {
+        "groupCode": "0947255055",
+        "groupCreator": "781777",
+        "groupMembers": ["781777", "871097"]
+      },
+      {
+        "groupCode": "9636822927",
+        "groupCreator": "777492",
+        "groupMembers": ["777492", "86713"]
+      },
+      {
+        "groupCode": "1984695831",
+        "groupCreator": "534715",
+        "groupMembers": ["534715", "392584"]
+      },
+      {
+        "groupCode": "9297268360",
+        "groupCreator": "789628",
+        "groupMembers": ["789628", "858851"]
+      }
+    ],
     "assignmentTime": "2023-07-28T17:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assign Result - Players: 30/81 (37%), Games: 6/6 (100%)",
@@ -899,6 +970,38 @@
           "priority": 2,
           "signedToStartTime": "2023-07-28T18:00:00Z"
         }
+      }
+    ],
+    "groups": [
+      {
+        "groupCode": "2288664101",
+        "groupCreator": "11796",
+        "groupMembers": ["11796", "700933"]
+      },
+      {
+        "groupCode": "2766167346",
+        "groupCreator": "242210",
+        "groupMembers": ["242210", "876068"]
+      },
+      {
+        "groupCode": "1984695831",
+        "groupCreator": "534715",
+        "groupMembers": ["534715", "392584"]
+      },
+      {
+        "groupCode": "0088346085",
+        "groupCreator": "131896",
+        "groupMembers": ["131896", "464636"]
+      },
+      {
+        "groupCode": "9297268360",
+        "groupCreator": "789628",
+        "groupMembers": ["789628", "858851"]
+      },
+      {
+        "groupCode": "1532996145",
+        "groupCreator": "242183",
+        "groupMembers": ["242183", "510078", "580331"]
       }
     ],
     "assignmentTime": "2023-07-28T18:00:00Z",
@@ -1110,6 +1213,43 @@
         }
       }
     ],
+    "groups": [
+      {
+        "groupCode": "4549609305",
+        "groupCreator": "91121",
+        "groupMembers": ["91121", "116554", "755929"]
+      },
+      {
+        "groupCode": "2766167346",
+        "groupCreator": "242210",
+        "groupMembers": ["242210", "876068"]
+      },
+      {
+        "groupCode": "0885381574",
+        "groupCreator": "84881",
+        "groupMembers": ["84881", "441127"]
+      },
+      {
+        "groupCode": "1700116963",
+        "groupCreator": "880537",
+        "groupMembers": ["880537", "670376"]
+      },
+      {
+        "groupCode": "9297268360",
+        "groupCreator": "789628",
+        "groupMembers": ["789628", "858851"]
+      },
+      {
+        "groupCode": "0211164405",
+        "groupCreator": "183495",
+        "groupMembers": ["183495"]
+      },
+      {
+        "groupCode": "3318770348",
+        "groupCreator": "913936",
+        "groupMembers": ["913936", "972396"]
+      }
+    ],
     "assignmentTime": "2023-07-28T19:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assign Result - Players: 25/107 (23%), Games: 5/5 (100%)",
@@ -1207,6 +1347,23 @@
         }
       }
     ],
+    "groups": [
+      {
+        "groupCode": "2766167346",
+        "groupCreator": "242210",
+        "groupMembers": ["242210", "876068"]
+      },
+      {
+        "groupCode": "0885381574",
+        "groupCreator": "84881",
+        "groupMembers": ["84881", "441127"]
+      },
+      {
+        "groupCode": "3318770348",
+        "groupCreator": "913936",
+        "groupMembers": ["913936", "972396"]
+      }
+    ],
     "assignmentTime": "2023-07-28T20:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assign Result - Players: 11/52 (21%), Games: 2/2 (100%)",
@@ -1264,6 +1421,7 @@
         }
       }
     ],
+    "groups": [],
     "assignmentTime": "2023-07-28T22:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assign Result - Players: 6/8 (75%), Games: 1/1 (100%)",
@@ -1311,6 +1469,18 @@
           "priority": 1,
           "signedToStartTime": "2023-07-29T06:00:00Z"
         }
+      }
+    ],
+    "groups": [
+      {
+        "groupCode": "5848549829",
+        "groupCreator": "775710",
+        "groupMembers": ["775710", "981960"]
+      },
+      {
+        "groupCode": "9297268360",
+        "groupCreator": "789628",
+        "groupMembers": ["789628", "858851"]
       }
     ],
     "assignmentTime": "2023-07-29T06:00:00Z",
@@ -1874,6 +2044,48 @@
         }
       }
     ],
+    "groups": [
+      {
+        "groupCode": "0374893030",
+        "groupCreator": "901388",
+        "groupMembers": ["901388", "913796"]
+      },
+      {
+        "groupCode": "2288664101",
+        "groupCreator": "11796",
+        "groupMembers": ["11796", "700933"]
+      },
+      {
+        "groupCode": "5848549829",
+        "groupCreator": "775710",
+        "groupMembers": ["775710", "981960"]
+      },
+      {
+        "groupCode": "7148723336",
+        "groupCreator": "39063",
+        "groupMembers": ["39063", "287096"]
+      },
+      {
+        "groupCode": "1100524329",
+        "groupCreator": "286127",
+        "groupMembers": ["286127", "343978", "752626"]
+      },
+      {
+        "groupCode": "9297268360",
+        "groupCreator": "789628",
+        "groupMembers": ["789628", "858851"]
+      },
+      {
+        "groupCode": "6840867987",
+        "groupCreator": "221939",
+        "groupMembers": ["221939"]
+      },
+      {
+        "groupCode": "5024125725",
+        "groupCreator": "905102",
+        "groupMembers": ["905102", "769451"]
+      }
+    ],
     "assignmentTime": "2023-07-29T07:00:00Z",
     "algorithm": "random",
     "message": "Random Assign Result - Players: 69/162 (43%), Games: 15/15 (100%)",
@@ -2209,6 +2421,73 @@
           "priority": 1,
           "signedToStartTime": "2023-07-29T08:00:00Z"
         }
+      }
+    ],
+    "groups": [
+      {
+        "groupCode": "1685133256",
+        "groupCreator": "337124",
+        "groupMembers": ["337124", "853163"]
+      },
+      {
+        "groupCode": "4549609305",
+        "groupCreator": "91121",
+        "groupMembers": ["91121", "116554", "755929"]
+      },
+      {
+        "groupCode": "9636822927",
+        "groupCreator": "777492",
+        "groupMembers": ["777492", "86713"]
+      },
+      {
+        "groupCode": "1100524329",
+        "groupCreator": "286127",
+        "groupMembers": ["286127", "343978", "752626"]
+      },
+      {
+        "groupCode": "6828108354",
+        "groupCreator": "679608",
+        "groupMembers": ["679608", "155435", "24371", "632882"]
+      },
+      {
+        "groupCode": "0885381574",
+        "groupCreator": "84881",
+        "groupMembers": ["84881", "441127"]
+      },
+      {
+        "groupCode": "1700116963",
+        "groupCreator": "880537",
+        "groupMembers": ["880537", "670376"]
+      },
+      {
+        "groupCode": "8476111524",
+        "groupCreator": "788704",
+        "groupMembers": ["788704", "819180"]
+      },
+      {
+        "groupCode": "9297268360",
+        "groupCreator": "789628",
+        "groupMembers": ["789628", "858851"]
+      },
+      {
+        "groupCode": "8705007121",
+        "groupCreator": "533904",
+        "groupMembers": ["533904", "918831", "844689", "845996"]
+      },
+      {
+        "groupCode": "3960049009",
+        "groupCreator": "373256",
+        "groupMembers": ["373256", "478836", "680030"]
+      },
+      {
+        "groupCode": "9453753981",
+        "groupCreator": "94014",
+        "groupMembers": ["94014", "42645"]
+      },
+      {
+        "groupCode": "1382409736",
+        "groupCreator": "98579",
+        "groupMembers": ["98579", "850966"]
       }
     ],
     "assignmentTime": "2023-07-29T08:00:00Z",
@@ -2628,6 +2907,63 @@
         }
       }
     ],
+    "groups": [
+      {
+        "groupCode": "1685133256",
+        "groupCreator": "337124",
+        "groupMembers": ["337124", "853163"]
+      },
+      {
+        "groupCode": "2288664101",
+        "groupCreator": "11796",
+        "groupMembers": ["11796", "700933"]
+      },
+      {
+        "groupCode": "3598650020",
+        "groupCreator": "756645",
+        "groupMembers": ["756645", "985011"]
+      },
+      {
+        "groupCode": "0749463204",
+        "groupCreator": "558580",
+        "groupMembers": ["558580", "469659", "6176", "84799"]
+      },
+      {
+        "groupCode": "1100524329",
+        "groupCreator": "286127",
+        "groupMembers": ["286127", "343978", "752626"]
+      },
+      {
+        "groupCode": "0885381574",
+        "groupCreator": "84881",
+        "groupMembers": ["84881", "441127"]
+      },
+      {
+        "groupCode": "1700116963",
+        "groupCreator": "880537",
+        "groupMembers": ["880537", "670376"]
+      },
+      {
+        "groupCode": "1984695831",
+        "groupCreator": "534715",
+        "groupMembers": ["534715", "392584"]
+      },
+      {
+        "groupCode": "9297268360",
+        "groupCreator": "789628",
+        "groupMembers": ["789628", "858851"]
+      },
+      {
+        "groupCode": "3960049009",
+        "groupCreator": "373256",
+        "groupMembers": ["373256", "478836", "680030"]
+      },
+      {
+        "groupCode": "9453753981",
+        "groupCreator": "94014",
+        "groupMembers": ["94014", "42645"]
+      }
+    ],
     "assignmentTime": "2023-07-29T09:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assign Result - Players: 51/135 (38%), Games: 10/10 (100%)",
@@ -2723,6 +3059,18 @@
           "priority": 1,
           "signedToStartTime": "2023-07-29T10:00:00Z"
         }
+      }
+    ],
+    "groups": [
+      {
+        "groupCode": "4549609305",
+        "groupCreator": "91121",
+        "groupMembers": ["91121", "116554", "755929"]
+      },
+      {
+        "groupCode": "5024125725",
+        "groupCreator": "905102",
+        "groupMembers": ["905102", "769451"]
       }
     ],
     "assignmentTime": "2023-07-29T10:00:00Z",
@@ -3422,6 +3770,63 @@
         }
       }
     ],
+    "groups": [
+      {
+        "groupCode": "2288664101",
+        "groupCreator": "11796",
+        "groupMembers": ["11796", "700933"]
+      },
+      {
+        "groupCode": "4549609305",
+        "groupCreator": "91121",
+        "groupMembers": ["91121", "116554", "755929"]
+      },
+      {
+        "groupCode": "9636822927",
+        "groupCreator": "777492",
+        "groupMembers": ["777492", "86713"]
+      },
+      {
+        "groupCode": "0885381574",
+        "groupCreator": "84881",
+        "groupMembers": ["84881", "441127"]
+      },
+      {
+        "groupCode": "9032136567",
+        "groupCreator": "807338",
+        "groupMembers": ["807338", "89566", "613142"]
+      },
+      {
+        "groupCode": "6527653932",
+        "groupCreator": "354132",
+        "groupMembers": ["354132", "296763", "602361"]
+      },
+      {
+        "groupCode": "5024125725",
+        "groupCreator": "905102",
+        "groupMembers": ["905102", "769451"]
+      },
+      {
+        "groupCode": "0279184253",
+        "groupCreator": "365373",
+        "groupMembers": ["365373", "341547"]
+      },
+      {
+        "groupCode": "9688252577",
+        "groupCreator": "276081",
+        "groupMembers": ["276081", "437635"]
+      },
+      {
+        "groupCode": "4656467703",
+        "groupCreator": "793199",
+        "groupMembers": ["793199", "5590"]
+      },
+      {
+        "groupCode": "3373987191",
+        "groupCreator": "537512",
+        "groupMembers": ["537512", "566967"]
+      }
+    ],
     "assignmentTime": "2023-07-29T11:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assign Result - Players: 86/218 (39%), Games: 19/19 (100%)",
@@ -3549,6 +3954,33 @@
           "priority": 1,
           "signedToStartTime": "2023-07-29T12:00:00Z"
         }
+      }
+    ],
+    "groups": [
+      {
+        "groupCode": "2288664101",
+        "groupCreator": "11796",
+        "groupMembers": ["11796", "700933"]
+      },
+      {
+        "groupCode": "0885381574",
+        "groupCreator": "84881",
+        "groupMembers": ["84881", "441127"]
+      },
+      {
+        "groupCode": "8705007121",
+        "groupCreator": "533904",
+        "groupMembers": ["533904", "918831", "844689", "845996"]
+      },
+      {
+        "groupCode": "8998972171",
+        "groupCreator": "801500",
+        "groupMembers": ["801500", "187609"]
+      },
+      {
+        "groupCode": "3373987191",
+        "groupCreator": "537512",
+        "groupMembers": ["537512", "566967"]
       }
     ],
     "assignmentTime": "2023-07-29T12:00:00Z",
@@ -3776,6 +4208,48 @@
         }
       }
     ],
+    "groups": [
+      {
+        "groupCode": "2288664101",
+        "groupCreator": "11796",
+        "groupMembers": ["11796", "700933"]
+      },
+      {
+        "groupCode": "0885381574",
+        "groupCreator": "84881",
+        "groupMembers": ["84881", "441127"]
+      },
+      {
+        "groupCode": "7550368109",
+        "groupCreator": "630366",
+        "groupMembers": ["630366", "803572", "733219"]
+      },
+      {
+        "groupCode": "7550537158",
+        "groupCreator": "301689",
+        "groupMembers": ["301689", "398301"]
+      },
+      {
+        "groupCode": "8705007121",
+        "groupCreator": "533904",
+        "groupMembers": ["533904", "918831", "844689", "845996"]
+      },
+      {
+        "groupCode": "8998972171",
+        "groupCreator": "801500",
+        "groupMembers": ["801500", "187609"]
+      },
+      {
+        "groupCode": "3373987191",
+        "groupCreator": "537512",
+        "groupMembers": ["537512", "566967"]
+      },
+      {
+        "groupCode": "7276708513",
+        "groupCreator": "363155",
+        "groupMembers": ["363155", "143319"]
+      }
+    ],
     "assignmentTime": "2023-07-29T13:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assign Result - Players: 27/147 (18%), Games: 6/6 (100%)",
@@ -3983,6 +4457,48 @@
           "priority": 1,
           "signedToStartTime": "2023-07-29T14:00:00Z"
         }
+      }
+    ],
+    "groups": [
+      {
+        "groupCode": "2288664101",
+        "groupCreator": "11796",
+        "groupMembers": ["11796", "700933"]
+      },
+      {
+        "groupCode": "0885381574",
+        "groupCreator": "84881",
+        "groupMembers": ["84881", "441127"]
+      },
+      {
+        "groupCode": "7550368109",
+        "groupCreator": "630366",
+        "groupMembers": ["630366", "803572", "733219"]
+      },
+      {
+        "groupCode": "0088346085",
+        "groupCreator": "131896",
+        "groupMembers": ["131896", "464636"]
+      },
+      {
+        "groupCode": "8705007121",
+        "groupCreator": "533904",
+        "groupMembers": ["533904", "918831", "844689", "845996"]
+      },
+      {
+        "groupCode": "5024125725",
+        "groupCreator": "905102",
+        "groupMembers": ["905102", "769451"]
+      },
+      {
+        "groupCode": "3318770348",
+        "groupCreator": "913936",
+        "groupMembers": ["913936", "972396"]
+      },
+      {
+        "groupCode": "9967764425",
+        "groupCreator": "693024",
+        "groupMembers": ["693024", "471579"]
       }
     ],
     "assignmentTime": "2023-07-29T14:00:00Z",
@@ -4242,6 +4758,58 @@
         }
       }
     ],
+    "groups": [
+      {
+        "groupCode": "1685133256",
+        "groupCreator": "337124",
+        "groupMembers": ["337124", "853163"]
+      },
+      {
+        "groupCode": "3838443830",
+        "groupCreator": "808297",
+        "groupMembers": ["808297", "672326"]
+      },
+      {
+        "groupCode": "1100524329",
+        "groupCreator": "286127",
+        "groupMembers": ["286127", "343978", "752626"]
+      },
+      {
+        "groupCode": "0885381574",
+        "groupCreator": "84881",
+        "groupMembers": ["84881", "441127"]
+      },
+      {
+        "groupCode": "7550537158",
+        "groupCreator": "301689",
+        "groupMembers": ["301689", "398301"]
+      },
+      {
+        "groupCode": "8705007121",
+        "groupCreator": "533904",
+        "groupMembers": ["533904", "918831", "844689", "845996"]
+      },
+      {
+        "groupCode": "3318770348",
+        "groupCreator": "913936",
+        "groupMembers": ["913936", "972396"]
+      },
+      {
+        "groupCode": "3373987191",
+        "groupCreator": "537512",
+        "groupMembers": ["537512", "566967"]
+      },
+      {
+        "groupCode": "9967764425",
+        "groupCreator": "693024",
+        "groupMembers": ["693024", "471579"]
+      },
+      {
+        "groupCode": "2225824966",
+        "groupCreator": "705582",
+        "groupMembers": ["705582", "288820"]
+      }
+    ],
     "assignmentTime": "2023-07-29T15:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assign Result - Players: 31/154 (20%), Games: 6/6 (100%)",
@@ -4443,6 +5011,63 @@
         }
       }
     ],
+    "groups": [
+      {
+        "groupCode": "2288664101",
+        "groupCreator": "11796",
+        "groupMembers": ["11796", "700933"]
+      },
+      {
+        "groupCode": "1100524329",
+        "groupCreator": "286127",
+        "groupMembers": ["286127", "343978", "752626"]
+      },
+      {
+        "groupCode": "6828108354",
+        "groupCreator": "679608",
+        "groupMembers": ["679608", "155435", "24371", "632882"]
+      },
+      {
+        "groupCode": "0885381574",
+        "groupCreator": "84881",
+        "groupMembers": ["84881", "441127"]
+      },
+      {
+        "groupCode": "1700116963",
+        "groupCreator": "880537",
+        "groupMembers": ["880537", "670376"]
+      },
+      {
+        "groupCode": "0088346085",
+        "groupCreator": "131896",
+        "groupMembers": ["131896", "464636"]
+      },
+      {
+        "groupCode": "7550537158",
+        "groupCreator": "301689",
+        "groupMembers": ["301689", "398301"]
+      },
+      {
+        "groupCode": "4391426394",
+        "groupCreator": "13344",
+        "groupMembers": ["13344", "246551"]
+      },
+      {
+        "groupCode": "3373987191",
+        "groupCreator": "537512",
+        "groupMembers": ["537512", "566967"]
+      },
+      {
+        "groupCode": "9967764425",
+        "groupCreator": "693024",
+        "groupMembers": ["693024", "471579"]
+      },
+      {
+        "groupCode": "2225824966",
+        "groupCreator": "705582",
+        "groupMembers": ["705582", "288820"]
+      }
+    ],
     "assignmentTime": "2023-07-29T16:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assign Result - Players: 24/102 (24%), Games: 5/5 (100%)",
@@ -4642,6 +5267,38 @@
           "priority": 1,
           "signedToStartTime": "2023-07-29T17:00:00Z"
         }
+      }
+    ],
+    "groups": [
+      {
+        "groupCode": "5848549829",
+        "groupCreator": "775710",
+        "groupMembers": ["775710", "981960"]
+      },
+      {
+        "groupCode": "1100524329",
+        "groupCreator": "286127",
+        "groupMembers": ["286127", "343978", "752626"]
+      },
+      {
+        "groupCode": "6828108354",
+        "groupCreator": "679608",
+        "groupMembers": ["679608", "155435", "24371", "632882"]
+      },
+      {
+        "groupCode": "0885381574",
+        "groupCreator": "84881",
+        "groupMembers": ["84881", "441127"]
+      },
+      {
+        "groupCode": "7550368109",
+        "groupCreator": "630366",
+        "groupMembers": ["630366", "803572", "733219"]
+      },
+      {
+        "groupCode": "3373987191",
+        "groupCreator": "537512",
+        "groupMembers": ["537512", "566967"]
       }
     ],
     "assignmentTime": "2023-07-29T17:00:00Z",
@@ -4877,6 +5534,58 @@
         }
       }
     ],
+    "groups": [
+      {
+        "groupCode": "2288664101",
+        "groupCreator": "11796",
+        "groupMembers": ["11796", "700933"]
+      },
+      {
+        "groupCode": "0947255055",
+        "groupCreator": "781777",
+        "groupMembers": ["781777", "871097"]
+      },
+      {
+        "groupCode": "4549609305",
+        "groupCreator": "91121",
+        "groupMembers": ["91121", "116554", "755929"]
+      },
+      {
+        "groupCode": "5848549829",
+        "groupCreator": "775710",
+        "groupMembers": ["775710", "981960"]
+      },
+      {
+        "groupCode": "1100524329",
+        "groupCreator": "286127",
+        "groupMembers": ["286127", "343978", "752626"]
+      },
+      {
+        "groupCode": "0885381574",
+        "groupCreator": "84881",
+        "groupMembers": ["84881", "441127"]
+      },
+      {
+        "groupCode": "1700116963",
+        "groupCreator": "880537",
+        "groupMembers": ["880537", "670376"]
+      },
+      {
+        "groupCode": "7550368109",
+        "groupCreator": "630366",
+        "groupMembers": ["630366", "803572", "733219"]
+      },
+      {
+        "groupCode": "0088346085",
+        "groupCreator": "131896",
+        "groupMembers": ["131896", "464636"]
+      },
+      {
+        "groupCode": "3373987191",
+        "groupCreator": "537512",
+        "groupMembers": ["537512", "566967"]
+      }
+    ],
     "assignmentTime": "2023-07-29T18:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assign Result - Players: 28/122 (23%), Games: 6/6 (100%)",
@@ -5014,6 +5723,38 @@
         }
       }
     ],
+    "groups": [
+      {
+        "groupCode": "4549609305",
+        "groupCreator": "91121",
+        "groupMembers": ["91121", "116554", "755929"]
+      },
+      {
+        "groupCode": "5848549829",
+        "groupCreator": "775710",
+        "groupMembers": ["775710", "981960"]
+      },
+      {
+        "groupCode": "0885381574",
+        "groupCreator": "84881",
+        "groupMembers": ["84881", "441127"]
+      },
+      {
+        "groupCode": "1700116963",
+        "groupCreator": "880537",
+        "groupMembers": ["880537", "670376"]
+      },
+      {
+        "groupCode": "8476111524",
+        "groupCreator": "788704",
+        "groupMembers": ["788704", "819180"]
+      },
+      {
+        "groupCode": "9297268360",
+        "groupCreator": "789628",
+        "groupMembers": ["789628", "858851"]
+      }
+    ],
     "assignmentTime": "2023-07-29T19:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assign Result - Players: 16/82 (20%), Games: 3/3 (100%)",
@@ -5101,6 +5842,18 @@
           "priority": 1,
           "signedToStartTime": "2023-07-29T20:00:00Z"
         }
+      }
+    ],
+    "groups": [
+      {
+        "groupCode": "9297268360",
+        "groupCreator": "789628",
+        "groupMembers": ["789628", "858851"]
+      },
+      {
+        "groupCode": "1240382174",
+        "groupCreator": "181134",
+        "groupMembers": ["181134", "195274"]
       }
     ],
     "assignmentTime": "2023-07-29T20:00:00Z",
@@ -5640,6 +6393,78 @@
         }
       }
     ],
+    "groups": [
+      {
+        "groupCode": "2288664101",
+        "groupCreator": "11796",
+        "groupMembers": ["11796", "700933"]
+      },
+      {
+        "groupCode": "2766167346",
+        "groupCreator": "242210",
+        "groupMembers": ["242210", "876068"]
+      },
+      {
+        "groupCode": "5848549829",
+        "groupCreator": "775710",
+        "groupMembers": ["775710", "981960"]
+      },
+      {
+        "groupCode": "8409615278",
+        "groupCreator": "925788",
+        "groupMembers": ["925788", "801596"]
+      },
+      {
+        "groupCode": "3598650020",
+        "groupCreator": "756645",
+        "groupMembers": ["756645", "985011"]
+      },
+      {
+        "groupCode": "6828108354",
+        "groupCreator": "679608",
+        "groupMembers": ["679608", "155435", "24371", "632882"]
+      },
+      {
+        "groupCode": "0885381574",
+        "groupCreator": "84881",
+        "groupMembers": ["84881", "441127"]
+      },
+      {
+        "groupCode": "1700116963",
+        "groupCreator": "880537",
+        "groupMembers": ["880537", "670376"]
+      },
+      {
+        "groupCode": "9297268360",
+        "groupCreator": "789628",
+        "groupMembers": ["789628", "858851"]
+      },
+      {
+        "groupCode": "4391426394",
+        "groupCreator": "13344",
+        "groupMembers": ["13344", "246551"]
+      },
+      {
+        "groupCode": "9288299424",
+        "groupCreator": "464432",
+        "groupMembers": ["464432", "357053"]
+      },
+      {
+        "groupCode": "4406708257",
+        "groupCreator": "984672",
+        "groupMembers": ["984672", "580943"]
+      },
+      {
+        "groupCode": "3373987191",
+        "groupCreator": "537512",
+        "groupMembers": ["537512", "566967"]
+      },
+      {
+        "groupCode": "1756584494",
+        "groupCreator": "969746",
+        "groupMembers": ["969746", "877191", "415805"]
+      }
+    ],
     "assignmentTime": "2023-07-30T07:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assign Result - Players: 66/231 (29%), Games: 14/14 (100%)",
@@ -6145,6 +6970,53 @@
         }
       }
     ],
+    "groups": [
+      {
+        "groupCode": "2288664101",
+        "groupCreator": "11796",
+        "groupMembers": ["11796", "700933"]
+      },
+      {
+        "groupCode": "3598650020",
+        "groupCreator": "756645",
+        "groupMembers": ["756645", "985011"]
+      },
+      {
+        "groupCode": "6828108354",
+        "groupCreator": "679608",
+        "groupMembers": ["679608", "155435", "24371", "632882"]
+      },
+      {
+        "groupCode": "0904951589",
+        "groupCreator": "786492",
+        "groupMembers": ["786492", "125954"]
+      },
+      {
+        "groupCode": "0088346085",
+        "groupCreator": "131896",
+        "groupMembers": ["131896", "464636"]
+      },
+      {
+        "groupCode": "9297268360",
+        "groupCreator": "789628",
+        "groupMembers": ["789628", "858851"]
+      },
+      {
+        "groupCode": "1382409736",
+        "groupCreator": "98579",
+        "groupMembers": ["98579", "850966"]
+      },
+      {
+        "groupCode": "9967764425",
+        "groupCreator": "693024",
+        "groupMembers": ["693024", "471579"]
+      },
+      {
+        "groupCode": "1532996145",
+        "groupCreator": "242183",
+        "groupMembers": ["242183", "510078", "580331"]
+      }
+    ],
     "assignmentTime": "2023-07-30T08:00:00Z",
     "algorithm": "random",
     "message": "Random Assign Result - Players: 62/134 (46%), Games: 13/13 (100%)",
@@ -6530,6 +7402,53 @@
         }
       }
     ],
+    "groups": [
+      {
+        "groupCode": "7561199089",
+        "groupCreator": "918192",
+        "groupMembers": ["918192", "998200"]
+      },
+      {
+        "groupCode": "2288664101",
+        "groupCreator": "11796",
+        "groupMembers": ["11796", "700933"]
+      },
+      {
+        "groupCode": "3838443830",
+        "groupCreator": "808297",
+        "groupMembers": ["808297", "672326"]
+      },
+      {
+        "groupCode": "3598650020",
+        "groupCreator": "756645",
+        "groupMembers": ["756645", "985011"]
+      },
+      {
+        "groupCode": "9636822927",
+        "groupCreator": "777492",
+        "groupMembers": ["777492", "86713"]
+      },
+      {
+        "groupCode": "6828108354",
+        "groupCreator": "679608",
+        "groupMembers": ["679608", "155435", "24371", "632882"]
+      },
+      {
+        "groupCode": "0885381574",
+        "groupCreator": "84881",
+        "groupMembers": ["84881", "441127"]
+      },
+      {
+        "groupCode": "9297268360",
+        "groupCreator": "789628",
+        "groupMembers": ["789628", "858851"]
+      },
+      {
+        "groupCode": "4406708257",
+        "groupCreator": "984672",
+        "groupMembers": ["984672", "580943"]
+      }
+    ],
     "assignmentTime": "2023-07-30T09:00:00Z",
     "algorithm": "padg",
     "message": "Padg Assign Result - Players: 47/116 (41%), Games: 9/9 (100%)",
@@ -6777,6 +7696,33 @@
           "priority": 1,
           "signedToStartTime": "2023-07-30T10:00:00Z"
         }
+      }
+    ],
+    "groups": [
+      {
+        "groupCode": "3598650020",
+        "groupCreator": "756645",
+        "groupMembers": ["756645", "985011"]
+      },
+      {
+        "groupCode": "6828108354",
+        "groupCreator": "679608",
+        "groupMembers": ["679608", "155435", "24371", "632882"]
+      },
+      {
+        "groupCode": "7550368109",
+        "groupCreator": "630366",
+        "groupMembers": ["630366", "803572", "733219"]
+      },
+      {
+        "groupCode": "9297268360",
+        "groupCreator": "789628",
+        "groupMembers": ["789628", "858851"]
+      },
+      {
+        "groupCode": "0279184253",
+        "groupCreator": "365373",
+        "groupMembers": ["365373", "341547"]
       }
     ],
     "assignmentTime": "2023-07-30T10:00:00Z",

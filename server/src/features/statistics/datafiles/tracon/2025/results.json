@@ -4802,6 +4802,549 @@
         }
       }
     ],
+    "groups": [
+      {
+        "groupCode": "5b9-df0-1fc",
+        "groupCreator": "791461",
+        "groupMembers": ["791461", "668320"]
+      },
+      {
+        "groupCode": "8a3-225-bf4",
+        "groupCreator": "497520",
+        "groupMembers": ["497520", "159253"]
+      },
+      {
+        "groupCode": "725-125-10d",
+        "groupCreator": "159403",
+        "groupMembers": ["159403", "254472"]
+      },
+      {
+        "groupCode": "110-231-2e8",
+        "groupCreator": "514638",
+        "groupMembers": [
+          "514638",
+          "374560",
+          "332287",
+          "958593",
+          "155006",
+          "239339",
+          "385824"
+        ]
+      },
+      {
+        "groupCode": "211-526-83a",
+        "groupCreator": "284564",
+        "groupMembers": ["284564", "252848"]
+      },
+      {
+        "groupCode": "7d7-c23-7d0",
+        "groupCreator": "229889",
+        "groupMembers": ["229889", "111866"]
+      },
+      {
+        "groupCode": "d4e-988-ec6",
+        "groupCreator": "734793",
+        "groupMembers": ["734793", "662991"]
+      },
+      {
+        "groupCode": "77f-8ed-01e",
+        "groupCreator": "258205",
+        "groupMembers": ["258205", "84393"]
+      },
+      {
+        "groupCode": "a87-ae8-628",
+        "groupCreator": "277512",
+        "groupMembers": ["277512", "158058", "484867"]
+      },
+      {
+        "groupCode": "e5c-575-b1b",
+        "groupCreator": "555092",
+        "groupMembers": ["555092", "164335"]
+      },
+      {
+        "groupCode": "74f-720-e2f",
+        "groupCreator": "250932",
+        "groupMembers": ["250932", "323917"]
+      },
+      {
+        "groupCode": "a7e-5cc-00b",
+        "groupCreator": "525277",
+        "groupMembers": ["525277", "698566", "153187"]
+      },
+      {
+        "groupCode": "f57-c9e-42b",
+        "groupCreator": "242643",
+        "groupMembers": ["242643", "29756"]
+      },
+      {
+        "groupCode": "794-c0c-5aa",
+        "groupCreator": "731695",
+        "groupMembers": ["731695", "617765", "502278", "434599"]
+      },
+      {
+        "groupCode": "e26-3a3-d43",
+        "groupCreator": "267004",
+        "groupMembers": ["267004", "508417"]
+      },
+      {
+        "groupCode": "3c4-8f5-763",
+        "groupCreator": "223557",
+        "groupMembers": ["223557", "883202"]
+      },
+      {
+        "groupCode": "5c0-986-8a3",
+        "groupCreator": "957242",
+        "groupMembers": ["957242", "125178"]
+      },
+      {
+        "groupCode": "09c-35b-fe2",
+        "groupCreator": "404195",
+        "groupMembers": ["404195", "551218", "698207"]
+      },
+      {
+        "groupCode": "64f-a20-b79",
+        "groupCreator": "998310",
+        "groupMembers": ["998310", "329889", "446304"]
+      },
+      {
+        "groupCode": "27d-4f6-5cb",
+        "groupCreator": "568028",
+        "groupMembers": ["568028", "233057", "133318", "343888"]
+      },
+      {
+        "groupCode": "c52-88c-ef2",
+        "groupCreator": "83467",
+        "groupMembers": ["83467", "600575", "245573", "905711"]
+      },
+      {
+        "groupCode": "eab-6d1-bfe",
+        "groupCreator": "918175",
+        "groupMembers": ["918175", "975456"]
+      },
+      {
+        "groupCode": "1ef-a77-7a8",
+        "groupCreator": "556913",
+        "groupMembers": ["556913", "255928", "462567"]
+      },
+      {
+        "groupCode": "a64-46b-58c",
+        "groupCreator": "712115",
+        "groupMembers": ["712115", "41358"]
+      },
+      {
+        "groupCode": "dd7-e05-db0",
+        "groupCreator": "380263",
+        "groupMembers": ["380263", "594378"]
+      },
+      {
+        "groupCode": "653-752-c7c",
+        "groupCreator": "986532",
+        "groupMembers": ["986532", "701937", "136257"]
+      },
+      {
+        "groupCode": "507-875-4ea",
+        "groupCreator": "673260",
+        "groupMembers": ["673260", "907623"]
+      },
+      {
+        "groupCode": "59e-bd6-7f5",
+        "groupCreator": "835241",
+        "groupMembers": ["835241", "400925"]
+      },
+      {
+        "groupCode": "d69-3ae-559",
+        "groupCreator": "266133",
+        "groupMembers": ["266133", "867556", "591542"]
+      },
+      {
+        "groupCode": "1c6-389-150",
+        "groupCreator": "246379",
+        "groupMembers": ["246379", "190243", "138828"]
+      },
+      {
+        "groupCode": "ec5-160-f12",
+        "groupCreator": "193165",
+        "groupMembers": ["193165", "831363", "881941", "44054"]
+      },
+      {
+        "groupCode": "e96-d09-45e",
+        "groupCreator": "471151",
+        "groupMembers": ["471151", "842792", "369960"]
+      },
+      {
+        "groupCode": "ca4-022-f67",
+        "groupCreator": "670653",
+        "groupMembers": ["670653", "388569", "470985", "598908"]
+      },
+      {
+        "groupCode": "843-78d-b51",
+        "groupCreator": "100884",
+        "groupMembers": ["100884", "299728"]
+      },
+      {
+        "groupCode": "10a-f71-689",
+        "groupCreator": "266774",
+        "groupMembers": ["266774", "3471"]
+      },
+      {
+        "groupCode": "3c8-53c-d42",
+        "groupCreator": "887986",
+        "groupMembers": ["887986", "954522", "57970"]
+      },
+      {
+        "groupCode": "ef8-624-817",
+        "groupCreator": "310125",
+        "groupMembers": ["310125", "406028"]
+      },
+      {
+        "groupCode": "071-5f8-8aa",
+        "groupCreator": "934485",
+        "groupMembers": ["934485", "735071"]
+      },
+      {
+        "groupCode": "e2c-e28-a4f",
+        "groupCreator": "582287",
+        "groupMembers": ["582287", "985913", "546386"]
+      },
+      {
+        "groupCode": "0eb-086-196",
+        "groupCreator": "25342",
+        "groupMembers": ["25342", "102943", "607479"]
+      },
+      {
+        "groupCode": "6ec-b5b-9cc",
+        "groupCreator": "266704",
+        "groupMembers": ["266704", "394697"]
+      },
+      {
+        "groupCode": "ea0-12b-bed",
+        "groupCreator": "644255",
+        "groupMembers": ["644255", "932513", "29174"]
+      },
+      {
+        "groupCode": "fbf-cde-265",
+        "groupCreator": "153407",
+        "groupMembers": ["153407", "971147"]
+      },
+      {
+        "groupCode": "2bb-c52-82f",
+        "groupCreator": "403680",
+        "groupMembers": ["403680", "183123"]
+      },
+      {
+        "groupCode": "194-347-f9c",
+        "groupCreator": "807761",
+        "groupMembers": ["807761", "305993"]
+      },
+      {
+        "groupCode": "106-719-fcd",
+        "groupCreator": "516408",
+        "groupMembers": ["516408", "489447", "638092"]
+      },
+      {
+        "groupCode": "b33-ec8-7e1",
+        "groupCreator": "629358",
+        "groupMembers": ["629358", "814806", "837344", "19821", "150679"]
+      },
+      {
+        "groupCode": "2a9-767-971",
+        "groupCreator": "190766",
+        "groupMembers": ["190766", "325581", "601774"]
+      },
+      {
+        "groupCode": "954-c33-df1",
+        "groupCreator": "812547",
+        "groupMembers": ["812547", "809972"]
+      },
+      {
+        "groupCode": "867-b80-3b2",
+        "groupCreator": "390152",
+        "groupMembers": ["390152", "432592"]
+      },
+      {
+        "groupCode": "b09-8f3-987",
+        "groupCreator": "118411",
+        "groupMembers": ["118411", "298016"]
+      },
+      {
+        "groupCode": "3c2-8d7-4c4",
+        "groupCreator": "236235",
+        "groupMembers": ["236235", "761483", "935427", "654332"]
+      },
+      {
+        "groupCode": "363-295-9e3",
+        "groupCreator": "901002",
+        "groupMembers": ["901002", "357932"]
+      },
+      {
+        "groupCode": "4e3-5a0-974",
+        "groupCreator": "98609",
+        "groupMembers": ["98609", "398179"]
+      },
+      {
+        "groupCode": "3da-a28-347",
+        "groupCreator": "374951",
+        "groupMembers": ["374951", "74574", "12022", "364447", "759546"]
+      },
+      {
+        "groupCode": "a91-f8f-fd9",
+        "groupCreator": "593545",
+        "groupMembers": ["593545", "538515"]
+      },
+      {
+        "groupCode": "f59-945-ac8",
+        "groupCreator": "748523",
+        "groupMembers": ["748523", "993942", "110659", "630152", "662028"]
+      },
+      {
+        "groupCode": "5b5-33d-dce",
+        "groupCreator": "761554",
+        "groupMembers": ["761554", "621975"]
+      },
+      {
+        "groupCode": "e1c-d9e-bf5",
+        "groupCreator": "393829",
+        "groupMembers": ["393829", "760441", "619235"]
+      },
+      {
+        "groupCode": "2ae-965-121",
+        "groupCreator": "947956",
+        "groupMembers": ["947956", "445194"]
+      },
+      {
+        "groupCode": "9bd-f82-5ef",
+        "groupCreator": "261318",
+        "groupMembers": ["261318", "908205"]
+      },
+      {
+        "groupCode": "20b-492-d18",
+        "groupCreator": "677014",
+        "groupMembers": ["677014", "858756"]
+      },
+      {
+        "groupCode": "797-4c4-16d",
+        "groupCreator": "333684",
+        "groupMembers": ["333684", "310701"]
+      },
+      {
+        "groupCode": "a1e-b7d-0d0",
+        "groupCreator": "421855",
+        "groupMembers": ["421855", "797575", "685822", "721518"]
+      },
+      {
+        "groupCode": "ace-b57-bf8",
+        "groupCreator": "959724",
+        "groupMembers": ["959724", "469250", "893696"]
+      },
+      {
+        "groupCode": "aff-c12-424",
+        "groupCreator": "348616",
+        "groupMembers": ["348616", "843665"]
+      },
+      {
+        "groupCode": "dc0-53e-6de",
+        "groupCreator": "457672",
+        "groupMembers": ["457672", "492991", "851328"]
+      },
+      {
+        "groupCode": "066-1ff-ac7",
+        "groupCreator": "856527",
+        "groupMembers": ["856527", "625803"]
+      },
+      {
+        "groupCode": "0ef-41b-280",
+        "groupCreator": "373564",
+        "groupMembers": ["373564", "987325", "889417"]
+      },
+      {
+        "groupCode": "2d7-afc-109",
+        "groupCreator": "335808",
+        "groupMembers": ["335808", "736926"]
+      },
+      {
+        "groupCode": "ebb-e28-bbe",
+        "groupCreator": "399852",
+        "groupMembers": [
+          "399852",
+          "612156",
+          "907306",
+          "123236",
+          "65985",
+          "541513",
+          "866492"
+        ]
+      },
+      {
+        "groupCode": "817-f7a-f7b",
+        "groupCreator": "251262",
+        "groupMembers": ["251262", "354867"]
+      },
+      {
+        "groupCode": "673-75a-486",
+        "groupCreator": "230368",
+        "groupMembers": ["230368", "585316", "651969"]
+      },
+      {
+        "groupCode": "537-430-50d",
+        "groupCreator": "420053",
+        "groupMembers": ["420053", "209715"]
+      },
+      {
+        "groupCode": "fae-b1d-e3a",
+        "groupCreator": "861805",
+        "groupMembers": ["861805", "252013"]
+      },
+      {
+        "groupCode": "1d8-391-518",
+        "groupCreator": "618387",
+        "groupMembers": ["618387", "753998", "18508"]
+      },
+      {
+        "groupCode": "eb2-fdd-c45",
+        "groupCreator": "661978",
+        "groupMembers": ["661978", "39673"]
+      },
+      {
+        "groupCode": "3cc-7ef-c1d",
+        "groupCreator": "522891",
+        "groupMembers": ["522891"]
+      },
+      {
+        "groupCode": "9d7-50f-938",
+        "groupCreator": "199603",
+        "groupMembers": ["199603", "64580"]
+      },
+      {
+        "groupCode": "7a5-331-20b",
+        "groupCreator": "297942",
+        "groupMembers": ["297942", "455069", "39634", "889313"]
+      },
+      {
+        "groupCode": "b50-7ff-c5f",
+        "groupCreator": "679184",
+        "groupMembers": ["679184", "729634"]
+      },
+      {
+        "groupCode": "2d9-8b5-c1d",
+        "groupCreator": "240983",
+        "groupMembers": ["240983", "761133"]
+      },
+      {
+        "groupCode": "5f6-7e5-1de",
+        "groupCreator": "571326",
+        "groupMembers": ["571326", "973433"]
+      },
+      {
+        "groupCode": "cb0-16c-48e",
+        "groupCreator": "562948",
+        "groupMembers": ["562948", "70681"]
+      },
+      {
+        "groupCode": "9e6-498-4f6",
+        "groupCreator": "2097",
+        "groupMembers": ["2097", "365306"]
+      },
+      {
+        "groupCode": "3c2-bf6-bbc",
+        "groupCreator": "570931",
+        "groupMembers": ["570931", "61475", "244756"]
+      },
+      {
+        "groupCode": "0a4-6ce-342",
+        "groupCreator": "212232",
+        "groupMembers": ["212232", "197903"]
+      },
+      {
+        "groupCode": "8c8-474-440",
+        "groupCreator": "870856",
+        "groupMembers": [
+          "870856",
+          "571623",
+          "831508",
+          "762036",
+          "949869",
+          "413848"
+        ]
+      },
+      {
+        "groupCode": "bed-155-1dd",
+        "groupCreator": "994451",
+        "groupMembers": ["994451", "669391"]
+      },
+      {
+        "groupCode": "e8d-3a3-ebf",
+        "groupCreator": "237816",
+        "groupMembers": ["237816", "852499", "366798"]
+      },
+      {
+        "groupCode": "2a0-300-5e5",
+        "groupCreator": "343306",
+        "groupMembers": ["343306", "238122"]
+      },
+      {
+        "groupCode": "9e6-59f-5ba",
+        "groupCreator": "485030",
+        "groupMembers": ["485030", "374898", "382598", "798793", "951249"]
+      },
+      {
+        "groupCode": "933-956-330",
+        "groupCreator": "231583",
+        "groupMembers": [
+          "231583",
+          "671203",
+          "220905",
+          "563137",
+          "977382",
+          "425892",
+          "487594"
+        ]
+      },
+      {
+        "groupCode": "29b-e50-10c",
+        "groupCreator": "223860",
+        "groupMembers": ["223860", "304322", "884422"]
+      },
+      {
+        "groupCode": "d97-5a2-a44",
+        "groupCreator": "221882",
+        "groupMembers": ["221882", "941565"]
+      },
+      {
+        "groupCode": "1fb-03a-bbb",
+        "groupCreator": "179077",
+        "groupMembers": ["179077", "292505"]
+      },
+      {
+        "groupCode": "5bb-13a-6b5",
+        "groupCreator": "871625",
+        "groupMembers": ["871625", "500129", "897118", "506075"]
+      },
+      {
+        "groupCode": "c42-f57-4bb",
+        "groupCreator": "709522",
+        "groupMembers": ["709522"]
+      },
+      {
+        "groupCode": "7ef-574-4aa",
+        "groupCreator": "178176",
+        "groupMembers": ["178176", "883167", "108268"]
+      },
+      {
+        "groupCode": "1ff-6af-108",
+        "groupCreator": "956728",
+        "groupMembers": ["956728", "517715", "665903", "531471", "351677"]
+      },
+      {
+        "groupCode": "e42-79f-468",
+        "groupCreator": "386683",
+        "groupMembers": ["386683", "76119", "196522", "76895"]
+      },
+      {
+        "groupCode": "859-c00-3bb",
+        "groupCreator": "441615",
+        "groupMembers": ["441615", "413308"]
+      }
+    ],
     "assignmentTime": "2025-09-05T13:00:00Z",
     "algorithm": "random",
     "message": "Random Assignment Result - Attendees: 600/852 (70%), Program items: 6/6 (100%)",
@@ -8697,6 +9240,378 @@
           "priority": 1,
           "signedToStartTime": "2025-09-05T16:00:00Z"
         }
+      }
+    ],
+    "groups": [
+      {
+        "groupCode": "e15-d0c-033",
+        "groupCreator": "102471",
+        "groupMembers": ["102471", "72293"]
+      },
+      {
+        "groupCode": "919-ed2-d93",
+        "groupCreator": "629200",
+        "groupMembers": ["629200", "285621"]
+      },
+      {
+        "groupCode": "8a3-225-bf4",
+        "groupCreator": "497520",
+        "groupMembers": ["497520", "159253"]
+      },
+      {
+        "groupCode": "110-231-2e8",
+        "groupCreator": "514638",
+        "groupMembers": [
+          "514638",
+          "374560",
+          "332287",
+          "958593",
+          "155006",
+          "239339",
+          "385824"
+        ]
+      },
+      {
+        "groupCode": "70e-377-76e",
+        "groupCreator": "351409",
+        "groupMembers": ["351409", "839273", "706787", "4237", "867687"]
+      },
+      {
+        "groupCode": "7d7-c23-7d0",
+        "groupCreator": "229889",
+        "groupMembers": ["229889", "111866"]
+      },
+      {
+        "groupCode": "cfa-6f2-56e",
+        "groupCreator": "800251",
+        "groupMembers": ["800251", "287173", "709498", "645635", "356381"]
+      },
+      {
+        "groupCode": "a87-ae8-628",
+        "groupCreator": "277512",
+        "groupMembers": ["277512", "158058", "484867"]
+      },
+      {
+        "groupCode": "a7e-5cc-00b",
+        "groupCreator": "525277",
+        "groupMembers": ["525277", "698566", "153187"]
+      },
+      {
+        "groupCode": "171-55e-ff8",
+        "groupCreator": "903406",
+        "groupMembers": ["903406", "276167", "234533"]
+      },
+      {
+        "groupCode": "e98-f9b-470",
+        "groupCreator": "194326",
+        "groupMembers": ["194326", "572075"]
+      },
+      {
+        "groupCode": "c82-fcc-0d6",
+        "groupCreator": "555189",
+        "groupMembers": ["555189", "698568", "425027", "969978"]
+      },
+      {
+        "groupCode": "a27-029-183",
+        "groupCreator": "358550",
+        "groupMembers": ["358550", "330679"]
+      },
+      {
+        "groupCode": "ba3-ee9-c49",
+        "groupCreator": "58851",
+        "groupMembers": ["58851", "692851"]
+      },
+      {
+        "groupCode": "3eb-e8b-29d",
+        "groupCreator": "682922",
+        "groupMembers": ["682922", "877680"]
+      },
+      {
+        "groupCode": "206-96a-a0f",
+        "groupCreator": "801141",
+        "groupMembers": ["801141", "829120", "510535"]
+      },
+      {
+        "groupCode": "27d-4f6-5cb",
+        "groupCreator": "568028",
+        "groupMembers": ["568028", "233057", "133318", "343888"]
+      },
+      {
+        "groupCode": "ac6-626-edd",
+        "groupCreator": "928180",
+        "groupMembers": ["928180", "985233"]
+      },
+      {
+        "groupCode": "1ef-a77-7a8",
+        "groupCreator": "556913",
+        "groupMembers": ["556913", "255928", "462567"]
+      },
+      {
+        "groupCode": "c1c-a56-083",
+        "groupCreator": "985299",
+        "groupMembers": ["985299", "647654"]
+      },
+      {
+        "groupCode": "d8a-57b-cde",
+        "groupCreator": "434900",
+        "groupMembers": ["434900", "675787"]
+      },
+      {
+        "groupCode": "5e2-e00-64c",
+        "groupCreator": "476581",
+        "groupMembers": ["476581", "129681", "873422"]
+      },
+      {
+        "groupCode": "86d-d24-dab",
+        "groupCreator": "780548",
+        "groupMembers": ["780548", "924246", "896508"]
+      },
+      {
+        "groupCode": "88b-6a3-133",
+        "groupCreator": "618344",
+        "groupMembers": ["618344", "971735"]
+      },
+      {
+        "groupCode": "1c6-389-150",
+        "groupCreator": "246379",
+        "groupMembers": ["246379", "190243", "138828"]
+      },
+      {
+        "groupCode": "b67-58d-10d",
+        "groupCreator": "439185",
+        "groupMembers": [
+          "439185",
+          "749172",
+          "37420",
+          "623488",
+          "387880",
+          "623363",
+          "466454",
+          "218410"
+        ]
+      },
+      {
+        "groupCode": "10a-f71-689",
+        "groupCreator": "266774",
+        "groupMembers": ["266774", "3471"]
+      },
+      {
+        "groupCode": "ef8-624-817",
+        "groupCreator": "310125",
+        "groupMembers": ["310125", "406028"]
+      },
+      {
+        "groupCode": "a16-02d-099",
+        "groupCreator": "925488",
+        "groupMembers": ["925488", "729469", "999734"]
+      },
+      {
+        "groupCode": "c38-d68-878",
+        "groupCreator": "268948",
+        "groupMembers": ["268948", "591286", "740753"]
+      },
+      {
+        "groupCode": "d2e-dbe-985",
+        "groupCreator": "141471",
+        "groupMembers": ["141471", "780564", "703725", "277972"]
+      },
+      {
+        "groupCode": "1fe-c75-66c",
+        "groupCreator": "716830",
+        "groupMembers": ["716830", "214548"]
+      },
+      {
+        "groupCode": "be5-0d4-92f",
+        "groupCreator": "465723",
+        "groupMembers": ["465723", "11482"]
+      },
+      {
+        "groupCode": "472-218-7c1",
+        "groupCreator": "119113",
+        "groupMembers": ["119113", "406882"]
+      },
+      {
+        "groupCode": "ea0-12b-bed",
+        "groupCreator": "644255",
+        "groupMembers": ["644255", "932513", "29174"]
+      },
+      {
+        "groupCode": "391-5d4-d41",
+        "groupCreator": "214129",
+        "groupMembers": ["214129", "661036"]
+      },
+      {
+        "groupCode": "d01-81f-eb6",
+        "groupCreator": "557238",
+        "groupMembers": ["557238", "227374"]
+      },
+      {
+        "groupCode": "1c7-082-28d",
+        "groupCreator": "828302",
+        "groupMembers": [
+          "828302",
+          "505180",
+          "520707",
+          "929566",
+          "714039",
+          "244826",
+          "94416",
+          "945496",
+          "775548"
+        ]
+      },
+      {
+        "groupCode": "05a-127-957",
+        "groupCreator": "853484",
+        "groupMembers": ["853484", "590848", "325911"]
+      },
+      {
+        "groupCode": "3c2-8d7-4c4",
+        "groupCreator": "236235",
+        "groupMembers": ["236235", "761483", "935427", "654332"]
+      },
+      {
+        "groupCode": "363-295-9e3",
+        "groupCreator": "901002",
+        "groupMembers": ["901002", "357932"]
+      },
+      {
+        "groupCode": "881-843-5e6",
+        "groupCreator": "732821",
+        "groupMembers": ["732821", "170339"]
+      },
+      {
+        "groupCode": "b3d-d70-ebb",
+        "groupCreator": "309907",
+        "groupMembers": ["309907", "566876", "188933"]
+      },
+      {
+        "groupCode": "de4-732-f7a",
+        "groupCreator": "527758",
+        "groupMembers": ["527758", "635388", "946670", "659768"]
+      },
+      {
+        "groupCode": "dc0-53e-6de",
+        "groupCreator": "457672",
+        "groupMembers": ["457672", "492991", "851328"]
+      },
+      {
+        "groupCode": "c80-73f-cd9",
+        "groupCreator": "541411",
+        "groupMembers": ["541411", "597078"]
+      },
+      {
+        "groupCode": "673-75a-486",
+        "groupCreator": "230368",
+        "groupMembers": ["230368", "585316", "651969"]
+      },
+      {
+        "groupCode": "2a3-94e-87f",
+        "groupCreator": "699376",
+        "groupMembers": ["699376", "235449", "129935"]
+      },
+      {
+        "groupCode": "102-2d5-924",
+        "groupCreator": "571725",
+        "groupMembers": ["571725", "289258"]
+      },
+      {
+        "groupCode": "31f-9d5-412",
+        "groupCreator": "987353",
+        "groupMembers": [
+          "987353",
+          "680324",
+          "622053",
+          "691080",
+          "553106",
+          "410971",
+          "947427"
+        ]
+      },
+      {
+        "groupCode": "58b-a27-1c0",
+        "groupCreator": "849256",
+        "groupMembers": ["849256", "23056"]
+      },
+      {
+        "groupCode": "7ef-574-4aa",
+        "groupCreator": "178176",
+        "groupMembers": ["178176", "883167", "108268"]
+      },
+      {
+        "groupCode": "cff-63a-4ae",
+        "groupCreator": "495595",
+        "groupMembers": ["495595", "898291"]
+      },
+      {
+        "groupCode": "610-79f-f79",
+        "groupCreator": "917042",
+        "groupMembers": ["917042", "196854"]
+      },
+      {
+        "groupCode": "687-94f-4ae",
+        "groupCreator": "982206",
+        "groupMembers": ["982206", "777536"]
+      },
+      {
+        "groupCode": "1ff-6af-108",
+        "groupCreator": "956728",
+        "groupMembers": ["956728", "517715", "665903", "531471", "351677"]
+      },
+      {
+        "groupCode": "037-d98-462",
+        "groupCreator": "942540",
+        "groupMembers": ["942540", "37239"]
+      },
+      {
+        "groupCode": "f14-d3b-498",
+        "groupCreator": "476153",
+        "groupMembers": ["476153", "142817", "572546", "371770"]
+      },
+      {
+        "groupCode": "e42-79f-468",
+        "groupCreator": "386683",
+        "groupMembers": ["386683", "76119", "196522", "76895"]
+      },
+      {
+        "groupCode": "c4f-11b-9a3",
+        "groupCreator": "844356",
+        "groupMembers": ["844356", "974634"]
+      },
+      {
+        "groupCode": "e99-a50-1e3",
+        "groupCreator": "217405",
+        "groupMembers": ["217405"]
+      },
+      {
+        "groupCode": "a0b-2a0-1a7",
+        "groupCreator": "796087",
+        "groupMembers": ["796087", "795940"]
+      },
+      {
+        "groupCode": "5c8-6ca-40a",
+        "groupCreator": "623238",
+        "groupMembers": ["623238", "53086", "859210", "3742"]
+      },
+      {
+        "groupCode": "17b-e2a-8e2",
+        "groupCreator": "981834",
+        "groupMembers": ["981834", "190584", "7995", "81465", "596228"]
+      },
+      {
+        "groupCode": "828-100-3de",
+        "groupCreator": "727967",
+        "groupMembers": ["727967", "896703"]
+      },
+      {
+        "groupCode": "fe7-f41-c74",
+        "groupCreator": "601118",
+        "groupMembers": ["601118", "495739"]
+      },
+      {
+        "groupCode": "9a6-4f9-7c4",
+        "groupCreator": "737621",
+        "groupMembers": ["737621", "333873"]
       }
     ],
     "assignmentTime": "2025-09-05T16:00:00Z",
@@ -13546,6 +14461,596 @@
           "priority": 2,
           "signedToStartTime": "2025-09-06T09:30:00Z"
         }
+      }
+    ],
+    "groups": [
+      {
+        "groupCode": "4f8-cfe-706",
+        "groupCreator": "907672",
+        "groupMembers": ["907672", "36430"]
+      },
+      {
+        "groupCode": "e15-d0c-033",
+        "groupCreator": "102471",
+        "groupMembers": ["102471", "72293"]
+      },
+      {
+        "groupCode": "919-ed2-d93",
+        "groupCreator": "629200",
+        "groupMembers": ["629200", "285621"]
+      },
+      {
+        "groupCode": "8a3-225-bf4",
+        "groupCreator": "497520",
+        "groupMembers": ["497520", "159253"]
+      },
+      {
+        "groupCode": "110-231-2e8",
+        "groupCreator": "514638",
+        "groupMembers": [
+          "514638",
+          "374560",
+          "332287",
+          "958593",
+          "155006",
+          "239339",
+          "385824"
+        ]
+      },
+      {
+        "groupCode": "7d7-c23-7d0",
+        "groupCreator": "229889",
+        "groupMembers": ["229889", "111866"]
+      },
+      {
+        "groupCode": "cfa-6f2-56e",
+        "groupCreator": "800251",
+        "groupMembers": ["800251", "287173", "709498", "645635", "356381"]
+      },
+      {
+        "groupCode": "291-02e-7bc",
+        "groupCreator": "726172",
+        "groupMembers": ["726172", "228282"]
+      },
+      {
+        "groupCode": "2f7-142-86b",
+        "groupCreator": "952687",
+        "groupMembers": ["952687", "261415"]
+      },
+      {
+        "groupCode": "a87-ae8-628",
+        "groupCreator": "277512",
+        "groupMembers": ["277512", "158058", "484867"]
+      },
+      {
+        "groupCode": "fff-283-95d",
+        "groupCreator": "605615",
+        "groupMembers": ["605615", "402859", "485042", "299058", "334778"]
+      },
+      {
+        "groupCode": "a7e-5cc-00b",
+        "groupCreator": "525277",
+        "groupMembers": ["525277", "698566", "153187"]
+      },
+      {
+        "groupCode": "408-7ff-af2",
+        "groupCreator": "869992",
+        "groupMembers": ["869992", "184845", "268135"]
+      },
+      {
+        "groupCode": "cfe-aef-32a",
+        "groupCreator": "3559",
+        "groupMembers": ["3559", "165742", "233639"]
+      },
+      {
+        "groupCode": "e26-3a3-d43",
+        "groupCreator": "267004",
+        "groupMembers": ["267004", "508417"]
+      },
+      {
+        "groupCode": "c0c-dda-28d",
+        "groupCreator": "17292",
+        "groupMembers": ["17292", "839811"]
+      },
+      {
+        "groupCode": "5c0-986-8a3",
+        "groupCreator": "957242",
+        "groupMembers": ["957242", "125178"]
+      },
+      {
+        "groupCode": "ba3-ee9-c49",
+        "groupCreator": "58851",
+        "groupMembers": ["58851", "692851"]
+      },
+      {
+        "groupCode": "bfa-b14-c49",
+        "groupCreator": "107967",
+        "groupMembers": ["107967", "630493", "342155"]
+      },
+      {
+        "groupCode": "09c-35b-fe2",
+        "groupCreator": "404195",
+        "groupMembers": ["404195", "551218", "698207"]
+      },
+      {
+        "groupCode": "41a-490-0a1",
+        "groupCreator": "343844",
+        "groupMembers": ["343844", "693205"]
+      },
+      {
+        "groupCode": "27d-4f6-5cb",
+        "groupCreator": "568028",
+        "groupMembers": ["568028", "233057", "133318", "343888"]
+      },
+      {
+        "groupCode": "c52-88c-ef2",
+        "groupCreator": "83467",
+        "groupMembers": ["83467", "600575", "245573", "905711"]
+      },
+      {
+        "groupCode": "eab-6d1-bfe",
+        "groupCreator": "918175",
+        "groupMembers": ["918175", "975456"]
+      },
+      {
+        "groupCode": "1ef-a77-7a8",
+        "groupCreator": "556913",
+        "groupMembers": ["556913", "255928", "462567"]
+      },
+      {
+        "groupCode": "507-875-4ea",
+        "groupCreator": "673260",
+        "groupMembers": ["673260", "907623"]
+      },
+      {
+        "groupCode": "d8a-57b-cde",
+        "groupCreator": "434900",
+        "groupMembers": ["434900", "675787"]
+      },
+      {
+        "groupCode": "5e2-e00-64c",
+        "groupCreator": "476581",
+        "groupMembers": ["476581", "129681", "873422"]
+      },
+      {
+        "groupCode": "d69-3ae-559",
+        "groupCreator": "266133",
+        "groupMembers": ["266133", "867556", "591542"]
+      },
+      {
+        "groupCode": "88b-6a3-133",
+        "groupCreator": "618344",
+        "groupMembers": ["618344", "971735"]
+      },
+      {
+        "groupCode": "e96-d09-45e",
+        "groupCreator": "471151",
+        "groupMembers": ["471151", "842792", "369960"]
+      },
+      {
+        "groupCode": "ca4-022-f67",
+        "groupCreator": "670653",
+        "groupMembers": ["670653", "388569", "470985", "598908"]
+      },
+      {
+        "groupCode": "3c8-53c-d42",
+        "groupCreator": "887986",
+        "groupMembers": ["887986", "954522", "57970"]
+      },
+      {
+        "groupCode": "ef8-624-817",
+        "groupCreator": "310125",
+        "groupMembers": ["310125", "406028"]
+      },
+      {
+        "groupCode": "765-b35-2c3",
+        "groupCreator": "557267",
+        "groupMembers": ["557267", "51757"]
+      },
+      {
+        "groupCode": "a16-02d-099",
+        "groupCreator": "925488",
+        "groupMembers": ["925488", "729469", "999734"]
+      },
+      {
+        "groupCode": "595-e50-98a",
+        "groupCreator": "695372",
+        "groupMembers": ["695372", "474214"]
+      },
+      {
+        "groupCode": "a30-249-9bf",
+        "groupCreator": "950223",
+        "groupMembers": ["950223", "369224"]
+      },
+      {
+        "groupCode": "abd-425-1d4",
+        "groupCreator": "420743",
+        "groupMembers": ["420743", "74790"]
+      },
+      {
+        "groupCode": "6ec-b5b-9cc",
+        "groupCreator": "266704",
+        "groupMembers": ["266704", "394697"]
+      },
+      {
+        "groupCode": "00b-a4d-10e",
+        "groupCreator": "310364",
+        "groupMembers": ["310364"]
+      },
+      {
+        "groupCode": "1b9-b4b-4b8",
+        "groupCreator": "701418",
+        "groupMembers": ["701418", "211262"]
+      },
+      {
+        "groupCode": "9b3-726-13b",
+        "groupCreator": "710844",
+        "groupMembers": ["710844", "477657"]
+      },
+      {
+        "groupCode": "db7-cb1-e59",
+        "groupCreator": "278155",
+        "groupMembers": ["278155", "241201"]
+      },
+      {
+        "groupCode": "ec0-49e-0b9",
+        "groupCreator": "47019",
+        "groupMembers": ["47019", "544985"]
+      },
+      {
+        "groupCode": "8cf-b71-94a",
+        "groupCreator": "239402",
+        "groupMembers": ["239402", "266211"]
+      },
+      {
+        "groupCode": "7a8-2b5-b55",
+        "groupCreator": "96959",
+        "groupMembers": ["96959", "598188"]
+      },
+      {
+        "groupCode": "867-b80-3b2",
+        "groupCreator": "390152",
+        "groupMembers": ["390152", "432592"]
+      },
+      {
+        "groupCode": "cfb-970-3e9",
+        "groupCreator": "495243",
+        "groupMembers": ["495243", "998672", "232620", "48284"]
+      },
+      {
+        "groupCode": "ecb-27e-f49",
+        "groupCreator": "319618",
+        "groupMembers": ["319618", "650666", "964410", "234374"]
+      },
+      {
+        "groupCode": "b09-8f3-987",
+        "groupCreator": "118411",
+        "groupMembers": ["118411", "298016"]
+      },
+      {
+        "groupCode": "3c2-8d7-4c4",
+        "groupCreator": "236235",
+        "groupMembers": ["236235", "761483", "935427", "654332"]
+      },
+      {
+        "groupCode": "363-295-9e3",
+        "groupCreator": "901002",
+        "groupMembers": ["901002", "357932"]
+      },
+      {
+        "groupCode": "5b5-33d-dce",
+        "groupCreator": "761554",
+        "groupMembers": ["761554", "621975"]
+      },
+      {
+        "groupCode": "a00-133-41b",
+        "groupCreator": "827628",
+        "groupMembers": ["827628", "400571", "664604", "62422", "793561"]
+      },
+      {
+        "groupCode": "881-843-5e6",
+        "groupCreator": "732821",
+        "groupMembers": ["732821", "170339"]
+      },
+      {
+        "groupCode": "797-4c4-16d",
+        "groupCreator": "333684",
+        "groupMembers": ["333684", "310701"]
+      },
+      {
+        "groupCode": "a1e-b7d-0d0",
+        "groupCreator": "421855",
+        "groupMembers": ["421855", "797575", "685822", "721518"]
+      },
+      {
+        "groupCode": "518-2aa-6e1",
+        "groupCreator": "87090",
+        "groupMembers": ["87090", "331593"]
+      },
+      {
+        "groupCode": "dc0-53e-6de",
+        "groupCreator": "457672",
+        "groupMembers": ["457672", "492991", "851328"]
+      },
+      {
+        "groupCode": "ebb-e28-bbe",
+        "groupCreator": "399852",
+        "groupMembers": [
+          "399852",
+          "612156",
+          "907306",
+          "123236",
+          "65985",
+          "541513",
+          "866492"
+        ]
+      },
+      {
+        "groupCode": "1ce-a8a-d3d",
+        "groupCreator": "279578",
+        "groupMembers": ["279578", "197"]
+      },
+      {
+        "groupCode": "673-75a-486",
+        "groupCreator": "230368",
+        "groupMembers": ["230368", "585316", "651969"]
+      },
+      {
+        "groupCode": "fae-b1d-e3a",
+        "groupCreator": "861805",
+        "groupMembers": ["861805", "252013"]
+      },
+      {
+        "groupCode": "e3f-254-f24",
+        "groupCreator": "121448",
+        "groupMembers": ["121448", "385352", "467244", "635340"]
+      },
+      {
+        "groupCode": "7a5-331-20b",
+        "groupCreator": "297942",
+        "groupMembers": ["297942", "455069", "39634", "889313"]
+      },
+      {
+        "groupCode": "b50-7ff-c5f",
+        "groupCreator": "679184",
+        "groupMembers": ["679184", "729634"]
+      },
+      {
+        "groupCode": "2d9-8b5-c1d",
+        "groupCreator": "240983",
+        "groupMembers": ["240983", "761133"]
+      },
+      {
+        "groupCode": "1f5-a6f-d8c",
+        "groupCreator": "28244",
+        "groupMembers": ["28244", "178327", "789157", "707003"]
+      },
+      {
+        "groupCode": "a73-5ef-37e",
+        "groupCreator": "475585",
+        "groupMembers": ["475585", "263834"]
+      },
+      {
+        "groupCode": "2a3-94e-87f",
+        "groupCreator": "699376",
+        "groupMembers": ["699376", "235449", "129935"]
+      },
+      {
+        "groupCode": "31f-9d5-412",
+        "groupCreator": "987353",
+        "groupMembers": [
+          "987353",
+          "680324",
+          "622053",
+          "691080",
+          "553106",
+          "410971",
+          "947427"
+        ]
+      },
+      {
+        "groupCode": "4d9-5cc-27a",
+        "groupCreator": "515744",
+        "groupMembers": ["515744"]
+      },
+      {
+        "groupCode": "7ef-574-4aa",
+        "groupCreator": "178176",
+        "groupMembers": ["178176", "883167", "108268"]
+      },
+      {
+        "groupCode": "cff-63a-4ae",
+        "groupCreator": "495595",
+        "groupMembers": ["495595", "898291"]
+      },
+      {
+        "groupCode": "610-79f-f79",
+        "groupCreator": "917042",
+        "groupMembers": ["917042", "196854"]
+      },
+      {
+        "groupCode": "1ff-6af-108",
+        "groupCreator": "956728",
+        "groupMembers": ["956728", "517715", "665903", "531471", "351677"]
+      },
+      {
+        "groupCode": "037-d98-462",
+        "groupCreator": "942540",
+        "groupMembers": ["942540", "37239"]
+      },
+      {
+        "groupCode": "154-1c6-379",
+        "groupCreator": "618324",
+        "groupMembers": ["618324", "57161"]
+      },
+      {
+        "groupCode": "9e1-b79-b02",
+        "groupCreator": "360909",
+        "groupMembers": ["360909", "733855", "211402"]
+      },
+      {
+        "groupCode": "728-b0f-eee",
+        "groupCreator": "880885",
+        "groupMembers": ["880885", "479469", "418582"]
+      },
+      {
+        "groupCode": "aaf-f21-37c",
+        "groupCreator": "811723",
+        "groupMembers": ["811723", "319164"]
+      },
+      {
+        "groupCode": "f76-00a-183",
+        "groupCreator": "218469",
+        "groupMembers": ["218469", "581237"]
+      },
+      {
+        "groupCode": "17b-e2a-8e2",
+        "groupCreator": "981834",
+        "groupMembers": ["981834", "190584", "7995", "81465", "596228"]
+      },
+      {
+        "groupCode": "859-c00-3bb",
+        "groupCreator": "441615",
+        "groupMembers": ["441615", "413308"]
+      },
+      {
+        "groupCode": "3a7-fba-63c",
+        "groupCreator": "903482",
+        "groupMembers": ["903482", "732553", "273079", "692851", "218680"]
+      },
+      {
+        "groupCode": "450-32f-cad",
+        "groupCreator": "801500",
+        "groupMembers": ["801500", "988820"]
+      },
+      {
+        "groupCode": "716-17d-845",
+        "groupCreator": "809638",
+        "groupMembers": [
+          "809638",
+          "994542",
+          "943390",
+          "866539",
+          "857887",
+          "946559",
+          "117394",
+          "912589"
+        ]
+      },
+      {
+        "groupCode": "3e8-3b2-c20",
+        "groupCreator": "685731",
+        "groupMembers": ["685731", "37774"]
+      },
+      {
+        "groupCode": "b76-782-713",
+        "groupCreator": "614774",
+        "groupMembers": ["614774", "503833"]
+      },
+      {
+        "groupCode": "9c9-e82-2f5",
+        "groupCreator": "603548",
+        "groupMembers": ["603548", "357340"]
+      },
+      {
+        "groupCode": "2f5-91c-afe",
+        "groupCreator": "611580",
+        "groupMembers": ["611580", "926593"]
+      },
+      {
+        "groupCode": "c1a-35e-220",
+        "groupCreator": "848854",
+        "groupMembers": ["848854", "362984"]
+      },
+      {
+        "groupCode": "06d-42c-8b0",
+        "groupCreator": "709968",
+        "groupMembers": ["709968", "275289"]
+      },
+      {
+        "groupCode": "73c-3d4-ce4",
+        "groupCreator": "719093",
+        "groupMembers": ["719093", "941991", "524504"]
+      },
+      {
+        "groupCode": "822-2b5-09f",
+        "groupCreator": "575631",
+        "groupMembers": ["575631", "569398", "76002"]
+      },
+      {
+        "groupCode": "b36-9be-784",
+        "groupCreator": "780655",
+        "groupMembers": ["780655", "40869", "443471"]
+      },
+      {
+        "groupCode": "417-c73-e4a",
+        "groupCreator": "24483",
+        "groupMembers": ["24483", "204752"]
+      },
+      {
+        "groupCode": "eff-69d-980",
+        "groupCreator": "732676",
+        "groupMembers": ["732676", "482626"]
+      },
+      {
+        "groupCode": "332-b2c-636",
+        "groupCreator": "412916",
+        "groupMembers": ["412916", "569108", "485542", "902212", "153203"]
+      },
+      {
+        "groupCode": "894-b37-988",
+        "groupCreator": "189672",
+        "groupMembers": ["189672", "131566", "395885", "587372"]
+      },
+      {
+        "groupCode": "0b7-6c8-4c4",
+        "groupCreator": "979497",
+        "groupMembers": ["979497", "885400"]
+      },
+      {
+        "groupCode": "669-f98-696",
+        "groupCreator": "242958",
+        "groupMembers": ["242958"]
+      },
+      {
+        "groupCode": "c75-0a5-43b",
+        "groupCreator": "65391",
+        "groupMembers": ["65391", "419301"]
+      },
+      {
+        "groupCode": "e2e-c9e-e2d",
+        "groupCreator": "414900",
+        "groupMembers": ["414900", "561988", "887129"]
+      },
+      {
+        "groupCode": "c5a-019-7f0",
+        "groupCreator": "132797",
+        "groupMembers": ["132797", "223506"]
+      },
+      {
+        "groupCode": "09a-218-5a4",
+        "groupCreator": "634832",
+        "groupMembers": ["634832", "478348", "447146"]
+      },
+      {
+        "groupCode": "dde-db0-afe",
+        "groupCreator": "431579",
+        "groupMembers": ["431579", "357868"]
+      },
+      {
+        "groupCode": "383-4a5-6fb",
+        "groupCreator": "915475",
+        "groupMembers": ["915475", "905104"]
+      },
+      {
+        "groupCode": "e5d-ac2-6f8",
+        "groupCreator": "281008",
+        "groupMembers": ["281008", "712383", "261509"]
+      },
+      {
+        "groupCode": "8e5-10f-dcb",
+        "groupCreator": "767094",
+        "groupMembers": ["767094", "523664"]
       }
     ],
     "assignmentTime": "2025-09-06T06:30:00Z",
