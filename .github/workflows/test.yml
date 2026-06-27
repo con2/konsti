@@ -179,6 +179,12 @@ jobs:
           node-version-file: ".node-version"
           cache: "yarn"
 
+      # Required even though the app is built inside Docker: Yarn 4 refuses to run any script
+      # without the node_modules install state file
+      - name: Yarn install
+        run: |
+          YARN_ENABLE_HARDENED_MODE=1 yarn --immutable
+
       - name: Run Playwright tests
         run: |
           yarn docker-compose:test
