@@ -123,10 +123,11 @@ export const translationFI = {
     onlyAdults: "Vain täysi-ikäisille (K-18)",
     kids: "Suunnattu alakouluikäisille",
     smallKids: "Suunnattu alle kouluikäisille",
-    k16: "Ikäraja K16",
+    k16: "Ikäraja K-16",
     adultsAndYouth: "Suunnattu aikuisille, nuoret tervetulleita",
     youngAdults: "Suunnattu nuorisolle",
     families: "Suunnattu perheille",
+    preConventionWeek: "Etkoviikko",
   },
   pageTitle: {
     login: "Kirjaudu sisään",

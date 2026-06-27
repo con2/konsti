@@ -22,6 +22,7 @@ import {
   KompassiBoolean,
   KompassiRegistration,
   KompassiScheduleItem,
+  KompassiYesNo,
 } from "server/kompassi/kompassiProgramItem";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import { config } from "shared/config";
@@ -187,6 +188,13 @@ const mapTags = (kompassiProgramItem: KompassiProgramItem): Tag[] => {
 
   if (kompassiProgramItem.cachedAnnotations["konsti:entryConditionK16"]) {
     otherTags.push(Tag.K16);
+  }
+
+  if (
+    kompassiProgramItem.cachedDimensions["is-pre-convention-week"][0] ===
+    KompassiYesNo.YES
+  ) {
+    otherTags.push(Tag.PRE_CONVENTION_WEEK);
   }
 
   return [...groupingTags, ...ageGroupTags, ...otherTags];
