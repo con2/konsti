@@ -32,6 +32,8 @@ export const getAssignmentResultGroups = (
     groupBy(attendeesInGroups, (attendee) => attendee.groupCode),
   ).map(([groupCode, members]) => ({
     groupCode,
+    groupCreator:
+      members.find((member) => member.isGroupCreator)?.username ?? "",
     groupMembers: members.map((member) => member.username),
   }));
 };
