@@ -1,4 +1,3 @@
-import "server/utils/instrument";
 import { Server } from "node:http";
 import { startServer, closeServer } from "server/utils/server";
 import { logger } from "server/utils/logger";
