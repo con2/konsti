@@ -6,3 +6,9 @@ export interface UserAssignmentResult {
   username: string;
   assignmentSignup: AssignmentSignup;
 }
+
+// Snapshot of a group that took part in the lottery, as it was when the assignment ran
+export interface AssignmentResultGroup {
+  groupCode: string;
+  groupMembers: string[];
+}

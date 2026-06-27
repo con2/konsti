@@ -2,6 +2,7 @@ import { logger } from "server/utils/logger";
 import { saveUserSignupResults } from "server/features/assignment/utils/saveUserSignupResults";
 import { UserAssignmentResult } from "shared/types/models/result";
 import { saveResult } from "server/features/results/resultsRepository";
+import { getAssignmentResultGroups } from "server/features/assignment/utils/getAssignmentResultGroups";
 import { Result, makeSuccessResult } from "shared/utils/result";
 import { MongoDbError, QueueError } from "shared/types/api/errors";
 import { User } from "shared/types/models/user";
@@ -30,8 +31,16 @@ export const saveResults = async ({
       `Save all signup results to separate collection for assignment time ${assignmentTime}`,
     );
 
+    // Snapshot the groups as they were when this lottery ran
+    const groups = getAssignmentResultGroups(
+      users,
+      programItems,
+      assignmentTime,
+    );
+
     const saveResultResult = await saveResult(
       results,
+      groups,
       assignmentTime,
       algorithm,
       message,

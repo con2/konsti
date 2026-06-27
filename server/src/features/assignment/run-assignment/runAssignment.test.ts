@@ -11,6 +11,7 @@ import {
   findDirectSignups,
   saveDirectSignup,
 } from "server/features/direct-signup/directSignupRepository";
+import { findResults } from "server/features/results/resultsRepository";
 import {
   testProgramItem,
   testProgramItem2,
@@ -843,6 +844,44 @@ test("Assignment with no program items should return error", async () => {
   expect(assignResults.status).toEqual(
     AssignmentResultStatus.NO_STARTING_PROGRAM_ITEMS,
   );
+});
+
+test("Should write a snapshot of the lottery groups to the results collection", async () => {
+  vi.spyOn(config, "event").mockReturnValue({
+    ...config.event(),
+    twoPhaseSignupProgramTypes: [testProgramItem.programType],
+  });
+
+  await saveProgramItems([
+    { ...testProgramItem, minAttendance: 2, maxAttendance: 2 },
+  ]);
+
+  const groupCode = "123-234-345";
+  await saveUser({ ...mockUser, groupCode, isGroupCreator: true });
+  await saveUser({ ...mockUser2, groupCode });
+
+  // Only the group creator stores lottery signups; members inherit them
+  await saveLotterySignups({
+    username: mockUser.username,
+    lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
+  });
+
+  const assignResults = unsafelyUnwrap(
+    await runAssignment({
+      assignmentAlgorithm: AssignmentAlgorithm.PADG,
+      assignmentTime: testProgramItem.startTime,
+    }),
+  );
+  expect(assignResults.status).toEqual(AssignmentResultStatus.SUCCESS);
+
+  const savedResults = unsafelyUnwrap(await findResults());
+  expect(savedResults).toHaveLength(1);
+  expect(savedResults[0].groups).toEqual([
+    {
+      groupCode,
+      groupMembers: [mockUser.username, mockUser2.username],
+    },
+  ]);
 });
 
 test("Program item with parent startTime from 'startTimesByParentIds' should not be picked for assignment on program item's own start time", async () => {
