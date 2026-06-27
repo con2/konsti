@@ -11,6 +11,7 @@ import {
 import { UserGroup } from "shared/types/models/user";
 import { RaisedCard } from "client/components/RaisedCard";
 import {
+  getProgramItemValidity,
   isAlreadyDirectySigned,
   isAlreadyLotterySigned,
 } from "client/views/program-item/programItemUtils";
@@ -96,19 +97,12 @@ export const ProgramItemEntry = ({
     });
   }
 
-  const isValidMinAttendanceValue = programItem.minAttendance > 0;
-
-  const isValidMaxAttendanceValue =
-    !usesKonstiSignup || programItem.maxAttendance > 0;
-
-  const minAttendanceBiggerThanMax =
-    programItem.minAttendance > programItem.maxAttendance &&
-    programItem.maxAttendance > 0;
-
-  const allValuesValid =
-    isValidMinAttendanceValue &&
-    isValidMaxAttendanceValue &&
-    !minAttendanceBiggerThanMax;
+  const {
+    isValidMinAttendanceValue,
+    isValidMaxAttendanceValue,
+    minAttendanceBiggerThanMax,
+    allValuesValid,
+  } = getProgramItemValidity(programItem);
 
   return (
     <StyledCard
