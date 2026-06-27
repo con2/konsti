@@ -398,7 +398,7 @@ test("should only add one event log item with multiple lottery signups", async (
   );
 });
 
-test("should not add event log items after assigment if signup is dropped due to error", async () => {
+test("should not add event log items after assignment if signup is dropped due to error", async () => {
   await saveUser(mockUser);
   await saveUser(mockUser2);
   await saveUser(mockUser3);

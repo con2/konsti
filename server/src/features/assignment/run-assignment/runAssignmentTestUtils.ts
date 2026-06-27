@@ -84,7 +84,7 @@ export const verifyUserSignups = async (): Promise<
       );
 
       if (!matchingUser) {
-        logger.error(new Error(`No matcing user: ${userSignup.username}`));
+        logger.error(new Error(`No matching user: ${userSignup.username}`));
         continue;
       }
 

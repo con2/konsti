@@ -4,7 +4,7 @@ import {
   PopulateDbOptions,
   PostAddSerialsRequest,
 } from "shared/test-types/api/testData";
-import { cleanupDatabase } from "server/utils/cleanupDatabse";
+import { cleanupDatabase } from "server/utils/cleanupDatabase";
 import { ProgramItem } from "shared/types/models/programItem";
 import { saveSerials } from "server/features/serial/serialRepository";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";

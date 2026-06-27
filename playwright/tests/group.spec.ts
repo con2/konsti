@@ -93,7 +93,7 @@ test("Can create and join a group and receive a shared lottery result", async ({
   await postAssignment(request, startTime);
   await page.reload();
 
-  // Check new assigment message
+  // Check new assignment message
   await expect(page.getByTestId("notification-bar")).toContainText(
     /You were assigned to the .* Test program item./,
   );
@@ -104,7 +104,7 @@ test("Can create and join a group and receive a shared lottery result", async ({
   await login(page, request, { username: "test1", password: "test" });
   await page.goto("/");
 
-  // Check new assigment message
+  // Check new assignment message
   await expect(page.getByTestId("notification-bar")).toContainText(
     /You were assigned to the .* Test program item./,
   );
