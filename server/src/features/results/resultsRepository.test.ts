@@ -1,7 +1,10 @@
 import { expect, test, afterEach, beforeEach } from "vitest";
 import mongoose from "mongoose";
 import { faker } from "@faker-js/faker";
-import { UserAssignmentResult } from "shared/types/models/result";
+import {
+  AssignmentResultGroup,
+  UserAssignmentResult,
+} from "shared/types/models/result";
 import {
   findResults,
   saveResult,
@@ -40,11 +43,17 @@ test("should insert new result into collection", async () => {
       },
     },
   ];
+  const groups: AssignmentResultGroup[] = [
+    {
+      groupCode: "123-234-345",
+      groupMembers: [mockUser.username, mockUser2.username],
+    },
+  ];
   const assignmentTime = testProgramItem.startTime;
   const algorithm = AssignmentAlgorithm.PADG;
   const message = "Test assign result message";
 
-  await saveResult(signupResults, assignmentTime, algorithm, message);
+  await saveResult(signupResults, groups, assignmentTime, algorithm, message);
 
   const insertedResults = unsafelyUnwrap(await findResults());
   expect(insertedResults).toHaveLength(1);
@@ -68,6 +77,7 @@ test("should insert new result into collection", async () => {
         username: mockUser2.username,
       },
     ],
+    groups,
     message,
     assignmentTime,
     algorithm,

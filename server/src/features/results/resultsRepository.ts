@@ -4,7 +4,10 @@ import {
   ResultsModel,
   ResultsSchemaDb,
 } from "server/features/results/resultsSchema";
-import { UserAssignmentResult } from "shared/types/models/result";
+import {
+  AssignmentResultGroup,
+  UserAssignmentResult,
+} from "shared/types/models/result";
 import {
   Result,
   makeErrorResult,
@@ -28,6 +31,7 @@ export const removeResults = async (): Promise<Result<void, MongoDbError>> => {
 
 export const saveResult = async (
   signupResultData: readonly UserAssignmentResult[],
+  groups: readonly AssignmentResultGroup[],
   assignmentTime: string,
   algorithm: AssignmentAlgorithm,
   message: string,
@@ -35,7 +39,7 @@ export const saveResult = async (
   try {
     await ResultsModel.replaceOne(
       { assignmentTime },
-      { assignmentTime, results: signupResultData, algorithm, message },
+      { assignmentTime, results: signupResultData, groups, algorithm, message },
       { upsert: true },
     );
     logger.debug(
@@ -55,6 +59,7 @@ export const saveResult = async (
 
 interface AssignmentResult {
   results: UserAssignmentResult[];
+  groups: AssignmentResultGroup[];
   assignmentTime: string;
   algorithm: string;
   message: string;

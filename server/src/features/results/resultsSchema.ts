@@ -16,6 +16,13 @@ export const ResultsSchemaDb = z
         }),
       }),
     ),
+    // Snapshot of the groups that took part in this lottery run, as they were when it ran
+    groups: z.array(
+      z.object({
+        groupCode: z.string(),
+        groupMembers: z.array(z.string()),
+      }),
+    ),
     assignmentTime: z.date().transform((date) => dayjs(date).toISOString()),
     algorithm: z.string(),
     message: z.string(),
@@ -37,9 +44,15 @@ const resultsArraySchema = new mongoose.Schema({
   assignmentSignup: { type: assignmentSignupSchema, required: true },
 });
 
+const groupSchema = new mongoose.Schema({
+  groupCode: { type: String, required: true },
+  groupMembers: { type: [String], required: true },
+});
+
 const resultsSchema = new mongoose.Schema(
   {
     results: { type: [resultsArraySchema], required: true },
+    groups: { type: [groupSchema], required: true },
     assignmentTime: {
       type: Date,
       get: (value: Date) => new Date(value),
