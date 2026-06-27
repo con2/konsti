@@ -4,8 +4,6 @@ export interface LotterySignup {
   programItemId: string;
   priority: number;
   signedToStartTime: string;
-  // Group the user belonged to when making the signup ("0" if not in a group)
-  groupCode: string;
 }
 
 export interface DirectSignup {

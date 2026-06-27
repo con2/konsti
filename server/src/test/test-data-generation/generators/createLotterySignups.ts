@@ -42,7 +42,6 @@ export const createLotterySignups = async (): Promise<void> => {
 
 const getRandomLotterySignup = (
   programItems: readonly ProgramItem[],
-  groupCode: string,
 ): LotterySignup[] => {
   const { noKonstiSignupIds } = config.event();
 
@@ -76,7 +75,6 @@ const getRandomLotterySignup = (
       programItemId: programItem.programItemId,
       priority: index + 1,
       signedToStartTime: programItem.startTime,
-      groupCode,
     }));
   });
 };
@@ -85,7 +83,7 @@ const doLotterySignup = async (
   programItems: readonly ProgramItem[],
   user: User,
 ): Promise<User> => {
-  const lotterySignups = getRandomLotterySignup(programItems, user.groupCode);
+  const lotterySignups = getRandomLotterySignup(programItems);
 
   const updatedUser = unsafelyUnwrap(
     await saveLotterySignups({
@@ -125,10 +123,7 @@ const lotterySignupGroup = async (
 
   const signupData = {
     username: groupCreator.username,
-    lotterySignups: getRandomLotterySignup(
-      programItems,
-      groupCreator.groupCode,
-    ),
+    lotterySignups: getRandomLotterySignup(programItems),
   };
 
   await saveLotterySignups(signupData);

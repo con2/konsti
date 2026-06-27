@@ -75,7 +75,6 @@ test("should remove overlapping lottery signups from user", async () => {
         programItemId: programItemRemovedId,
         priority: 1,
         signedToStartTime: startTimeRemoved,
-        groupCode: "0",
       },
     ],
   });
@@ -85,7 +84,6 @@ test("should remove overlapping lottery signups from user", async () => {
       programItemId: testProgramItem.programItemId,
       priority: 1,
       signedToStartTime: testProgramItem.startTime,
-      groupCode: "0",
     },
   };
 
@@ -99,7 +97,6 @@ test("should remove overlapping lottery signups from user", async () => {
         programItemId: programItemNotRemovedId,
         priority: 1,
         signedToStartTime: startTimeNotRemoved,
-        groupCode: "0",
       },
     ],
   });
@@ -109,7 +106,6 @@ test("should remove overlapping lottery signups from user", async () => {
       programItemId: testProgramItem.programItemId,
       priority: 1,
       signedToStartTime: testProgramItem.startTime,
-      groupCode: "0",
     },
   };
 
@@ -123,13 +119,11 @@ test("should remove overlapping lottery signups from user", async () => {
         programItemId: programItemRemovedId,
         priority: 1,
         signedToStartTime: startTimeRemoved,
-        groupCode: "0",
       },
       {
         programItemId: programItemNotRemovedId,
         priority: 1,
         signedToStartTime: startTimeNotRemoved,
-        groupCode: "0",
       },
     ],
   });
@@ -241,25 +235,21 @@ test("should remove all upcoming lottery signups from user", async () => {
         programItemId: resultProgramItemId,
         priority: 1,
         signedToStartTime: resultProgramItemStartTime,
-        groupCode: "0",
       },
       {
         programItemId: pastProgramItemId,
         priority: 1,
         signedToStartTime: pastProgramItemStartTime,
-        groupCode: "0",
       },
       {
         programItemId: upcomingProgramItemId,
         priority: 1,
         signedToStartTime: upcomingStartTime,
-        groupCode: "0",
       },
       {
         programItemId: upcomingProgramItemId2,
         priority: 1,
         signedToStartTime: upcomingStartTime2,
-        groupCode: "0",
       },
     ],
   });
@@ -269,7 +259,6 @@ test("should remove all upcoming lottery signups from user", async () => {
       programItemId: resultProgramItemId,
       priority: 1,
       signedToStartTime: resultProgramItemStartTime,
-      groupCode: "0",
     },
   };
 
@@ -282,13 +271,11 @@ test("should remove all upcoming lottery signups from user", async () => {
         programItemId: pastProgramItemId,
         priority: 1,
         signedToStartTime: pastProgramItemStartTime,
-        groupCode: "0",
       },
       {
         programItemId: upcomingProgramItemId,
         priority: 1,
         signedToStartTime: upcomingStartTime,
-        groupCode: "0",
       },
     ],
   });
@@ -372,13 +359,11 @@ test("should not remove upcoming lottery signup with past parent startTime", asy
         programItemId: resultProgramItemId,
         priority: 1,
         signedToStartTime: resultProgramItemStartTime,
-        groupCode: "0",
       },
       {
         programItemId: upcomingProgramItemId,
         priority: 1,
         signedToStartTime: upcomingStartTime,
-        groupCode: "0",
       },
     ],
   });
@@ -388,7 +373,6 @@ test("should not remove upcoming lottery signup with past parent startTime", asy
       programItemId: resultProgramItemId,
       priority: 1,
       signedToStartTime: resultProgramItemStartTime,
-      groupCode: "0",
     },
   };
 
