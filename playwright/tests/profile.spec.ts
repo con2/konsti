@@ -42,11 +42,6 @@ test("Update email notification address and password from profile", async ({
 
   // Log out and log back in through the form with the new password
   await profilePage.navigation.logout();
-  // Wait for logout to clear the session before reloading the login page
-  await expect
-    .poll(async () => page.evaluate(() => localStorage.getItem("state")))
-    .toBeNull();
-
   await page.goto("/login");
   await loginPage.fillAndSubmit("test1", "newpassword");
 

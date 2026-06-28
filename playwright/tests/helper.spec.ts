@@ -60,10 +60,6 @@ test("Helper can find a user and change their password", async ({
 
   // The user can log in with the new password
   await helperPage.navigation.logout();
-  await expect
-    .poll(async () => page.evaluate(() => localStorage.getItem("state")))
-    .toBeNull();
-
   await page.goto("/login");
   await loginPage.fillAndSubmit("test1", "newpassword1234");
 

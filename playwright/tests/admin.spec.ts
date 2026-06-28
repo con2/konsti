@@ -38,10 +38,6 @@ test("Admin can open and close the app", async ({ page, request }) => {
 
   // While the app is closed, a normal user cannot log in through the form
   await adminPage.navigation.logout();
-  await expect
-    .poll(async () => page.evaluate(() => localStorage.getItem("state")))
-    .toBeNull();
-
   await page.goto("/login");
   await loginPage.fillAndSubmit("test1", "test");
   await expect(adminPage.main).toContainText("Login is disabled");

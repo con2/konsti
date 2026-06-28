@@ -13,9 +13,7 @@ test("Logout clears the session", async ({ page, request }) => {
   await navigation.logout();
 
   // Session storage is cleared on logout
-  await expect
-    .poll(async () => page.evaluate(() => localStorage.getItem("state")))
-    .toBeNull();
+  expect(await page.evaluate(() => localStorage.getItem("state"))).toBeNull();
 
   // Logged-out navigation offers a login link
   await navigation.open();

@@ -36,6 +36,10 @@ export class Navigation {
   async logout(): Promise<void> {
     await this.open();
     await this.page.getByRole("link", { name: "Logout" }).click();
+    // Logout clears the session asynchronously; wait for it before continuing
+    await this.page.waitForFunction(
+      () => localStorage.getItem("state") === null,
+    );
   }
 
   get loginLink(): Locator {
