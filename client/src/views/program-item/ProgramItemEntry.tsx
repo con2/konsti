@@ -22,6 +22,7 @@ import { ProgramItemSignup } from "client/views/program-item/signup/ProgramItemS
 import { ProgramItemHead } from "client/views/program-item/head/ProgramItemHead";
 import { SignupQuestion } from "shared/types/models/settings";
 import { ProgramItemErrors } from "client/views/program-item/ProgramItemErrors";
+import { isDirectSignupAlwaysOpen } from "shared/utils/isDirectSignupAlwaysOpen";
 import {
   DirectSignupWithProgramItem,
   LotterySignupWithProgramItem,
@@ -55,7 +56,7 @@ export const ProgramItemEntry = ({
   publicSignupQuestion,
 }: Props): ReactElement => {
   const { t } = useTranslation();
-  const { noKonstiSignupIds, directSignupAlwaysOpenIds } = config.event();
+  const { noKonstiSignupIds } = config.event();
 
   const usesKonstiSignup =
     programItem.signupType === SignupType.KONSTI &&
@@ -63,9 +64,7 @@ export const ProgramItemEntry = ({
   const signupNotRequired = programItem.signupType === SignupType.NOT_REQUIRED;
   const signupRequired = usesKonstiSignup && !signupNotRequired;
 
-  const signupAlwaysOpen = directSignupAlwaysOpenIds.includes(
-    programItem.programItemId,
-  );
+  const signupAlwaysOpen = isDirectSignupAlwaysOpen(programItem);
   const isDirectSignupMode =
     signupStrategy === ProgramItemSignupStrategy.DIRECT || signupAlwaysOpen;
 

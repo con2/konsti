@@ -190,10 +190,7 @@ const mapTags = (kompassiProgramItem: KompassiProgramItem): Tag[] => {
     otherTags.push(Tag.K16);
   }
 
-  if (
-    kompassiProgramItem.cachedDimensions["is-pre-convention-week"][0] ===
-    KompassiYesNo.YES
-  ) {
+  if (isPreConventionWeek(kompassiProgramItem)) {
     otherTags.push(Tag.PRE_CONVENTION_WEEK);
   }
 
@@ -363,7 +360,12 @@ const mapSignupType = (
   );
 
   // If program item using lottery doesn't start at event hour, disable Konsti signup
-  if (usesKonstiRegisration && evenHourProgramTypes.includes(programType)) {
+  // Pre-convention week items use direct signup, not lottery, so the even-hour check doesn't apply
+  if (
+    usesKonstiRegisration &&
+    evenHourProgramTypes.includes(programType) &&
+    !isPreConventionWeek(kompassiProgramItem)
+  ) {
     const startsAtEvenHour = getStartsAtEvenHour(scheduleItem);
     if (!startsAtEvenHour) {
       return SignupType.OTHER;
@@ -413,3 +415,9 @@ const mapState = (
 
   return State.ACCEPTED;
 };
+
+const isPreConventionWeek = (
+  kompassiProgramItem: KompassiProgramItem,
+): boolean =>
+  kompassiProgramItem.cachedDimensions["is-pre-convention-week"][0] ===
+  KompassiYesNo.YES;

@@ -6,12 +6,12 @@ import {
 } from "shared/types/models/programItem";
 import { ProgramItemDirectSignup } from "client/views/program-item/signup/components/direct-signup/ProgramItemDirectSignup";
 import { ProgramItemLotterySignup } from "client/views/program-item/signup/components/lottery-signup/ProgramItemLotterySignup";
-import { config } from "shared/config";
 import { SignupHelpText } from "client/views/program-item/signup/components/SignupHelpText";
 import { getTimeNow } from "client/utils/getTimeNow";
 import { isAlreadyDirectySigned } from "client/views/program-item/programItemUtils";
 import { AdmissionTicketLink } from "client/views/program-item/signup/components/AdmissionTicketLink";
 import { getDirectSignupEndTime } from "shared/utils/signupTimes";
+import { isDirectSignupAlwaysOpen } from "shared/utils/isDirectSignupAlwaysOpen";
 import {
   DirectSignupWithProgramItem,
   LotterySignupWithProgramItem,
@@ -38,9 +38,7 @@ export const ProgramItemSignup = ({
   usesKonstiSignup,
   signupRequired,
 }: Props): ReactElement => {
-  const signupAlwaysOpen = config
-    .event()
-    .directSignupAlwaysOpenIds.includes(programItem.programItemId);
+  const signupAlwaysOpen = isDirectSignupAlwaysOpen(programItem);
 
   const isDirectSignupMode =
     signupStrategy === ProgramItemSignupStrategy.DIRECT || signupAlwaysOpen;

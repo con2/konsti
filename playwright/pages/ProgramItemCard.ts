@@ -28,14 +28,20 @@ export class ProgramItemCard {
     return this.root.locator("select");
   }
 
+  get signUpButton(): Locator {
+    return this.root.getByRole("button", { name: "Sign up", exact: true });
+  }
+
+  get lotterySignupButton(): Locator {
+    return this.root.getByRole("button", { name: /lottery sign-up/i });
+  }
+
   async signUp(): Promise<void> {
-    await this.root
-      .getByRole("button", { name: "Sign up", exact: true })
-      .click();
+    await this.signUpButton.click();
   }
 
   async lotterySignup(): Promise<void> {
-    await this.root.getByRole("button", { name: /lottery sign-up/i }).click();
+    await this.lotterySignupButton.click();
   }
 
   async confirm(): Promise<void> {
