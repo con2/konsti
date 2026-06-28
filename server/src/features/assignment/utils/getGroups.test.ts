@@ -1,7 +1,10 @@
 import { afterEach, expect, test, vi } from "vitest";
 import dayjs from "dayjs";
 import { getGroups } from "server/features/assignment/utils/getGroups";
-import { testProgramItem } from "shared/tests/testProgramItem";
+import {
+  testProgramItem,
+  testProgramItem2,
+} from "shared/tests/testProgramItem";
 import { config } from "shared/config";
 import {
   assignmentTime,
@@ -11,6 +14,35 @@ import {
 
 afterEach(() => {
   vi.resetAllMocks();
+});
+
+test("excludes lottery signups for items whose lottery already ran (different start time)", () => {
+  // A leftover signup for an item that already ran is kept on the user but must not
+  // become a preference in a later lottery for a different start time
+  const pastStartTime = dayjs(assignmentTime)
+    .subtract(2, "hours")
+    .toISOString();
+
+  const user = {
+    ...getUsers({ count: 1 })[0],
+    lotterySignups: [
+      {
+        programItemId: testProgramItem2.programItemId,
+        priority: 1,
+        signedToStartTime: pastStartTime,
+      },
+      {
+        programItemId: testProgramItem.programItemId,
+        priority: 1,
+        signedToStartTime: testProgramItem.startTime,
+      },
+    ],
+  };
+
+  const groups = getGroups([[user]], assignmentTime, [testProgramItem]);
+
+  expect(groups).toHaveLength(1);
+  expect(groups[0].pref).toEqual([testProgramItem.programItemId]);
 });
 
 test("should return as many groups as user groups", () => {

@@ -5,7 +5,7 @@ import { faker } from "@faker-js/faker";
 import { runAssignment } from "server/features/assignment/run-assignment/runAssignment";
 import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
 import { config } from "shared/config";
-import { saveUser } from "server/features/user/userRepository";
+import { findUser, saveUser } from "server/features/user/userRepository";
 import { saveProgramItems } from "server/features/program-item/programItemRepository";
 import {
   findDirectSignups,
@@ -920,4 +920,72 @@ test("Program item with parent startTime from 'startTimesByParentIds' should not
   expect(assignResults.status).toEqual(
     AssignmentResultStatus.NO_STARTING_PROGRAM_ITEMS,
   );
+});
+
+test("Should keep a past lottery signup but not let it affect an upcoming lottery", async () => {
+  vi.spyOn(config, "event").mockReturnValue({
+    ...config.event(),
+    twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
+    startTimesByParentIds: new Map(),
+  });
+
+  // Item whose lottery already ran (earlier start time)
+  const pastProgramItem = {
+    ...testProgramItem2,
+    startTime: dayjs(testProgramItem.startTime)
+      .subtract(2, "hours")
+      .toISOString(),
+  };
+  // Item the upcoming lottery is for
+  const currentProgramItem = {
+    ...testProgramItem,
+    minAttendance: 1,
+    maxAttendance: 1,
+  };
+
+  await saveProgramItems([pastProgramItem, currentProgramItem]);
+  await saveUser(mockUser);
+
+  // User keeps a leftover lottery signup for the past item and also has one for the current item
+  await saveLotterySignups({
+    username: mockUser.username,
+    lotterySignups: [
+      {
+        programItemId: pastProgramItem.programItemId,
+        priority: 1,
+        signedToStartTime: pastProgramItem.startTime,
+      },
+      {
+        programItemId: currentProgramItem.programItemId,
+        priority: 1,
+        signedToStartTime: currentProgramItem.startTime,
+      },
+    ],
+  });
+
+  const assignResults = unsafelyUnwrap(
+    await runAssignment({
+      assignmentAlgorithm: AssignmentAlgorithm.PADG,
+      assignmentTime: currentProgramItem.startTime,
+    }),
+  );
+
+  // Only the current item is assigned; the past signup is ignored by the upcoming lottery
+  expect(assignResults.status).toEqual(AssignmentResultStatus.SUCCESS);
+  expect(assignResults.results).toHaveLength(1);
+  expect(assignResults.results[0]).toMatchObject({
+    username: mockUser.username,
+    assignmentSignup: {
+      programItemId: currentProgramItem.programItemId,
+      priority: 1,
+      signedToStartTime: currentProgramItem.startTime,
+    },
+  });
+
+  // The past lottery signup is preserved for data accuracy, not removed by the run
+  const userAfterSave = unsafelyUnwrap(await findUser(mockUser.username));
+  const pastSignup = userAfterSave?.lotterySignups.find(
+    (signup) => signup.programItemId === pastProgramItem.programItemId,
+  );
+  expect(pastSignup).toBeDefined();
 });
