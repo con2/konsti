@@ -98,6 +98,29 @@ test("should limit max attendees if too many passed to saveDirectSignups", async
   expect(signupsAfterSave[0].userSignups).toHaveLength(2);
 });
 
+test("should set count to total userSignups when appending to a program item that already has signups", async () => {
+  await saveUser(mockUser);
+  await saveUser(mockUser2);
+  await saveProgramItems([{ ...testProgramItem, maxAttendance: 5 }]);
+
+  // Pre-existing signup, e.g. a non-lottery signup or one left over from a moved program item
+  await saveDirectSignup(mockPostDirectSignupRequest);
+
+  const programItems = unsafelyUnwrap(await findProgramItems());
+
+  // Assignment appends a new signup to the same program item document
+  const signups: SignupRepositoryAddSignup[] = [
+    { ...mockPostDirectSignupRequest, username: mockUser2.username },
+  ];
+  unsafelyUnwrap(await saveDirectSignups(signups, programItems));
+
+  const signupsAfterSave = unsafelyUnwrap(await findDirectSignups());
+  expect(signupsAfterSave).toHaveLength(1);
+  expect(signupsAfterSave[0].userSignups).toHaveLength(2);
+  // count must reflect the total userSignups, not just the appended batch
+  expect(signupsAfterSave[0].count).toEqual(2);
+});
+
 test("should not add multiple duplicate signups for same user", async () => {
   await saveUser(mockUser);
   await saveProgramItems([testProgramItem]);
