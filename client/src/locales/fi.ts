@@ -333,8 +333,6 @@ export const translationFI = {
     loginLinkEnding: " nähdäksesi {{ATTENDEE_TYPE}}.",
     signupQuestionAriaLabel: "Lisätietokysymys",
     help: {
-      signupAlwaysOpen:
-        "Tähän {{PROGRAM_TYPE}} voi ilmoittautua koko tapahtuman ajan.",
       signupAlwaysOpenGroupMemberInfo:
         " Voit ilmoittautua vaikka olet ryhmän jäsen.",
       directSignupStartsLater:

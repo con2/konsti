@@ -19,26 +19,34 @@ import {
 } from "client/views/program-item/programItemUtils";
 import { tooEarlyForLotterySignup } from "shared/utils/tooEarlyForLotterySignup";
 import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
+import { isDirectSignupAlwaysOpen } from "shared/utils/isDirectSignupAlwaysOpen";
+import { useAppSelector } from "client/utils/hooks";
+import { getIsInGroup } from "client/views/group/groupUtils";
 
 interface Props {
   programItem: ProgramItem;
-  isSignupAlwaysOpen: boolean;
   usesKonstiSignup: boolean;
-  isInGroup: boolean;
 }
 
 export const SignupHelpText = ({
   programItem,
-  isSignupAlwaysOpen,
   usesKonstiSignup,
-  isInGroup,
 }: Props): ReactElement | null => {
   const { t } = useTranslation();
+
+  const groupCode = useAppSelector((state) => state.group.groupCode);
+  const isInGroup = getIsInGroup(groupCode);
 
   // Cannot use programItem.signupStrategy here since it's relative to time
   const isLotterySignup =
     isLotterySignupProgramItem(programItem) &&
     !tooEarlyForLotterySignup(programItem.startTime);
+
+  // Group members can sign up to always open program items without leaving the group
+  const groupMemberInfo =
+    isDirectSignupAlwaysOpen(programItem) && isInGroup ? (
+      <span>{t("signup.help.signupAlwaysOpenGroupMemberInfo")}</span>
+    ) : null;
 
   const timeNow = getTimeNow();
 
@@ -75,19 +83,6 @@ export const SignupHelpText = ({
     );
   }
 
-  if (isSignupAlwaysOpen) {
-    return (
-      <p>
-        {t("signup.help.signupAlwaysOpen", {
-          PROGRAM_TYPE: t(`programTypeIllative.${programItem.programType}`),
-        })}
-        {isInGroup && (
-          <span>{t("signup.help.signupAlwaysOpenGroupMemberInfo")}</span>
-        )}
-      </p>
-    );
-  }
-
   if (!isLotterySignup) {
     if (!directSignupInProgress) {
       return (
@@ -95,6 +90,7 @@ export const SignupHelpText = ({
           <FontAwesomeIcon icon={"user-plus"} />{" "}
           {t("signup.help.directSignupStartsLater")}{" "}
           <b>{getFormattedTime(directSignupStartTime, timeNow)}</b>.
+          {groupMemberInfo}
         </p>
       );
     }
@@ -104,6 +100,7 @@ export const SignupHelpText = ({
         <FontAwesomeIcon icon={"user-plus"} />{" "}
         {t("signup.help.directSignupOpenNow")}{" "}
         <b>{getFormattedTime(directSignupEndTime, timeNow)}</b>.
+        {groupMemberInfo}
       </p>
     );
   }
