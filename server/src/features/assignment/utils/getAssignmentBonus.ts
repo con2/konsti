@@ -68,11 +68,15 @@ export const getAssignmentBonus = (
 
   /** Additional first time bonus */
 
-  // Get group members with previous NO_ASSIGNMENT event log items and without direct signups
+  // Get group members with previous NO_ASSIGNMENT event log items and without direct signups.
+  // Ignore a NO_ASSIGNMENT from the current assignmentTime — on a re-run it's this run's own
+  // earlier result, so counting it would make the re-run boost run-1 failures
   const groupMembersWithPreviousFailedLotterySignup =
     groupMembersWithoutDirectSignups.filter((groupMember) => {
       return groupMember.eventLogItems.find(
-        (eventLogItem) => eventLogItem.action === EventLogAction.NO_ASSIGNMENT,
+        (eventLogItem) =>
+          eventLogItem.action === EventLogAction.NO_ASSIGNMENT &&
+          !isCurrentAssignment(eventLogItem.programItemStartTime),
       );
     });
 
