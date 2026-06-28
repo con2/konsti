@@ -1,7 +1,13 @@
 export const translationEN = {
   appDescription: "{{EVENT_NAME}} {{EVENT_YEAR}}",
+  appDescriptionPreConventionWeek:
+    "{{EVENT_NAME}} {{EVENT_YEAR}} – Pre-convention week",
   logoAltText: "Konsti",
   announcement: "Sign-up has ended. Results will be released soon.",
+  testTime: {
+    preWeek: "Pre-week",
+    mainEvent: "Main event",
+  },
   button: {
     logout: "Logout",
     login: "Login",

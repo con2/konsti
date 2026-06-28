@@ -51,6 +51,7 @@ export interface EventConfig {
   eventYear: string;
   eventStartTime: string;
   preConventionWeekSignupStartTime: string | null;
+  mainEventProgramVisibleTime: string | null;
   directSignupPhaseStart: number;
   preSignupStart: number;
   phaseGap: number;

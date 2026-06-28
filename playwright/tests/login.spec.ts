@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import dayjs from "dayjs";
 import {
   addProgramItems,
   populateDb,
@@ -9,15 +10,23 @@ import { LoginPage } from "playwright/pages/LoginPage";
 import { ProgramItemPage } from "playwright/pages/ProgramItemPage";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import { LoginProvider } from "shared/config/eventConfigTypes";
+import { config } from "shared/config";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { ProgramType } from "shared/types/models/programItem";
 
+const programItemStartTime = dayjs(config.event().eventStartTime)
+  .add(1, "hour")
+  .startOf("hour")
+  .toISOString();
+
 test("Admin login", async ({ page, request }) => {
   await populateDb(request, { clean: true, users: true, admin: true });
-  await addProgramItems(request, [testProgramItem]);
+  await addProgramItems(request, [
+    { ...testProgramItem, startTime: programItemStartTime },
+  ]);
   await postSettings(request, { loginProvider: LoginProvider.LOCAL });
   await postTestSettings(request, {
-    testTime: testProgramItem.startTime,
+    testTime: config.event().eventStartTime,
   });
 
   const username = "admin";
@@ -41,10 +50,12 @@ test("Admin login", async ({ page, request }) => {
 
 test("User login", async ({ page, request }) => {
   await populateDb(request, { clean: true, users: true, admin: true });
-  await addProgramItems(request, [testProgramItem]);
+  await addProgramItems(request, [
+    { ...testProgramItem, startTime: programItemStartTime },
+  ]);
   await postSettings(request, { loginProvider: LoginProvider.LOCAL });
   await postTestSettings(request, {
-    testTime: testProgramItem.startTime,
+    testTime: config.event().eventStartTime,
   });
 
   const username = "test1";
@@ -72,11 +83,12 @@ test("Login redirect back to program item", async ({ page, request }) => {
     {
       ...testProgramItem,
       programType: ProgramType.TABLETOP_RPG,
+      startTime: programItemStartTime,
     },
   ]);
   await postSettings(request, { loginProvider: LoginProvider.LOCAL });
   await postTestSettings(request, {
-    testTime: testProgramItem.startTime,
+    testTime: config.event().eventStartTime,
   });
 
   const username = "test1";

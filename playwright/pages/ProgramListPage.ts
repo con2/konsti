@@ -41,6 +41,10 @@ export class ProgramListPage extends BasePage {
     await this.programTypeSelect.selectOption(label);
   }
 
+  async selectStartingTime(label: string): Promise<void> {
+    await this.page.getByRole("radio", { name: label, exact: true }).click();
+  }
+
   async search(text: string): Promise<void> {
     await this.page.locator("#find").fill(text);
   }

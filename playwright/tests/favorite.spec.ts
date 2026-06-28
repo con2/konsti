@@ -1,9 +1,17 @@
 import { test, expect } from "@playwright/test";
-import { populateDb, login } from "playwright/playwrightUtils";
+import {
+  populateDb,
+  login,
+  postTestSettings,
+} from "playwright/playwrightUtils";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
+import { config } from "shared/config";
 
 test("Add favorite", async ({ page, request }) => {
   await populateDb(request, { clean: true, users: true, programItems: true });
+  await postTestSettings(request, {
+    testTime: config.event().eventStartTime,
+  });
   await login(page, request, { username: "test1", password: "test" });
 
   await page.goto("/");

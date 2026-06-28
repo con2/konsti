@@ -41,7 +41,6 @@ import {
   ProgramType,
   SignupType,
   State,
-  Tag,
 } from "shared/types/models/programItem";
 
 let server: Server;
@@ -480,20 +479,15 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     expect(member?.groupCode).toEqual("0");
   });
 
-  test("should not remove user from group when signing up to signup always open program item", async () => {
-    // Allow signing up to preConventionWeek program item
+  test("should not remove user from group when signing up to 'signup always open' program item", async () => {
+    // directSignupAlwaysOpenIds makes the program item 'signup always open'
     vi.spyOn(config, "event").mockReturnValue({
       ...config.event(),
-      preConventionWeekSignupStartTime: dayjs(testProgramItem.startTime)
-        .subtract(1, "hour")
-        .toISOString(),
+      directSignupAlwaysOpenIds: [testProgramItem.programItemId],
     });
     vi.setSystemTime(testProgramItem.startTime);
 
-    // Pre-convention week tag makes the program item signup always open
-    await saveProgramItems([
-      { ...testProgramItem, tags: [Tag.PRE_CONVENTION_WEEK] },
-    ]);
+    await saveProgramItems([testProgramItem]);
     await saveUser(mockUser);
     await saveGroupCode("group-123", mockUser.username);
 

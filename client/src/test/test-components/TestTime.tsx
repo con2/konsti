@@ -13,9 +13,11 @@ import {
   getTime,
 } from "shared/utils/timeFormatter";
 import { Dropdown } from "client/components/Dropdown";
+import { config } from "shared/config";
+import { isMainEventProgramVisible } from "client/utils/getUpcomingProgramItems";
 
 export const TestTime = (): ReactElement => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const dispatch = useAppDispatch();
 
   const testTime = useAppSelector((state) => state.testSettings.testTime);
@@ -41,11 +43,24 @@ export const TestTime = (): ReactElement => {
     setDropdownVisible(false);
   };
 
+  const { mainEventProgramVisibleTime } = config.event();
+
   const dropdownItems = testTimes.map((time) => {
     const formattedDate =
       i18n.language === "fi"
         ? `${capitalize(getShortWeekdayAndTime(time))} (${getDate(time)})`
         : `${capitalize(getShortWeekdayAndTime(time))} (${getDate(time)})`;
+
+    // Show which times are pre-convention week and which are main event
+    if (mainEventProgramVisibleTime) {
+      const phase = t(
+        isMainEventProgramVisible(dayjs(time))
+          ? "testTime.mainEvent"
+          : "testTime.preWeek",
+      );
+      return { value: time, title: `${phase} – ${formattedDate}` };
+    }
+
     return { value: time, title: formattedDate };
   });
 
@@ -53,14 +68,17 @@ export const TestTime = (): ReactElement => {
     <div>
       <StyledTestTime>
         {dropdownVisible ? (
-          <Dropdown
-            options={dropdownItems}
-            selectedValue={dayjs(testTime).toISOString()}
-            onChange={async (event: ChangeEvent<HTMLSelectElement>) => {
-              await setTestTime(event.target.value);
-            }}
-            loading={loading}
-          />
+          // Selecting the same value doesn't fire onChange, so also close on blur
+          <div onBlur={() => setDropdownVisible(false)}>
+            <Dropdown
+              options={dropdownItems}
+              selectedValue={dayjs(testTime).toISOString()}
+              onChange={async (event: ChangeEvent<HTMLSelectElement>) => {
+                await setTestTime(event.target.value);
+              }}
+              loading={loading}
+            />
+          </div>
         ) : (
           // eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events
           <div onClick={() => setDropdownVisible(true)}>
