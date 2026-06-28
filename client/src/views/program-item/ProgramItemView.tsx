@@ -86,7 +86,6 @@ export const ProgramItemView = (): ReactElement => {
           username={username}
           loggedIn={loggedIn}
           userGroup={userGroup}
-          isInGroup={isInGroup}
           publicSignupQuestion={publicSignupQuestion}
         />
       )}

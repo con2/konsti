@@ -103,7 +103,6 @@ export const AllProgramItemsList = ({ programItems }: Props): ReactElement => {
                 username={username}
                 loggedIn={loggedIn}
                 userGroup={userGroup}
-                isInGroup={isInGroup}
                 publicSignupQuestion={getPublicSignupQuestion(
                   programItem.programItemId,
                 )}

@@ -331,8 +331,6 @@ export const translationEN = {
     loginLinkEnding: " to see {{ATTENDEE_TYPE}}.",
     signupQuestionAriaLabel: "Sign-up question",
     help: {
-      signupAlwaysOpen:
-        " You can sign up to this {{PROGRAM_TYPE}} at any time.",
       signupAlwaysOpenGroupMemberInfo:
         "You can sign up even though you are a group member.",
       directSignupStartsLater:

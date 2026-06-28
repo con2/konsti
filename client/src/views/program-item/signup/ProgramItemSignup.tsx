@@ -23,7 +23,6 @@ interface Props {
   directSignups: readonly DirectSignupWithProgramItem[];
   programItem: ProgramItem;
   attendees: number;
-  isInGroup: boolean;
   usesKonstiSignup: boolean;
   signupRequired: boolean;
 }
@@ -34,7 +33,6 @@ export const ProgramItemSignup = ({
   directSignups,
   programItem,
   attendees,
-  isInGroup,
   usesKonstiSignup,
   signupRequired,
 }: Props): ReactElement => {
@@ -52,9 +50,7 @@ export const ProgramItemSignup = ({
     <div>
       <SignupHelpText
         programItem={programItem}
-        isSignupAlwaysOpen={signupAlwaysOpen}
         usesKonstiSignup={usesKonstiSignup}
-        isInGroup={isInGroup}
       />
 
       {signupRequired &&

@@ -38,7 +38,6 @@ interface Props {
   username: string;
   loggedIn: boolean;
   userGroup: UserGroup;
-  isInGroup: boolean;
   publicSignupQuestion: SignupQuestion | undefined;
 }
 
@@ -52,7 +51,6 @@ export const ProgramItemEntry = ({
   username,
   loggedIn,
   userGroup,
-  isInGroup,
   publicSignupQuestion,
 }: Props): ReactElement => {
   const { t } = useTranslation();
@@ -150,7 +148,6 @@ export const ProgramItemEntry = ({
           directSignups={directSignups}
           programItem={programItem}
           attendees={signups.length}
-          isInGroup={isInGroup}
           usesKonstiSignup={usesKonstiSignup}
           signupRequired={signupRequired}
         />
