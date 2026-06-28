@@ -72,6 +72,7 @@ export const runPadgAssignment = (
 
   let finalHappiness = 0;
   let finalAssignResults: PadgRandomAssignResult[] = [];
+  let anyRoundSucceeded = false;
 
   for (let i = 0; i < padgAssignmentRounds; i++) {
     logger.debug(`PADG algorithm round ${i + 1}`);
@@ -104,6 +105,7 @@ export const runPadgAssignment = (
     if (!Array.isArray(assignResults)) {
       continue;
     }
+    anyRoundSucceeded = true;
 
     const happiness = calculateHappiness(assignResults, groups);
 
@@ -117,8 +119,8 @@ export const runPadgAssignment = (
 
   logger.debug("PADG assignment: completed");
 
-  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-  if (!finalAssignResults) {
+  // Every round failed (eventassigner threw or returned a non-array each time)
+  if (!anyRoundSucceeded) {
     logger.error(
       new Error(
         `Padg assignment for start time ${assignmentTime} failed with input: groups: ${JSON.stringify(
