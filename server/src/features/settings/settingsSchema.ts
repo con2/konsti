@@ -58,7 +58,10 @@ const settingsSchema = new mongoose.Schema(
     assignmentLastRun: {
       type: Date,
       get: (value: Date) => new Date(value),
-      default: () => new Date(),
+      // Epoch (not "now") so a fresh settings row means "no assignment has run yet" and
+      // the assignment lock starts free — otherwise a manual run right after a fresh DB
+      // (e.g. e2e populate, or admin backup at event start) is wrongly blocked for 30s
+      default: () => new Date(0),
     },
     latestServerStartTime: {
       type: Date,
