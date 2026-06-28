@@ -14,7 +14,7 @@ import { config } from "shared/config";
 import { Tag } from "shared/types/models/programItem";
 import { testProgramItem } from "shared/tests/testProgramItem";
 
-test("Group member signing up to a signup always open program item stays in the group", async ({
+test("Group member signing up to a 'signup always open' program item stays in the group", async ({
   page,
   request,
 }) => {
@@ -30,7 +30,7 @@ test("Group member signing up to a signup always open program item stays in the 
   await addProgramItems(request, [
     {
       ...testProgramItem,
-      // Lottery program type with the pre-convention week tag makes signup always open
+      // Lottery program type with the pre-convention week tag makes 'signup always open'
       programType: config.event().twoPhaseSignupProgramTypes[0],
       tags: [Tag.PRE_CONVENTION_WEEK],
       startTime,
@@ -64,6 +64,8 @@ test("Group member signing up to a signup always open program item stays in the 
   await groupPage.navigation.gotoProgram();
   await programList.gotoAllProgram();
   await programList.selectProgramType("Tabletop RPG");
+  // Pre-convention week program is not in the upcoming list during the main event
+  await programList.selectStartingTime("All");
   await programList.waitForItems();
   const firstProgramItem = programList.firstItem();
 

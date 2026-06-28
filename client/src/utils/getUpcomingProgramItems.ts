@@ -1,4 +1,4 @@
-import dayjs from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
 import { ProgramItem } from "shared/types/models/programItem";
 import { getTimeNow } from "client/utils/getTimeNow";
 import { getDirectSignupEndTime } from "shared/utils/signupTimes";
@@ -20,6 +20,15 @@ export const getUpcomingProgramItems = (
   });
 
   return upcomingProgramItems;
+};
+
+// Before this time only pre-convention week program is shown in the program list
+export const isMainEventProgramVisible = (timeNow: Dayjs): boolean => {
+  const { mainEventProgramVisibleTime } = config.event();
+  return (
+    !mainEventProgramVisibleTime ||
+    timeNow.isSameOrAfter(dayjs(mainEventProgramVisibleTime))
+  );
 };
 
 const getUpcomingLotterySignups = (

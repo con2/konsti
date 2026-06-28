@@ -2,9 +2,14 @@ import { ReactElement, useEffect, useMemo, useState } from "react";
 import { useDebounce } from "use-debounce";
 import { useSearchParams } from "react-router";
 import { AllProgramItemsList } from "client/views/all-program-items/components/AllProgramItemsList";
-import { getUpcomingProgramItems } from "client/utils/getUpcomingProgramItems";
+import {
+  getUpcomingProgramItems,
+  isMainEventProgramVisible,
+} from "client/utils/getUpcomingProgramItems";
 import { Loading } from "client/components/Loading";
 import { ProgramItem, Language, Tag } from "shared/types/models/programItem";
+import { getTimeNow } from "client/utils/getTimeNow";
+import { isPreConventionWeekProgramItem } from "shared/utils/isPreConventionWeekProgramItem";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import {
   selectActiveProgramItems,
@@ -208,15 +213,24 @@ const getVisibleProgramItems = (
     ? tagFilteredProgramItems.filter((item) => !item.isFull)
     : tagFilteredProgramItems;
 
+  // Before the main event program is visible, only show pre-convention week program.
+  // After it is visible, pre-convention week program is in the past so it drops out of
+  // the upcoming list on its own
+  const phaseFilteredProgramItems = isMainEventProgramVisible(getTimeNow())
+    ? fullnessFiltered
+    : fullnessFiltered.filter((programItem) =>
+        isPreConventionWeekProgramItem(programItem),
+      );
+
   if (selectedView === StartingTimeOption.UPCOMING) {
-    return getUpcomingProgramItems(fullnessFiltered);
+    return getUpcomingProgramItems(phaseFilteredProgramItems);
   } else if (selectedView === StartingTimeOption.REVOLVING_DOOR) {
-    return getUpcomingProgramItems(fullnessFiltered).filter(
+    return getUpcomingProgramItems(phaseFilteredProgramItems).filter(
       (programItem) => programItem.revolvingDoor,
     );
   }
 
-  return fullnessFiltered;
+  return phaseFilteredProgramItems;
 };
 
 const getTagFilteredProgramItems = (

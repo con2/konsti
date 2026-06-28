@@ -10,6 +10,8 @@ import { FirstLogin } from "./FirstLogin";
 import { useAppSelector } from "client/utils/hooks";
 import { config } from "shared/config";
 import { AppRoute } from "client/app/AppRoutes";
+import { useTimeNow } from "client/utils/getTimeNow";
+import { isMainEventProgramVisible } from "client/utils/getUpcomingProgramItems";
 
 export const HEADER_HEIGHT = 40;
 
@@ -19,6 +21,11 @@ export const Header = (): ReactElement => {
 
   const appOpen = useAppSelector((state) => state.admin.appOpen);
 
+  // During pre-convention week the title shows the pre-convention week program is on
+  const appDescriptionKey = isMainEventProgramVisible(useTimeNow())
+    ? "appDescription"
+    : "appDescriptionPreConventionWeek";
+
   return (
     <>
       <HeaderContainer>
@@ -26,7 +33,7 @@ export const Header = (): ReactElement => {
 
         <HeaderTitle>
           <KonstiIcon aria-label={t("logoAltText")} />
-          {t("appDescription", {
+          {t(appDescriptionKey, {
             EVENT_NAME: eventName,
             EVENT_YEAR: eventYear,
           })}

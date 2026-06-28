@@ -1,7 +1,12 @@
 export const translationFI = {
   appDescription: "{{EVENT_NAME}} {{EVENT_YEAR}}",
+  appDescriptionPreConventionWeek: "{{EVENT_NAME}} {{EVENT_YEAR}} – Etkoviikko",
   logoAltText: "Konsti",
   announcement: "Ilmoittautuminen on päättynyt. Tulokset julkaistaan piakkoin.",
+  testTime: {
+    preWeek: "Etkoviikko",
+    mainEvent: "Päätapahtuma",
+  },
   button: {
     logout: "Kirjaudu ulos",
     login: "Kirjaudu",

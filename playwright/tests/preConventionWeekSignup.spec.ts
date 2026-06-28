@@ -56,6 +56,8 @@ test("Pre-convention week program item uses direct signup even with lottery prog
   // Navigate to program list tab and select RPG program type
   await programList.gotoAllProgram();
   await programList.selectProgramType("Tabletop RPG");
+  // Pre-convention week program is not in the upcoming list during the main event
+  await programList.selectStartingTime("All");
 
   await programList.waitForItems();
   const firstProgramItem = programList.firstItem();
