@@ -312,9 +312,10 @@ export const saveDirectSignups = async (
 
     let finalSignups: SignupRepositoryAddSignup[] = directSignups;
     if (directSignups.length > programItem.maxAttendance) {
+      // This case is handled gracefully, but it's still a bug worth flagging
       logger.error(
         new Error(
-          `Too many signups passed to saveSignups for program item ${programItem.programItemId} - maxAttendance: ${programItem.maxAttendance}, direct signups: ${directSignups.length}`,
+          `Too many signups passed to saveSignups for program item ${programItem.programItemId} - maxAttendance: ${programItem.maxAttendance}, direct signups: ${directSignups.length}, dropping ${directSignups.length - programItem.maxAttendance} signups`,
         ),
       );
       const shuffledSignups = shuffle(directSignups);
@@ -327,20 +328,31 @@ export const saveDirectSignups = async (
         filter: {
           programItemId: programItem.programItemId,
         },
-        update: {
-          $addToSet: {
-            userSignups: {
-              $each: finalSignups.map((signup) => ({
-                username: signup.username,
-                priority: signup.priority,
-                signedToStartTime: new Date(signup.signedToStartTime),
-                signupTime: new Date(signup.signupTime),
-                message: signup.message,
-              })),
+        // Append the new signups and recompute count from the resulting array in a single
+        // atomic pipeline update, so count can never drift from the userSignups it tallies
+        update: [
+          {
+            $set: {
+              userSignups: {
+                $concatArrays: [
+                  { $ifNull: ["$userSignups", []] },
+                  {
+                    $literal: finalSignups.map((signup) => ({
+                      username: signup.username,
+                      priority: signup.priority,
+                      signedToStartTime: new Date(signup.signedToStartTime),
+                      signupTime: new Date(signup.signupTime),
+                      message: signup.message,
+                    })),
+                  },
+                ],
+              },
             },
           },
-          $set: { count: finalSignups.length },
-        },
+          {
+            $set: { count: { $size: "$userSignups" } },
+          },
+        ],
       },
     };
   });
