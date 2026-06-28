@@ -21,6 +21,7 @@ const removeInvalidProgramItems = async (): Promise<void> => {
     const programItems = programItemsResult.value;
     await removeCancelledDeletedProgramItemsFromUsers({
       programItems,
+      currentProgramItems: [],
       notifyAffectedDirectSignups: [],
       notify: false,
     });

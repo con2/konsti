@@ -6,6 +6,8 @@ import {
   buildEmail,
   EmailMessage,
   getAcceptedEmailTemplate,
+  getProgramItemCancelledEmailTemplate,
+  getProgramItemDeletedEmailTemplate,
   getRejectedEmailTemplate,
 } from "./senderCommon";
 import { logger } from "server/utils/logger";
@@ -77,6 +79,25 @@ async function generateEmail(
       programItemResult.value.title,
       notification,
     );
+    return buildEmail(template, email, fromAddress);
+  }
+
+  if (
+    notification.type ===
+      NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_CANCELLED ||
+    notification.type === NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_DELETED
+  ) {
+    if (!notification.programItemTitle) {
+      logger.error(
+        `Missing programItemTitle for notification type ${notification.type}, username ${notification.username}`,
+      );
+      return null;
+    }
+    const template =
+      notification.type ===
+      NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_CANCELLED
+        ? getProgramItemCancelledEmailTemplate(notification)
+        : getProgramItemDeletedEmailTemplate(notification);
     return buildEmail(template, email, fromAddress);
   }
 

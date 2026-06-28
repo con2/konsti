@@ -15,6 +15,7 @@ interface EmailTemplate {
 }
 
 const SUBJECT = "Konsti-arvonnan tulos / Results for Konsti lottery sign-up";
+const CANCELLED_DELETED_SUBJECT = "Ohjelma peruttu / Program item cancelled";
 const SIGNATURE = "Terveisin / Sincerely Konsti";
 
 export function getRejectedEmailTemplate(
@@ -51,6 +52,54 @@ You got a spot in the program ${programItemTitle}.
 The program will start at ${programStartTimeEn}.`;
   return {
     subject: SUBJECT,
+    text: `${bodyFi}\n\n${bodyEn}\n\n${SIGNATURE}`,
+  };
+}
+
+export function getProgramItemCancelledEmailTemplate(
+  notification: NotificationTask,
+): EmailTemplate {
+  const programStartTimeFi = getDateAndTimeWithLocale(
+    notification.programItemStartTime,
+    "fi",
+  );
+  const programStartTimeEn = getDateAndTimeWithLocale(
+    notification.programItemStartTime,
+    "en",
+  );
+
+  const bodyFi = `Hei ${notification.username}!
+Ohjelma ${notification.programItemTitle} on peruttu.
+Ohjelman piti alkaa ${programStartTimeFi}.`;
+  const bodyEn = `Hi ${notification.username}!
+Program ${notification.programItemTitle} has been cancelled.
+Program was supposed to start at ${programStartTimeEn}.`;
+  return {
+    subject: CANCELLED_DELETED_SUBJECT,
+    text: `${bodyFi}\n\n${bodyEn}\n\n${SIGNATURE}`,
+  };
+}
+
+export function getProgramItemDeletedEmailTemplate(
+  notification: NotificationTask,
+): EmailTemplate {
+  const programStartTimeFi = getDateAndTimeWithLocale(
+    notification.programItemStartTime,
+    "fi",
+  );
+  const programStartTimeEn = getDateAndTimeWithLocale(
+    notification.programItemStartTime,
+    "en",
+  );
+
+  const bodyFi = `Hei ${notification.username}!
+Ohjelma ${notification.programItemTitle} on poistettu ohjelmistosta.
+Ohjelman piti alkaa ${programStartTimeFi}.`;
+  const bodyEn = `Hi ${notification.username}!
+Program ${notification.programItemTitle} has been removed from the program.
+Program was supposed to start at ${programStartTimeEn}.`;
+  return {
+    subject: CANCELLED_DELETED_SUBJECT,
     text: `${bodyFi}\n\n${bodyEn}\n\n${SIGNATURE}`,
   };
 }

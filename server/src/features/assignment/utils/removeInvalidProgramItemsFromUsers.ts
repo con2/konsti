@@ -2,6 +2,7 @@ import dayjs from "dayjs";
 import { partition, uniqueBy } from "remeda";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import { addEventLogItems } from "server/features/user/event-log/eventLogRepository";
+import { queueCancelledDeletedEmails } from "server/features/notifications/queueCancelledDeletedEmails";
 import {
   findUsers,
   updateUsersByUsername,
@@ -33,12 +34,14 @@ interface UserToNofify {
 
 interface RemoveCancelledDeletedProgramItemsFromUsersParams {
   programItems: readonly ProgramItem[];
+  currentProgramItems: readonly ProgramItem[];
   notifyAffectedDirectSignups: DirectSignupsForProgramItem[];
   notify: boolean;
 }
 
 export const removeCancelledDeletedProgramItemsFromUsers = async ({
   programItems,
+  currentProgramItems,
   notifyAffectedDirectSignups,
   notify,
 }: RemoveCancelledDeletedProgramItemsFromUsersParams): Promise<
@@ -153,9 +156,16 @@ export const removeCancelledDeletedProgramItemsFromUsers = async ({
 
   // Nofify users with cancelled or deleted program items
   if (notify && usersToNofify.length > 0) {
+    const programItemTitlesById = new Map(
+      [...programItems, ...currentProgramItems].map((programItem) => [
+        programItem.programItemId,
+        programItem.title,
+      ]),
+    );
     const notifyUsersResult = await notifyUsersWithLotterySignupOrFavorite(
       usersToNofify,
       notifyAffectedDirectSignups,
+      programItemTitlesById,
     );
     if (!notifyUsersResult.ok) {
       return notifyUsersResult;
@@ -187,6 +197,7 @@ const getCancellationAction = (
 const notifyUsersWithLotterySignupOrFavorite = async (
   usersToNofify: UserToNofify[],
   affectedDirectSignups: DirectSignupsForProgramItem[],
+  programItemTitlesById: Map<string, string>,
 ): Promise<Result<void, MongoDbError>> => {
   const eventUpdates = usersToNofify.flatMap((user) => {
     // If user has already been notified of program item cancel/delete because of a direct signup, don't resend
@@ -242,6 +253,8 @@ const notifyUsersWithLotterySignupOrFavorite = async (
     if (!addEventLogItemsResult.ok) {
       return addEventLogItemsResult;
     }
+
+    queueCancelledDeletedEmails(eventUpdates, programItemTitlesById);
   }
 
   return makeSuccessResult();

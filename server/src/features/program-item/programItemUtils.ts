@@ -29,6 +29,7 @@ import { UserGroup } from "shared/types/models/user";
 import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
 import { differenceBy } from "shared/utils/remedaExtend";
 import { addEventLogItems } from "server/features/user/event-log/eventLogRepository";
+import { queueCancelledDeletedEmails } from "server/features/notifications/queueCancelledDeletedEmails";
 import { EventLogAction } from "shared/types/models/eventLog";
 
 const getCancelledProgramItems = (
@@ -142,6 +143,13 @@ export const handleCancelledDeletedProgramItems = async (
     currentProgramItems,
   );
 
+  const programItemTitlesById = new Map(
+    [...updatedProgramItems, ...currentProgramItems].map((programItem) => [
+      programItem.programItemId,
+      programItem.title,
+    ]),
+  );
+
   const notifyUsersWithDirectSignupsResult = await notifyUsersWithDirectSignups(
     [
       ...cancelledProgramItemIds.map((programItemId) => ({
@@ -157,6 +165,7 @@ export const handleCancelledDeletedProgramItems = async (
         action: EventLogAction.PROGRAM_ITEM_DELETED,
       })),
     ],
+    programItemTitlesById,
   );
   if (!notifyUsersWithDirectSignupsResult.ok) {
     return notifyUsersWithDirectSignupsResult;
@@ -339,6 +348,7 @@ export const getSignupMessage = (
 
 const notifyUsersWithDirectSignups = async (
   programItemActions: { programItemId: string; action: EventLogAction }[],
+  programItemTitlesById: Map<string, string>,
 ): Promise<Result<DirectSignupsForProgramItem[], MongoDbError>> => {
   if (programItemActions.length === 0) {
     return makeSuccessResult([]);
@@ -376,6 +386,8 @@ const notifyUsersWithDirectSignups = async (
     if (!addEventLogItemsResult.ok) {
       return addEventLogItemsResult;
     }
+
+    queueCancelledDeletedEmails(userUpdates, programItemTitlesById);
   }
 
   return makeSuccessResult(directSignups);
