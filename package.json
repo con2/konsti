@@ -21,7 +21,7 @@
     "docker-compose:start": "APP_SETTINGS=dev docker buildx build . --file Dockerfile --build-arg env=dev --tag server --load && APP_SETTINGS=dev docker compose -f ./docker/docker-compose.yml up --detach --remove-orphans",
     "docker-compose:stop": "APP_SETTINGS=dev docker compose -f ./docker/docker-compose.yml down --remove-orphans",
     "docker-compose:test": "yarn docker:build-ci && yarn docker-compose:run-e2e",
-    "docker-compose:run-e2e": "PLAYWRIGHT_VERSION=$(node --input-type=commonjs -e \"process.stdout.write(require('./package.json').devDependencies['@playwright/test'])\") APP_SETTINGS=ci docker compose -f ./docker/docker-compose.yml -f ./playwright/docker-compose.yml up --attach playwright --remove-orphans --exit-code-from playwright --abort-on-container-exit",
+    "docker-compose:run-e2e": "PLAYWRIGHT_VERSION=$(node --input-type=commonjs -e \"process.stdout.write(require('./package.json').devDependencies['@playwright/test'])\") APP_SETTINGS=ci docker compose -f ./docker/docker-compose.yml -f ./playwright/docker-compose.yml build playwright && PLAYWRIGHT_VERSION=$(node --input-type=commonjs -e \"process.stdout.write(require('./package.json').devDependencies['@playwright/test'])\") APP_SETTINGS=ci docker compose -f ./docker/docker-compose.yml -f ./playwright/docker-compose.yml up --attach playwright --remove-orphans --exit-code-from playwright --abort-on-container-exit",
     "docker:build-ci": "APP_SETTINGS=ci docker buildx build . --file Dockerfile --build-arg env=ci --tag server --load",
     "docker:build-prod": "docker buildx build --build-arg env=prod -t konsti-prod --load .",
     "docker:build-staging": "docker buildx build --build-arg env=staging -t konsti-staging --load .",

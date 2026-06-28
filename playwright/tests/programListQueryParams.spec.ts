@@ -6,6 +6,7 @@ import {
   addProgramItems,
   postTestSettings,
 } from "playwright/playwrightUtils";
+import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import { config } from "shared/config";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { ProgramType } from "shared/types/models/programItem";
@@ -40,7 +41,8 @@ test("Active program type is selected from the programType query parameter", asy
   await postTestSettings(request, { testTime: config.event().eventStartTime });
   await login(page, request, { username: "test1", password: "test" });
 
-  const items = page.locator('[data-testid="program-item-container"]');
+  const programList = new ProgramListPage(page);
+  const items = programList.items;
 
   // Without the query param both program items are listed
   await page.goto("/program/list");
@@ -48,9 +50,7 @@ test("Active program type is selected from the programType query parameter", asy
 
   // The query param selects Larp as the active program type
   await page.goto("/program/list?programType=larp");
-  await expect(
-    page.getByRole("combobox", { name: /program type/i }),
-  ).toHaveValue(ProgramType.LARP);
+  await expect(programList.programTypeSelect).toHaveValue(ProgramType.LARP);
 
   // The list now only shows items of the selected program type
   await expect(items).toHaveCount(1);
@@ -92,7 +92,8 @@ test("The invalid query parameter lists only program items missing required info
   await postTestSettings(request, { testTime: config.event().eventStartTime });
   await login(page, request, { username: "test1", password: "test" });
 
-  const items = page.locator('[data-testid="program-item-container"]');
+  const programList = new ProgramListPage(page);
+  const items = programList.items;
 
   // Without the query param both the valid and invalid items are listed
   await page.goto("/program/list?programType=tabletoprpg");

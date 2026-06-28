@@ -6,6 +6,7 @@ import {
   addProgramItems,
   postTestSettings,
 } from "playwright/playwrightUtils";
+import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import { config } from "shared/config";
 import { testProgramItem } from "shared/tests/testProgramItem";
 
@@ -38,25 +39,25 @@ test("Search filters the program list and shows the empty state", async ({
   await login(page, request, { username: "test1", password: "test" });
   await page.goto("/");
 
-  await page.click("data-testid=program-list-tab");
-  await page
-    .getByRole("combobox", { name: /program type/i })
-    .selectOption("Tabletop RPG");
+  const programList = new ProgramListPage(page);
 
-  const items = page.locator('[data-testid="program-item-container"]');
+  await programList.gotoAllProgram();
+  await programList.selectProgramType("Tabletop RPG");
+
+  const items = programList.items;
   await expect(items).toHaveCount(2);
 
   // Search by title narrows the list to a single item
-  await page.locator("#find").fill("Aardvark");
+  await programList.search("Aardvark");
   await expect(items).toHaveCount(1);
   await expect(items.getByTestId("program-item-title")).toContainText(
     "Aardvark Adventure",
   );
 
   // A non-matching search shows the empty state
-  await page.locator("#find").fill("nonexistent-zzz");
+  await programList.search("nonexistent-zzz");
   await expect(items).toHaveCount(0);
-  await expect(page.locator("#main")).toContainText(
+  await expect(programList.main).toContainText(
     "found, please check your search conditions",
   );
 });

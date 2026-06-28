@@ -1,5 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { clearDb, login, populateDb } from "playwright/playwrightUtils";
+import { AboutPage } from "playwright/pages/AboutPage";
 
 test("About page views content logged", async ({ page, request }) => {
   await clearDb(request);
@@ -12,17 +13,16 @@ test("About page views content logged", async ({ page, request }) => {
 
   await page.goto("/");
 
-  await page.getByRole("link", { name: "About Konsti" }).click();
-  const helpHeading = page.locator("h2", { hasText: "Konsti Help" });
-  await expect(helpHeading).toBeVisible();
+  const aboutPage = new AboutPage(page);
 
-  await page.getByRole("link", { name: "FAQ" }).click();
-  const faqHeading = page.locator("h2", { hasText: "For participants" });
-  await expect(faqHeading).toBeVisible();
+  await aboutPage.gotoHelp();
+  await expect(aboutPage.heading("Konsti Help")).toBeVisible();
 
-  await page.getByRole("link", { name: "About", exact: true }).click();
-  const aboutHeading = page.locator("h2", { hasText: "What is Konsti?" });
-  await expect(aboutHeading).toBeVisible();
+  await aboutPage.gotoFaq();
+  await expect(aboutPage.heading("For participants")).toBeVisible();
+
+  await aboutPage.gotoAbout();
+  await expect(aboutPage.heading("What is Konsti?")).toBeVisible();
 });
 
 test("About page views content not logged", async ({ page, request }) => {
@@ -30,15 +30,14 @@ test("About page views content not logged", async ({ page, request }) => {
 
   await page.goto("/");
 
-  await page.getByRole("link", { name: "About Konsti" }).click();
-  const helpHeading = page.locator("h2", { hasText: "Konsti Help" });
-  await expect(helpHeading).toBeVisible();
+  const aboutPage = new AboutPage(page);
 
-  await page.getByRole("link", { name: "FAQ" }).click();
-  const faqHeading = page.locator("h2", { hasText: "For participants" });
-  await expect(faqHeading).toBeVisible();
+  await aboutPage.gotoHelp();
+  await expect(aboutPage.heading("Konsti Help")).toBeVisible();
 
-  await page.getByRole("link", { name: "About", exact: true }).click();
-  const aboutHeading = page.locator("h2", { hasText: "What is Konsti?" });
-  await expect(aboutHeading).toBeVisible();
+  await aboutPage.gotoFaq();
+  await expect(aboutPage.heading("For participants")).toBeVisible();
+
+  await aboutPage.gotoAbout();
+  await expect(aboutPage.heading("What is Konsti?")).toBeVisible();
 });

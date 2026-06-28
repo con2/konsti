@@ -8,6 +8,8 @@ import {
   addProgramItems,
   testPostDirectSignup,
 } from "playwright/playwrightUtils";
+import { HelperPage } from "playwright/pages/HelperPage";
+import { LoginPage } from "playwright/pages/LoginPage";
 import { config } from "shared/config";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import {
@@ -25,16 +27,15 @@ test("Helper can find a user and change their password", async ({
   await login(page, request, { username: "admin", password: "test" });
   await page.goto("/");
 
-  await page.getByTestId("navigation-icon").click();
-  await page.getByRole("link", { name: "Helper", exact: true }).click();
+  const helperPage = new HelperPage(page);
+  const loginPage = new LoginPage(page);
 
-  const search = page.getByPlaceholder("Registration code or username");
+  await helperPage.open();
 
   // Find by a matching username
-  await search.fill("test1");
-  await page.getByRole("button", { name: "Find" }).click();
-  await expect(page.locator("#main")).toContainText("Found user");
-  await expect(page.locator("#main")).toContainText("test1");
+  await helperPage.findUser("test1");
+  await expect(helperPage.main).toContainText("Found user");
+  await expect(helperPage.main).toContainText("test1");
 
   // Read the registration code shown for the found user
   const foundUserText = await page.getByText(/Found user:/).textContent();
@@ -45,37 +46,29 @@ test("Helper can find a user and change their password", async ({
   }
 
   // A non-matching username is not found
-  await search.fill("nonexistentuser");
-  await page.getByRole("button", { name: "Find" }).click();
-  await expect(page.locator("#main")).toContainText("User not found");
+  await helperPage.findUser("nonexistentuser");
+  await expect(helperPage.main).toContainText("User not found");
 
   // Find the same user by their registration code
-  await search.fill(registrationCode);
-  await page.getByRole("button", { name: "Find" }).click();
-  await expect(page.locator("#main")).toContainText("Found user");
-  await expect(page.locator("#main")).toContainText("test1");
+  await helperPage.findUser(registrationCode);
+  await expect(helperPage.main).toContainText("Found user");
+  await expect(helperPage.main).toContainText("test1");
 
   // Change the found user's password (password Save is the second Save button)
-  await page.getByPlaceholder("New password").fill("newpassword1234");
-  await page.getByRole("button", { name: "Save" }).nth(1).click();
-  await expect(page.locator("#main")).toContainText(
-    "Password changed successfully.",
-  );
+  await helperPage.changePassword("newpassword1234");
+  await expect(helperPage.main).toContainText("Password changed successfully.");
 
   // The user can log in with the new password
-  await page.getByTestId("navigation-icon").click();
-  await page.getByRole("link", { name: "Logout" }).click();
+  await helperPage.navigation.logout();
   await expect
     .poll(async () => page.evaluate(() => localStorage.getItem("state")))
     .toBeNull();
 
   await page.goto("/login");
-  await page.fill("data-testid=login-form-input-username", "test1");
-  await page.fill("data-testid=login-form-input-password", "newpassword1234");
-  await page.getByTestId("login-button").click();
+  await loginPage.fillAndSubmit("test1", "newpassword1234");
 
-  await page.getByTestId("navigation-icon").click();
-  await expect(page.getByRole("link", { name: "Logout" })).toBeVisible();
+  await loginPage.navigation.open();
+  await expect(loginPage.navigation.logoutLink).toBeVisible();
 });
 
 test("Helper can view private signup question answers", async ({
@@ -120,12 +113,11 @@ test("Helper can view private signup question answers", async ({
   await login(page, request, { username: "helper", password: "test" });
   await page.goto("/");
 
-  await page.getByTestId("navigation-icon").click();
-  await page.getByRole("link", { name: "Helper", exact: true }).click();
-  await page.getByRole("button", { name: "Sign-up question answers" }).click();
+  const helperPage = new HelperPage(page);
 
-  await expect(page.locator("#main")).toContainText(
-    "What is your character class?",
-  );
-  await expect(page.locator("#main")).toContainText("Wizard");
+  await helperPage.open();
+  await helperPage.openSignupAnswers();
+
+  await expect(helperPage.main).toContainText("What is your character class?");
+  await expect(helperPage.main).toContainText("Wizard");
 });

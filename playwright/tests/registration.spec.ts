@@ -4,6 +4,7 @@ import {
   populateDb,
   postSettings,
 } from "playwright/playwrightUtils";
+import { RegistrationPage } from "playwright/pages/RegistrationPage";
 import { LoginProvider } from "shared/config/eventConfigTypes";
 
 test("Register a new account and finalize email notifications", async ({
@@ -18,24 +19,25 @@ test("Register a new account and finalize email notifications", async ({
   const [serial] = await addSerials(request, 1);
 
   await page.goto("/registration");
-  await expect(
-    page.getByRole("heading", { name: "Create an account" }),
-  ).toBeVisible();
 
-  await page.locator("#username").fill("newuser");
-  await page.locator('input[type="password"]').fill("password");
-  await page.locator("#serial").fill(serial);
-  await page.locator("#registerDescriptionCheckbox").check();
-  await page.getByRole("button", { name: "Create account" }).click();
+  const registrationPage = new RegistrationPage(page);
+
+  await expect(registrationPage.createAccountHeading).toBeVisible();
+
+  await registrationPage.usernameInput.fill("newuser");
+  await registrationPage.passwordInput.fill("password");
+  await registrationPage.serialInput.fill(serial);
+  await registrationPage.descriptionCheckbox.check();
+  await registrationPage.createAccount();
 
   // Registration auto-logs in and shows the finalize-registration email step
-  await expect(page.locator("#email-notifications-enabled")).toBeVisible();
-  await page.locator("#email-notifications-enabled").check();
-  await page.locator("#email").fill("newuser@example.com");
-  await page.locator("#registerDescriptionCheckbox").check();
-  await page.getByRole("button", { name: "Save" }).click();
+  await expect(registrationPage.emailNotificationsEnabled).toBeVisible();
+  await registrationPage.emailNotificationsEnabled.check();
+  await registrationPage.emailInput.fill("newuser@example.com");
+  await registrationPage.descriptionCheckbox.check();
+  await registrationPage.save();
 
   // The user ends up logged in
-  await page.getByTestId("navigation-icon").click();
-  await expect(page.getByRole("link", { name: "Logout" })).toBeVisible();
+  await registrationPage.navigation.open();
+  await expect(registrationPage.navigation.logoutLink).toBeVisible();
 });
