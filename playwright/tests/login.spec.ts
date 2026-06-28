@@ -5,6 +5,9 @@ import {
   postSettings,
   postTestSettings,
 } from "playwright/playwrightUtils";
+import { LoginPage } from "playwright/pages/LoginPage";
+import { ProgramItemPage } from "playwright/pages/ProgramItemPage";
+import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import { LoginProvider } from "shared/config/eventConfigTypes";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { ProgramType } from "shared/types/models/programItem";
@@ -22,22 +25,18 @@ test("Admin login", async ({ page, request }) => {
 
   await page.goto("/");
 
+  const loginPage = new LoginPage(page);
+  const programList = new ProgramListPage(page);
+
   // Go to login page and enter login credentials
-  await page.click("data-testid=navigation-icon");
-  await page.click("data-testid=login-page-link");
-
-  await page.fill("data-testid=login-form-input-username", username);
-  await page.fill("data-testid=login-form-input-password", password);
-
-  await page.click("data-testid=login-button");
+  await loginPage.navigation.gotoLoginPage();
+  await loginPage.fillAndSubmit(username, password);
 
   // Check if login was completed - admin should be redirected to program list
-  const firstProgramItem = page.getByTestId("program-item-container").nth(0);
-  await expect(firstProgramItem).toBeVisible();
+  await expect(programList.firstItem().container).toBeVisible();
 
-  await page.click("data-testid=navigation-icon");
-  const link = page.getByRole("link", { name: /profile/i });
-  await expect(link).toBeVisible();
+  await loginPage.navigation.open();
+  await expect(loginPage.navigation.profileLink).toBeVisible();
 });
 
 test("User login", async ({ page, request }) => {
@@ -53,22 +52,18 @@ test("User login", async ({ page, request }) => {
 
   await page.goto("/");
 
+  const loginPage = new LoginPage(page);
+  const programList = new ProgramListPage(page);
+
   // Go to login page and enter login credentials
-  await page.click("data-testid=navigation-icon");
-  await page.click("data-testid=login-page-link");
-
-  await page.fill("data-testid=login-form-input-username", username);
-  await page.fill("data-testid=login-form-input-password", password);
-
-  await page.click("data-testid=login-button");
+  await loginPage.navigation.gotoLoginPage();
+  await loginPage.fillAndSubmit(username, password);
 
   // Check if login was completed - normal user should be redirected to profile
-  const myProgramTab = page.getByTestId("my-program-tab");
-  await expect(myProgramTab).toHaveClass(/active/);
+  await expect(programList.myProgramTab).toHaveClass(/active/);
 
-  await page.click("data-testid=navigation-icon");
-  const link = page.getByRole("link", { name: /profile & group/i });
-  await expect(link).toBeVisible();
+  await loginPage.navigation.open();
+  await expect(loginPage.navigation.profileLink).toBeVisible();
 });
 
 test("Login redirect back to program item", async ({ page, request }) => {
@@ -89,25 +84,19 @@ test("Login redirect back to program item", async ({ page, request }) => {
 
   await page.goto("/");
 
-  const firstProgramItem = page.locator(
-    "data-testid=program-item-container >> nth=0",
-  );
+  const loginPage = new LoginPage(page);
+  const programList = new ProgramListPage(page);
+  const programItemPage = new ProgramItemPage(page);
 
-  const fistProgramItemTitle =
-    firstProgramItem.getByTestId("program-item-title");
+  const firstProgramItem = programList.firstItem();
 
-  await fistProgramItemTitle.click();
+  await firstProgramItem.title.click();
   await page.waitForURL("/program/item/*");
 
-  await page.getByRole("link", { name: "Log in to sign up" }).click();
-  await page.fill("data-testid=login-form-input-username", username);
-  await page.fill("data-testid=login-form-input-password", password);
-  await page.click("data-testid=login-button");
+  await loginPage.loginToSignUpLink.click();
+  await loginPage.fillAndSubmit(username, password);
 
-  const programItemTitle = await page
-    .getByTestId("program-item-title")
-    .getByRole("link")
-    .textContent();
+  const programItemTitle = await programItemPage.titleLink.textContent();
 
-  expect(programItemTitle).toEqual(await fistProgramItemTitle.textContent());
+  expect(programItemTitle).toEqual(await firstProgramItem.title.textContent());
 });

@@ -8,6 +8,7 @@ import {
   testPostDirectSignup,
   populateDb,
 } from "playwright/playwrightUtils";
+import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import { config } from "shared/config";
 import { testProgramItem } from "shared/tests/testProgramItem";
 
@@ -34,27 +35,20 @@ test("Add and cancel direct signup", async ({ page, request }) => {
 
   await page.goto("/");
 
+  const programList = new ProgramListPage(page);
+
   // Navigate to program list tab and select RPG program type
-  await page.click("data-testid=program-list-tab");
-  await page
-    .getByRole("combobox", {
-      name: /program type/i,
-    })
-    .selectOption("Tabletop RPG");
+  await programList.gotoAllProgram();
+  await programList.selectProgramType("Tabletop RPG");
 
   // Direct signup to first program item
-  await page.waitForSelector("data-testid=program-item-container");
-  const firstProgramItem = page.locator(
-    "data-testid=program-item-container >> nth=0",
-  );
+  await programList.waitForItems();
+  const firstProgramItem = programList.firstItem();
 
-  const directSignupProgramItemTitle = await firstProgramItem
-    .locator("data-testid=program-item-title")
-    .textContent();
+  const directSignupProgramItemTitle =
+    await firstProgramItem.title.textContent();
 
-  await expect(page.getByTestId("program-item-container")).toContainText(
-    "0/4 sign-ups",
-  );
+  await expect(firstProgramItem.container).toContainText("0/4 sign-ups");
 
   // Add direct signup to another user on the background
   await testPostDirectSignup(request, "test2", {
@@ -63,61 +57,45 @@ test("Add and cancel direct signup", async ({ page, request }) => {
     priority: 1,
   });
 
-  await firstProgramItem.getByRole("button", { name: /sign up/i }).click();
-  await firstProgramItem.getByRole("button", { name: /confirm/i }).click();
+  await firstProgramItem.signUp();
+  await firstProgramItem.confirm();
 
   // Check attendee count is incremented
-  await expect(page.getByTestId("program-item-container")).toContainText(
-    "2/4 sign-ups",
-  );
-  await page.getByRole("button", { name: "Show players" }).click();
+  await expect(firstProgramItem.container).toContainText("2/4 sign-ups");
+  await firstProgramItem.showPlayers();
 
-  const participantList = page
-    .getByTestId("program-item-container")
-    .getByRole("listitem");
+  const participantList = firstProgramItem.participants;
   await expect(participantList).toHaveCount(2);
   await expect(participantList.nth(0)).toHaveText("test1");
   await expect(participantList.nth(1)).toHaveText("test2");
 
   // Go to My Program and check direct signup program item title
-  await page.click("data-testid=my-program-tab");
+  await programList.gotoMyProgram();
 
-  const directSignupProgramItems = page.locator(
-    "data-testid=direct-signup-program-items-list",
-  );
-
-  const programItemTitle = await directSignupProgramItems
-    .locator("data-testid=program-item-title")
+  const programItemTitle = await programList.directSignupList
+    .getByTestId("program-item-title")
     .textContent();
 
   expect(programItemTitle?.trim()).toEqual(directSignupProgramItemTitle);
 
   // Cancel direct signup on My Program page
-  await page.getByRole("button", { name: "Cancel sign-up" }).click();
-  await page.getByRole("button", { name: "Cancel your sign-up" }).click();
+  await programList.cancelSignup();
   await expect(
-    page.getByTestId("direct-signup-program-items-list").getByRole("paragraph"),
+    programList.directSignupList.getByRole("paragraph"),
   ).toContainText(
     "No sign-ups to upcoming program. You can sign up in the All Program view.",
   );
 
   // Navigate back to program list and sign again and cancel
-  await page.getByTestId("program-list-tab").click();
-  await expect(page.getByTestId("program-item-container")).toContainText(
-    "1/4 sign-ups",
-  );
+  await programList.gotoAllProgram();
+  await expect(firstProgramItem.container).toContainText("1/4 sign-ups");
 
-  await page.getByRole("button", { name: "Sign up" }).click();
-  await page.getByRole("button", { name: "Confirm" }).click();
-  await expect(page.getByTestId("program-item-container")).toContainText(
-    "2/4 sign-ups",
-  );
+  await firstProgramItem.signUp();
+  await firstProgramItem.confirm();
+  await expect(firstProgramItem.container).toContainText("2/4 sign-ups");
 
-  await page.getByRole("button", { name: "Cancel sign-up" }).click();
-  await page.getByRole("button", { name: "Cancel your sign-up" }).click();
-  await expect(page.getByTestId("program-item-container")).toContainText(
-    "1/4 sign-ups",
-  );
+  await programList.cancelSignup();
+  await expect(firstProgramItem.container).toContainText("1/4 sign-ups");
 });
 
 test("Show error when program item full and update participant list", async ({
@@ -148,23 +126,17 @@ test("Show error when program item full and update participant list", async ({
 
   await page.goto("/");
 
+  const programList = new ProgramListPage(page);
+
   // Navigate to program list tab and select RPG program type
-  await page.click("data-testid=program-list-tab");
-  await page
-    .getByRole("combobox", {
-      name: /program type/i,
-    })
-    .selectOption("Tabletop RPG");
+  await programList.gotoAllProgram();
+  await programList.selectProgramType("Tabletop RPG");
 
   // Direct signup to first program item
-  await page.waitForSelector("data-testid=program-item-container");
-  const firstProgramItem = page.locator(
-    "data-testid=program-item-container >> nth=0",
-  );
+  await programList.waitForItems();
+  const firstProgramItem = programList.firstItem();
 
-  await expect(page.getByTestId("program-item-container")).toContainText(
-    "0/1 sign-ups",
-  );
+  await expect(firstProgramItem.container).toContainText("0/1 sign-ups");
 
   // Add direct signup to another user on the background
   await testPostDirectSignup(request, "test2", {
@@ -173,23 +145,19 @@ test("Show error when program item full and update participant list", async ({
     priority: 1,
   });
 
-  await firstProgramItem.getByRole("button", { name: /sign up/i }).click();
-  await firstProgramItem.getByRole("button", { name: /confirm/i }).click();
+  await firstProgramItem.signUp();
+  await firstProgramItem.confirm();
 
   // Check program item full error
-  await expect(page.getByTestId("program-item-full")).toHaveText(
+  await expect(firstProgramItem.fullMessage).toHaveText(
     "This roleplaying game is full.",
   );
 
   // Check attendee count is updated
-  await expect(page.getByTestId("program-item-container")).toContainText(
-    "1/1 sign-ups",
-  );
-  await page.getByRole("button", { name: "Show players" }).click();
+  await expect(firstProgramItem.container).toContainText("1/1 sign-ups");
+  await firstProgramItem.showPlayers();
 
-  const participantList = page
-    .getByTestId("program-item-container")
-    .getByRole("listitem");
+  const participantList = firstProgramItem.participants;
   await expect(participantList).toHaveCount(1);
   await expect(participantList.nth(0)).toHaveText("test2");
 });

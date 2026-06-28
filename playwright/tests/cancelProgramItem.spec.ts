@@ -8,6 +8,7 @@ import {
   clearDb,
   populateDb,
 } from "playwright/playwrightUtils";
+import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import { config } from "shared/config";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
@@ -38,26 +39,20 @@ test("Show event log notification when program item with direct signup is cancel
 
   await page.goto("/");
 
+  const programList = new ProgramListPage(page);
+
   // Navigate to program list tab and select RPG program type
-  await page.click("data-testid=program-list-tab");
-  await page
-    .getByRole("combobox", {
-      name: /program type/i,
-    })
-    .selectOption("Tabletop RPG");
+  await programList.gotoAllProgram();
+  await programList.selectProgramType("Tabletop RPG");
 
   // Direct signup to first program item
-  await page.waitForSelector("data-testid=program-item-container");
-  const firstProgramItem = page.locator(
-    "data-testid=program-item-container >> nth=0",
-  );
+  await programList.waitForItems();
+  const firstProgramItem = programList.firstItem();
 
-  await firstProgramItem.getByRole("button", { name: /sign up/i }).click();
-  await firstProgramItem.getByRole("button", { name: /confirm/i }).click();
+  await firstProgramItem.signUp();
+  await firstProgramItem.confirm();
 
-  await expect(page.getByTestId("program-item-container")).toContainText(
-    "1/4 sign-ups",
-  );
+  await expect(firstProgramItem.container).toContainText("1/4 sign-ups");
 
   // Change program item state on background
   await addProgramItems(request, [
@@ -71,12 +66,12 @@ test("Show event log notification when program item with direct signup is cancel
 
   await page.reload();
 
-  await expect(page.getByTestId("notification-bar")).toContainText(
+  await expect(programList.notificationBar.bar).toContainText(
     "Roleplaying game was cancelled and your sign-up was removed: Test program item",
   );
 
-  await page.getByRole("link", { name: "Show all notifications" }).click();
-  await expect(page.getByTestId("event-log-item")).toContainText(
+  await programList.notificationBar.showAllNotifications();
+  await expect(programList.notificationBar.eventLogItem).toContainText(
     "Roleplaying game was cancelled and your sign-up was removed: Test program item",
   );
 });
@@ -104,18 +99,16 @@ test("Show event log notification when program item with lottery sign-up is canc
   await login(page, request, { username: "test1", password: "test" });
 
   await page.goto("/");
-  await page.click("data-testid=program-list-tab");
+
+  const programList = new ProgramListPage(page);
+  await programList.gotoAllProgram();
 
   // Lottery signup to first program item
-  await page.waitForSelector("data-testid=program-item-container");
-  const firstProgramItem = page.locator(
-    "data-testid=program-item-container >> nth=0",
-  );
+  await programList.waitForItems();
+  const firstProgramItem = programList.firstItem();
 
-  await firstProgramItem
-    .getByRole("button", { name: /lottery sign-up/i })
-    .click();
-  await firstProgramItem.getByRole("button", { name: /confirm/i }).click();
+  await firstProgramItem.lotterySignup();
+  await firstProgramItem.confirm();
 
   // Cancel program item on background before lottery has run
   await addProgramItems(request, [
@@ -130,12 +123,12 @@ test("Show event log notification when program item with lottery sign-up is canc
 
   await page.reload();
 
-  await expect(page.getByTestId("notification-bar")).toContainText(
+  await expect(programList.notificationBar.bar).toContainText(
     "Roleplaying game was cancelled and your sign-up was removed: Test program item",
   );
 
-  await page.getByRole("link", { name: "Show all notifications" }).click();
-  await expect(page.getByTestId("event-log-item")).toContainText(
+  await programList.notificationBar.showAllNotifications();
+  await expect(programList.notificationBar.eventLogItem).toContainText(
     "Roleplaying game was cancelled and your sign-up was removed: Test program item",
   );
 });
@@ -160,26 +153,20 @@ test("Show event log notification when program item with direct sign-up doesn't 
 
   await page.goto("/");
 
+  const programList = new ProgramListPage(page);
+
   // Navigate to program list tab and select RPG program type
-  await page.click("data-testid=program-list-tab");
-  await page
-    .getByRole("combobox", {
-      name: /program type/i,
-    })
-    .selectOption("Tabletop RPG");
+  await programList.gotoAllProgram();
+  await programList.selectProgramType("Tabletop RPG");
 
   // Direct signup to first program item
-  await page.waitForSelector("data-testid=program-item-container");
-  const firstProgramItem = page.locator(
-    "data-testid=program-item-container >> nth=0",
-  );
+  await programList.waitForItems();
+  const firstProgramItem = programList.firstItem();
 
-  await firstProgramItem.getByRole("button", { name: /sign up/i }).click();
-  await firstProgramItem.getByRole("button", { name: /confirm/i }).click();
+  await firstProgramItem.signUp();
+  await firstProgramItem.confirm();
 
-  await expect(page.getByTestId("program-item-container")).toContainText(
-    "1/4 sign-ups",
-  );
+  await expect(firstProgramItem.container).toContainText("1/4 sign-ups");
 
   // Change program item signup type on background
   await addProgramItems(request, [
@@ -193,12 +180,12 @@ test("Show event log notification when program item with direct sign-up doesn't 
 
   await page.reload();
 
-  await expect(page.getByTestId("notification-bar")).toContainText(
+  await expect(programList.notificationBar.bar).toContainText(
     "Roleplaying game no longer uses Konsti sign-up and your sign-up was removed: Test program item",
   );
 
-  await page.getByRole("link", { name: "Show all notifications" }).click();
-  await expect(page.getByTestId("event-log-item")).toContainText(
+  await programList.notificationBar.showAllNotifications();
+  await expect(programList.notificationBar.eventLogItem).toContainText(
     "Roleplaying game no longer uses Konsti sign-up and your sign-up was removed: Test program item",
   );
 });
@@ -226,18 +213,16 @@ test("Show event log notification when program item with lottery sign-up doesn't
   await login(page, request, { username: "test1", password: "test" });
 
   await page.goto("/");
-  await page.click("data-testid=program-list-tab");
+
+  const programList = new ProgramListPage(page);
+  await programList.gotoAllProgram();
 
   // Lottery signup to first program item
-  await page.waitForSelector("data-testid=program-item-container");
-  const firstProgramItem = page.locator(
-    "data-testid=program-item-container >> nth=0",
-  );
+  await programList.waitForItems();
+  const firstProgramItem = programList.firstItem();
 
-  await firstProgramItem
-    .getByRole("button", { name: /lottery sign-up/i })
-    .click();
-  await firstProgramItem.getByRole("button", { name: /confirm/i }).click();
+  await firstProgramItem.lotterySignup();
+  await firstProgramItem.confirm();
 
   // Change signup type away from Konsti on background before lottery has run
   await addProgramItems(request, [
@@ -252,12 +237,12 @@ test("Show event log notification when program item with lottery sign-up doesn't
 
   await page.reload();
 
-  await expect(page.getByTestId("notification-bar")).toContainText(
+  await expect(programList.notificationBar.bar).toContainText(
     "Roleplaying game no longer uses Konsti sign-up and your sign-up was removed: Test program item",
   );
 
-  await page.getByRole("link", { name: "Show all notifications" }).click();
-  await expect(page.getByTestId("event-log-item")).toContainText(
+  await programList.notificationBar.showAllNotifications();
+  await expect(programList.notificationBar.eventLogItem).toContainText(
     "Roleplaying game no longer uses Konsti sign-up and your sign-up was removed: Test program item",
   );
 });
@@ -281,36 +266,30 @@ test("Show event log notification when program item with direct sign-up is delet
   await login(page, request, { username: "test1", password: "test" });
 
   await page.goto("/");
-  await page.click("data-testid=program-list-tab");
-  await page
-    .getByRole("combobox", {
-      name: /program type/i,
-    })
-    .selectOption("Tabletop RPG");
 
-  await page.waitForSelector("data-testid=program-item-container");
-  const firstProgramItem = page.locator(
-    "data-testid=program-item-container >> nth=0",
-  );
+  const programList = new ProgramListPage(page);
+  await programList.gotoAllProgram();
+  await programList.selectProgramType("Tabletop RPG");
 
-  await firstProgramItem.getByRole("button", { name: /sign up/i }).click();
-  await firstProgramItem.getByRole("button", { name: /confirm/i }).click();
+  await programList.waitForItems();
+  const firstProgramItem = programList.firstItem();
 
-  await expect(page.getByTestId("program-item-container")).toContainText(
-    "1/4 sign-ups",
-  );
+  await firstProgramItem.signUp();
+  await firstProgramItem.confirm();
+
+  await expect(firstProgramItem.container).toContainText("1/4 sign-ups");
 
   // Delete program item on background (empty import removes it from DB)
   await addProgramItems(request, []);
 
   await page.reload();
 
-  await expect(page.getByTestId("notification-bar")).toContainText(
+  await expect(programList.notificationBar.bar).toContainText(
     "Program item was deleted and removed from your program: test-program-item",
   );
 
-  await page.getByRole("link", { name: "Show all notifications" }).click();
-  await expect(page.getByTestId("event-log-item")).toContainText(
+  await programList.notificationBar.showAllNotifications();
+  await expect(programList.notificationBar.eventLogItem).toContainText(
     "Program item was deleted and removed from your program: test-program-item",
   );
 });
@@ -338,29 +317,27 @@ test("Show event log notification when program item with lottery sign-up is dele
   await login(page, request, { username: "test1", password: "test" });
 
   await page.goto("/");
-  await page.click("data-testid=program-list-tab");
 
-  await page.waitForSelector("data-testid=program-item-container");
-  const firstProgramItem = page.locator(
-    "data-testid=program-item-container >> nth=0",
-  );
+  const programList = new ProgramListPage(page);
+  await programList.gotoAllProgram();
 
-  await firstProgramItem
-    .getByRole("button", { name: /lottery sign-up/i })
-    .click();
-  await firstProgramItem.getByRole("button", { name: /confirm/i }).click();
+  await programList.waitForItems();
+  const firstProgramItem = programList.firstItem();
+
+  await firstProgramItem.lotterySignup();
+  await firstProgramItem.confirm();
 
   // Delete program item on background (empty import removes it from DB)
   await addProgramItems(request, []);
 
   await page.reload();
 
-  await expect(page.getByTestId("notification-bar")).toContainText(
+  await expect(programList.notificationBar.bar).toContainText(
     "Program item was deleted and removed from your program: test-program-item",
   );
 
-  await page.getByRole("link", { name: "Show all notifications" }).click();
-  await expect(page.getByTestId("event-log-item")).toContainText(
+  await programList.notificationBar.showAllNotifications();
+  await expect(programList.notificationBar.eventLogItem).toContainText(
     "Program item was deleted and removed from your program: test-program-item",
   );
 });
@@ -388,17 +365,15 @@ test("Show event log notification when program item with lottery sign-up is dele
   await login(page, request, { username: "test1", password: "test" });
 
   await page.goto("/");
-  await page.click("data-testid=program-list-tab");
 
-  await page.waitForSelector("data-testid=program-item-container");
-  const firstProgramItem = page.locator(
-    "data-testid=program-item-container >> nth=0",
-  );
+  const programList = new ProgramListPage(page);
+  await programList.gotoAllProgram();
 
-  await firstProgramItem
-    .getByRole("button", { name: /lottery sign-up/i })
-    .click();
-  await firstProgramItem.getByRole("button", { name: /confirm/i }).click();
+  await programList.waitForItems();
+  const firstProgramItem = programList.firstItem();
+
+  await firstProgramItem.lotterySignup();
+  await firstProgramItem.confirm();
 
   // Advance time past lottery signup end so lottery is considered "run"
   await postTestSettings(request, {
@@ -410,12 +385,12 @@ test("Show event log notification when program item with lottery sign-up is dele
 
   await page.reload();
 
-  await expect(page.getByTestId("notification-bar")).toContainText(
+  await expect(programList.notificationBar.bar).toContainText(
     "Program item was deleted and removed from your program: test-program-item",
   );
 
-  await page.getByRole("link", { name: "Show all notifications" }).click();
-  await expect(page.getByTestId("event-log-item")).toContainText(
+  await programList.notificationBar.showAllNotifications();
+  await expect(programList.notificationBar.eventLogItem).toContainText(
     "Program item was deleted and removed from your program: test-program-item",
   );
 });
@@ -443,18 +418,16 @@ test("Show event log notification when program item with lottery sign-up changes
   await login(page, request, { username: "test1", password: "test" });
 
   await page.goto("/");
-  await page.click("data-testid=program-list-tab");
+
+  const programList = new ProgramListPage(page);
+  await programList.gotoAllProgram();
 
   // Lottery signup to first program item
-  await page.waitForSelector("data-testid=program-item-container");
-  const firstProgramItem = page.locator(
-    "data-testid=program-item-container >> nth=0",
-  );
+  await programList.waitForItems();
+  const firstProgramItem = programList.firstItem();
 
-  await firstProgramItem
-    .getByRole("button", { name: /lottery sign-up/i })
-    .click();
-  await firstProgramItem.getByRole("button", { name: /confirm/i }).click();
+  await firstProgramItem.lotterySignup();
+  await firstProgramItem.confirm();
 
   // Change program type to a non-lottery type on background before lottery has run
   await addProgramItems(request, [
@@ -468,12 +441,12 @@ test("Show event log notification when program item with lottery sign-up changes
 
   await page.reload();
 
-  await expect(page.getByTestId("notification-bar")).toContainText(
+  await expect(programList.notificationBar.bar).toContainText(
     "Program item no longer uses lottery sign-up and your lottery sign-up was removed: Test program item",
   );
 
-  await page.getByRole("link", { name: "Show all notifications" }).click();
-  await expect(page.getByTestId("event-log-item")).toContainText(
+  await programList.notificationBar.showAllNotifications();
+  await expect(programList.notificationBar.eventLogItem).toContainText(
     "Program item no longer uses lottery sign-up and your lottery sign-up was removed: Test program item",
   );
 });
@@ -498,26 +471,22 @@ test("Show event log notification when a favorited program item is deleted", asy
 
   await page.goto("/");
 
+  const programList = new ProgramListPage(page);
+
   // Navigate to program list tab and select RPG program type
-  await page.click("data-testid=program-list-tab");
-  await page
-    .getByRole("combobox", {
-      name: /program type/i,
-    })
-    .selectOption("Tabletop RPG");
+  await programList.gotoAllProgram();
+  await programList.selectProgramType("Tabletop RPG");
 
   // Favorite first program item (no signup) and wait for it to persist
-  await page.waitForSelector("data-testid=program-item-container");
-  const firstProgramItem = page.locator(
-    "data-testid=program-item-container >> nth=0",
-  );
+  await programList.waitForItems();
+  const firstProgramItem = programList.firstItem();
 
   const favoriteResponse = page.waitForResponse(
     (response) =>
       response.url().includes(ApiEndpoint.FAVORITE) &&
       response.request().method() === "POST",
   );
-  await firstProgramItem.locator("data-testid=add-favorite-button").click();
+  await firstProgramItem.favorite();
   await favoriteResponse;
 
   // Delete program item on background (empty import removes it from DB)
@@ -525,12 +494,12 @@ test("Show event log notification when a favorited program item is deleted", asy
 
   await page.reload();
 
-  await expect(page.getByTestId("notification-bar")).toContainText(
+  await expect(programList.notificationBar.bar).toContainText(
     "Program item was deleted and removed from your program: test-program-item",
   );
 
-  await page.getByRole("link", { name: "Show all notifications" }).click();
-  await expect(page.getByTestId("event-log-item")).toContainText(
+  await programList.notificationBar.showAllNotifications();
+  await expect(programList.notificationBar.eventLogItem).toContainText(
     "Program item was deleted and removed from your program: test-program-item",
   );
 });

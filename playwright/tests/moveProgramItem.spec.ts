@@ -7,6 +7,7 @@ import {
   clearDb,
   populateDb,
 } from "playwright/playwrightUtils";
+import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import { config } from "shared/config";
 import { testProgramItem } from "shared/tests/testProgramItem";
 
@@ -37,26 +38,20 @@ test("Show event log notification when program item with direct signup is moved"
 
   await page.goto("/");
 
+  const programList = new ProgramListPage(page);
+
   // Navigate to program list tab and select RPG program type
-  await page.click("data-testid=program-list-tab");
-  await page
-    .getByRole("combobox", {
-      name: /program type/i,
-    })
-    .selectOption("Tabletop RPG");
+  await programList.gotoAllProgram();
+  await programList.selectProgramType("Tabletop RPG");
 
   // Direct signup to first program item
-  await page.waitForSelector("data-testid=program-item-container");
-  const firstProgramItem = page.locator(
-    "data-testid=program-item-container >> nth=0",
-  );
+  await programList.waitForItems();
+  const firstProgramItem = programList.firstItem();
 
-  await firstProgramItem.getByRole("button", { name: /sign up/i }).click();
-  await firstProgramItem.getByRole("button", { name: /confirm/i }).click();
+  await firstProgramItem.signUp();
+  await firstProgramItem.confirm();
 
-  await expect(page.getByTestId("program-item-container")).toContainText(
-    "1/4 sign-ups",
-  );
+  await expect(firstProgramItem.container).toContainText("1/4 sign-ups");
 
   // Change program item state on background
   await addProgramItems(request, [
@@ -71,12 +66,12 @@ test("Show event log notification when program item with direct signup is moved"
 
   await page.reload();
 
-  await expect(page.getByTestId("notification-bar")).toContainText(
+  await expect(programList.notificationBar.bar).toContainText(
     "Roleplaying game Test program item starting time has changed",
   );
 
-  await page.getByRole("link", { name: "Show all notifications" }).click();
-  await expect(page.getByTestId("event-log-item")).toContainText(
+  await programList.notificationBar.showAllNotifications();
+  await expect(programList.notificationBar.eventLogItem).toContainText(
     "Roleplaying game Test program item starting time has changed",
   );
 });

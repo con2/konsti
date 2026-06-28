@@ -8,6 +8,7 @@ import {
   populateDb,
   postAssignment,
 } from "playwright/playwrightUtils";
+import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import { config } from "shared/config";
 import {
@@ -44,33 +45,26 @@ test("Add lottery signup", async ({ page, request }) => {
 
   await page.goto("/");
 
+  const programList = new ProgramListPage(page);
+
   // Navigate to program list tab
-  await page.click("data-testid=program-list-tab");
+  await programList.gotoAllProgram();
 
   // Lottery signup to first program item
-  await page.waitForSelector("data-testid=program-item-container");
-  const firstProgramItem = page.locator(
-    "data-testid=program-item-container >> nth=0",
-  );
+  await programList.waitForItems();
+  const firstProgramItem = programList.firstItem();
 
-  const lotterySignupProgramItemTitle = await firstProgramItem
-    .locator("data-testid=program-item-title")
-    .textContent();
+  const lotterySignupProgramItemTitle =
+    await firstProgramItem.title.textContent();
 
-  await firstProgramItem
-    .getByRole("button", { name: /lottery sign-up/i })
-    .click();
-  await firstProgramItem.getByRole("button", { name: /confirm/i }).click();
+  await firstProgramItem.lotterySignup();
+  await firstProgramItem.confirm();
 
   // Go to My Program and check lottery signup program item title
-  await page.click("data-testid=my-program-tab");
+  await programList.gotoMyProgram();
 
-  const lotterySignupProgramItems = page.locator(
-    "data-testid=lottery-signup-program-items-list",
-  );
-
-  const programItemTitle = await lotterySignupProgramItems
-    .locator("data-testid=program-item-title")
+  const programItemTitle = await programList.lotterySignupList
+    .getByTestId("program-item-title")
     .textContent();
 
   expect(programItemTitle?.trim()).toContain(lotterySignupProgramItemTitle);
@@ -113,34 +107,31 @@ test("Receive spot in lottery signup", async ({ page, request }) => {
   await login(page, request, { username: "test1", password: "test" });
   await page.goto("/");
 
-  await page.click("data-testid=program-list-tab");
-  const firstProgramItem = page.locator(
-    "data-testid=program-item-container >> nth=0",
-  );
+  const programList = new ProgramListPage(page);
 
-  await firstProgramItem
-    .getByRole("button", { name: /lottery sign-up/i })
-    .click();
-  await firstProgramItem.getByRole("button", { name: /confirm/i }).click();
+  await programList.gotoAllProgram();
+  const firstProgramItem = programList.firstItem();
+
+  await firstProgramItem.lotterySignup();
+  await firstProgramItem.confirm();
 
   // Do assignment on background
   await postAssignment(request, startTime);
   await page.reload();
 
   // Check new assignment message
-  await expect(page.getByTestId("notification-bar")).toContainText(
+  await expect(programList.notificationBar.bar).toContainText(
     /You were assigned to the .* Test program item./,
   );
 
-  await page.getByRole("link", { name: "Show all notifications" }).click();
-  await expect(page.getByTestId("event-log-item")).toContainText(
+  await programList.notificationBar.showAllNotifications();
+  await expect(programList.notificationBar.eventLogItem).toContainText(
     /You were assigned to the .* Test program item./,
   );
 
   // Check lottery signup is still present
-  await page.getByTestId("navigation-icon").click();
-  await page.getByRole("link", { name: "Program", exact: true }).click();
-  const lotterySignups = page.getByTestId("lottery-signup-program-items-list");
+  await programList.navigation.gotoProgram();
+  const lotterySignups = programList.lotterySignupList;
   await expect(lotterySignups.getByTestId("program-item-title")).toContainText(
     "1) Test program item",
   );
@@ -183,34 +174,31 @@ test("Did not receive spot in lottery signup", async ({ page, request }) => {
   await login(page, request, { username: "test1", password: "test" });
   await page.goto("/");
 
-  await page.click("data-testid=program-list-tab");
-  const firstProgramItem = page.locator(
-    "data-testid=program-item-container >> nth=0",
-  );
+  const programList = new ProgramListPage(page);
 
-  await firstProgramItem
-    .getByRole("button", { name: /lottery sign-up/i })
-    .click();
-  await firstProgramItem.getByRole("button", { name: /confirm/i }).click();
+  await programList.gotoAllProgram();
+  const firstProgramItem = programList.firstItem();
+
+  await firstProgramItem.lotterySignup();
+  await firstProgramItem.confirm();
 
   // Do assignment on background
   await postAssignment(request, startTime);
   await page.reload();
 
   // Check new assignment message
-  await expect(page.getByTestId("notification-bar")).toContainText(
+  await expect(programList.notificationBar.bar).toContainText(
     /Spots for program items at .* were randomized. Unfortunately, we couldn't fit you into any of your chosen program items./,
   );
 
-  await page.getByRole("link", { name: "Show all notifications" }).click();
-  await expect(page.getByTestId("event-log-item")).toContainText(
+  await programList.notificationBar.showAllNotifications();
+  await expect(programList.notificationBar.eventLogItem).toContainText(
     /Spots for program items at .* were randomized. Unfortunately, we couldn't fit you into any of your chosen program items./,
   );
 
   // Check lottery signup is still present
-  await page.getByTestId("navigation-icon").click();
-  await page.getByRole("link", { name: "Program", exact: true }).click();
-  const lotterySignups = page.getByTestId("lottery-signup-program-items-list");
+  await programList.navigation.gotoProgram();
+  const lotterySignups = programList.lotterySignupList;
   await expect(lotterySignups.getByTestId("program-item-title")).toContainText(
     "1) Test program item",
   );
@@ -276,43 +264,31 @@ test("Receive spot in lottery signup, with multiple lottery program types", asyn
   await login(page, request, { username: "test1", password: "test" });
   await page.goto("/");
 
-  await page.click("data-testid=program-list-tab");
+  const programList = new ProgramListPage(page);
 
-  const firstProgramItem = page
-    .locator('[data-testid="program-item-container"]')
-    .filter({
-      has: page.getByTestId("program-item-title"),
-      hasText: firstProgramItemTitle,
-    });
-  await firstProgramItem
-    .getByRole("button", { name: /lottery sign-up/i })
-    .click();
-  await firstProgramItem.getByRole("button", { name: /confirm/i }).click();
+  await programList.gotoAllProgram();
 
-  const secondProgramItem = page
-    .locator('[data-testid="program-item-container"]')
-    .filter({
-      has: page.getByTestId("program-item-title"),
-      hasText: secondProgramItemTitle,
-    });
-  await secondProgramItem
-    .getByRole("button", { name: /lottery sign-up/i })
-    .click();
-  await secondProgramItem.getByRole("button", { name: /confirm/i }).click();
+  const firstProgramItem = programList.itemByTitle(firstProgramItemTitle);
+  await firstProgramItem.lotterySignup();
+  await firstProgramItem.confirm();
+
+  const secondProgramItem = programList.itemByTitle(secondProgramItemTitle);
+  await secondProgramItem.lotterySignup();
+  await secondProgramItem.confirm();
 
   // Do assignment on background
   await postAssignment(request, startTime);
   await page.reload();
 
   // Check new assignment message
-  await expect(page.getByTestId("notification-bar")).toContainText(
+  await expect(programList.notificationBar.bar).toContainText(
     new RegExp(
       String.raw`You were assigned to the .* ${firstProgramItemTitle}\.`,
     ),
   );
 
-  await page.getByRole("link", { name: "Show all notifications" }).click();
-  await expect(page.getByTestId("event-log-item")).toContainText(
+  await programList.notificationBar.showAllNotifications();
+  await expect(programList.notificationBar.eventLogItem).toContainText(
     new RegExp(
       String.raw`You were assigned to the .* ${firstProgramItemTitle}\.`,
     ),

@@ -8,6 +8,7 @@ import {
   addProgramItems,
   testPostDirectSignup,
 } from "playwright/playwrightUtils";
+import { ProgramItemPage } from "playwright/pages/ProgramItemPage";
 import { config } from "shared/config";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
@@ -50,17 +51,19 @@ test("Admission ticket reflects whether the user has signed up", async ({
   await login(page, request, { username: "test1", password: "test" });
   await page.goto("/");
 
+  const programItemPage = new ProgramItemPage(page);
+
   // Signed-up program item shows the admission
   await page.goto("/program/item/admission-signed-item/admission");
-  await expect(page.locator("#main")).toContainText("Signed Up Item");
-  await expect(page.locator("#main")).toContainText(
+  await expect(programItemPage.main).toContainText("Signed Up Item");
+  await expect(programItemPage.main).toContainText(
     "You have signed up as user",
   );
-  await expect(page.locator("#main")).toContainText("test1");
+  await expect(programItemPage.main).toContainText("test1");
 
   // A program item the user did not sign up to shows no admission
   await page.goto("/program/item/admission-other-item/admission");
-  await expect(page.locator("#main")).toContainText(
+  await expect(programItemPage.main).toContainText(
     "You have not signed up for this program item.",
   );
 });

@@ -1,5 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { populateDb, login } from "playwright/playwrightUtils";
+import { ProgramListPage } from "playwright/pages/ProgramListPage";
 
 test("Add favorite", async ({ page, request }) => {
   await populateDb(request, { clean: true, users: true, programItems: true });
@@ -7,30 +8,24 @@ test("Add favorite", async ({ page, request }) => {
 
   await page.goto("/");
 
+  const programList = new ProgramListPage(page);
+
   // Navigate to program list tab
-  await page.click("data-testid=program-list-tab");
+  await programList.gotoAllProgram();
 
   // Favorite first program item
-  await page.waitForSelector("data-testid=program-item-container");
-  const firstProgramItem = page.locator(
-    "data-testid=program-item-container >> nth=0",
-  );
+  await programList.waitForItems();
+  const firstItem = programList.firstItem();
 
-  const favoriteProgramItemTitle = await firstProgramItem
-    .locator("data-testid=program-item-title")
-    .textContent();
+  const favoriteProgramItemTitle = await firstItem.title.textContent();
 
-  await firstProgramItem.locator("data-testid=add-favorite-button").click();
+  await firstItem.favorite();
 
   // Go to My Program and check favorite program item title
-  await page.click("data-testid=my-program-tab");
+  await programList.gotoMyProgram();
 
-  const favoriteProgramItems = page.locator(
-    "data-testid=favorite-program-items-list",
-  );
-
-  const programItemTitle = await favoriteProgramItems
-    .locator("data-testid=program-item-title")
+  const programItemTitle = await programList.favoriteList
+    .getByTestId("program-item-title")
     .textContent();
 
   expect(programItemTitle?.trim()).toEqual(favoriteProgramItemTitle);
