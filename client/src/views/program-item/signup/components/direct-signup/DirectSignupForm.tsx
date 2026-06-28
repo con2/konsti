@@ -14,12 +14,6 @@ import {
 } from "shared/types/models/settings";
 import { ErrorMessage } from "client/components/ErrorMessage";
 import { getIsInGroup } from "client/views/group/groupUtils";
-import {
-  PostCloseGroupErrorMessage,
-  PostLeaveGroupErrorMessage,
-  submitCloseGroup,
-  submitLeaveGroup,
-} from "client/views/group/groupThunks";
 import { TextArea } from "client/components/TextArea";
 import { ButtonGroup } from "client/components/ButtonGroup";
 import { Dropdown } from "client/components/Dropdown";
@@ -47,7 +41,6 @@ export const DirectSignupForm = ({
   const { t, i18n } = useTranslation();
   const dispatch = useAppDispatch();
 
-  const username = useAppSelector((state) => state.login.username);
   const groupCode = useAppSelector((state) => state.group.groupCode);
   const isGroupCreator = useAppSelector((state) => state.group.isGroupCreator);
   const loading = useAppSelector((state) => state.loading);
@@ -60,12 +53,8 @@ export const DirectSignupForm = ({
   );
   const [agreeEntryCondition, setAgreeEntryCondition] =
     useState<boolean>(false);
-  const [errorMessage, setErrorMessage] = useState<
-    | PostDirectSignupErrorMessage
-    | PostLeaveGroupErrorMessage
-    | PostCloseGroupErrorMessage
-    | null
-  >(null);
+  const [errorMessage, setErrorMessage] =
+    useState<PostDirectSignupErrorMessage | null>(null);
 
   const entryCondition = getEntryCondition(programItem, t);
 
@@ -84,32 +73,6 @@ export const DirectSignupForm = ({
       message: userSignupMessage || selectedValue,
       priority: DIRECT_SIGNUP_PRIORITY,
     };
-
-    // TODO: This logic should be on backend
-    if (isLotterySignupProgramItem(programItem)) {
-      if (isInGroup && !isGroupCreator) {
-        const leaveGroupError = await dispatch(submitLeaveGroup());
-
-        if (leaveGroupError) {
-          setErrorMessage(leaveGroupError);
-          return;
-        }
-      } else if (isInGroup && isGroupCreator) {
-        const closeGroupRequest = {
-          username,
-          groupCode,
-        };
-
-        const closeGroupError = await dispatch(
-          submitCloseGroup(closeGroupRequest),
-        );
-
-        if (closeGroupError) {
-          setErrorMessage(closeGroupError);
-          return;
-        }
-      }
-    }
 
     const error = await dispatch(submitPostDirectSignup(enterData));
     if (error) {

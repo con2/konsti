@@ -20,7 +20,11 @@ import {
   PostCreateGroupError,
   PostJoinGroupError,
 } from "shared/types/api/groups";
-import { makeErrorResult, makeSuccessResult } from "shared/utils/result";
+import {
+  makeErrorResult,
+  makeSuccessResult,
+  Result,
+} from "shared/utils/result";
 import { findProgramItems } from "server/features/program-item/programItemRepository";
 import { getLotteryParticipantDirectSignups } from "server/features/assignment/utils/prepareAssignmentParams";
 import { ProgramItem } from "shared/types/models/programItem";
@@ -386,6 +390,37 @@ export const closeGroup = async (
     status: "success",
     groupCode: "0",
   };
+};
+
+export const leaveOrCloseGroup = async (
+  username: string,
+): Promise<Result<boolean, string>> => {
+  const userResult = await findUser(username);
+  if (!userResult.ok) {
+    return makeErrorResult("Error finding user");
+  }
+  const user = userResult.value;
+  if (!user) {
+    return makeErrorResult("User not found");
+  }
+
+  if (user.groupCode === "0") {
+    return makeSuccessResult(false);
+  }
+
+  if (user.isGroupCreator) {
+    const closeGroupResult = await closeGroup(user.groupCode, username);
+    if (closeGroupResult.status === "error") {
+      return makeErrorResult(closeGroupResult.message);
+    }
+  } else {
+    const leaveGroupResult = await leaveGroup(username);
+    if (leaveGroupResult.status === "error") {
+      return makeErrorResult(leaveGroupResult.message);
+    }
+  }
+
+  return makeSuccessResult(true);
 };
 
 export const fetchGroup = async (

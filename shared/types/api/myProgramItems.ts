@@ -72,6 +72,8 @@ export interface PostDirectSignupResult extends ApiResult {
     userSignups: { username: string; message: string }[];
   };
   directSignup?: DirectSignup;
+  // True when a direct signup made the user leave or close their group
+  leftGroup: boolean;
 }
 
 export interface PostDirectSignupError extends ApiError {
