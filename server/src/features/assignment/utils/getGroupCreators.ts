@@ -12,6 +12,13 @@ export const getGroupCreators = (
   const selectedAttendees: User[] = [];
 
   for (const user of users) {
+    // Only individuals and group creators carry lottery signups into the assignment.
+    // A non-creator member's signups must not turn them into a group creator, which
+    // would duplicate the group when its members are expanded
+    if (user.groupCode !== "0" && !user.isGroupCreator) {
+      continue;
+    }
+
     let match = false;
     // eslint-disable-next-line @typescript-eslint/prefer-for-of
     for (let i = 0; i < user.lotterySignups.length; i += 1) {
