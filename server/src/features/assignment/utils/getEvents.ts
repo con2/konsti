@@ -29,13 +29,20 @@ export const getEvents = (
 
       const currentSignups = changedSignups?.length ?? 0;
 
+      // The lottery only fills the seats left after existing signups; capacity can't go negative
+      const remainingMax = Math.max(
+        lotterySignupProgramItem.maxAttendance - currentSignups,
+        0,
+      );
+
       return {
         id: lotterySignupProgramItem.programItemId,
-        min: Math.max(
-          lotterySignupProgramItem.minAttendance - currentSignups,
-          1,
+        // Keep min within [0, remainingMax] so the assigner never receives min > max
+        min: Math.min(
+          Math.max(lotterySignupProgramItem.minAttendance - currentSignups, 1),
+          remainingMax,
         ),
-        max: lotterySignupProgramItem.maxAttendance - currentSignups,
+        max: remainingMax,
         groups: [],
       };
     },

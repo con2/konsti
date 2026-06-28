@@ -7,9 +7,50 @@ import {
 import { config } from "shared/config";
 import { getEvents } from "server/features/assignment/utils/getEvents";
 import { getPreviousDirectSignup } from "server/features/assignment/utils/assignmentTestUtils";
+import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
+import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 
 afterEach(() => {
   vi.resetAllMocks();
+});
+
+test("should not produce negative max or min greater than max when existing signups exceed capacity", () => {
+  // Item already has more changed-start-time direct signups than its capacity
+  const programItem = {
+    ...testProgramItem,
+    minAttendance: 2,
+    maxAttendance: 2,
+  };
+
+  const changedStartTime = dayjs(testProgramItem.startTime)
+    .subtract(1, "hour")
+    .toISOString();
+
+  const directSignups: DirectSignupsForProgramItem[] = [
+    {
+      programItemId: programItem.programItemId,
+      count: 3,
+      userSignups: ["user1", "user2", "user3"].map((username) => ({
+        username,
+        priority: DIRECT_SIGNUP_PRIORITY,
+        signedToStartTime: changedStartTime,
+        signupTime: testProgramItem.startTime,
+        message: "",
+      })),
+    },
+  ];
+
+  const events = getEvents([programItem], directSignups);
+
+  // No remaining capacity -> item takes no lottery attendees (never min > max or negative max)
+  expect(events).toEqual([
+    {
+      id: programItem.programItemId,
+      min: 0,
+      max: 0,
+      groups: [],
+    },
+  ]);
 });
 
 test("should return as many events as program items", () => {
