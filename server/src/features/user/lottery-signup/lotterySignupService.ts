@@ -117,6 +117,15 @@ export const storeLotterySignup = async ({
     };
   }
 
+  // Group members don't make their own lottery signups; the group creator signs up for the group
+  if (user.groupCode !== "0" && !user.isGroupCreator) {
+    return {
+      message: "Group member cannot create lottery signups",
+      status: "error",
+      errorId: "groupMember",
+    };
+  }
+
   const priorityReserved = user.lotterySignups.some(
     (lotterySignup) =>
       dayjs(lotterySignup.signedToStartTime).isSame(

@@ -183,6 +183,8 @@ export const translationEN = {
     noKonstiSignup:
       "This program does not use Konsti for signing up. See the program details for instructions.",
     programItemCancelled: "Program item is cancelled",
+    groupMember:
+      "Group members cannot sign up, the group creator signs up for the whole group",
   },
   closingMessage: "Konsti is closed and will open closer to the next event.",
   invalidProgramItemId:

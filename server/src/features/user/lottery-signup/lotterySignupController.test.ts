@@ -269,6 +269,44 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     expect(body.errorId).toEqual("invalidPriority");
   });
 
+  test("should return error when user is a non-creator group member", async () => {
+    vi.setSystemTime(
+      dayjs(testProgramItem.startTime)
+        .subtract(config.event().preSignupStart, "minutes")
+        .toISOString(),
+    );
+
+    await saveProgramItems([testProgramItem]);
+    // Group members don't make their own lottery signups; only the creator does
+    await saveUser({
+      ...mockUser,
+      groupCode: "group-1",
+      isGroupCreator: false,
+    });
+
+    const signup: PostLotterySignupRequest = {
+      programItemId: testProgramItem.programItemId,
+      priority: 1,
+    };
+    const response = await request(server)
+      .post(ApiEndpoint.LOTTERY_SIGNUP)
+      .send(signup)
+      .set(
+        "Authorization",
+        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
+      );
+
+    expect(response.status).toEqual(200);
+
+    const body = response.body as PostLotterySignupError;
+    expect(body.status).toEqual("error");
+    expect(body.errorId).toEqual("groupMember");
+
+    // No lottery signup should be saved for a group member
+    const modifiedUser = unsafelyUnwrap(await findUser(mockUser.username));
+    expect(modifiedUser?.lotterySignups).toHaveLength(0);
+  });
+
   test("should return success when user and program item are found", async () => {
     vi.setSystemTime(
       dayjs(testProgramItem.startTime)

@@ -197,6 +197,7 @@ export enum PostLotterySignupErrorMessage {
   SIGNUP_NOT_OPEN_YET = "signupError.signupNotOpenYet",
   PROGRAM_ITEM_CANCELLED = "signupError.programItemCancelled",
   NO_KONSTI_SIGNUP = "signupError.noKonstiSignup",
+  GROUP_MEMBER = "signupError.groupMember",
   UNKNOWN = "signupError.generic",
 }
 
@@ -224,6 +225,8 @@ export const submitPostLotterySignup = (
           return PostLotterySignupErrorMessage.PROGRAM_ITEM_CANCELLED;
         case "noKonstiSignup":
           return PostLotterySignupErrorMessage.NO_KONSTI_SIGNUP;
+        case "groupMember":
+          return PostLotterySignupErrorMessage.GROUP_MEMBER;
         case "unknown":
           return PostLotterySignupErrorMessage.UNKNOWN;
         default:
