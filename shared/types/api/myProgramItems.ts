@@ -27,7 +27,8 @@ export interface PostLotterySignupError extends ApiError {
     | "programItemNotFound"
     | "signupNotOpenYet"
     | "cancelled"
-    | "noKonstiSignup";
+    | "noKonstiSignup"
+    | "groupMember";
 }
 
 export type PostLotterySignupResponse =
