@@ -145,11 +145,14 @@ const notifyUsersWithDirectSignups = async (
     }
 
     return directSignup.userSignups.flatMap((userSignup) => {
-      // Check if user also had lottery signup and don't notify twice
-      const alreadyNotifiedUser = usersWithMovedLotterySignups.some(
-        (user) => user.username === userSignup.username,
+      // Skip only if the user was already notified for this same program item via the lottery path
+      // Different moved item must still notify
+      const alreadyNotifiedForThisItem = usersWithMovedLotterySignups.some(
+        (user) =>
+          user.username === userSignup.username &&
+          user.lotterySignupProgramItemIds.includes(directSignup.programItemId),
       );
-      if (alreadyNotifiedUser) {
+      if (alreadyNotifiedForThisItem) {
         return [];
       }
       return {
