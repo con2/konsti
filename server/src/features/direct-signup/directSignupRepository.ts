@@ -1,4 +1,3 @@
-import dayjs from "dayjs";
 import { AnyBulkWriteOperation } from "mongoose";
 import { first, groupBy, shuffle } from "remeda";
 import { findProgramItemById } from "server/features/program-item/programItemRepository";
@@ -20,6 +19,7 @@ import {
   makeSuccessResult,
 } from "shared/utils/result";
 import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
+import { isStartTimeMatch } from "server/utils/isStartTimeMatch";
 import { ProgramItem } from "shared/types/models/programItem";
 
 export const removeDirectSignups = async (): Promise<
@@ -124,7 +124,7 @@ export const findDirectSignupsByStartTime = async (
 ): Promise<Result<FindDirectSignupsByStartTimeResponse[], MongoDbError>> => {
   const programItemsIds = programItems
     .filter((programItem) =>
-      dayjs(programItem.startTime).isSame(dayjs(startTime)),
+      isStartTimeMatch(programItem.startTime, startTime, programItem.parentId),
     )
     .map((programItem) => programItem.programItemId);
 
