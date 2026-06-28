@@ -16,7 +16,11 @@ import {
   mockUser5,
 } from "server/test/mock-data/mockUser";
 import { testProgramItem } from "shared/tests/testProgramItem";
-import { saveUser } from "server/features/user/userRepository";
+import { findUser, saveUser } from "server/features/user/userRepository";
+import {
+  saveGroupCode,
+  saveGroupCreator,
+} from "server/features/user/group/groupRepository";
 import { saveProgramItems } from "server/features/program-item/programItemRepository";
 import {
   findDirectSignups,
@@ -37,6 +41,7 @@ import {
   ProgramType,
   SignupType,
   State,
+  Tag,
 } from "shared/types/models/programItem";
 
 let server: Server;
@@ -406,6 +411,106 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     );
     expect(matchingSignup?.userSignups.length).toEqual(maxAttendance);
     expect(matchingSignup?.count).toEqual(maxAttendance);
+  });
+
+  test("should remove group member from group when direct signing up to program item", async () => {
+    vi.setSystemTime(testProgramItem.startTime);
+
+    await saveProgramItems([testProgramItem]);
+    await saveUser(mockUser);
+    await saveGroupCode("group-123", mockUser.username);
+
+    const signup: PostDirectSignupRequest = {
+      directSignupProgramItemId: testProgramItem.programItemId,
+      message: "",
+      priority: DIRECT_SIGNUP_PRIORITY,
+    };
+    const response = await request(server)
+      .post(ApiEndpoint.DIRECT_SIGNUP)
+      .send(signup)
+      .set(
+        "Authorization",
+        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
+      );
+
+    expect(response.status).toEqual(200);
+
+    const body = response.body as PostDirectSignupResult;
+    expect(body.status).toEqual("success");
+    expect(body.leftGroup).toEqual(true);
+
+    const user = unsafelyUnwrap(await findUser(mockUser.username));
+    expect(user?.groupCode).toEqual("0");
+  });
+
+  test("should close group when group creator direct signs up to program item", async () => {
+    vi.setSystemTime(testProgramItem.startTime);
+
+    await saveProgramItems([testProgramItem]);
+    await saveUser(mockUser);
+    await saveUser(mockUser2);
+    await saveGroupCreator("group-123", true, mockUser.username);
+    await saveGroupCode("group-123", mockUser2.username);
+
+    const signup: PostDirectSignupRequest = {
+      directSignupProgramItemId: testProgramItem.programItemId,
+      message: "",
+      priority: DIRECT_SIGNUP_PRIORITY,
+    };
+    const response = await request(server)
+      .post(ApiEndpoint.DIRECT_SIGNUP)
+      .send(signup)
+      .set(
+        "Authorization",
+        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
+      );
+
+    expect(response.status).toEqual(200);
+
+    const body = response.body as PostDirectSignupResult;
+    expect(body.status).toEqual("success");
+    expect(body.leftGroup).toEqual(true);
+
+    // Creator and members are removed from the group
+    const creator = unsafelyUnwrap(await findUser(mockUser.username));
+    expect(creator?.groupCode).toEqual("0");
+    expect(creator?.isGroupCreator).toEqual(false);
+
+    const member = unsafelyUnwrap(await findUser(mockUser2.username));
+    expect(member?.groupCode).toEqual("0");
+  });
+
+  test("should not remove user from group when signing up to signup always open program item", async () => {
+    vi.setSystemTime(testProgramItem.startTime);
+
+    // Pre-convention week tag makes the program item signup always open
+    await saveProgramItems([
+      { ...testProgramItem, tags: [Tag.PRE_CONVENTION_WEEK] },
+    ]);
+    await saveUser(mockUser);
+    await saveGroupCode("group-123", mockUser.username);
+
+    const signup: PostDirectSignupRequest = {
+      directSignupProgramItemId: testProgramItem.programItemId,
+      message: "",
+      priority: DIRECT_SIGNUP_PRIORITY,
+    };
+    const response = await request(server)
+      .post(ApiEndpoint.DIRECT_SIGNUP)
+      .send(signup)
+      .set(
+        "Authorization",
+        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
+      );
+
+    expect(response.status).toEqual(200);
+
+    const body = response.body as PostDirectSignupResult;
+    expect(body.status).toEqual("success");
+    expect(body.leftGroup).toEqual(false);
+
+    const user = unsafelyUnwrap(await findUser(mockUser.username));
+    expect(user?.groupCode).toEqual("group-123");
   });
 });
 

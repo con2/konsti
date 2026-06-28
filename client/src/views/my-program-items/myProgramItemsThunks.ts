@@ -25,7 +25,10 @@ import {
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import { NewFavorite } from "shared/types/models/user";
 import { submitUpdateEventLogItemsAsync } from "client/views/login/loginSlice";
-import { submitUpdateGroupCodeAsync } from "client/views/group/groupSlice";
+import {
+  submitUpdateGroupAsync,
+  submitUpdateGroupCodeAsync,
+} from "client/views/group/groupSlice";
 import { submitUpdateDirectSignupAsync } from "client/views/all-program-items/allProgramItemsSlice";
 
 export const submitGetUser = (username: string): AppThunk => {
@@ -131,6 +134,14 @@ export const submitPostDirectSignup = (
         })),
       }),
     );
+
+    // Group member direct signup removes them from the group, close group if group creator
+    if (signupResponse.leftGroup) {
+      dispatch(
+        submitUpdateGroupCodeAsync({ groupCode: "0", isGroupCreator: false }),
+      );
+      dispatch(submitUpdateGroupAsync([]));
+    }
 
     // Show error if signup failed, ie. program item is full
     if (!signupResponse.directSignup) {
