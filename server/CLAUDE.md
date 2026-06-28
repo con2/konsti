@@ -120,6 +120,8 @@ There is **no application-level rate limiting**. This is intentional:
 
 Two lottery algorithms: PADG (preference-based via `eventassigner-js`) and random (`eventassigner-random`), under `server/src/features/assignment/`. Assignment runs automatically on a cron schedule; admins can trigger manual runs as a backup. Users submit weighted preferences during signup windows defined per-event in `shared/config/`. The orchestrator (`run-assignment/`) cleans up invalid signups before running (see below).
 
+**Assignment test organization** (`run-assignment/`): put generic, algorithm-independent behavior — start-time filtering, signup cleanup/preservation, result snapshots, error cases — in `runAssignment.test.ts`. The per-algorithm files (`runAssignmentPadg.test.ts`, `runAssignmentRandom.test.ts`, `runAssignmentRandomPadg.test.ts`) hold only cases specific to that algorithm. New generic cases go in `runAssignment.test.ts`.
+
 ## Program Item Cancellation Types
 
 A program item can effectively "go away" in four distinct ways; each has different data-cleanup semantics:
