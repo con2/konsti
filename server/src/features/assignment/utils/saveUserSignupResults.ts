@@ -139,19 +139,14 @@ export const saveUserSignupResults = async ({
   }
 
   // Filter out possible dropped results
-  const finalResults =
-    droppedSignups.length > 0
-      ? results.filter((result) => {
-          return droppedSignups.find(
-            (signup) =>
-              !(
-                signup.directSignupProgramItemId ===
-                  result.assignmentSignup.programItemId &&
-                signup.username === result.username
-              ),
-          );
-        })
-      : results;
+  const finalResults = results.filter((result) => {
+    return droppedSignups.every(
+      (signup) =>
+        signup.directSignupProgramItemId !==
+          result.assignmentSignup.programItemId ||
+        signup.username !== result.username,
+    );
+  });
 
   // Add NEW_ASSIGNMENT to user event logs
   const newAssignmentEventLogItemsResult = await addEventLogItems(
@@ -226,10 +221,11 @@ export const saveUserSignupResults = async ({
 
   const noAssignmentLotterySignupUsernames = lotterySignupUsernames.flatMap(
     (lotterySignupUsername) => {
-      const userWithLotterySignup = results.some(
+      // Use finalResults so users whose signup was dropped are treated as not assigned
+      const userGotAssignment = finalResults.some(
         (result) => result.username === lotterySignupUsername,
       );
-      if (!userWithLotterySignup) {
+      if (!userGotAssignment) {
         return lotterySignupUsername;
       }
       return [];
