@@ -3,6 +3,7 @@ import { config } from "shared/config";
 import { ProgramItem } from "shared/types/models/programItem";
 import { TIMEZONE } from "shared/utils/initializeDayjs";
 import { isDirectSignupAlwaysOpen } from "shared/utils/isDirectSignupAlwaysOpen";
+import { isPreConventionWeekProgramItem } from "shared/utils/isPreConventionWeekProgramItem";
 
 const getProgramItemStartTime = (programItem: ProgramItem): string => {
   const { startTimesByParentIds } = config.event();
@@ -71,6 +72,7 @@ export const getRollingDirectSignupStartTime = (
 export const getDirectSignupStartTime = (programItem: ProgramItem): Dayjs => {
   const {
     eventStartTime,
+    preConventionWeekSignupStartTime,
     directSignupPhaseStart,
     phaseGap,
     directSignupWindows,
@@ -80,6 +82,15 @@ export const getDirectSignupStartTime = (programItem: ProgramItem): Dayjs => {
 
   // ** SIGNUP ALWAYS OPEN **
   if (isDirectSignupAlwaysOpen(programItem)) {
+    // Pre-convention week items take place before the event starts, so they have
+    // their own signup start time instead of the event start time
+    if (
+      preConventionWeekSignupStartTime &&
+      isPreConventionWeekProgramItem(programItem)
+    ) {
+      return dayjs(preConventionWeekSignupStartTime);
+    }
+
     return dayjs(eventStartTime);
   }
 

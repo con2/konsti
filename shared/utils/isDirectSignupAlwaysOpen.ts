@@ -1,5 +1,6 @@
 import { config } from "shared/config";
-import { ProgramItem, Tag } from "shared/types/models/programItem";
+import { ProgramItem } from "shared/types/models/programItem";
+import { isPreConventionWeekProgramItem } from "shared/utils/isPreConventionWeekProgramItem";
 
 export const isDirectSignupAlwaysOpen = (programItem: ProgramItem): boolean => {
   const { directSignupAlwaysOpenIds } = config.event();
@@ -8,6 +9,6 @@ export const isDirectSignupAlwaysOpen = (programItem: ProgramItem): boolean => {
   // program type (e.g. RPG) would normally use lottery
   return (
     directSignupAlwaysOpenIds.includes(programItem.programItemId) ||
-    programItem.tags.includes(Tag.PRE_CONVENTION_WEEK)
+    isPreConventionWeekProgramItem(programItem)
   );
 };
