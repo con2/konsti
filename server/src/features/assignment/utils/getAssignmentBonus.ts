@@ -1,25 +1,40 @@
+import dayjs from "dayjs";
 import { partition } from "remeda";
 import { config } from "shared/config";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import { User } from "shared/types/models/user";
 import { EventLogAction } from "shared/types/models/eventLog";
 import { ProgramItem } from "shared/types/models/programItem";
+import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 
 export const getAssignmentBonus = (
   attendeeGroup: User[],
   lotteryParticipantDirectSignups: readonly DirectSignupsForProgramItem[],
   lotterySignupProgramItems: readonly ProgramItem[],
+  assignmentTime: string,
 ): number => {
   /** First time bonus */
 
-  // Get group members with direct signups or NEW_ASSIGNMENT event log items
-  // TODO: Should filter out directSignups and eventLogItems with current assignmentTime so possible re-assignment is not affected
+  // A re-run must not count its own results as "previous" (which would strip the bonus and
+  // change outcomes): ignore lottery wins (priority > 0) and NEW_ASSIGNMENT events at the
+  // current assignmentTime, but keep genuine first-come-first-served direct signups
+  const isCurrentAssignment = (startTime: string): boolean =>
+    dayjs(startTime).isSame(dayjs(assignmentTime), "minute");
+
+  // Get group members with previous direct signups or NEW_ASSIGNMENT event log items
   const [groupMembersWithDirectSignups, groupMembersWithoutDirectSignups] =
     partition(attendeeGroup, (groupMember) => {
       const previousDirectSignup = lotteryParticipantDirectSignups.find(
         (programItem) => {
           return programItem.userSignups.find(
-            (userSignup) => userSignup.username === groupMember.username,
+            (userSignup) =>
+              userSignup.username === groupMember.username &&
+              // Exclude this lottery's own win (priority > 0) at the current time, but keep
+              // first-come-first-served (priority 0) signups counting as "previous"
+              !(
+                isCurrentAssignment(userSignup.signedToStartTime) &&
+                userSignup.priority !== DIRECT_SIGNUP_PRIORITY
+              ),
           );
         },
       );
@@ -31,7 +46,11 @@ export const getAssignmentBonus = (
             (programItem) =>
               programItem.programItemId === eventLogItem.programItemId,
           );
-          return previousAssignment && programItemExists;
+          return (
+            previousAssignment &&
+            programItemExists &&
+            !isCurrentAssignment(eventLogItem.programItemStartTime)
+          );
         },
       );
 

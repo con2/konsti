@@ -53,6 +53,7 @@ export const getList = ({
             attendeeGroup,
             lotteryParticipantDirectSignups,
             lotterySignupProgramItems,
+            assignmentTime,
           ),
         };
       });
@@ -68,11 +69,13 @@ const getGain = (
   attendeeGroup: User[],
   lotteryParticipantDirectSignups: readonly DirectSignupsForProgramItem[],
   lotterySignupProgramItems: readonly ProgramItem[],
+  assignmentTime: string,
 ): number => {
   const bonus = getAssignmentBonus(
     attendeeGroup,
     lotteryParticipantDirectSignups,
     lotterySignupProgramItems,
+    assignmentTime,
   );
 
   switch (lotterySignup.priority) {
