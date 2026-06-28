@@ -2,6 +2,7 @@ import dayjs, { Dayjs } from "dayjs";
 import { config } from "shared/config";
 import { ProgramItem } from "shared/types/models/programItem";
 import { TIMEZONE } from "shared/utils/initializeDayjs";
+import { isDirectSignupAlwaysOpen } from "shared/utils/isDirectSignupAlwaysOpen";
 
 const getProgramItemStartTime = (programItem: ProgramItem): string => {
   const { startTimesByParentIds } = config.event();
@@ -74,16 +75,11 @@ export const getDirectSignupStartTime = (programItem: ProgramItem): Dayjs => {
     phaseGap,
     directSignupWindows,
     rollingDirectSignupProgramTypes,
-    directSignupAlwaysOpenIds,
     twoPhaseSignupProgramTypes,
   } = config.event();
 
   // ** SIGNUP ALWAYS OPEN **
-  const signupAlwaysOpen = directSignupAlwaysOpenIds.includes(
-    programItem.programItemId,
-  );
-
-  if (signupAlwaysOpen) {
+  if (isDirectSignupAlwaysOpen(programItem)) {
     return dayjs(eventStartTime);
   }
 

@@ -29,6 +29,7 @@ Guidance for working in `shared/`. See the [root CLAUDE.md](../CLAUDE.md) for th
 - **`timeFormatter.ts`** — dayjs-based display formatting; everything is forced to the `Europe/Helsinki` timezone.
 - **`initializeDayjs.ts`** — dayjs plugin/locale setup and the `TIMEZONE` constant; call this in any new test setup that touches time.
 - **`isLotterySignupProgramItem.ts`** — predicate: does an item use two-phase (lottery) signup?
+- **`isDirectSignupAlwaysOpen.ts`** — predicate: is an item's direct signup always open? Combines the manual `directSignupAlwaysOpenIds` config list with a programmatic check for the `Tag.PRE_CONVENTION_WEEK` tag (pre-convention-week items always use direct signup, even lottery program types like RPGs). Consumed by `isLotterySignupProgramItem` and `getDirectSignupStartTime`.
 - **`tooEarlyForLotterySignup.ts`**, **`isStartTimeChanged.ts`**, **`exhaustiveSwitchGuard.ts`** (TS exhaustiveness helper that throws on unreachable cases), **`remedaExtend.ts`** (extra collection helpers), **`setLocale.ts`**.
 
 ## Zod Pattern for API Types

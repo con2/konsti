@@ -60,6 +60,7 @@ test-results
 blob-report
 playwright-report
 all-blob-reports
+.playwright-mcp
 
 # ESlint
 .eslintcache
