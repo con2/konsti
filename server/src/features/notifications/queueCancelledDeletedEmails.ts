@@ -4,6 +4,9 @@ import {
   NotificationTaskType,
 } from "server/utils/notificationQueue";
 import { EventLogAction } from "shared/types/models/eventLog";
+import { EmailNotificationTrigger } from "shared/types/emailNotification";
+import { findSettings } from "server/features/settings/settingsRepository";
+import { config } from "shared/config";
 
 interface CancelledDeletedUpdate {
   username: string;
@@ -12,14 +15,26 @@ interface CancelledDeletedUpdate {
   action: EventLogAction;
 }
 
-export const queueCancelledDeletedEmails = (
+export const queueCancelledDeletedEmails = async (
   updates: CancelledDeletedUpdate[],
   programItemTitlesById: Map<string, string>,
-): void => {
+): Promise<void> => {
+  const settingsResult = await findSettings();
+  let emailNotificationTrigger = config.server().emailNotificationTrigger;
+  if (settingsResult.ok) {
+    emailNotificationTrigger = settingsResult.value.emailNotificationTrigger;
+  }
+
   const emailUpdates = updates.filter(
     (update) =>
-      update.action === EventLogAction.PROGRAM_ITEM_CANCELLED ||
-      update.action === EventLogAction.PROGRAM_ITEM_DELETED,
+      (update.action === EventLogAction.PROGRAM_ITEM_CANCELLED &&
+        emailNotificationTrigger.includes(
+          EmailNotificationTrigger.PROGRAM_ITEM_CANCELLED,
+        )) ||
+      (update.action === EventLogAction.PROGRAM_ITEM_DELETED &&
+        emailNotificationTrigger.includes(
+          EmailNotificationTrigger.PROGRAM_ITEM_DELETED,
+        )),
   );
   if (emailUpdates.length === 0) {
     return;

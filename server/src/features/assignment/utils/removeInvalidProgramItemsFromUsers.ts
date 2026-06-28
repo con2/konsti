@@ -57,7 +57,6 @@ export const removeCancelledDeletedProgramItemsFromUsers = async ({
   if (!usersResult.ok) {
     return usersResult;
   }
-
   const usersToNofify: UserToNofify[] = [];
 
   const usersToUpdate = usersResult.value.flatMap((user) => {
@@ -254,7 +253,7 @@ const notifyUsersWithLotterySignupOrFavorite = async (
       return addEventLogItemsResult;
     }
 
-    queueCancelledDeletedEmails(eventUpdates, programItemTitlesById);
+    await queueCancelledDeletedEmails(eventUpdates, programItemTitlesById);
   }
 
   return makeSuccessResult();

@@ -56,22 +56,6 @@ describe(`POST ${ApiEndpoint.EMAIL_TEST}`, () => {
     expect(response.status).toEqual(422);
   });
 
-  test("should return 400 with an unsupported notification type", async () => {
-    // notificationType passes schema validation but is neither ACCEPTED nor
-    // REJECTED, so the handler rejects it before attempting to send anything
-    const requestBody: PostEmailTestRequest = {
-      email: "test@example.com",
-      notificationType: EmailNotificationTrigger.NONE,
-      programId: "test-program-item",
-    };
-    const response = await request(server)
-      .post(ApiEndpoint.EMAIL_TEST)
-      .send(requestBody)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
-    expect(response.status).toEqual(400);
-    expect(sendEmailSpy).not.toHaveBeenCalled();
-  });
-
   test("should return 200 and send the email for an accepted notification", async () => {
     const requestBody: PostEmailTestRequest = {
       email: "test@example.com",

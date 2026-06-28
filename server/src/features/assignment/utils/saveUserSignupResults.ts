@@ -169,9 +169,9 @@ export const saveUserSignupResults = async ({
 
   // Add SEND_EMAIL_ACCEPTED to notification queue
   if (
-    settings !== null &&
-    (settings.emailNotificationTrigger === EmailNotificationTrigger.ACCEPTED ||
-      settings.emailNotificationTrigger === EmailNotificationTrigger.BOTH)
+    settings?.emailNotificationTrigger.includes(
+      EmailNotificationTrigger.ACCEPTED,
+    )
   ) {
     if (queueService === null) {
       return makeErrorResult(QueueError.QUEUE_NOT_INITIALIZED);
@@ -255,10 +255,9 @@ export const saveUserSignupResults = async ({
 
     // Add SEND_EMAIL_REJECTED to notification queue
     if (
-      settings !== null &&
-      (settings.emailNotificationTrigger ===
-        EmailNotificationTrigger.REJECTED ||
-        settings.emailNotificationTrigger === EmailNotificationTrigger.BOTH)
+      settings?.emailNotificationTrigger.includes(
+        EmailNotificationTrigger.REJECTED,
+      )
     ) {
       if (queueService === null) {
         return makeErrorResult(QueueError.QUEUE_NOT_INITIALIZED);

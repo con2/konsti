@@ -23,7 +23,7 @@ export const SettingsSchemaDb = z
       .date()
       .transform((date) => dayjs(date).toISOString()),
     loginProvider: z.enum(LoginProvider),
-    emailNotificationTrigger: z.enum(EmailNotificationTrigger),
+    emailNotificationTrigger: z.array(z.enum(EmailNotificationTrigger)),
   })
   .strip();
 
@@ -70,7 +70,7 @@ const settingsSchema = new mongoose.Schema(
       default: config.event().defaultLoginProvider,
     },
     emailNotificationTrigger: {
-      type: String,
+      type: [String],
       default: config.server().emailNotificationTrigger,
     },
   },

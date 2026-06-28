@@ -64,43 +64,83 @@ async function generateEmail(
   notification: NotificationTask,
 ): Promise<EmailMessage | null> {
   const fromAddress = config.server().emailSendFromAddress;
-
-  if (notification.type === NotificationTaskType.SEND_EMAIL_ACCEPTED) {
-    const programItemResult = await findProgramItemById(
-      notification.programItemId,
-    );
-    if (!programItemResult.ok) {
-      logger.error(
-        `Failed to found program for programItemId ${notification.programItemId}`,
+  switch (notification.type) {
+    case NotificationTaskType.SEND_EMAIL_ACCEPTED:
+      return generateAcceptedEmail(email, fromAddress, notification);
+    case NotificationTaskType.SEND_EMAIL_REJECTED:
+      return generateRejectedEmail(email, fromAddress, notification);
+    case NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_CANCELLED:
+      return generateProgramItemCancelledEmail(
+        email,
+        fromAddress,
+        notification,
       );
-      return null;
-    }
-    const template = getAcceptedEmailTemplate(
-      programItemResult.value.title,
-      notification,
+    case NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_DELETED:
+      return generateProgramItemDeletedEmail(email, fromAddress, notification);
+  }
+}
+
+async function generateAcceptedEmail(
+  email: string,
+  fromAddress: string,
+  notification: NotificationTask,
+): Promise<EmailMessage | null> {
+  const programItemResult = await findProgramItemById(
+    notification.programItemId,
+  );
+  if (!programItemResult.ok) {
+    logger.error(
+      `Failed to found program for programItemId ${notification.programItemId}`,
     );
-    return buildEmail(template, email, fromAddress);
+    return null;
   }
-
-  if (
-    notification.type ===
-      NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_CANCELLED ||
-    notification.type === NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_DELETED
-  ) {
-    if (!notification.programItemTitle) {
-      logger.error(
-        `Missing programItemTitle for notification type ${notification.type}, username ${notification.username}`,
-      );
-      return null;
-    }
-    const template =
-      notification.type ===
-      NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_CANCELLED
-        ? getProgramItemCancelledEmailTemplate(notification)
-        : getProgramItemDeletedEmailTemplate(notification);
-    return buildEmail(template, email, fromAddress);
-  }
-
-  const template = getRejectedEmailTemplate(notification);
+  const template = getAcceptedEmailTemplate(
+    programItemResult.value.title,
+    notification,
+  );
   return buildEmail(template, email, fromAddress);
+}
+
+function generateRejectedEmail(
+  email: string,
+  fromAddress: string,
+  notification: NotificationTask,
+): EmailMessage {
+  return buildEmail(getRejectedEmailTemplate(notification), email, fromAddress);
+}
+
+function generateProgramItemCancelledEmail(
+  email: string,
+  fromAddress: string,
+  notification: NotificationTask,
+): EmailMessage | null {
+  if (!notification.programItemTitle) {
+    logger.error(
+      `Missing programItemTitle for notification type ${notification.type}, username ${notification.username}`,
+    );
+    return null;
+  }
+  return buildEmail(
+    getProgramItemCancelledEmailTemplate(notification),
+    email,
+    fromAddress,
+  );
+}
+
+function generateProgramItemDeletedEmail(
+  email: string,
+  fromAddress: string,
+  notification: NotificationTask,
+): EmailMessage | null {
+  if (!notification.programItemTitle) {
+    logger.error(
+      `Missing programItemTitle for notification type ${notification.type}, username ${notification.username}`,
+    );
+    return null;
+  }
+  return buildEmail(
+    getProgramItemDeletedEmailTemplate(notification),
+    email,
+    fromAddress,
+  );
 }

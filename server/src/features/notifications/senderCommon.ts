@@ -15,7 +15,7 @@ interface EmailTemplate {
 }
 
 const SUBJECT = "Konsti-arvonnan tulos / Results for Konsti lottery sign-up";
-const CANCELLED_DELETED_SUBJECT = "Ohjelma peruttu / Program item cancelled";
+const CANCELLED_DELETED_SUBJECT = "Ohjelma peruttu / Program cancelled";
 const SIGNATURE = "Terveisin / Sincerely Konsti";
 
 export function getRejectedEmailTemplate(

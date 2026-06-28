@@ -387,7 +387,7 @@ const notifyUsersWithDirectSignups = async (
       return addEventLogItemsResult;
     }
 
-    queueCancelledDeletedEmails(userUpdates, programItemTitlesById);
+    await queueCancelledDeletedEmails(userUpdates, programItemTitlesById);
   }
 
   return makeSuccessResult(directSignups);
