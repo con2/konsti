@@ -1,6 +1,8 @@
-import { expect, test, afterEach, beforeEach } from "vitest";
+import { expect, test, afterEach, beforeEach, vi } from "vitest";
 import mongoose from "mongoose";
+import dayjs from "dayjs";
 import { faker } from "@faker-js/faker";
+import { config } from "shared/config";
 import { saveUser } from "server/features/user/userRepository";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import {
@@ -18,6 +20,7 @@ import {
   delDirectSignup,
   findDirectSignups,
   findDirectSignupsByProgramItemIds,
+  findDirectSignupsByStartTime,
   saveDirectSignup,
   saveDirectSignups,
 } from "server/features/direct-signup/directSignupRepository";
@@ -31,6 +34,7 @@ beforeEach(async () => {
 });
 
 afterEach(async () => {
+  vi.restoreAllMocks();
   await mongoose.disconnect();
 });
 
@@ -154,4 +158,32 @@ test("should not delete multiple times if delete called multiple times", async (
   expect(signupsAfterSave).toHaveLength(1);
   expect(signupsAfterSave[0].count).toEqual(0);
   expect(signupsAfterSave[0].userSignups).toHaveLength(0);
+});
+
+test("should find direct signups for a parent-batched item by its parent start time", async () => {
+  // The item is batched under a parent whose start time drives the lottery, so its own
+  // start time differs from the assignment time
+  const parentStartTime = dayjs(testProgramItem.startTime)
+    .add(30, "minutes")
+    .toISOString();
+
+  vi.spyOn(config, "event").mockReturnValue({
+    ...config.event(),
+    startTimesByParentIds: new Map([
+      [testProgramItem.parentId, parentStartTime],
+    ]),
+  });
+
+  await saveUser(mockUser);
+  await saveProgramItems([testProgramItem]);
+  await saveDirectSignup(mockPostDirectSignupRequest);
+
+  const programItems = unsafelyUnwrap(await findProgramItems());
+  const signups = unsafelyUnwrap(
+    await findDirectSignupsByStartTime(parentStartTime, programItems),
+  );
+
+  expect(signups).toHaveLength(1);
+  expect(signups[0].programItemId).toEqual(testProgramItem.programItemId);
+  expect(signups[0].username).toEqual(mockUser.username);
 });
