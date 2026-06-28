@@ -473,6 +473,83 @@ test("should not add event log items after assignment if signup is dropped due t
   ).toEqual(true);
 });
 
+test("should give dropped signup users a NO_ASSIGNMENT message when multiple signups are dropped due to error", async () => {
+  const lotteryUsers = [mockUser, mockUser2, mockUser3, mockUser4];
+  for (const user of lotteryUsers) {
+    await saveUser(user);
+  }
+  // Only two seats, but four assignment results are passed -> two signups dropped
+  await saveProgramItems([{ ...testProgramItem, maxAttendance: 2 }]);
+
+  // All four are real lottery participants for the starting program item
+  for (const user of lotteryUsers) {
+    await saveLotterySignups({
+      username: user.username,
+      lotterySignups: [{ ...mockLotterySignups[0] }],
+    });
+  }
+
+  const results: UserAssignmentResult[] = lotteryUsers.map((user) => ({
+    username: user.username,
+    assignmentSignup: {
+      programItemId: testProgramItem.programItemId,
+      priority: 1,
+      signedToStartTime: testProgramItem.startTime,
+    },
+  }));
+
+  const users = unsafelyUnwrap(await findUsers());
+  const programItems = unsafelyUnwrap(await findProgramItems());
+
+  await saveUserSignupResults({
+    assignmentTime: testProgramItem.startTime,
+    results,
+    users,
+    programItems,
+  });
+
+  // Only two signups fit, the other two are dropped
+  const signupsAfterSave = unsafelyUnwrap(await findDirectSignups());
+  expect(signupsAfterSave).toHaveLength(1);
+  expect(signupsAfterSave[0].userSignups).toHaveLength(2);
+
+  const usersAfterSave = unsafelyUnwrap(await findUsers());
+
+  // The two users whose signups were saved get a NEW_ASSIGNMENT message
+  const usersWithNewAssignment = usersAfterSave.filter((user) =>
+    user.eventLogItems.some(
+      (eventLogItem) => eventLogItem.action === EventLogAction.NEW_ASSIGNMENT,
+    ),
+  );
+  expect(usersWithNewAssignment).toHaveLength(2);
+
+  // The two users whose signups were dropped get a NO_ASSIGNMENT message instead of silence
+  const usersWithNoAssignment = usersAfterSave.filter((user) =>
+    user.eventLogItems.some(
+      (eventLogItem) => eventLogItem.action === EventLogAction.NO_ASSIGNMENT,
+    ),
+  );
+  expect(usersWithNoAssignment).toHaveLength(2);
+
+  // Every lottery participant gets exactly one message, and no user gets both
+  const usersWithExactlyOneEventLogItem = usersAfterSave.filter(
+    (user) => user.eventLogItems.length === 1,
+  );
+  expect(usersWithExactlyOneEventLogItem).toHaveLength(4);
+
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const notificationQueueService = getGlobalNotificationQueueService()!;
+  const queueAfterUserSignup = notificationQueueService.getItems();
+  const acceptedNotifications = queueAfterUserSignup.filter(
+    (task) => task.type === NotificationTaskType.SEND_EMAIL_ACCEPTED,
+  );
+  const rejectedNotifications = queueAfterUserSignup.filter(
+    (task) => task.type === NotificationTaskType.SEND_EMAIL_REJECTED,
+  );
+  expect(acceptedNotifications).toHaveLength(2);
+  expect(rejectedNotifications).toHaveLength(2);
+});
+
 test("should not send notifications to users without email addresses but still create event log items", async () => {
   const userWithoutEmail = { ...mockUser, email: "" };
   const userWithEmail = mockUser2;
