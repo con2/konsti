@@ -16,8 +16,8 @@ interface PostAssignmentResult extends ApiResult {
   assignmentTime: string;
 }
 
-interface PostAssignmentError extends ApiError {
-  errorId: "unknown";
+export interface PostAssignmentError extends ApiError {
+  errorId: "unknown" | "assignmentInProgress";
 }
 
 export type PostAssignmentResponse = PostAssignmentResult | PostAssignmentError;

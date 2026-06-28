@@ -181,6 +181,8 @@ Non-obvious invariants when analysing the dumps:
 
 Vitest with `mongodb-memory-server`. `src/test/globalSetup.ts` spins up the in-memory Mongo (port `47233`); `src/test/setupTests.ts` initializes dayjs, mocks the logger, stubs the event config to a fixed test time, and exposes the connection string as `globalThis.__MONGO_URI__`. Mock fixtures live in `src/test/mock-data/`; shared fixtures like `testProgramItem` come from `shared/tests/`.
 
+**Prefer controller (integration) tests for cross-cutting behavior.** Whenever a behavior is observable through an endpoint — auth/role gating, request validation, concurrency guards, or the full request→service→DB effect — test it in the feature's `*Controller.test.ts` via `supertest` so it exercises the whole HTTP→service→DB path, rather than calling the service function directly. Reserve narrower unit tests for logic that isn't reachable (or is awkward to drive) through the endpoint.
+
 **Controller (integration) tests** drive the real Express app with `supertest`. The standard shape:
 
 ```ts
@@ -200,4 +202,4 @@ const response = await request(server)
   .set("Authorization", `Bearer ${getJWT(UserGroup.USER, "username")}`);
 ```
 
-Seed DB state with the repository helpers (`saveUser`, etc.) and read it back with `findUser`; unwrap `Result` values via `unsafelyUnwrap` from `src/test/utils/` rather than reintroducing production unwrap helpers. Cast `response.body` to the expected shape and assert directly — do **not** wrap `expect` in conditionals (`vitest/no-conditional-expect` forbids it). Avoid asserting on real email/network side effects; they aren't available in unit runs.
+**Never use Mongoose Models directly in tests** — always seed and read DB state through the feature's repository functions (`saveUser`/`findUser`, `findSettings`, `setAssignmentLastRun`, etc.). When a repository has no helper for the exact state you need, prefer an existing function (e.g. `findSettings` creates a default row) or control inputs another way (e.g. mock the clock with `vi.setSystemTime`) instead of reaching for the Model — this keeps tests decoupled from the schema and exercises the same code paths as production. Unwrap `Result` values via `unsafelyUnwrap` from `src/test/utils/` rather than reintroducing production unwrap helpers. Cast `response.body` to the expected shape and assert directly — do **not** wrap `expect` in conditionals (`vitest/no-conditional-expect` forbids it). Avoid asserting on real email/network side effects; they aren't available in unit runs.

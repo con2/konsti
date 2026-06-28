@@ -2,6 +2,7 @@ import { expect, APIRequestContext, Page } from "@playwright/test";
 import { ApiDevEndpoint, ApiEndpoint } from "shared/constants/apiEndpoints";
 import { PopulateDbOptions } from "shared/test-types/api/testData";
 import { TestSettings } from "shared/test-types/models/testSettings";
+import { PostAssignmentResponse } from "shared/types/api/assignment";
 import { PostLoginRequest, PostLoginResult } from "shared/types/api/login";
 import { PostDirectSignupRequest } from "shared/types/api/myProgramItems";
 import { ProgramItem } from "shared/types/models/programItem";
@@ -157,4 +158,6 @@ export const postAssignment = async (
     headers: { Authorization: `Bearer ${loginResponse.jwt}` },
   });
   expect(response.status()).toBe(200);
+  const body = (await response.json()) as PostAssignmentResponse;
+  expect(body.status).toBe("success");
 };
