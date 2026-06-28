@@ -481,6 +481,13 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
   });
 
   test("should not remove user from group when signing up to signup always open program item", async () => {
+    // Allow signing up to preConventionWeek program item
+    vi.spyOn(config, "event").mockReturnValue({
+      ...config.event(),
+      preConventionWeekSignupStartTime: dayjs(testProgramItem.startTime)
+        .subtract(1, "hour")
+        .toISOString(),
+    });
     vi.setSystemTime(testProgramItem.startTime);
 
     // Pre-convention week tag makes the program item signup always open

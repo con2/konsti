@@ -14,7 +14,7 @@ import {
   testProgramItem2,
 } from "shared/tests/testProgramItem";
 import { config } from "shared/config";
-import { ProgramType } from "shared/types/models/programItem";
+import { ProgramType, Tag } from "shared/types/models/programItem";
 
 const friday = "2023-07-28";
 const saturday = "2023-07-29";
@@ -200,6 +200,47 @@ describe("Two phase direct signup", () => {
     });
     expect(dayjs(signupStartTime).toISOString()).toEqual(
       `${friday}T15:15:00.000Z`,
+    );
+  });
+});
+
+describe("Pre-convention week direct signup", () => {
+  const preConventionWeekSignupStartTime = `${friday}T17:00:00.000Z`;
+
+  beforeEach(() => {
+    vi.spyOn(config, "event").mockReturnValue({
+      ...config.event(),
+      preConventionWeekSignupStartTime,
+    });
+  });
+
+  const preConventionWeekItem = {
+    ...testProgramItem,
+    tags: [Tag.PRE_CONVENTION_WEEK],
+    startTime: `${saturday}T12:00:00.000Z`,
+  };
+
+  test("signup starts at the configured pre-convention week signup start time", () => {
+    const signupStartTime = getDirectSignupStartTime(preConventionWeekItem);
+    expect(signupStartTime.toISOString()).toEqual(
+      preConventionWeekSignupStartTime,
+    );
+  });
+
+  test("signup is not in progress before pre-convention week signup start time", () => {
+    const timeNow = dayjs(preConventionWeekSignupStartTime).subtract(
+      1,
+      "minute",
+    );
+    expect(getDirectSignupInProgress(preConventionWeekItem, timeNow)).toEqual(
+      false,
+    );
+  });
+
+  test("signup is in progress after pre-convention week signup start time", () => {
+    const timeNow = dayjs(preConventionWeekSignupStartTime);
+    expect(getDirectSignupInProgress(preConventionWeekItem, timeNow)).toEqual(
+      true,
     );
   });
 });
