@@ -23,9 +23,9 @@ export const eventConfig: EventConfig = {
   enableGroups: true,
 
   // Remove overlapping lottery signups...
-  enableRemoveOverlapSignups: false,
+  enableRemoveOverlapSignups: true,
   // ... or remove all upcoming lottery signups
-  enableRemoveAllUpcomingSignups: true,
+  enableRemoveAllUpcomingSignups: false,
 
   programGuideUrl: "https://ropecon.fi/opas",
 
