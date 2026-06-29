@@ -16,6 +16,10 @@ interface EmailTemplate {
 
 const SUBJECT = "Konsti-arvonnan tulos / Results for Konsti lottery sign-up";
 const CANCELLED_DELETED_SUBJECT = "Ohjelma peruttu / Program cancelled";
+const SIGNUP_CHANGED_SUBJECT =
+  "Ohjelman ilmoittautuminen muuttunut / Program sign-up method changed";
+const PROGRAM_STARTING_TIME_CHANGED_SUBJECT =
+  "Ohjelman aika muuttunut / Program time changed";
 const SIGNATURE = "Terveisin / Sincerely Konsti";
 
 export function getRejectedEmailTemplate(
@@ -100,6 +104,60 @@ Program ${notification.programItemTitle} has been removed from the program.
 Program was supposed to start at ${programStartTimeEn}.`;
   return {
     subject: CANCELLED_DELETED_SUBJECT,
+    text: `${bodyFi}\n\n${bodyEn}\n\n${SIGNATURE}`,
+  };
+}
+
+export function getProgramItemNoKonstiSignupEmailTemplate(
+  notification: NotificationTask,
+): EmailTemplate {
+  const bodyFi = `Hei ${notification.username}!
+Ohjelma ${notification.programItemTitle} ei enää käytä Konsti-ilmoittautumista.
+Ilmoittautumisesi ohjelmaan on poistettu.`;
+  const bodyEn = `Hi ${notification.username}!
+Program ${notification.programItemTitle} no longer uses Konsti sign-up.
+Your sign-up for the program has been removed.`;
+  return {
+    subject: SIGNUP_CHANGED_SUBJECT,
+    text: `${bodyFi}\n\n${bodyEn}\n\n${SIGNATURE}`,
+  };
+}
+
+export function getProgramItemNoLotteryEmailTemplate(
+  notification: NotificationTask,
+): EmailTemplate {
+  const bodyFi = `Hei ${notification.username}!
+Ohjelma ${notification.programItemTitle} ei enää käytä arvontailmoittautumista.
+Arvontailmoittautumisesi ohjelmaan on poistettu.`;
+  const bodyEn = `Hi ${notification.username}!
+Program ${notification.programItemTitle} no longer uses lottery sign-up.
+Your lottery sign-up for the program has been removed.`;
+  return {
+    subject: SIGNUP_CHANGED_SUBJECT,
+    text: `${bodyFi}\n\n${bodyEn}\n\n${SIGNATURE}`,
+  };
+}
+
+export function getProgramItemTimeChangedEmailTemplate(
+  notification: NotificationTask,
+): EmailTemplate {
+  const programStartTimeFi = getDateAndTimeWithLocale(
+    notification.programItemStartTime,
+    "fi",
+  );
+  const programStartTimeEn = getDateAndTimeWithLocale(
+    notification.programItemStartTime,
+    "en",
+  );
+
+  const bodyFi = `Hei ${notification.username}!
+Ohjelman ${notification.programItemTitle} aikataulu on muuttunut.
+Ohjelma alkaa nyt ${programStartTimeFi}.`;
+  const bodyEn = `Hi ${notification.username}!
+Program ${notification.programItemTitle} start time has changed.
+The program will now start at ${programStartTimeEn}.`;
+  return {
+    subject: PROGRAM_STARTING_TIME_CHANGED_SUBJECT,
     text: `${bodyFi}\n\n${bodyEn}\n\n${SIGNATURE}`,
   };
 }

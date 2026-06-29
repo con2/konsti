@@ -11,6 +11,7 @@ import {
 import { addEventLogItems } from "server/features/user/event-log/eventLogRepository";
 import { EventLogAction } from "shared/types/models/eventLog";
 import { findDirectSignupsByProgramItemIds } from "server/features/direct-signup/directSignupRepository";
+import { queueCancelledDeletedEmails } from "server/features/notifications/queueCancelledDeletedEmails";
 
 type UsersWithMovedLotterySignups = DeleteLotterySignupsParams[];
 
@@ -34,15 +35,26 @@ export const updateMovedProgramItems = async (
 
   logger.info(`Found ${movedProgramItems.length} moved program items`);
 
+  const programItemTitlesById = new Map(
+    currentProgramItems.map((programItem) => [
+      programItem.programItemId,
+      programItem.title,
+    ]),
+  );
+
   // This will remove lottery signups
   const removeMovedLotterySignupsResult =
-    await removeMovedLotterySignupsAndNotify(movedProgramItems);
+    await removeMovedLotterySignupsAndNotify(
+      movedProgramItems,
+      programItemTitlesById,
+    );
   if (!removeMovedLotterySignupsResult.ok) {
     return removeMovedLotterySignupsResult;
   }
   const notifyUsersWithDirectSignupsResult = await notifyUsersWithDirectSignups(
     movedProgramItems,
     removeMovedLotterySignupsResult.value,
+    programItemTitlesById,
   );
   if (!notifyUsersWithDirectSignupsResult.ok) {
     return notifyUsersWithDirectSignupsResult;
@@ -53,6 +65,7 @@ export const updateMovedProgramItems = async (
 
 const removeMovedLotterySignupsAndNotify = async (
   movedProgramItems: readonly ProgramItem[],
+  programItemTitlesById: Map<string, string>,
 ): Promise<Result<UsersWithMovedLotterySignups, MongoDbError>> => {
   logger.info("Remove moved lottery signups from users");
 
@@ -120,12 +133,15 @@ const removeMovedLotterySignupsAndNotify = async (
     return addEventLogItemsResult;
   }
 
+  await queueCancelledDeletedEmails(eventUpdates, programItemTitlesById);
+
   return makeSuccessResult(usersToUpdate);
 };
 
 const notifyUsersWithDirectSignups = async (
   movedProgramItems: ProgramItem[],
   usersWithMovedLotterySignups: UsersWithMovedLotterySignups,
+  programItemTitlesById: Map<string, string>,
 ): Promise<Result<void, MongoDbError>> => {
   const movedProgramItemIds = movedProgramItems.map(
     (programItem) => programItem.programItemId,
@@ -169,6 +185,8 @@ const notifyUsersWithDirectSignups = async (
   if (!addEventLogItemsResult.ok) {
     return addEventLogItemsResult;
   }
+
+  await queueCancelledDeletedEmails(userUpdates, programItemTitlesById);
 
   return makeSuccessResult();
 };

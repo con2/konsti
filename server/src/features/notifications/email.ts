@@ -7,7 +7,6 @@ import {
 import SMTPTransport from "nodemailer/lib/smtp-transport";
 import { config } from "shared/config";
 import { EmailMessage } from "server/features/notifications/senderCommon";
-import { logger } from "server/utils/logger";
 
 export class EmailSender {
   private transport:
@@ -50,7 +49,8 @@ export class EmailSender {
     const info = await transporter.sendMail(message);
     if (process.env.SETTINGS !== "production") {
       this.sentMessages.push(message);
-      logger.info(getTestMessageUrl(info));
+      // eslint-disable-next-line no-console
+      console.log(getTestMessageUrl(info));
     }
   }
 }
