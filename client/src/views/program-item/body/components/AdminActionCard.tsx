@@ -23,7 +23,6 @@ import {
 import { Checkbox } from "client/components/Checkbox";
 import { UncontrolledInput } from "client/components/UncontrolledInput";
 import { selectHiddenProgramItems } from "client/views/admin/adminSlice";
-import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 
 interface Props {
   programItem: ProgramItem;
