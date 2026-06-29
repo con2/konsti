@@ -2,7 +2,10 @@ import { ChangeEvent, ReactElement, useEffect, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import loaderImage from "assets/loading.gif";
-import { ProgramItem } from "shared/types/models/programItem";
+import {
+  ProgramItem,
+  ProgramItemSignupStrategy,
+} from "shared/types/models/programItem";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { Button, ButtonStyle } from "client/components/Button";
 import {
@@ -20,6 +23,7 @@ import {
 import { Checkbox } from "client/components/Checkbox";
 import { UncontrolledInput } from "client/components/UncontrolledInput";
 import { selectHiddenProgramItems } from "client/views/admin/adminSlice";
+import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 
 interface Props {
   programItem: ProgramItem;
@@ -181,18 +185,20 @@ export const AdminActionCard = ({ programItem }: Props): ReactElement => {
             {t("button.removeSignupQuestion")}
           </Button>
         )}
-        {!hasSignupQuestion && !signupQuestionInputVisible && (
-          <Button
-            key="addSignUpQuestionButton"
-            disabled={submitting}
-            buttonStyle={ButtonStyle.PRIMARY}
-            onClick={() =>
-              setSignupQuestionInputVisible(!signupQuestionInputVisible)
-            }
-          >
-            {t("button.addSignupQuestion")}
-          </Button>
-        )}
+        {!hasSignupQuestion &&
+          !signupQuestionInputVisible &&
+          programItem.signupStrategy !== ProgramItemSignupStrategy.LOTTERY && (
+            <Button
+              key="addSignUpQuestionButton"
+              disabled={submitting}
+              buttonStyle={ButtonStyle.PRIMARY}
+              onClick={() =>
+                setSignupQuestionInputVisible(!signupQuestionInputVisible)
+              }
+            >
+              {t("button.addSignupQuestion")}
+            </Button>
+          )}
       </ButtonGroup>
       {signupQuestionInputVisible && (
         <WithRowGap>
