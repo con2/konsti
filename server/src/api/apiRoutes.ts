@@ -246,7 +246,7 @@ apiRoutes.get(
 );
 apiRoutes.get(
   ApiEndpoint.SIGNUP_MESSAGE,
-  requireAuth(UserGroup.HELPER),
+  requireAuth([UserGroup.ADMIN, UserGroup.HELPER]),
   getSignupMessages,
 );
 apiRoutes.get(

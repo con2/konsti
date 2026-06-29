@@ -135,8 +135,10 @@ export const AppRoutes = (): ReactElement => {
           <Route path={AppRoute.ADMIN} element={<AdminView />} />
         )}
         {isAdminOrHelper(userGroup) && (
+          <Route path={AppRoute.HELPER} element={<HelperView />} />
+        )}
+        {loggedIn && (
           <>
-            <Route path={AppRoute.HELPER} element={<HelperView />} />
             <Route
               path={AppRoute.PROGRAM}
               element={<Navigate replace to={ProgramTab.PROGRAM_LIST} />}
@@ -149,6 +151,7 @@ export const AppRoutes = (): ReactElement => {
               path={`${AppRoute.PROGRAM_ITEM}/:programItemId`}
               element={<ProgramItemView />}
             />
+            <Route path={AppRoute.NOTIFICATIONS} element={<EventLog />} />
             <Route path={AppRoute.PROFILE} element={<ProfileView />} />
           </>
         )}
@@ -161,7 +164,12 @@ export const AppRoutes = (): ReactElement => {
           path={`${AppRoute.ABOUT}/*`}
           element={<Tabs tabContents={aboutTabs} />}
         />
-        <Route path={AppRoute.ROOT} element={<div />} />
+        <Route
+          path={AppRoute.ROOT}
+          element={
+            loggedIn ? <Navigate to={ProgramTab.PROGRAM_LIST} /> : <div />
+          }
+        />
         <Route path={AppRoute.ANY} element={<Navigate to={AppRoute.ROOT} />} />
       </Routes>
     );
