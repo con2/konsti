@@ -63,6 +63,7 @@ export const saveProgramItems = async (
   const removeCancelledDeletedProgramItemsFromUsersResult =
     await removeCancelledDeletedProgramItemsFromUsers({
       programItems: updatedProgramItems,
+      currentProgramItems,
       notifyAffectedDirectSignups: deletedProgramItemsResult.value,
       notify: true,
     });

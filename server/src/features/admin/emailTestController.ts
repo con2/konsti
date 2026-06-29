@@ -1,10 +1,11 @@
 import { Request, Response } from "express";
 import { logger } from "server/utils/logger";
-import { EmailNotificationTrigger } from "shared/types/emailNotification";
 import {
   buildEmail,
   EmailMessage,
   getAcceptedEmailTemplate,
+  getProgramItemCancelledEmailTemplate,
+  getProgramItemDeletedEmailTemplate,
   getRejectedEmailTemplate,
 } from "server/features/notifications/senderCommon";
 import { EmailSender } from "server/features/notifications/email";
@@ -14,6 +15,8 @@ import {
   NotificationTaskType,
 } from "server/utils/notificationQueue";
 import { PostEmailTestRequest } from "shared/test-types/api/testData";
+import { EmailNotificationTrigger } from "shared/types/emailNotification";
+import { findProgramItemById } from "server/features/program-item/programItemRepository";
 
 export const postEmailTest = async (
   req: Request<unknown, unknown, PostEmailTestRequest>,
@@ -22,39 +25,78 @@ export const postEmailTest = async (
   const { email, notificationType, programId } = req.body;
 
   try {
-    const emailSender = new EmailSender();
+    const fromAddress = config.server().emailSendFromAddress;
+    const programItemResult = await findProgramItemById(programId);
+    if (!programItemResult.ok) {
+      logger.error(`Failed to found program for programItemId ${programId}`);
+      return res.status(500).json({ message: "Failed to send test email" });
+    }
+
+    const baseMockNotification = {
+      username: "test-user",
+      programItemId: programId,
+      programItemStartTime: programItemResult.value.startTime,
+    };
+    const programTitle = programItemResult.value.title;
 
     let message: EmailMessage;
 
-    const fromAddress = config.server().emailSendFromAddress;
-    if (notificationType === EmailNotificationTrigger.ACCEPTED) {
-      const mockNotification: NotificationTask = {
-        type: NotificationTaskType.SEND_EMAIL_ACCEPTED,
-        username: "test-user",
-        programItemId: programId,
-        programItemStartTime: new Date().toISOString(),
-      };
-      message = buildEmail(
-        getAcceptedEmailTemplate("Test Program Item", mockNotification),
-        email,
-        fromAddress,
-      );
-    } else if (notificationType === EmailNotificationTrigger.REJECTED) {
-      const mockNotification: NotificationTask = {
-        type: NotificationTaskType.SEND_EMAIL_REJECTED,
-        username: "test-user",
-        programItemId: programId,
-        programItemStartTime: new Date().toISOString(),
-      };
-      message = buildEmail(
-        getRejectedEmailTemplate(mockNotification),
-        email,
-        fromAddress,
-      );
-    } else {
-      return res.status(400).json({ message: "Invalid notification type" });
+    switch (notificationType) {
+      case EmailNotificationTrigger.ACCEPTED: {
+        const mockNotification: NotificationTask = {
+          ...baseMockNotification,
+          type: NotificationTaskType.SEND_EMAIL_ACCEPTED,
+        };
+        message = buildEmail(
+          getAcceptedEmailTemplate(programTitle, mockNotification),
+          email,
+          fromAddress,
+        );
+        break;
+      }
+      case EmailNotificationTrigger.REJECTED: {
+        const mockNotification: NotificationTask = {
+          ...baseMockNotification,
+          type: NotificationTaskType.SEND_EMAIL_REJECTED,
+        };
+        message = buildEmail(
+          getRejectedEmailTemplate(mockNotification),
+          email,
+          fromAddress,
+        );
+        break;
+      }
+      case EmailNotificationTrigger.PROGRAM_ITEM_CANCELLED: {
+        const mockNotification: NotificationTask = {
+          ...baseMockNotification,
+          type: NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_CANCELLED,
+          programItemTitle: programTitle,
+        };
+        message = buildEmail(
+          getProgramItemCancelledEmailTemplate(mockNotification),
+          email,
+          fromAddress,
+        );
+        break;
+      }
+      case EmailNotificationTrigger.PROGRAM_ITEM_DELETED: {
+        const mockNotification: NotificationTask = {
+          ...baseMockNotification,
+          type: NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_DELETED,
+          programItemTitle: programTitle,
+        };
+        message = buildEmail(
+          getProgramItemDeletedEmailTemplate(mockNotification),
+          email,
+          fromAddress,
+        );
+        break;
+      }
+      default:
+        return res.status(400).json({ message: "Invalid notification type" });
     }
 
+    const emailSender = new EmailSender();
     await emailSender.sendEmail(message);
 
     logger.info(

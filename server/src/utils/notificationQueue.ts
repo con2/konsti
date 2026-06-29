@@ -11,6 +11,8 @@ import { EmailSender } from "server/features/notifications/email";
 export enum NotificationTaskType {
   SEND_EMAIL_ACCEPTED,
   SEND_EMAIL_REJECTED,
+  SEND_EMAIL_PROGRAM_ITEM_CANCELLED,
+  SEND_EMAIL_PROGRAM_ITEM_DELETED,
 }
 
 export interface NotificationTask {
@@ -18,6 +20,7 @@ export interface NotificationTask {
   username: string;
   programItemId: string;
   programItemStartTime: string;
+  programItemTitle?: string;
 }
 
 export interface NotificationQueueService {

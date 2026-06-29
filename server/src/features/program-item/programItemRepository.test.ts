@@ -1,4 +1,4 @@
-import { expect, test, afterEach, beforeEach } from "vitest";
+import { expect, test, afterEach, beforeEach, vi } from "vitest";
 import mongoose from "mongoose";
 import { faker } from "@faker-js/faker";
 import dayjs from "dayjs";
@@ -34,14 +34,39 @@ import {
 import { EventLogAction } from "shared/types/models/eventLog";
 import { saveTestSettings } from "server/test/test-settings/testSettingsRepository";
 import { config } from "shared/config";
+import {
+  createNotificationQueueService,
+  getGlobalNotificationQueueService,
+  NotificationTaskType,
+} from "server/utils/notificationQueue";
+import { EmailSender } from "server/features/notifications/email";
+
+vi.mock<object>(
+  import("server/utils/notificationQueue"),
+  async (originalImport) => {
+    const actual = await originalImport();
+    return {
+      ...actual,
+      getGlobalNotificationQueueService: vi.fn(),
+    };
+  },
+);
 
 beforeEach(async () => {
   await mongoose.connect(globalThis.__MONGO_URI__, {
     dbName: faker.string.alphanumeric(10),
   });
+
+  const queueService = createNotificationQueueService(
+    new EmailSender(),
+    1,
+    true,
+  );
+  vi.mocked(getGlobalNotificationQueueService).mockReturnValue(queueService);
 });
 
 afterEach(async () => {
+  vi.resetAllMocks();
   await mongoose.disconnect();
 });
 
@@ -114,6 +139,26 @@ test("should remove lottery signups and favorites when program item is deleted a
       }),
     ]),
   );
+
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const queuedNotifications = getGlobalNotificationQueueService()!.getItems();
+  expect(queuedNotifications).toHaveLength(2);
+  expect(queuedNotifications).toEqual(
+    expect.arrayContaining([
+      expect.objectContaining({
+        type: NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_DELETED,
+        username: mockUser.username,
+        programItemId: testProgramItem.programItemId,
+        programItemTitle: testProgramItem.title,
+      }),
+      expect.objectContaining({
+        type: NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_DELETED,
+        username: mockUser.username,
+        programItemId: testProgramItem2.programItemId,
+        programItemTitle: testProgramItem2.title,
+      }),
+    ]),
+  );
 });
 
 test("should remove direct signups when program item is deleted and add notification", async () => {
@@ -141,6 +186,26 @@ test("should remove direct signups when program item is deleted and add notifica
       expect.objectContaining({
         programItemId: testProgramItem2.programItemId,
         action: EventLogAction.PROGRAM_ITEM_DELETED,
+      }),
+    ]),
+  );
+
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const queuedNotifications = getGlobalNotificationQueueService()!.getItems();
+  expect(queuedNotifications).toHaveLength(2);
+  expect(queuedNotifications).toEqual(
+    expect.arrayContaining([
+      expect.objectContaining({
+        type: NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_DELETED,
+        username: mockUser.username,
+        programItemId: testProgramItem.programItemId,
+        programItemTitle: testProgramItem.title,
+      }),
+      expect.objectContaining({
+        type: NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_DELETED,
+        username: mockUser.username,
+        programItemId: testProgramItem2.programItemId,
+        programItemTitle: testProgramItem2.title,
       }),
     ]),
   );
@@ -191,6 +256,26 @@ test("should remove lottery signups but keep favorites when program item is canc
       }),
     ]),
   );
+
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const queuedNotifications = getGlobalNotificationQueueService()!.getItems();
+  expect(queuedNotifications).toHaveLength(2);
+  expect(queuedNotifications).toEqual(
+    expect.arrayContaining([
+      expect.objectContaining({
+        type: NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_CANCELLED,
+        username: mockUser.username,
+        programItemId: testProgramItem.programItemId,
+        programItemTitle: testProgramItem.title,
+      }),
+      expect.objectContaining({
+        type: NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_CANCELLED,
+        username: mockUser.username,
+        programItemId: testProgramItem2.programItemId,
+        programItemTitle: testProgramItem2.title,
+      }),
+    ]),
+  );
 });
 
 test("should remove direct signups when program item is cancelled and add notification", async () => {
@@ -229,6 +314,57 @@ test("should remove direct signups when program item is cancelled and add notifi
       }),
     ]),
   );
+
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const queuedNotifications = getGlobalNotificationQueueService()!.getItems();
+  expect(queuedNotifications).toHaveLength(2);
+  expect(queuedNotifications).toEqual(
+    expect.arrayContaining([
+      expect.objectContaining({
+        type: NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_CANCELLED,
+        username: mockUser.username,
+        programItemId: testProgramItem.programItemId,
+        programItemTitle: testProgramItem.title,
+      }),
+      expect.objectContaining({
+        type: NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_CANCELLED,
+        username: mockUser.username,
+        programItemId: testProgramItem2.programItemId,
+        programItemTitle: testProgramItem2.title,
+      }),
+    ]),
+  );
+});
+
+test("should send email when program item is cancelled", async () => {
+  await saveProgramItems([testProgramItem]);
+  await saveUser(mockUser);
+  await saveDirectSignup(mockPostDirectSignupRequest);
+
+  await saveProgramItems([{ ...testProgramItem, state: State.CANCELLED }]);
+
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const queueService = getGlobalNotificationQueueService()!;
+  queueService.getQueue().resume();
+  await queueService.getQueue().drained();
+
+  expect(queueService.getSender().getSentEmails()).toHaveLength(1);
+});
+
+test("should send email when program item is deleted", async () => {
+  await saveProgramItems([testProgramItem]);
+  await saveUser(mockUser);
+  await saveDirectSignup(mockPostDirectSignupRequest);
+
+  // This will delete the program item
+  await saveProgramItems([]);
+
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const queueService = getGlobalNotificationQueueService()!;
+  queueService.getQueue().resume();
+  await queueService.getQueue().drained();
+
+  expect(queueService.getSender().getSentEmails()).toHaveLength(1);
 });
 
 test("should remove lottery signups but not favorites when program item doesn't use Konsti signup anymore before lottery and add notification", async () => {
@@ -276,6 +412,8 @@ test("should remove lottery signups but not favorites when program item doesn't 
       }),
     ]),
   );
+
+  expect(getGlobalNotificationQueueService()?.getItems()).toHaveLength(0);
 });
 
 test("should keep direct signup when program item programType is changed to non-lottery type and don't add notification", async () => {
@@ -333,6 +471,8 @@ test("should remove direct signups when program item doesn't use Konsti signup a
       }),
     ]),
   );
+
+  expect(getGlobalNotificationQueueService()?.getItems()).toHaveLength(0);
 });
 
 test("should not add duplicate notification when program item is cancelled and user has direct signup, lottery signup and favorite", async () => {
@@ -360,6 +500,8 @@ test("should not add duplicate notification when program item is cancelled and u
       }),
     ]),
   );
+
+  expect(getGlobalNotificationQueueService()?.getItems()).toHaveLength(1);
 });
 
 test("should not add duplicate notification when signupType is changed away from Konsti and user has direct signup, lottery signup and favorite", async () => {
@@ -410,6 +552,7 @@ test("should not add any notification when programType is changed to non-lottery
 
   const user = unsafelyUnwrap(await findUser(mockUser.username));
   expect(user?.eventLogItems).toHaveLength(0);
+  expect(getGlobalNotificationQueueService()?.getItems()).toHaveLength(0);
 });
 
 test("should preserve lottery signup when program item is cancelled after its lottery has run but not add notification because the user didn't get a spot", async () => {
@@ -502,6 +645,8 @@ test("should remove lottery signup but keep favorites when programType is change
   expect(user?.eventLogItems[0].action).toEqual(
     EventLogAction.PROGRAM_ITEM_NO_LOTTERY_ANYMORE,
   );
+
+  expect(getGlobalNotificationQueueService()?.getItems()).toHaveLength(0);
 });
 
 test("should preserve lottery signup when programType is changed to non-lottery type after its lottery has run and not add notification", async () => {

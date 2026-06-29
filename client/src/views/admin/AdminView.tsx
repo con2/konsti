@@ -323,6 +323,26 @@ export const AdminView = (): ReactElement => {
           >
             Send REJECTED Test
           </Button>
+          <Button
+            disabled={submitting || !testEmail || !testProgramId}
+            buttonStyle={ButtonStyle.PRIMARY}
+            onClick={() => {
+              // eslint-disable-next-line @typescript-eslint/no-floating-promises
+              sendTestEmail(EmailNotificationTrigger.PROGRAM_ITEM_CANCELLED);
+            }}
+          >
+            Send CANCELLED Test
+          </Button>
+          <Button
+            disabled={submitting || !testEmail || !testProgramId}
+            buttonStyle={ButtonStyle.PRIMARY}
+            onClick={() => {
+              // eslint-disable-next-line @typescript-eslint/no-floating-promises
+              sendTestEmail(EmailNotificationTrigger.PROGRAM_ITEM_DELETED);
+            }}
+          >
+            Send DELETED Test
+          </Button>
         </ButtonGroup>
       </EmailTestForm>
     </div>

@@ -38,7 +38,7 @@ export interface SettingsPayload {
   signupQuestions: readonly SignupQuestion[];
   signupStrategy: EventSignupStrategy;
   loginProvider: LoginProvider;
-  emailNotificationTrigger: EmailNotificationTrigger;
+  emailNotificationTrigger: readonly EmailNotificationTrigger[];
 }
 
 type GetSettingsResult = SettingsPayload & ApiResult;

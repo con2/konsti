@@ -39,7 +39,7 @@ export const SettingsSchema = z.object({
   assignmentLastRun: z.string(),
   latestServerStartTime: z.string(),
   loginProvider: z.enum(LoginProvider),
-  emailNotificationTrigger: z.enum(EmailNotificationTrigger),
+  emailNotificationTrigger: z.array(z.enum(EmailNotificationTrigger)),
 });
 
 export type Settings = z.infer<typeof SettingsSchema>;

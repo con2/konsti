@@ -31,7 +31,7 @@ export interface ServerConfig {
   logInvalidStartTimes: boolean;
   logMissingScheduleItems: boolean; // If scheduleItems is missing, program item is ignored
   emailNotificationQueueWorkerCount: number;
-  emailNotificationTrigger: EmailNotificationTrigger;
+  emailNotificationTrigger: readonly EmailNotificationTrigger[];
   emailSendFromAddress: string;
   emailSMTPHost: string;
   emailSMTPPort: number;
@@ -76,7 +76,12 @@ const commonConfig = {
   logMissingScheduleItems: false,
 
   // Email notifications
-  emailNotificationTrigger: EmailNotificationTrigger.BOTH,
+  emailNotificationTrigger: [
+    EmailNotificationTrigger.ACCEPTED,
+    EmailNotificationTrigger.REJECTED,
+    EmailNotificationTrigger.PROGRAM_ITEM_CANCELLED,
+    EmailNotificationTrigger.PROGRAM_ITEM_DELETED,
+  ],
   emailNotificationQueueWorkerCount: 1,
   emailSendFromAddress: "Konsti <konsti@kompassi.eu>",
   emailSMTPHost: "smtp.ethereal.email",

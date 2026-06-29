@@ -108,7 +108,10 @@ describe(`POST ${ApiEndpoint.SETTINGS}`, () => {
       assignmentLastRun: "2023-05-07T07:00:00.000Z",
       latestServerStartTime: "2023-05-07T07:00:00.000Z",
       loginProvider: LoginProvider.LOCAL,
-      emailNotificationTrigger: EmailNotificationTrigger.BOTH,
+      emailNotificationTrigger: [
+        EmailNotificationTrigger.ACCEPTED,
+        EmailNotificationTrigger.REJECTED,
+      ],
     };
 
     const fullUpdateResponse = await request(server)
