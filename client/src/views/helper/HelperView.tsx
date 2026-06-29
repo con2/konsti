@@ -1,7 +1,11 @@
 import { ReactElement, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { PasswordManagement } from "client/views/helper/components/PasswordManagement";
-import { loadSettings, loadSignupMessages } from "client/utils/loadData";
+import {
+  loadProgramItems,
+  loadSettings,
+  loadSignupMessages,
+} from "client/utils/loadData";
 import { Button, ButtonStyle } from "client/components/Button";
 import { PrivateSignupMessages } from "client/views/helper/components/PrivateSignupMessages";
 import { ButtonGroup } from "client/components/ButtonGroup";
@@ -30,6 +34,9 @@ export const HelperView = (): ReactElement => {
       await loadSettings();
       // This loads signup question answers
       await loadSignupMessages();
+      // Program items are needed to match signup questions to their program item
+      // These might not be loaded yet if the app is closed and they were skipped on startup
+      await loadProgramItems({ forceUpdate: false });
     };
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     fetchData();
