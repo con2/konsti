@@ -14,7 +14,11 @@ import {
   submitUpdateEventLogItemsAsync,
   submitVerifyKompassiLoginAsync,
 } from "client/views/login/loginSlice";
-import { loadGroupMembers, loadUser } from "client/utils/loadData";
+import {
+  loadGroupMembers,
+  loadProgramItems,
+  loadUser,
+} from "client/utils/loadData";
 import { submitUpdateGroupCodeAsync } from "client/views/group/groupSlice";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import { LoginFormFields } from "client/views/login/components/LocalLoginForm";
@@ -31,7 +35,7 @@ export enum LoginErrorMessage {
 export const submitLogin = (
   loginFormFields: LoginFormFields,
 ): AppThunk<Promise<LoginErrorMessage | undefined>> => {
-  return async (dispatch): Promise<LoginErrorMessage | undefined> => {
+  return async (dispatch, getState): Promise<LoginErrorMessage | undefined> => {
     const loginResponse = await postLogin(loginFormFields);
 
     if (loginResponse.status === "error") {
@@ -77,6 +81,11 @@ export const submitLogin = (
     // TODO: Remove these, backend response should return all required data
     await loadUser();
     await loadGroupMembers();
+    // Program items are skipped on startup when the app is closed and the user
+    // is logged out; load them now if they weren't already loaded
+    if (getState().allProgramItems.programItems.length === 0) {
+      await loadProgramItems({ forceUpdate: false });
+    }
   };
 };
 
@@ -167,7 +176,7 @@ export const submitUpdateEventLogIsSeen = (
 export const submitKompassiLogin = (
   code: string,
 ): AppThunk<Promise<LoginErrorMessage | undefined>> => {
-  return async (dispatch): Promise<LoginErrorMessage | undefined> => {
+  return async (dispatch, getState): Promise<LoginErrorMessage | undefined> => {
     const loginResponse = await postKompassiLoginCallback(code);
 
     if (loginResponse.status === "error") {
@@ -215,6 +224,11 @@ export const submitKompassiLogin = (
     // TODO: Remove these, backend response should return all required data
     await loadUser();
     await loadGroupMembers();
+    // Program items are skipped on startup when the app is closed and the user
+    // is logged out; load them now if they weren't already loaded
+    if (getState().allProgramItems.programItems.length === 0) {
+      await loadProgramItems({ forceUpdate: false });
+    }
   };
 };
 
