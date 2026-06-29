@@ -176,7 +176,7 @@ export const submitUpdateEventLogIsSeen = (
 export const submitKompassiLogin = (
   code: string,
 ): AppThunk<Promise<LoginErrorMessage | undefined>> => {
-  return async (dispatch, getState): Promise<LoginErrorMessage | undefined> => {
+  return async (dispatch): Promise<LoginErrorMessage | undefined> => {
     const loginResponse = await postKompassiLoginCallback(code);
 
     if (loginResponse.status === "error") {
