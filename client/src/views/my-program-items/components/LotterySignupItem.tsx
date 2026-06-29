@@ -10,6 +10,8 @@ import {
 } from "client/views/my-program-items/myProgramItemsThunks";
 import {
   MyProgramButtonContainer,
+  MyProgramCancelSignupFormContainer,
+  MyProgramErrorMessage,
   MyProgramGameTitle,
   MyProgramListItem,
 } from "client/views/my-program-items/components/shared";
@@ -17,7 +19,6 @@ import { TertiaryButton } from "client/components/TertiaryButton";
 import { AppRoute } from "client/app/AppRoutes";
 import { PopularityInfo } from "client/components/PopularityInfo";
 import { CancelSignupForm } from "client/views/program-item/signup/components/CancelSignupForm";
-import { ErrorMessage } from "client/components/ErrorMessage";
 
 interface Props {
   lotterySignup: LotterySignupWithProgramItem;
@@ -91,7 +92,7 @@ export const LotterySignupItem = ({ lotterySignup }: Props): ReactElement => {
         )}
 
         {cancelSignupFormOpen && (
-          <CancelSignupFormContainer>
+          <StyledCancelSignupFormContainer>
             <CancelSignupForm
               onCancelForm={() => {
                 setServerError(null);
@@ -100,7 +101,7 @@ export const LotterySignupItem = ({ lotterySignup }: Props): ReactElement => {
               onConfirmForm={async () => await removeSignup()}
               loading={loading}
             />
-          </CancelSignupFormContainer>
+          </StyledCancelSignupFormContainer>
         )}
       </Grid>
     </MyProgramListItem>
@@ -123,21 +124,16 @@ const StyledButtons = styled(MyProgramButtonContainer)`
   grid-row: 3;
 `;
 
-const StyledErrorMessage = styled(ErrorMessage)`
+const StyledErrorMessage = styled(MyProgramErrorMessage)`
   grid-column: 1;
   grid-row: 2;
-  margin: 4px 0 8px 0;
 `;
 
-const CancelSignupFormContainer = styled.div`
+const StyledCancelSignupFormContainer = styled(
+  MyProgramCancelSignupFormContainer,
+)`
   grid-column: 1;
   grid-row: 3;
-  display: flex;
-
-  @media (max-width: ${(props) => props.theme.breakpointPhone}) {
-    flex-direction: column;
-    margin-left: -16px;
-  }
 `;
 
 const StyledPopularityInfo = styled(PopularityInfo)`
