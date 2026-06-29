@@ -6,6 +6,7 @@ import {
   LoginProvider,
 } from "shared/config/eventConfigTypes";
 import { ProgramType, SignupType } from "shared/types/models/programItem";
+import { SignupQuestionType } from "shared/types/models/settings";
 
 // Event days
 const friday = "2026-07-24";
@@ -70,7 +71,32 @@ export const eventConfig: EventConfig = {
   // Don't import these program items from Kompassi - this is program item id, not schedule item
   ignoreProgramItemsIds: [],
 
-  signupQuestions: [],
+  signupQuestions: [
+    {
+      programItemId: "hamarankavijat-roolipeli", // Hämäränkävijät-roolipeli – 1. pelautus (5 - 8-vuotiaille)
+      questionFi: "Peliin ilmoitetun lapsen ikä",
+      questionEn: "The age of the child signed up for the game",
+      private: true,
+      type: SignupQuestionType.TEXT,
+      selectOptions: [],
+    },
+    {
+      programItemId: "hamarankavijat-roolipeli-2", // Hämäränkävijät-roolipeli – 2. pelautus (5 - 8-vuotiaille)
+      questionFi: "Peliin ilmoitetun lapsen ikä",
+      questionEn: "The age of the child signed up for the game",
+      private: true,
+      type: SignupQuestionType.TEXT,
+      selectOptions: [],
+    },
+    {
+      programItemId: "hamarankavijat-roolipeli-3", // Hämäränkävijät-roolipeli – 3. pelautus (7 - 12-vuotiaille)
+      questionFi: "Peliin ilmoitetun lapsen ikä",
+      questionEn: "The age of the child signed up for the game",
+      private: true,
+      type: SignupQuestionType.TEXT,
+      selectOptions: [],
+    },
+  ],
 
   tournamentSignupQuestion: null,
 
