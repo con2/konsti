@@ -431,7 +431,7 @@ export const translationFI = {
     other: "ohjelmanumerot",
     roundtableDiscussion: "keskustelupiirit",
     fleaMarket: "kirpputoriajat",
-    otherGaming: "pelit",
+    otherGaming: "muu pelaaminen",
   },
   programTypeGenetive: {
     all: "Ohjelmanumeron",

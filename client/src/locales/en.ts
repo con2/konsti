@@ -429,7 +429,7 @@ export const translationEN = {
     other: "program items",
     roundtableDiscussion: "roundtable discussions",
     fleaMarket: "flea market times",
-    otherGaming: "games",
+    otherGaming: "other gaming",
   },
   programTypeGenetive: {
     all: "Program item",
