@@ -9,6 +9,8 @@ import { getJWT } from "server/utils/jwt";
 import { EmailNotificationTrigger } from "shared/types/emailNotification";
 import { PostEmailTestRequest } from "shared/test-types/api/testData";
 import { EmailSender } from "server/features/notifications/email";
+import { saveProgramItems } from "server/features/program-item/programItemRepository";
+import { testProgramItem } from "shared/tests/testProgramItem";
 
 let server: Server;
 
@@ -57,10 +59,12 @@ describe(`POST ${ApiEndpoint.EMAIL_TEST}`, () => {
   });
 
   test("should return 200 and send the email for an accepted notification", async () => {
+    await saveProgramItems([testProgramItem]);
+
     const requestBody: PostEmailTestRequest = {
       email: "test@example.com",
       notificationType: EmailNotificationTrigger.ACCEPTED,
-      programId: "test-program-item",
+      programId: testProgramItem.programItemId,
     };
     const response = await request(server)
       .post(ApiEndpoint.EMAIL_TEST)
@@ -71,10 +75,11 @@ describe(`POST ${ApiEndpoint.EMAIL_TEST}`, () => {
   });
 
   test("should return 200 and send the email for a rejected notification", async () => {
+    await saveProgramItems([testProgramItem]);
     const requestBody: PostEmailTestRequest = {
       email: "test@example.com",
       notificationType: EmailNotificationTrigger.REJECTED,
-      programId: "test-program-item",
+      programId: testProgramItem.programItemId,
     };
     const response = await request(server)
       .post(ApiEndpoint.EMAIL_TEST)

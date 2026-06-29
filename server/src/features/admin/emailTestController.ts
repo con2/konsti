@@ -16,6 +16,7 @@ import {
 } from "server/utils/notificationQueue";
 import { PostEmailTestRequest } from "shared/test-types/api/testData";
 import { EmailNotificationTrigger } from "shared/types/emailNotification";
+import { findProgramItemById } from "server/features/program-item/programItemRepository";
 
 export const postEmailTest = async (
   req: Request<unknown, unknown, PostEmailTestRequest>,
@@ -25,11 +26,18 @@ export const postEmailTest = async (
 
   try {
     const fromAddress = config.server().emailSendFromAddress;
+    const programItemResult = await findProgramItemById(programId);
+    if (!programItemResult.ok) {
+      logger.error(`Failed to found program for programItemId ${programId}`);
+      return res.status(500).json({ message: "Failed to send test email" });
+    }
+
     const baseMockNotification = {
       username: "test-user",
       programItemId: programId,
-      programItemStartTime: new Date().toISOString(),
+      programItemStartTime: programItemResult.value.startTime,
     };
+    const programTitle = programItemResult.value.title;
 
     let message: EmailMessage;
 
@@ -40,7 +48,7 @@ export const postEmailTest = async (
           type: NotificationTaskType.SEND_EMAIL_ACCEPTED,
         };
         message = buildEmail(
-          getAcceptedEmailTemplate("Test Program Item", mockNotification),
+          getAcceptedEmailTemplate(programTitle, mockNotification),
           email,
           fromAddress,
         );
@@ -62,7 +70,7 @@ export const postEmailTest = async (
         const mockNotification: NotificationTask = {
           ...baseMockNotification,
           type: NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_CANCELLED,
-          programItemTitle: "Test Program Item",
+          programItemTitle: programTitle,
         };
         message = buildEmail(
           getProgramItemCancelledEmailTemplate(mockNotification),
@@ -75,7 +83,7 @@ export const postEmailTest = async (
         const mockNotification: NotificationTask = {
           ...baseMockNotification,
           type: NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_DELETED,
-          programItemTitle: "Test Program Item",
+          programItemTitle: programTitle,
         };
         message = buildEmail(
           getProgramItemDeletedEmailTemplate(mockNotification),
