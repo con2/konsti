@@ -224,11 +224,6 @@ export const submitKompassiLogin = (
     // TODO: Remove these, backend response should return all required data
     await loadUser();
     await loadGroupMembers();
-    // Program items are skipped on startup when the app is closed and the user
-    // is logged out; load them now if they weren't already loaded
-    if (getState().allProgramItems.programItems.length === 0) {
-      await loadProgramItems({ forceUpdate: false });
-    }
   };
 };
 
