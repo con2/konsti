@@ -12,11 +12,12 @@ import { CancelSignupForm } from "client/views/program-item/signup/components/Ca
 import { getShortWeekdayAndTime } from "shared/utils/timeFormatter";
 import { TertiaryButton } from "client/components/TertiaryButton";
 import {
-  MyProgramButtonContainer,
+  MyProgramButtonContainerMobile,
+  MyProgramCancelSignupFormContainer,
+  MyProgramErrorMessage,
   MyProgramGameTitle,
   MyProgramListItem,
 } from "client/views/my-program-items/components/shared";
-import { ErrorMessage } from "client/components/ErrorMessage";
 import { InfoText, InfoTextVariant } from "client/components/InfoText";
 import { AppRoute } from "client/app/AppRoutes";
 import { DirectSignupWithProgramItem } from "client/views/my-program-items/myProgramItemsSlice";
@@ -96,14 +97,14 @@ export const DirectSignupItem = ({
       )}
 
       {serverError && (
-        <StyledErrorMessage
+        <MyProgramErrorMessage
           message={t(serverError)}
           closeError={() => setServerError(null)}
         />
       )}
 
       {!cancelSignupFormOpen && (
-        <StyledButtonContainer>
+        <MyProgramButtonContainerMobile>
           <TertiaryButton
             icon="circle-arrow-right"
             onClick={async () => {
@@ -130,11 +131,11 @@ export const DirectSignupItem = ({
           >
             {t("button.cancelSignup")}
           </TertiaryButton>
-        </StyledButtonContainer>
+        </MyProgramButtonContainerMobile>
       )}
 
       {cancelSignupFormOpen && (
-        <CancelSignupFormContainer>
+        <MyProgramCancelSignupFormContainer>
           <CancelSignupForm
             onCancelForm={() => {
               setServerError(null);
@@ -143,7 +144,7 @@ export const DirectSignupItem = ({
             onConfirmForm={async () => await removeSignup()}
             loading={loading}
           />
-        </CancelSignupFormContainer>
+        </MyProgramCancelSignupFormContainer>
       )}
     </MyProgramListItem>
   );
@@ -151,24 +152,4 @@ export const DirectSignupItem = ({
 
 const StyledInfoText = styled(InfoText)`
   margin: 4px 0 8px 0;
-`;
-
-const StyledErrorMessage = styled(ErrorMessage)`
-  margin: 4px 0 8px 0;
-`;
-
-const CancelSignupFormContainer = styled.div`
-  display: flex;
-
-  @media (max-width: ${(props) => props.theme.breakpointPhone}) {
-    flex-direction: column;
-    margin-left: -16px;
-  }
-`;
-
-const StyledButtonContainer = styled(MyProgramButtonContainer)`
-  @media (max-width: ${(props) => props.theme.breakpointPhone}) {
-    flex-direction: column;
-    align-items: flex-start;
-  }
 `;

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { ErrorMessage } from "client/components/ErrorMessage";
 import { TertiaryButton } from "client/components/TertiaryButton";
 
 export const MyProgramListItem = styled.li`
@@ -32,6 +33,26 @@ export const MyProgramButtonContainer = styled.div`
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
+`;
+
+export const MyProgramButtonContainerMobile = styled(MyProgramButtonContainer)`
+  @media (max-width: ${(props) => props.theme.breakpointPhone}) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+`;
+
+export const MyProgramErrorMessage = styled(ErrorMessage)`
+  margin: 4px 0 8px 0;
+`;
+
+export const MyProgramCancelSignupFormContainer = styled.div`
+  display: flex;
+
+  @media (max-width: ${(props) => props.theme.breakpointPhone}) {
+    flex-direction: column;
+    margin-left: -16px;
+  }
 `;
 
 export const MyProgramHeader = styled.h1`
