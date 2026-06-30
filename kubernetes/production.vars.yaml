@@ -7,6 +7,13 @@ ingress_public_hostnames_http:
 ingress_public_hostnames_https:
   - https://ropekonsti.fi
 
+# www is not a routable host: the from-to-www-redirect annotation 308-redirects
+# www.ropekonsti.fi -> ropekonsti.fi. It must still be a cert SAN so that redirect
+# is served over a valid certificate (HTTPS -> HTTPS requires both FQDNs on the cert)
+ingress_cert_hostnames:
+  - ropekonsti.fi
+  - www.ropekonsti.fi
+
 konsti_secret_managed: false
 konsti_frontend_env: prod
 konsti_settings: production
