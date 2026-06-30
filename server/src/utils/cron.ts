@@ -170,7 +170,7 @@ export const autoAssignAttendees = async (): Promise<void> => {
   logger.info("Check if assignment already running...");
   const lockResult = await acquireAssignmentLock();
   if (!lockResult.ok) {
-    if (lockResult.error === MongoDbError.SETTINGS_NOT_FOUND) {
+    if (lockResult.error === MongoDbError.ASSIGNMENT_LOCK_HELD) {
       logger.error(new Error("Auto assignment already running, stop"));
       return;
     }

@@ -305,7 +305,15 @@ export const acquireAssignmentLock = async (): Promise<
       },
     ).lean();
     if (!response) {
-      return makeErrorResult(MongoDbError.SETTINGS_NOT_FOUND);
+      // No document matched the update: either another run holds the lock, or there is no
+      // settings row at all — distinguish the two so the caller can treat a missing row as a
+      // genuine error rather than as "already running"
+      const settingsExists = await SettingsModel.exists({});
+      return makeErrorResult(
+        settingsExists
+          ? MongoDbError.ASSIGNMENT_LOCK_HELD
+          : MongoDbError.SETTINGS_NOT_FOUND,
+      );
     }
     logger.info(`MongoDB: Assignment lock acquired at ${lockStartTime}`);
     return makeSuccessResult(lockStartTime);
