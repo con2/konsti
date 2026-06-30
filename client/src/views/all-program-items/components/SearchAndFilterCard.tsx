@@ -3,7 +3,12 @@ import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { ProgramTypeSelection } from "client/components/ProgramTypeSelection";
 import { useAppSelector } from "client/utils/hooks";
-import { ProgramType, Tag, Language } from "shared/types/models/programItem";
+import {
+  ProgramType,
+  Tag,
+  Language,
+  AgeGroup,
+} from "shared/types/models/programItem";
 import { Dropdown } from "client/components/Dropdown";
 import { SessionStorageValue } from "client/utils/sessionStorage";
 import { ControlledInput } from "client/components/ControlledInput";
@@ -13,6 +18,7 @@ import { config } from "shared/config";
 import { RaisedCard } from "client/components/RaisedCard";
 import { RadioButtonGroup } from "client/components/RadioButtonGroup";
 import {
+  selectAgeGroups,
   selectLanguages,
   selectTags,
 } from "client/views/all-program-items/allProgramItemsSlice";
@@ -25,8 +31,8 @@ export enum StartingTimeOption {
 }
 
 interface Props {
-  selectedTag: Tag | Language | "";
-  setSelectedTag: Dispatch<SetStateAction<Tag | Language | "">>;
+  selectedTag: Tag | Language | AgeGroup | "";
+  setSelectedTag: Dispatch<SetStateAction<Tag | Language | AgeGroup | "">>;
   selectedStartingTime: StartingTimeOption;
   setSelectedStartingTime: Dispatch<SetStateAction<StartingTimeOption>>;
   searchTerm: string;
@@ -50,6 +56,7 @@ export const SearchAndFilterCard = ({
     (state) => state.admin.activeProgramType,
   );
   const tagFilters = useAppSelector(selectTags);
+  const ageGroupFilters = useAppSelector(selectAgeGroups);
   const languageFilters = useAppSelector(selectLanguages);
 
   const tagOptions = [
@@ -66,6 +73,10 @@ export const SearchAndFilterCard = ({
     tagFilters.map((filter) => ({
       value: filter,
       title: t(`tags.${filter}`),
+    })),
+    ageGroupFilters.map((filter) => ({
+      value: filter,
+      title: t(`ageGroup.${filter}`),
     })),
   ].flat();
 
@@ -84,7 +95,7 @@ export const SearchAndFilterCard = ({
           <Dropdown
             id="tagSelection"
             onChange={(event: ChangeEvent<HTMLSelectElement>) => {
-              const tag = event.target.value as Tag | Language;
+              const tag = event.target.value as Tag | Language | AgeGroup;
               setSelectedTag(tag);
               sessionStorage.setItem(
                 SessionStorageValue.ALL_PROGRAM_ITEMS_TAG,

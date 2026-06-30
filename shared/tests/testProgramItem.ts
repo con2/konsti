@@ -6,6 +6,7 @@ import {
   Language,
   ProgramType,
   Tag,
+  AgeGroup,
   SignupType,
   Popularity,
   State,
@@ -19,7 +20,8 @@ export const testProgramItem: ProgramItem = {
   location: "Test location",
   startTime: "2019-07-26T14:00:00.000Z",
   mins: 240,
-  tags: [Tag.BEGINNER_FRIENDLY, Tag.SMALL_KIDS],
+  tags: [Tag.BEGINNER_FRIENDLY],
+  ageGroups: [AgeGroup.SMALL_KIDS],
   genres: [
     Genre.FANTASY,
     Genre.WAR,
@@ -62,7 +64,8 @@ export const testProgramItem2: ProgramItem = {
   location: "Test location",
   startTime: "2019-07-26T15:00:00.000Z",
   mins: 240,
-  tags: [Tag.BEGINNER_FRIENDLY, Tag.SMALL_KIDS],
+  tags: [Tag.BEGINNER_FRIENDLY],
+  ageGroups: [AgeGroup.SMALL_KIDS],
   genres: [
     Genre.FANTASY,
     Genre.WAR,

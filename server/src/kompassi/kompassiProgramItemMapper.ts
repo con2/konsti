@@ -7,6 +7,7 @@ import {
   Language,
   ProgramType,
   Tag,
+  AgeGroup,
   SignupType,
   Popularity,
   State,
@@ -54,6 +55,7 @@ export const kompassiProgramItemMapper = (
             "minute",
           ),
         tags: mapTags(programItem),
+        ageGroups: mapAgeGroups(programItem),
         genres: [],
         styles: mapGamestyles(programItem.cachedDimensions["game-style"]),
         languages: mapLanguages(programItem),
@@ -148,42 +150,6 @@ const mapTags = (kompassiProgramItem: KompassiProgramItem): Tag[] => {
     }
   });
 
-  const ageGroups = kompassiProgramItem.cachedDimensions["age-group"];
-
-  const ageGroupTags: Tag[] = ageGroups.flatMap((ageGroup) => {
-    switch (ageGroup) {
-      case KompassiAgeGroup.EVERYONE:
-        return Tag.EVERYONE;
-
-      case KompassiAgeGroup.ADULTS:
-        return Tag.ADULTS;
-
-      case KompassiAgeGroup.TEENS:
-        return Tag.TEENS;
-
-      case KompassiAgeGroup.ONLY_ADULTS:
-        return Tag.ONLY_ADULTS;
-
-      case KompassiAgeGroup.KIDS:
-        return Tag.KIDS;
-
-      case KompassiAgeGroup.SMALL_KIDS:
-        return Tag.SMALL_KIDS;
-
-      case KompassiAgeGroup.ADULTS_AND_YOUTH:
-        return Tag.ADULTS_AND_YOUTH;
-
-      case KompassiAgeGroup.YOUNG_ADULTS:
-        return Tag.YOUNG_ADULTS;
-
-      case KompassiAgeGroup.FAMILIES:
-        return Tag.FAMILIES;
-
-      default:
-        return exhaustiveSwitchGuard(ageGroup);
-    }
-  });
-
   const otherTags: Tag[] = [];
 
   if (kompassiProgramItem.cachedAnnotations["konsti:entryConditionK16"]) {
@@ -198,7 +164,50 @@ const mapTags = (kompassiProgramItem: KompassiProgramItem): Tag[] => {
     otherTags.push(Tag.USES_GEN_AI);
   }
 
-  return [...groupingTags, ...ageGroupTags, ...otherTags];
+  return [...groupingTags, ...otherTags];
+};
+
+const mapAgeGroups = (kompassiProgramItem: KompassiProgramItem): AgeGroup[] => {
+  const customDetails = customDetailsProgramItems[kompassiProgramItem.slug];
+  if (customDetails?.ageGroups) {
+    return customDetails.ageGroups;
+  }
+
+  const ageGroups = kompassiProgramItem.cachedDimensions["age-group"];
+
+  return ageGroups.map((ageGroup) => {
+    switch (ageGroup) {
+      case KompassiAgeGroup.EVERYONE:
+        return AgeGroup.EVERYONE;
+
+      case KompassiAgeGroup.ADULTS:
+        return AgeGroup.ADULTS;
+
+      case KompassiAgeGroup.TEENS:
+        return AgeGroup.TEENS;
+
+      case KompassiAgeGroup.ONLY_ADULTS:
+        return AgeGroup.ONLY_ADULTS;
+
+      case KompassiAgeGroup.KIDS:
+        return AgeGroup.KIDS;
+
+      case KompassiAgeGroup.SMALL_KIDS:
+        return AgeGroup.SMALL_KIDS;
+
+      case KompassiAgeGroup.ADULTS_AND_YOUTH:
+        return AgeGroup.ADULTS_AND_YOUTH;
+
+      case KompassiAgeGroup.YOUNG_ADULTS:
+        return AgeGroup.YOUNG_ADULTS;
+
+      case KompassiAgeGroup.FAMILIES:
+        return AgeGroup.FAMILIES;
+
+      default:
+        return exhaustiveSwitchGuard(ageGroup);
+    }
+  });
 };
 
 const mapGamestyles = (gamestyles: KompassiGamestyle[]): Gamestyle[] => {

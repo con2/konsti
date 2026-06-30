@@ -51,6 +51,15 @@ export const ProgramItemDetails = ({ programItem }: Props): ReactElement => {
         </TwoColumnRow>
       )}
 
+      {programItem.ageGroups.length > 0 && (
+        <TwoColumnRow>
+          <DetailTitle>{t("programItemInfo.ageGroups")}</DetailTitle>
+          {programItem.ageGroups
+            .map((ageGroup) => t(`ageGroup.${ageGroup}`))
+            .join(", ")}
+        </TwoColumnRow>
+      )}
+
       {programItem.genres.length > 0 && (
         <TwoColumnRow>
           <DetailTitle>{t("programItemInfo.genres")}</DetailTitle>

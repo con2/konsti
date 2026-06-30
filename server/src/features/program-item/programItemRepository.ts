@@ -89,6 +89,7 @@ export const saveProgramItems = async (
       startTime: programItem.startTime,
       mins: programItem.mins,
       tags: programItem.tags,
+      ageGroups: programItem.ageGroups,
       genres: programItem.genres,
       styles: programItem.styles,
       languages: programItem.languages,
