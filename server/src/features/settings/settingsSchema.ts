@@ -58,10 +58,17 @@ const settingsSchema = new mongoose.Schema(
     assignmentLastRun: {
       type: Date,
       get: (value: Date) => new Date(value),
-      // Epoch (not "now") so a fresh settings row means "no assignment has run yet" and
-      // the assignment lock starts free — otherwise a manual run right after a fresh DB
-      // (e.g. e2e populate, or admin backup at event start) is wrongly blocked for 30s
+      // Epoch (not "now") so a fresh settings row means "no assignment has run yet" — set to
+      // the run time on each successful assignment
       default: () => new Date(0),
+    },
+    assignmentInProgressStartTime: {
+      type: Date,
+      // The assignment-in-progress lock: null means free, otherwise the time the running
+      // assignment acquired it. Held for the whole run and reset to null on completion; a held
+      // lock older than the stale timeout is treated as abandoned (a crashed run) so a crash
+      // can't deadlock assignments. Fresh row starts free (null)
+      default: null,
     },
     latestServerStartTime: {
       type: Date,
