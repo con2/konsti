@@ -17,6 +17,8 @@ import {
   setLatestServerStartTime,
 } from "server/utils/cron";
 import {
+  ASSIGNMENT_LOCK_STALE_TIMEOUT_MINUTES,
+  acquireAssignmentLock,
   createSettings,
   findSettings,
   saveSettings,
@@ -186,10 +188,8 @@ describe("Assignment cronjob", () => {
   });
 
   test("should not run assignment if assignment is already running", async () => {
-    const oldTime = dayjs(timeNow)
-      .subtract(previousJobRunning, "seconds")
-      .toISOString();
-    await saveSettings({ assignmentLastRun: oldTime });
+    // Another run holds the in-progress lock
+    await acquireAssignmentLock();
 
     await autoAssignAttendees();
 
@@ -199,9 +199,27 @@ describe("Assignment cronjob", () => {
     expect(infoLoggerSpy).not.toHaveBeenCalledWith(
       "***** Automatic attendee assignment completed",
     );
+  });
 
-    const settings = unsafelyUnwrap(await findSettings());
-    expect(settings.assignmentLastRun).toEqual(oldTime);
+  test("should reclaim a stale in-progress lock left by a crashed run", async () => {
+    // A previous run acquired the lock but never released it (the process crashed). The lock is
+    // older than the stale timeout, so the next run can reclaim it
+    vi.setSystemTime(
+      dayjs(timeNow)
+        .subtract(ASSIGNMENT_LOCK_STALE_TIMEOUT_MINUTES + 1, "minutes")
+        .toDate(),
+    );
+    await acquireAssignmentLock();
+    vi.setSystemTime(timeNow);
+
+    await autoAssignAttendees();
+
+    expect(infoLoggerSpy).toHaveBeenCalledWith(
+      "Auto assignment not running, continue",
+    );
+    expect(infoLoggerSpy).toHaveBeenCalledWith(
+      "***** Automatic attendee assignment completed",
+    );
   });
 
   test("if cronjob is run twice, should run assignment only once", async () => {

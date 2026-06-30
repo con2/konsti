@@ -13,8 +13,8 @@ import {
 import { UserGroup } from "shared/types/models/user";
 import { getJWT } from "server/utils/jwt";
 import {
+  acquireAssignmentLock,
   findSettings,
-  saveSettings,
 } from "server/features/settings/settingsRepository";
 import {
   createNotificationQueueService,
@@ -84,8 +84,9 @@ describe(`POST ${ApiEndpoint.ASSIGNMENT}`, () => {
   });
 
   test("should not start a manual assignment while another assignment is in progress", async () => {
-    // An assignment ran just now -> within the lock window
-    await saveSettings({ assignmentLastRun: dayjs().toISOString() });
+    // Another assignment is running -> the in-progress lock is held
+    await findSettings();
+    await acquireAssignmentLock();
 
     const data: PostAssignmentRequest = {
       assignmentTime: dayjs().toISOString(),
@@ -117,5 +118,29 @@ describe(`POST ${ApiEndpoint.ASSIGNMENT}`, () => {
     expect(response.status).toEqual(200);
     const body = response.body as PostAssignmentResponse;
     expect(body.status).toEqual("success");
+  });
+
+  test("should release the lock after a run so a subsequent run is not blocked", async () => {
+    await findSettings();
+
+    const data: PostAssignmentRequest = {
+      assignmentTime: dayjs().toISOString(),
+    };
+    const firstResponse = await request(server)
+      .post(ApiEndpoint.ASSIGNMENT)
+      .send(data)
+      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+    expect((firstResponse.body as PostAssignmentResponse).status).toEqual(
+      "success",
+    );
+
+    // The first run released the lock on completion, so an immediate second run is not blocked
+    const secondResponse = await request(server)
+      .post(ApiEndpoint.ASSIGNMENT)
+      .send(data)
+      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+    expect((secondResponse.body as PostAssignmentResponse).status).toEqual(
+      "success",
+    );
   });
 });

@@ -273,24 +273,90 @@ export const setProgramUpdateLastRun = async (
   }
 };
 
-export const setAssignmentLastRun = async (
-  assignmentNextRun: string,
-): Promise<Result<void, MongoDbError>> => {
+// A held assignment lock older than this is treated as abandoned (a run that crashed without
+// releasing it) and can be reclaimed, so a crash can't deadlock assignments forever. Keep it
+// comfortably longer than any real assignment run so a slow run isn't reclaimed mid-flight
+export const ASSIGNMENT_LOCK_STALE_TIMEOUT_MINUTES = 5;
+
+// Acquire the assignment-in-progress lock if it is free or stale. Returns the lock token (the
+// acquisition time) to pass to releaseAssignmentLock, or SETTINGS_NOT_FOUND if another run
+// currently holds it
+export const acquireAssignmentLock = async (): Promise<
+  Result<string, MongoDbError>
+> => {
+  const lockStartTime = dayjs().toISOString();
   try {
+    // Acquire if the lock is free (null) or stale (acquired longer ago than the timeout)
     const response = await SettingsModel.findOneAndUpdate(
       {
-        assignmentLastRun: {
-          $lt: dayjs(assignmentNextRun).subtract(30, "seconds").toDate(),
-        },
+        $or: [
+          { assignmentInProgressStartTime: null },
+          {
+            assignmentInProgressStartTime: {
+              $lt: dayjs(lockStartTime)
+                .subtract(ASSIGNMENT_LOCK_STALE_TIMEOUT_MINUTES, "minutes")
+                .toDate(),
+            },
+          },
+        ],
       },
       {
-        assignmentLastRun: assignmentNextRun,
+        assignmentInProgressStartTime: lockStartTime,
       },
     ).lean();
     if (!response) {
       return makeErrorResult(MongoDbError.SETTINGS_NOT_FOUND);
     }
-    logger.info(`MongoDB: Assignment last run set: ${assignmentNextRun}`);
+    logger.info(`MongoDB: Assignment lock acquired at ${lockStartTime}`);
+    return makeSuccessResult(lockStartTime);
+  } catch (error) {
+    logger.error(
+      new Error("MongoDB: Error acquiring assignment lock", { cause: error }),
+    );
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+  }
+};
+
+// Release the assignment-in-progress lock, but only if we still hold it (the token matches) —
+// if the lock was reclaimed as stale and re-acquired by another run, this must not clobber it
+export const releaseAssignmentLock = async (
+  lockToken: string,
+): Promise<Result<void, MongoDbError>> => {
+  try {
+    await SettingsModel.findOneAndUpdate(
+      {
+        assignmentInProgressStartTime: dayjs(lockToken).toDate(),
+      },
+      {
+        assignmentInProgressStartTime: null,
+      },
+    ).lean();
+    logger.info("MongoDB: Assignment lock released");
+    return makeSuccessResult();
+  } catch (error) {
+    logger.error(
+      new Error("MongoDB: Error releasing assignment lock", { cause: error }),
+    );
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+  }
+};
+
+// Record the time of the last completed assignment. This is informational only — the run lock
+// is acquireAssignmentLock — so set it unconditionally to always reflect the latest run
+export const setAssignmentLastRun = async (
+  assignmentLastRun: string,
+): Promise<Result<void, MongoDbError>> => {
+  try {
+    const response = await SettingsModel.findOneAndUpdate(
+      {},
+      {
+        assignmentLastRun,
+      },
+    ).lean();
+    if (!response) {
+      return makeErrorResult(MongoDbError.SETTINGS_NOT_FOUND);
+    }
+    logger.info(`MongoDB: Assignment last run set: ${assignmentLastRun}`);
     return makeSuccessResult();
   } catch (error) {
     logger.error(

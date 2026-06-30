@@ -6,7 +6,9 @@ import { runAssignment } from "server/features/assignment/run-assignment/runAssi
 import { Result, makeSuccessResult } from "shared/utils/result";
 import { updateProgramItems } from "server/features/program-item/programItemService";
 import {
+  acquireAssignmentLock,
   isLatestStartedServerInstance,
+  releaseAssignmentLock,
   saveSettings,
   setAssignmentLastRun,
   setProgramUpdateLastRun,
@@ -166,35 +168,41 @@ export const autoAssignAttendees = async (): Promise<void> => {
   }
 
   logger.info("Check if assignment already running...");
-  const assignmentLastRunResult = await setAssignmentLastRun(
-    dayjs().toISOString(),
-  );
-  if (!assignmentLastRunResult.ok) {
-    if (assignmentLastRunResult.error === MongoDbError.SETTINGS_NOT_FOUND) {
+  const lockResult = await acquireAssignmentLock();
+  if (!lockResult.ok) {
+    if (lockResult.error === MongoDbError.SETTINGS_NOT_FOUND) {
       logger.error(new Error("Auto assignment already running, stop"));
       return;
     }
     logger.error(
       new Error(
-        `***** Auto assignment failed trying to set last run time: ${assignmentLastRunResult.error}`,
+        `***** Auto assignment failed trying to acquire assignment lock: ${lockResult.error}`,
       ),
     );
     return;
   }
+  const lockToken = lockResult.value;
 
   logger.info("Auto assignment not running, continue");
 
-  const runAssignmentResult = await runAssignment({
-    assignmentAlgorithm: config.event().assignmentAlgorithm,
-    assignmentTime: null,
-    assignmentDelay: autoAssignDelay,
-  });
-  if (!runAssignmentResult.ok) {
-    logger.error(new Error("***** Auto assignment failed"));
-    return;
-  }
+  try {
+    const runAssignmentResult = await runAssignment({
+      assignmentAlgorithm: config.event().assignmentAlgorithm,
+      assignmentTime: null,
+      assignmentDelay: autoAssignDelay,
+    });
+    if (!runAssignmentResult.ok) {
+      logger.error(new Error("***** Auto assignment failed"));
+      return;
+    }
 
-  logger.info("***** Automatic attendee assignment completed");
+    // Record the last successful run time
+    await setAssignmentLastRun(dayjs().toISOString());
+
+    logger.info("***** Automatic attendee assignment completed");
+  } finally {
+    await releaseAssignmentLock(lockToken);
+  }
 };
 
 const protectCallback = (job: Cron): void => {

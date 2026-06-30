@@ -3,7 +3,9 @@ import { runAssignment } from "server/features/assignment/run-assignment/runAssi
 import { PostAssignmentResponse } from "shared/types/api/assignment";
 import { config } from "shared/config";
 import {
+  acquireAssignmentLock,
   findSettings,
+  releaseAssignmentLock,
   setAssignmentLastRun,
 } from "server/features/settings/settingsRepository";
 import { MongoDbError } from "shared/types/api/errors";
@@ -24,13 +26,13 @@ export const storeAssignment = async (
     };
   }
 
-  // Acquire the same lock the auto-assign cron uses so a manual run can't overlap a
-  // cron run (or another manual run) and corrupt results via the non-atomic save
-  const assignmentLastRunResult = await setAssignmentLastRun(
-    dayjs().toISOString(),
-  );
-  if (!assignmentLastRunResult.ok) {
-    if (assignmentLastRunResult.error === MongoDbError.SETTINGS_NOT_FOUND) {
+  // Hold the same in-progress lock the auto-assign cron uses for the whole run so a manual run
+  // can't overlap a cron run (or another manual run) and corrupt results via the non-atomic
+  // save. Released in the finally below, so a failed run is immediately retryable and a crash
+  // can't hold the lock past the stale timeout
+  const lockResult = await acquireAssignmentLock();
+  if (!lockResult.ok) {
+    if (lockResult.error === MongoDbError.SETTINGS_NOT_FOUND) {
       logger.warn("Assignment already running, skip manual assignment");
       return {
         message: "Assignment already running",
@@ -44,14 +46,25 @@ export const storeAssignment = async (
       errorId: "unknown",
     };
   }
+  const lockToken = lockResult.value;
 
-  const assignResultsResult = await runAssignment({
-    assignmentAlgorithm: config.event().assignmentAlgorithm,
-    assignmentTime,
-  });
+  try {
+    const assignResultsResult = await runAssignment({
+      assignmentAlgorithm: config.event().assignmentAlgorithm,
+      assignmentTime,
+    });
 
-  if (assignResultsResult.ok) {
+    if (!assignResultsResult.ok) {
+      return {
+        message: "Assignment failed",
+        status: "error",
+        errorId: "unknown",
+      };
+    }
     const assignResults = assignResultsResult.value;
+
+    // Record the last successful run time
+    await setAssignmentLastRun(dayjs().toISOString());
 
     return {
       message: "Assignment success",
@@ -60,11 +73,7 @@ export const storeAssignment = async (
       resultMessage: assignResults.message,
       assignmentTime,
     };
+  } finally {
+    await releaseAssignmentLock(lockToken);
   }
-
-  return {
-    message: "Assignment failed",
-    status: "error",
-    errorId: "unknown",
-  };
 };
