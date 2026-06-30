@@ -48,18 +48,21 @@ export enum Tag {
   THEME = "theme",
   LGBT = "lgbt",
   GUEST_OF_HONOR = "guestOfHonor",
+  K16 = "k16",
+  PRE_CONVENTION_WEEK = "preConventionWeek",
+  USES_GEN_AI = "usesGenAi",
+}
+
+export enum AgeGroup {
   EVERYONE = "everyone",
   ADULTS = "adults",
   TEENS = "teens",
   ONLY_ADULTS = "onlyAdults",
   KIDS = "kids",
   SMALL_KIDS = "smallKids",
-  K16 = "k16",
   ADULTS_AND_YOUTH = "adultsAndYouth",
   YOUNG_ADULTS = "youngAdults",
   FAMILIES = "families",
-  PRE_CONVENTION_WEEK = "preConventionWeek",
-  USES_GEN_AI = "usesGenAi",
 }
 
 export enum InclusivityValue {
@@ -119,6 +122,7 @@ export const ProgramItemSchema = z.object({
   startTime: z.string(),
   mins: z.number(),
   tags: z.array(z.enum(Tag)),
+  ageGroups: z.array(z.enum(AgeGroup)),
   genres: z.array(z.enum(Genre)),
   styles: z.array(z.enum(Gamestyle)),
   languages: z.array(z.enum(Language)),

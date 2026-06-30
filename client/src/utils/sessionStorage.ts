@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { StartingTimeOption } from "client/views/all-program-items/components/SearchAndFilterCard";
-import { Language, Tag } from "shared/types/models/programItem";
+import { AgeGroup, Language, Tag } from "shared/types/models/programItem";
 import { StringToJsonSchema } from "client/utils/zodUtils";
 
 export enum SessionStorageValue {
@@ -30,9 +30,9 @@ export const getSavedSearchTerm = (): string => {
   return result.data;
 };
 
-const SavedTagSchema = z.enum(Tag).or(z.enum(Language));
+const SavedTagSchema = z.enum(Tag).or(z.enum(Language)).or(z.enum(AgeGroup));
 
-export const getSavedTag = (): Tag | Language | "" => {
+export const getSavedTag = (): Tag | Language | AgeGroup | "" => {
   const serializedValue = sessionStorage.getItem(
     SessionStorageValue.ALL_PROGRAM_ITEMS_TAG,
   );

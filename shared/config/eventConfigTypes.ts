@@ -1,5 +1,6 @@
 import { Dayjs } from "dayjs";
 import {
+  AgeGroup,
   Language,
   ProgramType,
   SignupType,
@@ -87,6 +88,7 @@ export interface EventConfig {
     string,
     | {
         tags?: Tag[];
+        ageGroups?: AgeGroup[];
         languages?: Language[];
       }
     | undefined

@@ -5,7 +5,12 @@ import {
   ProgramItemDirectSignups,
   RootState,
 } from "client/types/reduxTypes";
-import { Language, ProgramItem, Tag } from "shared/types/models/programItem";
+import {
+  AgeGroup,
+  Language,
+  ProgramItem,
+  Tag,
+} from "shared/types/models/programItem";
 
 interface DirectSignupUpdate {
   programItemId: string;
@@ -85,19 +90,7 @@ export const selectTags = createSelector(
       Tag.USES_GEN_AI,
     ]);
 
-    const tags = unique([
-      Tag.BEGINNER_FRIENDLY,
-      Tag.EVERYONE,
-      Tag.FAMILIES,
-      Tag.SMALL_KIDS,
-      Tag.KIDS,
-      Tag.TEENS,
-      Tag.YOUNG_ADULTS,
-      Tag.ADULTS_AND_YOUTH,
-      Tag.ADULTS,
-      Tag.ONLY_ADULTS,
-      ...Object.values(Tag),
-    ]);
+    const tags = unique([Tag.BEGINNER_FRIENDLY, ...Object.values(Tag)]);
     return tags
       .filter((tag) => {
         return programItems.some((programItem) =>
@@ -105,6 +98,29 @@ export const selectTags = createSelector(
         );
       })
       .filter((tag) => !ignoredTags.has(tag));
+  },
+);
+
+export const selectAgeGroups = createSelector(
+  [selectProgramItems],
+  (programItems) => {
+    const ageGroups = unique([
+      AgeGroup.EVERYONE,
+      AgeGroup.FAMILIES,
+      AgeGroup.SMALL_KIDS,
+      AgeGroup.KIDS,
+      AgeGroup.TEENS,
+      AgeGroup.YOUNG_ADULTS,
+      AgeGroup.ADULTS_AND_YOUTH,
+      AgeGroup.ADULTS,
+      AgeGroup.ONLY_ADULTS,
+      ...Object.values(AgeGroup),
+    ]);
+    return ageGroups.filter((ageGroup) =>
+      programItems.some((programItem) =>
+        programItem.ageGroups.includes(ageGroup),
+      ),
+    );
   },
 );
 

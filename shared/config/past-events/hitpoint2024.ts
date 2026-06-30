@@ -6,7 +6,12 @@ import {
   LoginProvider,
   RemoveLotterySignupsStrategy,
 } from "shared/config/eventConfigTypes";
-import { Language, ProgramType, Tag } from "shared/types/models/programItem";
+import {
+  AgeGroup,
+  Language,
+  ProgramType,
+  Tag,
+} from "shared/types/models/programItem";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const eventConfig: Partial<EventConfig> = {
@@ -61,63 +66,73 @@ const eventConfig: Partial<EventConfig> = {
   customDetailsProgramItems: {
     // L&L Gorgoniuksen Koodeksi
     "lollo-praedor": {
-      tags: [Tag.ONLY_ADULTS, Tag.BEGINNER_FRIENDLY],
+      tags: [Tag.BEGINNER_FRIENDLY],
+      ageGroups: [AgeGroup.ONLY_ADULTS],
     },
     // Deathmatch Island
     "deathmatch-island": {
-      tags: [Tag.ONLY_ADULTS, Tag.BEGINNER_FRIENDLY],
+      tags: [Tag.BEGINNER_FRIENDLY],
+      ageGroups: [AgeGroup.ONLY_ADULTS],
     },
     // City of the Scorpion God
     "city-of-the-scorpion-god": {
-      tags: [Tag.ONLY_ADULTS],
+      ageGroups: [AgeGroup.ONLY_ADULTS],
       languages: [Language.FINNISH, Language.ENGLISH],
     },
     // Kirottu Matka
     "kirottu-matka": {
-      tags: [Tag.ONLY_ADULTS],
+      ageGroups: [AgeGroup.ONLY_ADULTS],
     },
     // Timantin sävyvirhe
     "timantin-savyvirhe-2": {
-      tags: [Tag.ONLY_ADULTS, Tag.BEGINNER_FRIENDLY],
+      tags: [Tag.BEGINNER_FRIENDLY],
+      ageGroups: [AgeGroup.ONLY_ADULTS],
     },
     // Offworlders: Kosmoksen karsein keikka
     "offworlders-kosmoksen-karsein-keikka": {
-      tags: [Tag.ONLY_ADULTS, Tag.BEGINNER_FRIENDLY],
+      tags: [Tag.BEGINNER_FRIENDLY],
+      ageGroups: [AgeGroup.ONLY_ADULTS],
     },
     // Scamatania: Kaunojen kari (WWN)
     "scamatania-kaunojen-kari-wwn": {
-      tags: [Tag.ONLY_ADULTS, Tag.BEGINNER_FRIENDLY],
+      tags: [Tag.BEGINNER_FRIENDLY],
+      ageGroups: [AgeGroup.ONLY_ADULTS],
     },
     // Kirottu Matka
     "kirottu-matka-2": {
-      tags: [Tag.ONLY_ADULTS],
+      ageGroups: [AgeGroup.ONLY_ADULTS],
     },
     // Auld Sanguine - A New Year's Eve Vampire the Masquerade Story
     "auld-sanguine": {
-      tags: [Tag.ONLY_ADULTS, Tag.BEGINNER_FRIENDLY],
+      tags: [Tag.BEGINNER_FRIENDLY],
+      ageGroups: [AgeGroup.ONLY_ADULTS],
       languages: [Language.ENGLISH],
     },
     // Läpimurto
     lapimurto: {
-      tags: [Tag.ONLY_ADULTS],
+      ageGroups: [AgeGroup.ONLY_ADULTS],
     },
     // The Lighthouse
     "the-lighthouse": {
-      tags: [Tag.ONLY_ADULTS, Tag.BEGINNER_FRIENDLY],
+      tags: [Tag.BEGINNER_FRIENDLY],
+      ageGroups: [AgeGroup.ONLY_ADULTS],
       languages: [Language.ENGLISH],
     },
     // Pelipöytä ry peluuttaa: Ryuutama
     "pelipoyta-ry-peluuttaa-ryuutama": {
-      tags: [Tag.SMALL_KIDS, Tag.BEGINNER_FRIENDLY],
+      tags: [Tag.BEGINNER_FRIENDLY],
+      ageGroups: [AgeGroup.SMALL_KIDS],
     },
     // Session Zero - Tavernassa tapahtuu
     "session-zero-tavernassa-tapahtuu": {
-      tags: [Tag.SMALL_KIDS, Tag.BEGINNER_FRIENDLY],
+      tags: [Tag.BEGINNER_FRIENDLY],
+      ageGroups: [AgeGroup.SMALL_KIDS],
       languages: [Language.FINNISH, Language.ENGLISH],
     },
     // Session Zero - Tavernassa tapahtuu
     "session-zero-tavernassa-tapahtuu-2": {
-      tags: [Tag.SMALL_KIDS, Tag.BEGINNER_FRIENDLY],
+      tags: [Tag.BEGINNER_FRIENDLY],
+      ageGroups: [AgeGroup.SMALL_KIDS],
       languages: [Language.FINNISH, Language.ENGLISH],
     },
     // Mates, Dates and Sleepovers

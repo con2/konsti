@@ -11,6 +11,7 @@ import {
   ProgramType,
   SignupType,
   Tag,
+  AgeGroup,
   State,
 } from "shared/types/models/programItem";
 
@@ -24,6 +25,7 @@ export const ProgramItemSchemaDb = z
     startTime: z.date().transform((date) => dayjs(date).toISOString()),
     mins: z.number(),
     tags: z.array(z.enum(Tag)),
+    ageGroups: z.array(z.enum(AgeGroup)),
     genres: z.array(z.enum(Genre)),
     styles: z.array(z.enum(Gamestyle)),
     languages: z.array(z.enum(Language)),
@@ -61,6 +63,7 @@ const programItemSchema = new mongoose.Schema(
     },
     mins: { type: Number, required: true },
     tags: { type: [String], required: true },
+    ageGroups: { type: [String], required: true },
     genres: { type: [String], required: true },
     styles: { type: [String], required: true },
     languages: { type: [String], required: true },

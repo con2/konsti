@@ -7,7 +7,12 @@ import {
   isMainEventProgramVisible,
 } from "client/utils/getUpcomingProgramItems";
 import { Loading } from "client/components/Loading";
-import { ProgramItem, Language, Tag } from "shared/types/models/programItem";
+import {
+  ProgramItem,
+  Language,
+  Tag,
+  AgeGroup,
+} from "shared/types/models/programItem";
 import { getTimeNow } from "client/utils/getTimeNow";
 import { isPreConventionWeekProgramItem } from "shared/utils/isPreConventionWeekProgramItem";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
@@ -53,9 +58,9 @@ export const AllProgramItemsView = (): ReactElement => {
     (state) => state.allProgramItems.directSignups,
   );
 
-  const [selectedTag, setSelectedTag] = useState<Tag | Language | "">(
-    getSavedTag(),
-  );
+  const [selectedTag, setSelectedTag] = useState<
+    Tag | Language | AgeGroup | ""
+  >(getSavedTag());
   const [loading, setLoading] = useState<boolean>(true);
   const [searchTerm, setSearchTerm] = useState<string>(getSavedSearchTerm());
   const [hideFullItems, setHideFullItems] =
@@ -245,6 +250,9 @@ const getTagFilteredProgramItems = (
       return programItem;
     }
     if (programItem.tags.includes(selectedTag as Tag)) {
+      return programItem;
+    }
+    if (programItem.ageGroups.includes(selectedTag as AgeGroup)) {
       return programItem;
     }
     if (programItem.languages.includes(selectedTag as Language)) {
