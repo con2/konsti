@@ -6,7 +6,9 @@ import {
   testProgramItem2,
 } from "shared/tests/testProgramItem";
 import {
+  acquireAssignmentLock,
   findSettings,
+  releaseAssignmentLock,
   saveHidden,
   saveSettings,
   saveSignupQuestion,
@@ -17,6 +19,8 @@ import {
   SignupQuestionType,
 } from "shared/types/models/settings";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
+import { MongoDbError } from "shared/types/api/errors";
+import { makeErrorResult } from "shared/utils/result";
 
 beforeEach(async () => {
   await mongoose.connect(globalThis.__MONGO_URI__, {
@@ -81,4 +85,32 @@ test("should not save multiple signup questions for same programItemId", async (
 
   const settings = unsafelyUnwrap(await findSettings());
   expect(settings.signupQuestions).toHaveLength(1);
+});
+
+test("acquireAssignmentLock should return SETTINGS_NOT_FOUND when there is no settings row", async () => {
+  const result = await acquireAssignmentLock();
+
+  expect(result).toEqual(makeErrorResult(MongoDbError.SETTINGS_NOT_FOUND));
+});
+
+test("acquireAssignmentLock should return ASSIGNMENT_LOCK_HELD when another run holds the lock", async () => {
+  await findSettings();
+  const firstAcquire = await acquireAssignmentLock();
+  expect(firstAcquire.ok).toEqual(true);
+
+  const secondAcquire = await acquireAssignmentLock();
+
+  expect(secondAcquire).toEqual(
+    makeErrorResult(MongoDbError.ASSIGNMENT_LOCK_HELD),
+  );
+});
+
+test("releaseAssignmentLock should free the lock so it can be acquired again", async () => {
+  await findSettings();
+  const lockToken = unsafelyUnwrap(await acquireAssignmentLock());
+
+  unsafelyUnwrap(await releaseAssignmentLock(lockToken));
+
+  const reacquire = await acquireAssignmentLock();
+  expect(reacquire.ok).toEqual(true);
 });

@@ -32,7 +32,7 @@ export const storeAssignment = async (
   // can't hold the lock past the stale timeout
   const lockResult = await acquireAssignmentLock();
   if (!lockResult.ok) {
-    if (lockResult.error === MongoDbError.SETTINGS_NOT_FOUND) {
+    if (lockResult.error === MongoDbError.ASSIGNMENT_LOCK_HELD) {
       logger.warn("Assignment already running, skip manual assignment");
       return {
         message: "Assignment already running",
