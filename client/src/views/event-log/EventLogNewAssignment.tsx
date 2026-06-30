@@ -7,6 +7,7 @@ import { AppRoute } from "client/app/AppRoutes";
 import { ProgramItem } from "shared/types/models/programItem";
 import { EventLogItem } from "shared/types/models/eventLog";
 import { config } from "shared/config";
+import { RemoveLotterySignupsStrategy } from "shared/config/eventConfigTypes";
 
 interface Props {
   eventLogItem: EventLogItem;
@@ -58,10 +59,12 @@ export const EventLogNewAssignment = ({
                   LOCATION: foundProgramItem.location,
                 })}
               </TextRow>
-              {config.event().enableRemoveOverlapSignups && (
+              {config.event().removeLotterySignupsStrategy ===
+                RemoveLotterySignupsStrategy.OVERLAP && (
                 <TextRow>{t("eventLog.overlapLotterySignupsRemoved")}</TextRow>
               )}
-              {config.event().enableRemoveAllUpcomingSignups && (
+              {config.event().removeLotterySignupsStrategy ===
+                RemoveLotterySignupsStrategy.ALL_UPCOMING && (
                 <TextRow>{t("eventLog.upcomingLotterySignupsRemoved")}</TextRow>
               )}
             </>

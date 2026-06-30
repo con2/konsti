@@ -5,6 +5,7 @@ import {
   EventConfig,
   EventSignupStrategy,
   LoginProvider,
+  RemoveLotterySignupsStrategy,
 } from "shared/config/eventConfigTypes";
 import { ProgramType } from "shared/types/models/programItem";
 import { SignupQuestionType } from "shared/types/models/settings";
@@ -24,7 +25,7 @@ const eventConfig: Partial<EventConfig> = {
   enableRevolvingDoor: true,
   assignmentAlgorithm: AssignmentAlgorithm.RANDOM_PADG,
   enableGroups: true,
-  enableRemoveOverlapSignups: true,
+  removeLotterySignupsStrategy: RemoveLotterySignupsStrategy.OVERLAP,
   programGuideUrl: "https://ropecon.fi/opas",
 
   activeProgramTypes: [

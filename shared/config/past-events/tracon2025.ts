@@ -4,6 +4,7 @@ import {
   EventConfig,
   EventSignupStrategy,
   LoginProvider,
+  RemoveLotterySignupsStrategy,
 } from "shared/config/eventConfigTypes";
 import { ProgramType, SignupType } from "shared/types/models/programItem";
 
@@ -24,10 +25,8 @@ const eventConfig: Partial<EventConfig> = {
   assignmentAlgorithm: AssignmentAlgorithm.RANDOM,
   enableGroups: true,
 
-  // Remove overlapping lottery signups...
-  enableRemoveOverlapSignups: false,
-  // ... or remove all upcoming lottery signups
-  enableRemoveAllUpcomingSignups: true,
+  // Remove lottery signups after assignment: overlapping signups, all upcoming signups, or none
+  removeLotterySignupsStrategy: RemoveLotterySignupsStrategy.ALL_UPCOMING,
 
   programGuideUrl: "https://2025.tracon.fi/opas",
 

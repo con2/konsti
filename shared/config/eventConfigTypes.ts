@@ -44,6 +44,12 @@ export enum EntryConditionText {
   K18 = "k18",
 }
 
+export enum RemoveLotterySignupsStrategy {
+  NONE = "none",
+  OVERLAP = "overlap",
+  ALL_UPCOMING = "allUpcoming",
+}
+
 export interface EventConfig {
   assignmentAlgorithm: AssignmentAlgorithm;
   enableGroups: boolean;
@@ -76,8 +82,7 @@ export interface EventConfig {
     programItemIds: string[];
   }[];
   activeProgramTypes: ProgramType[];
-  enableRemoveOverlapSignups: boolean;
-  enableRemoveAllUpcomingSignups: boolean;
+  removeLotterySignupsStrategy: RemoveLotterySignupsStrategy;
   customDetailsProgramItems: Record<
     string,
     | {

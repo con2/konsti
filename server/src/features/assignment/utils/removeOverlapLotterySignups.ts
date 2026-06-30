@@ -11,6 +11,7 @@ import { MongoDbError } from "shared/types/api/errors";
 import { ProgramItem } from "shared/types/models/programItem";
 import { getUpcomingLotterySignupProgramItemIds } from "server/features/assignment/utils/getUpcomingLotterySignups";
 import { config } from "shared/config";
+import { RemoveLotterySignupsStrategy } from "shared/config/eventConfigTypes";
 
 export const removeOverlapLotterySignups = async (
   results: readonly UserAssignmentResult[],
@@ -52,7 +53,11 @@ export const removeOverlapLotterySignups = async (
     }
 
     // Cancel all lottery signups that start during the lottery direct signup
-    if (config.event().enableRemoveOverlapSignups) {
+    if (
+      config.event().removeLotterySignupsStrategy ===
+      RemoveLotterySignupsStrategy.OVERLAP
+    ) {
+      logger.info("Remove overlapping signups");
       const overlappingLotterySignups = signedUser.lotterySignups.filter(
         (lotterySignup) => {
           const foundProgramItem = programItems.find(
@@ -82,7 +87,11 @@ export const removeOverlapLotterySignups = async (
     }
 
     // Cancel all upcoming lottery signups
-    if (config.event().enableRemoveAllUpcomingSignups) {
+    if (
+      config.event().removeLotterySignupsStrategy ===
+      RemoveLotterySignupsStrategy.ALL_UPCOMING
+    ) {
+      logger.info("Remove upcoming signups");
       const upcomingLotterySignupProgramItemIds =
         getUpcomingLotterySignupProgramItemIds(
           signedUser.lotterySignups,
