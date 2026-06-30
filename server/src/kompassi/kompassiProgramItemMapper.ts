@@ -194,6 +194,10 @@ const mapTags = (kompassiProgramItem: KompassiProgramItem): Tag[] => {
     otherTags.push(Tag.PRE_CONVENTION_WEEK);
   }
 
+  if (usesGenAi(kompassiProgramItem)) {
+    otherTags.push(Tag.USES_GEN_AI);
+  }
+
   return [...groupingTags, ...ageGroupTags, ...otherTags];
 };
 
@@ -421,3 +425,6 @@ const isPreConventionWeek = (
 ): boolean =>
   kompassiProgramItem.cachedDimensions["is-pre-convention-week"][0] ===
   KompassiYesNo.YES;
+
+const usesGenAi = (kompassiProgramItem: KompassiProgramItem): boolean =>
+  kompassiProgramItem.cachedDimensions["uses-gen-ai"][0] === KompassiYesNo.YES;

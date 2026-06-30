@@ -133,6 +133,7 @@ export const translationFI = {
     youngAdults: "Suunnattu nuorisolle",
     families: "Suunnattu perheille",
     preConventionWeek: "Etkoviikko",
+    usesGenAi: "Tekemiseen käytetty generatiivista tekoälyä",
   },
   pageTitle: {
     login: "Kirjaudu sisään",

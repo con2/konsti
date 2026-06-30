@@ -38,6 +38,7 @@ export const mockKompassiProgramItem: KompassiProgramItem = {
     revolvingdoor: [KompassiBoolean.FALSE],
     room: [testProgramItem.location],
     ["is-pre-convention-week"]: [KompassiYesNo.NO],
+    ["uses-gen-ai"]: [KompassiYesNo.NO],
   },
   scheduleItems: [
     {
@@ -91,6 +92,7 @@ export const mockKompassiProgramItem2: KompassiProgramItem = {
     revolvingdoor: [KompassiBoolean.FALSE],
     room: [testProgramItem2.location],
     ["is-pre-convention-week"]: [KompassiYesNo.NO],
+    ["uses-gen-ai"]: [KompassiYesNo.NO],
   },
   scheduleItems: [
     {

@@ -134,6 +134,7 @@ export const translationEN = {
     youngAdults: "Directed at young adults",
     families: "Directed at families",
     preConventionWeek: "Pre-convention week",
+    usesGenAi: "Generative AI has been utilised",
   },
   pageTitle: {
     login: "Login",

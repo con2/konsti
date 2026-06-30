@@ -81,6 +81,8 @@ export const selectTags = createSelector(
       Tag.THEME,
       Tag.LGBT,
       Tag.PRE_CONVENTION_WEEK,
+      Tag.K16, // This is entryCondition, not age limit
+      Tag.USES_GEN_AI,
     ]);
 
     const tags = unique([
@@ -92,7 +94,6 @@ export const selectTags = createSelector(
       Tag.TEENS,
       Tag.YOUNG_ADULTS,
       Tag.ADULTS_AND_YOUTH,
-      Tag.K16,
       Tag.ADULTS,
       Tag.ONLY_ADULTS,
       ...Object.values(Tag),
