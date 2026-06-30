@@ -127,6 +127,7 @@ export const KompassiProgramItemSchema = z.object({
       KompassiYesNo,
       "is-pre-convention-week",
     ),
+    ["uses-gen-ai"]: safeEnumArray(KompassiYesNo, "uses-gen-ai"),
   }),
   cachedAnnotations: z.object({
     "konsti:rpgSystem": z.string().catch(""),

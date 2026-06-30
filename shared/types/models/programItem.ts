@@ -59,6 +59,7 @@ export enum Tag {
   YOUNG_ADULTS = "youngAdults",
   FAMILIES = "families",
   PRE_CONVENTION_WEEK = "preConventionWeek",
+  USES_GEN_AI = "usesGenAi",
 }
 
 export enum InclusivityValue {

@@ -101,6 +101,7 @@ export const createProgramItems = async (
             revolvingdoor: sample(Object.values(KompassiBoolean), 1),
             room: ["Ropetaverna"],
             ["is-pre-convention-week"]: [KompassiYesNo.NO],
+            ["uses-gen-ai"]: [KompassiYesNo.NO],
           },
           scheduleItems: [
             {

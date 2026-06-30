@@ -1799,7 +1799,7 @@
     "description": "When you dream about the world you want to live in, what kind of music is there? Welcome to explore human connection in a playful way as we’ll create music and rhythms together collectively on the spot. We use our bodies as an instrument, with voice, body percussion and movement. No experience in music making or knowledge of the Finnish language is required. Just come with a curious and open mind and openness to connect with other humans. Kindly do not use strong perfumes. Session is based on Música do Círculo methodology created in Brazil and will be led by Venla Pesonen.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
-      "date": ["2026-07-24"],
+      "date": ["2026-07-24", "2026-07-26"],
       "form": ["offer-workshop"],
       "room": ["halli1a"],
       "type": ["workshop"],
@@ -1809,7 +1809,7 @@
       "grouping": ["beginners", "dreams"],
       "language": ["lang-free"],
       "age-group": ["adultsnyouth"],
-      "scheduled": ["one", "one-or-more"],
+      "scheduled": ["multiple", "one-or-more"],
       "inclusivity": ["physical-contact"],
       "registration": ["not-required"]
     },
@@ -1821,6 +1821,16 @@
         "title": "Collective music session (Música do Círculo flow)",
         "startTime": "2026-07-24T20:00:00+03:00",
         "endTime": "2026-07-24T20:45:00+03:00",
+        "lengthMinutes": 45,
+        "location": "Hall 1A Workshop Area",
+        "isCancelled": false,
+        "cachedAnnotations": { "konsti:maxAttendance": 30 }
+      },
+      {
+        "slug": "collective-music-session-msica-do-crculo-flow-2",
+        "title": "Collective music session (Música do Círculo flow)",
+        "startTime": "2026-07-26T16:00:00+03:00",
+        "endTime": "2026-07-26T16:45:00+03:00",
         "lengthMinutes": 45,
         "location": "Hall 1A Workshop Area",
         "isCancelled": false,
@@ -3574,7 +3584,6 @@
     "cachedAnnotations": {
       "konsti:rpgSystem": "Warhammer 40K Wrath & glory",
       "konsti:minAttendance": 3,
-      "konsti:entryConditionK16": true,
       "konsti:maxAttendance": 10,
       "ropecon:contentWarnings": "Warhammer 40K:n universumi on lähtökohtaisesti väkivallan, hulluuden ja kuvotuksen sävyttämä maailma, ja tarinassa ilmenee kaikkia kuviteltavia mielen ja kehon kauhuja, mutta seksuaalista sisältöä tai lapsiin kohdistuvaa väkivaltaa ei kuvata, eikä pelaajien välistä seksuaalissävytteistä roolipelaamista sallita. ",
       "ropecon:accessibilityOther": "Pelaamme kaksi peliä samassa huoneessa, ja vaikka pyrimme eristämään pelit toisistaan, tilassa voi olla jopa kymmenen pelaajaa, joten äänen sorina ja huudahdukset voivat olla pitkän pelin aikana joillekin aistiyliherkille kuormittavia.",
@@ -3593,7 +3602,6 @@
         "cachedAnnotations": {
           "konsti:rpgSystem": "Warhammer 40K Wrath & glory",
           "konsti:minAttendance": 3,
-          "konsti:entryConditionK16": true,
           "konsti:maxAttendance": 10,
           "ropecon:contentWarnings": "Warhammer 40K:n universumi on lähtökohtaisesti väkivallan, hulluuden ja kuvotuksen sävyttämä maailma, ja tarinassa ilmenee kaikkia kuviteltavia mielen ja kehon kauhuja, mutta seksuaalista sisältöä tai lapsiin kohdistuvaa väkivaltaa ei kuvata, eikä pelaajien välistä seksuaalissävytteistä roolipelaamista sallita. ",
           "ropecon:accessibilityOther": "Pelaamme kaksi peliä samassa huoneessa, ja vaikka pyrimme eristämään pelit toisistaan, tilassa voi olla jopa kymmenen pelaajaa, joten äänen sorina ja huudahdukset voivat olla pitkän pelin aikana joillekin aistiyliherkille kuormittavia.",
@@ -3612,7 +3620,6 @@
         "cachedAnnotations": {
           "konsti:rpgSystem": "Warhammer 40K Wrath & glory",
           "konsti:minAttendance": 3,
-          "konsti:entryConditionK16": true,
           "konsti:maxAttendance": 10,
           "ropecon:contentWarnings": "Warhammer 40K:n universumi on lähtökohtaisesti väkivallan, hulluuden ja kuvotuksen sävyttämä maailma, ja tarinassa ilmenee kaikkia kuviteltavia mielen ja kehon kauhuja, mutta seksuaalista sisältöä tai lapsiin kohdistuvaa väkivaltaa ei kuvata, eikä pelaajien välistä seksuaalissävytteistä roolipelaamista sallita. ",
           "ropecon:accessibilityOther": "Pelaamme kaksi peliä samassa huoneessa, ja vaikka pyrimme eristämään pelit toisistaan, tilassa voi olla jopa kymmenen pelaajaa, joten äänen sorina ja huudahdukset voivat olla pitkän pelin aikana joillekin aistiyliherkille kuormittavia.",
@@ -4279,7 +4286,7 @@
       "language": ["fi"],
       "age-group": ["everyone"],
       "scheduled": ["one", "one-or-more"],
-      "registration": ["not-required"],
+      "registration": ["konsti"],
       "is-pre-convention-week": ["yes"]
     },
     "cachedAnnotations": { "konsti:maxAttendance": 8 },
@@ -4762,7 +4769,12 @@
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Kids on Brooms Modification / Homebrew Hack",
+      "konsti:minAttendance": 3,
+      "konsti:maxAttendance": 5,
+      "ropecon:contentWarnings": "- Overall warning of 18+ topics to be expected - Coarse and explicit language - Sexual topics (Sex work, for example) - Discussions of traumatic experiences (violence, sexual assault -- no explicit descriptions) - Light body horror"
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -4773,7 +4785,13 @@
         "lengthMinutes": 150,
         "location": "Hall 3g (Pöytä 6)",
         "isCancelled": false,
-        "cachedAnnotations": { "internal:freeformLocation": "Pöytä 6" }
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Kids on Brooms Modification / Homebrew Hack",
+          "konsti:minAttendance": 3,
+          "konsti:maxAttendance": 5,
+          "ropecon:contentWarnings": "- Overall warning of 18+ topics to be expected - Coarse and explicit language - Sexual topics (Sex work, for example) - Discussions of traumatic experiences (violence, sexual assault -- no explicit descriptions) - Light body horror",
+          "internal:freeformLocation": "Pöytä 6"
+        }
       },
       {
         "slug": "hellaverse-rpg-2",
@@ -4783,7 +4801,13 @@
         "lengthMinutes": 150,
         "location": "Hall 3g (Pöytä 3)",
         "isCancelled": false,
-        "cachedAnnotations": { "internal:freeformLocation": "Pöytä 3" }
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Kids on Brooms Modification / Homebrew Hack",
+          "konsti:minAttendance": 3,
+          "konsti:maxAttendance": 5,
+          "ropecon:contentWarnings": "- Overall warning of 18+ topics to be expected - Coarse and explicit language - Sexual topics (Sex work, for example) - Discussions of traumatic experiences (violence, sexual assault -- no explicit descriptions) - Light body horror",
+          "internal:freeformLocation": "Pöytä 3"
+        }
       }
     ]
   },
@@ -4902,7 +4926,7 @@
       "konsti:rpgSystem": "Helvetin Eläin (homebrew)",
       "konsti:minAttendance": 3,
       "konsti:maxAttendance": 5,
-      "ropecon:contentWarnings": "Väkivalta, Päihteet, Kuolema, Kultit, Politiikka, Julmuus eläimiä kohtaan",
+      "ropecon:contentWarnings": "Väkivalta\r\nPäihteet\r\nKuolema\r\nKultit\r\nPolitiikka\r\nJulmuus eläimiä kohtaan",
       "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
@@ -4919,7 +4943,7 @@
           "konsti:rpgSystem": "Helvetin Eläin (homebrew)",
           "konsti:minAttendance": 3,
           "konsti:maxAttendance": 5,
-          "ropecon:contentWarnings": "Väkivalta, Päihteet, Kuolema, Kultit, Politiikka, Julmuus eläimiä kohtaan",
+          "ropecon:contentWarnings": "Väkivalta\r\nPäihteet\r\nKuolema\r\nKultit\r\nPolitiikka\r\nJulmuus eläimiä kohtaan",
           "ropecon:isRevolvingDoor": false,
           "internal:freeformLocation": "Pöytä 34"
         }
@@ -4936,7 +4960,7 @@
           "konsti:rpgSystem": "Helvetin Eläin (homebrew)",
           "konsti:minAttendance": 3,
           "konsti:maxAttendance": 5,
-          "ropecon:contentWarnings": "Väkivalta, Päihteet, Kuolema, Kultit, Politiikka, Julmuus eläimiä kohtaan",
+          "ropecon:contentWarnings": "Väkivalta\r\nPäihteet\r\nKuolema\r\nKultit\r\nPolitiikka\r\nJulmuus eläimiä kohtaan",
           "ropecon:isRevolvingDoor": false,
           "internal:freeformLocation": "Pöytä 34"
         }
@@ -4953,7 +4977,7 @@
           "konsti:rpgSystem": "Helvetin Eläin (homebrew)",
           "konsti:minAttendance": 3,
           "konsti:maxAttendance": 5,
-          "ropecon:contentWarnings": "Väkivalta, Päihteet, Kuolema, Kultit, Politiikka, Julmuus eläimiä kohtaan",
+          "ropecon:contentWarnings": "Väkivalta\r\nPäihteet\r\nKuolema\r\nKultit\r\nPolitiikka\r\nJulmuus eläimiä kohtaan",
           "ropecon:isRevolvingDoor": false,
           "internal:freeformLocation": "Pöytä 34"
         }
@@ -5083,7 +5107,7 @@
   {
     "slug": "hiljainen-uni-heart-the-city-beneath",
     "title": "Hiljainen Uni (Heart the City Beneath)",
-    "description": "Peli joka tapahtuu fantasiakaupungin Tornin (the Spire) alapuolella. Hahmot ovat eri tavoilla joutuneet jättämään edellisen elämänsä ja matkanneet syvälle Sydämeen etsien jotakin. Menneisyys, kuin tulevaisuus näkyvät teille unien avulla kun matkaatte alaspäin, jotta saatte vastauksen hahmojanne piinaaviin kysymyksiin. Pelissä on tarkoitus pelata tarina, jossa hahmonne yrittävät tarinallisesti selviytyä vielä vähän eteenpäin erittäin vihamielisessä ympäristössä.\r\n\r\nPeli pelataan tarinallisella Heart, the City Beneath - pelillä, jossa tarkoituksena on tarinallisesti pelata kauhistuttavassa tyrmässä. Peli käyttää yksinkertaista Resistance-mekaniikkaa, joka puskee peliä eteenpäin aiheuttaen hahmoille komplikaatioita. Pelaajien hahmon on luotu etukäteen, mukaanlukien heidän päämäärät (Beats). Aikaisempaa kokemusta roolipeleistä ei tarvita ja tarvittaessa opetetaan aivan alusta saakka. Avoimella mielellä ja pienellä heittäytymisellä pääset pitkälle. Kesto maksimissaan 4 tuntia hitaallakin porukalla. Skenaariota inspiroivat asiat populaarikulttuurista: Dark City, Bioshock, Arcane ja Sleep Token\r\n\r\nHahmojen kuvat on generoitu tekoälyllä.",
+    "description": "Peli joka tapahtuu fantasiakaupungin Tornin (the Spire) alapuolella. Hahmot ovat eri tavoilla joutuneet jättämään edellisen elämänsä ja matkanneet syvälle Sydämeen etsien jotakin. Menneisyys, kuin tulevaisuus näkyvät teille unien avulla kun matkaatte alaspäin, jotta saatte vastauksen hahmojanne piinaaviin kysymyksiin. Pelissä on tarkoitus pelata tarina, jossa hahmonne yrittävät tarinallisesti selviytyä vielä vähän eteenpäin erittäin vihamielisessä ympäristössä.\r\n\r\nPeli pelataan tarinallisella Heart, the City Beneath - pelillä, jossa tarkoituksena on tarinallisesti pelata kauhistuttavassa tyrmässä. Peli käyttää yksinkertaista Resistance-mekaniikkaa, joka puskee peliä eteenpäin aiheuttaen hahmoille komplikaatioita. Pelaajien hahmon on luotu etukäteen, mukaanlukien heidän päämäärät (Beats). Aikaisempaa kokemusta roolipeleistä ei tarvita ja tarvittaessa opetetaan aivan alusta saakka. Avoimella mielellä ja pienellä heittäytymisellä pääset pitkälle. Kesto maksimissaan 4 tuntia hitaallakin porukalla. Skenaariota inspiroivat asiat populaarikulttuurista: Dark City, Bioshock, Arcane ja Sleep Token",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2026-07-26"],
@@ -5099,7 +5123,7 @@
       "scheduled": ["one", "one-or-more"],
       "game-style": ["rules-light", "serious", "story-driven"],
       "inclusivity": ["long-texts", "no-recordings-or-spoken-text"],
-      "uses-gen-ai": ["yes"],
+      "uses-gen-ai": ["no"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -5397,7 +5421,7 @@
       "konsti:minAttendance": 4,
       "konsti:maxAttendance": 5,
       "ropecon:otherAuthor": "Tor Kjetil Edland",
-      "ropecon:contentWarnings": "Vakava sairaus, kuolema, homofobia ja syrjintä",
+      "ropecon:contentWarnings": "Vakava sairaus, itsetuhoisuus, kuolema, homofobia ja syrjintä",
       "ropecon:accessibilityOther": "Peli kestää 4 tuntia, mutta pelissä pidetään 1-3 lyhyttä wc- ym. taukoa osallistujien toiveiden mukaan näytösten välissä. ",
       "ropecon:isRevolvingDoor": false
     },
@@ -5415,7 +5439,7 @@
           "konsti:minAttendance": 4,
           "konsti:maxAttendance": 5,
           "ropecon:otherAuthor": "Tor Kjetil Edland",
-          "ropecon:contentWarnings": "Vakava sairaus, kuolema, homofobia ja syrjintä",
+          "ropecon:contentWarnings": "Vakava sairaus, itsetuhoisuus, kuolema, homofobia ja syrjintä",
           "ropecon:accessibilityOther": "Peli kestää 4 tuntia, mutta pelissä pidetään 1-3 lyhyttä wc- ym. taukoa osallistujien toiveiden mukaan näytösten välissä. ",
           "ropecon:isRevolvingDoor": false
         }
@@ -10466,7 +10490,7 @@
   },
   {
     "slug": "mielikuvituskone-unista-teksteiksi",
-    "title": "Mielikuvituskone: Unista teksteiksi!",
+    "title": "Mielikuvituskone: Unenomainen kirjoitustyöpaja",
     "description": "Mielikuvituskone lennättää sinut taas kirjoittamisen ihmemaahan! Koet toivottavasti mukavan luovan hetken Ropeconin keskellä. Työpajan lopuksi sinulla saattaa olla myös novellin raakile käsissäsi! Tänä vuonna kaikki harjoitteet liittyvät uniin, mutta ei haittaa vaikket itse muistaisi uniasi.\r\n\r\nTänä vuonna työpaja kokeilee pyöröovimenetelmää: aluksi on 5 minuuttia sisääntuloaikaa ja kirjoitustehtävän esittelyä, jonka jälkeen kirjoitamme 15 minuuttia. 15 minuutin jälkeen voi poistua tai jäädä seuraavaan tehtävään, mutta toivomme että jos oven ulkopuolella on odottavia kirjoittajia, olisit mielikuvituskoneen mukana korkeintaan kolme harjoitetta ja päästäisit sitten seuraavan mukaan. Sisääntuloajat ovat siis tasatunteina, kaksikymmentä yli ja kahtakymmentä vaille (huomaa, että viimeisellä tunnilla \"kaksikymmentä vaille\" aikaslottia ei ole). Oven ollessa suljettuna älä häiritse!\r\n\r\nLuovan kirjoittamisen työpajamme sopii niin aloittelijoille kuin jo kirjoittaville, eikä ole genresidonnainen, mutta jotkut tehtävät voivat teeman vuoksi olla enemmän kallellaan fantasiaan tai maagiseen realismiin. Ohjelma sopii kaikille, jotka pystyvät itsenäisesti ymmärtämään ohjeita ja kirjoittamaan.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
@@ -10487,7 +10511,7 @@
     "scheduleItems": [
       {
         "slug": "mielikuvituskone-unista-teksteiksi-1",
-        "title": "Mielikuvituskone: Unista teksteiksi!",
+        "title": "Mielikuvituskone: Unenomainen kirjoitustyöpaja",
         "startTime": "2026-07-25T14:00:00+03:00",
         "endTime": "2026-07-25T16:45:00+03:00",
         "lengthMinutes": 165,
@@ -10497,7 +10521,7 @@
       },
       {
         "slug": "mielikuvituskone-unista-teksteiksi-2",
-        "title": "Mielikuvituskone: Unista teksteiksi!",
+        "title": "Mielikuvituskone: Unenomainen kirjoitustyöpaja",
         "startTime": "2026-07-26T11:00:00+03:00",
         "endTime": "2026-07-26T13:45:00+03:00",
         "lengthMinutes": 165,
@@ -15042,7 +15066,7 @@
   {
     "slug": "smaragdi-nuija-mythic-bastionland",
     "title": "Smaragdi Nuija (Mythic Bastionland)",
-    "description": "Peli tapahtuu myyttisessä menneisyydessä, jossa ryhmä ritareita on saanut tehtävän käydä uniin kietoutuneen herttuattaren tornilla. Pääsette matkaamaan tässä fantastisen usvaisessa maailmassa yrittäen löytää ratkaisua herttuattaren ongelmaan. Voitte kohdata hirviöitä, kyläläisiä, muita ritareita, näkijöitä tai jopa oman loppunne. \r\n\r\nPeli pelataan NSR-pelillä Mythic Bastionlandillä, jossa jokainen pelaaja on erilainen ritari, hahmo joka on näkijältä saannut valan jota he seuraavat: Etsi myyttejä, kunnioita näkijöitä ja puolusta valtakuntaa. Pelissä on yksinkertaiset mekaniikat ja pelissä pyritään pienellä myyttisellä alueella liikkumaan, tutustuen hahmoihin ja Smaragdin nuijan myytin arvoitukseen. Pelaajien hahmot on luotu etukäteen. Aikaisempaa kokemusta roolipeleistä ei tarvita ja tarvittaessa opetetaan aivan alusta saakka. Avoimella mielellä ja pienellä heittäytymisellä pääset pitkälle. Kesto maksimissaan 4 tuntia hitaallakin porukalla. Skenaariota inspiroivat asiat populaarikulttuurista: Kuningas Arthur, Avowed, Odysseus ja Green Knight\r\n\r\nHahmojen kuvat on generoitu tekoälyllä.",
+    "description": "Peli tapahtuu myyttisessä menneisyydessä, jossa ryhmä ritareita on saanut tehtävän käydä uniin kietoutuneen herttuattaren tornilla. Pääsette matkaamaan tässä fantastisen usvaisessa maailmassa yrittäen löytää ratkaisua herttuattaren ongelmaan. Voitte kohdata hirviöitä, kyläläisiä, muita ritareita, näkijöitä tai jopa oman loppunne. \r\n\r\nPeli pelataan NSR-pelillä Mythic Bastionlandillä, jossa jokainen pelaaja on erilainen ritari, hahmo joka on näkijältä saannut valan jota he seuraavat: Etsi myyttejä, kunnioita näkijöitä ja puolusta valtakuntaa. Pelissä on yksinkertaiset mekaniikat ja pelissä pyritään pienellä myyttisellä alueella liikkumaan, tutustuen hahmoihin ja Smaragdin nuijan myytin arvoitukseen. Pelaajien hahmot on luotu etukäteen. Aikaisempaa kokemusta roolipeleistä ei tarvita ja tarvittaessa opetetaan aivan alusta saakka. Avoimella mielellä ja pienellä heittäytymisellä pääset pitkälle. Kesto maksimissaan 4 tuntia hitaallakin porukalla. Skenaariota inspiroivat asiat populaarikulttuurista: Kuningas Arthur, Avowed, Odysseus ja Green Knight",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2026-07-25"],
@@ -15063,7 +15087,7 @@
         "rules-light"
       ],
       "inclusivity": ["long-texts", "no-recordings-or-spoken-text"],
-      "uses-gen-ai": ["yes"],
+      "uses-gen-ai": ["no"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -15116,7 +15140,12 @@
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Fail Forward with sanity",
+      "konsti:minAttendance": 2,
+      "konsti:maxAttendance": 5,
+      "ropecon:contentWarnings": "characters lose sanity, kosmista kauhua, k-18"
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -15127,7 +15156,13 @@
         "lengthMinutes": 180,
         "location": "Hall 3g (Pöytä 3)",
         "isCancelled": false,
-        "cachedAnnotations": { "internal:freeformLocation": "Pöytä 3" }
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Fail Forward with sanity",
+          "konsti:minAttendance": 2,
+          "konsti:maxAttendance": 5,
+          "ropecon:contentWarnings": "characters lose sanity, kosmista kauhua, k-18",
+          "internal:freeformLocation": "Pöytä 3"
+        }
       },
       {
         "slug": "somevaikuttajat-egyptissa-2",
@@ -15137,7 +15172,13 @@
         "lengthMinutes": 180,
         "location": "Hall 3g (Pöytä 3)",
         "isCancelled": false,
-        "cachedAnnotations": { "internal:freeformLocation": "Pöytä 3" }
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Fail Forward with sanity",
+          "konsti:minAttendance": 2,
+          "konsti:maxAttendance": 5,
+          "ropecon:contentWarnings": "characters lose sanity, kosmista kauhua, k-18",
+          "internal:freeformLocation": "Pöytä 3"
+        }
       }
     ]
   },
@@ -15976,7 +16017,7 @@
     "cachedDimensions": {
       "date": ["2026-07-24", "2026-07-25", "2026-07-26"],
       "form": ["offer-workshop"],
-      "room": ["halli1b"],
+      "room": ["hall3workshop", "halli1b"],
       "type": ["workshop"],
       "state": ["accepted"],
       "topic": ["boffering", "handcrafts"],
@@ -16018,6 +16059,16 @@
         "endTime": "2026-07-26T11:45:00+03:00",
         "lengthMinutes": 105,
         "location": "Hall 1B Workshop Area",
+        "isCancelled": false,
+        "cachedAnnotations": { "konsti:maxAttendance": 10 }
+      },
+      {
+        "slug": "tee-oma-bofferimiekka-rakennuspaja-1-4",
+        "title": "Tee oma bofferimiekka -rakennuspaja",
+        "startTime": "2026-07-25T18:00:00+03:00",
+        "endTime": "2026-07-25T20:45:00+03:00",
+        "lengthMinutes": 165,
+        "location": "Hall 3 Workshop Area",
         "isCancelled": false,
         "cachedAnnotations": { "konsti:maxAttendance": 10 }
       }
@@ -18813,6 +18864,7 @@
       "revolvingdoor": ["true"]
     },
     "cachedAnnotations": {
+      "ropecon:contentWarnings": "-",
       "ropecon:accessibilityOther": "Pienet alle kouluikäiset lapset vain oman aikuisen mukana.",
       "ropecon:isRevolvingDoor": true
     },
@@ -18827,6 +18879,7 @@
         "location": "Hall 3 Workshop Area",
         "isCancelled": false,
         "cachedAnnotations": {
+          "ropecon:contentWarnings": "-",
           "ropecon:accessibilityOther": "Pienet alle kouluikäiset lapset vain oman aikuisen mukana.",
           "ropecon:isRevolvingDoor": true
         }
@@ -18840,6 +18893,7 @@
         "location": "Hall 3 Workshop Area",
         "isCancelled": false,
         "cachedAnnotations": {
+          "ropecon:contentWarnings": "-",
           "ropecon:accessibilityOther": "Pienet alle kouluikäiset lapset vain oman aikuisen mukana.",
           "ropecon:isRevolvingDoor": true
         }
