@@ -109,15 +109,22 @@ ingress_annotations: !If
   then:
     cert-manager.io/cluster-issuer: !Var ingress_letsencrypt_cluster_issuer
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
     kubernetes.io/ingress.class: "nginx"
   else:
+    nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
     kubernetes.io/ingress.class: "nginx"
+
+# Hostnames to include as SANs on the TLS certificate. Defaults to the public
+# hostnames; override to add non-routable names (e.g. a www alias that is only
+# 308-redirected via from-to-www-redirect and never gets its own ingress rule).
+ingress_cert_hostnames: !Var ingress_public_hostnames
 
 ingress_tls: !If
   test: !Var ingress_letsencrypt_enabled
   then:
     - secretName: ingress-letsencrypt
-      hosts: !Var ingress_public_hostnames
+      hosts: !Var ingress_cert_hostnames
 
 ingress_url: !If
   test: !Var ingress_letsencrypt_enabled
