@@ -22,6 +22,7 @@ import { saveLotterySignups } from "server/features/user/lottery-signup/lotteryS
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { UserAssignmentResult } from "shared/types/models/result";
 import { config } from "shared/config";
+import { RemoveLotterySignupsStrategy } from "shared/config/eventConfigTypes";
 
 beforeEach(async () => {
   await mongoose.connect(globalThis.__MONGO_URI__, {
@@ -37,8 +38,7 @@ afterEach(async () => {
 test("should remove overlapping lottery signups from user", async () => {
   vi.spyOn(config, "event").mockReturnValue({
     ...config.event(),
-    enableRemoveOverlapSignups: true,
-    enableRemoveAllUpcomingSignups: false,
+    removeLotterySignupsStrategy: RemoveLotterySignupsStrategy.OVERLAP,
   });
 
   const programItemRemovedId = "program-item-removed-id";
@@ -185,8 +185,7 @@ test("should remove all upcoming lottery signups from user", async () => {
 
   vi.spyOn(config, "event").mockReturnValue({
     ...config.event(),
-    enableRemoveOverlapSignups: false,
-    enableRemoveAllUpcomingSignups: true,
+    removeLotterySignupsStrategy: RemoveLotterySignupsStrategy.ALL_UPCOMING,
   });
 
   const resultProgramItemId = "result-program-item-id";
@@ -318,14 +317,90 @@ test("should remove all upcoming lottery signups from user", async () => {
   ]);
 });
 
+test("should not remove upcoming lottery signups when strategy is NONE", async () => {
+  const timeNow = dayjs(testProgramItem.startTime).toISOString();
+
+  vi.spyOn(config, "event").mockReturnValue({
+    ...config.event(),
+    removeLotterySignupsStrategy: RemoveLotterySignupsStrategy.NONE,
+  });
+
+  const resultProgramItemId = "result-program-item-id";
+  const resultProgramItemStartTime = dayjs(timeNow).toISOString();
+
+  const upcomingProgramItemId = "upcoming-program-item-id";
+  const upcomingStartTime = dayjs(timeNow).add(1, "minute").toISOString();
+
+  await saveProgramItems([
+    {
+      ...testProgramItem,
+      programItemId: resultProgramItemId,
+      startTime: resultProgramItemStartTime,
+    },
+    {
+      ...testProgramItem,
+      programItemId: upcomingProgramItemId,
+      startTime: upcomingStartTime,
+    },
+  ]);
+
+  // User received a direct signup and has one upcoming lottery signup
+  await saveUser(mockUser);
+  await saveLotterySignups({
+    username: mockUser.username,
+    lotterySignups: [
+      {
+        programItemId: resultProgramItemId,
+        priority: 1,
+        signedToStartTime: resultProgramItemStartTime,
+      },
+      {
+        programItemId: upcomingProgramItemId,
+        priority: 1,
+        signedToStartTime: upcomingStartTime,
+      },
+    ],
+  });
+  const userResult: UserAssignmentResult = {
+    username: mockUser.username,
+    assignmentSignup: {
+      programItemId: resultProgramItemId,
+      priority: 1,
+      signedToStartTime: resultProgramItemStartTime,
+    },
+  };
+
+  const results: UserAssignmentResult[] = [userResult];
+  const programItems = unsafelyUnwrap(await findProgramItems());
+
+  await removeOverlapLotterySignups(
+    results,
+    programItems,
+    resultProgramItemStartTime,
+  );
+
+  // No signups removed
+  const updatedUser = unsafelyUnwrap(await findUser(mockUser.username));
+  expect(updatedUser?.lotterySignups.length).toEqual(2);
+  expect(updatedUser?.lotterySignups).toMatchObject([
+    {
+      programItemId: resultProgramItemId,
+      signedToStartTime: resultProgramItemStartTime,
+    },
+    {
+      programItemId: upcomingProgramItemId,
+      signedToStartTime: upcomingStartTime,
+    },
+  ]);
+});
+
 test("should not remove upcoming lottery signup with past parent startTime", async () => {
   const timeNow = dayjs(testProgramItem.startTime).toISOString();
   const parentStartTime = dayjs(timeNow).subtract(30, "minutes").toISOString();
 
   vi.spyOn(config, "event").mockReturnValue({
     ...config.event(),
-    enableRemoveOverlapSignups: false,
-    enableRemoveAllUpcomingSignups: true,
+    removeLotterySignupsStrategy: RemoveLotterySignupsStrategy.ALL_UPCOMING,
     startTimesByParentIds: new Map([
       [testProgramItem.parentId, parentStartTime],
     ]),

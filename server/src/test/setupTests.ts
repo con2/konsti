@@ -3,6 +3,7 @@ import { vi } from "vitest";
 import { initializeDayjs } from "shared/utils/initializeDayjs";
 import { config } from "shared/config";
 import { ProgramType } from "shared/types/models/programItem";
+import { RemoveLotterySignupsStrategy } from "shared/config/eventConfigTypes";
 import { mongoDbPort } from "server/test/globalSetup";
 
 initializeDayjs();
@@ -36,5 +37,5 @@ vi.spyOn(config, "event").mockReturnValue({
   eventStartTime: "2023-07-28T12:00:00Z", // Fri 15:00 GMT+3
   directSignupAlwaysOpenIds: ["1234"],
   twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG, ProgramType.LARP],
-  enableRemoveOverlapSignups: true,
+  removeLotterySignupsStrategy: RemoveLotterySignupsStrategy.OVERLAP,
 });

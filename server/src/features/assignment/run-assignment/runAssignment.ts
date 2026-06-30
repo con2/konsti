@@ -4,7 +4,10 @@ import { removeCancelledDeletedProgramItemsFromUsers } from "server/features/ass
 import { AssignmentResult } from "server/types/resultTypes";
 import { findUsers } from "server/features/user/userRepository";
 import { findProgramItems } from "server/features/program-item/programItemRepository";
-import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
+import {
+  AssignmentAlgorithm,
+  RemoveLotterySignupsStrategy,
+} from "shared/config/eventConfigTypes";
 import { config } from "shared/config";
 import { removeOverlapLotterySignups } from "server/features/assignment/utils/removeOverlapLotterySignups";
 import { saveResults } from "server/features/assignment/utils/saveResults";
@@ -114,10 +117,9 @@ export const runAssignment = async ({
 
   if (
     assignResults.results.length > 0 &&
-    (config.event().enableRemoveOverlapSignups ||
-      config.event().enableRemoveAllUpcomingSignups)
+    config.event().removeLotterySignupsStrategy !==
+      RemoveLotterySignupsStrategy.NONE
   ) {
-    logger.info("Remove overlapping signups");
     const removeOverlapSignupsResult = await removeOverlapLotterySignups(
       assignResults.results,
       validLotterySignupProgramItems,

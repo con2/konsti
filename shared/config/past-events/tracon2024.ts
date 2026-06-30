@@ -5,6 +5,7 @@ import {
   EntryConditionText,
   EventSignupStrategy,
   LoginProvider,
+  RemoveLotterySignupsStrategy,
 } from "shared/config/eventConfigTypes";
 import { ProgramType } from "shared/types/models/programItem";
 
@@ -22,7 +23,7 @@ const eventConfig: Partial<EventConfig> = {
   // Event settings
   assignmentAlgorithm: AssignmentAlgorithm.RANDOM,
   enableGroups: true,
-  enableRemoveOverlapSignups: false,
+  removeLotterySignupsStrategy: RemoveLotterySignupsStrategy.NONE,
 
   activeProgramTypes: [
     ProgramType.TABLETOP_RPG,

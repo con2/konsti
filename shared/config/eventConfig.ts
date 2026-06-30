@@ -4,6 +4,7 @@ import {
   EventConfig,
   EventSignupStrategy,
   LoginProvider,
+  RemoveLotterySignupsStrategy,
 } from "shared/config/eventConfigTypes";
 import { ProgramType, SignupType } from "shared/types/models/programItem";
 import { SignupQuestionType } from "shared/types/models/settings";
@@ -22,10 +23,8 @@ export const eventConfig: EventConfig = {
   assignmentAlgorithm: AssignmentAlgorithm.RANDOM_PADG,
   enableGroups: true,
 
-  // Remove overlapping lottery signups...
-  enableRemoveOverlapSignups: true,
-  // ... or remove all upcoming lottery signups
-  enableRemoveAllUpcomingSignups: false,
+  // Remove lottery signups after assignment: overlapping signups, all upcoming signups, or none
+  removeLotterySignupsStrategy: RemoveLotterySignupsStrategy.OVERLAP,
 
   programGuideUrl: "https://ropecon.fi/opas",
 
