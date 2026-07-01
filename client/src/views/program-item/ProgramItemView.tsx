@@ -1,4 +1,4 @@
-import { ReactElement, useEffect, useState } from "react";
+import { ReactElement, useEffect, useLayoutEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router";
 import { Loading } from "client/components/Loading";
@@ -44,6 +44,12 @@ export const ProgramItemView = (): ReactElement => {
     isInGroup,
     showAllProgramItems: true,
   });
+
+  // Open the program item page at the top, regardless of where the user was
+  // scrolled in the list (SPA navigation otherwise keeps the window scroll)
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  }, [/* effect dep */ programItemId]);
 
   const [loading, setLoading] = useState<boolean>(true);
 
