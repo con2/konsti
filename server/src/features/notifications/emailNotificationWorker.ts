@@ -24,7 +24,9 @@ export async function emailNotificationWorker(
     const userResult = await findUser(notification.username);
     if (!userResult.ok) {
       logger.error(
-        `Failed to fetch user to send email notification ${notification.username}.`,
+        new Error(
+          `Failed to fetch user to send email notification ${notification.username}`,
+        ),
       );
       return;
     }

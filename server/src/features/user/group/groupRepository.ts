@@ -93,9 +93,12 @@ export const saveGroupCreator = async (
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
     return makeSuccessResult(result.data);
-  } catch {
+  } catch (error) {
     logger.error(
-      `MongoDB: Error saving group creator status for user ${username}`,
+      new Error(
+        `MongoDB: Error saving group creator status for user ${username}`,
+        { cause: error },
+      ),
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
@@ -135,7 +138,7 @@ export const saveGroupCode = async (
   } catch (error) {
     logger.error(
       new Error(
-        `MongoDB: Error storing group ${groupCode} stored for user ${username}`,
+        `MongoDB: Error storing group ${groupCode} for user ${username}`,
         { cause: error },
       ),
     );
