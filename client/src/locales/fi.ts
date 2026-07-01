@@ -73,7 +73,7 @@ export const translationFI = {
     runTime: "Aika",
     location: "Sijainti",
     tags: "Tagit",
-    ageGroups: "Ikäryhmä",
+    ageGroups: "Kohderyhmä",
     gameSystem: "Pelijärjestelmä",
     genres: "Genret",
     organiser: "Järjestäjä",
