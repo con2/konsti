@@ -1,5 +1,6 @@
 import {
   ReactElement,
+  useEffect,
   useLayoutEffect,
   useMemo,
   useRef,
@@ -44,6 +45,11 @@ type VirtualRow =
 // Initial row-height guesses; the virtualizer measures the real heights on mount
 const HEADER_ESTIMATED_HEIGHT = 60;
 const ITEM_ESTIMATED_HEIGHT = 220;
+
+// The top visible row index when the list unmounts, so returning to it (e.g. via
+// the browser back button after viewing a program item) restores the scroll
+// position. Module-scoped so it survives navigation within the SPA session
+let savedTopRowIndex: number | null = null;
 
 export const AllProgramItemsList = ({ programItems }: Props): ReactElement => {
   const { t } = useTranslation();
@@ -192,6 +198,22 @@ export const AllProgramItemsList = ({ programItems }: Props): ReactElement => {
   const activeStickyHeaderIndex = findActiveStickyHeaderIndex(
     virtualizer.range?.startIndex ?? 0,
   );
+
+  // Restore the scroll position on mount (e.g. returning via the back button)
+  // and remember it on unmount. The virtualizer instance is stable, so this runs
+  // once per mount/unmount
+  useEffect(() => {
+    if (savedTopRowIndex !== null && savedTopRowIndex > 0) {
+      const targetIndex = savedTopRowIndex;
+      // Run after the scroll margin has been measured (layout effect above)
+      requestAnimationFrame(() => {
+        virtualizer.scrollToIndex(targetIndex, { align: "start" });
+      });
+    }
+    return () => {
+      savedTopRowIndex = virtualizer.range?.startIndex ?? null;
+    };
+  }, [virtualizer]);
 
   const { programGuideUrl } = config.event();
 
