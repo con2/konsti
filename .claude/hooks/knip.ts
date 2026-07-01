@@ -37,14 +37,9 @@ const anyUncommittedCodeChanges = (): boolean => {
   }
 };
 
-let shouldRun: boolean;
-if (filePath) {
-  shouldRun = isCodeFile(filePath);
-} else if (input.tool_name === "Bash") {
-  shouldRun = anyUncommittedCodeChanges();
-} else {
-  shouldRun = false;
-}
+// filePath set (Write/Edit): check that file. Otherwise (Stop hook or Bash):
+// run if any uncommitted change touches code
+const shouldRun = filePath ? isCodeFile(filePath) : anyUncommittedCodeChanges();
 
 if (!shouldRun) {
   process.exit(0);
