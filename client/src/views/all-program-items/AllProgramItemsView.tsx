@@ -1,4 +1,10 @@
-import { ReactElement, useEffect, useMemo, useState } from "react";
+import {
+  ReactElement,
+  useDeferredValue,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { useDebounce } from "use-debounce";
 import { useSearchParams } from "react-router";
 import { AllProgramItemsList } from "client/views/all-program-items/components/AllProgramItemsList";
@@ -165,7 +171,7 @@ export const AllProgramItemsView = (): ReactElement => {
     });
   }, [programTypePairs, dispatch, programTypeQueryParamValue, setSearchParams]);
 
-  const memoizedProgramItems = useMemo(() => {
+  const programItemsToShow = useMemo(() => {
     const visibleProgramItems = getVisibleProgramItems(
       filteredProgramItems,
       selectedStartingTime,
@@ -173,12 +179,11 @@ export const AllProgramItemsView = (): ReactElement => {
       hideFullItems,
       fullProgramItemIds,
     );
-    const programItemsToShow = showOnlyInvalidProgramItems
+    return showOnlyInvalidProgramItems
       ? visibleProgramItems.filter(
           (programItem) => !getProgramItemValidity(programItem).allValuesValid,
         )
       : visibleProgramItems;
-    return <AllProgramItemsList programItems={programItemsToShow} />;
   }, [
     filteredProgramItems,
     hideFullItems,
@@ -187,6 +192,18 @@ export const AllProgramItemsView = (): ReactElement => {
     showOnlyInvalidProgramItems,
     fullProgramItemIds,
   ]);
+
+  // Render the (expensive) list at lower priority so changing a filter keeps
+  // the controls responsive instead of freezing the main thread while hundreds
+  // of program items mount
+  const deferredProgramItems = useDeferredValue(programItemsToShow);
+
+  // While the deferred list is still catching up from an empty state (initial
+  // load, or returning from a no-results filter) keep showing Loading, so the
+  // stale empty value doesn't render a premature "no program items" message
+  const isListPending = programItemsToShow !== deferredProgramItems;
+  const showLoading =
+    loading || (isListPending && deferredProgramItems.length === 0);
 
   return (
     <>
@@ -200,7 +217,11 @@ export const AllProgramItemsView = (): ReactElement => {
         hideFullItems={hideFullItems}
         setHideFullItems={setHideFullItems}
       />
-      {loading ? <Loading /> : memoizedProgramItems}
+      {showLoading ? (
+        <Loading />
+      ) : (
+        <AllProgramItemsList programItems={deferredProgramItems} />
+      )}
       <ScrollToTopButton />
     </>
   );
