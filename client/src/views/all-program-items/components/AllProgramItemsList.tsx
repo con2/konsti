@@ -48,13 +48,25 @@ export const AllProgramItemsList = ({ programItems }: Props): ReactElement => {
     (state) => state.admin.signupQuestions,
   );
 
-  const getPublicSignupQuestion = (
-    programItemId: string,
-  ): SignupQuestion | undefined => {
-    return signupQuestions.find(
-      (s) => s.programItemId === programItemId && !s.private,
-    );
-  };
+  // Index signups by program item id so each row is an O(1) lookup instead of
+  // scanning the full signups array (which made the list render O(n^2))
+  const signupsByProgramItemId = new Map(
+    signups.map((signup) => [signup.programItemId, signup.users]),
+  );
+
+  // Index the first public signup question per program item id
+  const publicSignupQuestionByProgramItemId = new Map<string, SignupQuestion>();
+  for (const signupQuestion of signupQuestions) {
+    if (
+      !signupQuestion.private &&
+      !publicSignupQuestionByProgramItemId.has(signupQuestion.programItemId)
+    ) {
+      publicSignupQuestionByProgramItemId.set(
+        signupQuestion.programItemId,
+        signupQuestion,
+      );
+    }
+  }
 
   const ownOrGroupCreatorLotterySignups = getLotterySignups({
     lotterySignups,
@@ -84,17 +96,14 @@ export const AllProgramItemsList = ({ programItems }: Props): ReactElement => {
           <ProgramItemListTitle startTime={startTime} />
 
           {programItemsForStartTime.map((programItem) => {
-            const programItemSignups = signups.find(
-              (programItemSignup) =>
-                programItemSignup.programItemId === programItem.programItemId,
-            );
-
             return (
               <ProgramItemEntry
                 key={programItem.programItemId}
                 isAlwaysExpanded={false}
                 programItem={programItem}
-                signups={programItemSignups?.users ?? []}
+                signups={
+                  signupsByProgramItemId.get(programItem.programItemId) ?? []
+                }
                 signupStrategy={
                   programItem.signupStrategy ?? ProgramItemSignupStrategy.DIRECT
                 }
@@ -103,7 +112,7 @@ export const AllProgramItemsList = ({ programItems }: Props): ReactElement => {
                 username={username}
                 loggedIn={loggedIn}
                 userGroup={userGroup}
-                publicSignupQuestion={getPublicSignupQuestion(
+                publicSignupQuestion={publicSignupQuestionByProgramItemId.get(
                   programItem.programItemId,
                 )}
               />

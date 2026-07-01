@@ -1,4 +1,4 @@
-import { ReactElement } from "react";
+import { memo, ReactElement } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import {
@@ -41,7 +41,7 @@ interface Props {
   publicSignupQuestion: SignupQuestion | undefined;
 }
 
-export const ProgramItemEntry = ({
+export const ProgramItemEntry = memo(function ProgramItemEntryComponent({
   programItem,
   signups,
   signupStrategy,
@@ -52,7 +52,7 @@ export const ProgramItemEntry = ({
   loggedIn,
   userGroup,
   publicSignupQuestion,
-}: Props): ReactElement => {
+}: Props): ReactElement {
   const { t } = useTranslation();
   const { noKonstiSignupIds } = config.event();
 
@@ -154,7 +154,7 @@ export const ProgramItemEntry = ({
       )}
     </StyledCard>
   );
-};
+});
 
 const StyledCard = styled(RaisedCard)`
   display: flex;

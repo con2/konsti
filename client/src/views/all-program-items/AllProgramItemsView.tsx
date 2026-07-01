@@ -42,10 +42,6 @@ const programTypeQueryParam = "programType";
 // Query param that lists program items missing required info, like attendance limits
 const invalidQueryParam = "invalid";
 
-type ProgramItemWithFullness = ProgramItem & {
-  isFull: boolean;
-};
-
 export const AllProgramItemsView = (): ReactElement => {
   const [searchParams, setSearchParams] = useSearchParams();
   const programTypeQueryParamValue = searchParams.get(programTypeQueryParam);
@@ -66,37 +62,42 @@ export const AllProgramItemsView = (): ReactElement => {
   const [hideFullItems, setHideFullItems] =
     useState<boolean>(getSavedHideFull());
   const [filteredProgramItems, setFilteredProgramItems] = useState<
-    readonly ProgramItemWithFullness[]
+    readonly ProgramItem[]
   >([]);
   const [selectedStartingTime, setSelectedStartingTime] =
     useState<StartingTimeOption>(getSavedStartingTime());
 
   const [debouncedSearchTerm] = useDebounce(searchTerm, 300);
 
-  const activeVisibleProgramItems: ProgramItemWithFullness[] = useMemo(
-    () =>
-      activeProgramItems
-        .filter((programItem) => {
-          const hidden = hiddenProgramItems.some(
-            (hiddenProgramItem) =>
-              programItem.programItemId === hiddenProgramItem.programItemId,
-          );
-          if (!hidden) {
-            return programItem;
-          }
-        })
-        .map((programItem) => {
-          const signupCount =
-            signups.find(
-              (signup) => signup.programItemId == programItem.programItemId,
-            )?.users.length ?? -1;
-          return {
-            ...programItem,
-            isFull: signupCount >= programItem.maxAttendance,
-          };
-        }),
-    [activeProgramItems, hiddenProgramItems, signups],
-  );
+  // Keep the original program item references stable (no per-item object
+  // spread) so React.memo on ProgramItemEntry can bail out when the same item
+  // persists across a program type change
+  const activeVisibleProgramItems: readonly ProgramItem[] = useMemo(() => {
+    const hiddenIds = new Set(
+      hiddenProgramItems.map(
+        (hiddenProgramItem) => hiddenProgramItem.programItemId,
+      ),
+    );
+    return activeProgramItems.filter(
+      (programItem) => !hiddenIds.has(programItem.programItemId),
+    );
+  }, [activeProgramItems, hiddenProgramItems]);
+
+  // Track fullness separately from the program item objects (an O(1) id lookup)
+  const fullProgramItemIds: ReadonlySet<string> = useMemo(() => {
+    const signupCountByProgramItemId = new Map(
+      signups.map((signup) => [signup.programItemId, signup.users.length]),
+    );
+    const fullIds = new Set<string>();
+    for (const programItem of activeProgramItems) {
+      const signupCount =
+        signupCountByProgramItemId.get(programItem.programItemId) ?? -1;
+      if (signupCount >= programItem.maxAttendance) {
+        fullIds.add(programItem.programItemId);
+      }
+    }
+    return fullIds;
+  }, [activeProgramItems, signups]);
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -170,6 +171,7 @@ export const AllProgramItemsView = (): ReactElement => {
       selectedStartingTime,
       selectedTag,
       hideFullItems,
+      fullProgramItemIds,
     );
     const programItemsToShow = showOnlyInvalidProgramItems
       ? visibleProgramItems.filter(
@@ -183,6 +185,7 @@ export const AllProgramItemsView = (): ReactElement => {
     selectedStartingTime,
     selectedTag,
     showOnlyInvalidProgramItems,
+    fullProgramItemIds,
   ]);
 
   return (
@@ -204,10 +207,11 @@ export const AllProgramItemsView = (): ReactElement => {
 };
 
 const getVisibleProgramItems = (
-  programItems: readonly ProgramItemWithFullness[],
+  programItems: readonly ProgramItem[],
   selectedView: StartingTimeOption,
   selectedTag: string,
   hideFull: boolean,
+  fullProgramItemIds: ReadonlySet<string>,
 ): readonly ProgramItem[] => {
   const tagFilteredProgramItems = getTagFilteredProgramItems(
     programItems,
@@ -215,7 +219,9 @@ const getVisibleProgramItems = (
   );
 
   const fullnessFiltered = hideFull
-    ? tagFilteredProgramItems.filter((item) => !item.isFull)
+    ? tagFilteredProgramItems.filter(
+        (item) => !fullProgramItemIds.has(item.programItemId),
+      )
     : tagFilteredProgramItems;
 
   // Before the main event program is visible, only show pre-convention week program.
@@ -239,9 +245,9 @@ const getVisibleProgramItems = (
 };
 
 const getTagFilteredProgramItems = (
-  programItems: readonly ProgramItemWithFullness[],
+  programItems: readonly ProgramItem[],
   selectedTag: string,
-): readonly ProgramItemWithFullness[] => {
+): readonly ProgramItem[] => {
   if (!selectedTag) {
     return programItems;
   }
