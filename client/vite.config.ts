@@ -67,7 +67,11 @@ export default defineConfig(({ mode }) => {
           svgProps: { role: "img" },
         },
       }),
-      react(),
+      react({
+        babel: {
+          plugins: [["babel-plugin-react-compiler", { target: "19" }]],
+        },
+      }),
       viteStaticCopy({
         targets: [
           {
