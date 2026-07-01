@@ -3,7 +3,7 @@ import { execFileSync, type StdioOptions } from "node:child_process";
 // Hooks can fire with any working directory (e.g. server/ after a `cd`), but the
 // yarn scripts (knip, type-check, ...) and the repo-root-relative paths from
 // `git status` only resolve from the repository root. Anchor every yarn call there
-const getProjectRoot = (): string => {
+export const getProjectRoot = (): string => {
   if (process.env.CLAUDE_PROJECT_DIR) {
     return process.env.CLAUDE_PROJECT_DIR;
   }

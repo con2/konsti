@@ -2,6 +2,17 @@
   "hooks": {
     "SessionStart": [
       {
+        "matcher": "startup|resume|clear",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "npx tsx \"$CLAUDE_PROJECT_DIR/.claude/hooks/install.ts\"",
+            "timeout": 600,
+            "statusMessage": "Ensuring dependencies are installed..."
+          }
+        ]
+      },
+      {
         "matcher": "compact",
         "hooks": [
           {
