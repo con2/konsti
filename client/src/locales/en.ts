@@ -74,7 +74,7 @@ export const translationEN = {
     runTime: "Time",
     location: "Location",
     tags: "Tags",
-    ageGroups: "Age group",
+    ageGroups: "Target group",
     gameSystem: "Game system",
     genres: "Genres",
     organiser: "Organiser",
