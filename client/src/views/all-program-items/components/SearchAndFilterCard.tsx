@@ -23,12 +23,7 @@ import {
   selectTags,
 } from "client/views/all-program-items/allProgramItemsSlice";
 import { Checkbox } from "client/components/Checkbox";
-
-export enum StartingTimeOption {
-  UPCOMING = "upcoming",
-  ALL = "all",
-  REVOLVING_DOOR = "revolvingDoor",
-}
+import { StartingTimeOption } from "client/views/all-program-items/programListUtils";
 
 interface Props {
   selectedTag: Tag | Language | AgeGroup | "";
