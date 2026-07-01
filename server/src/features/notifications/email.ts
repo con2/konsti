@@ -7,6 +7,7 @@ import {
 import SMTPTransport from "nodemailer/lib/smtp-transport";
 import { config } from "shared/config";
 import { EmailMessage } from "server/features/notifications/senderCommon";
+import { logger } from "server/utils/logger";
 
 export class EmailSender {
   private transport:
@@ -18,7 +19,10 @@ export class EmailSender {
   async getTransport(): Promise<
     Transporter<SMTPTransport.SentMessageInfo, SMTPTransport.Options>
   > {
-    if (process.env.NODE_ENV === "production") {
+    if (this.transport) {
+      return this.transport;
+    }
+    if (process.env.SETTINGS === "production") {
       this.transport = createTransport({
         host: config.server().emailSMTPHost,
         port: config.server().emailSMTPPort,
@@ -44,10 +48,9 @@ export class EmailSender {
   async sendEmail(message: EmailMessage): Promise<void> {
     const transporter = await this.getTransport();
     const info = await transporter.sendMail(message);
-    if (process.env.NODE_ENV !== "production") {
+    if (process.env.SETTINGS !== "production") {
       this.sentMessages.push(message);
-      // eslint-disable-next-line no-console
-      console.log(getTestMessageUrl(info));
+      logger.info(getTestMessageUrl(info));
     }
   }
 }
