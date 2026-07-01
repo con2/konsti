@@ -59,6 +59,8 @@ Endpoint constants (`ApiEndpoint`, `ApiDevEndpoint`, `AuthEndpoint`) come from `
 
 styled-components only (no CSS modules, no component library). Pull tokens from the theme via props: `(props) => props.theme.breakpointPhone`. Responsive via `@media (max-width: ${(props) => props.theme.breakpointPhone})`. Global resets in `globalStyle.ts`. Stylelint (with the a11y plugin) lints the CSS-in-JS — run `yarn workspace client stylelint`.
 
+**Always source colors from `client/src/theme.ts`** — never hard-code color values (hex/rgb) in components. Use `props.theme.<token>` in styled templates; in a context without props (e.g. module-level `keyframes`), `import { theme } from "client/theme"` and reference `theme.<token>` directly. Add a new token to `theme.ts` rather than inlining a one-off color.
+
 ## Internationalization
 
 i18next, English + Finnish. Locale files: `client/src/locales/{en,fi}.ts` (deeply nested `as const` objects). `client/src/utils/i18n.ts` has an `expectLocalesToMatch` type-level check — if EN and FI don't have identical key shapes, type-check fails. The same `NestedKeyOf` machinery makes `t("...")` calls type-checked at the call site (missing keys are TS errors).

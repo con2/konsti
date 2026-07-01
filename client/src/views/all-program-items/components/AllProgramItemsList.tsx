@@ -35,6 +35,9 @@ import { config } from "shared/config";
 
 interface Props {
   programItems: readonly ProgramItem[];
+  // Program item to briefly highlight (and scroll to) — the one the user just
+  // came back from, or null
+  highlightedProgramItemId: string | null;
 }
 
 // The grouped list is flattened into a single sequence of rows (a start-time
@@ -52,7 +55,10 @@ const ITEM_ESTIMATED_HEIGHT = 220;
 // position. Module-scoped so it survives navigation within the SPA session
 let savedTopRowIndex: number | null = null;
 
-export const AllProgramItemsList = ({ programItems }: Props): ReactElement => {
+export const AllProgramItemsList = ({
+  programItems,
+  highlightedProgramItemId,
+}: Props): ReactElement => {
   const { t } = useTranslation();
 
   const signups = useAppSelector(
@@ -188,21 +194,46 @@ export const AllProgramItemsList = ({ programItems }: Props): ReactElement => {
     virtualizer.range?.startIndex ?? 0,
   );
 
-  // Restore the scroll position on mount (e.g. returning via the back button)
-  // and remember it on unmount. The virtualizer instance is stable, so this runs
-  // once per mount/unmount
+  // Remember the scroll position on unmount so it can be restored on return
+  // (e.g. via the back button). The virtualizer instance is stable, so the
+  // cleanup runs once, on unmount
   useEffect(() => {
-    if (savedTopRowIndex !== null && savedTopRowIndex > 0) {
-      const targetIndex = savedTopRowIndex;
-      // Run after the scroll margin has been measured (layout effect above)
-      requestAnimationFrame(() => {
-        virtualizer.scrollToIndex(targetIndex, { align: "start" });
-      });
-    }
     return () => {
       savedTopRowIndex = virtualizer.range?.startIndex ?? null;
     };
   }, [virtualizer]);
+
+  // On mount, scroll to the just-viewed item (so its highlight is visible) or
+  // otherwise restore the previous scroll position. Guarded to run only once,
+  // when the list first has rows
+  const hasRestoredScrollRef = useRef(false);
+  useEffect(() => {
+    if (hasRestoredScrollRef.current || rows.length === 0) {
+      return;
+    }
+    hasRestoredScrollRef.current = true;
+
+    const highlightedIndex =
+      highlightedProgramItemId === null
+        ? -1
+        : rows.findIndex(
+            (row) =>
+              row.kind === "item" &&
+              row.programItem.programItemId === highlightedProgramItemId,
+          );
+
+    // Run after the scroll margin has been measured (layout effect above)
+    if (highlightedIndex >= 0) {
+      requestAnimationFrame(() => {
+        virtualizer.scrollToIndex(highlightedIndex, { align: "center" });
+      });
+    } else if (savedTopRowIndex !== null && savedTopRowIndex > 0) {
+      const targetIndex = savedTopRowIndex;
+      requestAnimationFrame(() => {
+        virtualizer.scrollToIndex(targetIndex, { align: "start" });
+      });
+    }
+  }, [rows, highlightedProgramItemId, virtualizer]);
 
   const { programGuideUrl } = config.event();
 
@@ -260,6 +291,9 @@ export const AllProgramItemsList = ({ programItems }: Props): ReactElement => {
               ) : (
                 <ProgramItemEntry
                   isAlwaysExpanded={false}
+                  isRecentlyViewed={
+                    row.programItem.programItemId === highlightedProgramItemId
+                  }
                   programItem={row.programItem}
                   signups={
                     signupsByProgramItemId.get(row.programItem.programItemId) ??

@@ -8,6 +8,8 @@ import {
 import { useDebounce } from "use-debounce";
 import { useSearchParams } from "react-router";
 import { AllProgramItemsList } from "client/views/all-program-items/components/AllProgramItemsList";
+import { usePreviousLocation } from "client/app/HistoryContext";
+import { AppRoute } from "client/app/AppRoutes";
 import { Loading } from "client/components/Loading";
 import {
   ProgramItem,
@@ -48,6 +50,7 @@ export const AllProgramItemsView = (): ReactElement => {
   const programTypeQueryParamValue = searchParams.get(programTypeQueryParam);
   const showOnlyInvalidProgramItems = searchParams.has(invalidQueryParam);
   const dispatch = useAppDispatch();
+  const previousLocation = usePreviousLocation();
 
   const activeProgramItems = useAppSelector(selectActiveProgramItems);
   const hiddenProgramItems = useAppSelector(selectHiddenProgramItems);
@@ -200,6 +203,27 @@ export const AllProgramItemsView = (): ReactElement => {
   const showLoading =
     loading || (isListPending && deferredProgramItems.length === 0);
 
+  // If the user just came back from a program item page, briefly highlight that
+  // item in the list. Captured once on mount, before the previous location is
+  // overwritten, then cleared after the highlight has had time to play
+  const [highlightedProgramItemId, setHighlightedProgramItemId] = useState<
+    string | null
+  >(() => {
+    const previousPathname = previousLocation?.pathname ?? "";
+    const programItemPrefix = `${AppRoute.PROGRAM_ITEM}/`;
+    return previousPathname.startsWith(programItemPrefix)
+      ? previousPathname.slice(programItemPrefix.length)
+      : null;
+  });
+
+  useEffect(() => {
+    if (highlightedProgramItemId === null) {
+      return;
+    }
+    const timer = setTimeout(() => setHighlightedProgramItemId(null), 3000);
+    return () => clearTimeout(timer);
+  }, [highlightedProgramItemId]);
+
   return (
     <>
       <SearchAndFilterCard
@@ -215,7 +239,10 @@ export const AllProgramItemsView = (): ReactElement => {
       {showLoading ? (
         <Loading />
       ) : (
-        <AllProgramItemsList programItems={deferredProgramItems} />
+        <AllProgramItemsList
+          programItems={deferredProgramItems}
+          highlightedProgramItemId={highlightedProgramItemId}
+        />
       )}
       <ScrollToTopButton />
     </>

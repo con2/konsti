@@ -1,6 +1,7 @@
 import { memo, ReactElement } from "react";
-import styled from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 import { useTranslation } from "react-i18next";
+import { theme } from "client/theme";
 import {
   ProgramItem,
   ProgramItemSignupStrategy,
@@ -39,6 +40,7 @@ interface Props {
   loggedIn: boolean;
   userGroup: UserGroup;
   publicSignupQuestion: SignupQuestion | undefined;
+  isRecentlyViewed: boolean;
 }
 
 export const ProgramItemEntry = memo(function ProgramItemEntryComponent({
@@ -52,6 +54,7 @@ export const ProgramItemEntry = memo(function ProgramItemEntryComponent({
   loggedIn,
   userGroup,
   publicSignupQuestion,
+  isRecentlyViewed,
 }: Props): ReactElement {
   const { t } = useTranslation();
   const { noKonstiSignupIds } = config.event();
@@ -104,6 +107,7 @@ export const ProgramItemEntry = memo(function ProgramItemEntryComponent({
   return (
     <StyledCard
       isHighlighted={isProgramItemSigned}
+      $recentlyViewed={isRecentlyViewed}
       data-testid="program-item-container"
     >
       <ProgramItemHead
@@ -156,11 +160,34 @@ export const ProgramItemEntry = memo(function ProgramItemEntryComponent({
   );
 });
 
-const StyledCard = styled(RaisedCard)`
+// Brief glow to point out a just-viewed item on returning to the list. Holds at
+// full for a moment, then fades out over the card's resting shadow so nothing
+// snaps when it ends
+const recentlyViewedFlash = keyframes`
+  0%,
+  25% {
+    box-shadow:
+      0 0 0 4px ${theme.borderActive},
+      ${theme.shadowLower};
+  }
+  100% {
+    box-shadow:
+      0 0 0 4px transparent,
+      ${theme.shadowLower};
+  }
+`;
+
+const StyledCard = styled(RaisedCard)<{ $recentlyViewed: boolean }>`
   display: flex;
   flex-direction: column;
   gap: 16px;
   color: ${(props) => props.theme.textLighter};
+
+  ${(props) =>
+    props.$recentlyViewed &&
+    css`
+      animation: ${recentlyViewedFlash} 2s ease-out;
+    `}
 `;
 
 const CanceledMessage = styled.div`

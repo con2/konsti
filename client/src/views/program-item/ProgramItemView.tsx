@@ -76,6 +76,7 @@ export const ProgramItemView = (): ReactElement => {
       {foundProgramItem && (
         <ProgramItemEntry
           isAlwaysExpanded={true}
+          isRecentlyViewed={false}
           programItem={foundProgramItem}
           signups={programSignups}
           signupStrategy={
