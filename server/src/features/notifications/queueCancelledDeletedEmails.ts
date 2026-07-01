@@ -62,8 +62,10 @@ export const queueCancelledDeletedEmails = async (
   );
   if (!queueResult.ok) {
     logger.error(
-      "Failed to queue cancelled/deleted program item email notifications: %s",
-      queueResult.error,
+      new Error(
+        "Failed to queue cancelled/deleted program item email notifications",
+        { cause: queueResult.error },
+      ),
     );
   }
 };

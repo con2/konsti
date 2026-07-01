@@ -28,7 +28,9 @@ export const postEmailTest = async (
     const fromAddress = config.server().emailSendFromAddress;
     const programItemResult = await findProgramItemById(programId);
     if (!programItemResult.ok) {
-      logger.error(`Failed to found program for programItemId ${programId}`);
+      logger.error(
+        new Error(`Failed to find program for programItemId ${programId}`),
+      );
       return res.status(500).json({ message: "Failed to send test email" });
     }
 

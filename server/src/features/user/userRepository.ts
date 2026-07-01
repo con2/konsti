@@ -115,10 +115,10 @@ export const updateUserPassword = async (
       },
       { returnDocument: "after" },
     ).lean();
-    logger.debug(`MongoDB: Password for user ${username} updated`);
     if (!response) {
       return makeErrorResult(MongoDbError.USER_NOT_FOUND);
     }
+    logger.debug(`MongoDB: Password for user ${username} updated`);
 
     const result = UserSchemaDb.safeParse(response);
     if (!result.success) {

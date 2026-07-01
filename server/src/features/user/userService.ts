@@ -33,7 +33,7 @@ export const storeUser = async (
 
   // Check for valid serial
   if (!serialFoundResult.value) {
-    logger.info("User: Serial is not valid");
+    logger.info(`User ${username}: Serial is not valid`);
     return {
       errorId: "invalidSerial",
       message: "Invalid serial",
@@ -41,7 +41,7 @@ export const storeUser = async (
     };
   }
 
-  logger.info("User: Serial is valid");
+  logger.info(`User ${username}: Serial is valid`);
 
   // Check that serial is not used
 
@@ -58,7 +58,7 @@ export const storeUser = async (
   const user = userResult.value;
 
   if (user) {
-    logger.info(`User: Username ${username} is already registered`);
+    logger.info(`User ${username}: Username is already registered`);
     return {
       errorId: "usernameNotFree",
       message: "Username in already registered",
@@ -83,7 +83,7 @@ export const storeUser = async (
 
     // Serial used
     if (serialResponse) {
-      logger.info("User: Serial used");
+      logger.info(`User ${username}: Serial used`);
       return {
         errorId: "invalidSerial",
         message: "Invalid serial",
@@ -106,7 +106,7 @@ export const storeUser = async (
       const passwordHash = passwordHashResult.value;
 
       if (!passwordHash) {
-        logger.info("User: Serial used");
+        logger.error(new Error(`User ${username}: Password hashing failed`));
         return {
           errorId: "invalidSerial",
           message: "Invalid serial",
