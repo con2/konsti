@@ -194,18 +194,20 @@ export const AllProgramItemsList = ({
     virtualizer.range?.startIndex ?? 0,
   );
 
-  // Remember the scroll position on unmount so it can be restored on return
-  // (e.g. via the back button). The virtualizer instance is stable, so the
-  // cleanup runs once, on unmount
-  useEffect(() => {
+  // Remember the top visible row on unmount so it can be restored on return
+  // (e.g. via the back button). Runs as a layout-effect cleanup so it reads the
+  // virtualizer range before the next route (the program item page) resets the
+  // window scroll, which would otherwise leave the range pointing at the top.
+  // The virtualizer instance is stable, so the cleanup runs once, on unmount
+  useLayoutEffect(() => {
     return () => {
       savedTopRowIndex = virtualizer.range?.startIndex ?? null;
     };
   }, [virtualizer]);
 
-  // On mount, scroll to the just-viewed item (so its highlight is visible) or
-  // otherwise restore the previous scroll position. Guarded to run only once,
-  // when the list first has rows
+  // On mount, restore the previous scroll position (e.g. returning via the back
+  // button). The just-viewed item keeps its place and is highlighted where it
+  // sits. Guarded to run only once, when the list first has rows
   const hasRestoredScrollRef = useRef(false);
   useEffect(() => {
     if (hasRestoredScrollRef.current || rows.length === 0) {
@@ -213,27 +215,14 @@ export const AllProgramItemsList = ({
     }
     hasRestoredScrollRef.current = true;
 
-    const highlightedIndex =
-      highlightedProgramItemId === null
-        ? -1
-        : rows.findIndex(
-            (row) =>
-              row.kind === "item" &&
-              row.programItem.programItemId === highlightedProgramItemId,
-          );
-
-    // Run after the scroll margin has been measured (layout effect above)
-    if (highlightedIndex >= 0) {
-      requestAnimationFrame(() => {
-        virtualizer.scrollToIndex(highlightedIndex, { align: "center" });
-      });
-    } else if (savedTopRowIndex !== null && savedTopRowIndex > 0) {
+    if (savedTopRowIndex !== null && savedTopRowIndex > 0) {
       const targetIndex = savedTopRowIndex;
+      // Run after the scroll margin has been measured (layout effect above)
       requestAnimationFrame(() => {
         virtualizer.scrollToIndex(targetIndex, { align: "start" });
       });
     }
-  }, [rows, highlightedProgramItemId, virtualizer]);
+  }, [rows, virtualizer]);
 
   const { programGuideUrl } = config.event();
 

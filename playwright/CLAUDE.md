@@ -70,7 +70,7 @@ Helpers log in as `admin:test` internally where admin rights are needed. Test cr
 
 ## Tests (`playwright/tests/`)
 
-Specs cover the main user flows: auth (`login`, `kompassiLogin`, `registration`, `logout`), signup (`lotterySignup`, `directSignup`, `preConventionWeekSignup`, `favorite`, `admission`), groups (`group`, `groupManage`), discovery (`programSearch`, `programListQueryParams` — the `programType`/`invalid` program-list URL params), staff tools (`admin`, `adminConsole`, `helper`), `profile`, `about`, and program-item lifecycle (`cancelProgramItem`, `moveProgramItem` — the cancellation/start-time-change notifications described in [server/CLAUDE.md](../server/CLAUDE.md)).
+Specs cover the main user flows: auth (`login`, `kompassiLogin`, `registration`, `logout`), signup (`lotterySignup`, `directSignup`, `preConventionWeekSignup`, `favorite`, `admission`), groups (`group`, `groupManage`), discovery (`programSearch`, `programListQueryParams` — the `programType`/`invalid` program-list URL params, `programListScroll` — the virtualized list's scroll restore/reset on navigation), staff tools (`admin`, `adminConsole`, `helper`), `profile`, `about`, and program-item lifecycle (`cancelProgramItem`, `moveProgramItem` — the cancellation/start-time-change notifications described in [server/CLAUDE.md](../server/CLAUDE.md)).
 
 ### Page Objects (`pages/`)
 
