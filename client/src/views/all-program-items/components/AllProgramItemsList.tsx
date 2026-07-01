@@ -1,8 +1,18 @@
-import { ReactElement } from "react";
+import {
+  ReactElement,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { Link } from "react-router";
 import { useTranslation } from "react-i18next";
 import { sortBy, groupBy } from "remeda";
 import styled from "styled-components";
+import {
+  defaultRangeExtractor,
+  useWindowVirtualizer,
+} from "@tanstack/react-virtual";
 import { ProgramItemEntry } from "client/views/program-item/ProgramItemEntry";
 import { useAppSelector } from "client/utils/hooks";
 import {
@@ -24,6 +34,16 @@ import { config } from "shared/config";
 interface Props {
   programItems: readonly ProgramItem[];
 }
+
+// The grouped list is flattened into a single sequence of rows (a start-time
+// header followed by its program items) so it can be window-virtualized
+type VirtualRow =
+  | { kind: "header"; startTime: string }
+  | { kind: "item"; programItem: ProgramItem };
+
+// Initial row-height guesses; the virtualizer measures the real heights on mount
+const HEADER_ESTIMATED_HEIGHT = 60;
+const ITEM_ESTIMATED_HEIGHT = 220;
 
 export const AllProgramItemsList = ({ programItems }: Props): ReactElement => {
   const { t } = useTranslation();
@@ -76,83 +96,208 @@ export const AllProgramItemsList = ({ programItems }: Props): ReactElement => {
     showAllProgramItems: true,
   });
 
-  const sortedProgramItems = sortBy(
-    programItems,
-    (programItem) => programItem.startTime,
-    (programItem) => programItem.title.toLowerCase(),
-  );
+  // Flatten the grouped list once per program-item set (stable across scroll and
+  // language changes so it stays out of the scroll render path)
+  const { rows, stickyHeaderIndexes } = useMemo(() => {
+    const sortedProgramItems = sortBy(
+      programItems,
+      (programItem) => programItem.startTime,
+      (programItem) => programItem.title.toLowerCase(),
+    );
+    const programItemsByStartTime = groupBy(
+      sortedProgramItems,
+      (programItem) => programItem.startTime,
+    );
 
-  const programItemsByStartTime = groupBy(
-    sortedProgramItems,
-    (programItem) => programItem.startTime,
+    const nextRows: VirtualRow[] = [];
+    const nextStickyHeaderIndexes: number[] = [];
+    for (const [startTime, programItemsForStartTime] of Object.entries(
+      programItemsByStartTime,
+    )) {
+      nextStickyHeaderIndexes.push(nextRows.length);
+      nextRows.push({ kind: "header", startTime });
+      for (const programItem of programItemsForStartTime) {
+        nextRows.push({ kind: "item", programItem });
+      }
+    }
+    return { rows: nextRows, stickyHeaderIndexes: nextStickyHeaderIndexes };
+  }, [programItems]);
+
+  // The page itself scrolls (no inner scroll container), so virtualize against
+  // the window. scrollMargin is the list's offset from the top of the document
+  const listRef = useRef<HTMLDivElement>(null);
+  const [scrollMargin, setScrollMargin] = useState(0);
+  useLayoutEffect(() => {
+    const element = listRef.current;
+    if (!element) {
+      return;
+    }
+    // Keep the list's document offset current: content above it (the filter
+    // card) can change height, which would otherwise misalign every row
+    const updateScrollMargin = (): void => {
+      const nextScrollMargin =
+        element.getBoundingClientRect().top + window.scrollY;
+      setScrollMargin((previous) =>
+        previous === nextScrollMargin ? previous : nextScrollMargin,
+      );
+    };
+    updateScrollMargin();
+    const resizeObserver = new ResizeObserver(updateScrollMargin);
+    resizeObserver.observe(document.body);
+    window.addEventListener("resize", updateScrollMargin);
+    return () => {
+      resizeObserver.disconnect();
+      window.removeEventListener("resize", updateScrollMargin);
+    };
+  }, []);
+
+  // The last header at or before the top of the visible range is pinned to the
+  // top while its group scrolls (virtualized sticky headers)
+  const findActiveStickyHeaderIndex = (rangeStartIndex: number): number => {
+    let activeIndex = 0;
+    for (const headerIndex of stickyHeaderIndexes) {
+      if (headerIndex > rangeStartIndex) {
+        break;
+      }
+      activeIndex = headerIndex;
+    }
+    return activeIndex;
+  };
+
+  const virtualizer = useWindowVirtualizer({
+    count: rows.length,
+    estimateSize: (index) =>
+      rows[index].kind === "header"
+        ? HEADER_ESTIMATED_HEIGHT
+        : ITEM_ESTIMATED_HEIGHT,
+    overscan: 6,
+    scrollMargin,
+    getItemKey: (index) => {
+      const row = rows[index];
+      return row.kind === "header"
+        ? `header-${row.startTime}`
+        : row.programItem.programItemId;
+    },
+    // Always render the active sticky header, even when it's scrolled out of the
+    // measured range, so it can stay pinned to the top
+    rangeExtractor: (range) =>
+      [
+        ...new Set([
+          findActiveStickyHeaderIndex(range.startIndex),
+          ...defaultRangeExtractor(range),
+        ]),
+      ].sort((a, b) => a - b),
+  });
+
+  const activeStickyHeaderIndex = findActiveStickyHeaderIndex(
+    virtualizer.range?.startIndex ?? 0,
   );
 
   const { programGuideUrl } = config.event();
 
-  const programItemsList = Object.entries(programItemsByStartTime).map(
-    ([startTime, programItemsForStartTime]) => {
-      return (
-        <div key={startTime}>
-          <ProgramItemListTitle startTime={startTime} />
-
-          {programItemsForStartTime.map((programItem) => {
-            return (
-              <ProgramItemEntry
-                key={programItem.programItemId}
-                isAlwaysExpanded={false}
-                programItem={programItem}
-                signups={
-                  signupsByProgramItemId.get(programItem.programItemId) ?? []
-                }
-                signupStrategy={
-                  programItem.signupStrategy ?? ProgramItemSignupStrategy.DIRECT
-                }
-                lotterySignups={ownOrGroupCreatorLotterySignups}
-                directSignups={directSignups}
-                username={username}
-                loggedIn={loggedIn}
-                userGroup={userGroup}
-                publicSignupQuestion={publicSignupQuestionByProgramItemId.get(
-                  programItem.programItemId,
-                )}
-              />
-            );
-          })}
-        </div>
-      );
-    },
-  );
+  if (rows.length === 0) {
+    return (
+      <RaisedCard>
+        <Container>
+          <NoProgramItemsText>
+            {t("noProgramItemsAvailable", {
+              PROGRAM_TYPE: t(
+                `programTypePartitivePlural.${activeProgramType}`,
+              ),
+            })}
+          </NoProgramItemsText>
+          <SecondNoProgramItemsText>
+            {t("checkProgramGuide")}{" "}
+            {programGuideUrl ? (
+              <Link to={programGuideUrl} target="_blank">
+                {t("programGuide")}
+              </Link>
+            ) : (
+              t("programGuide")
+            )}
+            .
+          </SecondNoProgramItemsText>
+        </Container>
+      </RaisedCard>
+    );
+  }
 
   return (
-    <div>
-      {programItems.length === 0 && (
-        <RaisedCard>
-          <Container>
-            <NoProgramItemsText>
-              {t("noProgramItemsAvailable", {
-                PROGRAM_TYPE: t(
-                  `programTypePartitivePlural.${activeProgramType}`,
-                ),
-              })}
-            </NoProgramItemsText>
-            <SecondNoProgramItemsText>
-              {t("checkProgramGuide")}{" "}
-              {programGuideUrl ? (
-                <Link to={programGuideUrl} target="_blank">
-                  {t("programGuide")}
-                </Link>
+    <div ref={listRef}>
+      <VirtualContainer style={{ height: virtualizer.getTotalSize() }}>
+        {virtualizer.getVirtualItems().map((virtualItem) => {
+          const row = rows[virtualItem.index];
+          const isActiveStickyHeader =
+            row.kind === "header" &&
+            virtualItem.index === activeStickyHeaderIndex;
+          return (
+            <VirtualRowWrapper
+              key={virtualItem.key}
+              data-index={virtualItem.index}
+              ref={virtualizer.measureElement}
+              $sticky={isActiveStickyHeader}
+              style={
+                isActiveStickyHeader
+                  ? undefined
+                  : {
+                      transform: `translateY(${virtualItem.start - scrollMargin}px)`,
+                    }
+              }
+            >
+              {row.kind === "header" ? (
+                <ProgramItemListTitle startTime={row.startTime} />
               ) : (
-                t("programGuide")
+                <ProgramItemEntry
+                  isAlwaysExpanded={false}
+                  programItem={row.programItem}
+                  signups={
+                    signupsByProgramItemId.get(row.programItem.programItemId) ??
+                    []
+                  }
+                  signupStrategy={
+                    row.programItem.signupStrategy ??
+                    ProgramItemSignupStrategy.DIRECT
+                  }
+                  lotterySignups={ownOrGroupCreatorLotterySignups}
+                  directSignups={directSignups}
+                  username={username}
+                  loggedIn={loggedIn}
+                  userGroup={userGroup}
+                  publicSignupQuestion={publicSignupQuestionByProgramItemId.get(
+                    row.programItem.programItemId,
+                  )}
+                />
               )}
-              .
-            </SecondNoProgramItemsText>
-          </Container>
-        </RaisedCard>
-      )}
-      {programItems.length > 0 && programItemsList}
+            </VirtualRowWrapper>
+          );
+        })}
+      </VirtualContainer>
     </div>
   );
 };
+
+const VirtualContainer = styled.div`
+  position: relative;
+  width: 100%;
+`;
+
+const VirtualRowWrapper = styled.div<{ $sticky: boolean }>`
+  left: 0;
+  width: 100%;
+
+  /* Contain the child card's vertical margins so the virtualizer measures the
+     row's real footprint (margins are otherwise excluded from measurement) */
+  display: flow-root;
+
+  /* The active group header is pinned to the top of the viewport; all other
+     rows are absolutely positioned by the virtualizer via an inline transform.
+     The header's own 20px top margin is contained by flow-root, so the pin is
+     lifted by that amount to keep the header flush with the viewport top */
+  ${(props) =>
+    props.$sticky
+      ? `position: sticky; top: -20px; z-index: 2;`
+      : `position: absolute; top: 0;`}
+`;
 
 const Container = styled.div`
   display: flex;
