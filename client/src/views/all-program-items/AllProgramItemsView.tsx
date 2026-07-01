@@ -8,10 +8,6 @@ import {
 import { useDebounce } from "use-debounce";
 import { useSearchParams } from "react-router";
 import { AllProgramItemsList } from "client/views/all-program-items/components/AllProgramItemsList";
-import {
-  getUpcomingProgramItems,
-  isMainEventProgramVisible,
-} from "client/utils/getUpcomingProgramItems";
 import { Loading } from "client/components/Loading";
 import {
   ProgramItem,
@@ -19,8 +15,6 @@ import {
   Tag,
   AgeGroup,
 } from "shared/types/models/programItem";
-import { getTimeNow } from "client/utils/getTimeNow";
-import { isPreConventionWeekProgramItem } from "shared/utils/isPreConventionWeekProgramItem";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import {
   selectActiveProgramItems,
@@ -34,13 +28,14 @@ import {
   getSavedStartingTime,
   getSavedTag,
 } from "client/utils/sessionStorage";
-import {
-  SearchAndFilterCard,
-  StartingTimeOption,
-} from "client/views/all-program-items/components/SearchAndFilterCard";
+import { SearchAndFilterCard } from "client/views/all-program-items/components/SearchAndFilterCard";
 import { getProgramTypeSelectOptions } from "client/utils/getProgramTypeSelectOptions";
 import { ScrollToTopButton } from "client/components/ScrollToTopButton";
 import { getProgramItemValidity } from "client/views/program-item/programItemUtils";
+import {
+  StartingTimeOption,
+  getVisibleProgramItems,
+} from "client/views/all-program-items/programListUtils";
 
 export const MULTIPLE_WHITESPACES_REGEX = /\s\s+/g;
 // Query param that selects a program type
@@ -225,71 +220,4 @@ export const AllProgramItemsView = (): ReactElement => {
       <ScrollToTopButton />
     </>
   );
-};
-
-const getVisibleProgramItems = (
-  programItems: readonly ProgramItem[],
-  selectedView: StartingTimeOption,
-  selectedTag: string,
-  hideFull: boolean,
-  fullProgramItemIds: ReadonlySet<string>,
-): readonly ProgramItem[] => {
-  const tagFilteredProgramItems = getTagFilteredProgramItems(
-    programItems,
-    selectedTag,
-  );
-
-  const fullnessFiltered = hideFull
-    ? tagFilteredProgramItems.filter(
-        (item) => !fullProgramItemIds.has(item.programItemId),
-      )
-    : tagFilteredProgramItems;
-
-  // Before the main event program is visible, only show pre-convention week program.
-  // After it is visible, pre-convention week program is in the past so it drops out of
-  // the upcoming list on its own
-  const phaseFilteredProgramItems = isMainEventProgramVisible(getTimeNow())
-    ? fullnessFiltered
-    : fullnessFiltered.filter((programItem) =>
-        isPreConventionWeekProgramItem(programItem),
-      );
-
-  if (selectedView === StartingTimeOption.UPCOMING) {
-    return getUpcomingProgramItems(phaseFilteredProgramItems);
-  } else if (selectedView === StartingTimeOption.REVOLVING_DOOR) {
-    return getUpcomingProgramItems(phaseFilteredProgramItems).filter(
-      (programItem) => programItem.revolvingDoor,
-    );
-  }
-
-  return phaseFilteredProgramItems;
-};
-
-const getTagFilteredProgramItems = (
-  programItems: readonly ProgramItem[],
-  selectedTag: string,
-): readonly ProgramItem[] => {
-  if (!selectedTag) {
-    return programItems;
-  }
-  return programItems.filter((programItem) => {
-    if (programItem.programType.includes(selectedTag)) {
-      return programItem;
-    }
-    if (programItem.tags.includes(selectedTag as Tag)) {
-      return programItem;
-    }
-    if (programItem.ageGroups.includes(selectedTag as AgeGroup)) {
-      return programItem;
-    }
-    if (programItem.languages.includes(selectedTag as Language)) {
-      return programItem;
-    }
-    if (
-      programItem.languages.includes(Language.LANGUAGE_FREE) &&
-      Object.values(Language).includes(selectedTag as Language)
-    ) {
-      return programItem;
-    }
-  });
 };

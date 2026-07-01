@@ -21,6 +21,7 @@ import {
   ProgramItemSignupStrategy,
 } from "shared/types/models/programItem";
 import { ProgramItemListTitle } from "client/views/all-program-items/components/ProgramItemListTitle";
+import { getActiveStickyHeaderIndex } from "client/views/all-program-items/programListUtils";
 import { getLotterySignups } from "client/utils/getUpcomingProgramItems";
 import {
   selectDirectSignups,
@@ -157,19 +158,6 @@ export const AllProgramItemsList = ({ programItems }: Props): ReactElement => {
     };
   }, []);
 
-  // The last header at or before the top of the visible range is pinned to the
-  // top while its group scrolls (virtualized sticky headers)
-  const findActiveStickyHeaderIndex = (rangeStartIndex: number): number => {
-    let activeIndex = 0;
-    for (const headerIndex of stickyHeaderIndexes) {
-      if (headerIndex > rangeStartIndex) {
-        break;
-      }
-      activeIndex = headerIndex;
-    }
-    return activeIndex;
-  };
-
   const virtualizer = useWindowVirtualizer({
     count: rows.length,
     estimateSize: (index) =>
@@ -189,13 +177,14 @@ export const AllProgramItemsList = ({ programItems }: Props): ReactElement => {
     rangeExtractor: (range) =>
       [
         ...new Set([
-          findActiveStickyHeaderIndex(range.startIndex),
+          getActiveStickyHeaderIndex(stickyHeaderIndexes, range.startIndex),
           ...defaultRangeExtractor(range),
         ]),
       ].sort((a, b) => a - b),
   });
 
-  const activeStickyHeaderIndex = findActiveStickyHeaderIndex(
+  const activeStickyHeaderIndex = getActiveStickyHeaderIndex(
+    stickyHeaderIndexes,
     virtualizer.range?.startIndex ?? 0,
   );
 

@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { StartingTimeOption } from "client/views/all-program-items/components/SearchAndFilterCard";
+import { StartingTimeOption } from "client/views/all-program-items/programListUtils";
 import { AgeGroup, Language, Tag } from "shared/types/models/programItem";
 import { StringToJsonSchema } from "client/utils/zodUtils";
 
