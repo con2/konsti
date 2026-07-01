@@ -40,10 +40,10 @@ const getUncommittedFiles = (): string[] => {
 let targets: string[];
 if (filePath) {
   targets = isLintable(filePath) ? [filePath] : [];
-} else if (input.tool_name === "Bash") {
-  targets = getUncommittedFiles().filter(isLintable);
 } else {
-  targets = [];
+  // Stop hook (or Bash): no single file to target, so lint every lintable
+  // file that's currently uncommitted in the working tree
+  targets = getUncommittedFiles().filter(isLintable);
 }
 
 if (targets.length === 0) {

@@ -34,14 +34,9 @@ const anyUncommittedTsChanges = (): boolean => {
   }
 };
 
-let shouldRun: boolean;
-if (filePath) {
-  shouldRun = isTypeScript(filePath);
-} else if (input.tool_name === "Bash") {
-  shouldRun = anyUncommittedTsChanges();
-} else {
-  shouldRun = false;
-}
+// filePath set (Write/Edit): check that file. Otherwise (Stop hook or Bash):
+// run if any uncommitted change touches TypeScript
+const shouldRun = filePath ? isTypeScript(filePath) : anyUncommittedTsChanges();
 
 if (!shouldRun) {
   process.exit(0);
