@@ -102,17 +102,10 @@ export const TestTime = (): ReactElement => {
 };
 
 const StyledTestTime = styled.div`
-  position: fixed;
-  opacity: 1;
-  top: 0;
-  left: 0;
   font-size: 30px;
   color: red;
-  z-index: 1000;
-
-  @media (max-width: ${(props) => props.theme.breakpointDesktop}) {
-    display: none;
-  }
+  width: fit-content;
+  pointer-events: auto;
 `;
 
 const PhaseIndicator = styled.div`

@@ -7,6 +7,9 @@ export const translationFI = {
     preWeek: "Etkoviikko",
     mainEvent: "Päätapahtuma",
   },
+  testValues: {
+    generateSerial: "Luo koodi",
+  },
   button: {
     logout: "Kirjaudu ulos",
     login: "Kirjaudu",
@@ -159,7 +162,7 @@ export const translationFI = {
   showPrivacyPolicy: "Näytä rekisteriseloste",
   hidePrivacyPolicy: "Piilota rekisteriseloste",
   registrationSerialHelp:
-    "Nouda rekisteröintikoodi Larp- ja Roolipelitiskiltä, Pelitiskiltä tai Infosta.",
+    "Larp- ja Roolipelitiskiltä, Pelitiskiltä tai Infosta",
   noLotterySignups:
     "Ei arvontailmoittautumisia. Voit ilmoittautua Kaikki ohjelma -näkymässä.",
   noFutureLotterySignups:
@@ -591,11 +594,12 @@ export const translationFI = {
       "Konstiin ei vielä voi kirjautua, mutta voit jo luoda Kompassi-tunnuksen, jolla Konstiin kirjaudutaan.",
     createKompassiAccount: "Luo Kompassi-tunnus.",
     chooseKonstiUsername: "Valitse Konsti-nimimerkki",
+    emailNotificationsTitle: "Sähköposti-ilmoitukset",
   },
   registrationView: {
     kompassiAndKonstiInfo:
       "Voit kirjautua sisään Kompassi-tunnuksella tai luoda Konsti-tunnuksen, joka on käytössä vain tässä tapahtumassa.",
-    nickVisibleHintText: "Nimimerkkisi näkyy muille käyttäjille.",
+    nickVisibleHintText: "Näkyy muille käyttäjille",
     alreadyHaveAccountLogin: "Onko sinulla jo tili? Kirjaudu sisään tästä.",
     konstiAccount: "Konsti-tunnus",
     kompassiAccount: "Kompassi-tunnus",

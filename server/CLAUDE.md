@@ -79,8 +79,8 @@ Intentional divergences from the standard chain:
 
 Dev-only test endpoints are gated in two tiers:
 
-- **`postTestSettings` / `getTestSettings`** — registered in `development`, `ci`, **and `staging`** because the staging client calls `GET /api/test-settings` on app load (before login) to read the time-mocking override. Removing it from staging breaks the SPA bootstrap.
-- **`postPopulateDb`, `postClearDb`, `postAddProgramItems`, `postAddSerials`** — registered only in `development` and `ci`. These are destructive (DB wipe/repopulate, fixture generation) and have no use in staging.
+- **`postTestSettings` / `getTestSettings`, `postAddSerials`** — registered in `development`, `ci`, **and `staging`**: the staging client calls `GET /api/test-settings` on app load (before login) to read the time-mocking override (removing it from staging breaks the SPA bootstrap), and `postAddSerials` backs the client's test-widget "Generate code" button, which is used in staging too.
+- **`postPopulateDb`, `postClearDb`, `postAddProgramItems`** — registered only in `development` and `ci`. These are destructive (DB wipe/repopulate, fixture generation) and have no use in staging.
 
 Both tiers stay out of `production` and have an `if (NODE_ENV === "production") throw` belt-and-braces guard inside the handler.
 

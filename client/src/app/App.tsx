@@ -10,6 +10,7 @@ import { config } from "shared/config";
 import { ErrorBar } from "client/components/ErrorBar";
 import { MOBILE_MARGIN } from "client/globalStyle";
 import { TestTime } from "client/test/test-components/TestTime";
+import { TestGenerateSerial } from "client/test/test-components/TestGenerateSerial";
 import { Announcement } from "client/components/Announcement";
 import { NotificationBar } from "client/views/event-log/NotificationBar";
 import { resetNetworkError } from "client/views/admin/adminUtils";
@@ -48,7 +49,12 @@ const App = (): ReactElement => {
       {!loading && (
         <BrowserRouter>
           <HistoryProvider>
-            {loadedSettings !== "production" && showTestValues && <TestTime />}
+            {loadedSettings !== "production" && showTestValues && (
+              <TestValueContainer>
+                <TestTime />
+                <TestGenerateSerial />
+              </TestValueContainer>
+            )}
             <Header />
             <ErrorBar />
             <NotificationBar />
@@ -62,6 +68,20 @@ const App = (): ReactElement => {
     </>
   );
 };
+
+const TestValueContainer = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+
+  /* Don't block clicks on the header underneath; children opt back in */
+  pointer-events: none;
+
+  @media (max-width: ${(props) => props.theme.breakpointDesktop}) {
+    display: none;
+  }
+`;
 
 const AppContainer = styled.div`
   @media (max-width: ${(props) => props.theme.breakpointPhone}) {

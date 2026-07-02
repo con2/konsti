@@ -8,6 +8,9 @@ export const translationEN = {
     preWeek: "Pre-week",
     mainEvent: "Main event",
   },
+  testValues: {
+    generateSerial: "Generate code",
+  },
   button: {
     logout: "Logout",
     login: "Login",
@@ -159,8 +162,7 @@ export const translationEN = {
   agreePrivacyPolicy: "I agree to the privacy policy",
   showPrivacyPolicy: "Show privacy policy",
   hidePrivacyPolicy: "Hide privacy policy",
-  registrationSerialHelp:
-    "You can get a registration code from the Larp & RPG Desk, the Gaming Desk or the Info.",
+  registrationSerialHelp: "From Larp & RPG Desk, Gaming Desk or Info",
   noLotterySignups:
     "No no lottery sign-ups. You can sign up in the All Program view.",
   noFutureLotterySignups:
@@ -589,11 +591,12 @@ export const translationEN = {
       "Konsti is not open yet but you can already create a Kompassi account, which is used to log in to Konsti.",
     createKompassiAccount: "Create a Kompassi account.",
     chooseKonstiUsername: "Choose a Konsti username",
+    emailNotificationsTitle: "Email notifications",
   },
   registrationView: {
     kompassiAndKonstiInfo:
       "You can log in using a Kompassi account or create a Konsti account. Your Konsti account will be removed after this event.",
-    nickVisibleHintText: "Your username will be visible to other users.",
+    nickVisibleHintText: "Visible to other users",
     alreadyHaveAccountLogin: "Do you already have an account? Log in here.",
     konstiAccount: "Konsti account",
     kompassiAccount: "Kompassi account",
@@ -626,7 +629,7 @@ export const translationEN = {
   },
   email: {
     notifications: {
-      accepted: "I would like to get notifications from Konsti to my email",
+      accepted: "I want Konsti notifications to my email",
       rejected: "I do not want to get notifications from Konsti",
       registrationDescription:
         "You can change notification settings from Profile page",
