@@ -48,9 +48,21 @@ const getAllowedCorsOrigins = (localOrigins: string[] = []): string[] => {
   return [...envVariableOrigins, ...localOrigins];
 };
 
+// PORT_OFFSET lets several local instances (e.g. one per git worktree) run side
+// by side without colliding: it shifts the server and client ports by the same
+// amount and picks a per-instance dev database name. Default 0 keeps the classic
+// 5000/8000 ports
+const portOffset = Number(process.env.PORT_OFFSET) || 0;
+const defaultServerPort = 5000 + portOffset;
+const clientPort = 8000 + portOffset;
+const devDbName = portOffset === 0 ? "konsti" : `konsti-${portOffset}`;
+
 const commonConfig = {
   // Server settings
-  port: typeof process.env.PORT === "string" ? Number(process.env.PORT) : 5000,
+  port:
+    typeof process.env.PORT === "string"
+      ? Number(process.env.PORT)
+      : defaultServerPort,
   onlyCronjobs: process.env.ONLY_CRONJOBS === "true" ? true : false,
   cronjobsAndBackendSameInstance: false, // Set this to run cronjobs and http/api server on same instance
 
@@ -147,15 +159,15 @@ const stagingConfig = {
 
 const devConfig = {
   dbConnString: process.env.CONN_STRING ?? "mongodb://localhost:27017",
-  dbName: process.env.DB_NAME ?? "konsti",
+  dbName: process.env.DB_NAME ?? devDbName,
   jwtSecretKey: "secret",
   jwtSecretKeyAdmin: "admin secret",
   jwtSecretKeyHelp: "help secret",
   allowedCorsOrigins: getAllowedCorsOrigins([
-    "http://localhost:8000",
-    "http://localhost:5000",
-    "http://127.0.0.1:8000",
-    "http://127.0.0.1:5000",
+    `http://localhost:${clientPort}`,
+    `http://localhost:${defaultServerPort}`,
+    `http://127.0.0.1:${clientPort}`,
+    `http://127.0.0.1:${defaultServerPort}`,
     "http://server:5000",
   ]),
   debug: false,

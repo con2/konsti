@@ -36,6 +36,17 @@ const readSentryAuthToken = (dir: string): string | undefined => {
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, import.meta.dirname, "");
 
+  // PORT_OFFSET lets several local instances (e.g. one per git worktree) run side
+  // by side: it shifts the dev server port and the API server it talks to by the
+  // same amount as the backend's PORT_OFFSET. Default 0 keeps the classic ports.
+  // When set, the offset API URL wins over API_SERVER_URL so a committed
+  // .env.development value doesn't pin every instance to port 5000
+  const portOffset = Number(env.PORT_OFFSET) || 0;
+  const apiServerUrl =
+    portOffset > 0
+      ? `http://127.0.0.1:${5000 + portOffset}`
+      : env.API_SERVER_URL;
+
   // Upload source maps to Sentry only when an auth token is available (CI build
   // secret, or the local client/.env.sentry-build-plugin file). The development
   // build only uploads when enableSentryInDev is set.
@@ -107,7 +118,7 @@ export default defineConfig(({ mode }) => {
     // Replace process.env.* references at build time (used in shared/config/clientConfig.ts and client code)
     define: {
       "process.env.SETTINGS": JSON.stringify(env.SETTINGS),
-      "process.env.API_SERVER_URL": JSON.stringify(env.API_SERVER_URL),
+      "process.env.API_SERVER_URL": JSON.stringify(apiServerUrl),
       "process.env.SHOW_TEST_VALUES": JSON.stringify(env.SHOW_TEST_VALUES),
       "process.env.DATA_UPDATE_INTERVAL": JSON.stringify(
         env.DATA_UPDATE_INTERVAL,
@@ -116,7 +127,7 @@ export default defineConfig(({ mode }) => {
 
     server: {
       host: "127.0.0.1",
-      port: 8000,
+      port: 8000 + portOffset,
       fs: {
         allow: [path.resolve(import.meta.dirname, "..")],
       },
