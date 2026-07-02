@@ -367,6 +367,26 @@ test("should send email when program item is deleted", async () => {
   expect(queueService.getSender().getSentEmails()).toHaveLength(1);
 });
 
+test("should send email when program item start time changes", async () => {
+  await saveProgramItems([testProgramItem]);
+  await saveUser(mockUser);
+  await saveDirectSignup(mockPostDirectSignupRequest);
+
+  await saveProgramItems([
+    {
+      ...testProgramItem,
+      startTime: dayjs(testProgramItem.startTime).add(1, "hour").toISOString(),
+    },
+  ]);
+
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const queueService = getGlobalNotificationQueueService()!;
+  queueService.getQueue().resume();
+  await queueService.getQueue().drained();
+
+  expect(queueService.getSender().getSentEmails()).toHaveLength(1);
+});
+
 test("should remove lottery signups but not favorites when program item doesn't use Konsti signup anymore before lottery and add notification", async () => {
   await saveTestSettings({
     testTime: dayjs(testProgramItem.startTime)
@@ -413,7 +433,30 @@ test("should remove lottery signups but not favorites when program item doesn't 
     ]),
   );
 
-  expect(getGlobalNotificationQueueService()?.getItems()).toHaveLength(0);
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const queueService416 = getGlobalNotificationQueueService()!;
+  const queuedNotifications = queueService416.getItems();
+  expect(queuedNotifications).toHaveLength(2);
+  expect(queuedNotifications).toEqual(
+    expect.arrayContaining([
+      expect.objectContaining({
+        type: NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_NO_KONSTI_SIGNUP_ANYMORE,
+        username: mockUser.username,
+        programItemId: testProgramItem.programItemId,
+        programItemTitle: testProgramItem.title,
+      }),
+      expect.objectContaining({
+        type: NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_NO_KONSTI_SIGNUP_ANYMORE,
+        username: mockUser.username,
+        programItemId: testProgramItem2.programItemId,
+        programItemTitle: testProgramItem2.title,
+      }),
+    ]),
+  );
+
+  queueService416.getQueue().resume();
+  await queueService416.getQueue().drained();
+  expect(queueService416.getSender().getSentEmails()).toHaveLength(2);
 });
 
 test("should keep direct signup when program item programType is changed to non-lottery type and don't add notification", async () => {
@@ -472,7 +515,30 @@ test("should remove direct signups when program item doesn't use Konsti signup a
     ]),
   );
 
-  expect(getGlobalNotificationQueueService()?.getItems()).toHaveLength(0);
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const queueService475 = getGlobalNotificationQueueService()!;
+  const queuedNotifications2 = queueService475.getItems();
+  expect(queuedNotifications2).toHaveLength(2);
+  expect(queuedNotifications2).toEqual(
+    expect.arrayContaining([
+      expect.objectContaining({
+        type: NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_NO_KONSTI_SIGNUP_ANYMORE,
+        username: mockUser.username,
+        programItemId: testProgramItem.programItemId,
+        programItemTitle: testProgramItem.title,
+      }),
+      expect.objectContaining({
+        type: NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_NO_KONSTI_SIGNUP_ANYMORE,
+        username: mockUser.username,
+        programItemId: testProgramItem2.programItemId,
+        programItemTitle: testProgramItem2.title,
+      }),
+    ]),
+  );
+
+  queueService475.getQueue().resume();
+  await queueService475.getQueue().drained();
+  expect(queueService475.getSender().getSentEmails()).toHaveLength(2);
 });
 
 test("should not add duplicate notification when program item is cancelled and user has direct signup, lottery signup and favorite", async () => {
@@ -646,7 +712,22 @@ test("should remove lottery signup but keep favorites when programType is change
     EventLogAction.PROGRAM_ITEM_NO_LOTTERY_ANYMORE,
   );
 
-  expect(getGlobalNotificationQueueService()?.getItems()).toHaveLength(0);
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const queueService649 = getGlobalNotificationQueueService()!;
+  const queuedNotifications3 = queueService649.getItems();
+  expect(queuedNotifications3).toHaveLength(1);
+  expect(queuedNotifications3[0]).toEqual(
+    expect.objectContaining({
+      type: NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_NO_LOTTERY_ANYMORE,
+      username: mockUser.username,
+      programItemId: testProgramItem.programItemId,
+      programItemTitle: testProgramItem.title,
+    }),
+  );
+
+  queueService649.getQueue().resume();
+  await queueService649.getQueue().drained();
+  expect(queueService649.getSender().getSentEmails()).toHaveLength(1);
 });
 
 test("should preserve lottery signup when programType is changed to non-lottery type after its lottery has run and not add notification", async () => {
@@ -704,10 +785,42 @@ test("should add event notification if user has lottery signup and program item 
       expect.objectContaining({
         programItemId: testProgramItem.programItemId,
         action: EventLogAction.PROGRAM_ITEM_MOVED,
+        programItemStartTime: dayjs(testProgramItem.startTime)
+          .add(1, "hour")
+          .toISOString(),
       }),
       expect.objectContaining({
         programItemId: testProgramItem2.programItemId,
         action: EventLogAction.PROGRAM_ITEM_MOVED,
+        programItemStartTime: dayjs(testProgramItem2.startTime)
+          .add(2, "hours")
+          .toISOString(),
+      }),
+    ]),
+  );
+
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const queuedNotifications = getGlobalNotificationQueueService()!.getItems();
+  expect(queuedNotifications).toHaveLength(2);
+  expect(queuedNotifications).toEqual(
+    expect.arrayContaining([
+      expect.objectContaining({
+        type: NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_TIME_CHANGED,
+        username: mockUser.username,
+        programItemId: testProgramItem.programItemId,
+        programItemTitle: testProgramItem.title,
+        programItemStartTime: dayjs(testProgramItem.startTime)
+          .add(1, "hour")
+          .toISOString(),
+      }),
+      expect.objectContaining({
+        type: NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_TIME_CHANGED,
+        username: mockUser.username,
+        programItemId: testProgramItem2.programItemId,
+        programItemTitle: testProgramItem2.title,
+        programItemStartTime: dayjs(testProgramItem2.startTime)
+          .add(2, "hours")
+          .toISOString(),
       }),
     ]),
   );
@@ -737,10 +850,42 @@ test("should add event notification if user has direct signup and program item s
       expect.objectContaining({
         programItemId: testProgramItem.programItemId,
         action: EventLogAction.PROGRAM_ITEM_MOVED,
+        programItemStartTime: dayjs(testProgramItem.startTime)
+          .add(1, "hour")
+          .toISOString(),
       }),
       expect.objectContaining({
         programItemId: testProgramItem2.programItemId,
         action: EventLogAction.PROGRAM_ITEM_MOVED,
+        programItemStartTime: dayjs(testProgramItem2.startTime)
+          .add(2, "hours")
+          .toISOString(),
+      }),
+    ]),
+  );
+
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const queuedNotifications = getGlobalNotificationQueueService()!.getItems();
+  expect(queuedNotifications).toHaveLength(2);
+  expect(queuedNotifications).toEqual(
+    expect.arrayContaining([
+      expect.objectContaining({
+        type: NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_TIME_CHANGED,
+        username: mockUser.username,
+        programItemId: testProgramItem.programItemId,
+        programItemTitle: testProgramItem.title,
+        programItemStartTime: dayjs(testProgramItem.startTime)
+          .add(1, "hour")
+          .toISOString(),
+      }),
+      expect.objectContaining({
+        type: NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_TIME_CHANGED,
+        username: mockUser.username,
+        programItemId: testProgramItem2.programItemId,
+        programItemTitle: testProgramItem2.title,
+        programItemStartTime: dayjs(testProgramItem2.startTime)
+          .add(2, "hours")
+          .toISOString(),
       }),
     ]),
   );

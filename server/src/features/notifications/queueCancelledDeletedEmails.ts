@@ -1,6 +1,7 @@
 import { logger } from "server/utils/logger";
 import {
   getGlobalNotificationQueueService,
+  NotificationTask,
   NotificationTaskType,
 } from "server/utils/notificationQueue";
 import { EventLogAction } from "shared/types/models/eventLog";
@@ -8,7 +9,7 @@ import { EmailNotificationTrigger } from "shared/types/emailNotification";
 import { findSettings } from "server/features/settings/settingsRepository";
 import { config } from "shared/config";
 
-interface CancelledDeletedUpdate {
+interface ProgramItemChangeUpdate {
   username: string;
   programItemId: string;
   programItemStartTime: string;
@@ -16,7 +17,7 @@ interface CancelledDeletedUpdate {
 }
 
 export const queueCancelledDeletedEmails = async (
-  updates: CancelledDeletedUpdate[],
+  updates: ProgramItemChangeUpdate[],
   programItemTitlesById: Map<string, string>,
 ): Promise<void> => {
   const settingsResult = await findSettings();
@@ -25,41 +26,91 @@ export const queueCancelledDeletedEmails = async (
     emailNotificationTrigger = settingsResult.value.emailNotificationTrigger;
   }
 
-  const emailUpdates = updates.filter(
-    (update) =>
-      (update.action === EventLogAction.PROGRAM_ITEM_CANCELLED &&
-        emailNotificationTrigger.includes(
-          EmailNotificationTrigger.PROGRAM_ITEM_CANCELLED,
-        )) ||
-      (update.action === EventLogAction.PROGRAM_ITEM_DELETED &&
-        emailNotificationTrigger.includes(
-          EmailNotificationTrigger.PROGRAM_ITEM_DELETED,
-        )),
-  );
-  if (emailUpdates.length === 0) {
+  const emailTasks = updates.flatMap((update): NotificationTask[] => {
+    const base = {
+      username: update.username,
+      programItemId: update.programItemId,
+      programItemStartTime: update.programItemStartTime,
+      programItemTitle: programItemTitlesById.get(update.programItemId) ?? "",
+    };
+    if (
+      update.action === EventLogAction.PROGRAM_ITEM_CANCELLED &&
+      emailNotificationTrigger.includes(
+        EmailNotificationTrigger.PROGRAM_ITEM_CANCELLED,
+      )
+    ) {
+      return [
+        {
+          ...base,
+          type: NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_CANCELLED,
+        },
+      ];
+    }
+    if (
+      update.action === EventLogAction.PROGRAM_ITEM_DELETED &&
+      emailNotificationTrigger.includes(
+        EmailNotificationTrigger.PROGRAM_ITEM_DELETED,
+      )
+    ) {
+      return [
+        { ...base, type: NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_DELETED },
+      ];
+    }
+    if (
+      update.action === EventLogAction.PROGRAM_ITEM_NO_KONSTI_SIGNUP_ANYMORE &&
+      emailNotificationTrigger.includes(
+        EmailNotificationTrigger.PROGRAM_ITEM_NO_KONSTI_SIGNUP_ANYMORE,
+      )
+    ) {
+      return [
+        {
+          ...base,
+          type: NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_NO_KONSTI_SIGNUP_ANYMORE,
+        },
+      ];
+    }
+    if (
+      update.action === EventLogAction.PROGRAM_ITEM_NO_LOTTERY_ANYMORE &&
+      emailNotificationTrigger.includes(
+        EmailNotificationTrigger.PROGRAM_ITEM_NO_LOTTERY_ANYMORE,
+      )
+    ) {
+      return [
+        {
+          ...base,
+          type: NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_NO_LOTTERY_ANYMORE,
+        },
+      ];
+    }
+    if (
+      update.action === EventLogAction.PROGRAM_ITEM_MOVED &&
+      emailNotificationTrigger.includes(
+        EmailNotificationTrigger.PROGRAM_ITEM_TIME_CHANGED,
+      )
+    ) {
+      return [
+        {
+          ...base,
+          type: NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_TIME_CHANGED,
+        },
+      ];
+    }
+    return [];
+  });
+
+  if (emailTasks.length === 0) {
     return;
   }
 
   const queueService = getGlobalNotificationQueueService();
   if (queueService === null) {
     logger.warn(
-      "Notification queue not initialized, skipping cancelled/deleted program item emails",
+      "Notification queue not initialized, skipping program item change emails",
     );
     return;
   }
 
-  const queueResult = queueService.addNotificationsBulk(
-    emailUpdates.map((update) => ({
-      type:
-        update.action === EventLogAction.PROGRAM_ITEM_CANCELLED
-          ? NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_CANCELLED
-          : NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_DELETED,
-      username: update.username,
-      programItemId: update.programItemId,
-      programItemStartTime: update.programItemStartTime,
-      programItemTitle: programItemTitlesById.get(update.programItemId) ?? "",
-    })),
-  );
+  const queueResult = queueService.addNotificationsBulk(emailTasks);
   if (!queueResult.ok) {
     logger.error(
       new Error(

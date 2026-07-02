@@ -8,6 +8,9 @@ import {
   getAcceptedEmailTemplate,
   getProgramItemCancelledEmailTemplate,
   getProgramItemDeletedEmailTemplate,
+  getProgramItemNoKonstiSignupEmailTemplate,
+  getProgramItemNoLotteryEmailTemplate,
+  getProgramItemTimeChangedEmailTemplate,
   getRejectedEmailTemplate,
 } from "./senderCommon";
 import { logger } from "server/utils/logger";
@@ -79,6 +82,24 @@ async function generateEmail(
       );
     case NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_DELETED:
       return generateProgramItemDeletedEmail(email, fromAddress, notification);
+    case NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_NO_KONSTI_SIGNUP_ANYMORE:
+      return generateProgramItemNoKonstiSignupEmail(
+        email,
+        fromAddress,
+        notification,
+      );
+    case NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_NO_LOTTERY_ANYMORE:
+      return generateProgramItemNoLotteryEmail(
+        email,
+        fromAddress,
+        notification,
+      );
+    case NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_TIME_CHANGED:
+      return generateProgramItemTimeChangedEmail(
+        email,
+        fromAddress,
+        notification,
+      );
   }
 }
 
@@ -142,6 +163,60 @@ function generateProgramItemDeletedEmail(
   }
   return buildEmail(
     getProgramItemDeletedEmailTemplate(notification),
+    email,
+    fromAddress,
+  );
+}
+
+function generateProgramItemNoKonstiSignupEmail(
+  email: string,
+  fromAddress: string,
+  notification: NotificationTask,
+): EmailMessage | null {
+  if (!notification.programItemTitle) {
+    logger.error(
+      `Missing programItemTitle for notification type ${notification.type}, username ${notification.username}`,
+    );
+    return null;
+  }
+  return buildEmail(
+    getProgramItemNoKonstiSignupEmailTemplate(notification),
+    email,
+    fromAddress,
+  );
+}
+
+function generateProgramItemNoLotteryEmail(
+  email: string,
+  fromAddress: string,
+  notification: NotificationTask,
+): EmailMessage | null {
+  if (!notification.programItemTitle) {
+    logger.error(
+      `Missing programItemTitle for notification type ${notification.type}, username ${notification.username}`,
+    );
+    return null;
+  }
+  return buildEmail(
+    getProgramItemNoLotteryEmailTemplate(notification),
+    email,
+    fromAddress,
+  );
+}
+
+function generateProgramItemTimeChangedEmail(
+  email: string,
+  fromAddress: string,
+  notification: NotificationTask,
+): EmailMessage | null {
+  if (!notification.programItemTitle) {
+    logger.error(
+      `Missing programItemTitle for notification type ${notification.type}, username ${notification.username}`,
+    );
+    return null;
+  }
+  return buildEmail(
+    getProgramItemTimeChangedEmailTemplate(notification),
     email,
     fromAddress,
   );
