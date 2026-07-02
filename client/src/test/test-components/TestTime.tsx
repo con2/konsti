@@ -82,18 +82,17 @@ export const TestTime = (): ReactElement => {
         ) : (
           // eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events
           <div onClick={() => setDropdownVisible(true)}>
-            {i18n.language === "fi" ? (
-              <>
-                {testTime && capitalize(getShortDate(testTime))}
-                <br />
-                {testTime && getTime(testTime)}
-              </>
-            ) : (
-              <>
-                {testTime && capitalize(getShortDate(testTime))}
-                <br />
-                {testTime && getTime(testTime)}
-              </>
+            {testTime && capitalize(getShortDate(testTime))}
+            <br />
+            {testTime && getTime(testTime)}
+            {testTime && mainEventProgramVisibleTime && (
+              <PhaseIndicator>
+                {t(
+                  isMainEventProgramVisible(dayjs(testTime))
+                    ? "testTime.mainEvent"
+                    : "testTime.preWeek",
+                )}
+              </PhaseIndicator>
             )}
           </div>
         )}
@@ -114,4 +113,8 @@ const StyledTestTime = styled.div`
   @media (max-width: ${(props) => props.theme.breakpointDesktop}) {
     display: none;
   }
+`;
+
+const PhaseIndicator = styled.div`
+  font-size: 16px;
 `;
