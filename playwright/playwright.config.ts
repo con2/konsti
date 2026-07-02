@@ -52,6 +52,11 @@ ENABLE_MOBILE_SAFARI &&
     use: devices["Pixel 5"],
   });
 
+// PORT_OFFSET shifts the client dev server port so the suite can target a
+// specific local instance (one per git worktree). PLAYWRIGHT_BASEURL still wins
+// when set (e.g. the Docker run points it at http://server:5000)
+const portOffset = Number(process.env.PORT_OFFSET) || 0;
+
 const config: PlaywrightTestConfig = {
   projects,
   retries: process.env.CI ? 1 : 0,
@@ -61,7 +66,8 @@ const config: PlaywrightTestConfig = {
   reporter: process.env.CI ? [["list"], ["blob"]] : [["list"]],
   workers: 1,
   use: {
-    baseURL: process.env.PLAYWRIGHT_BASEURL ?? "http://localhost:8000",
+    baseURL:
+      process.env.PLAYWRIGHT_BASEURL ?? `http://localhost:${8000 + portOffset}`,
     video: process.env.CI ? "on-first-retry" : "on",
     trace: process.env.CI ? "on-first-retry" : "on",
     headless: true,

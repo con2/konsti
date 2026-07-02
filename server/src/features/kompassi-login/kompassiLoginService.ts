@@ -32,7 +32,16 @@ export const getBaseUrl = (): string => {
   if (process.env.SETTINGS === "ci") {
     return "http://server:5000";
   }
-  return process.env.KOMPASSI_BASE_URL ?? "https://kompassi.eu";
+  const baseUrl = process.env.KOMPASSI_BASE_URL ?? "https://kompassi.eu";
+  // The e2e Kompassi mock is served by this same backend on the default port
+  // 5000. When PORT_OFFSET runs an instance on a shifted port, follow it so the
+  // instance hits its own mock instead of another instance's port 5000. Real
+  // Kompassi URLs (dev.kompassi.eu etc.) are left untouched
+  const portOffset = Number(process.env.PORT_OFFSET) || 0;
+  if (portOffset > 0 && baseUrl === "http://localhost:5000") {
+    return `http://localhost:${5000 + portOffset}`;
+  }
+  return baseUrl;
 };
 
 export const clientId = process.env.KOMPASSI_CLIENT_ID ?? "";

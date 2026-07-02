@@ -45,6 +45,33 @@ yarn docker-compose:start
 
 In this case, access the frontend at `localhost:5000`.
 
+### Running multiple local instances
+
+To run several copies of the app at once (for example one per git worktree)
+without port or database collisions, set `PORT_OFFSET` to a small integer before
+starting. The offset shifts every port by the same amount and picks a dedicated
+dev database:
+
+| `PORT_OFFSET` | Client (Vite) | Server / API | Dev database |
+| ------------- | ------------- | ------------ | ------------ |
+| `0` (default) | `8000`        | `5000`       | `konsti`     |
+| `1`           | `8001`        | `5001`       | `konsti-1`   |
+| `2`           | `8002`        | `5002`       | `konsti-2`   |
+
+```shell
+export PORT_OFFSET=1   # set once per terminal, before the commands below
+yarn start:dev
+```
+
+`export` makes the offset visible to both the server and the client processes.
+To make it persistent for a worktree, add `PORT_OFFSET=1` to both
+`server/.env.development` and `client/.env.development.local` (both gitignored).
+
+All instances share the single MongoDB container on port `27017`; they stay
+isolated because each `PORT_OFFSET` uses its own database name. Seed a specific
+instance with `PORT_OFFSET=1 yarn run populate-db:dummy`. Then open
+`localhost:8001`.
+
 ## Tech
 
 - General
