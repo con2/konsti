@@ -31,7 +31,7 @@ Note: `find-unused-translation-keys` is a **server** script (it scans `client/sr
 - **`utils/`** — `store.ts` (Redux store), `hooks.ts` (typed Redux hooks), `api.ts` (fetch wrapper), `i18n.ts` (i18next setup + locale type-check), `localStorage.ts`/`sessionStorage.ts` (zod-validated), `getJWT.ts`, `checkUserGroup.ts`, etc.
 - **`theme.ts`** — design tokens (colors, breakpoints, font sizes, popularity colors). **`globalStyle.ts`** — `createGlobalStyle`.
 - **`markdown/`** — MDX content rendered as React components.
-- **`test/`** — `setupTests.ts` (vitest/jsdom), test component utilities, `__mocks__/`. **`test/test-settings/testSettingsSlice.ts`** is the dev-only time-mock slice.
+- **`test/`** — `setupTests.ts` (vitest/jsdom), `__mocks__/`, and dev-only UI helpers: `test-components/` (`TestTime` time selector, `TestGenerateSerial` registration-code button), `test-data/testDataServices.ts` (wrappers for the dev/test API endpoints). **`test/test-settings/testSettingsSlice.ts`** is the dev-only time-mock slice.
 - **`types/`** — client-only types (`reduxTypes.ts`: `RootState`, `AppDispatch`, `AppThunk`).
 
 ## State Management

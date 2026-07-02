@@ -32,6 +32,11 @@ export class RegistrationPage extends BasePage {
     return this.page.locator("#email");
   }
 
+  // The finalize-registration username input, shown only for Kompassi accounts
+  get finalizeUsernameInput(): Locator {
+    return this.page.getByTestId("login-form-input-username");
+  }
+
   async createAccount(): Promise<void> {
     await this.page.getByRole("button", { name: "Create account" }).click();
   }

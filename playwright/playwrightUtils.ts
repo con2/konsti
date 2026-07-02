@@ -1,6 +1,9 @@
 import { expect, APIRequestContext, Page } from "@playwright/test";
 import { ApiDevEndpoint, ApiEndpoint } from "shared/constants/apiEndpoints";
-import { PopulateDbOptions } from "shared/test-types/api/testData";
+import {
+  PopulateDbOptions,
+  PostAddSerialsResponse,
+} from "shared/test-types/api/testData";
 import { TestSettings } from "shared/test-types/models/testSettings";
 import { PostAssignmentResponse } from "shared/types/api/assignment";
 import { PostLoginRequest, PostLoginResult } from "shared/types/api/login";
@@ -52,8 +55,9 @@ export const addSerials = async (
     data: { count },
   });
   expect(response.status()).toBe(200);
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-  return response.json();
+  const body = (await response.json()) as PostAddSerialsResponse;
+  expect(body.status).toBe("success");
+  return body.status === "success" ? body.serials : [];
 };
 
 const postLogin = async (

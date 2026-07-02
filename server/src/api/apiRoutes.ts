@@ -292,6 +292,11 @@ if (
     postTestSettings,
   );
   apiRoutes.get(ApiDevEndpoint.TEST_SETTINGS, getTestSettings);
+  apiRoutes.post(
+    ApiDevEndpoint.ADD_SERIALS,
+    validateBody(PostAddSerialsRequestSchema),
+    postAddSerials,
+  );
 }
 
 // Destructive dev tools (DB wipe/repopulate, fixture generation) stay out of
@@ -307,11 +312,6 @@ if (process.env.SETTINGS === "development" || process.env.SETTINGS === "ci") {
     ApiDevEndpoint.ADD_PROGRAM_ITEMS,
     validateBody(PostAddProgramItemsRequestSchema),
     postAddProgramItems,
-  );
-  apiRoutes.post(
-    ApiDevEndpoint.ADD_SERIALS,
-    validateBody(PostAddSerialsRequestSchema),
-    postAddSerials,
   );
 }
 

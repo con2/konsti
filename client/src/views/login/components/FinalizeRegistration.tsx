@@ -48,6 +48,12 @@ export const FinalizeRegistration = (
 
   const username = useAppSelector((state) => state.login.username);
   const email = useAppSelector((state) => state.login.email);
+  const kompassiId = useAppSelector((state) => state.login.kompassiId);
+
+  // Local accounts already chose their username and agreed to the privacy
+  // policy on the create-account page, so only Kompassi accounts confirm
+  // them here
+  const isKompassiAccount = kompassiId !== 0;
 
   const [serverError, setServerError] = useState<
     KompassiVerifyErrorMessage | UpdateUserEmailAddressErrorMessage | null
@@ -70,12 +76,14 @@ export const FinalizeRegistration = (
   const onSubmit: SubmitHandler<FinalizeRegistrationFormFields> = async (
     loginFormFields,
   ): Promise<void> => {
-    const errorMessage = await dispatch(
-      submitVerifyKompassiLogin(loginFormFields.username),
-    );
-    if (errorMessage) {
-      setServerError(errorMessage);
-      return;
+    if (isKompassiAccount) {
+      const errorMessage = await dispatch(
+        submitVerifyKompassiLogin(loginFormFields.username),
+      );
+      if (errorMessage) {
+        setServerError(errorMessage);
+        return;
+      }
     }
 
     const emailToSend = emailNotificationsEnabled ? loginFormFields.email : "";
@@ -96,11 +104,14 @@ export const FinalizeRegistration = (
 
   return (
     <StyledForm onSubmit={handleSubmit(onSubmit)}>
-      {props.kompassiUsernameAccepted ? null : (
+      {props.kompassiUsernameAccepted || !isKompassiAccount ? null : (
         <>
           <InputContainer>
             <h2>{t("loginView.chooseKonstiUsername")}</h2>
             <StyledLabel htmlFor="username">{t("username")}</StyledLabel>
+            <InfomationLabel htmlFor="username">
+              {t("registrationView.nickVisibleHintText")}
+            </InfomationLabel>
             <StyledInput
               id="username"
               {...register("username", {
@@ -125,7 +136,6 @@ export const FinalizeRegistration = (
               type={"text"}
               data-testid={"login-form-input-username"}
             />
-            <p>{t("registrationView.nickVisibleHintText")}</p>
           </InputContainer>
           {errors.username && (
             <FormFieldError>{errors.username.message}</FormFieldError>
@@ -134,6 +144,9 @@ export const FinalizeRegistration = (
       )}
       {props.emailNotificationPermitAsked ? null : (
         <InputContainer>
+          {!isKompassiAccount && (
+            <h2>{t("loginView.emailNotificationsTitle")}</h2>
+          )}
           <FormRow>
             <EmailNotificationField
               enabled={emailNotificationsEnabled}
@@ -158,31 +171,37 @@ export const FinalizeRegistration = (
                 disabled={!emailNotificationsEnabled}
               />
               {errors.email && (
-                <FormFieldError>{errors.email.message}</FormFieldError>
+                <EmailFieldError>{errors.email.message}</EmailFieldError>
               )}
             </EmailNotificationField>
           </FormRow>
           <FormRow>
-            <p>{t("email.notifications.registrationDescription")}</p>
+            <Info>{t("email.notifications.registrationDescription")}</Info>
           </FormRow>
         </InputContainer>
       )}
-      <FormRow>
-        <Checkbox
-          {...register("registerDescription", {
-            required: t("validation.required"),
-            onChange: () => {
-              setServerError(null);
-            },
-          })}
-          id={"registerDescriptionCheckbox"}
-          label={t("agreePrivacyPolicy")}
-        />
-      </FormRow>
-      {errors.registerDescription && (
-        <FormFieldError>{errors.registerDescription.message}</FormFieldError>
+      {isKompassiAccount && (
+        <>
+          <FormRow>
+            <Checkbox
+              {...register("registerDescription", {
+                required: t("validation.required"),
+                onChange: () => {
+                  setServerError(null);
+                },
+              })}
+              id={"registerDescriptionCheckbox"}
+              label={t("agreePrivacyPolicy")}
+            />
+          </FormRow>
+          {errors.registerDescription && (
+            <FormFieldError>
+              {errors.registerDescription.message}
+            </FormFieldError>
+          )}
+          <PrivacyPolicy />
+        </>
       )}
-      <PrivacyPolicy />
       <FormRow>
         <Button
           type="submit"
@@ -216,6 +235,14 @@ const FormFieldError = styled.div`
   }
 `;
 
+// FormFieldError's negative margin compensates the form's 16px gap, but the
+// email error renders inside a gapless flex column right below the input, so
+// the negative margin would pull it over the input
+const EmailFieldError = styled(FormFieldError)`
+  margin-top: 4px;
+  width: min(250px, 100%);
+`;
+
 const StyledInput = styled(UncontrolledInput)`
   width: min(250px, 100%);
 `;
@@ -241,10 +268,17 @@ const StyledForm = styled.form`
 
 const StyledLabel = styled.label`
   padding: 0 0 2px 4px;
-  font-size: ${(props) => props.theme.fontSizeSmall};
+`;
+
+const InfomationLabel = styled(StyledLabel)`
+  color: ${(props) => props.theme.textSecondary};
 `;
 
 const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
+`;
+
+const Info = styled.p`
+  color: ${(props) => props.theme.textSecondary};
 `;

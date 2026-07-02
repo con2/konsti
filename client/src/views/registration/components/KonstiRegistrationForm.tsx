@@ -59,36 +59,34 @@ export const KonstiRegistrationForm = (): ReactElement => {
   return (
     <div>
       <StyledForm onSubmit={handleSubmit(onSubmit)}>
-        <>
-          <InputContainer>
-            <StyledLabel htmlFor="username">{t("username")}</StyledLabel>
-            <StyledInput
-              id="username"
-              {...register("username", {
-                required: t("validation.required"),
-                minLength: {
-                  value: USERNAME_LENGTH_MIN,
-                  message: t("validation.tooShort", {
-                    length: String(USERNAME_LENGTH_MIN),
-                  }),
-                },
-                maxLength: {
-                  value: USERNAME_LENGTH_MAX,
-                  message: t("validation.tooLong", {
-                    length: String(USERNAME_LENGTH_MAX),
-                  }),
-                },
-                onChange: () => {
-                  setServerError(null);
-                },
-              })}
-              type={"text"}
-            />
-          </InputContainer>
-          <SmallLabel htmlFor="username">
+        <InputContainer>
+          <StyledLabel htmlFor="username">{t("username")}</StyledLabel>
+          <InfomationLabel htmlFor="username">
             {t("registrationView.nickVisibleHintText")}
-          </SmallLabel>
-        </>
+          </InfomationLabel>
+          <StyledInput
+            id="username"
+            {...register("username", {
+              required: t("validation.required"),
+              minLength: {
+                value: USERNAME_LENGTH_MIN,
+                message: t("validation.tooShort", {
+                  length: String(USERNAME_LENGTH_MIN),
+                }),
+              },
+              maxLength: {
+                value: USERNAME_LENGTH_MAX,
+                message: t("validation.tooLong", {
+                  length: String(USERNAME_LENGTH_MAX),
+                }),
+              },
+              onChange: () => {
+                setServerError(null);
+              },
+            })}
+            type={"text"}
+          />
+        </InputContainer>
 
         {errors.username && (
           <FormFieldError>{errors.username.message}</FormFieldError>
@@ -139,6 +137,9 @@ export const KonstiRegistrationForm = (): ReactElement => {
 
         <InputContainer>
           <StyledLabel htmlFor="serial">{t("serial")}</StyledLabel>
+          <InfomationLabel htmlFor="serial">
+            {t("registrationSerialHelp")}
+          </InfomationLabel>
           <StyledInput
             id="serial"
             {...register("serial", {
@@ -154,8 +155,6 @@ export const KonstiRegistrationForm = (): ReactElement => {
         {errors.serial && (
           <FormFieldError>{errors.serial.message}</FormFieldError>
         )}
-
-        <SmallLabel htmlFor="serial">{t("registrationSerialHelp")}</SmallLabel>
 
         <FormRow>
           <Checkbox
@@ -235,11 +234,6 @@ const FormFieldIcon = styled.span`
   cursor: pointer;
 `;
 
-const SmallLabel = styled.label`
-  margin-top: -8px;
-  font-size: ${(props) => props.theme.fontSizeSmaller};
-`;
-
 const StyledForm = styled.form`
   display: flex;
   gap: 16px;
@@ -248,7 +242,10 @@ const StyledForm = styled.form`
 
 const StyledLabel = styled.label`
   padding: 0 0 2px 4px;
-  font-size: ${(props) => props.theme.fontSizeSmall};
+`;
+
+const InfomationLabel = styled(StyledLabel)`
+  color: ${(props) => props.theme.textSecondary};
 `;
 
 const InputContainer = styled.div`

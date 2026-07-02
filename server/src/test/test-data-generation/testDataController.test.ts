@@ -64,4 +64,22 @@ describe(`POST ${ApiDevEndpoint.ADD_SERIALS}`, () => {
       await stopTestServer(server);
     }
   });
+
+  test("should generate requested number of serials on staging", async () => {
+    vi.stubEnv("SETTINGS", "staging");
+    const { server } = await startTestServer(globalThis.__MONGO_URI__);
+
+    try {
+      const response = await request(server)
+        .post(ApiDevEndpoint.ADD_SERIALS)
+        .send({ count: 2 });
+      expect(response.status).toEqual(200);
+
+      const body = response.body as { status: string; serials: string[] };
+      expect(body.status).toEqual("success");
+      expect(body.serials).toHaveLength(2);
+    } finally {
+      await stopTestServer(server);
+    }
+  });
 });

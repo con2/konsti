@@ -83,5 +83,9 @@ export const postAddSerials = async (
 
   const serials = unsafelyUnwrap(await saveSerials(req.body.count));
 
-  return res.json(serials.map((serial) => serial.serial));
+  return res.json({
+    message: "Serials generated",
+    status: "success",
+    serials: serials.map((serial) => serial.serial),
+  });
 };

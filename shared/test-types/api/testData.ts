@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { ProgramItemSchema } from "shared/types/models/programItem";
 import { EmailNotificationTrigger } from "shared/types/emailNotification";
+import { ApiError, ApiResult } from "shared/types/api/errors";
 
 // POST test settings
 
@@ -25,6 +26,16 @@ export const PostAddProgramItemsRequestSchema = z.array(ProgramItemSchema);
 export const PostAddSerialsRequestSchema = z.object({ count: z.number() });
 
 export type PostAddSerialsRequest = z.infer<typeof PostAddSerialsRequestSchema>;
+
+interface PostAddSerialsResult extends ApiResult {
+  serials: string[];
+}
+
+interface PostAddSerialsError extends ApiError {
+  errorId: "unknown";
+}
+
+export type PostAddSerialsResponse = PostAddSerialsResult | PostAddSerialsError;
 
 // POST test email
 

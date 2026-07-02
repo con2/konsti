@@ -34,7 +34,10 @@ test("Register a new account and finalize email notifications", async ({
   await expect(registrationPage.emailNotificationsEnabled).toBeVisible();
   await registrationPage.emailNotificationsEnabled.check();
   await registrationPage.emailInput.fill("newuser@example.com");
-  await registrationPage.descriptionCheckbox.check();
+  // Local accounts already chose their username and agreed to the privacy
+  // policy on the previous page
+  await expect(registrationPage.finalizeUsernameInput).toBeHidden();
+  await expect(registrationPage.descriptionCheckbox).toBeHidden();
   await registrationPage.save();
 
   // The user ends up logged in
