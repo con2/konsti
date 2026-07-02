@@ -17,11 +17,11 @@ Guidance for the `playwright/` end-to-end tests. See the [root CLAUDE.md](../CLA
 
 ### Sharding
 
-CI splits the suite across runners with [Playwright sharding](https://playwright.dev/docs/test-sharding). The `e2e` job in `.github/workflows/test.yml` is a matrix over `shard: [1, 2, 3]`, and passes `PLAYWRIGHT_SHARD=<index>/<total>` (e.g. `2/3`). `playwright/docker-compose.yml` reads `PLAYWRIGHT_SHARD` and appends `--shard=$PLAYWRIGHT_SHARD` only when it's set; unset (the local default) runs the whole suite.
+CI splits the suite across runners with [Playwright sharding](https://playwright.dev/docs/test-sharding). The `e2e` job in `.github/workflows/test.yml` is a matrix over `shard: [1, 2, 3, 4, 5]`, and passes `PLAYWRIGHT_SHARD=<index>/<total>` (e.g. `2/5`). `playwright/docker-compose.yml` reads `PLAYWRIGHT_SHARD` and appends `--shard=$PLAYWRIGHT_SHARD` only when it's set; unset (the local default) runs the whole suite.
 
-Each shard is a separate runner spinning up its **own** docker-compose stack (own server + Mongo), so the shared-DB constraint that forces `workers: 1` still holds **within** a shard — sharding parallelizes across machines, not within one DB. To change the shard count, edit the matrix list **and** keep using `strategy.job-total` for the denominator. To shard a local run: `PLAYWRIGHT_SHARD=1/3 yarn docker-compose:test`.
+Each shard is a separate runner spinning up its **own** docker-compose stack (own server + Mongo), so the shared-DB constraint that forces `workers: 1` still holds **within** a shard — sharding parallelizes across machines, not within one DB. To change the shard count, edit the matrix list **and** keep using `strategy.job-total` for the denominator. To shard a local run: `PLAYWRIGHT_SHARD=1/5 yarn docker-compose:test`.
 
-**Why 3 and not more:** each shard re-pays a fixed per-runner overhead (image build, Mongo/server startup), which sets a wall-clock floor that more shards can't beat. Measured: no-shard ≈ 4m34s, 2 shards ≈ 3m38s, 3 shards ≈ 3m08s, 4 shards ≈ 3m18s (4 regressed — overhead swamped the extra split).
+**Why 5 and not more:** each shard re-pays a fixed per-runner overhead (~2.5min: image build, Mongo/server startup), which sets a wall-clock floor that more shards can't beat. When the suite was 51 tests (single browser project), 3 shards was the optimum (no-shard ≈ 4m34s, 3 shards ≈ 3m08s, 4 regressed). After the three-browser matrix tripled the suite, 3 shards measured ≈ 6m11s; the fitted model (`overhead + testTime/n`) put the knee at 5 (~5min predicted) with gains past that under ~20s per added runner. Re-measure if the suite size changes materially.
 
 **Keep the `yarn install` step in the `e2e` job** even though `docker-compose:test` builds the app inside Docker — Yarn 4 here refuses to run _any_ script without the `node_modules` install-state file (`Couldn't find the node_modules state file`), so removing it fails every shard in ~15s.
 
