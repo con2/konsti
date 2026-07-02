@@ -206,6 +206,7 @@ export const translationEN = {
   allProgramItems: "All {{PROGRAM_TYPE}}",
   lastStartedAndUpcoming: "Last started and upcoming",
   chooseTag: "Tag",
+  clearSelection: "Clear",
   startingTime: "Starting time",
   revolvingDoor: "Revolving door",
   revolvingDoorInstruction:
@@ -607,6 +608,7 @@ export const translationEN = {
   },
   iconAltText: {
     resetInput: "Reset input",
+    removeTag: "Remove tag {{TAG}}",
     openAccordion: "Open accordion menu",
     closeAccordion: "Close accordion menu",
     closeError: "Close error",

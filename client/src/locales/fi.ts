@@ -209,6 +209,7 @@ export const translationFI = {
   lastStartedAndUpcoming: "Viimeksi alkaneet ja tulevat",
   startingTime: "Aloitusaika",
   chooseTag: "Tagi",
+  clearSelection: "Tyhjennä",
   revolvingDoor: "Pyöröovi",
   revolvingDoorInstruction:
     "Pyöröovi{{PROGRAM_TYPE}} voi liittyä koska tahansa, jos {{PROGRAM_TYPE2}} on tilaa.",
@@ -610,6 +611,7 @@ export const translationFI = {
   },
   iconAltText: {
     resetInput: "Tyhjennä syöte",
+    removeTag: "Poista tagi {{TAG}}",
     openAccordion: "Avaa haitarivalikko",
     closeAccordion: "Sulje haitarivalikko",
     closeError: "Sulje virhe",

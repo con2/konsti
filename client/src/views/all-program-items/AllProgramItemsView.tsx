@@ -28,7 +28,7 @@ import {
   getSavedHideFull,
   getSavedSearchTerm,
   getSavedStartingTime,
-  getSavedTag,
+  getSavedTags,
 } from "client/utils/sessionStorage";
 import { SearchAndFilterCard } from "client/views/all-program-items/components/SearchAndFilterCard";
 import { getProgramTypeSelectOptions } from "client/utils/getProgramTypeSelectOptions";
@@ -58,9 +58,8 @@ export const AllProgramItemsView = (): ReactElement => {
     (state) => state.allProgramItems.directSignups,
   );
 
-  const [selectedTag, setSelectedTag] = useState<
-    Tag | Language | AgeGroup | ""
-  >(getSavedTag());
+  const [selectedTags, setSelectedTags] =
+    useState<(Tag | Language | AgeGroup)[]>(getSavedTags());
   const [loading, setLoading] = useState<boolean>(true);
   const [searchTerm, setSearchTerm] = useState<string>(getSavedSearchTerm());
   const [hideFullItems, setHideFullItems] =
@@ -173,7 +172,7 @@ export const AllProgramItemsView = (): ReactElement => {
     const visibleProgramItems = getVisibleProgramItems(
       filteredProgramItems,
       selectedStartingTime,
-      selectedTag,
+      selectedTags,
       hideFullItems,
       fullProgramItemIds,
     );
@@ -186,7 +185,7 @@ export const AllProgramItemsView = (): ReactElement => {
     filteredProgramItems,
     hideFullItems,
     selectedStartingTime,
-    selectedTag,
+    selectedTags,
     showOnlyInvalidProgramItems,
     fullProgramItemIds,
   ]);
@@ -227,8 +226,8 @@ export const AllProgramItemsView = (): ReactElement => {
   return (
     <>
       <SearchAndFilterCard
-        selectedTag={selectedTag}
-        setSelectedTag={setSelectedTag}
+        selectedTags={selectedTags}
+        setSelectedTags={setSelectedTags}
         selectedStartingTime={selectedStartingTime}
         setSelectedStartingTime={setSelectedStartingTime}
         searchTerm={searchTerm}

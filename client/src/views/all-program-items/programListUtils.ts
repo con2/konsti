@@ -20,13 +20,13 @@ export enum StartingTimeOption {
 export const getVisibleProgramItems = (
   programItems: readonly ProgramItem[],
   selectedView: StartingTimeOption,
-  selectedTag: string,
+  selectedTags: readonly string[],
   hideFull: boolean,
   fullProgramItemIds: ReadonlySet<string>,
 ): readonly ProgramItem[] => {
   const tagFilteredProgramItems = getTagFilteredProgramItems(
     programItems,
-    selectedTag,
+    selectedTags,
   );
 
   const fullnessFiltered = hideFull
@@ -57,31 +57,35 @@ export const getVisibleProgramItems = (
 
 export const getTagFilteredProgramItems = (
   programItems: readonly ProgramItem[],
-  selectedTag: string,
+  selectedTags: readonly string[],
 ): readonly ProgramItem[] => {
-  if (!selectedTag) {
+  if (selectedTags.length === 0) {
     return programItems;
   }
-  return programItems.filter((programItem) => {
-    if (programItem.programType.includes(selectedTag)) {
-      return programItem;
-    }
-    if (programItem.tags.includes(selectedTag as Tag)) {
-      return programItem;
-    }
-    if (programItem.ageGroups.includes(selectedTag as AgeGroup)) {
-      return programItem;
-    }
-    if (programItem.languages.includes(selectedTag as Language)) {
-      return programItem;
-    }
-    if (
-      programItem.languages.includes(Language.LANGUAGE_FREE) &&
-      Object.values(Language).includes(selectedTag as Language)
-    ) {
-      return programItem;
-    }
-  });
+  // Show items matching all of the selected tags (AND)
+  return programItems.filter((programItem) =>
+    selectedTags.every((selectedTag) => {
+      if (programItem.programType.includes(selectedTag)) {
+        return true;
+      }
+      if (programItem.tags.includes(selectedTag as Tag)) {
+        return true;
+      }
+      if (programItem.ageGroups.includes(selectedTag as AgeGroup)) {
+        return true;
+      }
+      if (programItem.languages.includes(selectedTag as Language)) {
+        return true;
+      }
+      if (
+        programItem.languages.includes(Language.LANGUAGE_FREE) &&
+        Object.values(Language).includes(selectedTag as Language)
+      ) {
+        return true;
+      }
+      return false;
+    }),
+  );
 };
 
 // The header of the group currently at (or scrolled past) the top of the visible

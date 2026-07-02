@@ -24,7 +24,7 @@ describe("getTagFilteredProgramItems", () => {
       { ...testProgramItem, programItemId: "a" },
       { ...testProgramItem, programItemId: "b" },
     ];
-    expect(getTagFilteredProgramItems(items, "")).toEqual(items);
+    expect(getTagFilteredProgramItems(items, [])).toEqual(items);
   });
 
   test("filters by tag", () => {
@@ -37,9 +37,40 @@ describe("getTagFilteredProgramItems", () => {
     expect(
       getTagFilteredProgramItems(
         [beginnerFriendly, noTags],
-        Tag.BEGINNER_FRIENDLY,
+        [Tag.BEGINNER_FRIENDLY],
       ),
     ).toEqual([beginnerFriendly]);
+  });
+
+  test("filters by multiple tags with AND logic", () => {
+    // Finnish beginner-friendly program for families
+    const allThree = {
+      ...testProgramItem,
+      programItemId: "a",
+      tags: [Tag.BEGINNER_FRIENDLY],
+      ageGroups: [AgeGroup.FAMILIES],
+      languages: [Language.FINNISH],
+    };
+    const onlyBeginnerFriendly = {
+      ...testProgramItem,
+      programItemId: "b",
+      tags: [Tag.BEGINNER_FRIENDLY],
+      ageGroups: [],
+      languages: [Language.ENGLISH],
+    };
+    const onlyFinnish = {
+      ...testProgramItem,
+      programItemId: "c",
+      tags: [],
+      ageGroups: [],
+      languages: [Language.FINNISH],
+    };
+    expect(
+      getTagFilteredProgramItems(
+        [allThree, onlyBeginnerFriendly, onlyFinnish],
+        [Tag.BEGINNER_FRIENDLY, AgeGroup.FAMILIES, Language.FINNISH],
+      ),
+    ).toEqual([allThree]);
   });
 
   test("filters by age group", () => {
@@ -53,9 +84,9 @@ describe("getTagFilteredProgramItems", () => {
       programItemId: "b",
       ageGroups: [AgeGroup.ADULTS],
     };
-    expect(getTagFilteredProgramItems([kids, adults], AgeGroup.KIDS)).toEqual([
-      kids,
-    ]);
+    expect(getTagFilteredProgramItems([kids, adults], [AgeGroup.KIDS])).toEqual(
+      [kids],
+    );
   });
 
   test("filters by language", () => {
@@ -70,7 +101,7 @@ describe("getTagFilteredProgramItems", () => {
       languages: [Language.ENGLISH],
     };
     expect(
-      getTagFilteredProgramItems([finnish, english], Language.ENGLISH),
+      getTagFilteredProgramItems([finnish, english], [Language.ENGLISH]),
     ).toEqual([english]);
   });
 
@@ -85,9 +116,9 @@ describe("getTagFilteredProgramItems", () => {
       programItemId: "b",
       programType: ProgramType.LARP,
     };
-    expect(getTagFilteredProgramItems([rpg, larp], ProgramType.LARP)).toEqual([
-      larp,
-    ]);
+    expect(getTagFilteredProgramItems([rpg, larp], [ProgramType.LARP])).toEqual(
+      [larp],
+    );
   });
 
   test("a language-free item matches any language filter", () => {
@@ -102,7 +133,10 @@ describe("getTagFilteredProgramItems", () => {
       languages: [Language.FINNISH],
     };
     expect(
-      getTagFilteredProgramItems([languageFree, finnishOnly], Language.ENGLISH),
+      getTagFilteredProgramItems(
+        [languageFree, finnishOnly],
+        [Language.ENGLISH],
+      ),
     ).toEqual([languageFree]);
   });
 });
@@ -124,7 +158,7 @@ describe("getVisibleProgramItems", () => {
       getVisibleProgramItems(
         [full, open],
         StartingTimeOption.ALL,
-        "",
+        [],
         true,
         new Set(["full"]),
       ),
@@ -138,7 +172,7 @@ describe("getVisibleProgramItems", () => {
       getVisibleProgramItems(
         [full, open],
         StartingTimeOption.ALL,
-        "",
+        [],
         false,
         new Set(["full"]),
       ),
@@ -160,7 +194,7 @@ describe("getVisibleProgramItems", () => {
       getVisibleProgramItems(
         [larp, rpg],
         StartingTimeOption.ALL,
-        ProgramType.LARP,
+        [ProgramType.LARP],
         false,
         new Set<string>(),
       ),
