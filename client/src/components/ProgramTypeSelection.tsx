@@ -9,9 +9,13 @@ import { getProgramTypeSelectOptions } from "client/utils/getProgramTypeSelectOp
 
 interface Props {
   id: string;
+  className?: string;
 }
 
-export const ProgramTypeSelection = ({ id }: Props): ReactElement => {
+export const ProgramTypeSelection = ({
+  id,
+  className,
+}: Props): ReactElement => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
@@ -39,6 +43,7 @@ export const ProgramTypeSelection = ({ id }: Props): ReactElement => {
       }}
       loading={false}
       id={id}
+      className={className}
     />
   );
 };

@@ -1,4 +1,4 @@
-import { ChangeEvent, Dispatch, ReactElement, SetStateAction } from "react";
+import { Dispatch, ReactElement, SetStateAction } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { ProgramTypeSelection } from "client/components/ProgramTypeSelection";
@@ -9,7 +9,7 @@ import {
   Language,
   AgeGroup,
 } from "shared/types/models/programItem";
-import { Dropdown } from "client/components/Dropdown";
+import { MultiSelectDropdown } from "client/components/MultiSelectDropdown";
 import { SessionStorageValue } from "client/utils/sessionStorage";
 import { ControlledInput } from "client/components/ControlledInput";
 import { RadioButton } from "client/components/RadioButton";
@@ -26,8 +26,8 @@ import { Checkbox } from "client/components/Checkbox";
 import { StartingTimeOption } from "client/views/all-program-items/programListUtils";
 
 interface Props {
-  selectedTag: Tag | Language | AgeGroup | "";
-  setSelectedTag: Dispatch<SetStateAction<Tag | Language | AgeGroup | "">>;
+  selectedTags: (Tag | Language | AgeGroup)[];
+  setSelectedTags: Dispatch<SetStateAction<(Tag | Language | AgeGroup)[]>>;
   selectedStartingTime: StartingTimeOption;
   setSelectedStartingTime: Dispatch<SetStateAction<StartingTimeOption>>;
   searchTerm: string;
@@ -37,8 +37,8 @@ interface Props {
 }
 
 export const SearchAndFilterCard = ({
-  selectedTag,
-  setSelectedTag,
+  selectedTags,
+  setSelectedTags,
   selectedStartingTime,
   setSelectedStartingTime,
   searchTerm,
@@ -55,12 +55,6 @@ export const SearchAndFilterCard = ({
   const languageFilters = useAppSelector(selectLanguages);
 
   const tagOptions = [
-    {
-      value: "",
-      title: t("allProgramItems", {
-        PROGRAM_TYPE: t(`programTypePlural.${activeProgramType}`),
-      }),
-    },
     languageFilters.map((filter) => ({
       value: filter,
       title: t(`programItemLanguage.${filter}`),
@@ -75,30 +69,46 @@ export const SearchAndFilterCard = ({
     })),
   ].flat();
 
+  const allProgramItemsLabel = t("allProgramItems", {
+    PROGRAM_TYPE: t(`programTypePlural.${activeProgramType}`),
+  });
+
+  const toggleTag = (value: string): void => {
+    const tag = value as Tag | Language | AgeGroup;
+    const nextTags = selectedTags.includes(tag)
+      ? selectedTags.filter((selected) => selected !== tag)
+      : [...selectedTags, tag];
+    setSelectedTags(nextTags);
+    sessionStorage.setItem(
+      SessionStorageValue.ALL_PROGRAM_ITEMS_TAG,
+      JSON.stringify(nextTags),
+    );
+  };
+
+  const clearTags = (): void => {
+    setSelectedTags([]);
+    sessionStorage.removeItem(SessionStorageValue.ALL_PROGRAM_ITEMS_TAG);
+  };
+
   return (
     <Container>
       <InputContainer>
         <StyledLabel htmlFor="programTypeSelection">
           {t("selectedProgramType")}
         </StyledLabel>
-        <ProgramTypeSelection id="programTypeSelection" />
+        <StyledProgramTypeSelection id="programTypeSelection" />
       </InputContainer>
 
       {config.event().enableTagDropdown && (
         <InputContainer>
           <StyledLabel htmlFor="tagSelection">{t("chooseTag")}</StyledLabel>
-          <Dropdown
+          <MultiSelectDropdown
             id="tagSelection"
-            onChange={(event: ChangeEvent<HTMLSelectElement>) => {
-              const tag = event.target.value as Tag | Language | AgeGroup;
-              setSelectedTag(tag);
-              sessionStorage.setItem(
-                SessionStorageValue.ALL_PROGRAM_ITEMS_TAG,
-                tag,
-              );
-            }}
             options={tagOptions}
-            selectedValue={selectedTag}
+            selectedValues={selectedTags}
+            onToggle={toggleTag}
+            onClear={clearTags}
+            placeholder={allProgramItemsLabel}
           />
         </InputContainer>
       )}
@@ -186,6 +196,11 @@ const Container = styled(RaisedCard)`
   @media (max-width: ${(props) => props.theme.breakpointPhone}) {
     grid-template-columns: 1fr;
   }
+`;
+
+// Match the height of the tag filter next to it
+const StyledProgramTypeSelection = styled(ProgramTypeSelection)`
+  height: 38px;
 `;
 
 const StyledLabel = styled.label`

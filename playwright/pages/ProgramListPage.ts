@@ -17,6 +17,28 @@ export class ProgramListPage extends BasePage {
     return this.page.getByRole("combobox", { name: /program type/i });
   }
 
+  get tagFilter(): Locator {
+    return this.page.getByTestId("tag-filter");
+  }
+
+  async openTagFilter(): Promise<void> {
+    await this.page.locator("#tagSelection").click();
+  }
+
+  async toggleTag(label: string): Promise<void> {
+    await this.page.getByRole("checkbox", { name: label }).click();
+  }
+
+  async removeTag(label: string): Promise<void> {
+    await this.page
+      .getByRole("button", { name: `Remove tag ${label}` })
+      .click();
+  }
+
+  async clearTagFilter(): Promise<void> {
+    await this.page.getByRole("button", { name: "Clear" }).click();
+  }
+
   get lotterySignupList(): Locator {
     return this.page.getByTestId("lottery-signup-program-items-list");
   }

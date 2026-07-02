@@ -6,7 +6,7 @@ const connectToDb = async (
   dbConnString: string = config.server().dbConnString,
   dbName: string = config.server().dbName,
 ): Promise<void> => {
-  logger.info("MongoDB: Connecting");
+  logger.info(`MongoDB: Connecting to DB ${dbName}`);
 
   const options = {
     dbName,

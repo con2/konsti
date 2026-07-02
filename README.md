@@ -72,6 +72,11 @@ isolated because each `PORT_OFFSET` uses its own database name. Seed a specific
 instance with `PORT_OFFSET=1 yarn run populate-db:dummy`. Then open
 `localhost:8001`.
 
+The database scripts (`populate-db:*`, `load-past-event-data`,
+`update-kompassi-data`) also read `server/.env.development`, so a persistent
+`PORT_OFFSET` set there targets the right database without the shell variable.
+A `PORT_OFFSET` set in the shell always wins over the file.
+
 ## Tech
 
 - General

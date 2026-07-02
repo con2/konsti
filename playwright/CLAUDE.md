@@ -40,6 +40,14 @@ npx playwright test --config playwright/playwright.config.ts profile logout   # 
 
 `testDir` defaults to the config file's directory, so specs under `tests/` are auto-discovered.
 
+**Worktree instances (`PORT_OFFSET`):** to run against a stack started with a `PORT_OFFSET` (see the root README — one instance per git worktree), set the same offset on the test command; it shifts both the browser `baseURL` (client `8000+offset`) and the setup-API base (server `5000+offset`):
+
+```bash
+PORT_OFFSET=1 npx playwright test --config playwright/playwright.config.ts programSearch
+```
+
+Start the pieces with the same offset: `PORT_OFFSET=1 yarn server:test` and `PORT_OFFSET=1 yarn client` (Mongo is shared; each offset uses its own database name). **Verify Vite actually bound `8000+offset`** in its startup banner: if the port is taken — commonly by an orphaned dev server from a killed terminal — Vite silently increments to the next free port (`Port 8001 is in use, trying another one...`) and the suite then runs against the wrong, possibly stale instance. A stale zombie serving an old `node_modules/.vite` pre-bundle produces confusing "Invalid hook call" / duplicate-React crashes that survive cache clears and restarts, because the fixes apply to a different process than the one being tested. Kill stray listeners (`netstat -ano | findstr :8001`, then `taskkill /F /PID <pid>`) before re-running.
+
 ## Config (`playwright.config.ts`)
 
 - **Browsers:** only **Chromium** is enabled (project "Chrome Stable"); Firefox/WebKit/mobile are behind `ENABLE_*` flags that are currently `false`. Flip a flag to add a project.
@@ -70,7 +78,7 @@ Helpers log in as `admin:test` internally where admin rights are needed. Test cr
 
 ## Tests (`playwright/tests/`)
 
-Specs cover the main user flows: auth (`login`, `kompassiLogin`, `registration`, `logout`), signup (`lotterySignup`, `directSignup`, `preConventionWeekSignup`, `favorite`, `admission`), groups (`group`, `groupManage`), discovery (`programSearch`, `programListQueryParams` — the `programType`/`invalid` program-list URL params, `programListScroll` — the virtualized list's scroll restore/reset on navigation), staff tools (`admin`, `adminConsole`, `helper`), `profile`, `about`, and program-item lifecycle (`cancelProgramItem`, `moveProgramItem` — the cancellation/start-time-change notifications described in [server/CLAUDE.md](../server/CLAUDE.md)).
+Specs cover the main user flows: auth (`login`, `kompassiLogin`, `registration`, `logout`), signup (`lotterySignup`, `directSignup`, `preConventionWeekSignup`, `favorite`, `admission`), groups (`group`, `groupManage`), discovery (`programSearch`, `programTagFilter` — the multi-select tag filter's OR logic and sessionStorage persistence, `programListQueryParams` — the `programType`/`invalid` program-list URL params, `programListScroll` — the virtualized list's scroll restore/reset on navigation), staff tools (`admin`, `adminConsole`, `helper`), `profile`, `about`, and program-item lifecycle (`cancelProgramItem`, `moveProgramItem` — the cancellation/start-time-change notifications described in [server/CLAUDE.md](../server/CLAUDE.md)).
 
 ### Page Objects (`pages/`)
 

@@ -22,6 +22,8 @@ Run from the repo root as `yarn workspace server <script>` (or via the root shor
 | `test-assign` / `verify-results` / `update-popularity` / `check-start-times` / `remove-invalid-games` | One-off dev scripts under `src/test/scripts/`                                                                                     |
 | `find-unused-translation-keys`                                                                        | Scans **`client/src`** for unused i18next keys (the detector lives here but checks the client; wired into `yarn lint`)            |
 
+`generate-data`, `update-kompassi-data`, and `load-past-event-data` preload `server/.env.development` (via `DOTENV_CONFIG_PATH` + `-r dotenv/config`, like `start:dev`), so a worktree's persistent `PORT_OFFSET` targets that instance's database; a shell-set variable still wins because dotenv never overrides existing env. `generate-data` uses the env-var form instead of the trailing `dotenv_config_path=...` argv form on purpose — a trailing arg would break its commander `process.argv.length < 3` help check.
+
 ## Directory Layout (`server/src`)
 
 - **`index.ts`** — entry point (ESM). Does **not** import `utils/instrument.ts` directly; Sentry is initialized via the `--import=./src/utils/instrument.ts` Node preload in the `start` scripts (see Sentry note below).

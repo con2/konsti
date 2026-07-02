@@ -30,17 +30,24 @@ export const getSavedSearchTerm = (): string => {
   return result.data;
 };
 
-const SavedTagSchema = z.enum(Tag).or(z.enum(Language)).or(z.enum(AgeGroup));
+const SavedTagsSchema = z.array(
+  z.enum(Tag).or(z.enum(Language)).or(z.enum(AgeGroup)),
+);
 
-export const getSavedTag = (): Tag | Language | AgeGroup | "" => {
+export const getSavedTags = (): (Tag | Language | AgeGroup)[] => {
   const serializedValue = sessionStorage.getItem(
     SessionStorageValue.ALL_PROGRAM_ITEMS_TAG,
   );
 
-  const result = SavedTagSchema.safeParse(serializedValue);
+  const parseJsonResult = StringToJsonSchema.safeParse(serializedValue);
+  if (!parseJsonResult.success) {
+    return [];
+  }
+
+  const result = SavedTagsSchema.safeParse(parseJsonResult.data);
   if (!result.success) {
     sessionStorage.removeItem(SessionStorageValue.ALL_PROGRAM_ITEMS_TAG);
-    return "";
+    return [];
   }
 
   return result.data;
