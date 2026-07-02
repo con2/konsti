@@ -76,6 +76,9 @@ interface LoginRequest {
   password: string;
 }
 
+// Gives each login() call a unique marker key so its init script applies once
+let loginCounter = 0;
+
 export const login = async (
   page: Page,
   request: APIRequestContext,
@@ -86,18 +89,32 @@ export const login = async (
     password: loginRequest.password,
   });
 
-  await page.goto("/");
+  loginCounter += 1;
 
-  await page.evaluate((jwt) => {
-    localStorage.setItem(
-      "state",
-      JSON.stringify({
-        login: {
-          jwt,
-        },
-      }),
-    );
-  }, loginResponse.jwt);
+  // Write the JWT before any app script runs on the test's own navigation.
+  // The previous goto + evaluate approach required a second goto to the same
+  // URL, which WebKit rejects with "Frame load interrupted".
+  // Init scripts run on every navigation, but this must apply only on the
+  // first one after login(): later navigations must not resurrect the session,
+  // e.g. after a UI logout or when a spec drives the login form. The marker
+  // survives logout because clearSession() only removes the "state" key
+  await page.addInitScript(
+    ({ jwt, marker }) => {
+      if (localStorage.getItem(marker)) {
+        return;
+      }
+      localStorage.setItem(marker, "applied");
+      localStorage.setItem(
+        "state",
+        JSON.stringify({
+          login: {
+            jwt,
+          },
+        }),
+      );
+    },
+    { jwt: loginResponse.jwt, marker: `playwright-login-${loginCounter}` },
+  );
 };
 
 export const postSettings = async (

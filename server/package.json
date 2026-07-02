@@ -14,7 +14,6 @@
     "generate-data": "tsx src/test/test-data-generation/generateTestDataCli.ts",
     "initialize-db": "tsx src/utils/initializeDatabase.ts",
     "generate-serials": "tsx src/utils/generateSerials.ts",
-    "lint": "yarn eslint && yarn prettier:check",
     "remove-invalid-games": "NODE_ENV=development tsx src/test/scripts/removeInvalidGames.ts",
     "start": "tsx --import=./src/utils/instrument.ts src/index.ts",
     "start:dev": "NODE_ENV=development SETTINGS=development tsx watch --clear-screen=false --import=./src/utils/instrument.ts -r dotenv/config src/index.ts dotenv_config_path=.env.development",

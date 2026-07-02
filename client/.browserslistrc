@@ -1,14 +1,16 @@
-# Supported browsers
+# Supported browsers: rolling window of versions released in the last 5 years
 # https://github.com/browserslist/browserslist
 # https://browsersl.ist
+#
+# browserslist has no per-browser rolling syntax, so this is a rolling window
+# plus exclusions for the niche browser families we don't support. If caniuse
+# adds a new browser family, it becomes included by default — check the
+# resolved set with: npx browserslist
 
-chrome >= 90       # Chrome
-edge >= 90         # Edge
-firefox >= 88      # Firefox
-safari >= 14.1     # Safari
-ios_saf >= 14.5    # iOS Safari
-and_chr >= 90      # Chrome for Android
-and_ff >= 88       # Firefox for Android
-samsung >= 15      # Samsung Internet
-op_mob >= 80       # Opera Mobile
-not OperaMini all  # Exclude Opera Mini
+last 5 years
+not android > 0    # Android WebView
+not and_qq > 0     # QQ Browser for Android
+not and_uc > 0     # UC Browser for Android
+not baidu > 0      # Baidu Browser
+not kaios > 0      # KaiOS Browser
+not opera > 0      # Desktop Opera (Opera Mobile stays included)
