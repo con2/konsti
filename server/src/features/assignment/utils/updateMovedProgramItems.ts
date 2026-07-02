@@ -19,12 +19,12 @@ export const updateMovedProgramItems = async (
   updatedProgramItems: readonly ProgramItem[],
   currentProgramItems: readonly ProgramItem[],
 ): Promise<Result<void, MongoDbError>> => {
-  const movedProgramItems = currentProgramItems.filter((currentProgramItem) => {
-    return updatedProgramItems.find((updatedProgramItem) => {
+  const movedProgramItems = updatedProgramItems.filter((updatedProgramItem) => {
+    return currentProgramItems.find((currentProgramItem) => {
       return (
-        currentProgramItem.programItemId === updatedProgramItem.programItemId &&
-        dayjs(currentProgramItem.startTime).toISOString() !==
-          dayjs(updatedProgramItem.startTime).toISOString()
+        updatedProgramItem.programItemId === currentProgramItem.programItemId &&
+        dayjs(updatedProgramItem.startTime).toISOString() !==
+          dayjs(currentProgramItem.startTime).toISOString()
       );
     });
   });
@@ -36,7 +36,7 @@ export const updateMovedProgramItems = async (
   logger.info(`Found ${movedProgramItems.length} moved program items`);
 
   const programItemTitlesById = new Map(
-    currentProgramItems.map((programItem) => [
+    updatedProgramItems.map((programItem) => [
       programItem.programItemId,
       programItem.title,
     ]),
