@@ -785,10 +785,16 @@ test("should add event notification if user has lottery signup and program item 
       expect.objectContaining({
         programItemId: testProgramItem.programItemId,
         action: EventLogAction.PROGRAM_ITEM_MOVED,
+        programItemStartTime: dayjs(testProgramItem.startTime)
+          .add(1, "hour")
+          .toISOString(),
       }),
       expect.objectContaining({
         programItemId: testProgramItem2.programItemId,
         action: EventLogAction.PROGRAM_ITEM_MOVED,
+        programItemStartTime: dayjs(testProgramItem2.startTime)
+          .add(2, "hours")
+          .toISOString(),
       }),
     ]),
   );
@@ -803,12 +809,18 @@ test("should add event notification if user has lottery signup and program item 
         username: mockUser.username,
         programItemId: testProgramItem.programItemId,
         programItemTitle: testProgramItem.title,
+        programItemStartTime: dayjs(testProgramItem.startTime)
+          .add(1, "hour")
+          .toISOString(),
       }),
       expect.objectContaining({
         type: NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_TIME_CHANGED,
         username: mockUser.username,
         programItemId: testProgramItem2.programItemId,
         programItemTitle: testProgramItem2.title,
+        programItemStartTime: dayjs(testProgramItem2.startTime)
+          .add(2, "hours")
+          .toISOString(),
       }),
     ]),
   );
@@ -838,10 +850,16 @@ test("should add event notification if user has direct signup and program item s
       expect.objectContaining({
         programItemId: testProgramItem.programItemId,
         action: EventLogAction.PROGRAM_ITEM_MOVED,
+        programItemStartTime: dayjs(testProgramItem.startTime)
+          .add(1, "hour")
+          .toISOString(),
       }),
       expect.objectContaining({
         programItemId: testProgramItem2.programItemId,
         action: EventLogAction.PROGRAM_ITEM_MOVED,
+        programItemStartTime: dayjs(testProgramItem2.startTime)
+          .add(2, "hours")
+          .toISOString(),
       }),
     ]),
   );
@@ -856,12 +874,18 @@ test("should add event notification if user has direct signup and program item s
         username: mockUser.username,
         programItemId: testProgramItem.programItemId,
         programItemTitle: testProgramItem.title,
+        programItemStartTime: dayjs(testProgramItem.startTime)
+          .add(1, "hour")
+          .toISOString(),
       }),
       expect.objectContaining({
         type: NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_TIME_CHANGED,
         username: mockUser.username,
         programItemId: testProgramItem2.programItemId,
         programItemTitle: testProgramItem2.title,
+        programItemStartTime: dayjs(testProgramItem2.startTime)
+          .add(2, "hours")
+          .toISOString(),
       }),
     ]),
   );

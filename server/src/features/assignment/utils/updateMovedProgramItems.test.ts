@@ -58,7 +58,7 @@ test("should remove lottery signups for moved program items from users", async (
   );
 
   const updatedProgramItems = unsafelyUnwrap(await findProgramItems());
-  await updateMovedProgramItems(insertedProgramItems, updatedProgramItems);
+  await updateMovedProgramItems(updatedProgramItems, insertedProgramItems);
 
   const updatedUser = unsafelyUnwrap(await findUser(mockUser.username));
 
@@ -96,22 +96,28 @@ test("should notify a user about a moved lottery signup and a moved direct signu
   );
 
   const movedProgramItems = unsafelyUnwrap(await findProgramItems());
-  await updateMovedProgramItems(originalProgramItems, movedProgramItems);
+  await updateMovedProgramItems(movedProgramItems, originalProgramItems);
 
   const updatedUser = unsafelyUnwrap(await findUser(mockUser.username));
-  const movedEventProgramItemIds = updatedUser?.eventLogItems
-    .filter(
-      (eventLogItem) =>
-        eventLogItem.action === EventLogAction.PROGRAM_ITEM_MOVED,
-    )
-    .map((eventLogItem) => eventLogItem.programItemId);
+  const movedEvents = updatedUser?.eventLogItems.filter(
+    (eventLogItem) => eventLogItem.action === EventLogAction.PROGRAM_ITEM_MOVED,
+  );
 
-  // The user should be notified about both the moved lottery item and the moved direct-signup item
-  expect(movedEventProgramItemIds).toHaveLength(2);
-  expect(movedEventProgramItemIds).toEqual(
+  expect(movedEvents).toHaveLength(2);
+  expect(movedEvents).toEqual(
     expect.arrayContaining([
-      testProgramItem.programItemId,
-      testProgramItem2.programItemId,
+      expect.objectContaining({
+        programItemId: testProgramItem.programItemId,
+        programItemStartTime: dayjs(testProgramItem.startTime)
+          .add(1, "hour")
+          .toISOString(),
+      }),
+      expect.objectContaining({
+        programItemId: testProgramItem2.programItemId,
+        programItemStartTime: dayjs(testProgramItem2.startTime)
+          .add(1, "hour")
+          .toISOString(),
+      }),
     ]),
   );
 });
@@ -135,7 +141,7 @@ test("should notify a user only once for a moved item they have both a lottery a
   );
 
   const movedProgramItems = unsafelyUnwrap(await findProgramItems());
-  await updateMovedProgramItems(originalProgramItems, movedProgramItems);
+  await updateMovedProgramItems(movedProgramItems, originalProgramItems);
 
   const updatedUser = unsafelyUnwrap(await findUser(mockUser.username));
   const movedEvents = updatedUser?.eventLogItems.filter(
@@ -145,4 +151,7 @@ test("should notify a user only once for a moved item they have both a lottery a
   // Same item via both signup types -> a single notification, not two
   expect(movedEvents).toHaveLength(1);
   expect(movedEvents?.[0].programItemId).toEqual(testProgramItem.programItemId);
+  expect(movedEvents?.[0].programItemStartTime).toEqual(
+    dayjs(testProgramItem.startTime).add(1, "hour").toISOString(),
+  );
 });
