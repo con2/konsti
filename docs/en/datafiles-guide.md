@@ -66,7 +66,8 @@ All program items for the event.
     "gameSystem": "Torchbearer",
     "genres": [],
     "styles": ["light", "characterDriven"],
-    "tags": ["adults", "beginnerFriendly"],
+    "tags": ["beginnerFriendly"],
+    "ageGroups": ["adults"],
     "popularity": 0,
     "revolvingDoor": true, // Players can join/leave mid-session
     "description": "...",
@@ -157,7 +158,8 @@ All users with sanitized data. Usernames are anonymized numeric IDs, passwords a
 
 Older events have been normalized into the schema above. Notable details:
 
-- 2017–2019 (Ropecon, Tracon Hitpoint 2019): `directSignups` were moved out into a generated `direct-signups.json`; `favoriteProgramItemIds` was flattened from `[{programItemId}]` to `[string]`; old descriptive boolean flags (`englishOk`, `childrenFriendly`, `ageRestricted`, `beginnerFriendly`, `intendedForExperiencedParticipants`) were mapped to entries in `tags` and removed; 2017's `attributes` array was split into `genres` and `styles` and removed; 2017's `notes` field (which contained the game system) was renamed to `gameSystem`.
+- All years: age-group values (`everyone`, `adults`, `teens`, `onlyAdults`, `kids`, `smallKids`, plus the legacy `childrenFriendly`) were moved from `tags` into a separate `ageGroups` field, matching the 2026 code change that split the `AgeGroup` enum out of `Tag`. `childrenFriendly` (an old age-audience flag with no current enum equivalent) is kept in `ageGroups` as a legacy value; `k16` stays in `tags` as in current code, and other legacy tag values (`inEnglish`, `intendedForExperiencedParticipants`, `celebratoryYear`, `demo`, `tournament`) remain in `tags`.
+- 2017–2019 (Ropecon, Tracon Hitpoint 2019): `directSignups` were moved out into a generated `direct-signups.json`; `favoriteProgramItemIds` was flattened from `[{programItemId}]` to `[string]`; old descriptive boolean flags (`englishOk`, `childrenFriendly`, `ageRestricted`, `beginnerFriendly`, `intendedForExperiencedParticipants`) were mapped to entries in `tags` (later split into `tags` and `ageGroups`, see above) and removed; 2017's `attributes` array was split into `genres` and `styles` and removed; 2017's `notes` field (which contained the game system) was renamed to `gameSystem`.
 - 2017: `mins` was string-typed and is now numeric; lottery signup priorities were string-typed and are now numeric; `signedToStartTime` was backfilled from each program's `startTime`.
 - 2021 Ropecon: a remote / COVID-era convention with direct signup only — no lottery was run. `lotterySignups` is empty by design and `results.json` is absent. Confirmed signups are in `direct-signups.json` with `priority: 0`.
 
