@@ -49,7 +49,6 @@ test("Admission ticket reflects whether the user has signed up", async ({
   });
 
   await login(page, request, { username: "test1", password: "test" });
-  await page.goto("/");
 
   const programItemPage = new ProgramItemPage(page);
 

@@ -42,7 +42,7 @@ npx playwright test --config playwright/playwright.config.ts profile logout   # 
 
 ## Config (`playwright.config.ts`)
 
-- **Browsers:** only **Chromium** is enabled (project "Chrome Stable"); Firefox/WebKit/mobile are behind `ENABLE_*` flags that are currently `false`. Flip a flag to add a project.
+- **Browsers:** three projects are enabled — desktop **Chromium** ("Chrome Stable"), **Mobile Chrome** (Pixel 7 emulation: mobile viewport + touch, also Chromium), and **Mobile Safari** (iPhone 15 emulation, WebKit) — so every spec runs on all three. Desktop Firefox/Safari are behind `ENABLE_*` flags that are currently `false`; flip a flag to add a project.
 - **`baseURL`:** `process.env.PLAYWRIGHT_BASEURL ?? "http://localhost:8000"` — i.e. `page.goto("/")` hits the **client** locally, and the Docker run sets `PLAYWRIGHT_BASEURL=http://server:5000`.
 - **`workers: 1`** (serial — tests share one DB, so no parallelism).
 - **`retries`:** `1` in CI, `0` locally.
@@ -61,7 +61,7 @@ Tests drive app state through the server's **dev/test API** (not the UI) for set
 - **`clearDb(request)`** — `POST /api/clear-db`.
 - **`addProgramItems(request, items)`** — `POST /api/add-program-items` to add/modify items mid-test (commonly a spread of `testProgramItem` from `shared/tests/` with tweaked `startTime`/`programType`/attendance/`state`).
 - **`addSerials(request, count)`** — `POST /api/add-serial`; returns the created registration codes (`string[]`). Local account creation always requires a valid code, so a registration spec must mint one with this helper.
-- **`login(page, request, { username, password })`** — logs in via the API, navigates to `/`, then writes the JWT into `localStorage` under `state.login.jwt`. This **bypasses the login form** — use it for setup; test the form itself in `login.spec.ts`. The JWT is written **after** that navigation, so **call `await page.goto("/")` again after `login()`** or the app stays anonymous.
+- **`login(page, request, { username, password })`** — logs in via the API and registers an init script that writes the JWT into `localStorage` under `state.login.jwt` on the **next navigation** (it does not navigate itself). This **bypasses the login form** — use it for setup; test the form itself in `login.spec.ts`. **You must navigate after `login()`** (`await page.goto("/")` or a deep link) or the app never boots authenticated. The script applies **once** (marker-guarded), so later navigations don't resurrect the session — UI logout and login-form flows in the same test keep working. Don't add a throwaway `goto` inside `login()`: back-to-back same-page navigations abort in-flight lazy chunk imports, and `lazyWithRetry`'s `location.reload()` then interrupts the second `goto` on WebKit ("Frame load interrupted").
 - **`postSettings(request, settings)`** / **`postTestSettings(request, settings)`** — admin-authenticated `POST /api/settings` and `POST /api/test-settings`. `postTestSettings({ testTime })` **mocks server time**, which governs signup windows and whether the lottery has "run".
 - **`testPostDirectSignup(request, username, req)`** — direct-signup as another user (e.g. to fill a slot before the user under test).
 - **`postAssignment(request, assignmentTime)`** — trigger the lottery at a given time.
@@ -93,7 +93,7 @@ Conventions:
 
 Learned while adding the flows above — these save a round of trial and error:
 
-- **Reload after `login()`** so the app boots authenticated (see Helpers).
+- **Navigate after `login()`** so the app boots authenticated — `login()` itself doesn't navigate (see Helpers).
 - **`#main` is `BasePage.main`:** page content renders inside `#main`; assert against `<page>.main` rather than re-deriving `page.locator("#main")`.
 - **Navigation (`Navigation`):** the drawer (`data-testid="navigation-icon"`) and its links are wrapped by `<page>.navigation` — `gotoProfile()` (the `link-profile` testid), `gotoProgram()/gotoAdmin()/gotoHelper()`, `logout()`. The link-by-text helpers use `{ exact: true }` because a program item whose title starts with e.g. "Helper" otherwise collides with the "Helper" nav link (strict-mode violation).
 - **Program-type filter (`ProgramListPage.selectProgramType`):** select by the visible option label (`"Tabletop RPG"`), not the enum value. The list only shows items of the active program type, so set it before counting `items`.

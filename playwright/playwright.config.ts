@@ -3,8 +3,8 @@ import { PlaywrightTestConfig, Project, devices } from "@playwright/test";
 const ENABLE_CHROME = true;
 const ENABLE_FIREFOX = false;
 const ENABLE_SAFARI = false;
-const ENABLE_MOBILE_CHROME = false;
-const ENABLE_MOBILE_SAFARI = false;
+const ENABLE_MOBILE_CHROME = true;
+const ENABLE_MOBILE_SAFARI = true;
 
 const projects: Project[] = [];
 
@@ -41,15 +41,17 @@ ENABLE_SAFARI &&
 // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition, @typescript-eslint/no-unused-expressions
 ENABLE_MOBILE_CHROME &&
   projects.push({
-    name: "Mobile Safari",
-    use: devices["iPhone 12"],
+    name: "Mobile Chrome",
+    use: devices["Pixel 7"],
   });
 
 // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition, @typescript-eslint/no-unused-expressions
 ENABLE_MOBILE_SAFARI &&
   projects.push({
-    name: "Mobile Chrome",
-    use: devices["Pixel 5"],
+    // iPhone SE (3rd gen) is the smallest supported viewport (375x667), so
+    // this project covers both WebKit and the small-screen floor
+    name: "Mobile Safari",
+    use: devices["iPhone SE (3rd gen)"],
   });
 
 // PORT_OFFSET shifts the client dev server port so the suite can target a
