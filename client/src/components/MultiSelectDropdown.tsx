@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Checkbox } from "client/components/Checkbox";
 import { Option } from "client/components/Dropdown";
+import { TertiaryButton } from "client/components/TertiaryButton";
 
 interface Props {
   id?: string;
@@ -27,6 +28,7 @@ export const MultiSelectDropdown = ({
   const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const skipNextToggle = useRef(false);
   const generatedId = useId();
   const panelId = `${id ?? generatedId}-panel`;
 
@@ -39,11 +41,15 @@ export const MultiSelectDropdown = ({
       return;
     }
     const handlePointerDown = (event: MouseEvent): void => {
-      if (
-        containerRef.current &&
-        !containerRef.current.contains(event.target as Node)
-      ) {
-        setOpen(false);
+      if (containerRef.current?.contains(event.target as Node)) {
+        return;
+      }
+      setOpen(false);
+      // Clicking the control's own label forwards a click to the toggle
+      // button, which would reopen the panel this handler just closed
+      const label = (event.target as Element).closest("label");
+      if (label && id && label.htmlFor === id) {
+        skipNextToggle.current = true;
       }
     };
     const handleKeyDown = (event: KeyboardEvent): void => {
@@ -57,7 +63,7 @@ export const MultiSelectDropdown = ({
       document.removeEventListener("mousedown", handlePointerDown);
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [open]);
+  }, [open, id]);
 
   return (
     <Container ref={containerRef} className={className}>
@@ -86,6 +92,10 @@ export const MultiSelectDropdown = ({
           aria-expanded={open}
           aria-controls={panelId}
           onClick={() => {
+            if (skipNextToggle.current) {
+              skipNextToggle.current = false;
+              return;
+            }
             setOpen((prev) => !prev);
           }}
         >
@@ -98,9 +108,7 @@ export const MultiSelectDropdown = ({
       {open && (
         <Panel id={panelId} role="group">
           {selectedValues.length > 0 && (
-            <ClearButton type="button" onClick={onClear}>
-              {t("clearSelection")}
-            </ClearButton>
+            <ClearButton onClick={onClear}>{t("clearSelection")}</ClearButton>
           )}
           {options.map((option) => (
             <Checkbox
@@ -184,7 +192,8 @@ const Placeholder = styled.span`
 const CaretIcon = styled(FontAwesomeIcon)`
   margin: 0 0 0 auto;
 
-  /* Match the size of the native select's arrow in the dropdown next to this */
+  /* Keep in sync with the chevron background drawn on the program type
+     select in SearchAndFilterCard */
   font-size: 12px;
 `;
 
@@ -206,13 +215,6 @@ const Panel = styled.div`
   box-shadow: ${(props) => props.theme.shadowLower};
 `;
 
-const ClearButton = styled.button`
+const ClearButton = styled(TertiaryButton)`
   align-self: flex-start;
-  padding: 0;
-  border: none;
-  background: none;
-  color: ${(props) => props.theme.textLink};
-  font-size: ${(props) => props.theme.fontSizeSmall};
-  cursor: pointer;
-  text-decoration: underline;
 `;
