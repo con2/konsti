@@ -13,6 +13,7 @@ import styled from "styled-components";
 import {
   defaultRangeExtractor,
   useWindowVirtualizer,
+  VirtualItem,
 } from "@tanstack/react-virtual";
 import { ProgramItemEntry } from "client/views/program-item/ProgramItemEntry";
 import { useAppSelector } from "client/utils/hooks";
@@ -32,6 +33,7 @@ import { getIsInGroup } from "client/views/group/groupUtils";
 import { SignupQuestion } from "shared/types/models/settings";
 import { selectGroupMembers } from "client/views/group/groupSlice";
 import { config } from "shared/config";
+import { registerScrollToTopOverride } from "client/utils/scrollToTop";
 
 interface Props {
   programItems: readonly ProgramItem[];
@@ -50,10 +52,14 @@ type VirtualRow =
 const HEADER_ESTIMATED_HEIGHT = 60;
 const ITEM_ESTIMATED_HEIGHT = 220;
 
-// The top visible row index when the list unmounts, so returning to it (e.g. via
-// the browser back button after viewing a program item) restores the scroll
-// position. Module-scoped so it survives navigation within the SPA session
-let savedTopRowIndex: number | null = null;
+// The window scroll offset and measured row sizes when the list unmounts, so
+// returning to it (e.g. via the browser back button after viewing a program
+// item) restores the exact scroll position — the clicked card comes back where
+// it was. Module-scoped so it survives navigation within the SPA session
+let savedScrollState: {
+  offset: number;
+  measurementsCache: VirtualItem[];
+} | null = null;
 
 export const AllProgramItemsList = ({
   programItems,
@@ -166,6 +172,10 @@ export const AllProgramItemsList = ({
 
   const virtualizer = useWindowVirtualizer({
     count: rows.length,
+    // Seeding the virtualizer with the previous visit's measured row sizes
+    // lets the saved pixel offset land on the same rows instead of drifting on
+    // height estimates. Only read when the virtualizer instance is created
+    initialMeasurementsCache: savedScrollState?.measurementsCache,
     estimateSize: (index) =>
       rows[index].kind === "header"
         ? HEADER_ESTIMATED_HEIGHT
@@ -194,20 +204,27 @@ export const AllProgramItemsList = ({
     virtualizer.range?.startIndex ?? 0,
   );
 
-  // Remember the top visible row on unmount so it can be restored on return
-  // (e.g. via the back button). Runs as a layout-effect cleanup so it reads the
-  // virtualizer range before the next route (the program item page) resets the
-  // window scroll, which would otherwise leave the range pointing at the top.
-  // The virtualizer instance is stable, so the cleanup runs once, on unmount
+  // Remember the scroll offset and row measurements on unmount so the exact
+  // position can be restored on return (e.g. via the back button). Runs as a
+  // layout-effect cleanup so it captures the position before the next route
+  // (the program item page) resets the window scroll to the top. Reads the
+  // virtualizer's last observed offset instead of window.scrollY: WebKit
+  // clamps the window scroll against the shrinking document already during
+  // the unmount commit, but the clamp's scroll event hasn't been delivered
+  // yet, so the observed offset still holds the real position. The virtualizer
+  // instance is stable, so the cleanup runs once, on unmount
   useLayoutEffect(() => {
     return () => {
-      savedTopRowIndex = virtualizer.range?.startIndex ?? null;
+      savedScrollState = {
+        offset: virtualizer.scrollOffset ?? window.scrollY,
+        measurementsCache: virtualizer.takeSnapshot(),
+      };
     };
   }, [virtualizer]);
 
   // On mount, restore the previous scroll position (e.g. returning via the back
-  // button). The just-viewed item keeps its place and is highlighted where it
-  // sits. Guarded to run only once, when the list first has rows
+  // button). The just-viewed item comes back exactly where it was and is
+  // highlighted there. Guarded to run only once, when the list first has rows
   const hasRestoredScrollRef = useRef(false);
   useEffect(() => {
     if (hasRestoredScrollRef.current || rows.length === 0) {
@@ -215,14 +232,23 @@ export const AllProgramItemsList = ({
     }
     hasRestoredScrollRef.current = true;
 
-    if (savedTopRowIndex !== null && savedTopRowIndex > 0) {
-      const targetIndex = savedTopRowIndex;
+    if (savedScrollState && savedScrollState.offset > 0) {
+      const targetOffset = savedScrollState.offset;
       // Run after the scroll margin has been measured (layout effect above)
       requestAnimationFrame(() => {
-        virtualizer.scrollToIndex(targetIndex, { align: "start" });
+        window.scrollTo(0, targetOffset);
       });
     }
-  }, [rows, virtualizer]);
+  }, [rows]);
+
+  // While the virtualized list is on screen, the scroll-to-top button must
+  // scroll through the virtualizer so the smooth scroll isn't cancelled by
+  // row-measurement adjustments (see client/src/utils/scrollToTop.ts)
+  useEffect(() => {
+    return registerScrollToTopOverride(() => {
+      virtualizer.scrollToOffset(0, { behavior: "smooth" });
+    });
+  }, [virtualizer]);
 
   const { programGuideUrl } = config.event();
 

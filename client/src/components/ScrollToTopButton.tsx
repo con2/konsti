@@ -2,6 +2,7 @@ import { ReactElement, useEffect, useState } from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useTranslation } from "react-i18next";
+import { scrollToTop } from "client/utils/scrollToTop";
 
 export const ScrollToTopButton = (): ReactElement | null => {
   const { t } = useTranslation();
@@ -20,10 +21,7 @@ export const ScrollToTopButton = (): ReactElement | null => {
   }
 
   return (
-    <FloatingButton
-      aria-label={t("button.scrollToTop")}
-      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-    >
+    <FloatingButton aria-label={t("button.scrollToTop")} onClick={scrollToTop}>
       <Icon aria-hidden="true" icon="chevron-up" />
     </FloatingButton>
   );
