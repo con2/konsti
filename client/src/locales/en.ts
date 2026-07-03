@@ -126,7 +126,7 @@ export const translationEN = {
     beginnerFriendly: "Beginner-friendly",
     guestOfHonor: "Guest of honor program",
     theme: "Theme: Dreams",
-    lgbt: "LGBTIA+",
+    lgbt: "LGBTQIA+",
     k16: "Age limit 16+",
     preConventionWeek: "Pre-convention week",
     usesGenAi: "Generative AI has been utilised",
@@ -164,16 +164,16 @@ export const translationEN = {
   hidePrivacyPolicy: "Hide privacy policy",
   registrationSerialHelp: "From Larp & RPG Desk, Gaming Desk or Info",
   noLotterySignups:
-    "No no lottery sign-ups. You can sign up in the All Program view.",
+    "No lottery sign-ups. You can sign up in the All Program view.",
   noFutureLotterySignups:
-    "No no lottery sign-ups to upcoming program. You can sign up in the All Program view.",
+    "No lottery sign-ups for upcoming program items. You can sign up in the All Program view.",
   noFavoriteProgramItems:
-    "No favorites. You can add program items here in the All Program view.",
+    "No favorites. You can add favorites in the All Program view.",
   noFutureFavoriteProgramItems:
-    "No upcoming favorites. You can add program items here in the All Program view.",
+    "No upcoming favorites. You can add favorites in the All Program view.",
   noDirectSignups: "No sign-ups. You can sign up in the All Program view.",
   noFutureDirectSignups:
-    "No sign-ups to upcoming program. You can sign up in the All Program view.",
+    "No sign-ups for upcoming program items. You can sign up in the All Program view.",
   showAllProgramItems: "Also show past program items",
   noHiddenProgramItems: "No hidden program items",
   noSignupQuestions: "No sign-up questions",
@@ -198,7 +198,7 @@ export const translationEN = {
   noProgramItemsAvailable:
     "No {{PROGRAM_TYPE}} found, please check your search conditions.",
   checkProgramGuide:
-    "Konsti only shows program items with electronic sign-up. For all program, please check",
+    "Konsti only shows program items with electronic sign-up. For the full program, please check",
   programGuide: "the program guide",
   noProgramItemsInDatabase: "No program items in database",
   upcoming: "Upcoming",
@@ -217,7 +217,7 @@ export const translationEN = {
     "No running revolving door {{PROGRAM_TYPE}}",
   group: {
     error: {
-      cannotUseOwnSerial: "You cannot use your own serial to join a group.",
+      cannotUseOwnSerial: "You cannot use your own code to join a group.",
       groupExists: "Group already exists.",
       removeUpcomingLotterySignupsFailed:
         "Error deleting active lottery sign-ups, please try again.",
@@ -275,9 +275,9 @@ export const translationEN = {
     changingPasswordSuccess: "Password changed successfully.",
     userCreatedAt: "User account created",
     kompassiLocalInfo:
-      "If Konsti has been logged in with a Kompassi account, the password can be changed on the",
+      "If you log in to Konsti with a Kompassi account, you can change your password on the",
     kompassiPasswordReset: "Kompassi Password Reset page",
-    kompassiUserError: "User logged with a Kompassi account",
+    kompassiUserError: "User logged in with a Kompassi account",
   },
   eventLog: {
     title: "Notifications",
@@ -320,7 +320,7 @@ export const translationEN = {
     cannotSignupMoreThanOneProgramItem:
       "You cannot sign up to another program item starting at the same time.",
     signupWillBeRemoved:
-      "If you get a spot to this {{PROGRAM_TYPE_THIS}} in the lottery, your sign-up to the {{PROGRAM_TYPE_OTHER}} {{OTHER_PROGRAM_NAME}} will be cancelled.",
+      "If you get a spot in this {{PROGRAM_TYPE_THIS}} in the lottery, your sign-up to the {{PROGRAM_TYPE_OTHER}} {{OTHER_PROGRAM_NAME}} will be cancelled.",
     signupCount: "{{ATTENDEE_COUNT}}/{{MAX_ATTENDANCE}} sign-ups",
     attendeesNeeded: "Need {{COUNT}} more",
     programItemFull: "This {{PROGRAM_TYPE}} is full.",
@@ -353,7 +353,7 @@ export const translationEN = {
       directSignupOpenNow:
         "Participants are selected in the order of sign-ups. Sign-up closes ",
       lotterySignupStartsLater:
-        "Participants are selected in a lottery. Lottery sign-up open ",
+        "Participants are selected in a lottery. Lottery sign-up opens ",
       lotterySignupOpen:
         "Participants are selected in a lottery. Lottery sign-up closes ",
       lotterySignupEnded: "Participants were selected in a lottery.",
@@ -369,13 +369,13 @@ export const translationEN = {
       konsti: "",
       other:
         "This {{PROGRAM_TYPE}} does not use Konsti for signing up. See the program details for instructions.",
-      notRequired: "Signup not required for this program item.",
+      notRequired: "Sign-up not required for this program item.",
       experiencePoint:
         "This {{PROGRAM_TYPE}} does not use Konsti for signing up. Registration at Experience point.",
       ropelarp:
         "This {{PROGRAM_TYPE}} does not use Konsti for signing up. Registration at Larp & RPG Desk.",
       gamepoint:
-        "This {{PROGRAM_TYPE}} does not use Konsti for signing up. Registration at Gaming desk.",
+        "This {{PROGRAM_TYPE}} does not use Konsti for signing up. Registration at Gaming Desk.",
     },
     cancelled: "This {{PROGRAM_TYPE}} has been cancelled.",
     cancelledTitleText: "CANCELLED",
@@ -587,7 +587,7 @@ export const translationEN = {
     kompassiAndLocalLoginHint:
       "You can log in to Konsti with either a Kompassi account or a Konsti account.",
     kompassiLogin: "Login or create account",
-    notOpenYet: "Logging in to Konsti hasn't been opened yet.",
+    notOpenYet: "Login to Konsti isn't open yet.",
     createKompassiAccountHint:
       "Konsti is not open yet but you can already create a Kompassi account, which is used to log in to Konsti.",
     createKompassiAccount: "Create a Kompassi account.",
@@ -631,10 +631,10 @@ export const translationEN = {
   },
   email: {
     notifications: {
-      accepted: "I want Konsti notifications to my email",
-      rejected: "I do not want to get notifications from Konsti",
+      accepted: "I would like to receive Konsti notifications by email",
+      rejected: "I would rather not receive notifications by email",
       registrationDescription:
-        "You can change notification settings from Profile page",
+        "You can change notification settings on the Profile page",
       changingEmailError: "Error updating email address",
       changingEmailSuccess: "Email address updated successfully",
     },

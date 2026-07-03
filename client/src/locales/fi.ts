@@ -226,9 +226,9 @@ export const translationFI = {
       creatorCannotLeave:
         "Ryhmän perustajana sinun täytyy sulkea ryhmä sen sijaan, että poistuisit siitä.",
       memberUpcomingDirectSignups:
-        "Sinulla on jo ilmoittautumisia peleihin. Poista ilmoittautumiset ennen kuin liityt ryhmään.",
+        "Sinulla on jo ilmoittautumisia. Peru ilmoittautumiset ennen kuin liityt ryhmään.",
       creatorUpcomingDirectSignups:
-        "Sinulla on jo ilmoittautumisia peleihin. Poista ilmoittautumiset ennen kuin voit luoda ryhmän.",
+        "Sinulla on jo ilmoittautumisia. Peru ilmoittautumiset ennen kuin voit luoda ryhmän.",
       alreadyInGroup: "Kuulut jo toiseen ryhmään.",
     },
     hasDirectlySignedFollowingProgramItems:
@@ -238,27 +238,27 @@ export const translationFI = {
     signupDisabledNotCreator:
       "Et voi ilmoittautua, koska olet ryhmän jäsen. Vain ryhmän perustaja voi ilmoittaa ryhmän arvontaan.",
     groupCreatorSignups:
-      "Olet ryhmän perustaja. Valitsemasi arvonta-ilmoittautumiset ovat samat kaikille ryhmän jäsenille.",
+      "Olet ryhmän perustaja. Valitsemasi arvontailmoittautumiset ovat samat kaikille ryhmän jäsenille.",
     inGroupSignups:
-      "Olet ryhmän jäsen. Tämän listan arvonta-ilmoittautumiset ovat ryhmän perustajan tekemiä.",
+      "Olet ryhmän jäsen. Tämän listan arvontailmoittautumiset ovat ryhmän perustajan tekemiä.",
     closeGroupConfirmation:
       "Oletko varma, että haluat sulkea ryhmän ja poistaa kaikki sen jäsenet?",
     generalLeaveGroupError: "Virhe ryhmästä poistuessa",
     groupTooBigWarning:
       "Ryhmä on suurempi kuin suurin sallittu osallistujamäärä",
     enterGroupCreatorCode: "Ryhmän perustajan koodi",
-    createGroupConfirmationMessage: "Halutko luoda ryhmän?",
+    createGroupConfirmationMessage: "Haluatko luoda ryhmän?",
     youAreGroupCreator: "Olet ryhmän perustaja",
     youAreInGroup: "Olet ryhmässä",
     groupMembers: "Ryhmän jäsenet",
     groupCreator: "ryhmän perustaja",
     groupMemberInfo:
-      'Ryhmän perustaja ilmoittautuu arvontaan ryhmän muiden jäsenten puolesta. Näet valitut ohjelmanumerot "Oma ohjelmani" sivulta',
+      'Ryhmän perustaja ilmoittautuu arvontaan ryhmän muiden jäsenten puolesta. Näet valitut ohjelmanumerot "Oma ohjelmani" -sivulta.',
     groupCreatorInfo:
       "Voit ilmoittautua arvontaan koko ryhmän puolesta. Varmistathan, että ryhmä ei ole liian iso valitsemiisi ohjelmanumeroihin liittymistä varten. Ryhmän perustaja ei voi poistua ryhmästä, mutta voi sulkea ryhmän. Tällöin kaikki ryhmän jäsenet poistetaan ryhmästä.",
     groupCodeInfo: "Muut voivat liittyä tähän ryhmään koodilla ",
     joiningGroupWillCancelUpcomingLotterySignups:
-      "Ryhmään liittyminen peruu kaikki aktiiviset arvonta-ilmoittautumisesi.",
+      "Ryhmään liittyminen peruu kaikki aktiiviset arvontailmoittautumisesi.",
     groupLotterySignupGuide: "Voit ilmoittautua arvontaan ryhmänä.",
     groupLotterySignupProgramTypes: "Arvontaa käyttää",
     invalidGroupCode: "Virheellinen koodi",
@@ -285,14 +285,14 @@ export const translationFI = {
     noNotifications: "Ei ilmoituksia",
     programItemDetails: "Aloitusaika {{START_TIME}} huoneessa {{LOCATION}}.",
     upcomingLotterySignupsRemoved:
-      "Kaikki tulevien arvontojen ilmoittautumiset on peruttu.",
+      "Kaikki tulevat arvontailmoittautumiset on peruttu.",
     overlapLotterySignupsRemoved:
-      "Kaikki päällekkäin arvontojen ilmoittautumiset on peruttu.",
+      "Päällekkäiset arvontailmoittautumiset on peruttu.",
   },
   eventLogActions: {
     newAssignment: "Olet päässyt arvonnassa {{PROGRAM_TYPE}}",
     newAssignmentProgramItemMissing:
-      "Olet päässyt arvonnassa ohjelmanumeroon {{PROGRAM_ITEM_ID}} mutta se on peruuntunut.",
+      "Olet päässyt arvonnassa ohjelmanumeroon {{PROGRAM_ITEM_ID}}, mutta se on peruuntunut.",
     noAssignment:
       "Paikat klo {{START_TIME}} alkaviin ohjelmanumeroihin arvottiin. Ikävä kyllä et mahtunut mukaan mihinkään valitsemaasi ohjelmanumeroon.",
     programItemCancelled:
@@ -313,7 +313,7 @@ export const translationFI = {
     directSignup: "Ilmoittaudu",
     lotterySignup: "Ilmoittaudu arvontaan",
     cannotLotterySignupMoreProgramItems:
-      "Voit valita enintään kolme arvontailmoittautumista per alkamisaika",
+      "Voit valita enintään kolme arvontailmoittautumista kutakin aloitusaikaa kohden.",
     programItemPriority: "{{PROGRAM_TYPE}} on toiveissani sijalla",
     confirm: "Vahvista",
     cancel: "Peruuta",
@@ -585,7 +585,7 @@ export const translationFI = {
   loginView: {
     oldAccountsNotWorking:
       "Huomaathan, että aikaisempien tapahtumien käyttäjätilit eivät ole käytössä.",
-    noAccountRegister: "Ei käyttäjätiliä? Luo käyttäjätili täällä.",
+    noAccountRegister: "Ei käyttäjätiliä? Luo käyttäjätili tästä.",
     kompassiLoginHint: "Konstiin kirjaudutaan Kompassi-tunnuksella.",
     kompassiAndLocalLoginHint:
       "Voit kirjautua sisään joko Kompassi- tai Konsti-tunnuksella.",
@@ -637,7 +637,7 @@ export const translationFI = {
       accepted: "Haluan Konstin ilmoitukset sähköpostiini",
       rejected: "En halua ilmoituksia sähköpostiini",
       registrationDescription:
-        "Voit muuttaa ilmoitusasetuksia Profiili-näkymässä",
+        "Voit muuttaa ilmoitusasetuksia Profiili-sivulla",
       changingEmailError: "Virhe sähköpostiosoitteen päivittämisessä",
       changingEmailSuccess: "Sähköpostiosoite päivitetty onnistuneesti",
     },

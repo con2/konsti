@@ -48,6 +48,8 @@ PORT_OFFSET=1 npx playwright test --config playwright/playwright.config.ts progr
 
 Start the pieces with the same offset: `PORT_OFFSET=1 yarn server:test` and `PORT_OFFSET=1 yarn client` (Mongo is shared; each offset uses its own database name). **Verify Vite actually bound `8000+offset`** in its startup banner: if the port is taken — commonly by an orphaned dev server from a killed terminal — Vite silently increments to the next free port (`Port 8001 is in use, trying another one...`) and the suite then runs against the wrong, possibly stale instance. A stale zombie serving an old `node_modules/.vite` pre-bundle produces confusing "Invalid hook call" / duplicate-React crashes that survive cache clears and restarts, because the fixes apply to a different process than the one being tested. Kill stray listeners (`netstat -ano | findstr :8001`, then `taskkill /F /PID <pid>`) before re-running.
 
+Orphans arise easily on Windows because killing the `yarn server:test` / `yarn client` wrapper shell does not kill the node children — they keep listening on the server port (5000+offset) too, not just Vite's. An orphan answers health checks, so a `curl` 200 from a port does **not** prove the freshly started instance is serving it; check the Vite banner (client) and clean both ports (`netstat -ano | findstr "5000 8000"`) before starting a stack for a test run.
+
 ## Config (`playwright.config.ts`)
 
 - **Browsers:** three projects are enabled — desktop **Chromium** ("Chrome Stable"), **Mobile Chrome** (Pixel 7 emulation: mobile viewport + touch, also Chromium), and **Mobile Safari** (iPhone 15 emulation, WebKit) — so every spec runs on all three. Desktop Firefox/Safari are behind `ENABLE_*` flags that are currently `false`; flip a flag to add a project.

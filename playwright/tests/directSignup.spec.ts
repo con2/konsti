@@ -83,7 +83,7 @@ test("Add and cancel direct signup", async ({ page, request }) => {
   await expect(
     programList.directSignupList.getByRole("paragraph"),
   ).toContainText(
-    "No sign-ups to upcoming program. You can sign up in the All Program view.",
+    "No sign-ups for upcoming program items. You can sign up in the All Program view.",
   );
 
   // Navigate back to program list and sign again and cancel
