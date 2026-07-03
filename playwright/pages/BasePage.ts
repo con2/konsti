@@ -16,4 +16,8 @@ export class BasePage {
   get main(): Locator {
     return this.page.locator("#main");
   }
+
+  get scrollToTopButton(): Locator {
+    return this.page.getByRole("button", { name: /scroll to top/i });
+  }
 }

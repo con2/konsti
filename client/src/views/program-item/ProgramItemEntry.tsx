@@ -167,12 +167,12 @@ const recentlyViewedFlash = keyframes`
   0%,
   25% {
     box-shadow:
-      0 0 0 4px ${theme.borderActive},
+      0 0 0 2px ${theme.borderActive},
       ${theme.shadowLower};
   }
   100% {
     box-shadow:
-      0 0 0 4px transparent,
+      0 0 0 2px transparent,
       ${theme.shadowLower};
   }
 `;
@@ -186,7 +186,7 @@ const StyledCard = styled(RaisedCard)<{ $recentlyViewed: boolean }>`
   ${(props) =>
     props.$recentlyViewed &&
     css`
-      animation: ${recentlyViewedFlash} 2s ease-out;
+      animation: ${recentlyViewedFlash} 1.5s ease-out;
     `}
 `;
 
