@@ -8,6 +8,10 @@ export const GlobalStyle = createGlobalStyle`
     display: flex;
     font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
     font-size: ${(props) => props.theme.fontSizeNormal};
+
+    /* Reserve space for the scrollbar so the layout doesn't shift when
+       filtering makes the page short enough to lose it */
+    scrollbar-gutter: stable;
   }
 
   body {
