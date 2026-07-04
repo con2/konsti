@@ -192,13 +192,25 @@ const devConfig = {
   autoAssignDelay: 1000 * 1,
 };
 
-const combineConfig = (): ServerConfig => {
+export const combineConfig = (): ServerConfig => {
   switch (process.env.SETTINGS) {
     case "production":
       return { ...commonConfig, ...prodConfig };
     case "staging":
       return { ...commonConfig, ...stagingConfig };
+    case "development":
+    case "ci":
+      return { ...commonConfig, ...devConfig };
     default:
+      // Fail closed: deployed pods always run with NODE_ENV=production, so an unrecognized
+      // or missing SETTINGS there must not silently fall back to devConfig's public JWT
+      // secrets — refuse to start instead. Local/test runs (any other NODE_ENV) keep devConfig
+      if (process.env.NODE_ENV === "production") {
+        // eslint-disable-next-line no-restricted-syntax -- fail fast on startup misconfiguration
+        throw new Error(
+          `Refusing to start: SETTINGS="${process.env.SETTINGS ?? ""}" is not a valid config profile for a production deployment`,
+        );
+      }
       return { ...commonConfig, ...devConfig };
   }
 };
