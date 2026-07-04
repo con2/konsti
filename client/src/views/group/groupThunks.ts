@@ -17,6 +17,7 @@ import {
   PostJoinGroupRequest,
 } from "shared/types/api/groups";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
+import { submitGetUser } from "client/views/my-program-items/myProgramItemsThunks";
 
 export enum PostCreateGroupErrorMessage {
   UNKNOWN = "group.generalGroupError",
@@ -68,7 +69,10 @@ export enum PostJoinGroupErrorMessage {
 export const submitJoinGroup = (
   groupRequest: PostJoinGroupRequest,
 ): AppThunk<Promise<PostJoinGroupErrorMessage | undefined>> => {
-  return async (dispatch): Promise<PostJoinGroupErrorMessage | undefined> => {
+  return async (
+    dispatch,
+    getState,
+  ): Promise<PostJoinGroupErrorMessage | undefined> => {
     const joinGroupResponse = await postJoinGroup(groupRequest);
 
     if (joinGroupResponse.status === "error") {
@@ -99,6 +103,10 @@ export const submitJoinGroup = (
         isGroupCreator: false,
       }),
     );
+
+    // Joining removes the member's upcoming lottery signups on the server, so refresh the
+    // user's own program items instead of showing the now-deleted signups until the next poll
+    await dispatch(submitGetUser(getState().login.username));
   };
 };
 
