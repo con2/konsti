@@ -157,6 +157,9 @@ const main = async (): Promise<number> => {
   console.log("Starting server and client with coverage instrumentation");
   const server = startProcess("yarn workspace server start:test:coverage", {
     NODE_V8_COVERAGE: v8CoverageDir,
+    // Keep the server's per-request info logs out of the Playwright output;
+    // an explicit LOG_LEVEL still wins
+    LOG_LEVEL: process.env.LOG_LEVEL ?? "warn",
     ...portOffsetEnv,
   });
   // Vite runs with strictPort (see client/vite.config.ts), so an occupied

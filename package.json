@@ -18,7 +18,7 @@
     "coverage:vitest": "vitest run --coverage",
     "coverage:e2e": "yarn workspace server docker:db && node scripts/runE2eCoverage.ts",
     "coverage:report": "node scripts/mergeCoverageReport.ts",
-    "playwright": "yarn workspace server docker:db && npm-run-all --parallel server:test client playwright:start",
+    "playwright": "yarn workspace server docker:db && LOG_LEVEL=warn npm-run-all --parallel server:test client playwright:start",
     "playwright:start": "npx playwright install && npx playwright test --ui --config ./playwright/",
     "playwright:trace": "npx playwright show-trace trace.zip",
     "playwright:debug": "PWDEBUG=1 npx playwright test --config ./playwright/",

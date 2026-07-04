@@ -89,7 +89,7 @@ export const logger = createLogger({
 
   transports: [
     new transports.Console({
-      level: config.server().debug ? "debug" : "info",
+      level: config.server().logLevel,
       format: consoleOutputFormat,
     }),
 
