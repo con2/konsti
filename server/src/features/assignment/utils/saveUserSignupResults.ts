@@ -7,7 +7,7 @@ import {
 } from "server/utils/notificationQueue";
 import { UserAssignmentResult } from "shared/types/models/result";
 import {
-  delDirectSignup,
+  delDirectSignups,
   delAssignmentDirectSignupsByStartTime,
   findDirectSignupsByStartTime,
   saveDirectSignups,
@@ -83,26 +83,18 @@ export const saveUserSignupResults = async ({
   // ... and no new assignment result -> keep existing
   // A user can hold several signups at the same start time (e.g. an always-open item plus a
   // moved-in one), so remove every one of theirs, not just the first
-  const deletePromises = results.flatMap((result) => {
-    const existingSignups = directSignupsByStartTimeResult.value.filter(
-      (signup) => signup.username === result.username,
-    );
-
-    return existingSignups.map((existingSignup) =>
-      // TODO: Add delDirectSignups to delete multiple
-      delDirectSignup({
-        username: existingSignup.username,
-        directSignupProgramItemId: existingSignup.programItemId,
-      }),
-    );
-  });
-
-  const deleteResults = await Promise.all(deletePromises);
-  const someDeleteFailed = deleteResults.some(
-    (deleteResult) => !deleteResult.ok,
+  const signupsToDelete = results.flatMap((result) =>
+    directSignupsByStartTimeResult.value
+      .filter((signup) => signup.username === result.username)
+      .map((signup) => ({
+        username: signup.username,
+        directSignupProgramItemId: signup.programItemId,
+      })),
   );
-  if (someDeleteFailed) {
-    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+
+  const delDirectSignupsResult = await delDirectSignups(signupsToDelete);
+  if (!delDirectSignupsResult.ok) {
+    return delDirectSignupsResult;
   }
 
   // Save new assignment results

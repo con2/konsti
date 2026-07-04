@@ -33,6 +33,7 @@ Yarn 4 workspaces — only `client` and `server` are Yarn workspaces; `shared` a
 ## Git Commits
 
 - Don't add a `Co-Authored-By: Claude ...` trailer (or any AI co-author line) to commit messages — keep the message plain, ending at the body.
+- Don't reference CLAUDE.md (or its guidance) in commit messages — describe the change itself, not the doc it follows.
 
 ## Common Commands
 
