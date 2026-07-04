@@ -6,11 +6,6 @@ export default defineConfig({
     environment: "jsdom",
     setupFiles: ["./src/test/setupTests.ts"],
     exclude: ["playwright"],
-    coverage: {
-      provider: "istanbul",
-      include: ["src"],
-      reporter: ["text", "html", "lcov"],
-    },
   },
   resolve: {
     alias: {

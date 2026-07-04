@@ -78,7 +78,7 @@ export const resolvePortOffset = (explicitValue?: string): number => {
     }
     registry[toplevel] = offset;
     fs.writeFileSync(registryPath, `${JSON.stringify(registry, null, 2)}\n`);
-    // eslint-disable-next-line no-console -- The one-time assignment should be visible in whichever terminal triggered it
+
     console.warn(
       `[PORT_OFFSET] Assigned offset ${offset} to this worktree: client ${8000 + offset}, server ${5000 + offset}, dev database konsti-${offset} (registry: ${registryPath})`,
     );

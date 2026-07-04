@@ -8,8 +8,14 @@ import browserslistToEsbuild from "browserslist-to-esbuild";
 import { compression } from "vite-plugin-compression2";
 import { viteStaticCopy } from "vite-plugin-static-copy";
 import { sentryVitePlugin } from "@sentry/vite-plugin";
+import istanbul from "vite-plugin-istanbul";
+import { coverageCollector } from "./coverageCollectorPlugin";
 import { sentryConfig } from "../shared/config/sentryConfig";
 import { resolvePortOffset } from "../scripts/portOffset";
+import {
+  clientCoverageExclude,
+  clientCoverageInclude,
+} from "../scripts/coverageGlobs";
 
 const SENTRY_PROJECT_BY_MODE: Record<string, string> = {
   production: "konsti-frontend-prod",
@@ -87,7 +93,14 @@ export default defineConfig(({ mode, command }) => {
       }),
       react({
         babel: {
-          plugins: [["babel-plugin-react-compiler", { target: "19" }]],
+          // The react-compiler transform rewrites code so heavily that istanbul
+          // coverage positions no longer match the original source, so it is
+          // dropped when serving the instrumented build for the E2E coverage
+          // flow (COVERAGE=true, see the istanbul plugin below)
+          plugins:
+            env.COVERAGE === "true"
+              ? []
+              : [["babel-plugin-react-compiler", { target: "19" }]],
         },
       }),
       viteStaticCopy({
@@ -103,6 +116,21 @@ export default defineConfig(({ mode, command }) => {
         include: /\.(js|html|svg)$/,
         threshold: 10240,
       }),
+      // Istanbul-instrument the dev-served code when the E2E coverage flow
+      // (`yarn coverage`, see scripts/runE2eCoverage.ts) starts the dev server
+      // with COVERAGE=true. cwd is the repo root so the single-source globs
+      // (scripts/coverageGlobs.ts) apply as-is and shared/ modules served to
+      // the browser are instrumented too. The collector plugin harvests the
+      // browser's window.__coverage__ back into coverage/e2e/client/ so the
+      // Playwright suite needs no coverage hooks
+      env.COVERAGE === "true" &&
+        istanbul({
+          cwd: path.resolve(import.meta.dirname, ".."),
+          include: clientCoverageInclude,
+          exclude: clientCoverageExclude,
+          extension: [".ts", ".tsx"],
+        }),
+      env.COVERAGE === "true" && coverageCollector(),
       // Must come after all other plugins. Injects debug IDs into the emitted
       // bundle, uploads the source maps to Sentry, then deletes the .map files
       // so they are never shipped

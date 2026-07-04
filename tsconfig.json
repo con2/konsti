@@ -4,6 +4,10 @@
     "skipLibCheck": true,
     "strict": true,
     "moduleResolution": "bundler",
+    // Scripts run with plain node, which resolves imports of local .ts files
+    // only with their explicit extension
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
     "allowUnreachableCode": false,
     "noErrorTruncation": true,
     "target": "es2025",

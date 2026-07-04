@@ -1,0 +1,227 @@
+name: Coverage
+
+permissions:
+  contents: read
+
+# Main pushes only, on purpose: the pipeline re-runs the whole test suite
+# against instrumented builds, so running it per PR would double every PR's CI
+# cost (test.yml already runs the suite against the production build)
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  coverage-vitest:
+    # Unit test coverage for all workspaces in one vitest run (see
+    # "Combined Code Coverage" in CLAUDE.md)
+    runs-on: ubuntu-24.04
+
+    env:
+      CI: true
+      HUSKY: 0
+
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+
+      - name: Use Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: ".node-version"
+          cache: "yarn"
+
+      - name: Yarn install
+        run: |
+          YARN_ENABLE_HARDENED_MODE=1 yarn --immutable
+
+      - name: Cache MongoDB binary
+        uses: actions/cache@v6
+        with:
+          path: ~/.cache/mongodb-binaries
+          key: mongodb-8.0.26
+
+      - name: Run vitest coverage
+        run: |
+          yarn coverage:vitest
+
+      - name: Upload vitest coverage
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: coverage-vitest
+          path: coverage/vitest/
+          retention-days: 1
+
+  coverage-e2e:
+    # Playwright coverage, sharded like the e2e job in test.yml. Each shard
+    # runs its own server + client + Mongo and uploads its slice of the
+    # coverage data; coverage-report merges the slices
+    runs-on: ubuntu-24.04
+
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3, 4, 5]
+
+    env:
+      CI: true
+      HUSKY: 0
+
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+
+      - name: Use Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: ".node-version"
+          cache: "yarn"
+
+      - name: Yarn install
+        run: |
+          YARN_ENABLE_HARDENED_MODE=1 yarn --immutable
+
+      - name: Cache Playwright browsers
+        uses: actions/cache@v6
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-browsers-${{ hashFiles('yarn.lock') }}
+
+      - name: Install Playwright browsers
+        run: |
+          npx playwright install --with-deps
+
+      - name: Run Playwright coverage shard
+        run: |
+          yarn coverage:e2e --shard=${{ matrix.shard }}/${{ strategy.job-total }}
+
+      - name: Upload shard coverage
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: coverage-e2e-${{ matrix.shard }}
+          path: |
+            coverage/e2e/client/
+            coverage/e2e/server/coverage-final.json
+          retention-days: 1
+
+  coverage-report:
+    # Merge the vitest coverage and every shard's E2E coverage into the
+    # combined report. Runs even if tests failed so a failing run still shows
+    # its (partial) coverage in the job summary and artifact
+    needs: [coverage-vitest, coverage-e2e]
+    if: ${{ !cancelled() }}
+    runs-on: ubuntu-24.04
+
+    env:
+      CI: true
+      HUSKY: 0
+
+    timeout-minutes: 15
+
+    steps:
+      # The merge script and the HTML report renderer read the source files, so
+      # the repo must be checked out at the same path the coverage was recorded
+      - name: Checkout code
+        uses: actions/checkout@v7
+
+      - name: Use Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: ".node-version"
+          cache: "yarn"
+
+      - name: Yarn install
+        run: |
+          YARN_ENABLE_HARDENED_MODE=1 yarn --immutable
+
+      # Downloaded via pattern: a missing artifact (e.g. the coverage-vitest
+      # job died before uploading) then only warns instead of failing the job,
+      # and the merge script tolerates the missing input
+      - name: Download vitest coverage
+        uses: actions/download-artifact@v7
+        with:
+          pattern: coverage-vitest
+          merge-multiple: true
+          path: coverage/vitest
+
+      - name: Download shard coverage
+        uses: actions/download-artifact@v7
+        with:
+          pattern: coverage-e2e-*
+          path: coverage/e2e-shards
+
+      # Client coverage files have unique names and go into one directory; the
+      # per-shard server files share a name and are renamed by shard directory
+      - name: Combine shard coverage
+        run: |
+          shopt -s nullglob
+          mkdir -p coverage/e2e/client coverage/e2e/server
+          client_files=(coverage/e2e-shards/*/client/*.json)
+          if [ ${#client_files[@]} -gt 0 ]; then
+            cp "${client_files[@]}" coverage/e2e/client/
+          fi
+          i=1
+          for f in coverage/e2e-shards/*/server/coverage-final.json; do
+            cp "$f" "coverage/e2e/server/coverage-final-$i.json"
+            i=$((i + 1))
+          done
+
+      - name: Build combined coverage report
+        run: |
+          yarn coverage:report
+
+      # Shown in the run's Summary tab
+      - name: Add coverage totals to job summary
+        run: |
+          if [ -f coverage/report/summary.md ]; then
+            cat coverage/report/summary.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Upload coverage report artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: coverage-report
+          path: coverage/report/
+          retention-days: 7
+
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: coverage/report/
+
+  deploy-pages:
+    # Publish the main-branch coverage report to GitHub Pages. Requires every
+    # coverage job to succeed so the published report always reflects a green
+    # main (coverage-report alone also runs on failures)
+    needs: [coverage-vitest, coverage-e2e, coverage-report]
+    if: ${{ needs.coverage-vitest.result == 'success' && needs.coverage-e2e.result == 'success' && needs.coverage-report.result == 'success' }}
+    runs-on: ubuntu-24.04
+
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    concurrency:
+      group: github-pages
+      cancel-in-progress: false
+
+    timeout-minutes: 10
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
+
+      - name: Add report link to job summary
+        run: |
+          echo "Coverage report published: ${{ steps.deployment.outputs.page_url }}" >> "$GITHUB_STEP_SUMMARY"
