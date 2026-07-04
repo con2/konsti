@@ -9,6 +9,7 @@ import {
 import { ProgramItem, ProgramType } from "shared/types/models/programItem";
 import { SignupQuestion } from "shared/types/models/settings";
 import { SignupMessage } from "shared/types/models/signupMessage";
+import { EmailNotificationTrigger } from "shared/types/emailNotification";
 import { loadSession } from "client/utils/localStorage";
 import { ActiveProgramType } from "shared/config/clientConfigTypes";
 
@@ -30,6 +31,7 @@ const initialState = (): AdminState => {
     activeProgramTypes: getInitialActiveProgramTypes(),
     signupMessages: [],
     loginProvider: undefined,
+    emailNotificationTrigger: [],
   };
 };
 
@@ -55,6 +57,7 @@ const adminSlice = createSlice({
         signupQuestions: action.payload.signupQuestions,
         signupStrategy: action.payload.signupStrategy,
         loginProvider: action.payload.loginProvider,
+        emailNotificationTrigger: action.payload.emailNotificationTrigger,
       };
     },
 
@@ -70,6 +73,13 @@ const adminSlice = createSlice({
       action: PayloadAction<LoginProvider>,
     ): AdminState {
       return { ...state, loginProvider: action.payload };
+    },
+
+    submitSetEmailNotificationTriggersAsync(
+      state,
+      action: PayloadAction<readonly EmailNotificationTrigger[]>,
+    ): AdminState {
+      return { ...state, emailNotificationTrigger: action.payload };
     },
 
     submitToggleAppOpenAsync(
@@ -128,6 +138,7 @@ export const {
   submitGetSettingsAsync,
   submitSetSignupStrategyAsync,
   submitSetLoginProviderAsync,
+  submitSetEmailNotificationTriggersAsync,
   submitToggleAppOpenAsync,
   submitAssignmentResponseMessageAsync,
   updateSignupQuestions,

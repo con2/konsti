@@ -16,6 +16,7 @@ import {
   submitGetSignupMessagesAsync,
   submitAssignmentResponseMessageAsync,
   submitSetLoginProviderAsync,
+  submitSetEmailNotificationTriggersAsync,
 } from "client/views/admin/adminSlice";
 import { SignupQuestion } from "shared/types/models/settings";
 import {
@@ -59,6 +60,7 @@ export const submitGetSettings = (): AppThunk => {
       signupQuestions: state.admin.signupQuestions,
       signupStrategy: state.admin.signupStrategy,
       loginProvider: state.admin.loginProvider,
+      emailNotificationTrigger: state.admin.emailNotificationTrigger,
     };
 
     const updatedSettings = {
@@ -184,6 +186,26 @@ export const submitSetLoginProvider = (
     }
 
     dispatch(submitSetLoginProviderAsync(response.settings.loginProvider));
+  };
+};
+
+export const submitSetEmailNotificationTriggers = (
+  emailNotificationTrigger: readonly EmailNotificationTrigger[],
+): AppThunk => {
+  return async (dispatch): Promise<void> => {
+    const response = await postSettings({
+      emailNotificationTrigger: [...emailNotificationTrigger],
+    });
+
+    if (response.status === "error") {
+      return;
+    }
+
+    dispatch(
+      submitSetEmailNotificationTriggersAsync(
+        response.settings.emailNotificationTrigger,
+      ),
+    );
   };
 };
 

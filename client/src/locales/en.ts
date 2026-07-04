@@ -629,6 +629,18 @@ export const translationEN = {
     sentryBackendTest: "Backend test",
     signupStrategy: "Sign-up strategy",
     loginProvider: "Login provider",
+    emailNotificationTriggers: "Email notification triggers",
+    emailNotificationTrigger: {
+      accepted: "Accepted in lottery",
+      rejected: "Rejected in lottery",
+      programItemCancelled: "Program item cancelled",
+      programItemDeleted: "Program item deleted",
+      programItemNoKonstiSignupAnymore:
+        "Program item no longer uses Konsti sign-up",
+      programItemNoLotteryAnymore:
+        "Program item no longer uses lottery sign-up",
+      programItemTimeChanged: "Program item start time changed",
+    },
   },
   email: {
     notifications: {

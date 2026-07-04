@@ -19,6 +19,7 @@ import { Dropdown, Option } from "client/components/Dropdown";
 import { SignupStrategySelector } from "client/views/admin/components/SignupStrategySelector";
 import { ButtonGroup } from "client/components/ButtonGroup";
 import { LoginProviderSelector } from "client/views/admin/components/LoginProviderSelector";
+import { EmailNotificationTriggerSelector } from "client/views/admin/components/EmailNotificationTriggerSelector";
 import { selectHiddenProgramItems } from "client/views/admin/adminSlice";
 import { EmailNotificationTrigger } from "shared/types/emailNotification";
 import { config } from "shared/config";
@@ -285,6 +286,9 @@ export const AdminView = (): ReactElement => {
           {t("admin.sentryBackendTest")}
         </Button>
       </ButtonGroup>
+
+      <h3>{t("admin.emailNotificationTriggers")}</h3>
+      <EmailNotificationTriggerSelector />
 
       <h3>Email Notification Testing</h3>
       <EmailTestForm>
