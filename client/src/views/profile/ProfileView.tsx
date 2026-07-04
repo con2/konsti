@@ -40,6 +40,7 @@ export const ProfileView = (): ReactElement => {
         isLocalLogin={isLocalLogin}
         email={email}
         usernameToUpdate={username}
+        showEmailSettings={true}
       />
     </Container>
   );

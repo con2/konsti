@@ -8,14 +8,12 @@ import { ChangeUserSettingsForm } from "client/views/helper/components/ChangeUse
 import { ControlledInput } from "client/components/ControlledInput";
 import { getDateAndTime } from "shared/utils/timeFormatter";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
-import { useAppSelector } from "client/utils/hooks";
 
 export const PasswordManagement = (): ReactElement => {
   const { t } = useTranslation();
 
   const [usernameToUpdate, setUsernameToUpdate] = useState<string>("");
   const [userSerialInput, setUserSerialInput] = useState<string>("");
-  const email = useAppSelector((state) => state.login.email);
   const [changePasswordInputVisible, setChangePasswordInputVisible] =
     useState<boolean>(false);
   const [userFoundMessage, setUserFoundMessage] = useState<ReactElement>(
@@ -99,7 +97,8 @@ export const PasswordManagement = (): ReactElement => {
         <ChangeUserSettingsForm
           usernameToUpdate={usernameToUpdate}
           isLocalLogin={true}
-          email={email}
+          email=""
+          showEmailSettings={false}
         />
       )}
     </div>
