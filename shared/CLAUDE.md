@@ -12,7 +12,7 @@ Guidance for working in `shared/`. See the [root CLAUDE.md](../CLAUDE.md) for th
   - `eventConfig.ts` + `eventConfigTypes.ts` — current event config and its types/enums.
   - `clientConfig.ts` / `serverConfig.ts` / `sentryConfig.ts` (+ `clientConfigTypes.ts`) — per-surface config, environment-dependent.
   - `past-events/` — archived configs (e.g. `ropecon2025.ts`), typed `Partial<EventConfig>`.
-- **`constants/`** — `apiEndpoints.ts` (`ApiEndpoint`, `ApiDevEndpoint`, `AuthEndpoint`), `signups.ts` (e.g. `DIRECT_SIGNUP_PRIORITY = 0`), `validation.ts` (username/password/message length bounds used by zod schemas).
+- **`constants/`** — `apiEndpoints.ts` (`ApiEndpoint`, `ApiDevEndpoint`, `AuthEndpoint`), `browserStorage.ts` (`browserStoragePrefix`/`localStorageStateKey`, the event-prefixed browser storage keys shared by client and playwright — see the root CLAUDE.md's Database Lifecycle section), `signups.ts` (e.g. `DIRECT_SIGNUP_PRIORITY = 0`), `validation.ts` (username/password/message length bounds used by zod schemas).
 - **`types/`**
   - `api/` — API request/response contracts (one file per domain: `login.ts`, `users.ts`, `programItems.ts`, `assignment.ts`, …). See the zod pattern below.
   - `models/` — domain models (`programItem.ts`, `user.ts`, `settings.ts`, `eventLog.ts`, `groups.ts`, `signupMessage.ts`) and their enums (`ProgramType`, `SignupType`, `UserGroup`, `Popularity`, `State`, …).

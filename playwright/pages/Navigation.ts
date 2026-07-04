@@ -1,4 +1,5 @@
 import { Locator, Page } from "@playwright/test";
+import { localStorageStateKey } from "shared/constants/browserStorage";
 
 // The slide-out navigation drawer and its links, shared by every page
 export class Navigation {
@@ -38,7 +39,8 @@ export class Navigation {
     await this.page.getByRole("link", { name: "Logout" }).click();
     // Logout clears the session asynchronously; wait for it before continuing
     await this.page.waitForFunction(
-      () => localStorage.getItem("state") === null,
+      (stateKey) => localStorage.getItem(stateKey) === null,
+      localStorageStateKey,
     );
   }
 

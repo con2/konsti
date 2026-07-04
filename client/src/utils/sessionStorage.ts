@@ -2,15 +2,18 @@ import { z } from "zod";
 import { StartingTimeOption } from "client/views/all-program-items/programListUtils";
 import { AgeGroup, Language, Tag } from "shared/types/models/programItem";
 import { StringToJsonSchema } from "client/utils/zodUtils";
+import { browserStoragePrefix } from "shared/constants/browserStorage";
 
-export enum SessionStorageValue {
-  ALL_PROGRAM_ITEMS_SEARCH_TERM = "allProgramItemsSearchTerm",
-  ALL_PROGRAM_ITEMS_TAG = "allProgramItemsTag",
-  ALL_PROGRAM_ITEMS_SELECTED_VIEW = "allProgramItemsSelectedView",
-  ALL_PROGRAM_ITEMS_STARTING_TIME = "allProgramItemsStartingTime",
-  ALL_PROGRAM_ITEMS_HIDE_FULL = "allProgramItemsHideFull",
-  MY_PROGRAM_ITEMS_SHOW_ALL_PROGRAM_ITEMS = "myProgramItemsShowAllProgramItems",
-}
+// A const object instead of an enum because enum members can't hold the
+// computed event-specific prefix
+export const SessionStorageValue = {
+  ALL_PROGRAM_ITEMS_SEARCH_TERM: `${browserStoragePrefix}-allProgramItemsSearchTerm`,
+  ALL_PROGRAM_ITEMS_TAG: `${browserStoragePrefix}-allProgramItemsTag`,
+  ALL_PROGRAM_ITEMS_SELECTED_VIEW: `${browserStoragePrefix}-allProgramItemsSelectedView`,
+  ALL_PROGRAM_ITEMS_STARTING_TIME: `${browserStoragePrefix}-allProgramItemsStartingTime`,
+  ALL_PROGRAM_ITEMS_HIDE_FULL: `${browserStoragePrefix}-allProgramItemsHideFull`,
+  MY_PROGRAM_ITEMS_SHOW_ALL_PROGRAM_ITEMS: `${browserStoragePrefix}-myProgramItemsShowAllProgramItems`,
+} as const;
 
 const SavedSearchTermSchema = z.string();
 
