@@ -40,7 +40,7 @@ export const SignupHelpText = ({
   // Cannot use programItem.signupStrategy here since it's relative to time
   const isLotterySignup =
     isLotterySignupProgramItem(programItem) &&
-    !tooEarlyForLotterySignup(programItem.startTime);
+    !tooEarlyForLotterySignup(programItem);
 
   // Group members can sign up to always open program items without leaving the group
   const groupMemberInfo =
