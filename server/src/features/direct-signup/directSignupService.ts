@@ -151,23 +151,24 @@ export const storeDirectSignup = async (
     (userSignup) => userSignup.username === username,
   );
 
-  // Group member direct signup removes them from the group, close group if group creator
-  // Only do this once the signup has actually succeeded, otherwise a failed or full signup
-  // would disband the group for nothing
-  let leftGroup = false;
-  if (newSignup && isLotterySignupProgramItem(programItem)) {
-    const leaveOrCloseGroupResult = await leaveOrCloseGroup(username);
-    if (!leaveOrCloseGroupResult.ok) {
-      return {
-        message: leaveOrCloseGroupResult.error,
-        status: "error",
-        errorId: "unknown",
-      };
-    }
-    leftGroup = leaveOrCloseGroupResult.value;
-  }
-
   if (newSignup) {
+    // Group member direct signup removes them from the group, close group if group creator.
+    // The signup already persisted, so a group-leave failure must not fail the request —
+    // log it and still report success; the group state self-corrects on the next poll
+    let leftGroup = false;
+    if (isLotterySignupProgramItem(programItem)) {
+      const leaveOrCloseGroupResult = await leaveOrCloseGroup(username);
+      if (leaveOrCloseGroupResult.ok) {
+        leftGroup = leaveOrCloseGroupResult.value;
+      } else {
+        logger.error(
+          new Error(
+            `leaveOrCloseGroup failed after direct signup for ${username}: ${leaveOrCloseGroupResult.error}`,
+          ),
+        );
+      }
+    }
+
     return {
       message: "Store signup success",
       status: "success",
@@ -186,7 +187,7 @@ export const storeDirectSignup = async (
     message: "Program item full",
     status: "success",
     allSignups,
-    leftGroup,
+    leftGroup: false,
   };
 };
 
