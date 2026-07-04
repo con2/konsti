@@ -479,6 +479,50 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     expect(member?.groupCode).toEqual("0");
   });
 
+  test("should not disband the group when the direct signup fails because the program item is full", async () => {
+    vi.setSystemTime(testProgramItem.startTime);
+
+    await saveProgramItems([{ ...testProgramItem, maxAttendance: 1 }]);
+    await saveUser(mockUser);
+    await saveUser(mockUser2);
+    await saveUser(mockUser3);
+    await saveGroupCreator("group-123", true, mockUser.username);
+    await saveGroupCode("group-123", mockUser2.username);
+
+    // Fill the single seat so the group creator's signup below fails
+    await saveDirectSignup({
+      ...mockPostDirectSignupRequest,
+      username: mockUser3.username,
+    });
+
+    const signup: PostDirectSignupRequest = {
+      directSignupProgramItemId: testProgramItem.programItemId,
+      message: "",
+      priority: DIRECT_SIGNUP_PRIORITY,
+    };
+    const response = await request(server)
+      .post(ApiEndpoint.DIRECT_SIGNUP)
+      .send(signup)
+      .set(
+        "Authorization",
+        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
+      );
+
+    expect(response.status).toEqual(200);
+
+    const body = response.body as PostDirectSignupResult;
+    expect(body.message).toEqual("Program item full");
+    expect(body.leftGroup).toEqual(false);
+
+    // The group must remain intact since the signup did not happen
+    const creator = unsafelyUnwrap(await findUser(mockUser.username));
+    expect(creator?.groupCode).toEqual("group-123");
+    expect(creator?.isGroupCreator).toEqual(true);
+
+    const member = unsafelyUnwrap(await findUser(mockUser2.username));
+    expect(member?.groupCode).toEqual("group-123");
+  });
+
   test("should not remove user from group when signing up to 'signup always open' program item", async () => {
     // directSignupAlwaysOpenIds makes the program item 'signup always open'
     vi.spyOn(config, "event").mockReturnValue({
