@@ -99,20 +99,6 @@ export const storeDirectSignup = async (
     };
   }
 
-  // Group member direct signup removes them from the group, close group if group creator
-  let leftGroup = false;
-  if (isLotterySignupProgramItem(programItem)) {
-    const leaveOrCloseGroupResult = await leaveOrCloseGroup(username);
-    if (!leaveOrCloseGroupResult.ok) {
-      return {
-        message: leaveOrCloseGroupResult.error,
-        status: "error",
-        errorId: "unknown",
-      };
-    }
-    leftGroup = leaveOrCloseGroupResult.value;
-  }
-
   const parentStartTime = config
     .event()
     .startTimesByParentIds.get(programItem.parentId);
@@ -160,6 +146,22 @@ export const storeDirectSignup = async (
   const newSignup = signup.userSignups.find(
     (userSignup) => userSignup.username === username,
   );
+
+  // Group member direct signup removes them from the group, close group if group creator
+  // Only do this once the signup has actually succeeded, otherwise a failed or full signup
+  // would disband the group for nothing
+  let leftGroup = false;
+  if (newSignup && isLotterySignupProgramItem(programItem)) {
+    const leaveOrCloseGroupResult = await leaveOrCloseGroup(username);
+    if (!leaveOrCloseGroupResult.ok) {
+      return {
+        message: leaveOrCloseGroupResult.error,
+        status: "error",
+        errorId: "unknown",
+      };
+    }
+    leftGroup = leaveOrCloseGroupResult.value;
+  }
 
   if (newSignup) {
     return {
