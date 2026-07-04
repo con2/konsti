@@ -32,7 +32,7 @@ export const getLotterySignupStartTime = (programItem: ProgramItem): Dayjs => {
   const startTimeIsTooEarly = timezoneStartTime.hour() <= 6;
 
   if (startTimeIsTooEarly) {
-    return timezoneStartTime.subtract(1, "day").hour(22);
+    return timezoneStartTime.subtract(1, "day").startOf("day").hour(22);
   }
 
   return timezoneStartTime;
@@ -62,7 +62,9 @@ export const getRollingDirectSignupStartTime = (
     const timezoneStartTime = dayjs(programItem.startTime).tz(TIMEZONE);
     const startTimeIsTooEarly = timezoneStartTime.hour() < 12;
     if (startTimeIsTooEarly) {
-      return timezoneStartTime.subtract(1, "day").hour(18);
+      // Open at 18:00 sharp the previous evening; startOf("day") zeroes minutes/seconds so an
+      // item starting at e.g. 11:15 doesn't open at 18:15
+      return timezoneStartTime.subtract(1, "day").startOf("day").hour(18);
     }
   }
 
