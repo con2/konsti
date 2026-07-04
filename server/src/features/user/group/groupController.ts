@@ -52,6 +52,6 @@ export const getGroup = async (
   res: Response,
 ): Promise<Response> => {
   const { groupCode } = req.query;
-  const response = await fetchGroup(groupCode);
+  const response = await fetchGroup(groupCode, getAuthUsername(req));
   return res.json(response);
 };

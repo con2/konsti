@@ -425,7 +425,26 @@ export const leaveOrCloseGroup = async (
 
 export const fetchGroup = async (
   groupCode: string,
+  username: string,
 ): Promise<GetGroupResponse> => {
+  // Only members of a group may read it; groupCode "0" is the sentinel for users not in any group
+  const findUserResult = await findUser(username);
+  if (!findUserResult.ok || !findUserResult.value) {
+    return {
+      message: "Getting group members failed",
+      status: "error",
+      errorId: "unknown",
+    };
+  }
+
+  if (groupCode === "0" || findUserResult.value.groupCode !== groupCode) {
+    return {
+      message: "User is not a member of the requested group",
+      status: "error",
+      errorId: "unknown",
+    };
+  }
+
   const findGroupResultsResult = await findGroupMembers(groupCode);
   if (!findGroupResultsResult.ok) {
     return {

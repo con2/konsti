@@ -92,6 +92,44 @@ describe(`GET ${ApiEndpoint.GROUP}`, () => {
     expect(body.status).toEqual("success");
     expect(body.results.length).toEqual(2);
   });
+
+  test("should not leak non-grouped users when querying groupCode 0", async () => {
+    await saveUser({ ...mockUser, groupCode: "0" });
+    await saveUser({ ...mockUser2, groupCode: "0" });
+
+    const response = await request(server)
+      .get(ApiEndpoint.GROUP)
+      .query({ groupCode: "0" })
+      .set(
+        "Authorization",
+        `Bearer ${getJWT(UserGroup.USER, mockUser2.username)}`,
+      );
+    expect(response.status).toEqual(200);
+
+    const body = response.body as GetGroupError;
+    expect(body.status).toEqual("error");
+  });
+
+  test("should not return a group the requesting user is not a member of", async () => {
+    await saveUser({
+      ...mockUser,
+      groupCode: mockUser.serial,
+      isGroupCreator: true,
+    });
+    await saveUser({ ...mockUser2, groupCode: "0" });
+
+    const response = await request(server)
+      .get(ApiEndpoint.GROUP)
+      .query({ groupCode: mockUser.serial })
+      .set(
+        "Authorization",
+        `Bearer ${getJWT(UserGroup.USER, mockUser2.username)}`,
+      );
+    expect(response.status).toEqual(200);
+
+    const body = response.body as GetGroupError;
+    expect(body.status).toEqual("error");
+  });
 });
 
 describe(`POST ${ApiEndpoint.GROUP}`, () => {
