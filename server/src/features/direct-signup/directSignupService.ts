@@ -23,6 +23,7 @@ import { findSettings } from "server/features/settings/settingsRepository";
 import { SignupType, State } from "shared/types/models/programItem";
 import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
 import { leaveOrCloseGroup } from "server/features/user/group/groupService";
+import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 
 export const storeDirectSignup = async (
   signupRequest: PostDirectSignupRequest,
@@ -106,6 +107,9 @@ export const storeDirectSignup = async (
   const newDirectSignup: SignupRepositoryAddSignup = {
     ...signupRequest,
     username,
+    // User-made direct signups are always first-come-first-served; the priority is set
+    // here rather than trusted from the request
+    priority: DIRECT_SIGNUP_PRIORITY,
     // signedToStartTime can be parent-resolved; direct signups store parent time for lottery re-run cleanup
     signedToStartTime: parentStartTime ?? programItem.startTime,
     signupTime: timeNow.toISOString(),

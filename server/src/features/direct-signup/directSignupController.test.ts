@@ -90,7 +90,6 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
       directSignupProgramItemId: testProgramItem.programItemId,
       message:
         "Test message Test message Test message Test message Test message Test message Test message Test message Test message Test message Test message Test message Test message",
-      priority: DIRECT_SIGNUP_PRIORITY,
     };
     const response = await request(server)
       .post(ApiEndpoint.DIRECT_SIGNUP)
@@ -102,12 +101,13 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     expect(response.status).toEqual(422);
   });
 
-  test("should return 422 with a non-default priority", async () => {
+  test("should store first-come-first-served priority regardless of the priority the client sends", async () => {
+    vi.setSystemTime(testProgramItem.startTime);
     await saveProgramItems([testProgramItem]);
     await saveUser(mockUser);
 
-    // priority must always be DIRECT_SIGNUP_PRIORITY for user-made direct signups;
-    // a forged lottery-win priority would skew assignment bonuses and stats
+    // priority is set by the backend; a client-sent lottery-win priority must be ignored
+    // so it cannot be made to look like a lottery win
     const signup = {
       directSignupProgramItemId: testProgramItem.programItemId,
       message: "",
@@ -120,7 +120,12 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
         "Authorization",
         `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
       );
-    expect(response.status).toEqual(422);
+    expect(response.status).toEqual(200);
+
+    const signups = unsafelyUnwrap(
+      await findUserDirectSignups(mockUser.username),
+    );
+    expect(signups[0].userSignups[0].priority).toEqual(DIRECT_SIGNUP_PRIORITY);
   });
 
   test("should return error when program item is not found", async () => {
@@ -132,7 +137,6 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const signup: PostDirectSignupRequest = {
       directSignupProgramItemId: "invalid_program_item_id",
       message: "",
-      priority: DIRECT_SIGNUP_PRIORITY,
     };
     const response = await request(server)
       .post(ApiEndpoint.DIRECT_SIGNUP)
@@ -157,7 +161,6 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const signup: PostDirectSignupRequest = {
       directSignupProgramItemId: testProgramItem.programItemId,
       message: "",
-      priority: DIRECT_SIGNUP_PRIORITY,
     };
     const response = await request(server)
       .post(ApiEndpoint.DIRECT_SIGNUP)
@@ -182,7 +185,6 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const signup: PostDirectSignupRequest = {
       directSignupProgramItemId: testProgramItem.programItemId,
       message: "",
-      priority: DIRECT_SIGNUP_PRIORITY,
     };
     const response = await request(server)
       .post(ApiEndpoint.DIRECT_SIGNUP)
@@ -210,7 +212,6 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const signup: PostDirectSignupRequest = {
       directSignupProgramItemId: testProgramItem.programItemId,
       message: "",
-      priority: DIRECT_SIGNUP_PRIORITY,
     };
     const response = await request(server)
       .post(ApiEndpoint.DIRECT_SIGNUP)
@@ -238,7 +239,6 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const signup: PostDirectSignupRequest = {
       directSignupProgramItemId: testProgramItem.programItemId,
       message: "",
-      priority: DIRECT_SIGNUP_PRIORITY,
     };
     const response = await request(server)
       .post(ApiEndpoint.DIRECT_SIGNUP)
@@ -269,7 +269,6 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const signup: PostDirectSignupRequest = {
       directSignupProgramItemId: testProgramItem.programItemId,
       message: "Test message",
-      priority: DIRECT_SIGNUP_PRIORITY,
     };
     const response = await request(server)
       .post(ApiEndpoint.DIRECT_SIGNUP)
@@ -324,7 +323,6 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const signup: PostDirectSignupRequest = {
       directSignupProgramItemId: testProgramItem.programItemId,
       message: "Test message",
-      priority: DIRECT_SIGNUP_PRIORITY,
     };
     const response = await request(server)
       .post(ApiEndpoint.DIRECT_SIGNUP)
@@ -365,7 +363,6 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
       const signup: PostDirectSignupRequest = {
         directSignupProgramItemId: testProgramItem.programItemId,
         message: "Test message",
-        priority: DIRECT_SIGNUP_PRIORITY,
       };
       return await request(server)
         .post(ApiEndpoint.DIRECT_SIGNUP)
@@ -409,7 +406,6 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
       const signup: PostDirectSignupRequest = {
         directSignupProgramItemId: testProgramItem.programItemId,
         message: "Test message",
-        priority: DIRECT_SIGNUP_PRIORITY,
       };
       return await request(server)
         .post(ApiEndpoint.DIRECT_SIGNUP)
@@ -443,7 +439,6 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const signup: PostDirectSignupRequest = {
       directSignupProgramItemId: testProgramItem.programItemId,
       message: "",
-      priority: DIRECT_SIGNUP_PRIORITY,
     };
     const response = await request(server)
       .post(ApiEndpoint.DIRECT_SIGNUP)
@@ -475,7 +470,6 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const signup: PostDirectSignupRequest = {
       directSignupProgramItemId: testProgramItem.programItemId,
       message: "",
-      priority: DIRECT_SIGNUP_PRIORITY,
     };
     const response = await request(server)
       .post(ApiEndpoint.DIRECT_SIGNUP)
@@ -519,7 +513,6 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const signup: PostDirectSignupRequest = {
       directSignupProgramItemId: testProgramItem.programItemId,
       message: "",
-      priority: DIRECT_SIGNUP_PRIORITY,
     };
     const response = await request(server)
       .post(ApiEndpoint.DIRECT_SIGNUP)
@@ -559,7 +552,6 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const signup: PostDirectSignupRequest = {
       directSignupProgramItemId: testProgramItem.programItemId,
       message: "",
-      priority: DIRECT_SIGNUP_PRIORITY,
     };
     const response = await request(server)
       .post(ApiEndpoint.DIRECT_SIGNUP)

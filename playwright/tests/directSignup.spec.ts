@@ -11,7 +11,6 @@ import {
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import { config } from "shared/config";
 import { testProgramItem } from "shared/tests/testProgramItem";
-import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 
 test("Add and cancel direct signup", async ({ page, request }) => {
   await clearDb(request);
@@ -55,7 +54,6 @@ test("Add and cancel direct signup", async ({ page, request }) => {
   await testPostDirectSignup(request, "test2", {
     directSignupProgramItemId: testProgramItem.programItemId,
     message: "",
-    priority: DIRECT_SIGNUP_PRIORITY,
   });
 
   await firstProgramItem.signUp();
@@ -143,7 +141,6 @@ test("Show error when program item full and update participant list", async ({
   await testPostDirectSignup(request, "test2", {
     directSignupProgramItemId: testProgramItem.programItemId,
     message: "",
-    priority: DIRECT_SIGNUP_PRIORITY,
   });
 
   await firstProgramItem.signUp();

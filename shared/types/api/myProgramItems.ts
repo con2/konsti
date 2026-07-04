@@ -1,6 +1,5 @@
 import { z } from "zod";
 import { SIGNUP_MESSAGE_LENGTH } from "shared/constants/validation";
-import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 import { ApiError, ApiResult } from "shared/types/api/errors";
 import { DirectSignup, LotterySignup } from "shared/types/models/user";
 
@@ -61,9 +60,8 @@ export type DeleteLotterySignupResponse =
 export const PostDirectSignupRequestSchema = z.object({
   directSignupProgramItemId: z.string(),
   message: z.string().max(SIGNUP_MESSAGE_LENGTH, "Message too long"),
-  // User-made direct signups are always first-come-first-served; lottery-win priorities
-  // (1-3) must not be forgeable via this endpoint
-  priority: z.literal(DIRECT_SIGNUP_PRIORITY),
+  // priority is not part of the request: user-made direct signups are always
+  // first-come-first-served, so the backend sets DIRECT_SIGNUP_PRIORITY itself
 });
 
 export type PostDirectSignupRequest = z.infer<
