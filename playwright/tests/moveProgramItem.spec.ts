@@ -67,11 +67,11 @@ test("Show event log notification when program item with direct signup is moved"
   await page.reload();
 
   await expect(programList.notificationBar.bar).toContainText(
-    "Roleplaying game Test program item starting time has changed",
+    "Role-playing game Test program item starting time has changed",
   );
 
   await programList.notificationBar.showAllNotifications();
   await expect(programList.notificationBar.eventLogItem).toContainText(
-    "Roleplaying game Test program item starting time has changed",
+    "Role-playing game Test program item starting time has changed",
   );
 });

@@ -67,12 +67,12 @@ test("Show event log notification when program item with direct signup is cancel
   await page.reload();
 
   await expect(programList.notificationBar.bar).toContainText(
-    "Roleplaying game was cancelled and your sign-up was removed: Test program item",
+    "Role-playing game was cancelled and your sign-up was removed: Test program item",
   );
 
   await programList.notificationBar.showAllNotifications();
   await expect(programList.notificationBar.eventLogItem).toContainText(
-    "Roleplaying game was cancelled and your sign-up was removed: Test program item",
+    "Role-playing game was cancelled and your sign-up was removed: Test program item",
   );
 });
 
@@ -124,12 +124,12 @@ test("Show event log notification when program item with lottery sign-up is canc
   await page.reload();
 
   await expect(programList.notificationBar.bar).toContainText(
-    "Roleplaying game was cancelled and your sign-up was removed: Test program item",
+    "Role-playing game was cancelled and your sign-up was removed: Test program item",
   );
 
   await programList.notificationBar.showAllNotifications();
   await expect(programList.notificationBar.eventLogItem).toContainText(
-    "Roleplaying game was cancelled and your sign-up was removed: Test program item",
+    "Role-playing game was cancelled and your sign-up was removed: Test program item",
   );
 });
 
@@ -181,12 +181,12 @@ test("Show event log notification when program item with direct sign-up doesn't 
   await page.reload();
 
   await expect(programList.notificationBar.bar).toContainText(
-    "Roleplaying game no longer uses Konsti sign-up and your sign-up was removed: Test program item",
+    "Role-playing game no longer uses Konsti sign-up and your sign-up was removed: Test program item",
   );
 
   await programList.notificationBar.showAllNotifications();
   await expect(programList.notificationBar.eventLogItem).toContainText(
-    "Roleplaying game no longer uses Konsti sign-up and your sign-up was removed: Test program item",
+    "Role-playing game no longer uses Konsti sign-up and your sign-up was removed: Test program item",
   );
 });
 
@@ -238,12 +238,12 @@ test("Show event log notification when program item with lottery sign-up doesn't
   await page.reload();
 
   await expect(programList.notificationBar.bar).toContainText(
-    "Roleplaying game no longer uses Konsti sign-up and your sign-up was removed: Test program item",
+    "Role-playing game no longer uses Konsti sign-up and your sign-up was removed: Test program item",
   );
 
   await programList.notificationBar.showAllNotifications();
   await expect(programList.notificationBar.eventLogItem).toContainText(
-    "Roleplaying game no longer uses Konsti sign-up and your sign-up was removed: Test program item",
+    "Role-playing game no longer uses Konsti sign-up and your sign-up was removed: Test program item",
   );
 });
 
