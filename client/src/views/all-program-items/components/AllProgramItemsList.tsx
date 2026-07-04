@@ -206,13 +206,10 @@ export const AllProgramItemsList = ({
 
   // Remember the scroll offset and row measurements on unmount so the exact
   // position can be restored on return (e.g. via the back button). Runs as a
-  // layout-effect cleanup so it captures the position before the next route
-  // (the program item page) resets the window scroll to the top. Reads the
-  // virtualizer's last observed offset instead of window.scrollY: WebKit
-  // clamps the window scroll against the shrinking document already during
-  // the unmount commit, but the clamp's scroll event hasn't been delivered
-  // yet, so the observed offset still holds the real position. The virtualizer
-  // instance is stable, so the cleanup runs once, on unmount
+  // layout-effect cleanup to capture the position before the next route
+  // resets the window scroll. Reads the virtualizer's last observed offset
+  // instead of window.scrollY, which WebKit may already have clamped against
+  // the shrinking document during the unmount commit
   useLayoutEffect(() => {
     return () => {
       savedScrollState = {
@@ -241,9 +238,8 @@ export const AllProgramItemsList = ({
     }
   }, [rows]);
 
-  // While the virtualized list is on screen, the scroll-to-top button must
-  // scroll through the virtualizer so the smooth scroll isn't cancelled by
-  // row-measurement adjustments (see client/src/utils/scrollToTop.ts)
+  // Make scroll-to-top go through the virtualizer so the smooth scroll isn't
+  // cancelled by row-measurement adjustments (see client/src/utils/scrollToTop.ts)
   useEffect(() => {
     return registerScrollToTopOverride(() => {
       virtualizer.scrollToOffset(0, { behavior: "smooth" });

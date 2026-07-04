@@ -1,10 +1,7 @@
-// Scrolling to the top of the window-virtualized program list must go through
-// its virtualizer: a plain window.scrollTo smooth animation gets cancelled
-// when rows mounting above the viewport are measured and the virtualizer
-// adjusts the scroll position. The virtualizer's own scrollToOffset knows a
-// smooth scroll is in flight — it suppresses those adjustments and re-targets
-// every frame until the offset is stable — so the list registers an override
-// here and the scroll-to-top button uses it when one is active
+// A smooth window.scrollTo gets cancelled when the virtualizer measures rows
+// mounting above the viewport and adjusts the scroll position, so the
+// virtualized program list registers its own scrollToOffset here as an
+// override for the scroll-to-top button
 
 let override: (() => void) | null = null;
 

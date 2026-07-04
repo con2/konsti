@@ -96,12 +96,10 @@ export const login = async (
   loginCounter += 1;
 
   // Write the JWT before any app script runs on the test's own navigation.
-  // The previous goto + evaluate approach required a second goto to the same
-  // URL, which WebKit rejects with "Frame load interrupted".
-  // Init scripts run on every navigation, but this must apply only on the
-  // first one after login(): later navigations must not resurrect the session,
-  // e.g. after a UI logout or when a spec drives the login form. The marker
-  // survives logout because clearSession() only removes the "state" key
+  // The init script must apply only on the first navigation after login():
+  // later ones must not resurrect the session, e.g. after a UI logout or when
+  // a spec drives the login form. The marker survives logout because
+  // clearSession() only removes the "state" key
   await page.addInitScript(
     ({ jwt, marker }) => {
       if (localStorage.getItem(marker)) {
