@@ -31,7 +31,7 @@
     "eslint-timings": "TIMING=1 yarn eslint",
     "eslint:client": "yarn workspace client eslint",
     "eslint:server": "yarn workspace server eslint",
-    "eslint:root": "eslint --cache --no-warn-ignored shared playwright .claude/hooks \"*.ts\"",
+    "eslint:root": "eslint --cache --no-warn-ignored shared playwright scripts .claude/hooks \"*.ts\"",
     "eslint": "npm-run-all --parallel --continue-on-error --aggregate-output eslint:client eslint:server eslint:root",
     "eslint:fix": "eslint --fix .",
     "find-unused-translation-keys": "yarn workspace server find-unused-translation-keys",

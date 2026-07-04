@@ -9,6 +9,7 @@ import { compression } from "vite-plugin-compression2";
 import { viteStaticCopy } from "vite-plugin-static-copy";
 import { sentryVitePlugin } from "@sentry/vite-plugin";
 import { sentryConfig } from "../shared/config/sentryConfig";
+import { resolvePortOffset } from "../scripts/portOffset";
 
 const SENTRY_PROJECT_BY_MODE: Record<string, string> = {
   production: "konsti-frontend-prod",
@@ -33,15 +34,21 @@ const readSentryAuthToken = (dir: string): string | undefined => {
   return match?.[1]?.trim().replace(/^["']|["']$/g, "") || undefined;
 };
 
-export default defineConfig(({ mode }) => {
+export default defineConfig(({ mode, command }) => {
   const env = loadEnv(mode, import.meta.dirname, "");
 
   // PORT_OFFSET lets several local instances (e.g. one per git worktree) run side
   // by side: it shifts the dev server port and the API server it talks to by the
-  // same amount as the backend's PORT_OFFSET. Default 0 keeps the classic ports.
-  // When set, the offset API URL wins over API_SERVER_URL so a committed
+  // same amount as the backend's PORT_OFFSET. For the dev server the offset is
+  // resolved automatically per git worktree (an explicit PORT_OFFSET still
+  // wins); builds only use an explicit value so a build made in a worktree
+  // doesn't bake a shifted API URL into the bundle. When the offset is set,
+  // the offset API URL wins over API_SERVER_URL so a committed
   // .env.development value doesn't pin every instance to port 5000
-  const portOffset = Number(env.PORT_OFFSET) || 0;
+  const portOffset =
+    command === "serve"
+      ? resolvePortOffset(env.PORT_OFFSET)
+      : Number(env.PORT_OFFSET) || 0;
   const apiServerUrl =
     portOffset > 0
       ? `http://127.0.0.1:${5000 + portOffset}`
@@ -132,6 +139,10 @@ export default defineConfig(({ mode }) => {
     server: {
       host: "127.0.0.1",
       port: 8000 + portOffset,
+      // Fail instead of silently drifting to the next free port: a drifted
+      // instance no longer matches its server's CORS origin or the port the
+      // Playwright suite targets, which is much harder to debug
+      strictPort: true,
       fs: {
         allow: [path.resolve(import.meta.dirname, "..")],
       },

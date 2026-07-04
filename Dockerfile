@@ -23,6 +23,8 @@ RUN yarn
 # builds) the plugin is skipped and the build proceeds normally
 COPY --chown=node:node client ./client/
 COPY --chown=node:node shared ./shared/
+# vite.config.ts imports the port-offset resolver from scripts/
+COPY --chown=node:node scripts ./scripts/
 RUN --mount=type=secret,id=SENTRY_AUTH_TOKEN \
     SENTRY_AUTH_TOKEN="$(cat /run/secrets/SENTRY_AUTH_TOKEN 2>/dev/null || true)" \
     yarn workspace client build:$env

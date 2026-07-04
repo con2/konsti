@@ -11,6 +11,8 @@ COPY package.json ./
 COPY tsconfig.json ./
 COPY playwright ./playwright/
 COPY shared ./shared/
+# playwright.config.ts and playwrightUtils.ts import the port-offset resolver
+COPY scripts ./scripts/
 
 RUN npm install --omit=dev --legacy-peer-deps \
   && npm install "@playwright/test@$(node -e "process.stdout.write(require('./package.json').devDependencies['@playwright/test'])")" --legacy-peer-deps

@@ -1,4 +1,5 @@
 import { PlaywrightTestConfig, Project, devices } from "@playwright/test";
+import { resolvePortOffset } from "scripts/portOffset";
 
 const ENABLE_CHROME = true;
 const ENABLE_FIREFOX = false;
@@ -54,10 +55,10 @@ ENABLE_MOBILE_SAFARI &&
     use: devices["iPhone SE (3rd gen)"],
   });
 
-// PORT_OFFSET shifts the client dev server port so the suite can target a
-// specific local instance (one per git worktree). PLAYWRIGHT_BASEURL still wins
+// The per-worktree port offset shifts the client dev server port so the suite
+// targets its own worktree's local instance. PLAYWRIGHT_BASEURL still wins
 // when set (e.g. the Docker run points it at http://server:5000)
-const portOffset = Number(process.env.PORT_OFFSET) || 0;
+const portOffset = resolvePortOffset();
 
 const config: PlaywrightTestConfig = {
   projects,
