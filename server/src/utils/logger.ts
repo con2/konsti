@@ -11,15 +11,11 @@ const SPLAT = Symbol.for("splat");
 const LEVEL = Symbol.for("level");
 
 // Log errors by passing the Error directly: `logger.error(new Error("..."))`, or wrap an
-// underlying error as the cause: `logger.error(new Error("context", { cause: err }))`. No
-// `%s` needed.
+// underlying error as the cause: `logger.error(new Error("context", { cause: err }))`
 //
-// This works around two winston quirks. winston-transport-sentry-node only captures a real
-// exception when it finds an Error among `info`'s enumerable values, and winston-transport's
-// `Object.assign({}, info)` copy drops an Error's non-enumerable `message`/`stack`. Surfacing
-// the Error onto an enumerable `error` key lets the Sentry transport capture the actual Error
-// (correct type, single `Error:` prefix, real stack and cause chain) and lets renderMessage
-// build the human-readable console/file output
+// Surfaces the Error onto an enumerable `error` key because winston-transport-sentry-node
+// only captures a real exception when it finds an Error among `info`'s enumerable values,
+// and winston-transport's `Object.assign` copy drops an Error's non-enumerable `message`/`stack`
 const surfaceError = format((info) => {
   if (info instanceof Error) {
     // sole-arg Error: winston makes `info` the Error itself. Return a fresh info so we don't
