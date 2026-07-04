@@ -236,16 +236,25 @@ export const AllProgramItemsList = ({
     // The document keeps growing for a few frames after mount as rows are
     // measured and the scroll margin settles, so a single scrollTo can clamp
     // short (the document isn't tall enough yet) and stick there. Re-apply
-    // across frames until the offset holds or we run out of attempts — WebKit
-    // is the one that most often lands short on the first frame
+    // across frames until the offset holds — WebKit most often lands short on
+    // the first frame. Stop once the document stops growing (scrollY no longer
+    // climbs) so an unreachable target doesn't keep yanking the user for the
+    // full frame budget, e.g. when the list is now shorter than the saved offset
     const MAX_RESTORE_FRAMES = 30;
+    const MAX_STALLED_FRAMES = 3;
     let attempts = 0;
+    let stalledFrames = 0;
+    let previousScrollY = -1;
     let rafId = 0;
     const restore = (): void => {
       window.scrollTo(0, targetOffset);
       attempts += 1;
+      const scrollY = Math.round(window.scrollY);
+      stalledFrames = scrollY > previousScrollY ? 0 : stalledFrames + 1;
+      previousScrollY = scrollY;
       if (
-        Math.round(window.scrollY) < Math.round(targetOffset) &&
+        scrollY < Math.round(targetOffset) &&
+        stalledFrames < MAX_STALLED_FRAMES &&
         attempts < MAX_RESTORE_FRAMES
       ) {
         rafId = requestAnimationFrame(restore);
