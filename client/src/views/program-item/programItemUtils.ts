@@ -68,9 +68,7 @@ export const isAlreadyDirectySigned = (
 
 // Find the user's existing direct signup that occupies the same time slot as a lottery item.
 // Direct signups store the parent-resolved start time, so match against that, not the item's own
-export const getDirectSignupForSlot = <
-  T extends { signedToStartTime: string },
->(
+export const getDirectSignupForSlot = <T extends { signedToStartTime: string }>(
   directSignups: readonly T[],
   programItem: ProgramItem,
 ): T | undefined => {

@@ -228,13 +228,31 @@ export const AllProgramItemsList = ({
     }
     hasRestoredScrollRef.current = true;
 
-    if (savedScrollState && savedScrollState.offset > 0) {
-      const targetOffset = savedScrollState.offset;
-      // Run after the scroll margin has been measured (layout effect above)
-      requestAnimationFrame(() => {
-        window.scrollTo(0, targetOffset);
-      });
+    if (!savedScrollState || savedScrollState.offset <= 0) {
+      return;
     }
+
+    const targetOffset = savedScrollState.offset;
+    // The document keeps growing for a few frames after mount as rows are
+    // measured and the scroll margin settles, so a single scrollTo can clamp
+    // short (the document isn't tall enough yet) and stick there. Re-apply
+    // across frames until the offset holds or we run out of attempts — WebKit
+    // is the one that most often lands short on the first frame
+    const MAX_RESTORE_FRAMES = 30;
+    let attempts = 0;
+    let rafId = 0;
+    const restore = (): void => {
+      window.scrollTo(0, targetOffset);
+      attempts += 1;
+      if (
+        Math.round(window.scrollY) < Math.round(targetOffset) &&
+        attempts < MAX_RESTORE_FRAMES
+      ) {
+        rafId = requestAnimationFrame(restore);
+      }
+    };
+    rafId = requestAnimationFrame(restore);
+    return () => cancelAnimationFrame(rafId);
   }, [rows]);
 
   // Make scroll-to-top go through the virtualizer so the smooth scroll isn't
