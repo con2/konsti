@@ -56,7 +56,7 @@ export type PostUserResponse = PostUserResult | PostUserError;
 
 export const PostUpdateUserPasswordRequestSchema = z.object({
   usernameToUpdate: z.string(),
-  password: z.string(),
+  password: z.string().trim().min(PASSWORD_LENGTH_MIN).max(PASSWORD_LENGTH_MAX),
 });
 
 export type PostUpdateUserPasswordRequest = z.infer<

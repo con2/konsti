@@ -43,6 +43,24 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
     expect(response.status).toEqual(422);
   });
 
+  test("should return 422 for an empty password", async () => {
+    await saveUser(mockUser);
+
+    const requestData: PostUpdateUserPasswordRequest = {
+      usernameToUpdate: mockUser.username,
+      password: "",
+    };
+
+    const response = await request(server)
+      .post(ApiEndpoint.USERS_PASSWORD)
+      .send(requestData)
+      .set(
+        "Authorization",
+        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
+      );
+    expect(response.status).toEqual(422);
+  });
+
   test("should allow user to change own password", async () => {
     await saveUser(mockUser);
 
