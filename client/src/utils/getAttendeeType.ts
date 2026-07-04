@@ -1,4 +1,3 @@
-import { ActiveProgramType } from "shared/config/clientConfigTypes";
 import { ProgramType } from "shared/types/models/programItem";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 
@@ -7,15 +6,12 @@ enum AttendeeType {
   Participant = "participant",
 }
 
-export const getAttendeeType = (
-  activeProgramType: ActiveProgramType,
-): AttendeeType => {
-  switch (activeProgramType) {
+export const getAttendeeType = (programType: ProgramType): AttendeeType => {
+  switch (programType) {
     case ProgramType.TABLETOP_RPG:
     case ProgramType.LARP:
     case ProgramType.EXPERIENCE_POINT:
     case ProgramType.OTHER_GAMING:
-    case "all":
       return AttendeeType.Player;
 
     case ProgramType.TOURNAMENT:
@@ -26,6 +22,6 @@ export const getAttendeeType = (
       return AttendeeType.Participant;
 
     default:
-      return exhaustiveSwitchGuard(activeProgramType);
+      return exhaustiveSwitchGuard(programType);
   }
 };

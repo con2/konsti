@@ -13,8 +13,8 @@ export class ProgramListPage extends BasePage {
     return this.page.getByTestId("my-program-tab");
   }
 
-  get programTypeSelect(): Locator {
-    return this.page.getByRole("combobox", { name: /program type/i });
+  get programTypeFilter(): Locator {
+    return this.page.getByTestId("program-type-filter");
   }
 
   get tagFilter(): Locator {
@@ -31,7 +31,7 @@ export class ProgramListPage extends BasePage {
 
   async removeTag(label: string): Promise<void> {
     await this.page
-      .getByRole("button", { name: `Remove tag ${label}` })
+      .getByRole("button", { name: `Remove selection ${label}` })
       .click();
   }
 
@@ -60,7 +60,9 @@ export class ProgramListPage extends BasePage {
   }
 
   async selectProgramType(label: string): Promise<void> {
-    await this.programTypeSelect.selectOption(label);
+    await this.page.locator("#programTypeSelection").click();
+    await this.page.getByRole("checkbox", { name: label }).click();
+    await this.page.keyboard.press("Escape");
   }
 
   async selectStartingTime(label: string): Promise<void> {

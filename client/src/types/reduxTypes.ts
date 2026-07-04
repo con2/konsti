@@ -1,6 +1,10 @@
 import { ThunkAction } from "redux-thunk";
 import { Action } from "redux";
-import { ProgramItem, UserSignup } from "shared/types/models/programItem";
+import {
+  ProgramItem,
+  ProgramType,
+  UserSignup,
+} from "shared/types/models/programItem";
 import { GroupMember } from "shared/types/models/groups";
 import { store, combinedReducer } from "client/utils/store";
 import { UserProgramItems, UserGroup } from "shared/types/models/user";
@@ -11,7 +15,6 @@ import {
 } from "shared/config/eventConfigTypes";
 import { SignupMessage } from "shared/types/models/signupMessage";
 import { EventLogItem } from "shared/types/models/eventLog";
-import { ActiveProgramType } from "shared/config/clientConfigTypes";
 
 export interface AdminState {
   hiddenProgramItemIds: readonly string[];
@@ -21,7 +24,7 @@ export interface AdminState {
   signupQuestions: readonly SignupQuestion[];
   signupStrategy: EventSignupStrategy | undefined;
   errors: readonly string[];
-  activeProgramType: ActiveProgramType;
+  activeProgramTypes: readonly ProgramType[];
   signupMessages: readonly SignupMessage[];
   loginProvider: LoginProvider | undefined;
 }
@@ -63,7 +66,7 @@ export interface TestSettingsState {
 
 export interface LocalStorageState {
   login: { jwt: string };
-  admin: { activeProgramType: ActiveProgramType };
+  admin: { activeProgramTypes: readonly ProgramType[] };
 }
 
 export type AppDispatch = typeof store.dispatch;

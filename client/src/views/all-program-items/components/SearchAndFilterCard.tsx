@@ -22,6 +22,7 @@ import {
   selectLanguages,
   selectTags,
 } from "client/views/all-program-items/allProgramItemsSlice";
+import { selectProgramTypeForTexts } from "client/views/admin/adminSlice";
 import { Checkbox } from "client/components/Checkbox";
 import { StartingTimeOption } from "client/views/all-program-items/programListUtils";
 
@@ -47,9 +48,17 @@ export const SearchAndFilterCard = ({
   setHideFullItems,
 }: Props): ReactElement => {
   const { t } = useTranslation();
-  const activeProgramType = useAppSelector(
-    (state) => state.admin.activeProgramType,
+  const programTypeForTexts = useAppSelector(selectProgramTypeForTexts);
+  const activeProgramTypes = useAppSelector(
+    (state) => state.admin.activeProgramTypes,
   );
+
+  // The search matches the game system field, so advertise it in the
+  // placeholder whenever tabletop RPGs are among the listed program types
+  // (an empty selection means all program types)
+  const searchIncludesRpgs =
+    activeProgramTypes.length === 0 ||
+    activeProgramTypes.includes(ProgramType.TABLETOP_RPG);
   const tagFilters = useAppSelector(selectTags);
   const ageGroupFilters = useAppSelector(selectAgeGroups);
   const languageFilters = useAppSelector(selectLanguages);
@@ -70,7 +79,7 @@ export const SearchAndFilterCard = ({
   ].flat();
 
   const allProgramItemsLabel = t("allProgramItems", {
-    PROGRAM_TYPE: t(`programTypePlural.${activeProgramType}`),
+    PROGRAM_TYPE: t(`programTypePlural.${programTypeForTexts}`),
   });
 
   const toggleTag = (value: string): void => {
@@ -96,7 +105,7 @@ export const SearchAndFilterCard = ({
         <StyledLabel htmlFor="programTypeSelection">
           {t("selectedProgramType")}
         </StyledLabel>
-        <StyledProgramTypeSelection id="programTypeSelection" />
+        <ProgramTypeSelection id="programTypeSelection" />
       </InputContainer>
 
       {config.event().enableTagDropdown && (
@@ -109,6 +118,7 @@ export const SearchAndFilterCard = ({
             onToggle={toggleTag}
             onClear={clearTags}
             placeholder={allProgramItemsLabel}
+            testId="tag-filter"
           />
         </InputContainer>
       )}
@@ -151,11 +161,9 @@ export const SearchAndFilterCard = ({
             setSearchTerm(event.target.value);
           }}
           placeholder={t(
-            activeProgramType === ProgramType.TABLETOP_RPG
-              ? "searchWithTitleOrSystem"
-              : "searchWithTitle",
+            searchIncludesRpgs ? "searchWithTitleOrSystem" : "searchWithTitle",
             {
-              PROGRAM_TYPE: t(`programTypeGenetive.${activeProgramType}`),
+              PROGRAM_TYPE: t(`programTypeGenetive.${programTypeForTexts}`),
             },
           )}
           resetValue={() => {
@@ -196,24 +204,6 @@ const Container = styled(RaisedCard)`
   @media (max-width: ${(props) => props.theme.breakpointPhone}) {
     grid-template-columns: 1fr;
   }
-`;
-
-// Font Awesome free solid chevron-down as an inline background, so the select
-// shows the exact same caret as the MultiSelectDropdown next to it
-const chevronDownBackground = (color: string): string =>
-  `url("data:image/svg+xml,${encodeURIComponent(
-    `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='${color}' d='M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z'/></svg>`,
-  )}")`;
-
-// Match the height and caret of the tag filter next to it
-const StyledProgramTypeSelection = styled(ProgramTypeSelection)`
-  height: 38px;
-  padding-right: 26px;
-  appearance: none;
-  background-image: ${(props) => chevronDownBackground(props.theme.textMain)};
-  background-repeat: no-repeat;
-  background-position: right 7px center;
-  background-size: 12px;
 `;
 
 const StyledLabel = styled.label`

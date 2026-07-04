@@ -50,7 +50,7 @@ test("Active program type is selected from the programType query parameter", asy
 
   // The query param selects Larp as the active program type
   await page.goto("/program/list?programType=larp");
-  await expect(programList.programTypeSelect).toHaveValue(ProgramType.LARP);
+  await expect(programList.programTypeFilter).toContainText("Larp");
 
   // The list now only shows items of the selected program type
   await expect(items).toHaveCount(1);

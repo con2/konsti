@@ -6,22 +6,16 @@ import {
   LoginProvider,
   EventSignupStrategy,
 } from "shared/config/eventConfigTypes";
-import { ProgramItem } from "shared/types/models/programItem";
+import { ProgramItem, ProgramType } from "shared/types/models/programItem";
 import { SignupQuestion } from "shared/types/models/settings";
 import { SignupMessage } from "shared/types/models/signupMessage";
 import { loadSession } from "client/utils/localStorage";
 import { ActiveProgramType } from "shared/config/clientConfigTypes";
-import { getProgramTypeSelectOptions } from "client/utils/getProgramTypeSelectOptions";
 
-const getInitialActiveProgramType = (): ActiveProgramType => {
+// Empty selection means all program types
+const getInitialActiveProgramTypes = (): readonly ProgramType[] => {
   const persistedState = loadSession();
-  const programTypeSelectOptions = getProgramTypeSelectOptions();
-
-  if (programTypeSelectOptions.length === 1) {
-    return programTypeSelectOptions[0];
-  }
-
-  return persistedState?.admin?.activeProgramType ?? "all";
+  return persistedState?.admin?.activeProgramTypes ?? [];
 };
 
 const initialState = (): AdminState => {
@@ -33,7 +27,7 @@ const initialState = (): AdminState => {
     signupQuestions: [],
     signupStrategy: undefined,
     errors: [],
-    activeProgramType: getInitialActiveProgramType(),
+    activeProgramTypes: getInitialActiveProgramTypes(),
     signupMessages: [],
     loginProvider: undefined,
   };
@@ -113,11 +107,11 @@ const adminSlice = createSlice({
       };
     },
 
-    setActiveProgramType(
+    setActiveProgramTypes(
       state,
-      action: PayloadAction<ActiveProgramType>,
+      action: PayloadAction<readonly ProgramType[]>,
     ): AdminState {
-      return { ...state, activeProgramType: action.payload };
+      return { ...state, activeProgramTypes: action.payload };
     },
 
     submitGetSignupMessagesAsync(
@@ -139,7 +133,7 @@ export const {
   updateSignupQuestions,
   addError,
   removeError,
-  setActiveProgramType,
+  setActiveProgramTypes,
   submitGetSignupMessagesAsync,
 } = adminSlice.actions;
 
@@ -150,17 +144,27 @@ export const adminReducer = adminSlice.reducer;
 const selectProgramItems = (state: RootState): readonly ProgramItem[] =>
   state.allProgramItems.programItems;
 
-const selectActiveProgramType = (state: RootState): ActiveProgramType =>
-  state.admin.activeProgramType;
+const selectActiveProgramTypes = (state: RootState): readonly ProgramType[] =>
+  state.admin.activeProgramTypes;
+
+// Only for translated texts: the grammatical program type variants (plural,
+// genetive, ...) need a single program type, so use the selected one when
+// exactly one is selected and otherwise fall back to the "all" texts
+export const selectProgramTypeForTexts = createSelector(
+  [selectActiveProgramTypes],
+  (activeProgramTypes): ActiveProgramType =>
+    activeProgramTypes.length === 1 ? activeProgramTypes[0] : "all",
+);
 
 export const selectActiveProgramItems = createSelector(
-  [selectProgramItems, selectActiveProgramType],
-  (programItems, activeProgramType) => {
-    if (activeProgramType === "all") {
+  [selectProgramItems, selectActiveProgramTypes],
+  (programItems, activeProgramTypes) => {
+    if (activeProgramTypes.length === 0) {
       return programItems;
     }
-    return programItems.filter(
-      (programItem) => programItem.programType === activeProgramType,
+    const activeTypes = new Set(activeProgramTypes);
+    return programItems.filter((programItem) =>
+      activeTypes.has(programItem.programType),
     );
   },
 );

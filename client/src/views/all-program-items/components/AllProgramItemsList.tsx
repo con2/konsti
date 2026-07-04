@@ -32,6 +32,7 @@ import { RaisedCard } from "client/components/RaisedCard";
 import { getIsInGroup } from "client/views/group/groupUtils";
 import { SignupQuestion } from "shared/types/models/settings";
 import { selectGroupMembers } from "client/views/group/groupSlice";
+import { selectProgramTypeForTexts } from "client/views/admin/adminSlice";
 import { config } from "shared/config";
 import { registerScrollToTopOverride } from "client/utils/scrollToTop";
 
@@ -72,9 +73,7 @@ export const AllProgramItemsList = ({
   );
   const lotterySignups = useAppSelector(selectLotterySignups);
   const directSignups = useAppSelector(selectDirectSignups);
-  const activeProgramType = useAppSelector(
-    (state) => state.admin.activeProgramType,
-  );
+  const programTypeForTexts = useAppSelector(selectProgramTypeForTexts);
   const groupMembers = useAppSelector(selectGroupMembers);
   const isGroupCreator = useAppSelector((state) => state.group.isGroupCreator);
   const groupCode = useAppSelector((state) => state.group.groupCode);
@@ -255,7 +254,7 @@ export const AllProgramItemsList = ({
           <NoProgramItemsText>
             {t("noProgramItemsAvailable", {
               PROGRAM_TYPE: t(
-                `programTypePartitivePlural.${activeProgramType}`,
+                `programTypePartitivePlural.${programTypeForTexts}`,
               ),
             })}
           </NoProgramItemsText>

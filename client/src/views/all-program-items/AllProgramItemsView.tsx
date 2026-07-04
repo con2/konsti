@@ -21,7 +21,7 @@ import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import {
   selectActiveProgramItems,
   selectHiddenProgramItems,
-  setActiveProgramType,
+  setActiveProgramTypes,
 } from "client/views/admin/adminSlice";
 import {
   SessionStorageValue,
@@ -44,6 +44,14 @@ export const MULTIPLE_WHITESPACES_REGEX = /\s\s+/g;
 const programTypeQueryParam = "programType";
 // Query param that lists program items missing required info, like attendance limits
 const invalidQueryParam = "invalid";
+
+// Config-derived and constant, and must be referentially stable: the query
+// param effect below depends on it, and dispatching setActiveProgramTypes
+// re-renders this view, so an unstable value would loop the effect
+const programTypePairs = getProgramTypeSelectOptions().map((type) => ({
+  lowerCase: type.toLocaleLowerCase(),
+  originalValue: type,
+}));
 
 export const AllProgramItemsView = (): ReactElement => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -146,11 +154,6 @@ export const AllProgramItemsView = (): ReactElement => {
     setLoading(false);
   }, [debouncedSearchTerm, activeVisibleProgramItems]);
 
-  const programTypePairs = getProgramTypeSelectOptions().map((type) => ({
-    lowerCase: type.toLocaleLowerCase(),
-    originalValue: type,
-  }));
-
   useEffect(() => {
     if (!programTypeQueryParamValue) {
       return;
@@ -159,14 +162,20 @@ export const AllProgramItemsView = (): ReactElement => {
       (key) => key.lowerCase === programTypeQueryParamValue,
     );
     if (programTypePair) {
-      dispatch(setActiveProgramType(programTypePair.originalValue));
+      dispatch(
+        setActiveProgramTypes(
+          programTypePair.originalValue === "all"
+            ? []
+            : [programTypePair.originalValue],
+        ),
+      );
     }
     // Drop the handled programType param but keep other params, like invalid
     setSearchParams((prev) => {
       prev.delete(programTypeQueryParam);
       return prev;
     });
-  }, [programTypePairs, dispatch, programTypeQueryParamValue, setSearchParams]);
+  }, [dispatch, programTypeQueryParamValue, setSearchParams]);
 
   const programItemsToShow = useMemo(() => {
     const visibleProgramItems = getVisibleProgramItems(

@@ -50,7 +50,7 @@ export const translationEN = {
   find: "Find",
   findTitleOrUsername: "{{PROGRAM_TYPE}} title or username",
   searchWithTitle: "{{PROGRAM_TYPE}} title",
-  searchWithTitleOrSystem: "{{PROGRAM_TYPE}} title or system",
+  searchWithTitleOrSystem: "{{PROGRAM_TYPE}} title or game system",
   hideFullItems: "Hide fully booked program items",
   language: {
     englishShort: "EN",
@@ -609,7 +609,7 @@ export const translationEN = {
   },
   iconAltText: {
     resetInput: "Reset input",
-    removeTag: "Remove tag {{TAG}}",
+    removeSelection: "Remove selection {{SELECTION}}",
     openAccordion: "Open accordion menu",
     closeAccordion: "Close accordion menu",
     closeError: "Close error",

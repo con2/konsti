@@ -49,7 +49,7 @@ export const translationFI = {
   find: "Etsi",
   findTitleOrUsername: "{{PROGRAM_TYPE}} nimi tai nimimerkki",
   searchWithTitle: "{{PROGRAM_TYPE}} nimi",
-  searchWithTitleOrSystem: "{{PROGRAM_TYPE}} nimi tai järjestelmä",
+  searchWithTitleOrSystem: "{{PROGRAM_TYPE}} nimi tai pelijärjestelmä",
   hideFullItems: "Piilota täynnä olevat ohjelmanumerot",
   language: {
     englishShort: "EN",
@@ -611,7 +611,7 @@ export const translationFI = {
   },
   iconAltText: {
     resetInput: "Tyhjennä syöte",
-    removeTag: "Poista tagi {{TAG}}",
+    removeSelection: "Poista valinta {{SELECTION}}",
     openAccordion: "Avaa haitarivalikko",
     closeAccordion: "Sulje haitarivalikko",
     closeError: "Sulje virhe",

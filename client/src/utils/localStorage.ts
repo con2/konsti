@@ -15,14 +15,16 @@ const isActive = (programType: ActiveProgramType): boolean =>
 const SessionSchema = z
   .object({
     login: z.object({ jwt: z.string() }).optional(),
+    // An invalid saved filter (e.g. an outdated shape from a previous Konsti
+    // version, or a program type that is no longer active) only drops the
+    // filter instead of failing the whole parse, which would clear the
+    // session and log the user out
     admin: z
       .object({
-        activeProgramType: z
-          .enum(ProgramType)
-          .or(z.literal("all"))
-          .refine(isActive),
+        activeProgramTypes: z.array(z.enum(ProgramType).refine(isActive)),
       })
-      .optional(),
+      .optional()
+      .catch(undefined),
   })
   .strict();
 
