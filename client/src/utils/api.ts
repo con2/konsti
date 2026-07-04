@@ -41,8 +41,23 @@ const getErrorReason = (status: number): BackendErrorType => {
   }
 };
 
+// Requests failing around a connectivity change are expected (e.g. laptop
+// wakes from sleep and polls before Wi-Fi has reconnected), so the network
+// error toast is suppressed while offline and briefly after reconnecting
+const RECONNECT_GRACE_PERIOD_MS = 5000;
+let reconnectedAt = 0;
+
+addEventListener("online", () => {
+  reconnectedAt = Date.now();
+});
+
+const shouldShowNetworkError = (): boolean =>
+  navigator.onLine && Date.now() - reconnectedAt > RECONNECT_GRACE_PERIOD_MS;
+
 const networkErrorResponse = <T>(): ApiResponse<T> => {
-  store.dispatch(addError(t(BackendErrorType.NETWORK_ERROR)));
+  if (shouldShowNetworkError()) {
+    store.dispatch(addError(t(BackendErrorType.NETWORK_ERROR)));
+  }
 
   const error: ApiError = {
     errorId: "unknown",

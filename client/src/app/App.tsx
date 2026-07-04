@@ -38,6 +38,17 @@ const App = (): ReactElement => {
       }, dataUpdateInterval * 1000);
     };
     startUpdateTimer();
+
+    // The network error toast can appear right before the laptop sleeps
+    // (Wi-Fi drops before JS is suspended), so clear it when connectivity is
+    // lost and refresh immediately when it returns instead of leaving the
+    // toast visible until the next poll cycle
+    addEventListener("offline", resetNetworkError);
+    // eslint-disable-next-line @typescript-eslint/no-misused-promises
+    addEventListener("online", async () => {
+      resetNetworkError();
+      await fetchData();
+    });
   }, []);
 
   getIconLibrary();
