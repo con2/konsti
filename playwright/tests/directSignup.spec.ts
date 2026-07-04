@@ -150,7 +150,7 @@ test("Show error when program item full and update participant list", async ({
 
   // Check program item full error
   await expect(firstProgramItem.fullMessage).toHaveText(
-    "This roleplaying game is full.",
+    "This role-playing game is full.",
   );
 
   // Check attendee count is updated

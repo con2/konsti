@@ -188,9 +188,9 @@ export const translationEN = {
     programItemFull: "This program item is full.",
     noKonstiSignup:
       "This program does not use Konsti for signing up. See the program details for instructions.",
-    programItemCancelled: "Program item is cancelled",
+    programItemCancelled: "This program item has been cancelled",
     groupMember:
-      "Group members cannot sign up, the group creator signs up for the whole group",
+      "Group members cannot sign up, the group creator must sign up for the whole group.",
   },
   closingMessage: "Konsti is closed and will open closer to the next event.",
   invalidProgramItemId:
@@ -198,7 +198,7 @@ export const translationEN = {
   noProgramItemsAvailable:
     "No {{PROGRAM_TYPE}} found, please check your search conditions.",
   checkProgramGuide:
-    "Konsti only shows program items with electronic sign-up. For the full program, please check",
+    "Konsti only lists program items with electronic sign-up. For the full program, please check",
   programGuide: "the program guide",
   noProgramItemsInDatabase: "No program items in database",
   upcoming: "Upcoming",
@@ -316,13 +316,14 @@ export const translationEN = {
     programItemPriority: "{{PROGRAM_TYPE}} priority for me is",
     confirm: "Confirm",
     cancel: "Cancel",
-    alreadySignedToProgramItem: "You already signed up to the {{PROGRAM_TYPE}}",
+    alreadySignedToProgramItem:
+      "You have already signed up to the {{PROGRAM_TYPE}}",
     cannotSignupMoreThanOneProgramItem:
       "You cannot sign up to another program item starting at the same time.",
     signupWillBeRemoved:
       "If you get a spot in this {{PROGRAM_TYPE_THIS}} in the lottery, your sign-up to the {{PROGRAM_TYPE_OTHER}} {{OTHER_PROGRAM_NAME}} will be cancelled.",
     signupCount: "{{ATTENDEE_COUNT}}/{{MAX_ATTENDANCE}} sign-ups",
-    attendeesNeeded: "Need {{COUNT}} more",
+    attendeesNeeded: "Needs {{COUNT}} more",
     programItemFull: "This {{PROGRAM_TYPE}} is full.",
     confirmCancellation: "Cancel your sign-up",
     staySignedUp: "Stay signed up",
@@ -418,7 +419,7 @@ export const translationEN = {
   },
   programTypeSingular: {
     all: "program item",
-    tabletopRPG: "roleplaying game",
+    tabletopRPG: "role-playing game",
     larp: "larp",
     tournament: "tournament",
     workshop: "workshop",
@@ -430,7 +431,7 @@ export const translationEN = {
   },
   programTypePlural: {
     all: "program items",
-    tabletopRPG: "roleplaying games",
+    tabletopRPG: "role-playing games",
     larp: "larps",
     tournament: "tournaments",
     workshop: "workshops",
@@ -442,7 +443,7 @@ export const translationEN = {
   },
   programTypeGenetive: {
     all: "Program item",
-    tabletopRPG: "Roleplaying game",
+    tabletopRPG: "Role-playing game",
     larp: "Larp",
     tournament: "Tournament",
     workshop: "Workshop",
@@ -454,7 +455,7 @@ export const translationEN = {
   },
   programTypePartitivePlural: {
     all: "program items",
-    tabletopRPG: "roleplaying games",
+    tabletopRPG: "role-playing games",
     larp: "larps",
     tournament: "tournaments",
     workshop: "workshops",
@@ -466,7 +467,7 @@ export const translationEN = {
   },
   programTypeInessive: {
     all: "program item",
-    tabletopRPG: "roleplaying game",
+    tabletopRPG: "role-playing game",
     larp: "larp",
     tournament: "tournament",
     workshop: "workshop",
@@ -478,7 +479,7 @@ export const translationEN = {
   },
   programTypeIllative: {
     all: "program item",
-    tabletopRPG: "roleplaying game",
+    tabletopRPG: "role-playing game",
     larp: "larp",
     tournament: "tournament",
     workshop: "workshop",
