@@ -4,6 +4,9 @@ import request from "supertest";
 import { faker } from "@faker-js/faker";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { closeServer, startServer } from "server/utils/server";
+import { saveUser } from "server/features/user/userRepository";
+import { mockUser } from "server/test/mock-data/mockUser";
+import { PostLoginResult } from "shared/types/api/login";
 
 let server: Server;
 
@@ -43,5 +46,19 @@ describe(`POST ${ApiEndpoint.LOGIN}`, () => {
       .post(ApiEndpoint.LOGIN)
       .send({ username: "testuser", password: "testpass" });
     expect(response.status).toEqual(200);
+  });
+
+  test("should trim surrounding whitespace from the password, matching registration", async () => {
+    // mockUser.passwordHash is the hash of "password"; registration trims on write, so login
+    // must trim too or a user who typed a trailing space would be locked out
+    await saveUser(mockUser);
+
+    const response = await request(server)
+      .post(ApiEndpoint.LOGIN)
+      .send({ username: mockUser.username, password: "password " });
+    expect(response.status).toEqual(200);
+
+    const body = response.body as PostLoginResult;
+    expect(body.status).toEqual("success");
   });
 });

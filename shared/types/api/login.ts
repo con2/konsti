@@ -7,7 +7,9 @@ import { EventLogItem } from "shared/types/models/eventLog";
 
 export const PostLoginRequestSchema = z.object({
   username: z.string(),
-  password: z.string().min(1),
+  // Trim to match registration/password-update, which store the trimmed password — otherwise
+  // a trailing/leading space typed at login would never match the stored hash
+  password: z.string().trim().min(1),
 });
 
 export type PostLoginRequest = z.infer<typeof PostLoginRequestSchema>;
