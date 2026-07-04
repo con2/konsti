@@ -134,6 +134,13 @@ describe("Early lottery signup", () => {
     const signupStartTime = getLotterySignupStartTime(programItem);
     expect(signupStartTime.toISOString()).toEqual(`${saturday}T05:00:00.000Z`);
   });
+
+  test("RPG starting at 09:15 should have signup starting at 22:00, not 22:15", () => {
+    const startTime = `${saturday}T06:15:00.000Z`;
+    const programItem = { ...testProgramItem, startTime };
+    const signupStartTime = getLotterySignupStartTime(programItem);
+    expect(signupStartTime.toISOString()).toEqual(`${friday}T19:00:00.000Z`);
+  });
 });
 
 describe("Two phase direct signup", () => {
@@ -431,6 +438,12 @@ describe("Direct signup with rolling signup", () => {
   test("Workshop starting at Sat 12:00 should have signup starting at Sat 08:00", () => {
     const startTime = `${saturday}T09:00:00.000Z`;
     const signupTime = `${saturday}T05:00:00.000Z`;
+    assertSignupTime(startTime, signupTime);
+  });
+
+  test("Workshop starting at Sat 11:15 should have signup starting at Fri 18:00, not 18:15", () => {
+    const startTime = `${saturday}T08:15:00.000Z`;
+    const signupTime = `${friday}T15:00:00.000Z`;
     assertSignupTime(startTime, signupTime);
   });
 
