@@ -9,7 +9,10 @@ import {
   submitDeleteLotterySignup,
 } from "client/views/my-program-items/myProgramItemsThunks";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
-import { isAlreadyLotterySigned } from "client/views/program-item/programItemUtils";
+import {
+  getDirectSignupForSlot,
+  isAlreadyLotterySigned,
+} from "client/views/program-item/programItemUtils";
 import { Button, ButtonStyle } from "client/components/Button";
 import { ErrorMessage } from "client/components/ErrorMessage";
 import { CancelSignupForm } from "client/views/program-item/signup/components/CancelSignupForm";
@@ -56,8 +59,9 @@ export const ProgramItemLotterySignup = ({
     isInGroup,
     isGroupCreator,
   );
-  const directSignupForSlot = directSignups.find(
-    (signup) => signup.signedToStartTime === programItem.startTime,
+  const directSignupForSlot = getDirectSignupForSlot(
+    directSignups,
+    programItem,
   );
 
   const [signupFormOpen, setSignupFormOpen] = useState(false);

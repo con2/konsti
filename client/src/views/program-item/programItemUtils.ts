@@ -66,6 +66,22 @@ export const isAlreadyDirectySigned = (
   );
 };
 
+// Find the user's existing direct signup that occupies the same time slot as a lottery item.
+// Direct signups store the parent-resolved start time, so match against that, not the item's own
+export const getDirectSignupForSlot = <
+  T extends { signedToStartTime: string },
+>(
+  directSignups: readonly T[],
+  programItem: ProgramItem,
+): T | undefined => {
+  const programItemStartTime =
+    config.event().startTimesByParentIds.get(programItem.parentId) ??
+    programItem.startTime;
+  return directSignups.find(
+    (signup) => signup.signedToStartTime === programItemStartTime,
+  );
+};
+
 export const getFormattedTime = (time: Dayjs, timeNow: Dayjs): string => {
   // Show weekday and time on event week
   if (timeNow.isSame(config.event().eventStartTime, "week")) {
