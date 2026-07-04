@@ -18,12 +18,16 @@ import {
 } from "server/features/program-item/programItemRepository";
 import {
   mockLotterySignups,
+  mockPostDirectSignupRequest,
   mockUser,
   mockUser2,
   mockUser3,
   mockUser4,
 } from "server/test/mock-data/mockUser";
-import { findDirectSignups } from "server/features/direct-signup/directSignupRepository";
+import {
+  findDirectSignups,
+  saveDirectSignup,
+} from "server/features/direct-signup/directSignupRepository";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { saveUserSignupResults } from "server/features/assignment/utils/saveUserSignupResults";
 import { UserAssignmentResult } from "shared/types/models/result";
@@ -548,6 +552,78 @@ test("should give dropped signup users a NO_ASSIGNMENT message when multiple sig
   );
   expect(acceptedNotifications).toHaveLength(2);
   expect(rejectedNotifications).toHaveLength(2);
+});
+
+test("should remove all of a winner's existing same-time direct signups, not just one", async () => {
+  const alwaysOpenId1 = "always-open-1";
+  const alwaysOpenId2 = "always-open-2";
+
+  // Always-open signups survive the pre-assignment cleanup, so the user keeps both existing
+  // direct signups at the assignment start time going into conflict resolution
+  vi.spyOn(config, "event").mockReturnValue({
+    ...config.event(),
+    directSignupAlwaysOpenIds: [alwaysOpenId1, alwaysOpenId2],
+  });
+
+  await saveUser(mockUser);
+
+  await saveProgramItems([
+    { ...testProgramItem, maxAttendance: 10 },
+    {
+      ...testProgramItem2,
+      programItemId: alwaysOpenId1,
+      startTime: testProgramItem.startTime,
+      maxAttendance: 10,
+    },
+    {
+      ...testProgramItem2,
+      programItemId: alwaysOpenId2,
+      startTime: testProgramItem.startTime,
+      maxAttendance: 10,
+    },
+  ]);
+
+  // Two existing direct signups for the same start time
+  await saveDirectSignup({
+    ...mockPostDirectSignupRequest,
+    directSignupProgramItemId: alwaysOpenId1,
+    signedToStartTime: testProgramItem.startTime,
+  });
+  await saveDirectSignup({
+    ...mockPostDirectSignupRequest,
+    directSignupProgramItemId: alwaysOpenId2,
+    signedToStartTime: testProgramItem.startTime,
+  });
+
+  const results: UserAssignmentResult[] = [
+    {
+      username: mockUser.username,
+      assignmentSignup: {
+        programItemId: testProgramItem.programItemId,
+        priority: 1,
+        signedToStartTime: testProgramItem.startTime,
+      },
+    },
+  ];
+
+  const users = unsafelyUnwrap(await findUsers());
+  const programItems = unsafelyUnwrap(await findProgramItems());
+
+  await saveUserSignupResults({
+    assignmentTime: testProgramItem.startTime,
+    results,
+    users,
+    programItems,
+  });
+
+  // Both prior same-time signups must be removed, leaving only the assignment result
+  const signupsAfterSave = unsafelyUnwrap(await findDirectSignups());
+  const userProgramItemIds = signupsAfterSave.flatMap((signup) =>
+    signup.userSignups
+      .filter((userSignup) => userSignup.username === mockUser.username)
+      .map(() => signup.programItemId),
+  );
+  expect(userProgramItemIds).toEqual([testProgramItem.programItemId]);
 });
 
 test("should not send notifications to users without email addresses but still create event log items", async () => {

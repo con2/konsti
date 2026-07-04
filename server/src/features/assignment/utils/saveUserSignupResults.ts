@@ -81,22 +81,20 @@ export const saveUserSignupResults = async ({
   // If user has existing signups...
   // ... and new assignment result -> remove existing
   // ... and no new assignment result -> keep existing
-  const deletePromises = results.map(async (result) => {
-    const existingSignup = directSignupsByStartTimeResult.value.find(
+  // A user can hold several signups at the same start time (e.g. an always-open item plus a
+  // moved-in one), so remove every one of theirs, not just the first
+  const deletePromises = results.flatMap((result) => {
+    const existingSignups = directSignupsByStartTimeResult.value.filter(
       (signup) => signup.username === result.username,
     );
 
-    if (existingSignup) {
+    return existingSignups.map((existingSignup) =>
       // TODO: Add delDirectSignups to delete multiple
-      const delSignupResult = await delDirectSignup({
+      delDirectSignup({
         username: existingSignup.username,
         directSignupProgramItemId: existingSignup.programItemId,
-      });
-      if (!delSignupResult.ok) {
-        return delSignupResult;
-      }
-    }
-    return makeSuccessResult();
+      }),
+    );
   });
 
   const deleteResults = await Promise.all(deletePromises);
