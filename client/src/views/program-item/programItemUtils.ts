@@ -8,6 +8,7 @@ import {
   getWeekdayAndTime,
 } from "shared/utils/timeFormatter";
 import { config } from "shared/config";
+import { getProgramItemStartTime } from "shared/utils/signupTimes";
 
 interface ProgramItemValidity {
   isValidMinAttendanceValue: boolean;
@@ -72,9 +73,7 @@ export const getDirectSignupForSlot = <T extends { signedToStartTime: string }>(
   directSignups: readonly T[],
   programItem: ProgramItem,
 ): T | undefined => {
-  const programItemStartTime =
-    config.event().startTimesByParentIds.get(programItem.parentId) ??
-    programItem.startTime;
+  const programItemStartTime = getProgramItemStartTime(programItem);
   return directSignups.find(
     (signup) => signup.signedToStartTime === programItemStartTime,
   );

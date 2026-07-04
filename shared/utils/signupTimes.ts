@@ -5,7 +5,9 @@ import { TIMEZONE } from "shared/utils/initializeDayjs";
 import { isDirectSignupAlwaysOpen } from "shared/utils/isDirectSignupAlwaysOpen";
 import { isPreConventionWeekProgramItem } from "shared/utils/isPreConventionWeekProgramItem";
 
-const getProgramItemStartTime = (programItem: ProgramItem): string => {
+// Resolve a program item's effective start time, applying the parent override that batches
+// several items into a single lottery run
+export const getProgramItemStartTime = (programItem: ProgramItem): string => {
   const { startTimesByParentIds } = config.event();
 
   const parentStartTime = startTimesByParentIds.get(programItem.parentId);
