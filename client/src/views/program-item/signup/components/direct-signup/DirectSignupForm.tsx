@@ -18,7 +18,6 @@ import { TextArea } from "client/components/TextArea";
 import { ButtonGroup } from "client/components/ButtonGroup";
 import { Dropdown } from "client/components/Dropdown";
 import { Checkbox } from "client/components/Checkbox";
-import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 import { InfoText, InfoTextVariant } from "client/components/InfoText";
 import { getEntryCondition } from "client/views/program-item/programItemUtils";
 import { isSignupConfirmDisabled } from "client/views/program-item/signup/components/signupFormUtils";
@@ -72,7 +71,6 @@ export const DirectSignupForm = ({
     const enterData: PostDirectSignupRequest = {
       directSignupProgramItemId: programItem.programItemId,
       message: userSignupMessage || selectedValue,
-      priority: DIRECT_SIGNUP_PRIORITY,
     };
 
     const error = await dispatch(submitPostDirectSignup(enterData));

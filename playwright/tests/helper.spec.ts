@@ -102,7 +102,6 @@ test("Helper can view private signup question answers", async ({
   await testPostDirectSignup(request, "test1", {
     directSignupProgramItemId: "helper-message-item",
     message: "Wizard",
-    priority: 0,
   });
 
   // signup-message endpoint is helper-only, so sign in as a helper here

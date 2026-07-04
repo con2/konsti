@@ -45,7 +45,6 @@ test("Admission ticket reflects whether the user has signed up", async ({
   await testPostDirectSignup(request, "test1", {
     directSignupProgramItemId: "admission-signed-item",
     message: "",
-    priority: 0,
   });
 
   await login(page, request, { username: "test1", password: "test" });
