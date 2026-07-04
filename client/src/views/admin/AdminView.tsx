@@ -14,6 +14,7 @@ import { getWeekdayAndTime } from "shared/utils/timeFormatter";
 import { ProgramItem, SignupType } from "shared/types/models/programItem";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { Button, ButtonStyle } from "client/components/Button";
+import { Checkbox } from "client/components/Checkbox";
 import { SignupQuestionList } from "client/views/admin/components/SignupQuestionList";
 import { Dropdown, Option } from "client/components/Dropdown";
 import { SignupStrategySelector } from "client/views/admin/components/SignupStrategySelector";
@@ -36,6 +37,9 @@ export const AdminView = (): ReactElement => {
   );
   const assignmentResponseMessage = useAppSelector(
     (state) => state.admin.assignmentResponseMessage,
+  );
+  const emailNotificationTrigger = useAppSelector(
+    (state) => state.admin.emailNotificationTrigger,
   );
 
   const dispatch = useAppDispatch();
@@ -93,6 +97,15 @@ export const AdminView = (): ReactElement => {
   );
   const [testEmail, setTestEmail] = useState<string>("");
   const [testProgramId, setTestProgramId] = useState<string>("");
+  // Transient (not persisted): when on, test buttons for disabled triggers are blocked
+  const [respectTriggerSettings, setRespectTriggerSettings] =
+    useState<boolean>(false);
+
+  const isTestBlockedByTriggerSettings = (
+    notificationType: EmailNotificationTrigger,
+  ): boolean =>
+    respectTriggerSettings &&
+    !emailNotificationTrigger.includes(notificationType);
 
   const showMessage = ({
     value,
@@ -165,6 +178,14 @@ export const AdminView = (): ReactElement => {
     if (!testProgramId) {
       showMessage({
         value: "Please enter a program ID",
+        style: "error",
+      });
+      return;
+    }
+
+    if (isTestBlockedByTriggerSettings(notificationType)) {
+      showMessage({
+        value: `${notificationType} is disabled in email notification trigger settings`,
         style: "error",
       });
       return;
@@ -305,6 +326,13 @@ export const AdminView = (): ReactElement => {
           value={testProgramId}
           onChange={(e) => setTestProgramId(e.target.value)}
           disabled={submitting}
+        />
+        <Checkbox
+          id="respect-email-notification-trigger-settings"
+          label="Respect email notification trigger settings"
+          checked={respectTriggerSettings}
+          disabled={submitting}
+          onChange={() => setRespectTriggerSettings((previous) => !previous)}
         />
         <ButtonGroup>
           <Button
