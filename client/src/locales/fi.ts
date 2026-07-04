@@ -631,6 +631,18 @@ export const translationFI = {
     sentryBackendTest: "Backend-testi",
     signupStrategy: "Ilmoittautumistapa",
     loginProvider: "Kirjautumistapa",
+    emailNotificationTriggers: "Sähköposti-ilmoitusten lähetys",
+    emailNotificationTrigger: {
+      accepted: "Pelaaja sai paikan arvonnassa",
+      rejected: "Pelaaja ei saanut paikkaa arvonnassa",
+      programItemCancelled: "Ohjelma peruttu",
+      programItemDeleted: "Ohjelma poistettu",
+      programItemNoKonstiSignupAnymore:
+        "Ohjelma ei enää käytä Konsti-ilmoittautumista",
+      programItemNoLotteryAnymore:
+        "Ohjelma ei enää käytä arvontailmoittautumista",
+      programItemTimeChanged: "Ohjelman alkuaika muuttunut",
+    },
   },
   email: {
     notifications: {

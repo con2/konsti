@@ -15,6 +15,7 @@ import {
 } from "shared/config/eventConfigTypes";
 import { SignupMessage } from "shared/types/models/signupMessage";
 import { EventLogItem } from "shared/types/models/eventLog";
+import { EmailNotificationTrigger } from "shared/types/emailNotification";
 
 export interface AdminState {
   hiddenProgramItemIds: readonly string[];
@@ -27,6 +28,7 @@ export interface AdminState {
   activeProgramTypes: readonly ProgramType[];
   signupMessages: readonly SignupMessage[];
   loginProvider: LoginProvider | undefined;
+  emailNotificationTrigger: readonly EmailNotificationTrigger[];
 }
 
 export interface ProgramItemDirectSignups {

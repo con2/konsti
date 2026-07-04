@@ -14,11 +14,13 @@ import { getWeekdayAndTime } from "shared/utils/timeFormatter";
 import { ProgramItem, SignupType } from "shared/types/models/programItem";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { Button, ButtonStyle } from "client/components/Button";
+import { Checkbox } from "client/components/Checkbox";
 import { SignupQuestionList } from "client/views/admin/components/SignupQuestionList";
 import { Dropdown, Option } from "client/components/Dropdown";
 import { SignupStrategySelector } from "client/views/admin/components/SignupStrategySelector";
 import { ButtonGroup } from "client/components/ButtonGroup";
 import { LoginProviderSelector } from "client/views/admin/components/LoginProviderSelector";
+import { EmailNotificationTriggerSelector } from "client/views/admin/components/EmailNotificationTriggerSelector";
 import { selectHiddenProgramItems } from "client/views/admin/adminSlice";
 import { EmailNotificationTrigger } from "shared/types/emailNotification";
 import { config } from "shared/config";
@@ -35,6 +37,9 @@ export const AdminView = (): ReactElement => {
   );
   const assignmentResponseMessage = useAppSelector(
     (state) => state.admin.assignmentResponseMessage,
+  );
+  const emailNotificationTrigger = useAppSelector(
+    (state) => state.admin.emailNotificationTrigger,
   );
 
   const dispatch = useAppDispatch();
@@ -92,6 +97,15 @@ export const AdminView = (): ReactElement => {
   );
   const [testEmail, setTestEmail] = useState<string>("");
   const [testProgramId, setTestProgramId] = useState<string>("");
+  // Transient (not persisted): when on, test buttons for disabled triggers are blocked
+  const [respectTriggerSettings, setRespectTriggerSettings] =
+    useState<boolean>(false);
+
+  const isTestBlockedByTriggerSettings = (
+    notificationType: EmailNotificationTrigger,
+  ): boolean =>
+    respectTriggerSettings &&
+    !emailNotificationTrigger.includes(notificationType);
 
   const showMessage = ({
     value,
@@ -164,6 +178,14 @@ export const AdminView = (): ReactElement => {
     if (!testProgramId) {
       showMessage({
         value: "Please enter a program ID",
+        style: "error",
+      });
+      return;
+    }
+
+    if (isTestBlockedByTriggerSettings(notificationType)) {
+      showMessage({
+        value: `${notificationType} is disabled in email notification trigger settings`,
         style: "error",
       });
       return;
@@ -286,6 +308,9 @@ export const AdminView = (): ReactElement => {
         </Button>
       </ButtonGroup>
 
+      <h3>{t("admin.emailNotificationTriggers")}</h3>
+      <EmailNotificationTriggerSelector />
+
       <h3>Email Notification Testing</h3>
       <EmailTestForm>
         <input
@@ -302,47 +327,29 @@ export const AdminView = (): ReactElement => {
           onChange={(e) => setTestProgramId(e.target.value)}
           disabled={submitting}
         />
+        <Checkbox
+          id="respect-email-notification-trigger-settings"
+          label="Respect email notification trigger settings"
+          checked={respectTriggerSettings}
+          disabled={submitting}
+          onChange={() => setRespectTriggerSettings((previous) => !previous)}
+        />
         <ButtonGroup>
-          <Button
-            disabled={submitting || !testEmail || !testProgramId}
-            buttonStyle={ButtonStyle.PRIMARY}
-            onClick={() => {
-              // eslint-disable-next-line @typescript-eslint/no-floating-promises
-              sendTestEmail(EmailNotificationTrigger.ACCEPTED);
-            }}
-          >
-            Send ACCEPTED Test
-          </Button>
-          <Button
-            disabled={submitting || !testEmail || !testProgramId}
-            buttonStyle={ButtonStyle.PRIMARY}
-            onClick={() => {
-              // eslint-disable-next-line @typescript-eslint/no-floating-promises
-              sendTestEmail(EmailNotificationTrigger.REJECTED);
-            }}
-          >
-            Send REJECTED Test
-          </Button>
-          <Button
-            disabled={submitting || !testEmail || !testProgramId}
-            buttonStyle={ButtonStyle.PRIMARY}
-            onClick={() => {
-              // eslint-disable-next-line @typescript-eslint/no-floating-promises
-              sendTestEmail(EmailNotificationTrigger.PROGRAM_ITEM_CANCELLED);
-            }}
-          >
-            Send CANCELLED Test
-          </Button>
-          <Button
-            disabled={submitting || !testEmail || !testProgramId}
-            buttonStyle={ButtonStyle.PRIMARY}
-            onClick={() => {
-              // eslint-disable-next-line @typescript-eslint/no-floating-promises
-              sendTestEmail(EmailNotificationTrigger.PROGRAM_ITEM_DELETED);
-            }}
-          >
-            Send DELETED Test
-          </Button>
+          {Object.entries(EmailNotificationTrigger).map(
+            ([name, notificationType]) => (
+              <Button
+                key={notificationType}
+                disabled={submitting || !testEmail || !testProgramId}
+                buttonStyle={ButtonStyle.PRIMARY}
+                onClick={() => {
+                  // eslint-disable-next-line @typescript-eslint/no-floating-promises
+                  sendTestEmail(notificationType);
+                }}
+              >
+                Send {name} Test
+              </Button>
+            ),
+          )}
         </ButtonGroup>
       </EmailTestForm>
     </div>

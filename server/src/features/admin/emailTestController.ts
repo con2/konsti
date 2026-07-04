@@ -6,6 +6,9 @@ import {
   getAcceptedEmailTemplate,
   getProgramItemCancelledEmailTemplate,
   getProgramItemDeletedEmailTemplate,
+  getProgramItemNoKonstiSignupEmailTemplate,
+  getProgramItemNoLotteryEmailTemplate,
+  getProgramItemTimeChangedEmailTemplate,
   getRejectedEmailTemplate,
 } from "server/features/notifications/senderCommon";
 import { EmailSender } from "server/features/notifications/email";
@@ -89,6 +92,45 @@ export const postEmailTest = async (
         };
         message = buildEmail(
           getProgramItemDeletedEmailTemplate(mockNotification),
+          email,
+          fromAddress,
+        );
+        break;
+      }
+      case EmailNotificationTrigger.PROGRAM_ITEM_NO_KONSTI_SIGNUP_ANYMORE: {
+        const mockNotification: NotificationTask = {
+          ...baseMockNotification,
+          type: NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_NO_KONSTI_SIGNUP_ANYMORE,
+          programItemTitle: programTitle,
+        };
+        message = buildEmail(
+          getProgramItemNoKonstiSignupEmailTemplate(mockNotification),
+          email,
+          fromAddress,
+        );
+        break;
+      }
+      case EmailNotificationTrigger.PROGRAM_ITEM_NO_LOTTERY_ANYMORE: {
+        const mockNotification: NotificationTask = {
+          ...baseMockNotification,
+          type: NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_NO_LOTTERY_ANYMORE,
+          programItemTitle: programTitle,
+        };
+        message = buildEmail(
+          getProgramItemNoLotteryEmailTemplate(mockNotification),
+          email,
+          fromAddress,
+        );
+        break;
+      }
+      case EmailNotificationTrigger.PROGRAM_ITEM_TIME_CHANGED: {
+        const mockNotification: NotificationTask = {
+          ...baseMockNotification,
+          type: NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_TIME_CHANGED,
+          programItemTitle: programTitle,
+        };
+        message = buildEmail(
+          getProgramItemTimeChangedEmailTemplate(mockNotification),
           email,
           fromAddress,
         );
