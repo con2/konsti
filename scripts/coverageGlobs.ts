@@ -18,6 +18,9 @@ export const coverageExclude = [
   "client/src/test/**",
   "server/src/test/**",
   "server/src/features/statistics/**",
+  // Archived event configs are data-as-code: their only consumer is the
+  // statistics feature excluded above, so they can never gain coverage
+  "shared/config/past-events/**",
   "shared/tests/**",
   "shared/setupTests.ts",
 ];

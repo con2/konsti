@@ -206,13 +206,26 @@ export const AllProgramItemsList = ({
   // Remember the scroll offset and row measurements on unmount so the exact
   // position can be restored on return (e.g. via the back button). Runs as a
   // layout-effect cleanup to capture the position before the next route
-  // resets the window scroll. Reads the virtualizer's last observed offset
-  // instead of window.scrollY, which WebKit may already have clamped against
-  // the shrinking document during the unmount commit
+  // resets the window scroll. Neither direct offset source is reliable here
+  // on WebKit: window.scrollY has already been pulled down by scroll
+  // anchoring when the commit removed content above the list (and may be
+  // clamped against the shrinking document), and the virtualizer's last
+  // observed offset misses its own row-measurement compensation scroll while
+  // the scroll event for it is still undelivered (WebKit dispatches scroll
+  // events for programmatic scrolls asynchronously — under load only after
+  // the navigation). The virtualizer tracks that undelivered compensation in
+  // scrollAdjustments (cleared once the event arrives), so its intended
+  // offset is scrollOffset + scrollAdjustments. The field is private, so
+  // read it defensively — if it disappears in an upgrade, only the
+  // undelivered-event case regresses
   useLayoutEffect(() => {
     return () => {
+      const pendingAdjustments =
+        (virtualizer as unknown as { scrollAdjustments?: number })
+          .scrollAdjustments ?? 0;
       savedScrollState = {
-        offset: virtualizer.scrollOffset ?? window.scrollY,
+        offset:
+          (virtualizer.scrollOffset ?? window.scrollY) + pendingAdjustments,
         measurementsCache: virtualizer.takeSnapshot(),
       };
     };
