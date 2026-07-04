@@ -9,10 +9,11 @@ import { TertiaryButton } from "client/components/TertiaryButton";
 interface Props {
   id?: string;
   options: Option[];
-  selectedValues: string[];
+  selectedValues: readonly string[];
   onToggle: (value: string) => void;
   onClear: () => void;
   placeholder: string;
+  testId?: string;
   className?: string;
 }
 
@@ -23,6 +24,7 @@ export const MultiSelectDropdown = ({
   onToggle,
   onClear,
   placeholder,
+  testId,
   className,
 }: Props): ReactElement => {
   const { t } = useTranslation();
@@ -70,13 +72,15 @@ export const MultiSelectDropdown = ({
       {/* Pills hold their own remove buttons, so the dropdown toggle is a
           sibling button instead of wrapping the whole control (nested buttons
           are invalid HTML) */}
-      <Control data-testid="tag-filter">
+      <Control data-testid={testId}>
         {selectedOptions.map((option) => (
           <TagPill key={option.value}>
             {option.title}
             <RemoveButton
               type="button"
-              aria-label={t("iconAltText.removeTag", { TAG: option.title })}
+              aria-label={t("iconAltText.removeSelection", {
+                SELECTION: option.title,
+              })}
               onClick={() => {
                 onToggle(option.value);
               }}
@@ -137,9 +141,6 @@ const Control = styled.div`
   align-items: center;
   gap: 4px;
   box-sizing: border-box;
-
-  /* Keep in sync with the program type dropdown next to this in
-     SearchAndFilterCard so the two filter controls line up */
   min-height: 38px;
   border: 1px solid ${(props) => props.theme.borderInactive};
   border-radius: 6px;
@@ -191,9 +192,6 @@ const Placeholder = styled.span`
 
 const CaretIcon = styled(FontAwesomeIcon)`
   margin: 0 0 0 auto;
-
-  /* Keep in sync with the chevron background drawn on the program type
-     select in SearchAndFilterCard */
   font-size: 12px;
 `;
 

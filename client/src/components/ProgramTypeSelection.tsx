@@ -1,11 +1,11 @@
-import { ChangeEvent, ReactElement } from "react";
+import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { ProgramType } from "shared/types/models/programItem";
-import { setActiveProgramType } from "client/views/admin/adminSlice";
-import { Dropdown } from "client/components/Dropdown";
+import { setActiveProgramTypes } from "client/views/admin/adminSlice";
+import { MultiSelectDropdown } from "client/components/MultiSelectDropdown";
 import { saveSession } from "client/utils/localStorage";
-import { getProgramTypeSelectOptions } from "client/utils/getProgramTypeSelectOptions";
+import { config } from "shared/config";
 
 interface Props {
   id: string;
@@ -19,30 +19,40 @@ export const ProgramTypeSelection = ({
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
-  const activeProgramType = useAppSelector(
-    (state) => state.admin.activeProgramType,
+  const activeProgramTypes = useAppSelector(
+    (state) => state.admin.activeProgramTypes,
   );
 
-  const programTypes = getProgramTypeSelectOptions();
-
-  const dropdownItems = programTypes.map((programType) => ({
+  const options = config.event().activeProgramTypes.map((programType) => ({
     value: programType,
     title: t(`programTypeSelection.${programType}`),
   }));
 
+  const setProgramTypes = (programTypes: readonly ProgramType[]): void => {
+    dispatch(setActiveProgramTypes(programTypes));
+    saveSession({
+      admin: { activeProgramTypes: programTypes },
+    });
+  };
+
   return (
-    <Dropdown
-      options={dropdownItems}
-      selectedValue={activeProgramType}
-      onChange={(event: ChangeEvent<HTMLSelectElement>) => {
-        const programType = event.target.value as ProgramType;
-        dispatch(setActiveProgramType(programType));
-        saveSession({
-          admin: { activeProgramType: programType },
-        });
-      }}
-      loading={false}
+    <MultiSelectDropdown
       id={id}
+      options={options}
+      selectedValues={activeProgramTypes}
+      onToggle={(value) => {
+        const programType = value as ProgramType;
+        setProgramTypes(
+          activeProgramTypes.includes(programType)
+            ? activeProgramTypes.filter((selected) => selected !== programType)
+            : [...activeProgramTypes, programType],
+        );
+      }}
+      onClear={() => {
+        setProgramTypes([]);
+      }}
+      placeholder={t("programTypeSelection.all")}
+      testId="program-type-filter"
       className={className}
     />
   );

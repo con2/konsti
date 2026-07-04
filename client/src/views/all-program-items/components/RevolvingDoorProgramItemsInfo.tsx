@@ -9,6 +9,7 @@ import { useAppSelector } from "client/utils/hooks";
 import {
   selectActiveProgramItems,
   selectHiddenProgramItems,
+  selectProgramTypeForTexts,
 } from "client/views/admin/adminSlice";
 import { AppRoute } from "client/app/AppRoutes";
 import { InfoText } from "client/components/InfoText";
@@ -18,9 +19,7 @@ export const RevolvingDoorProgramItemsInfo = (): ReactElement => {
 
   const activeProgramItems = useAppSelector(selectActiveProgramItems);
   const hiddenProgramItems = useAppSelector(selectHiddenProgramItems);
-  const activeProgramType = useAppSelector(
-    (state) => state.admin.activeProgramType,
-  );
+  const programTypeForTexts = useAppSelector(selectProgramTypeForTexts);
 
   const hiddenProgramItemsIds = new Set(
     hiddenProgramItems.map((p) => p.programItemId),
@@ -43,8 +42,8 @@ export const RevolvingDoorProgramItemsInfo = (): ReactElement => {
     <Container>
       <InfoText>
         {t("revolvingDoorInstruction", {
-          PROGRAM_TYPE: t(`programTypeIllative.${activeProgramType}`),
-          PROGRAM_TYPE2: t(`programTypeInessive.${activeProgramType}`),
+          PROGRAM_TYPE: t(`programTypeIllative.${programTypeForTexts}`),
+          PROGRAM_TYPE2: t(`programTypeInessive.${programTypeForTexts}`),
         })}
       </InfoText>
       {/* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */}
@@ -52,14 +51,16 @@ export const RevolvingDoorProgramItemsInfo = (): ReactElement => {
       runningRevolvingDoorProgramItems.length === 0 ? (
         <NoProgramItemsInfoText>
           {t("noRunningRevolvingDoorProgramItems", {
-            PROGRAM_TYPE: t(`programTypePartitivePlural.${activeProgramType}`),
+            PROGRAM_TYPE: t(
+              `programTypePartitivePlural.${programTypeForTexts}`,
+            ),
           })}
         </NoProgramItemsInfoText>
       ) : (
         <div>
           <h3>
             {t("currentlyRunningRevolvingDoor", {
-              PROGRAM_TYPE: t(`programTypePlural.${activeProgramType}`),
+              PROGRAM_TYPE: t(`programTypePlural.${programTypeForTexts}`),
             })}
           </h3>
           {runningRevolvingDoorProgramItems.map((programItem) => (

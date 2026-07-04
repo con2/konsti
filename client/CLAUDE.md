@@ -90,6 +90,6 @@ Vitest with the jsdom environment; setup in `client/src/test/setupTests.ts` (ini
 
 - **Forms:** react-hook-form (`useForm`, `register`, `handleSubmit`); validation messages come from i18next keys.
 - **Lazy loading:** `utils/lazyWithRetry.ts` wraps `React.lazy` to retry failed dynamic imports.
-- **Local/session storage:** zod-validated in `utils/localStorage.ts` / `utils/sessionStorage.ts`; session state (incl. JWT) lives under the `state` key.
+- **Local/session storage:** zod-validated in `utils/localStorage.ts` / `utils/sessionStorage.ts`; session state (incl. JWT) lives under the `state` key. Browsers keep this data across deploys and events, so a schema change must tolerate values written by older Konsti versions: make the failing subtree degrade instead of rejecting the whole value (localStorage uses zod `.catch(undefined)` on the saved filter; the sessionStorage getters fall back to a default and remove the bad key). In localStorage the JWT shares the `state` object with saved preferences — a strict parse failure there clears the session and logs the user out, so never let a stale preference shape do that.
 - **Dev tooling:** axe-core (a11y) and why-did-you-render run in dev when enabled in client config.
 - **User-group checks:** `utils/checkUserGroup.ts` (`isUser`/`isAdmin`/`isAdminOrHelper`) gate views and UI.

@@ -9,6 +9,7 @@ import { getWeekdayAndTime } from "shared/utils/timeFormatter";
 import { ControlledInput } from "client/components/ControlledInput";
 import { MULTIPLE_WHITESPACES_REGEX } from "client/views/all-program-items/AllProgramItemsView";
 import { AppRoute } from "client/app/AppRoutes";
+import { selectProgramTypeForTexts } from "client/views/admin/adminSlice";
 
 export const PrivateSignupMessages = (): ReactElement => {
   const { t } = useTranslation();
@@ -25,9 +26,7 @@ export const PrivateSignupMessages = (): ReactElement => {
     (state) => state.admin.signupQuestions,
   );
   const signupMessages = useAppSelector((state) => state.admin.signupMessages);
-  const activeProgramType = useAppSelector(
-    (state) => state.admin.activeProgramType,
-  );
+  const programTypeForTexts = useAppSelector(selectProgramTypeForTexts);
 
   const privateSignupQuestions = signupQuestions.filter(
     (signupQuestion) => signupQuestion.private,
@@ -100,7 +99,7 @@ export const PrivateSignupMessages = (): ReactElement => {
         value={searchTerm}
         onChange={(event) => setSearchTerm(event.target.value)}
         placeholder={t("findTitleOrUsername", {
-          PROGRAM_TYPE: t(`programTypeGenetive.${activeProgramType}`),
+          PROGRAM_TYPE: t(`programTypeGenetive.${programTypeForTexts}`),
         })}
         resetValue={() => setSearchTerm("")}
       />
