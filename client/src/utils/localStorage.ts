@@ -6,8 +6,7 @@ import { StringToJsonSchema } from "client/utils/zodUtils";
 import { ActiveProgramType } from "shared/config/clientConfigTypes";
 import { getProgramTypeSelectOptions } from "client/utils/getProgramTypeSelectOptions";
 import { Locale } from "shared/types/locale";
-
-const localStorageStateKey = "state";
+import { localStorageStateKey } from "shared/constants/browserStorage";
 
 const isActive = (programType: ActiveProgramType): boolean =>
   getProgramTypeSelectOptions().includes(programType);
@@ -15,16 +14,11 @@ const isActive = (programType: ActiveProgramType): boolean =>
 const SessionSchema = z
   .object({
     login: z.object({ jwt: z.string() }).optional(),
-    // An invalid saved filter (e.g. an outdated shape from a previous Konsti
-    // version, or a program type that is no longer active) only drops the
-    // filter instead of failing the whole parse, which would clear the
-    // session and log the user out
     admin: z
       .object({
         activeProgramTypes: z.array(z.enum(ProgramType).refine(isActive)),
       })
-      .optional()
-      .catch(undefined),
+      .optional(),
   })
   .strict();
 

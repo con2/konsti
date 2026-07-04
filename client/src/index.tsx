@@ -18,7 +18,9 @@ import { store } from "client/utils/store";
 import "client/utils/i18n";
 import { initializeDayjs } from "shared/utils/initializeDayjs";
 import { lazyWithRetry } from "client/utils/lazyWithRetry";
+import { resetStaleEventStorage } from "client/utils/resetStaleEventStorage";
 
+resetStaleEventStorage();
 initializeDayjs();
 setLocale(getLocalStorageLocale());
 

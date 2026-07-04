@@ -4,8 +4,8 @@ import styled from "styled-components";
 import { z } from "zod";
 import { useAppSelector } from "client/utils/hooks";
 import { Button, ButtonStyle } from "./Button";
-import { config } from "shared/config";
 import { HighlightStyle, RaisedCard } from "client/components/RaisedCard";
+import { browserStoragePrefix } from "shared/constants/browserStorage";
 
 const firstLoginValue = "firstLogin";
 const FirstLoginValueSchema = z.literal(firstLoginValue);
@@ -35,9 +35,7 @@ export const FirstLogin = (): ReactElement | null => {
       return;
     }
 
-    const firstLoginKey = `${config.event().eventName}-${
-      config.event().eventYear
-    }-${username}`;
+    const firstLoginKey = `${browserStoragePrefix}-firstLogin-${username}`;
     const firstLogin = getFirstLoginState(firstLoginKey);
 
     if (firstLogin === null) {

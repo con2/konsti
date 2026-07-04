@@ -1,5 +1,6 @@
 import { expect, APIRequestContext, Page } from "@playwright/test";
 import { ApiDevEndpoint, ApiEndpoint } from "shared/constants/apiEndpoints";
+import { localStorageStateKey } from "shared/constants/browserStorage";
 import {
   PopulateDbOptions,
   PostAddSerialsResponse,
@@ -101,13 +102,13 @@ export const login = async (
   // a spec drives the login form. The marker survives logout because
   // clearSession() only removes the "state" key
   await page.addInitScript(
-    ({ jwt, marker }) => {
+    ({ jwt, marker, stateKey }) => {
       if (localStorage.getItem(marker)) {
         return;
       }
       localStorage.setItem(marker, "applied");
       localStorage.setItem(
-        "state",
+        stateKey,
         JSON.stringify({
           login: {
             jwt,
@@ -115,7 +116,11 @@ export const login = async (
         }),
       );
     },
-    { jwt: loginResponse.jwt, marker: `playwright-login-${loginCounter}` },
+    {
+      jwt: loginResponse.jwt,
+      marker: `playwright-login-${loginCounter}`,
+      stateKey: localStorageStateKey,
+    },
   );
 };
 
