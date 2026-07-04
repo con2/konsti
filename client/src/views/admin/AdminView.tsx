@@ -335,46 +335,21 @@ export const AdminView = (): ReactElement => {
           onChange={() => setRespectTriggerSettings((previous) => !previous)}
         />
         <ButtonGroup>
-          <Button
-            disabled={submitting || !testEmail || !testProgramId}
-            buttonStyle={ButtonStyle.PRIMARY}
-            onClick={() => {
-              // eslint-disable-next-line @typescript-eslint/no-floating-promises
-              sendTestEmail(EmailNotificationTrigger.ACCEPTED);
-            }}
-          >
-            Send ACCEPTED Test
-          </Button>
-          <Button
-            disabled={submitting || !testEmail || !testProgramId}
-            buttonStyle={ButtonStyle.PRIMARY}
-            onClick={() => {
-              // eslint-disable-next-line @typescript-eslint/no-floating-promises
-              sendTestEmail(EmailNotificationTrigger.REJECTED);
-            }}
-          >
-            Send REJECTED Test
-          </Button>
-          <Button
-            disabled={submitting || !testEmail || !testProgramId}
-            buttonStyle={ButtonStyle.PRIMARY}
-            onClick={() => {
-              // eslint-disable-next-line @typescript-eslint/no-floating-promises
-              sendTestEmail(EmailNotificationTrigger.PROGRAM_ITEM_CANCELLED);
-            }}
-          >
-            Send CANCELLED Test
-          </Button>
-          <Button
-            disabled={submitting || !testEmail || !testProgramId}
-            buttonStyle={ButtonStyle.PRIMARY}
-            onClick={() => {
-              // eslint-disable-next-line @typescript-eslint/no-floating-promises
-              sendTestEmail(EmailNotificationTrigger.PROGRAM_ITEM_DELETED);
-            }}
-          >
-            Send DELETED Test
-          </Button>
+          {Object.entries(EmailNotificationTrigger).map(
+            ([name, notificationType]) => (
+              <Button
+                key={notificationType}
+                disabled={submitting || !testEmail || !testProgramId}
+                buttonStyle={ButtonStyle.PRIMARY}
+                onClick={() => {
+                  // eslint-disable-next-line @typescript-eslint/no-floating-promises
+                  sendTestEmail(notificationType);
+                }}
+              >
+                Send {name} Test
+              </Button>
+            ),
+          )}
         </ButtonGroup>
       </EmailTestForm>
     </div>
