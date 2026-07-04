@@ -15,6 +15,13 @@ export const getProgramItemStartTime = (programItem: ProgramItem): string => {
   return parentStartTime ?? programItem.startTime;
 };
 
+// Open the whole batch at a fixed hour the previous evening. startOf("day") zeroes the
+// minutes/seconds so an item starting at e.g. 09:15 opens at 22:00, not 22:15
+const openAtFixedHourPreviousEvening = (
+  timezoneStartTime: Dayjs,
+  hour: number,
+): Dayjs => timezoneStartTime.subtract(1, "day").startOf("day").hour(hour);
+
 export const getLotterySignupStartTime = (programItem: ProgramItem): Dayjs => {
   const { eventStartTime, preSignupStart, fixedLotterySignupTime } =
     config.event();
@@ -34,7 +41,7 @@ export const getLotterySignupStartTime = (programItem: ProgramItem): Dayjs => {
   const startTimeIsTooEarly = timezoneStartTime.hour() <= 6;
 
   if (startTimeIsTooEarly) {
-    return timezoneStartTime.subtract(1, "day").startOf("day").hour(22);
+    return openAtFixedHourPreviousEvening(timezoneStartTime, 22);
   }
 
   return timezoneStartTime;
@@ -64,9 +71,7 @@ export const getRollingDirectSignupStartTime = (
     const timezoneStartTime = dayjs(programItem.startTime).tz(TIMEZONE);
     const startTimeIsTooEarly = timezoneStartTime.hour() < 12;
     if (startTimeIsTooEarly) {
-      // Open at 18:00 sharp the previous evening; startOf("day") zeroes minutes/seconds so an
-      // item starting at e.g. 11:15 doesn't open at 18:15
-      return timezoneStartTime.subtract(1, "day").startOf("day").hour(18);
+      return openAtFixedHourPreviousEvening(timezoneStartTime, 18);
     }
   }
 
