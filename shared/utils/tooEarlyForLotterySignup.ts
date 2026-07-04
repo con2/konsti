@@ -1,13 +1,13 @@
 import dayjs from "dayjs";
 import { config } from "shared/config";
 import { ProgramItem } from "shared/types/models/programItem";
+import { getProgramItemStartTime } from "shared/utils/signupTimes";
 
 export const tooEarlyForLotterySignup = (programItem: ProgramItem): boolean => {
-  const { eventStartTime, startTimesByParentIds } = config.event();
+  const { eventStartTime } = config.event();
 
   // The lottery window is driven by the parent-resolved start time, so use it here too
-  const startTime =
-    startTimesByParentIds.get(programItem.parentId) ?? programItem.startTime;
+  const startTime = getProgramItemStartTime(programItem);
 
   // Return DIRECT for three first hours of event because there is no time for lottery signup
   // For example, if event starts at 15:00 and 'preSignupStart' is 4h and 'directSignupPhaseStart' is 2h
