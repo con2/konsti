@@ -18,6 +18,7 @@ import {
 } from "server/test/mock-data/mockUser";
 import {
   delDirectSignup,
+  delDirectSignups,
   findDirectSignups,
   findDirectSignupsByProgramItemIds,
   findDirectSignupsByStartTime,
@@ -140,6 +141,36 @@ test("should not add multiple duplicate signups for same user", async () => {
   expect(signupsAfterSave).toHaveLength(1);
   expect(signupsAfterSave[0].count).toEqual(1);
   expect(signupsAfterSave[0].userSignups).toHaveLength(1);
+});
+
+test("should remove several users' signups in one delDirectSignups call", async () => {
+  await saveUser(mockUser);
+  await saveUser(mockUser2);
+  await saveProgramItems([{ ...testProgramItem, maxAttendance: 5 }]);
+
+  await saveDirectSignup(mockPostDirectSignupRequest);
+  await saveDirectSignup({
+    ...mockPostDirectSignupRequest,
+    username: mockUser2.username,
+  });
+
+  unsafelyUnwrap(
+    await delDirectSignups([
+      {
+        username: mockUser.username,
+        directSignupProgramItemId: testProgramItem.programItemId,
+      },
+      {
+        username: mockUser2.username,
+        directSignupProgramItemId: testProgramItem.programItemId,
+      },
+    ]),
+  );
+
+  const signupsAfterDelete = unsafelyUnwrap(await findDirectSignups());
+  expect(signupsAfterDelete).toHaveLength(1);
+  expect(signupsAfterDelete[0].userSignups).toHaveLength(0);
+  expect(signupsAfterDelete[0].count).toEqual(0);
 });
 
 test("should not delete multiple times if delete called multiple times", async () => {

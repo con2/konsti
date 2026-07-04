@@ -450,6 +450,40 @@ export const delDirectSignup = async ({
   }
 };
 
+// Remove several users' direct signups in a single bulk write instead of one round-trip each
+export const delDirectSignups = async (
+  signups: readonly DelDirectSignupParams[],
+): Promise<Result<void, MongoDbError>> => {
+  if (signups.length === 0) {
+    return makeSuccessResult();
+  }
+
+  try {
+    await SignupModel.bulkWrite(
+      signups.map(({ directSignupProgramItemId, username }) => ({
+        updateOne: {
+          filter: {
+            programItemId: directSignupProgramItemId,
+            "userSignups.username": username,
+          },
+          update: {
+            $pull: { userSignups: { username } },
+            $inc: { count: -1 },
+          },
+        },
+      })),
+    );
+
+    logger.info(`MongoDB: Removed ${signups.length} direct signups`);
+    return makeSuccessResult();
+  } catch (error) {
+    logger.error(
+      new Error("MongoDB: Error deleting direct signups", { cause: error }),
+    );
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+  }
+};
+
 export const delDirectSignupDocumentsByProgramItemIds = async (
   programItemIds: string[],
 ): Promise<Result<void, MongoDbError>> => {
