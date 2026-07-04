@@ -42,23 +42,31 @@ const openSeededProgramList = async (
 };
 
 // Scroll the list down and wait for the position to settle: measuring the
-// newly rendered rows makes the virtualizer adjust the offset once (the real
-// row sizes replace the estimates). Returns the settled scroll offset
+// newly rendered rows makes the virtualizer replace the estimated row sizes
+// (growing the document) and compensate the offset for rows that grew above
+// the viewport. Polling scrollY alone can declare "settled" between those two
+// steps, so require the document height to hold still too. Returns the
+// settled scroll offset
 const scrollDownAndSettle = async (page: Page): Promise<number> => {
   await page.evaluate(() => {
     window.scrollTo(0, 4000);
   });
-  let settledScroll = -1;
+  let previous = { scrollY: -1, scrollHeight: -1 };
   await expect
     .poll(async () => {
-      const current = await page.evaluate(() => window.scrollY);
-      const settled = current === settledScroll;
-      settledScroll = current;
+      const current = await page.evaluate(() => ({
+        scrollY: window.scrollY,
+        scrollHeight: document.body.scrollHeight,
+      }));
+      const settled =
+        current.scrollY === previous.scrollY &&
+        current.scrollHeight === previous.scrollHeight;
+      previous = current;
       return settled;
     })
     .toBe(true);
-  expect(settledScroll).toBeGreaterThan(1000);
-  return settledScroll;
+  expect(previous.scrollY).toBeGreaterThan(1000);
+  return previous.scrollY;
 };
 
 test("Opening a program item resets scroll, and returning restores the list position", async ({
@@ -70,7 +78,7 @@ test("Opening a program item resets scroll, and returning restores the list posi
   // Wait for the list to settle with a card mounted within the viewport (below
   // the sticky header area). The window spans the full viewport height so it
   // can't fall between two tall cards
-  const scrollBefore = await scrollDownAndSettle(page);
+  await scrollDownAndSettle(page);
   await page.waitForFunction(() =>
     Array.from(
       document.querySelectorAll('[data-testid="program-item-container"]'),
@@ -81,8 +89,9 @@ test("Opening a program item resets scroll, and returning restores the list posi
   );
 
   // Pick the bottom-most fully visible card — the one that falls below the
-  // fold if the restored position is off by even a partial row
-  const { href, cardTopBefore } = await page.evaluate(() => {
+  // fold if the restored position is off by even a partial row. Read the
+  // scroll offset in the same evaluate so both are from the same layout pass
+  const { href, cardTopBefore, scrollBefore } = await page.evaluate(() => {
     const visibleCards = Array.from(
       document.querySelectorAll('[data-testid="program-item-container"]'),
       (card) => ({ card, top: card.getBoundingClientRect().top }),
@@ -91,7 +100,11 @@ test("Opening a program item resets scroll, and returning restores the list posi
       .toSorted((a, b) => a.top - b.top);
     const chosen = visibleCards.at(-1);
     const link = chosen?.card.querySelector('a[href*="/program/item/"]');
-    return { href: link?.getAttribute("href"), cardTopBefore: chosen?.top };
+    return {
+      href: link?.getAttribute("href"),
+      cardTopBefore: chosen?.top,
+      scrollBefore: window.scrollY,
+    };
   });
   expect(href).toBeTruthy();
   expect(cardTopBefore).toBeTruthy();

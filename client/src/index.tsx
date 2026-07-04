@@ -22,6 +22,12 @@ import { lazyWithRetry } from "client/utils/lazyWithRetry";
 initializeDayjs();
 setLocale(getLocalStorageLocale());
 
+// The app manages scroll itself on navigation (views reset to the top on
+// mount, the program list restores its own saved position), so disable the
+// browser's history scroll restoration — WebKit applies it asynchronously on
+// back navigation and overrides the app's restore with a stale offset
+history.scrollRestoration = "manual";
+
 // Root component
 const App = lazyWithRetry(async () => await import("client/app/App"));
 
