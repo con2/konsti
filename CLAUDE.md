@@ -30,6 +30,10 @@ Yarn 4 workspaces — only `client` and `server` are Yarn workspaces; `shared` a
 
 - Don't use "FCFS" as shorthand for "first-come-first-served" — write it out in full.
 
+## Git Commits
+
+- Don't add a `Co-Authored-By: Claude ...` trailer (or any AI co-author line) to commit messages — keep the message plain, ending at the body.
+
 ## Common Commands
 
 ```bash

@@ -2,8 +2,12 @@ import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router";
 import { ReactElement, useState } from "react";
-import { useAppDispatch } from "client/utils/hooks";
+import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { LotterySignupWithProgramItem } from "client/views/my-program-items/myProgramItemsSlice";
+import {
+  canSignToProgramItems,
+  getIsInGroup,
+} from "client/views/group/groupUtils";
 import {
   DeleteLotterySignupErrorMessage,
   submitDeleteLotterySignup,
@@ -28,6 +32,15 @@ export const LotterySignupItem = ({ lotterySignup }: Props): ReactElement => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+
+  const isGroupCreator = useAppSelector((state) => state.group.isGroupCreator);
+  const groupCode = useAppSelector((state) => state.group.groupCode);
+  // A group member sees the creator's signups but must not cancel them
+  const canCancel = canSignToProgramItems(
+    getIsInGroup(groupCode),
+    isGroupCreator,
+  );
+
   const [loading, setLoading] = useState(false);
   const [cancelSignupFormOpen, setCancelSignupFormOpen] = useState(false);
   const [serverError, setServerError] =
@@ -82,16 +95,18 @@ export const LotterySignupItem = ({ lotterySignup }: Props): ReactElement => {
             >
               {t("button.showInfo")}
             </TertiaryButton>
-            <TertiaryButton
-              icon="calendar-xmark"
-              onClick={() => setCancelSignupFormOpen(true)}
-            >
-              {t("button.cancelSignup")}
-            </TertiaryButton>
+            {canCancel && (
+              <TertiaryButton
+                icon="calendar-xmark"
+                onClick={() => setCancelSignupFormOpen(true)}
+              >
+                {t("button.cancelSignup")}
+              </TertiaryButton>
+            )}
           </StyledButtons>
         )}
 
-        {cancelSignupFormOpen && (
+        {canCancel && cancelSignupFormOpen && (
           <StyledCancelSignupFormContainer>
             <CancelSignupForm
               onCancelForm={() => {
