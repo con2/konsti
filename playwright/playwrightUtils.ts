@@ -1,6 +1,7 @@
 import { expect, APIRequestContext, Page } from "@playwright/test";
 import { ApiDevEndpoint, ApiEndpoint } from "shared/constants/apiEndpoints";
 import { localStorageStateKey } from "shared/constants/browserStorage";
+import { resolvePortOffset } from "scripts/portOffset";
 import {
   PopulateDbOptions,
   PostAddSerialsResponse,
@@ -12,10 +13,10 @@ import { PostDirectSignupRequest } from "shared/types/api/myProgramItems";
 import { ProgramItem } from "shared/types/models/programItem";
 import { Settings } from "shared/types/models/settings";
 
-// PORT_OFFSET shifts the server/API port so setup calls hit the same local
-// instance the browser targets (one per git worktree). PLAYWRIGHT_BASEURL still
-// wins when set (the Docker run serves client and API from http://server:5000)
-const portOffset = Number(process.env.PORT_OFFSET) || 0;
+// The per-worktree port offset shifts the server/API port so setup calls hit
+// the same local instance the browser targets. PLAYWRIGHT_BASEURL still wins
+// when set (the Docker run serves client and API from http://server:5000)
+const portOffset = resolvePortOffset();
 const baseUrl =
   process.env.PLAYWRIGHT_BASEURL ?? `http://localhost:${5000 + portOffset}`;
 

@@ -14,8 +14,14 @@
       "client/*": ["./client/src/*"],
       "server/*": ["./server/src/*"],
       "shared/*": ["./shared/*"],
-      "playwright/*": ["./playwright/*"]
+      "playwright/*": ["./playwright/*"],
+      "scripts/*": ["./scripts/*"]
     }
   },
-  "include": ["*.ts", "playwright/**/*.ts", ".claude/hooks/**/*.ts"]
+  "include": [
+    "*.ts",
+    "playwright/**/*.ts",
+    "scripts/**/*.ts",
+    ".claude/hooks/**/*.ts"
+  ]
 }

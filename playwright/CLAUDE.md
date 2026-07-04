@@ -40,15 +40,15 @@ npx playwright test --config playwright/playwright.config.ts profile logout   # 
 
 `testDir` defaults to the config file's directory, so specs under `tests/` are auto-discovered.
 
-**Worktree instances (`PORT_OFFSET`):** to run against a stack started with a `PORT_OFFSET` (see the root README — one instance per git worktree), set the same offset on the test command; it shifts both the browser `baseURL` (client `8000+offset`) and the setup-API base (server `5000+offset`):
+**Worktree instances (`PORT_OFFSET`):** each git worktree resolves its port offset automatically from the shared registry (`scripts/portOffset.ts`; see the root README). `yarn server:test`, `yarn client`, and the test command run from the same worktree all resolve the same offset, so no env variable is needed — the suite's browser `baseURL` (client `8000+offset`) and setup-API base (server `5000+offset`) match the stack automatically:
 
 ```bash
-PORT_OFFSET=1 npx playwright test --config playwright/playwright.config.ts programSearch
+npx playwright test --config playwright/playwright.config.ts programSearch
 ```
 
-Start the pieces with the same offset: `PORT_OFFSET=1 yarn server:test` and `PORT_OFFSET=1 yarn client` (Mongo is shared; each offset uses its own database name). **Verify Vite actually bound `8000+offset`** in its startup banner: if the port is taken — commonly by an orphaned dev server from a killed terminal — Vite silently increments to the next free port (`Port 8001 is in use, trying another one...`) and the suite then runs against the wrong, possibly stale instance. A stale zombie serving an old `node_modules/.vite` pre-bundle produces confusing "Invalid hook call" / duplicate-React crashes that survive cache clears and restarts, because the fixes apply to a different process than the one being tested. Kill stray listeners (`netstat -ano | findstr :8001`, then `taskkill /F /PID <pid>`) before re-running.
+An explicitly set `PORT_OFFSET` still wins over the automatic assignment (Mongo is shared; each offset uses its own database name). Vite runs with `strictPort`, so if the client port is taken — commonly by an orphaned dev server from a killed terminal — the dev server **fails to start** instead of silently drifting to another port; kill the stray listener (`netstat -ano | findstr :8001`, then `taskkill /F /PID <pid>`) and re-run.
 
-Orphans arise easily on Windows because killing the `yarn server:test` / `yarn client` wrapper shell does not kill the node children — they keep listening on the server port (5000+offset) too, not just Vite's. An orphan answers health checks, so a `curl` 200 from a port does **not** prove the freshly started instance is serving it; check the Vite banner (client) and clean both ports (`netstat -ano | findstr "5000 8000"`) before starting a stack for a test run.
+Orphans arise easily on Windows because killing the `yarn server:test` / `yarn client` wrapper shell does not kill the node children — they keep listening on the server port (5000+offset) too, not just Vite's. An orphan answers health checks, so a `curl` 200 from a port does **not** prove the freshly started instance is serving it; a stale zombie serving an old `node_modules/.vite` pre-bundle produces confusing "Invalid hook call" / duplicate-React crashes that survive cache clears and restarts, because the fixes apply to a different process than the one being tested. Clean both ports (`netstat -ano | findstr "5000 8000"`) before starting a stack for a test run.
 
 ## Config (`playwright.config.ts`)
 

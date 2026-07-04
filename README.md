@@ -47,10 +47,13 @@ In this case, access the frontend at `localhost:5000`.
 
 ### Running multiple local instances
 
-To run several copies of the app at once (for example one per git worktree)
-without port or database collisions, set `PORT_OFFSET` to a small integer before
-starting. The offset shifts every port by the same amount and picks a dedicated
-dev database:
+Several copies of the app (for example one per git worktree) can run side by
+side without port or database collisions. Each checkout gets a `PORT_OFFSET`
+automatically: the main checkout uses offset `0` (the classic ports below) and
+every linked worktree claims the smallest free slot from a registry shared by
+all worktrees (`.git/konsti-port-offsets.json` in the main checkout, resolved
+by `scripts/portOffset.ts`). Removing a worktree releases its slot. The offset shifts
+every port by the same amount and picks a dedicated dev database:
 
 | `PORT_OFFSET` | Client (Vite) | Server / API | Dev database |
 | ------------- | ------------- | ------------ | ------------ |
@@ -59,23 +62,31 @@ dev database:
 | `2`           | `8002`        | `5002`       | `konsti-2`   |
 
 ```shell
-export PORT_OFFSET=1   # set once per terminal, before the commands below
+yarn start:dev   # in a worktree this resolves to e.g. offset 1 → localhost:8001
+```
+
+The automatic offset applies consistently to the dev server and client
+(`start:dev`, `server`, `server:test`, `client`), the Playwright suite, and the
+dev database scripts (`populate-db:*`, `load-past-event-data`,
+`update-kompassi-data`), so everything started from the same worktree targets
+the same instance. The client dev server uses `strictPort`, so a port collision
+(for example an orphaned process squatting the port) fails loudly instead of
+silently drifting to the next free port.
+
+An explicitly set `PORT_OFFSET` always wins over the automatic assignment:
+
+```shell
+export PORT_OFFSET=5   # set once per terminal, before the commands below
 yarn start:dev
 ```
 
-`export` makes the offset visible to both the server and the client processes.
-To make it persistent for a worktree, add `PORT_OFFSET=1` to both
-`server/.env.development` and `client/.env.development.local` (both gitignored).
+To pin a checkout persistently, add `PORT_OFFSET=5` to both
+`server/.env.development` and `client/.env.development.local` (both
+gitignored); a shell-set variable still wins over the files.
 
 All instances share the single MongoDB container on port `27017`; they stay
-isolated because each `PORT_OFFSET` uses its own database name. Seed a specific
-instance with `PORT_OFFSET=1 yarn run populate-db:dummy`. Then open
-`localhost:8001`.
-
-The database scripts (`populate-db:*`, `load-past-event-data`,
-`update-kompassi-data`) also read `server/.env.development`, so a persistent
-`PORT_OFFSET` set there targets the right database without the shell variable.
-A `PORT_OFFSET` set in the shell always wins over the file.
+isolated because each `PORT_OFFSET` uses its own database name. Seed an
+instance by running `yarn populate-db:dummy` from its worktree.
 
 ## Tech
 
