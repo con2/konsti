@@ -6,7 +6,9 @@ import {
   storeUserPassword,
 } from "server/features/user/userService";
 import { getAuthUsername } from "server/middleware/requireAuth";
+import { getAuthorizedUserGroup } from "server/utils/authHeader";
 import { logger } from "server/utils/logger";
+import { UserGroup } from "shared/types/models/user";
 import {
   GetUserBySerialRequest,
   PostUpdateUserPasswordRequest,
@@ -29,20 +31,23 @@ export const postUserPassword = async (
   res: Response,
 ): Promise<Response> => {
   const requesterUsername = getAuthUsername(req);
+  const requesterUserGroup = getAuthorizedUserGroup(req.headers.authorization);
   const { usernameToUpdate, password } = req.body;
 
-  if (
-    requesterUsername !== usernameToUpdate &&
-    requesterUsername !== "helper" &&
-    requesterUsername !== "admin"
-  ) {
+  // Only the account owner, helpers, or admins may change a password — decided by the JWT
+  // userGroup claim, never by the requester's username
+  const isAdminOrHelper =
+    requesterUserGroup === UserGroup.ADMIN ||
+    requesterUserGroup === UserGroup.HELPER;
+
+  if (requesterUsername !== usernameToUpdate && !isAdminOrHelper) {
     return res.sendStatus(401);
   }
 
   const response = await storeUserPassword(
     usernameToUpdate,
     password,
-    requesterUsername,
+    requesterUserGroup,
   );
   return res.json(response);
 };
