@@ -20,6 +20,7 @@ import { PostLotterySignupRequest } from "shared/types/api/myProgramItems";
 import { InfoText, InfoTextVariant } from "client/components/InfoText";
 import { startLoading, stopLoading } from "client/state/loading/loadingSlice";
 import { getEntryCondition } from "client/views/program-item/programItemUtils";
+import { isSignupConfirmDisabled } from "client/views/program-item/signup/components/signupFormUtils";
 import { Checkbox } from "client/components/Checkbox";
 
 interface Props {
@@ -154,7 +155,11 @@ export const LotterySignupForm = ({
         <StyledButton
           onClick={handleSignup}
           buttonStyle={ButtonStyle.PRIMARY}
-          disabled={(entryCondition && !agreeEntryCondition) ?? loading}
+          disabled={isSignupConfirmDisabled(
+            Boolean(entryCondition),
+            agreeEntryCondition,
+            loading,
+          )}
         >
           {t("signup.confirm")}
         </StyledButton>

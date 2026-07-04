@@ -21,6 +21,7 @@ import { Checkbox } from "client/components/Checkbox";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 import { InfoText, InfoTextVariant } from "client/components/InfoText";
 import { getEntryCondition } from "client/views/program-item/programItemUtils";
+import { isSignupConfirmDisabled } from "client/views/program-item/signup/components/signupFormUtils";
 import { PostDirectSignupRequest } from "shared/types/api/myProgramItems";
 import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
 import { startLoading, stopLoading } from "client/state/loading/loadingSlice";
@@ -177,7 +178,11 @@ export const DirectSignupForm = ({
         <StyledButton
           onClick={handleSignup}
           buttonStyle={ButtonStyle.PRIMARY}
-          disabled={(entryCondition && !agreeEntryCondition) ?? loading}
+          disabled={isSignupConfirmDisabled(
+            Boolean(entryCondition),
+            agreeEntryCondition,
+            loading,
+          )}
         >
           {t("signup.confirm")}
         </StyledButton>
