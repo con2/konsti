@@ -38,8 +38,6 @@ test("is not too early once past the first three hours", () => {
 test("uses the parent-resolved start time when the item is parent-batched", () => {
   // Own start time (14:00) is within the first three hours (before 16:00), but the parent
   // start time (18:00) that actually drives the lottery is past the cutoff
-  mockEvent(
-    new Map([[testProgramItem.parentId, "2019-07-26T18:00:00.000Z"]]),
-  );
+  mockEvent(new Map([[testProgramItem.parentId, "2019-07-26T18:00:00.000Z"]]));
   expect(tooEarlyForLotterySignup(testProgramItem)).toEqual(false);
 });
