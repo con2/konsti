@@ -15,7 +15,10 @@ import { ErrorMessage } from "client/components/ErrorMessage";
 import { CancelSignupForm } from "client/views/program-item/signup/components/CancelSignupForm";
 import { getTimeNow } from "client/utils/getTimeNow";
 import { getLotterySignupStartTime } from "shared/utils/signupTimes";
-import { getIsInGroup } from "client/views/group/groupUtils";
+import {
+  canSignToProgramItems,
+  getIsInGroup,
+} from "client/views/group/groupUtils";
 import { InfoText } from "client/components/InfoText";
 import {
   DirectSignupWithProgramItem,
@@ -49,7 +52,10 @@ export const ProgramItemLotterySignup = ({
   const loading = useAppSelector((state) => state.loading);
 
   const isInGroup = getIsInGroup(groupCode);
-  const canSignToProgramItems = !isInGroup || isGroupCreator;
+  const userCanSignToProgramItems = canSignToProgramItems(
+    isInGroup,
+    isGroupCreator,
+  );
   const directSignupForSlot = directSignups.find(
     (signup) => signup.signedToStartTime === programItem.startTime,
   );
@@ -113,7 +119,7 @@ export const ProgramItemLotterySignup = ({
         <p>{t("group.signupDisabledNotCreator")}</p>
       )}
 
-      {!alreadySignedToProgramItem && canSignToProgramItems && (
+      {!alreadySignedToProgramItem && userCanSignToProgramItems && (
         <>
           {lotterySignupsForTimeslot.length >= 3 && (
             <p>{t("signup.cannotLotterySignupMoreProgramItems")}</p>
@@ -149,7 +155,7 @@ export const ProgramItemLotterySignup = ({
             })}
           </InfoText>
 
-          {canSignToProgramItems && !cancelSignupFormOpen && (
+          {userCanSignToProgramItems && !cancelSignupFormOpen && (
             <ButtonContainer>
               <StyledButton
                 onClick={() => setCancelSignupFormOpen(true)}
