@@ -286,7 +286,7 @@ const getSignupStrategyForProgramItem = (
     return ProgramItemSignupStrategy.DIRECT;
   }
 
-  if (tooEarlyForLotterySignup(programItem.startTime)) {
+  if (tooEarlyForLotterySignup(programItem)) {
     return ProgramItemSignupStrategy.DIRECT;
   }
 
