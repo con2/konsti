@@ -76,6 +76,43 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
     expect(response.status).toEqual(401);
   });
 
+  test("should not allow a regular user named 'admin' to change another user's password", async () => {
+    await saveUser(mockUser);
+
+    const requestData: PostUpdateUserPasswordRequest = {
+      usernameToUpdate: mockUser.username,
+      password: "testpass",
+    };
+
+    // Authorization must be by JWT userGroup, not by the username string — a USER-group
+    // token whose username happens to be "admin" must not gain reset rights
+    const response = await request(server)
+      .post(ApiEndpoint.USERS_PASSWORD)
+      .send(requestData)
+      .set("Authorization", `Bearer ${getJWT(UserGroup.USER, "admin")}`);
+    expect(response.status).toEqual(401);
+  });
+
+  test("should allow a helper with any username to change other user's password", async () => {
+    await saveUser(mockUser);
+
+    const requestData: PostUpdateUserPasswordRequest = {
+      usernameToUpdate: mockUser.username,
+      password: "testpass",
+    };
+
+    const response = await request(server)
+      .post(ApiEndpoint.USERS_PASSWORD)
+      .send(requestData)
+      .set(
+        "Authorization",
+        `Bearer ${getJWT(UserGroup.HELPER, "desk-volunteer")}`,
+      );
+    expect(response.status).toEqual(200);
+    const body = response.body as PostUpdateUserPasswordResult;
+    expect(body.status).toEqual("success");
+  });
+
   test("should allow helper to change other user's password", async () => {
     await saveUser(mockUser);
 

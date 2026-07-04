@@ -15,7 +15,7 @@ import {
   PostUserResponse,
 } from "shared/types/api/users";
 import { findUserDirectSignups } from "server/features/direct-signup/directSignupRepository";
-import { DirectSignup } from "shared/types/models/user";
+import { DirectSignup, UserGroup } from "shared/types/models/user";
 
 export const storeUser = async (
   username: string,
@@ -150,9 +150,13 @@ const PASSWORD_CHANGE_NOT_ALLOWED = new Set(["admin", "helper"]);
 export const storeUserPassword = async (
   username: string,
   password: string,
-  requester: string,
+  requesterUserGroup: UserGroup | null,
 ): Promise<PostUpdateUserPasswordResponse> => {
-  if (requester === "helper" && PASSWORD_CHANGE_NOT_ALLOWED.has(username)) {
+  // Helpers may reset regular users but not the admin/helper accounts; admins may reset anyone
+  if (
+    requesterUserGroup === UserGroup.HELPER &&
+    PASSWORD_CHANGE_NOT_ALLOWED.has(username)
+  ) {
     return {
       message: "Password change not allowed",
       status: "error",
