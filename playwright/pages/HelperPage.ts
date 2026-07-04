@@ -11,6 +11,12 @@ export class HelperPage extends BasePage {
     return this.page.getByPlaceholder("New password");
   }
 
+  // Email notification settings act on the logged-in user's own account, so the helper
+  // flow (managing another user) must not show them
+  get emailInput(): Locator {
+    return this.page.locator("#email");
+  }
+
   async open(): Promise<void> {
     await this.navigation.gotoHelper();
   }
@@ -20,10 +26,10 @@ export class HelperPage extends BasePage {
     await this.page.getByRole("button", { name: "Find" }).click();
   }
 
-  // Helper has two Save buttons; the password Save is the second
+  // The helper flow only manages the password, so there is a single Save button
   async changePassword(password: string): Promise<void> {
     await this.newPasswordInput.fill(password);
-    await this.page.getByRole("button", { name: "Save" }).nth(1).click();
+    await this.page.getByRole("button", { name: "Save" }).click();
   }
 
   async openSignupAnswers(): Promise<void> {

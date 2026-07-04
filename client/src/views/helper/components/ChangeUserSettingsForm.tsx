@@ -21,12 +21,16 @@ interface Props {
   usernameToUpdate: string;
   isLocalLogin: boolean;
   email: string;
+  // Email settings act on the logged-in user's own account, so only show them for own
+  // settings (Profile) — never in the helper flow where another user is being managed
+  showEmailSettings: boolean;
 }
 
 export const ChangeUserSettingsForm = ({
   usernameToUpdate,
   isLocalLogin,
   email,
+  showEmailSettings,
 }: Props): ReactElement => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
@@ -137,27 +141,29 @@ export const ChangeUserSettingsForm = ({
 
   return (
     <>
-      <>
-        <EmailNotificationField
-          enabled={emailNotificationsEnabled}
-          onEnabledChange={handleEmailNotificationChange}
-        >
-          <StyledEmailInput
-            id="email"
-            value={changeEmailInput}
-            type={"email"}
-            disabled={!emailNotificationsEnabled}
-            onChange={handleEmailChange}
-          />
-        </EmailNotificationField>
-        <ButtonWithMargin
-          onClick={submitUpdateEmail}
-          buttonStyle={ButtonStyle.PRIMARY}
-        >
-          {t("button.save")}
-        </ButtonWithMargin>
-        {emailChangeMessage}
-      </>
+      {showEmailSettings && (
+        <>
+          <EmailNotificationField
+            enabled={emailNotificationsEnabled}
+            onEnabledChange={handleEmailNotificationChange}
+          >
+            <StyledEmailInput
+              id="email"
+              value={changeEmailInput}
+              type={"email"}
+              disabled={!emailNotificationsEnabled}
+              onChange={handleEmailChange}
+            />
+          </EmailNotificationField>
+          <ButtonWithMargin
+            onClick={submitUpdateEmail}
+            buttonStyle={ButtonStyle.PRIMARY}
+          >
+            {t("button.save")}
+          </ButtonWithMargin>
+          {emailChangeMessage}
+        </>
+      )}
       {isLocalLogin ? (
         <>
           <StyledLabel>{t("passwordManagement.changePassword")}</StyledLabel>
