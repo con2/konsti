@@ -41,6 +41,17 @@ const getErrorReason = (status: number): BackendErrorType => {
   }
 };
 
+const networkErrorResponse = <T>(): ApiResponse<T> => {
+  store.dispatch(addError(t(BackendErrorType.NETWORK_ERROR)));
+
+  const error: ApiError = {
+    errorId: "unknown",
+    message: "Network error",
+    status: "error",
+  };
+  return { data: error as T };
+};
+
 const apiFetch = async <T>(
   url: string,
   method: HttpMethod,
@@ -69,21 +80,22 @@ const apiFetch = async <T>(
     });
   } catch {
     clearTimeout(timeoutId);
-    store.dispatch(addError(t(BackendErrorType.NETWORK_ERROR)));
-
-    const error: ApiError = {
-      errorId: "unknown",
-      message: "Network error",
-      status: "error",
-    };
-    return { data: error as T };
+    return networkErrorResponse<T>();
   }
 
   clearTimeout(timeoutId);
 
+  // Reading the response body can reject with AbortError if the page unloads
+  // mid-response, so json() calls need the same error handling as fetch()
+
   // Handle redirect responses (301/302 with JSON body containing location)
   if ([301, 302].includes(response.status)) {
-    const data = (await response.json()) as { location: string };
+    let data: { location: string };
+    try {
+      data = (await response.json()) as { location: string };
+    } catch {
+      return networkErrorResponse<T>();
+    }
     location.href = data.location;
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     return new Promise<ApiResponse<T>>(() => {});
@@ -111,8 +123,12 @@ const apiFetch = async <T>(
     return { data: error as T };
   }
 
-  const data = (await response.json()) as T;
-  return { data };
+  try {
+    const data = (await response.json()) as T;
+    return { data };
+  } catch {
+    return networkErrorResponse<T>();
+  }
 };
 
 type Endpoint = ApiEndpoint | ApiDevEndpoint | AuthEndpoint;
