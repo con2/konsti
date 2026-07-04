@@ -97,8 +97,6 @@ export const PasswordManagement = (): ReactElement => {
         <ChangeUserSettingsForm
           usernameToUpdate={usernameToUpdate}
           isLocalLogin={true}
-          email=""
-          showEmailSettings={false}
         />
       )}
     </div>

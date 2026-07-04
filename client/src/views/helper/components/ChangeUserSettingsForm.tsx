@@ -4,55 +4,31 @@ import styled, { css } from "styled-components";
 import { useTranslation } from "react-i18next";
 import { Button, ButtonStyle } from "client/components/Button";
 import { updateUserPassword } from "client/services/userServices";
-import { useAppDispatch } from "client/utils/hooks";
-import { submitUpdateUserEmailAddress } from "client/views/login/loginThunks";
 import {
   PASSWORD_LENGTH_MAX,
   PASSWORD_LENGTH_MIN,
 } from "shared/constants/validation";
 import { ControlledInput } from "client/components/ControlledInput";
-import {
-  EMAIL_REGEX,
-  EmailNotificationField,
-  StyledEmailInput,
-} from "client/components/EmailNotificationField";
 
 interface Props {
   usernameToUpdate: string;
   isLocalLogin: boolean;
-  email: string;
-  // Email settings act on the logged-in user's own account, so only show them for own
-  // settings (Profile) — never in the helper flow where another user is being managed
-  showEmailSettings: boolean;
 }
 
 export const ChangeUserSettingsForm = ({
   usernameToUpdate,
   isLocalLogin,
-  email,
-  showEmailSettings,
-}: Props): ReactElement => {
+}: Props): ReactElement | null => {
   const { t } = useTranslation();
-  const dispatch = useAppDispatch();
 
   const [changePasswordInput, setChangePasswordInput] = useState<string>("");
   const [passwordChangeMessage, setPasswordChangeMessage] =
     useState<ReactElement>(<Message />);
   const [passwordFieldType, setPasswordFieldType] =
     useState<string>("password");
-  const [changeEmailInput, setChangeEmailInput] = useState<string>(email);
-  const [emailChangeMessage, setEmailChangeMessage] = useState<ReactElement>(
-    <Message />,
-  );
-  const [emailNotificationsEnabled, setEmailNotificationsEnabled] =
-    useState<boolean>(email.length > 0);
 
   const handlePasswordChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setChangePasswordInput(event.target.value);
-  };
-
-  const handleEmailChange = (event: ChangeEvent<HTMLInputElement>): void => {
-    setChangeEmailInput(event.target.value);
   };
 
   const passwordLength = (value: string): string | null => {
@@ -93,40 +69,6 @@ export const ChangeUserSettingsForm = ({
     }
   };
 
-  const submitUpdateEmail = async (): Promise<void> => {
-    if (emailNotificationsEnabled && !changeEmailInput.trim()) {
-      setEmailChangeMessage(
-        <Message error={true}>{t("validation.required")}</Message>,
-      );
-      return;
-    }
-
-    const emailToSend = emailNotificationsEnabled
-      ? changeEmailInput.trim()
-      : "";
-    if (emailNotificationsEnabled && !EMAIL_REGEX.test(emailToSend)) {
-      setEmailChangeMessage(
-        <Message error={true}>{t("validation.invalidEmail")}</Message>,
-      );
-      return;
-    }
-
-    const emailErrorMessage = await dispatch(
-      submitUpdateUserEmailAddress(emailToSend),
-    );
-    if (emailErrorMessage) {
-      setEmailChangeMessage(
-        <Message error={true}>
-          {t("email.notifications.changingEmailError")}
-        </Message>,
-      );
-    } else {
-      setEmailChangeMessage(
-        <Message>{t("email.notifications.changingEmailSuccess")}</Message>,
-      );
-    }
-  };
-
   const togglePasswordVisibility = (): void => {
     if (passwordFieldType === "password") {
       setPasswordFieldType("text");
@@ -135,68 +77,42 @@ export const ChangeUserSettingsForm = ({
     }
   };
 
-  const handleEmailNotificationChange = (enabled: boolean): void => {
-    setEmailNotificationsEnabled(enabled);
-  };
+  // Password change is only available for local-login accounts (Kompassi users reset via Kompassi)
+  if (!isLocalLogin) {
+    return null;
+  }
 
   return (
     <>
-      {showEmailSettings && (
-        <>
-          <EmailNotificationField
-            enabled={emailNotificationsEnabled}
-            onEnabledChange={handleEmailNotificationChange}
-          >
-            <StyledEmailInput
-              id="email"
-              value={changeEmailInput}
-              type={"email"}
-              disabled={!emailNotificationsEnabled}
-              onChange={handleEmailChange}
-            />
-          </EmailNotificationField>
-          <ButtonWithMargin
-            onClick={submitUpdateEmail}
-            buttonStyle={ButtonStyle.PRIMARY}
-          >
-            {t("button.save")}
-          </ButtonWithMargin>
-          {emailChangeMessage}
-        </>
-      )}
-      {isLocalLogin ? (
-        <>
-          <StyledLabel>{t("passwordManagement.changePassword")}</StyledLabel>
-          <InputContainer>
-            <ControlledInput
-              type={passwordFieldType}
-              key="new-password"
-              placeholder={t("passwordManagement.newPassword")}
-              value={changePasswordInput}
-              onChange={handlePasswordChange}
-            />
+      <StyledLabel>{t("passwordManagement.changePassword")}</StyledLabel>
+      <InputContainer>
+        <ControlledInput
+          type={passwordFieldType}
+          key="new-password"
+          placeholder={t("passwordManagement.newPassword")}
+          value={changePasswordInput}
+          onChange={handlePasswordChange}
+        />
 
-            <FormFieldIcon>
-              <FontAwesomeIcon
-                icon={passwordFieldType === "password" ? "eye" : "eye-slash"}
-                onClick={togglePasswordVisibility}
-                aria-label={t(
-                  passwordFieldType === "password"
-                    ? "iconAltText.showPassword"
-                    : "iconAltText.hidePassword",
-                )}
-              />
-            </FormFieldIcon>
-          </InputContainer>
-          <ButtonWithMargin
-            onClick={submitUpdatePassword}
-            buttonStyle={ButtonStyle.PRIMARY}
-          >
-            {t("button.save")}
-          </ButtonWithMargin>
-          {passwordChangeMessage}
-        </>
-      ) : null}
+        <FormFieldIcon>
+          <FontAwesomeIcon
+            icon={passwordFieldType === "password" ? "eye" : "eye-slash"}
+            onClick={togglePasswordVisibility}
+            aria-label={t(
+              passwordFieldType === "password"
+                ? "iconAltText.showPassword"
+                : "iconAltText.hidePassword",
+            )}
+          />
+        </FormFieldIcon>
+      </InputContainer>
+      <ButtonWithMargin
+        onClick={submitUpdatePassword}
+        buttonStyle={ButtonStyle.PRIMARY}
+      >
+        {t("button.save")}
+      </ButtonWithMargin>
+      {passwordChangeMessage}
     </>
   );
 };
