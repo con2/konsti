@@ -305,6 +305,16 @@ export default defineConfig([
     },
   },
 
+  // ** Root scripts (scripts/) **
+  {
+    files: ["scripts/**/*.ts"],
+
+    rules: {
+      // Node CLI scripts: progress and report output goes to the console
+      "no-console": "off",
+    },
+  },
+
   // ** MDX support **
   {
     ...eslintPluginMdx.flat,

@@ -12,7 +12,7 @@ Run from the repo root as `yarn workspace client <script>`.
 | ---------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `start`                                                                      | Vite dev server on `http://127.0.0.1:8000` (root: `yarn client`)                                                                                                        |
 | `build:dev` / `build:staging` / `build:prod` / `build:ci` / `build:kube-dev` | Vite build for the given mode (reads the matching `.env.*`); production uses the root `yarn build-front:prod`, which builds then copies `client/build` → `server/front` |
-| `test` / `test:watch` / `test:coverage`                                      | Vitest (jsdom env)                                                                                                                                                      |
+| `test` / `test:watch`                                                        | Vitest (jsdom env); coverage runs at the root (`yarn coverage:vitest`)                                                                                                  |
 | `type-check`                                                                 | `tsc --noEmit`                                                                                                                                                          |
 | `eslint`                                                                     | ESLint for this workspace                                                                                                                                               |
 | `stylelint`                                                                  | Stylelint over the styled-components CSS-in-JS in `.ts`/`.tsx`                                                                                                          |
@@ -85,6 +85,8 @@ i18next, English + Finnish. Locale files: `client/src/locales/{en,fi}.ts` (deepl
 ## Testing
 
 Vitest with the jsdom environment; setup in `client/src/test/setupTests.ts` (initializes i18next with EN and dayjs). Coverage via Istanbul. There are few committed unit tests today — add them alongside the component/view under test.
+
+For the combined-coverage flow (`yarn coverage`, see the root CLAUDE.md), starting the dev server with `COVERAGE=true` serves istanbul-instrumented code (`vite-plugin-istanbul`) and disables the react-compiler babel plugin (its rewrites break the coverage source positions). `client/coverageCollectorPlugin.ts` then harvests the browser's `window.__coverage__` server-side: it injects a flush script into `index.html` and receives the data on a `/__coverage__` dev-server middleware, so the Playwright suite needs no coverage hooks of its own.
 
 ## Other Notes
 

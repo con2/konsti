@@ -56,6 +56,7 @@ import {
   getTestSettings,
   postTestSettings,
 } from "server/test/test-settings/testSettingsController";
+import { postWriteCoverage } from "server/test/coverage/coverageController";
 import {
   ApiDevEndpoint,
   ApiEndpoint,
@@ -313,6 +314,7 @@ if (process.env.SETTINGS === "development" || process.env.SETTINGS === "ci") {
     validateBody(PostAddProgramItemsRequestSchema),
     postAddProgramItems,
   );
+  apiRoutes.post(ApiDevEndpoint.WRITE_COVERAGE, postWriteCoverage);
 }
 
 /* Kompassi login routes */

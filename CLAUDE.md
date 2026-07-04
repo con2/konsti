@@ -14,6 +14,7 @@ See [docs/terminology.md](docs/terminology.md) for the glossary of domain terms.
 - **server/** — Express 5 backend (MongoDB/Mongoose, JWT auth, lottery assignment algorithms). See [server/CLAUDE.md](server/CLAUDE.md).
 - **shared/** — Types, constants, configs, and utilities imported by client and server (not a Yarn workspace, used as a TypeScript path). See [shared/CLAUDE.md](shared/CLAUDE.md).
 - **playwright/** — E2E tests. See [playwright/CLAUDE.md](playwright/CLAUDE.md).
+- **scripts/** — root Node scripts for the combined coverage pipeline (see Combined Code Coverage below). Run with plain `node`, so they must avoid TypeScript syntax that needs transformation (enums, path aliases).
 
 **Workspace-specific guidance lives in each directory's own `CLAUDE.md`** (loaded automatically when you work in that directory). Keep workspace-level detail there and this file to cross-cutting concerns.
 
@@ -47,6 +48,12 @@ yarn test                   # Vitest unit tests (all workspaces)
 yarn test:watch             # Watch mode
 yarn vitest run path/to/file.test.ts  # Run a single test file
 
+# Code coverage (combined vitest + Playwright report for the whole project)
+yarn coverage               # Full pipeline → coverage/report/index.html
+yarn coverage:vitest        # Unit test coverage only (all workspaces in one run)
+yarn coverage:e2e           # Playwright coverage only (extra args go to `playwright test`)
+yarn coverage:report        # Merge whatever coverage data exists into the report
+
 # Linting & formatting
 yarn lint                   # ESLint + stylelint + Prettier + knip + unused-translation-keys
 yarn eslint                 # ESLint only
@@ -76,6 +83,18 @@ Each convention runs its own MongoDB instance for the duration of the event only
 ### Rate Limiting
 
 There is **no application-level rate limiting**, by design — see [server/CLAUDE.md](server/CLAUDE.md) for the rationale (shared-NAT venue WiFi; avoiding login lockout abuse).
+
+### Combined Code Coverage
+
+`yarn coverage` builds one istanbul report for the whole project (client + server + shared) from both the vitest unit tests and the Playwright E2E suite → `coverage/report/index.html` (+ `lcov.info`). The three stages also run standalone and tolerate missing inputs:
+
+- `yarn coverage:vitest` — root vitest run; the coverage config lives in the root `vitest.config.ts` and is the only one (in projects mode vitest ignores project-level coverage settings). It enumerates every source file matching the include globs — tested or not — which makes it the **canonical structure** for the merge, and writes the json even when tests fail (`reportOnFailure`).
+- `yarn coverage:e2e` — `scripts/runE2eCoverage.ts` starts the server with `NODE_V8_COVERAGE` (flushed via the dev-only `POST /api/write-coverage` endpoint before shutdown, then remapped onto the TS sources with `c8`) and the client dev server with `COVERAGE=true` (istanbul-instrumented; `client/coverageCollectorPlugin.ts` harvests `window.__coverage__` via an injected flush script and a `/__coverage__` middleware, so specs stay on plain `@playwright/test`). Extra args are forwarded to `playwright test` for subset runs, e.g. `yarn coverage:e2e programSearch "--project=Chrome Stable"`. Resolves the per-worktree port offset once (`scripts/portOffset.ts`) and pins it into the server, client, and Playwright processes; an explicit `PORT_OFFSET` wins.
+- `yarn coverage:report` — `scripts/mergeCoverageReport.ts` merges the inputs. The E2E data cannot be merged into the vitest data key-by-key (different instrumentation pipelines produce different statement maps), so E2E hits are **projected** onto the canonical vitest maps: statements by exact start position with a first-statement-on-the-line fallback for the line-based V8 server data; functions by exact position, else counted covered when any line inside the body has hits (the V8 data's own function entries are transform-helper noise); branches on exact matches only, so branch coverage mostly reflects unit tests.
+
+The coverage include/exclude globs live in one place — `scripts/coverageGlobs.ts` — consumed by the root `vitest.config.ts`, the `c8 report` flags in `scripts/runE2eCoverage.ts`, and the istanbul plugin config in `client/vite.config.ts` (which runs with the repo root as its glob cwd, so shared/ modules served to the browser are instrumented too).
+
+CI: `.github/workflows/coverage.yml` runs the pipeline on pushes to main only — it re-runs the whole test suite against instrumented builds, so a pull_request trigger would double every PR's CI cost on top of test.yml (which tests the production build). The Playwright half is sharded like the `e2e` job in test.yml (`yarn coverage:e2e --shard=n/total`); each shard uploads its coverage slice as an artifact and the `coverage-report` job merges them with the vitest coverage — the merge script accepts any number of JSON files per input directory, so shard slices and local single runs use the same code path. Every run writes the totals table (`coverage/report/summary.md`) to the job summary and uploads the HTML report as the `coverage-report` artifact; fully green main runs additionally publish it to GitHub Pages at <https://con2.github.io/konsti/>.
 
 ## Test Data Credentials
 

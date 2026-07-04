@@ -37,8 +37,9 @@ lib
 # Mac
 .DS_Store
 
-# Coverage report
-coverage
+# Coverage report (anchored: a bare "coverage" would also swallow source
+# directories like server/src/test/coverage)
+/coverage
 
 # Secrets
 secret

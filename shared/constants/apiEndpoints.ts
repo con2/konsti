@@ -32,6 +32,7 @@ export enum ApiDevEndpoint {
   CLEAR_DB = "/api/clear-db",
   ADD_PROGRAM_ITEMS = "/api/add-program-item",
   ADD_SERIALS = "/api/add-serial",
+  WRITE_COVERAGE = "/api/write-coverage",
 }
 
 export enum AuthEndpoint {
