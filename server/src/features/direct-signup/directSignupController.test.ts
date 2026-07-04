@@ -102,6 +102,27 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     expect(response.status).toEqual(422);
   });
 
+  test("should return 422 with a non-default priority", async () => {
+    await saveProgramItems([testProgramItem]);
+    await saveUser(mockUser);
+
+    // priority must always be DIRECT_SIGNUP_PRIORITY for user-made direct signups;
+    // a forged lottery-win priority would skew assignment bonuses and stats
+    const signup = {
+      directSignupProgramItemId: testProgramItem.programItemId,
+      message: "",
+      priority: 2,
+    };
+    const response = await request(server)
+      .post(ApiEndpoint.DIRECT_SIGNUP)
+      .send(signup)
+      .set(
+        "Authorization",
+        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
+      );
+    expect(response.status).toEqual(422);
+  });
+
   test("should return error when program item is not found", async () => {
     vi.setSystemTime(
       dayjs(testProgramItem.startTime).subtract(1, "hour").toISOString(),
