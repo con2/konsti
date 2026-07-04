@@ -186,7 +186,7 @@ const StyledCard = styled(RaisedCard)<{ $recentlyViewed: boolean }>`
   ${(props) =>
     props.$recentlyViewed &&
     css`
-      animation: ${recentlyViewedFlash} 1.5s ease-out;
+      animation: ${recentlyViewedFlash} 0.8s ease-out;
     `}
 `;
 

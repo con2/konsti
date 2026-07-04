@@ -219,7 +219,7 @@ export const AllProgramItemsView = (): ReactElement => {
     if (highlightedProgramItemId === null) {
       return;
     }
-    const timer = setTimeout(() => setHighlightedProgramItemId(null), 2000);
+    const timer = setTimeout(() => setHighlightedProgramItemId(null), 1000);
     return () => clearTimeout(timer);
   }, [highlightedProgramItemId]);
 
