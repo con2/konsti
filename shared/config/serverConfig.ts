@@ -2,7 +2,7 @@ import { EmailNotificationTrigger } from "shared/types/emailNotification";
 
 export interface ServerConfig {
   port: number;
-  debug: boolean;
+  logLevel: string;
   dbConnString: string;
   dbName: string;
   jwtSecretKey: string;
@@ -80,6 +80,11 @@ const commonConfig = {
   // Statistics
   statsDataDir: "src/features/statistics/datafiles",
 
+  // Logging: LOG_LEVEL caps winston console output, e.g. "debug" enables the
+  // debug logs and the Playwright scripts set "warn" to hide the per-request
+  // info logs
+  logLevel: process.env.LOG_LEVEL ?? "info",
+
   // Tests
   enableLoggingInTests: false,
 
@@ -112,7 +117,6 @@ const prodConfig = {
   jwtSecretKeyAdmin: process.env.JWT_SECRET_KEY_ADMIN ?? "",
   jwtSecretKeyHelp: process.env.JWT_SECRET_KEY_HELP ?? "",
   allowedCorsOrigins: getAllowedCorsOrigins(),
-  debug: process.env.DEBUG === "true" || false,
   consoleLogFormatJson: true,
 
   // Dev
@@ -141,7 +145,6 @@ const stagingConfig = {
   jwtSecretKeyAdmin: process.env.JWT_SECRET_KEY_ADMIN ?? "",
   jwtSecretKeyHelp: process.env.JWT_SECRET_KEY_HELP ?? "",
   allowedCorsOrigins: getAllowedCorsOrigins(),
-  debug: process.env.DEBUG === "true" || false,
   consoleLogFormatJson: true,
 
   // Dev
@@ -173,7 +176,6 @@ const devConfig = {
     `http://127.0.0.1:${defaultServerPort}`,
     "http://server:5000",
   ]),
-  debug: false,
   consoleLogFormatJson: false,
 
   // Dev
