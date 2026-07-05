@@ -376,20 +376,26 @@ export const setAssignmentLastRun = async (
   }
 };
 
-export const isLatestStartedServerInstance = async (
-  latestServerStartTime: string,
-): Promise<Result<void, MongoDbError>> => {
+export const getLatestServerStartTime = async (): Promise<
+  Result<string, MongoDbError>
+> => {
   try {
-    const response = await SettingsModel.findOne({
-      latestServerStartTime: {
-        $eq: dayjs(latestServerStartTime).toISOString(),
-      },
-    }).lean();
+    const response = await SettingsModel.findOne({}).lean();
     if (!response) {
       return makeErrorResult(MongoDbError.SETTINGS_NOT_FOUND);
     }
-    logger.info("MongoDB: Latest server start time found, is latest");
-    return makeSuccessResult();
+
+    const result = SettingsSchemaDb.safeParse(response);
+    if (!result.success) {
+      logger.error(
+        new Error(
+          `Error validating getLatestServerStartTime DB value: ${JSON.stringify(result.error)}`,
+        ),
+      );
+      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+    }
+
+    return makeSuccessResult(result.data.latestServerStartTime);
   } catch (error) {
     logger.error(
       new Error("MongoDB: Error getting latest server start time", {

@@ -73,7 +73,10 @@ const settingsSchema = new mongoose.Schema(
     latestServerStartTime: {
       type: Date,
       get: (value: Date) => new Date(value),
-      default: () => new Date(),
+      // Epoch (not "now") so a settings row recreated mid-run reads as older than any live
+      // instance and the cron guard surfaces it as an error — a "now" default would masquerade
+      // as a newer server instance and silently stop cronjobs. Server start overwrites this
+      default: () => new Date(0),
     },
     loginProvider: {
       type: String,

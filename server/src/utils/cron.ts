@@ -7,7 +7,7 @@ import { Result, makeSuccessResult } from "shared/utils/result";
 import { updateProgramItems } from "server/features/program-item/programItemService";
 import {
   acquireAssignmentLock,
-  isLatestStartedServerInstance,
+  getLatestServerStartTime,
   releaseAssignmentLock,
   saveSettings,
   setAssignmentLastRun,
@@ -17,15 +17,17 @@ import { MongoDbError } from "shared/types/api/errors";
 
 const cronJobs: Cron[] = [];
 
-let latestServerStartTime = "";
+let instanceStartTime = "";
 
 export const setLatestServerStartTime = async (): Promise<
   Result<void, MongoDbError>
 > => {
-  latestServerStartTime = dayjs().toISOString();
+  instanceStartTime = dayjs().toISOString();
 
-  logger.info(`Set latestServerStartTime ${latestServerStartTime}`);
-  const settingsResult = await saveSettings({ latestServerStartTime });
+  logger.info(`Set latestServerStartTime ${instanceStartTime}`);
+  const settingsResult = await saveSettings({
+    latestServerStartTime: instanceStartTime,
+  });
   if (!settingsResult.ok) {
     return settingsResult;
   }
@@ -89,25 +91,53 @@ export const stopCronJobs = (): void => {
   logger.info("CronJobs stopped");
 };
 
+// A deploy starts a replacement instance which overwrites latestServerStartTime, so the
+// superseded instance seeing a newer time is expected: stop its cronjobs and let it wait for
+// termination. A missing or older stored time means the settings data was lost or rewound,
+// which shouldn't happen and is logged as an error
+const isLatestServerInstance = async (): Promise<boolean> => {
+  logger.info(
+    `Check if latest running server instance with start time ${instanceStartTime}`,
+  );
+  const dbLatestStartTimeResult = await getLatestServerStartTime();
+  if (!dbLatestStartTimeResult.ok) {
+    logger.error(
+      new Error(
+        `Cronjobs: Failed to get latest server start time: ${dbLatestStartTimeResult.error}`,
+      ),
+    );
+    return false;
+  }
+
+  const dbLatestStartTime = dbLatestStartTimeResult.value;
+  if (dbLatestStartTime === instanceStartTime) {
+    logger.info("Latest server start time found, is latest");
+    return true;
+  }
+
+  if (dayjs(dbLatestStartTime).isAfter(instanceStartTime)) {
+    // TODO: Expected during deploys, change to info level once stopping cronjobs is verified to work
+    logger.error(
+      new Error(
+        "Cronjobs: Newer server instance running, stopping cronjobs on this instance",
+      ),
+    );
+    stopCronJobs();
+    return false;
+  }
+
+  logger.error(
+    new Error(
+      `Cronjobs: Stored server start time ${dbLatestStartTime} is older than this instance's start time ${instanceStartTime}`,
+    ),
+  );
+  return false;
+};
+
 export const autoUpdateProgramItems = async (): Promise<void> => {
   logger.info("----> Auto update program items");
 
-  logger.info(
-    `Check if latest running server instance with start time ${latestServerStartTime}`,
-  );
-  const latestServerResult = await isLatestStartedServerInstance(
-    latestServerStartTime,
-  );
-  if (!latestServerResult.ok) {
-    if (latestServerResult.error === MongoDbError.SETTINGS_NOT_FOUND) {
-      logger.error(new Error("Cronjobs: Newer server instance running, stop"));
-      return;
-    }
-    logger.error(
-      new Error(
-        `***** Program items auto update failed trying to check latest server start time: ${latestServerResult.error}`,
-      ),
-    );
+  if (!(await isLatestServerInstance())) {
     return;
   }
 
@@ -148,22 +178,7 @@ export const autoAssignAttendees = async (): Promise<void> => {
 
   logger.info("----> Auto assign attendees");
 
-  logger.info(
-    `Check if latest running server instance with start time ${latestServerStartTime}`,
-  );
-  const latestServerResult = await isLatestStartedServerInstance(
-    latestServerStartTime,
-  );
-  if (!latestServerResult.ok) {
-    if (latestServerResult.error === MongoDbError.SETTINGS_NOT_FOUND) {
-      logger.error(new Error("Cronjobs: Newer server instance running, stop"));
-      return;
-    }
-    logger.error(
-      new Error(
-        `***** Auto assignment failed trying to check latest server start time: ${latestServerResult.error}`,
-      ),
-    );
+  if (!(await isLatestServerInstance())) {
     return;
   }
 
