@@ -103,7 +103,10 @@ export const FinalizeRegistration = (
   };
 
   return (
-    <StyledForm onSubmit={handleSubmit(onSubmit)}>
+    // noValidate: the email input is type="email", and without it the
+    // browser's native validation would block the submit before
+    // react-hook-form runs, so the localized pattern message never showed
+    <StyledForm onSubmit={handleSubmit(onSubmit)} noValidate>
       {props.kompassiUsernameAccepted || !isKompassiAccount ? null : (
         <>
           <InputContainer>
