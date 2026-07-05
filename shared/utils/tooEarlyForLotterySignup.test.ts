@@ -21,7 +21,7 @@ const mockEvent = (
 
 test("is too early within the first three hours of the event", () => {
   mockEvent();
-  // 14:00 is one hour after the 13:00 event start, so before the 16:00 lottery cutoff
+  // The item starts right at the 13:00 event start, so before the 16:00 lottery cutoff
   const programItem = { ...testProgramItem, startTime: eventStartTime };
   expect(tooEarlyForLotterySignup(programItem)).toEqual(true);
 });

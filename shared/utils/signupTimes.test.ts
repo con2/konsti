@@ -363,7 +363,7 @@ describe("Direct signup with signup windows", () => {
   });
 
   test("Larp starting at Sun 12:00 should have signup starting at Sat 15:00", () => {
-    const startTime = `${sunday}T15:00:00.000Z`;
+    const startTime = `${sunday}T09:00:00.000Z`;
     const signupTime = `${saturday}T12:00:00.000Z`;
     assertSignupTime(startTime, signupTime);
   });
