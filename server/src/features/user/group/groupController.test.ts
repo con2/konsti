@@ -522,7 +522,7 @@ describe(`POST ${ApiEndpoint.CLOSE_GROUP}`, () => {
       );
     expect(response.status).toEqual(200);
 
-    const updatedUser = unsafelyUnwrap(await findUser(mockUser2.username));
+    const updatedUser = unsafelyUnwrap(await findUser(mockUser.username));
     expect(updatedUser?.groupCode).toEqual("0");
     const updatedUser2 = unsafelyUnwrap(await findUser(mockUser2.username));
     expect(updatedUser2?.groupCode).toEqual("0");
