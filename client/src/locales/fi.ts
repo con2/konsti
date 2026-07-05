@@ -192,6 +192,7 @@ export const translationFI = {
     noKonstiSignup:
       "Tähän ohjelmaan ei ilmoittauduta Konstissa. Katso ilmoittautumisohjeet ohjelman lisätiedoista.",
     programItemCancelled: "Ohjelmanumero on peruttu",
+    programItemHidden: "Tähän ohjelmanumeroon ei voi enää ilmoittautua.",
     groupMember:
       "Ryhmän jäsenet eivät voi ilmoittautua, ryhmän perustaja ilmoittautuu koko ryhmän puolesta",
   },

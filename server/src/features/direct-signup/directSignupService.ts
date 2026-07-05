@@ -74,6 +74,26 @@ export const storeDirectSignup = async (
     };
   }
 
+  const settingsResult = await findSettings();
+  if (!settingsResult.ok) {
+    return {
+      message: "Error loading settings",
+      status: "error",
+      errorId: "unknown",
+    };
+  }
+  const settings = settingsResult.value;
+
+  // Hidden program items are only filtered from the client's list view, so a
+  // signup for one can still arrive from a stale page or a direct link
+  if (settings.hiddenProgramItemIds.includes(directSignupProgramItemId)) {
+    return {
+      message: "Program item is hidden",
+      status: "error",
+      errorId: "hidden",
+    };
+  }
+
   const directSignupStartTime = getDirectSignupStartTime(programItem);
 
   if (timeNow.isBefore(directSignupStartTime)) {
@@ -125,15 +145,7 @@ export const storeDirectSignup = async (
   }
   const signup = signupResult.value;
 
-  const settingsResult = await findSettings();
-  if (!settingsResult.ok) {
-    return {
-      message: "Error loading settings",
-      status: "error",
-      errorId: "unknown",
-    };
-  }
-  const signupQuestion = settingsResult.value.signupQuestions.find(
+  const signupQuestion = settings.signupQuestions.find(
     (message) => message.programItemId === programItem.programItemId,
   );
 
