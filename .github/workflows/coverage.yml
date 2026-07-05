@@ -209,7 +209,7 @@ jobs:
 
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.page_url || steps.deployment-retry.outputs.page_url }}
 
     concurrency:
       group: github-pages
@@ -221,7 +221,21 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
+        # The Pages backend sometimes fails a deployment with a transient
+        # "Deployment failed, try again later" error; retry once before
+        # failing the job
+        continue-on-error: true
+
+      - name: Wait before retrying deployment
+        if: ${{ steps.deployment.outcome == 'failure' }}
+        run: |
+          sleep 30
+
+      - name: Retry deploy to GitHub Pages
+        id: deployment-retry
+        if: ${{ steps.deployment.outcome == 'failure' }}
+        uses: actions/deploy-pages@v5
 
       - name: Add report link to job summary
         run: |
-          echo "Coverage report published: ${{ steps.deployment.outputs.page_url }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "Coverage report published: ${{ steps.deployment.outputs.page_url || steps.deployment-retry.outputs.page_url }}" >> "$GITHUB_STEP_SUMMARY"
