@@ -2,6 +2,8 @@
 
 [![Build](https://github.com/con2/konsti/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/con2/konsti/actions/workflows/test.yml)
 
+[Test coverage report](https://con2.github.io/konsti/) — combined unit test and E2E coverage from the latest green main build.
+
 Event signup application Konsti. Supports direct signup (first-come-first-served) and lottery sign-up.
 
 Konsti is used by conventions like [Ropecon](https://ropecon.fi), [Tracon](https://tracon.fi), [Tracon Hitpoint](https://hitpoint.tracon.fi), and [Solmukohta](https://solmukohta.eu). Konsti has been in use since Ropecon 2017 and is used by thousands of users. Event data is fetched from [Kompassi Event Management System](https://kompassi.eu/).
