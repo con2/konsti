@@ -90,16 +90,18 @@ describe(`POST ${ApiEndpoint.EMAIL_TEST}`, () => {
   });
 
   test("should return 500 when sending the email fails", async () => {
+    await saveProgramItems([testProgramItem]);
     sendEmailSpy.mockRejectedValueOnce(new Error("SMTP failure"));
     const requestBody: PostEmailTestRequest = {
       email: "test@example.com",
       notificationType: EmailNotificationTrigger.ACCEPTED,
-      programId: "test-program-item",
+      programId: testProgramItem.programItemId,
     };
     const response = await request(server)
       .post(ApiEndpoint.EMAIL_TEST)
       .send(requestBody)
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
     expect(response.status).toEqual(500);
+    expect(sendEmailSpy).toHaveBeenCalledTimes(1);
   });
 });

@@ -20,7 +20,7 @@ afterEach(async () => {
 
 describe(`GET ${ApiEndpoint.HEALTH}`, () => {
   test("should return 200", async () => {
-    const response = await request(server).get(ApiEndpoint.PROGRAM_ITEMS);
+    const response = await request(server).get(ApiEndpoint.HEALTH);
     expect(response.status).toEqual(200);
   });
 });
