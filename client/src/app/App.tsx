@@ -31,25 +31,30 @@ const App = (): ReactElement => {
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     fetchData();
 
-    const startUpdateTimer = (): void => {
-      // eslint-disable-next-line @typescript-eslint/no-misused-promises
-      setInterval(async () => {
-        resetNetworkError();
-        await fetchData();
-      }, dataUpdateInterval * 1000);
-    };
-    startUpdateTimer();
+    // eslint-disable-next-line @typescript-eslint/no-misused-promises
+    const updateTimer = setInterval(async () => {
+      resetNetworkError();
+      await fetchData();
+    }, dataUpdateInterval * 1000);
 
     // The network error toast can appear right before the laptop sleeps
     // (Wi-Fi drops before JS is suspended), so clear it when connectivity is
     // lost and refresh immediately when it returns instead of leaving the
     // toast visible until the next poll cycle
-    addEventListener("offline", resetNetworkError);
-    // eslint-disable-next-line @typescript-eslint/no-misused-promises
-    addEventListener("online", async () => {
+    const handleOnline = async (): Promise<void> => {
       resetNetworkError();
       await fetchData();
-    });
+    };
+    addEventListener("offline", resetNetworkError);
+    // eslint-disable-next-line @typescript-eslint/no-misused-promises
+    addEventListener("online", handleOnline);
+
+    return () => {
+      clearInterval(updateTimer);
+      removeEventListener("offline", resetNetworkError);
+      // eslint-disable-next-line @typescript-eslint/no-misused-promises
+      removeEventListener("online", handleOnline);
+    };
   }, []);
 
   getIconLibrary();
