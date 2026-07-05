@@ -8,6 +8,9 @@ import {
   GetGroupError,
   GetGroupResult,
   PostCloseGroupRequest,
+  PostCloseGroupResponse,
+  PostCreateGroupError,
+  PostJoinGroupError,
   PostJoinGroupRequest,
   PostLeaveGroupError,
 } from "shared/types/api/groups";
@@ -19,6 +22,7 @@ import {
   mockLotterySignups,
   mockUser,
   mockUser2,
+  mockUser3,
 } from "server/test/mock-data/mockUser";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { saveProgramItems } from "server/features/program-item/programItemRepository";
@@ -158,6 +162,31 @@ describe(`POST ${ApiEndpoint.GROUP}`, () => {
       "^[a-zA-Z0-9]{3}-[a-zA-Z0-9]{3}-[a-zA-Z0-9]{3}$",
     );
     expect(groupCodeMatcher.test(updatedUser?.groupCode ?? "")).toBeTruthy();
+  });
+
+  test("should not create group if user is already in a group", async () => {
+    const groupCode = "123-234-345";
+
+    await saveUser({ ...mockUser, groupCode, isGroupCreator: true });
+    await saveUser({ ...mockUser2, groupCode });
+
+    const response = await request(server)
+      .post(ApiEndpoint.GROUP)
+      .send({})
+      .set(
+        "Authorization",
+        `Bearer ${getJWT(UserGroup.USER, mockUser2.username)}`,
+      );
+    expect(response.status).toEqual(200);
+
+    const body = response.body as PostCreateGroupError;
+    expect(body.status).toEqual("error");
+    expect(body.errorId).toEqual("groupExists");
+
+    // User stays a regular member of the original group
+    const updatedUser = unsafelyUnwrap(await findUser(mockUser2.username));
+    expect(updatedUser?.groupCode).toEqual(groupCode);
+    expect(updatedUser?.isGroupCreator).toEqual(false);
   });
 });
 
@@ -433,6 +462,63 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
     expect(body.status).toEqual("error");
     expect(body.message).toEqual("User has upcoming direct signups");
   });
+
+  test("should return error when joining a group that does not exist", async () => {
+    await saveUser(mockUser2);
+
+    const groupRequest: PostJoinGroupRequest = {
+      groupCode: "abc-def-ghi",
+    };
+
+    const response = await request(server)
+      .post(ApiEndpoint.JOIN_GROUP)
+      .send(groupRequest)
+      .set(
+        "Authorization",
+        `Bearer ${getJWT(UserGroup.USER, mockUser2.username)}`,
+      );
+    expect(response.status).toEqual(200);
+
+    const body = response.body as PostJoinGroupError;
+    expect(body.status).toEqual("error");
+    expect(body.errorId).toEqual("groupDoesNotExist");
+
+    const updatedUser = unsafelyUnwrap(await findUser(mockUser2.username));
+    expect(updatedUser?.groupCode).toEqual("0");
+  });
+
+  test("should return error when user is already in a group", async () => {
+    const groupCode = "123-234-345";
+    const anotherGroupCode = "567-678-789";
+
+    await saveUser({ ...mockUser, groupCode, isGroupCreator: true });
+    await saveUser({
+      ...mockUser3,
+      groupCode: anotherGroupCode,
+      isGroupCreator: true,
+    });
+    await saveUser({ ...mockUser2, groupCode });
+
+    const groupRequest: PostJoinGroupRequest = {
+      groupCode: anotherGroupCode,
+    };
+
+    const response = await request(server)
+      .post(ApiEndpoint.JOIN_GROUP)
+      .send(groupRequest)
+      .set(
+        "Authorization",
+        `Bearer ${getJWT(UserGroup.USER, mockUser2.username)}`,
+      );
+    expect(response.status).toEqual(200);
+
+    const body = response.body as PostJoinGroupError;
+    expect(body.status).toEqual("error");
+    expect(body.errorId).toEqual("alreadyInGroup");
+
+    const updatedUser = unsafelyUnwrap(await findUser(mockUser2.username));
+    expect(updatedUser?.groupCode).toEqual(groupCode);
+  });
 });
 
 describe(`POST ${ApiEndpoint.LEAVE_GROUP}`, () => {
@@ -526,5 +612,38 @@ describe(`POST ${ApiEndpoint.CLOSE_GROUP}`, () => {
     expect(updatedUser?.groupCode).toEqual("0");
     const updatedUser2 = unsafelyUnwrap(await findUser(mockUser2.username));
     expect(updatedUser2?.groupCode).toEqual("0");
+  });
+
+  test("should not let non-creator group member close group", async () => {
+    const groupCode = "abc-dfg-hij";
+
+    await saveUser({ ...mockUser, groupCode, isGroupCreator: true });
+    await saveUser({ ...mockUser2, groupCode });
+
+    const groupRequest: PostCloseGroupRequest = {
+      groupCode,
+    };
+
+    const response = await request(server)
+      .post(ApiEndpoint.CLOSE_GROUP)
+      .send(groupRequest)
+      .set(
+        "Authorization",
+        `Bearer ${getJWT(UserGroup.USER, mockUser2.username)}`,
+      );
+    expect(response.status).toEqual(200);
+
+    const body = response.body as PostCloseGroupResponse;
+    expect(body).toMatchObject({
+      status: "error",
+      errorId: "onlyCreatorCanCloseGroup",
+    });
+
+    // Group stays intact
+    const creator = unsafelyUnwrap(await findUser(mockUser.username));
+    expect(creator?.groupCode).toEqual(groupCode);
+    expect(creator?.isGroupCreator).toEqual(true);
+    const member = unsafelyUnwrap(await findUser(mockUser2.username));
+    expect(member?.groupCode).toEqual(groupCode);
   });
 });

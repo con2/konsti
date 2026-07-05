@@ -9,7 +9,7 @@ import { mongoDbPort } from "server/test/globalSetup";
 initializeDayjs();
 
 // Increase the max listeners limit to prevent MongoDB connection warnings during tests
-EventEmitter.defaultMaxListeners = 20;
+EventEmitter.defaultMaxListeners = 30;
 
 if (!config.server().enableLoggingInTests) {
   // Don't show logging in tests

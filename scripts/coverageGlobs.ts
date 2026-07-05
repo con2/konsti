@@ -16,6 +16,7 @@ export const coverageInclude = [
 
 export const coverageExclude = [
   "client/src/test/**",
+  "client/src/markdown/prettier.config.ts",
   "server/src/test/**",
   "server/src/features/statistics/**",
   // Archived event configs are data-as-code: their only consumer is the
