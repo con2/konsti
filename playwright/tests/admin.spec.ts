@@ -272,4 +272,16 @@ test("Hide program item", async ({ page, request }) => {
   await expect(
     page.getByRole("link", { name: hiddenProgramItemTitle }),
   ).toBeVisible();
+
+  // Unhide the program item again
+  await page.getByRole("link", { name: hiddenProgramItemTitle }).click();
+  await programItemPage.show();
+  // The button flips back once the update has persisted
+  await expect(programItemPage.hideButton).toBeVisible();
+
+  await page.goto("/");
+  await programList.waitForItems();
+  await expect(programList.firstItem().title).toHaveText(
+    hiddenProgramItemTitle,
+  );
 });

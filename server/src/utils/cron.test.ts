@@ -15,6 +15,8 @@ import {
   autoAssignAttendees,
   autoUpdateProgramItems,
   setLatestServerStartTime,
+  startCronJobs,
+  stopCronJobs,
 } from "server/utils/cron";
 import {
   ASSIGNMENT_LOCK_STALE_TIMEOUT_MINUTES,
@@ -33,6 +35,9 @@ import {
   getGlobalNotificationQueueService,
 } from "server/utils/notificationQueue";
 import { EmailSender } from "server/features/notifications/email";
+import { testHelperWrapper } from "server/kompassi/getProgramItemsFromKompassi";
+import { makeErrorResult } from "shared/utils/result";
+import { KompassiError } from "shared/types/api/errors";
 
 let server: Server;
 
@@ -109,6 +114,27 @@ describe("Progam update cronjob", () => {
 
     const settings = unsafelyUnwrap(await findSettings());
     expect(settings.programUpdateLastRun).toEqual(timeNow);
+  });
+
+  test("should log error if program update fails", async () => {
+    const oldTime = dayjs(timeNow)
+      .subtract(previousJobFinished, "seconds")
+      .toISOString();
+    await saveSettings({ programUpdateLastRun: oldTime });
+    vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValueOnce(
+      makeErrorResult(KompassiError.UNKNOWN_ERROR),
+    );
+
+    await autoUpdateProgramItems();
+
+    expect(errorLoggerSpy).toHaveBeenCalledWith(
+      new Error(
+        "***** Program items auto update failed: Loading program items from Kompassi failed",
+      ),
+    );
+    expect(infoLoggerSpy).not.toHaveBeenCalledWith(
+      "***** Program items auto update completed",
+    );
   });
 
   test("should not start update if program update is already running", async () => {
@@ -298,5 +324,54 @@ describe("Assignment cronjob", () => {
     expect(infoLoggerSpy).not.toHaveBeenCalledWith(
       "***** Automatic attendee assignment completed",
     );
+  });
+});
+
+describe("Cronjob registration", () => {
+  // Far-future schedule so the jobs never fire during the test
+  const nextNewYear = "0 0 1 1 *";
+
+  test("should start enabled cronjobs and stop them", async () => {
+    vi.spyOn(config, "server").mockReturnValue({
+      ...config.server(),
+      autoUpdateProgramEnabled: true,
+      autoAssignAttendeesEnabled: true,
+      programUpdateInterval: nextNewYear,
+      autoAssignInterval: nextNewYear,
+    });
+
+    await startCronJobs();
+
+    expect(infoLoggerSpy).toHaveBeenCalledWith(
+      "Start cronjob: program auto update",
+    );
+    expect(infoLoggerSpy).toHaveBeenCalledWith(
+      "Start cronjob: automatic attendee assignment",
+    );
+
+    stopCronJobs();
+
+    expect(infoLoggerSpy).toHaveBeenCalledWith("CronJobs stopped");
+  });
+
+  test("should not start cronjobs disabled in config", async () => {
+    vi.spyOn(config, "server").mockReturnValue({
+      ...config.server(),
+      autoUpdateProgramEnabled: false,
+      autoAssignAttendeesEnabled: false,
+    });
+
+    await startCronJobs();
+
+    expect(infoLoggerSpy).not.toHaveBeenCalledWith(
+      "Start cronjob: program auto update",
+    );
+    expect(infoLoggerSpy).not.toHaveBeenCalledWith(
+      "Start cronjob: automatic attendee assignment",
+    );
+
+    // startCronJobs still records this instance as the latest started one
+    const settings = unsafelyUnwrap(await findSettings());
+    expect(settings.latestServerStartTime).toEqual(timeNow);
   });
 });
