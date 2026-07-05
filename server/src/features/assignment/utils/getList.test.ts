@@ -318,7 +318,7 @@ describe("should NOT give first time bonus", () => {
     ]);
   });
 
-  test("for group with less than half previous direct signups", () => {
+  test("for group with more than half previous direct signups", () => {
     // Group of five, three have previous direct signup
     const users = getUsers({ count: 5 });
     const attendeeGroups = [users];
@@ -426,7 +426,13 @@ describe("should give additional bonus", () => {
 
 describe("should NOT give additional bonus", () => {
   test("for single user with previous direct signup", () => {
-    const users = getUsers({ count: 1, pastLotterySignupUsers: 1 });
+    // The failed lottery signup would otherwise grant the additional bonus,
+    // but the previous direct signup blocks it
+    const users = getUsers({
+      count: 1,
+      pastLotterySignupUsers: 1,
+      pastFailureLotterySignups: 1,
+    });
     const attendeeGroups = [users];
     const list = getList({
       attendeeGroups,
@@ -499,7 +505,12 @@ describe("should NOT give additional bonus", () => {
   });
 
   test("for group with less than half previous failed lottery signups", () => {
-    const users = getUsers({ count: 5, pastLotterySignupUsers: 2 });
+    // Two of five members have a failed lottery signup -> below the 0.5 threshold
+    const users = getUsers({
+      count: 5,
+      pastLotterySignupUsers: 2,
+      pastFailureLotterySignups: 1,
+    });
     const attendeeGroups = [users];
     const list = getList({
       attendeeGroups,

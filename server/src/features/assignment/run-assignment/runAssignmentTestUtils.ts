@@ -71,6 +71,8 @@ export const verifyUserSignups = async (): Promise<
     programItems,
   );
 
+  let mismatchFound = false;
+
   for (const {
     programItemId,
     userSignups,
@@ -85,11 +87,13 @@ export const verifyUserSignups = async (): Promise<
 
       if (!matchingUser) {
         logger.error(new Error(`No matching user: ${userSignup.username}`));
+        mismatchFound = true;
         continue;
       }
 
       const groupCreatorResult = getGroupCreator(users, matchingUser);
       if (!groupCreatorResult.ok) {
+        mismatchFound = true;
         continue;
       }
 
@@ -109,8 +113,13 @@ export const verifyUserSignups = async (): Promise<
             `No matching signed program item found from group creator: ${userSignup.username} - ${programItemId}`,
           ),
         );
+        mismatchFound = true;
       }
     }
+  }
+
+  if (mismatchFound) {
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 
   return makeSuccessResult();
@@ -128,7 +137,8 @@ export const assertUserUpdatedCorrectly = async (
     expect(newAssignmentEventLogItems).toHaveLength(1);
   }
 
-  await verifyUserSignups();
+  const verifyResult = await verifyUserSignups();
+  expect(verifyResult.ok).toBe(true);
 };
 
 export const generateTestData = async (

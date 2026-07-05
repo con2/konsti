@@ -3,7 +3,10 @@ import mongoose from "mongoose";
 import dayjs from "dayjs";
 import { faker } from "@faker-js/faker";
 import { runAssignment } from "server/features/assignment/run-assignment/runAssignment";
-import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
+import {
+  AssignmentAlgorithm,
+  RemoveLotterySignupsStrategy,
+} from "shared/config/eventConfigTypes";
 import { config } from "shared/config";
 import { findUser, saveUser } from "server/features/user/userRepository";
 import { saveProgramItems } from "server/features/program-item/programItemRepository";
@@ -57,12 +60,23 @@ vi.mock<object>(
 );
 
 beforeEach(async () => {
+  // afterEach resets all mocks including the setupTests config baseline, so re-establish
+  // it here for tests that don't mock config.event themselves
+  vi.spyOn(config, "event").mockReturnValue({
+    ...config.event(),
+    eventStartTime: "2023-07-28T12:00:00Z", // Fri 15:00 GMT+3
+    directSignupAlwaysOpenIds: ["1234"],
+    twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG, ProgramType.LARP],
+    removeLotterySignupsStrategy: RemoveLotterySignupsStrategy.OVERLAP,
+  });
   await mongoose.connect(globalThis.__MONGO_URI__, {
     dbName: faker.string.alphanumeric(10),
   });
 });
 
 afterEach(async () => {
+  // Reset per-test config.event mocks so they don't leak into the next test
+  vi.resetAllMocks();
   await mongoose.disconnect();
 });
 
@@ -121,7 +135,11 @@ describe("Assignment with valid data", () => {
 
     // SECOND RUN
 
-    const startTime2 = dayjs(eventStartTime).add(3, "hours").toISOString();
+    // One hour after the first slot: attendees assigned in the first run are still in
+    // their 3h program items, so their overlapping lottery signups have been removed
+    const startTime2 = dayjs(eventStartTime)
+      .add(firstLotterySignupSlot + 1, "hours")
+      .toISOString();
 
     const assignResults2Result = await runAssignment({
       assignmentAlgorithm,
@@ -130,10 +148,7 @@ describe("Assignment with valid data", () => {
     expect(assignResults2Result.ok).toBe(true);
     const assignResults2 = unsafelyUnwrap(assignResults2Result);
 
-    // Second assignment has less available attendees -> less results
-    expect(assignResults2.results.length).toBeGreaterThanOrEqual(
-      expectedResultsCount - assignResults.results.length,
-    );
+    expect(assignResults2.results.length).toBeGreaterThan(0);
 
     const groupResults2 = assignResults2.results.filter((result) =>
       groupTestUsers.has(result.username),

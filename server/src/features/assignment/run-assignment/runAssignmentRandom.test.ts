@@ -317,17 +317,15 @@ test("Should assign group with 'startTimesByParentIds' program item", async () =
 
   const groupCode = "123-234-345";
 
-  await saveProgramItems([testProgramItem]);
   await saveUser({ ...mockUser, groupCode, isGroupCreator: true });
   await saveUser({ ...mockUser2, groupCode });
 
-  await saveUser(mockUser);
   await saveLotterySignups({
     username: mockUser.username,
     lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
   });
 
-  const assignmentAlgorithm = AssignmentAlgorithm.PADG;
+  const assignmentAlgorithm = AssignmentAlgorithm.RANDOM;
 
   const assignResults = unsafelyUnwrap(
     await runAssignment({
