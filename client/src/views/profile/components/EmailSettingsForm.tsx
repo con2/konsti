@@ -27,15 +27,21 @@ export const EmailSettingsForm = ({ email }: Props): ReactElement => {
   const [emailNotificationsEnabled, setEmailNotificationsEnabled] =
     useState<boolean>(email.length > 0);
 
+  // Editing the form or starting a new save dismisses the previous save's
+  // message, so the visible message always refers to the current form state
   const handleEmailChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setChangeEmailInput(event.target.value);
+    setEmailChangeMessage(<Message />);
   };
 
   const handleEmailNotificationChange = (enabled: boolean): void => {
     setEmailNotificationsEnabled(enabled);
+    setEmailChangeMessage(<Message />);
   };
 
   const submitUpdateEmail = async (): Promise<void> => {
+    setEmailChangeMessage(<Message />);
+
     if (emailNotificationsEnabled && !changeEmailInput.trim()) {
       setEmailChangeMessage(
         <Message error={true}>{t("validation.required")}</Message>,
