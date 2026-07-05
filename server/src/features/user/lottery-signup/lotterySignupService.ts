@@ -16,6 +16,7 @@ import {
 } from "shared/utils/signupTimes";
 import { logger } from "server/utils/logger";
 import { findUser } from "server/features/user/userRepository";
+import { findSettings } from "server/features/settings/settingsRepository";
 import { SignupType, State } from "shared/types/models/programItem";
 
 const validPriorities = new Set([1, 2, 3]);
@@ -62,6 +63,24 @@ export const storeLotterySignup = async ({
       message: "Program item is cancelled",
       status: "error",
       errorId: "cancelled",
+    };
+  }
+
+  // Hidden program items are only filtered from the client's list view, so a
+  // signup for one can still arrive from a stale page or a direct link
+  const settingsResult = await findSettings();
+  if (!settingsResult.ok) {
+    return {
+      message: "Error loading settings",
+      status: "error",
+      errorId: "unknown",
+    };
+  }
+  if (settingsResult.value.hiddenProgramItemIds.includes(programItemId)) {
+    return {
+      message: "Program item is hidden",
+      status: "error",
+      errorId: "hidden",
     };
   }
 

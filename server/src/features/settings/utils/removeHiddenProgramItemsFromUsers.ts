@@ -6,19 +6,16 @@ import {
 import { logger } from "server/utils/logger";
 import { MongoDbError } from "shared/types/api/errors";
 import { User } from "shared/types/models/user";
-import {
-  Result,
-  makeErrorResult,
-  makeSuccessResult,
-} from "shared/utils/result";
+import { Result, makeSuccessResult } from "shared/utils/result";
 
 export const removeHiddenProgramItemsFromUsers = async (
   hiddenProgramItemIds: readonly string[],
 ): Promise<Result<void, MongoDbError>> => {
   logger.info("Remove hidden program items from users");
 
+  // Clearing the hidden list is a valid state - there is just nothing to clean up
   if (hiddenProgramItemIds.length === 0) {
-    return makeErrorResult(MongoDbError.NO_HIDDEN_PROGRAM_ITEMS);
+    return makeSuccessResult();
   }
 
   logger.info(`Found ${hiddenProgramItemIds.length} hidden program items`);

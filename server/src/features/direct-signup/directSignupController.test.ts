@@ -22,6 +22,7 @@ import {
   saveGroupCreator,
 } from "server/features/user/group/groupRepository";
 import { saveProgramItems } from "server/features/program-item/programItemRepository";
+import { saveHidden } from "server/features/settings/settingsRepository";
 import {
   findDirectSignups,
   findUserDirectSignups,
@@ -174,6 +175,35 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const body = response.body as PostDirectSignupError;
     expect(body.status).toEqual("error");
     expect(body.message).toEqual("Program item is cancelled");
+  });
+
+  test("should return error when program item is hidden", async () => {
+    vi.setSystemTime(testProgramItem.startTime);
+    await saveProgramItems([testProgramItem]);
+    await saveUser(mockUser);
+    await saveHidden([testProgramItem.programItemId]);
+
+    const signup: PostDirectSignupRequest = {
+      directSignupProgramItemId: testProgramItem.programItemId,
+      message: "",
+    };
+    const response = await request(server)
+      .post(ApiEndpoint.DIRECT_SIGNUP)
+      .send(signup)
+      .set(
+        "Authorization",
+        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
+      );
+    expect(response.status).toEqual(200);
+
+    const body = response.body as PostDirectSignupError;
+    expect(body.status).toEqual("error");
+    expect(body.errorId).toEqual("hidden");
+
+    const signups = unsafelyUnwrap(
+      await findUserDirectSignups(mockUser.username),
+    );
+    expect(signups).toHaveLength(0);
   });
 
   test("should return error if program doesn't use Konsti signup", async () => {

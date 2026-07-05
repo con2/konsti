@@ -12,7 +12,6 @@ export interface ApiError {
 export enum MongoDbError {
   UNKNOWN_ERROR = "unknownError",
   PROGRAM_ITEM_NOT_FOUND = "programItemNotFound",
-  NO_HIDDEN_PROGRAM_ITEMS = "noHiddenProgramItems",
   USER_NOT_FOUND = "userNotFound",
   SIGNUP_QUESTION_NOT_FOUND = "signupQuestionNotFound",
   SIGNUP_NOT_FOUND = "signupNotFound",

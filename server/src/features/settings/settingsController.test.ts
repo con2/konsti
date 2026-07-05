@@ -37,6 +37,7 @@ import { closeServer, startServer } from "server/utils/server";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import {
   DeleteSignupQuestionRequest,
+  PostHiddenResponse,
   PostSettingsResponse,
   PostSignupQuestionRequest,
   SettingsPayload,
@@ -44,6 +45,7 @@ import {
 import {
   createSettings,
   findSettings,
+  saveHidden,
   saveSignupQuestion,
 } from "server/features/settings/settingsRepository";
 import { EmailNotificationTrigger } from "shared/types/emailNotification";
@@ -243,6 +245,24 @@ describe(`POST ${ApiEndpoint.HIDDEN}`, () => {
     expect(signupsAfter).toHaveLength(1);
     expect(signupsAfter[0].userSignups).toEqual([]);
     expect(signupsAfter[0].count).toEqual(0);
+  });
+
+  test("should succeed when clearing the hidden program item list", async () => {
+    await saveProgramItems([testProgramItem]);
+    await saveHidden([testProgramItem.programItemId]);
+
+    const response = await request(server)
+      .post(ApiEndpoint.HIDDEN)
+      .send({ hiddenProgramItemIds: [] })
+      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+
+    expect(response.status).toEqual(200);
+
+    const body = response.body as PostHiddenResponse;
+    expect(body.status).toEqual("success");
+
+    const settings = unsafelyUnwrap(await findSettings());
+    expect(settings.hiddenProgramItemIds).toEqual([]);
   });
 });
 

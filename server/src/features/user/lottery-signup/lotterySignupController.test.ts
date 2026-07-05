@@ -22,6 +22,7 @@ import {
 import { config } from "shared/config";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
+import { saveHidden } from "server/features/settings/settingsRepository";
 import { SignupType, State } from "shared/types/models/programItem";
 
 let server: Server;
@@ -159,6 +160,38 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     const body = response.body as PostLotterySignupError;
     expect(body.status).toEqual("error");
     expect(body.message).toEqual("Program item is cancelled");
+  });
+
+  test("should return error when program item is hidden", async () => {
+    vi.setSystemTime(
+      dayjs(testProgramItem.startTime)
+        .subtract(config.event().preSignupStart, "minutes")
+        .toISOString(),
+    );
+
+    await saveProgramItems([testProgramItem]);
+    await saveUser(mockUser);
+    await saveHidden([testProgramItem.programItemId]);
+
+    const signup: PostLotterySignupRequest = {
+      programItemId: testProgramItem.programItemId,
+      priority: 1,
+    };
+    const response = await request(server)
+      .post(ApiEndpoint.LOTTERY_SIGNUP)
+      .send(signup)
+      .set(
+        "Authorization",
+        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
+      );
+    expect(response.status).toEqual(200);
+
+    const body = response.body as PostLotterySignupError;
+    expect(body.status).toEqual("error");
+    expect(body.errorId).toEqual("hidden");
+
+    const modifiedUser = unsafelyUnwrap(await findUser(mockUser.username));
+    expect(modifiedUser?.lotterySignups).toHaveLength(0);
   });
 
   test("should return error when program item doesn't use Konsti signup", async () => {
