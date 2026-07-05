@@ -1955,11 +1955,11 @@
   },
   {
     "slug": "cy-borg-maksaako-maksa-vaivan",
-    "title": "CY_BORG: Maksaako maksa vaivan?",
-    "description": "Maailma on loppumassa, yhä uudestaan ja uudestaan, kun ympäristökatastrofit tuhoavat sitä pala kerrallaan. Yhteiskunnan liitokset rakoilevat, tuomiopäivän nanoinfestointi tekee tuhojaan ja valvomaton tekoäly luo uutta todellisuutta verkon syvyyksissä. Koko tuntemanne maailma on Cyn kaupungissa, jonka ulkopuolella on vain kuolemaa ja kidutusta. Kaupungin sisällä on tarjolla sitä samaa, mutta aavistuksen hallittavammassa muodossa.\r\n\r\nVaikka maailma olisi loppumassa, yksi asia kuitenkin pysyy: Ihmisen pitää syödä! \r\n\r\nOlette ruokalähettejä, ja tehtävänne on täyttää asiakkaidenne mielihalut. Asiakkaanne ovat kirjava joukko ihmisiä, jotka himoitsevat vaihtelua harmaaseen solumössöön, jota valtaosa kansasta joutuu lappamaan suuhunsa päivästä toiseen henkensä pitimiksi. Nyt kaupungin kovin foodie, Monsieur Gourmant, on ottanut teihin yhteyttä ja pyytänyt toimittamaan erityisen herkkupalan: hemmotellun pikku possun maksan… \r\n",
+    "title": "CY_BORG: CYDORA_EATS// Maailmanlopun ruokalähettiläät",
+    "description": "Maailma on loppumassa, aina uudestaan ja uudestaan. Ympäristökatastrofit tuhoavat maailmaa pala kerrallaan ja yhteiskunnan liitokset rakoilevat aina uusien sosiaalisten levottomuuksien roihahtaessa. Tuomionpäivän nanoinfestointi tekee tuhojaan samalla kuin valvomattomat tekoälymallit luovat uutta todellisuutta verkon syvyyksissä, johon ihmismielellä ei ole asiaa.  Korporaatiot ovat sodassa keskenään ja tavallinen ihminen on ajettu aivan marginaaliin. Koko tuntemanne maailma on Cyn kaupungissa, jossa tulette syntymään ja kuolemaan. Kaupungin ulkopuolella vain kuolemaa ja kidutusta. Kaupungin sisällä tarjolla samaa, mutta hieman hallittavimmissa annoksissa…\r\n\r\nMutta vaikka maailma on loppumassa, niin yksi asia ei muutu: ihmisen pitää syödä! Olette ruokalähettejä Cy:n kaupungissa ja teette töitä alustataloudessa VVolt applikaatiolle. Ette kuitenkaan ole niin onnekkaita että omistaisitte oman käyttäjätilin, vaan toimitte renkinä oikealle omistajalle. Ruokalähetin henki on halpa ja auta armias jos käyttäjätilin tähtisijoitus tippuu...",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
-      "date": ["2026-07-25"],
+      "date": ["2026-07-25", "2026-07-26"],
       "form": ["offer-rpg"],
       "room": ["valo"],
       "type": ["gaming"],
@@ -1968,7 +1968,7 @@
       "konsti": ["tabletoprpg"],
       "language": ["fi"],
       "age-group": ["adultsnyouth"],
-      "scheduled": ["one", "one-or-more"],
+      "scheduled": ["multiple", "one-or-more"],
       "game-style": ["light", "rules-light"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -1984,9 +1984,26 @@
     "scheduleItems": [
       {
         "slug": "cy-borg-maksaako-maksa-vaivan-1",
-        "title": "CY_BORG: Maksaako maksa vaivan?",
+        "title": "CY_BORG: CYDORA_EATS// Maailmanlopun ruokalähettiläät",
         "startTime": "2026-07-25T16:00:00+03:00",
         "endTime": "2026-07-25T19:00:00+03:00",
+        "lengthMinutes": 180,
+        "location": "Valo (Pöytä 39)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "CY_BORG",
+          "konsti:minAttendance": 3,
+          "konsti:maxAttendance": 5,
+          "ropecon:contentWarnings": "kannibalismi, hyperkapitalismi",
+          "ropecon:isRevolvingDoor": false,
+          "internal:freeformLocation": "Pöytä 39"
+        }
+      },
+      {
+        "slug": "cy-borg-maksaako-maksa-vaivan-2",
+        "title": "CY_BORG: CYDORA_EATS// Maailmanlopun ruokalähettiläät",
+        "startTime": "2026-07-26T10:00:00+03:00",
+        "endTime": "2026-07-26T13:00:00+03:00",
         "lengthMinutes": 180,
         "location": "Valo (Pöytä 39)",
         "isCancelled": false,
@@ -7440,9 +7457,9 @@
     "description": "Oletko koskaan halunnut kokeilla miltä tuntuu olla Cyberpunk tai Edgerunner kovis tulevaisuuden synkässä maailmassa, jossa valtavat korporaatiot määrittelevät maailman menon ja ihmishenki saattaa olla halvempaa kuin koskaan ennen. \r\n\r\nNyt on sinun tilaisuutesi. \r\n\r\nKaupunki jossa asutte on vihdoin toipumassa yli siitä, kun vuosia sitten joku hullu räjäytti kaupungissa pommin korporaatio alueella ja sen jälkeen kaupungissa on vallinnut kaaos eri jengien välillä. Normaalit ihmiset koittavat käytännössä vain selvitä päivästä seuraavaan. Olette porukalla loikoilemassa tunnetussa palkkasotureiden suosimassa baarissa nimeltä Käärmeen myrkky, kun teidän entuudestaan tuntemanne Fixeri laittaa viestiä uudesta erittäin kiireellisestä keikasta.\r\n\r\nTunnettu pop tähti Mia Flower on ollut kuljetuksessa matkalla konserttiinsa, kun häntä kuljettaneeseen saattueeseen iskettiin tuntemattoman tahon toimesta ja häntä kuljettanut ajoneuvo suistettiin moottoritieltä alas huonommalle alueelle kaupunkia. Kuljetuksesta vastaava turvayhtiö ei tällä hetkellä pysty lähettämään alueelle lisävoimia, mutta viimeisimpien tietojen mukaan kohde on ainakin vielä hengissä muutaman henkilökunnan sekä turvayhtiön  jäsenen lisäksi ja he ovat mahdollisesti piiloutuneet lähialueelle.\r\n\r\nHätääntyneenä tämän pop tähden manageri, joka on myös hänen tätinsä on ottanut yhteyttä kaikkialle etsiäkseen apua pikaisesti ja vastaan tuli teidän tuntemanne fixeri, joka sen jälkeen otti kiireellä yhteyttä luotto joukkoonsa kovanaamoja. Tehtävä on hyvin yksinkertainen, etsikää kyseinen kohde ja tuokaa hänet turvassa takaisin kotiin. Tehtävä saattaa olla vaarallinen, mutta sitä varten kutsuin juuri teidät ja palkkio on myös hyvinkin houkuttelevan kokoinen.\r\n\r\nValitkaa nopeasti tarvittavat varusteet ja sitten teidän on lähdettävä. Aikaa on rajusti ja emme ole edes varmoja kuka tai mikä tämä kuljetusta vastaan hyökännyt taho oikein on. Kyseessä voi olla vain satunnainen väkivallan teko tai mahdollisesti jopa suunniteltu kaappaus.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
-      "date": ["2026-07-25"],
+      "date": ["2026-07-24"],
       "form": ["offer-rpg"],
-      "room": ["sali212"],
+      "room": ["halli3g"],
       "type": ["gaming"],
       "state": ["accepted"],
       "topic": ["rpg"],
@@ -7474,17 +7491,18 @@
       {
         "slug": "kiiltavaa-kromia-ja-enkelimainen-aani-1",
         "title": "Kiiltävää kromia ja enkelimäinen ääni",
-        "startTime": "2026-07-25T23:00:00+03:00",
-        "endTime": "2026-07-26T03:00:00+03:00",
+        "startTime": "2026-07-24T23:00:00+03:00",
+        "endTime": "2026-07-25T03:00:00+03:00",
         "lengthMinutes": 240,
-        "location": "Room 212",
+        "location": "Hall 3g (Pöytä 3)",
         "isCancelled": false,
         "cachedAnnotations": {
           "konsti:rpgSystem": "Cyberpunk RED + mahdolliset lisämoodit + kotisäännöt",
           "konsti:minAttendance": 3,
           "konsti:maxAttendance": 5,
           "ropecon:contentWarnings": "Pelissä on väkivaltaa ja siinä käsitellään teemoina esimerkiksi huumausaineita, jengiväkivaltaa ja hyvin synkkää tulevaisuus dystopiaa, jossa vain rahalla on väliä. Peli sisältää myös kiroilua ja on ylipäätään suositeltu ennemmin yli 18-vuotiaille.\r\n",
-          "ropecon:isRevolvingDoor": false
+          "ropecon:isRevolvingDoor": false,
+          "internal:freeformLocation": "Pöytä 3"
         }
       }
     ]
@@ -8207,9 +8225,9 @@
     "description": "Konekultin teknomanaajat ovat päättäneet viimein avata Pyhän Myrmidonin Transmekanistisen Tutkimusluostarin portit. Niin pitkään kuin rahvas muistaa, ovat nuo teräksiset ovet olleet salvatut.\r\n\r\nRangaistusvankilegioonan taistelijoista koottu ryhmä saa tehtäväkseen tunkeutua pyhätön unohdettuihin holveihin, ja valmistella tien jäljessään tuleville konekultin joukoille. Resuisen ryhmän on ensimmäisinä kohdattava ne lukemattomat kauhut ja kiroukset, jotka perimätiedon mukaan lymyävät kompleksin syvimmissä sopukoissa. Moni voi kohdata näillä käytävillä loppunsa, sillä Jumalkeisari vaatii sovitusta, eikä paluuta vailla onnistumista tulla sallimaan.\r\n\r\nPeli sijoittuu Warhammer 40.000 -tieteisfantasiamaailmaan. Pelaaminen ei vaadi maailman aiempaa tuntemista. Pelaajahahmot eivät ole mahtavia sankareita, vaan rangaistusvankeja, joille Jumalkeisari on armossaan ja laupeudessaan antanut viimeisen mahdollisuuden sovittaa tekonsa.\r\n\r\nPelin sävy on vakava, mutta saattaa lähdemateriaalinsa tavoin sisältää absurdeja piirteitä, eikä huumoriakaan ole kielletty.\r\n\r\nPeli pelataan Mothership-tieteiskauhuroolipelin säännöillä. Pelaaminen ei vaadi sääntöjärjestelmän aiempaa tuntemista.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
-      "date": ["2026-07-24"],
+      "date": ["2026-07-25"],
       "form": ["offer-rpg"],
-      "room": ["valo"],
+      "room": ["halli3f"],
       "type": ["gaming"],
       "state": ["accepted"],
       "topic": ["rpg"],
@@ -8234,10 +8252,10 @@
       {
         "slug": "kolmen-unen-hauta-1",
         "title": "Kolmen unen hauta",
-        "startTime": "2026-07-24T20:00:00+03:00",
-        "endTime": "2026-07-24T23:00:00+03:00",
+        "startTime": "2026-07-25T21:00:00+03:00",
+        "endTime": "2026-07-26T00:00:00+03:00",
         "lengthMinutes": 180,
-        "location": "Valo (Pöytä 15)",
+        "location": "Hall 3f (Pöytä 7)",
         "isCancelled": false,
         "cachedAnnotations": {
           "konsti:rpgSystem": "Mothership",
@@ -8245,7 +8263,7 @@
           "konsti:maxAttendance": 4,
           "ropecon:contentWarnings": "Väkivalta, kauhu, pimeä.",
           "ropecon:isRevolvingDoor": false,
-          "internal:freeformLocation": "Pöytä 15"
+          "internal:freeformLocation": "Pöytä 7"
         }
       }
     ]
@@ -11987,7 +12005,7 @@
     "cachedAnnotations": {
       "konsti:rpgSystem": "Oma, PbtA",
       "konsti:minAttendance": 3,
-      "konsti:maxAttendance": 1,
+      "konsti:maxAttendance": 4,
       "ropecon:contentWarnings": "Väkivaltaa on paljon, ja ogret syövät ihmisiä, mutta siihen ei keskitytä ja se kuvataan piirrettyjen vakavuustasolla. Ogret ovat tyhmiä, mutta tarkoitus ei ole nauraa tyhmille, vaan käyttää tyhmyyttä rajoitteena josta luovuus ja huumori saa voimansa.",
       "ropecon:isRevolvingDoor": false
     },
@@ -12004,7 +12022,7 @@
         "cachedAnnotations": {
           "konsti:rpgSystem": "Oma, PbtA",
           "konsti:minAttendance": 3,
-          "konsti:maxAttendance": 1,
+          "konsti:maxAttendance": 4,
           "ropecon:contentWarnings": "Väkivaltaa on paljon, ja ogret syövät ihmisiä, mutta siihen ei keskitytä ja se kuvataan piirrettyjen vakavuustasolla. Ogret ovat tyhmiä, mutta tarkoitus ei ole nauraa tyhmille, vaan käyttää tyhmyyttä rajoitteena josta luovuus ja huumori saa voimansa.",
           "ropecon:isRevolvingDoor": false,
           "internal:freeformLocation": "Pöytä 4"
@@ -12162,53 +12180,6 @@
           "ropecon:contentWarnings": "Väkivalta, henkinen väkivalta, body horror, kauhu, kuolema, uskonnot",
           "ropecon:isRevolvingDoor": false,
           "internal:freeformLocation": "Pöytä 8"
-        }
-      }
-    ]
-  },
-  {
-    "slug": "onnellisena-elamansa-loppuun-saakka",
-    "title": "Onnellisena elämänsä loppuun saakka",
-    "description": "Olipa kerran kansa, jonka kehitys ulottui niin laajalle, että itse jumalat alkoivat pelätä heidän mahtiaan. Niinpä estääkseen ihmisiä nousemasta itseään vastaan he halkaisivat jokaisen kahteen ja ripottelivat puolikkaat ympäri maata. Näin yksinäiset ihmiset käyttäisivät elämänsä sielunpariaan etsien eivätkä havittelisi jumalten valtaa. Ja ne onnekkaimmat heistä, jotka lopulta löytäisivät etsimänsä, tulisivat jälleen kokonaisiksi ja heidän siteensä rikkumattomaksi, eivätkä he enää haluaisi muuta kuin elää onnellisena elämänsä loppuun saakka.\r\n\r\nOnnellisena elämänsä loppuun saakka on larp täydellisyyden etsimisestä ja elämänmittaisten siteiden solmimisesta, kun auringon- ja kuunlapset kokoontuvat löytääkseen Sielunparinsa. Pelaajille jaetaan hahmostaan lyhyt kuvaus, joka sisältää listan hahmon luonteenpiirteistä sekä toiveista Sielunpariaan kohtaan.\r\n\r\nPeli pelataan kahdessa Luvussa, joiden välissä on aikasiirtymä. Ensimmäisessä Luvussa hahmot valitsevat itselleen sielunparinsa. Lukujen välissä parien pelaajat keskustelevat hahmojensa elämästä aikasiirtymän aikana ja muuttavat hahmojensa luonteenpiirteitä tai odotuksia sen seurauksena. Toisessa Luvussa hahmot epäröivät pitäisikö heidän kuitenkin etsiä Sielunpariaan jostakusta toisesta.",
-    "cachedHosts": "<redacted>",
-    "cachedDimensions": {
-      "date": ["2026-07-25"],
-      "form": ["offer-larp"],
-      "room": ["sali216"],
-      "type": ["gaming"],
-      "state": ["accepted"],
-      "topic": ["larp"],
-      "konsti": ["larp"],
-      "grouping": ["beginners", "dreams"],
-      "language": ["fi"],
-      "age-group": ["adultsnyouth"],
-      "scheduled": ["one", "one-or-more"],
-      "registration": ["konsti"],
-      "revolvingdoor": ["false"]
-    },
-    "cachedAnnotations": {
-      "konsti:minAttendance": 6,
-      "konsti:maxAttendance": 14,
-      "ropecon:otherAuthor": "Miro Aurela, Tiia Vastamäki",
-      "ropecon:contentWarnings": "Sitoutuminen, luopuminen, hylätyksi tuleminen, epätasa-arvoiset ihmissuhteet",
-      "ropecon:isRevolvingDoor": false
-    },
-    "isCancelled": false,
-    "scheduleItems": [
-      {
-        "slug": "onnellisena-elamansa-loppuun-saakka",
-        "title": "Onnellisena elämänsä loppuun saakka",
-        "startTime": "2026-07-25T17:00:00+03:00",
-        "endTime": "2026-07-25T21:00:00+03:00",
-        "lengthMinutes": 240,
-        "location": "Room 216",
-        "isCancelled": false,
-        "cachedAnnotations": {
-          "konsti:minAttendance": 6,
-          "konsti:maxAttendance": 14,
-          "ropecon:otherAuthor": "Miro Aurela, Tiia Vastamäki",
-          "ropecon:contentWarnings": "Sitoutuminen, luopuminen, hylätyksi tuleminen, epätasa-arvoiset ihmissuhteet",
-          "ropecon:isRevolvingDoor": false
         }
       }
     ]
@@ -13068,6 +13039,70 @@
           "ropecon:isRevolvingDoor": false,
           "internal:freeformLocation": "Pöytä 6"
         }
+      }
+    ]
+  },
+  {
+    "slug": "pikamaalauskilpailu-speed-painting-contest",
+    "title": "Pikamaalauskilpailu / Speed Painting Contest",
+    "description": "Pikamaalauskisassa tavoitteena on maalata annettu miniatyyri mahdollisimman hyvin annetussa ajassa. Aikaa maalaamiseen on varattu yksi tunti, ja kolme parasta figua palkitaan.\r\n\r\nEt tarvitse kisaan omaa figua, vaan saat sen toivomallasi pohjamaalilla juuri ennen suorituksen alkua. Luonnollisesti kisatyön saa ottaa mukaansa tuomaroinnin jälkeen.\r\n\r\nOmia maalausvälineitä (paletit, siveltimet, maalit) saa käyttää, mutta halutessaan voi myös hyödyntää figumaalauspisteen tarjontaa.\r\n\r\n====\r\n\r\nThe goal in the Speed Painting Contest is to paint a given miniature as well as possible in a given time. The contestants have one hour to paint, and the top three will be awarded prizes.\r\n\r\nBringing your own miniature into the contest is not needed, as you will be provided one right before the beginning. Naturally, participants can take their contest work with them after the judges have finished the evaluation.\r\n\r\nYou can participate in the contest either using your own painting supplies (palettes, brushes, paints), or you can take advantage of the selection at Ropecon’s Miniature Painting Point.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-07-24", "2026-07-25"],
+      "room": ["halli5figumaalaus"],
+      "type": ["other"],
+      "topic": ["figures"],
+      "konsti": ["other"],
+      "grouping": ["beginners", "dreams"],
+      "language": ["en", "fi"],
+      "age-group": ["everyone"],
+      "scheduled": ["multiple", "one-or-more"],
+      "inclusivity": ["fingers", "irritating-chemicals"],
+      "registration": ["konsti"],
+      "revolvingdoor": ["false"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "pikamaalauskilpailu-speed-painting-contest",
+        "title": "Pikamaalauskilpailu / Speed Painting Contest",
+        "startTime": "2026-07-24T17:00:00+03:00",
+        "endTime": "2026-07-24T18:30:00+03:00",
+        "lengthMinutes": 90,
+        "location": "Hall 5 Miniature Painting",
+        "isCancelled": false,
+        "cachedAnnotations": {}
+      },
+      {
+        "slug": "pikamaalauskilpailu-speed-painting-contest-2",
+        "title": "Pikamaalauskilpailu / Speed Painting Contest",
+        "startTime": "2026-07-25T11:00:00+03:00",
+        "endTime": "2026-07-25T12:30:00+03:00",
+        "lengthMinutes": 90,
+        "location": "Hall 5 Miniature Painting",
+        "isCancelled": false,
+        "cachedAnnotations": {}
+      },
+      {
+        "slug": "pikamaalauskilpailu-speed-painting-contest-3",
+        "title": "Pikamaalauskilpailu / Speed Painting Contest",
+        "startTime": "2026-07-25T14:00:00+03:00",
+        "endTime": "2026-07-25T15:30:00+03:00",
+        "lengthMinutes": 90,
+        "location": "Hall 5 Miniature Painting",
+        "isCancelled": false,
+        "cachedAnnotations": {}
+      },
+      {
+        "slug": "pikamaalauskilpailu-speed-painting-contest-4",
+        "title": "Pikamaalauskilpailu / Speed Painting Contest",
+        "startTime": "2026-07-25T18:00:00+03:00",
+        "endTime": "2026-07-25T19:30:00+03:00",
+        "lengthMinutes": 90,
+        "location": "Hall 5 Miniature Painting",
+        "isCancelled": false,
+        "cachedAnnotations": {}
       }
     ]
   },
@@ -17863,8 +17898,8 @@
       {
         "slug": "unelias-kaivopuisto-1",
         "title": "Unelias Kaivopuisto",
-        "startTime": "2026-07-24T21:00:00+03:00",
-        "endTime": "2026-07-25T00:00:00+03:00",
+        "startTime": "2026-07-24T23:00:00+03:00",
+        "endTime": "2026-07-25T02:00:00+03:00",
         "lengthMinutes": 180,
         "location": "Valo (Pöytä 21)",
         "isCancelled": false,
@@ -18237,7 +18272,7 @@
       "age-group": ["kids"],
       "scheduled": ["one", "one-or-more"],
       "inclusivity": ["no-recordings-or-spoken-text"],
-      "registration": ["konsti"],
+      "registration": ["ropelarp"],
       "revolvingdoor": ["false"]
     },
     "cachedAnnotations": {

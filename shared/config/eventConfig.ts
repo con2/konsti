@@ -95,6 +95,50 @@ export const eventConfig: EventConfig = {
       type: SignupQuestionType.TEXT,
       selectOptions: [],
     },
+    {
+      programItemId: "pikamaalauskilpailu-speed-painting-contest",
+      questionFi: "Haluan, että maalattavan figuni pohjaväri on",
+      questionEn: "I want my miniature to be primed",
+      private: false,
+      type: SignupQuestionType.SELECT,
+      selectOptions: [
+        { optionFi: "Musta", optionEn: "Black" },
+        { optionFi: "Valkoinen", optionEn: "White" },
+      ],
+    },
+    {
+      programItemId: "pikamaalauskilpailu-speed-painting-contest-2",
+      questionFi: "Haluan, että maalattavan figuni pohjaväri on",
+      questionEn: "I want my miniature to be primed",
+      private: false,
+      type: SignupQuestionType.SELECT,
+      selectOptions: [
+        { optionFi: "Musta", optionEn: "Black" },
+        { optionFi: "Valkoinen", optionEn: "White" },
+      ],
+    },
+    {
+      programItemId: "pikamaalauskilpailu-speed-painting-contest-3",
+      questionFi: "Haluan, että maalattavan figuni pohjaväri on",
+      questionEn: "I want my miniature to be primed",
+      private: false,
+      type: SignupQuestionType.SELECT,
+      selectOptions: [
+        { optionFi: "Musta", optionEn: "Black" },
+        { optionFi: "Valkoinen", optionEn: "White" },
+      ],
+    },
+    {
+      programItemId: "pikamaalauskilpailu-speed-painting-contest-4",
+      questionFi: "Haluan, että maalattavan figuni pohjaväri on",
+      questionEn: "I want my miniature to be primed",
+      private: false,
+      type: SignupQuestionType.SELECT,
+      selectOptions: [
+        { optionFi: "Musta", optionEn: "Black" },
+        { optionFi: "Valkoinen", optionEn: "White" },
+      ],
+    },
   ],
 
   tournamentSignupQuestion: null,
