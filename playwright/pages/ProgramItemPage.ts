@@ -37,8 +37,26 @@ export class ProgramItemPage extends BasePage {
     return this.page.getByText("Add additional info field").locator("..");
   }
 
+  // Exact name: a bare /hide program item/i would also match the
+  // "Unhide program item" button
+  get hideButton(): Locator {
+    return this.page.getByRole("button", { name: "Hide program item" });
+  }
+
+  get showButton(): Locator {
+    return this.page.getByRole("button", { name: "Unhide program item" });
+  }
+
+  get addSignupQuestionButton(): Locator {
+    return this.page.getByRole("button", { name: "Add sign-up question" });
+  }
+
   async hide(): Promise<void> {
-    await this.page.getByRole("button", { name: /hide program item/i }).click();
+    await this.hideButton.click();
+  }
+
+  async show(): Promise<void> {
+    await this.showButton.click();
   }
 
   async goBack(): Promise<void> {
@@ -46,9 +64,11 @@ export class ProgramItemPage extends BasePage {
   }
 
   async addSignupQuestion(): Promise<void> {
-    await this.page
-      .getByRole("button", { name: "Add sign-up question" })
-      .click();
+    await this.addSignupQuestionButton.click();
+  }
+
+  async cancel(): Promise<void> {
+    await this.page.getByRole("button", { name: "Cancel" }).click();
   }
 
   async fillSelectOption(

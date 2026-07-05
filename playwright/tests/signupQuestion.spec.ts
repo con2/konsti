@@ -64,6 +64,36 @@ test("Admin adds a multiple choice signup question to a program item", async ({
   await expect(programItemPage.deleteSignupQuestionButton).toBeVisible();
 });
 
+test("Admin cancels the question form and deletes a saved question", async ({
+  page,
+  request,
+}) => {
+  await seedProgramItem(request);
+  await login(page, request, { username: "admin", password: "test" });
+  await page.goto(`/program/item/${testProgramItem.programItemId}`);
+
+  const programItemPage = new ProgramItemPage(page);
+
+  // Cancel closes the question form without saving
+  await programItemPage.addSignupQuestion();
+  await expect(programItemPage.questionFinnishInput).toBeVisible();
+  await programItemPage.cancel();
+  await expect(programItemPage.questionFinnishInput).toBeHidden();
+  await expect(programItemPage.addSignupQuestionButton).toBeVisible();
+
+  // Add a question, then delete it
+  await programItemPage.addSignupQuestion();
+  await programItemPage.questionFinnishInput.fill("Mikä on hahmoluokkasi");
+  await programItemPage.questionEnglishInput.fill(
+    "What is your character class?",
+  );
+  await programItemPage.save();
+  await expect(programItemPage.deleteSignupQuestionButton).toBeVisible();
+
+  await programItemPage.deleteSignupQuestionButton.click();
+  await expect(programItemPage.addSignupQuestionButton).toBeVisible();
+});
+
 test("User answers a public text signup question on direct signup", async ({
   page,
   request,
