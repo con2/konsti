@@ -60,7 +60,7 @@ test("Can create and join a group and receive a shared lottery result", async ({
   await programList.gotoAllProgram();
   const firstProgramItem = programList.firstItem();
   await firstProgramItem.lotterySignup();
-  await firstProgramItem.confirm();
+  await firstProgramItem.confirmLotterySignup();
 
   // Logout and login with different user
   await groupPage.navigation.logout();
