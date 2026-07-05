@@ -37,7 +37,9 @@ import { closeServer, startServer } from "server/utils/server";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import {
   DeleteSignupQuestionRequest,
+  PostSettingsResponse,
   PostSignupQuestionRequest,
+  SettingsPayload,
 } from "shared/types/api/settings";
 import {
   createSettings,
@@ -102,6 +104,8 @@ describe(`POST ${ApiEndpoint.SETTINGS}`, () => {
     const testSettings: Settings = {
       hiddenProgramItemIds: [],
       appOpen: true,
+      adminMessageFi: "",
+      adminMessageEn: "",
       signupQuestions: [testSignupQuestion],
       signupStrategy: EventSignupStrategy.LOTTERY,
       programUpdateLastRun: "2023-05-07T07:00:00.000Z",
@@ -142,6 +146,37 @@ describe(`POST ${ApiEndpoint.SETTINGS}`, () => {
       message: "Update settings success",
       settings: { ...testSettings, signupStrategy: EventSignupStrategy.DIRECT },
     });
+  });
+
+  test("should store and return admin message in both languages", async () => {
+    const adminMessageFi = "Havaittu ongelma, selvitämme asiaa";
+    const adminMessageEn = "Some issue detected, we're investigating";
+
+    const updateResponse = await request(server)
+      .post(ApiEndpoint.SETTINGS)
+      .send({ adminMessageFi, adminMessageEn })
+      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+
+    expect(updateResponse.status).toEqual(200);
+    expect((updateResponse.body as PostSettingsResponse).status).toEqual(
+      "success",
+    );
+
+    const getResponse = await request(server).get(ApiEndpoint.SETTINGS);
+    const settings = getResponse.body as SettingsPayload;
+    expect(settings.adminMessageFi).toEqual(adminMessageFi);
+    expect(settings.adminMessageEn).toEqual(adminMessageEn);
+
+    // Clearing the message stores empty strings
+    await request(server)
+      .post(ApiEndpoint.SETTINGS)
+      .send({ adminMessageFi: "", adminMessageEn: "" })
+      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+
+    const clearedResponse = await request(server).get(ApiEndpoint.SETTINGS);
+    const clearedSettings = clearedResponse.body as SettingsPayload;
+    expect(clearedSettings.adminMessageFi).toEqual("");
+    expect(clearedSettings.adminMessageEn).toEqual("");
   });
 });
 

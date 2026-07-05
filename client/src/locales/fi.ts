@@ -38,6 +38,8 @@ export const translationFI = {
     removeSignupQuestion: "Poista ilmoittautumiskysymys",
     close: "Sulje",
     scrollToTop: "Palaa sivun yläreunaan",
+    saveAdminMessage: "Tallenna viesti",
+    clearAdminMessage: "Poista viesti",
   },
   username: "Nimimerkki",
   password: "Salasana",
@@ -624,6 +626,7 @@ export const translationFI = {
     showPassword: "Näytä salasana",
     hidePassword: "Piilota salasana",
     newNotifications: "Uusia ilmoituksia",
+    closeAdminMessage: "Sulje viesti",
   },
   admin: {
     sentryTesting: "Sentryn testaus",
@@ -643,6 +646,10 @@ export const translationFI = {
         "Ohjelma ei enää käytä arvontailmoittautumista",
       programItemTimeChanged: "Ohjelman alkuaika muuttunut",
     },
+    adminMessageTitle: "Väliaikainen viesti",
+    adminMessageInfo:
+      "Näytetään palkkina kaikille käyttäjille. Käyttäjät voivat sulkea sen; uusi tai muokattu viesti näytetään uudelleen. Molemmat kielet vaaditaan tallennukseen; tyhjennä poistaaksesi.",
+    adminMessagePlaceholder: "Esimerkiksi: Havaittu ongelma, selvitämme asiaa",
   },
   email: {
     notifications: {

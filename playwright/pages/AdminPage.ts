@@ -19,6 +19,22 @@ export class AdminPage extends BasePage {
     return this.page.locator('select:has(option:has-text("Lottery + Direct"))');
   }
 
+  get adminMessageFiInput(): Locator {
+    return this.page.getByLabel(/in finnish/i);
+  }
+
+  get adminMessageEnInput(): Locator {
+    return this.page.getByLabel(/in english/i);
+  }
+
+  get saveAdminMessageButton(): Locator {
+    return this.page.getByRole("button", { name: "Save message" });
+  }
+
+  get clearAdminMessageButton(): Locator {
+    return this.page.getByRole("button", { name: "Clear message" });
+  }
+
   async open(): Promise<void> {
     await this.navigation.gotoAdmin();
   }

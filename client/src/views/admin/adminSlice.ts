@@ -24,6 +24,8 @@ const initialState = (): AdminState => {
     hiddenProgramItemIds: [],
     activeAssignmentTime: "",
     appOpen: true,
+    adminMessageFi: "",
+    adminMessageEn: "",
     assignmentResponseMessage: "",
     signupQuestions: [],
     signupStrategy: undefined,
@@ -54,6 +56,8 @@ const adminSlice = createSlice({
         ...state,
         hiddenProgramItemIds: action.payload.hiddenProgramItemIds,
         appOpen: action.payload.appOpen,
+        adminMessageFi: action.payload.adminMessageFi,
+        adminMessageEn: action.payload.adminMessageEn,
         signupQuestions: action.payload.signupQuestions,
         signupStrategy: action.payload.signupStrategy,
         loginProvider: action.payload.loginProvider,
@@ -87,6 +91,17 @@ const adminSlice = createSlice({
       action: PayloadAction<boolean>,
     ): AdminState {
       return { ...state, appOpen: action.payload };
+    },
+
+    submitSetAdminMessageAsync(
+      state,
+      action: PayloadAction<{ adminMessageFi: string; adminMessageEn: string }>,
+    ): AdminState {
+      return {
+        ...state,
+        adminMessageFi: action.payload.adminMessageFi,
+        adminMessageEn: action.payload.adminMessageEn,
+      };
     },
 
     submitAssignmentResponseMessageAsync(
@@ -140,6 +155,7 @@ export const {
   submitSetLoginProviderAsync,
   submitSetEmailNotificationTriggersAsync,
   submitToggleAppOpenAsync,
+  submitSetAdminMessageAsync,
   submitAssignmentResponseMessageAsync,
   updateSignupQuestions,
   addError,

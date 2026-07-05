@@ -6,6 +6,9 @@ interface Props {
   onChange: (event: ChangeEvent<HTMLTextAreaElement>) => void;
   rows?: number;
   value: string;
+  placeholder?: string;
+  maxLength?: number;
+  disabled?: boolean;
 }
 
 const DEFAULT_ROW_COUNT = 4;
@@ -15,6 +18,9 @@ export const TextArea = ({
   onChange,
   rows = DEFAULT_ROW_COUNT,
   value,
+  placeholder,
+  maxLength,
+  disabled,
 }: Props): ReactElement => {
   return (
     <StyledTextArea
@@ -22,6 +28,9 @@ export const TextArea = ({
       onChange={onChange}
       rows={rows}
       value={value}
+      placeholder={placeholder}
+      maxLength={maxLength}
+      disabled={disabled}
     />
   );
 };

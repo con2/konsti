@@ -4,6 +4,7 @@ import {
   EventSignupStrategy,
 } from "shared/config/eventConfigTypes";
 import { EmailNotificationTrigger } from "shared/types/emailNotification";
+import { ADMIN_MESSAGE_LENGTH_MAX } from "shared/constants/validation";
 
 export enum SignupQuestionType {
   TEXT = "text",
@@ -33,6 +34,8 @@ export type SignupQuestion = z.infer<typeof SignupQuestionSchema>;
 export const SettingsSchema = z.object({
   hiddenProgramItemIds: z.array(z.string()),
   appOpen: z.boolean(),
+  adminMessageFi: z.string().max(ADMIN_MESSAGE_LENGTH_MAX),
+  adminMessageEn: z.string().max(ADMIN_MESSAGE_LENGTH_MAX),
   signupQuestions: z.array(SignupQuestionSchema),
   signupStrategy: z.enum(EventSignupStrategy),
   programUpdateLastRun: z.string(),

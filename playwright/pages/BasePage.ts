@@ -20,4 +20,20 @@ export class BasePage {
   get scrollToTopButton(): Locator {
     return this.page.getByRole("button", { name: /scroll to top/i });
   }
+
+  // The header language dropdown, present on every page
+  async selectLanguage(value: "fi" | "en"): Promise<void> {
+    await this.page.locator("#language").selectOption(value);
+  }
+
+  // The app-wide temporary admin message banner (set by an admin, dismissible by anyone)
+  get adminMessageBanner(): Locator {
+    return this.page.getByTestId("admin-message-banner");
+  }
+
+  async dismissAdminMessage(): Promise<void> {
+    await this.adminMessageBanner
+      .getByRole("button", { name: /close message/i })
+      .click();
+  }
 }
