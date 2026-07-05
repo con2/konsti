@@ -1,4 +1,5 @@
 import { Locator } from "@playwright/test";
+import { ApiEndpoint } from "shared/constants/apiEndpoints";
 
 // A single program-item-container row in the program list, with its sign-up controls
 export class ProgramItemCard {
@@ -46,6 +47,20 @@ export class ProgramItemCard {
 
   async confirm(): Promise<void> {
     await this.root.getByRole("button", { name: /confirm/i }).click();
+  }
+
+  // Confirm a lottery signup and wait for the POST to be persisted, so callers can
+  // mutate server state right after without racing the in-flight signup request
+  async confirmLotterySignup(): Promise<void> {
+    const signupResponse = this.root
+      .page()
+      .waitForResponse(
+        (response) =>
+          response.url().includes(ApiEndpoint.LOTTERY_SIGNUP) &&
+          response.request().method() === "POST",
+      );
+    await this.confirm();
+    await signupResponse;
   }
 
   async favorite(): Promise<void> {

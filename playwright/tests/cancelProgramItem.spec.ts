@@ -108,7 +108,7 @@ test("Show event log notification when program item with lottery sign-up is canc
   const firstProgramItem = programList.firstItem();
 
   await firstProgramItem.lotterySignup();
-  await firstProgramItem.confirm();
+  await firstProgramItem.confirmLotterySignup();
 
   // Cancel program item on background before lottery has run
   await addProgramItems(request, [
@@ -222,7 +222,7 @@ test("Show event log notification when program item with lottery sign-up doesn't
   const firstProgramItem = programList.firstItem();
 
   await firstProgramItem.lotterySignup();
-  await firstProgramItem.confirm();
+  await firstProgramItem.confirmLotterySignup();
 
   // Change signup type away from Konsti on background before lottery has run
   await addProgramItems(request, [
@@ -325,7 +325,7 @@ test("Show event log notification when program item with lottery sign-up is dele
   const firstProgramItem = programList.firstItem();
 
   await firstProgramItem.lotterySignup();
-  await firstProgramItem.confirm();
+  await firstProgramItem.confirmLotterySignup();
 
   // Delete program item on background (empty import removes it from DB)
   await addProgramItems(request, []);
@@ -373,7 +373,7 @@ test("Show event log notification when program item with lottery sign-up is dele
   const firstProgramItem = programList.firstItem();
 
   await firstProgramItem.lotterySignup();
-  await firstProgramItem.confirm();
+  await firstProgramItem.confirmLotterySignup();
 
   // Advance time past lottery signup end so lottery is considered "run"
   await postTestSettings(request, {
@@ -427,7 +427,7 @@ test("Show event log notification when program item with lottery sign-up changes
   const firstProgramItem = programList.firstItem();
 
   await firstProgramItem.lotterySignup();
-  await firstProgramItem.confirm();
+  await firstProgramItem.confirmLotterySignup();
 
   // Change program type to a non-lottery type on background before lottery has run
   await addProgramItems(request, [

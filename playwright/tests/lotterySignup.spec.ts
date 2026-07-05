@@ -58,7 +58,7 @@ test("Add lottery signup", async ({ page, request }) => {
     await firstProgramItem.title.textContent();
 
   await firstProgramItem.lotterySignup();
-  await firstProgramItem.confirm();
+  await firstProgramItem.confirmLotterySignup();
 
   // Go to My Program and check lottery signup program item title
   await programList.gotoMyProgram();
@@ -113,7 +113,7 @@ test("Receive spot in lottery signup", async ({ page, request }) => {
   const firstProgramItem = programList.firstItem();
 
   await firstProgramItem.lotterySignup();
-  await firstProgramItem.confirm();
+  await firstProgramItem.confirmLotterySignup();
 
   // Do assignment on background
   await postAssignment(request, startTime);
@@ -180,7 +180,7 @@ test("Did not receive spot in lottery signup", async ({ page, request }) => {
   const firstProgramItem = programList.firstItem();
 
   await firstProgramItem.lotterySignup();
-  await firstProgramItem.confirm();
+  await firstProgramItem.confirmLotterySignup();
 
   // Do assignment on background
   await postAssignment(request, startTime);
@@ -270,11 +270,11 @@ test("Receive spot in lottery signup, with multiple lottery program types", asyn
 
   const firstProgramItem = programList.itemByTitle(firstProgramItemTitle);
   await firstProgramItem.lotterySignup();
-  await firstProgramItem.confirm();
+  await firstProgramItem.confirmLotterySignup();
 
   const secondProgramItem = programList.itemByTitle(secondProgramItemTitle);
   await secondProgramItem.lotterySignup();
-  await secondProgramItem.confirm();
+  await secondProgramItem.confirmLotterySignup();
 
   // Do assignment on background
   await postAssignment(request, startTime);
