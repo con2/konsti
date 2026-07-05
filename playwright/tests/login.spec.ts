@@ -102,13 +102,19 @@ test("Login redirect back to program item", async ({ page, request }) => {
 
   const firstProgramItem = programList.firstItem();
 
+  // Capture the title before navigating - after login both locators would
+  // resolve to the same element, making the comparison self-referential
+  const firstProgramItemTitle = await firstProgramItem.title.textContent();
+
   await firstProgramItem.title.click();
   await page.waitForURL("/program/item/*");
 
   await loginPage.loginToSignUpLink.click();
   await loginPage.fillAndSubmit(username, password);
 
-  const programItemTitle = await programItemPage.titleLink.textContent();
+  // Login should redirect back to the program item page
+  await page.waitForURL("/program/item/*");
 
-  expect(programItemTitle).toEqual(await firstProgramItem.title.textContent());
+  const programItemTitle = await programItemPage.titleLink.textContent();
+  expect(programItemTitle).toEqual(firstProgramItemTitle);
 });

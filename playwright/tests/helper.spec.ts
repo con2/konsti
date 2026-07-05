@@ -24,7 +24,7 @@ test("Helper can find a user and change their password", async ({
 }) => {
   await populateDb(request, { clean: true, users: true, admin: true });
   await postSettings(request, { loginProvider: LoginProvider.LOCAL });
-  await login(page, request, { username: "admin", password: "test" });
+  await login(page, request, { username: "helper", password: "test" });
   await page.goto("/");
 
   const helperPage = new HelperPage(page);
