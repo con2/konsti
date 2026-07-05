@@ -17,6 +17,13 @@ import type { Plugin } from "vite";
 // reject bodies over ~64KB and the full coverage object is always larger, so
 // a small delta is the only payload that can survive page dismissal. The
 // middleware folds the delta into the already-written session file
+//
+// The periodic flush polls the counters on a short interval and only posts
+// when they changed since the last successful flush. The interval must be
+// short because Playwright force-closes pages without firing pagehide, so
+// anything not flushed before the test ends is lost - with a slow blind
+// interval, a short spec's final interaction (often the whole point of an
+// error-path test) never reached the session file
 
 const coverageDir = path.join(
   import.meta.dirname,
@@ -83,11 +90,16 @@ const computeDelta = (current, previous) => {
   return delta;
 };
 
+// Single in-flight request: a second POST racing the first could land out of
+// order and overwrite newer counters with older ones
+let inFlight = false;
+
 const flushFull = () => {
   const coverage = window.__coverage__;
-  if (!coverage) {
+  if (!coverage || inFlight) {
     return;
   }
+  inFlight = true;
   const snapshot = counters(coverage);
   void fetch("/__coverage__/" + sessionId, {
     method: "POST",
@@ -99,7 +111,22 @@ const flushFull = () => {
         lastSent = snapshot;
       }
     })
-    .catch(() => {});
+    .catch(() => {})
+    .finally(() => {
+      inFlight = false;
+    });
+};
+
+const flushIfChanged = () => {
+  const coverage = window.__coverage__;
+  if (!coverage || inFlight) {
+    return;
+  }
+  const delta = computeDelta(counters(coverage), lastSent);
+  if (Object.keys(delta).length === 0) {
+    return;
+  }
+  flushFull();
 };
 
 const flushDelta = () => {
@@ -125,7 +152,7 @@ const flushDelta = () => {
 // that closes before the first interval tick keeps its boot coverage, and
 // the pagehide delta then has a base to build on
 window.addEventListener("load", flushFull);
-setInterval(flushFull, 1000);
+setInterval(flushIfChanged, 150);
 window.addEventListener("pagehide", flushDelta);
 `;
 
