@@ -35,6 +35,12 @@ import reports from "istanbul-reports";
 //   otherwise a function counts as covered when any line inside its body has
 //   hits - the V8-derived data's own function entries are mostly transform
 //   helpers with meaningless positions, so they cannot be position-matched
+// - Module-scope statements are credited whenever the foreign data shows the
+//   module executed at all: evaluating a module runs every top-level
+//   statement, but the browser data's remap collapses many of them (e.g.
+//   styled-components declarations, whose instrumented positions fall inside
+//   template literals with no mapping back to the source), so they can never
+//   match by position
 // - Branch hits are only projected on exact matches, so branch coverage is
 //   mostly determined by the unit tests
 //
@@ -177,6 +183,64 @@ const firstOnLine = (
   return entries ? [entries[0].id] : undefined;
 };
 
+const rangesEqual = (a: Range, b: Range): boolean =>
+  a.start.line === b.start.line &&
+  a.start.column === b.start.column &&
+  a.end.line === b.end.line &&
+  a.end.column === b.end.column;
+
+const containsRange = (outer: Range, inner: Range): boolean => {
+  const startsBefore =
+    outer.start.line < inner.start.line ||
+    (outer.start.line === inner.start.line &&
+      outer.start.column <= inner.start.column);
+  const endsAfter =
+    outer.end.line > inner.end.line ||
+    (outer.end.line === inner.end.line && outer.end.column >= inner.end.column);
+  return startsBefore && endsAfter;
+};
+
+// Evaluating a module runs all of its top-level statements, so any foreign
+// hit in the file proves them executed. Only statements outside every
+// function body and not nested inside another statement qualify - a statement
+// inside a top-level `if` or `try` block is contained by that statement and
+// stays uncredited, because module evaluation does not guarantee it ran
+const creditModuleScopeStatements = (
+  canonical: FileCoverageData,
+  foreign: FileCoverageData,
+): void => {
+  const moduleExecuted =
+    Object.values(foreign.s).some((hits) => hits > 0) ||
+    Object.values(foreign.f).some((hits) => hits > 0);
+  if (!moduleExecuted) {
+    return;
+  }
+
+  const functionBodies = Object.values(canonical.fnMap).map((fn) => fn.loc);
+  const statements = Object.entries(canonical.statementMap);
+  for (const [id, range] of statements) {
+    if (canonical.s[id] > 0) {
+      continue;
+    }
+    const insideFunction = functionBodies.some(
+      (body) => !rangesEqual(body, range) && containsRange(body, range),
+    );
+    if (insideFunction) {
+      continue;
+    }
+    const insideOtherStatement = statements.some(
+      ([otherId, otherRange]) =>
+        otherId !== id &&
+        !rangesEqual(otherRange, range) &&
+        containsRange(otherRange, range),
+    );
+    if (insideOtherStatement) {
+      continue;
+    }
+    canonical.s[id] = 1;
+  }
+};
+
 // Adds the hits of a foreign coverage entry (browser or V8-derived) to the
 // canonical istanbul entry of the same file
 const projectHits = (
@@ -273,6 +337,8 @@ const projectHits = (
       targetHits[index] += hits;
     }
   }
+
+  creditModuleScopeStatements(canonical, foreign);
 };
 
 const buildMergedCoverageMap = async (): Promise<CoverageMap | undefined> => {
