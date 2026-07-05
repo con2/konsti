@@ -9,6 +9,11 @@ export class ProgramListPage extends BasePage {
     return this.page.locator('[data-testid="program-item-container"]');
   }
 
+  // The sticky start-time group headers between list items
+  get timeHeadings(): Locator {
+    return this.page.getByRole("heading", { level: 2 });
+  }
+
   get myProgramTab(): Locator {
     return this.page.getByTestId("my-program-tab");
   }

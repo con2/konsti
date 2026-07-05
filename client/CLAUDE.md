@@ -86,6 +86,8 @@ i18next, English + Finnish. Locale files: `client/src/locales/{en,fi}.ts` (deepl
 
 Vitest with the jsdom environment; setup in `client/src/test/setupTests.ts` (initializes i18next with EN and dayjs). Coverage via Istanbul. There are few committed unit tests today — add them alongside the component/view under test.
 
+**Don't write component (rendering) tests** — there is no testing-library dependency, and rendered UI behavior is covered by the Playwright E2E suite instead (see [playwright/CLAUDE.md](../playwright/CLAUDE.md)). Keep client vitest tests to pure functions/utils (e.g. `programItemUtils.test.ts`); when a fix changes what a component renders, add or extend an E2E spec.
+
 For the combined-coverage flow (`yarn coverage`, see the root CLAUDE.md), starting the dev server with `COVERAGE=true` serves istanbul-instrumented code (`vite-plugin-istanbul`) and disables the react-compiler babel plugin (its rewrites break the coverage source positions). `client/coverageCollectorPlugin.ts` then harvests the browser's `window.__coverage__` server-side: it injects a flush script into `index.html` and receives the data on a `/__coverage__` dev-server middleware, so the Playwright suite needs no coverage hooks of its own.
 
 ## Other Notes
