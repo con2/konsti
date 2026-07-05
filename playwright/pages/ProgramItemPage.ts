@@ -16,6 +16,13 @@ export class ProgramItemPage extends BasePage {
     return this.page.getByRole("link", { name: "Back" });
   }
 
+  // The details row showing the program item's start and end time
+  get timeRow(): Locator {
+    return this.page
+      .getByRole("heading", { name: "Time", exact: true })
+      .locator("..");
+  }
+
   get deleteSignupQuestionButton(): Locator {
     return this.page.getByRole("button", { name: "Delete sign-up question" });
   }

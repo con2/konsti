@@ -1,8 +1,10 @@
 import { ReactElement, useRef } from "react";
 import styled from "styled-components";
 import { capitalize } from "remeda";
-import { getWeekdayAndTime } from "shared/utils/timeFormatter";
+import dayjs from "dayjs";
 import { MOBILE_MARGIN } from "client/globalStyle";
+import { getFormattedTime } from "client/views/program-item/programItemUtils";
+import { getTimeNow } from "client/utils/getTimeNow";
 
 interface Props {
   startTime: string;
@@ -13,7 +15,10 @@ export const ProgramItemListTitle = ({ startTime }: Props): ReactElement => {
 
   return (
     <ProgramItemListTitleContainer key={startTime} ref={intersectionRef}>
-      <StyledHeader>{capitalize(getWeekdayAndTime(startTime))}</StyledHeader>
+      {/* Include the date outside event week so the weekday isn't ambiguous */}
+      <StyledHeader>
+        {capitalize(getFormattedTime(dayjs(startTime), getTimeNow()))}
+      </StyledHeader>
     </ProgramItemListTitleContainer>
   );
 };

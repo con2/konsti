@@ -2,10 +2,12 @@ import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { capitalize } from "remeda";
-import { getTime, getWeekdayAndTime } from "shared/utils/timeFormatter";
+import dayjs from "dayjs";
 import { ProgramItem } from "shared/types/models/programItem";
 import { InfoText, InfoTextVariant } from "client/components/InfoText";
 import { TextWithLinks } from "client/markdown/components/TextWithLinks";
+import { getFormattedInterval } from "client/views/program-item/programItemUtils";
+import { getTimeNow } from "client/utils/getTimeNow";
 
 const NBSP = "\u{A0}";
 
@@ -22,8 +24,14 @@ export const ProgramItemDetails = ({ programItem }: Props): ReactElement => {
 
     const minutesDuration = minutes ? ` ${minutes}${NBSP}${t("minutes")}` : "";
 
-    // Note that the dash should be an en dash
-    return `${capitalize(getWeekdayAndTime(programItem.startTime))}–${getTime(programItem.endTime)} (${hours}${NBSP}${t("hours")}${minutesDuration})`;
+    // Include the date outside event week so the weekday isn't ambiguous
+    const interval = getFormattedInterval(
+      dayjs(programItem.startTime),
+      dayjs(programItem.endTime),
+      getTimeNow(),
+    );
+
+    return `${capitalize(interval)} (${hours}${NBSP}${t("hours")}${minutesDuration})`;
   };
 
   return (
