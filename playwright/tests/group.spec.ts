@@ -130,6 +130,29 @@ test("Group member can leave the group", async ({ page, request }) => {
   await expect(groupPage.createGroupButton).toBeVisible();
 });
 
+test("Show error when joining a group that does not exist", async ({
+  page,
+  request,
+}) => {
+  await populateDb(request, { clean: true, users: true, admin: true });
+  await postSettings(request, {
+    signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
+  });
+  await postTestSettings(request, { testTime: config.event().eventStartTime });
+
+  const groupPage = new GroupPage(page);
+
+  await login(page, request, { username: "test1", password: "test" });
+  await page.goto("/");
+  await groupPage.goto();
+  await groupPage.joinGroup("123-234-345");
+
+  await expect(groupPage.main).toContainText("Group does not exist");
+
+  // User is still not in a group
+  await expect(groupPage.createGroupButton).toBeVisible();
+});
+
 test("Group creator can close the group", async ({ page, request }) => {
   await populateDb(request, { clean: true, users: true, admin: true });
   await postSettings(request, {

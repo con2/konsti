@@ -44,3 +44,76 @@ test("Register a new account and finalize email notifications", async ({
   await registrationPage.navigation.open();
   await expect(registrationPage.navigation.logoutLink).toBeVisible();
 });
+
+test("Show error for invalid registration code", async ({ page, request }) => {
+  await populateDb(request, { clean: true, admin: true });
+  await postSettings(request, {
+    loginProvider: LoginProvider.LOCAL,
+    appOpen: true,
+  });
+
+  await page.goto("/registration");
+
+  const registrationPage = new RegistrationPage(page);
+
+  await registrationPage.usernameInput.fill("newuser");
+  await registrationPage.passwordInput.fill("password");
+  await registrationPage.serialInput.fill("not-a-valid-code");
+  await registrationPage.descriptionCheckbox.check();
+  await registrationPage.createAccount();
+
+  await expect(registrationPage.main).toContainText(
+    "Invalid registration code",
+  );
+});
+
+test("Show error when username is already taken", async ({ page, request }) => {
+  await populateDb(request, { clean: true, users: true, admin: true });
+  await postSettings(request, {
+    loginProvider: LoginProvider.LOCAL,
+    appOpen: true,
+  });
+  const [serial] = await addSerials(request, 1);
+
+  await page.goto("/registration");
+
+  const registrationPage = new RegistrationPage(page);
+
+  // Username test1 is already taken by an existing user
+  await registrationPage.usernameInput.fill("test1");
+  await registrationPage.passwordInput.fill("password");
+  await registrationPage.serialInput.fill(serial);
+  await registrationPage.descriptionCheckbox.check();
+  await registrationPage.createAccount();
+
+  await expect(registrationPage.main).toContainText("Username already taken");
+});
+
+test("Show validation errors for too short username and password", async ({
+  page,
+  request,
+}) => {
+  await populateDb(request, { clean: true, admin: true });
+  await postSettings(request, {
+    loginProvider: LoginProvider.LOCAL,
+    appOpen: true,
+  });
+
+  await page.goto("/registration");
+
+  const registrationPage = new RegistrationPage(page);
+
+  // USERNAME_LENGTH_MIN is 3 and PASSWORD_LENGTH_MIN is 4
+  await registrationPage.usernameInput.fill("ab");
+  await registrationPage.passwordInput.fill("abc");
+  await registrationPage.serialInput.fill("12345");
+  await registrationPage.descriptionCheckbox.check();
+  await registrationPage.createAccount();
+
+  await expect(registrationPage.main).toContainText(
+    "Too short, at least 3 characters required",
+  );
+  await expect(registrationPage.main).toContainText(
+    "Too short, at least 4 characters required",
+  );
+});

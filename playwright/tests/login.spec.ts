@@ -9,6 +9,7 @@ import {
 import { LoginPage } from "playwright/pages/LoginPage";
 import { ProgramItemPage } from "playwright/pages/ProgramItemPage";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
+import { RegistrationPage } from "playwright/pages/RegistrationPage";
 import { LoginProvider } from "shared/config/eventConfigTypes";
 import { config } from "shared/config";
 import { testProgramItem } from "shared/tests/testProgramItem";
@@ -75,6 +76,85 @@ test("User login", async ({ page, request }) => {
 
   await loginPage.navigation.open();
   await expect(loginPage.navigation.profileLink).toBeVisible();
+});
+
+test("Show error when password is wrong", async ({ page, request }) => {
+  await populateDb(request, { clean: true, users: true, admin: true });
+  await postSettings(request, { loginProvider: LoginProvider.LOCAL });
+  await postTestSettings(request, {
+    testTime: config.event().eventStartTime,
+  });
+
+  await page.goto("/login");
+
+  const loginPage = new LoginPage(page);
+  await loginPage.fillAndSubmit("test1", "wrong-password");
+
+  await expect(loginPage.main).toContainText(
+    "Username and password don't match",
+  );
+
+  // Editing the form clears the server error
+  await loginPage.passwordInput.fill("new-attempt");
+  await expect(loginPage.main).not.toContainText(
+    "Username and password don't match",
+  );
+});
+
+test("Show validation errors when submitting empty login form", async ({
+  page,
+  request,
+}) => {
+  await populateDb(request, { clean: true, admin: true });
+  await postSettings(request, { loginProvider: LoginProvider.LOCAL });
+  await postTestSettings(request, {
+    testTime: config.event().eventStartTime,
+  });
+
+  await page.goto("/login");
+
+  const loginPage = new LoginPage(page);
+  await loginPage.loginButton.click();
+
+  // Both username and password are required
+  await expect(loginPage.main.getByText("Required")).toHaveCount(2);
+});
+
+test("Login and registration offer both Kompassi and Konsti accounts", async ({
+  page,
+  request,
+}) => {
+  await populateDb(request, { clean: true, admin: true });
+  await postSettings(request, {
+    loginProvider: LoginProvider.LOCAL_KOMPASSI,
+    appOpen: true,
+  });
+  await postTestSettings(request, {
+    testTime: config.event().eventStartTime,
+  });
+
+  await page.goto("/login");
+
+  const loginPage = new LoginPage(page);
+
+  // Both login methods are offered
+  await expect(loginPage.main).toContainText(
+    "You can log in to Konsti with either a Kompassi account or a Konsti account.",
+  );
+  await expect(loginPage.kompassiLoginButton).toBeVisible();
+  await expect(loginPage.usernameInput).toBeVisible();
+
+  // The registration page offers Kompassi login and the Konsti registration form
+  await loginPage.main
+    .getByRole("link", { name: "No account? Create one here." })
+    .click();
+
+  const registrationPage = new RegistrationPage(page);
+  await expect(registrationPage.main).toContainText("Kompassi account");
+  await expect(registrationPage.main).toContainText("Konsti account");
+  await expect(loginPage.kompassiLoginButton).toBeVisible();
+  await expect(registrationPage.usernameInput).toBeVisible();
+  await expect(registrationPage.serialInput).toBeVisible();
 });
 
 test("Login redirect back to program item", async ({ page, request }) => {
