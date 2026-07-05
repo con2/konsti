@@ -153,17 +153,38 @@ describe("Progam update cronjob", () => {
   });
 
   test("should not run program update if newer server instance is started", async () => {
-    const oldTime = dayjs(timeNow).subtract(1, "seconds").toISOString();
-    await saveSettings({ latestServerStartTime: oldTime });
+    const newerTime = dayjs(timeNow).add(1, "seconds").toISOString();
+    await saveSettings({ latestServerStartTime: newerTime });
 
     await autoUpdateProgramItems();
 
     expect(errorLoggerSpy).toHaveBeenCalledWith(
-      new Error("Cronjobs: Newer server instance running, stop"),
+      new Error(
+        "Cronjobs: Newer server instance running, stopping cronjobs on this instance",
+      ),
+    );
+    expect(infoLoggerSpy).not.toHaveBeenCalledWith(
+      "***** Program items auto update completed",
     );
 
     const settings = unsafelyUnwrap(await findSettings());
-    expect(settings.latestServerStartTime).toEqual(oldTime);
+    expect(settings.latestServerStartTime).toEqual(newerTime);
+  });
+
+  test("should not run program update and log error if stored server start time is older than this instance", async () => {
+    const olderTime = dayjs(timeNow).subtract(1, "seconds").toISOString();
+    await saveSettings({ latestServerStartTime: olderTime });
+
+    await autoUpdateProgramItems();
+
+    expect(errorLoggerSpy).toHaveBeenCalledWith(
+      new Error(
+        `Cronjobs: Stored server start time ${olderTime} is older than this instance's start time ${timeNow}`,
+      ),
+    );
+    expect(infoLoggerSpy).not.toHaveBeenCalledWith(
+      "***** Program items auto update completed",
+    );
   });
 });
 
@@ -245,16 +266,37 @@ describe("Assignment cronjob", () => {
   });
 
   test("should not run assignment if newer server instance is started", async () => {
-    const oldTime = dayjs(timeNow).subtract(1, "seconds").toISOString();
-    await saveSettings({ latestServerStartTime: oldTime });
+    const newerTime = dayjs(timeNow).add(1, "seconds").toISOString();
+    await saveSettings({ latestServerStartTime: newerTime });
 
     await autoAssignAttendees();
 
     expect(errorLoggerSpy).toHaveBeenCalledWith(
-      new Error("Cronjobs: Newer server instance running, stop"),
+      new Error(
+        "Cronjobs: Newer server instance running, stopping cronjobs on this instance",
+      ),
+    );
+    expect(infoLoggerSpy).not.toHaveBeenCalledWith(
+      "***** Automatic attendee assignment completed",
     );
 
     const settings = unsafelyUnwrap(await findSettings());
-    expect(settings.latestServerStartTime).toEqual(oldTime);
+    expect(settings.latestServerStartTime).toEqual(newerTime);
+  });
+
+  test("should not run assignment and log error if stored server start time is older than this instance", async () => {
+    const olderTime = dayjs(timeNow).subtract(1, "seconds").toISOString();
+    await saveSettings({ latestServerStartTime: olderTime });
+
+    await autoAssignAttendees();
+
+    expect(errorLoggerSpy).toHaveBeenCalledWith(
+      new Error(
+        `Cronjobs: Stored server start time ${olderTime} is older than this instance's start time ${timeNow}`,
+      ),
+    );
+    expect(infoLoggerSpy).not.toHaveBeenCalledWith(
+      "***** Automatic attendee assignment completed",
+    );
   });
 });
