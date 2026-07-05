@@ -6,6 +6,7 @@ import { startTestServer, stopTestServer } from "server/test/utils/testServer";
 afterEach(() => {
   // Start server with different process.env.SETTINGS
   vi.resetModules();
+  vi.unstubAllEnvs();
 });
 
 describe(`POST ${ApiDevEndpoint.POPULATE_DB}`, () => {
@@ -66,6 +67,9 @@ describe(`POST ${ApiDevEndpoint.ADD_SERIALS}`, () => {
   });
 
   test("should generate requested number of serials on staging", async () => {
+    // Match the real staging pod: k8s deployments always run with
+    // NODE_ENV=production and only SETTINGS distinguishes staging
+    vi.stubEnv("NODE_ENV", "production");
     vi.stubEnv("SETTINGS", "staging");
     const { server } = await startTestServer(globalThis.__MONGO_URI__);
 

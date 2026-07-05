@@ -76,7 +76,9 @@ export const postAddSerials = async (
   req: Request<unknown, unknown, PostAddSerialsRequest>,
   res: Response,
 ): Promise<Response> => {
-  if (process.env.NODE_ENV === "production") {
+  // Gate on SETTINGS, not NODE_ENV: this endpoint is exposed in staging, where
+  // the pod runs with NODE_ENV=production and only SETTINGS differs
+  if (process.env.SETTINGS === "production") {
     // eslint-disable-next-line no-restricted-syntax -- Data generation script
     throw new Error("Data creation not allowed in production");
   }

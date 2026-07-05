@@ -85,7 +85,7 @@ Dev-only test endpoints are gated in two tiers:
 - **`postTestSettings` / `getTestSettings`, `postAddSerials`** — registered in `development`, `ci`, **and `staging`**: the staging client calls `GET /api/test-settings` on app load (before login) to read the time-mocking override (removing it from staging breaks the SPA bootstrap), and `postAddSerials` backs the client's test-widget "Generate code" button, which is used in staging too.
 - **`postPopulateDb`, `postClearDb`, `postAddProgramItems`, `postWriteCoverage`** — registered only in `development` and `ci`. The first three are destructive (DB wipe/repopulate, fixture generation) and have no use in staging; `postWriteCoverage` (`server/src/test/coverage/coverageController.ts`) flushes V8 coverage to `NODE_V8_COVERAGE` for the combined-coverage flow (`yarn coverage`, see the root CLAUDE.md).
 
-Both tiers stay out of `production` and have an `if (NODE_ENV === "production") throw` belt-and-braces guard inside the handler.
+Both tiers stay out of `production` and have a belt-and-braces guard inside the handler. The guard variable matters: k8s pods always run with `NODE_ENV=production` and only `SETTINGS` distinguishes staging from production, so the staging-exposed `postAddSerials` guards on `SETTINGS === "production"`, while the development/ci-only handlers guard on `NODE_ENV === "production"` (which correctly also blocks staging).
 
 Express 5 quirks to watch for:
 
