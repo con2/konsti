@@ -8,7 +8,11 @@ import {
 } from "shared/test-types/api/testData";
 import { TestSettings } from "shared/test-types/models/testSettings";
 import { PostAssignmentResponse } from "shared/types/api/assignment";
-import { PostLoginRequest, PostLoginResult } from "shared/types/api/login";
+import {
+  PostLoginRequest,
+  PostLoginResponse,
+  PostLoginResult,
+} from "shared/types/api/login";
 import { PostDirectSignupRequest } from "shared/types/api/myProgramItems";
 import { ProgramItem } from "shared/types/models/programItem";
 import { Settings } from "shared/types/models/settings";
@@ -71,10 +75,16 @@ const postLogin = async (
     data: loginRequest,
   });
   expect(response.status()).toBe(200);
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-  const json = await response.json();
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-  return json;
+  // The server responds 200 with an error body on failed login, so the status
+  // code alone doesn't prove the login succeeded
+  const body = (await response.json()) as PostLoginResponse;
+  expect(body.status).toBe("success");
+  if (body.status !== "success") {
+    // Unreachable after the expect above; narrows the union for the return type
+    // eslint-disable-next-line no-restricted-syntax
+    throw new Error(`Login failed for user ${loginRequest.username}`);
+  }
+  return body;
 };
 
 interface LoginRequest {
