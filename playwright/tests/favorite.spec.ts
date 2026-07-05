@@ -8,7 +8,13 @@ import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import { config } from "shared/config";
 
 test("Add favorite", async ({ page, request }) => {
-  await populateDb(request, { clean: true, users: true, programItems: true });
+  // postTestSettings logs in as admin, so the admin user must exist
+  await populateDb(request, {
+    clean: true,
+    users: true,
+    admin: true,
+    programItems: true,
+  });
   await postTestSettings(request, {
     testTime: config.event().eventStartTime,
   });
