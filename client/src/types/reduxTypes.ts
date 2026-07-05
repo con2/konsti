@@ -21,6 +21,8 @@ export interface AdminState {
   hiddenProgramItemIds: readonly string[];
   activeAssignmentTime: string;
   appOpen: boolean;
+  adminMessageFi: string;
+  adminMessageEn: string;
   assignmentResponseMessage: string;
   signupQuestions: readonly SignupQuestion[];
   signupStrategy: EventSignupStrategy | undefined;

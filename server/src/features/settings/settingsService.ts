@@ -32,6 +32,8 @@ export const fetchSettings = async (): Promise<GetSettingsResponse> => {
     status: "success",
     hiddenProgramItemIds: settings.hiddenProgramItemIds,
     appOpen: settings.appOpen,
+    adminMessageFi: settings.adminMessageFi,
+    adminMessageEn: settings.adminMessageEn,
     signupQuestions: settings.signupQuestions,
     signupStrategy: settings.signupStrategy,
     loginProvider: settings.loginProvider,

@@ -71,6 +71,88 @@ test("Admin can change the signup strategy", async ({ page, request }) => {
   await expect(strategySelect.locator("option:checked")).toHaveText("Lottery");
 });
 
+test("Admin can set a temporary message that users can dismiss", async ({
+  page,
+  request,
+}) => {
+  await populateDb(request, { clean: true, users: true, admin: true });
+  await login(page, request, { username: "admin", password: "test" });
+
+  const adminPage = new AdminPage(page);
+
+  await page.goto("/");
+  await adminPage.open();
+
+  const messageFi = "Havaittu ongelma, selvitämme asiaa";
+  const messageEn = "Some issue detected, we're investigating";
+
+  // Saving requires both languages: with only Finnish filled the Save button stays disabled
+  await adminPage.adminMessageFiInput.fill(messageFi);
+  await expect(adminPage.saveAdminMessageButton).toBeDisabled();
+  await adminPage.adminMessageEnInput.fill(messageEn);
+  await expect(adminPage.saveAdminMessageButton).toBeEnabled();
+
+  // Admin saves both languages; the English UI shows the English text
+  await adminPage.saveAdminMessageButton.click();
+  await expect(adminPage.adminMessageBanner).toContainText(messageEn);
+
+  // Save never accepts a partial message: emptying one field disables Save, and emptying both
+  // re-enables it because an empty save removes the message
+  await adminPage.adminMessageEnInput.fill("");
+  await expect(adminPage.saveAdminMessageButton).toBeDisabled();
+  await adminPage.adminMessageFiInput.fill("");
+  await expect(adminPage.saveAdminMessageButton).toBeEnabled();
+
+  // A regular user also sees the banner
+  await adminPage.navigation.logout();
+  await login(page, request, { username: "test1", password: "test" });
+  await page.goto("/");
+  await expect(adminPage.adminMessageBanner).toContainText(messageEn);
+
+  // Switching the language shows the message variant for that language
+  await adminPage.selectLanguage("fi");
+  await expect(adminPage.adminMessageBanner).toContainText(messageFi);
+  await adminPage.selectLanguage("en");
+  await expect(adminPage.adminMessageBanner).toContainText(messageEn);
+
+  // The user can dismiss it, and the dismissal is remembered across a reload
+  await adminPage.dismissAdminMessage();
+  await expect(adminPage.adminMessageBanner).toBeHidden();
+  await page.reload();
+  await expect(adminPage.adminMessageBanner).toBeHidden();
+
+  // A new message shows again even after the earlier dismissal
+  const updatedMessageEn = "Issue resolved, thanks for your patience";
+  await postSettings(request, {
+    adminMessageFi: "Ongelma korjattu, kiitos kärsivällisyydestä",
+    adminMessageEn: updatedMessageEn,
+  });
+  await page.reload();
+  await expect(adminPage.adminMessageBanner).toContainText(updatedMessageEn);
+});
+
+test("Admin can remove the temporary message with Clear", async ({
+  page,
+  request,
+}) => {
+  await populateDb(request, { clean: true, users: true, admin: true });
+  await postSettings(request, {
+    adminMessageFi: "Havaittu ongelma, selvitämme asiaa",
+    adminMessageEn: "Some issue detected, we're investigating",
+  });
+  await login(page, request, { username: "admin", password: "test" });
+
+  const adminPage = new AdminPage(page);
+
+  await page.goto("/");
+  await expect(adminPage.adminMessageBanner).toBeVisible();
+
+  await adminPage.open();
+  await adminPage.clearAdminMessageButton.click();
+
+  await expect(adminPage.adminMessageBanner).toBeHidden();
+});
+
 test("Admin sees signup questions listed", async ({ page, request }) => {
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [

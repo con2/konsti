@@ -6,7 +6,10 @@ import { StringToJsonSchema } from "client/utils/zodUtils";
 import { ActiveProgramType } from "shared/config/clientConfigTypes";
 import { getProgramTypeSelectOptions } from "client/utils/getProgramTypeSelectOptions";
 import { Locale } from "shared/types/locale";
-import { localStorageStateKey } from "shared/constants/browserStorage";
+import {
+  browserStoragePrefix,
+  localStorageStateKey,
+} from "shared/constants/browserStorage";
 
 const isActive = (programType: ActiveProgramType): boolean =>
   getProgramTypeSelectOptions().includes(programType);
@@ -55,6 +58,19 @@ export const saveSession = (state: Partial<LocalStorageState>): void => {
 export const clearSession = (): void => {
   localStorage.removeItem(localStorageStateKey);
   sessionStorage.clear();
+};
+
+// Dismissed admin message is stored separately from the zod-strict 'state' object so a public
+// (logged-out) visitor can remember their dismissal without a session. We store the dismissed
+// message text itself, so a new or edited admin message no longer matches and shows again
+const dismissedAdminMessageKey = `${browserStoragePrefix}-dismissedAdminMessage`;
+
+export const getDismissedAdminMessage = (): string => {
+  return localStorage.getItem(dismissedAdminMessageKey) ?? "";
+};
+
+export const saveDismissedAdminMessage = (adminMessage: string): void => {
+  localStorage.setItem(dismissedAdminMessageKey, adminMessage);
 };
 
 // Locale uses same 'languageKey' as i18next but i18next has separate logic for handling localStorage

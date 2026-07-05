@@ -11,6 +11,7 @@ import {
   submitUpdateHiddenAsync,
   submitGetSettingsAsync,
   submitToggleAppOpenAsync,
+  submitSetAdminMessageAsync,
   updateSignupQuestions,
   submitSetSignupStrategyAsync,
   submitGetSignupMessagesAsync,
@@ -57,6 +58,8 @@ export const submitGetSettings = (): AppThunk => {
     const currentSettings = {
       hiddenProgramItemIds: state.admin.hiddenProgramItemIds,
       appOpen: state.admin.appOpen,
+      adminMessageFi: state.admin.adminMessageFi,
+      adminMessageEn: state.admin.adminMessageEn,
       signupQuestions: state.admin.signupQuestions,
       signupStrategy: state.admin.signupStrategy,
       loginProvider: state.admin.loginProvider,
@@ -66,6 +69,8 @@ export const submitGetSettings = (): AppThunk => {
     const updatedSettings = {
       hiddenProgramItemIds: settingsResponse.hiddenProgramItemIds,
       appOpen: settingsResponse.appOpen,
+      adminMessageFi: settingsResponse.adminMessageFi,
+      adminMessageEn: settingsResponse.adminMessageEn,
       signupQuestions: settingsResponse.signupQuestions,
       signupStrategy: settingsResponse.signupStrategy,
       loginProvider: settingsResponse.loginProvider,
@@ -89,6 +94,29 @@ export const submitToggleAppOpen = (
     }
 
     dispatch(submitToggleAppOpenAsync(postSettingsResponse.settings.appOpen));
+  };
+};
+
+export const submitSetAdminMessage = (
+  adminMessageFi: string,
+  adminMessageEn: string,
+): AppThunk<Promise<string | undefined>> => {
+  return async (dispatch): Promise<string | undefined> => {
+    const postSettingsResponse = await postSettings({
+      adminMessageFi,
+      adminMessageEn,
+    });
+
+    if (postSettingsResponse.status === "error") {
+      return postSettingsResponse.message;
+    }
+
+    dispatch(
+      submitSetAdminMessageAsync({
+        adminMessageFi: postSettingsResponse.settings.adminMessageFi,
+        adminMessageEn: postSettingsResponse.settings.adminMessageEn,
+      }),
+    );
   };
 };
 

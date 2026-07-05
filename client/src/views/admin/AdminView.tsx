@@ -7,6 +7,7 @@ import {
   submitGetSentryTest,
   submitAssignment,
   submitToggleAppOpen,
+  submitSetAdminMessage,
   submitEmailTest,
 } from "client/views/admin/adminThunks";
 import { submitUpdateProgramItems } from "client/views/all-program-items/allProgramItemsThunks";
@@ -15,6 +16,7 @@ import { ProgramItem, SignupType } from "shared/types/models/programItem";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { Button, ButtonStyle } from "client/components/Button";
 import { Checkbox } from "client/components/Checkbox";
+import { AdminMessageEditor } from "client/views/admin/components/AdminMessageEditor";
 import { SignupQuestionList } from "client/views/admin/components/SignupQuestionList";
 import { Dropdown, Option } from "client/components/Dropdown";
 import { SignupStrategySelector } from "client/views/admin/components/SignupStrategySelector";
@@ -31,6 +33,8 @@ export const AdminView = (): ReactElement => {
     (state) => state.allProgramItems.programItems,
   );
   const appOpen = useAppSelector((state) => state.admin.appOpen);
+  const adminMessageFi = useAppSelector((state) => state.admin.adminMessageFi);
+  const adminMessageEn = useAppSelector((state) => state.admin.adminMessageEn);
   const hiddenProgramItems = useAppSelector(selectHiddenProgramItems);
   const signupQuestions = useAppSelector(
     (state) => state.admin.signupQuestions,
@@ -164,6 +168,26 @@ export const AdminView = (): ReactElement => {
     setSubmitting(false);
   };
 
+  const saveAdminMessage = async (
+    messageFi: string,
+    messageEn: string,
+  ): Promise<void> => {
+    setSubmitting(true);
+
+    const errorMessage = await dispatch(
+      submitSetAdminMessage(messageFi.trim(), messageEn.trim()),
+    );
+
+    if (errorMessage) {
+      showMessage({
+        value: errorMessage,
+        style: "error",
+      });
+    }
+
+    setSubmitting(false);
+  };
+
   const sendTestEmail = async (
     notificationType: EmailNotificationTrigger,
   ): Promise<void> => {
@@ -274,6 +298,20 @@ export const AdminView = (): ReactElement => {
       )}
 
       {submitting && <p>{t("loading")}</p>}
+
+      <h3>{t("admin.adminMessageTitle")}</h3>
+      <p>{t("admin.adminMessageInfo")}</p>
+      {/* Key on the stored message so the editor re-seeds its inputs whenever the message changes
+      (initial load, a settings poll, or another admin), instead of a stale draft overwriting it */}
+      <AdminMessageEditor
+        key={JSON.stringify([adminMessageFi, adminMessageEn])}
+        adminMessageFi={adminMessageFi}
+        adminMessageEn={adminMessageEn}
+        submitting={submitting}
+        onSave={(messageFi, messageEn) => {
+          void saveAdminMessage(messageFi, messageEn);
+        }}
+      />
 
       <SignupStrategySelector />
 

@@ -35,6 +35,8 @@ export type PostHiddenResponse = PostHiddenResult | PostHiddenError;
 export interface SettingsPayload {
   hiddenProgramItemIds: readonly string[];
   appOpen: boolean;
+  adminMessageFi: string;
+  adminMessageEn: string;
   signupQuestions: readonly SignupQuestion[];
   signupStrategy: EventSignupStrategy;
   loginProvider: LoginProvider;

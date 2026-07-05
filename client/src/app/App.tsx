@@ -12,6 +12,7 @@ import { MOBILE_MARGIN } from "client/globalStyle";
 import { TestTime } from "client/test/test-components/TestTime";
 import { TestGenerateSerial } from "client/test/test-components/TestGenerateSerial";
 import { Announcement } from "client/components/Announcement";
+import { AdminMessageBanner } from "client/components/AdminMessageBanner";
 import { NotificationBar } from "client/views/event-log/NotificationBar";
 import { resetNetworkError } from "client/views/admin/adminUtils";
 import { HistoryProvider } from "client/app/HistoryContext";
@@ -68,6 +69,7 @@ const App = (): ReactElement => {
             )}
             <Header />
             <ErrorBar />
+            <AdminMessageBanner />
             <NotificationBar />
             {showAnnouncement && <Announcement />}
             <AppContainer>

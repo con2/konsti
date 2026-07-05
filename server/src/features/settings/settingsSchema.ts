@@ -13,6 +13,8 @@ export const SettingsSchemaDb = z
   .object({
     hiddenProgramItemIds: z.array(z.string()),
     appOpen: z.boolean(),
+    adminMessageFi: z.string(),
+    adminMessageEn: z.string(),
     signupQuestions: z.array(SignupQuestionSchema),
     signupStrategy: z.enum(EventSignupStrategy),
     programUpdateLastRun: z
@@ -45,6 +47,8 @@ const settingsSchema = new mongoose.Schema(
   {
     hiddenProgramItemIds: { type: [String], default: [] },
     appOpen: { type: Boolean, default: true },
+    adminMessageFi: { type: String, default: "" },
+    adminMessageEn: { type: String, default: "" },
     signupQuestions: { type: [signupQuestionSchema], default: [] },
     signupStrategy: {
       type: String,

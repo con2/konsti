@@ -39,6 +39,8 @@ export const translationEN = {
     removeSignupQuestion: "Delete sign-up question",
     close: "Close",
     scrollToTop: "Scroll to top",
+    saveAdminMessage: "Save message",
+    clearAdminMessage: "Clear message",
   },
   username: "Username",
   password: "Password",
@@ -622,6 +624,7 @@ export const translationEN = {
     showPassword: "Show password",
     hidePassword: "Hide password",
     newNotifications: "New notifications",
+    closeAdminMessage: "Close message",
   },
   admin: {
     sentryTesting: "Sentry testing",
@@ -641,6 +644,11 @@ export const translationEN = {
         "Program item no longer uses lottery sign-up",
       programItemTimeChanged: "Program item start time changed",
     },
+    adminMessageTitle: "Temporary message",
+    adminMessageInfo:
+      "Shown as a banner to all users. Users can dismiss it; a new or edited message shows again. Both languages are required to save; use Clear to remove it.",
+    adminMessagePlaceholder:
+      "For example: Some issue detected, we're investigating",
   },
   email: {
     notifications: {
