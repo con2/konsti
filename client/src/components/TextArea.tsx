@@ -42,8 +42,10 @@ const StyledTextArea = styled.textarea`
   border-radius: 6px;
 
   &:focus {
+    /* Negative outline offset keeps the focus ring inside the element so it doesn't widen on focus */
+    border-color: ${(props) => props.theme.inputBorderFocus};
     outline: 2px solid ${(props) => props.theme.inputBorderFocus};
-    border: none;
+    outline-offset: -2px;
   }
 
   &::placeholder {
