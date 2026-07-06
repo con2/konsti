@@ -358,12 +358,12 @@ const mapSignupType = (
 ): SignupType => {
   const registration = first(kompassiProgramItem.cachedDimensions.registration);
 
-  if (!registration) {
-    return config.event().defaultSignupType;
-  }
-
   if (kompassiProgramItem.cachedAnnotations["konsti:isPlaceholder"]) {
     return SignupType.OTHER;
+  }
+
+  if (!registration) {
+    return config.event().defaultSignupType;
   }
 
   const usesKonstiRegisration = registration === KompassiRegistration.KONSTI;
