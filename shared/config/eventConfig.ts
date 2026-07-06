@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import {
   AssignmentAlgorithm,
   EventName,
@@ -11,6 +12,8 @@ import { SignupQuestionType } from "shared/types/models/settings";
 
 // Event days
 const friday = "2026-07-24";
+const saturday = "2026-07-25";
+const sunday = "2026-07-26";
 
 export const eventConfig: EventConfig = {
   // Event info
@@ -22,17 +25,14 @@ export const eventConfig: EventConfig = {
   enableTagDropdown: true,
   assignmentAlgorithm: AssignmentAlgorithm.RANDOM_PADG,
   enableGroups: true,
-
-  // Remove lottery signups after assignment: overlapping signups, all upcoming signups, or none
   removeLotterySignupsStrategy: RemoveLotterySignupsStrategy.OVERLAP,
-
   programGuideUrl: "https://ropecon.fi/opas",
 
   activeProgramTypes: [
     ProgramType.TABLETOP_RPG,
     ProgramType.LARP,
-    ProgramType.TOURNAMENT,
     ProgramType.WORKSHOP,
+    ProgramType.TOURNAMENT,
     ProgramType.OTHER_GAMING,
     ProgramType.OTHER,
   ],
@@ -48,9 +48,27 @@ export const eventConfig: EventConfig = {
   preConventionWeekSignupStartTime: "2026-07-13T17:00:00Z", // Mon 13.7. 20:00 GMT+3
   mainEventProgramVisibleTime: "2026-07-23T17:00:00Z", // Thu 23.7. 20:00 GMT+3
 
-  directSignupWindows: {},
+  directSignupWindows: {
+    tournament: [
+      // Friday
+      {
+        signupWindowStart: dayjs(`${friday}T12:00:00Z`), // Fri 15:00 GMT+3
+        signupWindowClose: dayjs(`${friday}T21:00:00Z`), // Fri 24:00 GMT+3
+      },
+      // Saturday
+      {
+        signupWindowStart: dayjs(`${friday}T15:00:00Z`), // Fri 18:00 GMT+3
+        signupWindowClose: dayjs(`${saturday}T21:00:00Z`), // Sat 24:00 GMT+3
+      },
+      // Sunday
+      {
+        signupWindowStart: dayjs(`${saturday}T15:00:00Z`), // Sat 18:00 GMT+3
+        signupWindowClose: dayjs(`${sunday}T21:00:00Z`), // Sun 24:00 GMT+3
+      },
+    ],
+  },
 
-  rollingDirectSignupProgramTypes: [],
+  rollingDirectSignupProgramTypes: [ProgramType.OTHER],
   enableRollingDirectSignupPreviousDay: true,
 
   hideParticipantListProgramTypes: [],
@@ -161,7 +179,8 @@ export const eventConfig: EventConfig = {
   // Program items with parentId use startTime configured here
   startTimesByParentIds: new Map(),
 
-  defaultSignupType: SignupType.KONSTI,
+  // What signup type is set if signup type is missing
+  defaultSignupType: SignupType.OTHER,
 
   // Default DB values
   defaultSignupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
