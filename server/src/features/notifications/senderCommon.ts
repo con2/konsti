@@ -25,9 +25,20 @@ const SIGNATURE = "Terveisin / Sincerely Konsti";
 export function getRejectedEmailTemplate(
   notification: NotificationTask,
 ): EmailTemplate {
+  const lotteryStartTimeFi = getDateAndTimeWithLocale(
+    notification.programItemStartTime,
+    "fi",
+  );
+  const lotteryStartTimeEn = getDateAndTimeWithLocale(
+    notification.programItemStartTime,
+    "en",
+  );
+
   const bodyFi = `Hei ${notification.username}!
+Paikat ${lotteryStartTimeFi} alkaviin ohjelmanumeroihin arvottiin.
 Et valitettavasti päässyt arvonnassa yhteenkään ohjelmaan johon ilmoittauduit.`;
   const bodyEn = `Hi ${notification.username}!
+Spots for program items starting at ${lotteryStartTimeEn} were randomized.
 Unfortunately you did not get spot in the lottery sign-up.`;
   return {
     subject: SUBJECT,

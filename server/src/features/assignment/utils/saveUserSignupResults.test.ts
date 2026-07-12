@@ -225,9 +225,11 @@ Terveisin / Sincerely Konsti`;
   const expectedAcceptedSubject =
     "Konsti-arvonnan tulos / Results for Konsti lottery sign-up";
   const expectedRejectedBody = `Hei ${mockUser2.username}!
+Paikat pe 26.7.2019 17:30 alkaviin ohjelmanumeroihin arvottiin.
 Et valitettavasti päässyt arvonnassa yhteenkään ohjelmaan johon ilmoittauduit.
 
 Hi Test User 2!
+Spots for program items starting at Fri 26.7.2019 17:30 were randomized.
 Unfortunately you did not get spot in the lottery sign-up.
 
 Terveisin / Sincerely Konsti`;
