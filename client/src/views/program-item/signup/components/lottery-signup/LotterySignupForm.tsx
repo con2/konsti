@@ -187,6 +187,12 @@ const StyledDropdown = styled(Dropdown)`
 
 const StyledButton = styled(Button)`
   min-width: 200px;
+
+  /* Force "Confirm" and "Cancel" buttons to same row on mobile */
+  @media (max-width: ${(props) => props.theme.breakpointDesktop}) {
+    flex: 1;
+    min-width: 0;
+  }
 `;
 
 const StyledButtonGroup = styled(ButtonGroup)`
