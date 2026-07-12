@@ -768,7 +768,7 @@
       "konsti": ["larp"],
       "grouping": ["lgbt"],
       "language": ["en"],
-      "age-group": ["adults"],
+      "age-group": ["only-adults"],
       "scheduled": ["one", "one-or-more"],
       "inclusivity": [
         "dark-lighting",
@@ -1687,7 +1687,7 @@
         "startTime": "2026-07-25T10:00:00+03:00",
         "endTime": "2026-07-25T23:00:00+03:00",
         "lengthMinutes": 780,
-        "location": "Hall 3 Surffi",
+        "location": "Hall 3 Surf",
         "isCancelled": false,
         "cachedAnnotations": {
           "konsti:rpgSystem": "Charlie ei surffaa",
@@ -1734,7 +1734,7 @@
         "startTime": "2026-07-24T16:00:00+03:00",
         "endTime": "2026-07-24T23:00:00+03:00",
         "lengthMinutes": 420,
-        "location": "Hall 3 Surffi",
+        "location": "Hall 3 Surf",
         "isCancelled": false,
         "cachedAnnotations": {
           "konsti:rpgSystem": "Charlie ei surffaa",
@@ -1781,7 +1781,7 @@
         "startTime": "2026-07-26T10:00:00+03:00",
         "endTime": "2026-07-26T17:00:00+03:00",
         "lengthMinutes": 420,
-        "location": "Hall 3 Surffi",
+        "location": "Hall 3 Surf",
         "isCancelled": false,
         "cachedAnnotations": {
           "konsti:rpgSystem": "Charlie ei surffaa",
@@ -4265,7 +4265,7 @@
     "cachedAnnotations": {
       "konsti:minAttendance": 2,
       "konsti:maxAttendance": 10,
-      "ropecon:accessibilityOther": "Pelaajat voivat rajata pelin alussa pois haluamiaan aiheita, poislukien pelin kuvauksessa olevat aiheet ja teemat. Näkövammaisen pelaajan osallistuminen on mahdollista, pelinjohtaja tai ohjelma-apuri voi tarvittaessa lukea ääneen materiaaleja. Kuulovammainen pelaaja voi osallistua, jos keskustelujen seuraaminen ja niihin osallistuminen on mahdollista esim. omien apuvälineiden kanssa. Liikuntarajoitteista pelaajaa voidaan tukea siirtämällä pelitilanne tarvittaessa lattialta pöydän ääreen.",
+      "ropecon:accessibilityOther": "Pelaajat voivat rajata pelin alussa pois haluamiaan aiheita, poislukien pelin kuvauksessa olevat aiheet ja teemat.\r\n\r\nNäkövammaisen pelaajan osallistuminen on mahdollista, pelinjohtaja tai ohjelma-apuri voi tarvittaessa lukea ääneen materiaaleja.\r\n\r\nKuulovammainen pelaaja voi osallistua, jos keskustelujen seuraaminen ja niihin osallistuminen on mahdollista esim. omien apuvälineiden kanssa.\r\n\r\nLiikuntarajoitteista pelaajaa voidaan tukea siirtämällä pelitilanne tarvittaessa lattialta pöydän ääreen.",
       "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
@@ -4281,7 +4281,7 @@
         "cachedAnnotations": {
           "konsti:minAttendance": 2,
           "konsti:maxAttendance": 10,
-          "ropecon:accessibilityOther": "Pelaajat voivat rajata pelin alussa pois haluamiaan aiheita, poislukien pelin kuvauksessa olevat aiheet ja teemat. Näkövammaisen pelaajan osallistuminen on mahdollista, pelinjohtaja tai ohjelma-apuri voi tarvittaessa lukea ääneen materiaaleja. Kuulovammainen pelaaja voi osallistua, jos keskustelujen seuraaminen ja niihin osallistuminen on mahdollista esim. omien apuvälineiden kanssa. Liikuntarajoitteista pelaajaa voidaan tukea siirtämällä pelitilanne tarvittaessa lattialta pöydän ääreen.",
+          "ropecon:accessibilityOther": "Pelaajat voivat rajata pelin alussa pois haluamiaan aiheita, poislukien pelin kuvauksessa olevat aiheet ja teemat.\r\n\r\nNäkövammaisen pelaajan osallistuminen on mahdollista, pelinjohtaja tai ohjelma-apuri voi tarvittaessa lukea ääneen materiaaleja.\r\n\r\nKuulovammainen pelaaja voi osallistua, jos keskustelujen seuraaminen ja niihin osallistuminen on mahdollista esim. omien apuvälineiden kanssa.\r\n\r\nLiikuntarajoitteista pelaajaa voidaan tukea siirtämällä pelitilanne tarvittaessa lattialta pöydän ääreen.",
           "ropecon:isRevolvingDoor": false
         }
       }
@@ -4450,8 +4450,8 @@
         "location": "Peace Station Cabinet",
         "isCancelled": false,
         "cachedAnnotations": {
-          "konsti:maxAttendance": 5,
-          "internal:subtitle": "1. pelautus (5 - 8-vuotiaille)"
+          "internal:subtitle": "1. pelautus (5 - 8-vuotiaille)",
+          "konsti:maxAttendance": 5
         }
       },
       {
@@ -4463,8 +4463,8 @@
         "location": "Peace Station Cabinet",
         "isCancelled": false,
         "cachedAnnotations": {
-          "konsti:maxAttendance": 5,
-          "internal:subtitle": "2. pelautus (5 - 8-vuotiaille)"
+          "internal:subtitle": "2. pelautus (5 - 8-vuotiaille)",
+          "konsti:maxAttendance": 5
         }
       },
       {
@@ -4476,8 +4476,8 @@
         "location": "Peace Station Cabinet",
         "isCancelled": false,
         "cachedAnnotations": {
-          "konsti:maxAttendance": 5,
-          "internal:subtitle": "3. pelautus (7 - 12-vuotiaille)"
+          "internal:subtitle": "3. pelautus (7 - 12-vuotiaille)",
+          "konsti:maxAttendance": 5
         }
       }
     ]
@@ -7317,7 +7317,7 @@
   {
     "slug": "keskiaikaburleski",
     "title": "\"Keskiaika\"burleski -työpaja",
-    "description": "Ohjelmassa harjoitellaan \"keskiaikainen\"burleskinumero, jossa riisutaan muiden vaatteiden päältä keskiaikaan sopivia vaatteita musiikin tahdissa ja burleskitanssiliikkeiden siivittäminä.  Alunperin koreo on tehty keskiaikafantasialarppiin, eikä se luonnollisesti ole autenttista keskiaikaista burleskia. Liikehdintä on viettelevää ja sopii vain aikuisille. Käydään läpi lyhyesti burleskin elekieltä ja burleskitanssin perusliikkeitä. Painopiste on koreografian opettelussa. Riisuttavat vaatteet ovat hupullinen viitta, pitkä nauha vyönä ja iso huivi, joka toimii ns. mekkona (näitä voi tuoda mukana jos mahdollista, mutta osallistuminen on mahdollista ilman rekvisiittaa)",
+    "description": "Ohjelmassa harjoitellaan \"keskiaikainen\"burleskinumero, jossa riisutaan muiden vaatteiden päältä keskiaikaan sopivia vaatteita musiikin tahdissa ja burleskitanssiliikkeiden siivittäminä.  Alunperin koreo on tehty keskiaikafantasialarppiin, eikä se luonnollisesti ole autenttista keskiaikaista burleskia. Liikehdintä on viettelevää ja sopii vain aikuisille. Käydään läpi lyhyesti burleskin elekieltä ja burleskitanssin perusliikkeitä. Painopiste on koreografian opettelussa. Riisuttavat vaatteet ovat hupullinen viitta, pitkä nauha vyönä ja iso huivi, joka toimii ns. mekkona (näitä voi tuoda mukana jos mahdollista, mutta osallistuminen on mahdollista ilman rekvisiittaa)\r\n\r\nOhjelmaan ilmoittautuminen etukäteen konstin/kompassin kautta.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2026-07-26"],
@@ -7334,7 +7334,7 @@
       "registration": ["konsti"]
     },
     "cachedAnnotations": {
-      "konsti:maxAttendance": 40,
+      "konsti:maxAttendance": 30,
       "ropecon:contentWarnings": "Viettelyksen esittäminen, vaatekappaleen riisuminen pois muiden nähden (muiden vaatteiden päältä)"
     },
     "isCancelled": false,
@@ -7348,7 +7348,7 @@
         "location": "Room 102",
         "isCancelled": false,
         "cachedAnnotations": {
-          "konsti:maxAttendance": 40,
+          "konsti:maxAttendance": 30,
           "ropecon:contentWarnings": "Viettelyksen esittäminen, vaatekappaleen riisuminen pois muiden nähden (muiden vaatteiden päältä)"
         }
       }
@@ -9537,7 +9537,7 @@
       "konsti": ["tabletoprpg"],
       "language": ["fi"],
       "age-group": ["adults"],
-      "scheduled": ["multiple", "one-or-more"],
+      "scheduled": ["one", "one-or-more"],
       "game-style": ["combat-heavy", "light"],
       "inclusivity": ["not-amplified", "physical-contact"],
       "registration": ["konsti"],
@@ -10531,8 +10531,8 @@
         "slug": "mielikuvituskone-unista-teksteiksi-1",
         "title": "Mielikuvituskone: Unenomainen kirjoitustyöpaja",
         "startTime": "2026-07-25T14:00:00+03:00",
-        "endTime": "2026-07-25T16:45:00+03:00",
-        "lengthMinutes": 165,
+        "endTime": "2026-07-25T15:45:00+03:00",
+        "lengthMinutes": 105,
         "location": "Room 210",
         "isCancelled": false,
         "cachedAnnotations": {}
@@ -10541,8 +10541,8 @@
         "slug": "mielikuvituskone-unista-teksteiksi-2",
         "title": "Mielikuvituskone: Unenomainen kirjoitustyöpaja",
         "startTime": "2026-07-26T11:00:00+03:00",
-        "endTime": "2026-07-26T13:45:00+03:00",
-        "lengthMinutes": 165,
+        "endTime": "2026-07-26T12:45:00+03:00",
+        "lengthMinutes": 105,
         "location": "Room 210",
         "isCancelled": false,
         "cachedAnnotations": {}
@@ -12595,7 +12595,7 @@
       "game-style": ["combat-heavy", "rules-heavy"],
       "inclusivity": ["long-texts", "no-recordings-or-spoken-text"],
       "registration": ["konsti"],
-      "revolvingdoor": ["false"]
+      "revolvingdoor": ["true"]
     },
     "cachedAnnotations": {
       "konsti:rpgSystem": "Pathfinder 2nd Edition",
@@ -12645,7 +12645,7 @@
       "game-style": ["combat-heavy", "rules-heavy"],
       "inclusivity": ["long-texts", "no-recordings-or-spoken-text"],
       "registration": ["konsti"],
-      "revolvingdoor": ["false"]
+      "revolvingdoor": ["true"]
     },
     "cachedAnnotations": {
       "konsti:rpgSystem": "Pathfinder 2nd Edition",
@@ -12694,7 +12694,7 @@
       "game-style": ["combat-heavy", "rules-heavy"],
       "inclusivity": ["long-texts", "no-recordings-or-spoken-text"],
       "registration": ["konsti"],
-      "revolvingdoor": ["false"]
+      "revolvingdoor": ["true"]
     },
     "cachedAnnotations": {
       "konsti:rpgSystem": "Pathfinder 2nd Edition",
@@ -12744,7 +12744,7 @@
       "game-style": ["rules-heavy"],
       "inclusivity": ["long-texts", "no-recordings-or-spoken-text"],
       "registration": ["konsti"],
-      "revolvingdoor": ["false"]
+      "revolvingdoor": ["true"]
     },
     "cachedAnnotations": {
       "konsti:rpgSystem": "Pathfinder 2nd Edition",
@@ -12794,7 +12794,7 @@
       "game-style": ["combat-heavy", "rules-heavy", "story-driven"],
       "inclusivity": ["long-texts", "no-recordings-or-spoken-text"],
       "registration": ["konsti"],
-      "revolvingdoor": ["false"]
+      "revolvingdoor": ["true"]
     },
     "cachedAnnotations": {
       "konsti:rpgSystem": "Pathfinder 2nd Edition",
@@ -12844,7 +12844,7 @@
       "game-style": ["combat-heavy", "rules-heavy"],
       "inclusivity": ["long-texts", "no-recordings-or-spoken-text"],
       "registration": ["konsti"],
-      "revolvingdoor": ["false"]
+      "revolvingdoor": ["true"]
     },
     "cachedAnnotations": {
       "konsti:rpgSystem": "Pathfinder 2nd Edition",
@@ -12858,8 +12858,8 @@
       {
         "slug": "pathfinder-society-rannikon-aarre-treasure-off-the-coast-1",
         "title": "Pathfinder Society: Rannikon Aarre / Treasure off the Coast",
-        "startTime": "2026-07-24T22:00:00+03:00",
-        "endTime": "2026-07-25T00:00:00+03:00",
+        "startTime": "2026-07-24T20:00:00+03:00",
+        "endTime": "2026-07-24T22:00:00+03:00",
         "lengthMinutes": 120,
         "location": "Valo (Pöytä 2)",
         "isCancelled": false,
@@ -12910,7 +12910,7 @@
       "game-style": ["combat-heavy", "rules-heavy"],
       "inclusivity": ["long-texts", "no-recordings-or-spoken-text"],
       "registration": ["konsti"],
-      "revolvingdoor": ["false"]
+      "revolvingdoor": ["true"]
     },
     "cachedAnnotations": {
       "konsti:rpgSystem": "Pathfinder 2e",
@@ -12960,7 +12960,7 @@
       "game-style": ["combat-heavy", "rules-heavy"],
       "inclusivity": ["long-texts", "no-recordings-or-spoken-text"],
       "registration": ["konsti"],
-      "revolvingdoor": ["false"]
+      "revolvingdoor": ["true"]
     },
     "cachedAnnotations": {
       "konsti:rpgSystem": "Pathfinder 2nd Edition",
@@ -13051,6 +13051,7 @@
       "date": ["2026-07-24", "2026-07-25"],
       "room": ["halli5figumaalaus"],
       "type": ["other"],
+      "state": ["accepted"],
       "topic": ["figures"],
       "konsti": ["other"],
       "grouping": ["beginners", "dreams"],
@@ -13061,7 +13062,7 @@
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": { "konsti:maxAttendance": 12 },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -13072,7 +13073,7 @@
         "lengthMinutes": 90,
         "location": "Hall 5 Miniature Painting",
         "isCancelled": false,
-        "cachedAnnotations": {}
+        "cachedAnnotations": { "konsti:maxAttendance": 12 }
       },
       {
         "slug": "pikamaalauskilpailu-speed-painting-contest-2",
@@ -13082,7 +13083,7 @@
         "lengthMinutes": 90,
         "location": "Hall 5 Miniature Painting",
         "isCancelled": false,
-        "cachedAnnotations": {}
+        "cachedAnnotations": { "konsti:maxAttendance": 12 }
       },
       {
         "slug": "pikamaalauskilpailu-speed-painting-contest-3",
@@ -13092,7 +13093,7 @@
         "lengthMinutes": 90,
         "location": "Hall 5 Miniature Painting",
         "isCancelled": false,
-        "cachedAnnotations": {}
+        "cachedAnnotations": { "konsti:maxAttendance": 12 }
       },
       {
         "slug": "pikamaalauskilpailu-speed-painting-contest-4",
@@ -13102,7 +13103,7 @@
         "lengthMinutes": 90,
         "location": "Hall 5 Miniature Painting",
         "isCancelled": false,
-        "cachedAnnotations": {}
+        "cachedAnnotations": { "konsti:maxAttendance": 12 }
       }
     ]
   },
@@ -17976,7 +17977,7 @@
     "description": "Työpajassa pääset pohtimaan assosiatiivisten kuvakorttien kautta omaa elämääsi ja unelmiasi. Työpajassa on ohjeet kirjallisesti ja ohjaaja paikalla. Teet omien unelmien piirakan itseäsi varten ja voit ottaa valokuvan siitä muistoksi. Työpaja liittyy See Far CBT menetelmään, mutta sinun ei tarvitse tuntea sitä tullaksesi mukaan. Työpajassa käytämme assosiatiivisia valokuvakortteja, jotka monet lautapelaajat saattavat tuntea Dixit-lautapelistä.\r\n\r\n\"Kun uskot unelmiisi, alat kasvaa niitä kohti.\" (Tommy Hellsten) Tervetuloa unelmien äärelle!\r\n\r\nIn this workshop, you will be able to reflect on your own life and dreams through associative picture cards. The workshop will have written instructions and an instructor present. You will make your own pie of dreams just for yourself. In the end of the workshop, you can take a photo of your pie. Then it's easier to remember later what you thought in your pie of dreams. The workshop is related to the See Far CBT method, but you do not need to be familiar with it to participate. In the workshop, we'll use associative photo cards that many boardgamers may know via Dixit boardgame.\r\n\r\n\"When you believe in your dreams, you start growing towards them.\" (Tommy Hellsten) Welcome to the edge of dreams!",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
-      "date": ["2026-07-25", "2026-07-26"],
+      "date": ["2026-07-25"],
       "form": ["offer-workshop"],
       "room": ["hall3workshop"],
       "type": ["workshop"],
@@ -17986,7 +17987,7 @@
       "grouping": ["beginners", "dreams"],
       "language": ["en", "fi"],
       "age-group": ["adults"],
-      "scheduled": ["multiple", "one-or-more"],
+      "scheduled": ["one", "one-or-more"],
       "inclusivity": ["no-recordings-or-spoken-text"],
       "registration": ["konsti"]
     },
@@ -19063,7 +19064,7 @@
       "konsti": ["tabletoprpg"],
       "language": ["fi"],
       "age-group": ["adults"],
-      "scheduled": ["multiple", "one-or-more"],
+      "scheduled": ["one", "one-or-more"],
       "game-style": ["combat-heavy", "rules-light", "serious"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
