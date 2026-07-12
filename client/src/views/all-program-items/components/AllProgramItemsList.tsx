@@ -49,9 +49,13 @@ type VirtualRow =
   | { kind: "header"; startTime: string }
   | { kind: "item"; programItem: ProgramItem };
 
-// Initial row-height guesses; the virtualizer measures the real heights on mount
-const HEADER_ESTIMATED_HEIGHT = 60;
-const ITEM_ESTIMATED_HEIGHT = 220;
+// Initial row-height guesses; the virtualizer measures the real heights on
+// mount. Keep these close to the real median row heights: every estimated-vs-
+// actual mismatch on a row's first measurement is compensated with a scroll
+// correction, and large corrections show up as visible jumps when scrolling
+// through rows that were skipped past unmeasured (e.g. after a fast fling)
+const HEADER_ESTIMATED_HEIGHT = 92;
+const ITEM_ESTIMATED_HEIGHT = 350;
 
 // The window scroll offset and measured row sizes when the list unmounts, so
 // returning to it (e.g. via the browser back button after viewing a program
@@ -169,8 +173,41 @@ export const AllProgramItemsList = ({
     };
   }, []);
 
+  // When a row's measured height differs from its estimate, the virtualizer
+  // corrects the scroll position so on-screen content doesn't shift. It issues
+  // the correction as an absolute scrollTo based on its cached scroll offset,
+  // which lags the live position by up to a frame while the user is scrolling —
+  // an absolute target would yank the page back by that lag (a visible jump).
+  // Apply only the not-yet-applied part of the correction as a relative
+  // scrollBy instead, which is immune to the stale base offset
+  const appliedAdjustmentsRef = useRef(0);
+  useEffect(() => {
+    // The virtualizer zeroes its cumulative adjustments on every scroll event;
+    // mirror that so the applied tally stays in sync with it
+    const resetAppliedAdjustments = (): void => {
+      appliedAdjustmentsRef.current = 0;
+    };
+    window.addEventListener("scroll", resetAppliedAdjustments, {
+      passive: true,
+    });
+    return () => {
+      window.removeEventListener("scroll", resetAppliedAdjustments);
+    };
+  }, []);
+
   const virtualizer = useWindowVirtualizer({
     count: rows.length,
+    scrollToFn: (offset, { adjustments, behavior }) => {
+      // No adjustments: a navigation scroll (scrollToOffset/scrollToIndex)
+      // where the absolute target is the intent — pass it through
+      if (adjustments === undefined) {
+        window.scrollTo({ top: offset, behavior });
+        return;
+      }
+      const delta = adjustments - appliedAdjustmentsRef.current;
+      appliedAdjustmentsRef.current = adjustments;
+      window.scrollBy({ top: delta, behavior });
+    },
     // Seeding the virtualizer with the previous visit's measured row sizes
     // lets the saved pixel offset land on the same rows instead of drifting on
     // height estimates. Only read when the virtualizer instance is created
@@ -179,7 +216,12 @@ export const AllProgramItemsList = ({
       rows[index].kind === "header"
         ? HEADER_ESTIMATED_HEIGHT
         : ITEM_ESTIMATED_HEIGHT,
-    overscan: 6,
+    // Rows are measured when they mount, and a mismatch against the estimate
+    // is fixed with a scroll correction — visible as a jump if the row is
+    // already on screen. Overscan is the buffer that lets rows mount and
+    // measure while still off-screen, so it needs to cover a realistic
+    // per-frame wheel/fling scroll distance
+    overscan: 10,
     scrollMargin,
     getItemKey: (index) => {
       const row = rows[index];
