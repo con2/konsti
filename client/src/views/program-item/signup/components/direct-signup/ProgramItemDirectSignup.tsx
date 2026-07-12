@@ -207,7 +207,6 @@ const ProgramItemFullText = styled.span`
 `;
 
 const ButtonContainer = styled.div`
-  padding-top: 8px;
   margin: 8px 0;
   display: flex;
   gap: 8px;
