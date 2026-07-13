@@ -230,7 +230,7 @@ Et valitettavasti päässyt arvonnassa yhteenkään ohjelmaan johon ilmoittaudui
 
 Hi Test User 2!
 Spots for program items starting at Fri 26.7.2019 17:30 were randomized.
-Unfortunately you did not get spot in the lottery sign-up.
+Unfortunately you did not get a spot in the lottery sign-up.
 
 Terveisin / Sincerely Konsti`;
   const expectedRejectedSubject =

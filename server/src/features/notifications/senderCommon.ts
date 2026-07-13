@@ -39,7 +39,7 @@ Paikat ${lotteryStartTimeFi} alkaviin ohjelmanumeroihin arvottiin.
 Et valitettavasti päässyt arvonnassa yhteenkään ohjelmaan johon ilmoittauduit.`;
   const bodyEn = `Hi ${notification.username}!
 Spots for program items starting at ${lotteryStartTimeEn} were randomized.
-Unfortunately you did not get spot in the lottery sign-up.`;
+Unfortunately you did not get a spot in the lottery sign-up.`;
   return {
     subject: SUBJECT,
     text: `${bodyFi}\n\n${bodyEn}\n\n${SIGNATURE}`,
