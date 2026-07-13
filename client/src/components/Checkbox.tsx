@@ -8,14 +8,21 @@ type Props = InputHTMLAttributes<HTMLInputElement> & {
 
 export const Checkbox = (props: Props): ReactElement => {
   return (
-    <div>
+    <Container>
       <StyledCheckbox {...props} type={"checkbox"} />
       <label htmlFor={props.id}>{props.label}</label>
-    </div>
+    </Container>
   );
 };
 
+const Container = styled.div`
+  display: flex;
+  align-items: flex-start;
+`;
+
 const StyledCheckbox = styled.input`
+  flex-shrink: 0;
+  margin-top: 4px;
   margin-right: 8px;
   width: 16px;
   accent-color: ${(props) => props.theme.formAccent};
