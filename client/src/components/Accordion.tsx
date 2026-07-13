@@ -52,6 +52,8 @@ export const Accordion = ({
 };
 
 const AccordionToggle = styled(Button)`
+  display: inline-flex;
+  align-items: center;
   padding: 6px 10px;
 `;
 
