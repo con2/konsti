@@ -4140,7 +4140,7 @@
       "age-group": ["everyone"],
       "scheduled": ["one", "one-or-more"],
       "inclusivity": ["quick-reactions"],
-      "registration": ["not-required"],
+      "registration": ["konsti"],
       "is-pre-convention-week": ["yes"]
     },
     "cachedAnnotations": { "konsti:maxAttendance": 30 },
@@ -8072,7 +8072,7 @@
       "age-group": ["everyone"],
       "scheduled": ["one", "one-or-more"],
       "inclusivity": ["not-amplified"],
-      "registration": ["not-required"],
+      "registration": ["konsti"],
       "is-pre-convention-week": ["yes"]
     },
     "cachedAnnotations": { "konsti:maxAttendance": 5 },
@@ -9189,7 +9189,7 @@
       "age-group": ["everyone"],
       "scheduled": ["one", "one-or-more"],
       "inclusivity": ["fingers", "no-movement", "quick-reactions"],
-      "registration": ["not-required"],
+      "registration": ["konsti"],
       "is-pre-convention-week": ["yes"]
     },
     "cachedAnnotations": { "konsti:maxAttendance": 24 },
@@ -14862,7 +14862,7 @@
       "age-group": ["adultsnyouth"],
       "scheduled": ["one", "one-or-more"],
       "inclusivity": ["not-amplified"],
-      "registration": ["not-required"],
+      "registration": ["konsti"],
       "is-pre-convention-week": ["yes"]
     },
     "cachedAnnotations": {
@@ -14903,7 +14903,7 @@
       "age-group": ["adultsnyouth"],
       "scheduled": ["one", "one-or-more"],
       "inclusivity": ["no-recordings-or-spoken-text", "not-amplified"],
-      "registration": ["not-required"],
+      "registration": ["konsti"],
       "is-pre-convention-week": ["yes"]
     },
     "cachedAnnotations": {
@@ -19505,10 +19505,10 @@
       "age-group": ["everyone"],
       "scheduled": ["one", "one-or-more"],
       "inclusivity": ["fingers", "long-program", "loud-sounds"],
-      "registration": ["not-required"],
+      "registration": ["konsti"],
       "is-pre-convention-week": ["yes"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": { "konsti:maxAttendance": 20 },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -19519,7 +19519,7 @@
         "lengthMinutes": 180,
         "location": "Peace Station Ballroom",
         "isCancelled": false,
-        "cachedAnnotations": {}
+        "cachedAnnotations": { "konsti:maxAttendance": 20 }
       }
     ]
   },
