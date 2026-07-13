@@ -1,8 +1,14 @@
 import { afterEach, describe, expect, test, vi } from "vitest";
 import dayjs from "dayjs";
-import { testProgramItem } from "shared/tests/testProgramItem";
+import {
+  testProgramItem,
+  testProgramItem2,
+} from "shared/tests/testProgramItem";
 import { getList } from "server/features/assignment/utils/getList";
+import { getLotteryParticipantDirectSignups } from "server/features/assignment/utils/prepareAssignmentParams";
 import { config } from "shared/config";
+import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
+import { Tag } from "shared/types/models/programItem";
 import {
   assignmentTime,
   getPreviousDirectSignup,
@@ -135,6 +141,76 @@ describe("should give first time bonus", () => {
       lotteryParticipantDirectSignups: [
         getPreviousDirectSignup({ username: "foobar user" }),
       ],
+      lotterySignupProgramItems: [testProgramItem],
+    });
+
+    expect(list).toEqual([
+      {
+        event: testProgramItem.programItemId,
+        gain: 1 + firstSignupBonus,
+        id: groupCreatorGroupCode,
+        size: 1,
+      },
+    ]);
+  });
+
+  test("for single user with previous direct signup to a 'directSignupAlwaysOpenIds' program item", () => {
+    vi.spyOn(config, "event").mockReturnValue({
+      ...config.event(),
+      directSignupAlwaysOpenIds: [testProgramItem2.programItemId],
+    });
+
+    const users = getUsers({ count: 1 });
+    const attendeeGroups = [users];
+    // Always-open direct signups don't take part in lotteries, so they must not use up the first time bonus
+    const list = getList({
+      attendeeGroups,
+      assignmentTime,
+      lotteryParticipantDirectSignups: getLotteryParticipantDirectSignups(
+        [
+          getPreviousDirectSignup({
+            username: users[0].username,
+            programItemId: testProgramItem2.programItemId,
+            priority: DIRECT_SIGNUP_PRIORITY,
+          }),
+        ],
+        [testProgramItem, testProgramItem2],
+      ),
+      lotterySignupProgramItems: [testProgramItem],
+    });
+
+    expect(list).toEqual([
+      {
+        event: testProgramItem.programItemId,
+        gain: 1 + firstSignupBonus,
+        id: groupCreatorGroupCode,
+        size: 1,
+      },
+    ]);
+  });
+
+  test("for single user with previous direct signup to a pre-convention-week program item", () => {
+    const preConventionWeekProgramItem = {
+      ...testProgramItem2,
+      tags: [Tag.PRE_CONVENTION_WEEK],
+    };
+
+    const users = getUsers({ count: 1 });
+    const attendeeGroups = [users];
+    // Pre-convention-week items are always open for direct signup, so their signups must not use up the first time bonus
+    const list = getList({
+      attendeeGroups,
+      assignmentTime,
+      lotteryParticipantDirectSignups: getLotteryParticipantDirectSignups(
+        [
+          getPreviousDirectSignup({
+            username: users[0].username,
+            programItemId: preConventionWeekProgramItem.programItemId,
+            priority: DIRECT_SIGNUP_PRIORITY,
+          }),
+        ],
+        [testProgramItem, preConventionWeekProgramItem],
+      ),
       lotterySignupProgramItems: [testProgramItem],
     });
 

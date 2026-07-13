@@ -11,16 +11,20 @@ export const groupCreatorGroupCode = "123-234-345";
 export const getPreviousDirectSignup = ({
   username,
   parentStartTime,
+  programItemId = testProgramItem.programItemId,
+  priority = 1,
 }: {
   username: string;
   parentStartTime?: string;
+  programItemId?: string;
+  priority?: number;
 }): DirectSignupsForProgramItem => {
   return {
-    programItemId: testProgramItem.programItemId,
+    programItemId,
     userSignups: [
       {
         username,
-        priority: 1,
+        priority,
         signedToStartTime: dayjs(parentStartTime ?? assignmentTime)
           .subtract(1, "hours")
           .toISOString(),
