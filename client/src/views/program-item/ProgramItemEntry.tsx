@@ -138,7 +138,7 @@ export const ProgramItemEntry = memo(function ProgramItemEntryComponent({
       />
 
       {cancelled && (
-        <CanceledMessage>
+        <CanceledMessage data-testid="program-item-cancelled">
           {t("signup.cancelled", {
             PROGRAM_TYPE: t(`programTypeSingular.${programItem.programType}`),
           })}
@@ -190,6 +190,9 @@ const StyledCard = styled(RaisedCard)<{ $recentlyViewed: boolean }>`
     `}
 `;
 
+// Direct flex child of the card, so the 16px gap already provides the top
+// spacing; the bottom margin matches the other card end states
 const CanceledMessage = styled.div`
+  margin-bottom: 8px;
   font-weight: 600;
 `;

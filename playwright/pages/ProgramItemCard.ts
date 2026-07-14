@@ -17,6 +17,14 @@ export class ProgramItemCard {
     return this.root.getByTestId("program-item-full");
   }
 
+  get cancelledMessage(): Locator {
+    return this.root.getByTestId("program-item-cancelled");
+  }
+
+  get admissionTicketLink(): Locator {
+    return this.root.getByRole("button", { name: "Show admission ticket" });
+  }
+
   get participants(): Locator {
     return this.root.getByRole("listitem");
   }
