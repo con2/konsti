@@ -16,6 +16,7 @@ import {
   DirectSignupWithProgramItem,
   LotterySignupWithProgramItem,
 } from "client/views/my-program-items/myProgramItemsSlice";
+import { ButtonGroup } from "client/components/ButtonGroup";
 
 interface Props {
   signupStrategy: ProgramItemSignupStrategy;
@@ -82,8 +83,6 @@ export const ProgramItemSignup = ({
   );
 };
 
-const LinkContainer = styled.div`
-  margin: 8px 0;
-  display: flex;
+const LinkContainer = styled(ButtonGroup)`
   justify-content: center;
 `;

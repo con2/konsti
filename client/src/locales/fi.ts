@@ -336,7 +336,7 @@ export const translationFI = {
     inGroupWarning:
       "Jos ilmoittaudut {{PROGRAM_TYPE}}, sinut poistetaan ryhmästäsi. Ryhmää voi käyttää ainoastaan arvontailmoittautumisissa.",
     groupCreatorWarning:
-      "Jos ilmoittaudut {{PROGRAM_TYPE}}, perustamasi ryhmä poistetaan. Ryhmää voi käyttää ainoastaan arvontailmoittautumisissa.",
+      "Jos ilmoittaudut tähän {{PROGRAM_TYPE}}, perustamasi ryhmä poistetaan. Ryhmää voi käyttää ainoastaan arvontaan ilmoittautuessa.",
     groupSignupInfo:
       "Huomaathan, että olet ilmoittamassa koko ryhmäsi tähän arvontaan.",
     currentSignup: "Olet ilmoittautunut tähän {{PROGRAM_TYPE}}.",
