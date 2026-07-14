@@ -78,6 +78,15 @@ export const ProgramItemDirectSignup = ({
   const timeNow = getTimeNow();
 
   if (!loggedIn) {
+    if (programItemIsFull) {
+      return (
+        <ProgramItemFullText data-testid="program-item-full">
+          {t("signup.programItemFull", {
+            PROGRAM_TYPE: t(`programTypeSingular.${programItem.programType}`),
+          })}
+        </ProgramItemFullText>
+      );
+    }
     return (
       <NotLoggedSignupInfo>
         <CreateAccountLink>

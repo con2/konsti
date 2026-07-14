@@ -97,6 +97,63 @@ test("Add and cancel direct signup", async ({ page, request }) => {
   await expect(firstProgramItem.container).toContainText("1/4 sign-ups");
 });
 
+test("Show program item full message when logged out and logged in", async ({
+  page,
+  request,
+}) => {
+  await clearDb(request);
+  await populateDb(request, {
+    clean: true,
+    users: true,
+    admin: true,
+  });
+  await addProgramItems(request, [
+    {
+      ...testProgramItem,
+      startTime: dayjs(config.event().eventStartTime)
+        .add(1, "hour")
+        .startOf("hour")
+        .toISOString(),
+      minAttendance: 1,
+      maxAttendance: 1,
+    },
+  ]);
+  await postTestSettings(request, {
+    testTime: config.event().eventStartTime,
+  });
+
+  // Fill the program item with another user
+  await testPostDirectSignup(request, "test2", {
+    directSignupProgramItemId: testProgramItem.programItemId,
+    message: "",
+  });
+
+  const programList = new ProgramListPage(page);
+
+  // Logged out: the landing page is the program list without tabs,
+  // and the full message is shown instead of the login link
+  await page.goto("/");
+  await programList.waitForItems();
+
+  const firstProgramItem = programList.firstItem();
+  await expect(firstProgramItem.fullMessage).toHaveText(
+    "This role-playing game is full.",
+  );
+  await expect(firstProgramItem.container).not.toContainText(
+    "Log in to sign up",
+  );
+
+  // Logged in: same full message is shown
+  await login(page, request, { username: "test1", password: "test" });
+  await page.goto("/");
+  await programList.gotoAllProgram();
+  await programList.waitForItems();
+
+  await expect(firstProgramItem.fullMessage).toHaveText(
+    "This role-playing game is full.",
+  );
+});
+
 test("Show error when program item full and update participant list", async ({
   page,
   request,
