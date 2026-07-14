@@ -25,8 +25,8 @@ export class ProfilePage extends BasePage {
     return this.page.getByTestId("login-form-input-username");
   }
 
-  get privacyPolicyCheckbox(): Locator {
-    return this.page.getByRole("checkbox", { name: /privacy policy/i });
+  get privacyNoticeCheckbox(): Locator {
+    return this.page.getByRole("checkbox", { name: /privacy notice/i });
   }
 
   // Profile has two Save buttons: email is first, password is second

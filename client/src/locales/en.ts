@@ -161,10 +161,10 @@ export const translationEN = {
     invalidUserGroup: "Invalid user group",
     unknown: "Unknown error",
   },
-  agreePrivacyPolicy:
+  agreePrivacyNotice:
     "I consent to the processing of my personal data in accordance with the attached Privacy Notice",
-  showPrivacyPolicy: "View Privacy Notice",
-  hidePrivacyPolicy: "Hide Privacy Notice",
+  showPrivacyNotice: "View Privacy Notice",
+  hidePrivacyNotice: "Hide Privacy Notice",
   registrationSerialHelp: "From Larp & RPG Desk, Gaming Desk or Info",
   noLotterySignups:
     "No lottery sign-ups. You can sign up in the All Program view.",

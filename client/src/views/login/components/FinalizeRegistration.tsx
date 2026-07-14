@@ -18,7 +18,7 @@ import {
   USERNAME_LENGTH_MIN,
 } from "shared/constants/validation";
 import { navigateToPreviousOrRoot } from "client/utils/navigation";
-import { PrivacyPolicy } from "client/components/PrivacyPolicy";
+import { PrivacyNotice } from "client/components/PrivacyNotice";
 import { Checkbox } from "client/components/Checkbox";
 import {
   EMAIL_REGEX,
@@ -194,7 +194,7 @@ export const FinalizeRegistration = (
                 },
               })}
               id={"registerDescriptionCheckbox"}
-              label={t("agreePrivacyPolicy")}
+              label={t("agreePrivacyNotice")}
             />
           </FormRow>
           {errors.registerDescription && (
@@ -202,7 +202,7 @@ export const FinalizeRegistration = (
               {errors.registerDescription.message}
             </FormFieldError>
           )}
-          <PrivacyPolicy />
+          <PrivacyNotice />
         </>
       )}
       <FormRow>

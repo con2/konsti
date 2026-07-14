@@ -18,7 +18,7 @@ import {
 import { ErrorMessage } from "client/components/ErrorMessage";
 import { UncontrolledInput } from "client/components/UncontrolledInput";
 import { Checkbox } from "client/components/Checkbox";
-import { PrivacyPolicy } from "client/components/PrivacyPolicy";
+import { PrivacyNotice } from "client/components/PrivacyNotice";
 
 export interface KonstiRegistrationFormFields {
   password: string;
@@ -165,7 +165,7 @@ export const KonstiRegistrationForm = (): ReactElement => {
               },
             })}
             id={"registerDescriptionCheckbox"}
-            label={t("agreePrivacyPolicy")}
+            label={t("agreePrivacyNotice")}
           />
         </FormRow>
 
@@ -173,7 +173,7 @@ export const KonstiRegistrationForm = (): ReactElement => {
           <FormFieldError>{errors.registerDescription.message}</FormFieldError>
         )}
 
-        <PrivacyPolicy />
+        <PrivacyNotice />
 
         <FormRow>
           <Button
