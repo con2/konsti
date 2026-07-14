@@ -28,6 +28,7 @@ import {
   DirectSignupWithProgramItem,
   LotterySignupWithProgramItem,
 } from "client/views/my-program-items/myProgramItemsSlice";
+import { ProgramItemStatusMessage } from "client/views/program-item/ProgramItemStatusMessage";
 
 interface Props {
   programItem: ProgramItem;
@@ -138,11 +139,11 @@ export const ProgramItemEntry = memo(function ProgramItemEntryComponent({
       />
 
       {cancelled && (
-        <CanceledMessage data-testid="program-item-cancelled">
+        <ProgramItemStatusMessage data-testid="program-item-cancelled">
           {t("signup.cancelled", {
             PROGRAM_TYPE: t(`programTypeSingular.${programItem.programType}`),
           })}
-        </CanceledMessage>
+        </ProgramItemStatusMessage>
       )}
 
       {allValuesValid && !cancelled && (
@@ -188,11 +189,4 @@ const StyledCard = styled(RaisedCard)<{ $recentlyViewed: boolean }>`
     css`
       animation: ${recentlyViewedFlash} 0.8s ease-out;
     `}
-`;
-
-// Direct flex child of the card, so the 16px gap already provides the top
-// spacing; the bottom margin matches the other card end states
-const CanceledMessage = styled.div`
-  margin-bottom: 8px;
-  font-weight: 600;
 `;

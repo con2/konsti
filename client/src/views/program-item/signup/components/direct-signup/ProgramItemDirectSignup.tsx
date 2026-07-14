@@ -20,6 +20,8 @@ import { AdmissionTicketLink } from "client/views/program-item/signup/components
 import { startLoading, stopLoading } from "client/state/loading/loadingSlice";
 import { SignupQuestionAnswer } from "client/components/SignUpQuestionAnswer";
 import { LoginToSignupLink } from "client/views/program-item/signup/components/LoginToSignupLink";
+import { ProgramItemStatusMessage } from "client/views/program-item/ProgramItemStatusMessage";
+import { ButtonGroup } from "client/components/ButtonGroup";
 
 interface Props {
   programItem: ProgramItem;
@@ -80,11 +82,11 @@ export const ProgramItemDirectSignup = ({
   if (!loggedIn) {
     if (programItemIsFull) {
       return (
-        <ProgramItemFullText data-testid="program-item-full">
+        <ProgramItemStatusMessage data-testid="program-item-full">
           {t("signup.programItemFull", {
             PROGRAM_TYPE: t(`programTypeSingular.${programItem.programType}`),
           })}
-        </ProgramItemFullText>
+        </ProgramItemStatusMessage>
       );
     }
     return <LoginToSignupLink />;
@@ -93,11 +95,11 @@ export const ProgramItemDirectSignup = ({
   return (
     <Container>
       {programItemIsFull && (
-        <ProgramItemFullText data-testid="program-item-full">
+        <ProgramItemStatusMessage data-testid="program-item-full">
           {t("signup.programItemFull", {
             PROGRAM_TYPE: t(`programTypeSingular.${programItem.programType}`),
           })}
-        </ProgramItemFullText>
+        </ProgramItemStatusMessage>
       )}
 
       {!alreadySignedToProgramItem && !programItemIsFull && (
@@ -205,15 +207,7 @@ const DirectSignupTitle = styled.span`
   font-weight: 600;
 `;
 
-const ProgramItemFullText = styled.div`
-  margin: 8px 0;
-  font-weight: 600;
-`;
-
-const ButtonContainer = styled.div`
-  margin: 8px 0;
-  display: flex;
-  gap: 8px;
+const ButtonContainer = styled(ButtonGroup)`
   justify-content: center;
 
   @media (max-width: ${(props) => props.theme.breakpointDesktop}) {

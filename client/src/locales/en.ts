@@ -336,7 +336,7 @@ export const translationEN = {
     inGroupWarning:
       "If you sign up to a {{PROGRAM_TYPE}}, you will be removed from your current group. Groups can only be used in lottery sign-ups.",
     groupCreatorWarning:
-      "If you sign up to a {{PROGRAM_TYPE}}, the group you created will be deleted. Groups can only be used in lottery sign-ups.",
+      "If you sign up to this {{PROGRAM_TYPE}}, the group you created will be deleted. Groups can only be used in lottery sign-ups.",
     groupSignupInfo: "Please note that you are signing up your whole group.",
     currentSignup: "You have signed up to this {{PROGRAM_TYPE}}.",
     entryFee: "Material fee {{ENTRY_FEE}}",

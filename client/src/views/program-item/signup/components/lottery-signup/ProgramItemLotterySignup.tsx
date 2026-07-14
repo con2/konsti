@@ -29,6 +29,7 @@ import {
 import { selectGroupMembers } from "client/views/group/groupSlice";
 import { startLoading, stopLoading } from "client/state/loading/loadingSlice";
 import { LoginToSignupLink } from "client/views/program-item/signup/components/LoginToSignupLink";
+import { ButtonGroup } from "client/components/ButtonGroup";
 
 interface Props {
   programItem: ProgramItem;
@@ -192,9 +193,7 @@ export const ProgramItemLotterySignup = ({
   );
 };
 
-const ButtonContainer = styled.div`
-  margin: 8px 0;
-  display: flex;
+const ButtonContainer = styled(ButtonGroup)`
   justify-content: center;
 `;
 

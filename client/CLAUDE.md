@@ -61,6 +61,8 @@ styled-components only (no CSS modules, no component library). Pull tokens from 
 
 **Always source colors from `client/src/theme.ts`** — never hard-code color values (hex/rgb) in components. Use `props.theme.<token>` in styled templates; in a context without props (e.g. module-level `keyframes`), `import { theme } from "client/theme"` and reference `theme.<token>` directly. Add a new token to `theme.ts` rather than inlining a one-off color.
 
+**Don't export styled-components.** A module's public export should be a React component with explicit props that renders its styled elements; `styled` definitions stay module-private. Exporting a bare styled-component leaks styling as API and usually signals a composition problem — wrap it in a component instead (see `ProgramItemStatusMessage`). Restyling an imported component locally with `styled(Component)` is fine.
+
 ## Internationalization
 
 i18next, English + Finnish. Locale files: `client/src/locales/{en,fi}.ts` (deeply nested `as const` objects). `client/src/utils/i18n.ts` has an `expectLocalesToMatch` type-level check — if EN and FI don't have identical key shapes, type-check fails. The same `NestedKeyOf` machinery makes `t("...")` calls type-checked at the call site (missing keys are TS errors).
