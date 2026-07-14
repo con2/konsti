@@ -35,7 +35,7 @@ export const ProgramItemSignup = ({
   attendees,
   usesKonstiSignup,
   signupRequired,
-}: Props): ReactElement => {
+}: Props): ReactElement | null => {
   const signupAlwaysOpen = isDirectSignupAlwaysOpen(programItem);
 
   const isDirectSignupMode =
@@ -45,6 +45,11 @@ export const ProgramItemSignup = ({
   const isDirectSignupOver = getTimeNow().isAfter(directSignupEndTime);
 
   const hasSignedUp = isAlreadyDirectySigned(programItem, directSignups);
+
+  // After direct signup has ended, only signed-up users have content to show (the admission ticket link)
+  if (isDirectSignupOver && !hasSignedUp) {
+    return null;
+  }
 
   return (
     <div>
@@ -78,6 +83,7 @@ export const ProgramItemSignup = ({
 };
 
 const LinkContainer = styled.div`
+  margin: 8px 0;
   display: flex;
   justify-content: center;
 `;

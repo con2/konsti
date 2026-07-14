@@ -216,3 +216,67 @@ test("Show error when program item full and update participant list", async ({
   await expect(participantList).toHaveCount(1);
   await expect(participantList.nth(0)).toHaveText("test2");
 });
+
+test("Show no signup controls after direct signup has ended", async ({
+  page,
+  request,
+}) => {
+  await clearDb(request);
+  await populateDb(request, {
+    clean: true,
+    users: true,
+    admin: true,
+  });
+  const startTime = dayjs(config.event().eventStartTime)
+    .add(1, "hour")
+    .startOf("hour")
+    .toISOString();
+  await addProgramItems(request, [
+    {
+      ...testProgramItem,
+      startTime,
+    },
+  ]);
+
+  // Sign up test1 while direct signup is open, then move time past the start
+  // when direct signup has ended
+  await postTestSettings(request, {
+    testTime: config.event().eventStartTime,
+  });
+  await testPostDirectSignup(request, "test1", {
+    directSignupProgramItemId: testProgramItem.programItemId,
+    message: "",
+  });
+  await postTestSettings(request, {
+    testTime: dayjs(startTime).add(1, "hour").toISOString(),
+  });
+
+  const programList = new ProgramListPage(page);
+
+  // Logged out: past program items are only visible in the "All" view,
+  // and the card shows no signup controls or messages
+  await page.goto("/");
+  await programList.selectStartingTime("All");
+  await programList.waitForItems();
+
+  const firstProgramItem = programList.firstItem();
+  await expect(firstProgramItem.title).toContainText("Test program item");
+  await expect(firstProgramItem.container).toContainText("1/4 sign-ups");
+  await expect(firstProgramItem.signUpButton).toBeHidden();
+  await expect(firstProgramItem.container).not.toContainText(
+    "Log in to sign up",
+  );
+  await expect(firstProgramItem.fullMessage).toBeHidden();
+  await expect(firstProgramItem.container).not.toContainText("Sign-up closes");
+
+  // Logged in and signed up: only the admission ticket link is shown
+  await login(page, request, { username: "test1", password: "test" });
+  await page.goto("/");
+  await programList.gotoAllProgram();
+  await programList.selectStartingTime("All");
+  await programList.waitForItems();
+
+  await expect(firstProgramItem.admissionTicketLink).toBeVisible();
+  await expect(firstProgramItem.signUpButton).toBeHidden();
+  await expect(firstProgramItem.container).not.toContainText("Sign-up closes");
+});

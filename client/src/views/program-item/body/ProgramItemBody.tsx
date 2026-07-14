@@ -28,7 +28,7 @@ export const ProgramItemBody = ({
   const id = `more-info-${programItem.programItemId}`;
 
   return (
-    <div>
+    <Container>
       <ShortDescription>
         <TextWithLinks>{programItem.shortDescription}</TextWithLinks>
       </ShortDescription>
@@ -51,9 +51,17 @@ export const ProgramItemBody = ({
           )}
         </ExpandedDescriptionContainer>
       )}
-    </div>
+    </Container>
   );
 };
+
+// When the signup section doesn't render (signup ended, invalid values), the
+// body ends the card; the bottom margin matches the other card end states
+const Container = styled.div`
+  &:last-child {
+    margin-bottom: 8px;
+  }
+`;
 
 const ExpandedDescriptionContainer = styled.div`
   padding-top: 8px;

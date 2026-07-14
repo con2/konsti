@@ -1,7 +1,6 @@
 import { ReactElement, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router";
 import { ProgramItem } from "shared/types/models/programItem";
 import { DirectSignupForm } from "client/views/program-item/signup/components/direct-signup/DirectSignupForm";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
@@ -20,6 +19,7 @@ import { InfoText } from "client/components/InfoText";
 import { AdmissionTicketLink } from "client/views/program-item/signup/components/AdmissionTicketLink";
 import { startLoading, stopLoading } from "client/state/loading/loadingSlice";
 import { SignupQuestionAnswer } from "client/components/SignUpQuestionAnswer";
+import { LoginToSignupLink } from "client/views/program-item/signup/components/LoginToSignupLink";
 
 interface Props {
   programItem: ProgramItem;
@@ -87,13 +87,7 @@ export const ProgramItemDirectSignup = ({
         </ProgramItemFullText>
       );
     }
-    return (
-      <NotLoggedSignupInfo>
-        <CreateAccountLink>
-          <Link to={"/login"}>{t("signup.loginToSignup")}</Link>
-        </CreateAccountLink>
-      </NotLoggedSignupInfo>
-    );
+    return <LoginToSignupLink />;
   }
 
   return (
@@ -211,7 +205,8 @@ const DirectSignupTitle = styled.span`
   font-weight: 600;
 `;
 
-const ProgramItemFullText = styled.span`
+const ProgramItemFullText = styled.div`
+  margin: 8px 0;
   font-weight: 600;
 `;
 
@@ -232,12 +227,4 @@ const StyledButton = styled(Button)`
     width: 100%;
     min-width: 0;
   }
-`;
-
-const NotLoggedSignupInfo = styled.div`
-  margin: 16px 0;
-`;
-
-const CreateAccountLink = styled.div`
-  margin: 8px 0 0 0;
 `;

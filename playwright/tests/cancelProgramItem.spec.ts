@@ -74,6 +74,17 @@ test("Show event log notification when program item with direct signup is cancel
   await expect(programList.notificationBar.eventLogItem).toContainText(
     "Role-playing game was cancelled and your sign-up was removed: Test program item",
   );
+
+  // The card shows the cancelled state without sign-up controls
+  await programList.navigation.gotoProgram();
+  await programList.gotoAllProgram();
+  await expect(firstProgramItem.title).toContainText(
+    "CANCELLED: Test program item",
+  );
+  await expect(firstProgramItem.cancelledMessage).toHaveText(
+    "This role-playing game has been cancelled.",
+  );
+  await expect(firstProgramItem.signUpButton).toBeHidden();
 });
 
 test("Show event log notification when program item with lottery sign-up is cancelled before its lottery has run", async ({

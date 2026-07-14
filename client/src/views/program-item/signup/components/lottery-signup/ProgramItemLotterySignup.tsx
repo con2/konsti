@@ -1,7 +1,6 @@
 import { ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import { Link } from "react-router";
 import { ProgramItem } from "shared/types/models/programItem";
 import { LotterySignupForm } from "client/views/program-item/signup/components/lottery-signup/LotterySignupForm";
 import {
@@ -29,6 +28,7 @@ import {
 } from "client/views/my-program-items/myProgramItemsSlice";
 import { selectGroupMembers } from "client/views/group/groupSlice";
 import { startLoading, stopLoading } from "client/state/loading/loadingSlice";
+import { LoginToSignupLink } from "client/views/program-item/signup/components/LoginToSignupLink";
 
 interface Props {
   programItem: ProgramItem;
@@ -108,13 +108,7 @@ export const ProgramItemLotterySignup = ({
   const lotterySignupOpen = timeNow.isSameOrAfter(lotterySignupStartTime);
 
   if (!loggedIn) {
-    return (
-      <NotLoggedSignupInfo>
-        <CreateAccountLink>
-          <Link to={"/login"}>{t("signup.loginToSignup")}</Link>
-        </CreateAccountLink>
-      </NotLoggedSignupInfo>
-    );
+    return <LoginToSignupLink />;
   }
 
   return (
@@ -210,12 +204,4 @@ const StyledButton = styled(Button)`
     width: 100%;
     min-width: 0;
   }
-`;
-
-const NotLoggedSignupInfo = styled.div`
-  margin: 16px 0;
-`;
-
-const CreateAccountLink = styled.div`
-  margin: 8px 0 0 0;
 `;
