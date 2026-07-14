@@ -160,9 +160,10 @@ export const translationFI = {
     invalidUserGroup: "Virheellinen käyttäjäryhmä",
     unknown: "Tuntematon virhe",
   },
-  agreePrivacyPolicy: "Hyväksyn rekisteriselosteen",
-  showPrivacyPolicy: "Näytä rekisteriseloste",
-  hidePrivacyPolicy: "Piilota rekisteriseloste",
+  agreePrivacyPolicy:
+    "Annan suostumukseni henkilötietojeni käsittelyyn oheisen tietosuojaselosteen mukaisesti",
+  showPrivacyPolicy: "Näytä tietosuojaseloste",
+  hidePrivacyPolicy: "Piilota tietosuojaseloste",
   registrationSerialHelp:
     "Larp- ja Roolipelitiskiltä, Pelitiskiltä tai Infosta",
   noLotterySignups:
