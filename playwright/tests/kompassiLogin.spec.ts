@@ -25,7 +25,7 @@ test("Kompassi login", async ({ page, request }) => {
   const editedEmail = "firstname.lastname.edited@example.com";
   await profilePage.emailInput.fill(editedEmail);
 
-  await profilePage.privacyPolicyCheckbox.check();
+  await profilePage.privacyNoticeCheckbox.check();
   await profilePage.save();
 
   // Check if login was completed and modified username and email saved
@@ -62,7 +62,7 @@ test("Show error when Kompassi username is already taken", async ({
 
   // test1 exists as a local account
   await profilePage.usernameInput.fill("test1");
-  await profilePage.privacyPolicyCheckbox.check();
+  await profilePage.privacyNoticeCheckbox.check();
   await profilePage.save();
 
   await expect(profilePage.main).toContainText("Username already taken");
@@ -88,7 +88,7 @@ test("Show validation errors on the Kompassi finalize form", async ({
 
   const profilePage = new ProfilePage(page);
 
-  // Too short username, invalid email, and privacy policy not agreed to
+  // Too short username, invalid email, and privacy notice not agreed to
   await profilePage.usernameInput.fill("ab");
   await profilePage.emailInput.fill("not-an-email");
   await profilePage.save();
@@ -114,7 +114,7 @@ test("Decline email notifications on the Kompassi finalize form", async ({
 
   // Keep the default username and decline email notifications
   await profilePage.emailNotificationsDisabled.check();
-  await profilePage.privacyPolicyCheckbox.check();
+  await profilePage.privacyNoticeCheckbox.check();
   await profilePage.save();
 
   // No email is stored for the user
@@ -135,14 +135,14 @@ test("Second Kompassi login skips the finalize form", async ({
 
   const profilePage = new ProfilePage(page);
 
-  await profilePage.privacyPolicyCheckbox.check();
+  await profilePage.privacyNoticeCheckbox.check();
   await profilePage.save();
   await profilePage.navigation.logout();
 
   // The same Kompassi account logs in again without the finalize form
   await loginWithKompassi(page);
 
-  await expect(profilePage.privacyPolicyCheckbox).toBeHidden();
+  await expect(profilePage.privacyNoticeCheckbox).toBeHidden();
   await profilePage.navigation.open();
   await expect(profilePage.navigation.profileLink).toBeVisible();
 });

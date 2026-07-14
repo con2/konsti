@@ -1627,7 +1627,7 @@
       "form": ["offer-workshop"],
       "room": ["halli1b"],
       "type": ["workshop"],
-      "state": ["accepted"],
+      "state": ["cancelled"],
       "topic": ["larp", "rpg"],
       "konsti": ["workshop"],
       "grouping": ["beginners"],
@@ -1638,7 +1638,7 @@
       "registration": ["konsti"]
     },
     "cachedAnnotations": { "konsti:maxAttendance": 15 },
-    "isCancelled": false,
+    "isCancelled": true,
     "scheduleItems": [
       {
         "slug": "character-drawing-workshop-1",
@@ -1647,7 +1647,7 @@
         "endTime": "2026-07-25T15:45:00+03:00",
         "lengthMinutes": 105,
         "location": "Hall 1B Workshop Area",
-        "isCancelled": false,
+        "isCancelled": true,
         "cachedAnnotations": { "konsti:maxAttendance": 15 }
       }
     ]
@@ -7005,7 +7005,7 @@
   {
     "slug": "kehollisia-harjoitteita-elaytyjille",
     "title": "Kehollisia harjoitteita eläytyjille",
-    "description": "Larpissa eläytyminen on keskeisesti keholliseen toimintaan ja kokemukseen perustuvaa. Eläytymisen syvyyttä, kauneutta tai mielekkyyttä voi lähestyä juurikin kehosta käsin. Tässä työpajassa pohditaan ja kokeillaan erilaisia erityisesti havainnointiin, kehon kuulosteluun ja virittäytymiseen liittyviä kehollisia harjoitteita, jotka voivat toimia eläytymisen tukena tai jopa sen mahdollistajana. Työpaja sisältää lyhyen alustuksen ja käytännön kokeiluja yhdessä ja ryhmänä. Työpajan vetää larppien (kehollisuuden kysymyksien) parissa työskentelevä taiteilija, teatteripedagogi ja väitöstutkija Maiju Tarpila.",
+    "description": "Larpissa eläytyminen on keskeisesti keholliseen kokemukseen perustuvaa. Eläytymisen syvyyttä, kauneutta tai mielekkyyttä voikin lähestyä kehosta käsin. Työpajassa pohditaan ja kokeillaan erilaisia kehollisen kokemuksen havainnointiin ja niihin virittäytymiseen liittyviä harjoitteita, jotka voivat toimia eläytymisen tukena tai jopa mahdollistajana. Työpaja sisältää lyhyen alustuksen ja käytännön kokeiluja yhdessä ja ryhmänä. Harjoitteita varten ei tarvitse olla kosketuskontaktissa eivätkä ne vaadi erityistä liikkuvuutta. Työpajan vetää larppien parissa työskentelevä taiteilija, pedagogi ja väitöstutkija Maiju Tarpila.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2026-07-25"],
@@ -11821,7 +11821,7 @@
   {
     "slug": "novigradin-katulapset",
     "title": "Novigradin katulapset",
-    "description": "\"Mitä sinä olet aina toivonut? Tänään saat sen.\" Noiturin fantasiamaailmaan sijoittuva seikkailu, jossa pelataan noin 7 - 4 vuotiaita katulapsia. Päätetään ensin porukalla hahmojen ikä, ja sen jälkeen kukin kirjoittaa hahmonsa tarinan 50 sanalla. Sen jälkeen eksytään erittäin kevyen pelimekaniikan ja hahmovetoisen, yhteisen tarinankerronnan turvin Novigradin vapaakaupungin pimeille kujille.",
+    "description": "\"Mitä sinä olet aina toivonut? Tänään saat sen.\" Noiturin fantasiamaailmaan sijoittuva seikkailu, jossa pelataan noin 7 - 14 vuotiaita katulapsia. Päätetään ensin porukalla hahmojen ikä, ja sen jälkeen kukin kirjoittaa hahmonsa tarinan 50 sanalla. Sen jälkeen eksytään erittäin kevyen pelimekaniikan ja hahmovetoisen, yhteisen tarinankerronnan turvin Novigradin vapaakaupungin pimeille kujille.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2026-07-25"],
@@ -14579,6 +14579,7 @@
       "registration": ["not-required"]
     },
     "cachedAnnotations": {
+      "konsti:workshopFee": "3€",
       "ropecon:contentWarnings": "Kuuman ja sulan massan käsittely, ahtaat tilat",
       "ropecon:accessibilityOther": "Työskentely tapahtuu seisten. "
     },
@@ -14593,6 +14594,7 @@
         "location": "Hall 3 Workshop Area",
         "isCancelled": false,
         "cachedAnnotations": {
+          "konsti:workshopFee": "3€",
           "ropecon:contentWarnings": "Kuuman ja sulan massan käsittely, ahtaat tilat",
           "ropecon:accessibilityOther": "Työskentely tapahtuu seisten. "
         }

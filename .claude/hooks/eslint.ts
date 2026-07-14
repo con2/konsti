@@ -27,11 +27,23 @@ const getUncommittedFiles = (): string[] => {
     const out = execFileSync("git", ["status", "--porcelain", "-z"], {
       encoding: "utf8",
     });
-    return out
-      .split("\0")
-      .filter(Boolean)
-      .map((entry) => entry.slice(3))
-      .filter(Boolean);
+    const tokens = out.split("\0").filter(Boolean);
+    const files: string[] = [];
+    for (let i = 0; i < tokens.length; i++) {
+      const status = tokens[i].slice(0, 2);
+      const path = tokens[i].slice(3);
+      // A rename/copy entry is followed by a separate token holding the
+      // original path (no status prefix) — consume it so it isn't
+      // misparsed as a file path
+      if (/[RC]/.test(status)) {
+        i++;
+      }
+      // Deleted files can't be linted
+      if (path && !status.includes("D")) {
+        files.push(path);
+      }
+    }
+    return files;
   } catch {
     return [];
   }
