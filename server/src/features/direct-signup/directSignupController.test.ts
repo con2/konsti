@@ -22,7 +22,11 @@ import {
   saveGroupCreator,
 } from "server/features/user/group/groupRepository";
 import { saveProgramItems } from "server/features/program-item/programItemRepository";
-import { saveHidden } from "server/features/settings/settingsRepository";
+import {
+  createSettings,
+  saveHidden,
+  saveSignupQuestion,
+} from "server/features/settings/settingsRepository";
 import {
   findDirectSignups,
   findUserDirectSignups,
@@ -43,6 +47,7 @@ import {
   SignupType,
   State,
 } from "shared/types/models/programItem";
+import { SignupQuestionType } from "shared/types/models/settings";
 
 let server: Server;
 
@@ -322,6 +327,44 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
       testProgramItem.programItemId,
     );
     expect(modifiedSignups[0].userSignups[0].message).toEqual("Test message");
+  });
+
+  test("should return own signup message when signup question is private", async () => {
+    vi.setSystemTime(testProgramItem.startTime);
+
+    await createSettings();
+    await saveSignupQuestion({
+      programItemId: testProgramItem.programItemId,
+      questionFi: "Erityisruokavalio?",
+      questionEn: "Dietary restrictions?",
+      private: true,
+      type: SignupQuestionType.TEXT,
+      selectOptions: [],
+    });
+    await saveProgramItems([testProgramItem]);
+    await saveUser(mockUser);
+
+    const signup: PostDirectSignupRequest = {
+      directSignupProgramItemId: testProgramItem.programItemId,
+      message: "No peanuts",
+    };
+    const response = await request(server)
+      .post(ApiEndpoint.DIRECT_SIGNUP)
+      .send(signup)
+      .set(
+        "Authorization",
+        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
+      );
+
+    expect(response.status).toEqual(200);
+
+    const body = response.body as PostDirectSignupResult;
+    expect(body.status).toEqual("success");
+    // The user's own signup keeps the answer, the public attendee list hides it
+    expect(body.directSignup?.message).toEqual("No peanuts");
+    expect(body.allSignups.userSignups).toEqual([
+      { username: mockUser.username, message: "" },
+    ]);
   });
 
   test("should store parent start time as signedToStartTime when program item has parent start time override", async () => {

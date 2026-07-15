@@ -123,11 +123,23 @@ test("User answers a public text signup question on direct signup", async ({
     "You have signed up to this",
   );
 
-  // The answer is stored and shown back to the user in My Program
+  // The answer is shown back to the user on the program card...
+  await expect(programItem.container).toContainText(
+    'Your answer to the question "What is your character?": Gandalf the wizard',
+  );
+
+  // A public answer is also visible in the participant list
+  await programItem.showPlayers();
+  await expect(programItem.participants).toHaveText([
+    "test1: Gandalf the wizard",
+  ]);
+
+  // ...and in My Program
   await programList.gotoMyProgram();
   const directSignups = programList.directSignupList;
-  await expect(directSignups).toContainText("Your answer to the question");
-  await expect(directSignups).toContainText("Gandalf the wizard");
+  await expect(directSignups).toContainText(
+    'Your answer to the question "What is your character?": Gandalf the wizard',
+  );
 });
 
 test("User answers a public multiple choice signup question on direct signup", async ({
@@ -204,11 +216,33 @@ test("User answers a private signup question on direct signup", async ({
     "You have signed up to this",
   );
 
-  // The user sees the question was recorded, but the answer stays organizer-only
+  // Private only hides the answer from other attendees: the user sees their
+  // own answer on the program card right after signing up
+  await expect(programItem.container).toContainText(
+    'Your answer to the question "Dietary restrictions?" (Only visible to organizers): No peanuts',
+  );
+
+  // A private answer stays out of the participant list
+  await programItem.showPlayers();
+  await expect(programItem.participants).toHaveText(["test1"]);
+
+  // Reload so program and user data come from the server instead of the
+  // signup response
+  await page.reload();
+
+  // The private answer stays out of the participant list also when the
+  // attendee data comes from the program items endpoint
+  await programList.waitForItems();
+  const reloadedProgramItem = programList.firstItem();
+  await reloadedProgramItem.showPlayers();
+  await expect(reloadedProgramItem.participants).toHaveText(["test1"]);
+
+  // The user also sees their own answer in My Program
   await programList.gotoMyProgram();
   const directSignups = programList.directSignupList;
-  await expect(directSignups).toContainText("Your answer to the question");
-  await expect(directSignups).toContainText("Only visible to organizers");
+  await expect(directSignups).toContainText(
+    'Your answer to the question "Dietary restrictions?" (Only visible to organizers): No peanuts',
+  );
 
   // An organizer (helper) can read the private answer
   await programList.navigation.logout();
