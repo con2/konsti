@@ -41,6 +41,20 @@ export class ProgramItemCard {
     return this.root.getByRole("button", { name: "Sign up", exact: true });
   }
 
+  get cancelSignupButton(): Locator {
+    return this.root.getByRole("button", { name: "Cancel sign-up" });
+  }
+
+  async cancelSignup(): Promise<void> {
+    await this.cancelSignupButton.click();
+  }
+
+  async confirmCancellation(): Promise<void> {
+    await this.root
+      .getByRole("button", { name: "Cancel your sign-up" })
+      .click();
+  }
+
   get lotterySignupButton(): Locator {
     return this.root.getByRole("button", { name: /lottery sign-up/i });
   }
@@ -53,8 +67,12 @@ export class ProgramItemCard {
     await this.lotterySignupButton.click();
   }
 
+  get confirmButton(): Locator {
+    return this.root.getByRole("button", { name: /confirm/i });
+  }
+
   async confirm(): Promise<void> {
-    await this.root.getByRole("button", { name: /confirm/i }).click();
+    await this.confirmButton.click();
   }
 
   // Confirm a lottery signup and wait for the POST to be persisted, so callers can

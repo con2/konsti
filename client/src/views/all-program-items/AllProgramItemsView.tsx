@@ -81,8 +81,8 @@ export const AllProgramItemsView = (): ReactElement => {
   const [debouncedSearchTerm] = useDebounce(searchTerm, 300);
 
   // Keep the original program item references stable (no per-item object
-  // spread) so React.memo on ProgramItemEntry can bail out when the same item
-  // persists across a program type change
+  // spread) so the memoized list row can bail out when the same item persists
+  // across a program type change
   const activeVisibleProgramItems: readonly ProgramItem[] = useMemo(() => {
     const hiddenIds = new Set(
       hiddenProgramItems.map(

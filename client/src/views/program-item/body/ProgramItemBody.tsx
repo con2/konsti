@@ -8,15 +8,20 @@ import { AdminActionCard } from "client/views/program-item/body/components/Admin
 import { useAppSelector } from "client/utils/hooks";
 import { ExpandButton } from "client/components/ExpandButton";
 import { TextWithLinks } from "client/markdown/components/TextWithLinks";
+import { programItemCardEndMargin } from "client/views/my-program-items/components/shared";
 
 interface Props {
   programItem: ProgramItem;
   isAlwaysExpanded: boolean;
+  // True when nothing renders after the body (signup section hidden,
+  // not cancelled), so the body provides the card-end spacing
+  endOfCard: boolean;
 }
 
 export const ProgramItemBody = ({
   programItem,
   isAlwaysExpanded,
+  endOfCard,
 }: Props): ReactElement => {
   const { t } = useTranslation();
 
@@ -28,7 +33,7 @@ export const ProgramItemBody = ({
   const id = `more-info-${programItem.programItemId}`;
 
   return (
-    <Container>
+    <Container $endOfCard={endOfCard}>
       <ShortDescription>
         <TextWithLinks>{programItem.shortDescription}</TextWithLinks>
       </ShortDescription>
@@ -55,12 +60,9 @@ export const ProgramItemBody = ({
   );
 };
 
-// When the signup section doesn't render (signup ended, invalid values), the
-// body ends the card; the bottom margin matches the other card end states
-const Container = styled.div`
-  &:last-child {
-    margin-bottom: 8px;
-  }
+const Container = styled.div<{ $endOfCard: boolean }>`
+  ${(props) =>
+    props.$endOfCard && `margin-bottom: ${programItemCardEndMargin};`}
 `;
 
 const ExpandedDescriptionContainer = styled.div`

@@ -13,7 +13,10 @@ import {
   PostLoginResponse,
   PostLoginResult,
 } from "shared/types/api/login";
-import { PostDirectSignupRequest } from "shared/types/api/myProgramItems";
+import {
+  PostDirectSignupRequest,
+  PostLotterySignupRequest,
+} from "shared/types/api/myProgramItems";
 import { ProgramItem } from "shared/types/models/programItem";
 import { Settings } from "shared/types/models/settings";
 
@@ -179,6 +182,23 @@ export const testPostDirectSignup = async (
   const url = `${baseUrl}${ApiEndpoint.DIRECT_SIGNUP}`;
   const response = await request.post(url, {
     data: directSignup,
+    headers: { Authorization: `Bearer ${loginResponse.jwt}` },
+  });
+  expect(response.status()).toBe(200);
+};
+
+export const testPostLotterySignup = async (
+  request: APIRequestContext,
+  username: string,
+  lotterySignup: PostLotterySignupRequest,
+): Promise<void> => {
+  const loginResponse = await postLogin(request, {
+    username,
+    password: "test",
+  });
+  const url = `${baseUrl}${ApiEndpoint.LOTTERY_SIGNUP}`;
+  const response = await request.post(url, {
+    data: lotterySignup,
     headers: { Authorization: `Bearer ${loginResponse.jwt}` },
   });
   expect(response.status()).toBe(200);

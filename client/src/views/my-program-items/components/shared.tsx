@@ -1,6 +1,21 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { ErrorMessage } from "client/components/ErrorMessage";
 import { TertiaryButton } from "client/components/TertiaryButton";
+
+// Message components in the compact My Program lists share this margin
+export const myProgramMessageMargin = css`
+  margin: 4px 0 8px 0;
+`;
+
+// Bottom margin of whatever element ends a program item card
+export const programItemCardEndMargin = "8px";
+
+// Non-paragraph content in a program item card (e.g. button rows) uses this
+// margin; the 16px top matches the default paragraph margins of the
+// surrounding card text
+export const programItemContentMargin = css`
+  margin: 16px 0 ${programItemCardEndMargin} 0;
+`;
 
 export const MyProgramListItem = styled.li`
   align-items: center;
@@ -43,7 +58,7 @@ export const MyProgramButtonContainerMobile = styled(MyProgramButtonContainer)`
 `;
 
 export const MyProgramErrorMessage = styled(ErrorMessage)`
-  margin: 4px 0 8px 0;
+  ${myProgramMessageMargin};
 `;
 
 export const MyProgramCancelSignupFormContainer = styled.div`

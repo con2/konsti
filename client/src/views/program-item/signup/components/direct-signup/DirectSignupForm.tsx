@@ -7,7 +7,6 @@ import {
   submitPostDirectSignup,
 } from "client/views/my-program-items/myProgramItemsThunks";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
-import { Button, ButtonStyle } from "client/components/Button";
 import {
   SignupQuestion,
   SignupQuestionType,
@@ -15,7 +14,7 @@ import {
 import { ErrorMessage } from "client/components/ErrorMessage";
 import { getIsInGroup } from "client/views/group/groupUtils";
 import { TextArea } from "client/components/TextArea";
-import { ButtonGroup } from "client/components/ButtonGroup";
+import { SignupFormButtons } from "client/views/program-item/signup/components/SignupFormButtons";
 import { Dropdown } from "client/components/Dropdown";
 import { Checkbox } from "client/components/Checkbox";
 import { InfoText, InfoTextVariant } from "client/components/InfoText";
@@ -84,7 +83,7 @@ export const DirectSignupForm = ({
   };
 
   return (
-    <SignupForm>
+    <form>
       {isLotterySignupProgramItem(programItem) && isInGroup && (
         <>
           {!isGroupCreator && (
@@ -172,26 +171,15 @@ export const DirectSignupForm = ({
         />
       )}
 
-      <StyledButtonGroup>
-        <StyledButton
-          onClick={handleSignup}
-          buttonStyle={ButtonStyle.PRIMARY}
-          disabled={isSignupConfirmDisabled(
-            Boolean(entryCondition),
-            agreeEntryCondition,
-            loading,
-          )}
-        >
-          {t("signup.confirm")}
-        </StyledButton>
-        <StyledButton
-          onClick={handleCancel}
-          buttonStyle={ButtonStyle.SECONDARY}
-          disabled={loading}
-        >
-          {t("signup.cancel")}
-        </StyledButton>
-      </StyledButtonGroup>
+      <SignupFormButtons
+        onConfirm={handleSignup}
+        onCancel={handleCancel}
+        confirmDisabled={isSignupConfirmDisabled(
+          Boolean(entryCondition),
+          agreeEntryCondition,
+        )}
+        loading={loading}
+      />
 
       {errorMessage && (
         <ErrorMessage
@@ -199,14 +187,9 @@ export const DirectSignupForm = ({
           closeError={() => setErrorMessage(null)}
         />
       )}
-    </SignupForm>
+    </form>
   );
 };
-
-const SignupForm = styled.form`
-  display: flex;
-  flex-direction: column;
-`;
 
 const SignupQuestionContainer = styled.div`
   display: flex;
@@ -215,18 +198,4 @@ const SignupQuestionContainer = styled.div`
 
 const StyledDropdown = styled(Dropdown)`
   max-width: 300px;
-`;
-
-const StyledButton = styled(Button)`
-  min-width: 200px;
-
-  /* Force "Confirm" and "Cancel" buttons to same row on mobile */
-  @media (max-width: ${(props) => props.theme.breakpointDesktop}) {
-    flex: 1;
-    min-width: 0;
-  }
-`;
-
-const StyledButtonGroup = styled(ButtonGroup)`
-  justify-content: center;
 `;

@@ -8,17 +8,19 @@ interface Props {
   onCancelForm: () => void;
   onConfirmForm: () => Promise<void>;
   loading: boolean;
+  className?: string;
 }
 
 export const CancelSignupForm = ({
   onCancelForm,
   onConfirmForm,
   loading,
+  className,
 }: Props): ReactElement => {
   const { t } = useTranslation();
 
   return (
-    <StyledButtonGroup>
+    <StyledButtonGroup className={className}>
       <StyledButton
         onClick={onConfirmForm}
         buttonStyle={ButtonStyle.PRIMARY}

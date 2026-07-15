@@ -5,23 +5,24 @@ import { ProgramItem } from "shared/types/models/programItem";
 import { DirectSignupForm } from "client/views/program-item/signup/components/direct-signup/DirectSignupForm";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { isAlreadyDirectySigned } from "client/views/program-item/programItemUtils";
-import { Button, ButtonStyle } from "client/components/Button";
-import { CancelSignupForm } from "client/views/program-item/signup/components/CancelSignupForm";
+import { ButtonStyle } from "client/components/Button";
 import {
   DeleteDirectSignupErrorMessage,
   submitDeleteDirectSignup,
 } from "client/views/my-program-items/myProgramItemsThunks";
-import { ErrorMessage } from "client/components/ErrorMessage";
 import { selectDirectSignups } from "client/views/my-program-items/myProgramItemsSlice";
 import { getTimeNow } from "client/utils/getTimeNow";
 import { getDirectSignupStartTime } from "shared/utils/signupTimes";
-import { InfoText } from "client/components/InfoText";
 import { AdmissionTicketLink } from "client/views/program-item/signup/components/AdmissionTicketLink";
 import { startLoading, stopLoading } from "client/state/loading/loadingSlice";
 import { SignupQuestionAnswer } from "client/components/SignUpQuestionAnswer";
 import { LoginToSignupLink } from "client/views/program-item/signup/components/LoginToSignupLink";
-import { ProgramItemStatusMessage } from "client/views/program-item/ProgramItemStatusMessage";
-import { ButtonGroup } from "client/components/ButtonGroup";
+import { ProgramItemButton } from "client/views/program-item/components/ProgramItemButton";
+import { ProgramItemButtonGroup } from "client/views/program-item/components/ProgramItemButtonGroup";
+import { ProgramItemCancelSignupForm } from "client/views/program-item/components/ProgramItemCancelSignupForm";
+import { ErrorMessage } from "client/components/ErrorMessage";
+import { InfoText } from "client/components/InfoText";
+import { ProgramItemStatusMessage } from "client/views/program-item/components/ProgramItemStatusMessage";
 
 interface Props {
   programItem: ProgramItem;
@@ -79,74 +80,72 @@ export const ProgramItemDirectSignup = ({
   const directSignupStartTime = getDirectSignupStartTime(programItem);
   const timeNow = getTimeNow();
 
+  const programItemFullMessage = (
+    <ProgramItemStatusMessage data-testid="program-item-full">
+      {t("signup.programItemFull", {
+        PROGRAM_TYPE: t(`programTypeSingular.${programItem.programType}`),
+      })}
+    </ProgramItemStatusMessage>
+  );
+
   if (!loggedIn) {
     if (programItemIsFull) {
-      return (
-        <ProgramItemStatusMessage data-testid="program-item-full">
-          {t("signup.programItemFull", {
-            PROGRAM_TYPE: t(`programTypeSingular.${programItem.programType}`),
-          })}
-        </ProgramItemStatusMessage>
-      );
+      return programItemFullMessage;
     }
     return <LoginToSignupLink />;
   }
 
+  const canSignUp =
+    !alreadySignedToProgramItem &&
+    !programItemIsFull &&
+    !directSignupForTimeslot;
+  const signupOpen = timeNow.isSameOrAfter(directSignupStartTime);
+
+  // The only state with nothing to render: the user could sign up, but
+  // signup has not opened yet. Render nothing rather than an empty element
+  if (canSignUp && !signupOpen && !signupFormOpen) {
+    return null;
+  }
+
   return (
-    <Container>
-      {programItemIsFull && (
-        <ProgramItemStatusMessage data-testid="program-item-full">
-          {t("signup.programItemFull", {
-            PROGRAM_TYPE: t(`programTypeSingular.${programItem.programType}`),
-          })}
-        </ProgramItemStatusMessage>
+    <>
+      {programItemIsFull && programItemFullMessage}
+
+      {!alreadySignedToProgramItem &&
+        !programItemIsFull &&
+        directSignupForTimeslot && (
+          <InfoText>
+            {t("signup.alreadySignedToProgramItem", {
+              PROGRAM_TYPE: t(
+                `programTypeIllative.${directSignupForTimeslot.programItem.programType}`,
+              ),
+            })}{" "}
+            <DirectSignupTitle>
+              {directSignupForTimeslot.programItem.title}
+            </DirectSignupTitle>
+            . {t("signup.cannotSignupMoreThanOneProgramItem")}
+          </InfoText>
+        )}
+
+      {canSignUp && signupOpen && !signupFormOpen && (
+        <ProgramItemButtonGroup>
+          <ProgramItemButton
+            onClick={() => setSignupFormOpen(true)}
+            buttonStyle={ButtonStyle.PRIMARY}
+            disabled={loading}
+          >
+            {t("signup.directSignup")}
+          </ProgramItemButton>
+        </ProgramItemButtonGroup>
       )}
 
-      {!alreadySignedToProgramItem && !programItemIsFull && (
-        <>
-          {directSignupForTimeslot && (
-            <InfoText>
-              {t("signup.alreadySignedToProgramItem", {
-                PROGRAM_TYPE: t(
-                  `programTypeIllative.${directSignupForTimeslot.programItem.programType}`,
-                ),
-              })}{" "}
-              <DirectSignupTitle>
-                {directSignupForTimeslot.programItem.title}
-              </DirectSignupTitle>
-              . {t("signup.cannotSignupMoreThanOneProgramItem")}
-            </InfoText>
-          )}
-
-          {!directSignupForTimeslot && (
-            <>
-              {!signupFormOpen &&
-                timeNow.isSameOrAfter(directSignupStartTime) && (
-                  <ButtonContainer>
-                    <StyledButton
-                      onClick={() => setSignupFormOpen(!signupFormOpen)}
-                      buttonStyle={ButtonStyle.PRIMARY}
-                      disabled={loading}
-                    >
-                      {t("signup.directSignup")}
-                    </StyledButton>
-                  </ButtonContainer>
-                )}
-
-              {signupFormOpen && (
-                <DirectSignupForm
-                  programItem={programItem}
-                  signupQuestion={signupQuestions.find(
-                    ({ programItemId }) =>
-                      programItemId === programItem.programItemId,
-                  )}
-                  onDirectSignupProgramItem={() => setSignupFormOpen(false)}
-                  onCancelSignup={() => setSignupFormOpen(false)}
-                />
-              )}
-            </>
-          )}
-        </>
+      {canSignUp && signupFormOpen && (
+        <DirectSignupForm
+          programItem={programItem}
+          signupQuestion={signupQuestion}
+          onDirectSignupProgramItem={() => setSignupFormOpen(false)}
+          onCancelSignup={() => setSignupFormOpen(false)}
+        />
       )}
 
       {alreadySignedToProgramItem && (
@@ -165,19 +164,19 @@ export const ProgramItemDirectSignup = ({
           )}
 
           {!cancelSignupFormOpen && (
-            <ButtonContainer>
+            <ProgramItemButtonGroup>
               <AdmissionTicketLink programItemId={programItem.programItemId} />
-              <StyledButton
+              <ProgramItemButton
                 onClick={() => setCancelSignupFormOpen(true)}
                 buttonStyle={ButtonStyle.SECONDARY}
               >
                 {t("button.cancelSignup")}
-              </StyledButton>
-            </ButtonContainer>
+              </ProgramItemButton>
+            </ProgramItemButtonGroup>
           )}
 
           {cancelSignupFormOpen && (
-            <CancelSignupForm
+            <ProgramItemCancelSignupForm
               onCancelForm={() => {
                 setCancelSignupFormOpen(false);
               }}
@@ -194,31 +193,10 @@ export const ProgramItemDirectSignup = ({
           closeError={() => setServerError(null)}
         />
       )}
-    </Container>
+    </>
   );
 };
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
 const DirectSignupTitle = styled.span`
   font-weight: 600;
-`;
-
-const ButtonContainer = styled(ButtonGroup)`
-  justify-content: center;
-
-  @media (max-width: ${(props) => props.theme.breakpointDesktop}) {
-    flex-direction: column;
-  }
-`;
-
-const StyledButton = styled(Button)`
-  min-width: 400px;
-  @media (max-width: ${(props) => props.theme.breakpointDesktop}) {
-    width: 100%;
-    min-width: 0;
-  }
 `;
