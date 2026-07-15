@@ -1,6 +1,7 @@
 import { test, expect } from "@playwright/test";
 import dayjs from "dayjs";
 import {
+  postSettings,
   postTestSettings,
   login,
   addProgramItems,
@@ -10,7 +11,9 @@ import {
 } from "playwright/playwrightUtils";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import { config } from "shared/config";
+import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import { testProgramItem } from "shared/tests/testProgramItem";
+import { ProgramType } from "shared/types/models/programItem";
 
 test("Add and cancel direct signup", async ({ page, request }) => {
   await clearDb(request);
@@ -93,7 +96,8 @@ test("Add and cancel direct signup", async ({ page, request }) => {
   await firstProgramItem.confirm();
   await expect(firstProgramItem.container).toContainText("2/4 sign-ups");
 
-  await programList.cancelSignup();
+  await firstProgramItem.cancelSignup();
+  await firstProgramItem.confirmCancellation();
   await expect(firstProgramItem.container).toContainText("1/4 sign-ups");
 });
 
@@ -279,4 +283,101 @@ test("Show no signup controls after direct signup has ended", async ({
   await expect(firstProgramItem.admissionTicketLink).toBeVisible();
   await expect(firstProgramItem.signUpButton).toBeHidden();
   await expect(firstProgramItem.container).not.toContainText("Sign-up closes");
+});
+
+test("Show timeslot conflict message instead of signup button", async ({
+  page,
+  request,
+}) => {
+  await clearDb(request);
+  await populateDb(request, {
+    clean: true,
+    users: true,
+    admin: true,
+  });
+  const startTime = dayjs(config.event().eventStartTime)
+    .add(1, "hour")
+    .startOf("hour")
+    .toISOString();
+  await addProgramItems(request, [
+    {
+      ...testProgramItem,
+      startTime,
+    },
+    {
+      ...testProgramItem,
+      programItemId: "second-program-item",
+      title: "Second test item",
+      startTime,
+    },
+  ]);
+  await postTestSettings(request, {
+    testTime: config.event().eventStartTime,
+  });
+
+  // Sign up to the first program item, then view the other one starting at
+  // the same time
+  await testPostDirectSignup(request, "test1", {
+    directSignupProgramItemId: testProgramItem.programItemId,
+    message: "",
+  });
+  await login(page, request, { username: "test1", password: "test" });
+  await page.goto("/");
+
+  const programList = new ProgramListPage(page);
+  await programList.gotoAllProgram();
+  await programList.selectProgramType("Tabletop RPG");
+  await programList.waitForItems();
+
+  const conflictingProgramItem = programList.itemByTitle("Second test item");
+  await expect(conflictingProgramItem.container).toContainText(
+    "You have already signed up to the role-playing game Test program item",
+  );
+  await expect(conflictingProgramItem.container).toContainText(
+    "You cannot sign up to another program item starting at the same time.",
+  );
+  await expect(conflictingProgramItem.signUpButton).toBeHidden();
+});
+
+test("Show no signup button before direct signup opens", async ({
+  page,
+  request,
+}) => {
+  await clearDb(request);
+  await populateDb(request, {
+    clean: true,
+    users: true,
+    admin: true,
+  });
+  // Rolling direct signup for 'other' program items opens 4 hours before the
+  // program item starts, so at event start this item's signup is not open yet
+  await addProgramItems(request, [
+    {
+      ...testProgramItem,
+      programItemId: "other-program-item",
+      title: "Other test item",
+      programType: ProgramType.OTHER,
+      startTime: dayjs(config.event().eventStartTime)
+        .add(6, "hours")
+        .startOf("hour")
+        .toISOString(),
+    },
+  ]);
+  await postSettings(request, {
+    signupStrategy: EventSignupStrategy.DIRECT,
+  });
+  await postTestSettings(request, {
+    testTime: config.event().eventStartTime,
+  });
+  await login(page, request, { username: "test1", password: "test" });
+  await page.goto("/");
+
+  const programList = new ProgramListPage(page);
+  await programList.gotoAllProgram();
+  await programList.waitForItems();
+
+  const programItem = programList.firstItem();
+  await expect(programItem.container).toContainText("Sign-up opens");
+  await expect(programItem.signUpButton).toBeHidden();
+  await expect(programItem.container).not.toContainText("Sign-up closes");
 });

@@ -1,5 +1,6 @@
 import { ReactElement, ReactNode } from "react";
 import styled from "styled-components";
+import { programItemCardEndMargin } from "client/views/my-program-items/components/shared";
 
 interface Props {
   children: ReactNode;
@@ -14,7 +15,7 @@ export const ProgramItemStatusMessage = ({
   <Container data-testid={dataTestId}>{children}</Container>
 );
 
-const Container = styled.div`
-  margin: 0 0 8px 0;
+const Container = styled.p`
   font-weight: 600;
+  margin-bottom: ${programItemCardEndMargin};
 `;

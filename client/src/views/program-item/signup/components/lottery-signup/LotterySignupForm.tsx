@@ -8,10 +8,9 @@ import {
   submitPostLotterySignup,
 } from "client/views/my-program-items/myProgramItemsThunks";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
-import { Button, ButtonStyle } from "client/components/Button";
-import { ErrorMessage } from "client/components/ErrorMessage";
 import { Dropdown } from "client/components/Dropdown";
-import { ButtonGroup } from "client/components/ButtonGroup";
+import { ErrorMessage } from "client/components/ErrorMessage";
+import { SignupFormButtons } from "client/views/program-item/signup/components/SignupFormButtons";
 import {
   DirectSignupWithProgramItem,
   selectLotterySignups,
@@ -151,26 +150,15 @@ export const LotterySignupForm = ({
         </InfoText>
       )}
       {isGroupCreator && <InfoText>{t("signup.groupSignupInfo")}</InfoText>}
-      <StyledButtonGroup>
-        <StyledButton
-          onClick={handleSignup}
-          buttonStyle={ButtonStyle.PRIMARY}
-          disabled={isSignupConfirmDisabled(
-            Boolean(entryCondition),
-            agreeEntryCondition,
-            loading,
-          )}
-        >
-          {t("signup.confirm")}
-        </StyledButton>
-        <StyledButton
-          onClick={handleCancel}
-          buttonStyle={ButtonStyle.SECONDARY}
-          disabled={loading}
-        >
-          {t("signup.cancel")}
-        </StyledButton>
-      </StyledButtonGroup>
+      <SignupFormButtons
+        onConfirm={handleSignup}
+        onCancel={handleCancel}
+        confirmDisabled={isSignupConfirmDisabled(
+          Boolean(entryCondition),
+          agreeEntryCondition,
+        )}
+        loading={loading}
+      />
       {errorMessage && (
         <ErrorMessage
           message={t(errorMessage)}
@@ -183,18 +171,4 @@ export const LotterySignupForm = ({
 
 const StyledDropdown = styled(Dropdown)`
   margin-right: 8px;
-`;
-
-const StyledButton = styled(Button)`
-  min-width: 200px;
-
-  /* Force "Confirm" and "Cancel" buttons to same row on mobile */
-  @media (max-width: ${(props) => props.theme.breakpointDesktop}) {
-    flex: 1;
-    min-width: 0;
-  }
-`;
-
-const StyledButtonGroup = styled(ButtonGroup)`
-  justify-content: center;
 `;

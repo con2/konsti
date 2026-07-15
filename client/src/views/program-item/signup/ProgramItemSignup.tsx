@@ -7,16 +7,15 @@ import {
 import { ProgramItemDirectSignup } from "client/views/program-item/signup/components/direct-signup/ProgramItemDirectSignup";
 import { ProgramItemLotterySignup } from "client/views/program-item/signup/components/lottery-signup/ProgramItemLotterySignup";
 import { SignupHelpText } from "client/views/program-item/signup/components/SignupHelpText";
-import { getTimeNow } from "client/utils/getTimeNow";
 import { isAlreadyDirectySigned } from "client/views/program-item/programItemUtils";
 import { AdmissionTicketLink } from "client/views/program-item/signup/components/AdmissionTicketLink";
-import { getDirectSignupEndTime } from "shared/utils/signupTimes";
 import { isDirectSignupAlwaysOpen } from "shared/utils/isDirectSignupAlwaysOpen";
 import {
   DirectSignupWithProgramItem,
   LotterySignupWithProgramItem,
 } from "client/views/my-program-items/myProgramItemsSlice";
-import { ButtonGroup } from "client/components/ButtonGroup";
+import { ProgramItemButtonGroup } from "client/views/program-item/components/ProgramItemButtonGroup";
+import { programItemCardEndMargin } from "client/views/my-program-items/components/shared";
 
 interface Props {
   signupStrategy: ProgramItemSignupStrategy;
@@ -26,6 +25,7 @@ interface Props {
   attendees: number;
   usesKonstiSignup: boolean;
   signupRequired: boolean;
+  isDirectSignupOver: boolean;
 }
 
 export const ProgramItemSignup = ({
@@ -36,24 +36,23 @@ export const ProgramItemSignup = ({
   attendees,
   usesKonstiSignup,
   signupRequired,
+  isDirectSignupOver,
 }: Props): ReactElement | null => {
   const signupAlwaysOpen = isDirectSignupAlwaysOpen(programItem);
 
   const isDirectSignupMode =
     signupStrategy === ProgramItemSignupStrategy.DIRECT || signupAlwaysOpen;
 
-  const directSignupEndTime = getDirectSignupEndTime(programItem);
-  const isDirectSignupOver = getTimeNow().isAfter(directSignupEndTime);
-
   const hasSignedUp = isAlreadyDirectySigned(programItem, directSignups);
 
-  // After direct signup has ended, only signed-up users have content to show (the admission ticket link)
+  // After direct signup has ended, only signed-up users have content to show
+  // (the admission ticket link). Render nothing rather than an empty element
   if (isDirectSignupOver && !hasSignedUp) {
     return null;
   }
 
   return (
-    <div>
+    <Container>
       <SignupHelpText
         programItem={programItem}
         usesKonstiSignup={usesKonstiSignup}
@@ -75,14 +74,20 @@ export const ProgramItemSignup = ({
         ))}
 
       {isDirectSignupOver && hasSignedUp && (
-        <LinkContainer>
+        <ProgramItemButtonGroup>
           <AdmissionTicketLink programItemId={programItem.programItemId} />
-        </LinkContainer>
+        </ProgramItemButtonGroup>
       )}
-    </div>
+    </Container>
   );
 };
 
-const LinkContainer = styled(ButtonGroup)`
-  justify-content: center;
+// Paragraphs keep their default 16px top margin (the gap between card
+// content), but their bottom margin is the card-end standard; between content
+// the following element's larger top margin wins the margin collapse, so this
+// only shows at the end of the card
+const Container = styled.div`
+  p {
+    margin-bottom: ${programItemCardEndMargin};
+  }
 `;

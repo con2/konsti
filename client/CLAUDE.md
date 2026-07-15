@@ -63,6 +63,8 @@ styled-components only (no CSS modules, no component library). Pull tokens from 
 
 **Don't export styled-components.** A module's public export should be a React component with explicit props that renders its styled elements; `styled` definitions stay module-private. Exporting a bare styled-component leaks styling as API and usually signals a composition problem — wrap it in a component instead (see `ProgramItemStatusMessage`). Restyling an imported component locally with `styled(Component)` is fine.
 
+**Prefer component logic over stateful CSS.** When layout depends on application state, express it in the render logic, not in CSS selectors. A component with nothing to show returns `null` instead of rendering an empty element hidden with `:empty`/`display: none`, and spacing that depends on what renders around an element comes from explicit margins on the components involved, not from positional selectors like `:last-child` (a `display: none` element still matches structural pseudo-classes, and such CSS silently drifts from the render logic it mirrors).
+
 ## Internationalization
 
 i18next, English + Finnish. Locale files: `client/src/locales/{en,fi}.ts` (deeply nested `as const` objects). `client/src/utils/i18n.ts` has an `expectLocalesToMatch` type-level check — if EN and FI don't have identical key shapes, type-check fails. The same `NestedKeyOf` machinery makes `t("...")` calls type-checked at the call site (missing keys are TS errors).

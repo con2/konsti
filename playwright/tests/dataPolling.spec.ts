@@ -65,3 +65,47 @@ test("Periodic data poll picks up new program items without navigation", async (
     1,
   );
 });
+
+test("Periodic data poll hides signup when direct signup ends", async ({
+  page,
+  request,
+}) => {
+  await clearDb(request);
+  await populateDb(request, { clean: true, users: true, admin: true });
+  const startTime = "2026-07-24T13:00:00.000Z";
+  await addProgramItems(request, [
+    {
+      ...testProgramItem,
+      startTime,
+      endTime: "2026-07-24T17:00:00.000Z",
+    },
+  ]);
+  await postTestSettings(request, {
+    testTime: config.event().eventStartTime,
+  });
+  await login(page, request, { username: "test1", password: "test" });
+
+  // Mock browser timers so the data poll (dataUpdateInterval, 60 s) can be
+  // fast-forwarded instead of waited for. Must be installed before the app loads
+  await page.clock.install();
+  await page.goto("/");
+
+  const programList = new ProgramListPage(page);
+  await programList.gotoAllProgram();
+  await programList.waitForItems();
+
+  // Direct signup is open when the page loads
+  const firstProgramItem = programList.firstItem();
+  await expect(firstProgramItem.signUpButton).toBeVisible();
+
+  // Move time past the program item's start on the background...
+  await postTestSettings(request, {
+    testTime: "2026-07-24T14:00:00.000Z",
+  });
+  await expect(firstProgramItem.signUpButton).toBeVisible();
+
+  // ...and the periodic poll picks up the change without navigation
+  await page.clock.fastForward("01:01");
+  await expect(firstProgramItem.signUpButton).toBeHidden();
+  await expect(firstProgramItem.container).not.toContainText("Sign-up closes");
+});

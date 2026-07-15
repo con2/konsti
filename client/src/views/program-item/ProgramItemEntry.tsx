@@ -24,11 +24,13 @@ import { ProgramItemHead } from "client/views/program-item/head/ProgramItemHead"
 import { SignupQuestion } from "shared/types/models/settings";
 import { ProgramItemErrors } from "client/views/program-item/ProgramItemErrors";
 import { isDirectSignupAlwaysOpen } from "shared/utils/isDirectSignupAlwaysOpen";
+import { useTimeNow } from "client/utils/getTimeNow";
+import { getDirectSignupEndTime } from "shared/utils/signupTimes";
 import {
   DirectSignupWithProgramItem,
   LotterySignupWithProgramItem,
 } from "client/views/my-program-items/myProgramItemsSlice";
-import { ProgramItemStatusMessage } from "client/views/program-item/ProgramItemStatusMessage";
+import { ProgramItemStatusMessage } from "client/views/program-item/components/ProgramItemStatusMessage";
 
 interface Props {
   programItem: ProgramItem;
@@ -58,6 +60,7 @@ export const ProgramItemEntry = memo(function ProgramItemEntryComponent({
   isRecentlyViewed,
 }: Props): ReactElement {
   const { t } = useTranslation();
+  const timeNow = useTimeNow();
   const { noKonstiSignupIds } = config.event();
 
   const usesKonstiSignup =
@@ -105,6 +108,18 @@ export const ProgramItemEntry = memo(function ProgramItemEntryComponent({
     allValuesValid,
   } = getProgramItemValidity(programItem);
 
+  const isDirectSignupOver = timeNow.isAfter(
+    getDirectSignupEndTime(programItem),
+  );
+
+  const showCancelledMessage = cancelled;
+  // After direct signup has ended, only signed-up users have content to show
+  // in the signup section (the admission ticket link)
+  const showSignupSection =
+    allValuesValid &&
+    !cancelled &&
+    (!isDirectSignupOver || isDirectlySignedCurrentProgramItem);
+
   return (
     <StyledCard
       isHighlighted={isProgramItemSigned}
@@ -136,9 +151,10 @@ export const ProgramItemEntry = memo(function ProgramItemEntryComponent({
       <ProgramItemBody
         programItem={programItem}
         isAlwaysExpanded={isAlwaysExpanded}
+        endOfCard={!showCancelledMessage && !showSignupSection}
       />
 
-      {cancelled && (
+      {showCancelledMessage && (
         <ProgramItemStatusMessage data-testid="program-item-cancelled">
           {t("signup.cancelled", {
             PROGRAM_TYPE: t(`programTypeSingular.${programItem.programType}`),
@@ -146,7 +162,7 @@ export const ProgramItemEntry = memo(function ProgramItemEntryComponent({
         </ProgramItemStatusMessage>
       )}
 
-      {allValuesValid && !cancelled && (
+      {showSignupSection && (
         <ProgramItemSignup
           signupStrategy={signupStrategy}
           lotterySignups={lotterySignups}
@@ -155,6 +171,7 @@ export const ProgramItemEntry = memo(function ProgramItemEntryComponent({
           attendees={signups.length}
           usesKonstiSignup={usesKonstiSignup}
           signupRequired={signupRequired}
+          isDirectSignupOver={isDirectSignupOver}
         />
       )}
     </StyledCard>

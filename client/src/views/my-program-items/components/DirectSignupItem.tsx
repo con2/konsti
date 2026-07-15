@@ -17,6 +17,7 @@ import {
   MyProgramErrorMessage,
   MyProgramGameTitle,
   MyProgramListItem,
+  myProgramMessageMargin,
 } from "client/views/my-program-items/components/shared";
 import { InfoText, InfoTextVariant } from "client/components/InfoText";
 import { AppRoute } from "client/app/AppRoutes";
@@ -151,5 +152,5 @@ export const DirectSignupItem = ({
 };
 
 const StyledInfoText = styled(InfoText)`
-  margin: 4px 0 8px 0;
+  ${myProgramMessageMargin};
 `;
