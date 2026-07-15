@@ -189,7 +189,9 @@ export const storeDirectSignup = async (
         programItemId: signup.programItemId,
         priority: newSignup.priority,
         signedToStartTime: newSignup.signedToStartTime,
-        message: getSignupMessage(signupQuestion, newSignup.message),
+        // A private signup question only hides the answer from other attendees:
+        // the user's own signup keeps it so the UI can show it back to them
+        message: newSignup.message,
       },
       leftGroup,
     };
