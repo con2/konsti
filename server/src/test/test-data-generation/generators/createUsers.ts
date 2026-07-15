@@ -9,10 +9,21 @@ import { generateGroupCode } from "server/features/user/group/groupService";
 
 const SERIAL_MAX = 10000000;
 
+// Speed up test data generation by using same "test" password hash
+let testPasswordHashPromise: ReturnType<typeof hashPassword> | undefined;
+
+const getTestPasswordHash = async (): Promise<string> => {
+  testPasswordHashPromise ??= hashPassword("test");
+  return unsafelyUnwrap(await testPasswordHashPromise);
+};
+
 export const createAdminUser = async (password?: string): Promise<void> => {
   logger.info('Generate data for admin user "admin:test"');
 
-  const passwordHash = unsafelyUnwrap(await hashPassword(password ?? "test"));
+  const passwordHash =
+    password === undefined
+      ? await getTestPasswordHash()
+      : unsafelyUnwrap(await hashPassword(password));
 
   const registrationData: NewUser = {
     kompassiId: 0,
@@ -30,7 +41,10 @@ export const createAdminUser = async (password?: string): Promise<void> => {
 export const createHelpUser = async (password?: string): Promise<void> => {
   logger.info('Generate data for help user "helper:test"');
 
-  const passwordHash = unsafelyUnwrap(await hashPassword(password ?? "test"));
+  const passwordHash =
+    password === undefined
+      ? await getTestPasswordHash()
+      : unsafelyUnwrap(await hashPassword(password));
 
   const registrationData: NewUser = {
     kompassiId: 0,
@@ -54,7 +68,7 @@ const createTestUser = async ({
 }: CreateTestUserParams): Promise<void> => {
   logger.info(`Generate data for user "test${userNumber}:test"`);
 
-  const passwordHash = unsafelyUnwrap(await hashPassword("test"));
+  const passwordHash = await getTestPasswordHash();
 
   const registrationData: NewUser = {
     kompassiId: 0,
@@ -95,9 +109,7 @@ const createUser = async ({
   testUsers = false,
   userNumber = 0,
 }: CreateUserParams): Promise<void> => {
-  const passwordHash = testUsers
-    ? unsafelyUnwrap(await hashPassword("test"))
-    : "testPass"; // Skip hashing to save time
+  const passwordHash = testUsers ? await getTestPasswordHash() : "testPass"; // Skip hashing to save time
 
   const username = testUsers ? `group${userNumber}` : faker.internet.username();
   const registrationData: NewUser = {
