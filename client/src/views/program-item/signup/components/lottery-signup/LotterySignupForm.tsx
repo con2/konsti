@@ -109,16 +109,18 @@ export const LotterySignupForm = ({
 
   return (
     <form>
-      {t("signup.programItemPriority", {
-        PROGRAM_TYPE: capitalize(
-          t(`programTypeSingular.${programItem.programType}`),
-        ),
-      })}{" "}
-      <StyledDropdown
-        onChange={onChange}
-        options={options}
-        selectedValue={priority.toString()}
-      />
+      <p>
+        {t("signup.programItemPriority", {
+          PROGRAM_TYPE: capitalize(
+            t(`programTypeSingular.${programItem.programType}`),
+          ),
+        })}{" "}
+        <StyledDropdown
+          onChange={onChange}
+          options={options}
+          selectedValue={priority.toString()}
+        />
+      </p>
       {entryCondition && (
         <Checkbox
           checked={agreeEntryCondition}
