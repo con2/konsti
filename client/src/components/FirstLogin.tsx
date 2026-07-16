@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { z } from "zod";
 import { useAppSelector } from "client/utils/hooks";
+import { isAdminOrHelper } from "client/utils/checkUserGroup";
 import { Button, ButtonStyle } from "./Button";
 import { HighlightStyle, RaisedCard } from "client/components/RaisedCard";
 import { browserStoragePrefix } from "shared/constants/browserStorage";
@@ -26,6 +27,7 @@ export const FirstLogin = (): ReactElement | null => {
   const serial = useAppSelector((state) => state.login.serial);
   const username = useAppSelector((state) => state.login.username);
   const kompassiId = useAppSelector((state) => state.login.kompassiId);
+  const userGroup = useAppSelector((state) => state.login.userGroup);
   const isLocalLogin = !kompassiId;
 
   const [isFirstLogin, setIsFirstLogin] = useState<boolean>(false);
@@ -47,12 +49,16 @@ export const FirstLogin = (): ReactElement | null => {
     }
   }, [username]);
 
-  if (!isFirstLogin || !serial || !isLocalLogin) {
+  if (!isFirstLogin || !serial || !isLocalLogin || isAdminOrHelper(userGroup)) {
     return null;
   }
 
   return (
-    <StyledCard isHighlighted={true} highlightStyle={HighlightStyle.WARN}>
+    <StyledCard
+      isHighlighted={true}
+      highlightStyle={HighlightStyle.WARN}
+      data-testid="first-login-notice"
+    >
       <p>
         {t("firstLogin.serial")} <b>{serial}</b>
       </p>

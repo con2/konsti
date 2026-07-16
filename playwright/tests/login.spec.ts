@@ -45,6 +45,37 @@ test("Admin login", async ({ page, request }) => {
   // Check if login was completed - admin should be redirected to program list
   await expect(programList.firstItem().container).toBeVisible();
 
+  // Admins are not shown the first-login registration code notice
+  await expect(loginPage.firstLoginNotice).toBeHidden();
+
+  await loginPage.navigation.open();
+  await expect(loginPage.navigation.profileLink).toBeVisible();
+});
+
+test("Helper login", async ({ page, request }) => {
+  await populateDb(request, { clean: true, users: true, admin: true });
+  await addProgramItems(request, [
+    { ...testProgramItem, startTime: programItemStartTime },
+  ]);
+  await postSettings(request, { loginProvider: LoginProvider.LOCAL });
+  await postTestSettings(request, {
+    testTime: config.event().eventStartTime,
+  });
+
+  await page.goto("/");
+
+  const loginPage = new LoginPage(page);
+  const programList = new ProgramListPage(page);
+
+  await loginPage.navigation.gotoLoginPage();
+  await loginPage.fillAndSubmit("helper", "test");
+
+  // Check if login was completed - helper should be redirected to program list
+  await expect(programList.firstItem().container).toBeVisible();
+
+  // Helpers are not shown the first-login registration code notice
+  await expect(loginPage.firstLoginNotice).toBeHidden();
+
   await loginPage.navigation.open();
   await expect(loginPage.navigation.profileLink).toBeVisible();
 });
@@ -73,6 +104,18 @@ test("User login", async ({ page, request }) => {
 
   // Check if login was completed - normal user should be redirected to profile
   await expect(programList.myProgramTab).toHaveClass(/active/);
+
+  // The first login shows the registration code notice, which can be closed
+  await expect(loginPage.firstLoginNotice).toContainText(
+    "Save this code for recovering your password",
+  );
+  await loginPage.closeFirstLoginNotice();
+  await expect(loginPage.firstLoginNotice).toBeHidden();
+
+  // The notice is only shown on the first login
+  await page.reload();
+  await expect(programList.myProgramTab).toHaveClass(/active/);
+  await expect(loginPage.firstLoginNotice).toBeHidden();
 
   await loginPage.navigation.open();
   await expect(loginPage.navigation.profileLink).toBeVisible();
