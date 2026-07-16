@@ -6,15 +6,16 @@ import { submitSetTestTime } from "client/test/test-settings/testSettingsSlice";
 import { AppThunk } from "client/types/reduxTypes";
 import { loadProgramItems } from "client/utils/loadData";
 
-export const submitGetTestSettings = (): AppThunk => {
-  return async (dispatch): Promise<void> => {
+export const submitGetTestSettings = (): AppThunk<Promise<boolean>> => {
+  return async (dispatch): Promise<boolean> => {
     const response = await getTestSettings();
 
     if (response.status === "error") {
-      return;
+      return false;
     }
 
     dispatch(submitSetTestTime(response.testSettings.testTime));
+    return true;
   };
 };
 

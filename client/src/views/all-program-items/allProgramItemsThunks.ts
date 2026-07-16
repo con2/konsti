@@ -13,12 +13,12 @@ export const submitGetProgramItems = ({
   forceUpdate,
 }: {
   forceUpdate: boolean;
-}): AppThunk => {
-  return async (dispatch, getState): Promise<void> => {
+}): AppThunk<Promise<boolean>> => {
+  return async (dispatch, getState): Promise<boolean> => {
     const getProgramItemsResponse = await getProgramItems();
 
     if (getProgramItemsResponse.status === "error") {
-      return;
+      return false;
     }
 
     const state = getState();
@@ -49,6 +49,8 @@ export const submitGetProgramItems = ({
     ) {
       dispatch(submitGetDirectSignupsAsync(directSignups));
     }
+
+    return true;
   };
 };
 

@@ -14,7 +14,7 @@ import { TestGenerateSerial } from "client/test/test-components/TestGenerateSeri
 import { Announcement } from "client/components/Announcement";
 import { AdminMessageBanner } from "client/components/AdminMessageBanner";
 import { NotificationBar } from "client/views/event-log/NotificationBar";
-import { resetNetworkError } from "client/views/admin/adminUtils";
+import { onPageResume } from "client/utils/pageLifecycle";
 import { HistoryProvider } from "client/app/HistoryContext";
 
 const { loadedSettings, showTestValues, showAnnouncement, dataUpdateInterval } =
@@ -24,36 +24,70 @@ const App = (): ReactElement => {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
+    // Refresh triggers can fire together (e.g. an overdue interval tick, the
+    // online event, and a page resume when a phone wakes), and concurrent
+    // loads could dispatch a slower stale response over a newer one, so only
+    // one load runs at a time
+    let fetchInFlight = false;
+    let fetchQueued = false;
+
     const fetchData = async (): Promise<void> => {
-      await loadData();
-      setLoading(false);
+      if (fetchInFlight) {
+        return;
+      }
+      fetchInFlight = true;
+      try {
+        let succeeded = false;
+        do {
+          fetchQueued = false;
+          succeeded = await loadData();
+          setLoading(false);
+          // A successful load satisfies triggers that arrived while it ran;
+          // a failed one reruns for them (e.g. its requests failed right
+          // before connectivity returned). fetchQueued is set while loadData
+          // is awaited, which type narrowing can't see
+          // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+        } while (fetchQueued && !succeeded);
+      } finally {
+        fetchInFlight = false;
+      }
     };
+
+    // Connectivity and resume refreshes must not be dropped just because a
+    // load is in flight — an in-flight request can hang until the request
+    // timeout — so they queue a trailing rerun
+    const queueFetchData = (): void => {
+      fetchQueued = true;
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
+      fetchData();
+    };
+
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     fetchData();
 
+    // Interval ticks don't queue behind an in-flight load: the next tick
+    // arrives within the update interval anyway
     // eslint-disable-next-line @typescript-eslint/no-misused-promises
-    const updateTimer = setInterval(async () => {
-      resetNetworkError();
-      await fetchData();
-    }, dataUpdateInterval * 1000);
+    const updateTimer = setInterval(fetchData, dataUpdateInterval * 1000);
 
-    // The network error toast can appear right before the laptop sleeps
-    // (Wi-Fi drops before JS is suspended), so clear it when connectivity is
-    // lost and refresh immediately when it returns instead of leaving the
-    // toast visible until the next poll cycle
-    const handleOnline = async (): Promise<void> => {
-      resetNetworkError();
-      await fetchData();
-    };
-    addEventListener("offline", resetNetworkError);
-    // eslint-disable-next-line @typescript-eslint/no-misused-promises
-    addEventListener("online", handleOnline);
+    // Refresh immediately when connectivity returns; the successful response
+    // also heals a possible stale network error toast
+    addEventListener("online", queueFetchData);
+
+    // While the page is hidden (screen off, background tab) the browser
+    // freezes timers and polling lags behind, so refresh on resume — but only
+    // when hidden long enough to actually miss a poll, so that plain tab
+    // switching doesn't cause request bursts
+    const offPageResume = onPageResume((hiddenDurationMs) => {
+      if (hiddenDurationMs >= dataUpdateInterval * 1000) {
+        queueFetchData();
+      }
+    });
 
     return () => {
       clearInterval(updateTimer);
-      removeEventListener("offline", resetNetworkError);
-      // eslint-disable-next-line @typescript-eslint/no-misused-promises
-      removeEventListener("online", handleOnline);
+      removeEventListener("online", queueFetchData);
+      offPageResume();
     };
   }, []);
 

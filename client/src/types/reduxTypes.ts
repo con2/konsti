@@ -16,6 +16,7 @@ import {
 import { SignupMessage } from "shared/types/models/signupMessage";
 import { EventLogItem } from "shared/types/models/eventLog";
 import { EmailNotificationTrigger } from "shared/types/emailNotification";
+import { BackendError } from "client/types/errorTypes";
 
 export interface AdminState {
   hiddenProgramItemIds: readonly string[];
@@ -26,7 +27,7 @@ export interface AdminState {
   assignmentResponseMessage: string;
   signupQuestions: readonly SignupQuestion[];
   signupStrategy: EventSignupStrategy | undefined;
-  errors: readonly string[];
+  errors: readonly BackendError[];
   activeProgramTypes: readonly ProgramType[];
   signupMessages: readonly SignupMessage[];
   loginProvider: LoginProvider | undefined;

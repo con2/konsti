@@ -1,10 +1,15 @@
 import { api } from "client/utils/api";
+import { registerBackgroundRequest } from "client/utils/networkErrorPolicy";
 import { ApiDevEndpoint } from "shared/constants/apiEndpoints";
 import {
   GetTestSettingsResponse,
   PostTestSettingsRequest,
   PostTestSettingsResponse,
 } from "shared/test-types/api/testSettings";
+
+// The test-time poll below is part of the periodic data load, so its
+// failures get the suppressed background error handling
+registerBackgroundRequest("GET", ApiDevEndpoint.TEST_SETTINGS);
 
 export const getTestSettings = async (): Promise<GetTestSettingsResponse> => {
   const response = await api.get<GetTestSettingsResponse>(
