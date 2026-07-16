@@ -45,12 +45,12 @@ export const submitUpdateHidden = (
   };
 };
 
-export const submitGetSettings = (): AppThunk => {
-  return async (dispatch, useState): Promise<void> => {
+export const submitGetSettings = (): AppThunk<Promise<boolean>> => {
+  return async (dispatch, useState): Promise<boolean> => {
     const settingsResponse = await getSettings();
 
     if (settingsResponse.status === "error") {
-      return;
+      return false;
     }
 
     const state = useState();
@@ -80,6 +80,8 @@ export const submitGetSettings = (): AppThunk => {
     if (!isDeepEqual(currentSettings, updatedSettings)) {
       dispatch(submitGetSettingsAsync(updatedSettings));
     }
+
+    return true;
   };
 };
 

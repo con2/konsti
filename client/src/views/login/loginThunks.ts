@@ -262,7 +262,13 @@ export const submitVerifyKompassiLogin = (
       }),
     );
 
-    await dispatch(submitSessionRecovery(response.jwt));
+    // Session recovery failures are otherwise silent (the endpoint gets the
+    // suppressed background error handling), so surface them here where the
+    // form can show the error
+    const recoveryError = await dispatch(submitSessionRecovery(response.jwt));
+    if (recoveryError) {
+      return KompassiVerifyErrorMessage.UNKNOWN;
+    }
   };
 };
 
@@ -294,6 +300,14 @@ export const submitUpdateUserEmailAddress = (
       }),
     );
 
-    await dispatch(submitSessionRecovery(updateEmailResponse.jwt));
+    // Session recovery failures are otherwise silent (the endpoint gets the
+    // suppressed background error handling), so surface them here where the
+    // form can show the error
+    const recoveryError = await dispatch(
+      submitSessionRecovery(updateEmailResponse.jwt),
+    );
+    if (recoveryError) {
+      return UpdateUserEmailAddressErrorMessage.UNKNOWN;
+    }
   };
 };

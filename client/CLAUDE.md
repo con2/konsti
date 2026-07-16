@@ -28,11 +28,11 @@ Note: `find-unused-translation-keys` is a **server** script (it scans `client/sr
 - **`services/`** — typed API call wrappers, one file per domain (`loginServices.ts`, `programItemsServices.ts`, `groupServices.ts`, …). Each just wraps `api.post/get/delete` with `shared/types/api/...` types.
 - **`state/`** — only `loading/loadingSlice.ts` lives here; **the store itself and most slices do not** (see State Management below).
 - **`locales/`** — `en.ts` and `fi.ts` translation objects.
-- **`utils/`** — `store.ts` (Redux store), `hooks.ts` (typed Redux hooks), `api.ts` (fetch wrapper), `i18n.ts` (i18next setup + locale type-check), `localStorage.ts`/`sessionStorage.ts` (zod-validated), `getJWT.ts`, `checkUserGroup.ts`, etc.
+- **`utils/`** — `store.ts` (Redux store), `hooks.ts` (typed Redux hooks), `api.ts` (fetch wrapper), `networkErrorPolicy.ts` (how failed requests are surfaced: background classification, reconnect grace period, probe, toast healing), `fetchWithTimeout.ts`, `pageLifecycle.ts` (`onPageResume`: page freeze/bfcache resume detection), `i18n.ts` (i18next setup + locale type-check), `localStorage.ts`/`sessionStorage.ts` (zod-validated), `getJWT.ts`, `checkUserGroup.ts`, etc.
 - **`theme.ts`** — design tokens (colors, breakpoints, font sizes, popularity colors). **`globalStyle.ts`** — `createGlobalStyle`.
 - **`markdown/`** — MDX content rendered as React components.
 - **`test/`** — `setupTests.ts` (vitest/jsdom), `__mocks__/`, and dev-only UI helpers: `test-components/` (`TestTime` time selector, `TestGenerateSerial` registration-code button), `test-data/testDataServices.ts` (wrappers for the dev/test API endpoints). **`test/test-settings/testSettingsSlice.ts`** is the dev-only time-mock slice.
-- **`types/`** — client-only types (`reduxTypes.ts`: `RootState`, `AppDispatch`, `AppThunk`).
+- **`types/`** — client-only types (`reduxTypes.ts`: `RootState`, `AppDispatch`, `AppThunk`; `errorTypes.ts`: `BackendError`/`BackendErrorType` — backend errors are stored in Redux as translation keys and translated at render time in `ErrorBar`, so removal matching survives language switches).
 
 ## State Management
 
@@ -40,6 +40,7 @@ Redux Toolkit, **thunk-based** (not RTK Query). The store is configured in **`cl
 
 - Access state with the typed hooks in **`client/src/utils/hooks.ts`**: `useAppSelector` / `useAppDispatch` (never the untyped react-redux hooks).
 - Slice files export their reducer, actions, and memoized selectors (`createSelector`).
+- Thunk result conventions: user-facing thunks return `Promise<SomeErrorMessage | undefined>` (truthy = failure, a translation key the caller renders); the background data-load thunks consumed by the polling loop return `Promise<boolean>` (truthy = success). Don't mix the two polarities up at call sites.
 - Logout is handled by a `rootReducer` wrapper that resets most slices but preserves a few (e.g. `admin`, `allProgramItems`, `testSettings`).
 - A Redux/Sentry enhancer scrubs large or private payloads (e.g. signup messages) before they reach Sentry.
 
@@ -50,7 +51,7 @@ The API client is **`client/src/utils/api.ts`** — a `fetch` wrapper (no axios)
 - prefixes requests with `config.client().apiServerUrl`,
 - injects `Authorization: Bearer <jwt>` from `getJWT()` (JWT is read from localStorage),
 - aborts after a 60s timeout (`AbortController`),
-- on network/HTTP error, dispatches `addError(...)` into Redux and returns an `ApiError`-shaped body,
+- on network/HTTP error, dispatches `addError(...)` into Redux (as a `BackendError` translation key, see `types/errorTypes.ts`) and returns an `ApiError`-shaped body — whether a failure toasts immediately (user-initiated requests) or gets the suppressed background handling (requests the app retries on its own, enumerated as method+endpoint pairs) is decided in `utils/networkErrorPolicy.ts`; see its header comment for the suppression mechanics,
 - follows `301`/`302` JSON-body redirects via `location.href`.
 
 Endpoint constants (`ApiEndpoint`, `ApiDevEndpoint`, `AuthEndpoint`) come from `shared/constants/apiEndpoints.ts`; request/response types from `shared/types/api/...`. To add an API call: add a function in the relevant `services/*.ts`, type it with the shared request/response types, and call it from a thunk that dispatches the result.

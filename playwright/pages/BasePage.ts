@@ -1,16 +1,19 @@
 import { Locator, Page } from "@playwright/test";
+import { ErrorBar } from "playwright/pages/ErrorBar";
 import { Navigation } from "playwright/pages/Navigation";
 import { NotificationBar } from "playwright/pages/NotificationBar";
 
 // Shared base for all page objects: the #main content region plus the
-// navigation drawer and notification bar reused across flows
+// navigation drawer, notification bar, and error toast bar reused across flows
 export class BasePage {
   readonly navigation: Navigation;
   readonly notificationBar: NotificationBar;
+  readonly errorBar: ErrorBar;
 
   constructor(protected readonly page: Page) {
     this.navigation = new Navigation(page);
     this.notificationBar = new NotificationBar(page);
+    this.errorBar = new ErrorBar(page);
   }
 
   get main(): Locator {

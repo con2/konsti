@@ -1,6 +1,7 @@
 import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { unique } from "remeda";
+import { isDeepEqual } from "remeda";
 import { AdminState, RootState } from "client/types/reduxTypes";
+import { BackendError } from "client/types/errorTypes";
 import { SettingsPayload } from "shared/types/api/settings";
 import {
   LoginProvider,
@@ -118,17 +119,21 @@ const adminSlice = createSlice({
       return { ...state, signupQuestions: action.payload };
     },
 
-    addError(state, action: PayloadAction<string>): AdminState {
-      return {
-        ...state,
-        errors: unique([...state.errors, action.payload]),
-      };
+    addError(state, action: PayloadAction<BackendError>): AdminState {
+      const isDuplicate = state.errors.some((error) =>
+        isDeepEqual(error, action.payload),
+      );
+      return isDuplicate
+        ? state
+        : { ...state, errors: [...state.errors, action.payload] };
     },
 
-    removeError(state, action: PayloadAction<string>): AdminState {
+    removeError(state, action: PayloadAction<BackendError>): AdminState {
       return {
         ...state,
-        errors: state.errors.filter((error) => error !== action.payload),
+        errors: state.errors.filter(
+          (error) => !isDeepEqual(error, action.payload),
+        ),
       };
     },
 

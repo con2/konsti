@@ -31,12 +31,12 @@ import {
 } from "client/views/group/groupSlice";
 import { submitUpdateDirectSignupAsync } from "client/views/all-program-items/allProgramItemsSlice";
 
-export const submitGetUser = (username: string): AppThunk => {
-  return async (dispatch, useState): Promise<void> => {
+export const submitGetUser = (username: string): AppThunk<Promise<boolean>> => {
+  return async (dispatch, useState): Promise<boolean> => {
     const getUserResponse = await getUser(username);
 
     if (getUserResponse.status === "error") {
-      return;
+      return false;
     }
 
     const state = useState();
@@ -71,6 +71,8 @@ export const submitGetUser = (username: string): AppThunk => {
     if (!isDeepEqual(currentGroup, updatedGroup)) {
       dispatch(submitUpdateGroupCodeAsync(updatedGroup));
     }
+
+    return true;
   };
 };
 
