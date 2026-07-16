@@ -72,7 +72,16 @@ const StyledButton = styled.button<{ $buttonStyle: ButtonStyle }>`
         color: ${props.theme.textMain};
         padding: 6px 20px;
 
-        &:hover,
+        /* Touch devices emulate :hover on tap and keep it active after the tap,
+           so only style hover when the device can actually hover */
+        @media (hover: hover) {
+          &:hover,
+          &:focus-visible {
+            background: ${props.theme.buttonSecondaryHover};
+            color: ${props.theme.textMain};
+          }
+        }
+
         &:focus-visible {
           background: ${props.theme.buttonSecondaryHover};
           color: ${props.theme.textMain};
@@ -102,7 +111,14 @@ const StyledButton = styled.button<{ $buttonStyle: ButtonStyle }>`
       color: ${props.theme.buttonPrimaryText};
       padding: 8px 20px;
 
-      &:hover,
+      @media (hover: hover) {
+        &:hover,
+        &:focus-visible {
+          background: ${props.theme.buttonPrimaryHover};
+          color: ${props.theme.buttonPrimaryText};
+        }
+      }
+
       &:focus-visible {
         background: ${props.theme.buttonPrimaryHover};
         color: ${props.theme.buttonPrimaryText};

@@ -99,8 +99,13 @@ const RouterLink = styled(NavLink)`
   color: ${(props) => props.theme.textMain};
   border-bottom: 1px solid black;
 
-  &:hover {
-    background: ${(props) => props.theme.backgroundHover};
+  /* Touch devices emulate :hover on tap and keep it active after the tap,
+     so only style hover when the device can actually hover */
+  @media (hover: hover) {
+    &:hover,
+    &:focus {
+      background: ${(props) => props.theme.backgroundHover};
+    }
   }
 
   &:focus,
