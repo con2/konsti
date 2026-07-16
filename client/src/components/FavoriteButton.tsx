@@ -44,7 +44,16 @@ const StyledButton = styled.button`
   height: 44px;
   background-color: inherit;
 
-  &:hover,
+  /* Touch devices emulate :hover on tap and keep it active after the tap,
+     so only style hover when the device can actually hover */
+  @media (hover: hover) {
+    &:hover,
+    &:focus-visible {
+      background: ${(props) => props.theme.buttonSecondaryHover};
+      color: ${(props) => props.theme.textMain};
+    }
+  }
+
   &:focus-visible {
     background: ${(props) => props.theme.buttonSecondaryHover};
     color: ${(props) => props.theme.textMain};

@@ -48,7 +48,16 @@ const FloatingButton = styled.button`
   background: ${(props) => props.theme.buttonPrimaryBackground};
   z-index: 2;
 
-  &:hover,
+  /* Touch devices emulate :hover on tap and keep it active after the tap,
+     so only style hover when the device can actually hover */
+  @media (hover: hover) {
+    &:hover,
+    &:focus-visible {
+      background: ${(props) => props.theme.buttonPrimaryHover};
+      color: ${(props) => props.theme.textMain};
+    }
+  }
+
   &:focus-visible {
     background: ${(props) => props.theme.buttonPrimaryHover};
     color: ${(props) => props.theme.textMain};

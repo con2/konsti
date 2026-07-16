@@ -89,8 +89,12 @@ export class ProgramItemCard {
     await signupResponse;
   }
 
+  get addFavoriteButton(): Locator {
+    return this.root.getByTestId("add-favorite-button");
+  }
+
   async favorite(): Promise<void> {
-    await this.root.getByTestId("add-favorite-button").click();
+    await this.addFavoriteButton.click();
   }
 
   async showPlayers(): Promise<void> {
