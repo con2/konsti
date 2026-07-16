@@ -33,6 +33,10 @@ test("Kompassi login", async ({ page, request }) => {
   await expect(profilePage.main).toContainText(`User: ${editedUsername}`);
   await expect(profilePage.emailInput).toHaveValue(editedEmail);
 
+  // Kompassi accounts have no registration code, so the first-login notice
+  // is not shown
+  await expect(profilePage.firstLoginNotice).toBeHidden();
+
   // Logout
   await profilePage.navigation.logout();
 

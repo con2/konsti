@@ -34,6 +34,15 @@ export class BasePage {
     return this.page.getByTestId("admin-message-banner");
   }
 
+  // The registration code notice shown below the header on a user's first login
+  get firstLoginNotice(): Locator {
+    return this.page.getByTestId("first-login-notice");
+  }
+
+  async closeFirstLoginNotice(): Promise<void> {
+    await this.firstLoginNotice.getByRole("button", { name: "Close" }).click();
+  }
+
   async dismissAdminMessage(): Promise<void> {
     await this.adminMessageBanner
       .getByRole("button", { name: /close message/i })
