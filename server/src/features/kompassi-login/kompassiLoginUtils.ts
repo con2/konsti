@@ -14,3 +14,18 @@ export const getAuthUrl = (origin: string): string => {
 
   return `${getBaseUrl()}/oauth2/authorize?${params.toString()}`;
 };
+
+// The response body is logged when validation fails - hide token values in
+// case the failure is a partially valid body rather than an OAuth error object
+export const redactTokenValues = (data: unknown): unknown => {
+  if (typeof data !== "object" || data === null) {
+    return data;
+  }
+  const secretKeys = new Set(["access_token", "refresh_token", "id_token"]);
+  return Object.fromEntries(
+    Object.entries(data).map(([key, value]) => [
+      key,
+      secretKeys.has(key) ? "[redacted]" : value,
+    ]),
+  );
+};

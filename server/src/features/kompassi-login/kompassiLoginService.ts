@@ -27,6 +27,7 @@ import {
   KompassiTokens,
   KompassiTokensSchema,
 } from "server/features/kompassi-login/KompassiLoginTypes";
+import { redactTokenValues } from "server/features/kompassi-login/kompassiLoginUtils";
 
 export const getBaseUrl = (): string => {
   if (process.env.SETTINGS === "ci") {
@@ -73,7 +74,7 @@ const getKompassiTokens = async (
     if (!result.success) {
       logger.error(
         new Error(
-          `Error validating getKompassiTokens response: ${JSON.stringify(result.error)}`,
+          `Error validating getKompassiTokens response: status ${response.status}, body ${JSON.stringify(redactTokenValues(responseData))}, error ${JSON.stringify(result.error)}`,
         ),
       );
       return makeErrorResult(KompassiLoginError.UNKNOWN_ERROR);
@@ -100,9 +101,10 @@ const getKompassiProfile = async (
     const responseData = await response.json();
     const result = KompassiProfileSchema.safeParse(responseData);
     if (!result.success) {
+      // Don't log the body here - a partially valid profile would contain PII
       logger.error(
         new Error(
-          `Error validating getKompassiProfile response: ${JSON.stringify(result.error)}`,
+          `Error validating getKompassiProfile response: status ${response.status}, error ${JSON.stringify(result.error)}`,
         ),
       );
       return makeErrorResult(KompassiLoginError.UNKNOWN_ERROR);
