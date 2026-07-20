@@ -22,6 +22,7 @@ import { getSignupMessage } from "server/features/program-item/programItemUtils"
 import { findSettings } from "server/features/settings/settingsRepository";
 import { SignupType, State } from "shared/types/models/programItem";
 import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
+import { getProgramItemValidity } from "shared/utils/getProgramItemValidity";
 import { leaveOrCloseGroup } from "server/features/user/group/groupService";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 
@@ -71,6 +72,16 @@ export const storeDirectSignup = async (
       message: "Program item is cancelled",
       status: "error",
       errorId: "cancelled",
+    };
+  }
+
+  // Invalid program items have their signup disabled in the client, but a
+  // signup can still arrive from a stale or bugged page
+  if (!getProgramItemValidity(programItem).allValuesValid) {
+    return {
+      message: "Program item is missing required information",
+      status: "error",
+      errorId: "invalidProgramItem",
     };
   }
 

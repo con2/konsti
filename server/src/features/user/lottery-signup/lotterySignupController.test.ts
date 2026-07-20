@@ -218,6 +218,38 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     expect(body.message).toEqual("No Konsti signup for this program item");
   });
 
+  test("should return error when lottery program item doesn't start at even hour", async () => {
+    await saveProgramItems([
+      {
+        ...testProgramItem,
+        startTime: dayjs(testProgramItem.startTime)
+          .add(30, "minutes")
+          .toISOString(),
+      },
+    ]);
+    await saveUser(mockUser);
+
+    const signup: PostLotterySignupRequest = {
+      programItemId: testProgramItem.programItemId,
+      priority: 1,
+    };
+    const response = await request(server)
+      .post(ApiEndpoint.LOTTERY_SIGNUP)
+      .send(signup)
+      .set(
+        "Authorization",
+        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
+      );
+    expect(response.status).toEqual(200);
+
+    const body = response.body as PostLotterySignupError;
+    expect(body.status).toEqual("error");
+    expect(body.errorId).toEqual("invalidProgramItem");
+
+    const modifiedUser = unsafelyUnwrap(await findUser(mockUser.username));
+    expect(modifiedUser?.lotterySignups).toHaveLength(0);
+  });
+
   test("should return error when user is not found", async () => {
     vi.setSystemTime(
       dayjs(testProgramItem.startTime)

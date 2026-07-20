@@ -195,6 +195,8 @@ export const translationEN = {
     programItemHidden: "This program item is no longer available for sign-up.",
     groupMember:
       "Group members cannot sign up, the group creator must sign up for the whole group.",
+    invalidProgramItem:
+      "This program item is missing required information and cannot be signed up to.",
   },
   closingMessage: "Konsti is closed and will open closer to the next event.",
   invalidProgramItemId:

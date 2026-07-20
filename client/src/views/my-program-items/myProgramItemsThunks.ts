@@ -100,6 +100,7 @@ export enum PostDirectSignupErrorMessage {
   NO_KONSTI_SIGNUP = "signupError.noKonstiSignup",
   PROGRAM_ITEM_CANCELLED = "signupError.programItemCancelled",
   PROGRAM_ITEM_HIDDEN = "signupError.programItemHidden",
+  INVALID_PROGRAM_ITEM = "signupError.invalidProgramItem",
 }
 
 export const submitPostDirectSignup = (
@@ -122,6 +123,8 @@ export const submitPostDirectSignup = (
           return PostDirectSignupErrorMessage.PROGRAM_ITEM_CANCELLED;
         case "hidden":
           return PostDirectSignupErrorMessage.PROGRAM_ITEM_HIDDEN;
+        case "invalidProgramItem":
+          return PostDirectSignupErrorMessage.INVALID_PROGRAM_ITEM;
         case "unknown":
           return PostDirectSignupErrorMessage.UNKNOWN;
         default:
@@ -204,6 +207,7 @@ export enum PostLotterySignupErrorMessage {
   NO_KONSTI_SIGNUP = "signupError.noKonstiSignup",
   GROUP_MEMBER = "signupError.groupMember",
   PROGRAM_ITEM_HIDDEN = "signupError.programItemHidden",
+  INVALID_PROGRAM_ITEM = "signupError.invalidProgramItem",
   UNKNOWN = "signupError.generic",
 }
 
@@ -235,6 +239,8 @@ export const submitPostLotterySignup = (
           return PostLotterySignupErrorMessage.GROUP_MEMBER;
         case "hidden":
           return PostLotterySignupErrorMessage.PROGRAM_ITEM_HIDDEN;
+        case "invalidProgramItem":
+          return PostLotterySignupErrorMessage.INVALID_PROGRAM_ITEM;
         case "unknown":
           return PostLotterySignupErrorMessage.UNKNOWN;
         default:

@@ -235,6 +235,33 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     expect(body.message).toEqual("No Konsti signup for this program item");
   });
 
+  test("should return error when program item is missing required information", async () => {
+    await saveProgramItems([{ ...testProgramItem, maxAttendance: 0 }]);
+    await saveUser(mockUser);
+
+    const signup: PostDirectSignupRequest = {
+      directSignupProgramItemId: testProgramItem.programItemId,
+      message: "",
+    };
+    const response = await request(server)
+      .post(ApiEndpoint.DIRECT_SIGNUP)
+      .send(signup)
+      .set(
+        "Authorization",
+        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
+      );
+    expect(response.status).toEqual(200);
+
+    const body = response.body as PostDirectSignupError;
+    expect(body.status).toEqual("error");
+    expect(body.errorId).toEqual("invalidProgramItem");
+
+    const signups = unsafelyUnwrap(
+      await findUserDirectSignups(mockUser.username),
+    );
+    expect(signups).toHaveLength(0);
+  });
+
   test("should return error when signup is not yet open", async () => {
     // This test time should land to phaseGap
     vi.setSystemTime(
@@ -570,7 +597,9 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
   test("should not disband the group when the direct signup fails because the program item is full", async () => {
     vi.setSystemTime(testProgramItem.startTime);
 
-    await saveProgramItems([{ ...testProgramItem, maxAttendance: 1 }]);
+    await saveProgramItems([
+      { ...testProgramItem, minAttendance: 1, maxAttendance: 1 },
+    ]);
     await saveUser(mockUser);
     await saveUser(mockUser2);
     await saveUser(mockUser3);

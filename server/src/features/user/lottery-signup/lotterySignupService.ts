@@ -18,6 +18,7 @@ import { logger } from "server/utils/logger";
 import { findUser } from "server/features/user/userRepository";
 import { findSettings } from "server/features/settings/settingsRepository";
 import { SignupType, State } from "shared/types/models/programItem";
+import { getProgramItemValidity } from "shared/utils/getProgramItemValidity";
 
 const validPriorities = new Set([1, 2, 3]);
 
@@ -63,6 +64,16 @@ export const storeLotterySignup = async ({
       message: "Program item is cancelled",
       status: "error",
       errorId: "cancelled",
+    };
+  }
+
+  // Invalid program items have their signup disabled in the client, but a
+  // signup can still arrive from a stale or bugged page
+  if (!getProgramItemValidity(programItem).allValuesValid) {
+    return {
+      message: "Program item is missing required information",
+      status: "error",
+      errorId: "invalidProgramItem",
     };
   }
 
