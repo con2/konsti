@@ -31,6 +31,7 @@
     "load-past-event-data": "NODE_ENV=development DOTENV_CONFIG_PATH=.env.development tsx --import=./src/utils/applyPortOffset.ts -r dotenv/config src/test/scripts/loadPastEventDataToDb.ts",
     "update-kompassi-datadump": "NODE_ENV=development tsx src/test/scripts/updateKompassiDataDump.ts",
     "check-start-times": "NODE_ENV=development tsx src/test/scripts/checkStartTimes.ts",
+    "check-missing-konsti-program-type": "NODE_ENV=development tsx src/test/scripts/checkMissingKonstiProgramType.ts",
     "docker:db": "tsx src/test/scripts/dockerDb.ts",
     "find-unused-translation-keys": "tsx src/test/scripts/findUnusedTranslationKeys.ts"
   },

@@ -156,7 +156,7 @@ const KompassiResponseFormSchema = z.object({
   }),
 });
 
-const eventNameToKompassiEventName = (eventName: EventName): string => {
+export const eventNameToKompassiEventName = (eventName: EventName): string => {
   switch (eventName) {
     case EventName.ROPECON:
       return "ropecon";
@@ -226,7 +226,7 @@ export const getProgramFromServer = async (): Promise<
     if (!result.success) {
       logger.error(
         new Error(
-          "Error downloading program items from Kompassi: Invalid return value format",
+          `Error downloading program items from Kompassi: Invalid return value format. ${result.error}`,
         ),
       );
       return makeErrorResult(KompassiError.UNKNOWN_ERROR);

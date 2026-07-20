@@ -402,7 +402,7 @@ export const translationFI = {
   programType: {
     all: "Kaikki",
     tabletopRPG: "Pöytäroolipeli",
-    larp: "Larpit",
+    larp: "Larp",
     tournament: "Turnaus",
     workshop: "Työpaja",
     experiencePoint: "Kokemuspiste",
