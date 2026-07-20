@@ -13,3 +13,10 @@ export interface AssignmentResultGroup {
   groupCreator: string;
   groupMembers: string[];
 }
+
+// Metadata of a single lottery run, without the per-user results or group snapshots
+export interface AssignmentRun {
+  assignmentTime: string;
+  algorithm: string;
+  message: string;
+}

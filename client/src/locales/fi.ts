@@ -579,6 +579,13 @@ export const translationFI = {
   },
   private: "Yksityinen",
   privateOnlyVisibleToOrganizers: "Näkyy ainoastaan järjestäjille",
+  dashboardView: {
+    title: "Arvonnan tulokset",
+    loadingError: "Arvonnan tulosten lataaminen epäonnistui",
+    noResults: "Ei arvonnan tuloksia",
+    algorithm: "Algoritmi",
+    message: "Viesti",
+  },
   helperView: {
     signupQuestionAnswers: "Ilmoittautumiskysymysten vastaukset",
     privateSignupMessagesInfo:

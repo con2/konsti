@@ -10,6 +10,7 @@ import {
   postUpdateProgramItems,
 } from "server/features/program-item/programItemController";
 import { getHealthStatus } from "server/features/health/healthController";
+import { getResults } from "server/features/results/resultsController";
 import { getSentryTest } from "server/features/sentry-tunnel/sentryTunnelController";
 import { postEmailTest } from "server/features/admin/emailTestController";
 import {
@@ -239,6 +240,7 @@ apiRoutes.get(
   getUserBySerialOrUsername,
 );
 apiRoutes.get(ApiEndpoint.SETTINGS, getSettings);
+apiRoutes.get(ApiEndpoint.RESULTS, getResults);
 apiRoutes.get(
   ApiEndpoint.GROUP,
   requireAuth(UserGroup.USER),
