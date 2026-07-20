@@ -93,9 +93,9 @@ export const updateEventLogItemIsSeen = async (
     const result = UserSchemaDb.safeParse(response);
     if (!result.success) {
       logger.error(
-        new Error(
-          `Error validating updateEventLogItemIsSeen DB value: ${JSON.stringify(result.error)}`,
-        ),
+        new Error(`Error validating updateEventLogItemIsSeen DB value`, {
+          cause: result.error,
+        }),
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }

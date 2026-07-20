@@ -61,9 +61,9 @@ export const saveSerials = async (
       const result = SerialSchemaDb.safeParse(serial);
       if (!result.success) {
         logger.error(
-          new Error(
-            `Error validating saveSerials DB value: ${JSON.stringify(result.error)}`,
-          ),
+          new Error(`Error validating saveSerials DB value`, {
+            cause: result.error,
+          }),
         );
         return [];
       }

@@ -77,7 +77,8 @@ export const findResults = async (): Promise<
       if (!result.success) {
         logger.error(
           new Error(
-            `Error validating findResults DB value: assignmentTime: ${dayjs(assignmentResult.assignmentTime).toISOString()}, ${JSON.stringify(result.error)}`,
+            `Error validating findResults DB value: assignmentTime: ${dayjs(assignmentResult.assignmentTime).toISOString()}`,
+            { cause: result.error },
           ),
         );
         return [];

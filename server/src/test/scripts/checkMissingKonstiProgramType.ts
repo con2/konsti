@@ -73,7 +73,7 @@ const getFullProgramFromServer = async (): Promise<
   const result = KompassiResponseSchema.safeParse(responseData);
   if (!result.success) {
     logger.error(
-      new Error(`Invalid Kompassi response format: ${result.error.message}`),
+      new Error("Invalid Kompassi response format", { cause: result.error }),
     );
     return makeErrorResult(KompassiError.INVALID_RESPONSE);
   }
@@ -94,7 +94,7 @@ const checkMissingKonstiProgramType = async (): Promise<void> => {
     const result = ProgramItemSchema.safeParse(eventProgramItem);
     if (!result.success) {
       logger.error(
-        new Error(`Error parsing program item: ${result.error.message}`),
+        new Error("Error parsing program item", { cause: result.error }),
       );
       return [];
     }

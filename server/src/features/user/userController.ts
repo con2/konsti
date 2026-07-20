@@ -82,9 +82,9 @@ export const postUpdateUserEmailAddress = async (
   const result = PostUpdateUserEmailAddressRequestSchema.safeParse(req.body);
   if (!result.success) {
     logger.error(
-      new Error(
-        `Error validating postUpdateUserEmailAddress body: ${JSON.stringify(result.error)}`,
-      ),
+      new Error(`Error validating postUpdateUserEmailAddress body`, {
+        cause: result.error,
+      }),
     );
     return res.status(422).json({
       message: "Invalid email format",
