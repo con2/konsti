@@ -12,6 +12,7 @@ export enum ApiEndpoint {
   LEAVE_GROUP = "/api/leave-group",
   CLOSE_GROUP = "/api/close-group",
   SETTINGS = "/api/settings",
+  RESULTS = "/api/results",
   SIGNUP_QUESTION = "/api/signup-question",
   SIGNUP_MESSAGE = "/api/signup-message",
   SESSION_RESTORE = "/api/session-restore",

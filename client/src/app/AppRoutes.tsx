@@ -25,6 +25,7 @@ import { LoginProvider } from "shared/config/eventConfigTypes";
 import { KompassiLogoutCallback } from "client/components/KompassiLogoutCallback";
 import { AuthEndpoint } from "shared/constants/apiEndpoints";
 import { AdmissionTicketView } from "client/views/admission-ticket/AdmissionTicketView";
+import { DashboardView } from "client/views/dashboard/DashboardView";
 import { FinalizeRegistration } from "client/views/login/components/FinalizeRegistration";
 
 export enum AppRoute {
@@ -39,6 +40,7 @@ export enum AppRoute {
   LOGIN = "/login",
   LOGOUT = "/logout",
   ABOUT = "/about",
+  DASHBOARD = "/dashboard",
   NOTIFICATIONS = "/notifications",
   KOMPASSI_LOGOUT_CALLBACK = "/kompassi-logout-callback",
   ANY = "/*",
@@ -164,6 +166,7 @@ export const AppRoutes = (): ReactElement => {
           path={`${AppRoute.ABOUT}/*`}
           element={<Tabs tabContents={aboutTabs} />}
         />
+        <Route path={AppRoute.DASHBOARD} element={<DashboardView />} />
         <Route
           path={AppRoute.ROOT}
           element={
@@ -247,6 +250,7 @@ export const AppRoutes = (): ReactElement => {
           path={`${AppRoute.ABOUT}/*`}
           element={<Tabs tabContents={aboutTabs} />}
         />
+        <Route path={AppRoute.DASHBOARD} element={<DashboardView />} />
         {isAdminOrHelper(userGroup) ? (
           <Route
             path={AppRoute.ROOT}
@@ -287,6 +291,7 @@ export const AppRoutes = (): ReactElement => {
         path={`${AppRoute.ABOUT}/*`}
         element={<Tabs tabContents={aboutTabs} />}
       />
+      <Route path={AppRoute.DASHBOARD} element={<DashboardView />} />
       <Route
         path={AppRoute.ROOT}
         element={<Navigate to={AppRoute.PROGRAM} />}

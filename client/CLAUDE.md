@@ -23,7 +23,7 @@ Note: `find-unused-translation-keys` is a **server** script (it scans `client/sr
 
 - **`index.tsx`** — entry point: Sentry init, Redux `Provider`, styled-components `ThemeProvider`, then the lazily-loaded `App`.
 - **`app/`** — `App.tsx` (initial data load + router wrapper), `AppRoutes.tsx` (all react-router routes), `HistoryContext.tsx` (tracks previous location for back buttons).
-- **`views/`** — one folder per page/feature: `about`, `admin`, `admission-ticket`, `all-program-items`, `event-log`, `group`, `helper`, `login`, `logout`, `my-program-items`, `profile`, `program-item`, `registration`. A view folder typically holds `*View.tsx`, its Redux `*Slice.ts`, `*Thunks.ts`, and a local `components/`.
+- **`views/`** — one folder per page/feature: `about`, `admin`, `admission-ticket`, `all-program-items`, `dashboard`, `event-log`, `group`, `helper`, `login`, `logout`, `my-program-items`, `profile`, `program-item`, `registration`. A view folder typically holds `*View.tsx`, its Redux `*Slice.ts`, `*Thunks.ts`, and a local `components/`.
 - **`components/`** — shared UI primitives (Button, Input, Checkbox, Header, etc.) and `icons/` (FontAwesome).
 - **`services/`** — typed API call wrappers, one file per domain (`loginServices.ts`, `programItemsServices.ts`, `groupServices.ts`, …). Each just wraps `api.post/get/delete` with `shared/types/api/...` types.
 - **`state/`** — only `loading/loadingSlice.ts` lives here; **the store itself and most slices do not** (see State Management below).

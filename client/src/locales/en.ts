@@ -577,6 +577,13 @@ export const translationEN = {
   },
   private: "Private",
   privateOnlyVisibleToOrganizers: "Only visible to organizers",
+  dashboardView: {
+    title: "Lottery results",
+    loadingError: "Loading lottery results failed",
+    noResults: "No lottery results",
+    algorithm: "Algorithm",
+    message: "Message",
+  },
   helperView: {
     signupQuestionAnswers: "Sign-up question answers",
     privateSignupMessagesInfo:
