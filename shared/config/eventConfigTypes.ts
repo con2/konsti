@@ -94,7 +94,8 @@ export interface EventConfig {
     | undefined
   >;
   enableRevolvingDoor: boolean;
-  programGuideUrl: string;
+  programGuideUrlFi: string;
+  programGuideUrlEn: string;
   startTimesByParentIds: Map<string, string>;
   defaultSignupType: SignupType;
   enableTagDropdown: boolean;

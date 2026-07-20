@@ -28,7 +28,7 @@ const eventConfig: Partial<EventConfig> = {
   // Remove lottery signups after assignment: overlapping signups, all upcoming signups, or none
   removeLotterySignupsStrategy: RemoveLotterySignupsStrategy.ALL_UPCOMING,
 
-  programGuideUrl: "https://tracon.fi/opas",
+  programGuideUrlFi: "https://tracon.fi/opas",
 
   activeProgramTypes: [ProgramType.TABLETOP_RPG, ProgramType.FLEAMARKET],
 
