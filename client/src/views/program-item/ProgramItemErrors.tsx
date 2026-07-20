@@ -9,6 +9,7 @@ interface Props {
   isValidMinAttendanceValue: boolean;
   isValidMaxAttendanceValue: boolean;
   minAttendanceBiggerThanMax: boolean;
+  signupTypeMissing: boolean;
   programType: ProgramType;
 }
 
@@ -16,12 +17,13 @@ export const ProgramItemErrors = ({
   isValidMinAttendanceValue,
   isValidMaxAttendanceValue,
   minAttendanceBiggerThanMax,
+  signupTypeMissing,
   programType,
 }: Props): ReactElement => {
   const { t } = useTranslation();
 
   return (
-    <ErrorsList>
+    <ErrorsList data-testid="program-item-errors">
       {!isValidMinAttendanceValue && (
         <ErrorMessage
           message={t("signup.minAttendanceMissing", {
@@ -50,6 +52,10 @@ export const ProgramItemErrors = ({
             ),
           })}
         />
+      )}
+
+      {signupTypeMissing && (
+        <ErrorMessage message={t("signup.signupType.missing")} />
       )}
     </ErrorsList>
   );

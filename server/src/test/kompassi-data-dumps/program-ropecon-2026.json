@@ -984,6 +984,140 @@
     ]
   },
   {
+    "slug": "berserkin-pesa-mielipuolen-unia",
+    "title": "Berserkin Pesä: Mielipuolen Unia",
+    "description": "Dunblaidh'n valtakunnassa Torminrannan kylässä jatkuvat oudot tapahtumat. Torminrannan paronin Tormi Kuparisormen hulluus saa vaarallisia piirteitä, hänen nukkuessaan tapahtuu onnettomuuksia, katoamisia ja muuta outoa. Paronin sijaisena toimiva kapteeni Teuro Rautaparta on romahduksen partaalla, hän yrittää pitää romahduksen partaalla olevaa yhteisöä kasassa ja hän tarvitsee kipeästi apua. \r\n\r\nOnneksi kauppalaivat kulkevat edelleen ja Torminranta on saanut lisää vahvistuksia. Uudet tulijat ja vanhat seikkailijat löytävät itsensä keskeltä kasvavaa kaaosta. Kaikki vaikuttaa liittyvän paronin uniin.\r\n\r\nPelaajilla on mahdollisuus valmishahmoihin tai he voivat luoda omat hahmonsa paikan päällä. \r\nPelaajan liittyessä peliin käydään läpi turvallisen tilan periaatteet ja mahdolliset vaikeat teemat.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-07-24", "2026-07-25", "2026-07-26"],
+      "form": ["offer-rpg"],
+      "room": ["sade"],
+      "type": ["gaming"],
+      "state": ["accepted"],
+      "topic": ["rpg"],
+      "konsti": ["tabletoprpg"],
+      "grouping": ["beginners", "dreams", "lgbt"],
+      "language": ["fi"],
+      "age-group": ["adultsnyouth"],
+      "scheduled": ["multiple", "one-or-more"],
+      "game-style": ["rules-light", "story-driven"],
+      "registration": ["not-required"],
+      "revolvingdoor": ["true"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Dungeons&Dragons5e(2014)",
+      "konsti:minAttendance": 2,
+      "konsti:maxAttendance": 8,
+      "ropecon:contentWarnings": "Sisältää mahdollisesti useita triggeröiviä aiheita, joista keskustellaan pelaajan liittyessä peliin",
+      "ropecon:isRevolvingDoor": true
+    },
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "berserkin-pesa-mielipuolen-unia-1",
+        "title": "Berserkin Pesä: Mielipuolen Unia",
+        "startTime": "2026-07-24T19:00:00+03:00",
+        "endTime": "2026-07-24T23:00:00+03:00",
+        "lengthMinutes": 240,
+        "location": "Säde (Pöytä 9)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Dungeons&Dragons5e(2014)",
+          "konsti:minAttendance": 2,
+          "konsti:maxAttendance": 8,
+          "ropecon:contentWarnings": "Sisältää mahdollisesti useita triggeröiviä aiheita, joista keskustellaan pelaajan liittyessä peliin",
+          "ropecon:isRevolvingDoor": true,
+          "internal:freeformLocation": "Pöytä 9"
+        }
+      },
+      {
+        "slug": "berserkin-pesa-mielipuolen-unia-2",
+        "title": "Berserkin Pesä: Mielipuolen Unia",
+        "startTime": "2026-07-25T14:00:00+03:00",
+        "endTime": "2026-07-25T18:00:00+03:00",
+        "lengthMinutes": 240,
+        "location": "Säde (Pöytä 9)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Dungeons&Dragons5e(2014)",
+          "konsti:minAttendance": 2,
+          "konsti:maxAttendance": 8,
+          "ropecon:contentWarnings": "Sisältää mahdollisesti useita triggeröiviä aiheita, joista keskustellaan pelaajan liittyessä peliin",
+          "ropecon:isRevolvingDoor": true,
+          "internal:freeformLocation": "Pöytä 9"
+        }
+      },
+      {
+        "slug": "berserkin-pesa-mielipuolen-unia-3",
+        "title": "Berserkin Pesä: Mielipuolen Unia",
+        "startTime": "2026-07-25T09:00:00+03:00",
+        "endTime": "2026-07-25T13:00:00+03:00",
+        "lengthMinutes": 240,
+        "location": "Säde (Pöytä 9)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Dungeons&Dragons5e(2014)",
+          "konsti:minAttendance": 2,
+          "konsti:maxAttendance": 8,
+          "ropecon:contentWarnings": "Sisältää mahdollisesti useita triggeröiviä aiheita, joista keskustellaan pelaajan liittyessä peliin",
+          "ropecon:isRevolvingDoor": true,
+          "internal:freeformLocation": "Pöytä 9"
+        }
+      },
+      {
+        "slug": "berserkin-pesa-mielipuolen-unia-4",
+        "title": "Berserkin Pesä: Mielipuolen Unia",
+        "startTime": "2026-07-25T19:00:00+03:00",
+        "endTime": "2026-07-25T23:00:00+03:00",
+        "lengthMinutes": 240,
+        "location": "Säde (Pöytä 9)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Dungeons&Dragons5e(2014)",
+          "konsti:minAttendance": 2,
+          "konsti:maxAttendance": 8,
+          "ropecon:contentWarnings": "Sisältää mahdollisesti useita triggeröiviä aiheita, joista keskustellaan pelaajan liittyessä peliin",
+          "ropecon:isRevolvingDoor": true,
+          "internal:freeformLocation": "Pöytä 9"
+        }
+      },
+      {
+        "slug": "berserkin-pesa-mielipuolen-unia-5",
+        "title": "Berserkin Pesä: Mielipuolen Unia",
+        "startTime": "2026-07-26T09:00:00+03:00",
+        "endTime": "2026-07-26T13:00:00+03:00",
+        "lengthMinutes": 240,
+        "location": "Säde (Pöytä 9)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Dungeons&Dragons5e(2014)",
+          "konsti:minAttendance": 2,
+          "konsti:maxAttendance": 8,
+          "ropecon:contentWarnings": "Sisältää mahdollisesti useita triggeröiviä aiheita, joista keskustellaan pelaajan liittyessä peliin",
+          "ropecon:isRevolvingDoor": true,
+          "internal:freeformLocation": "Pöytä 9"
+        }
+      },
+      {
+        "slug": "berserkin-pesa-mielipuolen-unia-6",
+        "title": "Berserkin Pesä: Mielipuolen Unia",
+        "startTime": "2026-07-26T14:00:00+03:00",
+        "endTime": "2026-07-26T17:00:00+03:00",
+        "lengthMinutes": 180,
+        "location": "Säde (Pöytä 9)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Dungeons&Dragons5e(2014)",
+          "konsti:minAttendance": 2,
+          "konsti:maxAttendance": 8,
+          "ropecon:contentWarnings": "Sisältää mahdollisesti useita triggeröiviä aiheita, joista keskustellaan pelaajan liittyessä peliin",
+          "ropecon:isRevolvingDoor": true,
+          "internal:freeformLocation": "Pöytä 9"
+        }
+      }
+    ]
+  },
+  {
     "slug": "bluebeards-bride",
     "title": "Bluebeard's Bride",
     "description": "A young bride is wed to an ugly, but powerful man who invites her to explore the house - safe for one room. Eventually, the young bride falls prey to her curiosity and opens the forbidden door, discovering the gruesome display of former brides murdered...\r\n\r\nIn this gothic horror game the players will play different aspects of the Bride and explore Bluebeard's mansion to create our own beautifully tragic version of the old folktale. Since dark themes (e.g., misogyny, different forms of violence and abuse, religion, sexuality, body horror, and grief) are at the heart of the game, and one key mechanic \"Shiver from Fear\" literally relies on the reactions of the players, not the character; session will begin with a calibration of what the players are (not) comfortable with plus going over the safety mechanisms in play (lines and veils, X card).",
@@ -2528,6 +2662,139 @@
     ]
   },
   {
+    "slug": "dd-5e-matka-aavikon-halki",
+    "title": "D&D 5e: MATKA AAVIKON HALKI",
+    "description": "Seikkailu polttavan hiekan maassa odottaa, kun pelaajat joutuvat kokemaan armottoman erämaan haasteet heidän retkikuntansa ylittäessä halki kuuman aavikon.\r\n\r\nLähde mukaan heittelemään noppia, kohtaamaan aavikon vaaroja ja keräämään hiekan alle kätkettyjä aarteita!",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-07-24", "2026-07-25"],
+      "form": ["offer-rpg"],
+      "room": ["sade"],
+      "type": ["gaming"],
+      "state": ["accepted"],
+      "topic": ["rpg"],
+      "konsti": ["tabletoprpg"],
+      "grouping": ["beginners", "dreams", "lgbt"],
+      "language": ["fi"],
+      "age-group": ["everyone"],
+      "scheduled": ["multiple", "one-or-more"],
+      "game-style": [
+        "character-driven",
+        "combat-heavy",
+        "light",
+        "rules-light"
+      ],
+      "inclusivity": ["fingers"],
+      "registration": ["not-required"],
+      "revolvingdoor": ["true"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Dungeons & Dragons 5th Edition",
+      "konsti:minAttendance": 1,
+      "konsti:maxAttendance": 6,
+      "ropecon:isRevolvingDoor": true
+    },
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "dd-5e-matka-aavikon-halki-1",
+        "title": "D&D 5e: MATKA AAVIKON HALKI",
+        "startTime": "2026-07-24T18:00:00+03:00",
+        "endTime": "2026-07-24T19:00:00+03:00",
+        "lengthMinutes": 60,
+        "location": "Säde (Pöytä 6)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Dungeons & Dragons 5th Edition",
+          "konsti:minAttendance": 1,
+          "konsti:maxAttendance": 6,
+          "ropecon:isRevolvingDoor": true,
+          "internal:freeformLocation": "Pöytä 6"
+        }
+      },
+      {
+        "slug": "dd-5e-matka-aavikon-halki-2",
+        "title": "D&D 5e: MATKA AAVIKON HALKI",
+        "startTime": "2026-07-24T19:00:00+03:00",
+        "endTime": "2026-07-24T20:00:00+03:00",
+        "lengthMinutes": 60,
+        "location": "Säde (Pöytä 6)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Dungeons & Dragons 5th Edition",
+          "konsti:minAttendance": 1,
+          "konsti:maxAttendance": 6,
+          "ropecon:isRevolvingDoor": true,
+          "internal:freeformLocation": "Pöytä 6"
+        }
+      },
+      {
+        "slug": "dd-5e-matka-aavikon-halki-3",
+        "title": "D&D 5e: MATKA AAVIKON HALKI",
+        "startTime": "2026-07-24T20:00:00+03:00",
+        "endTime": "2026-07-24T21:00:00+03:00",
+        "lengthMinutes": 60,
+        "location": "Säde (Pöytä 6)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Dungeons & Dragons 5th Edition",
+          "konsti:minAttendance": 1,
+          "konsti:maxAttendance": 6,
+          "ropecon:isRevolvingDoor": true,
+          "internal:freeformLocation": "Pöytä 6"
+        }
+      },
+      {
+        "slug": "dd-5e-matka-aavikon-halki-4",
+        "title": "D&D 5e: MATKA AAVIKON HALKI",
+        "startTime": "2026-07-25T16:00:00+03:00",
+        "endTime": "2026-07-25T17:00:00+03:00",
+        "lengthMinutes": 60,
+        "location": "Säde (Pöytä 6)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Dungeons & Dragons 5th Edition",
+          "konsti:minAttendance": 1,
+          "konsti:maxAttendance": 6,
+          "ropecon:isRevolvingDoor": true,
+          "internal:freeformLocation": "Pöytä 6"
+        }
+      },
+      {
+        "slug": "dd-5e-matka-aavikon-halki-5",
+        "title": "D&D 5e: MATKA AAVIKON HALKI",
+        "startTime": "2026-07-25T17:00:00+03:00",
+        "endTime": "2026-07-25T18:00:00+03:00",
+        "lengthMinutes": 60,
+        "location": "Säde (Pöytä 6)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Dungeons & Dragons 5th Edition",
+          "konsti:minAttendance": 1,
+          "konsti:maxAttendance": 6,
+          "ropecon:isRevolvingDoor": true,
+          "internal:freeformLocation": "Pöytä 6"
+        }
+      },
+      {
+        "slug": "dd-5e-matka-aavikon-halki-6",
+        "title": "D&D 5e: MATKA AAVIKON HALKI",
+        "startTime": "2026-07-25T18:00:00+03:00",
+        "endTime": "2026-07-25T19:00:00+03:00",
+        "lengthMinutes": 60,
+        "location": "Säde (Pöytä 6)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Dungeons & Dragons 5th Edition",
+          "konsti:minAttendance": 1,
+          "konsti:maxAttendance": 6,
+          "ropecon:isRevolvingDoor": true,
+          "internal:freeformLocation": "Pöytä 6"
+        }
+      }
+    ]
+  },
+  {
     "slug": "dd-dreams-of-many-things",
     "title": "D&D; Dreams of Many Things",
     "description": "Dream City of Oxfall: The Reverie Comet Event\r\nWelcome to one of the dream cities of Oxfall, where reality bends and imagination takes form. Once every generation, a celestial phenomenon known as the Reverie Comet passes overhead. During this rare event, the dreams of countless “little dreamers” are brought to life—some rising beyond their limits to become legends remembered for ages. But not every dream becomes a blessing. So… which dreamers will rise? And which will fall into nightmare?\r\n\r\nThe Quest for the Deck of Many Things\r\nAt the center of this event lies a powerful and unpredictable artifact: the Deck of Many Things.\r\nA relic capable of granting unimaginable fortune—or devastating consequences—it has become the ultimate prize for those daring enough to seek it.\r\nHowever, the Deck is not unguarded.\r\nIt is hidden deep within the city, protected by terrifying Creatures of Nightmares—manifestations of fear, doubt, and broken dreams. These entities grow stronger as the comet draws closer, feeding on the ambition of those who seek the Deck.\r\n\r\nBand Together or Fall Alone:\r\nTo stand a chance, dreamers have begun forming groups—alliances of convenience, trust, or desperation—to battle through these nightmare guardians.\r\n- Fight alongside others to overcome powerful enemies\r\n- Navigate unpredictable events shaped by the Deck itself\r\n- Make choices that could change your fate—or the fate of others\r\n\r\nEvery decision matters. Every draw from the Deck carries risk.\r\n\r\nFlexible & Accessible Gameplay:\r\nThis event is designed to be easy to join and leave, making it perfect for all types of players:\r\n- Jump in when you have time\r\n- Participate in short or long sessions\r\n- Take breaks without pressure\r\nWhether you’re here for a quick adventure or a longer journey, Oxfall welcomes you.\r\n\r\nWill Your Dream Be Fulfilled?:\r\nThe Reverie Comet won’t last forever.\r\nWhen it fades, so too will the chance to claim the Deck… and shape your destiny.\r\n\r\nSo tell me, little dreamer—\r\nwhat will your story become?",
@@ -3454,6 +3721,53 @@
     ]
   },
   {
+    "slug": "dreams-of-the-pharaoh",
+    "title": "Dreams of the Pharaoh",
+    "description": "All the time, the pharaoh sees dreams that are clearly omens. It is absolutely crucial that these dreams are interpreted correctly, so that the pharaoh can secure the survival of the kingdom (and his own power). Because of this, the pharaoh has invited to his court all those who possess the gift of dream interpretation. You have decided to try your luck. Based on the different interpretations, the pharaoh will decide, for example, whether to start a war or not. Depending on how your interpretation matches the events that unfold, the pharaoh may either promote you or throw you to the crocodiles. So be prepared to interpret for your life: the more detailed your explanations are, the greater the reward - or punishment - will be. The game is set in a version of ancient Egypt inspired by history, where unlikely but not entirely impossible things can happen. The game draws inspiration from the Biblical story of Joseph, who gained the pharaoh’s favor by interpreting dreams, but the game itself is not set in that story’s world.\r\n\r\nThe game follows a light system: the game master describes the pharaoh’s dream → players take turns offering their interpretations → based on dice roll and the players’ interpretations, the game master describes what happens in the kingdom → the pharaoh rewards or punishes the player characters → the next dream follows, same formula. It’s a drop-in, drop-out game, meaning that if there’s space, players can join at any time, and they can also leave whenever they wish. If a character dies and there are players waiting, the spot is offered to the next person in line. If there is no queue, the same player can continue with a new character if they want.\r\n\r\nThe game is about creative storytelling and risk-taking. Most importantly, however, the goal is to have fun, and playing does not require knowledge of ancient Egypt or prior role-playing experience.\r\nPLEASE NOTE! This game will be played in English. During Ropecon there is another version of this same game that will be played in Finnish. Players who speak Finnish are also welcome to this game, as long as they also speak English.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-07-25"],
+      "form": ["offer-rpg"],
+      "room": ["sade"],
+      "type": ["gaming"],
+      "state": ["accepted"],
+      "topic": ["rpg"],
+      "konsti": ["tabletoprpg"],
+      "grouping": ["beginners", "dreams"],
+      "language": ["en"],
+      "age-group": ["adultsnyouth"],
+      "scheduled": ["one", "one-or-more"],
+      "game-style": ["rules-light"],
+      "registration": ["not-required"],
+      "revolvingdoor": ["true"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Own system",
+      "konsti:minAttendance": 1,
+      "konsti:maxAttendance": 6,
+      "ropecon:isRevolvingDoor": true
+    },
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "dreams-of-the-pharaoh-1",
+        "title": "Dreams of the Pharaoh",
+        "startTime": "2026-07-25T13:00:00+03:00",
+        "endTime": "2026-07-25T15:00:00+03:00",
+        "lengthMinutes": 120,
+        "location": "Säde (Pöytä 6)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Own system",
+          "konsti:minAttendance": 1,
+          "konsti:maxAttendance": 6,
+          "ropecon:isRevolvingDoor": true,
+          "internal:freeformLocation": "Pöytä 6"
+        }
+      }
+    ]
+  },
+  {
     "slug": "dreamy-buns",
     "title": "Dreamy Buns",
     "description": "Learn how to work your hair into dreamy and fantastic buns. In this workshop, I'll demonstrate the nautilus bun with a hairstick, classic pinned bun and the eternity bun with a hairshield. And naturally all fun variations.\r\n\r\nAll are welcome to this workshop, but it helps if you can get most of your hair into a ponytail. We will be talking about easy DIY extensions too. \r\n\r\nBring your own brush and other possible tools. Hairsticks, combs, pins etc. are available.",
@@ -4113,6 +4427,53 @@
           "ropecon:contentWarnings": "Vakavat rikokset, järjestäytynyt rikollisuus, kidnappaus, panttivankitilanne",
           "ropecon:accessibilityOther": "Larpissa liikutaan paljon pitkin conialuetta ja mahdollisesti suhteelliseen ripeään tahtiin.",
           "ropecon:isRevolvingDoor": false
+        }
+      }
+    ]
+  },
+  {
+    "slug": "faaraon-unet",
+    "title": "Faaraon unet",
+    "description": "Faarao näkee jatkuvasti unia, jotka selkeästi ennustavat tulevaisuutta. On ehdottoman tärkeää, että nämä unet tulkitaan oikein, jotta faarao voi toimillaan turvata valtakunnan (ja oman valtansa) selviytymisen. Tämän vuoksi faarao on kutsunut hoviinsa kaikki alamaiset, joilla on unen tulkinnan lahja. Sinä olet päättänyt kokeilla onneasi. Eri tulkintojen pohjalta faarao päättää esimerkiksi aloittaako sodan vai ei. Riippuen siitä, miten tulkintasi vastaa toteutuneita tapahtumia, voi faarao joko ylentää sinut tai heittää krokotiileille. Valmistaudu siis tulkitsemaan henkesi edestä: mitä yksityiskohtaisempia selityksesi ovat, sitä suurempi on faaraon antama palkkio tai rangaistus. Peli sijoittuu historian innoittamaan muinaiseen Egyptiin, jossa voi tapahtua epätodennäköisiä mutta ei suoraan mahdottomia asioita. Pelin inspiraationa on Raamatun kertomus Joosefista, joka pääsi faaraon suosioon tulkitsemalla unia, mutta peli itsessään ei sijoitu tämän kertomuksen maailmaan.\r\n\r\nPeli kulkee omalla kevyellä systeemillä: pelinjohtaja kuvailee faaraon unen-->vuorotellen pelaajat tarjoavat tulkintansa-->nopanheiton ja pelaajien tulkintojen pohjalta pelinjohtaja kuvailee, mitä valtakunnassa tapahtuu-->faarao palkitsee tai rankaisee pelaajahahmot-->seuraava uni, sama kaava. Kyseessä on pyöröovipeli, eli jos pelissä on tilaa niin siihen voi liittyä kesken kaiken, ja pelistä voi myös poistua milloin vain. Jos oma hahmo menehtyy ja jonossa on pelaajia, niin pelipaikka tarjotaan seuraavalle. Ellei jonoa ole, voi sama pelaaja halutessaan jatkaa uudella hahmolla.\r\n\r\nPelin keskiössä on luova tarinankerronta ja riskinotto. Tärkeintä on kuitenkin pitää hauskaa, ja pelaaminen ei vaadi tietämystä muinaisesta Egyptistä tai aiempaa kokemusta roolipelaamisesta.\r\n\r\nHUOM! Tämä versio peluutetaan suomeksi, ja samasta pelistä on erikseen myös peluutus englanniksi. (This game will be played in Finnish, but an English version will be run on a separate time during Ropecon.)",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-07-26"],
+      "form": ["offer-rpg"],
+      "room": ["sade"],
+      "type": ["gaming"],
+      "state": ["accepted"],
+      "topic": ["rpg"],
+      "konsti": ["tabletoprpg"],
+      "grouping": ["beginners", "dreams"],
+      "language": ["fi"],
+      "age-group": ["adultsnyouth"],
+      "scheduled": ["one", "one-or-more"],
+      "game-style": ["rules-light"],
+      "registration": ["not-required"],
+      "revolvingdoor": ["true"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Oma pelisysteemi",
+      "konsti:minAttendance": 1,
+      "konsti:maxAttendance": 6,
+      "ropecon:isRevolvingDoor": true
+    },
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "faaraon-unet-1",
+        "title": "Faaraon unet",
+        "startTime": "2026-07-26T14:00:00+03:00",
+        "endTime": "2026-07-26T16:00:00+03:00",
+        "lengthMinutes": 120,
+        "location": "Säde (Pöytä 6)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Oma pelisysteemi",
+          "konsti:minAttendance": 1,
+          "konsti:maxAttendance": 6,
+          "ropecon:isRevolvingDoor": true,
+          "internal:freeformLocation": "Pöytä 6"
         }
       }
     ]
@@ -5140,6 +5501,55 @@
     ]
   },
   {
+    "slug": "hex-ferrum",
+    "title": "Hex Ferrum",
+    "description": "Vuonna 2026 sääntökirjoina sekä digitaalisessa muodossa julkaistava Hex Ferrum on laaja ja monipuolinen pöytäroolipeli, jota on kehitetty useita vuosia. Peli tarjoaa taktisia valintoja, vaaraa henkiviä taisteluita sekä edellytykset pelata myös kulttuuriin, taiteisiin tai sosiaaliseen vuorovaikutukseen erikoistuvia hahmoja. Hex Ferrumissa on miltei rajattomat hahmonkehitysmahdollisuudet - 50 hahmotyyppiä ja yli 300 skilliä - ja laaja Vidoq-maailman kuvaus, johon sisältyy kymmenittäin valtakuntia sekä lukuisia  uskontokuntia ja kulttuuripiirejä. Kahdessa pelikirjassa on yhteensä 850 sivua ja runsaasti sisältöä sääntöjen lisäksi: useita karttoja, yli 550 värikuvaa, kymmenittäin yliluonnollisia esineitä sekä 160 olentoa. High fantasy -kategoriaan asettuva Hex Ferrum on tunnelmaltaan tummasävyinen ja eeppinen.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-07-25"],
+      "form": ["offer-rpg"],
+      "room": ["sade"],
+      "type": ["gaming"],
+      "state": ["accepted"],
+      "topic": ["rpg"],
+      "konsti": ["tabletoprpg"],
+      "language": ["fi"],
+      "age-group": ["adultsnyouth"],
+      "scheduled": ["one", "one-or-more"],
+      "game-style": ["combat-heavy", "rules-heavy", "serious", "story-driven"],
+      "uses-gen-ai": ["yes"],
+      "registration": ["not-required"],
+      "revolvingdoor": ["true"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "d20-pohjainen mekaniikka ja skill-pohjainen järjestelmä, jossa on simulaatiopelien henkeä",
+      "konsti:minAttendance": 3,
+      "konsti:maxAttendance": 7,
+      "ropecon:contentWarnings": "Okkultismi, väkivalta (kuvitteellisia taisteluita pöytäroolipelissä), uskonnot ja niiden väliset jännitteet (kuvitteellisia uskontoja kuvitteellisessa maailmassa), noidanmetsästäjät, noituus.",
+      "ropecon:isRevolvingDoor": true
+    },
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "hex-ferrum-1",
+        "title": "Hex Ferrum",
+        "startTime": "2026-07-25T13:00:00+03:00",
+        "endTime": "2026-07-25T17:00:00+03:00",
+        "lengthMinutes": 240,
+        "location": "Säde (Pöytä 7)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "d20-pohjainen mekaniikka ja skill-pohjainen järjestelmä, jossa on simulaatiopelien henkeä",
+          "konsti:minAttendance": 3,
+          "konsti:maxAttendance": 7,
+          "ropecon:contentWarnings": "Okkultismi, väkivalta (kuvitteellisia taisteluita pöytäroolipelissä), uskonnot ja niiden väliset jännitteet (kuvitteellisia uskontoja kuvitteellisessa maailmassa), noidanmetsästäjät, noituus.",
+          "ropecon:isRevolvingDoor": true,
+          "internal:freeformLocation": "Pöytä 7"
+        }
+      }
+    ]
+  },
+  {
     "slug": "hiirivartio-tuoksut-tuulessa",
     "title": "Hiirivartio: Tuoksut tuulessa",
     "description": "Kielolehdon pormestari on lähettänyt huolestuneen kirjeen Hiirivartion päämajaan. Kaupungin ympäriltä on alkanut kadota alueelle tunnusomaisia kieloja ja muitakin kukkakasveja.\r\n\r\nKielolehdossa keskitytään parhaillaan kesän sadon talteenottoon, eikä ylimääräistä aikaa ilmiön selvittelyyn ole. Vaikka kyseiset kukkakasvit eivät ole elinkeinon kannalta tärkeitä, toivoo hämmentynyt pormestari mahdollisen ilkivallan pikaista selvittämistä. Pystyykö Hiirivartio auttamaan?\r\n\r\nPelissä pyritään ratkomaan suuren luonnon armoilla elävien pienten hiirten ongelmia. Peli pelataan kevennetyillä Mouse Guard rpg:n säännöillä ja valmishahmoilla. Sopii myös aloittelijoille. Aloitteleva pelinjohtaja.",
@@ -5677,6 +6087,83 @@
     ]
   },
   {
+    "slug": "indiehuone-indie-room-indierummet",
+    "title": "Indiehuone / Indie Room / Indierummet",
+    "description": "Indiehuone tarjoaa 1-3 tunnin mittaisia indieroolipelikokemuksia matalalla kynnyksellä ja ilman ennakkoilmoittaumista tai ennakkovalmistautumista. Osa peleistä on pelinjohtajattomia, pelaajia voi olla noin 1-6 peliä kohden (tarjolla on siis myös soolopelejä). Pelit ovat pelattavissa kävijöiden kesken itsenäisesti, mutta paikalla on myös fasilitaattoreita, jotka tarvittaessa auttavat pelien kanssa. Lähtökohtaisesti kaikki pelit soveltuvat myös täysin aloittelijoille. Indieroolipelit ovat tyypillisesti ei-kaupallisia ja kokeellisia, usein myös minimalistisia. Pelejä on humoristisista synkkiin ja genrejä on laidasta laitaan.\r\n\r\nThe Indie Room offers 1-3 hour long indie role playing experiences with a low threshold and without sign-up or preparation. Some of the games don't require a game master, and there can be approximately 1-6 players per game (solo games are also available). The games can be played amongst visitors independently, but there are also facilitators present to assist with the games. In principle, all games are also suitable for complete beginners. Indie role-playing games are typically non-commercial and experimental, often also minimalistic. Games range from humoristic to dark, and represent a wide range of genres.\r\n\r\nFacilitation is available in Finnish, English and Swedish.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-07-24", "2026-07-25"],
+      "form": ["offer-rpg"],
+      "room": ["kajo"],
+      "type": ["gaming"],
+      "state": ["accepted"],
+      "topic": ["rpg"],
+      "konsti": ["tabletoprpg"],
+      "language": ["en", "fi", "sv"],
+      "age-group": ["adults"],
+      "scheduled": ["multiple", "one-or-more"],
+      "game-style": [
+        "character-driven",
+        "light",
+        "rules-light",
+        "serious",
+        "story-driven"
+      ],
+      "inclusivity": [
+        "long-texts",
+        "loud-sounds",
+        "no-recordings-or-spoken-text",
+        "not-amplified"
+      ],
+      "registration": ["not-required"],
+      "revolvingdoor": ["true"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Useampia / multiple",
+      "konsti:minAttendance": 1,
+      "konsti:maxAttendance": 21,
+      "ropecon:contentWarnings": "Pelien vapaamuotoisuuden vuoksi niissä voi esiintyä lähes mitä tahansa teemoja. Suosittelemme ja tarjoamme turva-/kommunikaatiotyökaluja, kuten X-kortteja. Due to the freeform nature of the games almost any themes can potentially be brought up. We recommend and provide safety and communication tools, such as X-cards.",
+      "ropecon:isRevolvingDoor": true
+    },
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "indiehuone-indie-room-indierummet-1",
+        "title": "Indiehuone / Indie Room / Indierummet",
+        "startTime": "2026-07-24T18:00:00+03:00",
+        "endTime": "2026-07-25T06:00:00+03:00",
+        "lengthMinutes": 720,
+        "location": "Kajo (Pöytä 25)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Useampia / multiple",
+          "konsti:minAttendance": 1,
+          "konsti:maxAttendance": 21,
+          "ropecon:contentWarnings": "Pelien vapaamuotoisuuden vuoksi niissä voi esiintyä lähes mitä tahansa teemoja. Suosittelemme ja tarjoamme turva-/kommunikaatiotyökaluja, kuten X-kortteja. Due to the freeform nature of the games almost any themes can potentially be brought up. We recommend and provide safety and communication tools, such as X-cards.",
+          "ropecon:isRevolvingDoor": true,
+          "internal:freeformLocation": "Pöytä 25"
+        }
+      },
+      {
+        "slug": "indiehuone-indie-room-indierummet-2",
+        "title": "Indiehuone / Indie Room / Indierummet",
+        "startTime": "2026-07-25T12:00:00+03:00",
+        "endTime": "2026-07-26T00:00:00+03:00",
+        "lengthMinutes": 720,
+        "location": "Kajo (Pöytä 25)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Useampia / multiple",
+          "konsti:minAttendance": 1,
+          "konsti:maxAttendance": 21,
+          "ropecon:contentWarnings": "Pelien vapaamuotoisuuden vuoksi niissä voi esiintyä lähes mitä tahansa teemoja. Suosittelemme ja tarjoamme turva-/kommunikaatiotyökaluja, kuten X-kortteja. Due to the freeform nature of the games almost any themes can potentially be brought up. We recommend and provide safety and communication tools, such as X-cards.",
+          "ropecon:isRevolvingDoor": true,
+          "internal:freeformLocation": "Pöytä 25"
+        }
+      }
+    ]
+  },
+  {
     "slug": "inkarnaation-esittelypeli-synnyinhauta",
     "title": "Inkarnaation esittelypeli: Synnyinhauta",
     "description": "Heräät muistisi menettäneenä pimeästä luolasta, yhdessä muiden pelipöydässä istuvien pelaajien kanssa. Huomaatte saaneenne erikoiset mutaatiot ja yliluonnollisen toipumiskyvyn, mikä tuleekin tarpeeseen, sillä ympäröivä maailma paljastuu nopeasti kammottavan vaaralliseksi paikaksi. Pystyttekö pakenemaan synnyinluolastanne vai onko se myös hautanne?\r\n\r\nPeli on kolmen tunnin mittainen maistiainen Inkarnaatio roolipelistä. Pelaajat pelaavat pelissä jotain versiota itsestään.\r\n",
@@ -5866,6 +6353,56 @@
           "ropecon:contentWarnings": "Itsemurha, seksuaaliset perversiot, pelaajien päätökset vaikuttavat sivuhahmon päätökseen itsemurhasta, transhumanismin varjopuolet, sivuhahmon joutuminen raiskauksen uhriksi, peli voi olla psykologisesti painostava, avoin seksuaalisuus",
           "ropecon:isRevolvingDoor": false,
           "internal:freeformLocation": "Pöytä 2"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "interstellar-wars-second-war",
+    "title": "Interstellar wars - second war",
+    "description": "The year is 2124, nations of Earth have united under the banner of Terran confederation to defend their homeworld and destiny against the mighty Ziru Sirka, grand empire of the stars. The Terran confederation has managed to develop a jump-2 drive to push further into the stars. \r\n\r\nInterstellar wars is a mini campaign, taking place in the history of the Traveller universe. There are five short one hour and half sessions that are tied together into a grander narrative. You can take part in just one, some or all of them. After each adventure concludes, there is about half an hour where we will see how the conflict between Earth and the Grand empire proceeds.\r\n\r\nThis mini-campaign continues the story from last year's ropecon. System is an unholy hybrid of traveller and powered by apocalypse.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-07-25"],
+      "form": ["offer-rpg"],
+      "room": ["sade"],
+      "type": ["gaming"],
+      "state": ["accepted"],
+      "topic": ["rpg"],
+      "konsti": ["tabletoprpg"],
+      "grouping": ["beginners"],
+      "language": ["en"],
+      "age-group": ["adultsnyouth"],
+      "scheduled": ["one", "one-or-more"],
+      "game-style": ["light", "rules-light", "serious"],
+      "inclusivity": ["long-texts"],
+      "registration": ["not-required"],
+      "revolvingdoor": ["true"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Traveller PBtA hybrid",
+      "konsti:minAttendance": 2,
+      "konsti:maxAttendance": 4,
+      "ropecon:contentWarnings": "War, Violence, Infinite emptiness of outer space.",
+      "ropecon:isRevolvingDoor": true
+    },
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "interstellar-wars-second-war-1",
+        "title": "Interstellar wars - second war",
+        "startTime": "2026-07-25T13:00:00+03:00",
+        "endTime": "2026-07-25T23:00:00+03:00",
+        "lengthMinutes": 600,
+        "location": "Säde (Pöytä 1)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Traveller PBtA hybrid",
+          "konsti:minAttendance": 2,
+          "konsti:maxAttendance": 4,
+          "ropecon:contentWarnings": "War, Violence, Infinite emptiness of outer space.",
+          "ropecon:isRevolvingDoor": true,
+          "internal:freeformLocation": "Pöytä 1"
         }
       }
     ]
@@ -7510,6 +8047,7 @@
       "scheduled": ["one", "one-or-more"],
       "game-style": ["character-driven", "rules-light"],
       "inclusivity": ["no-recordings-or-spoken-text"],
+      "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
     "cachedAnnotations": {
@@ -7592,6 +8130,55 @@
           "ropecon:contentWarnings": "Pelissä on väkivaltaa ja siinä käsitellään teemoina esimerkiksi huumausaineita, jengiväkivaltaa ja hyvin synkkää tulevaisuus dystopiaa, jossa vain rahalla on väliä. Peli sisältää myös kiroilua ja on ylipäätään suositeltu ennemmin yli 18-vuotiaille.\r\n",
           "ropecon:isRevolvingDoor": false,
           "internal:freeformLocation": "Pöytä 3"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "kipinavahti",
+    "title": "Kipinävahti",
+    "description": "Seikkailijaporukka on asettunut nukkumaan ja on vartiovuorojen aika. Tässä roolipelissä seurataan, mitä usein muutaman nopanheiton mittaisena yönä oikeasti tapahtuu. Nuotion luomassa valokehässä hahmot vaipuvat uneen. Hiljennytään, mutta vartija pysyy tarkkana. Koskaan ei kuitenkaan voi tietää, mitä pimeydessä vaanii. Vahvasti vuoropohjaiseen peliin voi tuoda oman hahmonsa (tasolla ei suoranaisesti ole väliä, mutta suosittelemme 3. tason hahmoja), mutta se ei ole välttämätöntä ja valmiita hahmoja löytyy käytettäväksi. Tärkeää on, että pelaajat ovat valmiita pysähtymään ja kuulemaan, mitä yöllä on heille kerrottavaa.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-07-24"],
+      "form": ["offer-rpg"],
+      "room": ["sade"],
+      "type": ["gaming"],
+      "state": ["accepted"],
+      "topic": ["rpg"],
+      "konsti": ["tabletoprpg"],
+      "grouping": ["beginners", "dreams"],
+      "language": ["fi"],
+      "age-group": ["everyone"],
+      "scheduled": ["one", "one-or-more"],
+      "game-style": ["character-driven", "rules-light", "story-driven"],
+      "registration": ["not-required"],
+      "revolvingdoor": ["true"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Dungeons and Dragons 5e/2024",
+      "konsti:minAttendance": 1,
+      "konsti:maxAttendance": 5,
+      "ropecon:contentWarnings": "Mahdollinen fantasiapeleihin liittyvä väkivalta (pieni todennäköisyys, mutta silti olemassa)",
+      "ropecon:isRevolvingDoor": true
+    },
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "kipinavahti-1",
+        "title": "Kipinävahti",
+        "startTime": "2026-07-24T19:00:00+03:00",
+        "endTime": "2026-07-24T21:30:00+03:00",
+        "lengthMinutes": 150,
+        "location": "Säde (Pöytä 1)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Dungeons and Dragons 5e/2024",
+          "konsti:minAttendance": 1,
+          "konsti:maxAttendance": 5,
+          "ropecon:contentWarnings": "Mahdollinen fantasiapeleihin liittyvä väkivalta (pieni todennäköisyys, mutta silti olemassa)",
+          "ropecon:isRevolvingDoor": true,
+          "internal:freeformLocation": "Pöytä 1"
         }
       }
     ]
@@ -9307,7 +9894,7 @@
   {
     "slug": "lautapeli-speedfriending",
     "title": "Lautapeli-speedfriending",
-    "description": "Tule pelaamaan lyhyitä ja nopeita lautapelejä saaden samalla uusia kavereita, joiden kanssa viettää aikaa conissa. Ideana on pelata 20 min yksinkertaista peliä, jonka jälkeen on 10 min tauko, jonka aikana voi tutustua paremmin. Ohjelmassa tarjolla apukysymyksiä tutustumiseen.\r\n\r\nIlmoittautuminen Konstin kautta alkaa 13.7. kello 20.",
+    "description": "Tule pelaamaan lyhyitä ja nopeita lautapelejä saaden samalla uusia kavereita, joiden kanssa viettää aikaa conissa. Ideana on pelata 20 min yksinkertaista peliä, jonka jälkeen on 10 min tauko, jonka aikana voi tutustua paremmin. Ohjelmassa tarjolla apukysymyksiä tutustumiseen.\r\n\r\nIlmoittautuminen Konstin kautta alkaa 13.7. kello 20. Ohjelmaan saa osallistua myös ilmoittautumatta.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "form": ["offer-week"],
@@ -10048,6 +10635,90 @@
           "ropecon:contentWarnings": "Väkivalta",
           "ropecon:isRevolvingDoor": false,
           "internal:freeformLocation": "Pöytä 2"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "luolailua-pyynnosta-dungeoneering-on-demand",
+    "title": "Luolailua pyynnöstä / Dungeoneering on demand",
+    "description": "Vanhan liiton luolaseikkailussa tutkitaan vaarallista viidakkorauniota ja luolia, joissa hirviöt, ansat ja outoudet lymyävät. Kuolema korjaa herkästi varomattoman, kun taas nokkela ja onnekas korjaa aarteet ja löydöt mukaansa. Retken jälkeen löydöt pisteytetään ja kahmaloittain kokemuspisteitä keränneestä seikkailijasta tulee Viidakko-Juuso!\r\n\r\nPeli toimii avoimen pöydän periaatteella - mukaan saa tulla koska tahansa ja pelata saa niin kauan kuin haluaa, eli poistuakin saa koska tahansa. Nopea hahmonluonti tai tuo oma vanhan liiton hahmosi.\r\n\r\nPelissä esiintyy fyysistä väkivaltaa sekä hirviöitä ja myös hahmokuolemat ovat oletettavia.\r\n\r\nPeli on pääasiassa suomeksi, mutta kahden pöydän ollessa käynnissä toinen pöytä pelaa englanniksi.\r\n\r\nIn this old school dungeoneering game players investigate jungle ruins and caves filled with monsters, traps and oddities. The unwary may face death, while the savvy and lucky adventurer brings treasure back from their journey. After the expedition, finds are scored and the one who grabs the most experience points is crowned master of the jungle!\r\n\r\nThe game is an open table one - join at any time, stay as long as you will, leave when you want. Quick character creation and you can also bring in an old school character you have played before.\r\n\r\nThe game contains violence, monsters and in particular character death is a distinct possibility.\r\n\r\nWe run one table in Finnish and when we have two tables, the other is in English.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-07-24", "2026-07-25", "2026-07-26"],
+      "form": ["offer-rpg"],
+      "room": ["halli5kokemuspiste"],
+      "type": ["gaming"],
+      "state": ["accepted"],
+      "topic": ["rpg"],
+      "konsti": ["tabletoprpg"],
+      "grouping": ["beginners"],
+      "language": ["en", "fi"],
+      "age-group": ["everyone"],
+      "scheduled": ["multiple", "one-or-more"],
+      "game-style": ["rules-light"],
+      "inclusivity": ["not-amplified"],
+      "registration": ["not-required"],
+      "revolvingdoor": ["true"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Vanhan liiton D&D / Old-school D&D",
+      "konsti:minAttendance": 1,
+      "konsti:maxAttendance": 16,
+      "ropecon:contentWarnings": "FI: hahmokuolema, väkivalta, hirviöt kuten ötökät, käärmeet ja epäkuolleet, pelimaailman sisällä usein rasistinen ja väkivaltainen suhtautuminen luola-asujiin mutta tuomarit eivät tätä jaa eikä pelaajien tarvitse näin suhtautua\r\n\r\nEN: character death, violence, monsters such as bugs, snakes and undead, often racist and violent attitude towards dungeon denizens within the game world but the referees do not share this and the players are not expected to take this attitude",
+      "ropecon:isRevolvingDoor": true
+    },
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "luolailua-pyynnosta-dungeoneering-on-demand",
+        "title": "Luolailua pyynnöstä / Dungeoneering on demand",
+        "startTime": "2026-07-24T16:00:00+03:00",
+        "endTime": "2026-07-24T22:00:00+03:00",
+        "lengthMinutes": 360,
+        "location": "Hall 5 Experience Point (pöytäryhmä 36-37 / table group 36-37)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Vanhan liiton D&D / Old-school D&D",
+          "konsti:minAttendance": 1,
+          "konsti:maxAttendance": 16,
+          "ropecon:contentWarnings": "FI: hahmokuolema, väkivalta, hirviöt kuten ötökät, käärmeet ja epäkuolleet, pelimaailman sisällä usein rasistinen ja väkivaltainen suhtautuminen luola-asujiin mutta tuomarit eivät tätä jaa eikä pelaajien tarvitse näin suhtautua\r\n\r\nEN: character death, violence, monsters such as bugs, snakes and undead, often racist and violent attitude towards dungeon denizens within the game world but the referees do not share this and the players are not expected to take this attitude",
+          "ropecon:isRevolvingDoor": true,
+          "internal:freeformLocation": "pöytäryhmä 36-37 / table group 36-37"
+        }
+      },
+      {
+        "slug": "luolailua-pyynnosta-dungeoneering-on-demand-2",
+        "title": "Luolailua pyynnöstä / Dungeoneering on demand",
+        "startTime": "2026-07-25T10:00:00+03:00",
+        "endTime": "2026-07-25T22:00:00+03:00",
+        "lengthMinutes": 720,
+        "location": "Hall 5 Experience Point (Pöytäryhmä 36-37 / table group 36-37)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Vanhan liiton D&D / Old-school D&D",
+          "konsti:minAttendance": 1,
+          "konsti:maxAttendance": 16,
+          "ropecon:contentWarnings": "FI: hahmokuolema, väkivalta, hirviöt kuten ötökät, käärmeet ja epäkuolleet, pelimaailman sisällä usein rasistinen ja väkivaltainen suhtautuminen luola-asujiin mutta tuomarit eivät tätä jaa eikä pelaajien tarvitse näin suhtautua\r\n\r\nEN: character death, violence, monsters such as bugs, snakes and undead, often racist and violent attitude towards dungeon denizens within the game world but the referees do not share this and the players are not expected to take this attitude",
+          "ropecon:isRevolvingDoor": true,
+          "internal:freeformLocation": "Pöytäryhmä 36-37 / table group 36-37"
+        }
+      },
+      {
+        "slug": "luolailua-pyynnosta-dungeoneering-on-demand-3",
+        "title": "Luolailua pyynnöstä / Dungeoneering on demand",
+        "startTime": "2026-07-26T10:00:00+03:00",
+        "endTime": "2026-07-26T17:00:00+03:00",
+        "lengthMinutes": 420,
+        "location": "Hall 5 Experience Point (Pöytäryhmä 36-37 / table group 36-37)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Vanhan liiton D&D / Old-school D&D",
+          "konsti:minAttendance": 1,
+          "konsti:maxAttendance": 16,
+          "ropecon:contentWarnings": "FI: hahmokuolema, väkivalta, hirviöt kuten ötökät, käärmeet ja epäkuolleet, pelimaailman sisällä usein rasistinen ja väkivaltainen suhtautuminen luola-asujiin mutta tuomarit eivät tätä jaa eikä pelaajien tarvitse näin suhtautua\r\n\r\nEN: character death, violence, monsters such as bugs, snakes and undead, often racist and violent attitude towards dungeon denizens within the game world but the referees do not share this and the players are not expected to take this attitude",
+          "ropecon:isRevolvingDoor": true,
+          "internal:freeformLocation": "Pöytäryhmä 36-37 / table group 36-37"
         }
       }
     ]
@@ -12726,7 +13397,7 @@
       "scheduled": ["one", "one-or-more"],
       "game-style": ["combat-heavy", "rules-heavy"],
       "inclusivity": ["long-texts", "no-recordings-or-spoken-text"],
-      "registration": ["konsti"],
+      "registration": ["not-required"],
       "revolvingdoor": ["true"]
     },
     "cachedAnnotations": {
@@ -12776,7 +13447,7 @@
       "scheduled": ["one", "one-or-more"],
       "game-style": ["combat-heavy", "rules-heavy"],
       "inclusivity": ["long-texts", "no-recordings-or-spoken-text"],
-      "registration": ["konsti"],
+      "registration": ["not-required"],
       "revolvingdoor": ["true"]
     },
     "cachedAnnotations": {
@@ -12825,7 +13496,7 @@
       "scheduled": ["one", "one-or-more"],
       "game-style": ["combat-heavy", "rules-heavy"],
       "inclusivity": ["long-texts", "no-recordings-or-spoken-text"],
-      "registration": ["konsti"],
+      "registration": ["not-required"],
       "revolvingdoor": ["true"]
     },
     "cachedAnnotations": {
@@ -12875,7 +13546,7 @@
       "scheduled": ["one", "one-or-more"],
       "game-style": ["rules-heavy"],
       "inclusivity": ["long-texts", "no-recordings-or-spoken-text"],
-      "registration": ["konsti"],
+      "registration": ["not-required"],
       "revolvingdoor": ["true"]
     },
     "cachedAnnotations": {
@@ -12925,7 +13596,7 @@
       "scheduled": ["one", "one-or-more"],
       "game-style": ["combat-heavy", "rules-heavy", "story-driven"],
       "inclusivity": ["long-texts", "no-recordings-or-spoken-text"],
-      "registration": ["konsti"],
+      "registration": ["not-required"],
       "revolvingdoor": ["true"]
     },
     "cachedAnnotations": {
@@ -12975,7 +13646,7 @@
       "scheduled": ["multiple", "one-or-more"],
       "game-style": ["combat-heavy", "rules-heavy"],
       "inclusivity": ["long-texts", "no-recordings-or-spoken-text"],
-      "registration": ["konsti"],
+      "registration": ["not-required"],
       "revolvingdoor": ["true"]
     },
     "cachedAnnotations": {
@@ -13041,7 +13712,7 @@
       "scheduled": ["one", "one-or-more"],
       "game-style": ["combat-heavy", "rules-heavy"],
       "inclusivity": ["long-texts", "no-recordings-or-spoken-text"],
-      "registration": ["konsti"],
+      "registration": ["not-required"],
       "revolvingdoor": ["true"]
     },
     "cachedAnnotations": {
@@ -13091,7 +13762,7 @@
       "scheduled": ["one", "one-or-more"],
       "game-style": ["combat-heavy", "rules-heavy"],
       "inclusivity": ["long-texts", "no-recordings-or-spoken-text"],
-      "registration": ["konsti"],
+      "registration": ["not-required"],
       "revolvingdoor": ["true"]
     },
     "cachedAnnotations": {
@@ -13554,6 +14225,7 @@
       "scheduled": ["one", "one-or-more"],
       "game-style": ["character-driven", "rules-heavy", "serious"],
       "inclusivity": ["color-blindness", "long-texts"],
+      "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
     "cachedAnnotations": {
@@ -16056,6 +16728,7 @@
       "scheduled": ["one", "one-or-more"],
       "game-style": ["rules-light"],
       "inclusivity": ["dark-lighting", "long-program"],
+      "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
     "cachedAnnotations": {
@@ -16573,6 +17246,7 @@
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
       "game-style": ["character-driven", "story-driven"],
+      "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
     "cachedAnnotations": {
@@ -17357,6 +18031,72 @@
           "ropecon:contentWarnings": "Katso kuvauksen sisältövaroitukset / See the content warnings in the description.",
           "ropecon:isRevolvingDoor": false,
           "internal:freeformLocation": "Pöytä 11"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "toivon-viestinviejat",
+    "title": "Toivon Viestinviejät",
+    "description": "Toivon Viestinviejät on seikkailu, joka sijoittuu Midnightin synkkään fantasiamaailmaan. Pelaajat ovat vastarinnan jäseniä, jotka ovat saaneet vaarallisen ja tärkeän tehtävän. Heidän  täytyy kuljettaa maagisesti sinetöity arkku miehitetyn maan halki pieneen metsäkylään, joka sijaitsee Varjolaakson metsän rajamailla. Arkku on tarkoitus toimittaa kylässä salaa asuvalle vastarinnan jäsenelle, joka on yksi harvoista jäljellä olevista vanhoista maageista, jotka pystyvät auttamaan arkussa olevan aseen käyttämisessä Varjoa vastaan.\r\n\r\nPelin aikana pelaajat joutuvat välttelemään örkki partioita, epäluuloisia kyläläisiä, metsän outoja vaaroja. Pelaajien täytyy myös olla erityisen varuillaan että he eivät kohtaa Varjon palveluksessa olevaa legatteja, jotka pystyvät mahdollisesti aistimaan arkussa olevan taikuuden. Pelissä käytetään valmishahmoja eikä pelin pelaaminen vaadi aiempaa kokemusta roolipelaamisesta",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-07-24", "2026-07-25"],
+      "form": ["offer-rpg"],
+      "room": ["halli5kokemuspiste"],
+      "type": ["gaming"],
+      "state": ["accepted"],
+      "topic": ["rpg"],
+      "konsti": ["tabletoprpg"],
+      "grouping": ["beginners"],
+      "language": ["fi"],
+      "age-group": ["adultsnyouth"],
+      "scheduled": ["multiple", "one-or-more"],
+      "game-style": ["light", "rules-light"],
+      "registration": ["not-required"],
+      "revolvingdoor": ["true"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Tikari & Taikuus sääntösysteemi (On Daggerheart sääntösysteemin suomenkielinen käännös)",
+      "konsti:minAttendance": 1,
+      "konsti:maxAttendance": 5,
+      "ropecon:contentWarnings": "Peli sisältää väkivaltaa sekä aiheita jotka eivät sovellu kaiken ikäisille kuten sota, kauhu ja orjuus",
+      "ropecon:isRevolvingDoor": true
+    },
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "toivon-viestinviejat",
+        "title": "Toivon Viestinviejät",
+        "startTime": "2026-07-24T20:00:00+03:00",
+        "endTime": "2026-07-24T23:00:00+03:00",
+        "lengthMinutes": 180,
+        "location": "Hall 5 Experience Point (pöytäryhmä 12 / table group 12)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Tikari & Taikuus sääntösysteemi (On Daggerheart sääntösysteemin suomenkielinen käännös)",
+          "konsti:minAttendance": 1,
+          "konsti:maxAttendance": 5,
+          "ropecon:contentWarnings": "Peli sisältää väkivaltaa sekä aiheita jotka eivät sovellu kaiken ikäisille kuten sota, kauhu ja orjuus",
+          "ropecon:isRevolvingDoor": true,
+          "internal:freeformLocation": "pöytäryhmä 12 / table group 12"
+        }
+      },
+      {
+        "slug": "toivon-viestinviejat-2",
+        "title": "Toivon Viestinviejät",
+        "startTime": "2026-07-25T17:00:00+03:00",
+        "endTime": "2026-07-25T20:00:00+03:00",
+        "lengthMinutes": 180,
+        "location": "Hall 5 Experience Point (pöytäryhmä 10 / table group 10)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Tikari & Taikuus sääntösysteemi (On Daggerheart sääntösysteemin suomenkielinen käännös)",
+          "konsti:minAttendance": 1,
+          "konsti:maxAttendance": 5,
+          "ropecon:contentWarnings": "Peli sisältää väkivaltaa sekä aiheita jotka eivät sovellu kaiken ikäisille kuten sota, kauhu ja orjuus",
+          "ropecon:isRevolvingDoor": true,
+          "internal:freeformLocation": "pöytäryhmä 10 / table group 10"
         }
       }
     ]
@@ -19595,6 +20335,7 @@
       "age-group": ["adults"],
       "scheduled": ["one", "one-or-more"],
       "game-style": ["character-driven", "light", "rules-light"],
+      "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
     "cachedAnnotations": {

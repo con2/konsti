@@ -381,6 +381,7 @@ export const translationEN = {
         "This {{PROGRAM_TYPE}} does not use Konsti for signing up. Registration at Larp & RPG Desk.",
       gamepoint:
         "This {{PROGRAM_TYPE}} does not use Konsti for signing up. Registration at Gaming Desk.",
+      missing: "Missing info: sign up type",
     },
     cancelled: "This {{PROGRAM_TYPE}} has been cancelled.",
     cancelledTitleText: "CANCELLED",

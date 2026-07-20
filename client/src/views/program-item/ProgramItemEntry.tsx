@@ -105,6 +105,7 @@ export const ProgramItemEntry = memo(function ProgramItemEntryComponent({
     isValidMinAttendanceValue,
     isValidMaxAttendanceValue,
     minAttendanceBiggerThanMax,
+    signupTypeMissing,
     allValuesValid,
   } = getProgramItemValidity(programItem);
 
@@ -144,6 +145,7 @@ export const ProgramItemEntry = memo(function ProgramItemEntryComponent({
           isValidMinAttendanceValue={isValidMinAttendanceValue}
           isValidMaxAttendanceValue={isValidMaxAttendanceValue}
           minAttendanceBiggerThanMax={minAttendanceBiggerThanMax}
+          signupTypeMissing={signupTypeMissing}
           programType={programItem.programType}
         />
       )}
