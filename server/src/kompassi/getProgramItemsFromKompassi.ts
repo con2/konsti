@@ -1,14 +1,12 @@
 import fs from "node:fs";
 import path from "node:path";
-import dayjs from "dayjs";
 import { z, ZodError } from "zod";
-import { first, unique } from "remeda";
+import { unique } from "remeda";
 import { KompassiError } from "shared/types/api/errors";
 import {
   KompassiKonstiProgramType,
   KompassiProgramItem,
   KompassiProgramItemSchema,
-  KompassiRegistration,
 } from "server/kompassi/kompassiProgramItem";
 import {
   Result,
@@ -20,7 +18,6 @@ import { config } from "shared/config";
 import { EventName } from "shared/config/eventConfigTypes";
 import { getProgramItemsFromFullProgram } from "server/kompassi/getProgramItemsFromFullProgram";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
-import { getTime } from "shared/utils/timeFormatter";
 import { ProgramType } from "shared/types/models/programItem";
 
 export const getProgramItemsFromKompassi = async (
@@ -266,33 +263,6 @@ export const checkUnknownKeys = (
       ),
     );
   }
-};
-
-export const logInvalidStartTimes = (
-  programItem: KompassiProgramItem,
-  programType: KompassiKonstiProgramType,
-): void => {
-  const evenHourProgramTypes = mapKonstiProgramTypesToKompassiProgramTypes(
-    config.event().twoPhaseSignupProgramTypes,
-  );
-  const usesKonstiRegisration =
-    first(programItem.cachedDimensions.registration) ===
-    KompassiRegistration.KONSTI;
-
-  if (!evenHourProgramTypes.includes(programType) || !usesKonstiRegisration) {
-    return;
-  }
-
-  programItem.scheduleItems.map((scheduleItem) => {
-    const startMinute = dayjs(scheduleItem.startTime).minute();
-    if (startMinute !== 0) {
-      logger.error(
-        new Error(
-          `Invalid start time: ${getTime(scheduleItem.startTime)} - ${scheduleItem.slug}`,
-        ),
-      );
-    }
-  });
 };
 
 export const mapKonstiProgramTypesToKompassiProgramTypes = (

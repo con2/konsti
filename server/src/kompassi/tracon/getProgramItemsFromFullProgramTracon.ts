@@ -1,7 +1,6 @@
 import { first } from "remeda";
 import {
   checkUnknownKeys,
-  logInvalidStartTimes,
   parseProgramItem,
 } from "server/kompassi/getProgramItemsFromKompassi";
 import { logger } from "server/utils/logger";
@@ -45,10 +44,6 @@ export const getProgramItemsFromFullProgramTracon = (
 
     if (!validProgramType) {
       return [];
-    }
-
-    if (config.server().logInvalidStartTimes) {
-      logInvalidStartTimes(programItem, programType);
     }
 
     return programItem;

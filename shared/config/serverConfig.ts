@@ -28,7 +28,6 @@ export interface ServerConfig {
   enableLoggingInTests: boolean;
   onlyCronjobs: boolean;
   cronjobsAndBackendSameInstance: boolean;
-  logInvalidStartTimes: boolean;
   logMissingScheduleItems: boolean; // If scheduleItems is missing, program item is ignored
   emailNotificationQueueWorkerCount: number;
   emailNotificationTrigger: readonly EmailNotificationTrigger[];
@@ -89,7 +88,6 @@ const commonConfig = {
   enableLoggingInTests: false,
 
   // Data checks
-  logInvalidStartTimes: false,
   logMissingScheduleItems: false,
 
   // Email notifications
