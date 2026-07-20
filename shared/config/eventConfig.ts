@@ -26,7 +26,8 @@ export const eventConfig: EventConfig = {
   assignmentAlgorithm: AssignmentAlgorithm.RANDOM_PADG,
   enableGroups: true,
   removeLotterySignupsStrategy: RemoveLotterySignupsStrategy.OVERLAP,
-  programGuideUrl: "https://ropecon.fi/opas",
+  programGuideUrlFi: "https://ropecon.fi/opas",
+  programGuideUrlEn: "https://ropecon.fi/en/guide",
 
   activeProgramTypes: [
     ProgramType.TABLETOP_RPG,

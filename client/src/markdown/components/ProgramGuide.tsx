@@ -5,7 +5,9 @@ import { config } from "shared/config";
 
 export const ProgramGuide = (): ReactNode => {
   const { i18n } = useTranslation();
-  const { programGuideUrl } = config.event();
+  const { programGuideUrlFi, programGuideUrlEn } = config.event();
+  const programGuideUrl =
+    i18n.language === "fi" ? programGuideUrlFi : programGuideUrlEn;
 
   if (programGuideUrl) {
     return (

@@ -70,7 +70,7 @@ export const AllProgramItemsList = ({
   programItems,
   highlightedProgramItemId,
 }: Props): ReactElement => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const signups = useAppSelector(
     (state) => state.allProgramItems.directSignups,
@@ -327,7 +327,9 @@ export const AllProgramItemsList = ({
     });
   }, [virtualizer]);
 
-  const { programGuideUrl } = config.event();
+  const { programGuideUrlFi, programGuideUrlEn } = config.event();
+  const programGuideUrl =
+    i18n.language === "fi" ? programGuideUrlFi : programGuideUrlEn;
 
   if (rows.length === 0) {
     return (
