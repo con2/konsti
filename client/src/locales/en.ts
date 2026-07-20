@@ -344,6 +344,8 @@ export const translationEN = {
     maxAttendanceMissing: "Missing info: maximum number of {{ATTENDEE_TYPE}}",
     minAttendanceBiggerThanMax:
       "Missing info: minimum number of {{ATTENDEE_TYPE}} is larger than maximum number",
+    lotteryItemNotStartingOnEvenHour:
+      "Invalid start time: program items using lottery sign-up must start on the hour",
     showAttendees: "Show {{ATTENDEE_TYPE}}",
     hideAttendees: "Hide {{ATTENDEE_TYPE}}",
     noAttendees: "No {{ATTENDEE_TYPE}}",

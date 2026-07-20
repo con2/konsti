@@ -345,6 +345,8 @@ export const translationFI = {
     maxAttendanceMissing: "Puuttuva tieto: maksimimäärä {{ATTENDEE_TYPE}}",
     minAttendanceBiggerThanMax:
       "Puuttuva tieto: minimimäärä {{ATTENDEE_TYPE}} on suurempi kuin maksimimäärä",
+    lotteryItemNotStartingOnEvenHour:
+      "Virheellinen alkamisaika: arvontaa käyttävän ohjelman on alettava tasatunnilta",
     showAttendees: "Näytä {{ATTENDEE_TYPE}}",
     hideAttendees: "Piilota {{ATTENDEE_TYPE}}",
     noAttendees: "Ei {{ATTENDEE_TYPE}}",
