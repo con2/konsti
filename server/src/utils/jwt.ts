@@ -5,6 +5,7 @@ import { config } from "shared/config";
 import { JWTBody, JWTBodySchema, JWTResponse } from "server/types/jwtTypes";
 import { UserGroup } from "shared/types/models/user";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
+import { logger } from "server/utils/logger";
 
 export const getJWT = (userGroup: UserGroup, username: string): string => {
   const payload = {
@@ -22,14 +23,26 @@ export const getJWT = (userGroup: UserGroup, username: string): string => {
 export const verifyJWT = (jwt: string, userGroup: UserGroup): JWTResponse => {
   try {
     const jwtBody = jsonwebtoken.verify(jwt, getSecret(userGroup));
-    const result = JWTBodySchema.parse(jwtBody);
+    const result = JWTBodySchema.safeParse(jwtBody);
+    if (!result.success) {
+      // A valid signature with an invalid body means we created a bad JWT -
+      // log it, unlike tampered tokens which are just noise
+      logger.error(
+        new Error("Error validating JWT body", { cause: result.error }),
+      );
+      return {
+        status: "error",
+        message: "Unknown JWT error",
+        body: { username: "", userGroup: UserGroup.USER, iat: 0, exp: 0 },
+      };
+    }
 
     return {
       body: {
-        username: result.username,
-        userGroup: result.userGroup,
-        iat: result.iat,
-        exp: result.exp,
+        username: result.data.username,
+        userGroup: result.data.userGroup,
+        iat: result.data.iat,
+        exp: result.data.exp,
       },
       status: "success",
       message: "success",
@@ -38,20 +51,20 @@ export const verifyJWT = (jwt: string, userGroup: UserGroup): JWTResponse => {
     if (error instanceof TokenExpiredError) {
       return {
         status: "error",
-        message: "expired jwt",
+        message: "Expired JWT",
         body: { username: "", userGroup: UserGroup.USER, iat: 0, exp: 0 },
       };
     }
 
     return {
       status: "error",
-      message: "unknown jwt error",
+      message: "Unknown JWT error",
       body: { username: "", userGroup: UserGroup.USER, iat: 0, exp: 0 },
     };
   }
 };
 
-// Be careful: this does not verify jwt signature
+// Be careful: this does not verify JWT signature
 export const decodeJWT = (jwt: string): JWTBody | null => {
   const decodedJwt = jsonwebtoken.decode(jwt);
   const result = JWTBodySchema.safeParse(decodedJwt);

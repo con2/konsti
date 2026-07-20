@@ -1,4 +1,5 @@
 import { merge } from "remeda";
+import { captureException } from "@sentry/react";
 import { z } from "zod";
 import { LocalStorageState } from "client/types/reduxTypes";
 import { ProgramType } from "shared/types/models/programItem";
@@ -41,6 +42,19 @@ export const loadSession = (): LocalStorage | undefined => {
 
   const result = SessionSchema.safeParse(parseJsonResult.data);
   if (!result.success) {
+    // Clearing the session logs the user out, so make the reason visible: a
+    // widespread parse failure would mean a persisted-shape change mid-event
+    captureException(
+      new Error("Invalid localStorage session, clearing session"),
+      {
+        extra: { zodError: result.error.message },
+      },
+    );
+    // eslint-disable-next-line no-console
+    console.error(
+      "Invalid localStorage session, clearing session:",
+      result.error,
+    );
     clearSession();
     return undefined;
   }
