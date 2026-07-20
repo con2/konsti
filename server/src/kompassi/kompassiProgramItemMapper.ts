@@ -28,8 +28,6 @@ import {
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import { config } from "shared/config";
 import { getShortDescriptionFromDescription } from "server/utils/getShortDescriptionFromDescription";
-import { mapKonstiProgramTypesToKompassiProgramTypes } from "server/kompassi/getProgramItemsFromKompassi";
-import { logger } from "server/utils/logger";
 
 const { customDetailsProgramItems } = config.event();
 
@@ -78,7 +76,7 @@ export const kompassiProgramItemMapper = (
         otherAccessibilityInformation:
           programItem.cachedAnnotations["ropecon:accessibilityOther"],
         entryFee: programItem.cachedAnnotations["konsti:workshopFee"],
-        signupType: mapSignupType(programItem, scheduleItem),
+        signupType: mapSignupType(programItem),
         state: mapState(programItem, scheduleItem),
       };
     });
@@ -354,7 +352,6 @@ const mapShortDescription = (
 
 const mapSignupType = (
   kompassiProgramItem: KompassiProgramItem,
-  scheduleItem: KompassiScheduleItem,
 ): SignupType => {
   const registration = first(kompassiProgramItem.cachedDimensions.registration);
 
@@ -364,25 +361,6 @@ const mapSignupType = (
 
   if (!registration) {
     return config.event().defaultSignupType;
-  }
-
-  const usesKonstiRegisration = registration === KompassiRegistration.KONSTI;
-  const programType = kompassiProgramItem.cachedDimensions.konsti[0];
-  const evenHourProgramTypes = mapKonstiProgramTypesToKompassiProgramTypes(
-    config.event().twoPhaseSignupProgramTypes,
-  );
-
-  // If program item using lottery doesn't start at event hour, disable Konsti signup
-  // Pre-convention week items use direct signup, not lottery, so the even-hour check doesn't apply
-  if (
-    usesKonstiRegisration &&
-    evenHourProgramTypes.includes(programType) &&
-    !isPreConventionWeek(kompassiProgramItem)
-  ) {
-    const startsAtEvenHour = getStartsAtEvenHour(scheduleItem);
-    if (!startsAtEvenHour) {
-      return SignupType.OTHER;
-    }
   }
 
   switch (registration) {
@@ -401,18 +379,6 @@ const mapSignupType = (
     default:
       return exhaustiveSwitchGuard(registration);
   }
-};
-
-const getStartsAtEvenHour = (scheduleItem: KompassiScheduleItem): boolean => {
-  const startMinute = dayjs(scheduleItem.startTime).minute();
-  if (startMinute !== 0) {
-    logger.info(
-      `Lottery program item "${scheduleItem.slug}" doesn't start at even hour, disable Konsti signup`,
-    );
-    return false;
-  }
-
-  return true;
 };
 
 const mapState = (

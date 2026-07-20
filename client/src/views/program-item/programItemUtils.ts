@@ -1,4 +1,4 @@
-import { Dayjs } from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
 import { TFunction } from "i18next";
 import { ProgramItem, SignupType, Tag } from "shared/types/models/programItem";
 import { DirectSignup, LotterySignup } from "shared/types/models/user";
@@ -9,12 +9,14 @@ import {
 } from "shared/utils/timeFormatter";
 import { config } from "shared/config";
 import { getProgramItemStartTime } from "shared/utils/signupTimes";
+import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
 
 interface ProgramItemValidity {
   isValidMinAttendanceValue: boolean;
   isValidMaxAttendanceValue: boolean;
   minAttendanceBiggerThanMax: boolean;
   signupTypeMissing: boolean;
+  lotteryItemNotStartingOnEvenHour: boolean;
   allValuesValid: boolean;
 }
 
@@ -39,17 +41,27 @@ export const getProgramItemValidity = (
 
   const signupTypeMissing = programItem.signupType === SignupType.MISSING;
 
+  // Lottery batches signups by start time, so lottery items must start at an
+  // even hour. Checked against the parent-resolved start time: a parent
+  // override to an even hour makes the item valid
+  const lotteryItemNotStartingOnEvenHour =
+    usesKonstiSignup &&
+    isLotterySignupProgramItem(programItem) &&
+    dayjs(getProgramItemStartTime(programItem)).minute() !== 0;
+
   const allValuesValid =
     isValidMinAttendanceValue &&
     isValidMaxAttendanceValue &&
     !minAttendanceBiggerThanMax &&
-    !signupTypeMissing;
+    !signupTypeMissing &&
+    !lotteryItemNotStartingOnEvenHour;
 
   return {
     isValidMinAttendanceValue,
     isValidMaxAttendanceValue,
     minAttendanceBiggerThanMax,
     signupTypeMissing,
+    lotteryItemNotStartingOnEvenHour,
     allValuesValid,
   };
 };

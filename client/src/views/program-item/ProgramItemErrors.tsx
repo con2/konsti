@@ -10,6 +10,7 @@ interface Props {
   isValidMaxAttendanceValue: boolean;
   minAttendanceBiggerThanMax: boolean;
   signupTypeMissing: boolean;
+  lotteryItemNotStartingOnEvenHour: boolean;
   programType: ProgramType;
 }
 
@@ -18,6 +19,7 @@ export const ProgramItemErrors = ({
   isValidMaxAttendanceValue,
   minAttendanceBiggerThanMax,
   signupTypeMissing,
+  lotteryItemNotStartingOnEvenHour,
   programType,
 }: Props): ReactElement => {
   const { t } = useTranslation();
@@ -56,6 +58,10 @@ export const ProgramItemErrors = ({
 
       {signupTypeMissing && (
         <ErrorMessage message={t("signup.signupType.missing")} />
+      )}
+
+      {lotteryItemNotStartingOnEvenHour && (
+        <ErrorMessage message={t("signup.lotteryItemNotStartingOnEvenHour")} />
       )}
     </ErrorsList>
   );
