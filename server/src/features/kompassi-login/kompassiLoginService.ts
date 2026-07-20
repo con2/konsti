@@ -74,7 +74,8 @@ const getKompassiTokens = async (
     if (!result.success) {
       logger.error(
         new Error(
-          `Error validating getKompassiTokens response: status ${response.status}, body ${JSON.stringify(redactTokenValues(responseData))}, error ${JSON.stringify(result.error)}`,
+          `Error validating getKompassiTokens response: status ${response.status}, body ${JSON.stringify(redactTokenValues(responseData))}`,
+          { cause: result.error },
         ),
       );
       return makeErrorResult(KompassiLoginError.UNKNOWN_ERROR);
@@ -104,7 +105,8 @@ const getKompassiProfile = async (
       // Don't log the body here - a partially valid profile would contain PII
       logger.error(
         new Error(
-          `Error validating getKompassiProfile response: status ${response.status}, error ${JSON.stringify(result.error)}`,
+          `Error validating getKompassiProfile response: status ${response.status}`,
+          { cause: result.error },
         ),
       );
       return makeErrorResult(KompassiLoginError.UNKNOWN_ERROR);

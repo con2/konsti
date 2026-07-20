@@ -50,7 +50,8 @@ export const findDirectSignups = async (): Promise<
       if (!result.success) {
         logger.error(
           new Error(
-            `Error validating findDirectSignups DB value: programItemId: ${signup.programItemId}, ${JSON.stringify(result.error)}`,
+            `Error validating findDirectSignups DB value: programItemId: ${signup.programItemId}`,
+            { cause: result.error },
           ),
         );
         return [];
@@ -93,7 +94,8 @@ export const findDirectSignupsByProgramItemIds = async (
       if (!result.success) {
         logger.error(
           new Error(
-            `Error validating findDirectSignupsByProgramItemIds DB value: programItemId ${response.programItemId}: ${JSON.stringify(result.error)}`,
+            `Error validating findDirectSignupsByProgramItemIds DB value: programItemId ${response.programItemId}`,
+            { cause: result.error },
           ),
         );
         continue;
@@ -140,7 +142,8 @@ export const findDirectSignupsByStartTime = async (
       if (!result.success) {
         logger.error(
           new Error(
-            `Error validating findDirectSignupsByStartTime DB value: programItemId: ${signup.programItemId}, ${JSON.stringify(result.error)}`,
+            `Error validating findDirectSignupsByStartTime DB value: programItemId: ${signup.programItemId}`,
+            { cause: result.error },
           ),
         );
         return [];
@@ -182,7 +185,8 @@ export const findUserDirectSignups = async (
       if (!result.success) {
         logger.error(
           new Error(
-            `Error validating findUserDirectSignups DB value: programItemId: ${signup.programItemId}, ${JSON.stringify(result.error)}`,
+            `Error validating findUserDirectSignups DB value: programItemId: ${signup.programItemId}`,
+            { cause: result.error },
           ),
         );
         return [];
@@ -271,9 +275,9 @@ export const saveDirectSignup = async (
     const result = DirectSignupSchemaDb.safeParse(response);
     if (!result.success) {
       logger.error(
-        new Error(
-          `Error validating saveDirectSignup DB value: ${JSON.stringify(result.error)}`,
-        ),
+        new Error(`Error validating saveDirectSignup DB value`, {
+          cause: result.error,
+        }),
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
@@ -431,9 +435,9 @@ export const delDirectSignup = async ({
     const result = DirectSignupSchemaDb.safeParse(signup);
     if (!result.success) {
       logger.error(
-        new Error(
-          `Error validating delDirectSignup DB value: ${JSON.stringify(result.error)}`,
-        ),
+        new Error(`Error validating delDirectSignup DB value`, {
+          cause: result.error,
+        }),
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }

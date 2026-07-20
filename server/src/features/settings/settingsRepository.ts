@@ -37,9 +37,9 @@ export const createSettings = async (): Promise<
     const result = SettingsSchemaDb.safeParse(settings.toObject());
     if (!result.success) {
       logger.error(
-        new Error(
-          `Error validating createSettings DB value: ${JSON.stringify(result.error)}`,
-        ),
+        new Error(`Error validating createSettings DB value`, {
+          cause: result.error,
+        }),
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
@@ -74,9 +74,9 @@ export const findSettings = async (): Promise<
     const result = SettingsSchemaDb.safeParse(settings);
     if (!result.success) {
       logger.error(
-        new Error(
-          `Error validating findSettings DB value: ${JSON.stringify(result.error)}`,
-        ),
+        new Error(`Error validating findSettings DB value`, {
+          cause: result.error,
+        }),
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
@@ -110,9 +110,9 @@ export const saveHidden = async (
     const result = SettingsSchemaDb.safeParse(settings);
     if (!result.success) {
       logger.error(
-        new Error(
-          `Error validating saveHidden DB value: ${JSON.stringify(result.error)}`,
-        ),
+        new Error(`Error validating saveHidden DB value`, {
+          cause: result.error,
+        }),
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
@@ -155,9 +155,9 @@ export const saveSignupQuestion = async (
     const result = SettingsSchemaDb.safeParse(settings);
     if (!result.success) {
       logger.error(
-        new Error(
-          `Error validating saveSignupQuestion DB value: ${JSON.stringify(result.error)}`,
-        ),
+        new Error(`Error validating saveSignupQuestion DB value`, {
+          cause: result.error,
+        }),
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
@@ -195,9 +195,9 @@ export const delSignupQuestion = async (
     const result = SettingsSchemaDb.safeParse(settings);
     if (!result.success) {
       logger.error(
-        new Error(
-          `Error validating delSignupQuestion DB value: ${JSON.stringify(result.error)}`,
-        ),
+        new Error(`Error validating delSignupQuestion DB value`, {
+          cause: result.error,
+        }),
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
@@ -226,9 +226,9 @@ export const saveSettings = async (
     const result = SettingsSchemaDb.safeParse(updatedSettings);
     if (!result.success) {
       logger.error(
-        new Error(
-          `Error validating saveSettings DB value: ${JSON.stringify(result.error)}`,
-        ),
+        new Error(`Error validating saveSettings DB value`, {
+          cause: result.error,
+        }),
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
@@ -388,9 +388,9 @@ export const getLatestServerStartTime = async (): Promise<
     const result = SettingsSchemaDb.safeParse(response);
     if (!result.success) {
       logger.error(
-        new Error(
-          `Error validating getLatestServerStartTime DB value: ${JSON.stringify(result.error)}`,
-        ),
+        new Error(`Error validating getLatestServerStartTime DB value`, {
+          cause: result.error,
+        }),
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }

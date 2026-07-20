@@ -22,10 +22,9 @@ export const getKompassiLoginMockRedirect = (
   const result = KompassiLoginResponseSchema.safeParse(req.query);
   if (!result.success) {
     // eslint-disable-next-line no-restricted-syntax -- We want to throw if test fails
-    throw new Error(
-      "Invalid Kompassi login mock service response data",
-      result.error,
-    );
+    throw new Error("Invalid Kompassi login mock service response data", {
+      cause: result.error,
+    });
   }
 
   const redirectUri = result.data.redirect_uri;
@@ -49,10 +48,9 @@ export const getKompassiLoginMockToken = (
   const result = KompassiLoginTokenSchema.safeParse(req.body);
   if (!result.success) {
     // eslint-disable-next-line no-restricted-syntax -- We want to throw if test fails
-    throw new Error(
-      "Invalid Kompassi login mock service token response data",
-      result.error,
-    );
+    throw new Error("Invalid Kompassi login mock service token response data", {
+      cause: result.error,
+    });
   }
 
   const response: KompassiTokens = {
@@ -106,7 +104,7 @@ export const getKompassiLoginMockLogout = (
     // eslint-disable-next-line no-restricted-syntax -- We want to throw if test fails
     throw new Error(
       "Invalid Kompassi login mock service logout response data",
-      result.error,
+      { cause: result.error },
     );
   }
 

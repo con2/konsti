@@ -31,9 +31,9 @@ export const saveLotterySignups = async (
     const result = UserSchemaDb.safeParse(response);
     if (!result.success) {
       logger.error(
-        new Error(
-          `Error validating saveLotterySignups DB value: ${JSON.stringify(result.error)}`,
-        ),
+        new Error(`Error validating saveLotterySignups DB value`, {
+          cause: result.error,
+        }),
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
@@ -87,9 +87,9 @@ export const saveLotterySignup = async ({
     const result = UserSchemaDb.safeParse(response);
     if (!result.success) {
       logger.error(
-        new Error(
-          `Error validating saveLotterySignup DB value: ${JSON.stringify(result.error)}`,
-        ),
+        new Error(`Error validating saveLotterySignup DB value`, {
+          cause: result.error,
+        }),
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }

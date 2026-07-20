@@ -26,7 +26,8 @@ export const findGroupMembers = async (
       if (!result.success) {
         logger.error(
           new Error(
-            `Error validating findGroupMembers DB value: username: ${user.username}, ${JSON.stringify(result.error)}`,
+            `Error validating findGroupMembers DB value: username: ${user.username}`,
+            { cause: result.error },
           ),
         );
         return [];
@@ -86,9 +87,9 @@ export const saveGroupCreator = async (
     const result = UserSchemaDb.safeParse(response);
     if (!result.success) {
       logger.error(
-        new Error(
-          `Error validating saveGroupCreator DB value: ${JSON.stringify(result.error)}`,
-        ),
+        new Error(`Error validating saveGroupCreator DB value`, {
+          cause: result.error,
+        }),
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
@@ -128,9 +129,9 @@ export const saveGroupCode = async (
     const result = UserSchemaDb.safeParse(response);
     if (!result.success) {
       logger.error(
-        new Error(
-          `Error validating saveGroupCode DB value: ${JSON.stringify(result.error)}`,
-        ),
+        new Error(`Error validating saveGroupCode DB value`, {
+          cause: result.error,
+        }),
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }

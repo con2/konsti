@@ -8,9 +8,9 @@ export const validateBody =
     const result = schema.safeParse(req.body);
     if (!result.success) {
       logger.error(
-        new Error(
-          `Error validating ${req.method} ${req.path} body: ${JSON.stringify(result.error)}`,
-        ),
+        new Error(`Error validating ${req.method} ${req.path} body`, {
+          cause: result.error,
+        }),
       );
       res.sendStatus(422);
       return;
@@ -25,9 +25,9 @@ export const validateQuery =
     const result = schema.safeParse(req.query);
     if (!result.success) {
       logger.error(
-        new Error(
-          `Error validating ${req.method} ${req.path} query: ${JSON.stringify(result.error)}`,
-        ),
+        new Error(`Error validating ${req.method} ${req.path} query`, {
+          cause: result.error,
+        }),
       );
       res.sendStatus(422);
       return;

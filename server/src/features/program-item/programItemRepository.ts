@@ -184,7 +184,8 @@ export const findProgramItems = async (): Promise<
       if (!result.success) {
         logger.error(
           new Error(
-            `Error validating findProgramItems DB value: programItemId: ${programItem.programItemId}, ${JSON.stringify(result.error)}`,
+            `Error validating findProgramItems DB value: programItemId: ${programItem.programItemId}`,
+            { cause: result.error },
           ),
         );
         return [];
@@ -216,9 +217,9 @@ export const findProgramItemById = async (
     const result = ProgramItemSchemaDb.safeParse(response);
     if (!result.success) {
       logger.error(
-        new Error(
-          `Error validating findProgramItemById DB value: ${JSON.stringify(result.error)}`,
-        ),
+        new Error(`Error validating findProgramItemById DB value`, {
+          cause: result.error,
+        }),
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }

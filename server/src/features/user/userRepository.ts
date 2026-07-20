@@ -51,9 +51,9 @@ export const saveUser = async (
     const result = UserSchemaDb.safeParse(response.toObject());
     if (!result.success) {
       logger.error(
-        new Error(
-          `Error validating saveUser DB value: ${JSON.stringify(result.error)}`,
-        ),
+        new Error(`Error validating saveUser DB value`, {
+          cause: result.error,
+        }),
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
@@ -123,9 +123,9 @@ export const updateUserPassword = async (
     const result = UserSchemaDb.safeParse(response);
     if (!result.success) {
       logger.error(
-        new Error(
-          `Error validating updateUserPassword DB value: ${JSON.stringify(result.error)}`,
-        ),
+        new Error(`Error validating updateUserPassword DB value`, {
+          cause: result.error,
+        }),
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
@@ -154,9 +154,9 @@ export const findUser = async (
     const result = UserSchemaDb.safeParse(response);
     if (!result.success) {
       logger.error(
-        new Error(
-          `Error validating findUser DB value: ${JSON.stringify(result.error)}`,
-        ),
+        new Error(`Error validating findUser DB value`, {
+          cause: result.error,
+        }),
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
@@ -186,9 +186,9 @@ export const findUserBySerial = async (
     const result = UserSchemaDb.safeParse(response);
     if (!result.success) {
       logger.error(
-        new Error(
-          `Error validating findUserBySerial DB value: ${JSON.stringify(result.error)}`,
-        ),
+        new Error(`Error validating findUserBySerial DB value`, {
+          cause: result.error,
+        }),
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
@@ -219,9 +219,9 @@ export const findUserByKompassiId = async (
     const result = UserSchemaDb.safeParse(response);
     if (!result.success) {
       logger.error(
-        new Error(
-          `Error validating findUserByKompassiId DB value: ${JSON.stringify(result.error)}`,
-        ),
+        new Error(`Error validating findUserByKompassiId DB value`, {
+          cause: result.error,
+        }),
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
@@ -254,9 +254,9 @@ export const findUserSerial = async (
     const result = UserSchemaDb.safeParse(response);
     if (!result.success) {
       logger.error(
-        new Error(
-          `Error validating findUserSerial DB value: ${JSON.stringify(result.error)}`,
-        ),
+        new Error(`Error validating findUserSerial DB value`, {
+          cause: result.error,
+        }),
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
@@ -284,7 +284,8 @@ export const findUsers = async (
       if (!result.success) {
         logger.error(
           new Error(
-            `Error validating findUsers DB value: username: ${user.username}, ${JSON.stringify(result.error)}`,
+            `Error validating findUsers DB value: username: ${user.username}`,
+            { cause: result.error },
           ),
         );
         return [];
@@ -325,9 +326,9 @@ export const updateUserKompassiLoginStatus = async (
     const result = UserSchemaDb.safeParse(response);
     if (!result.success) {
       logger.error(
-        new Error(
-          `Error validating updateUserKompassiLoginStatus DB value: ${JSON.stringify(result.error)}`,
-        ),
+        new Error(`Error validating updateUserKompassiLoginStatus DB value`, {
+          cause: result.error,
+        }),
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
@@ -369,9 +370,9 @@ export const updateUserEmailAddress = async (
     const result = UserSchemaDb.safeParse(response);
     if (!result.success) {
       logger.error(
-        new Error(
-          `Error validating updateUserEmailAddress DB value: ${JSON.stringify(result.error)}`,
-        ),
+        new Error(`Error validating updateUserEmailAddress DB value`, {
+          cause: result.error,
+        }),
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }

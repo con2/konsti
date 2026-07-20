@@ -226,7 +226,8 @@ export const getProgramFromServer = async (): Promise<
     if (!result.success) {
       logger.error(
         new Error(
-          `Error downloading program items from Kompassi: Invalid return value format. ${result.error}`,
+          "Error downloading program items from Kompassi: Invalid return value format",
+          { cause: result.error },
         ),
       );
       return makeErrorResult(KompassiError.UNKNOWN_ERROR);

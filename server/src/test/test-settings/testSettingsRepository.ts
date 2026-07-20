@@ -40,9 +40,9 @@ const createTestSettings = async (): Promise<
     const result = TestSettingsSchemaDb.safeParse(testSettings.toObject());
     if (!result.success) {
       logger.error(
-        new Error(
-          `Error validating createTestSettings DB value: ${JSON.stringify(result.error)}`,
-        ),
+        new Error(`Error validating createTestSettings DB value`, {
+          cause: result.error,
+        }),
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
@@ -73,9 +73,9 @@ export const findTestSettings = async (): Promise<
     const result = TestSettingsSchemaDb.safeParse(testSettings);
     if (!result.success) {
       logger.error(
-        new Error(
-          `Error validating findTestSettings DB value: ${JSON.stringify(result.error)}`,
-        ),
+        new Error(`Error validating findTestSettings DB value`, {
+          cause: result.error,
+        }),
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
@@ -106,9 +106,9 @@ export const saveTestSettings = async (
     const result = TestSettingsSchemaDb.safeParse(updatedTestSettings);
     if (!result.success) {
       logger.error(
-        new Error(
-          `Error validating saveTestSettings DB value: ${JSON.stringify(result.error)}`,
-        ),
+        new Error(`Error validating saveTestSettings DB value`, {
+          cause: result.error,
+        }),
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
