@@ -21,6 +21,10 @@ export class ProgramItemCard {
     return this.root.getByTestId("program-item-cancelled");
   }
 
+  get errorMessages(): Locator {
+    return this.root.getByTestId("program-item-errors");
+  }
+
   get admissionTicketLink(): Locator {
     return this.root.getByRole("button", { name: "Show admission ticket" });
   }

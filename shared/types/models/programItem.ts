@@ -97,6 +97,7 @@ export enum SignupType {
   EXPERIENCE_POINT = "experiencePoint",
   ROPE_LARP_DESK = "ropelarp",
   GAMEPOINT = "gamepoint",
+  MISSING = "missing",
 }
 
 export enum Popularity {

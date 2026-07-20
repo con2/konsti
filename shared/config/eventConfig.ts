@@ -180,7 +180,7 @@ export const eventConfig: EventConfig = {
   startTimesByParentIds: new Map(),
 
   // What signup type is set if signup type is missing
-  defaultSignupType: SignupType.OTHER,
+  defaultSignupType: SignupType.MISSING,
 
   // Default DB values
   defaultSignupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,

@@ -383,6 +383,7 @@ export const translationFI = {
         "Tähän {{PROGRAM_TYPE}} ei ilmoittauduta Konstissa. Ilmoittautuminen ropelarp-tiskillä.",
       gamepoint:
         "Tähän {{PROGRAM_TYPE}} ei ilmoittauduta Konstissa. Ilmoittautuminen pelitiskillä.",
+      missing: "Puuttuva tieto: ilmoittautumistapa",
     },
     cancelled: "Tämä {{PROGRAM_TYPE}} on peruttu.",
     cancelledTitleText: "PERUTTU",

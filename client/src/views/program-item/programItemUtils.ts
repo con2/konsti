@@ -14,6 +14,7 @@ interface ProgramItemValidity {
   isValidMinAttendanceValue: boolean;
   isValidMaxAttendanceValue: boolean;
   minAttendanceBiggerThanMax: boolean;
+  signupTypeMissing: boolean;
   allValuesValid: boolean;
 }
 
@@ -36,15 +37,19 @@ export const getProgramItemValidity = (
     programItem.minAttendance > programItem.maxAttendance &&
     programItem.maxAttendance > 0;
 
+  const signupTypeMissing = programItem.signupType === SignupType.MISSING;
+
   const allValuesValid =
     isValidMinAttendanceValue &&
     isValidMaxAttendanceValue &&
-    !minAttendanceBiggerThanMax;
+    !minAttendanceBiggerThanMax &&
+    !signupTypeMissing;
 
   return {
     isValidMinAttendanceValue,
     isValidMaxAttendanceValue,
     minAttendanceBiggerThanMax,
+    signupTypeMissing,
     allValuesValid,
   };
 };
