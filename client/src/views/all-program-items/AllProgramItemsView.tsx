@@ -33,7 +33,7 @@ import {
 import { SearchAndFilterCard } from "client/views/all-program-items/components/SearchAndFilterCard";
 import { getProgramTypeSelectOptions } from "client/utils/getProgramTypeSelectOptions";
 import { ScrollToTopButton } from "client/components/ScrollToTopButton";
-import { getProgramItemValidity } from "client/views/program-item/programItemUtils";
+import { getProgramItemValidity } from "shared/utils/getProgramItemValidity";
 import {
   StartingTimeOption,
   getVisibleProgramItems,

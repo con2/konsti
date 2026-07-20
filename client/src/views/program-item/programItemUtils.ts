@@ -1,6 +1,6 @@
-import dayjs, { Dayjs } from "dayjs";
+import { Dayjs } from "dayjs";
 import { TFunction } from "i18next";
-import { ProgramItem, SignupType, Tag } from "shared/types/models/programItem";
+import { ProgramItem, Tag } from "shared/types/models/programItem";
 import { DirectSignup, LotterySignup } from "shared/types/models/user";
 import {
   getDateAndTime,
@@ -9,62 +9,6 @@ import {
 } from "shared/utils/timeFormatter";
 import { config } from "shared/config";
 import { getProgramItemStartTime } from "shared/utils/signupTimes";
-import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
-
-interface ProgramItemValidity {
-  isValidMinAttendanceValue: boolean;
-  isValidMaxAttendanceValue: boolean;
-  minAttendanceBiggerThanMax: boolean;
-  signupTypeMissing: boolean;
-  lotteryItemNotStartingOnEvenHour: boolean;
-  allValuesValid: boolean;
-}
-
-// Check if a program item is missing required info, like attendance limits
-export const getProgramItemValidity = (
-  programItem: ProgramItem,
-): ProgramItemValidity => {
-  const { noKonstiSignupIds } = config.event();
-
-  const usesKonstiSignup =
-    programItem.signupType === SignupType.KONSTI &&
-    !noKonstiSignupIds.includes(programItem.programItemId);
-
-  const isValidMinAttendanceValue = programItem.minAttendance > 0;
-
-  const isValidMaxAttendanceValue =
-    !usesKonstiSignup || programItem.maxAttendance > 0;
-
-  const minAttendanceBiggerThanMax =
-    programItem.minAttendance > programItem.maxAttendance &&
-    programItem.maxAttendance > 0;
-
-  const signupTypeMissing = programItem.signupType === SignupType.MISSING;
-
-  // Lottery batches signups by start time, so lottery items must start at an
-  // even hour. Checked against the parent-resolved start time: a parent
-  // override to an even hour makes the item valid
-  const lotteryItemNotStartingOnEvenHour =
-    usesKonstiSignup &&
-    isLotterySignupProgramItem(programItem) &&
-    dayjs(getProgramItemStartTime(programItem)).minute() !== 0;
-
-  const allValuesValid =
-    isValidMinAttendanceValue &&
-    isValidMaxAttendanceValue &&
-    !minAttendanceBiggerThanMax &&
-    !signupTypeMissing &&
-    !lotteryItemNotStartingOnEvenHour;
-
-  return {
-    isValidMinAttendanceValue,
-    isValidMaxAttendanceValue,
-    minAttendanceBiggerThanMax,
-    signupTypeMissing,
-    lotteryItemNotStartingOnEvenHour,
-    allValuesValid,
-  };
-};
 
 export const isAlreadyLotterySigned = (
   programItemToCheck: ProgramItem,

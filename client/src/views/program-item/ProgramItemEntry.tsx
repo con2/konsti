@@ -12,10 +12,10 @@ import {
 import { UserGroup } from "shared/types/models/user";
 import { RaisedCard } from "client/components/RaisedCard";
 import {
-  getProgramItemValidity,
   isAlreadyDirectySigned,
   isAlreadyLotterySigned,
 } from "client/views/program-item/programItemUtils";
+import { getProgramItemValidity } from "shared/utils/getProgramItemValidity";
 import { config } from "shared/config";
 import { getProgramTypeSelectOptions } from "client/utils/getProgramTypeSelectOptions";
 import { ProgramItemBody } from "client/views/program-item/body/ProgramItemBody";

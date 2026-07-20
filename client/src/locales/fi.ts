@@ -196,6 +196,8 @@ export const translationFI = {
     programItemHidden: "Tähän ohjelmanumeroon ei voi enää ilmoittautua.",
     groupMember:
       "Ryhmän jäsenet eivät voi ilmoittautua, ryhmän perustaja ilmoittautuu koko ryhmän puolesta",
+    invalidProgramItem:
+      "Ohjelmanumerosta puuttuu vaadittuja tietoja, eikä siihen voi ilmoittautua.",
   },
   closingMessage:
     "Konsti on suljettu ja avautuu lähempänä seuraavaa tapahtumaa.",

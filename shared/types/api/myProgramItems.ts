@@ -29,7 +29,8 @@ export interface PostLotterySignupError extends ApiError {
     | "cancelled"
     | "noKonstiSignup"
     | "groupMember"
-    | "hidden";
+    | "hidden"
+    | "invalidProgramItem";
 }
 
 export type PostLotterySignupResponse =
@@ -86,7 +87,8 @@ export interface PostDirectSignupError extends ApiError {
     | "signupNotOpenYet"
     | "noKonstiSignup"
     | "cancelled"
-    | "hidden";
+    | "hidden"
+    | "invalidProgramItem";
 }
 
 export type PostDirectSignupResponse =
