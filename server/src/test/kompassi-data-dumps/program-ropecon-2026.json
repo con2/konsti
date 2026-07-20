@@ -495,6 +495,48 @@
     ]
   },
   {
+    "slug": "atarashii-naginata-lajinaytos-ja-kokeiluharjoitukset",
+    "title": "Atarashii Naginata: lajinäytös ja kokeiluharjoitukset",
+    "description": "Mikä ihme on naginata? Kuinka sitä käytetään ja missä naginataa voi harjoitella?\r\n\r\nTule katsomaan lyhyt esitys naginatasta ja sen käytöstä, jonka jälkeen pääset kokeilemaan aseenkäyttöä ja oppimaan muutaman peruslyönnin sekä torjunnan.\r\n\r\nAtarashii naginata eli \"uusi\" naginata on toisen maailmansodan jälkeen kouluja varten kehitetty budo-laji. Kamppailulajissa harjoitellaan ja kilpaillaan naginatalla eli japanilaisella peitsellä. Naginataan kuluu täyskontakti ottelua suojavarustein sekä muodollisia liikesarjaharjoituksia.\r\n\r\nAlun perin naginata oli jalkaväen ase, jota käytettiin etenkin ratsuväkeä vastaan. Myöhemmin naginatasta tuli suosittu ase samuraiden vaimojen keskuudessa, sillä aseen pituus antoi ylilyöntiaseman miekkaa käyttäviä vastustajia vastaan. Toisen maailmansodan jälkeen useasta eri naginatan perinteestä luotiin yhtenäinen kamppailulaji kendon rinnalle, jonka myötä lajiin tuli täyskontaktiottelu aseen kanssa liikesarjaharjoitusten lisäksi.\r\n\r\nNaginatan pituus on hieman yli kaksi metriä, pituus on nuorempien osalla rajoittavat tekijä harjoituksiin osallistumisessa. Yleensä 15-vuotiaat ja siitä vanhemmat ovat tarpeeksi pitkiä ja voivat ilman ongelmia osallistua harjoituksiin.\r\n\r\nKokeiluosioon ilmoittaudutaan Konstin kautta. Ilmoittautuminen Konstissa sunnuntaina klo 8 alkaen. Esittelyä voi tulla seuraamaan ilman ilmoittautumista.\r\n\r\n--\r\n\r\nWhat on earth is a naginata? How does one use it and where can one practice naginata?\r\n\r\nCome and see a short presentation on what is naginata and how it's used. After the show you can try out how to use a naginata and learn some basic attack- and blocking techniques.\r\n\r\nAtarashii naginata aka \"new\" naginata is budo-martial art that was developed for school sports curriculum after the second world war. In the martial art practitioners use a Japanese halberd, naginata, in full contact battles with protective gear and also in specific movement sequences called kata.\r\n\r\nOriginally naginata was a weapon that foot-soldiers used against cavalry. Later on naginata became a popular weapon used mainly by the wives of samurai because its length gave a significant advantage against those who wielded a sword.\r\n\r\nNaginata as a weapon is a bit over 2 meters long. Due to the weapons length the main limiting factor is usually persons height. Generally those who are 15 years or older can easily take part in training.\r\n\r\nSign up for the practice part through Konsti, starting Sunday at 08:00. No sign-up is needed for the presentation.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-07-26"],
+      "form": ["offer-other-program"],
+      "room": ["halli5taistelu-jatoimintasali"],
+      "type": ["other"],
+      "state": ["accepted"],
+      "konsti": ["other"],
+      "grouping": ["beginners"],
+      "language": ["fi"],
+      "age-group": ["adultsnyouth"],
+      "scheduled": ["one", "one-or-more"],
+      "inclusivity": ["lots-of-movement", "loud-sounds", "physical-contact"],
+      "registration": ["konsti"]
+    },
+    "cachedAnnotations": {
+      "konsti:minAttendance": 4,
+      "konsti:maxAttendance": 10,
+      "ropecon:contentWarnings": "Lajinäytöksessä kuuluu kovia ääniä ja saattaa näkyä iskuja suojavarusteisiin, joita ei torjuta."
+    },
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "atarashii-naginata-lajinaytos-ja-kokeiluharjoitukset-1",
+        "title": "Atarashii Naginata: lajinäytös ja kokeiluharjoitukset",
+        "startTime": "2026-07-26T11:00:00+03:00",
+        "endTime": "2026-07-26T12:45:00+03:00",
+        "lengthMinutes": 105,
+        "location": "Hall 5 Battle- and action hall",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:minAttendance": 4,
+          "konsti:maxAttendance": 10,
+          "ropecon:contentWarnings": "Lajinäytöksessä kuuluu kovia ääniä ja saattaa näkyä iskuja suojavarusteisiin, joita ei torjuta."
+        }
+      }
+    ]
+  },
+  {
     "slug": "avoimet-vector-demopelit",
     "title": "Avoimet VECTOR-demopelit",
     "description": "Tule kokemaan Antti Erosen uusi ajoneuvotaisteluihin keskittyvä VECTOR-roolipeli Ropeconissa! Demotiimimme pyörittää nopeilla ja intuitiivisilla freeformia ja figushakkia yhdistelevillä säännöillä 60 minuutin mittaisia Star Wars, Warhammer 40.000 ja Mad Max -skenaarioita.",
@@ -1903,6 +1945,49 @@
         "location": "Room 214",
         "isCancelled": false,
         "cachedAnnotations": { "konsti:maxAttendance": 15 }
+      }
+    ]
+  },
+  {
+    "slug": "crits-n-giggles-stand-up-comedy-open-mic",
+    "title": "Crits n' Giggles: stand up comedy open mic",
+    "description": "Have you ever dreamed of trying stand up comedy? Or do you simply want to enjoy some jokes about your favourite hobbies? Come and join local comedians (and nerds with too much time on their hands) Happeningfish, Steph Clark and their friends for some crits n' giggles! Throw your name into the hat to give it a go yourself if you're feeling brave, or sit back and enjoy the laughs.\r\n\r\nThose who want to participate can sign up in advance for an opportunity to perform a three-minute set alongside seasoned comedians who desperately want to tell you all about their latest Skyrim playthrough/anime obsession/favourite outdated meme. If you have three minutes of jokes that you want to tell, or have a funny three-minute story that you think the world needs to hear, this is your time to shine! There’s no pressure to get up on stage though – everyone is welcome to come along and enjoy the jokes from a safe distance in the audience.\r\n\r\nParticipants are encouraged to engage with safer space guidelines (provided on the door) when watching and performing. Remember, don't punch down unless you're aiming for a kobold! You can be as edgy as a D10 but nobody in the room should feel like they’re the butt of the joke.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-07-25"],
+      "form": ["offer-other-program"],
+      "room": ["sali101d"],
+      "type": ["other"],
+      "state": ["accepted"],
+      "topic": ["boardgames", "cardgames", "larp", "othergames", "rpg"],
+      "konsti": ["other"],
+      "grouping": ["beginners", "dreams"],
+      "language": ["en"],
+      "age-group": ["adults"],
+      "scheduled": ["one", "one-or-more"],
+      "inclusivity": ["no-text-of-recording"],
+      "registration": ["konsti"]
+    },
+    "cachedAnnotations": {
+      "konsti:minAttendance": 0,
+      "konsti:maxAttendance": 8,
+      "ropecon:contentWarnings": "As it's an open mic, we cannot always control what topics people will talk about, but we will request that performers follow safer space guidelines and we can always interrupt performances if content is inappropriate."
+    },
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "crits-n-giggles-stand-up-comedy-open-mic-1",
+        "title": "Crits n' Giggles: stand up comedy open mic",
+        "startTime": "2026-07-25T19:00:00+03:00",
+        "endTime": "2026-07-25T20:45:00+03:00",
+        "lengthMinutes": 105,
+        "location": "Room 101D",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:minAttendance": 0,
+          "konsti:maxAttendance": 8,
+          "ropecon:contentWarnings": "As it's an open mic, we cannot always control what topics people will talk about, but we will request that performers follow safer space guidelines and we can always interrupt performances if content is inappropriate."
+        }
       }
     ]
   },
@@ -3819,7 +3904,7 @@
   {
     "slug": "evaat-runoilijapaidan-kasinompeluun",
     "title": "Eväät runoilijapaidan käsinompeluun",
-    "description": "Haluaisitko ommellan mukavan runoilijapaidan, muttet omista ompelukonetta, tai kiinnostaako käsinompelu muuten vain? Tässä työpajassa opettelemme käsinompelun peruspistot ja -saumat, jotka tarvitset tehdäksesi historiallisen miestenpaidan, joka soveltuu historianelävöitykseen 1500-luvulta 1800-luvulle, hurjalle merirosvolle, romanttiselle vampyyrille tai mukavaksi kesäpaidaksi ihan nykypäivään. Paidan peruskaava, mittojen ottaminen sekä rakenne käydään pikaisesti läpi, mutta työpaja keskittyy kuitenkin ensisijaisesti käsinompelupistojen opetteluun ja harjoitteluun.\r\n\r\nTyöpajan jälkeen osaat hankkia oikeanlaista kangasta, kaavoittaa ja ommella itsellesi pellavaisen paidan, jossa pulahtaa järveen herra Darcyn tapaan.",
+    "description": "Haluaisitko ommellan mukavan runoilijapaidan, muttet omista ompelukonetta, tai kiinnostaako käsinompelu muuten vain? Tässä työpajassa opettelemme käsinompelun peruspistot ja -saumat, jotka tarvitset tehdäksesi historiallisen miestenpaidan, joka soveltuu historianelävöitykseen 1500-luvulta 1800-luvulle, hurjalle merirosvolle, romanttiselle vampyyrille tai mukavaksi kesäpaidaksi ihan nykypäivään. Paidan peruskaava, mittojen ottaminen sekä rakenne käydään pikaisesti läpi, mutta työpaja keskittyy kuitenkin ensisijaisesti käsinompelupistojen opetteluun ja harjoitteluun.\r\n\r\nTyöpajan jälkeen osaat hankkia oikeanlaista kangasta, kaavoittaa ja ommella itsellesi pellavaisen paidan, jossa pulahtaa järveen herra Darcyn tapaan.\r\n\r\nTyöpajatilassa ei ole esitystekniikkaa, vaan osallistujia pyydetään katsomaan ohjeet diginä jaettavista kalvoista. Varaathan kännykän tai muun laitteen mukaasi jos mahdollista",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2026-07-26"],
@@ -4450,8 +4535,8 @@
         "location": "Peace Station Cabinet",
         "isCancelled": false,
         "cachedAnnotations": {
-          "internal:subtitle": "1. pelautus (5 - 8-vuotiaille)",
-          "konsti:maxAttendance": 5
+          "konsti:maxAttendance": 5,
+          "internal:subtitle": "1. pelautus (5 - 8-vuotiaille)"
         }
       },
       {
@@ -4463,8 +4548,8 @@
         "location": "Peace Station Cabinet",
         "isCancelled": false,
         "cachedAnnotations": {
-          "internal:subtitle": "2. pelautus (5 - 8-vuotiaille)",
-          "konsti:maxAttendance": 5
+          "konsti:maxAttendance": 5,
+          "internal:subtitle": "2. pelautus (5 - 8-vuotiaille)"
         }
       },
       {
@@ -4476,8 +4561,8 @@
         "location": "Peace Station Cabinet",
         "isCancelled": false,
         "cachedAnnotations": {
-          "internal:subtitle": "3. pelautus (7 - 12-vuotiaille)",
-          "konsti:maxAttendance": 5
+          "konsti:maxAttendance": 5,
+          "internal:subtitle": "3. pelautus (7 - 12-vuotiaille)"
         }
       }
     ]
@@ -5011,7 +5096,7 @@
       "form": ["offer-larp"],
       "room": ["sali213"],
       "type": ["gaming"],
-      "state": ["accepted"],
+      "state": ["cancelled"],
       "topic": ["larp"],
       "konsti": ["larp"],
       "grouping": ["beginners"],
@@ -5034,7 +5119,7 @@
       "ropecon:contentWarnings": "pimeys, yliluonnollisuus, murha, kuolemantuottamus, läheisen kuolema, murhasta syyttäminen, itsemurha, avioero, yksinhuoltajuus, luokkaerot, katumus, syyllisyys, menetys, suru, sota, rahahuolet, petollisuus, kummitukset, mielenterveyden järkkyminen",
       "ropecon:isRevolvingDoor": false
     },
-    "isCancelled": false,
+    "isCancelled": true,
     "scheduleItems": [
       {
         "slug": "henkien-yo-larp",
@@ -5043,7 +5128,7 @@
         "endTime": "2026-07-25T00:00:00+03:00",
         "lengthMinutes": 120,
         "location": "Room 213",
-        "isCancelled": false,
+        "isCancelled": true,
         "cachedAnnotations": {
           "konsti:minAttendance": 9,
           "konsti:maxAttendance": 9,
@@ -6308,7 +6393,7 @@
   },
   {
     "slug": "kadonneen-artefaktin-metsastys",
-    "title": "Kadonneen artefaktin metsästys",
+    "title": "RuneQuest 3 (suomi): Kadonneen artefaktin metsästys",
     "description": "Paatunut Poro on hiljainen, pimeän ja kapean kujan varrella oleva baari sataman lähellä Nochetissa. Harva eksyy sinne sattumalta, useimmat jonkun tutun suosituksesta. Asiakaskunta on hyvin vaihtelevaa. Erityisesti peikot pitävät baarista koska siellä on heille oma kylmä ja pimeä kellari.\r\n\r\nBaarin omistaa kolme vanhaa seikkailijaa, jotka yleensä ovat jossain muualla. Kuten nytkin jossain lännessä. Tai merellä. Tai idässä.\r\n\r\nMutta heillä on hyviä työntekijöitä, heidän vanhoja seikkailuilla mukana olleita aseentakantajia, kokkeja, kärrymiehiä ja muita apulaisia. Mutta apulaisten elinikä sankareiden seikkailuilla on kovin lyhyt ja niin apurit päättivät jäädä Nochetiin baariin töihin.\r\n\r\nTe olette ne työntekijät.\r\n\r\nTänä aamuna takaovi oli raollaan. Yövartija makasi kuolleena maassa. Varastohuoneen salainen lokero oli tyhjä. Ansat tai taikasuojat eivät olleet lauenneet.\r\n\r\nJoku tiesi tarkalleen, mistä etsiä ja miten välttää ansat. Joku käveli ulos Paatuneesta Porosta ennen Yelmin nousua kantaen sitä, mitä pomot säilyttivät lokerossa syystä.\r\n\r\nSelvittäkää kuka murtautui sisään. Kuka tappoi vartijan. Mitä vietiin. Hankkikaa se takaisin ennen kuin kolme Nochetin vaarallisinta seikkailijaa palaa ja vaatii selityksiä.\r\n\r\nKadut. Temppelit. Satama. Luolat. Tornit. Kilpailijat. Jollain on etumatkaa. Aikaa on niin kauan kuin sitä on.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
@@ -6343,7 +6428,7 @@
     "scheduleItems": [
       {
         "slug": "kadonneen-artefaktin-metsastys-1",
-        "title": "Kadonneen artefaktin metsästys",
+        "title": "RuneQuest 3 (suomi): Kadonneen artefaktin metsästys",
         "startTime": "2026-07-26T13:00:00+03:00",
         "endTime": "2026-07-26T17:00:00+03:00",
         "lengthMinutes": 240,
@@ -6821,7 +6906,7 @@
       "form": ["offer-rpg"],
       "room": ["valo"],
       "type": ["gaming"],
-      "state": ["accepted"],
+      "state": ["cancelled"],
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["beginners", "dreams"],
@@ -6839,7 +6924,7 @@
       "ropecon:contentWarnings": "Pelissä on kevyitä kauhuelementtejä. Pelaajien kanssa käydään aluksi läpi mahdolliset triggeröivät aiheet. Pöydässä käytetään turvallisemman tilan periaatteita.",
       "ropecon:isRevolvingDoor": false
     },
-    "isCancelled": false,
+    "isCancelled": true,
     "scheduleItems": [
       {
         "slug": "kartano-kaltevalla-huipulla-1",
@@ -6848,7 +6933,7 @@
         "endTime": "2026-07-24T20:00:00+03:00",
         "lengthMinutes": 180,
         "location": "Valo (Pöytä 3)",
-        "isCancelled": false,
+        "isCancelled": true,
         "cachedAnnotations": {
           "konsti:rpgSystem": "Vaesen",
           "konsti:minAttendance": 3,
@@ -7186,7 +7271,7 @@
     "scheduleItems": [
       {
         "slug": "kesa-1162-ajojahti-kuparilaan",
-        "title": "Kesä 1162, ajojahti Kuparilaan",
+        "title": "Kesä 1162, ajojahti Kuparilaan – Pelautus 3",
         "startTime": "2026-07-26T09:00:00+03:00",
         "endTime": "2026-07-26T13:00:00+03:00",
         "lengthMinutes": 240,
@@ -7197,6 +7282,7 @@
           "konsti:minAttendance": 3,
           "konsti:maxAttendance": 4,
           "ropecon:isRevolvingDoor": false,
+          "internal:subtitle": "Pelautus 3",
           "internal:freeformLocation": "Pöytä 35"
         }
       }
@@ -7234,7 +7320,7 @@
     "scheduleItems": [
       {
         "slug": "kesa-1162-ajojahti-kuparilaan-aa-1",
-        "title": "Kesä 1162, Ajojahti Kuparilaan",
+        "title": "Kesä 1162, Ajojahti Kuparilaan – Pelautus 1",
         "startTime": "2026-07-25T09:00:00+03:00",
         "endTime": "2026-07-25T13:00:00+03:00",
         "lengthMinutes": 240,
@@ -7245,12 +7331,13 @@
           "konsti:minAttendance": 3,
           "konsti:maxAttendance": 4,
           "ropecon:isRevolvingDoor": false,
+          "internal:subtitle": "Pelautus 1",
           "internal:freeformLocation": "Pöytä 9"
         }
       },
       {
         "slug": "kesa-1162-ajojahti-kuparilaan-aa-2",
-        "title": "Kesä 1162, Ajojahti Kuparilaan",
+        "title": "Kesä 1162, Ajojahti Kuparilaan – Pelautus 2",
         "startTime": "2026-07-26T09:00:00+03:00",
         "endTime": "2026-07-26T13:00:00+03:00",
         "lengthMinutes": 240,
@@ -7261,6 +7348,7 @@
           "konsti:minAttendance": 3,
           "konsti:maxAttendance": 4,
           "ropecon:isRevolvingDoor": false,
+          "internal:subtitle": "Pelautus 2",
           "internal:freeformLocation": "Pöytä 9"
         }
       }
@@ -7298,7 +7386,7 @@
     "scheduleItems": [
       {
         "slug": "kesa1162-ajojahti-kuparilaan",
-        "title": "Kesä 1162, Ajojahti Kuparilaan",
+        "title": "Kesä 1162, Ajojahti Kuparilaan – Pelautus 4",
         "startTime": "2026-07-26T09:00:00+03:00",
         "endTime": "2026-07-26T13:00:00+03:00",
         "lengthMinutes": 240,
@@ -7309,6 +7397,7 @@
           "konsti:minAttendance": 3,
           "konsti:maxAttendance": 4,
           "ropecon:isRevolvingDoor": false,
+          "internal:subtitle": "Pelautus 4",
           "internal:freeformLocation": "Pöytä 8"
         }
       }
@@ -7542,7 +7631,7 @@
   },
   {
     "slug": "kirkasviinin-muinainen-salaisuus",
-    "title": "Kirkasviinin muinainen salaisuus",
+    "title": "RuneQuest: Kirkasviinin muinainen salaisuus",
     "description": "Olette eläneet koko ikänne Kirkasviinin kaupungissa. Tunnette kaupungin ja lähiympäristöjen jokaisen kiven ja polun lapsuuden leikeistä. Olette palaamassa kotiin kun huomaatte, että kaupungin perustusten kalliossa on kolo, josta valuu pieni puro. Se kolo tai puro ei ollut siellä vielä eilen kun lähditte kaupungista. Kotikaupunkinne perustukset ovat Aamunkoittoa vanhempia. Lähdette tutkimaan puron lähdettä ja koloa tarkemmin. Pelaajilta odotetaan seikkailullista otetta pelimaailman ahtaissa tiloissa. Luvassa taistelua.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
@@ -7573,7 +7662,7 @@
     "scheduleItems": [
       {
         "slug": "kirkasviinin-muinainen-salaisuus-1",
-        "title": "Kirkasviinin muinainen salaisuus",
+        "title": "RuneQuest: Kirkasviinin muinainen salaisuus",
         "startTime": "2026-07-24T19:00:00+03:00",
         "endTime": "2026-07-24T21:00:00+03:00",
         "lengthMinutes": 120,
@@ -8339,6 +8428,7 @@
       "registration": ["not-required"]
     },
     "cachedAnnotations": {
+      "konsti:maxAttendance": 32,
       "ropecon:contentWarnings": "Skenaarioissa sivutaan kiusaamista, syyllistämistä, taloudellista hyväksikäyttöä sekä sodan uhkaa. "
     },
     "isCancelled": false,
@@ -8352,6 +8442,7 @@
         "location": "Room 210",
         "isCancelled": false,
         "cachedAnnotations": {
+          "konsti:maxAttendance": 32,
           "ropecon:contentWarnings": "Skenaarioissa sivutaan kiusaamista, syyllistämistä, taloudellista hyväksikäyttöä sekä sodan uhkaa. "
         }
       }
@@ -8735,6 +8826,47 @@
     ]
   },
   {
+    "slug": "kuoroimproa-ja-rituaaleja-choir-improv-and-rituals",
+    "title": "Kuoroimproa ja rituaaleja / Choir improv and rituals",
+    "description": "Tule kokeilemaan yhteisöllistä ääni-improvisaatiota larppaajien tapaan! Työpaja ammentaa pohjoismaisesta rituaali-improtraditiosta ja Vocal Painting tekniikoista, jotka soveltuvat erinomaisesti mm. larppirituaaleihin. Osa harjoituksista sisältää yksinkertaisia musiikillisia elementtejä, mutta työpaja sopii kaikille laulutaidosta ja -kokemuksesta riippumatta. Vetäjinä toimivat kokeneet larppaajat ja kuorolaulun harrastajat Hannu Sinervä ja Linn Meander. Työpaja pidetään englanniksi, mutta tarpeelliset tekniikat selitetään tarvittaessa myös suomeksi. Ilmoittautuminen konstissa. \r\n\r\nCome and try out group vocal improvisation by larpers! Together, we’ll experiment with techniques from both Nordic ritual improv tradition and Vocal Painting choir methodology. While some elements have a musical focus, no singing experience is required. The session is hosted by Hannu Sinervä and Linn Meander, both experienced larpers and choir enthusiasts.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-07-24"],
+      "form": ["offer-other-program"],
+      "room": ["sali102"],
+      "type": ["workshop"],
+      "state": ["accepted"],
+      "topic": ["larp", "music"],
+      "konsti": ["other"],
+      "grouping": ["beginners"],
+      "language": ["en"],
+      "age-group": ["everyone"],
+      "scheduled": ["one", "one-or-more"],
+      "inclusivity": ["loud-sounds"],
+      "registration": ["konsti"]
+    },
+    "cachedAnnotations": {
+      "konsti:minAttendance": 1,
+      "konsti:maxAttendance": 40
+    },
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "kuoroimproa-ja-rituaaleja-choir-improv-and-rituals-1",
+        "title": "Kuoroimproa ja rituaaleja / Choir improv and rituals",
+        "startTime": "2026-07-24T17:00:00+03:00",
+        "endTime": "2026-07-24T18:45:00+03:00",
+        "lengthMinutes": 105,
+        "location": "Room 102",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:minAttendance": 1,
+          "konsti:maxAttendance": 40
+        }
+      }
+    ]
+  },
+  {
     "slug": "kyla-joka-nukkui",
     "title": "Kylä, joka nukkui",
     "description": "Kaduilla kuuluu iloinen puheensorina ja amuletit vaihtavat omistajiaan. Yö saapuu, valot sammuvat ja lopulta laskeutuu piinaava hiljaisuus. Tuliunikon kylän asukkaat poistuvat yhä vähemmän ja vähemmän kotoaan ja pälyilevät jatkuvasti naapureitaan. Miksi nukkuvat eivät enää herää? Kuvernööri Yasuhira lähettää kylään joukon urheita ja varjomaailman kohdanneita samuraita siinä toivossa, että kyläläiset palaavat takaisin töihin... \r\n\r\nSeikkailu sijoittuu Rokuganin kuvitteelliseen maailmaan ja roolipelaus keskittyy samuraidraaman ympärille. Miljööseen kuuluu hyvin hierarkkiset suhteet, kunniakoodin tiukka noudattaminen, suvaitsemattomuutta ja jonkinasteista seksismiä. Kaikkia teemoja ei välttämästi käsitellä seikkailun aikana, mutta ne vaikuttavat pelaajien ympäristöön. \r\n\r\nAloittelijat ja järjestelmän konkarit ovat kaikki tervetulleita. Sääntöihin tutustetaan ennen pelin alkua ja pelihahmoina käytetään pelinvetäjän tekemiä valmishahmoja. Kynät ja nopat yms. oheistavara tulee pelinvetäjältä. Pelinvetäjä on tutustumassa syvemmin järjestelmään, joten rennolla otteella mennään ja suositaan pelaajilta heittäytymistä ja hauskanpitoa.",
@@ -8985,7 +9117,7 @@
   },
   {
     "slug": "langennut-sisar",
-    "title": "Langennut sisar",
+    "title": "RuneQuest: Langennut sisar (vampyyreja)",
     "description": "\"Hyvät nuoret. Honkmoor Sillanvartija oli minulle rakas, ja on vieläkin. Tuokaa hänet kotiin, keinoin millä tahansa.\"\r\n\r\nTe olette Mormorian noviiseja, eläviä vampyyrejä, joiden olemassaolosta tuskin kukaan Gloranthassa tietää. Te juotte verta ja imette kärsimystä pitääksenne Pedon sisällänne kahleissa. Te ette ole epäkuolleita vaan armon lähettiläitä, jotka kävelevät varjoissa Nochetissa, maailman suurimmassa kaupungissa. \r\n\r\nTällä kertaa Honkmoor Sillanvartija, yli satavuotias ankka-papitar, ei palannut Hajaannuksen Viikon riittiin. Kolme ruumista on noussut kaupungin kanavista. Kaikki tyhjiin juotuina ja kidutettuina ennen sitä. Matriarkka on lähettänyt teidät jäljille, sillä Honkmoor opetti teille miten kaupungissa liikutaan huomaamattomasti. Te tiedätte piilot ja salaiset reitit ja te tiedätte, mitä Pedon valtaansa ottamille sisarille ja veljille pitää tehdä.\r\n\r\nEettisesti raskas ja toiminnan täyteinen seikkailu Gloranthan kätketystä Mormorian vampyyrikultista. Aiempaa kokemusta RuneQuestistä tai Gloranthasta ei tarvita. Valmiit hahmot. Pelaajilta odotetaan seikkailuhenkeä ja ongelmanratkaisuhalukkuutta.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
@@ -9020,7 +9152,7 @@
     "scheduleItems": [
       {
         "slug": "langennut-sisar-1",
-        "title": "Langennut sisar",
+        "title": "RuneQuest: Langennut sisar (vampyyreja)",
         "startTime": "2026-07-25T13:00:00+03:00",
         "endTime": "2026-07-25T17:00:00+03:00",
         "lengthMinutes": 240,
@@ -14125,6 +14257,51 @@
     ]
   },
   {
+    "slug": "release-your-inner-child",
+    "title": "Release your inner child ",
+    "description": "Come and release your inner child! We will play many different games, some knows from childhood and some maybe new. If you want to release some stress, get to know new people and have a bit fun, come play! \r\nThis playing session is for adults only, cause they too need to play. ",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-07-25"],
+      "form": ["offer-other-program"],
+      "room": ["halli5tanssiharjoitukset"],
+      "type": ["other"],
+      "state": ["accepted"],
+      "topic": ["othergames"],
+      "konsti": ["other"],
+      "grouping": ["beginners"],
+      "language": ["en"],
+      "age-group": ["adultsnyouth"],
+      "scheduled": ["one", "one-or-more"],
+      "inclusivity": [
+        "lots-of-movement",
+        "physical-contact",
+        "quick-reactions"
+      ],
+      "registration": ["konsti"]
+    },
+    "cachedAnnotations": {
+      "konsti:minAttendance": 8,
+      "konsti:maxAttendance": 30
+    },
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "release-your-inner-child-1",
+        "title": "Release your inner child ",
+        "startTime": "2026-07-25T19:00:00+03:00",
+        "endTime": "2026-07-25T20:45:00+03:00",
+        "lengthMinutes": 105,
+        "location": "Hall 5 Dance Rehearsal Area",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:minAttendance": 8,
+          "konsti:maxAttendance": 30
+        }
+      }
+    ]
+  },
+  {
     "slug": "rem-rajatilaisten-elamien-mysteeri",
     "title": "REM (Rajatilaisten Elämien Mysteeri)",
     "description": "Havaitset olevasi unessa, mutta et ole yksin. Oletat muiden olevan myös ihmisiä, eikä mielikuvituksesi tuotoksia. Uni tuntuu oudolta; Tämä ei ole painajainen tai ajatuksenvirta, jonka olet kokenut aiemmin. Pelaajien tulee selvittää oudon unimaailman salaisuudet: miksi se houkuttelee sieluja eksymään itseensä, ja ennen kaikkea, onko sieltä turvallista ulospääsyä?",
@@ -15413,8 +15590,8 @@
   },
   {
     "slug": "star-trek-adventures-2e-kaannekohta",
-    "title": "Star Trek Adventures 2e: Käännekohta",
-    "description": "Kuusi viikkoa sitten siviilitutkimusalus katosi avaruudellisten poikkeamien kartoitusmatkalla, ollessaan erityisen epävakaalla ja arvaamattomalla avaruuden vyöhykkeellä. Nyt Tähtiliiton U.S.S. Challenger on saanut tehtäväkseen tutkijoiden pelastamisen, ja he ovat paikantaneet kadonneen aluksen syvälle Ogrun III:n erämaahan, planeetalle jota asuttavat teknologisesti varhaisemmat kansat ja ympäröivät ilmakehän elektromagneettiset häiriöt.\r\n\r\nStar Trek Adventures painottaa pelaajien välistä yhteistyötä sekä diplomaattisia ratkaisuja ja positiivista ihmiskuvaa väkivaltaratkaisujen sijasta. Pelisysteemi itsessään on sääntökevyt, roolipelipainotteinen, ja se soveltuu hyvin myös ensikertalaisille.\r\n\r\nSv: kuolema (kevyt maininta), ympäristöuhka",
+    "title": "Star Trek Adventures 2e: Suuri muinainen",
+    "description": "Pieni runabout-tutkimusalus USS Satrapi on tutkimusmatkallaan osunut muinaisen jättimäisen aluksen kulkuväylälle, ja nyt aluksen jäsenten on toimittava nopeasti kytevän mysteerin ja vaikeiden päätösten äärellä. \r\n\r\nPeli painottaa voimakkaasti pelaajien välistä yhteistyötä sekä diplomaattisia ratkaisuja ja positiivista ihmis- ja olentokuvaa väkivaltaratkaisujen sijasta. Pelisysteemi itsessään on sääntökevyt, roolipelipainotteinen, ja se soveltuu hyvin myös ensikertalaisille.\r\n\r\nSv: Kuoleman uhka, kidnappaus. Käytössä pelissä ovat turvamekaniikat (verhot ja rajat sekä x-kortti), ja sovimme pelin alussa aiheet ja teemat jotka jätetään pelistä pois. Avoin metakeskustelu turvallisuuteen liittyen on tervetullutta myös pelin aikana.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2026-07-26"],
@@ -15436,14 +15613,15 @@
       "konsti:rpgSystem": "Star Trek Adventures 2e",
       "konsti:minAttendance": 3,
       "konsti:maxAttendance": 5,
-      "ropecon:contentWarnings": "kuolema (kevyt maininta), ympäristöuhka",
+      "ropecon:contentWarnings": "Kuoleman uhka, kidnappaus.",
+      "ropecon:accessibilityOther": "Käytössä pelissä ovat turvamekaniikat (verhot ja rajat sekä x-kortti), ja sovimme pelin alussa aiheet ja teemat jotka jätetään pelistä pois. Avoin metakeskustelu turvallisuuteen liittyen on tervetullutta myös pelin aikana.",
       "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
     "scheduleItems": [
       {
         "slug": "star-trek-adventures-2e-kaannekohta-1",
-        "title": "Star Trek Adventures 2e: Käännekohta",
+        "title": "Star Trek Adventures 2e: Suuri muinainen",
         "startTime": "2026-07-26T13:00:00+03:00",
         "endTime": "2026-07-26T17:00:00+03:00",
         "lengthMinutes": 240,
@@ -15453,7 +15631,8 @@
           "konsti:rpgSystem": "Star Trek Adventures 2e",
           "konsti:minAttendance": 3,
           "konsti:maxAttendance": 5,
-          "ropecon:contentWarnings": "kuolema (kevyt maininta), ympäristöuhka",
+          "ropecon:contentWarnings": "Kuoleman uhka, kidnappaus.",
+          "ropecon:accessibilityOther": "Käytössä pelissä ovat turvamekaniikat (verhot ja rajat sekä x-kortti), ja sovimme pelin alussa aiheet ja teemat jotka jätetään pelistä pois. Avoin metakeskustelu turvallisuuteen liittyen on tervetullutta myös pelin aikana.",
           "ropecon:isRevolvingDoor": false,
           "internal:freeformLocation": "Pöytä 3"
         }
@@ -16050,7 +16229,7 @@
   {
     "slug": "tee-oma-bofferimiekka-rakennuspaja-1",
     "title": "Tee oma bofferimiekka -rakennuspaja",
-    "description": "Tule tekemään oma bofferi!\r\nKiinnostaako tehdä oma bofferimiekka? Autamme sinua rakentamaan sellaisen. Miekan rakentamiseen menee 1-2 tuntia. Nuoremmilla kannattaa olla oma aikuinen mukana auttamassa.\r\n\r\nIlmoittautuminen Konsti-järjestelmän kautta [määräytyy pajojen aikataulun mukaan]",
+    "description": "Tule tekemään oma bofferi!\r\nKiinnostaako tehdä oma bofferimiekka? Autamme sinua rakentamaan sellaisen. Miekan rakentamiseen menee 1-2 tuntia. Nuoremmilla kannattaa olla oma aikuinen mukana auttamassa.\r\n\r\nIlmoittautuminen Konsti-järjestelmän kautta perjantaina kello 14 ja 22 sekä lauantaina kello 14 ja 22",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2026-07-24", "2026-07-25", "2026-07-26"],
@@ -16213,7 +16392,7 @@
   {
     "slug": "ten-candles-investigations-in-oberammergau",
     "title": "Ten Candles - Investigations in Oberammergau",
-    "description": "It’s 1992. You are a group of paranormal investigators based in Germany, driven by your curiosity about phenomena that science cannot explain.\r\n\r\nPeople call you when the authorities dismiss their claims. You understand how that feels—your friends and family don’t believe you either. Some think you’re frauds, while others see you as fools who take ghost stories too seriously.\r\n\r\nBut you have felt Their presence. Perhaps you have even seen Them. You don’t need belief. You know that darkness conceals Them.\r\n\r\nNow you are driving together to a remote German town called Oberammergau. A colleague of yours, Hans Guma, has been staying in a forest cabin near the town. You don’t know why he was there. All you have is a message he left for one of you in a dream.",
+    "description": "It’s 1992. You are a group of paranormal investigators based in Germany, driven by your curiosity about phenomena that science cannot explain.\r\n\r\nPeople call you when the authorities dismiss their claims. You understand how that feels—your friends and family don’t believe you either. Some think you’re frauds, while others see you as fools who take ghost stories too seriously.\r\n\r\nBut you have felt Their presence. Perhaps you have even seen Them. You don’t need belief. You know that darkness conceals Them.\r\n\r\nNow you are driving together to a remote German town called Oberammergau. A colleague of yours, Hans Guma, has been staying in a forest cabin near the town. You don’t know why he was there. All you have is a message he left for one of you in a dream.\r\n\r\nPrior knowledge of system rules is not required.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2026-07-24"],
@@ -16261,6 +16440,51 @@
           "konsti:maxAttendance": 5,
           "ropecon:contentWarnings": "paranoia, death, violence, horror",
           "ropecon:isRevolvingDoor": false
+        }
+      }
+    ]
+  },
+  {
+    "slug": "terastaisteluharjoitukset",
+    "title": "Terästaisteluharjoitukset",
+    "description": "Oletko aina halunnut heiluttaa teräsmiekkaa tai kirvestä larpeissa tai muuten vaan? Harmaasusien terästaisteluharjoituksissa, tuttavallisemmin mättötreeneissä, perehdytään historiallisten teräsaseiden turvalliseen ja tehokkaaseen hallintaan. Ota mukaan liikunnalliset vaatteet. Osallistujamäärä maksimissaan 20. Ilmoittautuminen konstissa.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-07-25"],
+      "form": ["offer-other-program"],
+      "room": ["halli5taistelu-jatoimintasali"],
+      "type": ["workshop"],
+      "state": ["accepted"],
+      "konsti": ["other"],
+      "grouping": ["beginners"],
+      "language": ["fi"],
+      "age-group": ["adultsnyouth"],
+      "scheduled": ["one", "one-or-more"],
+      "inclusivity": [
+        "lots-of-movement",
+        "loud-sounds",
+        "physical-contact",
+        "quick-reactions"
+      ],
+      "registration": ["konsti"]
+    },
+    "cachedAnnotations": {
+      "konsti:minAttendance": 3,
+      "konsti:maxAttendance": 20
+    },
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "terastaisteluharjoitukset-1",
+        "title": "Terästaisteluharjoitukset",
+        "startTime": "2026-07-25T11:00:00+03:00",
+        "endTime": "2026-07-25T12:45:00+03:00",
+        "lengthMinutes": 105,
+        "location": "Hall 5 Battle- and action hall",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:minAttendance": 3,
+          "konsti:maxAttendance": 20
         }
       }
     ]
@@ -17519,7 +17743,7 @@
   {
     "slug": "tule-kokeilemaan-muinaista-nuolenpaakirjoitusta",
     "title": "Tule kokeilemaan muinaista nuolenpääkirjoitusta!",
-    "description": "Tule kokeilemaan saveen kirjoittamista muinaisten sumerilaisten, babylonialaisten ja assyrialaisten tapaan, eli nuolenpääkirjoituksella. Muinaisessa Mesopotamiassa noin 5000 vuotta sitten syntynyt nuolenpääkirjoitus on maailman vanhin kirjoitusjärjestelmä. Sillä on kirjoitettu niin Hammurabin lait, Gilgamesh-eepos kuin valituskirje Ea-Nasirin kuparista. Nuolenpääkirjoitus eroaa yhdellä tavalla lähes kaikista muista maailmanhistorian kirjoitusjärjestelmistä: sitä kirjoitettiin painelemalla merkit saveen. Paja sopii kaikenikäisille, kunhan osallistuja on kirjoitustaitoinen ainakin jollain kielellä. Ohjausta saatavilla suomeksi, ruotsiksi ja englanniksi.\r\n\r\nPajan aluksi 15 minuutin lyhyt johdantoluento nuolenpääkirjoituksen historiaan ja kiinnostaviin piirteisiin, mutta pajaan voi tulla myös koska tahansa myöhemmin. Yhden taulun tekeminen kestää n. 10-30 minuuttia. Saat mukaasi työpajassa kirjoittamasi savitaulun!\r\n\r\nPajan vetäjä Aino on opiskellut muinaisen Lähi-idän kieliä ja kulttuureita Helsingin yliopistossa, ja on yksi harvoista eurooppalaisista, jotka harrastavat nuolenpääkirjoituksen itse nuolenpääkirjoituksen kirjoittamista.",
+    "description": "Tule kokeilemaan saveen kirjoittamista muinaisten sumerilaisten, babylonialaisten ja assyrialaisten tapaan, eli nuolenpääkirjoituksella. Muinaisessa Mesopotamiassa noin 5000 vuotta sitten syntynyt nuolenpääkirjoitus on maailman vanhin kirjoitusjärjestelmä. Sillä on kirjoitettu niin Hammurabin lait, Gilgamesh-eepos kuin valituskirje Ea-Nasirin kuparista. Nuolenpääkirjoitus eroaa yhdellä tavalla lähes kaikista muista maailmanhistorian kirjoitusjärjestelmistä: sitä kirjoitettiin painelemalla merkit saveen. Paja sopii kaikenikäisille, kunhan osallistuja on kirjoitustaitoinen ainakin jollain kielellä. Ohjausta saatavilla suomeksi, ruotsiksi ja englanniksi.\r\n\r\nPajan aluksi 15 minuutin lyhyt johdantoluento nuolenpääkirjoituksen historiaan ja kiinnostaviin piirteisiin, mutta pajaan voi tulla myös koska tahansa myöhemmin. Yhden taulun tekeminen kestää n. 10-30 minuuttia. Saat mukaasi työpajassa kirjoittamasi savitaulun!\r\n\r\nPajan vetäjä Aino on opiskellut muinaisen Lähi-idän kieliä ja kulttuureita Helsingin yliopistossa, ja on yksi harvoista eurooppalaisista, jotka harrastavat nuolenpääkirjoituksen itse nuolenpääkirjoituksen kirjoittamista.\r\n\r\n\r\nKom och prova att skriva på lera med kilskrift som de gamla sumererna, babylonierna och assyrierna gjorde. Kilskriften, som har sitt ursprung i Mesopotamien för cirka 5 000 år sedan, är det äldsta skriftsystemet i världen. Den användes för att skriva Hammurabis lagar, Gilgamesheposet och klagobrevet på Ea-Nasirs koppar. Kilskriften skiljer sig från nästan alla andra skriftsystem i världshistorien på ett intressant sätt: du skriver med att pressa tecken i lera. Workshopen passar alla åldrar, så länge deltagaren kan skriva på minst ett språk. Handledning får man på finska, svenska och engelska.\r\n\r\nWorkshopen börjar med en kort 15-minuters introduktionsföreläsning (på finska) om kilskriftens historia och intressanta drag, men du kan också komma till workshopen när som helst senare. Att tillverka en tavla tar cirka 10-30 minuter. Du får med dig lertavlan du skrev i workshopen!\r\n\r\n\r\nCome and try writing on clay like the ancient Sumerians, Babylonians and Assyrians, using cuneiform script. Cuneiform script, which originated in ancient Mesopotamia about 5,000 years ago, is the oldest writing system in the world. It was used to write the Code of Hammurabi, the Epic of Gilgamesh and the complaint letter on the copper of Ea-Nasir. Cuneiform differs from almost all other writing systems in world history in one interesting way: it was written by pressing characters into clay. The workshop is suitable for all ages, as long as the participant is able to write in at least one language. Guidance is available in Finnish, Swedish and English.\r\n\r\nThe workshop begins with a short 15-minute introductory lecture (in Finnish) on the history and interesting features of cuneiform writing, but you can also come to the workshop at any time later. It takes about 10-30 minutes to make one tablet. You will get to take home the clay tablet you wrote in the workshop!",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2026-07-25"],
@@ -17554,7 +17778,7 @@
   {
     "slug": "tulevaisuustyopaja-mita-tukea-pelaajayhteisot-tarvitsevat-tulevaisuudessa",
     "title": "Tulevaisuustyöpaja: Mitä tukea pelaajayhteisöt tarvitsevat tulevaisuudessa?",
-    "description": "Tervetuloa unelmoimaan pelaajayhteisöiden tulevaisuuksista ja tarpeista. Työpaja on osa Suomen roolipeliseura ry:n tilaamaa opinnäytetyötä. Työpajassa kartoitetaan toiveita ja kuvitellaan mahdollisia tuen muotoja sekä rakenteita ja sitä, miten niitä voidaan saavuttaa.\r\n\r\nTyöpaja on osoitettu pelaajayhteisöissä ja -järjestöissä toimiville ihmisille. \r\n\r\nTässä työpajassa pääset esittämään toiveita teidän toimintanne auttamiseksi, jakamaan hyviä ideoita muille toimijoille ja viemään hyviä ideoita oman toimintanne helpottamiseksi. Pääsette myös itse maalamaan unelmien tukimuotoa siitä, miten kaikkia pelaajayhteisöjä voidaan tukea. \r\n\r\nTyöpajassa sovelletaan SITRAn tulevaisuustaajuus-menetelmää toiminnan muotona.\r\n\r\nTyöpajaan on mahdollista osallistua etänä. Osallistumislinkki päivittyy ohjelmakuvaukseen lähempänä ajankohtaa.",
+    "description": "Tervetuloa unelmoimaan pelaajayhteisöiden tulevaisuuksista ja tarpeista. Työpaja on osa Suomen roolipeliseura ry:n tilaamaa opinnäytetyötä. Työpajassa kartoitetaan toiveita ja kuvitellaan mahdollisia tuen muotoja sekä rakenteita ja sitä, miten niitä voidaan saavuttaa.\r\n\r\nTyöpaja on osoitettu pelaajayhteisöissä ja -järjestöissä toimiville ihmisille. \r\n\r\nTässä työpajassa pääset esittämään toiveita teidän toimintanne auttamiseksi, jakamaan hyviä ideoita muille toimijoille ja viemään hyviä ideoita oman toimintanne helpottamiseksi. Pääsette myös itse maalamaan unelmien tukimuotoa siitä, miten kaikkia pelaajayhteisöjä voidaan tukea. \r\n\r\nTyöpajassa sovelletaan SITRAn tulevaisuustaajuus-menetelmää toiminnan muotona.\r\n\r\nTyöpajaan on mahdollista osallistua etänä. Osallistumislinkki: https://meet.google.com/aoe-cbcz-itf",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "form": ["offer-week"],
@@ -18881,6 +19105,51 @@
     ]
   },
   {
+    "slug": "vapauta-sisainen-lapsesi",
+    "title": "Vapauta sisäinen lapsesi",
+    "description": "Tule vapauttamaan sisäinen lapsesi! Leikimme monia leikkejä, joista osa saattaa olla lapsuudesta tuttuja ja osa ihan uusia tuttavuuksia. Jos haluat vapauttaa stressiä, pitää hauskaa ja tutustua uusiin ihmisiin, tule leikkimään!\r\nTämä leikkihetki on vain aikuisille tarkoitettu, koska myös heidän pitää päästä leikkimään. ",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-07-24"],
+      "form": ["offer-other-program"],
+      "room": ["halli5taistelu-jatoimintasali"],
+      "type": ["other"],
+      "state": ["accepted"],
+      "topic": ["othergames"],
+      "konsti": ["other"],
+      "grouping": ["beginners"],
+      "language": ["fi"],
+      "age-group": ["adultsnyouth"],
+      "scheduled": ["one", "one-or-more"],
+      "inclusivity": [
+        "lots-of-movement",
+        "physical-contact",
+        "quick-reactions"
+      ],
+      "registration": ["konsti"]
+    },
+    "cachedAnnotations": {
+      "konsti:minAttendance": 8,
+      "konsti:maxAttendance": 30
+    },
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "vapauta-sisainen-lapsesi-1",
+        "title": "Vapauta sisäinen lapsesi",
+        "startTime": "2026-07-24T20:00:00+03:00",
+        "endTime": "2026-07-24T21:45:00+03:00",
+        "lengthMinutes": 105,
+        "location": "Hall 5 Battle- and action hall",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:minAttendance": 8,
+          "konsti:maxAttendance": 30
+        }
+      }
+    ]
+  },
+  {
     "slug": "varikasta-paperiaskartelua",
     "title": "Värikästä paperiaskartelua",
     "description": "Haluatko hetken hengähdystauon kesken conihulinan? Istahda askartelemaan!\r\nTässä drop-in workshopissa, jossa aloitamme uuden työn noin 20min välein, pääset tekemään oman kauniin ja värikkään paperityön. Opastamme tekemään erilaisia ja eritasoisia origameja sekä värikkäitä paperisateenvarjoja. Voit valita sateenvarjon värit vaikkapa oman Pride-lippusi mukaan. Työpaja vaatii sorminäppäryyttä. Pienet lapset (alle kouluikäinen) vain aikuisen seurassa.\r\n\r\nWant to take a break from surfing the con? Come make colourful papercrafts with us! \r\nIn our drop-in workshop we will guide you to make different origami animals and colourful umbrellas. We will start a new paper craft in approximately 20 minute intervals. You can make your umbrella with the Pride flag colours of your liking! This workshop requires some manual dexterity. Small children (under 7 years old) to be accompanied by an adult.",
@@ -19660,7 +19929,10 @@
       "inclusivity": ["strong-odours"],
       "registration": ["not-required"]
     },
-    "cachedAnnotations": { "konsti:maxAttendance": 250 },
+    "cachedAnnotations": {
+      "konsti:workshopFee": "0-2€",
+      "konsti:maxAttendance": 250
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -19671,7 +19943,10 @@
         "lengthMinutes": 165,
         "location": "Hall 3 Workshop Area",
         "isCancelled": false,
-        "cachedAnnotations": { "konsti:maxAttendance": 250 }
+        "cachedAnnotations": {
+          "konsti:workshopFee": "0-2€",
+          "konsti:maxAttendance": 250
+        }
       }
     ]
   },
@@ -20061,6 +20336,55 @@
           "ropecon:contentWarnings": "epätasa-arvo, sovinismi, toksiset asenteet, syrjintä, väkivalta",
           "ropecon:isRevolvingDoor": false,
           "internal:freeformLocation": "Pöytä 16"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "yaldabythoksen-pyhiinvaellus",
+    "title": "Yaldabythoksen pyhiinvaellus",
+    "description": "Maalattujen Autiomaiden halki kulkee pyhiinvaellus, joka tuntuu enemmän unelta kuin matkalta. Värit vuotavat todellisuuteen, maisemat vaihtuvat silmänräpäyksessä ja Yaldabythoksen nimi kaikuu näkyinä, rituaaleina ja harhoina. Pelaajahahmot tempautuvat mukaan matkalle, jossa oikuttelevat koetukset, väärät jumalat ja autiomaan armottomuus mittaavat ruumista ja sielua. OSR-tyyliin ratkaisut syntyvät uteliaisuudesta ja oivalluksesta — ja joskus myös nerokkaasta sekoilusta.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-07-25"],
+      "form": ["offer-rpg"],
+      "room": ["sade"],
+      "type": ["gaming"],
+      "state": ["accepted"],
+      "topic": ["rpg"],
+      "konsti": ["tabletoprpg"],
+      "grouping": ["dreams"],
+      "language": ["fi"],
+      "age-group": ["adultsnyouth"],
+      "scheduled": ["one", "one-or-more"],
+      "game-style": ["light", "rules-light"],
+      "registration": ["not-required"],
+      "revolvingdoor": ["true"]
+    },
+    "cachedAnnotations": {
+      "konsti:rpgSystem": "Old School Essentials",
+      "konsti:minAttendance": 2,
+      "konsti:maxAttendance": 8,
+      "ropecon:contentWarnings": "Ainakin väkivalta, huumeidenkäyttö, zombit ja muut epäkuolleet, kannibalismi, kaikenlaiset psykedeeliset kummajaiset ja kummallisuudet",
+      "ropecon:isRevolvingDoor": true
+    },
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "yaldabythoksen-pyhiinvaellus-1",
+        "title": "Yaldabythoksen pyhiinvaellus",
+        "startTime": "2026-07-25T10:00:00+03:00",
+        "endTime": "2026-07-25T18:00:00+03:00",
+        "lengthMinutes": 480,
+        "location": "Säde (Pöytä 10)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Old School Essentials",
+          "konsti:minAttendance": 2,
+          "konsti:maxAttendance": 8,
+          "ropecon:contentWarnings": "Ainakin väkivalta, huumeidenkäyttö, zombit ja muut epäkuolleet, kannibalismi, kaikenlaiset psykedeeliset kummajaiset ja kummallisuudet",
+          "ropecon:isRevolvingDoor": true,
+          "internal:freeformLocation": "Pöytä 10"
         }
       }
     ]
