@@ -11,6 +11,15 @@ export class GroupPage extends BasePage {
     return this.page.getByRole("button", { name: "Create group" });
   }
 
+  get joinGroupButton(): Locator {
+    return this.page.getByRole("button", { name: "Join group" }).first();
+  }
+
+  // Rows of the "already signed up to these upcoming program items" list
+  get upcomingDirectSignups(): Locator {
+    return this.page.getByTestId("upcoming-direct-signups").locator("li");
+  }
+
   async goto(): Promise<void> {
     await this.navigation.gotoProfile();
     await this.page.getByRole("link", { name: "Group" }).click();

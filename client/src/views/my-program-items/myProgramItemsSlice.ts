@@ -1,4 +1,5 @@
 import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { sortBy } from "remeda";
 import { MyProgramItemsState, RootState } from "client/types/reduxTypes";
 import { selectProgramItems } from "client/views/all-program-items/allProgramItemsSlice";
 import { ProgramItem } from "shared/types/models/programItem";
@@ -103,18 +104,26 @@ export const selectDirectSignups: (
     (state: RootState) => state.myProgramItems.directSignups,
   ],
   (programItems, directSignups) => {
-    return directSignups.flatMap((directSignup) => {
-      const signedProgramItem = programItems.find(
-        (programItem) =>
-          programItem.programItemId === directSignup.programItemId,
-      );
+    const directSignupsWithProgramItem = directSignups.flatMap(
+      (directSignup) => {
+        const signedProgramItem = programItems.find(
+          (programItem) =>
+            programItem.programItemId === directSignup.programItemId,
+        );
 
-      if (!signedProgramItem) {
-        return [];
-      }
+        if (!signedProgramItem) {
+          return [];
+        }
 
-      return { ...directSignup, programItem: signedProgramItem };
-    });
+        return { ...directSignup, programItem: signedProgramItem };
+      },
+    );
+
+    return sortBy(
+      directSignupsWithProgramItem,
+      (directSignup) => directSignup.signedToStartTime,
+      (directSignup) => directSignup.programItem.title,
+    );
   },
 );
 

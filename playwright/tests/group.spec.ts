@@ -7,12 +7,16 @@ import {
   addProgramItems,
   populateDb,
   postAssignment,
+  testPostDirectSignup,
 } from "playwright/playwrightUtils";
 import { GroupPage } from "playwright/pages/GroupPage";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import { config } from "shared/config";
-import { testProgramItem } from "shared/tests/testProgramItem";
+import {
+  testProgramItem,
+  testProgramItem2,
+} from "shared/tests/testProgramItem";
 
 test("Can create and join a group and receive a shared lottery result", async ({
   page,
@@ -225,7 +229,7 @@ test("Group member cannot lottery signup but group creator can", async ({
   await groupPage.navigation.gotoProgram();
   await programList.gotoAllProgram();
   await expect(firstProgramItem.container).toContainText(
-    "You can't sign up because you are a member of a group. Only the group creator can sign the group up for a lottery.",
+    "You can't sign up because you are a member of a group. Only the group creator can sign the group up to the lottery.",
   );
   await expect(firstProgramItem.lotterySignupButton).toBeHidden();
 });
@@ -288,4 +292,92 @@ test("Show error when group is bigger than the program item's maximum attendance
   );
   // The signup form did not open
   await expect(firstProgramItem.confirmButton).toBeHidden();
+});
+
+test("Upcoming direct signups block creating and joining a group", async ({
+  page,
+  request,
+}) => {
+  // Both program items are in the direct signup phase at event start time
+  // (Fri 15:00 GMT+3), starting Fri 16:00 and Fri 17:00 local time
+  const startTime1 = dayjs(config.event().eventStartTime)
+    .add(1, "hour")
+    .startOf("hour")
+    .toISOString();
+  const startTime2 = dayjs(config.event().eventStartTime)
+    .add(2, "hour")
+    .startOf("hour")
+    .toISOString();
+
+  await populateDb(request, { clean: true, users: true, admin: true });
+  await addProgramItems(request, [
+    {
+      ...testProgramItem,
+      programType: config.event().twoPhaseSignupProgramTypes[0],
+      startTime: startTime1,
+      endTime: dayjs(startTime1)
+        .add(testProgramItem.mins, "minutes")
+        .toISOString(),
+    },
+    {
+      ...testProgramItem2,
+      programType: config.event().twoPhaseSignupProgramTypes[0],
+      startTime: startTime2,
+      endTime: dayjs(startTime2)
+        .add(testProgramItem2.mins, "minutes")
+        .toISOString(),
+    },
+  ]);
+  await postSettings(request, {
+    signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
+  });
+  await postTestSettings(request, { testTime: config.event().eventStartTime });
+
+  // Sign up to the later program item first: the list must still show the
+  // earlier program item first
+  await testPostDirectSignup(request, "test1", {
+    directSignupProgramItemId: testProgramItem2.programItemId,
+    message: "",
+  });
+  await testPostDirectSignup(request, "test1", {
+    directSignupProgramItemId: testProgramItem.programItemId,
+    message: "",
+  });
+
+  const groupPage = new GroupPage(page);
+
+  await login(page, request, { username: "test1", password: "test" });
+  await page.goto("/");
+  await groupPage.goto();
+
+  // Blocking signups are listed with start times in chronological order
+  await expect(groupPage.main).toContainText(
+    "You have already signed up to these upcoming program items:",
+  );
+  await expect(groupPage.upcomingDirectSignups).toHaveCount(2);
+  await expect(groupPage.upcomingDirectSignups.nth(0)).toContainText(
+    `${testProgramItem.title} - Friday 16:00`,
+  );
+  await expect(groupPage.upcomingDirectSignups.nth(1)).toContainText(
+    `${testProgramItem2.title} - Friday 17:00`,
+  );
+  await expect(groupPage.main).toContainText(
+    "You'll have to cancel these sign-ups before you can create or join a group.",
+  );
+
+  // Group actions are blocked
+  await expect(groupPage.createGroupButton).toBeDisabled();
+  await expect(groupPage.joinGroupButton).toBeDisabled();
+
+  // Once the program items have started, they no longer block group actions
+  await postTestSettings(request, {
+    testTime: dayjs(startTime2).add(1, "minute").toISOString(),
+  });
+  await page.reload();
+
+  await expect(groupPage.createGroupButton).toBeEnabled();
+  await expect(groupPage.joinGroupButton).toBeEnabled();
+  await expect(groupPage.main).not.toContainText(
+    "You have already signed up to these upcoming program items",
+  );
 });

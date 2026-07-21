@@ -26,6 +26,7 @@ Yarn 4 workspaces — only `client` and `server` are Yarn workspaces; `shared` a
 - Keep code comments succinct: state the non-obvious constraint or reason in a sentence or two rather than narrating the full mechanism behind it.
 - Comments document how the code works now — don't describe how it used to work or what changed (that's what git history is for).
 - Don't reference other files or components by name in code comments — renames and restructuring make them stale. Describe the role instead: "exported so callers can check...", not "exported so ProgramItemEntry can check...".
+- Never use the em dash character (—) in code, UI text, comments, or docs. Use a regular hyphen (-) or restructure the sentence.
 
 ## Terminology
 
