@@ -16,6 +16,8 @@ import { config } from "shared/config";
 import { AppRoute } from "client/app/AppRoutes";
 import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
 import { selectGroupMembers } from "client/views/group/groupSlice";
+import { getWeekdayAndTime } from "shared/utils/timeFormatter";
+import { joinWithConjunction } from "client/utils/joinWithConjunction";
 
 export const GroupView = (): ReactElement => {
   const { twoPhaseSignupProgramTypes } = config.event();
@@ -44,36 +46,38 @@ export const GroupView = (): ReactElement => {
   const timeNow = getTimeNow();
   const directSignupsAfterNow = filteredActiveDirectSignups.filter(
     (directSignup) =>
-      timeNow.isSameOrBefore(dayjs(directSignup.signedToStartTime)),
+      timeNow.isBefore(dayjs(directSignup.programItem.startTime)),
   );
-  const hasDirectSignups = directSignupsAfterNow.length > 0;
+  const hasUpcomingDirectSignups = directSignupsAfterNow.length > 0;
+
+  const lotteryProgramTypesList = joinWithConjunction(
+    twoPhaseSignupProgramTypes.map((twoPhaseSignupProgramType) =>
+      t(`programTypePlural.${twoPhaseSignupProgramType}`),
+    ),
+    t("and"),
+  );
 
   return (
     <div className="group-view">
       <p>
         {t("group.groupLotterySignupGuide")}{" "}
-        {t("group.groupLotterySignupProgramTypes")}{" "}
-        {twoPhaseSignupProgramTypes
-          .map((twoPhaseSignupProgramType) =>
-            t(`programTypePlural.${twoPhaseSignupProgramType}`),
-          )
-          .join(", ")}
-        .
+        {t("group.groupLotterySignupProgramTypes")} {lotteryProgramTypesList}.
       </p>
 
       {!isInGroup && (
         <>
-          {hasDirectSignups && (
+          {hasUpcomingDirectSignups && (
             <DirectSignupsContainer>
               <p>{t("group.hasDirectlySignedFollowingProgramItems")}</p>
-              <ListItem>
-                {filteredActiveDirectSignups.map((directSignup) => (
+              <ListItem data-testid="upcoming-direct-signups">
+                {directSignupsAfterNow.map((directSignup) => (
                   <li key={directSignup.programItemId}>
                     <Link
                       to={`${AppRoute.PROGRAM_ITEM}/${directSignup.programItemId}`}
                     >
                       {directSignup.programItem.title}
-                    </Link>
+                    </Link>{" "}
+                    - {getWeekdayAndTime(directSignup.programItem.startTime)}
                   </li>
                 ))}
               </ListItem>
@@ -81,7 +85,7 @@ export const GroupView = (): ReactElement => {
             </DirectSignupsContainer>
           )}
 
-          <NotInGroupActions disabled={hasDirectSignups} />
+          <NotInGroupActions disabled={hasUpcomingDirectSignups} />
         </>
       )}
 

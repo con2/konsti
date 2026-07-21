@@ -149,6 +149,7 @@ export const translationEN = {
     registration: "Create an account",
   },
   user: "User",
+  and: "and",
   favoriteProgramItems: "Favorites",
   lotterySignups: "Lottery sign-ups",
   directSignups: "Sign-ups",
@@ -226,31 +227,31 @@ export const translationEN = {
       cannotUseOwnSerial: "You cannot use your own code to join a group.",
       groupExists: "Group already exists.",
       removeUpcomingLotterySignupsFailed:
-        "Error deleting active lottery sign-ups, please try again.",
+        "Error deleting upcoming lottery sign-ups, please try again.",
       onlyCreatorCanCloseGroup: "Only the group creator can close a group.",
       creatorCannotLeave:
         "As the group creator, you have to close the group instead of leaving it.",
       memberUpcomingDirectSignups:
-        "You already have sign-ups. You will have to cancel those before joining a group.",
+        "You already have upcoming sign-ups. You will have to cancel them before joining a group.",
       creatorUpcomingDirectSignups:
-        "You already have sign-ups. You will have to cancel those before creating a group.",
+        "You already have upcoming sign-ups. You will have to cancel them before creating a group.",
       alreadyInGroup: "You are already a member of a group.",
     },
     hasDirectlySignedFollowingProgramItems:
-      "You have already signed up to these program items:",
+      "You have already signed up to these upcoming program items:",
     cancelSignupBeforeJoiningOrCreatingGroup:
       "You'll have to cancel these sign-ups before you can create or join a group.",
     signupDisabledNotCreator:
-      "You can't sign up because you are a member of a group. Only the group creator can sign the group up for a lottery.",
+      "You can't sign up because you are a member of a group. Only the group creator can sign the group up to the lottery.",
     groupCreatorSignups:
       "You are the group creator. Your lottery sign-ups are the same for all group members.",
     inGroupSignups:
       "You are in a group. Sign-ups in this list have been made by your group creator.",
     closeGroupConfirmation:
       "Are you sure you want to close the group and remove all its members?",
-    generalLeaveGroupError: "Error leaving group",
+    generalLeaveGroupError: "Error leaving group.",
     groupTooBigWarning:
-      "The group is bigger than the maximum number of attendees",
+      "The group is bigger than the maximum number of attendees.",
     enterGroupCreatorCode: "Group creator's code",
     createGroupConfirmationMessage: "Do you want to create a group?",
     youAreGroupCreator: "You are the group creator",
@@ -263,12 +264,12 @@ export const translationEN = {
       "You can sign up your group to the lottery. Please make sure that the group is not too big for the selected program items. The group creator cannot leave the group, but can close it. This will remove all members from the group.",
     groupCodeInfo: "Others can join this group with the code ",
     joiningGroupWillCancelUpcomingLotterySignups:
-      "Joining a group will cancel all your active lottery sign-ups.",
-    groupLotterySignupGuide: "You can enter a lottery sign-up as a group.",
+      "Joining a group will cancel all your upcoming lottery sign-ups.",
+    groupLotterySignupGuide: "You can sign up for the lottery as a group.",
     groupLotterySignupProgramTypes: "Lottery sign-up is used by",
-    invalidGroupCode: "Invalid code",
-    groupNotExist: "Group does not exist",
-    generalGroupError: "Error updating group",
+    invalidGroupCode: "Invalid code.",
+    groupNotExist: "Group does not exist.",
+    generalGroupError: "Error updating group.",
   },
   passwordManagement: {
     helperPasswordManagement: "Change password",

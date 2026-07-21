@@ -148,6 +148,7 @@ export const translationFI = {
     registration: "Luo käyttäjätili",
   },
   user: "Käyttäjä",
+  and: "ja",
   favoriteProgramItems: "Suosikit",
   lotterySignups: "Arvontaan ilmoittautumiset",
   directSignups: "Ilmoittautumiset",
@@ -227,18 +228,18 @@ export const translationFI = {
       cannotUseOwnSerial: "Et voi käyttää omaa koodiasi ryhmään liittymiseen.",
       groupExists: "Ryhmä on jo olemassa.",
       removeUpcomingLotterySignupsFailed:
-        "Virhe aktiivisia arvontailmoittautumisia poistaessa, yritä uudelleen.",
+        "Virhe tulevia arvontailmoittautumisia poistaessa, yritä uudelleen.",
       onlyCreatorCanCloseGroup: "Vain ryhmän perustaja voi sulkea ryhmän.",
       creatorCannotLeave:
         "Ryhmän perustajana sinun täytyy sulkea ryhmä sen sijaan, että poistuisit siitä.",
       memberUpcomingDirectSignups:
-        "Sinulla on jo ilmoittautumisia. Peru ilmoittautumiset ennen kuin liityt ryhmään.",
+        "Sinulla on jo tulevia ilmoittautumisia. Peru ilmoittautumiset ennen kuin voit liittyä ryhmään.",
       creatorUpcomingDirectSignups:
-        "Sinulla on jo ilmoittautumisia. Peru ilmoittautumiset ennen kuin voit luoda ryhmän.",
-      alreadyInGroup: "Kuulut jo toiseen ryhmään.",
+        "Sinulla on jo tulevia ilmoittautumisia. Peru ilmoittautumiset ennen kuin voit luoda ryhmän.",
+      alreadyInGroup: "Kuulut jo ryhmään.",
     },
     hasDirectlySignedFollowingProgramItems:
-      "Olet jo ilmoittautunut seuraaviin ohjelmanumeroihin:",
+      "Olet jo ilmoittautunut näihin tuleviin ohjelmanumeroihin:",
     cancelSignupBeforeJoiningOrCreatingGroup:
       "Sinun täytyy perua nämä ilmoittautumiset ennen kuin voit luoda ryhmän tai liittyä ryhmään.",
     signupDisabledNotCreator:
@@ -249,9 +250,9 @@ export const translationFI = {
       "Olet ryhmän jäsen. Tämän listan arvontailmoittautumiset ovat ryhmän perustajan tekemiä.",
     closeGroupConfirmation:
       "Oletko varma, että haluat sulkea ryhmän ja poistaa kaikki sen jäsenet?",
-    generalLeaveGroupError: "Virhe ryhmästä poistuessa",
+    generalLeaveGroupError: "Virhe ryhmästä poistuessa.",
     groupTooBigWarning:
-      "Ryhmä on suurempi kuin suurin sallittu osallistujamäärä",
+      "Ryhmä on suurempi kuin suurin sallittu osallistujamäärä.",
     enterGroupCreatorCode: "Ryhmän perustajan koodi",
     createGroupConfirmationMessage: "Haluatko luoda ryhmän?",
     youAreGroupCreator: "Olet ryhmän perustaja",
@@ -264,12 +265,12 @@ export const translationFI = {
       "Voit ilmoittautua arvontaan koko ryhmän puolesta. Varmistathan, että ryhmä ei ole liian iso valitsemiisi ohjelmanumeroihin liittymistä varten. Ryhmän perustaja ei voi poistua ryhmästä, mutta voi sulkea ryhmän. Tällöin kaikki ryhmän jäsenet poistetaan ryhmästä.",
     groupCodeInfo: "Muut voivat liittyä tähän ryhmään koodilla ",
     joiningGroupWillCancelUpcomingLotterySignups:
-      "Ryhmään liittyminen peruu kaikki aktiiviset arvontailmoittautumisesi.",
+      "Ryhmään liittyminen peruu kaikki tulevat arvontailmoittautumisesi.",
     groupLotterySignupGuide: "Voit ilmoittautua arvontaan ryhmänä.",
-    groupLotterySignupProgramTypes: "Arvontaa käyttää",
-    invalidGroupCode: "Virheellinen koodi",
-    groupNotExist: "Ryhmää ei ole olemassa",
-    generalGroupError: "Virhe ryhmää päivittäessä",
+    groupLotterySignupProgramTypes: "Arvontaa käyttävät",
+    invalidGroupCode: "Virheellinen koodi.",
+    groupNotExist: "Ryhmää ei ole olemassa.",
+    generalGroupError: "Virhe ryhmää päivittäessä.",
   },
   passwordManagement: {
     helperPasswordManagement: "Vaihda salasana",

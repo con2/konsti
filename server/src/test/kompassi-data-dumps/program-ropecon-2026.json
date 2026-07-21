@@ -103,6 +103,52 @@
     ]
   },
   {
+    "slug": "6-player-mtg-cube-draft-dnd-setcube",
+    "title": "8 Player MTG Cube draft, DnD setcube",
+    "description": "Kuutiodrafti on tarkoitettu kokeneemmille pelaajille, joilla on Magic the Gatheringin säännöt hallussa ja draftaaminen on tuttu pelimuoto. Mukaan voi muuten tulla rennolla otteella pitämään hauskaa draftin parissa, sillä tätä läjää ei ole tehty vakavalla mielellä vaan enemmän teeman ja tunnelman ympärille kuitenkaan pelikokemuksesta tinkimättä.\r\n\r\nTämä teemakuutio on tehty kahdeksalle hengelle ja se sisältää DnD teemaisia kortteja seteistä AFR, AFC, CLB sekä DnD teemaisia SLD kortteja. Kuutiossa on painotettu tarinoista tuttuja hahmoja, mekaniikkoina dungeoneja ja initiativea sekä maksimoitu dragonien määrä DnD hengessä.\r\n\r\nLinkki kuuton sisältöön cubecobrassa: https://cubecobra.com/cube/list/daed5720-8032-43e3-96e4-b5536e9e3d31",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-07-24"],
+      "form": ["offer-other-gameprogram"],
+      "room": ["halli4turnaukset"],
+      "type": ["gaming"],
+      "state": ["accepted"],
+      "topic": ["cardgames"],
+      "konsti": ["othergaming"],
+      "language": ["fi"],
+      "age-group": ["adultsnyouth"],
+      "scheduled": ["one", "one-or-more"],
+      "inclusivity": ["long-program", "no-recordings-or-spoken-text"],
+      "registration": ["konsti"],
+      "revolvingdoor": ["false"]
+    },
+    "cachedAnnotations": {
+      "konsti:minAttendance": 3,
+      "konsti:maxAttendance": 7,
+      "ropecon:accessibilityOther": "Kaikki pelikortit ovat englanninkielisiä.",
+      "ropecon:isRevolvingDoor": false
+    },
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "6-player-mtg-cube-draft-dnd-setcube",
+        "title": "8 Player MTG Cube draft, DnD setcube",
+        "startTime": "2026-07-24T17:00:00+03:00",
+        "endTime": "2026-07-24T21:00:00+03:00",
+        "lengthMinutes": 240,
+        "location": "Halli 4 Tournaments (lohko H)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:minAttendance": 3,
+          "konsti:maxAttendance": 7,
+          "ropecon:accessibilityOther": "Kaikki pelikortit ovat englanninkielisiä.",
+          "ropecon:isRevolvingDoor": false,
+          "internal:freeformLocation": "lohko H"
+        }
+      }
+    ]
+  },
+  {
     "slug": "a-midsummer-nights-scream",
     "title": "A Midsummer Night's Scream",
     "description": "In the quiet coastal city of Gray Harbor, a string of strange burglaries is keeping the locals awake at night. Or it should, except all the victims have reported being fast a sleep during the time of the crimes, suffering from terrible nightmares ever since. A group of local detectives takes up the case, quickly finding themselves face to face with a foe most fabulous and fey.\r\n\r\nThis game is an urban fantasy horror adventure played fully in English, intended for ages 18+. It includes a short investigation, a social encounter or two with NPCs, some action and (depending on player choices) most likely some combat as well. Some violence and horror can be expected, but nothing that you wouldn't see on late night TV. Prior familiarity with the game system is not required, and the game can work as an introduction to the Savage Worlds games in general.\r\n\r\n While not the main focus, the game also includes LGBTQIA+ themes and is fully inclusive.",
@@ -195,6 +241,7 @@
       "scheduled": ["one", "one-or-more"],
       "game-style": ["character-driven", "rules-light"],
       "inclusivity": ["color-blindness", "no-recordings-or-spoken-text"],
+      "uses-gen-ai": ["yes"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
@@ -1892,7 +1939,7 @@
       "age-group": ["adultsnyouth"],
       "scheduled": ["one", "one-or-more"],
       "game-style": ["combat-heavy", "rules-heavy"],
-      "registration": ["other"],
+      "registration": ["not-required"],
       "revolvingdoor": ["true"]
     },
     "cachedAnnotations": {
@@ -2911,7 +2958,7 @@
         "startTime": "2026-07-25T13:00:00+03:00",
         "endTime": "2026-07-25T15:00:00+03:00",
         "lengthMinutes": 120,
-        "location": "Kajo (Pöytä 18,  suunnattu kaikenikäisille)",
+        "location": "Kajo (Pöytä 18)",
         "isCancelled": false,
         "cachedAnnotations": {
           "konsti:rpgSystem": "D&D 5e",
@@ -2919,7 +2966,7 @@
           "konsti:maxAttendance": 5,
           "ropecon:contentWarnings": "D&D -peleissä on taisteluita, mikä tarkoittaa väkivaltaa. ",
           "ropecon:isRevolvingDoor": false,
-          "internal:freeformLocation": "Pöytä 18,  suunnattu kaikenikäisille"
+          "internal:freeformLocation": "Pöytä 18"
         }
       },
       {
@@ -2928,7 +2975,7 @@
         "startTime": "2026-07-26T13:00:00+03:00",
         "endTime": "2026-07-26T15:00:00+03:00",
         "lengthMinutes": 120,
-        "location": "Kajo (Pöytä 18,  suunnattu kaikenikäisille)",
+        "location": "Kajo (Pöytä 18)",
         "isCancelled": false,
         "cachedAnnotations": {
           "konsti:rpgSystem": "D&D 5e",
@@ -2936,7 +2983,7 @@
           "konsti:maxAttendance": 5,
           "ropecon:contentWarnings": "D&D -peleissä on taisteluita, mikä tarkoittaa väkivaltaa. ",
           "ropecon:isRevolvingDoor": false,
-          "internal:freeformLocation": "Pöytä 18,  suunnattu kaikenikäisille"
+          "internal:freeformLocation": "Pöytä 18"
         }
       }
     ]
@@ -4888,19 +4935,6 @@
     "isCancelled": false,
     "scheduleItems": [
       {
-        "slug": "hamarankavijat-roolipeli",
-        "title": "Hämäränkävijät-roolipeli – 1. pelautus (5 - 8-vuotiaille)",
-        "startTime": "2026-07-22T12:00:00+03:00",
-        "endTime": "2026-07-22T13:15:00+03:00",
-        "lengthMinutes": 75,
-        "location": "Peace Station Cabinet",
-        "isCancelled": false,
-        "cachedAnnotations": {
-          "konsti:maxAttendance": 5,
-          "internal:subtitle": "1. pelautus (5 - 8-vuotiaille)"
-        }
-      },
-      {
         "slug": "hamarankavijat-roolipeli-2",
         "title": "Hämäränkävijät-roolipeli – 2. pelautus (5 - 8-vuotiaille)",
         "startTime": "2026-07-22T13:45:00+03:00",
@@ -4964,7 +4998,7 @@
         "startTime": "2026-07-24T19:00:00+03:00",
         "endTime": "2026-07-24T22:00:00+03:00",
         "lengthMinutes": 180,
-        "location": "Kajo (Pöytä 18,  suunnattu kaikenikäisille)",
+        "location": "Kajo (Pöytä 18)",
         "isCancelled": false,
         "cachedAnnotations": {
           "konsti:rpgSystem": "The One Ring 2E",
@@ -4972,7 +5006,7 @@
           "konsti:maxAttendance": 5,
           "ropecon:contentWarnings": "Mild violence, mild horror elements",
           "ropecon:isRevolvingDoor": false,
-          "internal:freeformLocation": "Pöytä 18,  suunnattu kaikenikäisille"
+          "internal:freeformLocation": "Pöytä 18"
         }
       },
       {
@@ -4981,7 +5015,7 @@
         "startTime": "2026-07-25T15:00:00+03:00",
         "endTime": "2026-07-25T18:00:00+03:00",
         "lengthMinutes": 180,
-        "location": "Kajo (Pöytä 18,  suunnattu kaikenikäisille)",
+        "location": "Kajo (Pöytä 18)",
         "isCancelled": false,
         "cachedAnnotations": {
           "konsti:rpgSystem": "The One Ring 2E",
@@ -4989,7 +5023,7 @@
           "konsti:maxAttendance": 5,
           "ropecon:contentWarnings": "Mild violence, mild horror elements",
           "ropecon:isRevolvingDoor": false,
-          "internal:freeformLocation": "Pöytä 18,  suunnattu kaikenikäisille"
+          "internal:freeformLocation": "Pöytä 18"
         }
       },
       {
@@ -4998,7 +5032,7 @@
         "startTime": "2026-07-26T10:00:00+03:00",
         "endTime": "2026-07-26T13:00:00+03:00",
         "lengthMinutes": 180,
-        "location": "Kajo (Pöytä 18,  suunnattu kaikenikäisille)",
+        "location": "Kajo (Pöytä 18)",
         "isCancelled": false,
         "cachedAnnotations": {
           "konsti:rpgSystem": "The One Ring 2E",
@@ -5006,7 +5040,7 @@
           "konsti:maxAttendance": 5,
           "ropecon:contentWarnings": "Mild violence, mild horror elements",
           "ropecon:isRevolvingDoor": false,
-          "internal:freeformLocation": "Pöytä 18,  suunnattu kaikenikäisille"
+          "internal:freeformLocation": "Pöytä 18"
         }
       }
     ]
@@ -11822,7 +11856,7 @@
     "description": "Karvajalkaklaani on vaeltanut Sumuvuorten toiselle puolen, ja nyt edessä avautuu outo erämaa. Minne kaivetaan uudet kolot, tuleeko naapureista ystäviä vai vihollisia, ja mitä vanhaa kannattaa pitää mukana, mitä jättää? Kaikkeen on syytä varautua, sillä talvi on tulossa. Uudisasutuspeliä, suunnittelua ja kohtaamisia klaanilaisten ja vieraiden kanssa.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
-      "date": ["2026-07-26"],
+      "date": ["2026-07-24"],
       "form": ["offer-rpg"],
       "room": ["valo"],
       "type": ["gaming"],
@@ -11854,8 +11888,8 @@
       {
         "slug": "muinaishobitit-4-uusi-alku-1",
         "title": "Muinaishobitit 4: Uusi alku",
-        "startTime": "2026-07-26T13:00:00+03:00",
-        "endTime": "2026-07-26T16:00:00+03:00",
+        "startTime": "2026-07-24T16:00:00+03:00",
+        "endTime": "2026-07-24T19:00:00+03:00",
         "lengthMinutes": 180,
         "location": "Valo (Pöytä 17)",
         "isCancelled": false,
@@ -11875,7 +11909,7 @@
     "description": "Vasta aloilleen asettuneen yksinäisen karvajalkaklaanin maille saapuu yllättäen vieraita vuorten takaa. Mitä ne aikovat, jäädä vai jatkaa? Onko niistä apua vai haittaa? Ja miksi ne ovat niin outoja! Hobittikulttuurien kohtaaminen Eriadorin erämaassa.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
-      "date": ["2026-07-24"],
+      "date": ["2026-07-26"],
       "form": ["offer-rpg"],
       "room": ["valo"],
       "type": ["gaming"],
@@ -11907,8 +11941,8 @@
       {
         "slug": "muinaishobitit-5-tuttuja-vieraita-1",
         "title": "Muinaishobitit 5: Tuttuja vieraita",
-        "startTime": "2026-07-24T16:00:00+03:00",
-        "endTime": "2026-07-24T19:00:00+03:00",
+        "startTime": "2026-07-26T13:00:00+03:00",
+        "endTime": "2026-07-26T16:00:00+03:00",
         "lengthMinutes": 180,
         "location": "Valo (Pöytä 17)",
         "isCancelled": false,
@@ -13240,6 +13274,51 @@
           "ropecon:contentWarnings": "väkivalta, kauhu (painajaiset), pelottavat olennot (epäkuolleet, käärmeet, hämähäkit), kuolema",
           "ropecon:isRevolvingDoor": false,
           "internal:freeformLocation": "Pöytä 27"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "palapelikilpailu-yksilokilpailu",
+    "title": "Palapelikilpailu (yksilökilpailu)",
+    "description": "Palasina Studion yksilöpalapelikisa johdattaa sinut palapeliurheilun tunnelmaan! Kilpailussa kootaan 500-palan palapeli. Aikaa kokoamiseen on 1,5 tuntia ja tavoitteena on koota palapeli mahdollisimman nopeasti. Ensimmäisenä valmistunut voittaa!",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-07-24"],
+      "form": ["offer-other-gameprogram"],
+      "room": ["halli4turnaukset"],
+      "type": ["tournament"],
+      "state": ["accepted"],
+      "topic": ["othergames"],
+      "konsti": ["tournament"],
+      "grouping": ["beginners"],
+      "language": ["fi"],
+      "age-group": ["everyone"],
+      "scheduled": ["one", "one-or-more"],
+      "inclusivity": ["color-blindness", "fingers"],
+      "registration": ["konsti"],
+      "revolvingdoor": ["false"]
+    },
+    "cachedAnnotations": {
+      "konsti:minAttendance": 5,
+      "konsti:maxAttendance": 15,
+      "ropecon:isRevolvingDoor": false
+    },
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "palapelikilpailu-yksilokilpailu",
+        "title": "Palapelikilpailu (yksilökilpailu)",
+        "startTime": "2026-07-24T17:00:00+03:00",
+        "endTime": "2026-07-24T19:00:00+03:00",
+        "lengthMinutes": 120,
+        "location": "Halli 4 Tournaments (lohkot J, K ja L)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:minAttendance": 5,
+          "konsti:maxAttendance": 15,
+          "ropecon:isRevolvingDoor": false,
+          "internal:freeformLocation": "lohkot J, K ja L"
         }
       }
     ]
@@ -15806,8 +15885,8 @@
       "revolvingdoor": ["false"]
     },
     "cachedAnnotations": {
-      "konsti:minAttendance": 8,
-      "konsti:maxAttendance": 10,
+      "konsti:minAttendance": 7,
+      "konsti:maxAttendance": 11,
       "ropecon:contentWarnings": "Sisältövaroitukset: misogynia, rankat taustatarinat (mm. henkirikokset, hyväksikäyttö), itsemurha, yksityisyyden menettäminen, tarkkailun kohteena oleminen, voimakkaat valot ja äänet",
       "ropecon:isRevolvingDoor": false
     },
@@ -15822,8 +15901,8 @@
         "location": "Room 217",
         "isCancelled": false,
         "cachedAnnotations": {
-          "konsti:minAttendance": 8,
-          "konsti:maxAttendance": 10,
+          "konsti:minAttendance": 7,
+          "konsti:maxAttendance": 11,
           "ropecon:contentWarnings": "Sisältövaroitukset: misogynia, rankat taustatarinat (mm. henkirikokset, hyväksikäyttö), itsemurha, yksityisyyden menettäminen, tarkkailun kohteena oleminen, voimakkaat valot ja äänet",
           "ropecon:isRevolvingDoor": false
         }
@@ -19359,7 +19438,7 @@
       "konsti:rpgSystem": "The Job",
       "konsti:minAttendance": 4,
       "konsti:maxAttendance": 5,
-      "ropecon:contentWarnings": "Fyysinen väkivalta, oudot unet, noppien kasaaminen torniksi",
+      "ropecon:contentWarnings": "Fyysinen väkivalta, oudot unet, noppien kasaaminen torniksi, pelin esikuvana toimivassa Inception-elokuvassa käsitellään itsemurhia. Pelissä näitä ei käsitellä jos yksikin pelaaja haluaa ne pelistä poistaa",
       "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
@@ -19376,7 +19455,7 @@
           "konsti:rpgSystem": "The Job",
           "konsti:minAttendance": 4,
           "konsti:maxAttendance": 5,
-          "ropecon:contentWarnings": "Fyysinen väkivalta, oudot unet, noppien kasaaminen torniksi",
+          "ropecon:contentWarnings": "Fyysinen väkivalta, oudot unet, noppien kasaaminen torniksi, pelin esikuvana toimivassa Inception-elokuvassa käsitellään itsemurhia. Pelissä näitä ei käsitellä jos yksikin pelaaja haluaa ne pelistä poistaa",
           "ropecon:isRevolvingDoor": false,
           "internal:freeformLocation": "Pöytä 3"
         }
@@ -19419,14 +19498,14 @@
         "startTime": "2026-07-25T10:00:00+03:00",
         "endTime": "2026-07-25T12:00:00+03:00",
         "lengthMinutes": 120,
-        "location": "Kajo (Pöytä 18,  suunnattu kaikenikäisille)",
+        "location": "Kajo (Pöytä 18)",
         "isCancelled": false,
         "cachedAnnotations": {
           "konsti:rpgSystem": "Helppo conisysteemi",
           "konsti:minAttendance": 3,
           "konsti:maxAttendance": 5,
           "ropecon:isRevolvingDoor": false,
-          "internal:freeformLocation": "Pöytä 18,  suunnattu kaikenikäisille"
+          "internal:freeformLocation": "Pöytä 18"
         }
       }
     ]
@@ -20599,6 +20678,64 @@
     ]
   },
   {
+    "slug": "virtue-malice",
+    "title": "Virtue & Malice",
+    "description": "Virtue & Malice on uusi sosiaalinen päättelypeli, joka ammentaa parhaat palat Blood on the Clocktowerista ja The Resistancesta sekä tuo mukaan uusia kerroksia roolipelaamiseen ja politikointiin.\r\n\r\nMaailmassa on jotain mätää. Onneksi lähiseudun etevimmät mystikot ovat kokoontuneet suotemppeliin suorittamaan viisiosaisen unirituaalin, jonka onnistuessa maailma palaa edes jotenkuten raiteilleen. Valitettavasti myös osallistujissa on jotain mätää. Hyveellisten joukkoon on soluttautunut paheellisia, joilla on aivan toisenlaiset suunnitelmat maailman kohtalosta. He pyrkivät sabotoimaan rituaalin ja syöksemään seutukunnan turmioon! ( – tai pelastamaan sen, riippuen keneltä kysyy...) Onnistuakseen hyveellisten on valittava rituaalin keskiöön luotettavimmat jäsenensä... mutta keihin voi luottaa?\r\n\r\nAlkuun 30 min perehdytys ja valmistelu. Varsinainen peli kestää noin 90–120 min. Ei pelaajaeliminointia kesken pelin.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-07-24", "2026-07-25"],
+      "form": ["offer-other-gameprogram"],
+      "room": ["sali215", "sali217"],
+      "type": ["gaming"],
+      "state": ["accepted"],
+      "topic": ["boardgames", "othergames"],
+      "konsti": ["othergaming"],
+      "grouping": ["beginners", "dreams"],
+      "language": ["fi"],
+      "age-group": ["adultsnyouth"],
+      "scheduled": ["multiple", "one-or-more"],
+      "inclusivity": ["fingers"],
+      "registration": ["konsti"],
+      "revolvingdoor": ["false"]
+    },
+    "cachedAnnotations": {
+      "konsti:minAttendance": 8,
+      "konsti:maxAttendance": 18,
+      "ropecon:isRevolvingDoor": false
+    },
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "virtue-malice",
+        "title": "Virtue & Malice",
+        "startTime": "2026-07-24T20:00:00+03:00",
+        "endTime": "2026-07-24T22:30:00+03:00",
+        "lengthMinutes": 150,
+        "location": "Room 217",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:minAttendance": 8,
+          "konsti:maxAttendance": 18,
+          "ropecon:isRevolvingDoor": false
+        }
+      },
+      {
+        "slug": "virtue-malice-2",
+        "title": "Virtue & Malice",
+        "startTime": "2026-07-25T22:00:00+03:00",
+        "endTime": "2026-07-26T00:30:00+03:00",
+        "lengthMinutes": 150,
+        "location": "Room 215",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:minAttendance": 8,
+          "konsti:maxAttendance": 18,
+          "ropecon:isRevolvingDoor": false
+        }
+      }
+    ]
+  },
+  {
     "slug": "visit-arkham-komitean-kokous",
     "title": "Visit Arkham -komitean kokous",
     "description": "Arkhamin matkailunedistämiskomitea kokoontuu ja asialistalla on jos jonkinlaista aina mystisistä katoamistapauksista kalaisiin kirjastonkäyttäjiin ja jotenkin tästä katastrofikaupungista pitäisi brändätä houkutteleva lomakohde. Vastaa kokouskutsuun ja liity komiteaan!\r\n\r\nPelin tyylilaji on musta komedia yhdistettynä lovecraftiläisiin kauhuelementteihin. Sen rankkojakin aiheita käsitellään osana komitealaisten tavallista työpäivää, joka on jatkuvaa roskispaloa lonkeroilla höystettynä. Lovecraft-loren tuntemus ei ole pelaajille haitaksi, mutta myös heittäytymällä pääsee pitkälle. \r\n\r\nIlmoittautuminen alkaa lauantaina klo 11:00 Ropelarp-tiskillä.",
@@ -21099,6 +21236,7 @@
       "age-group": ["adultsnyouth"],
       "scheduled": ["one", "one-or-more"],
       "game-style": ["light", "rules-light"],
+      "uses-gen-ai": ["yes"],
       "registration": ["not-required"],
       "revolvingdoor": ["true"]
     },
