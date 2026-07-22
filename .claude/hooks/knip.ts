@@ -1,8 +1,10 @@
 import { execFileSync } from "node:child_process";
 import { runYarn } from "./runYarn";
+import { getSessionEditedFiles } from "./transcriptFiles";
 
 interface HookInput {
   tool_name?: string;
+  transcript_path?: string;
   tool_input?: { file_path?: string };
   tool_response?: { filePath?: string };
 }
@@ -37,9 +39,22 @@ const anyUncommittedCodeChanges = (): boolean => {
   }
 };
 
+// Did this session's file edits touch code? Unknown transcript means assume
+// yes so the check still runs
+const sessionTouchedCode = (): boolean => {
+  const edited = getSessionEditedFiles(input.transcript_path);
+  if (!edited) {
+    return true;
+  }
+  return [...edited].some(isCodeFile);
+};
+
 // filePath set (Write/Edit): check that file. Otherwise (Stop hook or Bash):
-// run if any uncommitted change touches code
-const shouldRun = filePath ? isCodeFile(filePath) : anyUncommittedCodeChanges();
+// run if any uncommitted change touches code and this session edited code,
+// so pre-existing working-tree changes don't trigger a run on their own
+const shouldRun = filePath
+  ? isCodeFile(filePath)
+  : anyUncommittedCodeChanges() && sessionTouchedCode();
 
 if (!shouldRun) {
   process.exit(0);

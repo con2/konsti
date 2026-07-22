@@ -1,8 +1,10 @@
 import { execFileSync } from "node:child_process";
 import { runYarn } from "./runYarn";
+import { getSessionEditedFiles, normalizePath } from "./transcriptFiles";
 
 interface HookInput {
   tool_name?: string;
+  transcript_path?: string;
   tool_input?: { file_path?: string };
   tool_response?: { filePath?: string };
 }
@@ -54,8 +56,14 @@ if (filePath) {
   targets = isLintable(filePath) ? [filePath] : [];
 } else {
   // Stop hook (or Bash): no single file to target, so lint every lintable
-  // file that's currently uncommitted in the working tree
+  // file that's currently uncommitted in the working tree - but only those
+  // edited during this session, so pre-existing working-tree changes don't
+  // trigger a run on their own
+  const edited = getSessionEditedFiles(input.transcript_path);
   targets = getUncommittedFiles().filter(isLintable);
+  if (edited) {
+    targets = targets.filter((p) => edited.has(normalizePath(p)));
+  }
 }
 
 if (targets.length === 0) {
