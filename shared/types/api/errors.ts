@@ -39,6 +39,5 @@ export enum BcryptError {
 }
 
 export enum QueueError {
-  QUEUE_NOT_INITIALIZED = "queueNotInitialized",
   FAILED_TO_PUSH = "failedToPush",
 }

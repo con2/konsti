@@ -29,6 +29,8 @@ import {
 import { ProgramType } from "shared/types/models/programItem";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
+import { makeErrorResult } from "shared/utils/result";
+import { MongoDbError, QueueError } from "shared/types/api/errors";
 import {
   assertUserUpdatedCorrectly,
   firstLotterySignupSlot,
@@ -36,11 +38,20 @@ import {
 } from "server/features/assignment/run-assignment/runAssignmentTestUtils";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 import { ProgramItemModel } from "server/features/program-item/programItemSchema";
-import { addEventLogItems } from "server/features/user/event-log/eventLogRepository";
+import {
+  addEventLogItems,
+  deleteEventLogItemsByStartTime,
+} from "server/features/user/event-log/eventLogRepository";
 import { EventLogAction } from "shared/types/models/eventLog";
-import { createNotificationQueueService } from "server/utils/notificationQueue";
+import {
+  createNotificationQueueService,
+  getGlobalNotificationQueueService,
+  NotificationTaskType,
+} from "server/utils/notificationQueue";
 import { EmailSender } from "server/features/notifications/email";
 import { AssignmentResultStatus } from "server/types/resultTypes";
+import { saveSettings } from "server/features/settings/settingsRepository";
+import { EmailNotificationTrigger } from "shared/types/emailNotification";
 
 // This needs to be adjusted if test data is changed
 const expectedResultsCount = 18;
@@ -55,6 +66,22 @@ vi.mock<object>(
       getGlobalNotificationQueueService: vi.fn(() => {
         return createNotificationQueueService(new EmailSender(), 1, true);
       }),
+    };
+  },
+);
+
+// Pass-through wrappers so single tests can override the event log writes
+// with an error result; vi.resetAllMocks restores the real implementations
+vi.mock(
+  import("server/features/user/event-log/eventLogRepository"),
+  async (originalImport) => {
+    const actual = await originalImport();
+    return {
+      ...actual,
+      addEventLogItems: vi.fn(actual.addEventLogItems),
+      deleteEventLogItemsByStartTime: vi.fn(
+        actual.deleteEventLogItemsByStartTime,
+      ),
     };
   },
 );
@@ -1003,4 +1030,232 @@ test("Should keep a past lottery signup but not let it affect an upcoming lotter
     (signup) => signup.programItemId === pastProgramItem.programItemId,
   );
   expect(pastSignup).toBeDefined();
+});
+
+test("Should not fail assignment or skip overlap cleanup when notification queueing fails", async () => {
+  // Notification queue is unavailable for the whole run
+  vi.mocked(getGlobalNotificationQueueService).mockReturnValue(null);
+
+  // Email notifications are enabled, so the run tries to queue them
+  await saveSettings({
+    emailNotificationTrigger: [
+      EmailNotificationTrigger.ACCEPTED,
+      EmailNotificationTrigger.REJECTED,
+    ],
+  });
+
+  // testProgramItem runs 14:00-18:00, testProgramItem2 starts 15:00 inside it,
+  // so winning the first must remove the overlapping lottery signup to the second
+  await saveProgramItems([
+    { ...testProgramItem, minAttendance: 1, maxAttendance: 1 },
+    { ...testProgramItem2, minAttendance: 1, maxAttendance: 1 },
+  ]);
+  await saveUser(mockUser);
+  await saveLotterySignups({
+    username: mockUser.username,
+    lotterySignups: [
+      { ...mockLotterySignups[0], priority: 1 },
+      { ...mockLotterySignups[1], priority: 1 },
+    ],
+  });
+
+  const assignResultsResult = await runAssignment({
+    assignmentAlgorithm: AssignmentAlgorithm.RANDOM_PADG,
+    assignmentTime: testProgramItem.startTime,
+  });
+
+  // The seats are already saved when notifications are queued, so a queue
+  // failure must not fail the run: a failure result would skip the overlap
+  // cleanup below and invite a re-run that reshuffles the saved seats
+  expect(assignResultsResult.ok).toBe(true);
+  const assignResults = unsafelyUnwrap(assignResultsResult);
+  expect(assignResults.status).toEqual(AssignmentResultStatus.SUCCESS);
+  expect(assignResults.results).toHaveLength(1);
+  expect(assignResults.results[0].assignmentSignup.programItemId).toEqual(
+    testProgramItem.programItemId,
+  );
+
+  // The won seat is persisted
+  const signupsAfterRun = unsafelyUnwrap(await findDirectSignups());
+  const wonSignup = signupsAfterRun.find(
+    (signup) => signup.programItemId === testProgramItem.programItemId,
+  );
+  expect(wonSignup?.userSignups).toHaveLength(1);
+  expect(wonSignup?.userSignups[0].username).toEqual(mockUser.username);
+
+  // The overlapping lottery signup was removed despite the queue failure
+  const userAfterRun = unsafelyUnwrap(await findUser(mockUser.username));
+  expect(
+    userAfterRun?.lotterySignups.map((signup) => signup.programItemId),
+  ).toEqual([testProgramItem.programItemId]);
+});
+
+test("Should not fail assignment or skip overlap cleanup when event log writes fail", async () => {
+  // Event log writes fail for the whole run
+  vi.mocked(deleteEventLogItemsByStartTime).mockResolvedValue(
+    makeErrorResult(MongoDbError.UNKNOWN_ERROR),
+  );
+  vi.mocked(addEventLogItems).mockResolvedValue(
+    makeErrorResult(MongoDbError.UNKNOWN_ERROR),
+  );
+
+  // Pin a single queue instance so queued emails can be asserted after the run
+  const queueService = createNotificationQueueService(
+    new EmailSender(),
+    1,
+    true,
+  );
+  vi.mocked(getGlobalNotificationQueueService).mockReturnValue(queueService);
+
+  await saveSettings({
+    emailNotificationTrigger: [
+      EmailNotificationTrigger.ACCEPTED,
+      EmailNotificationTrigger.REJECTED,
+    ],
+  });
+
+  // testProgramItem runs 14:00-18:00, testProgramItem2 starts 15:00 inside it,
+  // so winning the first must remove the overlapping lottery signup to the second
+  await saveProgramItems([
+    { ...testProgramItem, minAttendance: 1, maxAttendance: 1 },
+    { ...testProgramItem2, minAttendance: 1, maxAttendance: 1 },
+    // Stays under min attendance with its single attendee, so the second user
+    // deterministically loses the lottery
+    {
+      ...testProgramItem,
+      programItemId: "under-min-attendance-item",
+      parentId: "under-min-attendance-item",
+      title: "Under min attendance item",
+      minAttendance: 2,
+      maxAttendance: 2,
+    },
+  ]);
+  await saveUser(mockUser);
+  await saveUser(mockUser2);
+  await saveLotterySignups({
+    username: mockUser.username,
+    lotterySignups: [
+      { ...mockLotterySignups[0], priority: 1 },
+      { ...mockLotterySignups[1], priority: 1 },
+    ],
+  });
+  await saveLotterySignups({
+    username: mockUser2.username,
+    lotterySignups: [
+      {
+        programItemId: "under-min-attendance-item",
+        priority: 1,
+        signedToStartTime: testProgramItem.startTime,
+      },
+    ],
+  });
+
+  const assignResultsResult = await runAssignment({
+    assignmentAlgorithm: AssignmentAlgorithm.RANDOM_PADG,
+    assignmentTime: testProgramItem.startTime,
+  });
+
+  // The seats are already saved when the event logs are written, so an event
+  // log failure must not fail the run or skip the overlap cleanup below
+  expect(assignResultsResult.ok).toBe(true);
+  const assignResults = unsafelyUnwrap(assignResultsResult);
+  expect(assignResults.status).toEqual(AssignmentResultStatus.SUCCESS);
+  expect(assignResults.results).toHaveLength(1);
+  expect(assignResults.results[0].username).toEqual(mockUser.username);
+  expect(assignResults.results[0].assignmentSignup.programItemId).toEqual(
+    testProgramItem.programItemId,
+  );
+
+  // The won seat is persisted
+  const signupsAfterRun = unsafelyUnwrap(await findDirectSignups());
+  const wonSignup = signupsAfterRun.find(
+    (signup) => signup.programItemId === testProgramItem.programItemId,
+  );
+  expect(wonSignup?.userSignups).toHaveLength(1);
+  expect(wonSignup?.userSignups[0].username).toEqual(mockUser.username);
+
+  // The overlapping lottery signup was removed despite the event log failures
+  const userAfterRun = unsafelyUnwrap(await findUser(mockUser.username));
+  expect(
+    userAfterRun?.lotterySignups.map((signup) => signup.programItemId),
+  ).toEqual([testProgramItem.programItemId]);
+
+  // Event log failures don't skip email queueing: the winner's accepted email
+  // and the loser's rejected email are both queued
+  const queuedNotifications = queueService.getItems();
+  const acceptedNotifications = queuedNotifications.filter(
+    (task) => task.type === NotificationTaskType.SEND_EMAIL_ACCEPTED,
+  );
+  const rejectedNotifications = queuedNotifications.filter(
+    (task) => task.type === NotificationTaskType.SEND_EMAIL_REJECTED,
+  );
+  expect(acceptedNotifications).toHaveLength(1);
+  expect(acceptedNotifications[0].username).toEqual(mockUser.username);
+  expect(rejectedNotifications).toHaveLength(1);
+  expect(rejectedNotifications[0].username).toEqual(mockUser2.username);
+});
+
+test("Should not fail assignment or skip overlap cleanup when email queueing fails", async () => {
+  // Email notifications are enabled but pushing to the queue fails
+  const queueService = createNotificationQueueService(
+    new EmailSender(),
+    1,
+    true,
+  );
+  const addNotificationsBulkSpy = vi
+    .spyOn(queueService, "addNotificationsBulk")
+    .mockReturnValue(makeErrorResult(QueueError.FAILED_TO_PUSH));
+  vi.mocked(getGlobalNotificationQueueService).mockReturnValue(queueService);
+
+  await saveSettings({
+    emailNotificationTrigger: [
+      EmailNotificationTrigger.ACCEPTED,
+      EmailNotificationTrigger.REJECTED,
+    ],
+  });
+
+  // testProgramItem runs 14:00-18:00, testProgramItem2 starts 15:00 inside it,
+  // so winning the first must remove the overlapping lottery signup to the second
+  await saveProgramItems([
+    { ...testProgramItem, minAttendance: 1, maxAttendance: 1 },
+    { ...testProgramItem2, minAttendance: 1, maxAttendance: 1 },
+  ]);
+  await saveUser(mockUser);
+  await saveLotterySignups({
+    username: mockUser.username,
+    lotterySignups: [
+      { ...mockLotterySignups[0], priority: 1 },
+      { ...mockLotterySignups[1], priority: 1 },
+    ],
+  });
+
+  const assignResultsResult = await runAssignment({
+    assignmentAlgorithm: AssignmentAlgorithm.RANDOM_PADG,
+    assignmentTime: testProgramItem.startTime,
+  });
+
+  // The seats are already saved when emails are queued, so a push failure must
+  // not fail the run or skip the overlap cleanup below
+  expect(assignResultsResult.ok).toBe(true);
+  const assignResults = unsafelyUnwrap(assignResultsResult);
+  expect(assignResults.status).toEqual(AssignmentResultStatus.SUCCESS);
+  expect(assignResults.results).toHaveLength(1);
+
+  // The failing push was actually attempted, so the run survived it rather
+  // than skipping email queueing
+  expect(addNotificationsBulkSpy).toHaveBeenCalled();
+
+  // The won seat is persisted
+  const signupsAfterRun = unsafelyUnwrap(await findDirectSignups());
+  const wonSignup = signupsAfterRun.find(
+    (signup) => signup.programItemId === testProgramItem.programItemId,
+  );
+  expect(wonSignup?.userSignups).toHaveLength(1);
+  expect(wonSignup?.userSignups[0].username).toEqual(mockUser.username);
+
+  // The overlapping lottery signup was removed despite the queueing failure
+  const userAfterRun = unsafelyUnwrap(await findUser(mockUser.username));
+  expect(
+    userAfterRun?.lotterySignups.map((signup) => signup.programItemId),
+  ).toEqual([testProgramItem.programItemId]);
 });

@@ -12,12 +12,8 @@ import {
   findDirectSignupsByStartTime,
   saveDirectSignups,
 } from "server/features/direct-signup/directSignupRepository";
-import {
-  Result,
-  makeErrorResult,
-  makeSuccessResult,
-} from "shared/utils/result";
-import { MongoDbError, QueueError } from "shared/types/api/errors";
+import { Result, makeSuccessResult } from "shared/utils/result";
+import { MongoDbError } from "shared/types/api/errors";
 import {
   addEventLogItems,
   deleteEventLogItemsByStartTime,
@@ -47,20 +43,7 @@ export const saveUserSignupResults = async ({
   results,
   users,
   programItems,
-}: SaveUserSignupResultsParams): Promise<
-  Result<void, MongoDbError | QueueError>
-> => {
-  const queueService = getGlobalNotificationQueueService();
-
-  const settingsResult = await findSettings();
-  let settings: Settings | null = null;
-  if (settingsResult.ok) {
-    settings = settingsResult.value;
-  } else {
-    logger.error(
-      "Failed to find settings. Do not queue notification for this assignment.",
-    );
-  }
+}: SaveUserSignupResultsParams): Promise<Result<void, MongoDbError>> => {
   // Remove previous lottery result for the same start time
   // This does not remove non-lottery signups or previous signups from moved program items
   const delAssignmentSignupsByStartTimeResult =
@@ -118,16 +101,6 @@ export const saveUserSignupResults = async ({
   }
   const { droppedSignups } = saveSignupsResult.value;
 
-  // Remove eventLog items from same start time
-  const deleteEventLogItemsByStartTimeResult =
-    await deleteEventLogItemsByStartTime(assignmentTime, [
-      EventLogAction.NEW_ASSIGNMENT,
-      EventLogAction.NO_ASSIGNMENT,
-    ]);
-  if (!deleteEventLogItemsByStartTimeResult.ok) {
-    return deleteEventLogItemsByStartTimeResult;
-  }
-
   // Filter out possible dropped results
   const finalResults = results.filter((result) => {
     return droppedSignups.every(
@@ -137,6 +110,62 @@ export const saveUserSignupResults = async ({
         signup.username !== result.username,
     );
   });
+
+  // The assignment seats are saved at this point, notification failures are
+  // handled inside and don't fail the run
+  await addAssignmentNotifications({
+    assignmentTime,
+    finalResults,
+    users,
+    programItems,
+  });
+
+  return makeSuccessResult();
+};
+
+interface AddAssignmentNotificationsParams {
+  assignmentTime: string;
+  finalResults: readonly UserAssignmentResult[];
+  users: User[];
+  programItems: ProgramItem[];
+}
+
+// The assignment seats are already saved when this runs, so failures are only
+// logged and never returned: an error escaping to the caller would fail the
+// run and skip the overlap lottery signup cleanup
+const addAssignmentNotifications = async ({
+  assignmentTime,
+  finalResults,
+  users,
+  programItems,
+}: AddAssignmentNotificationsParams): Promise<void> => {
+  const queueService = getGlobalNotificationQueueService();
+
+  const settingsResult = await findSettings();
+  let settings: Settings | null = null;
+  if (settingsResult.ok) {
+    settings = settingsResult.value;
+  } else {
+    logger.error(
+      new Error(
+        `Assignment ${assignmentTime}: failed to find settings, skip queueing emails`,
+      ),
+    );
+  }
+
+  // Remove eventLog items from same start time
+  const deleteEventLogItemsByStartTimeResult =
+    await deleteEventLogItemsByStartTime(assignmentTime, [
+      EventLogAction.NEW_ASSIGNMENT,
+      EventLogAction.NO_ASSIGNMENT,
+    ]);
+  if (!deleteEventLogItemsByStartTimeResult.ok) {
+    logger.error(
+      new Error(
+        `Assignment ${assignmentTime}: failed to delete previous assignment event log items: ${deleteEventLogItemsByStartTimeResult.error}`,
+      ),
+    );
+  }
 
   // Add NEW_ASSIGNMENT to user event logs
   const newAssignmentEventLogItemsResult = await addEventLogItems(
@@ -149,7 +178,11 @@ export const saveUserSignupResults = async ({
     })),
   );
   if (!newAssignmentEventLogItemsResult.ok) {
-    return newAssignmentEventLogItemsResult;
+    logger.error(
+      new Error(
+        `Assignment ${assignmentTime}: failed to add NEW_ASSIGNMENT event log items: ${newAssignmentEventLogItemsResult.error}`,
+      ),
+    );
   }
 
   // Add SEND_EMAIL_ACCEPTED to notification queue
@@ -159,20 +192,29 @@ export const saveUserSignupResults = async ({
     )
   ) {
     if (queueService === null) {
-      return makeErrorResult(QueueError.QUEUE_NOT_INITIALIZED);
-    }
-    const newAssignmentEmailNotificationsResult =
-      queueService.addNotificationsBulk(
-        finalResults.map((result) => ({
-          type: NotificationTaskType.SEND_EMAIL_ACCEPTED,
-          username: result.username,
-          programItemId: result.assignmentSignup.programItemId,
-          programItemStartTime: result.assignmentSignup.signedToStartTime,
-        })),
+      logger.error(
+        new Error(
+          `Assignment ${assignmentTime}: notification queue not initialized, skip queueing accepted emails`,
+        ),
       );
+    } else {
+      const newAssignmentEmailNotificationsResult =
+        queueService.addNotificationsBulk(
+          finalResults.map((result) => ({
+            type: NotificationTaskType.SEND_EMAIL_ACCEPTED,
+            username: result.username,
+            programItemId: result.assignmentSignup.programItemId,
+            programItemStartTime: result.assignmentSignup.signedToStartTime,
+          })),
+        );
 
-    if (!newAssignmentEmailNotificationsResult.ok) {
-      return newAssignmentEmailNotificationsResult;
+      if (!newAssignmentEmailNotificationsResult.ok) {
+        logger.error(
+          new Error(
+            `Assignment ${assignmentTime}: failed to queue accepted emails: ${newAssignmentEmailNotificationsResult.error}`,
+          ),
+        );
+      }
     }
   }
 
@@ -236,7 +278,11 @@ export const saveUserSignupResults = async ({
       ),
     );
     if (!noAssignmentEventLogItemsResult.ok) {
-      return noAssignmentEventLogItemsResult;
+      logger.error(
+        new Error(
+          `Assignment ${assignmentTime}: failed to add NO_ASSIGNMENT event log items: ${noAssignmentEventLogItemsResult.error}`,
+        ),
+      );
     }
 
     // Add SEND_EMAIL_REJECTED to notification queue
@@ -246,25 +292,32 @@ export const saveUserSignupResults = async ({
       )
     ) {
       if (queueService === null) {
-        return makeErrorResult(QueueError.QUEUE_NOT_INITIALIZED);
-      }
-      const noAssignmentEmailNotificationsResult =
-        queueService.addNotificationsBulk(
-          noAssignmentLotterySignupUsernames.map(
-            (noAssignmentLotterySignupUsername) => ({
-              type: NotificationTaskType.SEND_EMAIL_REJECTED,
-              username: noAssignmentLotterySignupUsername,
-              programItemId: "",
-              programItemStartTime: assignmentTime,
-            }),
+        logger.error(
+          new Error(
+            `Assignment ${assignmentTime}: notification queue not initialized, skip queueing rejected emails`,
           ),
         );
+      } else {
+        const noAssignmentEmailNotificationsResult =
+          queueService.addNotificationsBulk(
+            noAssignmentLotterySignupUsernames.map(
+              (noAssignmentLotterySignupUsername) => ({
+                type: NotificationTaskType.SEND_EMAIL_REJECTED,
+                username: noAssignmentLotterySignupUsername,
+                programItemId: "",
+                programItemStartTime: assignmentTime,
+              }),
+            ),
+          );
 
-      if (!noAssignmentEmailNotificationsResult.ok) {
-        return noAssignmentEmailNotificationsResult;
+        if (!noAssignmentEmailNotificationsResult.ok) {
+          logger.error(
+            new Error(
+              `Assignment ${assignmentTime}: failed to queue rejected emails: ${noAssignmentEmailNotificationsResult.error}`,
+            ),
+          );
+        }
       }
     }
   }
-
-  return makeSuccessResult();
 };
