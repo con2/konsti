@@ -16,6 +16,7 @@ import {
   testProgramItem,
   testProgramItem2,
 } from "shared/tests/testProgramItem";
+import { ProgramType } from "shared/types/models/programItem";
 
 test("Add lottery signup", async ({ page, request }) => {
   const startTime = dayjs(config.event().eventStartTime)
@@ -294,6 +295,123 @@ test("Receive spot in lottery signup, with multiple lottery program types", asyn
       String.raw`You were assigned to the .* ${firstProgramItemTitle}\.`,
     ),
   );
+});
+
+test("Receive seat from each lottery program type in separate time slots", async ({
+  page,
+  request,
+}) => {
+  const { eventStartTime, twoPhaseSignupProgramTypes } = config.event();
+
+  // Expected English names for the program type interpolations, the
+  // programTypeSingular and programTypeIllative locale values are identical in English
+  const programTypeNamesEn: Record<ProgramType, string> = {
+    [ProgramType.TABLETOP_RPG]: "role-playing game",
+    [ProgramType.LARP]: "larp",
+    [ProgramType.TOURNAMENT]: "tournament",
+    [ProgramType.WORKSHOP]: "workshop",
+    [ProgramType.EXPERIENCE_POINT]: "game",
+    [ProgramType.OTHER]: "program item",
+    [ProgramType.ROUNDTABLE_DISCUSSION]: "roundtable discussion",
+    [ProgramType.FLEAMARKET]: "flea market time",
+    [ProgramType.OTHER_GAMING]: "game",
+  };
+
+  // One program item per lottery program type in consecutive lottery slots.
+  // Each slot's lottery signup window is [start - 4h, start - 2h], so the test
+  // time is advanced to the window start before each signup
+  const slots = [4, 6, 8].map((hoursFromEventStart, index) => {
+    const programType =
+      twoPhaseSignupProgramTypes[index % twoPhaseSignupProgramTypes.length];
+    const startTime = dayjs(eventStartTime)
+      .add(hoursFromEventStart, "hour")
+      .toISOString();
+    return {
+      programType,
+      title: `Lottery slot ${hoursFromEventStart}h ${programTypeNamesEn[programType]}`,
+      startTime,
+      signupTime: dayjs(startTime).subtract(4, "hour").toISOString(),
+    };
+  });
+
+  await populateDb(request, { clean: true, users: true, admin: true });
+  await addProgramItems(
+    request,
+    slots.map((slot, index) => ({
+      ...testProgramItem,
+      programItemId: `lottery-slot-item-${index}`,
+      parentId: `lottery-slot-item-${index}`,
+      title: slot.title,
+      programType: slot.programType,
+      startTime: slot.startTime,
+      endTime: dayjs(slot.startTime).add(1, "hour").toISOString(),
+      // Keep items short so consecutive slots don't overlap: with the OVERLAP
+      // removal strategy a longer win would drop the later lottery signups
+      mins: 60,
+      // Adjust min/max so user will get the spot in every slot
+      minAttendance: 1,
+      maxAttendance: 1,
+    })),
+  );
+
+  await postSettings(request, {
+    signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
+  });
+
+  await login(page, request, { username: "test1", password: "test" });
+
+  const programList = new ProgramListPage(page);
+
+  // Lottery signup to each program item in its own signup window
+  for (const slot of slots) {
+    await postTestSettings(request, { testTime: slot.signupTime });
+    await page.goto("/");
+    await programList.gotoAllProgram();
+
+    const card = programList.itemByTitle(slot.title);
+    await card.lotterySignup();
+    await card.confirmLotterySignup();
+
+    // The card renders the per-program-type priority text
+    await expect(card.container).toContainText(
+      `This ${programTypeNamesEn[slot.programType]} is priority 1 on your lottery sign-ups.`,
+    );
+  }
+
+  // Run the lottery for each slot
+  for (const slot of slots) {
+    await postAssignment(request, slot.startTime);
+  }
+
+  await page.reload();
+
+  // Each slot's assignment renders its own notification bar with the per-type text
+  for (const slot of slots) {
+    await expect(
+      programList.notificationBar.bar.filter({ hasText: slot.title }),
+    ).toContainText(
+      `You were assigned to the ${programTypeNamesEn[slot.programType]}`,
+    );
+  }
+  await programList.notificationBar.showAllNotifications();
+  for (const slot of slots) {
+    await expect(
+      programList.notificationBar.eventLogItem.filter({ hasText: slot.title }),
+    ).toContainText(
+      `You were assigned to the ${programTypeNamesEn[slot.programType]}`,
+    );
+  }
+
+  // All three seats show as direct signups in My Program
+  await programList.navigation.gotoProgram();
+  await programList.gotoMyProgram();
+  for (const slot of slots) {
+    await expect(
+      programList.directSignupList
+        .getByTestId("program-item-title")
+        .filter({ hasText: slot.title }),
+    ).toBeVisible();
+  }
 });
 
 test("Cancel lottery signup on program list", async ({ page, request }) => {
