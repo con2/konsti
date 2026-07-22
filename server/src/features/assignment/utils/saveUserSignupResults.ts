@@ -3,6 +3,8 @@ import { unique } from "remeda";
 import { logger } from "server/utils/logger";
 import {
   getGlobalNotificationQueueService,
+  NotificationQueueService,
+  NotificationTask,
   NotificationTaskType,
 } from "server/utils/notificationQueue";
 import { UserAssignmentResult } from "shared/types/models/result";
@@ -191,31 +193,17 @@ const addAssignmentNotifications = async ({
       EmailNotificationTrigger.ACCEPTED,
     )
   ) {
-    if (queueService === null) {
-      logger.error(
-        new Error(
-          `Assignment ${assignmentTime}: notification queue not initialized, skip queueing accepted emails`,
-        ),
-      );
-    } else {
-      const newAssignmentEmailNotificationsResult =
-        queueService.addNotificationsBulk(
-          finalResults.map((result) => ({
-            type: NotificationTaskType.SEND_EMAIL_ACCEPTED,
-            username: result.username,
-            programItemId: result.assignmentSignup.programItemId,
-            programItemStartTime: result.assignmentSignup.signedToStartTime,
-          })),
-        );
-
-      if (!newAssignmentEmailNotificationsResult.ok) {
-        logger.error(
-          new Error(
-            `Assignment ${assignmentTime}: failed to queue accepted emails: ${newAssignmentEmailNotificationsResult.error}`,
-          ),
-        );
-      }
-    }
+    queueAssignmentEmails({
+      queueService,
+      assignmentTime,
+      notifications: finalResults.map((result) => ({
+        type: NotificationTaskType.SEND_EMAIL_ACCEPTED,
+        username: result.username,
+        programItemId: result.assignmentSignup.programItemId,
+        programItemStartTime: result.assignmentSignup.signedToStartTime,
+      })),
+      emailKind: EmailNotificationTrigger.ACCEPTED,
+    });
   }
 
   // Get users who didn't get a seat in lottery
@@ -291,33 +279,54 @@ const addAssignmentNotifications = async ({
         EmailNotificationTrigger.REJECTED,
       )
     ) {
-      if (queueService === null) {
-        logger.error(
-          new Error(
-            `Assignment ${assignmentTime}: notification queue not initialized, skip queueing rejected emails`,
-          ),
-        );
-      } else {
-        const noAssignmentEmailNotificationsResult =
-          queueService.addNotificationsBulk(
-            noAssignmentLotterySignupUsernames.map(
-              (noAssignmentLotterySignupUsername) => ({
-                type: NotificationTaskType.SEND_EMAIL_REJECTED,
-                username: noAssignmentLotterySignupUsername,
-                programItemId: "",
-                programItemStartTime: assignmentTime,
-              }),
-            ),
-          );
-
-        if (!noAssignmentEmailNotificationsResult.ok) {
-          logger.error(
-            new Error(
-              `Assignment ${assignmentTime}: failed to queue rejected emails: ${noAssignmentEmailNotificationsResult.error}`,
-            ),
-          );
-        }
-      }
+      queueAssignmentEmails({
+        queueService,
+        assignmentTime,
+        notifications: noAssignmentLotterySignupUsernames.map(
+          (noAssignmentLotterySignupUsername) => ({
+            type: NotificationTaskType.SEND_EMAIL_REJECTED,
+            username: noAssignmentLotterySignupUsername,
+            programItemId: "",
+            programItemStartTime: assignmentTime,
+          }),
+        ),
+        emailKind: EmailNotificationTrigger.REJECTED,
+      });
     }
+  }
+};
+
+interface QueueAssignmentEmailsParams {
+  queueService: NotificationQueueService | null;
+  assignmentTime: string;
+  notifications: NotificationTask[];
+  emailKind:
+    | EmailNotificationTrigger.ACCEPTED
+    | EmailNotificationTrigger.REJECTED;
+}
+
+const queueAssignmentEmails = ({
+  queueService,
+  assignmentTime,
+  notifications,
+  emailKind,
+}: QueueAssignmentEmailsParams): void => {
+  if (queueService === null) {
+    logger.error(
+      new Error(
+        `Assignment ${assignmentTime}: notification queue not initialized, skip queueing ${emailKind} emails`,
+      ),
+    );
+    return;
+  }
+
+  const queueNotificationsResult =
+    queueService.addNotificationsBulk(notifications);
+  if (!queueNotificationsResult.ok) {
+    logger.error(
+      new Error(
+        `Assignment ${assignmentTime}: failed to queue ${emailKind} emails: ${queueNotificationsResult.error}`,
+      ),
+    );
   }
 };
