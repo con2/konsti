@@ -13,8 +13,11 @@ export class NotificationBar {
   }
 
   async showAllNotifications(): Promise<void> {
+    // Every unseen notification renders its own bar with this link, so click
+    // the first one when several notifications are visible at once
     await this.page
       .getByRole("link", { name: "Show all notifications" })
+      .first()
       .click();
   }
 }
