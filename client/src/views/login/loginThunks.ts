@@ -20,6 +20,7 @@ import {
   loadUser,
 } from "client/utils/loadData";
 import { submitUpdateGroupCodeAsync } from "client/views/group/groupSlice";
+import { submitLogout } from "client/views/logout/logoutActions";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import { LoginFormFields } from "client/views/login/components/LocalLoginForm";
 import { postEventLogItemIsSeen } from "client/services/userServices";
@@ -229,6 +230,7 @@ export const submitKompassiLogin = (
 
 export enum KompassiVerifyErrorMessage {
   USERNAME_TAKEN = "error.usernameTaken",
+  LOGIN_FAILED = "error.loginFailed",
   UNKNOWN = "error.unknown",
 }
 
@@ -247,6 +249,11 @@ export const submitVerifyKompassiLogin = (
       switch (response.errorId) {
         case "usernameNotFree":
           return KompassiVerifyErrorMessage.USERNAME_TAKEN;
+        case "loginFailed":
+          // The session JWT points to a username that no longer exists, so
+          // retrying cannot succeed - log out and let the user log in again
+          dispatch(submitLogout());
+          return KompassiVerifyErrorMessage.LOGIN_FAILED;
         case "unknown":
           return KompassiVerifyErrorMessage.UNKNOWN;
         default:

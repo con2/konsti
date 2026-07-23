@@ -9,7 +9,7 @@ import { createSerial } from "server/features/user/userUtils";
 import { getJWT } from "server/utils/jwt";
 import { logger } from "server/utils/logger";
 import { AuthEndpoint } from "shared/constants/apiEndpoints";
-import { KompassiLoginError } from "shared/types/api/errors";
+import { KompassiLoginError, MongoDbError } from "shared/types/api/errors";
 import {
   PostKompassiLoginResponse,
   PostVerifyKompassiLoginResponse,
@@ -281,6 +281,16 @@ export const verifyKompassiLogin = async (
     newUsername,
   );
   if (!userResult.ok) {
+    // A valid JWT for a username that no longer exists means the session is
+    // stale (the account was renamed by an earlier verify or removed), so
+    // tell the client to log out instead of inviting a retry
+    if (userResult.error === MongoDbError.USER_NOT_FOUND) {
+      return {
+        message: "User of the current session not found",
+        status: "error",
+        errorId: "loginFailed",
+      };
+    }
     return {
       message: "Updating Kompassi login status failed",
       status: "error",
