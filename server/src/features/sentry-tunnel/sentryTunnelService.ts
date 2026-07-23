@@ -10,6 +10,27 @@ interface ResendSentryError extends ApiError {
   errorId: "unknown";
 }
 
+// Flatten the message chain (cause links and AggregateError members) into one
+// line. Attaching the original error as `cause` instead would fingerprint each
+// network failure mode into its own Sentry issue, and all upstream failures
+// should track in a single issue
+const describeFetchError = (error: unknown): string => {
+  const messages: string[] = [];
+  let current: unknown = error;
+  while (current instanceof Error) {
+    if (current.message) {
+      messages.push(current.message);
+    }
+    if (current instanceof AggregateError) {
+      for (const inner of current.errors) {
+        messages.push(inner instanceof Error ? inner.message : String(inner));
+      }
+    }
+    current = current.cause;
+  }
+  return messages.length > 0 ? messages.join(" / ") : String(error);
+};
+
 export const resendSentryRequest = async (
   envelope: Buffer,
 ): Promise<null | ResendSentryError> => {
@@ -42,12 +63,30 @@ export const resendSentryRequest = async (
     }
 
     const sentryUrl = `https://${hostname}/api${projectId}/envelope/`;
-    const response = await fetch(sentryUrl, {
-      method: "POST",
-      headers: { "Content-Type": "application/x-sentry-envelope" },
-      body: new Uint8Array(envelope),
-      signal: AbortSignal.timeout(fetchTimeoutMs),
-    });
+
+    let response: Response | null = null;
+    try {
+      response = await fetch(sentryUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/x-sentry-envelope" },
+        body: new Uint8Array(envelope),
+        signal: AbortSignal.timeout(fetchTimeoutMs),
+      });
+    } catch (fetchError) {
+      logger.error(
+        new Error(
+          `Sentry tunnel: upstream request failed: ${describeFetchError(fetchError)}`,
+        ),
+      );
+    }
+
+    if (!response) {
+      return {
+        message: "Sentry tunnel: Upstream error",
+        status: "error",
+        errorId: "unknown",
+      };
+    }
 
     if (!response.ok) {
       // Sentry explains rejections in the x-sentry-error header and/or body
