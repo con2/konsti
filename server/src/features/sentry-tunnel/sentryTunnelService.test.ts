@@ -76,7 +76,7 @@ describe("resendSentryRequest", () => {
     );
   });
 
-  test("should retry once and log error with upstream details when 5xx persists", async () => {
+  test("should retry twice and log error with upstream details when 5xx persists", async () => {
     const errorLoggerSpy = vi.spyOn(logger, "error");
     const fetchMock = vi.fn().mockImplementation(() =>
       Promise.resolve(
@@ -91,7 +91,7 @@ describe("resendSentryRequest", () => {
     const result = await runTunnel(testEnvelope);
 
     expect(result).toEqual(upstreamError);
-    expect(fetchMock).toHaveBeenCalledTimes(2);
+    expect(fetchMock).toHaveBeenCalledTimes(3);
     expect(errorLoggerSpy).toHaveBeenCalledTimes(1);
     const loggedError = errorLoggerSpy.mock.calls[0][0] as Error;
     expect(loggedError.message).toEqual(
@@ -138,6 +138,28 @@ describe("resendSentryRequest", () => {
     expect(errorLoggerSpy).not.toHaveBeenCalled();
   });
 
+  test("should deliver envelope when second retry succeeds after two 5xx responses", async () => {
+    const errorLoggerSpy = vi.spyOn(logger, "error");
+    const fetchMock = vi
+      .fn()
+      .mockImplementationOnce(() =>
+        Promise.resolve(new Response(null, { status: 503 })),
+      )
+      .mockImplementationOnce(() =>
+        Promise.resolve(new Response(null, { status: 502 })),
+      )
+      .mockImplementationOnce(() =>
+        Promise.resolve(new Response(null, { status: 200 })),
+      );
+    vi.stubGlobal("fetch", fetchMock);
+
+    const result = await runTunnel(testEnvelope);
+
+    expect(result).toBeNull();
+    expect(fetchMock).toHaveBeenCalledTimes(3);
+    expect(errorLoggerSpy).not.toHaveBeenCalled();
+  });
+
   test("should deliver envelope when retry succeeds after network error", async () => {
     const errorLoggerSpy = vi.spyOn(logger, "error");
     const fetchMock = vi
@@ -157,7 +179,7 @@ describe("resendSentryRequest", () => {
     expect(errorLoggerSpy).not.toHaveBeenCalled();
   });
 
-  test("should retry once and log upstream error when network error persists", async () => {
+  test("should retry twice and log upstream error when network error persists", async () => {
     const errorLoggerSpy = vi.spyOn(logger, "error");
     const fetchMock = vi
       .fn()
@@ -169,7 +191,7 @@ describe("resendSentryRequest", () => {
     const result = await runTunnel(testEnvelope);
 
     expect(result).toEqual(upstreamError);
-    expect(fetchMock).toHaveBeenCalledTimes(2);
+    expect(fetchMock).toHaveBeenCalledTimes(3);
     expect(errorLoggerSpy).toHaveBeenCalledTimes(1);
     const loggedError = errorLoggerSpy.mock.calls[0][0] as Error;
     expect(loggedError.message).toEqual(
