@@ -83,11 +83,15 @@ describe("resendSentryRequest", () => {
     );
   });
 
-  test("should log error when fetch fails with network error", async () => {
+  test("should log upstream error when fetch fails with network error", async () => {
     const errorLoggerSpy = vi.spyOn(logger, "error");
     vi.stubGlobal(
       "fetch",
-      vi.fn().mockRejectedValue(new TypeError("fetch failed")),
+      vi.fn().mockRejectedValue(
+        new TypeError("fetch failed", {
+          cause: new Error("read ECONNRESET"),
+        }),
+      ),
     );
 
     const result = await resendSentryRequest(
@@ -95,13 +99,45 @@ describe("resendSentryRequest", () => {
     );
 
     expect(result).toEqual({
-      message: "Sentry tunnel: Unknown error",
+      message: "Sentry tunnel: Upstream error",
       status: "error",
       errorId: "unknown",
     });
     const loggedError = errorLoggerSpy.mock.calls[0][0] as Error;
-    expect(loggedError.message).toEqual("Sentry tunnel error");
-    expect(loggedError.cause).toBeInstanceOf(TypeError);
+    expect(loggedError.message).toEqual(
+      "Sentry tunnel: upstream request failed: fetch failed / read ECONNRESET",
+    );
+    expect(loggedError.cause).toBeUndefined();
+  });
+
+  test("should flatten AggregateError members into upstream error message", async () => {
+    const errorLoggerSpy = vi.spyOn(logger, "error");
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockRejectedValue(
+        new TypeError("fetch failed", {
+          // eslint-disable-next-line unicorn/error-message -- Node network AggregateErrors have no message
+          cause: new AggregateError([
+            new Error("connect ETIMEDOUT 34.160.81.0:443"),
+            new Error("connect ENETUNREACH 2600:1901:0:5e8a:::443"),
+          ]),
+        }),
+      ),
+    );
+
+    const result = await resendSentryRequest(
+      buildEnvelope("https://public@o123.ingest.sentry.io/6579203"),
+    );
+
+    expect(result).toEqual({
+      message: "Sentry tunnel: Upstream error",
+      status: "error",
+      errorId: "unknown",
+    });
+    const loggedError = errorLoggerSpy.mock.calls[0][0] as Error;
+    expect(loggedError.message).toEqual(
+      "Sentry tunnel: upstream request failed: fetch failed / connect ETIMEDOUT 34.160.81.0:443 / connect ENETUNREACH 2600:1901:0:5e8a:::443",
+    );
   });
 
   test("should not forward envelope with non-Sentry DSN host", async () => {
