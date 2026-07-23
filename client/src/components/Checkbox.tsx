@@ -24,7 +24,8 @@ const StyledCheckbox = styled.input`
   flex-shrink: 0;
   margin-top: 2px;
   margin-left: 4px;
-  margin-right: 8px;
+  margin-right: 12px;
   accent-color: ${(props) => props.theme.formAccent};
   transform: scale(1.4);
+  transform-origin: left;
 `;
