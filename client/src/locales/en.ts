@@ -262,7 +262,7 @@ export const translationEN = {
       'The group creator will sign the group up to the lottery. You can see the selected program items on the "My Program" page.',
     groupCreatorInfo:
       "You can sign up your group to the lottery. Please make sure that the group is not too big for the selected program items. The group creator cannot leave the group, but can close it. This will remove all members from the group.",
-    groupCodeInfo: "Others can join this group with the code ",
+    groupCodeInfo: "Others can join this group with the code",
     joiningGroupWillCancelUpcomingLotterySignups:
       "Joining a group will cancel all your upcoming lottery sign-ups.",
     groupLotterySignupGuide: "You can sign up for the lottery as a group.",
@@ -353,21 +353,21 @@ export const translationEN = {
     hideAttendees: "Hide {{ATTENDEE_TYPE}}",
     noAttendees: "No {{ATTENDEE_TYPE}}",
     loginLink: "Log in",
-    loginLinkEnding: " to see {{ATTENDEE_TYPE}}.",
+    loginLinkEnding: "to see {{ATTENDEE_TYPE}}.",
     signupQuestionAriaLabel: "Sign-up question",
     help: {
       signupAlwaysOpenGroupMemberInfo:
         "You can sign up even though you are a group member.",
       directSignupStartsLater:
-        "Participants are selected in the order of sign-ups. Sign-up opens ",
+        "Participants are selected in the order of sign-ups. Sign-up opens",
       directSignupOpenNow:
-        "Participants are selected in the order of sign-ups. Sign-up closes ",
+        "Participants are selected in the order of sign-ups. Sign-up closes",
       lotterySignupStartsLater:
-        "Participants are selected in a lottery. Lottery sign-up opens ",
+        "Participants are selected in a lottery. Lottery sign-up opens",
       lotterySignupOpen:
-        "Participants are selected in a lottery. Lottery sign-up closes ",
+        "Participants are selected in a lottery. Lottery sign-up closes",
       lotterySignupEnded: "Participants were selected in a lottery.",
-      directSignupStarts: " Direct sign-up to remaining and cancelled spots: ",
+      directSignupStarts: "Direct sign-up to remaining and cancelled spots:",
     },
     signupCondition: {
       entryFeeInfo:
@@ -623,7 +623,7 @@ export const translationEN = {
   },
   admissionView: {
     noAdmission: "You have not signed up for this program item.",
-    admission: "You have signed up as user ",
+    admission: "You have signed up as user",
   },
   iconAltText: {
     resetInput: "Reset input",

@@ -45,7 +45,7 @@ export const SignupHelpText = ({
   // Group members can sign up to always open program items without leaving the group
   const groupMemberInfo =
     isDirectSignupAlwaysOpen(programItem) && isInGroup ? (
-      <span>{t("signup.help.signupAlwaysOpenGroupMemberInfo")}</span>
+      <span> {t("signup.help.signupAlwaysOpenGroupMemberInfo")}</span>
     ) : null;
 
   const timeNow = getTimeNow();
@@ -111,7 +111,7 @@ export const SignupHelpText = ({
     return (
       <p>
         <FontAwesomeIcon icon={"dice-three"} />{" "}
-        {t("signup.help.lotterySignupStartsLater")}
+        {t("signup.help.lotterySignupStartsLater")}{" "}
         <b>
           {getFormattedInterval(
             lotterySignupStartTime,
@@ -119,7 +119,7 @@ export const SignupHelpText = ({
             timeNow,
           )}
         </b>
-        . {t("signup.help.directSignupStarts")}
+        . {t("signup.help.directSignupStarts")}{" "}
         <b>
           {getFormattedInterval(
             directSignupStartTime,
@@ -137,9 +137,9 @@ export const SignupHelpText = ({
     return (
       <p>
         <FontAwesomeIcon icon={"dice-three"} />{" "}
-        {t("signup.help.lotterySignupOpen")}
-        <b>{getFormattedTime(lotterySignupEndTime, timeNow)}</b>.
-        {t("signup.help.directSignupStarts")}
+        {t("signup.help.lotterySignupOpen")}{" "}
+        <b>{getFormattedTime(lotterySignupEndTime, timeNow)}</b>.{" "}
+        {t("signup.help.directSignupStarts")}{" "}
         <b>
           {getFormattedInterval(
             directSignupStartTime,
@@ -156,8 +156,8 @@ export const SignupHelpText = ({
     // Lottery sign-up ended, direct sign-up starting or started
     <p>
       <FontAwesomeIcon icon={"dice-three"} />{" "}
-      {t("signup.help.lotterySignupEnded")}
-      {t("signup.help.directSignupStarts")}
+      {t("signup.help.lotterySignupEnded")}{" "}
+      {t("signup.help.directSignupStarts")}{" "}
       <b>
         {getFormattedInterval(
           directSignupStartTime,

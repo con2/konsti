@@ -123,7 +123,7 @@ export const ProgramItemHeadSignupInfo = ({
 
       {isExpanded && signups.length > 0 && !isLoggedIn && (
         <AttendeeText>
-          <Link to={AppRoute.LOGIN}>{t("signup.loginLink")}</Link>
+          <Link to={AppRoute.LOGIN}>{t("signup.loginLink")}</Link>{" "}
           {t("signup.loginLinkEnding", {
             ATTENDEE_TYPE: t(
               `attendeeTypePluralNominative.${getAttendeeType(programItem.programType)}`,
