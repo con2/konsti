@@ -176,9 +176,10 @@ export const closeServer = async (
     logger.error(error);
   }
 
-  // Send buffered Sentry events before the process exits, waiting at most 2s.
-  // No-op when Sentry is not initialized (tests, local dev)
-  await flush(2000);
+  // Send buffered Sentry events before the process exits. The timeout leaves
+  // room for the transport's single 2s-delayed retry. No-op when Sentry is
+  // not initialized (tests, local dev)
+  await flush(5000);
 
   logger.info("Shutdown completed, bye");
 };
