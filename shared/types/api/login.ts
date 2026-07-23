@@ -82,7 +82,7 @@ export type PostVerifyKompassiLoginResult = PostVerifyKompassiLoginPayload &
   ApiResult;
 
 export interface PostVerifyKompassiLoginError extends ApiError {
-  errorId: "unknown" | "usernameNotFree";
+  errorId: "unknown" | "usernameNotFree" | "loginFailed";
 }
 
 export type PostVerifyKompassiLoginResponse =

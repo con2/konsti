@@ -110,6 +110,24 @@ describe(`POST ${ApiEndpoint.VERIFY_KOMPASSI_LOGIN}`, () => {
     expect(response.status).toEqual(200);
   });
 
+  test("should return loginFailed error if user of the session does not exist", async () => {
+    const requestBody: PostVerifyKompassiLoginRequest = {
+      username: "new_username",
+    };
+    const response = await request(server)
+      .post(ApiEndpoint.VERIFY_KOMPASSI_LOGIN)
+      .send(requestBody)
+      .set(
+        "Authorization",
+        `Bearer ${getJWT(UserGroup.USER, "user-removed-from-db")}`,
+      );
+    expect(response.status).toEqual(200);
+
+    const body = response.body as PostVerifyKompassiLoginError;
+    expect(body.status).toEqual("error");
+    expect(body.errorId).toEqual("loginFailed");
+  });
+
   test("should update old username with new username", async () => {
     await saveUser({ ...mockUser, kompassiId: 10 });
 
