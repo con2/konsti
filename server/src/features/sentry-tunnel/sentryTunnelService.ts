@@ -4,6 +4,7 @@ import { ApiError } from "shared/types/api/errors";
 
 const sentryHost = "sentry.io";
 const knownProjectIds = new Set(["/6579203", "/6578391", "/6579491"]);
+const fetchTimeoutMs = 1000 * 15;
 
 interface ResendSentryError extends ApiError {
   errorId: "unknown";
@@ -40,12 +41,24 @@ export const resendSentryRequest = async (
       };
     }
 
-    const sentryUrl = `https://${sentryHost}/api/${projectId}/envelope/`;
-    await fetch(sentryUrl, {
+    const sentryUrl = `https://${hostname}/api${projectId}/envelope/`;
+    const response = await fetch(sentryUrl, {
       method: "POST",
       headers: { "Content-Type": "application/x-sentry-envelope" },
       body: new Uint8Array(envelope),
+      signal: AbortSignal.timeout(fetchTimeoutMs),
     });
+
+    if (!response.ok) {
+      logger.error(
+        new Error(`Sentry tunnel: upstream responded with ${response.status}`),
+      );
+      return {
+        message: "Sentry tunnel: Upstream error",
+        status: "error",
+        errorId: "unknown",
+      };
+    }
 
     return null;
   } catch (error) {
