@@ -1,6 +1,7 @@
 import { init } from "@sentry/node";
 import { config } from "shared/config";
 import { scrubIpAddress } from "server/utils/scrubIpAddress";
+import { makeRetryingNodeTransport } from "server/utils/retryingSentryTransport";
 
 const getDsn = (): string | undefined => {
   switch (process.env.SETTINGS) {
@@ -26,4 +27,5 @@ init({
   release: process.env.SENTRY_RELEASE,
   maxValueLength: config.sentry().maxValueLength,
   beforeSend: scrubIpAddress,
+  transport: makeRetryingNodeTransport,
 });
