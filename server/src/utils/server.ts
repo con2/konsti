@@ -2,7 +2,7 @@ import http, { Server } from "node:http";
 import path from "node:path";
 import { once } from "node:events";
 import express, { Request, Response, NextFunction } from "express";
-import { setupExpressErrorHandler } from "@sentry/node";
+import { setupExpressErrorHandler, flush } from "@sentry/node";
 import helmet from "helmet";
 import expressStaticGzip from "express-static-gzip";
 import { config } from "shared/config";
@@ -175,6 +175,10 @@ export const closeServer = async (
   } catch (error) {
     logger.error(error);
   }
+
+  // Send buffered Sentry events before the process exits, waiting at most 2s.
+  // No-op when Sentry is not initialized (tests, local dev)
+  await flush(2000);
 
   logger.info("Shutdown completed, bye");
 };
