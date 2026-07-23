@@ -5,7 +5,9 @@ import { ApiError } from "shared/types/api/errors";
 const sentryHost = "sentry.io";
 const knownProjectIds = new Set(["/6579203", "/6578391", "/6579491"]);
 const fetchTimeoutMs = 1000 * 15;
-const retryDelayMs = 1000 * 2;
+// Sentry's edge suggests trying again in 30 seconds when its backend is
+// unreachable, so the second retry waits that long
+const retryDelaysMs = [1000 * 2, 1000 * 30];
 
 interface ResendSentryError extends ApiError {
   errorId: "unknown";
@@ -109,12 +111,15 @@ export const resendSentryRequest = async (
 
     const sentryUrl = `https://${hostname}/api${projectId}/envelope/`;
 
-    // Upstream failures are usually transient load shedding, so retry once
-    // after a short delay before logging the failure
+    // Upstream failures are usually transient load shedding, so retry with
+    // increasing delays before logging the failure
     let attempt = await attemptForward(sentryUrl, envelope);
-    if (!attempt.delivered && attempt.retryable) {
+    for (const delayMs of retryDelaysMs) {
+      if (attempt.delivered || !attempt.retryable) {
+        break;
+      }
       await new Promise((resolve) => {
-        setTimeout(resolve, retryDelayMs);
+        setTimeout(resolve, delayMs);
       });
       attempt = await attemptForward(sentryUrl, envelope);
     }
