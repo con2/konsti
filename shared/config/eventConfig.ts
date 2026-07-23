@@ -47,7 +47,7 @@ export const eventConfig: EventConfig = {
 
   eventStartTime: `${friday}T12:00:00Z`, // Fri 15:00 GMT+3
   preConventionWeekSignupStartTime: "2026-07-13T17:00:00Z", // Mon 13.7. 20:00 GMT+3
-  mainEventProgramVisibleTime: "2026-07-23T17:00:00Z", // Thu 23.7. 20:00 GMT+3
+  mainEventProgramVisibleTime: "2026-07-23T15:00:00Z", // Thu 23.7. 18:00 GMT+3
 
   directSignupWindows: {
     tournament: [
