@@ -1,38 +1,19 @@
 import url from "node:url";
 import { logger } from "server/utils/logger";
+import {
+  flattenErrorMessageChain,
+  retryWithDelays,
+  sentryRetryDelaysMs,
+} from "server/utils/sentryRetry";
 import { ApiError } from "shared/types/api/errors";
 
 const sentryHost = "sentry.io";
 const knownProjectIds = new Set(["/6579203", "/6578391", "/6579491"]);
 const fetchTimeoutMs = 1000 * 15;
-// Sentry's edge suggests trying again in 30 seconds when its backend is
-// unreachable, so the second retry waits that long
-const retryDelaysMs = [1000 * 2, 1000 * 30];
 
 interface ResendSentryError extends ApiError {
   errorId: "unknown";
 }
-
-// Flatten the message chain (cause links and AggregateError members) into one
-// line. Attaching the original error as `cause` instead would fingerprint each
-// network failure mode into its own Sentry issue, and all upstream failures
-// should track in a single issue
-const describeFetchError = (error: unknown): string => {
-  const messages: string[] = [];
-  let current: unknown = error;
-  while (current instanceof Error) {
-    if (current.message) {
-      messages.push(current.message);
-    }
-    if (current instanceof AggregateError) {
-      for (const inner of current.errors) {
-        messages.push(inner instanceof Error ? inner.message : String(inner));
-      }
-    }
-    current = current.cause;
-  }
-  return messages.length > 0 ? messages.join(" / ") : String(error);
-};
 
 type ForwardAttempt =
   | { delivered: true }
@@ -55,7 +36,7 @@ const attemptForward = async (
       delivered: false,
       retryable: true,
       error: new Error(
-        `Sentry tunnel: upstream request failed: ${describeFetchError(fetchError)}`,
+        `Sentry tunnel: upstream request failed: ${flattenErrorMessageChain(fetchError)}`,
       ),
     };
   }
@@ -113,16 +94,11 @@ export const resendSentryRequest = async (
 
     // Upstream failures are usually transient load shedding, so retry with
     // increasing delays before logging the failure
-    let attempt = await attemptForward(sentryUrl, envelope);
-    for (const delayMs of retryDelaysMs) {
-      if (attempt.delivered || !attempt.retryable) {
-        break;
-      }
-      await new Promise((resolve) => {
-        setTimeout(resolve, delayMs);
-      });
-      attempt = await attemptForward(sentryUrl, envelope);
-    }
+    const attempt = await retryWithDelays(
+      sentryRetryDelaysMs,
+      async () => attemptForward(sentryUrl, envelope),
+      (result) => !result.delivered && result.retryable,
+    );
 
     if (!attempt.delivered) {
       logger.error(attempt.error);

@@ -83,21 +83,35 @@ describe("makeRetryingNodeTransport", () => {
     expect(errorLoggerSpy).not.toHaveBeenCalled();
   });
 
-  test("should log dropped event when 5xx persists after retry", async () => {
+  test("should deliver event when second retry succeeds after two 5xx responses", async () => {
+    const errorLoggerSpy = vi.spyOn(logger, "error");
+    sendMock
+      .mockResolvedValueOnce({ statusCode: 503 })
+      .mockResolvedValueOnce({ statusCode: 502 })
+      .mockResolvedValueOnce({ statusCode: 200 });
+
+    const response = await runSend(buildTransport());
+
+    expect(response).toEqual({ statusCode: 200 });
+    expect(sendMock).toHaveBeenCalledTimes(3);
+    expect(errorLoggerSpy).not.toHaveBeenCalled();
+  });
+
+  test("should log dropped event when 5xx persists after retries", async () => {
     const errorLoggerSpy = vi.spyOn(logger, "error");
     sendMock.mockResolvedValue({ statusCode: 503 });
 
     const response = await runSend(buildTransport());
 
     expect(response).toEqual({ statusCode: 503 });
-    expect(sendMock).toHaveBeenCalledTimes(2);
+    expect(sendMock).toHaveBeenCalledTimes(3);
     const loggedError = errorLoggerSpy.mock.calls[0][0] as Error;
     expect(loggedError.message).toEqual(
       "Sentry event dropped: upstream responded with 503",
     );
   });
 
-  test("should log dropped event when network error persists after retry", async () => {
+  test("should log dropped event when network error persists after retries", async () => {
     const errorLoggerSpy = vi.spyOn(logger, "error");
     sendMock.mockRejectedValue(new TypeError("fetch failed"));
 
@@ -123,7 +137,7 @@ describe("makeRetryingNodeTransport", () => {
     expect(settledError).toBeInstanceOf(TypeError);
     expect((settledError as TypeError).message).toEqual("fetch failed");
 
-    expect(sendMock).toHaveBeenCalledTimes(2);
+    expect(sendMock).toHaveBeenCalledTimes(3);
     const loggedError = errorLoggerSpy.mock.calls[0][0] as Error;
     expect(loggedError.message).toEqual("Sentry event dropped: fetch failed");
   });
