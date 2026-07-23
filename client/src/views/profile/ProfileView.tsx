@@ -7,6 +7,7 @@ import { EmailSettingsForm } from "client/views/profile/components/EmailSettings
 import { useAppSelector } from "client/utils/hooks";
 import { Button, ButtonStyle } from "client/components/Button";
 import { AppRoute } from "client/app/AppRoutes";
+import { formatSerial } from "shared/utils/formatSerial";
 
 export const ProfileView = (): ReactElement => {
   const { t } = useTranslation();
@@ -27,7 +28,7 @@ export const ProfileView = (): ReactElement => {
         </span>
         {isLocalLogin && (
           <span>
-            <b>{t("code")}:</b> {serial}
+            <b>{t("code")}:</b> {formatSerial(serial)}
           </span>
         )}
         <StyledButton

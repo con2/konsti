@@ -7,6 +7,7 @@ import { isAdminOrHelper } from "client/utils/checkUserGroup";
 import { Button, ButtonStyle } from "./Button";
 import { HighlightStyle, RaisedCard } from "client/components/RaisedCard";
 import { browserStoragePrefix } from "shared/constants/browserStorage";
+import { formatSerial } from "shared/utils/formatSerial";
 
 const firstLoginValue = "firstLogin";
 const FirstLoginValueSchema = z.literal(firstLoginValue);
@@ -60,7 +61,7 @@ export const FirstLogin = (): ReactElement | null => {
       data-testid="first-login-notice"
     >
       <p>
-        {t("firstLogin.serial")} <b>{serial}</b>
+        {t("firstLogin.serial")} <b>{formatSerial(serial)}</b>.
       </p>
       <p>{t("firstLogin.info")}</p>
       <Button

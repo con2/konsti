@@ -107,7 +107,11 @@ test("User login", async ({ page, request }) => {
 
   // The first login shows the registration code notice, which can be closed
   await expect(loginPage.firstLoginNotice).toContainText(
-    "Save this code for recovering your password",
+    "Keep your registration code safe",
+  );
+  // Registration code is displayed with hyphens, e.g. 012-304-800-1
+  await expect(loginPage.firstLoginNotice).toContainText(
+    /\d{3}-\d{3}-\d{3}-\d/,
   );
   await loginPage.closeFirstLoginNotice();
   await expect(loginPage.firstLoginNotice).toBeHidden();

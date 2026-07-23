@@ -21,6 +21,9 @@ test("Update email notification address and password from profile", async ({
   // Profile shows the logged-in user
   await expect(profilePage.main).toContainText("test1");
 
+  // Registration code is displayed with hyphens, e.g. 012-304-800-1
+  await expect(profilePage.main).toContainText(/Code: \d{3}-\d{3}-\d{3}-\d/);
+
   // Update email notification address
   await profilePage.emailNotificationsEnabled.check();
   await profilePage.emailInput.fill("test1@example.com");

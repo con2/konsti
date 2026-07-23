@@ -45,11 +45,15 @@ test("Helper can find a user and change their password", async ({
     throw new Error("Could not read the registration code");
   }
 
+  // Registration code is displayed with hyphens, e.g. 012-304-800-1
+  expect(registrationCode).toMatch(/^\d{3}-\d{3}-\d{3}-\d$/);
+
   // A non-matching username is not found
   await helperPage.findUser("nonexistentuser");
   await expect(helperPage.main).toContainText("User not found");
 
-  // Find the same user by their registration code
+  // Find the same user by their registration code, using the hyphenated
+  // form shown in the UI to confirm the lookup accepts it
   await helperPage.findUser(registrationCode);
   await expect(helperPage.main).toContainText("Found user");
   await expect(helperPage.main).toContainText("test1");

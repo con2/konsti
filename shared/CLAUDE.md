@@ -31,7 +31,7 @@ Guidance for working in `shared/`. See the [root CLAUDE.md](../CLAUDE.md) for th
 - **`isLotterySignupProgramItem.ts`** — predicate: does an item use two-phase (lottery) signup?
 - **`isDirectSignupAlwaysOpen.ts`** — predicate: is an item's direct signup always open? Combines the manual `directSignupAlwaysOpenIds` config list with a programmatic check for the `Tag.PRE_CONVENTION_WEEK` tag (pre-convention-week items always use direct signup, even lottery program types like RPGs). Consumed by `isLotterySignupProgramItem` and `getDirectSignupStartTime`.
 - **`getProgramItemValidity.ts`** — per-check validity flags for a program item (attendance limits, signup type, lottery even-hour start) plus the combined `allValuesValid`. Invalid items can't be signed up to: the client hides the signup section and renders the errors, and the server's lottery/direct signup services reject with the `invalidProgramItem` error.
-- **`tooEarlyForLotterySignup.ts`**, **`isStartTimeChanged.ts`**, **`exhaustiveSwitchGuard.ts`** (TS exhaustiveness helper that throws on unreachable cases), **`remedaExtend.ts`** (extra collection helpers), **`setLocale.ts`**.
+- **`tooEarlyForLotterySignup.ts`**, **`isStartTimeChanged.ts`**, **`exhaustiveSwitchGuard.ts`** (TS exhaustiveness helper that throws on unreachable cases), **`remedaExtend.ts`** (extra collection helpers), **`setLocale.ts`**, **`formatSerial.ts`** (hyphenates registration codes for display, e.g. 012-304-800-1).
 
 ## Zod Pattern for API Types
 

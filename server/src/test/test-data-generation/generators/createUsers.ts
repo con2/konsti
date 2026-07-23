@@ -7,7 +7,8 @@ import { NewUser } from "server/types/userTypes";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { generateGroupCode } from "server/features/user/group/groupService";
 
-const SERIAL_MAX = 10000000;
+// Match the length of real registration codes from the serial generator
+const SERIAL_LENGTH = 10;
 
 // Speed up test data generation by using same "test" password hash
 let testPasswordHashPromise: ReturnType<typeof hashPassword> | undefined;
@@ -30,7 +31,7 @@ export const createAdminUser = async (password?: string): Promise<void> => {
     username: "admin",
     passwordHash,
     userGroup: UserGroup.ADMIN,
-    serial: faker.number.int(10000000).toString(),
+    serial: faker.string.numeric(SERIAL_LENGTH),
     email: "admin@example.local",
     emailNotificationPermitAsked: true,
   };
@@ -51,7 +52,7 @@ export const createHelpUser = async (password?: string): Promise<void> => {
     username: "helper",
     passwordHash,
     userGroup: UserGroup.HELPER,
-    serial: faker.number.int(10000000).toString(),
+    serial: faker.string.numeric(SERIAL_LENGTH),
     email: "helper@example.local",
     emailNotificationPermitAsked: true,
   };
@@ -75,7 +76,7 @@ const createTestUser = async ({
     username: `test${userNumber}`,
     passwordHash,
     userGroup: UserGroup.USER,
-    serial: faker.number.int(10000000).toString(),
+    serial: faker.string.numeric(SERIAL_LENGTH),
     email: `test${userNumber}@example.local`,
     emailNotificationPermitAsked: true,
   };
@@ -117,7 +118,7 @@ const createUser = async ({
     username,
     passwordHash,
     userGroup: UserGroup.USER,
-    serial: faker.number.int(SERIAL_MAX).toString(),
+    serial: faker.string.numeric(SERIAL_LENGTH),
     groupCode,
     isGroupCreator,
     email: `${username}@example.local`,
