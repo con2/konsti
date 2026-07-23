@@ -1,14 +1,47 @@
 import { makeNodeTransport } from "@sentry/node";
 import { logger } from "server/utils/logger";
-
-const retryDelayMs = 1000 * 2;
+import {
+  flattenErrorMessageChain,
+  retryWithDelays,
+  sentryRetryDelaysMs,
+} from "server/utils/sentryRetry";
 
 type NodeTransportOptions = Parameters<typeof makeNodeTransport>[0];
 type NodeTransport = ReturnType<typeof makeNodeTransport>;
+type TransportResponse = Awaited<ReturnType<NodeTransport["send"]>>;
+
+type SendAttempt =
+  | { delivered: true; response: TransportResponse }
+  | { delivered: false; reason: string; response: TransportResponse }
+  | { delivered: false; reason: string; rejection: unknown };
+
+// 4xx responses count as delivered: they are final verdicts from Sentry, and
+// 429 backoff stays with the SDK's rate limiter
+const attemptSend = async (
+  transport: NodeTransport,
+  envelope: Parameters<NodeTransport["send"]>[0],
+): Promise<SendAttempt> => {
+  try {
+    const response = await transport.send(envelope);
+    if (response.statusCode !== undefined && response.statusCode >= 500) {
+      return {
+        delivered: false,
+        reason: `upstream responded with ${response.statusCode}`,
+        response,
+      };
+    }
+    return { delivered: true, response };
+  } catch (error) {
+    return {
+      delivered: false,
+      reason: flattenErrorMessageChain(error),
+      rejection: error,
+    };
+  }
+};
 
 // The default transport silently drops an envelope when the send fails or
-// Sentry responds with 5xx, so give each envelope one delayed retry. 4xx
-// passes through untouched and 429 backoff stays with the SDK's rate limiter
+// Sentry responds with 5xx, so retry each envelope with increasing delays
 export const makeRetryingNodeTransport = (
   options: NodeTransportOptions,
 ): NodeTransport => {
@@ -33,33 +66,23 @@ export const makeRetryingNodeTransport = (
   return {
     ...transport,
     send: async (envelope) => {
-      try {
-        const response = await transport.send(envelope);
-        if (response.statusCode === undefined || response.statusCode < 500) {
-          sendFailing = false;
-          return response;
-        }
-      } catch {
-        // Network-level failure, fall through to the retry
+      const attempt = await retryWithDelays(
+        sentryRetryDelaysMs,
+        async () => attemptSend(transport, envelope),
+        (result) => !result.delivered,
+      );
+
+      if (attempt.delivered) {
+        sendFailing = false;
+        return attempt.response;
       }
 
-      await new Promise((resolve) => {
-        setTimeout(resolve, retryDelayMs);
-      });
-
-      try {
-        const response = await transport.send(envelope);
-        if (response.statusCode !== undefined && response.statusCode >= 500) {
-          reportDrop(`upstream responded with ${response.statusCode}`);
-        } else {
-          sendFailing = false;
-        }
-        return response;
-      } catch (error) {
-        reportDrop(error instanceof Error ? error.message : String(error));
-        // eslint-disable-next-line no-restricted-syntax -- Transport contract propagates send failures to the SDK as rejections
-        throw error;
+      reportDrop(attempt.reason);
+      if ("response" in attempt) {
+        return attempt.response;
       }
+      // eslint-disable-next-line no-restricted-syntax -- Transport contract propagates send failures to the SDK as rejections
+      throw attempt.rejection;
     },
   };
 };
