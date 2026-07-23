@@ -57,8 +57,7 @@ export const Admission = ({
           <>
             <AdmissionIcon icon="circle-check" />
             <Text>
-              {t("admissionView.admission")}
-              <b>{username}</b>.
+              {t("admissionView.admission")} <b>{username}</b>.
             </Text>
           </>
         )}

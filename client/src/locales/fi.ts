@@ -263,7 +263,7 @@ export const translationFI = {
       'Ryhmän perustaja ilmoittautuu arvontaan ryhmän muiden jäsenten puolesta. Näet valitut ohjelmanumerot "Oma ohjelmani" -sivulta.',
     groupCreatorInfo:
       "Voit ilmoittautua arvontaan koko ryhmän puolesta. Varmistathan, että ryhmä ei ole liian iso valitsemiisi ohjelmanumeroihin liittymistä varten. Ryhmän perustaja ei voi poistua ryhmästä, mutta voi sulkea ryhmän. Tällöin kaikki ryhmän jäsenet poistetaan ryhmästä.",
-    groupCodeInfo: "Muut voivat liittyä tähän ryhmään koodilla ",
+    groupCodeInfo: "Muut voivat liittyä tähän ryhmään koodilla",
     joiningGroupWillCancelUpcomingLotterySignups:
       "Ryhmään liittyminen peruu kaikki tulevat arvontailmoittautumisesi.",
     groupLotterySignupGuide: "Voit ilmoittautua arvontaan ryhmänä.",
@@ -283,14 +283,14 @@ export const translationFI = {
     changingPasswordSuccess: "Salasanasi on nyt vaihdettu.",
     userCreatedAt: "Käyttäjätili rekisteröity",
     kompassiLocalInfo:
-      "Jos Konstiin on kirjauduttu Kompassi-tunnuksella, salasanan voi vaihtaa ",
+      "Jos Konstiin on kirjauduttu Kompassi-tunnuksella, salasanan voi vaihtaa",
     kompassiPasswordReset: "Kompassin Salasanan nollaus -sivulla",
     kompassiUserError: "Käyttäjä kirjautunut Kompassi-tunnuksella",
   },
   eventLog: {
     title: "Ilmoitukset",
     noNotifications: "Ei ilmoituksia",
-    programItemDetails: "Aloitusaika {{START_TIME}} huoneessa {{LOCATION}}.",
+    programItemDetails: "Aloitusaika {{START_TIME}}, paikkana {{LOCATION}}.",
     upcomingLotterySignupsRemoved:
       "Kaikki tulevat arvontailmoittautumiset on peruttu.",
     overlapLotterySignupsRemoved:
@@ -354,22 +354,22 @@ export const translationFI = {
     hideAttendees: "Piilota {{ATTENDEE_TYPE}}",
     noAttendees: "Ei {{ATTENDEE_TYPE}}",
     loginLink: "Kirjaudu sisään",
-    loginLinkEnding: " nähdäksesi {{ATTENDEE_TYPE}}.",
+    loginLinkEnding: "nähdäksesi {{ATTENDEE_TYPE}}.",
     signupQuestionAriaLabel: "Lisätietokysymys",
     help: {
       signupAlwaysOpenGroupMemberInfo:
-        " Voit ilmoittautua vaikka olet ryhmän jäsen.",
+        "Voit ilmoittautua vaikka olet ryhmän jäsen.",
       directSignupStartsLater:
-        "Osallistujat valitaan ilmoittautumisjärjestyksessä. Ilmoittautuminen alkaa: ",
+        "Osallistujat valitaan ilmoittautumisjärjestyksessä. Ilmoittautuminen alkaa:",
       directSignupOpenNow:
-        "Osallistujat valitaan ilmoittautumisjärjestyksessä. Ilmoittautuminen sulkeutuu: ",
+        "Osallistujat valitaan ilmoittautumisjärjestyksessä. Ilmoittautuminen sulkeutuu:",
       lotterySignupStartsLater:
-        "Osallistujat valitaan arvonnalla. Arvontaan ilmoittautuminen: ",
+        "Osallistujat valitaan arvonnalla. Arvontaan ilmoittautuminen:",
       lotterySignupOpen:
-        "Osallistujat valitaan arvonnalla. Arvontaan ilmoittautuminen päättyy: ",
+        "Osallistujat valitaan arvonnalla. Arvontaan ilmoittautuminen päättyy:",
       lotterySignupEnded: "Osallistujat valittiin arvonnalla.",
       directSignupStarts:
-        " Suora ilmoittautuminen jäljelle jääneisiin ja peruutuspaikkoihin: ",
+        "Suora ilmoittautuminen jäljelle jääneisiin ja peruutuspaikkoihin:",
     },
     signupCondition: {
       entryFeeInfo:
@@ -625,7 +625,7 @@ export const translationFI = {
   },
   admissionView: {
     noAdmission: "Et ole ilmoittautunut tähän ohjelmanumeroon.",
-    admission: "Olet ilmoittautunut nimimerkillä ",
+    admission: "Olet ilmoittautunut nimimerkillä",
   },
   iconAltText: {
     resetInput: "Tyhjennä syöte",
