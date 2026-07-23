@@ -5,6 +5,7 @@ import { ApiError } from "shared/types/api/errors";
 const sentryHost = "sentry.io";
 const knownProjectIds = new Set(["/6579203", "/6578391", "/6579491"]);
 const fetchTimeoutMs = 1000 * 15;
+const retryDelayMs = 1000 * 2;
 
 interface ResendSentryError extends ApiError {
   errorId: "unknown";
@@ -29,6 +30,50 @@ const describeFetchError = (error: unknown): string => {
     current = current.cause;
   }
   return messages.length > 0 ? messages.join(" / ") : String(error);
+};
+
+type ForwardAttempt =
+  | { delivered: true }
+  | { delivered: false; retryable: boolean; error: Error };
+
+const attemptForward = async (
+  sentryUrl: string,
+  envelope: Buffer,
+): Promise<ForwardAttempt> => {
+  let response: Response;
+  try {
+    response = await fetch(sentryUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/x-sentry-envelope" },
+      body: new Uint8Array(envelope),
+      signal: AbortSignal.timeout(fetchTimeoutMs),
+    });
+  } catch (fetchError) {
+    return {
+      delivered: false,
+      retryable: true,
+      error: new Error(
+        `Sentry tunnel: upstream request failed: ${describeFetchError(fetchError)}`,
+      ),
+    };
+  }
+
+  if (!response.ok) {
+    // Sentry explains rejections in the x-sentry-error header and/or body
+    const sentryError = response.headers.get("x-sentry-error");
+    const body = (await response.text()).slice(0, 500);
+    const details = [sentryError, body].filter(Boolean).join(" / ");
+    return {
+      delivered: false,
+      // Retrying a 4xx would resend an envelope Sentry already rejected
+      retryable: response.status >= 500,
+      error: new Error(
+        `Sentry tunnel: upstream responded with ${response.status}${details ? `: ${details}` : ""}`,
+      ),
+    };
+  }
+
+  return { delivered: true };
 };
 
 export const resendSentryRequest = async (
@@ -64,40 +109,18 @@ export const resendSentryRequest = async (
 
     const sentryUrl = `https://${hostname}/api${projectId}/envelope/`;
 
-    let response: Response | null = null;
-    try {
-      response = await fetch(sentryUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/x-sentry-envelope" },
-        body: new Uint8Array(envelope),
-        signal: AbortSignal.timeout(fetchTimeoutMs),
+    // Upstream failures are usually transient load shedding, so retry once
+    // after a short delay before logging the failure
+    let attempt = await attemptForward(sentryUrl, envelope);
+    if (!attempt.delivered && attempt.retryable) {
+      await new Promise((resolve) => {
+        setTimeout(resolve, retryDelayMs);
       });
-    } catch (fetchError) {
-      logger.error(
-        new Error(
-          `Sentry tunnel: upstream request failed: ${describeFetchError(fetchError)}`,
-        ),
-      );
+      attempt = await attemptForward(sentryUrl, envelope);
     }
 
-    if (!response) {
-      return {
-        message: "Sentry tunnel: Upstream error",
-        status: "error",
-        errorId: "unknown",
-      };
-    }
-
-    if (!response.ok) {
-      // Sentry explains rejections in the x-sentry-error header and/or body
-      const sentryError = response.headers.get("x-sentry-error");
-      const body = (await response.text()).slice(0, 500);
-      const details = [sentryError, body].filter(Boolean).join(" / ");
-      logger.error(
-        new Error(
-          `Sentry tunnel: upstream responded with ${response.status}${details ? `: ${details}` : ""}`,
-        ),
-      );
+    if (!attempt.delivered) {
+      logger.error(attempt.error);
       return {
         message: "Sentry tunnel: Upstream error",
         status: "error",

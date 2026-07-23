@@ -11,6 +11,30 @@ const buildEnvelope = (dsn: string): Buffer =>
     ].join("\n"),
   );
 
+const testEnvelope = buildEnvelope(
+  "https://public@o123.ingest.sentry.io/6579203",
+);
+
+const upstreamError = {
+  message: "Sentry tunnel: Upstream error",
+  status: "error",
+  errorId: "unknown",
+};
+
+// Runs the tunnel with fake timers so the retry delay doesn't slow tests down
+const runTunnel = async (
+  envelope: Buffer,
+): ReturnType<typeof resendSentryRequest> => {
+  vi.useFakeTimers();
+  try {
+    const promise = resendSentryRequest(envelope);
+    await vi.runAllTimersAsync();
+    return await promise;
+  } finally {
+    vi.useRealTimers();
+  }
+};
+
 afterEach(() => {
   vi.unstubAllGlobals();
   vi.resetAllMocks();
@@ -23,86 +47,130 @@ describe("resendSentryRequest", () => {
       .mockResolvedValue(new Response(null, { status: 200 }));
     vi.stubGlobal("fetch", fetchMock);
 
-    const result = await resendSentryRequest(
-      buildEnvelope("https://public@o123.ingest.sentry.io/6579203"),
-    );
+    const result = await resendSentryRequest(testEnvelope);
 
     expect(result).toBeNull();
+    expect(fetchMock).toHaveBeenCalledTimes(1);
     expect(fetchMock).toHaveBeenCalledWith(
       "https://o123.ingest.sentry.io/api/6579203/envelope/",
       expect.objectContaining({ method: "POST" }),
     );
   });
 
-  test("should log error with upstream details when response is non-2xx", async () => {
+  test("should not retry when upstream responds with 4xx status", async () => {
     const errorLoggerSpy = vi.spyOn(logger, "error");
-    vi.stubGlobal(
-      "fetch",
-      vi.fn().mockResolvedValue(
+    const fetchMock = vi
+      .fn()
+      .mockImplementation(() =>
+        Promise.resolve(new Response(null, { status: 429 })),
+      );
+    vi.stubGlobal("fetch", fetchMock);
+
+    const result = await runTunnel(testEnvelope);
+
+    expect(result).toEqual(upstreamError);
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    const loggedError = errorLoggerSpy.mock.calls[0][0] as Error;
+    expect(loggedError.message).toEqual(
+      "Sentry tunnel: upstream responded with 429",
+    );
+  });
+
+  test("should retry once and log error with upstream details when 5xx persists", async () => {
+    const errorLoggerSpy = vi.spyOn(logger, "error");
+    const fetchMock = vi.fn().mockImplementation(() =>
+      Promise.resolve(
         new Response("upstream rejection reason", {
           status: 503,
           headers: { "x-sentry-error": "load shedding" },
         }),
       ),
     );
+    vi.stubGlobal("fetch", fetchMock);
 
-    const result = await resendSentryRequest(
-      buildEnvelope("https://public@o123.ingest.sentry.io/6579203"),
-    );
+    const result = await runTunnel(testEnvelope);
 
-    expect(result).toEqual({
-      message: "Sentry tunnel: Upstream error",
-      status: "error",
-      errorId: "unknown",
-    });
+    expect(result).toEqual(upstreamError);
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+    expect(errorLoggerSpy).toHaveBeenCalledTimes(1);
     const loggedError = errorLoggerSpy.mock.calls[0][0] as Error;
-    expect(loggedError.message).toContain("503");
-    expect(loggedError.message).toContain("load shedding");
-    expect(loggedError.message).toContain("upstream rejection reason");
+    expect(loggedError.message).toEqual(
+      "Sentry tunnel: upstream responded with 503: load shedding / upstream rejection reason",
+    );
   });
 
   test("should log error without details when non-2xx response has none", async () => {
     const errorLoggerSpy = vi.spyOn(logger, "error");
     vi.stubGlobal(
       "fetch",
-      vi.fn().mockResolvedValue(new Response(null, { status: 502 })),
+      vi
+        .fn()
+        .mockImplementation(() =>
+          Promise.resolve(new Response(null, { status: 502 })),
+        ),
     );
 
-    const result = await resendSentryRequest(
-      buildEnvelope("https://public@o123.ingest.sentry.io/6579203"),
-    );
+    const result = await runTunnel(testEnvelope);
 
-    expect(result).toEqual({
-      message: "Sentry tunnel: Upstream error",
-      status: "error",
-      errorId: "unknown",
-    });
+    expect(result).toEqual(upstreamError);
     const loggedError = errorLoggerSpy.mock.calls[0][0] as Error;
     expect(loggedError.message).toEqual(
       "Sentry tunnel: upstream responded with 502",
     );
   });
 
-  test("should log upstream error when fetch fails with network error", async () => {
+  test("should deliver envelope when retry succeeds after 5xx", async () => {
     const errorLoggerSpy = vi.spyOn(logger, "error");
-    vi.stubGlobal(
-      "fetch",
-      vi.fn().mockRejectedValue(
-        new TypeError("fetch failed", {
-          cause: new Error("read ECONNRESET"),
-        }),
-      ),
-    );
+    const fetchMock = vi
+      .fn()
+      .mockImplementationOnce(() =>
+        Promise.resolve(new Response(null, { status: 503 })),
+      )
+      .mockImplementationOnce(() =>
+        Promise.resolve(new Response(null, { status: 200 })),
+      );
+    vi.stubGlobal("fetch", fetchMock);
 
-    const result = await resendSentryRequest(
-      buildEnvelope("https://public@o123.ingest.sentry.io/6579203"),
-    );
+    const result = await runTunnel(testEnvelope);
 
-    expect(result).toEqual({
-      message: "Sentry tunnel: Upstream error",
-      status: "error",
-      errorId: "unknown",
-    });
+    expect(result).toBeNull();
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+    expect(errorLoggerSpy).not.toHaveBeenCalled();
+  });
+
+  test("should deliver envelope when retry succeeds after network error", async () => {
+    const errorLoggerSpy = vi.spyOn(logger, "error");
+    const fetchMock = vi
+      .fn()
+      .mockImplementationOnce(() =>
+        Promise.reject(new TypeError("fetch failed")),
+      )
+      .mockImplementationOnce(() =>
+        Promise.resolve(new Response(null, { status: 200 })),
+      );
+    vi.stubGlobal("fetch", fetchMock);
+
+    const result = await runTunnel(testEnvelope);
+
+    expect(result).toBeNull();
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+    expect(errorLoggerSpy).not.toHaveBeenCalled();
+  });
+
+  test("should retry once and log upstream error when network error persists", async () => {
+    const errorLoggerSpy = vi.spyOn(logger, "error");
+    const fetchMock = vi
+      .fn()
+      .mockRejectedValue(
+        new TypeError("fetch failed", { cause: new Error("read ECONNRESET") }),
+      );
+    vi.stubGlobal("fetch", fetchMock);
+
+    const result = await runTunnel(testEnvelope);
+
+    expect(result).toEqual(upstreamError);
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+    expect(errorLoggerSpy).toHaveBeenCalledTimes(1);
     const loggedError = errorLoggerSpy.mock.calls[0][0] as Error;
     expect(loggedError.message).toEqual(
       "Sentry tunnel: upstream request failed: fetch failed / read ECONNRESET",
@@ -125,15 +193,9 @@ describe("resendSentryRequest", () => {
       ),
     );
 
-    const result = await resendSentryRequest(
-      buildEnvelope("https://public@o123.ingest.sentry.io/6579203"),
-    );
+    const result = await runTunnel(testEnvelope);
 
-    expect(result).toEqual({
-      message: "Sentry tunnel: Upstream error",
-      status: "error",
-      errorId: "unknown",
-    });
+    expect(result).toEqual(upstreamError);
     const loggedError = errorLoggerSpy.mock.calls[0][0] as Error;
     expect(loggedError.message).toEqual(
       "Sentry tunnel: upstream request failed: fetch failed / connect ETIMEDOUT 34.160.81.0:443 / connect ENETUNREACH 2600:1901:0:5e8a:::443",
