@@ -22,9 +22,9 @@ const Container = styled.div`
 
 const StyledCheckbox = styled.input`
   flex-shrink: 0;
-  margin-top: 4px;
+  margin-top: 2px;
+  margin-left: 4px;
   margin-right: 8px;
-  width: 16px;
   accent-color: ${(props) => props.theme.formAccent};
   transform: scale(1.4);
 `;
