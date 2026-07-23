@@ -50,8 +50,14 @@ export const resendSentryRequest = async (
     });
 
     if (!response.ok) {
+      // Sentry explains rejections in the x-sentry-error header and/or body
+      const sentryError = response.headers.get("x-sentry-error");
+      const body = (await response.text()).slice(0, 500);
+      const details = [sentryError, body].filter(Boolean).join(" / ");
       logger.error(
-        new Error(`Sentry tunnel: upstream responded with ${response.status}`),
+        new Error(
+          `Sentry tunnel: upstream responded with ${response.status}${details ? `: ${details}` : ""}`,
+        ),
       );
       return {
         message: "Sentry tunnel: Upstream error",
