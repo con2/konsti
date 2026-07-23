@@ -34,11 +34,16 @@ describe("resendSentryRequest", () => {
     );
   });
 
-  test("should return error when upstream responds with non-2xx status", async () => {
+  test("should log error with upstream details when response is non-2xx", async () => {
     const errorLoggerSpy = vi.spyOn(logger, "error");
     vi.stubGlobal(
       "fetch",
-      vi.fn().mockResolvedValue(new Response(null, { status: 429 })),
+      vi.fn().mockResolvedValue(
+        new Response("upstream rejection reason", {
+          status: 503,
+          headers: { "x-sentry-error": "load shedding" },
+        }),
+      ),
     );
 
     const result = await resendSentryRequest(
@@ -50,7 +55,53 @@ describe("resendSentryRequest", () => {
       status: "error",
       errorId: "unknown",
     });
-    expect(errorLoggerSpy).toHaveBeenCalled();
+    const loggedError = errorLoggerSpy.mock.calls[0][0] as Error;
+    expect(loggedError.message).toContain("503");
+    expect(loggedError.message).toContain("load shedding");
+    expect(loggedError.message).toContain("upstream rejection reason");
+  });
+
+  test("should log error without details when non-2xx response has none", async () => {
+    const errorLoggerSpy = vi.spyOn(logger, "error");
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(new Response(null, { status: 502 })),
+    );
+
+    const result = await resendSentryRequest(
+      buildEnvelope("https://public@o123.ingest.sentry.io/6579203"),
+    );
+
+    expect(result).toEqual({
+      message: "Sentry tunnel: Upstream error",
+      status: "error",
+      errorId: "unknown",
+    });
+    const loggedError = errorLoggerSpy.mock.calls[0][0] as Error;
+    expect(loggedError.message).toEqual(
+      "Sentry tunnel: upstream responded with 502",
+    );
+  });
+
+  test("should log error when fetch fails with network error", async () => {
+    const errorLoggerSpy = vi.spyOn(logger, "error");
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockRejectedValue(new TypeError("fetch failed")),
+    );
+
+    const result = await resendSentryRequest(
+      buildEnvelope("https://public@o123.ingest.sentry.io/6579203"),
+    );
+
+    expect(result).toEqual({
+      message: "Sentry tunnel: Unknown error",
+      status: "error",
+      errorId: "unknown",
+    });
+    const loggedError = errorLoggerSpy.mock.calls[0][0] as Error;
+    expect(loggedError.message).toEqual("Sentry tunnel error");
+    expect(loggedError.cause).toBeInstanceOf(TypeError);
   });
 
   test("should not forward envelope with non-Sentry DSN host", async () => {
