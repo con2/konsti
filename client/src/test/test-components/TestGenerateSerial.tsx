@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { first } from "remeda";
 import { Button, ButtonStyle } from "client/components/Button";
 import { postAddSerials } from "client/test/test-data/testDataServices";
+import { formatSerial } from "shared/utils/formatSerial";
 
 // Dev helper for testing the registration flow: generates a valid
 // registration code without running the generate-serials script
@@ -35,7 +36,7 @@ export const TestGenerateSerial = (): ReactElement => {
       >
         {t("testValues.generateSerial")}
       </StyledButton>
-      {serial && <SerialCode>{serial}</SerialCode>}
+      {serial && <SerialCode>{formatSerial(serial)}</SerialCode>}
     </div>
   );
 };

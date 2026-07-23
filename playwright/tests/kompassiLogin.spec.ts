@@ -37,6 +37,11 @@ test("Kompassi login", async ({ page, request }) => {
   // is not shown
   await expect(profilePage.firstLoginNotice).toBeHidden();
 
+  // Profile shows no registration code and no password change form either:
+  // Kompassi accounts reset their password via Kompassi
+  await expect(profilePage.main).not.toContainText("Code:");
+  await expect(profilePage.newPasswordInput).toHaveCount(0);
+
   // Logout
   await profilePage.navigation.logout();
 

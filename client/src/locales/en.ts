@@ -500,7 +500,8 @@ export const translationEN = {
     otherGaming: "game",
   },
   firstLogin: {
-    serial: "Save this code for recovering your password:",
+    serial:
+      "Keep your registration code safe, you will need it to recover your password:",
     info: "This message is shown only on your first login. You can also view your code on the Profile & Group page.",
   },
   myProgramView: {

@@ -502,7 +502,8 @@ export const translationFI = {
     otherGaming: "peliin",
   },
   firstLogin: {
-    serial: "Ota koodi talteen salasanan palauttamista varten:",
+    serial:
+      "Pidä rekisteröintikoodisi tallessa, tarvitset sitä salasanan palauttamiseen:",
     info: "Tämä viesti näytetään vain ensimmäisen kirjautumisesi yhteydessä. Löydät koodin myös Profiili & ryhmä -sivulta.",
   },
   myProgramView: {

@@ -11,6 +11,7 @@ import {
   makeSuccessResult,
 } from "shared/utils/result";
 import { MongoDbError } from "shared/types/api/errors";
+import { formatSerial } from "shared/utils/formatSerial";
 
 export const removeSerials = async (): Promise<Result<void, MongoDbError>> => {
   logger.info("MongoDB: remove ALL serials from db");
@@ -45,10 +46,7 @@ export const saveSerials = async (
     }
     serials.push(new SerialModel({ serial }));
 
-    const addDashesRegex = /(.{3})(?=.)/g;
-    logger.info(
-      `MongoDB: Created new serial: ${serial.replaceAll(addDashesRegex, "$1-")}`,
-    );
+    logger.info(`MongoDB: Created new serial: ${formatSerial(serial)}`);
   }
 
   try {

@@ -8,6 +8,7 @@ import { ChangeUserSettingsForm } from "client/views/helper/components/ChangeUse
 import { ControlledInput } from "client/components/ControlledInput";
 import { getDateAndTime } from "shared/utils/timeFormatter";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
+import { formatSerial } from "shared/utils/formatSerial";
 
 export const PasswordManagement = (): ReactElement => {
   const { t } = useTranslation();
@@ -53,7 +54,8 @@ export const PasswordManagement = (): ReactElement => {
     setUserFoundMessage(
       <Message>
         {t("passwordManagement.foundUser")}: {response.username} (
-        {response.serial}) - {t("passwordManagement.userCreatedAt")}{" "}
+        {formatSerial(response.serial)}) -{" "}
+        {t("passwordManagement.userCreatedAt")}{" "}
         {getDateAndTime(response.createdAt)}
       </Message>,
     );
