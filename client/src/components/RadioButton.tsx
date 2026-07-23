@@ -37,5 +37,6 @@ const StyledLabel = styled.label`
 const StyledRadioButton = styled.input`
   accent-color: ${(props) => props.theme.formAccent};
   transform: scale(1.5);
+  margin-left: 4px;
   margin-right: 8px;
 `;
