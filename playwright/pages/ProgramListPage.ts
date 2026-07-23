@@ -70,12 +70,30 @@ export class ProgramListPage extends BasePage {
     await this.page.keyboard.press("Escape");
   }
 
+  startingTimeOption(label: string): Locator {
+    return this.page.getByRole("radio", { name: label, exact: true });
+  }
+
   async selectStartingTime(label: string): Promise<void> {
-    await this.page.getByRole("radio", { name: label, exact: true }).click();
+    await this.startingTimeOption(label).click();
+  }
+
+  get hideFullItemsCheckbox(): Locator {
+    return this.page.getByRole("checkbox", {
+      name: "Hide fully booked program items",
+    });
+  }
+
+  async toggleHideFullItems(): Promise<void> {
+    await this.hideFullItemsCheckbox.click();
+  }
+
+  get searchInput(): Locator {
+    return this.page.locator("#find");
   }
 
   async search(text: string): Promise<void> {
-    await this.page.locator("#find").fill(text);
+    await this.searchInput.fill(text);
   }
 
   async waitForItems(): Promise<void> {

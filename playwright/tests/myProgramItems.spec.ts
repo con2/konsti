@@ -103,6 +103,24 @@ test("Show empty My Program lists and toggle past program items", async ({
   await expect(programList.favoriteList).toContainText(
     "No favorites. You can add favorites in the All Program view.",
   );
+
+  // The starting time radios switch the lists the same way
+  await programList.startingTimeOption("Last started and upcoming").click();
+  await expect(programList.lotterySignupList).toContainText(
+    "No lottery sign-ups for upcoming program items. You can sign up in the All Program view.",
+  );
+
+  await programList.startingTimeOption("All").click();
+  await expect(programList.lotterySignupList).toContainText(
+    "No lottery sign-ups. You can sign up in the All Program view.",
+  );
+
+  // The radio selection persists over a reload via sessionStorage
+  await page.reload();
+  await expect(programList.startingTimeOption("All")).toBeChecked();
+  await expect(programList.lotterySignupList).toContainText(
+    "No lottery sign-ups. You can sign up in the All Program view.",
+  );
 });
 
 test("Remove favorite on My Program page", async ({ page, request }) => {
