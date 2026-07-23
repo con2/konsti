@@ -379,7 +379,7 @@ export const translationEN = {
       konsti: "",
       other:
         "This {{PROGRAM_TYPE}} does not use Konsti for signing up. See the program details for instructions.",
-      notRequired: "Sign-up not required for this program item.",
+      notRequired: "This {{PROGRAM_TYPE}} does not require signing up.",
       experiencePoint:
         "This {{PROGRAM_TYPE}} does not use Konsti for signing up. Registration at Experience point.",
       ropelarp:
