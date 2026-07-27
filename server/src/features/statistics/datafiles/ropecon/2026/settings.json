@@ -1,0 +1,99 @@
+[
+  {
+    "hiddenProgramItemIds": [
+      "kartano-kaltevalla-huipulla-1",
+      "character-drawing-workshop-1",
+      "henkien-yo-larp"
+    ],
+    "appOpen": false,
+    "adminMessageFi": "",
+    "adminMessageEn": "",
+    "signupStrategy": "lottery+direct",
+    "assignmentInProgressStartTime": null,
+    "loginProvider": "local+kompassi",
+    "emailNotificationTrigger": [
+      "accepted",
+      "rejected",
+      "programItemCancelled",
+      "programItemDeleted",
+      "programItemNoKonstiSignupAnymore",
+      "programItemNoLotteryAnymore",
+      "programItemTimeChanged"
+    ],
+    "signupQuestions": [
+      {
+        "programItemId": "pikamaalauskilpailu-speed-painting-contest",
+        "questionFi": "Haluan, että maalattavan figuni pohjaväri on",
+        "questionEn": "I want my miniature to be primed",
+        "private": false,
+        "type": "select",
+        "selectOptions": [
+          { "optionFi": "Musta", "optionEn": "Black" },
+          { "optionFi": "Valkoinen", "optionEn": "White" }
+        ]
+      },
+      {
+        "programItemId": "hamarankavijat-roolipeli-3",
+        "questionFi": "Peliin ilmoitetun lapsen ikä",
+        "questionEn": "The age of the child signed up for the game",
+        "private": true,
+        "type": "text",
+        "selectOptions": []
+      },
+      {
+        "programItemId": "pikamaalauskilpailu-speed-painting-contest-2",
+        "questionFi": "Haluan, että maalattavan figuni pohjaväri on",
+        "questionEn": "I want my miniature to be primed",
+        "private": false,
+        "type": "select",
+        "selectOptions": [
+          { "optionFi": "Musta", "optionEn": "Black" },
+          { "optionFi": "Valkoinen", "optionEn": "White" }
+        ]
+      },
+      {
+        "programItemId": "pikamaalauskilpailu-speed-painting-contest-4",
+        "questionFi": "Haluan, että maalattavan figuni pohjaväri on",
+        "questionEn": "I want my miniature to be primed",
+        "private": false,
+        "type": "select",
+        "selectOptions": [
+          { "optionFi": "Musta", "optionEn": "Black" },
+          { "optionFi": "Valkoinen", "optionEn": "White" }
+        ]
+      },
+      {
+        "programItemId": "hamarankavijat-roolipeli-2",
+        "questionFi": "Peliin ilmoitetun lapsen ikä",
+        "questionEn": "The age of the child signed up for the game",
+        "private": true,
+        "type": "text",
+        "selectOptions": []
+      },
+      {
+        "programItemId": "pikamaalauskilpailu-speed-painting-contest-3",
+        "questionFi": "Haluan, että maalattavan figuni pohjaväri on",
+        "questionEn": "I want my miniature to be primed",
+        "private": false,
+        "type": "select",
+        "selectOptions": [
+          { "optionFi": "Musta", "optionEn": "Black" },
+          { "optionFi": "Valkoinen", "optionEn": "White" }
+        ]
+      },
+      {
+        "programItemId": "hamarankavijat-roolipeli",
+        "questionFi": "Peliin ilmoitetun lapsen ikä",
+        "questionEn": "The age of the child signed up for the game",
+        "private": true,
+        "type": "text",
+        "selectOptions": []
+      }
+    ],
+    "programUpdateLastRun": "2026-07-27T08:55:00.027Z",
+    "assignmentLastRun": "2026-07-27T09:00:06.114Z",
+    "latestServerStartTime": "2026-07-23T19:01:24.104Z",
+    "createdAt": "2026-07-12T16:46:02.844Z",
+    "updatedAt": "2026-07-27T09:00:06.132Z"
+  }
+]
