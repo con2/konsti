@@ -12,5 +12,5 @@
 - Mikä taho auttaa Konstin käytössä? Ropetiski, info?
 - Onko käytössä tiski-tietokoneita, mitä voi käyttää tapahtuman aikana, jos ei ole omaa laitetta?
 - Keskustelkaa ohjelmanumeron perumisesta tapahtuman aikana, tähän on kaksi tapaa:
-  - Perutaan ohjelmanumero Kompassista, jolloin se häviää Konstista ja ohjelmaoppaasta
-  - Kirjoitetaan ohjelmanumeron kuvaukseen "PERUTTU", jolloin se näkyy edelleen Konstissa ja ohjelmaoppaassa. Tämän lisäksi, poistetaan Konsti-ilmoittautuminen Kompassin kautta.
+  - Merkitään ohjelmanumero perutuksi Kompassissa, jolloin se näkyy edelleen Konstissa ja ohjelmaoppaassa perutuksi merkittynä. Konsti poistaa suorat ilmoittautumiset ja ilmoittaa peruutuksesta ilmoittautuneille käyttäjille.
+  - Poistetaan ohjelmanumero Kompassista kokonaan, jolloin se häviää Konstista ja ohjelmaoppaasta. Konsti poistaa ilmoittautumiset ja suosikit ja ilmoittaa poistosta käyttäjille.

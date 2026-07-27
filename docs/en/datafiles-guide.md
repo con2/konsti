@@ -14,6 +14,8 @@ Events: `ropecon`, `tracon`, `tracon-hitpoint`, `solmukohta`
 
 ## Files
 
+Entries in every file also carry `createdAt` and `updatedAt` timestamps. They are database metadata and omitted from the examples below.
+
 ### direct-signups.json
 
 Confirmed signups (both lottery-assigned and direct signups).
@@ -27,6 +29,7 @@ Confirmed signups (both lottery-assigned and direct signups).
         "username": "123456",
         "priority": 1, // See "Priority values" below
         "signedToStartTime": "2024-07-19T15:00:00Z",
+        "signupTime": "2024-07-17T18:34:56.789Z", // When the signup was stored, see below
         "message": "",
       },
     ],
@@ -42,6 +45,8 @@ Confirmed signups (both lottery-assigned and direct signups).
 - `2` — Got their 2nd lottery choice
 - `3` — Got their 3rd lottery choice
 
+**`signupTime` values:** Ropecon 2026 is the first event where `signupTime` is the actual recorded signup moment. For earlier events (2017–2025) the field was backfilled during normalization: direct signups (`priority: 0`) use the program's start time, and lottery-assigned signups (priority > 0) use two hours before the start time, which is when the assignment run happened.
+
 For older events (2017–2021) this file was reconstructed from `users.json` `directSignups` during a normalization pass. Entries from 2017–2019 use `priority: 1`, `2`, or `3` matching the lottery preference that won (Konsti was lottery-only then, so every confirmed signup was a lottery win). For 2017–2018 the priority was not stored on the original `directSignups` entries and was looked up from `results.json`; for 2019 it was already present. Ropecon 2021 was a remote / COVID-era convention that ran direct signup only (no lottery), so its entries use `priority: 0`.
 
 ### program-items.json
@@ -53,8 +58,9 @@ All program items for the event.
   {
     "programItemId": "example-program",
     "title": "Example Program",
-    "programType": "tabletopRPG", // tabletopRPG, larp, workshop, tournament, other
-    "signupType": "konsti",
+    "parentId": "example-program", // Kompassi parent program id shared by multi-session items; present from Tracon 2025 onward
+    "programType": "tabletopRPG", // tabletopRPG, larp, workshop, tournament, otherGaming, fleaMarket, other
+    "signupType": "konsti", // Ropecon 2025 onward also includes items not signed up via Konsti: notRequired, other, ropelarp, experiencePoint
     "state": "accepted", // "cancelled" if the program was cancelled
     "startTime": "2024-07-19T12:00:00Z",
     "endTime": "2024-07-19T16:00:00Z",
@@ -68,11 +74,12 @@ All program items for the event.
     "styles": ["light", "characterDriven"],
     "tags": ["beginnerFriendly"],
     "ageGroups": ["adults"],
-    "popularity": 0,
+    "popularity": "medium", // notSet, low, medium, high, veryHigh, extreme - see "Popularity scale history" below
     "revolvingDoor": true, // Players can join/leave mid-session
     "description": "...",
     "shortDescription": "...",
     "people": "<redacted>", // Organizer names (redacted)
+    "otherAuthor": "", // Author credit for the original work, not redacted
     "entryFee": "",
     "contentWarnings": "...",
     "accessibilityValues": ["loudSounds", "noMovement"],
@@ -121,12 +128,15 @@ Ropecon 2021 has no `results.json` because no lottery was run that year (remote 
 
 ### users.json
 
-All users with sanitized data. Usernames are anonymized numeric IDs, passwords are redacted.
+All users with sanitized data. Usernames are anonymized numeric IDs. `password` is `"<redacted>"` when the account had a password and `""` for accounts that never had one (Kompassi login users).
 
 ```jsonc
 [
   {
+    "kompassiId": 0, // See "kompassiId types" below
+    "kompassiUsernameAccepted": false, // true once a Kompassi login user has accepted their Konsti username
     "username": "123456",
+    "password": "<redacted>", // "" if the account never had a password
     "userGroup": "user", // Always "user" in dumps (admins excluded)
     "serial": "1001408788", // Registration code used to create the account
     "groupCode": "0", // "0" = not in a group, otherwise a group code
@@ -143,13 +153,15 @@ All users with sanitized data. Usernames are anonymized numeric IDs, passwords a
     "eventLogItems": [
       // Notifications shown to the user
       {
-        "action": "newAssignment", // "newAssignment" or "noAssignment"
+        "action": "newAssignment", // newAssignment, noAssignment, programItemCancelled, programItemDeleted, programItemMoved
         "programItemId": "example-program",
         "programItemStartTime": "2024-07-19T15:00:00Z",
         "isSeen": true,
         "createdAt": "2024-07-19T13:00:08.123Z",
       },
     ],
+    "email": "<redacted>", // "" if not provided; present from Tracon 2025 onward
+    "emailNotificationPermitAsked": false, // Present from Tracon 2025 onward
   },
 ]
 ```
