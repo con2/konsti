@@ -943,7 +943,7 @@
       "form": ["offer-rpg"],
       "room": ["halli3f"],
       "type": ["gaming"],
-      "state": ["accepted"],
+      "state": ["cancelled"],
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["beginners", "dreams", "lgbt"],
@@ -961,7 +961,7 @@
       "ropecon:contentWarnings": "Hints at depression, hallucinations. ",
       "ropecon:isRevolvingDoor": false
     },
-    "isCancelled": false,
+    "isCancelled": true,
     "scheduleItems": [
       {
         "slug": "beneath-a-blanket-of-snow-1",
@@ -970,7 +970,7 @@
         "endTime": "2026-07-26T16:00:00+03:00",
         "lengthMinutes": 240,
         "location": "Hall 3f (Pöytä 3)",
-        "isCancelled": false,
+        "isCancelled": true,
         "cachedAnnotations": {
           "konsti:rpgSystem": "Emerald Sea (PbtA-based game about elves)",
           "konsti:minAttendance": 2,
@@ -1731,7 +1731,7 @@
       "form": ["offer-rpg"],
       "room": ["halli3f"],
       "type": ["gaming"],
-      "state": ["accepted"],
+      "state": ["cancelled"],
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["dreams"],
@@ -1750,7 +1750,7 @@
       "ropecon:contentWarnings": "Spiders, violence, fobias, drugs, new age, cults, cosmic horror",
       "ropecon:isRevolvingDoor": false
     },
-    "isCancelled": false,
+    "isCancelled": true,
     "scheduleItems": [
       {
         "slug": "call-of-cthulhu-the-dreaming-yurt-hapokas-uniseikkailu-70-luvulla-1",
@@ -1759,7 +1759,7 @@
         "endTime": "2026-07-26T17:00:00+03:00",
         "lengthMinutes": 240,
         "location": "Hall 3f (Pöytä 8)",
-        "isCancelled": false,
+        "isCancelled": true,
         "cachedAnnotations": {
           "konsti:rpgSystem": "Call of Cthulhu 7th edition",
           "konsti:minAttendance": 3,
@@ -1776,7 +1776,7 @@
         "endTime": "2026-07-25T17:00:00+03:00",
         "lengthMinutes": 240,
         "location": "Hall 3f (Pöytä 5)",
-        "isCancelled": false,
+        "isCancelled": true,
         "cachedAnnotations": {
           "konsti:rpgSystem": "Call of Cthulhu 7th edition",
           "konsti:minAttendance": 3,
@@ -2024,7 +2024,7 @@
     "cachedDimensions": {
       "date": ["2026-07-24", "2026-07-26"],
       "form": ["offer-workshop"],
-      "room": ["halli1a"],
+      "room": ["halli1a", "sali102"],
       "type": ["workshop"],
       "state": ["accepted"],
       "topic": ["music"],
@@ -2055,7 +2055,7 @@
         "startTime": "2026-07-26T16:00:00+03:00",
         "endTime": "2026-07-26T16:45:00+03:00",
         "lengthMinutes": 45,
-        "location": "Hall 1A Workshop Area",
+        "location": "Room 102",
         "isCancelled": false,
         "cachedAnnotations": { "konsti:maxAttendance": 30 }
       }
@@ -2132,7 +2132,7 @@
   {
     "slug": "crits-n-giggles-stand-up-comedy-open-mic",
     "title": "Crits n' Giggles: stand up comedy open mic",
-    "description": "Have you ever dreamed of trying stand up comedy? Or do you simply want to enjoy some jokes about your favourite hobbies? Come and join local comedians (and nerds with too much time on their hands) Happeningfish, Steph Clark and their friends for some crits n' giggles! Throw your name into the hat to give it a go yourself if you're feeling brave, or sit back and enjoy the laughs.\r\n\r\nThose who want to participate can sign up in advance for an opportunity to perform a three-minute set alongside seasoned comedians who desperately want to tell you all about their latest Skyrim playthrough/anime obsession/favourite outdated meme. If you have three minutes of jokes that you want to tell, or have a funny three-minute story that you think the world needs to hear, this is your time to shine! There’s no pressure to get up on stage though – everyone is welcome to come along and enjoy the jokes from a safe distance in the audience.\r\n\r\nParticipants are encouraged to engage with safer space guidelines (provided on the door) when watching and performing. Remember, don't punch down unless you're aiming for a kobold! You can be as edgy as a D10 but nobody in the room should feel like they’re the butt of the joke.",
+    "description": "Have you ever dreamed of trying stand up comedy? Or do you simply want to enjoy some jokes about your favourite hobbies? Come and join local comedians (and nerds with too much time on their hands) Happeningfish, Steph Clark and their friends for some crits n' giggles! Throw your name into the hat to give it a go yourself if you're feeling brave, or sit back and enjoy the laughs.\r\n\r\nThose who want to participate can sign up in advance for an opportunity to perform a three-minute set alongside seasoned comedians who desperately want to tell you all about their latest Skyrim playthrough/anime obsession/favourite outdated meme. If you have three minutes of jokes that you want to tell, or have a funny three-minute story that you think the world needs to hear, this is your time to shine! There’s no pressure to get up on stage though – everyone is welcome to come along and enjoy the jokes from a safe distance in the audience.\r\n\r\nParticipants are encouraged to engage with safer space guidelines when watching and performing. Remember, don't punch down unless you're aiming for a kobold! You can be as edgy as a D10 but nobody in the room should feel like they’re the butt of the joke.\r\n\r\nInstructions for joining:\r\nIf you want to perform, sign up through Konsti and please come to room 101D at least 15mins before the start of the show to introduce yourself to the MCs (Steph and Happeningfish). If you want to watch, no need to sign up, just show up and have fun!",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2026-07-25"],
@@ -3145,7 +3145,7 @@
       "form": ["offer-rpg"],
       "room": ["halli3g"],
       "type": ["gaming"],
-      "state": ["accepted"],
+      "state": ["cancelled"],
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["beginners", "dreams"],
@@ -3167,7 +3167,7 @@
       "konsti:maxAttendance": 4,
       "ropecon:isRevolvingDoor": false
     },
-    "isCancelled": false,
+    "isCancelled": true,
     "scheduleItems": [
       {
         "slug": "delta-green-mestariteos-1",
@@ -3176,7 +3176,7 @@
         "endTime": "2026-07-25T13:00:00+03:00",
         "lengthMinutes": 180,
         "location": "Hall 3g (Pöytä 5)",
-        "isCancelled": false,
+        "isCancelled": true,
         "cachedAnnotations": {
           "konsti:rpgSystem": "Delta Green",
           "konsti:minAttendance": 2,
@@ -3197,7 +3197,7 @@
       "form": ["offer-rpg"],
       "room": ["halli3g"],
       "type": ["gaming"],
-      "state": ["accepted"],
+      "state": ["cancelled"],
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["beginners", "dreams"],
@@ -3219,7 +3219,7 @@
       "konsti:maxAttendance": 4,
       "ropecon:isRevolvingDoor": false
     },
-    "isCancelled": false,
+    "isCancelled": true,
     "scheduleItems": [
       {
         "slug": "delta-green-poisnukkuneet-1",
@@ -3228,7 +3228,7 @@
         "endTime": "2026-07-25T17:00:00+03:00",
         "lengthMinutes": 180,
         "location": "Hall 3g (Pöytä 5)",
-        "isCancelled": false,
+        "isCancelled": true,
         "cachedAnnotations": {
           "konsti:rpgSystem": "Delta Green",
           "konsti:minAttendance": 2,
@@ -3613,7 +3613,7 @@
       "form": ["offer-larp"],
       "room": ["sali216"],
       "type": ["gaming"],
-      "state": ["accepted"],
+      "state": ["cancelled"],
       "topic": ["larp"],
       "konsti": ["larp"],
       "grouping": ["beginners", "dreams", "lgbt"],
@@ -3630,7 +3630,7 @@
       "ropecon:accessibilityOther": "I am happy to make this game as inclusive as possible.",
       "ropecon:isRevolvingDoor": true
     },
-    "isCancelled": false,
+    "isCancelled": true,
     "scheduleItems": [
       {
         "slug": "dream-of-a-dream-working-title",
@@ -3639,7 +3639,7 @@
         "endTime": "2026-07-25T16:30:00+03:00",
         "lengthMinutes": 180,
         "location": "Room 216",
-        "isCancelled": false,
+        "isCancelled": true,
         "cachedAnnotations": {
           "konsti:minAttendance": 5,
           "konsti:maxAttendance": 30,
@@ -3730,7 +3730,7 @@
       "form": ["offer-rpg"],
       "room": ["sade"],
       "type": ["gaming"],
-      "state": ["accepted"],
+      "state": ["cancelled"],
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "language": ["en", "fi", "sv"],
@@ -3747,7 +3747,7 @@
       "konsti:maxAttendance": 7,
       "ropecon:isRevolvingDoor": true
     },
-    "isCancelled": false,
+    "isCancelled": true,
     "scheduleItems": [
       {
         "slug": "dreams-of-the-fallow-gods-1",
@@ -3756,7 +3756,7 @@
         "endTime": "2026-07-25T13:00:00+03:00",
         "lengthMinutes": 180,
         "location": "Säde (Pöytä 7)",
-        "isCancelled": false,
+        "isCancelled": true,
         "cachedAnnotations": {
           "konsti:rpgSystem": "Dungeons and Dragons 5.5",
           "konsti:minAttendance": 1,
@@ -4427,7 +4427,7 @@
     "cachedDimensions": {
       "date": ["2026-07-26"],
       "form": ["offer-larp"],
-      "room": ["sali218"],
+      "room": ["sali216"],
       "type": ["gaming"],
       "state": ["accepted"],
       "topic": ["larp"],
@@ -4465,7 +4465,7 @@
         "startTime": "2026-07-26T12:00:00+03:00",
         "endTime": "2026-07-26T16:00:00+03:00",
         "lengthMinutes": 240,
-        "location": "Room 218",
+        "location": "Room 216",
         "isCancelled": false,
         "cachedAnnotations": {
           "konsti:minAttendance": 7,
@@ -4548,7 +4548,7 @@
     },
     "cachedAnnotations": {
       "konsti:minAttendance": 6,
-      "konsti:maxAttendance": 20,
+      "konsti:maxAttendance": 12,
       "ropecon:isRevolvingDoor": false
     },
     "isCancelled": false,
@@ -4563,7 +4563,7 @@
         "isCancelled": false,
         "cachedAnnotations": {
           "konsti:minAttendance": 6,
-          "konsti:maxAttendance": 20,
+          "konsti:maxAttendance": 12,
           "ropecon:isRevolvingDoor": false
         }
       }
@@ -4579,7 +4579,7 @@
       "form": ["offer-rpg"],
       "room": ["halli3c"],
       "type": ["gaming"],
-      "state": ["accepted"],
+      "state": ["cancelled"],
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["beginners", "dreams"],
@@ -4596,7 +4596,7 @@
       "konsti:maxAttendance": 6,
       "ropecon:isRevolvingDoor": false
     },
-    "isCancelled": false,
+    "isCancelled": true,
     "scheduleItems": [
       {
         "slug": "fairyland-dream-net-1",
@@ -4605,7 +4605,7 @@
         "endTime": "2026-07-25T00:00:00+03:00",
         "lengthMinutes": 120,
         "location": "Hall 3c (Pöytä 7)",
-        "isCancelled": false,
+        "isCancelled": true,
         "cachedAnnotations": {
           "konsti:rpgSystem": "Daggerheart (simplified)",
           "konsti:minAttendance": 3,
@@ -4689,7 +4689,7 @@
   {
     "slug": "for-the-team",
     "title": "For the Team",
-    "description": "*As it was foretold, the world is once more threatened by a great force of evil, and only the chosen heroes can save it. But the bonds between the heroes will be tested on the path towards the Prophecy. To save the world, you might need to sacrifice yourself for the team.*\r\n\r\n**For the Team** is a GMless storytelling game focusing on the relationships between 4 - 6 heroes portrayed by 2 - 4 players. In turns, each player draws a question card and sets in place a new moment on the storyline, alternating between scenes from the final battle and the journey towards it. The questions may be answered with a narration or by roleplaying an in-character dialogue with another player.\r\n\r\nAt the beginning of the program, participants will split into up to 4 groups of 2 - 4 players each. On mutual agreement, a group may choose to play in a language other than English. However, the question cards are only available in English.\r\n\r\nThe game has been inspired by Alex Roberts' game For the Queen. However, no previous experience with it or Descended From the Queen rulesystem is expected to participate.",
+    "description": "As it was foretold, the world is once more threatened by a great force of evil, and only the chosen heroes can save it. But the bonds between the heroes will be tested on the path towards the Prophecy. To save the world, you might need to sacrifice yourself for the team.\r\n\r\nFor the Team is a GMless storytelling game focusing on the relationships between 4 - 6 heroes portrayed by 2 - 4 players. In turns, each player draws a question card and sets in place a new moment on the storyline, alternating between scenes from the final battle and the journey towards it. The questions may be answered with a narration or by roleplaying an in-character dialogue with another player.\r\n\r\nAt the beginning of the program, participants will split into up to 4 groups of 2 - 4 players each. On mutual agreement, a group may choose to play in a language other than English. However, the question cards are only available in English.\r\n\r\nThe game has been inspired by Alex Roberts' game For the Queen. However, no previous experience with it or Descended From the Queen rulesystem is expected to participate.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2026-07-26"],
@@ -5095,12 +5095,12 @@
   {
     "slug": "hehku",
     "title": "Hehku",
-    "description": "Iloiset tytöt maalaavat kellotauluja tehtaassa. Vähitellen maali muuttuu ihoa koristavasta hehkusta lihaa ja luita kalvavaksi myrkyksi. Tytöt joutuvat taisteluun välinpitämättömyyttä, kipua ja kuolemaa vastaan.\r\n\r\nRadiumtytöt työskentelivät kellotauluja tuottavissa tehtaissa Yhdysvalloissa 1920-luvulla, kun radiumin vaaroja ei vielä ymmärretty. Työntekijöitä ohjeistettiin kostuttamaan maalisiveltimensä suussaan. He söivät työpöydän ääressä ja koristelivat itseään juhliin hohtavalla maalilla, eikä mitään suojavarusteita ei käytetty.\r\n\r\nHehkussa pelataan radiumtyttöjä: aluksi iloisia ja toiveikkaita, vieläpä hyvin palkattuja, ja lopulta vakavasti sairaita, velkaantuneita ja oikeuksistaan taistelevia. Peliä on inspiroinut Kate Mooren kirja The Radium Girls.\r\n\r\nHehku on freeform-larppi 8-12 pelaajalle. Kaikki hahmot ovat naisia, pelaajan sukupuolella ei ole merkitystä. Peli ei vaadi ennakkotietämystä tai -osaamista radiumtytöistä tai larppaamisesta.",
+    "description": "Iloiset tytöt maalaavat kellotauluja tehtaassa. Vähitellen maali muuttuu ihoa koristavasta hehkusta lihaa ja luita kalvavaksi myrkyksi. Tytöt joutuvat taisteluun välinpitämättömyyttä, kipua ja kuolemaa vastaan.\r\n\r\nRadiumtytöt työskentelivät kellotauluja tuottavissa tehtaissa Yhdysvalloissa 1920-luvulla, kun radiumin vaaroja ei vielä ymmärretty. Työntekijöitä ohjeistettiin kostuttamaan maalisiveltimensä suussaan. He söivät työpöydän ääressä ja koristelivat itseään juhliin hohtavalla maalilla, eikä mitään suojavarusteita ei käytetty.\r\n\r\nHehkussa pelataan radiumtyttöjä: aluksi iloisia ja toiveikkaita, vieläpä hyvin palkattuja, ja lopulta vakavasti sairaita, velkaantuneita ja oikeuksistaan taistelevia. Peliä on inspiroinut Kate Mooren kirja The Radium Girls.\r\n\r\nHehku on freeform-larppi 8-10 pelaajalle. Kaikki hahmot ovat naisia, pelaajan sukupuolella ei ole merkitystä. Peli ei vaadi ennakkotietämystä tai -osaamista radiumtytöistä tai larppaamisesta.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2026-07-26"],
       "form": ["offer-larp"],
-      "room": ["sali216"],
+      "room": ["sali218"],
       "type": ["gaming"],
       "state": ["accepted"],
       "topic": ["larp"],
@@ -5133,7 +5133,7 @@
         "startTime": "2026-07-26T10:00:00+03:00",
         "endTime": "2026-07-26T14:30:00+03:00",
         "lengthMinutes": 270,
-        "location": "Room 216",
+        "location": "Room 218",
         "isCancelled": false,
         "cachedAnnotations": {
           "konsti:minAttendance": 8,
@@ -5204,7 +5204,7 @@
       "form": ["offer-rpg"],
       "room": ["halli3f"],
       "type": ["gaming"],
-      "state": ["accepted"],
+      "state": ["cancelled"],
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["beginners"],
@@ -5223,7 +5223,7 @@
       "ropecon:contentWarnings": "Pelin aluksi listataan aiheet, joita osallistujat eivät halua peliin sisältyvän. Pelaajan kannattaa etukäteen miettiä, mitä teemoja haluaa kiellettyjen listalle. Alkoholiteemaa ei peliasetelman vuoksi täysin voi välttää, mutta päihteiden käyttö on mahdollista rajata pois. Väkivaltateemaan voidaan niin ikään asettaa rajoja.",
       "ropecon:isRevolvingDoor": false
     },
-    "isCancelled": false,
+    "isCancelled": true,
     "scheduleItems": [
       {
         "slug": "helevetin-kuustoista-heist-itte-kt-1",
@@ -5232,7 +5232,7 @@
         "endTime": "2026-07-25T15:00:00+03:00",
         "lengthMinutes": 180,
         "location": "Hall 3f (Pöytä 3)",
-        "isCancelled": false,
+        "isCancelled": true,
         "cachedAnnotations": {
           "konsti:rpgSystem": "Fiasco!",
           "konsti:minAttendance": 2,
@@ -5855,8 +5855,8 @@
       {
         "slug": "hyvasti-veli-paul-1",
         "title": "Hyvästi, veli Paul!",
-        "startTime": "2026-07-26T13:00:00+03:00",
-        "endTime": "2026-07-26T17:00:00+03:00",
+        "startTime": "2026-07-26T12:00:00+03:00",
+        "endTime": "2026-07-26T16:00:00+03:00",
         "lengthMinutes": 240,
         "location": "Hall 3g (Pöytä 1)",
         "isCancelled": false,
@@ -7701,7 +7701,7 @@
       "form": ["offer-rpg"],
       "room": ["halli3c"],
       "type": ["gaming"],
-      "state": ["accepted"],
+      "state": ["cancelled"],
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["beginners", "dreams"],
@@ -7718,7 +7718,7 @@
       "konsti:maxAttendance": 6,
       "ropecon:isRevolvingDoor": false
     },
-    "isCancelled": false,
+    "isCancelled": true,
     "scheduleItems": [
       {
         "slug": "keijumaan-u-net-1",
@@ -7727,7 +7727,7 @@
         "endTime": "2026-07-24T21:00:00+03:00",
         "lengthMinutes": 120,
         "location": "Hall 3c (Pöytä 7)",
-        "isCancelled": false,
+        "isCancelled": true,
         "cachedAnnotations": {
           "konsti:rpgSystem": "Daggerheart (yksinkertaistettu)",
           "konsti:minAttendance": 3,
@@ -7743,7 +7743,7 @@
         "endTime": "2026-07-25T21:00:00+03:00",
         "lengthMinutes": 120,
         "location": "Hall 3c (Pöytä 7)",
-        "isCancelled": false,
+        "isCancelled": true,
         "cachedAnnotations": {
           "konsti:rpgSystem": "Daggerheart (yksinkertaistettu)",
           "konsti:minAttendance": 3,
@@ -9015,8 +9015,8 @@
       {
         "slug": "konflikti",
         "title": "Konflikti",
-        "startTime": "2026-07-25T16:00:00+03:00",
-        "endTime": "2026-07-25T22:00:00+03:00",
+        "startTime": "2026-07-25T17:00:00+03:00",
+        "endTime": "2026-07-25T23:00:00+03:00",
         "lengthMinutes": 360,
         "location": "Room 218",
         "isCancelled": false,
@@ -9796,9 +9796,9 @@
     "description": "Suuri koe ihmismielen ja koneen yhdistämiseksi on alkamassa MindArean tutkimuslaitoksessa! Henkilökunnan on oltava tänään hereillä ja läsnä tänä kriittisenä hetkenä ihmiskunnan historiassa! Pääset valitsemaan roolisi yhdeksän ammattilaisen joukosta, tule rohkeasti mukaan tekemään historiaa!",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
-      "date": ["2026-07-25"],
+      "date": ["2026-07-26"],
       "form": ["offer-rpg"],
-      "room": ["halli3g"],
+      "room": ["halli3f"],
       "type": ["gaming"],
       "state": ["accepted"],
       "topic": ["rpg"],
@@ -9828,10 +9828,10 @@
       {
         "slug": "lapimurto-1",
         "title": "Läpimurto ",
-        "startTime": "2026-07-25T21:00:00+03:00",
-        "endTime": "2026-07-26T01:00:00+03:00",
+        "startTime": "2026-07-26T12:00:00+03:00",
+        "endTime": "2026-07-26T16:00:00+03:00",
         "lengthMinutes": 240,
-        "location": "Hall 3g (Pöytä 3)",
+        "location": "Hall 3f (Pöytä 3)",
         "isCancelled": false,
         "cachedAnnotations": {
           "konsti:rpgSystem": "Oma mekaniikka",
@@ -10489,7 +10489,7 @@
       "form": ["offer-larp"],
       "room": ["sali215"],
       "type": ["gaming"],
-      "state": ["accepted"],
+      "state": ["cancelled"],
       "topic": ["larp"],
       "konsti": ["larp"],
       "grouping": ["beginners"],
@@ -10505,7 +10505,7 @@
       "konsti:maxAttendance": 10,
       "ropecon:isRevolvingDoor": false
     },
-    "isCancelled": false,
+    "isCancelled": true,
     "scheduleItems": [
       {
         "slug": "lohikaarmeita-ja-jalokivia",
@@ -10514,7 +10514,7 @@
         "endTime": "2026-07-26T11:30:00+03:00",
         "lengthMinutes": 150,
         "location": "Room 215",
-        "isCancelled": false,
+        "isCancelled": true,
         "cachedAnnotations": {
           "konsti:minAttendance": 9,
           "konsti:maxAttendance": 10,
@@ -10760,7 +10760,7 @@
   {
     "slug": "luurangot-the-skeletons",
     "title": "Luurangot (The Skeletons)",
-    "description": "Aika kuluu ja mikään ei muutu. On vain kaiken nielevää pimeyttä ja hiljaisuutta. Seisot hautakammiossa ääneti ja liikkumatta. Et ajattele. Et hengitä. Et voi, koska kehostasi ovat jäljellä vain maagisella kirouksella yhdessä pysyvät ja tähän paikkaan sidotut luut. Sitten eräänä päivänä, ehkä vasta vuosisatojen päästä, tapahtuu jotakin kamalaa: valonsäde rikkoo tunkkaisen pimeyden ja elävien askeleet häiritsevät hautakammion rauhaa! Kuulet kutsun toimintaan. Kätesi sulkeutuvat narahtaen kirveenvarren ympärille ja kilpesi nousee ylös vaistomaisesti. Nuo elävät, lämpimät ja verta sykkivät tunkeilijat… Ne loukkaavat tämän hautakammion rauhaa! Persoonallisuus on riistetty sinulta jo kauan sitten, mutta tässä hetkessä jokin sinussa syttyy eloon: muinainen ja kylmä kaipuu väkivaltaan. Hetken ajan olet taas enemmän kuin pelkkä pölyinen kasa luita. Sinä muistat, mikä ja kuka kerran olit. Sinä heräät eloon ja tehtäväsi on puolustaa tätä hautakammiota. Kuolema tunkeilijoille!\r\n\r\nLuurangot (The Skeletons) on yhteiseen tarinankerrontaan pohjautuva ja meditatiivinen roolipeli noin 6:lle pelaajalle, joka kääntää tutun luolaseikkailukuvion päälaelleen: pelaajat eivät tällä kertaa olekaan hautakammiota ryöstäviä sankareita, vaan sitä vartioivia luurankoja. Pelin edetessä hirviöt alkavat hitaasti muistaa keitä he kerran olivat, mitä he menettivät ja miksi he yhä seisovat vartiossa. Pelissä vuorottelevat unenomainen odottaminen ja räiskyvä väkivalta.\r\n\r\nPeli pelataan hämärässä tilassa LED-kynttilöiden valossa. Siihen kuuluu pelottavan äänimaailman kuuntelua sekä omaa ja yhteistä piirtämistä värikynillä. Pelin kesto on noin 3–4 tuntia ilman taukoja. Pelissä on ulkopuolinen pelinjohtaja.",
+    "description": "Aika kuluu ja mikään ei muutu. On vain kaiken nielevää pimeyttä ja hiljaisuutta. Seisot hautakammiossa ääneti ja liikkumatta. Et ajattele. Et hengitä. Et voi, koska kehostasi ovat jäljellä vain maagisella kirouksella yhdessä pysyvät ja tähän paikkaan sidotut luut. Sitten eräänä päivänä, ehkä vasta vuosisatojen päästä, tapahtuu jotakin kamalaa: valonsäde rikkoo tunkkaisen pimeyden ja elävien askeleet häiritsevät hautakammion rauhaa! Kuulet kutsun toimintaan. Kätesi sulkeutuvat narahtaen kirveenvarren ympärille ja kilpesi nousee ylös vaistomaisesti. Nuo elävät, lämpimät ja verta sykkivät tunkeilijat… Ne loukkaavat tämän hautakammion rauhaa! Persoonallisuus on riistetty sinulta jo kauan sitten, mutta tässä hetkessä jokin sinussa syttyy eloon: muinainen ja kylmä kaipuu väkivaltaan. Hetken ajan olet taas enemmän kuin pelkkä pölyinen kasa luita. Sinä muistat, mikä ja kuka kerran olit. Sinä heräät eloon ja tehtäväsi on puolustaa tätä hautakammiota. Kuolema tunkeilijoille!\r\n\r\nLuurangot (The Skeletons) on yhteiseen tarinankerrontaan pohjautuva ja meditatiivinen roolipeli noin 6:lle pelaajalle, joka kääntää tutun luolaseikkailukuvion päälaelleen: pelaajat eivät tällä kertaa olekaan hautakammiota ryöstäviä sankareita, vaan sitä vartioivia luurankoja. Pelin edetessä hirviöt alkavat hitaasti muistaa keitä he kerran olivat, mitä he menettivät ja miksi he yhä seisovat vartiossa. Pelissä vuorottelevat unenomainen odottaminen ja räiskyvä väkivalta.\r\n\r\nPeliin kuuluu pelottavan äänimaailman kuuntelua sekä omaa ja yhteistä piirtämistä värikynillä. Pelin kesto on noin 3–4 tuntia ilman taukoja. Pelissä on ulkopuolinen pelinjohtaja.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2026-07-25", "2026-07-26"],
@@ -10783,7 +10783,6 @@
       ],
       "inclusivity": [
         "color-blindness",
-        "dark-lighting",
         "long-program",
         "loud-sounds",
         "no-movement",
@@ -11807,9 +11806,9 @@
     "description": "Duran Sinikilven Retkikunta on juuri saavuttanut tuhansia vuosia sitten hylätyn Dûr-Vazhatunin kääpiökaupungin. Retkikunta kokoaa tutkimusryhmän eri alojen ammattilaisista, jotka lähetetään tutkimaan kaupungin kartoittamattomia osia ja etsimään legendaarista muinaista tähtitornia, joka on rakennettu kaupungin ylimmille tasoille, vuoren huipulle. Tule mukaan roolipelaamaan yhtä \"erityisasiantuntijaa\", valiten yhden valmiiksi luoduista, tarinaa varten räätälöidyistä hahmoista. Miten selviätte yhteistuumin rauniokaupungin vaaroista ja haasteista? Selviääkö teille, mitä muinaisille kääpiöille tapahtui? Onnistutteko suorittamaan Kapteeni Sinikilven teille antaman tehtävän?\r\n\r\nPeli on aloittelijaystävällinen. Pelaajilta odotetaan kevyttä roolipelaamista, ongelmanratkaisua ja yhteistyötaitoja muiden pelaajien kanssa. Pelissä käsitellään hahmojen taustatarinoiden ja persoonallisuuksien kautta vaikeita teemoja, kuten sotaa, kodittomuutta ja kiristystä. Pelissä on myös kosmisen kauhun ja psykoosin elementtejä.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
-      "date": ["2026-07-25"],
+      "date": ["2026-07-25", "2026-07-26"],
       "form": ["offer-rpg"],
-      "room": ["halli3f"],
+      "room": ["halli3c", "halli3f"],
       "type": ["gaming"],
       "state": ["accepted"],
       "topic": ["rpg"],
@@ -11817,7 +11816,7 @@
       "grouping": ["beginners", "dreams"],
       "language": ["fi"],
       "age-group": ["adults"],
-      "scheduled": ["one", "one-or-more"],
+      "scheduled": ["multiple", "one-or-more"],
       "game-style": ["character-driven", "story-driven"],
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
@@ -11846,6 +11845,23 @@
           "ropecon:contentWarnings": "Pelissä käsitellään hahmojen taustatarinoiden ja persoonallisuuksien kautta vaikeita teemoja, kuten sotaa, kodittomuutta ja kiristystä. Pelissä on myös kosmisen kauhun ja psykoosin elementtejä. Pelaajat voivat joutua vaikeiden moraalisten valintojen eteen, jotka voivat aiheuttaa ristiriitaa pelaajien välillä.",
           "ropecon:isRevolvingDoor": false,
           "internal:freeformLocation": "Pöytä 2"
+        }
+      },
+      {
+        "slug": "muinaisen-tahtitornin-arvoitus-anbennar-dd-5e-2",
+        "title": "Muinaisen tähtitornin arvoitus (Anbennar / D&D 5e)",
+        "startTime": "2026-07-26T09:00:00+03:00",
+        "endTime": "2026-07-26T12:00:00+03:00",
+        "lengthMinutes": 180,
+        "location": "Hall 3c (Pöytä 1)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:rpgSystem": "Dungeons and Dragons 5E (2014)",
+          "konsti:minAttendance": 3,
+          "konsti:maxAttendance": 4,
+          "ropecon:contentWarnings": "Pelissä käsitellään hahmojen taustatarinoiden ja persoonallisuuksien kautta vaikeita teemoja, kuten sotaa, kodittomuutta ja kiristystä. Pelissä on myös kosmisen kauhun ja psykoosin elementtejä. Pelaajat voivat joutua vaikeiden moraalisten valintojen eteen, jotka voivat aiheuttaa ristiriitaa pelaajien välillä.",
+          "ropecon:isRevolvingDoor": false,
+          "internal:freeformLocation": "Pöytä 1"
         }
       }
     ]
@@ -12145,7 +12161,7 @@
     "cachedDimensions": {
       "date": ["2026-07-26"],
       "form": ["offer-rpg"],
-      "room": ["halli3c"],
+      "room": ["kajo"],
       "type": ["gaming"],
       "state": ["accepted"],
       "topic": ["rpg"],
@@ -12174,12 +12190,12 @@
     "isCancelled": false,
     "scheduleItems": [
       {
-        "slug": "mysteerikauhu-1",
+        "slug": "mysteerikauhu",
         "title": "Mysteerikauhu",
-        "startTime": "2026-07-26T09:00:00+03:00",
-        "endTime": "2026-07-26T13:00:00+03:00",
+        "startTime": "2026-07-26T13:00:00+03:00",
+        "endTime": "2026-07-26T17:00:00+03:00",
         "lengthMinutes": 240,
-        "location": "Hall 3c (Pöytä 3)",
+        "location": "Kajo (Pöytä 11)",
         "isCancelled": false,
         "cachedAnnotations": {
           "konsti:rpgSystem": "Dread",
@@ -12187,7 +12203,7 @@
           "konsti:maxAttendance": 5,
           "ropecon:contentWarnings": "Pelille ei ole selkeitä sisältövaroituksia, sillä itse peli on kirjoitettu conin aikana (sisältövaroituksista ei siis tiedetä tätä kuvausta kirjoitettaessa). Peli ei kuitenkaan sisällä seksuaalista väkivaltaa, lapsiin tai eläimiin kohdistuvaa väkivaltaa taikka gorea (hyvin yksityiskohtaista ja rajua väkivaltaa). Tarkemmat sisältövaroitukset saa pelin alussa, jolloin on vielä mahdollista poistua.",
           "ropecon:isRevolvingDoor": false,
-          "internal:freeformLocation": "Pöytä 3"
+          "internal:freeformLocation": "Pöytä 11"
         }
       }
     ]
@@ -12967,6 +12983,51 @@
     ]
   },
   {
+    "slug": "once-apon-a-tea-journey",
+    "title": "Once Upon a Tea journey",
+    "description": "Join us for a journey through taste, smell and feeling! We will be having different tea ceremonies from silent to casual hangs, but most importantly in a relaxed athmosphere. Drinking tea feels like traveling to distant lands without moving your feet, tea offers the opportunity to relax, be mindful and take a moment to enjoy the serenity of a moment in this busy world especially during this busy convention. Come and join our relaxing space disconnected from time, space and the external world just like a dream world, the tea world.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-07-26"],
+      "form": ["offer-other-program"],
+      "room": ["sali214"],
+      "type": ["other"],
+      "state": ["accepted"],
+      "topic": ["othergames"],
+      "konsti": ["workshop"],
+      "grouping": ["beginners", "dreams"],
+      "language": ["lang-free"],
+      "age-group": ["everyone"],
+      "scheduled": ["one", "one-or-more"],
+      "inclusivity": ["dark-lighting"],
+      "registration": ["konsti"]
+    },
+    "cachedAnnotations": {
+      "konsti:minAttendance": 4,
+      "konsti:maxAttendance": 12,
+      "ropecon:contentWarnings": "We are not really planing on talking a lot so if silence is inconfortable then that might be a bit hard but let's try to do some silent ones and some very casual ones for everyone. \r\n\r\nWe do all speak English but 3/4 speak Finnish aswell, 1/4 Swedish, 1/4 Mandarin Chinese, 1/4 French. \r\n\r\nSo those languages are also possible but no need for language skills. ",
+      "ropecon:accessibilityOther": "Well language isn't needed at all so it should be accessible to people that aren't hearing and we can provide easy text for explanation and communication if need be. "
+    },
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "once-apon-a-tea-journey-1",
+        "title": "Once Upon a Tea journey",
+        "startTime": "2026-07-26T10:00:00+03:00",
+        "endTime": "2026-07-26T11:45:00+03:00",
+        "lengthMinutes": 105,
+        "location": "Room 214",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:minAttendance": 4,
+          "konsti:maxAttendance": 12,
+          "ropecon:contentWarnings": "We are not really planing on talking a lot so if silence is inconfortable then that might be a bit hard but let's try to do some silent ones and some very casual ones for everyone. \r\n\r\nWe do all speak English but 3/4 speak Finnish aswell, 1/4 Swedish, 1/4 Mandarin Chinese, 1/4 French. \r\n\r\nSo those languages are also possible but no need for language skills. ",
+          "ropecon:accessibilityOther": "Well language isn't needed at all so it should be accessible to people that aren't hearing and we can provide easy text for explanation and communication if need be. "
+        }
+      }
+    ]
+  },
+  {
     "slug": "one-for-sorrow",
     "title": "One for Sorrow",
     "description": "Get caught in a twisted nightmarish landscape where reality gets mixed into fantasy. The party is stuck between a riddle and a hardplace, fighting against time before the inevitable dark swallows the unfortunate.\r\n\r\nDnD 5e adventure with a side of homebrew monsters, and a few homebrew rules, just to keep things interesting. \r\n\r\nThemes will contain physical violence, emotional distress, slight body horror and other horror-adjescent things.\r\n\r\nCharacters are mostly premade with only personal flavorings to fill.",
@@ -13326,7 +13387,7 @@
   {
     "slug": "paluu-todellisuuteen",
     "title": "Paluu todellisuuteen",
-    "description": "Ilkeä lich on langettanut lumouksen seikkailijajoukon ylle, ja he ovat vaipuneet ikiuneen... Paitsi, jos he onnistuvat tahdonvoiman ja ystävyyden avulla havahtumaan lumouksesta ja muistamaan todellisen maailman. Heidän täytyy oppia hallita unta, löytää keino pysäyttää lichin taika ja palata todellisuuteen.\r\n\r\nKevyt kotikutoinen systeemi, joka käyttää tarot-kortteja unimaailman elementtien satunnaistamiseen. Pelaajat osallistuvat tarinankerrontaan luomalla pelin aikana hahmojen taustatarinan.",
+    "description": "Ilkeä lich on langettanut lumouksen seikkailijajoukon ylle, ja he ovat vaipuneet ikiuneen… Paitsi, jos he onnistuvat tahdonvoiman ja ystävyyden avulla havahtumaan lumouksesta ja muistamaan todellisen maailman. Heidän täytyy oppia hallitsemaan unta, löytää keino pysäyttää lichin taika ja palata todellisuuteen.\r\n\r\nKevyt kotikutoinen tarot-kortteihin pohjautuva systeemi, ei noppia. Pelaajat punovat improvisaation avulla tarot-pakan surrealistisesta kuvastosta pelihahmot ja taustatarinan.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2026-07-25", "2026-07-26"],
@@ -13476,8 +13537,8 @@
       "scheduled": ["one", "one-or-more"],
       "game-style": ["combat-heavy", "rules-heavy"],
       "inclusivity": ["long-texts", "no-recordings-or-spoken-text"],
-      "registration": ["not-required"],
-      "revolvingdoor": ["true"]
+      "registration": ["konsti"],
+      "revolvingdoor": ["false"]
     },
     "cachedAnnotations": {
       "konsti:rpgSystem": "Pathfinder 2nd Edition",
@@ -13526,8 +13587,8 @@
       "scheduled": ["one", "one-or-more"],
       "game-style": ["combat-heavy", "rules-heavy"],
       "inclusivity": ["long-texts", "no-recordings-or-spoken-text"],
-      "registration": ["not-required"],
-      "revolvingdoor": ["true"]
+      "registration": ["konsti"],
+      "revolvingdoor": ["false"]
     },
     "cachedAnnotations": {
       "konsti:rpgSystem": "Pathfinder 2nd Edition",
@@ -13575,8 +13636,8 @@
       "scheduled": ["one", "one-or-more"],
       "game-style": ["combat-heavy", "rules-heavy"],
       "inclusivity": ["long-texts", "no-recordings-or-spoken-text"],
-      "registration": ["not-required"],
-      "revolvingdoor": ["true"]
+      "registration": ["konsti"],
+      "revolvingdoor": ["false"]
     },
     "cachedAnnotations": {
       "konsti:rpgSystem": "Pathfinder 2nd Edition",
@@ -13625,8 +13686,8 @@
       "scheduled": ["one", "one-or-more"],
       "game-style": ["rules-heavy"],
       "inclusivity": ["long-texts", "no-recordings-or-spoken-text"],
-      "registration": ["not-required"],
-      "revolvingdoor": ["true"]
+      "registration": ["konsti"],
+      "revolvingdoor": ["false"]
     },
     "cachedAnnotations": {
       "konsti:rpgSystem": "Pathfinder 2nd Edition",
@@ -13675,8 +13736,8 @@
       "scheduled": ["one", "one-or-more"],
       "game-style": ["combat-heavy", "rules-heavy", "story-driven"],
       "inclusivity": ["long-texts", "no-recordings-or-spoken-text"],
-      "registration": ["not-required"],
-      "revolvingdoor": ["true"]
+      "registration": ["konsti"],
+      "revolvingdoor": ["false"]
     },
     "cachedAnnotations": {
       "konsti:rpgSystem": "Pathfinder 2nd Edition",
@@ -13725,8 +13786,8 @@
       "scheduled": ["multiple", "one-or-more"],
       "game-style": ["combat-heavy", "rules-heavy"],
       "inclusivity": ["long-texts", "no-recordings-or-spoken-text"],
-      "registration": ["not-required"],
-      "revolvingdoor": ["true"]
+      "registration": ["konsti"],
+      "revolvingdoor": ["false"]
     },
     "cachedAnnotations": {
       "konsti:rpgSystem": "Pathfinder 2nd Edition",
@@ -13791,8 +13852,8 @@
       "scheduled": ["one", "one-or-more"],
       "game-style": ["combat-heavy", "rules-heavy"],
       "inclusivity": ["long-texts", "no-recordings-or-spoken-text"],
-      "registration": ["not-required"],
-      "revolvingdoor": ["true"]
+      "registration": ["konsti"],
+      "revolvingdoor": ["false"]
     },
     "cachedAnnotations": {
       "konsti:rpgSystem": "Pathfinder 2e",
@@ -13841,8 +13902,8 @@
       "scheduled": ["one", "one-or-more"],
       "game-style": ["combat-heavy", "rules-heavy"],
       "inclusivity": ["long-texts", "no-recordings-or-spoken-text"],
-      "registration": ["not-required"],
-      "revolvingdoor": ["true"]
+      "registration": ["konsti"],
+      "revolvingdoor": ["false"]
     },
     "cachedAnnotations": {
       "konsti:rpgSystem": "Pathfinder 2nd Edition",
@@ -13944,7 +14005,7 @@
       "registration": ["konsti"],
       "revolvingdoor": ["false"]
     },
-    "cachedAnnotations": { "konsti:maxAttendance": 12 },
+    "cachedAnnotations": { "konsti:maxAttendance": 10 },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -13955,7 +14016,7 @@
         "lengthMinutes": 90,
         "location": "Hall 5 Miniature Painting",
         "isCancelled": false,
-        "cachedAnnotations": { "konsti:maxAttendance": 12 }
+        "cachedAnnotations": { "konsti:maxAttendance": 10 }
       },
       {
         "slug": "pikamaalauskilpailu-speed-painting-contest-2",
@@ -13965,7 +14026,7 @@
         "lengthMinutes": 90,
         "location": "Hall 5 Miniature Painting",
         "isCancelled": false,
-        "cachedAnnotations": { "konsti:maxAttendance": 12 }
+        "cachedAnnotations": { "konsti:maxAttendance": 10 }
       },
       {
         "slug": "pikamaalauskilpailu-speed-painting-contest-3",
@@ -13975,7 +14036,7 @@
         "lengthMinutes": 90,
         "location": "Hall 5 Miniature Painting",
         "isCancelled": false,
-        "cachedAnnotations": { "konsti:maxAttendance": 12 }
+        "cachedAnnotations": { "konsti:maxAttendance": 10 }
       },
       {
         "slug": "pikamaalauskilpailu-speed-painting-contest-4",
@@ -13985,7 +14046,7 @@
         "lengthMinutes": 90,
         "location": "Hall 5 Miniature Painting",
         "isCancelled": false,
-        "cachedAnnotations": { "konsti:maxAttendance": 12 }
+        "cachedAnnotations": { "konsti:maxAttendance": 10 }
       }
     ]
   },
@@ -14764,7 +14825,7 @@
       "form": ["offer-larp"],
       "room": ["sali213"],
       "type": ["gaming"],
-      "state": ["accepted"],
+      "state": ["cancelled"],
       "topic": ["larp"],
       "konsti": ["larp"],
       "grouping": ["beginners", "dreams"],
@@ -14781,7 +14842,7 @@
       "ropecon:contentWarnings": "Keskeisenä teemana kuolema, ja sen käsittely. ",
       "ropecon:isRevolvingDoor": false
     },
-    "isCancelled": false,
+    "isCancelled": true,
     "scheduleItems": [
       {
         "slug": "radio-thanatos",
@@ -14790,7 +14851,7 @@
         "endTime": "2026-07-24T21:30:00+03:00",
         "lengthMinutes": 150,
         "location": "Room 213",
-        "isCancelled": false,
+        "isCancelled": true,
         "cachedAnnotations": {
           "konsti:minAttendance": 2,
           "konsti:maxAttendance": 5,
@@ -14805,7 +14866,7 @@
         "endTime": "2026-07-25T20:30:00+03:00",
         "lengthMinutes": 150,
         "location": "Room 213",
-        "isCancelled": false,
+        "isCancelled": true,
         "cachedAnnotations": {
           "konsti:minAttendance": 2,
           "konsti:maxAttendance": 5,
@@ -15202,6 +15263,61 @@
     ]
   },
   {
+    "slug": "roolipelitohtorin-vastaanotto",
+    "title": "Roolipelitohtorin vastaanotto",
+    "description": "Yskiikö roolipelikampanjasi? Tuottavatko pelisessiot äkillistä kipua? Onko pelisyteemiesi annostus kunnossa? Vieraile roolipelitohtorin vastaanotolla ja saa diagnoosi ongelmaasi, liittyy se sitten toisiin pelaajiin, pelisysteemeihin tai sessioihin. Konsultaatio ei takaa vaivan paranemista, mutta hoitokeinot helpottavat pahimpia oireita. Hoidosta vastaavalla tohtorilla on vaadittavan koulutuksen lisäksi kymmenien vuosien kokemus alalta.\r\n",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-07-25"],
+      "form": ["offer-other-program"],
+      "room": ["sali214"],
+      "type": ["workshop"],
+      "state": ["accepted"],
+      "topic": ["rpg"],
+      "konsti": ["workshop"],
+      "grouping": ["beginners"],
+      "language": ["fi"],
+      "age-group": ["everyone"],
+      "scheduled": ["multiple", "one-or-more"],
+      "inclusivity": ["not-amplified"],
+      "registration": ["konsti"],
+      "revolvingdoor": ["true"]
+    },
+    "cachedAnnotations": {
+      "konsti:minAttendance": 1,
+      "konsti:maxAttendance": 5
+    },
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "roolipelitohtorin-vastaanotto-1",
+        "title": "Roolipelitohtorin vastaanotto",
+        "startTime": "2026-07-25T10:00:00+03:00",
+        "endTime": "2026-07-25T10:45:00+03:00",
+        "lengthMinutes": 45,
+        "location": "Room 214",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:minAttendance": 1,
+          "konsti:maxAttendance": 5
+        }
+      },
+      {
+        "slug": "roolipelitohtorin-vastaanotto-2",
+        "title": "Roolipelitohtorin vastaanotto",
+        "startTime": "2026-07-25T16:00:00+03:00",
+        "endTime": "2026-07-25T16:45:00+03:00",
+        "lengthMinutes": 45,
+        "location": "Room 214",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:minAttendance": 1,
+          "konsti:maxAttendance": 5
+        }
+      }
+    ]
+  },
+  {
     "slug": "rosemaryn-haat",
     "title": "Rosemaryn häät",
     "description": "Tervetuloa Rosemaryn Frankensteinin ja Victorin häihin! Ikisinkku neiti Frankenstein on löytänyt lopulta rinnalleen miehen, jonka kanssa hän on valmis jakamaan elämänsä, mutta kuka on tämä mysteeri mies, jota kukaan ei tunnu tuntevan? Paikalla on papin ja todistajien lisäksi yllättäviä vieraita. Ohjelmassa on passiivisaggressiivista hääpuheita, kiisteleviä appivanhempia, hääpelejä ja ratkottavia mysteereitä.\r\n\r\nLarppi on seitsemälle pelaajalle. Pelin yleissävy on humoristinen ja kevyt, mutta osa hahmoista sisältää rankkoja teemoja, kuten menneisyydessä tapahtunutta väkivaltaa. Hahmokuvaukset ovat puolikkaan A4 mittaisia ja pitävät sisällään listan hahmon tavoitteista. Peli kestää n. kaksi tuntia.\r\n\r\nPelin teemoja ovat huumori, rikollisuus, mysteerit, vaikeat sukulaissuhteet.\r\n\r\nHahmoista morsian ja sulhanen on sukupuolitettu, muut hahmot ovat pelaajan sukupuolitettavissa.",
@@ -15256,7 +15372,7 @@
       "form": ["offer-rpg"],
       "room": ["halli3f"],
       "type": ["gaming"],
-      "state": ["accepted"],
+      "state": ["cancelled"],
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["beginners", "dreams", "lgbt"],
@@ -15273,7 +15389,7 @@
       "konsti:maxAttendance": 5,
       "ropecon:isRevolvingDoor": false
     },
-    "isCancelled": false,
+    "isCancelled": true,
     "scheduleItems": [
       {
         "slug": "round-a-maypole-1",
@@ -15282,7 +15398,7 @@
         "endTime": "2026-07-25T03:00:00+03:00",
         "lengthMinutes": 240,
         "location": "Hall 3f (Pöytä 4)",
-        "isCancelled": false,
+        "isCancelled": true,
         "cachedAnnotations": {
           "konsti:rpgSystem": "Emerald Sea (PbtA-based game about elves)",
           "konsti:minAttendance": 2,
@@ -16922,8 +17038,8 @@
       {
         "slug": "tamoachanin-kadotettu-temppeli-hidden-shrine-of-tamoachan-1",
         "title": "Tamoachanin kadotettu temppeli - Hidden shrine of Tamoachan",
-        "startTime": "2026-07-24T19:00:00+03:00",
-        "endTime": "2026-07-24T22:00:00+03:00",
+        "startTime": "2026-07-24T20:00:00+03:00",
+        "endTime": "2026-07-24T23:00:00+03:00",
         "lengthMinutes": 180,
         "location": "Kajo (Pöytä 11)",
         "isCancelled": false,
@@ -17540,7 +17656,7 @@
       "form": ["offer-rpg"],
       "room": ["valo"],
       "type": ["gaming"],
-      "state": ["accepted"],
+      "state": ["cancelled"],
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["beginners", "dreams"],
@@ -17559,7 +17675,7 @@
       "ropecon:contentWarnings": "Insects, claustrophobia, existential topics, loss of self",
       "ropecon:isRevolvingDoor": false
     },
-    "isCancelled": false,
+    "isCancelled": true,
     "scheduleItems": [
       {
         "slug": "the-mansion-of-meaning-enter-the-dreamscape-of-noumenon-1",
@@ -17568,7 +17684,7 @@
         "endTime": "2026-07-24T19:00:00+03:00",
         "lengthMinutes": 180,
         "location": "Valo (Pöytä 21)",
-        "isCancelled": false,
+        "isCancelled": true,
         "cachedAnnotations": {
           "konsti:rpgSystem": "Noumenon",
           "konsti:minAttendance": 3,
@@ -17585,7 +17701,7 @@
         "endTime": "2026-07-25T20:00:00+03:00",
         "lengthMinutes": 180,
         "location": "Valo (Pöytä 21)",
-        "isCancelled": false,
+        "isCancelled": true,
         "cachedAnnotations": {
           "konsti:rpgSystem": "Noumenon",
           "konsti:minAttendance": 3,
@@ -17620,8 +17736,8 @@
         "no-recordings-or-spoken-text",
         "no-text-of-recording"
       ],
-      "registration": ["not-required"],
-      "revolvingdoor": ["true"]
+      "registration": ["konsti"],
+      "revolvingdoor": ["false"]
     },
     "cachedAnnotations": {
       "konsti:rpgSystem": "Homebrew (2022 version was based on Into The Odd/Cairn)",
@@ -17793,7 +17909,7 @@
       "form": ["offer-rpg"],
       "room": ["halli3f"],
       "type": ["gaming"],
-      "state": ["accepted"],
+      "state": ["cancelled"],
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["beginners"],
@@ -17810,7 +17926,7 @@
       "konsti:maxAttendance": 5,
       "ropecon:isRevolvingDoor": false
     },
-    "isCancelled": false,
+    "isCancelled": true,
     "scheduleItems": [
       {
         "slug": "the-song-of-brass-and-void-1",
@@ -17819,7 +17935,7 @@
         "endTime": "2026-07-24T23:00:00+03:00",
         "lengthMinutes": 240,
         "location": "Hall 3f (Pöytä 8)",
-        "isCancelled": false,
+        "isCancelled": true,
         "cachedAnnotations": {
           "konsti:rpgSystem": "Rules-light homebrew",
           "konsti:minAttendance": 4,
@@ -17835,7 +17951,7 @@
         "endTime": "2026-07-25T21:00:00+03:00",
         "lengthMinutes": 240,
         "location": "Hall 3f (Pöytä 8)",
-        "isCancelled": false,
+        "isCancelled": true,
         "cachedAnnotations": {
           "konsti:rpgSystem": "Rules-light homebrew",
           "konsti:minAttendance": 4,
@@ -18409,7 +18525,7 @@
       "form": ["offer-rpg"],
       "room": ["halli3f"],
       "type": ["gaming"],
-      "state": ["accepted"],
+      "state": ["cancelled"],
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["beginners", "dreams", "lgbt"],
@@ -18427,7 +18543,7 @@
       "ropecon:contentWarnings": "Imprisonment, loss, depression, potential character death, hints at cruelty. ",
       "ropecon:isRevolvingDoor": false
     },
-    "isCancelled": false,
+    "isCancelled": true,
     "scheduleItems": [
       {
         "slug": "tower-shrouded-in-sorrow-1",
@@ -18436,7 +18552,7 @@
         "endTime": "2026-07-26T01:00:00+03:00",
         "lengthMinutes": 240,
         "location": "Hall 3f (Pöytä 1)",
-        "isCancelled": false,
+        "isCancelled": true,
         "cachedAnnotations": {
           "konsti:rpgSystem": "Emerald Sea (PbtA-based game about elves)",
           "konsti:minAttendance": 2,
@@ -18970,7 +19086,7 @@
       "form": ["offer-workshop"],
       "room": ["sali210"],
       "type": ["workshop"],
-      "state": ["accepted"],
+      "state": ["cancelled"],
       "topic": ["larp", "rpg"],
       "konsti": ["workshop"],
       "grouping": ["beginners"],
@@ -18984,7 +19100,7 @@
       "ropecon:contentWarnings": "Ensimmäisessä osassa voi tulla tunteita, ettei osaa tehdä presistä, mutta kannustetaan kokeilemaan ja korostetaan, ettei presistä ole pakko näyttää, jos ei tahdo, yksi dia riittää.Ohjelman kakkos-osassa on puhe-esiintymistä kun pitchataan (ryhmät voivat päättää kuka esittelee, ja pitchaukseen voi vaikka nauhoittaa äänen päälle, jos ei halua puhua itse mikrofoniin)",
       "ropecon:accessibilityOther": "Oma läppäri tai tabletti olis hyvä olla, mutta ei pakollinen. "
     },
-    "isCancelled": false,
+    "isCancelled": true,
     "scheduleItems": [
       {
         "slug": "unelmana-oma-roolipeli-tai-larppi-tama-on-idea-pitch-testing-lab-1",
@@ -18993,7 +19109,7 @@
         "endTime": "2026-07-24T19:45:00+03:00",
         "lengthMinutes": 105,
         "location": "Room 210",
-        "isCancelled": false,
+        "isCancelled": true,
         "cachedAnnotations": {
           "konsti:maxAttendance": 32,
           "ropecon:contentWarnings": "Ensimmäisessä osassa voi tulla tunteita, ettei osaa tehdä presistä, mutta kannustetaan kokeilemaan ja korostetaan, ettei presistä ole pakko näyttää, jos ei tahdo, yksi dia riittää.Ohjelman kakkos-osassa on puhe-esiintymistä kun pitchataan (ryhmät voivat päättää kuka esittelee, ja pitchaukseen voi vaikka nauhoittaa äänen päälle, jos ei halua puhua itse mikrofoniin)",
@@ -19007,7 +19123,7 @@
         "endTime": "2026-07-25T18:45:00+03:00",
         "lengthMinutes": 45,
         "location": "Room 210",
-        "isCancelled": false,
+        "isCancelled": true,
         "cachedAnnotations": {
           "konsti:maxAttendance": 32,
           "ropecon:contentWarnings": "Ensimmäisessä osassa voi tulla tunteita, ettei osaa tehdä presistä, mutta kannustetaan kokeilemaan ja korostetaan, ettei presistä ole pakko näyttää, jos ei tahdo, yksi dia riittää.Ohjelman kakkos-osassa on puhe-esiintymistä kun pitchataan (ryhmät voivat päättää kuka esittelee, ja pitchaukseen voi vaikka nauhoittaa äänen päälle, jos ei halua puhua itse mikrofoniin)",
@@ -20305,7 +20421,7 @@
       "form": ["offer-rpg"],
       "room": ["valo"],
       "type": ["gaming"],
-      "state": ["accepted"],
+      "state": ["cancelled"],
       "topic": ["rpg"],
       "konsti": ["tabletoprpg"],
       "grouping": ["beginners", "dreams"],
@@ -20325,7 +20441,7 @@
       "ropecon:accessibilityOther": "Peliin ei tarvitse ollenkaan noppia, mutta luku- ja laskutaitoa olisi hyvä vähän olla. Pelin materiaalit on mahdollista saada sekä englanniksi, että suomeksi, mutta pelautus toteutetaan yhdellä kielellä, joka voidaan sopia pöydässä tarpeen mukaan.",
       "ropecon:isRevolvingDoor": false
     },
-    "isCancelled": false,
+    "isCancelled": true,
     "scheduleItems": [
       {
         "slug": "vesilohikaarmeen-unet-1",
@@ -20334,7 +20450,7 @@
         "endTime": "2026-07-25T13:00:00+03:00",
         "lengthMinutes": 180,
         "location": "Valo (Pöytä 17)",
-        "isCancelled": false,
+        "isCancelled": true,
         "cachedAnnotations": {
           "konsti:rpgSystem": "Golden Sky Stories",
           "konsti:minAttendance": 3,
@@ -20685,7 +20801,7 @@
     "cachedDimensions": {
       "date": ["2026-07-24", "2026-07-25"],
       "form": ["offer-other-gameprogram"],
-      "room": ["sali215", "sali217"],
+      "room": ["sali215"],
       "type": ["gaming"],
       "state": ["accepted"],
       "topic": ["boardgames", "othergames"],
@@ -20711,7 +20827,7 @@
         "startTime": "2026-07-24T20:00:00+03:00",
         "endTime": "2026-07-24T22:30:00+03:00",
         "lengthMinutes": 150,
-        "location": "Room 217",
+        "location": "Room 215",
         "isCancelled": false,
         "cachedAnnotations": {
           "konsti:minAttendance": 8,
@@ -20892,7 +21008,7 @@
       "form": ["offer-tournament"],
       "room": ["halli4figuturnaukset"],
       "type": ["tournament"],
-      "state": ["accepted"],
+      "state": ["cancelled"],
       "topic": ["figures"],
       "konsti": ["tournament"],
       "grouping": ["beginners"],
@@ -20909,7 +21025,7 @@
       "konsti:maxAttendance": 16,
       "ropecon:isRevolvingDoor": false
     },
-    "isCancelled": false,
+    "isCancelled": true,
     "scheduleItems": [
       {
         "slug": "warhammer-underworlds-rivals-tournament",
@@ -20918,7 +21034,7 @@
         "endTime": "2026-07-24T22:00:00+03:00",
         "lengthMinutes": 300,
         "location": "Hall 4 Miniature Game Tournaments (Lohko C)",
-        "isCancelled": false,
+        "isCancelled": true,
         "cachedAnnotations": {
           "konsti:rpgSystem": "Warhammer Underworlds",
           "konsti:minAttendance": 0,
@@ -21339,7 +21455,7 @@
   {
     "slug": "yo-singaporensalmella-poytaroolipeli",
     "title": "Yö Singaporensalmella - Pöytäroolipeli",
-    "description": "Merirosvoilua 70-luvun Kaakkois-Aasiassa 3 - 5 pelaajalle.\r\n\r\nVuonna 1971 Singapore on ollut itsenäinen valtio kuuden vuoden ajan. Köyhällä kaupunkivaltiolla on kiireellinen tarve modernisoitua ja rakentaa asutusta kansalaisilleen. Teitä ei modernisoituminen kiinnosta.\r\n\r\nSingaporensalmen läpi kulkee runsaasti laivoja, joista useat pysähtyvät huoltoja ja täydennyksiä varten. Ankkuroituneeseen rahtialukseen on helppo iskeä.\r\n\r\nViime keikalla jotain meni pieleen: jengin pomo katosi, ja keikan tuotto hänen mukanaan. Teillä alkaa käydä käteinen vähiin.\r\n\r\nPelaatte merirosvoja historiallisesti (melko) tarkassa asetelmassa. Genreltään tämä on realistinen peli ilman taikuuksia. Pelin sisällä olisi myös hyvä välttää liiallista koomisuutta. \r\n\r\nSysteemi: Fail Forward, helppo ja yksinkertainen pelisysteemi, jota ei tarvitse osata tai tietää etukäteen. \r\n\r\nOhjelmaan ilmoittautuminen Konstin kautta alkaa 13.7. kello 20.",
+    "description": "Merirosvoilua 70-luvun Kaakkois-Aasiassa 3 - 5 pelaajalle.\r\n\r\nHuom! Peli järjestetään Länsi-Pasilassa osoitteessa Rahakamarinportti 3 B. Paikalla on vapaaehtoinen Ropecon-kyltin kanssa opastamassa.\r\n\r\nVuonna 1971 Singapore on ollut itsenäinen valtio kuuden vuoden ajan. Köyhällä kaupunkivaltiolla on kiireellinen tarve modernisoitua ja rakentaa asutusta kansalaisilleen. Teitä ei modernisoituminen kiinnosta.\r\n\r\nSingaporensalmen läpi kulkee runsaasti laivoja, joista useat pysähtyvät huoltoja ja täydennyksiä varten. Ankkuroituneeseen rahtialukseen on helppo iskeä.\r\n\r\nViime keikalla jotain meni pieleen: jengin pomo katosi, ja keikan tuotto hänen mukanaan. Teillä alkaa käydä käteinen vähiin.\r\n\r\nPelaatte merirosvoja historiallisesti (melko) tarkassa asetelmassa. Genreltään tämä on realistinen peli ilman taikuuksia. Pelin sisällä olisi myös hyvä välttää liiallista koomisuutta. \r\n\r\nSysteemi: Fail Forward, helppo ja yksinkertainen pelisysteemi, jota ei tarvitse osata tai tietää etukäteen. \r\n\r\nOhjelmaan ilmoittautuminen Konstin kautta alkaa 13.7. kello 20.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "form": ["offer-week"],
