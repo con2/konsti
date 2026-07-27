@@ -2,21 +2,22 @@
 
 How many tabletop RPG programs were run at each event. Counts non-cancelled `tabletopRPG` items in `program-items.json`.
 
-**Across all events combined**: **1764** RPG programs run over 13 event years.
+**Across all events combined**: **2172** RPG programs run over 14 event years.
 
 ## Ropecon
 
 ```
-2017 ███████████████████████ 164
-2018 ████████████████████████████ 194 (+30 vs prev)
-2019 ████████████████████████████ 194 (+0 vs prev)
-2021 ██████ 39 (-155 vs prev)
-2022 ███████████████████████████ 192 (+153 vs prev)
-2023 ██████████████████████████████ 209 (+17 vs prev)
-2024 ████████████████████████████████████████ 278 (+69 vs prev)
-2025 ███████████████████████████████████████████████ 326 (+48 vs prev)
+2017 ██████████████████ 164
+2018 ██████████████████████ 194 (+30 vs prev)
+2019 ██████████████████████ 194 (+0 vs prev)
+2021 ████ 39 (-155 vs prev)
+2022 █████████████████████ 192 (+153 vs prev)
+2023 ███████████████████████ 209 (+17 vs prev)
+2024 ███████████████████████████████ 278 (+69 vs prev)
+2025 ████████████████████████████████████ 326 (+48 vs prev)
+2026 █████████████████████████████████████████████ 408 (+82 vs prev)
 
-(scale: 1 block ≈ 7 RPGs)
+(scale: 1 block ≈ 9 RPGs)
 ```
 
 ## Tracon Hitpoint
