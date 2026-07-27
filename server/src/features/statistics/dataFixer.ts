@@ -13,45 +13,45 @@ const fixData = (): void => {
   const commander = new Command();
 
   commander
-    .command("format <year> <event>")
+    .command("format <event> <year>")
     .description("Format json files with prettier")
-    .action(async (year: number, event: string) => {
-      await formatJson(year, event);
+    .action(async (event: string, year: number) => {
+      await formatJson(event, year);
     });
 
   commander
-    .command("format-fields <year> <event>")
+    .command("format-fields <event> <year>")
     .description("Remove _id and __v fields and unwrap $date timestamps")
-    .action(async (year: number, event: string) => {
-      await formatFields(year, event);
+    .action(async (event: string, year: number) => {
+      await formatFields(event, year);
     });
 
   commander
-    .command("similar-usernames <year> <event>")
+    .command("similar-usernames <event> <year>")
     .description("Find similar usernames")
-    .action((year: number, event: string) => {
-      getSimilarUsernames(year, event);
+    .action((event: string, year: number) => {
+      getSimilarUsernames(event, year);
     });
 
   commander
-    .command("matching-emails <year> <event>")
+    .command("matching-emails <event> <year>")
     .description("Find users with same email address")
-    .action((year: number, event: string) => {
-      getMatchingEmails(year, event);
+    .action((event: string, year: number) => {
+      getMatchingEmails(event, year);
     });
 
   commander
-    .command("anonymize <year> <event>")
+    .command("anonymize <event> <year>")
     .description("Anonymize users and results")
-    .action(async (year: number, event: string) => {
-      await anonymizeData(year, event);
+    .action(async (event: string, year: number) => {
+      await anonymizeData(event, year);
     });
 
   commander
-    .command("wild <year> <event> <datatype>")
+    .command("wild <event> <year> <datatype>")
     .description("Implement new fix logic")
-    .action(async (year: number, event: string, datatype: string) => {
-      await wildFix(year, event, datatype);
+    .action(async (event: string, year: number, datatype: string) => {
+      await wildFix(event, year, datatype);
     });
 
   if (process.argv.length < 4) {

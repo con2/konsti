@@ -9,8 +9,8 @@ import { DirectSignupsForProgramItem } from "server/features/direct-signup/direc
 import { ProgramItem } from "shared/types/models/programItem";
 
 export const anonymizeData = async (
-  year: number,
   event: string,
+  year: number,
 ): Promise<void> => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const users: User[] = JSON.parse(
@@ -108,8 +108,8 @@ export const anonymizeData = async (
     programItem.people = "<redacted>";
   }
 
-  await writeJson(year, event, "users", users);
-  await writeJson(year, event, "results", results);
-  await writeJson(year, event, "direct-signups", directSignups);
-  await writeJson(year, event, "program-items", programItems);
+  await writeJson(event, year, "users", users);
+  await writeJson(event, year, "results", results);
+  await writeJson(event, year, "direct-signups", directSignups);
+  await writeJson(event, year, "program-items", programItems);
 };

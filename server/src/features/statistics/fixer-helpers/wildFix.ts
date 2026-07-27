@@ -2,13 +2,13 @@ import { readJson, writeJson } from "server/features/statistics/statsUtil";
 import { logger } from "server/utils/logger";
 
 export const wildFix = async (
-  year: number,
   event: string,
+  year: number,
   type: string,
 ): Promise<void> => {
   let data;
   try {
-    data = readJson(year, event, type);
+    data = readJson(event, year, type);
   } catch (error) {
     logger.error(error);
     return;
@@ -21,5 +21,5 @@ export const wildFix = async (
   });
   */
 
-  await writeJson(year, event, type, data);
+  await writeJson(event, year, type, data);
 };

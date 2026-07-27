@@ -33,12 +33,12 @@ const cleanValue = (value: unknown): unknown => {
 };
 
 export const formatFields = async (
-  year: number,
   event: string,
+  year: number,
 ): Promise<void> => {
   for (const datatype of datatypes) {
-    const data = readJson<unknown>(year, event, datatype);
+    const data = readJson<unknown>(event, year, datatype);
     const cleanedData = data.map((item) => cleanValue(item));
-    await writeJson(year, event, datatype, cleanedData);
+    await writeJson(event, year, datatype, cleanedData);
   }
 };
