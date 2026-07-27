@@ -4,7 +4,7 @@ How completely tabletop-RPG seats were filled at each event. Combines lottery-as
 
 Programs with `maxAttendance: 0` (no limit) are excluded from the rate but counted separately.
 
-**Across all events combined**: **8085 / 9505** seats filled (85.1%).
+**Across all events combined**: **9869 / 11658** seats filled (84.7%).
 
 ## Ropecon
 
@@ -17,6 +17,7 @@ Programs with `maxAttendance: 0` (no limit) are excluded from the rate but count
 2023 ███████████████████████████████▄▄▄▄  87.4%  987 / 1129 seats  ·  180 full / 9 empty / 209 programs
 2024 ███████████████████████████████▄▄▄▄  88.1%  1277 / 1449 seats  ·  242 full / 14 empty / 278 programs
 2025 ████████████████████████████▄▄▄▄▄▄▄  80.5%  1464 / 1819 seats  ·  272 full / 37 empty / 326 programs
+2026 █████████████████████████████▄▄▄▄▄▄  82.9%  1784 / 2153 seats  ·  339 full / 36 empty / 408 programs
 ```
 
 ## Tracon Hitpoint
