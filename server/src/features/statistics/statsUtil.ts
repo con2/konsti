@@ -4,8 +4,8 @@ import { config } from "shared/config";
 import { logger } from "server/utils/logger";
 
 export const readJson = <T>(
-  year: number,
   event: string,
+  year: number,
   datatype: string,
 ): T[] => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
@@ -23,8 +23,8 @@ export const readJson = <T>(
 };
 
 export const writeJson = async (
-  year: number,
   event: string,
+  year: number,
   datatype: string,
   data: unknown[],
 ): Promise<void> => {
