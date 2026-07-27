@@ -54,6 +54,24 @@ export const anonymizeData = async (
           userResult.username = randomUsername;
         }
       }
+
+      for (const group of result.groups) {
+        const isInGroup =
+          group.groupCreator === user.username ||
+          group.groupMembers.includes(user.username);
+        if (!isInGroup) {
+          continue;
+        }
+        logger.info(
+          `results.json groups: ${user.username} -> ${randomUsername}`,
+        );
+        if (group.groupCreator === user.username) {
+          group.groupCreator = randomUsername;
+        }
+        group.groupMembers = group.groupMembers.map((groupMember) =>
+          groupMember === user.username ? randomUsername : groupMember,
+        );
+      }
     }
 
     for (const signup of directSignups) {
@@ -69,7 +87,9 @@ export const anonymizeData = async (
 
     logger.info(`users.json: ${user.username} -> ${randomUsername}`);
     user.username = randomUsername;
-    user.password = "<redacted>";
+    // Kompassi login users have no local password
+    user.password =
+      user.password === "" || user.kompassiId !== 0 ? "" : "<redacted>";
     // @ts-expect-error -- Use invalid type for clarity
     user.kompassiId = user.kompassiId === 0 ? 0 : "<redacted>";
     user.email = user.email === "" ? "" : "<redacted>";
