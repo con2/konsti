@@ -2,8 +2,10 @@ import { Command } from "commander";
 import { anonymizeData } from "./fixer-helpers/dataAnonymizer";
 import { wildFix } from "./fixer-helpers/wildFix";
 import { formatJson } from "./fixer-helpers/formatJson";
+import { formatFields } from "./fixer-helpers/formatFields";
 import { initializeDayjs } from "shared/utils/initializeDayjs";
 import { getSimilarUsernames } from "server/features/statistics/similarUsernames";
+import { getMatchingEmails } from "server/features/statistics/matchingEmails";
 
 const fixData = (): void => {
   initializeDayjs();
@@ -18,10 +20,24 @@ const fixData = (): void => {
     });
 
   commander
+    .command("format-fields <year> <event>")
+    .description("Remove _id and __v fields and unwrap $date timestamps")
+    .action(async (year: number, event: string) => {
+      await formatFields(year, event);
+    });
+
+  commander
     .command("similar-usernames <year> <event>")
     .description("Find similar usernames")
     .action((year: number, event: string) => {
       getSimilarUsernames(year, event);
+    });
+
+  commander
+    .command("matching-emails <year> <event>")
+    .description("Find users with same email address")
+    .action((year: number, event: string) => {
+      getMatchingEmails(year, event);
     });
 
   commander

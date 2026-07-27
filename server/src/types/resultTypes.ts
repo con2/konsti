@@ -1,6 +1,9 @@
 import { ProgramItem } from "shared/types/models/programItem";
 import { LotterySignup, User } from "shared/types/models/user";
-import { UserAssignmentResult } from "shared/types/models/result";
+import {
+  AssignmentResultGroup,
+  UserAssignmentResult,
+} from "shared/types/models/result";
 import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
 
 export interface UserLotterySignups {
@@ -25,6 +28,7 @@ export interface AssignmentResult {
 export interface ResultsCollectionEntry {
   assignmentTime: string;
   results: readonly UserAssignmentResult[];
+  groups: readonly AssignmentResultGroup[];
   message: string;
   algorithm: AssignmentAlgorithm;
 }
