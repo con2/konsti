@@ -1,4 +1,4 @@
-import http, { Server } from "node:http";
+import http, { Server, ServerResponse } from "node:http";
 import path from "node:path";
 import { once } from "node:events";
 import express, { Request, Response, NextFunction } from "express";
@@ -81,6 +81,22 @@ export const startServer = async ({
   // Set static path
   const staticPath = path.join(import.meta.dirname, "../../", "front");
 
+  // Files under assets/ have content-hashed names that change on every build,
+  // so browsers can cache them forever. index.html must be revalidated on
+  // every load so clients pick up new deploys - it decides which hashed
+  // assets are requested. Split on both separators because the file path
+  // comes from the serving library and may use either style
+  const setStaticCacheHeaders = (
+    res: ServerResponse,
+    filePath: string,
+  ): void => {
+    if (filePath.split(/[\\/]/).includes("assets")) {
+      res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
+    } else if (path.basename(filePath).startsWith("index.html")) {
+      res.setHeader("Cache-Control", "no-cache");
+    }
+  };
+
   const serveIndexAndApi =
     !config.server().onlyCronjobs ||
     config.server().cronjobsAndBackendSameInstance;
@@ -94,11 +110,17 @@ export const startServer = async ({
           orderPreference: ["br", "gz"],
           serveStatic: {
             acceptRanges: false,
+            setHeaders: setStaticCacheHeaders,
           },
         }),
       );
     } else {
-      app.use(express.static(staticPath, { acceptRanges: false }));
+      app.use(
+        express.static(staticPath, {
+          acceptRanges: false,
+          setHeaders: setStaticCacheHeaders,
+        }),
+      );
     }
   }
 
@@ -118,7 +140,9 @@ export const startServer = async ({
       return;
     }
 
-    res.sendFile(path.join(staticPath, "index.html"));
+    res.sendFile(path.join(staticPath, "index.html"), {
+      headers: { "Cache-Control": "no-cache" },
+    });
   });
 
   // Sentry setup: add this after all routes and before other error-handling middlewares
