@@ -103,13 +103,22 @@ export const startServer = async ({
   }
 
   app.get("/*splat", (req: Request, res: Response) => {
-    if (req.originalUrl.includes("/api/")) {
+    // A dotted path segment is a file request the static middleware already
+    // failed to match, so the file doesn't exist. App routes never contain dots.
+    const looksLikeFile = req.path
+      .split("/")
+      .some((segment) => segment.includes("."));
+
+    if (
+      req.originalUrl.includes("/api/") ||
+      looksLikeFile ||
+      !serveIndexAndApi
+    ) {
       res.sendStatus(404);
-    } else {
-      if (serveIndexAndApi) {
-        res.sendFile(path.join(staticPath, "index.html"));
-      }
+      return;
     }
+
+    res.sendFile(path.join(staticPath, "index.html"));
   });
 
   // Sentry setup: add this after all routes and before other error-handling middlewares
