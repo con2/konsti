@@ -4,7 +4,7 @@ import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { ThemeProvider, StyleSheetManager } from "styled-components";
-import { init, browserTracingIntegration } from "@sentry/react";
+import { init } from "@sentry/react";
 import loaderImage from "assets/loading.gif";
 import { config } from "shared/config";
 import { getLocalStorageLocale } from "client/utils/localStorage";
@@ -70,13 +70,13 @@ const getDsn = (): string | undefined => {
 
 init({
   dsn: getDsn(),
-  integrations: [
-    // Use reactRouterV6BrowserTracingIntegration to enable performance monitoring
-    // https://docs.sentry.io/platforms/javascript/guides/react/features/react-router/
-    browserTracingIntegration(),
-  ],
-  tracePropagationTargets: ["localhost", "dev.ropekonsti.fi", "ropekonsti.fi"],
-  tracesSampleRate: config.sentry().tracesSampleRate,
+  // Drop the default session tracking and client reports
+  // Tunnel traffic is error events only
+  integrations: (defaultIntegrations) =>
+    defaultIntegrations.filter(
+      (integration) => integration.name !== "BrowserSession",
+    ),
+  sendClientReports: false,
   normalizeDepth: 10,
   environment: process.env.SETTINGS,
   tunnel: ApiEndpoint.SENTRY_TUNNEL,
