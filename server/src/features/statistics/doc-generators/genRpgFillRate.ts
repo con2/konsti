@@ -12,7 +12,7 @@ import {
   pct,
   readDataFile,
   writeDoc,
-} from "server/features/statistics/doc-generators/helpers";
+} from "server/features/statistics/doc-generators/statsUtils";
 
 interface FillRow {
   event: string;
@@ -120,6 +120,7 @@ export const genRpgFillRate = (): void => {
     "## Notes",
     "",
     '- Cancelled programs (`state: "cancelled"`) are excluded.',
+    "- Tracon Hitpoint 2019 fill counts are understated: its final signup data only preserved each user's last lottery win (see the datafiles guide).",
     "",
   );
 

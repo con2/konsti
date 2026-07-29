@@ -1,5 +1,6 @@
 import { initializeDayjs } from "shared/utils/initializeDayjs";
 import { genLotterySignups } from "server/features/statistics/doc-generators/genLotterySignups";
+import { genLotteryWinsPerUser } from "server/features/statistics/doc-generators/genLotteryWinsPerUser";
 import { genRpgCounts } from "server/features/statistics/doc-generators/genRpgCounts";
 import { genRpgFillRate } from "server/features/statistics/doc-generators/genRpgFillRate";
 import { genRpgPlayers } from "server/features/statistics/doc-generators/genRpgPlayers";
@@ -12,6 +13,7 @@ const generateDocs = (): void => {
   genRpgPlayers();
   genRpgFillRate();
   genLotterySignups();
+  genLotteryWinsPerUser();
 };
 
 generateDocs();

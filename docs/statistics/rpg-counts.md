@@ -41,5 +41,5 @@ No tabletop RPGs in this event.
 
 ## Notes
 
-- Cancelled programs (`state: "cancelled"`) are excluded — these are programs that were imported but never ran.
+- Cancelled programs (`state: "cancelled"`) are excluded - these are programs that were imported but never ran.
 - Ropecon 2021 was a remote / COVID-era convention with a much smaller program.
