@@ -38,7 +38,7 @@ export const LotterySignupForm = ({
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
-  // We need all lottery signups here
+  // We need all lottery sign-ups here
   const lotterySignups = useAppSelector(selectLotterySignups);
   const isGroupCreator = useAppSelector((state) => state.group.isGroupCreator);
   const loading = useAppSelector((state) => state.loading);

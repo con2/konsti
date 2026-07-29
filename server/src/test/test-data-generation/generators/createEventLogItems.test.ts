@@ -37,7 +37,7 @@ afterEach(async () => {
 test("every lottery signup slot gets either a newAssignment with a matching direct signup or a noAssignment", async () => {
   await saveUser(mockUser);
   await saveProgramItems([testProgramItem, testProgramItem2]);
-  // Lottery signups in two different start time slots
+  // Lottery sign-ups in two different start time slots
   await saveLotterySignups({
     username: mockUser.username,
     lotterySignups: mockLotterySignups,
@@ -54,11 +54,11 @@ test("every lottery signup slot gets either a newAssignment with a matching dire
     (item) => item.action === EventLogAction.NO_ASSIGNMENT,
   );
 
-  // One outcome per lottery signup slot
+  // One outcome per lottery sign-up slot
   expect(newAssignments.length + noAssignments.length).toEqual(2);
 
   // Won slots reference a lottery-signed program item and have the direct
-  // signup the real assignment would create
+  // sign-up the real assignment would create
   const directSignups = unsafelyUnwrap(
     await findUserDirectSignups(mockUser.username),
   );

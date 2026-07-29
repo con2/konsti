@@ -33,7 +33,7 @@ const eventConfig: Partial<EventConfig> = {
 
   twoPhaseSignupProgramTypes: [ProgramType.FLEAMARKET],
 
-  // Event start at 15:00 GMT+3 but lottery signups start at 08:00 GMT+3
+  // Event start at 15:00 GMT+3 but lottery sign-ups start at 08:00 GMT+3
   eventStartTime: `${friday}T05:00:00Z`, // Fri 08:00 GMT+3
 
   directSignupWindows: {},
@@ -43,7 +43,7 @@ const eventConfig: Partial<EventConfig> = {
 
   hideParticipantListProgramTypes: [ProgramType.FLEAMARKET],
 
-  // These program items have their signup always open even if signup mode is set to lottery
+  // These program items have their sign-up always open even if sign-up mode is set to lottery
   directSignupAlwaysOpenIds: [],
 
   // Add these to Konsti under 'other' program type
@@ -52,7 +52,7 @@ const eventConfig: Partial<EventConfig> = {
   // These program items have hand picked revolving door status
   addRevolvingDoorIds: [],
 
-  // These program items are imported to Konsti but don't have Konsti signup
+  // These program items are imported to Konsti but don't have Konsti sign-up
   noKonstiSignupIds: [],
 
   signupQuestions: [],
@@ -83,7 +83,7 @@ const eventConfig: Partial<EventConfig> = {
     },
   ],
 
-  // Two phase signup settings
+  // Two phase sign-up settings
   preSignupStart: 60 * 4, // minutes
   directSignupPhaseStart: 60 * 2, // minutes
   phaseGap: 15, // minutes

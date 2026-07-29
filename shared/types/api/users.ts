@@ -99,7 +99,7 @@ export type GetUserBySerialResponse =
   | GetUserBySerialResult
   | GetUserBySerialError;
 
-// GET signup messages
+// GET sign-up messages
 
 export interface GetSignupMessagesResult extends ApiResult {
   signupMessages: SignupMessage[];

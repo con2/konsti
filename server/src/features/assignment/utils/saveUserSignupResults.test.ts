@@ -484,7 +484,7 @@ test("should give dropped signup users a NO_ASSIGNMENT message when multiple sig
   for (const user of lotteryUsers) {
     await saveUser(user);
   }
-  // Only two seats, but four assignment results are passed -> two signups dropped
+  // Only two seats, but four assignment results are passed -> two sign-ups dropped
   await saveProgramItems([{ ...testProgramItem, maxAttendance: 2 }]);
 
   // All four are real lottery participants for the starting program item
@@ -514,14 +514,14 @@ test("should give dropped signup users a NO_ASSIGNMENT message when multiple sig
     programItems,
   });
 
-  // Only two signups fit, the other two are dropped
+  // Only two sign-ups fit, the other two are dropped
   const signupsAfterSave = unsafelyUnwrap(await findDirectSignups());
   expect(signupsAfterSave).toHaveLength(1);
   expect(signupsAfterSave[0].userSignups).toHaveLength(2);
 
   const usersAfterSave = unsafelyUnwrap(await findUsers());
 
-  // The two users whose signups were saved get a NEW_ASSIGNMENT message
+  // The two users whose sign-ups were saved get a NEW_ASSIGNMENT message
   const usersWithNewAssignment = usersAfterSave.filter((user) =>
     user.eventLogItems.some(
       (eventLogItem) => eventLogItem.action === EventLogAction.NEW_ASSIGNMENT,
@@ -529,7 +529,7 @@ test("should give dropped signup users a NO_ASSIGNMENT message when multiple sig
   );
   expect(usersWithNewAssignment).toHaveLength(2);
 
-  // The two users whose signups were dropped get a NO_ASSIGNMENT message instead of silence
+  // The two users whose sign-ups were dropped get a NO_ASSIGNMENT message instead of silence
   const usersWithNoAssignment = usersAfterSave.filter((user) =>
     user.eventLogItems.some(
       (eventLogItem) => eventLogItem.action === EventLogAction.NO_ASSIGNMENT,
@@ -560,8 +560,8 @@ test("should remove all of a winner's existing same-time direct signups, not jus
   const alwaysOpenId1 = "always-open-1";
   const alwaysOpenId2 = "always-open-2";
 
-  // Always-open signups survive the pre-assignment cleanup, so the user keeps both existing
-  // direct signups at the assignment start time going into conflict resolution
+  // Always-open sign-ups survive the pre-assignment cleanup, so the user keeps both existing
+  // direct sign-ups at the assignment start time going into conflict resolution
   vi.spyOn(config, "event").mockReturnValue({
     ...config.event(),
     directSignupAlwaysOpenIds: [alwaysOpenId1, alwaysOpenId2],
@@ -585,7 +585,7 @@ test("should remove all of a winner's existing same-time direct signups, not jus
     },
   ]);
 
-  // Two existing direct signups for the same start time
+  // Two existing direct sign-ups for the same start time
   await saveDirectSignup({
     ...mockPostDirectSignupRequest,
     directSignupProgramItemId: alwaysOpenId1,
@@ -618,7 +618,7 @@ test("should remove all of a winner's existing same-time direct signups, not jus
     programItems,
   });
 
-  // Both prior same-time signups must be removed, leaving only the assignment result
+  // Both prior same-time sign-ups must be removed, leaving only the assignment result
   const signupsAfterSave = unsafelyUnwrap(await findDirectSignups());
   const userProgramItemIds = signupsAfterSave.flatMap((signup) =>
     signup.userSignups

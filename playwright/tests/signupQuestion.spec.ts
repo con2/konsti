@@ -206,7 +206,7 @@ test("User answers a private signup question on direct signup", async ({
   const programItem = programList.firstItem();
   await programItem.signUp();
   await expect(programItem.container).toContainText("Dietary restrictions?");
-  // Private questions are flagged as organizer-only in the signup form
+  // Private questions are flagged as organizer-only in the sign-up form
   await expect(programItem.container).toContainText(
     "Only visible to organizers",
   );
@@ -227,7 +227,7 @@ test("User answers a private signup question on direct signup", async ({
   await expect(programItem.participants).toHaveText(["test1"]);
 
   // Reload so program and user data come from the server instead of the
-  // signup response
+  // sign-up response
   await page.reload();
 
   // The private answer stays out of the participant list also when the

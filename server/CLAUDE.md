@@ -121,35 +121,35 @@ There is **no application-level rate limiting**. This is intentional:
 
 ## Assignment System
 
-Two lottery algorithms: PADG (preference-based via `eventassigner-js`) and random (`eventassigner-random`), under `server/src/features/assignment/`. Assignment runs automatically on a cron schedule; admins can trigger manual runs as a backup. Users submit weighted preferences during signup windows defined per-event in `shared/config/`. The orchestrator (`run-assignment/`) cleans up invalid signups before running (see below).
+Two lottery algorithms: PADG (preference-based via `eventassigner-js`) and random (`eventassigner-random`), under `server/src/features/assignment/`. Assignment runs automatically on a cron schedule; admins can trigger manual runs as a backup. Users submit weighted preferences during sign-up windows defined per-event in `shared/config/`. The orchestrator (`run-assignment/`) cleans up invalid sign-ups before running (see below).
 
-**Assignment test organization** (`run-assignment/`): put generic, algorithm-independent behavior — start-time filtering, signup cleanup/preservation, result snapshots, error cases — in `runAssignment.test.ts`. The per-algorithm files (`runAssignmentPadg.test.ts`, `runAssignmentRandom.test.ts`, `runAssignmentRandomPadg.test.ts`) hold only cases specific to that algorithm. New generic cases go in `runAssignment.test.ts`.
+**Assignment test organization** (`run-assignment/`): put generic, algorithm-independent behavior — start-time filtering, sign-up cleanup/preservation, result snapshots, error cases — in `runAssignment.test.ts`. The per-algorithm files (`runAssignmentPadg.test.ts`, `runAssignmentRandom.test.ts`, `runAssignmentRandomPadg.test.ts`) hold only cases specific to that algorithm. New generic cases go in `runAssignment.test.ts`.
 
 ## Program Item Cancellation Types
 
 A program item can effectively "go away" in four distinct ways; each has different data-cleanup semantics:
 
 1. **Cancelled** — `state: "cancelled"` in DB. Item stays visible (so users know it was cancelled).
-2. **Deleted** — the program item document is removed from the DB entirely. All related records (lottery signups, favorites, direct signups, etc.) should also be removed.
-3. **Signup type changed** — item stays in DB with `state: "accepted"`, but `signupType` is no longer `KONSTI` (e.g. moved to `OTHER`). No new Konsti signups possible.
+2. **Deleted** — the program item document is removed from the DB entirely. All related records (lottery sign-ups, favorites, direct sign-ups, etc.) should also be removed.
+3. **Sign-up type changed** — item stays in DB with `state: "accepted"`, but `signupType` is no longer `KONSTI` (e.g. moved to `OTHER`). No new Konsti sign-ups possible.
 4. **Program type changed to non-lottery** — item stays in DB with `state: "accepted"` and `signupType: "konsti"`, but `programType` is no longer in `twoPhaseSignupProgramTypes` (e.g. changed from `TABLETOP_RPG` to `OTHER`). Lottery is no longer meaningful for this item; use `isLotterySignupProgramItem` to detect this state.
 
 Cleanup rules (admin-import path, `notify: true`):
 
-| Case               | Lottery signup                                             | Direct signup    | Favorite        |
+| Case               | Lottery sign-up                                            | Direct sign-up   | Favorite        |
 | ------------------ | ---------------------------------------------------------- | ---------------- | --------------- |
 | Cancelled          | Preserve if lottery already ran, otherwise remove + notify | Remove + notify  | Keep            |
 | Deleted            | Remove + notify                                            | Remove + notify  | Remove + notify |
 | SignupType change  | Preserve if lottery already ran, otherwise remove + notify | Remove + notify  | Keep            |
 | ProgramType change | Preserve if lottery already ran, otherwise remove + notify | Keep (no notify) | Keep            |
 
-Lottery signup cleanup lives in `removeCancelledDeletedProgramItemsFromUsers` (`server/src/features/assignment/utils/removeInvalidProgramItemsFromUsers.ts`); preservation is gated on `timeNow >= getLotterySignupEndTime(programItem)`. Direct signup cleanup lives in `handleCancelledDeletedProgramItems` (`server/src/features/program-item/programItemUtils.ts`); it does not touch direct signups for programType-only changes because the item still exists and still uses Konsti signup (direct signup remains valid whether the lottery has run or not). The lottery-signup path deduplicates event log entries when a user has both a lottery and a direct signup for the same item, so there's no double notification.
+Lottery sign-up cleanup lives in `removeCancelledDeletedProgramItemsFromUsers` (`server/src/features/assignment/utils/removeInvalidProgramItemsFromUsers.ts`); preservation is gated on `timeNow >= getLotterySignupEndTime(programItem)`. Direct sign-up cleanup lives in `handleCancelledDeletedProgramItems` (`server/src/features/program-item/programItemUtils.ts`); it does not touch direct sign-ups for programType-only changes because the item still exists and still uses Konsti sign-up (direct sign-up remains valid whether the lottery has run or not). The lottery-signup path deduplicates event log entries when a user has both a lottery and a direct sign-up for the same item, so there's no double notification.
 
 Each case emits its own event log action so the user sees a case-specific message: **Cancelled** uses `PROGRAM_ITEM_CANCELLED`, **Deleted** uses `PROGRAM_ITEM_DELETED`, **SignupType change** uses `PROGRAM_ITEM_NO_KONSTI_SIGNUP_ANYMORE`, and **ProgramType change** uses `PROGRAM_ITEM_NO_LOTTERY_ANYMORE` (enum in `shared/types/models/eventLog.ts`, rendered client-side by the matching `EventLogProgramItem*` components and `eventLogActions.*` locale keys). The lottery path picks the action via the `getCancellationAction` classifier; the direct-signup path routes each bucket through `notifyUsersWithDirectSignups` with the matching action.
 
-Pre-assignment cleanup (`runAssignment.ts` → `notify: false`) calls the same function with the same preservation semantics; the `notify: false` flag only suppresses these cancellation event-log notifications. This path is a safety net — invalid signups should already have been handled when the program items were updated.
+Pre-assignment cleanup (`runAssignment.ts` → `notify: false`) calls the same function with the same preservation semantics; the `notify: false` flag only suppresses these cancellation event-log notifications. This path is a safety net — invalid sign-ups should already have been handled when the program items were updated.
 
-When writing `signedToStartTime` for signups, follow the lottery-vs-direct split documented in [shared/CLAUDE.md](../shared/CLAUDE.md) (lottery stores the item's own `startTime`; direct stores the parent-resolved time).
+When writing `signedToStartTime` for sign-ups, follow the lottery-vs-direct split documented in [shared/CLAUDE.md](../shared/CLAUDE.md) (lottery stores the item's own `startTime`; direct stores the parent-resolved time).
 
 ## Cross-Cutting Server Patterns
 
@@ -175,7 +175,7 @@ Sanitized DB dumps from every event live under `server/src/features/statistics/d
 
 Non-obvious invariants when analysing the dumps:
 
-- **Signup priority semantics** (`direct-signups.json` `userSignups[].priority`, `results.json` `assignmentSignup.priority`): `0` = first-come-first-served direct signup; `1`/`2`/`3` = lottery win at that preference. 2017–2019 events have only `1`/`2`/`3` (lottery-only era); 2021 Ropecon has only `0` (remote / COVID, direct signup only); 2022+ events mix both.
+- **Sign-up priority semantics** (`direct-signups.json` `userSignups[].priority`, `results.json` `assignmentSignup.priority`): `0` = first-come-first-served direct sign-up; `1`/`2`/`3` = lottery win at that preference. 2017–2019 events have only `1`/`2`/`3` (lottery-only era); 2021 Ropecon has only `0` (remote / COVID, direct sign-up only); 2022+ events mix both.
 - **Group creator identification**: a user is the group creator iff `user.isGroupCreator === true` (a creator's `groupCode` is the group's own code). Regular members have `isGroupCreator: false`. In 2018–2023 dumps the `groupCode` happens to equal the creator's `serial`; from 2024 onward it's a UUID-style string.
 - **`kompassiId` types**: `0` (number) means registration-code user, `"<redacted>"` (string) means Kompassi-OAuth user. The split only exists in events with `loginProvider: "local+kompassi"` (Ropecon 2025+); single-method events have one value across all rows.
 - **`popularity` scale history**: Ropecon 2025 introduced the 5-bucket enum (`notSet`/`low`/`medium`/`high`/`veryHigh`/`extreme`). Earlier dumps used a numeric scale that only encoded 3 buckets (`low` = under min attendance, `medium` = between, `high` = at max), so older normalized dumps never have `veryHigh` or `extreme`.

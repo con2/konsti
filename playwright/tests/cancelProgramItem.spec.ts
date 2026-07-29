@@ -45,7 +45,7 @@ test("Show event log notification when program item with direct signup is cancel
   await programList.gotoAllProgram();
   await programList.selectProgramType("Tabletop RPG");
 
-  // Direct signup to first program item
+  // Direct sign-up to first program item
   await programList.waitForItems();
   const firstProgramItem = programList.firstItem();
 
@@ -114,7 +114,7 @@ test("Show event log notification when program item with lottery sign-up is canc
   const programList = new ProgramListPage(page);
   await programList.gotoAllProgram();
 
-  // Lottery signup to first program item
+  // Lottery sign-up to first program item
   await programList.waitForItems();
   const firstProgramItem = programList.firstItem();
 
@@ -170,7 +170,7 @@ test("Show event log notification when program item with direct sign-up doesn't 
   await programList.gotoAllProgram();
   await programList.selectProgramType("Tabletop RPG");
 
-  // Direct signup to first program item
+  // Direct sign-up to first program item
   await programList.waitForItems();
   const firstProgramItem = programList.firstItem();
 
@@ -179,7 +179,7 @@ test("Show event log notification when program item with direct sign-up doesn't 
 
   await expect(firstProgramItem.container).toContainText("1/4 sign-ups");
 
-  // Change program item signup type on background
+  // Change program item sign-up type on background
   await addProgramItems(request, [
     {
       ...testProgramItem,
@@ -228,14 +228,14 @@ test("Show event log notification when program item with lottery sign-up doesn't
   const programList = new ProgramListPage(page);
   await programList.gotoAllProgram();
 
-  // Lottery signup to first program item
+  // Lottery sign-up to first program item
   await programList.waitForItems();
   const firstProgramItem = programList.firstItem();
 
   await firstProgramItem.lotterySignup();
   await firstProgramItem.confirmLotterySignup();
 
-  // Change signup type away from Konsti on background before lottery has run
+  // Change sign-up type away from Konsti on background before lottery has run
   await addProgramItems(request, [
     {
       ...testProgramItem,
@@ -386,7 +386,7 @@ test("Show event log notification when program item with lottery sign-up is dele
   await firstProgramItem.lotterySignup();
   await firstProgramItem.confirmLotterySignup();
 
-  // Advance time past lottery signup end so lottery is considered "run"
+  // Advance time past lottery sign-up end so lottery is considered "run"
   await postTestSettings(request, {
     testTime: dayjs(startTime).subtract(1, "hour").toISOString(),
   });
@@ -433,7 +433,7 @@ test("Show event log notification when program item with lottery sign-up changes
   const programList = new ProgramListPage(page);
   await programList.gotoAllProgram();
 
-  // Lottery signup to first program item
+  // Lottery sign-up to first program item
   await programList.waitForItems();
   const firstProgramItem = programList.firstItem();
 
@@ -488,7 +488,7 @@ test("Show event log notification when a favorited program item is deleted", asy
   await programList.gotoAllProgram();
   await programList.selectProgramType("Tabletop RPG");
 
-  // Favorite first program item (no signup) and wait for it to persist
+  // Favorite first program item (no sign-up) and wait for it to persist
   await programList.waitForItems();
   const firstProgramItem = programList.firstItem();
 
@@ -529,7 +529,7 @@ const initDb = async (request: APIRequestContext): Promise<void> => {
 
 const getStartTime = (type: "lottery" | "direct"): string => {
   return dayjs(config.event().eventStartTime)
-    .add(type === "direct" ? 1 : 3, "hour") // -> direct signup
+    .add(type === "direct" ? 1 : 3, "hour") // -> direct sign-up
     .startOf("hour")
     .toISOString();
 };

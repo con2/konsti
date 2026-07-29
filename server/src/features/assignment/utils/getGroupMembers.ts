@@ -18,7 +18,7 @@ export const getGroupMembersWithCreatorLotterySignups = (
           user.groupCode === groupCreator.groupCode &&
           user.username !== groupCreator.username
         ) {
-          // Group member gets group creator's lottery signups
+          // Group member gets group creator's lottery sign-ups
           selectedAttendeesWithSignups.push(
             Object.assign({
               ...user,

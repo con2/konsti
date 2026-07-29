@@ -74,7 +74,7 @@ export const eventConfig: EventConfig = {
 
   hideParticipantListProgramTypes: [],
 
-  // These program items have their signup always open even if signup mode is set to lottery
+  // These program items have their sign-up always open even if sign-up mode is set to lottery
   directSignupAlwaysOpenIds: [],
 
   // Add these to Konsti under 'other' program type
@@ -83,7 +83,7 @@ export const eventConfig: EventConfig = {
   // These program items have hand picked revolving door status
   addRevolvingDoorIds: [],
 
-  // These program items are imported to Konsti but don't have Konsti signup
+  // These program items are imported to Konsti but don't have Konsti sign-up
   noKonstiSignupIds: [],
 
   // Don't import these program items from Kompassi - this is program item id, not schedule item
@@ -169,18 +169,18 @@ export const eventConfig: EventConfig = {
   // Require checkbox to be checked before signing up
   entryConditions: [],
 
-  // Two phase signup settings
+  // Two phase sign-up settings
   preSignupStart: 60 * 4, // minutes
   directSignupPhaseStart: 60 * 2, // minutes
   phaseGap: 15, // minutes
 
-  // Use fixed time to open all lottery signups for the whole event
+  // Use fixed time to open all lottery sign-ups for the whole event
   fixedLotterySignupTime: null,
 
   // Program items with parentId use startTime configured here
   startTimesByParentIds: new Map(),
 
-  // What signup type is set if signup type is missing
+  // What sign-up type is set if sign-up type is missing
   defaultSignupType: SignupType.MISSING,
 
   // Default DB values

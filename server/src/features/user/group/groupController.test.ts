@@ -218,7 +218,7 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
 
     const groupCode = "123-234-345";
 
-    // Lottery-not-yet-run is determined from program item start time, not signup time
+    // Lottery-not-yet-run is determined from program item start time, not sign-up time
     await saveProgramItems([
       { ...testProgramItem, startTime: pastStartTime },
       {

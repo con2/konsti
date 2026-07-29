@@ -248,7 +248,7 @@ export const saveDirectSignup = async (
       },
     ).lean();
 
-    // No response means that direct signups for program item is either not found of program item is full
+    // No response means the program item's sign-up document was not found or the program item is full
     if (!response) {
       const signupsResult = await findDirectSignupsByProgramItemIds([
         directSignupProgramItemId,
@@ -332,7 +332,7 @@ export const saveDirectSignups = async (
         filter: {
           programItemId: programItem.programItemId,
         },
-        // Append the new signups and recompute count from the resulting array in a single
+        // Append the new sign-ups and recompute count from the resulting array in a single
         // atomic pipeline update, so count can never drift from the userSignups it tallies
         update: [
           {
@@ -454,7 +454,7 @@ export const delDirectSignup = async ({
   }
 };
 
-// Remove several users' direct signups in a single bulk write instead of one round-trip each
+// Remove several users' direct sign-ups in a single bulk write instead of one round-trip each
 export const delDirectSignups = async (
   signups: readonly DelDirectSignupParams[],
 ): Promise<Result<void, MongoDbError>> => {
@@ -534,7 +534,7 @@ export const delAssignmentDirectSignupsByStartTime = async (
   assignmentTime: string,
   programItems: ProgramItem[],
 ): Promise<Result<void, MongoDbError>> => {
-  // Only remove "twoPhaseSignupProgramTypes" signups and don't remove "directSignupAlwaysOpen" signups
+  // Only remove "twoPhaseSignupProgramTypes" sign-ups and don't remove "directSignupAlwaysOpen" sign-ups
   const doNotRemoveProgramItemIds = programItems
     .filter((programItem) => !isLotterySignupProgramItem(programItem))
     .map((programItem) => programItem.programItemId);

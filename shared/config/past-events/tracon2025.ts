@@ -25,7 +25,7 @@ const eventConfig: Partial<EventConfig> = {
   assignmentAlgorithm: AssignmentAlgorithm.RANDOM,
   enableGroups: true,
 
-  // Remove lottery signups after assignment: overlapping signups, all upcoming signups, or none
+  // Remove lottery sign-ups after assignment: overlapping sign-ups, all upcoming sign-ups, or none
   removeLotterySignupsStrategy: RemoveLotterySignupsStrategy.ALL_UPCOMING,
 
   programGuideUrlFi: "https://tracon.fi/opas",
@@ -34,7 +34,7 @@ const eventConfig: Partial<EventConfig> = {
 
   twoPhaseSignupProgramTypes: [ProgramType.FLEAMARKET],
 
-  // Event start at 15:00 GMT+3 but lottery signups start at 08:00 GMT+3
+  // Event start at 15:00 GMT+3 but lottery sign-ups start at 08:00 GMT+3
   eventStartTime: `${friday}T05:00:00Z`, // Fri 08:00 GMT+3
 
   directSignupWindows: {},
@@ -44,7 +44,7 @@ const eventConfig: Partial<EventConfig> = {
 
   hideParticipantListProgramTypes: [ProgramType.FLEAMARKET],
 
-  // These program items have their signup always open even if signup mode is set to lottery
+  // These program items have their sign-up always open even if sign-up mode is set to lottery
   directSignupAlwaysOpenIds: [],
 
   // Add these to Konsti under 'other' program type
@@ -53,7 +53,7 @@ const eventConfig: Partial<EventConfig> = {
   // These program items have hand picked revolving door status
   addRevolvingDoorIds: [],
 
-  // These program items are imported to Konsti but don't have Konsti signup
+  // These program items are imported to Konsti but don't have Konsti sign-up
   noKonstiSignupIds: [],
 
   // Don't import these program items from Kompassi - this is program item id, not schedule item
@@ -70,12 +70,12 @@ const eventConfig: Partial<EventConfig> = {
   // Require checkbox to be checked before signing up
   entryConditions: [],
 
-  // Two phase signup settings
+  // Two phase sign-up settings
   preSignupStart: 60 * 4, // minutes
   directSignupPhaseStart: 60 * 2, // minutes
   phaseGap: 15, // minutes
 
-  // Use fixed time to open all lottery signups for the whole event
+  // Use fixed time to open all lottery sign-ups for the whole event
   fixedLotterySignupTime: `${friday}T05:00:00Z`, // Fri 08:00 GMT+3
 
   // Program items with parentId use startTime configured here

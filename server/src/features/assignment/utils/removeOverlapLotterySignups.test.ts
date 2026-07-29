@@ -65,7 +65,7 @@ test("should remove overlapping lottery signups from user", async () => {
     },
   ]);
 
-  // User 1 received a direct signup and overlapping lottery signups should be removed
+  // User 1 received a direct sign-up and overlapping lottery sign-ups should be removed
   await saveUser(mockUser);
   await saveLotterySignups({
     username: mockUser.username,
@@ -87,7 +87,7 @@ test("should remove overlapping lottery signups from user", async () => {
     },
   };
 
-  // User 2 received a direct signup but doesn't have overlapping lottery signups
+  // User 2 received a direct sign-up but doesn't have overlapping lottery sign-ups
   await saveUser(mockUser2);
   await saveLotterySignups({
     username: mockUser2.username,
@@ -109,7 +109,7 @@ test("should remove overlapping lottery signups from user", async () => {
     },
   };
 
-  // User 3 didn't receive a direct signup in lottery so lottery signups are not removed
+  // User 3 didn't receive a direct sign-up in lottery so lottery sign-ups are not removed
   await saveUser(mockUser3);
   await saveLotterySignups({
     username: mockUser3.username,
@@ -137,7 +137,7 @@ test("should remove overlapping lottery signups from user", async () => {
     testProgramItem.startTime,
   );
 
-  // User 1: One overlapping signup removed
+  // User 1: One overlapping sign-up removed
   const updatedUser = unsafelyUnwrap(await findUser(mockUser.username));
   expect(updatedUser?.lotterySignups.length).toEqual(1);
   expect(updatedUser?.lotterySignups).toMatchObject([
@@ -147,7 +147,7 @@ test("should remove overlapping lottery signups from user", async () => {
     },
   ]);
 
-  // User 2: No signups removed
+  // User 2: No sign-ups removed
   const updatedUser2 = unsafelyUnwrap(await findUser(mockUser2.username));
   expect(updatedUser2?.lotterySignups.length).toEqual(2);
   expect(updatedUser2?.lotterySignups).toMatchObject([
@@ -161,7 +161,7 @@ test("should remove overlapping lottery signups from user", async () => {
     },
   ]);
 
-  // User 3: No signups removed
+  // User 3: No sign-ups removed
   const updatedUser3 = unsafelyUnwrap(await findUser(mockUser3.username));
   expect(updatedUser3?.lotterySignups.length).toEqual(3);
   expect(updatedUser3?.lotterySignups).toMatchObject([
@@ -225,7 +225,7 @@ test("should remove all upcoming lottery signups from user", async () => {
     },
   ]);
 
-  // User received a direct signup and has one past and two upcoming lottery signups
+  // User received a direct sign-up and has one past and two upcoming lottery sign-ups
   await saveUser(mockUser);
   await saveLotterySignups({
     username: mockUser.username,
@@ -261,7 +261,7 @@ test("should remove all upcoming lottery signups from user", async () => {
     },
   };
 
-  // User 2 didn't receive a direct signup so lottery signups are not modified
+  // User 2 didn't receive a direct sign-up so lottery sign-ups are not modified
   await saveUser(mockUser2);
   await saveLotterySignups({
     username: mockUser2.username,
@@ -288,7 +288,7 @@ test("should remove all upcoming lottery signups from user", async () => {
     resultProgramItemStartTime,
   );
 
-  // Upcoming signups removed
+  // Upcoming sign-ups removed
   const updatedUser = unsafelyUnwrap(await findUser(mockUser.username));
   expect(updatedUser?.lotterySignups.length).toEqual(2);
   expect(updatedUser?.lotterySignups).toMatchObject([
@@ -302,7 +302,7 @@ test("should remove all upcoming lottery signups from user", async () => {
     },
   ]);
 
-  // All signups remaining
+  // All sign-ups remaining
   const updatedUser2 = unsafelyUnwrap(await findUser(mockUser2.username));
   expect(updatedUser2?.lotterySignups.length).toEqual(2);
   expect(updatedUser2?.lotterySignups).toMatchObject([
@@ -344,7 +344,7 @@ test("should not remove upcoming lottery signups when strategy is NONE", async (
     },
   ]);
 
-  // User received a direct signup and has one upcoming lottery signup
+  // User received a direct sign-up and has one upcoming lottery sign-up
   await saveUser(mockUser);
   await saveLotterySignups({
     username: mockUser.username,
@@ -379,7 +379,7 @@ test("should not remove upcoming lottery signups when strategy is NONE", async (
     resultProgramItemStartTime,
   );
 
-  // No signups removed
+  // No sign-ups removed
   const updatedUser = unsafelyUnwrap(await findUser(mockUser.username));
   expect(updatedUser?.lotterySignups.length).toEqual(2);
   expect(updatedUser?.lotterySignups).toMatchObject([
@@ -425,7 +425,7 @@ test("should not remove upcoming lottery signup with past parent startTime", asy
     },
   ]);
 
-  // User received a direct signup and has one upcoming lottery signup with parent in past
+  // User received a direct sign-up and has one upcoming lottery sign-up with parent in past
   await saveUser(mockUser);
   await saveLotterySignups({
     username: mockUser.username,
@@ -460,7 +460,7 @@ test("should not remove upcoming lottery signup with past parent startTime", asy
     resultProgramItemStartTime,
   );
 
-  // No signups removed
+  // No sign-ups removed
   const updatedUser = unsafelyUnwrap(await findUser(mockUser.username));
   expect(updatedUser?.lotterySignups.length).toEqual(2);
   expect(updatedUser?.lotterySignups).toMatchObject([

@@ -11,7 +11,7 @@ export const getLotterySignupProgramItems = (
   let minAttendance = 0;
   let maxAttendance = 0;
 
-  // Get valid program items from program items that are starting and program items that have lottery signups
+  // Get valid program items from program items that are starting and program items that have lottery sign-ups
   for (const startingProgramItem of startingProgramItems) {
     for (const lotterySignup of lotterySignups) {
       if (startingProgramItem.programItemId === lotterySignup.programItemId) {

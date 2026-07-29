@@ -65,7 +65,7 @@ export const AdminActionCard = ({ programItem }: Props): ReactElement => {
       setHidden(true);
     }
 
-    // Check if signup question exists
+    // Check if sign-up question exists
     if (
       signupQuestions.some(
         (signupQuestion) =>

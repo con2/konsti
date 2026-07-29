@@ -79,8 +79,8 @@ export class ProgramItemCard {
     await this.confirmButton.click();
   }
 
-  // Confirm a lottery signup and wait for the POST to be persisted, so callers can
-  // mutate server state right after without racing the in-flight signup request
+  // Confirm a lottery sign-up and wait for the POST to be persisted, so callers can
+  // mutate server state right after without racing the in-flight sign-up request
   async confirmLotterySignup(): Promise<void> {
     const signupResponse = this.root
       .page()

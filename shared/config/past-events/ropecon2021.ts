@@ -2,7 +2,7 @@
 // rather than preserved from the live event. Some fields may be inferred
 // (e.g. eventStartTime from the earliest program-item startTime) or omitted.
 //
-// Ropecon 2021 was a remote / COVID-era convention with direct signup only
+// Ropecon 2021 was a remote / COVID-era convention with direct sign-up only
 // (no lottery), so twoPhaseSignupProgramTypes is empty.
 
 import {
@@ -41,7 +41,7 @@ const eventConfig: Partial<EventConfig> = {
   tournamentSignupQuestionExcludeIds: [],
 
   // Default DB values
-  // Remote / COVID-era convention with direct signup only (no lottery)
+  // Remote / COVID-era convention with direct sign-up only (no lottery)
   defaultSignupStrategy: EventSignupStrategy.DIRECT,
   defaultLoginProvider: LoginProvider.LOCAL,
 };

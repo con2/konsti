@@ -33,7 +33,7 @@ export const getLotterySignupStartTime = (programItem: ProgramItem): Dayjs => {
     ? dayjs(fixedLotterySignupTime).tz(TIMEZONE)
     : dayjs(startTime).tz(TIMEZONE).subtract(preSignupStart, "minutes");
 
-  // If lottery signup starts before event start time, use event start time
+  // If lottery sign-up starts before event start time, use event start time
   if (timezoneStartTime.isBefore(dayjs(eventStartTime))) {
     return dayjs(eventStartTime);
   }
@@ -57,7 +57,7 @@ export const getRollingDirectSignupStartTime = (
   programItem: ProgramItem,
   eventStartTime: string,
 ): Dayjs => {
-  // Signup starts 4 hours before program item start time
+  // Sign-up starts 4 hours before program item start time
   const rollingStartTime = dayjs(programItem.startTime).subtract(4, "hours");
 
   // Earliest start time is event start time
@@ -65,7 +65,7 @@ export const getRollingDirectSignupStartTime = (
     return dayjs(eventStartTime);
   }
 
-  // If program item starts before 12:00, signup starts 18:00 previous day
+  // If program item starts before 12:00, sign-up starts 18:00 previous day
   if (config.event().enableRollingDirectSignupPreviousDay) {
     // Set timezone because hour comparison and setting hour value
     const timezoneStartTime = dayjs(programItem.startTime).tz(TIMEZONE);
@@ -89,10 +89,10 @@ export const getDirectSignupStartTime = (programItem: ProgramItem): Dayjs => {
     twoPhaseSignupProgramTypes,
   } = config.event();
 
-  // ** SIGNUP ALWAYS OPEN **
+  // ** SIGN-UP ALWAYS OPEN **
   if (isDirectSignupAlwaysOpen(programItem)) {
     // Pre-convention week items take place before the event starts, so they have
-    // their own signup start time instead of the event start time
+    // their own sign-up start time instead of the event start time
     if (
       preConventionWeekSignupStartTime &&
       isPreConventionWeekProgramItem(programItem)
@@ -103,9 +103,9 @@ export const getDirectSignupStartTime = (programItem: ProgramItem): Dayjs => {
     return dayjs(eventStartTime);
   }
 
-  // ** TWO PHASE SIGNUPS **
+  // ** TWO PHASE SIGN-UPS **
 
-  // 'twoPhaseSignupProgramTypes' signup times are configured with 'directSignupPhaseStart'
+  // 'twoPhaseSignupProgramTypes' sign-up times are configured with 'directSignupPhaseStart'
   if (twoPhaseSignupProgramTypes.includes(programItem.programType)) {
     const startTime = getProgramItemStartTime(programItem);
     const directSignupStart = dayjs(startTime).subtract(
@@ -114,10 +114,10 @@ export const getDirectSignupStartTime = (programItem: ProgramItem): Dayjs => {
     );
 
     // If event starts at 15:00, 'directSignupPhaseStart' is 2h and 'phaseGap' is 15min
-    //   Start time 15:00 -> signup start 13:00 -> fix to 15:00
-    //   Start time 16:00 -> signup start 14:00 -> fix to 15:00
-    //   Start time 17:00 -> signup start 15:15 -> fix to 15:00
-    //   Start time 18:00 -> signup start 16:15 -> this is fine
+    //   Start time 15:00 -> sign-up start 13:00 -> fix to 15:00
+    //   Start time 16:00 -> sign-up start 14:00 -> fix to 15:00
+    //   Start time 17:00 -> sign-up start 15:15 -> fix to 15:00
+    //   Start time 18:00 -> sign-up start 16:15 -> this is fine
     const signupsBeforeThisStartAtEventStart = dayjs(eventStartTime).add(
       1,
       "hour",
@@ -135,13 +135,13 @@ export const getDirectSignupStartTime = (programItem: ProgramItem): Dayjs => {
     return directSignupStartWithPhaseGap;
   }
 
-  // ** ROLLING DIRECT SIGNUP **
+  // ** ROLLING DIRECT SIGN-UP **
 
   if (rollingDirectSignupProgramTypes.includes(programItem.programType)) {
     return getRollingDirectSignupStartTime(programItem, eventStartTime);
   }
 
-  // ** DIRECT SIGNUP WINDOWS **
+  // ** DIRECT SIGN-UP WINDOWS **
 
   // Other program types use "directSignupWindows" config
   const signupWindowsForProgramType = directSignupWindows

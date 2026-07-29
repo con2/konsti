@@ -29,7 +29,7 @@ export const getRandomAndPadgInput = (
     lotterySignups,
   );
 
-  // Get group creators, selected users are group creators since group members don't have signups yet
+  // Get group creators, selected users are group creators since group members don't have sign-ups yet
   const groupCreators = getGroupCreators(users, startingProgramItems);
 
   // Get group members based on group creators

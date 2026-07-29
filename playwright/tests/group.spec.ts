@@ -59,7 +59,7 @@ test("Can create and join a group and receive a shared lottery result", async ({
   const groupCode = await groupPage.createGroup();
   await expect(groupPage.main).toContainText("1) test1 (group creator)");
 
-  // Lottery signup to program item
+  // Lottery sign-up to program item
   await groupPage.navigation.gotoProgram();
   await programList.gotoAllProgram();
   const firstProgramItem = programList.firstItem();
@@ -77,7 +77,7 @@ test("Can create and join a group and receive a shared lottery result", async ({
   await expect(groupPage.main).toContainText("1) test1 (group creator)");
   await expect(groupPage.main).toContainText("2) test2");
 
-  // Check group creator lottery signups are visible
+  // Check group creator lottery sign-ups are visible
   await groupPage.navigation.gotoProgram();
   const lotterySignups = programList.lotterySignupList;
   await expect(lotterySignups).toContainText(
@@ -208,7 +208,7 @@ test("Group member cannot lottery signup but group creator can", async ({
   const groupPage = new GroupPage(page);
   const programList = new ProgramListPage(page);
 
-  // Creator creates the group and sees the lottery signup button
+  // Creator creates the group and sees the lottery sign-up button
   await login(page, request, { username: "test1", password: "test" });
   await page.goto("/");
   const groupCode = await groupPage.createGroup();
@@ -290,7 +290,7 @@ test("Show error when group is bigger than the program item's maximum attendance
   await expect(firstProgramItem.container).toContainText(
     "The group is bigger than the maximum number of attendees",
   );
-  // The signup form did not open
+  // The sign-up form did not open
   await expect(firstProgramItem.confirmButton).toBeHidden();
 });
 
@@ -298,7 +298,7 @@ test("Upcoming direct signups block creating and joining a group", async ({
   page,
   request,
 }) => {
-  // Both program items are in the direct signup phase at event start time
+  // Both program items are in the direct sign-up phase at event start time
   // (Fri 15:00 GMT+3), starting Fri 16:00 and Fri 17:00 local time
   const startTime1 = dayjs(config.event().eventStartTime)
     .add(1, "hour")
@@ -350,7 +350,7 @@ test("Upcoming direct signups block creating and joining a group", async ({
   await page.goto("/");
   await groupPage.goto();
 
-  // Blocking signups are listed with start times in chronological order
+  // Blocking sign-ups are listed with start times in chronological order
   await expect(groupPage.main).toContainText(
     "You have already signed up to these upcoming program items:",
   );

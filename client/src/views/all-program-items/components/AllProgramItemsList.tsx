@@ -90,13 +90,13 @@ export const AllProgramItemsList = ({
     (state) => state.admin.signupQuestions,
   );
 
-  // Index signups by program item id so each row is an O(1) lookup instead of
-  // scanning the full signups array (which made the list render O(n^2))
+  // Index sign-ups by program item id so each row is an O(1) lookup instead of
+  // scanning the full sign-ups array (which made the list render O(n^2))
   const signupsByProgramItemId = new Map(
     signups.map((signup) => [signup.programItemId, signup.users]),
   );
 
-  // Index the first public signup question per program item id
+  // Index the first public sign-up question per program item id
   const publicSignupQuestionByProgramItemId = new Map<string, SignupQuestion>();
   for (const signupQuestion of signupQuestions) {
     if (

@@ -30,7 +30,7 @@ test("Group member signing up to a 'signup always open' program item stays in th
   await addProgramItems(request, [
     {
       ...testProgramItem,
-      // Lottery program type with the pre-convention week tag makes 'signup always open'
+      // Lottery program type with the pre-convention week tag makes 'sign-up always open'
       programType: config.event().twoPhaseSignupProgramTypes[0],
       tags: [Tag.PRE_CONVENTION_WEEK],
       startTime,
@@ -88,7 +88,7 @@ test("Group member direct signing up to a normal program item is removed from th
   page,
   request,
 }) => {
-  // Program item is in the direct signup phase at event start time
+  // Program item is in the direct sign-up phase at event start time
   const startTime = dayjs(config.event().eventStartTime)
     .add(1, "hour")
     .startOf("hour")

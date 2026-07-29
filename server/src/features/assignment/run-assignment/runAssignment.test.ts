@@ -163,7 +163,7 @@ describe("Assignment with valid data", () => {
     // SECOND RUN
 
     // One hour after the first slot: attendees assigned in the first run are still in
-    // their 3h program items, so their overlapping lottery signups have been removed
+    // their 3h program items, so their overlapping lottery sign-ups have been removed
     const startTime2 = dayjs(eventStartTime)
       .add(firstLotterySignupSlot + 1, "hours")
       .toISOString();
@@ -203,8 +203,8 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
     });
 
-    // ProgramItem1: 14:00 direct signup LARP
-    // ProgramItem2: 14:00 lottery signup TABLETOP_RPG -> replaces ProgramItem1
+    // ProgramItem1: 14:00 direct sign-up LARP
+    // ProgramItem2: 14:00 lottery sign-up TABLETOP_RPG -> replaces ProgramItem1
     const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
     const assignmentTime = testProgramItem.startTime;
 
@@ -229,7 +229,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       ],
     });
 
-    // User has previous direct LARP signup - this should be replaced by assignment result
+    // User has previous direct LARP sign-up - this should be replaced by assignment result
     await saveDirectSignup(mockPostDirectSignupRequest);
     const signupsBeforeUpdate = unsafelyUnwrap(await findDirectSignups());
 
@@ -298,7 +298,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       lotterySignups: [{ ...mockLotterySignups[0], priority: 2 }],
     });
 
-    // This signup should not be removed even if start time is same as assignment time
+    // This sign-up should not be removed even if start time is same as assignment time
     await saveDirectSignup({
       ...mockPostDirectSignupRequest2,
       username: mockUser2.username,
@@ -464,7 +464,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       ],
     });
 
-    // This signup should not be removed even if start time is same as assignment time
+    // This sign-up should not be removed even if start time is same as assignment time
     await saveDirectSignup({
       ...mockPostDirectSignupRequest2,
       username: mockUser2.username,
@@ -512,8 +512,8 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
   });
 
   test("should update previous signup from moved program item with assignment signup if user has updated result", async () => {
-    // ProgramItem1: 14:00 direct signup -> program item moved 15:00
-    // ProgramItem2: 15:00 lottery signup -> replaces ProgramItem1
+    // ProgramItem1: 14:00 direct sign-up -> program item moved 15:00
+    // ProgramItem2: 15:00 lottery sign-up -> replaces ProgramItem1
     const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
 
     const assignmentTime = dayjs(testProgramItem.startTime)
@@ -539,7 +539,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       ],
     });
 
-    // User has previous signup from moved program item - this should be replaced by assignment result
+    // User has previous sign-up from moved program item - this should be replaced by assignment result
     await saveDirectSignup(mockPostDirectSignupRequest);
 
     await ProgramItemModel.updateOne(
@@ -586,8 +586,8 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
   });
 
   test("should not remove previous signup from moved program item if user doesn't have updated result", async () => {
-    // User1, programItem1: 14:00 direct signup -> program item moved 15:00
-    // User2, programItem2: 15:00 lottery signup -> doesn't affect user1 signup
+    // User1, programItem1: 14:00 direct sign-up -> program item moved 15:00
+    // User2, programItem2: 15:00 lottery sign-up -> doesn't affect user1 sign-up
     const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
 
     const assignmentTime = dayjs(testProgramItem.startTime)
@@ -605,7 +605,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     await saveUser(mockUser);
     await saveUser(mockUser2);
 
-    // User 1 has previous signup from moved program item - this signup should not be removed
+    // User 1 has previous sign-up from moved program item - this sign-up should not be removed
     await saveDirectSignup(mockPostDirectSignupRequest);
 
     await ProgramItemModel.updateOne(
@@ -713,7 +713,7 @@ describe("Assignment with first time bonus", () => {
         .toISOString(),
     });
 
-    // Non-lottery signup (tournament) should not affect the bonus
+    // Non-lottery sign-up (tournament) should not affect the bonus
     await saveDirectSignup({
       username: mockUser2.username,
       directSignupProgramItemId: tournamentProgramItemId,
@@ -725,7 +725,7 @@ describe("Assignment with first time bonus", () => {
       priority: DIRECT_SIGNUP_PRIORITY,
     });
 
-    // 'directSignupAlwaysOpen' signup should not affect the bonus
+    // 'directSignupAlwaysOpen' sign-up should not affect the bonus
     await saveDirectSignup({
       username: mockUser2.username,
       directSignupProgramItemId: directSignupAlwaysOpenId,
@@ -902,7 +902,7 @@ test("Should write a snapshot of the lottery groups to the results collection", 
   await saveUser({ ...mockUser, groupCode, isGroupCreator: true });
   await saveUser({ ...mockUser2, groupCode });
 
-  // Only the group creator stores lottery signups; members inherit them
+  // Only the group creator stores lottery sign-ups; members inherit them
   await saveLotterySignups({
     username: mockUser.username,
     lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
@@ -988,7 +988,7 @@ test("Should keep a past lottery signup but not let it affect an upcoming lotter
   await saveProgramItems([pastProgramItem, currentProgramItem]);
   await saveUser(mockUser);
 
-  // User keeps a leftover lottery signup for the past item and also has one for the current item
+  // User keeps a leftover lottery sign-up for the past item and also has one for the current item
   await saveLotterySignups({
     username: mockUser.username,
     lotterySignups: [
@@ -1012,7 +1012,7 @@ test("Should keep a past lottery signup but not let it affect an upcoming lotter
     }),
   );
 
-  // Only the current item is assigned; the past signup is ignored by the upcoming lottery
+  // Only the current item is assigned; the past sign-up is ignored by the upcoming lottery
   expect(assignResults.status).toEqual(AssignmentResultStatus.SUCCESS);
   expect(assignResults.results).toHaveLength(1);
   expect(assignResults.results[0]).toMatchObject({
@@ -1024,7 +1024,7 @@ test("Should keep a past lottery signup but not let it affect an upcoming lotter
     },
   });
 
-  // The past lottery signup is preserved for data accuracy, not removed by the run
+  // The past lottery sign-up is preserved for data accuracy, not removed by the run
   const userAfterSave = unsafelyUnwrap(await findUser(mockUser.username));
   const pastSignup = userAfterSave?.lotterySignups.find(
     (signup) => signup.programItemId === pastProgramItem.programItemId,
@@ -1045,7 +1045,7 @@ test("Should not fail assignment or skip overlap cleanup when notification queue
   });
 
   // testProgramItem runs 14:00-18:00, testProgramItem2 starts 15:00 inside it,
-  // so winning the first must remove the overlapping lottery signup to the second
+  // so winning the first must remove the overlapping lottery sign-up to the second
   await saveProgramItems([
     { ...testProgramItem, minAttendance: 1, maxAttendance: 1 },
     { ...testProgramItem2, minAttendance: 1, maxAttendance: 1 },
@@ -1083,7 +1083,7 @@ test("Should not fail assignment or skip overlap cleanup when notification queue
   expect(wonSignup?.userSignups).toHaveLength(1);
   expect(wonSignup?.userSignups[0].username).toEqual(mockUser.username);
 
-  // The overlapping lottery signup was removed despite the queue failure
+  // The overlapping lottery sign-up was removed despite the queue failure
   const userAfterRun = unsafelyUnwrap(await findUser(mockUser.username));
   expect(
     userAfterRun?.lotterySignups.map((signup) => signup.programItemId),
@@ -1115,7 +1115,7 @@ test("Should not fail assignment or skip overlap cleanup when event log writes f
   });
 
   // testProgramItem runs 14:00-18:00, testProgramItem2 starts 15:00 inside it,
-  // so winning the first must remove the overlapping lottery signup to the second
+  // so winning the first must remove the overlapping lottery sign-up to the second
   await saveProgramItems([
     { ...testProgramItem, minAttendance: 1, maxAttendance: 1 },
     { ...testProgramItem2, minAttendance: 1, maxAttendance: 1 },
@@ -1174,7 +1174,7 @@ test("Should not fail assignment or skip overlap cleanup when event log writes f
   expect(wonSignup?.userSignups).toHaveLength(1);
   expect(wonSignup?.userSignups[0].username).toEqual(mockUser.username);
 
-  // The overlapping lottery signup was removed despite the event log failures
+  // The overlapping lottery sign-up was removed despite the event log failures
   const userAfterRun = unsafelyUnwrap(await findUser(mockUser.username));
   expect(
     userAfterRun?.lotterySignups.map((signup) => signup.programItemId),
@@ -1215,7 +1215,7 @@ test("Should not fail assignment or skip overlap cleanup when email queueing fai
   });
 
   // testProgramItem runs 14:00-18:00, testProgramItem2 starts 15:00 inside it,
-  // so winning the first must remove the overlapping lottery signup to the second
+  // so winning the first must remove the overlapping lottery sign-up to the second
   await saveProgramItems([
     { ...testProgramItem, minAttendance: 1, maxAttendance: 1 },
     { ...testProgramItem2, minAttendance: 1, maxAttendance: 1 },
@@ -1253,7 +1253,7 @@ test("Should not fail assignment or skip overlap cleanup when email queueing fai
   expect(wonSignup?.userSignups).toHaveLength(1);
   expect(wonSignup?.userSignups[0].username).toEqual(mockUser.username);
 
-  // The overlapping lottery signup was removed despite the queueing failure
+  // The overlapping lottery sign-up was removed despite the queueing failure
   const userAfterRun = unsafelyUnwrap(await findUser(mockUser.username));
   expect(
     userAfterRun?.lotterySignups.map((signup) => signup.programItemId),

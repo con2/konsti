@@ -42,7 +42,7 @@ Redux Toolkit, **thunk-based** (not RTK Query). The store is configured in **`cl
 - Slice files export their reducer, actions, and memoized selectors (`createSelector`).
 - Thunk result conventions: user-facing thunks return `Promise<SomeErrorMessage | undefined>` (truthy = failure, a translation key the caller renders); the background data-load thunks consumed by the polling loop return `Promise<boolean>` (truthy = success). Don't mix the two polarities up at call sites.
 - Logout is handled by a `rootReducer` wrapper that resets most slices but preserves a few (e.g. `admin`, `allProgramItems`, `testSettings`).
-- A Redux/Sentry enhancer scrubs large or private payloads (e.g. signup messages) before they reach Sentry.
+- A Redux/Sentry enhancer scrubs large or private payloads (e.g. sign-up messages) before they reach Sentry.
 
 ## Services / API Layer
 

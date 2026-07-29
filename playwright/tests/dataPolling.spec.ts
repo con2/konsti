@@ -94,7 +94,7 @@ test("Periodic data poll hides signup when direct signup ends", async ({
   await programList.gotoAllProgram();
   await programList.waitForItems();
 
-  // Direct signup is open when the page loads
+  // Direct sign-up is open when the page loads
   const firstProgramItem = programList.firstItem();
   await expect(firstProgramItem.signUpButton).toBeVisible();
 

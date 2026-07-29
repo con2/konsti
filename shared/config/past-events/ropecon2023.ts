@@ -115,7 +115,7 @@ const eventConfig: Partial<EventConfig> = {
     ],
   },
 
-  // These program items have their signup always open even if signup mode is set to lottery
+  // These program items have their sign-up always open even if sign-up mode is set to lottery
   directSignupAlwaysOpenIds: [],
 
   // Add these to Konsti under 'other' program type
@@ -131,7 +131,7 @@ const eventConfig: Partial<EventConfig> = {
     "p7043", // Ihmissusipeli (Werewolfes of Millers Hollow)
   ],
 
-  // These program items are imported to Konsti but don't have Konsti signup
+  // These program items are imported to Konsti but don't have Konsti sign-up
   noKonstiSignupIds: [
     "p6512", // RPG: Charlie ei surffaa - Fri
     "p7023", // RPG: Charlie ei surffaa - Sat
@@ -237,7 +237,7 @@ const eventConfig: Partial<EventConfig> = {
     "p6990", // Pikamaalauskilpailu / Speed Painting Contest 4 (La/Sat)
   ],
 
-  // Two phase signup settings
+  // Two phase sign-up settings
   preSignupStart: 60 * 4, // minutes
   directSignupPhaseStart: 60 * 2, // minutes
   phaseGap: 15, // minutes

@@ -1,7 +1,7 @@
 import { Locator } from "@playwright/test";
 import { BasePage } from "playwright/pages/BasePage";
 
-// The admin console: open/close the app, signup strategy and assignment runs
+// The admin console: open/close the app, sign-up strategy and assignment runs
 export class AdminPage extends BasePage {
   get openKonstiButton(): Locator {
     return this.page.getByRole("button", { name: "Open Konsti" });

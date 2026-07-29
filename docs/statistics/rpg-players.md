@@ -1,6 +1,6 @@
 # Number of role-players
 
-Distinct users who engaged with tabletop RPGs at each event — either by submitting a lottery signup or by direct-signing up to an RPG, regardless of whether they ended up with a seat. Each user counts once per event.
+Distinct users who engaged with tabletop RPGs at each event — either by submitting a lottery sign-up or a direct sign-up to an RPG, regardless of whether they ended up with a seat. Each user counts once per event.
 
 **Across all events combined**: **7900** distinct role-player slots (counting each unique user once per event), of which **6342** got at least one seat (80.3%). Total RPG seat assignments: **9883**.
 
@@ -42,5 +42,5 @@ Distinct users who engaged with tabletop RPGs at each event — either by submit
 ## Notes
 
 - Solmukohta 2024 hosted no tabletop RPGs (only larps and workshops).
-- Ropecon 2021 was a remote / COVID-era convention with direct signup only — no lottery, so role-player count equals seated count there.
-- Tracon (2024 / 2025) used direct signup only for RPGs — same equality holds.
+- Ropecon 2021 was a remote / COVID-era convention with direct sign-up only — no lottery, so role-player count equals seated count there.
+- Tracon (2024 / 2025) used direct sign-up only for RPGs — same equality holds.

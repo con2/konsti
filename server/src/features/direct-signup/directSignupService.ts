@@ -75,8 +75,8 @@ export const storeDirectSignup = async (
     };
   }
 
-  // Invalid program items have their signup disabled in the client, but a
-  // signup can still arrive from a stale or bugged page
+  // Invalid program items have their sign-up disabled in the client, but a
+  // sign-up can still arrive from a stale or bugged page
   if (!getProgramItemValidity(programItem).allValuesValid) {
     return {
       message: "Program item is missing required information",
@@ -96,7 +96,7 @@ export const storeDirectSignup = async (
   const settings = settingsResult.value;
 
   // Hidden program items are only filtered from the client's list view, so a
-  // signup for one can still arrive from a stale page or a direct link
+  // sign-up for one can still arrive from a stale page or a direct link
   if (settings.hiddenProgramItemIds.includes(directSignupProgramItemId)) {
     return {
       message: "Program item is hidden",
@@ -138,10 +138,10 @@ export const storeDirectSignup = async (
   const newDirectSignup: SignupRepositoryAddSignup = {
     ...signupRequest,
     username,
-    // User-made direct signups are always first-come-first-served; the priority is set
+    // User-made direct sign-ups are always first-come-first-served; the priority is set
     // here rather than trusted from the request
     priority: DIRECT_SIGNUP_PRIORITY,
-    // signedToStartTime can be parent-resolved; direct signups store parent time for lottery re-run cleanup
+    // signedToStartTime can be parent-resolved; direct sign-ups store parent time for lottery re-run cleanup
     signedToStartTime: parentStartTime ?? programItem.startTime,
     signupTime: timeNow.toISOString(),
   };
@@ -175,8 +175,8 @@ export const storeDirectSignup = async (
   );
 
   if (newSignup) {
-    // Group member direct signup removes them from the group, close group if group creator.
-    // The signup already persisted, so a group-leave failure must not fail the request —
+    // Group member direct sign-up removes them from the group, close group if group creator.
+    // The sign-up already persisted, so a group-leave failure must not fail the request —
     // log it and still report success; the group state self-corrects on the next poll
     let leftGroup = false;
     if (isLotterySignupProgramItem(programItem)) {
@@ -200,8 +200,8 @@ export const storeDirectSignup = async (
         programItemId: signup.programItemId,
         priority: newSignup.priority,
         signedToStartTime: newSignup.signedToStartTime,
-        // A private signup question only hides the answer from other attendees:
-        // the user's own signup keeps it so the UI can show it back to them
+        // A private sign-up question only hides the answer from other attendees:
+        // the user's own sign-up keeps it so the UI can show it back to them
         message: newSignup.message,
       },
       leftGroup,

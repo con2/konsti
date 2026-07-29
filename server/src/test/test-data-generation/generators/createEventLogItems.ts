@@ -10,10 +10,10 @@ import { EventLogAction } from "shared/types/models/eventLog";
 import { NewEventLogItem } from "shared/types/api/eventLog";
 import { config } from "shared/config";
 
-// Simulate lottery results: for each start time a user has lottery signups for,
-// they either win a spot (a newAssignment message plus the direct signup the
+// Simulate lottery results: for each start time a user has lottery sign-ups for,
+// they either win a spot (a newAssignment message plus the direct sign-up the
 // real assignment would create) or lose (a noAssignment message). This keeps
-// the event log consistent with the signups shown in My Program
+// the event log consistent with the sign-ups shown in My Program
 export const createEventLogItems = async (): Promise<void> => {
   const programItems = unsafelyUnwrap(await findProgramItems());
   const programItemsById = new Map(
@@ -59,7 +59,7 @@ export const createEventLogItems = async (): Promise<void> => {
       const saveResult = await saveDirectSignup({
         username: user.username,
         directSignupProgramItemId: wonSignup.programItemId,
-        // Direct signups store the parent-resolved start time
+        // Direct sign-ups store the parent-resolved start time
         signedToStartTime:
           startTimesByParentIds.get(wonProgramItem.parentId) ??
           wonProgramItem.startTime,
@@ -69,7 +69,7 @@ export const createEventLogItems = async (): Promise<void> => {
       });
 
       // The program item can already be full of earlier winners - the slot is
-      // then a loss, so the assignment message never points at a missing signup
+      // then a loss, so the assignment message never points at a missing sign-up
       const userGotIn =
         saveResult.ok &&
         saveResult.value.userSignups.some(

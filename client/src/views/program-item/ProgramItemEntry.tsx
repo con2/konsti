@@ -115,8 +115,8 @@ export const ProgramItemEntry = memo(function ProgramItemEntryComponent({
   );
 
   const showCancelledMessage = cancelled;
-  // After direct signup has ended, only signed-up users have content to show
-  // in the signup section (the admission ticket link)
+  // After direct sign-up has ended, only signed-up users have content to show
+  // in the sign-up section (the admission ticket link)
   const showSignupSection =
     allValuesValid &&
     !cancelled &&

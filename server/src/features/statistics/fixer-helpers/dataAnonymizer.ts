@@ -95,7 +95,7 @@ export const anonymizeData = async (
     user.email = user.email === "" ? "" : "<redacted>";
   }
 
-  // Remove signup message answers
+  // Remove sign-up message answers
   for (const signup of directSignups) {
     for (const userSignup of signup.userSignups) {
       if (userSignup.message !== "") {

@@ -80,7 +80,7 @@ test("The invalid query parameter lists only program items missing required info
       ...testProgramItem,
       programItemId: "invalid-item",
       title: "Invalid Program Item",
-      // Missing max attendance makes a Konsti signup item invalid
+      // Missing max attendance makes a Konsti sign-up item invalid
       minAttendance: 2,
       maxAttendance: 0,
       startTime: dayjs(config.event().eventStartTime)

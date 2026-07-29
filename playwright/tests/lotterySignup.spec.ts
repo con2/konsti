@@ -52,7 +52,7 @@ test("Add lottery signup", async ({ page, request }) => {
   // Navigate to program list tab
   await programList.gotoAllProgram();
 
-  // Lottery signup to first program item
+  // Lottery sign-up to first program item
   await programList.waitForItems();
   const firstProgramItem = programList.firstItem();
 
@@ -62,7 +62,7 @@ test("Add lottery signup", async ({ page, request }) => {
   await firstProgramItem.lotterySignup();
   await firstProgramItem.confirmLotterySignup();
 
-  // Go to My Program and check lottery signup program item title
+  // Go to My Program and check lottery sign-up program item title
   await programList.gotoMyProgram();
 
   const programItemTitle = await programList.lotterySignupList
@@ -131,7 +131,7 @@ test("Receive spot in lottery signup", async ({ page, request }) => {
     /You were assigned to the .* Test program item./,
   );
 
-  // Check lottery signup is still present
+  // Check lottery sign-up is still present
   await programList.navigation.gotoProgram();
   const lotterySignups = programList.lotterySignupList;
   await expect(lotterySignups.getByTestId("program-item-title")).toContainText(
@@ -198,7 +198,7 @@ test("Did not receive spot in lottery signup", async ({ page, request }) => {
     /Spots for program items at .* were randomized. Unfortunately, we couldn't fit you into any of your chosen program items./,
   );
 
-  // Check lottery signup is still present
+  // Check lottery sign-up is still present
   await programList.navigation.gotoProgram();
   const lotterySignups = programList.lotterySignupList;
   await expect(lotterySignups.getByTestId("program-item-title")).toContainText(
@@ -318,8 +318,8 @@ test("Receive seat from each lottery program type in separate time slots", async
   };
 
   // One program item per lottery program type in consecutive lottery slots.
-  // Each slot's lottery signup window is [start - 4h, start - 2h], so the test
-  // time is advanced to the window start before each signup
+  // Each slot's lottery sign-up window is [start - 4h, start - 2h], so the test
+  // time is advanced to the window start before each sign-up
   const slots = [4, 6, 8].map((hoursFromEventStart, index) => {
     const programType =
       twoPhaseSignupProgramTypes[index % twoPhaseSignupProgramTypes.length];
@@ -346,7 +346,7 @@ test("Receive seat from each lottery program type in separate time slots", async
       startTime: slot.startTime,
       endTime: dayjs(slot.startTime).add(1, "hour").toISOString(),
       // Keep items short so consecutive slots don't overlap: with the OVERLAP
-      // removal strategy a longer win would drop the later lottery signups
+      // removal strategy a longer win would drop the later lottery sign-ups
       mins: 60,
       // Adjust min/max so user will get the spot in every slot
       minAttendance: 1,
@@ -362,7 +362,7 @@ test("Receive seat from each lottery program type in separate time slots", async
 
   const programList = new ProgramListPage(page);
 
-  // Lottery signup to each program item in its own signup window
+  // Lottery sign-up to each program item in its own sign-up window
   for (const slot of slots) {
     await postTestSettings(request, { testTime: slot.signupTime });
     await page.goto("/");
@@ -402,7 +402,7 @@ test("Receive seat from each lottery program type in separate time slots", async
     );
   }
 
-  // All three seats show as direct signups in My Program
+  // All three seats show as direct sign-ups in My Program
   await programList.navigation.gotoProgram();
   await programList.gotoMyProgram();
   for (const slot of slots) {
@@ -451,13 +451,13 @@ test("Cancel lottery signup on program list", async ({ page, request }) => {
   await firstProgramItem.lotterySignup();
   await firstProgramItem.confirmLotterySignup();
 
-  // Card shows the current lottery signup instead of the signup button
+  // Card shows the current lottery sign-up instead of the sign-up button
   await expect(firstProgramItem.container).toContainText(
     "This role-playing game is priority 1 on your lottery sign-ups.",
   );
   await expect(firstProgramItem.lotterySignupButton).toBeHidden();
 
-  // Cancel the signup on the card
+  // Cancel the sign-up on the card
   await firstProgramItem.cancelSignup();
   await firstProgramItem.confirmCancellation();
 
@@ -506,7 +506,7 @@ test("Show limit message when three lottery signups in time slot", async ({
     testTime: config.event().eventStartTime,
   });
 
-  // Seed the first two signups in the time slot on the background
+  // Seed the first two sign-ups in the time slot on the background
   await testPostLotterySignup(request, "test1", {
     programItemId: "lottery-item-0",
     priority: 1,
@@ -524,12 +524,12 @@ test("Show limit message when three lottery signups in time slot", async ({
   await programList.gotoAllProgram();
   await programList.waitForItems();
 
-  // Third signup in the same time slot through the UI
+  // Third sign-up in the same time slot through the UI
   const thirdProgramItem = programList.itemByTitle(titles[2]);
   await thirdProgramItem.lotterySignup();
   await thirdProgramItem.confirmLotterySignup();
 
-  // The fourth item in the slot shows the limit message and no signup button
+  // The fourth item in the slot shows the limit message and no sign-up button
   const fourthProgramItem = programList.itemByTitle(titles[3]);
   await expect(fourthProgramItem.container).toContainText(
     "You can select up to three items for the time slot.",

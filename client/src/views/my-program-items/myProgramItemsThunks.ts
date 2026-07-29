@@ -132,7 +132,7 @@ export const submitPostDirectSignup = (
       }
     }
 
-    // Update current signups for program item
+    // Update current sign-ups for program item
     dispatch(
       submitUpdateDirectSignupAsync({
         programItemId: signupResponse.allSignups.programItemId,
@@ -143,7 +143,7 @@ export const submitPostDirectSignup = (
       }),
     );
 
-    // Group member direct signup removes them from the group, close group if group creator
+    // Group member direct sign-up removes them from the group, close group if group creator
     if (signupResponse.leftGroup) {
       dispatch(
         submitUpdateGroupCodeAsync({ groupCode: "0", isGroupCreator: false }),
@@ -151,12 +151,12 @@ export const submitPostDirectSignup = (
       dispatch(submitUpdateGroupAsync([]));
     }
 
-    // Show error if signup failed, ie. program item is full
+    // Show error if sign-up failed, ie. program item is full
     if (!signupResponse.directSignup) {
       return PostDirectSignupErrorMessage.PROGRAM_ITEM_FULL;
     }
 
-    // If signup success, update for user
+    // If sign-up success, update for user
     dispatch(submitPostDirectSignupAsync(signupResponse.directSignup));
   };
 };

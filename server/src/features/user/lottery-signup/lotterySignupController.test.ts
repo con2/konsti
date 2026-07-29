@@ -28,7 +28,7 @@ import { SignupType, State } from "shared/types/models/programItem";
 let server: Server;
 
 beforeEach(async () => {
-  // Signup start defaults to 'eventStartTime' if before
+  // Sign-up start defaults to 'eventStartTime' if before
   vi.spyOn(config, "event").mockReturnValue({
     ...config.event(),
     eventStartTime: dayjs(testProgramItem.startTime)
@@ -343,7 +343,7 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     );
 
     await saveProgramItems([testProgramItem]);
-    // Group members don't make their own lottery signups; only the creator does
+    // Group members don't make their own lottery sign-ups; only the creator does
     await saveUser({
       ...mockUser,
       groupCode: "group-1",
@@ -368,7 +368,7 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     expect(body.status).toEqual("error");
     expect(body.errorId).toEqual("groupMember");
 
-    // No lottery signup should be saved for a group member
+    // No lottery sign-up should be saved for a group member
     const modifiedUser = unsafelyUnwrap(await findUser(mockUser.username));
     expect(modifiedUser?.lotterySignups).toHaveLength(0);
   });

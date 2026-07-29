@@ -9,7 +9,7 @@ export const tooEarlyForLotterySignup = (programItem: ProgramItem): boolean => {
   // The lottery window is driven by the parent-resolved start time, so use it here too
   const startTime = getProgramItemStartTime(programItem);
 
-  // Return DIRECT for three first hours of event because there is no time for lottery signup
+  // Return DIRECT for three first hours of event because there is no time for lottery sign-up
   // For example, if event starts at 15:00 and 'preSignupStart' is 4h and 'directSignupPhaseStart' is 2h
   //   Start time 15:00 -> lottery 11:00-13:00 -> use direct
   //   Start time 16:00 -> lottery 12:00-14:00 -> use direct

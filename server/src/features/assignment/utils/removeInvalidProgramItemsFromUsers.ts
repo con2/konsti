@@ -60,7 +60,7 @@ export const removeCancelledDeletedProgramItemsFromUsers = async ({
   const usersToNofify: UserToNofify[] = [];
 
   const usersToUpdate = usersResult.value.flatMap((user) => {
-    // LOTTERY SIGNUPS
+    // LOTTERY SIGN-UPS
 
     const classifiedLotterySignups = user.lotterySignups.map(
       (lotterySignup) => {
@@ -70,7 +70,7 @@ export const removeCancelledDeletedProgramItemsFromUsers = async ({
         );
         const cancellationAction = getCancellationAction(foundProgramItem);
 
-        // Valid signups are kept. Invalid ones are preserved only if the item still
+        // Valid sign-ups are kept. Invalid ones are preserved only if the item still
         // exists and its lottery has already run; deleted items are always removed
         const keep =
           cancellationAction === undefined ||
@@ -174,7 +174,7 @@ export const removeCancelledDeletedProgramItemsFromUsers = async ({
   return makeSuccessResult();
 };
 
-// Classifies why a lottery signup program item is invalid, or undefined when it is still valid
+// Classifies why a lottery sign-up program item is invalid, or undefined when it is still valid
 const getCancellationAction = (
   programItem: ProgramItem | undefined,
 ): EventLogAction | undefined => {
@@ -199,7 +199,7 @@ const notifyUsersWithLotterySignupOrFavorite = async (
   programItemTitlesById: Map<string, string>,
 ): Promise<Result<void, MongoDbError>> => {
   const eventUpdates = usersToNofify.flatMap((user) => {
-    // If user has already been notified of program item cancel/delete because of a direct signup, don't resend
+    // If user has already been notified of program item cancel/delete because of a direct sign-up, don't resend
     const userDirectSignups = new Set(
       affectedDirectSignups.flatMap((directSignup) => {
         const found = directSignup.userSignups.some(

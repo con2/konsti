@@ -73,12 +73,12 @@ test("should notify a user about a moved lottery signup and a moved direct signu
   const originalProgramItems = unsafelyUnwrap(await findProgramItems());
 
   await saveUser(mockUser);
-  // Lottery signup for item A
+  // Lottery sign-up for item A
   await saveLotterySignups({
     username: mockUser.username,
     lotterySignups: [mockLotterySignups[0]],
   });
-  // Direct signup for a different item B
+  // Direct sign-up for a different item B
   await saveDirectSignup(mockPostDirectSignupRequest2);
 
   // Move both items
@@ -148,7 +148,7 @@ test("should notify a user only once for a moved item they have both a lottery a
     (eventLogItem) => eventLogItem.action === EventLogAction.PROGRAM_ITEM_MOVED,
   );
 
-  // Same item via both signup types -> a single notification, not two
+  // Same item via both sign-up types -> a single notification, not two
   expect(movedEvents).toHaveLength(1);
   expect(movedEvents?.[0].programItemId).toEqual(testProgramItem.programItemId);
   expect(movedEvents?.[0].programItemStartTime).toEqual(

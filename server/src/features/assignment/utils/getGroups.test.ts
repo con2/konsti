@@ -17,7 +17,7 @@ afterEach(() => {
 });
 
 test("excludes lottery signups for items whose lottery already ran (different start time)", () => {
-  // A leftover signup for an item that already ran is kept on the user but must not
+  // A leftover sign-up for an item that already ran is kept on the user but must not
   // become a preference in a later lottery for a different start time
   const pastStartTime = dayjs(assignmentTime)
     .subtract(2, "hours")

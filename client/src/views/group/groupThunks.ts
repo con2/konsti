@@ -104,8 +104,8 @@ export const submitJoinGroup = (
       }),
     );
 
-    // Joining removes the member's upcoming lottery signups on the server, so refresh the
-    // user's own program items instead of showing the now-deleted signups until the next poll
+    // Joining removes the member's upcoming lottery sign-ups on the server, so refresh the
+    // user's own program items instead of showing the now-deleted sign-ups until the next poll
     await dispatch(submitGetUser(getState().login.username));
   };
 };

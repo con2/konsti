@@ -29,7 +29,7 @@ test("returns undefined when no direct signup occupies the slot", () => {
 
 test("matches a direct signup stored at the parent-resolved start time", () => {
   // The lottery item is batched under a parent whose start time drives the lottery, so the
-  // direct signup for the slot is stored at the parent time, not the item's own start time
+  // direct sign-up for the slot is stored at the parent time, not the item's own start time
   const parentStartTime = "2019-07-26T18:00:00.000Z";
 
   vi.spyOn(config, "event").mockReturnValue({

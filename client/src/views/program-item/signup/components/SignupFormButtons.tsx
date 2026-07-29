@@ -12,7 +12,7 @@ interface Props {
   loading: boolean;
 }
 
-// Both buttons are disabled while a signup request is in flight; confirm is
+// Both buttons are disabled while a sign-up request is in flight; confirm is
 // additionally disabled by form validity
 export const SignupFormButtons = ({
   onConfirm,

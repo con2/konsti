@@ -64,7 +64,7 @@ const getCancelledProgramItems = (
       currentProgramItem.state === State.ACCEPTED &&
       updatedProgramItem.state === State.CANCELLED;
 
-    // Program item no longer using 'konsti' signup type
+    // Program item no longer using 'konsti' sign-up type
     const programItemKonstiSignupRemoved =
       currentProgramItem.signupType === SignupType.KONSTI &&
       updatedProgramItem.signupType !== SignupType.KONSTI;

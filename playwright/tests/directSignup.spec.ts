@@ -44,7 +44,7 @@ test("Add and cancel direct signup", async ({ page, request }) => {
   await programList.gotoAllProgram();
   await programList.selectProgramType("Tabletop RPG");
 
-  // Direct signup to first program item
+  // Direct sign-up to first program item
   await programList.waitForItems();
   const firstProgramItem = programList.firstItem();
 
@@ -53,7 +53,7 @@ test("Add and cancel direct signup", async ({ page, request }) => {
 
   await expect(firstProgramItem.container).toContainText("0/4 sign-ups");
 
-  // Add direct signup to another user on the background
+  // Add direct sign-up to another user on the background
   await testPostDirectSignup(request, "test2", {
     directSignupProgramItemId: testProgramItem.programItemId,
     message: "",
@@ -71,7 +71,7 @@ test("Add and cancel direct signup", async ({ page, request }) => {
   await expect(participantList.nth(0)).toHaveText("test1");
   await expect(participantList.nth(1)).toHaveText("test2");
 
-  // Go to My Program and check direct signup program item title
+  // Go to My Program and check direct sign-up program item title
   await programList.gotoMyProgram();
 
   const programItemTitle = await programList.directSignupList
@@ -80,7 +80,7 @@ test("Add and cancel direct signup", async ({ page, request }) => {
 
   expect(programItemTitle?.trim()).toEqual(directSignupProgramItemTitle);
 
-  // Cancel direct signup on My Program page
+  // Cancel direct sign-up on My Program page
   await programList.cancelSignup();
   await expect(
     programList.directSignupList.getByRole("paragraph"),
@@ -192,13 +192,13 @@ test("Show error when program item full and update participant list", async ({
   await programList.gotoAllProgram();
   await programList.selectProgramType("Tabletop RPG");
 
-  // Direct signup to first program item
+  // Direct sign-up to first program item
   await programList.waitForItems();
   const firstProgramItem = programList.firstItem();
 
   await expect(firstProgramItem.container).toContainText("0/1 sign-ups");
 
-  // Add direct signup to another user on the background
+  // Add direct sign-up to another user on the background
   await testPostDirectSignup(request, "test2", {
     directSignupProgramItemId: testProgramItem.programItemId,
     message: "",
@@ -242,8 +242,8 @@ test("Show no signup controls after direct signup has ended", async ({
     },
   ]);
 
-  // Sign up test1 while direct signup is open, then move time past the start
-  // when direct signup has ended
+  // Sign up test1 while direct sign-up is open, then move time past the start
+  // when direct sign-up has ended
   await postTestSettings(request, {
     testTime: config.event().eventStartTime,
   });
@@ -258,7 +258,7 @@ test("Show no signup controls after direct signup has ended", async ({
   const programList = new ProgramListPage(page);
 
   // Logged out: past program items are only visible in the "All" view,
-  // and the card shows no signup controls or messages
+  // and the card shows no sign-up controls or messages
   await page.goto("/");
   await programList.selectStartingTime("All");
   await programList.waitForItems();
@@ -349,8 +349,8 @@ test("Show no signup button before direct signup opens", async ({
     users: true,
     admin: true,
   });
-  // Rolling direct signup for 'other' program items opens 4 hours before the
-  // program item starts, so at event start this item's signup is not open yet
+  // Rolling direct sign-up for 'other' program items opens 4 hours before the
+  // program item starts, so at event start this item's sign-up is not open yet
   await addProgramItems(request, [
     {
       ...testProgramItem,

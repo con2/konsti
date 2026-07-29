@@ -47,14 +47,14 @@ export const saveUserSignupResults = async ({
   programItems,
 }: SaveUserSignupResultsParams): Promise<Result<void, MongoDbError>> => {
   // Remove previous lottery result for the same start time
-  // This does not remove non-lottery signups or previous signups from moved program items
+  // This does not remove non-lottery sign-ups or previous sign-ups from moved program items
   const delAssignmentSignupsByStartTimeResult =
     await delAssignmentDirectSignupsByStartTime(assignmentTime, programItems);
   if (!delAssignmentSignupsByStartTimeResult.ok) {
     return delAssignmentSignupsByStartTimeResult;
   }
 
-  // Only non-lottery signups and previous signups from moved program items should be remaining
+  // Only non-lottery sign-ups and previous sign-ups from moved program items should be remaining
   const directSignupsByStartTimeResult = await findDirectSignupsByStartTime(
     assignmentTime,
     programItems,
@@ -62,11 +62,11 @@ export const saveUserSignupResults = async ({
   if (!directSignupsByStartTimeResult.ok) {
     return directSignupsByStartTimeResult;
   }
-  // Resolve conflicting existing direct signups
-  // If user has existing signups...
+  // Resolve conflicting existing direct sign-ups
+  // If user has existing sign-ups...
   // ... and new assignment result -> remove existing
   // ... and no new assignment result -> keep existing
-  // A user can hold several signups at the same start time (e.g. an always-open item plus a
+  // A user can hold several sign-ups at the same start time (e.g. an always-open item plus a
   // moved-in one), so remove every one of theirs, not just the first
   const signupsToDelete = results.flatMap((result) =>
     directSignupsByStartTimeResult.value
@@ -87,16 +87,16 @@ export const saveUserSignupResults = async ({
     return {
       username: result.username,
       directSignupProgramItemId: result.assignmentSignup.programItemId,
-      // assignmentTime can be parent-resolved; direct signups store parent time for lottery re-run cleanup
+      // assignmentTime can be parent-resolved; direct sign-ups store parent time for lottery re-run cleanup
       signedToStartTime: assignmentTime,
       signupTime: dayjs().toISOString(),
-      // Signups received from assignment don't have signup messages
+      // Sign-ups received from assignment don't have sign-up messages
       message: "",
       priority: result.assignmentSignup.priority,
     };
   });
 
-  // This might drop some signups if by some error too many signups are passed for a program item
+  // This might drop some sign-ups if by some error too many sign-ups are passed for a program item
   const saveSignupsResult = await saveDirectSignups(newSignups, programItems);
   if (!saveSignupsResult.ok) {
     return saveSignupsResult;
@@ -134,7 +134,7 @@ interface AddAssignmentNotificationsParams {
 
 // The assignment seats are already saved when this runs, so failures are only
 // logged and never returned: an error escaping to the caller would fail the
-// run and skip the overlap lottery signup cleanup
+// run and skip the overlap lottery sign-up cleanup
 const addAssignmentNotifications = async ({
   assignmentTime,
   finalResults,
@@ -241,7 +241,7 @@ const addAssignmentNotifications = async ({
 
   const noAssignmentLotterySignupUsernames = lotterySignupUsernames.flatMap(
     (lotterySignupUsername) => {
-      // Use finalResults so users whose signup was dropped are treated as not assigned
+      // Use finalResults so users whose sign-up was dropped are treated as not assigned
       const userGotAssignment = finalResults.some(
         (result) => result.username === lotterySignupUsername,
       );

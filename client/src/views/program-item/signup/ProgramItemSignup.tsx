@@ -45,7 +45,7 @@ export const ProgramItemSignup = ({
 
   const hasSignedUp = isAlreadyDirectySigned(programItem, directSignups);
 
-  // After direct signup has ended, only signed-up users have content to show
+  // After direct sign-up has ended, only signed-up users have content to show
   // (the admission ticket link). Render nothing rather than an empty element
   if (isDirectSignupOver && !hasSignedUp) {
     return null;

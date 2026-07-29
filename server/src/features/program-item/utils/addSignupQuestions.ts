@@ -16,7 +16,7 @@ export const addSignupQuestions = async (): Promise<void> => {
   });
   await Promise.all(questionPromises);
 
-  // Most tournaments have same private signup question where attendee contact details are asked
+  // Most tournaments have same private sign-up question where attendee contact details are asked
   if (!tournamentSignupQuestion) {
     return;
   }
