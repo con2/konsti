@@ -39,8 +39,8 @@ test("Pre-convention week program item uses direct signup even with lottery prog
     },
   ]);
 
-  // Even with the lottery signup strategy enabled, pre-convention week items
-  // should use direct signup
+  // Even with the lottery sign-up strategy enabled, pre-convention week items
+  // should use direct sign-up
   await postSettings(request, {
     signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
   });
@@ -64,7 +64,7 @@ test("Pre-convention week program item uses direct signup even with lottery prog
 
   const programItemTitle = await firstProgramItem.title.textContent();
 
-  // Direct signup is offered, not lottery signup
+  // Direct sign-up is offered, not lottery sign-up
   await expect(firstProgramItem.signUpButton).toBeVisible();
   await expect(firstProgramItem.lotterySignupButton).toHaveCount(0);
   await expect(firstProgramItem.container).toContainText("0/4 sign-ups");
@@ -75,7 +75,7 @@ test("Pre-convention week program item uses direct signup even with lottery prog
 
   await expect(firstProgramItem.container).toContainText("1/4 sign-ups");
 
-  // The signup lands in the direct signup list, not the lottery signup list
+  // The sign-up lands in the direct sign-up list, not the lottery sign-up list
   await programList.gotoMyProgram();
 
   const directSignupTitle = await programList.directSignupList

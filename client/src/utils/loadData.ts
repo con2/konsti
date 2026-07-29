@@ -108,7 +108,7 @@ export const loadGroupMembers = async (): Promise<boolean> => {
   return true;
 };
 
-// This includes public and private signup messages
+// This includes public and private sign-up messages
 export const loadSignupMessages = async (): Promise<void> => {
   const dispatch: AppDispatch = store.dispatch;
   await dispatch(submitGetSignupMessages());

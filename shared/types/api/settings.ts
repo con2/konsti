@@ -51,7 +51,7 @@ interface GetSettingsError extends ApiError {
 
 export type GetSettingsResponse = GetSettingsResult | GetSettingsError;
 
-// POST signup question
+// POST sign-up question
 
 export const PostSignupQuestionRequestSchema = z.object({
   signupQuestion: SignupQuestionSchema,
@@ -73,7 +73,7 @@ export type PostSignupQuestionResponse =
   | PostSignupQuestionResult
   | PostSignupQuestionError;
 
-// DELETE signup question
+// DELETE sign-up question
 
 export const DeleteSignupQuestionRequestSchema = z.object({
   programItemId: z.string(),

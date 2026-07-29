@@ -52,7 +52,7 @@ import { SignupQuestionType } from "shared/types/models/settings";
 let server: Server;
 
 beforeEach(async () => {
-  // Signup start defaults to 'eventStartTime' if before
+  // Sign-up start defaults to 'eventStartTime' if before
   vi.spyOn(config, "event").mockReturnValue({
     ...config.event(),
     eventStartTime: dayjs(testProgramItem.startTime)
@@ -387,7 +387,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
 
     const body = response.body as PostDirectSignupResult;
     expect(body.status).toEqual("success");
-    // The user's own signup keeps the answer, the public attendee list hides it
+    // The user's own sign-up keeps the answer, the public attendee list hides it
     expect(body.directSignup?.message).toEqual("No peanuts");
     expect(body.allSignups.userSignups).toEqual([
       { username: mockUser.username, message: "" },
@@ -395,7 +395,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
   });
 
   test("should store parent start time as signedToStartTime when program item has parent start time override", async () => {
-    // Direct signups store the parent-resolved start time so lottery re-runs can
+    // Direct sign-ups store the parent-resolved start time so lottery re-runs can
     // clean them up by matching the shared parent time
     const parentStartTime = dayjs(testProgramItem.startTime)
       .add(1, "hour")
@@ -412,7 +412,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
       ]),
     });
 
-    // Signup is open: after the parent-derived direct signup start, before own end time
+    // Sign-up is open: after the parent-derived direct sign-up start, before own end time
     vi.setSystemTime(
       dayjs(testProgramItem.startTime).subtract(30, "minutes").toISOString(),
     );
@@ -499,7 +499,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     await saveUser(mockUser2);
     await saveUser(mockUser3);
 
-    // Save on signup -> one seat left
+    // Save on sign-up -> one seat left
     await saveDirectSignup(mockPostDirectSignupRequest);
 
     const makeRequest = async (user: NewUser): Promise<Test> => {
@@ -516,7 +516,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
         );
     };
 
-    // Save two more signups at the same time -> one should fail and only one signup collection should exist
+    // Save two more sign-ups at the same time -> one should fail and only one sign-up collection should exist
     await Promise.all([makeRequest(mockUser2), makeRequest(mockUser3)]);
 
     const signups = unsafelyUnwrap(await findDirectSignups());
@@ -606,7 +606,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     await saveGroupCreator("group-123", true, mockUser.username);
     await saveGroupCode("group-123", mockUser2.username);
 
-    // Fill the single seat so the group creator's signup below fails
+    // Fill the single seat so the group creator's sign-up below fails
     await saveDirectSignup({
       ...mockPostDirectSignupRequest,
       username: mockUser3.username,
@@ -630,7 +630,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     expect(body.message).toEqual("Program item full");
     expect(body.leftGroup).toEqual(false);
 
-    // The group must remain intact since the signup did not happen
+    // The group must remain intact since the sign-up did not happen
     const creator = unsafelyUnwrap(await findUser(mockUser.username));
     expect(creator?.groupCode).toEqual("group-123");
     expect(creator?.isGroupCreator).toEqual(true);
@@ -640,7 +640,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
   });
 
   test("should not remove user from group when signing up to 'signup always open' program item", async () => {
-    // directSignupAlwaysOpenIds makes the program item 'signup always open'
+    // directSignupAlwaysOpenIds makes the program item 'sign-up always open'
     vi.spyOn(config, "event").mockReturnValue({
       ...config.event(),
       directSignupAlwaysOpenIds: [testProgramItem.programItemId],

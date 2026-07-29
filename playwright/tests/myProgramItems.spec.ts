@@ -42,14 +42,14 @@ test("Cancel lottery signup on My Program page", async ({ page, request }) => {
 
   const programList = new ProgramListPage(page);
 
-  // Lottery signup to first program item
+  // Lottery sign-up to first program item
   await programList.gotoAllProgram();
   await programList.waitForItems();
   const firstProgramItem = programList.firstItem();
   await firstProgramItem.lotterySignup();
   await firstProgramItem.confirm();
 
-  // Cancel the lottery signup on My Program page
+  // Cancel the lottery sign-up on My Program page
   await programList.gotoMyProgram();
   await expect(
     programList.lotterySignupList.getByTestId("program-item-title"),

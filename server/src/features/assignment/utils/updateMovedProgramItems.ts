@@ -42,7 +42,7 @@ export const updateMovedProgramItems = async (
     ]),
   );
 
-  // This will remove lottery signups
+  // This will remove lottery sign-ups
   const removeMovedLotterySignupsResult =
     await removeMovedLotterySignupsAndNotify(
       movedProgramItems,

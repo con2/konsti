@@ -46,7 +46,7 @@ test("joining a group refreshes the user's own lottery signups", async () => {
     }),
   );
 
-  // User has an upcoming lottery signup before joining
+  // User has an upcoming lottery sign-up before joining
   store.dispatch(
     submitGetUserAsync({
       directSignups: [],
@@ -71,7 +71,7 @@ test("joining a group refreshes the user's own lottery signups", async () => {
     message: "",
     results: [],
   });
-  // The server clears the joining member's upcoming lottery signups
+  // The server clears the joining member's upcoming lottery sign-ups
   (getUser as Mock).mockResolvedValue({
     status: "success",
     message: "",

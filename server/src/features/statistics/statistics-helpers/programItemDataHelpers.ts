@@ -32,7 +32,7 @@ const getSignupsByStartTime = (
 
   for (const user of users) {
     // Group members' lotterySignups are deleted on join, so only the creator's
-    // signups represent the whole group; count the group size for creators
+    // sign-ups represent the whole group; count the group size for creators
     const groupSize = user.isGroupCreator
       ? users.filter((groupUser) => groupUser.groupCode === user.groupCode)
           .length
@@ -53,7 +53,7 @@ const getSignupsByStartTime = (
     }
   }
 
-  // logger.info(`Total number of signups by time: \n`, userSignupCountsByTime)
+  // logger.info(`Total number of sign-ups by time: \n`, userSignupCountsByTime)
   return userSignupCountsByTime;
 };
 
@@ -88,7 +88,7 @@ interface SignupTally {
   byPriority: Record<number, number>;
 }
 
-// Aggregate lottery signups and return top program items
+// Aggregate lottery sign-ups and return top program items
 const getTopProgramItems = (
   users: readonly User[],
   programItems: readonly ProgramItem[],

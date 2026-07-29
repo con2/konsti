@@ -88,7 +88,7 @@ const sentryReduxEnhancer = createReduxEnhancer({
         hiddenProgramItemIds: `Hidden program items count: ${state?.admin?.hiddenProgramItemIds?.length}`,
         // Config data - not interesting
         signupQuestions: `Signup questions count: ${state?.admin?.signupQuestions?.length}`,
-        // Contains user signup messages - helper user only
+        // Contains user sign-up messages - helper user only
         signupMessages: `Signup messages count: ${state?.admin?.signupMessages?.length}`,
       },
       myProgramItems: {
@@ -96,7 +96,7 @@ const sentryReduxEnhancer = createReduxEnhancer({
         directSignups: state?.myProgramItems?.directSignups?.map(
           (directSignup) => ({
             ...directSignup,
-            // Remove signup question answers
+            // Remove sign-up question answers
             message: "<Message hidden>",
           }),
         ),

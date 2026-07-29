@@ -47,7 +47,7 @@ export const runGenerators = async (
   const testUsersCount = 5; // Number of test users
 
   // Total program items: newProgramItemsCount
-  const newProgramItemsCount = 10; // How many program items are available for each signup time for each program type
+  const newProgramItemsCount = 10; // How many program items are available for each sign-up time for each program type
 
   if (options.clean) {
     logger.info("* Generator: Clean all data");

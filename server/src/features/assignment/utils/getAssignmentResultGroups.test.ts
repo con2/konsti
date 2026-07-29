@@ -8,7 +8,7 @@ import {
 } from "server/features/assignment/utils/assignmentTestUtils";
 
 test("should snapshot the group and its members that took part in the lottery", () => {
-  // Group creator with lottery signups + two members sharing the group code
+  // Group creator with lottery sign-ups + two members sharing the group code
   const users = getUsers({ count: 3 });
 
   const groups = getAssignmentResultGroups(

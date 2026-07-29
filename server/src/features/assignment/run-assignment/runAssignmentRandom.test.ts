@@ -155,7 +155,7 @@ test("Should adjust attendee limits if there are previous signups from moved pro
   await saveUser(mockUser3);
   await saveUser(mockUser4);
 
-  // ** Save previous signups
+  // ** Save previous sign-ups
 
   // This should remain because of different startTime
   await saveDirectSignup({

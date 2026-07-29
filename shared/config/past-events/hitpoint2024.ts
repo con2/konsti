@@ -45,7 +45,7 @@ const eventConfig: Partial<EventConfig> = {
 
   hideParticipantListProgramTypes: [],
 
-  // These program items have their signup always open even if signup mode is set to lottery
+  // These program items have their sign-up always open even if sign-up mode is set to lottery
   directSignupAlwaysOpenIds: [],
 
   // Add these to Konsti under 'other' program type
@@ -54,7 +54,7 @@ const eventConfig: Partial<EventConfig> = {
   // These program items have hand picked revolving door status
   addRevolvingDoorIds: [],
 
-  // These program items are imported to Konsti but don't have Konsti signup
+  // These program items are imported to Konsti but don't have Konsti sign-up
   noKonstiSignupIds: [],
 
   signupQuestions: [],
@@ -283,12 +283,12 @@ const eventConfig: Partial<EventConfig> = {
   // Require checkbox to be checked before signing up
   entryConditions: [],
 
-  // Two phase signup settings
+  // Two phase sign-up settings
   preSignupStart: 60 * 4, // minutes
   directSignupPhaseStart: 60 * 2, // minutes
   phaseGap: 15, // minutes
 
-  // Use fixed time to open all lottery signups for the whole event
+  // Use fixed time to open all lottery sign-ups for the whole event
   fixedLotterySignupTime: null,
 
   // Default DB values

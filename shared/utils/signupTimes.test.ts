@@ -253,7 +253,7 @@ describe("Pre-convention week direct signup", () => {
 });
 
 describe("Parent start time override via 'startTimesByParentIds'", () => {
-  // Own start time is later than the parent start time, so signup times computed
+  // Own start time is later than the parent start time, so sign-up times computed
   // from the parent start time differ from the ones computed from the own start time
   const ownStartTime = `${saturday}T15:00:00.000Z`; // Sat 18:00 GMT+3
   const parentStartTime = `${saturday}T12:00:00.000Z`; // Sat 15:00 GMT+3

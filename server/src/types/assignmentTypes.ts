@@ -4,7 +4,7 @@ import { Input } from "server/types/resultTypes";
 export interface Group {
   id: id; // Group id
   size: number; // Group size
-  pref: id[]; // Program item lottery signups (program item id)
+  pref: id[]; // Program item lottery sign-ups (program item id)
 }
 
 export interface Event {

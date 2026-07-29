@@ -81,7 +81,7 @@ test("should insert new program item into collection and add new direct signup d
     testProgramItem.programItemId,
   );
 
-  // Direct signup document
+  // Direct sign-up document
   const directSignups = unsafelyUnwrap(await findDirectSignups());
   expect(directSignups).toHaveLength(1);
   expect(directSignups[0].programItemId).toEqual(testProgramItem.programItemId);
@@ -97,7 +97,7 @@ test("should remove program item document and signup document when program item 
   const programItems = unsafelyUnwrap(await findProgramItems());
   expect(programItems).toHaveLength(0);
 
-  // Direct signup document
+  // Direct sign-up document
   const directSignups = unsafelyUnwrap(await findDirectSignups());
   expect(directSignups).toHaveLength(0);
 });
@@ -120,7 +120,7 @@ test("should remove lottery signups and favorites when program item is deleted a
   // This will delete program items
   await saveProgramItems([]);
 
-  // Should have removed favorites and lottery signups
+  // Should have removed favorites and lottery sign-ups
   const user = unsafelyUnwrap(await findUser(mockUser.username));
   expect(user?.favoriteProgramItemIds).toHaveLength(0);
   expect(user?.lotterySignups).toHaveLength(0);
@@ -170,7 +170,7 @@ test("should remove direct signups when program item is deleted and add notifica
   // This will delete program items
   await saveProgramItems([]);
 
-  // Should have removed direct signup documents
+  // Should have removed direct sign-up documents
   const directSignups = unsafelyUnwrap(await findDirectSignups());
   expect(directSignups).toHaveLength(0);
 
@@ -237,7 +237,7 @@ test("should remove lottery signups but keep favorites when program item is canc
   ]);
 
   // Favorites are kept because the item still exists in DB
-  // Lottery signups are removed (lottery hasn't run yet)
+  // Lottery sign-ups are removed (lottery hasn't run yet)
   const user = unsafelyUnwrap(await findUser(mockUser.username));
   expect(user?.favoriteProgramItemIds).toHaveLength(2);
   expect(user?.lotterySignups).toHaveLength(0);
@@ -289,11 +289,11 @@ test("should remove direct signups when program item is cancelled and add notifi
     { ...testProgramItem2, state: State.CANCELLED },
   ]);
 
-  // Should not have removed direct signup documents
+  // Should not have removed direct sign-up documents
   const directSignupDocs = unsafelyUnwrap(await findDirectSignups());
   expect(directSignupDocs).toHaveLength(2);
 
-  // Should have removed direct signups
+  // Should have removed direct sign-ups
   const directSignups = unsafelyUnwrap(
     await findUserDirectSignups(mockUser.username),
   );
@@ -415,7 +415,7 @@ test("should remove lottery signups but not favorites when program item doesn't 
   const user = unsafelyUnwrap(await findUser(mockUser.username));
   // Should have kept favorites
   expect(user?.favoriteProgramItemIds).toHaveLength(2);
-  // Should have removed lottery signups
+  // Should have removed lottery sign-ups
   expect(user?.lotterySignups).toHaveLength(0);
 
   // Should have added new event log items
@@ -468,13 +468,13 @@ test("should keep direct signup when program item programType is changed to non-
     { ...testProgramItem, programType: ProgramType.OTHER },
   ]);
 
-  // Direct signup remains valid — the item still exists and still uses Konsti signup
+  // Direct sign-up remains valid — the item still exists and still uses Konsti sign-up
   const directSignups = unsafelyUnwrap(
     await findUserDirectSignups(mockUser.username),
   );
   expect(directSignups).toHaveLength(1);
 
-  // No notification should be added — direct signups stay valid on a program type change
+  // No notification should be added — direct sign-ups stay valid on a program type change
   const user = unsafelyUnwrap(await findUser(mockUser.username));
   const noLotteryAnymoreEvents = user?.eventLogItems.filter(
     (e) => e.action === EventLogAction.PROGRAM_ITEM_NO_LOTTERY_ANYMORE,
@@ -493,7 +493,7 @@ test("should remove direct signups when program item doesn't use Konsti signup a
     { ...testProgramItem2, signupType: SignupType.OTHER },
   ]);
 
-  // Should have removed direct signups
+  // Should have removed direct sign-ups
   const directSignups = unsafelyUnwrap(
     await findUserDirectSignups(mockUser.username),
   );

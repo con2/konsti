@@ -57,7 +57,7 @@ test("should still give the first-time bonus when a member's only direct signup 
 test("should strip the first-time bonus for a first-come-first-served direct signup at the current start time", () => {
   const [user] = getUsers({ count: 1 });
 
-  // A priority-0 (first-come-first-served) direct signup is a real signup the user made, not
+  // A priority-0 (first-come-first-served) direct sign-up is a real sign-up the user made, not
   // this lottery's output, so it should still count as "previous" even at the current time
   const directSignups: DirectSignupsForProgramItem[] = [
     {
@@ -169,7 +169,7 @@ test("should add the additional first-time bonus for a member with a previous fa
     assignmentTime,
   );
 
-  // No previous direct signup -> first-time bonus, plus a previous failed lottery -> additional bonus
+  // No previous direct sign-up -> first-time bonus, plus a previous failed lottery -> additional bonus
   expect(bonus).toEqual(
     config.server().firstSignupBonus +
       config.server().additionalFirstSignupBonus,

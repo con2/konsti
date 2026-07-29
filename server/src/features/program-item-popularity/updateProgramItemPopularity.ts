@@ -67,7 +67,7 @@ export const updateProgramItemPopularity = async (): Promise<
     (startTime) => dayjs(startTime).isSameOrAfter(timeNowResult.value),
   );
 
-  // TODO: Only update popularity for startTimes where lottery signup is open
+  // TODO: Only update popularity for startTimes where lottery sign-up is open
   const assignmentResults = futureStartTimes.map((startTime) => {
     const result = runAssignmentAlgorithm(
       config.event().assignmentAlgorithm,

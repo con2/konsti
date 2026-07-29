@@ -25,12 +25,12 @@ Guidance for working in `shared/`. See the [root CLAUDE.md](../CLAUDE.md) for th
 ## Utilities (`shared/utils`)
 
 - **`result.ts`** — the `Result<T, E>` tagged union and its constructors (see below).
-- **`signupTimes.ts`** — lottery/direct signup window calculations (`getLotterySignupStartTime`/`…EndTime`, `getDirectSignupStartTime`/`…EndTime`, in-progress/ended predicates). Applies the parent start-time override (see below).
+- **`signupTimes.ts`** — lottery/direct sign-up window calculations (`getLotterySignupStartTime`/`…EndTime`, `getDirectSignupStartTime`/`…EndTime`, in-progress/ended predicates). Applies the parent start-time override (see below).
 - **`timeFormatter.ts`** — dayjs-based display formatting; everything is forced to the `Europe/Helsinki` timezone.
 - **`initializeDayjs.ts`** — dayjs plugin/locale setup and the `TIMEZONE` constant; call this in any new test setup that touches time.
-- **`isLotterySignupProgramItem.ts`** — predicate: does an item use two-phase (lottery) signup?
-- **`isDirectSignupAlwaysOpen.ts`** — predicate: is an item's direct signup always open? Combines the manual `directSignupAlwaysOpenIds` config list with a programmatic check for the `Tag.PRE_CONVENTION_WEEK` tag (pre-convention-week items always use direct signup, even lottery program types like RPGs). Consumed by `isLotterySignupProgramItem` and `getDirectSignupStartTime`.
-- **`getProgramItemValidity.ts`** — per-check validity flags for a program item (attendance limits, signup type, lottery even-hour start) plus the combined `allValuesValid`. Invalid items can't be signed up to: the client hides the signup section and renders the errors, and the server's lottery/direct signup services reject with the `invalidProgramItem` error.
+- **`isLotterySignupProgramItem.ts`** — predicate: does an item use two-phase (lottery) sign-up?
+- **`isDirectSignupAlwaysOpen.ts`** — predicate: is an item's direct sign-up always open? Combines the manual `directSignupAlwaysOpenIds` config list with a programmatic check for the `Tag.PRE_CONVENTION_WEEK` tag (pre-convention-week items always use direct sign-up, even lottery program types like RPGs). Consumed by `isLotterySignupProgramItem` and `getDirectSignupStartTime`.
+- **`getProgramItemValidity.ts`** — per-check validity flags for a program item (attendance limits, sign-up type, lottery even-hour start) plus the combined `allValuesValid`. Invalid items can't be signed up to: the client hides the sign-up section and renders the errors, and the server's lottery/direct sign-up services reject with the `invalidProgramItem` error.
 - **`tooEarlyForLotterySignup.ts`**, **`isStartTimeChanged.ts`**, **`exhaustiveSwitchGuard.ts`** (TS exhaustiveness helper that throws on unreachable cases), **`remedaExtend.ts`** (extra collection helpers), **`setLocale.ts`**, **`formatSerial.ts`** (hyphenates registration codes for display, e.g. 012-304-800-1).
 
 ## Zod Pattern for API Types
@@ -59,21 +59,21 @@ Construct with `makeSuccessResult(value)` / `makeErrorResult(error)`. Read by na
 
 ## Event Configuration
 
-Current event config in `shared/config/eventConfig.ts`, past events in `shared/config/past-events/` (e.g. `ropecon2025.ts`). Controls signup windows, program item types (`twoPhaseSignupProgramTypes`, `activeProgramTypes`), assignment rules, and start-time overrides. Read via `config.event()`.
+Current event config in `shared/config/eventConfig.ts`, past events in `shared/config/past-events/` (e.g. `ropecon2025.ts`). Controls sign-up windows, program item types (`twoPhaseSignupProgramTypes`, `activeProgramTypes`), assignment rules, and start-time overrides. Read via `config.event()`.
 
 ## Program Item Parent Start Times
 
-A program item can have a `parentId` linking it to a parent (e.g. sub-sessions of a longer program). The event config `startTimesByParentIds: Map<parentId, startTime>` can override the effective start time for lottery/signup-window calculations. The parent override exists to batch multiple own start times into a single lottery run. The resolution pattern is `startTimesByParentIds.get(parentId) ?? programItem.startTime`; the shared helper is `getProgramItemStartTime` in `shared/utils/signupTimes.ts` (file-scoped), and downstream helpers like `getLotterySignupEndTime`, `getLotterySignupStartTime`, and `getDirectSignupStartTime` already apply it — prefer reusing them over reimplementing the override inline.
+A program item can have a `parentId` linking it to a parent (e.g. sub-sessions of a longer program). The event config `startTimesByParentIds: Map<parentId, startTime>` can override the effective start time for lottery/sign-up-window calculations. The parent override exists to batch multiple own start times into a single lottery run. The resolution pattern is `startTimesByParentIds.get(parentId) ?? programItem.startTime`; the shared helper is `getProgramItemStartTime` in `shared/utils/signupTimes.ts` (file-scoped), and downstream helpers like `getLotterySignupEndTime`, `getLotterySignupStartTime`, and `getDirectSignupStartTime` already apply it — prefer reusing them over reimplementing the override inline.
 
 **`signedToStartTime` invariant:**
 
-- **Lottery signups** store the program item's **own** `startTime` in `signedToStartTime` (what time the item actually happens for the user).
-- **Direct signups** store the **parent-resolved** start time (`parentStartTime ?? programItem.startTime`) in `signedToStartTime`. This is required so that when the lottery is re-run for a batch, the old direct signups for that batch can be cleaned up by matching the shared parent time.
+- **Lottery sign-ups** store the program item's **own** `startTime` in `signedToStartTime` (what time the item actually happens for the user).
+- **Direct sign-ups** store the **parent-resolved** start time (`parentStartTime ?? programItem.startTime`) in `signedToStartTime`. This is required so that when the lottery is re-run for a batch, the old direct sign-ups for that batch can be cleaned up by matching the shared parent time.
 
 When adding new code that writes `signedToStartTime`, follow this split. When adding time comparisons, use the parent-resolved time for lottery-window logic and own `startTime` for per-item semantics (e.g. "has this program item started for the user").
 
 ## Conventions
 
-- Use enums/`as const` for closed sets (program types, signup types, user groups); use the `Result` tagged union for fallible operations.
+- Use enums/`as const` for closed sets (program types, sign-up types, user groups); use the `Result` tagged union for fallible operations.
 - All time formatting must go through `timeFormatter.ts` / dayjs with the `Europe/Helsinki` timezone — never rely on the host's local timezone.
 - No database migrations: events run on fresh, short-lived DBs, so enum/shape changes here need no migration or compatibility shim (see [root CLAUDE.md](../CLAUDE.md)).

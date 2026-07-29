@@ -10,8 +10,8 @@ export const getEvents = (
 ): Event[] => {
   const programItems = lotterySignupProgramItems.map(
     (lotterySignupProgramItem) => {
-      // Program item can have existing direct signups if program item's start time has changed
-      // Consider existing direct signups when determining program item attendee limits
+      // Program item can have existing direct sign-ups if program item's start time has changed
+      // Consider existing direct sign-ups when determining program item attendee limits
       const programItemSignup = lotteryParticipantDirectSignups.find(
         (signup) =>
           signup.programItemId === lotterySignupProgramItem.programItemId,
@@ -29,7 +29,7 @@ export const getEvents = (
 
       const currentSignups = changedSignups?.length ?? 0;
 
-      // The lottery only fills the seats left after existing signups; capacity can't go negative
+      // The lottery only fills the seats left after existing sign-ups; capacity can't go negative
       const remainingMax = Math.max(
         lotterySignupProgramItem.maxAttendance - currentSignups,
         0,

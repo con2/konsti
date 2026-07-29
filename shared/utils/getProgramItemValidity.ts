@@ -35,7 +35,7 @@ export const getProgramItemValidity = (
 
   const signupTypeMissing = programItem.signupType === SignupType.MISSING;
 
-  // Lottery batches signups by start time, so lottery items must start at an
+  // Lottery batches sign-ups by start time, so lottery items must start at an
   // even hour. Checked against the parent-resolved start time: a parent
   // override to an even hour makes the item valid
   const lotteryItemNotStartingOnEvenHour =

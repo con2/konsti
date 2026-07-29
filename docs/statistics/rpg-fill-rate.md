@@ -1,6 +1,6 @@
 # RPG seats filled
 
-How completely tabletop-RPG seats were filled at each event. Combines lottery-assigned and direct signups.
+How completely tabletop-RPG seats were filled at each event. Combines lottery-assigned and direct sign-ups.
 
 Programs with `maxAttendance: 0` (no limit) are excluded from the rate but counted separately.
 

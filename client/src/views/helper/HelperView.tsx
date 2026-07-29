@@ -26,9 +26,9 @@ export const HelperView = (): ReactElement => {
 
   useEffect(() => {
     const fetchData = async (): Promise<void> => {
-      // This loads signup questions
+      // This loads sign-up questions
       await loadSettings();
-      // This loads signup question answers
+      // This loads sign-up question answers
       await loadSignupMessages();
     };
     // eslint-disable-next-line @typescript-eslint/no-floating-promises

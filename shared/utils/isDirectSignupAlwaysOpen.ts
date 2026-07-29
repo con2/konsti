@@ -5,7 +5,7 @@ import { isPreConventionWeekProgramItem } from "shared/utils/isPreConventionWeek
 export const isDirectSignupAlwaysOpen = (programItem: ProgramItem): boolean => {
   const { directSignupAlwaysOpenIds } = config.event();
 
-  // Pre-convention week program items always use direct signup, even if their
+  // Pre-convention week program items always use direct sign-up, even if their
   // program type (e.g. RPG) would normally use lottery
   return (
     directSignupAlwaysOpenIds.includes(programItem.programItemId) ||

@@ -3,7 +3,7 @@ import { SIGNUP_MESSAGE_LENGTH } from "shared/constants/validation";
 import { ApiError, ApiResult } from "shared/types/api/errors";
 import { DirectSignup, LotterySignup } from "shared/types/models/user";
 
-// POST lottery signup
+// POST lottery sign-up
 
 export const PostLotterySignupRequestSchema = z.object({
   programItemId: z.string(),
@@ -37,7 +37,7 @@ export type PostLotterySignupResponse =
   | PostLotterySignupResult
   | PostLotterySignupError;
 
-// DELETE lottery signup
+// DELETE lottery sign-up
 
 export const DeleteLotterySignupRequestSchema = z.object({
   lotterySignupProgramItemId: z.string(),
@@ -57,12 +57,12 @@ export type DeleteLotterySignupResponse =
   | DeleteLotterySignupResult
   | DeleteLotterySignupError;
 
-// POST direct signup
+// POST direct sign-up
 
 export const PostDirectSignupRequestSchema = z.object({
   directSignupProgramItemId: z.string(),
   message: z.string().max(SIGNUP_MESSAGE_LENGTH, "Message too long"),
-  // priority is not part of the request: user-made direct signups are always
+  // priority is not part of the request: user-made direct sign-ups are always
   // first-come-first-served, so the backend sets DIRECT_SIGNUP_PRIORITY itself
 });
 
@@ -76,7 +76,7 @@ export interface PostDirectSignupResult extends ApiResult {
     userSignups: { username: string; message: string }[];
   };
   directSignup?: DirectSignup;
-  // True when a direct signup made the user leave or close their group
+  // True when a direct sign-up made the user leave or close their group
   leftGroup: boolean;
 }
 
@@ -95,7 +95,7 @@ export type PostDirectSignupResponse =
   | PostDirectSignupResult
   | PostDirectSignupError;
 
-// DELETE direct signup
+// DELETE direct sign-up
 
 export const DeleteDirectSignupRequestSchema = z.object({
   directSignupProgramItemId: z.string(),

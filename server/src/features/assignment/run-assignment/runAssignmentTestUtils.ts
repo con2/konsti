@@ -77,7 +77,7 @@ export const verifyUserSignups = async (): Promise<
     programItemId,
     userSignups,
   } of lotteryParticipantDirectSignups) {
-    // Verify group member signups match with group creators lotterySignups
+    // Verify group member sign-ups match with group creators lotterySignups
     // If not in group -> user is group creator
 
     for (const userSignup of userSignups) {

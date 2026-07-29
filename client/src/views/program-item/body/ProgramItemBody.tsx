@@ -13,7 +13,7 @@ import { programItemCardEndMargin } from "client/views/my-program-items/componen
 interface Props {
   programItem: ProgramItem;
   isAlwaysExpanded: boolean;
-  // True when nothing renders after the body (signup section hidden,
+  // True when nothing renders after the body (sign-up section hidden,
   // not cancelled), so the body provides the card-end spacing
   endOfCard: boolean;
 }

@@ -166,7 +166,7 @@ describe(`GET ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
 
     // Own start time is after the lottery cutoff (event start + 3h) so lottery applies
     const ownStartTime = dayjs(eventStartTime).add(8, "hours").toISOString();
-    // Now is before the direct signup phase starts for the own start time
+    // Now is before the direct sign-up phase starts for the own start time
     const timeNow = dayjs(ownStartTime)
       .subtract(directSignupPhaseStart + 60, "minutes")
       .toISOString();
@@ -188,7 +188,7 @@ describe(`GET ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     const { eventStartTime, directSignupPhaseStart } = config.event();
 
     const ownStartTime = dayjs(eventStartTime).add(8, "hours").toISOString();
-    // Parent start time is earlier than own start time so its direct signup phase has started
+    // Parent start time is earlier than own start time so its direct sign-up phase has started
     const parentStartTime = dayjs(eventStartTime).add(5, "hours").toISOString();
 
     vi.spyOn(config, "event").mockReturnValue({
@@ -198,7 +198,7 @@ describe(`GET ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
       ]),
     });
 
-    // Now is before the own direct signup phase start, but after the parent-derived one
+    // Now is before the own direct sign-up phase start, but after the parent-derived one
     const timeNow = dayjs(parentStartTime)
       .subtract(directSignupPhaseStart - 60, "minutes")
       .toISOString();

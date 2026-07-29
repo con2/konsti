@@ -103,7 +103,7 @@ export const createGroup = async (
     };
   }
 
-  // User cannot have direct signups in future when joining a group
+  // User cannot have direct sign-ups in future when joining a group
   const hasUpcomingDirectSignups = await checkUpcomingDirectSignups(
     username,
     programItemsResult.value,
@@ -187,7 +187,7 @@ export const joinGroup = async (
   }
   const programItems = programItemsResult.value;
 
-  // User cannot have direct signups in future when joining a group
+  // User cannot have direct sign-ups in future when joining a group
   const hasUpcomingDirectSignups = await checkUpcomingDirectSignups(
     username,
     programItems,
@@ -239,7 +239,7 @@ export const joinGroup = async (
     };
   }
 
-  // Clean lottery signups whose lottery has not yet run
+  // Clean lottery sign-ups whose lottery has not yet run
   const lotteryNotYetRunProgramItemIds = getLotteryNotYetRunProgramItemIds(
     user.lotterySignups,
     programItems,

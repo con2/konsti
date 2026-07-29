@@ -155,7 +155,7 @@ const renderYearSection = (event: string, year: string): string[] => {
     return [
       `### ${year}`,
       "",
-      "Tabletop RPGs at this event use direct signup, not lottery.",
+      "Tabletop RPGs at this event use direct sign-up, not lottery.",
       "",
     ];
   }
@@ -260,7 +260,7 @@ export const genLotterySignups = (): void => {
     "",
     "In each bar, `█` = winners, `▄` = participants who didn't win. Bar length = total participants for that hour.",
     "",
-    "**Caveat:** `lotterySignups` can be incomplete — entries are removed if a user joins a group after the lottery. Every winner's _winning_ lottery signup is preserved (or restored from `results.json`), so each result entry is also a participant; but a user's _non-winning_ preferences for the same timeslot may be missing. For 2017–2018 the older per-result snapshot covered all preferences, so even those are restored.",
+    "**Caveat:** `lotterySignups` can be incomplete — entries are removed if a user joins a group after the lottery. Every winner's _winning_ lottery sign-up is preserved (or restored from `results.json`), so each result entry is also a participant; but a user's _non-winning_ preferences for the same timeslot may be missing. For 2017–2018 the older per-result snapshot covered all preferences, so even those are restored.",
     "",
   ];
 
@@ -275,7 +275,7 @@ export const genLotterySignups = (): void => {
     }
     if (summaries.every((t) => t.kind !== "ok")) {
       out.push(
-        "Tabletop RPGs at this event use direct signup, not lottery.",
+        "Tabletop RPGs at this event use direct sign-up, not lottery.",
         "",
       );
       continue;

@@ -69,7 +69,7 @@ test("Show lottery results without login", async ({ page, request }) => {
     testTime: config.event().eventStartTime,
   });
 
-  // Seed the lottery signup and run the lottery on the background
+  // Seed the lottery sign-up and run the lottery on the background
   await testPostLotterySignup(request, "test1", {
     programItemId: testProgramItem.programItemId,
     priority: 1,
@@ -124,14 +124,14 @@ test("Sort assignment runs latest first", async ({ page, request }) => {
   await postSettings(request, {
     signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
   });
-  // One hour into the event both items' lottery signup windows are open -
+  // One hour into the event both items' lottery sign-up windows are open -
   // the later item's window hasn't opened yet at the event start
   await postTestSettings(request, {
     testTime: dayjs(config.event().eventStartTime).add(1, "hour").toISOString(),
   });
 
   // Separate users per time slot so the first run's overlap cleanup can't
-  // remove the second run's signup
+  // remove the second run's sign-up
   await testPostLotterySignup(request, "test1", {
     programItemId: testProgramItem.programItemId,
     priority: 1,

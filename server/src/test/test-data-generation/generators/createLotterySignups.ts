@@ -56,7 +56,7 @@ const getRandomLotterySignup = (
     dayjs(activeProgramItem.startTime).toISOString(),
   );
   const uniqueTimes = [...new Set(startTimes)];
-  // Three first times are direct signup only
+  // Three first times are direct sign-up only
   const firstFourTimes = uniqueTimes.slice(3, 7);
 
   // Select random program items for each start time
@@ -114,7 +114,7 @@ const lotterySignupGroup = async (
   programItems: readonly ProgramItem[],
   users: readonly User[],
 ): Promise<void> => {
-  // Generate random signup data for the group creator
+  // Generate random sign-up data for the group creator
   const groupCreator = users.find((user) => user.isGroupCreator);
   if (!groupCreator) {
     // eslint-disable-next-line no-restricted-syntax -- Data generation script

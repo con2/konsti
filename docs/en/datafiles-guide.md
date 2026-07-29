@@ -1,6 +1,6 @@
 # Datafiles Guide
 
-This directory contains sanitized database dumps from Konsti events. The data can be used for calculating statistics about signups, lottery results, and user behavior.
+This directory contains sanitized database dumps from Konsti events. The data can be used for calculating statistics about sign-ups, lottery results, and user behavior.
 
 Data files are located in [`server/src/features/statistics/datafiles/`](../../server/src/features/statistics/datafiles/).
 
@@ -18,7 +18,7 @@ Entries in every file also carry `createdAt` and `updatedAt` timestamps. They ar
 
 ### direct-signups.json
 
-Confirmed signups (both lottery-assigned and direct signups).
+Confirmed sign-ups (both lottery-assigned and direct sign-ups).
 
 ```jsonc
 [
@@ -29,25 +29,25 @@ Confirmed signups (both lottery-assigned and direct signups).
         "username": "123456",
         "priority": 1, // See "Priority values" below
         "signedToStartTime": "2024-07-19T15:00:00Z",
-        "signupTime": "2024-07-17T18:34:56.789Z", // When the signup was stored, see below
+        "signupTime": "2024-07-17T18:34:56.789Z", // When the sign-up was stored, see below
         "message": "",
       },
     ],
-    "count": 5, // Number of signups
+    "count": 5, // Number of sign-ups
   },
 ]
 ```
 
 **Priority values:**
 
-- `0` — Signed up via direct signup (first-come-first-served)
+- `0` — Signed up via direct sign-up (first-come-first-served)
 - `1` — Got their 1st lottery choice
 - `2` — Got their 2nd lottery choice
 - `3` — Got their 3rd lottery choice
 
-**`signupTime` values:** Ropecon 2026 is the first event where `signupTime` is the actual recorded signup moment. For earlier events (2017–2025) the field was backfilled during normalization: direct signups (`priority: 0`) use the program's start time, and lottery-assigned signups (priority > 0) use two hours before the start time, which is when the assignment run happened.
+**`signupTime` values:** Ropecon 2026 is the first event where `signupTime` is the actual recorded sign-up moment. For earlier events (2017–2025) the field was backfilled during normalization: direct sign-ups (`priority: 0`) use the program's start time, and lottery-assigned sign-ups (priority > 0) use two hours before the start time, which is when the assignment run happened.
 
-For older events (2017–2021) this file was reconstructed from `users.json` `directSignups` during a normalization pass. Entries from 2017–2019 use `priority: 1`, `2`, or `3` matching the lottery preference that won (Konsti was lottery-only then, so every confirmed signup was a lottery win). For 2017–2018 the priority was not stored on the original `directSignups` entries and was looked up from `results.json`; for 2019 it was already present. Ropecon 2021 was a remote / COVID-era convention that ran direct signup only (no lottery), so its entries use `priority: 0`.
+For older events (2017–2021) this file was reconstructed from `users.json` `directSignups` during a normalization pass. Entries from 2017–2019 use `priority: 1`, `2`, or `3` matching the lottery preference that won (Konsti was lottery-only then, so every confirmed sign-up was a lottery win). For 2017–2018 the priority was not stored on the original `directSignups` entries and was looked up from `results.json`; for 2019 it was already present. Ropecon 2021 was a remote / COVID-era convention that ran direct sign-up only (no lottery), so its entries use `priority: 0`.
 
 ### program-items.json
 
@@ -90,7 +90,7 @@ All program items for the event.
 
 ### results.json
 
-Lottery assignment run results. Each entry represents one assignment run (the lottery runs multiple times during an event, once per signup time slot).
+Lottery assignment run results. Each entry represents one assignment run (the lottery runs multiple times during an event, once per sign-up time slot).
 
 ```jsonc
 [
@@ -122,9 +122,9 @@ Lottery assignment run results. Each entry represents one assignment run (the lo
 
 The same assignment data is also reflected in `direct-signups.json` (with priority > 0). This file provides the additional context of which algorithm was used and the assignment run metadata.
 
-`groups` was added after these events ran, so it is backfilled per run from each event's final `users.json` state: a group is included when its creator had a lottery signup for the run's start time or one of its members won in that run. Group membership reflects the dump's final state, which may differ from the moment the lottery actually ran.
+`groups` was added after these events ran, so it is backfilled per run from each event's final `users.json` state: a group is included when its creator had a lottery sign-up for the run's start time or one of its members won in that run. Group membership reflects the dump's final state, which may differ from the moment the lottery actually ran.
 
-Ropecon 2021 has no `results.json` because no lottery was run that year (remote / COVID convention, direct signup only).
+Ropecon 2021 has no `results.json` because no lottery was run that year (remote / COVID convention, direct sign-up only).
 
 ### users.json
 
@@ -166,14 +166,14 @@ All users with sanitized data. Usernames are anonymized numeric IDs. `password` 
 ]
 ```
 
-**Caveat: `lotterySignups` can be incomplete.** Lottery signups may be removed after the lottery has run (e.g. the user joins a group), but `eventLogItems` are never modified. This means some users have `newAssignment` or `noAssignment` entries for program items or time slots that no longer appear in their `lotterySignups`. To reconstruct what users originally wanted, treat `eventLogItems` as authoritative evidence of past lottery participation and combine it with the remaining `lotterySignups`. For 2017–2018, signups that were wiped from `users.json` were restored during normalization from a per-result snapshot that older `results.json` files used to carry.
+**Caveat: `lotterySignups` can be incomplete.** Lottery sign-ups may be removed after the lottery has run (e.g. the user joins a group), but `eventLogItems` are never modified. This means some users have `newAssignment` or `noAssignment` entries for program items or time slots that no longer appear in their `lotterySignups`. To reconstruct what users originally wanted, treat `eventLogItems` as authoritative evidence of past lottery participation and combine it with the remaining `lotterySignups`. For 2017–2018, sign-ups that were wiped from `users.json` were restored during normalization from a per-result snapshot that older `results.json` files used to carry.
 
 Older events have been normalized into the schema above. Notable details:
 
 - All years: age-group values (`everyone`, `adults`, `teens`, `onlyAdults`, `kids`, `smallKids`, plus the legacy `childrenFriendly`) were moved from `tags` into a separate `ageGroups` field, matching the 2026 code change that split the `AgeGroup` enum out of `Tag`. `childrenFriendly` (an old age-audience flag with no current enum equivalent) is kept in `ageGroups` as a legacy value; `k16` stays in `tags` as in current code, and other legacy tag values (`inEnglish`, `intendedForExperiencedParticipants`, `celebratoryYear`, `demo`, `tournament`) remain in `tags`.
 - 2017–2019 (Ropecon, Tracon Hitpoint 2019): `directSignups` were moved out into a generated `direct-signups.json`; `favoriteProgramItemIds` was flattened from `[{programItemId}]` to `[string]`; old descriptive boolean flags (`englishOk`, `childrenFriendly`, `ageRestricted`, `beginnerFriendly`, `intendedForExperiencedParticipants`) were mapped to entries in `tags` (later split into `tags` and `ageGroups`, see above) and removed; 2017's `attributes` array was split into `genres` and `styles` and removed; 2017's `notes` field (which contained the game system) was renamed to `gameSystem`.
-- 2017: `mins` was string-typed and is now numeric; lottery signup priorities were string-typed and are now numeric; `signedToStartTime` was backfilled from each program's `startTime`.
-- 2021 Ropecon: a remote / COVID-era convention with direct signup only — no lottery was run. `lotterySignups` is empty by design and `results.json` is absent. Confirmed signups are in `direct-signups.json` with `priority: 0`.
+- 2017: `mins` was string-typed and is now numeric; lottery sign-up priorities were string-typed and are now numeric; `signedToStartTime` was backfilled from each program's `startTime`.
+- 2021 Ropecon: a remote / COVID-era convention with direct sign-up only — no lottery was run. `lotterySignups` is empty by design and `results.json` is absent. Confirmed sign-ups are in `direct-signups.json` with `priority: 0`.
 
 ### serials.json
 
@@ -193,9 +193,9 @@ Application settings dump. Not required for statistics.
 
 ## Tips for Analysis
 
-- **Signup success rate**: Compare `users.json` `lotterySignups` (what users wanted) against `direct-signups.json` or `results.json` (what they got). Users with `eventLogItems` action `"noAssignment"` did not get a spot.
-- **Program popularity**: Count lottery signups per program item across all users, or compare `maxAttendance` vs actual signup count in `direct-signups.json`.
+- **Sign-up success rate**: Compare `users.json` `lotterySignups` (what users wanted) against `direct-signups.json` or `results.json` (what they got). Users with `eventLogItems` action `"noAssignment"` did not get a spot.
+- **Program popularity**: Count lottery sign-ups per program item across all users, or compare `maxAttendance` vs actual sign-up count in `direct-signups.json`.
 - **Lottery preference satisfaction**: In `direct-signups.json` or `results.json`, check how many users got their 1st choice (priority 1) vs 2nd or 3rd.
-- **Group signups**: Users with matching non-zero `groupCode` in `users.json` signed up as a group and were assigned together.
+- **Group sign-ups**: Users with matching non-zero `groupCode` in `users.json` signed up as a group and were assigned together.
 - **Filter cancelled programs**: Exclude program items where `state` is `"cancelled"` in `program-items.json`.
-- **Join data**: Use `programItemId` to join between files, and `username` to join users with their signups and results.
+- **Join data**: Use `programItemId` to join between files, and `username` to join users with their sign-ups and results.

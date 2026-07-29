@@ -52,7 +52,7 @@ test("should save configured signup questions", async () => {
     tournamentSignupQuestionExcludeIds: [],
   });
 
-  // Create default settings so signup questions have a document to update
+  // Create default settings so sign-up questions have a document to update
   await findSettings();
 
   await addSignupQuestions();
@@ -81,7 +81,7 @@ test("should add tournament signup question to tournaments except excluded ones"
 
   await saveProgramItems([tournament, excludedTournament]);
 
-  // Create default settings so signup questions have a document to update
+  // Create default settings so sign-up questions have a document to update
   await findSettings();
 
   await addSignupQuestions();
@@ -105,7 +105,7 @@ test("should not add tournament signup question to non-tournament program items"
   // testProgramItem is a tabletop RPG
   await saveProgramItems([testProgramItem]);
 
-  // Create default settings so signup questions have a document to update
+  // Create default settings so sign-up questions have a document to update
   await findSettings();
 
   await addSignupQuestions();

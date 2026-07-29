@@ -17,11 +17,11 @@ export const getAssignmentBonus = (
 
   // A re-run must not count its own results as "previous" (which would strip the bonus and
   // change outcomes): ignore lottery wins (priority > 0) and NEW_ASSIGNMENT events at the
-  // current assignmentTime, but keep genuine first-come-first-served direct signups
+  // current assignmentTime, but keep genuine first-come-first-served direct sign-ups
   const isCurrentAssignment = (startTime: string): boolean =>
     dayjs(startTime).isSame(dayjs(assignmentTime), "minute");
 
-  // Get group members with previous direct signups or NEW_ASSIGNMENT event log items
+  // Get group members with previous direct sign-ups or NEW_ASSIGNMENT event log items
   const [groupMembersWithDirectSignups, groupMembersWithoutDirectSignups] =
     partition(attendeeGroup, (groupMember) => {
       const previousDirectSignup = lotteryParticipantDirectSignups.find(
@@ -30,7 +30,7 @@ export const getAssignmentBonus = (
             (userSignup) =>
               userSignup.username === groupMember.username &&
               // Exclude this lottery's own win (priority > 0) at the current time, but keep
-              // first-come-first-served (priority 0) signups counting as "previous"
+              // first-come-first-served (priority 0) sign-ups counting as "previous"
               !(
                 isCurrentAssignment(userSignup.signedToStartTime) &&
                 userSignup.priority !== DIRECT_SIGNUP_PRIORITY
@@ -60,7 +60,7 @@ export const getAssignmentBonus = (
       return false;
     });
 
-  // Give first time bonus to the whole group if half of the group members don't have previous direct signups
+  // Give first time bonus to the whole group if half of the group members don't have previous direct sign-ups
   const averagePreviousDirectSignups =
     groupMembersWithDirectSignups.length / attendeeGroup.length;
   const firstTimeBonus =
@@ -68,7 +68,7 @@ export const getAssignmentBonus = (
 
   /** Additional first time bonus */
 
-  // Get group members with previous NO_ASSIGNMENT event log items and without direct signups.
+  // Get group members with previous NO_ASSIGNMENT event log items and without direct sign-ups.
   // Ignore a NO_ASSIGNMENT from the current assignmentTime — on a re-run it's this run's own
   // earlier result, so counting it would make the re-run boost run-1 failures
   const groupMembersWithPreviousFailedLotterySignup =
@@ -80,7 +80,7 @@ export const getAssignmentBonus = (
       );
     });
 
-  // Give additional first time bonus to the whole group if half of the group members have previous failed lottery signups
+  // Give additional first time bonus to the whole group if half of the group members have previous failed lottery sign-ups
   const averageFailedLotterySignups =
     groupMembersWithPreviousFailedLotterySignup.length / attendeeGroup.length;
   const additionalFirstTimeBonus =

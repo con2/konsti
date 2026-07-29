@@ -67,8 +67,8 @@ export const storeLotterySignup = async ({
     };
   }
 
-  // Invalid program items have their signup disabled in the client, but a
-  // signup can still arrive from a stale or bugged page
+  // Invalid program items have their sign-up disabled in the client, but a
+  // sign-up can still arrive from a stale or bugged page
   if (!getProgramItemValidity(programItem).allValuesValid) {
     return {
       message: "Program item is missing required information",
@@ -78,7 +78,7 @@ export const storeLotterySignup = async ({
   }
 
   // Hidden program items are only filtered from the client's list view, so a
-  // signup for one can still arrive from a stale page or a direct link
+  // sign-up for one can still arrive from a stale page or a direct link
   const settingsResult = await findSettings();
   if (!settingsResult.ok) {
     return {
@@ -147,7 +147,7 @@ export const storeLotterySignup = async ({
     };
   }
 
-  // Group members don't make their own lottery signups; the group creator signs up for the group
+  // Group members don't make their own lottery sign-ups; the group creator signs up for the group
   if (user.groupCode !== "0" && !user.isGroupCreator) {
     return {
       message: "Group member cannot create lottery signups",
@@ -174,7 +174,7 @@ export const storeLotterySignup = async ({
   const lotterySignup = {
     programItemId,
     priority,
-    // Lottery signups always store the item's own startTime; parent override is only used for lottery batching
+    // Lottery sign-ups always store the item's own startTime; parent override is only used for lottery batching
     signedToStartTime: programItem.startTime,
   };
 

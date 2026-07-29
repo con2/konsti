@@ -111,7 +111,7 @@ test("should return list items for program items using parent startTime via 'sta
 });
 
 describe("should give first time bonus", () => {
-  // Non-lottery direct signups are filtered earlier so having them is the same as not having previous direct signups
+  // Non-lottery direct sign-ups are filtered earlier so having them is the same as not having previous direct sign-ups
   test("for single user when there are no direct signups from previous lotteries", () => {
     const users = getUsers({ count: 1 });
     const attendeeGroups = [users];
@@ -162,7 +162,7 @@ describe("should give first time bonus", () => {
 
     const users = getUsers({ count: 1 });
     const attendeeGroups = [users];
-    // Always-open direct signups don't take part in lotteries, so they must not use up the first time bonus
+    // Always-open direct sign-ups don't take part in lotteries, so they must not use up the first time bonus
     const list = getList({
       attendeeGroups,
       assignmentTime,
@@ -197,7 +197,7 @@ describe("should give first time bonus", () => {
 
     const users = getUsers({ count: 1 });
     const attendeeGroups = [users];
-    // Pre-convention-week items are always open for direct signup, so their signups must not use up the first time bonus
+    // Pre-convention-week items are always open for direct sign-up, so their sign-ups must not use up the first time bonus
     const list = getList({
       attendeeGroups,
       assignmentTime,
@@ -271,7 +271,7 @@ describe("should give first time bonus", () => {
   });
 
   test("for group with half previous direct signups", () => {
-    // Group of two, one has previous direct signup
+    // Group of two, one has previous direct sign-up
     const users = getUsers({ count: 2 });
     const attendeeGroups = [users];
     const list = getList({
@@ -318,7 +318,7 @@ describe("should give first time bonus", () => {
   });
 
   test("for group with NEW_ASSIGNMENT event and previous direct signup", () => {
-    // First group member has NEW_ASSIGNMENT, second group member has direct signup
+    // First group member has NEW_ASSIGNMENT, second group member has direct sign-up
     const users = getUsers({
       count: 4,
       pastLotterySignupUsers: 1,
@@ -395,7 +395,7 @@ describe("should NOT give first time bonus", () => {
   });
 
   test("for group with more than half previous direct signups", () => {
-    // Group of five, three have previous direct signup
+    // Group of five, three have previous direct sign-up
     const users = getUsers({ count: 5 });
     const attendeeGroups = [users];
     const list = getList({
@@ -502,8 +502,8 @@ describe("should give additional bonus", () => {
 
 describe("should NOT give additional bonus", () => {
   test("for single user with previous direct signup", () => {
-    // The failed lottery signup would otherwise grant the additional bonus,
-    // but the previous direct signup blocks it
+    // The failed lottery sign-up would otherwise grant the additional bonus,
+    // but the previous direct sign-up blocks it
     const users = getUsers({
       count: 1,
       pastLotterySignupUsers: 1,
@@ -581,7 +581,7 @@ describe("should NOT give additional bonus", () => {
   });
 
   test("for group with less than half previous failed lottery signups", () => {
-    // Two of five members have a failed lottery signup -> below the 0.5 threshold
+    // Two of five members have a failed lottery sign-up -> below the 0.5 threshold
     const users = getUsers({
       count: 5,
       pastLotterySignupUsers: 2,

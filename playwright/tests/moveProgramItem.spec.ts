@@ -44,7 +44,7 @@ test("Show event log notification when program item with direct signup is moved"
   await programList.gotoAllProgram();
   await programList.selectProgramType("Tabletop RPG");
 
-  // Direct signup to first program item
+  // Direct sign-up to first program item
   await programList.waitForItems();
   const firstProgramItem = programList.firstItem();
 

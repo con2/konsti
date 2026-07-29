@@ -52,7 +52,7 @@ export const removeOverlapLotterySignups = async (
       return [];
     }
 
-    // Cancel all lottery signups that start during the lottery direct signup
+    // Cancel all lottery sign-ups that start during the lottery direct sign-up
     if (
       config.event().removeLotterySignupsStrategy ===
       RemoveLotterySignupsStrategy.OVERLAP
@@ -75,7 +75,7 @@ export const removeOverlapLotterySignups = async (
         },
       );
 
-      // Only update users with overlapping lottery signups
+      // Only update users with overlapping lottery sign-ups
       if (overlappingLotterySignups.length > 0) {
         usersToUpdate.push({
           username: signedUser.username,
@@ -86,7 +86,7 @@ export const removeOverlapLotterySignups = async (
       }
     }
 
-    // Cancel all upcoming lottery signups
+    // Cancel all upcoming lottery sign-ups
     if (
       config.event().removeLotterySignupsStrategy ===
       RemoveLotterySignupsStrategy.ALL_UPCOMING
@@ -99,7 +99,7 @@ export const removeOverlapLotterySignups = async (
           dayjs(assignmentTime),
         );
 
-      // Only update users with upcoming lottery signups
+      // Only update users with upcoming lottery sign-ups
       if (upcomingLotterySignupProgramItemIds.length > 0) {
         usersToUpdate.push({
           username: signedUser.username,

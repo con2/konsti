@@ -35,7 +35,7 @@ export const LotterySignupItem = ({ lotterySignup }: Props): ReactElement => {
 
   const isGroupCreator = useAppSelector((state) => state.group.isGroupCreator);
   const groupCode = useAppSelector((state) => state.group.groupCode);
-  // A group member sees the creator's signups but must not cancel them
+  // A group member sees the creator's sign-ups but must not cancel them
   const canCancel = canSignToProgramItems(
     getIsInGroup(groupCode),
     isGroupCreator,

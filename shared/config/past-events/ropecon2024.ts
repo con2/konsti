@@ -72,7 +72,7 @@ const eventConfig: Partial<EventConfig> = {
 
   rollingDirectSignupProgramTypes: [ProgramType.WORKSHOP, ProgramType.OTHER],
 
-  // These program items have their signup always open even if signup mode is set to lottery
+  // These program items have their sign-up always open even if sign-up mode is set to lottery
   directSignupAlwaysOpenIds: [
     "pathfinder-society-4-99-blessings-of-the-forest", // Pathfinder Society #4-99 Blessings of the Forest
   ],
@@ -92,7 +92,7 @@ const eventConfig: Partial<EventConfig> = {
   // These program items have hand picked revolving door status
   addRevolvingDoorIds: [],
 
-  // These program items are imported to Konsti but don't have Konsti signup
+  // These program items are imported to Konsti but don't have Konsti sign-up
   noKonstiSignupIds: [
     // RPG
     "charlie-ei-surffaa-pe", // Charlie ei surffaa (Pe)
@@ -221,7 +221,7 @@ const eventConfig: Partial<EventConfig> = {
     "pikamaalauskilpailu-speed-painting-contest-4-lasat",
   ],
 
-  // Two phase signup settings
+  // Two phase sign-up settings
   preSignupStart: 60 * 4, // minutes
   directSignupPhaseStart: 60 * 2, // minutes
   phaseGap: 15, // minutes

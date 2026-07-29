@@ -8,12 +8,12 @@ export const getGroupCreators = (
 ): User[] => {
   logger.debug("Get group creators");
 
-  // Get users who have lottery signups for starting program items
+  // Get users who have lottery sign-ups for starting program items
   const selectedAttendees: User[] = [];
 
   for (const user of users) {
-    // Only individuals and group creators carry lottery signups into the assignment.
-    // A non-creator member's signups must not turn them into a group creator, which
+    // Only individuals and group creators carry lottery sign-ups into the assignment.
+    // A non-creator member's sign-ups must not turn them into a group creator, which
     // would duplicate the group when its members are expanded
     if (user.groupCode !== "0" && !user.isGroupCreator) {
       continue;

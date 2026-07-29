@@ -50,7 +50,7 @@ export const saveProgramItems = async (
   }
   const currentProgramItems = currentProgramItemsResult.value;
 
-  // If program item was cancelled or deleted, remove program item and direct signups
+  // If program item was cancelled or deleted, remove program item and direct sign-ups
   const deletedProgramItemsResult = await handleCancelledDeletedProgramItems(
     updatedProgramItems,
     currentProgramItems,
@@ -59,7 +59,7 @@ export const saveProgramItems = async (
     return deletedProgramItemsResult;
   }
 
-  // If program item was cancelled or deleted, remove lottery signups and favorite program items
+  // If program item was cancelled or deleted, remove lottery sign-ups and favorite program items
   const removeCancelledDeletedProgramItemsFromUsersResult =
     await removeCancelledDeletedProgramItemsFromUsers({
       programItems: updatedProgramItems,
@@ -141,7 +141,7 @@ export const saveProgramItems = async (
 
   logger.info(`MongoDB: Found ${newProgramItems.length} new program items`);
 
-  // Create signup document for all program items missing signup document
+  // Create sign-up document for all program items missing sign-up document
   const directSignupsResult = await findDirectSignups();
   if (!directSignupsResult.ok) {
     return directSignupsResult;

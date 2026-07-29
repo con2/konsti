@@ -6,7 +6,7 @@ Each user is counted once per hour regardless of how many priorities they submit
 
 In each bar, `█` = winners, `▄` = participants who didn't win. Bar length = total participants for that hour.
 
-**Caveat:** `lotterySignups` can be incomplete — entries are removed if a user joins a group after the lottery. Every winner's _winning_ lottery signup is preserved (or restored from `results.json`), so each result entry is also a participant; but a user's _non-winning_ preferences for the same timeslot may be missing. For 2017–2018 the older per-result snapshot covered all preferences, so even those are restored.
+**Caveat:** `lotterySignups` can be incomplete — entries are removed if a user joins a group after the lottery. Every winner's _winning_ lottery sign-up is preserved (or restored from `results.json`), so each result entry is also a participant; but a user's _non-winning_ preferences for the same timeslot may be missing. For 2017–2018 the older per-result snapshot covered all preferences, so even those are restored.
 
 ## Ropecon
 
@@ -160,7 +160,7 @@ In each bar, `█` = winners, `▄` = participants who didn't win. Bar length = 
 
 ### 2021
 
-Tabletop RPGs at this event use direct signup, not lottery.
+Tabletop RPGs at this event use direct sign-up, not lottery.
 
 ### 2022 (632 distinct participants, 473 winners, 74.8%)
 
@@ -490,7 +490,7 @@ Tabletop RPGs at this event use direct signup, not lottery.
 
 ## Tracon
 
-Tabletop RPGs at this event use direct signup, not lottery.
+Tabletop RPGs at this event use direct sign-up, not lottery.
 
 ## Solmukohta
 

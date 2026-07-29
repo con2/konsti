@@ -25,7 +25,7 @@ const getValidLotterySignupsUsers = (
   });
 };
 
-// "Lottery participant" means program item took part in lottery and direct signup is either from lottery or after lottery
+// "Lottery participant" means program item took part in lottery and direct sign-up is either from lottery or after lottery
 export const getLotteryParticipantDirectSignups = (
   directSignups: readonly DirectSignupsForProgramItem[],
   programItems: readonly ProgramItem[],
@@ -57,7 +57,7 @@ export const prepareAssignmentParams = (
   programItems: ProgramItem[],
   directSignups: DirectSignupsForProgramItem[],
 ): AssignmentParams => {
-  // Take lottery signups with "twoPhaseSignupProgramTypes" which are not in "directSignupAlwaysOpenIds"
+  // Take lottery sign-ups with "twoPhaseSignupProgramTypes" which are not in "directSignupAlwaysOpenIds"
   const validLotterySignupsUsers = getValidLotterySignupsUsers(
     users,
     programItems,
@@ -68,7 +68,7 @@ export const prepareAssignmentParams = (
     isLotterySignupProgramItem(programItem),
   );
 
-  // Take direct signups with "twoPhaseSignupProgramTypes" which are not in "directSignupAlwaysOpenIds"
+  // Take direct sign-ups with "twoPhaseSignupProgramTypes" which are not in "directSignupAlwaysOpenIds"
   const lotteryParticipantDirectSignups = getLotteryParticipantDirectSignups(
     directSignups,
     programItems,
