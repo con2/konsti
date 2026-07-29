@@ -1,11 +1,7 @@
-import {
-  ProgramItem,
-  ProgramType,
-  State,
-} from "shared/types/models/programItem";
 import { User } from "shared/types/models/user";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import {
+  collectRpgLotteryParticipation,
   dataFileExists,
   EVENT_LABELS,
   EVENT_ORDER,
@@ -13,7 +9,7 @@ import {
   pct,
   readDataFile,
   writeDoc,
-} from "server/features/statistics/doc-generators/helpers";
+} from "server/features/statistics/doc-generators/statsUtils";
 
 interface PlayerRow {
   event: string;
@@ -29,20 +25,8 @@ export const genRpgPlayers = (): void => {
   const rows: PlayerRow[] = [];
   for (const event of EVENT_ORDER) {
     for (const year of eventYears(event)) {
-      const items = readDataFile(
-        event,
-        year,
-        "program-items.json",
-      ) as ProgramItem[];
-      const rpgIds = new Set(
-        items
-          .filter(
-            (i) =>
-              i.programType === ProgramType.TABLETOP_RPG &&
-              i.state !== State.CANCELLED,
-          )
-          .map((i) => i.programItemId),
-      );
+      const { rpgIds, wonSlotsByUser, groupMemberSlotsByUser } =
+        collectRpgLotteryParticipation(event, year);
       if (rpgIds.size === 0) continue;
 
       const users = readDataFile(event, year, "users.json") as User[];
@@ -70,6 +54,17 @@ export const genRpgPlayers = (): void => {
           totalSeats++;
         }
       }
+      // Group members and lottery winners can be missing from users.json and
+      // the final sign-ups; every winner got a seat even if they later gave it
+      // up, and the assignment results are complete where the final sign-up
+      // data can be lossy
+      for (const username of wonSlotsByUser.keys()) {
+        allParticipants.add(username);
+        seatedPlayers.add(username);
+      }
+      for (const username of groupMemberSlotsByUser.keys()) {
+        allParticipants.add(username);
+      }
 
       rows.push({
         event,
@@ -90,7 +85,7 @@ export const genRpgPlayers = (): void => {
   const out: string[] = [
     "# Number of role-players",
     "",
-    "Distinct users who engaged with tabletop RPGs at each event — either by submitting a lottery sign-up or a direct sign-up to an RPG, regardless of whether they ended up with a seat. Each user counts once per event.",
+    "Distinct users who engaged with tabletop RPGs at each event - by submitting a lottery sign-up, entering the lottery as a group member, or direct-signing up to an RPG, regardless of whether they ended up with a seat. Each user counts once per event. Group members are counted from the group compositions stored with the lottery results - live records from Ropecon 2026 onward, backfilled from the event's final state for older events, so older years are slightly undercounted.",
     "",
     `**Across all events combined**: **${grandParticipants}** distinct role-player slots (counting each unique user once per event), of which **${grandSeated}** got at least one seat (${pct(grandSeated, grandParticipants)}). Total RPG seat assignments: **${grandSeats}**.`,
     "",
@@ -122,9 +117,10 @@ export const genRpgPlayers = (): void => {
   out.push(
     "## Notes",
     "",
+    "- Seated counts include lottery winners from the assignment results even when their seat is missing from the final sign-up data; the seats-filled totals still come from the final data, which for Tracon Hitpoint 2019 only preserved each user's last win (see the datafiles guide).",
     "- Solmukohta 2024 hosted no tabletop RPGs (only larps and workshops).",
-    "- Ropecon 2021 was a remote / COVID-era convention with direct sign-up only — no lottery, so role-player count equals seated count there.",
-    "- Tracon (2024 / 2025) used direct sign-up only for RPGs — same equality holds.",
+    "- Ropecon 2021 was a remote / COVID-era convention with direct sign-up only - no lottery, so role-player count equals seated count there.",
+    "- Tracon (2024 / 2025) used direct sign-up only for RPGs - same equality holds.",
     "",
   );
 

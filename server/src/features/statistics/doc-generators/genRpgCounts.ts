@@ -9,7 +9,7 @@ import {
   eventYears,
   readDataFile,
   writeDoc,
-} from "server/features/statistics/doc-generators/helpers";
+} from "server/features/statistics/doc-generators/statsUtils";
 
 export const genRpgCounts = (): void => {
   const rows: { event: string; year: string; rpgs: number }[] = [];
@@ -82,7 +82,7 @@ export const genRpgCounts = (): void => {
   out.push(
     "## Notes",
     "",
-    '- Cancelled programs (`state: "cancelled"`) are excluded — these are programs that were imported but never ran.',
+    '- Cancelled programs (`state: "cancelled"`) are excluded - these are programs that were imported but never ran.',
     "- Ropecon 2021 was a remote / COVID-era convention with a much smaller program.",
     "",
   );

@@ -1,22 +1,14 @@
-import { ResultsCollectionEntry } from "server/types/resultTypes";
-import {
-  ProgramItem,
-  ProgramType,
-  State,
-} from "shared/types/models/programItem";
-import { User } from "shared/types/models/user";
 import {
   bucketByHour,
-  dataFileExists,
+  collectRpgLotteryParticipation,
   dayOfWeek,
   EVENT_LABELS,
   EVENT_ORDER,
   eventYears,
   pct,
-  readDataFile,
   scaledBar,
   writeDoc,
-} from "server/features/statistics/doc-generators/helpers";
+} from "server/features/statistics/doc-generators/statsUtils";
 
 type YearSummary =
   | { year: string; kind: "no-rpgs" }
@@ -43,98 +35,55 @@ const addToSet = (
 };
 
 const collectSummary = (event: string, year: string): YearSummary => {
-  const items = readDataFile(
-    event,
-    year,
-    "program-items.json",
-  ) as ProgramItem[];
-  const rpgIds = new Set(
-    items
-      .filter(
-        (i) =>
-          i.programType === ProgramType.TABLETOP_RPG &&
-          i.state !== State.CANCELLED,
-      )
-      .map((i) => i.programItemId),
-  );
+  const { rpgIds, ownSlotsByUser, wonSlotsByUser, groupMemberSlotsByUser } =
+    collectRpgLotteryParticipation(event, year);
   if (rpgIds.size === 0) return { year, kind: "no-rpgs" };
 
-  const users = readDataFile(event, year, "users.json") as User[];
-  const participants = new Set<string>();
-  for (const u of users) {
-    for (const ls of u.lotterySignups) {
-      if (rpgIds.has(ls.programItemId)) participants.add(u.username);
-    }
-  }
-  const winners = new Set<string>();
-  if (dataFileExists(event, year, "results.json")) {
-    const runs = readDataFile(
-      event,
-      year,
-      "results.json",
-    ) as ResultsCollectionEntry[];
-    for (const run of runs) {
-      for (const r of run.results) {
-        if (rpgIds.has(r.assignmentSignup.programItemId)) {
-          winners.add(r.username);
-        }
-      }
-    }
-  }
-  if (participants.size === 0 && winners.size === 0) {
+  const participants = new Set([
+    ...ownSlotsByUser.keys(),
+    ...wonSlotsByUser.keys(),
+    ...groupMemberSlotsByUser.keys(),
+  ]);
+  if (participants.size === 0) {
     return { year, kind: "no-lottery" };
   }
   return {
     year,
     kind: "ok",
     participants: participants.size,
-    winners: winners.size,
+    winners: wonSlotsByUser.size,
   };
 };
 
 const renderYearSection = (event: string, year: string): string[] => {
-  const items = readDataFile(
-    event,
-    year,
-    "program-items.json",
-  ) as ProgramItem[];
-  const rpgIdSet = new Set<string>();
-  for (const i of items) {
-    if (
-      i.programType === ProgramType.TABLETOP_RPG &&
-      i.state !== State.CANCELLED
-    ) {
-      rpgIdSet.add(i.programItemId);
-    }
-  }
-  if (rpgIdSet.size === 0) {
+  const { rpgIds, ownSlotsByUser, wonSlotsByUser, groupMemberSlotsByUser } =
+    collectRpgLotteryParticipation(event, year);
+  if (rpgIds.size === 0) {
     return [`### ${year}`, "", "No tabletop RPGs in this event.", ""];
   }
 
-  const users = readDataFile(event, year, "users.json") as User[];
+  // Own sign-ups, wins, and group participation all resolve to slot start
+  // times, so every source lands in the same day-hour buckets
   const participantsByDayHour = new Map<string, Map<number, Set<string>>>();
-  for (const u of users) {
-    for (const ls of u.lotterySignups) {
-      if (!rpgIdSet.has(ls.programItemId)) continue;
-      const { day, hour } = bucketByHour(ls.signedToStartTime);
-      addToSet(participantsByDayHour, day, hour, u.username);
+  const addSlots = (username: string, slots: ReadonlySet<string>): void => {
+    for (const slot of slots) {
+      const { day, hour } = bucketByHour(slot);
+      addToSet(participantsByDayHour, day, hour, username);
     }
+  };
+  for (const [username, slots] of ownSlotsByUser) addSlots(username, slots);
+  for (const [username, slots] of groupMemberSlotsByUser) {
+    addSlots(username, slots);
   }
+  // A winner participated in the hour they won even when their own sign-up is
+  // missing from the data
+  for (const [username, slots] of wonSlotsByUser) addSlots(username, slots);
 
   const winnersByDayHour = new Map<string, Map<number, Set<string>>>();
-  if (dataFileExists(event, year, "results.json")) {
-    const runs = readDataFile(
-      event,
-      year,
-      "results.json",
-    ) as ResultsCollectionEntry[];
-    for (const run of runs) {
-      for (const r of run.results) {
-        const sig = r.assignmentSignup;
-        if (!rpgIdSet.has(sig.programItemId)) continue;
-        const { day, hour } = bucketByHour(sig.signedToStartTime);
-        addToSet(winnersByDayHour, day, hour, r.username);
-      }
+  for (const [username, slots] of wonSlotsByUser) {
+    for (const slot of slots) {
+      const { day, hour } = bucketByHour(slot);
+      addToSet(winnersByDayHour, day, hour, username);
     }
   }
 
@@ -260,7 +209,9 @@ export const genLotterySignups = (): void => {
     "",
     "In each bar, `█` = winners, `▄` = participants who didn't win. Bar length = total participants for that hour.",
     "",
-    "**Caveat:** `lotterySignups` can be incomplete — entries are removed if a user joins a group after the lottery. Every winner's _winning_ lottery sign-up is preserved (or restored from `results.json`), so each result entry is also a participant; but a user's _non-winning_ preferences for the same timeslot may be missing. For 2017–2018 the older per-result snapshot covered all preferences, so even those are restored.",
+    "Group members participate through the group creator's sign-ups without having them on their own user record, so they are counted from the group compositions stored with each assignment run - live records from Ropecon 2026 onward, backfilled from the event's final state for older events. Winners are always counted as participants of the hour they won.",
+    "",
+    "**Caveat:** some losing participants are missing from the data: joining a group deleted the user's own lottery sign-ups in dumps before Ropecon 2026 (2017–2018 were restored from old result snapshots), the backfilled group records of older events miss anyone who left a group before the end, and winning a seat removes the user's overlapping lottery sign-ups in every year, including 2026. Real participant counts are somewhat higher than shown and win rates somewhat lower, least so for Ropecon 2026.",
     "",
   ];
 

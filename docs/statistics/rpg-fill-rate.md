@@ -42,3 +42,4 @@ No tabletop RPGs at this event.
 ## Notes
 
 - Cancelled programs (`state: "cancelled"`) are excluded.
+- Tracon Hitpoint 2019 fill counts are understated: its final signup data only preserved each user's last lottery win (see the datafiles guide).

@@ -11,7 +11,7 @@ import {
   eventYears,
   readDataFile,
   writeDoc,
-} from "server/features/statistics/doc-generators/helpers";
+} from "server/features/statistics/doc-generators/statsUtils";
 
 export const genRpgStartTimes = (): void => {
   const out: string[] = [

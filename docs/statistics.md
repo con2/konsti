@@ -9,3 +9,4 @@ Aggregated statistics derived from past-event database dumps in [`server/src/fea
 - [Lottery results](statistics/lottery-signups.md) — How many distinct users participated in the lottery vs how many got a seat.
 - [Number of role-players](statistics/rpg-players.md) — Distinct users who engaged with RPGs (lottery or direct sign-up), regardless of whether they got a seat.
 - [RPG seats filled](statistics/rpg-fill-rate.md) — How completely RPG seats were filled (lottery + direct combined) per event and year.
+- [Lottery wins and games played per user](statistics/lottery-wins-per-user.md) - How many RPG seats the lottery algorithm gave each user (including participants who won nothing), and how many games users ended up playing in total.
