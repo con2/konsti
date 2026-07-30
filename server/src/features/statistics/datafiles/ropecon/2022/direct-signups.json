@@ -9282,13 +9282,6 @@
         "message": ""
       },
       {
-        "username": "964196",
-        "priority": 0,
-        "signedToStartTime": "2022-07-31T08:00:00Z",
-        "signupTime": "2022-07-31T08:00:00Z",
-        "message": ""
-      },
-      {
         "username": "714429",
         "priority": 0,
         "signedToStartTime": "2022-07-31T08:00:00Z",
@@ -9310,7 +9303,7 @@
         "message": ""
       }
     ],
-    "count": 5,
+    "count": 4,
     "createdAt": "2022-07-29T20:00:27.192Z",
     "updatedAt": "2022-07-31T06:39:57.777Z"
   },
