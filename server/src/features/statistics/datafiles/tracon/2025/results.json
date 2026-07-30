@@ -3274,7 +3274,7 @@
         }
       },
       {
-        "username": "369960",
+        "username": "646418",
         "assignmentSignup": {
           "programItemId": "kirpputori-perjantai-alkuilta-1700",
           "priority": 2,
@@ -4969,7 +4969,7 @@
       {
         "groupCode": "e96-d09-45e",
         "groupCreator": "471151",
-        "groupMembers": ["471151", "842792", "369960"]
+        "groupMembers": ["471151", "842792", "646418"]
       },
       {
         "groupCode": "ca4-022-f67",
@@ -7378,7 +7378,7 @@
         }
       },
       {
-        "username": "692851",
+        "username": "596692",
         "assignmentSignup": {
           "programItemId": "kirpputori-perjantai-loppuilta-1930",
           "priority": 2,
@@ -9319,7 +9319,7 @@
       {
         "groupCode": "ba3-ee9-c49",
         "groupCreator": "58851",
-        "groupMembers": ["58851", "692851"]
+        "groupMembers": ["58851", "596692"]
       },
       {
         "groupCode": "3eb-e8b-29d",
@@ -12239,7 +12239,7 @@
         }
       },
       {
-        "username": "692851",
+        "username": "596692",
         "assignmentSignup": {
           "programItemId": "kirpputori-lauantai-1030",
           "priority": 1,
@@ -14560,7 +14560,7 @@
       {
         "groupCode": "ba3-ee9-c49",
         "groupCreator": "58851",
-        "groupMembers": ["58851", "692851"]
+        "groupMembers": ["58851", "596692"]
       },
       {
         "groupCode": "bfa-b14-c49",
@@ -14625,7 +14625,7 @@
       {
         "groupCode": "e96-d09-45e",
         "groupCreator": "471151",
-        "groupMembers": ["471151", "842792", "369960"]
+        "groupMembers": ["471151", "842792", "646418"]
       },
       {
         "groupCode": "ca4-022-f67",

@@ -44,11 +44,44 @@ export const anonymizeData = async (
     ),
   );
 
+  // Track every username in the dump so a generated name can never collide
+  // with another account (random draws alone have produced duplicate
+  // usernames in past dumps)
+  const usedUsernames = new Set<string>();
+  for (const user of users) {
+    usedUsernames.add(user.username);
+  }
+  for (const result of results) {
+    for (const userResult of result.results) {
+      usedUsernames.add(userResult.username);
+    }
+    for (const group of result.groups) {
+      usedUsernames.add(group.groupCreator);
+      for (const groupMember of group.groupMembers) {
+        usedUsernames.add(groupMember);
+      }
+    }
+  }
+  for (const signup of directSignups) {
+    for (const userSignup of signup.userSignups) {
+      usedUsernames.add(userSignup.username);
+    }
+  }
+
   const generatedUsernames = new Set<string>();
+  const nextUsername = (): string => {
+    let candidate = faker.number.int(1000000).toString();
+    while (usedUsernames.has(candidate)) {
+      candidate = faker.number.int(1000000).toString();
+    }
+    usedUsernames.add(candidate);
+    generatedUsernames.add(candidate);
+    return candidate;
+  };
+
   const originalToReplacement = new Map<string, string>();
   for (const user of users) {
-    const randomUsername = faker.number.int(1000000).toString();
-    generatedUsernames.add(randomUsername);
+    const randomUsername = nextUsername();
     originalToReplacement.set(user.username, randomUsername);
 
     for (const result of results) {
@@ -124,7 +157,7 @@ export const anonymizeData = async (
         replacement = relinked;
         logger.info(`ghost user re-linked: ${username} -> ${replacement}`);
       } else {
-        replacement = faker.number.int(1000000).toString();
+        replacement = nextUsername();
         logger.warn(
           `ghost user ${username} has no users.json match, anonymized to fresh id ${replacement} - remove the rows to keep the files consistent`,
         );
