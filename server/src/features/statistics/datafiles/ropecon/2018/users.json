@@ -15516,7 +15516,7 @@
     "serial": "9215931842",
     "isGroupCreator": false,
     "groupCode": "0",
-    "favoriteProgramItemIds": ["p2603"],
+    "favoriteProgramItemIds": [],
     "lotterySignups": [],
     "eventLogItems": [],
     "createdAt": "2018-07-27T16:22:55.000Z",
@@ -18975,7 +18975,7 @@
     "serial": "6138907214",
     "isGroupCreator": false,
     "groupCode": "0",
-    "favoriteProgramItemIds": ["p2577", "p2427", "p2603", "p2151"],
+    "favoriteProgramItemIds": ["p2577", "p2427", "p2151"],
     "lotterySignups": [
       {
         "programItemId": "p2577",
