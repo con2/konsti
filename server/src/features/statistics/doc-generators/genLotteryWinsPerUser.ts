@@ -2,11 +2,14 @@ import { DirectSignupsForProgramItem } from "server/features/direct-signup/direc
 import {
   collectRpgLotteryParticipation,
   dataFileExists,
+  DIRECT_SIGNUP_ONLY_TEXT,
   EVENT_LABELS,
   EVENT_ORDER,
   eventYears,
+  NO_RPGS_TEXT,
   pct,
   readDataFile,
+  scaleNote,
   writeDoc,
 } from "server/features/statistics/doc-generators/statsUtils";
 
@@ -52,7 +55,7 @@ const collectDistribution = (event: string, year: string): YearDistribution => {
       // priority 0 = first-come-first-served direct sign-up, 1-3 = lottery win
       if (signup.priority === 0) {
         // Whether the event ran a direct sign-up phase at all is judged across
-        // every program type, so a year where the lottery filled all RPG seats
+        // every program type, so a year where the lottery filled all RPG spots
         // is not mistaken for a lottery-only event
         anyDirectSignup = true;
         if (rpgIds.has(entry.programItemId)) {
@@ -106,47 +109,46 @@ const collectDistribution = (event: string, year: string): YearDistribution => {
 
 const renderYearSection = (dist: YearDistribution): string[] => {
   if (dist.kind === "no-rpgs") {
-    return [`### ${dist.year}`, "", "No tabletop RPGs in this event.", ""];
+    return [`### ${dist.year}`, "", NO_RPGS_TEXT, ""];
   }
   if (dist.kind === "no-lottery") {
-    return [
-      `### ${dist.year}`,
-      "",
-      "Tabletop RPGs at this event use direct sign-up, not lottery.",
-      "",
-    ];
+    return [`### ${dist.year}`, "", DIRECT_SIGNUP_ONLY_TEXT, ""];
   }
 
-  const winCounts = [...dist.usersByWinCount.keys()].toSorted((a, b) => a - b);
   const winners = [...dist.usersByWinCount.values()].reduce(
     (sum, n) => sum + n,
     0,
   );
   const totalParticipants = winners + dist.zeroWins;
-  const maxUsers = Math.max(dist.zeroWins, ...dist.usersByWinCount.values());
+  // One scale for both charts: they describe the same users, so equal counts
+  // must render equal bars
+  const maxUsers = Math.max(
+    dist.zeroWins,
+    ...dist.usersByWinCount.values(),
+    ...(dist.hasDirectSignup ? dist.usersByGameCount.values() : []),
+  );
   const scale = Math.max(1, Math.ceil(maxUsers / 40));
 
-  const zeroBar = "█".repeat(Math.round(dist.zeroWins / scale));
-  const zeroSep = zeroBar.length > 0 ? `${zeroBar} ` : "";
+  const chartRow = (label: string, users: number): string => {
+    const bar = "█".repeat(Math.round(users / scale));
+    const sep = bar.length > 0 ? `${bar} ` : "";
+    return `${label} │ ${sep}${users} (${pct(users, totalParticipants)})`;
+  };
+
+  const maxWins = Math.max(0, ...dist.usersByWinCount.keys());
   const out: string[] = [
     `### ${dist.year}`,
     "",
-    `**Lottery wins (${totalParticipants} participants, ${winners} won at least one seat):**`,
+    `**Lottery wins (${totalParticipants} participants, ${winners} won at least one spot):**`,
     "",
     "```",
-    `0 seats │ ${zeroSep}${dist.zeroWins} (${pct(dist.zeroWins, totalParticipants)})`,
+    chartRow("0 spots", dist.zeroWins),
   ];
-  for (const wins of winCounts) {
-    const users = dist.usersByWinCount.get(wins) ?? 0;
-    const bar = "█".repeat(Math.round(users / scale));
-    const label = `${wins} ${wins === 1 ? "seat " : "seats"}`;
-    const sep = bar.length > 0 ? `${bar} ` : "";
-    out.push(`${label} │ ${sep}${users} (${pct(users, totalParticipants)})`);
+  for (let wins = 1; wins <= maxWins; wins++) {
+    const label = `${wins} ${wins === 1 ? "spot " : "spots"}`;
+    out.push(chartRow(label, dist.usersByWinCount.get(wins) ?? 0));
   }
-  if (scale > 1) {
-    out.push("", `(scale: 1 block ≈ ${scale} users)`);
-  }
-  out.push("```", "");
+  out.push("", scaleNote(scale, "user", "users"), "```", "");
 
   // Total games only makes sense once the direct sign-up phase exists:
   // without it the final data adds nothing over the lottery results
@@ -158,27 +160,17 @@ const renderYearSection = (dist: YearDistribution): string[] => {
     return out;
   }
 
-  const gameCounts = [...dist.usersByGameCount.keys()].toSorted(
-    (a, b) => a - b,
-  );
-  const maxGameUsers = Math.max(...dist.usersByGameCount.values());
-  const gamesScale = Math.max(1, Math.ceil(maxGameUsers / 40));
+  const maxGames = Math.max(0, ...dist.usersByGameCount.keys());
   out.push(
-    "**Total games played (kept lottery seats + direct sign-ups):**",
+    "**Total games played (kept lottery spots + direct sign-ups):**",
     "",
     "```",
   );
-  for (const games of gameCounts) {
-    const users = dist.usersByGameCount.get(games) ?? 0;
-    const bar = "█".repeat(Math.round(users / gamesScale));
+  for (let games = 0; games <= maxGames; games++) {
     const label = `${games} ${games === 1 ? "game " : "games"}`;
-    const sep = bar.length > 0 ? `${bar} ` : "";
-    out.push(`${label} │ ${sep}${users} (${pct(users, totalParticipants)})`);
+    out.push(chartRow(label, dist.usersByGameCount.get(games) ?? 0));
   }
-  if (gamesScale > 1) {
-    out.push("", `(scale: 1 block ≈ ${gamesScale} users)`);
-  }
-  out.push("```", "");
+  out.push("", scaleNote(scale, "user", "users"), "```", "");
 
   const sentences: string[] = [];
   if (dist.zeroWins > 0) {
@@ -186,11 +178,11 @@ const renderYearSection = (dist: YearDistribution): string[] => {
       `Of the ${dist.zeroWins} participants without a lottery win, ${dist.zeroWinsWithDirect} (${pct(dist.zeroWinsWithDirect, dist.zeroWins)}) still played at least one RPG via direct sign-up.`,
     );
   } else {
-    sentences.push("Every participant won at least one seat.");
+    sentences.push("Every participant won at least one spot.");
   }
   if (winners > 0) {
     sentences.push(
-      `${dist.winnersWithZeroGames} ${dist.winnersWithZeroGames === 1 ? "winner" : "winners"} (${pct(dist.winnersWithZeroGames, winners)}) kept none of their won seats.`,
+      `${dist.winnersWithZeroGames} ${dist.winnersWithZeroGames === 1 ? "winner" : "winners"} (${pct(dist.winnersWithZeroGames, winners)}) ended up with none of their won spots, whether given up or cancelled.`,
     );
   }
   out.push(sentences.join(" "), "");
@@ -201,13 +193,17 @@ export const genLotteryWinsPerUser = (): void => {
   const out: string[] = [
     "# Lottery wins and games played per user",
     "",
-    "How many tabletop-RPG seats a single user received from the lottery algorithm, per event and year: for each number of won seats, how many users the algorithm gave exactly that many. The `0 seats` row is lottery participants who won nothing; each year also notes how many of them still got into an RPG via direct sign-up.",
+    "How many tabletop RPG spots the lottery gave each user, per event and year: each chart row shows how many users won exactly that many spots. The `0 spots` row is lottery participants who won nothing; years with a direct sign-up phase also note how many of them still got into an RPG via direct sign-up.",
     "",
-    "Wins are counted from the lottery assignment results to measure algorithm performance - a seat counts even if the user later cancelled it, and each start time counts once per user across re-runs. Participants are users with at least one RPG lottery sign-up, plus all winners (a group member's own sign-ups may be missing from the data, see caveat).",
+    "Wins are counted from the lottery assignment results to measure algorithm performance: a spot counts even if the user later gave it up, and each lottery slot counts once per user. Wins on deleted program items cannot be counted (see Notes). Participants are users with at least one RPG lottery sign-up, plus all winners (a group member's own sign-ups may be missing from the data, see caveat).",
     "",
-    "Years with a direct sign-up phase have a second chart with the total number of games the same participants ended up playing: seats still held in the final data, whether won in the lottery or grabbed via direct sign-up, so cancelled lottery seats don't count.",
+    "Years with a direct sign-up phase have a second chart with the total number of games the same users ended up playing: spots still held in the final data, whether won in the lottery or grabbed via direct sign-up - cancelled lottery spots don't count.",
     "",
-    "**Caveat:** some losing participants are missing from the data, so the real `0 seats` counts are somewhat higher than shown. Joining a group deleted the user's own lottery sign-ups in dumps before Ropecon 2026 (2017-2018 were restored from old result snapshots), the group records of older events were backfilled from the event's final state (missing anyone who left a group before the end), and winning a seat removes the user's overlapping lottery sign-ups in every year, including 2026. Ropecon 2026 records group compositions live, making it the most complete year, but not a perfect one.",
+    "**Caveat:** some losing participants are missing from the data, so the real `0 spots` counts are somewhat higher than shown (least so for Ropecon 2026, which records group compositions live):",
+    "",
+    "- Joining a group deleted the user's own sign-ups for upcoming program items in dumps before Ropecon 2026 (2017-2018 sign-ups were restored from old result snapshots).",
+    "- The backfilled group records of older events reflect each group's final membership: anyone who left a group before the event ended is missed, and late joiners are counted for slots they never entered.",
+    "- Program items moved or deleted after a lottery run erase the matching sign-ups, which can hide a losing group even in 2026 data.",
     "",
   ];
 
@@ -219,14 +215,11 @@ export const genLotteryWinsPerUser = (): void => {
 
     out.push(`## ${EVENT_LABELS[event] ?? event}`, "");
     if (distributions.every((d) => d.kind === "no-rpgs")) {
-      out.push("No tabletop RPGs at this event.", "");
+      out.push(NO_RPGS_TEXT, "");
       continue;
     }
     if (distributions.every((d) => d.kind !== "ok")) {
-      out.push(
-        "Tabletop RPGs at this event use direct sign-up, not lottery.",
-        "",
-      );
+      out.push(DIRECT_SIGNUP_ONLY_TEXT, "");
       continue;
     }
 
@@ -238,7 +231,8 @@ export const genLotteryWinsPerUser = (): void => {
   out.push(
     "## Notes",
     "",
-    '- Cancelled programs (`state: "cancelled"`) are excluded.',
+    "- Programs cancelled after their lottery ran are included: their sign-ups and wins count even though the program never happened.",
+    "- Wins on program items deleted from the data cannot be identified as RPGs and are not counted: 9 result rows in Tracon Hitpoint 2023, 6 in Tracon Hitpoint 2024, and 5 in Ropecon 2026.",
     "",
   );
 

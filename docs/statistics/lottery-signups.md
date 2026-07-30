@@ -1,29 +1,33 @@
-# Lottery Participants and Wins by Hour
+# Lottery participants and wins by hour
 
-Per-hour count of distinct users who participated in the lottery and how many of them won a seat, grouped by day and event. Restricted to tabletop RPGs to match [RPG Start Times](rpg-start-times.md).
+Per-hour count of distinct users who participated in the lottery and how many of them won a spot, grouped by day and event. Restricted to tabletop RPGs to match [RPG start times](rpg-start-times.md).
 
-Each user is counted once per hour regardless of how many priorities they submitted. A user counts as a winner for an hour if any of their lottery wins lands on a program starting in that hour.
+Each user is counted once per hour regardless of how many priorities they submitted. A user counts as a winner for an hour if they won a spot in that hour's lottery, even if the program was later moved to another time.
 
-In each bar, `█` = winners, `▄` = participants who didn't win. Bar length = total participants for that hour.
+In each bar, `█` = winners, `▄` = participants who didn't win. Bar length = total participants for that hour. Blocks are rounded to the chart scale, so very small winner or loser shares may not show - the numbers beside each bar are exact. Hours with no lottery participants are omitted.
 
 Group members participate through the group creator's sign-ups without having them on their own user record, so they are counted from the group compositions stored with each assignment run - live records from Ropecon 2026 onward, backfilled from the event's final state for older events. Winners are always counted as participants of the hour they won.
 
-**Caveat:** some losing participants are missing from the data: joining a group deleted the user's own lottery sign-ups in dumps before Ropecon 2026 (2017–2018 were restored from old result snapshots), the backfilled group records of older events miss anyone who left a group before the end, and winning a seat removes the user's overlapping lottery sign-ups in every year, including 2026. Real participant counts are somewhat higher than shown and win rates somewhat lower, least so for Ropecon 2026.
+**Caveat:** some losing participants are missing from the data, so real participant counts are somewhat higher than shown and win rates somewhat lower (least so for Ropecon 2026, which records group compositions live):
+
+- Joining a group deleted the user's own sign-ups for upcoming program items in dumps before Ropecon 2026 (2017-2018 sign-ups were restored from old result snapshots).
+- The backfilled group records of older events reflect each group's final membership: anyone who left a group before the event ended is missed, and late joiners are counted for earlier slots they never entered (a small overcount in the other direction).
+- Program items moved or deleted after a lottery run erase the matching sign-ups, which can hide a losing group even in 2026 data.
 
 ## Ropecon
 
-**Overall win rate by year:**
+**Overall win rate by year** (bar length = participants relative to the busiest year, `█` = winners, `▄` = participants who didn't win):
 
 ```
 2017 ██████████▄                          90.4%  (404 / 447)
-2018 █████████████▄▄▄                     81.4%  (538 / 661)
-2019 ██████████████▄▄▄▄                   79.4%  (570 / 718)
+2018 █████████████▄▄▄                     81.5%  (536 / 658)
+2019 ██████████████▄▄▄                    79.4%  (570 / 718)
 2021 (no lottery)
 2022 ████████████▄▄▄▄                     70.4%  (473 / 672)
 2023 ███████████████▄▄▄▄▄▄                68.4%  (598 / 874)
-2024 ██████████████████▄▄▄▄▄▄▄▄▄          65.9%  (743 / 1127)
+2024 ██████████████████▄▄▄▄▄▄▄▄▄          65.9%  (744 / 1129)
 2025 ███████████████████████▄▄▄▄▄▄▄▄      73.3%  (924 / 1260)
-2026 ███████████████████████████▄▄▄▄▄▄▄▄  77.2%  (1108 / 1435)
+2026 ███████████████████████████▄▄▄▄▄▄▄▄  77.3%  (1111 / 1437)
 ```
 
 ### 2017 (447 distinct participants, 404 winners, 90.4%)
@@ -32,9 +36,9 @@ Group members participate through the group creator's sign-ups without having th
 2017-07-28 (Fri, 185 participants, 163 winners, 88.1%)
 
 16:00 │ ███████████████▄▄▄▄ 30 / 37 (81.1%)
-17:00 │ ███████████████▄▄▄ 29 / 36 (80.6%)
-18:00 │ █████████████████████▄▄▄▄ 42 / 50 (84.0%)
-19:00 │ ████████▄▄▄ 16 / 21 (76.2%)
+17:00 │ ██████████████▄▄▄▄ 28 / 36 (77.8%)
+18:00 │ ██████████████████████▄▄▄ 44 / 50 (88.0%)
+19:00 │ █████████▄▄ 18 / 21 (85.7%)
 20:00 │ ██████████████████████████████▄ 60 / 62 (96.8%)
 
 (scale: 1 block ≈ 2 participants)
@@ -46,9 +50,9 @@ Group members participate through the group creator's sign-ups without having th
 10:00 │ ███████████████████▄▄▄ 37 / 43 (86.0%)
 11:00 │ ███████████ 22 / 22 (100.0%)
 12:00 │ ███████████ 21 / 22 (95.5%)
-13:00 │ ██████████████████▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ 35 / 65 (53.8%)
+13:00 │ ███████████████████▄▄▄▄▄▄▄▄▄▄▄▄▄▄ 38 / 65 (58.5%)
 14:00 │ ███████████████▄▄▄▄ 29 / 38 (76.3%)
-15:00 │ █████████████████▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ 33 / 73 (45.2%)
+15:00 │ ███████████████████▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ 37 / 73 (50.7%)
 16:00 │ █████████████▄▄▄ 26 / 32 (81.3%)
 17:00 │ ████████████▄ 24 / 26 (92.3%)
 18:00 │ ███████████▄▄▄▄▄ 22 / 32 (68.8%)
@@ -68,24 +72,24 @@ Group members participate through the group creator's sign-ups without having th
 (scale: 1 block ≈ 2 participants)
 ```
 
-### 2018 (661 distinct participants, 538 winners, 81.4%)
+### 2018 (658 distinct participants, 536 winners, 81.5%)
 
 ```
-2018-07-27 (Fri, 287 participants, 221 winners, 77.0%)
+2018-07-27 (Fri, 285 participants, 221 winners, 77.5%)
 
 16:00 │ ██████████████▄▄ 27 / 32 (84.4%)
-17:00 │ ██████████████▄▄▄▄▄▄▄ 27 / 42 (64.3%)
+17:00 │ ██████████████▄▄▄▄▄▄▄ 27 / 41 (65.9%)
 18:00 │ ███████████████████████████▄▄▄▄▄▄▄ 53 / 68 (77.9%)
 19:00 │ ███████████████████████▄▄▄▄▄▄▄ 45 / 59 (76.3%)
-20:00 │ ████████████████████▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ 39 / 74 (52.7%)
+20:00 │ ████████████████████▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ 39 / 73 (53.4%)
 21:00 │ █████████████████████▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ 41 / 78 (52.6%)
-22:00 │ ██████████████▄▄▄▄▄ 27 / 37 (73.0%)
+22:00 │ ██████████████▄▄▄▄ 27 / 36 (75.0%)
 
 (scale: 1 block ≈ 2 participants)
 ```
 
 ```
-2018-07-28 (Sat, 532 participants, 368 winners, 69.2%)
+2018-07-28 (Sat, 531 participants, 367 winners, 69.1%)
 
 10:00 │ ████████████▄ 46 / 52 (88.5%)
 11:00 │ ██████████▄▄▄▄▄ 41 / 60 (68.3%)
@@ -98,7 +102,7 @@ Group members participate through the group creator's sign-ups without having th
 18:00 │ ██████████▄▄▄▄▄ 40 / 59 (67.8%)
 19:00 │ █████████▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ 34 / 156 (21.8%)
 20:00 │ ██████████▄▄▄▄▄▄▄▄ 38 / 72 (52.8%)
-21:00 │ ██████▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ 25 / 86 (29.1%)
+21:00 │ ██████▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ 24 / 85 (28.2%)
 22:00 │ ████████▄▄▄▄▄ 31 / 50 (62.0%)
 
 (scale: 1 block ≈ 4 participants)
@@ -162,7 +166,7 @@ Group members participate through the group creator's sign-ups without having th
 
 ### 2021
 
-Tabletop RPGs at this event use direct sign-up, not lottery.
+Tabletop RPGs at this event used direct sign-up, not lottery.
 
 ### 2022 (672 distinct participants, 473 winners, 70.4%)
 
@@ -260,7 +264,7 @@ Tabletop RPGs at this event use direct sign-up, not lottery.
 (scale: 1 block ≈ 6 participants)
 ```
 
-### 2024 (1127 distinct participants, 743 winners, 65.9%)
+### 2024 (1129 distinct participants, 744 winners, 65.9%)
 
 ```
 2024-07-19 (Fri, 385 participants, 201 winners, 52.2%)
@@ -276,17 +280,17 @@ Tabletop RPGs at this event use direct sign-up, not lottery.
 ```
 
 ```
-2024-07-20 (Sat, 929 participants, 505 winners, 54.4%)
+2024-07-20 (Sat, 931 participants, 505 winners, 54.2%)
 
 09:00 │ █▄▄ 5 / 22 (22.7%)
 10:00 │ ████████████████▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ 111 / 247 (44.9%)
-11:00 │ █████████▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ 60 / 165 (36.4%)
+11:00 │ █████████▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ 60 / 167 (35.9%)
 12:00 │ ███████▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ 46 / 165 (27.9%)
 13:00 │ ███████▄▄▄▄▄▄▄ 46 / 96 (47.9%)
 14:00 │ ████████▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ 57 / 236 (24.2%)
 15:00 │ ██████▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ 39 / 158 (24.7%)
 16:00 │ █████████▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ 66 / 222 (29.7%)
-17:00 │ ███████▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ 49 / 202 (24.3%)
+17:00 │ ███████▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ 49 / 203 (24.1%)
 18:00 │ ██████▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ 41 / 244 (16.8%)
 19:00 │ ██████▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ 45 / 240 (18.8%)
 20:00 │ ████▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ 30 / 147 (20.4%)
@@ -363,30 +367,30 @@ Tabletop RPGs at this event use direct sign-up, not lottery.
 (scale: 1 block ≈ 9 participants)
 ```
 
-### 2026 (1435 distinct participants, 1108 winners, 77.2%)
+### 2026 (1437 distinct participants, 1111 winners, 77.3%)
 
 ```
-2026-07-24 (Fri, 508 participants, 295 winners, 58.1%)
+2026-07-24 (Fri, 510 participants, 298 winners, 58.4%)
 
 18:00 │ ██▄▄▄▄▄▄▄▄▄▄ 16 / 87 (18.4%)
-19:00 │ ███████████████████▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ 134 / 256 (52.3%)
-20:00 │ ██████████▄▄▄▄▄▄▄▄▄▄▄ 72 / 148 (48.6%)
+19:00 │ ████████████████████▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ 139 / 258 (53.9%)
+20:00 │ ██████████▄▄▄▄▄▄▄▄▄▄▄ 72 / 149 (48.3%)
 21:00 │ ███████▄▄▄▄▄▄▄▄▄ 47 / 113 (41.6%)
 22:00 │ ███▄▄▄▄▄▄▄ 22 / 68 (32.4%)
-23:00 │ ███▄▄▄▄▄▄▄ 19 / 68 (27.9%)
+23:00 │ ███▄▄▄▄▄▄▄ 19 / 69 (27.5%)
 
 (scale: 1 block ≈ 7 participants)
 ```
 
 ```
-2026-07-25 (Sat, 1166 participants, 732 winners, 62.8%)
+2026-07-25 (Sat, 1169 participants, 737 winners, 63.0%)
 
 00:00 │ █▄▄▄ 15 / 49 (30.6%)
 09:00 │ ██████▄▄▄▄▄▄▄▄ 75 / 180 (41.7%)
-10:00 │ █████████▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ 111 / 319 (34.8%)
+10:00 │ █████████▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ 116 / 323 (35.9%)
 11:00 │ █▄▄▄▄ 9 / 62 (14.5%)
 12:00 │ ██▄▄▄▄▄▄▄▄▄▄ 25 / 152 (16.4%)
-13:00 │ ████████████████▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ 202 / 517 (39.1%)
+13:00 │ ████████████████▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ 207 / 517 (40.0%)
 14:00 │ ██▄▄▄▄▄▄ 32 / 101 (31.7%)
 15:00 │ ██▄▄▄▄▄▄▄ 22 / 113 (19.5%)
 16:00 │ █▄▄▄▄▄▄▄▄▄ 19 / 132 (14.4%)
@@ -417,7 +421,7 @@ Tabletop RPGs at this event use direct sign-up, not lottery.
 
 ## Tracon Hitpoint
 
-**Overall win rate by year:**
+**Overall win rate by year** (bar length = participants relative to the busiest year, `█` = winners, `▄` = participants who didn't win):
 
 ```
 2019 █████████████████████████████▄▄▄▄▄▄  83.5%  (101 / 121)
@@ -445,6 +449,8 @@ Tabletop RPGs at this event use direct sign-up, not lottery.
 
 11:00 │ ██████████████▄▄▄▄▄▄▄▄▄▄▄▄▄ 14 / 27 (51.9%)
 12:00 │ ████████████████████████████▄▄▄▄▄▄▄▄▄▄ 28 / 38 (73.7%)
+
+(scale: 1 block = 1 participant)
 ```
 
 ### 2023 (94 distinct participants, 89 winners, 94.7%)
@@ -459,6 +465,8 @@ Tabletop RPGs at this event use direct sign-up, not lottery.
 18:00 │ ████████████████▄▄▄ 16 / 19 (84.2%)
 19:00 │ ████████████ 12 / 12 (100.0%)
 20:00 │ ██████████▄ 10 / 11 (90.9%)
+
+(scale: 1 block = 1 participant)
 ```
 
 ```
@@ -468,6 +476,8 @@ Tabletop RPGs at this event use direct sign-up, not lottery.
 12:00 │ ████████████████████████████▄▄▄▄▄▄▄▄▄ 28 / 37 (75.7%)
 13:00 │ ████▄▄▄▄▄▄▄▄▄ 4 / 13 (30.8%)
 14:00 │ █████████▄▄▄ 9 / 12 (75.0%)
+
+(scale: 1 block = 1 participant)
 ```
 
 ### 2024 (93 distinct participants, 88 winners, 94.6%)
@@ -482,6 +492,8 @@ Tabletop RPGs at this event use direct sign-up, not lottery.
 18:00 │ █████▄▄▄▄ 5 / 9 (55.6%)
 19:00 │ ███████████████▄▄▄▄ 15 / 19 (78.9%)
 20:00 │ ██████████▄▄▄▄▄▄▄▄▄ 10 / 19 (52.6%)
+
+(scale: 1 block = 1 participant)
 ```
 
 ```
@@ -490,11 +502,13 @@ Tabletop RPGs at this event use direct sign-up, not lottery.
 11:00 │ ██████████████████████████▄▄▄▄▄▄ 26 / 32 (81.3%)
 12:00 │ ███████████████████▄▄▄▄ 19 / 23 (82.6%)
 14:00 │ █████████▄ 9 / 10 (90.0%)
+
+(scale: 1 block = 1 participant)
 ```
 
 ## Tracon
 
-Tabletop RPGs at this event use direct sign-up, not lottery.
+Tabletop RPGs at this event used direct sign-up, not lottery.
 
 ## Solmukohta
 
@@ -502,4 +516,5 @@ No tabletop RPGs at this event.
 
 ## Notes
 
-- A user counts at most once per hour even if they submitted multiple priorities.
+- Programs cancelled after their lottery ran are included: their sign-ups and wins count even though the program never happened.
+- Wins on program items deleted from the data cannot be identified as RPGs and are not counted: 9 result rows in Tracon Hitpoint 2023, 6 in Tracon Hitpoint 2024, and 5 in Ropecon 2026.

@@ -1,14 +1,16 @@
 import {
   ProgramItem,
   ProgramType,
+  SignupType,
   State,
 } from "shared/types/models/programItem";
-import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import {
+  collectRpgSpotCounts,
   EVENT_LABELS,
   EVENT_ORDER,
   eventYears,
   fixedBar,
+  NO_RPGS_TEXT,
   pct,
   readDataFile,
   writeDoc,
@@ -22,7 +24,7 @@ interface FillRow {
   full: number;
   empty: number;
   progs: number;
-  noLimit: number;
+  nonKonsti: number;
 }
 
 export const genRpgFillRate = (): void => {
@@ -34,37 +36,26 @@ export const genRpgFillRate = (): void => {
         year,
         "program-items.json",
       ) as ProgramItem[];
-      const rpgs = items.filter(
+      const allRpgs = items.filter(
         (i) =>
           i.programType === ProgramType.TABLETOP_RPG &&
-          i.state !== State.CANCELLED &&
-          i.maxAttendance > 0,
+          i.state !== State.CANCELLED,
       );
-      const noLimit = items.filter(
-        (i) =>
-          i.programType === ProgramType.TABLETOP_RPG &&
-          i.state !== State.CANCELLED &&
-          i.maxAttendance === 0,
+      // Items not signed up via Konsti can have no Konsti sign-ups, so
+      // counting them would read as empty spots
+      const nonKonsti = allRpgs.filter(
+        (i) => i.signupType !== SignupType.KONSTI,
       ).length;
-      if (rpgs.length === 0) continue;
-
-      const ds = readDataFile(
-        event,
-        year,
-        "direct-signups.json",
-      ) as DirectSignupsForProgramItem[];
-      const countById = new Map<string, number>();
-      for (const e of ds) {
-        countById.set(e.programItemId, e.count);
-      }
+      const { konstiRpgs, spotsByItem } = collectRpgSpotCounts(event, year);
+      if (konstiRpgs.length === 0 && nonKonsti === 0) continue;
 
       let avail = 0;
       let filled = 0;
       let full = 0;
       let empty = 0;
-      for (const r of rpgs) {
+      for (const r of konstiRpgs) {
         avail += r.maxAttendance;
-        const c = countById.get(r.programItemId) ?? 0;
+        const c = spotsByItem.get(r.programItemId) ?? 0;
         filled += c;
         if (c >= r.maxAttendance) full++;
         if (c === 0) empty++;
@@ -76,8 +67,8 @@ export const genRpgFillRate = (): void => {
         filled,
         full,
         empty,
-        progs: rpgs.length,
-        noLimit,
+        progs: konstiRpgs.length,
+        nonKonsti,
       });
     }
   }
@@ -86,41 +77,44 @@ export const genRpgFillRate = (): void => {
   const totalFilled = rows.reduce((s, r) => s + r.filled, 0);
 
   const out: string[] = [
-    "# RPG seats filled",
+    "# RPG spots filled",
     "",
-    "How completely tabletop-RPG seats were filled at each event. Combines lottery-assigned and direct sign-ups.",
+    "How completely tabletop RPG spots were filled at each event, combining lottery-assigned and direct sign-ups.",
     "",
-    "Programs with `maxAttendance: 0` (no limit) are excluded from the rate but counted separately.",
+    "In each bar, `█` = filled spots and `▄` = unfilled spots. After the bar, `full` = programs whose sign-ups reached their attendance limit, `empty` = programs with no sign-ups at all.",
     "",
-    `**Across all events combined**: **${totalFilled} / ${totalAvail}** seats filled (${pct(totalFilled, totalAvail)}).`,
+    "Excluded from the rate but counted separately per row: programs not signed up via Konsti (`non-Konsti`: RPGs listed in Konsti without Konsti sign-up, such as drop-in and externally organized games).",
+    "",
+    `**Across all events combined**: **${totalFilled} / ${totalAvail}** spots filled (${pct(totalFilled, totalAvail)}).`,
     "",
   ];
 
   for (const event of EVENT_ORDER) {
     const items = rows.filter((r) => r.event === event);
-    if (items.length === 0) continue;
     out.push(`## ${EVENT_LABELS[event] ?? event}`, "");
+    if (items.length === 0) {
+      out.push(NO_RPGS_TEXT, "");
+      continue;
+    }
     const block: string[] = ["```"];
     for (const r of items) {
       const pctStr = pct(r.filled, r.avail).padStart(6);
-      const noLimitStr = r.noLimit > 0 ? ` · ${r.noLimit} no-limit` : "";
+      const nonKonstiStr =
+        r.nonKonsti > 0 ? ` · ${r.nonKonsti} non-Konsti` : "";
       block.push(
-        `${r.year} ${fixedBar(r.filled, r.avail, 35)} ${pctStr}  ${r.filled} / ${r.avail} seats  ·  ${r.full} full / ${r.empty} empty / ${r.progs} programs${noLimitStr}`,
+        `${r.year} ${fixedBar(r.filled, r.avail, 35)} ${pctStr}  ${r.filled} / ${r.avail} spots  ·  ${r.full} full / ${r.empty} empty / ${r.progs} programs${nonKonstiStr}`,
       );
     }
     block.push("```", "");
     out.push(...block);
   }
 
-  if (rows.every((r) => r.event !== "solmukohta")) {
-    out.push("## Solmukohta", "", "No tabletop RPGs at this event.", "");
-  }
-
   out.push(
     "## Notes",
     "",
     '- Cancelled programs (`state: "cancelled"`) are excluded.',
-    "- Tracon Hitpoint 2019 fill counts are understated: its final signup data only preserved each user's last lottery win (see the datafiles guide).",
+    "- Tracon Hitpoint 2019 spot counts come from the assignment results: the final sign-up data at that event only kept each user's last lottery win, which would understate the year by about a third (see the [datafiles guide](../en/datafiles-guide.md)). Results count assigned spots, so a few spots users gave up afterwards are included.",
+    "- A few historical programs are overfilled (sign-ups above `maxAttendance`, 11 in total across 2017-2025), so `filled` can slightly exceed capacity.",
     "",
   );
 
