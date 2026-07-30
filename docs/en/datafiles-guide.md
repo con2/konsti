@@ -38,16 +38,20 @@ Confirmed sign-ups (both lottery-assigned and direct sign-ups).
 ]
 ```
 
+A handful of historical entries are overfilled (more sign-ups than the program's `maxAttendance`; 11 items and 20 excess sign-ups across 2017-2025, of which 6 items and 11 sign-ups are tabletop RPGs).
+
 **Priority values:**
 
-- `0` — Signed up via direct sign-up (first-come-first-served)
-- `1` — Got their 1st lottery choice
-- `2` — Got their 2nd lottery choice
-- `3` — Got their 3rd lottery choice
+- `0` - Signed up via direct sign-up (first-come-first-served)
+- `1` - Got their 1st lottery choice
+- `2` - Got their 2nd lottery choice
+- `3` - Got their 3rd lottery choice
 
-**`signupTime` values:** Ropecon 2026 is the first event where `signupTime` is the actual recorded sign-up moment. For earlier events (2017–2025) the field was backfilled during normalization: direct sign-ups (`priority: 0`) use the program's start time, and lottery-assigned sign-ups (priority > 0) use two hours before the start time, which is when the assignment run happened.
+**`signupTime` values:** Ropecon 2026 is the first event where `signupTime` is the actual recorded sign-up moment. For earlier events (2017-2025) the field was backfilled during normalization: direct sign-ups (`priority: 0`) use the program's start time, and lottery-assigned sign-ups (priority > 0) use two hours before the assigned slot, which is when the assignment run happened - except in the Tracon 2024 and 2025 dumps, where lottery-assigned rows use the slot time itself.
 
-For older events (2017–2021) this file was reconstructed from `users.json` `directSignups` during a normalization pass. Entries from 2017–2019 use `priority: 1`, `2`, or `3` matching the lottery preference that won (Konsti was lottery-only then, so every confirmed sign-up was a lottery win). For 2017–2018 the priority was not stored on the original `directSignups` entries and was looked up from `results.json`; for 2019 it was already present. Ropecon 2021 was a remote / COVID-era convention that ran direct sign-up only (no lottery), so its entries use `priority: 0`.
+2017-2019 events were lottery-only, so all of their entries use `priority` 1-3; Ropecon 2021 ran direct sign-up only (remote / COVID convention), so all of its entries use `priority: 0`.
+
+**Tracon Hitpoint 2019:** this file only holds each user's chronologically last lottery win, even though `results.json` shows users winning up to three spots. Use `results.json` for anything involving per-user spot counts.
 
 ### program-items.json
 
@@ -60,13 +64,13 @@ All program items for the event.
     "title": "Example Program",
     "parentId": "example-program", // Kompassi parent program id shared by multi-session items; present from Tracon 2025 onward
     "programType": "tabletopRPG", // tabletopRPG, larp, workshop, tournament, otherGaming, fleaMarket, other
-    "signupType": "konsti", // Ropecon 2025 onward also includes items not signed up via Konsti: notRequired, other, ropelarp, experiencePoint
+    "signupType": "konsti", // Items not using Konsti sign-up have notRequired, other, ropelarp, or experiencePoint
     "state": "accepted", // "cancelled" if the program was cancelled
     "startTime": "2024-07-19T12:00:00Z",
     "endTime": "2024-07-19T16:00:00Z",
     "mins": 240,
     "minAttendance": 1,
-    "maxAttendance": 4, // 0 = no limit
+    "maxAttendance": 4, // 0 only on items that do not use Konsti sign-up
     "location": "Sali 306",
     "languages": ["finnish", "english"],
     "gameSystem": "Torchbearer",
@@ -122,13 +126,19 @@ Lottery assignment run results. Each entry represents one assignment run (the lo
 
 The same assignment data is also reflected in `direct-signups.json` (with priority > 0). This file provides the additional context of which algorithm was used and the assignment run metadata.
 
-`groups` was added after these events ran, so it is backfilled per run from each event's final `users.json` state: a group is included when its creator had a lottery sign-up for the run's start time or one of its members won in that run. Group membership reflects the dump's final state, which may differ from the moment the lottery actually ran.
+From Ropecon 2026 onward, `groups` is a live snapshot recorded when the run happened. For older events the field was added after they ran, so it is backfilled per run from each event's final `users.json` state: a group is included when its creator had a lottery sign-up for the run's start time or one of its members won in that run. Backfilled group membership reflects the dump's final state, which may differ from the moment the lottery actually ran. In Ropecon 2018, 12 of the 189 backfilled group snapshots have an empty `groupCreator` (`""`) because the creator could not be reconstructed; those groups were included via a member's win.
+
+**Wins can reference program items missing from `program-items.json`:** items deleted after their lottery keep their result rows even though the live cleanup removes every user-side reference. Joining `results.json` to `program-items.json` on `programItemId` drops these rows: 9 in Tracon Hitpoint 2023, 6 in Tracon Hitpoint 2024, and 5 in Ropecon 2026.
+
+A win's `signedToStartTime` always equals its run's `assignmentTime`, except for Tracon 2025's parent-batched flea-market rows, where one run assigns several sequential sub-slots.
 
 Ropecon 2021 has no `results.json` because no lottery was run that year (remote / COVID convention, direct sign-up only).
 
 ### users.json
 
-All users with sanitized data. Usernames are anonymized numeric IDs. `password` is `"<redacted>"` when the account had a password and `""` for accounts that never had one (Kompassi login users).
+All users with sanitized data. Usernames are anonymized numeric IDs, unique within each dump but randomized per event, so the same person cannot be tracked across events. `password` is `"<redacted>"` when the account had a password and `""` for accounts that never had one (Kompassi login users).
+
+In Ropecon 2023-2024 and Tracon 2024, a handful of direct sign-up rows (12 in total) may be attached to the wrong one of two accounts: an earlier anonymization defect merged the accounts' rows, and these direct sign-ups could not be re-attributed with certainty.
 
 ```jsonc
 [
@@ -166,15 +176,7 @@ All users with sanitized data. Usernames are anonymized numeric IDs. `password` 
 ]
 ```
 
-**Caveat: `lotterySignups` can be incomplete.** Lottery sign-ups may be removed after the lottery has run: before Ropecon 2026 joining a group deleted the user's sign-ups for already-run lotteries (2026 onward preserves them), and winning a seat still removes the user's overlapping lottery sign-ups in every year, including 2026. `eventLogItems` are never modified. This means some users have `newAssignment` or `noAssignment` entries for program items or time slots that no longer appear in their `lotterySignups`. To reconstruct what users originally wanted, treat `eventLogItems` as authoritative evidence of past lottery participation and combine it with the remaining `lotterySignups`. For 2017–2018, sign-ups that were wiped from `users.json` were restored during normalization from a per-result snapshot that older `results.json` files used to carry.
-
-Older events have been normalized into the schema above. Notable details:
-
-- All years: age-group values (`everyone`, `adults`, `teens`, `onlyAdults`, `kids`, `smallKids`, plus the legacy `childrenFriendly`) were moved from `tags` into a separate `ageGroups` field, matching the 2026 code change that split the `AgeGroup` enum out of `Tag`. `childrenFriendly` (an old age-audience flag with no current enum equivalent) is kept in `ageGroups` as a legacy value; `k16` stays in `tags` as in current code, and other legacy tag values (`inEnglish`, `intendedForExperiencedParticipants`, `celebratoryYear`, `demo`, `tournament`) remain in `tags`.
-- 2017–2019 (Ropecon, Tracon Hitpoint 2019): `directSignups` were moved out into a generated `direct-signups.json`; `favoriteProgramItemIds` was flattened from `[{programItemId}]` to `[string]`; old descriptive boolean flags (`englishOk`, `childrenFriendly`, `ageRestricted`, `beginnerFriendly`, `intendedForExperiencedParticipants`) were mapped to entries in `tags` (later split into `tags` and `ageGroups`, see above) and removed; 2017's `attributes` array was split into `genres` and `styles` and removed; 2017's `notes` field (which contained the game system) was renamed to `gameSystem`.
-- 2017: `mins` was string-typed and is now numeric; lottery sign-up priorities were string-typed and are now numeric; `signedToStartTime` was backfilled from each program's `startTime`.
-- 2019 Tracon Hitpoint: `direct-signups.json` only holds each user's chronologically last lottery win, even though `results.json` shows users winning up to three seats. Cause: a bug in the Konsti version used at the event ([konsti-server commit `d6fd869`](https://github.com/Archinowsk/konsti-server/commit/d6fd8693570bd3ba2f2fd02d360a5f1a73692c8e), 2019-11-13) made saving an assignment result replace the user's whole `enteredGames` array with the single newly won game, so each per-slot assignment run wiped earlier wins. Ropecon 2019 ran older code that appended to the array, so its data is unaffected. Use `results.json` for anything involving per-user seat counts.
-- 2021 Ropecon: a remote / COVID-era convention with direct sign-up only — no lottery was run. `lotterySignups` is empty by design and `results.json` is absent. Confirmed sign-ups are in `direct-signups.json` with `priority: 0`.
+**Caveat: `lotterySignups` can be incomplete.** Lottery sign-ups may be removed after the lottery has run: before Ropecon 2026 joining a group deleted the user's sign-ups for already-run lotteries (2026 onward preserves them), winning a spot removes other lottery sign-ups according to the event's `removeLotterySignupsStrategy` (overlapping sign-ups for most events, all upcoming ones in Tracon 2025, none in Tracon 2024), and program items moved or deleted after a run erase the matching sign-ups. `eventLogItems` are never modified. This means some users have `newAssignment` or `noAssignment` entries for program items or time slots that no longer appear in their `lotterySignups`. To reconstruct what users originally wanted, treat `eventLogItems` as authoritative evidence of past lottery participation and combine it with the remaining `lotterySignups`.
 
 ### serials.json
 
@@ -186,11 +188,11 @@ Application settings dump. Not required for statistics.
 
 ## Conventions to know
 
-- **Group creator identification**: a user is the group creator iff `user.isGroupCreator === true` (a creator's `groupCode` is the group's own code). Regular members have `isGroupCreator: false`. In 2018–2023 dumps the `groupCode` equals the creator's `serial`; from 2024 onward it's an unrelated UUID-style string.
+- **Group creator identification**: a user is the group creator iff `user.isGroupCreator === true` (a creator's `groupCode` is the group's own code). Regular members have `isGroupCreator: false`. In 2018-2023 dumps the `groupCode` equals the creator's `serial`; from 2024 onward it's an unrelated UUID-style string.
 - **`kompassiId` types**: `0` (number) means the user signed up with a registration code; `"<redacted>"` (string) means they used Kompassi OAuth. Both forms only co-exist in events whose `settings.json` has `loginProvider: "local+kompassi"` (Ropecon 2025 onward). Earlier events have a single value across all rows depending on the active login method.
 - **Popularity scale history**: Ropecon 2025 introduced the 5-bucket enum (`notSet`/`low`/`medium`/`high`/`veryHigh`/`extreme`). Pre-2025 dumps used a numeric scale that encoded only 3 buckets (`low` = under min attendance, `medium` = between min and max, `high` = at max), so normalized older dumps never carry `veryHigh` or `extreme`.
 - **Algorithm naming history**: `results.json` `algorithm` field is canonicalized to current names. `Opa` (in older `message` strings) was the older name for `padg`; `Group` was the older name for `random`. 2017 used `hungarian` (no longer in the codebase enum), and 2018 used `random`.
-- **Past-event configs**: [`shared/config/past-events/`](../../shared/config/past-events/) holds a `Partial<EventConfig>` per event. Files for 2017–2022 (Ropecon) and 2019 (Tracon Hitpoint) were reconstructed from the data files (not preserved from the live event) and carry a notice header.
+- **Past-event configs**: [`shared/config/past-events/`](../../shared/config/past-events/) holds a `Partial<EventConfig>` per event. Files for 2017-2022 (Ropecon) and 2019 (Tracon Hitpoint) were reconstructed from the data files (not preserved from the live event) and carry a notice header.
 
 ## Tips for Analysis
 
