@@ -47,7 +47,7 @@ export const printRpgDirectSignupFullTimes = (
       "minutes",
     );
 
-    const attendance = `${rpgDirectSignup.count}/${programItem.maxAttendance}`;
+    const attendance = `${rpgDirectSignup.userSignups.length}/${programItem.maxAttendance}`;
 
     if (totalMinutes <= 1) {
       const seconds = programItemFullTime.diff(

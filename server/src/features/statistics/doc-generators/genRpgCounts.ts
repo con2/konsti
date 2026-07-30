@@ -7,7 +7,9 @@ import {
   EVENT_LABELS,
   EVENT_ORDER,
   eventYears,
+  NO_RPGS_TEXT,
   readDataFile,
+  scaleNote,
   writeDoc,
 } from "server/features/statistics/doc-generators/statsUtils";
 
@@ -37,6 +39,8 @@ export const genRpgCounts = (): void => {
     "",
     "How many tabletop RPG programs were run at each event. Counts non-cancelled `tabletopRPG` items in `program-items.json`.",
     "",
+    "Bars are scaled per event section (see the scale note under each chart), so bar lengths are not comparable between sections.",
+    "",
     `**Across all events combined**: **${total}** RPG programs run over ${yearsWithRpgs} event years.`,
     "",
   ];
@@ -48,7 +52,7 @@ export const genRpgCounts = (): void => {
 
     const withRpgs = items.filter((r) => r.rpgs > 0);
     if (withRpgs.length === 0) {
-      out.push("No tabletop RPGs in this event.", "");
+      out.push(NO_RPGS_TEXT, "");
       continue;
     }
 
@@ -56,7 +60,7 @@ export const genRpgCounts = (): void => {
     const scale = Math.max(1, Math.ceil(max / 50));
 
     const eventBlock: string[] = ["```"];
-    let prev: number | null = null;
+    let prev: { year: string; rpgs: number } | null = null;
     for (const r of items) {
       if (r.rpgs === 0) {
         eventBlock.push(`${r.year} (no RPGs)`);
@@ -65,17 +69,13 @@ export const genRpgCounts = (): void => {
       }
       const bars = Math.max(1, Math.round(r.rpgs / scale));
       const bar = "█".repeat(bars);
-      const delta =
-        prev !== null && prev > 0
-          ? ` (${r.rpgs >= prev ? "+" : ""}${r.rpgs - prev} vs prev)`
-          : "";
+      const delta = prev
+        ? ` (${r.rpgs >= prev.rpgs ? "+" : ""}${r.rpgs - prev.rpgs} vs ${prev.year})`
+        : "";
       eventBlock.push(`${r.year} ${bar} ${r.rpgs}${delta}`);
-      prev = r.rpgs;
+      prev = { year: r.year, rpgs: r.rpgs };
     }
-    if (scale > 1) {
-      eventBlock.push("", `(scale: 1 block ≈ ${scale} RPGs)`);
-    }
-    eventBlock.push("```", "");
+    eventBlock.push("", scaleNote(scale, "RPG", "RPGs"), "```", "");
     out.push(...eventBlock);
   }
 

@@ -2,11 +2,14 @@ import {
   bucketByHour,
   collectRpgLotteryParticipation,
   dayOfWeek,
+  DIRECT_SIGNUP_ONLY_TEXT,
   EVENT_LABELS,
   EVENT_ORDER,
   eventYears,
+  NO_RPGS_TEXT,
   pct,
   scaledBar,
+  scaleNote,
   writeDoc,
 } from "server/features/statistics/doc-generators/statsUtils";
 
@@ -59,7 +62,7 @@ const renderYearSection = (event: string, year: string): string[] => {
   const { rpgIds, ownSlotsByUser, wonSlotsByUser, groupMemberSlotsByUser } =
     collectRpgLotteryParticipation(event, year);
   if (rpgIds.size === 0) {
-    return [`### ${year}`, "", "No tabletop RPGs in this event.", ""];
+    return [`### ${year}`, "", NO_RPGS_TEXT, ""];
   }
 
   // Own sign-ups, wins, and group participation all resolve to slot start
@@ -101,28 +104,21 @@ const renderYearSection = (event: string, year: string): string[] => {
   }
 
   if (totalParticipants.size === 0 && totalWinners.size === 0) {
-    return [
-      `### ${year}`,
-      "",
-      "Tabletop RPGs at this event use direct sign-up, not lottery.",
-      "",
-    ];
+    return [`### ${year}`, "", DIRECT_SIGNUP_ONLY_TEXT, ""];
   }
 
+  // Winners are always added to the participant buckets, so winners can never
+  // outnumber participants at any granularity; only the participants-without-
+  // results case needs a fallback
   const out: string[] = [];
-  if (totalParticipants.size > 0 && totalWinners.size > 0) {
+  if (totalWinners.size > 0) {
     out.push(
       `### ${year} (${totalParticipants.size} distinct participants, ${totalWinners.size} winners, ${pct(totalWinners.size, totalParticipants.size)})`,
       "",
     );
-  } else if (totalParticipants.size > 0) {
-    out.push(
-      `### ${year} (${totalParticipants.size} distinct participants; win counts unavailable)`,
-      "",
-    );
   } else {
     out.push(
-      `### ${year} (${totalWinners.size} winners; participant counts unavailable)`,
+      `### ${year} (${totalParticipants.size} distinct participants; win counts unavailable)`,
       "",
     );
   }
@@ -160,31 +156,29 @@ const renderYearSection = (event: string, year: string): string[] => {
     const scale = Math.max(1, Math.ceil(maxHourP / 40));
 
     const block: string[] = ["```"];
-    let dayHeader: string;
-    if (dayP > 0 && dayW > 0) {
-      dayHeader = `${day} (${dow}, ${dayP} participants, ${dayW} winners, ${pct(dayW, dayP)})`;
-    } else if (dayP > 0) {
-      dayHeader = `${day} (${dow}, ${dayP} participants, wins n/a)`;
-    } else {
-      dayHeader = `${day} (${dow}, ${dayW} winners, participants n/a)`;
-    }
+    // Win data exists for the whole year or not at all, so a zero-winner day
+    // still shows real counts instead of reading as missing data
+    const dayHeader =
+      totalWinners.size > 0
+        ? `${day} (${dow}, ${dayP} participants, ${dayW} winners, ${pct(dayW, dayP)})`
+        : `${day} (${dow}, ${dayP} participants, wins n/a)`;
     block.push(dayHeader, "");
 
     for (const hour of [...allHours].toSorted((a, b) => a - b)) {
       const p = (pHours as Map<number, Set<string>>).get(hour)?.size ?? 0;
       const w = (wHours as Map<number, Set<string>>).get(hour)?.size ?? 0;
       const pBars = Math.round(p / scale);
-      const wBars = Math.min(pBars, Math.round(w / scale));
+      let wBars = Math.min(pBars, Math.round(w / scale));
+      // Keep real winners visible when there is room for both glyphs; at a
+      // one-block bar the exact numbers beside the bar have to carry it
+      if (w > 0 && wBars === 0 && pBars > 1) wBars = 1;
       const bar = "█".repeat(wBars) + "▄".repeat(Math.max(0, pBars - wBars));
       const label = `${String(hour).padStart(2, "0")}:00`;
-      const numStr = p > 0 ? `${w} / ${p} (${pct(w, p)})` : `${w} winners`;
+      const numStr = `${w} / ${p} (${pct(w, p)})`;
       const sep = bar.length > 0 ? `${bar} ` : "";
       block.push(`${label} │ ${sep}${numStr}`);
     }
-    if (scale > 1) {
-      block.push("", `(scale: 1 block ≈ ${scale} participants)`);
-    }
-    block.push("```", "");
+    block.push("", scaleNote(scale, "participant", "participants"), "```", "");
     out.push(...block);
   }
 
@@ -201,17 +195,21 @@ export const genLotterySignups = (): void => {
   }
 
   const out: string[] = [
-    "# Lottery Participants and Wins by Hour",
+    "# Lottery participants and wins by hour",
     "",
-    "Per-hour count of distinct users who participated in the lottery and how many of them won a seat, grouped by day and event. Restricted to tabletop RPGs to match [RPG Start Times](rpg-start-times.md).",
+    "Per-hour count of distinct users who participated in the lottery and how many of them won a spot, grouped by day and event. Restricted to tabletop RPGs to match [RPG start times](rpg-start-times.md).",
     "",
-    "Each user is counted once per hour regardless of how many priorities they submitted. A user counts as a winner for an hour if any of their lottery wins lands on a program starting in that hour.",
+    "Each user is counted once per hour regardless of how many priorities they submitted. A user counts as a winner for an hour if they won a spot in that hour's lottery, even if the program was later moved to another time.",
     "",
-    "In each bar, `█` = winners, `▄` = participants who didn't win. Bar length = total participants for that hour.",
+    "In each bar, `█` = winners, `▄` = participants who didn't win. Bar length = total participants for that hour. Blocks are rounded to the chart scale, so very small winner or loser shares may not show - the numbers beside each bar are exact. Hours with no lottery participants are omitted.",
     "",
     "Group members participate through the group creator's sign-ups without having them on their own user record, so they are counted from the group compositions stored with each assignment run - live records from Ropecon 2026 onward, backfilled from the event's final state for older events. Winners are always counted as participants of the hour they won.",
     "",
-    "**Caveat:** some losing participants are missing from the data: joining a group deleted the user's own lottery sign-ups in dumps before Ropecon 2026 (2017–2018 were restored from old result snapshots), the backfilled group records of older events miss anyone who left a group before the end, and winning a seat removes the user's overlapping lottery sign-ups in every year, including 2026. Real participant counts are somewhat higher than shown and win rates somewhat lower, least so for Ropecon 2026.",
+    "**Caveat:** some losing participants are missing from the data, so real participant counts are somewhat higher than shown and win rates somewhat lower (least so for Ropecon 2026, which records group compositions live):",
+    "",
+    "- Joining a group deleted the user's own sign-ups for upcoming program items in dumps before Ropecon 2026 (2017-2018 sign-ups were restored from old result snapshots).",
+    "- The backfilled group records of older events reflect each group's final membership: anyone who left a group before the event ended is missed, and late joiners are counted for earlier slots they never entered (a small overcount in the other direction).",
+    "- Program items moved or deleted after a lottery run erase the matching sign-ups, which can hide a losing group even in 2026 data.",
     "",
   ];
 
@@ -221,21 +219,22 @@ export const genLotterySignups = (): void => {
 
     out.push(`## ${EVENT_LABELS[event] ?? event}`, "");
     if (summaries.every((t) => t.kind === "no-rpgs")) {
-      out.push("No tabletop RPGs at this event.", "");
+      out.push(NO_RPGS_TEXT, "");
       continue;
     }
     if (summaries.every((t) => t.kind !== "ok")) {
-      out.push(
-        "Tabletop RPGs at this event use direct sign-up, not lottery.",
-        "",
-      );
+      out.push(DIRECT_SIGNUP_ONLY_TEXT, "");
       continue;
     }
 
     const okItems = summaries.flatMap((t) => (t.kind === "ok" ? [t] : []));
     const maxParticipants = Math.max(...okItems.map((t) => t.participants));
 
-    const summaryBlock: string[] = ["**Overall win rate by year:**", "", "```"];
+    const summaryBlock: string[] = [
+      "**Overall win rate by year** (bar length = participants relative to the busiest year, `█` = winners, `▄` = participants who didn't win):",
+      "",
+      "```",
+    ];
     for (const t of summaries) {
       if (t.kind === "no-rpgs") {
         summaryBlock.push(`${t.year} (no RPGs)`);
@@ -259,7 +258,8 @@ export const genLotterySignups = (): void => {
   out.push(
     "## Notes",
     "",
-    "- A user counts at most once per hour even if they submitted multiple priorities.",
+    "- Programs cancelled after their lottery ran are included: their sign-ups and wins count even though the program never happened.",
+    "- Wins on program items deleted from the data cannot be identified as RPGs and are not counted: 9 result rows in Tracon Hitpoint 2023, 6 in Tracon Hitpoint 2024, and 5 in Ropecon 2026.",
     "",
   );
 

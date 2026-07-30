@@ -1,12 +1,12 @@
 # Konsti Statistics
 
-Aggregated statistics derived from past-event database dumps in [`server/src/features/statistics/datafiles/`](../server/src/features/statistics/datafiles/). See the [Datafiles Guide](en/datafiles-guide.md) for the file formats.
+Aggregated statistics derived from past-event database dumps in [`server/src/features/statistics/datafiles/`](../server/src/features/statistics/datafiles/). See the [Datafiles Guide](en/datafiles-guide.md) for the file formats and data gotchas, and the [terminology glossary](terminology.md) for domain terms.
 
 ## Available statistics
 
-- [Number of RPGs per event](statistics/rpg-counts.md) — Yearly RPG program counts per event, with year-over-year deltas.
-- [How many RPGs started at each timeslot](statistics/rpg-start-times.md) — How many tabletop RPGs started each hour, broken down by day and event.
-- [Lottery results](statistics/lottery-signups.md) — How many distinct users participated in the lottery vs how many got a seat.
-- [Number of role-players](statistics/rpg-players.md) — Distinct users who engaged with RPGs (lottery or direct sign-up), regardless of whether they got a seat.
-- [RPG seats filled](statistics/rpg-fill-rate.md) — How completely RPG seats were filled (lottery + direct combined) per event and year.
-- [Lottery wins and games played per user](statistics/lottery-wins-per-user.md) - How many RPG seats the lottery algorithm gave each user (including participants who won nothing), and how many games users ended up playing in total.
+- [Number of RPGs per event](statistics/rpg-counts.md) - Yearly RPG program counts per event, with year-over-year deltas.
+- [RPG start times](statistics/rpg-start-times.md) - How many tabletop RPGs started each hour, broken down by day and event.
+- [Lottery participants and wins by hour](statistics/lottery-signups.md) - How many distinct users participated in the lottery vs how many got a spot.
+- [Number of RPG players](statistics/rpg-players.md) - Distinct users who engaged with RPGs (lottery or direct sign-up), regardless of whether they got a spot.
+- [RPG spots filled](statistics/rpg-fill-rate.md) - How completely RPG spots were filled (lottery + direct combined) per event and year.
+- [Lottery wins and games played per user](statistics/lottery-wins-per-user.md) - How many RPG spots the lottery algorithm gave each user (including participants who won nothing), and how many games users ended up playing in total.

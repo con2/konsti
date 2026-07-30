@@ -1,6 +1,6 @@
-# How many RPGs started at each timeslot
+# RPG start times
 
-Counts of accepted (non-cancelled) tabletop RPGs grouped by start hour, by day, by event. Times are in Europe/Helsinki local time.
+How many accepted (non-cancelled) tabletop RPGs started at each hour, grouped by day and event. Times are in Europe/Helsinki local time.
 
 Legend: each `█` = 1 RPG. Hours with zero count are omitted.
 
@@ -550,9 +550,9 @@ Legend: each `█` = 1 RPG. Hours with zero count are omitted.
 
 ### 2024
 
-No tabletop RPGs in this event (different program types only).
+No tabletop RPGs at this event.
 
 ## Notes
 
-- Cancelled items (`state: 'cancelled'`) excluded.
-- Ropecon 2021 was a remote / COVID-era convention with smaller number of program items.
+- Cancelled programs (`state: "cancelled"`) are excluded.
+- Ropecon 2021 was a remote / COVID-era convention with a much smaller program.
