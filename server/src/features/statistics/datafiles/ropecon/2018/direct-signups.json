@@ -2914,20 +2914,6 @@
         "message": ""
       },
       {
-        "username": "966250",
-        "priority": 1,
-        "signedToStartTime": "2018-07-29T09:00:00.000Z",
-        "signupTime": "2018-07-29T07:00:00.000Z",
-        "message": ""
-      },
-      {
-        "username": "511742",
-        "priority": 1,
-        "signedToStartTime": "2018-07-29T09:00:00.000Z",
-        "signupTime": "2018-07-29T07:00:00.000Z",
-        "message": ""
-      },
-      {
         "username": "511742",
         "priority": 1,
         "signedToStartTime": "2018-07-29T09:00:00.000Z",
@@ -2935,7 +2921,7 @@
         "message": ""
       }
     ],
-    "count": 6,
+    "count": 4,
     "createdAt": "2018-07-29T09:00:00.000Z",
     "updatedAt": "2018-07-29T09:00:00.000Z"
   },
@@ -4690,20 +4676,6 @@
         "message": ""
       },
       {
-        "username": "192396",
-        "priority": 1,
-        "signedToStartTime": "2018-07-27T19:00:00.000Z",
-        "signupTime": "2018-07-27T17:00:00.000Z",
-        "message": ""
-      },
-      {
-        "username": "715602",
-        "priority": 1,
-        "signedToStartTime": "2018-07-27T19:00:00.000Z",
-        "signupTime": "2018-07-27T17:00:00.000Z",
-        "message": ""
-      },
-      {
         "username": "715602",
         "priority": 1,
         "signedToStartTime": "2018-07-27T19:00:00.000Z",
@@ -4718,7 +4690,7 @@
         "message": ""
       }
     ],
-    "count": 5,
+    "count": 3,
     "createdAt": "2018-07-27T19:00:00.000Z",
     "updatedAt": "2018-07-27T19:00:00.000Z"
   },
@@ -5515,20 +5487,6 @@
         "message": ""
       },
       {
-        "username": "112862",
-        "priority": 1,
-        "signedToStartTime": "2018-07-29T07:00:00.000Z",
-        "signupTime": "2018-07-29T05:00:00.000Z",
-        "message": ""
-      },
-      {
-        "username": "295191",
-        "priority": 1,
-        "signedToStartTime": "2018-07-29T07:00:00.000Z",
-        "signupTime": "2018-07-29T05:00:00.000Z",
-        "message": ""
-      },
-      {
         "username": "295191",
         "priority": 1,
         "signedToStartTime": "2018-07-29T07:00:00.000Z",
@@ -5564,7 +5522,7 @@
         "message": ""
       }
     ],
-    "count": 8,
+    "count": 6,
     "createdAt": "2018-07-29T07:00:00.000Z",
     "updatedAt": "2018-07-29T07:00:00.000Z"
   },
