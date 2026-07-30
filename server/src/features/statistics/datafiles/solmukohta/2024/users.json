@@ -223,7 +223,6 @@
       "p7580",
       "p7607",
       "p7632",
-      "<cancelled>",
       "p7583",
       "p7582",
       "p7606",
@@ -298,13 +297,7 @@
     "serial": "6900359800",
     "isGroupCreator": false,
     "groupCode": "0",
-    "favoriteProgramItemIds": [
-      "p7496",
-      "<cancelled>",
-      "p7583",
-      "p7500",
-      "p7613"
-    ],
+    "favoriteProgramItemIds": ["p7496", "p7583", "p7500", "p7613"],
     "lotterySignups": [],
     "eventLogItems": [],
     "createdAt": "2024-04-02T18:57:55.292Z",

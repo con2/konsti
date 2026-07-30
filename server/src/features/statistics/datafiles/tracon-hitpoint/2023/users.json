@@ -111,14 +111,7 @@
     "serial": "0819094657",
     "isGroupCreator": false,
     "groupCode": "0",
-    "favoriteProgramItemIds": [
-      "p7300",
-      "p7353",
-      "p7345",
-      "<cancelled>",
-      "p7339",
-      "<cancelled>"
-    ],
+    "favoriteProgramItemIds": ["p7300", "p7353", "p7345", "p7339"],
     "lotterySignups": [],
     "eventLogItems": [],
     "createdAt": "2023-11-02T18:17:45.007Z",
@@ -177,13 +170,10 @@
       "p7300",
       "p7284",
       "p7280",
-      "<cancelled>",
       "p7367",
       "p7285",
       "p7365",
-      "p7358",
-      "<cancelled>",
-      "<cancelled>"
+      "p7358"
     ],
     "lotterySignups": [
       {
@@ -229,11 +219,6 @@
         "programItemId": "p7341",
         "priority": 2,
         "signedToStartTime": "2023-11-04T16:00:00Z"
-      },
-      {
-        "programItemId": "<cancelled>",
-        "priority": 1,
-        "signedToStartTime": "2023-11-05T09:00:00Z"
       }
     ],
     "eventLogItems": [
@@ -541,11 +526,6 @@
         "signedToStartTime": "2023-11-04T13:00:00Z"
       },
       {
-        "programItemId": "<cancelled>",
-        "priority": 1,
-        "signedToStartTime": "2023-11-04T15:00:00Z"
-      },
-      {
         "programItemId": "p7368",
         "priority": 2,
         "signedToStartTime": "2023-11-04T15:00:00Z"
@@ -697,7 +677,7 @@
     "serial": "9698242907",
     "isGroupCreator": false,
     "groupCode": "0",
-    "favoriteProgramItemIds": ["p7298", "p7368", "<cancelled>", "p7341"],
+    "favoriteProgramItemIds": ["p7298", "p7368", "p7341"],
     "lotterySignups": [
       {
         "programItemId": "p7368",
@@ -1299,7 +1279,6 @@
       "p7284",
       "p7338",
       "p7274",
-      "<cancelled>",
       "p7364"
     ],
     "lotterySignups": [],
@@ -1322,8 +1301,7 @@
       "p7284",
       "p7361",
       "p7360",
-      "p7273",
-      "<cancelled>"
+      "p7273"
     ],
     "lotterySignups": [],
     "eventLogItems": [],
@@ -1450,11 +1428,6 @@
       "p7369"
     ],
     "lotterySignups": [
-      {
-        "programItemId": "<cancelled>",
-        "priority": 1,
-        "signedToStartTime": "2023-11-04T15:00:00Z"
-      },
       {
         "programItemId": "p7269",
         "priority": 1,
@@ -1710,11 +1683,6 @@
     "favoriteProgramItemIds": ["p7353", "p7284", "p7361"],
     "lotterySignups": [
       {
-        "programItemId": "<cancelled>",
-        "priority": 1,
-        "signedToStartTime": "2023-11-04T15:00:00Z"
-      },
-      {
         "programItemId": "p7269",
         "priority": 1,
         "signedToStartTime": "2023-11-04T17:00:00Z"
@@ -1778,13 +1746,7 @@
     "serial": "8124510168",
     "isGroupCreator": false,
     "groupCode": "0",
-    "favoriteProgramItemIds": [
-      "p7359",
-      "p7347",
-      "<cancelled>",
-      "p7346",
-      "<cancelled>"
-    ],
+    "favoriteProgramItemIds": ["p7359", "p7347", "p7346"],
     "lotterySignups": [
       {
         "programItemId": "p7346",
@@ -2410,11 +2372,6 @@
         "signedToStartTime": "2023-11-04T16:00:00Z"
       },
       {
-        "programItemId": "<cancelled>",
-        "priority": 1,
-        "signedToStartTime": "2023-11-05T09:00:00Z"
-      },
-      {
         "programItemId": "p7369",
         "priority": 1,
         "signedToStartTime": "2023-11-05T11:00:00Z"
@@ -2449,13 +2406,7 @@
     "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
-    "lotterySignups": [
-      {
-        "programItemId": "<cancelled>",
-        "priority": 1,
-        "signedToStartTime": "2023-11-05T09:00:00Z"
-      }
-    ],
+    "lotterySignups": [],
     "eventLogItems": [
       {
         "action": "newAssignment",
@@ -3546,11 +3497,6 @@
     "favoriteProgramItemIds": [],
     "lotterySignups": [
       {
-        "programItemId": "<cancelled>",
-        "priority": 2,
-        "signedToStartTime": "2023-11-04T15:00:00Z"
-      },
-      {
         "programItemId": "p7369",
         "priority": 2,
         "signedToStartTime": "2023-11-05T11:00:00Z"
@@ -3611,20 +3557,8 @@
     "serial": "9269034014",
     "isGroupCreator": false,
     "groupCode": "0",
-    "favoriteProgramItemIds": [
-      "p7279",
-      "p7373",
-      "p7270",
-      "<cancelled>",
-      "p7362",
-      "p7367"
-    ],
+    "favoriteProgramItemIds": ["p7279", "p7373", "p7270", "p7362", "p7367"],
     "lotterySignups": [
-      {
-        "programItemId": "<cancelled>",
-        "priority": 1,
-        "signedToStartTime": "2023-11-04T15:00:00Z"
-      },
       {
         "programItemId": "p7373",
         "priority": 1,
@@ -4164,11 +4098,6 @@
       "p7344"
     ],
     "lotterySignups": [
-      {
-        "programItemId": "<cancelled>",
-        "priority": 1,
-        "signedToStartTime": "2023-11-05T09:00:00Z"
-      },
       {
         "programItemId": "p7270",
         "priority": 2,

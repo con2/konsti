@@ -1340,11 +1340,6 @@
     ],
     "lotterySignups": [
       {
-        "programItemId": "<cancelled>",
-        "priority": 1,
-        "signedToStartTime": "2024-11-02T13:00:00Z"
-      },
-      {
         "programItemId": "elava-pakohuone-12",
         "priority": 1,
         "signedToStartTime": "2024-11-03T10:00:00Z"
@@ -3131,11 +3126,6 @@
     "favoriteProgramItemIds": ["mysteerien-maatila", "meripihkalinna"],
     "lotterySignups": [
       {
-        "programItemId": "<cancelled>",
-        "priority": 1,
-        "signedToStartTime": "2024-11-02T13:00:00Z"
-      },
-      {
         "programItemId": "red-tundra",
         "priority": 1,
         "signedToStartTime": "2024-11-02T15:00:00Z"
@@ -4148,13 +4138,7 @@
     "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
-    "lotterySignups": [
-      {
-        "programItemId": "<cancelled>",
-        "priority": 1,
-        "signedToStartTime": "2024-11-02T13:00:00Z"
-      }
-    ],
+    "lotterySignups": [],
     "eventLogItems": [
       {
         "action": "newAssignment",
@@ -4177,13 +4161,7 @@
     "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
-    "lotterySignups": [
-      {
-        "programItemId": "<cancelled>",
-        "priority": 1,
-        "signedToStartTime": "2024-11-02T13:00:00Z"
-      }
-    ],
+    "lotterySignups": [],
     "eventLogItems": [
       {
         "action": "newAssignment",
@@ -4206,13 +4184,7 @@
     "isGroupCreator": false,
     "groupCode": "0",
     "favoriteProgramItemIds": [],
-    "lotterySignups": [
-      {
-        "programItemId": "<cancelled>",
-        "priority": 1,
-        "signedToStartTime": "2024-11-02T13:00:00Z"
-      }
-    ],
+    "lotterySignups": [],
     "eventLogItems": [
       {
         "action": "newAssignment",
@@ -4454,11 +4426,6 @@
     "groupCode": "0",
     "favoriteProgramItemIds": [],
     "lotterySignups": [
-      {
-        "programItemId": "<cancelled>",
-        "priority": 1,
-        "signedToStartTime": "2024-11-02T13:00:00Z"
-      },
       {
         "programItemId": "elava-pakohuone-12",
         "priority": 1,
