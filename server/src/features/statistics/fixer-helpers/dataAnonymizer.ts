@@ -44,8 +44,12 @@ export const anonymizeData = async (
     ),
   );
 
+  const generatedUsernames = new Set<string>();
+  const originalToReplacement = new Map<string, string>();
   for (const user of users) {
     const randomUsername = faker.number.int(1000000).toString();
+    generatedUsernames.add(randomUsername);
+    originalToReplacement.set(user.username, randomUsername);
 
     for (const result of results) {
       for (const userResult of result.results) {
@@ -93,6 +97,57 @@ export const anonymizeData = async (
     // @ts-expect-error -- Use invalid type for clarity
     user.kompassiId = user.kompassiId === 0 ? 0 : "<redacted>";
     user.email = user.email === "" ? "" : "<redacted>";
+  }
+
+  // Results and sign-ups can carry username strings that don't exactly match
+  // any users.json row (case or whitespace variants have occurred in old
+  // dumps), so the loop above misses them. Re-link to the account when a
+  // normalized match is unambiguous, otherwise anonymize with a fresh id
+  const normalizedToReplacement = new Map<string, string | null>();
+  for (const [original, replacement] of originalToReplacement) {
+    const normalized = original.trim().toLowerCase();
+    // Two accounts normalizing to the same string cannot be re-linked safely
+    normalizedToReplacement.set(
+      normalized,
+      normalizedToReplacement.has(normalized) ? null : replacement,
+    );
+  }
+  const ghostUsernames = new Map<string, string>();
+  const anonymizeGhost = (username: string): string => {
+    if (username === "" || generatedUsernames.has(username)) return username;
+    let replacement = ghostUsernames.get(username);
+    if (!replacement) {
+      const relinked = normalizedToReplacement.get(
+        username.trim().toLowerCase(),
+      );
+      if (relinked) {
+        replacement = relinked;
+        logger.info(`ghost user re-linked: ${username} -> ${replacement}`);
+      } else {
+        replacement = faker.number.int(1000000).toString();
+        logger.warn(
+          `ghost user ${username} has no users.json match, anonymized to fresh id ${replacement} - remove the rows to keep the files consistent`,
+        );
+      }
+      ghostUsernames.set(username, replacement);
+    }
+    return replacement;
+  };
+  for (const result of results) {
+    for (const userResult of result.results) {
+      userResult.username = anonymizeGhost(userResult.username);
+    }
+    for (const group of result.groups) {
+      group.groupCreator = anonymizeGhost(group.groupCreator);
+      group.groupMembers = group.groupMembers.map((groupMember) =>
+        anonymizeGhost(groupMember),
+      );
+    }
+  }
+  for (const signup of directSignups) {
+    for (const userSignup of signup.userSignups) {
+      userSignup.username = anonymizeGhost(userSignup.username);
+    }
   }
 
   // Remove sign-up message answers
