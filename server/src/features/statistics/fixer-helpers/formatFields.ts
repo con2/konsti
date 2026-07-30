@@ -1,4 +1,8 @@
-import { readJson, writeJson } from "server/features/statistics/statsUtil";
+import {
+  jsonFileExists,
+  readJson,
+  writeJson,
+} from "server/features/statistics/statsUtil";
 
 const datatypes = [
   "users",
@@ -37,6 +41,7 @@ export const formatFields = async (
   year: number,
 ): Promise<void> => {
   for (const datatype of datatypes) {
+    if (!jsonFileExists(event, year, datatype)) continue;
     const data = readJson<unknown>(event, year, datatype);
     const cleanedData = data.map((item) => cleanValue(item));
     await writeJson(event, year, datatype, cleanedData);

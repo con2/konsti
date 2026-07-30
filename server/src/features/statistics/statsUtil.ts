@@ -3,6 +3,17 @@ import prettier from "prettier";
 import { config } from "shared/config";
 import { logger } from "server/utils/logger";
 
+// Not every event has every file, e.g. direct-sign-up-only events have no
+// results.json and the oldest dumps lack settings.json and serials.json
+export const jsonFileExists = (
+  event: string,
+  year: number,
+  datatype: string,
+): boolean =>
+  fs.existsSync(
+    `${config.server().statsDataDir}/${event}/${year}/${datatype}.json`,
+  );
+
 export const readJson = <T>(
   event: string,
   year: number,
