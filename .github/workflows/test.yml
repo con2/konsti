@@ -36,7 +36,7 @@ jobs:
           args: -color
 
       - name: Use Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version-file: ".node-version"
           cache: "yarn"
@@ -92,7 +92,7 @@ jobs:
         uses: actions/checkout@v7
 
       - name: Use Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version-file: ".node-version"
           cache: "yarn"
@@ -129,7 +129,7 @@ jobs:
         uses: actions/checkout@v7
 
       - name: Use Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version-file: ".node-version"
           cache: "yarn"
@@ -174,7 +174,7 @@ jobs:
         uses: actions/checkout@v7
 
       - name: Use Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version-file: ".node-version"
           cache: "yarn"
@@ -222,7 +222,7 @@ jobs:
         uses: actions/checkout@v7
 
       - name: Use Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version-file: ".node-version"
           cache: "yarn"
@@ -232,7 +232,7 @@ jobs:
           YARN_ENABLE_HARDENED_MODE=1 yarn --immutable
 
       - name: Download blob reports
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           path: all-blob-reports
           pattern: blob-report-*
