@@ -116,8 +116,10 @@ ingress_annotations: !If
     traefik.ingress.kubernetes.io/router.middlewares: default-https-redirect@kubernetescrd,default-www-redirect@kubernetescrd
 
 # Hostnames to include as SANs on the TLS certificate. Defaults to the public
-# hostnames; override to add non-routable names (e.g. a www alias that is only
-# 308-redirected via from-to-www-redirect and never gets its own ingress rule).
+# hostnames. Unlike ingress-nginx's from-to-www-redirect, Traefik has no
+# annotation that redirects a host without its own ingress rule, so a www
+# alias etc. needs an entry in ingress_public_hostnames (which also adds it
+# here) to actually get the www-redirect middleware applied to it.
 ingress_cert_hostnames: !Var ingress_public_hostnames
 
 ingress_tls: !If
