@@ -53,7 +53,7 @@ jobs:
     runs-on: qb-arc-runners
     steps:
       - uses: actions/checkout@v7
-      - uses: actions/setup-python@v6
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.x"
       - name: Cache skaffold
@@ -73,12 +73,12 @@ jobs:
         uses: actions/cache@v6
         with:
           path: bin/kubectl
-          key: ${{ runner.os }}-kubectl-v1.22.0
+          key: ${{ runner.os }}-kubectl-v1.36.2
       - name: Download kubectl
         if: steps.cache-kubectl.outputs.cache-hit != 'true'
         run: |
           mkdir -p bin
-          curl -Lo bin/kubectl https://dl.k8s.io/release/v1.22.0/bin/linux/amd64/kubectl
+          curl -Lo bin/kubectl https://dl.k8s.io/release/v1.36.2/bin/linux/amd64/kubectl
           chmod +x bin/kubectl
       - name: Add skaffold and kubectl to PATH
         run: echo "$PWD/bin" >> "$GITHUB_PATH"
