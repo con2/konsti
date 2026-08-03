@@ -29,7 +29,7 @@ ingress_public_hostnames_https:
 ingress_letsencrypt_enabled: false
 ingress_letsencrypt_cluster_issuer: letsencrypt-prod
 
-ingress_class_name: nginx
+ingress_class_name: traefik
 
 mongodb_managed: true
 mongodb_image: mongo:8.0.26-noble
@@ -103,17 +103,17 @@ konsti_environment:
         name: konsti
         key: kompassiClientSecret
 
-# Default annotations work for nginx ingress with or without LetsEncrypt TLS. Override if you need something else.
+# The https-redirect and www-redirect middlewares must only be attached where TLS is
+# actually configured (not local/dev without letsencrypt) - see
+# infrastructure/kubernetes/traefik-middlewares.yaml for why https-redirect is a per-app
+# opt-in Middleware rather than a global entrypoint redirect (ACME HTTP-01 safety).
+# www-redirect replaces from-to-www-redirect: it 308-redirects www.<host> -> <host>
+# over HTTPS, matching this app's www.ropekonsti.fi -> ropekonsti.fi setup below.
 ingress_annotations: !If
   test: !Var ingress_letsencrypt_enabled
   then:
     cert-manager.io/cluster-issuer: !Var ingress_letsencrypt_cluster_issuer
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"
-    nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
-    kubernetes.io/ingress.class: "nginx"
-  else:
-    nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
-    kubernetes.io/ingress.class: "nginx"
+    traefik.ingress.kubernetes.io/router.middlewares: default-https-redirect@kubernetescrd,default-www-redirect@kubernetescrd
 
 # Hostnames to include as SANs on the TLS certificate. Defaults to the public
 # hostnames; override to add non-routable names (e.g. a www alias that is only
