@@ -1,12 +1,14 @@
 import { expect, test, afterEach, beforeEach } from "vitest";
 import mongoose from "mongoose";
 import { faker } from "@faker-js/faker";
+import { db } from "server/db/mongodb";
 import {
   testProgramItem,
   testProgramItem2,
 } from "shared/tests/testProgramItem";
 import {
   acquireAssignmentLock,
+  createSettings,
   findSettings,
   releaseAssignmentLock,
   saveHidden,
@@ -23,9 +25,9 @@ import { MongoDbError } from "shared/types/api/errors";
 import { makeErrorResult } from "shared/utils/result";
 
 beforeEach(async () => {
-  await mongoose.connect(globalThis.__MONGO_URI__, {
-    dbName: faker.string.alphanumeric(10),
-  });
+  // Connect through the app's own helper so schema indexes are built for
+  // this test's database
+  await db.connectToDb(globalThis.__MONGO_URI__, faker.string.alphanumeric(10));
 });
 
 afterEach(async () => {
@@ -113,4 +115,19 @@ test("releaseAssignmentLock should free the lock so it can be acquired again", a
 
   const reacquire = await acquireAssignmentLock();
   expect(reacquire.ok).toEqual(true);
+});
+
+test("should not create a second settings document when one exists", async () => {
+  // There must only ever be one settings document. A second insert would be
+  // returned by later reads depending on insert order and silently shadow the
+  // stored settings, so creating again must yield the existing document
+  await findSettings();
+  await saveSettings({ adminMessageEn: "stored message" });
+
+  const created = unsafelyUnwrap(await createSettings());
+
+  expect(created.adminMessageEn).toEqual("stored message");
+  expect(unsafelyUnwrap(await findSettings()).adminMessageEn).toEqual(
+    "stored message",
+  );
 });

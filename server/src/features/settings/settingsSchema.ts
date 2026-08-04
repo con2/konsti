@@ -43,8 +43,19 @@ const signupQuestionSchema = new mongoose.Schema({
   selectOptions: { type: [selectOptionSchema], default: [] },
 });
 
+// There is exactly one settings document. Without a unique key, concurrent
+// creates on an empty collection can each insert one - reads then return
+// whichever landed first and silently shadow the other's writes. Every query
+// matches on this key so the second insert loses on duplicate key instead
+export const SETTINGS_SINGLETON_KEY = 0;
+
 const settingsSchema = new mongoose.Schema(
   {
+    singleton: {
+      type: Number,
+      default: SETTINGS_SINGLETON_KEY,
+      unique: true,
+    },
     hiddenProgramItemIds: { type: [String], default: [] },
     appOpen: { type: Boolean, default: true },
     adminMessageFi: { type: String, default: "" },
