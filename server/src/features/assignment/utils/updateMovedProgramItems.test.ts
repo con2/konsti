@@ -2,6 +2,7 @@ import { expect, test, afterEach, beforeEach } from "vitest";
 import dayjs from "dayjs";
 import mongoose from "mongoose";
 import { faker } from "@faker-js/faker";
+import { db } from "server/db/mongodb";
 import { UserModel } from "server/features/user/userSchema";
 import { ProgramItemModel } from "server/features/program-item/programItemSchema";
 import {
@@ -26,9 +27,7 @@ import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { EventLogAction } from "shared/types/models/eventLog";
 
 beforeEach(async () => {
-  await mongoose.connect(globalThis.__MONGO_URI__, {
-    dbName: faker.string.alphanumeric(10),
-  });
+  await db.connectToDb(globalThis.__MONGO_URI__, faker.string.alphanumeric(10));
 });
 
 afterEach(async () => {

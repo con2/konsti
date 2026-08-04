@@ -2,6 +2,7 @@ import { expect, test, afterEach, beforeEach, vi } from "vitest";
 import mongoose from "mongoose";
 import { faker } from "@faker-js/faker";
 import dayjs from "dayjs";
+import { db } from "server/db/mongodb";
 import {
   findProgramItemById,
   findProgramItems,
@@ -53,9 +54,7 @@ vi.mock<object>(
 );
 
 beforeEach(async () => {
-  await mongoose.connect(globalThis.__MONGO_URI__, {
-    dbName: faker.string.alphanumeric(10),
-  });
+  await db.connectToDb(globalThis.__MONGO_URI__, faker.string.alphanumeric(10));
 
   const queueService = createNotificationQueueService(
     new EmailSender(),

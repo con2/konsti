@@ -2,6 +2,7 @@ import { vi, expect, test, afterEach, beforeEach, describe } from "vitest";
 import mongoose from "mongoose";
 import dayjs from "dayjs";
 import { faker } from "@faker-js/faker";
+import { db } from "server/db/mongodb";
 import { runAssignment } from "server/features/assignment/run-assignment/runAssignment";
 import {
   AssignmentAlgorithm,
@@ -96,9 +97,7 @@ beforeEach(async () => {
     twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG, ProgramType.LARP],
     removeLotterySignupsStrategy: RemoveLotterySignupsStrategy.OVERLAP,
   });
-  await mongoose.connect(globalThis.__MONGO_URI__, {
-    dbName: faker.string.alphanumeric(10),
-  });
+  await db.connectToDb(globalThis.__MONGO_URI__, faker.string.alphanumeric(10));
 });
 
 afterEach(async () => {

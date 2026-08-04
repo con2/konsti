@@ -1,6 +1,7 @@
 import { expect, test, afterEach, beforeEach } from "vitest";
 import mongoose from "mongoose";
 import { faker } from "@faker-js/faker";
+import { db } from "server/db/mongodb";
 import { UserModel } from "server/features/user/userSchema";
 import { findUser, saveUser } from "server/features/user/userRepository";
 import { mockUser, mockUser2, mockUser3 } from "server/test/mock-data/mockUser";
@@ -17,9 +18,7 @@ import {
 } from "shared/tests/testProgramItem";
 
 beforeEach(async () => {
-  await mongoose.connect(globalThis.__MONGO_URI__, {
-    dbName: faker.string.alphanumeric(10),
-  });
+  await db.connectToDb(globalThis.__MONGO_URI__, faker.string.alphanumeric(10));
 });
 
 afterEach(async () => {
