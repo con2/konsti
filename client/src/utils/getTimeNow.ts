@@ -9,7 +9,12 @@ export const getTimeNow = (): Dayjs => {
     config.client().showTestValues
   ) {
     const testTime = store.getState().testSettings.testTime;
-    return dayjs(testTime);
+    // Fall back to the real time while no mocked time is set: dayjs("") is an
+    // invalid date, which silently makes every time comparison false instead
+    // of failing loudly
+    if (testTime) {
+      return dayjs(testTime);
+    }
   }
 
   return dayjs();
