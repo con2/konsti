@@ -1,6 +1,7 @@
 import dayjs from "dayjs";
 import { logger } from "server/utils/logger";
 import {
+  SETTINGS_SINGLETON_KEY,
   SettingsModel,
   SettingsSchemaDb,
 } from "server/features/settings/settingsSchema";
@@ -12,6 +13,18 @@ import {
   makeErrorResult,
 } from "shared/utils/result";
 import { MongoDbError } from "shared/types/api/errors";
+
+// All queries target the single settings document by its unique key, so a
+// concurrent create loses on duplicate key instead of inserting a second
+// document that would shadow the first
+const settingsFilter = { singleton: SETTINGS_SINGLETON_KEY };
+
+// Mongo's duplicate key error: another caller created the document first
+const isDuplicateKeyError = (error: unknown): boolean =>
+  typeof error === "object" &&
+  error !== null &&
+  "code" in error &&
+  error.code === 11000;
 
 export const removeSettings = async (): Promise<Result<void, MongoDbError>> => {
   logger.info("MongoDB: remove ALL settings from db");
@@ -48,6 +61,23 @@ export const createSettings = async (): Promise<
 
     return makeSuccessResult(result.data);
   } catch (error) {
+    // Another caller won the race and created the document; read theirs
+    // instead of failing or inserting a duplicate
+    if (isDuplicateKeyError(error)) {
+      logger.info("MongoDB: Default settings already created, reading those");
+      const existing = await SettingsModel.findOne(settingsFilter).lean();
+      const existingResult = SettingsSchemaDb.safeParse(existing);
+      if (!existingResult.success) {
+        logger.error(
+          new Error("Error validating existing settings DB value", {
+            cause: existingResult.error,
+          }),
+        );
+        return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+      }
+      return makeSuccessResult(existingResult.data);
+    }
+
     logger.error(
       new Error("MongoDB: Add default settings error", { cause: error }),
     );
@@ -59,7 +89,7 @@ export const findSettings = async (): Promise<
   Result<Settings, MongoDbError>
 > => {
   try {
-    const settings = await SettingsModel.findOne({}).lean();
+    const settings = await SettingsModel.findOne(settingsFilter).lean();
 
     if (!settings) {
       const createSettingsResult = await createSettings();
@@ -95,7 +125,7 @@ export const saveHidden = async (
 ): Promise<Result<Settings, MongoDbError>> => {
   try {
     const settings = await SettingsModel.findOneAndUpdate(
-      {},
+      settingsFilter,
       {
         hiddenProgramItemIds,
       },
@@ -134,6 +164,7 @@ export const saveSignupQuestion = async (
   try {
     const settings = await SettingsModel.findOneAndUpdate(
       {
+        ...settingsFilter,
         "signupQuestions.programItemId": {
           $ne: signupQuestionData.programItemId,
         },
@@ -178,7 +209,7 @@ export const delSignupQuestion = async (
 ): Promise<Result<Settings, MongoDbError>> => {
   try {
     const settings = await SettingsModel.findOneAndUpdate(
-      {},
+      settingsFilter,
       {
         $pull: { signupQuestions: { programItemId } },
       },
@@ -217,10 +248,14 @@ export const saveSettings = async (
   settings: PostSettingsRequest,
 ): Promise<Result<Settings, MongoDbError>> => {
   try {
-    const updatedSettings = await SettingsModel.findOneAndUpdate({}, settings, {
-      returnDocument: "after",
-      upsert: true,
-    }).lean();
+    const updatedSettings = await SettingsModel.findOneAndUpdate(
+      settingsFilter,
+      settings,
+      {
+        returnDocument: "after",
+        upsert: true,
+      },
+    ).lean();
     logger.info("MongoDB: App settings updated");
 
     const result = SettingsSchemaDb.safeParse(updatedSettings);
@@ -248,6 +283,7 @@ export const setProgramUpdateLastRun = async (
   try {
     const response = await SettingsModel.findOneAndUpdate(
       {
+        ...settingsFilter,
         programUpdateLastRun: {
           $lt: dayjs(programUpdateNextRun).subtract(30, "seconds").toDate(),
         },
@@ -289,6 +325,7 @@ export const acquireAssignmentLock = async (): Promise<
     // Acquire if the lock is free (null) or stale (acquired longer ago than the timeout)
     const response = await SettingsModel.findOneAndUpdate(
       {
+        ...settingsFilter,
         $or: [
           { assignmentInProgressStartTime: null },
           {
@@ -308,7 +345,7 @@ export const acquireAssignmentLock = async (): Promise<
       // No document matched the update: either another run holds the lock, or there is no
       // settings row at all — distinguish the two so the caller can treat a missing row as a
       // genuine error rather than as "already running"
-      const settingsExists = await SettingsModel.exists({});
+      const settingsExists = await SettingsModel.exists(settingsFilter);
       return makeErrorResult(
         settingsExists
           ? MongoDbError.ASSIGNMENT_LOCK_HELD
@@ -333,6 +370,7 @@ export const releaseAssignmentLock = async (
   try {
     await SettingsModel.findOneAndUpdate(
       {
+        ...settingsFilter,
         assignmentInProgressStartTime: dayjs(lockToken).toDate(),
       },
       {
@@ -355,12 +393,9 @@ export const setAssignmentLastRun = async (
   assignmentLastRun: string,
 ): Promise<Result<void, MongoDbError>> => {
   try {
-    const response = await SettingsModel.findOneAndUpdate(
-      {},
-      {
-        assignmentLastRun,
-      },
-    ).lean();
+    const response = await SettingsModel.findOneAndUpdate(settingsFilter, {
+      assignmentLastRun,
+    }).lean();
     if (!response) {
       return makeErrorResult(MongoDbError.SETTINGS_NOT_FOUND);
     }
@@ -380,7 +415,7 @@ export const getLatestServerStartTime = async (): Promise<
   Result<string, MongoDbError>
 > => {
   try {
-    const response = await SettingsModel.findOne({}).lean();
+    const response = await SettingsModel.findOne(settingsFilter).lean();
     if (!response) {
       return makeErrorResult(MongoDbError.SETTINGS_NOT_FOUND);
     }

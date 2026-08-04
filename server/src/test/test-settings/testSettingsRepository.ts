@@ -1,6 +1,7 @@
 import { logger } from "server/utils/logger";
 import { TestSettings } from "shared/test-types/models/testSettings";
 import {
+  TEST_SETTINGS_SINGLETON_KEY,
   TestSettingsModel,
   TestSettingsSchemaDb,
 } from "server/test/test-settings/testSettingsSchema";
@@ -11,6 +12,8 @@ import {
   makeSuccessResult,
 } from "shared/utils/result";
 import { MongoDbError } from "shared/types/api/errors";
+
+const testSettingsFilter = { singleton: TEST_SETTINGS_SINGLETON_KEY };
 
 export const removeTestSettings = async (): Promise<
   Result<void, MongoDbError>
@@ -27,46 +30,19 @@ export const removeTestSettings = async (): Promise<
   }
 };
 
-const createTestSettings = async (): Promise<
-  Result<TestSettings, MongoDbError>
-> => {
-  logger.info("MongoDB: Create default test settings");
-  const defaultSettings = new TestSettingsModel();
-
-  try {
-    const testSettings = await defaultSettings.save();
-    logger.info("MongoDB: Default test settings saved to DB");
-
-    const result = TestSettingsSchemaDb.safeParse(testSettings.toObject());
-    if (!result.success) {
-      logger.error(
-        new Error(`Error validating createTestSettings DB value`, {
-          cause: result.error,
-        }),
-      );
-      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
-    }
-
-    return makeSuccessResult(result.data);
-  } catch (error) {
-    logger.error(
-      new Error("MongoDB: Add default test settings error", { cause: error }),
-    );
-    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
-  }
-};
-
 export const findTestSettings = async (): Promise<
   Result<TestSettings, MongoDbError>
 > => {
   try {
-    const testSettings = await TestSettingsModel.findOne({}).lean();
+    const testSettings =
+      await TestSettingsModel.findOne(testSettingsFilter).lean();
+    // Reading must not write: a document inserted here races with the upsert
+    // in saveTestSettings, and if both see an empty collection they insert
+    // separate documents. Reads then return whichever landed first, which can
+    // permanently shadow a stored test time behind an empty default
     if (!testSettings) {
-      const createTestSettingsResult = await createTestSettings();
-      if (!createTestSettingsResult.ok) {
-        return createTestSettingsResult;
-      }
-      return makeSuccessResult(createTestSettingsResult.value);
+      logger.debug("MongoDB: No test settings data, using defaults");
+      return makeSuccessResult({ testTime: null });
     }
     logger.debug("MongoDB: Test settings data found");
 
@@ -94,7 +70,7 @@ export const saveTestSettings = async (
 ): Promise<Result<TestSettings, MongoDbError>> => {
   try {
     const updatedTestSettings = await TestSettingsModel.findOneAndUpdate(
-      {},
+      testSettingsFilter,
       settings,
       {
         returnDocument: "after",
