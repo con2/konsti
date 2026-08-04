@@ -131,6 +131,10 @@ const StickyBars = styled.div`
   position: sticky;
   top: ${HEADER_HEIGHT}px;
   z-index: 10;
+
+  /* Owns the horizontal inset for every bar inside, so their dismiss icons
+     line up instead of each bar picking its own margin */
+  margin: 0 2px;
 `;
 
 const TestValueContainer = styled.div`

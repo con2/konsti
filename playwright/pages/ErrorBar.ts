@@ -2,10 +2,12 @@ import { Locator, Page } from "@playwright/test";
 
 // The app-wide error toast bar; a toast is dismissed by clicking it
 export class ErrorBar {
+  static readonly testId = "error-bar-item";
+
   constructor(private readonly page: Page) {}
 
   get items(): Locator {
-    return this.page.getByTestId("error-bar-item");
+    return this.page.getByTestId(ErrorBar.testId);
   }
 
   get networkError(): Locator {

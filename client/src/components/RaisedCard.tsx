@@ -37,9 +37,9 @@ const Card = styled.div<{
 }>`
   margin: 20px 0 20px 0;
   padding: 12px 8px 12px 8px;
-  border: 1px solid #ddd;
+  border: 1px solid ${(props) => props.theme.borderCard};
   border-radius: 4px;
-  background: #fafafa;
+  background: ${(props) => props.theme.backgroundCard};
   box-shadow: ${(props) => props.theme.shadowLower};
 
   ${(props) =>

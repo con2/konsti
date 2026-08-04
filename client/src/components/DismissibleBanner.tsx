@@ -53,7 +53,9 @@ const Banner = styled(RaisedCard)`
   align-items: center;
   gap: 12px;
 
-  margin: 4px 2px;
+  /* Same box metrics as the other app-level bars so their dismiss icons
+     line up when several are stacked */
+  margin: 4px 0;
   padding: 10px;
 `;
 

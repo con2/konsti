@@ -75,5 +75,7 @@ export const FirstLogin = (): ReactElement | null => {
 };
 
 const StyledCard = styled(RaisedCard)`
-  margin: 0 8px 0 8px;
+  /* Same inset as the app-level bars below the header, so the notices that
+     can show at the same time share their edges */
+  margin: 0 2px;
 `;
