@@ -6,6 +6,9 @@ import { NotificationBar } from "playwright/pages/NotificationBar";
 // Shared base for all page objects: the #main content region plus the
 // navigation drawer, notification bar, and error toast bar reused across flows
 export class BasePage {
+  static readonly adminMessageBannerTestId = "admin-message-banner";
+  static readonly firstLoginNoticeTestId = "first-login-notice";
+
   readonly navigation: Navigation;
   readonly notificationBar: NotificationBar;
   readonly errorBar: ErrorBar;
@@ -31,12 +34,12 @@ export class BasePage {
 
   // The app-wide temporary admin message banner (set by an admin, dismissible by anyone)
   get adminMessageBanner(): Locator {
-    return this.page.getByTestId("admin-message-banner");
+    return this.page.getByTestId(BasePage.adminMessageBannerTestId);
   }
 
   // The registration code notice shown below the header on a user's first login
   get firstLoginNotice(): Locator {
-    return this.page.getByTestId("first-login-notice");
+    return this.page.getByTestId(BasePage.firstLoginNoticeTestId);
   }
 
   async closeFirstLoginNotice(): Promise<void> {

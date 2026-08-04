@@ -3,6 +3,7 @@ import dayjs from "dayjs";
 import {
   addProgramItems,
   clearDb,
+  login,
   populateDb,
   postSettings,
   postTestSettings,
@@ -10,6 +11,8 @@ import {
 import { config } from "shared/config";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { AppUpdateBanner } from "playwright/pages/AppUpdateBanner";
+import { BasePage } from "playwright/pages/BasePage";
+import { ErrorBar } from "playwright/pages/ErrorBar";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import { ProgramItemPage } from "playwright/pages/ProgramItemPage";
 
@@ -269,4 +272,92 @@ test("Update banner and admin message stack instead of overlapping when scrolled
   // missing box from passing the comparison
   const updateBottom = (updateBox?.y ?? NaN) + (updateBox?.height ?? NaN);
   expect(updateBottom).toBeLessThanOrEqual((adminBox?.y ?? NaN) + 1);
+});
+
+test("App level bars line up with each other", async ({ page, request }) => {
+  await clearDb(request);
+  await populateDb(request, { clean: true, users: true, admin: true });
+  await addProgramItems(request, [
+    {
+      ...testProgramItem,
+      startTime: "2026-07-24T15:00:00.000Z",
+      endTime: "2026-07-24T19:00:00.000Z",
+    },
+  ]);
+  await postTestSettings(request, { testTime: config.event().eventStartTime });
+  await postSettings(request, {
+    adminMessageEn: "Admin message for the alignment test",
+    adminMessageFi: "Yllapidon viesti",
+  });
+
+  await reportServerVersion(page, "e2e-new-version");
+
+  // Signing in also brings up the first login notice, which sits in the
+  // header rather than with the bars
+  await login(page, request, { username: "test1", password: "test" });
+  await page.clock.install();
+  await page.goto("/");
+
+  // Signed in the app opens on My Program, so wait for the notice rather
+  // than for program item cards
+  const programList = new ProgramListPage(page);
+  await expect(page.getByTestId("first-login-notice")).toBeVisible();
+
+  const banner = new AppUpdateBanner(page);
+  await page.clock.fastForward("01:01");
+  await expect(banner.container).toBeVisible();
+  await expect(programList.adminMessageBanner).toBeVisible();
+
+  // Break the data poll so the network error toast joins the two banners
+  await page.route("**/api/program-items**", async (route) => {
+    await route.abort();
+  });
+  await page.clock.fastForward("01:01");
+  await expect
+    .poll(async () => {
+      await page.clock.fastForward("00:05");
+      return await programList.errorBar.items.first().isVisible();
+    })
+    .toBe(true);
+
+  // The bars are separate components, so their dismiss icons drift apart
+  // whenever one of them changes its box metrics. The testids come from the
+  // page objects that own them rather than being repeated here
+  const measure = async (testIds: string[]): Promise<(number | null)[]> =>
+    await page.evaluate((ids) => {
+      const rightEdge = (element: Element | null | undefined): number | null =>
+        element ? Math.round(element.getBoundingClientRect().right) : null;
+      return ids.map((id) => {
+        const bar = document.querySelector(`[data-testid="${CSS.escape(id)}"]`);
+        // The error toast has no dismiss button, the whole toast is clickable
+        const dismissIcon =
+          bar?.querySelector("button svg") ?? bar?.querySelector("svg");
+        return rightEdge(dismissIcon);
+      });
+    }, testIds);
+
+  const dismissIconEdges = await measure([
+    ErrorBar.testId,
+    AppUpdateBanner.testId,
+    BasePage.adminMessageBannerTestId,
+  ]);
+
+  expect(dismissIconEdges[0]).not.toBeNull();
+  expect(dismissIconEdges).toEqual(
+    Array.from({ length: dismissIconEdges.length }, () => dismissIconEdges[0]),
+  );
+
+  // The first login notice has no dismiss icon, so compare its box instead
+  const boxEdges = await page.evaluate(
+    (ids) => {
+      const rightEdge = (element: Element | null): number | null =>
+        element ? Math.round(element.getBoundingClientRect().right) : null;
+      return ids.map((id) =>
+        rightEdge(document.querySelector(`[data-testid="${CSS.escape(id)}"]`)),
+      );
+    },
+    [ErrorBar.testId, BasePage.firstLoginNoticeTestId],
+  );
+  expect(boxEdges[0]).not.toBeNull();
+  expect(boxEdges[1]).toEqual(boxEdges[0]);
 });

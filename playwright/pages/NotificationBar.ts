@@ -2,10 +2,20 @@ import { Locator, Page } from "@playwright/test";
 
 // The notification bar plus the "Show all notifications" -> event log flow
 export class NotificationBar {
+  static readonly testId = "notification-bar";
+
   constructor(private readonly page: Page) {}
 
   get bar(): Locator {
-    return this.page.getByTestId("notification-bar");
+    return this.page.getByTestId(NotificationBar.testId);
+  }
+
+  // Marks the notification as seen, which removes the bar
+  async dismiss(): Promise<void> {
+    await this.bar
+      .first()
+      .getByRole("button", { name: "Close notification" })
+      .click();
   }
 
   get eventLogItem(): Locator {

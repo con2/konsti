@@ -1,13 +1,14 @@
 import { ReactElement } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link, useLocation } from "react-router";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { submitUpdateEventLogIsSeen } from "client/views/login/loginThunks";
 import { AboutTab } from "client/app/AppRoutes";
 import { config } from "shared/config";
 import { EventLogEventMessage } from "client/views/event-log/EventLogEventMessage";
+import { DismissibleBanner } from "client/components/DismissibleBanner";
+import { HighlightStyle, RaisedCard } from "client/components/RaisedCard";
 
 export const NotificationBar = (): ReactElement | null => {
   const { t } = useTranslation();
@@ -22,9 +23,21 @@ export const NotificationBar = (): ReactElement | null => {
 
   const notificationList = unseenEvents.map((unseenEvent) => {
     return (
-      <StyledNotification
+      <DismissibleBanner
         key={`${unseenEvent.action}-${unseenEvent.createdAt}`}
         data-testid="notification-bar"
+        icon="bell"
+        highlightStyle={HighlightStyle.INFO}
+        dismissAriaLabel={t("iconAltText.closeNotification")}
+        onDismiss={() => {
+          // eslint-disable-next-line @typescript-eslint/no-floating-promises
+          dispatch(
+            submitUpdateEventLogIsSeen({
+              eventLogItemId: unseenEvent.eventLogItemId,
+              isSeen: true,
+            }),
+          );
+        }}
       >
         <div>
           <EventLogEventMessage
@@ -36,60 +49,37 @@ export const NotificationBar = (): ReactElement | null => {
             <Link to={"/notifications"}>{t("notificationBar.showAll")}</Link>
           </ShowAllLinkContainer>
         </div>
-
-        <span>
-          <StyledFontAwesomeIcon
-            icon="xmark"
-            aria-label={t("iconAltText.closeNotification")}
-            onClick={() => {
-              // eslint-disable-next-line @typescript-eslint/no-floating-promises
-              dispatch(
-                submitUpdateEventLogIsSeen({
-                  eventLogItemId: unseenEvent.eventLogItemId,
-                  isSeen: true,
-                }),
-              );
-            }}
-          />
-        </span>
-      </StyledNotification>
+      </DismissibleBanner>
     );
   });
 
   if (config.client().showAboutPageInProgress) {
     if (Object.values(AboutTab).includes(location.pathname as AboutTab)) {
+      // Nothing to dismiss here, so it renders as a plain notice card
       notificationList.push(
-        <StyledNotification key="about-in-progress">
+        <InProgressNotice
+          key="about-in-progress"
+          isHighlighted={true}
+          highlightStyle={HighlightStyle.INFO}
+        >
           {t("aboutView.inProgress")}
-        </StyledNotification>,
+        </InProgressNotice>,
       );
     }
   }
 
-  return <NotificationContainer>{notificationList}</NotificationContainer>;
+  if (notificationList.length === 0) {
+    return null;
+  }
+
+  return <div>{notificationList}</div>;
 };
 
-const StyledNotification = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-  background-color: ${(props) => props.theme.backgroundBody};
-  color: ${(props) => props.theme.textMain};
-  border-radius: 4px;
+const InProgressNotice = styled(RaisedCard)`
   margin: 4px 0;
-  border: 1px solid ${(props) => props.theme.borderCardHighlight};
-  border-left: 5px solid ${(props) => props.theme.borderCardHighlight};
-  box-shadow: ${(props) => props.theme.shadowHigher};
-`;
-
-const NotificationContainer = styled.div`
-  margin: 0 8px 0 8px;
+  padding: 10px;
 `;
 
 const ShowAllLinkContainer = styled.div`
   margin: 20px 0 0 0;
-`;
-
-const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
-  cursor: pointer;
 `;

@@ -54,7 +54,7 @@ const StyledError = styled.p`
   color: ${(props) => props.theme.textMain};
   border: 1px solid ${(props) => props.theme.borderWarning};
   border-radius: 4px;
-  margin: 4px 2px;
+  margin: 4px 0;
 `;
 
 const ErrorContainer = styled.div`

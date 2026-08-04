@@ -61,6 +61,7 @@ export const theme = {
   backgroundSelected: addOpacity(mainColor.primary, "0.6"),
   backgroundMain: white,
   backgroundTag: addOpacity(mainColor.primary, "0.3"),
+  backgroundCard: "rgb(250,250,250)",
   backgroundWarning: red.lighter,
   backgroundDisabled: gray.light,
 
@@ -68,6 +69,7 @@ export const theme = {
   borderDisabled: mainColor.lighter,
   borderInactive: gray.primary,
   borderWarning: red.primary,
+  borderCard: "rgb(221,221,221)",
   borderCardHighlight: mainColor.light,
   borderCardWarnHighlight: red.light,
   tabBorder: gray.light,
