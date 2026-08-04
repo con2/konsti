@@ -4,7 +4,6 @@ import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link, useLocation } from "react-router";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
-import { HEADER_HEIGHT } from "client/components/Header";
 import { submitUpdateEventLogIsSeen } from "client/views/login/loginThunks";
 import { AboutTab } from "client/app/AppRoutes";
 import { config } from "shared/config";
@@ -84,9 +83,6 @@ const StyledNotification = styled.div`
 `;
 
 const NotificationContainer = styled.div`
-  position: sticky;
-  top: ${HEADER_HEIGHT}px;
-  z-index: 10;
   margin: 0 8px 0 8px;
 `;
 

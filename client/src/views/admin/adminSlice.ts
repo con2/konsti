@@ -13,6 +13,7 @@ import { SignupMessage } from "shared/types/models/signupMessage";
 import { EmailNotificationTrigger } from "shared/types/emailNotification";
 import { loadSession } from "client/utils/localStorage";
 import { ActiveProgramType } from "shared/config/clientConfigTypes";
+import { config } from "shared/config";
 
 // Empty selection means all program types
 const getInitialActiveProgramTypes = (): readonly ProgramType[] => {
@@ -35,8 +36,19 @@ const initialState = (): AdminState => {
     signupMessages: [],
     loginProvider: undefined,
     emailNotificationTrigger: [],
+    serverAppVersion: "",
+    serverAppVersionCandidate: "",
+    serverAppVersionCandidateSince: 0,
   };
 };
+
+// A new version must stay the candidate for a while before it is confirmed,
+// so bursts of requests hitting different pods during a rolling deploy can't
+// confirm a version from a single instant. Half the poll interval: regular
+// polls a full interval apart always qualify, bursts seconds apart never do.
+// Callers pass a monotonic timestamp, so a device clock jump while a phone
+// wakes can't stall or short-circuit the window
+const appVersionConfirmMs = (config.client().dataUpdateInterval * 1000) / 2;
 
 const adminSlice = createSlice({
   name: "admin",
@@ -49,9 +61,11 @@ const adminSlice = createSlice({
       return { ...state, hiddenProgramItemIds: action.payload };
     },
 
+    // The server version from the same response is dispatched separately so
+    // deploys don't count as settings changes
     submitGetSettingsAsync(
       state,
-      action: PayloadAction<SettingsPayload>,
+      action: PayloadAction<Omit<SettingsPayload, "appVersion">>,
     ): AdminState {
       return {
         ...state,
@@ -64,6 +78,31 @@ const adminSlice = createSlice({
         loginProvider: action.payload.loginProvider,
         emailNotificationTrigger: action.payload.emailNotificationTrigger,
       };
+    },
+
+    // Accept a server version only after consecutive polls have reported it
+    // unchanged for the confirmation window, so old and new pods answering
+    // in turn during a rolling deploy don't trigger the update notification
+    // before the rollout has settled
+    updateServerAppVersion(
+      state,
+      action: PayloadAction<{ version: string; receivedAt: number }>,
+    ): AdminState {
+      const { version, receivedAt } = action.payload;
+      if (version !== state.serverAppVersionCandidate) {
+        return {
+          ...state,
+          serverAppVersionCandidate: version,
+          serverAppVersionCandidateSince: receivedAt,
+        };
+      }
+      if (
+        version !== state.serverAppVersion &&
+        receivedAt - state.serverAppVersionCandidateSince >= appVersionConfirmMs
+      ) {
+        return { ...state, serverAppVersion: version };
+      }
+      return state;
     },
 
     submitSetSignupStrategyAsync(
@@ -156,6 +195,7 @@ const adminSlice = createSlice({
 export const {
   submitUpdateHiddenAsync,
   submitGetSettingsAsync,
+  updateServerAppVersion,
   submitSetSignupStrategyAsync,
   submitSetLoginProviderAsync,
   submitSetEmailNotificationTriggersAsync,

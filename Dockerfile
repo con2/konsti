@@ -4,9 +4,10 @@ ARG NODE_IMAGE=node:24.18.0-alpine3.24
 FROM ${NODE_IMAGE} AS client-builder
 
 ARG env
-# Git SHA used as the Sentry release name
-ARG SENTRY_RELEASE
-ENV SENTRY_RELEASE=$SENTRY_RELEASE
+# Git SHA baked into the bundle as the app version, also used as the Sentry
+# release name
+ARG APP_VERSION
+ENV APP_VERSION=$APP_VERSION
 
 # Create build directory
 WORKDIR /usr/src/builder
@@ -32,10 +33,11 @@ RUN --mount=type=secret,id=SENTRY_AUTH_TOKEN \
 ### BUILD APP IMAGE
 FROM ${NODE_IMAGE} AS runner
 
-# Git SHA reported as the Sentry release at runtime, matching the release created
-# in deploy.yml so backend events are associated with it
-ARG SENTRY_RELEASE
-ENV SENTRY_RELEASE=$SENTRY_RELEASE
+# Git SHA reported as the app version in the settings response and as the
+# Sentry release at runtime, matching the release created in deploy.yml so
+# backend events are associated with it
+ARG APP_VERSION
+ENV APP_VERSION=$APP_VERSION
 
 # Install init process tool to avoid Node running PID 1
 RUN apk --no-cache add dumb-init=1.2.5-r4

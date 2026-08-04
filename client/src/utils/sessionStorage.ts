@@ -13,7 +13,27 @@ export const SessionStorageValue = {
   ALL_PROGRAM_ITEMS_STARTING_TIME: `${browserStoragePrefix}-allProgramItemsStartingTime`,
   ALL_PROGRAM_ITEMS_HIDE_FULL: `${browserStoragePrefix}-allProgramItemsHideFull`,
   MY_PROGRAM_ITEMS_SHOW_ALL_PROGRAM_ITEMS: `${browserStoragePrefix}-myProgramItemsShowAllProgramItems`,
+  APP_UPDATE_RELOADED_VERSION: `${browserStoragePrefix}-appUpdateReloadedVersion`,
 } as const;
+
+const AppUpdateReloadedVersionSchema = z.string();
+
+// The server version an automatic update reload was already attempted for.
+// Session-scoped so a reload that fails to deliver the new version (e.g.
+// stale HTML served again) is not retried in a loop in the same tab
+export const getAppUpdateReloadedVersion = (): string => {
+  const serializedValue = sessionStorage.getItem(
+    SessionStorageValue.APP_UPDATE_RELOADED_VERSION,
+  );
+
+  const result = AppUpdateReloadedVersionSchema.safeParse(serializedValue);
+  if (!result.success) {
+    sessionStorage.removeItem(SessionStorageValue.APP_UPDATE_RELOADED_VERSION);
+    return "";
+  }
+
+  return result.data;
+};
 
 const SavedSearchTermSchema = z.string();
 

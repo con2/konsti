@@ -43,7 +43,7 @@ jobs:
           tags: ghcr.io/con2/konsti:${{ github.sha }}-${{ env.DEPLOY_ENV }}
           build-args: |
             env=${{ env.DEPLOY_ENV }}
-            SENTRY_RELEASE=${{ github.sha }}
+            APP_VERSION=${{ github.sha }}
           secrets: |
             SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}
 

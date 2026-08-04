@@ -33,6 +33,9 @@ export type PostHiddenResponse = PostHiddenResult | PostHiddenError;
 // GET settings
 
 export interface SettingsPayload {
+  // Git SHA of the running server build, empty when not available. The client
+  // compares it against its own build SHA to detect a new deploy
+  appVersion: string;
   hiddenProgramItemIds: readonly string[];
   appOpen: boolean;
   adminMessageFi: string;

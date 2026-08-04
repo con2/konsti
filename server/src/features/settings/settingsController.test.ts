@@ -1,5 +1,5 @@
 import { Server } from "node:http";
-import { expect, test, describe, afterEach, beforeEach } from "vitest";
+import { expect, test, describe, afterEach, beforeEach, vi } from "vitest";
 import request from "supertest";
 import { faker } from "@faker-js/faker";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
@@ -64,9 +64,31 @@ afterEach(async () => {
 });
 
 describe(`GET ${ApiEndpoint.SETTINGS}`, () => {
+  afterEach(() => {
+    vi.unstubAllEnvs();
+  });
+
   test("should return 200", async () => {
     const response = await request(server).get(ApiEndpoint.SETTINGS);
     expect(response.status).toEqual(200);
+  });
+
+  test("should return the build SHA as appVersion", async () => {
+    vi.stubEnv("APP_VERSION", "test-sha-123");
+
+    const response = await request(server).get(ApiEndpoint.SETTINGS);
+    expect(response.status).toEqual(200);
+    expect((response.body as SettingsPayload).appVersion).toEqual(
+      "test-sha-123",
+    );
+  });
+
+  test("should return empty appVersion without a build SHA", async () => {
+    vi.stubEnv("APP_VERSION", undefined);
+
+    const response = await request(server).get(ApiEndpoint.SETTINGS);
+    expect(response.status).toEqual(200);
+    expect((response.body as SettingsPayload).appVersion).toEqual("");
   });
 });
 

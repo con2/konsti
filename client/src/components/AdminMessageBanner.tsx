@@ -1,13 +1,12 @@
 import { ReactElement, useState } from "react";
-import styled from "styled-components";
 import { useTranslation } from "react-i18next";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useAppSelector } from "client/utils/hooks";
 import {
   getDismissedAdminMessage,
   saveDismissedAdminMessage,
 } from "client/utils/localStorage";
-import { HEADER_HEIGHT } from "client/components/Header";
+import { DismissibleBanner } from "client/components/DismissibleBanner";
+import { HighlightStyle } from "client/components/RaisedCard";
 
 export const AdminMessageBanner = (): ReactElement | null => {
   const { t, i18n } = useTranslation();
@@ -42,41 +41,14 @@ export const AdminMessageBanner = (): ReactElement | null => {
   };
 
   return (
-    <BannerContainer data-testid="admin-message-banner">
-      <Banner>
-        <span>{message}</span>
-        <CloseButton
-          onClick={dismiss}
-          aria-label={t("iconAltText.closeAdminMessage")}
-        >
-          <FontAwesomeIcon icon="xmark" />
-        </CloseButton>
-      </Banner>
-    </BannerContainer>
+    <DismissibleBanner
+      data-testid="admin-message-banner"
+      icon="circle-exclamation"
+      highlightStyle={HighlightStyle.WARN}
+      onDismiss={dismiss}
+      dismissAriaLabel={t("iconAltText.closeAdminMessage")}
+    >
+      <span>{message}</span>
+    </DismissibleBanner>
   );
 };
-
-const BannerContainer = styled.div`
-  position: sticky;
-  top: ${HEADER_HEIGHT}px;
-  z-index: 10;
-`;
-
-const Banner = styled.div`
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 10px;
-  background-color: ${(props) => props.theme.backgroundHighlight};
-  color: ${(props) => props.theme.textMain};
-  border: 1px solid ${(props) => props.theme.borderWarning};
-  border-radius: 4px;
-  margin: 4px 2px;
-`;
-
-const CloseButton = styled.button`
-  border: none;
-  background: none;
-  cursor: pointer;
-  color: ${(props) => props.theme.textMain};
-`;

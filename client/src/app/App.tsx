@@ -2,7 +2,7 @@ import { ReactElement, useEffect, useState } from "react";
 import { BrowserRouter } from "react-router";
 import styled from "styled-components";
 import { AppRoutes } from "client/app/AppRoutes";
-import { Header } from "client/components/Header";
+import { Header, HEADER_HEIGHT } from "client/components/Header";
 import { loadData } from "client/utils/loadData";
 import { Loading } from "client/components/Loading";
 import { getIconLibrary } from "client/utils/icons";
@@ -13,6 +13,7 @@ import { TestTime } from "client/test/test-components/TestTime";
 import { TestGenerateSerial } from "client/test/test-components/TestGenerateSerial";
 import { Announcement } from "client/components/Announcement";
 import { AdminMessageBanner } from "client/components/AdminMessageBanner";
+import { AppUpdateBanner } from "client/components/AppUpdateBanner";
 import { NotificationBar } from "client/views/event-log/NotificationBar";
 import { onPageResume } from "client/utils/pageLifecycle";
 import { HistoryProvider } from "client/app/HistoryContext";
@@ -107,9 +108,14 @@ const App = (): ReactElement => {
               </TestValueContainer>
             )}
             <Header />
-            <ErrorBar />
-            <AdminMessageBanner />
-            <NotificationBar />
+            {/* One sticky wrapper rather than sticky bars: siblings pinned to
+                the same offset would overlap instead of stacking */}
+            <StickyBars>
+              <ErrorBar />
+              <AppUpdateBanner />
+              <AdminMessageBanner />
+              <NotificationBar />
+            </StickyBars>
             {showAnnouncement && <Announcement />}
             <AppContainer>
               <AppRoutes />
@@ -120,6 +126,12 @@ const App = (): ReactElement => {
     </>
   );
 };
+
+const StickyBars = styled.div`
+  position: sticky;
+  top: ${HEADER_HEIGHT}px;
+  z-index: 10;
+`;
 
 const TestValueContainer = styled.div`
   position: fixed;

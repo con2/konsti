@@ -32,6 +32,9 @@ export interface AdminState {
   signupMessages: readonly SignupMessage[];
   loginProvider: LoginProvider | undefined;
   emailNotificationTrigger: readonly EmailNotificationTrigger[];
+  serverAppVersion: string;
+  serverAppVersionCandidate: string;
+  serverAppVersionCandidateSince: number;
 }
 
 export interface ProgramItemDirectSignups {

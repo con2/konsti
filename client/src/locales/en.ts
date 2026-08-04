@@ -4,6 +4,10 @@ export const translationEN = {
     "{{EVENT_NAME}} {{EVENT_YEAR}} – Pre-convention week",
   logoAltText: "Konsti",
   announcement: "Sign-up has ended. Results will be released soon.",
+  appUpdateBanner: {
+    message: "Konsti has been updated. Please reload the page.",
+    reload: "Reload",
+  },
   testTime: {
     preWeek: "Pre-week",
     mainEvent: "Main event",
@@ -641,6 +645,7 @@ export const translationEN = {
     hidePassword: "Hide password",
     newNotifications: "New notifications",
     closeAdminMessage: "Close message",
+    closeAppUpdateNotification: "Close update notification",
   },
   admin: {
     sentryTesting: "Sentry testing",
