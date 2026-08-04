@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import { faker } from "@faker-js/faker";
+import { db } from "server/db/mongodb";
 import { addSignupQuestions } from "server/features/program-item/utils/addSignupQuestions";
 import { saveProgramItems } from "server/features/program-item/programItemRepository";
 import { findSettings } from "server/features/settings/settingsRepository";
@@ -17,9 +18,7 @@ import {
 } from "shared/types/models/settings";
 
 beforeEach(async () => {
-  await mongoose.connect(globalThis.__MONGO_URI__, {
-    dbName: faker.string.alphanumeric(10),
-  });
+  await db.connectToDb(globalThis.__MONGO_URI__, faker.string.alphanumeric(10));
 });
 
 afterEach(async () => {

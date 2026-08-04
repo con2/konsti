@@ -1,6 +1,7 @@
 import { expect, test, afterEach, beforeEach } from "vitest";
 import mongoose from "mongoose";
 import { faker } from "@faker-js/faker";
+import { db } from "server/db/mongodb";
 import {
   AssignmentResultGroup,
   UserAssignmentResult,
@@ -15,9 +16,7 @@ import { testProgramItem } from "shared/tests/testProgramItem";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 
 beforeEach(async () => {
-  await mongoose.connect(globalThis.__MONGO_URI__, {
-    dbName: faker.string.alphanumeric(10),
-  });
+  await db.connectToDb(globalThis.__MONGO_URI__, faker.string.alphanumeric(10));
 });
 
 afterEach(async () => {

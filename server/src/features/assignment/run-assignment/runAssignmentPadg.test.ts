@@ -2,6 +2,7 @@ import { expect, test, afterEach, beforeEach, vi } from "vitest";
 import mongoose from "mongoose";
 import dayjs from "dayjs";
 import { faker } from "@faker-js/faker";
+import { db } from "server/db/mongodb";
 import {
   assertUserUpdatedCorrectly,
   firstLotterySignupSlot,
@@ -52,9 +53,7 @@ vi.mock<object>(
 );
 
 beforeEach(async () => {
-  await mongoose.connect(globalThis.__MONGO_URI__, {
-    dbName: faker.string.alphanumeric(10),
-  });
+  await db.connectToDb(globalThis.__MONGO_URI__, faker.string.alphanumeric(10));
   vi.mocked(getGlobalNotificationQueueService).mockReturnValue(
     createNotificationQueueService(new EmailSender(), 1, true),
   );
