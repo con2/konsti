@@ -515,6 +515,45 @@ test("Show event log notification when a favorited program item is deleted", asy
   );
 });
 
+test("Dismissing an event log notification removes it for good", async ({
+  page,
+  request,
+}) => {
+  await initDb(request);
+  const startTime = getStartTime("direct");
+  const endTime = getEndTime(startTime);
+
+  await addProgramItems(request, [{ ...testProgramItem, startTime, endTime }]);
+  await login(page, request, { username: "test1", password: "test" });
+  await page.goto("/");
+
+  const programList = new ProgramListPage(page);
+  await programList.gotoAllProgram();
+  await programList.selectProgramType("Tabletop RPG");
+  await programList.waitForItems();
+
+  const firstProgramItem = programList.firstItem();
+  await firstProgramItem.signUp();
+  await firstProgramItem.confirm();
+  await expect(firstProgramItem.container).toContainText("1/4 sign-ups");
+
+  // Cancelling the program item notifies the signed up user
+  await addProgramItems(request, [
+    { ...testProgramItem, state: State.CANCELLED, startTime, endTime },
+  ]);
+  await page.reload();
+  await expect(programList.notificationBar.bar).toBeVisible();
+
+  // Dismissing marks the event as seen on the server, so it stays gone
+  // across a reload rather than only disappearing locally
+  await programList.notificationBar.dismiss();
+  await expect(programList.notificationBar.bar).toBeHidden();
+
+  await page.reload();
+  await expect(programList.main).toBeVisible();
+  await expect(programList.notificationBar.bar).toBeHidden();
+});
+
 const initDb = async (request: APIRequestContext): Promise<void> => {
   await clearDb(request);
   await populateDb(request, {
