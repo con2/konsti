@@ -18,7 +18,12 @@ import { closeServer, startServer } from "server/utils/server";
 // doesn't exist in a fresh checkout, so the fixture files are created here and
 // only the ones this suite created are removed afterwards
 const staticPath = path.join(import.meta.dirname, "../../front");
-const testAssetName = "cache-header-test.js";
+// Shaped like a real bundler output name, i.e. with a content hash
+const bundledAssetName = "cacheTest-Ab12Cd34.js";
+// A static file served from the root. The hyphenated name is deliberate: it
+// reads like a hashed name, so it catches a cache rule that guesses from the
+// filename instead of the location
+const staticFileName = "service-worker-registration.js";
 
 const createdFiles: string[] = [];
 const createdDirs: string[] = [];
@@ -43,7 +48,8 @@ beforeAll(() => {
   ensureDir(staticPath);
   ensureDir(path.join(staticPath, "assets"));
   ensureFile(path.join(staticPath, "index.html"), "<html></html>");
-  ensureFile(path.join(staticPath, "assets", testAssetName), "export {};");
+  ensureFile(path.join(staticPath, staticFileName), "export {};");
+  ensureFile(path.join(staticPath, "assets", bundledAssetName), "export {};");
 });
 
 afterAll(() => {
@@ -69,13 +75,20 @@ afterEach(async () => {
 });
 
 describe("static file serving", () => {
-  test("should serve hashed assets with an immutable cache header", async () => {
-    const response = await request(server).get(`/assets/${testAssetName}`);
+  test("should serve bundled assets with an immutable cache header", async () => {
+    const response = await request(server).get(`/assets/${bundledAssetName}`);
 
     expect(response.status).toEqual(200);
     expect(response.headers["cache-control"]).toEqual(
       "public, max-age=31536000, immutable",
     );
+  });
+
+  test("should serve static root files with no-cache even when the name looks hashed", async () => {
+    const response = await request(server).get(`/${staticFileName}`);
+
+    expect(response.status).toEqual(200);
+    expect(response.headers["cache-control"]).toEqual("no-cache");
   });
 
   test("should serve index.html with no-cache so deploys are picked up", async () => {

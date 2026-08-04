@@ -81,20 +81,26 @@ export const startServer = async ({
   // Set static path
   const staticPath = path.join(import.meta.dirname, "../../", "front");
 
-  // Files under assets/ have content-hashed names that change on every build,
-  // so browsers can cache them forever. index.html must be revalidated on
-  // every load so clients pick up new deploys - it decides which hashed
-  // assets are requested. Split on both separators because the file path
-  // comes from the serving library and may use either style
+  // The bundler emits every file it builds into assets/ with a content hash
+  // in the name, while static files are copied from the client's public
+  // directory to the served root. A path under assets/ is therefore exactly
+  // the set of files whose name changes with their content, which is what
+  // makes them safe to cache forever. Deciding by directory rather than by
+  // the shape of the filename matters because names alone are ambiguous:
+  // an ordinary hyphenated name (service-worker-registration.js) is
+  // indistinguishable from a hashed one. Everything else revalidates,
+  // index.html above all - it decides which hashed files are requested.
+  // Split on both separators because the path comes from the serving
+  // library and may use either style
   const setStaticCacheHeaders = (
     res: ServerResponse,
     filePath: string,
   ): void => {
-    if (filePath.split(/[\\/]/).includes("assets")) {
-      res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
-    } else if (path.basename(filePath).startsWith("index.html")) {
-      res.setHeader("Cache-Control", "no-cache");
-    }
+    const isBundledAsset = filePath.split(/[\\/]/).includes("assets");
+    res.setHeader(
+      "Cache-Control",
+      isBundledAsset ? "public, max-age=31536000, immutable" : "no-cache",
+    );
   };
 
   const serveIndexAndApi =
