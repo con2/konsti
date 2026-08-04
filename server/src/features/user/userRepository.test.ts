@@ -10,11 +10,14 @@ import { mockUser, mockUser2 } from "server/test/mock-data/mockUser";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { saveProgramItems } from "server/features/program-item/programItemRepository";
+import { db } from "server/db/mongodb";
+import { MongoDbError } from "shared/types/api/errors";
+import { makeErrorResult } from "shared/utils/result";
 
 beforeEach(async () => {
-  await mongoose.connect(globalThis.__MONGO_URI__, {
-    dbName: faker.string.alphanumeric(10),
-  });
+  // Connect through the app's own helper so schema indexes are built for
+  // this test's database
+  await db.connectToDb(globalThis.__MONGO_URI__, faker.string.alphanumeric(10));
 });
 
 afterEach(async () => {
@@ -42,6 +45,19 @@ test("should find all users", async () => {
 
   const users = unsafelyUnwrap(await findUsers());
   expect(users).toHaveLength(2);
+});
+
+test("should not insert a second user with an existing username", async () => {
+  await saveProgramItems([testProgramItem]);
+  await saveUser(mockUser);
+
+  const duplicateResult = await saveUser({
+    ...mockUser,
+    serial: "9999ZZZZ",
+  });
+
+  expect(duplicateResult).toEqual(makeErrorResult(MongoDbError.UNKNOWN_ERROR));
+  expect(unsafelyUnwrap(await findUsers())).toHaveLength(1);
 });
 
 test("should find users by username", async () => {

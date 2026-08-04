@@ -10,6 +10,16 @@ import { generateGroupCode } from "server/features/user/group/groupService";
 // Match the length of real registration codes from the serial generator
 const SERIAL_LENGTH = 10;
 
+// Faker can repeat a username, and nothing rejects a duplicate on save. Two user
+// documents sharing a username break assignment: results are produced for both,
+// but every username-filtered write lands on whichever document is found first
+let generatedUsernameCount = 0;
+
+const generateUsername = (): string => {
+  generatedUsernameCount += 1;
+  return `${faker.internet.username()}${generatedUsernameCount}`;
+};
+
 // Speed up test data generation by using same "test" password hash
 let testPasswordHashPromise: ReturnType<typeof hashPassword> | undefined;
 
@@ -112,7 +122,7 @@ const createUser = async ({
 }: CreateUserParams): Promise<void> => {
   const passwordHash = testUsers ? await getTestPasswordHash() : "testPass"; // Skip hashing to save time
 
-  const username = testUsers ? `group${userNumber}` : faker.internet.username();
+  const username = testUsers ? `group${userNumber}` : generateUsername();
   const registrationData: NewUser = {
     kompassiId: 0,
     username,
