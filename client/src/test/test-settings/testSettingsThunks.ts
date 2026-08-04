@@ -7,14 +7,19 @@ import { AppThunk } from "client/types/reduxTypes";
 import { loadProgramItems } from "client/utils/loadData";
 
 export const submitGetTestSettings = (): AppThunk<Promise<boolean>> => {
-  return async (dispatch): Promise<boolean> => {
+  return async (dispatch, useState): Promise<boolean> => {
     const response = await getTestSettings();
 
     if (response.status === "error") {
       return false;
     }
 
-    dispatch(submitSetTestTime(response.testSettings.testTime));
+    // Only dispatch an actual change: this runs on every data poll, and a
+    // no-op dispatch would both rebuild the slice state and fill the Sentry
+    // breadcrumb buffer with pings that crowd out useful history
+    if (response.testSettings.testTime !== useState().testSettings.testTime) {
+      dispatch(submitSetTestTime(response.testSettings.testTime));
+    }
     return true;
   };
 };
