@@ -64,6 +64,18 @@ export default defineConfig(({ mode, command }) => {
   // build only uploads when enableSentryInDev is set.
   const sentryAuthToken = readSentryAuthToken(import.meta.dirname);
   const sentryProject = SENTRY_PROJECT_BY_MODE[mode];
+
+  // Git SHA of this build, from the APP_VERSION Docker build-arg (also used
+  // as the Sentry release name below). Docker sets the env var to an empty
+  // string when the build-arg is not provided, so || rather than ?? treats
+  // that as unset too. Development and ci builds fall back to a placeholder
+  // so the E2E suite can drive the update banner by faking the
+  // server-reported version; the banner stays off otherwise because those
+  // servers report an empty version
+  // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
+  const appVersion =
+    process.env.APP_VERSION ||
+    (mode === "development" || mode === "ci" ? "local-build" : "");
   const enableSentryUpload =
     Boolean(sentryAuthToken) &&
     Boolean(sentryProject) &&
@@ -130,7 +142,9 @@ export default defineConfig(({ mode, command }) => {
           org: "konsti",
           project: sentryProject,
           authToken: sentryAuthToken,
-          release: { name: process.env.SENTRY_RELEASE },
+          // The raw build-arg rather than the appVersion placeholder, so
+          // dev-mode uploads don't create a release named after the fallback
+          release: { name: process.env.APP_VERSION || undefined },
           telemetry: false,
           sourcemaps: {
             filesToDeleteAfterUpload: ["./build/**/*.map"],
@@ -153,6 +167,9 @@ export default defineConfig(({ mode, command }) => {
       "process.env.DATA_UPDATE_INTERVAL": JSON.stringify(
         env.DATA_UPDATE_INTERVAL,
       ),
+      // The app compares this against the version the server reports to
+      // detect that a new version has been deployed
+      "process.env.APP_VERSION": JSON.stringify(appVersion),
     },
 
     server: {

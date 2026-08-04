@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { removeError } from "client/views/admin/adminSlice";
 import { BackendErrorType } from "client/types/errorTypes";
-import { HEADER_HEIGHT } from "client/components/Header";
 
 export const ErrorBar = (): ReactElement | null => {
   const { t } = useTranslation();
@@ -59,8 +58,5 @@ const StyledError = styled.p`
 `;
 
 const ErrorContainer = styled.div`
-  position: sticky;
-  top: ${HEADER_HEIGHT}px;
-  z-index: 10;
   cursor: pointer;
 `;

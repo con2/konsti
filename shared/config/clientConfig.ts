@@ -8,6 +8,7 @@ export interface ClientConfig {
   enableAxe: boolean;
   enableWhyDidYouRender: boolean;
   dataUpdateInterval: number;
+  appVersion: string;
   showAnnouncement: boolean;
   activeLanguages: Language[];
   showAboutPageInProgress: boolean;
@@ -32,4 +33,6 @@ export const clientConfig: ClientConfig = {
   dataUpdateInterval: Number(process.env.DATA_UPDATE_INTERVAL)
     ? Number(process.env.DATA_UPDATE_INTERVAL)
     : 60, // seconds
+  // Git SHA baked in at build time, empty when built without one (local dev)
+  appVersion: process.env.APP_VERSION ?? "",
 };

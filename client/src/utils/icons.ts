@@ -37,6 +37,7 @@ import {
   faThermometer2 as fasThermometer2,
   faThermometer3 as fasThermometer3,
   faThermometer4 as fasThermometer4,
+  faArrowsRotate as fasArrowsRotate,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faHeart as farHeart,
@@ -84,5 +85,6 @@ export const getIconLibrary = (): void => {
     fasThermometer2,
     fasThermometer3,
     fasThermometer4,
-  );
+    fasArrowsRotate,
+    );
 };

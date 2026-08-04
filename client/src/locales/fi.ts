@@ -3,6 +3,10 @@ export const translationFI = {
   appDescriptionPreConventionWeek: "{{EVENT_NAME}} {{EVENT_YEAR}} – Etkoviikko",
   logoAltText: "Konsti",
   announcement: "Ilmoittautuminen on päättynyt. Tulokset julkaistaan piakkoin.",
+  appUpdateBanner: {
+    message: "Konsti on päivitetty. Ole hyvä ja lataa sivu uudelleen.",
+    reload: "Lataa uudelleen",
+  },
   testTime: {
     preWeek: "Etkoviikko",
     mainEvent: "Päätapahtuma",
@@ -643,6 +647,7 @@ export const translationFI = {
     hidePassword: "Piilota salasana",
     newNotifications: "Uusia ilmoituksia",
     closeAdminMessage: "Sulje viesti",
+    closeAppUpdateNotification: "Sulje päivitysilmoitus",
   },
   admin: {
     sentryTesting: "Sentryn testaus",
