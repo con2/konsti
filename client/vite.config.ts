@@ -6,7 +6,6 @@ import svgr from "vite-plugin-svgr";
 import mdx from "@mdx-js/rollup";
 import browserslistToEsbuild from "browserslist-to-esbuild";
 import { compression } from "vite-plugin-compression2";
-import { viteStaticCopy } from "vite-plugin-static-copy";
 import { sentryVitePlugin } from "@sentry/vite-plugin";
 import istanbul from "vite-plugin-istanbul";
 import { coverageCollector } from "./coverageCollectorPlugin";
@@ -102,14 +101,6 @@ export default defineConfig(({ mode, command }) => {
               ? []
               : [["babel-plugin-react-compiler", { target: "19" }]],
         },
-      }),
-      viteStaticCopy({
-        targets: [
-          {
-            src: "assets/robots.txt",
-            dest: ".",
-          },
-        ],
       }),
       compression({
         algorithms: ["gzip", "brotliCompress"],
