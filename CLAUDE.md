@@ -34,6 +34,7 @@ Yarn 4 workspaces — only `client` and `server` are Yarn workspaces; `shared` a
 
 ## Git Commits
 
+- Keep the message body to **at most two sentences** after the subject line: state what was wrong and what the change does, not the full reasoning behind it.
 - Don't add a `Co-Authored-By: Claude ...` trailer (or any AI co-author line) to commit messages — keep the message plain, ending at the body.
 - Don't reference CLAUDE.md (or its guidance) in commit messages — describe the change itself, not the doc it follows.
 
