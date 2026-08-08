@@ -41,7 +41,6 @@ export const translationEN = {
     save: "Save",
     addSignupQuestion: "Add sign-up question",
     removeSignupQuestion: "Delete sign-up question",
-    close: "Close",
     scrollToTop: "Scroll to top",
     saveAdminMessage: "Save message",
     clearAdminMessage: "Clear message",
@@ -506,7 +505,7 @@ export const translationEN = {
   firstLogin: {
     serial:
       "Keep your registration code safe, you will need it to recover your password:",
-    info: "This message is shown only on your first login. You can also view your code on the Profile & Group page.",
+    info: "You can also view your code on the Profile & Group page.",
   },
   myProgramView: {
     yourAnswer: "Your answer to the question",
@@ -646,6 +645,7 @@ export const translationEN = {
     newNotifications: "New notifications",
     closeAdminMessage: "Close message",
     closeAppUpdateNotification: "Close update notification",
+    closeFirstLoginNotice: "Close registration code notice",
   },
   admin: {
     sentryTesting: "Sentry testing",

@@ -83,7 +83,12 @@ const Content = styled.div`
 
 const CloseButton = styled.button`
   flex-shrink: 0;
-  align-self: flex-start;
+
+  /* Centers the glyph in the button box: as inline content it would sit off
+     centre by the font's descender, which shows next to a taller message */
+  display: flex;
+  align-items: center;
+
   border: none;
   background: none;
   padding: 0;

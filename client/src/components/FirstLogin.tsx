@@ -4,8 +4,8 @@ import styled from "styled-components";
 import { z } from "zod";
 import { useAppSelector } from "client/utils/hooks";
 import { isAdminOrHelper } from "client/utils/checkUserGroup";
-import { Button, ButtonStyle } from "./Button";
-import { HighlightStyle, RaisedCard } from "client/components/RaisedCard";
+import { DismissibleBanner } from "client/components/DismissibleBanner";
+import { HighlightStyle } from "client/components/RaisedCard";
 import { browserStoragePrefix } from "shared/constants/browserStorage";
 import { formatSerial } from "shared/utils/formatSerial";
 
@@ -55,27 +55,33 @@ export const FirstLogin = (): ReactElement | null => {
   }
 
   return (
-    <StyledCard
-      isHighlighted={true}
-      highlightStyle={HighlightStyle.WARN}
-      data-testid="first-login-notice"
-    >
-      <p>
-        {t("firstLogin.serial")} <b>{formatSerial(serial)}</b>.
-      </p>
-      <p>{t("firstLogin.info")}</p>
-      <Button
-        onClick={() => setIsFirstLogin(false)}
-        buttonStyle={ButtonStyle.PRIMARY}
+    <Inset>
+      <DismissibleBanner
+        data-testid="first-login-notice"
+        icon="circle-exclamation"
+        highlightStyle={HighlightStyle.INFO}
+        dismissAriaLabel={t("iconAltText.closeFirstLoginNotice")}
+        onDismiss={() => {
+          setIsFirstLogin(false);
+        }}
       >
-        {t("button.close")}
-      </Button>
-    </StyledCard>
+        <Message>
+          <p>
+            {t("firstLogin.serial")} <b>{formatSerial(serial)}</b>.
+          </p>
+          <p>{t("firstLogin.info")}</p>
+        </Message>
+      </DismissibleBanner>
+    </Inset>
   );
 };
 
-const StyledCard = styled(RaisedCard)`
-  /* Same inset as the app-level bars below the header, so the notices that
-     can show at the same time share their edges */
+// Same inset as the app-level bars below the header, so the notices that
+// can show at the same time share their edges
+const Inset = styled.div`
   margin: 0 2px;
+`;
+
+const Message = styled.div`
+  flex: 1;
 `;

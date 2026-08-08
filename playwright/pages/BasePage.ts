@@ -43,7 +43,9 @@ export class BasePage {
   }
 
   async closeFirstLoginNotice(): Promise<void> {
-    await this.firstLoginNotice.getByRole("button", { name: "Close" }).click();
+    await this.firstLoginNotice
+      .getByRole("button", { name: /close registration code notice/i })
+      .click();
   }
 
   async dismissAdminMessage(): Promise<void> {
