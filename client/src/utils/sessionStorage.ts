@@ -2,7 +2,10 @@ import { z } from "zod";
 import { StartingTimeOption } from "client/views/all-program-items/programListUtils";
 import { AgeGroup, Language, Tag } from "shared/types/models/programItem";
 import { StringToJsonSchema } from "client/utils/zodUtils";
-import { browserStoragePrefix } from "shared/constants/browserStorage";
+import {
+  appUpdateReloadedVersionKey,
+  browserStoragePrefix,
+} from "shared/constants/browserStorage";
 
 // A const object instead of an enum because enum members can't hold the
 // computed event-specific prefix
@@ -13,7 +16,7 @@ export const SessionStorageValue = {
   ALL_PROGRAM_ITEMS_STARTING_TIME: `${browserStoragePrefix}-allProgramItemsStartingTime`,
   ALL_PROGRAM_ITEMS_HIDE_FULL: `${browserStoragePrefix}-allProgramItemsHideFull`,
   MY_PROGRAM_ITEMS_SHOW_ALL_PROGRAM_ITEMS: `${browserStoragePrefix}-myProgramItemsShowAllProgramItems`,
-  APP_UPDATE_RELOADED_VERSION: `${browserStoragePrefix}-appUpdateReloadedVersion`,
+  APP_UPDATE_RELOADED_VERSION: appUpdateReloadedVersionKey,
 } as const;
 
 const AppUpdateReloadedVersionSchema = z.string();

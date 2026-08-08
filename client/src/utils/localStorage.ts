@@ -8,6 +8,7 @@ import { ActiveProgramType } from "shared/config/clientConfigTypes";
 import { getProgramTypeSelectOptions } from "client/utils/getProgramTypeSelectOptions";
 import { Locale } from "shared/types/locale";
 import {
+  appUpdateReloadedVersionKey,
   browserStoragePrefix,
   localStorageStateKey,
 } from "shared/constants/browserStorage";
@@ -71,7 +72,20 @@ export const saveSession = (state: Partial<LocalStorageState>): void => {
 
 export const clearSession = (): void => {
   localStorage.removeItem(localStorageStateKey);
+
+  // The app update reload guard outlives the session. Logging out is itself a
+  // navigation, so dropping the guard here would let a pending update reload
+  // the page a second time for a version it already tried
+  const appUpdateReloadedVersion = sessionStorage.getItem(
+    appUpdateReloadedVersionKey,
+  );
   sessionStorage.clear();
+  if (appUpdateReloadedVersion !== null) {
+    sessionStorage.setItem(
+      appUpdateReloadedVersionKey,
+      appUpdateReloadedVersion,
+    );
+  }
 };
 
 // Dismissed admin message is stored separately from the zod-strict 'state' object so a public
