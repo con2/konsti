@@ -323,41 +323,43 @@ test("App level bars line up with each other", async ({ page, request }) => {
   // The bars are separate components, so their dismiss icons drift apart
   // whenever one of them changes its box metrics. The testids come from the
   // page objects that own them rather than being repeated here
-  const measure = async (testIds: string[]): Promise<(number | null)[]> =>
-    await page.evaluate((ids) => {
-      const rightEdge = (element: Element | null | undefined): number | null =>
-        element ? Math.round(element.getBoundingClientRect().right) : null;
-      return ids.map((id) => {
+  const dismissIcons = await page.evaluate(
+    (ids) =>
+      ids.map((id) => {
         const bar = document.querySelector(`[data-testid="${CSS.escape(id)}"]`);
-        // The error toast has no dismiss button, the whole toast is clickable
-        const dismissIcon =
-          bar?.querySelector("button svg") ?? bar?.querySelector("svg");
-        return rightEdge(dismissIcon);
-      });
-    }, testIds);
-
-  const dismissIconEdges = await measure([
-    ErrorBar.testId,
-    AppUpdateBanner.testId,
-    BasePage.adminMessageBannerTestId,
-  ]);
-
-  expect(dismissIconEdges[0]).not.toBeNull();
-  expect(dismissIconEdges).toEqual(
-    Array.from({ length: dismissIconEdges.length }, () => dismissIconEdges[0]),
+        // The leading icon isn't in a button, so this only matches the dismiss
+        // one; the update banner's reload button carries text rather than an icon
+        const dismissIcon = bar?.querySelector("button svg");
+        if (!bar || !dismissIcon) {
+          return null;
+        }
+        const barBox = bar.getBoundingClientRect();
+        const iconBox = dismissIcon.getBoundingClientRect();
+        return {
+          right: Math.round(iconBox.right),
+          // Distance from the bar's vertical middle, so a taller bar doesn't
+          // change what counts as centred
+          offsetFromMiddle: Math.round(
+            iconBox.top + iconBox.height / 2 - (barBox.top + barBox.height / 2),
+          ),
+        };
+      }),
+    [
+      ErrorBar.testId,
+      AppUpdateBanner.testId,
+      BasePage.adminMessageBannerTestId,
+      BasePage.firstLoginNoticeTestId,
+    ],
   );
 
-  // The first login notice has no dismiss icon, so compare its box instead
-  const boxEdges = await page.evaluate(
-    (ids) => {
-      const rightEdge = (element: Element | null): number | null =>
-        element ? Math.round(element.getBoundingClientRect().right) : null;
-      return ids.map((id) =>
-        rightEdge(document.querySelector(`[data-testid="${CSS.escape(id)}"]`)),
-      );
-    },
-    [ErrorBar.testId, BasePage.firstLoginNoticeTestId],
+  expect(dismissIcons[0]).not.toBeNull();
+  expect(dismissIcons.map((icon) => icon?.right)).toEqual(
+    Array.from({ length: dismissIcons.length }, () => dismissIcons[0]?.right),
   );
-  expect(boxEdges[0]).not.toBeNull();
-  expect(boxEdges[1]).toEqual(boxEdges[0]);
+
+  // Every dismiss icon sits vertically centred in its bar, including the ones
+  // whose message wraps onto several lines
+  for (const icon of dismissIcons) {
+    expect(Math.abs(icon?.offsetFromMiddle ?? Infinity)).toBeLessThanOrEqual(1);
+  }
 });

@@ -40,7 +40,6 @@ export const translationFI = {
     save: "Tallenna",
     addSignupQuestion: "Lisää ilmoittautumiskysymys",
     removeSignupQuestion: "Poista ilmoittautumiskysymys",
-    close: "Sulje",
     scrollToTop: "Palaa sivun yläreunaan",
     saveAdminMessage: "Tallenna viesti",
     clearAdminMessage: "Poista viesti",
@@ -508,7 +507,7 @@ export const translationFI = {
   firstLogin: {
     serial:
       "Pidä rekisteröintikoodisi tallessa, tarvitset sitä salasanan palauttamiseen:",
-    info: "Tämä viesti näytetään vain ensimmäisen kirjautumisesi yhteydessä. Löydät koodin myös Profiili & ryhmä -sivulta.",
+    info: "Löydät koodin myös Profiili & ryhmä -sivulta.",
   },
   myProgramView: {
     yourAnswer: "Vastauksesi kysymykseen",
@@ -648,6 +647,7 @@ export const translationFI = {
     newNotifications: "Uusia ilmoituksia",
     closeAdminMessage: "Sulje viesti",
     closeAppUpdateNotification: "Sulje päivitysilmoitus",
+    closeFirstLoginNotice: "Sulje rekisteröintikoodi-ilmoitus",
   },
   admin: {
     sentryTesting: "Sentryn testaus",

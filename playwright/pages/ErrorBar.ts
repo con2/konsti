@@ -1,6 +1,6 @@
 import { Locator, Page } from "@playwright/test";
 
-// The app-wide error toast bar; a toast is dismissed by clicking it
+// The app-wide error toast bar; a toast is dismissed with its close button
 export class ErrorBar {
   static readonly testId = "error-bar-item";
 
@@ -19,6 +19,8 @@ export class ErrorBar {
   }
 
   async dismissNetworkError(): Promise<void> {
-    await this.networkError.click();
+    await this.networkError
+      .getByRole("button", { name: /close error/i })
+      .click();
   }
 }
