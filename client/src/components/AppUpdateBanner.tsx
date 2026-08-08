@@ -8,8 +8,8 @@ import { Button, ButtonStyle } from "client/components/Button";
 import { DismissibleBanner } from "client/components/DismissibleBanner";
 import { HighlightStyle } from "client/components/RaisedCard";
 import {
-  SessionStorageValue,
   getAppUpdateReloadedVersion,
+  saveAppUpdateReloadedVersion,
 } from "client/utils/sessionStorage";
 
 const { appVersion } = config.client();
@@ -32,7 +32,11 @@ export const AppUpdateBanner = (): ReactElement | null => {
   // Both versions must be known: environments where either side has no
   // release version never trigger the notification. Truthiness rather than a
   // comparison to "": a server old enough to omit the field from its response
-  // reports undefined, which must count as unknown too
+  // reports undefined, which must count as unknown too.
+  // The versions are build SHAs, which carry no ordering, so "differs" is all
+  // that can be checked: mid-rollout a page served by an already-updated
+  // instance can poll one that hasn't rolled yet and notify about a version
+  // it is already running. That resolves itself once the rollout completes
   const updateAvailable =
     Boolean(appVersion) &&
     Boolean(serverAppVersion) &&
@@ -58,10 +62,7 @@ export const AppUpdateBanner = (): ReactElement | null => {
     ) {
       return;
     }
-    sessionStorage.setItem(
-      SessionStorageValue.APP_UPDATE_RELOADED_VERSION,
-      serverAppVersion,
-    );
+    saveAppUpdateReloadedVersion(serverAppVersion);
     location.reload();
   }, [routerLocation.key, updateAvailable, dismissed, serverAppVersion]);
 

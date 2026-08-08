@@ -19,23 +19,18 @@ export const SessionStorageValue = {
   APP_UPDATE_RELOADED_VERSION: appUpdateReloadedVersionKey,
 } as const;
 
-const AppUpdateReloadedVersionSchema = z.string();
-
 // The server version an automatic update reload was already attempted for.
 // Session-scoped so a reload that fails to deliver the new version (e.g.
-// stale HTML served again) is not retried in a loop in the same tab
-export const getAppUpdateReloadedVersion = (): string => {
-  const serializedValue = sessionStorage.getItem(
+// stale HTML served again) is not retried in a loop in the same tab. Stored
+// as a plain string, so there is no shape to validate on the way out
+export const getAppUpdateReloadedVersion = (): string =>
+  sessionStorage.getItem(SessionStorageValue.APP_UPDATE_RELOADED_VERSION) ?? "";
+
+export const saveAppUpdateReloadedVersion = (version: string): void => {
+  sessionStorage.setItem(
     SessionStorageValue.APP_UPDATE_RELOADED_VERSION,
+    version,
   );
-
-  const result = AppUpdateReloadedVersionSchema.safeParse(serializedValue);
-  if (!result.success) {
-    sessionStorage.removeItem(SessionStorageValue.APP_UPDATE_RELOADED_VERSION);
-    return "";
-  }
-
-  return result.data;
 };
 
 const SavedSearchTermSchema = z.string();
