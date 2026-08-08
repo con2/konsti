@@ -65,10 +65,8 @@ export const FirstLogin = (): ReactElement | null => {
       }}
     >
       <Message>
-        <p>
-          {t("firstLogin.serial")} <b>{formatSerial(serial)}</b>.
-        </p>
-        <p>{t("firstLogin.info")}</p>
+        {t("firstLogin.serial")} <b>{formatSerial(serial)}</b>.{" "}
+        {t("firstLogin.info")}
       </Message>
     </DismissibleBanner>
   );
