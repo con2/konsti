@@ -30,10 +30,12 @@ export const AppUpdateBanner = (): ReactElement | null => {
   const lastLocationKey = useRef(routerLocation.key);
 
   // Both versions must be known: environments where either side has no
-  // release version never trigger the notification
+  // release version never trigger the notification. Truthiness rather than a
+  // comparison to "": a server old enough to omit the field from its response
+  // reports undefined, which must count as unknown too
   const updateAvailable =
-    appVersion !== "" &&
-    serverAppVersion !== "" &&
+    Boolean(appVersion) &&
+    Boolean(serverAppVersion) &&
     serverAppVersion !== appVersion;
 
   const dismissed = dismissedVersion === serverAppVersion;
