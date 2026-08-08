@@ -10,3 +10,8 @@ export const browserStoragePrefix = `konsti-${config.event().eventName}-${config
 // The localStorage key holding the persisted session (JWT + saved
 // preferences). Also written directly by the Playwright login helper
 export const localStorageStateKey = `${browserStoragePrefix}-state`;
+
+// The sessionStorage key guarding against repeated automatic update reloads.
+// Defined here rather than with the other session keys because clearing the
+// session has to preserve it, and importing that module there would be a cycle
+export const appUpdateReloadedVersionKey = `${browserStoragePrefix}-appUpdateReloadedVersion`;
