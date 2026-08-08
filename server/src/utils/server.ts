@@ -19,11 +19,15 @@ interface StartServerParams {
   dbConnString: string;
   port?: number;
   dbName?: string;
+  // Overridable so a test can serve a directory of its own instead of the
+  // build output, which other suites running in parallel also read
+  staticFilesPath?: string;
 }
 export const startServer = async ({
   dbConnString,
   port,
   dbName,
+  staticFilesPath,
 }: StartServerParams): Promise<Server> => {
   await db.connectToDb(dbConnString, dbName);
 
@@ -79,7 +83,8 @@ export const startServer = async ({
   app.use(apiRoutes);
 
   // Set static path
-  const staticPath = path.join(import.meta.dirname, "../../", "front");
+  const staticPath =
+    staticFilesPath ?? path.join(import.meta.dirname, "../../", "front");
 
   // The bundler emits every file it builds into assets/ with a content hash
   // in the name, while static files are copied from the client's public
