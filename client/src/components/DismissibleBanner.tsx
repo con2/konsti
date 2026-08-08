@@ -2,7 +2,11 @@ import { ReactElement, ReactNode } from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconName } from "@fortawesome/free-solid-svg-icons";
-import { HighlightStyle, RaisedCard } from "client/components/RaisedCard";
+import {
+  HighlightStyle,
+  RaisedCard,
+  getHighlightColor,
+} from "client/components/RaisedCard";
 
 interface Props {
   children: ReactNode;
@@ -64,10 +68,7 @@ const BannerIcon = styled(FontAwesomeIcon)<{
 }>`
   flex-shrink: 0;
   font-size: 20px;
-  color: ${(props) =>
-    props.$highlightStyle === HighlightStyle.WARN
-      ? props.theme.borderCardWarnHighlight
-      : props.theme.borderCardHighlight};
+  color: ${(props) => getHighlightColor(props.theme, props.$highlightStyle)};
 `;
 
 // Lays out the message and any action the banner offers, wrapping onto a
