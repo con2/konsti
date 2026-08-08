@@ -1,10 +1,20 @@
 import { ReactElement, ReactNode } from "react";
-import styled from "styled-components";
+import styled, { DefaultTheme } from "styled-components";
 
 export enum HighlightStyle {
   INFO = "info",
   WARN = "warn",
 }
+
+// The one place a highlight style maps to a colour, so a card's border and
+// anything drawn beside it can't drift apart
+export const getHighlightColor = (
+  theme: DefaultTheme,
+  highlightStyle?: HighlightStyle,
+): string =>
+  highlightStyle === HighlightStyle.WARN
+    ? theme.borderCardWarnHighlight
+    : theme.borderCardHighlight;
 
 interface Props {
   children: ReactNode;
@@ -44,16 +54,8 @@ const Card = styled.div<{
 
   ${(props) =>
     props.$isHighlighted &&
-    `border: 1px solid ${
-      props.$highlightStyle === HighlightStyle.WARN
-        ? props.theme.borderCardWarnHighlight
-        : props.theme.borderCardHighlight
-    };`}
+    `border: 1px solid ${getHighlightColor(props.theme, props.$highlightStyle)};`}
   ${(props) =>
     props.$isHighlighted &&
-    `border-left: 5px solid ${
-      props.$highlightStyle === HighlightStyle.WARN
-        ? props.theme.borderCardWarnHighlight
-        : props.theme.borderCardHighlight
-    };`}
+    `border-left: 5px solid ${getHighlightColor(props.theme, props.$highlightStyle)};`}
 `;
