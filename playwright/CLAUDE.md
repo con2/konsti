@@ -56,7 +56,7 @@ A worktree's own `node_modules` must be **complete** — the same "Invalid hook 
 
 ## Config (`playwright.config.ts`)
 
-- **Browsers:** three projects are enabled — desktop **Chromium** ("Chrome Stable"), **Mobile Chrome** (Pixel 7 emulation: mobile viewport + touch, also Chromium), and **Mobile Safari** (iPhone 15 emulation, WebKit) — so every spec runs on all three. Desktop Firefox/Safari are behind `ENABLE_*` flags that are currently `false`; flip a flag to add a project.
+- **Browsers:** three projects are enabled — desktop **Chromium** ("Chrome Stable"), **Mobile Chrome** (Pixel 7 emulation: mobile viewport + touch, also Chromium), and **Mobile Safari** (iPhone SE 3rd gen emulation, WebKit, also the 375x667 small-screen floor) — so every spec runs on all three. The shared `use.viewport` is Full HD (1920x1080) rather than Playwright's 1280x720 default, so the desktop projects don't each declare one; the mobile projects' device descriptors carry their own viewport, which takes precedence. Desktop Firefox/Safari are behind `ENABLE_*` flags that are currently `false`; flip a flag to add a project.
 - **`baseURL`:** `process.env.PLAYWRIGHT_BASEURL ?? "http://localhost:8000"` — i.e. `page.goto("/")` hits the **client** locally, and the Docker run sets `PLAYWRIGHT_BASEURL=http://server:5000`.
 - **`workers: 1`** (serial — tests share one DB, so no parallelism).
 - **`retries`:** `1` in CI, `0` locally.

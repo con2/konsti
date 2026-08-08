@@ -25,7 +25,6 @@ ENABLE_FIREFOX &&
     name: "Desktop Firefox",
     use: {
       browserName: "firefox",
-      viewport: { width: 800, height: 600 },
     },
   });
 
@@ -35,7 +34,6 @@ ENABLE_SAFARI &&
     name: "Desktop Safari",
     use: {
       browserName: "webkit",
-      viewport: { width: 1200, height: 750 },
     },
   });
 
@@ -71,6 +69,10 @@ const config: PlaywrightTestConfig = {
   use: {
     baseURL:
       process.env.PLAYWRIGHT_BASEURL ?? `http://localhost:${8000 + portOffset}`,
+    // Full HD for the desktop projects, rather than Playwright's 1280x720
+    // default. The mobile projects carry their own device viewport, which
+    // takes precedence over this one
+    viewport: { width: 1920, height: 1080 },
     video: process.env.CI ? "on-first-retry" : "on",
     trace: process.env.CI ? "on-first-retry" : "on",
     headless: true,
