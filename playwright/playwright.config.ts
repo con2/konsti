@@ -15,7 +15,8 @@ ENABLE_CHROME &&
     name: "Chrome Stable",
     use: {
       browserName: "chromium",
-      // channel: "chrome", // Test against Chrome Stable channel.
+      // Needs an installed Chrome, which the E2E container lacks
+      // channel: "chrome",
     },
   });
 
