@@ -96,7 +96,12 @@ export const startServer = async ({
     res: ServerResponse,
     filePath: string,
   ): void => {
-    const isBundledAsset = filePath.split(/[\\/]/).includes("assets");
+    // Relative to the served root: the absolute path can carry an "assets"
+    // directory of its own above it, which would cache index.html forever
+    const isBundledAsset = path
+      .relative(staticPath, filePath)
+      .split(/[\\/]/)
+      .includes("assets");
     res.setHeader(
       "Cache-Control",
       isBundledAsset ? "public, max-age=31536000, immutable" : "no-cache",
