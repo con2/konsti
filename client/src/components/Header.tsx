@@ -6,7 +6,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import KonstiLogo from "client/components/icons/konsti.svg";
 import { LanguageSelector } from "client/components/LanguageSelector";
 import { Navigation } from "./Navigation";
-import { FirstLogin } from "./FirstLogin";
 import { useAppSelector } from "client/utils/hooks";
 import { config } from "shared/config";
 import { AppRoute } from "client/app/AppRoutes";
@@ -51,8 +50,6 @@ export const Header = (): ReactElement => {
       </HeaderContainer>
 
       {!appOpen && <ClosingMessage>{t("closingMessage")}</ClosingMessage>}
-
-      <FirstLogin />
     </>
   );
 };

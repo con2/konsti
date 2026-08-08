@@ -55,32 +55,24 @@ export const FirstLogin = (): ReactElement | null => {
   }
 
   return (
-    <Inset>
-      <DismissibleBanner
-        data-testid="first-login-notice"
-        icon="circle-exclamation"
-        highlightStyle={HighlightStyle.INFO}
-        dismissAriaLabel={t("iconAltText.closeFirstLoginNotice")}
-        onDismiss={() => {
-          setIsFirstLogin(false);
-        }}
-      >
-        <Message>
-          <p>
-            {t("firstLogin.serial")} <b>{formatSerial(serial)}</b>.
-          </p>
-          <p>{t("firstLogin.info")}</p>
-        </Message>
-      </DismissibleBanner>
-    </Inset>
+    <DismissibleBanner
+      data-testid="first-login-notice"
+      icon="circle-exclamation"
+      highlightStyle={HighlightStyle.INFO}
+      dismissAriaLabel={t("iconAltText.closeFirstLoginNotice")}
+      onDismiss={() => {
+        setIsFirstLogin(false);
+      }}
+    >
+      <Message>
+        <p>
+          {t("firstLogin.serial")} <b>{formatSerial(serial)}</b>.
+        </p>
+        <p>{t("firstLogin.info")}</p>
+      </Message>
+    </DismissibleBanner>
   );
 };
-
-// Same inset as the app-level bars below the header, so the notices that
-// can show at the same time share their edges
-const Inset = styled.div`
-  margin: 0 2px;
-`;
 
 const Message = styled.div`
   flex: 1;

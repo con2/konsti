@@ -8,6 +8,7 @@ import { Loading } from "client/components/Loading";
 import { getIconLibrary } from "client/utils/icons";
 import { config } from "shared/config";
 import { ErrorBar } from "client/components/ErrorBar";
+import { FirstLogin } from "client/components/FirstLogin";
 import { MOBILE_MARGIN } from "client/globalStyle";
 import { TestTime } from "client/test/test-components/TestTime";
 import { TestGenerateSerial } from "client/test/test-components/TestGenerateSerial";
@@ -111,6 +112,7 @@ const App = (): ReactElement => {
             {/* One sticky wrapper rather than sticky bars: siblings pinned to
                 the same offset would overlap instead of stacking */}
             <StickyBars>
+              <FirstLogin />
               <ErrorBar />
               <AppUpdateBanner />
               <AdminMessageBanner />

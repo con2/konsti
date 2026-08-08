@@ -292,8 +292,7 @@ test("App level bars line up with each other", async ({ page, request }) => {
 
   await reportServerVersion(page, "e2e-new-version");
 
-  // Signing in also brings up the first login notice, which sits in the
-  // header rather than with the bars
+  // Signing in also brings up the first login notice, the fourth bar
   await login(page, request, { username: "test1", password: "test" });
   await page.clock.install();
   await page.goto("/");
