@@ -80,14 +80,15 @@ describe("importWithRetry", () => {
     expect(raceResult).toEqual("pending");
   });
 
-  test("throws and resets the flag when the import fails again after a reload", async () => {
+  test("throws and keeps the flag set when the import fails again after a reload", async () => {
     storage.set(pageForceRefreshedKey, "true");
 
     await expect(importWithRetry(failingImport)).rejects.toThrow(
       "Failed to fetch dynamically imported module",
     );
     expect(reloadMock).not.toHaveBeenCalled();
-    // The reset lets a future unrelated failure get a reload retry again
-    expect(storage.get(pageForceRefreshedKey)).toEqual("false");
+    // Keeping the flag stops the next load reloading for the same broken
+    // chunk all over again
+    expect(storage.get(pageForceRefreshedKey)).toEqual("true");
   });
 });
