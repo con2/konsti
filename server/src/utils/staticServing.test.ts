@@ -1,4 +1,5 @@
 import fs from "node:fs";
+import os from "node:os";
 import path from "node:path";
 import { Server } from "node:http";
 import {
@@ -14,10 +15,11 @@ import request from "supertest";
 import { faker } from "@faker-js/faker";
 import { closeServer, startServer } from "server/utils/server";
 
-// Same location the server serves from. The directory is a build output that
-// doesn't exist in a fresh checkout, so the fixture files are created here and
-// only the ones this suite created are removed afterwards
-const staticPath = path.join(import.meta.dirname, "../../front");
+// A directory of this suite's own rather than the real build output: other
+// test files start servers in parallel processes, and the static middleware
+// scans its root when it is built, so creating and removing fixtures in the
+// shared location races those scans
+let staticPath: string;
 // Shaped like a real bundler output name, i.e. with a content hash
 const bundledAssetName = "cacheTest-Ab12Cd34.js";
 // A static file served from the root. The hyphenated name is deliberate: it
@@ -25,40 +27,19 @@ const bundledAssetName = "cacheTest-Ab12Cd34.js";
 // filename instead of the location
 const staticFileName = "service-worker-registration.js";
 
-const createdFiles: string[] = [];
-const createdDirs: string[] = [];
-
-const ensureDir = (dir: string): void => {
-  if (fs.existsSync(dir)) {
-    return;
-  }
-  fs.mkdirSync(dir);
-  createdDirs.push(dir);
-};
-
-const ensureFile = (filePath: string, content: string): void => {
-  if (fs.existsSync(filePath)) {
-    return;
-  }
-  fs.writeFileSync(filePath, content);
-  createdFiles.push(filePath);
-};
-
 beforeAll(() => {
-  ensureDir(staticPath);
-  ensureDir(path.join(staticPath, "assets"));
-  ensureFile(path.join(staticPath, "index.html"), "<html></html>");
-  ensureFile(path.join(staticPath, staticFileName), "export {};");
-  ensureFile(path.join(staticPath, "assets", bundledAssetName), "export {};");
+  staticPath = fs.mkdtempSync(path.join(os.tmpdir(), "konsti-static-"));
+  fs.mkdirSync(path.join(staticPath, "assets"));
+  fs.writeFileSync(path.join(staticPath, "index.html"), "<html></html>");
+  fs.writeFileSync(path.join(staticPath, staticFileName), "export {};");
+  fs.writeFileSync(
+    path.join(staticPath, "assets", bundledAssetName),
+    "export {};",
+  );
 });
 
 afterAll(() => {
-  for (const file of createdFiles) {
-    fs.rmSync(file, { force: true });
-  }
-  for (const dir of createdDirs.toReversed()) {
-    fs.rmdirSync(dir);
-  }
+  fs.rmSync(staticPath, { recursive: true, force: true });
 });
 
 let server: Server;
@@ -67,6 +48,7 @@ beforeEach(async () => {
   server = await startServer({
     dbConnString: globalThis.__MONGO_URI__,
     dbName: faker.string.alphanumeric(10),
+    staticFilesPath: staticPath,
   });
 });
 
