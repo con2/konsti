@@ -24,10 +24,9 @@ export const importWithRetry = async (
       return new Promise(() => {});
     }
 
-    // Reset the flag so a future unrelated failure gets a reload retry
-    // instead of throwing immediately
-    localStorage.setItem(pageForceRefreshedKey, "false");
-
+    // The flag stays set: clearing it here would let the next load reload
+    // once more for the same broken chunk, forever. Any import that succeeds
+    // clears it, which is what makes a later unrelated failure retry again
     // eslint-disable-next-line no-restricted-syntax -- Okay to throw if module loading fails after page reload
     throw error;
   }
