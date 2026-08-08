@@ -221,3 +221,30 @@ export const postAssignment = async (
   const body = (await response.json()) as PostAssignmentResponse;
   expect(body.status).toBe("success");
 };
+
+// The app update banner compares the version the server reports in the polled
+// settings response against the version baked into the client bundle (a fixed
+// placeholder in development and ci builds). The test server reports an empty
+// version, so patch the settings responses to simulate a new deploy. Returns
+// a setter so a test can simulate a further deploy mid-run
+export const reportServerVersion = async (
+  page: Page,
+  version: string,
+): Promise<(nextVersion: string) => void> => {
+  let reportedVersion = version;
+  await page.route("**/api/settings", async (route) => {
+    try {
+      const response = await route.fetch();
+      const json = (await response.json()) as { appVersion: string };
+      json.appVersion = reportedVersion;
+      await route.fulfill({ response, json });
+    } catch {
+      // The mocked clock can leave a poll in flight when the test ends, and
+      // closing the context disposes the response while this handler is
+      // still reading it. Nothing depends on the patched body by then
+    }
+  });
+  return (nextVersion: string): void => {
+    reportedVersion = nextVersion;
+  };
+};
