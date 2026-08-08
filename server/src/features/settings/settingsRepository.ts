@@ -65,17 +65,26 @@ export const createSettings = async (): Promise<
     // instead of failing or inserting a duplicate
     if (isDuplicateKeyError(error)) {
       logger.info("MongoDB: Default settings already created, reading those");
-      const existing = await SettingsModel.findOne(settingsFilter).lean();
-      const existingResult = SettingsSchemaDb.safeParse(existing);
-      if (!existingResult.success) {
+      try {
+        const existing = await SettingsModel.findOne(settingsFilter).lean();
+        const existingResult = SettingsSchemaDb.safeParse(existing);
+        if (!existingResult.success) {
+          logger.error(
+            new Error("Error validating existing settings DB value", {
+              cause: existingResult.error,
+            }),
+          );
+          return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+        }
+        return makeSuccessResult(existingResult.data);
+      } catch (readError) {
         logger.error(
-          new Error("Error validating existing settings DB value", {
-            cause: existingResult.error,
+          new Error("MongoDB: Error reading existing settings", {
+            cause: readError,
           }),
         );
         return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
       }
-      return makeSuccessResult(existingResult.data);
     }
 
     logger.error(
@@ -123,6 +132,13 @@ export const findSettings = async (): Promise<
 export const saveHidden = async (
   hiddenProgramItemIds: readonly string[],
 ): Promise<Result<Settings, MongoDbError>> => {
+  // Create through the one designated creator rather than upserting here: a
+  // second creator is what lets two documents exist in the first place
+  const settingsResult = await findSettings();
+  if (!settingsResult.ok) {
+    return settingsResult;
+  }
+
   try {
     const settings = await SettingsModel.findOneAndUpdate(
       settingsFilter,
@@ -131,9 +147,11 @@ export const saveHidden = async (
       },
       {
         returnDocument: "after",
-        upsert: true,
       },
     ).lean();
+    if (!settings) {
+      return makeErrorResult(MongoDbError.SETTINGS_NOT_FOUND);
+    }
 
     logger.info("MongoDB: Hidden data updated");
 
@@ -247,15 +265,24 @@ export const delSignupQuestion = async (
 export const saveSettings = async (
   settings: PostSettingsRequest,
 ): Promise<Result<Settings, MongoDbError>> => {
+  // Create through the one designated creator rather than upserting here: a
+  // second creator is what lets two documents exist in the first place
+  const existingSettingsResult = await findSettings();
+  if (!existingSettingsResult.ok) {
+    return existingSettingsResult;
+  }
+
   try {
     const updatedSettings = await SettingsModel.findOneAndUpdate(
       settingsFilter,
       settings,
       {
         returnDocument: "after",
-        upsert: true,
       },
     ).lean();
+    if (!updatedSettings) {
+      return makeErrorResult(MongoDbError.SETTINGS_NOT_FOUND);
+    }
     logger.info("MongoDB: App settings updated");
 
     const result = SettingsSchemaDb.safeParse(updatedSettings);
