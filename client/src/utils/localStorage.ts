@@ -73,18 +73,17 @@ export const saveSession = (state: Partial<LocalStorageState>): void => {
 export const clearSession = (): void => {
   localStorage.removeItem(localStorageStateKey);
 
-  // The app update reload guard outlives the session. Logging out is itself a
-  // navigation, so dropping the guard here would let a pending update reload
-  // the page a second time for a version it already tried
-  const appUpdateReloadedVersion = sessionStorage.getItem(
-    appUpdateReloadedVersionKey,
+  // Only this event's session keys, not the whole store: the update reload
+  // guard has to outlive a logout (which is itself a navigation, so dropping
+  // it would let a pending update reload the page a second time), and a
+  // blanket wipe would also take keys other origins' code owns
+  const sessionKeys = Object.keys(sessionStorage).filter(
+    (key) =>
+      key.startsWith(`${browserStoragePrefix}-`) &&
+      key !== appUpdateReloadedVersionKey,
   );
-  sessionStorage.clear();
-  if (appUpdateReloadedVersion !== null) {
-    sessionStorage.setItem(
-      appUpdateReloadedVersionKey,
-      appUpdateReloadedVersion,
-    );
+  for (const sessionKey of sessionKeys) {
+    sessionStorage.removeItem(sessionKey);
   }
 };
 
