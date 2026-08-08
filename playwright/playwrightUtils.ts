@@ -239,9 +239,16 @@ export const reportServerVersion = async (
       json.appVersion = reportedVersion;
       await route.fulfill({ response, json });
     } catch {
-      // The mocked clock can leave a poll in flight when the test ends, and
-      // closing the context disposes the response while this handler is
-      // still reading it. Nothing depends on the patched body by then
+      // Fail the request rather than leaving it hanging until the client's
+      // own timeout, which would look like an outage to the app. Aborting
+      // throws too once the context is gone, which is the expected case here:
+      // the mocked clock can leave a poll in flight when the test ends, and
+      // closing the context disposes the response mid-read
+      try {
+        await route.abort();
+      } catch {
+        // Context already closed, nothing left to answer
+      }
     }
   });
   return (nextVersion: string): void => {
