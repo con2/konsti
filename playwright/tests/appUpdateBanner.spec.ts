@@ -166,6 +166,60 @@ test("A further deploy notifies again after an earlier build was dismissed", asy
     .toBe(true);
 });
 
+test("A later build gets a transparent reload of its own", async ({
+  page,
+  request,
+}) => {
+  await clearDb(request);
+  await populateDb(request, { clean: true, users: true, admin: true });
+  await addProgramItems(request, [
+    {
+      ...testProgramItem,
+      programType: config.event().twoPhaseSignupProgramTypes[0],
+      startTime: "2026-07-24T15:00:00.000Z",
+      endTime: "2026-07-24T19:00:00.000Z",
+    },
+  ]);
+  await postTestSettings(request, { testTime: config.event().eventStartTime });
+  const setServerBuildTime = await reportServerBuildTime(page, "1000");
+
+  await page.clock.install();
+  await page.goto("/");
+
+  const programList = new ProgramListPage(page);
+  await programList.waitForItems();
+
+  const banner = new AppUpdateBanner(page);
+  await page.clock.fastForward("01:01");
+  await expect(banner.container).toBeVisible();
+
+  // Spend the guard on the first build
+  await Promise.all([
+    page.waitForEvent("load"),
+    programList.firstItem().title.click(),
+  ]);
+  const programItemPage = new ProgramItemPage(page);
+  await expect(programItemPage.title).toBeVisible();
+
+  // The guard records the build it was spent on rather than that a reload has
+  // happened at all, so a further deploy is still allowed one. This is what
+  // makes a rollback work: it redeploys earlier code under a later build time
+  setServerBuildTime("2000");
+  await expect
+    .poll(async () => {
+      await page.clock.fastForward("01:01");
+      return await banner.container.isVisible();
+    })
+    .toBe(true);
+
+  await setPageMarker(page);
+  await Promise.all([
+    page.waitForEvent("load"),
+    programItemPage.navigation.gotoProgram(),
+  ]);
+  expect(await hasPageMarker(page)).toBe(false);
+});
+
 test("Update banner reload button reloads the page", async ({
   page,
   request,
