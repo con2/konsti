@@ -5,7 +5,7 @@ export const translationEN = {
   logoAltText: "Konsti",
   announcement: "Sign-up has ended. Results will be released soon.",
   appUpdateBanner: {
-    message: "Konsti has been updated. Please reload the page.",
+    message: "Konsti has been updated.",
     reload: "Reload",
   },
   testTime: {
