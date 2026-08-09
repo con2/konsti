@@ -1,5 +1,5 @@
-import { execFileSync } from "node:child_process";
-import { runYarn } from "./runYarn";
+import { existingPaths, getGitChanges } from "./gitChanges.ts";
+import { getProjectRoot, runNodeTool } from "./nodeTool.ts";
 
 interface HookInput {
   tool_name?: string;
@@ -8,19 +8,32 @@ interface HookInput {
 
 const chunks: Buffer[] = [];
 for await (const chunk of process.stdin) {
-  chunks.push(chunk);
+  chunks.push(chunk as Buffer);
 }
 
-const input: HookInput = JSON.parse(Buffer.concat(chunks).toString());
+let input: HookInput = {};
+try {
+  input = JSON.parse(Buffer.concat(chunks).toString()) as HookInput;
+} catch {
+  process.exit(0);
+}
+
+const root = getProjectRoot();
 const filePath = input.tool_input?.file_path ?? "";
 
 const runPrettier = (paths: string[]): void => {
-  if (paths.length === 0) return;
-  try {
-    runYarn(["prettier", "--write", "--ignore-unknown", ...paths]);
-  } catch {
-    // Don't block — eslint surfaces real syntax/style issues
+  if (paths.length === 0) {
+    return;
   }
+  // Result is deliberately ignored: formatting must never block a turn, and
+  // eslint surfaces real syntax problems at Stop
+  runNodeTool({
+    name: "prettier",
+    root,
+    pkg: "prettier",
+    relBin: "bin/prettier.cjs",
+    args: ["--write", "--cache", "--ignore-unknown", ...paths],
+  });
 };
 
 if (filePath) {
@@ -28,20 +41,7 @@ if (filePath) {
   runPrettier([filePath]);
 } else if (input.tool_name === "Bash") {
   // Bash can modify files outside the hook's visibility (sed -i, redirects,
-  // scripts, etc.), so format everything currently uncommitted in the working
-  // tree. Prettier's cache keeps this cheap when nothing changed
-  try {
-    const out = execFileSync("git", ["status", "--porcelain", "-z"], {
-      encoding: "utf8",
-    });
-    const paths = out
-      .split("\0")
-      .filter(Boolean)
-      // porcelain entries are "XY <path>"; strip the 3-char status prefix
-      .map((entry) => entry.slice(3))
-      .filter(Boolean);
-    runPrettier(paths);
-  } catch {
-    // Not a git repo or git unavailable — nothing we can do
-  }
+  // scripts, etc.), so format everything currently uncommitted. Prettier's cache
+  // keeps this cheap when nothing changed
+  runPrettier(existingPaths(getGitChanges(root)));
 }
