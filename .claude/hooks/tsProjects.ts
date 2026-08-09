@@ -32,17 +32,24 @@ export const PROJECT_ARGS: Record<TsProject, string[]> = {
 //
 // The converse is safe: nothing outside client/ imports client/*, and nothing
 // outside server/ imports server/*, so those map to themselves alone.
+// A config change alters what every program compiles: the workspace tsconfigs
+// all extend the root one, and a dependency change churns the .d.ts files they
+// read. Exported so the hook's gates fire on these too - they are not .ts files,
+// so an extension check alone would skip the very changes that affect everything
+export const isBuildConfig = (changedPath: string): boolean => {
+  const p = changedPath.replaceAll("\\", "/");
+  return (
+    /(^|\/)tsconfig[^/]*\.json$/.test(p) ||
+    /(^|\/)package\.json$/.test(p) ||
+    p === "yarn.lock" ||
+    p === ".yarnrc.yml"
+  );
+};
+
 const projectsFor = (changedPath: string): TsProject[] => {
   const p = changedPath.replaceAll("\\", "/");
 
-  // Every workspace tsconfig extends the root one, and a dependency change
-  // churns the .d.ts files all four programs read
-  if (
-    /(^|\/)tsconfig[^/]*\.json$/.test(p) ||
-    p === "package.json" ||
-    p === "yarn.lock" ||
-    p === ".yarnrc.yml"
-  ) {
+  if (isBuildConfig(p)) {
     return [...TS_PROJECTS];
   }
 
