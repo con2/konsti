@@ -4,7 +4,7 @@ import {
   clearDb,
   populateDb,
   postTestSettings,
-  reportServerVersion,
+  reportServerBuildTime,
 } from "playwright/playwrightUtils";
 import { config } from "shared/config";
 import { testProgramItem } from "shared/tests/testProgramItem";
@@ -33,12 +33,12 @@ test.afterEach(async ({ page }) => {
   await page.unrouteAll({ behavior: "ignoreErrors" });
 });
 
-test("Update banner appears once polls confirm a new version and stays dismissed", async ({
+test("Update banner appears once polls confirm a newer build and stays dismissed", async ({
   page,
   request,
 }) => {
   await clearDb(request);
-  await reportServerVersion(page, "e2e-new-version");
+  await reportServerBuildTime(page);
 
   // Mock browser timers so the data poll (dataUpdateInterval, 60 s) can be
   // fast-forwarded instead of waited for. Must be installed before the app loads
@@ -66,13 +66,13 @@ test("Update banner appears once polls confirm a new version and stays dismissed
   await expect(banner.container).toBeHidden();
 });
 
-test("A settings response with no version at all is not an update", async ({
+test("A settings response with no build time at all is not an update", async ({
   page,
   request,
 }) => {
   await clearDb(request);
-  // A server deployed before the version fields existed answers without them
-  await reportServerVersion(page, null, null);
+  // A server deployed before the build time field existed answers without it
+  await reportServerBuildTime(page, null);
 
   // Count the polls rather than assuming a fast forward produces one: the app
   // drops an interval tick that lands while a load is still running, and a
@@ -107,8 +107,8 @@ test("An instance still on the previous build is not an update", async ({
 }) => {
   await clearDb(request);
   // Mid-rollout this page came from an already-updated instance, and its polls
-  // land on one that hasn't rolled yet: a different version, but an older build
-  await reportServerVersion(page, "e2e-previous-version", "-1");
+  // land on one that hasn't rolled yet: a different deploy, but an older build
+  await reportServerBuildTime(page, "-1");
 
   let settingsResponses = 0;
   page.on("response", (response) => {
@@ -133,12 +133,12 @@ test("An instance still on the previous build is not an update", async ({
   await expect(banner.container).toBeHidden();
 });
 
-test("A further deploy notifies again after an earlier version was dismissed", async ({
+test("A further deploy notifies again after an earlier build was dismissed", async ({
   page,
   request,
 }) => {
   await clearDb(request);
-  const setServerVersion = await reportServerVersion(page, "e2e-version-2");
+  const setServerBuildTime = await reportServerBuildTime(page, "1000");
 
   await page.clock.install();
   await page.goto("/");
@@ -152,12 +152,12 @@ test("A further deploy notifies again after an earlier version was dismissed", a
   await banner.dismissButton.click();
   await expect(banner.container).toBeHidden();
 
-  // A dismissal only silences the version it was made for, so the next
+  // A dismissal only silences the build it was made for, so the next
   // deploy notifies again in the same tab
-  setServerVersion("e2e-version-3");
+  setServerBuildTime("2000");
   // Keep advancing rather than counting ticks: the app drops an interval tick
   // that arrives while the previous load is still in flight, so the number of
-  // fast-forwards needed to confirm a version is not fixed
+  // fast-forwards needed to confirm a build is not fixed
   await expect
     .poll(async () => {
       await page.clock.fastForward("01:01");
@@ -171,7 +171,7 @@ test("Update banner reload button reloads the page", async ({
   request,
 }) => {
   await clearDb(request);
-  await reportServerVersion(page, "e2e-new-version");
+  await reportServerBuildTime(page);
 
   await page.clock.install();
   await page.goto("/");
@@ -191,7 +191,7 @@ test("Update banner reload button reloads the page", async ({
   await expect(banner.container).toBeHidden();
 });
 
-test("Update reloads transparently on the first navigation, but only once per version", async ({
+test("Update reloads transparently on the first navigation, but only once per build", async ({
   page,
   request,
 }) => {
@@ -206,7 +206,7 @@ test("Update reloads transparently on the first navigation, but only once per ve
     },
   ]);
   await postTestSettings(request, { testTime: config.event().eventStartTime });
-  await reportServerVersion(page, "e2e-new-version");
+  await reportServerBuildTime(page);
 
   await page.clock.install();
   await page.goto("/");
@@ -243,8 +243,19 @@ test("Update reloads transparently on the first navigation, but only once per ve
   // traversing to an entry whose document the transparent reload destroyed
   // may be a cross-document load in some browsers
   await setPageMarker(page);
+  // Watch for a load before navigating: asserting on the marker alone races
+  // the reload, so it would hold even if one were on its way
+  const reloaded = (async (): Promise<boolean> => {
+    try {
+      await page.waitForEvent("load", { timeout: 1000 });
+      return true;
+    } catch {
+      return false;
+    }
+  })();
   await programItemPage.navigation.gotoProgram();
   await expect(page).toHaveURL(/\/program\/list/);
+  expect(await reloaded).toBe(false);
   await expect(banner.container).toBeVisible();
   expect(await hasPageMarker(page)).toBe(true);
 });
