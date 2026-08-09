@@ -28,7 +28,7 @@ export interface PostLoginResult extends ApiResult {
   emailNotificationPermitAsked: boolean;
 }
 
-export interface PostLoginError extends ApiError {
+interface PostLoginError extends ApiError {
   errorId: "unknown" | "loginFailed" | "loginDisabled";
 }
 

@@ -2,6 +2,8 @@ import { test, expect } from "@playwright/test";
 import { populateDb, login } from "playwright/playwrightUtils";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { Navigation } from "playwright/pages/Navigation";
+import { ErrorBar } from "playwright/pages/ErrorBar";
+import { LoginPage } from "playwright/pages/LoginPage";
 import { localStorageStateKey } from "shared/constants/browserStorage";
 
 test("Logout clears the session", async ({ page, request }) => {
@@ -114,4 +116,37 @@ test("A rejected session is given up on rather than retried every poll", async (
   await page.clock.fastForward("01:01");
   await page.clock.fastForward("01:01");
   expect(recoveryAttempts).toBe(1);
+
+  // Being signed out mid-session is explained rather than just happening
+  const errorBar = new ErrorBar(page);
+  await expect(errorBar.sessionExpired).toBeVisible();
+});
+
+test("Signing back in clears the session expired notice", async ({
+  page,
+  request,
+}) => {
+  await populateDb(request, { clean: true, users: true, admin: true });
+
+  const foreignJwt =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QxIiwidXNlckdyb3VwIjoidXNlciJ9.not-a-valid-signature";
+  await page.addInitScript(
+    ({ stateKey, jwt }) => {
+      localStorage.setItem(stateKey, JSON.stringify({ login: { jwt } }));
+    },
+    { stateKey: localStorageStateKey, jwt: foreignJwt },
+  );
+
+  await page.goto("/");
+
+  const errorBar = new ErrorBar(page);
+  await expect(errorBar.sessionExpired).toBeVisible();
+
+  // The notice describes a state the app is no longer in once there is a
+  // session again, so it goes without the user having to dismiss it
+  const loginPage = new LoginPage(page);
+  await loginPage.navigation.gotoLoginPage();
+  await loginPage.fillAndSubmit("test1", "test");
+
+  await expect(errorBar.sessionExpired).toBeHidden();
 });

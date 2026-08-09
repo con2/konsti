@@ -18,6 +18,11 @@ export class ErrorBar {
     return this.items.filter({ hasText: /error while calling/i });
   }
 
+  // Shown when a stored session is rejected and the app signs the user out
+  get sessionExpired(): Locator {
+    return this.items.filter({ hasText: /session has expired/i });
+  }
+
   async dismissNetworkError(): Promise<void> {
     await this.networkError
       .getByRole("button", { name: /close error/i })
