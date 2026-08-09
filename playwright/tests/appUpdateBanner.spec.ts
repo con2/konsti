@@ -71,8 +71,8 @@ test("A settings response with no version at all is not an update", async ({
   request,
 }) => {
   await clearDb(request);
-  // A server deployed before the version field existed answers without it
-  await reportServerVersion(page, null);
+  // A server deployed before the version fields existed answers without them
+  await reportServerVersion(page, null, null);
 
   // Count the polls rather than assuming a fast forward produces one: the app
   // drops an interval tick that lands while a load is still running, and a
@@ -90,6 +90,38 @@ test("A settings response with no version at all is not an update", async ({
   await expect(programList.programTypeFilter).toBeVisible();
 
   // The load-time response plus the two polls a version needs to be confirmed
+  await expect
+    .poll(async () => {
+      await page.clock.fastForward("01:01");
+      return settingsResponses;
+    })
+    .toBeGreaterThanOrEqual(3);
+
+  const banner = new AppUpdateBanner(page);
+  await expect(banner.container).toBeHidden();
+});
+
+test("An instance still on the previous build is not an update", async ({
+  page,
+  request,
+}) => {
+  await clearDb(request);
+  // Mid-rollout this page came from an already-updated instance, and its polls
+  // land on one that hasn't rolled yet: a different version, but an older build
+  await reportServerVersion(page, "e2e-previous-version", "-1");
+
+  let settingsResponses = 0;
+  page.on("response", (response) => {
+    if (response.url().includes("/api/settings")) {
+      settingsResponses += 1;
+    }
+  });
+
+  await page.clock.install();
+  await page.goto("/");
+  const programList = new ProgramListPage(page);
+  await expect(programList.programTypeFilter).toBeVisible();
+
   await expect
     .poll(async () => {
       await page.clock.fastForward("01:01");

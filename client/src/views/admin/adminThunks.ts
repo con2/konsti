@@ -63,6 +63,7 @@ export const submitGetSettings = (): AppThunk<Promise<boolean>> => {
     dispatch(
       updateServerAppVersion({
         version: settingsResponse.appVersion,
+        buildTime: settingsResponse.appBuildTime,
         receivedAt: performance.now(),
       }),
     );

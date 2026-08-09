@@ -222,25 +222,35 @@ export const postAssignment = async (
   expect(body.status).toBe("success");
 };
 
-// The app update banner compares the version the server reports in the polled
-// settings response against the version baked into the client bundle (a fixed
-// placeholder in development and ci builds). The test server reports an empty
-// version, so patch the settings responses to simulate a new deploy. Pass null
-// to drop the field entirely, as a server too old to send it would. Returns
-// a setter so a test can simulate a further deploy mid-run
+// The app update banner reports an update when the server's build time is
+// newer than the one baked into the client bundle (0 in development and ci
+// builds). The test server reports neither, so patch the settings responses to
+// simulate a deploy. buildTime defaults to a time after the client's, i.e. a
+// newer server; pass a lower one to play an instance that hasn't rolled yet,
+// or null for either field to drop it as a server too old to send it would.
+// Returns a setter so a test can simulate a further deploy mid-run
 export const reportServerVersion = async (
   page: Page,
   version: string | null,
+  buildTime: string | null = "1000",
 ): Promise<(nextVersion: string) => void> => {
   let reportedVersion = version;
   await page.route("**/api/settings", async (route) => {
     try {
       const response = await route.fetch();
-      const json = (await response.json()) as { appVersion?: string };
+      const json = (await response.json()) as {
+        appVersion?: string;
+        appBuildTime?: string;
+      };
       if (reportedVersion === null) {
         delete json.appVersion;
       } else {
         json.appVersion = reportedVersion;
+      }
+      if (buildTime === null) {
+        delete json.appBuildTime;
+      } else {
+        json.appBuildTime = buildTime;
       }
       await route.fulfill({ response, json });
     } catch {

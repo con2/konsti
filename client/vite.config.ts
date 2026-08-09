@@ -65,17 +65,18 @@ export default defineConfig(({ mode, command }) => {
   const sentryAuthToken = readSentryAuthToken(import.meta.dirname);
   const sentryProject = SENTRY_PROJECT_BY_MODE[mode];
 
-  // Git SHA of this build, from the APP_VERSION Docker build-arg (also used
-  // as the Sentry release name below). Docker sets the env var to an empty
-  // string when the build-arg is not provided, so || rather than ?? treats
-  // that as unset too. Development and ci builds fall back to a placeholder
-  // so the E2E suite can drive the update banner by faking the
-  // server-reported version; the banner stays off otherwise because those
-  // servers report an empty version
+  // Build time of this image, from the APP_BUILD_TIME Docker build-arg. The
+  // client reports an update only when the server's build is strictly newer,
+  // so this is what tells a newer deploy from an instance yet to roll. Docker
+  // sets the env var to an empty string when the build-arg is not provided, so
+  // || rather than ?? treats that as unset too. Development and ci builds fall
+  // back to 0, the earliest possible time, so any build the E2E suite fakes
+  // counts as newer; the banner stays off otherwise because those servers
+  // report no build time at all
   // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
-  const appVersion =
-    process.env.APP_VERSION ||
-    (mode === "development" || mode === "ci" ? "local-build" : "");
+  const appBuildTime =
+    process.env.APP_BUILD_TIME ||
+    (mode === "development" || mode === "ci" ? "0" : "");
   const enableSentryUpload =
     Boolean(sentryAuthToken) &&
     Boolean(sentryProject) &&
@@ -169,7 +170,7 @@ export default defineConfig(({ mode, command }) => {
       ),
       // The app compares this against the version the server reports to
       // detect that a new version has been deployed
-      "process.env.APP_VERSION": JSON.stringify(appVersion),
+      "process.env.APP_BUILD_TIME": JSON.stringify(appBuildTime),
     },
 
     server: {

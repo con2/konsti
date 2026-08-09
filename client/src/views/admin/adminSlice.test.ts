@@ -14,8 +14,12 @@ const report = (
   state: AdminState,
   version: string,
   receivedAt: number,
+  buildTime = "1000",
 ): AdminState =>
-  adminReducer(state, updateServerAppVersion({ version, receivedAt }));
+  adminReducer(
+    state,
+    updateServerAppVersion({ version, buildTime, receivedAt }),
+  );
 
 describe("updateServerAppVersion", () => {
   test("confirms a version only after it stays the candidate for the confirmation window", () => {
@@ -57,5 +61,13 @@ describe("updateServerAppVersion", () => {
 
     state = report(state, "def456", 120_000);
     expect(state.serverAppVersion).toEqual("abc123");
+  });
+
+  test("accepts the build time belonging to the version it confirms", () => {
+    let state = report(initialState(), "abc123", 0, "1700000000");
+    state = report(state, "abc123", confirmWindowMs, "1700000000");
+
+    expect(state.serverAppVersion).toEqual("abc123");
+    expect(state.serverAppBuildTime).toEqual("1700000000");
   });
 });

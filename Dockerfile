@@ -8,6 +8,10 @@ ARG env
 # release name
 ARG APP_VERSION
 ENV APP_VERSION=$APP_VERSION
+# Time this image was built, baked in alongside it. Images are built in the
+# order they are deployed, so it gives the client something to order by
+ARG APP_BUILD_TIME
+ENV APP_BUILD_TIME=$APP_BUILD_TIME
 
 # Create build directory
 WORKDIR /usr/src/builder
@@ -38,6 +42,10 @@ FROM ${NODE_IMAGE} AS runner
 # backend events are associated with it
 ARG APP_VERSION
 ENV APP_VERSION=$APP_VERSION
+# Reported alongside it so a polling client can tell whether this build is
+# newer than its own
+ARG APP_BUILD_TIME
+ENV APP_BUILD_TIME=$APP_BUILD_TIME
 
 # Install init process tool to avoid Node running PID 1
 RUN apk --no-cache add dumb-init=1.2.5-r4
