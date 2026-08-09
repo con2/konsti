@@ -162,7 +162,6 @@ export const translationEN = {
     invalidSerial: "Invalid registration code",
     loginFailed: "Username and password don't match",
     loginDisabled: "Login is disabled",
-    sessionExpired: "Your session has expired, please log in again",
     invalidUserGroup: "Invalid user group",
     unknown: "Unknown error",
   },
@@ -552,6 +551,8 @@ export const translationEN = {
     networkError: "Network error, connection to server failed",
     unauthorized: "Unauthorized",
     invalidRequest: "Invalid request",
+    sessionExpired: "Your session has expired, please log in again",
+    loginDisabled: "Login is currently disabled, you have been signed out",
     unknown: "Unknown error",
   },
   aboutView: {

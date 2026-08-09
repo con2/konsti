@@ -77,13 +77,8 @@ const recoverSession = async (): Promise<boolean> => {
   if (!loggedIn && jwt) {
     const error = await dispatch(submitSessionRecovery(jwt));
     if (error) {
-      // Only report a session that was actually given up on. A recovery that
-      // failed because the server couldn't be reached keeps the session and
-      // is retried by the next poll, and saying otherwise once a minute for
-      // the length of an outage helps nobody
-      if (!store.getState().login.jwt) {
-        console.log("Saved session was rejected, signed out"); // eslint-disable-line no-console
-      }
+      // A rejected session raises its own app-level error, so there is nothing
+      // to report here beyond the load having failed
       return false;
     }
   }

@@ -3,6 +3,8 @@ export enum BackendErrorType {
   API_ERROR = "backendError.apiError",
   UNAUTHORIZED = "backendError.unauthorized",
   INVALID_REQUEST = "backendError.invalidRequest",
+  SESSION_EXPIRED = "backendError.sessionExpired",
+  LOGIN_DISABLED = "backendError.loginDisabled",
   UNKNOWN = "backendError.unknown",
 }
 

@@ -161,7 +161,6 @@ export const translationFI = {
     invalidSerial: "Virheellinen rekisteröintikoodi",
     loginFailed: "Nimimerkki ja salasana eivät täsmää",
     loginDisabled: "Kirjautuminen on suljettu",
-    sessionExpired: "Istuntosi on vanhentunut, kirjaudu uudelleen sisään",
     invalidUserGroup: "Virheellinen käyttäjäryhmä",
     unknown: "Tuntematon virhe",
   },
@@ -554,6 +553,8 @@ export const translationFI = {
     networkError: "Verkkovirhe, yhteys palvelimeen epäonnistui",
     unauthorized: "Ei käyttöoikeutta",
     invalidRequest: "Virheellinen kutsu",
+    sessionExpired: "Istuntosi on vanhentunut, kirjaudu uudelleen sisään",
+    loginDisabled: "Kirjautuminen on suljettu, sinut on kirjattu ulos",
     unknown: "Tuntematon virhe",
   },
   aboutView: {
