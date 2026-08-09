@@ -161,6 +161,7 @@ export const translationFI = {
     invalidSerial: "Virheellinen rekisteröintikoodi",
     loginFailed: "Nimimerkki ja salasana eivät täsmää",
     loginDisabled: "Kirjautuminen on suljettu",
+    sessionExpired: "Istuntosi on vanhentunut, kirjaudu uudelleen sisään",
     invalidUserGroup: "Virheellinen käyttäjäryhmä",
     unknown: "Tuntematon virhe",
   },

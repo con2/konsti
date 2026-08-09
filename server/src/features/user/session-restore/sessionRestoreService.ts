@@ -1,9 +1,11 @@
 import { findOrCreateSettings } from "server/features/settings/settingsRepository";
 import { findUser } from "server/features/user/userRepository";
 import { decodeJWT, getJWT, verifyJWT } from "server/utils/jwt";
-import { PostLoginResponse } from "shared/types/api/login";
+import { PostSessionRecoveryResponse } from "shared/types/api/login";
 import { UserGroup } from "shared/types/models/user";
-export const loginWithJwt = async (jwt: string): Promise<PostLoginResponse> => {
+export const loginWithJwt = async (
+  jwt: string,
+): Promise<PostSessionRecoveryResponse> => {
   // Restore session
   const jwtData = decodeJWT(jwt);
 
@@ -11,7 +13,7 @@ export const loginWithJwt = async (jwt: string): Promise<PostLoginResponse> => {
     return {
       message: "Invalid jwt",
       status: "error",
-      errorId: "unknown",
+      errorId: "sessionExpired",
     };
   }
 
@@ -19,7 +21,7 @@ export const loginWithJwt = async (jwt: string): Promise<PostLoginResponse> => {
     return {
       message: "Invalid userGroup",
       status: "error",
-      errorId: "unknown",
+      errorId: "sessionExpired",
     };
   }
 
@@ -29,7 +31,7 @@ export const loginWithJwt = async (jwt: string): Promise<PostLoginResponse> => {
     return {
       message: "Login expired",
       status: "error",
-      errorId: "unknown",
+      errorId: "sessionExpired",
     };
   }
 
@@ -90,9 +92,11 @@ export const loginWithJwt = async (jwt: string): Promise<PostLoginResponse> => {
     };
   }
 
+  // Reached when the verified token carries no username, i.e. the token is
+  // malformed rather than the server having a problem
   return {
     message: "Restoring session failed",
     status: "error",
-    errorId: "unknown",
+    errorId: "sessionExpired",
   };
 };

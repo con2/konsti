@@ -42,7 +42,16 @@ export type PostSessionRecoveryRequest = z.infer<
   typeof PostSessionRecoveryRequestSchema
 >;
 
-export type PostSessionRecoveryResponse = PostLoginResponse;
+// Same success shape as a login, but the failures differ: recovery can fail
+// because the stored token itself is unusable, which a login can't. Keeping
+// that out of PostLoginError spares the login paths a case they never see
+export interface PostSessionRecoveryError extends ApiError {
+  errorId: "unknown" | "loginFailed" | "loginDisabled" | "sessionExpired";
+}
+
+export type PostSessionRecoveryResponse =
+  | PostLoginResult
+  | PostSessionRecoveryError;
 
 // POST Kompassi login
 
