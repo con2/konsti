@@ -37,6 +37,7 @@ const initialState = (): AdminState => {
     loginProvider: undefined,
     emailNotificationTrigger: [],
     serverAppVersion: "",
+    serverAppBuildTime: "",
     serverAppVersionCandidate: "",
     serverAppVersionCandidateSince: 0,
   };
@@ -65,7 +66,9 @@ const adminSlice = createSlice({
     // deploys don't count as settings changes
     submitGetSettingsAsync(
       state,
-      action: PayloadAction<Omit<SettingsPayload, "appVersion">>,
+      action: PayloadAction<
+        Omit<SettingsPayload, "appVersion" | "appBuildTime">
+      >,
     ): AdminState {
       return {
         ...state,
@@ -86,9 +89,13 @@ const adminSlice = createSlice({
     // before the rollout has settled
     updateServerAppVersion(
       state,
-      action: PayloadAction<{ version: string; receivedAt: number }>,
+      action: PayloadAction<{
+        version: string;
+        buildTime: string;
+        receivedAt: number;
+      }>,
     ): AdminState {
-      const { version, receivedAt } = action.payload;
+      const { version, buildTime, receivedAt } = action.payload;
       if (version !== state.serverAppVersionCandidate) {
         return {
           ...state,
@@ -100,7 +107,13 @@ const adminSlice = createSlice({
         version !== state.serverAppVersion &&
         receivedAt - state.serverAppVersionCandidateSince >= appVersionConfirmMs
       ) {
-        return { ...state, serverAppVersion: version };
+        // The build time belongs to the version being accepted, so the two
+        // always describe the same deploy
+        return {
+          ...state,
+          serverAppVersion: version,
+          serverAppBuildTime: buildTime,
+        };
       }
       return state;
     },

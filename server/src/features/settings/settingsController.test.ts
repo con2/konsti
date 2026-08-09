@@ -90,6 +90,24 @@ describe(`GET ${ApiEndpoint.SETTINGS}`, () => {
     expect(response.status).toEqual(200);
     expect((response.body as SettingsPayload).appVersion).toEqual("");
   });
+
+  test("should return the build time as appBuildTime", async () => {
+    vi.stubEnv("APP_BUILD_TIME", "1700000000");
+
+    const response = await request(server).get(ApiEndpoint.SETTINGS);
+    expect(response.status).toEqual(200);
+    expect((response.body as SettingsPayload).appBuildTime).toEqual(
+      "1700000000",
+    );
+  });
+
+  test("should return empty appBuildTime without a build time", async () => {
+    vi.stubEnv("APP_BUILD_TIME", undefined);
+
+    const response = await request(server).get(ApiEndpoint.SETTINGS);
+    expect(response.status).toEqual(200);
+    expect((response.body as SettingsPayload).appBuildTime).toEqual("");
+  });
 });
 
 describe(`POST ${ApiEndpoint.SETTINGS}`, () => {

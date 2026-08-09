@@ -12,7 +12,16 @@ import {
   saveAppUpdateReloadedVersion,
 } from "client/utils/sessionStorage";
 
-const { appVersion } = config.client();
+const { appBuildTime } = config.client();
+
+// Empty when a build carried no timestamp, and any non-numeric value is
+// treated the same way: without a usable time there is nothing to order by
+const parseBuildTime = (value: string): number | null => {
+  const parsed = Number(value);
+  return value === "" || Number.isNaN(parsed) ? null : parsed;
+};
+
+const ownBuildTime = parseBuildTime(appBuildTime);
 
 // Shown when the version the server reports differs from the version baked
 // into this bundle, i.e. a new Konsti version was deployed after this page
@@ -23,24 +32,27 @@ export const AppUpdateBanner = (): ReactElement | null => {
   const serverAppVersion = useAppSelector(
     (state) => state.admin.serverAppVersion,
   );
+  const serverAppBuildTime = useAppSelector(
+    (state) => state.admin.serverAppBuildTime,
+  );
   // Keyed to the dismissed version so a later deploy notifies again
   const [dismissedVersion, setDismissedVersion] = useState<string>("");
 
   const routerLocation = useLocation();
   const lastLocationKey = useRef(routerLocation.key);
 
-  // Both versions must be known: environments where either side has no
-  // release version never trigger the notification. Truthiness rather than a
-  // comparison to "": a server old enough to omit the field from its response
-  // reports undefined, which must count as unknown too.
-  // The versions are build SHAs, which carry no ordering, so "differs" is all
-  // that can be checked: mid-rollout a page served by an already-updated
-  // instance can poll one that hasn't rolled yet and notify about a version
-  // it is already running. That resolves itself once the rollout completes
+  // Strictly newer, not merely different. Images are built in the order they
+  // are deployed, so this distinguishes a server that has moved on from one
+  // that simply hasn't rolled yet: mid-rollout a page served by an
+  // already-updated instance keeps polling instances still on the old build,
+  // and must not be told to update to the version it is already running.
+  // Either side missing a build time means there is nothing to compare, which
+  // is the case in every environment that doesn't stamp its builds
+  const serverBuildTime = parseBuildTime(serverAppBuildTime);
   const updateAvailable =
-    Boolean(appVersion) &&
-    Boolean(serverAppVersion) &&
-    serverAppVersion !== appVersion;
+    ownBuildTime !== null &&
+    serverBuildTime !== null &&
+    serverBuildTime > ownBuildTime;
 
   const dismissed = dismissedVersion === serverAppVersion;
 

@@ -33,6 +33,7 @@ export interface AdminState {
   loginProvider: LoginProvider | undefined;
   emailNotificationTrigger: readonly EmailNotificationTrigger[];
   serverAppVersion: string;
+  serverAppBuildTime: string;
   serverAppVersionCandidate: string;
   serverAppVersionCandidateSince: number;
 }
