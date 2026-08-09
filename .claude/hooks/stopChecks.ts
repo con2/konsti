@@ -1,7 +1,7 @@
 import { allPaths, existingPaths, getGitChanges } from "./gitChanges.ts";
 import { getProjectRoot, runNodeTool, type ToolResult } from "./nodeTool.ts";
 import { getSessionScope } from "./transcriptFiles.ts";
-import { PROJECT_ARGS, projectsForPaths } from "./tsProjects.ts";
+import { isBuildConfig, PROJECT_ARGS, projectsForPaths } from "./tsProjects.ts";
 
 // Stop hook: type-check, lint and knip the session's changes before finishing.
 //
@@ -104,8 +104,12 @@ const inSession = (p: string): boolean => !scope.known || scope.touched(p);
 // change type-check and knip need to see
 const sessionPaths = allPaths(changes).filter(inSession);
 const lintTargets = existingPaths(changes).filter(isCodeFile).filter(inSession);
-const runTypecheck = sessionPaths.some(isTypeScript);
-const runKnip = sessionPaths.some(isCodeFile);
+// Config changes count as well as source changes: a tsconfig or dependency edit
+// is not a .ts file but changes what every program compiles
+const runTypecheck = sessionPaths.some(
+  (p) => isTypeScript(p) || isBuildConfig(p),
+);
+const runKnip = sessionPaths.some((p) => isCodeFile(p) || isBuildConfig(p));
 
 const results: ToolResult[] = [];
 const startedAt = Date.now();
