@@ -7,7 +7,7 @@ import {
   populateDb,
   postSettings,
   postTestSettings,
-  reportServerVersion,
+  reportServerBuildTime,
 } from "playwright/playwrightUtils";
 import { config } from "shared/config";
 import { testProgramItem } from "shared/tests/testProgramItem";
@@ -50,7 +50,7 @@ test("Update banner and admin message stack instead of overlapping when scrolled
     adminMessageEn: "Admin message for the stacking test",
     adminMessageFi: "Yllapidon viesti",
   });
-  await reportServerVersion(page, "e2e-new-version");
+  await reportServerBuildTime(page);
 
   await page.clock.install();
   await page.goto("/");
@@ -102,7 +102,7 @@ test("App level bars line up with each other", async ({ page, request }) => {
     adminMessageFi: "Yllapidon viesti",
   });
 
-  await reportServerVersion(page, "e2e-new-version");
+  await reportServerBuildTime(page);
 
   // Signing in also brings up the first login notice, the fourth bar
   await login(page, request, { username: "test1", password: "test" });

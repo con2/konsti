@@ -1,7 +1,7 @@
 import { describe, expect, test } from "vitest";
 import {
   adminReducer,
-  updateServerAppVersion,
+  updateServerAppBuildTime,
 } from "client/views/admin/adminSlice";
 import { AdminState } from "client/types/reduxTypes";
 
@@ -12,62 +12,60 @@ const confirmWindowMs = 30_000;
 
 const report = (
   state: AdminState,
-  version: string,
+  buildTime: string,
   receivedAt: number,
-  buildTime = "1000",
 ): AdminState =>
-  adminReducer(
-    state,
-    updateServerAppVersion({ version, buildTime, receivedAt }),
-  );
+  adminReducer(state, updateServerAppBuildTime({ buildTime, receivedAt }));
 
-describe("updateServerAppVersion", () => {
-  test("confirms a version only after it stays the candidate for the confirmation window", () => {
-    let state = report(initialState(), "abc123", 0);
-    expect(state.serverAppVersion).toEqual("");
+describe("updateServerAppBuildTime", () => {
+  test("confirms a build only after it stays the candidate for the confirmation window", () => {
+    let state = report(initialState(), "1700000000", 0);
+    expect(state.serverAppBuildTime).toEqual("");
 
-    state = report(state, "abc123", confirmWindowMs - 1);
-    expect(state.serverAppVersion).toEqual("");
+    state = report(state, "1700000000", confirmWindowMs - 1);
+    expect(state.serverAppBuildTime).toEqual("");
 
-    state = report(state, "abc123", confirmWindowMs);
-    expect(state.serverAppVersion).toEqual("abc123");
+    state = report(state, "1700000000", confirmWindowMs);
+    expect(state.serverAppBuildTime).toEqual("1700000000");
   });
 
   test("does not confirm a burst of polls from a single instant", () => {
-    let state = report(initialState(), "new", 0);
-    state = report(state, "new", 1000);
-    state = report(state, "new", 2000);
-    expect(state.serverAppVersion).toEqual("");
+    let state = report(initialState(), "2000", 0);
+    state = report(state, "2000", 1000);
+    state = report(state, "2000", 2000);
+    expect(state.serverAppBuildTime).toEqual("");
   });
 
-  test("alternating versions during a rolling deploy reset the window", () => {
+  test("alternating builds during a rolling deploy reset the window", () => {
     let state = initialState();
-    state = report(state, "old", 0);
-    state = report(state, "new", 60_000);
-    state = report(state, "old", 120_000);
-    state = report(state, "new", 180_000);
-    expect(state.serverAppVersion).toEqual("");
+    state = report(state, "1000", 0);
+    state = report(state, "2000", 60_000);
+    state = report(state, "1000", 120_000);
+    state = report(state, "2000", 180_000);
+    expect(state.serverAppBuildTime).toEqual("");
 
     // Once the rollout settles, the next full poll interval confirms
-    state = report(state, "new", 240_000);
-    expect(state.serverAppVersion).toEqual("new");
+    state = report(state, "2000", 240_000);
+    expect(state.serverAppBuildTime).toEqual("2000");
   });
 
-  test("keeps the confirmed version while a single differing poll arrives", () => {
+  test("keeps the confirmed build while a single differing poll arrives", () => {
     let state = initialState();
-    state = report(state, "abc123", 0);
-    state = report(state, "abc123", 60_000);
-    expect(state.serverAppVersion).toEqual("abc123");
+    state = report(state, "1700000000", 0);
+    state = report(state, "1700000000", 60_000);
+    expect(state.serverAppBuildTime).toEqual("1700000000");
 
-    state = report(state, "def456", 120_000);
-    expect(state.serverAppVersion).toEqual("abc123");
+    state = report(state, "1700000900", 120_000);
+    expect(state.serverAppBuildTime).toEqual("1700000000");
   });
 
-  test("accepts the build time belonging to the version it confirms", () => {
-    let state = report(initialState(), "abc123", 0, "1700000000");
-    state = report(state, "abc123", confirmWindowMs, "1700000000");
-
-    expect(state.serverAppVersion).toEqual("abc123");
+  test("confirms a redeploy of the same code, which carries a later build time", () => {
+    let state = report(initialState(), "1700000000", 0);
+    state = report(state, "1700000000", confirmWindowMs);
     expect(state.serverAppBuildTime).toEqual("1700000000");
+
+    state = report(state, "1700000900", 60_000);
+    state = report(state, "1700000900", 60_000 + confirmWindowMs);
+    expect(state.serverAppBuildTime).toEqual("1700000900");
   });
 });

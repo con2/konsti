@@ -10,7 +10,7 @@ import { AppThunk } from "client/types/reduxTypes";
 import {
   submitUpdateHiddenAsync,
   submitGetSettingsAsync,
-  updateServerAppVersion,
+  updateServerAppBuildTime,
   submitToggleAppOpenAsync,
   submitSetAdminMessageAsync,
   updateSignupQuestions,
@@ -56,13 +56,12 @@ export const submitGetSettings = (): AppThunk<Promise<boolean>> => {
 
     const state = useState();
 
-    // Tracked outside the settings comparison below: the version changes on
+    // Tracked outside the settings comparison below: the build time changes on
     // every deploy and shouldn't count as a settings change. The reducer
     // owns the acceptance logic and returns the same state when nothing
     // changes, so the dispatch is unconditional
     dispatch(
-      updateServerAppVersion({
-        version: settingsResponse.appVersion,
+      updateServerAppBuildTime({
         buildTime: settingsResponse.appBuildTime,
         receivedAt: performance.now(),
       }),

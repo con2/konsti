@@ -36,20 +36,19 @@ const initialState = (): AdminState => {
     signupMessages: [],
     loginProvider: undefined,
     emailNotificationTrigger: [],
-    serverAppVersion: "",
     serverAppBuildTime: "",
-    serverAppVersionCandidate: "",
-    serverAppVersionCandidateSince: 0,
+    serverAppBuildTimeCandidate: "",
+    serverAppBuildTimeCandidateSince: 0,
   };
 };
 
-// A new version must stay the candidate for a while before it is confirmed,
+// A new build must stay the candidate for a while before it is confirmed,
 // so bursts of requests hitting different pods during a rolling deploy can't
 // confirm a version from a single instant. Half the poll interval: regular
 // polls a full interval apart always qualify, bursts seconds apart never do.
 // Callers pass a monotonic timestamp, so a device clock jump while a phone
 // wakes can't stall or short-circuit the window
-const appVersionConfirmMs = (config.client().dataUpdateInterval * 1000) / 2;
+const appBuildTimeConfirmMs = (config.client().dataUpdateInterval * 1000) / 2;
 
 const adminSlice = createSlice({
   name: "admin",
@@ -66,9 +65,7 @@ const adminSlice = createSlice({
     // deploys don't count as settings changes
     submitGetSettingsAsync(
       state,
-      action: PayloadAction<
-        Omit<SettingsPayload, "appVersion" | "appBuildTime">
-      >,
+      action: PayloadAction<Omit<SettingsPayload, "appBuildTime">>,
     ): AdminState {
       return {
         ...state,
@@ -83,37 +80,28 @@ const adminSlice = createSlice({
       };
     },
 
-    // Accept a server version only after consecutive polls have reported it
+    // Accept a server build only after consecutive polls have reported it
     // unchanged for the confirmation window, so old and new pods answering
     // in turn during a rolling deploy don't trigger the update notification
     // before the rollout has settled
-    updateServerAppVersion(
+    updateServerAppBuildTime(
       state,
-      action: PayloadAction<{
-        version: string;
-        buildTime: string;
-        receivedAt: number;
-      }>,
+      action: PayloadAction<{ buildTime: string; receivedAt: number }>,
     ): AdminState {
-      const { version, buildTime, receivedAt } = action.payload;
-      if (version !== state.serverAppVersionCandidate) {
+      const { buildTime, receivedAt } = action.payload;
+      if (buildTime !== state.serverAppBuildTimeCandidate) {
         return {
           ...state,
-          serverAppVersionCandidate: version,
-          serverAppVersionCandidateSince: receivedAt,
+          serverAppBuildTimeCandidate: buildTime,
+          serverAppBuildTimeCandidateSince: receivedAt,
         };
       }
       if (
-        version !== state.serverAppVersion &&
-        receivedAt - state.serverAppVersionCandidateSince >= appVersionConfirmMs
+        buildTime !== state.serverAppBuildTime &&
+        receivedAt - state.serverAppBuildTimeCandidateSince >=
+          appBuildTimeConfirmMs
       ) {
-        // The build time belongs to the version being accepted, so the two
-        // always describe the same deploy
-        return {
-          ...state,
-          serverAppVersion: version,
-          serverAppBuildTime: buildTime,
-        };
+        return { ...state, serverAppBuildTime: buildTime };
       }
       return state;
     },
@@ -208,7 +196,7 @@ const adminSlice = createSlice({
 export const {
   submitUpdateHiddenAsync,
   submitGetSettingsAsync,
-  updateServerAppVersion,
+  updateServerAppBuildTime,
   submitSetSignupStrategyAsync,
   submitSetLoginProviderAsync,
   submitSetEmailNotificationTriggersAsync,

@@ -8,7 +8,7 @@ import { ActiveProgramType } from "shared/config/clientConfigTypes";
 import { getProgramTypeSelectOptions } from "client/utils/getProgramTypeSelectOptions";
 import { Locale } from "shared/types/locale";
 import {
-  appUpdateReloadedVersionKey,
+  appUpdateReloadedBuildTimeKey,
   browserStoragePrefix,
   localStorageStateKey,
 } from "shared/constants/browserStorage";
@@ -80,7 +80,7 @@ export const clearSession = (): void => {
   const sessionKeys = Object.keys(sessionStorage).filter(
     (key) =>
       key.startsWith(`${browserStoragePrefix}-`) &&
-      key !== appUpdateReloadedVersionKey,
+      key !== appUpdateReloadedBuildTimeKey,
   );
   for (const sessionKey of sessionKeys) {
     sessionStorage.removeItem(sessionKey);

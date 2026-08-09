@@ -73,24 +73,6 @@ describe(`GET ${ApiEndpoint.SETTINGS}`, () => {
     expect(response.status).toEqual(200);
   });
 
-  test("should return the build SHA as appVersion", async () => {
-    vi.stubEnv("APP_VERSION", "test-sha-123");
-
-    const response = await request(server).get(ApiEndpoint.SETTINGS);
-    expect(response.status).toEqual(200);
-    expect((response.body as SettingsPayload).appVersion).toEqual(
-      "test-sha-123",
-    );
-  });
-
-  test("should return empty appVersion without a build SHA", async () => {
-    vi.stubEnv("APP_VERSION", undefined);
-
-    const response = await request(server).get(ApiEndpoint.SETTINGS);
-    expect(response.status).toEqual(200);
-    expect((response.body as SettingsPayload).appVersion).toEqual("");
-  });
-
   test("should return the build time as appBuildTime", async () => {
     vi.stubEnv("APP_BUILD_TIME", "1700000000");
 

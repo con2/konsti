@@ -3,7 +3,7 @@ import { StartingTimeOption } from "client/views/all-program-items/programListUt
 import { AgeGroup, Language, Tag } from "shared/types/models/programItem";
 import { StringToJsonSchema } from "client/utils/zodUtils";
 import {
-  appUpdateReloadedVersionKey,
+  appUpdateReloadedBuildTimeKey,
   browserStoragePrefix,
 } from "shared/constants/browserStorage";
 
@@ -16,20 +16,21 @@ export const SessionStorageValue = {
   ALL_PROGRAM_ITEMS_STARTING_TIME: `${browserStoragePrefix}-allProgramItemsStartingTime`,
   ALL_PROGRAM_ITEMS_HIDE_FULL: `${browserStoragePrefix}-allProgramItemsHideFull`,
   MY_PROGRAM_ITEMS_SHOW_ALL_PROGRAM_ITEMS: `${browserStoragePrefix}-myProgramItemsShowAllProgramItems`,
-  APP_UPDATE_RELOADED_VERSION: appUpdateReloadedVersionKey,
+  APP_UPDATE_RELOADED_BUILD_TIME: appUpdateReloadedBuildTimeKey,
 } as const;
 
-// The server version an automatic update reload was already attempted for.
-// Session-scoped so a reload that fails to deliver the new version (e.g.
-// stale HTML served again) is not retried in a loop in the same tab. Stored
-// as a plain string, so there is no shape to validate on the way out
-export const getAppUpdateReloadedVersion = (): string =>
-  sessionStorage.getItem(SessionStorageValue.APP_UPDATE_RELOADED_VERSION) ?? "";
+// The server build an automatic update reload was already attempted for.
+// Session-scoped so a reload that fails to deliver the new build (e.g. stale
+// HTML served again) is not retried in a loop in the same tab. Stored as a
+// plain string, so there is no shape to validate on the way out
+export const getAppUpdateReloadedBuildTime = (): string =>
+  sessionStorage.getItem(SessionStorageValue.APP_UPDATE_RELOADED_BUILD_TIME) ??
+  "";
 
-export const saveAppUpdateReloadedVersion = (version: string): void => {
+export const saveAppUpdateReloadedBuildTime = (buildTime: string): void => {
   sessionStorage.setItem(
-    SessionStorageValue.APP_UPDATE_RELOADED_VERSION,
-    version,
+    SessionStorageValue.APP_UPDATE_RELOADED_BUILD_TIME,
+    buildTime,
   );
 };
 

@@ -8,8 +8,8 @@ import { Button, ButtonStyle } from "client/components/Button";
 import { DismissibleBanner } from "client/components/DismissibleBanner";
 import { HighlightStyle } from "client/components/RaisedCard";
 import {
-  getAppUpdateReloadedVersion,
-  saveAppUpdateReloadedVersion,
+  getAppUpdateReloadedBuildTime,
+  saveAppUpdateReloadedBuildTime,
 } from "client/utils/sessionStorage";
 
 const { appBuildTime } = config.client();
@@ -23,20 +23,17 @@ const parseBuildTime = (value: string): number | null => {
 
 const ownBuildTime = parseBuildTime(appBuildTime);
 
-// Shown when the version the server reports differs from the version baked
-// into this bundle, i.e. a new Konsti version was deployed after this page
-// was loaded. Reloading fetches the current version
+// Shown when the server reports a build newer than the one this bundle came
+// from, i.e. a new Konsti version was deployed after this page was loaded.
+// Reloading fetches it
 export const AppUpdateBanner = (): ReactElement | null => {
   const { t } = useTranslation();
 
-  const serverAppVersion = useAppSelector(
-    (state) => state.admin.serverAppVersion,
-  );
   const serverAppBuildTime = useAppSelector(
     (state) => state.admin.serverAppBuildTime,
   );
-  // Keyed to the dismissed version so a later deploy notifies again
-  const [dismissedVersion, setDismissedVersion] = useState<string>("");
+  // Keyed to the dismissed build so a later deploy notifies again
+  const [dismissedBuildTime, setDismissedBuildTime] = useState<string>("");
 
   const routerLocation = useLocation();
   const lastLocationKey = useRef(routerLocation.key);
@@ -54,15 +51,16 @@ export const AppUpdateBanner = (): ReactElement | null => {
     serverBuildTime !== null &&
     serverBuildTime > ownBuildTime;
 
-  const dismissed = dismissedVersion === serverAppVersion;
+  const dismissed = dismissedBuildTime === serverAppBuildTime;
 
   // Reload transparently on the first route navigation after an update is
   // detected: a navigation replaces the whole view anyway, so a full page
   // load is not disruptive there. Only an actual navigation may trigger the
   // reload - never the update detection itself, which can happen mid-view.
-  // Attempt it only once per server version so a reload that fails to
-  // deliver the new version can't loop; after that the banner's reload
-  // button remains as the manual path
+  // Attempt it only once per server build so a reload that fails to deliver
+  // it can't loop; after that the banner's reload button remains as the
+  // manual path. Keyed to the build rather than the revision so redeploying
+  // the same code - a rollback - is still allowed its own reload
   useEffect(() => {
     const isNavigation = routerLocation.key !== lastLocationKey.current;
     lastLocationKey.current = routerLocation.key;
@@ -70,13 +68,13 @@ export const AppUpdateBanner = (): ReactElement | null => {
       !isNavigation ||
       !updateAvailable ||
       dismissed ||
-      getAppUpdateReloadedVersion() === serverAppVersion
+      getAppUpdateReloadedBuildTime() === serverAppBuildTime
     ) {
       return;
     }
-    saveAppUpdateReloadedVersion(serverAppVersion);
+    saveAppUpdateReloadedBuildTime(serverAppBuildTime);
     location.reload();
-  }, [routerLocation.key, updateAvailable, dismissed, serverAppVersion]);
+  }, [routerLocation.key, updateAvailable, dismissed, serverAppBuildTime]);
 
   if (!updateAvailable || dismissed) {
     return null;
@@ -88,7 +86,7 @@ export const AppUpdateBanner = (): ReactElement | null => {
       icon="arrows-rotate"
       highlightStyle={HighlightStyle.INFO}
       onDismiss={() => {
-        setDismissedVersion(serverAppVersion);
+        setDismissedBuildTime(serverAppBuildTime);
       }}
       dismissAriaLabel={t("iconAltText.closeAppUpdateNotification")}
     >
