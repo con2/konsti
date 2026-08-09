@@ -2,20 +2,13 @@
 
 Guidance for working in the `client/` workspace (React 19 + Vite SPA). See the [root CLAUDE.md](../CLAUDE.md) for the project overview and cross-cutting conventions, and [shared/CLAUDE.md](../shared/CLAUDE.md) for the types/config/constants this workspace imports.
 
-Stack: React 19, Vite, Redux Toolkit, styled-components, react-router 8, react-hook-form, i18next (fi/en), Sentry. **No axios** — API calls go through a hand-rolled `fetch` wrapper (see below).
+**No axios** — API calls go through a hand-rolled `fetch` wrapper (see below).
 
 ## Scripts
 
 Run from the repo root as `yarn workspace client <script>`.
 
-| Script                                                                       | What it does                                                                                                                                                            |
-| ---------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `start`                                                                      | Vite dev server on `http://127.0.0.1:8000` (root: `yarn client`)                                                                                                        |
-| `build:dev` / `build:staging` / `build:prod` / `build:ci` / `build:kube-dev` | Vite build for the given mode (reads the matching `.env.*`); production uses the root `yarn build-front:prod`, which builds then copies `client/build` → `server/front` |
-| `test` / `test:watch`                                                        | Vitest (jsdom env); coverage runs at the root (`yarn coverage:vitest`)                                                                                                  |
-| `type-check`                                                                 | `tsc --noEmit`                                                                                                                                                          |
-| `eslint`                                                                     | ESLint for this workspace                                                                                                                                               |
-| `stylelint`                                                                  | Stylelint over the styled-components CSS-in-JS in `.ts`/`.tsx`                                                                                                          |
+Each `build:*` script reads the matching `.env.*`; production goes through the root `yarn build-front:prod`, which builds and then copies `client/build` → `server/front`. Coverage runs at the root (`yarn coverage:vitest`), not here.
 
 Note: `find-unused-translation-keys` is a **server** script (it scans `client/src`); run it via root `yarn find-unused-translation-keys`.
 
