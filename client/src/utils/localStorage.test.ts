@@ -1,8 +1,9 @@
 import { afterEach, describe, expect, test } from "vitest";
-import { loadSession } from "client/utils/localStorage";
+import { clearSession, loadSession } from "client/utils/localStorage";
 import { resetStaleEventStorage } from "client/utils/resetStaleEventStorage";
 import { ProgramType } from "shared/types/models/programItem";
 import {
+  appUpdateReloadedVersionKey,
   browserStoragePrefix,
   localStorageStateKey,
 } from "shared/constants/browserStorage";
@@ -33,6 +34,28 @@ describe("loadSession", () => {
 
     expect(loadSession()).toBeUndefined();
     expect(localStorage.getItem(localStorageStateKey)).toBeNull();
+  });
+});
+
+describe("clearSession", () => {
+  test("should drop this event's session keys but keep the update reload guard", () => {
+    const searchTermKey = `${browserStoragePrefix}-allProgramItemsSearchTerm`;
+
+    localStorage.setItem(localStorageStateKey, "session");
+    sessionStorage.setItem(searchTermKey, "dragons");
+    sessionStorage.setItem(appUpdateReloadedVersionKey, "version-1");
+    sessionStorage.setItem("unrelated", "keep");
+
+    clearSession();
+
+    expect(localStorage.getItem(localStorageStateKey)).toBeNull();
+    expect(sessionStorage.getItem(searchTermKey)).toBeNull();
+    // Logging out is a navigation, so losing this would allow a second
+    // automatic reload for a version already tried
+    expect(sessionStorage.getItem(appUpdateReloadedVersionKey)).toBe(
+      "version-1",
+    );
+    expect(sessionStorage.getItem("unrelated")).toBe("keep");
   });
 });
 
