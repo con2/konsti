@@ -1,6 +1,7 @@
+import { execFileSync, spawnSync } from "node:child_process";
 import { existsSync } from "node:fs";
 import path from "node:path";
-import { getProjectRoot, runYarn } from "./runYarn";
+import { getProjectRoot, resolveYarnRelease } from "./nodeTool.ts";
 
 // SessionStart hook: a fresh git worktree is an isolated copy with no
 // node_modules, so every yarn-based tool (lint, type-check, tests) and the
@@ -18,20 +19,45 @@ if (existsSync(stateFile)) {
   process.exit(0);
 }
 
-process.stderr.write("node_modules missing — running yarn install...\n");
-try {
+// Yarn's release file is plain CJS, so node can run it without a shell. This is
+// the hook that rescues a broken worktree, so fall back to cmd.exe (which
+// resolves the `yarn` .cmd shim via PATHEXT) whenever the release can't be
+// pinned down rather than failing outright
+const yarnRelease = resolveYarnRelease(root);
+
+const runYarn = (args: string[]): boolean => {
   // Route yarn's output to our stderr so progress is visible without being
   // injected into the session context as SessionStart stdout would be
-  runYarn(["install", "--immutable"], ["ignore", 2, 2]);
-} catch {
-  // --immutable fails if the lockfile would change; fall back to a plain
-  // install so lockfile drift doesn't leave the worktree unusable
-  try {
-    runYarn(["install"], ["ignore", 2, 2]);
-  } catch {
-    process.stderr.write(
-      "yarn install failed — run it manually before using yarn tooling\n",
-    );
+  const stdio = ["ignore", 2, 2] as const;
+  if (yarnRelease) {
+    const result = spawnSync(process.execPath, [yarnRelease, ...args], {
+      cwd: root,
+      stdio: [...stdio],
+      windowsHide: true,
+    });
+    return result.status === 0;
   }
+  try {
+    if (process.platform === "win32") {
+      execFileSync("cmd.exe", ["/c", "yarn", ...args], {
+        stdio: [...stdio],
+        cwd: root,
+      });
+    } else {
+      execFileSync("yarn", args, { stdio: [...stdio], cwd: root });
+    }
+    return true;
+  } catch {
+    return false;
+  }
+};
+
+process.stderr.write("node_modules missing - running yarn install...\n");
+// --immutable fails if the lockfile would change; fall back to a plain install
+// so lockfile drift doesn't leave the worktree unusable
+if (!runYarn(["install", "--immutable"]) && !runYarn(["install"])) {
+  process.stderr.write(
+    "yarn install failed - run it manually before using yarn tooling\n",
+  );
 }
 process.exit(0);

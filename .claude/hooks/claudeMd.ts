@@ -1,7 +1,8 @@
-import { execFileSync } from "node:child_process";
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
+import { getGitChanges } from "./gitChanges.ts";
+import { getProjectRoot } from "./nodeTool.ts";
 
 // Stop hook: when a session makes structural changes (files added/renamed/
 // deleted, or a package.json edited), remind Claude to review the relevant
@@ -50,22 +51,8 @@ interface Change {
   kind: string;
 }
 
-let raw = "";
-try {
-  raw = execFileSync("git", ["status", "--porcelain", "-z"], {
-    encoding: "utf8",
-  });
-} catch {
-  process.exit(0);
-}
-
-const segs = raw.split("\0").filter(Boolean);
 const changes: Change[] = [];
-for (let i = 0; i < segs.length; i++) {
-  const code = segs[i].slice(0, 2);
-  const filePath = segs[i].slice(3);
-  // Rename/copy porcelain entries are "XY <new>\0<old>" — skip the trailing old path
-  if (code.startsWith("R") || code.startsWith("C")) i++;
+for (const { code, path: filePath } of getGitChanges(getProjectRoot())) {
   if (!isStructural(code, filePath)) continue;
   const area = ownerOf(filePath);
   if (!area) continue;

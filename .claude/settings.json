@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "npx tsx \"$CLAUDE_PROJECT_DIR/.claude/hooks/install.ts\"",
+            "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/install.ts\"",
             "timeout": 600,
             "statusMessage": "Ensuring dependencies are installed..."
           }
@@ -28,8 +28,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "npx tsx \"$CLAUDE_PROJECT_DIR/.claude/hooks/prettier.ts\"",
-            "timeout": 60,
+            "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/prettier.ts\"",
+            "timeout": 20,
             "statusMessage": "Running Prettier..."
           }
         ]
@@ -40,25 +40,13 @@
         "hooks": [
           {
             "type": "command",
-            "command": "npx tsx \"$CLAUDE_PROJECT_DIR/.claude/hooks/eslint.ts\"",
-            "timeout": 60,
-            "statusMessage": "Running ESLint..."
+            "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/stopChecks.ts\"",
+            "timeout": 180,
+            "statusMessage": "Type-checking, linting, knip..."
           },
           {
             "type": "command",
-            "command": "npx tsx \"$CLAUDE_PROJECT_DIR/.claude/hooks/typecheck.ts\"",
-            "timeout": 120,
-            "statusMessage": "Type-checking..."
-          },
-          {
-            "type": "command",
-            "command": "npx tsx \"$CLAUDE_PROJECT_DIR/.claude/hooks/knip.ts\"",
-            "timeout": 120,
-            "statusMessage": "Running knip..."
-          },
-          {
-            "type": "command",
-            "command": "npx tsx \"$CLAUDE_PROJECT_DIR/.claude/hooks/claudeMd.ts\"",
+            "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/claudeMd.ts\"",
             "timeout": 30,
             "statusMessage": "Checking CLAUDE.md docs..."
           }
