@@ -31,9 +31,8 @@ export const fetchSettings = async (): Promise<GetSettingsResponse> => {
     message: "Getting settings success",
     status: "success",
     // The API and the client bundle ship in the same image, so this matches
-    // the SHA baked into the served frontend and a difference means the
+    // the time baked into the served frontend, and a later one means the
     // polling client predates the running deployment
-    appVersion: process.env.APP_VERSION ?? "",
     appBuildTime: process.env.APP_BUILD_TIME ?? "",
     hiddenProgramItemIds: settings.hiddenProgramItemIds,
     appOpen: settings.appOpen,

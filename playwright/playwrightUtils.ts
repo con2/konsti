@@ -224,33 +224,24 @@ export const postAssignment = async (
 
 // The app update banner reports an update when the server's build time is
 // newer than the one baked into the client bundle (0 in development and ci
-// builds). The test server reports neither, so patch the settings responses to
-// simulate a deploy. buildTime defaults to a time after the client's, i.e. a
-// newer server; pass a lower one to play an instance that hasn't rolled yet,
-// or null for either field to drop it as a server too old to send it would.
-// Returns a setter so a test can simulate a further deploy mid-run
-export const reportServerVersion = async (
+// builds). The test server reports none, so patch the settings responses to
+// simulate a deploy. Defaults to a time after the client's, i.e. a newer
+// server; pass a lower one to play an instance that hasn't rolled yet, or null
+// to drop the field as a server too old to send it would. Returns a setter so
+// a test can simulate a further deploy mid-run
+export const reportServerBuildTime = async (
   page: Page,
-  version: string | null,
   buildTime: string | null = "1000",
-): Promise<(nextVersion: string) => void> => {
-  let reportedVersion = version;
+): Promise<(nextBuildTime: string) => void> => {
+  let reportedBuildTime = buildTime;
   await page.route("**/api/settings", async (route) => {
     try {
       const response = await route.fetch();
-      const json = (await response.json()) as {
-        appVersion?: string;
-        appBuildTime?: string;
-      };
-      if (reportedVersion === null) {
-        delete json.appVersion;
-      } else {
-        json.appVersion = reportedVersion;
-      }
-      if (buildTime === null) {
+      const json = (await response.json()) as { appBuildTime?: string };
+      if (reportedBuildTime === null) {
         delete json.appBuildTime;
       } else {
-        json.appBuildTime = buildTime;
+        json.appBuildTime = reportedBuildTime;
       }
       await route.fulfill({ response, json });
     } catch {
@@ -266,7 +257,7 @@ export const reportServerVersion = async (
       }
     }
   });
-  return (nextVersion: string): void => {
-    reportedVersion = nextVersion;
+  return (nextBuildTime: string): void => {
+    reportedBuildTime = nextBuildTime;
   };
 };

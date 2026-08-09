@@ -33,12 +33,10 @@ export type PostHiddenResponse = PostHiddenResult | PostHiddenError;
 // GET settings
 
 export interface SettingsPayload {
-  // Git SHA of the running server build, empty when not available. Identifies
-  // the deploy; it says nothing about which build is newer
-  appVersion: string;
   // Seconds since the epoch at which the running image was built, empty when
-  // not available. Deploys are built in the order they go out, so this is what
-  // lets a client tell a newer server from one that simply hasn't rolled yet
+  // not available. Images are built in the order they are deployed, so this
+  // both identifies the deploy and lets a client tell a newer server from one
+  // that simply hasn't rolled yet
   appBuildTime: string;
   hiddenProgramItemIds: readonly string[];
   appOpen: boolean;

@@ -3,7 +3,7 @@ import { clearSession, loadSession } from "client/utils/localStorage";
 import { resetStaleEventStorage } from "client/utils/resetStaleEventStorage";
 import { ProgramType } from "shared/types/models/programItem";
 import {
-  appUpdateReloadedVersionKey,
+  appUpdateReloadedBuildTimeKey,
   browserStoragePrefix,
   localStorageStateKey,
 } from "shared/constants/browserStorage";
@@ -43,7 +43,7 @@ describe("clearSession", () => {
 
     localStorage.setItem(localStorageStateKey, "session");
     sessionStorage.setItem(searchTermKey, "dragons");
-    sessionStorage.setItem(appUpdateReloadedVersionKey, "version-1");
+    sessionStorage.setItem(appUpdateReloadedBuildTimeKey, "1700000000");
     sessionStorage.setItem("unrelated", "keep");
 
     clearSession();
@@ -52,8 +52,8 @@ describe("clearSession", () => {
     expect(sessionStorage.getItem(searchTermKey)).toBeNull();
     // Logging out is a navigation, so losing this would allow a second
     // automatic reload for a version already tried
-    expect(sessionStorage.getItem(appUpdateReloadedVersionKey)).toBe(
-      "version-1",
+    expect(sessionStorage.getItem(appUpdateReloadedBuildTimeKey)).toBe(
+      "1700000000",
     );
     expect(sessionStorage.getItem("unrelated")).toBe("keep");
   });
