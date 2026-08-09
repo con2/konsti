@@ -4,7 +4,7 @@ import { faker } from "@faker-js/faker";
 import { db } from "server/db/mongodb";
 import { addSignupQuestions } from "server/features/program-item/utils/addSignupQuestions";
 import { saveProgramItems } from "server/features/program-item/programItemRepository";
-import { findSettings } from "server/features/settings/settingsRepository";
+import { findOrCreateSettings } from "server/features/settings/settingsRepository";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { config } from "shared/config";
 import {
@@ -52,11 +52,11 @@ test("should save configured signup questions", async () => {
   });
 
   // Create default settings so sign-up questions have a document to update
-  await findSettings();
+  await findOrCreateSettings();
 
   await addSignupQuestions();
 
-  const settings = unsafelyUnwrap(await findSettings());
+  const settings = unsafelyUnwrap(await findOrCreateSettings());
   expect(settings.signupQuestions).toHaveLength(1);
   expect(settings.signupQuestions[0]).toMatchObject(signupQuestion);
 });
@@ -81,11 +81,11 @@ test("should add tournament signup question to tournaments except excluded ones"
   await saveProgramItems([tournament, excludedTournament]);
 
   // Create default settings so sign-up questions have a document to update
-  await findSettings();
+  await findOrCreateSettings();
 
   await addSignupQuestions();
 
-  const settings = unsafelyUnwrap(await findSettings());
+  const settings = unsafelyUnwrap(await findOrCreateSettings());
   expect(settings.signupQuestions).toHaveLength(1);
   expect(settings.signupQuestions[0]).toMatchObject({
     ...tournamentSignupQuestion,
@@ -105,10 +105,10 @@ test("should not add tournament signup question to non-tournament program items"
   await saveProgramItems([testProgramItem]);
 
   // Create default settings so sign-up questions have a document to update
-  await findSettings();
+  await findOrCreateSettings();
 
   await addSignupQuestions();
 
-  const settings = unsafelyUnwrap(await findSettings());
+  const settings = unsafelyUnwrap(await findOrCreateSettings());
   expect(settings.signupQuestions).toHaveLength(0);
 });

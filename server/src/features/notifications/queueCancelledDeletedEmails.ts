@@ -6,7 +6,7 @@ import {
 } from "server/utils/notificationQueue";
 import { EventLogAction } from "shared/types/models/eventLog";
 import { EmailNotificationTrigger } from "shared/types/emailNotification";
-import { findSettings } from "server/features/settings/settingsRepository";
+import { findOrCreateSettings } from "server/features/settings/settingsRepository";
 import { config } from "shared/config";
 
 interface ProgramItemChangeUpdate {
@@ -20,7 +20,7 @@ export const queueCancelledDeletedEmails = async (
   updates: ProgramItemChangeUpdate[],
   programItemTitlesById: Map<string, string>,
 ): Promise<void> => {
-  const settingsResult = await findSettings();
+  const settingsResult = await findOrCreateSettings();
   let emailNotificationTrigger = config.server().emailNotificationTrigger;
   if (settingsResult.ok) {
     emailNotificationTrigger = settingsResult.value.emailNotificationTrigger;

@@ -8,7 +8,7 @@ import {
 } from "server/test/test-data-generation/generators/createUsers";
 import { cleanupDatabase } from "server/utils/cleanupDatabase";
 import { addSignupQuestions } from "server/features/program-item/utils/addSignupQuestions";
-import { findSettings } from "server/features/settings/settingsRepository";
+import { findOrCreateSettings } from "server/features/settings/settingsRepository";
 import { getProgramItemsForEvent } from "server/features/program-item/programItemService";
 
 const ADMIN_PASSWORD = "";
@@ -52,7 +52,7 @@ const initializeDatabase = async (): Promise<void> => {
   }
 
   // This will create default settings
-  await findSettings();
+  await findOrCreateSettings();
   await addSignupQuestions();
 
   await db.gracefulExit();

@@ -12,7 +12,7 @@ import {
 } from "shared/types/models/programItem";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import { config } from "shared/config";
-import { findSettings } from "server/features/settings/settingsRepository";
+import { findOrCreateSettings } from "server/features/settings/settingsRepository";
 import { Settings, SignupQuestion } from "shared/types/models/settings";
 import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
 import {
@@ -214,7 +214,7 @@ export const enrichProgramItems = async (
   programItems: readonly ProgramItem[],
   userGroup: UserGroup | null,
 ): Promise<Result<ProgramItemWithUserSignups[], MongoDbError>> => {
-  const settingsResult = await findSettings();
+  const settingsResult = await findOrCreateSettings();
   if (!settingsResult.ok) {
     return settingsResult;
   }

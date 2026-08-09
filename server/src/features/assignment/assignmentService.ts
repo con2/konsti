@@ -4,7 +4,7 @@ import { PostAssignmentResponse } from "shared/types/api/assignment";
 import { config } from "shared/config";
 import {
   acquireAssignmentLock,
-  findSettings,
+  findOrCreateSettings,
   releaseAssignmentLock,
   setAssignmentLastRun,
 } from "server/features/settings/settingsRepository";
@@ -17,7 +17,7 @@ export const storeAssignment = async (
   // Ensure a settings row exists (a fresh one starts with a free lock) so the lock check
   // below fails only when an assignment genuinely ran within the window, not when the row
   // is missing
-  const settingsResult = await findSettings();
+  const settingsResult = await findOrCreateSettings();
   if (!settingsResult.ok) {
     return {
       message: "Assignment failed",

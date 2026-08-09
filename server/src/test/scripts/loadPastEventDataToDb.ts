@@ -4,7 +4,7 @@ import dayjs from "dayjs";
 import { db } from "server/db/mongodb";
 import { saveProgramItems } from "server/features/program-item/programItemRepository";
 import { addSignupQuestions } from "server/features/program-item/utils/addSignupQuestions";
-import { findSettings } from "server/features/settings/settingsRepository";
+import { findOrCreateSettings } from "server/features/settings/settingsRepository";
 import { logger } from "server/utils/logger";
 import { config } from "shared/config";
 import { ProgramItem } from "shared/types/models/programItem";
@@ -55,7 +55,7 @@ const loadPastEventDataToDb = async (): Promise<void> => {
   await updatePastEventProgramItems();
 
   // This will create default settings
-  await findSettings();
+  await findOrCreateSettings();
   await addSignupQuestions();
 
   await db.gracefulExit();

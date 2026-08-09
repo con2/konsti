@@ -30,7 +30,7 @@ import { ProgramItem } from "shared/types/models/programItem";
 import { SignupRepositoryAddSignup } from "server/features/direct-signup/directSignupTypes";
 import { isStartTimeMatch } from "server/utils/isStartTimeMatch";
 import { EmailNotificationTrigger } from "shared/types/emailNotification";
-import { findSettings } from "server/features/settings/settingsRepository";
+import { findOrCreateSettings } from "server/features/settings/settingsRepository";
 import { Settings } from "shared/types/models/settings";
 
 interface SaveUserSignupResultsParams {
@@ -143,7 +143,7 @@ const addAssignmentNotifications = async ({
 }: AddAssignmentNotificationsParams): Promise<void> => {
   const queueService = getGlobalNotificationQueueService();
 
-  const settingsResult = await findSettings();
+  const settingsResult = await findOrCreateSettings();
   let settings: Settings | null = null;
   if (settingsResult.ok) {
     settings = settingsResult.value;

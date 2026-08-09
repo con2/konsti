@@ -1,5 +1,5 @@
 import {
-  findSettings,
+  findOrCreateSettings,
   saveHidden,
   saveSignupQuestion,
   delSignupQuestion,
@@ -16,7 +16,7 @@ import {
 import { removeHiddenProgramItemsFromUsers } from "server/features/settings/utils/removeHiddenProgramItemsFromUsers";
 import { SignupQuestion } from "shared/types/models/settings";
 export const fetchSettings = async (): Promise<GetSettingsResponse> => {
-  const findSettingsResult = await findSettings();
+  const findSettingsResult = await findOrCreateSettings();
   if (!findSettingsResult.ok) {
     return {
       message: "Getting settings failed",

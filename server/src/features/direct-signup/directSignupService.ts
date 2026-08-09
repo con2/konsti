@@ -19,7 +19,7 @@ import {
 import { config } from "shared/config";
 import { SignupRepositoryAddSignup } from "server/features/direct-signup/directSignupTypes";
 import { getSignupMessage } from "server/features/program-item/programItemUtils";
-import { findSettings } from "server/features/settings/settingsRepository";
+import { findOrCreateSettings } from "server/features/settings/settingsRepository";
 import { SignupType, State } from "shared/types/models/programItem";
 import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
 import { getProgramItemValidity } from "shared/utils/getProgramItemValidity";
@@ -85,7 +85,7 @@ export const storeDirectSignup = async (
     };
   }
 
-  const settingsResult = await findSettings();
+  const settingsResult = await findOrCreateSettings();
   if (!settingsResult.ok) {
     return {
       message: "Error loading settings",
@@ -272,7 +272,7 @@ export const removeDirectSignup = async (
   }
   const signup = signupResult.value;
 
-  const settingsResult = await findSettings();
+  const settingsResult = await findOrCreateSettings();
   if (!settingsResult.ok) {
     return {
       message: "Error loading settings",
