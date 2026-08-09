@@ -25,8 +25,6 @@ import { MongoDbError } from "shared/types/api/errors";
 import { makeErrorResult } from "shared/utils/result";
 
 beforeEach(async () => {
-  // Connect through the app's own helper so schema indexes are built for
-  // this test's database
   await db.connectToDb(globalThis.__MONGO_URI__, faker.string.alphanumeric(10));
 });
 
