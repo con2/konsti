@@ -16,7 +16,7 @@ import {
 } from "shared/utils/signupTimes";
 import { logger } from "server/utils/logger";
 import { findUser } from "server/features/user/userRepository";
-import { findSettings } from "server/features/settings/settingsRepository";
+import { findOrCreateSettings } from "server/features/settings/settingsRepository";
 import { SignupType, State } from "shared/types/models/programItem";
 import { getProgramItemValidity } from "shared/utils/getProgramItemValidity";
 
@@ -79,7 +79,7 @@ export const storeLotterySignup = async ({
 
   // Hidden program items are only filtered from the client's list view, so a
   // sign-up for one can still arrive from a stale page or a direct link
-  const settingsResult = await findSettings();
+  const settingsResult = await findOrCreateSettings();
   if (!settingsResult.ok) {
     return {
       message: "Error loading settings",

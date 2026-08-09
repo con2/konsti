@@ -14,7 +14,7 @@ import { UserGroup } from "shared/types/models/user";
 import { getJWT } from "server/utils/jwt";
 import {
   acquireAssignmentLock,
-  findSettings,
+  findOrCreateSettings,
 } from "server/features/settings/settingsRepository";
 import {
   createNotificationQueueService,
@@ -85,7 +85,7 @@ describe(`POST ${ApiEndpoint.ASSIGNMENT}`, () => {
 
   test("should not start a manual assignment while another assignment is in progress", async () => {
     // Another assignment is running -> the in-progress lock is held
-    await findSettings();
+    await findOrCreateSettings();
     await acquireAssignmentLock();
 
     const data: PostAssignmentRequest = {
@@ -105,7 +105,7 @@ describe(`POST ${ApiEndpoint.ASSIGNMENT}`, () => {
 
   test("should run a manual assignment and acquire the lock when none is in progress", async () => {
     // A fresh settings row means no assignment has run yet -> lock is free
-    await findSettings();
+    await findOrCreateSettings();
 
     const data: PostAssignmentRequest = {
       assignmentTime: dayjs().toISOString(),
@@ -121,7 +121,7 @@ describe(`POST ${ApiEndpoint.ASSIGNMENT}`, () => {
   });
 
   test("should release the lock after a run so a subsequent run is not blocked", async () => {
-    await findSettings();
+    await findOrCreateSettings();
 
     const data: PostAssignmentRequest = {
       assignmentTime: dayjs().toISOString(),

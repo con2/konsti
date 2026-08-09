@@ -1,7 +1,7 @@
 import { validateLogin } from "server/utils/bcrypt";
 import { PostLoginResponse } from "shared/types/api/login";
 import { getJWT } from "server/utils/jwt";
-import { findSettings } from "server/features/settings/settingsRepository";
+import { findOrCreateSettings } from "server/features/settings/settingsRepository";
 import { findUser } from "server/features/user/userRepository";
 import { logger } from "server/utils/logger";
 import { UserGroup } from "shared/types/models/user";
@@ -30,7 +30,7 @@ export const login = async (
     };
   }
 
-  const findSettingsResult = await findSettings();
+  const findSettingsResult = await findOrCreateSettings();
   if (!findSettingsResult.ok) {
     return {
       message: "User login error",

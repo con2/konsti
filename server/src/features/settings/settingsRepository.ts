@@ -94,7 +94,7 @@ export const createSettings = async (): Promise<
   }
 };
 
-export const findSettings = async (): Promise<
+export const findOrCreateSettings = async (): Promise<
   Result<Settings, MongoDbError>
 > => {
   try {
@@ -113,7 +113,7 @@ export const findSettings = async (): Promise<
     const result = SettingsSchemaDb.safeParse(settings);
     if (!result.success) {
       logger.error(
-        new Error(`Error validating findSettings DB value`, {
+        new Error(`Error validating findOrCreateSettings DB value`, {
           cause: result.error,
         }),
       );
@@ -134,7 +134,7 @@ export const saveHidden = async (
 ): Promise<Result<Settings, MongoDbError>> => {
   // Create through the one designated creator rather than upserting here: a
   // second creator is what lets two documents exist in the first place
-  const settingsResult = await findSettings();
+  const settingsResult = await findOrCreateSettings();
   if (!settingsResult.ok) {
     return settingsResult;
   }
@@ -267,7 +267,7 @@ export const saveSettings = async (
 ): Promise<Result<Settings, MongoDbError>> => {
   // Create through the one designated creator rather than upserting here: a
   // second creator is what lets two documents exist in the first place
-  const existingSettingsResult = await findSettings();
+  const existingSettingsResult = await findOrCreateSettings();
   if (!existingSettingsResult.ok) {
     return existingSettingsResult;
   }

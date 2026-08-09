@@ -1,9 +1,9 @@
-import { findSettings } from "server/features/settings/settingsRepository";
+import { findOrCreateSettings } from "server/features/settings/settingsRepository";
 import { findDirectSignups } from "server/features/direct-signup/directSignupRepository";
 import { GetSignupMessagesResponse } from "shared/types/api/users";
 export const fetchSignupMessages =
   async (): Promise<GetSignupMessagesResponse> => {
-    const findSettingsResult = await findSettings();
+    const findSettingsResult = await findOrCreateSettings();
     if (!findSettingsResult.ok) {
       return {
         message: "Error loading data from DB",

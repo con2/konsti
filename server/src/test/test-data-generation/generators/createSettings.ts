@@ -2,7 +2,7 @@ import { faker } from "@faker-js/faker";
 import { logger } from "server/utils/logger";
 import { findProgramItems } from "server/features/program-item/programItemRepository";
 import {
-  findSettings,
+  findOrCreateSettings,
   saveSignupQuestion,
 } from "server/features/settings/settingsRepository";
 import { shuffleArray } from "server/utils/shuffleArray";
@@ -22,7 +22,7 @@ const testQuestions = (): string[] => {
 export const createSettings = async (): Promise<void> => {
   logger.info("Generate settings data");
 
-  await findSettings();
+  await findOrCreateSettings();
 
   const programItems = unsafelyUnwrap(await findProgramItems());
   const shuffledProgramItems = shuffleArray(programItems);

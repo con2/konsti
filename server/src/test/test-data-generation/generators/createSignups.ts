@@ -3,7 +3,7 @@ import { groupBy } from "remeda";
 import { logger } from "server/utils/logger";
 import { findUsers } from "server/features/user/userRepository";
 import { findProgramItems } from "server/features/program-item/programItemRepository";
-import { findSettings } from "server/features/settings/settingsRepository";
+import { findOrCreateSettings } from "server/features/settings/settingsRepository";
 import { shuffleArray } from "server/utils/shuffleArray";
 import { getRandomInt } from "server/features/assignment/utils/getRandomInt";
 import { saveDirectSignup } from "server/features/direct-signup/directSignupRepository";
@@ -15,7 +15,7 @@ export const createDirectSignups = async (): Promise<void> => {
 
   const programItems = unsafelyUnwrap(await findProgramItems());
   const allUsers = unsafelyUnwrap(await findUsers());
-  const settings = unsafelyUnwrap(await findSettings());
+  const settings = unsafelyUnwrap(await findOrCreateSettings());
 
   const users = allUsers.filter(
     (user) => user.username !== "admin" && user.username !== "helper",

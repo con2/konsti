@@ -44,7 +44,7 @@ import {
 } from "shared/types/api/settings";
 import {
   createSettings,
-  findSettings,
+  findOrCreateSettings,
   saveHidden,
   saveSignupQuestion,
 } from "server/features/settings/settingsRepository";
@@ -301,7 +301,7 @@ describe(`POST ${ApiEndpoint.HIDDEN}`, () => {
     const body = response.body as PostHiddenResponse;
     expect(body.status).toEqual("success");
 
-    const settings = unsafelyUnwrap(await findSettings());
+    const settings = unsafelyUnwrap(await findOrCreateSettings());
     expect(settings.hiddenProgramItemIds).toEqual([]);
   });
 });
@@ -364,7 +364,7 @@ describe(`POST ${ApiEndpoint.SIGNUP_QUESTION}`, () => {
       .send(requestData)
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
 
-    const settings = unsafelyUnwrap(await findSettings());
+    const settings = unsafelyUnwrap(await findOrCreateSettings());
 
     expect(settings.signupQuestions).toHaveLength(1);
     expect(settings.signupQuestions[0]).toMatchObject(
@@ -395,7 +395,7 @@ describe(`POST ${ApiEndpoint.SIGNUP_QUESTION}`, () => {
       .send(requestData)
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
 
-    const settings = unsafelyUnwrap(await findSettings());
+    const settings = unsafelyUnwrap(await findOrCreateSettings());
 
     expect(settings.signupQuestions).toHaveLength(1);
     expect(settings.signupQuestions[0]).toMatchObject(
@@ -452,7 +452,7 @@ describe(`DELETE ${ApiEndpoint.SIGNUP_QUESTION}`, () => {
 
     await saveSignupQuestion(signupQuestion);
 
-    const settings = unsafelyUnwrap(await findSettings());
+    const settings = unsafelyUnwrap(await findOrCreateSettings());
     expect(settings.signupQuestions).toHaveLength(1);
 
     await request(server)
@@ -460,7 +460,7 @@ describe(`DELETE ${ApiEndpoint.SIGNUP_QUESTION}`, () => {
       .send({ programItemId: "123" })
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
 
-    const updatedSettings = unsafelyUnwrap(await findSettings());
+    const updatedSettings = unsafelyUnwrap(await findOrCreateSettings());
     expect(updatedSettings.signupQuestions).toHaveLength(0);
   });
 });

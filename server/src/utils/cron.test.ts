@@ -22,7 +22,7 @@ import {
   ASSIGNMENT_LOCK_STALE_TIMEOUT_MINUTES,
   acquireAssignmentLock,
   createSettings,
-  findSettings,
+  findOrCreateSettings,
   saveSettings,
 } from "server/features/settings/settingsRepository";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
@@ -112,7 +112,7 @@ describe("Progam update cronjob", () => {
       "***** Program items auto update completed",
     );
 
-    const settings = unsafelyUnwrap(await findSettings());
+    const settings = unsafelyUnwrap(await findOrCreateSettings());
     expect(settings.programUpdateLastRun).toEqual(timeNow);
   });
 
@@ -152,7 +152,7 @@ describe("Progam update cronjob", () => {
       "***** Program items auto update completed",
     );
 
-    const settings = unsafelyUnwrap(await findSettings());
+    const settings = unsafelyUnwrap(await findOrCreateSettings());
     expect(settings.programUpdateLastRun).toEqual(oldTime);
   });
 
@@ -174,7 +174,7 @@ describe("Progam update cronjob", () => {
       "***** Program items auto update completed",
     );
 
-    const settings = unsafelyUnwrap(await findSettings());
+    const settings = unsafelyUnwrap(await findOrCreateSettings());
     expect(settings.programUpdateLastRun).toEqual(timeNow);
   });
 
@@ -193,7 +193,7 @@ describe("Progam update cronjob", () => {
       "***** Program items auto update completed",
     );
 
-    const settings = unsafelyUnwrap(await findSettings());
+    const settings = unsafelyUnwrap(await findOrCreateSettings());
     expect(settings.latestServerStartTime).toEqual(newerTime);
   });
 
@@ -230,7 +230,7 @@ describe("Assignment cronjob", () => {
       "***** Automatic attendee assignment completed",
     );
 
-    const settings = unsafelyUnwrap(await findSettings());
+    const settings = unsafelyUnwrap(await findOrCreateSettings());
     expect(settings.assignmentLastRun).toEqual(timeNow);
   });
 
@@ -287,7 +287,7 @@ describe("Assignment cronjob", () => {
       "***** Automatic attendee assignment completed",
     );
 
-    const settings = unsafelyUnwrap(await findSettings());
+    const settings = unsafelyUnwrap(await findOrCreateSettings());
     expect(settings.assignmentLastRun).toEqual(timeNow);
   });
 
@@ -306,7 +306,7 @@ describe("Assignment cronjob", () => {
       "***** Automatic attendee assignment completed",
     );
 
-    const settings = unsafelyUnwrap(await findSettings());
+    const settings = unsafelyUnwrap(await findOrCreateSettings());
     expect(settings.latestServerStartTime).toEqual(newerTime);
   });
 
@@ -371,7 +371,7 @@ describe("Cronjob registration", () => {
     );
 
     // startCronJobs still records this instance as the latest started one
-    const settings = unsafelyUnwrap(await findSettings());
+    const settings = unsafelyUnwrap(await findOrCreateSettings());
     expect(settings.latestServerStartTime).toEqual(timeNow);
   });
 });

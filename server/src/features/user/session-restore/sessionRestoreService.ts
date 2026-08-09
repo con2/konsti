@@ -1,4 +1,4 @@
-import { findSettings } from "server/features/settings/settingsRepository";
+import { findOrCreateSettings } from "server/features/settings/settingsRepository";
 import { findUser } from "server/features/user/userRepository";
 import { decodeJWT, getJWT, verifyJWT } from "server/utils/jwt";
 import { PostLoginResponse } from "shared/types/api/login";
@@ -53,7 +53,7 @@ export const loginWithJwt = async (jwt: string): Promise<PostLoginResponse> => {
       };
     }
 
-    const findSettingsResult = await findSettings();
+    const findSettingsResult = await findOrCreateSettings();
     if (!findSettingsResult.ok) {
       return {
         message: "User login error",
