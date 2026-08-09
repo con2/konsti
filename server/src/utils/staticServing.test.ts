@@ -27,6 +27,11 @@ const bundledAssetName = "cacheTest-Ab12Cd34.js";
 // filename instead of the location
 const staticFileName = "service-worker-registration.js";
 
+// A served root that itself sits under a directory called "assets", to catch a
+// cache rule that looks for that name anywhere in the absolute path
+let nestedRoot: string;
+let nestedStaticPath: string;
+
 beforeAll(() => {
   staticPath = fs.mkdtempSync(path.join(os.tmpdir(), "konsti-static-"));
   fs.mkdirSync(path.join(staticPath, "assets"));
@@ -36,10 +41,16 @@ beforeAll(() => {
     path.join(staticPath, "assets", bundledAssetName),
     "export {};",
   );
+
+  nestedRoot = fs.mkdtempSync(path.join(os.tmpdir(), "konsti-nested-"));
+  nestedStaticPath = path.join(nestedRoot, "assets", "front");
+  fs.mkdirSync(nestedStaticPath, { recursive: true });
+  fs.writeFileSync(path.join(nestedStaticPath, "index.html"), "<html></html>");
 });
 
 afterAll(() => {
   fs.rmSync(staticPath, { recursive: true, force: true });
+  fs.rmSync(nestedRoot, { recursive: true, force: true });
 });
 
 let server: Server;
@@ -99,6 +110,20 @@ describe("static file serving", () => {
     const response = await request(server).get("/assets/missing-chunk.js");
 
     expect(response.status).toEqual(404);
+  });
+
+  test("should not cache index.html forever when the served root sits under an assets directory", async () => {
+    await closeServer(server);
+    server = await startServer({
+      dbConnString: globalThis.__MONGO_URI__,
+      dbName: faker.string.alphanumeric(10),
+      staticFilesPath: nestedStaticPath,
+    });
+
+    const response = await request(server).get("/index.html");
+
+    expect(response.status).toEqual(200);
+    expect(response.headers["cache-control"]).toEqual("no-cache");
   });
 
   test("should return 404 for unknown api paths", async () => {
