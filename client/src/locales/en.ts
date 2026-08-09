@@ -162,6 +162,7 @@ export const translationEN = {
     invalidSerial: "Invalid registration code",
     loginFailed: "Username and password don't match",
     loginDisabled: "Login is disabled",
+    sessionExpired: "Your session has expired, please log in again",
     invalidUserGroup: "Invalid user group",
     unknown: "Unknown error",
   },

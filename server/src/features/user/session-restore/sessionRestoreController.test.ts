@@ -4,10 +4,13 @@ import request from "supertest";
 import { faker } from "@faker-js/faker";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { mockUser } from "server/test/mock-data/mockUser";
-import { saveUser } from "server/features/user/userRepository";
+import { removeUsers, saveUser } from "server/features/user/userRepository";
 import { closeServer, startServer } from "server/utils/server";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
-import { PostLoginError, PostLoginResult } from "shared/types/api/login";
+import {
+  PostLoginResult,
+  PostSessionRecoveryError,
+} from "shared/types/api/login";
 
 let server: Server;
 
@@ -34,8 +37,44 @@ describe(`POST ${ApiEndpoint.SESSION_RESTORE}`, () => {
       .send({ jwt: "testjwt" });
     expect(response.status).toEqual(200);
 
-    const body = response.body as PostLoginError;
+    const body = response.body as PostSessionRecoveryError;
     expect(body.message).toEqual("Invalid jwt");
+    // Definitive, so the client discards the session instead of retrying it
+    expect(body.errorId).toEqual("sessionExpired");
+  });
+
+  test("should report a jwt signed with another key as expired", async () => {
+    // Decodes cleanly but the signature doesn't verify, which is what a
+    // rotated secret leaves in a browser
+    const foreignJwt =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlRlc3QgVXNlciIsInVzZXJHcm91cCI6InVzZXIifQ.not-a-valid-signature";
+
+    const response = await request(server)
+      .post(ApiEndpoint.SESSION_RESTORE)
+      .send({ jwt: foreignJwt });
+    expect(response.status).toEqual(200);
+
+    const body = response.body as PostSessionRecoveryError;
+    expect(body.errorId).toEqual("sessionExpired");
+  });
+
+  test("should report a jwt for a user that no longer exists as a failed login", async () => {
+    await saveUser(mockUser);
+    const loginResponse = await request(server)
+      .post(ApiEndpoint.LOGIN)
+      .send({ username: mockUser.username, password: "password" });
+    const { jwt } = loginResponse.body as PostLoginResult;
+
+    // The database is wiped between deploys, so a token can outlive its user
+    await removeUsers();
+
+    const response = await request(server)
+      .post(ApiEndpoint.SESSION_RESTORE)
+      .send({ jwt });
+    expect(response.status).toEqual(200);
+
+    const body = response.body as PostSessionRecoveryError;
+    expect(body.errorId).toEqual("loginFailed");
   });
 
   test("should return 200 and success with valid jwt parameter", async () => {

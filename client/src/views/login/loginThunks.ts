@@ -6,7 +6,7 @@ import {
   postSessionRecovery,
   postUpdateUserEmailAddress,
 } from "client/services/loginServices";
-import { saveSession, clearSession } from "client/utils/localStorage";
+import { saveSession } from "client/utils/localStorage";
 import { AppThunk } from "client/types/reduxTypes";
 import {
   submitFinalizeLoginAsync,
@@ -93,6 +93,7 @@ export const submitLogin = (
 enum SubmitSessionRecoveryErrorMessage {
   LOGIN_FAILED = "error.loginFailed",
   LOGIN_DISABLED = "error.loginDisabled",
+  SESSION_EXPIRED = "error.sessionExpired",
   UNKNOWN = "error.unknown",
 }
 
@@ -106,15 +107,24 @@ export const submitSessionRecovery = (
     const loginResponse = await postSessionRecovery(currentJwt);
 
     if (loginResponse.status === "error") {
-      clearSession();
-
       // TODO: Show "session expired" error
+      // Logging out drops the stored session and the copy the store read from
+      // it at startup. Clearing storage alone would leave that copy behind,
+      // and the caller decides whether to recover from it - so recovery would
+      // be attempted again on every poll for as long as the tab stayed open
       switch (loginResponse.errorId) {
+        case "sessionExpired":
+          dispatch(submitLogout());
+          return SubmitSessionRecoveryErrorMessage.SESSION_EXPIRED;
         case "loginFailed":
+          dispatch(submitLogout());
           return SubmitSessionRecoveryErrorMessage.LOGIN_FAILED;
         case "loginDisabled":
+          dispatch(submitLogout());
           return SubmitSessionRecoveryErrorMessage.LOGIN_DISABLED;
         case "unknown":
+          // Could be anything, including never having reached the server, so
+          // keep the session for the next poll to try again
           return SubmitSessionRecoveryErrorMessage.UNKNOWN;
         default:
           return exhaustiveSwitchGuard(loginResponse.errorId);
