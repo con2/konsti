@@ -8,6 +8,11 @@
     // only with their explicit extension
     "allowImportingTsExtensions": true,
     "noEmit": true,
+    // Every project sets its own tsBuildInfoFile: this option is inherited
+    // through `extends`, and sharing one path would make the projects
+    // overwrite each other's build info on every run
+    "incremental": true,
+    "tsBuildInfoFile": "./node_modules/.cache/root.tsbuildinfo",
     "allowUnreachableCode": false,
     "noErrorTruncation": true,
     "target": "es2025",

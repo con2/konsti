@@ -2,7 +2,9 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "target": "es2021",
-    "lib": ["es2021"]
+    "lib": ["es2021"],
+    // shared/ is not a workspace and has no node_modules of its own
+    "tsBuildInfoFile": "../node_modules/.cache/shared.tsbuildinfo"
   },
   "include": ["**/*.ts"]
 }
