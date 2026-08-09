@@ -4,7 +4,7 @@ export const translationFI = {
   logoAltText: "Konsti",
   announcement: "Ilmoittautuminen on päättynyt. Tulokset julkaistaan piakkoin.",
   appUpdateBanner: {
-    message: "Konsti on päivitetty. Ole hyvä ja lataa sivu uudelleen.",
+    message: "Konsti on päivitetty.",
     reload: "Lataa uudelleen",
   },
   testTime: {
