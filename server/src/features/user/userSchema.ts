@@ -4,6 +4,7 @@ import { z } from "zod";
 import dayjs from "dayjs";
 import { EventLogAction } from "shared/types/models/eventLog";
 import { UserGroup } from "shared/types/models/user";
+import { EMAIL_REGEX } from "shared/constants/validation";
 
 const LotterySignupSchemaDb = z.object({
   programItemId: z.string(),
@@ -22,7 +23,7 @@ const EventLogItemSchemaDb = z.object({
 
 export const UserSchemaDb = z
   .object({
-    kompassiId: z.number(),
+    kompassiId: z.string(),
     kompassiUsernameAccepted: z.boolean(),
     username: z.string(),
     password: z.string(),
@@ -39,7 +40,7 @@ export const UserSchemaDb = z
         // Allow empty string (for unsubscribe)
         if (email === "") return true;
         // Validate email format if not empty
-        return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
+        return EMAIL_REGEX.test(email);
       },
       {
         message: "Invalid email format",
@@ -84,7 +85,11 @@ const eventLogItemSchema = new mongoose.Schema(
 
 const userSchema = new mongoose.Schema(
   {
-    kompassiId: { type: Number, required: true },
+    // No `required`: "" is the meaningful value for a local account, and the
+    // global validator override that lets empty strings satisfy `required`
+    // only loads with the Express app - tests connecting straight to the DB
+    // would reject every local account. The default covers the undefined case
+    kompassiId: { type: String, default: "" },
     kompassiUsernameAccepted: { type: Boolean, required: true },
     // Usernames identify a user everywhere: sign-ups, event log writes and
     // assignment results all match on this field, and a username-filtered update
@@ -109,6 +114,14 @@ const userSchema = new mongoose.Schema(
   {
     timestamps: true,
   },
+);
+
+// One Konsti account per Kompassi identity, and an index for the lookup every
+// Kompassi login does. Partial so it ignores the "" local accounts share,
+// which would otherwise all collide with each other
+userSchema.index(
+  { kompassiId: 1 },
+  { unique: true, partialFilterExpression: { kompassiId: { $gt: "" } } },
 );
 
 userSchema.plugin(mongooseLeanVirtuals, {

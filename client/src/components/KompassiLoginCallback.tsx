@@ -1,9 +1,16 @@
 import { ReactElement, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router";
-import { submitKompassiLogin } from "client/views/login/loginThunks";
+import {
+  LoginErrorMessage,
+  submitKompassiLogin,
+} from "client/views/login/loginThunks";
 import { useAppDispatch } from "client/utils/hooks";
 import { Loading } from "client/components/Loading";
 import { AppRoute } from "client/app/AppRoutes";
+import {
+  clearKompassiLoginState,
+  getKompassiLoginState,
+} from "client/utils/sessionStorage";
 
 export const KompassiLoginCallback = (): ReactElement => {
   const dispatch = useAppDispatch();
@@ -13,10 +20,27 @@ export const KompassiLoginCallback = (): ReactElement => {
 
   const code = searchParams.get("code");
   const error = searchParams.get("error");
+  const state = searchParams.get("state");
 
   useEffect(() => {
     const fetchData = async (): Promise<void> => {
+      // Read and drop the state before branching: it has to be single use, so
+      // a denied or abandoned login must not leave one behind that a later
+      // callback could satisfy
+      const expectedState = getKompassiLoginState();
+      clearKompassiLoginState();
+
       if (code) {
+        // The state is session-scoped, so only the tab that started the login
+        // holds it: a mismatch means this callback answers a request we did
+        // not make
+        if (!expectedState || state !== expectedState) {
+          await navigate(
+            `${AppRoute.LOGIN}?error=${LoginErrorMessage.LOGIN_FAILED}`,
+          );
+          return;
+        }
+
         const errorMessage = await dispatch(submitKompassiLogin(code));
         if (errorMessage) {
           await navigate(`${AppRoute.LOGIN}?error=${errorMessage}`);
@@ -31,7 +55,7 @@ export const KompassiLoginCallback = (): ReactElement => {
     };
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     fetchData();
-  }, [code, error, dispatch, navigate]);
+  }, [code, error, state, dispatch, navigate]);
 
   return <Loading />;
 };

@@ -9,6 +9,7 @@ import { createSerial } from "server/features/user/userUtils";
 import { getJWT } from "server/utils/jwt";
 import { logger } from "server/utils/logger";
 import { AuthEndpoint } from "shared/constants/apiEndpoints";
+import { EMAIL_REGEX } from "shared/constants/validation";
 import { KompassiLoginError, MongoDbError } from "shared/types/api/errors";
 import {
   PostKompassiLoginResponse,
@@ -22,12 +23,16 @@ import {
   makeSuccessResult,
 } from "shared/utils/result";
 import {
-  KompassiProfile,
-  KompassiProfileSchema,
+  KompassiUserinfo,
+  KompassiUserinfoSchema,
   KompassiTokens,
   KompassiTokensSchema,
 } from "server/features/kompassi-login/KompassiLoginTypes";
-import { redactTokenValues } from "server/features/kompassi-login/kompassiLoginUtils";
+import {
+  addKompassiIdSuffix,
+  deriveKonstiUsername,
+  redactTokenValues,
+} from "server/features/kompassi-login/kompassiLoginUtils";
 
 export const getBaseUrl = (): string => {
   if (process.env.SETTINGS === "ci") {
@@ -61,7 +66,9 @@ const getKompassiTokens = async (
     redirect_uri: `${origin}${AuthEndpoint.KOMPASSI_LOGIN_CALLBACK}`,
   });
   const body = params.toString();
-  const url = `${getBaseUrl()}/oauth2/token`;
+  // The trailing slash matters - Django redirects a slash-less POST, which
+  // would downgrade it to a GET
+  const url = `${getBaseUrl()}/oidc/token/`;
   const headers = {
     accept: "application/json",
     "content-type": "application/x-www-form-urlencoded",
@@ -91,21 +98,21 @@ const getKompassiTokens = async (
   }
 };
 
-const getKompassiProfile = async (
+const getKompassiUserinfo = async (
   accessToken: string,
-): Promise<Result<KompassiProfile, KompassiLoginError>> => {
-  const url = `${getBaseUrl()}/api/v2/people/me`;
+): Promise<Result<KompassiUserinfo, KompassiLoginError>> => {
+  const url = `${getBaseUrl()}/oidc/userinfo/`;
   const headers = { authorization: `Bearer ${accessToken}` };
 
   try {
     const response = await fetch(url, { headers });
     const responseData = await response.json();
-    const result = KompassiProfileSchema.safeParse(responseData);
+    const result = KompassiUserinfoSchema.safeParse(responseData);
     if (!result.success) {
-      // Don't log the body here - a partially valid profile would contain PII
+      // Don't log the body here - a partially valid response would contain PII
       logger.error(
         new Error(
-          `Error validating getKompassiProfile response: status ${response.status}`,
+          `Error validating getKompassiUserinfo response: status ${response.status}`,
           { cause: result.error },
         ),
       );
@@ -114,7 +121,7 @@ const getKompassiProfile = async (
     return makeSuccessResult(result.data);
   } catch (error) {
     logger.error(
-      new Error("Kompassi login: Error fetching profile from Kompassi", {
+      new Error("Kompassi login: Error fetching userinfo from Kompassi", {
         cause: error,
       }),
     );
@@ -129,24 +136,24 @@ export const doKompassiLogin = async (
   const tokensResult = await getKompassiTokens(code, origin);
   if (!tokensResult.ok) {
     return {
-      message: "Error getting tokens from Komapssi",
+      message: "Error getting tokens from Kompassi",
       status: "error",
       errorId: "unknown",
     };
   }
-  const profileResult = await getKompassiProfile(
+  const userinfoResult = await getKompassiUserinfo(
     tokensResult.value.access_token,
   );
-  if (!profileResult.ok) {
+  if (!userinfoResult.ok) {
     return {
-      message: "Error getting user profile from Komapssi",
+      message: "Error getting userinfo from Kompassi",
       status: "error",
       errorId: "unknown",
     };
   }
-  const profile = profileResult.value;
+  const userinfo = userinfoResult.value;
 
-  const groupNames = profile.groups.filter((groupName) =>
+  const groupNames = userinfo.groups.filter((groupName) =>
     accessGroups.has(groupName),
   );
 
@@ -158,7 +165,7 @@ export const doKompassiLogin = async (
     };
   }
 
-  const existingUserResult = await findUserByKompassiId(profile.id);
+  const existingUserResult = await findUserByKompassiId(userinfo.sub);
   if (!existingUserResult.ok) {
     return {
       message: "Error finding existing user",
@@ -196,8 +203,10 @@ export const doKompassiLogin = async (
   }
   const serial = serialDocResult.value[0].serial;
 
+  const derivedUsername = deriveKonstiUsername(userinfo);
+
   // Check if username already taken
-  const findUserResult = await findUser(profile.username);
+  const findUserResult = await findUser(derivedUsername);
   if (!findUserResult.ok) {
     return {
       errorId: "unknown",
@@ -207,18 +216,45 @@ export const doKompassiLogin = async (
   }
   const userWithSameUsername = findUserResult.value;
 
-  const saveUserResult = await saveUser({
-    kompassiId: profile.id,
-    // TODO: Handle properly instead of appending profile.id to username
-    username: userWithSameUsername
-      ? `${profile.username}-${profile.id}`
-      : profile.username,
+  const newUser = {
+    kompassiId: userinfo.sub,
     serial,
-    email: profile.email,
+    // Kompassi accepts addresses that Konsti's stored-email format rejects, and
+    // that check runs on read - keeping one would make the account unreadable
+    // and so unloggable-into. The finalize form asks for an address anyway
+    email: EMAIL_REGEX.test(userinfo.email) ? userinfo.email : "",
     passwordHash: "",
     userGroup: UserGroup.USER,
     groupCode: "0",
+  };
+
+  // The username is only a starting point: the user confirms or replaces it
+  // before they can do anything else, so a collision just needs a suffix
+  // unique to this account. Not the serial - that's the registration code,
+  // and other group members can read each other's usernames
+  const uniqueUsername = addKompassiIdSuffix(derivedUsername, userinfo.sub);
+
+  let saveUserResult = await saveUser({
+    ...newUser,
+    username: userWithSameUsername ? uniqueUsername : derivedUsername,
   });
+
+  // Nothing holds the name between the check above and the save, and two
+  // people whose Kompassi names quote the same nick now derive the same
+  // username - so the loser of that race retries with its own unique name.
+  // Only on a rejected unique index: saveUser stores the row before validating
+  // it, so retrying after any other error would create a second account
+  if (
+    !saveUserResult.ok &&
+    saveUserResult.error === MongoDbError.DUPLICATE_KEY &&
+    !userWithSameUsername
+  ) {
+    saveUserResult = await saveUser({
+      ...newUser,
+      username: uniqueUsername,
+    });
+  }
+
   if (!saveUserResult.ok) {
     return {
       message: "Saving user failed",

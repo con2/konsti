@@ -10,6 +10,15 @@ import {
 } from "shared/utils/result";
 import { MongoDbError } from "shared/types/api/errors";
 
+// Matched structurally rather than with `instanceof MongoServerError`: Mongoose
+// throws from its own bundled driver copy, which is a different class identity
+// than the one a direct `mongodb` import resolves to
+const isDuplicateKeyError = (error: unknown): boolean =>
+  typeof error === "object" &&
+  error !== null &&
+  "code" in error &&
+  error.code === 11000;
+
 export const removeUsers = async (): Promise<Result<void, MongoDbError>> => {
   logger.info("MongoDB: remove ALL users from db");
   try {
@@ -64,6 +73,11 @@ export const saveUser = async (
         cause: error,
       }),
     );
+    // A unique index rejection means nothing was written, so callers can retry
+    // with a different username. Every other failure may have stored the row
+    if (isDuplicateKeyError(error)) {
+      return makeErrorResult(MongoDbError.DUPLICATE_KEY);
+    }
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
@@ -109,7 +123,7 @@ export const updateUserPassword = async (
   try {
     const response = await UserModel.findOneAndUpdate(
       // Don't update Kompassi login users
-      { username, kompassiId: 0 },
+      { username, kompassiId: "" },
       {
         password,
       },
@@ -204,7 +218,7 @@ export const findUserBySerial = async (
 };
 
 export const findUserByKompassiId = async (
-  kompassiId: number,
+  kompassiId: string,
 ): Promise<Result<User | null, MongoDbError>> => {
   try {
     const response = await UserModel.findOne({ kompassiId }).lean();

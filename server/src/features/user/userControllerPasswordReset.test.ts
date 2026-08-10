@@ -214,7 +214,7 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
   });
 
   test("should not allow Kompassi login user to change local password", async () => {
-    await saveUser({ ...mockUser, kompassiId: 100 });
+    await saveUser({ ...mockUser, kompassiId: "100" });
 
     const requestData: PostUpdateUserPasswordRequest = {
       usernameToUpdate: mockUser.username,

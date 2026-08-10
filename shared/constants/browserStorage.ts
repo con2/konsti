@@ -15,3 +15,9 @@ export const localStorageStateKey = `${browserStoragePrefix}-state`;
 // Defined here rather than with the other session keys because clearing the
 // session has to preserve it, and importing that module there would be a cycle
 export const appUpdateReloadedBuildTimeKey = `${browserStoragePrefix}-appUpdateReloadedBuildTime`;
+
+// The sessionStorage key holding the OAuth state of an in-progress Kompassi
+// login. Here for the same reason: clearing the session has to preserve it, or
+// a logout would abandon a login started moments earlier. Session-scoped so
+// each tab checks the state it started its own login with
+export const kompassiLoginStateKey = `${browserStoragePrefix}-kompassiLoginState`;

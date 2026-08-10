@@ -10,6 +10,7 @@ import { Locale } from "shared/types/locale";
 import {
   appUpdateReloadedBuildTimeKey,
   browserStoragePrefix,
+  kompassiLoginStateKey,
   localStorageStateKey,
 } from "shared/constants/browserStorage";
 
@@ -75,12 +76,17 @@ export const clearSession = (): void => {
 
   // Only this event's session keys, not the whole store: the update reload
   // guard has to outlive a logout (which is itself a navigation, so dropping
-  // it would let a pending update reload the page a second time), and a
-  // blanket wipe would also take keys other origins' code owns
+  // it would let a pending update reload the page a second time), an
+  // in-progress Kompassi login's state has to outlive one too (a logout
+  // between the button and the callback would otherwise reject the login), and
+  // a blanket wipe would also take keys other origins' code owns
+  const preservedKeys = new Set<string>([
+    appUpdateReloadedBuildTimeKey,
+    kompassiLoginStateKey,
+  ]);
   const sessionKeys = Object.keys(sessionStorage).filter(
     (key) =>
-      key.startsWith(`${browserStoragePrefix}-`) &&
-      key !== appUpdateReloadedBuildTimeKey,
+      key.startsWith(`${browserStoragePrefix}-`) && !preservedKeys.has(key),
   );
   for (const sessionKey of sessionKeys) {
     sessionStorage.removeItem(sessionKey);

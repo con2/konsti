@@ -23,7 +23,9 @@ export interface PostLoginResult extends ApiResult {
   username: string;
   eventLogItems: EventLogItem[];
   kompassiUsernameAccepted: boolean;
-  kompassiId: number;
+  // The Kompassi OIDC `sub` claim, or "" for a local account. Opaque: Kompassi
+  // makes no promises about its format
+  kompassiId: string;
   email: string;
   emailNotificationPermitAsked: boolean;
 }
@@ -52,6 +54,18 @@ export interface PostSessionRecoveryError extends ApiError {
 export type PostSessionRecoveryResponse =
   | PostLoginResult
   | PostSessionRecoveryError;
+
+// POST Kompassi login redirect
+
+// The client generates the OAuth state and keeps its own copy, so the server
+// stays stateless and any instance can build the authorization URL
+export const PostKompassiLoginRedirectRequestSchema = z.object({
+  state: z.string().min(1),
+});
+
+export type PostKompassiLoginRedirectRequest = z.infer<
+  typeof PostKompassiLoginRedirectRequestSchema
+>;
 
 // POST Kompassi login
 

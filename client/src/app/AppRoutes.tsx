@@ -180,7 +180,7 @@ export const AppRoutes = (): ReactElement => {
 
   if (loggedIn) {
     if (
-      (kompassiId !== 0 && !kompassiUsernameAccepted) ||
+      (kompassiId !== "" && !kompassiUsernameAccepted) ||
       !emailNotificationPermitAsked
     ) {
       return (

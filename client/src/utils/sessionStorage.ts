@@ -5,6 +5,7 @@ import { StringToJsonSchema } from "client/utils/zodUtils";
 import {
   appUpdateReloadedBuildTimeKey,
   browserStoragePrefix,
+  kompassiLoginStateKey,
 } from "shared/constants/browserStorage";
 
 // A const object instead of an enum because enum members can't hold the
@@ -17,7 +18,22 @@ export const SessionStorageValue = {
   ALL_PROGRAM_ITEMS_HIDE_FULL: `${browserStoragePrefix}-allProgramItemsHideFull`,
   MY_PROGRAM_ITEMS_SHOW_ALL_PROGRAM_ITEMS: `${browserStoragePrefix}-myProgramItemsShowAllProgramItems`,
   APP_UPDATE_RELOADED_BUILD_TIME: appUpdateReloadedBuildTimeKey,
+  KOMPASSI_LOGIN_STATE: kompassiLoginStateKey,
 } as const;
+
+// The OAuth state of the login this tab started, compared against the value
+// Kompassi echoes back to prove the callback answers our own request. Stored
+// as a plain string, so there is no shape to validate on the way out
+export const getKompassiLoginState = (): string =>
+  sessionStorage.getItem(SessionStorageValue.KOMPASSI_LOGIN_STATE) ?? "";
+
+export const saveKompassiLoginState = (state: string): void => {
+  sessionStorage.setItem(SessionStorageValue.KOMPASSI_LOGIN_STATE, state);
+};
+
+export const clearKompassiLoginState = (): void => {
+  sessionStorage.removeItem(SessionStorageValue.KOMPASSI_LOGIN_STATE);
+};
 
 // The server build an automatic update reload was already attempted for.
 // Session-scoped so a reload that fails to deliver the new build (e.g. stale

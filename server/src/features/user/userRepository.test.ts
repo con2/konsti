@@ -54,8 +54,32 @@ test("should not insert a second user with an existing username", async () => {
     serial: "9999ZZZZ",
   });
 
-  expect(duplicateResult).toEqual(makeErrorResult(MongoDbError.UNKNOWN_ERROR));
+  // Reported distinctly from a generic failure so callers can tell that
+  // nothing was written and retry under a different username
+  expect(duplicateResult).toEqual(makeErrorResult(MongoDbError.DUPLICATE_KEY));
   expect(unsafelyUnwrap(await findUsers())).toHaveLength(1);
+});
+
+test("should not insert a second user with an existing kompassiId", async () => {
+  await saveProgramItems([testProgramItem]);
+  await saveUser({ ...mockUser, kompassiId: "42" });
+
+  const duplicateResult = await saveUser({
+    ...mockUser2,
+    kompassiId: "42",
+  });
+
+  expect(duplicateResult).toEqual(makeErrorResult(MongoDbError.DUPLICATE_KEY));
+  expect(unsafelyUnwrap(await findUsers())).toHaveLength(1);
+});
+
+// The "" every local account shares must not collide with itself
+test("should allow many users without a Kompassi account", async () => {
+  await saveProgramItems([testProgramItem]);
+  await saveUser(mockUser);
+  await saveUser(mockUser2);
+
+  expect(unsafelyUnwrap(await findUsers())).toHaveLength(2);
 });
 
 test("should find users by username", async () => {

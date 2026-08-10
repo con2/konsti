@@ -65,9 +65,9 @@ import {
 } from "shared/constants/apiEndpoints";
 import {
   getKompassiLoginMockLogout,
-  getKompassiLoginMockProfile,
   getKompassiLoginMockRedirect,
   getKompassiLoginMockToken,
+  getKompassiLoginMockUserinfo,
 } from "server/test/kompassi-mock-service/kompassiMockService";
 import { postAssignment } from "server/features/assignment/assignmentController";
 import { validateBody, validateQuery } from "server/middleware/validateRequest";
@@ -75,6 +75,7 @@ import { requireAuth } from "server/middleware/requireAuth";
 import { logApiCall } from "server/middleware/logApiCall";
 import { UserGroup } from "shared/types/models/user";
 import {
+  PostKompassiLoginRedirectRequestSchema,
   PostKompassiLoginRequestSchema,
   PostLoginRequestSchema,
   PostSessionRecoveryRequestSchema,
@@ -321,7 +322,11 @@ if (process.env.SETTINGS === "development" || process.env.SETTINGS === "ci") {
 
 /* Kompassi login routes */
 // TODO: Disable login endpoints if provider not set
-apiRoutes.post(AuthEndpoint.KOMPASSI_LOGIN, postKompassiLoginRedirect);
+apiRoutes.post(
+  AuthEndpoint.KOMPASSI_LOGIN,
+  validateBody(PostKompassiLoginRedirectRequestSchema),
+  postKompassiLoginRedirect,
+);
 apiRoutes.post(
   AuthEndpoint.KOMPASSI_LOGIN_CALLBACK,
   validateBody(PostKompassiLoginRequestSchema),
@@ -331,8 +336,8 @@ apiRoutes.post(AuthEndpoint.KOMPASSI_LOGOUT, postKompassiLogoutRedirect);
 
 if (process.env.NODE_ENV === "development") {
   /* Kompassi login test routes */
-  apiRoutes.get("/oauth2/authorize", getKompassiLoginMockRedirect);
-  apiRoutes.post("/oauth2/token", getKompassiLoginMockToken);
-  apiRoutes.get("/api/v2/people/me", getKompassiLoginMockProfile);
+  apiRoutes.get("/oidc/authorize/", getKompassiLoginMockRedirect);
+  apiRoutes.post("/oidc/token/", getKompassiLoginMockToken);
+  apiRoutes.get("/oidc/userinfo/", getKompassiLoginMockUserinfo);
   apiRoutes.get("/logout", getKompassiLoginMockLogout);
 }

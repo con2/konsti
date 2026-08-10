@@ -1,7 +1,9 @@
 import { api } from "client/utils/api";
 import { LoginFormFields } from "client/views/login/components/LocalLoginForm";
 import { ApiEndpoint, AuthEndpoint } from "shared/constants/apiEndpoints";
+import { saveKompassiLoginState } from "client/utils/sessionStorage";
 import {
+  PostKompassiLoginRedirectRequest,
   PostKompassiLoginRequest,
   PostKompassiLoginResponse,
   PostLoginRequest,
@@ -41,8 +43,26 @@ export const postSessionRecovery = async (
   return response.data;
 };
 
+// getRandomValues rather than randomUUID: the latter is only available in
+// secure contexts, and the app is served over plain http in local and
+// containerized runs
+const generateLoginState = (): string => {
+  const bytes = crypto.getRandomValues(new Uint8Array(16));
+  return Array.from(bytes, (byte) => byte.toString(16).padStart(2, "0")).join(
+    "",
+  );
+};
+
+// The state is generated and kept here rather than server-side so that any
+// server instance can serve the callback, and is checked against the value
+// Kompassi echoes back before the code is exchanged
 export const postKompassiLoginRedirect = async (): Promise<void> => {
-  await api.post(AuthEndpoint.KOMPASSI_LOGIN);
+  const state = generateLoginState();
+  saveKompassiLoginState(state);
+  await api.post<unknown, PostKompassiLoginRedirectRequest>(
+    AuthEndpoint.KOMPASSI_LOGIN,
+    { state },
+  );
 };
 
 export const postKompassiLogoutRedirect = async (): Promise<void> => {

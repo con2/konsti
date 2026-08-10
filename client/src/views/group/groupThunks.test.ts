@@ -40,7 +40,7 @@ test("joining a group refreshes the user's own lottery signups", async () => {
       serial: "1234",
       eventLogItems: [],
       kompassiUsernameAccepted: false,
-      kompassiId: 0,
+      kompassiId: "",
       email: "",
       emailNotificationPermitAsked: false,
     }),

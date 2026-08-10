@@ -4,7 +4,7 @@ To add new domain konsti.example.com:
 
 - Add new domain to Konsti Kubernetes configs
   - https://github.com/con2/konsti/blob/main/kubernetes/production.vars.yaml
-- Add Kompassi OAuth Redirect to new domain
+- Add Kompassi OIDC Redirect to new domain
   - Kompassi admin UI -> Django OAuth Toolkit -> Applications -> Redirect uris
     ```
     https://konsti.example.com/auth/kompassi/callback

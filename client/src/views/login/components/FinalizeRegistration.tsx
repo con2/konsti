@@ -53,7 +53,7 @@ export const FinalizeRegistration = (
   // Local accounts already chose their username and agreed to the privacy
   // policy on the create-account page, so only Kompassi accounts confirm
   // them here
-  const isKompassiAccount = kompassiId !== 0;
+  const isKompassiAccount = kompassiId !== "";
 
   const [serverError, setServerError] = useState<
     KompassiVerifyErrorMessage | UpdateUserEmailAddressErrorMessage | null
@@ -76,7 +76,11 @@ export const FinalizeRegistration = (
   const onSubmit: SubmitHandler<FinalizeRegistrationFormFields> = async (
     loginFormFields,
   ): Promise<void> => {
-    if (isKompassiAccount) {
+    // Only when the username field is actually rendered below. Once the
+    // username is accepted the field is gone, so submitting again - which
+    // happens when the email step failed and the user retries - would send an
+    // undefined username and fail validation on every attempt
+    if (isKompassiAccount && !props.kompassiUsernameAccepted) {
       const errorMessage = await dispatch(
         submitVerifyKompassiLogin(loginFormFields.username),
       );
