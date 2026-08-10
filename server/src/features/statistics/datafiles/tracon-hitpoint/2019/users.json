@@ -1,6 +1,6 @@
 [
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "224769",
     "password": "<redacted>",
@@ -41,7 +41,7 @@
     "updatedAt": "2019-11-23T07:48:38.264Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "963305",
     "password": "<redacted>",
@@ -67,7 +67,7 @@
     "updatedAt": "2019-11-23T07:57:06.461Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "484114",
     "password": "<redacted>",
@@ -93,7 +93,7 @@
     "updatedAt": "2019-11-23T08:03:52.122Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "45107",
     "password": "<redacted>",
@@ -108,7 +108,7 @@
     "updatedAt": "2019-11-23T08:04:56.662Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "362060",
     "password": "<redacted>",
@@ -134,7 +134,7 @@
     "updatedAt": "2019-11-23T08:08:17.947Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "922246",
     "password": "<redacted>",
@@ -149,7 +149,7 @@
     "updatedAt": "2019-11-23T08:09:04.809Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "966736",
     "password": "<redacted>",
@@ -180,7 +180,7 @@
     "updatedAt": "2019-11-23T08:09:23.705Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "795913",
     "password": "<redacted>",
@@ -211,7 +211,7 @@
     "updatedAt": "2019-11-23T08:09:43.528Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "261670",
     "password": "<redacted>",
@@ -257,7 +257,7 @@
     "updatedAt": "2019-11-23T08:11:25.390Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "723760",
     "password": "<redacted>",
@@ -303,7 +303,7 @@
     "updatedAt": "2019-11-23T08:12:18.436Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "738758",
     "password": "<redacted>",
@@ -329,7 +329,7 @@
     "updatedAt": "2019-11-23T08:12:25.224Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "351774",
     "password": "<redacted>",
@@ -360,7 +360,7 @@
     "updatedAt": "2019-11-23T08:12:35.155Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "802638",
     "password": "<redacted>",
@@ -401,7 +401,7 @@
     "updatedAt": "2019-11-23T08:12:52.817Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "912525",
     "password": "<redacted>",
@@ -422,7 +422,7 @@
     "updatedAt": "2019-11-23T08:17:18.881Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "248050",
     "password": "<redacted>",
@@ -448,7 +448,7 @@
     "updatedAt": "2019-11-23T08:17:29.333Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "60212",
     "password": "<redacted>",
@@ -509,7 +509,7 @@
     "updatedAt": "2019-11-23T08:17:54.975Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "441643",
     "password": "<redacted>",
@@ -540,7 +540,7 @@
     "updatedAt": "2019-11-23T08:18:33.980Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "7111",
     "password": "<redacted>",
@@ -571,7 +571,7 @@
     "updatedAt": "2019-11-23T08:18:43.151Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "505502",
     "password": "<redacted>",
@@ -592,7 +592,7 @@
     "updatedAt": "2019-11-23T08:21:31.593Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "427445",
     "password": "<redacted>",
@@ -628,7 +628,7 @@
     "updatedAt": "2019-11-23T08:31:47.168Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "741992",
     "password": "<redacted>",
@@ -654,7 +654,7 @@
     "updatedAt": "2019-11-23T08:32:25.375Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "235777",
     "password": "<redacted>",
@@ -675,7 +675,7 @@
     "updatedAt": "2019-11-23T08:33:17.443Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "310218",
     "password": "<redacted>",
@@ -701,7 +701,7 @@
     "updatedAt": "2019-11-23T08:33:30.050Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "577045",
     "password": "<redacted>",
@@ -716,7 +716,7 @@
     "updatedAt": "2019-11-23T08:34:07.564Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "659117",
     "password": "<redacted>",
@@ -762,7 +762,7 @@
     "updatedAt": "2019-11-23T08:34:24.880Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "228215",
     "password": "<redacted>",
@@ -788,7 +788,7 @@
     "updatedAt": "2019-11-23T08:35:10.841Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "861764",
     "password": "<redacted>",
@@ -819,7 +819,7 @@
     "updatedAt": "2019-11-23T08:35:38.486Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "25319",
     "password": "<redacted>",
@@ -850,7 +850,7 @@
     "updatedAt": "2019-11-23T08:36:05.985Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "234093",
     "password": "<redacted>",
@@ -876,7 +876,7 @@
     "updatedAt": "2019-11-23T08:36:11.894Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "562584",
     "password": "<redacted>",
@@ -897,7 +897,7 @@
     "updatedAt": "2019-11-23T08:36:19.353Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "846747",
     "password": "<redacted>",
@@ -928,7 +928,7 @@
     "updatedAt": "2019-11-23T08:36:23.561Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "844182",
     "password": "<redacted>",
@@ -974,7 +974,7 @@
     "updatedAt": "2019-11-23T08:41:31.805Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "643134",
     "password": "<redacted>",
@@ -1000,7 +1000,7 @@
     "updatedAt": "2019-11-23T08:41:43.543Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "158866",
     "password": "<redacted>",
@@ -1026,7 +1026,7 @@
     "updatedAt": "2019-11-23T08:43:15.395Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "853614",
     "password": "<redacted>",
@@ -1117,7 +1117,7 @@
     "updatedAt": "2019-11-23T08:45:41.197Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "688782",
     "password": "<redacted>",
@@ -1153,7 +1153,7 @@
     "updatedAt": "2019-11-23T08:45:44.029Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "160466",
     "password": "<redacted>",
@@ -1174,7 +1174,7 @@
     "updatedAt": "2019-11-23T08:45:50.289Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "453521",
     "password": "<redacted>",
@@ -1189,7 +1189,7 @@
     "updatedAt": "2019-11-23T08:46:24.623Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "445485",
     "password": "<redacted>",
@@ -1230,7 +1230,7 @@
     "updatedAt": "2019-11-23T08:46:26.773Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "517920",
     "password": "<redacted>",
@@ -1256,7 +1256,7 @@
     "updatedAt": "2019-11-23T08:46:38.295Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "987972",
     "password": "<redacted>",
@@ -1271,7 +1271,7 @@
     "updatedAt": "2019-11-23T08:52:35.239Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "739339",
     "password": "<redacted>",
@@ -1307,7 +1307,7 @@
     "updatedAt": "2019-11-23T08:53:03.965Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "678400",
     "password": "<redacted>",
@@ -1338,7 +1338,7 @@
     "updatedAt": "2019-11-23T08:53:23.131Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "10753",
     "password": "<redacted>",
@@ -1394,7 +1394,7 @@
     "updatedAt": "2019-11-23T08:53:24.535Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "546302",
     "password": "<redacted>",
@@ -1420,7 +1420,7 @@
     "updatedAt": "2019-11-23T08:54:17.415Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "398250",
     "password": "<redacted>",
@@ -1466,7 +1466,7 @@
     "updatedAt": "2019-11-23T08:54:39.224Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "909236",
     "password": "<redacted>",
@@ -1481,7 +1481,7 @@
     "updatedAt": "2019-11-23T08:55:05.817Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "594488",
     "password": "<redacted>",
@@ -1502,7 +1502,7 @@
     "updatedAt": "2019-11-23T08:55:33.848Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "181695",
     "password": "<redacted>",
@@ -1528,7 +1528,7 @@
     "updatedAt": "2019-11-23T08:56:28.152Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "199718",
     "password": "<redacted>",
@@ -1569,7 +1569,7 @@
     "updatedAt": "2019-11-23T08:57:15.980Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "347449",
     "password": "<redacted>",
@@ -1590,7 +1590,7 @@
     "updatedAt": "2019-11-23T08:59:01.590Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "429617",
     "password": "<redacted>",
@@ -1621,7 +1621,7 @@
     "updatedAt": "2019-11-23T08:59:39.398Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "443481",
     "password": "<redacted>",
@@ -1647,7 +1647,7 @@
     "updatedAt": "2019-11-23T09:00:30.117Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "64848",
     "password": "<redacted>",
@@ -1662,7 +1662,7 @@
     "updatedAt": "2019-11-23T09:01:25.141Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "939380",
     "password": "<redacted>",
@@ -1677,7 +1677,7 @@
     "updatedAt": "2019-11-23T09:02:29.968Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "650130",
     "password": "<redacted>",
@@ -1698,7 +1698,7 @@
     "updatedAt": "2019-11-23T09:04:09.825Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "209553",
     "password": "<redacted>",
@@ -1734,7 +1734,7 @@
     "updatedAt": "2019-11-23T09:06:31.638Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "296219",
     "password": "<redacted>",
@@ -1765,7 +1765,7 @@
     "updatedAt": "2019-11-23T09:06:57.437Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "128635",
     "password": "<redacted>",
@@ -1791,7 +1791,7 @@
     "updatedAt": "2019-11-23T09:07:22.985Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "852796",
     "password": "<redacted>",
@@ -1827,7 +1827,7 @@
     "updatedAt": "2019-11-23T09:07:50.276Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "154753",
     "password": "<redacted>",
@@ -1858,7 +1858,7 @@
     "updatedAt": "2019-11-23T09:08:41.363Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "403440",
     "password": "<redacted>",
@@ -1889,7 +1889,7 @@
     "updatedAt": "2019-11-23T09:08:52.629Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "55040",
     "password": "<redacted>",
@@ -1915,7 +1915,7 @@
     "updatedAt": "2019-11-23T09:09:26.050Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "921995",
     "password": "<redacted>",
@@ -1951,7 +1951,7 @@
     "updatedAt": "2019-11-23T09:10:39.348Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "198475",
     "password": "<redacted>",
@@ -1966,7 +1966,7 @@
     "updatedAt": "2019-11-23T09:11:22.033Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "123498",
     "password": "<redacted>",
@@ -1992,7 +1992,7 @@
     "updatedAt": "2019-11-23T09:11:47.472Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "661687",
     "password": "<redacted>",
@@ -2013,7 +2013,7 @@
     "updatedAt": "2019-11-23T09:14:30.296Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "84899",
     "password": "<redacted>",
@@ -2049,7 +2049,7 @@
     "updatedAt": "2019-11-23T09:14:32.346Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "261992",
     "password": "<redacted>",
@@ -2070,7 +2070,7 @@
     "updatedAt": "2019-11-23T09:17:49.750Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "453727",
     "password": "<redacted>",
@@ -2096,7 +2096,7 @@
     "updatedAt": "2019-11-23T09:18:38.829Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "223532",
     "password": "<redacted>",
@@ -2111,7 +2111,7 @@
     "updatedAt": "2019-11-23T09:18:56.175Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "810673",
     "password": "<redacted>",
@@ -2132,7 +2132,7 @@
     "updatedAt": "2019-11-23T09:19:15.031Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "942120",
     "password": "<redacted>",
@@ -2178,7 +2178,7 @@
     "updatedAt": "2019-11-23T09:20:53.755Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "910850",
     "password": "<redacted>",
@@ -2214,7 +2214,7 @@
     "updatedAt": "2019-11-23T09:23:04.582Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "304534",
     "password": "<redacted>",
@@ -2240,7 +2240,7 @@
     "updatedAt": "2019-11-23T09:23:18.449Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "175872",
     "password": "<redacted>",
@@ -2261,7 +2261,7 @@
     "updatedAt": "2019-11-23T09:23:18.915Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "748511",
     "password": "<redacted>",
@@ -2282,7 +2282,7 @@
     "updatedAt": "2019-11-23T09:23:40.841Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "811618",
     "password": "<redacted>",
@@ -2303,7 +2303,7 @@
     "updatedAt": "2019-11-23T09:24:32.608Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "756592",
     "password": "<redacted>",
@@ -2324,7 +2324,7 @@
     "updatedAt": "2019-11-23T09:25:13.238Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "118972",
     "password": "<redacted>",
@@ -2345,7 +2345,7 @@
     "updatedAt": "2019-11-23T09:25:49.903Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "875033",
     "password": "<redacted>",
@@ -2366,7 +2366,7 @@
     "updatedAt": "2019-11-23T09:26:42.330Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "870780",
     "password": "<redacted>",
@@ -2387,7 +2387,7 @@
     "updatedAt": "2019-11-23T09:28:16.895Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "94605",
     "password": "<redacted>",
@@ -2413,7 +2413,7 @@
     "updatedAt": "2019-11-23T09:31:10.365Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "470851",
     "password": "<redacted>",
@@ -2428,7 +2428,7 @@
     "updatedAt": "2019-11-23T09:34:02.278Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "479680",
     "password": "<redacted>",
@@ -2449,7 +2449,7 @@
     "updatedAt": "2019-11-23T09:37:09.969Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "512376",
     "password": "<redacted>",
@@ -2464,7 +2464,7 @@
     "updatedAt": "2019-11-23T09:38:06.510Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "807733",
     "password": "<redacted>",
@@ -2479,7 +2479,7 @@
     "updatedAt": "2019-11-23T09:39:15.387Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "945279",
     "password": "<redacted>",
@@ -2494,7 +2494,7 @@
     "updatedAt": "2019-11-23T09:39:25.761Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "915840",
     "password": "<redacted>",
@@ -2530,7 +2530,7 @@
     "updatedAt": "2019-11-23T09:40:04.324Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "437989",
     "password": "<redacted>",
@@ -2545,7 +2545,7 @@
     "updatedAt": "2019-11-23T09:40:06.087Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "87449",
     "password": "<redacted>",
@@ -2560,7 +2560,7 @@
     "updatedAt": "2019-11-23T09:40:36.172Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "504178",
     "password": "<redacted>",
@@ -2575,7 +2575,7 @@
     "updatedAt": "2019-11-23T09:40:42.750Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "934897",
     "password": "<redacted>",
@@ -2590,7 +2590,7 @@
     "updatedAt": "2019-11-23T09:40:55.122Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "168609",
     "password": "<redacted>",
@@ -2616,7 +2616,7 @@
     "updatedAt": "2019-11-23T09:44:33.719Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "979986",
     "password": "<redacted>",
@@ -2637,7 +2637,7 @@
     "updatedAt": "2019-11-23T09:49:21.058Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "184561",
     "password": "<redacted>",
@@ -2678,7 +2678,7 @@
     "updatedAt": "2019-11-23T09:49:33.388Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "777072",
     "password": "<redacted>",
@@ -2699,7 +2699,7 @@
     "updatedAt": "2019-11-23T09:51:11.575Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "168408",
     "password": "<redacted>",
@@ -2714,7 +2714,7 @@
     "updatedAt": "2019-11-23T09:55:23.641Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "50252",
     "password": "<redacted>",
@@ -2775,7 +2775,7 @@
     "updatedAt": "2019-11-23T09:56:12.061Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "381256",
     "password": "<redacted>",
@@ -2796,7 +2796,7 @@
     "updatedAt": "2019-11-23T09:58:18.180Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "234646",
     "password": "<redacted>",
@@ -2817,7 +2817,7 @@
     "updatedAt": "2019-11-23T10:00:55.875Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "221831",
     "password": "<redacted>",
@@ -2848,7 +2848,7 @@
     "updatedAt": "2019-11-23T10:02:00.539Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "718112",
     "password": "<redacted>",
@@ -2869,7 +2869,7 @@
     "updatedAt": "2019-11-23T10:09:38.580Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "120792",
     "password": "<redacted>",
@@ -2884,7 +2884,7 @@
     "updatedAt": "2019-11-23T10:15:11.730Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "812720",
     "password": "<redacted>",
@@ -2899,7 +2899,7 @@
     "updatedAt": "2019-11-23T10:16:52.209Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "504684",
     "password": "<redacted>",
@@ -2925,7 +2925,7 @@
     "updatedAt": "2019-11-23T10:20:38.111Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "336637",
     "password": "<redacted>",
@@ -2940,7 +2940,7 @@
     "updatedAt": "2019-11-23T10:22:34.041Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "967510",
     "password": "<redacted>",
@@ -3006,7 +3006,7 @@
     "updatedAt": "2019-11-23T10:23:26.314Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "935201",
     "password": "<redacted>",
@@ -3027,7 +3027,7 @@
     "updatedAt": "2019-11-23T10:25:43.658Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "69770",
     "password": "<redacted>",
@@ -3063,7 +3063,7 @@
     "updatedAt": "2019-11-23T10:32:17.053Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "913097",
     "password": "<redacted>",
@@ -3124,7 +3124,7 @@
     "updatedAt": "2019-11-23T10:33:07.375Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "453871",
     "password": "<redacted>",
@@ -3165,7 +3165,7 @@
     "updatedAt": "2019-11-23T10:39:59.235Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "490276",
     "password": "<redacted>",
@@ -3196,7 +3196,7 @@
     "updatedAt": "2019-11-23T10:40:24.362Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "878345",
     "password": "<redacted>",
@@ -3211,7 +3211,7 @@
     "updatedAt": "2019-11-23T10:41:18.799Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "561874",
     "password": "<redacted>",
@@ -3237,7 +3237,7 @@
     "updatedAt": "2019-11-23T10:42:10.465Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "772525",
     "password": "<redacted>",
@@ -3263,7 +3263,7 @@
     "updatedAt": "2019-11-23T10:46:39.308Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "681392",
     "password": "<redacted>",
@@ -3319,7 +3319,7 @@
     "updatedAt": "2019-11-23T10:54:09.842Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "439607",
     "password": "<redacted>",
@@ -3350,7 +3350,7 @@
     "updatedAt": "2019-11-23T10:58:57.816Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "761762",
     "password": "<redacted>",
@@ -3381,7 +3381,7 @@
     "updatedAt": "2019-11-23T11:00:04.041Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "415207",
     "password": "<redacted>",
@@ -3402,7 +3402,7 @@
     "updatedAt": "2019-11-23T11:10:57.972Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "71835",
     "password": "<redacted>",
@@ -3417,7 +3417,7 @@
     "updatedAt": "2019-11-23T11:14:04.041Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "89746",
     "password": "<redacted>",
@@ -3443,7 +3443,7 @@
     "updatedAt": "2019-11-23T11:17:53.143Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "478621",
     "password": "<redacted>",
@@ -3458,7 +3458,7 @@
     "updatedAt": "2019-11-23T11:19:07.169Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "176868",
     "password": "<redacted>",
@@ -3479,7 +3479,7 @@
     "updatedAt": "2019-11-23T11:33:17.371Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "832790",
     "password": "<redacted>",
@@ -3505,7 +3505,7 @@
     "updatedAt": "2019-11-23T11:52:49.934Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "993288",
     "password": "<redacted>",
@@ -3531,7 +3531,7 @@
     "updatedAt": "2019-11-23T11:57:45.196Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "947246",
     "password": "<redacted>",
@@ -3546,7 +3546,7 @@
     "updatedAt": "2019-11-23T12:38:42.390Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "891283",
     "password": "<redacted>",
@@ -3567,7 +3567,7 @@
     "updatedAt": "2019-11-23T12:52:36.361Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "204871",
     "password": "<redacted>",
@@ -3598,7 +3598,7 @@
     "updatedAt": "2019-11-23T12:52:53.945Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "267806",
     "password": "<redacted>",
@@ -3624,7 +3624,7 @@
     "updatedAt": "2019-11-23T12:53:59.725Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "126294",
     "password": "<redacted>",
@@ -3639,7 +3639,7 @@
     "updatedAt": "2019-11-23T13:01:58.143Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "116365",
     "password": "<redacted>",
@@ -3660,7 +3660,7 @@
     "updatedAt": "2019-11-23T13:02:11.580Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "515948",
     "password": "<redacted>",
@@ -3681,7 +3681,7 @@
     "updatedAt": "2019-11-23T13:08:15.097Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "320747",
     "password": "<redacted>",
@@ -3702,7 +3702,7 @@
     "updatedAt": "2019-11-23T13:10:22.787Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "918978",
     "password": "<redacted>",
@@ -3723,7 +3723,7 @@
     "updatedAt": "2019-11-23T13:11:15.825Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "664987",
     "password": "<redacted>",
@@ -3738,7 +3738,7 @@
     "updatedAt": "2019-11-23T13:11:16.369Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "350157",
     "password": "<redacted>",
@@ -3753,7 +3753,7 @@
     "updatedAt": "2019-11-23T13:16:59.979Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "795536",
     "password": "<redacted>",
@@ -3779,7 +3779,7 @@
     "updatedAt": "2019-11-23T13:49:59.242Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "714443",
     "password": "<redacted>",
@@ -3794,7 +3794,7 @@
     "updatedAt": "2019-11-23T13:50:26.008Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "370718",
     "password": "<redacted>",
@@ -3815,7 +3815,7 @@
     "updatedAt": "2019-11-23T13:55:57.263Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "384501",
     "password": "<redacted>",
@@ -3856,7 +3856,7 @@
     "updatedAt": "2019-11-23T13:57:11.872Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "121812",
     "password": "<redacted>",
@@ -3887,7 +3887,7 @@
     "updatedAt": "2019-11-23T14:10:01.886Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "374688",
     "password": "<redacted>",
@@ -3908,7 +3908,7 @@
     "updatedAt": "2019-11-23T14:31:19.310Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "598430",
     "password": "<redacted>",
@@ -3923,7 +3923,7 @@
     "updatedAt": "2019-11-23T14:49:54.982Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "141377",
     "password": "<redacted>",
@@ -3938,7 +3938,7 @@
     "updatedAt": "2019-11-23T16:59:33.080Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "746036",
     "password": "<redacted>",
@@ -3959,7 +3959,7 @@
     "updatedAt": "2019-11-24T01:30:08.660Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "406688",
     "password": "<redacted>",
@@ -3980,7 +3980,7 @@
     "updatedAt": "2019-11-24T08:18:54.731Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "761262",
     "password": "<redacted>",
@@ -3995,7 +3995,7 @@
     "updatedAt": "2019-11-24T08:23:54.990Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "716482",
     "password": "<redacted>",
@@ -4016,7 +4016,7 @@
     "updatedAt": "2019-11-24T08:28:09.137Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "307275",
     "password": "<redacted>",
@@ -4042,7 +4042,7 @@
     "updatedAt": "2019-11-24T09:03:02.492Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "551140",
     "password": "<redacted>",
@@ -4063,7 +4063,7 @@
     "updatedAt": "2019-11-24T09:04:47.328Z"
   },
   {
-    "kompassiId": 0,
+    "kompassiId": "",
     "kompassiUsernameAccepted": false,
     "username": "330939",
     "password": "<redacted>",
