@@ -37,7 +37,7 @@ export const createAdminUser = async (password?: string): Promise<void> => {
       : unsafelyUnwrap(await hashPassword(password));
 
   const registrationData: NewUser = {
-    kompassiId: 0,
+    kompassiId: "",
     username: "admin",
     passwordHash,
     userGroup: UserGroup.ADMIN,
@@ -58,7 +58,7 @@ export const createHelpUser = async (password?: string): Promise<void> => {
       : unsafelyUnwrap(await hashPassword(password));
 
   const registrationData: NewUser = {
-    kompassiId: 0,
+    kompassiId: "",
     username: "helper",
     passwordHash,
     userGroup: UserGroup.HELPER,
@@ -82,7 +82,7 @@ const createTestUser = async ({
   const passwordHash = await getTestPasswordHash();
 
   const registrationData: NewUser = {
-    kompassiId: 0,
+    kompassiId: "",
     username: `test${userNumber}`,
     passwordHash,
     userGroup: UserGroup.USER,
@@ -124,7 +124,7 @@ const createUser = async ({
 
   const username = testUsers ? `group${userNumber}` : generateUsername();
   const registrationData: NewUser = {
-    kompassiId: 0,
+    kompassiId: "",
     username,
     passwordHash,
     userGroup: UserGroup.USER,

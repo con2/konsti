@@ -143,7 +143,7 @@ In Ropecon 2023-2024 and Tracon 2024, a handful of direct sign-up rows (12 in to
 ```jsonc
 [
   {
-    "kompassiId": 0, // See "kompassiId types" below
+    "kompassiId": "", // See "kompassiId values" below
     "kompassiUsernameAccepted": false, // true once a Kompassi login user has accepted their Konsti username
     "username": "123456",
     "password": "<redacted>", // "" if the account never had a password
@@ -189,7 +189,7 @@ Application settings dump. Not required for statistics.
 ## Conventions to know
 
 - **Group creator identification**: a user is the group creator iff `user.isGroupCreator === true` (a creator's `groupCode` is the group's own code). Regular members have `isGroupCreator: false`. In 2018-2023 dumps the `groupCode` equals the creator's `serial`; from 2024 onward it's an unrelated UUID-style string.
-- **`kompassiId` types**: `0` (number) means the user signed up with a registration code; `"<redacted>"` (string) means they used Kompassi OAuth. Both forms only co-exist in events whose `settings.json` has `loginProvider: "local+kompassi"` (Ropecon 2025 onward). Earlier events have a single value across all rows depending on the active login method.
+- **`kompassiId` values**: always a string. `""` means the user signed up with a registration code; `"<redacted>"` means they used a Kompassi account. Both forms only co-exist in events whose `settings.json` has `loginProvider: "local+kompassi"` (Ropecon 2025 onward). Earlier events have a single value across all rows depending on the active login method. This matches the live DB, which stores the Kompassi OIDC `sub` claim, or `""` for a local account.
 - **Popularity scale history**: Ropecon 2025 introduced the 5-bucket enum (`notSet`/`low`/`medium`/`high`/`veryHigh`/`extreme`). Pre-2025 dumps used a numeric scale that encoded only 3 buckets (`low` = under min attendance, `medium` = between min and max, `high` = at max), so normalized older dumps never carry `veryHigh` or `extreme`.
 - **Algorithm naming history**: `results.json` `algorithm` field is canonicalized to current names. `Opa` (in older `message` strings) was the older name for `padg`; `Group` was the older name for `random`. 2017 used `hungarian` (no longer in the codebase enum), and 2018 used `random`.
 - **Past-event configs**: [`shared/config/past-events/`](../../shared/config/past-events/) holds a `Partial<EventConfig>` per event. Files for 2017-2022 (Ropecon) and 2019 (Tracon Hitpoint) were reconstructed from the data files (not preserved from the live event) and carry a notice header.

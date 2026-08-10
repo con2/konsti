@@ -19,7 +19,7 @@ const initialState = (): LoginState => {
     serial: "",
     eventLogItems: [],
     kompassiUsernameAccepted: false,
-    kompassiId: 0,
+    kompassiId: "",
     email: "",
     emailNotificationPermitAsked: false,
   };

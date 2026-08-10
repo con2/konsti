@@ -23,7 +23,8 @@ export enum UserGroup {
 export type FavoriteProgramItemId = string;
 
 export interface User {
-  kompassiId: number;
+  // The Kompassi OIDC `sub` claim, or "" for a local account
+  kompassiId: string;
   kompassiUsernameAccepted: boolean;
   username: string;
   password: string;

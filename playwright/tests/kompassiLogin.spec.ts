@@ -3,6 +3,7 @@ import { populateDb, postSettings } from "playwright/playwrightUtils";
 import { LoginPage } from "playwright/pages/LoginPage";
 import { ProfilePage } from "playwright/pages/ProfilePage";
 import { LoginProvider } from "shared/config/eventConfigTypes";
+import { AuthEndpoint } from "shared/constants/apiEndpoints";
 
 test("Kompassi login", async ({ page, request }) => {
   await populateDb(request, { clean: true, users: true, admin: true });
@@ -130,6 +131,38 @@ test("Decline email notifications on the Kompassi finalize form", async ({
   await profilePage.navigation.gotoProfile();
   await expect(profilePage.emailNotificationsDisabled).toBeChecked();
   await expect(profilePage.emailInput).toHaveValue("");
+});
+
+// The state check is the only thing standing between a forged callback and a
+// minted session, and it lives entirely in the client
+test("Rejects a Kompassi callback that no login here started", async ({
+  page,
+  request,
+}) => {
+  await populateDb(request, { clean: true, users: true, admin: true });
+  await postSettings(request, { loginProvider: LoginProvider.KOMPASSI });
+
+  let codeExchanges = 0;
+  page.on("request", (pageRequest) => {
+    if (
+      pageRequest.method() === "POST" &&
+      pageRequest.url().includes(AuthEndpoint.KOMPASSI_LOGIN_CALLBACK)
+    ) {
+      codeExchanges += 1;
+    }
+  });
+
+  // No login was started in this tab, so nothing holds a matching state
+  await page.goto(
+    `${AuthEndpoint.KOMPASSI_LOGIN_CALLBACK}?code=forged-code&state=forged-state`,
+  );
+
+  const loginPage = new LoginPage(page);
+  await page.waitForURL(/login/);
+  await expect(loginPage.main).toContainText(/don't match/i);
+
+  // The code must never reach the server, whatever the UI ends up showing
+  expect(codeExchanges).toEqual(0);
 });
 
 test("Second Kompassi login skips the finalize form", async ({

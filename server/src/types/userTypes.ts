@@ -1,7 +1,7 @@
 import { UserGroup } from "shared/types/models/user";
 
 export interface NewUser {
-  kompassiId: number;
+  kompassiId: string;
   username: string;
   serial: string;
   passwordHash: string;

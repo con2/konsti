@@ -5,6 +5,7 @@ import {
   verifyKompassiLogin,
 } from "server/features/kompassi-login/kompassiLoginService";
 import {
+  PostKompassiLoginRedirectRequest,
   PostKompassiLoginRequest,
   PostVerifyKompassiLoginRequest,
 } from "shared/types/api/login";
@@ -12,7 +13,7 @@ import { getAuthUrl } from "server/features/kompassi-login/kompassiLoginUtils";
 import { getAuthUsername } from "server/middleware/requireAuth";
 
 export const postKompassiLoginRedirect = (
-  req: Request,
+  req: Request<unknown, unknown, PostKompassiLoginRedirectRequest>,
   res: Response,
 ): Response => {
   if (!req.headers.origin) {
@@ -20,7 +21,7 @@ export const postKompassiLoginRedirect = (
   }
 
   return res.status(302).json({
-    location: getAuthUrl(req.headers.origin),
+    location: getAuthUrl(req.headers.origin, req.body.state),
   });
 };
 

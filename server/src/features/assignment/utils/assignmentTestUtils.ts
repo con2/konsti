@@ -101,7 +101,7 @@ export const getUsers = ({
 
   for (let i = 0; i < count; i++) {
     const defaultUserValues = {
-      kompassiId: 0,
+      kompassiId: "",
       kompassiUsernameAccepted: false,
       password: "password",
       userGroup: UserGroup.USER,

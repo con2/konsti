@@ -8,7 +8,7 @@ A plain-language glossary of Konsti terms.
 - **Admin** - a user who manages the event in Konsti.
 - **Helper** - a shared account used by desk volunteers to help attendees at the event in person.
 - **Registration code** - a short unique code attached to each user. Some events require one at registration; helpers use it to find users.
-- **Kompassi account** - an external identity from Kompassi OAuth. Some events let users log in with their Kompassi account instead of a local password.
+- **Kompassi account** - an external identity from Kompassi OIDC. Some events let users log in with their Kompassi account instead of a local password.
 
 ## Program items
 

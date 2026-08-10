@@ -19,7 +19,7 @@ Run from the repo root as `yarn workspace server <script>` (or via the root shor
 - **`db/`** — `mongodb.ts` (connection lifecycle) and `mongoosePlugins.ts` (global plugins).
 - **`utils/`** — cross-cutting helpers: `server.ts` (Express app assembly), `logger.ts` (winston), `instrument.ts` (Sentry), `applyPortOffset.ts` (per-worktree `PORT_OFFSET` preload, see Scripts above), `cron.ts` (scheduled jobs), `notificationQueue.ts` (email queue), `jwt.ts`, `bcrypt.ts`, `authHeader.ts`, `zodUtils.ts`, etc.
 - **`types/`** — server-only types (`assignmentTypes.ts`, `jwtTypes.ts`, `serialTypes.ts`, `userTypes.ts`, `resultTypes.ts`, `declarations/`). Domain models live in `shared/types/models/`.
-- **`kompassi/`** — event-specific Kompassi OAuth/import logic (`ropecon/`, `tracon/`, etc.).
+- **`kompassi/`** — event-specific Kompassi program-item import logic (`ropecon/`, `tracon/`, etc.). Kompassi _login_ lives in `features/kompassi-login/`, not here.
 - **`test/`** — `globalSetup.ts` + `setupTests.ts`, `mock-data/`, `utils/` (test helpers), `test-data-generation/`, `kompassi-mock-service/` (registered only in `development`), `test-settings/`, `scripts/`.
 
 ## Build & Run Model
@@ -31,7 +31,7 @@ Run from the repo root as `yarn workspace server <script>` (or via the root shor
 ## Environment & Config
 
 - Two env vars drive configuration: **`NODE_ENV`** (`development` | `ci` | `staging` | `production` | `test`) and **`SETTINGS`** (selects the server config profile). Read config through `config.server()` / `config.event()` / `config.sentry()` from `shared/config` — see [shared/CLAUDE.md](../shared/CLAUDE.md).
-- `.env.development` (local), `.env.test` (test runs), `.env.sample` (template — copy and fill Kompassi OAuth creds; never commit secrets).
+- `.env.development` (local), `.env.test` (test runs), `.env.sample` (template — copy and fill Kompassi OIDC creds; never commit secrets).
 - Feature toggles like the cron jobs and time-mocking are config-gated (off in production for time-mocking, on for cron).
 
 ## Route & Middleware Conventions
@@ -95,7 +95,9 @@ When the unwrapped value is used **once**, inline `usersResult.value` at the use
 
 ## Authentication
 
-Local login (bcryptjs) and Kompassi OAuth. JWTs are signed/verified in `server/src/utils/jwt.ts` (per-role secret keys); the `Authorization: Bearer <jwt>` header is parsed in `utils/authHeader.ts` and enforced by `requireAuth`. User roles: admin, helper, regular user (`UserGroup` in `shared/types/models/user.ts`). The client stores the JWT in localStorage — see [client/CLAUDE.md](../client/CLAUDE.md).
+Local login (bcryptjs) and Kompassi OIDC (authorization code flow against `{KOMPASSI_BASE_URL}/oidc/authorize/` → `/oidc/token/` → `/oidc/userinfo/`; the `sub` claim is stored as `kompassiId`).
+
+**`kompassiId` must only ever meet a fresh database.** It holds the OIDC `sub` as a **string**, where the pre-OIDC code stored the legacy `/api/v2/people/me` numeric `id`. Both halves of that change break matching against rows written by the older code: Mongo queries are type-strict, so `findOne({kompassiId: "12"})` does not match a stored `12`, and `UserSchemaDb` now rejects a numeric `kompassiId` on every read — which fails `findUser`/`findUserByKompassiId`/session restore for **all** users, not just Kompassi ones. (Kompassi's own docs also call `sub` a different ID space from the legacy Person id, though the two values coincide in practice.) The per-event DB lifecycle already guarantees this, but a mid-event deploy against a populated DB, or a restored older dump, would silently re-create every Kompassi account with a fresh serial. Reset the local dev DB after pulling this. JWTs are signed/verified in `server/src/utils/jwt.ts` (per-role secret keys); the `Authorization: Bearer <jwt>` header is parsed in `utils/authHeader.ts` and enforced by `requireAuth`. User roles: admin, helper, regular user (`UserGroup` in `shared/types/models/user.ts`). The client stores the JWT in localStorage — see [client/CLAUDE.md](../client/CLAUDE.md).
 
 ## Rate Limiting
 
@@ -162,7 +164,7 @@ Non-obvious invariants when analysing the dumps:
 
 - **Sign-up priority semantics** (`direct-signups.json` `userSignups[].priority`, `results.json` `assignmentSignup.priority`): `0` = first-come-first-served direct sign-up; `1`/`2`/`3` = lottery win at that preference. 2017–2019 events have only `1`/`2`/`3` (lottery-only era); 2021 Ropecon has only `0` (remote / COVID, direct sign-up only); 2022+ events mix both.
 - **Group creator identification**: a user is the group creator iff `user.isGroupCreator === true` (a creator's `groupCode` is the group's own code). Regular members have `isGroupCreator: false`. In 2018–2023 dumps the `groupCode` happens to equal the creator's `serial`; from 2024 onward it's a UUID-style string.
-- **`kompassiId` types**: `0` (number) means registration-code user, `"<redacted>"` (string) means Kompassi-OAuth user. The split only exists in events with `loginProvider: "local+kompassi"` (Ropecon 2025+); single-method events have one value across all rows.
+- **`kompassiId` values**: always a string — `""` means registration-code user, `"<redacted>"` means Kompassi-OIDC user. The split only exists in events with `loginProvider: "local+kompassi"` (Ropecon 2025+); single-method events have one value across all rows. This matches the live DB, which stores the OIDC `sub` claim or `""`.
 - **`popularity` scale history**: Ropecon 2025 introduced the 5-bucket enum (`notSet`/`low`/`medium`/`high`/`veryHigh`/`extreme`). Earlier dumps used a numeric scale that only encoded 3 buckets (`low` = under min attendance, `medium` = between, `high` = at max), so older normalized dumps never have `veryHigh` or `extreme`.
 - **`lotterySignups[]` schema** (in `users.json`): `{programItemId, priority, signedToStartTime}` — no `message` field. Direct-signup `userSignups[]` does include `message`.
 - **Algorithm naming history**: `algorithm` field is canonicalized — `Opa` was the older name for `padg`, `Group` was the older name for `random`. 2017 used `hungarian` (no longer in the codebase enum).

@@ -124,9 +124,8 @@ export const anonymizeData = async (
     user.username = randomUsername;
     // Kompassi login users have no local password
     user.password =
-      user.password === "" || user.kompassiId !== 0 ? "" : "<redacted>";
-    // @ts-expect-error -- Use invalid type for clarity
-    user.kompassiId = user.kompassiId === 0 ? 0 : "<redacted>";
+      user.password === "" || user.kompassiId !== "" ? "" : "<redacted>";
+    user.kompassiId = user.kompassiId === "" ? "" : "<redacted>";
     user.email = user.email === "" ? "" : "<redacted>";
   }
 

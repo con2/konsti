@@ -55,7 +55,7 @@ export interface LoginState {
   serial: string;
   eventLogItems: EventLogItem[];
   kompassiUsernameAccepted: boolean;
-  kompassiId: number;
+  kompassiId: string;
   email: string;
   emailNotificationPermitAsked: boolean;
 }

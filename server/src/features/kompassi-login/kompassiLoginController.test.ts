@@ -12,16 +12,19 @@ import {
   PostVerifyKompassiLoginRequest,
   PostVerifyKompassiLoginResult,
 } from "shared/types/api/login";
+// eslint-disable-next-line import-x/no-namespace -- Spying on a module export needs the namespace object
+import * as userRepository from "server/features/user/userRepository";
 import {
   findUser,
   findUserByKompassiId,
   saveUser,
 } from "server/features/user/userRepository";
+import { makeSuccessResult } from "shared/utils/result";
 import { mockUser, mockUser2 } from "server/test/mock-data/mockUser";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import {
-  KompassiProfile,
   KompassiTokens,
+  KompassiUserinfo,
 } from "server/features/kompassi-login/KompassiLoginTypes";
 
 let server: Server;
@@ -42,33 +45,31 @@ const mockKompassiTokens: KompassiTokens = {
   access_token: "test-access-token",
   expires_in: 3600,
   token_type: "Bearer",
-  scope: "read",
+  scope: "openid profile email",
   refresh_token: "test-refresh-token",
+  id_token: "test-id-token",
 };
 
-const mockKompassiProfile: KompassiProfile = {
-  id: 42,
-  first_name: "Test",
-  surname: "Person",
-  nick: "tester",
-  full_name: "Test Person",
-  display_name: "Test Person",
-  preferred_name_display_style: "firstname_surname",
+const mockKompassiUserinfo: KompassiUserinfo = {
+  sub: "42",
   email: "kompassi-user@example.com",
-  birth_date: null,
-  phone: "",
-  username: "kompassi_user",
+  name: 'Test "Tester" Person',
+  given_name: "Test",
+  family_name: "Person",
   groups: ["users"],
 };
 
-const mockKompassiFetch = (profile: KompassiProfile): void => {
+// The nick quoted in the name claim, which is what the username is derived from
+const derivedUsername = "Tester";
+
+const mockKompassiFetch = (userinfo: KompassiUserinfo): void => {
   vi.spyOn(globalThis, "fetch").mockImplementation((input) => {
     const url = input instanceof Request ? input.url : input.toString();
-    if (url.endsWith("/oauth2/token")) {
+    if (url.endsWith("/oidc/token/")) {
       return Promise.resolve(Response.json(mockKompassiTokens));
     }
-    if (url.endsWith("/api/v2/people/me")) {
-      return Promise.resolve(Response.json(profile));
+    if (url.endsWith("/oidc/userinfo/")) {
+      return Promise.resolve(Response.json(userinfo));
     }
     return Promise.reject(new Error(`Unexpected fetch to ${url}`));
   });
@@ -129,7 +130,7 @@ describe(`POST ${ApiEndpoint.VERIFY_KOMPASSI_LOGIN}`, () => {
   });
 
   test("should update old username with new username", async () => {
-    await saveUser({ ...mockUser, kompassiId: 10 });
+    await saveUser({ ...mockUser, kompassiId: "10" });
 
     const requestBody: PostVerifyKompassiLoginRequest = {
       username: "new_username",
@@ -147,12 +148,12 @@ describe(`POST ${ApiEndpoint.VERIFY_KOMPASSI_LOGIN}`, () => {
     expect(body.status).toEqual("success");
 
     const user = unsafelyUnwrap(await findUser("new_username"));
-    expect(user?.kompassiId).toEqual(10);
+    expect(user?.kompassiId).toEqual("10");
     expect(user?.kompassiUsernameAccepted).toEqual(true);
   });
 
   test("should return error if username already taken", async () => {
-    await saveUser({ ...mockUser, kompassiId: 10 });
+    await saveUser({ ...mockUser, kompassiId: "10" });
     await saveUser(mockUser2);
 
     const requestBody: PostVerifyKompassiLoginRequest = {
@@ -175,7 +176,7 @@ describe(`POST ${ApiEndpoint.VERIFY_KOMPASSI_LOGIN}`, () => {
   });
 
   test("should not check for existing username if username not changed", async () => {
-    await saveUser({ ...mockUser, kompassiId: 10 });
+    await saveUser({ ...mockUser, kompassiId: "10" });
 
     const requestBody: PostVerifyKompassiLoginRequest = {
       username: mockUser.username,
@@ -194,26 +195,39 @@ describe(`POST ${ApiEndpoint.VERIFY_KOMPASSI_LOGIN}`, () => {
     expect(body.status).toEqual("success");
 
     const user = unsafelyUnwrap(await findUser(mockUser.username));
-    expect(user?.kompassiId).toEqual(10);
+    expect(user?.kompassiId).toEqual("10");
     expect(user?.kompassiUsernameAccepted).toEqual(true);
   });
 });
 
 describe(`POST ${AuthEndpoint.KOMPASSI_LOGIN}`, () => {
   test("should return 422 without origin header", async () => {
-    const response = await request(server).post(AuthEndpoint.KOMPASSI_LOGIN);
+    const response = await request(server)
+      .post(AuthEndpoint.KOMPASSI_LOGIN)
+      .send({ state: "test-state" });
+    expect(response.status).toEqual(422);
+  });
+
+  test("should return 422 without state", async () => {
+    const response = await request(server)
+      .post(AuthEndpoint.KOMPASSI_LOGIN)
+      .set("Origin", "http://localhost:8000")
+      .send({});
     expect(response.status).toEqual(422);
   });
 
   test("should return 302 with the authorize redirect location", async () => {
     const response = await request(server)
       .post(AuthEndpoint.KOMPASSI_LOGIN)
-      .set("Origin", "http://localhost:8000");
+      .set("Origin", "http://localhost:8000")
+      .send({ state: "test-state" });
 
     expect(response.status).toEqual(302);
     const body = response.body as { location: string };
-    expect(body.location).toContain("/oauth2/authorize");
+    expect(body.location).toContain("/oidc/authorize/");
     expect(body.location).toContain("response_type=code");
+    expect(body.location).toContain("scope=openid+profile+email");
+    expect(body.location).toContain("state=test-state");
   });
 });
 
@@ -234,7 +248,7 @@ describe(`POST ${AuthEndpoint.KOMPASSI_LOGIN_CALLBACK}`, () => {
   });
 
   test("should create new user and log in on first Kompassi login", async () => {
-    mockKompassiFetch(mockKompassiProfile);
+    mockKompassiFetch(mockKompassiUserinfo);
 
     const response = await postKompassiLoginCallback(server);
     expect(response.status).toEqual(200);
@@ -242,24 +256,37 @@ describe(`POST ${AuthEndpoint.KOMPASSI_LOGIN_CALLBACK}`, () => {
     const body = response.body as PostKompassiLoginResponse;
     expect(body).toMatchObject({
       status: "success",
-      username: mockKompassiProfile.username,
+      username: derivedUsername,
       userGroup: UserGroup.USER,
       kompassiUsernameAccepted: false,
-      kompassiId: mockKompassiProfile.id,
-      email: mockKompassiProfile.email,
+      kompassiId: mockKompassiUserinfo.sub,
+      email: mockKompassiUserinfo.email,
     });
     expect((body as { jwt: string }).jwt).not.toEqual("");
 
     const user = unsafelyUnwrap(
-      await findUserByKompassiId(mockKompassiProfile.id),
+      await findUserByKompassiId(mockKompassiUserinfo.sub),
     );
-    expect(user?.username).toEqual(mockKompassiProfile.username);
+    expect(user?.username).toEqual(derivedUsername);
     expect(user?.serial).not.toEqual("");
   });
 
+  test("should fall back to given name when the name claim has no nick", async () => {
+    mockKompassiFetch({ ...mockKompassiUserinfo, name: "Test Person" });
+
+    const response = await postKompassiLoginCallback(server);
+    expect(response.status).toEqual(200);
+
+    const body = response.body as PostKompassiLoginResponse;
+    expect(body).toMatchObject({
+      status: "success",
+      username: mockKompassiUserinfo.given_name,
+    });
+  });
+
   test("should log in existing user with matching kompassiId", async () => {
-    await saveUser({ ...mockUser, kompassiId: mockKompassiProfile.id });
-    mockKompassiFetch(mockKompassiProfile);
+    await saveUser({ ...mockUser, kompassiId: mockKompassiUserinfo.sub });
+    mockKompassiFetch(mockKompassiUserinfo);
 
     const response = await postKompassiLoginCallback(server);
     expect(response.status).toEqual(200);
@@ -269,13 +296,13 @@ describe(`POST ${AuthEndpoint.KOMPASSI_LOGIN_CALLBACK}`, () => {
       status: "success",
       username: mockUser.username,
       serial: mockUser.serial,
-      kompassiId: mockKompassiProfile.id,
+      kompassiId: mockKompassiUserinfo.sub,
     });
   });
 
-  test("should append kompassiId to username if username is already taken", async () => {
-    await saveUser({ ...mockUser, username: mockKompassiProfile.username });
-    mockKompassiFetch(mockKompassiProfile);
+  test("should append the Kompassi id to username if username is already taken", async () => {
+    await saveUser({ ...mockUser, username: derivedUsername });
+    mockKompassiFetch(mockKompassiUserinfo);
 
     const response = await postKompassiLoginCallback(server);
     expect(response.status).toEqual(200);
@@ -283,12 +310,71 @@ describe(`POST ${AuthEndpoint.KOMPASSI_LOGIN_CALLBACK}`, () => {
     const body = response.body as PostKompassiLoginResponse;
     expect(body).toMatchObject({
       status: "success",
-      username: `${mockKompassiProfile.username}-${mockKompassiProfile.id}`,
+      username: `${derivedUsername}-${mockKompassiUserinfo.sub}`,
     });
   });
 
+  // An empty username saves fine but its JWT fails every authenticated
+  // request, so the account would be unusable and unrecoverable
+  test("should never derive an empty username", async () => {
+    mockKompassiFetch({
+      ...mockKompassiUserinfo,
+      name: "",
+      given_name: "",
+      email: "",
+    });
+
+    const response = await postKompassiLoginCallback(server);
+    expect(response.status).toEqual(200);
+
+    const body = response.body as PostKompassiLoginResponse;
+    expect(body).toMatchObject({
+      status: "success",
+      username: `kompassi-${mockKompassiUserinfo.sub}`,
+    });
+  });
+
+  // Two logins deriving the same nick race between the free-username check and
+  // the save. saveUser stores the row before validating it, so retrying after
+  // anything but a rejected unique index would create a second account
+  test("should retry with a unique username when the name is taken between the check and the save", async () => {
+    mockKompassiFetch(mockKompassiUserinfo);
+    // The username is free at check time and taken by the time we save
+    vi.spyOn(userRepository, "findUser").mockResolvedValueOnce(
+      makeSuccessResult(null),
+    );
+    await saveUser({ ...mockUser, username: derivedUsername });
+
+    const response = await postKompassiLoginCallback(server);
+    expect(response.status).toEqual(200);
+
+    const body = response.body as PostKompassiLoginResponse;
+    expect(body).toMatchObject({
+      status: "success",
+      username: `${derivedUsername}-${mockKompassiUserinfo.sub}`,
+    });
+
+    const users = unsafelyUnwrap(await userRepository.findUsers());
+    expect(
+      users.filter((user) => user.kompassiId === mockKompassiUserinfo.sub),
+    ).toHaveLength(1);
+  });
+
+  test("should not log in when the sub claim is empty", async () => {
+    mockKompassiFetch({ ...mockKompassiUserinfo, sub: "" });
+
+    const response = await postKompassiLoginCallback(server);
+    expect(response.status).toEqual(200);
+
+    const body = response.body as PostKompassiLoginResponse;
+    expect(body).toMatchObject({ status: "error", errorId: "unknown" });
+  });
+
   test("should not log in user without accepted access group", async () => {
-    mockKompassiFetch({ ...mockKompassiProfile, groups: ["some-other-group"] });
+    mockKompassiFetch({
+      ...mockKompassiUserinfo,
+      groups: ["some-other-group"],
+    });
 
     const response = await postKompassiLoginCallback(server);
     expect(response.status).toEqual(200);
@@ -300,7 +386,7 @@ describe(`POST ${AuthEndpoint.KOMPASSI_LOGIN_CALLBACK}`, () => {
     });
 
     const user = unsafelyUnwrap(
-      await findUserByKompassiId(mockKompassiProfile.id),
+      await findUserByKompassiId(mockKompassiUserinfo.sub),
     );
     expect(user).toEqual(null);
   });

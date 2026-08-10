@@ -116,7 +116,7 @@ export const storeUser = async (
 
       if (passwordHash) {
         const saveUserResponseResult = await saveUser({
-          kompassiId: 0,
+          kompassiId: "",
           username,
           passwordHash,
           serial,
