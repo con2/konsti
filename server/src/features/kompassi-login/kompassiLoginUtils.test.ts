@@ -20,6 +20,17 @@ describe("deriveKonstiUsername", () => {
     expect(deriveKonstiUsername(userinfo)).toEqual("Nickname");
   });
 
+  // Without this the nick is missed and the real given name becomes the
+  // default public username
+  test("should use a nick quoted with typographic quotes", () => {
+    expect(
+      deriveKonstiUsername({
+        ...userinfo,
+        name: "Firstname “Nickname” Surname",
+      }),
+    ).toEqual("Nickname");
+  });
+
   test("should fall back to the given name when the name has no quoted nick", () => {
     expect(
       deriveKonstiUsername({ ...userinfo, name: "Firstname Surname" }),

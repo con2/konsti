@@ -360,6 +360,28 @@ describe(`POST ${AuthEndpoint.KOMPASSI_LOGIN_CALLBACK}`, () => {
     ).toHaveLength(1);
   });
 
+  // Kompassi accepts addresses Konsti's stored-email format rejects, and that
+  // format is checked on read - storing one would make the account unreadable,
+  // so the user could never log in again
+  test("should store no email when Kompassi's address is one Konsti cannot store", async () => {
+    mockKompassiFetch({
+      ...mockKompassiUserinfo,
+      email: "o'connor@example.com",
+    });
+
+    const response = await postKompassiLoginCallback(server);
+    expect(response.status).toEqual(200);
+
+    const body = response.body as PostKompassiLoginResponse;
+    expect(body).toMatchObject({ status: "success", email: "" });
+
+    // Readable back out, which is the whole point
+    const user = unsafelyUnwrap(
+      await findUserByKompassiId(mockKompassiUserinfo.sub),
+    );
+    expect(user?.email).toEqual("");
+  });
+
   test("should not log in when the sub claim is empty", async () => {
     mockKompassiFetch({ ...mockKompassiUserinfo, sub: "" });
 

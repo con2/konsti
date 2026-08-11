@@ -4,6 +4,7 @@ import { LoginPage } from "playwright/pages/LoginPage";
 import { ProfilePage } from "playwright/pages/ProfilePage";
 import { LoginProvider } from "shared/config/eventConfigTypes";
 import { AuthEndpoint } from "shared/constants/apiEndpoints";
+import { kompassiLoginStateKey } from "shared/constants/browserStorage";
 
 test("Kompassi login", async ({ page, request }) => {
   await populateDb(request, { clean: true, users: true, admin: true });
@@ -163,6 +164,68 @@ test("Rejects a Kompassi callback that no login here started", async ({
 
   // The code must never reach the server, whatever the UI ends up showing
   expect(codeExchanges).toEqual(0);
+});
+
+// The forged-callback test above covers arriving with nothing stored. This is
+// the other branch: a login was started here, but the state coming back is not
+// the one it started with
+test("Rejects a Kompassi callback whose state does not match the stored one", async ({
+  page,
+  request,
+}) => {
+  await populateDb(request, { clean: true, users: true, admin: true });
+  await postSettings(request, { loginProvider: LoginProvider.KOMPASSI });
+
+  let codeExchanges = 0;
+  page.on("request", (pageRequest) => {
+    if (
+      pageRequest.method() === "POST" &&
+      pageRequest.url().includes(AuthEndpoint.KOMPASSI_LOGIN_CALLBACK)
+    ) {
+      codeExchanges += 1;
+    }
+  });
+
+  await page.goto("/");
+  await page.evaluate((key) => {
+    sessionStorage.setItem(key, "the-state-we-started-with");
+  }, kompassiLoginStateKey);
+
+  await page.goto(
+    `${AuthEndpoint.KOMPASSI_LOGIN_CALLBACK}?code=forged-code&state=some-other-state`,
+  );
+
+  const loginPage = new LoginPage(page);
+  await page.waitForURL(/login/);
+  await expect(loginPage.main).toContainText(/don't match/i);
+  expect(codeExchanges).toEqual(0);
+});
+
+// The state has to be single use, or a denied login leaves one behind that a
+// later forged callback could satisfy
+test("Drops the stored login state when Kompassi returns an error", async ({
+  page,
+  request,
+}) => {
+  await populateDb(request, { clean: true, users: true, admin: true });
+  await postSettings(request, { loginProvider: LoginProvider.KOMPASSI });
+
+  await page.goto("/");
+  await page.evaluate((key) => {
+    sessionStorage.setItem(key, "the-state-we-started-with");
+  }, kompassiLoginStateKey);
+
+  // What Kompassi sends back when the user declines, or has no verified email
+  await page.goto(
+    `${AuthEndpoint.KOMPASSI_LOGIN_CALLBACK}?error=access_denied&state=the-state-we-started-with`,
+  );
+  await page.waitForURL(/login/);
+
+  const storedState = await page.evaluate(
+    (key) => sessionStorage.getItem(key),
+    kompassiLoginStateKey,
+  );
+  expect(storedState).toBeNull();
 });
 
 test("Second Kompassi login skips the finalize form", async ({
