@@ -9,7 +9,7 @@ import { getProgramTypeSelectOptions } from "client/utils/getProgramTypeSelectOp
 import { Locale } from "shared/types/locale";
 import {
   appUpdateReloadedBuildTimeKey,
-  browserStoragePrefix,
+  browserStorageEventPrefix,
   kompassiLoginStateKey,
   localStorageStateKey,
 } from "shared/constants/browserStorage";
@@ -86,7 +86,8 @@ export const clearSession = (): void => {
   ]);
   const sessionKeys = Object.keys(sessionStorage).filter(
     (key) =>
-      key.startsWith(`${browserStoragePrefix}-`) && !preservedKeys.has(key),
+      key.startsWith(`${browserStorageEventPrefix}-`) &&
+      !preservedKeys.has(key),
   );
   for (const sessionKey of sessionKeys) {
     sessionStorage.removeItem(sessionKey);
@@ -96,7 +97,7 @@ export const clearSession = (): void => {
 // Dismissed admin message is stored separately from the zod-strict 'state' object so a public
 // (logged-out) visitor can remember their dismissal without a session. We store the dismissed
 // message text itself, so a new or edited admin message no longer matches and shows again
-const dismissedAdminMessageKey = `${browserStoragePrefix}-dismissedAdminMessage`;
+const dismissedAdminMessageKey = `${browserStorageEventPrefix}-dismissedAdminMessage`;
 
 export const getDismissedAdminMessage = (): string => {
   return localStorage.getItem(dismissedAdminMessageKey) ?? "";

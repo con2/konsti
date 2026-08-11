@@ -4,19 +4,19 @@ import { AgeGroup, Language, Tag } from "shared/types/models/programItem";
 import { StringToJsonSchema } from "client/utils/zodUtils";
 import {
   appUpdateReloadedBuildTimeKey,
-  browserStoragePrefix,
+  browserStorageEventPrefix,
   kompassiLoginStateKey,
 } from "shared/constants/browserStorage";
 
 // A const object instead of an enum because enum members can't hold the
 // computed event-specific prefix
 export const SessionStorageValue = {
-  ALL_PROGRAM_ITEMS_SEARCH_TERM: `${browserStoragePrefix}-allProgramItemsSearchTerm`,
-  ALL_PROGRAM_ITEMS_TAG: `${browserStoragePrefix}-allProgramItemsTag`,
-  ALL_PROGRAM_ITEMS_SELECTED_VIEW: `${browserStoragePrefix}-allProgramItemsSelectedView`,
-  ALL_PROGRAM_ITEMS_STARTING_TIME: `${browserStoragePrefix}-allProgramItemsStartingTime`,
-  ALL_PROGRAM_ITEMS_HIDE_FULL: `${browserStoragePrefix}-allProgramItemsHideFull`,
-  MY_PROGRAM_ITEMS_SHOW_ALL_PROGRAM_ITEMS: `${browserStoragePrefix}-myProgramItemsShowAllProgramItems`,
+  ALL_PROGRAM_ITEMS_SEARCH_TERM: `${browserStorageEventPrefix}-allProgramItemsSearchTerm`,
+  ALL_PROGRAM_ITEMS_TAG: `${browserStorageEventPrefix}-allProgramItemsTag`,
+  ALL_PROGRAM_ITEMS_SELECTED_VIEW: `${browserStorageEventPrefix}-allProgramItemsSelectedView`,
+  ALL_PROGRAM_ITEMS_STARTING_TIME: `${browserStorageEventPrefix}-allProgramItemsStartingTime`,
+  ALL_PROGRAM_ITEMS_HIDE_FULL: `${browserStorageEventPrefix}-allProgramItemsHideFull`,
+  MY_PROGRAM_ITEMS_SHOW_ALL_PROGRAM_ITEMS: `${browserStorageEventPrefix}-myProgramItemsShowAllProgramItems`,
   APP_UPDATE_RELOADED_BUILD_TIME: appUpdateReloadedBuildTimeKey,
   KOMPASSI_LOGIN_STATE: kompassiLoginStateKey,
 } as const;

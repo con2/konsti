@@ -6,7 +6,7 @@ import { useAppSelector } from "client/utils/hooks";
 import { isAdminOrHelper } from "client/utils/checkUserGroup";
 import { DismissibleBanner } from "client/components/DismissibleBanner";
 import { HighlightStyle } from "client/components/RaisedCard";
-import { browserStoragePrefix } from "shared/constants/browserStorage";
+import { browserStorageEventPrefix } from "shared/constants/browserStorage";
 import { formatSerial } from "shared/utils/formatSerial";
 
 const firstLoginValue = "firstLogin";
@@ -38,7 +38,7 @@ export const FirstLogin = (): ReactElement | null => {
       return;
     }
 
-    const firstLoginKey = `${browserStoragePrefix}-firstLogin-${username}`;
+    const firstLoginKey = `${browserStorageEventPrefix}-firstLogin-${username}`;
     const firstLogin = getFirstLoginState(firstLoginKey);
 
     if (firstLogin === null) {
