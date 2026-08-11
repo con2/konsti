@@ -5,6 +5,7 @@ import { ProgramType } from "shared/types/models/programItem";
 import {
   appUpdateReloadedBuildTimeKey,
   browserStoragePrefix,
+  kompassiLoginStateKey,
   localStorageStateKey,
 } from "shared/constants/browserStorage";
 
@@ -38,12 +39,13 @@ describe("loadSession", () => {
 });
 
 describe("clearSession", () => {
-  test("should drop this event's session keys but keep the update reload guard", () => {
+  test("should drop this event's session keys but keep the ones that must outlive a logout", () => {
     const searchTermKey = `${browserStoragePrefix}-allProgramItemsSearchTerm`;
 
     localStorage.setItem(localStorageStateKey, "session");
     sessionStorage.setItem(searchTermKey, "dragons");
     sessionStorage.setItem(appUpdateReloadedBuildTimeKey, "1700000000");
+    sessionStorage.setItem(kompassiLoginStateKey, "login-state");
     sessionStorage.setItem("unrelated", "keep");
 
     clearSession();
@@ -55,6 +57,10 @@ describe("clearSession", () => {
     expect(sessionStorage.getItem(appUpdateReloadedBuildTimeKey)).toBe(
       "1700000000",
     );
+    // A logout between starting a Kompassi login and its callback would
+    // otherwise leave nothing to check the returned state against, and the
+    // login would reject itself
+    expect(sessionStorage.getItem(kompassiLoginStateKey)).toBe("login-state");
     expect(sessionStorage.getItem("unrelated")).toBe("keep");
   });
 });
