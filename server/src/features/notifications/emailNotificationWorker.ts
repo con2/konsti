@@ -2,6 +2,7 @@ import {
   NotificationTask,
   NotificationTaskType,
 } from "server/utils/notificationQueue";
+import { EMAIL_REGEX } from "shared/constants/validation";
 import {
   buildEmail,
   EmailMessage,
@@ -43,10 +44,7 @@ export async function emailNotificationWorker(
       return;
     }
 
-    if (
-      !user.email ||
-      !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(user.email)
-    ) {
+    if (!user.email || !EMAIL_REGEX.test(user.email)) {
       return;
     }
 

@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { StoredEmailSchema } from "shared/constants/validation";
 import { ApiError, ApiResult } from "shared/types/api/errors";
 import { UserGroup } from "shared/types/models/user";
 import { EventLogItem } from "shared/types/models/eventLog";
@@ -115,20 +116,7 @@ export type PostVerifyKompassiLoginResponse =
 // POST Update user email address
 
 export const PostUpdateUserEmailAddressRequestSchema = z.object({
-  email: z
-    .string()
-    .trim()
-    .refine(
-      (email) => {
-        // Allow empty string (for unsubscribe)
-        if (email === "") return true;
-        // Validate email format if not empty
-        return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
-      },
-      {
-        message: "Invalid email format",
-      },
-    ),
+  email: z.string().trim().pipe(StoredEmailSchema),
 });
 
 export type PostUpdateUserEmailAddressRequest = z.infer<

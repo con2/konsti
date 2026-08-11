@@ -364,9 +364,11 @@ describe(`POST ${AuthEndpoint.KOMPASSI_LOGIN_CALLBACK}`, () => {
   // format is checked on read - storing one would make the account unreadable,
   // so the user could never log in again
   test("should store no email when Kompassi's address is one Konsti cannot store", async () => {
+    // Konsti's email format is ASCII only, so a non-ASCII address is accepted
+    // by Kompassi and rejected here
     mockKompassiFetch({
       ...mockKompassiUserinfo,
-      email: "o'connor@example.com",
+      email: "käyttäjä@example.com",
     });
 
     const response = await postKompassiLoginCallback(server);

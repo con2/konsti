@@ -5,10 +5,10 @@ import { Button, ButtonStyle } from "client/components/Button";
 import { useAppDispatch } from "client/utils/hooks";
 import { submitUpdateUserEmailAddress } from "client/views/login/loginThunks";
 import {
-  EMAIL_REGEX,
   EmailNotificationField,
   StyledEmailInput,
 } from "client/components/EmailNotificationField";
+import { EMAIL_REGEX } from "shared/constants/validation";
 
 interface Props {
   email: string;

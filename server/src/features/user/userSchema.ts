@@ -4,7 +4,7 @@ import { z } from "zod";
 import dayjs from "dayjs";
 import { EventLogAction } from "shared/types/models/eventLog";
 import { UserGroup } from "shared/types/models/user";
-import { EMAIL_REGEX } from "shared/constants/validation";
+import { StoredEmailSchema } from "shared/constants/validation";
 
 const LotterySignupSchemaDb = z.object({
   programItemId: z.string(),
@@ -35,17 +35,7 @@ export const UserSchemaDb = z
     lotterySignups: z.array(LotterySignupSchemaDb),
     createdAt: z.date().transform((date) => dayjs(date).toISOString()),
     eventLogItems: z.array(EventLogItemSchemaDb),
-    email: z.string().refine(
-      (email) => {
-        // Allow empty string (for unsubscribe)
-        if (email === "") return true;
-        // Validate email format if not empty
-        return EMAIL_REGEX.test(email);
-      },
-      {
-        message: "Invalid email format",
-      },
-    ),
+    email: StoredEmailSchema,
     emailNotificationPermitAsked: z.boolean(),
   })
   .strip();
