@@ -219,9 +219,10 @@ export const doKompassiLogin = async (
   const newUser = {
     kompassiId: userinfo.sub,
     serial,
-    // Kompassi accepts addresses that Konsti's stored-email format rejects, and
-    // that check runs on read - keeping one would make the account unreadable
-    // and so unloggable-into. The finalize form asks for an address anyway
+    // Kompassi accepts addresses that Konsti's stored-email format rejects,
+    // and that format is checked on read: keeping one would make the account
+    // unreadable, and so impossible to log into again. The finalize form asks
+    // every new Kompassi user for an address anyway
     email: EMAIL_REGEX.test(userinfo.email) ? userinfo.email : "",
     passwordHash: "",
     userGroup: UserGroup.USER,
@@ -230,8 +231,7 @@ export const doKompassiLogin = async (
 
   // The username is only a starting point: the user confirms or replaces it
   // before they can do anything else, so a collision just needs a suffix
-  // unique to this account. Not the serial - that's the registration code,
-  // and other group members can read each other's usernames
+  // unique to this account.
   const uniqueUsername = addKompassiIdSuffix(derivedUsername, userinfo.sub);
 
   let saveUserResult = await saveUser({

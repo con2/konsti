@@ -14,6 +14,7 @@ import {
 import { ErrorMessage } from "client/components/ErrorMessage";
 import { UncontrolledInput } from "client/components/UncontrolledInput";
 import {
+  EMAIL_REGEX,
   USERNAME_LENGTH_MAX,
   USERNAME_LENGTH_MIN,
 } from "shared/constants/validation";
@@ -21,7 +22,6 @@ import { navigateToPreviousOrRoot } from "client/utils/navigation";
 import { PrivacyNotice } from "client/components/PrivacyNotice";
 import { Checkbox } from "client/components/Checkbox";
 import {
-  EMAIL_REGEX,
   EmailNotificationField,
   StyledEmailInput,
 } from "client/components/EmailNotificationField";

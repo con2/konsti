@@ -5,8 +5,6 @@ import { RadioButtonGroup } from "client/components/RadioButtonGroup";
 import { RadioButton } from "client/components/RadioButton";
 import { UncontrolledInput } from "client/components/UncontrolledInput";
 
-export const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
 interface Props {
   enabled: boolean;
   onEnabledChange: (enabled: boolean) => void;
