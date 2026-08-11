@@ -1,4 +1,4 @@
-import { browserStoragePrefix } from "shared/constants/browserStorage";
+import { browserStorageEventPrefix } from "shared/constants/browserStorage";
 
 // Konsti storage keys are prefixed with the event+year (browserStoragePrefix),
 // so a new event never reads a previous event's data; this removes the
@@ -8,7 +8,7 @@ export const resetStaleEventStorage = (): void => {
     const staleKeys = Object.keys(storage).filter(
       (key) =>
         key.startsWith("konsti-") &&
-        !key.startsWith(`${browserStoragePrefix}-`),
+        !key.startsWith(`${browserStorageEventPrefix}-`),
     );
     for (const staleKey of staleKeys) {
       storage.removeItem(staleKey);

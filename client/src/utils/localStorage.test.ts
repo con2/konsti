@@ -4,7 +4,7 @@ import { resetStaleEventStorage } from "client/utils/resetStaleEventStorage";
 import { ProgramType } from "shared/types/models/programItem";
 import {
   appUpdateReloadedBuildTimeKey,
-  browserStoragePrefix,
+  browserStorageEventPrefix,
   kompassiLoginStateKey,
   localStorageStateKey,
 } from "shared/constants/browserStorage";
@@ -40,7 +40,7 @@ describe("loadSession", () => {
 
 describe("clearSession", () => {
   test("should drop this event's session keys but keep the ones that must outlive a logout", () => {
-    const searchTermKey = `${browserStoragePrefix}-allProgramItemsSearchTerm`;
+    const searchTermKey = `${browserStorageEventPrefix}-allProgramItemsSearchTerm`;
 
     localStorage.setItem(localStorageStateKey, "session");
     sessionStorage.setItem(searchTermKey, "dragons");
@@ -67,7 +67,7 @@ describe("clearSession", () => {
 
 describe("resetStaleEventStorage", () => {
   test("should remove previous events' keys but keep current event and unrelated keys", () => {
-    const currentKey = `${browserStoragePrefix}-allProgramItemsSearchTerm`;
+    const currentKey = `${browserStorageEventPrefix}-allProgramItemsSearchTerm`;
 
     localStorage.setItem("konsti-OtherCon-1999-state", "stale");
     localStorage.setItem(localStorageStateKey, "current");
