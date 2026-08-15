@@ -186,8 +186,10 @@ test("Rejects a Kompassi callback whose state does not match the stored one", as
     }
   });
 
-  await page.goto("/");
-  await page.evaluate((key) => {
+  // Seeded before the only navigation: loading the app first and leaving it
+  // mid-boot makes the abandoned page reload itself, and on WebKit that
+  // reload interrupts the navigation below
+  await page.addInitScript((key) => {
     sessionStorage.setItem(key, "the-state-we-started-with");
   }, kompassiLoginStateKey);
 
@@ -210,8 +212,9 @@ test("Drops the stored login state when Kompassi returns an error", async ({
   await populateDb(request, { clean: true, users: true, admin: true });
   await postSettings(request, { loginProvider: LoginProvider.KOMPASSI });
 
-  await page.goto("/");
-  await page.evaluate((key) => {
+  // The redirect to the login page that follows is client side, so this runs
+  // once and cannot put the state back after the callback drops it
+  await page.addInitScript((key) => {
     sessionStorage.setItem(key, "the-state-we-started-with");
   }, kompassiLoginStateKey);
 
