@@ -1,7 +1,5 @@
 import dayjs from "dayjs";
 import { sortBy } from "remeda";
-import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
-import { logger } from "server/utils/logger";
 import { config } from "shared/config";
 import {
   ProgramItem,
@@ -10,6 +8,8 @@ import {
 } from "shared/types/models/programItem";
 import { getRollingDirectSignupStartTime } from "shared/utils/signupTimes";
 import { getShortWeekdayAndTime } from "shared/utils/timeFormatter";
+import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
+import { logger } from "server/utils/logger";
 
 export const printRpgDirectSignupFullTimes = (
   directSignups: (DirectSignupsForProgramItem & { updatedAt: string })[],

@@ -1,13 +1,13 @@
 import fs from "node:fs";
-import {
-  getProgramItemsByStartTime,
-  getDemandByTime,
-  getDemandByProgramItem,
-} from "./programItemDataHelpers";
-import { logger } from "server/utils/logger";
 import { config } from "shared/config";
 import { ProgramItem } from "shared/types/models/programItem";
 import { User } from "shared/types/models/user";
+import { logger } from "server/utils/logger";
+import {
+  getDemandByProgramItem,
+  getDemandByTime,
+  getProgramItemsByStartTime,
+} from "./programItemDataHelpers";
 
 export const getProgramItemStats = (event: string, year: number): void => {
   const programItems = JSON.parse(

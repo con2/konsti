@@ -1,23 +1,23 @@
-import { logger } from "server/utils/logger";
-import {
-  ProgramItemModel,
-  ProgramItemSchemaDb,
-} from "server/features/program-item/programItemSchema";
-import { updateMovedProgramItems } from "server/features/assignment/utils/updateMovedProgramItems";
+import { MongoDbError } from "shared/types/api/errors";
 import { Popularity, ProgramItem } from "shared/types/models/programItem";
+import { differenceBy } from "shared/utils/remedaExtend";
 import {
-  makeSuccessResult,
   Result,
   makeErrorResult,
+  makeSuccessResult,
 } from "shared/utils/result";
-import { handleCancelledDeletedProgramItems } from "server/features/program-item/programItemUtils";
 import { removeCancelledDeletedProgramItemsFromUsers } from "server/features/assignment/utils/removeInvalidProgramItemsFromUsers";
-import { MongoDbError } from "shared/types/api/errors";
+import { updateMovedProgramItems } from "server/features/assignment/utils/updateMovedProgramItems";
 import {
   createEmptyDirectSignupDocumentForProgramItems,
   findDirectSignups,
 } from "server/features/direct-signup/directSignupRepository";
-import { differenceBy } from "shared/utils/remedaExtend";
+import {
+  ProgramItemModel,
+  ProgramItemSchemaDb,
+} from "server/features/program-item/programItemSchema";
+import { handleCancelledDeletedProgramItems } from "server/features/program-item/programItemUtils";
+import { logger } from "server/utils/logger";
 
 export const removeProgramItems = async (
   programItemIds?: string[],

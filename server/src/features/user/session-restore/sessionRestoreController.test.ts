@@ -1,16 +1,16 @@
 import { Server } from "node:http";
-import { expect, test, describe, beforeEach, afterEach } from "vitest";
-import request from "supertest";
 import { faker } from "@faker-js/faker";
+import request from "supertest";
+import { afterEach, beforeEach, describe, expect, test } from "vitest";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
-import { mockUser } from "server/test/mock-data/mockUser";
-import { removeUsers, saveUser } from "server/features/user/userRepository";
-import { closeServer, startServer } from "server/utils/server";
-import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import {
   PostLoginResult,
   PostSessionRecoveryError,
 } from "shared/types/api/login";
+import { removeUsers, saveUser } from "server/features/user/userRepository";
+import { mockUser } from "server/test/mock-data/mockUser";
+import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
+import { closeServer, startServer } from "server/utils/server";
 
 let server: Server;
 

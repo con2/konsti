@@ -1,7 +1,5 @@
-import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { PayloadAction, createSelector, createSlice } from "@reduxjs/toolkit";
 import { sortBy } from "remeda";
-import { MyProgramItemsState, RootState } from "client/types/reduxTypes";
-import { selectProgramItems } from "client/views/all-program-items/allProgramItemsSlice";
 import { ProgramItem } from "shared/types/models/programItem";
 import {
   DirectSignup,
@@ -9,6 +7,8 @@ import {
   LotterySignup,
   UserProgramItems,
 } from "shared/types/models/user";
+import { MyProgramItemsState, RootState } from "client/types/reduxTypes";
+import { selectProgramItems } from "client/views/all-program-items/allProgramItemsSlice";
 
 const initialState: MyProgramItemsState = {
   directSignups: [],

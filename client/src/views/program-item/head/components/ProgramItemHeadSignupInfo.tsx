@@ -1,17 +1,17 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ReactElement, useState } from "react";
-import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router";
 import { sortBy } from "remeda";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { getAttendeeType } from "client/utils/getAttendeeType";
-import { ProgramItem, UserSignup } from "shared/types/models/programItem";
-import { ExpandButton } from "client/components/ExpandButton";
-import { SignupQuestion } from "shared/types/models/settings";
+import styled from "styled-components";
 import { config } from "shared/config";
-import { useAppSelector } from "client/utils/hooks";
+import { ProgramItem, UserSignup } from "shared/types/models/programItem";
+import { SignupQuestion } from "shared/types/models/settings";
 import { UserGroup } from "shared/types/models/user";
 import { AppRoute } from "client/app/AppRoutes";
+import { ExpandButton } from "client/components/ExpandButton";
+import { getAttendeeType } from "client/utils/getAttendeeType";
+import { useAppSelector } from "client/utils/hooks";
 
 interface Props {
   isLoggedIn: boolean;

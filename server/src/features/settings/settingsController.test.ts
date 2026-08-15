@@ -1,40 +1,16 @@
 import { Server } from "node:http";
-import { expect, test, describe, afterEach, beforeEach, vi } from "vitest";
-import request from "supertest";
 import { faker } from "@faker-js/faker";
-import { ApiEndpoint } from "shared/constants/apiEndpoints";
-import { UserGroup } from "shared/types/models/user";
-import { getJWT } from "server/utils/jwt";
+import request from "supertest";
+import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 import {
-  LoginProvider,
   EventSignupStrategy,
+  LoginProvider,
 } from "shared/config/eventConfigTypes";
-import {
-  Settings,
-  SignupQuestion,
-  SignupQuestionType,
-} from "shared/types/models/settings";
+import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
   testProgramItem,
   testProgramItem2,
 } from "shared/tests/testProgramItem";
-import { saveProgramItems } from "server/features/program-item/programItemRepository";
-import { findUser, saveUser } from "server/features/user/userRepository";
-import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
-import {
-  findDirectSignups,
-  findUserDirectSignups,
-  saveDirectSignup,
-} from "server/features/direct-signup/directSignupRepository";
-import { saveFavorite } from "server/features/user/favorite-program-item/favoriteProgramItemRepository";
-import {
-  mockPostDirectSignupRequest,
-  mockPostDirectSignupRequest2,
-  mockLotterySignups,
-  mockUser,
-} from "server/test/mock-data/mockUser";
-import { closeServer, startServer } from "server/utils/server";
-import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import {
   DeleteSignupQuestionRequest,
   PostHiddenResponse,
@@ -42,13 +18,37 @@ import {
   PostSignupQuestionRequest,
   SettingsPayload,
 } from "shared/types/api/settings";
+import { EmailNotificationTrigger } from "shared/types/emailNotification";
+import {
+  Settings,
+  SignupQuestion,
+  SignupQuestionType,
+} from "shared/types/models/settings";
+import { UserGroup } from "shared/types/models/user";
+import {
+  findDirectSignups,
+  findUserDirectSignups,
+  saveDirectSignup,
+} from "server/features/direct-signup/directSignupRepository";
+import { saveProgramItems } from "server/features/program-item/programItemRepository";
 import {
   createSettings,
   findOrCreateSettings,
   saveHidden,
   saveSignupQuestion,
 } from "server/features/settings/settingsRepository";
-import { EmailNotificationTrigger } from "shared/types/emailNotification";
+import { saveFavorite } from "server/features/user/favorite-program-item/favoriteProgramItemRepository";
+import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
+import { findUser, saveUser } from "server/features/user/userRepository";
+import {
+  mockLotterySignups,
+  mockPostDirectSignupRequest,
+  mockPostDirectSignupRequest2,
+  mockUser,
+} from "server/test/mock-data/mockUser";
+import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
+import { getJWT } from "server/utils/jwt";
+import { closeServer, startServer } from "server/utils/server";
 
 let server: Server;
 

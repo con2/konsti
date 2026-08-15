@@ -1,13 +1,16 @@
+// Registers the global mongoose plugins, which are applied when a model is
+// compiled below, so it has to stay above the other imports
+import "server/db/mongoosePlugins";
+import dayjs from "dayjs";
 import mongoose from "mongoose";
 import { z } from "zod";
-import dayjs from "dayjs";
 import { config } from "shared/config";
-import { SignupQuestionSchema } from "shared/types/models/settings";
 import {
   EventSignupStrategy,
   LoginProvider,
 } from "shared/config/eventConfigTypes";
 import { EmailNotificationTrigger } from "shared/types/emailNotification";
+import { SignupQuestionSchema } from "shared/types/models/settings";
 
 export const SettingsSchemaDb = z
   .object({

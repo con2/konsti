@@ -1,6 +1,6 @@
+import { UserGroup } from "shared/types/models/user";
 import { getJwtResponse } from "server/utils/jwt";
 import { logger } from "server/utils/logger";
-import { UserGroup } from "shared/types/models/user";
 
 export const getAuthorizedUsername = (
   authHeader: string | undefined,

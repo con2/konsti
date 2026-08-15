@@ -1,25 +1,25 @@
 import { faker } from "@faker-js/faker";
 import dayjs from "dayjs";
 import { sample } from "remeda";
-import { logger } from "server/utils/logger";
-import { kompassiProgramItemMapper } from "server/kompassi/kompassiProgramItemMapper";
-import { saveProgramItems } from "server/features/program-item/programItemRepository";
 import { config } from "shared/config";
+import { MongoDbError } from "shared/types/api/errors";
+import { Result } from "shared/utils/result";
+import { saveProgramItems } from "server/features/program-item/programItemRepository";
+import { mapKonstiProgramTypesToKompassiProgramTypes } from "server/kompassi/getProgramItemsFromKompassi";
 import {
-  KompassiProgramItem,
+  KompassiAgeGroup,
+  KompassiBoolean,
   KompassiGamestyle,
-  KompassiLanguage,
+  KompassiGrouping,
   KompassiInclusivity,
   KompassiKonstiProgramType,
-  KompassiGrouping,
-  KompassiAgeGroup,
+  KompassiLanguage,
+  KompassiProgramItem,
   KompassiRegistration,
-  KompassiBoolean,
   KompassiYesNo,
 } from "server/kompassi/kompassiProgramItem";
-import { Result } from "shared/utils/result";
-import { MongoDbError } from "shared/types/api/errors";
-import { mapKonstiProgramTypesToKompassiProgramTypes } from "server/kompassi/getProgramItemsFromKompassi";
+import { kompassiProgramItemMapper } from "server/kompassi/kompassiProgramItemMapper";
+import { logger } from "server/utils/logger";
 
 const PROGRAM_ITEM_ID_MAX = 10000000;
 

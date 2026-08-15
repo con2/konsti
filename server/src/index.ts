@@ -1,14 +1,14 @@
 import { Server } from "node:http";
-import { startServer, closeServer } from "server/utils/server";
-import { logger } from "server/utils/logger";
-import { startCronJobs } from "server/utils/cron";
 import { config } from "shared/config";
 import { initializeDayjs } from "shared/utils/initializeDayjs";
+import { EmailSender } from "server/features/notifications/email";
+import { startCronJobs } from "server/utils/cron";
+import { logger } from "server/utils/logger";
+import { closeServer, startServer } from "server/utils/server";
 import {
   createNotificationQueueService,
   setGlobalNotificationQueueService,
 } from "./utils/notificationQueue";
-import { EmailSender } from "server/features/notifications/email";
 
 const startApp = async (): Promise<void> => {
   initializeDayjs();

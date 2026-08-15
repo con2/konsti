@@ -1,11 +1,11 @@
 import { expect, test } from "vitest";
 import { testProgramItem } from "shared/tests/testProgramItem";
-import { getAssignmentResultGroups } from "server/features/assignment/utils/getAssignmentResultGroups";
 import {
   assignmentTime,
   getUsers,
   groupCreatorGroupCode,
 } from "server/features/assignment/utils/assignmentTestUtils";
+import { getAssignmentResultGroups } from "server/features/assignment/utils/getAssignmentResultGroups";
 
 test("should snapshot the group and its members that took part in the lottery", () => {
   // Group creator with lottery sign-ups + two members sharing the group code

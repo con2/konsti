@@ -1,8 +1,8 @@
 import fs from "node:fs";
-import { getUsersWithoutSignups } from "./userDataHelpers";
-import { logger } from "server/utils/logger";
 import { config } from "shared/config";
 import { User } from "shared/types/models/user";
+import { logger } from "server/utils/logger";
+import { getUsersWithoutSignups } from "./userDataHelpers";
 
 export const getUserStats = (event: string, year: number): void => {
   const users = JSON.parse(

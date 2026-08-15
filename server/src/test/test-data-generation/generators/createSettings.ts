@@ -1,13 +1,13 @@
 import { faker } from "@faker-js/faker";
-import { logger } from "server/utils/logger";
+import { SignupQuestionType } from "shared/types/models/settings";
 import { findProgramItems } from "server/features/program-item/programItemRepository";
 import {
   findOrCreateSettings,
   saveSignupQuestion,
 } from "server/features/settings/settingsRepository";
-import { shuffleArray } from "server/utils/shuffleArray";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
-import { SignupQuestionType } from "shared/types/models/settings";
+import { logger } from "server/utils/logger";
+import { shuffleArray } from "server/utils/shuffleArray";
 
 const NUMBER_OF_TEST_QUESTIONS = 20;
 

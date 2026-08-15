@@ -1,19 +1,14 @@
 import { ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { ProgramItem } from "shared/types/models/programItem";
-import { LotterySignupForm } from "client/views/program-item/signup/components/lottery-signup/LotterySignupForm";
-import {
-  DeleteLotterySignupErrorMessage,
-  submitDeleteLotterySignup,
-} from "client/views/my-program-items/myProgramItemsThunks";
-import { useAppDispatch, useAppSelector } from "client/utils/hooks";
-import {
-  getDirectSignupForSlot,
-  isAlreadyLotterySigned,
-} from "client/views/program-item/programItemUtils";
-import { ButtonStyle } from "client/components/Button";
-import { getTimeNow } from "client/utils/getTimeNow";
 import { getLotterySignupStartTime } from "shared/utils/signupTimes";
+import { ButtonStyle } from "client/components/Button";
+import { ErrorMessage } from "client/components/ErrorMessage";
+import { InfoText } from "client/components/InfoText";
+import { startLoading, stopLoading } from "client/state/loading/loadingSlice";
+import { getTimeNow } from "client/utils/getTimeNow";
+import { useAppDispatch, useAppSelector } from "client/utils/hooks";
+import { selectGroupMembers } from "client/views/group/groupSlice";
 import {
   canSignToProgramItems,
   getIsInGroup,
@@ -22,14 +17,19 @@ import {
   DirectSignupWithProgramItem,
   LotterySignupWithProgramItem,
 } from "client/views/my-program-items/myProgramItemsSlice";
-import { selectGroupMembers } from "client/views/group/groupSlice";
-import { startLoading, stopLoading } from "client/state/loading/loadingSlice";
-import { LoginToSignupLink } from "client/views/program-item/signup/components/LoginToSignupLink";
+import {
+  DeleteLotterySignupErrorMessage,
+  submitDeleteLotterySignup,
+} from "client/views/my-program-items/myProgramItemsThunks";
 import { ProgramItemButton } from "client/views/program-item/components/ProgramItemButton";
 import { ProgramItemButtonGroup } from "client/views/program-item/components/ProgramItemButtonGroup";
 import { ProgramItemCancelSignupForm } from "client/views/program-item/components/ProgramItemCancelSignupForm";
-import { ErrorMessage } from "client/components/ErrorMessage";
-import { InfoText } from "client/components/InfoText";
+import {
+  getDirectSignupForSlot,
+  isAlreadyLotterySigned,
+} from "client/views/program-item/programItemUtils";
+import { LoginToSignupLink } from "client/views/program-item/signup/components/LoginToSignupLink";
+import { LotterySignupForm } from "client/views/program-item/signup/components/lottery-signup/LotterySignupForm";
 
 interface Props {
   programItem: ProgramItem;

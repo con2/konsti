@@ -1,13 +1,13 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ReactElement, useState } from "react";
 import { SubmitHandler, useForm, useFormState } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, ButtonStyle } from "client/components/Button";
-import { useAppDispatch } from "client/utils/hooks";
-import { LoginErrorMessage, submitLogin } from "client/views/login/loginThunks";
 import { ErrorMessage } from "client/components/ErrorMessage";
 import { UncontrolledInput } from "client/components/UncontrolledInput";
+import { useAppDispatch } from "client/utils/hooks";
+import { LoginErrorMessage, submitLogin } from "client/views/login/loginThunks";
 
 export interface LoginFormFields {
   username: string;

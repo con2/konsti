@@ -1,21 +1,21 @@
-import { expect, test, afterEach, beforeEach } from "vitest";
-import mongoose from "mongoose";
 import { faker } from "@faker-js/faker";
-import { db } from "server/db/mongodb";
-import { UserModel } from "server/features/user/userSchema";
-import { findUser, saveUser } from "server/features/user/userRepository";
-import { mockUser, mockUser2, mockUser3 } from "server/test/mock-data/mockUser";
-import {
-  addEventLogItems,
-  deleteEventLogItemsByStartTime,
-} from "server/features/user/event-log/eventLogRepository";
-import { EventLogAction } from "shared/types/models/eventLog";
-import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
-import { saveProgramItems } from "server/features/program-item/programItemRepository";
+import mongoose from "mongoose";
+import { afterEach, beforeEach, expect, test } from "vitest";
 import {
   testProgramItem,
   testProgramItem2,
 } from "shared/tests/testProgramItem";
+import { EventLogAction } from "shared/types/models/eventLog";
+import { db } from "server/db/mongodb";
+import { saveProgramItems } from "server/features/program-item/programItemRepository";
+import {
+  addEventLogItems,
+  deleteEventLogItemsByStartTime,
+} from "server/features/user/event-log/eventLogRepository";
+import { findUser, saveUser } from "server/features/user/userRepository";
+import { UserModel } from "server/features/user/userSchema";
+import { mockUser, mockUser2, mockUser3 } from "server/test/mock-data/mockUser";
+import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 
 beforeEach(async () => {
   await db.connectToDb(globalThis.__MONGO_URI__, faker.string.alphanumeric(10));

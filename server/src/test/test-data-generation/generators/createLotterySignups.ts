@@ -1,15 +1,15 @@
 import dayjs from "dayjs";
 import { groupBy, sample } from "remeda";
-import { logger } from "server/utils/logger";
-import { updateProgramItemPopularity } from "server/features/program-item-popularity/updateProgramItemPopularity";
-import { ProgramItem, SignupType } from "shared/types/models/programItem";
-import { findUsers } from "server/features/user/userRepository";
-import { findProgramItems } from "server/features/program-item/programItemRepository";
-import { LotterySignup, User } from "shared/types/models/user";
-import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
-import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { config } from "shared/config";
+import { ProgramItem, SignupType } from "shared/types/models/programItem";
+import { LotterySignup, User } from "shared/types/models/user";
 import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
+import { updateProgramItemPopularity } from "server/features/program-item-popularity/updateProgramItemPopularity";
+import { findProgramItems } from "server/features/program-item/programItemRepository";
+import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
+import { findUsers } from "server/features/user/userRepository";
+import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
+import { logger } from "server/utils/logger";
 
 export const createLotterySignups = async (): Promise<void> => {
   const programItems = unsafelyUnwrap(await findProgramItems());

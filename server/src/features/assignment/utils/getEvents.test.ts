@@ -1,14 +1,14 @@
-import { afterEach, expect, test, vi } from "vitest";
 import dayjs from "dayjs";
+import { afterEach, expect, test, vi } from "vitest";
+import { config } from "shared/config";
+import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 import {
   testProgramItem,
   testProgramItem2,
 } from "shared/tests/testProgramItem";
-import { config } from "shared/config";
-import { getEvents } from "server/features/assignment/utils/getEvents";
 import { getPreviousDirectSignup } from "server/features/assignment/utils/assignmentTestUtils";
+import { getEvents } from "server/features/assignment/utils/getEvents";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
-import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 
 afterEach(() => {
   vi.resetAllMocks();

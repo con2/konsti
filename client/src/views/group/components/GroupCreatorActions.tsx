@@ -1,13 +1,13 @@
 import { ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Button, ButtonStyle } from "client/components/Button";
+import { ButtonGroup } from "client/components/ButtonGroup";
+import { ErrorMessage } from "client/components/ErrorMessage";
+import { useAppDispatch } from "client/utils/hooks";
 import {
   PostCloseGroupErrorMessage,
   submitCloseGroup,
 } from "client/views/group/groupThunks";
-import { useAppDispatch } from "client/utils/hooks";
-import { ErrorMessage } from "client/components/ErrorMessage";
-import { ButtonGroup } from "client/components/ButtonGroup";
 
 interface Props {
   username: string;

@@ -1,6 +1,6 @@
 import { expect, test } from "vitest";
-import { getPopularity } from "server/features/program-item-popularity/getPopularity";
 import { Popularity } from "shared/types/models/programItem";
+import { getPopularity } from "server/features/program-item-popularity/getPopularity";
 
 test("Should return LOW popularity with not enough participants", () => {
   const popularity = getPopularity({

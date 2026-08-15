@@ -1,21 +1,21 @@
-import { logger } from "server/utils/logger";
-import { hashPassword } from "server/utils/bcrypt";
-import { findSerial } from "server/features/serial/serialRepository";
-import {
-  updateUserPassword,
-  findUser,
-  findUserBySerial,
-  findUserSerial,
-  saveUser,
-} from "server/features/user/userRepository";
 import {
   GetUserBySerialResponse,
   GetUserResponse,
   PostUpdateUserPasswordResponse,
   PostUserResponse,
 } from "shared/types/api/users";
-import { findUserDirectSignups } from "server/features/direct-signup/directSignupRepository";
 import { DirectSignup, UserGroup } from "shared/types/models/user";
+import { findUserDirectSignups } from "server/features/direct-signup/directSignupRepository";
+import { findSerial } from "server/features/serial/serialRepository";
+import {
+  findUser,
+  findUserBySerial,
+  findUserSerial,
+  saveUser,
+  updateUserPassword,
+} from "server/features/user/userRepository";
+import { hashPassword } from "server/utils/bcrypt";
+import { logger } from "server/utils/logger";
 
 export const storeUser = async (
   username: string,

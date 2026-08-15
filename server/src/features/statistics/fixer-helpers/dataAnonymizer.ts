@@ -1,14 +1,14 @@
 import { faker } from "@faker-js/faker";
-import { logger } from "server/utils/logger";
+import { ProgramItem } from "shared/types/models/programItem";
 import { User } from "shared/types/models/user";
-import { ResultsCollectionEntry } from "server/types/resultTypes";
+import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import {
   jsonFileExists,
   readJson,
   writeJson,
 } from "server/features/statistics/statsUtil";
-import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
-import { ProgramItem } from "shared/types/models/programItem";
+import { ResultsCollectionEntry } from "server/types/resultTypes";
+import { logger } from "server/utils/logger";
 
 export const anonymizeData = async (
   event: string,

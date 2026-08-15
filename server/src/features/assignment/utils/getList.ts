@@ -1,11 +1,11 @@
 import { first } from "remeda";
-import { ListItem } from "server/types/assignmentTypes";
-import { getAssignmentBonus } from "server/features/assignment/utils/getAssignmentBonus";
-import { LotterySignup, User } from "shared/types/models/user";
-import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
-import { logger } from "server/utils/logger";
 import { ProgramItem } from "shared/types/models/programItem";
+import { LotterySignup, User } from "shared/types/models/user";
+import { getAssignmentBonus } from "server/features/assignment/utils/getAssignmentBonus";
+import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
+import { ListItem } from "server/types/assignmentTypes";
 import { isStartTimeMatch } from "server/utils/isStartTimeMatch";
+import { logger } from "server/utils/logger";
 
 interface GetListParams {
   attendeeGroups: readonly User[][];

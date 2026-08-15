@@ -1,34 +1,34 @@
 import { isDeepEqual } from "remeda";
+import {
+  EventSignupStrategy,
+  LoginProvider,
+} from "shared/config/eventConfigTypes";
+import { EmailNotificationTrigger } from "shared/types/emailNotification";
+import { SignupQuestion } from "shared/types/models/settings";
+import { postAssignment } from "client/services/assignmentServices";
 import { postHidden } from "client/services/hiddenServices";
 import {
   deleteSignupQuestion,
   getSettings,
-  postSignupQuestion,
   postSettings,
+  postSignupQuestion,
 } from "client/services/settingsServices";
-import { AppThunk } from "client/types/reduxTypes";
-import {
-  submitUpdateHiddenAsync,
-  submitGetSettingsAsync,
-  updateServerAppBuildTime,
-  submitToggleAppOpenAsync,
-  submitSetAdminMessageAsync,
-  updateSignupQuestions,
-  submitSetSignupStrategyAsync,
-  submitGetSignupMessagesAsync,
-  submitAssignmentResponseMessageAsync,
-  submitSetLoginProviderAsync,
-  submitSetEmailNotificationTriggersAsync,
-} from "client/views/admin/adminSlice";
-import { SignupQuestion } from "shared/types/models/settings";
-import {
-  LoginProvider,
-  EventSignupStrategy,
-} from "shared/config/eventConfigTypes";
 import { getSignupMessages } from "client/services/userServices";
+import { AppThunk } from "client/types/reduxTypes";
 import { getSentryTest, postEmailTest } from "client/views/admin/adminService";
-import { postAssignment } from "client/services/assignmentServices";
-import { EmailNotificationTrigger } from "shared/types/emailNotification";
+import {
+  submitAssignmentResponseMessageAsync,
+  submitGetSettingsAsync,
+  submitGetSignupMessagesAsync,
+  submitSetAdminMessageAsync,
+  submitSetEmailNotificationTriggersAsync,
+  submitSetLoginProviderAsync,
+  submitSetSignupStrategyAsync,
+  submitToggleAppOpenAsync,
+  submitUpdateHiddenAsync,
+  updateServerAppBuildTime,
+  updateSignupQuestions,
+} from "client/views/admin/adminSlice";
 
 export const submitUpdateHidden = (
   hiddenProgramItemIds: readonly string[],

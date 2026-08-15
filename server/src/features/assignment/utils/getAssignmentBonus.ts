@@ -1,11 +1,11 @@
 import dayjs from "dayjs";
 import { partition } from "remeda";
 import { config } from "shared/config";
-import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
-import { User } from "shared/types/models/user";
+import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 import { EventLogAction } from "shared/types/models/eventLog";
 import { ProgramItem } from "shared/types/models/programItem";
-import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
+import { User } from "shared/types/models/user";
+import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 
 export const getAssignmentBonus = (
   attendeeGroup: User[],

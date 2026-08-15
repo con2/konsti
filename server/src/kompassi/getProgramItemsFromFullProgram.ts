@@ -1,10 +1,10 @@
+import { EventName } from "shared/config/eventConfigTypes";
+import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import { getProgramItemsFromFullProgramHitpoint } from "server/kompassi/hitpoint/getProgramItemsFromFullProgramHitpoint";
+import { KompassiProgramItem } from "server/kompassi/kompassiProgramItem";
 import { getProgramItemsFromFullProgramRopecon } from "server/kompassi/ropecon/getProgramItemsFromFullProgramRopecon";
 import { getProgramItemsFromFullProgramSolmukohta } from "server/kompassi/solmukohta/getProgramItemsFromFullProgramSolmukohta";
 import { getProgramItemsFromFullProgramTracon } from "server/kompassi/tracon/getProgramItemsFromFullProgramTracon";
-import { EventName } from "shared/config/eventConfigTypes";
-import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
-import { KompassiProgramItem } from "server/kompassi/kompassiProgramItem";
 
 export const getProgramItemsFromFullProgram = (
   eventName: EventName,

@@ -1,29 +1,29 @@
 import { ReactElement } from "react";
-import styled from "styled-components";
-import { Link } from "react-router";
 import { useTranslation } from "react-i18next";
-import { ProgramItem, UserSignup } from "shared/types/models/programItem";
-import { UserGroup } from "shared/types/models/user";
-import { FavoriteButton } from "client/components/FavoriteButton";
-import { Tags } from "client/components/Tags";
-import { formatProgramItemDuration } from "shared/utils/timeFormatter";
-import { getAttendeeType } from "client/utils/getAttendeeType";
-import { PopularityInfo } from "client/components/PopularityInfo";
-import { updateFavorite, UpdateFavoriteOpts } from "client/utils/favorite";
-import { useAppDispatch, useAppSelector } from "client/utils/hooks";
+import { Link } from "react-router";
+import styled from "styled-components";
 import { config } from "shared/config";
-import { getProgramTypeSelectOptions } from "client/utils/getProgramTypeSelectOptions";
-import { ProgramItemHeadSignupInfo } from "client/views/program-item/head/components/ProgramItemHeadSignupInfo";
-import { AppRoute } from "client/app/AppRoutes";
+import { ProgramItem, UserSignup } from "shared/types/models/programItem";
 import { SignupQuestion } from "shared/types/models/settings";
-import { selectFavoriteProgramItems } from "client/views/my-program-items/myProgramItemsSlice";
+import { UserGroup } from "shared/types/models/user";
 import {
   getDirectSignupEnded,
   getDirectSignupInProgress,
   getLotterySignupInProgress,
   getPhaseGapInProgress,
 } from "shared/utils/signupTimes";
+import { formatProgramItemDuration } from "shared/utils/timeFormatter";
+import { AppRoute } from "client/app/AppRoutes";
+import { FavoriteButton } from "client/components/FavoriteButton";
+import { PopularityInfo } from "client/components/PopularityInfo";
+import { Tags } from "client/components/Tags";
+import { UpdateFavoriteOpts, updateFavorite } from "client/utils/favorite";
+import { getAttendeeType } from "client/utils/getAttendeeType";
+import { getProgramTypeSelectOptions } from "client/utils/getProgramTypeSelectOptions";
 import { getTimeNow } from "client/utils/getTimeNow";
+import { useAppDispatch, useAppSelector } from "client/utils/hooks";
+import { selectFavoriteProgramItems } from "client/views/my-program-items/myProgramItemsSlice";
+import { ProgramItemHeadSignupInfo } from "client/views/program-item/head/components/ProgramItemHeadSignupInfo";
 
 const updateFavoriteHandler = async (
   updateOpts: UpdateFavoriteOpts,

@@ -1,29 +1,29 @@
 import { Server } from "node:http";
-import { expect, test, describe, beforeEach, afterEach, vi } from "vitest";
-import request from "supertest";
 import { faker } from "@faker-js/faker";
 import dayjs from "dayjs";
+import request from "supertest";
+import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
+import { config } from "shared/config";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
-import { getJWT } from "server/utils/jwt";
-import { UserGroup } from "shared/types/models/user";
-import { closeServer, startServer } from "server/utils/server";
 import { testProgramItem } from "shared/tests/testProgramItem";
-import { saveProgramItems } from "server/features/program-item/programItemRepository";
-import { findUser, saveUser } from "server/features/user/userRepository";
-import { mockLotterySignups, mockUser } from "server/test/mock-data/mockUser";
 import {
-  PostLotterySignupResult,
+  DeleteLotterySignupError,
+  DeleteLotterySignupRequest,
+  DeleteLotterySignupResponse,
   PostLotterySignupError,
   PostLotterySignupRequest,
-  DeleteLotterySignupRequest,
-  DeleteLotterySignupError,
-  DeleteLotterySignupResponse,
+  PostLotterySignupResult,
 } from "shared/types/api/myProgramItems";
-import { config } from "shared/config";
-import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
-import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
-import { saveHidden } from "server/features/settings/settingsRepository";
 import { SignupType, State } from "shared/types/models/programItem";
+import { UserGroup } from "shared/types/models/user";
+import { saveProgramItems } from "server/features/program-item/programItemRepository";
+import { saveHidden } from "server/features/settings/settingsRepository";
+import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
+import { findUser, saveUser } from "server/features/user/userRepository";
+import { mockLotterySignups, mockUser } from "server/test/mock-data/mockUser";
+import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
+import { getJWT } from "server/utils/jwt";
+import { closeServer, startServer } from "server/utils/server";
 
 let server: Server;
 

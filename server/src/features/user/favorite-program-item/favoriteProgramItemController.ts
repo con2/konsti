@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { PostFavoriteRequest } from "shared/types/api/favorite";
-import { getAuthUsername } from "server/middleware/requireAuth";
 import { storeFavorite } from "server/features/user/favorite-program-item/favoriteProgramItemService";
+import { getAuthUsername } from "server/middleware/requireAuth";
 
 export const postFavorite = async (
   req: Request<unknown, unknown, PostFavoriteRequest>,

@@ -1,18 +1,17 @@
-import { combineReducers } from "redux";
 import { Action, configureStore } from "@reduxjs/toolkit";
 import { createReduxEnhancer } from "@sentry/react";
+import { combineReducers } from "redux";
 import { config } from "shared/config";
-import { RootState } from "client/types/reduxTypes";
+import { loadingReducer } from "client/state/loading/loadingSlice";
+import { testSettingsReducer } from "client/test/test-settings/testSettingsSlice";
 import { SUBMIT_LOGOUT } from "client/types/logoutActionsTypes";
-
+import { RootState } from "client/types/reduxTypes";
+import { adminReducer } from "client/views/admin/adminSlice";
 // Reducers
 import { allProgramItemsReducer } from "client/views/all-program-items/allProgramItemsSlice";
+import { groupReducer } from "client/views/group/groupSlice";
 import { loginReducer } from "client/views/login/loginSlice";
 import { myProgramItemsReducer } from "client/views/my-program-items/myProgramItemsSlice";
-import { adminReducer } from "client/views/admin/adminSlice";
-import { testSettingsReducer } from "client/test/test-settings/testSettingsSlice";
-import { groupReducer } from "client/views/group/groupSlice";
-import { loadingReducer } from "client/state/loading/loadingSlice";
 
 export const combinedReducer = combineReducers({
   allProgramItems: allProgramItemsReducer,

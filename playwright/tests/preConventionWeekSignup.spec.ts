@@ -1,18 +1,18 @@
-import { test, expect } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 import dayjs from "dayjs";
+import { config } from "shared/config";
+import { EventSignupStrategy } from "shared/config/eventConfigTypes";
+import { testProgramItem } from "shared/tests/testProgramItem";
+import { Tag } from "shared/types/models/programItem";
+import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
-  postSettings,
-  postTestSettings,
-  login,
   addProgramItems,
   clearDb,
+  login,
   populateDb,
+  postSettings,
+  postTestSettings,
 } from "playwright/playwrightUtils";
-import { ProgramListPage } from "playwright/pages/ProgramListPage";
-import { EventSignupStrategy } from "shared/config/eventConfigTypes";
-import { config } from "shared/config";
-import { Tag } from "shared/types/models/programItem";
-import { testProgramItem } from "shared/tests/testProgramItem";
 
 test("Pre-convention week program item uses direct signup even with lottery program type", async ({
   page,

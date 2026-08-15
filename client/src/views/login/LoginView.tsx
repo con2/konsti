@@ -6,15 +6,15 @@ import {
   useNavigate,
   useNavigationType,
 } from "react-router";
-import { LocalLoginForm } from "client/views/login/components/LocalLoginForm";
-import { useAppSelector } from "client/utils/hooks";
 import { LoginProvider } from "shared/config/eventConfigTypes";
-import { KompassiLoginButton } from "client/views/login/components/KompassiLoginButton";
-import { navigateToPreviousOrRoot } from "client/utils/navigation";
-import { usePreviousLocation } from "client/app/HistoryContext";
 import { AppRoute } from "client/app/AppRoutes";
+import { usePreviousLocation } from "client/app/HistoryContext";
 import { InfoText } from "client/components/InfoText";
+import { useAppSelector } from "client/utils/hooks";
+import { navigateToPreviousOrRoot } from "client/utils/navigation";
 import { KompassiAndLocalLogin } from "client/views/login/components/KompassiAndLocalLogin";
+import { KompassiLoginButton } from "client/views/login/components/KompassiLoginButton";
+import { LocalLoginForm } from "client/views/login/components/LocalLoginForm";
 
 export const LoginView = (): ReactElement => {
   const { t } = useTranslation();

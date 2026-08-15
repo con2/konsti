@@ -1,9 +1,9 @@
-import { api } from "client/utils/api";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
   PostFavoriteRequest,
   PostFavoriteResponse,
 } from "shared/types/api/favorite";
+import { api } from "client/utils/api";
 
 export const postFavorite = async (
   postFavoriteRequest: PostFavoriteRequest,

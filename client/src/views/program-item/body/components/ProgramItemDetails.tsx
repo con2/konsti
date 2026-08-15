@@ -1,13 +1,13 @@
+import dayjs from "dayjs";
 import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
-import styled from "styled-components";
 import { capitalize } from "remeda";
-import dayjs from "dayjs";
+import styled from "styled-components";
 import { ProgramItem } from "shared/types/models/programItem";
 import { InfoText, InfoTextVariant } from "client/components/InfoText";
 import { TextWithLinks } from "client/markdown/components/TextWithLinks";
-import { getFormattedInterval } from "client/views/program-item/programItemUtils";
 import { getTimeNow } from "client/utils/getTimeNow";
+import { getFormattedInterval } from "client/views/program-item/programItemUtils";
 
 const NBSP = "\u{A0}";
 

@@ -1,11 +1,12 @@
 import jsonwebtoken from "jsonwebtoken";
-const { TokenExpiredError } = jsonwebtoken;
-type SignOptions = jsonwebtoken.SignOptions;
 import { config } from "shared/config";
-import { JWTBody, JWTBodySchema, JWTResponse } from "server/types/jwtTypes";
 import { UserGroup } from "shared/types/models/user";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
+import { JWTBody, JWTBodySchema, JWTResponse } from "server/types/jwtTypes";
 import { logger } from "server/utils/logger";
+
+const { TokenExpiredError } = jsonwebtoken;
+type SignOptions = jsonwebtoken.SignOptions;
 
 export const getJWT = (userGroup: UserGroup, username: string): string => {
   const payload = {

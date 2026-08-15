@@ -1,18 +1,21 @@
+// Registers the global mongoose plugins, which are applied when a model is
+// compiled below, so it has to stay above the other imports
+import "server/db/mongoosePlugins";
+import dayjs from "dayjs";
 import mongoose from "mongoose";
 import { z } from "zod";
-import dayjs from "dayjs";
 import {
-  InclusivityValue,
-  Genre,
-  Language,
+  AgeGroup,
   Gamestyle,
+  Genre,
+  InclusivityValue,
+  Language,
   Popularity,
   ProgramItemSignupStrategy,
   ProgramType,
   SignupType,
-  Tag,
-  AgeGroup,
   State,
+  Tag,
 } from "shared/types/models/programItem";
 
 export const ProgramItemSchemaDb = z

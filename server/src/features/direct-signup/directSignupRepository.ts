@@ -1,26 +1,26 @@
 import { AnyBulkWriteOperation } from "mongoose";
 import { first, groupBy, shuffle } from "remeda";
-import { findProgramItemById } from "server/features/program-item/programItemRepository";
-import {
-  DirectSignupsForProgramItem,
-  SignupRepositoryAddSignupResponse,
-  SignupRepositoryAddSignup,
-  UserDirectSignup,
-} from "server/features/direct-signup/directSignupTypes";
-import {
-  DirectSignupSchemaDb,
-  SignupModel,
-} from "server/features/direct-signup/directSignupSchema";
-import { logger } from "server/utils/logger";
 import { MongoDbError } from "shared/types/api/errors";
+import { ProgramItem } from "shared/types/models/programItem";
+import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
 import {
   Result,
   makeErrorResult,
   makeSuccessResult,
 } from "shared/utils/result";
-import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
+import {
+  DirectSignupSchemaDb,
+  SignupModel,
+} from "server/features/direct-signup/directSignupSchema";
+import {
+  DirectSignupsForProgramItem,
+  SignupRepositoryAddSignup,
+  SignupRepositoryAddSignupResponse,
+  UserDirectSignup,
+} from "server/features/direct-signup/directSignupTypes";
+import { findProgramItemById } from "server/features/program-item/programItemRepository";
 import { isStartTimeMatch } from "server/utils/isStartTimeMatch";
-import { ProgramItem } from "shared/types/models/programItem";
+import { logger } from "server/utils/logger";
 
 export const removeDirectSignups = async (): Promise<
   Result<void, MongoDbError>

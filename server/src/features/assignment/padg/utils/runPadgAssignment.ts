@@ -1,28 +1,28 @@
 import eventassigner from "eventassigner-js";
 import { clone, groupBy, shuffle } from "remeda";
-import { getGroups } from "server/features/assignment/utils/getGroups";
-import { getList } from "server/features/assignment/utils/getList";
-import { getEvents } from "server/features/assignment/utils/getEvents";
-import { formatResults } from "server/features/assignment/utils/formatResults";
-import { AssignmentAlgorithmResult, Input } from "server/types/resultTypes";
+import { config } from "shared/config";
+import { AssignmentError } from "shared/types/api/errors";
 import { ProgramItem } from "shared/types/models/programItem";
 import { User } from "shared/types/models/user";
-import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import {
   Result,
   makeErrorResult,
   makeSuccessResult,
 } from "shared/utils/result";
-import { AssignmentError } from "shared/types/api/errors";
-import { logger } from "server/utils/logger";
-import {
-  PadgInput,
-  ListItem,
-  PadgRandomAssignResult,
-  PadgError,
-} from "server/types/assignmentTypes";
-import { config } from "shared/config";
 import { calculateHappiness } from "server/features/assignment/padg/utils/calculateHappiness";
+import { formatResults } from "server/features/assignment/utils/formatResults";
+import { getEvents } from "server/features/assignment/utils/getEvents";
+import { getGroups } from "server/features/assignment/utils/getGroups";
+import { getList } from "server/features/assignment/utils/getList";
+import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
+import {
+  ListItem,
+  PadgError,
+  PadgInput,
+  PadgRandomAssignResult,
+} from "server/types/assignmentTypes";
+import { AssignmentAlgorithmResult, Input } from "server/types/resultTypes";
+import { logger } from "server/utils/logger";
 
 const sortList = (list: ListItem[], i: number): ListItem[] => {
   switch (i) {

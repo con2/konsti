@@ -1,9 +1,9 @@
 import { first, groupBy, shuffle } from "remeda";
+import { ProgramItem } from "shared/types/models/programItem";
+import { User } from "shared/types/models/user";
 import { Group } from "server/types/assignmentTypes";
 import { isStartTimeMatch } from "server/utils/isStartTimeMatch";
 import { logger } from "server/utils/logger";
-import { ProgramItem } from "shared/types/models/programItem";
-import { User } from "shared/types/models/user";
 
 export const getGroups = (
   attendeeGroups: readonly User[][],

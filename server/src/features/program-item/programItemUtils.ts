@@ -1,19 +1,23 @@
 import dayjs, { Dayjs } from "dayjs";
-import { removeProgramItems } from "server/features/program-item/programItemRepository";
-import { logger } from "server/utils/logger";
+import { config } from "shared/config";
+import { EventSignupStrategy } from "shared/config/eventConfigTypes";
+import { MongoDbError } from "shared/types/api/errors";
+import { EventLogAction } from "shared/types/models/eventLog";
 import {
   ProgramItem,
+  ProgramItemSignupStrategy,
   ProgramItemWithUserSignups,
   ProgramType,
-  ProgramItemSignupStrategy,
   SignupType,
   State,
   UserSignup,
 } from "shared/types/models/programItem";
-import { EventSignupStrategy } from "shared/config/eventConfigTypes";
-import { config } from "shared/config";
-import { findOrCreateSettings } from "server/features/settings/settingsRepository";
 import { Settings, SignupQuestion } from "shared/types/models/settings";
+import { UserGroup } from "shared/types/models/user";
+import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
+import { differenceBy } from "shared/utils/remedaExtend";
+import { Result, makeSuccessResult } from "shared/utils/result";
+import { tooEarlyForLotterySignup } from "shared/utils/tooEarlyForLotterySignup";
 import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
 import {
   delDirectSignupDocumentsByProgramItemIds,
@@ -22,15 +26,11 @@ import {
   resetDirectSignupsByProgramItemIds,
 } from "server/features/direct-signup/directSignupRepository";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
-import { Result, makeSuccessResult } from "shared/utils/result";
-import { MongoDbError } from "shared/types/api/errors";
-import { tooEarlyForLotterySignup } from "shared/utils/tooEarlyForLotterySignup";
-import { UserGroup } from "shared/types/models/user";
-import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
-import { differenceBy } from "shared/utils/remedaExtend";
-import { addEventLogItems } from "server/features/user/event-log/eventLogRepository";
 import { queueCancelledDeletedEmails } from "server/features/notifications/queueCancelledDeletedEmails";
-import { EventLogAction } from "shared/types/models/eventLog";
+import { removeProgramItems } from "server/features/program-item/programItemRepository";
+import { findOrCreateSettings } from "server/features/settings/settingsRepository";
+import { addEventLogItems } from "server/features/user/event-log/eventLogRepository";
+import { logger } from "server/utils/logger";
 
 const getCancelledProgramItems = (
   updatedProgramItems: readonly ProgramItem[],

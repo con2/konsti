@@ -1,10 +1,10 @@
 import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
-import { useAppDispatch, useAppSelector } from "client/utils/hooks";
-import { removeError } from "client/views/admin/adminSlice";
-import { BackendErrorType } from "client/types/errorTypes";
 import { DismissibleBanner } from "client/components/DismissibleBanner";
 import { HighlightStyle } from "client/components/RaisedCard";
+import { BackendErrorType } from "client/types/errorTypes";
+import { useAppDispatch, useAppSelector } from "client/utils/hooks";
+import { removeError } from "client/views/admin/adminSlice";
 
 export const ErrorBar = (): ReactElement | null => {
   const { t } = useTranslation();

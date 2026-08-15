@@ -1,9 +1,14 @@
 import { Server } from "node:http";
-import { expect, test, afterEach, beforeEach, describe, vi } from "vitest";
-import request from "supertest";
 import { faker } from "@faker-js/faker";
 import dayjs from "dayjs";
+import request from "supertest";
+import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
+import { config } from "shared/config";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
+import {
+  testProgramItem,
+  testProgramItem2,
+} from "shared/tests/testProgramItem";
 import {
   GetGroupError,
   GetGroupResult,
@@ -14,28 +19,23 @@ import {
   PostJoinGroupRequest,
   PostLeaveGroupError,
 } from "shared/types/api/groups";
+import { ProgramType } from "shared/types/models/programItem";
 import { UserGroup } from "shared/types/models/user";
-import { getJWT } from "server/utils/jwt";
+import { saveDirectSignup } from "server/features/direct-signup/directSignupRepository";
+import { saveProgramItems } from "server/features/program-item/programItemRepository";
+import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { findUser, saveUser } from "server/features/user/userRepository";
 import {
-  mockPostDirectSignupRequest,
   mockLotterySignups,
+  mockPostDirectSignupRequest,
   mockUser,
   mockUser2,
   mockUser3,
 } from "server/test/mock-data/mockUser";
-import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
-import { saveProgramItems } from "server/features/program-item/programItemRepository";
-import {
-  testProgramItem,
-  testProgramItem2,
-} from "shared/tests/testProgramItem";
-import { closeServer, startServer } from "server/utils/server";
-import { saveDirectSignup } from "server/features/direct-signup/directSignupRepository";
 import { saveTestSettings } from "server/test/test-settings/testSettingsRepository";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
-import { config } from "shared/config";
-import { ProgramType } from "shared/types/models/programItem";
+import { getJWT } from "server/utils/jwt";
+import { closeServer, startServer } from "server/utils/server";
 
 let server: Server;
 

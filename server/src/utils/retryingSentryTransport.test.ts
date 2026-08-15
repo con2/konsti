@@ -1,7 +1,7 @@
-import { expect, test, vi, afterEach, describe } from "vitest";
 import { makeNodeTransport } from "@sentry/node";
-import { makeRetryingNodeTransport } from "server/utils/retryingSentryTransport";
+import { afterEach, describe, expect, test, vi } from "vitest";
 import { logger } from "server/utils/logger";
+import { makeRetryingNodeTransport } from "server/utils/retryingSentryTransport";
 
 const { sendMock, flushMock } = vi.hoisted(() => ({
   sendMock: vi.fn(),

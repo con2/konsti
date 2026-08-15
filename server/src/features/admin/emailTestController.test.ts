@@ -1,16 +1,16 @@
 import { Server } from "node:http";
-import { expect, test, afterEach, describe, beforeEach, vi } from "vitest";
-import request from "supertest";
 import { faker } from "@faker-js/faker";
+import request from "supertest";
+import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
-import { closeServer, startServer } from "server/utils/server";
-import { UserGroup } from "shared/types/models/user";
-import { getJWT } from "server/utils/jwt";
-import { EmailNotificationTrigger } from "shared/types/emailNotification";
 import { PostEmailTestRequest } from "shared/test-types/api/testData";
+import { testProgramItem } from "shared/tests/testProgramItem";
+import { EmailNotificationTrigger } from "shared/types/emailNotification";
+import { UserGroup } from "shared/types/models/user";
 import { EmailSender } from "server/features/notifications/email";
 import { saveProgramItems } from "server/features/program-item/programItemRepository";
-import { testProgramItem } from "shared/tests/testProgramItem";
+import { getJWT } from "server/utils/jwt";
+import { closeServer, startServer } from "server/utils/server";
 
 let server: Server;
 

@@ -1,32 +1,32 @@
 import { Server } from "node:http";
-import { afterEach, beforeEach, expect, test, describe } from "vitest";
-import request from "supertest";
 import { faker } from "@faker-js/faker";
+import request from "supertest";
+import { afterEach, beforeEach, describe, expect, test } from "vitest";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
-import { getJWT } from "server/utils/jwt";
+import {
+  testProgramItem,
+  testProgramItem2,
+} from "shared/tests/testProgramItem";
+import { GetSignupMessagesResult } from "shared/types/api/users";
+import {
+  SignupQuestion,
+  SignupQuestionType,
+} from "shared/types/models/settings";
 import { UserGroup } from "shared/types/models/user";
-import { closeServer, startServer } from "server/utils/server";
+import { saveDirectSignup } from "server/features/direct-signup/directSignupRepository";
 import { saveProgramItems } from "server/features/program-item/programItemRepository";
+import {
+  createSettings,
+  saveSignupQuestion,
+} from "server/features/settings/settingsRepository";
 import { saveUser } from "server/features/user/userRepository";
 import {
   mockPostDirectSignupRequest,
   mockPostDirectSignupRequest2,
   mockUser,
 } from "server/test/mock-data/mockUser";
-import {
-  testProgramItem,
-  testProgramItem2,
-} from "shared/tests/testProgramItem";
-import {
-  SignupQuestion,
-  SignupQuestionType,
-} from "shared/types/models/settings";
-import {
-  createSettings,
-  saveSignupQuestion,
-} from "server/features/settings/settingsRepository";
-import { saveDirectSignup } from "server/features/direct-signup/directSignupRepository";
-import { GetSignupMessagesResult } from "shared/types/api/users";
+import { getJWT } from "server/utils/jwt";
+import { closeServer, startServer } from "server/utils/server";
 
 let server: Server;
 

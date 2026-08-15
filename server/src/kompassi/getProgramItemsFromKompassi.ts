@@ -1,24 +1,24 @@
 import fs from "node:fs";
 import path from "node:path";
-import { z, ZodError } from "zod";
 import { unique } from "remeda";
+import { ZodError, z } from "zod";
+import { config } from "shared/config";
+import { EventName } from "shared/config/eventConfigTypes";
 import { KompassiError } from "shared/types/api/errors";
-import {
-  KompassiKonstiProgramType,
-  KompassiProgramItem,
-  KompassiProgramItemSchema,
-} from "server/kompassi/kompassiProgramItem";
+import { ProgramType } from "shared/types/models/programItem";
+import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import {
   Result,
   makeErrorResult,
   makeSuccessResult,
 } from "shared/utils/result";
-import { logger } from "server/utils/logger";
-import { config } from "shared/config";
-import { EventName } from "shared/config/eventConfigTypes";
 import { getProgramItemsFromFullProgram } from "server/kompassi/getProgramItemsFromFullProgram";
-import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
-import { ProgramType } from "shared/types/models/programItem";
+import {
+  KompassiKonstiProgramType,
+  KompassiProgramItem,
+  KompassiProgramItemSchema,
+} from "server/kompassi/kompassiProgramItem";
+import { logger } from "server/utils/logger";
 
 export const getProgramItemsFromKompassi = async (
   eventName: EventName,

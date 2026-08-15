@@ -3,8 +3,8 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router";
 import { capitalize } from "remeda";
 import { EventLogAction, EventLogItem } from "shared/types/models/eventLog";
-import { useAppSelector } from "client/utils/hooks";
 import { AppRoute } from "client/app/AppRoutes";
+import { useAppSelector } from "client/utils/hooks";
 
 interface Props {
   eventLogItem: EventLogItem;

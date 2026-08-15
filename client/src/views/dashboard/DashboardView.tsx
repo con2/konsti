@@ -1,10 +1,10 @@
 import { ReactElement, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { getResults } from "client/services/resultsServices";
-import { Loading } from "client/components/Loading";
-import { RaisedCard } from "client/components/RaisedCard";
 import { AssignmentRun } from "shared/types/models/result";
 import { getDateAndTime } from "shared/utils/timeFormatter";
+import { Loading } from "client/components/Loading";
+import { RaisedCard } from "client/components/RaisedCard";
+import { getResults } from "client/services/resultsServices";
 
 export const DashboardView = (): ReactElement => {
   const { t } = useTranslation();

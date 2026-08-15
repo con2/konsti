@@ -1,9 +1,9 @@
 import { describe, expect, test } from "vitest";
+import { AdminState } from "client/types/reduxTypes";
 import {
   adminReducer,
   updateServerAppBuildTime,
 } from "client/views/admin/adminSlice";
-import { AdminState } from "client/types/reduxTypes";
 
 const initialState = (): AdminState => adminReducer(undefined, { type: "" });
 

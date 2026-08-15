@@ -1,11 +1,4 @@
 import {
-  findOrCreateSettings,
-  saveHidden,
-  saveSignupQuestion,
-  delSignupQuestion,
-  saveSettings,
-} from "server/features/settings/settingsRepository";
-import {
   DeleteSignupQuestionResponse,
   GetSettingsResponse,
   PostHiddenResponse,
@@ -13,8 +6,16 @@ import {
   PostSettingsResponse,
   PostSignupQuestionResponse,
 } from "shared/types/api/settings";
-import { removeHiddenProgramItemsFromUsers } from "server/features/settings/utils/removeHiddenProgramItemsFromUsers";
 import { SignupQuestion } from "shared/types/models/settings";
+import {
+  delSignupQuestion,
+  findOrCreateSettings,
+  saveHidden,
+  saveSettings,
+  saveSignupQuestion,
+} from "server/features/settings/settingsRepository";
+import { removeHiddenProgramItemsFromUsers } from "server/features/settings/utils/removeHiddenProgramItemsFromUsers";
+
 export const fetchSettings = async (): Promise<GetSettingsResponse> => {
   const findSettingsResult = await findOrCreateSettings();
   if (!findSettingsResult.ok) {

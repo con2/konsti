@@ -1,12 +1,12 @@
-import { expect, test } from "vitest";
 import dayjs from "dayjs";
-import { getAssignmentBonus } from "server/features/assignment/utils/getAssignmentBonus";
-import { getUsers } from "server/features/assignment/utils/assignmentTestUtils";
-import { testProgramItem } from "shared/tests/testProgramItem";
+import { expect, test } from "vitest";
 import { config } from "shared/config";
-import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
+import { testProgramItem } from "shared/tests/testProgramItem";
 import { EventLogAction } from "shared/types/models/eventLog";
+import { getUsers } from "server/features/assignment/utils/assignmentTestUtils";
+import { getAssignmentBonus } from "server/features/assignment/utils/getAssignmentBonus";
+import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 
 const assignmentTime = testProgramItem.startTime;
 

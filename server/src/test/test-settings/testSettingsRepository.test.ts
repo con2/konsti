@@ -1,6 +1,6 @@
-import { expect, test, afterEach, beforeEach } from "vitest";
-import mongoose from "mongoose";
 import { faker } from "@faker-js/faker";
+import mongoose from "mongoose";
+import { afterEach, beforeEach, expect, test } from "vitest";
 import { db } from "server/db/mongodb";
 import {
   findTestSettings,

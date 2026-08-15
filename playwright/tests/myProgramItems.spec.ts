@@ -1,16 +1,16 @@
-import { test, expect } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 import dayjs from "dayjs";
+import { config } from "shared/config";
+import { EventSignupStrategy } from "shared/config/eventConfigTypes";
+import { testProgramItem } from "shared/tests/testProgramItem";
+import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
+  addProgramItems,
+  login,
+  populateDb,
   postSettings,
   postTestSettings,
-  login,
-  addProgramItems,
-  populateDb,
 } from "playwright/playwrightUtils";
-import { ProgramListPage } from "playwright/pages/ProgramListPage";
-import { EventSignupStrategy } from "shared/config/eventConfigTypes";
-import { config } from "shared/config";
-import { testProgramItem } from "shared/tests/testProgramItem";
 
 const startTime = dayjs(config.event().eventStartTime)
   .add(3, "hour")

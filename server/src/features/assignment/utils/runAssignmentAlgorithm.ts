@@ -1,22 +1,22 @@
-import { logger } from "server/utils/logger";
-import { padgAssignment } from "server/features/assignment/padg/padgAssignment";
-import { randomAssignment } from "server/features/assignment/random/randomAssignment";
-import { User } from "shared/types/models/user";
-import { ProgramItem } from "shared/types/models/programItem";
-import {
-  AssignmentResultStatus,
-  AssignmentResult,
-} from "server/types/resultTypes";
 import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
-import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
+import { AssignmentError } from "shared/types/api/errors";
+import { ProgramItem } from "shared/types/models/programItem";
+import { User } from "shared/types/models/user";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import {
   Result,
   makeErrorResult,
   makeSuccessResult,
 } from "shared/utils/result";
-import { AssignmentError } from "shared/types/api/errors";
+import { padgAssignment } from "server/features/assignment/padg/padgAssignment";
+import { randomAssignment } from "server/features/assignment/random/randomAssignment";
 import { getStartingProgramItems } from "server/features/assignment/utils/getStartingProgramItems";
+import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
+import {
+  AssignmentResult,
+  AssignmentResultStatus,
+} from "server/types/resultTypes";
+import { logger } from "server/utils/logger";
 
 export const runAssignmentAlgorithm = (
   assignmentAlgorithm: AssignmentAlgorithm,

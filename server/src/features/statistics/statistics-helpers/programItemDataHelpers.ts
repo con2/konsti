@@ -1,10 +1,10 @@
 import { countBy } from "remeda";
-import { logger } from "server/utils/logger";
 import { ProgramItem, ProgramType } from "shared/types/models/programItem";
 import { User } from "shared/types/models/user";
-import { getMaximumNumberOfAttendeesByTime } from "./resultDataHelpers";
-import { toPercent } from "server/features/statistics/statsUtil";
 import { getDateAndTime } from "shared/utils/timeFormatter";
+import { toPercent } from "server/features/statistics/statsUtil";
+import { logger } from "server/utils/logger";
+import { getMaximumNumberOfAttendeesByTime } from "./resultDataHelpers";
 
 export const getProgramItemsByStartTime = (
   programItems: readonly ProgramItem[],

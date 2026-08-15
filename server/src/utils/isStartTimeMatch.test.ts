@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, test, vi } from "vitest";
-import { isStartTimeMatch } from "server/utils/isStartTimeMatch";
 import { config } from "shared/config";
+import { isStartTimeMatch } from "server/utils/isStartTimeMatch";
 
 const parentId = "test-parent-id";
 const parentStartTime = "2023-07-29T12:00:00.000Z";

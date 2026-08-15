@@ -1,9 +1,9 @@
-import { api } from "client/utils/api";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
   PostHiddenRequest,
   PostHiddenResponse,
 } from "shared/types/api/settings";
+import { api } from "client/utils/api";
 
 export const postHidden = async (
   hiddenProgramItemIds: readonly string[],

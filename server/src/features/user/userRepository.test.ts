@@ -1,6 +1,11 @@
-import { expect, test, afterEach, beforeEach } from "vitest";
-import mongoose from "mongoose";
 import { faker } from "@faker-js/faker";
+import mongoose from "mongoose";
+import { afterEach, beforeEach, expect, test } from "vitest";
+import { testProgramItem } from "shared/tests/testProgramItem";
+import { MongoDbError } from "shared/types/api/errors";
+import { makeErrorResult } from "shared/utils/result";
+import { db } from "server/db/mongodb";
+import { saveProgramItems } from "server/features/program-item/programItemRepository";
 import {
   findUser,
   findUsers,
@@ -8,11 +13,6 @@ import {
 } from "server/features/user/userRepository";
 import { mockUser, mockUser2 } from "server/test/mock-data/mockUser";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
-import { testProgramItem } from "shared/tests/testProgramItem";
-import { saveProgramItems } from "server/features/program-item/programItemRepository";
-import { db } from "server/db/mongodb";
-import { MongoDbError } from "shared/types/api/errors";
-import { makeErrorResult } from "shared/utils/result";
 
 beforeEach(async () => {
   await db.connectToDb(globalThis.__MONGO_URI__, faker.string.alphanumeric(10));

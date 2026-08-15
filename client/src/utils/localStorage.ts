@@ -1,18 +1,18 @@
-import { merge } from "remeda";
 import { captureException } from "@sentry/react";
+import { merge } from "remeda";
 import { z } from "zod";
-import { LocalStorageState } from "client/types/reduxTypes";
-import { ProgramType } from "shared/types/models/programItem";
-import { StringToJsonSchema } from "client/utils/zodUtils";
 import { ActiveProgramType } from "shared/config/clientConfigTypes";
-import { getProgramTypeSelectOptions } from "client/utils/getProgramTypeSelectOptions";
-import { Locale } from "shared/types/locale";
 import {
   appUpdateReloadedBuildTimeKey,
   browserStorageEventPrefix,
   kompassiLoginStateKey,
   localStorageStateKey,
 } from "shared/constants/browserStorage";
+import { Locale } from "shared/types/locale";
+import { ProgramType } from "shared/types/models/programItem";
+import { LocalStorageState } from "client/types/reduxTypes";
+import { getProgramTypeSelectOptions } from "client/utils/getProgramTypeSelectOptions";
+import { StringToJsonSchema } from "client/utils/zodUtils";
 
 const isActive = (programType: ActiveProgramType): boolean =>
   getProgramTypeSelectOptions().includes(programType);

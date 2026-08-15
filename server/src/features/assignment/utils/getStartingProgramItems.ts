@@ -1,6 +1,6 @@
+import { ProgramItem } from "shared/types/models/programItem";
 import { isStartTimeMatch } from "server/utils/isStartTimeMatch";
 import { logger } from "server/utils/logger";
-import { ProgramItem } from "shared/types/models/programItem";
 
 export const getStartingProgramItems = (
   programItems: readonly ProgramItem[],

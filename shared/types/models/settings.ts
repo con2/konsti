@@ -1,10 +1,10 @@
 import { z } from "zod";
 import {
-  LoginProvider,
   EventSignupStrategy,
+  LoginProvider,
 } from "shared/config/eventConfigTypes";
-import { EmailNotificationTrigger } from "shared/types/emailNotification";
 import { ADMIN_MESSAGE_LENGTH_MAX } from "shared/constants/validation";
+import { EmailNotificationTrigger } from "shared/types/emailNotification";
 
 export enum SignupQuestionType {
   TEXT = "text",

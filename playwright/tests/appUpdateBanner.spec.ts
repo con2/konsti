@@ -1,4 +1,9 @@
-import { test, expect, Page } from "@playwright/test";
+import { Page, expect, test } from "@playwright/test";
+import { config } from "shared/config";
+import { testProgramItem } from "shared/tests/testProgramItem";
+import { AppUpdateBanner } from "playwright/pages/AppUpdateBanner";
+import { ProgramItemPage } from "playwright/pages/ProgramItemPage";
+import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   addProgramItems,
   clearDb,
@@ -6,11 +11,6 @@ import {
   postTestSettings,
   reportServerBuildTime,
 } from "playwright/playwrightUtils";
-import { config } from "shared/config";
-import { testProgramItem } from "shared/tests/testProgramItem";
-import { AppUpdateBanner } from "playwright/pages/AppUpdateBanner";
-import { ProgramListPage } from "playwright/pages/ProgramListPage";
-import { ProgramItemPage } from "playwright/pages/ProgramItemPage";
 
 // A marker attribute on the document detects reloads independently of the
 // mocked clock (which replaces the performance API): a real reload wipes it,

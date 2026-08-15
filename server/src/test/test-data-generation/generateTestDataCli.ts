@@ -1,7 +1,7 @@
 import { Command } from "commander";
-import { logger } from "server/utils/logger";
 import { db } from "server/db/mongodb";
 import { runGenerators } from "server/test/test-data-generation/runGenerators";
+import { logger } from "server/utils/logger";
 
 const generateTestDataCli = async (): Promise<void> => {
   const commander = new Command();

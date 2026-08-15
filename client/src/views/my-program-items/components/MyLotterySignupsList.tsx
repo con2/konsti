@@ -1,17 +1,17 @@
 import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import { sortBy } from "remeda";
-import { LotterySignupsByStartTimes } from "./LotterySignupsByStartTimes";
 import { RaisedCard } from "client/components/RaisedCard";
 import { useAppSelector } from "client/utils/hooks";
+import { selectGroupMembers } from "client/views/group/groupSlice";
 import {
   EmptyContentContainer,
   MyProgramHeader,
   MyProgramSecondaryText,
   ShowAllButton,
 } from "client/views/my-program-items/components/shared";
-import { selectGroupMembers } from "client/views/group/groupSlice";
 import { LotterySignupWithProgramItem } from "client/views/my-program-items/myProgramItemsSlice";
+import { LotterySignupsByStartTimes } from "./LotterySignupsByStartTimes";
 
 interface Props {
   lotterySignups: readonly LotterySignupWithProgramItem[];

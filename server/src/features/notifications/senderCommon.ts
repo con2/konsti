@@ -1,5 +1,5 @@
-import { NotificationTask } from "server/utils/notificationQueue";
 import { getDateAndTimeWithLocale } from "shared/utils/timeFormatter";
+import { NotificationTask } from "server/utils/notificationQueue";
 
 export interface EmailMessage {
   from: string;

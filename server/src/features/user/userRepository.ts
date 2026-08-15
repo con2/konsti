@@ -1,14 +1,14 @@
-import { logger } from "server/utils/logger";
-import { UserModel, UserSchemaDb } from "server/features/user/userSchema";
-import { NewUser } from "server/types/userTypes";
-import { Serial } from "server/types/serialTypes";
+import { MongoDbError } from "shared/types/api/errors";
 import { User, UserGroup } from "shared/types/models/user";
 import {
   Result,
   makeErrorResult,
   makeSuccessResult,
 } from "shared/utils/result";
-import { MongoDbError } from "shared/types/api/errors";
+import { UserModel, UserSchemaDb } from "server/features/user/userSchema";
+import { Serial } from "server/types/serialTypes";
+import { NewUser } from "server/types/userTypes";
+import { logger } from "server/utils/logger";
 
 // Matched structurally rather than with `instanceof MongoServerError`: Mongoose
 // throws from its own bundled driver copy, which is a different class identity

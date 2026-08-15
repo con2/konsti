@@ -1,11 +1,11 @@
 import { ReactElement, useEffect } from "react";
 import { Navigate } from "react-router";
-import { submitLogout } from "client/views/logout/logoutActions";
-import { useAppDispatch, useAppSelector } from "client/utils/hooks";
-import { postKompassiLogoutRedirect } from "client/services/loginServices";
-import { Loading } from "client/components/Loading";
 import { UserGroup } from "shared/types/models/user";
 import { AppRoute } from "client/app/AppRoutes";
+import { Loading } from "client/components/Loading";
+import { postKompassiLogoutRedirect } from "client/services/loginServices";
+import { useAppDispatch, useAppSelector } from "client/utils/hooks";
+import { submitLogout } from "client/views/logout/logoutActions";
 
 export const LogoutView = (): ReactElement => {
   const dispatch = useAppDispatch();

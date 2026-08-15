@@ -1,16 +1,16 @@
-import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { PayloadAction, createSelector, createSlice } from "@reduxjs/toolkit";
 import { unique } from "remeda";
-import {
-  AllProgramItemsState,
-  ProgramItemDirectSignups,
-  RootState,
-} from "client/types/reduxTypes";
 import {
   AgeGroup,
   Language,
   ProgramItem,
   Tag,
 } from "shared/types/models/programItem";
+import {
+  AllProgramItemsState,
+  ProgramItemDirectSignups,
+  RootState,
+} from "client/types/reduxTypes";
 
 interface DirectSignupUpdate {
   programItemId: string;

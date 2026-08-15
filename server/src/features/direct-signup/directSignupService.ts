@@ -1,30 +1,30 @@
-import { findProgramItemById } from "server/features/program-item/programItemRepository";
-import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
-import { hasSignupEnded } from "server/features/user/userUtils";
+import { config } from "shared/config";
+import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 import {
   DeleteDirectSignupRequest,
   DeleteDirectSignupResponse,
   PostDirectSignupRequest,
   PostDirectSignupResponse,
 } from "shared/types/api/myProgramItems";
+import { SignupType, State } from "shared/types/models/programItem";
+import { getProgramItemValidity } from "shared/utils/getProgramItemValidity";
+import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
 import {
   getDirectSignupEndTime,
   getDirectSignupStartTime,
 } from "shared/utils/signupTimes";
-import { logger } from "server/utils/logger";
+import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
 import {
   delDirectSignup,
   saveDirectSignup,
 } from "server/features/direct-signup/directSignupRepository";
-import { config } from "shared/config";
 import { SignupRepositoryAddSignup } from "server/features/direct-signup/directSignupTypes";
+import { findProgramItemById } from "server/features/program-item/programItemRepository";
 import { getSignupMessage } from "server/features/program-item/programItemUtils";
 import { findOrCreateSettings } from "server/features/settings/settingsRepository";
-import { SignupType, State } from "shared/types/models/programItem";
-import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
-import { getProgramItemValidity } from "shared/utils/getProgramItemValidity";
 import { leaveOrCloseGroup } from "server/features/user/group/groupService";
-import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
+import { hasSignupEnded } from "server/features/user/userUtils";
+import { logger } from "server/utils/logger";
 
 export const storeDirectSignup = async (
   signupRequest: PostDirectSignupRequest,

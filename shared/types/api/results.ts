@@ -1,5 +1,5 @@
-import { AssignmentRun } from "shared/types/models/result";
 import { ApiError, ApiResult } from "shared/types/api/errors";
+import { AssignmentRun } from "shared/types/models/result";
 
 // GET results
 

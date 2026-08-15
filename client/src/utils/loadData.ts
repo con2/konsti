@@ -1,16 +1,16 @@
-import { submitGetProgramItems } from "client/views/all-program-items/allProgramItemsThunks";
+import { config } from "shared/config";
+import { UserGroup } from "shared/types/models/user";
+import { submitGetTestSettings } from "client/test/test-settings/testSettingsThunks";
+import { AppDispatch } from "client/types/reduxTypes";
+import { store } from "client/utils/store";
 import {
   submitGetSettings,
   submitGetSignupMessages,
 } from "client/views/admin/adminThunks";
-import { submitGetUser } from "client/views/my-program-items/myProgramItemsThunks";
+import { submitGetProgramItems } from "client/views/all-program-items/allProgramItemsThunks";
 import { submitGetGroup } from "client/views/group/groupThunks";
 import { submitSessionRecovery } from "client/views/login/loginThunks";
-import { store } from "client/utils/store";
-import { AppDispatch } from "client/types/reduxTypes";
-import { submitGetTestSettings } from "client/test/test-settings/testSettingsThunks";
-import { config } from "shared/config";
-import { UserGroup } from "shared/types/models/user";
+import { submitGetUser } from "client/views/my-program-items/myProgramItemsThunks";
 
 // Returns whether every load that actually ran succeeded, so the caller can
 // tell a load that delivered fresh data from one whose requests failed.

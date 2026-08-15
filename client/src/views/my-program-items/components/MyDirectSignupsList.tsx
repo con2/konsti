@@ -1,7 +1,6 @@
 import { ReactElement, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { sortBy, unique } from "remeda";
-import { DirectSignupsByStartTimes } from "./DirectSignupsByStartTimes";
 import { RaisedCard } from "client/components/RaisedCard";
 import {
   EmptyContentContainer,
@@ -10,6 +9,7 @@ import {
   ShowAllButton,
 } from "client/views/my-program-items/components/shared";
 import { DirectSignupWithProgramItem } from "client/views/my-program-items/myProgramItemsSlice";
+import { DirectSignupsByStartTimes } from "./DirectSignupsByStartTimes";
 
 interface Props {
   directSignups: readonly DirectSignupWithProgramItem[];

@@ -1,15 +1,15 @@
-import { ReactElement, useEffect, useState } from "react";
-import styled from "styled-components";
-import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { ReactElement, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { capitalize } from "remeda";
+import styled from "styled-components";
+import { config } from "shared/config";
+import { ProgramItem } from "shared/types/models/programItem";
 import {
   formattedCurrentTime,
   getTime,
   getWeekdayAndTime,
 } from "shared/utils/timeFormatter";
-import { config } from "shared/config";
-import { ProgramItem } from "shared/types/models/programItem";
 import { RaisedCard } from "client/components/RaisedCard";
 
 interface Props {

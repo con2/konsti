@@ -1,16 +1,16 @@
-import { test, expect, Page, Locator } from "@playwright/test";
+import { Locator, Page, expect, test } from "@playwright/test";
+import { config } from "shared/config";
+import { LoginProvider } from "shared/config/eventConfigTypes";
+import { ApiEndpoint } from "shared/constants/apiEndpoints";
+import { HelperPage } from "playwright/pages/HelperPage";
+import { ProfilePage } from "playwright/pages/ProfilePage";
+import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   login,
   populateDb,
   postSettings,
   postTestSettings,
 } from "playwright/playwrightUtils";
-import { ProgramListPage } from "playwright/pages/ProgramListPage";
-import { HelperPage } from "playwright/pages/HelperPage";
-import { ProfilePage } from "playwright/pages/ProfilePage";
-import { config } from "shared/config";
-import { ApiEndpoint } from "shared/constants/apiEndpoints";
-import { LoginProvider } from "shared/config/eventConfigTypes";
 
 // The client suppresses the network error toast for failed background
 // requests while offline and briefly (5 s grace period) after

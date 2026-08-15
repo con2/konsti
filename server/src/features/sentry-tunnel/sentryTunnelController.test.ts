@@ -1,13 +1,13 @@
 import { Server } from "node:http";
-import { expect, test, afterEach, beforeEach, describe, vi } from "vitest";
-import request from "supertest";
 import { faker } from "@faker-js/faker";
-import { startServer, closeServer } from "server/utils/server";
+import request from "supertest";
+import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
-import { getJWT } from "server/utils/jwt";
 import { UserGroup } from "shared/types/models/user";
 import { mockUser } from "server/test/mock-data/mockUser";
+import { getJWT } from "server/utils/jwt";
 import { logger } from "server/utils/logger";
+import { closeServer, startServer } from "server/utils/server";
 
 let server: Server;
 

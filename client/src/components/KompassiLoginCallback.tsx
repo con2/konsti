@@ -1,16 +1,16 @@
 import { ReactElement, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router";
-import {
-  LoginErrorMessage,
-  submitKompassiLogin,
-} from "client/views/login/loginThunks";
-import { useAppDispatch } from "client/utils/hooks";
-import { Loading } from "client/components/Loading";
 import { AppRoute } from "client/app/AppRoutes";
+import { Loading } from "client/components/Loading";
+import { useAppDispatch } from "client/utils/hooks";
 import {
   clearKompassiLoginState,
   getKompassiLoginState,
 } from "client/utils/sessionStorage";
+import {
+  LoginErrorMessage,
+  submitKompassiLogin,
+} from "client/views/login/loginThunks";
 
 export const KompassiLoginCallback = (): ReactElement => {
   const dispatch = useAppDispatch();

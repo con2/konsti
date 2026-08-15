@@ -1,8 +1,11 @@
 import { Request, Response } from "express";
-import { logger } from "server/utils/logger";
+import { config } from "shared/config";
+import { PostEmailTestRequest } from "shared/test-types/api/testData";
+import { EmailNotificationTrigger } from "shared/types/emailNotification";
+import { EmailSender } from "server/features/notifications/email";
 import {
-  buildEmail,
   EmailMessage,
+  buildEmail,
   getAcceptedEmailTemplate,
   getProgramItemCancelledEmailTemplate,
   getProgramItemDeletedEmailTemplate,
@@ -11,15 +14,12 @@ import {
   getProgramItemTimeChangedEmailTemplate,
   getRejectedEmailTemplate,
 } from "server/features/notifications/senderCommon";
-import { EmailSender } from "server/features/notifications/email";
-import { config } from "shared/config";
+import { findProgramItemById } from "server/features/program-item/programItemRepository";
+import { logger } from "server/utils/logger";
 import {
   NotificationTask,
   NotificationTaskType,
 } from "server/utils/notificationQueue";
-import { PostEmailTestRequest } from "shared/test-types/api/testData";
-import { EmailNotificationTrigger } from "shared/types/emailNotification";
-import { findProgramItemById } from "server/features/program-item/programItemRepository";
 
 export const postEmailTest = async (
   req: Request<unknown, unknown, PostEmailTestRequest>,

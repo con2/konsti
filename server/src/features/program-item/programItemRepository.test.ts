@@ -1,23 +1,32 @@
-import { expect, test, afterEach, beforeEach, vi } from "vitest";
-import mongoose from "mongoose";
 import { faker } from "@faker-js/faker";
 import dayjs from "dayjs";
-import { db } from "server/db/mongodb";
-import {
-  findProgramItemById,
-  findProgramItems,
-  saveProgramItems,
-} from "server/features/program-item/programItemRepository";
+import mongoose from "mongoose";
+import { afterEach, beforeEach, expect, test, vi } from "vitest";
+import { config } from "shared/config";
 import {
   testProgramItem,
   testProgramItem2,
 } from "shared/tests/testProgramItem";
-import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
+import { EventLogAction } from "shared/types/models/eventLog";
+import {
+  ProgramType,
+  SignupType,
+  State,
+} from "shared/types/models/programItem";
+import { db } from "server/db/mongodb";
 import {
   findDirectSignups,
   findUserDirectSignups,
   saveDirectSignup,
 } from "server/features/direct-signup/directSignupRepository";
+import { EmailSender } from "server/features/notifications/email";
+import {
+  findProgramItemById,
+  findProgramItems,
+  saveProgramItems,
+} from "server/features/program-item/programItemRepository";
+import { saveFavorite } from "server/features/user/favorite-program-item/favoriteProgramItemRepository";
+import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { findUser, saveUser } from "server/features/user/userRepository";
 import {
   mockLotterySignups,
@@ -25,22 +34,13 @@ import {
   mockPostDirectSignupRequest2,
   mockUser,
 } from "server/test/mock-data/mockUser";
-import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
-import { saveFavorite } from "server/features/user/favorite-program-item/favoriteProgramItemRepository";
-import {
-  ProgramType,
-  SignupType,
-  State,
-} from "shared/types/models/programItem";
-import { EventLogAction } from "shared/types/models/eventLog";
 import { saveTestSettings } from "server/test/test-settings/testSettingsRepository";
-import { config } from "shared/config";
+import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import {
+  NotificationTaskType,
   createNotificationQueueService,
   getGlobalNotificationQueueService,
-  NotificationTaskType,
 } from "server/utils/notificationQueue";
-import { EmailSender } from "server/features/notifications/email";
 
 vi.mock<object>(
   import("server/utils/notificationQueue"),

@@ -1,6 +1,6 @@
 import { z } from "zod";
-import { UserAssignmentResult } from "shared/types/models/result";
 import { ApiError, ApiResult } from "shared/types/api/errors";
+import { UserAssignmentResult } from "shared/types/models/result";
 
 // POST assignment
 

@@ -1,8 +1,8 @@
 import { afterEach, expect, test, vi } from "vitest";
 import { config } from "shared/config";
 import { testProgramItem } from "shared/tests/testProgramItem";
-import { getProgramItemValidity } from "shared/utils/getProgramItemValidity";
 import { ProgramType, SignupType, Tag } from "shared/types/models/programItem";
+import { getProgramItemValidity } from "shared/utils/getProgramItemValidity";
 
 afterEach(() => {
   vi.restoreAllMocks();

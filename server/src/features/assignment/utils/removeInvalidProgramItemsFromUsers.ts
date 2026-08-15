@@ -1,13 +1,5 @@
 import dayjs from "dayjs";
 import { partition, uniqueBy } from "remeda";
-import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
-import { addEventLogItems } from "server/features/user/event-log/eventLogRepository";
-import { queueCancelledDeletedEmails } from "server/features/notifications/queueCancelledDeletedEmails";
-import {
-  findUsers,
-  updateUsersByUsername,
-} from "server/features/user/userRepository";
-import { logger } from "server/utils/logger";
 import { MongoDbError } from "shared/types/api/errors";
 import { EventLogAction } from "shared/types/models/eventLog";
 import {
@@ -16,10 +8,18 @@ import {
   State,
 } from "shared/types/models/programItem";
 import { FavoriteProgramItemId, LotterySignup } from "shared/types/models/user";
-import { Result, makeSuccessResult } from "shared/utils/result";
-import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
-import { getLotterySignupEndTime } from "shared/utils/signupTimes";
 import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
+import { Result, makeSuccessResult } from "shared/utils/result";
+import { getLotterySignupEndTime } from "shared/utils/signupTimes";
+import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
+import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
+import { queueCancelledDeletedEmails } from "server/features/notifications/queueCancelledDeletedEmails";
+import { addEventLogItems } from "server/features/user/event-log/eventLogRepository";
+import {
+  findUsers,
+  updateUsersByUsername,
+} from "server/features/user/userRepository";
+import { logger } from "server/utils/logger";
 
 interface InvalidLotterySignup {
   lotterySignup: LotterySignup;

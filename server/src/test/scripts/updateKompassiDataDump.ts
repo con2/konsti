@@ -1,11 +1,11 @@
 import fs from "node:fs";
-import { sortBy } from "remeda";
 import prettier from "prettier";
+import { sortBy } from "remeda";
+import { config } from "shared/config";
 import { getProgramFromServer } from "server/kompassi/getProgramItemsFromKompassi";
 import { KompassiProgramItem } from "server/kompassi/kompassiProgramItem";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { logger } from "server/utils/logger";
-import { config } from "shared/config";
 
 const isPlainObject = (val: unknown): val is Record<string, unknown> => {
   return (

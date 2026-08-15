@@ -5,11 +5,11 @@ import {
   Tag,
 } from "shared/types/models/programItem";
 import { isPreConventionWeekProgramItem } from "shared/utils/isPreConventionWeekProgramItem";
+import { getTimeNow } from "client/utils/getTimeNow";
 import {
   getUpcomingProgramItems,
   isMainEventProgramVisible,
 } from "client/utils/getUpcomingProgramItems";
-import { getTimeNow } from "client/utils/getTimeNow";
 
 export enum StartingTimeOption {
   UPCOMING = "upcoming",

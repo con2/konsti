@@ -1,8 +1,8 @@
-import { ReactElement } from "react";
-import { useNavigate, useNavigationType } from "react-router";
-import { useTranslation } from "react-i18next";
-import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { ReactElement } from "react";
+import { useTranslation } from "react-i18next";
+import { useNavigate, useNavigationType } from "react-router";
+import styled from "styled-components";
 import { navigateToPreviousOrRoot } from "client/utils/navigation";
 
 export const BackButton = (): ReactElement => {

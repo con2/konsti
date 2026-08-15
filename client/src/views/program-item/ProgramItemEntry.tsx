@@ -1,7 +1,7 @@
-import { memo, ReactElement } from "react";
-import styled, { css, keyframes } from "styled-components";
+import { ReactElement, memo } from "react";
 import { useTranslation } from "react-i18next";
-import { theme } from "client/theme";
+import styled, { css, keyframes } from "styled-components";
+import { config } from "shared/config";
 import {
   ProgramItem,
   ProgramItemSignupStrategy,
@@ -9,28 +9,28 @@ import {
   State,
   UserSignup,
 } from "shared/types/models/programItem";
-import { UserGroup } from "shared/types/models/user";
-import { RaisedCard } from "client/components/RaisedCard";
-import {
-  isAlreadyDirectySigned,
-  isAlreadyLotterySigned,
-} from "client/views/program-item/programItemUtils";
-import { getProgramItemValidity } from "shared/utils/getProgramItemValidity";
-import { config } from "shared/config";
-import { getProgramTypeSelectOptions } from "client/utils/getProgramTypeSelectOptions";
-import { ProgramItemBody } from "client/views/program-item/body/ProgramItemBody";
-import { ProgramItemSignup } from "client/views/program-item/signup/ProgramItemSignup";
-import { ProgramItemHead } from "client/views/program-item/head/ProgramItemHead";
 import { SignupQuestion } from "shared/types/models/settings";
-import { ProgramItemErrors } from "client/views/program-item/ProgramItemErrors";
+import { UserGroup } from "shared/types/models/user";
+import { getProgramItemValidity } from "shared/utils/getProgramItemValidity";
 import { isDirectSignupAlwaysOpen } from "shared/utils/isDirectSignupAlwaysOpen";
-import { useTimeNow } from "client/utils/getTimeNow";
 import { getDirectSignupEndTime } from "shared/utils/signupTimes";
+import { RaisedCard } from "client/components/RaisedCard";
+import { theme } from "client/theme";
+import { getProgramTypeSelectOptions } from "client/utils/getProgramTypeSelectOptions";
+import { useTimeNow } from "client/utils/getTimeNow";
 import {
   DirectSignupWithProgramItem,
   LotterySignupWithProgramItem,
 } from "client/views/my-program-items/myProgramItemsSlice";
+import { ProgramItemErrors } from "client/views/program-item/ProgramItemErrors";
+import { ProgramItemBody } from "client/views/program-item/body/ProgramItemBody";
 import { ProgramItemStatusMessage } from "client/views/program-item/components/ProgramItemStatusMessage";
+import { ProgramItemHead } from "client/views/program-item/head/ProgramItemHead";
+import {
+  isAlreadyDirectySigned,
+  isAlreadyLotterySigned,
+} from "client/views/program-item/programItemUtils";
+import { ProgramItemSignup } from "client/views/program-item/signup/ProgramItemSignup";
 
 interface Props {
   programItem: ProgramItem;

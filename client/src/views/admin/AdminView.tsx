@@ -1,32 +1,32 @@
-import { ReactElement, ChangeEvent, useState } from "react";
+import { ChangeEvent, ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
-import styled, { css } from "styled-components";
 import { capitalize } from "remeda";
-import { HiddenProgramItemsList } from "client/views/admin/components/HiddenProgramItemsList";
-import {
-  submitGetSentryTest,
-  submitAssignment,
-  submitToggleAppOpen,
-  submitSetAdminMessage,
-  submitEmailTest,
-} from "client/views/admin/adminThunks";
-import { submitUpdateProgramItems } from "client/views/all-program-items/allProgramItemsThunks";
-import { getWeekdayAndTime } from "shared/utils/timeFormatter";
-import { ProgramItem, SignupType } from "shared/types/models/programItem";
-import { useAppDispatch, useAppSelector } from "client/utils/hooks";
-import { Button, ButtonStyle } from "client/components/Button";
-import { Checkbox } from "client/components/Checkbox";
-import { AdminMessageEditor } from "client/views/admin/components/AdminMessageEditor";
-import { SignupQuestionList } from "client/views/admin/components/SignupQuestionList";
-import { Dropdown, Option } from "client/components/Dropdown";
-import { SignupStrategySelector } from "client/views/admin/components/SignupStrategySelector";
-import { ButtonGroup } from "client/components/ButtonGroup";
-import { LoginProviderSelector } from "client/views/admin/components/LoginProviderSelector";
-import { EmailNotificationTriggerSelector } from "client/views/admin/components/EmailNotificationTriggerSelector";
-import { selectHiddenProgramItems } from "client/views/admin/adminSlice";
-import { EmailNotificationTrigger } from "shared/types/emailNotification";
+import styled, { css } from "styled-components";
 import { config } from "shared/config";
+import { EmailNotificationTrigger } from "shared/types/emailNotification";
+import { ProgramItem, SignupType } from "shared/types/models/programItem";
 import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
+import { getWeekdayAndTime } from "shared/utils/timeFormatter";
+import { Button, ButtonStyle } from "client/components/Button";
+import { ButtonGroup } from "client/components/ButtonGroup";
+import { Checkbox } from "client/components/Checkbox";
+import { Dropdown, Option } from "client/components/Dropdown";
+import { useAppDispatch, useAppSelector } from "client/utils/hooks";
+import { selectHiddenProgramItems } from "client/views/admin/adminSlice";
+import {
+  submitAssignment,
+  submitEmailTest,
+  submitGetSentryTest,
+  submitSetAdminMessage,
+  submitToggleAppOpen,
+} from "client/views/admin/adminThunks";
+import { AdminMessageEditor } from "client/views/admin/components/AdminMessageEditor";
+import { EmailNotificationTriggerSelector } from "client/views/admin/components/EmailNotificationTriggerSelector";
+import { HiddenProgramItemsList } from "client/views/admin/components/HiddenProgramItemsList";
+import { LoginProviderSelector } from "client/views/admin/components/LoginProviderSelector";
+import { SignupQuestionList } from "client/views/admin/components/SignupQuestionList";
+import { SignupStrategySelector } from "client/views/admin/components/SignupStrategySelector";
+import { submitUpdateProgramItems } from "client/views/all-program-items/allProgramItemsThunks";
 
 export const AdminView = (): ReactElement => {
   const programItems = useAppSelector(

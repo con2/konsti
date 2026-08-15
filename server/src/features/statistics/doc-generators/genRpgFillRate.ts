@@ -5,12 +5,12 @@ import {
   State,
 } from "shared/types/models/programItem";
 import {
-  collectRpgSpotCounts,
   EVENT_LABELS,
   EVENT_ORDER,
+  NO_RPGS_TEXT,
+  collectRpgSpotCounts,
   eventYears,
   fixedBar,
-  NO_RPGS_TEXT,
   pct,
   readDataFile,
   writeDoc,

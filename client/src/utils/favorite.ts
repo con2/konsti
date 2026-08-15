@@ -1,6 +1,6 @@
 import { ProgramItem } from "shared/types/models/programItem";
-import { submitUpdateFavorites } from "client/views/my-program-items/myProgramItemsThunks";
 import { AppDispatch } from "client/types/reduxTypes";
+import { submitUpdateFavorites } from "client/views/my-program-items/myProgramItemsThunks";
 
 export interface UpdateFavoriteOpts {
   programItem: ProgramItem;

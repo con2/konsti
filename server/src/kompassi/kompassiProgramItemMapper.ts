@@ -1,32 +1,32 @@
 import dayjs from "dayjs";
 import { capitalize, first } from "remeda";
+import { config } from "shared/config";
 import {
-  InclusivityValue,
-  ProgramItem,
-  Gamestyle,
-  Language,
-  ProgramType,
-  Tag,
   AgeGroup,
-  SignupType,
+  Gamestyle,
+  InclusivityValue,
+  Language,
   Popularity,
+  ProgramItem,
+  ProgramType,
+  SignupType,
   State,
+  Tag,
 } from "shared/types/models/programItem";
+import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import {
-  KompassiProgramItem,
-  KompassiGamestyle,
-  KompassiLanguage,
-  KompassiInclusivity,
-  KompassiKonstiProgramType,
-  KompassiGrouping,
   KompassiAgeGroup,
   KompassiBoolean,
+  KompassiGamestyle,
+  KompassiGrouping,
+  KompassiInclusivity,
+  KompassiKonstiProgramType,
+  KompassiLanguage,
+  KompassiProgramItem,
   KompassiRegistration,
   KompassiScheduleItem,
   KompassiYesNo,
 } from "server/kompassi/kompassiProgramItem";
-import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
-import { config } from "shared/config";
 import { getShortDescriptionFromDescription } from "server/utils/getShortDescriptionFromDescription";
 
 const { customDetailsProgramItems } = config.event();

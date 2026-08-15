@@ -1,19 +1,19 @@
-import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { PayloadAction, createSelector, createSlice } from "@reduxjs/toolkit";
 import { isDeepEqual } from "remeda";
-import { AdminState, RootState } from "client/types/reduxTypes";
-import { BackendError } from "client/types/errorTypes";
-import { SettingsPayload } from "shared/types/api/settings";
+import { config } from "shared/config";
+import { ActiveProgramType } from "shared/config/clientConfigTypes";
 import {
-  LoginProvider,
   EventSignupStrategy,
+  LoginProvider,
 } from "shared/config/eventConfigTypes";
+import { SettingsPayload } from "shared/types/api/settings";
+import { EmailNotificationTrigger } from "shared/types/emailNotification";
 import { ProgramItem, ProgramType } from "shared/types/models/programItem";
 import { SignupQuestion } from "shared/types/models/settings";
 import { SignupMessage } from "shared/types/models/signupMessage";
-import { EmailNotificationTrigger } from "shared/types/emailNotification";
+import { BackendError } from "client/types/errorTypes";
+import { AdminState, RootState } from "client/types/reduxTypes";
 import { loadSession } from "client/utils/localStorage";
-import { ActiveProgramType } from "shared/config/clientConfigTypes";
-import { config } from "shared/config";
 
 // Empty selection means all program types
 const getInitialActiveProgramTypes = (): readonly ProgramType[] => {

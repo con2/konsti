@@ -1,7 +1,7 @@
-import { logger } from "server/utils/logger";
-import { removeCancelledDeletedProgramItemsFromUsers } from "server/features/assignment/utils/removeInvalidProgramItemsFromUsers";
 import { db } from "server/db/mongodb";
+import { removeCancelledDeletedProgramItemsFromUsers } from "server/features/assignment/utils/removeInvalidProgramItemsFromUsers";
 import { findProgramItems } from "server/features/program-item/programItemRepository";
+import { logger } from "server/utils/logger";
 
 const removeInvalidProgramItems = async (): Promise<void> => {
   try {

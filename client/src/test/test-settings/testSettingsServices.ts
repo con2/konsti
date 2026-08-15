@@ -1,11 +1,11 @@
-import { api } from "client/utils/api";
-import { registerBackgroundRequest } from "client/utils/networkErrorPolicy";
 import { ApiDevEndpoint } from "shared/constants/apiEndpoints";
 import {
   GetTestSettingsResponse,
   PostTestSettingsRequest,
   PostTestSettingsResponse,
 } from "shared/test-types/api/testSettings";
+import { api } from "client/utils/api";
+import { registerBackgroundRequest } from "client/utils/networkErrorPolicy";
 
 // The test-time poll below is part of the periodic data load, so its
 // failures get the suppressed background error handling

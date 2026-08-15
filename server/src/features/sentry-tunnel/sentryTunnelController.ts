@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import { logger } from "server/utils/logger";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { resendSentryRequest } from "server/features/sentry-tunnel/sentryTunnelService";
+import { logger } from "server/utils/logger";
 
 export const postSentryTunnel = (
   req: Request<unknown, unknown, Buffer>,

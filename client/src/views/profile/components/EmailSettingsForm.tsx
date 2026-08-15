@@ -1,14 +1,14 @@
 import { ChangeEvent, ReactElement, useState } from "react";
-import styled, { css } from "styled-components";
 import { useTranslation } from "react-i18next";
+import styled, { css } from "styled-components";
+import { EMAIL_REGEX } from "shared/constants/validation";
 import { Button, ButtonStyle } from "client/components/Button";
-import { useAppDispatch } from "client/utils/hooks";
-import { submitUpdateUserEmailAddress } from "client/views/login/loginThunks";
 import {
   EmailNotificationField,
   StyledEmailInput,
 } from "client/components/EmailNotificationField";
-import { EMAIL_REGEX } from "shared/constants/validation";
+import { useAppDispatch } from "client/utils/hooks";
+import { submitUpdateUserEmailAddress } from "client/views/login/loginThunks";
 
 interface Props {
   email: string;

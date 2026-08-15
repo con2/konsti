@@ -1,16 +1,16 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
-import styled from "styled-components";
 import { Link } from "react-router";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import KonstiLogo from "client/components/icons/konsti.svg";
-import { LanguageSelector } from "client/components/LanguageSelector";
-import { Navigation } from "./Navigation";
-import { useAppSelector } from "client/utils/hooks";
+import styled from "styled-components";
 import { config } from "shared/config";
 import { AppRoute } from "client/app/AppRoutes";
+import { LanguageSelector } from "client/components/LanguageSelector";
+import KonstiLogo from "client/components/icons/konsti.svg";
 import { useTimeNow } from "client/utils/getTimeNow";
 import { isMainEventProgramVisible } from "client/utils/getUpcomingProgramItems";
+import { useAppSelector } from "client/utils/hooks";
+import { Navigation } from "./Navigation";
 
 export const HEADER_HEIGHT = 40;
 

@@ -1,8 +1,9 @@
 import { z } from "zod";
 import {
-  LoginProvider,
   EventSignupStrategy,
+  LoginProvider,
 } from "shared/config/eventConfigTypes";
+import { ApiError, ApiResult } from "shared/types/api/errors";
 import { EmailNotificationTrigger } from "shared/types/emailNotification";
 import {
   Settings,
@@ -10,7 +11,6 @@ import {
   SignupQuestion,
   SignupQuestionSchema,
 } from "shared/types/models/settings";
-import { ApiError, ApiResult } from "shared/types/api/errors";
 
 // POST hidden
 

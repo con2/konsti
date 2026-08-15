@@ -1,10 +1,10 @@
-import { test, expect, Page } from "@playwright/test";
-import { populateDb, postSettings } from "playwright/playwrightUtils";
-import { LoginPage } from "playwright/pages/LoginPage";
-import { ProfilePage } from "playwright/pages/ProfilePage";
+import { Page, expect, test } from "@playwright/test";
 import { LoginProvider } from "shared/config/eventConfigTypes";
 import { AuthEndpoint } from "shared/constants/apiEndpoints";
 import { kompassiLoginStateKey } from "shared/constants/browserStorage";
+import { LoginPage } from "playwright/pages/LoginPage";
+import { ProfilePage } from "playwright/pages/ProfilePage";
+import { populateDb, postSettings } from "playwright/playwrightUtils";
 
 test("Kompassi login", async ({ page, request }) => {
   await populateDb(request, { clean: true, users: true, admin: true });

@@ -1,15 +1,15 @@
-import { api } from "client/utils/api";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
+  GetGroupRequest,
   GetGroupResponse,
-  PostJoinGroupRequest,
   PostCloseGroupRequest,
+  PostCloseGroupResponse,
   PostCreateGroupResponse,
+  PostJoinGroupRequest,
   PostJoinGroupResponse,
   PostLeaveGroupResponse,
-  PostCloseGroupResponse,
-  GetGroupRequest,
 } from "shared/types/api/groups";
+import { api } from "client/utils/api";
 
 export const postCreateGroup = async (): Promise<PostCreateGroupResponse> => {
   const response = await api.post<PostCreateGroupResponse>(ApiEndpoint.GROUP);

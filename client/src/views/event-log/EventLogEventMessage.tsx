@@ -1,9 +1,9 @@
 import { ReactElement } from "react";
-import { EventLogNewAssignment } from "client/views/event-log/EventLogNewAssignment";
-import { EventLogNoAssignment } from "client/views/event-log/EventLogNoAssignment";
 import { EventLogAction, EventLogItem } from "shared/types/models/eventLog";
 import { ProgramItem } from "shared/types/models/programItem";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
+import { EventLogNewAssignment } from "client/views/event-log/EventLogNewAssignment";
+import { EventLogNoAssignment } from "client/views/event-log/EventLogNoAssignment";
 import { EventLogProgramItemCancelled } from "client/views/event-log/EventLogProgramItemCancelled";
 import { EventLogProgramItemMoved } from "client/views/event-log/EventLogProgramItemMoved";
 

@@ -1,10 +1,10 @@
 import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
-import styled from "styled-components";
 import { NavLink } from "react-router";
-import { useAppSelector } from "client/utils/hooks";
+import styled from "styled-components";
 import { LoginProvider } from "shared/config/eventConfigTypes";
 import { AppRoute, ProgramTab } from "client/app/AppRoutes";
+import { useAppSelector } from "client/utils/hooks";
 
 export const UserNavigation = (props: {
   onSelect: () => void;

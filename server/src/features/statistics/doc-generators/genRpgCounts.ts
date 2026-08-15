@@ -6,8 +6,8 @@ import {
 import {
   EVENT_LABELS,
   EVENT_ORDER,
-  eventYears,
   NO_RPGS_TEXT,
+  eventYears,
   readDataFile,
   scaleNote,
   writeDoc,

@@ -1,17 +1,17 @@
 import { unique } from "remeda";
-import { logger } from "server/utils/logger";
-import { runRandomAssignment } from "server/features/assignment/random/utils/runRandomAssignment";
-import { User } from "shared/types/models/user";
+import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
+import { AssignmentError } from "shared/types/api/errors";
 import { ProgramItem } from "shared/types/models/programItem";
-import {
-  AssignmentResultStatus,
-  AssignmentResult,
-} from "server/types/resultTypes";
+import { User } from "shared/types/models/user";
+import { Result, makeSuccessResult } from "shared/utils/result";
+import { runRandomAssignment } from "server/features/assignment/random/utils/runRandomAssignment";
 import { getRandomAndPadgInput } from "server/features/assignment/utils/getRandomAndPadgInput";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
-import { Result, makeSuccessResult } from "shared/utils/result";
-import { AssignmentError } from "shared/types/api/errors";
-import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
+import {
+  AssignmentResult,
+  AssignmentResultStatus,
+} from "server/types/resultTypes";
+import { logger } from "server/utils/logger";
 
 export const randomAssignment = (
   users: readonly User[],

@@ -1,10 +1,10 @@
-import { ReactElement, useRef } from "react";
-import styled from "styled-components";
-import { capitalize } from "remeda";
 import dayjs from "dayjs";
+import { ReactElement, useRef } from "react";
+import { capitalize } from "remeda";
+import styled from "styled-components";
 import { MOBILE_MARGIN } from "client/globalStyle";
-import { getFormattedTime } from "client/views/program-item/programItemUtils";
 import { getTimeNow } from "client/utils/getTimeNow";
+import { getFormattedTime } from "client/views/program-item/programItemUtils";
 
 interface Props {
   startTime: string;

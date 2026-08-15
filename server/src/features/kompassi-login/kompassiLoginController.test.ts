@@ -1,17 +1,20 @@
 import { Server } from "node:http";
-import { expect, test, afterEach, describe, beforeEach, vi } from "vitest";
-import request from "supertest";
 import { faker } from "@faker-js/faker";
+import request from "supertest";
+import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 import { ApiEndpoint, AuthEndpoint } from "shared/constants/apiEndpoints";
-import { closeServer, startServer } from "server/utils/server";
-import { UserGroup } from "shared/types/models/user";
-import { getJWT } from "server/utils/jwt";
 import {
   PostKompassiLoginResponse,
   PostVerifyKompassiLoginError,
   PostVerifyKompassiLoginRequest,
   PostVerifyKompassiLoginResult,
 } from "shared/types/api/login";
+import { UserGroup } from "shared/types/models/user";
+import { makeSuccessResult } from "shared/utils/result";
+import {
+  KompassiTokens,
+  KompassiUserinfo,
+} from "server/features/kompassi-login/KompassiLoginTypes";
 // eslint-disable-next-line import-x/no-namespace -- Spying on a module export needs the namespace object
 import * as userRepository from "server/features/user/userRepository";
 import {
@@ -19,13 +22,10 @@ import {
   findUserByKompassiId,
   saveUser,
 } from "server/features/user/userRepository";
-import { makeSuccessResult } from "shared/utils/result";
 import { mockUser, mockUser2 } from "server/test/mock-data/mockUser";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
-import {
-  KompassiTokens,
-  KompassiUserinfo,
-} from "server/features/kompassi-login/KompassiLoginTypes";
+import { getJWT } from "server/utils/jwt";
+import { closeServer, startServer } from "server/utils/server";
 
 let server: Server;
 

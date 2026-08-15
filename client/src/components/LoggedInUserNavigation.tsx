@@ -1,13 +1,13 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
-import styled from "styled-components";
 import { NavLink } from "react-router";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useAppSelector } from "client/utils/hooks";
+import styled from "styled-components";
 import { config } from "shared/config";
-import { isAdmin, isAdminOrHelper, isUser } from "client/utils/checkUserGroup";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import { AppRoute } from "client/app/AppRoutes";
+import { isAdmin, isAdminOrHelper, isUser } from "client/utils/checkUserGroup";
+import { useAppSelector } from "client/utils/hooks";
 
 export const LoggedInUserNavigation = (props: {
   onSelect: () => void;

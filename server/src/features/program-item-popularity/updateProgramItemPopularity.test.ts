@@ -1,23 +1,23 @@
 import { Server } from "node:http";
-import { expect, test, afterEach, beforeEach, vi } from "vitest";
 import { faker } from "@faker-js/faker";
 import dayjs from "dayjs";
-import { startServer, closeServer } from "server/utils/server";
-import { saveUser } from "server/features/user/userRepository";
-import { mockUser, mockUser2 } from "server/test/mock-data/mockUser";
+import { afterEach, beforeEach, expect, test, vi } from "vitest";
+import { config } from "shared/config";
 import {
   testProgramItem,
   testProgramItem2,
 } from "shared/tests/testProgramItem";
-import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
+import { Popularity, ProgramType } from "shared/types/models/programItem";
+import { updateProgramItemPopularity } from "server/features/program-item-popularity/updateProgramItemPopularity";
 import {
   findProgramItems,
   saveProgramItems,
 } from "server/features/program-item/programItemRepository";
-import { updateProgramItemPopularity } from "server/features/program-item-popularity/updateProgramItemPopularity";
+import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
+import { saveUser } from "server/features/user/userRepository";
+import { mockUser, mockUser2 } from "server/test/mock-data/mockUser";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
-import { Popularity, ProgramType } from "shared/types/models/programItem";
-import { config } from "shared/config";
+import { closeServer, startServer } from "server/utils/server";
 
 let server: Server;
 

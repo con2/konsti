@@ -1,9 +1,9 @@
 import dayjs from "dayjs";
-import { logger } from "server/utils/logger";
-import { runAssignment } from "server/features/assignment/run-assignment/runAssignment";
-import { db } from "server/db/mongodb";
-import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
 import { config } from "shared/config";
+import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
+import { db } from "server/db/mongodb";
+import { runAssignment } from "server/features/assignment/run-assignment/runAssignment";
+import { logger } from "server/utils/logger";
 
 const testAssignment = async (
   assignmentAlgorithm: AssignmentAlgorithm,

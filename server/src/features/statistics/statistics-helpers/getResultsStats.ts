@@ -1,13 +1,13 @@
 import fs from "node:fs";
-import {
-  getSignupsByTime,
-  getMaximumNumberOfAttendeesByTime,
-  getDemandByTime,
-} from "./resultDataHelpers";
-import { logger } from "server/utils/logger";
 import { config } from "shared/config";
-import { ResultsCollectionEntry } from "server/types/resultTypes";
 import { ProgramItem } from "shared/types/models/programItem";
+import { ResultsCollectionEntry } from "server/types/resultTypes";
+import { logger } from "server/utils/logger";
+import {
+  getDemandByTime,
+  getMaximumNumberOfAttendeesByTime,
+  getSignupsByTime,
+} from "./resultDataHelpers";
 
 export const getResultsStats = (event: string, year: number): void => {
   const results = JSON.parse(

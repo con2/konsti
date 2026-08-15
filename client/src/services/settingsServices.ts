@@ -1,4 +1,3 @@
-import { api } from "client/utils/api";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
   DeleteSignupQuestionRequest,
@@ -10,6 +9,7 @@ import {
   PostSignupQuestionResponse,
 } from "shared/types/api/settings";
 import { SignupQuestion } from "shared/types/models/settings";
+import { api } from "client/utils/api";
 
 export const getSettings = async (): Promise<GetSettingsResponse> => {
   const response = await api.get<GetSettingsResponse>(ApiEndpoint.SETTINGS);

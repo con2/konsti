@@ -1,9 +1,9 @@
-import { api } from "client/utils/api";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
   PostAssignmentRequest,
   PostAssignmentResponse,
 } from "shared/types/api/assignment";
+import { api } from "client/utils/api";
 
 export const postAssignment = async (
   assignmentTime: string,

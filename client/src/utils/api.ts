@@ -1,5 +1,4 @@
 import { config } from "shared/config";
-import { getJWT } from "client/utils/getJWT";
 import {
   ApiDevEndpoint,
   ApiEndpoint,
@@ -7,6 +6,7 @@ import {
 } from "shared/constants/apiEndpoints";
 import { ApiError } from "shared/types/api/errors";
 import { fetchWithTimeout } from "client/utils/fetchWithTimeout";
+import { getJWT } from "client/utils/getJWT";
 import {
   isBackgroundRequest,
   onRequestFailure,

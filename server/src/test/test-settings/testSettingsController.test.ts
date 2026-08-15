@@ -1,8 +1,8 @@
-import { expect, test, vi, afterEach, describe } from "vitest";
 import request from "supertest";
+import { afterEach, describe, expect, test, vi } from "vitest";
 import { ApiDevEndpoint } from "shared/constants/apiEndpoints";
-import { startTestServer, stopTestServer } from "server/test/utils/testServer";
 import { TestSettings } from "shared/test-types/models/testSettings";
+import { startTestServer, stopTestServer } from "server/test/utils/testServer";
 
 afterEach(() => {
   // Start server with different process.env.SETTINGS

@@ -1,11 +1,11 @@
 import url from "node:url";
+import { ApiError } from "shared/types/api/errors";
 import { logger } from "server/utils/logger";
 import {
   flattenErrorMessageChain,
   retryWithDelays,
   sentryRetryDelaysMs,
 } from "server/utils/sentryRetry";
-import { ApiError } from "shared/types/api/errors";
 
 const sentryHost = "sentry.io";
 const knownProjectIds = new Set(["/6579203", "/6578391", "/6579491"]);

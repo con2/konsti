@@ -1,11 +1,11 @@
 import { faker } from "@faker-js/faker";
-import { logger } from "server/utils/logger";
-import { hashPassword } from "server/utils/bcrypt";
 import { UserGroup } from "shared/types/models/user";
-import { saveUser } from "server/features/user/userRepository";
-import { NewUser } from "server/types/userTypes";
-import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { generateGroupCode } from "server/features/user/group/groupService";
+import { saveUser } from "server/features/user/userRepository";
+import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
+import { NewUser } from "server/types/userTypes";
+import { hashPassword } from "server/utils/bcrypt";
+import { logger } from "server/utils/logger";
 
 // Match the length of real registration codes from the serial generator
 const SERIAL_LENGTH = 10;

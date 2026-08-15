@@ -1,7 +1,7 @@
-import { ReactElement, useEffect, useState } from "react";
-import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { ReactElement, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import styled from "styled-components";
 import { scrollToTop } from "client/utils/scrollToTop";
 
 export const ScrollToTopButton = (): ReactElement | null => {

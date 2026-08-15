@@ -1,7 +1,7 @@
 import { init } from "@sentry/node";
 import { config } from "shared/config";
-import { scrubIpAddress } from "server/utils/scrubIpAddress";
 import { makeRetryingNodeTransport } from "server/utils/retryingSentryTransport";
+import { scrubIpAddress } from "server/utils/scrubIpAddress";
 
 const getDsn = (): string | undefined => {
   switch (process.env.SETTINGS) {

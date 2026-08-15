@@ -1,23 +1,23 @@
+import dayjs from "dayjs";
 import { ReactElement, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import styled from "styled-components";
-import dayjs from "dayjs";
 import { Link } from "react-router";
-import { GroupMembersList } from "client/views/group/components/GroupMembersList";
-import { loadGroupMembers } from "client/utils/loadData";
+import styled from "styled-components";
+import { config } from "shared/config";
+import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
+import { getWeekdayAndTime } from "shared/utils/timeFormatter";
+import { AppRoute } from "client/app/AppRoutes";
+import { getTimeNow } from "client/utils/getTimeNow";
 import { useAppSelector } from "client/utils/hooks";
-import { getIsInGroup } from "client/views/group/groupUtils";
-import { NotInGroupActions } from "client/views/group/components/NotInGroupActions";
+import { joinWithConjunction } from "client/utils/joinWithConjunction";
+import { loadGroupMembers } from "client/utils/loadData";
 import { GroupCreatorActions } from "client/views/group/components/GroupCreatorActions";
 import { GroupMemberActions } from "client/views/group/components/GroupMemberActions";
-import { getTimeNow } from "client/utils/getTimeNow";
-import { selectDirectSignups } from "client/views/my-program-items/myProgramItemsSlice";
-import { config } from "shared/config";
-import { AppRoute } from "client/app/AppRoutes";
-import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
+import { GroupMembersList } from "client/views/group/components/GroupMembersList";
+import { NotInGroupActions } from "client/views/group/components/NotInGroupActions";
 import { selectGroupMembers } from "client/views/group/groupSlice";
-import { getWeekdayAndTime } from "shared/utils/timeFormatter";
-import { joinWithConjunction } from "client/utils/joinWithConjunction";
+import { getIsInGroup } from "client/views/group/groupUtils";
+import { selectDirectSignups } from "client/views/my-program-items/myProgramItemsSlice";
 
 export const GroupView = (): ReactElement => {
   const { twoPhaseSignupProgramTypes } = config.event();

@@ -1,9 +1,9 @@
-import { api } from "client/utils/api";
-import {
-  PostUpdateProgramItemsResponse,
-  GetProgramItemsResponse,
-} from "shared/types/api/programItems";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
+import {
+  GetProgramItemsResponse,
+  PostUpdateProgramItemsResponse,
+} from "shared/types/api/programItems";
+import { api } from "client/utils/api";
 
 export const postUpdateProgramItems =
   async (): Promise<PostUpdateProgramItemsResponse> => {

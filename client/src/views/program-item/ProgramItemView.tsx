@@ -1,18 +1,18 @@
 import { ReactElement, useEffect, useLayoutEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router";
+import { ProgramItemSignupStrategy } from "shared/types/models/programItem";
+import { BackButton } from "client/components/BackButton";
 import { Loading } from "client/components/Loading";
+import { getLotterySignups } from "client/utils/getUpcomingProgramItems";
 import { useAppSelector } from "client/utils/hooks";
-import { ProgramItemEntry } from "client/views/program-item/ProgramItemEntry";
+import { selectGroupMembers } from "client/views/group/groupSlice";
+import { getIsInGroup } from "client/views/group/groupUtils";
 import {
   selectDirectSignups,
   selectLotterySignups,
 } from "client/views/my-program-items/myProgramItemsSlice";
-import { ProgramItemSignupStrategy } from "shared/types/models/programItem";
-import { getLotterySignups } from "client/utils/getUpcomingProgramItems";
-import { BackButton } from "client/components/BackButton";
-import { getIsInGroup } from "client/views/group/groupUtils";
-import { selectGroupMembers } from "client/views/group/groupSlice";
+import { ProgramItemEntry } from "client/views/program-item/ProgramItemEntry";
 
 export const ProgramItemView = (): ReactElement => {
   const { t } = useTranslation();

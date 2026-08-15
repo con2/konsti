@@ -1,23 +1,23 @@
 import { ReactElement, useEffect, useState } from "react";
 import { BrowserRouter } from "react-router";
 import styled from "styled-components";
-import { AppRoutes } from "client/app/AppRoutes";
-import { Header, HEADER_HEIGHT } from "client/components/Header";
-import { loadData } from "client/utils/loadData";
-import { Loading } from "client/components/Loading";
-import { getIconLibrary } from "client/utils/icons";
 import { config } from "shared/config";
+import { AppRoutes } from "client/app/AppRoutes";
+import { HistoryProvider } from "client/app/HistoryContext";
+import { AdminMessageBanner } from "client/components/AdminMessageBanner";
+import { Announcement } from "client/components/Announcement";
+import { AppUpdateBanner } from "client/components/AppUpdateBanner";
 import { ErrorBar } from "client/components/ErrorBar";
 import { FirstLogin } from "client/components/FirstLogin";
+import { HEADER_HEIGHT, Header } from "client/components/Header";
+import { Loading } from "client/components/Loading";
 import { MOBILE_MARGIN } from "client/globalStyle";
-import { TestTime } from "client/test/test-components/TestTime";
 import { TestGenerateSerial } from "client/test/test-components/TestGenerateSerial";
-import { Announcement } from "client/components/Announcement";
-import { AdminMessageBanner } from "client/components/AdminMessageBanner";
-import { AppUpdateBanner } from "client/components/AppUpdateBanner";
-import { NotificationBar } from "client/views/event-log/NotificationBar";
+import { TestTime } from "client/test/test-components/TestTime";
+import { getIconLibrary } from "client/utils/icons";
+import { loadData } from "client/utils/loadData";
 import { onPageResume } from "client/utils/pageLifecycle";
-import { HistoryProvider } from "client/app/HistoryContext";
+import { NotificationBar } from "client/views/event-log/NotificationBar";
 
 const { loadedSettings, showTestValues, showAnnouncement, dataUpdateInterval } =
   config.client();

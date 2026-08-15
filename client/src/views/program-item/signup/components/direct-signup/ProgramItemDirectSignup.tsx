@@ -1,28 +1,28 @@
 import { ReactElement, useState } from "react";
-import styled from "styled-components";
 import { useTranslation } from "react-i18next";
+import styled from "styled-components";
 import { ProgramItem } from "shared/types/models/programItem";
-import { DirectSignupForm } from "client/views/program-item/signup/components/direct-signup/DirectSignupForm";
-import { useAppDispatch, useAppSelector } from "client/utils/hooks";
-import { isAlreadyDirectySigned } from "client/views/program-item/programItemUtils";
+import { getDirectSignupStartTime } from "shared/utils/signupTimes";
 import { ButtonStyle } from "client/components/Button";
+import { ErrorMessage } from "client/components/ErrorMessage";
+import { InfoText } from "client/components/InfoText";
+import { SignupQuestionAnswer } from "client/components/SignUpQuestionAnswer";
+import { startLoading, stopLoading } from "client/state/loading/loadingSlice";
+import { getTimeNow } from "client/utils/getTimeNow";
+import { useAppDispatch, useAppSelector } from "client/utils/hooks";
+import { selectDirectSignups } from "client/views/my-program-items/myProgramItemsSlice";
 import {
   DeleteDirectSignupErrorMessage,
   submitDeleteDirectSignup,
 } from "client/views/my-program-items/myProgramItemsThunks";
-import { selectDirectSignups } from "client/views/my-program-items/myProgramItemsSlice";
-import { getTimeNow } from "client/utils/getTimeNow";
-import { getDirectSignupStartTime } from "shared/utils/signupTimes";
-import { AdmissionTicketLink } from "client/views/program-item/signup/components/AdmissionTicketLink";
-import { startLoading, stopLoading } from "client/state/loading/loadingSlice";
-import { SignupQuestionAnswer } from "client/components/SignUpQuestionAnswer";
-import { LoginToSignupLink } from "client/views/program-item/signup/components/LoginToSignupLink";
 import { ProgramItemButton } from "client/views/program-item/components/ProgramItemButton";
 import { ProgramItemButtonGroup } from "client/views/program-item/components/ProgramItemButtonGroup";
 import { ProgramItemCancelSignupForm } from "client/views/program-item/components/ProgramItemCancelSignupForm";
-import { ErrorMessage } from "client/components/ErrorMessage";
-import { InfoText } from "client/components/InfoText";
 import { ProgramItemStatusMessage } from "client/views/program-item/components/ProgramItemStatusMessage";
+import { isAlreadyDirectySigned } from "client/views/program-item/programItemUtils";
+import { AdmissionTicketLink } from "client/views/program-item/signup/components/AdmissionTicketLink";
+import { LoginToSignupLink } from "client/views/program-item/signup/components/LoginToSignupLink";
+import { DirectSignupForm } from "client/views/program-item/signup/components/direct-signup/DirectSignupForm";
 
 interface Props {
   programItem: ProgramItem;

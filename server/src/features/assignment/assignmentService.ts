@@ -1,14 +1,14 @@
 import dayjs from "dayjs";
-import { runAssignment } from "server/features/assignment/run-assignment/runAssignment";
-import { PostAssignmentResponse } from "shared/types/api/assignment";
 import { config } from "shared/config";
+import { PostAssignmentResponse } from "shared/types/api/assignment";
+import { MongoDbError } from "shared/types/api/errors";
+import { runAssignment } from "server/features/assignment/run-assignment/runAssignment";
 import {
   acquireAssignmentLock,
   findOrCreateSettings,
   releaseAssignmentLock,
   setAssignmentLastRun,
 } from "server/features/settings/settingsRepository";
-import { MongoDbError } from "shared/types/api/errors";
 import { logger } from "server/utils/logger";
 
 export const storeAssignment = async (

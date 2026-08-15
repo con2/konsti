@@ -1,14 +1,14 @@
 import dayjs from "dayjs";
 import { first, groupBy, sample } from "remeda";
-import { findProgramItems } from "server/features/program-item/programItemRepository";
-import { saveDirectSignup } from "server/features/direct-signup/directSignupRepository";
+import { config } from "shared/config";
+import { NewEventLogItem } from "shared/types/api/eventLog";
+import { EventLogAction } from "shared/types/models/eventLog";
 import { getRandomInt } from "server/features/assignment/utils/getRandomInt";
+import { saveDirectSignup } from "server/features/direct-signup/directSignupRepository";
+import { findProgramItems } from "server/features/program-item/programItemRepository";
 import { addEventLogItems } from "server/features/user/event-log/eventLogRepository";
 import { findUsers } from "server/features/user/userRepository";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
-import { EventLogAction } from "shared/types/models/eventLog";
-import { NewEventLogItem } from "shared/types/api/eventLog";
-import { config } from "shared/config";
 
 // Simulate lottery results: for each start time a user has lottery sign-ups for,
 // they either win a spot (a newAssignment message plus the direct sign-up the

@@ -1,11 +1,11 @@
-import { test, expect } from "@playwright/test";
+import { expect, test } from "@playwright/test";
+import { LoginProvider } from "shared/config/eventConfigTypes";
+import { RegistrationPage } from "playwright/pages/RegistrationPage";
 import {
   addSerials,
   populateDb,
   postSettings,
 } from "playwright/playwrightUtils";
-import { RegistrationPage } from "playwright/pages/RegistrationPage";
-import { LoginProvider } from "shared/config/eventConfigTypes";
 
 test("Register a new account and finalize email notifications", async ({
   page,

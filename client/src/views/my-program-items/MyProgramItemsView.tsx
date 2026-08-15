@@ -1,32 +1,31 @@
 import { ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import { MyLotterySignupsList } from "client/views/my-program-items/components/MyLotterySignupsList";
-import { MyFavoritesList } from "client/views/my-program-items/components/MyFavoritesList";
-import { MyDirectSignupsList } from "client/views/my-program-items/components/MyDirectSignupsList";
+import { EventSignupStrategy } from "shared/config/eventConfigTypes";
+import { RadioButton } from "client/components/RadioButton";
+import { RadioButtonGroup } from "client/components/RadioButtonGroup";
+import { RaisedCard } from "client/components/RaisedCard";
+import { ScrollToTopButton } from "client/components/ScrollToTopButton";
 import {
   getLotterySignups,
   getUpcomingDirectSignups,
   getUpcomingFavorites,
 } from "client/utils/getUpcomingProgramItems";
-
 import { useAppSelector } from "client/utils/hooks";
-import { EventSignupStrategy } from "shared/config/eventConfigTypes";
+import {
+  SessionStorageValue,
+  getSavedShowAllProgramItems,
+} from "client/utils/sessionStorage";
+import { selectGroupMembers } from "client/views/group/groupSlice";
+import { getIsInGroup } from "client/views/group/groupUtils";
+import { MyDirectSignupsList } from "client/views/my-program-items/components/MyDirectSignupsList";
+import { MyFavoritesList } from "client/views/my-program-items/components/MyFavoritesList";
+import { MyLotterySignupsList } from "client/views/my-program-items/components/MyLotterySignupsList";
 import {
   selectDirectSignups,
   selectFavoriteProgramItems,
   selectLotterySignups,
 } from "client/views/my-program-items/myProgramItemsSlice";
-import { RadioButton } from "client/components/RadioButton";
-import { RaisedCard } from "client/components/RaisedCard";
-import {
-  SessionStorageValue,
-  getSavedShowAllProgramItems,
-} from "client/utils/sessionStorage";
-import { RadioButtonGroup } from "client/components/RadioButtonGroup";
-import { getIsInGroup } from "client/views/group/groupUtils";
-import { ScrollToTopButton } from "client/components/ScrollToTopButton";
-import { selectGroupMembers } from "client/views/group/groupSlice";
 
 export const MyProgramItemsView = (): ReactElement => {
   const { t } = useTranslation();

@@ -1,20 +1,20 @@
-import { updateProgramItemPopularity } from "server/features/program-item-popularity/updateProgramItemPopularity";
 import { config } from "shared/config";
+import { KompassiError } from "shared/types/api/errors";
 import {
-  PostUpdateProgramItemsResponse,
   GetProgramItemsResponse,
+  PostUpdateProgramItemsResponse,
 } from "shared/types/api/programItems";
+import { ProgramItem } from "shared/types/models/programItem";
+import { UserGroup } from "shared/types/models/user";
+import { Result, makeSuccessResult } from "shared/utils/result";
+import { updateProgramItemPopularity } from "server/features/program-item-popularity/updateProgramItemPopularity";
 import {
   findProgramItems,
   saveProgramItems,
 } from "server/features/program-item/programItemRepository";
-import { enrichProgramItems } from "./programItemUtils";
-import { Result, makeSuccessResult } from "shared/utils/result";
-import { KompassiError } from "shared/types/api/errors";
-import { ProgramItem } from "shared/types/models/programItem";
 import { getProgramItemsFromKompassi } from "server/kompassi/getProgramItemsFromKompassi";
 import { kompassiProgramItemMapper } from "server/kompassi/kompassiProgramItemMapper";
-import { UserGroup } from "shared/types/models/user";
+import { enrichProgramItems } from "./programItemUtils";
 
 export const getProgramItemsForEvent = async (): Promise<
   Result<readonly ProgramItem[], KompassiError>

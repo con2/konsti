@@ -1,18 +1,18 @@
 import { Server } from "node:http";
-import { expect, test, afterEach, describe, beforeEach } from "vitest";
-import request from "supertest";
 import { faker } from "@faker-js/faker";
+import request from "supertest";
+import { afterEach, beforeEach, describe, expect, test } from "vitest";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
-import { UserGroup } from "shared/types/models/user";
-import { getJWT } from "server/utils/jwt";
-import { saveUser } from "server/features/user/userRepository";
-import { mockUser } from "server/test/mock-data/mockUser";
-import { closeServer, startServer } from "server/utils/server";
 import {
   PostUpdateUserPasswordError,
   PostUpdateUserPasswordRequest,
   PostUpdateUserPasswordResult,
 } from "shared/types/api/users";
+import { UserGroup } from "shared/types/models/user";
+import { saveUser } from "server/features/user/userRepository";
+import { mockUser } from "server/test/mock-data/mockUser";
+import { getJWT } from "server/utils/jwt";
+import { closeServer, startServer } from "server/utils/server";
 
 let server: Server;
 

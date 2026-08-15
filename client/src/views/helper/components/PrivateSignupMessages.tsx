@@ -1,15 +1,15 @@
 import { ReactElement, useEffect, useState } from "react";
-import { Link } from "react-router";
 import { useTranslation } from "react-i18next";
-import { groupBy, sortBy, capitalize } from "remeda";
+import { Link } from "react-router";
+import { capitalize, groupBy, sortBy } from "remeda";
 import styled from "styled-components";
-import { useAppSelector } from "client/utils/hooks";
 import { ProgramItem } from "shared/types/models/programItem";
 import { getWeekdayAndTime } from "shared/utils/timeFormatter";
-import { ControlledInput } from "client/components/ControlledInput";
-import { MULTIPLE_WHITESPACES_REGEX } from "client/views/all-program-items/AllProgramItemsView";
 import { AppRoute } from "client/app/AppRoutes";
+import { ControlledInput } from "client/components/ControlledInput";
+import { useAppSelector } from "client/utils/hooks";
 import { selectProgramTypeForTexts } from "client/views/admin/adminSlice";
+import { MULTIPLE_WHITESPACES_REGEX } from "client/views/all-program-items/AllProgramItemsView";
 
 export const PrivateSignupMessages = (): ReactElement => {
   const { t } = useTranslation();

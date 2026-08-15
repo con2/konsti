@@ -1,14 +1,14 @@
 import fs from "node:fs";
 import path from "node:path";
 import dayjs from "dayjs";
+import { config } from "shared/config";
+import { ProgramItem } from "shared/types/models/programItem";
+import { initializeDayjs } from "shared/utils/initializeDayjs";
 import { db } from "server/db/mongodb";
 import { saveProgramItems } from "server/features/program-item/programItemRepository";
 import { addSignupQuestions } from "server/features/program-item/utils/addSignupQuestions";
 import { findOrCreateSettings } from "server/features/settings/settingsRepository";
 import { logger } from "server/utils/logger";
-import { config } from "shared/config";
-import { ProgramItem } from "shared/types/models/programItem";
-import { initializeDayjs } from "shared/utils/initializeDayjs";
 
 const updatePastEventProgramItems = async (): Promise<void> => {
   const { eventStartTime } = config.event();

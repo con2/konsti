@@ -1,11 +1,11 @@
 import { User } from "shared/types/models/user";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import {
+  EVENT_LABELS,
+  EVENT_ORDER,
   collectRpgLotteryParticipation,
   collectRpgSpotCounts,
   dataFileExists,
-  EVENT_LABELS,
-  EVENT_ORDER,
   eventYears,
   pct,
   readDataFile,

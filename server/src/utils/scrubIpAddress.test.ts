@@ -1,5 +1,5 @@
-import { expect, test, describe } from "vitest";
 import { type ErrorEvent } from "@sentry/node";
+import { describe, expect, test } from "vitest";
 import { scrubIpAddress } from "server/utils/scrubIpAddress";
 
 describe("scrubIpAddress", () => {

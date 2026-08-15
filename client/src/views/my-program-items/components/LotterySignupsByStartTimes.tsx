@@ -1,13 +1,13 @@
 import { Fragment, ReactElement } from "react";
 import { capitalize, groupBy } from "remeda";
+import { config } from "shared/config";
 import { getWeekdayAndTime } from "shared/utils/timeFormatter";
+import { LotterySignupItem } from "client/views/my-program-items/components/LotterySignupItem";
 import {
   MyProgramList,
   MyProgramTime,
 } from "client/views/my-program-items/components/shared";
 import { LotterySignupWithProgramItem } from "client/views/my-program-items/myProgramItemsSlice";
-import { config } from "shared/config";
-import { LotterySignupItem } from "client/views/my-program-items/components/LotterySignupItem";
 
 interface Props {
   lotterySignups: LotterySignupWithProgramItem[];

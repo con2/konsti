@@ -1,12 +1,12 @@
-import { promise as queuePromise, queueAsPromised } from "fastq";
+import { queueAsPromised, promise as queuePromise } from "fastq";
 import { QueueError } from "shared/types/api/errors";
 import {
+  Result,
   makeErrorResult,
   makeSuccessResult,
-  Result,
 } from "shared/utils/result";
-import { emailNotificationWorker } from "server/features/notifications/emailNotificationWorker";
 import { EmailSender } from "server/features/notifications/email";
+import { emailNotificationWorker } from "server/features/notifications/emailNotificationWorker";
 
 export enum NotificationTaskType {
   SEND_EMAIL_ACCEPTED,

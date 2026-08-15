@@ -1,10 +1,10 @@
+import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
 import { ProgramItem } from "shared/types/models/programItem";
-import { LotterySignup, User } from "shared/types/models/user";
 import {
   AssignmentResultGroup,
   UserAssignmentResult,
 } from "shared/types/models/result";
-import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
+import { LotterySignup, User } from "shared/types/models/user";
 
 export interface UserLotterySignups {
   username: string;

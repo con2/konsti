@@ -1,20 +1,20 @@
-import path from "node:path";
 import { existsSync, readFileSync } from "node:fs";
-import { defineConfig, loadEnv } from "vite";
-import react from "@vitejs/plugin-react";
-import svgr from "vite-plugin-svgr";
+import path from "node:path";
 import mdx from "@mdx-js/rollup";
-import browserslistToEsbuild from "browserslist-to-esbuild";
-import { compression } from "vite-plugin-compression2";
 import { sentryVitePlugin } from "@sentry/vite-plugin";
+import react from "@vitejs/plugin-react";
+import browserslistToEsbuild from "browserslist-to-esbuild";
+import { defineConfig, loadEnv } from "vite";
+import { compression } from "vite-plugin-compression2";
 import istanbul from "vite-plugin-istanbul";
-import { coverageCollector } from "./coverageCollectorPlugin";
-import { sentryConfig } from "../shared/config/sentryConfig";
-import { resolvePortOffset } from "../scripts/portOffset";
+import svgr from "vite-plugin-svgr";
 import {
   clientCoverageExclude,
   clientCoverageInclude,
 } from "../scripts/coverageGlobs";
+import { resolvePortOffset } from "../scripts/portOffset";
+import { sentryConfig } from "../shared/config/sentryConfig";
+import { coverageCollector } from "./coverageCollectorPlugin";
 
 const SENTRY_PROJECT_BY_MODE: Record<string, string> = {
   production: "konsti-frontend-prod",

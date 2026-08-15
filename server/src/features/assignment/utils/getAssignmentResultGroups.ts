@@ -1,10 +1,10 @@
 import { groupBy } from "remeda";
-import { User } from "shared/types/models/user";
 import { ProgramItem } from "shared/types/models/programItem";
 import { AssignmentResultGroup } from "shared/types/models/result";
-import { getStartingProgramItems } from "server/features/assignment/utils/getStartingProgramItems";
+import { User } from "shared/types/models/user";
 import { getGroupCreators } from "server/features/assignment/utils/getGroupCreators";
 import { getGroupMembersWithCreatorLotterySignups } from "server/features/assignment/utils/getGroupMembers";
+import { getStartingProgramItems } from "server/features/assignment/utils/getStartingProgramItems";
 
 // Snapshot the groups that took part in the lottery for this assignment time, as they were when it ran
 export const getAssignmentResultGroups = (

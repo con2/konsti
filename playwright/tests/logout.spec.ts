@@ -1,10 +1,10 @@
-import { test, expect } from "@playwright/test";
-import { populateDb, login } from "playwright/playwrightUtils";
+import { expect, test } from "@playwright/test";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
-import { Navigation } from "playwright/pages/Navigation";
+import { localStorageStateKey } from "shared/constants/browserStorage";
 import { ErrorBar } from "playwright/pages/ErrorBar";
 import { LoginPage } from "playwright/pages/LoginPage";
-import { localStorageStateKey } from "shared/constants/browserStorage";
+import { Navigation } from "playwright/pages/Navigation";
+import { login, populateDb } from "playwright/playwrightUtils";
 
 test("Logout clears the session", async ({ page, request }) => {
   await populateDb(request, { clean: true, users: true, admin: true });

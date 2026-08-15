@@ -1,8 +1,8 @@
 import { ReactElement } from "react";
-import { KonstiRegistrationPage } from "client/views/registration/components/KonstiRegistrationPage";
 import { LoginProvider } from "shared/config/eventConfigTypes";
 import { useAppSelector } from "client/utils/hooks";
 import { KonstiAndKompassiRegistrationPage } from "client/views/registration/components/KonstiAndKompassiRegistrationPage";
+import { KonstiRegistrationPage } from "client/views/registration/components/KonstiRegistrationPage";
 
 export const RegistrationView = (): ReactElement | null => {
   const loginProvider = useAppSelector((state) => state.admin.loginProvider);

@@ -4,18 +4,18 @@ import {
   ProgramItem,
   ProgramItemSignupStrategy,
 } from "shared/types/models/programItem";
-import { ProgramItemDirectSignup } from "client/views/program-item/signup/components/direct-signup/ProgramItemDirectSignup";
-import { ProgramItemLotterySignup } from "client/views/program-item/signup/components/lottery-signup/ProgramItemLotterySignup";
-import { SignupHelpText } from "client/views/program-item/signup/components/SignupHelpText";
-import { isAlreadyDirectySigned } from "client/views/program-item/programItemUtils";
-import { AdmissionTicketLink } from "client/views/program-item/signup/components/AdmissionTicketLink";
 import { isDirectSignupAlwaysOpen } from "shared/utils/isDirectSignupAlwaysOpen";
+import { programItemCardEndMargin } from "client/views/my-program-items/components/shared";
 import {
   DirectSignupWithProgramItem,
   LotterySignupWithProgramItem,
 } from "client/views/my-program-items/myProgramItemsSlice";
 import { ProgramItemButtonGroup } from "client/views/program-item/components/ProgramItemButtonGroup";
-import { programItemCardEndMargin } from "client/views/my-program-items/components/shared";
+import { isAlreadyDirectySigned } from "client/views/program-item/programItemUtils";
+import { AdmissionTicketLink } from "client/views/program-item/signup/components/AdmissionTicketLink";
+import { SignupHelpText } from "client/views/program-item/signup/components/SignupHelpText";
+import { ProgramItemDirectSignup } from "client/views/program-item/signup/components/direct-signup/ProgramItemDirectSignup";
+import { ProgramItemLotterySignup } from "client/views/program-item/signup/components/lottery-signup/ProgramItemLotterySignup";
 
 interface Props {
   signupStrategy: ProgramItemSignupStrategy;

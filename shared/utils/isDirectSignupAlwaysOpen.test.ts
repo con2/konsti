@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, test, vi } from "vitest";
 import { config } from "shared/config";
-import { Tag } from "shared/types/models/programItem";
 import { testProgramItem } from "shared/tests/testProgramItem";
+import { Tag } from "shared/types/models/programItem";
 import { isDirectSignupAlwaysOpen } from "shared/utils/isDirectSignupAlwaysOpen";
 
 beforeEach(() => {

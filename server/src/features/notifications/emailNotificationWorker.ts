@@ -1,11 +1,16 @@
+import { config } from "shared/config";
+import { EMAIL_REGEX } from "shared/constants/validation";
+import { EmailSender } from "server/features/notifications/email";
+import { findProgramItemById } from "server/features/program-item/programItemRepository";
+import { findUser } from "server/features/user/userRepository";
+import { logger } from "server/utils/logger";
 import {
   NotificationTask,
   NotificationTaskType,
 } from "server/utils/notificationQueue";
-import { EMAIL_REGEX } from "shared/constants/validation";
 import {
-  buildEmail,
   EmailMessage,
+  buildEmail,
   getAcceptedEmailTemplate,
   getProgramItemCancelledEmailTemplate,
   getProgramItemDeletedEmailTemplate,
@@ -14,11 +19,6 @@ import {
   getProgramItemTimeChangedEmailTemplate,
   getRejectedEmailTemplate,
 } from "./senderCommon";
-import { logger } from "server/utils/logger";
-import { findUser } from "server/features/user/userRepository";
-import { findProgramItemById } from "server/features/program-item/programItemRepository";
-import { config } from "shared/config";
-import { EmailSender } from "server/features/notifications/email";
 
 export async function emailNotificationWorker(
   sender: EmailSender,

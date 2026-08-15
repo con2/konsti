@@ -1,4 +1,4 @@
-import { ReactElement, InputHTMLAttributes } from "react";
+import { InputHTMLAttributes, ReactElement } from "react";
 import styled from "styled-components";
 
 type Props = InputHTMLAttributes<HTMLInputElement> & {

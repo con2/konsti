@@ -1,5 +1,3 @@
-import { UserModel, UserSchemaDb } from "server/features/user/userSchema";
-import { logger } from "server/utils/logger";
 import { MongoDbError } from "shared/types/api/errors";
 import { User } from "shared/types/models/user";
 import {
@@ -7,6 +5,8 @@ import {
   makeErrorResult,
   makeSuccessResult,
 } from "shared/utils/result";
+import { UserModel, UserSchemaDb } from "server/features/user/userSchema";
+import { logger } from "server/utils/logger";
 
 export const findGroupMembers = async (
   groupCode: string,

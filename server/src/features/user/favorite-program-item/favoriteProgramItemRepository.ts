@@ -1,12 +1,12 @@
-import { UserModel, UserSchemaDb } from "server/features/user/userSchema";
-import { logger } from "server/utils/logger";
 import { MongoDbError } from "shared/types/api/errors";
 import { FavoriteProgramItemId, NewFavorite } from "shared/types/models/user";
 import {
   Result,
-  makeSuccessResult,
   makeErrorResult,
+  makeSuccessResult,
 } from "shared/utils/result";
+import { UserModel, UserSchemaDb } from "server/features/user/userSchema";
+import { logger } from "server/utils/logger";
 
 export const saveFavorite = async (
   newFavorite: NewFavorite,

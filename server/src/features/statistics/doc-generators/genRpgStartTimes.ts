@@ -4,12 +4,12 @@ import {
   State,
 } from "shared/types/models/programItem";
 import {
-  bucketByHour,
-  dayOfWeek,
   EVENT_LABELS,
   EVENT_ORDER,
-  eventYears,
   NO_RPGS_TEXT,
+  bucketByHour,
+  dayOfWeek,
+  eventYears,
   readDataFile,
   writeDoc,
 } from "server/features/statistics/doc-generators/statsUtils";

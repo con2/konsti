@@ -1,9 +1,11 @@
+import dayjs from "dayjs";
 import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
-import dayjs from "dayjs";
 import { Link } from "react-router";
-import styled from "styled-components";
 import { sortBy } from "remeda";
+import styled from "styled-components";
+import { AppRoute } from "client/app/AppRoutes";
+import { InfoText } from "client/components/InfoText";
 import { getTimeNow } from "client/utils/getTimeNow";
 import { useAppSelector } from "client/utils/hooks";
 import {
@@ -11,8 +13,6 @@ import {
   selectHiddenProgramItems,
   selectProgramTypeForTexts,
 } from "client/views/admin/adminSlice";
-import { AppRoute } from "client/app/AppRoutes";
-import { InfoText } from "client/components/InfoText";
 
 export const RevolvingDoorProgramItemsInfo = (): ReactElement => {
   const { t } = useTranslation();

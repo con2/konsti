@@ -1,11 +1,11 @@
 import { first } from "remeda";
-import { PadgRandomAssignResult } from "server/types/assignmentTypes";
-import { logger } from "server/utils/logger";
 import {
   AssignmentSignup,
   UserAssignmentResult,
 } from "shared/types/models/result";
 import { User } from "shared/types/models/user";
+import { PadgRandomAssignResult } from "server/types/assignmentTypes";
+import { logger } from "server/utils/logger";
 
 const getAssignmentSignup = (
   assignResults: PadgRandomAssignResult[],

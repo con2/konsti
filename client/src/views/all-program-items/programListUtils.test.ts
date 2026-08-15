@@ -1,12 +1,12 @@
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 import { config } from "shared/config";
+import { testProgramItem } from "shared/tests/testProgramItem";
 import {
   AgeGroup,
   Language,
   ProgramType,
   Tag,
 } from "shared/types/models/programItem";
-import { testProgramItem } from "shared/tests/testProgramItem";
 import {
   StartingTimeOption,
   getActiveStickyHeaderIndex,

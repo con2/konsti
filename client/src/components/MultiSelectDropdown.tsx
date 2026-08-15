@@ -1,7 +1,7 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ReactElement, useEffect, useId, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Checkbox } from "client/components/Checkbox";
 import { Option } from "client/components/Dropdown";
 import { TertiaryButton } from "client/components/TertiaryButton";

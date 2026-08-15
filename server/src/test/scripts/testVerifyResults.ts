@@ -1,6 +1,6 @@
-import { logger } from "server/utils/logger";
-import { verifyUserSignups } from "server/features/assignment/run-assignment/runAssignmentTestUtils";
 import { db } from "server/db/mongodb";
+import { verifyUserSignups } from "server/features/assignment/run-assignment/runAssignmentTestUtils";
+import { logger } from "server/utils/logger";
 
 const testVerifyResults = async (): Promise<void> => {
   try {

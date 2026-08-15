@@ -1,12 +1,13 @@
 import { Fragment, ReactElement } from "react";
-import { useNavigate } from "react-router";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router";
 import { capitalize, groupBy } from "remeda";
-import { getWeekdayAndTime } from "shared/utils/timeFormatter";
 import { ProgramItem } from "shared/types/models/programItem";
-import { useAppDispatch, useAppSelector } from "client/utils/hooks";
-import { updateFavorite } from "client/utils/favorite";
+import { getWeekdayAndTime } from "shared/utils/timeFormatter";
+import { AppRoute } from "client/app/AppRoutes";
 import { TertiaryButton } from "client/components/TertiaryButton";
+import { updateFavorite } from "client/utils/favorite";
+import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import {
   MyProgramButtonContainer,
   MyProgramGameTitle,
@@ -14,7 +15,6 @@ import {
   MyProgramListItem,
   MyProgramTime,
 } from "client/views/my-program-items/components/shared";
-import { AppRoute } from "client/app/AppRoutes";
 
 interface Props {
   favoriteProgramItems: readonly ProgramItem[];

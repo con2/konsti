@@ -1,22 +1,22 @@
-import { test, expect } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 import dayjs from "dayjs";
-import {
-  postSettings,
-  postTestSettings,
-  login,
-  addProgramItems,
-  populateDb,
-  postAssignment,
-  testPostLotterySignup,
-} from "playwright/playwrightUtils";
-import { ProgramListPage } from "playwright/pages/ProgramListPage";
-import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import { config } from "shared/config";
+import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import {
   testProgramItem,
   testProgramItem2,
 } from "shared/tests/testProgramItem";
 import { ProgramType } from "shared/types/models/programItem";
+import { ProgramListPage } from "playwright/pages/ProgramListPage";
+import {
+  addProgramItems,
+  login,
+  populateDb,
+  postAssignment,
+  postSettings,
+  postTestSettings,
+  testPostLotterySignup,
+} from "playwright/playwrightUtils";
 
 test("Add lottery signup", async ({ page, request }) => {
   const startTime = dayjs(config.event().eventStartTime)

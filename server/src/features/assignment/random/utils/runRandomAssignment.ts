@@ -2,26 +2,26 @@ import { eventAssignment } from "eventassigner-random";
 import { AssignmentElement } from "eventassigner-random/lib/typings/assignment";
 import { CheckResult } from "eventassigner-random/lib/typings/checkResult";
 import { config } from "shared/config";
-import { getGroups } from "server/features/assignment/utils/getGroups";
-import { getList } from "server/features/assignment/utils/getList";
-import { formatResults } from "server/features/assignment/utils/formatResults";
+import { AssignmentError } from "shared/types/api/errors";
 import { ProgramItem } from "shared/types/models/programItem";
-import { AssignmentAlgorithmResult } from "server/types/resultTypes";
-import {
-  ListItem,
-  RandomAssignUpdateLInput,
-} from "server/types/assignmentTypes";
 import { User } from "shared/types/models/user";
-import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import {
   Result,
   makeErrorResult,
   makeSuccessResult,
 } from "shared/utils/result";
-import { AssignmentError } from "shared/types/api/errors";
-import { logger } from "server/utils/logger";
 import { calculateHappiness } from "server/features/assignment/padg/utils/calculateHappiness";
+import { formatResults } from "server/features/assignment/utils/formatResults";
 import { getEvents } from "server/features/assignment/utils/getEvents";
+import { getGroups } from "server/features/assignment/utils/getGroups";
+import { getList } from "server/features/assignment/utils/getList";
+import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
+import {
+  ListItem,
+  RandomAssignUpdateLInput,
+} from "server/types/assignmentTypes";
+import { AssignmentAlgorithmResult } from "server/types/resultTypes";
+import { logger } from "server/utils/logger";
 
 const updateL = (input: RandomAssignUpdateLInput): ListItem[] => input.L;
 

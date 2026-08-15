@@ -1,23 +1,20 @@
 import { Server } from "node:http";
+import { faker } from "@faker-js/faker";
+import dayjs from "dayjs";
 import {
-  expect,
-  test,
   afterEach,
   beforeAll,
   beforeEach,
-  vi,
   describe,
+  expect,
+  test,
+  vi,
 } from "vitest";
-import { faker } from "@faker-js/faker";
-import dayjs from "dayjs";
-import { startServer, closeServer } from "server/utils/server";
-import {
-  autoAssignAttendees,
-  autoUpdateProgramItems,
-  setLatestServerStartTime,
-  startCronJobs,
-  stopCronJobs,
-} from "server/utils/cron";
+import { config } from "shared/config";
+import { EventName } from "shared/config/eventConfigTypes";
+import { KompassiError } from "shared/types/api/errors";
+import { makeErrorResult } from "shared/utils/result";
+import { EmailSender } from "server/features/notifications/email";
 import {
   ASSIGNMENT_LOCK_STALE_TIMEOUT_MINUTES,
   acquireAssignmentLock,
@@ -25,19 +22,22 @@ import {
   findOrCreateSettings,
   saveSettings,
 } from "server/features/settings/settingsRepository";
-import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
-import { logger } from "server/utils/logger";
+import { testHelperWrapper } from "server/kompassi/getProgramItemsFromKompassi";
 import { saveTestSettings } from "server/test/test-settings/testSettingsRepository";
-import { config } from "shared/config";
-import { EventName } from "shared/config/eventConfigTypes";
+import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
+import {
+  autoAssignAttendees,
+  autoUpdateProgramItems,
+  setLatestServerStartTime,
+  startCronJobs,
+  stopCronJobs,
+} from "server/utils/cron";
+import { logger } from "server/utils/logger";
 import {
   createNotificationQueueService,
   getGlobalNotificationQueueService,
 } from "server/utils/notificationQueue";
-import { EmailSender } from "server/features/notifications/email";
-import { testHelperWrapper } from "server/kompassi/getProgramItemsFromKompassi";
-import { makeErrorResult } from "shared/utils/result";
-import { KompassiError } from "shared/types/api/errors";
+import { closeServer, startServer } from "server/utils/server";
 
 let server: Server;
 

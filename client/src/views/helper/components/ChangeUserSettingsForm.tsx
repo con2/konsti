@@ -1,14 +1,14 @@
-import { ChangeEvent, ReactElement, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import styled, { css } from "styled-components";
+import { ChangeEvent, ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Button, ButtonStyle } from "client/components/Button";
-import { updateUserPassword } from "client/services/userServices";
+import styled, { css } from "styled-components";
 import {
   PASSWORD_LENGTH_MAX,
   PASSWORD_LENGTH_MIN,
 } from "shared/constants/validation";
+import { Button, ButtonStyle } from "client/components/Button";
 import { ControlledInput } from "client/components/ControlledInput";
+import { updateUserPassword } from "client/services/userServices";
 
 interface Props {
   usernameToUpdate: string;

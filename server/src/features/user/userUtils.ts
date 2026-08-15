@@ -1,9 +1,9 @@
 import { Dayjs } from "dayjs";
-import { logger } from "server/utils/logger";
-import { saveSerials } from "server/features/serial/serialRepository";
-import { Result } from "shared/utils/result";
 import { MongoDbError } from "shared/types/api/errors";
+import { Result } from "shared/utils/result";
+import { saveSerials } from "server/features/serial/serialRepository";
 import { Serial } from "server/types/serialTypes";
+import { logger } from "server/utils/logger";
 
 interface HasSignupEndedParams {
   signupEndTime: Dayjs;

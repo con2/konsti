@@ -1,12 +1,12 @@
 import { ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { DismissibleBanner } from "client/components/DismissibleBanner";
+import { HighlightStyle } from "client/components/RaisedCard";
 import { useAppSelector } from "client/utils/hooks";
 import {
   getDismissedAdminMessage,
   saveDismissedAdminMessage,
 } from "client/utils/localStorage";
-import { DismissibleBanner } from "client/components/DismissibleBanner";
-import { HighlightStyle } from "client/components/RaisedCard";
 
 export const AdminMessageBanner = (): ReactElement | null => {
   const { t, i18n } = useTranslation();

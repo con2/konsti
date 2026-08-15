@@ -4,7 +4,6 @@ import {
   PostCloseGroupRequest,
   PostJoinGroupRequest,
 } from "shared/types/api/groups";
-import { getAuthUsername } from "server/middleware/requireAuth";
 import {
   closeGroup,
   createGroup,
@@ -12,6 +11,7 @@ import {
   joinGroup,
   leaveGroup,
 } from "server/features/user/group/groupService";
+import { getAuthUsername } from "server/middleware/requireAuth";
 
 export const postCreateGroup = async (
   req: Request,

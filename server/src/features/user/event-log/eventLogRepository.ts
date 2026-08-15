@@ -2,17 +2,17 @@ import { AnyBulkWriteOperation } from "mongoose";
 import { unique } from "remeda";
 import { MongoDbError } from "shared/types/api/errors";
 import {
+  NewEventLogItem,
+  PostEventLogIsSeenRequest,
+} from "shared/types/api/eventLog";
+import { EventLogAction, EventLogItem } from "shared/types/models/eventLog";
+import {
   Result,
   makeErrorResult,
   makeSuccessResult,
 } from "shared/utils/result";
-import {
-  PostEventLogIsSeenRequest,
-  NewEventLogItem,
-} from "shared/types/api/eventLog";
 import { UserModel, UserSchemaDb } from "server/features/user/userSchema";
 import { logger } from "server/utils/logger";
-import { EventLogAction, EventLogItem } from "shared/types/models/eventLog";
 
 export const addEventLogItems = async (
   newEventLogItems: NewEventLogItem[],

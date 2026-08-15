@@ -1,26 +1,26 @@
 import { fileURLToPath } from "node:url";
-import eslint from "@eslint/js";
-import { defineConfig, globalIgnores, includeIgnoreFile } from "eslint/config";
-import globals from "globals";
 import eslintPluginCommentsConfigs from "@eslint-community/eslint-plugin-eslint-comments/configs";
+import { fixupConfigRules, fixupPluginRules } from "@eslint/compat";
+import eslint from "@eslint/js";
+import eslintPluginVitest from "@vitest/eslint-plugin";
+import eslintConfigPrettier from "eslint-config-prettier";
 import eslintPluginCompat from "eslint-plugin-compat";
 import eslintPluginImport from "eslint-plugin-import-x";
 import eslintPluginJsxA11y from "eslint-plugin-jsx-a11y";
+// eslint-disable-next-line import-x/no-namespace
+import * as eslintPluginMdx from "eslint-plugin-mdx";
 import eslintPluginN from "eslint-plugin-n";
-import eslintConfigPrettier from "eslint-config-prettier";
+// @ts-expect-error: Missing types
+import eslintPluginOnlyError from "eslint-plugin-only-error";
 // @ts-expect-error: Missing types
 import eslintPluginPromise from "eslint-plugin-promise";
 import eslintPluginReact from "eslint-plugin-react";
 import eslintPluginReactHooks from "eslint-plugin-react-hooks";
 import eslintPluginReactHooksAddon from "eslint-plugin-react-hooks-addons";
 import eslintPluginUnicorn from "eslint-plugin-unicorn";
-import eslintPluginVitest from "@vitest/eslint-plugin";
-// @ts-expect-error: Missing types
-import eslintPluginOnlyError from "eslint-plugin-only-error";
-// eslint-disable-next-line import-x/no-namespace
-import * as eslintPluginMdx from "eslint-plugin-mdx";
+import { defineConfig, globalIgnores, includeIgnoreFile } from "eslint/config";
+import globals from "globals";
 import typescriptEslint from "typescript-eslint";
-import { fixupPluginRules, fixupConfigRules } from "@eslint/compat";
 
 const filetypesGlob = "**/*.{ts,tsx}";
 
@@ -121,7 +121,6 @@ export default defineConfig([
       "no-implicit-coercion": ["error", { boolean: false }],
 
       // eslint-plugin-import-x
-      "import-x/order": ["error", { groups: ["builtin", "external"] }],
       "import-x/no-namespace": [
         "error",
         {

@@ -1,9 +1,9 @@
-import { api } from "client/utils/api";
 import { ApiDevEndpoint } from "shared/constants/apiEndpoints";
 import {
   PostAddSerialsRequest,
   PostAddSerialsResponse,
 } from "shared/test-types/api/testData";
+import { api } from "client/utils/api";
 
 export const postAddSerials = async (
   count: number,

@@ -1,20 +1,20 @@
-import { test, expect, APIRequestContext } from "@playwright/test";
+import { APIRequestContext, expect, test } from "@playwright/test";
 import dayjs from "dayjs";
-import {
-  postTestSettings,
-  login,
-  addProgramItems,
-  clearDb,
-  populateDb,
-} from "playwright/playwrightUtils";
-import { ProgramListPage } from "playwright/pages/ProgramListPage";
-import { ProgramItemPage } from "playwright/pages/ProgramItemPage";
 import { config } from "shared/config";
-import { Tag } from "shared/types/models/programItem";
 import {
   testProgramItem,
   testProgramItem2,
 } from "shared/tests/testProgramItem";
+import { Tag } from "shared/types/models/programItem";
+import { ProgramItemPage } from "playwright/pages/ProgramItemPage";
+import { ProgramListPage } from "playwright/pages/ProgramListPage";
+import {
+  addProgramItems,
+  clearDb,
+  login,
+  populateDb,
+  postTestSettings,
+} from "playwright/playwrightUtils";
 
 // Program times show the weekday only during event week; further out the
 // weekday alone is ambiguous, so the full date must be included

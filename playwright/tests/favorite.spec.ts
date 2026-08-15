@@ -1,11 +1,11 @@
-import { test, expect } from "@playwright/test";
+import { expect, test } from "@playwright/test";
+import { config } from "shared/config";
+import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
-  populateDb,
   login,
+  populateDb,
   postTestSettings,
 } from "playwright/playwrightUtils";
-import { ProgramListPage } from "playwright/pages/ProgramListPage";
-import { config } from "shared/config";
 
 test("Add favorite", async ({ page, request }) => {
   // postTestSettings logs in as admin, so the admin user must exist

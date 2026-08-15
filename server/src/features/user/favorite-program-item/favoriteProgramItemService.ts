@@ -1,6 +1,7 @@
-import { saveFavorite } from "server/features/user/favorite-program-item/favoriteProgramItemRepository";
 import { PostFavoriteResponse } from "shared/types/api/favorite";
 import { NewFavorite } from "shared/types/models/user";
+import { saveFavorite } from "server/features/user/favorite-program-item/favoriteProgramItemRepository";
+
 export const storeFavorite = async (
   newFavorite: NewFavorite,
 ): Promise<PostFavoriteResponse> => {

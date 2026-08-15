@@ -1,15 +1,15 @@
 import { describe, expect, test, vi } from "vitest";
-import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { config } from "shared/config";
 import { EventName } from "shared/config/eventConfigTypes";
+import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
+import { getProgramItemsForEvent } from "server/features/program-item/programItemService";
 import { testHelperWrapper } from "server/kompassi/getProgramItemsFromKompassi";
+import { KompassiProgramItem } from "server/kompassi/kompassiProgramItem";
 import {
   mockKompassiProgramItem,
   mockKompassiProgramItem2,
 } from "server/kompassi/test/mockKompassiProgramItem";
-import { getProgramItemsForEvent } from "server/features/program-item/programItemService";
-import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
-import { KompassiProgramItem } from "server/kompassi/kompassiProgramItem";
+import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 
 const getMockKompassiProgramItems = (
   eventName: EventName,

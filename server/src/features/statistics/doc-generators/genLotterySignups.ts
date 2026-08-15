@@ -1,15 +1,15 @@
 import {
-  bucketByHour,
-  collectRpgLotteryParticipation,
-  dayOfWeek,
   DIRECT_SIGNUP_ONLY_TEXT,
   EVENT_LABELS,
   EVENT_ORDER,
-  eventYears,
   NO_RPGS_TEXT,
+  bucketByHour,
+  collectRpgLotteryParticipation,
+  dayOfWeek,
+  eventYears,
   pct,
-  scaledBar,
   scaleNote,
+  scaledBar,
   writeDoc,
 } from "server/features/statistics/doc-generators/statsUtils";
 

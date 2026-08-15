@@ -1,10 +1,10 @@
-import { expect, test, describe } from "vitest";
+import { describe, expect, test } from "vitest";
+import { USERNAME_LENGTH_MAX } from "shared/constants/validation";
+import { KompassiUserinfo } from "server/features/kompassi-login/KompassiLoginTypes";
 import {
   addKompassiIdSuffix,
   deriveKonstiUsername,
 } from "server/features/kompassi-login/kompassiLoginUtils";
-import { KompassiUserinfo } from "server/features/kompassi-login/KompassiLoginTypes";
-import { USERNAME_LENGTH_MAX } from "shared/constants/validation";
 
 const userinfo: KompassiUserinfo = {
   sub: "42",

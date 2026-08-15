@@ -1,28 +1,28 @@
 import { ChangeEvent, ReactElement, useEffect, useState } from "react";
-import styled from "styled-components";
 import { useTranslation } from "react-i18next";
-import loaderImage from "assets/loading.gif";
+import styled from "styled-components";
 import {
   ProgramItem,
   ProgramItemSignupStrategy,
 } from "shared/types/models/programItem";
-import { useAppDispatch, useAppSelector } from "client/utils/hooks";
+import {
+  SignupQuestionSelectOption,
+  SignupQuestionType,
+} from "shared/types/models/settings";
+import loaderImage from "assets/loading.gif";
 import { Button, ButtonStyle } from "client/components/Button";
+import { ButtonGroup } from "client/components/ButtonGroup";
+import { Checkbox } from "client/components/Checkbox";
+import { ControlledInput } from "client/components/ControlledInput";
+import { Dropdown } from "client/components/Dropdown";
+import { UncontrolledInput } from "client/components/UncontrolledInput";
+import { useAppDispatch, useAppSelector } from "client/utils/hooks";
+import { selectHiddenProgramItems } from "client/views/admin/adminSlice";
 import {
   submitAddSignupQuestion,
   submitDeleteSignupQuestion,
   submitUpdateHidden,
 } from "client/views/admin/adminThunks";
-import { ButtonGroup } from "client/components/ButtonGroup";
-import { ControlledInput } from "client/components/ControlledInput";
-import { Dropdown } from "client/components/Dropdown";
-import {
-  SignupQuestionSelectOption,
-  SignupQuestionType,
-} from "shared/types/models/settings";
-import { Checkbox } from "client/components/Checkbox";
-import { UncontrolledInput } from "client/components/UncontrolledInput";
-import { selectHiddenProgramItems } from "client/views/admin/adminSlice";
 
 interface Props {
   programItem: ProgramItem;

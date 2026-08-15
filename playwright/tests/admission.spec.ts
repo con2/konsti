@@ -1,17 +1,17 @@
-import { test, expect } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 import dayjs from "dayjs";
+import { config } from "shared/config";
+import { EventSignupStrategy } from "shared/config/eventConfigTypes";
+import { testProgramItem } from "shared/tests/testProgramItem";
+import { ProgramItemPage } from "playwright/pages/ProgramItemPage";
 import {
-  populateDb,
+  addProgramItems,
   login,
+  populateDb,
   postSettings,
   postTestSettings,
-  addProgramItems,
   testPostDirectSignup,
 } from "playwright/playwrightUtils";
-import { ProgramItemPage } from "playwright/pages/ProgramItemPage";
-import { config } from "shared/config";
-import { testProgramItem } from "shared/tests/testProgramItem";
-import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 
 test("Admission ticket reflects whether the user has signed up", async ({
   page,

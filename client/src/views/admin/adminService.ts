@@ -1,6 +1,6 @@
-import { api } from "client/utils/api";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { EmailNotificationTrigger } from "shared/types/emailNotification";
+import { api } from "client/utils/api";
 
 export const getSentryTest = async (): Promise<void> => {
   await api.get(ApiEndpoint.SENTRY_TEST);
