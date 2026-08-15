@@ -32,6 +32,23 @@ const config: Config = {
     "declaration-empty-line-before": null, // Don't want this
     "color-function-alias-notation": null, // Don't want this
 
+    // Colors belong in client/src/theme.ts, interpolated as theme tokens, so no
+    // literal color of any form is allowed in a styled template
+    "color-no-hex": true,
+    "color-named": "never",
+    "function-disallowed-list": [
+      "rgb",
+      "rgba",
+      "hsl",
+      "hsla",
+      "hwb",
+      "lab",
+      "lch",
+      "oklab",
+      "oklch",
+      "color",
+    ],
+
     // no-unsupported-browser-features
     "plugin/no-unsupported-browser-features": [
       true,
